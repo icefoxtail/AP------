@@ -53,10 +53,10 @@
 
     function normalizeDay(value) {
         const raw = normalizeKey(value);
-        if (!raw) return '요일 미정';
+        if (!raw) return '';
         const compact = raw.replace(/요일/g, '').trim();
         const found = DAY_ORDER.find(day => compact.includes(day));
-        return found || compact || raw;
+        return found || '';
     }
 
     function normalizeTime(value) {
@@ -383,7 +383,7 @@
             session_id: `session_${ordered.map(cell => cell.id).join('_') || index}`,
             source_cell_ids: ordered.map(cell => cell.id),
             source_rows: ordered,
-            day: first.day || '요일 미정',
+            day: first.day || '',
             teacher_name: first.teacher_name || '미정',
             teacher_key: first.teacher_key || 'unknown',
             class_name: first.class_name || '수업명 없음',
@@ -438,7 +438,7 @@
     }
 
     function getAvailableDays(sessions) {
-        const days = Array.from(new Set((sessions || []).map(session => session.day).filter(Boolean)));
+        const days = Array.from(new Set((sessions || []).map(session => session.day).filter(day => DAY_ORDER.includes(day))));
         return days.sort((a, b) => daySortValue(a) - daySortValue(b) || a.localeCompare(b, 'ko'));
     }
 
@@ -722,20 +722,27 @@
                 </div>
                 <div class="eie-v2-student-form">
                     <label><span>학생명</span><input id="eie-v2-edit-name" type="text" value="${esc(studentDisplayName(student))}" autocomplete="off"></label>
-                    <label><span>학생구분</span>${renderStudentTypeSelect('eie-v2-edit-student-type', studentType(student))}</label>
-                    <label><span>학년</span>${renderGradeSelect('eie-v2-edit-grade', studentGrade(student))}</label>
+                    <div class="eie-v2-form-row">
+                        <label><span>학생구분</span>${renderStudentTypeSelect('eie-v2-edit-student-type', studentType(student))}</label>
+                        <label><span>학년</span>${renderGradeSelect('eie-v2-edit-grade', studentGrade(student))}</label>
+                    </div>
                     <label><span>학교</span><input id="eie-v2-edit-school" type="text" value="${esc(studentSchool(student))}" autocomplete="off"></label>
                     <label><span>학생 연락처</span><input id="eie-v2-edit-phone" type="tel" value="${esc(studentPhone(student))}" autocomplete="off"></label>
                     <label><span>학부모 연락처</span><input id="eie-v2-edit-parent-phone" type="tel" value="${esc(studentParentPhone(student))}" autocomplete="off"></label>
-                    <label><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                     <label><span>주소</span><input id="eie-v2-edit-address" type="text" value="${esc(studentAddress(student))}" autocomplete="off"></label>
                     <label><span>차량</span><input id="eie-v2-edit-vehicle" type="text" value="${esc(studentVehicleInfo(student))}" autocomplete="off"></label>
-                    <label><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
                     ${renderStudentTeacherPicker(student)}
-                    <label><span>상태</span><select id="eie-v2-edit-status">
-                        ${['active', 'inactive', 'needs_review', 'archived'].map(status => `<option value="${esc(status)}"${studentStatus(student) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}
-                    </select></label>
-                    <label class="is-wide"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
+                    <details class="eie-v2-extra-fields">
+                        <summary>추가 정보</summary>
+                        <div class="eie-v2-extra-fields-body">
+                            <label><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
+                            <label><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
+                            <label><span>상태</span><select id="eie-v2-edit-status">
+                                ${['active', 'inactive', 'needs_review', 'archived'].map(status => `<option value="${esc(status)}"${studentStatus(student) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}
+                            </select></label>
+                            <label class="is-wide"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
+                        </div>
+                    </details>
                 </div>
                 <div class="eie-v2-detail-actions">
                     <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '저장'}</button>
@@ -869,13 +876,10 @@
             <div class="eie-v2-page-head">
                 <div>
                     <button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
-                    <p class="eie-kicker">시간표 v2</p>
-                    <h1>요일별 운영 시간표</h1>
-                    <p>원본 시간표를 보존하고, 선생님별·실제 시간 기준으로 다시 정리해 보여줍니다.</p>
+                    <h1>시간표</h1>
                 </div>
                 <div class="eie-v2-head-actions">
-                    <button type="button" class="eie-secondary-btn" data-eie-route="timetable" aria-label="기존 시간표 보기">기존 보기</button>
-                    <button type="button" class="eie-secondary-btn" data-eie-v2-refresh>새로고침</button>
+                    <button type="button" class="eie-secondary-button" data-eie-route="timetable" aria-label="시간표 편집 열기">편집</button>
                 </div>
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}

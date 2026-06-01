@@ -204,6 +204,16 @@ function dispatchClosest(target) {
   assert(html.includes('data-eie-v2-student-save'), 'student edit panel should render a save action');
   assert(html.includes('eie-v2-edit-name'), 'student edit panel should render editable fields');
 
+  const addressIndex = html.indexOf('eie-v2-edit-address');
+  const vehicleIndex = html.indexOf('eie-v2-edit-vehicle');
+  const teacherIndex = html.indexOf('eie-v2-student-teacher-picker');
+  const extraIndex = html.indexOf('eie-v2-extra-fields');
+  const guardianIndex = html.indexOf('eie-v2-edit-guardian-relation');
+  assert(addressIndex >= 0 && addressIndex < extraIndex, 'address should stay visible before the extra info drawer');
+  assert(vehicleIndex >= 0 && vehicleIndex < extraIndex, 'vehicle should stay visible before the extra info drawer');
+  assert(teacherIndex >= 0 && teacherIndex < extraIndex, 'teacher picker should sit directly above the extra info drawer');
+  assert(guardianIndex > extraIndex, 'guardian relation should move into the extra info drawer');
+
   dispatchClosest({ selector: '[data-eie-v2-student-save]', node: {} });
   await Promise.resolve();
   await Promise.resolve();

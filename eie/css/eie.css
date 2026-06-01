@@ -2344,6 +2344,155 @@ body.eie-owner-dashboard-bg {
   cursor: default;
 }
 
+.eie-edit-day-tabs {
+  margin: 8px 0 12px;
+}
+
+.eie-edit-board-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--eie-border);
+  border-radius: 22px;
+  background: var(--eie-surface);
+  box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+}
+
+.eie-edit-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px repeat(var(--eie-edit-teacher-count), minmax(150px, 1fr));
+  grid-template-rows: 54px repeat(var(--eie-edit-row-count), minmax(92px, auto));
+  min-width: calc(72px + var(--eie-edit-teacher-count) * 150px);
+  isolation: isolate;
+}
+
+.eie-edit-corner,
+.eie-edit-teacher-header,
+.eie-edit-time-cell,
+.eie-edit-empty-slot {
+  border-right: 1px solid var(--eie-border);
+  border-bottom: 1px solid var(--eie-border);
+  background: var(--eie-surface);
+}
+
+.eie-edit-corner,
+.eie-edit-teacher-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  min-height: 54px;
+}
+
+.eie-edit-corner {
+  left: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-edit-teacher-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 9px;
+  background: var(--eie-surface-2);
+}
+
+.eie-edit-teacher-header strong {
+  min-width: 0;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eie-edit-teacher-header small {
+  color: var(--eie-muted);
+  font-size: 10.5px;
+}
+
+.eie-edit-time-cell {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 7px;
+  background: var(--eie-surface-2);
+}
+
+.eie-edit-time-cell strong {
+  font-size: 12px;
+}
+
+.eie-edit-time-cell small {
+  color: var(--eie-muted);
+  font-size: 9.5px;
+  line-height: 1.25;
+}
+
+.eie-edit-empty-slot {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--eie-surface) 86%, var(--eie-surface-2));
+  cursor: pointer;
+}
+
+.eie-edit-empty-slot .eie-empty-slot-label {
+  opacity: 0;
+  transition: opacity .14s ease;
+}
+
+.eie-edit-empty-slot:hover,
+.eie-edit-empty-slot.is-selected {
+  background: var(--eie-surface-2);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.16);
+}
+
+.eie-edit-empty-slot:hover .eie-empty-slot-label,
+.eie-edit-empty-slot.is-selected .eie-empty-slot-label {
+  opacity: 1;
+}
+
+.eie-edit-session-slot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding: 6px;
+}
+
+.eie-edit-session-card {
+  min-height: 72px;
+  border-radius: 16px;
+  background: #f8fbff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.eie-edit-session-card.is-selected {
+  border-color: rgba(15, 23, 42, 0.24);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+}
+
+.eie-edit-session-card .eie-cell-title {
+  font-size: 12.5px;
+  line-height: 1.25;
+}
+
+.eie-edit-session-card .eie-cell-teacher {
+  color: var(--eie-muted);
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
 .eie-transfer-area {
   position: sticky;
   top: 12px;
@@ -3636,12 +3785,18 @@ body.eie-owner-dashboard-bg {
 .eie-v2-student-form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 9px;
 }
 
 .eie-v2-student-form label {
     display: grid;
     gap: 5px;
+}
+
+.eie-v2-form-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
 }
 
 .eie-v2-student-form label span {
@@ -3668,6 +3823,52 @@ body.eie-owner-dashboard-bg {
 .eie-v2-student-form textarea {
     min-height: 86px;
     resize: vertical;
+}
+
+.eie-v2-student-teacher-picker {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-student-teacher-picker > span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-student-teacher-picker .eie-apms-teacher-options {
+    gap: 5px;
+}
+
+.eie-v2-student-teacher-picker .eie-apms-teacher-option {
+    border-radius: 7px;
+    font-size: 11.5px;
+    padding: 7px 8px;
+}
+
+.eie-v2-student-teacher-picker .eie-apms-teacher-option input {
+    width: 13px;
+    height: 13px;
+    margin-right: 5px;
+}
+
+.eie-v2-extra-fields {
+    border-top: 1px solid var(--eie-border);
+    padding-top: 8px;
+}
+
+.eie-v2-extra-fields summary {
+    color: var(--eie-text);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 900;
+    list-style-position: outside;
+}
+
+.eie-v2-extra-fields-body {
+    display: grid;
+    gap: 9px;
+    margin-top: 9px;
 }
 
 /* Round 2: EIE student management APMS parity */

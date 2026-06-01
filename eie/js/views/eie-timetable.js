@@ -17,6 +17,7 @@
         'status',
         'memo'
     ];
+    const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
 
     const editorState = {
         isEditMode: false,
@@ -29,7 +30,8 @@
         error: '',
         lastPayload: null,
         hasPreparedPayload: false,
-        invalidCreateField: ''
+        invalidCreateField: '',
+        selectedDay: ''
     };
 
     let eventsBound = false;
@@ -79,6 +81,7 @@
         return {
             ...(row || {}),
             id: cellId(row) || `temp_${Date.now()}_${fallbackIndex || 0}`,
+            day_label: row?.day_label || row?.day_of_week || row?.day || '',
             period_order: Number.isFinite(periodOrder) ? periodOrder : fallbackIndex || 0,
             column_index: Number.isFinite(columnIndex) ? columnIndex : fallbackIndex || 0,
             status: normalizeStatus(row?.status || 'active'),
@@ -254,6 +257,72 @@
         return [row?.start_time, row?.end_time].filter(Boolean).join('~') || '시간 미정';
     }
 
+    function normalizeDay(value) {
+        return String(value || '').trim();
+    }
+
+    function daySortValue(day) {
+        const index = DAY_ORDER.indexOf(day);
+        return index >= 0 ? index : 99;
+    }
+
+    function getAvailableDays(rows) {
+        const days = Array.from(new Set((rows || [])
+            .map(row => normalizeDay(row?.day_label || row?.day_of_week || row?.day || ''))
+            .filter(Boolean)));
+        return days.sort((a, b) => daySortValue(a) - daySortValue(b) || a.localeCompare(b, 'ko'));
+    }
+
+    function todayLabel() {
+        const day = new Date().getDay();
+        return ['일', '월', '화', '수', '목', '금', '토'][day] || '월';
+    }
+
+    function ensureSelectedDay(days) {
+        if (!days.length) return '';
+        if (editorState.selectedDay && days.includes(editorState.selectedDay)) return editorState.selectedDay;
+        const today = todayLabel();
+        editorState.selectedDay = days.includes(today) ? today : days[0];
+        return editorState.selectedDay;
+    }
+
+    function normalizeTime(value) {
+        const text = String(value || '').trim();
+        const match = text.match(/^(\d{1,2}):(\d{2})/);
+        if (!match) return '';
+        return `${match[1].padStart(2, '0')}:${match[2]}`;
+    }
+
+    function timeToMinutes(value) {
+        const text = normalizeTime(value);
+        if (!text) return null;
+        const [hour, minute] = text.split(':').map(Number);
+        if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+        return hour * 60 + minute;
+    }
+
+    function minutesToTime(value) {
+        const minutes = Number(value);
+        if (!Number.isFinite(minutes)) return '';
+        return `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+    }
+
+    function buildTimeBoundaries(rows) {
+        const values = [];
+        (rows || []).forEach(row => {
+            const start = timeToMinutes(row?.start_time);
+            const end = timeToMinutes(row?.end_time);
+            if (Number.isFinite(start)) values.push(start);
+            if (Number.isFinite(end)) values.push(end);
+        });
+        return Array.from(new Set(values)).sort((a, b) => a - b);
+    }
+
+    function rowIndexForMinute(boundaries, minute, fallback) {
+        const index = boundaries.indexOf(minute);
+        return index >= 0 ? index + 2 : fallback;
+    }
+
     function statusLabel(status) {
         const map = {
             active: '활성',
@@ -296,6 +365,7 @@
         const status = normalizeStatus(row.status);
         const classes = [
             'eie-excel-cell',
+            options.v2Style ? 'eie-edit-session-card' : '',
             `is-${status}`,
             isSelected ? 'is-selected' : '',
             isEditMode ? 'is-editable' : '',
@@ -307,13 +377,138 @@
             <article class="${classes}"
                      ${isEditMode ? `draggable="true" data-eie-cell-card="true" data-cell-id="${esc(id)}"` : ''}>
                 <div class="eie-cell-title">${esc(labelOfCell(row))}</div>
-                <div class="eie-cell-teacher">${esc(row.teacher_name_raw || '')}</div>
+                <div class="eie-cell-teacher">${esc(options.v2Style ? timeText(row) : (row.teacher_name_raw || ''))}</div>
                 <div class="eie-cell-editor-meta">
                     <span class="eie-status is-${status}">${esc(statusLabel(status))}</span>
                     ${isEditMode ? '<span class="eie-drag-hint">이동 가능</span>' : ''}
                 </div>
                 ${renderStudents(row, isEditMode)}
             </article>
+        `;
+    }
+
+    function renderEditDayTabs(days, selectedDay) {
+        if (!editorState.isEditMode || !days.length) return '';
+        return `
+            <div class="eie-v2-day-tabs eie-edit-day-tabs" role="tablist" aria-label="편집 요일 선택">
+                ${days.map(day => `
+                    <button type="button" class="eie-v2-day-tab ${day === selectedDay ? 'is-active' : ''}" data-eie-edit-day="${esc(day)}" role="tab" aria-selected="${day === selectedDay ? 'true' : 'false'}">
+                        ${esc(day)}
+                    </button>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function renderTimeCell(boundaries, row) {
+        const start = boundaries[row];
+        const end = boundaries[row + 1];
+        return `
+            <div class="eie-edit-time-cell" style="grid-column:1;grid-row:${row + 2};">
+                <strong>${esc(minutesToTime(start))}</strong>
+                <small>${esc(minutesToTime(start))}~${esc(minutesToTime(end))}</small>
+            </div>
+        `;
+    }
+
+    function renderEditSlotAttrs(slot) {
+        return `
+            data-eie-drop-slot="true"
+            data-period-key="${esc(slot.periodKey)}"
+            data-period-order="${esc(slot.periodOrder)}"
+            data-day-label="${esc(slot.dayLabel)}"
+            data-period-label="${esc(slot.periodLabel)}"
+            data-start-time="${esc(slot.startTime)}"
+            data-end-time="${esc(slot.endTime)}"
+            data-column-index="${esc(slot.columnIndex)}"
+            data-teacher-key="${esc(slot.teacherKey)}"
+            data-teacher-name="${esc(slot.teacherName)}"
+        `;
+    }
+
+    function renderTimeBasedEditGrid(rows, allRows) {
+        const days = getAvailableDays(allRows);
+        const selectedDay = ensureSelectedDay(days);
+        const visibleRows = rows.filter(row => normalizeDay(row.day_label || row.day_of_week || row.day) === selectedDay);
+        const dayRows = allRows.filter(row => normalizeDay(row.day_label || row.day_of_week || row.day) === selectedDay);
+        const teacherColumns = buildTeacherColumns(dayRows.length ? dayRows : allRows);
+        const boundaries = buildTimeBoundaries(dayRows);
+        if (!selectedDay || boundaries.length < 2 || !teacherColumns.length) return '';
+
+        const teacherIndex = new Map(teacherColumns.map((column, index) => [column.key, index]));
+        const rowCount = Math.max(1, boundaries.length - 1);
+        const emptySlots = [];
+        for (let row = 0; row < rowCount; row += 1) {
+            emptySlots.push(renderTimeCell(boundaries, row));
+            teacherColumns.forEach((column, index) => {
+                const startTime = minutesToTime(boundaries[row]);
+                const endTime = minutesToTime(boundaries[row + 1]);
+                const periodLabel = `${startTime}~${endTime}`;
+                const periodKeyValue = [selectedDay, periodLabel, startTime, endTime].join('|');
+                const isSelectedEmpty = editorState.selectedSlot?.periodKey === periodKeyValue && editorState.selectedSlot?.teacherKey === column.key;
+                const slot = {
+                    periodKey: periodKeyValue,
+                    periodOrder: row + 1,
+                    dayLabel: selectedDay,
+                    periodLabel,
+                    startTime,
+                    endTime,
+                    columnIndex: column.columnIndex ?? index,
+                    teacherKey: column.key,
+                    teacherName: column.label
+                };
+                emptySlots.push(`
+                    <div class="eie-edit-empty-slot ${isSelectedEmpty ? 'is-selected' : ''}"
+                         style="grid-column:${index + 2};grid-row:${row + 2};"
+                         ${renderEditSlotAttrs(slot)}>
+                        <span class="eie-empty-slot-label">빈 칸</span>
+                    </div>
+                `);
+            });
+        }
+
+        const cards = visibleRows.filter(row => !isHeld(row)).map(row => {
+            const start = timeToMinutes(row.start_time);
+            const end = timeToMinutes(row.end_time);
+            const rowStart = rowIndexForMinute(boundaries, start, 2);
+            const rowEnd = Math.max(rowStart + 1, rowIndexForMinute(boundaries, end, rowStart + 1));
+            const column = teacherColumns.find(item => item.key === teacherKey(row)) || teacherColumns[0];
+            const columnStart = (teacherIndex.get(column.key) || 0) + 2;
+            const slot = {
+                periodKey: periodKey(row),
+                periodOrder: row.period_order || rowStart - 1,
+                dayLabel: row.day_label || selectedDay,
+                periodLabel: row.period_label || timeText(row),
+                startTime: row.start_time || '',
+                endTime: row.end_time || '',
+                columnIndex: column.columnIndex ?? (columnStart - 2),
+                teacherKey: column.key,
+                teacherName: column.label
+            };
+            return `
+                <div class="eie-edit-session-slot has-cell"
+                     style="grid-column:${columnStart};grid-row:${rowStart} / ${rowEnd};"
+                     ${renderEditSlotAttrs(slot)}>
+                    ${renderCellCard(row, { isEditMode: true, v2Style: true })}
+                </div>
+            `;
+        }).join('');
+
+        return `
+            ${renderEditDayTabs(days, selectedDay)}
+            <div class="eie-edit-board-wrap" aria-label="시간표 편집 보드">
+                <div class="eie-edit-board" style="--eie-edit-teacher-count:${teacherColumns.length};--eie-edit-row-count:${rowCount};">
+                    <div class="eie-edit-corner" style="grid-column:1;grid-row:1;">시간</div>
+                    ${teacherColumns.map((column, index) => `
+                        <div class="eie-edit-teacher-header" style="grid-column:${index + 2};grid-row:1;">
+                            <strong>${esc(column.label)}</strong>
+                            <small>${column.count.toLocaleString('ko-KR')}개 수업</small>
+                        </div>
+                    `).join('')}
+                    ${emptySlots.join('')}
+                    ${cards}
+                </div>
+            </div>
         `;
     }
 
@@ -331,6 +526,10 @@
         const periodSource = editorState.isEditMode ? editorState.draftCells : rows;
         const visibleSource = editorState.isEditMode ? visibleDraftCells() : rows;
         if (!periodSource.length) return '<div class="eie-empty-box">등록된 EIE 시간표가 없습니다.</div>';
+        if (editorState.isEditMode) {
+            const timeGrid = renderTimeBasedEditGrid(visibleSource, periodSource);
+            if (timeGrid) return timeGrid;
+        }
         const groups = groupByPeriod(periodSource);
         const allRows = editorState.isEditMode ? editorState.draftCells : visibleSource;
         const teacherColumns = buildTeacherColumns(allRows);
@@ -647,6 +846,11 @@
             return;
         }
         const source = EieState.get().timetableCells.map(normalizeCell);
+        enterEditMode(source, '편집 모드입니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.');
+        rerender();
+    }
+
+    function enterEditMode(source, notice) {
         editorState.isEditMode = true;
         editorState.serverSnapshot = deepClone(source);
         editorState.draftCells = deepClone(source);
@@ -654,10 +858,9 @@
         editorState.selectedCellId = '';
         editorState.selectedSlot = null;
         editorState.error = '';
-        editorState.notice = '편집 모드입니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.';
+        editorState.notice = notice || '';
         editorState.lastPayload = null;
         editorState.hasPreparedPayload = false;
-        rerender();
     }
 
     function exitEditMode(force) {
@@ -676,7 +879,9 @@
         editorState.invalidCreateField = '';
         editorState.lastPayload = null;
         editorState.hasPreparedPayload = false;
-        rerender();
+        if (window.EieRouter && typeof window.EieRouter.open === 'function') {
+            window.EieRouter.open('timetable-v2');
+        }
     }
 
     function resetEditMode() {
@@ -1072,6 +1277,15 @@
         }
 
         if (!editorState.isEditMode) return;
+        const dayEl = event.target.closest?.('[data-eie-edit-day]');
+        if (dayEl) {
+            event.preventDefault();
+            editorState.selectedDay = dayEl.getAttribute('data-eie-edit-day') || '';
+            editorState.selectedCellId = '';
+            editorState.selectedSlot = null;
+            rerender();
+            return;
+        }
         if (event.target.closest('input, textarea, select, button')) return;
 
         const cellEl = event.target.closest?.('[data-eie-cell-card]');
@@ -1186,6 +1400,12 @@
                 } finally {
                     EieState.setTimetableBusy(false);
                 }
+                if (canEditOnThisViewport()) {
+                    enterEditMode(rows, 'v2 시간표에서 편집기로 들어왔습니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.');
+                    rows = editorState.draftCells;
+                } else {
+                    editorState.error = '시간표 편집은 PC에서 할 수 있어요.';
+                }
             }
 
             const showPanel = editorState.isEditMode || EieState.get().studentCandidatePanelMode === 'detail';
@@ -1197,7 +1417,7 @@
                             aria-label="EIE 홈으로 이동"
                             title="EIE 홈">← EIE 홈</button>
                     <div class="eie-panel">
-                        <h1 id="eie-timetable-title" class="eie-panel-title">EIE 시간표</h1>
+                        <h1 id="eie-timetable-title" class="eie-panel-title">시간표 편집</h1>
                         ${renderEditorToolbar(error)}
                         <div class="${showPanel ? 'eie-timetable-layout' : ''} ${editorState.isEditMode ? 'is-editing' : ''}">
                             <div class="eie-timetable-main">
