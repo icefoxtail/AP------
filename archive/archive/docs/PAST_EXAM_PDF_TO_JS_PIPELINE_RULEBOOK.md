@@ -27,6 +27,19 @@ past-exam PDF
 → reviewed promotion into archive/exams
 ```
 
+Content completeness gate:
+
+Before answer/solution work starts, the JS candidate must register 100% of the
+expected questions with stable numbering, usable problem text, source image
+references, and complete objective choices. If this gate fails, the file returns
+to content extraction; answer/solution agents must not proceed on that file.
+The gate is exam-scoped and order-sensitive: complete one exam JS file in
+`displayNo` order, verify continuity from full-page images, and only then move to
+answer/solution work. Crops are close-up evidence for hard-to-read questions;
+they are not the first source for deciding question order or whether a question
+exists. If a crop is missing but the full-page image exists, continue from the
+full-page image instead of marking the problem blocked.
+
 ## 3. Protected live archive
 
 These are protected during conversion pipeline work:
@@ -160,36 +173,104 @@ Forbidden:
 
 ## 10. Answer and solution policy
 
-Answer and solution candidates must be evidence-backed.
+Answer and solution work is forbidden until the content completeness gate has
+passed for the candidate file. The JS candidate must first register 100% of the
+expected questions with stable numbering, usable problem text, source image
+references, and complete objective choices. If any question is missing, any
+required `content` is placeholder/blank, or any objective choices are incomplete,
+the manager must return the file to content extraction instead of asking an
+answer/solution agent to solve it.
+This check is done in strict `displayNo` order for each exam. Full-page images
+are the primary source for page order and missing-question recovery; crops are
+used only after the full page has been checked and a close-up is needed.
+
+Answer and solution candidates must be produced by solving the extracted
+problem first, then cross-checked against official answer/solution evidence when
+such evidence exists. Direct solving is the default answer/solution stage, not a
+last-resort fallback. Guessing is still forbidden.
 
 Allowed:
 
-- use answer/solution PDFs when mapping is clear;
+- directly solve from verified `content`, `choices`, and source images after
+  extraction;
+- use answer/solution PDFs as cross-check evidence when mapping is clear;
 - generate `answerStatus` / `solutionStatus`;
-- create solution drafts only as `generated_pending`;
+- generate final `solution` text only after the answer has been evidence-verified
+  or directly solved and checked;
 - emit review reports.
 
 Forbidden:
 
 - guess answers;
-- auto-promote generated solution drafts into final `solution`;
+- promote an unverified draft into final `answer` or `solution`;
 - include `generated_pending` in a final answer/solution sheet;
-- use a weakly matched answer table as verified.
+- use a weakly matched answer table as verified;
+- stop only because an answer/solution source is missing.
+
+Required order:
+
+The pipeline must run as:
+
+```text
+extract problem
+-> register 100% of expected questions in JS
+-> pass content/choices completeness gate
+-> directly solve and write answer
+-> write solution from the solved answer
+-> cross-check official answer/solution sources when present
+-> fix confirmed errors or keep direct solution with conflict report
+-> final validation
+-> report
+```
+
+The first answer/solution checklist item is always the content gate: expected
+question count matches, every `displayNo` exists exactly once, content is usable,
+and objective choices are complete. Official answer mapping and direct solving
+start only after this passes.
+
+1. Map answer/solution from official answer or solution PDFs when available.
+2. If official answer evidence is missing, directly solve the problem from the
+   verified content, choices, full-page image, and question crop if needed.
+3. If the solution is missing, write the solution after reading and applying
+   `rules/해설프로토콜.md` and the 발문·보기 extraction protocol. The solution
+   must be student-facing only, begin with `[키포인트]`, use `\n` for line breaks
+   inside JS strings, and end consistently with the verified answer.
+4. If direct solving exposes a likely OCR/content error, do not silently edit
+   content during the answer/solution stage. Emit a conflict report and route
+   the item back to content review.
+5. If the answer or solution still cannot be determined, mark the item with an
+   unresolved status and report it. Do not leave a silent blank.
+
+The numbered list above is retained for older fallback reports, but new exam
+runs must treat official answer/solution sources as cross-check material after
+direct solving. When a cross-check conflicts with the direct solution, recalculate
+first. If the direct solution remains correct and the source appears wrong, keep
+the direct answer/solution and write `answer_solution_conflict_report.json`.
 
 Allowed answer statuses:
 
 - `existing_verified`
+- `direct_solved_verified`
+- `direct_solved_cross_checked`
+- `direct_solved_source_conflict_kept`
+- `direct_solved_low_confidence`
 - `generated_pending`
 - `reviewed_pass`
 - `reviewed_fail`
+- `answer_unresolved_after_direct_solve`
 - `missing_answer`
 
 Allowed solution statuses:
 
 - `existing_verified`
+- `direct_solution_verified`
+- `direct_solution_cross_checked`
+- `direct_solution_source_conflict_kept`
+- `direct_solution_pending_review`
 - `generated_pending`
 - `reviewed_pass`
 - `reviewed_fail`
+- `solution_unresolved_after_direct_solve`
 - `missing_solution`
 
 ## 11. Generated JS candidate fields
@@ -250,6 +331,10 @@ Every conversion run must create at least:
 - `missing_image_report.json`
 - `missing_answer_report.json`
 - `missing_solution_report.json`
+- `direct_solve_report.json`
+- `solution_generation_report.json`
+- `answer_solution_conflict_report.json`
+- `cross_validation_report.json`
 - `tag_low_confidence_report.json`
 - `duplicate_question_report.json`
 - `generated_files_manifest.json`
@@ -266,7 +351,38 @@ Generated JS candidates may be promoted into `archive/exams` only after:
 - manual review queues are either cleared or deliberately deferred;
 - `db.js` registration is prepared and checked separately.
 
-## 14. Engine policy
+## 14. Final review pipeline
+
+Past-exam candidates must pass the review gates in this order before promotion:
+
+```text
+1차 구조·무결성 검수
+-> 2차 수학·정오답 검수
+-> 3차 분류·메타·난이도 태그 검수
+-> 최종 무결성 검수
+-> promotion report
+```
+
+Rules:
+
+- 1차 review checks JS structure, required fields, missing content/choices/
+  answer/solution, image paths, string pollution, and render blockers.
+- 2차 review directly solves every question again. It must not trust `answer`,
+  `solution`, or an official answer sheet as the standard of truth.
+- For objective questions, zero correct candidates or multiple correct
+  candidates are FAIL only when the prompt does not explicitly allow multiple
+  answers. Prompts such as `모두 고르시오`, `옳은 것을 모두`, `정답 2개`,
+  `해당하는 것을 모두` allow multiple-answer review.
+- If multiple answers are allowed, `answer` must state all correct choices
+  clearly, for example `②, ⑤`, and `tags` should include `복수정답`.
+- 3차 review checks standardCourse, standardUnitKey/standardUnit, questionType,
+  tags, layoutTag/wide, and level. It must not redo the 2차 정오답 review.
+- 최종 무결성 검수 verifies structure, math consistency, rendering stability,
+  metadata consistency, and report completeness without unauthorized edits.
+- A candidate may be promoted only if each gate is PASS or a human explicitly
+  accepts documented WARN items. Any FAIL blocks promotion.
+
+## 15. Engine policy
 
 Do not modify engine rendering functions as part of this conversion pipeline.
 

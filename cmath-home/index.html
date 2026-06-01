@@ -51,7 +51,7 @@
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.7;
-    letter-spacing: -.02em; color: var(--fg-1); background: var(--bg);
+    letter-spacing: -.02em; color: var(--fg-1); background: #0f172a;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, p, ul { margin: 0; }
@@ -74,7 +74,7 @@
 
   .sec-head { max-width: 660px; margin-bottom: 44px; }
   @media (min-width: 768px) { .sec-head { margin-bottom: 60px; } }
-  .sec-head h2 { margin: 14px 0 0; color: var(--fg-1); font-size: clamp(26px, 4.4vw, 38px); line-height: 1.28; font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+  .sec-head h2 { margin: 14px 0 0; color: var(--fg-1); font-size: clamp(26px, 4.4vw, 38px); line-height: 1.28; font-weight: 800; letter-spacing: -.025em; }
   .sec-head p { margin: 18px 0 0; color: var(--fg-2); font-size: clamp(16px, 2.2vw, 18px); line-height: 1.7; word-break: keep-all; }
 
   /* ---------- BUTTONS ---------- */
@@ -129,7 +129,7 @@
   @media (min-width: 940px) { .hero { padding: 84px 0 108px; } }
   .hero-grid { display: grid; grid-template-columns: 1fr; gap: 44px; align-items: center; }
   @media (min-width: 940px) { .hero-grid { grid-template-columns: 1.08fr .92fr; gap: 60px; } }
-  .hero h1 { margin-top: 18px; color: var(--fg-1); font-size: clamp(32px, 5.4vw, 50px); line-height: 1.18; font-weight: 800; letter-spacing: -.03em; text-wrap: balance; }
+  .hero h1 { margin-top: 18px; color: var(--fg-1); font-size: clamp(32px, 5.4vw, 50px); line-height: 1.18; font-weight: 800; letter-spacing: -.03em; }
   .hero .lead { margin-top: 22px; color: var(--fg-2); font-size: clamp(16px, 2.2vw, 19px); line-height: 1.72; word-break: keep-all; }
   .hero .lead strong { color: var(--fg-1); font-weight: 700; }
   .hero .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
@@ -172,11 +172,12 @@
   .flow { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: stretch; }
   @media (min-width: 860px) { .flow { grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 8px; } }
   .flow-card { padding: 30px 28px; height: 100%; transition: all .25s var(--ease); }
-  .flow-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); }
-  .flow-card .step { font-size: 12.5px; font-weight: 700; color: var(--fg-3); letter-spacing: .04em; }
-  .flow-card h3 { margin-top: 8px; font-size: 20px; font-weight: 800; color: var(--fg-1); letter-spacing: -.02em; }
+  .flow-card:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); }
+  .flow-card .step { font-size: 12.5px; font-weight: 700; color: var(--fg-3); letter-spacing: .04em; transition: color .25s var(--ease); }
+  .flow-card h3 { margin-top: 8px; font-size: 20px; font-weight: 800; color: var(--fg-1); letter-spacing: -.02em; transition: color .25s var(--ease); }
   .flow-card p { margin-top: 10px; color: var(--fg-2); font-size: 14.5px; line-height: 1.68; word-break: keep-all; }
   .flow-card.is-current { border-color: var(--cm-main); background: var(--cm-soft); box-shadow: 0 0 0 1px var(--cm-main) inset; }
+  .flow-card.is-current .step { color: var(--cm-text); }
   .flow-card.is-current h3 { color: var(--cm-press); }
   .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--cm-main); }
   .flow-arrow .down { display: block; }
@@ -463,8 +464,7 @@
     .edu-quick-scroll {
       display: flex;
       gap: 8px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;;
       scrollbar-width: none;
       padding-bottom: 2px;
     }
@@ -509,8 +509,7 @@
       margin-left: -20px !important;
       margin-right: -20px !important;
       scroll-snap-type: x mandatory !important;
-      scroll-padding-left: 20px !important;
-      -webkit-overflow-scrolling: touch !important;
+      scroll-padding-left: 20px !important;;
       scrollbar-width: none !important;
     }
     .course-grid::-webkit-scrollbar,
@@ -588,33 +587,251 @@
     }
   }
 
+
+  /* ═══════════════════════════════════════════
+     ART DIRECTION LAYER — dark hero + philosophy
+     + dark footer + split inquiry + scroll reveal
+     ═══════════════════════════════════════════ */
+
+  /* NAV: transparent over dark hero */
+  .hdr { background: rgba(15,23,42,0) !important; border-bottom-color: transparent !important; transition: background .3s cubic-bezier(.16,1,.3,1), border-color .3s !important; }
+  .hdr.scrolled { background: rgba(255,255,255,.96) !important; border-bottom-color: var(--border) !important; }
+  .hdr:not(.scrolled) .navlink { color: rgba(255,255,255,.55) !important; }
+  .hdr:not(.scrolled) .navlink:hover { color: #fff !important; background: rgba(255,255,255,.1) !important; }
+  .hdr:not(.scrolled) .apmath-brand__text strong,
+  .hdr:not(.scrolled) .brand__text strong { color: #fff !important; }
+  .hdr:not(.scrolled) .apmath-brand__text em,
+  .hdr:not(.scrolled) .brand__text em { color: rgba(255,255,255,.38) !important; }
+  .hdr:not(.scrolled) .home-link,
+  .hdr:not(.scrolled) .btn-secondary { background: rgba(255,255,255,.12) !important; color: #fff !important; border-color: rgba(255,255,255,.22) !important; }
+  .hdr:not(.scrolled) .burger { color: #fff !important; }
+  .hdr:not(.scrolled) .nav .divider { background: rgba(255,255,255,.18) !important; }
+
+  /* HERO: dark with aurora + grain */
+  .hero { background: #0f172a !important; position: relative !important; overflow: hidden !important; }
+  .hero::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 65% 85% at 5% 95%, rgba(20,184,166,.24) 0%, transparent 55%),
+                radial-gradient(ellipse 45% 55% at 90% 8%,  rgba(183,20,27,.07) 0%, transparent 52%),
+                radial-gradient(ellipse 50% 60% at 98% 85%, rgba(20,184,166,.12) 0%, transparent 50%);
+    pointer-events: none; z-index: 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; opacity: .22;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero h1 { color: #fff !important; }
+  .hero .eyebrow { color: rgba(255,255,255,.38) !important; letter-spacing: .1em !important; font-size: 11px !important; font-weight: 800 !important; text-transform: uppercase !important; }
+  .hero .eyebrow::before { background: #14b8a6 !important; width: 6px !important; height: 6px !important; border-radius: 2px !important; }
+  .hero .lead { color: rgba(255,255,255,.5) !important; }
+  .hero .lead strong { color: rgba(255,255,255,.88) !important; }
+  .hero .btn-secondary { background: rgba(255,255,255,.1) !important; color: #fff !important; border-color: rgba(255,255,255,.22) !important; }
+  .hero .btn-secondary:hover { background: rgba(255,255,255,.18) !important; border-color: rgba(255,255,255,.38) !important; }
+  .hero-panel { background: rgba(255,255,255,.07) !important; border-color: rgba(255,255,255,.12) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; }
+  .hero-panel-title { color: rgba(255,255,255,.32) !important; }
+  .course-mini { background: rgba(255,255,255,.06) !important; border-color: rgba(255,255,255,.1) !important; }
+  .course-mini:hover { background: rgba(255,255,255,.1) !important; border-color: rgba(255,255,255,.2) !important; }
+  .course-mini b { color: rgba(255,255,255,.9) !important; }
+  .course-mini p { color: rgba(255,255,255,.42) !important; }
+  .hero-tag { background: rgba(255,255,255,.08) !important; border-color: rgba(255,255,255,.12) !important; }
+  .hero-tag b { color: rgba(255,255,255,.9) !important; }
+  .hero-tag .dot { background: rgba(255,255,255,.1) !important; color: rgba(255,255,255,.65) !important; }
+  .hero-visual { opacity: .65; }
+  .hero .cta-row .btn:not(.btn-secondary) { box-shadow: 0 6px 18px rgba(20,184,166,.32) !important; }
+
+  /* PHILOSOPHY section */
+  .philosophy-section { position: relative; overflow: hidden; background: #0c1526; padding: 104px 0 96px; text-align: center; }
+  .philosophy-section::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 96% 18%, rgba(20,184,166,.14) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 55% at 6%  82%, rgba(20,184,166,.1) 0%, transparent 52%);
+    pointer-events: none; }
+  .philosophy-section::after { content: ''; position: absolute; inset: 0; opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0v48' fill='none' stroke='%23fff' stroke-width='.5'/%3E%3C/svg%3E");
+    background-size: 48px 48px; pointer-events: none; }
+  .philosophy-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 28px; }
+  .philosophy-eyebrow { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 32px; }
+  .philosophy-eyebrow span { width: 6px; height: 6px; border-radius: 2px; display: inline-block; }
+  .philosophy-h { margin: 0; font-size: clamp(40px,6vw,76px); font-weight: 900; letter-spacing: -0.045em; line-height: 1.1; color: #fff; }
+  .philosophy-h .grad { background: linear-gradient(90deg, #14b8a6 0%, #5eead4 45%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .philosophy-rule { display: flex; gap: 6px; justify-content: center; margin: 40px auto; }
+  .philosophy-rule div { width: 40px; height: 2px; border-radius: 2px; }
+  .philosophy-body { margin: 0 auto; font-size: clamp(16px,2vw,19px); color: rgba(255,255,255,.42); line-height: 1.76; max-width: 560px; }
+  .philosophy-pills { display: flex; gap: 10px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
+  .philosophy-pill { padding: 9px 20px; border-radius: 99px; font-size: 13.5px; font-weight: 800; letter-spacing: -0.01em; }
+
+  /* FOOTER dark */
+  footer { background: #0c1220 !important; border-top-color: rgba(255,255,255,.06) !important; color: rgba(255,255,255,.45) !important; }
+  footer .ft { background: transparent !important; }
+  footer .ft p.tag { color: rgba(255,255,255,.32) !important; }
+  footer .ft h4 { color: rgba(255,255,255,.22) !important; }
+  footer .ft ul a { color: rgba(255,255,255,.48) !important; }
+  footer .ft ul a:hover { color: #fff !important; }
+  footer .ft-info { color: rgba(255,255,255,.25) !important; }
+  footer .ft-bottom { border-top-color: rgba(255,255,255,.08) !important; color: rgba(255,255,255,.2) !important; }
+  footer .apmath-brand__text strong, footer .brand__text strong { color: #fff !important; }
+  footer .apmath-brand__text em, footer .brand__text em { color: rgba(255,255,255,.32) !important; }
+  footer .ft-color-rule { display: flex; height: 1px; margin-bottom: 20px; }
+  footer .ft-color-rule div { flex: 1; }
+
+  /* INQUIRY: CSS split layout */
+  /* INQUIRY: full-width dark panel */
+  .inquiry { background: none !important; padding: 0 !important; border-top: none !important; }
+  .inquiry .wrap { max-width: 100% !important; padding: 0 !important; }
+  .inquiry .inq-grid { display: block !important; background: #0f172a !important; position: relative !important; overflow: hidden !important; padding: clamp(56px,8vw,96px) clamp(24px,6vw,80px) !important; }
+  .inquiry .inq-grid::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 0% 100%, rgba(20,184,166,.22) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 100% 10%, rgba(37,99,235,.1) 0%, transparent 50%); pointer-events: none; }
+  .inquiry .inq-grid > aside { display: none !important; }
+  .inquiry-fullw-head { position: relative; z-index: 1; max-width: 680px; margin-bottom: clamp(40px,5vw,64px); }
+  .inquiry-fullw-head .eyebrow { color: rgba(255,255,255,.32) !important; }
+  .inquiry-fullw-head .eyebrow::before { background: #14b8a6 !important; }
+  .inquiry-fullw-head h2 { color: #fff !important; font-size: clamp(26px,3.6vw,42px) !important; letter-spacing: -0.04em !important; word-break: keep-all !important; margin-top: 12px; }
+  .inquiry-fullw-head p { color: rgba(255,255,255,.42) !important; margin-top: 16px; }
+  .inquiry-info-strip { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.08); border-radius: var(--r-lg); overflow: hidden; }
+  .inquiry-info-strip .inq-cell { background: rgba(255,255,255,.04); padding: 28px 32px; display: flex; flex-direction: column; gap: 8px; transition: background .2s; }
+  .inquiry-info-strip .inq-cell:hover { background: rgba(255,255,255,.08); }
+  .inquiry-info-strip .inq-cell .k { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+  .inquiry-info-strip .inq-cell .v { font-size: clamp(14px,1.6vw,17px); font-weight: 700; color: rgba(255,255,255,.88); line-height: 1.45; word-break: keep-all; }
+  .inquiry-info-strip .inq-cell .sub { font-size: 13px; color: rgba(255,255,255,.35); margin-top: 2px; }
+  .inquiry-info-strip .inq-cell a.linkline { color: #5eead4 !important; font-size: 13px; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; font-weight: 700; }
+  .inquiry-info-strip .inq-cell a.linkline:hover { text-decoration: underline; }
+  @media (max-width: 768px) {
+    .inquiry .inq-grid { padding: 48px 22px !important; }
+    .inquiry-info-strip { grid-template-columns: 1fr !important; }
+  }
+
+  /* SCROLL REVEAL */
+  .sr-el { opacity: 0; transform: translateY(16px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+  .sr-el.visible { opacity: 1 !important; transform: none !important; }
+  .sr-el[data-d="1"] { transition-delay: .08s; }
+  .sr-el[data-d="2"] { transition-delay: .16s; }
+  .sr-el[data-d="3"] { transition-delay: .24s; }
+  @media (prefers-reduced-motion: reduce) { .sr-el { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+
+
+  /* === CMath roadmap content upgrade === */
+  .roadmap-section { background: linear-gradient(180deg, var(--white) 0%, var(--bg) 100%); }
+  .roadmap-head { max-width: 760px; }
+  .roadmap-head h2 { font-size: clamp(28px, 4.5vw, 44px); letter-spacing: -0.045em; }
+  .roadmap-head p { max-width: 720px; }
+  .roadmap-shell {
+    position: relative;
+    padding: clamp(18px, 3vw, 28px);
+    border-radius: var(--r-xl);
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(ellipse 60% 80% at 8% 8%, rgba(20,184,166,.13), transparent 54%),
+      radial-gradient(ellipse 55% 70% at 92% 18%, rgba(37,99,235,.08), transparent 56%),
+      var(--white);
+    box-shadow: var(--sh-lg);
+    overflow: hidden;
+  }
+  .roadmap-board-wrap { width: 100%; overflow-x: auto;; padding-bottom: 2px; scrollbar-width: none; }
+  .roadmap-board-wrap::-webkit-scrollbar { display: none; }
+  .roadmap-board {
+    position: relative;
+    min-width: 760px;
+    display: grid;
+    grid-template-columns: 76px 1fr 1fr 1fr;
+    grid-template-rows: 46px repeat(10, 48px);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: rgba(255,255,255,.82);
+  }
+  .roadmap-head-cell,
+  .roadmap-age,
+  .roadmap-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    color: var(--fg-2);
+  }
+  .roadmap-head-cell {
+    background: linear-gradient(180deg, #f7faf8, #edf5f1);
+    font-size: 14px;
+    font-weight: 850;
+    color: var(--fg-1);
+  }
+  .roadmap-head-cell.blank { color: var(--fg-3); }
+  .roadmap-age { background: rgba(250,248,243,.86); font-size: 14px; font-weight: 800; }
+  .roadmap-cell { background: rgba(255,255,255,.58); }
+  .roadmap-block {
+    z-index: 2;
+    margin: 5px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.72);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    box-shadow: 0 10px 24px -18px rgba(15,23,42,.38);
+    overflow: hidden;
+  }
+  .roadmap-block small { color: var(--fg-3); font-size: 11.5px; font-weight: 800; letter-spacing: -.01em; }
+  .block-ymath { background: linear-gradient(135deg, #fff7ed, #f5f3ff); }
+  .block-pre { background: rgba(250, 248, 243, .92); color: var(--fg-1); font-size: 13px; font-weight: 850; }
+  .block-prep { background: linear-gradient(135deg, #f6f2ea, #ffffff); color: var(--fg-1); font-size: 14px; }
+  .block-gifted { background: linear-gradient(135deg, #f8fafc, #ffffff); }
+  .block-nc { background: linear-gradient(135deg, #fff7ed, #ffffff); }
+  .block-ap { background: linear-gradient(135deg, #ecfeff, #ffffff); }
+  .block-root { background: linear-gradient(135deg, #eef2ff, #ffffff); flex-direction: row; gap: 10px; }
+  .course-logo { display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-weight: 950; letter-spacing: -.04em; white-space: nowrap; }
+  .logo-ymath { color: #5b21b6; text-shadow: 0 2px 0 rgba(251,191,36,.35); font-size: 21px; }
+  .logo-nc, .logo-ap { color: #1f2937; font-size: 20px; }
+  .logo-nc em { color: #f97316; font-style: normal; margin-left: 3px; }
+  .logo-ap em { color: #14b8a6; font-style: normal; margin-left: 3px; }
+  .logo-gifted { color: #111827; font-size: 20px; }
+  .logo-root { color: #3730a3; font-size: 22px; }
+  .roadmap-course-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+  .roadmap-course-card { position: relative; min-height: 250px; padding: 28px 24px; display: flex; flex-direction: column; overflow: hidden; transition: all .25s var(--ease); }
+  .roadmap-course-card:hover { transform: translateY(-4px); border-color: var(--cm-soft-2); box-shadow: var(--sh-lg); }
+  .roadmap-course-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--cm-main); }
+  .roadmap-course-card .age { width: max-content; padding: 5px 12px; border-radius: var(--r-pill); background: var(--cm-soft); color: var(--cm-text); font-size: 12.5px; font-weight: 850; }
+  .roadmap-course-card h3 { margin-top: 18px; min-height: 28px; display: flex; align-items: center; }
+  .roadmap-course-card p { margin-top: 14px; color: var(--fg-2); font-size: 14.5px; line-height: 1.68; word-break: keep-all; }
+  .roadmap-course-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 20px; }
+  .roadmap-course-card .tags span { display: inline-flex; align-items: center; height: 27px; padding: 0 10px; border-radius: var(--r-pill); background: var(--bg-beige); color: var(--fg-2); font-size: 12px; font-weight: 700; }
+  @media (max-width: 1080px) { .roadmap-course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 820px) {
+    .roadmap-shell { margin-left: -4px; margin-right: -4px; padding: 14px; border-radius: 20px; }
+    .roadmap-board { min-width: 720px; grid-template-columns: 70px repeat(3, 1fr); }
+    .roadmap-course-grid { display: flex; overflow-x: auto; overflow-y: visible; gap: 16px; padding: 2px 20px 18px; margin-left: -20px; margin-right: -20px; scroll-snap-type: x mandatory; scroll-padding-left: 20px;; scrollbar-width: none; }
+    .roadmap-course-grid::-webkit-scrollbar { display: none; }
+    .roadmap-course-card { flex: 0 0 84%; min-width: 276px; scroll-snap-align: start; }
+  }
+  @media (max-width: 420px) {
+    .roadmap-board { min-width: 680px; grid-template-rows: 44px repeat(10, 46px); }
+    .roadmap-course-card { flex-basis: 86%; min-width: 252px; }
+  }
 </style>
 </head>
 <body>
 <!-- SVG Sprite -->
 <svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="i-arrow-right" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></g></symbol>
-<symbol id="i-arrow-down" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="m5 12 7 7 7-7"></path></g></symbol>
-<symbol id="i-phone" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z"></path></g></symbol>
-<symbol id="i-map-pin" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path><circle cx="12" cy="10" r="3"></circle></g></symbol>
-<symbol id="i-calendar" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></g></symbol>
-<symbol id="i-check" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></g></symbol>
-<symbol id="i-plus" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="M5 12h14"></path></g></symbol>
-<symbol id="i-menu" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></g></symbol>
-<symbol id="i-close" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></g></symbol>
-<symbol id="i-puzzle" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.5 3.5a2.5 2.5 0 0 0-5 0c0 .4.1.78.27 1.11.2.4-.07.89-.51.89H7a2 2 0 0 0-2 2v3.26c0 .44.49.71.89.51A2.4 2.4 0 0 1 7 11a2.5 2.5 0 0 1 0 5c-.4 0-.78-.1-1.11-.27-.4-.2-.89.07-.89.51V20a2 2 0 0 0 2 2h3.26c.44 0 .71-.49.51-.89A2.4 2.4 0 0 1 12.5 20a2.5 2.5 0 0 1 5 0c0 .4-.1.78-.27 1.11-.2.4.07.89.51.89H21a1 1 0 0 0 1-1v-3.5"></path><path d="M20 14a2.5 2.5 0 0 0 0-5c-.4 0-.78.1-1.11.27-.4.2-.89-.07-.89-.51V6a2 2 0 0 0-2-2h-1.5"></path></g></symbol>
-<symbol id="i-bulb" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 18h6M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path></g></symbol>
-<symbol id="i-target" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.4"></circle></g></symbol>
-<symbol id="i-compass" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"></path></g></symbol>
-<symbol id="i-shapes" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8.3 10 4 16.5h8.6L8.3 10Z"></path><circle cx="17.5" cy="17.5" r="3.5"></circle><rect height="7" rx="1.5" width="7" x="3" y="3"></rect></g></symbol>
-<symbol id="i-message" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></g></symbol>
-<symbol id="i-info" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></g></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></g></symbol>
+<symbol id="i-arrow-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="m5 12 7 7 7-7"></path></g></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z"></path></g></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path><circle cx="12" cy="10" r="3"></circle></g></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></g></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></g></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="M5 12h14"></path></g></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></g></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></g></symbol>
+<symbol id="i-puzzle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.5 3.5a2.5 2.5 0 0 0-5 0c0 .4.1.78.27 1.11.2.4-.07.89-.51.89H7a2 2 0 0 0-2 2v3.26c0 .44.49.71.89.51A2.4 2.4 0 0 1 7 11a2.5 2.5 0 0 1 0 5c-.4 0-.78-.1-1.11-.27-.4-.2-.89.07-.89.51V20a2 2 0 0 0 2 2h3.26c.44 0 .71-.49.51-.89A2.4 2.4 0 0 1 12.5 20a2.5 2.5 0 0 1 5 0c0 .4-.1.78-.27 1.11-.2.4.07.89.51.89H21a1 1 0 0 0 1-1v-3.5"></path><path d="M20 14a2.5 2.5 0 0 0 0-5c-.4 0-.78.1-1.11.27-.4.2-.89-.07-.89-.51V6a2 2 0 0 0-2-2h-1.5"></path></g></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 18h6M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path></g></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.4"></circle></g></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"></path></g></symbol>
+<symbol id="i-shapes" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8.3 10 4 16.5h8.6L8.3 10Z"></path><circle cx="17.5" cy="17.5" r="3.5"></circle><rect height="7" rx="1.5" width="7" x="3" y="3"></rect></g></symbol>
+<symbol id="i-message" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></g></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></g></symbol>
 </svg>
 <!-- HEADER -->
 <header class="hdr" id="hdr">
 <div class="wrap hdr-in">
 <a aria-label="시매쓰 홈" class="brand" href="#top">
-<svg aria-hidden="true" class="brand__mark" focusable="false" height="40" viewbox="0 0 48 48" width="40">
+<svg aria-hidden="true" class="brand__mark" height="40" viewBox="0 0 48 48" width="40">
 <rect fill="#e2e8f0" height="16" rx="3.5" width="11" x="4" y="26"></rect>
 <rect fill="#cbd5e1" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
 <rect fill="#14b8a6" height="36" rx="3.5" width="11" x="33" y="6"></rect>
@@ -648,19 +865,19 @@
 
 </div>
 </header>
-<main id="top">
+<main id="top" style="background: var(--bg);">
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero--dark">
 <div class="wrap hero-grid">
 <div>
-<span class="eyebrow">시매쓰 · 초등 사고력 수학</span>
-<h1>생각하는 힘을 기르는<br/>시매쓰</h1>
-<p class="lead">시매쓰는 생각하는 수학을 지향합니다. 게임과 교구 활동을 통해 아이가 원리와 개념을 스스로 찾아가고, <strong>수학적 사고력과 창의적 문제해결력</strong>으로 연결되도록 돕습니다.</p>
+<span class="eyebrow">시매쓰 · 사고력수학 로드맵</span>
+<h1>사고력의 시작부터<br>중등 확장까지</h1>
+<p class="lead">시매쓰는 6세부터 초등, 중등까지 이어지는 사고력수학 과정을 운영합니다. <strong>활동·탐구·체험 중심 수업</strong>으로 아이가 원리를 스스로 발견하고 문제해결력으로 연결하도록 돕습니다.</p>
 
 </div>
 <aside aria-label="시매쓰 학습 키워드" class="hero-panel">
 <div aria-hidden="true" class="hero-visual">
-<svg fill="none" height="150" role="presentation" viewbox="0 0 220 150" width="220">
+<svg fill="none" height="150" role="presentation" viewBox="0 0 220 150" width="220">
 <rect fill="#ffffff" height="110" rx="18" stroke="#cdf6ea" width="192" x="14" y="20"></rect>
 <rect fill="#cdf6ea" height="34" rx="8" width="34" x="34" y="78"></rect>
 <circle cx="110" cy="60" fill="#14b8a6" r="20"></circle>
@@ -690,11 +907,34 @@
 </div>
 </section>
 <!-- DIRECTION -->
+
+<!-- Philosophy Section -->
+<section class="philosophy-section" aria-label="교육 철학">
+  <div class="philosophy-inner">
+    <div class="philosophy-eyebrow" aria-hidden="true">
+      <span style="background:#2563eb;"></span>
+      <span style="background:#b7141b;"></span>
+      <span style="background:#14b8a6;"></span>
+    </div>
+    <h2 class="philosophy-h sr-el">정답보다<br><em class="grad">생각하는 과정이 먼저.</em></h2>
+    <div class="philosophy-rule" aria-hidden="true">
+      <div style="background:#2563eb;"></div>
+      <div style="background:#b7141b;"></div>
+      <div style="background:#14b8a6;"></div>
+    </div>
+    <p class="philosophy-body sr-el" data-d="1">시매쓰가 지향하는 것은 빠른 연산이 아닙니다. 게임과 활동 속에서 아이 스스로 원리를 찾아가게 합니다. 그 과정이 수학적 사고력이 됩니다.</p>
+    <div class="philosophy-pills">
+      <div class="philosophy-pill" style="border:1.5px solid rgba(20,184,166,.35);background:rgba(20,184,166,.12);color:#5eead4;">사고력 중심</div>
+      <div class="philosophy-pill" style="border:1.5px solid rgba(183,20,27,.35);background:rgba(183,20,27,.12);color:#fca5a5;">활동 수학</div>
+      <div class="philosophy-pill" style="border:1.5px solid rgba(37,99,235,.35);background:rgba(37,99,235,.12);color:#93c5fd;">원리 탐구</div>
+    </div>
+  </div>
+</section>
 <section class="sec direction" id="direction">
 <div class="wrap">
 <div class="sec-head">
 <span class="eyebrow">교육 방향</span>
-<h2>원리와 개념을<br/>스스로 찾아가는 수학</h2>
+<h2>원리와 개념을<br>스스로 찾아가는 수학</h2>
 <p>초등 시기의 수학은 정답을 빨리 찾는 것보다, 생각하는 과정이 먼저입니다. 시매쓰는 교구, 게임, 활동을 통해 아이가 직접 관찰하고 비교하며 수학 개념에 접근하도록 돕습니다.</p>
 </div>
 <p class="edu-swipe-hint">옆으로 밀어 보기</p>
@@ -718,43 +958,101 @@
 </div>
 </section>
 <!-- PROGRAM -->
-<section class="sec" id="program">
+<section class="sec roadmap-section" id="program">
 <div class="wrap">
-<div class="sec-head">
-<span class="eyebrow">과정 안내</span>
-<h2>연령과 학년에 맞춘<br/>사고력 수학 과정</h2>
-<p>아이의 발달 단계와 학년에 맞춰 사고력, 개념 이해, 문제해결력을 단계적으로 확장합니다.</p>
+<div class="sec-head roadmap-head">
+<span class="eyebrow">사고력수학 로드맵</span>
+<h2>대한민국 최초로 사고력수학을 도입한<br>시매쓰 로드맵</h2>
+<p>국내 최초의 사고력수학 콘텐츠를 바탕으로 유아부터 초등, 중등까지 아이의 단계에 맞는 사고력 과정을 이어갑니다.</p>
 </div>
-<div class="course-grid">
-<article class="card course-card">
-<span class="age">6~7세</span>
-<h3>위니매쓰</h3>
-<p>수학을 처음 만나는 시기에 수 감각, 도형 감각, 규칙 찾기를 활동 중심으로 경험합니다.</p>
-<div class="tags"><span>수 감각</span><span>도형</span><span>규칙</span></div>
+<div class="roadmap-shell sr-el">
+<div class="roadmap-board-wrap" aria-label="시매쓰 사고력수학 로드맵 표">
+<div class="roadmap-board">
+<div class="roadmap-head-cell blank" style="grid-column:1;grid-row:1;">연령</div>
+<div class="roadmap-head-cell" style="grid-column:2 / span 2;grid-row:1;">영재과정</div>
+<div class="roadmap-head-cell" style="grid-column:4;grid-row:1;">사고력 과정</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:2;">6세</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:3;">7세</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:4;">초1</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:5;">초2</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:6;">초3</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:7;">초4</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:8;">초5</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:9;">초6</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:10;">예비중등</div>
+<div class="roadmap-age" style="grid-column:1;grid-row:11;">중등</div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:2;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:2;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:2;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:3;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:3;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:3;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:4;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:4;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:4;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:5;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:5;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:5;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:6;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:6;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:6;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:7;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:7;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:7;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:8;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:8;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:8;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:9;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:9;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:9;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:10;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:10;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:10;"></div>
+<div class="roadmap-cell" style="grid-column:2;grid-row:11;"></div>
+<div class="roadmap-cell" style="grid-column:3;grid-row:11;"></div>
+<div class="roadmap-cell" style="grid-column:4;grid-row:11;"></div>
+<div class="roadmap-block block-ymath" style="grid-column:4;grid-row:2 / span 2;"><span class="course-logo logo-ymath">와이매쓰</span><small>6~7세</small></div>
+<div class="roadmap-block block-pre" style="grid-column:2;grid-row:3;"><b>7세영재반</b></div>
+<div class="roadmap-block block-pre" style="grid-column:3;grid-row:3;"><b>수/즐/기 예비초1</b></div>
+<div class="roadmap-block block-prep" style="grid-column:2;grid-row:5 / span 3;"><b>영재교육원<br>대비반</b></div>
+<div class="roadmap-block block-gifted" style="grid-column:3;grid-row:4 / span 6;"><span class="course-logo logo-gifted">뉴기프티드</span><small>초1~초6</small></div>
+<div class="roadmap-block block-nc" style="grid-column:4;grid-row:4 / span 3;"><span class="course-logo logo-nc">사고력수학 <em>NC</em></span><small>초1~초3</small></div>
+<div class="roadmap-block block-ap" style="grid-column:4;grid-row:7 / span 3;"><span class="course-logo logo-ap">사고력수학 <em>AP</em></span><small>초4~초6</small></div>
+<div class="roadmap-block block-root" style="grid-column:3 / span 2;grid-row:11;"><span class="course-logo logo-root">루트원</span><small>중등</small></div>
+</div>
+</div>
+</div>
+<p class="edu-swipe-hint">옆으로 밀어 보기</p>
+<div class="roadmap-course-grid">
+<article class="card roadmap-course-card sr-el" data-d="1">
+<span class="age">6세~7세 과정</span>
+<h3><span class="course-logo logo-ymath">와이매쓰</span></h3>
+<p>능동적인 탐구와 체험 중심 활동으로 수 감각, 도형 감각, 규칙 찾기를 자연스럽게 경험하는 유아수학 과정입니다.</p>
+<div class="tags"><span>탐구</span><span>체험</span><span>유아수학</span></div>
 </article>
-<article class="card course-card">
-<span class="age">초1~초3</span>
-<h3>사고력수학 NC</h3>
-<p>초등 저학년이 수학 개념을 직접 이해하고, 문장제와 사고력 문제로 생각의 폭을 넓히는 과정입니다.</p>
-<div class="tags"><span>개념 이해</span><span>문장제</span><span>사고력</span></div>
+<article class="card roadmap-course-card sr-el" data-d="2">
+<span class="age">초1~초3 과정</span>
+<h3><span class="course-logo logo-nc">사고력수학 <em>NC</em></span></h3>
+<p>수학 전문 교구를 활용한 다양한 활동수업으로 저학년 아이들이 개념을 직접 만지고 설명하며 사고력을 넓힙니다.</p>
+<div class="tags"><span>교구 활동</span><span>개념 이해</span><span>저학년</span></div>
 </article>
-<article class="card course-card">
-<span class="age">초4~초6</span>
-<h3>사고력수학 AP</h3>
-<p>초등 고학년이 복잡한 조건을 읽고 관계를 찾으며, 중등 수학으로 이어질 문제해결력을 기르는 과정입니다.</p>
-<div class="tags"><span>고학년 사고력</span><span>문제해결</span><span>중등 준비</span></div>
+<article class="card roadmap-course-card sr-el" data-d="3">
+<span class="age">초4~초6 과정</span>
+<h3><span class="course-logo logo-ap">사고력수학 <em>AP</em></span></h3>
+<p>사고력의 확장과 심화, 조건 분석, 문제해결력 강화를 통해 중등 수학으로 이어질 힘을 기르는 고학년 과정입니다.</p>
+<div class="tags"><span>확장·심화</span><span>문제해결</span><span>중등 준비</span></div>
 </article>
-<article class="card course-card">
-<span class="age">초1~초6</span>
-<h3>기프티드</h3>
-<p>수학적 사고력과 창의적 문제해결력을 더 깊게 확장하고 싶은 학생을 위한 심화 사고력 과정입니다.</p>
-<div class="tags"><span>심화 사고</span><span>창의적 해결</span><span>도전 문제</span></div>
+<article class="card roadmap-course-card sr-el" data-d="1">
+<span class="age">초1~초6 과정</span>
+<h3><span class="course-logo logo-gifted">뉴기프티드</span></h3>
+<p>수학 영재성 발현을 통해 최상위권 사고와 창의적 문제해결력을 더 깊게 키우는 심화 영재 과정입니다.</p>
+<div class="tags"><span>영재성</span><span>심화 사고</span><span>창의 해결</span></div>
 </article>
-<article class="card course-card">
-<span class="age">중등</span>
-<h3>루트원</h3>
-<p>초등 사고력 수학에서 이어지는 중등 과정으로, 개념 이해와 문제 해결 흐름을 더 깊게 확장합니다.</p>
-<div class="tags"><span>중등 연계</span><span>개념 확장</span><span>사고력</span></div>
+<article class="card roadmap-course-card sr-el" data-d="2">
+<span class="age">중등 과정</span>
+<h3><span class="course-logo logo-root">루트원</span></h3>
+<p>내신부터 경시, 특목 준비까지 중·고등 수학의 문제해결력을 키우는 중등 사고력수학 과정입니다.</p>
+<div class="tags"><span>중등 사고력</span><span>내신</span><span>경시·특목</span></div>
 </article>
 </div>
 </div>
@@ -764,7 +1062,7 @@
 <div class="wrap">
 <div class="sec-head">
 <span class="eyebrow">왕지교육 연계</span>
-<h2>초등 사고력에서<br/>중·고등 수학까지 이어지는 흐름</h2>
+<h2>초등 사고력에서<br>중·고등 수학까지 이어지는 흐름</h2>
 <p>왕지교육은 초등 시기의 사고력 수학부터 중·고등 수학까지 이어지는 학습 흐름을 길게 봅니다. 시매쓰에서 길러진 생각하는 힘은 이후 수학 개념 이해와 문제 해결력의 바탕이 됩니다.</p>
 </div>
 <div class="flow">
@@ -779,8 +1077,8 @@
 </div>
 <article class="card flow-card">
 <div class="step">STEP 02</div>
-<h3>중등 수학</h3>
-<p>개념과 문제 해결 과정을 체계적으로 정리합니다.</p>
+<h3>루트원</h3>
+<p>중등 사고력수학으로 내신, 경시, 특목 대비의 문제해결력을 확장합니다.</p>
 </article>
 <div aria-hidden="true" class="flow-arrow">
 <svg class="ic down" height="24" width="24"><use href="#i-arrow-down"></use></svg>
@@ -792,7 +1090,7 @@
 <p>내신과 심화, 수능 흐름까지 이어지는 수학 관리를 진행합니다.</p>
 </article>
 </div>
-<p class="flow-note"><span class="ico"><svg class="ic" height="20" width="20"><use href="#i-info"></use></svg></span>초등에서 쌓은 사고력은 중·고등 수학의 든든한 바탕이 됩니다.</p>
+<p class="flow-note"><span class="ico"><svg class="ic" height="20" width="20"><use href="#i-info"></use></svg></span>시매쓰에서 쌓은 사고력은 루트원과 AP MATH로 이어지는 중·고등 수학의 든든한 바탕이 됩니다.</p>
 </div>
 </section>
 <!-- CLASS MANAGEMENT -->
@@ -800,7 +1098,7 @@
 <div class="wrap">
 <div class="sec-head">
 <span class="eyebrow">수업 관리</span>
-<h2>아이의 생각 과정을<br/>함께 봅니다</h2>
+<h2>아이의 생각 과정을<br>함께 봅니다</h2>
 <p>같은 답을 써도 생각한 과정은 다를 수 있습니다. 시매쓰는 아이가 어떻게 생각하고 설명하는지 살피며, 학부모 상담에서도 필요한 내용을 알기 쉽게 안내합니다.</p>
 </div>
 <div class="grid-4">
@@ -815,31 +1113,33 @@
 <section class="sec inquiry" id="inquiry">
 <div class="wrap inq-grid">
 <div>
-<div class="sec-head" style="margin-bottom:0">
-<span class="eyebrow">상담 문의</span>
-<h2>우리 아이에게 맞는<br/>사고력 수학 과정이 궁금하다면</h2>
-<p>학년, 현재 수학 수준, 어려워하는 부분을 알려주시면 아이에게 맞는 시매쓰 과정으로 상담을 도와드립니다.</p>
+<div class="inquiry-fullw-head">
+  <span class="eyebrow">상담 문의</span>
+  <h2>우리 아이에게 맞는<br>사고력 수학 과정이 궁금하다면</h2>
+  <p>학년, 현재 수학 수준, 어려워하는 부분을 알려주시면 아이에게 맞는 시매쓰 과정으로 상담을 도와드립니다.</p>
 </div>
-<div class="info-list">
-<div class="info-row"><span class="ico"><svg class="ic" height="22" width="22"><use href="#i-phone"></use></svg></span><div><div class="k">시매쓰 상담</div><div class="v tel">061-727-2323</div></div></div>
-<div class="info-row"><span class="ico"><svg class="ic" height="22" width="22"><use href="#i-map-pin"></use></svg></span><div><div class="k">위치</div><div class="v">전남 순천시 왕지5길 9-8, 2층</div></div></div>
-<div class="info-row"><span class="ico"><svg class="ic" height="22" width="22"><use href="#i-calendar"></use></svg></span><div><div class="k">방문 안내</div><div class="v">방문 전 예약 후 오시면 더 정확한 상담이 가능합니다.</div></div></div>
-<div aria-label="왕지교육 캠퍼스 위치 안내" class="map-link-card">
-<a aria-label="네이버 지도에서 왕지교육 캠퍼스 보기" class="map-link-visual" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank">
-<span class="map-pin"><svg class="ic" height="24" width="24"><use href="#i-map-pin"></use></svg></span>
-</a>
-<div class="map-link-body">
-<p class="map-title">왕지교육 캠퍼스</p>
-<p class="map-address">전남 순천시 왕지5길 9-8, 2층</p>
+<div class="inquiry-info-strip">
+  <div class="inq-cell">
+    <span class="k">시매쓰 상담</span>
+    <span class="v">061-727-2323</span>
+    <span class="sub">전화 상담 문의</span>
+    <a class="linkline" href="tel:061-727-2323">전화 연결 →</a>
+  </div>
+  <div class="inq-cell">
+    <span class="k">위치</span>
+    <span class="v">전남 순천시 왕지5길 9-8, 2층</span>
+    <span class="sub">왕지동 · 순천 조례 캠퍼스</span>
+    <a class="linkline" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank">네이버 지도 →</a>
+  </div>
+  <div class="inq-cell">
+    <span class="k">방문 안내</span>
+    <span class="v">방문 전 예약을 권장합니다</span>
+    <span class="sub">더 정확한 상담이 가능합니다</span>
+    <a class="linkline" href="https://blog.naver.com/wha6615" rel="noopener" target="_blank">블로그 보기 →</a>
+  </div>
 </div>
-
-</div> </div>
 </div>
-<aside class="inq-card">
-<h3>상담 문의</h3>
-<p>전화로 편하게 문의해 주세요. 아이의 학년과 현재 상황을 함께 확인하고, 맞는 과정을 안내해 드립니다.</p>
-
-</aside>
+<aside></aside>
 </div>
 </section>
 <!-- FAQ -->
@@ -876,7 +1176,7 @@
 <div class="ft-grid">
 <div>
 <a aria-label="시매쓰 홈" class="brand" href="#top">
-<svg aria-hidden="true" class="brand__mark" focusable="false" height="34" viewbox="0 0 48 48" width="34">
+<svg aria-hidden="true" class="brand__mark" height="34" viewBox="0 0 48 48" width="34">
 <rect fill="#e2e8f0" height="16" rx="3.5" width="11" x="4" y="26"></rect>
 <rect fill="#cbd5e1" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
 <rect fill="#14b8a6" height="36" rx="3.5" width="11" x="33" y="6"></rect>
@@ -903,6 +1203,7 @@
 </ul>
 </div>
 </div>
+<div class="ft-color-rule"><div style="background:rgba(37,99,235,.35)"></div><div style="background:rgba(183,20,27,.35)"></div><div style="background:rgba(20,184,166,.35)"></div></div>
 <div class="ft-bottom">
 <span>© 2026 Wangji Edu. 왕지교육 · 순천 조례 캠퍼스</span>
 <span>전남 순천시 왕지5길 9-8 (왕지동) 2층 · TEL 061-727-2323</span>
@@ -1024,6 +1325,297 @@
     }
   })();
 
+</script>
+
+<script>
+(function(){
+  // Scroll reveal
+  var srEls = document.querySelectorAll('.sr-el');
+  var srObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); srObs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
+  srEls.forEach(function(el){ srObs.observe(el); });
+
+  // Add sr-el to section heads
+  document.querySelectorAll('.sec-head h2, .sec-head p').forEach(function(el, i){
+    el.classList.add('sr-el');
+    el.dataset.d = i % 2 === 1 ? '1' : '';
+    srObs.observe(el);
+  });
+
+  // Mascot hover pulse on hero logo bars
+  var brandMark = document.querySelector('.apmath-brand__mark, .brand__mark');
+  if (brandMark) {
+    brandMark.style.transition = 'transform .3s cubic-bezier(.16,1,.3,1), filter .3s';
+    brandMark.style.cursor = 'pointer';
+    brandMark.addEventListener('mouseenter', function(){
+      this.style.transform = 'scale(1.12) translateY(-2px)';
+      this.style.filter = 'drop-shadow(0 8px 16px rgba(0,0,0,.25))';
+    });
+    brandMark.addEventListener('mouseleave', function(){
+      this.style.transform = '';
+      this.style.filter = 'drop-shadow(0 2px 4px rgba(15,23,42,.07))';
+    });
+    // Pulse animation every 6s
+    var bars = brandMark.querySelectorAll('rect');
+    if (bars.length) {
+      setInterval(function(){
+        bars.forEach(function(bar, i){
+          setTimeout(function(){
+            var origY = bar.getAttribute('y');
+            var origH = bar.getAttribute('height');
+            bar.style.transition = 'transform .4s cubic-bezier(.16,1,.3,1)';
+            bar.style.transform = 'translateY(-5px)';
+            setTimeout(function(){ bar.style.transform = ''; }, 400);
+          }, i * 120);
+        });
+      }, 6000);
+    }
+  }
+})();
+</script>
+
+<style id="disney-layer">
+/* ── FLOAT animation for hero panel ────────── */
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0px) rotate(-.4deg); }
+  50%      { transform: translateY(-10px) rotate(.4deg); }
+}
+@keyframes auroraShift {
+  0%,100% { opacity: .85; transform: scale(1) translate(0,0); }
+  50%      { opacity: 1;   transform: scale(1.06) translate(-1%,1%); }
+}
+@keyframes pulseCta {
+  0%   { box-shadow: 0 0 0 0 rgba(var(--cta-rgb),.45); }
+  70%  { box-shadow: 0 0 0 12px rgba(var(--cta-rgb),0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--cta-rgb),0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes barFloat {
+  0%,100% { transform: translateY(0) scaleY(1); }
+  33%      { transform: translateY(-6px) scaleY(1.04); }
+  66%      { transform: translateY(3px) scaleY(.98); }
+}
+
+/* Hero panel float */
+.hero-panel, .hero aside { animation: heroFloat 5s ease-in-out infinite; }
+
+/* Aurora animation */
+.hero::before { animation: auroraShift 8s ease-in-out infinite; }
+
+/* CTA pulse — AP=blue, EIE=red, CMath=teal */
+[data-brand-color="ap"]   { --cta-rgb: 37,99,235; }
+[data-brand-color="eie"]  { --cta-rgb: 183,20,27; }
+[data-brand-color="cm"]   { --cta-rgb: 20,184,166; }
+
+.btn-blue, .btn-red, .btn-teal { animation: pulseCta 2.8s ease-out infinite; }
+.btn-blue  { --cta-rgb: 37,99,235; }
+.btn-red   { --cta-rgb: 183,20,27; }
+.btn-teal  { --cta-rgb: 20,184,166; }
+
+/* Stagger for section cards */
+.course-grid   > *:nth-child(1), .strength-grid > *:nth-child(1),
+.method-grid   > *:nth-child(1), .grid-3        > *:nth-child(1),
+.grid-4        > *:nth-child(1) { --sd: 0s; }
+.course-grid   > *:nth-child(2), .strength-grid > *:nth-child(2),
+.method-grid   > *:nth-child(2), .grid-3        > *:nth-child(2),
+.grid-4        > *:nth-child(2) { --sd: .07s; }
+.course-grid   > *:nth-child(3), .strength-grid > *:nth-child(3),
+.method-grid   > *:nth-child(3), .grid-3        > *:nth-child(3),
+.grid-4        > *:nth-child(3) { --sd: .14s; }
+.course-grid   > *:nth-child(4), .strength-grid > *:nth-child(4),
+.method-grid   > *:nth-child(4), .grid-4        > *:nth-child(4) { --sd: .21s; }
+
+.sr-el { transition-delay: var(--sd, 0s) !important; }
+
+/* Gradient shimmer on philosophy headline */
+.philosophy-h .grad {
+  background-size: 200% auto !important;
+  animation: shimmer 4s linear infinite !important;
+}
+
+/* Card 3D tilt — JS adds perspective via style, this handles the transition */
+.card, .course-card, .dir-card, .step-card, .strength-card, .method-card,
+.feat-card, .flow-card, .point-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Mascot bar stagger float */
+.hero-panel rect, .hero aside rect {
+  animation: barFloat 3.5s ease-in-out infinite;
+}
+.hero-panel rect:nth-child(1), .hero aside rect:nth-child(1) { animation-delay: 0s; }
+.hero-panel rect:nth-child(2), .hero aside rect:nth-child(2) { animation-delay: .4s; }
+.hero-panel rect:nth-child(3), .hero aside rect:nth-child(3) { animation-delay: .8s; }
+
+/* Hover lift upgrade */
+.card:hover, .course-card:hover, .dir-card:hover, .step-card:hover,
+.strength-card:hover, .method-card:hover, .flow-card:hover, .point-card:hover {
+  transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s cubic-bezier(.16,1,.3,1) !important;
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  *, .hero-panel, .hero-panel rect, .hero::before,
+  .btn-blue, .btn-red, .btn-teal, .philosophy-h .grad {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+
+<script id="disney-js">
+(function() {
+  /* ── 1. 3D card tilt on mousemove ─────────────────── */
+  function initTilt() {
+    const CARDS = '.card, .course-card, .dir-card, .step-card, .strength-card, .method-card, .feat-card, .flow-card, .point-card, .philosophy-pill';
+    document.querySelectorAll(CARDS).forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = 'perspective(700px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 5) + 'deg) translateZ(4px)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ── 2. Aurora parallax on scroll ─────────────────── */
+  function initAuroraParallax() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    window.addEventListener('scroll', function() {
+      var pct = Math.min(window.scrollY / (hero.offsetHeight || 600), 1);
+      hero.style.setProperty('--aurora-y', (pct * 20) + 'px');
+    }, { passive: true });
+  }
+
+  /* ── 3. Scroll reveal (backup if not already wired) ── */
+  function initScrollReveal() {
+    var els = document.querySelectorAll('.sr-el:not(.visible)');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  }
+
+  /* ── 4. Gradient headline on hero h1 ──────────────── */
+  function initGradientH1() {
+    var h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    var text = h1.innerHTML;
+    // find last word/phrase before period, add gradient span
+    h1.innerHTML = text.replace(/([가-힣a-zA-Z·\s]+)(<br\s*\/?>|.)/g, function(m, p1, p2) {
+      return '<span style="background:linear-gradient(90deg,var(--grad-a,#93c5fd),var(--grad-b,#5eead4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">' + p1 + '</span>' + p2;
+    });
+  }
+
+  /* ── 5. Magnetic CTA effect ───────────────────────── */
+  function initMagnetic() {
+    document.querySelectorAll('.btn-blue, .btn-red, .btn-teal').forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width  / 2) * 0.18;
+        var y = (e.clientY - r.top  - r.height / 2) * 0.18;
+        btn.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(1.03)';
+      });
+      btn.addEventListener('mouseleave', function() { btn.style.transform = ''; });
+    });
+  }
+
+  /* ── 6. Hero h1 stagger word entrance ─────────────── */
+  function initH1Stagger() {
+    var h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    h1.style.opacity = '0';
+    h1.style.transform = 'translateY(20px)';
+    setTimeout(function() {
+      h1.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)';
+      h1.style.opacity = '1';
+      h1.style.transform = 'none';
+    }, 200);
+    // eyebrow
+    var ey = document.querySelector('.hero .eyebrow');
+    if (ey) {
+      ey.style.opacity = '0'; ey.style.transform = 'translateY(10px)';
+      setTimeout(function() {
+        ey.style.transition = 'opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1)';
+        ey.style.opacity = '1'; ey.style.transform = 'none';
+      }, 80);
+    }
+    // lead text
+    var lead = document.querySelector('.hero .lead');
+    if (lead) {
+      lead.style.opacity = '0'; lead.style.transform = 'translateY(14px)';
+      setTimeout(function() {
+        lead.style.transition = 'opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1)';
+        lead.style.opacity = '1'; lead.style.transform = 'none';
+      }, 380);
+    }
+    // CTA
+    var cta = document.querySelector('.hero .cta-row');
+    if (cta) {
+      cta.style.opacity = '0'; cta.style.transform = 'translateY(12px)';
+      setTimeout(function() {
+        cta.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)';
+        cta.style.opacity = '1'; cta.style.transform = 'none';
+      }, 520);
+    }
+  }
+
+  /* ── init ─────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initTilt(); initAuroraParallax(); initScrollReveal();
+      initMagnetic(); initH1Stagger();
+    });
+  } else {
+    initTilt(); initAuroraParallax(); initScrollReveal();
+    initMagnetic(); initH1Stagger();
+  }
+})();
+
+</script>
+<script>
+/* Flow card hover — is-current 이동 */
+document.addEventListener('DOMContentLoaded', function() {
+  var section = document.getElementById('wangji-flow');
+  if (!section) return;
+  var cards = section.querySelectorAll('.flow-card');
+  var flowWrap = section.querySelector('.flow');
+  if (!cards.length) return;
+
+  function setCurrent(card) {
+    cards.forEach(function(c) {
+      c.classList.remove('is-current');
+    });
+    card.classList.add('is-current');
+  }
+
+  cards.forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      setCurrent(card);
+    });
+  });
+
+  if (flowWrap) {
+    flowWrap.addEventListener('mouseleave', function() {
+      setCurrent(cards[0]);
+    });
+  }
+});
 </script>
 </body>
 </html>

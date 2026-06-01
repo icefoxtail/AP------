@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "scan-js-bank": "node scripts/scan-js-bank.mjs",
+    "scan-db-index": "node scripts/scan-db-index.mjs",
+    "scan-image-assets": "node scripts/scan-image-assets.mjs",
+    "compare": "node scripts/compare-db-vs-files.mjs",
+    "validate": "node scripts/validate-js-schema.mjs",
+    "build": "node scripts/build-cleanup-candidates.mjs",
+    "run": "node scripts/run-js-bank-cleanup.mjs"
+  }
+}

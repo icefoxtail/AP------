@@ -19,6 +19,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -39,6 +43,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -59,6 +67,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -79,6 +91,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -99,6 +115,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -119,6 +139,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -139,6 +163,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -159,6 +187,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -179,6 +211,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -199,6 +235,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -219,6 +259,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -239,6 +283,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -259,6 +307,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -279,6 +331,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -299,6 +355,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -319,6 +379,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -339,6 +403,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -359,6 +427,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -379,6 +451,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -399,6 +475,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   }
 ];

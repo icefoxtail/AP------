@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JS Bank Inventory",
+  "type": "object",
+  "required": ["generatedAt", "source", "totals", "files"],
+  "properties": {
+    "generatedAt": { "type": "string" },
+    "source": { "type": "string" },
+    "filters": { "type": "object" },
+    "totals": { "type": "object" },
+    "files": { "type": "array" }
+  },
+  "additionalProperties": true
+}

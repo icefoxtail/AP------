@@ -18,6 +18,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -38,6 +42,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "방정식과 부등식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -58,6 +66,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -78,6 +90,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -98,6 +114,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -118,6 +138,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "방정식과 부등식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -138,6 +162,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "방정식과 부등식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -158,6 +186,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -178,6 +210,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -198,6 +234,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "방정식과 부등식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -218,6 +258,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "방정식과 부등식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -238,6 +282,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "방정식과 부등식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -258,6 +306,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -278,6 +330,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -298,6 +354,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -318,6 +378,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -338,6 +402,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -358,6 +426,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -372,6 +444,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -386,6 +462,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -400,6 +480,10 @@ window.questionBank = [
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 1
   },
   {
@@ -414,6 +498,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   },
   {
@@ -428,6 +516,10 @@ window.questionBank = [
     "standardCourse": "수학(하)",
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "함수",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": 2
   }
 ];

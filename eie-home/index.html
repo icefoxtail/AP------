@@ -74,7 +74,7 @@
 
   .sec-head { max-width: 660px; margin-bottom: 44px; }
   @media (min-width: 768px) { .sec-head { margin-bottom: 60px; } }
-  .sec-head h2 { margin: 14px 0 0; color: var(--fg-1); font-size: clamp(26px, 4.4vw, 38px); line-height: 1.28; font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+  .sec-head h2 { margin: 14px 0 0; color: var(--fg-1); font-size: clamp(26px, 4.4vw, 38px); line-height: 1.28; font-weight: 800; letter-spacing: -.025em; }
   .sec-head p { margin: 18px 0 0; color: var(--fg-2); font-size: clamp(16px, 2.2vw, 18px); line-height: 1.7; word-break: keep-all; }
 
   /* ---------- BUTTONS ---------- */
@@ -129,7 +129,7 @@
   @media (min-width: 940px) { .hero { padding: 84px 0 108px; } }
   .hero-grid { display: grid; grid-template-columns: 1fr; gap: 44px; align-items: center; }
   @media (min-width: 940px) { .hero-grid { grid-template-columns: 1.08fr .92fr; gap: 60px; } }
-  .hero h1 { margin-top: 18px; color: var(--fg-1); font-size: clamp(31px, 5.2vw, 48px); line-height: 1.2; font-weight: 800; letter-spacing: -.03em; text-wrap: balance; }
+  .hero h1 { margin-top: 18px; color: var(--fg-1); font-size: clamp(31px, 5.2vw, 48px); line-height: 1.2; font-weight: 800; letter-spacing: -.03em; }
   .hero .lead { margin-top: 22px; color: var(--fg-2); font-size: clamp(16px, 2.2vw, 19px); line-height: 1.72; word-break: keep-all; }
   .hero .lead strong { color: var(--fg-1); font-weight: 700; }
   .hero .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
@@ -193,7 +193,7 @@
   .blog-card { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; padding: 40px; border-radius: var(--r-xl); background: linear-gradient(150deg, var(--eie-soft) 0%, var(--white) 70%); border: 1px solid var(--eie-soft-2); box-shadow: var(--sh-md); }
   @media (min-width: 820px) { .blog-card { grid-template-columns: 1.4fr auto; padding: 52px 56px; gap: 48px; } }
   .blog-card .eyebrow { margin-bottom: 12px; }
-  .blog-card h2 { font-size: clamp(24px, 3.6vw, 32px); line-height: 1.3; font-weight: 800; color: var(--fg-1); letter-spacing: -.025em; text-wrap: balance; }
+  .blog-card h2 { font-size: clamp(24px, 3.6vw, 32px); line-height: 1.3; font-weight: 800; color: var(--fg-1); letter-spacing: -.025em; }
   .blog-card p { margin-top: 14px; color: var(--fg-2); font-size: 16px; line-height: 1.7; word-break: keep-all; }
   .blog-card .note { margin-top: 14px; color: var(--fg-3); font-size: 14px; }
   .blog-cta { display: flex; }
@@ -468,8 +468,7 @@
     .edu-quick-scroll {
       display: flex;
       gap: 8px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;;
       scrollbar-width: none;
       padding-bottom: 2px;
     }
@@ -515,8 +514,7 @@
       margin-left: -20px !important;
       margin-right: -20px !important;
       scroll-snap-type: x mandatory !important;
-      scroll-padding-left: 20px !important;
-      -webkit-overflow-scrolling: touch !important;
+      scroll-padding-left: 20px !important;;
       scrollbar-width: none !important;
     }
     .course-grid::-webkit-scrollbar,
@@ -684,7 +682,7 @@
   .philosophy-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 28px; }
   .philosophy-eyebrow { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 32px; }
   .philosophy-eyebrow span { width: 6px; height: 6px; border-radius: 2px; display: inline-block; }
-  .philosophy-h { margin: 0; font-size: clamp(40px,6vw,76px); font-weight: 900; letter-spacing: -0.045em; line-height: 1.1; color: #fff; text-wrap: balance; }
+  .philosophy-h { margin: 0; font-size: clamp(40px,6vw,76px); font-weight: 900; letter-spacing: -0.045em; line-height: 1.1; color: #fff; }
   .philosophy-h .grad { background: linear-gradient(90deg, #b7141b 0%, #b7141bcc 60%, #14b8a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .philosophy-rule { display: flex; gap: 6px; justify-content: center; margin: 40px auto; }
   .philosophy-rule div { width: 40px; height: 2px; border-radius: 2px; }
@@ -766,7 +764,7 @@
 <header class="hdr" id="hdr">
 <div class="wrap hdr-in">
 <a aria-label="EIE 영어 홈" class="brand" href="#top">
-<svg aria-hidden="true" class="brand__mark" focusable="false" height="40" viewBox="0 0 48 48" width="40">
+<svg aria-hidden="true" class="brand__mark" height="40" viewBox="0 0 48 48" width="40">
 <rect fill="#cbd5e1" height="16" rx="3.5" width="11" x="4" y="26"></rect>
 <rect fill="#b7141b" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
 <rect fill="#e2e8f0" height="36" rx="3.5" width="11" x="33" y="6"></rect>
@@ -808,7 +806,7 @@
 <div class="wrap hero-grid">
 <div>
 <span class="eyebrow">Express in English</span>
-<h1>자신의 생각을<br/>말과 글로 표현하는 영어</h1>
+<h1>자신의 생각을<br>말과 글로 표현하는 영어</h1>
 <p class="lead">EIE 영어는 단어와 문장을 익히는 데서 끝나지 않습니다. <strong>습득·체화·활용</strong>의 흐름을 통해 아이가 영어를 자기 것으로 만들고, 말과 글로 표현하는 힘을 기르도록 돕습니다.</p>
 
 </div>
@@ -873,7 +871,7 @@
 <div class="wrap">
 <div class="sec-head">
 <span class="eyebrow">교육 방향</span>
-<h2>영어를 배우는 것에서,<br/>표현하는 경험으로</h2>
+<h2>영어를 배우는 것에서,<br>표현하는 경험으로</h2>
 <p>영어는 단어와 문법을 아는 데서 끝나지 않습니다. 읽고, 듣고, 말하고, 쓰는 과정을 수업 안에서 균형 있게 경험하며 자신의 생각을 표현하는 힘을 길러갑니다.</p>
 </div>
 <p class="edu-swipe-hint">옆으로 밀어 보기</p>
@@ -901,7 +899,7 @@
 <div class="wrap">
 <div class="sec-head">
 <span class="eyebrow">EiE 표현영어</span>
-<h2>습득·체화·활용으로<br/>이어지는 표현영어</h2>
+<h2>습득·체화·활용으로<br>이어지는 표현영어</h2>
 <p>EiE 표현영어는 새로운 표현을 익히고, 반복과 활동으로 체화하며, 말하기와 쓰기 활동을 통해 실제 표현으로 연결하는 학습 흐름을 지향합니다.</p>
 </div>
 <div class="steps">
@@ -953,7 +951,7 @@
 <div class="wrap">
 <div class="sec-head">
 <span class="eyebrow">과정 안내</span>
-<h2>단계별로 이어지는<br/>EIE 영어 학습 코스</h2>
+<h2>단계별로 이어지는<br>EIE 영어 학습 코스</h2>
 <p>학생의 학년과 영어 경험에 맞춰 단계별 코스를 안내하고, 읽기·듣기·말하기·쓰기의 흐름을 균형 있게 이어갑니다.</p>
 </div>
 <div class="course-grid">
@@ -990,7 +988,7 @@
 <div class="blog-card">
 <div>
 <span class="eyebrow">Blog</span>
-<h2>EIE 수업 소식은<br/>블로그에서 확인하세요</h2>
+<h2>EIE 수업 소식은<br>블로그에서 확인하세요</h2>
 <p>수업 현장, 학원 소식, 공지사항은 EIE 블로그를 통해 안내드립니다. 방문 전 학원 분위기와 수업 소식을 확인해보실 수 있습니다.</p>
 <p class="note">새로운 소식과 수업 안내는 블로그에서 가장 빠르게 확인하실 수 있습니다.</p>
 </div>
@@ -1006,7 +1004,7 @@
 <div>
 <div class="inquiry-fullw-head">
   <span class="eyebrow">상담 문의</span>
-  <h2>우리 아이에게 맞는<br/>영어 수업이 궁금하다면</h2>
+  <h2>우리 아이에게 맞는<br>영어 수업이 궁금하다면</h2>
   <p>학년, 현재 영어 수준, 학습 고민을 알려주시면 EIE 영어 수업 방향에 맞춰 상담을 도와드립니다.</p>
 </div>
 <div class="inquiry-info-strip">
@@ -1014,6 +1012,7 @@
     <span class="k">EIE 영어 상담</span>
     <span class="v">061-724-8886</span>
     <span class="sub">전화 상담 문의</span>
+    <a class="linkline" href="tel:061-724-8886">전화 연결 →</a>
   </div>
   <div class="inq-cell">
     <span class="k">위치</span>
@@ -1070,7 +1069,7 @@
 <div class="ft-grid">
 <div>
 <a aria-label="EIE 영어 홈" class="brand" href="#top">
-<svg aria-hidden="true" class="brand__mark" focusable="false" height="34" viewBox="0 0 48 48" width="34">
+<svg aria-hidden="true" class="brand__mark" height="34" viewBox="0 0 48 48" width="34">
 <rect fill="#cbd5e1" height="16" rx="3.5" width="11" x="4" y="26"></rect>
 <rect fill="#b7141b" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
 <rect fill="#e2e8f0" height="36" rx="3.5" width="11" x="33" y="6"></rect>

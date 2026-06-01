@@ -325,6 +325,13 @@ function openDashboardArchiveWindow(event) {
     window.open(url, '_blank', 'noopener');
 }
 
+function openAdminAssessmentArchiveWindow(event) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+    const url = '../archive/assessment/assessment-mvp.html';
+    window.open(url, '_blank', 'noopener');
+}
+
 function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, classRows = null) {
     injectDashboardOpsStyles();
     const week = dashboardGetWeekDates(baseDateStr || new Date().toLocaleDateString('sv-SE'));
@@ -1132,6 +1139,15 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     `;
 }
 
+function renderAdminAssessmentArchiveMetric(url = '../archive/assessment/assessment-mvp.html') {
+    return `
+        <div class="ap-admin-mini-metric ap-admin-assessment-card" role="button" tabindex="0" data-assessment-archive-url="${url}" onclick="openAdminAssessmentArchiveWindow(event)" style="cursor:pointer; min-height:58px; padding:8px 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; box-sizing:border-box; box-shadow:none;">
+            <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.25; white-space:nowrap;">시험지 보관함</div>
+            <div style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.3; margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">진단평가 · 단원평가 · 중간·기말평가</div>
+        </div>
+    `;
+}
+
 function renderAdminStudentOverviewPanel(data) {
     return `
         <div class="ap-admin-section" style="margin-bottom:18px;">
@@ -1142,7 +1158,7 @@ function renderAdminStudentOverviewPanel(data) {
                 ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')")}
                 ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')")}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')")}
-                ${renderAdminMiniMetric('휴원', data.leaveStudents.length, 'warning', "openAdminLeaveStudentList()")}
+                ${renderAdminAssessmentArchiveMetric('../archive/assessment/assessment-mvp.html')}
             </div>
         </div>
     `;
@@ -2013,6 +2029,11 @@ function renderAdminControlCenter() {
                 align-items:center !important;
                 justify-content:center !important;
                 padding:0 10px !important;
+            }
+            #ap-admin-dashboard .ap-admin-assessment-card {
+                min-height:58px !important;
+                align-items:flex-start !important;
+                padding:8px 10px !important;
             }
             #ap-admin-dashboard .ap-admin-teacher-grid .card {
                 min-height:164px !important;

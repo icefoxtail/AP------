@@ -18,6 +18,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -38,6 +42,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_02_01",
     "standardUnit": "확률의 뜻과 활용",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -58,6 +66,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -78,6 +90,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -98,6 +114,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -118,6 +138,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -138,6 +162,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -158,6 +186,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -178,6 +210,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_02_01",
     "standardUnit": "확률의 뜻과 활용",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -198,6 +234,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -218,6 +258,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -238,6 +282,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -258,6 +306,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -278,6 +330,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -298,6 +354,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -318,6 +378,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -338,6 +402,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_02_01",
     "standardUnit": "확률의 뜻과 활용",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -358,6 +426,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -378,6 +450,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -398,6 +474,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -412,6 +492,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   },
   {
@@ -426,6 +510,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_01",
     "standardUnit": "여러 가지 순열",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "1"
   },
   {
@@ -440,6 +528,10 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
     "standardUnit": "중복조합과 이항정리",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": "2"
   }
 ];

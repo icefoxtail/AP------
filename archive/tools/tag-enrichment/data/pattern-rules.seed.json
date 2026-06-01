@@ -1,0 +1,69 @@
+{
+  "version": "pattern-rules-seed-v0.1",
+  "note": "Conservative pattern hints for candidate confidence only. Pattern matches do not create final tags.",
+  "rules": [
+    {
+      "id": "linear-function-two-points",
+      "keywordsAny": ["일차함수", "직선"],
+      "keywordsAllAny": [["두 점", "서로 다른 두 점"], ["지나는", "지난다"]],
+      "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+      "problemTypeKey": "LINEAR_FUNCTION_FIND_EQUATION",
+      "templateKey": "LINEAR_FUNCTION_TWO_POINTS",
+      "reason": "일차함수/직선과 두 점 통과 단서"
+    },
+    {
+      "id": "permutation-adjacent",
+      "keywordsAny": ["순열", "배열"],
+      "keywordsAllAny": [["이웃", "서로 이웃", "붙어"], ["나열", "배열", "일렬"]],
+      "conceptClusterKey": "PERMUTATION",
+      "problemTypeKey": "PERMUTATION_ARRANGEMENT_CONDITION",
+      "templateKey": "PERMUTATION_ADJACENT_CONDITION",
+      "reason": "순열 배열의 이웃 조건 단서"
+    },
+    {
+      "id": "combination-at-least-one",
+      "keywordsAny": ["조합", "선택", "뽑"],
+      "keywordsAllAny": [["적어도", "최소"], ["하나", "1개"]],
+      "conceptClusterKey": "COMBINATION",
+      "problemTypeKey": "COMBINATION_SELECTION_CONDITION",
+      "templateKey": "COMBINATION_AT_LEAST_ONE",
+      "reason": "조합 선택의 적어도 하나 조건 단서"
+    },
+    {
+      "id": "simultaneous-equation-word",
+      "keywordsAny": ["연립방정식", "연립일차방정식"],
+      "keywordsAllAny": [["활용", "문제"], ["구하시오", "값은"]],
+      "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+      "problemTypeKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+      "templateKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+      "reason": "연립일차방정식 활용 단서"
+    },
+    {
+      "id": "quadratic-discriminant",
+      "keywordsAny": ["판별식", "실근", "허근", "중근"],
+      "keywordsAllAny": [["이차방정식", "방정식"]],
+      "conceptClusterKey": "QUADRATIC_EQUATION",
+      "problemTypeKey": "QUADRATIC_EQUATION_DISCRIMINANT",
+      "templateKey": "QUADRATIC_EQUATION_DISCRIMINANT",
+      "reason": "이차방정식 판별식 단서"
+    },
+    {
+      "id": "pythagorean-length",
+      "keywordsAny": ["피타고라스", "직각삼각형"],
+      "keywordsAllAny": [["길이", "선분", "거리"]],
+      "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+      "problemTypeKey": "PYTHAGOREAN_LENGTH_FIND",
+      "templateKey": "PYTHAGOREAN_RIGHT_TRIANGLE_LENGTH",
+      "reason": "피타고라스 길이 계산 단서"
+    },
+    {
+      "id": "probability-case-split",
+      "keywordsAny": ["확률"],
+      "keywordsAllAny": [["경우", "나누어", "분류", "여사건"]],
+      "conceptClusterKey": "PROBABILITY_BASIC",
+      "problemTypeKey": "PROBABILITY_BASIC_COUNT",
+      "templateKey": "PROBABILITY_CASE_SPLIT",
+      "reason": "확률 경우 분류 단서"
+    }
+  ]
+}
