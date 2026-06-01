@@ -24,6 +24,7 @@ for (const [label, html] of [
     "target_scope: 'grade'",
     'grade_label',
     'class-exam-assignments',
+    '문항 수 확인이 필요합니다.',
   ]) {
     assert(html.includes(requiredText), `${label} should include grade target assignment marker: ${requiredText}`);
   }
@@ -32,6 +33,28 @@ for (const [label, html] of [
   assert(!html.includes('created_by'), `${label} should not send created_by`);
   assert(!html.includes('assessment-analysis.html'), `${label} should not add analysis screen links`);
 }
+
+assert(
+  archiveIndex.includes('qCount'),
+  'archive/index.html should consider qCount when resolving archive exam question counts'
+);
+
+assert(
+  archiveIndex.includes('resolveExamQuestionCountForAssignment') &&
+  archiveIndex.includes('getArchiveExamQuestionCount'),
+  'archive/index.html should include positive question-count helpers for assignment registration'
+);
+
+assert(
+  !/question_count\s*:\s*0\b/.test(archiveIndex),
+  'archive/index.html should not fall back to question_count: 0 for assignment registration'
+);
+
+assert(
+  assessmentMvp.includes('pack.questions') &&
+  assessmentMvp.includes('문항 수 확인이 필요합니다.'),
+  'assessment-mvp.html should block assessment assignment when pack question count cannot be confirmed'
+);
 
 assert(
   examsRoute.includes('COALESCE(excluded.${col}, class_exam_assignments.${col})'),
