@@ -21,6 +21,12 @@ body {
     line-height: 1.6;
 }
 
+body.eie-owner-dashboard-bg {
+    --eie-bg: #FFF3F2;
+    --bg: #FFF3F2;
+    background: #FFF3F2;
+}
+
 .eie-shell-header {
     position: sticky;
     top: 0;
@@ -1867,6 +1873,114 @@ body {
   color: var(--eie-muted);
   font-size: 13px;
   font-weight: 700;
+}
+
+/* EIE owner dashboard AP parity layer.
+   Keep the EIE owner screen shaped like the AP owner dashboard; data can be filled later. */
+.eie-admin-home .ap-admin-section {
+  margin-bottom: 28px;
+}
+
+.eie-admin-home .ap-admin-section-title {
+  margin: 0;
+  color: var(--eie-text);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.eie-admin-home .ap-admin-shortcuts,
+.eie-admin-home .ap-admin-overview-grid {
+  display: grid;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface-2);
+  box-shadow: none;
+}
+
+.eie-admin-home .ap-admin-shortcuts {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.eie-admin-home .ap-admin-overview-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.eie-admin-home .ap-admin-teacher-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.eie-admin-home .ap-admin-check-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.eie-admin-home .ap-admin-bottom-search {
+  margin-top: 30px;
+  padding-top: 4px;
+}
+
+.eie-admin-home .ap-admin-card,
+.eie-admin-home .ap-admin-check-grid .card,
+.eie-admin-home .eie-admin-empty-card {
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.eie-admin-home .eie-admin-placeholder-card,
+.eie-admin-home .eie-admin-empty-card {
+  min-height: 58px;
+  padding: 12px 14px;
+  color: var(--eie-text);
+}
+
+.eie-admin-home .eie-admin-placeholder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  text-align: left;
+  font: inherit;
+}
+
+.eie-admin-home .eie-admin-placeholder-card strong {
+  color: var(--eie-text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.eie-admin-home .eie-admin-placeholder-card small,
+.eie-admin-home .eie-admin-empty-card {
+  color: var(--eie-muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.eie-admin-home .eie-admin-placeholder-card:disabled,
+.eie-admin-home .eie-surface-action:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.eie-admin-home .eie-surface-action:disabled:hover,
+.eie-admin-home .eie-admin-placeholder-card:disabled:hover {
+  background: var(--eie-surface);
+  border-color: var(--eie-border);
+  box-shadow: none;
+  transform: none;
 }
 
 .eie-dashboard-notice {

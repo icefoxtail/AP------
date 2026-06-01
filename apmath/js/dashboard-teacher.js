@@ -15,6 +15,7 @@ function renderTeacherDashboardView() {
     state.ui.currentClassId = null;
     if (typeof document !== 'undefined') {
         document.body.classList.add('ap-teacher-dashboard-mode');
+        document.body.classList.remove('ap-owner-dashboard-bg');
         apTeacherRemoveSystemGate();
     }
     if (typeof renderAppDrawer === 'function') {

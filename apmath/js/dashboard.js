@@ -1119,7 +1119,23 @@ function adminOpenDashboardStudentDetail(studentId) {
     toast('학생 화면을 불러오지 못했습니다.', 'warn');
 }
 
-function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
+function adminBuildGradeHoverRows(students = []) {
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const counts = {};
+    (students || []).forEach(student => {
+        const grade = String(student?.grade || student?.grade_raw || '미지정').trim() || '미지정';
+        counts[grade] = (counts[grade] || 0) + 1;
+    });
+    const labels = Object.keys(counts).sort((a, b) => {
+        const ai = order.indexOf(a);
+        const bi = order.indexOf(b);
+        if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+        return a.localeCompare(b, 'ko');
+    });
+    return labels.map(label => ({ label, value: counts[label] }));
+}
+
+function renderAdminMiniMetric(label, value, tone = 'text', onclick = '', hoverRows = []) {
     const colorMap = {
         primary: 'var(--text)',
         success: 'var(--text)',
@@ -1132,18 +1148,29 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const clickAttr = onclick ? ` onclick="${onclick}"` : '';
     const cursor = onclick ? 'cursor:pointer;' : '';
     const roleAttr = onclick ? ' role="button" tabindex="0"' : '';
+    const safeLabel = apEscapeHtml(label);
+    const safeValue = apEscapeHtml(String(value ?? 0));
+    const hoverText = dashboardEscapeAttr(`${label} ${value ?? 0}명`);
+    const rows = Array.isArray(hoverRows) ? hoverRows : [];
+    const hoverHtml = rows.length
+        ? `<div class="ap-admin-mini-metric__hover" style="position:absolute; left:50%; bottom:calc(100% + 8px); transform:translateX(-50%); min-width:132px; padding:10px 12px; border-radius:12px; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); color:var(--text); font-size:12px; font-weight:500; line-height:1.45; opacity:0; pointer-events:none; z-index:20; transition:opacity .14s ease, transform .14s ease;">
+            <div style="font-size:12px; font-weight:700; margin-bottom:6px; white-space:nowrap;">${safeLabel} ${safeValue}명</div>
+            ${rows.map(row => `<div style="display:flex; justify-content:space-between; gap:12px; white-space:nowrap;"><span>${apEscapeHtml(row.label)}</span><strong>${apEscapeHtml(String(row.value || 0))}명</strong></div>`).join('')}
+        </div>`
+        : '';
     return `
-        <div class="ap-admin-mini-metric"${roleAttr}${clickAttr} style="${cursor} min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;">
-            <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${label}</div>
+        <div class="ap-admin-mini-metric"${roleAttr} title="${hoverText}" aria-label="${hoverText}"${clickAttr} style="${cursor} position:relative; min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;" onmouseenter="this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('opacity','1'); this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('transform','translateX(-50%) translateY(-2px)')" onmouseleave="this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('opacity','0'); this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('transform','translateX(-50%)')">
+            <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${safeValue}</div>
+            <span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">${safeLabel}</span>
+            ${hoverHtml}
         </div>
     `;
 }
 
 function renderAdminAssessmentArchiveMetric(url = '../archive/assessment/assessment-mvp.html') {
     return `
-        <div class="ap-admin-mini-metric ap-admin-assessment-card" role="button" tabindex="0" data-assessment-archive-url="${url}" onclick="openAdminAssessmentArchiveWindow(event)" style="cursor:pointer; min-height:58px; padding:8px 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; box-sizing:border-box; box-shadow:none;">
+        <div class="ap-admin-mini-metric ap-admin-assessment-card" role="button" tabindex="0" title="진단평가 · 단원평가 · 중간·기말평가" aria-label="시험지 보관함: 진단평가, 단원평가, 중간·기말평가" data-assessment-archive-url="${url}" onclick="openAdminAssessmentArchiveWindow(event)" style="cursor:pointer; min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; box-sizing:border-box; box-shadow:none;">
             <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.25; white-space:nowrap;">시험지 보관함</div>
-            <div style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.3; margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">진단평가 · 단원평가 · 중간·기말평가</div>
         </div>
     `;
 }
@@ -1155,9 +1182,9 @@ function renderAdminStudentOverviewPanel(data) {
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘 운영</h3>
             </div>
             <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
-                ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')")}
-                ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')")}
-                ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')")}
+                ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')", adminBuildGradeHoverRows(data.activeStudents))}
+                ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')", adminBuildGradeHoverRows(data.recentStudents))}
+                ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')", adminBuildGradeHoverRows(data.dischargedStudents))}
                 ${renderAdminAssessmentArchiveMetric('../archive/assessment/assessment-mvp.html')}
             </div>
         </div>
@@ -1819,6 +1846,7 @@ function renderAdminGlobalSearchPanel() {
 function renderAdminControlCenter() {
     if (typeof document !== 'undefined') {
         document.body.classList.remove('ap-teacher-dashboard-mode');
+        document.body.classList.add('ap-owner-dashboard-bg');
     }
     const dashboardRole = String((typeof state !== 'undefined' && state?.auth?.role) || '').toLowerCase();
     if (typeof renderAppDrawer === 'function' && dashboardRole === 'admin') {
@@ -2826,6 +2854,7 @@ function renderDashboard() {
     state.ui.currentClassId = null;
     if (typeof document !== 'undefined') {
         document.body.classList.add('ap-teacher-dashboard-mode');
+        document.body.classList.remove('ap-owner-dashboard-bg');
         document.querySelectorAll('#ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
     }
     const data = computeDashboardData();
@@ -2862,7 +2891,7 @@ function renderDashboard() {
         </div>
     `;
 
-    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0 && isClassScheduledTodayForDashboard(c.id)));
+    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
     filteredClasses = filteredClasses.filter(c => {
         if (tab === 'middle') return isMiddleSchoolClass(c);
         if (tab === 'high') return !isMiddleSchoolClass(c);

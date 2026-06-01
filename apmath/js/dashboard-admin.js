@@ -41,6 +41,7 @@ function apInsertAdminSystemGate(attempt = 0) {
     if (typeof document === 'undefined') return false;
 
     if (apAdminDashboardRole() !== 'admin') {
+        document.body.classList.remove('ap-owner-dashboard-bg');
         apRemoveAdminSystemGate();
         return false;
     }
@@ -70,6 +71,7 @@ function apInsertAdminSystemGate(attempt = 0) {
 function renderAdminDashboardView() {
     if (typeof document !== 'undefined') {
         document.body.classList.remove('ap-teacher-dashboard-mode');
+        document.body.classList.add('ap-owner-dashboard-bg');
         apRemoveAdminSystemGate();
     }
 

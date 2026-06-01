@@ -24,6 +24,11 @@ async function readJsonBody(request) {
   }
 }
 
+async function sha256hex(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 function toJsonText(value) {
   if (value == null) return null;
   if (typeof value === 'string') return value;
@@ -380,6 +385,11 @@ function isEieOwner(teacher) {
   return String(teacher?.role || '').toLowerCase() === 'admin';
 }
 
+function requireEieOwner(teacher) {
+  if (isEieOwner(teacher)) return null;
+  return jsonResponse({ success: false, error: 'EIE management is owner only' }, 403);
+}
+
 function round6MigrationRequiredResponse() {
   return jsonResponse({
     success: false,
@@ -391,6 +401,14 @@ function round6MigrationRequiredResponse() {
 function normalizeConfirmedStatus(value, fallback = 'active') {
   const status = safeText(value || fallback);
   if (['active', 'needs_review', 'inactive', 'archived'].includes(status)) return status;
+  return fallback;
+}
+
+const DIRECT_STUDENT_STATUSES = ['active', 'inactive', 'archived', 'needs_review'];
+
+function normalizeDirectStudentStatus(value, fallback = 'active') {
+  const status = safeText(value || '');
+  if (DIRECT_STUDENT_STATUSES.includes(status)) return status;
   return fallback;
 }
 
@@ -1393,73 +1411,107 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
 // ── 학생 직접 등록 ────────────────────────────────────────────────────
 async function handlePostStudent(request, env, teacher) {
   const body = await readJsonBody(request);
-  if (!body) return jsonResponse({ success: false, error: '요청 데이터가 없습니다.' }, 400);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
 
   const name = safeText(body.display_name || body.name || '');
-  if (!name) return jsonResponse({ success: false, error: '학생 이름은 필수입니다.' }, 400);
+  if (!name) return jsonResponse({ success: false, error: 'name is required' }, 400);
 
   const studentId = makeId('eie_student');
   const now = new Date().toISOString();
   const grade = safeText(body.grade || '');
   const memo = safeText(body.memo || '');
-  const statusRaw = safeText(body.status || 'active');
-  const status = ['active', 'inactive', 'archived', 'needs_review'].includes(statusRaw) ? statusRaw : 'active';
-  const normalizedName = name.replace(/\s+/g, '');
+  const status = normalizeDirectStudentStatus(body.status, 'active');
+  const normalizedName = normalizeName(name);
+  const rawMeta = {};
+  const school = safeText(body.school_name || body.school || '');
+  if (school) {
+    rawMeta.school_name = school;
+    rawMeta.school = school;
+  }
+  const rawMetaJson = Object.keys(rawMeta).length ? toJsonText(rawMeta) : null;
 
   try {
     await env.DB.prepare(`
-      INSERT INTO eie_students (id, display_name, normalized_name, grade, status, source_type, memo, created_by, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, 'manual', ?, ?, ?, ?)
-    `).bind(studentId, name, normalizedName, grade, status, memo, teacher.id, now, now).run();
+      INSERT INTO eie_students (id, display_name, normalized_name, grade, status, source_type, memo, raw_meta_json, created_by, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, 'manual', ?, ?, ?, ?, ?)
+    `).bind(studentId, name, normalizedName, grade, status, memo, rawMetaJson, teacher?.id || null, now, now).run();
 
-    const phone = safeText(body.phone || body.contact_phone || '');
-    if (phone) {
+    const warnings = [];
+    const phone = safeText(body.phone || body.phone_raw || body.parent_phone || body.contact_phone || '');
+    const normalizedPhone = phone ? normalizePhone(phone) : '';
+    if (normalizedPhone) {
       const contactId = makeId('eie_contact');
-      const normalizedPhone = phone.replace(/[^0-9]/g, '');
-      await env.DB.prepare(`
-        INSERT OR IGNORE INTO eie_student_contacts
-          (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, created_by, created_at, updated_at)
-        VALUES (?, ?, ?, ?, '대표', 1, 'manual', ?, ?, ?)
-      `).bind(contactId, studentId, phone, normalizedPhone, teacher.id, now, now).run();
+      try {
+        await env.DB.prepare(`
+          INSERT OR IGNORE INTO eie_student_contacts
+            (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, created_by, created_at, updated_at)
+          VALUES (?, ?, ?, ?, '대표', 1, 'manual', ?, ?, ?)
+        `).bind(contactId, studentId, phone, normalizedPhone, teacher?.id || null, now, now).run();
+      } catch (err) {
+        warnings.push('contact save failed: ' + safeText(err?.message || String(err)));
+      }
     }
 
-    return jsonResponse({ success: true, student_id: studentId, message: '학생이 등록되었습니다.' });
+    const student = await getStudentWithContacts(env, studentId);
+    return jsonResponse({ success: true, student_id: studentId, student, data: student, contacts: student?.contacts || [], warnings });
   } catch (error) {
     if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
-    return jsonResponse({ success: false, error: '저장하지 못했습니다.' }, 500);
+    return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
   }
 }
 
 // ── 학생 정보 수정 ────────────────────────────────────────────────────
 async function handlePatchStudent(request, env, teacher, studentId) {
   const body = await readJsonBody(request);
-  if (!body) return jsonResponse({ success: false, error: '요청 데이터가 없습니다.' }, 400);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+
+  const existingStudent = await getStudentById(env, studentId);
+  if (!existingStudent) return jsonResponse({ success: false, error: 'student not found' }, 404);
 
   const sets = [];
   const binds = [];
+  const ignoredFields = [];
 
-  if (body.display_name !== undefined) {
-    const name = safeText(body.display_name);
-    if (!name) return jsonResponse({ success: false, error: '이름은 비워둘 수 없습니다.' }, 400);
+  if (body.display_name !== undefined || body.name !== undefined) {
+    const name = safeText(body.display_name || body.name);
+    if (!name) return jsonResponse({ success: false, error: 'name is required' }, 400);
     sets.push('display_name = ?');
     binds.push(name);
     sets.push('normalized_name = ?');
-    binds.push(name.replace(/\s+/g, ''));
+    binds.push(normalizeName(name));
   }
-  if (body.grade !== undefined) { sets.push('grade = ?'); binds.push(safeText(body.grade)); }
-  if (body.memo !== undefined) { sets.push('memo = ?'); binds.push(safeText(body.memo)); }
+  if (body.grade !== undefined || body.grade_raw !== undefined) {
+    sets.push('grade = ?');
+    binds.push(safeText(body.grade || body.grade_raw));
+  }
+  if (body.memo !== undefined || body.note !== undefined) {
+    sets.push('memo = ?');
+    binds.push(safeText(body.memo || body.note));
+  }
   if (body.status !== undefined) {
-    const s = safeText(body.status);
-    if (!['active', 'inactive', 'archived', 'needs_review'].includes(s)) {
-      return jsonResponse({ success: false, error: '올바르지 않은 상태값입니다.' }, 400);
-    }
+    const s = normalizeDirectStudentStatus(body.status, '');
+    if (!s) return jsonResponse({ success: false, error: 'invalid status' }, 400);
     sets.push('status = ?');
     binds.push(s);
   }
-
-  if (!sets.length && body.phone === undefined) {
-    return jsonResponse({ success: false, error: '수정할 항목이 없습니다.' }, 400);
+  const rawMeta = parseRawMeta(existingStudent.raw_meta_json);
+  const school = safeText(body.school_name || body.school || '');
+  if (body.school_name !== undefined || body.school !== undefined) {
+    rawMeta.school_name = school;
+    rawMeta.school = school;
+    sets.push('raw_meta_json = ?');
+    binds.push(toJsonText(rawMeta));
   }
+
+  ['student_name_raw', 'pin', 'student_pin'].forEach(field => {
+    if (body[field] !== undefined) ignoredFields.push(field + ' (not in schema)');
+  });
+
+  const phoneRaw = safeText(body.phone || body.phone_raw || body.parent_phone);
+  const normalizedPhone = phoneRaw ? normalizePhone(phoneRaw) : '';
+  const hasPhoneUpdate = body.phone !== undefined || body.phone_raw !== undefined || body.parent_phone !== undefined;
+
+  if (!sets.length && !hasPhoneUpdate) return jsonResponse({ success: false, error: 'no valid fields to update', ignored_fields: ignoredFields }, 400);
 
   if (sets.length) {
     sets.push('updated_at = ?');
@@ -1467,65 +1519,65 @@ async function handlePatchStudent(request, env, teacher, studentId) {
     binds.push(studentId);
 
     try {
-      const result = await env.DB.prepare(
+      await env.DB.prepare(
         `UPDATE eie_students SET ${sets.join(', ')} WHERE id = ?`
       ).bind(...binds).run();
-      if ((result.meta?.changes || 0) === 0) {
-        return jsonResponse({ success: false, error: '학생을 찾을 수 없습니다.' }, 404);
-      }
     } catch (error) {
       if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
-      return jsonResponse({ success: false, error: '저장하지 못했습니다.' }, 500);
+      return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
     }
   }
 
-  if (body.phone !== undefined) {
-    const phone = safeText(body.phone);
-    const normalizedPhone = phone.replace(/[^0-9]/g, '');
+  const warnings = [];
+  if (hasPhoneUpdate) {
     const now = new Date().toISOString();
     try {
       const existing = await env.DB.prepare(
-        `SELECT id FROM eie_student_contacts WHERE student_id = ? AND is_primary = 1 LIMIT 1`
-      ).bind(studentId).first().catch(() => null);
+        `SELECT id FROM eie_student_contacts WHERE student_id = ? AND COALESCE(is_primary, 1) = 1 ORDER BY created_at ASC LIMIT 1`
+      ).bind(studentId).first();
 
       if (existing) {
         await env.DB.prepare(
           `UPDATE eie_student_contacts SET phone = ?, normalized_phone = ?, updated_at = ? WHERE id = ?`
-        ).bind(phone, normalizedPhone, now, existing.id).run();
-      } else if (phone) {
+        ).bind(phoneRaw, normalizedPhone, now, existing.id).run();
+      } else if (normalizedPhone) {
         const contactId = makeId('eie_contact');
         await env.DB.prepare(`
           INSERT OR IGNORE INTO eie_student_contacts
             (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, created_by, created_at, updated_at)
           VALUES (?, ?, ?, ?, '대표', 1, 'manual', ?, ?, ?)
-        `).bind(contactId, studentId, phone, normalizedPhone, teacher.id, now, now).run();
+        `).bind(contactId, studentId, phoneRaw, normalizedPhone, teacher?.id || null, now, now).run();
       }
     } catch (error) {
-      // 연락처 수정 실패는 비치명적
+      warnings.push('contact update failed: ' + safeText(error?.message || String(error)));
     }
   }
 
-  return jsonResponse({ success: true, message: '학생 정보가 수정되었습니다.' });
+  const student = await getStudentWithContacts(env, studentId);
+  const response = { success: true, student, data: student, contacts: student?.contacts || [], warnings };
+  if (ignoredFields.length) response.ignored_fields = ignoredFields;
+  return jsonResponse(response);
 }
 
 // ── 학생 상태 변경 ────────────────────────────────────────────────────
 async function handlePatchStudentStatus(request, env, teacher, studentId) {
   const body = await readJsonBody(request);
-  const status = safeText(body?.status || '');
-  if (!['active', 'inactive', 'archived', 'needs_review'].includes(status)) {
-    return jsonResponse({ success: false, error: '올바르지 않은 상태값입니다.' }, 400);
-  }
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const status = normalizeDirectStudentStatus(body.status, '');
+  if (!status) return jsonResponse({ success: false, error: 'invalid status' }, 400);
+
+  const existing = await getStudentById(env, studentId);
+  if (!existing) return jsonResponse({ success: false, error: 'student not found' }, 404);
+
   try {
-    const result = await env.DB.prepare(
+    await env.DB.prepare(
       `UPDATE eie_students SET status = ?, updated_at = ? WHERE id = ?`
     ).bind(status, new Date().toISOString(), studentId).run();
-    if ((result.meta?.changes || 0) === 0) {
-      return jsonResponse({ success: false, error: '학생을 찾을 수 없습니다.' }, 404);
-    }
-    return jsonResponse({ success: true, message: '상태가 변경되었습니다.' });
+    const student = await getStudentWithContacts(env, studentId);
+    return jsonResponse({ success: true, student, data: student, contacts: student?.contacts || [], warnings: [] });
   } catch (error) {
     if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
-    return jsonResponse({ success: false, error: '저장하지 못했습니다.' }, 500);
+    return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
   }
 }
 
@@ -1622,21 +1674,135 @@ async function handleDeleteCellStudent(request, env, teacher, cellId, studentId)
   }
 }
 
+function normalizeTeacherRole(value) {
+  const role = safeText(value || 'teacher').toLowerCase();
+  if (role === 'admin' || role === 'owner') return 'admin';
+  if (role === 'disabled' || role === 'archived') return 'disabled';
+  return 'teacher';
+}
+
+async function handleGetTeachers(env) {
+  const result = await env.DB.prepare(`
+    SELECT id, name, login_id, role, created_at
+    FROM teachers
+    ORDER BY CASE WHEN role IN ('admin', 'owner') THEN 0 WHEN role = 'disabled' THEN 2 ELSE 1 END, name ASC
+  `).all();
+  const teachers = result.results || [];
+  return jsonResponse({ success: true, teachers, data: teachers });
+}
+
+async function handlePostTeacher(request, env) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const name = safeText(body.name);
+  const loginId = safeText(body.login_id);
+  const password = String(body.password || '').trim();
+  const role = normalizeTeacherRole(body.role);
+  if (!name || !loginId || !password) return jsonResponse({ success: false, error: 'name, login_id, password are required' }, 400);
+  if (password.length < 4) return jsonResponse({ success: false, error: 'password must be at least 4 characters' }, 400);
+  const existing = await env.DB.prepare('SELECT id FROM teachers WHERE login_id = ? LIMIT 1').bind(loginId).first();
+  if (existing) return jsonResponse({ success: false, error: 'login_id already exists' }, 409);
+  const id = makeId('eie_teacher');
+  const hash = await sha256hex(password);
+  await env.DB.prepare(`
+    INSERT INTO teachers (id, name, login_id, password_hash, role, created_at)
+    VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+  `).bind(id, name, loginId, hash, role).run();
+  const teacher = await env.DB.prepare('SELECT id, name, login_id, role, created_at FROM teachers WHERE id = ?').bind(id).first();
+  return jsonResponse({ success: true, teacher, data: teacher });
+}
+
+const DEFAULT_EIE_TEACHERS = [
+  { name: 'Carmen', login_id: 'carmen' },
+  { name: 'IVY', login_id: 'ivy' },
+  { name: 'Lily', login_id: 'lily' },
+  { name: 'Stacy', login_id: 'stacy' },
+  { name: 'Zoe', login_id: 'zoe' },
+  { name: 'Laura', login_id: 'laura' }
+];
+
+async function handleSeedDefaultTeachers(env) {
+  const passwordHash = await sha256hex('eie1234');
+  const rows = [];
+  for (const item of DEFAULT_EIE_TEACHERS) {
+    const existing = await env.DB.prepare('SELECT id FROM teachers WHERE login_id = ? LIMIT 1').bind(item.login_id).first();
+    if (existing && existing.id) {
+      await env.DB.prepare(`
+        UPDATE teachers
+        SET name = ?, password_hash = ?, role = CASE WHEN role = 'disabled' THEN 'teacher' ELSE role END
+        WHERE id = ?
+      `).bind(item.name, passwordHash, existing.id).run();
+      const teacher = await env.DB.prepare('SELECT id, name, login_id, role, created_at FROM teachers WHERE id = ?').bind(existing.id).first();
+      rows.push({ ...teacher, seeded: 'updated' });
+    } else {
+      const id = makeId('eie_teacher');
+      await env.DB.prepare(`
+        INSERT INTO teachers (id, name, login_id, password_hash, role, created_at)
+        VALUES (?, ?, ?, ?, 'teacher', CURRENT_TIMESTAMP)
+      `).bind(id, item.name, item.login_id, passwordHash).run();
+      const teacher = await env.DB.prepare('SELECT id, name, login_id, role, created_at FROM teachers WHERE id = ?').bind(id).first();
+      rows.push({ ...teacher, seeded: 'inserted' });
+    }
+  }
+  return jsonResponse({ success: true, password: 'eie1234', teachers: rows, data: rows });
+}
+
+async function handlePatchTeacher(request, env, teacherId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await env.DB.prepare('SELECT id FROM teachers WHERE id = ? LIMIT 1').bind(teacherId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'teacher not found' }, 404);
+  const name = safeText(body.name);
+  if (!name) return jsonResponse({ success: false, error: 'name is required' }, 400);
+  const role = normalizeTeacherRole(body.role);
+  await env.DB.prepare('UPDATE teachers SET name = ?, role = ? WHERE id = ?').bind(name, role, teacherId).run();
+  const teacher = await env.DB.prepare('SELECT id, name, login_id, role, created_at FROM teachers WHERE id = ?').bind(teacherId).first();
+  return jsonResponse({ success: true, teacher, data: teacher });
+}
+
+async function handleResetTeacherPassword(request, env, teacherId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const newPassword = String(body.new_password || body.password || '').trim();
+  if (newPassword.length < 4) return jsonResponse({ success: false, error: 'new_password must be at least 4 characters' }, 400);
+  const existing = await env.DB.prepare('SELECT id FROM teachers WHERE id = ? LIMIT 1').bind(teacherId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'teacher not found' }, 404);
+  const hash = await sha256hex(newPassword);
+  await env.DB.prepare('UPDATE teachers SET password_hash = ? WHERE id = ?').bind(hash, teacherId).run();
+  await env.DB.prepare('UPDATE teacher_sessions SET revoked_at = CURRENT_TIMESTAMP WHERE teacher_id = ? AND revoked_at IS NULL').bind(teacherId).run().catch(() => {});
+  return jsonResponse({ success: true });
+}
+
+async function handleDeleteTeacher(request, env, teacherId) {
+  const existing = await env.DB.prepare('SELECT id FROM teachers WHERE id = ? LIMIT 1').bind(teacherId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'teacher not found' }, 404);
+  await env.DB.prepare("UPDATE teachers SET role = 'disabled' WHERE id = ?").bind(teacherId).run();
+  await env.DB.prepare('UPDATE teacher_sessions SET revoked_at = CURRENT_TIMESTAMP WHERE teacher_id = ? AND revoked_at IS NULL').bind(teacherId).run().catch(() => {});
+  const teacher = await env.DB.prepare('SELECT id, name, login_id, role, created_at FROM teachers WHERE id = ?').bind(teacherId).first();
+  return jsonResponse({ success: true, teacher, data: teacher });
+}
+
 export async function handleEie(request, env, teacher, path, url) {
   if (!teacher || !teacher.id) return jsonResponse({ success: false, error: 'unauthorized' }, 401);
-  if (!isEieOwner(teacher)) return jsonResponse({ success: false, error: 'EIE management is owner only' }, 403);
 
   const method = request.method;
+
+  if (method === 'GET' && path[2] === 'teachers' && !path[3]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
+    return handleGetTeachers(env);
+  }
 
   if (method === 'GET') {
     return handleGet(request, env, path, url);
   }
 
   if (method === 'POST' && path[2] === 'import' && !path[3]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
     return handlePostImport(request, env, teacher);
   }
 
   if (method === 'POST' && path[2] === 'confirm-candidate' && !path[3]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
     return handlePostConfirmCandidate(request, env, teacher);
   }
 
@@ -1671,6 +1837,31 @@ export async function handleEie(request, env, teacher, path, url) {
 
   if (method === 'DELETE' && path[2] === 'students' && path[3] && !path[4]) {
     return handleDeleteStudent(request, env, path[3]);
+  }
+
+  if (method === 'POST' && path[2] === 'teachers' && path[3] === 'seed-defaults' && !path[4]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
+    return handleSeedDefaultTeachers(env);
+  }
+
+  if (method === 'POST' && path[2] === 'teachers' && !path[3]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
+    return handlePostTeacher(request, env);
+  }
+
+  if (method === 'PATCH' && path[2] === 'teachers' && path[3] && path[4] === 'reset-password') {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
+    return handleResetTeacherPassword(request, env, path[3]);
+  }
+
+  if (method === 'PATCH' && path[2] === 'teachers' && path[3] && !path[4]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
+    return handlePatchTeacher(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'teachers' && path[3] && !path[4]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
+    return handleDeleteTeacher(request, env, path[3]);
   }
 
   if (method === 'PATCH' && path[2] === 'student-contacts' && path[3] && !path[4]) {
