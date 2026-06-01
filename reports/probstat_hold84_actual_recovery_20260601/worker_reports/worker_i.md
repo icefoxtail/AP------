@@ -42,3 +42,41 @@ Candidate save/check status:
 Notes:
 - Aggregate rebuild not run.
 - db/live/git untouched.
+
+## Completed exam: 금당고
+
+Candidate:
+- `archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/23_금당고_2학기_기말_고2_확률과통계/candidate/23_금당고_2학기_기말_고2_확률과통계.candidate.js`
+
+Modified fields:
+- Restored readable `content` for questions 1-22.
+- Restored five objective `choices` for questions 3, 8-18.
+- Corrected direct-solved/verified answers:
+  - 14: `4`
+  - 20: `4/7`
+  - 21: `갑: 7/30, 을: 13/30`
+  - 22: `41/49`
+
+Remaining holds:
+- None for 금당고 in the requested `content/choices/answer` scope.
+
+Verification:
+- `node --check archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/23_금당고_2학기_기말_고2_확률과통계/candidate/23_금당고_2학기_기말_고2_확률과통계.candidate.js` passed.
+
+## Completed exam: 복성고
+
+Candidate:
+- `archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/23_복성고_2학기_기말_고2_확률과통계/candidate/23_복성고_2학기_기말_고2_확률과통계.candidate.js`
+
+Modified fields:
+- Restored readable `content` for questions 1-20.
+- Restored five objective `choices` for questions 1-18.
+- Verified/filled subjective answers:
+  - 19: `0.08`
+  - 20: `4.6`
+
+Remaining holds:
+- None for 복성고 in the requested `content/choices/answer` scope.
+
+Verification:
+- `node --check archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/23_복성고_2학기_기말_고2_확률과통계/candidate/23_복성고_2학기_기말_고2_확률과통계.candidate.js` passed.

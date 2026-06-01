@@ -1648,14 +1648,34 @@ function getIndexAssignmentBatchId(item, gradeLabel) {
     return `batch_${key}_${String(gradeLabel || 'class').replace(/[^a-zA-Z0-9가-힣_-]+/g, '_')}_${Date.now()}`;
 }
 
+function getKstTodayString() {
+    return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0];
+}
+
+function resolveExamQuestionCountForAssignment(item) {
+    const candidates = [
+        item?.question_count,
+        item?.questionCount,
+        item?.count,
+        Array.isArray(item?.questions) ? item.questions.length : undefined
+    ];
+    for (const c of candidates) {
+        const n = parseInt(c, 10);
+        if (Number.isFinite(n) && n > 0) return n;
+    }
+    return null;
+}
+
 async function registerIndexClassExamAssignment(classRow, item, options = {}) {
     const authHeader = getIndexAssignmentAuthHeader();
     if (!authHeader) throw new Error('auth required');
+    const resolvedCount = resolveExamQuestionCountForAssignment(item);
+    if (resolvedCount === null) throw new Error('문항 수 확인이 필요합니다.');
     const payload = {
         class_id: classRow.id,
         exam_title: getIndexAssignmentTitle(item),
         exam_date: getKstTodayString(),
-        question_count: Number(item.question_count || item.questionCount || item.count || 0),
+        question_count: resolvedCount,
         archive_file: 'exams/' + item.file,
         source_type: 'archive',
         assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, options.gradeLabel || getIndexClassGrade(classRow)),
@@ -1918,6 +1938,15 @@ async function confirmGradeSelectionForIndex() {
 
     const item = normalizedExams().find(e => e.file === _pendingFile);
     if (!item) return;
+
+    const resolvedCount = resolveExamQuestionCountForAssignment(item);
+    if (resolvedCount === null) {
+        console.warn('[grade assignment] 문항 수 확인 실패:', item.file);
+        const gradeBody = document.getElementById('gradeModalBody');
+        if (gradeBody) gradeBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
+        return;
+    }
+
     const assignmentBatchId = getIndexAssignmentBatchId(item, gradeLabel);
     try {
         for (const row of rows) {
