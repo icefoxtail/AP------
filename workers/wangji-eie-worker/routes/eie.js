@@ -200,7 +200,7 @@ async function queryTimetableCells(env, importId, options = {}) {
         WHERE import_session_id = ?
         ORDER BY ${orderBySql()}
       `).bind(importId).all();
-      return result.results || [];
+      return await attachCellTeachers(env, result.results || []);
     }
 
     const statuses = options.statuses || ['active', 'imported', 'needs_review'];
@@ -211,7 +211,7 @@ async function queryTimetableCells(env, importId, options = {}) {
       WHERE status IN (${placeholders})
       ORDER BY ${orderBySql()}
     `).bind(...statuses).all();
-    return result.results || [];
+    return await attachCellTeachers(env, result.results || []);
   } catch (error) {
     if (isEieBaseTableMissing(error)) return [];
     throw error;
@@ -219,12 +219,48 @@ async function queryTimetableCells(env, importId, options = {}) {
 }
 
 async function getTimetableCell(env, cellId) {
-  return env.DB.prepare(`
+  const cell = await env.DB.prepare(`
     SELECT *
     FROM eie_timetable_cells
     WHERE id = ?
     LIMIT 1
   `).bind(cellId).first();
+  if (!cell) return null;
+  const rows = await attachCellTeachers(env, [cell]);
+  return rows[0] || cell;
+}
+
+async function attachCellTeachers(env, rows) {
+  const cells = Array.isArray(rows) ? rows : [];
+  const ids = cells.map(row => safeText(row.id)).filter(Boolean);
+  if (!ids.length) return cells;
+  try {
+    const placeholders = ids.map(() => '?').join(', ');
+    const result = await env.DB.prepare(`
+      SELECT timetable_cell_id, teacher_name, sort_order
+      FROM eie_timetable_cell_teachers
+      WHERE timetable_cell_id IN (${placeholders})
+      ORDER BY sort_order ASC, teacher_name ASC
+    `).bind(...ids).all();
+    const byCell = new Map();
+    for (const row of (result.results || [])) {
+      const list = byCell.get(row.timetable_cell_id) || [];
+      list.push(safeText(row.teacher_name));
+      byCell.set(row.timetable_cell_id, list);
+    }
+    return cells.map(cell => {
+      const teacherNames = normalizeTeacherNames(byCell.get(cell.id) || parseRawMeta(cell.raw_meta_json).teacher_names || cell.teacher_name_raw);
+      return { ...cell, teacher_names: teacherNames };
+    });
+  } catch (error) {
+    if (isRound6TableMissing(error)) {
+      return cells.map(cell => ({
+        ...cell,
+        teacher_names: normalizeTeacherNames(parseRawMeta(cell.raw_meta_json).teacher_names || cell.teacher_name_raw)
+      }));
+    }
+    throw error;
+  }
 }
 
 
@@ -374,7 +410,7 @@ function buildNeedsReviewRows(cells) {
 
 function isRound6TableMissing(error) {
   const text = String(error?.message || error || '').toLowerCase();
-  return text.includes('no such table') || text.includes('eie_students') || text.includes('eie_student_contacts') || text.includes('eie_student_schedule_assignments');
+  return text.includes('no such table') || text.includes('eie_students') || text.includes('eie_student_contacts') || text.includes('eie_student_schedule_assignments') || text.includes('eie_student_teachers') || text.includes('eie_timetable_cell_teachers');
 }
 
 function isEieBaseTableMissing(error) {
@@ -610,7 +646,7 @@ async function queryConfirmedStudents(env) {
     GROUP BY s.id
     ORDER BY s.display_name ASC, s.created_at ASC
   `).all();
-  const students = studentsResult.results || [];
+  const students = await attachStudentTeachers(env, studentsResult.results || []);
   if (!students.length) return students;
 
   // 2. 연락처 전체 (is_primary DESC, created_at ASC)
@@ -1008,6 +1044,14 @@ async function attachAssignedStudents(env, rows) {
              s.display_name,
              s.normalized_name,
              s.grade,
+             s.school_name,
+             s.student_phone,
+             s.parent_phone,
+             s.guardian_relation,
+             s.student_address,
+             s.vehicle_info,
+             s.student_pin,
+             s.student_type,
              s.status AS student_status,
              c.id AS contact_id,
              c.phone,
@@ -1039,6 +1083,14 @@ async function attachAssignedStudents(env, rows) {
           student_name_raw: assignmentMeta.student_name_raw || row.display_name || '',
           normalized_name: row.normalized_name || '',
           grade_raw: row.grade || '',
+          school_name: row.school_name || '',
+          student_phone: row.student_phone || row.phone || '',
+          parent_phone: row.parent_phone || '',
+          guardian_relation: row.guardian_relation || '',
+          student_address: row.student_address || '',
+          vehicle_info: row.vehicle_info || '',
+          student_pin: row.student_pin || '',
+          student_type: row.student_type || '일반',
           phone_raw: row.phone || '',
           normalized_phone: row.normalized_phone || '',
           contact_id: row.contact_id || '',
@@ -1344,6 +1396,7 @@ async function handlePostTimetableCell(request, env) {
     if (isUniqueConflict(error)) return uniqueCellConflictResponse();
     throw error;
   }
+  await syncCellTeachers(env, cell.id, cell.raw_meta_json?.teacher_names || cell.teacher_name_raw);
   const saved = await getTimetableCell(env, cell.id);
   return jsonResponse({ success: true, data: saved, timetable_cell: saved });
 }
@@ -1409,6 +1462,9 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
         next.raw_meta_json,
         cellId
       ).run();
+      if (body.teacher_names !== undefined || body.teachers !== undefined || body.teacher_name !== undefined || body.teacher_name_raw !== undefined) {
+        await syncCellTeachers(env, cellId, rawMeta.teacher_names || next.teacher_name_raw);
+      }
     } catch (error) {
       if (isUniqueConflict(error)) return uniqueCellConflictResponse();
       throw error;
@@ -1435,6 +1491,13 @@ async function handlePostStudent(request, env, teacher) {
   const normalizedName = normalizeName(name);
   const rawMeta = {};
   const school = safeText(body.school_name || body.school || '');
+  const studentPhone = safeText(body.student_phone || body.phone || body.phone_raw || body.contact_phone || '');
+  const parentPhone = safeText(body.parent_phone || '');
+  const guardianRelation = safeText(body.guardian_relation || '');
+  const studentAddress = safeText(body.student_address || '');
+  const vehicleInfo = safeText(body.vehicle_info || '');
+  const studentPin = safeText(body.student_pin || body.pin || '');
+  const studentType = safeText(body.student_type || '일반') || '일반';
   if (school) {
     rawMeta.school_name = school;
     rawMeta.school = school;
@@ -1446,12 +1509,21 @@ async function handlePostStudent(request, env, teacher) {
 
   try {
     await env.DB.prepare(`
-      INSERT INTO eie_students (id, display_name, normalized_name, grade, status, source_type, memo, raw_meta_json, created_by, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, 'manual', ?, ?, ?, ?, ?)
-    `).bind(studentId, name, normalizedName, grade, status, memo, rawMetaJson, teacher?.id || null, now, now).run();
+      INSERT INTO eie_students (
+        id, display_name, normalized_name, grade, school_name, student_phone, parent_phone,
+        guardian_relation, student_address, vehicle_info, student_pin, student_type,
+        status, source_type, memo, raw_meta_json, created_by, created_at, updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual', ?, ?, ?, ?, ?)
+    `).bind(
+      studentId, name, normalizedName, grade, school, studentPhone, parentPhone,
+      guardianRelation, studentAddress, vehicleInfo, studentPin, studentType,
+      status, memo, rawMetaJson, teacher?.id || null, now, now
+    ).run();
+    await syncStudentTeachers(env, studentId, teacherNames);
 
     const warnings = [];
-    const phone = safeText(body.student_phone || body.phone || body.phone_raw || body.contact_phone || body.parent_phone || '');
+    const phone = studentPhone || safeText(body.parent_phone || '');
     const normalizedPhone = phone ? normalizePhone(phone) : '';
     if (normalizedPhone) {
       const contactId = makeId('eie_contact');
@@ -1483,6 +1555,75 @@ function normalizeTeacherNames(value) {
     seen.add(key);
     return true;
   });
+}
+
+async function syncStudentTeachers(env, studentId, teacherNames) {
+  const sid = safeText(studentId);
+  if (!sid) return;
+  const names = normalizeTeacherNames(teacherNames);
+  try {
+    await env.DB.prepare('DELETE FROM eie_student_teachers WHERE student_id = ?').bind(sid).run();
+    for (let index = 0; index < names.length; index += 1) {
+      await env.DB.prepare(`
+        INSERT OR IGNORE INTO eie_student_teachers
+          (id, student_id, teacher_name, sort_order, source_type, created_at, updated_at)
+        VALUES (?, ?, ?, ?, 'manual', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      `).bind(makeId('eie_st'), sid, names[index], index).run();
+    }
+  } catch (error) {
+    if (!isRound6TableMissing(error)) throw error;
+  }
+}
+
+async function syncCellTeachers(env, cellId, teacherNames) {
+  const cid = safeText(cellId);
+  if (!cid) return;
+  const names = normalizeTeacherNames(teacherNames);
+  try {
+    await env.DB.prepare('DELETE FROM eie_timetable_cell_teachers WHERE timetable_cell_id = ?').bind(cid).run();
+    for (let index = 0; index < names.length; index += 1) {
+      await env.DB.prepare(`
+        INSERT OR IGNORE INTO eie_timetable_cell_teachers
+          (id, timetable_cell_id, teacher_name, sort_order, source_type, created_at, updated_at)
+        VALUES (?, ?, ?, ?, 'manual', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      `).bind(makeId('eie_ct'), cid, names[index], index).run();
+    }
+  } catch (error) {
+    if (!isRound6TableMissing(error)) throw error;
+  }
+}
+
+async function attachStudentTeachers(env, rows) {
+  const students = Array.isArray(rows) ? rows : [];
+  const ids = students.map(row => safeText(row.id || row.student_id)).filter(Boolean);
+  if (!ids.length) return students;
+  try {
+    const placeholders = ids.map(() => '?').join(', ');
+    const result = await env.DB.prepare(`
+      SELECT student_id, teacher_name, sort_order
+      FROM eie_student_teachers
+      WHERE student_id IN (${placeholders})
+      ORDER BY sort_order ASC, teacher_name ASC
+    `).bind(...ids).all();
+    const byStudent = new Map();
+    for (const row of (result.results || [])) {
+      const list = byStudent.get(row.student_id) || [];
+      list.push(safeText(row.teacher_name));
+      byStudent.set(row.student_id, list);
+    }
+    return students.map(student => ({
+      ...student,
+      teacher_names: normalizeTeacherNames(byStudent.get(student.id || student.student_id) || parseRawMeta(student.raw_meta_json).teacher_names || student.teacher_name)
+    }));
+  } catch (error) {
+    if (isRound6TableMissing(error)) {
+      return students.map(student => ({
+        ...student,
+        teacher_names: normalizeTeacherNames(parseRawMeta(student.raw_meta_json).teacher_names || student.teacher_name)
+      }));
+    }
+    throw error;
+  }
 }
 
 const STUDENT_META_FIELDS = [
@@ -1533,6 +1674,38 @@ async function handlePatchStudent(request, env, teacher, studentId) {
   if (body.grade !== undefined || body.grade_raw !== undefined) {
     sets.push('grade = ?');
     binds.push(safeText(body.grade || body.grade_raw));
+  }
+  if (body.school_name !== undefined || body.school !== undefined) {
+    sets.push('school_name = ?');
+    binds.push(safeText(body.school_name || body.school || ''));
+  }
+  if (body.student_phone !== undefined || body.phone !== undefined || body.phone_raw !== undefined) {
+    sets.push('student_phone = ?');
+    binds.push(safeText(body.student_phone || body.phone || body.phone_raw || ''));
+  }
+  if (body.parent_phone !== undefined) {
+    sets.push('parent_phone = ?');
+    binds.push(safeText(body.parent_phone));
+  }
+  if (body.guardian_relation !== undefined) {
+    sets.push('guardian_relation = ?');
+    binds.push(safeText(body.guardian_relation));
+  }
+  if (body.student_address !== undefined) {
+    sets.push('student_address = ?');
+    binds.push(safeText(body.student_address));
+  }
+  if (body.vehicle_info !== undefined) {
+    sets.push('vehicle_info = ?');
+    binds.push(safeText(body.vehicle_info));
+  }
+  if (body.student_pin !== undefined || body.pin !== undefined) {
+    sets.push('student_pin = ?');
+    binds.push(safeText(body.student_pin || body.pin));
+  }
+  if (body.student_type !== undefined) {
+    sets.push('student_type = ?');
+    binds.push(safeText(body.student_type) || '일반');
   }
   if (body.memo !== undefined || body.note !== undefined) {
     sets.push('memo = ?');
@@ -1611,6 +1784,9 @@ async function handlePatchStudent(request, env, teacher, studentId) {
       warnings.push('contact update failed: ' + safeText(error?.message || String(error)));
     }
   }
+  if (body.teacher_names !== undefined || body.teachers !== undefined || body.teacher_name !== undefined) {
+    await syncStudentTeachers(env, studentId, body.teacher_names || body.teachers || body.teacher_name);
+  }
 
   const student = await getStudentWithContacts(env, studentId);
   const response = { success: true, student, data: student, contacts: student?.contacts || [], warnings };
@@ -1646,8 +1822,10 @@ async function getStudentById(env, studentId) {
 }
 
 async function getStudentWithContacts(env, studentId) {
-  const student = await getStudentById(env, studentId);
-  if (!student) return null;
+  const rawStudent = await getStudentById(env, studentId);
+  if (!rawStudent) return null;
+  const studentRows = await attachStudentTeachers(env, [rawStudent]);
+  const student = studentRows[0] || rawStudent;
   const result = await env.DB.prepare(`
     SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
     FROM eie_student_contacts

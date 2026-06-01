@@ -42,9 +42,28 @@ const mvpHtml = fs.readFileSync(mvpPath, 'utf8');
   '평가팩을 선택해 주세요.',
   '평가팩을 찾을 수 없습니다.',
   '문항 수 확인 필요',
+  'hasUsableQuestions(pack)',
+  'Array.isArray(pack?.questions) && pack.questions.length > 0',
 ].forEach((requiredText) => {
   assert(analysisHtml.includes(requiredText), `assessment-analysis.html should include ${requiredText}`);
 });
+
+assert(
+  analysisHtml.includes('const canRenderQuestions = hasUsableQuestions(pack)'),
+  'assessment-analysis.html should render input/analysis only from a non-empty pack.questions array'
+);
+
+assert(
+  analysisHtml.includes('canRenderQuestions ? renderInputSection()') &&
+  analysisHtml.includes('canRenderQuestions ? \'<div id="questionInputMount"></div><div id="analysisSections"></div>\''),
+  'assessment-analysis.html should not create input tables from questionCount-only metadata'
+);
+
+assert(
+  analysisHtml.includes('if (!state.rows.length) return null;') &&
+  analysisHtml.includes('if (!draft) return;'),
+  'assessment-analysis.html should avoid saving empty analysis drafts when questions are unavailable'
+);
 
 [
   'sourceFile',

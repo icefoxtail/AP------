@@ -4,6 +4,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes/eie.js'), 'utf8');
+const migration = fs.readFileSync(path.join(root, 'migrations/20260601_eie_student_info_class_teachers.sql'), 'utf8');
 
 assert(
   source.includes('const DIRECT_STUDENT_STATUSES'),
@@ -23,6 +24,42 @@ assert(
 assert(
   source.includes("'parent_phone'") && source.includes("'guardian_relation'") && source.includes("'student_address'") && source.includes("'vehicle_info'") && source.includes("'student_pin'") && source.includes("'student_type'"),
   'student CRUD should persist AP-style student info fields in raw_meta_json'
+);
+
+for (const column of [
+  'school_name',
+  'student_phone',
+  'parent_phone',
+  'guardian_relation',
+  'student_address',
+  'vehicle_info',
+  'student_pin',
+  'student_type'
+]) {
+  assert(
+    migration.includes(`ALTER TABLE eie_students ADD COLUMN ${column}`),
+    `EIE migration should add eie_students.${column}`
+  );
+}
+
+assert(
+  migration.includes('CREATE TABLE IF NOT EXISTS eie_student_teachers') &&
+    migration.includes('CREATE TABLE IF NOT EXISTS eie_timetable_cell_teachers'),
+  'EIE migration should create normalized teacher link tables'
+);
+
+assert(
+  /INSERT OR IGNORE INTO eie_student_teachers[\s\S]*json_each/.test(migration) &&
+    /INSERT OR IGNORE INTO eie_timetable_cell_teachers[\s\S]*json_each/.test(migration),
+  'EIE migration should backfill teacher links from raw_meta_json.teacher_names'
+);
+
+assert(
+  source.includes('syncStudentTeachers') &&
+    source.includes('syncCellTeachers') &&
+    source.includes('attachStudentTeachers') &&
+    source.includes('attachCellTeachers'),
+  'EIE worker should read/write normalized teacher link tables'
 );
 
 assert(

@@ -6,36 +6,51 @@
   <title>시험지 분석표</title>
   <style>
     :root {
-      --archive-navy: #0B1220;
-      --archive-text: #1f2937;
-      --archive-muted: #64748b;
-      --archive-border: #dbe3ef;
-      --archive-soft: #f6f8fb;
-      --archive-green: #0f766e;
+      --blue-main: #2563eb;
+      --blue-light: #60a5fa;
+      --blue-pale: #eff6ff;
+      --green-border: #b7efd4;
+      --bg-soft: #f4f7fb;
+      --card-active: #f7faff;
+      --card-border: #e2e8f0;
+      --card-border-hover: #93c5fd;
+      --text-main: #0f172a;
+      --text-sub: #64748b;
+      --badge-text: #315ea8;
+      --badge-border: #d8e5fb;
+      --warn-bg: #fff7ed;
+      --warn-border: #fed7aa;
+      --warn-text: #9a3412;
+      --shadow-card: 0 14px 32px rgba(15, 23, 42, 0.06);
+      --shadow-card-hover: 0 22px 44px rgba(37, 99, 235, 0.12);
       --archive-red: #b42318;
       --archive-amber: #a16207;
-      --archive-shadow-sm: 0 8px 22px rgba(15, 23, 42, 0.08);
+      --archive-green: #0f766e;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      background: #f4f7fb;
-      color: var(--archive-text);
-      font-family: "Pretendard", "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.06), transparent 26%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg-soft) 100%);
+      color: #1e293b;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
       line-height: 1.5;
+      overflow-x: hidden;
     }
     header {
-      background: rgba(255,255,255,0.92);
-      border-bottom: 1px solid var(--archive-border);
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid #e6ebf3;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 900;
+      backdrop-filter: blur(14px);
     }
     .top-nav {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -43,74 +58,113 @@
     }
     .brand {
       font-size: 18px;
-      font-weight: 800;
-      color: var(--archive-navy);
+      font-weight: 900;
+      color: var(--text-main);
     }
     .back-link {
-      color: var(--archive-muted);
+      color: var(--text-sub);
       font-size: 13px;
+      font-weight: 800;
       text-decoration: none;
     }
-    main {
-      max-width: 1180px;
+    .content-wrap {
+      background: linear-gradient(180deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0) 100%);
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 24px 20px 56px;
+      padding: 28px 24px 58px;
     }
     .exam-card {
-      background: rgba(255,255,255,0.84);
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
-      box-shadow: var(--archive-shadow-sm);
-      margin-bottom: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 18px;
       overflow: hidden;
+      transition: 0.18s ease;
+      position: relative;
     }
     .card-top {
-      height: 5px;
-      background: var(--archive-navy);
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue-main) 0%, #7db8ff 100%);
     }
     .card-body {
-      padding: 18px;
+      padding: 22px 22px 18px;
     }
     .card-grade-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
     .card-grade-label {
-      color: var(--archive-muted);
-      font-size: 12px;
-      font-weight: 700;
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
-    .card-type-chip, .meta-badge {
+    .card-type-chip {
       display: inline-flex;
       align-items: center;
-      min-height: 24px;
+      justify-content: center;
+      min-height: 25px;
       border-radius: 999px;
-      background: var(--archive-soft);
-      border: 1px solid var(--archive-border);
-      color: var(--archive-muted);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 2px 9px;
+      background: rgba(238,244,255,0.86);
+      border: 1px solid var(--badge-border);
+      color: var(--badge-text);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 0 10px;
+      flex-shrink: 0;
+      backdrop-filter: blur(8px);
     }
-    .meta-badge.primary { color: var(--archive-navy); }
-    .meta-badge.green { color: var(--archive-green); }
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 0 10px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #475569;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+    }
+    .meta-badge.primary {
+      color: var(--blue-main);
+      background: rgba(239,246,255,0.95);
+      border-color: #dbeafe;
+    }
+    .meta-badge.green {
+      color: #047857;
+      background: rgba(236,253,245,0.95);
+      border-color: var(--green-border);
+    }
     .card-main-title {
-      font-size: 23px;
-      font-weight: 850;
+      color: var(--text-main);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: -0.04em;
       margin-bottom: 8px;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
     }
     .card-sub-title {
-      color: var(--archive-muted);
-      font-size: 14px;
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.58;
       margin-bottom: 12px;
     }
     .card-meta-line {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
+      margin-top: 13px;
+      min-height: 28px;
     }
     .form-grid {
       display: grid;
@@ -120,18 +174,19 @@
     label {
       display: grid;
       gap: 6px;
-      color: var(--archive-muted);
+      color: var(--text-sub);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
     }
     input, textarea {
       width: 100%;
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
-      background: #fff;
-      color: var(--archive-text);
+      border: 1px solid #e4ebf5;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.92);
+      color: var(--text-main);
       font: inherit;
       padding: 10px 11px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
     }
     textarea {
       min-height: 42px;
@@ -142,36 +197,49 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
+      gap: 0;
       margin-top: 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fcfdff 0%, #f9fbff 100%);
     }
     .action-btn {
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
-      background: #fff;
-      color: var(--archive-navy);
+      min-height: 48px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-sub);
       cursor: pointer;
-      font-size: 13px;
-      font-weight: 800;
-      min-height: 36px;
-      padding: 7px 12px;
-    }
-    .action-btn:hover { border-color: var(--archive-navy); }
-    .save-state {
-      color: var(--archive-muted);
       font-size: 12px;
+      font-weight: 800;
+      font-family: inherit;
+      padding: 0 16px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .action-btn + .action-btn { border-left: 1px solid #edf2f7; }
+    .action-btn:hover {
+      background: #f2f7ff;
+      color: #315ea8;
+    }
+    .save-state {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 800;
       margin-left: auto;
+      padding: 0 12px;
     }
     .section-title {
       font-size: 17px;
-      font-weight: 850;
+      font-weight: 900;
       margin: 0 0 12px;
+      color: var(--text-main);
     }
     .table-wrap {
       overflow-x: auto;
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
-      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fcfdff 0%, #f9fbff 100%);
     }
     table {
       width: 100%;
@@ -179,15 +247,15 @@
       min-width: 760px;
     }
     th, td {
-      border-bottom: 1px solid var(--archive-border);
+      border-bottom: 1px solid var(--card-border);
       padding: 9px 10px;
       text-align: left;
       vertical-align: middle;
       font-size: 13px;
     }
     th {
-      background: var(--archive-soft);
-      color: var(--archive-muted);
+      background: #f8fafc;
+      color: var(--text-sub);
       font-weight: 800;
       white-space: nowrap;
     }
@@ -198,11 +266,11 @@
     }
     .result-btn {
       min-width: 38px;
-      min-height: 34px;
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
+      min-height: 38px;
+      border: 1px solid #e4ebf5;
+      border-radius: 12px;
       background: #fff;
-      color: var(--archive-muted);
+      color: var(--text-sub);
       cursor: pointer;
       font-weight: 850;
     }
@@ -227,32 +295,35 @@
       gap: 8px;
     }
     .stat {
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
-      background: #fff;
+      border: 1px solid #e4ebf5;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.92);
       padding: 12px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
     }
     .stat strong {
       display: block;
-      color: var(--archive-navy);
+      color: var(--text-main);
       font-size: 20px;
       line-height: 1.1;
     }
     .empty-state {
-      border: 1px dashed var(--archive-border);
-      border-radius: 8px;
-      background: #fff;
-      color: var(--archive-muted);
-      padding: 32px 18px;
-      text-align: center;
+      border: 1px solid var(--warn-border);
+      border-radius: 14px;
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      padding: 18px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(154, 52, 18, 0.05);
     }
     .needs-list {
       display: grid;
       gap: 8px;
     }
     .need-item {
-      border: 1px solid var(--archive-border);
-      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
       background: #fff;
       padding: 10px 12px;
       font-size: 13px;
@@ -260,7 +331,7 @@
 
     @media (max-width: 760px) {
       .top-nav { align-items: flex-start; flex-direction: column; }
-      main { padding: 16px 12px 40px; }
+      .content-wrap { padding: 16px 12px 40px; }
       .form-grid, .summary-grid { grid-template-columns: 1fr; }
       .span-2 { grid-column: span 1; }
       .card-main-title { font-size: 19px; }
@@ -271,7 +342,7 @@
     @media print {
       body { background: #fff; }
       header, .no-print, .input-section, .result-picker { display: none !important; }
-      main { max-width: none; padding: 0; }
+      .content-wrap { max-width: none; padding: 0; }
       .exam-card { box-shadow: none; break-inside: avoid; }
       .card-body { padding: 12px; }
       .table-wrap { overflow: visible; }
@@ -289,7 +360,7 @@
     </div>
   </header>
 
-  <main id="app">
+  <main class="content-wrap" id="app">
     <div class="empty-state">평가팩을 불러오는 중입니다.</div>
   </main>
 
@@ -334,8 +405,12 @@
       return fallback;
     }
 
+    function hasUsableQuestions(pack) {
+      return Array.isArray(pack?.questions) && pack.questions.length > 0;
+    }
+
     function getQuestionCount(pack) {
-      if (Array.isArray(pack?.questions) && pack.questions.length > 0) return pack.questions.length;
+      if (hasUsableQuestions(pack)) return pack.questions.length;
       const count = Number.parseInt(pack?.questionCount || pack?.question_count, 10);
       return Number.isInteger(count) && count > 0 ? count : null;
     }
@@ -426,7 +501,8 @@
     }
 
     function buildRows(pack) {
-      return (pack.questions || []).map((question, index) => {
+      if (!hasUsableQuestions(pack)) return [];
+      return pack.questions.map((question, index) => {
         const indexItem = findQuestionIndex(question);
         return {
           order_no: index + 1,
@@ -640,6 +716,7 @@
     }
 
     function collectDraft() {
+      if (!state.rows.length) return null;
       return {
         studentName: document.getElementById('studentName')?.value || '',
         className: document.getElementById('className')?.value || '',
@@ -654,7 +731,9 @@
     }
 
     function saveDraft(showState = true) {
-      localStorage.setItem(getStorageKey(), JSON.stringify(collectDraft()));
+      const draft = collectDraft();
+      if (!draft) return;
+      localStorage.setItem(getStorageKey(), JSON.stringify(draft));
       if (showState) {
         const el = document.getElementById('saveState');
         if (el) el.textContent = '임시저장됨';
@@ -663,6 +742,7 @@
 
     function loadDraft(showState = false) {
       const raw = localStorage.getItem(getStorageKey());
+      if (!state.rows.length) return;
       if (!raw) {
         if (showState) {
           const el = document.getElementById('saveState');
@@ -759,14 +839,15 @@
         return;
       }
       const count = getQuestionCount(pack);
+      const canRenderQuestions = hasUsableQuestions(pack);
       state.pack = pack;
-      state.rows = count && Array.isArray(pack.questions) ? buildRows(pack) : [];
+      state.rows = canRenderQuestions ? buildRows(pack) : [];
       app.innerHTML = [
         renderInfo(pack, count),
-        count ? renderInputSection() : '<div class="empty-state">문항 수 확인 필요</div>',
-        count ? '<div id="questionInputMount"></div><div id="analysisSections"></div>' : '',
+        canRenderQuestions ? renderInputSection() : '<div class="empty-state">문항 수 확인 필요</div>',
+        canRenderQuestions ? '<div id="questionInputMount"></div><div id="analysisSections"></div>' : '',
       ].join('');
-      if (!count) return;
+      if (!canRenderQuestions) return;
       document.getElementById('examDate').value = todayString();
       renderDynamic();
       bindStaticEvents();
