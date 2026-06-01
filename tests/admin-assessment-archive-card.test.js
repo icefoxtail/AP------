@@ -21,6 +21,15 @@ assert(overviewMatch, 'renderAdminStudentOverviewPanel should exist');
 const overviewBody = overviewMatch[1];
 
 assert(
+  /function\s+adminBuildGradeHoverRows\s*\(/.test(dashboard),
+  'admin overview should build grade-level hover rows for student metrics'
+);
+assert(
+  dashboard.includes('ap-admin-mini-metric__hover') && overviewBody.includes('adminBuildGradeHoverRows(data.activeStudents)'),
+  'student overview metrics should show a larger grade breakdown on hover'
+);
+
+assert(
   dashboard.includes('시험지 보관함') && overviewBody.includes('renderAdminAssessmentArchiveMetric'),
   'admin overview should render the assessment archive card title'
 );

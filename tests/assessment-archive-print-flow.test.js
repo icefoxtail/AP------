@@ -12,7 +12,7 @@ function assert(condition, message) {
 }
 
 [
-  '출제하기',
+  '출제',
   '정답',
   '해설',
   '시험지 출력 방식 선택',
@@ -37,6 +37,7 @@ function assert(condition, message) {
 });
 
 assert(!html.includes('>출력</button>'), 'assessment action button should not use the old 출력 label');
+assert(!html.includes('>출제하기</button>'), 'assessment action button should use the shorter 출제 label');
 assert(!html.includes('assessment-analysis.html'), 'analysis screen should not be added');
 assert(!html.includes('성분표'), 'analysis button text should not be added');
 

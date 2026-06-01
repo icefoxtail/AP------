@@ -101,8 +101,8 @@ function isEieApiPath(pathname) {
   return pathname === '/api/eie' || pathname.startsWith('/api/eie/');
 }
 
-function isOwnerRole(role) {
-  return ['admin', 'owner'].includes(String(role || '').toLowerCase());
+function isDisabledRole(role) {
+  return ['disabled', 'archived'].includes(String(role || '').toLowerCase());
 }
 
 async function handleAuthLogin(request, env) {
@@ -126,8 +126,8 @@ async function handleAuthLogin(request, env) {
     return jsonResponse({ success: false, error: 'invalid credentials' }, 401);
   }
 
-  if (!isOwnerRole(teacher.role)) {
-    return jsonResponse({ success: false, error: 'EIE login is owner only' }, 403);
+  if (isDisabledRole(teacher.role)) {
+    return jsonResponse({ success: false, error: 'teacher account is disabled' }, 403);
   }
 
   const session = await createTeacherSession(env, teacher);

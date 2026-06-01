@@ -227,6 +227,31 @@
             return request(`consultations/${encodeURIComponent(id)}`, { method: 'DELETE' });
         },
 
+        getTeachers() {
+            return get('teachers', 'student-seeds');
+        },
+        async createTeacher(payload) {
+            return request('teachers', { method: 'POST', body: payload || {} });
+        },
+        async updateTeacher(teacherId, payload) {
+            return request(`teachers/${encodeURIComponent(teacherId)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async resetTeacherPassword(teacherId, newPassword) {
+            return request(`teachers/${encodeURIComponent(teacherId)}/reset-password`, {
+                method: 'PATCH',
+                body: { new_password: newPassword }
+            });
+        },
+        async deleteTeacher(teacherId) {
+            return request(`teachers/${encodeURIComponent(teacherId)}`, { method: 'DELETE' });
+        },
+        async seedDefaultTeachers() {
+            return request('teachers/seed-defaults', { method: 'POST' });
+        },
+
         // ── Generic public request methods (APMS compat layer용) ─────
         request(path, options) {
             return request(path, options);

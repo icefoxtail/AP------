@@ -721,6 +721,27 @@
     </div>
   </div>
 
+  <div class="modal-overlay" id="assessmentTargetModal">
+    <div class="modal-box">
+      <div class="modal-title">출제 대상</div>
+      <div class="modal-sub">시험지를 출제할 대상을 선택하세요.</div>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+        <button class="modal-btn-primary" type="button" onclick="selectAssessmentTarget('class')">반별</button>
+        <button class="modal-btn-primary" type="button" style="background: var(--archive-navy, #0B1220);" onclick="selectAssessmentTarget('grade')">학년별</button>
+      </div>
+      <button class="modal-close-btn" type="button" onclick="closeAssessmentModal()">취소</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="assessmentGradeModalOverlay">
+    <div class="modal-box">
+      <div class="modal-title">출제 학년 선택</div>
+      <div class="modal-sub">선택한 학년의 모든 반에 시험지가 출제됩니다.</div>
+      <div id="assessmentGradeModalBody"></div>
+      <button class="modal-btn-cancel" type="button" onclick="closeAssessmentModal()">취소</button>
+    </div>
+  </div>
+
   <div class="modal-overlay" id="assessmentClassModalOverlay">
     <div class="modal-box">
       <div class="modal-title">출제 학급 선택</div>
@@ -874,7 +895,7 @@
             <div class="card-file-name">${escapeHTML(pack.id || pack.title)}</div>
           </div>
           <div class="card-actions">
-            <button class="action-btn" type="button" data-action="exam" data-pack-id="${escapeHTML(pack.id)}">출제하기</button>
+            <button class="action-btn" type="button" data-action="exam" data-pack-id="${escapeHTML(pack.id)}">출제</button>
             <button class="action-btn" type="button" data-action="ans" data-pack-id="${escapeHTML(pack.id)}">정답</button>
             <button class="action-btn" type="button" data-action="sol" data-pack-id="${escapeHTML(pack.id)}">해설</button>
           </div>
@@ -931,10 +952,25 @@
         _pendingAssessmentQpp = qpp;
         window._pendingAssessmentClassSelectPack = pack;
         window._pendingAssessmentClassSelectQpp = qpp;
-        openAssessmentClassSelectionModal(pack, qpp);
+        openAssessmentTargetModal(pack, qpp);
       } else {
         goAssessmentMixedEngine(pack, 'exam', qpp);
       }
+    }
+
+    function openAssessmentTargetModal(pack, qpp) {
+      window._pendingAssessmentClassSelectPack = pack;
+      window._pendingAssessmentClassSelectQpp = qpp;
+      document.getElementById('assessmentTargetModal').classList.add('open');
+    }
+
+    function selectAssessmentTarget(targetType) {
+      document.getElementById('assessmentTargetModal').classList.remove('open');
+      const pack = window._pendingAssessmentClassSelectPack || _pendingAssessmentPack;
+      const qpp = window._pendingAssessmentClassSelectQpp || _pendingAssessmentQpp || 4;
+      if (!pack) return;
+      if (targetType === 'grade') openAssessmentGradeSelectionModal(pack, qpp);
+      else openAssessmentClassSelectionModal(pack, qpp);
     }
 
     function escapeModalText(value) {
@@ -964,6 +1000,93 @@
         if (nameDiff !== 0) return nameDiff;
         return String(a.id || '').localeCompare(String(b.id || ''), 'ko');
       });
+    }
+
+    function getAssessmentClassGrade(row) {
+      const explicit = String(row?.grade || row?.grade_label || '').trim();
+      if (explicit) return explicit;
+      const text = `${row?.name || ''} ${row?.class_name || ''}`;
+      return ['중1', '중2', '중3', '고1', '고2'].find((grade) => text.includes(grade)) || '';
+    }
+
+    function getAssessmentAvailableGrades(classes) {
+      const grades = new Set((classes || []).map(getAssessmentClassGrade).filter(Boolean));
+      return ['중1', '중2', '중3', '고1', '고2'].filter((grade) => grades.has(grade));
+    }
+
+    function getAssessmentClassesForGrade(grade) {
+      return sortAssessmentQrClassesForSelect((_assessmentQrClassRows || []).filter((row) => getAssessmentClassGrade(row) === grade));
+    }
+
+    function getAssessmentAssignmentAuthHeader() {
+      try {
+        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (!session?.login_id || !session?.raw_password) return null;
+        return { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function stableAssessmentJson(value) {
+      if (Array.isArray(value)) return `[${value.map(stableAssessmentJson).join(',')}]`;
+      if (value && typeof value === 'object') {
+        return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableAssessmentJson(value[key])}`).join(',')}}`;
+      }
+      return JSON.stringify(value ?? null);
+    }
+
+    function simpleAssessmentHash(value) {
+      const text = stableAssessmentJson(value);
+      let hash = 2166136261;
+      for (let i = 0; i < text.length; i++) {
+        hash ^= text.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+      return `fnv1a_${(hash >>> 0).toString(16).padStart(8, '0')}`;
+    }
+
+    function buildAssessmentPackHash(pack) {
+      return simpleAssessmentHash({
+        pack_id: pack?.id || '',
+        questions: (pack?.questions || []).map((question, index) => ({
+          order: index + 1,
+          source_file: question?._sourceFile || '',
+          source_question_no: question?._sourceQuestionNo || '',
+          standard_unit_key: question?.standardUnitKey || '',
+          level: question?.level || '',
+        })),
+      });
+    }
+
+    function getAssessmentAssignmentBatchId(pack, gradeLabel) {
+      return `batch_assessment_${String(pack?.id || 'pack').replace(/[^a-zA-Z0-9_-]+/g, '_')}_${String(gradeLabel || 'class').replace(/[^a-zA-Z0-9가-힣_-]+/g, '_')}_${Date.now()}`;
+    }
+
+    async function registerAssessmentClassExamAssignment(classRow, pack, key, options = {}) {
+      const authHeader = getAssessmentAssignmentAuthHeader();
+      if (!authHeader) throw new Error('auth required');
+      const gradeLabel = options.gradeLabel || pack?.grade || getAssessmentClassGrade(classRow);
+      const payload = {
+        class_id: classRow.id,
+        exam_title: pack.title,
+        exam_date: new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0],
+        question_count: (pack.questions || []).length,
+        archive_file: `MIXED:${key}`,
+        source_type: 'mixed',
+        pack_id: pack.id,
+        grade_label: gradeLabel,
+        pack_hash: buildAssessmentPackHash(pack),
+        assignment_batch_id: options.assignmentBatchId || getAssessmentAssignmentBatchId(pack, gradeLabel),
+        target_scope: options.target_scope || 'class'
+      };
+      const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeader },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`assignment failed: ${res.status}`);
+      return res.json().catch(() => ({}));
     }
 
     function renderAssessmentTeacherClassSelector(classes) {
@@ -1066,6 +1189,99 @@
       }
     }
 
+    function renderAssessmentGradeSelector(classes) {
+      _assessmentQrClassRows = Array.isArray(classes) ? classes : [];
+      const grades = getAssessmentAvailableGrades(_assessmentQrClassRows);
+      if (!grades.length) {
+        return '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">해당 학년에 출제할 반이 없습니다.</div>';
+      }
+      const options = grades
+        .map((grade) => `<option value="${escapeModalText(grade)}">${escapeModalText(grade)} 전체</option>`)
+        .join('');
+      return `
+        <div class="teacher-class-stack">
+          <div>
+            <label class="teacher-class-label" for="assessment-grade-select">학년 선택</label>
+            <select id="assessment-grade-select" class="teacher-class-select" onchange="renderAssessmentGradeClassPreview()">${options}</select>
+            <div id="assessment-grade-class-preview" class="teacher-class-note"></div>
+          </div>
+          <button class="modal-btn-primary" type="button" onclick="confirmAssessmentGradeSelection()">확인</button>
+        </div>`;
+    }
+
+    function renderAssessmentGradeClassPreview() {
+      const select = document.getElementById('assessment-grade-select');
+      const preview = document.getElementById('assessment-grade-class-preview');
+      if (!select || !preview) return;
+      const rows = getAssessmentClassesForGrade(select.value);
+      preview.textContent = rows.length ? `${select.value} 전체 ${rows.length}개 반에 출제됩니다.` : '해당 학년에 출제할 반이 없습니다.';
+    }
+
+    async function openAssessmentGradeSelectionModal(pack, qpp) {
+      const overlay = document.getElementById('assessmentGradeModalOverlay');
+      const body = document.getElementById('assessmentGradeModalBody');
+      overlay.classList.add('open');
+      body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
+
+      const authHeader = getAssessmentAssignmentAuthHeader();
+      if (!authHeader) {
+        body.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
+            <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
+            <input id="assessment-grade-apmath-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
+            <input id="assessment-grade-apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
+            <div id="assessment-grade-apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
+            <button class="modal-btn-primary" type="button" onclick="doAssessmentApmathLoginAndLoadGrades(event)">로그인 후 반 목록 불러오기</button>
+          </div>`;
+        return;
+      }
+
+      try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
+        if (!res.ok) throw new Error('API Request Failed');
+        const data = await res.json();
+        if (!data || !data.success || !Array.isArray(data.classes)) throw new Error('Invalid data format');
+        body.innerHTML = renderAssessmentGradeSelector(data.classes);
+        renderAssessmentGradeClassPreview();
+      } catch (error) {
+        console.error(error);
+        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+      }
+    }
+
+    async function doAssessmentApmathLoginAndLoadGrades(event) {
+      if (event && event.preventDefault) event.preventDefault();
+      const loginId = document.getElementById('assessment-grade-apmath-login-id')?.value.trim();
+      const password = document.getElementById('assessment-grade-apmath-login-pw')?.value;
+      const errorElement = document.getElementById('assessment-grade-apmath-login-err');
+      if (!loginId || !password) {
+        if (errorElement) errorElement.innerText = '아이디와 비밀번호를 입력하세요.';
+        return;
+      }
+      if (errorElement) errorElement.innerText = '로그인 중...';
+      try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ login_id: loginId, password }),
+        });
+        const data = await res.json();
+        if (!data.success) {
+          if (errorElement) errorElement.innerText = '아이디 또는 비밀번호가 맞지 않습니다.';
+          return;
+        }
+        localStorage.setItem('APMATH_SESSION', JSON.stringify({
+          login_id: loginId,
+          raw_password: password,
+          name: data.name,
+          role: data.role,
+        }));
+        openAssessmentGradeSelectionModal(window._pendingAssessmentClassSelectPack, window._pendingAssessmentClassSelectQpp);
+      } catch (error) {
+        if (errorElement) errorElement.innerText = '서버 연결 실패. 다시 시도하세요.';
+      }
+    }
+
     async function doAssessmentApmathLoginAndLoadClasses(event) {
       if (event && event.preventDefault) event.preventDefault();
       const loginId = document.getElementById('assessment-apmath-login-id')?.value.trim();
@@ -1102,6 +1318,8 @@
     function closeAssessmentModal() {
       document.getElementById('assessmentPrintModeModal').classList.remove('open');
       document.getElementById('assessmentQppModal').classList.remove('open');
+      document.getElementById('assessmentTargetModal').classList.remove('open');
+      document.getElementById('assessmentGradeModalOverlay').classList.remove('open');
       document.getElementById('assessmentClassModalOverlay').classList.remove('open');
     }
 
@@ -1121,12 +1339,54 @@
           classId: selectedClassId,
           teacherName: selectedTeacherName,
           className: selectedClassName,
+          target_scope: 'class',
         });
       }
     }
 
-    function goAssessmentMixedEngine(pack, mode, qpp, options = {}) {
+    async function confirmAssessmentGradeSelection() {
+      const select = document.getElementById('assessment-grade-select');
+      if (!select || !select.value) return;
+      const gradeLabel = select.value;
+      const rows = getAssessmentClassesForGrade(gradeLabel);
+      if (!rows.length) {
+        const preview = document.getElementById('assessment-grade-class-preview');
+        if (preview) preview.textContent = '해당 학년에 출제할 반이 없습니다.';
+        return;
+      }
+      const pack = _pendingAssessmentPack;
+      if (!pack) return;
       const key = `assessment_${pack.id}_${Date.now()}`;
+      const assignmentBatchId = getAssessmentAssignmentBatchId(pack, gradeLabel);
+      try {
+        for (const row of rows) {
+          await registerAssessmentClassExamAssignment(row, pack, key, {
+            assignmentBatchId,
+            target_scope: 'grade',
+            gradeLabel,
+          });
+        }
+        closeAssessmentModal();
+        const representative = rows[0];
+        goAssessmentMixedEngine(pack, 'exam', _pendingAssessmentQpp, {
+          submitQr: true,
+          classId: representative.id,
+          teacherName: getAssessmentQrTeacherName(representative),
+          className: representative.name || '',
+          target_scope: 'grade',
+          gradeLabel,
+          assignmentBatchId,
+          keyOverride: key,
+        });
+      } catch (error) {
+        console.error(error);
+        const body = document.getElementById('assessmentGradeModalBody');
+        if (body) body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">학년별 출제 등록에 실패했습니다. AP Math OS 연결을 확인하세요.</div>';
+      }
+    }
+
+    async function goAssessmentMixedEngine(pack, mode, qpp, options = {}) {
+      const key = options.keyOverride || `assessment_${pack.id}_${Date.now()}`;
       const questions = (pack.questions || []).map((question) => ({ ...question }));
       const meta = {
         title: pack.title,
@@ -1136,6 +1396,12 @@
         generatedAt: new Date().toISOString(),
         assessmentPackId: pack.id,
         category: pack.category,
+        packId: pack.id,
+        grade: pack.grade,
+        gradeLabel: options.gradeLabel || pack.grade,
+        scopeLabel: pack.scopeLabel,
+        assignmentBatchId: options.assignmentBatchId || '',
+        targetScope: options.target_scope || (options.submitQr ? 'class' : ''),
       };
       localStorage.setItem('mixedQuestions_' + key, JSON.stringify(questions));
       localStorage.setItem('mixedMeta_' + key, JSON.stringify(meta));
@@ -1148,6 +1414,22 @@
       if (options.classId) url.searchParams.set('class', options.classId);
       if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
       if (options.className) url.searchParams.set('className', options.className);
+      if (options.submitQr && options.classId) {
+        try {
+          await registerAssessmentClassExamAssignment(
+            { id: options.classId, name: options.className || '', grade: options.gradeLabel || pack.grade, teacher_name: options.teacherName || '' },
+            pack,
+            key,
+            {
+              assignmentBatchId: options.assignmentBatchId || getAssessmentAssignmentBatchId(pack, options.gradeLabel || pack.grade || 'class'),
+              target_scope: options.target_scope || 'class',
+              gradeLabel: options.gradeLabel || pack.grade || '',
+            }
+          );
+        } catch (error) {
+          console.warn('[assessment assignment] 사전 등록 실패:', error);
+        }
+      }
       window.open(url.toString(), '_blank');
     }
 
@@ -1155,10 +1437,14 @@
     window.openAssessmentPrintModeModal = openAssessmentPrintModeModal;
     window.selectAssessmentPrintMode = selectAssessmentPrintMode;
     window.confirmAssessmentQpp = confirmAssessmentQpp;
+    window.selectAssessmentTarget = selectAssessmentTarget;
     window.openAssessmentClassSelectionModal = openAssessmentClassSelectionModal;
     window.renderAssessmentClassSelectByTeacher = renderAssessmentClassSelectByTeacher;
+    window.renderAssessmentGradeClassPreview = renderAssessmentGradeClassPreview;
     window.confirmAssessmentClassSelection = confirmAssessmentClassSelection;
+    window.confirmAssessmentGradeSelection = confirmAssessmentGradeSelection;
     window.doAssessmentApmathLoginAndLoadClasses = doAssessmentApmathLoginAndLoadClasses;
+    window.doAssessmentApmathLoginAndLoadGrades = doAssessmentApmathLoginAndLoadGrades;
     window.closeAssessmentModal = closeAssessmentModal;
     window.goAssessmentMixedEngine = goAssessmentMixedEngine;
 

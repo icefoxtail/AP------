@@ -23,9 +23,10 @@ wrangler.jsonc      EIE deployment config
 
 ## Handled Paths
 
-- `POST /api/auth/login`: issues an EIE session token for `admin` or `owner`
+- `POST /api/auth/login`: issues an EIE session token for active `admin`, `owner`, or `teacher`
 - `POST /api/auth/logout`: revokes the bearer session token when present
-- `GET/POST/PATCH/DELETE /api/eie/*`: EIE management APIs
+- `GET/POST/PATCH/DELETE /api/eie/*`: EIE APIs with route-level permissions
+- `POST /api/eie/teachers/seed-defaults`: admin-only seed for Carmen, IVY, Lily, Stacy, Zoe, Laura with initial password `eie1234`
 - `GET /` or `GET /health`: health response
 - All other paths return 404 JSON
 

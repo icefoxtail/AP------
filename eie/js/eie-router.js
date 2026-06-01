@@ -5,6 +5,7 @@
         'timetable-v2': () => EieTimetableV2View.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
+        teacher: () => EieTeacherView.render(),
         management: () => EieManagementView.render()
     };
 
@@ -26,6 +27,11 @@
         });
     }
 
+    function syncOwnerBackground(route) {
+        if (typeof document === 'undefined') return;
+        const nextRoute = normalizeRoute(route);
+        document.body.classList.toggle('eie-owner-dashboard-bg', nextRoute === 'dashboard');
+    }
 
     function openFromElement(route) {
         const nextRoute = normalizeRoute(route);
@@ -53,6 +59,7 @@
         const nextRoute = normalizeRoute(route);
         EieState.setActiveView(nextRoute);
         syncNav(nextRoute);
+        syncOwnerBackground(nextRoute);
         try {
             await EieApp.mount(await routes[nextRoute]());
         } catch (e) {
