@@ -21,9 +21,18 @@
   - Verification: `node --check` passed.
   - Local QA check: 20 questions, objective choices-not-5/answer-missing count 0.
 
+- `19_순천고_2학기_기말_고2_확률과통계.candidate.js`
+  - Restored objective choices for displayNo 1-18 from full-page evidence.
+  - Filled/confirmed objective answers for displayNo 1-18 from answer sheet.
+  - Restored subjective content for displayNo 19-21 from full-page evidence.
+  - Filled displayNo 19 by direct solving: `(pi+4)/(pi+6)`.
+  - Confirmed displayNo 20-21 answers from answer sheet: `0.0166`, `98`.
+  - Kept displayNo 19-21 as subjective with `choices=[]`.
+  - Verification: `node --check` passed.
+  - Local QA check: 21 questions, content-short/objective choices-not-5/answer-missing count 0.
+
 ### Remaining In Scope
 
-- `19_순천고_2학기_기말_고2_확률과통계.candidate.js`
 - `16_강남고_1학기_중간_고2_확률과통계.candidate.js`
 
 ### Protected Paths

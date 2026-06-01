@@ -1330,10 +1330,15 @@
       const selectedClassId = select.value;
       const selectedTeacherName = selectedOption?.dataset?.teacher || document.getElementById('assessment-teacher-select')?.value || '';
       const selectedClassName = selectedOption?.dataset?.className || '';
-      closeAssessmentModal();
-
       const pack = _pendingAssessmentPack;
       if (pack) {
+        if (!Array.isArray(pack.questions) || pack.questions.length === 0) {
+          console.warn('[assessment class assignment] 문항 수 확인 실패:', pack?.id);
+          const classBody = document.getElementById('assessmentClassModalBody');
+          if (classBody) classBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
+          return;
+        }
+        closeAssessmentModal();
         goAssessmentMixedEngine(pack, 'exam', _pendingAssessmentQpp, {
           submitQr: true,
           classId: selectedClassId,
@@ -1356,6 +1361,12 @@
       }
       const pack = _pendingAssessmentPack;
       if (!pack) return;
+      if (!Array.isArray(pack.questions) || pack.questions.length === 0) {
+        console.warn('[assessment grade assignment] 문항 수 확인 실패:', pack?.id);
+        const gradeBody = document.getElementById('assessmentGradeModalBody');
+        if (gradeBody) gradeBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
+        return;
+      }
       const key = `assessment_${pack.id}_${Date.now()}`;
       const assignmentBatchId = getAssessmentAssignmentBatchId(pack, gradeLabel);
       try {

@@ -25,20 +25,9 @@ async function handleQrClasses(request, env, teacher, url) {
   const currentTeacher = teacher || await verifyAuth(request, env);
   if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
-  let query;
-  const params = [];
-  if (isAdminUser(currentTeacher)) {
-    query = 'SELECT id, name, grade, teacher_name FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name';
-  } else {
-    query = `
-      SELECT c.id, c.name, c.grade, c.teacher_name
-      FROM classes c
-      JOIN teacher_classes tc ON tc.class_id = c.id
-      WHERE tc.teacher_id = ? AND (c.is_active != 0 OR c.is_active IS NULL)
-      ORDER BY c.grade, c.name`;
-    params.push(currentTeacher.id);
-  }
-  const res = await env.DB.prepare(query).bind(...params).all();
+  const res = await env.DB.prepare(
+    'SELECT id, name, grade, teacher_name FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name'
+  ).all();
   return jsonResponse({ success: true, classes: res.results });
 }
 
