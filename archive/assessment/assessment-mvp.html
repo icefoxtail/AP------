@@ -898,6 +898,7 @@
             <button class="action-btn" type="button" data-action="exam" data-pack-id="${escapeHTML(pack.id)}">출제</button>
             <button class="action-btn" type="button" data-action="ans" data-pack-id="${escapeHTML(pack.id)}">정답</button>
             <button class="action-btn" type="button" data-action="sol" data-pack-id="${escapeHTML(pack.id)}">해설</button>
+            <button class="action-btn" type="button" data-action="analysis" data-pack-id="${escapeHTML(pack.id)}">분석표</button>
           </div>
         </article>
       `).join('');
@@ -920,6 +921,11 @@
     function openPack(packId, mode) {
       const pack = packs.find((item) => item.id === packId);
       if (!pack) return alert('평가팩을 찾지 못했습니다.');
+      if (mode === 'analysis') {
+        const analysisUrl = './assessment-' + 'analysis.html?packId=' + encodeURIComponent(pack.id);
+        window.location.href = analysisUrl;
+        return;
+      }
       if (mode === 'exam') {
         openAssessmentPrintModeModal(pack);
         return;

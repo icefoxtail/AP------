@@ -59,7 +59,7 @@ function renderTeacherDashboardView() {
         </div>
     `;
 
-    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0 && isClassScheduledTodayForDashboard(c.id)));
+    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
     filteredClasses = filteredClasses.filter(c => {
         if (tab === 'middle') return isMiddleSchoolClass(c);
         if (tab === 'high') return !isMiddleSchoolClass(c);

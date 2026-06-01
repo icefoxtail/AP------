@@ -3113,6 +3113,10 @@ body.eie-owner-dashboard-bg {
 }
 
 /* ── EIE Timetable V2 read-only board ───────────────────────── */
+.eie-main:has(.eie-v2-screen) {
+    max-width: min(1680px, calc(100vw - 48px));
+}
+
 .eie-v2-screen {
     width: 100%;
     max-width: none;
@@ -3193,7 +3197,7 @@ body.eie-owner-dashboard-bg {
 
 .eie-v2-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+    grid-template-columns: minmax(0, 1fr) 320px;
     gap: 16px;
     align-items: start;
     width: 100%;
@@ -3215,10 +3219,10 @@ body.eie-owner-dashboard-bg {
 .eie-v2-board {
     position: relative;
     display: grid;
-    grid-template-columns: 104px repeat(var(--eie-v2-teacher-count), minmax(220px, 1fr));
+    grid-template-columns: 72px repeat(var(--eie-v2-teacher-count), minmax(170px, 1fr));
     grid-template-rows: 54px repeat(var(--eie-v2-row-count), minmax(92px, auto));
     gap: 0;
-    min-width: calc(104px + var(--eie-v2-teacher-count) * 220px);
+    min-width: calc(72px + var(--eie-v2-teacher-count) * 170px);
     isolation: isolate;
 }
 
@@ -3256,18 +3260,23 @@ body.eie-owner-dashboard-bg {
     flex-direction: column;
     justify-content: center;
     gap: 3px;
-    padding: 9px 12px;
+    padding: 8px 9px;
     background: var(--eie-surface-2);
 }
 
 .eie-v2-teacher-header strong {
-    font-size: 14px;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 13px;
     letter-spacing: -0.02em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .eie-v2-teacher-header small {
     color: var(--eie-muted);
-    font-size: 11px;
+    font-size: 10.5px;
 }
 
 .eie-v2-time-cell {
@@ -3278,17 +3287,17 @@ body.eie-owner-dashboard-bg {
     flex-direction: column;
     justify-content: flex-start;
     gap: 4px;
-    padding: 12px 10px;
+    padding: 10px 7px;
     background: var(--eie-surface-2);
 }
 
 .eie-v2-time-cell strong {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .eie-v2-time-cell small {
     color: var(--eie-muted);
-    font-size: 10px;
+    font-size: 9.5px;
     line-height: 1.25;
 }
 
@@ -3306,11 +3315,11 @@ body.eie-owner-dashboard-bg {
     background: #f8fbff;
     color: var(--eie-text);
     text-align: left;
-    padding: 10px 11px;
+    padding: 8px 8px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 5px;
     min-height: 72px;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
     transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease, background-color 0.14s ease;
@@ -3335,14 +3344,14 @@ body.eie-owner-dashboard-bg {
 }
 
 .eie-v2-session-topline strong {
-    font-size: 14px;
+    font-size: 12.5px;
     line-height: 1.25;
     letter-spacing: -0.025em;
 }
 
 .eie-v2-session-time {
     color: var(--eie-muted);
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 800;
 }
 
@@ -3372,22 +3381,25 @@ body.eie-owner-dashboard-bg {
 .eie-v2-student-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 3px;
     align-items: flex-start;
 }
 
 .eie-v2-student-chip {
     display: inline-flex;
     align-items: center;
-    min-height: 20px;
-    padding: 3px 6px;
+    justify-content: center;
+    min-height: 18px;
+    max-width: 100%;
+    padding: 2px 5px;
     border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 999px;
+    border-radius: 4px;
     background: rgba(255, 255, 255, 0.72);
     color: var(--eie-text);
-    font-size: 11px;
-    line-height: 1.1;
-    font-weight: 700;
+    font-size: 10.5px;
+    line-height: 1;
+    font-weight: 800;
+    white-space: nowrap;
 }
 
 .eie-v2-student-empty {
@@ -3491,6 +3503,9 @@ body.eie-owner-dashboard-bg {
 }
 
 @media (max-width: 1100px) {
+    .eie-main:has(.eie-v2-screen) {
+        max-width: none;
+    }
     .eie-v2-layout {
         grid-template-columns: 1fr;
     }
@@ -3585,6 +3600,76 @@ body.eie-owner-dashboard-bg {
     color: var(--eie-text);
 }
 
+.eie-v2-student-panel .eie-v2-alert {
+    margin-top: 10px;
+}
+
+.eie-v2-student-field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.eie-v2-student-field {
+    min-width: 0;
+    border: 1px solid var(--eie-border);
+    border-radius: 10px;
+    background: var(--eie-surface-2);
+    padding: 9px 10px;
+    display: grid;
+    gap: 3px;
+}
+
+.eie-v2-student-field span {
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-v2-student-field strong {
+    min-width: 0;
+    color: var(--eie-text);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.eie-v2-student-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.eie-v2-student-form label {
+    display: grid;
+    gap: 5px;
+}
+
+.eie-v2-student-form label span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-student-form input,
+.eie-v2-student-form select,
+.eie-v2-student-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--eie-border);
+    border-radius: 10px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    font: inherit;
+    font-size: 14px;
+    padding: 9px 10px;
+    outline: 0;
+}
+
+.eie-v2-student-form textarea {
+    min-height: 86px;
+    resize: vertical;
+}
+
 /* Round 2: EIE student management APMS parity */
 .eie-apms-students-screen {
     width: 100%;
@@ -3624,6 +3709,32 @@ body.eie-owner-dashboard-bg {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 8px;
     margin: 12px 0;
+}
+
+.eie-apms-grade-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin: -2px 0 12px;
+}
+
+.eie-apms-filter-chip {
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    color: var(--eie-muted);
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1;
+    padding: 9px 11px;
+    cursor: pointer;
+}
+
+.eie-apms-filter-chip.is-active {
+    border-color: rgba(37, 99, 235, 0.35);
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--eie-primary);
 }
 
 .eie-apms-summary-item {
@@ -4079,6 +4190,53 @@ body.eie-owner-dashboard-bg {
     color: var(--eie-muted);
     font-size: 12px;
     font-weight: 800;
+}
+
+.eie-apms-form-label {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-teacher-picker {
+    display: grid;
+    gap: 7px;
+}
+
+.eie-apms-teacher-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.eie-apms-teacher-option {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+.eie-apms-form .eie-apms-teacher-option input {
+    width: 14px;
+    height: 14px;
+    margin: 0 6px 0 0;
+    padding: 0;
+    accent-color: var(--eie-primary);
+}
+
+.eie-apms-teacher-option:has(input:checked) {
+    border-color: rgba(37, 99, 235, 0.35);
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--eie-primary);
 }
 
 .eie-apms-form input,

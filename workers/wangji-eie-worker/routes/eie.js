@@ -94,6 +94,10 @@ function normalizeCell(cell, importSessionId, index) {
 }
 
 function normalizeManualCell(body) {
+  const teacherNames = normalizeTeacherNames(body?.teacher_names || body?.teachers || body?.teacher_name);
+  const rawMeta = parseRawMeta(body?.raw_meta_json);
+  if (teacherNames.length) rawMeta.teacher_names = teacherNames;
+  if (!rawMeta.source_type) rawMeta.source_type = 'manual';
   return {
     id: body?.id || makeId('eie_cell'),
     import_session_id: MANUAL_IMPORT_SESSION_ID,
@@ -105,13 +109,13 @@ function normalizeManualCell(body) {
     start_time: safeText(body?.start_time),
     end_time: safeText(body?.end_time),
     class_name_raw: safeText(body?.class_name_raw),
-    teacher_name_raw: safeText(body?.teacher_name_raw),
+    teacher_name_raw: safeText(body?.teacher_name_raw) || teacherNames[0] || '',
     room_raw: safeText(body?.room_raw),
     column_index: Number.isFinite(Number(body?.column_index)) ? Number(body.column_index) : null,
     student_count: Number.isFinite(Number(body?.student_count)) ? Number(body.student_count) : 0,
     status: safeStatus(body?.status, 'active'),
     memo: safeText(body?.memo),
-    raw_meta_json: body?.raw_meta_json || { source_type: 'manual' }
+    raw_meta_json: rawMeta
   };
 }
 
@@ -1358,6 +1362,11 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
       WHERE id = ?
     `).bind(status, cellId).run();
   } else {
+    const teacherNames = normalizeTeacherNames(body.teacher_names || body.teachers || body.teacher_name);
+    const rawMeta = parseRawMeta(body.raw_meta_json !== undefined ? body.raw_meta_json : existing.raw_meta_json);
+    if (body.teacher_names !== undefined || body.teachers !== undefined || body.teacher_name !== undefined) {
+      rawMeta.teacher_names = teacherNames;
+    }
     const next = {
       day_label: body.day_label == null ? existing.day_label : safeText(body.day_label),
       period_label: body.period_label == null ? existing.period_label : safeText(body.period_label),
@@ -1369,11 +1378,12 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
       start_time: body.start_time == null ? existing.start_time : safeText(body.start_time),
       end_time: body.end_time == null ? existing.end_time : safeText(body.end_time),
       class_name_raw: body.class_name_raw == null ? existing.class_name_raw : safeText(body.class_name_raw),
-      teacher_name_raw: body.teacher_name_raw == null ? existing.teacher_name_raw : safeText(body.teacher_name_raw),
+      teacher_name_raw: body.teacher_name_raw == null ? (teacherNames[0] || existing.teacher_name_raw) : safeText(body.teacher_name_raw),
       room_raw: body.room_raw == null ? existing.room_raw : safeText(body.room_raw),
       student_count: body.student_count == null ? existing.student_count : Number(body.student_count || 0),
       status: body.status == null ? safeStatus(existing.status, 'active') : safeStatus(body.status, 'active'),
-      memo: body.memo == null ? existing.memo : safeText(body.memo)
+      memo: body.memo == null ? existing.memo : safeText(body.memo),
+      raw_meta_json: toJsonText(rawMeta)
     };
     const validationError = validateTimetableCell(next);
     if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
@@ -1382,7 +1392,7 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
         UPDATE eie_timetable_cells
         SET day_label = ?, period_label = ?, period_order = ?, start_time = ?, end_time = ?,
             class_name_raw = ?, teacher_name_raw = ?, room_raw = ?, student_count = ?, status = ?, memo = ?,
-            updated_at = CURRENT_TIMESTAMP
+            raw_meta_json = ?, updated_at = CURRENT_TIMESTAMP
         WHERE id = ?
       `).bind(
         next.day_label,
@@ -1396,6 +1406,7 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
         next.student_count,
         next.status,
         next.memo,
+        next.raw_meta_json,
         cellId
       ).run();
     } catch (error) {
@@ -1428,6 +1439,9 @@ async function handlePostStudent(request, env, teacher) {
     rawMeta.school_name = school;
     rawMeta.school = school;
   }
+  const teacherNames = normalizeTeacherNames(body.teacher_names || body.teachers || body.teacher_name);
+  if (teacherNames.length) rawMeta.teacher_names = teacherNames;
+  applyStudentMetaFields(rawMeta, body);
   const rawMetaJson = Object.keys(rawMeta).length ? toJsonText(rawMeta) : null;
 
   try {
@@ -1437,7 +1451,7 @@ async function handlePostStudent(request, env, teacher) {
     `).bind(studentId, name, normalizedName, grade, status, memo, rawMetaJson, teacher?.id || null, now, now).run();
 
     const warnings = [];
-    const phone = safeText(body.phone || body.phone_raw || body.parent_phone || body.contact_phone || '');
+    const phone = safeText(body.student_phone || body.phone || body.phone_raw || body.contact_phone || body.parent_phone || '');
     const normalizedPhone = phone ? normalizePhone(phone) : '';
     if (normalizedPhone) {
       const contactId = makeId('eie_contact');
@@ -1458,6 +1472,42 @@ async function handlePostStudent(request, env, teacher) {
     if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
     return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
   }
+}
+
+function normalizeTeacherNames(value) {
+  const source = Array.isArray(value) ? value : safeText(value).split(',');
+  const seen = new Set();
+  return source.map(item => safeText(typeof item === 'string' ? item : item?.name)).filter(name => {
+    const key = name.toLowerCase();
+    if (!name || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+const STUDENT_META_FIELDS = [
+  'student_phone',
+  'parent_phone',
+  'guardian_relation',
+  'student_address',
+  'vehicle_info',
+  'student_pin',
+  'student_type'
+];
+
+function applyStudentMetaFields(rawMeta, body) {
+  let changed = false;
+  STUDENT_META_FIELDS.forEach(field => {
+    if (body[field] !== undefined) {
+      rawMeta[field] = safeText(body[field]);
+      changed = true;
+    }
+  });
+  if (body.pin !== undefined && body.student_pin === undefined) {
+    rawMeta.student_pin = safeText(body.pin);
+    changed = true;
+  }
+  return changed;
 }
 
 // ── 학생 정보 수정 ────────────────────────────────────────────────────
@@ -1496,20 +1546,29 @@ async function handlePatchStudent(request, env, teacher, studentId) {
   }
   const rawMeta = parseRawMeta(existingStudent.raw_meta_json);
   const school = safeText(body.school_name || body.school || '');
+  let rawMetaChanged = false;
   if (body.school_name !== undefined || body.school !== undefined) {
     rawMeta.school_name = school;
     rawMeta.school = school;
+    rawMetaChanged = true;
+  }
+  if (body.teacher_names !== undefined || body.teachers !== undefined || body.teacher_name !== undefined) {
+    rawMeta.teacher_names = normalizeTeacherNames(body.teacher_names || body.teachers || body.teacher_name);
+    rawMetaChanged = true;
+  }
+  if (applyStudentMetaFields(rawMeta, body)) rawMetaChanged = true;
+  if (rawMetaChanged) {
     sets.push('raw_meta_json = ?');
     binds.push(toJsonText(rawMeta));
   }
 
-  ['student_name_raw', 'pin', 'student_pin'].forEach(field => {
+  ['student_name_raw'].forEach(field => {
     if (body[field] !== undefined) ignoredFields.push(field + ' (not in schema)');
   });
 
-  const phoneRaw = safeText(body.phone || body.phone_raw || body.parent_phone);
+  const phoneRaw = safeText(body.student_phone || body.phone || body.phone_raw);
   const normalizedPhone = phoneRaw ? normalizePhone(phoneRaw) : '';
-  const hasPhoneUpdate = body.phone !== undefined || body.phone_raw !== undefined || body.parent_phone !== undefined;
+  const hasPhoneUpdate = body.student_phone !== undefined || body.phone !== undefined || body.phone_raw !== undefined;
 
   if (!sets.length && !hasPhoneUpdate) return jsonResponse({ success: false, error: 'no valid fields to update', ignored_fields: ignoredFields }, 400);
 

@@ -251,13 +251,13 @@
   }
 
   /* ---------- MOBILE STICKY CTA ---------- */
-  .mcta-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.93); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -10px rgba(30,41,33,.2); transition: transform .32s var(--ease); }
+  .mcta-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.93); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -10px rgba(30,41,33,.2); transition: transform .32s var(--ease); }
   .mcta-bar.hide { transform: translateY(140%); }
-  .mcta-bar a { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 52px; border-radius: var(--r-md); font-size: 15.5px; font-weight: 700; }
-  .mcta-bar .tel { flex: 0 0 auto; padding: 0 20px; background: var(--white); color: var(--fg-1); border: 1px solid var(--border-strong); }
+  .mcta-bar a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; height: 52px; border-radius: var(--r-md); font-size: 14px; font-weight: 800; }
+  .mcta-bar .tel, .mcta-bar .map { padding: 0 10px; background: var(--white); color: var(--fg-1); border: 1px solid var(--border-strong); }
   .mcta-bar .tel:active { background: var(--bg-alt); }
-  .mcta-bar .main { flex: 1; background: var(--cm-main); color: #fff; box-shadow: var(--sh-sm); }
-  @media (max-width: 820px) { .mcta-bar { display: flex; } body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } }
+  .mcta-bar .main { padding: 0 10px; background: var(--cm-main); color: #fff; box-shadow: var(--sh-sm); }
+  @media (max-width: 820px) { .mcta-bar { display: grid; } body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } }
 
 
   /* ---------- MOBILE ACTION / MAP UPGRADE ---------- */
@@ -849,7 +849,7 @@
 <span class="divider"></span>
 </nav>
 <div class="hdr-actions">
-<a class="btn btn-secondary btn-sm home-link" href="../">왕지교육 홈</a>
+<a class="btn btn-secondary btn-sm home-link" href="../">왕지교육</a>
 <a class="btn btn-teal btn-sm" href="#inquiry">상담 문의</a>
 <button aria-expanded="false" aria-label="메뉴 열기" class="burger" id="burger">
 <svg class="ic" height="24" width="24"><use href="#i-menu"></use></svg>
@@ -861,7 +861,7 @@
 <a href="#program">과정 안내</a>
 <a href="#wangji-flow">왕지교육 연계</a>
 <a href="#inquiry">상담 문의</a>
-<a href="../">왕지교육 홈</a>
+<a href="../">왕지교육</a>
 
 </div>
 </header>
@@ -1213,7 +1213,8 @@
 <!-- MOBILE STICKY CTA -->
 <div class="mcta-bar" id="mctaBar">
 <a aria-label="전화 상담" class="tel" href="tel:061-727-2323"><svg class="ic" height="18" width="18"><use href="#i-phone"></use></svg>전화</a>
-<a class="main" href="#inquiry">상담 문의</a>
+<a aria-label="네이버 지도" class="map" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank"><svg class="ic" height="18" width="18"><use href="#i-map-pin"></use></svg>지도</a>
+<a class="main" href="#inquiry">상담문의</a>
 </div>
 <script>
 

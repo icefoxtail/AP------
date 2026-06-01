@@ -1159,9 +1159,8 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '', hoverR
         </div>`
         : '';
     return `
-        <div class="ap-admin-mini-metric"${roleAttr} title="${hoverText}" aria-label="${hoverText}"${clickAttr} style="${cursor} position:relative; min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;" onmouseenter="this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('opacity','1'); this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('transform','translateX(-50%) translateY(-2px)')" onmouseleave="this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('opacity','0'); this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('transform','translateX(-50%)')">
-            <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${safeValue}</div>
-            <span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">${safeLabel}</span>
+        <div class="ap-admin-mini-metric"${roleAttr} aria-label="${hoverText}"${clickAttr} style="${cursor} position:relative; min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;" onmouseenter="this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('opacity','1'); this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('transform','translateX(-50%) translateY(-2px)')" onmouseleave="this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('opacity','0'); this.querySelector('.ap-admin-mini-metric__hover')?.style.setProperty('transform','translateX(-50%)')">
+            <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${safeLabel}</div>
             ${hoverHtml}
         </div>
     `;
@@ -1183,7 +1182,7 @@ function renderAdminStudentOverviewPanel(data) {
             </div>
             <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
                 ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')", adminBuildGradeHoverRows(data.activeStudents))}
-                ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')", adminBuildGradeHoverRows(data.recentStudents))}
+                ${renderAdminMiniMetric('최근등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')", adminBuildGradeHoverRows(data.recentStudents))}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')", adminBuildGradeHoverRows(data.dischargedStudents))}
                 ${renderAdminAssessmentArchiveMetric('../archive/assessment/assessment-mvp.html')}
             </div>
@@ -1844,14 +1843,14 @@ function renderAdminGlobalSearchPanel() {
 
 
 function renderAdminControlCenter() {
-    if (typeof document !== 'undefined') {
+    if (typeof document !== 'undefined' && document.body) {
         document.body.classList.remove('ap-teacher-dashboard-mode');
         document.body.classList.add('ap-owner-dashboard-bg');
     }
     const dashboardRole = String((typeof state !== 'undefined' && state?.auth?.role) || '').toLowerCase();
     if (typeof renderAppDrawer === 'function' && dashboardRole === 'admin') {
         renderAppDrawer();
-    } else if (typeof document !== 'undefined') {
+    } else if (typeof document !== 'undefined' && typeof document.querySelectorAll === 'function') {
         document.querySelectorAll('#ap-system-gate, .ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
     }
     const root = document.getElementById('app-root');
@@ -2852,9 +2851,11 @@ function renderDashboard() {
 
     // fallback: dashboard-teacher.js 미로드 시 기존 선생님 화면 직접 렌더링
     state.ui.currentClassId = null;
-    if (typeof document !== 'undefined') {
+    if (typeof document !== 'undefined' && document.body) {
         document.body.classList.add('ap-teacher-dashboard-mode');
         document.body.classList.remove('ap-owner-dashboard-bg');
+    }
+    if (typeof document !== 'undefined' && typeof document.querySelectorAll === 'function') {
         document.querySelectorAll('#ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
     }
     const data = computeDashboardData();

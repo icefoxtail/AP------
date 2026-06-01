@@ -107,8 +107,8 @@
     function renderActionGrid() {
         return `
             <div class="ap-admin-shortcuts ap-admin-action-grid eie-admin-shortcuts eie-admin-action-grid eie-surface-toolbar eie-surface-toolbar--four" aria-label="원장님 바로가기">
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="classroom" aria-label="EIE 출석부" title="출석부">출석부</button>
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="timetable" aria-label="EIE 시간표" title="시간표">시간표</button>
+                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" disabled aria-label="EIE 출석부 준비중" title="준비중">출석부</button>
+                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="timetable-v2" aria-label="EIE 시간표" title="시간표">시간표</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" disabled aria-label="EIE 성적표 준비중" title="준비중">성적표</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="management" aria-label="EIE 관리" title="관리">관리</button>
             </div>
@@ -116,8 +116,9 @@
     }
 
     function renderMiniMetric(label, value, route) {
+        const routeAttr = route ? ` data-eie-route="${esc(route)}"` : ' disabled';
         return `
-            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button" data-eie-route="${esc(route || 'students')}" aria-label="${esc(label)} 보기" title="${esc(label)}">
+            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button"${routeAttr} aria-label="${esc(label)} 보기" title="${esc(label)}">
                 <span>${esc(label)}</span>
                 <strong>${Number(value || 0).toLocaleString('ko-KR')}</strong>
             </button>
@@ -133,9 +134,9 @@
                 </div>
                 <div class="ap-admin-overview-grid eie-admin-overview-grid eie-surface-toolbar eie-surface-toolbar--four" aria-label="오늘 운영">
                     ${renderMiniMetric('재원', students.length, 'students')}
-                    ${renderMiniMetric('최근 등록', recentStudentCount(students), 'students')}
-                    ${renderMiniMetric('대기', countByStatus(students, '대기'), 'students')}
-                    ${renderMiniMetric('확인 필요', (data.needsReview || []).length, 'students')}
+                    ${renderMiniMetric('최근 등록', recentStudentCount(students))}
+                    ${renderMiniMetric('대기', countByStatus(students, '대기'))}
+                    ${renderMiniMetric('확인 필요', (data.needsReview || []).length)}
                 </div>
             </div>
         `;
