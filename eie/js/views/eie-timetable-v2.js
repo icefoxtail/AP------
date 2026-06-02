@@ -1,5 +1,6 @@
 (function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
+    const FALLBACK_DAY_LABEL = '전체';
     const STATUS_LABELS = {
         active: '활성',
         imported: '활성',
@@ -326,7 +327,7 @@
             ...(row || {}),
             source_index: index,
             id: cellId(row, index),
-            day: normalizeDay(row?.day_of_week || row?.day_label || row?.day || ''),
+            day: normalizeDay(row?.day_of_week || row?.day_label || row?.day || '') || FALLBACK_DAY_LABEL,
             teacher_name: getTeacherDisplayName(row),
             teacher_key: teacherKey(getTeacherName(row)),
             class_name: getClassName(row),
@@ -405,7 +406,7 @@
     function buildDisplaySessions(rawRows) {
         const normalized = sortByTime((rawRows || [])
             .map(normalizeCell)
-            .filter(cell => cell.day && !cell.is_prep));
+            .filter(cell => !cell.is_prep));
         const grouped = new Map();
         normalized.forEach(cell => {
             const key = [cell.day, cell.teacher_key, cell.class_name].join('::');
@@ -433,12 +434,13 @@
     }
 
     function daySortValue(day) {
+        if (day === FALLBACK_DAY_LABEL) return 98;
         const index = DAY_ORDER.indexOf(day);
         return index >= 0 ? index : 99;
     }
 
     function getAvailableDays(sessions) {
-        const days = Array.from(new Set((sessions || []).map(session => session.day).filter(day => DAY_ORDER.includes(day))));
+        const days = Array.from(new Set((sessions || []).map(session => session.day).filter(Boolean)));
         return days.sort((a, b) => daySortValue(a) - daySortValue(b) || a.localeCompare(b, 'ko'));
     }
 

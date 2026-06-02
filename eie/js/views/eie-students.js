@@ -448,6 +448,20 @@
         }
     }
 
+    async function loadStudentAttendance(studentId) {
+        var sid = text(studentId);
+        if (!sid || !window.EieApi || typeof EieApi.getAttendanceRecords !== 'function') return;
+        try {
+            var result = await EieApi.getAttendanceRecords({ student_id: sid });
+            var rows = result.attendance_records || result.attendance || result.data || [];
+            if (window.EieState && typeof EieState.mergeStudentAttendance === 'function') {
+                EieState.mergeStudentAttendance(sid, rows);
+            }
+        } catch (err) {
+            _error = err && err.message ? err.message : '출석 기록을 불러오지 못했습니다.';
+        }
+    }
+
     function renderSummary() {
         var rows = studentsFromState();
         var active = rows.filter(function (row) { return statusOf(row) === 'active' || statusOf(row) === ''; }).length;
@@ -655,11 +669,47 @@
             + '</div>';
     }
 
+    function todayIso() {
+        return new Date().toLocaleDateString('sv-SE');
+    }
+
+    function attendanceOf(student) {
+        var sid = rowId(student);
+        return asArray(db().attendance).filter(function (row) {
+            return String(row.student_id || '') === String(sid);
+        }).sort(function (a, b) {
+            return text(b.date || b.created_at).localeCompare(text(a.date || a.created_at));
+        });
+    }
+
+    function renderAttendancePanel(student) {
+        var sid = rowId(student);
+        var today = todayIso();
+        var rows = attendanceOf(student);
+        var todayRecord = rows.find(function (row) {
+            return text(row.date || row.attendance_date || row.created_at).slice(0, 10) === today;
+        }) || null;
+        var status = text(todayRecord && todayRecord.status) || '미정';
+        var buttons = ['등원', '결석', '지각', '조퇴'].map(function (next) {
+            return '<button type="button" class="' + (status === next ? 'eie-primary-button' : 'eie-secondary-button') + '" onclick="EieStudentsView.saveAttendance(' + jsArg(sid) + ', ' + jsArg(next) + ')">' + esc(next) + '</button>';
+        }).join('');
+        return '<div class="eie-apms-card">'
+            + '<div class="eie-apms-section-head"><h3>출결/숙제</h3><span>오늘 ' + esc(status) + '</span></div>'
+            + '<div class="eie-apms-attendance-actions">' + buttons + '</div>'
+            + '<p class="eie-apms-muted">숙제 저장은 다음 단계입니다. 오늘은 출석 상태를 EIE 전용 출석부에 저장합니다.</p>'
+            + (rows.length ? '<div class="eie-apms-attendance-history">'
+                + rows.slice(0, 8).map(function (row) {
+                    return '<div class="eie-apms-contact-row"><div><strong>' + esc(text(row.date || row.created_at).slice(0, 10) || '-') + '</strong><span>' + esc(row.memo || '메모 없음') + '</span></div><strong>' + esc(row.status || '-') + '</strong></div>';
+                }).join('')
+                + '</div>' : '<p class="eie-apms-muted">저장된 출석 기록이 없습니다.</p>')
+            + '</div>';
+    }
+
     function renderTabBody(student) {
         if (_tab === 'contacts') return renderContacts(student);
         if (_tab === 'classes') return renderAssignments(student);
         if (_tab === 'consultation') return renderConsultations(student);
-        if (_tab === 'attendance') return renderReadyPanel('attendance');
+        if (_tab === 'attendance') return renderAttendancePanel(student);
         return '<div class="eie-apms-card">'
             + '<div class="eie-apms-section-head"><h3>기본정보</h3><span>EIE</span></div>'
             + '<div class="eie-apms-field-grid">'
@@ -902,11 +952,11 @@
             EieRouter.open('students');
         },
 
-        openDetail: async function (studentId, returnCtx) {
+        openDetail: async function (studentId, returnCtx, tab) {
             setReturnCtx(returnCtx);
             _selectedId = text(studentId);
             _mode = 'detail';
-            _tab = _tab || 'basic';
+            _tab = text(tab || (returnCtx && returnCtx.tab)) || _tab || 'basic';
             _notice = '';
             if (!selectedStudent() && _selectedId) {
                 await loadFoundation(true);
@@ -914,6 +964,7 @@
             }
             if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
+            if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
             return EieRouter.open('students');
         },
 
@@ -1105,7 +1156,34 @@
             _tab = text(tab) || 'basic';
             if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
+            if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
             EieRouter.open('students');
+        },
+
+        saveAttendance: async function (studentId, status) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            if (!sid) return;
+            _saving = true;
+            try {
+                var result = await EieApi.saveAttendanceRecord({
+                    student_id: sid,
+                    date: new Date().toLocaleDateString('sv-SE'),
+                    status: status
+                });
+                var rows = result.attendance_records || result.attendance || (result.attendance_record ? [result.attendance_record] : (result.data ? [result.data] : []));
+                if (window.EieState && typeof EieState.mergeStudentAttendance === 'function') {
+                    EieState.mergeStudentAttendance(sid, rows);
+                }
+                _notice = '출석을 저장했습니다.';
+                _tab = 'attendance';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '출석 저장에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
         },
 
         openClassroom: function (cellId) {

@@ -227,6 +227,19 @@
             return request(`consultations/${encodeURIComponent(id)}`, { method: 'DELETE' });
         },
 
+        getAttendanceRecords(filters) {
+            const params = new URLSearchParams();
+            if (filters?.student_id || filters?.studentId) params.set('student_id', filters.student_id || filters.studentId);
+            if (filters?.date) params.set('date', filters.date);
+            if (filters?.timetable_cell_id || filters?.cell_id || filters?.cellId) {
+                params.set('timetable_cell_id', filters.timetable_cell_id || filters.cell_id || filters.cellId);
+            }
+            return get(`attendance-records${params.toString() ? `?${params}` : ''}`, 'student-seeds');
+        },
+        async saveAttendanceRecord(payload) {
+            return request('attendance-records', { method: 'POST', body: payload || {} });
+        },
+
         getTeachers() {
             return get('teachers', 'student-seeds');
         },

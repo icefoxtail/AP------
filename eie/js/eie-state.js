@@ -351,6 +351,7 @@
         },
         setAttendance(rows) {
             state.db.attendance = asArray(rows);
+            state.db.attendance_records = state.db.attendance;
         },
         setHomework(rows) {
             state.db.homework = asArray(rows);
@@ -390,6 +391,13 @@
             const incoming = asArray(consultations);
             const others = state.db.consultations.filter(c => String(c?.student_id || '') !== sid);
             state.db.consultations = others.concat(incoming);
+        },
+        mergeStudentAttendance(studentId, records) {
+            const sid = String(studentId || '');
+            const incoming = asArray(records);
+            const others = state.db.attendance.filter(a => String(a?.student_id || '') !== sid);
+            state.db.attendance = others.concat(incoming);
+            state.db.attendance_records = state.db.attendance;
         },
         upsertClassStudent(row) {
             if (!row?.id) return;
