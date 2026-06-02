@@ -868,6 +868,84 @@
       ].filter(Boolean).join('');
     }
 
+    function isDiagnosticAssessmentPack(pack) {
+      if (!pack) return false;
+      return pack.category === '진단평가' ||
+        (pack.title || '').includes('진단평가') ||
+        (pack.id || '').startsWith('DIAG_');
+    }
+
+    function getDiagnosticStorageKey(diagnosticId) {
+      return `apms.diagnostic.assessment.result.${diagnosticId}`;
+    }
+
+    function getDiagnosticResultsListKey() {
+      return 'apms.diagnostic.assessment.results';
+    }
+
+    function getDiagnosticCurrentKey() {
+      return 'apms.diagnostic.assessment.current';
+    }
+
+    function todayString() {
+      return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    }
+
+    function createDiagnosticAssessmentDraft(pack) {
+      // questionCount 0 fallback 금지: 진단평가는 실제 pack.questions 배열이 있을 때만 시작한다.
+      const hasDiagnosticQuestions = Array.isArray(pack.questions) && pack.questions.length > 0;
+      if (!hasDiagnosticQuestions) {
+        alert('문항 수 확인이 필요합니다.');
+        return null;
+      }
+      const diagnosticId = `diagnostic_${String(pack.id || 'pack').replace(/[^a-zA-Z0-9_-]+/g, '_')}_${Date.now()}`;
+      const payload = {
+        diagnosticId,
+        packId: pack.id,
+        packTitle: pack.title || '',
+        category: pack.category || '',
+        type: pack.examType || '',
+        grade: pack.grade || '',
+        scope: pack.scopeLabel || pack.unitLabel || '',
+        range: pack.scopeLabel || pack.unitLabel || '',
+        questionCount: pack.questions.length,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: 'input_pending',
+        studentName: '',
+        className: '',
+        schoolName: '',
+        gradeLabel: '',
+        examDate: todayString(),
+        results: [],
+        source: 'assessment_mvp',
+        mode: 'diagnostic',
+      };
+      localStorage.setItem(getDiagnosticStorageKey(diagnosticId), JSON.stringify(payload));
+      localStorage.setItem(getDiagnosticCurrentKey(), diagnosticId);
+      const listKey = getDiagnosticResultsListKey();
+      const list = JSON.parse(localStorage.getItem(listKey) || '[]').filter((item) => item?.diagnosticId !== diagnosticId);
+      list.unshift({
+        diagnosticId,
+        packId: pack.id,
+        packTitle: pack.title || '',
+        questionCount: pack.questions.length,
+        status: payload.status,
+        updatedAt: payload.updatedAt,
+      });
+      localStorage.setItem(listKey, JSON.stringify(list.slice(0, 30)));
+      return payload;
+    }
+
+    function startDiagnosticAssessment(pack) {
+      const draft = createDiagnosticAssessmentDraft(pack);
+      if (!draft) return;
+      const url = './assessment-' + 'analysis.html?packId=' + encodeURIComponent(pack.id) +
+        '&diagnosticId=' + encodeURIComponent(draft.diagnosticId) +
+        '&mode=diagnostic-input';
+      window.location.href = url;
+    }
+
     function render() {
       document.querySelectorAll('.fb-original-toggle').forEach((button) => {
         button.classList.toggle('active', button.dataset.category === active);
@@ -896,6 +974,7 @@
           </div>
           <div class="card-actions">
             <button class="action-btn" type="button" data-action="exam" data-pack-id="${escapeHTML(pack.id)}">출제</button>
+            ${isDiagnosticAssessmentPack(pack) ? `<button class="action-btn" type="button" data-action="diagnostic-start" data-pack-id="${escapeHTML(pack.id)}">진단평가 출제</button>` : ''}
             <button class="action-btn" type="button" data-action="ans" data-pack-id="${escapeHTML(pack.id)}">정답</button>
             <button class="action-btn" type="button" data-action="sol" data-pack-id="${escapeHTML(pack.id)}">해설</button>
             <button class="action-btn" type="button" data-action="analysis" data-pack-id="${escapeHTML(pack.id)}">분석표</button>
@@ -921,6 +1000,10 @@
     function openPack(packId, mode) {
       const pack = packs.find((item) => item.id === packId);
       if (!pack) return alert('평가팩을 찾지 못했습니다.');
+      if (mode === 'diagnostic-start') {
+        startDiagnosticAssessment(pack);
+        return;
+      }
       if (mode === 'analysis') {
         const analysisUrl = './assessment-' + 'analysis.html?packId=' + encodeURIComponent(pack.id);
         window.location.href = analysisUrl;
