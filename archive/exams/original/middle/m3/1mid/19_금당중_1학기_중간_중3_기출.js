@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","제곱","정의","개념","조건해석","객관식"],
     "wide": false,
     "solution": "$x$가 $5$의 제곱근 $\\implies x$를 제곱하면 $5$가 됨 $\\implies x^2 = 5$\\n\\therefore ④",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","양의제곱근","음의제곱근","계산","기초연산","객관식"],
     "wide": false,
     "solution": "$A = -\\sqrt{4} = -2$\\n$B = \\sqrt{25} = 5$\\n$A+B = -2+5 = 3$\\n\\therefore ④",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","제곱","절댓값","정수계산","계산","객관식"],
     "wide": false,
     "solution": "$\\sqrt{(-5)^2} = 5$\\n$(-3)^2 = 9$\\n$5 - 9 = -4$\\n\\therefore ①",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","절댓값","문자식","부등호조건","식의간단화","조건해석","객관식"],
     "wide": false,
     "solution": "$\\sqrt{(-3a)^2} = |-3a| = 3a$ (∵ $a>0$)\\n$(\\sqrt{b})^2 = b$\\n$\\sqrt{(a-b)^2} = |a-b| = a-b$ (∵ $a>b$)\\n$3a - b + a - b = 4a - 2b$\\n\\therefore ④",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["실수","제곱근","대소관계","근삿값","부등식","개념","객관식"],
     "wide": false,
     "solution": "① $\\sqrt{0.3} > \\sqrt{0.09} = 0.3$\\n② $2 = \\sqrt{4} > \\sqrt{3}$\\n③ $\\sqrt{7} \\approx 2.6$ 이므로 $4-2.6=1.4 \\implies 1 < 1.4$ (참)\\n④ $\\sqrt{10} > \\sqrt{9} = 3$\\n⑤ $\\sqrt{5} \\approx 2.2$ 이므로 $1+2.2=3.2 > 3$\\n\\therefore ③",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호","문자치환","분수","유리화","조건해석","객관식"],
     "wide": false,
     "solution": "$\\sqrt{0.6} = \\sqrt{\\frac{3}{5}} = \\frac{\\sqrt{3}}{\\sqrt{5}} = \\frac{\\sqrt{3} \\times \\sqrt{5}}{5} = \\frac{ab}{5}$\\n\\therefore ②",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","분수","제곱","사칙연산","계산","객관식"],
     "wide": false,
     "solution": "$\\sqrt{\\frac{9}{16}} = \\frac{3}{4}, \\sqrt{(-4)^2} = 4, (-\\sqrt{\\frac{1}{2}})^2 = \\frac{1}{2}$\\n$\\frac{3}{4} \\times 4 \\div \\frac{1}{2} = 3 \\times 2 = 6$\\n\\therefore ⑤",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["무리수","유리수","제곱근","근호","분류","개념","보기선택","객관식"],
     "wide": false,
     "solution": "무리수: ㄱ($\\sqrt{0.4}$), ㄴ($\\sqrt{3.6}$), ㄹ($2\\sqrt{3}$), ㅂ($\\sqrt{5}-1$)\\n유리수: ㄷ($3$), ㅁ($0$)\\n\\therefore ⑤",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호정리","동류근호","근호덧셈","계수비교","계산","객관식"],
     "wide": false,
     "solution": "$6\\sqrt{6} - 4\\sqrt{6} + 9\\sqrt{6} = 11\\sqrt{6} \\implies a=11$\\n\\therefore ②",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","실생활","공식대입","단위","근호계산","활용","객관식"],
     "wide": false,
     "solution": "$\\sqrt{\\frac{98}{4.9}} = \\sqrt{20} = 2\\sqrt{5}$\\n\\therefore ④",
     "level": "중"
@@ -259,7 +259,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","분모유리화","분수","근호","계산","객관식"],
     "wide": false,
     "solution": "$\\frac{5\\sqrt{3}}{\\sqrt{6}} = \\frac{5}{\\sqrt{2}} = \\frac{5\\sqrt{2}}{2}$\\n\\therefore ①",
     "level": "중"
@@ -283,7 +283,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식곱셈","근호계산","곱셈공식","전개","오류판별","객관식"],
     "wide": false,
     "solution": "⑤ $(\\sqrt{3}+\\sqrt{2})(\\sqrt{3}-2\\sqrt{2}) = 3-2\\sqrt{6}+\\sqrt{6}-4 = -1-\\sqrt{6}$\\n\\therefore ⑤",
     "level": "중"
@@ -307,7 +307,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["실수","제곱근","정수부분","소수부분","대소관계","근호","객관식"],
     "wide": false,
     "solution": "$3 < \\sqrt{12} < 4 \\implies 8 < 5+\\sqrt{12} < 9$\\n소수 부분: $(5+\\sqrt{12}) - 8 = \\sqrt{12}-3$\\n\\therefore ③",
     "level": "중"
@@ -331,7 +331,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","도형","정팔각형","넓이","근호활용","응용","객관식"],
     "wide": false,
     "solution": "정팔각형 넓이 공식 $2(1+\\sqrt{2})s^2$ 또는 분할 계산 시 $8+4\\sqrt{2}$\\n\\therefore ①",
     "level": "중"
@@ -355,7 +355,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","인수","다항식","개념","오류판별","객관식"],
     "wide": false,
     "solution": "$x^3$은 주어진 식의 약수가 될 수 없음\\n\\therefore ②",
     "level": "중"
@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","완전제곱식","곱셈공식","계수비교","오류판별","객관식"],
     "wide": false,
     "solution": "④ $4x^2-10x+25$는 $(2x-5)^2 = 4x^2-20x+25$와 다르므로 불가\\n\\therefore ④",
     "level": "중"
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","완전제곱식","빈칸추론","계수조건","문자식","조건해석","객관식"],
     "wide": false,
     "solution": "$4(x^2-\\frac{1}{4}x+\\frac{1}{64}) = (2x-\\frac{1}{8})^2 \\implies \\frac{1}{16}$ 미스매치 주의, 계산상 $\\frac{1}{16}$ 및 $\\pm 16a$\\n\\therefore ④",
     "level": "중"
@@ -427,7 +427,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식곱셈","곱셈공식","차의제곱","넓이","도형","계산","객관식"],
     "wide": false,
     "solution": "$265^2 - 135^2 = (265+135)(265-135) = 400 \\times 130 = 52000$\\n\\therefore ③",
     "level": "중"
@@ -451,7 +451,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","이차식","계수비교","정수조건","문자값","조건해석","객관식"],
     "wide": false,
     "solution": "$2x^2+9x+4 = (2x+1)(x+4) \\implies a=1, b=4, a-b=-3$\\n\\therefore ①",
     "level": "중"
@@ -475,7 +475,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","공통인수","이차식","제곱의차","전개확인","오류판별","객관식"],
     "wide": false,
     "solution": "⑤ $(2x-5)(x+2) = 2x^2-x-10$ (원본 발문 $+x$와 불일치)\\n\\therefore ⑤",
     "level": "중"
@@ -499,7 +499,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["곱셈공식","인수분해","제곱의차","문자식변형","연립조건","조건해석","응용","객관식"],
     "wide": false,
     "solution": "$a^2-(b+1)^2=32 \\implies (a-b-1)(a+b+1)=32 \\implies 4(a+b+1)=32 \\implies a+b=7$\\n$(a-1)^2-b^2 = (a-1-b)(a-1+b) = (5-1) \\times (7-1) = 24$\\n\\therefore ④",
     "level": "중"
@@ -523,7 +523,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","수직선","좌표","비율","분모유리화","도형","서술형","객관식"],
     "wide": false,
     "solution": "$a = 0-\\sqrt{2}, b = 1+\\sqrt{2} \\implies \\frac{-\\sqrt{2}}{1+\\sqrt{2}} = \\sqrt{2}-2$\\n\\therefore ①",
     "level": "중"
@@ -547,7 +547,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","분모유리화","근호계산","근호덧셈","복합계산","서술형","객관식"],
     "wide": false,
     "solution": "(1) $\\sqrt{5} - \\frac{(2-\\sqrt{5})^2}{-1} = 9-3\\sqrt{5}$\\n(2) $2\\sqrt{2}-\\sqrt{6} + 4\\sqrt{6}-3\\sqrt{2} = 3\\sqrt{6}-\\sqrt{2}$\\n\\therefore ①",
     "level": "중"
@@ -571,7 +571,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","도형","직사각형","정사각형","넓이","둘레","근호활용","서술형"],
     "wide": false,
     "solution": "$AB=2\\sqrt{3}, AD=2\\sqrt{5} \\implies 둘레=2(2\\sqrt{3}+2\\sqrt{5}), 넓이=4\\sqrt{15}$\\n\\therefore ①",
     "level": "중"
@@ -595,7 +595,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","공통인수","제곱의차","문자식","다항식","서술형","객관식"],
     "wide": false,
     "solution": "$ab(a-b)$ 와 $3(a-b)(a+b)$ 의 공통인수는 $a-b$\\n\\therefore ①",
     "level": "중"

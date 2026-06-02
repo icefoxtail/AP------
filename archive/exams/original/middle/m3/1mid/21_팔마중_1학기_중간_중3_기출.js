@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","정의","양의제곱근","음의제곱근","개념","오답선별","객관식"],
     "wide": false,
     "content": "다음 중 그 값이 다른 하나는?",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","양의제곱근","음의제곱근","분수","부호판정","계산","객관식"],
     "wide": false,
     "content": "$\\sqrt{(-9)^2}$의 양의 제곱근을 $a$, $\\sqrt{\\frac{256}{81}}$의 음의 제곱근을 $b$라고 할 때, $a+b$의 값은?",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","제곱","소수","분수","근호계산","값비교","계산"],
     "wide": false,
     "content": "다음 중에서 계산한 결과가 가장 큰 것은?",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","절댓값","문자범위","부호판정","복수정답","조건해석","객관식"],
     "wide": false,
     "content": "$ab<0, a<b$일 때 다음 중 옳은 것을 모두 고르면?(2개)",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","수직선","정사각형","대각선","거리","도형","근호활용"],
     "wide": false,
     "content": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$에서 $\\overline{AC}=\\overline{AP}$, $\\overline{BD}=\\overline{BQ}$일 때, 두 점 $P, Q$에 대하여 $PQ$의 길이는?",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["무리수","유리수","제곱근","원주율","근호분류","개수세기","개념"],
     "wide": false,
     "content": "다음 보기 중에서 무리수의 개수는?<div class='box'>ㄱ. $\\sqrt{9}$  ㄴ. $-\\sqrt{21}$  ㄷ. $\\pi$  ㄹ. $\\sqrt{12.1}$  ㅁ. $\\sqrt{0.4}$  ㅂ. $\\sqrt{\\frac{1}{4}}$  ㅅ. $\\sqrt{18}-3\\sqrt{2}$</div>",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["실수","무리수","제곱근","대소관계","부등식","참거짓","객관식"],
     "wide": false,
     "content": "다음 중에서 두 실수의 대소 관계가 옳지 않은 것은?",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호","곱셈","나눗셈","분수근호","오류판별","객관식"],
     "wide": false,
     "content": "다음 중 바르지 않은 것은?",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["분모유리화","제곱근","근호","분수","켤레식","오류판별","객관식"],
     "wide": false,
     "content": "분모를 유리화 한 것 중 바르지 않은 것은?",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["근호계산","제곱근","동류근호","사칙연산","혼합계산","오류판별","객관식"],
     "wide": false,
     "content": "다음 중 계산이 바른 것은?",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","정수부분","소수부분","무리수","대소관계","근호계산","조건해석"],
     "wide": false,
     "content": "$\\sqrt{8}$의 소수부분을 $a$, $1+\\sqrt{2}$의 정수부분을 $b$라고 할 때, $a+b$의 값은?",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["무리수","유리수","근호계산","동류근호","문자계수","조건해석","상수화"],
     "wide": false,
     "content": "$\\frac{a}{\\sqrt{2}}(\\sqrt{32}-2)+\\sqrt{24}(\\frac{\\sqrt{3}}{6}+\\sqrt{6})$가 유리수 일 때, 유리수 $a$의 값은?",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","정사각형","넓이","변의길이","도형","동류근호","응용"],
     "wide": false,
     "content": "다음 그림과 같이 넓이가 각각 $5~cm^2, 45~cm^2, 125~cm^2$인 세 정사각형을 이어 붙여서 새로운 도형을 만들었다. $\\overline{AD}$의 길이는?",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식곱셈","전개","계수","일차항","상수항","값비교","객관식"],
     "wide": false,
     "content": "다음 식을 전개할 때, $x$의 계수의 절댓값이 가장 큰 것은?",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["분모유리화","켤레식","제곱근","곱셈공식","분수식","근호계산","객관식"],
     "wide": false,
     "content": "$\\frac{\\sqrt{7}-2}{\\sqrt{7}+2}$의 분모를 유리화한 것은?",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["곱셈공식","수계산","치환","합차공식","빠른계산","응용","객관식"],
     "wide": false,
     "content": "곱셈 공식을 이용하여 $\\frac{1+2020 \\times 2022}{2021}$을 계산하면?",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["완전제곱식","인수분해","곱셈공식","계수비교","오류판별","개념","객관식"],
     "wide": false,
     "content": "다음 중 완전제곱식이 아닌 것은?",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["완전제곱식","제곱근","절댓값","범위조건","식의간단화","조건해석","객관식"],
     "wide": false,
     "content": "$\\frac{1}{3}<x<2$일 때, $\\sqrt{9x^2-6x+1}-\\sqrt{x^2-4x+4}$를 간단히 한 것은?",
     "choices": [
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","이차식","정수조건","곱과합","최댓값","조건해석","객관식"],
     "wide": false,
     "content": "$a$와 $b$가 정수일 때, 다음 등식을 만족시키는 $p$의 최댓값은?<div class='box'>$x^2+px-12=(x+a)(x+b)$</div>",
     "choices": [
@@ -467,7 +467,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","치환","이차식","일차식곱","복합식","상급","계산"],
     "wide": false,
     "content": "$(x-3)^2-7(x-3)(x+2)+12(x+2)^2$를 인수분해하면 $(2x+a)(bx+c)$일 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값은?",
     "choices": [
@@ -491,7 +491,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","이차식","일차식합","전개","계수비교","계산","객관식"],
     "wide": false,
     "content": "일차항의 계수가 1인 두 일차식의 곱이 $(x-2)(x+5)+6x$와 같을 때, 두 일차식의 합은?",
     "choices": [
@@ -515,7 +515,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","소인수분해","완전제곱수","자연수조건","개수세기","조건해석"],
     "wide": false,
     "content": "[서술형1] $\\sqrt{\\frac{240}{x}}$이 자연수가 되도록 하는 자연수 $x$의 값을 구하려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 240을 소인수분해 하시오.<br>(2) $\\sqrt{\\frac{240}{x}}$이 자연수가 되도록 하는 자연수 $x$의 값을 모두 구하시오.<br>(3) 위 (2)에서 구한 값 중 가장 작은 값을 구하시오.",
     "choices": [],
@@ -533,7 +533,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호정리","소수근호","나눗셈","근호계산","계산과정"],
     "wide": false,
     "content": "[서술형2] $\\sqrt{392}=A\\sqrt{2}, \\frac{\\sqrt{0.5}}{\\sqrt{50}}=B$일 때, $A \\div B$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.<br>(1) $A$의 값을 구하시오.<br>(2) $B$의 값을 구하시오.<br>(3) $A \\div B$의 값을 구하시오.",
     "choices": [],
@@ -551,7 +551,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","곱셈공식","정사각형","둘레","넓이","대칭식","식세우기"],
     "wide": false,
     "content": "[서술형3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 60이고, 넓이의 합은 117이다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 두 정사각형의 둘레의 길이의 합이 60임을 등식으로 나타내시오.<br>(2) 두 정사각형의 넓이의 합이 117임을 등식으로 나타내시오.<br>(3) 위 (1), (2)에서 구한 값을 이용하여 $xy$의 값을 구하시오.",
     "choices": [],
@@ -569,7 +569,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식곱셈","인수분해","직사각형","넓이","도형","식세우기","응용"],
     "wide": false,
     "content": "[서술형4] 가로의 길이가 $(3a-7)m$, 세로의 길이가 $(4a+1)m$인 직사각형 모양의 화단이 있다. 이 화단 내부에 폭이 각각 $1m, 2m$인 길을 내려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 화단 전체의 넓이를 $a$에 관한 식으로 전개하시오.<br>(2) 폭이 $1m$인 길과 폭이 $2m$인 길의 넓이의 합을 구하시오.<br>(3) 길의 넓이를 제외한 화단의 넓이를 구한 후 인수분해 하시오.",
     "choices": [],

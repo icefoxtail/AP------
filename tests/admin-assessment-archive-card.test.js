@@ -44,6 +44,11 @@ assert(
   'admin overview should render the assessment archive card title'
 );
 assert(
+  dashboard.includes('ap-admin-assessment-card') &&
+    dashboard.includes('align-items:center; justify-content:center; text-align:center;'),
+  'admin assessment archive card should center its label like the other mini metrics'
+);
+assert(
   dashboard.includes('진단평가 · 단원평가 · 중간·기말평가'),
   'admin overview should show the confirmed assessment archive helper text'
 );

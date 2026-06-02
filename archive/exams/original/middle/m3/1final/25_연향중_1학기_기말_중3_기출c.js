@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차방정식","일차방정식","오류판별","조건해석","계산"],
     wide: false,
     content: "다음 중 이차방정식이 아닌 것은?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","완전제곱식","이차방정식","판별식","조건해석","계산"],
     wide: false,
     content: "다음 이차방정식 중 중근을 갖는 것은?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","지수","오류판별","대입","조건해석","계산"],
     wide: false,
     content: "두 이차방정식 $x^2-4x-5=0, x^2-5x-6=0$의 공통인 근이 $\\dfrac{1}{2}x^2+3mx-2=0$의 한 근일 때, 상수 $m$의 값은?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","계수비교","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $3(x+1)^2=x^2-2x+7$을 $(x+p)^2=q$의 꼴로 나타낼 때, 상수 $p, q$에 대하여 $pq$의 값은?",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","계수비교","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $5x^2+8x-p=0$의 근이 $x=\\dfrac{q \\pm \\sqrt{20}}{5}$일 때, 유리수 $p, q$에 대하여 $p+q$의 값은?",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","수직선","정수조건","범위","조건해석","계산"],
     wide: false,
     content: "이차방정식 $8x^2-10x-3=0$의 두 근 사이에 있는 모든 정수의 합은?",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","개수세기","조건해석","계산"],
     wide: false,
     content: "다음 중 대각선의 총 개수가 90개인 다각형은?",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","오류판별","대입","조건해석","계산"],
     wide: false,
     content: "다음 중 이차함수 $y=2x^2$의 그래프 위의 점이 아닌 것은?",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","도형","원","그래프","대입","조건해석"],
     wide: false,
     content: "원점을 꼭짓점으로 하고 점 $(-6, 12)$를 지나는 이차함수의 그래프와 $x$축에 서로 대칭인 그래프가 점 $(m, -27)$을 지날 때, $m$의 값은? (단, $m>0$)",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","이차함수","함수","그래프","표해석","좌표","범위"],
     wide: false,
     content: "다음 중 이차함수 $y=3x^2-1$의 그래프에 대한 설명으로 옳지 않은 것은?",
     choices: [
@@ -277,7 +277,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","계산"],
     wide: false,
     content: "이차함수 $y=x^2$의 그래프를 $x$축의 방향으로 3만큼, $y$축의 방향으로 $-1$만큼 평행이동한 그래프를 나타내는 이차함수의 식은?",
     choices: [
@@ -301,7 +301,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","표해석","좌표","계산"],
     wide: false,
     content: "이차함수 $y=\\dfrac{1}{2}x^2$의 그래프와 모양이 같고, 꼭짓점의 좌표가 $(-3, -5)$인 포물선을 그래프로 하는 이차함수의 식은?",
     choices: [
@@ -350,7 +350,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","참거짓","계산"],
     wide: false,
     content: "다음 <보기>의 이차함수 중 그 그래프를 평행이동하여 완전히 포갤 수 있는 것끼리 바르게 짝지은 것은?\n\n<보기>\nㄱ. $y=5-2x^2$   ㄴ. $y=2x^2+3$\nㄷ. $y=-(x+1)^2$   ㄹ. $y=(x+1)^2-3$\nㅁ. $y=-2(x-2)^2+4$",
     choices: [
@@ -399,7 +399,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","일차함수","함수","그래프","표해석","좌표","대입"],
     wide: false,
     content: "이차함수 $y=x^2-4kx+3k^2-2k-5$의 그래프의 꼭짓점이 일차함수 $y=x-1$의 그래프 위에 있을 때, 상수 $k$의 값은?",
     choices: [
@@ -423,7 +423,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "다음 중 이차함수 $y=-3x^2+6x-4$의 그래프가 지나지 않는 사분면을 모두 고른 것은?",
     choices: [
@@ -447,7 +447,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","표해석","좌표","계산"],
     wide: false,
     content: "이차함수 $y=-x^2+6x-3a+6$의 그래프의 꼭짓점이 $x$축 위에 있을 때, 상수 $a$의 값은?",
     choices: [

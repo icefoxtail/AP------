@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","순환소수","소수표현","순환마디","개념","오답선별"],
     "wide": false,
     "solution": "순환소수의 표기는 순환마디의 양 끝 숫자 위에 점을 찍어 나타낸다.\n④번의 순환마디는 $3, 4, 2$이므로 $2.\\dot{3}4\\dot{2}$로 표기해야 옳다.",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유한소수","분수","소인수분해","분모조건","개념"],
     "wide": false,
     "solution": "③ $\\frac{15}{42} = \\frac{5}{14} = \\frac{5}{2 \\times 7}$로 분모에 소인수 $7$이 남는다.",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유한소수","분수","자연수조건","배수","소인수분해","조건해석"],
     "wide": false,
     "solution": "$\\frac{9}{330} = \\frac{3}{110} \\implies A$는 $11$의 배수, $\\frac{6}{70} = \\frac{3}{35} \\implies A$는 $7$의 배수.\n$A$는 $77$이다.",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","무한소수","참거짓","개념","복수조건"],
     "wide": false,
     "solution": "ㄱ, ㄷ은 참이며 ㄴ, ㄹ은 순환소수(유리수)라는 반례가 존재한다.",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수법칙","거듭제곱","문자식","계산","빈칸추론"],
     "wide": false,
     "solution": "지수는 각각 $12, 7, 7, 6, 3$이며 합은 $35$이다.",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수법칙","거듭제곱","식변형","대입","계산","응용"],
     "wide": false,
     "solution": "$A=9 \\times 3^x \\implies 3^x = A/9$. $9^x = (3^x)^2 = A^2/81$.",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","단항식","곱셈","나눗셈","지수법칙","역산","계산"],
     "wide": false,
     "solution": "어떤 식 $B = 12x^4y^9 \\div (-4xy^3) = -3x^3y^6$.\n바른 계산: $12x^4y^9 \\times (-3x^3y^6) = -36x^7y^{15}$.",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","동류항","괄호풀기","계수비교","분수계수","계산"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","뺄셈","동류항","계수","상수항","계산"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","단항식나눗셈","분배법칙","혼합계산","문자식","계산"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -260,7 +260,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","넓이","다항식","문자식","식세우기","계수비교","응용"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -284,7 +284,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","해판정","대입","참거짓","개념","오답선별"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -309,7 +309,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","수직선","부등식성질","대소관계","음수나눗셈","참거짓"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -333,7 +333,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","범위","연립부등식","식변형","구간표현","계산"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -357,7 +357,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","일차부등식","정의","차수판별","개념","오답선별"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -381,7 +381,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","일차부등식","자연수해","해의개수","범위","계산"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -406,7 +406,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","일차부등식","수직선","미지수조건","해집합","매개변수","조건해석"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -430,7 +430,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","일차부등식","정수해","최소정수","매개변수","범위","상급"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -454,7 +454,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","일차부등식","문자계수","부등식성질","조건해석","식변형"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -479,7 +479,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","삼각형성립조건","부등식","문자식","범위","응용"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -503,7 +503,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","일차방정식","미지수2개","자연수해","해의개수","경우분류","계산"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -527,7 +527,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","연립방정식","해판정","대입","참거짓","오답선별"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -545,7 +545,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","순환소수","분수변환","식세우기","계산과정","유리수"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -564,7 +564,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","도형","다항식","동류항","덧셈","뺄셈","조건해석","복수정답"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -582,7 +582,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","일차부등식","분수계수","부등식풀이","계산과정","해집합"],
     "wide": false,
     "solution": "",
     "level": "중"
@@ -600,7 +600,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","일차부등식","활용","요금제","표해석","식세우기","조건해석","실생활"],
     "wide": false,
     "solution": "",
     "level": "중"

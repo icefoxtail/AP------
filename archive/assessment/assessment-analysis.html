@@ -284,14 +284,9 @@
       background: #fff1f0;
       color: var(--archive-red);
     }
-    .result-btn.is-selected[data-status="partial"] {
-      border-color: var(--archive-amber);
-      background: #fff8e7;
-      color: var(--archive-amber);
-    }
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 8px;
     }
     .stat {
@@ -377,8 +372,12 @@
     const DIAGNOSTIC_CURRENT_KEY = 'apms.diagnostic.assessment.current';
     const DIAGNOSTIC_INPUT_MODE_QUERY = 'mode=diagnostic-input';
     const DIAGNOSTIC_REPORT_MODE_QUERY = 'mode=diagnostic-report';
-    const STATUS_LABELS = { correct: 'O', wrong: 'X', partial: '△', unchecked: '-' };
+    const STATUS_LABELS = { correct: 'O', wrong: 'X', unchecked: '-' };
     const state = { pack: null, rows: [], diagnosticEditOpen: false, diagnosticInternalOpen: false };
+
+    function normalizeResultStatus(status) {
+      return status === 'correct' || status === 'wrong' ? status : 'unchecked';
+    }
 
     function escapeHTML(value) {
       return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
@@ -523,7 +522,6 @@
       ], '');
       if (raw) return String(raw).split(/\n+/)[0].slice(0, 80);
       if (status === 'wrong') return '해당 단원/유형 보완 필요';
-      if (status === 'partial') return '풀이 과정 확인 필요';
       return '결과 미입력';
     }
 
@@ -565,22 +563,21 @@
     }
 
     function renderDiagnosticModeBanner() {
-      if (!isDiagnosticMode()) return '';
-      const isReport = isDiagnosticReportMode();
-      const payload = isReport ? loadDiagnosticPayload() : null;
+      if (!isDiagnosticReportMode()) return '';
+      const payload = loadDiagnosticPayload();
       const studentName = String(payload?.studentName || '').trim() || '이름 미입력';
       const packTitle = payload?.packTitle || state.pack?.title || '평가명 확인 필요';
       const examDate = payload?.examDate || todayString();
       return `
-        <section class="exam-card ${isReport ? 'parent-print' : 'print-hidden'}">
+        <section class="exam-card parent-print">
           <div class="card-top"></div>
           <div class="card-body">
             <div class="card-grade-row">
-              <div class="card-grade-label">${isReport ? 'AP수학 진단평가' : '진단평가 빠른 입력'}</div>
-              <div class="card-type-chip">${isReport ? '결과표' : '입력'}</div>
+              <div class="card-grade-label">AP수학 진단평가</div>
+              <div class="card-type-chip">결과표</div>
             </div>
-            <div class="card-main-title">${isReport ? 'AP수학 진단평가' : '진단평가 입력'}</div>
-            <div class="card-sub-title">${isReport ? `${escapeHTML(studentName)} · ${escapeHTML(packTitle)} · ${escapeHTML(examDate)}` : '학생명과 반이 비어 있어도 저장할 수 있습니다. 입력 완료를 누르면 바로 결과표가 열립니다.'}</div>
+            <div class="card-main-title">AP수학 진단평가</div>
+            <div class="card-sub-title">${escapeHTML(studentName)} · ${escapeHTML(packTitle)} · ${escapeHTML(examDate)}</div>
           </div>
         </section>`;
     }
@@ -649,7 +646,6 @@
             <div class="result-picker" data-order="${row.order_no}">
               <button class="result-btn ${row.result_status === 'correct' ? 'is-selected' : ''}" type="button" data-status="correct">O</button>
               <button class="result-btn ${row.result_status === 'wrong' ? 'is-selected' : ''}" type="button" data-status="wrong">X</button>
-              <button class="result-btn ${row.result_status === 'partial' ? 'is-selected' : ''}" type="button" data-status="partial">△</button>
             </div>
           </td>
           <td><input data-answer="${row.order_no}" type="text" value="${escapeHTML(row.student_answer)}"></td>
@@ -671,15 +667,16 @@
 
     function getCounts(rows) {
       return rows.reduce((acc, row) => {
+        const status = normalizeResultStatus(row.result_status);
         acc.total += 1;
-        acc[row.result_status || 'unchecked'] += 1;
-        if (row.result_status !== 'unchecked') acc.entered += 1;
+        acc[status] += 1;
+        if (status !== 'unchecked') acc.entered += 1;
         return acc;
-      }, { total: 0, entered: 0, correct: 0, wrong: 0, partial: 0, unchecked: 0 });
+      }, { total: 0, entered: 0, correct: 0, wrong: 0, unchecked: 0 });
     }
 
-    function rateText(correct, wrong, partial) {
-      const denominator = correct + wrong + partial;
+    function rateText(correct, wrong) {
+      const denominator = correct + wrong;
       if (!denominator) return '-';
       return `${Math.round((correct / denominator) * 1000) / 10}%`;
     }
@@ -694,9 +691,8 @@
               <div class="stat"><strong>${counts.entered}</strong>입력 문항 수</div>
               <div class="stat"><strong>${counts.correct}</strong>정답 수</div>
               <div class="stat"><strong>${counts.wrong}</strong>오답 수</div>
-              <div class="stat"><strong>${counts.partial}</strong>부분/확인 필요 수</div>
               <div class="stat"><strong>${counts.unchecked}</strong>미입력 수</div>
-              <div class="stat"><strong>${rateText(counts.correct, counts.wrong, counts.partial)}</strong>정답률</div>
+              <div class="stat"><strong>${rateText(counts.correct, counts.wrong)}</strong>정답률</div>
             </div>
           </div>
         </section>`;
@@ -706,10 +702,10 @@
       const groups = new Map();
       state.rows.forEach((row) => {
         const key = keyGetter(row) || '문항 정보 확인 필요';
-        if (!groups.has(key)) groups.set(key, { name: key, total: 0, correct: 0, wrong: 0, partial: 0, unchecked: 0 });
+        if (!groups.has(key)) groups.set(key, { name: key, total: 0, correct: 0, wrong: 0, unchecked: 0 });
         const group = groups.get(key);
         group.total += 1;
-        group[row.result_status || 'unchecked'] += 1;
+        group[normalizeResultStatus(row.result_status)] += 1;
       });
       return [...groups.values()].sort((a, b) => a.name.localeCompare(b.name, 'ko'));
     }
@@ -721,9 +717,8 @@
           <td>${group.total}</td>
           <td>${group.correct}</td>
           <td>${group.wrong}</td>
-          <td>${group.partial}</td>
           <td>${group.unchecked}</td>
-          <td>${rateText(group.correct, group.wrong, group.partial)}</td>
+          <td>${rateText(group.correct, group.wrong)}</td>
         </tr>`).join('');
       return `
         <section class="exam-card">
@@ -731,7 +726,7 @@
             <h2 class="section-title">${title}</h2>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>${title.replace(' 집계', '')}</th><th>문항 수</th><th>정답</th><th>오답</th><th>△</th><th>미입력</th><th>정답률</th></tr></thead>
+                <thead><tr><th>${title.replace(' 집계', '')}</th><th>문항 수</th><th>정답</th><th>오답</th><th>미입력</th><th>정답률</th></tr></thead>
                 <tbody>${body}</tbody>
               </table>
             </div>
@@ -816,7 +811,7 @@
 
     function renderNeedsList() {
       const groups = new Map();
-      state.rows.filter((row) => row.result_status === 'wrong' || row.result_status === 'partial').forEach((row) => {
+      state.rows.filter((row) => normalizeResultStatus(row.result_status) === 'wrong').forEach((row) => {
         const key = `${row.meta.unit} / ${row.meta.type}`;
         groups.set(key, (groups.get(key) || 0) + 1);
       });
@@ -932,7 +927,7 @@
       if (memoEl) memoEl.value = payload.memo || '';
       state.rows.forEach((row) => {
         const saved = byOrder.get(row.order_no) || {};
-        row.result_status = saved.result_status || 'unchecked';
+        row.result_status = normalizeResultStatus(saved.result_status);
         row.student_answer = saved.student_answer || '';
         row.note = saved.note || '';
       });

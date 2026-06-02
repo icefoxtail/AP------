@@ -862,8 +862,6 @@
       return [
         `<span class="meta-badge primary">${escapeHTML(pack.grade || '학년 미정')}</span>`,
         `<span class="meta-badge">${escapeHTML(pack.questionCount || 0)}문항</span>`,
-        `<span class="meta-badge green">${escapeHTML(pack.estimatedMinutes || 0)}분</span>`,
-        `<span class="meta-badge">${pack.hasImage ? '이미지 포함' : '이미지 없음'}</span>`,
         pack.courseLabel ? `<span class="meta-badge">${escapeHTML(pack.courseLabel)}</span>` : '',
       ].filter(Boolean).join('');
     }
@@ -974,7 +972,7 @@
           </div>
           <div class="card-actions">
             <button class="action-btn" type="button" data-action="exam" data-pack-id="${escapeHTML(pack.id)}">출제</button>
-            ${isDiagnosticAssessmentPack(pack) ? `<button class="action-btn" type="button" data-action="diagnostic-start" data-pack-id="${escapeHTML(pack.id)}">진단평가 출제</button>` : ''}
+            ${isDiagnosticAssessmentPack(pack) ? `<button class="action-btn" type="button" data-action="diagnostic-start" data-pack-id="${escapeHTML(pack.id)}">정답입력</button>` : ''}
             <button class="action-btn" type="button" data-action="ans" data-pack-id="${escapeHTML(pack.id)}">정답</button>
             <button class="action-btn" type="button" data-action="sol" data-pack-id="${escapeHTML(pack.id)}">해설</button>
             <button class="action-btn" type="button" data-action="analysis" data-pack-id="${escapeHTML(pack.id)}">분석표</button>

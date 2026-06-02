@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","등차수열","등비수열","조건해석","계산"],
     wide: false,
     content: "$a_2 = -4$, $a_4 = 0$인 등차수열 $\\{a_n\\}$에 대하여 $a_6$은?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","등차수열","등비수열","대입","조건해석","계산"],
     wide: false,
     content: "1, 2, 4, 8, $\\cdots$인 등비수열의 일반항은?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","조건해석","계산","하난도"],
     wide: false,
     content: "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $S_n = 3n^2 + n - 1$일 때, $a_1$의 값을 구하면?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","등차수열","개수세기","조건해석","계산"],
     wide: false,
     content: "첫째항이 1, 제13항이 25인 등차수열의 첫째항부터 제13항까지의 합은?",
     choices: [
@@ -135,7 +135,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","시그마","참거짓","오류판별","조건해석","개념"],
     wide: false,
     content: "다음 중 합의 기호 $\\sum$의 성질 중 옳지 **않은** 것은? (단, $c$는 상수)",
     choices: [
@@ -159,7 +159,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","수열","등차수열","자연수조건","조건해석","계산"],
     wide: false,
     content: "공차가 2인 등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $S_n = pn^2 + 3n$일 때, $a_9$의 값은?",
     choices: [
@@ -183,7 +183,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","지수","수열","시그마","자연수조건","조건해석","계산"],
     wide: false,
     content: "$4^2 + 5^2 + 6^2 + \\cdots + 10^2$의 값은?",
     choices: [
@@ -232,7 +232,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","시그마","대입","조건해석","계산","개념"],
     wide: false,
     content: "다음과 같이 정의되는 수열 $\\{a_n\\}$이 있다.\\n$\\begin{cases} a_1=1,\\ a_2=3,\\ a_3=9 \\\\ a_{n-1}a_{n+1}=a_na_{n+2} \\quad (n=2,3,4,\\cdots) \\end{cases}$\\n이 때, $\\displaystyle\\sum_{k=1}^{24}a_k$의 값은?",
     choices: [
@@ -256,7 +256,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","수열","등차수열","등비수열","대입","조건해석","계산"],
     wide: false,
     content: "첫째항이 음수인 등비수열 $\\{a_n\\}$에 대하여 $a_3a_5 = 8a_8$, $a_1 + |a_2| + |2a_3| = 0$일 때, $a_2$의 값은?",
     choices: [
@@ -280,7 +280,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","상용로그","로그","지수","수열","시그마","자연수조건","조건해석"],
     wide: false,
     content: "수열 $\\{a_n\\}$을 $a_n = $ (자연수 $n$을 $n$개 이어 붙여 만든 자연수)라 하자. 예를 들면 $a_2 = 22$, $a_9 = 999999999$, $a_{10} = 10101010101010101010$이다. $\\log a_n$의 정수 부분을 $b_n$이라 할 때, 수열 $\\{b_n\\}$에 대하여 $\\displaystyle\\sum_{n=1}^{10}b_n$의 값은? (단, $\\log$는 상용로그이다.)",
     choices: [
@@ -304,7 +304,7 @@ window.questionBank = [
   standardUnitOrder: 8,
   questionType: "객관식",
   layoutTag: "grid",
-  tags: [],
+  "tags": ["객관식","수학적귀납법","부등식","자연수조건","참거짓","오류판별","대입","조건해석"],
   wide: false,
   content: "$n \\ge 2$인 모든 자연수 $n$에 대하여 다음 부등식이 성립함을 수학적 귀납법으로 증명하는 과정이다.\\n\\n$1 + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\cdots + \\dfrac{1}{n^2} \\lt 2 - \\dfrac{1}{n} \\quad \\cdots\\cdots ㉠$\\n\\n증명)\\n(i) $n =$ ①일 때, (좌변) $= \\dfrac{5}{4} \\lt \\dfrac{3}{2} =$ (우변)이므로\\n$n =$ ①일 때 부등식 ㉠이 성립한다.\\n(ii) $n =$ ②$(② \\ge 2)$일 때, 문제의 부등식이 성립한다고 가정하면\\n$1 + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\cdots + \\dfrac{1}{k^2} \\lt 2 - \\dfrac{1}{k}$\\n양변에 ③을 더하면\\n$1 + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\cdots + \\dfrac{1}{k^2} + \\text{③} \\lt 2 - \\dfrac{1}{k} + \\text{③}$\\n그런데 $k \\ge 2$이므로\\n$\\left\\{2 - \\dfrac{1}{k} + \\text{③}\\right\\} - \\left(2 - \\dfrac{1}{k+1}\\right) = \\text{④} \\lt 0$\\n즉, $1 + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\cdots + \\dfrac{1}{k^2} + \\dfrac{1}{(k+1)^2} \\lt 2 - \\dfrac{1}{k+1}$이므로\\n$n =$ ⑤일 때도 부등식 ㉠이 성립한다.\\n(i), (ii)에서 부등식 ㉠은 $n \\ge 2$인 모든 자연수 $n$에 대하여 성립한다.\\n\\n다음 중 옳지 않은 것은? [4.5점]",
   choices: [
@@ -328,7 +328,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","삼각함수","도형","삼각형","사각형","원"],
     wide: false,
     content: "원에 내접하는 사각형 ABCD에서 $\\overline{AB}=2$, $\\overline{BC}=2$, $\\overline{CD}=3$, $\\overline{DA}=4$일 때, 사각형 ABCD의 넓이는?",
     choices: [
@@ -352,7 +352,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차방정식","수열","등차수열","시그마","자연수조건","조건해석"],
     wide: false,
     content: "공차가 3인 등차수열 $\\{a_n\\}$과 자연수 $m$이\\n$\\displaystyle\\sum_{k=1}^{m} a_{k+1} = 253, \\quad \\sum_{k=1}^{m}(a_k + m) = 341$\\n을 만족시킬 때, $m$의 값은?",
     choices: [
@@ -403,7 +403,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","수열","등차수열","등비수열","시그마","대입","조건해석"],
     wide: false,
     content: "공차가 양수인 등차수열 $\\{a_n\\}$에 대하여\\n$a_6 + a_8 = 0$, $\\displaystyle\\sum_{k=1}^{5}\\frac{1}{a_k a_{k+1}} = \\frac{5}{54}$일 때, 일반항은?",
     choices: [
@@ -454,7 +454,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","수열","수학적귀납법","자연수조건","대입","조건해석","계산"],
     wide: false,
     content: "수열 $\\{a_n\\}$은 모든 자연수 $n$에 대하여 다음 조건을 만족할 때, $a_2$의 값은?\\n\\n가. $1 \\lt a_1 \\lt 2$\\n나. $a_{2n} = a_3 \\times a_n + 1$\\n다. $a_{2n+1} = a_3 \\times a_n - 1$\\n라. $a_{12} - a_{15} = 6$",
     choices: [

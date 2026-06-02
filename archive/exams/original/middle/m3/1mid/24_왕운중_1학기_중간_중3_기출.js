@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","나머지정리","조건해석","계산"],
     "wide": false,
     "content": "다음 중에서 나머지 넷과 값이 다른 하나는?(3점)",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","유리수","개수세기","계산"],
     "wide": false,
     "content": "다음 수 중에서 근호를 사용하지 않고 나타낼 수 있는 것을 모두 찾으면 몇 개인가?(4점)<div class='box'>$\\sqrt{121}$, $\\sqrt{\\frac{1}{4}}$, $\\sqrt{0.4}$, $\\sqrt{\\frac{2}{9}}$, $-\\sqrt{0.36}$</div>",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","참거짓","조건해석","계산"],
     "wide": false,
     "content": "다음 중 옳은 것을 모두 고른 것을 고르면?(4점)<div class='box'>가. $a > 0$일 때, $(\\sqrt{a})^{2} = a$<br>나. $a > 0$일 때, $-\\sqrt{a^{2}} = -a$<br>다. $a > 0$일 때, $\\sqrt{(-a)^{2}} = a$<br>라. $a < 0$일 때, $\\sqrt{a^{2}} = -a$</div>",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산","개념"],
     "wide": false,
     "content": "$\\sqrt{10^{2}} + (-\\sqrt{2})^{2}$의 값을 구하면?(3점)",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","실생활","자연수조건","개수세기","계산"],
     "wide": false,
     "content": "진공 상태에서 물체를 가만히 놓아 낙하시킬 때, 처음 높이를 $h\\,m$라고 하면 지면에 떨어지기 직전의 속력 $v\\,m/s$는 $v = \\sqrt{2 \\times 9.8 \\times h}$라고 한다. $v$가 자연수가 되도록 하는 세 자리 자연수 $h$의 값은 모두 몇 개인가?(5점)",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","순환소수","수직선","참거짓"],
     "wide": false,
     "content": "다음 설명 중 옳은 것을 고르면?(4점)",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","복소수","순환소수","도형"],
     "wide": false,
     "content": "다음 중 무리수를 모두 고르면?(정답 2개)(4점)",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","계산"],
     "wide": false,
     "content": "다음 중에서 두 실수의 대소 관계가 옳은 것은?(4점)",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수조건","범위","조건해석","계산"],
     "wide": false,
     "content": "$6 - 3\\sqrt{2}$의 정수 부분을 구하면?(4점)",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","수직선","자연수조건","개수세기","조건해석","계산"],
     "wide": false,
     "content": "3의 배수의 양의 제곱근 $\\sqrt{3}, \\sqrt{6}, 3, \\sqrt{12}, \\sqrt{15}, \\sqrt{18}, \\dots$ 에 대응하는 점을 수직선 위에 나타내면 두 정수 2, 3 사이의 점의 개수는 1개, 4와 5사이의 점의 개수는 3개이다. 이때, 40과 41사이의 점의 개수를 구하면?(5점)",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false,
     "content": "$\\sqrt{360} = a\\sqrt{10}, \\frac{\\sqrt{10}}{\\sqrt{2}} = b$를 만족시키는 두 수 $a, b$에 대하여 $a + b^2$의 값을 구하면?(3점)",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","지수","표해석","조건해석","계산","개념"],
     "wide": false,
     "content": "제곱근표에서 $\\sqrt{4.1} = 2.025, \\sqrt{41} = 6.403$일 때, 제곱근의 성질을 이용하여 $\\sqrt{0.00041}$을 어림한 값을 구하면?(4점)",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","오류판별","계산"],
     "wide": false,
     "content": "다음 중에서 옳지 않은 것은?(4점)",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "content": "$\\sqrt{27} \\times \\frac{3}{\\sqrt{6}} - \\sqrt{24} \\div \\frac{\\sqrt{3}}{2}$를 간단히 하면?(4점)",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계산"],
     "wide": false,
     "content": "식 $(-2a-b)^{2}$을 전개하면?(4점)",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "$(Ax-2)^{2} = 9x^{2} + 12x + B$ (단, $A, B$는 상수) 이 성립할 때, $A+B$의 값을 구하면?(4점)",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","정수조건","개수세기","조건해석","계산"],
     "wide": false,
     "content": "$(3x+a)(2x+b) = 6x^{2} + Ax - 6$일 때, $A$가 될 수 있는 값은 모두 몇 개인가?(단, $a, b$는 정수)(5점)",
     "choices": [

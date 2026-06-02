@@ -11,7 +11,7 @@ window.questionBank = [
   "standardUnitOrder": 1,
   "questionType": "",
   "layoutTag": "grid",
-  "tags": [],
+  "tags": ["객관식","지수함수","로그함수","로그","지수","함수","참거짓","오류판별"],
   "wide": false,
   "content": "다음 빈칸에 들어갈 것으로 옳은 것은? [3점]<br>(단, $a>0,\\ a\\n e1,\\ N>0$)<br><br><div style=\"text-align:left;\"><table style=\"width:100%; max-width:280px; margin:0; text-align:center; border-collapse:collapse; border:1px solid black; table-layout:fixed; font-family:serif;\"><tr><td colspan=\"5\" style=\"border:1px solid black; padding:5px; font-weight:bold;\">$a^x=N \\iff x=\\log_a N$</td></tr><tr><td style=\"border:1px solid black; padding:2px;\">$5^3=125$</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">①</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$5=\\log_3 125$</td></tr><tr><td style=\"border:1px solid black; padding:2px;\">②</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$4=\\log_3 81$</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$4^3=81$</td></tr><tr><td style=\"border:1px solid black; padding:2px;\">$2^{-3}=\\frac{1}{8}$</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">③</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$-3=\\log_2\\frac{1}{8}$</td></tr><tr><td style=\"border:1px solid black; padding:2px;\">④</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$-1=\\log_{\\frac{1}{7}}7$</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$\\left(\\frac{1}{7}\\right)^1=7$</td></tr><tr><td style=\"border:1px solid black; padding:2px;\">$16^{\\frac{1}{4}}=2$</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">⑤</td><td style=\"border:1px solid black; width:18px; padding:0;\">$\\iff$</td><td style=\"border:1px solid black; padding:2px;\">$\\frac{1}{4}=\\log_2 16$</td></tr></table></div>",
   "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","나머지정리","로그","지수","조건해석","계산"],
     "wide": false,
     "content": "다음 선지 중 나머지 넷과 다른 값을 갖는 것은?<br>(단, $a,b,c>0,\\ a,b,c\\n e1$) [3점]",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","상용로그","로그","지수","표해석","조건해석","계산"],
     "wide": false,
     "content": "다음 상용로그표를 보고 구한 $\\log 2.31$의 값은? [3점]<br><br><div style=\"text-align:center;\"><table style=\"border-collapse: collapse; text-align: center; width: 220px; border: 1.2px solid black; font-family: serif;\"><tr style=\"background:#fcfcfc;\"><th style=\"border: 1px solid black; padding: 2px;\"></th><th style=\"border: 1px solid black; padding: 2px;\">0</th><th style=\"border: 1px solid black; padding: 2px;\">1</th><th style=\"border: 1px solid black; padding: 2px;\">2</th><th style=\"border: 1px solid black; padding: 2px;\">3</th></tr><tr><td style=\"border: 1px solid black; padding: 2px; font-weight: bold;\">2.0</td><td style=\"border: 1px solid black; padding: 2px;\">0.3010</td><td style=\"border: 1px solid black; padding: 2px;\">0.3032</td><td style=\"border: 1px solid black; padding: 2px;\">0.3054</td><td style=\"border: 1px solid black; padding: 2px;\">0.3075</td></tr><tr><td style=\"border: 1px solid black; padding: 2px; font-weight: bold;\">2.1</td><td style=\"border: 1px solid black; padding: 2px;\">0.3222</td><td style=\"border: 1px solid black; padding: 2px;\">0.3243</td><td style=\"border: 1px solid black; padding: 2px;\">0.3263</td><td style=\"border: 1px solid black; padding: 2px;\">0.3284</td></tr><tr><td style=\"border: 1px solid black; padding: 2px; font-weight: bold;\">2.2</td><td style=\"border: 1px solid black; padding: 2px;\">0.3424</td><td style=\"border: 1px solid black; padding: 2px;\">0.3444</td><td style=\"border: 1px solid black; padding: 2px;\">0.3464</td><td style=\"border: 1px solid black; padding: 2px;\">0.3483</td></tr><tr><td style=\"border: 1px solid black; padding: 2px; font-weight: bold;\">2.3</td><td style=\"border: 1px solid black; padding: 2px;\">0.3617</td><td style=\"border: 1px solid black; padding: 2px;\">0.3636</td><td style=\"border: 1px solid black; padding: 2px;\">0.3655</td><td style=\"border: 1px solid black; padding: 2px;\">0.3674</td></tr></table></div>",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","상용로그","로그","지수","대입","조건해석","개념","응용"],
     "wide": false,
     "content": "어느 지역의 해저에서 일어난 지진의 규모를 $M$, 지진으로 발생하는 해일의 최고 높이를 $H$m라고 하면<br>$M=\\log H+6.5$<br>인 관계가 성립한다고 한다. 해일의 최고 높이가 $10$m일 때, 지진 규모는? [3.5점]",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 20,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수함수","로그","지수","함수","그래프","참거짓","대입"],
     "wide": false,
     "content": "다음 그래프의 식으로 옳은 것은? [3.5점]<br><br><div style=\"text-align:center;\"><svg width='220' height='160' viewBox='0 0 220 160' xmlns='http://www.w3.org/2000/svg'>\n  <line x1='120' y1='140' x2='120' y2='20' stroke='black' stroke-width='1.2' marker-end='url(#arrowhead)'/>\n  <line x1='20' y1='110' x2='200' y2='110' stroke='black' stroke-width='1.2' marker-end='url(#arrowhead)'/>\n  <defs>\n    <marker id='arrowhead' markerWidth='10' markerHeight='7' refX='0' refY='3.5' orient='auto'>\n      <polygon points='0 0, 10 3.5, 0 7' fill='black' />\n    </marker>\n  </defs>\n  <line x1='20' y1='50' x2='200' y2='50' stroke='black' stroke-width='0.8' stroke-dasharray='4 2' />\n  <path d='M 30.0,49.63 L 32.57,49.59 L 35.14,49.55 L 37.71,49.51 L 40.29,49.46 L 42.86,49.41 L 45.43,49.35 L 48.0,49.28 L 50.57,49.21 L 53.14,49.14 L 55.71,49.05 L 58.29,48.96 L 60.86,48.85 L 63.43,48.74 L 66.0,48.62 L 68.57,48.48 L 71.14,48.33 L 73.71,48.16 L 76.29,47.98 L 78.86,47.78 L 81.43,47.56 L 84.0,47.32 L 86.57,47.06 L 89.14,46.77 L 91.71,46.45 L 94.29,46.1 L 96.86,45.72 L 99.43,45.29 L 102.0,44.83 L 104.57,44.32 L 107.14,43.76 L 109.71,43.14 L 112.29,42.46 L 114.86,41.72 L 117.43,40.9 L 120.0,40.0 L 122.57,39.01 L 125.14,37.93 L 127.71,36.74 L 130.29,35.43 L 132.86,33.99 L 135.43,32.41 L 138.0,30.67 L 140.57,28.76 L 143.14,26.66 L 145.71,24.36 L 148.29,21.83 L 150.86,19.04 L 153.43,15.99 L 156.0,12.63' fill='none' stroke='black' stroke-width='1.5'/>\n  <g class='fraction'>\n    <text x='85' y='28' font-size='9px' text-anchor='middle' font-family='serif'>7</text>\n    <line x1='75' y1='32' x2='95' y2='32' stroke='black' stroke-width='0.8'/>\n    <text x='85' y='46' font-size='9px' text-anchor='middle' font-family='serif'>3</text>\n  </g>\n  <path d='M 95,35 Q 110,40 118,40' fill='none' stroke='black' stroke-width='0.8' marker-end='url(#arrowhead_small)'/>\n  <defs>\n    <marker id='arrowhead_small' markerWidth='6' markerHeight='4' refX='0' refY='2' orient='auto'>\n      <polygon points='0 0, 6 2, 0 4' fill='black' />\n    </marker>\n  </defs>\n  <text x='110' y='125' font-size='10px' text-anchor='middle' font-family='serif'>O</text>\n  <text x='110' y='30' font-size='10px' text-anchor='middle' font-style='italic' font-family='serif'>y</text>\n  <text x='195' y='125' font-size='10px' text-anchor='middle' font-style='italic' font-family='serif'>x</text>\n  <text x='130' y='60' font-size='10px' text-anchor='middle' font-family='serif'>2</text>\n</svg></div>",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","삼각함수","일반각","함수","표해석","참거짓","조건해석","계산"],
     "wide": false,
     "content": "다음 빈칸에 들어갈 값으로 옳은 것은? [3.5점]<br><br><div style=\"text-align:center;\"><table style=\"border-collapse: collapse; text-align: center; width: 270px; border: 1.2px solid black; font-family: serif;\"><tr><th style=\"border: 1px solid black; padding: 3px; font-weight: normal; background:#fcfcfc;\">60분법</th><td style=\"border: 1px solid black; padding: 3px;\">$0^\\circ$</td><td style=\"border: 1px solid black; padding: 3px;\">$30^\\circ$</td><td style=\"border: 1px solid black; padding: 3px;\">$60^\\circ$</td><td style=\"border: 1px solid black; padding: 3px;\">$90^\\circ$</td><td style=\"border: 1px solid black; padding: 3px;\">$120^\\circ$</td><td style=\"border: 1px solid black; padding: 3px;\">$150^\\circ$</td><td style=\"border: 1px solid black; padding: 3px;\">$180^\\circ$</td></tr><tr><th style=\"border: 1px solid black; padding: 3px; font-weight: normal; background:#fcfcfc;\">호도법</th><td style=\"border: 1px solid black; padding: 3px;\">0</td><td style=\"border: 1px solid black; padding: 3px;\">①</td><td style=\"border: 1px solid black; padding: 3px;\">②</td><td style=\"border: 1px solid black; padding: 3px;\">③</td><td style=\"border: 1px solid black; padding: 3px;\">④</td><td style=\"border: 1px solid black; padding: 3px;\">⑤</td><td style=\"border: 1px solid black; padding: 3px;\">$\\pi$</td></tr></table></div>",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수함수","지수","함수","그래프","참거짓","오류판별","조건해석"],
     "wide": false,
     "content": "다음 중 함수 $y=2^{-x}-3$에 대한 설명으로 옳지 않은 것은? [4점]",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","로그","지수","삼각함수","함수","조건해석"],
     "wide": false,
     "content": "$8^{\\frac{2}{3}}\\times\\left(\\frac{1}{2}\\right)^{-1}\\times\\left(\\log_9 3+3^{\\log_3 1}\\right)\\times2\\sin\\frac{\\pi}{6}$의 값은? [4점]",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","삼각함수","일반각","함수","도형","원","넓이","참거짓"],
     "wide": false,
     "content": "그림과 같이 종이로 부채를 만들려고 한다.<br>$\\angle BOA=\\frac{2}{3}\\pi$이고 두 부채꼴 $OAB,\\ OCD$의 반지름의 길이가 각각 $6\\text{ cm},\\ 12\\text{ cm}$일 때, 종이의 넓이는? [4점]<br><br><div style=\"text-align:center;\">\n<svg width=\"220\" height=\"155\" viewBox=\"0 0 220 155\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M 110 145 L 23.4 95 A 100 100 0 0 1 196.6 95 Z\" fill=\"none\" stroke=\"black\" stroke-width=\"1.8\"/>\n  <path d=\"M 110 145 L 66.7 120 A 50 50 0 0 1 153.3 120 Z\" fill=\"none\" stroke=\"black\" stroke-width=\"1.8\"/>\n  <text x=\"110\" y=\"152\" font-size=\"10px\" font-family=\"serif\" text-anchor=\"middle\">O</text>\n  <text x=\"62\" y=\"122\" font-size=\"9px\" font-family=\"serif\" text-anchor=\"end\">B</text>\n  <text x=\"158\" y=\"122\" font-size=\"9px\" font-family=\"serif\" text-anchor=\"start\">A</text>\n  <text x=\"20\" y=\"95\" font-size=\"9px\" font-family=\"serif\" text-anchor=\"end\">D</text>\n  <text x=\"200\" y=\"95\" font-size=\"9px\" font-family=\"serif\" text-anchor=\"start\">C</text>\n  <text x=\"85\" y=\"140\" font-size=\"9px\" font-family=\"serif\" text-anchor=\"end\">6cm</text>\n  <text x=\"145\" y=\"110\" font-size=\"9px\" font-family=\"serif\" text-anchor=\"start\">12cm</text>\n  <text x=\"110\" y=\"130\" font-size=\"10px\" font-family=\"serif\" text-anchor=\"middle\">2π/3</text>\n</svg></div>",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","지수함수","로그함수","로그","지수","함수","조건해석"],
     "wide": false,
     "content": "정의역이 $\\{x\\mid -1\\le x\\le 2\\}$일 때, 두 함수<br>$y=2^{-x}+6$의 최댓값을 $a$, $y=\\log_3(2x+5)+3$의 최댓값을 $b$라고 하자. $a+b$의 값은? [4점]",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","최대최소","지수함수","지수","함수","그래프","범위"],
     "wide": false,
     "content": "함수 $y=2^{|x-2|}+3$의 그래프와 직선 $y=k$가 만나지 않을 때, 실수 $k$의 값의 범위로 옳은 것은? [4점]",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","삼각함수","함수","조건해석","계산"],
     "wide": false,
     "content": "$\\frac{\\pi}{2}<\\theta<\\pi$인 $\\theta$에 대하여 $\\sin\\theta=\\frac{\\sqrt{7}}{4}$일 때, $\\cos\\theta$의 값은? [4점]",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","최대최소","삼각함수","함수","그래프","조건해석","계산"],
     "wide": false,
     "content": "함수 $y=a\\sin\\frac{\\pi}{2b}x$의 최댓값은 3이고 주기는 4이다. 두 양수 $a,\\ b$의 합 $a+b$의 값은? [4점]",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","항등식","삼각함수","함수","조건해석","계산"],
     "wide": false,
     "content": "$\\sin\\theta+\\cos\\theta=\\frac{1}{2}$일 때, $\\sin\\theta-\\cos\\theta$의 값은? [4점]<br>(단, $\\sin\\theta<\\cos\\theta$)",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","나머지정리","계수비교","삼각함수","함수"],
     "wide": false,
     "content": "다음 함수 중 주기가 나머지 넷과 다른 것은? [4.5점]",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","삼각함수","시그마","함수","도형","원","표해석","좌표"],
     "wide": false,
     "content": "다음 그림과 같이 중심이 $O$, 반지름의 길이가 1인 사분원의 호 $PQ$를 9등분하는 점을 차례로 $P_1,\\ P_2,\\ \\cdots,\\ P_8$이라고 하자. 점 $P_1,\\ P_2,\\ \\cdots,\\ P_8$에서 선분 $OP$에 내린 수선의 발을 각각 $Q_1,\\ Q_2,\\ \\cdots,\\ Q_8$이라고 할 때, $\\overline{OQ_1}^{\\,2}+\\overline{OQ_2}^{\\,2}+\\overline{OQ_3}^{\\,2}+\\cdots+\\overline{OQ_8}^{\\,2}$의 값은? [4.5점]<br><br><div style=\"text-align:center;\">\n<svg width=\"215\" height=\"190\" viewBox=\"0 0 215 190\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M 35 155 L 185 155\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 35 155 L 35 5\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 35 5 A 150 150 0 0 1 185 155\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <g stroke=\"black\" stroke-width=\"0.6\">\n    <line x1=\"35\" y1=\"155\" x2=\"61.0\" y2=\"7.3\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"86.3\" y2=\"14.0\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"110.0\" y2=\"25.1\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"131.4\" y2=\"40.1\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"149.9\" y2=\"58.5\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"165.0\" y2=\"80.0\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"176.0\" y2=\"103.7\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"182.7\" y2=\"129.0\"/>\n  </g>\n  <g stroke=\"black\" stroke-width=\"0.5\" stroke-dasharray=\"2 1\" opacity=\"0.4\">\n    <line x1=\"61\" y1=\"7\" x2=\"61\" y2=\"155\"/>\n    <line x1=\"86\" y1=\"14\" x2=\"86\" y2=\"155\"/>\n    <line x1=\"110\" y1=\"25\" x2=\"110\" y2=\"155\"/>\n    <line x1=\"131\" y1=\"40\" x2=\"131\" y2=\"155\"/>\n    <line x1=\"150\" y1=\"58\" x2=\"150\" y2=\"155\"/>\n    <line x1=\"165\" y1=\"80\" x2=\"165\" y2=\"155\"/>\n    <line x1=\"176\" y1=\"104\" x2=\"176\" y2=\"155\"/>\n    <line x1=\"183\" y1=\"129\" x2=\"183\" y2=\"155\"/>\n  </g>\n  <text x=\"22\" y=\"168\" font-size=\"10px\" font-family=\"serif\">O</text>\n  <text x=\"187\" y=\"168\" font-size=\"10px\" font-family=\"serif\">P</text>\n  <text x=\"22\" y=\"10\" font-size=\"10px\" font-family=\"serif\">Q</text>\n  <g font-size=\"7.2\" font-family=\"serif\">\n    <text x=\"58\" y=\"6\">P₁</text>\n    <text x=\"83\" y=\"11\">P₂</text>\n    <text x=\"108\" y=\"22\">P₃</text>\n    <text x=\"129\" y=\"37\">P₄</text>\n    <text x=\"147\" y=\"55\">P₅</text>\n    <text x=\"162\" y=\"77\">P₆</text>\n    <text x=\"173\" y=\"100\">P₇</text>\n    <text x=\"180\" y=\"126\">P₈</text>\n    <text x=\"61\" y=\"168\" text-anchor=\"middle\">Q₁</text>\n    <text x=\"86\" y=\"168\" text-anchor=\"middle\">Q₂</text>\n    <text x=\"110\" y=\"168\" text-anchor=\"middle\">Q₃</text>\n    <text x=\"131\" y=\"168\" text-anchor=\"middle\">Q₄</text>\n    <text x=\"150\" y=\"168\" text-anchor=\"middle\">Q₅</text>\n    <text x=\"165\" y=\"168\" text-anchor=\"middle\">Q₆</text>\n    <text x=\"176\" y=\"168\" text-anchor=\"middle\">Q₇</text>\n    <text x=\"183\" y=\"168\" text-anchor=\"middle\">Q₈</text>\n  </g>\n  <text x=\"110\" y=\"150\" font-size=\"10px\" font-family=\"serif\">1</text>\n</svg></div>",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","로그","지수","참거짓","조건해석","계산","개념"],
     "wide": false,
     "content": "2보다 큰 실수 $a$에 대하여 $a\\le x < a^2$일 때, $(\\log_a x)^2,\\ \\log_a x^2,\\ \\log_a(\\log_a x)$를 크기순으로 옳게 나열한 것은? [4.5점]",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","로그","지수","도형","원","자연수조건","개수세기","조건해석"],
     "wide": false,
     "content": "두 집합 $A_4=\\{\\log_4 1,\\log_4 2,\\log_4 3,\\ \\cdots,\\ \\log_4 100\\}$, $A_{2^k}=\\{\\log_{2^k} 1,\\log_{2^k} 2,\\log_{2^k} 3,\\ \\cdots,\\ \\log_{2^k} 100\\}$에 대하여 $n(A_4\\cap A_{2^k})=4$를 만족하는 자연수 $k$의 값은? [5점]",
     "choices": [
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","지수함수","로그함수","로그","지수"],
     "wide": false,
     "content": "상수 $k(k > 0)$에 대하여 직선 $y = -x + 2k$가 두 함수 $f(x) = \\log(x - k)$, $g(x) = 10^{x+1} + k + 1$의 그래프와 만나는 점을 각각 A, B라 하자. $\\overline{AB} = 5\\sqrt{2}$일 때, $k$의 값은?<br><br><div style='text-align:center;'>\n<svg width='250' height='200' viewBox='0 0 250 200' xmlns='http://www.w3.org/2000/svg'>\n  <line x1='10' y1='160' x2='220' y2='160' stroke='black' stroke-width='1' marker-end='url(#arrow)'/>\n  <line x1='30' y1='190' x2='30' y2='30' stroke='black' stroke-width='1' marker-end='url(#arrow)'/>\n  <path d='M 20,40 L 170,190' stroke='black' stroke-width='1.2'/>\n  <path d='M 10.0,92.64 L 11.22,92.18 L 12.45,91.68 L 13.67,91.16 L 14.9,90.6 L 16.12,90.01 L 17.35,89.38 L 18.57,88.71 L 19.8,87.99 L 21.02,87.23 L 22.24,86.43 L 23.47,85.57 L 24.69,84.66 L 25.92,83.69 L 27.14,82.66 L 28.37,81.57 L 29.59,80.4 L 30.82,79.17 L 32.04,77.85 L 33.27,76.45 L 34.49,74.97 L 35.71,73.39 L 36.94,71.71 L 38.16,69.92 L 39.39,68.02 L 40.61,66.0 L 41.84,63.85 L 43.06,61.57 L 44.29,59.15 L 45.51,56.57 L 46.73,53.82 L 47.96,50.91 L 49.18,47.81 L 50.41,44.51 L 51.63,41.01 L 52.86,37.29 L 54.08,33.33 L 55.31,29.12 L 56.53,24.64 L 57.76,19.88 L 58.98,14.82 L 60.2,9.45' fill='none' stroke='black' stroke-width='1.5'/>\n  <path d='M 125.0,160.79 L 126.53,152.78 L 128.06,146.47 L 129.59,141.25 L 131.12,136.81 L 132.65,132.94 L 134.18,129.51 L 135.71,126.44 L 137.24,123.65 L 138.78,121.1 L 140.31,118.75 L 141.84,116.57 L 143.37,114.54 L 144.9,112.63 L 146.43,110.84 L 147.96,109.16 L 149.49,107.56 L 151.02,106.04 L 152.55,104.59 L 154.08,103.21 L 155.61,101.9 L 157.14,100.63 L 158.67,99.42 L 160.2,98.26 L 161.73,97.14 L 163.27,96.06 L 164.8,95.01 L 166.33,94.01 L 167.86,93.03 L 169.39,92.09 L 170.92,91.17 L 172.45,90.28 L 173.98,89.42 L 175.51,88.58 L 177.04,87.76 L 178.57,86.97 L 180.1,86.2 L 181.63,85.44 L 183.16,84.71 L 184.69,83.99 L 186.22,83.29' fill='none' stroke='black' stroke-width='1.5'/>\n  <circle cx='43' cy='61' r='2' fill='black'/>\n  <text x='50' y='61' font-size='10px' font-family='serif'>B</text>\n  <circle cx='131' cy='136' r='2' fill='black'/>\n  <text x='125' y='130' font-size='10px' font-family='serif'>A</text>\n  <text x='35' y='45' font-size='10px' font-family='serif'>2k</text>\n  <text x='150' y='175' font-size='10px' font-family='serif'>2k</text>\n  <text x='25' y='175' font-size='10px' font-family='serif'>O</text>\n  <text x='225' y='165' font-size='10px' font-family='serif'>x</text>\n  <text x='25' y='35' font-size='10px' font-family='serif'>y</text>\n  <text x='45' y='40' font-size='10px' font-family='serif'>y=g(x)</text>\n  <text x='170' y='130' font-size='10px' font-family='serif'>y=f(x)</text>\n  <text x='140' y='195' font-size='10px' font-family='serif'>y=-x+2k</text>\n  <defs>\n    <marker id='arrow' markerWidth='10' markerHeight='10' refX='0' refY='3' orient='auto'><path d='M0,0 L0,6 L6,3 z' fill='black'/></marker>\n  </defs>\n</svg></div><br>(단, $\\log 2 = 0.3010$)<br>[5점]",
     "choices": [
@@ -539,7 +539,7 @@ window.questionBank = [
   "standardUnitOrder": 2,
   "layoutTag": "fullwidth",
   "questionType": "",
-  "tags": [],
+  "tags": ["객관식","복소수","판별식","삼각함수","함수","그래프","자연수조건","범위"],
   "wide": false,
   "content": "재학이는 다음 문제를 주어진 시간 안에 해결하지 못하고 답안을 제출하였다. 재학이의 미완성된 풀이를 이용하여 다음 문제의 값을 옳게 구한 것은? [5점]\n\n문제)\n세 함수 $f(x) = \\cos \\pi x$, $g(x) = \\sin \\pi x$, $h(x) = ax + b$가 다음 조건을 만족시킨다. 홀수인 자연수 $b$의 값은? (단, $a$는 자연수)\n\n가. $0 \\le x \\le 4$일 때, 방정식 $(f \\circ h)(x) = (h \\circ g)\\left(\\frac{3}{2}\\right)$의 서로 다른 실근의 개수는 홀수이다.\n나. $0 \\le x \\le 4$일 때, 방정식 $(f \\circ h)(x) = (h \\circ g)(t)$의 서로 다른 모든 실근의 합이 56이 되도록 하는 실수 $t$가 존재한다.\n\n재학이의 풀이 과정)\n$(f \\circ h)(x) = \\cos(a \\pi x + b \\pi)$이고 $b$가 홀수이므로 $(f \\circ h)(x) = -\\cos a \\pi x$이다.\n$(h \\circ g)\\left(\\frac{3}{2}\\right) = -a + b$이므로 서로 다른 실근의 개수가 홀수가 되기 위해서는 $-a + b = -1$이 되어야 한다.\n즉 $b = a - 1$이다.\n\n<div style='text-align:center;'>\n<svg width='250' height='180' viewBox='0 0 250 180' xmlns='http://www.w3.org/2000/svg'>\n  <defs>\n    <marker id='arrowhead' markerWidth='10' markerHeight='7' refX='0' refY='3.5' orient='auto'>\n      <polygon points='0 0, 10 3.5, 0 7' fill='black' />\n    </marker>\n  </defs>\n  <line x1='40' y1='160' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrowhead)' />\n  <line x1='20' y1='90' x2='230' y2='90' stroke='black' stroke-width='1.5' marker-end='url(#arrowhead)' />\n  <line x1='40' y1='50' x2='220' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4 2' />\n  <line x1='40' y1='130' x2='220' y2='130' stroke='black' stroke-width='1' stroke-dasharray='4 2' />\n  <polyline points='40.0,130.0 42.4,127.1 44.8,118.7 47.3,106.0 49.7,90.5 52.1,74.7 54.5,60.7 57.0,50.7 59.4,46.4 61.8,48.2 64.2,56.1 66.7,68.7 69.1,84.1 71.5,99.9 73.9,114.1 76.4,124.4 78.8,129.6 81.2,128.9 83.6,122.7 86.1,113.2' fill='none' stroke='black' stroke-width='1.2' />\n  <polyline points='180.0,50.0 184.0,65.0 188.0,100.0 192.0,122.0 196.0,128.5 200.0,130.0' fill='none' stroke='black' stroke-width='1.2' />\n  <text x='130' y='105' font-size='14' text-anchor='middle'>...</text>\n  <text x='35' y='25' font-size='11' text-anchor='end' font-style='italic'>y</text>\n  <text x='235' y='105' font-size='11' text-anchor='start' font-style='italic'>x</text>\n  <text x='35' y='54' font-size='10' text-anchor='end'>1</text>\n  <text x='35' y='134' font-size='10' text-anchor='end'>-a+b</text>\n  <rect x='192' y='92' width='16' height='12' fill='white' />\n  <text x='200' y='102' font-size='10' text-anchor='middle'>4</text>\n</svg>\n</div>\n\n$0 \\le x \\le 4$일 때, 방정식 $(f \\circ h)(x) = -\\cos a \\pi x$는 주기 $\\frac{2}{a}$에 맞춰 $2a$번 반복되고, $x = 2$에 대하여 대칭이므로 대칭인 해들의 합은 4를 만족한다.\n방정식 $(f \\circ h)(x) = (h \\circ g)(t)$의 서로 다른 모든 실근의 합이 56이 되도록 하는 실수 $t$가 존재한다.",
   "choices": [

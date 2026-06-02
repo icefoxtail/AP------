@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","전개","복소수","켤레복소수","계산","개념"],
     "wide": false,
     "content": "$-5-3i$의 켤레복소수의 값은? [3.5점]",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","곱셈공식","전개","계산"],
     "wide": false,
     "content": "다항식 $(x+2)(x^2-2x+4)$ 을 계산한 값은? [3.5점]",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","대입","계산"],
     "wide": false,
     "content": "두 다항식 $A=x^2+3xy+2y^2$, $B=x^2+2xy+2y^2$에 대하여 $-A+2B-(-2A+3B)$의값은? [3.5점]",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","복소수","계산","조건해석"],
     "wide": false,
     "content": "$(2+i)-(-3i)$의 값은? [3.5점]",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","이차방정식","판별식","이차함수","함수","그래프","개수세기"],
     "wide": false,
     "content": "이차함수 $y=x^2-x+1$의 그래프와 x축 사이의 서로 다른 교점의 개수는? [3.7점]",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "다항식 $P(x)=x^3-2x^2+ax+5$를 $x-1$로 나누었을 때 나머지가 5이다. $P(x)$를 $x-2$로 나누었을 때, 나머지의 값은? (단, $a$는 실수) [3.7점]",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","계산"],
     "wide": false,
     "content": "다항식 $(x+1)(x^2-2x+3)$의 전개식에서 $x^2$의 계수는? [3.8점]",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산","개념"],
     "wide": false,
     "content": "다항식 $(x^4+3x^3-2x^2+x+3)(5x-1)$을 전개하였을 때, 상수항을 제외한 모든 항의 계수의 합은? [3.8점]",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","지수","표해석","자연수조건","개수세기"],
     "wide": false,
     "content": "$N=29^3-5 \\times 29^2-13 \\times 29-7$이라고 할 때, 자연수 $N$의 양의 약수의 개수는? [4점]",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","전개","복소수","켤레복소수","표해석","조건해석","계산"],
     "wide": false,
     "content": "복소수 $\\frac{a+i}{3+2i}$의 실수부분과 허수부분의 합이 1일 때, 실수 $a$의 값은? [4점]",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","나머지정리","전개","계수비교","이차방정식","판별식","대입"],
     "wide": false,
     "content": "이차방정식 $x^2+(k+2a)x+\\frac{k^2}{4}-2k-b=0$이 실수 $k$의 값에 관계없이 항상 중근을 가지도록 하는 두 실수 $a, b$에 대하여 $a-b$의 값은? [4점]",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","전개","범위","조건해석","계산"],
     "wide": false,
     "content": "다항식 $f(x)$를 $x^2-3x+2$로 나눈 나머지가 2이고, 다항식 $f(x)$를 $x-3$으로 나눈 나머지가 4이다. 다항식 $f(x)$를 $(x-1)(x-2)(x-3)$로 나눈 나머지를 $R(x)$라 할 때 $R(x)$를 $(x+1)$로 나눈 나머지는? [4점]",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","복소수","지수","개수세기","조건해석","계산"],
     "wide": false,
     "content": "복소수 $z=\\frac{1-i}{1+i}$에 대하여 $z+\\frac{1}{z}+z^2+\\frac{1}{z^2}+z^3+\\frac{1}{z^3}+\\cdots+z^{30}+\\frac{1}{z^{30}}$의 값은? [4.2점]",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","이차방정식","이차함수","최대최소","함수","그래프","정수조건"],
     "wide": false,
     "content": "이차방정식 $x^2 + 2nx - 8n = 0$의 한 근은 3보다 작고, 다른 한 근은 3보다 크도록 하는 정수 $n$의 최솟값은? [4.2점]",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","인수정리","인수분해","전개","계수비교","개수세기"],
     "wide": false,
     "content": "다항식 $f(x)$가 모든 실수 $x$에 대하여 등식 $2 \\times f(x) \\times f(-x) = f(x^2)$이 성립할 때, 다음 중 옳은 것만을 있는대로 고른 것은? [4.3점]<br><br>ㄱ. $f(0)=0$ 또는 $f(0)=\\frac{1}{2}$<br>ㄴ. $f(x)$가 $x-1$을 인수로 갖지 않으면 $f(x)-\\frac{1}{2}$는 $x+1$을 인수로 갖는다.<br>ㄷ. 차수가 1인 $f(x)$의 개수는 2이다.",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","이차방정식","근과계수","조건해석","계산"],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2-3ax+a+1=0$의 두 근 $\\alpha, \\beta$가 다음 조건을 만족시킬 때, $a+b+c$의 값은? [4.3점]<br><br>(가) $\\alpha^2 \\beta + \\alpha \\beta^2 = 36, \\alpha \\beta > 0$<br>(나) 두 수 $a-1, a+1$을 근으로 하고, 이차항의 계수가 1인 이차방정식은 $x^2+bx+c=0$이다.",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","곱셈공식","전개","지수","오류판별","대입","조건해석"],
     "wide": false,
     "content": "0이 아닌 x에 대해 $x^2-3x+1=0$ 일 때, $x^7+\\frac{1}{x^7}$ 의 값은? [4.5점]",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","전개","복소수","최대최소","지수","자연수조건"],
     "wide": false,
     "content": "$(\\frac{\\sqrt{2}}{1-i})^n + (\\frac{\\sqrt{3}+i}{2})^n = 0$을 만족시키는 자연수 n의 최솟값은? [4.5점]",
     "choices": [
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","나머지정리","전개","도형","원","표해석","조건해석"],
     "wide": false,
     "content": "다음 조건을 만족시키는 모든 이차다항식 $P(x)$의 합을 $T(x)$라 하자.<br><br>(가) $P(1)P(-1)=0$<br>(나) 사차다항식 $P(x)\\{P(x)-1\\}$는 $x(x-2)$로 나누어 떨어진다.<br><br>$T(x)$를 $x$로 나눈 나머지는? [4.5점]",
     "choices": [],
@@ -461,7 +461,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","이차함수","최대최소","함수","그래프","표해석"],
     "wide": false,
     "content": "$k>0$을 만족하는 실수 $k$에 대하여 이차함수 $f(x)=-x^2+6x+k-3$의 그래프와 직선 $y=x+3$이 서로 다른 두 점 $(\\alpha, f(\\alpha)), (\\beta, f(\\beta))$에서 만난다. $\\alpha < x < \\beta$에서 함수 $f(x)$의 최댓값이 8일 때, $\\alpha \\le x \\le \\beta$에서 함수 $f(x)$의 최솟값은? (단, $\\alpha < \\beta$) [4.5점]",
     "choices": [
@@ -485,7 +485,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","절댓값","다항식","나머지정리","전개","대입","조건해석","계산"],
     "wide": false,
     "content": "<서·논술형 1><br>다항식 $f(x)=x^3+3x^2+ax+b$ 가 $(x-3)^2$으로 나누어 떨어질 때, $a, b$를 구하고, $f(x)$를 $(x-1)$로 나눈 나머지를 풀이과정과 함께 서술하시오. (단, $a, b$는 상수이다.) [8점]",
     "choices": [],
@@ -503,7 +503,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","전개","계수비교","이차함수","최대최소","함수"],
     "wide": false,
     "content": "<서·논술형 2><br>$1 \\le x \\le 3$에서 정의된 이차함수 $f(x)=x^2-2ax+2a^2-3$의<br>최솟값이 14일 때, 함수 $f(x)$의 최댓값을 풀이과정과 함께<br>서술하시오.(단, $a$는 양수이며, $a$의 값이 가질 수 있는 다양한 경우에<br>대해서 풀이하는 과정을 포함하여 작성할 것.)   [12점]",
     "choices": [],

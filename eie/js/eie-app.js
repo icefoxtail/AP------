@@ -81,10 +81,21 @@
         return role === 'teacher' || role === 'eieteacher';
     }
 
+    function isEieOwnerSession() {
+        const role = String(getEieRole() || '').toLowerCase();
+        const loginId = String(window.localStorage?.getItem('WANGJI_EIE_LOGIN_ID') || '').toLowerCase();
+        return role === 'admin' || role === 'owner' || loginId === 'admin';
+    }
+
     function ensureEieInitialRoute() {
-        if (!isEieTeacherSession()) return;
         const current = String(window.location.hash || '').replace(/^#/, '').trim();
-        if (!current || current === 'dashboard') window.location.hash = '#teacher';
+        if (isEieTeacherSession()) {
+            if (!current || current === 'dashboard') window.location.hash = '#teacher';
+            return;
+        }
+        if (isEieOwnerSession()) {
+            if (current !== 'dashboard') window.location.hash = '#dashboard';
+        }
     }
 
     function clearEieToken() {

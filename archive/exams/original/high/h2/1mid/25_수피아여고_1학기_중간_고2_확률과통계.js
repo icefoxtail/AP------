@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","순열","도형","원","참거짓","조건해석"],
     wide: false,
     content: "서로 다른 사과 4개를 원형으로 배열하는 모든 경우의 수는 $24$이다. (O, X 중 선택)",
     choices: [
@@ -33,7 +33,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","전개","계수비교","확률","조합","이항정리","참거짓"],
     wide: false,
     content: "다항식 $(a+b)^{n}$의 전개식에서 $a^{n-r}b^{r}$의 계수와 $a^{r}b^{n-r}$의 계수는 서로 같다. (O, X 중 선택)",
     choices: [
@@ -54,7 +54,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","순열","중복순열","참거짓","조건해석","개념"],
     wide: false,
     content: "5명의 학생이 두 영화 A, B 중에서 각각 관람할 영화를 1편씩 택하는 모든 경우의 수는 $32$이다. (O, X 중 선택)",
     choices: [
@@ -75,7 +75,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","참거짓","조건해석","계산","개념","응용"],
     wide: false,
     content: "주사위 한 개를 던질 때 7의 눈이 나올 확률은 $\\frac{1}{6}$이다. (O, X 중 선택)",
     choices: [
@@ -96,7 +96,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","조합","중복조합","참거짓","조건해석","계산"],
     wide: false,
     content: "세 종류의 과일 사과, 오렌지, 포도 중에서 중복을 허용하여 4개를 택하는 모든 경우의 수는 ${}_{6}C_{2}$이다. (O, X 중 선택)",
     choices: [
@@ -117,7 +117,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","참거짓","조건해석","계산","응용"],
     wide: false,
     content: "특정한 질병에 걸린 200명의 환자에게 신약을 투여한 결과 120명이 치료되었다. 같은 질병에 걸린 환자에게 이 신약을 투여할 때, 치료될 확률은 $\\frac{3}{5}$이다. (O, X 중 선택)",
     choices: [
@@ -138,7 +138,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","배반사건","조건해석","계산","응용"],
     wide: false,
     content: "두 사건 $A, B$가 서로 배반사건이고, $P(A\\cup B)=3P(B)=1$일 때, $P(A)$의 값은?",
     choices: [
@@ -162,7 +162,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","확률","조합","이항정리","오류판별","조건해석"],
     wide: false,
     content: "$(x+3)^{4}$의 전개식에서 나오는 각 항의 계수가 아닌 것은?",
     choices: [
@@ -186,7 +186,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","순열","조합","중복순열","중복조합","조건해석","계산"],
     wide: false,
     content: "서로 다른 4개의 상자 A, B, C, D에 서로 다른 3개의 공을 넣는 모든 방법의 수를 $a$, 서로 다른 4개의 상자 A, B, C, D에 똑같은 5개의 공을 넣는 모든 방법의 수를 $b$라고 할 때, $a, b$의 값은? (단, 빈 상자가 있을 수 있다.)",
     choices: [
@@ -210,7 +210,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","순열","도형","원","조건해석","계산"],
     wide: false,
     content: "정오각형 모양의 탁자에 15명의 사람들이 둘러앉는 방법의 수를 $13!\\times a$라고 할 때, $a$의 값은?<br><img src=\"assets/images/25_수피아여고_1학기_중간_고2_확률과통계/q10.png\" style=\"display:block; width:240px; margin:10px auto;\">",
     choices: [
@@ -234,7 +234,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","순열","조건해석","계산","응용"],
     wide: false,
     content: "5개의 문자 S, P, E, E, R를 일렬로 배열할 때, 모음 두 개가 이웃할 확률을 $a$, 양 끝에 모음 두 개가 올 확률을 $b$라고 하면 $a-b$의 값은?",
     choices: [
@@ -258,7 +258,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","조합","중복조합","부등식","도형","원"],
     wide: false,
     content: "방정식 $x_{1}-x_{2}+x_{3}-x_{4}=5$를 만족시키는 $x_{1}, x_{2}, x_{3}, x_{4}$에 대하여 $x_{1}\\ge 2, x_{2}\\le 1, x_{3}\\ge 3, x_{4}\\le 2$인 정수해의 개수는?",
     choices: [
@@ -282,7 +282,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","순열","중복순열","표해석","자연수조건","개수세기","조건해석"],
     wide: false,
     content: "중복을 허용하여 6개의 숫자 0, 1, 2, 3, 4, 5로 만든 자연수를 크기가 작은 수부터 차례로 나열할 때, 1300번째인 수의 값은?",
     choices: [
@@ -306,7 +306,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","조합","자연수조건","조건해석","계산","응용"],
     wide: false,
     content: "1부터 9까지의 자연수가 각각 적힌 9개의 공이 들어 있는 상자가 있다. 이 상자에서 임의로 3개의 공을 동시에 꺼낼 때, 공에 적힌 수를 작은 것부터 차례로 $(a, b, c)$라 하자. 예를 들어 순서쌍 $(a, b, c)$가 $(1, 2, 7), (4, 5, 6)$인 경우를 연속하는 자연수가 나오는 경우라고 할 때, 연속하는 자연수가 나오지 않을 확률은?",
     choices: [
@@ -330,7 +330,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","전개","계수비교","확률","조합","이항정리","표해석"],
     wide: false,
     content: "$(x-4)\\left(x-\\frac{a}{x}\\right)^{5}$의 전개식에서 $x^{2}$의 계수와 $x^{3}$의 계수의 합이 150일 때, 만족하는 양수 $a$의 값은?",
     choices: [
@@ -354,7 +354,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","순열","조건해석","계산"],
     wide: false,
     content: "서로 다른 3개의 가방과 똑같은 3개의 리본, 똑같은 3개의 인형, 똑같은 3개의 뱃지가 있다. 각 가방에 1개의 리본, 1개의 인형, 1개의 뱃지를 달려고 한다. 각 가방마다 뱃지, 리본, 인형 순서로 단다고 할 때, 3개의 가방에 뱃지, 리본, 인형을 다는 순서를 정하는 모든 경우의 수는? (단, 각 가방에서 리본과 인형을 연속하여 달지 않아도 된다.)",
     choices: [
@@ -378,7 +378,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","확률","조합","이항정리","참거짓","조건해석"],
     wide: false,
     content: "다음 보기 중 옳은 것만을 있는 대로 고른 것은?\n<div class=\"question-table-wrap\">\n  <table>\n    <tr>\n      <td>\n        ㄱ. ${}_{8}C_{1}+{}_{8}C_{2}+{}_{8}C_{3}+\\cdots+{}_{8}C_{8}=256$<br>\n        ㄴ. ${}_{12}C_{1}+{}_{12}C_{3}+{}_{12}C_{5}+\\cdots+{}_{12}C_{11}=2048$<br>\n        ㄷ. ${}_{20}C_{0}-{}_{20}C_{1}+{}_{20}C_{2}-\\cdots-{}_{20}C_{19}=-1$<br>\n        ㄹ. ${}_{29}C_{15}+{}_{29}C_{16}+{}_{29}C_{17}+\\cdots+{}_{29}C_{29}=2^{28}$\n      </td>\n    </tr>\n  </table>\n</div>",
     choices: [
@@ -402,7 +402,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","여사건","함수","도형","원","개수세기"],
     wide: false,
     content: "두 집합 $X=\\{2, 4, 6, 8\\}, Y=\\{4\\text{의 약수}\\}$에 대하여 함수 $f:X\\rightarrow Y$가 아래 조건을 모두 만족시킬 확률의 값은?\n<div class=\"question-table-wrap\">\n  <table>\n    <tr>\n      <td>\n        (가) 함수 $f$의 공역과 치역은 같다.<br>\n        (나) $f(2)\\ne f(4)$\n      </td>\n    </tr>\n  </table>\n</div>",
     choices: [
@@ -426,7 +426,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","확률","경우의수","조합","중복조합","부등식","도형","원"],
     wide: false,
     content: "1부터 6까지의 자연수가 각각 적힌 6장의 카드가 들어 있는 상자에서 카드 한 장을 뽑아 카드에 적힌 숫자를 확인한 다음 상자에 넣기를 6번 반복할 때, $k$번째에 뽑힌 카드에 적힌 숫자를 $x_{k} (k=1, 2, 3, 4, 5, 6)$라고 하자. 이때 $x_{1}<x_{2}\\le x_{3}\\le x_{4}\\le x_{5}<x_{6}$인 경우의 수는?",
     choices: [
@@ -450,7 +450,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","확률","순열","여사건","도형","원","자연수조건","조건해석"],
     wide: false,
     content: "1부터 10까지의 자연수를 원형으로 배열할 때, 이웃한 두 수의 곱이 짝수가 되도록 배열하는 방법의 수를 구하는 풀이 과정과 답을 쓰시오.",
     choices: [],
@@ -468,7 +468,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","지수","확률","조합","자연수조건","조건해석","계산","응용"],
     wide: false,
     content: "분홍색 구슬이 5개, 노란색 구슬이 $n$개 들어 있는 주머니가 있다. 이 주머니에서 임의로 2개의 구슬을 동시에 꺼낼 때, 꺼낸 두 개의 구슬이 모두 노란색일 확률이 꺼낸 두 개의 구슬이 모두 분홍색일 확률의 $\\frac{3}{2}$이다. 이 주머니에서 임의로 두 개의 구슬을 꺼낼 때, 꺼낸 두 개의 구슬의 색이 다를 확률을 구하는 풀이 과정과 답을 쓰시오. (단, $n$은 1보다 큰 자연수이다.)",
     choices: [],
@@ -486,7 +486,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","확률","경우의수","순열","중복순열","여사건","범위","조건해석"],
     wide: false,
     content: "1, 2, 3, 4, 5가 각각 적힌 5개의 공을 서로 다른 4개의 상자에 넣으려고 한다. 어느 상자에도 공에 적힌 수의 합이 13 이상이 되는 경우가 없도록 공을 넣는 모든 방법의 수를 구하시오. (단, 빈 상자가 있을 수 있다.)",
     choices: [],
@@ -504,7 +504,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","확률","경우의수","여사건","도형","원","범위","조건해석"],
     wide: false,
     content: "주머니에 2, 4, 6, 8, 10, 12가 적힌 카드가 1장씩 들어 있다. 이 주머니에서 카드를 임의로 1장씩 꺼내어 카드에 적힌 수의 합이 6의 배수가 될 때까지 꺼내는 시행을 할 때, 카드를 3장 이상 꺼낼 확률을 구하는 풀이 과정과 답을 쓰시오. (단, 꺼낸 카드는 다시 넣지 않고, 처음 꺼낸 카드가 6의 배수이면 시행을 멈춘다.)",
     choices: [],

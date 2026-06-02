@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","조건해석","계산"],
     wide: false,
     content: "$(2x+3y)(4x-5y)$를 전개하였을 때, $x^2$의 계수와 $y^2$의 계수의 합은? [4점]",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","참거짓","개념"],
     wide: false,
     content: "다음 중 옳은 것은? [3점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","전개","참거짓","계산"],
     wide: false,
     content: "$(x+y)^2 - (x-y)^2$을 바르게 계산한 것은? [4점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","공통인수","참거짓","개념"],
     wide: false,
     content: "$ma - mb - na + nb$를 바르게 인수분해한 것은? [4점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","계수비교","계산"],
     wide: false,
     content: "$4x^2 + 12xy + \\square y^2$이 완전제곱식이 되도록 하는 $\\square$ 안에 알맞은 수는? [4점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","정수조건","참거짓","조건해석","개념"],
     wide: false,
     content: "다음 중 $x^2 - 5x - 6$을 인수분해한 것으로 옳은 것은? [3점]",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차방정식","일차방정식","오류판별","계산"],
     wide: false,
     content: "다음 중 이차방정식이 아닌 것은? [3점]",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","참거짓","조건해석","개념"],
     wide: false,
     content: "이차방정식 $8x^2 - 10x + 3 = 0$을 풀면? [4점]",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","계수비교","이차방정식","대입","조건해석"],
     wide: false,
     content: "이차방정식 $2x^2 - 4x + 1 = 0$의 해는 $x = \\dfrac{2 \\pm \\sqrt{a}}{2}$이다. $a$의 값은? (단, $a$는 유리수) [4점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","대입","조건해석","식세우기","계산"],
     wide: false,
     content: "지면에서 초속 45m 위로 똑바로 던져 올린 물체의 $x$초 후의 높이는 $(45x - 5x^2)$m라고 한다. 이 물체의 높이가 90m가 되는 것은 던져 올린 지 몇 초 후인가? [5점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차함수","일차함수","함수","그래프","계산"],
     wide: false,
     content: "다음 중에서 이차함수인 것은? [3점]",
     choices: [
@@ -301,7 +301,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","도형","원","그래프"],
     wide: false,
     content: "이차함수 $y = -2x^2$의 그래프에 대한 다음 설명 중 옳은 것은? [4점]",
     choices: [
@@ -325,7 +325,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","계산"],
     wide: false,
     content: "이차함수 $f(x) = -3x^2 + 2x + 10$에 대하여 $f(-1) + f(0) - f(1)$의 값은? [4점]",
     choices: [
@@ -349,7 +349,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","지수","함수","그래프","표해석","좌표","대입"],
     wide: false,
     content: "이차함수 $y = ax^2$의 그래프가 두 점 $(2, -4)$, $(-1, b)$를 지날 때, $ab$의 값은? (단, $a$는 상수) [3점]",
     choices: [
@@ -373,7 +373,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","조건해석","계산"],
     wide: false,
     content: "이차함수 $y = -\\dfrac{1}{2}x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(-6, 5)$를 지난다. 이때 $q$의 값은? [4점]",
     choices: [
@@ -441,7 +441,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","지수","함수","그래프","표해석","좌표","대입"],
     wide: false,
     content: "이차함수 $y = x^2 + 2x - a$의 그래프가 두 점 $(1, 0)$, $(-1, b)$를 지날 때, $a - b$의 값은? [4점]",
     choices: [

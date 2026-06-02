@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","조건해석","계산"],
     wide: false,
     content: "다음에서 $a(b+1)(c-2)$의 인수인 것은?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","계수비교","조건해석","계산"],
     wide: false,
     content: "다항식 $x^2+5x-24$를 인수분해한 것은?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","항등식","인수분해","전개","계수비교","지수","대입"],
     wide: false,
     content: "$5x^2+Bx-3=(5x-1)(x+A)$일 때, 상수 $A$, $B$에 대하여 $A$, $B$의 값을 구하면?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
     wide: false,
     content: "다음 식이 완전제곱식이 되도록 $\\square$ 안에 알맞은 양수를 구한 것은?\\n$$4x^2 + \\square xy + 25y^2$$",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","제곱의차","대입","조건해석","계산"],
     wide: false,
     content: "인수분해 공식을 이용하여 $71^2-29^2$을 계산하려고 할 때, 다음에서 어떤 인수분해 공식을 이용하는 것이 가장 편리한가?",
     choices: [
@@ -159,7 +159,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","일차방정식","계산","조건해석"],
     wide: false,
     content: "다음에서 이차방정식인 것은?",
     choices: [
@@ -183,7 +183,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","대입","계산","조건해석"],
     wide: false,
     content: "다음에서 $[\\quad]$ 안의 수가 주어진 이차방정식의 해인 것은?",
     choices: [
@@ -207,7 +207,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","대입","조건해석","계산"],
     wide: false,
     content: "이차방정식 $x^2-3x-10=0$의 두 근 중 큰 근이 이차방정식 $x^2-kx-15=0$의 한 근일 때, 상수 $k$의 값을 구하면?",
     choices: [
@@ -231,7 +231,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","완전제곱식","이차방정식","판별식","계산"],
     wide: false,
     content: "다음에서 중근을 갖는 이차방정식을 찾으면?",
     choices: [
@@ -255,7 +255,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $(x+3)^2=2$의 해가 $x=a\\pm\\sqrt{b}$일 때, $a-b$의 값은? (단, $a$, $b$는 유리수이다.)",
     choices: [
@@ -279,7 +279,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","계수비교","이차방정식","지수","정수조건","대입"],
     wide: false,
     content: "이차방정식 $0.3x^2+0.3x-0.1=0$의 해는?",
     choices: [
@@ -303,7 +303,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $2x^2+5x+p=0$의 해가 $x=\\dfrac{q\\pm\\sqrt{41}}{4}$일 때, 유리수 $p, q$의 값을 구하면?",
     choices: [
@@ -327,7 +327,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","지수","조건해석","계산"],
     wide: false,
     content: "제완이와 동생의 나이의 차는 $4$살이다. 두 사람의 나이의 곱이 $165$일 때, 동생의 나이를 구하면? (단, 제완이의 나이$>$동생의 나이)",
     choices: [
@@ -351,7 +351,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차함수","일차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "다음 〈보기〉에서 $y$가 $x$에 대한 이차함수인 것을 모두 찾으면?\\n〈보기〉\\nㄱ. $y=11x-2$\\nㄴ. $y=x^2-x+3$\\nㄷ. $y=x(x+4)-7$\\nㄹ. $y=-\\dfrac{5}{x^2}-2x+1$",
     choices: [
@@ -375,7 +375,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","이차함수","함수","그래프","참거짓","오류판별","대입"],
     wide: false,
     content: "이차함수 $f(x)=x^2+x-7$에 대하여 다음 함숫값 중에서 옳지 않은 것은?",
     choices: [
@@ -399,7 +399,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","도형","원","그래프"],
     wide: false,
     content: "다음에서 이차함수 $y=-3x^2$의 그래프에 대한 설명으로 옳은 것은?",
     choices: [
@@ -423,7 +423,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","조건해석","계산"],
     wide: false,
     content: "이차함수 $y=\\dfrac{1}{5}x^2$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $-2$만큼 평행이동한 그래프는?",
     choices: [
@@ -474,7 +474,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","대입","조건해석","식세우기"],
     wide: false,
     content: "이차함수 $y=a(x-7)^2-4$의 그래프를 $x$축의 방향으로 $-4$만큼, $y$축의 방향으로 $9$만큼 평행이동하였더니 이차함수 $y=-\\dfrac{2}{5}(x+b)^2+c$의 그래프가 되었다. 이때 상수 $a, b, c$에 대하여 $abc$의 값을 구하면?",
     choices: [

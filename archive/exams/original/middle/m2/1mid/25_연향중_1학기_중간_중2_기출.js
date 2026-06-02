@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","계산","조건해석"],
     "wide": false,
     "content": "순환소수 $0.\\dot{2}\\dot{7}$을 분수로 나타낼 때 다음 중 가장 편리한 식을 고르면? (단, $x=0.\\dot{2}\\dot{7}$) [3점]",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","참거짓","오류판별","개념"],
     "wide": false,
     "content": "순환소수 $x=1.23444\\dots$에 대한 다음 설명으로 옳지 않은 것은? [4점]",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산"],
     "wide": false,
     "content": "분수 $\\frac{1}{3}$와 $\\frac{8}{11}$을 소수로 나타내었을 때의 순환마디의 숫자의 개수를 각각 $x, y$라 할 때, $x+y$의 값을 구하면? [4점]",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","조건해석","계산"],
     "wide": false,
     "content": "분수 $\\frac{6}{13}$을 소수로 나타낼 때 소수점 아래 123번째 자리의 숫자를 구하면? [4점]",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "분수 $\\frac{14}{40 \\times x}$를 소수로 나타내면 유한소수가 될 때, $x$의 값이 될 수 있는 모든 한 자리 자연수의 합을 구하면? [5점]",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","나머지정리","지수","계산","조건해석"],
     "wide": false,
     "content": "다음 중 계산 결과가 나머지 넷과 다른 하나를 고르면? [4점]",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","지수","표해석","응용","계산"],
     "wide": false,
     "content": "컴퓨터에서 데이터의 양을 나타내는 가장 작은 단위를 1bit(비트)라고 한다. 다음 표는 데이터의 양의 단위 사이의 관계를 나타낸 것이다. 이때 16MB는 몇 bit인가? [4점]<br><br>|1B(바이트)|1KB(킬로바이트)|1MB(메가바이트)|<br>|:---:|:---:|:---:|<br>|$2^3$ bit|$2^{10}$ B|$2^{10}$ KB|",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","조건해석","응용","계산"],
     "wide": false,
     "content": "$3^4 = A$일 때, $\\frac{1}{27^8}$을 $A$를 사용하여 나타내면? [4점]",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","조건해석","계산","기출"],
     "wide": false,
     "content": "$(-4x^A y^3)^2 \\times x^3 y^2 \\div (\\frac{x}{y^2})^B = C x^6 y^{18}$일 때, 세 상수 $A, B, C$에 대하여 $A+B+C$의 값을 구하면? [4점]",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "다음 식 $a(8a-6b) - a(9a-12b)$을 전개하여 간단히 했을 때, $a^2$의 계수를 $A$, $ab$의 계수를 $B$라 하자. 이때 $A+B$의 값을 구하면? [4점]",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","조건해석","계산","개념"],
     "wide": false,
     "content": "다음 $\\square$ 안에 알맞은 식을 구하면? [4점]<br>$\\frac{5}{3}xy \\times ( \\square ) \\div x^2y = 15x^2y - 25xy^2$",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","참거짓","조건해석","계산"],
     "wide": false,
     "content": "어떤 다항식을 $-\\frac{1}{3}ab$로 나누어야 할 것을 잘못하여 곱했더니 $3a^2b - 9ab^2$이 되었다. 이때 바르게 계산한 식을 구하면? [4점]",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","참거짓","계산","조건해석"],
     "wide": false,
     "content": "다음 식 $\\frac{3x-x^3}{x} - \\frac{6x^3-5x^5}{x^3}$을 바르게 계산하면? [4점]",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","도형","원","부피","조건해석","계산"],
     "wide": false,
     "content": "다음 그림과 같은 두 원기둥 A, B가 있다. 원기둥 B의 높이는 원기둥 A의 높이의 $\\frac{1}{2}$배이고, 원기둥 B의 밑면의 반지름의 길이는 원기둥 A의 밑면의 반지름의 길이의 3배이다. 이때 원기둥 A의 부피는 원기둥 B의 부피의 몇 배인지 구하면? [4점]",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","부등식","일차부등식","오류판별","계산"],
     "wide": false,
     "content": "다음 중에서 일차부등식이 아닌 것을 모두 고르면? (정답 2개) [3점]",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","도형","원","범위","참거짓","오류판별","계산"],
     "wide": false,
     "content": "다음 문장을 부등식으로 나타낸 것 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","일차부등식","정수조건","조건해석","계산"],
     "wide": false,
     "content": "일차부등식 $1-0.4x \\le 0.2$를 만족시키는 $x$의 값 중에서 가장 작은 정수는? [4점]",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","참거짓","오류판별","조건해석","개념"],
     "wide": false,
     "content": "$a < b$일 때, 다음 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","일차부등식","계산","조건해석"],
     "wide": false,
     "content": "다음 두 일차부등식의 해가 같을 때, 상수 $a$의 값은? [4점]<br>$\\frac{1}{3}x < \\frac{2}{5} + \\frac{2}{15}x, \\quad 2(a-0.3x) > x$",
     "choices": [
@@ -467,7 +467,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","부등식","일차부등식","실생활","조건해석","계산","응용"],
     "wide": false,
     "content": "혜인이가 조계산을 등산하는 데, 올라갈 때는 시속 2km로 걷고, 30분 동안 앉아 쉬다가, 내려올 때는 같은 길을 시속 3km로 걸어서 2시간 이내에 갔다 오려고 한다. 혜인이가 최대 몇 km까지 올라갔다 올 수 있는지 구하면? [5점]",
     "choices": [
@@ -491,7 +491,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","지수","조건해석","계산","기출"],
     "wide": false,
     "content": "$A=2^3+2^3$, $B=4^5+4^5+4^5+4^5$일 때, 다음 물음에 답하시오. [6점]<br>(단, 풀이과정에 지수법칙을 적용한 과정을 나타낼 것)<br><br>(1) $A, B$를 각각 2의 거듭제곱을 사용하여 나타내시오. [4점]<br>(2) $B \\div A$의 값을 구하시오. [2점]",
     "choices": [],
@@ -509,7 +509,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","대입","조건해석","계산"],
     "wide": false,
     "content": "$x=\\frac{4}{5}, y=3$일 때, 식 $(6x^2-15xy) \\div (-3x) - (5x^2y-5xy+10xy^2) \\div \\frac{5}{2}xy$의 값을 구하려고 한다. 다음 물음에 답하시오. [7점]<br>(단, 다항식의 사칙계산을 이용한 풀이과정을 나타낼 것)<br><br>(1) 주어진 식을 계산하시오. [4점]<br>(2) (1)의 결과에 $x=\\frac{4}{5}, y=3$을 대입하여 주어진 식의 값을 구하시오. [3점]",
     "choices": [],
@@ -527,7 +527,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","부등식","일차부등식","표해석","수직선","조건해석","계산"],
     "wide": false,
     "content": "다음 그림은 일차부등식 $4x-2 \\le -ax+b$의 해를 수직선 위에 나타낸 것이다. 이때, $a+b$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수이고 $a < -4$이다.) [7점]",
     "choices": [],

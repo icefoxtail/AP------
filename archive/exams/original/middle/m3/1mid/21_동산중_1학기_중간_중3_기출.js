@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","제곱","정의","개념","참거짓","오답선별","객관식"],
     "wide": false,
     "solution": "① $\\sqrt{64}=8$의 제곱근은 $\\pm\\sqrt{8}$임. ② $\\sqrt{(-7)^{2}}=7$임. ③ 제곱근 49 = $\\sqrt{49}=7$ (참) ④ $\\sqrt{25}=5$임. ⑤ 0의 제곱근은 1개, 음수의 제곱근은 없음.",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","부등식","자연수조건","범위","정수해","합계산","조건해석"],
     "wide": false,
     "solution": "각 변을 제곱하면 $9 < 5n \\le 25 \\implies 1.8 < n \\le 5$. 자연수 n은 2, 3, 4, 5이므로 합은 $2+3+4+5=14$",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","소수점이동","제곱수","근삿값","계산","오답선별","객관식"],
     "wide": false,
     "solution": "소수점 이동이 짝수 칸이어야 함. ④ $\\sqrt{0.529}$는 소수점 아래 3자리이므로 $\\sqrt{529}$를 이용할 수 없음.",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호정리","소인수분해","a루트b","근호계산","계산"],
     "wide": false,
     "solution": "$\\sqrt{108} = \\sqrt{36 \\times 3} = 6\\sqrt{3}$. $a=6, b=3 \\implies a+b=9$",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호","곱셈","나눗셈","근호계산","계산","객관식"],
     "wide": false,
     "solution": "$2\\sqrt{18} \\div \\sqrt{6} \\times 2 = 2\\sqrt{3} \\times 2 = 4\\sqrt{3}$",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호","동류근호","분모유리화","근호덧셈","근호계산","계산"],
     "wide": false,
     "solution": "$4\\sqrt{5} - 5\\sqrt{5} + 2\\sqrt{5} = (4-5+2)\\sqrt{5} = \\sqrt{5}$",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호","동류근호","분모유리화","혼합계산","근호계산","계산"],
     "wide": false,
     "solution": "$3\\sqrt{3} + 2\\sqrt{3} - 8\\sqrt{3} = -3\\sqrt{3}$",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["실수","제곱근","무리수","대소관계","근삿값","개념","오답선별","객관식"],
     "wide": false,
     "solution": "① $\\sqrt{0.04}=0.2$이므로 $0.2 < 0.02$는 거짓임.",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식곱셈","전개","분배법칙","이차식","동류항","계산","객관식"],
     "wide": false,
     "solution": "$(2x+3)(x-4) = 2x^{2} - 8x + 3x - 12 = 2x^{2} - 5x - 12$",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식곱셈","전개","계수","xy항","동류항","계수비교","계산"],
     "wide": false,
     "solution": "$x^{2}+2xy-3x-2xy-4y^{2}+6y = x^{2}-4y^{2}-3x+6y$. $xy$계수: 0, $y$계수: 6이므로 합은 6",
     "level": "중"
@@ -259,7 +259,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","분모유리화","켤레식","분수식","근호계산","복합계산","상급"],
     "wide": false,
     "solution": "유리화하면 $(9+4\\sqrt{5}) + (9-4\\sqrt{5}) = 18$",
     "level": "중"
@@ -283,7 +283,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식","나눗셈","몫과나머지","식세우기","이차식","조건해석","계산"],
     "wide": false,
     "solution": "$(x+5)(x-3) + 2 = (x^{2}+2x-15) + 2 = x^{2}+2x-13$",
     "level": "중"
@@ -307,7 +307,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","다항식값","대칭식","식변형","x+y","근호계산","계산"],
     "wide": false,
     "solution": "$(x+1)(y+1)-xy = xy+x+y+1-xy = x+y+1$. $x+y=4$이므로 $4+1=5$",
     "level": "중"
@@ -331,7 +331,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["곱셈공식","식변형","완전제곱식","대칭식","ab값","조건해석","계산"],
     "wide": false,
     "solution": "$a^{2}+b^{2} = (a-b)^{2}+2ab \\implies 13 = 3^{2}+2ab$. $2ab = 4 \\therefore ab = 2$",
     "level": "중"
@@ -355,7 +355,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","다항식값","완전제곱식","식변형","대입","근호계산","계산"],
     "wide": false,
     "solution": "$x-3 = -2\\sqrt{2}$의 양변을 제곱하면 $x^{2}-6x+9 = 8 \\implies x^{2}-6x = -1$. 식: $-1+7=6$",
     "level": "중"
@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["곱셈공식","수계산","치환","차의제곱","식변형","계산","응용"],
     "wide": false,
     "solution": "$2021=x$로 치환: $x(x+2)-2x-(x-1)(x+1) = x^{2}+2x-2x-(x^{2}-1) = 1$",
     "level": "중"
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["다항식곱셈","전개","계수비교","문자계수","이차식","조건해석","계산"],
     "wide": false,
     "solution": "$2a=8 \\implies a=4$, $-3b=-15 \\implies b=5$, $c=ab-6=14$. $a+b+c = 4+5+14=23$",
     "level": "중"
@@ -427,7 +427,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","공통인수","단항식인수","인수판별","오답선별","개념","객관식"],
     "wide": false,
     "solution": "$xy(x-6y)$로 인수분해됨. $x^{2}y$는 인수가 아님.",
     "level": "중"
@@ -451,7 +451,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","완전제곱식","계수조건","빈칸추론","제곱근","조건해석","객관식"],
     "wide": false,
     "solution": "$\\Box = \\pm 2 \\times \\sqrt{1 \\times \\frac{1}{16}} = \\pm 2 \\times \\frac{1}{4} = \\pm \\frac{1}{2}$",
     "level": "중"
@@ -475,7 +475,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","절댓값","완전제곱식","범위조건","식의간단화","조건해석","상급"],
     "wide": false,
     "solution": "$|x-2|-|x-3|$. $2<x<3$이므로 $(x-2)-\\{-(x-3)\\} = 2x-5$",
     "level": "중"
@@ -499,7 +499,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","제곱의차","완전제곱식","다항식","문자식변형","계산","객관식"],
     "wide": false,
     "solution": "$(x-y)^{2}-z^{2}$ 이므로 합차 공식에 의해 $(x-y+z)(x-y-z)$",
     "level": "중"
@@ -523,7 +523,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","제곱의차","거듭제곱","약수판별","수의성질","오답선별","객관식"],
     "wide": false,
     "solution": "$(2^{4}+1)(2^{2}+1)(2+1)(2-1) = 17 \\times 5 \\times 3 \\times 1$. $15(5 \\times 3)$는 약수이나 $13$은 아님.",
     "level": "중"
@@ -541,7 +541,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","무리수","정수부분","소수부분","근호계산","조건해석"],
     "wide": false,
     "solution": "1) $3 < \\sqrt{12} < 4 \\implies a=3$. 2) $b=2\\sqrt{3}-3$. 3) $3\\sqrt{3}-3(2\\sqrt{3}-3) = 9-3\\sqrt{3}$",
     "level": "중"
@@ -559,7 +559,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","수직선","좌표","거리","근호계산","도형","응용"],
     "wide": false,
     "solution": "대각선 $\\sqrt{5}$. $p=2-\\sqrt{5}, q=5+\\sqrt{5}$. $PQ = q-p = (5+\\sqrt{5})-(2-\\sqrt{5}) = 3+2\\sqrt{5}$",
     "level": "중"
@@ -577,7 +577,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","인수분해","공통인수","제곱의차","다항식","공통인수찾기","계산"],
     "wide": false,
     "solution": "1) $(x+2y)(x-2y)$, 2) $3(x+2y)$. 공통인수는 $x+2y$임.",
     "level": "중"

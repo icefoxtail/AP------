@@ -20,7 +20,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","순열","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","조건해석","계산","응용"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -68,7 +68,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","나머지정리","확률","경우의수","순열","도형","원","조건해석"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -92,7 +92,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","확률","조합","중복조합","이항정리","개수세기","조건해석"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -116,7 +116,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","확률","조합","중복조합","이항정리","조건해석"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -140,7 +140,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","순열","도형","원","자연수조건","조건해석"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -164,7 +164,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","조합","중복조합","이항정리","자연수조건","개수세기","오류판별"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -188,7 +188,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","시그마","확률","조합","중복조합","이항정리","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -212,7 +212,7 @@ window.questionBank = [
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","조건해석","계산","응용"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -236,7 +236,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","나머지정리","확률","경우의수","순열","도형","사각형","원"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -260,7 +260,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","순열","중복순열","자연수조건","범위","개수세기","조건해석"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -284,7 +284,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","확률","조합","중복조합","이항정리"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -308,7 +308,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","조합","중복조합","이항정리","정수조건","개수세기","대입"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -332,7 +332,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","순열","도형","원","표해석","좌표"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","순열","도형","원","자연수조건","조건해석"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -380,7 +380,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","순열","자연수조건","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -404,7 +404,7 @@ window.questionBank = [
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","도형","원","개수세기","참거짓","오류판별"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -428,7 +428,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","확률","경우의수","순열","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -452,7 +452,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","확률","경우의수","조합","중복조합","이항정리","개수세기","조건해석"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -476,7 +476,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","확률","경우의수","순열","조합","자연수조건","조건해석"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -494,7 +494,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","전개","계수비교","수열","등비수열","확률","조합","중복조합"],
     "wide": false,
     "standardUnitOrder": "2"
   },
@@ -512,7 +512,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","확률","경우의수","순열","범위","개수세기","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": "1"
   },
@@ -530,7 +530,7 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","나머지정리","확률","조합","중복조합","이항정리","함수","개수세기"],
     "wide": false,
     "standardUnitOrder": "2"
   }

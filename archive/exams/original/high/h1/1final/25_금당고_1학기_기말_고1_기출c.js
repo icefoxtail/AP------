@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","복소수","조건해석","계산","중난도"],
     wide: false,
     content: "$2 \\times 2$행렬 $A$의 $(i,j)$성분 $a_{ij}=i^2+j^2$일 때, 모든 성분의 합은? [3.5점]",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","지수","경우의수","개수세기","조건해석","계산"],
     wide: false,
     content: "300의 약수의 개수는? [3.5점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","부등식","연립방정식","대입","조건해석","계산"],
     wide: false,
     content: "연립방정식 $\\begin{cases} x+y=1 \\\\ x^2+xy=7 \\end{cases}$ 의 해를 $x=\\alpha, y=\\beta$라 할 때, $\\alpha-\\beta$의 값은? [3.5점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","부등식","정수조건","범위","개수세기","조건해석","계산"],
     wide: false,
     content: "$x$에 대한 부등식 $|x-1| \\le 5$를 만족시키는 정수 $x$의 개수는? [3.5점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","순열","조합","조건해석","계산"],
     wide: false,
     content: "${}_8P_2$의 값은? [3.7점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","조건해석","계산","중난도","기출"],
     wide: false,
     content: "다음 등식이 성립할 때, 실수 $x, y$에 대해 $x+y$값은? [3.7점]\n$\\begin{pmatrix} 5 & -1 \\\\ -4 & x \\end{pmatrix} = \\begin{pmatrix} y+1 & -1 \\\\ -4 & -5 \\end{pmatrix}$",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","계수비교","근과계수","부등식","대입","조건해석","계산"],
     wide: false,
     content: "$x$에 대한 삼차방정식 $x^3-7x^2+ax-8=0$의 한 근이 2일 때, 실수 $a$와 나머지 두 근의 합은? [3.8점]",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","순열","조합","자연수조건","참거짓","조건해석","계산"],
     wide: false,
     content: "어느 지역에서 열린 배구 대회에 참가한 $n$개의 팀이 서로 다른 팀과 모두 한번씩 경기를 하였더니 총 66번 경기를 하였다. 이때 $n$의 값은? [3.8점]",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","부등식","정수조건","범위","조건해석","계산"],
     wide: false,
     content: "$x$에 대한 부등식 $|x-3| + 2|x-5| \\le 4$를 만족시키는 정수 $x$값들의 합은? [4점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","대입","조건해석","계산","중난도"],
     wide: false,
     content: "두 행렬 $A=\\begin{pmatrix} 3 & 1 \\\\ -1 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} -2 & -1 \\\\ 1 & 3 \\end{pmatrix}$에 대하여 행렬 $(A+B)^2 - 2AB$의 모든 성분의 합은? [4점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","계수비교","이차방정식","근과계수","이차함수","함수","정수조건"],
     wide: false,
     content: "$x$에 대한 이차방정식 $x^2+(p^2-3p-4)x+p^2-6p-7=0$의 두 근을 $\\alpha, \\beta$라 하자. 두 근의 부호는 서로 다르고 $\\alpha>0>\\beta$이고 $|\\alpha|-|\\beta|>0$이 되도록 하는 정수 $p$의 값의 합은? [4점]",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","복소수","이차방정식","판별식","조건해석","계산","개념"],
     wide: false,
     content: "삼차방정식 $x^3=-1$의 한 허근을 $\\alpha$라 할 때, $\\frac{\\alpha^8}{1-\\alpha} - \\frac{\\alpha^5}{\\alpha^2-\\alpha} + \\frac{\\alpha^2}{\\alpha^2+1}$의 값은? [4점]",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","이차함수","함수","그래프","범위","개수세기"],
     wide: false,
     content: "한 개의 주사위를 두 번 던져서 나오는 눈의 수를 차례로 $a, b$라 하자. 함수 $y = x^2 + a$의 그래프와 직선 $y = bx - 3$이 만나는 점이 존재하도록 하는 $a, b$의 순서쌍 $(a, b)$의 개수는? [4.2점]",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","경우의수","순열","조합","도형","원","조건해석"],
     wide: false,
     content: "회장 1명과 부회장 1명, 대의원 1명을 포함한 10명의 학생 중에서 축제 준비 위원 5명을 뽑으려고 한다. 회장, 부회장, 대의원 중 적어도 2명을 반드시 뽑는 경우의 수는? [4.2점]",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","전개","부등식","정수조건","범위","개수세기","조건해석"],
     wide: false,
     content: "이차부등식 $f(x)<0$의 해가 $1<x<4$일 때, 부등식 $f(3x) - f(2x) < 0$를 만족시키는 정수 $x$의 개수는? [4.3점]",
     choices: [
@@ -372,7 +372,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","근과계수","지수","참거짓","조건해석"],
     wide: false,
     content: "이차방정식 $x^2-4x-3=0$의 두 실근을 $\\alpha, \\beta$라고 할 때, 행렬 $X = \\begin{pmatrix} \\alpha & 0 \\\\ 0 & \\beta \\end{pmatrix}$에 대하여 행렬 $X^2$의 모든 성분의 합은? [4.3점]",
     choices: [
@@ -421,7 +421,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","복소수","경우의수","순열","조합","자연수조건","조건해석","계산"],
     wide: false,
     content: "1부터 9까지의 자연수가 하나씩 적힌 9장의 카드가 들어 있는 주머니에서 카드를 한 장씩 차례로 6번 꺼낸다. $i$번째 꺼낸 카드에 적혀 있는 수를 $a_i (i=1, 2, 3, 4, 5, 6)$라 할 때, $a_i$가 다음 조건을 만족시키는 경우의 수는? (단, 꺼낸 카드는 다시 주머니에 넣지 않는다.) [4.5점]\n(가) $a_3 = 5$\n(나) $a_1$과 $a_2$는 $a_3$보다 작다.\n(다) $a_3 < a_4 < a_5 < a_6$",
     choices: [
@@ -469,7 +469,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","인수분해","이차방정식","판별식","이차함수","부등식"],
     wide: false,
     content: "$x$에 대한 삼차방정식 $x^3+(1-m)x^2+(3-m)x+3=0$이 0보다 작은 한 근과 1과 3사이에 서로 다른 두 실근을 가질 때, 이를 만족시키는 $m$의 범위가 $\\alpha < m < \\beta$이다. 이 때 $\\alpha^2+\\beta$의 값은? [4.5점]",
     choices: [
@@ -493,7 +493,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","나머지정리","경우의수","순열","조합","자연수조건","개수세기","조건해석"],
     wide: false,
     content: "<서·논술형 1>\n5개의 숫자 0, 1, 2, 3, 4가 하나씩 적혀 있는 5장의 카드 중에서 서로 다른 4장의 카드를 뽑아 일렬로 나열하여 네 자리의 자연수를 만들 때, 3000보다 큰 3의 배수의 개수를 풀이과정과 함께 서술하시오. (단, $a, b$는 상수이다.) [8점]",
     choices: [],
@@ -511,7 +511,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","인수분해","계수비교","이차방정식","판별식","근과계수","부등식","도형"],
     wide: false,
     content: "<서·논술형 2>\n$x$에 대한 사차방정식 $3x^4-10x^3+(11+k)x^2-(4+2k)x+k=0$의 서로 다른 세 근이 어떤 직각삼각형의 세 변의 길이가 된다. 가능한 모든 $k$값들을 풀이과정과 함께 서술하시오. [12점]",
     choices: [],

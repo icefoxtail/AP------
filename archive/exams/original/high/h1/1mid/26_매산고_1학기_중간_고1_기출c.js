@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","계수비교","조건해석","계산"],
     wide: false,
     content: "다항식 $A=x^2+2x+5$, $B=x^3-x+1$에 대하여 $A+B$에서 $x$의 계수는?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","항등식","나머지정리","전개","계수비교","대입","조건해석","계산"],
     wide: false,
     content: "등식 $ax^2+bx+c=(x-1)(x+2)-1$이 실수 $x$에 대한 항등식일 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값은?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","참거짓","대입","조건해석","개념"],
     wide: false,
     content: "다음 중 다항식 $p(x)=8x^3+27y^3$을 올바르게 인수분해 한 것은?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","이차방정식","이차함수","최대최소","함수","그래프","표해석"],
     wide: false,
     content: "$1 \\le x \\le 3$에서 이차함수 $y=x^2-4x+6$의 최솟값과 최댓값의 합은?",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","항등식","나머지정리","대입","조건해석","식세우기","계산"],
     wide: false,
     content: "다항식 $p(x)=x^3+2x^2-3x+4$를 $2x-4$로 나누었을 때 몫을 $Q(x)$, 나머지를 $R$이라 할 때, $Q(1)+R$의 값은?",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","항등식","나머지정리","대입","조건해석","응용","계산"],
     wide: false,
     content: "$(2026+4)(2026^2-30)$을 $2020$으로 나눈 나머지는?",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수정리","인수분해","계수비교","대입","조건해석","계산"],
     wide: false,
     content: "다항식 $p(x)=x^3-ax^2-11x-21$이 최고차항 계수가 $1$인 두 다항식 $f(x), g(x)$의 곱으로 인수분해 되고 $f(7)=0$일 때, $f(1)+g(1)$의 값은?",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
   standardUnitOrder: 4,
   questionType: "객관식",
   layoutTag: "grid",
-  tags: [],
+  "tags": ["객관식","분모유리화","절댓값","복소수","켤레복소수","이차방정식","범위","참거짓"],
   wide: false,
   content: "서로 다른 복소수 $z_1, z_2$에 대하여 다음 중 옳은 것만을 있는대로 고른 것은?\n<보기>\n$\\text{ㄱ. }(z_1+3)(\\overline{z_1}+3)\\text{은 실수이다.}$\n$\\text{ㄴ. }(z_1-\\overline{z_2})(\\overline{z_1}+z_2)\\text{가 실수이면 }z_1, z_2\\text{는 실수이다.}$\n$\\text{ㄷ. }z_1\\overline{z_1}=z_2\\overline{z_2}\\text{이면 }z_1=\\overline{z_2}\\text{이다.}$",
   choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
   standardUnitOrder: 4,
   questionType: "객관식",
   layoutTag: "grid",
-  tags: [],
+  "tags": ["객관식","제곱근","근호","복소수","이차방정식","판별식","오류판별","조건해석"],
   wide: false,
   content: "$0$이 아닌 두 실수 $a, b$에 대하여 $\\dfrac{\\sqrt{b}}{\\sqrt{a}} = -\\sqrt{\\dfrac{b}{a}}$ 가 성립할 때, 항상 서로 다른 두 실근을 갖는 이차방정식인 것만을 보기에서 있는대로 고른 것은?\n<보기>\n$\\text{ㄱ. } ax^2-x+b=0$\n$\\text{ㄴ. } x^2+ax+b=0$\n$\\text{ㄷ. } ax^2-bx+1=0$\n$\\text{ㄹ. } bx^2-4x-a=0$",
   choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","이차함수","최대최소","함수","그래프","범위"],
     wide: false,
     content: "$x$에 대한 이차함수 $y=x^2+(2m-3)x+m^2-5m+4$의 그래프가 $x$축과 만나도록 하는 모든 실수 $m$의 최솟값은?",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","근과계수","이차함수","함수","그래프"],
     wide: false,
     content: "이차함수 $y=x^2+kx+5$의 그래프와 직선 $y=-3x+2$가 접하도록 하는 모든 실수 $k$의 값의 곱은?",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","전개","계수비교","복소수","이차방정식","판별식"],
     wide: false,
     content: "복소수 $z=x^2(1+2i)-x(3-i)-(3+8i)$에 대해 $z^2$이 순허수가 되게 하는 실수 $x$값의 합은? (단, $i=\\sqrt{-1}$ 이다.)",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","전개","계수비교","복소수","이차방정식","판별식"],
     wide: false,
     content: "등식 $(p+2qi)^2=-16i$를 만족시키는 두 실수 $p, q$는 $x$에 대한 이차방정 $x^2+ax+b=0$의 두 실근이다. 두 상수 $a, b$에 대하여 $a^3-b^3$의 값은? (단, $p<0$이고 $i=\\sqrt{-1}$ 이다.)",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","근과계수","이차함수","최대최소","함수"],
     wide: false,
     content: "이차함수 $y=x^2-4ax+26-2a^2$의 그래프가 $x$축과 서로 다른 두 점 $(\\alpha, 0), (\\beta, 0)$에서 만날 때, $\\alpha^2+\\beta^2$의 최솟값은? (단, $a$는 자연수이다.)",
     choices: [
@@ -375,7 +375,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "단답형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","다항식","곱셈공식","대입","조건해석","계산"],
     wide: false,
     content: "$x+\\dfrac{1}{x}=4$일 때, $x^3+\\dfrac{1}{x^3}$의 값을 구하시오.",
     choices: [],
@@ -393,7 +393,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "단답형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","제곱근","근호","분모유리화","인수분해","공통인수","복소수","이차방정식"],
     wide: false,
     content: "자연수 $n$에 대하여 $p(n)=\\left(\\dfrac{2}{\\sqrt{3}-i}\\right)^{n+2}+\\left(\\dfrac{2}{\\sqrt{3}-i}\\right)^{n}$ 이 실수가 되게 하는 $50$이하의 자연수 $n$의 개수를 구하시오. (단, $i=\\sqrt{-1}$ 이다.)",
     choices: [],
@@ -411,7 +411,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "단답형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","이차방정식","판별식","이차함수","함수","그래프","표해석","좌표"],
     wide: false,
     content: "좌표평면에서 직선 $y=t$가 두 이차함수 $y=x^2+3$, $y=-x^2+x+6$의 그래프와 만날 때, 서로 다른 교점의 개수가 $4$가 되게 하는 모든 실수 $t$의 값의 범위를 구하시오.",
     choices: [],

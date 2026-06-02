@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","대입","계산"],
     "wide": false,
     "content": "두 다항식 $A=x^2-2x+1$, $B=2x^2+x-2$에 대하여 $A-B$를 간단히 하면? [4점]",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계수비교","복소수","표해석","조건해석","계산"],
     "wide": false,
     "content": "식 $(7+4i)+(-3+5i)=a+bi$ ($a, b$는 실수)에서 $a+b$의 값은? (단, $i=\\sqrt{-1}$) [4.1점]",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","전개","계수비교","계산"],
     "wide": false,
     "content": "모든 실수 $x$에 대하여 다음 식 $(x-3)(2x+4)=2x^2+ax+b$이 항상 성립할 때 두 실수 $a, b$에 대하여 $a+b$의 값은? [4.2점]",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","전개","대입","계산","개념"],
     "wide": false,
     "content": "다항식 $x^2-5x-3$을 $x-3$으로 나누었을 때의 나머지를 $R$이라고 할 때, 나머지 $R$의 값은? [4.3점]",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","조건해석","계산"],
     "wide": false,
     "content": "이차방정식 $4x^2-12x+k-3=0$이 중근을 가질 때, 실수 $k$의 값은? [4.4점]",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","참거짓","대입","계산"],
     "wide": false,
     "content": "다항식 $x^4+2x^2-3$이 $(x^2+a)(x+b)(x-b)$로 인수분해 될 때, 두 양수 $a, b$에 대하여 $a-b$의 값은? [4.5점]",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","대입","조건해석","계산"],
     "wide": false,
     "content": "$x^2-6x+1=0$일 때, $x^3-x-\\frac{1}{x}+\\frac{1}{x^3}$의 값은? [4.6점]",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","완전제곱식","전개","계수비교","계산","개념"],
     "wide": false,
     "content": "다항식 $x^3-ax-b$가 $(x+2)^2$으로 나누어떨어진다. 이때, 몫을 $Q(x)$라 할 때, $a+b+Q(10)$의 값은? [4.7점]",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","전개","계수비교","함수","계산"],
     "wide": false,
     "content": "다항식 $f(x)=x^3+10x^2-5x+17$에 대하여 등식 $f(x+k)=x^3-2kx^2+ax+b$가 $x$의 값에 관계없이 항상 성립할 때, $k+a+b$의 값은? (단, $k, a, b$는 상수이다.) [4.8점]",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","완전제곱식","계수비교","이차함수","최대최소","함수","도형","사각형"],
     "wide": false,
     "content": "길이가 $240m$인 끈을 모두 사용하여 직사각형 모양의 $2$개의 영역(하나는 정사각형)으로 나눌 때, 넓이의 합이 최대가 되는 정사각형 영역의 한 변의 길이는? (단, 끈의 두께는 생각하지 않는다.) [4.9점]",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","이차방정식","판별식","이차함수","함수","조건해석","계산"],
     "wide": false,
     "content": "이차함수 $y=x^2-4kx+4k^2-3k+6$은 $x$축과 서로 다른 두 점에서 만나고, $y=2x^2-3kx+k^2+k+6$은 $x$축과 접할 때, $5k$의 값은? [4.9점]",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","표해석","범위","참거짓","조건해석"],
     "wide": false,
     "content": "$-2 \\le x \\le 2$에 대하여 함수 $y=(x^2-2x+1)(x^2-2x-4)-5x^2+10x+19$의 최댓값과 최솟값을 각각 $M, m$이라 할 때, $M-m$의 값은? [5.1점]",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계수비교","이차방정식","근과계수","도형","원"],
     "wide": false,
     "content": "이차방정식 $ax^2+bx+c=0 (a \\n e 0)$에 대하여, 하니는 일차항 계수 $b$를 잘못 봐서 $1 \\pm i$를 얻고, 두리는 상수항 $c$를 잘못 봐서 $\\frac{1 \\pm \\sqrt{13}}{3}$을 얻었을 때, 원래 방정식의 두 근 $\\alpha, \\beta$에 대한 $27\\alpha^2+27\\beta^2$의 값은? [5.2점]",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","복소수","이차함수","최대최소","함수","표해석","범위"],
     "wide": false,
     "content": "복소수 $z=a+2bi (b \\n e 0)$에 대하여 $\\frac{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","최대최소","조합","조건해석","계산"],
     "wide": false,
     "content": "[단답형 1] $x$에 대한 다항식 $(x^2+2x+3)^2$의 전개식에서 $x$의 계수를 구하시오. [2점]",
     "choices": [
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","판별식","이차함수","최대최소","부등식","함수","그래프","정수조건"],
     "wide": false,
     "content": "[단답형 2] 이차함수 $y=-x^2+x-20$의 그래프가 직선 $y=4x+a-1$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오. [3점]",
     "choices": [
@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "[단답형 3] $A=53^3+21 \\times 53^2+147 \\times 53+443$이라고 할 때, $A$의 값을 구하시오. [4.5점]",
     "choices": [
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","다항식","인수분해","최대최소","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $48$의 값을 가질 때, $x+y+z$의 최솟값을 구하시오. [5.5점]",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","복소수","지수","자연수조건","범위","개수세기"],
     "wide": false,
     "content": "[서술형 1] $15$이하의 자연수 $n, m$에 대하여 $n=2p, m=3q$이고 $f(n,m)=(\\frac{1+i}{\\sqrt{2}})^n + (\\frac{\\sqrt{3}+i}{2})^m = 1+i$를 만족할 때, 순서쌍 $(n,m)$의 개수를 구하시오. [10점]",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","판별식","이차함수","최대최소","함수","도형","삼각형"],
     "wide": false,
     "content": "[서술형 2] 이차함수 $y=-x^2+6x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $9$배가 될 때 $a$의 최댓값의 절댓값을 구하시오. [10점]",
     "choices": [

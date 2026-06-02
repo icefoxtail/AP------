@@ -20,7 +20,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","계산","상급"],
     "wide": false,
     "solution": "$y = -(x+2)^2 + 9 \\rightarrow M = 9$\n$y = (x-4)^2 - 10 \\rightarrow m = -10$\n$\\therefore M + m = 9 + (-10) = -1$"
   },
@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차방정식","이차함수","함수","그래프","표해석","좌표","조건해석"],
     "wide": false,
     "solution": "$x$축과 만나는 교점의 $x$좌표가 근이므로\n$y = (x+1)(x-3) = x^2 - 2x - 3$\n따라서 $a = -2, b = -3$\n$\\therefore a+b = -5$"
   },
@@ -68,7 +68,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차방정식","판별식","자연수조건","개수세기","조건해석","계산"],
     "wide": false,
     "solution": "판별식 $D/4 = (k+3)^2 - (k^2+21) < 0$\n$k^2 + 6k + 9 - k^2 - 21 < 0$\n$6k - 12 < 0 \\rightarrow k < 2$\n이를 만족하는 자연수 $k$는 $1$뿐이므로 1개이다."
   },
@@ -92,7 +92,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","조건해석","계산"],
     "wide": false,
     "solution": "$P(x) = 2x^3 - 3x^2 - 12x - 7$이라 하면\n$P(-1) = -2 - 3 + 12 - 7 = 0$\n조립제법을 이용해 인수분해하면\n$P(x) = (x+1)(2x^2 - 5x - 7) = (x+1)^2(2x-7)$\n따라서 $a=1, b=2, c=-7$\n$\\therefore a+b+c = 1 + 2 - 7 = -4$"
   },
@@ -116,7 +116,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","곱셈공식","조건해석","계산"],
     "wide": false,
     "solution": "$(x-y)^2 = x^2 - 2xy + y^2$\n$16 = 14 - 2xy \\rightarrow xy = -1$\n$x^3 - y^3 = (x-y)^3 + 3xy(x-y) = 4^3 + 3(-1)(4) = 64 - 12 = 52$"
   },
@@ -140,7 +140,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","나머지정리","대입","계산"],
     "wide": false,
     "solution": "주어진 항등식에 $x=1$ 대입:\n$0 = a_6 + a_5 + a_4 + a_3 + a_2 + a_1 + a_0$\n$x=-1$ 대입:\n$-64 = a_6 - a_5 + a_4 - a_3 + a_2 - a_1 + a_0$\n두 식을 더하면:\n$-64 = 2(a_6 + a_4 + a_2 + a_0)$\n$\\therefore a_0 + a_2 + a_4 + a_6 = -32$"
   },
@@ -164,7 +164,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "solution": "$(x^2 + x + 1)\\{x^2 + (a+b)x + ab\\}$를 전개한다.\n$x^3$의 계수: $(a+b) + 1 = 5 \\rightarrow a+b = 4$\n$x^2$의 계수: $ab + (a+b) + 1 = 12 \\rightarrow ab + 4 + 1 = 12 \\rightarrow ab = 7$\n$a^3 + b^3 = (a+b)^3 - 3ab(a+b) = 64 - 3(7)(4) = 64 - 84 = -20$"
   },
@@ -188,7 +188,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","조건해석","계산"],
     "wide": false,
     "solution": "$f(x) = Q(x)(x-1)(x-2)^2 + R(x)$\n이때 $R(x)$는 $(x-2)^2$로 나누었을 때 나머지가 $2x-5$이므로,\n$R(x) = a(x-2)^2 + 2x - 5$라 둘 수 있다.\n조건에서 $f(1) = 3$이므로 $R(1) = 3$이다.\n(문제에서 $R(1)$을 직접 물었으므로 식을 완성할 필요 없이 바로 $3$임을 알 수 있다.)"
   },
@@ -212,7 +212,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","중난도"],
     "wide": false,
     "solution": "$a^2 + b^2 + 3c^2 - 2ab - 4bc + 4ca$\n$= (a^2 + b^2 + 4c^2 - 2ab - 4bc + 4ca) - c^2$\n$= (a - b + 2c)^2 - c^2$\n합차 공식을 이용하면\n$= (a - b + 2c + c)(a - b + 2c - c)$\n$= (a - b + 3c)(a - b + c)$\n따라서 인수는 $a - b + 3c$ 이다."
   },
@@ -236,7 +236,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","이차방정식","판별식","계산"],
     "wide": false,
     "solution": "판별식 $D = (2ak+b)^2 - 4(k^2 + 2ck + 9) = 0$\n$4a^2k^2 + 4abk + b^2 - 4k^2 - 8ck - 36 = 0$\n$(4a^2 - 4)k^2 + (4ab - 8c)k + (b^2 - 36) = 0$\n$k$에 대한 항등식이므로\n$4a^2 - 4 = 0 \\rightarrow a^2 = 1 \\rightarrow a = 1$ ($a>0$)\n$b^2 - 36 = 0 \\rightarrow b^2 = 36 \\rightarrow b = 6$ ($b>0$)\n$4ab - 8c = 0 \\rightarrow 24 - 8c = 0 \\rightarrow c = 3$\n$\\therefore a+b+c = 1+6+3 = 10$"
   },
@@ -260,7 +260,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","복소수","자연수조건","범위","개수세기","대입"],
     "wide": false,
     "solution": "$z = \\frac{1-i}{1+i} = \\frac{(1-i)^2}{2} = -i$\n$f(n) = (-i)^n$\n$n$에 1부터 4까지 대입해보면 $-i, -1, i, 1$이 반복된다.\n합을 차례로 구하면 $S_1 = -i, S_2 = -i-1, S_3 = -1, S_4 = 0$ 이며 주기는 4이다.\n총합이 $-i$가 되려면 $n$은 $4k-3$ 꼴이어야 한다.\n$1 \\le 4k-3 \\le 100 \\rightarrow k \\le \\frac{103}{4} = 25.75$\n따라서 조건을 만족하는 자연수 $k$는 25개이다."
   },
@@ -284,7 +284,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","이차방정식","판별식","오류판별","조건해석","계산"],
     "wide": false,
     "solution": "주어진 조건에서 $a > 0, b < 0$이다.\nㄱ. $D = a^2 - 4b$. $b < 0$이므로 $-4b > 0 \\rightarrow D > 0$ (항상 실근)\nㄴ. $D = 1 - 4ab$. $ab < 0$이므로 $-4ab > 0 \\rightarrow D > 0$ (항상 실근)\nㄷ. $D = a^2 - 4a(-b) = a^2 + 4ab$. $a>0, b<0$이므로 $4ab < 0$이 되어 $D < 0$이 될 수 있다. (예: $a=1, b=-1$)\n$\\therefore$ 항상 실근을 가지는 것은 ㄱ, ㄴ이다."
   },
@@ -308,7 +308,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","근과계수","이차함수","최대최소","함수","계산"],
     "wide": false,
     "solution": "근과 계수의 관계에 의해 $\\alpha + \\beta = 3, \\alpha\\beta = 1/2$\n새로운 두 근의 합: $\\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\alpha+\\beta}{\\alpha\\beta} = \\frac{3}{1/2} = 6$\n새로운 두 근의 곱: $\\frac{1}{\\alpha} \\times \\frac{1}{\\beta} = \\frac{1}{\\alpha\\beta} = 2$\n$x^2$의 계수가 $-1$이므로 $f(x) = -(x^2 - 6x + 2)$\n$f(x) = -(x-3)^2 + 7$\n$\\therefore$ 최댓값은 7"
   },
@@ -332,7 +332,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","나머지정리","부등식","조건해석","계산"],
     "wide": false,
     "solution": "$x = 1/2$로 조립제법을 연속으로 적용한다.\n1회 적용: 나머지는 1 $\\rightarrow d = 1$, 몫은 $4x^2 + 1$\n2회 적용: 나머지는 2 $\\rightarrow c = 2$, 몫은 $4x + 2$\n3회 적용: 나머지는 4 $\\rightarrow b = 4$, 몫은 4 $\\rightarrow a = 4$\n$\\therefore ac + b + d = 4(2) + 4 + 1 = 13$"
   },
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","유리수","이차함수","함수","도형","삼각형"],
     "wide": false,
     "solution": "$x$축에 수직인 직선을 $x=t$라 하면 $A(t, t^2), B(t, -\\frac{1}{2}t^2+2t)$\n선분 $AB$는 $y$축에 평행하므로 정삼각형을 이루려면 $C(k,0)$에서 $AB$에 내린 수선이 $AB$를 수직이등분해야 한다.\n수선의 방정식은 $y=0$ ($x$축)이므로 선분 $AB$의 중점의 $y$좌표는 0이다.\n$\\frac{t^2 - \\frac{1}{2}t^2 + 2t}{2} = 0 \\rightarrow \\frac{1}{4}t^2 + t = 0 \\rightarrow t=-4$ ($t \\n eq 0$)\n$t=-4$일 때 $A(-4, 16), B(-4, -16)$이므로 한 변의 길이는 32이다.\n정삼각형의 높이는 $\\frac{\\sqrt{3}}{2} \\times 32 = 16\\sqrt{3}$\n$k = t + 16\\sqrt{3} = -4 + 16\\sqrt{3}$ ($k>0$)\n따라서 $a = -4, b = 16 \\rightarrow a+b = 12$"
   },
@@ -380,7 +380,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","범위","조건해석","계산","상급"],
     "wide": false,
     "solution": "대칭축이 $x=a$이므로 세 가지 구간으로 나눈다.\n1) $a < 0$: $x=0$에서 최댓값 $f(0) = -a^2+b = 4 \\rightarrow b = a^2+4$\n$a+b = a^2+a+4 = (a+1/2)^2 + 15/4 \\rightarrow$ 최솟값 $15/4$\n2) $0 \\le a \\le 1$: $x=a$에서 최댓값 $f(a) = b = 4$\n$a+b = a+4 \\rightarrow$ 최솟값 4\n3) $a > 1$: $x=1$에서 최댓값 $f(1) = -(1-a)^2+b = 4 \\rightarrow b = a^2-2a+5$\n$a+b = a^2-a+5 \\rightarrow$ 구간에서 하한은 5\n전체 최솟값 $k = 15/4$\n$\\therefore 8k = 8 \\times 15/4 = 30$"
   },
@@ -404,7 +404,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","삼각함수","도형","삼각형","원","넓이"],
     "wide": false,
     "solution": "[도형 검토 후 보완 필요]\n내접원 반지름 $r=1, AI=3$이므로 $\\sin(A/2) = 1/3 \\rightarrow \\sin A = 4\\sqrt{2}/9$\n$\\triangle ABC$ 넓이 = $\\frac{1}{2}r(a+b+c) = 5\\sqrt{2} \\rightarrow$ 둘레 $a+b+c = 10\\sqrt{2}$\n$\\frac{1}{2}bc\\sin A = 5\\sqrt{2} \\rightarrow bc = 45/2$\n코사인법칙 $a^2 = (b+c)^2 - 2bc(1+\\cos A)$를 풀면 $a = 3\\sqrt{2}$\n$A$에서 $BC$에 내린 수선의 길이 $h_A = 10/3$\n$DE$가 내심 $I$를 지나며 $BC$와 평행하므로 $\\triangle ADE$의 높이는 $h_A - 1 = 7/3$\n닮음비가 $7/3 : 10/3 = 7:10$이므로 넓이비는 $49:100$\n$\\triangle ADE$ 넓이 = $\\frac{49}{100} \\times 5\\sqrt{2} = \\frac{49}{20}\\sqrt{2}$\n$\\therefore a=20, b=49 \\rightarrow a+b = 69$"
   },
@@ -428,7 +428,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","나머지정리","이차방정식","범위","조건해석","계산"],
     "wide": false,
     "solution": "$P(x) = x^3 + 5x^2 + 5x - 3$이라 하자. $f(x)$가 이차식이므로 $g(x)$는 일차식 이하이다.\n(나)에서 $g(x)$로 나눈 나머지 $f(x)-x^2-2x$는 상수항이어야 하므로 $c$라 두면\n$f(x) = x^2 + 2x + c$\n$P(x)$를 $x^2+2x+c$로 나누면 몫은 $x+3$이고 나머지는 $g(x) = -(c+1)x - 3(c+1) = -(c+1)(x+3)$\n(나)에서 나머지가 $c$이므로 $P(-3) = c$가 성립한다.\n$P(-3) = -27 + 45 - 15 - 3 = 0 \\rightarrow c = 0$\n따라서 $g(x) = -x - 3$이다.\n$g(x)$를 $x-2$로 나눈 나머지는 $g(2) = -5$"
   },
@@ -446,7 +446,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","복소수","조건해석","계산","중난도"],
     "wide": false,
     "solution": "복소수 상등 조건에 의해 실수부와 허수부를 비교한다.\n$3x - y = 4$\n$-(x - 2y) = 2 \\rightarrow -x + 2y = 2$\n두 식을 연립하여 풀면\n$x = 2, y = 2$\n$\\therefore x + y = 4$"
   },
@@ -464,7 +464,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","계수비교","이차방정식","이차함수","함수","조건해석","계산"],
     "wide": false,
     "solution": "$x^2+x+1=0$의 두 근이 $\\alpha, \\beta$이므로 $\\alpha+\\beta=-1, \\alpha^2+\\alpha+1=0$에서 $-\\alpha-1 = \\alpha^2 = \\beta$\n또한 $\\beta^2 = \\alpha$이므로 조건식은 $f(\\beta) = -2\\alpha, f(\\alpha) = -2\\beta$로 쓸 수 있다.\n$\\alpha+\\beta=-1$에서 $-2\\alpha = 2\\beta+2$이므로 $f(\\beta) = 2\\beta+2, f(\\alpha) = 2\\alpha+2$\n따라서 $f(x) - 2x - 2 = 0$은 $\\alpha, \\beta$를 두 근으로 갖고 최고차항 계수가 1인 이차방정식이다.\n$f(x) - 2x - 2 = x^2 + x + 1 \\rightarrow f(x) = x^2 + 3x + 3$\n$\\therefore f(2) = 4 + 6 + 3 = 13$"
   },
@@ -482,7 +482,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","이차함수","최대최소","함수","범위","조건해석","계산","상급"],
     "wide": false,
     "solution": "대칭축 $x = -a/2$와 구간의 중점 $k+1$의 위치에 따라 최댓값이 결정된다.\n$M(k)$가 $k=0$을 기준으로 바뀌므로 $0+1 = -a/2 \\rightarrow a = -2$\n$f(x) = x^2 - 2x + b = (x-1)^2 + b - 1$\n$m(k)$는 꼭짓점 $x=1$이 구간 내에 있을 때($-1 \\le k \\le 1$) 최솟값 $b-1$을 가진다.\n이 값이 4이므로 $b-1=4 \\rightarrow b=5$\n$k > 1$일 때 $m(k) = f(k) = k^2-2k+5$\n$y=m(k)$와 $y=4k+t$가 한 점에서 만나려면 기울기가 4인 직선이 $k > 1$인 오른쪽 곡선 부분에 접해야 한다.\n$k^2 - 2k + 5 = 4k + t \\rightarrow k^2 - 6k + 5 - t = 0$\n$D/4 = 9 - (5 - t) = 0 \\rightarrow 4 + t = 0$\n$\\therefore t = -4$"
   }

@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","조건해석","계산"],
     wide: false,
     content: "다음 중에서 다항식 $x^2-7x+6$의 인수인 것을 모두 고르면? (정답 2개) (3점)",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","최대최소","정수조건","조건해석"],
     wide: false,
     content: "$a, b$가 정수일 때, 다음 등식 $x^2+px+20=(x+a)(x+b)$를 만족시키는 수 $p$의 최솟값은? (4점)",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","도형","원","대입"],
     wide: false,
     content: "$6x^2+bx-5$을 인수분해하면 $(2x-1)(3x+a)$이 될 때, 상수 $a, b$에 대하여 $a-b$의 값은? (4점)",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","이차방정식","일차방정식","계산"],
     wide: false,
     content: "다음 중에서 이차방정식을 고르면? (4점)",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","참거짓","대입","개념"],
     wide: false,
     content: "다음 중 $x=-2$를 해로 갖는 이차방정식을 고르면? (4점)",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","인수분해","완전제곱식","계수비교","이차방정식","계산"],
     wide: false,
     content: "다음은 이차방정식 $x^2+6x-2=0$을 완전제곱식을 이용하여 푸는 과정이다. ①~⑤에 들어갈 수로 알맞지 않은 것은? (4점)\\n$$x^2+6x=2$$\\n$$x^2+6x+①=2+①$$\\n$$(x+②)^2=③$$\\n$$x+②=④$$\\n$$x=⑤$$",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","도형","원","대입","조건해석","계산"],
     wide: false,
     content: "이차방정식 $x^2+ax+6=0$의 한 근이 $-3$이고, 이차방정식 $2x^2+x-b=0$의 한 근이 $-2$일 때, 상수 $a, b$에 대하여 $ab$의 값을 구하면? (4점)",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","이차방정식","조건해석","계산","개념"],
     wide: false,
     content: "이차방정식 $3(x-2)^2-12=0$을 풀면? (4점)",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","최대최소","자연수조건","대입","조건해석"],
     wide: false,
     content: "두 자리 자연수 $a, b$에 대하여 이차방정식 $x^2+ax+4b=0$이 중근을 가진다. $a$의 값이 최소가 되도록 $b$의 값을 정할 때, $a-b$의 값은? (5점)",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","계수비교","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $3x^2-10x+5=0$의 해가 $x=\\dfrac{A\\pm\\sqrt{B}}{3}$일 때, $A+B$의 값은? (단, $A, B$는 유리수) (4점)",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","복소수","이차함수","일차함수","함수","도형","원","넓이"],
     wide: false,
     content: "다음에서 $y$가 $x$의 이차함수인 것을 모두 고르면? (정답 2개) (4점)",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","조건해석","계산"],
     wide: false,
     content: "이차함수 $f(x)=x^2-4x+2$에 대하여 $f(1)+f(-1)$의 값은? (3점)",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","그래프","표해석","좌표"],
     wide: false,
     content: "다음 중 이차함수 $y=2x^2$의 그래프에 대한 설명으로 옳지 않은 것은? (4점)",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","조건해석","계산"],
     wide: false,
     content: "이차함수 $y=ax^2$의 그래프를 $y$축으로 $3$만큼 평행이동하면 점 $(3, 6)$을 지날 때, 상수 $a$의 값은? (4점)",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "이차함수 $y=-2x^2$의 그래프를 $x$축으로 $m$만큼, $y$축으로 $n$만큼 평행이동하였더니 $y=-2(x+3)^2+1$의 그래프와 일치하였다. 두 수 $m+n$의 값은? (4점)",
     choices: [
@@ -391,7 +391,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","최대최소","함수","그래프","표해석","좌표","범위"],
     wide: false,
     content: "이차함수 $y=a(x+2)^2+5$의 그래프가 제 1사분면을 지나지 않도록 하는 음수 $a$의 최댓값은? (4점)",
     choices: [
@@ -415,7 +415,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","표해석","좌표","참거짓","오류판별"],
     wide: false,
     content: "다음 중에서 이차함수 $y=\\dfrac{1}{4}x^2-2x+3$의 그래프에 대한 설명으로 옳지 않은 것은? (4점)",
     choices: [

@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","계수비교","대입","계산"],
     "wide": false,
     "content": "두 다항식 $A=-2x^2-3x+5$, $B=x^2-5x+6$에 대하여 다항식 $2A-(A-B)$를 간단히 한 것은? [3.8점]",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","나머지정리","계수비교","대입","조건해석","계산"],
     "wide": false,
     "content": "모든 실수 $x$에 대하여 $a(x-1)^2+b(x-1)+c=x^2+2x$가 성립할 때, $a+b+c$의 값은? (단, $a, b, c$는 상수이다.) [3.8점]",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수정리","인수분해","연립방정식","대입","계산"],
     "wide": false,
     "content": "다항식 $f(x)=x^3+px^2+qx-2$가 $(x-1)(x+1)$로 나누어떨어질 때, $pq$의 값은? [3.8점]",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","계수비교","조건해석","계산"],
     "wide": false,
     "content": "다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누는 조립제법 과정에서 $a+b+c$의 값은? [3.9점]",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","복소수","계산","조건해석"],
     "wide": false,
     "content": "식 $(4+3i)(1+i) + (1+i^2)$의 값은 $a+bi$이다. 이때 $a+b$의 값은? [3.9점]",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","최대최소","조건해석","계산","상급"],
     "wide": false,
     "content": "이차방정식 $x^2+4x+2-a=0$이 실근을 갖도록 하는 실수 $a$의 최솟값은? [3.9점]",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","이차방정식","근과계수","대입","계산"],
     "wide": false,
     "content": "이차방정식 $x^2-4x+2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha^3+\\beta^3$의 값은? [4점]",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","그래프","표해석","범위","조건해석"],
     "wide": false,
     "content": "$1 \\le x \\le 7$일 때, 이차함수 $y=x^2-6x+1$의 최솟값을 $m$, 최댓값을 $M$이라 하자. 이때 $m+M$의 값은? [4.1점]",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","공통인수","조건해석","계산"],
     "wide": false,
     "content": "$a=-1+\\sqrt{2}, b=-1-\\sqrt{2}$일 때, $a^5+b^5+a^2b^3+a^3b^2$의 값은? [4.6점]",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","전개","개념"],
     "wide": false,
     "content": "$1002^{10}$을 $250$으로 나누었을 때의 나머지는? [4.6점]",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","도형","삼각형","조건해석","계산"],
     "wide": false,
     "content": "세 변의 길이가 $a, b, c$인 삼각형 $ABC$가 (가) $a^2-3a-4=0$, (나) $a^3+b^3+ac^2+bc^2=a^2c+b^2c+2abc$를 만족할 때 둘레의 길이는? [4.6점]",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","복소수","켤레복소수","대입","조건해석","계산"],
     "wide": false,
     "content": "복소수 $z$와 그 켤레복소수 $\\bar{z}$에 대하여 $(1+i)z+2\\bar{z} = 4+2i$가 성립할 때, $z^3-2z^2+5z+4$의 값은? [4.7점]",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","판별식","이차함수","함수","정수조건","범위","개수세기","조건해석"],
     "wide": false,
     "content": "직선 $y=x+k$가 이차함수 $y=2x^2+8x+4$와 만나고, $y=x^2-2x+3$과는 만나지 않도록 하는 정수 $k$의 개수는? [4.7점]",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차방정식","판별식","범위","조건해석","계산"],
     "wide": false,
     "content": "이차방정식 $x^2-4x+3k-2=0$의 두 근이 모두 $1$보다 크도록 하는 실수 $k$의 범위가 $a < k \\le b$일 때, $a+b$의 값은? [4.8점]",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","표해석","좌표","범위","대입"],
     "wide": false,
     "content": "점 $P(a, b)$가 점 $A(0, 6)$에서 점 $B(3, 0)$까지 직선 $y=-2x+6$을 따라 움직일 때, $2a^2+4b$의 최솟값은? [5.1점]",
     "choices": [
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","근과계수","이차함수","함수","도형","삼각형","넓이"],
     "wide": false,
     "content": "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 두 점 $A, B$를 통해 정의된 삼각형의 넓이 차 $S_1-S_2=32$일 때 양수 $k$는? [5.2점]",
     "choices": [
@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","계수비교","대입","조건해석","계산"],
     "wide": false,
     "content": "다항식 $f(x)$를 $(x^2-1)$로 나눈 몫과 나머지가 같고, 나머지가 $1$인 조건에서 $R(x)$의 계수를 구하시오. [5.2점]",
     "choices": [
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계수비교","정수조건","개수세기","조건해석","계산"],
     "wide": false,
     "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 세 일차식의 곱으로 분해되는 정수 $a$의 개수는? [5.3점]",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","전개","계수비교","조건해석","계산","개념"],
     "wide": false,
     "content": "[서술형 1] 다항식 $x^3+x^2-4x+a$가 $x^2-2x+2$로 나누어떨어질 때 상수 $a$의 값을 구하시오. [4점]",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
     "wide": false,
     "content": "[서술형 2] 주어진 사차식이 이차식 $f(x)$의 제곱으로 인수분해될 때 $k$값과 $f(1)$을 구하시오. [5점]",
     "choices": [
@@ -492,7 +492,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","근과계수","지수","조건해석","계산"],
     "wide": false,
     "content": "[서술형 3] 두 이차방정식의 근의 관계를 통해 $a+b$를 구하시오. [5점]",
     "choices": [
@@ -516,7 +516,7 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","범위","조건해석","계산","개념"],
     "wide": false,
     "content": "[서술형 4] 제한된 범위 내에서 이차함수 최솟값이 $6$이 되는 모든 $k$의 합을 구하시오. [6점]",
     "choices": [

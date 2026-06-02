@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수조건","범위","개수세기","참거짓","오류판별"],
     "wide": false,
     "content": "다음 중 옳은 것을 고르시오. [3점]",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","참거짓","오류판별","조건해석"],
     "wide": false,
     "content": "수에 대한 설명으로 틀린 것은? [3점]",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","분모유리화","참거짓","조건해석","계산"],
     "wide": false,
     "content": "식을 잘못 정리한 것은? [3점]",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","오류판별","조건해석","계산"],
     "wide": false,
     "content": "계산이 틀린 것은? [3점]",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","조건해석","계산"],
     "wide": false,
     "content": "$(y+\\frac{1}{2})(2y-4)$ 를 전개한 결과로 적절한 것은? [3점]",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","조건해석","개념"],
     "wide": false,
     "content": "$x^{2}-3x-4$의 인수로 적절하지 않은 것은? [3점]",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","자연수조건","범위","개수세기","조건해석","계산"],
     "wide": false,
     "content": "$\\sqrt{26-x}$가 정수가 되도록 하는 자연수 $x$의 개수는? [4점]",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false,
     "content": "$A=\\sqrt{3}-2, B=1-\\sqrt{3}, C=\\sqrt{2}, D=3-\\sqrt{2}$ 중 가장 작은 수와 큰 수를 차례로 짝지은 것은? [4점]",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false,
     "content": "$\\sqrt{48} \\div \\sqrt{108} \\times \\sqrt{2} = \\sqrt{a}$ 일 때, $a$의 값으로 적절한 것은? [4점]",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","유리수","분모유리화","전개","조건해석","계산"],
     "wide": false,
     "content": "$\\frac{2+\\sqrt{6}}{2-\\sqrt{6}} - \\frac{2-\\sqrt{6}}{2+\\sqrt{6}} = a+b\\sqrt{6}$일 때, 유리수 $a-b$의 값은? [4점]",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","공통인수","조건해석","계산"],
     "wide": false,
     "content": "다음 두 다항식의 공통인수로 적절한 것은? [4점]<br>$(x+1)(x^{2}+2x-8)$ 와 $(x+4)(2x^{2}-4x-6)$",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","지수","조건해석","계산"],
     "wide": false,
     "content": "$(\\sqrt{7}-3)^{5}(\\sqrt{7}+3)^{5}$ 의 값으로 적절한 것은? [4점]",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     level: "중",
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","곱셈공식","전개","계수비교","계산"],
     wide: false,
     content: "다음 중 $\\Box$ 안의 수가 가장 큰 것은? (4점)",
     choices: [
@@ -323,7 +323,7 @@ window.questionBank = [
     level: "중",
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","오류판별","계산"],
     wide: false,
     content: "완전제곱식이 아닌 것은? (4점)",
     choices: [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","곱셈공식","조건해석","계산"],
     "wide": false,
     "content": "$a+b=3, a^{2}+b^{2}=5$ 일 때, $a-b$의 값으로 적절한 것은? [5점]",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","곱셈공식","조건해석","계산"],
     "wide": false,
     "content": "$x+\\frac{1}{x}=4$ 이고 $0<x<1$일 때, $x-\\frac{1}{x}$의 값은? [5점]",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","조건해석","계산"],
     "wide": false,
     "content": "$(2+1)(2^{2}+1)(2^{4}+1)(2^{8}+1)=a$ 일 때, $\\frac{a}{257}$ 의 값으로 적절한 것은? (단, $2^{8}=256$) [5점]",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","범위","조건해석","계산"],
     "wide": false,
     "content": "$2 < x < 3$일 때, $\\sqrt{x^{2}}-\\sqrt{(x-1)^{2}}+\\sqrt{(x-2)^{2}}-\\sqrt{(x-3)^{2}}$ 을 간단히 나타내면? [5점]",
     "choices": [
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","분모유리화","다항식","인수분해","곱셈공식","조건해석"],
     "wide": false,
     "content": "$a=\\frac{2}{\\sqrt{8}+2}, b=\\frac{2}{\\sqrt{8}-2}$ 일 때, $a^{2}-6ab+b^{2}$ 의 값은? [5점]",
     "choices": [
@@ -467,7 +467,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","조건해석","계산"],
     "wide": false,
     "content": "$A=(a-1)(a+1)(a+3)(a+5)-9$일 때, 다항식 $A$의 인수로 적절하지 않은 것은? [5점]",
     "choices": [
