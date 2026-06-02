@@ -54,8 +54,10 @@ assert(
 );
 
 assert(
-  analysisHtml.includes('canRenderQuestions ? renderInputSection()') &&
-  analysisHtml.includes('canRenderQuestions ? \'<div id="questionInputMount"></div><div id="analysisSections"></div>\''),
+  analysisHtml.includes('canRenderQuestions && shouldShowDiagnosticInput() ? renderInputSection()') &&
+  analysisHtml.includes('canRenderQuestions && shouldShowDiagnosticInput() ? \'<div id="questionInputMount"></div>\'') &&
+  analysisHtml.includes('canRenderQuestions && !isDiagnosticReportMode() ? \'<div id="analysisSections"></div>\'') &&
+  analysisHtml.includes('!canRenderQuestions ? \'<div class="empty-state">문항 수 확인 필요</div>\''),
   'assessment-analysis.html should not create input tables from questionCount-only metadata'
 );
 
