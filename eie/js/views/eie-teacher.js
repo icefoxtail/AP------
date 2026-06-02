@@ -310,29 +310,14 @@
             + '</button>';
     }
 
-    function renderTodaySchedule(cells) {
-        var todayCells = cells.filter(isTodayCell);
-        var students = uniqueStudents(todayCells.length ? todayCells : cells).slice(0, 8);
-        var rows = students.length
-            ? students.map(function (student) {
-                var label = student.name + (student.grade ? ' ' + student.grade : '');
-                var meta = [student.className, student.id ? '상담' : '학생관리'].filter(Boolean).join(' · ');
-                return '<button class="eie-teacher-schedule-row" type="button" onclick="EieTeacherView.openStudent(' + JSON.stringify(student.id || '') + ', \'consultation\')">'
-                    + '<span class="eie-teacher-schedule-check" aria-hidden="true"></span>'
-                    + '<span class="eie-teacher-schedule-copy">'
-                    + '<strong>' + esc(label) + '</strong>'
-                    + '<small>' + esc(meta || '학생관리') + '</small>'
-                    + '</span>'
-                    + '</button>';
-            }).join('')
-            : '<button class="eie-teacher-schedule-row" type="button" onclick="EieTeacherView.openConsultations()">'
-                + '<span class="eie-teacher-schedule-check" aria-hidden="true"></span>'
-                + '<span class="eie-teacher-schedule-copy"><strong>오늘 등록된 일정이 없습니다.</strong><small>학생상담</small></span>'
-                + '</button>';
+    function renderTodaySchedule() {
         return '<div class="eie-teacher-schedule">'
             + '<div class="ap-dashboard-section-head eie-teacher-section-head"><h3>오늘일정</h3></div>'
             + '<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today">'
-            + rows
+            + '<button class="eie-teacher-schedule-row" type="button" onclick="EieTeacherView.showPreparing(\'오늘일정\')">'
+            + '<span class="eie-teacher-schedule-check" aria-hidden="true"></span>'
+            + '<span class="eie-teacher-schedule-copy"><strong>준비중</strong><small>오늘일정</small></span>'
+            + '</button>'
             + '</div>'
             + '</div>';
     }
@@ -340,8 +325,8 @@
     function renderTabbar() {
         var items = [
             { key: 'all', label: '전체' },
-            { key: 'middle', label: '중등' },
-            { key: 'high', label: '고등' }
+            { key: 'elementary', label: '초등' },
+            { key: 'middle', label: '중등' }
         ];
         return '<div class="ap-dashboard-tabbar eie-teacher-tabbar">'
             + items.map(function (item) {
@@ -353,11 +338,11 @@
     }
 
     function filteredCells(cells) {
+        if (_tab === 'elementary') return cells.filter(function (cell) {
+            return /초|초등|elementary|ES/i.test(text(cell && cell.class_name_raw));
+        });
         if (_tab === 'middle') return cells.filter(function (cell) {
             return /중|M|중등/i.test(text(cell && cell.class_name_raw));
-        });
-        if (_tab === 'high') return cells.filter(function (cell) {
-            return /고|H|고등/i.test(text(cell && cell.class_name_raw));
         });
         return cells;
     }

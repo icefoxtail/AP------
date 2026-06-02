@@ -149,11 +149,13 @@ assert.strictEqual(matcher({ teacher_name_raw: 'LT5', class_name_raw: 'LT5 zoe' 
   assert(html.includes('ap-dashboard-action-grid--teacher-quick'), 'rendered teacher page should keep AP quick-button layout');
   assert(html.includes('시간표') && html.includes('출석부') && html.includes('학생상담'), 'rendered quick actions should match requested EIE teacher actions');
   assert(html.includes('오늘일지') && html.includes('오늘일정') && html.includes('학급관리'), 'rendered page should copy AP teacher section order');
-  assert(html.includes('전체') && html.includes('중등') && html.includes('고등'), 'class management should keep AP tab structure');
+  assert(html.includes('전체') && html.includes('초등') && html.includes('중등'), 'class management should keep requested EIE teacher tab structure');
+  assert(!html.includes('>고등<'), 'class management should not expose the removed high-school tab');
   assert(html.includes('중1-1 Laura zoe'), 'logged-in teacher should see joint assigned class');
   assert(html.includes('고1 EIE A'), 'logged-in teacher should see explicitly assigned class');
   assert(!html.includes('rs3-1 Carmen'), 'logged-in teacher should not see unrelated owner/other-teacher class');
-  assert(html.includes('eie-teacher-schedule-copy'), 'today schedule should expose clickable assigned student rows');
+  assert(html.includes('준비중') && html.includes('오늘일정'), 'today schedule should stay as a preparing placeholder');
+  assert(!html.includes('A 중1') && !html.includes('B 고1'), 'today schedule should not render arbitrary assigned students');
   assert(html.includes('등원 1'), 'class cards should use connected attendance data for present count');
   assert(html.includes('결석 1'), 'class cards should use connected attendance data for absent count');
   assert(!html.includes('eie-apms-page-head'), 'rendered teacher page should not contain owner/student-management page head');
@@ -167,9 +169,8 @@ assert.strictEqual(matcher({ teacher_name_raw: 'LT5', class_name_raw: 'LT5 zoe' 
   context.window.EieTeacherView.openClassroom('cell-1');
   assert.strictEqual(context.openedClassroom, 'cell-1', 'class click should open classroom detail');
 
-  context.window.EieTeacherView.openStudent('s2', 'consultation');
-  assert.strictEqual(context.openedStudent, 's2', 'student schedule row should open student detail');
-  assert.strictEqual(context.openedStudentTab, 'consultation', 'student schedule row should open consultation tab');
+  context.window.EieTeacherView.showPreparing('오늘일정');
+  assert.strictEqual(context.alertMessage, '오늘일정 기능은 준비중입니다.', 'today schedule should only show a preparing alert');
 
   context.window.EieTeacherView.openConsultations();
   assert.strictEqual(context.openedStudent, 's1', 'student consultation button should open the first assigned student');

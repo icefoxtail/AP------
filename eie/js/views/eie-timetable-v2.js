@@ -873,11 +873,17 @@
         }
     }
 
+    function homeRoute() {
+        const role = String(window.localStorage?.getItem?.('WANGJI_EIE_ROLE') || '').toLowerCase();
+        return role === 'teacher' || role === 'eieteacher' ? 'teacher' : 'dashboard';
+    }
+
     function renderHeader(days, selectedDay, error) {
+        const route = homeRoute();
         return `
             <div class="eie-v2-page-head">
                 <div>
-                    <button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
+                    <button type="button" class="eie-back-button" data-eie-route="${esc(route)}" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
                     <h1>시간표</h1>
                 </div>
                 <div class="eie-v2-head-actions">

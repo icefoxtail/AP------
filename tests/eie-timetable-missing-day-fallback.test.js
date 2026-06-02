@@ -21,6 +21,12 @@ const context = {
   Map,
   Set,
   Promise,
+  localStorage: {
+    getItem(key) {
+      if (key === 'WANGJI_EIE_ROLE') return 'teacher';
+      return '';
+    }
+  },
   document: {
     addEventListener() {}
   },
@@ -80,6 +86,7 @@ vm.runInContext(timetableSource, context, { filename: 'eie-timetable-v2.js' });
   const html = await context.EieTimetableV2View.render();
 
   assert(html.includes('전체'), 'timetable-v2 should expose a fallback day tab when imported cells have no day label');
+  assert(html.includes('data-eie-route="teacher"'), 'teacher sessions should return from timetable to the teacher dashboard');
   assert(html.includes('RS3-1 Carmen'), 'timetable-v2 should render classes even when day_label is blank');
   assert(html.includes('Carmen'), 'timetable-v2 should keep teacher columns for dayless imported cells');
   assert(!html.includes('선택한 요일에 표시할 수업이 없습니다.'), 'dayless imported cells should not be dropped into an empty-state board');
