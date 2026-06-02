@@ -19,6 +19,7 @@ window.questionBank = [
       "$-2x^2+11xy+15y^2$"
     ],
     "answer": "③",
+    "tags": ["객관식","다항식","인수분해","전개","도형","원","계산"],
     "solution": "[키포인트] 다항식의 곱셈 전개 원리를 이용하여 각 항을 분배법칙으로 계산한다.\\n\\n$(-x+3y)(2x-5y) = -2x^2 + 5xy + 6xy - 15y^2 = -2x^2 + 11xy - 15y^2$이다.\\n\\n따라서 정답은 ③이다."
   },
   {
@@ -33,7 +34,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","나머지정리","표해석","조건해석","계산","개념"],
     "wide": false,
     "content": "다음 중 그 값이 나머지 넷과 다른 것은? [3점]",
     "choices": [
@@ -57,7 +58,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "$(ax+3)^{2}=16x^{2}-24x+b$ 일 때, $a+b$의 값을 구하면? [4점]",
     "choices": [
@@ -81,7 +82,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","도형","사각형","넓이","참거짓","조건해석"],
     "wide": false,
     "content": "[도형필요]\\n한 변의 길이가 $x$ 인 정사각형 모양의 대수 막대 1개와 가로, 세로의 길이가 각각 $2, 2a$ 인 직사각형 모양의 대수 막대 2개로 만든 직사각형이 있다.\\n이 때 다음과 같이 직사각형 모양의 대수 막대 1개를 옮겨 놓은 그림을 참고하여 $x^{2}+4ax$ 를 $A^{2}-B^{2}$ 으로 변형했을 때, $A-B$의 값을 구하면? [4점]",
     "choices": [
@@ -105,7 +106,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","개념"],
     "wide": false,
     "content": "$\\sqrt{\\frac{5}{2}} \\div \\sqrt{\\frac{10}{3}} \\times \\sqrt{\\frac{12}{3}}$ 을 간단히 하면? [4점]",
     "choices": [
@@ -129,7 +130,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","도형","원","자연수조건"],
     "wide": false,
     "content": "$7-\\sqrt{7} \\le x \\le 4+\\sqrt{10}$ 을 만족시키는 실수 $x$ 에 대하여 다음 설명 중 옳은 것은? [4점]",
     "choices": [
@@ -153,7 +154,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","분모유리화","다항식","인수분해","조건해석","계산"],
     "wide": false,
     "content": "$x=\\frac{1}{5-2\\sqrt{6}}, y=\\frac{1}{5+2\\sqrt{6}}$ 일 때, $x^{2}-xy+y^{2}$ 의 값은? [4점]",
     "choices": [
@@ -177,7 +178,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","곱셈공식","참거짓","계산"],
     "wide": false,
     "content": "다항식의 곱셈을 이용하여 $102 \\times 105$를 계산하려고 할 때 가장 알맞은 곱셈공식과 계산 결과를 바르게 짝지은 것은? [4점]",
     "choices": [
@@ -201,7 +202,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","부등식","도형","원","자연수조건","범위"],
     "wide": false,
     "content": "부등식 $-10 < -\\sqrt{5x}$ 을 만족시키는 정수 $x$ 의 개수를 구하면? [4점]",
     "choices": [
@@ -225,7 +226,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산","개념"],
     "wide": false,
     "content": "$\\sqrt{(2-\\sqrt{7})^{2}}-\\sqrt{(3-\\sqrt{7})^{2}}=a+b\\sqrt{7}$ 일 때, $a-b$의 값을 구하면? [4점]",
     "choices": [
@@ -249,7 +250,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","도형","원","참거짓","오류판별"],
     "wide": false,
     "content": "다음 보기의 인수분해 중에서 틀린 것을 모두 고른 것은? [4점]\\n\\n가. $x^{2}-5x+6=(x+1)(x-6)$\\n나. $3x^{2}-5x-2=(x-2)(3x+1)$\\n다. $4x^{2}-12xy+9y^{2}=(2x-3)^{2}$\\n라. $2x^{2}+7x+3=(x+3)(2x+1)$\\n마. $x^{2}-10=(x+10)(x-10)$",
     "choices": [
@@ -273,7 +274,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false,
     "content": "$a>0, b>0$ 이고 $\\sqrt{ab}=13$ 일 때, $a\\sqrt{\\frac{b}{a}}+4b\\sqrt{\\frac{a}{b}}$ 의 값을 구하면? [5점]",
     "choices": [
@@ -297,7 +298,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","계수비교","조건해석","계산"],
     "wide": false,
     "content": "$x^{2}+\\Box x+36$ 이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 수 있는 수들의 곱을 구하면? [4점]",
     "choices": [
@@ -321,7 +322,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","표해석","계산"],
     "wide": false,
     "content": "다음 제곱근표를 이용해 그 값을 잘못 구한 것은? [4점]\\n\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>\\n<tr><td>5.5</td><td>2.345</td><td>2.347</td><td>2.349</td><td>2.352</td><td>2.354</td></tr>\\n<tr><td>5.6</td><td>2.366</td><td>2.369</td><td>2.371</td><td>2.373</td><td>2.375</td></tr>\\n<tr><td>5.7</td><td>2.387</td><td>2.390</td><td>2.392</td><td>2.394</td><td>2.396</td></tr>\\n<tr><td>55</td><td>7.416</td><td>7.423</td><td>7.430</td><td>7.436</td><td>7.443</td></tr>\\n<tr><td>56</td><td>7.483</td><td>7.490</td><td>7.497</td><td>7.503</td><td>7.510</td></tr>\\n</table>\\n</div>",
     "choices": [
@@ -345,7 +346,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","정수조건","계산"],
     "wide": false,
     "content": "세 정수 $m, n, k$에 대하여 다항식 $x^{2}+kx-36$ 이 $(x+m)(x+n)$ 으로 인수분해 될 때, 다음 중 $k$의 값이 될 수 없는 것은? [5점]",
     "choices": [
@@ -369,7 +370,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","공통인수","계산"],
     "wide": false,
     "content": "$2ab^{2}-4a^{2}b$ 를 인수분해하면? [3점]",
     "choices": [
@@ -393,7 +394,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","전개","조건해석","계산"],
     "wide": false,
     "content": "$2\\sqrt{6}(\\frac{1}{\\sqrt{2}}-\\sqrt{6})-\\frac{a}{\\sqrt{3}}(2\\sqrt{3}-3)$ 이 유리수가 되도록 하는 유리수 $a$ 의 조건은? [4점]",
     "choices": [
@@ -417,7 +418,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","조건해석","계산"],
     "wide": false,
     "content": "세 수 $A=\\sqrt{63}-\\sqrt{2}, B=\\sqrt{28}+\\sqrt{5}, C=2\\sqrt{7}+\\sqrt{10}$ 의 대소 관계로 옳은 것은? [4점]",
     "choices": [
@@ -441,7 +442,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","자연수조건","범위","개수세기","조건해석","계산"],
     "wide": false,
     "content": "$\\sqrt{x}$ 보다 작은 자연수의 개수를 $f(x)$라고 하자. 예를 들어 $1 < \\sqrt{3} < 2$이므로 $f(3)=1$이다. $f(1)+f(2)+f(3)+\\cdots+f(20)$ 의 값을 구하면? [5점]",
     "choices": [
@@ -465,7 +466,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","공통인수","조건해석","계산"],
     "wide": false,
     "content": "빙고판의 (가), (나), (다)의 공통인수를 구하면? [4점]\\n\\n(가) $x^{2}-1$\\n(나) $x^{2}+3x-4$\\n(다) $2x^{2}-x-1$",
     "choices": [
@@ -489,7 +490,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","인수분해","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "[서술형 1] $(x-5y)(3x+2)$를 전개했을 때, $x$의 계수를 $A$, $y$의 계수를 $B$라고 하자. 이 때, $A+B$의 값을 아래의 단계에 따라 서술하시오. [4점]\\n\\n[1단계] 주어진 식을 전개하기\\n[2단계] $A, B$의 값 구하기\\n[3단계] $A+B$의 값 구하기",
     "choices": [],
@@ -507,7 +508,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","인수분해","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "[서술형 2] $a, b$가 자연수이고, $a+b=7$일 때, 다음 식을 만족하는 $ab$의 값을 구하는 과정을 서술하시오. [5점]\\n\\n$a^{8}-b^{8}=(a+b)(a^{2}+b^{2})(a^{4}+b^{4})$",
     "choices": [],
@@ -525,7 +526,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","무리수","정수조건","조건해석","계산","개념"],
     "wide": false,
     "content": "[서술형 3] $3\\sqrt{5}$ 의 정수 부분을 $a$, 소수 부분을 $b$라고 할 때 $\\frac{a}{b+6}$ 의 값을 구하시오. [5점]",
     "choices": [],
@@ -545,6 +546,7 @@ window.questionBank = [
   content: "밑면의 가로의 길이가 $\\sqrt{27}$, 세로의 길이가 $\\sqrt{18}$인 직사각형이고, 높이가 $\\sqrt{32}$인 사각뿔이 있다. 아래 그림과 같이 높이가 이 사각뿔의 높이의 $\\frac{1}{4}$인 사각뿔을 잘라 낼 때, 잘라낸 사각뿔의 부피를 구하시오. [6점]\n\n<div class=\"question-table-wrap\" style=\"max-width:280px; margin-left:0; margin-right:auto;\">\n  <svg width=\"280\" height=\"165\" viewBox=\"0 0 280 165\">\n    \n    <g stroke=\"black\" fill=\"none\" stroke-width=\"1\">\n      \n      <path d=\"M 42 122 L 105 122 M 42 122 L 25 145 M 72 20 L 42 122\" stroke-dasharray=\"3,2\" />\n      <path d=\"M 72 20 L 72 135\" stroke-dasharray=\"2,2\" />\n      <path d=\"M 72 135 L 80 135 L 80 127\" />\n      \n      <path d=\"M 72 20 L 25 145 L 88 145 L 105 122 L 72 20\" />\n      <line x1=\"72\" y1=\"20\" x2=\"88\" y2=\"145\" />\n    </g>\n    <text x=\"68\" y=\"80\" font-size=\"10\" font-family=\"serif\" text-anchor=\"end\">√32</text>\n    <text x=\"55\" y=\"160\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\">√27</text>\n    <text x=\"102\" y=\"140\" font-size=\"10\" font-family=\"serif\" text-anchor=\"start\">√18</text>\n\n    \n    <path d=\"M 135 85 L 160 85 M 155 80 L 160 85 L 155 90\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\" />\n\n    \n    <g stroke=\"black\" fill=\"none\" stroke-width=\"1\" transform=\"translate(135, 0)\">\n      <path d=\"M 42 122 L 105 122 M 42 122 L 25 145 M 42 122 L 64.5 46.25\" stroke-dasharray=\"3,2\" />\n      \n      <path d=\"M 64.5 46.25 L 80.25 46.25 L 76 52 L 60.25 52 Z\" />\n      <path d=\"M 60.25 52 L 25 145 L 88 145 L 105 122 L 80.25 46.25\" />\n      <line x1=\"76\" y1=\"52\" x2=\"88\" y2=\"145\" />\n    </g>\n\n    \n    <g stroke=\"black\" fill=\"none\" stroke-width=\"1\" transform=\"translate(135, -12)\">\n      <path d=\"M 64.5 46.25 L 80.25 46.25 M 72 20 L 64.5 46.25\" stroke-dasharray=\"2,1\" />\n      <path d=\"M 64.5 46.25 L 60.25 52\" stroke-dasharray=\"2,1\" />\n      <path d=\"M 72 20 L 60.25 52 L 76 52 L 80.25 46.25 L 72 20\" />\n      <line x1=\"72\" y1=\"20\" x2=\"76\" y2=\"52\" />\n    </g>\n  </svg>\n</div>",
   choices: [],
   answer: "$\\frac{3\\sqrt{3}}{8}$",
-  solution: "[키포인트] 사각뿔의 부피는 $\\frac{1}{3} \\times (\\text{밑넓이}) \\times (\\text{높이})$이며, 닮음비가 $1:k$인 두 입체도형의 부피비는 $1:k^3$이다.\n\n1단계: 원본 사각뿔의 치수를 정리한다.\n밑면 가로: $\\sqrt{27}=3\\sqrt{3}$, 세로: $\\sqrt{18}=3\\sqrt{2}$, 높이: $\\sqrt{32}=4\\sqrt{2}$\n\n2단계: 잘라낸 작은 사각뿔의 치수를 구한다.\n높이가 원본의 $\\frac{1}{4}$이므로 닮음비는 $1:4$이다.\n따라서 가로: $\\frac{3\\sqrt{3}}{4}$, 세로: $\\frac{3\\sqrt{2}}{4}$, 높이: $\\frac{4\\sqrt{2}}{4}=\\sqrt{2}$이다.\n\n3단계: 작은 사각뿔의 부피를 계산한다.\n$V = \\frac{1}{3} \\times \\left( \\frac{3\\sqrt{3}}{4} \\times \\frac{3\\sqrt{2}}{4} \\right) \\times \\sqrt{2} = \\frac{1}{3} \\times \\frac{9\\sqrt{6}}{16} \\times \\sqrt{2}$\n$V = \\frac{3\\sqrt{12}}{16} = \\frac{6\\sqrt{3}}{16} = \\frac{3\\sqrt{3}}{8}$\n\n∴ 정답: $\\frac{3\\sqrt{3}}{8}$"
+  "tags": ["서술형","제곱근","근호","도형","사각형","원","넓이","부피"],
+    solution: "[키포인트] 사각뿔의 부피는 $\\frac{1}{3} \\times (\\text{밑넓이}) \\times (\\text{높이})$이며, 닮음비가 $1:k$인 두 입체도형의 부피비는 $1:k^3$이다.\n\n1단계: 원본 사각뿔의 치수를 정리한다.\n밑면 가로: $\\sqrt{27}=3\\sqrt{3}$, 세로: $\\sqrt{18}=3\\sqrt{2}$, 높이: $\\sqrt{32}=4\\sqrt{2}$\n\n2단계: 잘라낸 작은 사각뿔의 치수를 구한다.\n높이가 원본의 $\\frac{1}{4}$이므로 닮음비는 $1:4$이다.\n따라서 가로: $\\frac{3\\sqrt{3}}{4}$, 세로: $\\frac{3\\sqrt{2}}{4}$, 높이: $\\frac{4\\sqrt{2}}{4}=\\sqrt{2}$이다.\n\n3단계: 작은 사각뿔의 부피를 계산한다.\n$V = \\frac{1}{3} \\times \\left( \\frac{3\\sqrt{3}}{4} \\times \\frac{3\\sqrt{2}}{4} \\right) \\times \\sqrt{2} = \\frac{1}{3} \\times \\frac{9\\sqrt{6}}{16} \\times \\sqrt{2}$\n$V = \\frac{3\\sqrt{12}}{16} = \\frac{6\\sqrt{3}}{16} = \\frac{3\\sqrt{3}}{8}$\n\n∴ 정답: $\\frac{3\\sqrt{3}}{8}$"
 }
 ];

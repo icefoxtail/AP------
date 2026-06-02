@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","이차방정식","최대최소","지수","일차방정식","조건해석","계산"],
     wide: false,
     content: "다음 중에서 이차방정식인 것을 고르면?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","범위","조건해석","계산"],
     wide: false,
     content: "$x$의 값이 $-2, -1, 0, 1, 2$일 때, 이차방정식 $x^2-2=5x-8$의 해를 구하면?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","조건해석","계산","개념"],
     wide: false,
     content: "이차방정식 $x^2-7x+12=0$의 해를 구하면?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","계수비교","이차방정식","판별식","도형","원","대입"],
     wide: false,
     content: "다음 이차방정식 $x^2+12x+a-4=0$이 중근을 가질 때, 상수 $a$의 값과 중근을 차례로 구하면?",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","완전제곱식","계수비교","이차방정식"],
     wide: false,
     content: "이차방정식 $(x+a)^2=5$의 해가 $x=\\dfrac{2}{5}\\pm\\sqrt{b}$일 때, $ab$의 값을 구하면? (단, $a$, $b$는 유리수)",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","전개","계수비교","이차방정식","최대최소","정수조건"],
     wide: false,
     content: "이차방정식 $\\dfrac{(x-3)(x+1)}{3}=\\dfrac{x(x+2)}{4}-\\dfrac{5}{12}$의 해를 구하면?",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","대입","조건해석","계산"],
     wide: false,
     content: "다음 두 이차방정식의 공통인 해가 $x=3$일 때, 상수 $mn$의 값을 구하면?\\n$$x^2-2x+m=0, \\qquad nx^2-\\dfrac{1}{3}x+4=0$$",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","확률","경우의수","자연수조건","범위","개수세기"],
     wide: false,
     content: "한 개의 주사위를 두 번 던져서 처음 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라고 할 때 이차방정식 $ax^2+bx+\\dfrac{1}{6}b=0$의 해가 중근일 확률을 구하면?",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","이차방정식","대입","조건해석","계산"],
     wide: false,
     content: "이차방정식 $ax^2+bx+c=0$의 해가 $x=-\\dfrac{1}{2}$ 또는 $x=-3$일 때, $a+b:b+c$를 구하면? (단, $a$, $b$, $c$는 상수)",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","지수","도형","사각형","넓이","표해석"],
     wide: false,
     content: "조선시대 수학자 홍정하가 쓴 '구일집'에는 다음과 같은 문제가 실려 있다. 큰 정사각형의 한 변의 길이를 구하면?\\n\\n크고 작은 두 개의 정사각형이 있다. 두 정사각형의 넓이의 합은 466평방자이고, 작은 정사각형의 한 변의 길이는 큰 정사각형의 한 변의 길이보다 16자만큼 짧다. 큰 정사각형의 한 변의 길이는 얼마인가?\\n※ 평방자: 전통적인 한국의 면적 단위로, 한 변의 길이가 1자인 정사각형의 면적",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "함수 $y=2ax(x+2)-(x+3)(4x-1)$이 $x$에 대한 이차함수가 되기 위해 상수 $a$가 될 수 없는 값을 고르면?",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","실생활","대입","조건해석","식세우기"],
     wide: false,
     content: "시속 $(3x+1)$km로 $(x+3)$시간 동안 달린 거리 $y$km에 대해 $y=f(x)$라고 할 때, $f(3)$을 구하면?",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "다음 [보기]의 이차함수에서 그 그래프의 폭이 좁은 것부터 차례로 나열한 것을 고르면?\\n\\n[보기]\\nㄱ. $y=-3x^2$   ㄴ. $y=\\dfrac{3}{2}x^2$   ㄷ. $y=-4x^2$   ㄹ. $y=\\dfrac{1}{3}x^2$",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","이차방정식","이차함수","함수","그래프","표해석"],
     wide: false,
     content: "이차함수 $y=-3x^2$의 그래프를 $y$축의 방향으로 $1$만큼 평행이동하면 점 $(k, -8)$을 지날 때, 모든 $k$의 값의 곱을 구하면?",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "이차함수 $y=ax^2+3$을 $x$축의 방향으로 $2$만큼 평행이동하였더니 이차함수 $y=5(x+b)^2+3$과 일치하였다. 이 때, $a+b$의 값을 구하면? (단, $a$, $b$는 상수)",
     choices: [
@@ -422,7 +422,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","이차함수","함수","그래프","표해석","좌표","오류판별"],
     wide: false,
     content: "이차함수 $y=2x^2-16ax+4a^2$과 $y=3x^2-6bx+4a$의 그래프의 꼭짓점이 서로 일치할 때, $\\dfrac{a}{b}$의 값을 구하면? (단, $a$, $b$는 0이 아닌 상수)",
     choices: [
@@ -446,7 +446,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","표해석","좌표","조건해석"],
     wide: false,
     content: "이차함수 $y=a(x-p)^2+7$의 그래프는 이차함수 $y=-2x^2$의 그래프를 평행이동한 것이고, 꼭짓점의 좌표가 $(3, r)$이다. 이 때, $a+p-r$의 값을 구하면? (단, $a$, $p$는 상수)",
     choices: [

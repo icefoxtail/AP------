@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","개념판단","순환소수"],
     "wide": false,
     "solution": "1단계: 순환소수에서 순환마디는 소수점 아래에서 일정하게 반복되는 부분이며, 양 끝의 숫자 위에 점을 찍어 나타낸다. [cite: 2026-04-09]\n2단계: $2.374374374\\dots$에서 소수점 아래 반복되는 구간(순환마디)은 $374$이다. [cite: 2026-04-09]\n3단계: 순환마디가 세 자리 이상일 때는 양 끝 숫자 위에만 점을 찍으므로 $2.\\dot{3}7\\dot{4}$로 표기해야 옳다. [cite: 2026-04-09]",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","개념판단","조건해석","순환소수"],
     "wide": false,
     "solution": "1단계: 기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐인 분수는 유한소수로 나타낼 수 있다. [cite: 2026-04-09]\n2단계: ㄱ. 분모 소인수 $2, 5$ (유한), ㄴ. $\\frac{11}{2 \\times 5^2}$ (유한), ㄷ. 분모 소인수 $7$ (무한)이다. [cite: 2026-04-09]\n3단계: ㄹ. $\\frac{21}{140} = \\frac{3}{20} = \\frac{3}{2^2 \\times 5}$ 이므로 분모 소인수가 $2, 5$뿐이다(유한). 따라서 ㄱ, ㄴ, ㄹ이다. [cite: 2026-04-09]",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","조건해석","경우분류","순환소수"],
     "wide": false,
     "solution": "1단계: 순환소수가 되려면 기약분수의 분모에 $2, 5$ 이외의 소인수가 존재해야 한다. [cite: 2026-04-09]\n2단계: $x \\in \\{1, 2, \\dots, 10\\}$ 중 $2, 5$ 이외의 소인수를 가진 후보는 $3, 6, 7, 9$이다. [cite: 2026-04-09]\n3단계: $x=7$인 경우 분자의 $7$과 약분되어 분모에 $2, 5$만 남으므로 제외된다. 따라서 가능한 $x$는 $3, 6, 9$이며 합은 $3+6+9=18$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","개념판단","식변형","순환소수"],
     "wide": false,
     "solution": "1단계: 순환소수 $x = 0.2272727\\dots$에서 소수점 아래 부분이 일치하는 두 식을 만든다. [cite: 2026-04-09]\n2단계: $1000x = 227.2727\\dots$이고, $10x = 2.2727\\dots$이다. [cite: 2026-04-09]\n3단계: 두 식을 빼면 소수점 아래 부분이 소거되므로 $1000x - 10x$가 가장 적절하다. [cite: 2026-04-09]",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","개념판단","순환소수"],
     "wide": false,
     "solution": "1단계: 순환소수는 모두 분수 꼴로 나타낼 수 있으므로 유리수이다(① 참). [cite: 2026-04-09]\n2단계: 무한소수 중 비순환 무한소수는 유리수가 아니며(② 거짓), 모든 순환소수는 분수 표현이 가능하다(③ 거짓). [cite: 2026-04-09]\n3단계: 기약분수 중 분모에 $2, 5$ 이외의 소인수가 있으면 순환소수가 되며(④ 거짓), 정수가 아닌 유리수는 유한소수나 순환소수로 분류된다(⑤ 참). [cite: 2026-04-09]",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","식변형","식의계산"],
     "wide": false,
     "solution": "1단계: ㄱ. $a^{3+1}=a^4$ (참), ㄴ. $a^{3 \\times 2}=a^6$ (참)이다. [cite: 2026-04-09]\n2단계: ㄷ. $a^3 \\div a^5 = \\frac{1}{a^2}$이므로 거짓이고, ㄹ. $(-1)^2 \\frac{a^4}{b^6} = \\frac{a^4}{b^6}$ (참)이다. [cite: 2026-04-09]\n3단계: ㅁ. $a^8 \\times b^6$이므로 $a^{14}$이 될 수 없다(거짓). 따라서 옳은 것은 ㄱ, ㄴ, ㄹ로 3개이다. [cite: 2026-04-09]",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","식변형","식의계산"],
     "wide": false,
     "solution": "1단계: $81$을 소인수분해하면 $3^4$이므로 $81^3 = (3^4)^3 = 3^{12}$이다. [cite: 2026-04-09]\n2단계: $A = 3^3$을 이용하여 $3^{12}$을 표현하면 $(3^3)^4 = A^4$이다. [cite: 2026-04-09]\n3단계: 따라서 $\\frac{1}{81^3} = \\frac{1}{3^{12}} = \\frac{1}{A^4}$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","조건해석","식변형","식의계산"],
     "wide": false,
     "solution": "1단계: 조건 (1)에서 $\\frac{2^5}{3^{5a}} = \\frac{2^5}{3^{20}}$이므로 $5a=20$, $a=4$이다. [cite: 2026-04-09]\n2단계: 조건 (2)에 $a=4$를 대입하면 $(\\frac{7^4}{5^2})^4 = \\frac{7^{16}}{5^8}$이므로 $c=16, b=8$이다. [cite: 2026-04-09]\n3단계: $a+b+c = 4+8+16 = 28$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","식변형","식의계산"],
     "wide": false,
     "solution": "1단계: ① $4x^2 \\times (-5x^3)$의 계수를 계산하면 $4 \\times (-5) = -20$이다. [cite: 2026-04-09]\n2단계: 지수법칙에 의해 문자를 계산하면 $x^2 \\times x^3 = x^{2+3} = x^5$이다. [cite: 2026-04-09]\n3단계: 따라서 결과는 $-20x^5$이 되어야 하므로 $20x^5$로 표기된 ①번은 옳지 않다. [cite: 2026-04-09]",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","식변형","활용","식의계산"],
     "wide": false,
     "solution": "1단계: 삼각형의 넓이 공식은 $넓이 = \\frac{1}{2} \\times 밑변 \\times 높이$이다. [cite: 2026-04-09]\n2단계: $50x^2y^8 = \\frac{1}{2} \\times 20x^3y \\times h$ 식을 세우면 $50x^2y^8 = 10x^3y \\times h$이다. [cite: 2026-04-09]\n3단계: $h = \\frac{50x^2y^8}{10x^3y} = 5 \\times x^{2-3} \\times y^{8-1} = 5x^{-1}y^7 = \\frac{5y^7}{x}$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -253,7 +253,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","단답형","계산","도형"],
     "wide": false,
     "solution": "1단계: 평각의 성질에 의해 $\\angle C = 180^\\circ - 130^\\circ = 50^\\circ$이다. [cite: 2026-04-09]\n2단계: $\\triangle ABC$는 $\\overline{AB}=\\overline{AC}$인 이등변삼각형이므로 두 밑각의 크기가 같다. $\\therefore \\angle B = \\angle C = 50^\\circ$. [cite: 2026-04-09]\n3단계: 삼각형의 세 내각의 합은 $180^\\circ$이므로 $\\angle A = 180^\\circ - (50^\\circ + 50^\\circ) = 80^\\circ$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -277,7 +277,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","조건해석","도형"],
     "wide": false,
     "solution": "1단계: $\\angle B = \\angle C = \\frac{180^\\circ - 36^\\circ}{2} = 72^\\circ$이고, $\\angle B$의 이등분선에 의해 $\\angle ABD = \\angle DBC = 36^\\circ$이다. [cite: 2026-04-09]\n2단계: $\\triangle ABD$에서 $\\angle A = \\angle ABD = 36^\\circ$이므로 $\\overline{AD}=\\overline{BD}$인 이등변삼각형이다. [cite: 2026-04-09]\n3단계: $\\triangle BCD$에서 $\\angle BDC = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ$이므로 $\\overline{BD}=\\overline{BC}$인 이등변삼각형이다. [cite: 2026-04-09]\n4단계: 따라서 $\\angle ADB = 180^\\circ - 72^\\circ = 108^\\circ$이므로 ③번 $112^\\circ$는 옳지 않다. [cite: 2026-04-09]",
     "level": "중"
@@ -301,7 +301,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","도형"],
     "wide": false,
     "solution": "1단계: 피타고라스 정리에 의해 직각삼각형에서 빗변의 길이의 제곱은 나머지 두 변의 길이의 제곱의 합과 같다. [cite: 2026-04-09]\n2단계: $x^2 = 6^2 + 8^2 = 36 + 64 = 100$이다. [cite: 2026-04-09]\n3단계: $x > 0$이므로 $x = 10$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -325,7 +325,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","활용","도형"],
     "wide": false,
     "solution": "1단계: 직각삼각형의 각 변을 한 변으로 하는 세 정사각형의 넓이 사이에는 빗변 위의 정사각형 넓이가 나머지 두 정사각형 넓이의 합과 같다는 성질이 있다. [cite: 2026-04-09]\n2단계: $(정사각형  AFGB) = (정사각형  ACDE) + (정사각형  IBHC)$이다. [cite: 2026-04-09]\n3단계: $46 = ACDE + 25$이므로 $ACDE = 46 - 25 = 21$이다. 따라서 $21cm^2$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -349,7 +349,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","대소비교","도형"],
     "wide": false,
     "solution": "1단계: 가장 긴 변의 길이를 $c$, 나머지 두 변의 길이를 $a, b$라 할 때 $c^2 < a^2 + b^2$이면 예각삼각형이다. [cite: 2026-04-09]\n2단계: ④번의 경우 $6^2 = 36$이고 $4^2 + 5^2 = 16 + 25 = 41$이다. [cite: 2026-04-09]\n3단계: $36 < 41$이 성립하므로 예각삼각형이다. [cite: 2026-04-09]",
     "level": "중"
@@ -373,7 +373,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","도형"],
     "wide": false,
     "solution": "1단계: 삼각형의 내심 $I$에 대하여 $\\angle BIC = 90^\\circ + \\frac{1}{2}\\angle A$의 관계가 성립한다. [cite: 2026-04-09]\n2단계: $110^\\circ = 90^\\circ + \\frac{1}{2}\\angle A$ 식을 세워 정리하면 $20^\\circ = \\frac{1}{2}\\angle A$이다. [cite: 2026-04-09]\n3단계: 따라서 $\\angle A = 40^\\circ$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -398,7 +398,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["도형"],
+    "tags": ["도형","기출","객관식","계산","활용"],
     "wide": false,
     "solution": "1단계: 삼각형의 내심에서 세 변에 내린 접점까지의 거리는 같으므로 $\\overline{AF}=\\overline{AD}=4cm$, $\\overline{BE}=\\overline{DB}=5cm$이다. [cite: 2026-04-09]\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE}) = 2(4+5+x) = 22$이다. [cite: 2026-04-09]\n3단계: $9+x=11$에서 $x=2$이므로 $\\overline{EC}=2cm$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -422,7 +422,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","도형"],
     "wide": false,
     "solution": "1단계: 삼각형의 외심에서 세 꼭짓점에 이르는 거리는 같으므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다. [cite: 2026-04-09]\n2단계: 외심의 성질에 의해 $\\angle OAB + \\angle OBC + \\angle OCA = 90^\\circ$가 성립한다. [cite: 2026-04-09]\n3단계: $30^\\circ + \\angle OBC + 40^\\circ = 90^\\circ$에서 $\\angle OBC = 20^\\circ$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -446,7 +446,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","조건해석","역추론","일차부등식"],
     "wide": false,
     "solution": "1단계: $x+1 \\le 3x-9$를 정리하면 $2x \\ge 10$, 즉 $x \\ge 5$이다. [cite: 2026-04-09]\n2단계: $5x-a \\ge 4x+2$를 정리하면 $x \\ge a+2$이다. [cite: 2026-04-09]\n3단계: 두 부등식의 해가 같으므로 $a+2=5$에서 $a=3$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -470,7 +470,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","조건해석","활용","도형"],
     "wide": false,
     "solution": "1단계: '두 내각의 크기가 같은 삼각형은 이등변삼각형이다'는 참이므로 '예' 방향으로 이동한다. [cite: 2026-04-10]\n2단계: '한 변의 길이와 한 예각의 크기가 각각 같은 두 직각삼각형은 서로 합동이다'는 RHA 합동으로 참이므로 '예' 방향으로 이동한다. [cite: 2026-04-10]\n3단계: '삼각형의 내접원의 중심에서 세 꼭짓점에 이르는 거리는 같다'는 거짓(외심의 성질)이므로 '아니오' 방향으로 이동한다. [cite: 2026-04-10]\n4단계: 최종 도착지는 '대구'이다. [cite: 2026-04-10]",
     "level": "중"
@@ -488,7 +488,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","서술형","계산","조건해석","순환소수"],
     "wide": false,
     "solution": "1단계: 순환소수 $0.\\dot{1}5384\\dot{6}$의 순환마디는 반복되는 구간인 $1, 5, 3, 8, 4, 6$이다. [cite: 2026-04-09]\n2단계: 순환마디의 길이는 $6$이므로 $100$을 $6$으로 나누면 $100 = 6 \\times 16 + 4$이다. [cite: 2026-04-09]\n3단계: 나머지가 $4$이므로 순환마디의 $4$번째 숫자인 $8$이 $100$번째 자리의 숫자이다. [cite: 2026-04-09]",
     "level": "중"
@@ -506,7 +506,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","서술형","계산","역추론","식변형","식의계산"],
     "wide": false,
     "solution": "1단계: 잘못된 식 $A \\times 2a^2b = 16a^4b^3$에서 $A = \\frac{16a^4b^3}{2a^2b} = 8a^2b^2$이다. [cite: 2026-04-09]\n2단계: 바른 계산은 $A \\div 2a^2b$이므로 $8a^2b^2 \\div 2a^2b$를 계산한다. [cite: 2026-04-09]\n3단계: 계수는 $8 \\div 2 = 4$, 문자는 $a^2 \\div a^2 = 1, b^2 \\div b = b$이므로 최종 결과는 $4b$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -524,7 +524,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","서술형","계산","활용","도형"],
     "wide": false,
     "solution": "1단계: 직각삼각형의 외심은 빗변의 중점이므로 외접원의 반지름 $R = \\frac{1}{2}\\overline{AB} = \\frac{20}{2} = 10cm$이다. [cite: 2026-04-09]\n2단계: $\\triangle ABC$의 넓이는 $\\frac{1}{2} \\times 16 \\times 12 = 96cm^2$이다. [cite: 2026-04-09]\n3단계: 내접원의 반지름을 $r$이라 하면 $96 = \\frac{1}{2}r(20+16+12) = 24r$에서 $r=4cm$이다. [cite: 2026-04-09]",
     "level": "중"
@@ -542,7 +542,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","서술형","개념판단","활용","도형"],
     "wide": false,
     "solution": "1단계: 세 나무를 꼭짓점으로 하는 삼각형을 가정할 때, 세 꼭짓점으로부터 같은 거리에 있는 점은 외심이다. [cite: 2026-04-10]\n2단계: 삼각형의 외심은 세 변의 수직이등분선의 교점이다. [cite: 2026-04-10]\n3단계: 따라서 세 변의 수직이등분선을 그어 만나는 점을 찾으면 보물의 위치를 알 수 있다. [cite: 2026-04-10]",
     "level": "중"

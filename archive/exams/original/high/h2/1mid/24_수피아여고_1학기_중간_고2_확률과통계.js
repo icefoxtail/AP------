@@ -11,7 +11,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["원순열","개념","참거짓","팩토리얼","객관식"],
     wide: false,
     content: "1명의 학생이 원탁에 둘러앉는 모든 경우의 수는 6이다. [2점]",
     choices: [
@@ -32,7 +32,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["중복조합","중복순열","개념구분","참거짓","객관식"],
     wide: false,
     content: "서로 다른 3개의 가방에 똑같은 5권의 책을 넣는 모든 방법의 수는 ${}_{3}\\Pi_{5}$ 이다.\\n(단, 빈 가방이 있을 수 있다.) [2점]",
     choices: [
@@ -53,7 +53,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["이항정리","일반항","계수","개념","참거짓","객관식"],
     wide: false,
     content: "다항식 $(a+b)^n$의 전개식에서 $a^{n-r}b^r$의 계수는 ${}_{n}C_{r}$과 같다. [2점]",
     choices: [
@@ -74,7 +74,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","불가능사건","주사위","개념","참거짓","객관식"],
     wide: false,
     content: "주사위 한 개를 던질 때 7보다 큰 눈이 나올 확률은 0이다. [2점]",
     choices: [
@@ -95,7 +95,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","배반사건","여사건","개념구분","참거짓","객관식"],
     wide: false,
     content: "사건 $A$와 $B$가 서로 배반사건이면, $P(A)=1-P(B)$ 이다. [2점]",
     choices: [
@@ -116,7 +116,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["중복순열","경우의수","선택","계산","객관식"],
     wide: false,
     content: "4명의 가족이 세 영화 $A, B, C$ 중에서 각각 관람할 영화 1편씩 택하는 모든 경우의 수를 구하면?\\n(단, 아무도 관람하지 않는 영화가 있을 수 있다.) [2.8점]",
     choices: [
@@ -140,7 +140,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["순열","같은것포함순열","문자배열","팩토리얼","계산","객관식"],
     wide: false,
     content: "5개의 문자 $s, p, e, e, r$ 일렬로 나열하는 모든 경우의 수를 구하면? [2.8점]",
     choices: [
@@ -164,7 +164,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","수학적확률","동전","표본공간","계산","객관식"],
     wide: false,
     content: "서로 다른 세 개의 동전을 동시에 던지는 시행에서 모두 같은 면이 나올 확률을 구하면? [2.7점]",
     choices: [
@@ -188,7 +188,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","합사건","교사건","확률덧셈정리","계산","객관식"],
     wide: false,
     content: "두 사건 $A, B$에 대하여\\n$P(A)=\\frac{1}{4}$, $P(B)=\\frac{2}{3}$,\\n$P(A\\cap B)=\\frac{1}{6}$ 일 때, $P(A\\cup B)$ 구하면? [2.9점]",
     choices: [
@@ -212,7 +212,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["원순열","회전대칭","도형배열","경우의수","응용","객관식"],
     wide: false,
     content: "[도형필요]오른쪽 그림과 같이 정육각형 모양의 탁자에 9명의 학생이 둘러앉는 경우의 수를 $k \\times 7!$이라고 할 때, $k$의 값을 구하면?\\n(단, 회전하여 일치하는 것은 같은 것으로 본다.) [4.1점]",
     choices: [
@@ -236,7 +236,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["순열","경로수","좌표이동","중복순열","조건해석","응용","객관식"],
     wide: false,
     content: "[도형필요]좌표평면 위에서 상하 방향으로는 한 번에 1만큼씩, 좌우 방향으로는 한 번에 2만큼씩 움직이는 점 $P$가 있다.\\n원점을 출발한 점 $P$가 7번 움직여서 도착한 최종 위치가 점 $A(6,2)$가 되는 경우의 수는? [4.1점]",
     choices: [
@@ -260,7 +260,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["중복조합","정수해","자연수조건","치환","방정식","계산","객관식"],
     wide: false,
     content: "방정식 $x+y+z=18$을 만족시키는 $x, y, z$가 모두 짝수인 자연수 해의 개수를 구하면? [4.2점]",
     choices: [
@@ -284,7 +284,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["이항정리","계수","문항오류","조건불명확","검토필요","객관식"],
     wide: false,
     content: "다항식 $(2+x)^6\\left(1-\\frac{1}{x}\\right)^6$ 의 [판독불가]의 계수를 구하면? [4.3점]",
     choices: [
@@ -308,7 +308,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","통계적확률","상대도수","표","자료해석","계산","객관식"],
     wide: false,
     content: "어느 양궁 선수가 활을 500번 쏘아 각 점수를 맞힌 횟수를 나타낸 것이다.\\n이 선수가 활을 한 번 쏘아 8점 또는 9점을 맞힐 확률을 구하면? [3.9점]\\n\\n<table class=\"question-table\">\\n  <tr>\\n    <th>점수(점)</th>\\n    <th>맞힌 횟수(회)</th>\\n  </tr>\\n  <tr>\\n    <td>7</td>\\n    <td>103</td>\\n  </tr>\\n  <tr>\\n    <td>8</td>\\n    <td>167</td>\\n  </tr>\\n  <tr>\\n    <td>9</td>\\n    <td>133</td>\\n  </tr>\\n  <tr>\\n    <td>10</td>\\n    <td>97</td>\\n  </tr>\\n</table>",
     choices: [
@@ -332,7 +332,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","확률의성질","합사건","부분집합","보기판단","개념","객관식"],
     wide: false,
     content: "표본공간을 $S$, 절대로 일어나지 않을 사건을 $\\emptyset$이라고 할 때, 임의의 두 사건 $A, B$에 대하여 다음 <보기>에서 옳은 것만으로 짝지어진 것을 고르면? [3.9점]\\n\\n<보기>\\n(ㄱ) $P(S) - P(\\emptyset) = 1$\\n(ㄴ) $0 \\le P(A \\cup B) \\le 1$\\n(ㄷ) $P(A) \\le P(B)$ 이면 $A \\subset B$이다.",
     choices: [
@@ -356,7 +356,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","합사건","교사건","확률덧셈정리","분수계산","조건해석","객관식"],
     wide: false,
     content: "어느 중국집의 고객 중에서 $\\frac{2}{3}$가 남자이며, $\\frac{4}{5}$가 짜장면을 시키거나 남자이다. $\\frac{3}{5}$가 짜장면을 시킨다. 이 중국집의 고객 중에서 임의로 한 명을 택할 때, 그 사람이 짜장면을 시킨 남자일 확률을 구하면? [4.1점]",
     choices: [
@@ -380,7 +380,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","여사건","순열","자리배치","남녀배열","응용","객관식"],
     wide: false,
     content: "4명의 남학생과 3명의 여학생이 일렬로 줄을 설 때, 적어도 1명의 여학생은 양 끝에 설 확률을 구하면? [4점]",
     choices: [
@@ -404,7 +404,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["중복순열","인접금지","신호","점화식","상태분류","경우의수","객관식"],
     wide: false,
     content: "빨간색, 노란색, 파란색, 하얀색의 깃발이 각각 한 개씩 있다.\\n한 번에 1개의 깃발만을 들어 올린다고 할 때, 이 깃발들을 4번을 들어 올리는데 빨간색 깃발은 연속해서 들어 올릴 수 없다.\\n이때 만들 수 있는 서로 다른 신호의 개수를 구하면? (단, 네 종류의 깃발을 모두 들어 올릴 필요는 없고, 깃발을 1개도 들어 올리지 않는 경우는 생각하지 않는다.) [5.5점]",
     choices: [
@@ -428,7 +428,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["이항정리","부분집합","짝수개선택","포함관계","경우의수","응용","객관식"],
     wide: false,
     content: "전체집합 $U=\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}$의 두 부분집합 $A, B$에 대하여 부분집합 $B$의 원소의 개수는 짝수이고 $A \\subset B$를 만족시키도록 두 집합 $A, B$를 정하는 모든 경우의 수를 구하면?\\n(단, 부분집합 $B$가 공집합인 것은 제외한다.) [5.3점]",
     choices: [
@@ -452,7 +452,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","순열","인접금지","문자배열","모음배치","여사건","객관식"],
     wide: false,
     content: "7개의 문자 $p, i, c, t, u, r, e$를 일렬로 나열할 때, 모음끼리 이웃하지 않을 확률을 구하면? [5.3점]",
     choices: [
@@ -476,7 +476,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["확률","조합","여사건","포함배제","의상선택","조건해석","객관식"],
     wide: false,
     content: "청색 바지 2벌, 흰색 바지 3벌, 청색 치마 2벌, 흰색 치마 3벌이 있는 옷장에서 임의로 3벌을 동시에 고를 때, 적어도 1벌은 바지이고 적어도 1벌은 청색일 확률을 구하면? [5.1점]",
     choices: [
@@ -500,7 +500,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["원순열","자리배치","가족배열","마주보기","이웃배치","서술형"],
     wide: false,
     content: "부모와 할머니, 할아버지를 포함한 8명의 가족이 원형 탁자에 둘러앉아 식사를 하려고 할 때, 각 물음에 풀이 과정과 답을 쓰시오. [6점]\\n\\n(1) 할머니, 할아버지가 마주 보고 앉는 모든 경우의 수를 구하시오. [3점]\\n\\n(2) 할머니 양 옆에 부모가 이웃하여 앉는 모든 경우의 수를 구하시오. [3점]",
     choices: [],
@@ -518,7 +518,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["중복조합","함수개수","단조함수","조건해석","경우나누기","서술형"],
     wide: false,
     content: "두 집합 $X=\\{1, 2, 3, 4, 5, 6\\}$, $Y=\\{1, 2, 4, 8, 16\\}$에 대하여 함수 $f:X\\rightarrow Y$ 중에서 다음 조건을 만족시키는 함수의 개수를 구하는 풀이 과정과 답을 쓰시오. [6점]\\n\\n(가) $f(3) \\times f(4) = 16$\\n(나) $X$의 임의의 두 원소 $i, j$에 대하여 $i \\le j$이면, $f(i) \\le f(j)$이다.",
     choices: [],
@@ -536,7 +536,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["확률","이차방정식","정수근","배수조건","포함배제","서술형"],
     wide: false,
     content: "$n$이 30 이하의 자연수일 때, $x$에 대한 이차방정식 $15x^2-8nx+n^2=0$의 정수해가 존재할 확률을 구하는 풀이 과정과 답을 쓰시오. [5점]",
     choices: [],
@@ -554,7 +554,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["확률","여사건","카드뽑기","중단시행","나머지분류","조건부시행","서술형"],
     wide: false,
     content: "주머니에서 1부터 10까지 자연수가 각각 적힌 10장의 카드가 들어 있다.\\n이 주머니에서 카드를 임의로 1장씩 꺼내어 카드에 적힌 수의 합이 7의 배수가 될 때까지 꺼내는 시행을 할 때, 카드를 3장 이상 꺼낼 확률을 구하는 풀이 과정과 답을 쓰시오.\\n(단, 꺼낸 카드는 다시 넣지 않고, 처음 꺼낸 카드에 적힌 수가 7이면 시행을 멈춘다.) [8점]",
     choices: [],

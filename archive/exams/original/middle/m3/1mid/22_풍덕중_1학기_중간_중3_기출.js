@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","참거짓","계산"],
     "wide": false,
     "content": "다음 보기 중에서 옳은 것은?",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "content": "다음 보기의 두 수를 대소 비교하여 $\\Box$ 안에 부등호를 넣을 때, 부등호 방향이 다른 하나는?",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "content": "식 $(\\sqrt{3})^2 + \\sqrt{5^2}$을 계산한 값은?",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수조건","참거짓","계산"],
     "wide": false,
     "content": "$\\sqrt{20}$을 $a\\sqrt{b}$의 꼴로 나타낼 때 정수 $a, b$에 해당하는 수가 순서대로 옳은 것은?",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","참거짓","개념"],
     "wide": false,
     "content": "다항식 $(x-1)(x+3)$을 바르게 전개한 것은?",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계산","조건해석"],
     "wide": false,
     "content": "$2xy-8y$에서 두 항 $2xy, -8y$의 공통인 인수는 $2y$이므로 $2xy-8y=2y(\\Box)$이다. $\\Box$에 알맞은 식은?",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산"],
     "wide": false,
     "content": "$0 < a < 3$일 때, $\\sqrt{(3-a)^2} + \\sqrt{a^2}$을 간단히 하면?",
     "choices": [
@@ -262,7 +262,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false
   },
   {
@@ -286,7 +286,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","도형","넓이","겉넓이","조건해석","계산"],
     "wide": false
   },
   {
@@ -310,7 +310,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","오류판별","계산"],
     "wide": false
   },
   {
@@ -334,7 +334,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","참거짓","개념"],
     "wide": false
   },
   {
@@ -358,7 +358,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","대입","조건해석","계산"],
     "wide": false
   },
   {
@@ -382,7 +382,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
     "wide": false
   },
   {
@@ -406,7 +406,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","조건해석","계산"],
     "wide": false
   },
   {
@@ -430,7 +430,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","자연수조건","조건해석","계산"],
     "wide": false
   },
   {
@@ -454,7 +454,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계수비교","참거짓","개념"],
     "wide": false
   },
   {

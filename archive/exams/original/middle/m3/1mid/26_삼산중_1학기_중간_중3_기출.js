@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","순환소수","표해석","수직선"],
     wide: false,
     content: "다음 중 옳은 것은?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","참거짓","조건해석","계산","개념"],
     wide: false,
     content: "다음 중 옳은 것은?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","무리수","범위","오류판별","조건해석","계산"],
     wide: false,
     content: "다음 중 두 수 $\\\\sqrt{7}$과 $\\\\sqrt{19}$ 사이에 있는 수가 아닌 것은?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","참거짓","조건해석","계산"],
     wide: false,
     content: "세 실수 $a=2\\\\sqrt{6}-1, b=\\\\sqrt{6}+1, c=6-\\\\sqrt{6}$ 에 대하여 다음 중 옳은 것은?",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","조건해석","계산"],
     wide: false,
     content: "$\\\\sqrt{14000}$은 $\\\\sqrt{35}$의 A배, $\\\\frac{\\\\sqrt{0.35}}{\\\\sqrt{50}}$은 $\\\\sqrt{0.7}$의 B배일 때, AB의 값은?",
     choices: [
@@ -157,7 +157,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","계수비교","조건해석","계산"],
     wide: false,
     content: "$2\\\\sqrt{7}-3\\\\sqrt{6}+a\\\\sqrt{7}+b\\\\sqrt{6} = \\\\frac{3\\\\sqrt{7}}{2} - \\\\frac{14\\\\sqrt{6}}{5}$일 때, $a+b$의 값은? (단, $a, b$는 유리수)",
     choices: [
@@ -181,7 +181,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","전개","조건해석","계산"],
     wide: false,
     content: "$-\\\\sqrt{72}\\\\left(\\\\frac{\\\\sqrt{3}}{2}-\\\\sqrt{2}\\\\right) - \\\\sqrt{24} \\\\div \\\\sqrt{2} \\\\times \\\\sqrt{32} = a+b\\\\sqrt{6}$을 만족하는 유리수 $a, b$에 대하여 $a+b$의 값은?",
     choices: [
@@ -230,7 +230,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","조건해석","계산"],
     wide: false,
     content: "다항식 $(2a-3b)(5a+2b)$를 전개했을 때, $ab$의 계수는?",
     choices: [
@@ -254,7 +254,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","분모유리화","조건해석","계산"],
     wide: false,
     content: "$\\\\frac{1}{\\\\sqrt{80}} \\\\times \\\\frac{1}{-3+\\\\sqrt{5}} = a+b\\\\sqrt{5}$를 만족하는 유리수 $a, b$에 대하여 $a-b$의 값은?",
     choices: [
@@ -278,7 +278,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","곱셈공식","정수조건","참거짓","오류판별","대입"],
     wide: false,
     content: "찬혁이와 수현이가 곱셈공식을 이용해 다음을 계산하는 과정을 나타낸 것이다. 두 학생에 대한 설명으로 옳은 것만을 <보기>에서 있는대로 고른 것은?\\n찬혁: $95^2 = (100-5)^2 = 100^2 + 5^2 = 10025$\\n수현: $403 \\\\times 397 = (400+3)(400-3) = \\\\text{(가)} = 159991$\\n<보기>\\nㄱ. 찬혁이는 곱셈공식 $(a-b)^2 = a^2 - 2ab + b^2$에서 $-2ab$를 누락하여 계산하였다.\\nㄴ. 찬혁이의 계산 결과인 10025는 실제 $95^2$의 값보다 500만큼 더 크다.\\nㄷ. 수현의 계산 과정에서 이용된 가장 적절한 곱셈공식은 $(a+b)(a-b) = a^2-b^2$이다.\\nㄹ. 수현의 계산 결과는 옳으며, 계산 과정 중 (가)에 들어갈 식은 $400^2 + 3^2$ 이다.\\nㅁ. 복잡한 수의 계산에서 곱셈공식을 활용하면 직접 계산하는 것보다 연산 과정을 단순화하여 더 편리하게 계산할 수 있다.",
     choices: [
@@ -302,7 +302,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","도형","사각형","넓이","실생활"],
     wide: false,
     content: "한변의 길이가 $3x$인 정사각형의 사진 6장을 이용해 핸드폰 배경화면을 만들려고 한다. 사진을 가로로 2장, 세로로 3장을 빈틈없이 배치하여 직사각형 형태로 구성한 다음, 이 직사각형의 둘레를 따라 좌·우 각각 2, 상·하 각각 1의 폭을 가진 여백을 포함하여 하나의 배경화면을 완성했을 때, 배경화면 전체의 넓이를 나타내는 다항식은? (단, 모든 사진과 여백은 겹치지 않게 평면상에 배치한다.)",
     choices: [
@@ -326,7 +326,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","계수비교","조합","정수조건","오류판별","조건해석"],
     wide: false,
     content: "다항식 $6x^2+x-15$를 인수분해하면 $(ax+b)(cx+d)$일 때, 두 인수 $ax+b$와 $cx+d$의 합은? (단, $a, b, c, d$는 정수)",
     choices: [
@@ -350,7 +350,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","최대최소","자연수조건","범위","조건해석","계산"],
     wide: false,
     content: "다항식 $x^2+9x+k$를 인수분해하면 $(x+a)(x+b)$일 때, $k$의 최솟값과 최댓값의 합은? (단, $a, b$는 자연수)",
     choices: [
@@ -374,7 +374,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수정리","인수분해","공통인수","자연수조건","대입","조건해석"],
     wide: false,
     content: "세 자연수 $a, b, c$에 대하여 $x$에 대한 두 이차식 $x^2+ax+24$, $x^2+bx-16$을 각각 인수분해 했을 때의 공통인수가 $x+c$일 때, $a-b+c$의 값은?",
     choices: [

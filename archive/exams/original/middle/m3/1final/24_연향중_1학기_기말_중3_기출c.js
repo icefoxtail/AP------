@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차방정식","일차방정식","오류판별","조건해석","계산"],
     wide: false,
     content: "다음 <보기> 중 이차방정식이 아닌 것을 모두 고른 것은?\n<보기>\nㄱ. $x^2+3=2x$ 　 ㄴ. $2x^2-1=x+2x^2$\nㄷ. $(x+2)(x-5)=0$ 　 ㄹ. $x(x+5)=(x-3)(x-1)$\nㅁ. $x(x+3)=6+x^2$ 　 ㅂ. $(5+x)(5-x)=x^2$",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","대입","조건해석","계산"],
     wide: false,
     content: "이차방정식 $3x^2+8x-3=0$의 두 근이 $x=\\alpha$ 또는 $x=\\beta$일 때, $(3\\alpha^2+8\\alpha+1)(3\\beta^2+8\\beta-2)$의 값은?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","지수","도형","원","대입","조건해석"],
     wide: false,
     content: "이차방정식 $x^2+2ax+8=0$의 한 근이 $-2$일 때, $a$의 값과 다른 한 근을 $b$라 할 때, $a+b$의 값은?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","인수분해","이차방정식","판별식"],
     wide: false,
     content: "다음 이차방정식 중 해가 유리수가 아닌 것은?",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","계수비교","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $5x^2-4x-p=0$의 해가 $x=\\dfrac{q\\pm\\sqrt{14}}{5}$일 때, 상수 $p$, $q$에 대하여 $p+q$의 값은?",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","이차방정식","판별식","대입","조건해석","계산"],
     wide: false,
     content: "이차방정식 $4x^2+px+25=0$이 중근을 가질 때, 음수 $p$의 값과 이차방정식의 해를 $q$라 할 때 $p-q$의 값은?",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","이차방정식","근과계수","대입","조건해석","계산"],
     wide: false,
     content: "이차방정식 $(x-3)(x+5)=2x-6$의 두 근 중 큰 근을 $p$라고 할 때, 이차방정식 $px^2-(p^2-5)x-7=0$ 의 두 근의 합은?",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","이차함수","함수","도형","원","그래프","범위"],
     wide: false,
     content: "다음 중 이차함수 $y=x^2$의 그래프에 대한 설명으로 옳지 않은 것은?",
     choices: [
@@ -278,7 +278,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: ["그래프"],
+    "tags": ["객관식","전개","이차함수","지수","일차함수","함수","그래프","조건해석"],
     wide: false,
     content: "다음 그림은 이차함수 $y=ax^2$의 그래프를 평행이동한 것이다. 이 그래프가 점 $(-8,\\ k)$를 지날 때, $k$의 값은? (단, $a$는 상수)",
     image: "assets/images/24_연향중_1학기_기말_중3_기출/q12.png",
@@ -327,7 +327,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: ["그래프"],
+    "tags": ["객관식","이차함수","지수","함수","그래프","표해석","좌표","대입"],
     wide: false,
     content: "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 것은? (단, $a$, $p$는 상수이다.)",
     image: "assets/images/24_연향중_1학기_기말_중3_기출/q14.png",
@@ -370,7 +370,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","이차함수","함수","그래프","표해석","좌표","대입"],
     wide: false,
     content: "이차함수 $y=-x^2+kx-5$의 그래프가 점 $(3,\\ 1)$을 지날 때, 이 그래프의 축의 방정식은?",
     choices: [
@@ -394,7 +394,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","이차함수","지수","함수","그래프","표해석","좌표"],
     wide: false,
     content: "이차함수 $y=3x^2$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $-13$만큼 평행이동하면 이차함수 $y=3x^2+px+q$의 그래프와 완전히 포개어진다. 이때, $p+q$의 값은? (단, $p$, $q$는 상수이다.)",
     choices: [
@@ -442,7 +442,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: ["그래프"],
+    "tags": ["객관식","전개","계수비교","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "다음 그림과 같은 이차함수 $y=ax^2+bx+c$의 그래프에서 꼭짓점을 A라고 하자. $\\triangle OAB$의 넓이가 6일 때, $a+b+c$의 값은? (단, $a$, $b$, $c$는 상수이다.)",
     image: "assets/images/24_연향중_1학기_기말_중3_기출/q19.png",
@@ -467,7 +467,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","계수비교","이차함수","함수","그래프","표해석","좌표"],
     wide: false,
     content: "세 점 $(1,\\ 0)$, $(5,\\ 0)$, $(4,\\ k)$를 지나는 포물선을 그래프로 하는 이차함수의 식을 $y=x^2+bx+c$라고 할 때, $b+c-k$의 값은? (단, $b$, $c$는 상수)",
     choices: [
@@ -510,7 +510,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: ["서술형"],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","표해석","좌표","대입"],
     wide: false,
     content: "이차함수 $f(x)=\\dfrac{1}{2}x^2-x+1$에서 $f(p)=p$를 만족시키는 모든 $p$의 값의 합을 구하시오.",
     choices: [],
@@ -536,3 +536,18 @@ window.questionBank = [
     solution: "[키포인트] 꼭짓점의 $x$좌표가 주어지면 축의 방정식을 알 수 있고, 축을 기준으로 $x$절편은 좌우 대칭임을 이용하여 두 근을 구한다.\\n조건 정리: 축 $x=1$을 기준으로 두 교점 사이의 거리가 8이므로 대칭성을 이용하여 두 $x$절편을 찾는다.\\n풀이 방향: $x$절편을 이용해 함수 식을 $y=a(x-\\alpha)(x-\\beta)$ 형태로 세운 후 전개하여 계수와 $n$을 구한다.\\n정석 풀이:\\n이차함수의 꼭짓점의 좌표가 $(1, n)$이므로 축의 방정식은 $x=1$이다.\\n$x$축과 만나는 두 점 사이의 거리가 8이고 두 점은 축 $x=1$에 대하여 대칭이므로,\\n두 점의 $x$좌표는 $1-\\dfrac{8}{2}=-3$, $1+\\dfrac{8}{2}=5$이다.\\n즉, 이차함수의 그래프는 $x$축과 두 점 $(-3, 0), (5, 0)$에서 만난다.\\n이차함수의 식을 $y=a(x+3)(x-5)$로 놓을 수 있다.\\n이 식을 전개하면 $y=a(x^2-2x-15) = ax^2-2ax-15a$이다.\\n이 식이 $y=ax^2+bx+c$와 일치하므로 $b=-2a$이다.\\n꼭짓점의 좌표가 $(1, n)$이므로 식에 $x=1$을 대입하면\\n$n = a(1+3)(1-5) = a \\times 4 \\times (-4) = -16a$이다.\\n따라서 구하고자 하는 식에 대입하면\\n$\\dfrac{b-n}{a} = \\dfrac{-2a - (-16a)}{a} = \\dfrac{14a}{a} = 14$이다.\\n따라서 구하는 값은 $14$이다."
   }
 ];
+
+if (Array.isArray(window.questionBank)) {
+  if (window.questionBank[11]) {
+    window.questionBank[11].tags = ["객관식", "이차함수", "함수판별", "개념", "오답선별", "조건해석"];
+  }
+  if (window.questionBank[13]) {
+    window.questionBank[13].tags = ["객관식", "이차함수", "그래프", "축", "좌표대입", "조건해석", "계산"];
+  }
+  if (window.questionBank[15]) {
+    window.questionBank[15].tags = ["객관식", "이차함수", "꼭짓점", "완전제곱식", "계수비교", "조건해석", "계산"];
+  }
+  if (window.questionBank[19]) {
+    window.questionBank[19].tags = ["객관식", "이차함수", "그래프", "최대최소", "오답선별", "개념", "조건해석"];
+  }
+}

@@ -1168,7 +1168,7 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '', hoverR
 
 function renderAdminAssessmentArchiveMetric(url = '../archive/assessment/assessment-mvp.html') {
     return `
-        <div class="ap-admin-mini-metric ap-admin-assessment-card" role="button" tabindex="0" title="진단평가 · 단원평가 · 중간·기말평가" aria-label="시험지 보관함: 진단평가, 단원평가, 중간·기말평가" data-assessment-archive-url="${url}" onclick="openAdminAssessmentArchiveWindow(event)" style="cursor:pointer; min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; box-sizing:border-box; box-shadow:none;">
+        <div class="ap-admin-mini-metric ap-admin-assessment-card" role="button" tabindex="0" title="진단평가 · 단원평가 · 중간·기말평가" aria-label="시험지 보관함: 진단평가, 단원평가, 중간·기말평가" data-assessment-archive-url="${url}" onclick="openAdminAssessmentArchiveWindow(event)" style="cursor:pointer; min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box; box-shadow:none;">
             <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.25; white-space:nowrap;">시험지 보관함</div>
         </div>
     `;

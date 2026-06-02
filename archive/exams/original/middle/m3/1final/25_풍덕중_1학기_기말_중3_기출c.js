@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","오류판별","조건해석","계산"],
     "wide": false,
     "content": "다음 중 다항식 $2x(x+1)(3x-1)$의 인수가 아닌 것은? (3점)",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","완전제곱식","대입","조건해석"],
     "wide": false,
     "content": "$x=\\sqrt{5}+2$, $y=\\sqrt{5}-2$일 때, 다음 중 인수분해 공식을 이용하여 $x^2-2xy+y^2$의 값을 구한 것은? (4점)",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
     "wide": false,
     "content": "다음 중 $9x^2+3(k+5)x+49$가 완전제곱식이 되기 위한 수 $k$의 값 중 가장 작은 값은? (4점)",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","대입","조건해석","계산"],
     "wide": false,
     "content": "두 이차식 $3x^2+5x+p$, $5x^2+qx+6$의 공통인 인수가 $x+2$일 때, 두 수 $p$, $q$에 대하여 $p+q$의 값은? (4점)",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "두 자연수 $a$, $b$에 대하여 다항식 $2x^2+11x+k$가 $(2x+a)(x+b)$로 인수분해 되도록 하는 실수 $k$의 값 중 가장 큰 수와 작은 수의 합은? (5점)",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차방정식","일차방정식","개수세기","계산"],
     "wide": false,
     "content": "다음 중 이차방정식의 개수는? (3점)\\nㄱ. $3x^2-7x+7$   ㄴ. $2(x+2)(x-2)$\\nㄷ. $x^2-3x+1=6$   ㄹ. $4x+1=3x^2+1$\\nㅁ. $x(2x-3)=(2x+1)(x+7)$",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","이차방정식","표해석","조건해석","계산"],
     "wide": false,
     "content": "이차방정식 $x^2-(a+5)x+5a=0$의 두 해의 비가 1:3일 때, 수 $a$의 값을 모두 구하여 곱한 값은? (4점)",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계수비교","이차방정식","대입","조건해석","계산"],
     "wide": false,
     "content": "이차방정식 $ax^2+7x+2=0$의 해가 $x=\\dfrac{-7\\pm\\sqrt{b}}{8}$일 때, 다음 중 두 수 $a$, $b$에 대하여 $b-a$의 값은? (4점)",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계수비교","이차방정식","대입","조건해석","계산"],
     "wide": false,
     "content": "두 이차방정식 $x^2+2x-3=0$, $2x^2+kx+6=0$이 공통인 해를 갖도록 하는 수 $k$의 값을 모두 구하여 더한 값은? (4점)",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","이차방정식","대입","조건해석","계산"],
     "wide": false,
     "content": "이차방정식 $x^2+3x-1=0$의 한 해를 $x=p$라 할 때, $p-\\dfrac{1}{p}$의 값은? (4점)",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","나머지정리","전개","이차방정식","도형","삼각형"],
     "wide": false,
     "content": "세 변의 길이가 각각 $2x$, $2x+1$, $2x+3$인 삼각형이 직각삼각형일 때, $x$의 값은? (단, $x>1$) (5점)",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","조건해석","계산"],
     "wide": false,
     "content": "다음 중 함수 $y=(a-3)x^2+2x-1$가 $x$에 대한 이차함수가 되기 위한 상수 $a$의 조건은? (3점)",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","이차함수","일차함수","함수","도형","사각형","원"],
     "wide": false,
     "content": "다음 중 $y$가 $x$에 대한 이차함수인 것을 있는대로 고른 것은? (4점)\\nㄱ. $x$각형의 대각선의 개수 $y$개\\nㄴ. $x$각형의 내각의 크기의 합 $y$°\\nㄷ. 반지름의 길이가 $(x-2)$cm인 원의 둘레 $y$cm\\nㄹ. 자동차를 타고 시속 $x$km로 3시간 동안 달린 거리 $y$km\\nㅁ. 가로의 길이가 $x$cm, 세로의 길이가 $(2x+1)$cm인 직사각형의 넓이 $y$cm²",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","계산"],
     "wide": false,
     "content": "이차함수 $f(x)=3x^2-x-5$에 대하여 $2f(-1)-f(1)$의 값은? (4점)",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","조건해석","계산"],
     "wide": false,
     "content": "이차함수 $y=ax^2$의 그래프를 $x$축의 방향으로 $-2$만큼 평행이동한 그래프가 점 $(3,-5)$를 지날 때, 수 $a$의 값은? (4점)",
     "choices": [
@@ -399,7 +399,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","그래프","표해석","좌표"],
     "wide": false,
     "content": "다음 중 이차함수 $y=-2x^2+8x-3$의 그래프에 대한 설명으로 옳지 않은 것은? (4점)",
     "choices": [
@@ -423,7 +423,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","그래프","조건해석","계산"],
     "wide": false,
     "content": "다음 중 이차함수의 폭이 좁은 것부터 차례대로 나열할 때, 두 번째로 좁은 것은? (4점)",
     "choices": [
@@ -474,7 +474,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","일차함수","함수","그래프","표해석","좌표","대입"],
     "wide": false,
     "content": "이차함수 $y=2x^2-4ax+1$의 그래프가 제 4사분면을 지나고 꼭짓점이 일차함수 $y=-3x+1$의 그래프 위의 점일 때, 수 $a$의 값은? (5점)",
     "choices": [

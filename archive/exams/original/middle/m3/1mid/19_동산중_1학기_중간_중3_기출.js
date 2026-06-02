@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","양의제곱근","음의제곱근","정의","참거짓","개념","객관식"],
     "wide": false,
     "solution": "① 음수의 제곱근은 없다. ② $\\sqrt{64}=8$의 제곱근은 $\\pm\\sqrt{8}$이다. ③ 제곱근 5는 $\\sqrt{5}$이다(참). ④ 0의 제곱근은 0이다. ⑤ $\\sqrt{256}=16$의 음의 제곱근은 -4이다(참). (※ 원문상 정답이 2개만 확인되나 발문대로 유지)",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["무리수","유리수","제곱근","순환소수","근호","분류","개념","객관식"],
     "wide": false,
     "solution": "무리수는 $\\sqrt{\\frac{2}{9}}$, $\\sqrt{2}+9$, $\\sqrt{0.4}$로 총 3개이다.",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","부등식","자연수조건","제곱","범위","해의개수","계산","객관식"],
     "wide": false,
     "solution": "각 변을 제곱하면 $16 \\le x < 25$이다. 자연수 $x$는 $16, 17, \\dots, 24$로 $25-16=9$개이다.",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호계산","곱셈","나눗셈","분수근호","오류판별","객관식"],
     "wide": false,
     "solution": "④ $\\sqrt{\\frac{3}{16} \\times \\frac{2}{3} \\div 2} = \\sqrt{\\frac{1}{8}} \\times \\frac{1}{\\sqrt{2}} = \\frac{1}{4}$이므로 옳지 않다.",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","정수조건","완전제곱수","자연수조건","조건해석","복수정답","객관식"],
     "wide": false,
     "solution": "$12-a$가 $1, 4, 9$가 되어야 하므로 $a=11, 8, 3$이다. 선택지 중 8(3번), 11(4번)이 정답이다.",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호정리","소인수분해","a√b형","최소자연수","계산","객관식"],
     "wide": false,
     "solution": "$\\sqrt{486} = \\sqrt{81 \\times 6} = 9\\sqrt{6}$이므로 $a=9, b=6$이다. $a+b=15$.",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","도형","정사각형","넓이","변의길이","근호활용","응용","객관식"],
     "wide": false,
     "solution": "전체 정사각형 넓이는 100이다. 색칠된 부분은 전체의 절반이므로 넓이가 50이다. 한 변의 길이는 $\\sqrt{50}=5\\sqrt{2}cm$이다.",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","수직선","좌표","정사각형","대각선","근호활용","도형","객관식"],
     "wide": false,
     "solution": "$a = -1-\\sqrt{2}$, $b = -2+\\sqrt{2}$이다. 따라서 $a+b = -3$이다. (원본 오류 수정 반영)",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호비교","대소관계","부등식","근호계산","오류판별","객관식"],
     "wide": false,
     "solution": "⑤ $3\\sqrt{3}+2\\sqrt{3} > 2\\sqrt{2}+4\\sqrt{2} \\implies 5\\sqrt{3} > 6\\sqrt{2} \\implies \\sqrt{75} > \\sqrt{72}$ (참).",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","실수","대소관계","분수","제곱","역수","조건해석","객관식"],
     "wide": false,
     "solution": "$a=0.25$ 대입 시 $0.25, 0.0625, 0.5, 4, 2$이므로 $\\frac{1}{a}$가 가장 크다.",
     "level": "중"
@@ -259,7 +259,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","분모유리화","근호계산","분수식","계수비교","식의간단화","객관식"],
     "wide": false,
     "solution": "$\\frac{2\\sqrt{2}+6}{2}-\\frac{6-2\\sqrt{2}}{2\\sqrt{2}} = (\\sqrt{2}+3) - (\\frac{3\\sqrt{2}-2}{2}) = 3+1 - \\frac{1}{2}\\sqrt{2} = 4-\\frac{1}{2}\\sqrt{2}$. $x=-0.5, y=4$이므로 $x+y=3.5$.",
     "level": "중"
@@ -283,7 +283,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호계산","문자식","곱셈","조건식","식의간단화","계산","객관식"],
     "wide": false,
     "solution": "$\\sqrt{2ab} + \\sqrt{8ab} = \\sqrt{32} + \\sqrt{128} = 4\\sqrt{2} + 8\\sqrt{2} = 12\\sqrt{2}$.",
     "level": "중"
@@ -307,7 +307,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","제곱의차","다항식","인수판별","곱셈공식","개념","객관식"],
     "wide": false,
     "solution": "$x^{4}-1 = (x^{2}+1)(x+1)(x-1)$이다.",
     "level": "중"
@@ -331,7 +331,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","완전제곱식","곱셈공식","계수비교","오류판별","개념","객관식"],
     "wide": false,
     "solution": "④ $9a^{2}+30ab+16b^{2}$이 완전제곱식이 되려면 일차항이 $24ab$여야 한다.",
     "level": "중"
@@ -355,7 +355,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","곱셈공식","제곱의차","이차식","공통인수","오류판별","객관식"],
     "wide": false,
     "solution": "⑤ $x^{2}-5^{2}=(x+5)(x-5)$이다.",
     "level": "중"
@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","도형","원","넓이","제곱의차","반지름","공식활용","객관식"],
     "wide": false,
     "solution": "$\\pi(12.5^{2}-7.5^{2}) = \\pi(12.5+7.5)(12.5-7.5) = \\pi \\times 20 \\times 5 = 100\\pi$.",
     "level": "중"
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","완전제곱식","절댓값","근호정리","범위조건","식의간단화","객관식"],
     "wide": false,
     "solution": "$\\sqrt{(x+2)^{2}} + \\sqrt{(x-2)^{2}} = |x+2| + |x-2| = (x+2) - (x-2) = 4$.",
     "level": "중"
@@ -427,7 +427,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["제곱근","근호계산","곱셈공식","인수분해활용","합차공식","식변형","상급","객관식"],
     "wide": false,
     "solution": "$xy(x^{2}-y^{2}) = xy(x+y)(x-y) = (-5)(2\\sqrt{3})(4\\sqrt{2}) = -40\\sqrt{6}$.",
     "level": "중"
@@ -451,7 +451,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","도형","직사각형","넓이","이차식","식세우기","조건해석","객관식"],
     "wide": false,
     "solution": "전체 넓이가 $x^{2}+5x+6$이므로 $(x+3)(x+2)$로 인수분해된다.",
     "level": "중"
@@ -475,7 +475,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","곱셈공식","제곱의차","수계산","빠른계산","값비교","객관식"],
     "wide": false,
     "solution": "① $2(91+9)(91-9) = 16400$. 다른 보기들보다 월등히 크다.",
     "level": "중"
@@ -499,7 +499,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["인수분해","이차식","계수비교","오류추론","상수항","일차항","조건해석","객관식"],
     "wide": false,
     "solution": "서인: 상수항 12 채택. 한별: 일차항 -8 채택. $x^{2}-8x+12 = (x-2)(x-6)$.",
     "level": "중"
@@ -517,7 +517,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근표","근삿값","소수이동","비례관계","계산과정","근호활용"],
     "wide": false,
     "solution": "표를 이용한 단순 독해 및 $10\\sqrt{n}$ 변환 문제이다.",
     "level": "중"
@@ -535,7 +535,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","절댓값","문자식","분수식","범위조건","식의간단화","상급"],
     "wide": false,
     "solution": "$5|a| + 2|a-\\frac{1}{a}| - 2|a+\\frac{1}{a}| = 5a + 2(\\frac{1}{a}-a) - 2(a+\\frac{1}{a}) = a$.",
     "level": "중"
@@ -553,7 +553,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","인수분해","공통인수","완전제곱식","제곱의차","이차식","기본문제","계산과정"],
     "wide": false,
     "solution": "공통인수 묶기 및 인수분해 기본 공식 적용.",
     "level": "중"
@@ -571,7 +571,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","도형","정사각형","넓이비","둘레","변의길이","근호활용"],
     "wide": false,
     "solution": "A 한 변 $\\sqrt{5}$, B 한 변 $2\\sqrt{5}$, C 한 변 $3\\sqrt{5}$이다. 둘레는 $2(3\\sqrt{5} + 6\\sqrt{5}) + 2\\sqrt{5} = 20\\sqrt{5}$.",
     "level": "중"

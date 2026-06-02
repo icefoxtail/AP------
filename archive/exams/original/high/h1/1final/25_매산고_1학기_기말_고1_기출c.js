@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","순열","조합","조건해석","계산"],
     wide: false,
     content: "${}_{5}P_{2} + 4!$의 값은? [3.8점]",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","개수세기","조건해석","계산","하난도"],
     wide: false,
     content: "행렬 $\\begin{pmatrix} a \\\\ b \\end{pmatrix}$은 몇 행 몇 열의 행렬인지 구하면? [3.8점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","조건해석","계산","중난도","기출"],
     wide: false,
     content: "두 행렬 $A = \\begin{pmatrix} 2 & 0 \\\\ 2 & 5 \\end{pmatrix}, B = \\begin{pmatrix} 1 & 9 \\\\ 1 & 0 \\end{pmatrix}$에 대하여 행렬 $A - B$의 모든 성분의 합은? [3.9점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","순열","조합","도형","원","조건해석","계산"],
     wide: false,
     content: "수학 동아리의 회원 모집에 남학생 5명, 여학생 4명이 지원하였다. 이 지원자 중에서 남학생 3명, 여학생 2명을 뽑는 경우의 수는? [4.0점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","일차부등식","정수조건","범위","개수세기","조건해석","계산"],
     wide: false,
     content: "연립부등식 $\\begin{cases} 2x+2 > -x-4 \\\\ 2-2x \\ge x-1 \\end{cases}$을 만족시키는 모든 정수 $x$의 개수는? [4.1점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","부등식","연립방정식","자연수조건","대입","조건해석"],
     wide: false,
     content: "연립방정식 $\\begin{cases} x+y+xy = 7k \\\\ 3x+3y-xy = 9k \\end{cases}$가 오직 한 쌍의 해를 갖도록 하는 양수 $k$의 값이 $\\frac{q}{p}$일 때, $p+q$의 값은? (단, $p, q$는 서로소인 자연수) [4.2점]",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","자연수조건","조건해석","계산"],
     wide: false,
     content: "$x$에 대한 연립부등식 $\\begin{cases} \\frac{x+10}{5} \\ge \\frac{4}{3} \\\\ 2x \\lt 2a-3-x \\end{cases}$을 만족시키는 모든 정수 $x$의 합이 $-6$이 되도록 하는 모든 자연수 $a$의 곱은? [4.3점]",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","부등식","정수조건","조건해석","계산"],
     wide: false,
     content: "부등식 $|2x-3| \\ge |x^2-4x+5|$를 만족시키는 모든 정수 $x$값의 합은? [4.4점]",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","판별식","최대최소","부등식","정수조건","범위","조건해석"],
     wide: false,
     content: "부등식 $(k-3)x^2+(2k-6)x-k+9 \\gt 0$이 모든 실수 $x$에 대하여 성립하도록 하는 정수 $k$의 최댓값과 최솟값의 곱은? [4.4점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","자연수조건","개수세기","참거짓","조건해석","개념"],
     wide: false,
     content: "'3·6·9 게임'은 참가자들이 돌아가며 자연수를 1부터 차례로 말하되 3, 6, 9가 들어가 있는 수는 말하지 않는 게임이다. 예를 들면 3, 13, 60, 396, 462, 900 등은 말하지 않아야 한다. '3·6·9 게임'을 할 때, 1부터 555까지의 자연수 중 말하지 않아야 하는 수의 개수는? [4.5점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
   standardUnitOrder: 9,
   questionType: "객관식",
   layoutTag: "grid",
-  tags: [],
+  "tags": ["객관식","전개","참거짓","조건해석","계산"],
   wide: false,
   content: "두 실수 $x, y$에 대하여 두 행렬 $A, B$를 $A = \\begin{pmatrix} 1 & x \\\\ -2 & 0 \\end{pmatrix}, B = \\begin{pmatrix} -2 & y \\\\ 0 & x \\end{pmatrix}$라 하자. $A^2-B^2 = (A-B)(A+B)$를 만족시킬 때, 행렬 $(A-B)(A^2+AB+B^2)$의 모든 성분의 합은? [4.6점]",
   choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","최대최소","도형","조건해석","계산","상급"],
     wide: false,
     content: "실수 $x, y$가 $\\begin{cases} \\begin{pmatrix} x & y \\end{pmatrix} \\begin{pmatrix} 1 & -2 \\\\ 1 & -6 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = 0 \\\\ \\begin{pmatrix} x & y \\end{pmatrix} \\begin{pmatrix} 1 & -5 \\\\ 2 & 4 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = 84 \\end{cases}$을 만족할 때, $x^2+y^2$의 최댓값은? [4.6점]",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","조건해석","계산","중난도","기출"],
     wide: false,
     content: "이차 정사각행렬 $A$에 대해 $A\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 7 \\end{pmatrix}, A^2\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 39 \\end{pmatrix}$일 때, 행렬 $A^3$의 모든 성분의 합은? [4.8점]",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","이차방정식","판별식","이차함수","연립방정식","함수","그래프"],
     wide: false,
     content: "$x, y$에 관한 연립방정식 $\\begin{cases} y = x^2 - 2|x| + 1 \\\\ y = x + k \\end{cases}$의 서로 다른 실근의 개수가 4가 되게 하는 상수 $k$의 범위가 $\\alpha \\lt k \\lt \\beta$ 일 때, $\\alpha + \\beta$의 값은? [4.9점]",
     choices: [
@@ -372,7 +372,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "단답형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","로그","경우의수","순열","조합","참거짓","조건해석","계산"],
     wide: false,
     content: "〈단답형 1〉\n매산이는 학교 축제 프로그램을 구성하려고 한다. 밴드 경연 대회에 참가 신청서를 제출한 8개 팀 중에서 공연할 6개 팀을 뽑는 경우의 수를 구하시오. [4점]",
     choices: [],
@@ -390,7 +390,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "단답형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","지수","참거짓","조건해석","계산"],
     wide: false,
     content: "〈단답형 2〉\n이차정사각행렬 $A$의 $(i, j)$성분 $a_{ij}$가 $a_{ij} = i-j$ ($i=1, 2, j=1, 2$)이다. 행렬 $A+A^2+A^3+\\cdots+A^{2020}$의 모든 성분의 합을 구하시오. [5점]",
     choices: [],
@@ -426,7 +426,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["서술형","제곱근","근호","무리수","유리수","분모유리화","계수비교","복소수"],
     wide: false,
     content: "〈서술형 1〉\n사차방정식 $x^4+ax^3+bx^2+cx+d=0$가 $\\sqrt{2}+i$를 근으로 가질 때, 유리수 $a, b, c, d$에 대하여 $a+b+c+d$의 값을 구하는 과정을 서술하시오. (단, $i=\\sqrt{-1}$) [10점]",
     choices: [],
@@ -444,7 +444,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["서술형","인수분해","경우의수","순열","조합","도형","원","자연수조건"],
     wide: false,
     content: "〈서술형 2〉\n1~100까지의 자연수가 각각 하나씩 적힌 100장의 카드가 들어있는 주머니가 있다. 이 주머니에서 두 장의 카드를 동시에 꺼낼 때, 다음 조건을 만족시키는 경우의 수를 구하는 과정을 서술하시오.<div class=\"question-table-wrap\"><table class=\"question-table\"><tr><td>(가) 카드에 적힌 두 수는 서로소이다.</td></tr><tr><td>(나) 카드에 적힌 두 수는 각각 60과 서로소이다.</td></tr></table></div>[10점]",
     choices: [],

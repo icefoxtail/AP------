@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","공통인수","오류판별","계산"],
     wide: false,
     content: "다음 다항식의 인수가 아닌 것은?<br>$$x^3y + x^2y^2$$",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","공통인수","참거짓","오류판별","개념"],
     wide: false,
     content: "다음 중 인수분해를 옳게 한 것을 고르면?",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","공통인수","대입","조건해석","계산"],
     wide: false,
     content: "다항식 $2x^2-28xy+98y^2$을 인수분해 하면 $2(x+\\square)^2$일 때, $\\square$안에 들어갈 것을 구하면?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
     wide: false,
     content: "다음의 이차식은 모두 완전제곱식이다. $a+b+c$의 값을 구하면?(단, $a, b, c$는 상수)<br>$$4x^2+16x+a \\qquad x^2-4x+b \\qquad cx^2-8x+16$$",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","완전제곱식","대입","조건해석"],
     wide: false,
     content: "$a=2-\\sqrt{3}$일 때, $a^2-4a+4$의 값을 구하면?",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","제곱의차","표해석","참거짓","대입","개념"],
     wide: false,
     content: "다음 중에서 $4x^2-y^2$를 인수분해를 옳게 한 것을 고르면?",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","다항식","인수분해","제곱의차","전개","참거짓","오류판별"],
     wide: false,
     content: "다항식 $9x^2+a$를 인수분해 하면 $(3x+b)(3x-b)$ (단, $b\\lt0$이고 $a, b$는 $0$이 아닌 유리수)일 때, 다음 중 옳은 것을 모두 고르면?(정답 2개)",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","정수조건","조건해석","계산"],
     wide: false,
     content: "다항식 $x^2-2x-15$를 인수분해 하면 $(x+a)(x+b)$일 때, $a+b$의 값은?",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
   standardUnitOrder: 2,
   questionType: "객관식",
   layoutTag: "grid",
-  tags: [],
+  "tags": ["객관식","다항식","나머지정리","인수분해","전개","계수비교","정수조건","참거짓"],
   wide: false,
   content: "다항식 $3x^2+ax-2$를 인수분해 하면 $(bx+c)(dx+e)$ (단, $b, d\\gt0$이고 $a, b, c, d, e$는 정수)일 때, 다음 중에서 옳지 않은 것을 모두 고르면?(정답 2개)",
   choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","조합","도형","원","계산"],
     wide: false,
     content: "다항식 $(3x+4)(2x-5)-4$을 인수분해 하였을 때, 일차식인 두 인수의 합은?",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","근과계수","정수조건","조건해석"],
     wide: false,
     content: "세 정수 $a, b, k$ (단, $b\\lt0$)에 대하여 다항식 $x^2+12x+k$를 인수분해 하면 $(x+a)(x+b)$일 때, $k$가 될 수 있는 수 중에서 3번째로 큰 값을 구하면?",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","이차방정식","일차방정식","계산"],
     wide: false,
     content: "다음 중에서 이차방정식을 찾으면?",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","일차방정식","대입","조건해석","계산"],
     wide: false,
     content: "$x$에 대한 이차방정식 $x^2+ax-6=0$의 한 근이 $x=3$일 때, 상수 $a$의 값을 구하면?",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","이차방정식","계산"],
     wide: false,
     content: "다음 두 이차방정식의 해를 모두 더하면?<br>$$(2x-4)(x+5)=0 \\qquad (x-4)^2=16$$",
     choices: [
@@ -372,7 +372,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","확률","경우의수","자연수조건","개수세기","조건해석"],
     wide: false,
     content: "정육면체 주사위를 두 번 던져서 처음 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 할 때, 이차방정식 $x^2+ax+2b=0$의 해가 중근일 확률을 구하면?",
     choices: [
@@ -396,7 +396,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","분모유리화","이차방정식","조건해석","계산","개념"],
     wide: false,
     content: "이차방정식 $3x^2-7=0$을 풀면?",
     choices: [
@@ -420,7 +420,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","완전제곱식","계수비교","이차방정식","도형","원"],
     wide: false,
     content: "다음은 완전제곱식을 이용하여 이차방정식 $x^2-5x+2=0$을 푸는 과정이다. ①~⑤에 들어갈 수로 옳은 것을 고르면?<br>$$x^2-5x+2=0$$<br>$$x^2-5x+\\textcircled{1}=-2+\\textcircled{1}$$<br>$$(x-\\textcircled{2})^2=\textcircled{3}$$<br>$$x-\\textcircled{2}=\pm\\textcircled{4}$$<br>$$x=\textcircled{5}$$",
     choices: [
@@ -444,7 +444,7 @@ window.questionBank = [
   standardUnitOrder: 3,
   questionType: "객관식",
   layoutTag: "grid",
-  tags: [],
+  "tags": ["객관식","인수분해","계수비교","이차방정식","정수조건","계산"],
   wide: false,
   content: "이차방정식 $\\dfrac{1}{5}x^2-0.3x-\\dfrac{1}{2}=0$을 풀면?",
   choices: [
@@ -468,7 +468,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","계수비교","이차방정식","지수","표해석"],
     wide: false,
     content: "이차방정식 $3x^2-x+A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{13}}{6}$일 때, $A+B$의 값을 구하면?",
     choices: [
@@ -511,7 +511,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["서술형","나머지정리","계수비교","이차방정식","지수","도형","원","대입"],
     wide: false,
     content: "이차방정식 $x^2-2px-5=0$의 한 근이 $x=-1$이고 다른 한 근은 이차방정식 $x^2+(q-2)x+3q=0$의 근일 때, 상수 $p, q$의 값을 구하시오.<br>($p$구하는 과정: 2점, 이차방정식 $x^2-2px-5=0$의 다른 한 근 구하는 과정: 3점, $q$구하는 과정: 2점)",
     choices: [],

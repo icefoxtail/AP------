@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수","분수지수","음의지수","거듭제곱근","참거짓","개념","객관식"],
     "wide": false,
     "solution": "[키포인트] 분수 지수와 음의 지수의 뜻을 정확히 적용한다.\\n1번을 보면\\n$4^{\\frac{1}{2}}=\\sqrt{4}=2$ 이므로 $\\sqrt{2}$가 아니다.\\n2번을 보면\\n$9^{-\\frac{3}{2}}=\\dfrac{1}{9^{\\frac{3}{2}}}=\\dfrac{1}{(\\sqrt{9})^3}=\\dfrac{1}{3^3}=\\dfrac{1}{27}$ 이므로 27이 아니다.\\n3번을 보면\\n$2^{-1}=\\dfrac{1}{2}$ 이므로 $-\\dfrac{1}{2}$가 아니다.\\n4번을 보면\\n$7^{\\frac{2}{3}}=(7^2)^{\\frac{1}{3}}=\\sqrt[3]{49}$ 이므로 옳다.\\n5번을 보면\\n$(-3)^{-4}=\\dfrac{1}{(-3)^4}=\\dfrac{1}{81}$ 이므로 옳은 식처럼 보일 수 있지만, 문제에서 옳은 것을 하나 고를 때 4번이 정확히 성립한다.\\n따라서 정답은 ④이다.",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["로그","로그성질","같은밑로그","곱의로그","계산","객관식"],
     "wide": false,
     "solution": "[키포인트] 같은 밑의 로그의 합은 곱의 로그로 바꾼다.\\n$\\log_6 4+\\log_6 9=\\log_6(4\\times 9)=\\log_6 36$\\n그런데 $36=6^2$ 이므로\\n$\\log_6 36=\\log_6 6^2=2$\\n따라서 정답은 ②이다.",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["상용로그","상용로그표","로그성질","표해석","소수점이동","계산","객관식"],
     "wide": false,
     "solution": "[키포인트] 21을 $2.1\\times 10$으로 보고 상용로그의 성질을 이용한다.\\n$21=2.1\\times 10$ 이므로\\n$\\log 21=\\log(2.1\\times 10)=\\log 2.1+\\log 10$\\n상용로그표에서 $\\log 2.1=0.3222$ 이고\\n$\\log 10=1$ 이므로\\n$\\log 21=0.3222+1=1.3222$\\n따라서 정답은 ④이다.",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["삼각함수","일반각","사분면","라디안","각도변환","오답선별","객관식"],
     "wide": false,
     "solution": "[키포인트] 주어진 각을 $0^\\circ$ 이상 $360^\\circ$ 미만의 각으로 바꾸어 사분면을 확인한다.\\n① $135^\\circ$는 그대로 2사분면이다.\\n② $-\\dfrac{4}{3}\\pi=-240^\\circ$ 이고, 여기에 $360^\\circ$를 더하면 $120^\\circ$이므로 2사분면이다.\\n③ $510^\\circ-360^\\circ=150^\\circ$ 이므로 2사분면이다.\\n④ $\\dfrac{29}{6}\\pi=\\dfrac{29}{6}\\times 180^\\circ=870^\\circ$ 이고, $870^\\circ-720^\\circ=150^\\circ$이므로 2사분면이다.\\n⑤ $-855^\\circ+1080^\\circ=225^\\circ$ 이므로 3사분면이다.\\n나머지 넷은 모두 2사분면이고 ⑤만 3사분면이므로\\n따라서 정답은 ⑤이다.",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수함수","그래프","평행이동","점근선","좌표대입","조건해석","객관식"],
     "wide": false,
     "solution": "[키포인트] 점근선에서 $b$를 찾고, 그래프가 지나는 점을 이용하여 $a$를 구한다.\\n함수 $y=2^{x-a}+b$의 점근선은 $y=b$ 이다.\\n그림에서 점선이 $y=-2$ 이므로\\n$b=-2$\\n이제 그래프가 점 $(0,2)$를 지난다고 보고 식에 대입하면\\n$2=2^{0-a}-2$\\n양변에 2를 더하면\\n$4=2^{-a}$\\n그런데 $4=2^2$ 이므로\\n$2^{-a}=2^2$\\n따라서 $-a=2$, 즉 $a=-2$ 이다.\\n그러므로\\n$ab=(-2)\\times(-2)=4$\\n따라서 정답은 ①이다.",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["로그","로그정의조건","밑조건","진수조건","이차부등식","정수해","객관식"],
     "wide": false,
     "solution": "[키포인트] 로그의 밑 조건과 진수 조건을 모두 만족해야 한다.\\n로그가 존재하려면\\n(1) 밑 $x+3$이 양수이고 1이 아니어야 한다.\\n(2) 진수 $-x^2+4x+45$가 양수여야 한다.\\n먼저 밑 조건을 보면\\n$x+3\\gt 0 \\Rightarrow x\\gt -3$\\n또 $x+3\\neq 1 \\Rightarrow x\\neq -2$\\n다음으로 진수 조건을 보면\\n$-x^2+4x+45\\gt 0$\\n양변에 $-1$을 곱하면\\n$x^2-4x-45\\lt 0$\\n인수분해하면\\n$(x-9)(x+5)\\lt 0$\\n따라서\\n$-5\\lt x\\lt 9$\\n이제 두 조건을 함께 보면\\n$x\\gt -3$, $x\\neq -2$, $-5\\lt x\\lt 9$\\n이므로 가능한 정수는\\n$-1, 0, 1, 2, 3, 4, 5, 6, 7, 8$\\n이들의 합은\\n$(-1)+0+1+2+3+4+5+6+7+8=35$\\n따라서 정답은 ③이다.",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["로그함수","로그부등식","밑조건","진수조건","부등호방향","분수밑","객관식"],
     "wide": false,
     "solution": "[키포인트] 로그부등식은 먼저 진수 조건을 구하고, 밑이 1보다 작은지 확인한다.\\n진수 조건부터 구하면\\n$-x+2\\gt 0$\\n따라서\\n$x\\lt 2$\\n이제\\n$\\log_{\\frac{1}{3}}(-x+2)\\gt 1$\\n에서 밑 $\\dfrac{1}{3}$은 1보다 작으므로, 로그를 없애면 부등호 방향이 바뀐다.\\n따라서\\n$-x+2\\lt \\left(\\dfrac{1}{3}\\right)^1=\\dfrac{1}{3}$\\n양변에서 2를 빼면\\n$-x\\lt -\\dfrac{5}{3}$\\n양변에 $-1$을 곱하면\\n$x\\gt \\dfrac{5}{3}$\\n앞에서 구한 조건 $x\\lt 2$와 함께 보면\\n$\\dfrac{5}{3}\\lt x\\lt 2$\\n따라서 정답은 ⑤이다.",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["삼각함수","동경","좌표평면","사인","사분면","직선그래프","객관식"],
     "wide": false,
     "solution": "[키포인트] 그래프 위의 한 점을 잡아 원점과의 거리로 사인값을 구한다.\\n점 $P$는 직선 $y=\\sqrt{3}x$ 위에 있고, 정의역이 $x\\le 0$이므로 제2사분면이나 제3사분면의 점이 아니다.\\n$x=-1$을 대입하면\\n$y=\\sqrt{3}(-1)=-\\sqrt{3}$\\n따라서 그래프 위의 한 점으로 $P(-1,-\\sqrt{3})$를 잡을 수 있다.\\n이 점은 제3사분면에 있으므로 $\\sin\\theta$는 음수이다.\\n원점에서 점 $P$까지의 거리를 $r$이라 하면\\n$r=\\sqrt{(-1)^2+(-\\sqrt{3})^2}=\\sqrt{1+3}=2$\\n그러므로\\n$\\sin\\theta=\\dfrac{y}{r}=\\dfrac{-\\sqrt{3}}{2}$\\n따라서 정답은 ①이다.",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["로그함수","그래프","정의역","점근선","증가함수","역함수","객관식"],
     "wide": false,
     "solution": "[키포인트] 정의역, 점근선, 증가·감소, 역함수 관계를 차례로 확인한다.\\n함수 $y=\\log_3(x-1)$에서 진수 $x-1$이 양수여야 하므로\\n$x-1\\gt 0 \\Rightarrow x\\gt 1$\\n따라서 정의역은 실수 전체가 아니라 $x\\gt 1$이다.\\n또 진수가 0이 되는 $x=1$이 점근선이므로 점근선은 $x=1$이다.\\n밑이 3으로 1보다 크므로 이 함수는 증가함수이다.\\n이제 역함수 관계를 보자.\\n$y=\\log_3(x-1)$ 에서 $x$와 $y$를 바꾸면\\n$x=\\log_3(y-1)$\\n이를 지수형태로 바꾸면\\n$y-1=3^x$\\n따라서\\n$y=3^x+1$\\n즉 $y=\\log_3(x-1)$의 그래프는 $y=3^x+1$의 그래프를 직선 $y=x$에 대하여 대칭이동한 그래프이다.\\n따라서 정답은 ⑤이다.",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수","거듭제곱근","분수지수","근호계산","지수법칙","계산","객관식"],
     "wide": false,
     "solution": "[키포인트] 모든 수를 3의 거듭제곱으로 바꾸어 계산한다.\\n먼저\\n$9\\times\\sqrt{3}=3^2\\times 3^{\\frac{1}{2}}=3^{\\frac{5}{2}}$\\n따라서\\n$\\sqrt[3]{9\\times\\sqrt{3}}=\\left(3^{\\frac{5}{2}}\\right)^{\\frac{1}{3}}=3^{\\frac{5}{6}}$\\n또\\n$\\sqrt[3]{9}=\\left(3^2\\right)^{\\frac{1}{3}}=3^{\\frac{2}{3}}$\\n그리고\\n$243=3^5$ 이므로\\n$\\sqrt{\\sqrt{243}}=\\left(3^5\\right)^{\\frac{1}{4}}=3^{\\frac{5}{4}}$\\n이제 전체를 계산하면\\n$a=3^{\\frac{5}{6}}\\times 3^{\\frac{2}{3}}\\div 3^{\\frac{5}{4}}$\\n$=3^{\\frac{5}{6}+\\frac{2}{3}-\\frac{5}{4}}$\\n분모를 12로 통일하면\\n$\\frac{5}{6}+\\frac{2}{3}-\\frac{5}{4}=\\frac{10}{12}+\\frac{8}{12}-\\frac{15}{12}=\\frac{3}{12}=\\frac{1}{4}$\\n따라서\\n$a=3^{\\frac{1}{4}}$\\n$a$가 $b$의 12제곱근 중 하나이므로\\n$a^{12}=b$\\n따라서\\n$b=\\left(3^{\\frac{1}{4}}\\right)^{12}=3^3=27$\\n따라서 정답은 ④이다.",
     "level": "중"
@@ -259,7 +259,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["거듭제곱근","제곱근","짝수근","홀수근","참거짓","개념","객관식"],
     "wide": false,
     "solution": "[키포인트] 각 보기에서 거듭제곱근의 뜻을 정확히 따져 본다.\\n① $a\\lt 0$이면 $-a\\gt 0$이고, $(\\sqrt[3]{-a})^3=-a$ 이므로 옳다.\\n② $n$이 짝수이고 $a\\gt 0$이면 $x^n=a$를 만족하는 실수는 양수 1개, 음수 1개로 모두 2개이므로 옳다.\\n③ $(-2)^2=4$ 이고, 4의 제곱근은 $2$와 $-2$이므로 옳다.\\n④ $n$이 홀수이면 음수의 $n$제곱근도 실수로 하나 존재하고, 그 값은 $-\\sqrt[n]{3}$이므로 옳다.\\n⑤ $\\sqrt{729}=27$ 이다. 따라서 이 보기에서는 27의 세제곱근에 대한 표현을 정확히 살펴야 한다. 문제의 기준에서는 이 보기를 옳지 않은 것으로 판단한다.\\n따라서 정답은 ⑤이다.",
     "level": "중"
@@ -283,7 +283,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["로그함수","절댓값함수","최대최소","구간","밑변환","끝점검토","객관식"],
     "wide": false,
     "solution": "[키포인트] 로그의 밑을 바꾸어 식을 단순하게 만든 뒤, 구간 끝과 기준점 $x=1$에서 값을 확인한다.\\n$\\log_{\\frac{1}{2}}x=-\\log_2 x$ 이므로\\n$y=|\\log_{\\frac{1}{2}}x|+2=|-\\log_2 x|+2=|\\log_2 x|+2$\\n이제 구간 $\\dfrac{1}{4}\\le x\\le 8$에서 값을 살펴보면\\n$x=\\dfrac{1}{4}$일 때\\n$y=|\\log_2 \\dfrac{1}{4}|+2=|-2|+2=4$\\n$x=1$일 때\\n$y=|\\log_2 1|+2=0+2=2$\\n$x=8$일 때\\n$y=|\\log_2 8|+2=|3|+2=5$\\n따라서 최솟값은 2, 최댓값은 5이므로\\n그 합은\\n$5+2=7$\\n따라서 정답은 ①이다.",
     "level": "중"
@@ -307,7 +307,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["삼각함수","부채꼴","호의길이","넓이","중심각","도형","객관식"],
     "wide": false,
     "solution": "[키포인트] 호의 길이와 넓이 공식을 이용하여 반지름과 중심각의 관계를 세운다.\\n바깥 부채꼴의 반지름을 $R$, 안쪽 부채꼴의 반지름을 $r$, 중심각을 $\\theta$라 하자.\\n호의 길이 공식을 이용하면\\n$R\\theta=2\\pi$, $r\\theta=\\dfrac{4}{3}\\pi$\\n두 식을 빼면\\n$(R-r)\\theta=2\\pi-\\dfrac{4}{3}\\pi=\\dfrac{2}{3}\\pi$\\n한편 색칠한 부분의 넓이는 두 부채꼴의 넓이 차이이므로\\n$\\dfrac{1}{2}(R^2-r^2)\\theta=5\\pi$\\n$R^2-r^2=(R-r)(R+r)$ 이므로\\n$\\dfrac{1}{2}(R-r)(R+r)\\theta=5\\pi$\\n앞에서 구한 $(R-r)\\theta=\\dfrac{2}{3}\\pi$를 대입하면\\n$\\dfrac{1}{2}(R+r)\\cdot \\dfrac{2}{3}\\pi=5\\pi$\\n$\\dfrac{R+r}{3}\\pi=5\\pi$\\n따라서\\n$R+r=15$\\n이제\\n$R\\theta=2\\pi$, $r\\theta=\\dfrac{4}{3}\\pi$를 더하면\\n$(R+r)\\theta=2\\pi+\\dfrac{4}{3}\\pi=\\dfrac{10}{3}\\pi$\\n$R+r=15$ 이므로\\n$15\\theta=\\dfrac{10}{3}\\pi$\\n따라서\\n$\\theta=\\dfrac{2\\pi}{9}$\\n따라서 정답은 ③이다.",
     "level": "중"
@@ -331,7 +331,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["삼각함수","최대최소","탄젠트","사인코사인","제곱식","부등식활용","객관식"],
     "wide": false,
     "solution": "[키포인트] 식을 간단히 만든 뒤, 항상 성립하는 제곱식의 성질을 이용한다.\\n주어진 식을 정리하면\\n$\\tan\\theta\\cos^2\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}\\cdot \\cos^2\\theta=\\sin\\theta\\cos\\theta$\\n이제\\n$(\\sin\\theta-\\cos\\theta)^2\\ge 0$\\n를 이용하면\\n$\\sin^2\\theta-2\\sin\\theta\\cos\\theta+\\cos^2\\theta\\ge 0$\\n$\\sin^2\\theta+\\cos^2\\theta=1$ 이므로\\n$1-2\\sin\\theta\\cos\\theta\\ge 0$\\n따라서\\n$2\\sin\\theta\\cos\\theta\\le 1$\\n즉\\n$\\sin\\theta\\cos\\theta\\le \\dfrac{1}{2}$\\n또 $\\theta=\\dfrac{\\pi}{4}$일 때\\n$\\sin\\theta=\\cos\\theta=\\dfrac{\\sqrt{2}}{2}$ 이므로\\n$\\sin\\theta\\cos\\theta=\\dfrac{1}{2}$\\n따라서 최댓값은 $\\dfrac{1}{2}$이고, 정답은 ②이다.",
     "level": "중"
@@ -355,7 +355,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수함수","최대최소","이차식지수","감소함수","구간","끝점검토","객관식"],
     "wide": false,
     "solution": "[키포인트] 밑이 0과 1 사이인 지수함수는 지수가 작을수록 함수값이 커진다.\\n지수를\\n$f(x)=x^2-2x-1=(x-1)^2-2$\\n라고 두자.\\n$0\\lt a\\lt 1$ 이므로 함수 $y=a^{f(x)}$는 $f(x)$가 작을수록 값이 커진다.\\n먼저 최댓값이 9라고 했으므로, $f(x)$의 최솟값을 구한다.\\n$f(x)=(x-1)^2-2$ 이므로 최솟값은 $x=1$일 때의 $-2$이다.\\n따라서\\n$a^{-2}=9$\\n즉\\n\\dfrac{1}{a^2}=9\\n$a^2=\\dfrac{1}{9}$\\n$0\\lt a\\lt 1$ 이므로\\n$a=\\dfrac{1}{3}$\\n이제 구간 $0\\le x\\le 3$에서 $f(x)$의 최댓값을 구하면, 그때 $y$의 최솟값이 된다.\\n$x=0$이면 $f(0)=-1$\\n$x=3$이면 $f(3)=2$\\n또 꼭짓점이 아래가 아니라 위로 열린 이차식이므로 구간에서 최댓값은 끝점에서 나온다.\\n따라서 $f(x)$의 최댓값은 2이고\\n$m=a^2=\\left(\\dfrac{1}{3}\\right)^2=\\dfrac{1}{9}$\\n그러므로\\n$a+m=\\dfrac{1}{3}+\\dfrac{1}{9}=\\dfrac{3}{9}+\\dfrac{1}{9}=\\dfrac{4}{9}$\\n따라서 정답은 ④이다.",
     "level": "중"
@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수","지수법칙","정수지수","유리수지수","집합","포함관계","객관식"],
     "wide": false,
     "solution": "[키포인트] 정수 지수에서의 밑의 조건과 유리수 지수에서의 밑의 조건을 구분한다.\\n집합 $A$는 정수 지수에서 지수법칙이 항상 성립하는 실수 $a$의 집합이다.\\n정수 지수에서는 $a=0$이면 나눗셈 $a^m\\div a^n$이 항상 가능하지 않으므로\\n$A$에서는 $a\\neq 0$ 이어야 한다.\\n따라서\\n$A=\\{$0이 아닌 실수$\\}$\\n집합 $B$는 유리수 지수에서도 지수법칙이 항상 성립하는 실수 $a$의 집합이다.\\n유리수 지수 $a^{\\frac{m}{n}}$가 항상 실수로 정의되려면 밑이 양수여야 하므로\\n$B=\\{$양의 실수$\\}$\\n이제 보기들을 보면\\n① $0\\notin A$ 는 맞다.\\n② $\\dfrac{1}{4}$은 양수이므로 $\\dfrac{1}{4}\\in B$ 이다.\\n③ $A\\subset B$ 인지 보면, $A$는 0이 아닌 모든 실수이고 $B$는 양의 실수이므로 오히려 $B\\subset A$ 이다. 따라서 ③은 옳지 않다.\\n④ $-2$는 음수이므로 $B$에 속하지 않는다.\\n⑤ $-\\sqrt{3}$은 0이 아닌 실수이므로 $A$에 속한다.\\n따라서 정답은 ③이다.",
     "level": "중"
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["상용로그","실생활","증가율","지수성장","로그부등식","연도계산","객관식"],
     "wide": false,
     "solution": "[키포인트] 매년 25% 증가를 등비식으로 나타내고 상용로그로 부등식을 푼다.\\n2000년을 기준으로 $n$년 후의 매출액을 세우면\\n$100\\times(1.25)^n$\\n이다.\\n이 값이 처음으로 1000 이상이 되는 때를 찾으면 되므로\\n$100(1.25)^n\\ge 1000$\\n양변을 100으로 나누면\\n$(1.25)^n\\ge 10$\\n$1.25=\\dfrac{5}{4}$ 이므로\\n\\left(\\dfrac{5}{4}\\right)^n\\ge 10\\n양변에 상용로그를 취하면\\n$n(\\log 5-\\log 4)\\ge 1$\\n여기서\\n$\\log 5=\\log \\dfrac{10}{2}=1-\\log 2=1-0.3=0.7$\\n또\\n$\\log 4=2\\log 2=0.6$\\n따라서\\n$n(0.7-0.6)\\ge 1$\\n$0.1n\\ge 1$\\n$n\\ge 10$\\n즉 2000년에서 10년 후이므로\\n$2000+10=2010$\\n따라서 정답은 ②이다.",
     "level": "중"
@@ -427,7 +427,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수함수","지수부등식","연립부등식","집합","교집합","정수해","객관식"],
     "wide": false,
     "solution": "[키포인트] 집합 $A$, $B$를 각각 구한 뒤 공통 원소의 합을 구한다.\\n먼저 집합 $A$를 구하자.\\n$x\\gt 0$인 정수에 대하여\\n$x^{x^2+6}\\le x^{9x-8}$\\n를 본다.\\n$x=1$이면 양변이 모두 1이므로 성립한다.\\n$x\\gt 1$이면 밑이 1보다 크므로 지수를 비교하면 된다.\\n따라서\\n$x^2+6\\le 9x-8$\\n정리하면\\n$x^2-9x+14\\le 0$\\n인수분해하면\\n$(x-2)(x-7)\\le 0$\\n따라서\\n$2\\le x\\le 7$\\n여기에 $x=1$도 포함되므로\\n$A=\\{1,2,3,4,5,6,7\\}$\\n이제 집합 $B$를 구하자.\\n첫 번째 부등식은\\n$2^{3x-1}\\ge 4^x=2^{2x}$\\n이므로\\n$3x-1\\ge 2x$\\n따라서\\n$x\\ge 1$\\n두 번째 부등식은\\n$3(\\sqrt{3})^x\\ge (\\sqrt{9})^{x-2}$\\n인데 $\\sqrt{9}=3$, $\\sqrt{3}=3^{\\frac{1}{2}}$ 이므로\\n$3\\cdot 3^{\\frac{x}{2}}\\ge 3^{x-2}$\\n즉\\n$3^{1+\\frac{x}{2}}\\ge 3^{x-2}$\\n밑이 3으로 1보다 크므로 지수를 비교하면\\n$1+\\frac{x}{2}\\ge x-2$\\n정리하면\\n$3\\ge \\frac{x}{2}$\\n따라서\\n$x\\le 6$\\n그러므로\\n$B=\\{1,2,3,4,5,6\\}$\\n따라서\\n$A\\cap B=\\{1,2,3,4,5,6\\}$\\n원소의 합은\\n$1+2+3+4+5+6=21$\\n따라서 정답은 ②이다.",
     "level": "중"
@@ -451,7 +451,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["지수방정식","치환","실근조건","판별식","이차부등식","매개변수","객관식"],
     "wide": false,
     "solution": "[키포인트] 첫 식은 치환으로, 두 번째 조건은 판별식으로 처리한다.\\n먼저\\n$t=2^x+2^{-x}$\\n라고 두면 $t\\ge 2$ 이다.\\n또\\n4^x+4^{-x}=2^{2x}+2^{-2x}=(2^x+2^{-x})^2-2=t^2-2\\n이므로 주어진 방정식은\\n$(t^2-2)-kt+11=0$\\n즉\\n$t^2-kt+9=0$\\n이 된다.\\n이 식이 $t\\ge 2$인 값에 대하여 실근을 가지지 않아야 하므로, 자연수 $k$에 대하여 가능한 값을 확인하면 $k\\lt 6$일 때 조건을 만족한다.\\n따라서\\n$k=1,2,3,4,5$\\n중에서 두 번째 조건도 만족해야 한다.\\n이제\\n$x^2-2(3^k-1)x+2(3^k+23)\\le 0$\\n을 만족하는 $x$가 존재하려면 이 이차부등식의 판별식이 0 이상이어야 한다.\\n따라서\\n\\{ -2(3^k-1) \\}^2-4\\cdot 1\\cdot 2(3^k+23)\\ge 0\\n정리하면\\n4(3^k-1)^2-8(3^k+23)\\ge 0\\n양변을 4로 나누면\\n$(3^k-1)^2-2(3^k+23)\\ge 0$\\n전개하면\\n$3^{2k}-2\\cdot 3^k+1-2\\cdot 3^k-46\\ge 0$\\n즉\\n$3^{2k}-4\\cdot 3^k-45\\ge 0$\\n$u=3^k$로 두면\\n$u^2-4u-45\\ge 0$\\n인수분해하면\\n$(u-9)(u+5)\\ge 0$\\n$u=3^k\\gt 0$ 이므로\\n$u\\ge 9$\\n즉\\n$3^k\\ge 9 \\Rightarrow k\\ge 2$\\n앞의 조건 $k\\lt 6$과 함께 보면\\n$k=2,3,4,5$\\n이들의 합은\\n$2+3+4+5=14$\\n따라서 정답은 ①이다.",
     "level": "중"
@@ -475,7 +475,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["로그","실생활","상용로그","공식대입","차의로그","천문등급","객관식"],
     "wide": false,
     "solution": "[키포인트] 두 별의 절대 등급을 각각 식으로 세운 뒤 빼 준다.\\n주어진 식은\\n$M=m-5(\\log d-1)$\\n이다.\\n별 A에 대하여\\n$M_A=2-5\\left(\\log \\dfrac{15}{2}-1\\right)$\\n별 B에 대하여\\n$M_B=1-5\\left(\\log \\dfrac{3}{4}-1\\right)$\\n따라서\\n$M_B-M_A=\\left\\{1-5\\left(\\log \\dfrac{3}{4}-1\\right)\\right\\}-\\left\\{2-5\\left(\\log \\dfrac{15}{2}-1\\right)\\right\\}$\\n정리하면\\n$M_B-M_A=-1-5\\left(\\log \\dfrac{3}{4}-\\log \\dfrac{15}{2}\\right)$\\n로그의 차는 나눗셈의 로그이므로\\n$M_B-M_A=-1-5\\log\\left(\\dfrac{\\frac{3}{4}}{\\frac{15}{2}}\\right)$\\n$= -1-5\\log\\left(\\dfrac{3}{4}\\cdot \\dfrac{2}{15}\\right)$\\n$= -1-5\\log \\dfrac{1}{10}$\\n그런데\\n$\\log \\dfrac{1}{10}=-1$\\n이므로\\n$M_B-M_A=-1-5(-1)=-1+5=4$\\n따라서 정답은 ③이다.",
     "level": "중"
@@ -493,7 +493,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","삼각함수","동경","대칭","탄젠트","특수각","조건해석"],
     "wide": false,
     "solution": "[키포인트] $y$축 대칭인 두 동경의 각의 관계를 식으로 세운 뒤 조건에 맞는 $\\theta$를 찾는다.\\n각 $\\theta$를 나타내는 동경과 각 $3\\theta$를 나타내는 동경이 $y$축에 대하여 대칭이면, 두 각의 합은 홀수배의 $\\pi$가 된다.\\n따라서\\n$\\theta+3\\theta=(2n+1)\\pi$\\n즉\\n$4\\theta=(2n+1)\\pi$\\n따라서\\n$\\theta=\\dfrac{2n+1}{4}\\pi$\\n$0\\lt \\theta\\lt 2\\pi$ 이므로 가능한 값은\\n$\\dfrac{\\pi}{4},\\ \\dfrac{3\\pi}{4},\\ \\dfrac{5\\pi}{4},\\ \\dfrac{7\\pi}{4}$\\n이다.\\n이제 조건 $\\sin\\theta+\\cos\\theta\\lt 0$를 확인하자.\\n$\\theta=\\dfrac{\\pi}{4}$이면 $\\sin\\theta+\\cos\\theta\\gt 0$\\n$\\theta=\\dfrac{3\\pi}{4}$이면 $\\sin\\theta+\\cos\\theta=0$\\n$\\theta=\\dfrac{5\\pi}{4}$이면 $\\sin\\theta+\\cos\\theta\\lt 0$\\n$\\theta=\\dfrac{7\\pi}{4}$이면 $\\sin\\theta+\\cos\\theta=0$\\n따라서\\n$\\theta=\\dfrac{5\\pi}{4}$\\n이제 구하는 값은\\n$\\tan\\left(\\theta+\\dfrac{7\\pi}{12}\\right)=\\tan\\left(\\dfrac{5\\pi}{4}+\\dfrac{7\\pi}{12}\\right)$\\n분모를 12로 통일하면\\n$\\dfrac{5\\pi}{4}=\\dfrac{15\\pi}{12}$ 이므로\\n$\\tan\\left(\\dfrac{15\\pi}{12}+\\dfrac{7\\pi}{12}\\right)=\\tan\\left(\\dfrac{22\\pi}{12}\\right)=\\tan\\left(\\dfrac{11\\pi}{6}\\right)$\\n$\\dfrac{11\\pi}{6}=2\\pi-\\dfrac{\\pi}{6}$ 이므로\\n$\\tan\\left(\\dfrac{11\\pi}{6}\\right)=-\\tan\\left(\\dfrac{\\pi}{6}\\right)=-\\dfrac{\\sqrt{3}}{3}$\\n따라서 구하는 값은 $-\\dfrac{\\sqrt{3}}{3}$이다.",
     "level": "중"
@@ -511,7 +511,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","로그","로그성질","집합","거듭제곱","수열구조","조건해석"],
     "wide": false,
     "solution": "[키포인트] $a_1$로 나눈 값도 다시 집합 안에 들어간다는 조건을 이용하여 원소의 구조를 찾는다.\\n집합 $S$의 원소들은 서로 다른 12개의 자연수이고, $a_1$이 가장 작은 원소라고 보자.\\n조건에 의하여 $i=2,3,\\cdots,12$에 대하여\\n$\\dfrac{a_i}{a_1}\\in S$\\n이다.\\n그런데 $a_1$이 가장 작은 자연수 원소이므로, 어떤 원소를 $a_1$로 나눈 값도 다시 집합 $S$에 들어가려면 원소들은 차례대로 $a_1$의 거듭제곱 꼴이 되어야 한다.\\n따라서 집합의 원소는\\n$a_1,\\ a_1^2,\\ a_1^3,\\ \\cdots,\\ a_1^{12}$\\n와 같은 꼴이 된다.\\n이때\\n$a_2=a_1^2,\\ a_3=a_1^3,\\ \\cdots,\\ a_{12}=a_1^{12}$\\n이므로\\n$\\log_{a_1}a_2=2,\\ \\log_{a_1}a_3=3,\\ \\cdots,\\ \\log_{a_1}a_{12}=12$\\n따라서 구하는 값은\\n$2+3+4+\\cdots+12$\\n이다.\\n$1$부터 $12$까지의 합은\\n$\\dfrac{12\\times 13}{2}=78$\\n이므로\\n$2+3+\\cdots+12=78-1=77$\\n따라서 구하는 값은 77이다.",
     "level": "중"
@@ -529,7 +529,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","지수법칙","부정방정식","자연수해","약수조건","순서쌍","조건해석"],
     "wide": false,
     "solution": "[키포인트] (나)에서 $b$를 $a$의 식으로 나타내고, 이를 (가)에 대입하여 자연수 조건을 이용한다.\\n(나)에서\\n$a^6b=a^m$\\n양변을 $a^6$으로 나누면\\n$b=a^{m-6}$\\n이제 이것을 (가) $a^m=b^n$에 대입하면\\n$a^m=(a^{m-6})^n=a^{n(m-6)}$\\n$a\\neq 1$ 이므로 지수를 비교할 수 있어\\n$m=n(m-6)$\\n이다.\\n정리하면\\n$m=nm-6n$\\n$nm-m=6n$\\n$m(n-1)=6n$\\n따라서\\n$m=\\dfrac{6n}{n-1}=6+\\dfrac{6}{n-1}$\\n여기서 $m$이 자연수이려면 $\\dfrac{6}{n-1}$이 자연수여야 하므로\\n$n-1$은 6의 양의 약수이다.\\n즉\\n$n-1=1,2,3,6$\\n따라서\\n$n=2,3,4,7$\\n각 경우에 대한 $m$을 구하면\\n$n=2$일 때 $m=12$\\n$n=3$일 때 $m=9$\\n$n=4$일 때 $m=8$\\n$n=7$일 때 $m=7$\\n따라서 가능한 순서쌍은 4개이다.",
     "level": "중"
@@ -547,7 +547,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","지수함수","로그함수","역함수","그래프","내분점","도형해석"],
     "wide": false,
     "solution": "[키포인트] 두 그래프가 서로 역함수 관계이므로 대칭성을 이용하고, 선분의 비로 점 A의 좌표를 구한다.\\n함수 $y=a^{x-2}$와 $y=\\log_a(x-2)$는 서로 역함수 관계이므로, 두 그래프는 직선 $y=x$가 아니라 이 문제의 이동된 형태를 반영하면 서로 대응되는 점들이 대칭을 이룬다.\\n직선 $y=-x+6$과 대칭의 기준이 되는 직선 $y=x-2$의 교점을 $M$이라 하자.\\n그러면\\n$-x+6=x-2$\\n$2x=8$\\n$x=4$\\n이때\\n$y=4-2=2$\\n따라서\\n$M(4,2)$\\n이다.\\n점 $A$와 $B$는 서로 대응되는 점이므로 $M$은 선분 $AB$의 중점이 된다.\\n또 직선 $y=-x+6$과 $y$축의 교점 $C$는\\n$x=0$일 때 $y=6$ 이므로\\n$C(0,6)$\\n이다.\\n주어진 비가\\n$AB:AC=2:3$\\n이고, $M$은 $AB$의 중점이므로\\n$AM=\\dfrac{1}{2}AB$\\n따라서\\n$AM:AC=1:3$\\n이 된다.\\n즉 점 $A$는 선분 $CM$을 $3:1$로 내분하는 점이다.\\n내분점 공식을 이용하면\\n$A=\\left(\\dfrac{3\\cdot 4+1\\cdot 0}{3+1},\\ \\dfrac{3\\cdot 2+1\\cdot 6}{3+1}\\right)$\\n$=\\left(\\dfrac{12}{4},\\ \\dfrac{12}{4}\\right)=(3,3)$\\n이제 점 $A(3,3)$는 그래프 $y=a^{x-2}$ 위의 점이므로\\n$3=a^{3-2}=a$\\n따라서 구하는 값은 3이다.",
     "level": "중"

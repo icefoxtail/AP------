@@ -20,7 +20,7 @@ function includesAll(label, source, markers) {
 includesAll('assessment-mvp.html diagnostic start flow', mvpHtml, [
   'isDiagnosticAssessmentPack(pack)',
   'data-action="diagnostic-start"',
-  '진단평가 출제',
+  '정답입력',
   'startDiagnosticAssessment(pack)',
   'createDiagnosticAssessmentDraft(pack)',
   'apms.diagnostic.assessment.result.',

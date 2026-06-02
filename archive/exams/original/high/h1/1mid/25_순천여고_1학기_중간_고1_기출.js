@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","계수비교","조건해석","계산"],
     "wide": false,
     "content": "등식 $2x+a=bx+7$이 $x$에 대한 항등식이 되도록 하는 상수 $a, b$에 대하여 $a+b$의 값은? [4.0점]",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계수비교","대입","조건해석","계산"],
     "wide": false,
     "content": "다항식 $8x^{3}+36x^{2}+54x+27$ 를 인수분해하면 $(ax+b)^{3}$ 일 때, 상수 $a, b$에 대하여 $ab$의 값은? [4.0점]",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","계수비교","조건해석","계산"],
     "wide": false,
     "content": "세 다항식 $A, B, C$의 연산 결과 조립제법을 통해 얻은 미정계수 $a, b$에 대하여 $a+b$의 값은? [4.1점]",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","일차방정식","대입","조건해석","계산"],
     "wide": false,
     "content": "다항식 $x^{5}+27x^{4}-x+k$를 $x+1$로 나눈 나머지가 $12$일 때, 상수 $k$의 값은? [4.2점]",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","표해석","범위","조건해석","계산"],
     "wide": false,
     "content": "[중] $-2 \\le x \\le 0$에서 이차함수 $y=-x^{2}+2x+3$의 최댓값과 최솟값의 합은? [4.3점]",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","계수비교","조건해석","식세우기","계산"],
     "wide": false,
     "content": "다항식 $3x^{2}-5x+6$ 을 $x-1$로 나누는 과정에서 미정계수 $a, b$에 대하여 $a+b$의 값은? [4.3점]",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","인수분해","연립방정식","대입","조건해석","식세우기"],
     "wide": false,
     "content": "[중] 다항식 $P(x)$를 $x-1$로 나눈 나머지는 $7$, $x-3$으로 나눈 나머지는 $-9$이다. $P(x)$를 $x^{2}-4x+3$으로 나눈 나머지 $R(x)$에 대하여 $R(5)$의 값은? [4.4점]",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","대입","조건해석","계산","응용"],
     "wide": false,
     "content": "실수 $x, y$에 대하여 $x-y=3, x^{2}+y^{2}=12$ 일 때, $xy$의 값은? [4.4점]",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","참거짓","조건해석","계산","개념"],
     "wide": false,
     "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","이차방정식","판별식","이차함수","부등식","함수"],
     "wide": false,
     "content": "[상] 이차방정식 $x^{2}-2(k-2)x+k^{2}-28=0$ 이 실근을 갖기 위한 양의 정수 $k$의 개수는? [4.4점]",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","계수비교","복소수","이차방정식","지수","조건해석","계산"],
     "wide": false,
     "content": "실수 $a, b$에 대하여 등식 $\\frac{1}{i}+\\frac{3}{i^{2}}+\\frac{5}{i^{3}}+\\frac{7}{i^{4}} = a+bi$ 가 성립할 때, $a-b$의 값은? [4.5점]",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","복소수","켤레복소수","이차방정식","조건해석","계산"],
     "wide": false,
     "content": "복소수 $z=1-2i$ 에 대하여 $z+\\bar{z}$의 값은? [4.5점]",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","도형","원","표해석","대입"],
     "wide": false,
     "content": "[상] 다항식 $(x-2)(x-1)(x+3)(x+4)$ 를 전개한 식에서 $x^{3}$의 계수를 $a$, $x^{2}$의 계수를 $b$라 할 때, $a+b$의 값은? [4.6점]",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","근과계수","이차함수","함수","조건해석","계산"],
     "wide": false,
     "content": "[중] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\alpha-1}{2}, \\frac{\\beta-1}{2}$ 을 두 근으로 하는 이차방정 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","공통인수","대입","조건해석","계산"],
     "wide": false,
     "content": "다항식 $x^{2}+2x-1=0$ 일 때, $x^{4}+2x^{3}+2x+5$의 값은? [4.7점]",
     "choices": [
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","이차함수","최대최소","부등식","함수","도형","넓이"],
     "wide": false,
     "content": "[상] $x \\ge 1$인 실수 $x$에 대하여 세 모서리의 길이가 각각 $x-1, x+1, x+2$ 인 직육면체의 겉넓이의 최솟값은? [4.7점]",
     "choices": [
@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","자연수조건","범위","대입","조건해석","식세우기","계산"],
     "wide": false,
     "content": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
     "choices": [
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","전개","계수비교","판별식","도형"],
     "wide": false,
     "content": "[상] 최고차항 계수 1인 이차다항식 $P(x), Q(x)$가 조건을 만족할 때, $P(x)Q(x)+k$가 이차식의 제곱으로 인수분해되기 위한 $k+a+b$의 값은? [4.9점]",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","다항식","항등식","인수분해","복소수","이차방정식"],
     "wide": false,
     "content": "[서술형 1] $k$의 값에 관계없이 중근을 가질 때 $a, b$를 구하고, $x^{2}-4x+a+b$ 를 복소수 범위에서 인수분해하시오. [6.0점]",
     "choices": [],
@@ -462,7 +462,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","이차방정식","이차함수","함수","도형","원","조건해석","계산"],
     "wide": false,
     "content": "[서술형 2/상] 원의 지름 $AB$와 현 $CD$가 $P$에서 만날 때($CP=9, DP=6$), 선분 $AP, BP$를 근으로 하는 이차방정식은? [6.0점]",
     "choices": [],
@@ -480,7 +480,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","이차방정식","이차함수","최대최소","함수","범위","조건해석","계산"],
     "wide": false,
     "content": "[서답형 3/상] $0 \\le x \\le 3$에서 $y=(x^{2}-4x+6)^{2}-2a(x^{2}-4x+6)+a^{2}+1$의 최솟값이 5일 때 $a$의 값을 구하시오. [8.0점]",
     "choices": [],

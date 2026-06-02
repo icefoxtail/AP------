@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","인수정리","인수분해","대입","조건해석","계산"],
     "wide": false,
     "content": "다항식 $P(x)=x^{3}-x^{2}+kx+6$이 $x-2$로 나누어떨어질 때, 실수 $k$의 값을 구하시오. [3.5점]",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "두 다항식을 인수분해 하여 $a^{2}+b^{2}+c^{2}+2ab+2bc+2ca=A^{2}, a^{3}-3a^{2}b+3ab^{2}-b^{3}=B^{3}$일 때, $A+B$를 구하시오. (단, 다항식 $A$는 $a$의 계수가 양수인 $a, b, c$에 대한 일차식이고, 다항식 $B$는 $a, b$에 대한 일차식이다.) [3.5점]",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","최대최소","정수조건","범위","조건해석"],
     "wide": false,
     "content": "이차방정식 $x^{2}+2x+k-4=0$이 서로 다른 두 허근을 가질 때, 정수 $k$의 최솟값을 구하시오. [3.5점]",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","계수비교","참거짓","조건해석","계산"],
     "wide": false,
     "content": "다항식 $2x^{3}+3x^{2}-4x+11$을 $x^{2}-x+2$로 나누었을 때 몫과 나머지가 옳게 짝지어진 것을 고르시오. [3.7점]",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","전개","복소수","조건해석","계산","개념"],
     "wide": false,
     "content": "두 실수 $x, y$에 대하여 $i(2+xi)+(3-yi)=1+2i$일 때, $x+y$의 값을 구하시오. (단, $i=\\sqrt{-1}$이다) [3.7점]",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","공통인수","계수비교","이차방정식","근과계수","대입","조건해석"],
     "wide": false,
     "content": "이차방정식 $x^{2}+5x-7=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha^{2}\\beta+\\alpha\\beta^{2}$의 값을 구하시오. [3.7점]",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","참거짓","대입","조건해석","개념"],
     "wide": false,
     "content": "다음 중 다항식 $(x^{2}+4x+1)(x^{2}+4x+2)-6$을 인수분해한 것으로 옳은 것을 고르시오. [4점]",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","근과계수","이차함수","연립방정식","함수","그래프"],
     "wide": false,
     "content": "이차함수 $y=3x^{2}-4x-7$의 그래프와 직선 $y=10x+10$의 그래프의 두 교점의 $x$좌표를 각각 $a, b$라 하자. $a+b$의 값이 $\\frac{\\beta}{\\alpha}$일 때, $\\alpha+\\beta$의 값을 구하시오. (단, $a, b$는 실수이고, $\\alpha$와 $\\beta$는 서로소인 자연수이다.) [4점]",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","항등식","나머지정리","전개","계수비교","대입","조건해석","계산"],
     "wide": false,
     "content": "등식 $y=2x+2k$를 만족시키는 모든 실수 $x, y$에 대하여 등식 $ax^{2}+xy+3y+18=0$이 항상 성립할 때, $ak$의 값을 구하시오. (단, $a, k$는 실수이다.) [4점]",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","전개","계수비교","이차방정식","판별식","근과계수","조건해석","계산"],
     "wide": false,
     "content": "이차방정식 $(x^{2}+2x+3)k+3x^{2}-4x-1=0$이 중근을 갖도록 하는 모든 실수 $k$의 값의 합을 구하시오. [4.3점]",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","분모유리화","복소수","켤레복소수","판별식","대입","조건해석","계산"],
     "wide": false,
     "content": "삼차방정식 $x^{3}=1$의 한 허근을 $\\omega$라 할 때, $\\frac{\\omega^{2}+\\bar{\\omega}^{2}}{1+\\omega^{2}}+\\frac{\\omega+\\bar{\\omega}}{1+\\omega}$의 값을 구하시오. (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [4.3점]",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","이차방정식","판별식","최대최소","연립방정식","대입"],
     "wide": false,
     "content": "연립방정식 $\\begin{cases} xy=2 \\\\ x+y+2xy=10 \\end{cases}$을 만족하는 두 실수 $x, y$에 대하여 $2x-y$의 최솟값을 구하시오. [4.3점]",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","나머지정리","전개","계수비교","대입","조건해석","식세우기","계산"],
     "wide": false,
     "content": "최고차항의 계수가 1인 삼차식 $P(x)$가 다음 <조건>을 모두 만족할 때, $P(2)$의 값을 구하시오. [4.5점]<br><div class='box'><br><조건><br>ㄱ. $P(x)$를 $x-1$로 나누었을 때 몫이 $Q(x)$, 나머지는 3이다.<br>ㄴ. $Q(x)$를 $(x+1)^{2}$으로 나누었을 때 나머지는 $-2$이다.<br></div>",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","복소수","지수","범위","조건해석","계산"],
     "wide": false,
     "content": "복소수 $z=\\frac{\\sqrt{2}}{1+i}$에 대하여, $1+z+z^{2}+\\dots+z^{23}+z^{24}$의 값을 구하시오. (단, $i=\\sqrt{-1}$) [4.5점]",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","분모유리화","계수비교","복소수","켤레복소수","이차방정식"],
     "wide": false,
     "content": "이차방정식 $-x^{2}+ax+b=0$의 한 근이 $1+2i$일 때, 이차함수 $y=x^{2}-2bx-a+k$는 $x$축과 접한다. $x$축과의 교점의 $x$좌표를 $\\alpha$라고 할 때, $k+4\\alpha$의 값을 구하시오. (단, $i=\\sqrt{-1}$이고, $a, b, k, \\alpha$는 실수) [4.5점]",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","이차방정식","판별식","정수조건","범위","개수세기","대입"],
     "wide": false,
     "content": "$-20$부터 $20$까지의 정수가 각각 적혀 있는 카드 41장 중에서 카드를 한 장씩 두 번 뽑아 첫 번째, 두 번째 뽑은 카드에 적혀 있는 정수를 각각 $m, n$이라고 하자. 다음 <조건>을 모두 만족하는 순서쌍 $(m, n)$의 개수를 구하시오. (단, 뽑은 카드는 다시 뽑을 수 있다.) [4.8점]<br><div class='box'><br><조건><br>ㄱ. $x^{2}+mx+n=0$은 중근을 갖는다.<br>ㄴ. $x^{2}+nx+m=0$은 서로 다른 두 실근을 갖는다.<br></div>",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","도형","삼각형","사각형","넓이"],
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$의 내부에 직사각형을 딱 맞게 넣으려고 한다. 삼각형 $ABC$의 넓이가 $6$이고 $\\overline{BC}=4$일 때, 이 직사각형의 넓이의 최댓값을 구하시오. [4.8점]",
     "image": "assets/images/25_팔마고_1학기_중간_고1_기출/q17.png",
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","항등식","나머지정리","인수분해","계수비교","대입","조건해석"],
     "wide": false,
     "content": "다항식 $P(x)$와 최고차항의 계수가 1인 이차식 $Q(x)$가 모든 실수 $x$에 대하여 $Q(x)^{2}+Q(x+2)^{2}=xP(x)$를 만족한다. $P(x)$를 $Q(x+2)$로 나누었을 때 나머지를 $R(x)$라 할 때, $R(1)$의 값을 구하시오. (단, 다항식 $P(x)$와 $Q(x)$의 계수는 모두 실수이다.) [5.2점]",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","분모유리화","절댓값","복소수"],
     "wide": false,
     "content": "$10 \\le n \\le 100$인 자연수 $n$에 대하여 $z=\\frac{1}{\\sqrt{5}(1-\\sqrt{3}i)}$일 때, $z^n$이 유리수가 되는 $n$의 개수를 $a$, $z^n$이 유리수가 되는 $n$ 중 $10^{-16} < z^n\\overline{z^n} < 10^{-2}$가 되는 $n$의 개수를 $b$라 할 때, $a-b$의 값을 구하시오. (단, $a, b$는 자연수이다.) [5.2점]",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","나머지정리","인수정리","인수분해","연립방정식","대입","조건해석"],
     "wide": false,
     "content": "[서답형(서술형)1] 다항식 $f(x)$는 $(x-1)$을 인수로 가지고, $f(x)$를 $(x-3)$으로 나누었을 때 나머지가 2이다. $f(x)$를 $(x-1)(x-3)$으로 나누었을 때, 나머지 $R(x)$를 구하는 과정을 풀이과정과 함께 서술하시오. [4점]",
     "choices": [],
@@ -486,7 +486,7 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","이차방정식","이차함수","최대최소","함수","표해석"],
     "wide": false,
     "content": "[서답형(서술형)2] 구조 로봇이 $2\\text{m}$ 높이의 바위 위에서 점프하여 바다로 뛰어내린 지 $t$초 후의 수면으로부터의 높이 $h\\text{m}$는 $$h(t)=-5t^2+4t+2$$와 같이 나타낼 수 있다고 한다. 다음 물음에 답하시오. (단, 로봇의 길이는 생각하지 않는다.) [총 5점]<br><br>(1) 점프한 지 몇 초 후에 수면에 닿는지 구하는 과정을 풀이과정과 함께 서술하시오. [1점]<br>(2) 점프한 지 1초 이내에 이 로봇의 수면으로부터의 최대 높이를 구하는 과정을 풀이과정과 함께 서술하시오. [2점]<br>(3) 점프한 지 1초 이내에 이 로봇의 수면으로부터의 최소 높이를 구하는 과정을 풀이과정과 함께 서술하시오. [2점]",
     "choices": [],
@@ -504,7 +504,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","유리수","다항식","인수정리","인수분해","계수비교"],
     "wide": false,
     "content": "[서답형(서술형)3] 삼차다항식 $f(x)=x^{3}-2x+4$에 대하여 다음 물음에 답하시오. [총 5점]<br><br>(1) 다항식 $f(x)$를 인수분해하는 과정을 풀이과정과 함께 서술하시오. (단, 특별한 언급이 없는 경우에는 계수가 유리수인 범위에서 인수분해한다.) [2점]<br>(2) 삼차방정식 $f(x)=0$을 푸는 과정을 풀이과정과 함께 서술하시오. [2점]<br>(3) 다항식 $f(x)$를 복소수 범위에서 인수분해하는 과정을 풀이과정과 함께 서술하시오. [1점]",
     "choices": [],
@@ -522,7 +522,7 @@ window.questionBank = [
     "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","인수분해","이차방정식","판별식","연립방정식","도형","원","개수세기"],
     "wide": false,
     "content": "[서답형(서술형)4] 연립방정식 $\\begin{cases} x^2+3y^2-4xy-6y+2x=0 \\\\ 3x^2+2xy+3y^2-4k^2=0 \\end{cases}$을 만족하는 두 실수 $x, y$에 대해 정확히 세 쌍의 해를 갖도록 하는 $k$의 값을 구하는 과정을 풀이과정과 함께 서술하시오. (단, $k$는 양의 실수이다.) [6점]",
     "choices": [],

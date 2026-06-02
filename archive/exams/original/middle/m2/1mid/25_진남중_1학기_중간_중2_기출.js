@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","지수","유한소수","조건해석","계산"],
     wide: false,
     content: "분수 $\\frac{3}{2^{3}\\times5}$을 유한소수로 나타내는 과정이다. 다음 빈칸을 채워 $A+B\\times C$의 값을 구하면? [4점]\\n<div class=\"question-table-wrap\">\\n  <table>\\n    <tr>\\n      <td>$\\frac{3}{2^{3}\\times5}=\\frac{A}{2^{3}\\times5^{3}}=\\frac{A}{B}=C$</td>\\n    </tr>\\n  </table>\\n</div>",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","조건해석","계산"],
     wide: false,
     content: "다음 분수 중에서 순환소수로만 나타낼 수 있는 것은? [3점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","순환소수","표해석","참거짓","조건해석","개념"],
     wide: false,
     content: "두 수의 대소관계를 바르게 나타낸 것은? [3점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산"],
     wide: false,
     content: "분수 $\\frac{38}{11}$을 소수로 나타내었을 때, 소수점 아래 34번째 자리의 숫자와 35번째 자리의 숫자의 곱은? [4점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","지수","순환소수","자연수조건","조건해석","계산"],
     wide: false,
     content: "두 순환소수 $0.\\dot{a}\\dot{b}$와 $0.\\dot{b}\\dot{a}$의 합이 $0.\\dot{5}$일 때, $0.\\dot{a}-0.\\dot{b}$의 값을 순환소수로 나타낸 것은? (단, $a, b$는 한 자리의 자연수이고 $a$와 $b$는 소수(prime number)이며, $a \\gt b$이다.) [5점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","도형","원","참거짓","오류판별","조건해석","개념"],
     wide: false,
     content: "어떤 기약분수를 소수로 나타내는데, 선재는 분모를 잘못 보아 $0.58\\dot{3}$으로 나타내고, 우석이는 분자를 잘못 보아 $0.\\dot{5}\\dot{4}$로 나타내었다. 처음 기약분수를 소수로 바르게 나타낸 것은? [4점]",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","참거짓","오류판별","조건해석"],
     wide: false,
     content: "다음 중 옳은 것만을 있는 대로 고른 것은? [4점]\\n<div class=\"question-table-wrap\">\\n  <table>\\n    <tr>\\n      <td>\\n        ㄴ. 순환소수는 분수로 나타낼 수 있다.\\n        ㅂ. 모든 순환소수는 유리수이다.\\n        ㅇ. 유리수를 소수로 나타내면 유한소수가 아니면 반드시 순환소수이다.\\n        ㅈ. 어떤 분수의 분모를 소인수분해 하였을 때 2나 5 외의 다른 소인수가 있으면 유한소수가 아니다.\\n      </td>\\n    </tr>\\n  </table>\\n</div>",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","지수","조건해석","계산","하난도"],
     wide: false,
     content: "$(3^{5})^{4} \\div (3^{\\Box})^{3} = 3^{14}$일 때, $\\Box$ 안에 알맞은 수는? [3점]",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","지수","대입","조건해석","계산"],
     wide: false,
     content: "$a=3^{x-1}$일 때, $9^x$을 $a$에 관한 식으로 나타내면? [4점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","공통인수","지수","자연수조건","조건해석","계산"],
     wide: false,
     content: "$3^{n+2} + 3^{n+1} + 3^{n} = 351$일 때, 자연수 $n$의 값은? [5점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","지수","조건해석","계산","하난도"],
     wide: false,
     content: "$(x^{4}y)^{3} \\times (x^{2}y^{5})^{2} = x^{a}y^{b}$일 때, $a+b$의 값은? [4점]",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","최대최소","지수","자연수조건","조건해석","계산","상급"],
     wide: false,
     content: "네 자연수 $a, b, c, d$에 대하여 $(x^{a}y^{b}z^{c})^{d} = x^{32}y^{24}z^{40}$이 성립할 때, $a+b+c$의 최솟값은? [5점]",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","지수","조건해석","계산"],
     wide: false,
     content: "$(2xy^{2})^{3} \\times (-x^{2}y)^{2} \\times \\frac{7y^{4}}{4x^{3}}$을 계산하면? [4점]",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","도형","사각형","넓이","부피","조건해석","계산"],
     wide: false,
     content: "밑면은 한 변이 $2a^2 b$인 정사각형이고 부피가 $8a^5 b^3$인 직육면체의 높이는? [4점]",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","지수","자연수조건","참거짓","조건해석","계산"],
     wide: false,
     content: "$2^{13} \\times 5^{15}$이 $n$자리 자연수일 때, $n$의 값은? [4점]",
     choices: [
@@ -372,7 +372,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","도형","원","참거짓","조건해석","계산"],
     wide: false,
     content: "$2x+y+1$에 어떤 식 $A$를 더해야 할 것을 잘못하여 빼었더니 $5x-2y-3$이 되었다. 바르게 계산한 답은? [4점]",
     choices: [
@@ -396,7 +396,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산"],
     wide: false,
     content: "$(4x^{2}-2x^{3}) \\div \\frac{1}{2}x + (\\frac{2}{3}x^{3}-\\frac{8}{3}x^{4}) \\div (-\\frac{2}{3}x^{2})$을 계산하였을 때, $x^2$의 계수는 $a$, $x$의 계수는 $b$이다. 이때 $b-a$의 값은? [4점]",
     choices: [
@@ -420,7 +420,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","일차부등식","참거짓","대입","조건해석","개념"],
     wide: false,
     content: "다음 부등식 중에서 $x=1$을 해로 갖는 것은? [3점]",
     choices: [
@@ -444,7 +444,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","부등식","일차부등식","조건해석","개념"],
     wide: false,
     content: "$a-1 \\le b-1$일 때, $\\Box$ 안에 들어갈 부등호의 방향이 나머지 넷과 다른 하나는? [4점]",
     choices: [
@@ -468,7 +468,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","최대최소","부등식","일차부등식","범위","조건해석","계산","상급"],
     wide: false,
     content: "$-11 \\le x \\le 3$일 때, $\\frac{1}{3} + ax$의 최댓값이 4, 최솟값이 $b$이다. $a \\lt 0$일 때, 상수 $a, b$에 대하여 $a-b$의 값은? [5점]",
     choices: [
@@ -492,7 +492,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["서술형","유리수","순환소수","자연수조건","조건해석","계산"],
     wide: false,
     content: "[서술형 1번] 순환소수 $2.9\\dot{3}$에 자연수 $A$를 곱하면 자연수가 된다. 다음 물음에 답하시오. [7점]\\n(1) 순환소수를 $x$로 놓고 기약분수로 나타내는 과정을 서술하시오. [4점]\\n(2) $A$의 값 중 가장 작은 세 자리의 자연수를 구하시오. [3점]",
     choices: [],
@@ -510,7 +510,7 @@ window.questionBank = [
     standardUnitOrder: 1,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["서술형","계수비교","지수","조건해석","계산"],
     wide: false,
     content: "[서술형 2번] $(\\frac{3x^{2}}{y^{a}})^{b} = \\frac{9x^{c}}{y^{6}}$일 때, 상수 $a, b, c$에 대하여 $a+b-c$의 값을 구하는 과정을 서술하시오. [6점]",
     choices: [],
@@ -528,7 +528,7 @@ window.questionBank = [
     standardUnitOrder: 2,
     questionType: "서술형",
     layoutTag: "subjective-2up",
-    tags: [],
+    "tags": ["서술형","부등식","일차부등식","범위","조건해석","계산"],
     wide: false,
     content: "[서술형 3번] $-1 \\le x \\le 3$일 때, $a \\le 5 - \\frac{1}{2}x \\le b$이다. 이때 $4ab$의 값을 구하는 과정을 서술하시오. [7점]",
     choices: [],

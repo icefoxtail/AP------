@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산","개념"],
     "wide": false,
     "content": "다음 중에서 유리수의 개수를 $a$, 순환소수의 개수를 $b$라 할 때, $a+b$의 값을 구하면? (3점)",
     "choices": [
@@ -35,7 +35,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","참거짓","오류판별","계산"],
     "wide": false,
     "content": "다음 중에서 순환소수를 간단히 나타낸 것으로 옳지 않은 것을 고르면? (3점)",
     "choices": [
@@ -59,7 +59,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","개수세기","참거짓","개념"],
     "wide": false,
     "content": "다음 중에서 옳은 것은 모두 몇 개인가?",
     "choices": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","유한소수","계산"],
     "wide": false,
     "content": "다음 중 분수를 유한소수로 잘못 나타낸 것을 고르면?",
     "choices": [
@@ -107,7 +107,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","유한소수","자연수조건","오류판별","조건해석","계산"],
     "wide": false,
     "content": "정수가 아닌 유리수 $\\frac{n}{28}, \\frac{n}{45}$을 모두 유한소수로 나타낼 수 있을 때, $n$의 값이 될 수 있는 자연수 중에서 300에 가장 가까운 수를 구하면?",
     "choices": [
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","오류판별","조건해석","계산"],
     "wide": false,
     "content": "다음은 순환소수 $0.1\\dot{2}\\dot{7}$을 분수로 나타내는 과정이다. 위의 (가), (나)에 알맞은 수를 각각 $a, b$라 할 때, $\\frac{b}{a}+p+q$의 값을 구하면? ($x$는 기약분수 $\\frac{q}{p}$)",
     "choices": [
@@ -155,7 +155,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","참거짓","개념"],
     "wide": false,
     "content": "다음 순환소수를 분수로 옳게 나타낸 것을 고르면?",
     "choices": [
@@ -179,7 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산"],
     "wide": false,
     "content": "$\\frac{3}{41}$을 소수로 나타내었을 때, 소수점 아래 $n$번째 자리의 수를 $f(n)$이라고 하자. 이때 $f(1)+f(3)+f(5)+\\dots+f(2025)$의 값을 구하면? (5점)",
     "choices": [
@@ -203,7 +203,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","참거짓","계산","조건해석"],
     "wide": false,
     "content": "다음은 세 학생이 주어진 식을 지수법칙을 이용하여 간단히 나타낸 것이다. 바르게 푼 학생을 모두 고른 것을 고르면? (3점)",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","조건해석","계산","기출"],
     "wide": false,
     "content": "용량이 $512\\text{KiB}$인 동영상 160편의 전체 용량은 몇 $\\text{GiB}$인지 구하면?",
     "choices": [
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","자연수조건","참거짓","응용","개념"],
     "wide": false,
     "content": "다음 중에서 옳은 것을 모두 고른 것을 고르면? (단, $a \\n eq 0, b \\n eq 0$이고, $m, n$은 자연수)",
     "choices": [
@@ -275,7 +275,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","참거짓","오류판별","계산","조건해석"],
     "wide": false,
     "content": "다음 중에서 옳지 않은 것을 고르면? (5점)",
     "choices": [
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","자연수조건","조건해석","계산","기출"],
     "wide": false,
     "content": "$2^{100} \\times 5^{96}$은 $n$자리 자연수이고 각 자리 숫자의 합은 $a$이다. 이때 $a+n$의 값을 구하면?",
     "choices": [
@@ -323,7 +323,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","도형","원","넓이","부피","조건해석","계산"],
     "wide": false,
     "content": "다음 그림과 같이 높이가 $5x$ 이고 부피가 $15\\pi x^2y^2$ 인 원뿔의 밑넓이를 구하면?",
     "choices": [
@@ -347,7 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","표해석","범위","참거짓","개념"],
     "wide": false,
     "content": "다음은 차 중량 제한을 나타내는 표지판이다. 이를 부등식으로 옳게 나타낸 것을 고르면? (3점)",
     "choices": [
@@ -371,7 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","정수조건","조건해석","계산"],
     "wide": false,
     "content": "$x$의 값이 $-2, -1, 0, 1$일 때, 부등식 $-3x+1 \\ge 4(x+1)$의 해를 모두 더한 값을 구하면?",
     "choices": [
@@ -395,7 +395,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","참거짓","오류판별","조건해석","개념"],
     "wide": false,
     "content": "$a \\ge b$일 때, 다음 중 옳지 않은 것을 고르면?",
     "choices": [
@@ -419,7 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","도형","원","범위","개수세기","조건해석","계산"],
     "wide": false,
     "content": "A마트에서 한 개에 1000원인 쭈쭈바가 B마트에서는 한 개에 500원이라고 한다. 그런데 B마트에 다녀오려면 왕복 교통비가 3000원이 들 때, 쭈쭈바를 몇 개 이상 살 경우 B마트에서 사는 것이 더 유리한지 구하면?",
     "choices": [
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","유리수","순환소수","자연수조건","개수세기","조건해석","계산"],
     "wide": false,
     "content": "다음 조건을 만족시키는 $x$의 개수를 구하여라.(5점)\\n(가) $x$는 2의 배수이고 두 자리 자연수이다.\\n(나) 분수 $\\frac{x}{600}$는 순환소수로 나타낼 수 있다.",
     "choices": [],
@@ -461,7 +461,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","범위","참거짓","조건해석","계산","개념"],
     "wide": false,
     "content": "$x$의 값이 $-2, -1, 0, 1, 2$일 때, $x-1-n < -1$을 참이 되게 하는 $x$의 값이 3개다. 상수 $n$의 값의 범위를 구하여라.(5점)",
     "choices": [],
@@ -479,7 +479,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","유리수","순환소수","자연수조건","조건해석","식세우기","계산","응용"],
     "wide": false,
     "content": "어떤 자연수 $x$에 $0.\\dot{6}$을 곱해야 할 것을 잘못하여 $0.6$을 곱하였더니 정답과 오답의 차가 3이 되었다. 어떤 자연수 $x$를 구하여라.(7점)\\n(방정식 세우기 3점, 방정식 풀이 과정 3점, 답쓰기 1점)",
     "choices": [],
@@ -497,7 +497,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","참거짓","조건해석","식세우기","계산"],
     "wide": false,
     "content": "어떤 식 $A$에 $3x^2-2x-1$을 빼야 할 것을 잘못하여 더했더니 $-x^2+5$가 되었다. 옳게 계산한 식을 구하여라.(7점)\\n(주어진 조건에 맞는 식 세우기 2점, 어떤 식 $A$ 구하는 과정 3점, 옳게 계산한 식 구하는 과정 2점)",
     "choices": [],
@@ -515,7 +515,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","부등식","일차부등식","표해석","수직선","참거짓","조건해석","계산"],
     "wide": false,
     "content": "일차부등식 $x+1 \\ge -2x-5$를 풀고, 그 해를 수직선 위에 나타내어라.(6점)\\n(부등식 해 구하는 과정 3점, 해를 수직선 위에 바르게 나타내기 3점)",
     "choices": [],

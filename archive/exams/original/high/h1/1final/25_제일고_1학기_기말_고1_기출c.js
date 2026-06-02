@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","정수조건","범위","개수세기","조건해석","계산"],
     wide: false,
     content: "연립부등식 $2x-5 \\lt 6(x+1)+1 \\le 2x+11$을 만족시키는 정수 $x$의 개수는? [4.0점]",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","일차부등식","정수조건","범위","조건해석","계산"],
     wide: false,
     content: "연립부등식 $\\begin{cases} 2x+1 \\gt 7 \\\\ x^2-8x+12 \\le 0 \\end{cases}$을 만족시키는 정수 $x$의 값의 합은? [4.1점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","이차함수","최대최소","부등식","함수","그래프"],
     wide: false,
     content: "이차부등식 $-2x^2+4x-a \\gt 0$이 해를 갖도록 하는 정수 $a$의 최댓값은? [4.2점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","부등식","수직선","자연수조건","범위","조건해석","계산"],
     wide: false,
     content: "연립부등식 $\\begin{cases} x^2-6x+8 \\le 0 \\\\ x^2-7ax+10a^2 \\gt 0 \\end{cases}$이 해를 갖지 않도록 하는 자연수 $a$의 값은? [4.3점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","부등식","범위","조건해석","계산"],
     wide: false,
     content: "부등식 $|2x-1|-|x+1| \\gt 4$의 해가 $x \\lt a$ 또는 $x \\gt b$라 할 때, $a+b$의 값은? [4.5점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","판별식","이차함수","함수","그래프","범위"],
     wide: false,
     content: "$x$에 대한 이차방정식 $x^2+2ax+a^2-1=0$의 두 근 $\\alpha, \\beta$에 대하여 $\\alpha \\lt -1 \\lt \\beta \\lt 2$를 만족시키는 상수 $a$의 값의 범위는? [4.6점]",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","부등식","범위","조건해석","계산"],
     wide: false,
     content: "부등식 $|2x-|x|| \\le 3$의 해가 $a \\le x \\le b$라 할 때, $a+b$의 값은? [4.7점]",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","인수분해","판별식","수열","부등식","자연수조건","개수세기"],
     wide: false,
     content: "방정식 $x^3=1$의 한 허근을 $\\omega$라 하자. 자연수 $n$에 대하여 $f(n)$을 $f(n)=\\dfrac{1}{\\omega}+\\dfrac{1}{\\omega^2}+\\dfrac{1}{\\omega^3}+\\cdots+\\dfrac{1}{\\omega^n}$로 정의할 때, &lt;보기&gt; 중 옳은 것만을 있는대로 고른 것은? [4.8점]\\n<br>\\n&lt;보 기&gt;\\n<br>\\nㄱ. $f(5)=-1$\\n<br>\\nㄴ. 자연수 $k$에 대하여 $f(6k)=0$이다.\\n<br>\\nㄷ. $f(n)^2-f(n)=0$을 만족시키는 두 자리 자연수 $n$의 개수는 30이다.",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","절댓값","계수비교","이차방정식","판별식"],
     wide: false,
     content: "$x$에 대한 사차방정식 $x^4-8x^2+k=0$의 네 근 중 어느 두 근의 합은 2가 된다고 한다. 가장 큰 근과 가장 작은 근의 차가 $a+2\\sqrt{b}$일 때, 두 유리수 $a, b$에 대하여 $a+b$의 값은? (단, $k$는 실수) [4.8점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","개수세기","참거짓","조건해석","계산","개념"],
     wide: false,
     content: "행렬 $A$는 $3 \\times 2$행렬, 행렬 $B$는 $2 \\times 3$행렬, 행렬 $C$는 $2 \\times 2$행렬이다. 행렬의 곱셈이 가능하고, 결과가 $3 \\times 3$행렬이 되는 것은? [4.0점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","최대최소","경우의수","자연수조건","범위","개수세기","조건해석","계산"],
     wide: false,
     content: "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 합이 5의 배수가 되는 경우의 수는? [4.1점]",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","연립방정식","대입","조건해석","계산"],
     wide: false,
     content: "다음 등식을 만족시키는 상수 $a, b, c, d$에 대하여 $a+b+c+d$의 값은? [4.3점]\\n<br>\\n$\\begin{pmatrix} a+b & c-2d \\\\ 3a+2b & c+d \\end{pmatrix} = \\begin{pmatrix} 1 & 3 \\\\ 0 & 0 \\end{pmatrix}$",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","참거짓","대입","조건해석","계산","개념"],
     wide: false,
     content: "두 행렬 $A=\\begin{pmatrix} 2 & 1 \\\\ 3 & 2 \\end{pmatrix}, B=\\begin{pmatrix} 1 & 3 \\\\ 1 & 2 \\end{pmatrix}$에 대하여 등식 $3X-2A = X+4B$를 만족시키는 행렬 $X$는? [4.4점]",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","참거짓","조건해석","개념"],
     wide: false,
     content: "이차정사각행렬에 대하여 다음 중 항상 옳은 것은? [4.5점]",
     choices: [
@@ -373,7 +373,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","경우의수","순열","조합","여사건","조건해석","계산"],
     wide: false,
     content: "남학생 3명, 여학생 3명을 일렬로 세울 때, 적어도 한 쪽 끝에 남학생이 오도록 세우는 경우의 수는? [4.6점]",
     choices: [
@@ -422,7 +422,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","분모유리화","나머지정리","경우의수","순열","조합","조건해석","계산"],
     wide: false,
     content: "크기가 서로 다른 10켤레의 신발 20짝 중에서 6짝을 택할 때, 두 켤레만 짝이 맞도록 하는 경우의 수는? [4.8점]",
     choices: [

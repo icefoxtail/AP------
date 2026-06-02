@@ -63,9 +63,9 @@ assert(
   analysisHtml.includes('var(--archive-green)') &&
   analysisHtml.includes('.result-btn.is-selected[data-status="wrong"]') &&
   analysisHtml.includes('var(--archive-red)') &&
-  analysisHtml.includes('.result-btn.is-selected[data-status="partial"]') &&
-  analysisHtml.includes('var(--archive-amber)'),
-  'assessment-analysis.html should keep clear O/X/△ selected states'
+  !analysisHtml.includes('.result-btn.is-selected[data-status="partial"]') &&
+  !analysisHtml.includes('data-status="partial"'),
+  'assessment-analysis.html should keep clear O/X selected states only'
 );
 
 console.log('assessment analysis style guard checks passed');

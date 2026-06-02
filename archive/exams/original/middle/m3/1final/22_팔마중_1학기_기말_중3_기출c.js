@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","일차방정식","오류판별","조건해석","계산"],
     wide: false,
     content: "다음 중 이차방정식이 아닌 것은?",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","조건해석","계산","중난도"],
     wide: false,
     content: "두 이차방정식의 공통근을 $x=A$라고 할 때, $2A-\\dfrac{6}{A}$의 값은?\\n$$x^2+7x+12=0, \\quad 2x^2-18=0$$",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","완전제곱식","계수비교","이차방정식","조건해석"],
     wide: false,
     content: "이차방정식 $4(x-p)^2=q$의 해가 $x=-1\\pm\\sqrt{3}$일 때, 두 유리수 $p$, $q$에 대하여 $p+q$의 값은?",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","계수비교","이차방정식","근과계수","지수","대입","조건해석"],
     wide: false,
     content: "이차방정식 $x^2-x+a=0$의 한 근이 $-2$일 때, 수 $a$의 값과 다른 한 근을 더한 값은?",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $x^2+4x-5=0$을 풀면?",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $2x^2+ax+b=0$의 해가 $x=-1$ 또는 $x=2$일 때, $a-b$의 값은? (단, $a$, $b$는 상수)",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","완전제곱식","전개","계수비교","이차방정식","판별식","대입","조건해석"],
     wide: false,
     content: "이차방정식 $(x-4)(x+3)=a$가 중근을 가질 때, 상수 $a$의 값과 그 중근을 각각 구하여 더한 값은?",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","계수비교","이차방정식","조건해석","계산"],
     wide: false,
     content: "이차방정식 $5x^2+4x-A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{13}}{5}$일 때, $A+B$의 값은? (단, $A$와 $B$는 유리수)",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 3,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","유리수","완전제곱식","이차방정식","판별식","자연수조건"],
     wide: false,
     content: "이차방정식 $2x^2-3x+a-4=0$의 해가 모두 유리수가 되도록 하는 자연수 $a$의 값을 모두 더하면?",
     choices: [
@@ -253,7 +253,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","계수비교","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "이차함수 중 그래프가 위로 볼록하면서 폭이 가장 넓은 것은?",
     choices: [
@@ -277,7 +277,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","도형","원","그래프","참거짓"],
     wide: false,
     content: "이차함수 $y=\\dfrac{1}{3}x^2$의 그래프에 대한 설명으로 옳은 것은?",
     choices: [
@@ -301,7 +301,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","대입","계산"],
     wide: false,
     content: "이차함수 $y=3x^2$의 그래프와 $x$축에 대칭인 그래프가 점 $(2,\\ k)$를 지날 때, $k$의 값은?",
     choices: [
@@ -325,7 +325,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차함수","함수","그래프","계산"],
     wide: false,
     content: "이차함수 중 그래프의 꼭짓점이 $x$축 위에 있는 것을 모두 고르면? (정답 2개)",
     choices: [
@@ -349,7 +349,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","계수비교","이차함수","함수","그래프","계산"],
     wide: false,
     content: "이차함수의 그래프 중에서 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있는 것은?",
     choices: [
@@ -398,7 +398,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","도형","원","그래프","표해석"],
     wide: false,
     content: "이차함수 $y=ax^2$의 그래프를 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동하였더니 이차함수 $y=-5x^2+20x-16$의 그래프와 일치하였다. $a+m+n$의 값은? (단, $a$는 수이다.)",
     choices: [
@@ -422,7 +422,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","표해석","좌표","참거짓"],
     wide: false,
     content: "이차함수 $y=x^2+6x+5$의 그래프에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개)",
     choices: [
@@ -471,7 +471,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","전개","이차함수","함수","도형","원","그래프","표해석"],
     wide: false,
     content: "이차함수 $y=-\\dfrac{1}{2}x^2+2ax+b$의 그래프의 축의 방정식은 $x=1$이고, 그래프가 $x$축과 만나는 두 점 사이의 거리가 $6$일 때, $ab$의 값은? (단, $a$, $b$는 수이다.)",
     choices: [

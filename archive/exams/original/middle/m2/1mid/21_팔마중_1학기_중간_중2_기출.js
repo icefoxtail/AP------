@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","참거짓","개념"],
     "wide": false,
     "content": "다음 중 순환마디를 옳게 나타낸 것을 고르면? [3점]",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","계산"],
     "wide": false,
     "content": "다음 순환소수를 $x$라 하고 분수로 나타낼 때 사용하는 식으로 적절하지 않은 것을 고르면? [4점]",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","참거짓","오류판별","조건해석","개념"],
     "wide": false,
     "content": "순환소수 $0.7\\dot{2}$를 분수로 나타내는 과정이다. $x = 0.7222\\dots$ 일 때, $Ax=7.222\\dots, Bx=72.222\\dots, Cx=D$ 순서에서 옳지 않은 것은? [4점]",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","유한소수","정수조건","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 옳은 것은? [4점]",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","자연수조건","범위","개수세기"],
     "wide": false,
     "content": "자연수 $1 \\le x \\le 100$ 에 대하여, $\\frac{x}{60}$은 유한소수이고 $\\frac{x}{30}$은 정수가 아닐 때 $x$의 개수는? [4점]",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","조건해석","계산","하난도"],
     "wide": false,
     "content": "다음 $\\Box$ 안에 알맞은 두 수의 합을 구하면? [4점]<br>(가) $5^4 \\times (5^3)^2 = 5^{\\Box}$ <br>(나) $3^{\\Box} \\times 9^3 = 27^4$",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","나머지정리","지수","계산","조건해석"],
     "wide": false,
     "content": "다음 $\\Box$ 안에 알맞은 수 중 나머지 넷과 다른 하나를 고르면? [4점]",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "$2^{12} \\times 5^{15}$은 $n$자리의 자연수이고, $7^{20}$의 일의 자리 숫자는 $m$일 때, $n+m$의 값은? [5점]",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계산","조건해석","중난도","기출"],
     "wide": false,
     "content": "$2x^3y^3 \\div (-2xy) \\times 3y$ 를 계산하면? [4점]",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","도형","사각형","조건해석","계산"],
     "wide": false,
     "content": "분할된 선분들로 이루어진 도형의 둘레의 길이를 $a, b$에 관한 식으로 나타내면? [4점]",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","조건해석","계산","응용"],
     "wide": false,
     "content": "$2^x = A$라고 할 때, $16^x = A^{\\Box}$이다. $\\Box$ 안에 들어갈 수를 구하면? [3점]",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","도형","원","오류판별","조건해석","계산"],
     "wide": false,
     "content": "$5a - [7a - 2b - \\{-9a + 2b - (\\Box + b)\\}] = -6a + 3b$ 일 때, $\\Box$ 안의 식은? [4점]",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","정수조건","대입","조건해석","계산"],
     "wide": false,
     "content": "$x = \\frac{4}{7}, y = \\frac{1}{5}$ 일 때, $x^2 - \\{3y + (8y^3 + 4xy) \\div 4y\\} + 3$ 의 값은? [4점]",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 부등호 방향이 옳지 않은 것을 고르면? [3점]",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","부등식","일차부등식","오류판별","계산","개념"],
     "wide": false,
     "content": "부등식 $3x - 2 \\le 5 - ax$ 가 일차부등식이 되도록 하는 상수 $a$의 값이 아닌 것은? [3점]",
     "choices": [
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","부등식","일차부등식","조건해석","계산","상급"],
     "wide": false,
     "content": "$12 - 2x \\ge a$ 의 해 중 가장 큰 수가 $7$일 때, 상수 $a$의 값은? [4점]",
     "choices": [
@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","부등식","일차부등식","자연수조건","조건해석","계산","상급"],
     "wide": false,
     "content": "부등식 $-0.2x < 0.2x - 1.2$ 를 만족하는 자연수 $x$ 중 가장 작은 값을 구하시오. [4점]",
     "choices": [
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","절댓값","부등식","일차부등식","조건해석","계산"],
     "wide": false,
     "content": "$|a| = 3$ 이고 일차부등식 $5x - 3 < a - bx$ 의 해가 $x < 1$ 일 때, $a+b$의 값은? [5점]",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","부등식","일차부등식","대입","조건해석","계산"],
     "wide": false,
     "content": "두 일차부등식의 해가 같을 때, $4(3a-9)x + 5 \\le 2x - 14$ 의 해를 구하면? [5점]",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","최대최소","부등식","일차부등식","실생활","응용","계산"],
     "wide": false,
     "content": "집에서 학교까지 $2.4km$ 거리이다. 분속 $50m$로 걷다가 분속 $200m$로 뛰어서 $15$분 이내에 도착했다면, 걸어간 거리는 최대 몇 $m$인가? [5점]",
     "choices": [
@@ -492,7 +492,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계산","조건해석","중난도","기출"],
     "wide": false,
     "content": "$\\frac{25^3+25^3+25^3+25^3+25^3}{9^2+9^2+9^2} \\times \\frac{3^5+3^5+3^5}{5^6}$ 을 간단히 계산하시오. [4점]",
     "choices": [
@@ -516,7 +516,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","도형","원","계산"],
     "wide": false,
     "content": "반지름 $a$, 높이 $3a$인 원기둥의 물을 반지름 $2a$인 원뿔에 부었을 때 가득 찼다면, 이 원뿔의 높이 $h$를 $a$에 관한 식으로 나타내시오. [6점]",
     "choices": [
@@ -540,7 +540,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","참거짓","조건해석","계산","중난도"],
     "wide": false,
     "content": "$4x^2 + 3x - 4$ 에서 어떤 식을 더해야 할 것을 잘못하여 뺐더니 $2x^2 + 8x + 3$ 이 되었다. 바르게 계산한 식을 구하시오. [5점]",
     "choices": [
@@ -564,7 +564,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","원","범위","조건해석","계산"],
     "wide": false,
     "content": "기본 회비 $10,000$원을 내면 권당 $500$원, 회비가 없으면 권당 $1,000$원인 대여점이 있다. 몇 권 이상부터 회비를 내는 것이 유리한지 구하시오. [5점]",
     "choices": [

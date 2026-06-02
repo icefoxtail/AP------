@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수조건","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 옳은 것은? (4점)",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 옳지 않은 것은? (3점)",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","계산"],
     "wide": false,
     "content": "다음 중 무리수인 것은? (4점)",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","표해석","조건해석","계산"],
     "wide": false,
     "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음에서 두 수의 대소 관계가 옳지 않은 것은? (4점)",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","범위","오류판별","계산"],
     "wide": false,
     "content": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "content": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","도형","사각형","표해석","수직선","좌표"],
     "wide": false,
     "content": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","계산"],
     "wide": false,
     "content": "$\\sqrt{(2-\\sqrt{5})^2} + \\sqrt{(3-\\sqrt{5})^2}$을 간단히 하면? (5점)",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계산","조건해석"],
     "wide": false,
     "content": "$(a-2b)(3a+2b)$를 전개하면? (3점)",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음에서 옳지 않은 것은? (4점)",
     "choices": [
@@ -309,7 +309,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","조건해석","계산","[중]난도"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -333,7 +333,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -357,7 +357,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","[중]난도"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -381,7 +381,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","[중]난도"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -405,7 +405,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","참거짓","오류판별","개념"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -429,7 +429,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","완전제곱식","계산","조건해석"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -453,7 +453,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","[중]난도"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -477,7 +477,7 @@ window.questionBank = [
     "standardUnit": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계수비교","참거짓","개념"],
     "wide": false,
     "standardUnitOrder": ""
   },
@@ -495,7 +495,7 @@ window.questionBank = [
     "standardUnitOrder": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","계산","조건해석"],
     "wide": false,
     "choices": []
   },
@@ -513,7 +513,7 @@ window.questionBank = [
     "standardUnitOrder": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","절댓값","조건해석","계산"],
     "wide": false,
     "choices": []
   },
@@ -531,7 +531,7 @@ window.questionBank = [
     "standardUnitOrder": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","다항식","조건해석","계산"],
     "wide": false,
     "choices": []
   },
@@ -549,7 +549,7 @@ window.questionBank = [
     "standardUnitOrder": "",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","인수분해","계수비교","정수조건","조건해석","계산"],
     "wide": false,
     "choices": []
   }

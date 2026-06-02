@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","부등식","범위","계산"],
     wide: false,
     content: "이차부등식 $x^2-6x+8 \\le 0$을 풀면? [3.5점]",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","분모유리화","인수분해","복소수","켤레복소수","이차방정식","대입","조건해석"],
     wide: false,
     content: "두 복소수 $\\alpha=1-2i$, $\\beta=1+2i$에 대하여 $\\alpha^2\\beta+\\beta^2\\alpha$의 값을 구하면? [3.6점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","분모유리화","나머지정리","계수비교","복소수","판별식","근과계수","부등식"],
     wide: false,
     content: "방정식 $x^3+2ax^2+bx-4=0$의 한 근이 $1+i$일 때, $a+b$의 값을 구하면? (단, $a, b$는 실수) [3.7점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","순열","조합","참거짓","조건해석","계산"],
     wide: false,
     content: "${}_{5}P_{2}+{}_{7}C_{4}$의 값을 구하면? [3.6점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","지수","경우의수","부등식","자연수조건","개수세기","조건해석"],
     wide: false,
     content: "부등식 $x+3y \\le 10$을 만족시키는 자연수 $x, y$의 순서쌍 $(x, y)$의 개수를 구하면? [3.8점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","참거짓","대입","조건해석","계산","개념"],
     wide: false,
     content: "두 행렬 $A=\\begin{pmatrix} 1 & 0 \\\\ 4 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} 2 & -1 \\\\ 4 & -2 \\end{pmatrix}$에 대하여 $X-3B=2X-A$를 만족시키는 행렬 $X$의 $(2, 1)$ 성분을 구하면? [3.8점]",
     choices: [
@@ -156,7 +156,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","인수분해","부등식","정수조건","대입","조건해석","계산"],
     wide: false,
     content: "방정식 $|2x^2+3xy-2y^2|+|x^2+2y^2-54|=0$을 만족시키는 정수 $x, y$에 대하여 $xy$의 값을 구하면? [3.9점]",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","수직선","자연수조건","범위","개수세기","조건해석","계산"],
     wide: false,
     content: "연립부등식 $\\begin{cases} x^2-6x+5>0 \\\\ 2x-a<2 \\end{cases}$를 만족시키는 자연수 $x$가 $2$개가 되도록 하는 실수 $a$의 값의 범위를 구하면? [4.1점]",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","부등식","참거짓","대입","조건해석","계산"],
     wide: false,
     content: "사차방정식 $(x^2-3x)^2+8(x^2-3x)-105=0$의 한 허근을 $\\alpha$라 할 때, $\\alpha^2-3\\alpha$의 값을 구하면? [4.0점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","부등식","대입","조건해석","계산","개념"],
     wide: false,
     content: "방정식 $x^2+2x+4=0$의 한 허근을 $\\omega$라 할 때, $\\dfrac{\\omega^4}{8}+\\dfrac{4}{\\omega}$의 값을 구하면? [4.0점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","경우의수","순열","조합","조건해석","계산"],
     wide: false,
     content: "남자 2명과 여자 3명을 일렬로 세울 때, 여자 3명이 이웃하여 서는 경우의 수를 $a$, 남자 2명이 이웃하지 않는 경우의 수를 $b$라고 할 때, 상수 $a, b$에 대하여 $b-a$의 값을 구하면? [3.9점]",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","순열","조합","표해석","자연수조건","개수세기","조건해석"],
     wide: false,
     content: "4개의 숫자 $0, 1, 2, 3$을 모두 사용하여 네 자리의 자연수를 만들어 나열 할 때, 작은 수부터 15번째 자연수를 구하면? [3.9점]",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","순열","조합","여사건","조건해석","계산"],
     wide: false,
     content: "청바지 5종류와 정장바지 6종류 중에서 서로 다른 5벌을 구매하려고 할 때, 청바지와 정장바지를 적어도 1종류씩 포함하여 구매하는 경우의 수를 구하면? [4.0점]",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","지수","참거짓","조건해석","계산"],
     wide: false,
     content: "행렬 $A=\\begin{pmatrix} 1 & a \\\\ 3 & -2 \\end{pmatrix}$가 $A^2+A+E=O$를 만족시킬 때, $A^{1004}$의 모든 성분의 합을 구하면? [4.1점]",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수정리","인수분해","계수비교","이차방정식","판별식","부등식","자연수조건"],
     wide: false,
     content: "삼차방정식 $kx^3+(5k-8)x^2+(8k-22)x+4k-14=0$이 서로 다른 세 실근을 갖도록 하는 자연수 $k$의 개수를 구하면? [4.2점]",
     choices: [
@@ -372,7 +372,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","최대최소","부등식","정수조건","범위","개수세기","조건해석"],
     wide: false,
     content: "연립부등식 $\\begin{cases} x^2-x-2>0 \\\\ 3x^2-2(2a-2)x+a^2-4<0 \\end{cases}$을 만족시키는 정수 $x$의 개수가 $1$이 되도록 하는 실수 $a$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하면? [4.3점]",
     choices: [
@@ -396,7 +396,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","경우의수","순열","조합","조건해석","계산"],
     wide: false,
     content: "서로 다른 흰 구슬 3개와 같은 종류의 검은 구슬 3개가 있다. 6개의 구슬을 일렬로 나열할 때, 검은 구슬 중 2개는 서로 이웃하고, 나머지 1개는 어느 검은 구슬과도 이웃하지 않도록 나열하는 경우의 수를 구하면? [4.5점]",
     choices: [
@@ -420,7 +420,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","경우의수","순열","조합","여사건","범위","개수세기","조건해석"],
     wide: false,
     content: "어느 학교 축제에서 수학·과학 탐구반 동아리 학생들이 서로 다른 4개의 수학 체험과 서로 다른 2개의 과학 체험을 준비하였다. 두 학생 A와 B가 이 6개의 체험 중에서 다음 조건을 만족시키도록 체험을 선택하는 경우의 수를 구하면? [4.3점]\n\n(가) A와 B는 각각 1개 이상의 수학 체험과 1개 이상의 과학 체험을 포함한 서로 다른 3개의 체험을 선택한다.\n(나) A는 선택하고 B는 선택하지 않은 체험의 개수는 적어도 1이다.",
     choices: [
@@ -444,7 +444,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","참거짓","조건해석","계산","개념"],
     wide: false,
     content: "다음 조건을 만족시키는 이차정사각행렬 $A$에 대하여 $A+A^2 = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$일 때, $a+b+c+d$의 값을 구하면? (단, $E$는 단위행렬이다.) [4.5점]\n\n<조건>\n(가) $A^2=3A-6E$\n(나) $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$",
     choices: [
@@ -468,7 +468,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","대입","조건해석","계산","중난도"],
     wide: false,
     content: "두 이차정사각행렬 $A, B$가 $AB+BA=\\begin{pmatrix} 2 & 1 \\\\ -1 & 0 \\end{pmatrix}$을 만족시킨다. $B=\\begin{pmatrix} 3 & 2 \\\\ 0 & 1 \\end{pmatrix}$일 때, $AB^2-B^2A$의 모든 성분의 합을 구하면? [4.3점]",
     choices: [

@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수조건","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 옳은 것은? (4점)",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 옳지 않은 것은? (3점)",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","계산"],
     "wide": false,
     "content": "다음 중 무리수인 것은? (4점)",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","표해석","조건해석","계산"],
     "wide": false,
     "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음에서 두 수의 대소 관계가 옳지 않은 것은? (4점)",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","범위","오류판별","계산"],
     "wide": false,
     "content": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","자연수조건","조건해석","계산"],
     "wide": false,
     "content": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "content": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","도형","사각형","표해석","수직선","좌표"],
     "wide": false,
     "content": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","계산"],
     "wide": false,
     "content": "$\\sqrt{(2-\\sqrt{5})^2} + \\sqrt{(3-\\sqrt{5})^2}$을 간단히 하면? (5점)",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계산","조건해석"],
     "wide": false,
     "content": "$(a-2b)(3a+2 b)$를 전개하면? (3점)",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음에서 옳지 않은 것은? (4점)",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","조건해석","계산","[중]난도"],
     "wide": false,
     "content": "$(x+a)(x-b)=x^{2}+x-2$일 때, $a-b+ab$의 값은? (단, $a, b$는 상수) (4점)",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "$(2x-3y)(-3x+7y)+(-2x+3y)^{2}$ 전개한 식에서 $xy$의 계수를 구하면? (4점)",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","[중]난도"],
     "wide": false,
     "content": "인수분해 공식을 이용하여 $\\frac{1001\\times 1002-1002}{1001^{2}-1}$를 계산하면? (4점)",
     "choices": [
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","[중]난도"],
     "wide": false,
     "content": "이차식 $6x^{2}-13x-5$를 인수분해 하였을 때, 인수를 고르면? (4점)",
     "choices": [
@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","참거짓","오류판별","개념"],
     "wide": false,
     "content": "다음 중 인수분해 한 것이 옳지 않은 것은? (4점)",
     "choices": [
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","완전제곱식","계산","조건해석"],
     "wide": false,
     "content": "다음 식 $9a^{2}+\\Box ab+b^{2}$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계산","조건해석","[중]난도"],
     "wide": false,
     "content": "$(x-1)^{2}-(2x-3)$을 인수분해하면? (4점)",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","인수분해","계수비교","참거짓","개념"],
     "wide": false,
     "content": "$x^2$의 계수가 1인 이차식을 한승이는 $x$의 계수를 잘못 보고 $(x-3)(x+6)$으로, 수정이는 상수항을 잘못 보고 $(x-4)(x-3)$으로 인수분해 하였다. 처음 이차식을 바르게 인수분해 하면? (4점)",
     "choices": [
@@ -492,7 +492,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","계산","조건해석"],
     "wide": false,
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^{2}+\\sqrt{(-5)^{2}}$을 계산하시오. (4점)",
     "answer": "6",
@@ -510,7 +510,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","절댓값","조건해석","계산"],
     "wide": false,
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
     "answer": "$-\\frac{5}{2}a$",
@@ -528,7 +528,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","제곱근","근호","다항식","조건해석","계산"],
     "wide": false,
     "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
     "answer": "$-40\\sqrt{6}$",
@@ -546,7 +546,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","인수분해","계수비교","정수조건","조건해석","계산"],
     "wide": false,
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
     "answer": "0",

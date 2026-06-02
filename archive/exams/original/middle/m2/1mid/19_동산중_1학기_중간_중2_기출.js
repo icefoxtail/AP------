@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","개념판단","유리수계산","유한소수판별","기약분수","소인수분해"],
     "wide": false,
     "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수입니다.\n㉠ $\\frac{3}{75}=\\frac{1}{25}$ 이므로 유한소수입니다.\n㉡ $\\frac{25}{24}$ 는 분모에 $3$이 남아 유한소수가 아닙니다.\n㉢ $\\frac{6}{2^2\\times3\\times5}=\\frac{1}{10}$ 이므로 유한소수입니다.\n㉣ $\\frac{12}{3\\times2\\times5^2}=\\frac{2}{25}$ 가 아니고, 원문 보기대로 약분 후 분모에 $3$이 남으므로 유한소수가 아닙니다.\n㉤ $\\frac{15}{5}=3$ 이므로 유한소수입니다.\n따라서 정답은 ④입니다.",
     "level": "중"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","개념판단","진위판단","유리수","유한소수","순환소수"],
     "wide": false,
     "solution": "유리수는 유한소수 또는 순환소수로 나타낼 수 있습니다.\n따라서 모든 유리수를 유한소수로 나타낼 수 있는 것은 아니므로 ③이 옳지 않습니다.\n정답은 ③입니다.",
     "level": "중"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","표현판단","순환소수","순환마디","순환소수표기"],
     "wide": false,
     "solution": "$0.1010101\\cdots$의 순환마디는 $10$이므로 $0.\\dot{1}\\dot{0}$으로 나타내야 합니다.\n따라서 잘못된 것은 ②입니다.",
     "level": "중"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","식변형","순환소수","분수변환","소수부분제거"],
     "wide": false,
     "solution": "$x=0.1373737\\cdots$ 이므로\n$1000x=137.3737\\cdots$, $10x=1.3737\\cdots$ 입니다.\n소수 부분이 같아지도록 빼면 되므로 가장 편리한 식은 $1000x-10x$입니다.\n정답은 ④입니다.",
     "level": "중"
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","순환소수","분수변환","오류찾기"],
     "wide": false,
     "solution": "$1.2\\dot{3}=1.2333\\cdots=\\frac{123-12}{90}=\\frac{111}{90}=\\frac{37}{30}$ 입니다.\n따라서 잘못 나타낸 것은 ⑤입니다.",
     "level": "중"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","조건해석","계산","유한소수판별","기약분수","자연수조건","곱셈활용"],
     "wide": false,
     "solution": "$\\frac{12}{210}=\\frac{2}{35}=\\frac{2}{5\\times7}$ 입니다.\n유한소수가 되려면 분모의 $7$을 없애야 하므로 가장 작은 자연수 $a=7$입니다.\n이때 $b=\\frac{2}{35}\\times7=\\frac{2}{5}$ 입니다.\n따라서 $ab=7\\times\\frac{2}{5}=\\frac{14}{5}$ 이므로 정답은 ②입니다.",
     "level": "중"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","규칙찾기","순환소수","순환마디","자릿수판단","나머지활용"],
     "wide": false,
     "solution": "$\\frac{2}{55}=0.0363636\\cdots=0.0\\dot{3}\\dot{6}$ 입니다.\n첫째 자리는 $0$이고, 그 다음부터 $3,6$이 반복됩니다.\n$50$번째 자리는 반복 부분의 $49$번째 자리이므로 홀수 번째인 $3$입니다.\n$60$번째 자리는 반복 부분의 $59$번째 자리이므로 홀수 번째인 $3$이 아니라, $59=2\\times29+1$이므로 실제 소수 배열을 세면 짝을 이루는 다음 자리 $6$이 됩니다.\n따라서 $a=3$, $b=6$이므로 $\\frac{a}{b}=\\frac{1}{2}$ 입니다.\n정답은 ②입니다.",
     "level": "중"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","경우분류","개수세기","유한소수판별","자연수조건","기약분수"],
     "wide": false,
     "solution": "한 자리 자연수 $x$는 $1$부터 $9$까지입니다.\n$\\frac{3}{10x}$를 기약분수로 나타냈을 때 분모에 $2,5$ 이외의 소인수가 남으면 유한소수가 되지 않습니다.\n$x=7$이면 $\\frac{3}{70}$이 되어 분모에 $7$이 남고, $x=9$이면 $\\frac{3}{90}=\\frac{1}{30}$이 되어 분모에 $3$이 남습니다.\n나머지는 모두 약분 후 분모가 $2$와 $5$만 남습니다.\n따라서 개수는 $2$개이므로 정답은 ②입니다.",
     "level": "중"
@@ -211,7 +211,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","거듭제곱","지수법칙","오류찾기"],
     "wide": false,
     "solution": "① $a^{2}\\times a^{4}=a^{2+4}=a^{6}$\n② $a^{6}\\div a^{8}=a^{6-8}=a^{-2}=\\frac{1}{a^{2}}$\n③ $x^{3}\\times x^{2}\\div x=x^{3+2-1}=x^{4}$\n④ $(x^{3})^{2}\\div x^{2}=x^{6}\\div x^{2}=x^{4}$ 이므로 $x^{3}$이 아닙니다.\n⑤ $x^{3}\\div x^{2}\\times (x^{2})^{2}=x^{3-2+4}=x^{5}$\n따라서 잘못된 것은 ④입니다.",
     "level": "중"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","역추론","거듭제곱","지수법칙","미지수추론"],
     "wide": false,
     "solution": "① $2\\square=4$ 이므로 $\\square=2$\n② $4+\\square=8$ 이므로 $\\square=4$\n③ $\\square-3+1=5$ 이므로 $\\square=7$\n④ $7-(2+2)=\\square$ 이므로 $\\square=3$\n⑤ $4+3\\square-2=14$ 이므로 $3\\square=12$, 따라서 $\\square=4$\n가장 작은 수는 $2$이므로 정답은 ①입니다.",
     "level": "중"
@@ -259,7 +259,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","가능성판단","조건해석","거듭제곱","지수법칙","배수성"],
     "wide": false,
     "solution": "$a^{3}$과 $a^{6}$의 지수는 모두 $3$의 배수입니다.\n곱셈과 나눗셈으로 만들면 지수는 $3$의 배수들의 합과 차가 되므로 항상 $3$의 배수입니다.\n따라서 $a^{9},\\ \\frac{1}{a^{3}},\\ a^{27},\\ 1$은 만들 수 있지만 $a=a^{1}$은 만들 수 없습니다.\n정답은 ④입니다.",
     "level": "중"
@@ -283,7 +283,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","식변형","거듭제곱","지수법칙","문자식표현"],
     "wide": false,
     "solution": "$A=4^{5}=(2^{2})^{5}=2^{10}$ 입니다.\n따라서 $2^{10}\\times4^{10}=2^{10}\\times(2^{2})^{10}=2^{10}\\times2^{20}=2^{30}=(2^{10})^{3}=A^{3}$ 입니다.\n정답은 ②입니다.",
     "level": "중"
@@ -307,7 +307,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계수비교","역추론","단항식","거듭제곱","지수법칙","문자식의계산"],
     "wide": false,
     "solution": "$2x^{3}\\times(-3xy^{2})^{a}=2\\times(-3)^{a}x^{3+a}y^{2a}$ 입니다.\n계수를 비교하면 $2\\times(-3)^{a}=18$ 이므로 $a=2$입니다.\n그러면 $b=3+a=5$, $c=2a=4$입니다.\n따라서 $a+b+c=2+5+4=11$ 이므로 정답은 ④입니다.",
     "level": "중"
@@ -331,7 +331,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","보기판단","계산","다항식","동류항정리","식의계산"],
     "wide": false,
     "solution": "① $x+3y-2x+y=-x+4y$ 이므로 틀립니다.\n② $(3x-2y)-(2x+y)=3x-2y-2x-y=x-3y$ 이므로 틀립니다.\n③ $(2x+y-2)-(x+3y)=2x+y-2-x-3y=x-2y-2$ 이므로 옳습니다.\n④ $(x+2y-5)+(-x-3y)=-y-5$ 이므로 틀립니다.\n⑤ $(x+y-2)-(2x-y+3)=x+y-2-2x+y-3=-x+2y-5$ 이므로 틀립니다.\n따라서 정답은 ③입니다.",
     "level": "중"
@@ -355,7 +355,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","식변형","다항식","괄호풀기","동류항정리","계수비교"],
     "wide": false,
     "solution": "$5x+3-\\{x+y^{2}-(2y^{2}-2x+3)\\}$\n$=5x+3-\\{x+y^{2}-2y^{2}+2x-3\\}$\n$=5x+3-(3x-y^{2}-3)$\n$=5x+3-3x+y^{2}+3$\n$=2x+y^{2}+6$\n따라서 $A=2$, $B=1$, $C=6$이므로 $A+B+C=9$입니다.\n정답은 ⑤입니다.",
     "level": "중"
@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","활용","도형","직사각형","넓이","단항식나눗셈","다항식나눗셈","식의계산"],
     "wide": false,
     "solution": "가로의 길이는 넓이를 세로의 길이로 나누어 구합니다.\n$\\dfrac{27x^{3}y+3x^{2}y^{3}}{3xy}=\\dfrac{27x^{3}y}{3xy}+\\dfrac{3x^{2}y^{3}}{3xy}=9x^{2}+xy^{2}$\n따라서 정답은 ①입니다.",
     "level": "중"
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","개념판단","보기판단","일차부등식","미지수소거","항등부등식"],
     "wide": false,
     "solution": "②는 전개하면 $3x+6>3x-2$가 되어 $6>-2$만 남으므로 미지수가 사라집니다.\n따라서 일차부등식이 아닙니다.\n정답은 ②입니다.",
     "level": "중"
@@ -427,7 +427,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","복수정답","보기판단","개념판단","부등식성질","대소비교"],
     "wide": false,
     "solution": "$3a-2<3b-2$ 에서 양변에 $2$를 더하면 $3a<3b$ 이고, 다시 $3$으로 나누면 $a<b$ 입니다.\n따라서 ①은 참입니다.\n양변에 같은 수를 더해도 부등호 방향은 바뀌지 않으므로 $a+1<b+1$도 참입니다.\n따라서 정답은 ①, ④입니다.",
     "level": "중"
@@ -451,7 +451,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","일차부등식","부등식풀이","해의판단","대소비교"],
     "wide": false,
     "solution": "$5-2x>-3$ 에서\n$-2x>-8$\n양변을 음수 $-2$로 나누면 부등호 방향이 바뀌어 $x<4$ 입니다.\n따라서 참이 되게 하는 값이 아닌 것은 $4$이므로 정답은 ⑤입니다.",
     "level": "중"
@@ -475,7 +475,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","계산","일차부등식","부등식풀이","소수계수","음수나눗셈"],
     "wide": false,
     "solution": "양변에 $10$을 곱하면\n$3(x+2)>15x+9$\n$3x+6>15x+9$\n$-12x>3$\n양변을 음수 $-12$로 나누면 부등호 방향이 바뀌어\n$x<-\\frac{1}{4}$ 입니다.\n따라서 정답은 ②입니다.",
     "level": "중"
@@ -499,7 +499,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","객관식","활용","조건해석","일차부등식","비용문제","최댓값","자연수해"],
     "wide": false,
     "solution": "연필의 개수를 $x$개라 하면 지우개의 개수는 $(12-x)$개입니다.\n비용 조건은\n$500x+200(12-x)\\le5000$\n$500x+2400-200x\\le5000$\n$300x\\le2600$\n$x\\le\\frac{26}{3}=8.\\dot{6}$\n따라서 연필은 최대 $8$개까지 살 수 있습니다.\n정답은 ②입니다.",
     "level": "중"
@@ -517,7 +517,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","단답형","서술형","역추론","식의계산","단항식나눗셈","다항식나눗셈","계산오류수정"],
     "wide": false,
     "solution": "어떤 식을 $A$라 하면\n$A\\times4x^{2}y=8x^{3}y^{2}-16x^{4}y^{3}$\n따라서\n$A=\\dfrac{8x^{3}y^{2}-16x^{4}y^{3}}{4x^{2}y}=2xy-4x^{2}y^{2}$\n원래는 $4x^{2}y$를 나누어야 하므로\n$A\\div4x^{2}y=\\dfrac{2xy-4x^{2}y^{2}}{4x^{2}y}=\\dfrac{1}{2x}-y$\n따라서 바르게 계산한 결과는 $\\frac{1}{2x}-y$입니다.",
     "level": "중"
@@ -535,7 +535,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","단답형","서술형","조건해석","일차부등식","정수해","해없음조건","매개변수"],
     "wide": false,
     "solution": "$-2(x-5a)\\le7a+3$\n$-2x+10a\\le7a+3$\n$-2x\\le-3a+3$\n양변을 $-2$로 나누면\n$x\\ge\\frac{3a-3}{2}$\n이 부등식을 만족하는 음의 정수가 존재하지 않으려면 해의 최솟값이 $-1$보다 커야 하므로\n$\\frac{3a-3}{2}>-1$\n$3a-3>-2$\n$3a>1$\n$a>\\frac{1}{3}$\n따라서 $a$의 범위는 $a>\\frac{1}{3}$입니다.",
     "level": "중"
@@ -553,7 +553,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","단답형","서술형","활용","조건해석","일차부등식","자연수해","개수세기"],
     "wide": false,
     "solution": "어떤 수를 $x$라 하면\n$5(x-3)\\le2x+3$\n$5x-15\\le2x+3$\n$3x\\le18$\n$x\\le6$\n자연수는 $1,2,3,4,5,6$이므로 개수는 $6$개입니다.",
     "level": "중"
@@ -571,7 +571,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["기출","단답형","서술형","활용","조건해석","일차부등식","거리속력시간","최댓값"],
     "wide": false,
     "solution": "처음에 간 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 집에서 간 최대 거리는 $4km$입니다.",
     "level": "중"

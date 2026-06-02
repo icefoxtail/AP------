@@ -20,7 +20,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수조건","참거짓","오류판별","계산"],
     "wide": false,
     "solution": "[키포인트] 제곱근의 뜻과 루트 기호의 뜻을 구분한다.\\n① $-4$는 실수인 제곱근을 가지지 않으므로 옳지 않다.\\n② $\\pm\\sqrt{5}$는 $5$의 제곱근이지 '제곱근 $5$'가 아니다.\\n③ 음수는 실수인 제곱근이 없으므로 모든 정수의 제곱근이 2개인 것은 아니다.\\n④ $\\sqrt{9}$는 $9$의 양의 제곱근이므로 $3$이다.\\n⑤ $6^2=36$ 이므로 $6$은 $36$의 양의 제곱근이다.\\n따라서 정답은 ⑤이다.",
     "level": "하"
@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","계산","개념"],
     "wide": false,
     "solution": "[키포인트] 근호의 덧셈, 곱셈, 나눗셈 성질을 정확히 적용한다.\\n① $\\sqrt{2}+\\sqrt{3}$은 서로 다른 근호이므로 합쳐지지 않는다.\\n② $\\sqrt{3}\\times\\sqrt{5}=\\sqrt{15}$ 이다.\\n③ $\\sqrt{12}=\\sqrt{4\\times 3}=2\\sqrt{3}$ 이다.\\n④ $\\sqrt{12}\\div\\sqrt{2}=\\sqrt{\\dfrac{12}{2}}=\\sqrt{6}$ 이므로 옳다.\\n⑤ $-\\sqrt{(-2)^2}=-\\sqrt{4}=-2$ 이다.\\n따라서 정답은 ④이다.",
     "level": "하"
@@ -68,7 +68,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "solution": "[키포인트] 양의 제곱근과 음의 제곱근을 각각 구분하여 구한다.\\n$\\sqrt{81}=9$ 이므로 $9$의 양의 제곱근은 $3$이다. 따라서 $a=3$이다.\\n$4$의 양의 제곱근은 $2$이므로 $b=2$이다.\\n$(-5)^2=25$ 이고 $25$의 음의 제곱근은 $-5$이므로 $c=-5$이다.\\n따라서 $a+b+c=3+2-5=0$이다.\\n정답은 ①이다.",
     "level": "중"
@@ -92,7 +92,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","계산"],
     "wide": false,
     "solution": "[키포인트] 근삿값이나 같은 수를 더하고 빼는 방법으로 대소를 비교한다.\\n① $3\\sqrt{2}\\approx 4.24$, $\\sqrt{17}\\approx 4.12$ 이므로 거짓이다.\\n② $1+\\sqrt{2}\\approx 2.41$ 이므로 거짓이다.\\n③ $\\sqrt{7}>\\sqrt{5}$ 이므로 $\\sqrt{7}-2>\\sqrt{5}-2$ 이다.\\n④ 양변에서 $\\sqrt{6}$을 빼면 $4<\\sqrt{15}$ 인데, $\\sqrt{15}\\approx 3.87$ 이므로 거짓이다.\\n⑤ 좌변은 약 $3.24$, 우변은 약 $3.47$이므로 참이다.\\n따라서 정답은 ⑤이다.",
     "level": "중"
@@ -140,7 +140,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","참거짓","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] $a,b$를 제곱하여 값을 만든다.\\n$a=\\sqrt{2}$, $b=\\sqrt{3}$ 이므로 $b^2=3$이다.\\n따라서 $ab^2=\\sqrt{2}\\times 3=3\\sqrt{2}$이다.\\n그러므로 바르게 나타낸 것은 $ab^2$이다.\\n정답은 ③이다.",
     "level": "하"
@@ -164,7 +164,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","조건해석"],
     "wide": false,
     "solution": "[키포인트] 각 항을 간단히 하여 같은 근호끼리 더한다.\\n$\\sqrt{75}=\\sqrt{25\\times 3}=5\\sqrt{3}$\\n$\\dfrac{3}{\\sqrt{3}}=\\sqrt{3}$\\n$\\sqrt{6}\\times\\sqrt{2}=\\sqrt{12}=2\\sqrt{3}$\\n따라서 $5\\sqrt{3}+\\sqrt{3}+2\\sqrt{3}=8\\sqrt{3}$이다.\\n정답은 ①이다.",
     "level": "하"
@@ -188,7 +188,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] $m,n$을 각각 구한 뒤 곱한다.\\n$\\sqrt{1000}=\\sqrt{100\\times 10}=10\\sqrt{10}$ 이므로 $m=10$이다.\\n또 $\\dfrac{\\sqrt{0.1}}{\\sqrt{10}}=\\sqrt{\\dfrac{0.1}{10}}=\\sqrt{0.01}=0.1=\\dfrac{1}{10}$ 이므로 $n=\\dfrac{1}{10}$이다.\\n따라서 $mn=10\\times\\dfrac{1}{10}=1$이다.\\n정답은 ③이다.",
     "level": "하"
@@ -212,7 +212,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","완전제곱식","자연수조건","범위","개수세기","계산"],
     "wide": false,
     "solution": "[키포인트] $50-x$가 0 이상인 완전제곱수가 되도록 한다.\\n$\\sqrt{50-x}$가 정수가 되려면 $50-x$는 0 이상인 완전제곱수여야 한다.\\n$50$보다 작거나 같은 완전제곱수는 $0,1,4,9,16,25,36,49$이다.\\n각각에 대해 $x=50-(50-x)$로 정하면 $x=50,49,46,41,34,25,14,1$이고 모두 자연수이다.\\n따라서 가능한 자연수 $x$의 개수는 8개이다.\\n정답은 ⑤이다.",
     "level": "중"
@@ -236,7 +236,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] $ab\\lt 0$과 $a\\lt b$에서 두 수의 부호를 판단한다.\\n$ab\\lt 0$ 이므로 $a,b$는 부호가 서로 다르다. 또 $a\\lt b$ 이므로 $a$는 음수, $b$는 양수이다.\\n즉 $a\\lt 0$, $b\\gt 0$이다.\\n$\\sqrt{9a^2}=3|a|=-3a$, $\\sqrt{4b^2}=2|b|=2b$이다.\\n따라서 $\\sqrt{9a^2}+\\sqrt{4b^2}=-3a+2b$이다.\\n정답은 ③이다.",
     "level": "중"
@@ -284,7 +284,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","전개","계산"],
     "wide": false,
     "solution": "[키포인트] 식을 전개한 뒤 완전제곱꼴과 비교한다.\\n$(x+4)(x+8)+k=x^2+12x+32+k$이다.\\n이 식이 완전제곱식이 되려면 $x^2+12x+32+k=(x+6)^2=x^2+12x+36$이어야 한다.\\n따라서 $32+k=36$이므로 $k=4$이다.\\n정답은 ④이다.",
     "level": "중"
@@ -308,7 +308,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","정수조건","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] 전개하여 $a+b=k$, $ab=24$의 관계를 이용한다.\\n$(x+a)(x+b)=x^2+(a+b)x+ab$이므로 $a+b=k$, $ab=24$이다.\\n$ab=24$를 만족하는 정수쌍은 $(1,24),(2,12),(3,8),(4,6),(-1,-24),(-2,-12),(-3,-8),(-4,-6)$이다.\\n따라서 가능한 $k$값은 $25,14,11,10,-25,-14,-11,-10$이다.\\n보기 중 될 수 없는 값은 $-5$이다.\\n정답은 ③이다.",
     "level": "중"
@@ -332,7 +332,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","유리수","완전제곱식","전개","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] 완전제곱 공식을 이용해 전개한다.\\n$(\\sqrt{5}+3)^2=(\\sqrt{5})^2+2\\cdot\\sqrt{5}\\cdot 3+3^2$이다.\\n$=5+6\\sqrt{5}+9=14+6\\sqrt{5}$이다.\\n따라서 $a=14$, $b=6$이므로 $a+b=20$이다.\\n정답은 ③이다.",
     "level": "중"
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","공통인수","오류판별","계산"],
     "wide": false,
     "solution": "[키포인트] 공통인수로 먼저 묶어 본다.\\n$3x^2-6xy=3x(x-2y)$이다.\\n따라서 $x$, $3x$, $x-2y$는 모두 인수이다.\\n또 $x^2-2xy=x(x-2y)$이므로 이것도 인수이다.\\n반면 $3x-2y$는 $3x(x-2y)$의 인수가 아니다.\\n따라서 인수가 아닌 것은 ⑤이다.",
     "level": "중"
@@ -380,7 +380,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","정수조건","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] 우변을 전개하여 계수를 비교한다.\\n$(x+a)(2x+b)=2x^2+(b+2a)x+ab$이다.\\n이 식이 $2x^2-x-3$와 같으므로 $ab=-3$, $b+2a=-1$이다.\\n$ab=-3$을 만족하는 정수쌍 중 $a=1$, $b=-3$이면 $b+2a=-3+2=-1$이므로 조건을 만족한다.\\n따라서 $a+b=1+(-3)=-2$이다.\\n정답은 ①이다.",
     "level": "중"
@@ -404,7 +404,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","인수분해","공통인수","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] 공통인수 $xy$를 묶는다.\\n$x^2y-xy^2=xy(x-y)$이다.\\n먼저 $xy=(\\sqrt{2}+\\sqrt{3})(\\sqrt{2}-\\sqrt{3})=2-3=-1$이다.\\n또 $x-y=(\\sqrt{2}+\\sqrt{3})-(\\sqrt{2}-\\sqrt{3})=2\\sqrt{3}$이다.\\n따라서 $xy(x-y)=(-1)(2\\sqrt{3})=-2\\sqrt{3}$이다.\\n정답은 ②이다.",
     "level": "중"
@@ -428,7 +428,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","자연수조건","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] 식을 인수분해하여 소수가 되기 위한 경우를 찾는다.\\n$n^2-10n-56=(n-14)(n+4)$이다.\\n자연수 $n$에 대하여 $n+4$는 1보다 큰 자연수이다.\\n이 값이 소수가 되려면 $n-14=1$이어야 한다.\\n따라서 $n=15$이다.\\n이때 $(n-14)(n+4)=1\\times19=19$이므로 소수는 $19$이다.\\n정답은 ⑤이다.",
     "level": "상"
@@ -452,7 +452,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","계산","응용"],
     "wide": false,
     "solution": "[키포인트] $(a-1)a(a+1)(a+2)+1$ 꼴을 이용한다.\\n$11\\times 12\\times 13\\times 14+1$에서 $12\\times 13=156$, $11\\times 14=154$이다.\\n따라서 $11\\times 12\\times 13\\times 14+1=156\\times154+1=(155+1)(155-1)+1$이다.\\n$=155^2-1+1=155^2$이므로 $\\sqrt{11\\times 12\\times 13\\times 14+1}=155$이다.\\n정답은 ⑤이다.",
     "level": "상"
@@ -476,7 +476,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산"],
     "wide": false,
     "solution": "[키포인트] $x^4-y^4=(x^2-y^2)(x^2+y^2)$를 이용한다.\\n먼저 $x^2-y^2=(x+y)(x-y)=\\sqrt{3}\\cdot\\sqrt{2}=\\sqrt{6}$이다.\\n또 $(x+y)^2=x^2+2xy+y^2=3$, $(x-y)^2=x^2-2xy+y^2=2$이다.\\n두 식을 더하면 $2(x^2+y^2)=5$이므로 $x^2+y^2=\\dfrac{5}{2}$이다.\\n따라서 $x^4-y^4=(x^2-y^2)(x^2+y^2)=\\sqrt{6}\\cdot\\dfrac{5}{2}=\\dfrac{5\\sqrt{6}}{2}$이다.\\n정답은 ③이다.",
     "level": "상"

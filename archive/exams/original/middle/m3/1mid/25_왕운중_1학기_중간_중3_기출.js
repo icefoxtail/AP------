@@ -19,7 +19,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 제곱근의 정의와 성질을 이해한다. [cite: 57, 96]\n* ① $a$의 제곱근은 $\\pm\\sqrt{a}$ 입니다.\n* ② $x$가 $3$의 제곱근이므로 $x=\\pm\\sqrt{3}$ 이고, $x$의 제곱근은 $\\pm\\sqrt{\\pm\\sqrt{3}}$ 형태가 되어 옳지 않습니다.\n* ③ $0$의 제곱근은 1개, 음수의 제곱근은 0개입니다.\n* ⑤ 제곱근 81은 $\\sqrt{81}=9$ 입니다.\n* 따라서 정답은 ④이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","개수세기","참거짓","오류판별","조건해석","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -43,7 +43,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 근호를 포함한 수의 성질을 이용하여 $a, b$를 구한다.\n* $\\sqrt{(-16)^2} = 16$. 16의 음의 제곱근 $a = -4$\n* 제곱근 81은 $\\sqrt{81}=9$. 9의 음의 제곱근 $b = -3$\n* $ab = (-4) \\times (-3) = 12$\n* 따라서 정답은 ③이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계산","개념"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -67,7 +67,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 근호 안의 수를 소인수분해하여 곱셈과 나눗셈을 수행한다.\n* $\\frac{\\sqrt{15}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{\\sqrt{12}}{7}$\n* $= \\frac{\\sqrt{3} \\times \\sqrt{5}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{2\\sqrt{3}}{7}$\n* $= \\frac{\\sqrt{3} \\times 2\\sqrt{3}}{3} = \\frac{6}{3} = 2$\n* 따라서 정답은 ①이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","인수분해","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -91,7 +91,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 무리수는 순환소수가 아닌 무한소수로 나타내어짐을 이용한다.\n* 순환소수가 아닌 무한소수는 무리수이다.\n* $\\sqrt{25}=5$ 이므로 유리수이다.\n* $\\pi^{2}$는 무리수이다.\n* $2\\sqrt{81}-3=2\\times 9-3=15$ 이므로 유리수이다.\n* $\\sqrt{3.7}$은 무리수이다.\n* $-6+\\sqrt{36}=-6+6=0$ 이므로 유리수이다.\n* $\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$ 이므로 유리수이다.\n* $\\sqrt{8.1}$은 무리수이다.\n* 따라서 무리수는 $\\pi^{2},\\ \\sqrt{3.7},\\ \\sqrt{8.1}$의 3개이다.\n* 따라서 정답은 ③이다.",
     "level": "중",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","복소수","순환소수","개수세기"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 제곱근의 성질 $\\sqrt{a \\times 10^{2n}} = 10^n\\sqrt{a}$를 이용한다.\n$\\sqrt{0.334}=\\sqrt{\\dfrac{33.4}{100}}=\\dfrac{\\sqrt{33.4}}{10}$이다. 제곱근표에서 $\\sqrt{33.4}=5.779$이므로 $\\sqrt{0.334}=0.5779$이다.\n* 따라서 정답은 ④이다.",
     "level": "중",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","표해석","계산","개념","응용"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -163,7 +163,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 합차 공식을 이용하여 $ab$의 값을 먼저 구한다.\n* $ab = (\\sqrt{3}-2)(\\sqrt{3}+2) = 3-4 = -1$\n* $a^8b^6 = (ab)^6 \\times a^2 = (-1)^6 \\times (\\sqrt{3}-2)^2 = 1 \\times (3-4\\sqrt{3}+4) = 7-4\\sqrt{3}$\n* $a^8b^6+4a+1 = (7-4\\sqrt{3}) + 4(\\sqrt{3}-2) + 1 = 7-4\\sqrt{3}+4\\sqrt{3}-8+1 = 0$\n* 따라서 정답은 ④이다.",
     "level": "상",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","조건해석","계산","응용"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -187,7 +187,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 무리수의 어림한 값을 구하여 범위를 파악한다.\n* $3+2.828\\dots = 5.828\\dots < x < 5+4.123\\dots = 9.123\\dots$\n* 자연수 $x$: $6, 7, 8, 9$ (4개)\n* 정수 부분 최대는 9입니다.\n* $4+2\\sqrt{2} = 4+\\sqrt{8} = 4+2.828\\dots = 6.828\\dots$ 이므로 범위에 포함됩니다.\n* 따라서 정답은 ⑤이다.",
     "level": "중",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","최대최소","자연수조건","범위","개수세기"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] $\\sqrt{x}$의 범위를 나누어 해당 구간의 짝수 개수를 구한다.\n* $x=20\\sim 35$: $\\sqrt{x}$는 $4.\\dots \\sim 5.\\dots$. 짝수는 $2, 4$로 2개 ($16 \\times 2 = 32$)\n* $x=36\\sim 40$: $\\sqrt{x}$는 $6 \\sim 6.\\dots$. 짝수는 $2, 4, 6$으로 3개 ($5 \\times 3 = 15$)\n* 합: $32 + 15 = 47$\n* 따라서 정답은 ④이다.",
     "level": "상",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","자연수조건","범위","개수세기","조건해석","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -259,7 +259,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] $\\sqrt{x^2} = |x|$ 성질을 이용하여 부호를 결정한다.\n* $ab < 0$ 이므로 $\\sqrt{(ab)^2} = |ab| = -ab$\n* $-ab > 0$ 이므로 $4\\sqrt{(-ab)^2} = 4|-ab| = -4ab$\n* 합: $-ab - 4ab = -5ab$\n* 따라서 정답은 ③이다.",
     "level": "중",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산","개념"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -283,7 +283,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 인수분해 공식 $(x-a)^2 = x^2-2ax+a^2$ 및 전개 공식을 확인한다.\n* ③ $(x-5)^2 = x^2-10x+25$ 이므로 $x^2-25x+10$과 일치하지 않습니다.\n* ⑤ $(x-2)(x-3) = x^2-5x+6$ 으로 옳은 식입니다. [보정 완료]\n* 따라서 정답은 ③이다.",
     "level": "중",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","참거짓","오류판별","개념"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -307,7 +307,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 다항식의 전개식에서 상수항은 각 항의 상수의 곱임을 이용한다.\n* 상수항: $-5A = 15 \\implies A = -3$\n* $x$의 계수: $5-A = 5-(-3) = 8$\n* 따라서 $A=-3$, 계수는 $8$입니다.\n* 따라서 정답은 ⑤이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","조건해석","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -331,7 +331,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 합차 공식 $a^2-b^2 = (a-b)(a+b)$를 이용하여 항을 분리하고 소거한다.\n* $(\\frac{1}{2}-1)(\\frac{1}{2}+1) \\times (\\frac{1}{3}-1)(\\frac{1}{3}+1) \\dots$\n* $= (-\\frac{1}{2})(\\frac{3}{2}) \\times (-\\frac{2}{3})(\\frac{4}{3}) \\times \\dots \\times (-\\frac{9}{10})(\\frac{11}{10})$\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\frac{1}{2} \\times \\frac{11}{10} = -\\frac{11}{20}$\n* 따라서 정답은 ②이다.",
     "level": "상",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계산","조건해석"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -355,7 +355,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 이차식 $x^2+ax+b$가 완전제곱식이 될 조건은 $b = (a/2)^2$임을 이용한다.\n* $(x+5)(x-3)-k = x^2+2x-15-k$\n* 완전제곱식이 되려면 상수항이 $(\\frac{2}{2})^2 = 1$ 이어야 함.\n* $-15-k = 1 \\implies k = -16$\n* 따라서 정답은 ②이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 곱셈 공식 $(a+b)^2 = a^2+2ab+b^2$ 및 전개 공식을 각 항에 적용한다.\n* ① 16, ② 2, ③ 2, ④ 3, ⑤ 7\n* 가장 큰 수는 16입니다.\n* 따라서 정답은 ①이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] $(x+p)(x+q) = x^2+(p+q)x+pq$ 임을 이용하여 계수를 비교한다.\n* 상수항: $-3b = 21 \\implies b = -7$\n* $x$의 계수: $-a = -3+b = -3-7 = -10 \\implies a = 10$\n* 따라서 정답은 ③이다.",
     "level": "하",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계수비교","조건해석","계산","응용"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -427,7 +427,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 근호 안을 완전제곱식으로 고친 후 절댓값 기호를 사용하여 범위를 따진다.\n* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 따라서 정답은 ③이다.",
     "level": "상",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","완전제곱식","범위","조건해석","계산"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"
@@ -475,7 +475,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] $ab$가 제곱수이고 $a, b$가 자연수인 경우를 나열하여 소수 판별을 한다.\n* 가능한 $(a, b)$ 쌍 중 $a+b$가 소수인 경우:\n* (1, 1) $\\implies$ 2, (1, 4) $\\implies$ 5, (4, 9) $\\implies$ 13\n* 소수는 2, 5, 13으로 3개입니다.\n* 따라서 정답은 ⑤이다.",
     "level": "상",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","전개","계수비교","자연수조건","범위","개수세기"],
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식"

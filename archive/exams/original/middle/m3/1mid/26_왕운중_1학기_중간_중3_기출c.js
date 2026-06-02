@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","나머지정리","조건해석","계산"],
     "wide": false,
     "content": "다음 중 나머지 넷과 값이 다른 것은? (3점)",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","전개","참거짓","조건해석","계산"],
     "wide": false,
     "content": "<보기>에서 옳은 것만을 있는 대로 고른 것은? (3점)\\n<보기>\\n$\\text{ㄱ. } \\left(\\sqrt{\\dfrac{3}{5}}\\right)^2 = \\dfrac{9}{25}$\\n$\\text{ㄴ. } \\sqrt{\\left(-\\dfrac{1}{5}\\right)^2} = \\dfrac{1}{5}$\\n$\\text{ㄷ. } -\\sqrt{(-0.3)^2} = -0.3$\\n$\\text{ㄹ. } (-\\sqrt{19})^2 = -19$",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","무리수","유리수","분모유리화","인수분해","순환소수"],
     "wide": false,
     "content": "다음 중에서 옳은 것은? (4점)",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","절댓값","참거짓","오류판별","조건해석","계산"],
     "wide": false,
     "content": "다음 중에서 옳지 않은 것은? (4점)",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","부등식","참거짓","조건해석","계산"],
     "wide": false,
     "content": "다음 중에서 두 실수의 대소 관계가 옳은 것은? (4점)",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","조건해석","계산","개념"],
     "wide": false,
     "content": "$\\sqrt{2}\\times\\sqrt{a}\\times\\sqrt{5}\\times\\sqrt{20}\\times\\sqrt{2a}=60$일 때, 양수 $a$의 값을 구하면? (4점)",
     "choices": [
@@ -183,7 +183,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","유리수","전개","최대최소","조건해석","계산"],
     "wide": false,
     "content": "$(\\sqrt{40}-2\\sqrt{6})\\div\\sqrt{2}-\\sqrt{5}(\\sqrt{15}-\\sqrt{9})=a\\sqrt{3}+b\\sqrt{5}$일 때, $a+b$의 값은? (단, $a,b$는 유리수) (4점)",
     "choices": [
@@ -207,7 +207,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","부등식","자연수조건","범위","개수세기","조건해석"],
     "wide": false,
     "content": "어떤 자연수 $x$의 양의 제곱근이 자연수 200보다 크고 자연수 202보다 작다고 한다. 이를 만족시키는 모든 $x$의 값의 개수는? (4점)",
     "choices": [
@@ -231,7 +231,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","정수부분","소수부분","부등식","표해석","자연수조건"],
     "wide": false,
     "content": "$\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 하자. <보기>의 조건을 모두 만족시키는 모든 자연수 $x$의 값의 개수는? (4점)\\n<보기>\\n(가) $N(x)=5$\\n(나) $\\sqrt{x}$의 소수부분이 0.5보다 크다.",
     "choices": [
@@ -308,7 +308,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","부등식","연립방정식","도형","삼각형","표해석"],
     "wide": false,
     "content": "$\\sqrt{3}x-y-8=0$, $\\sqrt{3}x+y-8=0$, $y$축으로 둘러싸인 삼각형 내부에 있으면서 $x$좌표, $y$좌표가 모두 정수인 점들의 개수를 구하면? (단, 만들어진 삼각형의 변 위의 점은 제외한다.) (5점)",
     "choices": [
@@ -332,7 +332,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","다항식","인수분해","곱셈공식","전개","참거짓"],
     "wide": false,
     "content": "다음 중에서 옳은 것은? (3점)",
     "choices": [
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","공통인수","오류판별","조건해석","계산"],
     "wide": false,
     "content": "다음 중에서 $4a^2b-8ab^2$의 인수가 아닌 것은? (4점)",
     "choices": [
@@ -380,7 +380,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","완전제곱식","전개","계수비교","조건해석","계산"],
     "wide": false,
     "content": "$9x^2+(m+2)xy+16y^2$이 완전제곱식이 될 때, 가능한 수 $m$의 값은? (4점)",
     "choices": [
@@ -404,7 +404,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","곱셈공식","공통인수","계산"],
     "wide": false,
     "content": "다음 중 가장 큰 값은? (4점)",
     "choices": [
@@ -428,7 +428,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","곱셈공식","완전제곱식","공통인수","전개","범위"],
     "wide": false,
     "content": "다음은 수학 동아리 학생들의 풀이이다. 올바르게 푼 학생의 수는? (4점)\\n통민: 다항식 $x^2+axy+49y^2$이 완전제곱식이 되도록 하는 실수 $a$의 값은 14뿐이다.\\n강인: $(y+2)^2$을 전개하면 $y^2+4$이다.\\n희찬: $x^2+3x+4$를 인수분해하면 $x(x+3)+4$이다.\\n인범: $6ab^2-3a^2$을 인수분해하면 $3a(2b^2-a)$이다.\\n현규: $(-2x-\\dfrac{1}{2}y)^2$을 전개하면 $4x^2+2xy+\\dfrac{1}{4}y^2$이다.",
     "choices": [
@@ -452,7 +452,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","분모유리화","다항식","인수분해","곱셈공식","조건해석"],
     "wide": false,
     "content": "$x=\\dfrac{1}{\\sqrt{10}+3}$, $y=\\dfrac{1}{\\sqrt{10}-3}$일 때, $(x-y)^2$의 값은? (4점)",
     "choices": [

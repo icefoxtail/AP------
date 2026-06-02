@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","무리수","유리수","순환소수","정수조건","오류판별","개념"],
     "wide": false,
     "content": "$\\frac{(\\text{정수})}{(\\text{0이 아닌 정수})}$의 꼴로 나타낼 수 없는 수는? (정답 2개) [4점]",
     "choices": [
@@ -36,7 +36,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","참거짓","개념"],
     "wide": false,
     "content": "순환소수의 순환마디와 표현으로 옳은 것은? [4점]",
     "choices": [
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","계산"],
     "wide": false,
     "content": "다음 분수 중 유한소수로 나타낼 수 없는 것은? [4점]",
     "choices": [
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","유한소수","개수세기","조건해석","개념"],
     "wide": false,
     "content": "다음을 만족시키는 분수 $x$의 개수는? [4점]<br>(가) 분모는 12이다. (나) $\\frac{1}{4} < \\frac{x}{12} < \\frac{1}{2}$ (다) 유한소수로 나타낼 수 없다.",
     "choices": [
@@ -108,7 +108,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","표해석","계산"],
     "wide": false,
     "content": "순환소수 $x=1.023023...$ 을 분수로 나타낼 때 가장 편리한 식은? [4점]",
     "choices": [
@@ -132,7 +132,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","정수조건","참거짓","오류판별"],
     "wide": false,
     "content": "다음 보기 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","자연수조건","참거짓","조건해석","개념"],
     "wide": false,
     "content": "$a \\n eq 0$이고 $m, n$이 자연수일 때 옳은 것은? [4점]",
     "choices": [
@@ -180,7 +180,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","지수","조건해석","계산","응용"],
     "wide": false,
     "content": "$2^5 + 2^5 = 2^a, 3^2 + 3^2 + 3^2 = 3^b$ 일 때 $ab$의 값은? [4점]",
     "choices": [
@@ -204,7 +204,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","참거짓","계산","조건해석","중난도"],
     "wide": false,
     "content": "다음 보기 중 옳은 것을 모두 고르면? [4점]<br>(가) $5x^2 \\times (-6y^3) = -30x^2y^3$ (나) $-xy \\times (-2x^2y)^3 = 8x^7y^4$ (라) $(3a^2)^2 \\div (-27a^{11}) = -\\frac{1}{3a^7}$",
     "choices": [
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","넓이","부피","조건해석","계산","응용"],
     "wide": false,
     "content": "밑면이 밑변 $3x$, 높이 $\\frac{2}{3}y$인 직각삼각형인 삼각기둥 부피가 $60x^2y$일 때 높이는? [4점]",
     "choices": [
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","조건해석","계산"],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC에서 $\\angle C$의 외각이 $115^\\circ$일 때 $\\angle A$는? [3점]",
     "choices": [
@@ -276,7 +276,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","조건해석","계산"],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC에서 $\\angle A=100^\\circ$일 때 $\\angle B$는? [3점]",
     "choices": [
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","조건해석","계산"],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}, \\overline{AD} \\perp \\overline{BC}$인 $\\triangle ABC$에서 $\\overline{BC}=16cm$일 때 $\\overline{BD}$는? [3점]",
     "choices": [
@@ -324,7 +324,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","조건해석","개념"],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}, \\angle A=38^\\circ$일 때, $\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선 교점 $D$의 각 $\\angle BDC$는? [4점]",
     "choices": [
@@ -348,7 +348,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","조건해석","계산"],
     "wide": false,
     "content": "$\\angle C=90^\\circ$인 직각삼각형 ABC에서 $\\overline{BC}=\\overline{BD}, \\overline{AB} \\perp \\overline{ED}$일 때 $x$의 값은? (단, $\\angle DBF=25^\\circ$ 기준 보정) [4점]",
     "choices": [
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","원","개념"],
     "wide": false,
     "content": "세 변의 길이가 다음과 같을 때 둔각삼각형인 것은? [3점]",
     "choices": [
@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","넓이","조건해석","계산"],
     "wide": false,
     "content": "히포크라테스의 초승달 넓이 구하기 ($BC=9, AB=15$ 일 때) [4점]",
     "choices": [
@@ -420,7 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","조건해석","계산","중난도","기출"],
     "wide": false,
     "content": "점 $I$가 $\\triangle ABC$의 내심일 때, $\\angle BIC$의 크기는? (단, $\\angle A=50^\\circ$ 기준) [4점]",
     "choices": [
@@ -444,7 +444,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","참거짓","조건해석","개념","중난도"],
     "wide": false,
     "content": "점 $O$가 $\\triangle ABC$의 외심이고 $\\triangle AOC$ 둘레가 $20, \\overline{AC}=8$일 때 반지름은? [4점]",
     "choices": [
@@ -468,7 +468,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","원","개념","조건해석"],
     "wide": false,
     "content": "내접원 $I$에서 $\\overline{BE}=10, \\overline{BD}=10$ 등 수치 적용 시 $\\overline{AC}$의 길이는? [4점]",
     "choices": [
@@ -492,7 +492,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","참거짓","조건해석","개념","상난도"],
     "wide": false,
     "content": "$O$는 $\\triangle ABC$ 외심, $I$는 $\\triangle OBC$ 내심. $\\angle BIC=150^\\circ$ 일 때 $\\angle A$는? [4점]",
     "choices": [
@@ -516,7 +516,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","유리수","순환소수","계산","조건해석"],
     "wide": false,
     "content": "수빈이는 분자를 잘못 봐서 $0.2\\dot{5}$, 준서는 분모를 잘못 봐서 $0.1\\dot{4}$로 나타냄. 처음 기약분수를 순환소수로? [5점]",
     "choices": [
@@ -540,7 +540,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","조건해석","계산","중난도","기출"],
     "wide": false,
     "content": "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24}}{8y^6}$ 일 때 $a+b$의 값은? [4점]",
     "choices": [
@@ -564,7 +564,7 @@ window.questionBank = [
     "standardUnitOrder": 999,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형","삼각형","원","넓이","조건해석","계산"],
     "wide": false,
     "content": "직각삼각형 ABC ($BC=10, CA=24$)에서 외접원 넓이 $M$, 내접원 넓이 $N$일 때 $M-N$? [10점]",
     "choices": [

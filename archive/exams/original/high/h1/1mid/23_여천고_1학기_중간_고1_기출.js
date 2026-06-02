@@ -20,7 +20,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","조건해석","계산","중난도"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnit": "방정식과 부등식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","부등식","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -68,7 +68,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","나머지정리","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -92,7 +92,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","곱셈공식","대입","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -116,7 +116,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","계수비교","계산"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -140,7 +140,7 @@ window.questionBank = [
     "standardUnit": "방정식과 부등식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","복소수","지수","부등식","조건해석","계산","개념"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -164,7 +164,7 @@ window.questionBank = [
     "standardUnit": "방정식과 부등식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","복소수","부등식","조건해석","계산","개념"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -188,7 +188,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","자연수조건","대입","계산","응용"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -212,7 +212,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","다항식","인수분해","자연수조건","계산"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -236,7 +236,7 @@ window.questionBank = [
     "standardUnit": "방정식과 부등식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차방정식","판별식","부등식","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -260,7 +260,7 @@ window.questionBank = [
     "standardUnit": "방정식과 부등식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차방정식","근과계수","부등식","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -284,7 +284,7 @@ window.questionBank = [
     "standardUnit": "방정식과 부등식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","계수비교","복소수","이차방정식","근과계수","부등식"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -308,7 +308,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","근과계수","이차함수","함수","그래프","표해석","좌표"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -332,7 +332,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","제곱근","근호","판별식","이차함수","함수","그래프","조건해석"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","이차함수","최대최소","함수","그래프","표해석","범위","조건해석"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -380,7 +380,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","판별식","이차함수","함수","그래프","자연수조건","개수세기","조건해석"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -404,7 +404,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","계수비교","이차함수","함수","그래프","대입","계산"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -428,7 +428,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","판별식","이차함수","함수","도형","그래프","표해석","좌표"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -446,7 +446,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","나머지정리","범위","조건해석","계산"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -464,7 +464,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","이차함수","함수","그래프","표해석","좌표","대입","조건해석"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -482,7 +482,7 @@ window.questionBank = [
     "standardUnit": "다항식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","다항식","인수분해","전개","도형","원","자연수조건","대입"],
     "wide": false,
     "standardUnitOrder": 1
   },
@@ -500,7 +500,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","완전제곱식","계수비교","이차함수","최대최소","함수","그래프","표해석"],
     "wide": false,
     "standardUnitOrder": 2
   },
@@ -518,7 +518,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형","이차함수","최대최소","함수","도형","사각형","넓이","자연수조건"],
     "wide": false,
     "standardUnitOrder": 2
   }

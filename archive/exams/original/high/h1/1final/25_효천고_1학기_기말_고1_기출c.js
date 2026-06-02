@@ -12,7 +12,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","이차방정식","판별식","이차함수","함수","그래프","조건해석","계산"],
     wide: false,
     content: "이차함수 $y = 2x^2 + 2kx - 3k$의 그래프가 $x$축에 접하도록 하는 실수 $k$ 값의 합은? [3.5점]",
     choices: [
@@ -36,7 +36,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","판별식","부등식","자연수조건","범위","개수세기"],
     wide: false,
     content: "$x$에 대한 삼차방정식 $3x^3 - 2mx^2 + 3x = 0$이 서로 다른 세 실근을 갖도록 하는 10 이하의 자연수 $m$의 개수는? [3.5점]",
     choices: [
@@ -60,7 +60,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","부등식","연립방정식","대입","조건해석","계산"],
     wide: false,
     content: "연립방정식 $\\begin{cases} 2x^2 + 3xy - 2y^2 = 0 \\\\ x^2 - xy + y^2 = 7 \\end{cases}$ 의 해 $x = a,\\ y = b$에 대하여 $a, b$의 부호가 다를 때 $ab$ 값을 구하면? (단, $a, b$는 상수이다.) [3.7점]",
     choices: [
@@ -84,7 +84,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","부등식","일차부등식","범위","조건해석","계산"],
     wide: false,
     content: "부등식 $-3 \\le 2x + 3 \\le -x$의 해가 $a \\le x \\le b$일 때, $a + b$의 값은? (단, $a, b$는 상수이다.) [3.7점]",
     choices: [
@@ -108,7 +108,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","절댓값","부등식","범위","조건해석","계산","개념"],
     wide: false,
     content: "부등식 $|2x - 3| \\le x$의 해가 $a \\le x \\le b$일 때, $b - a$의 값은? (단, $a, b$는 상수이다.) [3.9점]",
     choices: [
@@ -132,7 +132,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","연립방정식","대입","조건해석","계산"],
     wide: false,
     content: "세 실수 $a, b, c$와 두 행렬 $A = \\begin{pmatrix} 1 & a+2 \\\\ b-4 & c \\end{pmatrix},\\ B = \\begin{pmatrix} 1 & b+3 \\\\ -b & -c+2 \\end{pmatrix}$에 대하여 $A = B$일 때, $a + b + c$의 값은? [3.9점]",
     choices: [
@@ -180,7 +180,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","분모유리화","항등식","인수분해","전개","계수비교","복소수","켤레복소수"],
     wide: false,
     content: "삼차방정식 $x^3 + 1 = 0$의 한 허근을 $\\omega$라 할 때, $\\omega(\\omega-1)(\\bar{\\omega}-1) = a\\omega + b$를 만족하는 정수 $a, b$에 대하여 $a - b$의 값은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [4점]",
     choices: [
@@ -204,7 +204,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","이차방정식","부등식","연립방정식","참거짓","조건해석","계산"],
     wide: false,
     content: "연립방정식 $\\begin{cases} 2x + y = 4 \\\\ 2xy = 3 \\end{cases}$ 의 해를 $x = \\alpha,\\ y = \\beta$라 하자. $\\alpha > \\beta$일 때, $\\alpha + \\beta$의 값은? [4.1점]",
     choices: [
@@ -228,7 +228,7 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","인수분해","최대최소","지수","경우의수","범위","개수세기","조건해석"],
     wide: false,
     content: "1800의 양의 약수 중에서 6의 배수의 개수는? [4.1점]",
     choices: [
@@ -252,7 +252,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","경우의수","순열","조합","자연수조건","개수세기","조건해석"],
     wide: false,
     content: "$0, 1, 2, 3, 4, 5, 6, 7$ 중에서 서로 다른 4개를 택해 일렬로 나열하여 만들 수 있는 네 자리의 자연수 중에 홀수의 개수는? [4.3점]",
     choices: [
@@ -276,7 +276,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","나머지정리","경우의수","순열","조합","배반사건","표해석","참거짓"],
     wide: false,
     content: "다음 상황을 수학적 기호로 옳게 나타낸 것을 〈보기〉에서 있는대로 고른것은? [4.3점]\\n\\n서로 다른 $n$명 중에서 특정한 1명을 포함해서 $r$명을 뽑거나 그 1명을 포함하지 않고 $r$명을 뽑는 경우의 수\\n\\n〈보기〉\\nㄱ. ${}_{n}C_{r}$\\nㄴ. ${}_{n-1}C_{r-1} + {}_{n-1}C_{r}$\\nㄷ. $r \\times {}_{n-1}C_{r-1} + {}_{n-1}C_{r}$",
     choices: [
@@ -300,7 +300,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","도형","원","참거짓","조건해석","계산","개념"],
     wide: false,
     content: "두 이차정사각행렬 $A, B$에 대하여 다음 중 항상 옳은 것은? (단, $O$는 $2 \\times 2$ 영행렬이다.) [4.5점]",
     choices: [
@@ -324,7 +324,7 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","이차방정식","판별식","이차함수","최대최소","함수","그래프"],
     wide: false,
     content: "실수 $a, b$에 대하여 이차함수 $f(x) = x^2 + ax + b$의 그래프가 다음 조건을 만족시킬 때, $f(2)$의 최댓값은? [4.6점]\\n\\n가) $f(-3) = f(1)$\\n나) 이차함수 $y = f(x)$의 그래프와 직선 $y = -x + 3$은 만난다.",
     choices: [
@@ -348,7 +348,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","계수비교","판별식","이차함수","부등식","함수","그래프","정수조건"],
     wide: false,
     content: "다음 중 $x$에 대한 부등식 $kx^2 - 2kx + 5 \\le 0$의 해가 존재하지 않도록 하는 가장 작은 정수 $k$의 값은? [4.7점]",
     choices: [
@@ -396,7 +396,7 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","제곱근","근호","인수분해","최대최소","부등식","수직선","정수조건"],
     wide: false,
     content: "$x$에 대한 연립부등식 $\\begin{cases} x^2 - (a^2 - 4)x - 4a^2 < 0 \\\\ x^2 + (a - 16)x - 16a > 0 \\end{cases}$ 을 만족시키는 정수 $x$가 존재하지 않기 위한 실수 $a$의 최댓값을 $M$이라 하자. $M^2$의 값은? (단, $a > 3$) [4.8점]",
     choices: [
@@ -420,7 +420,7 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","복소수","이차방정식","판별식","지수","자연수조건","개수세기","대입"],
     wide: false,
     content: "이차정사각행렬 $A$의 $(i, j)$성분 $a_{ij}$를 $x$에 대한 이차방정식 $2x^2 - 2ix + j = 0\\ (i = 1, 2,\\ j = 1, 2)$의 서로 다른 실근의 개수라 할 때, 행렬 $A^{2025}$의 모든 성분의 합은? [4.8점]",
     choices: [
@@ -444,7 +444,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: [],
+    "tags": ["객관식","복소수","경우의수","순열","조합","중복조합","부등식","자연수조건"],
     wide: false,
     content: "1부터 10까지의 자연수가 하나씩 적힌 10장의 카드가 들어 있는 주머니에서 카드를 한 장씩 차례로 5번 꺼낸다. $i$번째 꺼낸 카드에 적혀 있는 수를 $a_i\\ (i = 1, 2, 3, 4, 5)$라 할 때, $a_i$가 다음 조건을 만족시키는 경우의 수는? (단, 꺼낸 카드는 다시 주머니에 넣는다.) [4.9점]\\n\\n가) $a_3 = 5$\\n나) $a_1 \\le a_2 < a_3 < a_4 \\le a_5$",
     choices: [
