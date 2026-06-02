@@ -72,6 +72,21 @@
         return (window.localStorage && window.localStorage.getItem('WANGJI_EIE_SESSION_TOKEN')) || '';
     }
 
+    function getEieRole() {
+        return (window.localStorage && window.localStorage.getItem('WANGJI_EIE_ROLE')) || '';
+    }
+
+    function isEieTeacherSession() {
+        const role = String(getEieRole() || '').toLowerCase();
+        return role === 'teacher' || role === 'eieteacher';
+    }
+
+    function ensureEieInitialRoute() {
+        if (!isEieTeacherSession()) return;
+        const current = String(window.location.hash || '').replace(/^#/, '').trim();
+        if (!current || current === 'dashboard') window.location.hash = '#teacher';
+    }
+
     function clearEieToken() {
         const bridge = window.WangjiOwnerAuthBridge;
         if (bridge) { bridge.clearEieSession(); return; }
@@ -173,6 +188,7 @@
             window.WangjiOwnerAuthBridge.saveEieSession(eieData);
             window.WangjiOwnerAuthBridge.bridgeAfterEieLogin(loginId.trim(), password.trim(), eieData);
             eieUpdateHeaderUser();
+            ensureEieInitialRoute();
             if (window.EieRouter && typeof window.EieRouter.boot === 'function') {
                 window.EieRouter.boot();
             }
@@ -207,6 +223,7 @@
             return;
         }
         eieUpdateHeaderUser();
+        ensureEieInitialRoute();
         const originalBoot = window.EieRouter.boot.bind(window.EieRouter);
         window.EieRouter.boot = async function () {
             try {

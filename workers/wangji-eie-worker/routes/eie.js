@@ -944,6 +944,77 @@ function consultationDeleteDeferredResponse() {
   }, 409);
 }
 
+function normalizeAttendanceStatus(value) {
+  const status = safeText(value || '등원');
+  if (['등원', '결석', '지각', '조퇴', '보강', '미정'].includes(status)) return status;
+  if (/absent|missing/i.test(status)) return '결석';
+  if (/late/i.test(status)) return '지각';
+  if (/present|attended|done/i.test(status)) return '등원';
+  return status || '등원';
+}
+
+async function queryAttendanceRecords(env, filters = {}) {
+  const studentId = safeText(filters.student_id || filters.studentId);
+  const date = safeText(filters.date);
+  const cellId = safeText(filters.timetable_cell_id || filters.cell_id || filters.cellId);
+  const where = [];
+  const binds = [];
+  if (studentId) { where.push('student_id = ?'); binds.push(studentId); }
+  if (date) { where.push('date = ?'); binds.push(date); }
+  if (cellId) { where.push('timetable_cell_id = ?'); binds.push(cellId); }
+  const sql = `
+    SELECT *
+    FROM eie_attendance_records
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY date DESC, updated_at DESC
+  `;
+  const result = await env.DB.prepare(sql).bind(...binds).all();
+  return result.results || [];
+}
+
+async function handleGetAttendanceRecords(env, url) {
+  const records = await queryAttendanceRecords(env, {
+    student_id: url.searchParams.get('student_id'),
+    date: url.searchParams.get('date'),
+    timetable_cell_id: url.searchParams.get('timetable_cell_id') || url.searchParams.get('cell_id')
+  });
+  return jsonResponse({ success: true, data: records, attendance: records, attendance_records: records });
+}
+
+async function handlePostAttendanceRecord(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const studentId = safeText(body.student_id || body.studentId);
+  if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
+  const date = safeText(body.date) || new Date().toISOString().slice(0, 10);
+  const cellId = safeText(body.timetable_cell_id || body.cell_id || body.cellId);
+  const status = normalizeAttendanceStatus(body.status);
+  const memo = safeText(body.memo);
+  const rawMeta = toJsonText(body.raw_meta_json || body.raw_meta || null);
+  const existing = await env.DB.prepare(`
+    SELECT id FROM eie_attendance_records WHERE student_id = ? AND date = ? LIMIT 1
+  `).bind(studentId, date).first();
+
+  const id = existing?.id || makeId('eie_att');
+  if (existing?.id) {
+    await env.DB.prepare(`
+      UPDATE eie_attendance_records
+      SET timetable_cell_id = ?, status = ?, memo = ?, raw_meta_json = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(cellId || null, status, memo, rawMeta, id).run();
+  } else {
+    await env.DB.prepare(`
+      INSERT INTO eie_attendance_records
+        (id, student_id, timetable_cell_id, date, status, memo, raw_meta_json, created_by, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(id, studentId, cellId || null, date, status, memo, rawMeta, teacher?.id || null).run();
+  }
+
+  const record = await env.DB.prepare('SELECT * FROM eie_attendance_records WHERE id = ?').bind(id).first();
+  const records = await queryAttendanceRecords(env, { student_id: studentId });
+  return jsonResponse({ success: true, data: record, attendance_record: record, attendance_records: records, attendance: records });
+}
+
 async function queryScheduleAssignments(env) {
   const result = await env.DB.prepare(`
     SELECT a.*, s.display_name, s.normalized_name, s.grade,
@@ -2043,6 +2114,10 @@ export async function handleEie(request, env, teacher, path, url) {
     return handleGetTeachers(env);
   }
 
+  if (method === 'GET' && path[2] === 'attendance-records' && !path[3]) {
+    return handleGetAttendanceRecords(env, url);
+  }
+
   if (method === 'GET') {
     return handleGet(request, env, path, url);
   }
@@ -2136,6 +2211,10 @@ export async function handleEie(request, env, teacher, path, url) {
   }
 
   // ── 수업 배정/해제 ───────────────────────────────────────────────────
+  if (method === 'POST' && path[2] === 'attendance-records' && !path[3]) {
+    return handlePostAttendanceRecord(request, env, teacher);
+  }
+
   if (method === 'POST' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students' && !path[5]) {
     return handlePostCellStudent(request, env, teacher, path[3]);
   }
