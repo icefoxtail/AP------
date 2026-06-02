@@ -12,6 +12,8 @@
     var _loading = false;
     var _returnCtx = null;
     var _teacherRoster = [];
+    var _consultationMode = 'list';
+    var _editingConsultationId = '';
 
     function esc(value) {
         return EieApp.escapeHtml(value == null ? '' : value);
@@ -621,21 +623,89 @@
     function renderConsultations(student) {
         var sid = rowId(student);
         var rows = consultationsOf(student);
-        return '<div class="eie-apms-card">'
-            + '<div class="eie-apms-section-head"><h3>상담</h3><button type="button" class="eie-secondary-button" onclick="EieStudentsView.createConsultation(' + jsArg(sid) + ')">추가</button></div>'
-            + (rows.length ? rows.map(function (row) {
-                var id = text(row.id);
-                var title = [text(row.date), text(row.type)].filter(Boolean).join(' / ') || '상담';
-                var content = text(row.content) || '내용 없음';
-                var nextAction = text(row.next_action);
-                return '<div class="eie-apms-consultation-row">'
-                    + '<div><strong>' + esc(title) + '</strong><p>' + esc(content) + '</p>' + (nextAction ? '<span>' + esc(nextAction) + '</span>' : '') + '</div>'
-                    + '<div class="eie-apms-inline-actions">'
-                    + (id ? '<button type="button" onclick="EieStudentsView.editConsultation(' + jsArg(id) + ')">수정</button>' : '')
-                    + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
-                    + '</div>'
-                    + '</div>';
-            }).join('') : '<p class="eie-apms-muted">등록된 상담이 없습니다.</p>')
+        var form = _consultationMode === 'create' || _consultationMode === 'edit'
+            ? renderConsultationForm(sid)
+            : '';
+        return '<div class="eie-apms-card eie-apms-consultation-panel">'
+            + '<div class="eie-apms-section-head"><h3>상담 이력</h3><span>' + esc(String(rows.length)) + '건</span></div>'
+            + '<div class="eie-apms-consultation-actions">'
+            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.createConsultation(' + jsArg(sid) + ')">+ 새 상담 기록하기</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.showPreparing(\'상담 흐름 요약\')">상담 흐름 요약</button>'
+            + '</div>'
+            + form
+            + '<div class="eie-apms-consultation-list">'
+            + (rows.length ? rows.map(renderConsultationRow).join('') : '<div class="eie-apms-consultation-empty">상담 기록이 없습니다.</div>')
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderConsultationTypeOptions(currentType) {
+        var current = text(currentType);
+        var types = ['학습', '태도', '성적', '기타'];
+        var options = '';
+        if (current && types.indexOf(current) < 0) {
+            options += '<option value="' + esc(current) + '" selected>' + esc(current) + '</option>';
+        }
+        return options + types.map(function (type) {
+            return '<option value="' + esc(type) + '"' + (current === type ? ' selected' : '') + '>' + esc(type) + '</option>';
+        }).join('');
+    }
+
+    function currentEditingConsultation() {
+        var id = text(_editingConsultationId);
+        if (!id) return null;
+        return asArray(db().consultations).find(function (row) {
+            return String(row.id || '') === String(id);
+        }) || null;
+    }
+
+    function renderConsultationForm(sid) {
+        var editing = _consultationMode === 'edit';
+        var current = editing ? currentEditingConsultation() : null;
+        var date = consultationDate(current) || todayIso();
+        var type = consultationType(current);
+        var content = text(current && current.content);
+        var nextAction = text(current && (current.next_action || current.nextAction));
+        return '<div class="eie-apms-consultation-form">'
+            + '<div class="eie-apms-consultation-form-head">'
+            + '<strong>' + (editing ? '상담 수정' : '상담 기록 추가') + '</strong>'
+            + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.cancelConsultation()">닫기</button>'
+            + '</div>'
+            + '<div class="eie-apms-consultation-form-grid">'
+            + '<label><span>날짜</span><input id="consultation-date" type="date" value="' + esc(date) + '"></label>'
+            + '<label><span>유형</span><select id="consultation-type">' + renderConsultationTypeOptions(type) + '</select></label>'
+            + '</div>'
+            + '<label class="eie-apms-consultation-field"><span>상담 내용</span><textarea id="consultation-content" placeholder="상담 내용을 입력하세요.">' + esc(content) + '</textarea></label>'
+            + '<label class="eie-apms-consultation-field"><span>조치 사항</span><textarea id="consultation-next-action" placeholder="다음 조치 사항 (선택)">' + esc(nextAction) + '</textarea></label>'
+            + '<div class="eie-apms-consultation-ai">'
+            + '<strong>상담 요약</strong>'
+            + '<p>AI 요약은 준비중입니다. 오늘은 상담 원문과 후속 조치를 저장합니다.</p>'
+            + '</div>'
+            + '<div class="eie-apms-consultation-save-row">'
+            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.saveConsultation(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : (editing ? '수정 완료' : '저장')) + '</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.cancelConsultation()" ' + (_saving ? 'disabled' : '') + '>취소</button>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderConsultationRow(row) {
+        var id = text(row.id);
+        var date = consultationDate(row) || '-';
+        var type = consultationType(row);
+        var content = text(row.content) || '내용 없음';
+        var nextAction = text(row.next_action || row.nextAction);
+        var createdAt = text(row.created_at);
+        return '<div class="eie-apms-consultation-row">'
+            + '<div class="eie-apms-consultation-main">'
+            + '<div class="eie-apms-consultation-meta"><span>' + esc(date) + '</span><em>' + esc(type) + '</em></div>'
+            + '<p>' + esc(content) + '</p>'
+            + (nextAction ? '<div class="eie-apms-consultation-next"><strong>조치</strong> ' + esc(nextAction) + '</div>' : '')
+            + (createdAt ? '<small>등록 시각 ' + esc(createdAt) + '</small>' : '')
+            + '</div>'
+            + '<div class="eie-apms-inline-actions">'
+            + (id ? '<button type="button" onclick="EieStudentsView.editConsultation(' + jsArg(id) + ')">수정</button>' : '')
+            + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
+            + '</div>'
             + '</div>';
     }
 
@@ -680,6 +750,14 @@
         }).sort(function (a, b) {
             return text(b.date || b.created_at).localeCompare(text(a.date || a.created_at));
         });
+    }
+
+    function consultationDate(row) {
+        return text(row && (row.date || row.consultation_date || row.created_at)).slice(0, 10);
+    }
+
+    function consultationType(row) {
+        return text(row && row.type) || '상담';
     }
 
     function renderAttendancePanel(student) {
@@ -954,10 +1032,15 @@
 
         openDetail: async function (studentId, returnCtx, tab) {
             setReturnCtx(returnCtx);
+            var previousId = _selectedId;
             _selectedId = text(studentId);
             _mode = 'detail';
             _tab = text(tab || (returnCtx && returnCtx.tab)) || _tab || 'basic';
             _notice = '';
+            if (previousId !== _selectedId) {
+                _consultationMode = 'list';
+                _editingConsultationId = '';
+            }
             if (!selectedStudent() && _selectedId) {
                 await loadFoundation(true);
                 if (!selectedStudent()) _query = _selectedId;
@@ -1108,41 +1191,67 @@
         },
 
         createConsultation: async function (studentId) {
-            if (_saving) return;
             var sid = text(studentId || _selectedId);
-            var content = text(window.prompt('상담 내용'));
-            if (!sid || !content) return;
-            var nextAction = text(window.prompt('후속 조치', ''));
-            _saving = true;
-            try {
-                var result = await EieApi.createConsultation({ student_id: sid, content: content, next_action: nextAction });
-                if (EieState.mergeStudentConsultations) EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
-                _notice = '상담을 저장했습니다.';
-                _tab = 'consultation';
-                await EieRouter.open('students');
-            } catch (err) {
-                _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
-                await EieRouter.open('students');
-            } finally {
-                _saving = false;
-            }
+            if (!sid || _saving) return;
+            _selectedId = sid;
+            _tab = 'consultation';
+            _consultationMode = 'create';
+            _editingConsultationId = '';
+            _notice = '';
+            _error = '';
+            await EieRouter.open('students');
         },
 
         editConsultation: async function (consultationId) {
-            if (_saving) return;
             var id = text(consultationId);
             var current = asArray(db().consultations).find(function (row) { return String(row.id || '') === String(id); });
             if (!current) return;
-            var content = text(window.prompt('상담 내용', current.content || ''));
-            if (!content) return;
-            var nextAction = text(window.prompt('후속 조치', current.next_action || ''));
+            if (_saving) return;
+            _selectedId = text(current.student_id || _selectedId);
+            _tab = 'consultation';
+            _consultationMode = 'edit';
+            _editingConsultationId = id;
+            _notice = '';
+            _error = '';
+            await EieRouter.open('students');
+        },
+
+        cancelConsultation: async function () {
+            _consultationMode = 'list';
+            _editingConsultationId = '';
+            await EieRouter.open('students');
+        },
+
+        saveConsultation: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            var dateEl = document.getElementById('consultation-date');
+            var typeEl = document.getElementById('consultation-type');
+            var contentEl = document.getElementById('consultation-content');
+            var nextActionEl = document.getElementById('consultation-next-action');
+            var payload = {
+                student_id: sid,
+                date: text(dateEl && dateEl.value) || todayIso(),
+                type: text(typeEl && typeEl.value) || '상담',
+                content: text(contentEl && contentEl.value),
+                next_action: text(nextActionEl && nextActionEl.value)
+            };
+            if (!sid) return;
+            if (!payload.content) {
+                _error = '상담 내용을 입력하세요.';
+                await EieRouter.open('students');
+                return;
+            }
             _saving = true;
             try {
-                var result = await EieApi.updateConsultation(id, { content: content, next_action: nextAction });
-                var sid = text(current.student_id || _selectedId);
+                var result = _consultationMode === 'edit' && _editingConsultationId
+                    ? await EieApi.updateConsultation(_editingConsultationId, payload)
+                    : await EieApi.createConsultation(payload);
                 if (EieState.mergeStudentConsultations) EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
                 _notice = '상담을 저장했습니다.';
                 _tab = 'consultation';
+                _consultationMode = 'list';
+                _editingConsultationId = '';
                 await EieRouter.open('students');
             } catch (err) {
                 _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
@@ -1154,10 +1263,18 @@
 
         setTab: async function (tab) {
             _tab = text(tab) || 'basic';
+            if (_tab !== 'consultation') {
+                _consultationMode = 'list';
+                _editingConsultationId = '';
+            }
             if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
             EieRouter.open('students');
+        },
+
+        showPreparing: function (label) {
+            if (typeof window !== 'undefined' && window.alert) window.alert(text(label || '기능') + ' 기능은 준비중입니다.');
         },
 
         saveAttendance: async function (studentId, status) {
