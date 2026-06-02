@@ -4317,13 +4317,65 @@ body.eie-owner-dashboard-bg {
 .eie-apms-consultation-row {
     width: 100%;
     margin-top: 8px;
-    padding: 11px 12px;
+    padding: 14px 12px;
     border: 1px solid var(--eie-border);
-    border-radius: 8px;
+    border-radius: 16px;
+    background: var(--eie-surface);
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
     align-items: start;
+}
+
+.eie-apms-consultation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 14px;
+}
+
+.eie-apms-consultation-actions button {
+    min-height: 44px;
+    flex: 1 1 170px;
+}
+
+.eie-apms-consultation-list {
+    display: grid;
+    gap: 10px;
+}
+
+.eie-apms-consultation-main {
+    min-width: 0;
+}
+
+.eie-apms-consultation-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    margin-bottom: 10px;
+}
+
+.eie-apms-consultation-meta span {
+    display: inline-flex;
+    margin: 0;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-consultation-meta em {
+    min-height: 22px;
+    padding: 2px 8px;
+    border: 1px solid rgba(26, 92, 255, 0.15);
+    border-radius: 999px;
+    background: rgba(26, 92, 255, 0.08);
+    color: var(--eie-primary);
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 800;
 }
 
 .eie-apms-consultation-row p {
@@ -4331,6 +4383,7 @@ body.eie-owner-dashboard-bg {
     color: var(--eie-text);
     font-size: 13px;
     line-height: 1.6;
+    white-space: pre-wrap;
 }
 
 .eie-apms-consultation-row span {
@@ -4339,6 +4392,148 @@ body.eie-owner-dashboard-bg {
     color: var(--eie-muted);
     font-size: 12px;
     font-weight: 800;
+}
+
+.eie-apms-consultation-row small {
+    display: block;
+    margin-top: 10px;
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.eie-apms-consultation-next {
+    margin-top: 12px;
+    padding: 10px;
+    border: 1px solid rgba(255, 165, 2, 0.12);
+    border-radius: 10px;
+    background: rgba(255, 165, 2, 0.06);
+    color: var(--eie-text);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.eie-apms-consultation-next strong {
+    color: #b7791f;
+}
+
+.eie-apms-consultation-empty {
+    min-height: 72px;
+    border: 1px solid var(--eie-border);
+    border-radius: 16px;
+    background: var(--eie-surface);
+    color: var(--eie-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.eie-apms-consultation-form {
+    margin: 12px 0 14px;
+    padding: 14px;
+    border: 1px solid var(--eie-border);
+    border-radius: 16px;
+    background: var(--eie-surface-2);
+    display: grid;
+    gap: 12px;
+}
+
+.eie-apms-consultation-form-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.eie-apms-consultation-form-head strong {
+    color: var(--eie-text);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.eie-apms-consultation-form-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 8px;
+}
+
+.eie-apms-consultation-form label,
+.eie-apms-consultation-field {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-apms-consultation-form label span,
+.eie-apms-consultation-field span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-consultation-form input,
+.eie-apms-consultation-form select,
+.eie-apms-consultation-form textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    box-sizing: border-box;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.eie-apms-consultation-form input,
+.eie-apms-consultation-form select {
+    height: 42px;
+    padding: 0 12px;
+}
+
+.eie-apms-consultation-form textarea {
+    min-height: 94px;
+    padding: 11px 12px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.eie-apms-consultation-ai {
+    padding: 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 14px;
+    background: var(--eie-surface);
+}
+
+.eie-apms-consultation-ai strong {
+    display: block;
+    color: var(--eie-text);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-consultation-ai p {
+    margin: 5px 0 0;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.eie-apms-consultation-save-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.eie-apms-consultation-save-row button {
+    flex: 1 1 140px;
+    min-height: 44px;
 }
 
 .eie-apms-inline-actions {
@@ -4364,6 +4559,15 @@ body.eie-owner-dashboard-bg {
 @media (max-width: 520px) {
     .eie-apms-attendance-actions {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .eie-apms-consultation-row,
+    .eie-apms-consultation-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-apms-consultation-row .eie-apms-inline-actions {
+        justify-content: flex-start;
     }
 }
 

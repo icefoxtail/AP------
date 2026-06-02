@@ -25,6 +25,8 @@ const state = {
   ui: { eieApmsCompat: { loadedAt: Date.now() } }
 };
 let createdPayload = null;
+let createdConsultationPayload = null;
+let updatedConsultationPayload = null;
 
 const context = {
   console,
@@ -49,6 +51,11 @@ const context = {
     },
     upsertStudent(row) {
       state.db.students.push(row);
+    },
+    mergeStudentConsultations(studentId, rows) {
+      state.db.consultations = state.db.consultations
+        .filter(row => String(row.student_id || '') !== String(studentId))
+        .concat(rows);
     }
   },
   EieApi: {
@@ -58,6 +65,16 @@ const context = {
     async createStudent(payload) {
       createdPayload = payload;
       return { student_id: 'new_student', student: { id: 'new_student', display_name: payload.display_name, raw_meta_json: JSON.stringify({ teacher_names: payload.teacher_names }) } };
+    },
+    async createConsultation(payload) {
+      createdConsultationPayload = payload;
+      const row = { id: 'consultation_new', created_at: '2026-06-02 10:00:00', ...payload };
+      return { consultation: row, consultations: [row] };
+    },
+    async updateConsultation(id, payload) {
+      updatedConsultationPayload = { id, payload };
+      const row = { id, created_at: '2026-06-02 11:00:00', ...payload };
+      return { consultation: row, consultations: [row] };
     }
   },
   EieApmsState: {
@@ -126,6 +143,70 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
     'teacher filter should match students by assigned class teacher_names'
   );
   context.EieStudentsView.setTeacherFilter('all');
+
+  await context.EieStudentsView.openDetail('eie_student_alpha', null, 'consultation');
+  let consultationHtml = await context.EieStudentsView.render();
+  assert(consultationHtml.includes('상담 이력'), 'consultation tab should render an AP-style consultation history section');
+  assert(consultationHtml.includes('+ 새 상담 기록하기'), 'consultation tab should expose a new consultation form action');
+  assert(consultationHtml.includes('상담 흐름 요약'), 'consultation tab should expose the AP consultation summary action as preparing');
+  assert(!consultationHtml.includes('window.prompt'), 'consultation UX should not rely on prompt-based entry');
+
+  await context.EieStudentsView.createConsultation('eie_student_alpha');
+  consultationHtml = await context.EieStudentsView.render();
+  for (const field of ['consultation-date', 'consultation-type', 'consultation-content', 'consultation-next-action']) {
+    assert(consultationHtml.includes(`id="${field}"`), `consultation form should render ${field}`);
+  }
+  assert(consultationHtml.includes('AI 요약은 준비중입니다'), 'consultation form should keep AI summary as a preparing panel');
+
+  context.document = {
+    getElementById(id) {
+      return {
+        'consultation-date': { value: '2026-06-02' },
+        'consultation-type': { value: '학습' },
+        'consultation-content': { value: '숙제 적응 상담' },
+        'consultation-next-action': { value: '다음 수업 확인' }
+      }[id] || { value: '' };
+    },
+    querySelectorAll() {
+      return [];
+    }
+  };
+  await context.EieStudentsView.saveConsultation('eie_student_alpha');
+  assert.strictEqual(JSON.stringify(createdConsultationPayload), JSON.stringify({
+    student_id: 'eie_student_alpha',
+    date: '2026-06-02',
+    type: '학습',
+    content: '숙제 적응 상담',
+    next_action: '다음 수업 확인'
+  }), 'consultation save payload should include date, type, content, and next action');
+
+  await context.EieStudentsView.editConsultation('consultation_new');
+  consultationHtml = await context.EieStudentsView.render();
+  assert(consultationHtml.includes('상담 수정'), 'consultation edit should open the same rich form');
+  context.document = {
+    getElementById(id) {
+      return {
+        'consultation-date': { value: '2026-06-03' },
+        'consultation-type': { value: '태도' },
+        'consultation-content': { value: '수업 태도 상담 수정' },
+        'consultation-next-action': { value: '보호자 공유' }
+      }[id] || { value: '' };
+    },
+    querySelectorAll() {
+      return [];
+    }
+  };
+  await context.EieStudentsView.saveConsultation('eie_student_alpha');
+  assert.strictEqual(JSON.stringify(updatedConsultationPayload), JSON.stringify({
+    id: 'consultation_new',
+    payload: {
+      student_id: 'eie_student_alpha',
+      date: '2026-06-03',
+      type: '태도',
+      content: '수업 태도 상담 수정',
+      next_action: '보호자 공유'
+    }
+  }), 'consultation edit payload should update date, type, content, and next action');
 
   context.EieStudentsView.startCreate();
   const createHtml = await context.EieStudentsView.render();

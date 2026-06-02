@@ -100,6 +100,8 @@
         const name = (window.localStorage && window.localStorage.getItem('WANGJI_EIE_NAME')) || '';
         const mobile = document.getElementById('eie-mobile-user');
         if (mobile) mobile.textContent = name;
+        const apmathLink = document.getElementById('eie-apmath-link');
+        if (apmathLink) apmathLink.hidden = isEieTeacherSession();
         let desktop = document.getElementById('eie-desktop-user');
         const topbar = document.querySelector('.eie-desktop-topbar');
         if (topbar && name) {
