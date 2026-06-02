@@ -1,8 +1,9 @@
 (function () {
     const routes = {
         dashboard: () => EieDashboardView.render(),
-        timetable: () => EieTimetableView.render(),
+        timetable: () => EieTimetableV2View.render(),
         'timetable-v2': () => EieTimetableV2View.render(),
+        'timetable-editor': () => EieTimetableView.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
         teacher: () => EieTeacherView.render(),
@@ -14,6 +15,7 @@
 
     function normalizeRoute(route) {
         const key = String(route || '').replace(/^#/, '').trim();
+        if (key === 'timetable') return 'timetable-v2';
         return routes[key] ? key : 'dashboard';
     }
 

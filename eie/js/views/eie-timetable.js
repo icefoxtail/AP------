@@ -31,7 +31,8 @@
         lastPayload: null,
         hasPreparedPayload: false,
         invalidCreateField: '',
-        selectedDay: ''
+        selectedDay: '',
+        isSaving: false
     };
 
     let eventsBound = false;
@@ -630,6 +631,7 @@
         const validation = validateDraft();
         const changeSummary = buildPayload();
         const dirtyCount = changeSummary.moves.length + changeSummary.updates.length + changeSummary.creates.length;
+        const canSave = validation.isValid && dirtyCount > 0 && !editorState.isSaving;
         return `
             <div class="eie-timetable-toolbar ${editorState.isEditMode ? 'is-editing' : ''}">
                 <div class="eie-timetable-toolbar-main">
@@ -642,6 +644,9 @@
                         <button type="button" class="eie-small-button" data-eie-timetable-action="exit-edit">나가기</button>
                         <button type="button" class="eie-primary-button" data-eie-timetable-action="prepare-save" ${validation.isValid ? '' : 'disabled'}>
                             저장 전 검증
+                        </button>
+                        <button type="button" class="eie-primary-button" data-eie-timetable-action="save-draft" ${canSave ? '' : 'disabled'}>
+                            ${editorState.isSaving ? '저장 중...' : '저장 후 시간표로'}
                         </button>
                     ` : `
                         <button type="button" class="eie-primary-button" data-eie-timetable-action="start-edit" ${canEdit ? '' : 'disabled'} title="PC에서만 편집할 수 있어요">
@@ -832,7 +837,7 @@
     }
 
     async function loadTimetable() {
-        const result = await EieApi.getTimetable(null, { status: 'active,imported,needs_review' });
+        const result = await EieApi.getTimetable(null, { status: 'active,needs_review,hidden' });
         const rows = asRows(result).map(normalizeCell);
         EieState.setTimetableCells(rows);
         return { rows, result };
@@ -861,6 +866,7 @@
         editorState.notice = notice || '';
         editorState.lastPayload = null;
         editorState.hasPreparedPayload = false;
+        editorState.isSaving = false;
     }
 
     function exitEditMode(force) {
@@ -879,6 +885,7 @@
         editorState.invalidCreateField = '';
         editorState.lastPayload = null;
         editorState.hasPreparedPayload = false;
+        editorState.isSaving = false;
         if (window.EieRouter && typeof window.EieRouter.open === 'function') {
             window.EieRouter.open('timetable-v2');
         }
@@ -1218,6 +1225,72 @@
         rerender();
     }
 
+    function payloadFromMove(move) {
+        return {
+            day_label: move.new_day_label || '',
+            period_label: move.new_period_label || '',
+            period_order: Number(move.new_period_order || 0),
+            start_time: move.new_start_time || '',
+            end_time: move.new_end_time || '',
+            column_index: Number(move.new_column_index || 0),
+            teacher_name_raw: move.new_teacher_name_raw || ''
+        };
+    }
+
+    async function refreshTimetableAfterSave() {
+        const result = await EieApi.getTimetable(null, { status: 'active,needs_review,hidden' });
+        const rows = asRows(result).map(normalizeCell);
+        EieState.setTimetableCells(rows);
+        return rows;
+    }
+
+    async function saveDraft() {
+        if (editorState.isSaving) return;
+        const validation = validateDraft();
+        if (!validation.isValid) {
+            editorState.error = validation.messages[0] || 'Cannot save this timetable yet.';
+            editorState.notice = '';
+            rerender();
+            return;
+        }
+
+        const payload = buildPayload();
+        const total = payload.moves.length + payload.updates.length + payload.creates.length;
+        if (!total) {
+            editorState.notice = 'No timetable changes to save.';
+            editorState.error = '';
+            rerender();
+            return;
+        }
+
+        editorState.isSaving = true;
+        editorState.error = '';
+        editorState.notice = 'Saving timetable changes...';
+        editorState.lastPayload = payload;
+        editorState.hasPreparedPayload = true;
+        rerender();
+
+        try {
+            for (const create of payload.creates) {
+                await EieApi.createTimetableCell(create.payload);
+            }
+            for (const move of payload.moves) {
+                await EieApi.updateTimetableCell(move.cell_id, payloadFromMove(move));
+            }
+            for (const update of payload.updates) {
+                await EieApi.updateTimetableCell(update.cell_id, update.payload);
+            }
+            await refreshTimetableAfterSave();
+            editorState.isSaving = false;
+            exitEditMode(true);
+        } catch (error) {
+            editorState.isSaving = false;
+            editorState.error = error?.message || 'Failed to save timetable changes.';
+            editorState.notice = '';
+            rerender();
+        }
+    }
+
     function setSelectedStatus(status) {
         const cell = selectedCell();
         if (!cell) return;
@@ -1238,7 +1311,7 @@
 
     function rerender() {
         if (window.EieRouter && typeof window.EieRouter.open === 'function') {
-            window.EieRouter.open('timetable');
+            window.EieRouter.open('timetable-editor');
         }
     }
 
@@ -1322,6 +1395,7 @@
         if (action === 'exit-edit') return exitEditMode(false);
         if (action === 'reset-edit') return resetEditMode();
         if (action === 'prepare-save') return prepareSave();
+        if (action === 'save-draft') return saveDraft();
         if (action === 'clear-selection') return clearSelection();
         if (action === 'create-draft-cell') return createDraftCellFromSelectedSlot();
         if (action === 'move-selected-to-holding') return moveCellToHolding(editorState.selectedCellId);

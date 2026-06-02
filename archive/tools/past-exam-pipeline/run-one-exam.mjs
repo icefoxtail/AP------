@@ -38,7 +38,6 @@ export async function runOneExam(cfg, manifest) {
   await Promise.all([
     ensureDir(outputDir),
     ensureDir(path.join(outputDir, "pages")),
-    ensureDir(path.join(outputDir, "crops")),
     ensureDir(path.join(outputDir, "assets")),
     ensureDir(reportsDir),
     ensureDir(candidateDir)
@@ -77,29 +76,34 @@ export async function runOneExam(cfg, manifest) {
     candidateFile,
     syntaxCheckRequired: true,
     expectedQuestionCount: questionCount,
-    currentStage: "candidate_skeleton",
+    currentStage: "full_page_vision_candidate_skeleton",
     protectedArchiveTouched: false,
-    status: questionCount > 0 ? "partial" : "manual_review",
+    status: questionCount > 0 ? "manual_review" : "manual_review",
     blockedReasons: questionCount > 0 ? [] : ["expectedQuestionCount_missing_or_zero"],
     nextStages: [
       "render_pdf_pages",
       "detect_displayNo_page_map",
-      "crop_question_candidates",
-      "transcribe_content_choices",
-      "fill_answers_from_evidence"
+      "render_full_page_images",
+      "page_level_vision_extract_content_choices_visual_bboxes",
+      "crop_visual_assets_from_full_page_bboxes",
+      "external_answer_solution_handoff"
     ]
   };
   await writeJson(path.join(reportsDir, "validation_summary.json"), validationSummary);
   if (manifest.pdfPath) {
     const helperPath = path.join(thisDir, "helpers", "scanned_exam_pipeline.py");
     try {
-      const result = await execFileAsync("python", [
+      const helperArgs = [
         helperPath,
         "--manifest", path.join(outputDir, "manifest.json"),
         "--out", outputDir,
         "--dpi", String(cfg.cropDpi || 220),
         "--candidate-file", candidateFile,
-      ], {
+      ];
+      const visionJson = manifest.visionPageExtractJsonPath || manifest.visionExtractJsonPath || cfg.visionPageExtractJsonPath || "";
+      if (visionJson) helperArgs.push("--vision-json", path.resolve(visionJson));
+      if (cfg.createQuestionCrops === true || manifest.createQuestionCrops === true) helperArgs.push("--create-question-crops");
+      const result = await execFileAsync("python", helperArgs, {
         timeout: 10 * 60 * 1000,
         maxBuffer: 1024 * 1024 * 50,
         env: { ...process.env, PYTHONIOENCODING: "utf-8" },

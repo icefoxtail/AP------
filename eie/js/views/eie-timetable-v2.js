@@ -862,7 +862,7 @@
             : [];
         if (!window.EieApi?.getTimetable) return { rows: stateRows, error: '' };
         try {
-            const result = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
+            const result = await window.EieApi.getTimetable(null, { status: 'active,needs_review,hidden' });
             const rows = asRows(result);
             if (window.EieState?.setTimetableCells) window.EieState.setTimetableCells(rows);
             return { rows, error: result?.fallback ? result.error || '' : '' };
@@ -879,7 +879,7 @@
                     <h1>시간표</h1>
                 </div>
                 <div class="eie-v2-head-actions">
-                    <button type="button" class="eie-secondary-button" data-eie-route="timetable" aria-label="시간표 편집 열기">편집</button>
+                    <button type="button" class="eie-secondary-button" data-eie-route="timetable-editor" aria-label="시간표 편집 열기">편집</button>
                 </div>
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}

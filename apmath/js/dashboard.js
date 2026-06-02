@@ -2174,6 +2174,7 @@ function renderAdminControlCenter() {
         ${adminUnifiedStyle}
         ${adminSystemGateHtml}
         ${adminShortcutRow}
+        <div id="ap-admin-diagnostic-alert-anchor"></div>
         ${todayOverviewHtml}
         ${teacherCardsHtml}
         ${recentConsultationHtml}
@@ -2185,6 +2186,9 @@ function renderAdminControlCenter() {
 
     if (typeof apRefreshPublicInquiryFloating === 'function') {
         apRefreshPublicInquiryFloating(0);
+    }
+    if (typeof apRenderAdminDiagnosticAssessmentAlert === 'function') {
+        apRenderAdminDiagnosticAssessmentAlert();
     }
 }
 

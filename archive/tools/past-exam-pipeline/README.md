@@ -1,219 +1,118 @@
-# AP Math Past Exam PDF Pipeline
+# AP Math Past Exam Pipeline
 
-This pipeline converts selected school past-exam PDFs into reviewable JS Archive
-candidates. It is intentionally separate from the textbook pipeline.
+## V2 방향
 
-## Safety Rules
+이 파이프라인은 이제 **시험지 추출 전용**입니다.
 
-- Inventory may scan the whole source folder.
-- JS generation requires an explicit selected manifest or one-exam manifest.
-- Generated files stay under `archive/_generated/past-exams`.
-- The pipeline must not stop because OCR, content, answer, or solution evidence
-  is missing. It must emit the safest candidate JS, write a queue/report for the
-  unresolved part, and continue to the next selected PDF.
-- Before any answer or solution work starts, the candidate JS must have 100% of
-  the expected questions registered with stable numbering, usable problem text,
-  source image references, and complete objective choices. Missing content is a
-  content-stage blocker, not an answer/solution-stage excuse.
-- Each exam must be completed as one ordered JS file first. The manager verifies
-  `displayNo` order and continuity from full-page images before using question
-  crops. Crops are close-up evidence, not the primary source for deciding whether
-  a question exists or where it belongs.
-- The live archive is protected:
-  - `archive/exams/**/*.js`
-  - `archive/db.js`
-  - `archive/engine.html`
-  - `archive/mixed_engine.html`
-  - `archive/mixer.html`
+기존 문항별 전체 crop 기반 구조를 기본값에서 제거하고, full page PNG + page-level Vision JSON 기반으로 candidate JS를 만듭니다.
 
-## Naming
+## 핵심 정책
 
-- `examId` is the canonical title.
-- `window.examTitle` equals `examId`.
-- Candidate filenames may include a work suffix such as `.candidate.js`.
-- Work suffixes must not be included in `window.examTitle`.
+- PDF는 페이지별 full page PNG로 렌더링합니다.
+- 문항별 전체 crop은 기본 생성하지 않습니다.
+- candidate JS의 `image`는 비어 있거나 그래프/도형/표/이미지 같은 visual asset crop만 가리킵니다.
+- candidate JS의 `image`는 full page 또는 question crop을 가리키면 실패입니다.
+- `fullPageImagePath`는 모든 문항의 근거 이미지로 유지합니다.
+- `answer`와 `solution`은 파이프라인에서 채우지 않습니다.
+- 정답/해설은 candidate JS + full page 이미지 + reports 압축본을 받은 GPT/Gemini가 별도 작성합니다.
 
-Example:
+## 기본 흐름
 
-```js
-window.examTitle = "25_제일고_1학기_기말_고2_대수";
+```text
+PDF
+→ pages/page_p001.png
+→ reports/vision_page_extract_request.json
+→ 외부 Vision 호출 또는 사전 생성 JSON 입력
+→ candidate/*.candidate.js
+→ assets/q###_visual.png only when visualAssetBBoxOnPage exists and passes gate
+→ reports/extraction_manual_review.csv
+→ reports/answer_solution_required.csv
+→ reports/gpt_gemini_handoff_manifest.json
 ```
 
-## First Commands
+## Vision JSON 없이 실행한 경우
 
-From `C:/Users/USER/Desktop/AP------`:
+Vision JSON이 없으면 파이프라인은 full page 이미지, Vision 요청서, schema, 빈 candidate skeleton, review reports를 만듭니다.
+
+이 상태는 정상 최종본이 아니라 `manual_review`입니다. `reports/vision_page_extract_request.json`과 `reports/vision_page_extract_schema.json`을 기준으로 page-level Vision 결과를 만든 뒤 `manifest.visionPageExtractJsonPath` 또는 `--vision-json`으로 다시 실행합니다.
+
+## 실행 예시
 
 ```powershell
-node archive/tools/past-exam-pipeline/run-batch.mjs --config archive/tools/past-exam-pipeline/pipeline.config.example.json --inventory
+cd C:\Users\USER\Desktop\past-exam-pipeline
+node run-one-exam.mjs --manifest .\manifests\sample.json
 ```
 
-Create a selected manifest without running conversion:
+Vision JSON이 있는 경우:
 
 ```powershell
-node archive/tools/past-exam-pipeline/run-batch.mjs --config archive/tools/past-exam-pipeline/pipeline.config.example.json --create-selected --recent-years 3 --grade 고1 --exam-type 중간
+cd C:\Users\USER\Desktop\past-exam-pipeline
+node run-one-exam.mjs --manifest .\manifests\sample.json
 ```
 
-Run only the selected manifest:
+manifest에 아래 필드를 넣습니다.
+
+```json
+{
+  "visionPageExtractJsonPath": "C:/path/to/vision_page_extract.json"
+}
+```
+
+또는 helper를 직접 실행합니다.
 
 ```powershell
-node archive/tools/past-exam-pipeline/run-batch.mjs --config archive/tools/past-exam-pipeline/pipeline.config.example.json --selected-manifest archive/_generated/past-exams/_batch/selected_manifest.json --run-selected
+python .\helpers\scanned_exam_pipeline.py `
+  --manifest C:\path\to\manifest.json `
+  --out C:\path\to\generated\exam `
+  --dpi 220 `
+  --candidate-file C:\path\to\generated\exam\candidate\exam.candidate.js `
+  --vision-json C:\path\to\vision_page_extract.json
 ```
 
-## Current Stage Contract
+## Debug question crops
 
-The current scaffold implements:
+기본값은 꺼져 있습니다.
 
-1. PDF inventory.
-2. Filename/folder metadata parsing.
-3. Selected manifest creation.
-4. Per-exam generated folder creation.
-5. Problem PDF page rendering.
-6. Solution PDF page rendering when a solution source exists.
-7. 4-page two-column 20-objective + 4-essay scanned exam crop seeding.
-8. Extended base-schema JS candidate generation.
-9. `image_fallback` candidate JS when text transcription is not available.
-10. Required validation reports.
-11. Continuity queues for the next stages.
-
-OCR, answer table OCR, formula repair, and final archive promotion are later
-stages against the same manifest/output contract.
-
-Content completion is the first hard gate:
-
-- `expectedQuestionCount` must match the number of generated JS question records.
-- Every expected `displayNo` must exist exactly once.
-- Question records must be ordered by `displayNo` inside each exam JS file.
-- Full-page images must be checked first for page spread, question order, and
-  missing-question diagnosis.
-- Question crops are used only when full-page evidence is too small or a
-  formula/figure/choice needs close inspection.
-- `crop missing` is not a terminal blocker when the full-page image exists.
-- Every question must have usable `content` or an explicit source-backed image
-  fallback that is sufficient for transcription.
-- Every objective question must have complete choices before answer solving.
-- If this gate fails, the next stage is always `content_transcription_queue`;
-  do not dispatch answer/solution agents for that candidate file yet.
-
-Answer/solution completion is part of the same non-stop contract after the
-content gate is clean:
-
-Updated rule: direct solving is the default stage immediately after problem
-extraction. Official answer/solution files are cross-check sources after direct
-solving, not blockers before solving. If no official source exists, the pipeline
-goes straight from direct solve/solution writing to final validation.
-
-- If answer evidence is not available, the next stage must directly solve from
-  verified content, choices, full-page images, and question crops when needed.
-- If a solution is missing after the answer is verified or directly solved, the
-  solution stage must read `rules/해설프로토콜.md` plus the 발문·보기 extraction
-  protocol and finish the student-facing solution.
-- Direct solving is not guessing. If the problem cannot be solved because the
-  source is unreadable or internally inconsistent, record the unresolved status
-  and continue to the next question/PDF.
-
-## Non-Stop Status Model
-
-`partial` is not a failed stop. It means the current job produced a safe candidate
-and wrote queue files for unresolved work.
-
-Required continuation files:
-
-- `reports/pipeline_continuity_report.json`
-- `reports/NEXT_ACTIONS.md`
-- `reports/content_transcription_queue.json`
-- `reports/answer_mapping_queue.json`
-
-Batch-level continuation files:
-
-- `_batch/batch_progress.json`
-- `_batch/subagent_worklist.json`
-- `_batch/batch_validation_summary.json`
-
-Current fallback chain:
-
-```text
-no text layer / OCR unavailable
-→ render PDF pages
-→ crop questions
-→ create candidate JS with image fallback
-→ write content_transcription_queue.json
-→ continue batch
+```json
+{
+  "createQuestionCrops": false
+}
 ```
 
-```text
-answer not confidently mapped
-→ render answer/solution pages if available
-→ keep answerStatus: "missing_answer"
-→ write answer_mapping_queue.json
-→ continue batch
+디버그로 켜도 `crops/debug_questions/`에만 저장되며 candidate `image`에는 연결되지 않습니다.
+
+## 주요 파일
+
+- `helpers/scanned_exam_pipeline.py`: full page render, Vision JSON 반영, candidate JS 생성, visual asset crop gate
+- `helpers/crop_visual_assets_from_full_pages.py`: 이미 만들어진 candidate JS에서 full page bbox 기반 visual asset crop 재실행
+- `helpers/audit_generated_visual_asset_links.py`: candidate `image`가 page/question crop을 가리키는지 감사
+- `docs/PAST_EXAM_PIPELINE_V2_POLICY.md`: 정책 문서
+- `docs/VISION_PAGE_EXTRACT_REQUEST_TEMPLATE.md`: Vision 호출 프롬프트 템플릿
+- `examples/vision_page_extract.example.json`: Vision JSON 예시
+- `PAST_EXAM_PIPELINE_V2_EXTERNAL_ADVISORY_REQUEST.md`: 외부 자문 요청서
+
+## 검증
+
+```powershell
+npm run check
+python -m py_compile .\helpers\scanned_exam_pipeline.py .\helpers\crop_visual_assets_from_full_pages.py .\helpers\audit_generated_visual_asset_links.py
 ```
 
-Updated answer/solution fallback:
+## 금지 회귀
 
-```text
-answer or solution still missing after evidence mapping
-??directly solve from verified content/choices/full-page image/question crop
-??write answer with direct_solved_* status
-??write solution from 해설프로토콜 when answer is known
-??use direct_solution_* status or unresolved-after-direct-solve
-??write direct_solve_report.json and solution_generation_report.json
-??continue batch
-```
+- `image = cropPath`
+- `image = fullPageImagePath`
+- `image`가 `pages/` 또는 `crops/questions/`를 가리키는 구조
+- visual asset crop 실패 시 question crop fallback
+- answer/solution을 추출 파이프라인에서 채우는 구조
 
-Current chain for new exam runs:
 
-```text
-problem extracted
-??candidate JS registers 100% of expected questions
-??content/choices gate passes
-??directly solve from verified content/choices/full-page image/question crop
-??write answer and student-facing solution
-??cross-check answer/solution files if present
-??fix confirmed mistakes, or keep direct solution with conflict report
-??run final validation
-??continue batch
-```
+## V2 full-page-first review rule
 
-## Final Review Pipeline
+For content and choices, the full page image is the source of truth.
 
-Promotion is blocked until candidates pass the review gates in order:
-
-```text
-1차 구조·무결성 검수
-??2차 수학·정오답 검수
-??3차 분류·메타·난이도 태그 검수
-??최종 무결성 검수
-??promotion report
-```
-
-Important 2차 rule: objective questions with zero or multiple correct candidates
-fail only when the prompt does not explicitly allow multiple answers. If the
-prompt says `모두 고르시오`, `옳은 것을 모두`, `정답 2개`, or an equivalent phrase,
-multiple correct choices are allowed and the answer must list every correct
-choice clearly.
-
-## Batch Continuation Rule
-
-`run-batch.mjs --run-selected` catches each job exception, writes that job as
-`fail` or `partial`, updates `_batch/batch_progress.json`, and continues to the
-next selected PDF.
-
-This means a selected batch can safely include multiple PDFs. One difficult
-exam must not block the rest of the queue.
-
-Subagents should start from `_batch/subagent_worklist.json`. Each item points to:
-
-- the candidate JS;
-- `content_transcription_queue.json`;
-- `answer_mapping_queue.json`;
-- `NEXT_ACTIONS.md`.
-
-Parallel agents must not edit the same candidate JS at the same time. A safe
-split is one agent per `examId`, or one content agent and one answer agent only
-after their allowed fields are enforced by the queue.
-
-For answer/solution agents, allowed edits are limited to answer, answer status,
-solution, solution status, and classification fields allowed by the archive
-schema. They must not change content, choices, id, displayNo, layout, or image
-fields while solving. If solving reveals a content/OCR conflict, they should
-report it back to the content queue instead of patching the problem text.
+- Verify display number position from `fullPageImagePath` or `sourcePageEvidencePaths`.
+- Compare JS `content` and `choices` against the full-page original.
+- Use crops only as auxiliary zoom evidence.
+- Do not let crop failure decide content/choice PASS or FAIL.
+- `contentSource: "vision_required"` or `choicesSource: "vision_required"` means manual review is still required; downstream agents must not write dummy content.
