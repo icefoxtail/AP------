@@ -63,7 +63,7 @@
         if (!window.EieApi) return data;
 
         const [timetableResult, studentsResult, needsReviewResult] = await Promise.allSettled([
-            window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' }),
+            window.EieApi.getTimetable(null, { status: 'active,needs_review,hidden' }),
             window.EieApi.getStudentSeeds(),
             window.EieApi.getNeedsReview()
         ]);

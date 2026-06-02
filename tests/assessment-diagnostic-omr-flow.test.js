@@ -60,6 +60,7 @@ includesAll('assessment-analysis.html diagnostic input/report mode', analysisHtm
   'diagnostic-input',
   'diagnostic-report',
   'status: \'completed\'',
+  'completedAt',
   'renderDiagnosticModeBanner()',
   'renderDiagnosticParentItemTable()',
   'renderDiagnosticInternalDetails()',
@@ -70,7 +71,7 @@ includesAll('assessment-analysis.html diagnostic input/report mode', analysisHtm
   'diagnostic-internal-detail',
   'internal-only',
   'print-hidden',
-  'AP수학 진단평가 결과표',
+  'AP수학 진단평가',
   '입력 완료',
   '빠른 입력',
   '입력 수정',
@@ -82,6 +83,19 @@ assert(
   !analysisHtml.includes('결과표 보기</button>'),
   'diagnostic flow should complete input and show the report immediately without a required separate result-view button'
 );
+
+assert(
+  analysisHtml.includes('const completedAt = new Date().toISOString()') &&
+    analysisHtml.includes('updatedAt: completedAt') &&
+    analysisHtml.includes('completedAt,') &&
+    analysisHtml.includes('completedAt: payload.completedAt'),
+  'diagnostic completion should save completedAt/updatedAt and keep completedAt in the results list'
+);
+
+const updateDiagnosticListFnStart = analysisHtml.indexOf('function updateDiagnosticResultsList(payload)');
+const updateDiagnosticListFnBody = updateDiagnosticListFnStart >= 0 ? analysisHtml.slice(updateDiagnosticListFnStart, analysisHtml.indexOf('function saveDiagnosticResultAndShowReport()', updateDiagnosticListFnStart)) : '';
+assert(updateDiagnosticListFnBody.includes('filter((item) => item?.diagnosticId !== payload.diagnosticId)'), 'diagnostic results list should upsert without duplicate diagnosticId');
+assert(updateDiagnosticListFnBody.includes('list.slice(0, 30)'), 'diagnostic results list should stay capped at 30 items');
 
 assert(!omrJs.includes('openDiagnosticAssessmentOmr'), 'qr-omr.js should not keep the unused diagnostic OMR wrapper');
 assert(!omrJs.includes('apms.diagnostic.assessment.result.'), 'qr-omr.js should not own diagnostic assessment localStorage flow');
@@ -95,6 +109,7 @@ assert(renderAppBody.includes('renderDiagnosticReportActions()'), 'diagnostic re
 assert(renderAppBody.includes("'<div id=\"analysisSections\"></div>'"), 'diagnostic report render should mount analysis sections before optional input');
 assert(renderAppBody.includes('shouldShowDiagnosticInput() ? renderInputSection()'), 'diagnostic report input section should be conditional');
 assert(renderAppBody.includes('shouldShowDiagnosticInput() ? \'<div id=\"questionInputMount\"></div>\''), 'diagnostic report question input should be conditional');
+assert(renderAppBody.includes('isDiagnosticReportMode() ? \'\' : renderInfo(pack, count)'), 'diagnostic report should not render the generic internal analysis pack card by default');
 
 const parentTableFnStart = analysisHtml.indexOf('function renderDiagnosticParentItemTable()');
 const parentTableFnBody = parentTableFnStart >= 0 ? analysisHtml.slice(parentTableFnStart, analysisHtml.indexOf('function renderDiagnosticInternalDetails()', parentTableFnStart)) : '';
@@ -107,6 +122,7 @@ assert(parentTableFnBody.includes('확인 사인') || parentTableFnBody.includes
 for (const internalMarker of ['sourceFile', 'sourceQuestionNo', 'sourceRef', 'raw note', '내부 메모', '원본 시험지', '원본 문항번호']) {
   assert(!parentTableFnBody.includes(internalMarker), `diagnostic parent table should not expose internal marker: ${internalMarker}`);
 }
+assert(!parentTableFnBody.includes('getInternalAnalysisNote'), 'diagnostic parent table should not fill the check-sign column with internal notes');
 
 const internalDetailFnStart = analysisHtml.indexOf('function renderDiagnosticInternalDetails()');
 const internalDetailFnBody = internalDetailFnStart >= 0 ? analysisHtml.slice(internalDetailFnStart, analysisHtml.indexOf('function renderDiagnosticAnalysisSections()', internalDetailFnStart)) : '';

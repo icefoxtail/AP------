@@ -1,4 +1,4 @@
-const assert = require('assert');
+﻿const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -9,12 +9,12 @@ const timetableSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timeta
 
 assert(
   dashboardSource.includes('data-eie-route="timetable-v2"'),
-  'dashboard timetable action should route to timetable-v2'
+  'dashboard timetable action should route to canonical timetable-v2'
 );
 
 assert(
-  !dashboardSource.includes('data-eie-route="timetable" aria-label="EIE 시간표"'),
-  'dashboard should not expose the legacy timetable route as the main timetable action'
+  !dashboardSource.includes('data-eie-route="timetable"'),
+  'dashboard should not expose the timetable alias as the main timetable action'
 );
 
 const state = {

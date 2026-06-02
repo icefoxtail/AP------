@@ -95,7 +95,7 @@ vm.runInContext(timetableV2Source, context, { filename: 'eie-timetable-v2.js' })
   assert(!editHtml.includes('data-eie-timetable-action="start-edit"'), 'editor entry should not show a separate view-mode edit button');
 
   const v2Html = await context.EieTimetableV2View.render();
-  assert(v2Html.includes('data-eie-route="timetable"'), 'v2 timetable should expose a route into timetable editing');
+  assert(v2Html.includes('data-eie-route="timetable-editor"'), 'v2 timetable should expose a route into the dedicated timetable editor');
   assert(v2Html.includes('시간표'), 'v2 timetable should remain the main timetable view');
 
   console.log('EIE timetable edit entry regression test passed');
