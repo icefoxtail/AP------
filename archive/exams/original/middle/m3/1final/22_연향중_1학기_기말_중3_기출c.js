@@ -379,7 +379,7 @@ window.questionBank = [
     tags: ["서술형", "도형"],
     wide: false,
     content: "아래 그림과 같이 $\\overline{AD}=20$ cm, $\\overline{CD}=12$ cm인 직사각형 ABCD에서 점 P는 점 A에서 점 B로 초속 1 cm, 점 Q는 점 B에서 점 C로 초속 2 cm로 움직인다. 점 P와 Q가 동시에 출발할 때, 몇 초 후에 처음으로 △PBQ의 넓이가 35 cm²가 되는지 서술하시오.(6점)",
-    image: "assets/images/22_연향중_1학기_기말_중3_기출/qsub1.png",
+    
     choices: [],
     answer: "5초 후",
     solution: "[키포인트] 동시에 출발한 지 $t$초 후의 선분 $\\overline{PB}$와 $\\overline{BQ}$의 길이를 $t$에 관한 식으로 나타내어 삼각형의 넓이 식을 세운다.\\n정석 풀이:\\n점 P와 Q가 동시에 출발한 지 $t$초 후라고 하자.\\n점 P는 A에서 B까지 초속 1 cm로 움직이므로 $\\overline{AP} = t$ cm이다.\\n직사각형의 세로 길이 $\\overline{AB} = \\overline{CD} = 12$ cm이므로, 선분 $\\overline{PB}$의 길이는 다음과 같다.\\n$\\overline{PB} = 12 - t$ (cm)\\n점 Q는 B에서 C까지 초속 2 cm로 움직이므로 선분 $\\overline{BQ}$의 길이는 다음과 같다.\\n$\\overline{BQ} = 2t$ (cm)\\n이때 직각삼각형 PBQ의 넓이가 35 cm²가 되어야 하므로 방정식을 세운다.\\n$\\dfrac{1}{2} \\times \\overline{BQ} \\times \\overline{PB} = 35$\\n$\\dfrac{1}{2} \\times 2t \\times (12-t) = 35$\\n$t(12-t) = 35$\\n$12t - t^2 = 35 \\rightarrow t^2 - 12t + 35 = 0$\\n좌변을 인수분해하면 다음과 같다.\\n$(t-5)(t-7) = 0$\\n따라서 $t = 5$ 또는 $t = 7$이다.\\n문제에서 처음으로 넓이가 35 cm²가 되는 시간을 물었으므로 더 작은 값인 5초 후가 답이 된다.\\n따라서 구하는 값은 5초 후이다."

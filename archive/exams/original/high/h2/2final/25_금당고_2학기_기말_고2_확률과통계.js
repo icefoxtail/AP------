@@ -1,4 +1,5 @@
 window.examTitle = "25_금당고_2학기_기말_고2_확률과통계";
+
 window.questionBank = [
   {
     "id": 1,
@@ -9,7 +10,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q001_page1.png",
+    "image": "",
     "imageKind": "crop",
     "content": "두 사건 A, B가 서로 독립이고, P(A)=3/5, P(B)=1/3일 때, P(A∩B)는? [4점]",
     "choices": [
@@ -95,7 +96,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q003_page1.png",
+    "image": "",
     "imageKind": "crop",
     "content": "다음 확률변수 중 연속확률변수인 것은? [4.2점]",
     "choices": [
@@ -181,7 +182,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q005_page1.png",
+    "image": "",
     "imageKind": "crop",
     "content": "확률변수 X에 대하여 E(X)=30, V(X)=5이고, 확률변수 Y=aX+b에 대하여 E(Y)=75, V(Y)=45라고 하자. 두 상수 a,b에 대하여 a-b의 값은? (단, a>0) [4.4점]",
     "choices": [
@@ -310,7 +311,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q008_page2.png",
+    "image": "",
     "imageKind": "crop",
     "content": "확률변수 X가 정규분포 N(40, 16)을 따를 때, P(a-1≤X≤a+3)의 값이 최대가 되도록 하는 상수 a의 값은? [4.6점]",
     "choices": [
@@ -396,7 +397,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q010_page2.png",
+    "image": "",
     "imageKind": "crop",
     "content": "한 가전제품 회사에서 운영하는 두 공장 A, B는 냉장고를 각각 45%, 55%를 생산한다. 이때 A공장에서 생산한 제품 중 불량품일 확률이 0.03이고, B공장에서 생산한 제품 중 불량품일 확률이 0.06이라고 한다. 소비자가 받은 냉장고가 불량품일 때, 이 냉장고가 B공장에서 생산되었을 확률은? [4.8점]",
     "choices": [
@@ -568,7 +569,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q014_page3.png",
+    "image": "",
     "imageKind": "crop",
     "content": "1부터 4까지 숫자가 각각 적힌 네 개의 공이 들어있는 상자에서 공을 차례로 세 번 뽑을 때(꺼낸 공을 다시 넣지 않는다), n번째에 나온 공에 적혀있는 수를 a_n이라 하자. 다음 규칙에 따라 얻은 점수의 합을 확률변수 X라 할 때, V(X)의 값은? [5.4점]\n\n자연수 k(k=1, 2)에 대하여 a_k+a_{k+1}이 2의 배수이면 1점을 얻고, 5의 배수이면 2점을 얻고, 2의 배수도 아니고 5의 배수도 아니면 0점을 얻는다.",
     "choices": [
@@ -692,7 +693,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q017_page3.png",
+    "image": "",
     "imageKind": "crop",
     "content": "<단답형 2>\n빨간 공 x개, 파란 공 3개가 들어 있는 주머니에서 임의로 한 개의 공을 꺼내어 색을 확인하고 다시 넣는 시행을 n회 반복할 때, 빨간 공이 나오는 횟수를 확률변수 X라 하자. X의 평균이 36, 분산이 9일 때, n+x의 값을 구하시오. [5점]",
     "choices": [],
@@ -806,7 +807,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q020_page3.png",
+    "image": "",
     "imageKind": "crop",
     "content": "<서술형 3>\n주머니 A에는 검은 공 4개, 흰 공 3개, 주머니 B에는 검은 공 2개, 흰 공 3개가 들어있다. 주머니 A에서 임의로 3개의 공을 꺼내고 주머니 B에서 임의로 2개의 공을 동시에 꺼내서 서로 상대 주머니에 넣었다. 공을 서로 교환한 후 두 주머니 A, B에 들어 있는 검은 공과 흰 공이 각각 3개씩일 때, 흰 공이 서로 교환되지 않았을 확률을 풀이 과정과 함께 상세하게 서술하시오. [8점]",
     "choices": [],
