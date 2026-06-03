@@ -95,4 +95,6 @@ jobs:
         run: |
           set -euo pipefail
           echo "Top exams/images prefixes:"
-          rclone lsf "r2-ap-assets:${R2_BUCKET}/exams/images" --dirs-only --max-depth 1 | head -50
+          rclone lsf "r2-ap-assets:${R2_BUCKET}/exams/images" --dirs-only --max-depth 1 > /tmp/r2-prefixes.txt
+          head -50 /tmp/r2-prefixes.txt
+
