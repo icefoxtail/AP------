@@ -1,0 +1,98 @@
+name: R2 Archive Assets Copy
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "archive/assets/images/**"
+      - ".github/workflows/r2-archive-assets-copy.yml"
+
+jobs:
+  copy-archive-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check archive image folder
+        id: archive_assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -d archive/assets/images ]; then
+            echo "archive/assets/images is absent; nothing to copy."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "exists=true" >> "$GITHUB_OUTPUT"
+
+      - name: Validate secrets
+        if: steps.archive_assets.outputs.exists == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            R2_ACCOUNT_ID
+            R2_ACCESS_KEY_ID
+            R2_SECRET_ACCESS_KEY
+            R2_BUCKET
+            R2_PUBLIC_BASE_URL
+          )
+
+          for name in "${required[@]}"; do
+            if [ -z "${!name:-}" ]; then
+              echo "Missing required secret: ${name}" >&2
+              exit 1
+            fi
+          done
+
+      - name: Install rclone
+        if: steps.archive_assets.outputs.exists == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+
+      - name: Configure Cloudflare R2 remote
+        if: steps.archive_assets.outputs.exists == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-ap-assets]
+          type = s3
+          provider = Cloudflare
+          access_key_id = ${R2_ACCESS_KEY_ID}
+          secret_access_key = ${R2_SECRET_ACCESS_KEY}
+          endpoint = https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com
+          acl = private
+          EOF
+          chmod 600 ~/.config/rclone/rclone.conf
+
+      - name: Copy archive image assets
+        if: steps.archive_assets.outputs.exists == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rclone copy archive/assets/images "r2-ap-assets:${R2_BUCKET}/exams/images" \
+            --transfers 16 \
+            --checkers 32 \
+            --fast-list \
+            --progress
+
+      - name: Verify uploaded prefixes
+        if: steps.archive_assets.outputs.exists == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Top exams/images prefixes:"
+          rclone lsf "r2-ap-assets:${R2_BUCKET}/exams/images" --dirs-only --max-depth 1 | head -50
