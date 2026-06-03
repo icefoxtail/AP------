@@ -413,7 +413,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 식의 계산 순서가 옳은 것은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q99.png",
+    
     "choices": [
       "㉠ → ㉡ → ㉢ → ㉣ → ㉤",
       "㉣ → ㉢ → ㉡ → ㉠ → ㉤",
@@ -482,7 +482,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 수직선 위의 점 A, B, C, D, E를 바르게 나타낸 것이 아닌 것은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q102.png",
+    
     "choices": [
       "A: $-\\dfrac{5}{2}$",
       "B: $-\\dfrac{4}{3}$",
@@ -581,7 +581,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림은 수직선을 이용하여 두 수의 덧셈을 한 것이다. 이 그림이 나타내는 식으로 알맞은 것은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q106.png",
+    
     "choices": [
       "$(-3)+(-2)$",
       "$(-3)+(+2)$",
@@ -722,7 +722,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 계산 과정 중 덧셈에 대한 교환법칙과 덧셈에 대한 결합법칙이 이용된 곳을 순서대로 말하여라.",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q112.png",
+    
     "choices": [],
     "answer": "㉡, ㉢",
     "solution": "[키포인트] 덧셈의 교환법칙은 순서 바꾸기, 결합법칙은 묶는 방법 바꾸기이다.\n조건 정리: 계산 과정에서 항의 순서를 바꾼 곳과 괄호로 묶은 곳을 구분한다.\n풀이 방향: 그림의 각 단계에서 어떤 법칙이 사용되었는지 확인한다.\n정석 풀이: ㉡에서 덧셈의 순서를 바꾸었고, ㉢에서 덧셈의 묶는 방법을 바꾸었다.\n따라서 구하는 값은 ㉡, ㉢이다."
@@ -809,7 +809,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 중 가장 먼저 계산하여야 할 곳은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q116.png",
+    
     "choices": [
       "①",
       "②",
@@ -944,7 +944,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 중 수직선 위의 점 A, B, C, D, E에 대한 설명 중 옳지 않은 것은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q122.png",
+    
     "choices": [
       "자연수가 아닌 정수는 1개이다.",
       "점 A가 나타내는 수는 $-\\dfrac{5}{2}$이다.",
@@ -1337,7 +1337,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 수직선 위의 두 점 A, B에 대응하는 수를 $a,b$라 할 때, 다음 <보기> 중 옳은 것을 모두 고른 것은?\n<보기> ㉠ $a\\times b<0$  ㉡ $a\\div b>0$  ㉢ $a+b>0$  ㉣ $a-b<0$",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q140.png",
+    
     "choices": [
       "㉠, ㉡",
       "㉠, ㉢",
@@ -1388,7 +1388,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 수직선 위의 다섯 개의 점 A, B, C, D, E가 나타내는 수로 옳지 않은 것은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q142.png",
+    
     "choices": [
       "A: $-3$",
       "B: $-\\dfrac52$",
@@ -1529,7 +1529,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음은 $\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)$을 계산하는 과정이다. 빈 칸에 들어갈 수를 차례대로 구하여라.",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q148.png",
+    
     "choices": [],
     "answer": "$+\\dfrac32$, $+\\dfrac96$, $+\\dfrac{13}{6}$",
     "solution": "[키포인트] 음수를 빼는 것은 그 수의 반대수를 더하는 것이다.\n조건 정리: $\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)=\\left(+\\dfrac23\\right)+\\left(+\\dfrac32\\right)$이다.\n풀이 방향: 분모를 6으로 통분한다.\n정석 풀이: $\\dfrac23=\\dfrac46$, $\\dfrac32=\\dfrac96$이므로 합은 $\\dfrac{13}{6}$이다.\n따라서 구하는 값은 $+\\dfrac32$, $+\\dfrac96$, $+\\dfrac{13}{6}$이다."
@@ -1550,7 +1550,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 중 $\\dfrac16-\\left(+\\dfrac23\\right)-\\left(-\\dfrac12\\right)$의 계산 결과를 수직선 위에 나타낸 것으로 옳은 것은?",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q149.png",
+    
     "choices": [
       "A",
       "B",
@@ -1625,7 +1625,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림에서 가로, 세로, 대각선에 있는 수들의 합이 모두 같도록 $A,B$의 값을 정할 때, $A\\div B$의 값을 구하여라.",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q152.png",
+    
     "choices": [],
     "answer": "2",
     "solution": "[키포인트] 마방진의 가로, 세로, 대각선 합이 같다는 조건을 이용한다.\n조건 정리: 그림에서 한 줄의 합이 3임을 알 수 있다.\n풀이 방향: 가로와 세로 조건으로 $A,B$를 구한다.\n정석 풀이: $6+1+A=3$이므로 $A=-4$이고, $-4+9+B=3$이므로 $B=-2$이다. 따라서 $A\\div B=(-4)\\div(-2)=2$이다.\n따라서 구하는 값은 $2$이다."
@@ -1766,7 +1766,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 안에 알맞은 수를 차례대로 써라.",
-    "image": "assets/images/중1_중간대비_2단원_정수와유리수/q158.png",
+    
     "choices": [],
     "answer": "$-8$, $-\\dfrac32$, $-1$, $4$",
     "solution": "[키포인트] 거듭제곱과 나눗셈을 먼저 계산하고 괄호 안을 정리한다.\n조건 정리: 식은 $3-\\{12\\div(-2)^3+\\dfrac12\\}$이다.\n풀이 방향: 계산 과정의 빈칸에 들어갈 중간값을 차례로 찾는다.\n정석 풀이: $(-2)^3=-8$, $12\\div(-8)=-\\dfrac32$, $-\\dfrac32+\\dfrac12=-1$이므로 전체값은 $3-(-1)=4$이다.\n따라서 구하는 값은 $-8$, $-\\dfrac32$, $-1$, $4$이다."

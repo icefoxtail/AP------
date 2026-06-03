@@ -98,7 +98,7 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "고1",
+    "level": "하",
     "category": "수학",
     "originalCategory": "수학",
     "standardCourse": "고등 수학",
@@ -434,7 +434,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "고",
+    "level": "상",
     "category": "수학I",
     "originalCategory": "수학I",
     "standardCourse": "고등 수학",
@@ -494,7 +494,7 @@ window.questionBank = [
 },
 {
   "id": 22,
-  "level": "고",
+  "level": "상",
   "category": "수학I",
   "originalCategory": "수학I",
   "standardCourse": "고등 수학",

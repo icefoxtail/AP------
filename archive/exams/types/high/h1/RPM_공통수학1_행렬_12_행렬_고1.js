@@ -2139,7 +2139,7 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 \\(A=\\begin{pmatrix}3&x\\\\6&-2\\end{pmatrix},\\ B=\\begin{pmatrix}-2&y\\\\-6&3\\end{pmatrix}\\)에 대하여 \\((A-B)^2=A^2-2AB+B^2\\)을 만족시키는 두 실수 \\(x, y\\)의 관계식을 나타내는 그래프의 개형은?",
     "choices": [],
-    "image": "assets/images/RPM_공통수학1_행렬_12_행렬_고1/q1166.png",
+    
     "answer": "",
     "solution": "",
     "displayNo": "1169",

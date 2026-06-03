@@ -1,4 +1,5 @@
 window.examTitle = "25_순천고_2학기_기말_고2_확률과통계";
+
 window.questionBank = [
   {
     "id": 1,
@@ -9,7 +10,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p001.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "한 개의 주사위를 90번 던져 6의 약수의 눈이 나오는 횟수를 확률변수 X라고 할 때, 확률변수 X^2의 평균 E(X^2)은? [3.4점]",
     "choices": [
@@ -52,7 +53,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 6,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p001.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "서로 다른 두 개의 동전을 동시에 던지는 시행을 반복할 때, 200번 던져 모두 앞면이 나오는 횟수를 확률변수 X라고 하자. 확률변수 Y=2X+3의 평균을 구하면? [3.4점]",
     "choices": [
@@ -439,7 +440,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p003.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "이산확률변수 X가 가지는 값이 0부터 4까지의 정수이고\n\nP(X=x) = |4x-3|/20 (x=0,1,2,3), a (x=4)\n\n일 때, V((1/a)X)의 값은? (단, a는 0이 아닌 상수이다.) [3.8점]",
     "choices": [
@@ -525,7 +526,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p004.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "이산확률변수 X의 확률질량함수가 P(X=x)=a/((x+1)(x+2)) (x=1, 2, ..., 10)일 때, P(X>3a)의 값을 구하면? (단, a는 상수이다.) [3.9점]",
     "choices": [
@@ -611,7 +612,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p004.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "0≤X≤6에서 정의된 연속확률변수 X의 확률밀도함수 f(x)가 다음과 같다.\n\nf(x)=a(3-x) (0≤x≤3), f(x)=b/3(x-3) (3≤x≤6)\n\nP(0≤X≤3)=3b일 때, a+b의 값을 구하면? [4.0점]",
     "choices": [
@@ -869,7 +870,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p006.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "두 연속확률변수 X와 Y가 갖는 값의 범위는 -4≤X≤4, -3≤Y≤9이고, X와 Y의 확률밀도함수는 각각 f(x), g(x)이다. 두 함수 f(x), g(x)가 다음 조건을 만족시킬 때, 16P(-3≤X≤3)의 값을 구하면? (단, a, b는 양의 상수이다.) [4.4점]\n\n(가) 0≤x≤4일 때 f(x)=ax+b이고, -4≤x≤4인 모든 실수 x에 대하여 f(-x)=f(x)를 만족시킨다.\n(나) -3≤x≤3일 때 g(x)=ax+b이고, 0≤x≤6인 모든 실수 x에 대하여 g(3+x)=g(3-x)를 만족시킨다.",
     "choices": [
@@ -990,7 +991,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 6,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p006.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "<서술형 3>\n여섯 개의 수 3, 3, 3, 4, 4, 6이 각 면에 하나씩 적혀 있는 정육면체 모양의 상자를 던져 바닥에 닿은 면에 적혀 있는 수를 확인한다. 이와 같은 시행을 3회 반복할 때, 바닥에 닿은 면에 적혀 있는 수 중에서 최댓값과 최솟값의 차를 확률변수 X라 하자. 확률변수 X의 분산 V(X)를 풀이와 함께 자세히 서술하시오. (단, 바닥에 닿은 면에 적혀 있는 수가 모두 같으면 X=0이다.) [부분점수 있음, 7점]",
     "choices": [],

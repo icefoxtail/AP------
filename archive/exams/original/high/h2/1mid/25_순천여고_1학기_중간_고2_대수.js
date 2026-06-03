@@ -458,7 +458,7 @@ window.questionBank = [
 },
 {
   id: 20,
-  level: "",
+  level: "상",
   category: "지수함수와 로그함수",
   originalCategory: "지수함수와 로그함수",
   standardCourse: "대수",

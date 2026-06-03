@@ -212,7 +212,6 @@ window.questionBank = [
     layoutTag: "grid",
     "tags": ["객관식","확률","경우의수","순열","도형","원","조건해석","계산"],
     wide: false,
-    content: "정오각형 모양의 탁자에 15명의 사람들이 둘러앉는 방법의 수를 $13!\\times a$라고 할 때, $a$의 값은?<br><img src=\"assets/images/25_수피아여고_1학기_중간_고2_확률과통계/q10.png\" style=\"display:block; width:240px; margin:10px auto;\">",
     choices: [
       "14",
       "15",

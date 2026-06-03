@@ -1,4 +1,5 @@
 window.examTitle = "25_강남여고_2학기_기말_고2_확률과통계";
+
 window.questionBank = [
   {
     "id": 1,
@@ -52,7 +53,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p001.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "2. 확률변수 X가 이항분포 B(54, 1/9)을 따를 때, X의 평균은? (3.5점)",
     "choices": [
@@ -225,7 +226,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p002.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "6. 확률변수 X에 대하여 E(X)=10, V(X)=4이고, 확률변수 Y에 대하여 Y=2X+5일 때, E(Y)-V(Y)의 값은? (3.8점)",
     "choices": [
@@ -269,7 +270,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p002.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "7. 확률변수 X가 정규분포 N(m, σ^2)를 따르고 P(X≥48)=P(X≤52)일 때, 상수 m의 값은? (3.8점)",
     "choices": [
@@ -313,7 +314,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p002.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "8. 확률변수 X의 확률밀도함수가 f(x)=a(x-2) (2≤x≤5)일 때, 상수 a의 값은? (3.8점)",
     "choices": [
@@ -399,7 +400,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p003.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "10. 어느 고등학교 전체 학생의 자율 학습 참여율은 50%라고 한다. 이 학교 학생 중에서 100명을 임의로 뽑을 때, 자율 학습을 하는 학생의 수를 확률변수 X라고 하면 P(a≤X≤55)=0.8185일 때, 상수 a의 값은? (4점)",
     "choices": [
@@ -572,7 +573,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p003.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "14. 1부터 6까지의 자연수가 하나씩 적혀 있는 6장의 카드 중에서 임의로 4장의 카드를 동시에 뽑는 시행을 14번 반복한다. n번째 시행에서 뽑은 4장의 카드에 적힌 수 중에서 두 번째로 큰 수를 x_n이라 하자. 14개의 수 x_1, x_2, ..., x_14의 평균을 X̄라 할 때, E(5X̄-15)+V(5X̄+10)의 값은? (4점)",
     "choices": [
@@ -615,7 +616,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p004.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "15. 확률변수 X는 이항분포 B(3, p)를 따르고 확률변수 Y는 이항분포 B(4, 2p)를 따른다고 한다. 이때, 10P(X=3)=P(Y≥3)을 만족시키는 양수 p의 값은? (4점)",
     "choices": [
@@ -701,7 +702,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p004.png",
+    "image": "",
     "imageKind": "full_page",
     "content": "17. 확률변수 X가 이항분포 B(180, 1/6)을 따를 때, t에 대한 이차방정식 t^2-2Xt+55X-700=0이 실근을 가질 확률은? (4.5점)",
     "choices": [
@@ -873,8 +874,6 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q21.png",
-    "imageKind": "crop",
     "content": "[서술형 1] 동전 1개를 던져서 앞면이 나오면 4점을 얻고, 뒷면이 나오면 3점을 잃는 게임을 하였다. 동전 1개를 100번 던진 후, 최종점수가 120점 이상일 확률을 구하시오. (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0\\le Z\\le2.0)=0.4772$) (5점)",
     "choices": [],
     "answer": "0.0228",
