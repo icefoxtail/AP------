@@ -5383,3 +5383,221 @@ button.eie-v2-card-student:hover {
         padding: 3px 5px;
     }
 }
+
+/* EIE timetable mini classroom editable panel */
+.eie-v2-mini-classroom .eie-v2-detail-section {
+    gap: 10px;
+}
+
+.eie-v2-mini-head {
+    gap: 10px;
+}
+
+.eie-v2-mini-title {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-title span,
+.eie-v2-mini-field span,
+.eie-v2-mini-day-cell span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-mini-title input {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 14px;
+    padding: 12px 13px;
+    color: var(--eie-text);
+    font-size: 20px;
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.eie-v2-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.eie-v2-mini-field {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-field.is-wide {
+    grid-column: 1 / -1;
+}
+
+.eie-v2-mini-field input,
+.eie-v2-mini-field select,
+.eie-v2-mini-field textarea,
+.eie-v2-mini-day-cell input,
+.eie-v2-mini-add-student select {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 10px 11px;
+    color: var(--eie-text);
+    font-size: 13px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.eie-v2-mini-field textarea {
+    min-height: 74px;
+    resize: vertical;
+}
+
+.eie-v2-mini-day-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.eie-v2-mini-day-cell {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-day-cell input {
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.eie-v2-mini-teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.eie-v2-mini-student-list {
+    display: grid;
+    gap: 8px;
+}
+
+.eie-v2-mini-student-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.eie-v2-mini-student-row > span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eie-v2-mini-add-student {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.eie-v2-info {
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    border-radius: 12px;
+    background: rgba(34, 197, 94, 0.08);
+    color: #166534;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-mini-grid,
+    .eie-v2-mini-add-student {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-v2-mini-day-grid {
+        grid-template-columns: repeat(5, minmax(48px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+
+    .eie-v2-mini-student-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .eie-v2-mini-student-row > span {
+        display: none;
+    }
+}
+
+/* EIE timetable v5 density and horizontal card scroll */
+.eie-v2-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
+    gap: 10px;
+}
+
+.eie-v2-card-board {
+    gap: 8px;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 18px;
+}
+
+.eie-v2-period-head {
+    min-height: 96px;
+    padding: 10px 8px;
+    border-radius: 14px;
+}
+
+.eie-v2-period-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 3px;
+    scrollbar-width: thin;
+}
+
+.eie-v2-week-card {
+    flex: 0 0 228px;
+    min-height: 96px;
+    padding: 9px;
+    border-radius: 15px;
+}
+
+.eie-v2-detail-panel {
+    position: sticky;
+    top: 74px;
+    max-height: calc(100vh - 92px);
+    overflow: auto;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-layout {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .eie-v2-period-row {
+        grid-template-columns: 78px minmax(0, 1fr);
+    }
+
+    .eie-v2-week-card {
+        flex-basis: min(252px, 84vw);
+    }
+
+    .eie-v2-detail-panel {
+        position: static;
+        max-height: none;
+    }
+}

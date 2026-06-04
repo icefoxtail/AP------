@@ -2504,6 +2504,26 @@ function renderTodoSections() {
     const onboardingWeeklyCount = typeof getDashboardWeeklyOnboardingTasks === 'function' ? getDashboardWeeklyOnboardingTasks().length : 0;
     const hasWeeklyItems = upcomingItems.length > 0 || onboardingWeeklyCount > 0;
 
+    // 청소 당번 계산 (매주 월요일 기준 순환)
+    const CLEANING_ROSTER = ['정겨운', '박준성', '정의한', '원장님'];
+    const CLEANING_REF_MONDAY = new Date('2026-06-09T00:00:00'); // 기준: 박준성(index 1)
+    const todayDate = new Date(todayStr + 'T00:00:00');
+    const todayDay = todayDate.getDay(); // 0=일,1=월,...,6=토
+    const diffToMonday = todayDay === 0 ? -6 : 1 - todayDay;
+    const thisMonday = new Date(todayDate);
+    thisMonday.setDate(todayDate.getDate() + diffToMonday);
+    const weekDiff = Math.round((thisMonday - CLEANING_REF_MONDAY) / (7 * 24 * 60 * 60 * 1000));
+    const cleaningPerson = CLEANING_ROSTER[((1 + weekDiff) % 4 + 4) % 4];
+    const cleaningHtml = `
+        <div style="${rowBase} border-bottom:1px solid var(--border); background:transparent;">
+            <div style="display:flex; align-items:center; gap:8px; min-width:0;">
+                <span style="font-size:13px;">🧹</span>
+                <span style="font-size:13px; font-weight:400; color:var(--text);">이번 주 청소 당번</span>
+                <span style="font-size:13px; font-weight:600; color:var(--primary);">${apEscapeHtml(cleaningPerson)}</span>
+            </div>
+            <span style="font-size:11px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; white-space:nowrap; flex-shrink:0;">매주 월요일</span>
+        </div>`;
+
     return `
         <div style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
@@ -2512,12 +2532,13 @@ function renderTodoSections() {
             <div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--surface);">
                 ${todayHtml}
             </div>
-            
-            <div id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" style="${hasWeeklyItems ? '' : 'display:none;'}">
+
+            <div id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" style="">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                     <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
                 </div>
                 <div id="dashboard-weekly-schedule-list" class="ap-dashboard-surface-list ap-dashboard-surface-list--weekly" style="overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--surface);">
+                    ${cleaningHtml}
                     ${upcomingHtml}
                     <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
                 </div>
