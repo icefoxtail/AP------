@@ -1,4 +1,4 @@
-window.examTitle = "중1_1학기_정수와유리수의덧셈과뺄셈";
+﻿window.examTitle = "중1_1학기_정수와유리수의덧셈과뺄셈";
 
 window.questionBank = [
   {
@@ -1014,29 +1014,6 @@ window.questionBank = [
     solution: "[솔포인트] 수의 주기가 반복되는 규칙을 가집니다. $2010$을 주기의 숫자로 나누어 떨어지는 나머지를 확인하면 대응하는 값은 $-9$입니다."
   },
   {
-    id: 49,
-    level: "중",
-    category: "정수와 유리수의 덧셈과 뺄셈",
-    originalCategory: "정수와 유리수의 덧셈과 뺄셈",
-    standardCourse: "중학 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    subUnitKey: "M1-02-RATIONAL_NUMBER_OPERATIONS",
-    subUnit: "정수와 유리수의 계산",
-    conceptClusterKey: "RATIONAL_NUMBER_OPERATIONS",
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["객관식","도형","표","수직선","유리수","사칙연산","덧셈","뺄셈","계산","범위","활용","실생활"],
-    wide: false,
-    content: "다음 표는 수직선 위의 5개의 점 $A, B, C, D, E, F$ 구간 사이의 거리를 나타낸 표이다. 예를 들면, $B$와 $D$의 사이의 거리는 $46$이다. 이때 $D$와 $E$ 사이의 거리는? (단, $A < B < C < D < E < F$) A$32$BC$46$D$101$$54$E$49$F",
-    choices: ["12","19","20","23","31"],
-    answer: "②",
-    solution: "[솔포인트] 각 알파벳의 수직선상 거리를 연립방정식으로 풀어 $D$와 $E$ 사이의 간격을 구하면 정답은 $23$이 됩니다.",
-    reviewNeeded: true,
-    reviewReason: "표 데이터가 텍스트로 깨져 있어 D-E 거리를 원문 없이 확정하기 어려움"
-  },
-  {
     id: 50,
     level: "하",
     category: "정수와 유리수의 덧셈과 뺄셈",
@@ -1247,3 +1224,4 @@ window.questionBank = [
     solution: "[솔포인트] 홀수와 짝수가 쌍을 이루어 빼지는 구조입니다. $(1-2) + (3-4) + \\dots + (499-500)$ 구조이므로 $-1$이 총 $250$번 더해져 정답은 $-250$이 됩니다."
   }
 ];
+

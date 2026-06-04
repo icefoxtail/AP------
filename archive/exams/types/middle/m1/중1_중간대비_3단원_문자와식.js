@@ -1,4 +1,4 @@
-window.examTitle = "중1_중간대비_3단원_문자와식";
+﻿window.examTitle = "중1_중간대비_3단원_문자와식";
 
 window.questionBank = [
   {
@@ -218,24 +218,6 @@ window.questionBank = [
     solution: "[키포인트] 비례식을 이용해 $y$를 $x$로 나타낸다.\n조건 정리: $x:y=1:2$이므로 $y=2x$이다.\n풀이 방향: 주어진 식에 $y=2x$를 대입한다.\n정석 풀이: $\\dfrac{x^2+y^2}{3x^2-xy}=\\dfrac{x^2+4x^2}{3x^2-2x^2}=5$이다.\n따라서 정답은 ③이다."
   },
   {
-    id: 173,
-    level: "중",
-    category: "문자와 식",
-    originalCategory: "문자와 식",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-03",
-    standardUnit: "문자와 식",
-    standardUnitOrder: 3,
-    questionType: "단답형",
-    layoutTag: "grid",
-    tags: ["도형"],
-    wide: false,
-    content: "한 변의 길이가 $x$ cm인 정사각형을 그림과 같이 한 변의 길이가 5 cm인 직사각형으로 나누었을 때, 어두운 부분의 넓이를 구하여라.",
-    choices: [],
-    answer: "$(10x-50)$ cm²",
-    solution: "[키포인트] 도형의 넓이는 직사각형 넓이를 이용해 표현한다.\n조건 정리: 어두운 부분은 같은 모양의 직사각형 2개로 볼 수 있다.\n풀이 방향: 각 직사각형의 넓이를 구해 더한다.\n정석 풀이: $2\\{(x-5)\\times5\\}=10x-50$이므로 어두운 부분의 넓이는 $(10x-50)$ cm²이다.\n따라서 구하는 값은 $(10x-50)$ cm²이다."
-  },
-  {
     id: 174,
     level: "중",
     category: "문자와 식",
@@ -326,24 +308,6 @@ window.questionBank = [
     solution: "[키포인트] 문자식의 나눗셈과 분배법칙을 각각 확인한다.\n조건 정리: 각 보기의 계산 결과를 직접 구한다.\n풀이 방향: 옳은 등식만 고른다.\n정석 풀이: (가)는 $18$, (나)는 $-12x-28$, (다)는 $-3x+15$이므로 옳은 것은 (나)이다.\n따라서 구하는 값은 (나)이다."
   },
   {
-    id: 179,
-    level: "중",
-    category: "문자와 식",
-    originalCategory: "문자와 식",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-03",
-    standardUnit: "문자와 식",
-    standardUnitOrder: 3,
-    questionType: "단답형",
-    layoutTag: "grid",
-    tags: ["도형"],
-    wide: false,
-    content: "다음 그림과 같은 직사각형에서 어두운 부분의 넓이를 구하여라.",
-    choices: [],
-    answer: "$18a+9b$",
-    solution: "[키포인트] 전체 직사각형의 넓이에서 흰 부분의 넓이를 뺀다.\n조건 정리: 전체 넓이와 빼야 할 두 삼각형의 넓이를 식으로 나타낸다.\n풀이 방향: 주어진 도형의 치수를 이용하여 계산한다.\n정석 풀이: $(3a+2b)\\times9-\\dfrac12\\times6\\times3a-\\dfrac12\\times2b\\times9=27a+18b-9a-9b=18a+9b$이다.\n따라서 구하는 값은 $18a+9b$이다."
-  },
-  {
     id: 180,
     level: "중",
     category: "문자와 식",
@@ -396,24 +360,6 @@ window.questionBank = [
     choices: ["$4×a×a=4+2a$","$b×a×(-1)=-ab$","$x÷5=5x$","$a÷3+b×2=3a+\\dfrac{b}{2}$","$a÷(2×b)=\\dfrac{a}{2b}$"],
     answer: "②, ⑤",
     solution: "[키포인트] 곱셈과 나눗셈 기호 생략 규칙을 각각 적용한다.\n조건 정리: 각 보기의 식을 생략 표기 규칙에 맞게 바꾼다.\n풀이 방향: 옳게 나타낸 보기만 고른다.\n정석 풀이: ② $b\\times a\\times(-1)=-ab$, ⑤ $a\\div(2\\times b)=\\dfrac{a}{2b}$가 옳다.\n따라서 구하는 값은 ②, ⑤이다."
-  },
-  {
-    id: 183,
-    level: "중",
-    category: "문자와 식",
-    originalCategory: "문자와 식",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-03",
-    standardUnit: "문자와 식",
-    standardUnitOrder: 3,
-    questionType: "단답형",
-    layoutTag: "grid",
-    tags: ["도형"],
-    wide: false,
-    content: "다음 도형의 넓이를 문자를 사용한 식으로 간단히 나타내어라.",
-    choices: [],
-    answer: "$28-xy$",
-    solution: "[키포인트] 전체 직사각형 넓이에서 빠진 부분의 넓이를 이용한다.\n조건 정리: 그림의 전체 넓이와 잘린 부분의 넓이를 식으로 나타낸다.\n풀이 방향: 동류항을 정리한다.\n정석 풀이: $7(4-x)+(7-y)x=28-7x+7x-xy=28-xy$이다.\n따라서 구하는 값은 $28-xy$이다."
   },
   {
     id: 184,
@@ -722,3 +668,4 @@ window.questionBank = [
     solution: "[키포인트] 조건을 식으로 세워 $A$와 $B$를 구한다.\n조건 정리: $A+(2x-3)=5x-7$이므로 $A=3x-4$이다.\n풀이 방향: 또 $B-A=x+5$이므로 $B=x+5+A=4x+1$이다.\n정석 풀이: $A+B=7x-3$이고 $x=-1$을 대입하면 $-7-3=-10$이다.\n따라서 구하는 값은 $-10$이다."
   }
 ];
+
