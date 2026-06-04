@@ -14,6 +14,11 @@
             <button class="eie-hamburger-btn" onclick="eieOpenDrawer()" aria-label="메뉴 열기" title="메뉴">
                 <span class="eie-hamburger-glyph">☰</span>
             </button>
+            <button id="eie-mobile-back-button" class="app-back-btn" type="button" onclick="eieHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>
+                <svg class="app-back-btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
         </div>
         <div class="eie-header-brand" onclick="eieGoHome()">
             <span class="eie-header-logo-badge">E</span>
@@ -23,6 +28,11 @@
 
     <!-- ── Desktop topbar (AP MATH .desktop-topbar와 동일 구조) ── -->
     <div class="eie-desktop-topbar" id="eie-desktop-topbar">
+        <button id="eie-desktop-back-button" class="app-back-btn" type="button" onclick="eieHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>
+            <svg class="app-back-btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
         <div class="eie-topbar-brand" onclick="eieGoHome()">
             <span class="eie-header-logo-badge">E</span>
         </div>

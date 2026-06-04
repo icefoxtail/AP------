@@ -1,151 +1,167 @@
-# JS아카이브 내부 검수 엔진
+# JS아카이브 내부 검수 엔진 — 운영 가이드
 
-## 목적
+## 개요
 
-GitHub에 올리기 전, 로컬에서 `archive/exams/**/*.js` 문제 파일을 시험지처럼 열어보고  
-문항별로 수정한 뒤 실제 JS 파일에 바로 저장하는 내부 검수 도구입니다.  
-기존 `engine.html` / `mixed_engine.html` / `mixer.html` 출력 엔진은 건드리지 않습니다.
+`archive/internal-review-engine.html` 은 JS 형식의 문제 파일을 브라우저에서 직접 검수하고
+수정하여 원본 JS 파일에 덮어쓰는 도구입니다.
+Chrome / Edge (localhost) 에서만 동작하며, File System Access API 가 필요합니다.
 
 ---
 
-## 실행 방법
-
-```bash
-cd C:\Users\USER\Desktop\AP------
-python -m http.server 8765
-```
-
-브라우저(Chrome 또는 Edge)에서 접속:
+## 화면 구조
 
 ```
-http://localhost:8765/archive/internal-review-engine.html
+[상단 바]                 — 파일 열기 / 저장 / 다운로드 / 출력 모드 / 탭 전환
+[왼쪽 패널]               — archive 폴더 열기 상태, 파일 목록, 필터, 검색, 통계
+[가운데 패널 (탭 3개)]    — 실제 출력 / 편집 검수 / 검수표
+[오른쪽 수정 패널]        — 선택 문항 수정 폼
 ```
 
-> **Chrome / Edge 전용** — File System Access API 사용.  
-> Firefox / Safari에서는 파일 저장 기능 불가 (다운로드만 가능).
+---
+
+## 탭 설명
+
+### 실제 출력 탭
+
+- `archive/engine.html` 을 iframe 으로 표시합니다.
+- URL 파라미터: `engine.html?data=exams/.../파일명.js&mode=exam&qpp=4&v=타임스탬프`
+- **저장된 JS 파일 기준으로만 표시됩니다.** 미저장 수정은 iframe 에 반영되지 않습니다.
+- 미저장 수정이 있으면 iframe 위에 "미저장 수정 있음" 배지가 표시됩니다.
+- 저장 후 `refreshEnginePreviewFrameOnly()` 가 호출되어 iframe.src 만 교체됩니다.
+  부모 페이지 reload 는 절대 발생하지 않습니다.
+
+### 편집 검수 탭
+
+- `currentBank` 메모리 기준으로 문항 카드를 렌더링합니다.
+- 저장하지 않은 수정도 즉시 반영됩니다 (commitEditorDraft 가 currentBank 에 직접 씁니다).
+- 카드를 클릭하면 오른쪽 수정 패널에 해당 문항이 로드됩니다.
+- 경고 배지, 수정됨 배지, 추천 난이도 배지가 카드에 표시됩니다.
+
+### 검수표 탭
+
+- 표 형태로 전체 문항을 표시합니다.
+- 행을 클릭하면 오른쪽 수정 패널에 로드됩니다.
+- 제거된 문항은 하단 별도 섹션에 표시됩니다.
 
 ---
 
-## archive 폴더 열기
+## 여러 문항 수정 후 저장
 
-1. 왼쪽 패널 **📂 archive 폴더 열기** 클릭  
-2. `C:\Users\USER\Desktop\AP------\archive` 폴더 선택  
-3. 브라우저 권한 다이얼로그에서 **허용** 클릭  
-4. `archive/exams/**/*.js` 파일만 왼쪽 목록에 표시됨 (textbook, tools 등 제외)  
-5. 이미지가 `assets/images/**` 에서 자동 매핑됨
-
----
-
-## JS 파일 열기 (단독)
-
-- 왼쪽 패널 **📄 JS 파일 열기** 클릭  
-- `.js` 파일 하나를 선택  
-- 이미지 폴더는 매핑되지 않으므로 이미지 표시 불가 (경고 배지만 표시)
+1. 문항 A 클릭 → 오른쪽 패널에서 수정
+2. 문항 B 클릭 → 이동 전 `commitEditorDraft()` 자동 호출 → A 수정이 `currentBank` 에 저장됨
+3. 문항 B 수정
+4. `수정본 저장` 클릭 → commitEditorDraft → serializeQuestionBank → 파일 덮어쓰기
+5. 저장 후 A, B 수정 모두 JS 파일에 반영됨
 
 ---
 
-## 직접 저장 조건
+## commitEditorDraft 호출 위치
 
-| 방식 | 저장 가능 여부 |
+다음 동작 직전에 반드시 호출됩니다.
+
+- 다른 문항 카드/행 클릭 전
+- 필터 변경 전
+- 검색어 변경 전
+- 미리보기 탭 전환 전
+- 엔진 출력 모드 변경 전
+- 저장 전
+- 다운로드 전
+- 제거 버튼 클릭 전
+- 현재 문항 적용 버튼 클릭 전
+
+---
+
+## 저장 후 리셋 방지
+
+저장 함수 `saveCurrentFile()` 은 다음을 절대 수행하지 않습니다.
+
+- `window.location.reload()` / `location.reload()`
+- `init()` / `resetApp()` 류 전역 초기화
+- `state` 를 새 객체로 교체
+- `fileEntries = []`
+- `archiveDirHandle = null`
+- `currentFileHandle = null`
+- `selectedId = null` (스냅샷으로 복원)
+- `currentBank = deepClone(originalBank)` (저장 성공 시 originalBank ← currentBank 방향)
+
+저장 성공 후에는 스냅샷에서 `selectedId`, `currentFilePath`, `currentFileHandle`,
+`fileEntries`, `archiveDirHandle` 를 그대로 복원합니다.
+
+---
+
+## 저장 후 archive 폴더 / 파일 목록 유지
+
+- `state.fileEntries` 는 저장 과정에서 변경되지 않습니다.
+- `state.archiveDirHandle` 는 저장 과정에서 변경되지 않습니다.
+- 저장 완료 후 `renderFileList()` 를 다시 호출하지 않으므로 목록이 그대로 유지됩니다.
+
+---
+
+## 저장 후 현재 JS / 문항 선택 유지
+
+- `state.currentFileHandle` 가 스냅샷으로 복원됩니다.
+- `state.selectedId` 가 스냅샷으로 복원된 후 오른쪽 패널이 재채워집니다 (닫히지 않음).
+
+---
+
+## 백업
+
+저장 전 자동으로 원본 소스를 다운로드합니다.
+파일명: `원본파일명.before-internal-review-YYYYMMDD-HHMMSS.js`
+
+---
+
+## 줄바꿈 처리
+
+- JS 파일 내부의 `\n` 은 그대로 유지됩니다 (`<br>` 자동 변환 금지).
+- `engine.html` 이 실제 출력 시 `\n` 을 줄바꿈으로 렌더링합니다.
+
+---
+
+## 제외 파일 / 폴더
+
+archive 폴더 열기 시 다음은 자동 제외됩니다.
+
+- `db.js`, `concept_map.js`, `internal-review-engine.js`
+- `tools/`, `assessment/`, `textbook/`, `node_modules/`, `.venv/`, `__pycache__/`
+- `exams/` 하위가 아닌 JS 파일
+
+---
+
+## imageSize 필드
+
+### 개요
+
+`imageSize` 는 문항 스키마의 **선택 필드**입니다. 이미지가 없는 문항에는 절대 추가하지 않습니다.
+
+### 허용값
+
+| 값 | 의미 |
 |---|---|
-| archive 폴더 열기 후 파일 선택 | **가능** (원본 덮어쓰기) |
-| JS 파일 단독 열기 | **가능** (원본 덮어쓰기) |
-| `input type=file` fallback | **불가** (다운로드만) |
+| `small` | 작게 (max-width 50%) |
+| `half` | 절반 (max-width 65%) |
+| `medium` | 보통 (max-width 80%) |
+| `large` | 크게 (max-width 94%) |
+| `full` | 최대 (max-width 100%) |
 
-저장 버튼 클릭 시:
-1. 원본 소스를 백업 파일로 자동 다운로드  
-2. 수정된 내용을 원본 파일에 덮어씀
+### 규칙
 
----
-
-## 다운로드 fallback
-
-- **수정본 다운로드**: 현재 수정 내용을 원본 파일명으로 다운로드 (`Ctrl+D`)  
-- **백업 다운로드**: 원본 소스를 `파일명.before-internal-review-YYYYMMDD-HHMMSS.js`로 다운로드
-
----
-
-## 이미지가 보이는 조건
-
-archive 폴더를 열었을 때 `assets/images/폴더명/파일명.png` 가 자동으로 매핑됩니다.  
-문항의 `image` 필드는 다음 형식 모두 지원합니다 (자동 정규화):
-
-| 입력 형식 | 정규화 결과 |
-|---|---|
-| `assets/images/폴더/q1.png` | `assets/images/폴더/q1.png` |
-| `archive/assets/images/폴더/q1.png` | `assets/images/폴더/q1.png` |
-| `./assets/images/폴더/q1.png` | `assets/images/폴더/q1.png` |
-| `/assets/images/폴더/q1.png` | `assets/images/폴더/q1.png` |
-
-파일 단독 열기 시에는 이미지가 보이지 않으며, 경고 배지로 대체됩니다.
+- 오른쪽 수정 패널 "이미지 크기" select 에서 설정합니다.
+- **자동** (빈 값) 을 선택하면 `imageSize` 필드가 저장되지 않습니다 (필드 삭제).
+- 이미지가 너무 크거나 작을 때만 수동으로 지정합니다. 대부분은 자동(기본값)으로 두면 됩니다.
+- `imageSize` 는 배치용 `layoutTag` 나 `wide` 를 대체하지 않습니다.
+  - `layoutTag` / `wide` 는 문항 전체 레이아웃을 결정합니다.
+  - `imageSize` 는 해당 문항 이미지의 표시 크기만 조정합니다.
+- `FIELD_ORDER` 에서 `image` 바로 다음 위치에 직렬화됩니다.
 
 ---
 
-## 문항 수정 방법
+## 수정 금지 파일
 
-1. 가운데 패널에서 문항 카드 클릭 → 오른쪽 패널에 수정 폼 열림  
-2. `level` / `questionType` / `layoutTag` / `tags` / `content` / `choices` / `answer` / `solution` / `image` 수정  
-3. **적용** 버튼 클릭 → 현재 검수본에 즉시 반영 (카드 갱신)  
-4. 저장 전까지 원본 파일은 변경되지 않음
-
-### HTML 박스 / 표 렌더링
-
-`content` 안에 HTML이 포함된 경우 카드 미리보기에서 그대로 렌더링됩니다.
-
-| 태그 | 렌더링 |
-|---|---|
-| `<div class="box">`, `<div class="question-note-box">` | 박스 렌더링 |
-| `<table>`, `<tr>`, `<td>` | 표 렌더링 |
-| `<br>`, `<b>`, `<strong>`, `<em>`, `<sup>`, `<sub>` | 인라인 서식 |
-| `<img>` | 이미지 |
-| `script`, `iframe`, `on*` 이벤트 속성 | 자동 제거 |
-
----
-
-## 삭제 / 되돌리기
-
-- **제거 버튼**: 선택 문항을 현재 검수본에서 제거. `제거됨` 필터에서 확인 가능  
-- **되돌리기 버튼**: 선택 문항을 원본 상태로 복원  
-- **전체 되돌리기**: 상단 버튼 → 모든 수정/제거를 원래 상태로 되돌림  
-- 실제 JS 파일은 **저장 버튼을 눌러야만** 변경됨
-
----
-
-## 검수표 사용법
-
-상단 **검수표** 버튼 클릭 → 표 형태로 전체 문항 일람 표시  
-- 행 클릭 → 해당 문항의 수정 패널 열림  
-- **검수표 CSV** 버튼 → `review-table-파일명-날짜시간.csv` 다운로드
-
----
-
-## GitHub 올리기 전 추천 검수 흐름
-
-1. `python -m http.server 8765` 실행  
-2. Chrome에서 `http://localhost:8765/archive/internal-review-engine.html` 접속  
-3. **archive 폴더 열기** → 대상 JS 파일 클릭  
-4. **경고 있음** 필터로 문항 확인 → 수정 패널에서 수정 → 적용  
-5. **난이도 확인** 필터로 level 불일치 문항 검토  
-6. **검수표 CSV** 다운로드로 검수 기록 보관  
-7. **수정본 저장** (Ctrl+S) → 백업 자동 다운로드 후 원본 덮어쓰기  
-8. GitHub 커밋
-
----
-
-## 기존 출력 엔진과의 분리
-
-이 검수 엔진은 아래 파일들과 완전히 독립적입니다:
-
-- `archive/engine.html` — 수정 없음
-- `archive/mixed_engine.html` — 수정 없음
-- `archive/mixer.html` — 수정 없음
-- `archive/db.js` — 수정 없음
-
-기존 엔진의 `wrapLatex` / `autoCompress` / `fitQuestionBox` / `renderExam` / `renderSol` 함수를 사용하거나 수정하지 않습니다.
-
----
-
-## 주의 사항
-
-> **저장 버튼을 누르면 실제 로컬 JS 파일이 즉시 덮어씌워집니다.**  
-> 저장 전에 백업이 자동으로 다운로드되므로, 백업 파일을 반드시 보관하세요.
+- `archive/engine.html`
+- `archive/mixed_engine.html`
+- `archive/mixer.html`
+- `archive/db.js`
+- `archive/exams/**/*.js` (직접 편집 금지, 이 도구를 통해서만 수정)
+- `archive/assessment/**/*.js`
+- `apmath/**`
