@@ -1572,19 +1572,31 @@ async function toggleHw(sid, date) {
     }
 }
 
+function normalizeClassroomArchiveFile(raw = '') {
+    const s = String(raw || '').trim();
+    if (!s) return '';
+    if (s.startsWith('MIXED:')) return s;
+    if (/^https?:\/\//i.test(s)) return s;
+    let path = s.replace(/^archive\//, '').replace(/^\.\//, '').replace(/^\/+/, '');
+    if (!path) return '';
+    if (/^(exams|assets|data)\//.test(path)) return path;
+    if (!path.endsWith('.js')) path += '.js';
+    return `exams/${path}`;
+}
+
 function makeExamListKey(title, date, archiveFile = '') {
     const safeTitle = String(title || '');
     const safeDate = String(date || '');
-    const safeArchive = String(archiveFile || '');
-    if (safeArchive) return `${safeTitle}||${safeDate}||${safeArchive}`;
+    const safeArchive = normalizeClassroomArchiveFile(archiveFile || '');
+    if (safeArchive) return `${safeDate}||${safeArchive}`;
     return `${safeTitle}||${safeDate}`;
 }
 
 function makeExamDetailKey(title, date, archiveFile = '') {
     const safeTitle = String(title || '');
     const safeDate = String(date || '');
-    const safeArchive = String(archiveFile || '');
-    if (safeArchive) return `${safeTitle}||${safeDate}||${safeArchive}`;
+    const safeArchive = normalizeClassroomArchiveFile(archiveFile || '');
+    if (safeArchive) return `${safeDate}||${safeArchive}`;
     return `${safeTitle}||${safeDate}`;
 }
 
@@ -1684,24 +1696,24 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
 
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const archiveFilter = String(archiveFile || '').trim();
+    const archiveFilter = normalizeClassroomArchiveFile(archiveFile || '');
     const isQuestionCountCompatible = function(a, row) {
         const aq = Number(a?.question_count || 0);
         const rq = Number(row?.question_count || 0);
         return !aq || !rq || aq === rq;
     };
     const matchesExamIdentity = function(row) {
-        if (String(row.exam_title || '') !== String(examTitle || '')) return false;
         if (String(row.exam_date || '') !== String(examDate || '')) return false;
-        if (!archiveFilter) return true;
-        const rowArchive = String(row.archive_file || '').trim();
-        if (rowArchive) return rowArchive === archiveFilter;
-        return assignmentSource.some(a =>
-            String(a.exam_title || '') === String(examTitle || '') &&
-            String(a.exam_date || '') === String(examDate || '') &&
-            String(a.archive_file || '').trim() === archiveFilter &&
-            isQuestionCountCompatible(a, row)
-        );
+        if (archiveFilter) {
+            const rowArchive = normalizeClassroomArchiveFile(row.archive_file || '');
+            if (rowArchive) return rowArchive === archiveFilter;
+            return assignmentSource.some(a =>
+                String(a.exam_date || '') === String(examDate || '') &&
+                normalizeClassroomArchiveFile(a.archive_file || '') === archiveFilter &&
+                isQuestionCountCompatible(a, row)
+            );
+        }
+        return String(row.exam_title || '') === String(examTitle || '');
     };
     const sessions = sessionSource.filter(es => matchesExamIdentity(es) && ids.includes(String(es.student_id)));
     const matchedAssignment = assignmentSource.find(a => matchesExamIdentity(a));

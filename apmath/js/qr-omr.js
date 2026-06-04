@@ -125,14 +125,19 @@ function findOmrSessionQuestionCount({ classId = '', examTitle = '', examDate = 
     return rows[0] ? Number(rows[0].question_count || 0) : 0;
 }
 
-function findOmrAssignmentQuestionCount(classId, examTitle, examDate) {
+function findOmrAssignmentQuestionCount(classId, examTitle, examDate, archiveFile = '') {
     const title = String(examTitle || '').trim();
     const date = String(examDate || '').trim();
+    const archive = normalizeQrArchiveFile(archiveFile || '');
     const row = (state.db.class_exam_assignments || state.db.exam_assignments || [])
         .filter(a => String(a.class_id || '') === String(classId || ''))
         .find(a => {
-            if (String(a.exam_title || '').trim() !== title) return false;
             if (date && String(a.exam_date || '').trim() !== date) return false;
+            if (archive) {
+                if (normalizeQrArchiveFile(a.archive_file || '') !== archive) return false;
+            } else if (String(a.exam_title || '').trim() !== title) {
+                return false;
+            }
             return Number(a.question_count || 0) > 0;
         });
     return row ? Number(row.question_count || 0) : 0;
@@ -148,7 +153,7 @@ async function resolveOmrQuestionCount({ archiveFile = '', presetQ = 0, classId 
     const sessionCount = findOmrSessionQuestionCount({ classId, examTitle, examDate, sessionId });
     if (sessionCount > 0) return { count: sessionCount, source: 'session' };
 
-    const assignmentCount = findOmrAssignmentQuestionCount(classId, examTitle, examDate);
+    const assignmentCount = findOmrAssignmentQuestionCount(classId, examTitle, examDate, archiveFile);
     if (assignmentCount > 0) return { count: assignmentCount, source: 'assignment' };
 
     return { count: 20, source: 'fallback' };

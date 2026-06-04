@@ -485,7 +485,7 @@ async function registerClassExamAssignmentToOS() {
     const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
     const examTitle = AppState.title || window.examTitle || '시험지';
 
-    const sig = [classId, examTitle, examDate, archiveFile, questionCount, 'archive'].join('|');
+    const sig = [classId, examDate, archiveFile, questionCount, 'archive'].join('|');
     if (sig === _classExamAssignmentRegisteredSig) return;
 
     try {

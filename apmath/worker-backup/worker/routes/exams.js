@@ -39,6 +39,49 @@ function normalizeOptionalText(value) {
   return text || null;
 }
 
+function normalizeAssignmentArchiveFile(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  if (raw.startsWith('MIXED:')) return raw;
+  if (/^https?:\/\//i.test(raw)) return raw;
+
+  let path = raw
+    .replace(/^archive\//, '')
+    .replace(/^\.\//, '')
+    .replace(/^\/+/, '');
+
+  if (!path) return '';
+  if (/^(exams|assets|data)\//.test(path)) return path;
+  if (!path.endsWith('.js')) path += '.js';
+  return `exams/${path}`;
+}
+
+function getAssignmentArchiveCandidates(value) {
+  const raw = String(value || '').trim();
+  const normalized = normalizeAssignmentArchiveFile(raw);
+  return [...new Set([raw, normalized].filter(Boolean))];
+}
+
+function buildAssignmentIdentityKey(row = {}) {
+  const classId = String(row.class_id || '').trim();
+  const examDate = String(row.exam_date || '').trim();
+  const archiveFile = normalizeAssignmentArchiveFile(row.archive_file || '');
+  if (classId && examDate && archiveFile) return `${classId}||${examDate}||${archiveFile}`;
+  return `${classId}||${String(row.exam_title || '').trim()}||${examDate}`;
+}
+
+function dedupeClassExamAssignments(rows = []) {
+  const seen = new Set();
+  const deduped = [];
+  for (const row of rows || []) {
+    const key = buildAssignmentIdentityKey(row);
+    if (key && seen.has(key)) continue;
+    if (key) seen.add(key);
+    deduped.push(row);
+  }
+  return deduped;
+}
+
 function normalizeTargetScope(value) {
   const text = String(value || '').trim();
   return TARGET_SCOPE_VALUES.has(text) ? text : null;
@@ -141,21 +184,38 @@ async function resolveExamAssignmentMeta(env, input) {
     const classId = normalizeOptionalText(input.class_id);
     const examTitle = normalizeOptionalText(input.exam_title);
     const examDate = normalizeOptionalText(input.exam_date);
-    const archiveFile = String(input.archive_file || '').trim();
-    if (!classId || !examTitle || !examDate || !archiveFile) {
+    const archiveFile = normalizeAssignmentArchiveFile(input.archive_file || '');
+    if (!classId || !examDate || (!examTitle && !archiveFile)) {
       return { assignment_id: null, pack_id: payloadPackId };
     }
 
-    const row = await env.DB.prepare(`
-      SELECT *
-      FROM class_exam_assignments
-      WHERE class_id = ?
-        AND exam_title = ?
-        AND exam_date = ?
-        AND archive_file = ?
-      ORDER BY updated_at DESC
-      LIMIT 1
-    `).bind(classId, examTitle, examDate, archiveFile).first();
+    let row = null;
+    const archiveCandidates = getAssignmentArchiveCandidates(input.archive_file || archiveFile);
+    if (archiveCandidates.length) {
+      const markers = archiveCandidates.map(() => '?').join(',');
+      row = await env.DB.prepare(`
+        SELECT *
+        FROM class_exam_assignments
+        WHERE class_id = ?
+          AND exam_date = ?
+          AND archive_file IN (${markers})
+        ORDER BY updated_at DESC
+        LIMIT 1
+      `).bind(classId, examDate, ...archiveCandidates).first();
+    }
+
+    if (!row && examTitle) {
+      row = await env.DB.prepare(`
+        SELECT *
+        FROM class_exam_assignments
+        WHERE class_id = ?
+          AND exam_title = ?
+          AND exam_date = ?
+          AND archive_file = ?
+        ORDER BY updated_at DESC
+        LIMIT 1
+      `).bind(classId, examTitle, examDate, archiveFile).first();
+    }
 
     return {
       assignment_id: normalizeOptionalText(row?.id),
@@ -380,7 +440,7 @@ export async function handleExams(request, env, teacher, path, url) {
         return jsonResponse({ success: false, error: 'class not found' }, 404);
       }
 
-      const archive_file = d.archive_file || '';
+      const archive_file = normalizeAssignmentArchiveFile(d.archive_file || '');
       const source_type = d.source_type || 'archive';
       const aid = crypto.randomUUID();
       const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
@@ -392,6 +452,49 @@ export async function handleExams(request, env, teacher, path, url) {
         assignment_batch_id: normalizeOptionalText(d.assignment_batch_id),
         target_scope: normalizeTargetScope(d.target_scope)
       };
+      const updateSets = [
+        'exam_title = ?',
+        'question_count = ?',
+        'archive_file = ?',
+        'source_type = ?',
+        ...assignmentMetaColumns.map(col => `${col} = COALESCE(?, ${col})`),
+        "updated_at = DATETIME('now')"
+      ];
+
+      let existing = null;
+      const archiveCandidates = getAssignmentArchiveCandidates(d.archive_file || archive_file);
+      if (archiveCandidates.length) {
+        const markers = archiveCandidates.map(() => '?').join(',');
+        existing = await env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id = ?
+            AND exam_date = ?
+            AND archive_file IN (${markers})
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(d.class_id, d.exam_date, ...archiveCandidates).first();
+      }
+
+      if (existing?.id) {
+        await env.DB.prepare(`
+          UPDATE class_exam_assignments
+          SET ${updateSets.join(',\n              ')}
+          WHERE id = ?
+        `).bind(
+          d.exam_title,
+          d.question_count || 0,
+          archive_file,
+          source_type,
+          ...assignmentMetaColumns.map(col => assignmentMeta[col]),
+          existing.id
+        ).run();
+
+        const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
+          .bind(existing.id).first();
+        return jsonResponse({ success: true, assignment });
+      }
+
       const insertColumns = [
         'id', 'class_id', 'exam_title', 'exam_date', 'question_count', 'archive_file', 'source_type',
         ...assignmentMetaColumns,
@@ -399,7 +502,7 @@ export async function handleExams(request, env, teacher, path, url) {
       ];
       const insertValues = [aid, d.class_id, d.exam_title, d.exam_date, d.question_count || 0, archive_file, source_type];
       for (const col of assignmentMetaColumns) insertValues.push(assignmentMeta[col]);
-      const updateSets = [
+      const conflictUpdateSets = [
         'question_count = excluded.question_count',
         'source_type = excluded.source_type',
         ...assignmentMetaColumns.map(col => `${col} = COALESCE(excluded.${col}, class_exam_assignments.${col})`),
@@ -410,7 +513,7 @@ export async function handleExams(request, env, teacher, path, url) {
         INSERT INTO class_exam_assignments (${insertColumns.join(', ')})
         VALUES (${insertValues.map(() => '?').join(', ')}, DATETIME('now'), DATETIME('now'))
         ON CONFLICT(class_id, exam_title, exam_date, archive_file) DO UPDATE SET
-          ${updateSets.join(',\n          ')}
+          ${conflictUpdateSets.join(',\n          ')}
       `).bind(...insertValues).run();
 
       const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ? AND archive_file = ?')
@@ -433,7 +536,7 @@ export async function handleExams(request, env, teacher, path, url) {
         ORDER BY exam_date DESC, updated_at DESC
       `).bind(classId).all();
 
-      return jsonResponse({ success: true, assignments: res.results });
+      return jsonResponse({ success: true, assignments: dedupeClassExamAssignments(res.results || []) });
     }
   }
 
@@ -445,6 +548,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const classId = url.searchParams.get('class') || '';
       const examTitle = url.searchParams.get('exam') || '';
       const examDate = url.searchParams.get('date') || '';
+      const archiveFile = normalizeAssignmentArchiveFile(url.searchParams.get('archive') || '');
 
       if (!classId || !examTitle || !examDate) {
         return jsonResponse({ success: false, error: 'class, exam, date required' }, 400);
@@ -453,13 +557,21 @@ export async function handleExams(request, env, teacher, path, url) {
         return jsonResponse({ error: 'Forbidden' }, 403);
       }
 
-      const targets = await env.DB.prepare(`
-        SELECT id
-        FROM exam_sessions
-        WHERE exam_title = ?
-          AND exam_date = ?
-          AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
-      `).bind(examTitle, examDate, classId).all();
+      const targets = archiveFile
+        ? await env.DB.prepare(`
+          SELECT id
+          FROM exam_sessions
+          WHERE exam_date = ?
+            AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+            AND (archive_file = ? OR (COALESCE(archive_file, '') = '' AND exam_title = ?))
+        `).bind(examDate, classId, archiveFile, examTitle).all()
+        : await env.DB.prepare(`
+          SELECT id
+          FROM exam_sessions
+          WHERE exam_title = ?
+            AND exam_date = ?
+            AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+        `).bind(examTitle, examDate, classId).all();
 
       const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
       const stmts = [];
@@ -469,7 +581,11 @@ export async function handleExams(request, env, teacher, path, url) {
         stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
       }
 
-      stmts.push(env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ?').bind(classId, examTitle, examDate));
+      if (archiveFile) {
+        stmts.push(env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ? AND exam_date = ? AND archive_file = ?').bind(classId, examDate, archiveFile));
+      } else {
+        stmts.push(env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ?').bind(classId, examTitle, examDate));
+      }
 
       if (stmts.length > 0) {
         await env.DB.batch(stmts);
@@ -520,7 +636,7 @@ export async function handleExams(request, env, teacher, path, url) {
         sessions: sessions.results,
         wrong_answers: wrongs.results,
         blueprints: blueprints.results,
-        assignments: assignments.results
+        assignments: dedupeClassExamAssignments(assignments.results || [])
       });
     }
 
