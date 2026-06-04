@@ -316,7 +316,7 @@ export async function handlePlanner(request, env, ctx = {}) {
       return respond({ success: false, error: auth.error }, auth.status || 403);
     }
 
-    const [plans, feedback] = await Promise.all([
+    const [plans, feedback, studentRow] = await Promise.all([
       env.DB.prepare(`
         SELECT *
         FROM student_plans
@@ -328,13 +328,19 @@ export async function handlePlanner(request, env, ctx = {}) {
         FROM planner_feedback
         WHERE student_id = ? AND feedback_date BETWEEN ? AND ?
         ORDER BY feedback_date ASC
-      `).bind(studentId, from, to).all()
+      `).bind(studentId, from, to).all(),
+      env.DB.prepare(`
+        SELECT planner_exam_date
+        FROM students
+        WHERE id = ?
+      `).bind(studentId).first()
     ]);
 
     return respond({
       success: true,
       plans: plans.results,
-      feedback: feedback.results
+      feedback: feedback.results,
+      planner_exam_date: studentRow?.planner_exam_date || null
     });
   }
 

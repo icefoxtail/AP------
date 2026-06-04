@@ -669,8 +669,8 @@ function openAdminStudentList(type) {
             if (adminNormalizeStatus(s.status) !== '재원' || !s.created_at || todayTime === null) return false; 
             const createdTime = apParseLocalDateTime(s.created_at);
             if (createdTime === null) return false;
-            return (todayTime - createdTime) / (1000*3600*24) <= 14;
-        }); 
+            return (todayTime - createdTime) / (1000*3600*24) <= 60;
+        });
         title = "최근 등록 원생"; 
     } else if (type === 'discharged') { 
         list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '제적'); 
@@ -1067,7 +1067,7 @@ function adminBuildOverviewData(todayStr, todayTime) {
     const dischargedStudents = students.filter(s => adminNormalizeStatus(s.status) === '제적');
     const leaveStudents = students.filter(s => adminNormalizeStatus(s.status) === '휴원');
     const recentStudents = activeStudents
-        .filter(s => adminIsRecentStudent(s, todayTime, 14))
+        .filter(s => adminIsRecentStudent(s, todayTime, 60))
         .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 
     const unassignedStudents = activeStudents.filter(s => {
@@ -1218,8 +1218,12 @@ function renderAdminNeedCheckPanel(data) {
 }
 
 function renderAdminNewStudentPanel(data) {
-    const list = Array.isArray(data.recentStudents) ? data.recentStudents.slice(0, 10) : [];
-    const rows = list.map(s => {
+    const INITIAL_LIMIT = 10;
+    const allList = Array.isArray(data.recentStudents) ? data.recentStudents : [];
+    const visibleList = allList.slice(0, INITIAL_LIMIT);
+    const hiddenList = allList.slice(INITIAL_LIMIT);
+
+    const buildRow = s => {
         const cls = adminGetStudentClass(s.id);
         const days = adminGetDaysSince(adminGetCreatedDateText(s), data.todayTime);
         const attCount = (state.db.attendance_history || state.db.attendance || []).filter(a => String(a.student_id) === String(s.id)).length;
@@ -1230,7 +1234,7 @@ function renderAdminNewStudentPanel(data) {
         return `
             <div class="ap-admin-recent-student-row" onclick="adminOpenDashboardStudentDetail('${s.id}')" style="height:46px; min-height:46px; padding:0 12px; display:flex; align-items:center; justify-content:space-between; gap:10px; cursor:pointer; box-sizing:border-box;">
                 <div style="min-width:0; display:flex; align-items:center; gap:8px;">
-                    <span style="font-size:13px; color:var(--text); white-space:nowrap;; font-weight:500;">${apEscapeHtml(s.name)}</span>
+                    <span style="font-size:13px; color:var(--text); white-space:nowrap; font-weight:500;">${apEscapeHtml(s.name)}</span>
                     <span style="font-size:11px; color:var(--secondary); font-weight:500; white-space:nowrap;">등록 ${days || '-'}일차</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; min-width:0;">
@@ -1239,16 +1243,25 @@ function renderAdminNewStudentPanel(data) {
                 </div>
             </div>
         `;
-    }).join('');
+    };
+
+    const visibleRows = visibleList.map(buildRow).join('');
+    const hiddenRows = hiddenList.map(buildRow).join('');
+    const moreBtn = hiddenList.length > 0 ? `
+        <div id="ap-new-student-more-wrap">
+            <div id="ap-new-student-hidden" style="display:none;">${hiddenRows}</div>
+            <button onclick="(function(){var h=document.getElementById('ap-new-student-hidden');var b=document.getElementById('ap-new-student-more-btn');if(!h||!b)return;var open=h.style.display!=='none';h.style.display=open?'none':'block';b.textContent=open?'▼ ${hiddenList.length}명 더 보기':'▲ 접기';})()" id="ap-new-student-more-btn" style="width:100%; height:38px; border:none; border-top:1px solid var(--border); background:transparent; color:var(--secondary); font-size:12px; font-weight:600; cursor:pointer;">▼ ${hiddenList.length}명 더 보기</button>
+        </div>` : '';
 
     return `
         <div class="ap-admin-section" style="margin-bottom:28px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">최근 등록 원생</h3>
-                <span style="font-size:12px; font-weight:400; color:var(--secondary);">최근 14일 ${data.recentStudents.length}명</span>
+                <span style="font-size:12px; font-weight:400; color:var(--secondary);">최근 2개월 ${allList.length}명</span>
             </div>
             <div class="card ap-admin-recent-student-grid" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${rows || `<div style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">최근 등록 원생이 없습니다.</div>`}
+                ${visibleRows || `<div style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">최근 등록 원생이 없습니다.</div>`}
+                ${moreBtn}
             </div>
         </div>
     `;
@@ -1279,7 +1292,7 @@ function adminGetStudentListByType(type) {
     const activeStudents = students.filter(s => adminNormalizeStatus(s.status) === '재원');
     if (type === 'new') {
         return activeStudents
-            .filter(s => adminIsRecentStudent(s, todayTime, 14))
+            .filter(s => adminIsRecentStudent(s, todayTime, 60))
             .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
     }
     if (type === 'leave') return students.filter(s => adminNormalizeStatus(s.status) === '휴원');

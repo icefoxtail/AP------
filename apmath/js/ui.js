@@ -748,6 +748,7 @@ function buildDrawerMenu(roleKey) {
             ${drawerSection('운영')}
             ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') openAdminDiagnosticPanel(); else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');")}
 
             ${drawerSection('지원')}
             ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}

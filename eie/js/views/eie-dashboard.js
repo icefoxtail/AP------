@@ -98,7 +98,7 @@
     function renderGate() {
         return `
             <div class="owner-brand-tabs eie-admin-app-gate eie-surface-toolbar eie-surface-toolbar--two" role="navigation" aria-label="시스템 전환">
-                <a class="owner-brand-tab eie-admin-shortcut eie-surface-action" href="../apmath/index.html" aria-label="AP MATH 원장 대시보드로 이동">AP MATH</a>
+                <button class="owner-brand-tab eie-admin-shortcut eie-surface-action" type="button" aria-label="AP MATH 원장 대시보드로 이동" onclick="location.replace('../apmath/index.html')">AP MATH</button>
                 <button class="owner-brand-tab owner-brand-tab--current eie-admin-shortcut eie-surface-action eie-surface-action--current is-active" type="button" data-eie-route="dashboard" aria-current="page" aria-label="EIE 대시보드">EIE</button>
             </div>
         `;
