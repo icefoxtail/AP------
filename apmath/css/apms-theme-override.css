@@ -728,3 +728,230 @@ body.dark .mobile-assist-card {
   }
   .portal-assignment-row { padding: 13px !important; }
 }
+
+/* Student management contrast patch 2026-06-04
+   Scope: student management/list/detail/add/edit modals only.
+   Keep wording, buttons, layout, and data flow unchanged. */
+:root {
+  --student-mgmt-bg: #eef3f9;
+  --student-mgmt-panel: #f7f9fc;
+  --student-mgmt-card: #ffffff;
+  --student-mgmt-card-strong: #ffffff;
+  --student-mgmt-text: #111827;
+  --student-mgmt-muted: #4b5563;
+  --student-mgmt-border: rgba(15, 23, 42, 0.16);
+  --student-mgmt-border-strong: rgba(15, 23, 42, 0.24);
+  --student-mgmt-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+body.dark {
+  --student-mgmt-bg: #15171c;
+  --student-mgmt-panel: #1d2027;
+  --student-mgmt-card: #242833;
+  --student-mgmt-card-strong: #2a2f3b;
+  --student-mgmt-text: #f8fafc;
+  --student-mgmt-muted: #cbd5e1;
+  --student-mgmt-border: rgba(226, 232, 240, 0.18);
+  --student-mgmt-border-strong: rgba(226, 232, 240, 0.28);
+  --student-mgmt-shadow: none;
+}
+
+.apms-student-contrast {
+  color: var(--student-mgmt-text) !important;
+  background: var(--student-mgmt-panel) !important;
+  border: 1px solid var(--student-mgmt-border) !important;
+  border-radius: 20px !important;
+  padding: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.apms-student-contrast,
+.apms-student-contrast * {
+  text-shadow: none !important;
+}
+
+.apms-student-contrast input,
+.apms-student-contrast select,
+.apms-student-contrast textarea,
+.apms-student-contrast .std-input-base,
+.apms-student-contrast .apms-student-filter-input,
+.apms-student-contrast .apms-student-filter-select {
+  background: var(--student-mgmt-card-strong) !important;
+  color: var(--student-mgmt-text) !important;
+  border: 1px solid var(--student-mgmt-border-strong) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  opacity: 1 !important;
+}
+
+.apms-student-contrast input::placeholder,
+.apms-student-contrast textarea::placeholder {
+  color: var(--student-mgmt-muted) !important;
+  opacity: 1 !important;
+}
+
+.apms-student-contrast input:focus,
+.apms-student-contrast select:focus,
+.apms-student-contrast textarea:focus,
+.apms-student-contrast .std-input-base:focus,
+.apms-student-contrast .apms-student-filter-input:focus,
+.apms-student-contrast .apms-student-filter-select:focus {
+  border-color: rgba(var(--primary-rgb), 0.58) !important;
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14) !important;
+}
+
+.apms-student-contrast .apms-student-filter-grid {
+  background: rgba(255, 255, 255, 0.48) !important;
+  border: 1px solid var(--student-mgmt-border) !important;
+  border-radius: 16px !important;
+  padding: 10px !important;
+}
+
+body.dark .apms-student-contrast .apms-student-filter-grid {
+  background: rgba(255, 255, 255, 0.035) !important;
+}
+
+.apms-student-contrast .apms-student-list-note,
+.apms-student-contrast [style*="color:var(--secondary)"],
+.apms-student-contrast [style*="color: var(--secondary)"] {
+  color: var(--student-mgmt-muted) !important;
+}
+
+.apms-student-contrast [style*="color:var(--text)"],
+.apms-student-contrast [style*="color: var(--text)"] {
+  color: var(--student-mgmt-text) !important;
+}
+
+.apms-student-contrast .apms-student-list-row,
+.apms-student-contrast .apms-discharged-student-row {
+  background: var(--student-mgmt-card) !important;
+  border: 1px solid var(--student-mgmt-border) !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  margin-bottom: 10px !important;
+  box-shadow: var(--student-mgmt-shadow) !important;
+}
+
+.apms-student-contrast .apms-student-list-row:hover,
+.apms-student-contrast .apms-discharged-student-row:hover {
+  border-color: rgba(var(--primary-rgb), 0.34) !important;
+  background: var(--student-mgmt-card-strong) !important;
+}
+
+.apms-student-contrast .apms-student-list-row .btn,
+.apms-student-contrast .apms-discharged-student-row .btn,
+.apms-student-contrast .apms-button--quiet {
+  border: 1px solid var(--student-mgmt-border) !important;
+  background: var(--student-mgmt-card-strong) !important;
+}
+
+.apms-student-contrast .apms-button--primary,
+.apms-student-contrast .btn-primary {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+.apms-student-contrast .apms-student-primary-soft {
+  color: var(--primary) !important;
+  background: rgba(var(--primary-rgb), 0.10) !important;
+  border-color: rgba(var(--primary-rgb), 0.22) !important;
+}
+
+.apms-student-contrast .std-badge {
+  background: var(--student-mgmt-card-strong) !important;
+  border-color: var(--student-mgmt-border) !important;
+  color: var(--student-mgmt-text) !important;
+}
+
+.apms-student-contrast .apms-student-profile-info-card,
+.apms-student-contrast .apms-student-section-card {
+  background: var(--student-mgmt-card) !important;
+  border: 1px solid var(--student-mgmt-border) !important;
+  box-shadow: var(--student-mgmt-shadow) !important;
+}
+
+.apms-student-contrast .tab-bar {
+  background: var(--student-mgmt-bg) !important;
+  border: 1px solid var(--student-mgmt-border) !important;
+}
+
+.apms-student-contrast .tab-btn {
+  color: var(--student-mgmt-muted) !important;
+  border: 1px solid transparent !important;
+}
+
+.apms-student-contrast .tab-btn.active,
+.apms-student-contrast .tab-btn[aria-selected="true"] {
+  background: var(--student-mgmt-card-strong) !important;
+  color: var(--primary) !important;
+  border-color: rgba(var(--primary-rgb), 0.22) !important;
+}
+
+.apms-student-contrast canvas,
+.apms-student-contrast table,
+.apms-student-contrast .std-tab-content > div,
+.apms-student-contrast .std-tab-content [style*="background: var(--surface)"],
+.apms-student-contrast .std-tab-content [style*="background:var(--surface)"] {
+  background-color: var(--student-mgmt-card) !important;
+}
+
+.apms-student-contrast .std-tab-content [style*="background: var(--surface-2)"],
+.apms-student-contrast .std-tab-content [style*="background:var(--surface-2)"] {
+  background-color: var(--student-mgmt-bg) !important;
+}
+
+.apms-student-contrast [style*="border: 1px solid var(--border)"],
+.apms-student-contrast [style*="border:1px solid var(--border)"] {
+  border-color: var(--student-mgmt-border) !important;
+}
+
+.apms-student-form-view {
+  max-width: 100%;
+}
+
+.apms-student-form-view [style*="background:var(--surface-2)"],
+.apms-student-form-view [style*="background: var(--surface-2)"] {
+  background: var(--student-mgmt-bg) !important;
+  border-color: var(--student-mgmt-border) !important;
+}
+
+.apms-student-empty-state {
+  background: var(--student-mgmt-card) !important;
+  border: 1px solid var(--student-mgmt-border) !important;
+  border-radius: 16px !important;
+  color: var(--student-mgmt-muted) !important;
+}
+
+@media (max-width: 640px) {
+  .apms-student-contrast {
+    margin: -4px -10px 0 !important;
+    padding: 12px !important;
+    border-radius: 18px !important;
+  }
+
+  .apms-student-contrast .apms-student-filter-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .apms-student-contrast .apms-student-list-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .apms-student-contrast .apms-student-list-row > div:last-child {
+    width: 100% !important;
+    max-width: none !important;
+    justify-content: stretch !important;
+  }
+
+  .apms-student-contrast .apms-student-list-row > div:last-child .btn {
+    flex: 1 1 0 !important;
+    min-height: 36px !important;
+  }
+
+  .apms-student-profile-view > div[style*="grid-template-columns: 1fr 1fr"],
+  .apms-student-profile-view [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+

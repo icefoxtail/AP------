@@ -1,12 +1,16 @@
-# PATCH_RESULT
+# 학생관리 배경/글씨 대비 보정 패치
 
-## EIE PDF material/teacher apply v13
+## 변경 파일
+- apmath/css/apms-theme-override.css
+- apmath/js/management.js
+- apmath/js/student.js
 
-- v12 console paste encoding failure is avoided by using ASCII-safe JavaScript source. Korean strings are encoded as Unicode escapes inside the script.
-- Matching now treats PDF afternoon times such as 15:10 and existing EIE 03:10 as the same timetable slot.
-- If 0 cards are matched, the script stops without saving.
-- Scope remains only material text and weekday teacher data. Student assignments are not touched.
+## 변경 범위
+- 학생관리 목록/검색/반 필터/빈 상태 대비 보정
+- 학생 상세 프로필/학생 수정/신규 학생 추가/퇴원생 관리 모달 대비 보정
+- 학생관리 전용 wrapper/class 추가
+- 전역 모달, 문구, 버튼명, 기능, 데이터 흐름 변경 없음
 
-## Check
-
-node --check tools/eie_apply_pdf_material_teachers_20260604.js PASS
+## 검증
+- node --check management.js PASS
+- node --check student.js PASS

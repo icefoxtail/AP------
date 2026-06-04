@@ -63,7 +63,7 @@ function renderAddressBookList() {
     });
 
     if (stds.length === 0) {
-        listRoot.innerHTML = `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:500;">검색 결과가 없습니다.</div>`;
+        listRoot.innerHTML = `<div class="apms-student-empty-state" style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:500;">검색 결과가 없습니다.</div>`;
         return;
     }
 
@@ -76,7 +76,7 @@ function renderAddressBookList() {
             : 'color:var(--secondary); background:var(--surface-2); border:1px solid var(--border);';
 
         return `
-            <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; align-items:flex-start;">
+            <div class="apms-student-list-row" style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; align-items:flex-start;">
                 <div style="flex:1; min-width:0;">
                     <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;">
                         <span style="font-size:14px; color:var(--text); line-height:1.4;; font-weight:500;">${mgmtEscape(s.name)}</span>
@@ -91,7 +91,7 @@ function renderAddressBookList() {
                 </div>
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:190px;">
                     <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); closeModal(true); renderStudentDetail('${s.id}')">상세</button>
-                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openEditStudent('${s.id}', { returnTo: { type: 'addressBook' } })">수정</button>
+                    <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openEditStudent('${s.id}', { returnTo: { type: 'addressBook' } })">수정</button>
                     ${isActive
                         ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
                         : `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="handleRestore('${s.id}')">복구</button>`
@@ -111,15 +111,17 @@ function openAddressBook() {
         .join('');
 
     showModal('학생관리', `
+        <div class="apms-student-contrast apms-student-addressbook">
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px; flex:1; font-size:12px; font-weight:500;" onclick="openAddStudent('', { returnTo: { type: 'addressBook' } });">학생 추가</button>
         </div>
-        <div style="display:grid; grid-template-columns:1fr 150px; gap:8px; margin-bottom:14px;">
-            <input id="ab-search" class="btn" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="debounceRenderAddressBookList()">
-            <select id="ab-class" class="btn" style="width:100%; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체 학생</option>${classOptions}</select>
+        <div class="apms-student-filter-grid" style="display:grid; grid-template-columns:1fr 150px; gap:8px; margin-bottom:14px;">
+            <input id="ab-search" class="btn apms-student-filter-input" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="debounceRenderAddressBookList()">
+            <select id="ab-class" class="btn apms-student-filter-select" style="width:100%; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체 학생</option>${classOptions}</select>
         </div>
-        <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">재원생만 표시하고, 반 선택은 보조 필터로 사용합니다.</div>
+        <div class="apms-student-list-note" style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">재원생만 표시하고, 반 선택은 보조 필터로 사용합니다.</div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px; padding-right:4px;"></div>
+        </div>
     `);
     renderAddressBookList();
 }
