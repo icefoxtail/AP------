@@ -508,7 +508,7 @@ window.questionBank = [
   },
   {
     id: 25,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -571,7 +571,7 @@ window.questionBank = [
   },
   {
     id: 28,
-    level: "중",
+    level: "하",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -613,7 +613,7 @@ window.questionBank = [
   },
   {
     id: 30,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -698,7 +698,7 @@ window.questionBank = [
   },
   {
     id: 34,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -719,7 +719,7 @@ window.questionBank = [
   },
   {
     id: 35,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -740,7 +740,7 @@ window.questionBank = [
   },
   {
     id: 36,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -761,7 +761,7 @@ window.questionBank = [
   },
   {
     id: 37,
-    level: "상",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -803,7 +803,7 @@ window.questionBank = [
   },
   {
     id: 39,
-    level: "상",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -824,7 +824,7 @@ window.questionBank = [
   },
   {
     id: 40,
-    level: "상",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -845,7 +845,7 @@ window.questionBank = [
   },
   {
     id: 41,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -866,7 +866,7 @@ window.questionBank = [
   },
   {
     id: 42,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -887,7 +887,7 @@ window.questionBank = [
   },
   {
     id: 43,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -908,7 +908,7 @@ window.questionBank = [
   },
   {
     id: 44,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -929,7 +929,7 @@ window.questionBank = [
   },
   {
     id: 45,
-    level: "상",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -950,7 +950,7 @@ window.questionBank = [
   },
   {
     id: 46,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1014,7 +1014,7 @@ window.questionBank = [
   },
   {
     id: 49,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1035,7 +1035,7 @@ window.questionBank = [
   },
   {
     id: 50,
-    level: "상",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1056,7 +1056,7 @@ window.questionBank = [
   },
   {
     id: 51,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1119,7 +1119,7 @@ window.questionBank = [
   },
   {
     id: 54,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1140,7 +1140,7 @@ window.questionBank = [
   },
   {
     id: 55,
-    level: "중",
+    level: "하",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1182,7 +1182,7 @@ window.questionBank = [
   },
   {
     id: 57,
-    level: "상",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",
@@ -1203,7 +1203,7 @@ window.questionBank = [
   },
   {
     id: 58,
-    level: "하",
+    level: "중",
     category: "일차방정식의 풀이",
     originalCategory: "일차방정식의 풀이",
     standardCourse: "중1 수학",

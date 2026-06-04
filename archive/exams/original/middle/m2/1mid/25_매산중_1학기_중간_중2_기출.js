@@ -1,5 +1,3 @@
-window.examTitle = "25_매산중_1학기_중간_중2_기출";
-
 window.questionBank = [
   {
     "id": 1,
@@ -12,7 +10,16 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "content": "유리수와 순환소수에 대한 설명으로 옳은 것은? [4점]",
     "choices": [
@@ -36,7 +43,16 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","순환소수","유한소수","표해석","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "지수",
+      "순환소수",
+      "유한소수",
+      "표해석",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "content": "분수 $\\frac{3}{40}$을 유한소수로 나타내는 과정이다. 빈칸에 알맞은 수로 옳지 않은 것은? [3점]<br>$\\frac{3}{40}=\\frac{3}{2^3 \\times 5}=\\frac{3 \\times (가)}{2^3 \\times 5 \\times (나)} = \\frac{(다)}{(라)} = (마)$",
     "choices": [
@@ -60,7 +76,13 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","순환소수","유한소수","계산"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 분수 중 유한소수로 나타낼 수 있는 것은? [4점]",
     "choices": [
@@ -84,7 +106,13 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","순환소수","표해석","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "순환소수",
+      "표해석",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 보기 중 순환소수의 표현이 옳은 것은? [3점]",
     "choices": [
@@ -108,7 +136,14 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","순환소수","표해석","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "순환소수",
+      "표해석",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "content": "순환소수 $1.3\\dot{2}\\dot{3}$을 분수로 나타내는 과정이다. 빈칸에 들어갈 수로 옳지 않은 것은? [4점]<br>$x=1.32323...$의 양변에 (가)를 곱하면 $(가)x=13.2323...$<br>양변에 $1000$을 곱하면 $(나)=1323.2323...$<br>두 식을 빼면 $(다)x = (라)$이고, 따라서 $x=(마)$이다.",
     "choices": [
@@ -132,7 +167,14 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","순환소수","유한소수","자연수조건","계산"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "자연수조건",
+      "계산"
+    ],
     "wide": false,
     "content": "분수 $\\frac{63}{3^2 \\times 2 \\times x}$를 순환소수로만 나타낼 수 있을 때, 한 자리의 자연수 $x$가 될 수 있는 모든 수들의 합은? [4점]",
     "choices": [
@@ -156,7 +198,13 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","나머지정리","순환소수","응용","계산"],
+    "tags": [
+      "객관식",
+      "나머지정리",
+      "순환소수",
+      "응용",
+      "계산"
+    ],
     "wide": false,
     "content": "어떤 기약분수를 순환소수로 나타내는데 민주는 분자를 잘못 보아서 $1.0\\dot{8}$이라 하였고, 현주는 분모를 잘못 보아서 $0.1\\dot{7}$이라 하였다. 처음의 기약분수는? [5점]",
     "choices": [
@@ -180,7 +228,13 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","참거짓","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "지수",
+      "참거짓",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "지수법칙을 이용한 계산 결과가 옳은 것은? [3점]",
     "choices": [
@@ -204,7 +258,14 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","자연수조건","조건해석","응용","계산"],
+    "tags": [
+      "객관식",
+      "지수",
+      "자연수조건",
+      "조건해석",
+      "응용",
+      "계산"
+    ],
     "wide": false,
     "content": "$(\\frac{x^{2a}}{2y^6})^3 = \\frac{x^{12}}{8y^{2b}}$ 일 때, 두 자연수 $a, b$의 합 $a+b$는? [4점]",
     "choices": [
@@ -228,7 +289,13 @@ window.questionBank = [
     "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","자연수조건","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "지수",
+      "자연수조건",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$2^7 \\times 5^{10}$은 $n$자리 자연수이고, 각 자리 숫자의 합은 $a$이다. 이때 $a+n$의 값은? [5점]",
     "choices": [
@@ -252,7 +319,13 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","참거짓","개념","조건해석"],
+    "tags": [
+      "객관식",
+      "지수",
+      "참거짓",
+      "개념",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 중 옳은 것은? [4점]",
     "choices": [
@@ -276,7 +349,13 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","계수비교","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "계수비교",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다항식 $(2x^2-x+3)-(3x^2-5x+8)$을 계산하였을 때, $x$의 계수와 상수항의 합은? [3점]",
     "choices": [
@@ -300,7 +379,13 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","참거짓","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "참거짓",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중 계산 과정이 틀린 식을 고르면? [4점]<br>(가) $(12x^2-9x)\\div(-3x) = -4x-3$<br>(나) $(10x^2y-8xy^2)\\div\\frac{2}{3}xy = 15x-12y$",
     "choices": [
@@ -324,7 +409,13 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "$(x^2y - \\square + 2y^2) \\div \\frac{1}{9}y = 9x^2 - 6x + 6y$ 일 때, $\\square$ 안에 알맞은 식은? [4점]",
     "choices": [
@@ -342,13 +433,22 @@ window.questionBank = [
     "category": "부등식의 표현",
     "originalCategory": "부등식의 표현",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
+    "standardUnitKey": "M2-03",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","도형","삼각형","넓이","표해석","범위"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "도형",
+      "삼각형",
+      "넓이",
+      "표해석",
+      "범위"
+    ],
     "wide": false,
     "content": "다음 중 문장을 부등식으로 옳게 나타낸 것은? [4점]",
     "choices": [
@@ -372,7 +472,15 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","참거짓","오류판별","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "참거짓",
+      "오류판별",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "$a>b$일 때, 다음 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -396,7 +504,14 @@ window.questionBank = [
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","범위","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "범위",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "일차부등식 $2(x-3) \\le 4x+2$의 해로 옳은 것은? [4점]",
     "choices": [
@@ -420,7 +535,15 @@ window.questionBank = [
     "level": "중",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","계수비교","부등식","일차부등식","자연수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "계수비교",
+      "부등식",
+      "일차부등식",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "일차부등식 $0.4x+1 > 0.7x - \\frac{1}{2}$를 만족시키는 모든 자연수 $x$의 합은? [4점]",
     "choices": [
@@ -444,7 +567,14 @@ window.questionBank = [
     "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "일차부등식 $3x-4 \\ge a-x$의 해가 $x \\ge -1$일 때, 상수 $a$의 값은? [5점]",
     "choices": [
@@ -468,7 +598,16 @@ window.questionBank = [
     "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","부등식","일차부등식","실생활","범위","조건해석","응용"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "부등식",
+      "일차부등식",
+      "실생활",
+      "범위",
+      "조건해석",
+      "응용"
+    ],
     "wide": false,
     "content": "집에서 마트까지 갈 때 분속 $45m$, 올 때 분속 $30m$로 걷고 물건 사는 시간 $10$분을 포함해 총 $1$시간 이내일 때, 거리는 최대 몇 $m$ 이하인가? [5점]",
     "choices": [
@@ -492,7 +631,9 @@ window.questionBank = [
     "level": "중",
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "$\\frac{5}{7}$를 소수로 나타낼 때, 소수점 아래 $100$번째 자리까지의 숫자 중 $4$가 나오는 횟수를 구하시오. [6점]",
     "choices": [],
@@ -510,7 +651,9 @@ window.questionBank = [
     "level": "중",
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "밑면 가로 $24$, 세로 $36$인 직사각형이고 부피가 $360a^3b^2$인 사각뿔의 높이를 구하시오. [5점]",
     "choices": [],
@@ -528,7 +671,9 @@ window.questionBank = [
     "level": "중",
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "어떤 식에서 $3x^2+5x-6$을 빼야 할 것을 더했더니 $7x^2+10x-4$가 되었다. 바르게 계산한 식을 구하시오. [4점]",
     "choices": [],
@@ -546,7 +691,9 @@ window.questionBank = [
     "level": "중",
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "$40000$원 중 포장비 $4000$원을 제외하고 한 송이 $1600$원인 장미를 최대 몇 송이까지 살 수 있는지 구하시오. [5점]",
     "choices": [],

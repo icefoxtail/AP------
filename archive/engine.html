@@ -690,15 +690,20 @@ function detectChoiceRenderMode(choices) {
     if (!choices || choices.length === 0) return 'compact';
 
     const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
-    const avgLen = texts.reduce((s, t) => s + t.length, 0) / Math.max(texts.length, 1);
-    const isVeryLong = texts.some(t => t.length > 36);
+    // LaTeX 수식 제거 후 길이 측정 (LaTeX 소스 길이로 오인식 방지)
+    const stripped = texts.map(t => t.replace(/\$\$[\s\S]*?\$\$/g, '~').replace(/\$[^$\n]*?\$/g, '~').trim());
+
+    const avgLen = stripped.reduce((s, t) => s + t.length, 0) / Math.max(stripped.length, 1);
+    const isVeryLong = stripped.some(t => t.length > 36);
     const hasLineBreak = texts.some(t => /\\n|\n|<br/i.test(t));
-    const hasSentence = texts.some(t => /[.?!。]|입니다|한다|된다|아니다|같다|옳다|옳지/.test(t) && t.length > 20);
-    const hasMultiMarker = texts.some(t => (t.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|①|②|③|④|⑤/g) || []).length >= 2);
+    const hasSentence = stripped.some(t => /[.?!。]|입니다|한다|된다|아니다|같다|옳다|옳지/.test(t) && t.length > 20);
+    // boxed: 선택지 자체에 ㄱ/ㄴ/㉠/㉡ 마커가 2개 이상 포함된 경우만 (보기형 선택지)
+    const hasMultiMarker = texts.some(t => (t.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤/g) || []).length >= 2);
 
-    if (isVeryLong || hasLineBreak || hasSentence || hasMultiMarker || avgLen > 28) return 'boxed';
+    if (hasMultiMarker) return 'boxed';
+    if (isVeryLong || hasLineBreak || hasSentence || avgLen > 28) return 'block';
 
-    const isLong = texts.some(t => t.length > 20);
+    const isLong = stripped.some(t => t.length > 20);
     const hasBlockPrefix = texts.some(t => /^[가-힣ㄱ-ㅎa-zA-Z][\.\)]/.test(t));
 
     return (isLong || hasBlockPrefix) ? 'block' : 'compact';
