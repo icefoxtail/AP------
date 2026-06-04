@@ -1,41 +1,32 @@
 # PATCH_RESULT
 
 ## 1. 패치명
-EIE 시간표 카드형 1차 v4 보정 패치
+EIE 시간표 미니 클래스룸 v7 보정 패치
 
-## 2. 생성/수정 파일
-- `eie/js/views/eie-timetable-v2.js`
-- `eie/css/eie.css`
-- `PATCH_RESULT.md`
+## 2. 기준 파일
+- eie/js/views/eie-timetable-v2.js
+- eie/css/eie.css
+- PATCH_RESULT.md
 
-## 3. 보정 내용
-- v3 검수에서 지적된 `같은 교시 + 같은 반명/class_name_raw + 다른 교재` 카드가 하나로 병합될 수 있는 문제를 보정했다.
-- `classGroupKey()`가 `getClassName()`의 기본값 `수업명 없음`에 먼저 걸려 `materialText()` fallback을 막던 구조를 제거했다.
-- `rawClassName()`을 추가해 실제 `class_name_raw/class_name/name` 값만 class key에 사용하도록 했다.
-- `classGroupKey()`가 `materialKey`를 반드시 포함하도록 변경했다.
-- `cardGroupKey()`가 `source_row/card_key/group_key`가 있는 경우에도 `material/class` 그룹키를 함께 포함하도록 변경했다.
-- 같은 교시, 같은 담당 선생님, 같은 class_name_raw라도 교재가 다르면 별도 카드로 분리되게 했다.
-- `class_name_raw`가 비어 있어도 교재가 다르면 별도 카드로 분리되게 했다.
-- `source_row/card_key/group_key`가 같아도 교재가 다르면 별도 카드로 분리되게 했다.
+## 3. 반영 내용
+- 교재명 변경 후 `session_id`가 바뀌어 오른쪽 미니 클래스룸 선택이 풀릴 수 있는 문제를 보정했다.
+- `session_id`를 교재명 중심이 아니라 source cell id 중심의 안정 키로 생성하도록 변경했다.
+- 저장 후 새로 불러온 rows에서 같은 `source_cell_ids`를 가진 session을 찾아 오른쪽 패널 선택을 유지하도록 보강했다.
+- `저장 완료`, `퇴원 처리되었습니다.` 같은 안내가 계속 남지 않도록 2초 뒤 자동으로 사라지게 했다.
+- 카드 전환 시 요일별 담당 선택 기준을 `월`로 초기화해, 이전 카드에서 마지막으로 선택한 요일이 새 카드에 남는 위험을 줄였다.
+- `imported` 상태 보존은 유지하면서 상태 선택창에 `활성`이 중복 노출될 위험을 줄였다.
 
 ## 4. 유지한 범위
-- Worker/API/DB 파일 수정 없음
-- 클래스룸 본격 연동 추가 없음
-- AP Math/APMS 파일 수정 없음
-- 기존 카드형 시간표 레이아웃 유지
-- `imported` 상태 포함 유지
-- API fallback 시 기존 rows 유지
-- `inactive: 비활성` 라벨 유지
+- Worker/API/DB 파일은 수정하지 않았다.
+- AP Math/APMS 파일은 수정하지 않았다.
+- EIE 클래스룸 본체 파일은 수정하지 않았다.
+- 미니 클래스룸 오른쪽 패널 구조와 APMS 문구 기준은 유지했다.
 
-## 5. 검증 결과
+## 5. 검증
 - `node --check eie/js/views/eie-timetable-v2.js` PASS
-- Node VM 샘플 테스트 PASS
-  - 같은 교시 + 같은 선생님 + 같은 `class_name_raw` + 다른 `material_text` → 카드 2개 분리 확인
-  - 같은 교시 + 같은 선생님 + `class_name_raw` 공백 + 다른 `material_text` → 카드 2개 분리 확인
-  - 같은 `card_key` + 다른 `material_text` → 카드 2개 분리 확인
-  - 같은 교재의 월/화 row는 하나의 주간 카드로 병합 유지 확인
 
-## 6. 다음 단계 메모
-- 다음 단계는 시간표 카드 클릭 후 AP Math식 EIE 클래스룸 연동이다.
-- 클래스룸 안 교재 관리는 선택형/마스터형이 아니라 자유 텍스트 수정 버튼 하나로 처리한다.
-- 출석/결석/지각/보강/상담 구조는 AP Math 클래스룸 흐름을 최대한 그대로 따른다.
+## 6. 다음 확인
+- 교재명을 수정 저장한 뒤 오른쪽 미니 클래스룸 패널이 그대로 유지되는지 확인한다.
+- 저장 완료 안내가 2초 뒤 사라지는지 확인한다.
+- imported 상태 수업 저장 시 active로 바뀌지 않는지 확인한다.
+- 화/수/목/금 요일 input 선택 후 선생님 버튼 클릭 시 해당 요일에 입력되는지 확인한다.

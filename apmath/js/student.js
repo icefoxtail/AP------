@@ -1473,7 +1473,7 @@ async function toggleParentConsent(sid, contactId, consentType, nextValue, retur
  */
 function renderConsultationTypeOptions(currentType = '') {
     const current = String(currentType || '').trim();
-    const baseTypes = ['학습', '태도', '성적', '기타'];
+    const baseTypes = ['학습', '태도', '성적', '신입', '기타', '직접입력'];
     // current consultation type fallback: preserve existing DB values that are not in the legacy select list.
     return current && !baseTypes.includes(current)
         ? `<option value="${apEscapeHtml(current)}" selected>${apEscapeHtml(current)}</option>`
@@ -1489,9 +1489,12 @@ function openAddConsultationModal(sid) {
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; gap: 8px;">
                 <input type="date" id="cns-date" class="std-input-base" value="${todayStr}" style="flex: 1.2;">
-                <select id="cns-type" class="std-input-base" style="flex: 1;">
-                    <option value="학습">학습</option><option value="태도">태도</option><option value="성적">성적</option><option value="기타">기타</option>
+                <select id="cns-type" class="std-input-base" style="flex: 1;" onchange="document.getElementById('cns-type-custom-wrap').style.display=this.value==='직접입력'?'block':'none';">
+                    <option value="학습">학습</option><option value="태도">태도</option><option value="성적">성적</option><option value="신입">신입</option><option value="기타">기타</option><option value="직접입력">직접입력...</option>
                 </select>
+            </div>
+            <div id="cns-type-custom-wrap" style="display:none;">
+                <input id="cns-type-custom" class="std-input-base" type="text" placeholder="태그 직접 입력" style="width:100%; box-sizing:border-box;">
             </div>
             <textarea id="cns-content" class="std-input-base" placeholder="상담 내용을 입력하세요." style="height: 140px;"></textarea>
             <textarea id="cns-action" class="std-input-base" placeholder="조치 사항 (선택)" style="height: 70px;"></textarea>
@@ -1502,7 +1505,8 @@ function openAddConsultationModal(sid) {
 
 async function handleSaveConsultation(sid) {
     const date = document.getElementById('cns-date').value || new Date().toLocaleDateString('sv-SE');
-    const type = document.getElementById('cns-type').value;
+    const typeRaw = document.getElementById('cns-type').value;
+    const type = typeRaw === '직접입력' ? (document.getElementById('cns-type-custom')?.value.trim() || '기타') : typeRaw;
     const content = document.getElementById('cns-content').value.trim();
     const nextAction = document.getElementById('cns-action').value.trim();
     if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
@@ -1602,13 +1606,18 @@ function openEditConsultation(cid, sid) {
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; gap: 8px;">
                 <input type="date" id="edit-cns-date" class="std-input-base" value="${c.date}" style="flex: 1.2;">
-                <select id="edit-cns-type" class="std-input-base" style="flex: 1;">
+                <select id="edit-cns-type" class="std-input-base" style="flex: 1;" onchange="document.getElementById('edit-cns-type-custom-wrap').style.display=this.value==='직접입력'?'block':'none';">
                     ${renderConsultationTypeOptions(c.type)}
                     <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
                     <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
                     <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
+                    <option value="신입" ${c.type==='신입'?'selected':''}>신입</option>
                     <option value="기타" ${c.type==='기타'?'selected':''}>기타</option>
+                    <option value="직접입력">직접입력...</option>
                 </select>
+            </div>
+            <div id="edit-cns-type-custom-wrap" style="display:none;">
+                <input id="edit-cns-type-custom" class="std-input-base" type="text" placeholder="태그 직접 입력" style="width:100%; box-sizing:border-box;">
             </div>
             <textarea id="edit-cns-content" class="std-input-base" style="height: 140px;">${apEscapeHtml(c.content || '')}</textarea>
             <textarea id="edit-cns-action" class="std-input-base" style="height: 70px;">${apEscapeHtml(c.next_action || '')}</textarea>
@@ -1619,7 +1628,8 @@ function openEditConsultation(cid, sid) {
 
 async function handleEditConsultation(cid, sid) {
     const date = document.getElementById('edit-cns-date')?.value || '';
-    const type = document.getElementById('edit-cns-type')?.value || '';
+    const typeRaw = document.getElementById('edit-cns-type')?.value || '';
+    const type = typeRaw === '직접입력' ? (document.getElementById('edit-cns-type-custom')?.value.trim() || '기타') : typeRaw;
     const content = document.getElementById('edit-cns-content')?.value.trim() || '';
     const nextAction = document.getElementById('edit-cns-action')?.value.trim() || '';
     if (!content) return toast('상담 내용을 입력하세요.', 'warn');
