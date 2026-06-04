@@ -230,7 +230,7 @@ window.questionBank = [
     content: "$A = 2^4 \\times 3 \\times 5^3 \\times 7 , B = 2^3 \\times 3^2 \\times 5^2 \\times 11$ 일 때, 두 수 $A , B$의 공약수가 될 수 없는 것은?",
     choices: ["$2^2 \\times 5^2$","$2^3 \\times 3$","$2^3 \\times 3 \\times 5$","$2 \\times 3 \\times 5^2 \\times 7$","$2^2 \\times 3 \\times 5^2$"],
     answer: "④",
-    solution: "[키포인트] 두 수의 최대공약수는 $2^3 \\times 3 \\times 5^2$ 이다. ④번 보기의 $2 \\times 3 \\times 5^2 \\times 7$은 최대공약수의 약수가 아니며 원본에 없는 소인수 7을 포함하므로 공약수가 될 수 없다.\\n따라서 정답은 ④이다."
+    solution: "[키포인트] 두 수의 최대공약수는 $2^3 \\times 3 \\times 5^2$입니다. 공약수는 이 최대공약수의 약수여야 합니다. ④번 $2 \\times 3 \\times 5^2 \\times 7$은 $A$와 $B$가 공통으로 갖지 않는 소인수 $7$을 포함하므로 공약수가 될 수 없습니다. 따라서 정답은 ④입니다."
   },
   {
     id: 12,
