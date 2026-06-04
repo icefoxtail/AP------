@@ -616,8 +616,7 @@
 
   <script>
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
-    // TODO: 고1A 기말고사 확정일. 전체 반 확장 시 반별 설정값으로 분리한다.
-    const EXAM_DATE = '2026-07-11';
+    let examDate = null; // 서버에서 학생별로 받아옴. null이면 D-DAY 미표시
 
     const params = new URLSearchParams(location.search);
     const studentId = String(
@@ -940,9 +939,56 @@
       return getPlannerIndex().feedbackByDate[String(date)] || null;
     }
     function calcDDay() {
+      if (!examDate) return null;
       const today = new Date(todayStr() + 'T00:00:00');
-      const exam = new Date(EXAM_DATE + 'T00:00:00');
+      const exam = new Date(examDate + 'T00:00:00');
       return Math.ceil((exam - today) / 86400000);
+    }
+
+    function openExamDateEditor() {
+      const existing = document.getElementById('exam-date-editor-overlay');
+      if (existing) { existing.remove(); return; }
+
+      const overlay = document.createElement('div');
+      overlay.id = 'exam-date-editor-overlay';
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);';
+      overlay.innerHTML = `
+        <div style="background:var(--card,#fff);border-radius:16px;padding:24px;width:min(320px,90vw);display:flex;flex-direction:column;gap:16px;box-shadow:0 8px 40px rgba(0,0,0,.2);">
+          <div style="font-size:15px;font-weight:700;">시험일 설정</div>
+          <input id="exam-date-input" type="date" value="${examDate}"
+            style="border:1px solid var(--border,#ddd);border-radius:10px;padding:10px 12px;font-size:15px;width:100%;box-sizing:border-box;">
+          <div style="display:flex;gap:8px;">
+            <button onclick="document.getElementById('exam-date-editor-overlay').remove()"
+              style="flex:1;padding:10px;border:1px solid var(--border,#ddd);border-radius:10px;background:transparent;font-size:14px;cursor:pointer;">취소</button>
+            <button onclick="saveExamDate()"
+              style="flex:1;padding:10px;border:none;border-radius:10px;background:#4f46e5;color:#fff;font-size:14px;font-weight:600;cursor:pointer;">저장</button>
+          </div>
+        </div>`;
+      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+      document.body.appendChild(overlay);
+      setTimeout(() => document.getElementById('exam-date-input')?.focus(), 80);
+    }
+
+    async function saveExamDate() {
+      const input = document.getElementById('exam-date-input');
+      const newDate = String(input?.value || '').trim();
+      if (!newDate || !/^\d{4}-\d{2}-\d{2}$/.test(newDate)) {
+        toast('날짜를 올바르게 입력하세요.');
+        return;
+      }
+      try {
+        await apiSend(`planner/settings`, 'PATCH', {
+          student_id: studentId,
+          pin,
+          planner_exam_date: newDate
+        });
+        examDate = newDate;
+        document.getElementById('exam-date-editor-overlay')?.remove();
+        toast('시험일이 저장되었습니다.');
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '저장 중 오류가 발생했습니다.');
+      }
     }
     function getMonthCompletionRate() {
       const idx = getPlannerIndex();
@@ -1067,6 +1113,7 @@
     async function loadPlannerData() {
       const { from, to } = monthBounds(currentMonth);
       const data = await apiGet(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&pin=${encodeURIComponent(pin)}`);
+      if (data.planner_exam_date) examDate = data.planner_exam_date;
       setPlannerData(data.plans, data.feedback);
     }
 
@@ -1083,9 +1130,9 @@
       const todayDone = todayPlans.filter(p => Number(p.is_done || 0) === 1).length;
       return `
         <div class="hero">
-          <div class="stat">
-            <div class="stat-label">기말고사</div>
-            <div class="stat-value">${dday >= 0 ? `D-${dday}` : `D+${Math.abs(dday)}`}</div>
+          <div class="stat" onclick="openExamDateEditor()" style="cursor:pointer;" title="시험일 설정">
+            <div class="stat-label">시험일 ✎</div>
+            <div class="stat-value">${dday === null ? '미설정' : (dday >= 0 ? `D-${dday}` : `D+${Math.abs(dday)}`)}</div>
           </div>
           <div class="stat">
             <div class="stat-label">오늘 완료</div>
@@ -1256,7 +1303,7 @@
             <option value="daily">매일 반복</option>
             <option value="weekly">매주 반복</option>
           </select>
-          <div class="muted">반복은 ${EXAM_DATE}까지만 생성됩니다.</div>
+          <div class="muted">반복은 ${examDate}까지만 생성됩니다.</div>
           <button class="btn apms-button apms-button--primary btn-primary" onclick="saveModalPlan('${date}')">저장</button>
         </div>
       `;
@@ -1289,7 +1336,7 @@
           title: data.title,
           subject: data.subject || '수학',
           repeat_rule: data.repeat_rule || null,
-          exam_date: EXAM_DATE
+          exam_date: examDate
         });
         toast('저장되었습니다.');
         if (Array.isArray(result.plans)) {

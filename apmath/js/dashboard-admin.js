@@ -27,11 +27,12 @@ function apCreateAdminSystemGate() {
                 onclick="void(0)">
             AP MATH
         </button>
-        <a class="owner-brand-tab btn ap-surface-action"
-           href="../eie/index.html#dashboard"
-           aria-label="EIE 대시보드로 이동">
+        <button class="owner-brand-tab btn ap-surface-action"
+                type="button"
+                aria-label="EIE 대시보드로 이동"
+                onclick="location.replace('../eie/index.html#dashboard')">
             EIE
-        </a>
+        </button>
     `;
 
     return gate;
@@ -68,16 +69,13 @@ function apInsertAdminSystemGate(attempt = 0) {
     return true;
 }
 
+
 const AP_ADMIN_DIAGNOSTIC_RESULTS_LIST_KEY = 'apms.diagnostic.assessment.results';
 const AP_ADMIN_DIAGNOSTIC_RESULT_PREFIX = 'apms.diagnostic.assessment.result.';
-const AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT = 3;
+const AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT = 10;
 
 function apParseAdminDiagnosticJson(raw, fallback) {
-    try {
-        return raw ? JSON.parse(raw) : fallback;
-    } catch {
-        return fallback;
-    }
+    try { return raw ? JSON.parse(raw) : fallback; } catch { return fallback; }
 }
 
 function apGetAdminDiagnosticItemTime(item) {
@@ -92,11 +90,10 @@ function apGetAdminDiagnosticDisplayDate(item) {
     return String(raw).slice(0, 10);
 }
 
-function apGetAdminDiagnosticAssessmentAlerts() {
+function apGetAdminDiagnosticAssessmentList() {
     if (typeof localStorage === 'undefined') return [];
     const list = apParseAdminDiagnosticJson(localStorage.getItem(AP_ADMIN_DIAGNOSTIC_RESULTS_LIST_KEY), []);
     if (!Array.isArray(list)) return [];
-
     const seen = new Set();
     return list
         .filter(item => item?.status === 'completed')
@@ -112,7 +109,7 @@ function apGetAdminDiagnosticAssessmentAlerts() {
             const packId = String(item?.packId || '').trim();
             if (!diagnosticId || !packId || seen.has(diagnosticId)) return false;
             seen.add(diagnosticId);
-            return item?.status === 'completed';
+            return true;
         })
         .sort((a, b) => apGetAdminDiagnosticItemTime(b) - apGetAdminDiagnosticItemTime(a))
         .slice(0, AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT);
@@ -129,148 +126,55 @@ function apBuildAdminDiagnosticReportUrl(item) {
     return `../archive/assessment/assessment-analysis.html?${params.toString()}`;
 }
 
-function apRemoveAdminDiagnosticAssessmentAlert() {
+function openAdminDiagnosticPanel() {
     if (typeof document === 'undefined') return;
-    document.getElementById('apAdminDiagnosticAssessmentAlert')?.remove();
-}
+    if (document.getElementById('apAdminDiagnosticModal')) return;
 
-function apRenderAdminDiagnosticAssessmentAlert() {
-    if (typeof document === 'undefined') return;
-    if (apAdminDashboardRole() !== 'admin') {
-        apRemoveAdminDiagnosticAssessmentAlert();
-        return;
-    }
+    const items = apGetAdminDiagnosticAssessmentList();
 
-    const adminDash = document.getElementById('ap-admin-dashboard');
-    if (!adminDash) return;
-    const alerts = apGetAdminDiagnosticAssessmentAlerts();
-    if (!alerts.length) {
-        apRemoveAdminDiagnosticAssessmentAlert();
-        return;
-    }
-
-    let box = document.getElementById('apAdminDiagnosticAssessmentAlert');
-    if (!box) {
-        box = document.createElement('section');
-        box.id = 'apAdminDiagnosticAssessmentAlert';
-        box.className = 'ap-admin-section ap-admin-diagnostic-alert';
-        const anchor = document.getElementById('ap-admin-diagnostic-alert-anchor') || adminDash.querySelector('.ap-admin-shortcuts');
-        if (anchor?.nextSibling) adminDash.insertBefore(box, anchor.nextSibling);
-        else adminDash.appendChild(box);
-    }
-
-    const rows = alerts.map(item => {
-        const href = apBuildAdminDiagnosticReportUrl(item);
-        const studentName = apEscapeHtml(String(item.studentName || '').trim() || '이름 미입력');
-        const packTitle = apEscapeHtml(String(item.packTitle || item.title || '진단평가 결과').trim());
-        const examDate = apEscapeHtml(apGetAdminDiagnosticDisplayDate(item));
-        return `
-            <a class="ap-admin-diagnostic-alert__row" href="${apEscapeHtml(href)}">
-                <span class="ap-admin-diagnostic-alert__main">
-                    <strong>${studentName}</strong>
-                    <span>${packTitle}</span>
-                </span>
-                <span class="ap-admin-diagnostic-alert__meta">
-                    <span>${examDate}</span>
-                    <span>completed</span>
-                    <span class="ap-admin-diagnostic-alert__button">결과표 열기</span>
-                </span>
+    const rows = items.length
+        ? items.map(item => {
+            const href = apBuildAdminDiagnosticReportUrl(item);
+            const studentName = apEscapeHtml(String(item.studentName || '').trim() || '이름 미입력');
+            const packTitle = apEscapeHtml(String(item.packTitle || item.title || '진단평가 결과').trim());
+            const examDate = apEscapeHtml(apGetAdminDiagnosticDisplayDate(item));
+            return `<a class="ap-diag-modal__row" href="${apEscapeHtml(href)}" target="_blank" rel="noopener">
+                <span class="ap-diag-modal__name">${studentName}</span>
+                <span class="ap-diag-modal__pack">${packTitle}</span>
+                <span class="ap-diag-modal__date">${examDate}</span>
+                <span class="ap-diag-modal__btn">결과표 열기</span>
             </a>`;
-    }).join('');
+        }).join('')
+        : `<p class="ap-diag-modal__empty">완료된 진단평가가 없습니다.</p>`;
 
-    box.innerHTML = `
-        <style>
-            #apAdminDiagnosticAssessmentAlert {
-                margin:0 0 18px 0 !important;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__panel {
-                display:grid;
-                gap:8px;
-                border:1px solid var(--border);
-                border-radius:16px;
-                background:var(--surface);
-                padding:12px;
-                box-sizing:border-box;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__title {
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
-                gap:8px;
-                color:var(--text);
-                font-size:13px;
-                font-weight:800;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__caption {
-                color:var(--secondary);
-                font-size:11px;
-                font-weight:600;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__row {
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
-                gap:10px;
-                min-height:44px;
-                padding:9px 10px;
-                border:1px solid var(--border);
-                border-radius:12px;
-                background:var(--surface-2);
-                color:var(--text);
-                text-decoration:none;
-                box-sizing:border-box;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__main {
-                min-width:0;
-                display:flex;
-                flex-direction:column;
-                gap:2px;
-                font-size:12px;
-                font-weight:600;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__main span {
-                color:var(--secondary);
-                overflow:hidden;
-                text-overflow:ellipsis;
-                white-space:nowrap;
-                max-width:420px;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__meta {
-                display:flex;
-                flex-wrap:wrap;
-                align-items:center;
-                justify-content:flex-end;
-                gap:6px;
-                color:var(--secondary);
-                font-size:11px;
-                font-weight:700;
-                white-space:nowrap;
-            }
-            #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__button {
-                color:var(--text);
-                background:var(--surface);
-                border:1px solid var(--border);
-                border-radius:999px;
-                padding:4px 8px;
-            }
-            @media (max-width:640px) {
-                #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__row {
-                    align-items:flex-start;
-                    flex-direction:column;
-                }
-                #apAdminDiagnosticAssessmentAlert .ap-admin-diagnostic-alert__meta {
-                    justify-content:flex-start;
-                }
-            }
-        </style>
-        <div class="ap-admin-diagnostic-alert__panel" aria-label="진단평가 결과">
-            <div class="ap-admin-diagnostic-alert__title">
+    const modal = document.createElement('div');
+    modal.id = 'apAdminDiagnosticModal';
+    modal.innerHTML = `
+        <div class="ap-diag-modal__backdrop" onclick="document.getElementById('apAdminDiagnosticModal')?.remove()"></div>
+        <div class="ap-diag-modal__box">
+            <div class="ap-diag-modal__header">
                 <span>진단평가 결과</span>
-                <span class="ap-admin-diagnostic-alert__caption">최근 진단평가</span>
+                <button onclick="document.getElementById('apAdminDiagnosticModal')?.remove()" aria-label="닫기">✕</button>
             </div>
-            ${rows}
-        </div>`;
+            <div class="ap-diag-modal__list">${rows}</div>
+        </div>
+        <style>
+            #apAdminDiagnosticModal { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; }
+            #apAdminDiagnosticModal .ap-diag-modal__backdrop { position:absolute; inset:0; background:rgba(0,0,0,.45); }
+            #apAdminDiagnosticModal .ap-diag-modal__box { position:relative; background:var(--surface); border-radius:16px; width:min(560px,92vw); max-height:80vh; display:flex; flex-direction:column; box-shadow:0 8px 40px rgba(0,0,0,.18); }
+            #apAdminDiagnosticModal .ap-diag-modal__header { display:flex; justify-content:space-between; align-items:center; padding:16px 18px 12px; font-size:15px; font-weight:800; border-bottom:1px solid var(--border); }
+            #apAdminDiagnosticModal .ap-diag-modal__header button { background:none; border:none; cursor:pointer; font-size:18px; color:var(--secondary); padding:4px 6px; border-radius:8px; }
+            #apAdminDiagnosticModal .ap-diag-modal__list { overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px; }
+            #apAdminDiagnosticModal .ap-diag-modal__row { display:grid; grid-template-columns:1fr 1fr auto auto; align-items:center; gap:8px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); text-decoration:none; color:var(--text); font-size:12px; font-weight:600; }
+            #apAdminDiagnosticModal .ap-diag-modal__pack, #apAdminDiagnosticModal .ap-diag-modal__date { color:var(--secondary); }
+            #apAdminDiagnosticModal .ap-diag-modal__btn { background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:4px 10px; white-space:nowrap; }
+            #apAdminDiagnosticModal .ap-diag-modal__empty { text-align:center; color:var(--secondary); padding:32px 0; font-size:13px; }
+            @media (max-width:540px) { #apAdminDiagnosticModal .ap-diag-modal__row { grid-template-columns:1fr auto; } #apAdminDiagnosticModal .ap-diag-modal__pack { display:none; } }
+        </style>`;
+    document.body.appendChild(modal);
 }
+
+window.openAdminDiagnosticPanel = openAdminDiagnosticPanel;
 
 function renderAdminDashboardView() {
     if (typeof document !== 'undefined') {
@@ -284,7 +188,6 @@ function renderAdminDashboardView() {
     }
 
     apInsertAdminSystemGate(0);
-    apRenderAdminDiagnosticAssessmentAlert();
 }
 
 function apRemovePublicInquiryFloating() {
