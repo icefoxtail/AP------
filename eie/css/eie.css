@@ -5725,547 +5725,195 @@ button.eie-v2-card-student:hover {
     }
 }
 
-/* EIE timetable v15 layout cleanup */
-.eie-main:has(.eie-v2-screen) {
-    max-width: min(1920px, calc(100vw - 20px));
-    padding-left: 10px;
-    padding-right: 10px;
+/* ======================================================================
+   AP MATH header/back-button exact parity hard lock
+   기준: apmath/index.html의 .mobile-header-left / .mobile-header-menu /
+   .app-back-btn / .app-back-btn__icon / .app-header-logo 값 그대로 이식.
+   ====================================================================== */
+:root {
+    --primary-rgb: 143, 29, 45;
 }
 
-.eie-v2-screen {
-    gap: 10px;
+.eie-header {
+    grid-template-columns: 96px minmax(0, 1fr) 96px !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 16px !important;
 }
 
-.eie-v2-card-head {
-    padding: 12px 14px;
-    border-radius: 18px;
+.eie-header-left {
+    justify-self: start !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-width: 0 !important;
 }
 
-.eie-v2-title-row {
-    flex: 0 0 auto;
+.eie-hamburger-btn {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
 }
 
-.eie-v2-card-head .eie-v2-head-actions {
-    min-width: 0;
-    flex: 1 1 auto;
+.eie-hamburger-btn:active {
+    background: var(--bg) !important;
+    transform: scale(0.96) !important;
 }
 
-.eie-v2-card-head .eie-secondary-button {
-    flex: 0 0 auto;
+.app-back-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--surface) !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text) !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.08s ease !important;
 }
 
-.eie-v2-search {
-    flex: 0 1 280px;
-    margin-left: auto;
+.app-back-btn:hover {
+    background: var(--surface-2) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
 }
 
-.eie-v2-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
+.app-back-btn:active {
+    transform: scale(0.96) !important;
 }
 
-.eie-v2-layout.has-panel {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+.app-back-btn:focus-visible {
+    outline: 2px solid rgba(var(--primary-rgb), 0.35) !important;
+    outline-offset: 2px !important;
 }
 
-.eie-v2-layout.is-full {
-    grid-template-columns: minmax(0, 1fr);
+.app-back-btn:disabled {
+    opacity: 0.62 !important;
+    cursor: default !important;
+    pointer-events: none !important;
 }
 
-.eie-v2-layout.is-full .eie-v2-main,
-.eie-v2-layout.is-full .eie-v2-card-board,
-.eie-v2-layout.is-full .eie-v2-board-scroll {
-    width: 100%;
+.app-back-btn__icon {
+    display: block !important;
+    width: 18px !important;
+    height: 18px !important;
 }
 
-.eie-v2-card-board {
-    gap: 6px;
+.eie-header-brand {
+    justify-self: center !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    height: 40px !important;
 }
 
-.eie-v2-board-scroll {
-    padding-bottom: 2px;
+.app-header-logo,
+.eie-header-logo {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    display: block !important;
+    object-fit: cover !important;
+    background: var(--primary) !important;
 }
 
-.eie-v2-board-grid {
-    --eie-v2-period-width: 86px;
-    --eie-v2-homeroom-width: 184px;
-    gap: 6px;
-    min-width: calc(var(--eie-v2-period-width) + (var(--eie-v2-homeroom-width) * var(--eie-v2-homeroom-count)) + (6px * var(--eie-v2-homeroom-count)));
+.eie-header-user {
+    justify-self: end !important;
+    width: 96px !important;
+    max-width: 96px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    text-align: right !important;
+    letter-spacing: 0 !important;
+    line-height: 40px !important;
 }
 
-.eie-v2-layout.has-panel .eie-v2-board-grid {
-    --eie-v2-homeroom-width: 178px;
+.eie-desktop-topbar {
+    left: 56px !important;
+    height: 58px !important;
+    padding: 0 24px !important;
+    gap: 10px !important;
 }
 
-.eie-v2-layout.is-full .eie-v2-board-grid {
-    --eie-v2-homeroom-width: 196px;
+body.eie-drawer-expanded .eie-desktop-topbar {
+    left: 260px !important;
 }
 
-.eie-v2-teacher-frame-head,
-.eie-v2-teacher-frame-row {
-    gap: 6px;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), var(--eie-v2-homeroom-width));
+.eie-topbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    user-select: none !important;
 }
 
-.eie-v2-teacher-frame-cell {
-    min-height: 36px;
-    padding: 6px 8px;
-    border-radius: 12px;
+
+
+/* ======================================================================
+   EIE header wordmark hard fix
+   - previous 32x32 icon lock breaks wide EiE wordmark.
+   - keep AP back button / header position, but size the logo as a wordmark.
+   ====================================================================== */
+#eie-mobile-header .eie-header-brand,
+#eie-desktop-topbar .eie-topbar-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 40px !important;
+    overflow: hidden !important;
 }
 
-.eie-v2-period-row {
-    gap: 6px;
-    padding: 6px;
-    border-radius: 16px;
+#eie-mobile-header .eie-header-brand .app-header-logo,
+#eie-mobile-header .eie-header-brand .eie-header-logo,
+#eie-desktop-topbar .eie-topbar-brand .app-header-logo,
+#eie-desktop-topbar .eie-topbar-brand .eie-header-logo {
+    display: block !important;
+    width: auto !important;
+    height: 24px !important;
+    max-width: 120px !important;
+    min-width: 0 !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
-.eie-v2-period-head {
-    min-height: 88px;
-    padding: 8px 6px;
-    border-radius: 12px;
-}
-
-.eie-v2-teacher-slot {
-    min-height: 88px;
-    padding: 5px;
-    gap: 6px;
-    border-radius: 14px;
-}
-
-.eie-v2-teacher-slot-empty {
-    min-height: 72px;
-}
-
-.eie-v2-teacher-slot .eie-v2-week-card {
-    padding: 7px;
-    min-height: 86px;
-    border-radius: 13px;
-}
-
-.eie-v2-week-grid {
-    grid-template-columns: minmax(46px, 1.25fr) repeat(5, minmax(24px, 0.72fr));
-    gap: 4px;
-}
-
-.eie-v2-card-students {
-    gap: 4px;
-    margin-top: 6px;
-}
-
-.eie-v2-card-student,
-.eie-v2-student-chip {
-    padding-left: 6px;
-    padding-right: 6px;
-}
-
-@media (max-width: 1040px) {
-    .eie-v2-layout.has-panel {
-        grid-template-columns: 1fr;
-    }
-
-    .eie-v2-detail-panel {
-        position: static;
-        max-height: none;
-    }
-}
-
-@media (max-width: 760px) {
-    .eie-main:has(.eie-v2-screen) {
-        max-width: calc(100vw - 8px);
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-
-    .eie-v2-card-head {
-        padding: 10px;
-    }
-
-    .eie-v2-card-head .eie-secondary-button {
-        min-height: 34px;
-        padding: 0 10px;
-    }
-
-    .eie-v2-board-grid {
-        --eie-v2-period-width: 72px;
-        --eie-v2-homeroom-width: 172px;
-    }
-
-    .eie-v2-search {
-        flex-basis: 160px;
-        min-width: 120px;
-    }
-}
-
-/* EIE timetable v16 exact width allocation + homeroom frame stabilization */
-.eie-main:has(.eie-v2-screen) {
-    max-width: calc(100vw - 8px);
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-.eie-v2-screen {
-    gap: 8px;
-}
-
-.eie-v2-card-head {
-    padding: 10px 12px;
-    border-radius: 16px;
-}
-
-.eie-v2-layout {
-    --eie-v2-panel-width: clamp(292px, 22vw, 328px);
-    --eie-v2-layout-gap: 8px;
-    display: grid;
-    gap: var(--eie-v2-layout-gap);
-    align-items: start;
-    width: 100%;
-}
-
-.eie-v2-layout.is-full {
-    grid-template-columns: minmax(0, 1fr);
-}
-
-.eie-v2-layout.has-panel {
-    grid-template-columns: minmax(0, 1fr) var(--eie-v2-panel-width);
-}
-
-.eie-v2-main,
-.eie-v2-card-board,
-.eie-v2-board-scroll {
-    min-width: 0;
-    width: 100%;
-}
-
-.eie-v2-detail-panel {
-    width: var(--eie-v2-panel-width);
-    max-width: var(--eie-v2-panel-width);
-}
-
-.eie-v2-card-board {
-    gap: 5px;
-}
-
-.eie-v2-board-scroll {
-    overflow-x: auto;
-    overflow-y: visible;
-    overscroll-behavior-x: contain;
-    padding-bottom: 2px;
-    scrollbar-width: thin;
-}
-
-.eie-v2-board-grid {
-    --eie-v2-period-width: 76px;
-    --eie-v2-homeroom-min-width: 168px;
-    --eie-v2-homeroom-gap: 5px;
-    width: 100%;
-    min-width: calc(
-        var(--eie-v2-period-width)
-        + (var(--eie-v2-homeroom-min-width) * var(--eie-v2-homeroom-count))
-        + (var(--eie-v2-homeroom-gap) * var(--eie-v2-homeroom-count))
-    );
-    display: grid;
-    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
-    gap: var(--eie-v2-homeroom-gap);
-}
-
-.eie-v2-layout.is-full .eie-v2-board-grid {
-    --eie-v2-period-width: 80px;
-    --eie-v2-homeroom-min-width: 176px;
-}
-
-.eie-v2-teacher-frame-head,
-.eie-v2-teacher-frame-row {
-    display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(var(--eie-v2-homeroom-min-width), 1fr));
-    gap: var(--eie-v2-homeroom-gap);
-    min-width: 0;
-}
-
-.eie-v2-board-corner,
-.eie-v2-teacher-frame-cell {
-    min-height: 34px;
-}
-
-.eie-v2-teacher-frame-cell {
-    padding: 5px 7px;
-    border-radius: 11px;
-}
-
-.eie-v2-teacher-frame-cell strong {
-    font-size: 12px;
-    letter-spacing: -0.03em;
-}
-
-.eie-v2-period-row {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
-    gap: var(--eie-v2-homeroom-gap);
-    padding: 5px;
-    border-radius: 14px;
-}
-
-.eie-v2-period-head {
-    min-height: 78px;
-    padding: 7px 5px;
-    border-radius: 10px;
-}
-
-.eie-v2-period-head strong {
-    font-size: 12px;
-}
-
-.eie-v2-period-head span {
-    font-size: 11px;
-    line-height: 1.12;
-}
-
-.eie-v2-teacher-slot {
-    min-width: 0;
-    min-height: 78px;
-    padding: 4px;
-    gap: 5px;
-    border-radius: 12px;
-}
-
-.eie-v2-teacher-slot-empty {
-    min-height: 64px;
-}
-
-.eie-v2-teacher-slot .eie-v2-week-card {
-    width: 100%;
-    min-width: 0;
-    flex: 0 0 auto;
-    min-height: 76px;
-    padding: 6px;
-    border-radius: 11px;
-}
-
-.eie-v2-week-grid {
-    grid-template-columns: minmax(42px, 1.3fr) repeat(5, minmax(18px, 0.72fr));
-    gap: 3px;
-    align-items: center;
-}
-
-.eie-v2-week-grid span,
-.eie-v2-week-grid strong {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.eie-v2-week-grid.is-head span,
-.eie-v2-week-grid.is-body span {
-    font-size: 10.5px;
-    letter-spacing: -0.05em;
-}
-
-.eie-v2-week-grid.is-body strong {
-    font-size: 11px;
-    letter-spacing: -0.05em;
-}
-
-.eie-v2-card-students {
-    gap: 3px;
-    margin-top: 5px;
-}
-
-.eie-v2-card-student,
-.eie-v2-student-chip {
-    padding: 2px 5px;
-    font-size: 10.5px;
-    line-height: 1.2;
-}
-
-@media (max-width: 1180px) {
-    .eie-v2-layout.has-panel {
-        --eie-v2-panel-width: clamp(282px, 26vw, 312px);
-    }
-
-    .eie-v2-board-grid {
-        --eie-v2-period-width: 72px;
-        --eie-v2-homeroom-min-width: 164px;
-    }
-}
-
-@media (max-width: 980px) {
-    .eie-v2-layout.has-panel {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .eie-v2-detail-panel {
-        width: 100%;
-        max-width: none;
-        position: static;
-        max-height: none;
-    }
-}
-
-@media (max-width: 760px) {
-    .eie-main:has(.eie-v2-screen) {
-        max-width: calc(100vw - 4px);
-        padding-left: 2px;
-        padding-right: 2px;
-    }
-
-    .eie-v2-card-head {
-        padding: 9px 8px;
-    }
-
-    .eie-v2-board-grid,
-    .eie-v2-layout.is-full .eie-v2-board-grid {
-        --eie-v2-period-width: 66px;
-        --eie-v2-homeroom-min-width: 156px;
-        --eie-v2-homeroom-gap: 4px;
-    }
-
-    .eie-v2-period-row {
-        padding: 4px;
-    }
-
-    .eie-v2-teacher-slot .eie-v2-week-card {
-        padding: 5px;
-    }
-}
-
-/* EIE timetable v19 viewport-width correction: use real container width, not 100vw overflow */
 @media (min-width: 901px) {
-    body:has(.eie-v2-screen) {
-        overflow-x: hidden;
-    }
-
-    .eie-main:has(.eie-v2-screen) {
-        width: 100%;
-        max-width: none;
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 6px;
-        padding-right: 6px;
-        box-sizing: border-box;
-    }
-}
-
-.eie-v2-screen,
-.eie-v2-page-head,
-.eie-v2-layout,
-.eie-v2-main,
-.eie-v2-card-board,
-.eie-v2-board-scroll {
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.eie-v2-layout {
-    --eie-v2-layout-gap: 8px;
-    width: 100%;
-    min-width: 0;
-    display: grid;
-    gap: var(--eie-v2-layout-gap);
-    align-items: start;
-}
-
-.eie-v2-layout.has-panel {
-    --eie-v2-panel-width: clamp(280px, 20vw, 318px);
-    grid-template-columns: minmax(0, 1fr) var(--eie-v2-panel-width);
-}
-
-.eie-v2-layout.is-full {
-    grid-template-columns: minmax(0, 1fr);
-}
-
-.eie-v2-main {
-    min-width: 0;
-    overflow: hidden;
-}
-
-.eie-v2-detail-panel {
-    width: 100%;
-    max-width: 100%;
-}
-
-.eie-v2-board-scroll {
-    width: 100%;
-    min-width: 0;
-    overflow-x: auto;
-    overflow-y: visible;
-    overscroll-behavior-x: contain;
-}
-
-.eie-v2-board-grid {
-    --eie-v2-period-width: 70px;
-    --eie-v2-homeroom-min-width: 148px;
-    --eie-v2-homeroom-gap: 5px;
-    width: max(
-        100%,
-        calc(
-            var(--eie-v2-period-width)
-            + (var(--eie-v2-homeroom-min-width) * var(--eie-v2-homeroom-count))
-            + (var(--eie-v2-homeroom-gap) * var(--eie-v2-homeroom-count))
-        )
-    );
-    min-width: max(
-        100%,
-        calc(
-            var(--eie-v2-period-width)
-            + (var(--eie-v2-homeroom-min-width) * var(--eie-v2-homeroom-count))
-            + (var(--eie-v2-homeroom-gap) * var(--eie-v2-homeroom-count))
-        )
-    );
-    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
-    gap: var(--eie-v2-homeroom-gap);
-}
-
-.eie-v2-layout.is-full .eie-v2-board-grid {
-    --eie-v2-period-width: 76px;
-    --eie-v2-homeroom-min-width: 166px;
-    --eie-v2-homeroom-gap: 6px;
-}
-
-.eie-v2-teacher-frame-head,
-.eie-v2-teacher-frame-row {
-    min-width: 0;
-    width: 100%;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(var(--eie-v2-homeroom-min-width), 1fr));
-    gap: var(--eie-v2-homeroom-gap);
-}
-
-.eie-v2-period-row {
-    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
-    gap: var(--eie-v2-homeroom-gap);
-    padding: 5px;
-}
-
-.eie-v2-layout.has-panel .eie-v2-week-grid {
-    grid-template-columns: minmax(38px, 1.2fr) repeat(5, minmax(16px, 0.68fr));
-    gap: 3px;
-}
-
-.eie-v2-layout.has-panel .eie-v2-teacher-slot .eie-v2-week-card {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-@media (max-width: 1180px) {
-    .eie-v2-layout.has-panel {
-        --eie-v2-panel-width: clamp(272px, 23vw, 300px);
-    }
-
-    .eie-v2-board-grid {
-        --eie-v2-period-width: 66px;
-        --eie-v2-homeroom-min-width: 142px;
-    }
-}
-
-@media (max-width: 980px) {
-    .eie-v2-layout.has-panel {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .eie-v2-detail-panel {
-        width: 100%;
-        max-width: none;
-        position: static;
-        max-height: none;
+    #eie-desktop-topbar .eie-topbar-brand .app-header-logo,
+    #eie-desktop-topbar .eie-topbar-brand .eie-header-logo {
+        height: 26px !important;
+        max-width: 132px !important;
     }
 }
