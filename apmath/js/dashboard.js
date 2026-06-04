@@ -1180,11 +1180,11 @@ function renderAdminStudentOverviewPanel(data) {
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘 운영</h3>
             </div>
-            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
+            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
                 ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')", adminBuildGradeHoverRows(data.activeStudents))}
                 ${renderAdminMiniMetric('최근등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')", adminBuildGradeHoverRows(data.recentStudents))}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')", adminBuildGradeHoverRows(data.dischargedStudents))}
-                ${renderAdminAssessmentArchiveMetric('../archive/assessment/assessment-mvp.html')}
+                <div style="grid-column:2;">${renderAdminAssessmentArchiveMetric('../archive/assessment/assessment-mvp.html')}</div>
             </div>
         </div>
     `;

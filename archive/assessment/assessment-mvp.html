@@ -858,6 +858,20 @@
       });
     }
 
+    function renderDifficultyChips(mix) {
+      if (!mix || typeof mix !== 'object') return '';
+      const order = ['하', '중', '상'];
+      const styles = {
+        '하': 'color:#047857;background:rgba(236,253,245,0.95);border:1px solid #b7efd4;',
+        '중': 'color:#2563eb;background:rgba(239,246,255,0.95);border:1px solid #dbeafe;',
+        '상': 'color:#b45309;background:rgba(255,247,237,0.95);border:1px solid #fed7aa;',
+      };
+      return order
+        .filter((k) => mix[k] != null)
+        .map((k) => `<span style="display:inline-flex;align-items:center;min-height:22px;padding:0 7px;border-radius:7px;font-size:11px;font-weight:800;${styles[k]}">${escapeHTML(k)}${escapeHTML(String(mix[k]))}</span>`)
+        .join('');
+    }
+
     function renderMeta(pack) {
       return [
         `<span class="meta-badge primary">${escapeHTML(pack.grade || '학년 미정')}</span>`,
@@ -967,7 +981,8 @@
             <div class="card-main-title">${escapeHTML(pack.title)}</div>
             <div class="card-sub-title">${escapeHTML(pack.scopeLabel || pack.unitLabel || '범위 확인 필요')}</div>
             <div class="card-meta-line">${renderMeta(pack)}</div>
-            <div class="card-sub-title" style="margin-top:12px;">난이도: ${escapeHTML(countObj(pack.difficultyMix))}<br>유형: ${escapeHTML(countObj(pack.skillMix))}</div>
+            <div style="display:flex;align-items:center;gap:5px;margin-top:12px;">${renderDifficultyChips(pack.difficultyMix)}</div>
+            <div class="card-sub-title" style="margin-top:6px;">유형: ${escapeHTML(countObj(pack.skillMix))}</div>
             <div class="card-file-name">${escapeHTML(pack.id || pack.title)}</div>
           </div>
           <div class="card-actions">
