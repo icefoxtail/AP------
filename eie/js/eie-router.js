@@ -73,19 +73,58 @@
         }
     }
 
+    let eieBackStack = [];
+
+    function updateEieBackButtons() {
+        const canGoBack = eieBackStack.length > 0;
+        ['eie-mobile-back-button', 'eie-desktop-back-button'].forEach(id => {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            btn.disabled = !canGoBack;
+        });
+    }
+
+    function eieHistoryBack() {
+        if (eieBackStack.length === 0) return;
+        const prev = eieBackStack.pop();
+        const prevHash = `#${prev}`;
+        // 스택 조작이므로 hashchange 이벤트로 다시 push되지 않도록 플래그 사용
+        window.__eieGoingBack = true;
+        window.location.hash = prevHash;
+        updateEieBackButtons();
+    }
+
     async function open(route) {
         const nextRoute = normalizeRoute(route);
         const nextHash = `#${nextRoute}`;
         if (window.location.hash !== nextHash) {
+            // 현재 라우트를 스택에 쌓기
+            if (!window.__eieGoingBack) {
+                const currentRoute = normalizeRoute(window.location.hash);
+                if (currentRoute !== nextRoute) {
+                    eieBackStack.push(currentRoute);
+                    if (eieBackStack.length > 30) eieBackStack.shift();
+                }
+            }
+            window.__eieGoingBack = false;
+            updateEieBackButtons();
             window.location.hash = nextHash;
             return;
         }
+        window.__eieGoingBack = false;
         await renderRoute(nextRoute);
     }
 
     function handleHashChange() {
+        if (!window.__eieGoingBack) {
+            // 브라우저 직접 해시 변경 시 스택 초기화하지 않음
+        }
+        window.__eieGoingBack = false;
+        updateEieBackButtons();
         renderRoute(window.location.hash || 'dashboard');
     }
+
+    window.eieHistoryBack = eieHistoryBack;
 
     window.EieRouter = {
         open,

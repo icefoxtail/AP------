@@ -7,88 +7,156 @@
   <link rel="stylesheet" href="internal-review-engine.css">
 </head>
 <body>
+
   <!-- 상단 바 -->
   <header id="topbar">
     <div id="topbar-title">JS아카이브 내부 검수 엔진</div>
     <div id="topbar-controls">
-      <div id="view-mode-btns">
-        <button type="button" class="view-btn active" data-mode="question">문제만</button>
-        <button type="button" class="view-btn" data-mode="answer">문제+정답</button>
-        <button type="button" class="view-btn" data-mode="solution">문제+해설</button>
-        <button type="button" class="view-btn" data-mode="table">검수표</button>
+
+      <!-- 파일 버튼 -->
+      <div class="topbar-group" id="file-action-btns">
+        <button type="button" id="btn-open-dir" class="btn-primary">archive 폴더 열기</button>
+        <button type="button" id="btn-open-file" class="btn-secondary">JS 파일 열기</button>
+        <input type="file" id="fallback-input" accept=".js" style="display:none">
+        <button type="button" id="btn-save-file" class="btn-save" title="Ctrl+S">수정본 저장</button>
+        <button type="button" id="btn-download" class="btn-secondary" title="Ctrl+D">수정본 다운로드</button>
+        <button type="button" id="btn-backup" class="btn-secondary">백업 다운로드</button>
       </div>
-      <div id="action-btns">
-        <button type="button" id="btn-save-file" class="btn-primary" title="Ctrl+S">수정본 저장</button>
-        <button type="button" id="btn-download" class="btn-secondary" title="Ctrl+D">다운로드</button>
-        <button type="button" id="btn-backup">백업 다운로드</button>
-        <button type="button" id="btn-csv">검수표 CSV</button>
-        <button type="button" id="btn-restore-all" class="btn-warn">전체 되돌리기</button>
+
+      <!-- 실제 출력 모드 버튼 -->
+      <div class="topbar-group" id="engine-mode-btns">
+        <span class="topbar-label">출력:</span>
+        <button type="button" class="engine-mode-btn active" data-emode="exam">시험지</button>
+        <button type="button" class="engine-mode-btn" data-emode="sol">해설지</button>
+        <button type="button" class="engine-mode-btn" data-emode="ans">정답표</button>
       </div>
+
+      <!-- 미리보기 탭 버튼 -->
+      <div class="topbar-group" id="preview-tab-btns">
+        <span class="topbar-label">탭:</span>
+        <button type="button" class="preview-tab-btn active" data-ptab="output">실제 출력</button>
+        <button type="button" class="preview-tab-btn" data-ptab="editor">편집 검수</button>
+        <button type="button" class="preview-tab-btn" data-ptab="table">검수표</button>
+      </div>
+
     </div>
   </header>
 
-  <!-- 에러 박스 -->
+  <!-- 토스트 / 에러 -->
   <div id="error-box" style="display:none"></div>
-  <!-- 토스트 -->
   <div id="toast" style="display:none"></div>
 
   <!-- 상태 바 -->
   <div id="statusbar">
-    <span id="status-file">파일 없음</span>
-    <span id="status-save-mode" class="badge-warn"></span>
+    <span id="status-file">파일을 열어주세요</span>
+    <span id="status-save-mode"></span>
     <span id="status-counts"></span>
   </div>
 
   <!-- 3단 레이아웃 -->
   <div id="main-layout">
 
-    <!-- 왼쪽 패널 -->
+    <!-- ─── 왼쪽 패널 (사이드바) ─── -->
     <aside id="left-panel">
-      <div id="file-open-btns">
-        <button type="button" id="btn-open-dir" class="btn-primary">📂 archive 폴더 열기</button>
-        <button type="button" id="btn-open-file">📄 JS 파일 열기</button>
-        <input type="file" id="fallback-input" accept=".js" style="display:none">
-      </div>
-      <div id="file-list-area">
-        <div id="file-list-label">파일 목록</div>
-        <input type="text" id="file-search" placeholder="파일명 검색..." style="display:none">
-        <div id="file-list"></div>
-      </div>
-      <hr>
-      <div id="filter-area">
-        <div id="filter-label">필터</div>
-        <div id="filter-btns"></div>
-        <div id="search-box">
-          <input type="text" id="content-search" placeholder="내용 검색 (content/id/tags)...">
+
+      <!-- 사이드바 토글 버튼 -->
+      <button type="button" id="sidebar-toggle" title="사이드바 접기/펼치기">◀</button>
+
+      <!-- 사이드바 내용 (접히면 숨겨짐) -->
+      <div id="left-panel-content">
+
+        <div id="left-dir-status">archive 폴더: 미열림</div>
+
+        <div id="file-list-area">
+          <div class="panel-label">파일 목록</div>
+          <input type="text" id="file-search" placeholder="파일명 검색..." style="display:none">
+          <div id="file-list"></div>
         </div>
-      </div>
-      <div id="left-stats"></div>
+
+        <!-- 고정 필터: 학년 + 시험유형 -->
+        <div id="fixed-filter-area">
+          <div class="fixed-filter-row">
+            <span class="fixed-filter-label">학년</span>
+            <div id="grade-filter-btns"></div>
+          </div>
+          <div class="fixed-filter-row">
+            <span class="fixed-filter-label">시험</span>
+            <div id="exam-type-filter-btns"></div>
+          </div>
+        </div>
+
+        <!-- 검수 필터 (접기 가능) -->
+        <div id="filter-area">
+          <div id="filter-area-header">
+            <span class="panel-label" style="margin:0;">검수 필터</span>
+            <button type="button" id="filter-toggle-btn" title="필터 접기/펼치기">▼</button>
+          </div>
+          <div id="filter-area-body">
+            <div id="filter-btns"></div>
+            <div id="search-box">
+              <input type="text" id="content-search" placeholder="내용 검색 (content/id/tags)...">
+            </div>
+          </div>
+        </div>
+
+        <div id="left-stats"></div>
+
+      </div><!-- /#left-panel-content -->
+
     </aside>
 
-    <!-- 가운데 패널 -->
+    <!-- ─── 가운데 패널 ─── -->
     <main id="center-panel">
-      <div id="engine-iframe-wrap">
-        <iframe id="engine-iframe"></iframe>
-        <div id="engine-placeholder">파일을 열면 미리보기가 표시됩니다.<br><small>archive 폴더를 열어야 iframe 미리보기가 지원됩니다.</small></div>
+
+      <!-- 탭1: 실제 출력 -->
+      <div id="pane-output" class="preview-pane active-pane">
+        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 저장 후 실제 출력에 반영됨</div>
+        <iframe id="enginePreviewFrame" src="about:blank" title="실제 출력 미리보기"></iframe>
       </div>
-      <div id="review-table-area" style="display:none">
-        <table id="review-table">
-          <thead>
-            <tr>
-              <th>#</th><th>id</th><th>현재레벨</th><th>추천레벨</th>
-              <th>유형</th><th>tags</th><th>내용(preview)</th>
-              <th>정답(preview)</th><th>경고</th><th>수정</th><th>제거</th>
-            </tr>
-          </thead>
-          <tbody id="review-table-body"></tbody>
-        </table>
+
+      <!-- 탭2: 편집 검수 -->
+      <div id="pane-editor" class="preview-pane">
+        <div id="editor-placeholder">파일을 열면 문항 목록이 표시됩니다.</div>
+        <div id="question-cards"></div>
       </div>
+
+      <!-- 탭3: 검수표 -->
+      <div id="pane-table" class="preview-pane">
+        <div id="table-placeholder">파일을 열면 검수표가 표시됩니다.</div>
+        <div id="review-table-wrap" style="display:none">
+          <table id="review-table">
+            <thead>
+              <tr>
+                <th>#</th><th>id</th><th>현재 level</th><th>추천 level</th>
+                <th>유형</th><th>tags</th><th>내용(preview)</th>
+                <th>정답(preview)</th><th>경고</th><th>수정</th><th>제거</th>
+              </tr>
+            </thead>
+            <tbody id="review-table-body"></tbody>
+          </table>
+          <div id="removed-table-section" style="display:none">
+            <div class="section-label-removed">제거된 문항</div>
+            <table id="removed-table">
+              <thead>
+                <tr>
+                  <th>#</th><th>id</th><th>level</th><th>유형</th><th>tags</th><th>내용(preview)</th><th>정답(preview)</th><th>경고</th>
+                </tr>
+              </thead>
+              <tbody id="removed-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </main>
 
-    <!-- 오른쪽 패널 -->
+    <!-- ─── 오른쪽 수정 패널 ─── -->
     <aside id="right-panel">
+
       <div id="right-empty">문항을 클릭하면 여기에 수정 폼이 열립니다.</div>
+
       <div id="edit-form" style="display:none">
+
         <div id="edit-header">
           <span id="edit-qnum"></span>
           <span id="edit-qid"></span>
@@ -104,6 +172,7 @@
             <option value="상">상</option>
           </select>
         </div>
+
         <div class="field-group">
           <label>questionType</label>
           <select id="e-qtype">
@@ -113,44 +182,70 @@
             <option value="OX">OX</option>
           </select>
         </div>
+
         <div class="field-group">
           <label>layoutTag</label>
           <input type="text" id="e-layout" placeholder="grid / stack / wide ...">
         </div>
+
         <div class="field-group">
           <label>tags <span class="hint">(쉼표 또는 줄바꿈)</span></label>
           <textarea id="e-tags" rows="2"></textarea>
         </div>
+
         <div class="field-group">
           <label>content</label>
           <textarea id="e-content" rows="5"></textarea>
         </div>
+
         <div class="field-group">
           <label>choices <span class="hint">(한 줄 = 한 보기)</span></label>
           <textarea id="e-choices" rows="5"></textarea>
         </div>
+
         <div class="field-group">
           <label>answer</label>
           <textarea id="e-answer" rows="2"></textarea>
         </div>
+
         <div class="field-group">
           <label>solution</label>
           <textarea id="e-solution" rows="6"></textarea>
         </div>
+
         <div class="field-group">
           <label>image</label>
           <input type="text" id="e-image" placeholder="assets/images/...">
           <div id="e-image-preview"></div>
         </div>
 
-        <div id="edit-action-btns">
-          <button type="button" id="btn-apply" class="btn-primary">적용</button>
-          <button type="button" id="btn-remove" class="btn-danger">제거</button>
-          <button type="button" id="btn-revert">되돌리기</button>
+        <div class="field-group" id="imagesize-group">
+          <label>이미지 크기</label>
+          <select id="e-imagesize">
+            <option value="">자동</option>
+            <option value="small">작게 (small)</option>
+            <option value="half">절반 (half)</option>
+            <option value="medium">보통 (medium)</option>
+            <option value="large">크게 (large)</option>
+            <option value="full">최대 (full)</option>
+          </select>
         </div>
+
+        <div id="edit-action-btns">
+          <button type="button" id="btn-apply" class="btn-primary">현재 문항 적용</button>
+          <button type="button" id="btn-remove" class="btn-danger">제거</button>
+          <button type="button" id="btn-revert" class="btn-neutral">되돌리기</button>
+        </div>
+
+        <div id="edit-copy-btns">
+          <button type="button" id="btn-copy-edit" class="btn-copy">수정 지시 복사</button>
+          <button type="button" id="btn-copy-delete" class="btn-copy">삭제 지시 복사</button>
+        </div>
+
       </div>
     </aside>
-  </div>
+
+  </div><!-- /#main-layout -->
 
   <script src="internal-review-engine.js"></script>
 </body>

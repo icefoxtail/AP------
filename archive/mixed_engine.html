@@ -128,6 +128,11 @@
         .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
         .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
         .q-content img.img-fit-micro, .q-image-wrap img.img-fit-micro { max-width: 76%; max-height: 90px; }
+        .q-image-wrap.image-small  img { max-width: 50%; max-height: 95px; }
+        .q-image-wrap.image-half   img { max-width: 65%; max-height: 125px; }
+        .q-image-wrap.image-medium img { max-width: 80%; max-height: 150px; }
+        .q-image-wrap.image-large  img { max-width: 94%; max-height: 190px; }
+        .q-image-wrap.image-full   img { max-width: 100%; max-height: 240px; }
 
         /* [v1.9] 보기(Choices) 시스템 */
         .choices { margin-top: 10px; font-size: 9pt; }
@@ -822,7 +827,9 @@ function stripInlineImagesFromContent(content, hasImageField) {
 
 function renderQuestionImageHTML(q) {
     if (!q.image) return '';
-    return `<div class="q-image-wrap"><img src="${q.image}"></div>`;
+    const size = ['small','half','medium','large','full'].includes(q.imageSize) ? q.imageSize : '';
+    const sizeClass = size ? ` image-${size}` : '';
+    return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
 }
 
 /** UI Actions & Navigation */
