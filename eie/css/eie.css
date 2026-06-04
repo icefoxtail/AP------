@@ -2990,31 +2990,6 @@ body.eie-owner-dashboard-bg {
     justify-content: center;
     font-family: inherit;
 }
-/* AP MATH app-back-btn 동일 스타일 */
-.app-back-btn {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.1s ease, border-color 0.1s ease, color 0.1s ease, transform 0.08s ease;
-}
-.app-back-btn:hover {
-    background: var(--surface-2);
-    border-color: var(--border);
-    color: var(--text);
-}
-.app-back-btn:active { transform: scale(0.96); }
-.app-back-btn:focus-visible { outline: 2px solid rgba(var(--primary-rgb), 0.35); outline-offset: 2px; }
-.app-back-btn:disabled { opacity: 0.62; cursor: default; pointer-events: none; }
-.app-back-btn__icon { display: block; width: 18px; height: 18px; }
 .eie-hamburger-glyph {
     display: inline-flex;
     align-items: center;
@@ -5624,5 +5599,128 @@ button.eie-v2-card-student:hover {
     .eie-v2-detail-panel {
         position: static;
         max-height: none;
+    }
+}
+
+/* EIE timetable v10 homeroom-column frame */
+.eie-v2-board-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+}
+
+.eie-v2-board-grid {
+    --eie-v2-homeroom-width: 224px;
+    --eie-v2-period-width: 96px;
+    min-width: calc(var(--eie-v2-period-width) + (var(--eie-v2-homeroom-width) * var(--eie-v2-homeroom-count)) + (8px * var(--eie-v2-homeroom-count)));
+    display: grid;
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
+    gap: 8px;
+}
+
+.eie-v2-board-corner {
+    grid-column: 1;
+    min-height: 42px;
+}
+
+.eie-v2-teacher-frame-head {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), var(--eie-v2-homeroom-width));
+    gap: 8px;
+    align-items: stretch;
+}
+
+.eie-v2-teacher-frame-cell {
+    min-height: 42px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(241,245,249,0.92) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.05);
+}
+
+.eie-v2-teacher-frame-cell strong {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.eie-v2-period-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
+    gap: 8px;
+    align-items: stretch;
+    border: 1px solid var(--eie-border);
+    border-radius: 18px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    padding: 8px;
+}
+
+.eie-v2-teacher-frame-row {
+    display: grid;
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), var(--eie-v2-homeroom-width));
+    gap: 8px;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.eie-v2-teacher-slot {
+    min-width: 0;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 16px;
+    background: rgba(248, 250, 252, 0.68);
+    border: 1px dashed rgba(148, 163, 184, 0.30);
+    padding: 7px;
+}
+
+.eie-v2-teacher-slot-empty {
+    min-height: 82px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.42);
+}
+
+.eie-v2-teacher-slot .eie-v2-week-card {
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.eie-v2-period-head {
+    min-height: 96px;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-board-grid {
+        --eie-v2-homeroom-width: 210px;
+        --eie-v2-period-width: 78px;
+    }
+
+    .eie-v2-board-corner,
+    .eie-v2-teacher-frame-cell {
+        min-height: 38px;
+    }
+
+    .eie-v2-teacher-frame-cell strong {
+        font-size: 12px;
+    }
+
+    .eie-v2-teacher-slot {
+        min-height: 94px;
+        padding: 6px;
+        gap: 7px;
     }
 }

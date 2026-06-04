@@ -1,12 +1,13 @@
 (function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
+    const DEFAULT_EIE_TEACHERS = ['Carmen', 'IVY', 'Lily', 'Zoe', 'Stacy', 'Foreigner'];
     const FALLBACK_DAY_LABEL = '전체';
     const STATUS_LABELS = {
         active: '활성',
         imported: '활성',
-        needs_review: '확인필요',
+        needs_review: '확인 필요',
         hidden: '숨김',
-        archived: '보관',
+        archived: '숨김',
         inactive: '비활성'
     };
 
@@ -60,6 +61,36 @@
         try { return JSON.parse(value); } catch (error) { return {}; }
     }
 
+    function asTeacherList(value) {
+        if (Array.isArray(value)) return uniqueNames(value.flatMap(item => asTeacherList(item)));
+        const text = normalizeKey(value);
+        if (!text) return [];
+        return uniqueNames(text.split(/[,+/]/).map(item => normalizeKey(item)).filter(Boolean));
+    }
+
+    function dayTeacherSource(row) {
+        const meta = getRawMeta(row);
+        return row?.day_teachers
+            || row?.teacher_names_by_day
+            || row?.weekday_teachers
+            || meta?.day_teachers
+            || meta?.teacher_names_by_day
+            || meta?.weekday_teachers
+            || null;
+    }
+
+    function dayTeacherValues(row, day) {
+        const source = dayTeacherSource(row);
+        if (!source || typeof source !== 'object') return [];
+        return asTeacherList(source[day] || source[`${day}요일`] || source[day?.toLowerCase?.()] || '');
+    }
+
+    function allDayTeacherValues(row) {
+        const values = [];
+        DAY_ORDER.slice(0, 5).forEach(day => values.push(...dayTeacherValues(row, day)));
+        return uniqueNames(values);
+    }
+
     function normalizeDay(value) {
         const raw = normalizeKey(value);
         if (!raw) return '';
@@ -77,6 +108,18 @@
         const minute = Number(match[2] || 0);
         if (!Number.isFinite(hour) || !Number.isFinite(minute)) return raw;
         return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+    }
+
+    function displayTime(value) {
+        const time = normalizeTime(value);
+        const match = time.match(/^(\d{1,2}):(\d{2})$/);
+        if (!match) return time;
+        return `${Number(match[1])}:${match[2]}`;
+    }
+
+    function displayTimeRange(start, end) {
+        const values = [displayTime(start), displayTime(end)].filter(Boolean);
+        return values.length ? values.join('~') : '시간 미정';
     }
 
     function timeToMinutes(value) {
@@ -194,12 +237,22 @@
         return uniqueNames(values);
     }
 
+    function teacherRowName(row) {
+        return normalizeKey(row?.display_name || row?.name || row?.teacher_name || row?.teacher_name_raw || row?.id || '');
+    }
+
     function teacherRoster() {
         const values = [];
         const state = window.EieState?.get?.() || {};
         const cells = Array.isArray(state.db?.timetable_cells) ? state.db.timetable_cells : (Array.isArray(state.timetableCells) ? state.timetableCells : []);
-        cells.forEach(cell => values.push(...getTeacherNames(cell)));
+        const teachers = Array.isArray(state.db?.teachers) ? state.db.teachers : (Array.isArray(state.teachers) ? state.teachers : []);
+        teachers.forEach(teacher => values.push(teacherRowName(teacher)));
+        cells.forEach(cell => {
+            values.push(...getTeacherNames(cell));
+            values.push(...allDayTeacherValues(cell));
+        });
         dbStudents().forEach(student => values.push(...studentTeacherNames(student)));
+        values.push(...DEFAULT_EIE_TEACHERS);
         return uniqueNames(values);
     }
 
@@ -323,7 +376,7 @@
     }
 
     function materialLabel(row) {
-        return materialText(row) || '교재 미입력';
+        return materialText(row) || '교재 없음';
     }
 
     function materialKey(row) {
@@ -393,6 +446,7 @@
         const values = [];
         if (Array.isArray(row?.teacher_names)) values.push(...row.teacher_names);
         if (Array.isArray(meta.teacher_names)) values.push(...meta.teacher_names);
+        values.push(normalizeKey(row?.homeroom_teacher || meta?.homeroom_teacher));
         values.push(...normalizeKey(row?.teacher_name_raw || row?.teacher_name || row?.teacher).split(','));
         return uniqueNames(values);
     }
@@ -400,6 +454,14 @@
     function getTeacherDisplayName(row) {
         const names = getTeacherNames(row);
         return names.length ? names.join(', ') : getTeacherName(row);
+    }
+
+    function getPrimaryTeacherName(row) {
+        const meta = getRawMeta(row);
+        const explicit = normalizeKey(row?.homeroom_teacher || meta?.homeroom_teacher);
+        if (explicit) return explicit;
+        const names = getTeacherNames(row);
+        return names[0] || getTeacherName(row) || '미정';
     }
 
     function teacherKey(value) {
@@ -469,6 +531,9 @@
         const map = {};
         DAY_ORDER.slice(0, 5).forEach(day => { map[day] = []; });
         (cells || []).forEach(cell => {
+            DAY_ORDER.slice(0, 5).forEach(day => {
+                map[day].push(...dayTeacherValues(cell, day));
+            });
             const day = normalizeDay(cell.day) || normalizeDay(cell.day_label || cell.day_of_week || '');
             if (!DAY_ORDER.slice(0, 5).includes(day)) return;
             const names = getTeacherNames(cell);
@@ -520,6 +585,7 @@
             || 'active';
         const sourceIds = ordered.map(cell => cell.id).filter(Boolean);
         const teachers = uniqueNames(ordered.flatMap(getTeacherNames));
+        const homeroomTeacher = getPrimaryTeacherName(first);
 
         return {
             session_id: stableSessionKey(first, sourceIds, index),
@@ -533,6 +599,8 @@
             class_name: materialLabel(first),
             class_full_name: getClassName(first),
             teacher_name: teachers.join(', ') || '미정',
+            homeroom_teacher: homeroomTeacher,
+            homeroom_key: teacherKey(homeroomTeacher),
             teacher_key: `card_${index}`,
             day_teachers: dayTeacherMap(ordered),
             start_time: startTime,
@@ -682,7 +750,7 @@
                     ${DAY_ORDER.slice(0, 5).map(day => `<span>${esc(day)}</span>`).join('')}
                 </div>
                 <div class="eie-v2-week-grid is-body">
-                    <strong title="${esc(session.class_full_name || session.material)}">${esc(session.material || '교재 미입력')}</strong>
+                    <strong title="${esc(session.class_full_name || session.material)}">${esc(session.material || '교재 없음')}</strong>
                     ${DAY_ORDER.slice(0, 5).map(day => `<span title="${esc((session.day_teachers?.[day] || []).join(', ') || '-')}">${esc(teacherShortForDay(session, day))}</span>`).join('')}
                 </div>
                 ${isSpecial ? `<em class="eie-v2-status-badge is-${esc(status)}">${esc(statusLabel(status))}</em>` : ''}
@@ -693,7 +761,7 @@
 
     function periodTitle(session) {
         const period = normalizeKey(session?.period_label) || '교시 미정';
-        const time = [session?.start_time, session?.end_time].filter(Boolean).join('~') || '시간 미정';
+        const time = displayTimeRange(session?.start_time, session?.end_time);
         return { period, time };
     }
 
@@ -712,6 +780,39 @@
         });
     }
 
+    function sessionHomeroomKey(session) {
+        return teacherKey(session?.homeroom_teacher || session?.teacher_name || '미정');
+    }
+
+    function sessionHomeroomName(session) {
+        return normalizeKey(session?.homeroom_teacher || session?.teacher_name || '미정') || '미정';
+    }
+
+    function buildHomeroomColumns(sessions) {
+        const values = [];
+        const unknownKey = teacherKey('미정');
+        const hasUnknownSession = (sessions || []).some(session => sessionHomeroomKey(session) === unknownKey);
+        values.push(...teacherRoster());
+        (sessions || []).forEach(session => values.push(sessionHomeroomName(session)));
+        const names = uniqueNames(values).filter(name => {
+            if (!name) return false;
+            if (teacherKey(name) === unknownKey) return hasUnknownSession;
+            return true;
+        });
+        if (hasUnknownSession && !names.some(name => teacherKey(name) === unknownKey)) names.push('미정');
+        if (!names.length) names.push('미정');
+        return names.map((name, index) => ({
+            name,
+            key: teacherKey(name),
+            index
+        }));
+    }
+
+    function sessionsForTeacher(sessions, teacher) {
+        const key = teacher?.key || '';
+        return (sessions || []).filter(session => sessionHomeroomKey(session) === key);
+    }
+
     function matchesSearch(session, query) {
         const q = normalizeKey(query).toLowerCase();
         if (!q) return true;
@@ -719,6 +820,7 @@
             session.material,
             session.class_full_name,
             session.teacher_name,
+            session.homeroom_teacher,
             session.period_label,
             session.start_time,
             session.end_time,
@@ -727,28 +829,60 @@
         return haystack.includes(q);
     }
 
+    function renderTeacherHeaderRow(teachers) {
+        return `
+            <div class="eie-v2-teacher-frame-head" aria-label="담임">
+                ${teachers.map(teacher => `
+                    <div class="eie-v2-teacher-frame-cell" data-eie-v2-teacher-key="${esc(teacher.key)}">
+                        <strong>${esc(teacher.name)}</strong>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function renderTeacherSlots(group, teachers) {
+        return `
+            <div class="eie-v2-teacher-frame-row" style="--eie-v2-homeroom-count:${teachers.length};">
+                ${teachers.map(teacher => {
+                    const cards = sessionsForTeacher(group.sessions, teacher);
+                    return `
+                        <div class="eie-v2-teacher-slot" data-eie-v2-teacher-key="${esc(teacher.key)}">
+                            ${cards.length ? cards.map(renderWeeklyCard).join('') : '<div class="eie-v2-teacher-slot-empty" aria-hidden="true"></div>'}
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+    }
+
     function renderBoard(sessions) {
         const query = viewState.searchQuery || '';
         const filtered = (sessions || []).filter(session => matchesSearch(session, query));
         if (!filtered.length) {
             return `<div class="eie-v2-empty-state">${query ? '검색 결과가 없습니다.' : '등록된 EIE 시간표가 없습니다.'}</div>`;
         }
+        const teachers = buildHomeroomColumns(filtered);
         return `
             <div class="eie-v2-card-board" aria-label="EIE 교재 카드형 시간표">
-                ${buildPeriodGroups(filtered).map(group => {
-                    const title = periodTitle(group.sample);
-                    return `
-                        <section class="eie-v2-period-row">
-                            <div class="eie-v2-period-head">
-                                <strong>${esc(title.period)}</strong>
-                                <span>${esc(title.time)}</span>
-                            </div>
-                            <div class="eie-v2-period-cards">
-                                ${group.sessions.map(renderWeeklyCard).join('')}
-                            </div>
-                        </section>
-                    `;
-                }).join('')}
+                <div class="eie-v2-board-scroll">
+                    <div class="eie-v2-board-grid" style="--eie-v2-homeroom-count:${teachers.length};">
+                        <div class="eie-v2-board-corner" aria-hidden="true"></div>
+                        ${renderTeacherHeaderRow(teachers)}
+                        ${buildPeriodGroups(filtered).map(group => {
+                            const title = periodTitle(group.sample);
+                            return `
+                                <section class="eie-v2-period-row">
+                                    <div class="eie-v2-period-head">
+                                        <strong>${esc(title.period)}</strong>
+                                        <span>${esc(title.time)}</span>
+                                    </div>
+                                    ${renderTeacherSlots(group, teachers)}
+                                </section>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
             </div>
         `;
     }
@@ -871,7 +1005,7 @@
                             <label><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                             <label><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
                             <label><span>상태</span><select id="eie-v2-edit-status">
-                                ${['active', 'inactive', 'needs_review', 'archived'].map(status => `<option value="${esc(status)}"${studentStatus(student) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}
+                                ${['active', 'inactive', 'needs_review'].map(status => `<option value="${esc(status)}"${studentStatus(student) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}
                             </select></label>
                             <label class="is-wide"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
                         </div>
@@ -917,9 +1051,9 @@
         return lastRenderedSessions.find(session => session.session_id === sid) || null;
     }
 
-    function rawMetaWithMaterial(row, material) {
+    function rawMetaWithMaterial(row, material, extra) {
         const meta = getRawMeta(row);
-        return { ...meta, material_text: normalizeKey(material) };
+        return { ...meta, material_text: normalizeKey(material), ...(extra || {}) };
     }
 
     function renderMiniField(label, inner, wide) {
@@ -978,8 +1112,8 @@
                     return `<div class="eie-v2-mini-student-row">
                         <button type="button" class="eie-v2-card-student" ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''} ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''} data-eie-v2-return-session="${esc(session.session_id)}" ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}>${esc(name)}</button>
                         ${grade ? `<span>${esc(grade)}</span>` : '<span></span>'}
-                        <button type="button" class="eie-small-button" ${sid ? `data-eie-v2-retire-student="${esc(sid)}"` : 'disabled'}>퇴원(제적) 처리</button>
-                        <button type="button" class="eie-small-button" ${sid ? `data-eie-v2-remove-student="${esc(sid)}"` : 'disabled'}>배정 해제</button>
+                        <button type="button" class="eie-small-button" ${sid ? `data-eie-v2-retire-student="${esc(sid)}"` : 'disabled'}>퇴원</button>
+                        <button type="button" class="eie-small-button" ${sid ? `data-eie-v2-remove-student="${esc(sid)}"` : 'disabled'}>수업 제외</button>
                     </div>`;
                 }).join('') : '<div class="eie-empty-box">배정된 학생이 없습니다.</div>'}
             </div>
@@ -995,12 +1129,12 @@
 
     function renderMiniClassroomPanel(session) {
         if (!session) return '';
-        const time = [session.start_time, session.end_time].filter(Boolean).join('~') || '';
+        const time = displayTimeRange(session.start_time, session.end_time) === '시간 미정' ? '' : displayTimeRange(session.start_time, session.end_time);
         const first = session.source_rows?.[0] || {};
         return `
             <div class="eie-v2-detail-head eie-v2-mini-head">
                 <span>${esc(session.period_label || '교시 미정')}${time ? ` · ${esc(time)}` : ''}</span>
-                <label class="eie-v2-mini-title"><span>교재</span><input id="eie-v2-mini-material" type="text" value="${esc(session.material || '')}" placeholder="교재 미입력" autocomplete="off"></label>
+                <label class="eie-v2-mini-title"><span>교재</span><input id="eie-v2-mini-material" type="text" value="${esc(session.material || '')}" placeholder="교재 없음" autocomplete="off"></label>
                 ${viewState.miniError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.miniError)}</div>` : ''}
                 ${viewState.miniNotice ? `<div class="eie-v2-info" role="status">${esc(viewState.miniNotice)}</div>` : ''}
             </div>
@@ -1009,9 +1143,8 @@
                     <strong>정보 수정</strong>
                     <div class="eie-v2-mini-grid">
                         ${renderMiniField('교시', `<input id="eie-v2-mini-period" type="text" value="${esc(session.period_label || first.period_label || '')}" autocomplete="off">`)}
-                        ${renderMiniField('시작', `<input id="eie-v2-mini-start" type="time" value="${esc(session.start_time || first.start_time || '')}">`)}
-                        ${renderMiniField('종료', `<input id="eie-v2-mini-end" type="time" value="${esc(session.end_time || first.end_time || '')}">`)}
-                        ${renderMiniField('상태', `<select id="eie-v2-mini-status">${miniStatusOptions(session).map(status => `<option value="${esc(status)}"${normalizeStatus(session.status) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}</select>`)}
+                        ${renderMiniField('시작', `<input id="eie-v2-mini-start" type="text" value="${esc(displayTime(session.start_time || first.start_time || ''))}" inputmode="numeric" autocomplete="off">`)}
+                        ${renderMiniField('종료', `<input id="eie-v2-mini-end" type="text" value="${esc(displayTime(session.end_time || first.end_time || ''))}" inputmode="numeric" autocomplete="off">`)}
                         ${renderMiniField('메모', `<textarea id="eie-v2-mini-memo">${esc(session.memo || '')}</textarea>`, true)}
                     </div>
                 </div>
@@ -1024,9 +1157,9 @@
                     ${renderMiniStudentManager(session)}
                 </div>
                 <div class="eie-v2-detail-section">
-                    <strong>수업 구성</strong>
+                    <strong>수업 정보</strong>
                     <ul class="eie-v2-source-list">
-                        ${(session.source_rows || []).map(row => `<li><span>${esc(row.day || row.day_label || '-')} · ${esc(row.period_label || session.period_label || '-')} · ${esc(row.start_time || '')}~${esc(row.end_time || '')}</span></li>`).join('')}
+                        ${(session.source_rows || []).map(row => `<li><span>${esc(row.day || row.day_label || '-')} · ${esc(row.period_label || session.period_label || '-')} · ${esc(displayTimeRange(row.start_time, row.end_time))}</span></li>`).join('')}
                     </ul>
                 </div>
                 <div class="eie-v2-detail-actions">
@@ -1089,7 +1222,7 @@
                 <div class="eie-v2-head-actions">
                     <button type="button" class="eie-secondary-button" data-eie-route="timetable-editor" aria-label="시간표 편집 열기">편집</button>
                     <label class="eie-v2-search" aria-label="학생 또는 교재 검색">
-                        <input type="search" data-eie-v2-search placeholder="학생/교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
+                        <input type="search" data-eie-v2-search placeholder="학생 또는 교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
                     </label>
                 </div>
             </div>
@@ -1359,9 +1492,8 @@
         if (!rows.length) return;
         const material = miniFieldValue('eie-v2-mini-material');
         const periodLabel = miniFieldValue('eie-v2-mini-period');
-        const startTime = miniFieldValue('eie-v2-mini-start');
-        const endTime = miniFieldValue('eie-v2-mini-end');
-        const status = miniFieldValue('eie-v2-mini-status') || normalizeStatus(session.status || 'active');
+        const startTime = normalizeTime(miniFieldValue('eie-v2-mini-start'));
+        const endTime = normalizeTime(miniFieldValue('eie-v2-mini-end'));
         const memo = miniFieldValue('eie-v2-mini-memo');
         const dayTeachers = miniDayTeacherValues();
         const savingSessionId = session.session_id;
@@ -1374,23 +1506,35 @@
                 const rowId = normalizeKey(row?.id || row?.cell_id || '');
                 if (!rowId) continue;
                 const day = normalizeDay(row.day || row.day_label || row.day_of_week || '');
-                const teachers = dayTeachers[day] || getTeacherNames(row);
+                const isWeekdayRow = DAY_ORDER.slice(0, 5).includes(day);
+                const teachers = isWeekdayRow ? (dayTeachers[day] || getTeacherNames(row)) : getTeacherNames(row);
+                const homeroomTeacher = normalizeKey(session.homeroom_teacher || getPrimaryTeacherName(row));
+                const metaExtra = {
+                    day_teachers: dayTeachers,
+                    teacher_names_by_day: dayTeachers,
+                    homeroom_teacher: homeroomTeacher
+                };
                 const payload = {
                     period_label: periodLabel || row.period_label || '',
                     start_time: startTime || row.start_time || '',
                     end_time: endTime || row.end_time || '',
-                    status,
                     memo,
                     material_text: material,
                     material,
-                    raw_meta_json: rawMetaWithMaterial(row, material)
+                    raw_meta_json: rawMetaWithMaterial(row, material, metaExtra)
                 };
-                if (teachers.length) {
-                    payload.teacher_names = teachers;
-                    payload.teacher_name_raw = teachers.join(', ');
+                if (isWeekdayRow) {
+                    if (teachers.length) {
+                        payload.teacher_names = teachers;
+                        payload.teacher_name_raw = teachers.join(', ');
+                    } else {
+                        payload.teacher_names = [];
+                        payload.teacher_name_raw = '';
+                    }
                 } else {
-                    payload.teacher_names = [];
-                    payload.teacher_name_raw = '';
+                    const fallbackTeachers = homeroomTeacher && homeroomTeacher !== '미정' ? [homeroomTeacher] : uniqueNames(Object.values(dayTeachers).flat());
+                    payload.teacher_names = fallbackTeachers;
+                    payload.teacher_name_raw = fallbackTeachers.join(', ');
                 }
                 await window.EieApi.updateTimetableCell(rowId, payload);
             }
