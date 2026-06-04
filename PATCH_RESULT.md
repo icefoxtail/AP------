@@ -1,16 +1,40 @@
-# 학생관리 배경/글씨 대비 보정 패치
+# PATCH_RESULT
 
-## 변경 파일
-- apmath/css/apms-theme-override.css
-- apmath/js/management.js
-- apmath/js/student.js
+## 1. 패치명
+EIE 시간표 v15 화면 밀도/편집 진입 정리 패치
 
-## 변경 범위
-- 학생관리 목록/검색/반 필터/빈 상태 대비 보정
-- 학생 상세 프로필/학생 수정/신규 학생 추가/퇴원생 관리 모달 대비 보정
-- 학생관리 전용 wrapper/class 추가
-- 전역 모달, 문구, 버튼명, 기능, 데이터 흐름 변경 없음
+## 2. 수정 파일
+- eie/js/views/eie-timetable-v2.js
+- eie/js/views/eie-timetable.js
+- eie/js/eie-router.js
+- eie/css/eie.css
 
-## 검증
-- node --check management.js PASS
-- node --check student.js PASS
+## 3. 반영 내용
+- 시간표 화면 내부의 `← EIE 홈` 버튼을 제거했다.
+- 선택 전 오른쪽 안내 패널을 렌더하지 않도록 변경했다.
+- 선택 전에는 시간표가 전체 폭을 더 넓게 사용하도록 `is-full` 레이아웃을 추가했다.
+- 수업 선택 후에만 오른쪽 미니 클래스룸 패널이 열리도록 `has-panel` 레이아웃을 분리했다.
+- 담임별 시간표가 더 촘촘하게 보이도록 여백, 담임 열 폭, 카드 내부 간격을 조정했다.
+- 편집 버튼이 구형 편집기 화면으로 넘어가지 않고 현재 담임별 시간표 화면을 유지하도록 라우트를 정리했다.
+- `#timetable-editor` 접근도 `timetable-v2`로 정규화되도록 라우터를 보정했다.
+- 구형 편집기 fallback의 `같은 칸에 2개 반` 검증 메시지를 제거했다.
+- 구형 편집기 fallback의 개발자식 저장 문구를 운영 화면 문구로 정리했다.
+- `확인필요` 표기를 `확인 필요`로 정리했다.
+
+## 4. 유지한 정책
+- 같은 담임 + 같은 교시 + 여러 수업 카드 세로 누적 허용.
+- 상태 드롭다운은 미니 클래스룸에서 계속 노출하지 않음.
+- 학생 배정, cell id, 교시/시간 DB 구조는 변경하지 않음.
+- APMS/AP Math 파일은 수정하지 않음.
+
+## 5. 검증
+- node --check eie/js/views/eie-timetable-v2.js PASS
+- node --check eie/js/views/eie-timetable.js PASS
+- node --check eie/js/eie-router.js PASS
+
+## 6. 브라우저 확인 항목
+- 시간표 화면 안 `← EIE 홈` 버튼이 사라졌는지 확인.
+- 아무 수업도 선택하지 않았을 때 오른쪽 안내 패널이 없어지고 시간표가 넓게 보이는지 확인.
+- 수업 카드를 선택하면 오른쪽 미니 클래스룸이 열리는지 확인.
+- 편집 버튼을 눌러도 구형 편집기 경고 화면으로 넘어가지 않는지 확인.
+- 같은 담임/같은 교시에 수업 카드 2개 이상이 정상 표시되는지 확인.

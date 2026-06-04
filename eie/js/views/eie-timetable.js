@@ -328,7 +328,7 @@
         const map = {
             active: '활성',
             imported: '활성',
-            needs_review: '확인필요',
+            needs_review: '확인 필요',
             hidden: '숨김',
             archived: '보관'
         };
@@ -716,7 +716,7 @@
                 </div>
                 <div class="eie-action-row">
                     <button type="button" class="eie-small-button" data-eie-timetable-action="move-selected-to-holding">이동칸으로</button>
-                    <button type="button" class="eie-small-button" data-eie-timetable-action="mark-needs-review">확인필요</button>
+                    <button type="button" class="eie-small-button" data-eie-timetable-action="mark-needs-review">확인 필요</button>
                     <button type="button" class="eie-small-button" data-eie-timetable-action="mark-hidden">숨김</button>
                     <button type="button" class="eie-small-button" data-eie-timetable-action="mark-active">활성</button>
                 </div>
@@ -742,7 +742,7 @@
                         <span>상태</span>
                         <select data-eie-edit-field="status">
                             <option value="active">활성</option>
-                            <option value="needs_review">확인필요</option>
+                            <option value="needs_review">확인 필요</option>
                         </select>
                     </label>
                     <label class="is-wide">
@@ -837,7 +837,7 @@
     }
 
     async function loadTimetable() {
-        const result = await EieApi.getTimetable(null, { status: 'active,needs_review,hidden' });
+        const result = await EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
         const rows = asRows(result).map(normalizeCell);
         EieState.setTimetableCells(rows);
         return { rows, result };
@@ -1186,7 +1186,6 @@
         if (holding.length) {
             messages.push(`이동칸에 ${holding.length}개 반이 남아 있습니다. 시간표에 배치하거나 편집을 취소해 주세요.`);
         }
-        const seenSlots = new Map();
         const seenIds = new Set();
         editorState.draftCells.forEach(cell => {
             const id = cellId(cell);
@@ -1194,12 +1193,6 @@
             seenIds.add(id);
             if (isHeld(id)) return;
             if (!String(cell.class_name_raw || '').trim()) messages.push('수업명이 비어 있는 셀이 있습니다.');
-            const key = `${periodKey(cell)}::${teacherKey(cell)}`;
-            if (seenSlots.has(key)) {
-                messages.push(`같은 칸에 2개 반이 있습니다: ${labelOfCell(seenSlots.get(key))}, ${labelOfCell(cell)}`);
-            } else {
-                seenSlots.set(key, cell);
-            }
         });
         return { isValid: messages.length === 0, messages };
     }
@@ -1221,7 +1214,7 @@
         editorState.lastPayload = payload;
         editorState.hasPreparedPayload = true;
         editorState.error = '';
-        editorState.notice = '저장 전 검증을 통과했습니다. Worker 연결 후 이 payload로 일괄 저장합니다.';
+        editorState.notice = '저장 전 검증을 통과했습니다.';
         rerender();
     }
 
@@ -1238,7 +1231,7 @@
     }
 
     async function refreshTimetableAfterSave() {
-        const result = await EieApi.getTimetable(null, { status: 'active,needs_review,hidden' });
+        const result = await EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
         const rows = asRows(result).map(normalizeCell);
         EieState.setTimetableCells(rows);
         return rows;
@@ -1248,7 +1241,7 @@
         if (editorState.isSaving) return;
         const validation = validateDraft();
         if (!validation.isValid) {
-            editorState.error = validation.messages[0] || 'Cannot save this timetable yet.';
+            editorState.error = validation.messages[0] || '저장할 수 없는 상태입니다.';
             editorState.notice = '';
             rerender();
             return;
@@ -1257,7 +1250,7 @@
         const payload = buildPayload();
         const total = payload.moves.length + payload.updates.length + payload.creates.length;
         if (!total) {
-            editorState.notice = 'No timetable changes to save.';
+            editorState.notice = '저장할 변경 사항이 없습니다.';
             editorState.error = '';
             rerender();
             return;
@@ -1265,7 +1258,7 @@
 
         editorState.isSaving = true;
         editorState.error = '';
-        editorState.notice = 'Saving timetable changes...';
+        editorState.notice = '시간표를 저장하는 중입니다.';
         editorState.lastPayload = payload;
         editorState.hasPreparedPayload = true;
         rerender();
@@ -1285,7 +1278,7 @@
             exitEditMode(true);
         } catch (error) {
             editorState.isSaving = false;
-            editorState.error = error?.message || 'Failed to save timetable changes.';
+            editorState.error = error?.message || '시간표를 저장하지 못했습니다.';
             editorState.notice = '';
             rerender();
         }
@@ -1456,6 +1449,9 @@
 
     window.EieTimetableView = {
         async render() {
+            if (window.EieTimetableV2View && typeof window.EieTimetableV2View.render === 'function') {
+                return window.EieTimetableV2View.render();
+            }
             bindDomEventsOnce();
             let rows = editorState.isEditMode ? editorState.draftCells : EieState.get().timetableCells;
             let error = '';
@@ -1475,7 +1471,7 @@
                     EieState.setTimetableBusy(false);
                 }
                 if (canEditOnThisViewport()) {
-                    enterEditMode(rows, 'v2 시간표에서 편집기로 들어왔습니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.');
+                    enterEditMode(rows, '');
                     rows = editorState.draftCells;
                 } else {
                     editorState.error = '시간표 편집은 PC에서 할 수 있어요.';
@@ -1486,10 +1482,6 @@
 
             return `
                 <section class="eie-timetable-screen" aria-labelledby="eie-timetable-title">
-                    <button type="button" class="eie-back-button"
-                            data-eie-route="dashboard"
-                            aria-label="EIE 홈으로 이동"
-                            title="EIE 홈">← EIE 홈</button>
                     <div class="eie-panel">
                         <h1 id="eie-timetable-title" class="eie-panel-title">시간표 편집</h1>
                         ${renderEditorToolbar(error)}
