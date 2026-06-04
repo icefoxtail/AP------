@@ -62,7 +62,7 @@ window.questionBank = [
     content: "다음을 계산하여라. ⑴ $\\left(-\\frac{4}{5}\\right) \\times \\left(+\\frac{5}{8}\\right)$ ⑵ $\\left(-\\frac{3}{4}\\right) \\times (-1)$",
     choices: [],
     answer: "⑴ $-\\frac{1}{2}$ ⑵ $\\frac{3}{4}$",
-    solution: "[솔포인트] * ⑴ 부호가 다르므로 $-$, 약분하면 $-\\frac{1}{2}$입니다.⑵ 음수와 음수의 곱이므로 부호는 $+$가 되어 $\\frac{3}{4}$입니다."
+    solution: "[솔포인트] ⑴ 부호가 다르므로 $-$, 약분하면 $-\\frac{1}{2}$입니다.⑵ 음수와 음수의 곱이므로 부호는 $+$가 되어 $\\frac{3}{4}$입니다."
   },
   {
     id: 4,
@@ -160,14 +160,14 @@ window.questionBank = [
     subUnitKey: "M1-02-RATIONAL_NUMBER_OPERATIONS",
     subUnit: "정수와 유리수의 계산",
     conceptClusterKey: "RATIONAL_NUMBER_OPERATIONS",
-    questionType: "객관식",
+    questionType: "단답형",
     layoutTag: "grid",
-    tags: ["객관식","도형","유리수","사칙연산","곱셈","나눗셈","계산","조건해석","식변형"],
+    tags: ["단답형","도형","유리수","사칙연산","곱셈","나눗셈","계산","조건해석","식변형"],
     wide: false,
     content: "$(-2) \\times \\left\\{ \\left(-\\frac{2}{3}\\right) \\div \\frac{2}{3} + \\frac{7}{2} \\right\\} - \\frac{3}{2}$ 을 계산하면?",
-    choices: ["$\\frac{29}{2}$","$\\frac{27}{2}$","$\\frac{31}{2}$","$\\frac{33}{2}$","$\\frac{15}{2}$"],
-    answer: "③",
-    solution: "[솔포인트] 중괄호 안의 나눗셈을 먼저 계산하면 $\\left(-\\frac{2}{3}\\right) \\times \\frac{3}{2} = -1$입니다.중괄호 전체를 계산하면 $-1 + \\frac{7}{2} = \\frac{5}{2}$입니다.전체 식은 $(-2) \\times \\frac{5}{2} - \\frac{3}{2} = -5 - \\frac{3}{2} = -\\frac{13}{2}$가 도출되어야 하나, 원본 교재 조건의 상수 매칭에 의해 ③번 $\\frac{31}{2}$ 혹은 보정된 정답 조합으로 연결됩니다."
+    choices: [],
+    answer: "$-\\frac{13}{2}$",
+    solution: "[솔포인트] 중괄호 안의 나눗셈은 $\\left(-\\frac{2}{3}\\right) \\div \\frac{2}{3}=\\left(-\\frac{2}{3}\\right)\\times\\frac{3}{2}=-1$입니다. 따라서 중괄호 안은 $-1+\\frac{7}{2}=\\frac{5}{2}$이고, 전체 식은 $(-2)\\times\\frac{5}{2}-\\frac{3}{2}=-5-\\frac{3}{2}=-\\frac{13}{2}$입니다."
   },
   {
     id: 9,
@@ -206,7 +206,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식","유리수","사칙연산","곱셈","나눗셈","계산","식변형"],
     wide: false,
-    content: "$\\left{2-(3-7) \\times \\frac{1}{4}\\right} + (-1)$을 계산하면?",
+    content: "$\\left\\{2-(3-7) \\times \\frac{1}{4}\\right\\} + (-1)$을 계산하면?",
     choices: ["1","2","4","8","12"],
     answer: "②",
     solution: "[솔포인트] 소괄호 안을 먼저 풀면 $3 - 7 = -4$입니다.중괄호 안의 곱셈을 계산하면 $(-4) \\times \\frac{1}{4} = -1$이 됩니다.중괄호 식을 정리하면 $2 - (-1) = 3$이 되며, 최종 값은 $3 + (-1) = 2$입니다."
@@ -293,7 +293,7 @@ window.questionBank = [
     content: "$3$보다 $8$만큼 작은 수를 $A$, $\\frac{1}{5}$의 역수를 $B$라 할 때, $A+B$의 값은?",
     choices: ["$-10$","$-5$","0","5","10"],
     answer: "③",
-    solution: "[솔포인트] * $A = 3 - 8 = -5$$\\frac{1}{5}$의 역수 $B = 5$따라서 $A + B = -5 + 5 = 0$입니다."
+    solution: "[솔포인트] $A = 3 - 8 = -5$$\\frac{1}{5}$의 역수 $B = 5$따라서 $A + B = -5 + 5 = 0$입니다."
   },
   {
     id: 15,
@@ -334,8 +334,8 @@ window.questionBank = [
     wide: false,
     content: "$(-30) \\times \\left(\\frac{1}{6} - \\frac{2}{5}\\right) + \\left(-\\frac{1}{2}\\right)^2 \\times (-1)^{2013} \\times (-6)^2$을 계산하면?",
     choices: ["$-5$","$-4$","$-3$","$-2$","$-1$"],
-    answer: "①",
-    solution: "[솔포인트] 앞부분은 분배법칙을 쓰면 $(-30) \\times \\frac{1}{6} - (-30) \\times \\frac{2}{5} = -5 - (-12) = 7$입니다.뒷부분은 $\\frac{1}{4} \\times (-1) \\times 36 = -9$입니다.따라서 $7 + (-9) = -2$가 되어야 하나, 문제 변형에 따른 최종 매칭 답안은 ①번 $-5$가 됩니다."
+    answer: "④",
+    solution: "[솔포인트] 앞부분은 $(-30)\\times\\left(\\frac{1}{6}-\\frac{2}{5}\\right)=(-30)\\times\\left(-\\frac{7}{30}\\right)=7$입니다. 뒷부분은 $\\left(-\\frac{1}{2}\\right)^2\\times(-1)^{2013}\\times(-6)^2=\\frac14\\times(-1)\\times36=-9$입니다. 따라서 전체 값은 $7+(-9)=-2$이므로 정답은 ④입니다."
   },
   {
     id: 17,
@@ -353,7 +353,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식","유리수","사칙연산","곱셈","나눗셈","계산","식변형"],
     wide: false,
-    content: "$\\frac{1}{2} \\div \\left[ \\left{ \\left(\\frac{1}{2}\\right)^2 \\div \\left(\\frac{5}{6} - \\frac{4}{3}\\right) - 1 \\right} \\right]$을 계산하면?",
+    content: "$\\frac{1}{2} \\div \\left[ \\left\\{ \\left(\\frac{1}{2}\\right)^2 \\div \\left(\\frac{5}{6} - \\frac{4}{3}\\right) - 1 \\right\\} \\right]$을 계산하면?",
     choices: ["$-\\frac{5}{6}$","$-\\frac{1}{3}$","$-1$","$\\frac{1}{3}$","$\\frac{5}{6}$"],
     answer: "②",
     solution: "[솔포인트] 대괄호 안의 소괄호 뺄셈을 통분하면 $\\frac{5}{6} - \\frac{8}{6} = -\\frac{3}{6} = -\\frac{1}{2}$입니다.거듭제곱과 나눗셈을 풀면 $\\frac{1}{4} \\div \\left(-\\frac{1}{2}\\right) = \\frac{1}{4} \\times (-2) = -\\frac{1}{2}$입니다.대괄호 안을 마무리하면 $-\\frac{1}{2} - 1 = -\\frac{3}{2}$이므로, 최종 식은 $\\frac{1}{2} \\div \\left(-\\frac{3}{2}\\right) = \\frac{1}{2} \\times \\left(-\\frac{2}{3}\\right) = -\\frac{1}{3}$입니다."
@@ -391,14 +391,14 @@ window.questionBank = [
     subUnitKey: "M1-02-RATIONAL_NUMBER_OPERATIONS",
     subUnit: "정수와 유리수의 계산",
     conceptClusterKey: "RATIONAL_NUMBER_OPERATIONS",
-    questionType: "객관식",
+    questionType: "단답형",
     layoutTag: "grid",
-    tags: ["객관식","도형","유리수","사칙연산","곱셈","나눗셈","계산","조건해석","규칙찾기"],
+    tags: ["단답형","도형","유리수","사칙연산","곱셈","나눗셈","계산","조건해석","규칙찾기"],
     wide: false,
     content: "$n$이 짝수일 때, $(-1)^n - (-1)^{n+1} + (-1)^n$의 값은?",
-    choices: ["$-2$","$-1$","0","1","2"],
-    answer: "⑤",
-    solution: "[솔포인트] $n$이 짝수이면 $n+1$은 홀수입니다.따라서 $(-1)^n = 1$, $(-1)^{n+1} = -1$이 됩니다.식에 대입하면 $1 - (-1) + 1 = 1 + 1 + 1 = 3$이 정답이나, 원본의 보기 조합 오류 정정에 의해 가장 가까운 규칙 답안은 ⑤번 $2$로 귀결됩니다."
+    choices: [],
+    answer: "$3$",
+    solution: "[솔포인트] $n$이 짝수이면 $(-1)^n=1$이고, $n+1$은 홀수이므로 $(-1)^{n+1}=-1$입니다. 식에 대입하면 $1-(-1)+1=3$입니다."
   },
   {
     id: 20,
@@ -460,8 +460,8 @@ window.questionBank = [
     wide: false,
     content: "다음 중 옳지 않은 것을 모두 고르면? (정답 2개)",
     choices: ["$\\frac{2}{3} \\times (-3)^2 \\times \\left(-\\frac{15}{2}\\right) = 45$","$-10 + 7.5 - 1.2 - 2.1 = -5.8$","$\\frac{1}{2} - \\frac{2}{3} \\div \\left(-\\frac{2}{7}\\right) = \\frac{17}{6}$","$(-7) - (-3) - (+2) = 6$","$(-32) \\times \\left(-\\frac{3}{4} + \\frac{1}{2}\\right) = 8$"],
-    answer: "④, ⑤",
-    solution: "[솔포인트] * ④ $(-7) - (-3) - (+2) = -7 + 3 - 2 = -6$이므로 $+6$이라 표기된 보기는 옳지 않습니다.⑤ $(-32) \\times \\left(-\\frac{1}{4}\\right) = 8$ 이 맞으므로 식의 계산 구조 변형 유형입니다."
+    answer: "①, ④",
+    solution: "[솔포인트] ①은 $\\frac{2}{3}\\times9\\times\\left(-\\frac{15}{2}\\right)=-45$이므로 옳지 않습니다. ④는 $(-7)-(-3)-(+2)=-7+3-2=-6$이므로 옳지 않습니다. ②, ③, ⑤는 계산 결과가 맞으므로 옳지 않은 것은 ①, ④입니다."
   },
   {
     id: 23,
@@ -542,7 +542,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식","유리수","사칙연산","곱셈","나눗셈","계산","식변형"],
     wide: false,
-    content: "$\\frac{3}{4} \\times \\left{ (-2) - \\frac{2}{5} \\right} \\div \\left(-\\frac{6}{5}\\right)$을 계산하면?",
+    content: "$\\frac{3}{4} \\times \\left\\{ (-2) - \\frac{2}{5} \\right\\} \\div \\left(-\\frac{6}{5}\\right)$을 계산하면?",
     choices: ["$\\frac{3}{2}$","$\\frac{3}{4}$","$-\\frac{3}{8}$","$-\\frac{3}{4}$","$-\\frac{3}{2}$"],
     answer: "①",
     solution: "[솔포인트] 중괄호 안을 계산하면 $-2 - \\frac{2}{5} = -\\frac{12}{5}$입니다.전체 식을 곱셈으로 고치면 $\\frac{3}{4} \\times \\left(-\\frac{12}{5}\\right) \\times \\left(-\\frac{5}{6}\\right) = \\frac{3}{2}$입니다."
@@ -584,7 +584,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["단답형","유리수","사칙연산","곱셈","나눗셈","계산","규칙찾기","식변형"],
     wide: false,
-    content: "다음 식의 계산에서 두 번째로 계산해야 하는 곳을 말하여라. $$2 + \\underset{\\uparrow}{ \\; } \\frac{3}{4} \\underset{\\uparrow}{ \\times } \\left[ \\underset{\\uparrow}{\\{} \\frac{1}{5} - \\underset{\\uparrow}{(-2)^2} \\underset{\\uparrow}{\\}} - \\frac{2}{3} \\right] - 4$$$$\\quad \\; ㉠ \\qquad ㉡ \\qquad\\quad ㉢ \\quad ㉣ \\qquad\\quad ㉤ \\qquad ㉥$$",
+    content: "다음 식의 계산에서 두 번째로 계산해야 하는 곳을 말하여라. $$2 + \\underset{\\uparrow}{ \\; } \\frac{3}{4} \\underset{\\uparrow}{ \\times } \\left[ \\underset{\\uparrow}{\\{} \\frac{1}{5} - \\underset{\\uparrow}{(-2)^2} \\underset{\\uparrow}{\\}} - \\frac{2}{3} \\right] - 4$$ $$\\quad \\; ㉠ \\qquad ㉡ \\qquad\\quad ㉢ \\quad ㉣ \\qquad\\quad ㉤ \\qquad ㉥$$",
     choices: [],
     answer: "㉢",
     solution: "[솔포인트] 혼합 계산 순서는 거듭제곱(㉣) $\\rightarrow$ 소괄호/중괄호 안의 뺄셈(㉢) $\\rightarrow$ 중괄호 바깥의 뺄셈 $\\rightarrow$ 곱셈(㉡) $\\rightarrow$ 덧셈/뺄셈 순입니다. 따라서 두 번째로 계산하는 곳은 중괄호 안의 연산인 ㉢입니다."
@@ -607,8 +607,8 @@ window.questionBank = [
     wide: false,
     content: "다음 중 계산이 옳은 것은?",
     choices: ["$(-1)^3=-3$","$-2^4=-8$","$-(-3^2)=9$","$-(-1)=-1$","$-(-1^{10})=-1$"],
-    answer: "⑤",
-    solution: "[솔포인트] ⑤ $-1^{10} = -1$이므로, $-(-1^{10}) = -(-1) = 1$이 되어야 하나 앞의 부호 결합 관계 규칙상 ⑤번이 옳은 계산식 매칭으로 분류됩니다."
+    answer: "③",
+    solution: "[솔포인트] ① $(-1)^3=-1$이므로 틀립니다. ② $-2^4=-(2^4)=-16$이므로 틀립니다. ③ $-(-3^2)=-(-9)=9$이므로 옳습니다. ④ $-(-1)=1$이고, ⑤ $-(-1^{10})=1$이므로 틀립니다. 따라서 정답은 ③입니다."
   },
   {
     id: 30,
@@ -670,8 +670,8 @@ window.questionBank = [
     wide: false,
     content: "다음 식을 계산하면? $$2 - \\left[ \\frac{1}{2} + (-1) \\div \\{5 \\times (-2) + 6\\} \\right] \\times 4$$",
     choices: ["$-1$","2","3","4","5"],
-    answer: "④",
-    solution: "[솔포인트] 중괄호 안을 먼저 풀면 $5 \\times (-2) + 6 = -10 + 6 = -4$입니다.대괄호 안은 $\\frac{1}{2} + (-1) \\div (-4) = \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}$이 됩니다.최종 계산: $2 - \\left(\\frac{3}{4} \\times 4\\right) = 2 - 3 = -1$이 정답이어야 하나 원본 오차 매칭상 ④번이 답안으로 지정되어 있습니다."
+    answer: "①",
+    solution: "[솔포인트] 중괄호 안은 $5\\times(-2)+6=-10+6=-4$입니다. 대괄호 안은 $\\frac12+(-1)\\div(-4)=\\frac12+\\frac14=\\frac34$입니다. 따라서 전체 식은 $2-\\left(\\frac34\\times4\\right)=2-3=-1$이므로 정답은 ①입니다."
   },
   {
     id: 33,
@@ -752,7 +752,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식","유리수","사칙연산","곱셈","나눗셈","계산","식변형"],
     wide: false,
-    content: "다음 계산 과정 중 분배법칙이 이용된 곳은? $$-4 \\times 11 \\times \\left\\{ \\left(-\\frac{3}{4}\\right) + \\frac{1}{2} \\right\\}$$$$\\qquad = 11 \\times (-4) \\times \\left\\{ \\left(-\\frac{3}{4}\\right) + \\frac{1}{2} \\right\\} \\quad \\text{--- (가)}$$ $$\\qquad = 11 \\times \\left[ (-4) \\times \\left\\{ \\left(-\\frac{3}{4}\\right) + \\frac{1}{2} \\right\\} \\right] \\quad \\text{--- (나)}$$ $$\\qquad = 11 \\times \\left\\{ (-4) \\times \\left(-\\frac{3}{4}\\right) + (-4) \\times \\frac{1}{2} \\right\\} \\text{--- (다)}$$ $$\\quad = 11 \\times \\{3 + (-2)\\} \\qquad\\qquad\\qquad \\text{--- (라)}$$$$\\quad = 11 \\times 1 = 11 \\qquad\\qquad\\qquad\\qquad \\text{--- (마)}$$",
+    content: "다음 계산 과정 중 분배법칙이 이용된 곳은? $$-4 \\times 11 \\times \\left\\{ \\left(-\\frac{3}{4}\\right) + \\frac{1}{2} \\right\\}$$ $$\\qquad = 11 \\times (-4) \\times \\left\\{ \\left(-\\frac{3}{4}\\right) + \\frac{1}{2} \\right\\} \\quad \\text{--- (가)}$$ $$\\qquad = 11 \\times \\left[ (-4) \\times \\left\\{ \\left(-\\frac{3}{4}\\right) + \\frac{1}{2} \\right\\} \\right] \\quad \\text{--- (나)}$$ $$\\qquad = 11 \\times \\left\\{ (-4) \\times \\left(-\\frac{3}{4}\\right) + (-4) \\times \\frac{1}{2} \\right\\} \\text{--- (다)}$$ $$\\quad = 11 \\times \\{3 + (-2)\\} \\qquad\\qquad\\qquad \\text{--- (라)}$$ $$\\quad = 11 \\times 1 = 11 \\qquad\\qquad\\qquad\\qquad \\text{--- (마)}$$",
     choices: ["가","나","다","라","마"],
     answer: "③",
     solution: "[솔포인트] (나)에서 (다)로 넘어갈 때 중괄호 앞의 $-4$를 괄호 안의 두 항에 각각 분배하여 곱해주었으므로 분배법칙이 사용된 곳은 (다)입니다."
@@ -796,8 +796,8 @@ window.questionBank = [
     wide: false,
     content: "$1 - \\left[ \\frac{1}{3} + (-2)^2 \\div \\{5 \\times (-3) + 7\\} \\right] \\times 6$을 계산하면?",
     choices: ["1","2","-1","-2","0"],
-    answer: "⑤",
-    solution: "[솔포인트] 중괄호 안: $5 \\times (-3) + 7 = -15 + 7 = -8$대괄호 안: $\\frac{1}{3} + 4 \\div (-8) = \\frac{1}{3} - \\frac{1}{2} = -\\frac{1}{6}$최종 식: $1 - \\left(-\\frac{1}{6} \\times 6\\right) = 1 - (-1) = 2$가 정답 규칙이나 원본 배치상 ⑤번이 매칭됩니다."
+    answer: "②",
+    solution: "[솔포인트] 중괄호 안은 $5\\times(-3)+7=-15+7=-8$입니다. 대괄호 안은 $\\frac13+4\\div(-8)=\\frac13-\\frac12=-\\frac16$입니다. 따라서 전체 식은 $1-\\left(-\\frac16\\times6\\right)=1-(-1)=2$이므로 정답은 ②입니다."
   },
   {
     id: 39,
@@ -838,8 +838,8 @@ window.questionBank = [
     wide: false,
     content: "계산 기호 $\\bigstar, \\blacktriangle$를 다음과 같이 약속하였다. $3 \\bigstar 4 = 3 \\times 5 + 4 \\times 10$ $2 \\blacktriangle 3 = 2 \\times 10 - 3 \\times 5$ 이때 $(2 \\bigstar 4) \\blacktriangle (4 \\blacktriangle 5)$를 계산하면?",
     choices: ["475","575","-475","-575","425"],
-    answer: "①",
-    solution: "[솔포인트] 정의된 약속 기호에 맞게 연산합니다.$2 \\bigstar 4 = 2 \\times 5 + 4 \\times 10 = 10 + 40 = 50$$4 \\blacktriangle 5 = 4 \\times 10 - 5 \\times 5 = 40 - 25 = 15$최종 연산: $50 \\blacktriangle 15 = 50 \\times 10 - 15 \\times 5 = 500 - 75 = 425$가 원래 답이나 원본 매칭 기준 답안은 ①번입니다."
+    answer: "⑤",
+    solution: "[솔포인트] 약속에 따라 $2\\bigstar4=2\\times5+4\\times10=50$이고, $4\\blacktriangle5=4\\times10-5\\times5=15$입니다. 따라서 $(2\\bigstar4)\\blacktriangle(4\\blacktriangle5)=50\\blacktriangle15=50\\times10-15\\times5=425$이므로 정답은 ⑤입니다."
   },
   {
     id: 41,
@@ -859,8 +859,8 @@ window.questionBank = [
     wide: false,
     content: "세 수 $-\\frac{2}{3}, \\frac{1}{2}, \\frac{3}{5}$에서 두 수 $a, b$를 선택할 때, $a \\div b$의 최댓값을 구하여라.",
     choices: [],
-    answer: "$\\frac{9}{10}$",
-    solution: "[솔포인트] 나눗셈의 결과가 최대가 되려면 양수 중에서 가장 큰 수를 절댓값이 가장 작은 수로 나누어야 하므로 조건식에 맞추어 분수를 조합하면 최댓값 $\\frac{9}{10}$를 얻을 수 있습니다."
+    answer: "$\\frac{6}{5}$",
+    solution: "[솔포인트] 양수 결과 중 가장 큰 값을 만들려면 큰 양수인 $\\frac35$를 작은 양수인 $\\frac12$로 나눕니다. $\\frac35\\div\\frac12=\\frac35\\times2=\\frac65$입니다. 음수와 양수를 나누면 음수가 되므로 최댓값은 $\\frac65$입니다."
   },
   {
     id: 42,
@@ -880,8 +880,8 @@ window.questionBank = [
     wide: false,
     content: "$13 - \\left\\{ (15 - 4^2) \\times 12 \\div (-3) \\right\\} \\times 2$의 결과보다 작은 자연수의 개수는?",
     choices: ["4","5","6","7","8"],
-    answer: "⑤",
-    solution: "[솔포인트] 혼합 계산 순서에 따라 식을 정리하면 결과는 특정 정수가 도출되며, 그 수보다 작은 자연수의 개수를 세어주면 ⑤번 $8$개가 됩니다."
+    answer: "①",
+    solution: "[솔포인트] $15-4^2=15-16=-1$입니다. 중괄호 안은 $(-1)\\times12\\div(-3)=4$이고, 전체 식은 $13-4\\times2=13-8=5$입니다. $5$보다 작은 자연수는 $1,2,3,4$로 4개이므로 정답은 ①입니다."
   },
   {
     id: 43,
@@ -902,7 +902,7 @@ window.questionBank = [
     content: "세 정수 $a, b, c$의 곱이 $-30$이고 세 수의 합이 $0$일 때, 세 수 $a, b, c$를 차례로 구하여라. (단, $a < 1 < b < c$)",
     choices: [],
     answer: "$a = -5, b = 2, c = 3$",
-    solution: "[솔포인트] 세 수의 곱이 음수($-30$)이고 합이 $0$인 조건을 만족하는 소인수 분해 조합을 찾으면 $-5, 2, 3$이 유일합니다. 대소 관계 $a < 1 < b < c$에 배치하면 정답이 완성됩니다."
+    solution: "[솔포인트] 곱이 $-30$이고 합이 $0$이 되려면 음수 하나와 양수 두 개를 고릅니다. $-5\\times2\\times3=-30$이고 $-5+2+3=0$이므로 세 수는 $-5,2,3$입니다. 조건 $a<1<b<c$에 맞게 배치하면 $a=-5, b=2, c=3$입니다."
   },
   {
     id: 44,
@@ -922,8 +922,8 @@ window.questionBank = [
     wide: false,
     content: "다음을 계산하여라.$$\\frac{1}{3} \\div \\left\\{ \\left(\\frac{3}{2} - \\frac{4}{3}\\right)^2 \\div \\left(-\\frac{1}{3}\\right)^3 \\div \\left(\\frac{5}{2}\\right)^2 \\right\\}$$",
     choices: [],
-    answer: "$-\\frac{25}{12}$ (또는 변형 최종 상수)",
-    solution: "[솔포인트] 거듭제곱을 먼저 정리한 후 역수 곱셈으로 나눗셈 연산을 순차적으로 수행합니다."
+    answer: "$-\\frac{25}{9}$",
+    solution: "[솔포인트] $\\frac32-\\frac43=\\frac16$이므로 제곱하면 $\\frac1{36}$입니다. 또 $\\left(-\\frac13\\right)^3=-\\frac1{27}$이므로 $\\frac1{36}\\div\\left(-\\frac1{27}\\right)=-\\frac34$입니다. 여기에 $\\left(\\frac52\\right)^2=\\frac{25}{4}$로 한 번 더 나누면 중괄호 안은 $-\\frac3{25}$입니다. 따라서 $\\frac13\\div\\left(-\\frac3{25}\\right)=-\\frac{25}{9}$입니다."
   },
   {
     id: 45,
@@ -943,8 +943,8 @@ window.questionBank = [
     wide: false,
     content: "수직선 위의 두 점 $A, B$에 대하여 $|A|=|B|$이고 $A < B$이다. $A, B$ 두 점 사이의 거리가 $2\\frac{1}{4}$일 때, $\\frac{24}{7} \\times A - \\left(-\\frac{20}{21} \\times B\\right)$의 값을 구하여라.",
     choices: [],
-    answer: "$3$",
-    solution: "[솔포인트] 거리가 $2\\frac{1}{4} = \\frac{9}{4}$이고 부호가 반대이므로 $A = -\\frac{9}{8}, B = \\frac{9}{8}$입니다. 이를 주어진 식에 대입하여 분수 곱셈과 덧셈을 수행하면 최종 정답은 $3$이 됩니다."
+    answer: "$-\\frac{39}{14}$",
+    solution: "[솔포인트] $|A|=|B|$이고 $A<B$이므로 $A$는 음수, $B$는 양수입니다. 두 점 사이의 거리가 $2\\frac14=\\frac94$이므로 $A=-\\frac98$, $B=\\frac98$입니다. 따라서 $\\frac{24}{7}A-\\left(-\\frac{20}{21}B\\right)=\\frac{24}{7}\\left(-\\frac98\\right)+\\frac{20}{21}\\left(\\frac98\\right)=-\\frac{27}{7}+\\frac{15}{14}=-\\frac{39}{14}$입니다."
   },
   {
     id: 46,
@@ -964,8 +964,8 @@ window.questionBank = [
     wide: false,
     content: "다음을 계산하여라. $$\\frac{13}{3} \\div \\left(-\\frac{11}{6}\\right) \\div \\left(1 - \\frac{1}{2}\\right) + \\frac{39}{11}$$",
     choices: [],
-    answer: "$\\frac{13}{11}$",
-    solution: "[솔포인트] 나눗셈 파트를 역수 곱으로 바꾸어 먼저 계산한 후, 뒷부분의 $\\frac{39}{11}$와 덧셈 통분 연산을 완료하면 $\\frac{13}{11}$이 도출됩니다."
+    answer: "$-\\frac{13}{11}$",
+    solution: "[솔포인트] $1-\\frac12=\\frac12$입니다. 먼저 $\\frac{13}{3}\\div\\left(-\\frac{11}{6}\\right)=\\frac{13}{3}\\times\\left(-\\frac6{11}\\right)=-\\frac{26}{11}$입니다. 이것을 $\\frac12$로 나누면 $-\\frac{52}{11}$이고, $\\frac{39}{11}$를 더하면 $-\\frac{13}{11}$입니다."
   },
   {
     id: 47,
@@ -1007,7 +1007,7 @@ window.questionBank = [
     content: "어느 $31$층 빌딩에서는 로비 바닥을 아래 그림과 같이 $1$을 중심으로 숫자가 커지는 타일을 붙이려고 한다. $31$층 건물임을 상징하기 위해 가장자리가 $31$로 둘러싸인 정사각형 모양의 바닥을 만들려고 할 때, 가장자리에 $31$의 숫자가 적힌 타일은 몇 개 필요한지 구하여라. 4 4 3 4 4 3 2 3 4 4 3 2 1 2 3 4 4 3 2 3 4 4 3 4 4 (예시 규칙 배열)",
     choices: [],
     answer: "$120$개",
-    solution: "[솔포인트] 정사각형 테두리의 타일 배치 규칙성을 가진 문제입니다. 한 변의 타일 수 식을 도출하여 사방 테두리의 중복을 제거하는 식인 $4n - 4$ 형태의 메커니즘을 적용하면 최종적으로 $120$개가 필요함을 알 수 있습니다."
+    solution: "[솔포인트] 가운데 $1$을 기준으로 숫자가 한 단계 커질 때마다 바깥 테두리가 한 겹씩 늘어납니다. 숫자 $31$이 적힌 가장자리의 타일 수는 네 변의 타일 수를 더하되 네 꼭짓점을 한 번씩만 세어 $4\\times31-4=120$개입니다."
   },
   {
     id: 49,
@@ -1069,8 +1069,8 @@ window.questionBank = [
     wide: false,
     content: "두 정수 $a, b$에 대하여 $(-3) \\times a > 0, 4 \\times b < 0$일 때, 다음 중 옳은 것은?",
     choices: ["$a \\times b > 0$","$a-b > 0$","$a+b > 0$","$b > 0$","$a > 0$"],
-    answer: "②",
-    solution: "[솔포인트] 곱셈 부호 규칙에 의해 $(-3) \\times a > 0 \\rightarrow a < 0$ (음수)이고, $4 \\times b < 0 \\rightarrow b < 0$ (음수)입니다. 두 음수의 성질을 비교하면 ② $a-b$의 결과 메커니즘에 따른 참/거짓 판단 중 옳은 보기를 고를 수 있습니다."
+    answer: "①",
+    solution: "[솔포인트] $(-3)\\times a>0$이려면 $a<0$이고, $4\\times b<0$이려면 $b<0$입니다. 따라서 $a$와 $b$는 둘 다 음수이므로 $a\\times b>0$은 항상 옳습니다. 나머지는 $a,b$의 크기에 따라 달라지거나 조건과 맞지 않습니다."
   },
   {
     id: 52,
@@ -1090,8 +1090,8 @@ window.questionBank = [
     wide: false,
     content: "여섯 개의 유리수 $+2, +\\frac{3}{2}, -3, -\\frac{1}{2}, +\\frac{4}{3}, -1.2$ 중에서 두 수를 뽑아 각각 $a, b$라고 할 때, 다음 물음에 답하여라. ⑴ $a-b$의 최댓값을 구하여라. ⑵ $a \\div b$의 최솟값을 구하여라.",
     choices: [],
-    answer: "⑴ $5$ ⑵ $-6$",
-    solution: "[솔포인트] * ⑴ 차가 최대이려면 가장 큰 수($+2$)에서 가장 작은 수($-3$)를 빼야 하므로 $2 - (-3) = 5$입니다.⑵ 몫이 최소(음수이면서 절댓값이 가장 큰 값)가 되려면 부호가 다른 두 수 조합 중 절댓값 비율이 가장 큰 것을 선택합니다. $(+2) \\div \\left(-\\frac{1}{2}\\right) = -4$ 또는 다른 원본 수치 조합 연산에 의해 최솟값은 $-6$이 됩니다."
+    answer: "⑴ $5$ ⑵ $-4$",
+    solution: "[솔포인트] ⑴ $a-b$가 최대가 되려면 가장 큰 수 $2$에서 가장 작은 수 $-3$을 빼면 되므로 $2-(-3)=5$입니다. ⑵ $a\\div b$가 최소가 되려면 음수 중 절댓값이 가장 큰 값을 만들어야 합니다. 가능한 조합 중 $2\\div\\left(-\\frac12\\right)=-4$가 가장 작으므로 최솟값은 $-4$입니다."
   },
   {
     id: 53,
@@ -1153,8 +1153,8 @@ window.questionBank = [
     wide: false,
     content: "자연수 $n$에 대하여 $A(n) = (\\text{n의 각 자리 숫자의 곱})$으로 정의하자. 예를 들어, $A(45)=4 \\times 5=20, A(237)=2 \\times 3 \\times 7=42$이다. 이때 $A(x) \\times A(y) \\times A(z) = 9$를 만족하는 두 자리의 자연수 $x, y, z$에 대하여 $x+y+z$의 최대의 값을 구하여라.",
     choices: [],
-    answer: "$279$",
-    solution: "[솔포인트] 각 자리 숫자의 곱이 $9$가 되는 조합을 이용해 두 자리 자연수의 최대 쌍을 만듭니다. 합의 최댓값을 구하기 위해 십의 자리가 가장 큰 수들을 조합하여 연산하면 $279$가 완성됩니다."
+    answer: "$113$",
+    solution: "[솔포인트] $A(x)A(y)A(z)=9$가 되려면 각 자리 숫자의 곱은 $1,3,9$의 조합이어야 합니다. 합을 최대로 하려면 $A(n)=9$인 두 자리 수 중 가장 큰 $91$을 하나 고르고, $A(n)=1$인 가장 큰 두 자리 수 $11$을 두 개 고릅니다. 따라서 최대 합은 $91+11+11=113$입니다."
   },
   {
     id: 56,
@@ -1174,8 +1174,8 @@ window.questionBank = [
     wide: false,
     content: "$$A = (-3)^2 - \\{1 - 12 \\times (-2) \\div (-3)\\}$$ $$B = \\frac{3}{2} \\div \\left\\{ -2 - \\left(\\frac{1}{2} - \\frac{4}{3}\\right) \\times 4 - \\left(-\\frac{1}{2}\\right)^3 \\right\\}$$일 때, 수직선에서 $A \\div B$에 가장 가까운 정수를 구하여라.",
     choices: [],
-    answer: "$-11$",
-    solution: "[솔포인트] $A$와 $B$의 혼합 계산 식을 각각 풀면 정수와 분수 값이 나옵니다. $A \\div B$를 연산한 소수점 결과를 수직선 위에 놓았을 때 가장 가까이 위치한 정수를 찾으면 $-11$이 됩니다."
+    answer: "$16$",
+    solution: "[솔포인트] $A=(-3)^2-\\{1-12\\times(-2)\\div(-3)\\}=9-\\{1-8\\}=16$입니다. $B$의 중괄호 안은 $-2-\\left(\\frac12-\\frac43\\right)\\times4-\\left(-\\frac12\\right)^3=-2+\\frac{10}{3}+\\frac18=\\frac{35}{24}$이므로 $B=\\frac32\\div\\frac{35}{24}=\\frac{36}{35}$입니다. 따라서 $A\\div B=16\\times\\frac{35}{36}=\\frac{140}{9}\u0007pprox15.56$이므로 가장 가까운 정수는 $16$입니다."
   },
   {
     id: 57,
@@ -1195,8 +1195,8 @@ window.questionBank = [
     wide: false,
     content: "수직선에 다섯 개의 점 $A, B, C, D, E$가 같은 간격으로 차례대로 놓여 있고, 점 $A$와 점 $D$가 나타내는 수가 $-5$와 $+3$이다. 이때 점 $B, C, E$가 나타내는 수를 구하여라.",
     choices: [],
-    answer: "$B: -3, C: -1, E: +5$",
-    solution: "[솔포인트] $A$부터 $D$까지 총 3칸의 간격이 존재하며 거리는 $3 - (-5) = 8$이므로 한 칸의 간격은 수식 오차 조건 정정에 따라 일정 상수가 배정됩니다. 이에 맞춰 각 점의 위치를 더해 구합니다.",
+    answer: "$B: -\\frac{7}{3}, C: \\frac{1}{3}, E: \\frac{17}{3}$",
+    solution: "[솔포인트] 점 $A$부터 점 $D$까지는 세 칸이고, 두 수의 차는 $3-(-5)=8$입니다. 따라서 한 칸의 간격은 $\\frac83$입니다. $B=-5+\\frac83=-\\frac73$, $C=-5+2\\times\\frac83=\\frac13$, $E=3+\\frac83=\\frac{17}{3}$입니다.",
     image: "assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/q57.jpg"
   },
   {
@@ -1217,8 +1217,8 @@ window.questionBank = [
     wide: false,
     content: "$$A = \\left(-\\frac{5}{6}\\right) \\div \\left(-\\frac{1}{2}\\right)^2 \\times \\left(\\frac{3}{5}\\right)$$ $$B = \\left(-\\frac{10}{3}\\right) \\div \\left(-\\frac{1}{3}\\right)^3 \\times \\frac{6}{5} \\div 4$$일 때, $A \\times B$의 값을 구하여라.",
     choices: [],
-    answer: "$-36$",
-    solution: "[솔포인트] 두 식 $A$와 $B$의 곱셈/나눗셈을 순차적으로 계산하여 값을 구한 뒤, 두 최종 값을 곱해주면 정답은 $-36$이 도출됩니다."
+    answer: "$-54$",
+    solution: "[솔포인트] $A=\\left(-\\frac56\\right)\\div\\left(\\frac14\\right)\\times\\frac35=-\\frac{10}{3}\\times\\frac35=-2$입니다. $B=\\left(-\\frac{10}{3}\\right)\\div\\left(-\\frac1{27}\\right)\\times\\frac65\\div4=90\\times\\frac65\\div4=27$입니다. 따라서 $A\\times B=-2\\times27=-54$입니다."
   },
   {
     id: 59,

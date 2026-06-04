@@ -132,6 +132,20 @@
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
         .choices-block .choice-item { padding: 0; background: transparent; border: none; border-radius: 0; }
 
+        .choices-boxed {
+            margin-top: 8px;
+            padding: 7px 9px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: #f8fafc;
+        }
+        .choices-boxed .choice-item {
+            padding: 2px 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
+
         .answer-box { flex: 1; border: none; margin-top: 10px; background: transparent; }
         table.question-table { border-collapse: collapse; width: 100%; max-width: 280px; table-layout: fixed; font-size: 8.6pt; line-height: 1.35; margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left; }
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
@@ -674,11 +688,20 @@ function stripChoicePrefix(text) {
 
 function detectChoiceRenderMode(choices) {
     if (!choices || choices.length === 0) return 'compact';
+
     const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
+    const avgLen = texts.reduce((s, t) => s + t.length, 0) / Math.max(texts.length, 1);
+    const isVeryLong = texts.some(t => t.length > 36);
+    const hasLineBreak = texts.some(t => /\\n|\n|<br/i.test(t));
+    const hasSentence = texts.some(t => /[.?!。]|입니다|한다|된다|아니다|같다|옳다|옳지/.test(t) && t.length > 20);
+    const hasMultiMarker = texts.some(t => (t.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|①|②|③|④|⑤/g) || []).length >= 2);
+
+    if (isVeryLong || hasLineBreak || hasSentence || hasMultiMarker || avgLen > 28) return 'boxed';
+
     const isLong = texts.some(t => t.length > 20);
     const hasBlockPrefix = texts.some(t => /^[가-힣ㄱ-ㅎa-zA-Z][\.\)]/.test(t));
-    const hasSentences = texts.some(t => /[.?!]/.test(t) && t.length > 15);
-    return (isLong || hasBlockPrefix || hasSentences) ? 'block' : 'compact';
+
+    return (isLong || hasBlockPrefix) ? 'block' : 'compact';
 }
 
 function renderChoicesHTML(q) {
@@ -724,6 +747,65 @@ function normalizeQuestionNotes(html) {
     );
 }
 
+function protectRenderSegments(html) {
+    const tokens = [];
+    const save = (match) => {
+        const token = `__PROTECTED_SEGMENT_${tokens.length}__`;
+        tokens.push(match);
+        return token;
+    };
+    let protectedHtml = String(html || '')
+        .replace(/\$\$[\s\S]*?\$\$/g, save)
+        .replace(/\$[^$\n]*?\$/g, save)
+        .replace(/<table[\s\S]*?<\/table>/gi, save)
+        .replace(/<div[^>]*class=["'][^"']*(?:question-note-box|box)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, save);
+    return {
+        html: protectedHtml,
+        restore(value) {
+            return String(value || '').replace(/__PROTECTED_SEGMENT_(\d+)__/g, (_, i) => tokens[Number(i)] || '');
+        }
+    };
+}
+
+function normalizeViewBlocks(html) {
+    if (!html) return '';
+    const protectedState = protectRenderSegments(html);
+    let out = protectedState.html;
+
+    out = out.replace(
+        /((?:<br\s*\/?>\s*)*)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
+        (match, breaks, body) => {
+            const plain = body.replace(/<[^>]+>/g, '').trim();
+            const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤|①|②|③|④|⑤/g) || []).length;
+            if (plain.length < 60 && markerCount < 2) return match;
+            const label = /조건\s*:/.test(match) ? '조건' : (/자료\s*:/.test(match) ? '자료' : '보기');
+            return `${breaks}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
+        }
+    );
+
+    out = out.replace(
+        /((?:<br\s*\/?>\s*)*)((?:[ㄱㄴㄷㄹㅁ]\.\s*[\s\S]*?){2,})(?=(?:<br\s*\/?>\s*){2,}|$)/g,
+        (match, breaks, body) => {
+            const plain = body.replace(/<[^>]+>/g, '').trim();
+            const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\./g) || []).length;
+            if (plain.length < 60 || markerCount < 2) return match;
+            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
+        }
+    );
+
+    out = out.replace(
+        /((?:<br\s*\/?>\s*)*)((?:㉠\s*[\s\S]*?㉡\s*[\s\S]*?(?:㉢|㉣|㉤)[\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}|$)/g,
+        (match, breaks, body) => {
+            const plain = body.replace(/<[^>]+>/g, '').trim();
+            const markerCount = (plain.match(/㉠|㉡|㉢|㉣|㉤/g) || []).length;
+            if (plain.length < 60 || markerCount < 3) return match;
+            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
+        }
+    );
+
+    return protectedState.restore(out);
+}
+
 function stripInlineImagesFromContent(content, hasImageField) {
     if (!content) return '';
     if (!hasImageField) return content;
@@ -745,8 +827,10 @@ async function renderExam(area, data) {
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
         const formattedContent = normalizeQuestionNotes(
-            normalizeQuestionTables(
-                formatQuestionContent(wrapLatex(rawContent), q)
+            normalizeViewBlocks(
+                normalizeQuestionTables(
+                    formatQuestionContent(wrapLatex(rawContent), q)
+                )
             )
         );
         const imageHTML = renderQuestionImageHTML(q);
@@ -851,8 +935,10 @@ async function renderSol(area, data) {
         const q = data[i]; const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
         const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
         const reminderContent = normalizeQuestionNotes(
-            normalizeQuestionTables(
-                formatQuestionContent(wrapLatex(reminderRawContent), q)
+            normalizeViewBlocks(
+                normalizeQuestionTables(
+                    formatQuestionContent(wrapLatex(reminderRawContent), q)
+                )
             )
         );
         const box = document.createElement('div'); box.className = 'q-box sol-box';
