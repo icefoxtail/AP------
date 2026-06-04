@@ -833,10 +833,17 @@ function makeOmrHistoryKey(item = {}) {
 }
 
 function getOmrHistoricalExamList() {
-    const students = getOmrVisibleStudents();
-    if (!students.length) return [];
+    // 학년/학급 필터와 무관하게 모든 활성 학급의 학생 기준으로 시험 이력 조회
+    // (학년 선택 전에도 시험 목록이 보여야 기존 시험 불러오기가 동작함)
+    const allClasses = getOmrVisibleClasses();
+    const allClassIds = new Set(allClasses.map(c => String(c.id)));
+    const allStudentIds = new Set((state.db.class_students || [])
+        .filter(m => allClassIds.has(String(m.class_id)))
+        .map(m => String(m.student_id)));
 
-    const studentIds = new Set(students.map(s => String(s.id)));
+    if (!allStudentIds.size) return [];
+
+    const studentIds = allStudentIds;
     const map = new Map();
 
     (state.db.exam_sessions || []).forEach(es => {
