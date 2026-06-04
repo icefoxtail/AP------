@@ -1,6 +1,7 @@
 (function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
-    const DEFAULT_EIE_TEACHERS = ['Carmen', 'IVY', 'Lily', 'Zoe', 'Stacy', 'Foreigner'];
+    const DEFAULT_EIE_TEACHERS = ['Carmen', 'IVY', 'Lily', 'Zoe', 'Stacy'];
+    const DEFAULT_EIE_DAY_TEACHERS = [...DEFAULT_EIE_TEACHERS, 'Foreigner'];
     const FALLBACK_DAY_LABEL = '전체';
     const STATUS_LABELS = {
         active: '활성',
@@ -52,6 +53,15 @@
 
     function normalizeKey(value) {
         return String(value == null ? '' : value).trim();
+    }
+
+    function isForeignerTeacher(value) {
+        const text = normalizeKey(value).toLowerCase();
+        return text === 'foreigner'
+            || text === 'foreign'
+            || text.startsWith('forei')
+            || text.includes('원어민')
+            || text.includes('외국인');
     }
 
     function getRawMeta(row) {
@@ -459,9 +469,11 @@
     function getPrimaryTeacherName(row) {
         const meta = getRawMeta(row);
         const explicit = normalizeKey(row?.homeroom_teacher || meta?.homeroom_teacher);
-        if (explicit) return explicit;
-        const names = getTeacherNames(row);
-        return names[0] || getTeacherName(row) || '미정';
+        if (explicit && !isForeignerTeacher(explicit)) return explicit;
+        const names = getTeacherNames(row).filter(name => !isForeignerTeacher(name));
+        const fallback = getTeacherName(row);
+        if (names.length) return names[0];
+        return fallback && !isForeignerTeacher(fallback) ? fallback : '미정';
     }
 
     function teacherKey(value) {
@@ -796,6 +808,7 @@
         (sessions || []).forEach(session => values.push(sessionHomeroomName(session)));
         const names = uniqueNames(values).filter(name => {
             if (!name) return false;
+            if (isForeignerTeacher(name)) return false;
             if (teacherKey(name) === unknownKey) return hasUnknownSession;
             return true;
         });
@@ -1039,6 +1052,7 @@
 
     function teacherOptionsFor(session) {
         const values = [];
+        values.push(...DEFAULT_EIE_DAY_TEACHERS);
         teacherRoster().forEach(name => values.push(name));
         (session?.source_rows || []).forEach(row => getTeacherNames(row).forEach(name => values.push(name)));
         Object.values(session?.day_teachers || {}).forEach(list => (list || []).forEach(name => values.push(name)));
