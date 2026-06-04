@@ -513,7 +513,7 @@ async function registerClassExamAssignmentToOS() {
     const examTitle = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
     const archiveFile = 'MIXED:' + AppState.key;
 
-    const sig = [classId, examTitle, examDate, archiveFile, questionCount, 'mixed'].join('|');
+    const sig = [classId, examDate, archiveFile, questionCount, 'mixed'].join('|');
     if (sig === _classExamAssignmentRegisteredSig) return;
 
     try {

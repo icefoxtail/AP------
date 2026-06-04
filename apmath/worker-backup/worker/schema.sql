@@ -204,6 +204,9 @@ CREATE TABLE IF NOT EXISTS class_exam_assignments (
   UNIQUE(class_id, exam_title, exam_date, archive_file)
 );
 
+CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_source_identity
+ON class_exam_assignments (class_id, exam_date, archive_file);
+
 CREATE TABLE IF NOT EXISTS daily_journals (
   id TEXT PRIMARY KEY,
   date TEXT NOT NULL,
