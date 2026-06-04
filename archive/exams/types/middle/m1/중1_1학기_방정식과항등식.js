@@ -3,7 +3,7 @@ window.examTitle = "중1_1학기_방정식과항등식";
 window.questionBank = [
   {
     id: 1,
-    level: "상",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -171,7 +171,7 @@ window.questionBank = [
   },
   {
     id: 9,
-    level: "하",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -297,7 +297,7 @@ window.questionBank = [
   },
   {
     id: 15,
-    level: "하",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -339,7 +339,7 @@ window.questionBank = [
   },
   {
     id: 17,
-    level: "하",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -423,7 +423,7 @@ window.questionBank = [
   },
   {
     id: 21,
-    level: "하",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -444,7 +444,7 @@ window.questionBank = [
   },
   {
     id: 22,
-    level: "하",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -528,7 +528,7 @@ window.questionBank = [
   },
   {
     id: 26,
-    level: "상",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -675,7 +675,7 @@ window.questionBank = [
   },
   {
     id: 33,
-    level: "상",
+    level: "하",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -738,7 +738,7 @@ window.questionBank = [
   },
   {
     id: 36,
-    level: "상",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -906,7 +906,7 @@ window.questionBank = [
   },
   {
     id: 44,
-    level: "중",
+    level: "하",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -948,7 +948,7 @@ window.questionBank = [
   },
   {
     id: 46,
-    level: "중",
+    level: "하",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -990,7 +990,7 @@ window.questionBank = [
   },
   {
     id: 48,
-    level: "중",
+    level: "하",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -1095,7 +1095,7 @@ window.questionBank = [
   },
   {
     id: 53,
-    level: "중",
+    level: "하",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -1137,7 +1137,7 @@ window.questionBank = [
   },
   {
     id: 55,
-    level: "하",
+    level: "중",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",
@@ -1179,7 +1179,7 @@ window.questionBank = [
   },
   {
     id: 57,
-    level: "중",
+    level: "하",
     category: "방정식과 항등식",
     originalCategory: "방정식과 항등식",
     standardCourse: "중1 수학",

@@ -1,5 +1,3 @@
-window.examTitle = "24_신흥중_1학기_중간_중2_수학";
-
 window.questionBank = [
   {
     "id": 1,
@@ -12,7 +10,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","표해석","실생활","참거짓","응용","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "표해석",
+      "실생활",
+      "참거짓",
+      "응용",
+      "개념"
+    ],
     "wide": false,
     "content": "다음은 분수와 소수에 대해 친구들이 발표한 것이다. 친구들의 설명 중 바르지 못한 것은?",
     "choices": [
@@ -36,7 +42,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","유한소수","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "유한소수",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 분수 중에서 유한소수로 나타낼 수 있는 것은? (정답 2개)",
     "choices": [
@@ -60,7 +72,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","순환소수","표해석","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "순환소수",
+      "표해석",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 중 순환소수의 순환마디와 그 표현이 옳은 것은?",
     "choices": [
@@ -84,7 +103,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","순환소수","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "순환소수",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "분수 $\\dfrac{5}{27}$ 을 소수로 나타낼 때, 소수점 아래 49번째 자리의 숫자를 구하면?",
     "choices": [
@@ -108,7 +133,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","정수조건","참거짓","오류판별"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "정수조건",
+      "참거짓",
+      "오류판별"
+    ],
     "wide": false,
     "content": "다음 중에서 옳은 것은? (정답 2개)",
     "choices": [
@@ -121,7 +155,7 @@ window.questionBank = [
     "answer": "①, ④",
     "solution": "[키포인트] 유리수는 분수 $\\dfrac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수이다.\n(1) 모든 유한소수와 순환소수는 분수로 나타낼 수 있으므로 유리수이다.\n(2) 기약분수의 분모에 $2$나 $5$ 이외의 소인수가 있으면 순환소수가 되므로 $7$이 있으면 순환소수이다.\n∴ 정답: ①, ④"
   },
-{
+  {
     "id": 6,
     "level": "중",
     "category": "순환소수 식 세우기",
@@ -132,7 +166,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","순환소수","정수조건","조건해석","식세우기","계산"],
+    "tags": [
+      "객관식",
+      "지수",
+      "순환소수",
+      "정수조건",
+      "조건해석",
+      "식세우기",
+      "계산"
+    ],
     "wide": false,
     "content": "<보기>는 순환소수 $0.\\dot{1}3\\dot{2}=0.132132\\dots$에 $1$ 또는 $10$의 거듭제곱을 곱한 순환소수들이다. <보기>의 두 순환소수를 골라 뺀 결과가 정수가 나오는 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>㉠ $0.132132\\dots$<br>㉡ $13.213213\\dots$<br>㉢ $1.321321\\dots$<br>㉣ $13213.213213\\dots$<br>㉤ $1321.321321\\dots$<br>㉥ $132.132132\\dots$</div>",
     "choices": [
@@ -156,7 +198,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "지수",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 중에서 옳은 것은?",
     "choices": [
@@ -180,7 +228,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","자연수조건","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "지수",
+      "자연수조건",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "$(\\dfrac{x^a}{3y^{2b}})^4 = \\dfrac{x^8}{81y^{24}}$ 일 때, 두 자연수 $a$와 $b$의 합을 구하면?",
     "choices": [
@@ -204,7 +259,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","지수","자연수조건","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "지수",
+      "자연수조건",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$1 \\times 2 \\times 3 \\times \\dots \\times 12 = 2^a \\times b$에서 $b$가 홀수일 때, 자연수 $a$의 값을 구하면?",
     "choices": [
@@ -228,7 +291,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","자연수조건","계산","조건해석","중난도"],
+    "tags": [
+      "객관식",
+      "자연수조건",
+      "계산",
+      "조건해석",
+      "중난도"
+    ],
     "wide": false,
     "content": "$5^4 \\times 20^6$을 $a \\times 10^n$ (단, $1 \\le a < 10$, $n$은 자연수)의 꼴로 나타낼 때, 두 수 $a$와 $n$의 값을 합하면?",
     "choices": [
@@ -252,7 +321,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","지수","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "지수",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\dfrac{36^9}{54^6} = 2^a$, $\\dfrac{9^6+9^6+9^6}{3^4+3^4+3^4} = 3^b$ 일 때, $a-b$의 값을 구하면?",
     "choices": [
@@ -276,7 +351,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","계수비교","지수","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "계수비교",
+      "지수",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$(-2x^2)^3 \\times (-9x) \\div 12x^4$ 을 계산하면?",
     "choices": [
@@ -300,7 +381,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","나머지정리","조건해석","계산","중난도"],
+    "tags": [
+      "객관식",
+      "나머지정리",
+      "조건해석",
+      "계산",
+      "중난도"
+    ],
     "wide": false,
     "content": "$2xy^2 \\times A \\div (-3x^2y^3) = 4xy$ 를 만족하는 식 $A$를 구하면?",
     "choices": [
@@ -324,7 +411,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","계수비교","참거짓","계산","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "계수비교",
+      "참거짓",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 식을 여러 가지 수학용어를 이용하여 설명한 것이다. 옳은 것은?\\n$3x^2 + \\dfrac{x}{3} - 2 - 2x^2 - 1$",
     "choices": [
@@ -348,7 +442,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","참거짓","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "참거짓",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "어떤 식에서 $2x^2-3x+7$ 을 빼야 할 것을 잘못하여 더했더니 $6x^2-2x+3$ 이 되었다. 이때 바르게 계산한 식은?",
     "choices": [
@@ -372,7 +472,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","계산","조건해석","하난도"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "계산",
+      "조건해석",
+      "하난도"
+    ],
     "wide": false,
     "content": "$x - \\{2x-y-(-x+4y)-3\\}$ 를 계산하면?",
     "choices": [
@@ -385,18 +491,25 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 소괄호, 중괄호 순으로 괄호를 풀고 동류항끼리 계산한다.\n(1) 중괄호 안: $2x-y+x-4y-3 = 3x-5y-3$\n(2) 전체 식: $x - (3x-5y-3) = x-3x+5y+3 = -2x+5y+3$\n∴ 정답: ⑤"
   },
-{
+  {
     "id": 17,
     "level": "하",
     "category": "부등식의 해",
     "originalCategory": "부등식의 해",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
+    "standardUnitKey": "M2-03",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","참거짓","대입","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "참거짓",
+      "대입",
+      "개념"
+    ],
     "wide": false,
     "content": "<보기> 중에서 $x=2$가 해가 되는 부등식을 모두 고른 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>ㄱ. $x>5$<br>ㄴ. $1+x \\ge 3$<br>ㄷ. $-x+3>1$<br>ㄹ. $2x \\ge x+1$</div>",
     "choices": [
@@ -415,12 +528,21 @@ window.questionBank = [
     "category": "부등식의 활용",
     "originalCategory": "부등식의 활용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
+    "standardUnitKey": "M2-03",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","지수","부등식","일차부등식","도형","원","실생활"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "지수",
+      "부등식",
+      "일차부등식",
+      "도형",
+      "원",
+      "실생활"
+    ],
     "wide": false,
     "content": "다음은 미지수 $x$를 이용하여 부등식으로 나타낸 것이다. 다음 중 옳지 않은 것은? (정답 2개)",
     "choices": [

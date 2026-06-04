@@ -75,7 +75,7 @@ window.questionBank = [
   },
   {
     id: 165,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -111,7 +111,7 @@ window.questionBank = [
   },
   {
     id: 167,
-    level: "하",
+    level: "중",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -129,7 +129,7 @@ window.questionBank = [
   },
   {
     id: 168,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -183,7 +183,7 @@ window.questionBank = [
   },
   {
     id: 171,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -201,7 +201,7 @@ window.questionBank = [
   },
   {
     id: 172,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -219,7 +219,7 @@ window.questionBank = [
   },
   {
     id: 174,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -273,7 +273,7 @@ window.questionBank = [
   },
   {
     id: 177,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -327,7 +327,7 @@ window.questionBank = [
   },
   {
     id: 181,
-    level: "하",
+    level: "중",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -363,7 +363,7 @@ window.questionBank = [
   },
   {
     id: 184,
-    level: "하",
+    level: "중",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -489,7 +489,7 @@ window.questionBank = [
   },
   {
     id: 191,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -507,7 +507,7 @@ window.questionBank = [
   },
   {
     id: 192,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -561,7 +561,7 @@ window.questionBank = [
   },
   {
     id: 195,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -579,7 +579,7 @@ window.questionBank = [
   },
   {
     id: 196,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",
@@ -633,7 +633,7 @@ window.questionBank = [
   },
   {
     id: 199,
-    level: "중",
+    level: "하",
     category: "문자와 식",
     originalCategory: "문자와 식",
     standardCourse: "중1 수학",

@@ -57,7 +57,7 @@ window.questionBank = [
   },
   {
     id: 3,
-    level: "중",
+    level: "하",
     category: "정다면체의 면, 모서리, 꼭짓점의 개수",
     originalCategory: "정다면체의 면, 모서리, 꼭짓점의 개수",
     standardCourse: "중1",
@@ -84,7 +84,7 @@ window.questionBank = [
   },
   {
     id: 4,
-    level: "중",
+    level: "하",
     category: "정다면체의 면, 모서리, 꼭짓점의 개수; 전개도",
     originalCategory: "정다면체의 면, 모서리, 꼭짓점의 개수; 전개도",
     standardCourse: "중1",
@@ -111,7 +111,7 @@ window.questionBank = [
   },
   {
     id: 5,
-    level: "중",
+    level: "하",
     category: "회전체",
     originalCategory: "회전체",
     standardCourse: "중1",
@@ -138,7 +138,7 @@ window.questionBank = [
   },
   {
     id: 6,
-    level: "중",
+    level: "하",
     category: "회전체의 단면의 모양 (1)",
     originalCategory: "회전체의 단면의 모양 (1)",
     standardCourse: "중1",
@@ -192,7 +192,7 @@ window.questionBank = [
   },
   {
     id: 8,
-    level: "상",
+    level: "하",
     category: "일부분을 잘라 낸 기둥의 겉넓이와 부피",
     originalCategory: "일부분을 잘라 낸 기둥의 겉넓이와 부피",
     standardCourse: "중1",
@@ -219,7 +219,7 @@ window.questionBank = [
   },
   {
     id: 9,
-    level: "중",
+    level: "하",
     category: "각기둥의 부피",
     originalCategory: "각기둥의 부피",
     standardCourse: "중1",
@@ -246,7 +246,7 @@ window.questionBank = [
   },
   {
     id: 10,
-    level: "중",
+    level: "하",
     category: "회전체의 겉넓이와 부피; 원기둥",
     originalCategory: "회전체의 겉넓이와 부피; 원기둥",
     standardCourse: "중1",
@@ -300,7 +300,7 @@ window.questionBank = [
   },
   {
     id: 12,
-    level: "중",
+    level: "하",
     category: "각뿔의 부피",
     originalCategory: "각뿔의 부피",
     standardCourse: "중1",
@@ -327,7 +327,7 @@ window.questionBank = [
   },
   {
     id: 13,
-    level: "중",
+    level: "하",
     category: "회전체의 겉넓이와 부피 (1) 원뿔",
     originalCategory: "회전체의 겉넓이와 부피 (1) 원뿔",
     standardCourse: "중1",
@@ -381,7 +381,7 @@ window.questionBank = [
   },
   {
     id: 15,
-    level: "중",
+    level: "하",
     category: "구의 부피",
     originalCategory: "구의 부피",
     standardCourse: "중1",
@@ -408,7 +408,7 @@ window.questionBank = [
   },
   {
     id: 16,
-    level: "중",
+    level: "하",
     category: "입체도형에 꼭 맞게 들어가는 입체도형",
     originalCategory: "입체도형에 꼭 맞게 들어가는 입체도형",
     standardCourse: "중1",
@@ -462,7 +462,7 @@ window.questionBank = [
   },
   {
     id: 18,
-    level: "하",
+    level: "중",
     category: "도수분포표의 이해",
     originalCategory: "도수분포표의 이해",
     standardCourse: "중1",
@@ -489,7 +489,7 @@ window.questionBank = [
   },
   {
     id: 19,
-    level: "중",
+    level: "하",
     category: "도수분포표에서 변량의 범위",
     originalCategory: "도수분포표에서 변량의 범위",
     standardCourse: "중1",
@@ -516,7 +516,7 @@ window.questionBank = [
   },
   {
     id: 20,
-    level: "중",
+    level: "하",
     category: "히스토그램의 직사각형의 넓이",
     originalCategory: "히스토그램의 직사각형의 넓이",
     standardCourse: "중1",
@@ -570,7 +570,7 @@ window.questionBank = [
   },
   {
     id: 22,
-    level: "하",
+    level: "중",
     category: "도수의 총합이 다른 두 자료의 상대도수",
     originalCategory: "도수의 총합이 다른 두 자료의 상대도수",
     standardCourse: "중1",
@@ -651,7 +651,7 @@ window.questionBank = [
   },
   {
     id: 25,
-    level: "상",
+    level: "중",
     category: "도수의 총합이 다른 두 상대도수 그래프의 비교",
     originalCategory: "도수의 총합이 다른 두 상대도수 그래프의 비교",
     standardCourse: "중1",

@@ -168,14 +168,14 @@ const PACK_CONFIGS = [
   {
     id: 'DIAG_1SEM_M2_U123_25',
     unitGroups: [
-      // M2-01: 유리수와 순환소수 (하4/중4/상2 = 10)
-      { pool: m2orig.filter(q => q.standardUnitKey === 'M2-01'), ha: 4, jung: 4, sang: 2 },
-      // M2-02: 식의 계산 (하4/중3/상1 = 8) — M2-03 하 풀이 2종뿐이라 1개 이관
-      { pool: m2orig.filter(q => q.standardUnitKey === 'M2-02'), ha: 4, jung: 3, sang: 1 },
-      // M2-03: 일차부등식 (하2/중3/상1 = 6) — 하 유형이 2종뿐이라 2개만 선택
-      { pool: m2orig.filter(q => q.standardUnitKey === 'M2-03'), ha: 2, jung: 3, sang: 1 },
+      // M2-01: 유리수와 순환소수 (하4/중3/상1 = 8)
+      { pool: m2orig.filter(q => q.standardUnitKey === 'M2-01'), ha: 4, jung: 3, sang: 1 },
+      // M2-02: 식의 계산 (하2/중4/상2 = 8) — 하 풀이 3개뿐이라 2개 선택
+      { pool: m2orig.filter(q => q.standardUnitKey === 'M2-02'), ha: 2, jung: 4, sang: 2 },
+      // M2-03: 일차부등식 (하4/중3/상1 = 8)
+      { pool: m2orig.filter(q => q.standardUnitKey === 'M2-03'), ha: 4, jung: 3, sang: 1 },
     ],
-    scopeLabel: '유리수와 순환소수(M2-01) 10문항, 식의 계산(M2-02) 8문항, 일차부등식(M2-03) 6문항',
+    scopeLabel: '유리수와 순환소수(M2-01) 8문항, 식의 계산(M2-02) 8문항, 일차부등식(M2-03) 8문항',
   },
 
   // ── 중3 ───────────────────────────────────────────────────────────────────
