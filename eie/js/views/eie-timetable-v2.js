@@ -1173,14 +1173,7 @@
     function renderSelectedPanel(session) {
         const studentPanel = renderStudentPanel();
         if (studentPanel) return studentPanel;
-        if (!session) {
-            return `
-                <aside class="eie-v2-detail-panel is-empty" aria-label="수업 상세">
-                    <h3>수업을 선택하세요</h3>
-                    <p>시간표에서 교재 카드를 클릭하면 오른쪽에서 바로 수정할 수 있습니다.</p>
-                </aside>
-            `;
-        }
+        if (!session) return '';
         return `
             <aside class="eie-v2-detail-panel eie-v2-mini-classroom" aria-label="${esc(session.material)} 수업 상세">
                 ${renderMiniClassroomPanel(session)}
@@ -1206,21 +1199,14 @@
         }
     }
 
-    function homeRoute() {
-        const role = String(window.localStorage?.getItem?.('WANGJI_EIE_ROLE') || '').toLowerCase();
-        return role === 'teacher' || role === 'eieteacher' ? 'teacher' : 'dashboard';
-    }
-
     function renderHeader(error) {
-        const route = homeRoute();
         return `
             <div class="eie-v2-page-head eie-v2-card-head">
                 <div class="eie-v2-title-row">
-                    <button type="button" class="eie-back-button" data-eie-route="${esc(route)}" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
-                    <h1>시간표</h1>
+                    <h1 id="eie-v2-title">시간표</h1>
                 </div>
                 <div class="eie-v2-head-actions">
-                    <button type="button" class="eie-secondary-button" data-eie-route="timetable-editor" aria-label="시간표 편집 열기">편집</button>
+                    <button type="button" class="eie-secondary-button" data-eie-route="timetable-v2" aria-label="시간표 편집 열기">편집</button>
                     <label class="eie-v2-search" aria-label="학생 또는 교재 검색">
                         <input type="search" data-eie-v2-search placeholder="학생 또는 교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
                     </label>
@@ -1666,14 +1652,16 @@
         const sessions = buildDisplaySessions(rows);
         lastRenderedSessions = sessions;
         const selectedSession = sessions.find(session => session.session_id === viewState.selectedSessionId) || null;
+        const selectedPanel = renderSelectedPanel(selectedSession);
+        const hasPanel = !!selectedPanel;
         return `
             <section class="eie-v2-screen" aria-labelledby="eie-v2-title">
                 ${renderHeader(error)}
-                <div class="eie-v2-layout">
+                <div class="eie-v2-layout ${hasPanel ? 'has-panel' : 'is-full'}">
                     <div class="eie-v2-main">
                         ${renderBoard(sessions)}
                     </div>
-                    ${renderSelectedPanel(selectedSession)}
+                    ${selectedPanel}
                 </div>
             </section>
         `;
