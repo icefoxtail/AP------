@@ -6,7 +6,8 @@
         imported: '활성',
         needs_review: '확인필요',
         hidden: '숨김',
-        archived: '보관'
+        archived: '보관',
+        inactive: '비활성'
     };
 
     const viewState = {
@@ -14,6 +15,7 @@
         selectedSessionId: '',
         selectedStudentId: '',
         selectedStudentName: '',
+        searchQuery: '',
         studentPanelMode: 'detail',
         studentSaving: false,
         studentError: '',
@@ -21,6 +23,7 @@
     };
 
     let eventsBound = false;
+    let searchRerenderTimer = null;
 
     function esc(value) {
         if (window.EieApp?.escapeHtml) return window.EieApp.escapeHtml(value);
@@ -91,7 +94,7 @@
 
     function normalizeStatus(value) {
         const status = normalizeKey(value || 'active');
-        if (['active', 'imported', 'needs_review', 'hidden', 'archived'].includes(status)) return status;
+        if (['active', 'imported', 'needs_review', 'hidden', 'archived', 'inactive'].includes(status)) return status;
         return 'active';
     }
 
@@ -269,8 +272,101 @@
         return Array.from(map.values());
     }
 
+    function dedupeWeeklyStudents(rows) {
+        const map = new Map();
+        rows.forEach(row => {
+            getStudents(row).forEach(student => {
+                const stableKey = normalizeKey(student.student_id || student.assignment_id || student.pin || student.key);
+                const name = normalizeStudentName(student.name);
+                if (!name) return;
+                const key = stableKey
+                    ? `id:${stableKey}`
+                    : `name:${name}|grade:${normalizeKey(student.grade)}`;
+                if (map.has(key)) return;
+                map.set(key, { ...student, name });
+            });
+        });
+        return Array.from(map.values());
+    }
+
     function getClassName(row) {
         return normalizeKey(row?.class_name_raw || row?.class_name || row?.name || '수업명 없음');
+    }
+
+    function compactClassName(value) {
+        return normalizeKey(value)
+            .replace(/\([^)]*\)/g, ' ')
+            .replace(/\[[^\]]*\]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function materialText(row) {
+        const meta = getRawMeta(row);
+        const direct = normalizeKey(
+            row?.material_text || row?.material || row?.textbook || row?.book_name ||
+            meta?.material_text || meta?.material || meta?.textbook || meta?.book_name || meta?.book
+        );
+        if (direct) return direct;
+        const compact = compactClassName(row?.class_name_raw || row?.class_name || row?.name || '');
+        if (!compact) return '';
+        const parts = compact.split(/\s+/).filter(Boolean);
+        if (parts.length >= 2 && /^[A-Za-z]+$/i.test(parts[0]) && /^\d+(?:[-.]\d+)?$/.test(parts[1])) {
+            return `${parts[0]} ${parts[1]}`;
+        }
+        return parts[0] || compact;
+    }
+
+    function materialLabel(row) {
+        return materialText(row) || '교재 미입력';
+    }
+
+    function materialKey(row) {
+        return normalizeKey(materialText(row) || getClassName(row) || row?.id || row?.cell_id || '').toLowerCase();
+    }
+
+    function sourceRowKey(row) {
+        const meta = getRawMeta(row);
+        return normalizeKey(
+            row?.card_key || row?.group_key || row?.source_row || row?.sourceRow || row?.row_key ||
+            meta?.card_key || meta?.group_key || meta?.source_row || meta?.sourceRow || meta?.row_key
+        );
+    }
+
+    function rawClassName(row) {
+        return normalizeKey(row?.class_name_raw || row?.class_name || row?.name || '');
+    }
+
+    function classGroupKey(row) {
+        const className = rawClassName(row).toLowerCase();
+        const material = materialKey(row);
+        const cell = normalizeKey(row?.id || row?.cell_id || '');
+
+        const parts = [];
+        if (material) parts.push(`material:${material}`);
+        if (className) parts.push(`class:${className}`);
+        if (!parts.length && cell) parts.push(`cell:${cell}`);
+        return parts.join('|') || 'unknown';
+    }
+
+    function cardGroupKey(row) {
+        const sourceKey = sourceRowKey(row);
+        const groupKey = classGroupKey(row);
+        const bodyKey = sourceKey ? `source:${sourceKey}|${groupKey}` : `class:${groupKey}`;
+        return [periodGroupKey(row), bodyKey].join('::');
+    }
+
+    function shortTeacherName(value) {
+        const text = normalizeKey(value);
+        if (!text || text === '미정') return '-';
+        const compact = text.replace(/선생님|teacher/ig, '').trim() || text;
+        return Array.from(compact).slice(0, 2).join('');
+    }
+
+    function shortTeacherNames(values) {
+        const names = uniqueNames(Array.isArray(values) ? values : normalizeKey(values).split(','));
+        if (!names.length) return '-';
+        return names.map(shortTeacherName).join('/');
     }
 
     function getTeacherName(row) {
@@ -355,51 +451,70 @@
         });
     }
 
-    function canMerge(previous, next) {
-        if (!previous || !next) return false;
-        if (previous.is_prep || next.is_prep) return false;
-        if (previous.day !== next.day) return false;
-        if (previous.teacher_key !== next.teacher_key) return false;
-        if (previous.class_name !== next.class_name) return false;
-        if (!Number.isFinite(previous.end_minutes) || !Number.isFinite(next.start_minutes)) return false;
-        return previous.end_minutes === next.start_minutes;
+    function periodGroupKey(row) {
+        return [
+            Number.isFinite(Number(row?.period_order)) ? Number(row.period_order) : '',
+            row?.period_label || '',
+            row?.start_time || '',
+            row?.end_time || ''
+        ].join('|');
     }
 
-    function makeSession(cells, index) {
+    function dayTeacherMap(cells) {
+        const map = {};
+        DAY_ORDER.slice(0, 5).forEach(day => { map[day] = []; });
+        (cells || []).forEach(cell => {
+            const day = normalizeDay(cell.day) || normalizeDay(cell.day_label || cell.day_of_week || '');
+            if (!DAY_ORDER.slice(0, 5).includes(day)) return;
+            const names = getTeacherNames(cell);
+            map[day].push(...(names.length ? names : [getTeacherName(cell)]));
+        });
+        return Object.fromEntries(Object.entries(map).map(([day, names]) => [day, uniqueNames(names)]));
+    }
+
+    function makeWeeklyCard(cells, index) {
         const ordered = sortByTime(cells);
         const first = ordered[0] || {};
-        const last = ordered[ordered.length - 1] || first;
         const startMinutes = ordered.map(cell => cell.start_minutes).filter(Number.isFinite).sort((a, b) => a - b)[0] ?? null;
         const endMinutes = ordered.map(cell => cell.end_minutes).filter(Number.isFinite).sort((a, b) => b - a)[0] ?? null;
         const startTime = Number.isFinite(startMinutes) ? minutesToTime(startMinutes) : (first.start_time || '');
-        const endTime = Number.isFinite(endMinutes) ? minutesToTime(endMinutes) : (last.end_time || '');
-        const students = dedupeStudents(ordered);
+        const endTime = Number.isFinite(endMinutes) ? minutesToTime(endMinutes) : (first.end_time || '');
+        const students = dedupeWeeklyStudents(ordered);
         const mergedStatus = ordered.find(cell => cell.status === 'needs_review')?.status
             || ordered.find(cell => cell.status === 'hidden')?.status
             || ordered.find(cell => cell.status === 'archived')?.status
             || first.status
             || 'active';
+        const sourceIds = ordered.map(cell => cell.id).filter(Boolean);
+        const teachers = uniqueNames(ordered.flatMap(getTeacherNames));
 
         return {
-            session_id: `session_${ordered.map(cell => cell.id).join('_') || index}`,
-            source_cell_ids: ordered.map(cell => cell.id),
+            session_id: `card_${periodGroupKey(first)}_${materialKey(first) || index}_${sourceIds.join('_') || index}`.replace(/[^a-zA-Z0-9가-힣_-]+/g, '_'),
+            source_cell_ids: sourceIds,
             source_rows: ordered,
-            day: first.day || '',
-            teacher_name: first.teacher_name || '미정',
-            teacher_key: first.teacher_key || 'unknown',
-            class_name: first.class_name || '수업명 없음',
+            day: '',
+            period_key: periodGroupKey(first),
+            period_label: first.period_label || first.period || `${first.period_order || index + 1}교시`,
+            material: materialLabel(first),
+            material_key: materialKey(first),
+            class_name: materialLabel(first),
+            class_full_name: getClassName(first),
+            teacher_name: teachers.join(', ') || '미정',
+            teacher_key: `card_${index}`,
+            day_teachers: dayTeacherMap(ordered),
             start_time: startTime,
             end_time: endTime,
             start_minutes: Number.isFinite(startMinutes) ? startMinutes : null,
             end_minutes: Number.isFinite(endMinutes) ? endMinutes : null,
             duration_minutes: Number.isFinite(startMinutes) && Number.isFinite(endMinutes) ? Math.max(0, endMinutes - startMinutes) : 0,
+            period_order: Number.isFinite(Number(first.period_order)) ? Number(first.period_order) : index,
             status: normalizeStatus(mergedStatus),
             students,
             student_count: students.length,
             memo: ordered.map(cell => cell.memo).filter(Boolean).join(' / '),
             room: first.room || '',
             is_merged: ordered.length > 1,
-            merge_type: ordered.length > 1 ? 'auto' : 'single'
+            merge_type: ordered.length > 1 ? 'weekly-card' : 'single'
         };
     }
 
@@ -409,85 +524,21 @@
             .filter(cell => !cell.is_prep));
         const grouped = new Map();
         normalized.forEach(cell => {
-            const key = [cell.day, cell.teacher_key, cell.class_name].join('::');
+            const key = cardGroupKey(cell);
             if (!grouped.has(key)) grouped.set(key, []);
             grouped.get(key).push(cell);
         });
-
-        const sessions = [];
-        grouped.forEach(cells => {
-            const ordered = sortByTime(cells);
-            let bucket = [];
-            ordered.forEach(cell => {
-                const previous = bucket[bucket.length - 1];
-                if (previous && canMerge(previous, cell)) {
-                    bucket.push(cell);
-                    return;
-                }
-                if (bucket.length) sessions.push(makeSession(bucket, sessions.length));
-                bucket = [cell];
-            });
-            if (bucket.length) sessions.push(makeSession(bucket, sessions.length));
+        const cards = [];
+        grouped.forEach(cells => cards.push(makeWeeklyCard(cells, cards.length)));
+        return sortByTime(cards).sort((a, b) => {
+            const aOrder = Number(a.period_order || 0);
+            const bOrder = Number(b.period_order || 0);
+            if (aOrder !== bOrder) return aOrder - bOrder;
+            const aTime = a.start_minutes ?? 999999;
+            const bTime = b.start_minutes ?? 999999;
+            if (aTime !== bTime) return aTime - bTime;
+            return a.material.localeCompare(b.material, 'ko');
         });
-
-        return sortByTime(sessions);
-    }
-
-    function daySortValue(day) {
-        if (day === FALLBACK_DAY_LABEL) return 98;
-        const index = DAY_ORDER.indexOf(day);
-        return index >= 0 ? index : 99;
-    }
-
-    function getAvailableDays(sessions) {
-        const days = Array.from(new Set((sessions || []).map(session => session.day).filter(Boolean)));
-        return days.sort((a, b) => daySortValue(a) - daySortValue(b) || a.localeCompare(b, 'ko'));
-    }
-
-    function todayLabel() {
-        const day = new Date().getDay();
-        return ['일', '월', '화', '수', '목', '금', '토'][day] || '월';
-    }
-
-    function ensureSelectedDay(days) {
-        if (!days.length) return '';
-        if (viewState.selectedDay && days.includes(viewState.selectedDay)) return viewState.selectedDay;
-        const today = todayLabel();
-        viewState.selectedDay = days.includes(today) ? today : days[0];
-        return viewState.selectedDay;
-    }
-
-    function buildTeacherColumns(sessions) {
-        const map = new Map();
-        (sessions || []).forEach((session, index) => {
-            if (!map.has(session.teacher_key)) {
-                map.set(session.teacher_key, {
-                    key: session.teacher_key,
-                    label: session.teacher_name || '미정',
-                    firstIndex: index,
-                    count: 0
-                });
-            }
-            map.get(session.teacher_key).count += 1;
-        });
-        return Array.from(map.values()).sort((a, b) => a.firstIndex - b.firstIndex || a.label.localeCompare(b.label, 'ko'));
-    }
-
-    function buildTimeBoundaries(sessions) {
-        const values = [];
-        (sessions || []).forEach(session => {
-            if (Number.isFinite(session.start_minutes)) values.push(session.start_minutes);
-            if (Number.isFinite(session.end_minutes)) values.push(session.end_minutes);
-        });
-        const unique = Array.from(new Set(values)).sort((a, b) => a - b);
-        if (unique.length >= 2) return unique;
-        return [];
-    }
-
-    function rowIndexForMinute(boundaries, minute, fallback) {
-        const index = boundaries.indexOf(minute);
-        if (index >= 0) return index + 2;
-        return fallback;
     }
 
     function statusLabel(status) {
@@ -552,72 +603,119 @@
         `;
     }
 
-    function renderSessionCard(session, layout) {
-        const status = normalizeStatus(session.status);
-        const isSpecial = status !== 'active' && status !== 'imported';
-        const durationClass = session.duration_minutes >= 70 ? 'is-long-session' : 'is-short-session';
-        const rowStart = rowIndexForMinute(layout.boundaries, session.start_minutes, 2);
-        const rowEnd = rowIndexForMinute(layout.boundaries, session.end_minutes, rowStart + 1);
-        const columnStart = (layout.teacherIndex.get(session.teacher_key) || 0) + 2;
-        const isSelected = viewState.selectedSessionId === session.session_id;
-        const time = [session.start_time, session.end_time].filter(Boolean).join('~') || '시간 미정';
+    function renderStudentPreview(students, options) {
+        const list = Array.isArray(students) ? students : [];
+        if (!list.length) return '<div class="eie-v2-card-students-empty">학생 없음</div>';
+        const max = 8;
+        const visible = list.slice(0, max);
+        const rest = Math.max(0, list.length - visible.length);
         return `
-            <div role="button" tabindex="0"
-                class="eie-v2-session-card ${durationClass} ${isSelected ? 'is-selected' : ''}"
-                data-eie-v2-session="${esc(session.session_id)}"
-                style="grid-column:${columnStart};grid-row:${rowStart} / ${Math.max(rowEnd, rowStart + 1)};"
-                aria-label="${esc(session.class_name)} 상세 보기">
-                <span class="eie-v2-session-topline">
-                    <strong>${esc(session.class_name)}</strong>
-                    ${isSpecial ? `<em class="eie-v2-status-badge is-${esc(status)}">${esc(statusLabel(status))}</em>` : ''}
-                </span>
-                <span class="eie-v2-session-time">${esc(time)}</span>
-                ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
-                <span class="eie-v2-hover-card" role="tooltip">
-                    <b>${esc(session.class_name)}</b>
-                    <small>${esc(time)} · 학생 ${session.student_count.toLocaleString('ko-KR')}명</small>
-                    ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
-                </span>
+            <div class="eie-v2-card-students" aria-label="학생 명단">
+                ${visible.map(student => {
+                    const id = studentDetailId(student);
+                    const name = studentSearchName(student);
+                    const context = returnContextFor(options);
+                    if (id || name) {
+                        return `<button type="button"
+                            class="eie-v2-card-student"
+                            ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
+                            ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
+                            ${contextAttrs(context)}
+                            title="${esc(name || student.name || '학생')}"
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
+                    }
+                    return `<span class="eie-v2-card-student" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
+                }).join('')}
+                ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
         `;
     }
 
-    function renderEmptyCells(layout) {
-        const cells = [];
-        const rowCount = Math.max(0, layout.boundaries.length - 1);
-        for (let row = 0; row < rowCount; row += 1) {
-            const label = `${minutesToTime(layout.boundaries[row])}~${minutesToTime(layout.boundaries[row + 1])}`;
-            cells.push(`
-                <div class="eie-v2-time-cell" style="grid-column:1;grid-row:${row + 2};">
-                    <strong>${esc(minutesToTime(layout.boundaries[row]))}</strong>
-                    <small>${esc(label)}</small>
-                </div>
-            `);
-            layout.teachers.forEach((teacher, index) => {
-                cells.push(`<div class="eie-v2-empty-slot" style="grid-column:${index + 2};grid-row:${row + 2};" aria-hidden="true"></div>`);
-            });
-        }
-        return cells.join('');
+    function teacherShortForDay(session, day) {
+        return shortTeacherNames(session?.day_teachers?.[day] || []);
     }
 
-    function renderTeacherHeaders(layout) {
-        return layout.teachers.map((teacher, index) => `
-            <div class="eie-v2-teacher-header" style="grid-column:${index + 2};grid-row:1;">
-                <strong>${esc(teacher.label)}</strong>
-                <small>${teacher.count.toLocaleString('ko-KR')}개 수업</small>
-            </div>
-        `).join('');
-    }
-
-    function renderDayTabs(days, selectedDay) {
-        if (!days.length) return '';
+    function renderWeeklyCard(session) {
+        const status = normalizeStatus(session.status);
+        const isSpecial = status !== 'active' && status !== 'imported';
+        const isSelected = viewState.selectedSessionId === session.session_id;
         return `
-            <div class="eie-v2-day-tabs" role="tablist" aria-label="요일 선택">
-                ${days.map(day => `
-                    <button type="button" class="eie-v2-day-tab ${day === selectedDay ? 'is-active' : ''}" data-eie-v2-day="${esc(day)}" role="tab" aria-selected="${day === selectedDay ? 'true' : 'false'}">
-                        ${esc(day)}
-                    </button>
-                `).join('')}
+            <article role="button" tabindex="0"
+                class="eie-v2-week-card ${isSelected ? 'is-selected' : ''}"
+                data-eie-v2-session="${esc(session.session_id)}"
+                aria-label="${esc(session.material)} 수업 상세 보기">
+                <div class="eie-v2-week-grid is-head" aria-hidden="true">
+                    <span>교재</span>
+                    ${DAY_ORDER.slice(0, 5).map(day => `<span>${esc(day)}</span>`).join('')}
+                </div>
+                <div class="eie-v2-week-grid is-body">
+                    <strong title="${esc(session.class_full_name || session.material)}">${esc(session.material || '교재 미입력')}</strong>
+                    ${DAY_ORDER.slice(0, 5).map(day => `<span title="${esc((session.day_teachers?.[day] || []).join(', ') || '-')}">${esc(teacherShortForDay(session, day))}</span>`).join('')}
+                </div>
+                ${isSpecial ? `<em class="eie-v2-status-badge is-${esc(status)}">${esc(statusLabel(status))}</em>` : ''}
+                ${renderStudentPreview(session.students, { linkStudents: true, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
+            </article>
+        `;
+    }
+
+    function periodTitle(session) {
+        const period = normalizeKey(session?.period_label) || '교시 미정';
+        const time = [session?.start_time, session?.end_time].filter(Boolean).join('~') || '시간 미정';
+        return { period, time };
+    }
+
+    function buildPeriodGroups(sessions) {
+        const map = new Map();
+        (sessions || []).forEach(session => {
+            const key = session.period_key || `${session.period_order || ''}|${session.start_time || ''}|${session.end_time || ''}`;
+            if (!map.has(key)) map.set(key, { key, sample: session, sessions: [] });
+            map.get(key).sessions.push(session);
+        });
+        return Array.from(map.values()).sort((a, b) => {
+            const ao = Number(a.sample.period_order || 0);
+            const bo = Number(b.sample.period_order || 0);
+            if (ao !== bo) return ao - bo;
+            return (a.sample.start_minutes ?? 999999) - (b.sample.start_minutes ?? 999999);
+        });
+    }
+
+    function matchesSearch(session, query) {
+        const q = normalizeKey(query).toLowerCase();
+        if (!q) return true;
+        const haystack = [
+            session.material,
+            session.class_full_name,
+            session.teacher_name,
+            session.period_label,
+            session.start_time,
+            session.end_time,
+            ...(session.students || []).map(student => student.name || '')
+        ].join(' ').toLowerCase();
+        return haystack.includes(q);
+    }
+
+    function renderBoard(sessions) {
+        const query = viewState.searchQuery || '';
+        const filtered = (sessions || []).filter(session => matchesSearch(session, query));
+        if (!filtered.length) {
+            return `<div class="eie-v2-empty-state">${query ? '검색 결과가 없습니다.' : '등록된 EIE 시간표가 없습니다.'}</div>`;
+        }
+        return `
+            <div class="eie-v2-card-board" aria-label="EIE 교재 카드형 시간표">
+                ${buildPeriodGroups(filtered).map(group => {
+                    const title = periodTitle(group.sample);
+                    return `
+                        <section class="eie-v2-period-row">
+                            <div class="eie-v2-period-head">
+                                <strong>${esc(title.period)}</strong>
+                                <span>${esc(title.time)}</span>
+                            </div>
+                            <div class="eie-v2-period-cards">
+                                ${group.sessions.map(renderWeeklyCard).join('')}
+                            </div>
+                        </section>
+                    `;
+                }).join('')}
             </div>
         `;
     }
@@ -754,6 +852,19 @@
         `;
     }
 
+    function renderDayTeacherRows(session) {
+        return `
+            <div class="eie-v2-detail-week-teachers">
+                ${DAY_ORDER.slice(0, 5).map(day => `
+                    <div>
+                        <span>${esc(day)}</span>
+                        <strong>${esc((session?.day_teachers?.[day] || []).join(', ') || '-')}</strong>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
     function renderSelectedPanel(session) {
         const studentPanel = renderStudentPanel();
         if (studentPanel) return studentPanel;
@@ -761,7 +872,7 @@
             return `
                 <aside class="eie-v2-detail-panel is-empty" aria-label="수업 상세">
                     <h3>수업을 선택하세요</h3>
-                    <p>시간표에서 수업을 클릭하면 학생 명단과 원본 정보를 확인할 수 있습니다.</p>
+                    <p>시간표에서 교재 카드를 클릭하면 학생 명단과 요일별 담당 선생님을 확인할 수 있습니다.</p>
                 </aside>
             `;
         }
@@ -769,20 +880,19 @@
         const rawRows = session.source_rows || [];
         const firstCellId = normalizeKey(session.source_cell_ids?.[0] || rawRows?.[0]?.id || '');
         return `
-            <aside class="eie-v2-detail-panel" aria-label="${esc(session.class_name)} 상세">
+            <aside class="eie-v2-detail-panel" aria-label="${esc(session.material)} 상세">
                 <div class="eie-v2-detail-head">
-                    <span>${esc(session.day)}요일 · ${esc(session.teacher_name)}</span>
-                    <h3>${esc(session.class_name)}</h3>
-                    <p>${esc(time)}</p>
-                    ${firstCellId ? `
-                        <div class="eie-v2-detail-actions">
-                            <button type="button" class="eie-secondary-button" data-eie-v2-open-classroom="${esc(firstCellId)}" aria-label="클래스룸에서 이 수업 보기">클래스룸</button>
-                        </div>
-                    ` : ''}
+                    <span>${esc(session.period_label || '교시 미정')} · ${esc(time)}</span>
+                    <h3>${esc(session.material || '교재 미입력')}</h3>
+                    ${session.class_full_name && session.class_full_name !== session.material ? `<p>${esc(session.class_full_name)}</p>` : ''}
+                </div>
+                <div class="eie-v2-detail-section">
+                    <strong>요일별 담당</strong>
+                    ${renderDayTeacherRows(session)}
                 </div>
                 <div class="eie-v2-detail-section">
                     <strong>학생 ${session.student_count.toLocaleString('ko-KR')}명</strong>
-                    ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: firstCellId })}
+                    ${renderStudentNames(session.students, { linkStudents: true, sessionId: session.session_id, cellId: firstCellId })}
                 </div>
                 ${session.memo ? `
                     <div class="eie-v2-detail-section">
@@ -801,60 +911,12 @@
                         ${rawRows.map(row => {
                             const rowId = normalizeKey(row?.id || row?.cell_id || '');
                             return `<li>
-                                <span>#${esc(rowId || '-')} · ${esc(row.start_time || '')}~${esc(row.end_time || '')}</span>
-                                ${rowId ? `<button type="button" class="eie-v2-source-link" data-eie-v2-open-classroom="${esc(rowId)}" aria-label="원본 수업칸 클래스룸 열기">클래스룸</button>` : ''}
+                                <span>#${esc(rowId || '-')} · ${esc(row.day || row.day_label || '')} · ${esc(row.start_time || '')}~${esc(row.end_time || '')}</span>
                             </li>`;
                         }).join('')}
                     </ul>
                 </div>
             </aside>
-        `;
-    }
-
-    function renderMobileList(daySessions) {
-        const teachers = buildTeacherColumns(daySessions);
-        return `
-            <div class="eie-v2-mobile-list">
-                ${teachers.map(teacher => {
-                    const sessions = daySessions.filter(session => session.teacher_key === teacher.key);
-                    return `
-                        <details class="eie-v2-mobile-teacher" open>
-                            <summary>${esc(teacher.label)} <span>${sessions.length.toLocaleString('ko-KR')}개</span></summary>
-                            ${sessions.map(session => `
-                                <div role="button" tabindex="0" class="eie-v2-mobile-card" data-eie-v2-session="${esc(session.session_id)}">
-                                    <strong>${esc(session.class_name)}</strong>
-                                    <small>${esc([session.start_time, session.end_time].filter(Boolean).join('~') || '시간 미정')}</small>
-                                    ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
-                                </div>
-                            `).join('') || '<div class="eie-v2-empty-mobile">수업 없음</div>'}
-                        </details>
-                    `;
-                }).join('')}
-            </div>
-        `;
-    }
-
-    function renderBoard(daySessions) {
-        const teachers = buildTeacherColumns(daySessions);
-        const boundaries = buildTimeBoundaries(daySessions);
-        if (!daySessions.length) {
-            return '<div class="eie-v2-empty-state">선택한 요일에 표시할 수업이 없습니다.</div>';
-        }
-        if (!boundaries.length || !teachers.length) {
-            return '<div class="eie-v2-empty-state">시간 정보가 부족해서 v2 시간표를 만들 수 없습니다.</div>';
-        }
-        const teacherIndex = new Map(teachers.map((teacher, index) => [teacher.key, index]));
-        const layout = { teachers, boundaries, teacherIndex };
-        return `
-            <div class="eie-v2-board-wrap" aria-label="EIE 시간표 v2 보드">
-                <div class="eie-v2-board" style="--eie-v2-teacher-count:${teachers.length};--eie-v2-row-count:${Math.max(1, boundaries.length - 1)};">
-                    <div class="eie-v2-corner" style="grid-column:1;grid-row:1;">시간</div>
-                    ${renderTeacherHeaders(layout)}
-                    ${renderEmptyCells(layout)}
-                    ${daySessions.map(session => renderSessionCard(session, layout)).join('')}
-                </div>
-            </div>
-            ${renderMobileList(daySessions)}
         `;
     }
 
@@ -864,10 +926,13 @@
             : [];
         if (!window.EieApi?.getTimetable) return { rows: stateRows, error: '' };
         try {
-            const result = await window.EieApi.getTimetable(null, { status: 'active,needs_review,hidden' });
+            const result = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
+            if (result?.fallback) {
+                return { rows: stateRows, error: result.error || '시간표를 불러오지 못해 기존 화면을 유지했습니다.' };
+            }
             const rows = asRows(result);
             if (window.EieState?.setTimetableCells) window.EieState.setTimetableCells(rows);
-            return { rows, error: result?.fallback ? result.error || '' : '' };
+            return { rows, error: '' };
         } catch (error) {
             return { rows: stateRows, error: error?.message || '시간표를 불러오지 못했습니다.' };
         }
@@ -878,20 +943,22 @@
         return role === 'teacher' || role === 'eieteacher' ? 'teacher' : 'dashboard';
     }
 
-    function renderHeader(days, selectedDay, error) {
+    function renderHeader(error) {
         const route = homeRoute();
         return `
-            <div class="eie-v2-page-head">
-                <div>
+            <div class="eie-v2-page-head eie-v2-card-head">
+                <div class="eie-v2-title-row">
                     <button type="button" class="eie-back-button" data-eie-route="${esc(route)}" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
                     <h1>시간표</h1>
                 </div>
                 <div class="eie-v2-head-actions">
                     <button type="button" class="eie-secondary-button" data-eie-route="timetable-editor" aria-label="시간표 편집 열기">편집</button>
+                    <label class="eie-v2-search" aria-label="학생 또는 교재 검색">
+                        <input type="search" data-eie-v2-search placeholder="학생/교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
+                    </label>
                 </div>
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}
-            ${renderDayTabs(days, selectedDay)}
         `;
     }
 
@@ -951,17 +1018,6 @@
                 saveStudentFromPanel();
                 return;
             }
-            const classroomButton = event.target.closest?.('[data-eie-v2-open-classroom]');
-            if (classroomButton) {
-                event.preventDefault();
-                const cellId = classroomButton.getAttribute('data-eie-v2-open-classroom') || '';
-                if (cellId && window.EieClassroomView?.openDetail) {
-                    window.EieClassroomView.openDetail(cellId);
-                } else if (window.EieRouter?.open) {
-                    window.EieRouter.open('classroom');
-                }
-                return;
-            }
             const refreshButton = event.target.closest?.('[data-eie-v2-refresh]');
             if (refreshButton) {
                 event.preventDefault();
@@ -969,6 +1025,25 @@
                 clearStudentPanel();
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
             }
+        });
+        document.addEventListener('input', event => {
+            const searchInput = event.target.closest?.('[data-eie-v2-search]');
+            if (!searchInput) return;
+            viewState.searchQuery = searchInput.value || '';
+            viewState.selectedSessionId = '';
+            clearStudentPanel();
+            if (searchRerenderTimer) window.clearTimeout(searchRerenderTimer);
+            searchRerenderTimer = window.setTimeout(() => {
+                const rerender = window.EieRouter?.open ? window.EieRouter.open('timetable-v2') : Promise.resolve();
+                Promise.resolve(rerender).then(() => {
+                    const nextInput = document.querySelector('[data-eie-v2-search]');
+                    if (nextInput) {
+                        nextInput.focus();
+                        const end = nextInput.value.length;
+                        if (nextInput.setSelectionRange) nextInput.setSelectionRange(end, end);
+                    }
+                });
+            }, 180);
         });
         eventsBound = true;
     }
@@ -1085,16 +1160,13 @@
         bindEvents();
         const { rows, error } = await loadRows();
         const sessions = buildDisplaySessions(rows);
-        const days = getAvailableDays(sessions);
-        const selectedDay = ensureSelectedDay(days);
-        const daySessions = sessions.filter(session => session.day === selectedDay);
         const selectedSession = sessions.find(session => session.session_id === viewState.selectedSessionId) || null;
         return `
             <section class="eie-v2-screen" aria-labelledby="eie-v2-title">
-                ${renderHeader(days, selectedDay, error)}
+                ${renderHeader(error)}
                 <div class="eie-v2-layout">
                     <div class="eie-v2-main">
-                        ${renderBoard(daySessions)}
+                        ${renderBoard(sessions)}
                     </div>
                     ${renderSelectedPanel(selectedSession)}
                 </div>

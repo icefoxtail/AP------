@@ -5057,3 +5057,329 @@ body.eie-owner-dashboard-bg {
         overflow: hidden;
     }
 }
+
+/* ── EIE timetable card-board refresh ───────────────────────── */
+.eie-v2-card-head {
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.eie-v2-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.eie-v2-title-row h1 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.eie-v2-card-head .eie-v2-head-actions {
+    flex: 1 1 auto;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.eie-v2-search {
+    flex: 0 1 260px;
+    margin-left: auto;
+}
+
+.eie-v2-search input {
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid var(--eie-border);
+    border-radius: 999px;
+    background: var(--eie-surface-2);
+    color: var(--eie-text);
+    padding: 0 14px;
+    font-size: 13px;
+    font-weight: 800;
+    outline: none;
+}
+
+.eie-v2-search input:focus {
+    border-color: rgba(37, 99, 235, 0.32);
+    background: var(--eie-surface);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.eie-v2-card-board {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eie-v2-period-row {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 10px;
+    align-items: stretch;
+    border: 1px solid var(--eie-border);
+    border-radius: 22px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    padding: 10px;
+}
+
+.eie-v2-period-head {
+    border-radius: 16px;
+    background: var(--eie-surface-2);
+    border: 1px solid var(--eie-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 12px 10px;
+    min-height: 104px;
+}
+
+.eie-v2-period-head strong {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.eie-v2-period-head span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.eie-v2-period-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+    gap: 10px;
+    min-width: 0;
+}
+
+.eie-v2-week-card {
+    position: relative;
+    min-width: 0;
+    min-height: 104px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    color: var(--eie-text);
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.055);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+.eie-v2-week-card:hover,
+.eie-v2-week-card.is-selected {
+    transform: translateY(-1px);
+    border-color: rgba(37, 99, 235, 0.28);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.11);
+}
+
+.eie-v2-week-grid {
+    display: grid;
+    grid-template-columns: minmax(52px, 1.4fr) repeat(5, minmax(26px, 0.72fr));
+    gap: 3px;
+    align-items: center;
+}
+
+.eie-v2-week-grid span,
+.eie-v2-week-grid strong {
+    min-width: 0;
+    border-radius: 7px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-v2-week-grid.is-head span {
+    padding: 4px 2px;
+    background: rgba(15, 23, 42, 0.045);
+    color: var(--eie-muted);
+    font-size: 10.5px;
+    font-weight: 900;
+}
+
+.eie-v2-week-grid.is-body strong,
+.eie-v2-week-grid.is-body span {
+    padding: 5px 2px;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--eie-text);
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.eie-v2-week-grid.is-body strong {
+    color: #0f172a;
+    background: rgba(16, 185, 129, 0.10);
+    letter-spacing: -0.02em;
+}
+
+.eie-v2-card-students {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: flex-start;
+    padding-top: 2px;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    min-height: 22px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.84);
+    color: var(--eie-text);
+    padding: 3px 6px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+button.eie-v2-card-student {
+    cursor: pointer;
+}
+
+button.eie-v2-card-student:hover {
+    border-color: rgba(37, 99, 235, 0.24);
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.eie-v2-card-student-more {
+    color: var(--eie-muted);
+}
+
+.eie-v2-card-students-empty {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-detail-week-teachers {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.eie-v2-detail-week-teachers div {
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+    background: var(--eie-surface-2);
+    padding: 8px 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.eie-v2-detail-week-teachers span {
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.eie-v2-detail-week-teachers strong {
+    font-size: 12px;
+    line-height: 1.2;
+    word-break: keep-all;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-card-head {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .eie-v2-title-row {
+        gap: 7px;
+        flex: 0 0 auto;
+    }
+
+    .eie-v2-title-row h1 {
+        font-size: 20px;
+    }
+
+    .eie-v2-card-head .eie-v2-head-actions {
+        min-width: 0;
+        gap: 6px;
+    }
+
+    .eie-v2-card-head .eie-secondary-button {
+        display: none;
+    }
+
+    .eie-v2-search {
+        flex: 1 1 auto;
+        min-width: 108px;
+    }
+
+    .eie-v2-search input {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+
+    .eie-v2-period-row {
+        grid-template-columns: 78px minmax(0, 1fr);
+        gap: 8px;
+        padding: 8px;
+        border-radius: 18px;
+    }
+
+    .eie-v2-period-head {
+        min-height: 104px;
+        padding: 10px 7px;
+    }
+
+    .eie-v2-period-head strong {
+        font-size: 13px;
+    }
+
+    .eie-v2-period-head span {
+        font-size: 10.5px;
+    }
+
+    .eie-v2-period-cards {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .eie-v2-week-card {
+        min-height: 100px;
+        padding: 9px;
+        border-radius: 16px;
+    }
+
+    .eie-v2-week-grid {
+        grid-template-columns: minmax(46px, 1.25fr) repeat(5, minmax(23px, 0.72fr));
+        gap: 2px;
+    }
+
+    .eie-v2-week-grid.is-head span {
+        font-size: 10px;
+        padding: 4px 1px;
+    }
+
+    .eie-v2-week-grid.is-body strong,
+    .eie-v2-week-grid.is-body span {
+        font-size: 11px;
+        padding: 5px 1px;
+    }
+
+    .eie-v2-card-student,
+    .eie-v2-card-student-more {
+        font-size: 10.5px;
+        min-height: 20px;
+        padding: 3px 5px;
+    }
+}
