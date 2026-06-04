@@ -1,4 +1,4 @@
-window.examTitle = "중1_중간대비_2단원_정수와유리수";
+﻿window.examTitle = "중1_중간대비_2단원_정수와유리수";
 
 window.questionBank = [
   {
@@ -380,24 +380,6 @@ window.questionBank = [
     solution: "[키포인트] 정수와 유리수의 포함 관계를 확인한다.\n조건 정리: 정수는 분모가 1인 분수로 나타낼 수 있다.\n풀이 방향: 각 보기의 정의가 맞는지 판단한다.\n정석 풀이: 모든 정수는 분모가 1인 분수로 나타낼 수 있으므로 유리수이다.\n따라서 정답은 ⑤이다."
   },
   {
-    id: 102,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["그래프"],
-    wide: false,
-    content: "다음 수직선 위의 점 A, B, C, D, E를 바르게 나타낸 것이 아닌 것은?",
-    choices: ["A: $-\\dfrac{5}{2}$","B: $-\\dfrac{4}{3}$","C: $0$","D: $\\dfrac{3}{2}$","E: $\\dfrac{7}{3}$"],
-    answer: "②",
-    solution: "[키포인트] 수직선의 눈금 위치를 보고 각 점이 나타내는 수를 확인한다.\n조건 정리: 수직선에서 B의 위치는 $-1$과 $-2$ 사이의 중간보다 $-2$ 쪽에 가깝다.\n풀이 방향: 각 점의 위치와 보기의 값을 대조한다.\n정석 풀이: 그림에서 B는 $-\\dfrac53$에 해당하므로 $-\\dfrac43$이라고 한 ②가 옳지 않다.\n따라서 정답은 ②이다."
-  },
-  {
     id: 103,
     level: "하",
     category: "정수와 유리수",
@@ -450,24 +432,6 @@ window.questionBank = [
     choices: ["절댓값이 가장 작은 음의 정수는 $-1$이다.","음수끼리는 절댓값이 큰 수가 작다.","양수와 음수를 통틀어 유리수라고 한다.","절댓값이 7인 수는 $-7$과 $7$이다.","수직선에서 4에 대응하는 점에서의 거리가 6인 점에 대응하는 수는 $-2$와 $10$이다."],
     answer: "③",
     solution: "[키포인트] 유리수에는 양수, 0, 음수가 모두 포함된다.\n조건 정리: 유리수의 범위에 0이 포함되는지 확인한다.\n풀이 방향: 각 설명이 정의와 맞는지 판단한다.\n정석 풀이: 유리수는 양의 유리수, 0, 음의 유리수로 되어 있으므로 ③은 옳지 않다.\n따라서 정답은 ③이다."
-  },
-  {
-    id: 106,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["그래프"],
-    wide: false,
-    content: "다음 그림은 수직선을 이용하여 두 수의 덧셈을 한 것이다. 이 그림이 나타내는 식으로 알맞은 것은?",
-    choices: ["$(-3)+(-2)$","$(-3)+(+2)$","$(-3)+(+5)$","$(+3)+(-5)$","$(-5)+(+3)$"],
-    answer: "③",
-    solution: "[키포인트] 수직선의 이동 방향과 이동 거리를 덧셈식으로 해석한다.\n조건 정리: 처음 위치와 이동 방향을 그림에서 확인한다.\n풀이 방향: 왼쪽으로 간 뒤 오른쪽으로 이동한 양을 읽는다.\n정석 풀이: 그림은 $-3$에서 시작하여 오른쪽으로 5만큼 이동하는 상황이므로 $(-3)+(+5)$이다.\n따라서 정답은 ③이다."
   },
   {
     id: 107,
@@ -738,24 +702,6 @@ window.questionBank = [
     choices: ["배 가격이 500원 올랐다.","작년보다 몸무게가 3 kg 더 나간다.","영어 점수가 7점 떨어졌다.","출근 시간에 5분 지각하였다.","버스 요금이 100원 올랐다."],
     answer: "③",
     solution: "[키포인트] 증가와 감소를 양수와 음수로 나타낸다.\n조건 정리: 올랐다, 더 나간다, 지각은 기준보다 늘어난 것으로 볼 수 있다.\n풀이 방향: 떨어졌다는 감소이므로 음의 부호로 나타낸다.\n정석 풀이: ③은 점수가 7점 떨어졌으므로 $-7$점이고, 나머지는 양의 방향으로 나타낸다.\n따라서 정답은 ③이다."
-  },
-  {
-    id: 122,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["그래프"],
-    wide: false,
-    content: "다음 중 수직선 위의 점 A, B, C, D, E에 대한 설명 중 옳지 않은 것은?",
-    choices: ["자연수가 아닌 정수는 1개이다.","점 A가 나타내는 수는 $-\\dfrac{5}{2}$이다.","절댓값이 가장 작은 수를 나타내는 점은 C이다.","음의 유리수는 2개이다.","원점으로부터 가장 멀리 떨어져 있는 수를 나타내는 점은 A이다."],
-    answer: "⑤",
-    solution: "[키포인트] 수직선에서 원점으로부터의 거리는 절댓값으로 판단한다.\n조건 정리: 그림에서 각 점이 나타내는 수를 읽는다.\n풀이 방향: 원점에서 가장 멀리 떨어진 점을 절댓값으로 비교한다.\n정석 풀이: 그림에서 E가 나타내는 수의 절댓값이 가장 크므로 원점에서 가장 멀리 떨어진 점은 A가 아니라 E이다.\n따라서 정답은 ⑤이다."
   },
   {
     id: 123,
@@ -1064,24 +1010,6 @@ window.questionBank = [
     solution: "[키포인트] 거듭제곱과 괄호 안 계산을 먼저 처리한다.\n조건 정리: $\\left(-\\dfrac12\\right)^3=-\\dfrac18$이고 $\\dfrac43+(-2)=-\\dfrac23$이다.\n풀이 방향: 각 부분을 계산한 뒤 빼기를 적용한다.\n정석 풀이: $\\left(-\\dfrac14\\right)\\div\\left(-\\dfrac18\\right)=2$이고 $(-6)\\times\\left(-\\dfrac23\\right)=4$이므로 $2-4=-2$이다.\n따라서 구하는 값은 $-2$이다."
   },
   {
-    id: 140,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["그래프"],
-    wide: false,
-    content: "다음 수직선 위의 두 점 A, B에 대응하는 수를 $a,b$라 할 때, 다음 <보기> 중 옳은 것을 모두 고른 것은?\n<보기> ㉠ $a\\times b<0$ ㉡ $a\\div b>0$ ㉢ $a+b>0$ ㉣ $a-b<0$",
-    choices: ["㉠, ㉡","㉠, ㉢","㉡, ㉣","㉠, ㉡, ㉢","㉠, ㉢, ㉣"],
-    answer: "⑤",
-    solution: "[키포인트] 수직선에서 $a<0<b$이고 $|a|<|b|$임을 읽어 판단한다.\n조건 정리: 점 A는 원점의 왼쪽, 점 B는 원점의 오른쪽에 있고 B가 더 멀다.\n풀이 방향: 각 보기의 부호를 판단한다.\n정석 풀이: $a\\times b<0$은 참, $a\\div b>0$은 거짓, $a+b>0$은 참, $a-b<0$은 참이다. 따라서 ㉠, ㉢, ㉣이 옳다.\n따라서 정답은 ⑤이다."
-  },
-  {
     id: 141,
     level: "하",
     category: "정수와 유리수",
@@ -1098,24 +1026,6 @@ window.questionBank = [
     choices: ["0은 양의 정수도 음의 정수도 아니다.","수직선 위에서 음의 정수는 항상 원점보다 왼쪽에 있다.","유리수는 양의 유리수와 음의 유리수로 되어 있다.","유리수란 분자가 정수이고 분모는 0이 아닌 정수인 분수로 나타낼 수 있는 수이다.","서로 다른 두 유리수 사이에는 무수히 많은 유리수가 존재한다."],
     answer: "③",
     solution: "[키포인트] 유리수에는 0도 포함된다.\n조건 정리: 유리수의 분류는 양의 유리수, 0, 음의 유리수이다.\n풀이 방향: 각 설명이 정의와 맞는지 확인한다.\n정석 풀이: ③은 0을 빠뜨렸으므로 옳지 않다.\n따라서 정답은 ③이다."
-  },
-  {
-    id: 142,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["그래프"],
-    wide: false,
-    content: "다음 수직선 위의 다섯 개의 점 A, B, C, D, E가 나타내는 수로 옳지 않은 것은?",
-    choices: ["A: $-3$","B: $-\\dfrac52$","C: $-\\dfrac12$","D: $2\\dfrac12$","E: $3$"],
-    answer: "②",
-    solution: "[키포인트] 수직선의 눈금 간격을 기준으로 각 점의 값을 읽는다.\n조건 정리: 그림에서 B의 위치는 $-\\dfrac32$에 해당한다.\n풀이 방향: 보기의 값과 실제 위치를 비교한다.\n정석 풀이: B를 $-\\dfrac52$라고 한 ②가 옳지 않다.\n따라서 정답은 ②이다."
   },
   {
     id: 143,
@@ -1226,24 +1136,6 @@ window.questionBank = [
     solution: "[키포인트] 음수를 빼는 것은 그 수의 반대수를 더하는 것이다.\n조건 정리: $\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)=\\left(+\\dfrac23\\right)+\\left(+\\dfrac32\\right)$이다.\n풀이 방향: 분모를 6으로 통분한다.\n정석 풀이: $\\dfrac23=\\dfrac46$, $\\dfrac32=\\dfrac96$이므로 합은 $\\dfrac{13}{6}$이다.\n따라서 구하는 값은 $+\\dfrac32$, $+\\dfrac96$, $+\\dfrac{13}{6}$이다."
   },
   {
-    id: 149,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["그래프"],
-    wide: false,
-    content: "다음 중 $\\dfrac16-\\left(+\\dfrac23\\right)-\\left(-\\dfrac12\\right)$의 계산 결과를 수직선 위에 나타낸 것으로 옳은 것은?",
-    choices: ["A","B","C","D","E"],
-    answer: "③",
-    solution: "[키포인트] 분수의 덧셈과 뺄셈을 계산한 뒤 수직선 위치를 찾는다.\n조건 정리: 먼저 식의 값을 계산한다.\n풀이 방향: 뺄셈을 덧셈으로 바꾸고 통분한다.\n정석 풀이: $\\dfrac16-\\dfrac23+\\dfrac12=\\dfrac16-\\dfrac46+\\dfrac36=0$이다. 수직선에서 0은 C이다.\n따라서 정답은 ③이다."
-  },
-  {
     id: 150,
     level: "하",
     category: "정수와 유리수",
@@ -1278,24 +1170,6 @@ window.questionBank = [
     choices: ["0","3","$\\dfrac32$","$\\dfrac34$","6"],
     answer: "③",
     solution: "[키포인트] 절댓값이 같고 부호가 반대이면 두 수는 서로 반대수이다.\n조건 정리: $A=t$, $B=-t$라 할 수 있다.\n풀이 방향: 조건 $A$가 $B$보다 3만큼 크다는 식을 세운다.\n정석 풀이: $A-B=3$이므로 $t-(-t)=3$, $2t=3$이다. 따라서 $A=t=\\dfrac32$이다.\n따라서 정답은 ③이다."
-  },
-  {
-    id: 152,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "단답형",
-    layoutTag: "grid",
-    tags: ["표"],
-    wide: false,
-    content: "오른쪽 그림에서 가로, 세로, 대각선에 있는 수들의 합이 모두 같도록 $A,B$의 값을 정할 때, $A\\div B$의 값을 구하여라.",
-    choices: [],
-    answer: "2",
-    solution: "[키포인트] 마방진의 가로, 세로, 대각선 합이 같다는 조건을 이용한다.\n조건 정리: 그림에서 한 줄의 합이 3임을 알 수 있다.\n풀이 방향: 가로와 세로 조건으로 $A,B$를 구한다.\n정석 풀이: $6+1+A=3$이므로 $A=-4$이고, $-4+9+B=3$이므로 $B=-2$이다. 따라서 $A\\div B=(-4)\\div(-2)=2$이다.\n따라서 구하는 값은 $2$이다."
   },
   {
     id: 153,
@@ -1442,3 +1316,4 @@ window.questionBank = [
     solution: "[키포인트] 괄호 안을 먼저 계산한 뒤 곱셈과 나눗셈을 차례로 처리한다.\n조건 정리: $(-2)-\\dfrac25=-\\dfrac{12}{5}$이다.\n풀이 방향: 나눗셈은 역수를 곱하여 계산한다.\n정석 풀이: $\\dfrac34\\times\\left(-\\dfrac{12}{5}\\right)\\div\\left(-\\dfrac65\\right)=\\dfrac34\\times\\left(-\\dfrac{12}{5}\\right)\\times\\left(-\\dfrac56\\right)=\\dfrac32$이다.\n따라서 구하는 값은 $\\dfrac32$이다."
   }
 ];
+

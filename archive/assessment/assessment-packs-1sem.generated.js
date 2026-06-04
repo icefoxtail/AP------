@@ -6464,13 +6464,13 @@
       "courseLabel": "중1 수학 1학기",
       "scopeLabel": "소인수분해, 최대공약수와 최소공배수",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "types/middle/m1 중1 1학기 유형 JS",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -7436,43 +7436,6 @@
           "_assessmentSkill": "계산",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M1_01_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "최대공약수와 최소공배수",
-          "originalCategory": "최대공약수와 최소공배수",
-          "standardCourse": "중1 수학",
-          "standardUnitKey": "M1-01",
-          "standardUnit": "소인수분해",
-          "standardUnitOrder": 1,
-          "subUnitKey": "M1-01-GCD_LCM",
-          "subUnit": "최대공약수와 최소공배수",
-          "conceptClusterKey": "GCD_LCM",
-          "questionType": "단답형",
-          "layoutTag": "grid",
-          "tags": [
-            "단답형",
-            "최대공약수",
-            "최소공배수",
-            "배수",
-            "계산",
-            "조건해석",
-            "최대최소",
-            "자연수조건"
-          ],
-          "wide": false,
-          "content": "15로 나누면 12가 남고, 6으로 나누면 3이 남고, 8로 나누면 5가 남는 세 자리 자연수 중에서 가장 큰 수를 구하여라.",
-          "choices": [],
-          "answer": "957",
-          "solution": "[키포인트] 조건은 모두 나누는 수보다 3이 부족한 수($+3$을 하면 나누어 떨어지는 수)를 의미한다. 즉, $(15, 6, 8\\text{의 공배수}) - 3$ 구조이다. 세 수의 최소공배수는 120이므로 가장 큰 세 자리 자연수를 구하기 위해 120의 배수 중 가장 큰 960을 택해 3을 빼면 $960 - 3 = 957$이 된다.\\n따라서 구하는 값은 957이다.",
-          "_sourceTitle": "최대공약수와 최소공배수",
-          "_sourceFile": "types/middle/m1/중1_1단원_최대공약수와최소공배수.js",
-          "_sourceQuestionNo": 39,
-          "_qKey": "types/middle/m1/중1_1단원_최대공약수와최소공배수.js_39",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M1_01_25"
         }
       ]
     },
@@ -7488,13 +7451,13 @@
       "courseLabel": "중1 수학 1학기",
       "scopeLabel": "정수와 유리수",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "types/middle/m1 중1 1학기 유형 JS",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -8513,48 +8476,6 @@
           "_assessmentSkill": "자료해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M1_02_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "정수와 유리수의 곱셈과 나눗셈",
-          "originalCategory": "정수와 유리수의 곱셈과 나눗셈",
-          "standardCourse": "중학 수학",
-          "standardUnitKey": "M1-02",
-          "standardUnit": "정수와 유리수",
-          "standardUnitOrder": 2,
-          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-          "subUnit": "정수와 유리수의 계산",
-          "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
-          "questionType": "단답형",
-          "layoutTag": "grid",
-          "tags": [
-            "단답형",
-            "도형",
-            "표",
-            "수직선",
-            "유리수",
-            "사칙연산",
-            "곱셈",
-            "나눗셈",
-            "계산",
-            "조건해석",
-            "범위",
-            "활용",
-            "실생활"
-          ],
-          "wide": false,
-          "content": "수직선 위의 두 점 $A, B$에 대하여 $|A|=|B|$이고 $A < B$이다. $A, B$ 두 점 사이의 거리가 $2\\frac{1}{4}$일 때, $\\frac{24}{7} \\times A - \\left(-\\frac{20}{21} \\times B\\right)$의 값을 구하여라.",
-          "choices": [],
-          "answer": "$-\\frac{39}{14}$",
-          "solution": "[솔포인트] $|A|=|B|$이고 $A<B$이므로 $A$는 음수, $B$는 양수입니다. 두 점 사이의 거리가 $2\\frac14=\\frac94$이므로 $A=-\\frac98$, $B=\\frac98$입니다. 따라서 $\\frac{24}{7}A-\\left(-\\frac{20}{21}B\\right)=\\frac{24}{7}\\left(-\\frac98\\right)+\\frac{20}{21}\\left(\\frac98\\right)=-\\frac{27}{7}+\\frac{15}{14}=-\\frac{39}{14}$입니다.",
-          "_sourceTitle": "정수와 유리수의 곱셈과 나눗셈",
-          "_sourceFile": "types/middle/m1/중1_1학기_정수와유리수의곱셈과나눗셈.js",
-          "_sourceQuestionNo": 45,
-          "_qKey": "types/middle/m1/중1_1학기_정수와유리수의곱셈과나눗셈.js_45",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M1_02_25"
         }
       ]
     },
@@ -8570,12 +8491,12 @@
       "courseLabel": "중1 수학 1학기",
       "scopeLabel": "문자의 사용, 식의 값, 일차식의 계산",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "types/middle/m1 중1 1학기 유형 JS",
       "difficultyMix": {
-        "상": 4,
+        "상": 3,
         "하": 9,
         "중": 12
       },
@@ -9204,48 +9125,6 @@
           "_assessmentPackId": "UNIT_1SEM_M1_03_25"
         },
         {
-          "id": 17,
-          "level": "상",
-          "category": "식의 값",
-          "originalCategory": "식의 값",
-          "standardCourse": "중1 수학",
-          "standardUnitKey": "M1-03",
-          "standardUnit": "문자와 식",
-          "standardUnitOrder": 3,
-          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-          "subUnit": "식의 값",
-          "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "문자식",
-            "식의값",
-            "대입",
-            "조건해석",
-            "최대최소",
-            "규칙찾기"
-          ],
-          "wide": false,
-          "content": "$x = \\dfrac{1}{2}$, $y = -1$일 때 다음 보기의 세 식을 식의 값이 가장 작은 것부터 차례대로 나열하면?\n\n**보기**\n㉠ $\\dfrac{3}{x} + y$ ㉡ $x + 2y^2$ ㉢ $2x - y^3$",
-          "choices": [
-            "㉠ ㉡ ㉢",
-            "㉠ ㉢ ㉡",
-            "㉡ ㉢ ㉠",
-            "㉢ ㉠ ㉡",
-            "㉢ ㉡ ㉠"
-          ],
-          "answer": "⑤",
-          "solution": "[키포인트] ㉠ = $\\dfrac{3}{\\frac{1}{2}} + (-1) = 5$ / ㉡ = $\\dfrac{1}{2} + 2 \\times 1 = \\dfrac{5}{2}$ / ㉢ = $2 \\times \\dfrac{1}{2} - (-1)^3 = 2$\n→ 작은 순서: ㉢ < ㉡ < ㉠\n따라서 정답은 ⑤이다.",
-          "_sourceTitle": "식의 값",
-          "_sourceFile": "types/middle/m1/중1_1학기_식의값.js",
-          "_sourceQuestionNo": 16,
-          "_qKey": "types/middle/m1/중1_1학기_식의값.js_16",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M1_03_25"
-        },
-        {
           "id": 18,
           "level": "하",
           "category": "일차식의 계산",
@@ -9559,14 +9438,14 @@
       "courseLabel": "중1 수학 1학기",
       "scopeLabel": "방정식과 항등식, 일차방정식의 풀이와 활용",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "types/middle/m1 중1 1학기 유형 JS",
       "difficultyMix": {
         "하": 8,
         "중": 12,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "자료해석": 5,
@@ -10508,41 +10387,6 @@
           "_sourceFile": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
           "_sourceQuestionNo": 37,
           "_qKey": "types/middle/m1/중1_1학기_일차방정식의풀이.js_37",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M1_04_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "일차방정식의 풀이",
-          "originalCategory": "일차방정식의 풀이",
-          "standardCourse": "중1 수학",
-          "standardUnitKey": "M1-03",
-          "standardUnit": "문자와 식",
-          "standardUnitOrder": 3,
-          "subUnitKey": "M1-03-LINEAR_EQUATION",
-          "subUnit": "일차방정식의 풀이",
-          "conceptClusterKey": "LINEAR_EQUATION",
-          "questionType": "서술형",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "일차방정식",
-            "방정식풀이",
-            "계산",
-            "활용",
-            "실생활"
-          ],
-          "wide": false,
-          "content": "엄마가 5%의 소금물 400g을 만들었다. 소금 50g을 넣었더니 짜서 물을 더 넣어서 8%의 소금물을 만들었다. 더 넣은 물은 몇 g인가?",
-          "choices": [],
-          "answer": "425g",
-          "solution": "[키포인트] $\\dfrac{5}{100}(400)+50=\\dfrac{8}{100}(450+x)$\n→ $8x=3400$ → $x=425$g\n따라서 구하는 값은 425g이다.",
-          "_sourceTitle": "일차방정식의 풀이와 활용",
-          "_sourceFile": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
-          "_sourceQuestionNo": 39,
-          "_qKey": "types/middle/m1/중1_1학기_일차방정식의풀이.js_39",
           "_assessmentSkill": "활용",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M1_04_25"
@@ -14656,14 +14500,14 @@
       "courseLabel": "중2 수학 1학기",
       "scopeLabel": "유리수와 순환소수",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": false,
       "sourceScope": "original/middle/m2 중2 1학기 기출 JS",
       "difficultyMix": {
         "하": 8,
         "중": 12,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "참거짓": 8,
@@ -15645,41 +15489,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_01_25"
-        },
-        {
-          "id": 25,
-          "content": "서술형1. 다음 물음에 답하시오. <span class='score'>(7점)</span><br>(1) 순환소수 $0.1\\dot{2}\\dot{4}$를 기약분수로 바꾸시오. (4점)<br>(단, $x=0.1\\dot{2}\\dot{4}$로 놓고 풀이과정을 자세히 적으시오.)<br>(2) (1)에서 구한 기약분수에 자연수 A를 곱하여 유한소수가 되도록 하는 가장 작은 자연수 A를 구하시오. (3점)",
-          "choices": [],
-          "answer": "(1), 41/330, (2), 11",
-          "category": "서술형",
-          "originalCategory": "서술형",
-          "standardCourse": "중2 수학",
-          "standardUnitKey": "M2-01",
-          "standardUnit": "유리수와 순환소수",
-          "standardUnitOrder": 1,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "유리수",
-            "순환소수",
-            "유한소수",
-            "자연수조건",
-            "조건해석",
-            "계산",
-            "유리수와 순환소수"
-          ],
-          "wide": false,
-          "solution": "(1) $1000x-10x = 124.24.. - 1.24.. \\implies 990x = 123 \\implies x = 41/330$. (2) $330=2 \\cdot 3 \\cdot 5 \\cdot 11$. 분자 41과 약분 안되는 11이 필요. $\\therefore$ 11",
-          "level": "상",
-          "unitKey": "M2-01",
-          "_sourceTitle": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출",
-          "_sourceFile": "original/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
-          "_sourceQuestionNo": 19,
-          "_qKey": "original/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js_19",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M2_01_25"
         }
       ]
     },
@@ -15695,13 +15504,13 @@
       "courseLabel": "중2 수학 1학기",
       "scopeLabel": "단항식의 계산, 다항식의 계산",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": false,
       "sourceScope": "original/middle/m2 중2 1학기 기출 JS",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -16671,40 +16480,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_02_25"
-        },
-        {
-          "id": 25,
-          "content": "[서술형 2] 단항식 $A$에 $2a^2b$를 나누어야 할 것을 잘못하여 곱하였더니 $16a^4b^3$이 되었다. 바르게 계산한 답을 구하시오. [6점]",
-          "choices": [],
-          "answer": "$4b$",
-          "category": "단항식의 계산",
-          "originalCategory": "단항식의 계산",
-          "standardCourse": "중2 수학",
-          "standardUnitKey": "M2-02",
-          "standardUnit": "단항식의 계산, 다항식의 계산",
-          "standardUnitOrder": 2,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "기출",
-            "서술형",
-            "계산",
-            "역추론",
-            "식변형",
-            "식의계산",
-            "다항식의 계산"
-          ],
-          "wide": false,
-          "solution": "1단계: 잘못된 식 $A \\times 2a^2b = 16a^4b^3$에서 $A = \\frac{16a^4b^3}{2a^2b} = 8a^2b^2$이다. [cite: 2026-04-09]\n2단계: 바른 계산은 $A \\div 2a^2b$이므로 $8a^2b^2 \\div 2a^2b$를 계산한다. [cite: 2026-04-09]\n3단계: 계수는 $8 \\div 2 = 4$, 문자는 $a^2 \\div a^2 = 1, b^2 \\div b = b$이므로 최종 결과는 $4b$이다. [cite: 2026-04-09]",
-          "level": "상",
-          "unitKey": "M2-02",
-          "_sourceTitle": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출",
-          "_sourceFile": "original/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
-          "_sourceQuestionNo": 22,
-          "_qKey": "original/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js_22",
-          "_assessmentSkill": "계산",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M2_02_25"
         }
       ]
     },
@@ -16720,14 +16495,14 @@
       "courseLabel": "중2 수학 1학기",
       "scopeLabel": "일차부등식, 일차부등식의 활용",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": false,
       "sourceScope": "original/middle/m2 중2 1학기 기출 JS",
       "difficultyMix": {
         "하": 8,
         "중": 12,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "자료해석": 2,
@@ -17696,49 +17471,6 @@
           "_sourceFile": "original/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
           "_sourceQuestionNo": 20,
           "_qKey": "original/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js_20",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M2_03_25"
-        },
-        {
-          "id": 25,
-          "content": "버스 터미널에서 버스 출발까지 1시간 15분의 여유가 있다. 물건을 사는 데 15분이 걸리고 걷는 속력이 분속 $40m$일 때, 최대 몇 $km$까지 다녀올 수 있는가?",
-          "choices": [
-            "2km",
-            "5km",
-            "8km",
-            "0km",
-            "4km"
-          ],
-          "answer": "①",
-          "category": "일차부등식의 활용",
-          "originalCategory": "일차부등식의 활용",
-          "standardCourse": "중2 수학",
-          "standardUnitKey": "M2-03",
-          "standardUnit": "일차부등식, 일차부등식의 활용",
-          "standardUnitOrder": 3,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "최대최소",
-            "부등식",
-            "일차부등식",
-            "실생활",
-            "범위",
-            "조건해석",
-            "응용",
-            "일차부등식의 활용",
-            "활용"
-          ],
-          "wide": false,
-          "solution": "<b>[키포인트]</b> 전체 이동 가능한 시간에서 물건을 사는 시간을 빼고 왕복 이동 거리에 대한 부등식을 세움.\\n전체 시간 $1$시간 $15$분 $= 75$분, 물건 사는 시간 $15$분이므로 순수 이동 가능 시간은 $60$분임.\\n다녀올 거리를 $xm$라 하면, 왕복 시간의 합은 $60$분 이하가 되어야 함.\\n$\\implies \\frac{x}{40} + \\frac{x}{40} \\le 60 \\implies \\frac{2x}{40} \\le 60$\\n$\\implies \\frac{x}{20} \\le 60 \\implies x \\le 1200$\\n거리 단위가 미터이므로 킬로미터로 환산함. ($1200m = 1.2km$)\\n$\\therefore 1.2km$",
-          "level": "상",
-          "unitKey": "M2-03",
-          "_sourceTitle": "original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출",
-          "_sourceFile": "original/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js",
-          "_sourceQuestionNo": 20,
-          "_qKey": "original/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js_20",
           "_assessmentSkill": "활용",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_03_25"
@@ -22510,12 +22242,12 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "실수와 그 계산",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": false,
       "sourceScope": "original/middle/m3 중3 1학기 기출 JS",
       "difficultyMix": {
-        "상": 5,
+        "상": 4,
         "하": 8,
         "중": 12
       },
@@ -23483,48 +23215,6 @@
           "_assessmentSkill": "자료해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_01_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "제곱근의 활용(도형)",
-          "originalCategory": "실수와 그 계산",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-01",
-          "standardUnit": "실수와 그 계산",
-          "standardUnitOrder": 1,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "제곱근",
-            "근호",
-            "도형",
-            "삼각형",
-            "조건해석",
-            "계산",
-            "응용",
-            "근호를 포함한 식의 계산"
-          ],
-          "wide": false,
-          "content": "한 변의 길이가 $2\\text{cm}$인 정육각형의 대각선을 따라 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 이 네 조각을 이용하여 만든 새로운 도형의 둘레의 길이를 구하면? (4점)\\n<svg width=\"400\" height=\"180\" viewBox=\"0 0 400 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <polygon points=\"100.0,50.0 56.7,75.0 56.7,125.0 100.0,150.0 143.3,125.0 143.3,75.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"56.7\" y2=\"125.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"100.0\" y2=\"150.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"143.3\" y2=\"125.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <text x=\"75\" y=\"68\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"70\" y=\"105\" font-size=\"10px\" font-family=\"serif\">a</text>\\n  <text x=\"90\" y=\"125\" font-size=\"10px\" font-family=\"serif\">a</text>\\n  <text x=\"130\" y=\"105\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"180\" y=\"100\" font-size=\"20px\">→</text>\\n  <g transform=\"translate(130, 0)\">\\n    <path d=\"M 120,50 L 70,80 L 170,80 Z\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n    <line x1=\"120\" y1=\"50\" x2=\"120\" y2=\"80\" stroke=\"black\" stroke-width=\"1\"/>\\n    <path d=\"M 120,80 L 80,110 L 70,80 M 120,80 L 160,110 L 170,80\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n    <text x=\"100\" y=\"70\" font-size=\"10px\" font-family=\"serif\">a</text>\\n    <text x=\"130\" y=\"70\" font-size=\"10px\" font-family=\"serif\">a</text>\\n    <text x=\"95\" y=\"90\" font-size=\"10px\" font-family=\"serif\">b</text>\\n    <text x=\"140\" y=\"90\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  </g>\\n</svg>",
-          "choices": [
-            "(4 + 4\\sqrt{3}) \\text{cm}",
-            "(6 + 2\\sqrt{3}) \\text{cm}",
-            "(8 + 8\\sqrt{3}) \\text{cm}",
-            "(8 + 4\\sqrt{3}) \\text{cm}",
-            "(10 + 2\\sqrt{3}) \\text{cm}"
-          ],
-          "answer": "④",
-          "solution": "[키포인트] 정육각형의 한 변의 길이와 대각선의 길이를 이용하여 새로운 도형의 각 변의 길이를 구한다.\\n\\n[조건 정리]\\n- 정육각형의 한 변의 길이: $s = 2$\\n- 짧은 대각선의 길이: $s\\sqrt{3} = 2\\sqrt{3}$\\n- 긴 대각선의 길이: $2s = 4$\\n- 그림에서 $a$는 정육각형의 변과 긴 대각선의 절반으로 이루어진 삼각형의 빗변($2$), $b$는 짧은 대각선($2\\sqrt{3}$)과 관련이 있다.\\n\\n[풀이 과정]\\n1. 정육각형을 분할한 조각의 변의 길이를 확인한다.\\n   - 정육각형의 한 변의 길이는 $2$이다.\\n   - 정육각형의 짧은 대각선의 길이는 $2\\sqrt{3}$이다.\\n   - 조각에서 라벨 $a$에 해당하는 길이는 정육각형의 한 변의 길이인 $2$이다.\\n   - 조각에서 라벨 $b$에 해당하는 길이는 짧은 대각선의 길이인 $2\\sqrt{3}$이다.\\n2. 새로운 도형의 둘레를 구성하는 변들을 합산한다.\\n   - 새로운 도형의 바깥쪽 테두리는 길이 $2$인 변 4개와 길이 $2\\sqrt{3}$인 변 2개로 이루어져 있다.\\n   - 둘레의 길이 $= 4 \\times 2 + 2 \\times 2\\sqrt{3} = 8 + 4\\sqrt{3}$이다.\\n\\n[결론] 따라서 새로운 도형의 둘레의 길이는 $(8 + 4\\sqrt{3}) \\text{cm}$이다.",
-          "unitKey": "M3-01",
-          "_sourceTitle": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출",
-          "_sourceFile": "original/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
-          "_sourceQuestionNo": 11,
-          "_qKey": "original/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js_11",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M3_01_25"
         }
       ]
     },
@@ -23540,13 +23230,13 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "다항식의 곱셈과 인수분해",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "original/middle/m3 중3 1학기 기출 JS",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -24491,41 +24181,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_02_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "다항식의 활용",
-          "originalCategory": "인수분해",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-02",
-          "standardUnit": "다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 3,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "다항식곱셈",
-            "인수분해",
-            "직사각형",
-            "넓이",
-            "도형",
-            "식세우기",
-            "응용"
-          ],
-          "wide": false,
-          "content": "[서술형4] 가로의 길이가 $(3a-7)m$, 세로의 길이가 $(4a+1)m$인 직사각형 모양의 화단이 있다. 이 화단 내부에 폭이 각각 $1m, 2m$인 길을 내려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 화단 전체의 넓이를 $a$에 관한 식으로 전개하시오.<br>(2) 폭이 $1m$인 길과 폭이 $2m$인 길의 넓이의 합을 구하시오.<br>(3) 길의 넓이를 제외한 화단의 넓이를 구한 후 인수분해 하시오.",
-          "choices": [],
-          "answer": "(1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$",
-          "solution": "[풀이] \n(1) $(3a-7)(4a+1) = 12a^2+3a-28a-7 = 12a^2-25a-7$ \n(2) 가로 길 $1 \\times (4a+1)$, 세로 길 $2 \\times (3a-7)$, 겹치는 부분 $1 \\times 2$ \n길의 넓이 $= (4a+1) + (6a-14) - 2 = 10a-15$ \n(3) 전체 - 길 $=$ $(12a^2-25a-7) - (10a-15) = 12a^2-35a+8$ \n인수분해: $(3a-8)(4a-1)$ \n(또는 가로 세로에서 폭을 빼서 계산: $(3a-7-1)(4a+1-2) = (3a-8)(4a-1)$) \n--- \n[결론] 정답: (1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$이다.",
-          "unitKey": "M3-02",
-          "_sourceTitle": "original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출",
-          "_sourceFile": "original/original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출.js",
-          "_sourceQuestionNo": 25,
-          "_qKey": "original/original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출.js_25",
-          "_assessmentSkill": "자료해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M3_02_25"
         }
       ]
     },
@@ -24541,13 +24196,13 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "이차방정식",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "original/middle/m3 중3 1학기 기출 JS",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -25511,43 +25166,6 @@
           "_assessmentSkill": "활용",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_03_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "이차방정식",
-          "originalCategory": "이차방정식",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-03",
-          "standardUnit": "이차방정식",
-          "standardUnitOrder": 3,
-          "questionType": "서술형",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "나머지정리",
-            "계수비교",
-            "이차방정식",
-            "지수",
-            "도형",
-            "원",
-            "대입",
-            "이차방정식의 활용",
-            "활용"
-          ],
-          "wide": false,
-          "content": "이차방정식 $x^2-2px-5=0$의 한 근이 $x=-1$이고 다른 한 근은 이차방정식 $x^2+(q-2)x+3q=0$의 근일 때, 상수 $p, q$의 값을 구하시오.<br>($p$구하는 과정: 2점, 이차방정식 $x^2-2px-5=0$의 다른 한 근 구하는 과정: 3점, $q$구하는 과정: 2점)",
-          "choices": [],
-          "answer": "$p=2, q=-\\dfrac{15}{8}$",
-          "solution": "[키포인트] 한 근을 대입하여 미지수 계수를 구하고, 나머지 한 근을 성질을 통해 구한 뒤 다른 방정식에 대입하여 상수를 구한다.\\n1단계($p$ 구하는 과정): 이차방정식 $x^2-2px-5=0$의 한 근이 $x=-1$이므로 $x$에 $-1$을 대입한다.\\n$(-1)^2 - 2p(-1) - 5 = 0 \\\\implies 1 + 2p - 5 = 0 \\\\implies 2p = 4 \\\\implies p = 2$\\n2단계(다른 한 근 구하는 과정): 구한 $p=2$를 원래 방정식에 대입하여 온전한 이차방정식을 만든 후 다른 한 근을 구한다.\\n$x^2 - 4x - 5 = 0 \\\\implies (x-5)(x+1) = 0$ 이므로 해는 $x=5$ 또는 $x=-1$ 이다. 따라서 다른 한 근은 $x=5$ 이다.\\n3단계($q$ 구하는 과정): 다른 한 근인 $x=5$가 이차방정식 $x^2+(q-2)x+3q=0$의 근이므로 $x=5$를 대입하여 $q$의 값을 구한다.\\n$5^2 + (q-2) \\\\times 5 + 3q = 0 \\\\implies 25 + 5q - 10 + 3q = 0 \\\\implies 8q + 15 = 0 \\\\implies 8q = -15 \\\\implies q = -\\\\dfrac{15}{8}$\\n∴ 정답: $p=2, q=-\\\\dfrac{15}{8}$",
-          "unitKey": "M3-03",
-          "_sourceTitle": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c",
-          "_sourceFile": "original/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 22,
-          "_qKey": "original/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js_22",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M3_03_25"
         }
       ]
     },
@@ -25563,13 +25181,13 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "이차함수",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 40,
       "hasImage": true,
       "sourceScope": "original/middle/m3 중3 1학기 기출 JS",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -26542,43 +26160,6 @@
           "_assessmentSkill": "활용",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_04_25"
-        },
-        {
-          "id": 25,
-          "content": "$AB=PB, CD=CQ$일 때 점 P에 대응하는 수, Q에 대응하는 수, $PQ$의 길이를 구하여라. [7점]",
-          "choices": [],
-          "answer": "p=2-\\sqrt{5}, q=5+\\sqrt{5}, PQ=3+2\\sqrt{5}",
-          "category": "제곱근과 실수",
-          "originalCategory": "제곱근과 실수",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-04",
-          "standardUnit": "이차함수",
-          "standardUnitOrder": 1,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "제곱근",
-            "수직선",
-            "좌표",
-            "거리",
-            "근호계산",
-            "도형",
-            "응용",
-            "이차함수의 활용",
-            "활용"
-          ],
-          "wide": false,
-          "solution": "대각선 $\\sqrt{5}$. $p=2-\\sqrt{5}, q=5+\\sqrt{5}$. $PQ = q-p = (5+\\sqrt{5})-(2-\\sqrt{5}) = 3+2\\sqrt{5}$",
-          "level": "상",
-          "unitKey": "M3-04",
-          "_sourceTitle": "original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출",
-          "_sourceFile": "original/original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출.js",
-          "_sourceQuestionNo": 24,
-          "_qKey": "original/original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출.js_24",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_M3_04_25"
         }
       ]
     },
@@ -26611,7 +26192,7 @@
       "questions": [
         {
           "id": 2,
-          "level": "[하]",
+          "level": "하",
           "category": "제곱근과 실수",
           "originalCategory": "제곱근과 실수",
           "standardCourse": "중3 수학",
@@ -26650,7 +26231,7 @@
         },
         {
           "id": 1,
-          "level": "[하]",
+          "level": "하",
           "category": "제곱근과 실수",
           "originalCategory": "제곱근과 실수",
           "standardCourse": "중3 수학",
@@ -27375,7 +26956,7 @@
         },
         {
           "id": 17,
-          "level": "[상]",
+          "level": "상",
           "category": "제곱근과 실수",
           "originalCategory": "제곱근과 실수",
           "standardCourse": "중3 수학",
@@ -27412,7 +26993,7 @@
         },
         {
           "id": 19,
-          "level": "[상]",
+          "level": "상",
           "category": "제곱근과 실수",
           "originalCategory": "제곱근과 실수",
           "standardCourse": "중3 수학",
@@ -28476,7 +28057,7 @@
       "questions": [
         {
           "id": 2,
-          "level": "[하]",
+          "level": "하",
           "category": "제곱근과 실수",
           "originalCategory": "제곱근과 실수",
           "standardCourse": "중3 수학",
@@ -29213,7 +28794,7 @@
         },
         {
           "id": 21,
-          "level": "[상]",
+          "level": "상",
           "category": "제곱근과 실수",
           "originalCategory": "제곱근과 실수",
           "standardCourse": "중3 수학",
@@ -37350,13 +36931,13 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "다항식",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "original/high/h1 1학기 기출 JS, 도형의 방정식 제외",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -38297,47 +37878,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_01_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "다항식의 인수분해",
-          "originalCategory": "다항식의 인수분해",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-01",
-          "standardUnit": "다항식",
-          "standardUnitOrder": 3,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "절댓값",
-            "다항식",
-            "인수분해",
-            "최대최소",
-            "자연수조건",
-            "조건해석",
-            "계산"
-          ],
-          "wide": false,
-          "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $48$의 값을 가질 때, $x+y+z$의 최솟값을 구하시오. [5.5점]",
-          "choices": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
-          ],
-          "answer": "41",
-          "solution": "<b>[Logical Anchor]</b> 항이 많은 다항식은 한 문자에 대해 정리하여 인수분해함.\\n$x^2(x - 2y - z) + xy(y + 2z) - yz^2$ 등의 복잡한 형태를 다음으로 정리함.\\n$\\implies (x - z)(x^2 - 2xy + y^2) = (x - z)(x - y)^2 = 48$\\n$(x-y)^2$은 $48$의 약수 중 제곱수여야 함.\\n$case 1)  (x-y)^2 = 1 \\implies |x-y|=1, \\ x-z=48$\\n$case 2)  (x-y)^2 = 4 \\implies |x-y|=2, \\ x-z=12$\\n$case 3)  (x-y)^2 = 16 \\implies |x-y|=4, \\ x-z=3$\\n$case 2 조사:  x, z$는 소수이고 차이가 $12$인 수 중 $x=17, z=5$ 가능.\\n이때 $|17-y|=2 \\implies y=19$ (소수)\\n$x+y+z = 17 + 19 + 5 = 41$\\n타 케이스 대비 최솟값이 도출됨.\\n$\\therefore 41$",
-          "unitKey": "H1-01",
-          "_sourceTitle": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출",
-          "_sourceFile": "original/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
-          "_sourceQuestionNo": 18,
-          "_qKey": "original/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js_18",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_H1_01_25"
         }
       ]
     },
@@ -38353,13 +37893,13 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "복소수와 이차방정식",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "original/high/h1 1학기 기출 JS, 도형의 방정식 제외",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -39292,46 +38832,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_02_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "이차방정식",
-          "originalCategory": "이차방정식",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-02",
-          "standardUnit": "복소수와 이차방정식",
-          "standardUnitOrder": 5,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "전개",
-            "계수비교",
-            "이차방정식",
-            "근과계수",
-            "조건해석",
-            "계산"
-          ],
-          "wide": false,
-          "content": "$x$에 대한 이차방정식 $x^2-3ax+a+1=0$의 두 근 $\\alpha, \\beta$가 다음 조건을 만족시킬 때, $a+b+c$의 값은? [4.3점]<br><br>(가) $\\alpha^2 \\beta + \\alpha \\beta^2 = 36, \\alpha \\beta > 0$<br>(나) 두 수 $a-1, a+1$을 근으로 하고, 이차항의 계수가 1인 이차방정식은 $x^2+bx+c=0$이다.",
-          "choices": [
-            "① 4",
-            "② 5",
-            "③ 6",
-            "④ 7",
-            "⑤ 8"
-          ],
-          "answer": "②",
-          "solution": "[식 설정]\n이차방정식의 근과 계수의 관계를 이용하여 $a$를 먼저 구하고, 이를 이용해 $b, c$를 결정한다.\n[전개]\n1. (가) 조건을 이용한 $a$ 구하기:\n이차방정식 $x^2-3ax+a+1=0$에서 $\\alpha+\\beta = 3a, \\alpha\\beta = a+1$이다.\n$\\alpha^2\\beta + \\alpha\\beta^2 = \\alpha\\beta(\\alpha+\\beta) = 36$\n$(a+1)(3a) = 36$\n$3a^2 + 3a - 36 = 0$\n$a^2 + a - 12 = 0$\n$(a+4)(a-3) = 0 \\implies a = -4$ 또는 $a = 3$\n조건에서 $\\alpha\\beta = a+1 > 0$이므로 $a > -1$이어야 한다. 따라서 $a=3$이다.\n\n2. (나) 조건을 이용한 $b, c$ 구하기:\n$a=3$이므로 이차방정식 $x^2+bx+c=0$의 두 근은 $a-1=2, a+1=4$이다.\n근과 계수의 관계에 의해:\n두 근의 합: $2+4 = -b \\implies b = -6$\n두 근의 곱: $2 \\times 4 = c \\implies c = 8$\n[조건 적용]\n구하는 값은 $a+b+c$이므로,\n$a+b+c = 3 + (-6) + 8 = 5$\n[결론]\n따라서 $a+b+c$의 값은 5이다.\n∴ 정답은 ②",
-          "unitKey": "H1-02",
-          "_sourceTitle": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출",
-          "_sourceFile": "original/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
-          "_sourceQuestionNo": 16,
-          "_qKey": "original/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js_16",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_H1_02_25"
         }
       ]
     },
@@ -39347,14 +38847,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "이차함수",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "original/high/h1 1학기 기출 JS, 도형의 방정식 제외",
       "difficultyMix": {
         "하": 7,
         "중": 13,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 11,
@@ -40310,47 +39810,6 @@
           "_assessmentSkill": "자료해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_03_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "이차함수와 이차방정식",
-          "originalCategory": "이차함수와 이차방정식",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-03",
-          "standardUnit": "이차함수",
-          "standardUnitOrder": 6,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "이차방정식",
-            "판별식",
-            "이차함수",
-            "함수",
-            "도형",
-            "원",
-            "그래프"
-          ],
-          "wide": false,
-          "content": "이차함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 이차방정식 $f(x+1)=0$의 두 실근의 곱은? [4.4점]<br/><div style='text-align:center; margin:10px 0;'><svg width='400' height='250' viewBox='0 0 400 250' style='background:white;'><line x1='0' y1='180' x2='400' y2='180' stroke='#cccccc' stroke-width='1'/><line x1='200' y1='0' x2='200' y2='250' stroke='#cccccc' stroke-width='1'/><line x1='20' y1='180' x2='380' y2='180' stroke='black' stroke-width='1.5'/><line x1='200' y1='230' x2='200' y2='20' stroke='black' stroke-width='1.5'/><text x='385' y='195' font-size='12' font-style='italic' fill='black'>x</text><text x='215' y='25' font-size='12' font-style='italic' fill='black'>y</text><text x='185' y='195' font-size='12' fill='black'>O</text><path d='M 100 40 Q 230 430 360 40' fill='none' stroke='black' stroke-width='2.5'/><circle cx='160' cy='180' r='3' fill='black'/><text x='160' y='205' font-size='12' font-weight='bold' fill='black' text-anchor='middle'>-2</text><circle cx='300' cy='180' r='3' fill='black'/><text x='300' y='205' font-size='12' font-weight='bold' fill='black' text-anchor='middle'>5</text></svg></div>",
-          "choices": [
-            "-12",
-            "-10",
-            "-8",
-            "-6",
-            "-4"
-          ],
-          "answer": "①",
-          "solution": "[키포인트] $f(x)=0$의 근이 $\\alpha$라면, $f(x+1)=0$의 근은 $x+1=\\alpha$를 만족하는 $x$이다.\\n조건 정리: 그래프에서 $f(x)=0$을 만족하는 $x$절편은 $-2$와 $5$이다.\\n풀이 방향: 치환 또는 평행이동의 원리를 이용하여 $f(x+1)=0$의 두 근을 각각 구한다.\\n정석 풀이:\\n1) $f(-2)=0, f(5)=0$이므로 $f(x+1)=0$이 성립하려면 $x+1 = -2$ 또는 $x+1 = 5$여야 한다.\\n2) 첫 번째 근: $x+1 = -2 \\implies x = -3$\\n3) 두 번째 근: $x+1 = 5 \\implies x = 4$\\n4) 따라서 두 실근은 $-3$과 $4$이며, 그 곱은 $(-3) \\cdot 4 = -12$이다.\\n결론: 따라서 정답은 ①이다.",
-          "unitKey": "H1-03",
-          "_sourceTitle": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출",
-          "_sourceFile": "original/original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
-          "_sourceQuestionNo": 13,
-          "_qKey": "original/original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js_13",
-          "_assessmentSkill": "자료해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_H1_03_25"
         }
       ]
     },
@@ -40366,13 +39825,13 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "방정식과 부등식",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "original/high/h1 1학기 기출 JS, 도형의 방정식 제외",
       "difficultyMix": {
         "하": 8,
-        "상": 5,
+        "상": 4,
         "중": 12
       },
       "skillMix": {
@@ -41342,48 +40801,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_04_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "여러 가지 방정식과 부등식",
-          "originalCategory": "여러 가지 부등식",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-04",
-          "standardUnit": "방정식과 부등식",
-          "standardUnitOrder": 6,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "부등식",
-            "수직선",
-            "자연수조건",
-            "범위",
-            "개수세기",
-            "조건해석",
-            "계산",
-            "여러 가지 부등식"
-          ],
-          "wide": false,
-          "content": "연립부등식 $\\begin{cases} x^2-6x+5>0 \\\\ 2x-a<2 \\end{cases}$를 만족시키는 자연수 $x$가 $2$개가 되도록 하는 실수 $a$의 값의 범위를 구하면? [4.1점]",
-          "choices": [
-            "$4 \\lt a \\le 6$",
-            "$4 \\le a \\lt 6$",
-            "$4 \\le a \\le 6$",
-            "$12 \\lt a \\le 14$",
-            "$12 \\le a \\lt 14$"
-          ],
-          "answer": "④",
-          "solution": "[키포인트]\n각 부등식의 해를 수직선에 나타내어 공통부분에 포함되는 자연수 $x$의 개수가 $2$개가 되는 조건을 찾는다.\n\n풀이 방향 설정\n먼저 두 부등식을 각각 풀고, 수직선 상에서 해의 교집합에 자연수 $x$가 정확히 2개 포함되도록 하는 경계값을 분석한다.\n\n풀이 과정\n첫 번째 부등식을 풀면\n$x^2-6x+5>0$\n$(x-1)(x-5)>0$\n$x<1$ 또는 $x>5 \\quad \\cdots (1)$\n\n두 번째 부등식을 풀면\n$2x-a<2$\n$2x < a+2 \\implies x < \\dfrac{a+2}{2} \\quad \\cdots (2)$\n\n연립부등식의 해는 $(1)$과 $(2)$의 공통 범위이다.\n부등식 $(1)$을 만족하는 자연수는 $x>5$인 범위에 존재하는 $6, 7, 8, \\dots$ 이다. ($x<1$인 자연수는 존재하지 않음)\n\n따라서 연립부등식을 만족시키는 자연수 $x$가 $2$개가 되려면 그 자연수는 반드시 $6$과 $7$이어야 한다.\n즉, 공통 범위가 $6, 7$은 포함하고 $8$은 포함하지 않아야 한다.\n수직선에서 해 $x < \\dfrac{a+2}{2}$가 이 조건을 만족시키려면 경계값 $\\dfrac{a+2}{2}$의 위치가 $7$보다는 크고 $8$보다는 작거나 같아야 한다.\n\n$7 < \\dfrac{a+2}{2} \\le 8$\n\n각 변에 $2$를 곱하면\n$14 < a+2 \\le 16$\n\n각 변에서 $2$를 빼면\n$12 < a \\le 14$\n\n결론\n따라서 정답은 ④이다.",
-          "unitKey": "H1-04",
-          "_sourceTitle": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c",
-          "_sourceFile": "original/original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js",
-          "_sourceQuestionNo": 8,
-          "_qKey": "original/original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js_8",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_H1_04_25"
         }
       ]
     },
@@ -41399,14 +40816,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "경우의 수와 순열조합",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "original/high/h1 1학기 기출 JS, 도형의 방정식 제외",
       "difficultyMix": {
         "하": 8,
         "중": 12,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 24,
@@ -42392,42 +41809,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_05_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "순열과 조합",
-          "originalCategory": "순열과 조합",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-05",
-          "standardUnit": "경우의 수와 순열조합",
-          "standardUnitOrder": 8,
-          "questionType": "단답형",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "로그",
-            "경우의수",
-            "순열",
-            "조합",
-            "참거짓",
-            "조건해석",
-            "계산",
-            "경우의 수와 순열조합"
-          ],
-          "wide": false,
-          "content": "〈단답형 1〉\n매산이는 학교 축제 프로그램을 구성하려고 한다. 밴드 경연 대회에 참가 신청서를 제출한 8개 팀 중에서 공연할 6개 팀을 뽑는 경우의 수를 구하시오. [4점]",
-          "choices": [],
-          "answer": "28",
-          "solution": "[키포인트]\n전체 8개 팀 중에서 순서에 상관없이 6개 팀을 선택하는 조합의 수를 구한다.\n조건 정리\n8개 팀 중 6개 팀을 뽑는다.\n풀이 과정\n구하는 경우의 수는 ${}_{8}C_{6}$이다.\n조합의 성질 ${}_{n}C_{r}={}_{n}C_{n-r}$에 의해\n${}_{8}C_{6}={}_{8}C_{2}$이다.\n따라서\n${}_{8}C_{2}=\\dfrac{8\\times7}{2\\times1}=28$이다.\n결론\n따라서 구하는 경우의 수는 28이다.",
-          "unitKey": "H1-05",
-          "_sourceTitle": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c",
-          "_sourceFile": "original/original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js",
-          "_sourceQuestionNo": 16,
-          "_qKey": "original/original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js_16",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_H1_05_25"
         }
       ]
     },
@@ -42443,14 +41824,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "행렬과 그 연산",
       "purpose": "핵심 유형 확인",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "original/high/h1 1학기 기출 JS, 도형의 방정식 제외",
       "difficultyMix": {
         "하": 7,
         "중": 13,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 25
@@ -43403,58 +42784,19 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_06_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "행렬",
-          "originalCategory": "행렬",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-06",
-          "standardUnit": "행렬과 그 연산",
-          "standardUnitOrder": 9,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "참거짓",
-            "오류판별",
-            "조건해석",
-            "개념",
-            "행렬과 그 연산"
-          ],
-          "wide": false,
-          "content": "영행렬이 아닌 두 이차 정사각행렬 $A, B$에 대하여 $A+B=E, AB=O$일 때, 다음 <보기>에서 옳은 것만을 있는 대로 고른 것은? [4.7점]\\n<div class='q-box'><b><보기></b>\\nㄱ. $BA=O$\\\\nㄴ. $(A+B)^2=A^2+2AB+B^2$\\\\nㄷ. $A^3+B^3=(A+B)^3$</div>",
-          "choices": [
-            "ㄱ",
-            "ㄱ, ㄴ",
-            "ㄱ, ㄷ",
-            "ㄴ, ㄷ",
-            "ㄱ, ㄴ, ㄷ"
-          ],
-          "answer": "⑤",
-          "solution": "[키포인트] 주어진 행렬식을 조작하여 성질을 유도한다.\\n\\n$AB=O$에서 $A(E-A)=O \\implies A=A^2$. 마찬가지로 $B=B^2$이다.\\n$BA = (E-A)A = A-A^2 = O$이므로 ㄱ 참.\\n$AB=BA=O$이므로 ㄴ 참.\\n$A^3+B^3 = A+B = E$이고 $(A+B)^3 = E^3 = E$이므로 ㄷ 참.\\n\\n따라서 정답은 ⑤이다.",
-          "unitKey": "H1-06",
-          "_sourceTitle": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c",
-          "_sourceFile": "original/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
-          "_sourceQuestionNo": 17,
-          "_qKey": "original/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js_17",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "UNIT_1SEM_H1_06_25"
         }
       ]
     },
     {
       "id": "DIAG_1SEM_H1_MID_25",
-      "title": "고11 1학기 중간 진단평가",
+      "title": "고1 1학기 중간 진단평가",
       "category": "진단평가",
-      "grade": "고11",
+      "grade": "고1",
       "semester": "1",
       "examType": "diagnostic",
       "unitKey": "H1-MID",
       "unitLabel": "다항식 10문항, 방정식 9문항, 부등식 5문항",
-      "courseLabel": "고11 공통수학1",
+      "courseLabel": "고1 공통수학1",
       "scopeLabel": "다항식 10문항, 방정식 9문항, 부등식 5문항",
       "purpose": "범위별 핵심 개념 진단",
       "questionCount": 24,
@@ -44412,14 +43754,14 @@
     },
     {
       "id": "DIAG_1SEM_H1_FINAL_25",
-      "title": "고11 1학기 기말 진단평가",
+      "title": "고1 1학기 기말 진단평가",
       "category": "진단평가",
-      "grade": "고11",
+      "grade": "고1",
       "semester": "1",
       "examType": "diagnostic",
       "unitKey": "H1-FINAL",
       "unitLabel": "도형의 방정식(H22-C-06~09) 12문항, 방정식/부등식 복습 12문항",
-      "courseLabel": "고11 공통수학1",
+      "courseLabel": "고1 공통수학1",
       "scopeLabel": "도형의 방정식(H22-C-06~09) 12문항, 방정식/부등식 복습 12문항",
       "purpose": "범위별 핵심 개념 진단",
       "questionCount": 24,
@@ -45346,14 +44688,14 @@
       "courseLabel": "중1 수학 1학기",
       "scopeLabel": "소인수분해부터 정수와 유리수의 계산까지",
       "purpose": "일반 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 5,
         "중": 15,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 20,
@@ -46342,51 +45684,6 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M1_MID_MEDIUM_25",
           "unitKey": "M1-MID"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "정수와 유리수",
-          "originalCategory": "정수와 유리수",
-          "standardCourse": "중1 수학 1학기",
-          "standardUnitKey": "M1-MID",
-          "standardUnit": "수와 연산",
-          "standardUnitOrder": 2,
-          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-          "subUnit": "정수와 유리수의 뜻",
-          "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "복수정답",
-            "정수",
-            "유리수",
-            "조건해석",
-            "참거짓",
-            "오류판별",
-            "정수조건",
-            "범위"
-          ],
-          "wide": false,
-          "content": "$x$가 $-5 < x \\le 2$ 인 정수일 때, 다음 중 $x$가 될 수 없는 것을 모두 고르면? (정답 2개)",
-          "choices": [
-            "$-8$",
-            "$-3$",
-            "$0$",
-            "$\\frac{1}{2}$",
-            "$2$"
-          ],
-          "answer": "①, ④",
-          "solution": "[솔포인트] $-5 < x \\le 2$ 인 정수는 $-4, -3, -2, -1, 0, 1, 2$입니다. 따라서 이 범위에 해당하지 않는 정수는 $-8$과 정수가 아닌 $\\frac{1}{2}$입니다.",
-          "_sourceTitle": "정수와 유리수",
-          "_sourceFile": "types/middle/m1/중1_1학기_정수와유리수.js",
-          "_sourceQuestionNo": 14,
-          "_qKey": "types/middle/m1/중1_1학기_정수와유리수.js_14",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M1_MID_MEDIUM_25",
-          "unitKey": "M1-MID"
         }
       ]
     },
@@ -46402,14 +45699,14 @@
       "courseLabel": "중1 수학 1학기",
       "scopeLabel": "소인수분해부터 정수와 유리수의 계산까지",
       "purpose": "어려운 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 3,
         "중": 14,
-        "상": 8
+        "상": 7
       },
       "skillMix": {
         "조건해석": 22,
@@ -47405,50 +46702,6 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M1_MID_HIGH_25",
           "unitKey": "M1-MID"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "정수와 유리수",
-          "originalCategory": "정수와 유리수",
-          "standardCourse": "중1 수학 1학기",
-          "standardUnitKey": "M1-MID",
-          "standardUnit": "수와 연산",
-          "standardUnitOrder": 2,
-          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-          "subUnit": "정수와 유리수의 뜻",
-          "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "정수",
-            "유리수",
-            "계산",
-            "조건해석",
-            "최대최소",
-            "정수조건",
-            "범위"
-          ],
-          "wide": false,
-          "content": "양수 $x$의 $10$의 자리 미만을 반올림한 것을 기호 $\\langle x \\rangle$로 나타내기로 한다. 즉, $\\langle 17 \\rangle = 20, \\langle 33 \\rangle = 30$이다. $10 \\le x \\le 20$일 때, 정수 $x$에 대하여 $x - \\langle x \\rangle$의 최댓값 $A$와 최솟값 $B$를 각각 구하면? AB",
-          "choices": [
-            "10-10",
-            "5-5",
-            "60",
-            "4-5",
-            "40"
-          ],
-          "answer": "④",
-          "solution": "[솔포인트] x=14,x=15일 때 각각 최댓값과 최솟값을 가지므로, A=14-10=4,B=15-20=(-5)",
-          "_sourceTitle": "정수와 유리수",
-          "_sourceFile": "types/middle/m1/중1_1학기_정수와유리수.js",
-          "_sourceQuestionNo": 35,
-          "_qKey": "types/middle/m1/중1_1학기_정수와유리수.js_35",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M1_MID_HIGH_25",
-          "unitKey": "M1-MID"
         }
       ]
     },
@@ -47464,14 +46717,14 @@
       "courseLabel": "중2 수학 1학기",
       "scopeLabel": "유리수와 순환소수부터 일차부등식의 활용까지",
       "purpose": "일반 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 5,
         "중": 15,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "활용": 9,
@@ -48443,49 +47696,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M2_MID_MEDIUM_25"
-        },
-        {
-          "id": 25,
-          "content": "버스 터미널에서 버스 출발까지 1시간 15분의 여유가 있다. 물건을 사는 데 15분이 걸리고 걷는 속력이 분속 $40m$일 때, 최대 몇 $km$까지 다녀올 수 있는가?",
-          "choices": [
-            "2km",
-            "5km",
-            "8km",
-            "0km",
-            "4km"
-          ],
-          "answer": "①",
-          "category": "일차부등식의 활용",
-          "originalCategory": "일차부등식의 활용",
-          "standardCourse": "중2 수학 1학기",
-          "standardUnitKey": "M2-MID",
-          "standardUnit": "유리수와 순환소수·식의 계산·일차부등식",
-          "standardUnitOrder": 3,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "최대최소",
-            "부등식",
-            "일차부등식",
-            "실생활",
-            "범위",
-            "조건해석",
-            "응용",
-            "일차부등식의 활용",
-            "활용"
-          ],
-          "wide": false,
-          "solution": "<b>[키포인트]</b> 전체 이동 가능한 시간에서 물건을 사는 시간을 빼고 왕복 이동 거리에 대한 부등식을 세움.\\n전체 시간 $1$시간 $15$분 $= 75$분, 물건 사는 시간 $15$분이므로 순수 이동 가능 시간은 $60$분임.\\n다녀올 거리를 $xm$라 하면, 왕복 시간의 합은 $60$분 이하가 되어야 함.\\n$\\implies \\frac{x}{40} + \\frac{x}{40} \\le 60 \\implies \\frac{2x}{40} \\le 60$\\n$\\implies \\frac{x}{20} \\le 60 \\implies x \\le 1200$\\n거리 단위가 미터이므로 킬로미터로 환산함. ($1200m = 1.2km$)\\n$\\therefore 1.2km$",
-          "level": "상",
-          "unitKey": "M2-MID",
-          "_sourceTitle": "original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출",
-          "_sourceFile": "original/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js",
-          "_sourceQuestionNo": 20,
-          "_qKey": "original/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js_20",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M2_MID_MEDIUM_25"
         }
       ]
     },
@@ -48501,14 +47711,14 @@
       "courseLabel": "중2 수학 1학기",
       "scopeLabel": "유리수와 순환소수부터 일차부등식의 활용까지",
       "purpose": "어려운 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 3,
         "중": 14,
-        "상": 8
+        "상": 7
       },
       "skillMix": {
         "활용": 8,
@@ -49481,45 +48691,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M2_MID_HIGH_25"
-        },
-        {
-          "id": 25,
-          "content": "일차부등식 $x+1 \\le 3(x-3)$의 해가 일차부등식 $5x-a \\ge 4x+2$의 해와 같을 때, $a$의 값은? [5점]",
-          "choices": [
-            "$3$",
-            "$2$",
-            "$1$",
-            "$0$",
-            "$-1$"
-          ],
-          "answer": "①",
-          "category": "일차부등식",
-          "originalCategory": "일차부등식",
-          "standardCourse": "중2 수학 1학기",
-          "standardUnitKey": "M2-MID",
-          "standardUnit": "유리수와 순환소수·식의 계산·일차부등식",
-          "standardUnitOrder": 3,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "기출",
-            "객관식",
-            "계산",
-            "조건해석",
-            "역추론",
-            "일차부등식"
-          ],
-          "wide": false,
-          "solution": "1단계: $x+1 \\le 3x-9$를 정리하면 $2x \\ge 10$, 즉 $x \\ge 5$이다. [cite: 2026-04-09]\n2단계: $5x-a \\ge 4x+2$를 정리하면 $x \\ge a+2$이다. [cite: 2026-04-09]\n3단계: 두 부등식의 해가 같으므로 $a+2=5$에서 $a=3$이다. [cite: 2026-04-09]",
-          "level": "상",
-          "unitKey": "M2-MID",
-          "_sourceTitle": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출",
-          "_sourceFile": "original/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
-          "_sourceQuestionNo": 19,
-          "_qKey": "original/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js_19",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M2_MID_HIGH_25"
         }
       ]
     },
@@ -49535,14 +48706,14 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "제곱근부터 인수분해까지",
       "purpose": "일반 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 5,
         "중": 15,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 12,
@@ -50510,40 +49681,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M3_MID_MEDIUM_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "다항식의 곱셈",
-          "originalCategory": "다항식의 곱셈",
-          "standardCourse": "중3 수학 1학기",
-          "standardUnitKey": "M3-MID",
-          "standardUnit": "실수와 그 계산·다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 2,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "제곱근",
-            "근호",
-            "다항식",
-            "조건해석",
-            "계산",
-            "다항식의 곱셈"
-          ],
-          "wide": false,
-          "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
-          "answer": "$-40\\sqrt{6}$",
-          "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$[cite: 832, 833]. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$[cite: 834, 835].",
-          "choices": [],
-          "unitKey": "M3-MID",
-          "_sourceTitle": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출",
-          "_sourceFile": "original/original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
-          "_sourceQuestionNo": 23,
-          "_qKey": "original/original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js_23",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M3_MID_MEDIUM_25"
         }
       ]
     },
@@ -50559,14 +49696,14 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "제곱근부터 인수분해까지",
       "purpose": "어려운 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 3,
         "중": 14,
-        "상": 8
+        "상": 7
       },
       "skillMix": {
         "조건해석": 12,
@@ -51527,48 +50664,6 @@
           "_assessmentSkill": "자료해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M3_MID_HIGH_25"
-        },
-        {
-          "id": 25,
-          "category": "18. 근호 안의 완전제곱식",
-          "content": "$-3 < a < 2$ 일 때, $\\sqrt{9a^{2}+54a+81} - 7\\sqrt{\\frac{16}{49}-\\frac{16}{49}a+\\frac{4}{49}a^2}$ 을 간단히 하면? [5점]",
-          "choices": [
-            "$a+2$",
-            "$3a+2$",
-            "$5a+5$",
-            "$7a+5$",
-            "$11a+5$"
-          ],
-          "answer": "③",
-          "originalCategory": "18. 근호 안의 완전제곱식",
-          "standardCourse": "중3 수학 1학기",
-          "standardUnitKey": "M3-MID",
-          "standardUnit": "실수와 그 계산·다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 1,
-          "solution": "[키포인트] 근호 안을 완전제곱식으로 고친 후 절댓값 기호를 사용하여 범위를 따진다.\n* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 따라서 정답은 ③이다.",
-          "level": "상",
-          "tags": [
-            "객관식",
-            "제곱근",
-            "근호",
-            "절댓값",
-            "완전제곱식",
-            "범위",
-            "조건해석",
-            "계산",
-            "다항식의 곱셈"
-          ],
-          "wide": false,
-          "layoutTag": "grid",
-          "questionType": "객관식",
-          "unitKey": "M3-MID",
-          "_sourceTitle": "original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출",
-          "_sourceFile": "original/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
-          "_sourceQuestionNo": 18,
-          "_qKey": "original/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js_18",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M3_MID_HIGH_25"
         }
       ]
     },
@@ -51584,14 +50679,14 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "이차방정식부터 이차함수의 활용까지",
       "purpose": "일반 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 5,
         "중": 15,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "활용": 14,
@@ -52555,43 +51650,6 @@
           "_assessmentSkill": "활용",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M3_FINAL_MEDIUM_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "이차방정식",
-          "originalCategory": "이차방정식",
-          "standardCourse": "중3 수학 1학기",
-          "standardUnitKey": "M3-FINAL",
-          "standardUnit": "이차방정식·이차함수",
-          "standardUnitOrder": 3,
-          "questionType": "서술형",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형",
-            "나머지정리",
-            "계수비교",
-            "이차방정식",
-            "지수",
-            "도형",
-            "원",
-            "대입",
-            "이차방정식의 활용",
-            "활용"
-          ],
-          "wide": false,
-          "content": "이차방정식 $x^2-2px-5=0$의 한 근이 $x=-1$이고 다른 한 근은 이차방정식 $x^2+(q-2)x+3q=0$의 근일 때, 상수 $p, q$의 값을 구하시오.<br>($p$구하는 과정: 2점, 이차방정식 $x^2-2px-5=0$의 다른 한 근 구하는 과정: 3점, $q$구하는 과정: 2점)",
-          "choices": [],
-          "answer": "$p=2, q=-\\dfrac{15}{8}$",
-          "solution": "[키포인트] 한 근을 대입하여 미지수 계수를 구하고, 나머지 한 근을 성질을 통해 구한 뒤 다른 방정식에 대입하여 상수를 구한다.\\n1단계($p$ 구하는 과정): 이차방정식 $x^2-2px-5=0$의 한 근이 $x=-1$이므로 $x$에 $-1$을 대입한다.\\n$(-1)^2 - 2p(-1) - 5 = 0 \\\\implies 1 + 2p - 5 = 0 \\\\implies 2p = 4 \\\\implies p = 2$\\n2단계(다른 한 근 구하는 과정): 구한 $p=2$를 원래 방정식에 대입하여 온전한 이차방정식을 만든 후 다른 한 근을 구한다.\\n$x^2 - 4x - 5 = 0 \\\\implies (x-5)(x+1) = 0$ 이므로 해는 $x=5$ 또는 $x=-1$ 이다. 따라서 다른 한 근은 $x=5$ 이다.\\n3단계($q$ 구하는 과정): 다른 한 근인 $x=5$가 이차방정식 $x^2+(q-2)x+3q=0$의 근이므로 $x=5$를 대입하여 $q$의 값을 구한다.\\n$5^2 + (q-2) \\\\times 5 + 3q = 0 \\\\implies 25 + 5q - 10 + 3q = 0 \\\\implies 8q + 15 = 0 \\\\implies 8q = -15 \\\\implies q = -\\\\dfrac{15}{8}$\\n∴ 정답: $p=2, q=-\\\\dfrac{15}{8}$",
-          "unitKey": "M3-FINAL",
-          "_sourceTitle": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c",
-          "_sourceFile": "original/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 22,
-          "_qKey": "original/original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js_22",
-          "_assessmentSkill": "활용",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_M3_FINAL_MEDIUM_25"
         }
       ]
     },
@@ -52607,14 +51665,14 @@
       "courseLabel": "중3 수학 1학기",
       "scopeLabel": "이차방정식부터 이차함수의 활용까지",
       "purpose": "어려운 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 3,
         "중": 14,
-        "상": 8
+        "상": 7
       },
       "skillMix": {
         "활용": 14,
@@ -53579,45 +52637,6 @@
           "_assessmentSkill": "참거짓",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M3_FINAL_HIGH_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "이차함수와 그래프",
-          "originalCategory": "이차함수와 그래프",
-          "standardCourse": "중3 수학 1학기",
-          "standardUnitKey": "M3-FINAL",
-          "standardUnit": "이차방정식·이차함수",
-          "standardUnitOrder": 4,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "그래프"
-          ],
-          "wide": false,
-          "content": "이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 다음 중 옳은 것은? (단, $a, b, c$는 상수이다.)",
-          "image": "assets/images/25_연향중_1학기_기말_중3_기출/q20.png",
-          "choices": [
-            "$a>0$",
-            "$b>0$",
-            "$c<0$",
-            "$a+b+c<0$",
-            "$a-b+c>0$"
-          ],
-          "answer": "⑤",
-          "solution": "[키포인트] 그래프의 모양, 축의 위치, 절편을 통해 계수와 함숫값의 부호를 판정한다.\n정석 풀이:\n그래프는 아래로 볼록하므로 $a>0$이다.\n또한 그래프의 $y$절편은 $x$축보다 위에 있으므로 $c>0$이다.\n그림에서 $x=-1$일 때의 함숫값은 $x$축보다 위에 있다.\n그런데 $a-b+c$는 $x=-1$일 때의 함숫값 $f(-1)$을 의미하므로 $a-b+c>0$이다.\n따라서 정답은 ⑤이다.",
-          "_sourceTitle": "25_연향중_1학기_기말_중3_기출",
-          "_sourceFile": "original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 20,
-          "_sourceSchool": "연향중",
-          "_sourceYear": 25,
-          "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js_20",
-          "_assessmentPackId": "TERM_1SEM_M3_FINAL_HIGH_25",
-          "_assessmentSkill": "자료해석",
-          "_assessmentTypeKey": "IMG_qf_value",
-          "_assessmentQualityScore": 100,
-          "unitKey": "M3-FINAL"
         }
       ]
     },
@@ -53633,14 +52652,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "다항식의 연산부터 이차함수까지",
       "purpose": "일반 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 5,
         "중": 15,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 24,
@@ -54592,47 +53611,6 @@
           "_assessmentSkill": "자료해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_H1_MID_MEDIUM_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "다항식의 인수분해",
-          "originalCategory": "다항식의 인수분해",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-MID",
-          "standardUnit": "다항식·복소수와 이차방정식·이차함수",
-          "standardUnitOrder": 3,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "절댓값",
-            "다항식",
-            "인수분해",
-            "최대최소",
-            "자연수조건",
-            "조건해석",
-            "계산"
-          ],
-          "wide": false,
-          "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $48$의 값을 가질 때, $x+y+z$의 최솟값을 구하시오. [5.5점]",
-          "choices": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
-          ],
-          "answer": "41",
-          "solution": "<b>[Logical Anchor]</b> 항이 많은 다항식은 한 문자에 대해 정리하여 인수분해함.\\n$x^2(x - 2y - z) + xy(y + 2z) - yz^2$ 등의 복잡한 형태를 다음으로 정리함.\\n$\\implies (x - z)(x^2 - 2xy + y^2) = (x - z)(x - y)^2 = 48$\\n$(x-y)^2$은 $48$의 약수 중 제곱수여야 함.\\n$case 1)  (x-y)^2 = 1 \\implies |x-y|=1, \\ x-z=48$\\n$case 2)  (x-y)^2 = 4 \\implies |x-y|=2, \\ x-z=12$\\n$case 3)  (x-y)^2 = 16 \\implies |x-y|=4, \\ x-z=3$\\n$case 2 조사:  x, z$는 소수이고 차이가 $12$인 수 중 $x=17, z=5$ 가능.\\n이때 $|17-y|=2 \\implies y=19$ (소수)\\n$x+y+z = 17 + 19 + 5 = 41$\\n타 케이스 대비 최솟값이 도출됨.\\n$\\therefore 41$",
-          "unitKey": "H1-MID",
-          "_sourceTitle": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출",
-          "_sourceFile": "original/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
-          "_sourceQuestionNo": 18,
-          "_qKey": "original/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js_18",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_H1_MID_MEDIUM_25"
         }
       ]
     },
@@ -54648,14 +53626,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "다항식의 연산부터 이차함수까지",
       "purpose": "어려운 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": true,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 3,
         "중": 14,
-        "상": 8
+        "상": 7
       },
       "skillMix": {
         "조건해석": 23,
@@ -55605,48 +54583,6 @@
           "_assessmentSkill": "자료해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_H1_MID_HIGH_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "나머지 정리의 심화",
-          "originalCategory": "나머지 정리의 심화",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-MID",
-          "standardUnit": "다항식·복소수와 이차방정식·이차함수",
-          "standardUnitOrder": 2,
-          "questionType": "",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "다항식",
-            "항등식",
-            "나머지정리",
-            "계수비교",
-            "대입",
-            "조건해석",
-            "계산",
-            "항등식과 나머지정리"
-          ],
-          "wide": false,
-          "content": "이차식 $f(x)$가 다음 <조건>을 만족한다.<br><div class='box'><조건><br>(가) $f(x)$의 최고차항의 계수가 $1$이다.<br>(나) $f(x)$는 $x+2$로 나누어떨어진다.<br>(다) $f(x^2)$을 $f(x)$로 나누었을 때의 나머지는 $10x+2$이다.</div><br>이때, $f(2)$의 값은? [4.2점]",
-          "choices": [
-            "$-24$",
-            "$-20$",
-            "$-16$",
-            "$-12$",
-            "$-8$"
-          ],
-          "answer": "②",
-          "solution": "<b>[키포인트]</b> 주어진 조건 (가), (나)를 바탕으로 다항식의 형태를 설정하고, 항등식에 대입하여 계수를 확정함.\\n조건 (가), (나)에 의해 $f(x) = (x+2)(x-k)$로 설정할 수 있음.\\n조건 (다)를 항등식으로 나타냄.\\n\\implies f(x^2) = f(x)Q(x) + 10x+2\\n$x=-2$를 대입하여 좌변의 함숫값을 상수화함.\\n\\implies f((-2)^2) = f(-2)Q(-2) + 10(-2)+2\\n$f(-2)=0$이므로 우변은 $-18$이 됨.\\n\\implies f(4) = -18\\n설정한 $f(x)$ 식에 대입하여 미정계수 $k$를 구함.\\n\\implies f(4) = (4+2)(4-k) = 6(4-k) = -18\\n\\implies 4-k = -3 \\implies k = 7\\n\\implies f(x) = (x+2)(x-7)\\n\\implies f(2) = (2+2)(2-7) = 4 \\times (-5) = -20\\n\\therefore -20",
-          "unitKey": "H1-MID",
-          "_sourceTitle": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출",
-          "_sourceFile": "original/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
-          "_sourceQuestionNo": 10,
-          "_qKey": "original/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js_10",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_H1_MID_HIGH_25"
         }
       ]
     },
@@ -55662,14 +54598,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "여러 가지 방정식부터 행렬과 그 연산까지",
       "purpose": "일반 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 5,
         "중": 15,
-        "상": 5
+        "상": 4
       },
       "skillMix": {
         "조건해석": 25
@@ -56644,47 +55580,6 @@
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_H1_FINAL_MEDIUM_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "행렬",
-          "originalCategory": "행렬",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-FINAL",
-          "standardUnit": "방정식과 부등식·경우의 수와 순열조합·행렬",
-          "standardUnitOrder": 9,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "자연수조건",
-            "범위",
-            "개수세기",
-            "참거짓",
-            "조건해석",
-            "개념",
-            "행렬과 그 연산"
-          ],
-          "wide": false,
-          "content": "행렬 $A=\\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix}$에 대하여 $E+A+A^2+\\cdots+A^n=O$를 만족시키는 $100$이하의 자연수 $n$의 개수는? [4.5점]",
-          "choices": [
-            "$30$",
-            "$31$",
-            "$32$",
-            "$33$",
-            "$34$"
-          ],
-          "answer": "④",
-          "solution": "[키포인트] 케일리-해밀턴 정리를 통해 $A^2+A+E=O$임을 확인한다.\\n\\n$A^2+A+E=O$이므로 $A^3=E$이고 주기는 $3$이다.\\n$E+A+A^2=O$이므로 $n=2, 5, 8, \\dots$ 즉 $n=3k-1$ 꼴이다.\\n$3k-1 \\le 100 \\implies 3k \\le 101 \\implies k \\le 33$이므로 $33$개이다.\\n\\n따라서 정답은 ④이다.",
-          "unitKey": "H1-FINAL",
-          "_sourceTitle": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c",
-          "_sourceFile": "original/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
-          "_sourceQuestionNo": 16,
-          "_qKey": "original/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js_16",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_H1_FINAL_MEDIUM_25"
         }
       ]
     },
@@ -56700,14 +55595,14 @@
       "courseLabel": "고11 공통수학1",
       "scopeLabel": "여러 가지 방정식부터 행렬과 그 연산까지",
       "purpose": "어려운 학교 중간·기말고사 대비",
-      "questionCount": 25,
+      "questionCount": 24,
       "estimatedMinutes": 50,
       "hasImage": false,
       "sourceScope": "현재 생성된 소단원·중단원·진단 팩의 큐레이션 문항",
       "difficultyMix": {
         "하": 3,
         "중": 14,
-        "상": 8
+        "상": 7
       },
       "skillMix": {
         "조건해석": 25
@@ -57676,45 +56571,6 @@
           "_sourceFile": "original/original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js",
           "_sourceQuestionNo": 9,
           "_qKey": "original/original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js_9",
-          "_assessmentSkill": "조건해석",
-          "_assessmentQualityScore": 100,
-          "_assessmentPackId": "TERM_1SEM_H1_FINAL_HIGH_25"
-        },
-        {
-          "id": 25,
-          "level": "상",
-          "category": "행렬",
-          "originalCategory": "행렬",
-          "standardCourse": "고11 공통수학1",
-          "standardUnitKey": "H1-FINAL",
-          "standardUnit": "방정식과 부등식·경우의 수와 순열조합·행렬",
-          "standardUnitOrder": 9,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [
-            "객관식",
-            "참거짓",
-            "오류판별",
-            "조건해석",
-            "개념",
-            "행렬과 그 연산"
-          ],
-          "wide": false,
-          "content": "영행렬이 아닌 두 이차 정사각행렬 $A, B$에 대하여 $A+B=E, AB=O$일 때, 다음 <보기>에서 옳은 것만을 있는 대로 고른 것은? [4.7점]\\n<div class='q-box'><b><보기></b>\\nㄱ. $BA=O$\\\\nㄴ. $(A+B)^2=A^2+2AB+B^2$\\\\nㄷ. $A^3+B^3=(A+B)^3$</div>",
-          "choices": [
-            "ㄱ",
-            "ㄱ, ㄴ",
-            "ㄱ, ㄷ",
-            "ㄴ, ㄷ",
-            "ㄱ, ㄴ, ㄷ"
-          ],
-          "answer": "⑤",
-          "solution": "[키포인트] 주어진 행렬식을 조작하여 성질을 유도한다.\\n\\n$AB=O$에서 $A(E-A)=O \\implies A=A^2$. 마찬가지로 $B=B^2$이다.\\n$BA = (E-A)A = A-A^2 = O$이므로 ㄱ 참.\\n$AB=BA=O$이므로 ㄴ 참.\\n$A^3+B^3 = A+B = E$이고 $(A+B)^3 = E^3 = E$이므로 ㄷ 참.\\n\\n따라서 정답은 ⑤이다.",
-          "unitKey": "H1-FINAL",
-          "_sourceTitle": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c",
-          "_sourceFile": "original/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
-          "_sourceQuestionNo": 17,
-          "_qKey": "original/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js_17",
           "_assessmentSkill": "조건해석",
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_H1_FINAL_HIGH_25"
