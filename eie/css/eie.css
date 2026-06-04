@@ -5877,3 +5877,43 @@ body.eie-drawer-expanded .eie-desktop-topbar {
     user-select: none !important;
 }
 
+
+
+/* ======================================================================
+   EIE header wordmark hard fix
+   - previous 32x32 icon lock breaks wide EiE wordmark.
+   - keep AP back button / header position, but size the logo as a wordmark.
+   ====================================================================== */
+#eie-mobile-header .eie-header-brand,
+#eie-desktop-topbar .eie-topbar-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 40px !important;
+    overflow: hidden !important;
+}
+
+#eie-mobile-header .eie-header-brand .app-header-logo,
+#eie-mobile-header .eie-header-brand .eie-header-logo,
+#eie-desktop-topbar .eie-topbar-brand .app-header-logo,
+#eie-desktop-topbar .eie-topbar-brand .eie-header-logo {
+    display: block !important;
+    width: auto !important;
+    height: 24px !important;
+    max-width: 120px !important;
+    min-width: 0 !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+@media (min-width: 901px) {
+    #eie-desktop-topbar .eie-topbar-brand .app-header-logo,
+    #eie-desktop-topbar .eie-topbar-brand .eie-header-logo {
+        height: 26px !important;
+        max-width: 132px !important;
+    }
+}
