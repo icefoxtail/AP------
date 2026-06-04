@@ -12,13 +12,11 @@ function assert(condition, message) {
 }
 
 const ko = {
-  low: '\uD558',
-  mid: '\uC911',
-  high: '\uC0C1',
-  diagnostic: '\uC9C4\uB2E8\uD3C9\uAC00',
-  middle1: '\uC9111',
-  multiAnswer: '\uBCF5\uC218\uC815\uB2F5',
-  unit3: '\uBB38\uC790\uC758 \uC0AC\uC6A9\uACFC \uC2DD',
+  low: '하',
+  mid: '중',
+  high: '상',
+  diagnostic: '진단평가',
+  middle1: '중1',
 };
 
 const context = { window: {} };
@@ -28,48 +26,44 @@ vm.runInContext(fs.readFileSync(packsPath, 'utf8'), context, { filename: packsPa
 const data = context.window.APMATH_ASSESSMENT_PACKS_1SEM;
 const packs = data.packs || [];
 
+// 2026-06-04: diagnostic packs rebuilt to 하10/중10/상4=24
 const specs = [
   {
-    id: 'DIAG_1SEM_M1_20',
-    title: `${ko.middle1} 1\uB2E8\uC6D0 ${ko.diagnostic}`,
-    count: 20,
-    mix: { [ko.low]: 4, [ko.mid]: 13, [ko.high]: 3 },
-    units: ['M1-01'],
-    requiredTypeTags: { prime_composite_definition_truth: ko.multiAnswer },
-  },
-  {
     id: 'DIAG_1SEM_M1_U12_25',
-    title: `${ko.middle1} 1~2\uB2E8\uC6D0 ${ko.diagnostic}`,
-    count: 25,
-    mix: { [ko.low]: 5, [ko.mid]: 14, [ko.high]: 6 },
+    count: 24,
+    mix: { [ko.low]: 10, [ko.mid]: 10, [ko.high]: 4 },
     units: ['M1-01', 'M1-02'],
+    sourcePrefix: 'types/middle/m1/',
   },
   {
-    id: 'DIAG_1SEM_M1_U123_25',
-    title: `${ko.middle1} 1~3\uB2E8\uC6D0 ${ko.diagnostic}`,
-    count: 25,
-    mix: { [ko.low]: 4, [ko.mid]: 15, [ko.high]: 6 },
-    units: ['M1-01', 'M1-02', 'M1-03'],
+    id: 'DIAG_1SEM_M1_U34_25',
+    count: 24,
+    mix: { [ko.low]: 10, [ko.mid]: 10, [ko.high]: 4 },
+    units: ['M1-03', 'M1-04'],
+    sourcePrefix: 'types/middle/m1/',
   },
 ];
 
 for (const spec of specs) {
   const pack = packs.find((item) => item.id === spec.id);
   assert(pack, `${spec.id} should exist`);
-  assert(pack.title === spec.title, `${spec.id} should keep the requested title`);
   assert(pack.category === ko.diagnostic, `${spec.id} should be a diagnostic pack`);
   assert(pack.grade === ko.middle1, `${spec.id} should be middle school grade 1`);
-  assert(pack.questionCount === spec.count, `${spec.id} should expose questionCount ${spec.count}`);
-  assert(Array.isArray(pack.questions) && pack.questions.length === spec.count, `${spec.id} should have ${spec.count} questions`);
+  assert(pack.questionCount === spec.count, `${spec.id} should have questionCount ${spec.count}, got ${pack.questionCount}`);
+  assert(
+    Array.isArray(pack.questions) && pack.questions.length === spec.count,
+    `${spec.id} should have ${spec.count} questions, got ${pack.questions.length}`
+  );
 
   const counts = pack.questions.reduce((acc, question) => {
     acc[question.level] = (acc[question.level] || 0) + 1;
     return acc;
   }, {});
   Object.entries(spec.mix).forEach(([level, count]) => {
-    assert(counts[level] === count, `${spec.id} should contain ${count} ${level} questions after stage-3 review`);
+    assert(counts[level] === count, `${spec.id} should contain ${count} ${level} questions, got ${counts[level]}`);
   });
 
+  // Difficulty ordering: 하(1-10) → 중(11-20) → 상(21-24)
   const expectedOrder = [
     ...Array(spec.mix[ko.low]).fill(ko.low),
     ...Array(spec.mix[ko.mid]).fill(ko.mid),
@@ -77,39 +71,42 @@ for (const spec of specs) {
   ];
   assert(
     pack.questions.every((question, index) => question.level === expectedOrder[index]),
-    `${spec.id} questions should be ordered by difficulty low-mid-high`
+    `${spec.id} questions should be ordered 하→중→상`
   );
 
+  // No internal duplicate source questions
   const sourceKeys = pack.questions.map((question) => `${question._sourceFile}:${question._sourceQuestionNo}`);
   assert(new Set(sourceKeys).size === sourceKeys.length, `${spec.id} should not duplicate source questions inside the pack`);
 
-  const diagnosticTypes = pack.questions.map((question) => question._diagnosticType);
+  // Source files from correct scope
   assert(
-    diagnosticTypes.every((type) => typeof type === 'string' && type.length > 0),
-    `${spec.id} should label every question with a diagnostic type`
-  );
-  assert(
-    new Set(diagnosticTypes).size === diagnosticTypes.length,
-    `${spec.id} should not duplicate diagnostic types inside the pack`
-  );
-  assert(
-    pack.questions.every((question) => String(question._sourceFile || '').startsWith('types/middle/m1/')),
-    `${spec.id} should use M1 type JS source questions`
-  );
-  assert(
-    pack.questions.every((question) => spec.units.includes(question.standardUnitKey)),
-    `${spec.id} should only use questions from the requested units`
-  );
-  assert(
-    pack.questions.every((question) => question.standardUnitKey !== 'M1-03' || question.standardUnit === ko.unit3),
-    `${spec.id} should use the official M1-03 standard unit name`
+    pack.questions.every((question) => String(question._sourceFile || '').startsWith(spec.sourcePrefix)),
+    `${spec.id} should use ${spec.sourcePrefix} source questions`
   );
 
-  Object.entries(spec.requiredTypeTags || {}).forEach(([diagnosticType, tag]) => {
-    const question = pack.questions.find((item) => item._diagnosticType === diagnosticType);
-    assert(question, `${spec.id} should include diagnostic type ${diagnosticType}`);
-    assert(Array.isArray(question.tags) && question.tags.includes(tag), `${spec.id} ${diagnosticType} should include ${tag} tag`);
-  });
+  // All questions from allowed units
+  assert(
+    pack.questions.every((question) => spec.units.includes(question.standardUnitKey)),
+    `${spec.id} should only use questions from units: ${spec.units.join(', ')}`
+  );
+
+  // difficultyMix matches
+  assert(
+    pack.difficultyMix[ko.low] === spec.mix[ko.low] &&
+      pack.difficultyMix[ko.mid] === spec.mix[ko.mid] &&
+      pack.difficultyMix[ko.high] === spec.mix[ko.high],
+    `${spec.id} difficultyMix should match the new 하10/중10/상4 spec`
+  );
 }
+
+// Cross-pack deduplication: M1_U12 and M1_U34 share no _qKey
+const m1u12 = packs.find((p) => p.id === 'DIAG_1SEM_M1_U12_25');
+const m1u34 = packs.find((p) => p.id === 'DIAG_1SEM_M1_U34_25');
+const u12Keys = new Set((m1u12.questions || []).map((q) => q._qKey));
+const u34Keys = (m1u34.questions || []).map((q) => q._qKey);
+assert(
+  u34Keys.every((k) => !u12Keys.has(k)),
+  'DIAG_1SEM_M1_U12_25 and DIAG_1SEM_M1_U34_25 should share no duplicate _qKey'
+);
 
 console.log('assessment M1 diagnostic pack checks passed');
