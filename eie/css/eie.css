@@ -3358,14 +3358,11 @@ body.eie-owner-dashboard-bg {
 
 .eie-v2-board-wrap {
     width: 100%;
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: auto;
     border: 1px solid var(--eie-border);
     border-radius: 22px;
     background: var(--eie-surface);
     box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
-    scrollbar-width: thin;
-    scrollbar-color: rgba(148,163,184,0.4) transparent;
 }
 
 .eie-v2-board {
@@ -5657,11 +5654,9 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-board-grid {
     --eie-v2-period-width: 96px;
-    --eie-v2-col-min: 130px;
-    min-width: 100%;
-    width: max-content;
+    width: 100%;
     display: grid;
-    grid-template-columns: var(--eie-v2-period-width) 1fr;
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
     gap: 8px;
 }
 
@@ -5673,7 +5668,7 @@ button.eie-v2-card-student:hover {
 .eie-v2-teacher-frame-head {
     grid-column: 2;
     display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(var(--eie-v2-col-min, 130px), 1fr));
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
     gap: 8px;
     align-items: stretch;
 }
@@ -5716,7 +5711,7 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-teacher-frame-row {
     display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(var(--eie-v2-col-min, 130px), 1fr));
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
     gap: 8px;
     align-items: stretch;
     min-width: 0;
