@@ -346,6 +346,15 @@
         return normalizeKey(row?.status || 'active') || 'active';
     }
 
+    function isPausedStudent(row) {
+        const raw = rawOf(row);
+        const status = normalizeKey(row?.status || row?.student_status || row?.match_status || raw.status).toLowerCase();
+        const type = normalizeKey(row?.student_type || raw.student_type).replace(/\s+/g, '');
+        const memo = normalizeKey(row?.memo || raw.memo);
+        return status === 'paused' || status === 'on_leave' || status === 'leave' || status === '휴원' ||
+            type.includes('휴원') || memo.includes('#휴원');
+    }
+
     function selectedStudentRecord() {
         const id = normalizeKey(viewState.selectedStudentId);
         const name = normalizeStudentName(viewState.selectedStudentName);
@@ -369,7 +378,9 @@
                 pin: normalizeKey(student?.pin || student?.pin_code || student?.student_pin || ''),
                 name: normalizeStudentName(student?.name || student?.display_name || student?.student_name_raw || ''),
                 grade: normalizeKey(student?.grade_raw || student?.grade || ''),
-                status: normalizeKey(student?.status || student?.match_status || '')
+                status: normalizeKey(student?.status || student?.match_status || ''),
+                student_type: normalizeKey(student?.student_type || student?.type || ''),
+                memo: normalizeKey(student?.memo || '')
             })).filter(student => student.name);
         }
 
@@ -391,7 +402,9 @@
                 pin: normalizeKey(item?.pin || item?.pin_code || item?.student_pin || ''),
                 name: normalizeStudentName(item?.name || item?.student_name_raw || item?.studentName || ''),
                 grade: normalizeKey(item?.grade_raw || item?.grade || ''),
-                status: normalizeKey(item?.status || item?.match_status || '')
+                status: normalizeKey(item?.status || item?.match_status || ''),
+                student_type: normalizeKey(item?.student_type || item?.type || ''),
+                memo: normalizeKey(item?.memo || '')
             };
         }).filter(student => student.name);
     }
@@ -768,8 +781,16 @@
         ].filter(Boolean).join(' ');
     }
 
+    function sortStudentsByName(students) {
+        return [...(Array.isArray(students) ? students : [])].sort((a, b) => {
+            const left = studentSearchName(a) || a?.name || '';
+            const right = studentSearchName(b) || b?.name || '';
+            return String(left).localeCompare(String(right), 'ko', { sensitivity: 'base', numeric: true });
+        });
+    }
+
     function renderStudentNames(students, options) {
-        const list = Array.isArray(students) ? students : [];
+        const list = sortStudentsByName(students);
         const shouldLink = !!options?.linkStudents;
         if (!list.length) return '<div class="eie-v2-student-empty">학생 없음</div>';
         return `
@@ -780,21 +801,21 @@
                     const context = returnContextFor(options);
                     if (shouldLink && (id || name)) {
                         return `<button type="button"
-                            class="eie-v2-student-chip is-clickable"
+                            class="eie-v2-student-chip is-clickable${isPausedStudent(student) ? ' is-paused' : ''}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(name || student.name || '학생')}"
                             aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
                     }
-                    return `<span class="eie-v2-student-chip" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
+                    return `<span class="eie-v2-student-chip${isPausedStudent(student) ? ' is-paused' : ''}" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
                 }).join('')}
             </div>
         `;
     }
 
     function renderStudentPreview(students, options) {
-        const list = Array.isArray(students) ? students : [];
+        const list = sortStudentsByName(students);
         if (!list.length) return '<div class="eie-v2-card-students-empty">학생 없음</div>';
         const visible = list;
         const rest = 0;
@@ -806,14 +827,14 @@
                     const context = returnContextFor(options);
                     if (id || name) {
                         return `<button type="button"
-                            class="eie-v2-card-student"
+                            class="eie-v2-card-student${isPausedStudent(student) ? ' is-paused' : ''}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(name || student.name || '학생')}"
                             aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
                     }
-                    return `<span class="eie-v2-card-student" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
+                    return `<span class="eie-v2-card-student${isPausedStudent(student) ? ' is-paused' : ''}" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
                 }).join('')}
                 ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
@@ -822,6 +843,13 @@
 
     function teacherShortForDay(session, day) {
         return shortTeacherNames(session?.day_teachers?.[day] || []);
+    }
+
+    function teacherColorKeyForDay(session, day) {
+        const names = uniqueNames(session?.day_teachers?.[day] || []);
+        if (!names.length) return 'none';
+        if (names.length > 1) return 'mixed';
+        return teacherKey(names[0] || '');
     }
 
     function renderWeeklyCard(session) {
@@ -835,22 +863,31 @@
         const articleAttrs = isTempCopy
             ? `role="group" aria-label="${esc(session.material)} 저장 전 임시 수업"`
             : `role="button" tabindex="0" data-eie-v2-session="${esc(session.session_id)}" aria-label="${esc(session.material)} 수업 상세 보기"`;
+        const homeroomColorKey = teacherKey(session.homeroom_teacher || session.teacher_name || '');
         return `
             <article ${articleAttrs}
-                class="eie-v2-week-card ${isSelected ? 'is-selected' : ''} ${isDrafted ? 'is-edit-drafted' : ''} ${isCopySource ? 'is-copy-source' : ''} ${isTempCopy ? 'is-temp-copy' : ''}"
+                data-eie-homeroom="${esc(homeroomColorKey)}"
+                class="eie-v2-week-card ${viewState.editMode ? 'is-edit-card' : ''} ${isSelected ? 'is-selected' : ''} ${isDrafted ? 'is-edit-drafted' : ''} ${isCopySource ? 'is-copy-source' : ''} ${isTempCopy ? 'is-temp-copy' : ''}"
                 ${canEditCard ? `draggable="true" data-eie-drag-session="${esc(session.session_id)}"` : ''}>
-                ${canEditCard ? `<button type="button" class="eie-v2-card-copy-button" data-eie-copy-session="${esc(session.session_id)}" title="이 반을 복사해서 빈 슬롯에 붙여넣습니다" aria-label="${esc(`${session.material || session.class_full_name || '선택한 반'} 복사`)}">${isCopySource ? '복사됨' : '복사'}</button>` : ''}
+                ${viewState.editMode ? `
+                    <div class="eie-v2-card-edit-actions">
+                        ${canEditCard ? `<button type="button" class="eie-v2-card-copy-button" data-eie-copy-session="${esc(session.session_id)}" title="이 반을 복사해서 빈 슬롯에 붙여넣습니다" aria-label="${esc(`${session.material || session.class_full_name || '선택한 반'} 복사`)}">${isCopySource ? '복사됨' : '복사'}</button>` : ''}
+                        <button type="button" class="eie-v2-card-delete-button" data-eie-delete-session="${esc(session.session_id)}" title="반카드만 삭제합니다. 학생은 삭제되지 않습니다." aria-label="${esc(`${session.material || session.class_full_name || '선택한 반'} 반카드 삭제`)}">삭제</button>
+                    </div>
+                ` : ''}
                 ${isTempCopy ? '<span class="eie-v2-card-copy-badge" aria-label="저장 전 임시 수업">저장 전</span>' : ''}
-                <div class="eie-v2-week-grid is-head" aria-hidden="true">
+                <div class="eie-v2-card-material-row">
                     <span>교재</span>
+                    <strong title="${esc(session.class_full_name || session.material)}">${esc(session.material || '교재 없음')}</strong>
+                </div>
+                <div class="eie-v2-card-days-row is-head" aria-hidden="true">
                     ${DAY_ORDER.slice(0, 5).map(day => `<span>${esc(day)}</span>`).join('')}
                 </div>
-                <div class="eie-v2-week-grid is-body">
-                    <strong title="${esc(session.class_full_name || session.material)}">${esc(session.material || '교재 없음')}</strong>
-                    ${DAY_ORDER.slice(0, 5).map(day => `<span title="${esc((session.day_teachers?.[day] || []).join(', ') || '-')}">${esc(teacherShortForDay(session, day))}</span>`).join('')}
+                <div class="eie-v2-card-days-row is-body">
+                    ${DAY_ORDER.slice(0, 5).map(day => `<span data-eie-day-teacher-key="${esc(teacherColorKeyForDay(session, day))}" title="${esc((session.day_teachers?.[day] || []).join(', ') || '-')}">${esc(teacherShortForDay(session, day))}</span>`).join('')}
                 </div>
                 ${isSpecial ? `<em class="eie-v2-status-badge is-${esc(status)}">${esc(statusLabel(status))}</em>` : ''}
-                ${!isTempCopy ? renderStudentPreview(session.students, { linkStudents: true, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' }) : '<div class="eie-v2-student-empty">학생은 복사하지 않습니다</div>'}
+                ${renderStudentPreview(session.students, { linkStudents: true, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
             </article>
         `;
     }
@@ -861,11 +898,31 @@
         return { period, time };
     }
 
+    function ensurePeriodGroup(map, period) {
+        const key = `${period.period_order || ''}|${period.period_label || ''}|${period.start_time || ''}|${period.end_time || ''}`;
+        if (map.has(key)) return;
+        const startMinutes = timeToMinutes(period.start_time || '');
+        const endMinutes = timeToMinutes(period.end_time || '');
+        map.set(key, {
+            key,
+            sample: {
+                period_key: key,
+                period_order: period.period_order,
+                period_label: period.period_label,
+                start_time: period.start_time,
+                end_time: period.end_time,
+                start_minutes: Number.isFinite(startMinutes) ? startMinutes : null,
+                end_minutes: Number.isFinite(endMinutes) ? endMinutes : null
+            },
+            sessions: []
+        });
+    }
+
     function buildPeriodGroups(sessions) {
         const map = new Map();
         (sessions || []).forEach(session => {
             const draft = viewState.editMode && viewState.editDraft[session.session_id];
-            const key = (draft?.periodKey) || session.period_key || `${session.period_order || ''}|${session.start_time || ''}|${session.end_time || ''}`;
+            const key = (draft?.periodKey) || session.period_key || `${session.period_order || ''}|${session.period_label || ''}|${session.start_time || ''}|${session.end_time || ''}`;
             if (!map.has(key)) {
                 const sample = draft
                     ? { ...session, period_label: draft.periodLabel, period_order: draft.periodOrder, start_time: draft.startTime, end_time: draft.endTime }
@@ -874,6 +931,7 @@
             }
             map.get(key).sessions.push(session);
         });
+        ensurePeriodGroup(map, { period_order: 7, period_label: '7교시', start_time: '19:15', end_time: '20:00' });
         return Array.from(map.values()).sort((a, b) => {
             const ao = Number(a.sample.period_order || 0);
             const bo = Number(b.sample.period_order || 0);
@@ -912,6 +970,129 @@
         return (sessions || []).filter(session => effectiveHomeroomKey(session) === key);
     }
 
+    function visibleTeacherSessions(sessions, teacher) {
+        const seen = new Set();
+        return sessionsForTeacher(sessions, teacher).filter(session => {
+            const status = normalizeStatus(session?.status);
+            if (status === 'hidden' || status === 'archived' || status === 'inactive') return false;
+            const key = normalizeKey(session?.session_id || session?.source_cell_ids?.join('|') || session?.material || '');
+            if (key && seen.has(key)) return false;
+            if (key) seen.add(key);
+            return true;
+        });
+    }
+
+    function studentStableLaneKey(student) {
+        return normalizeKey(
+            student?.student_id || student?.confirmed_student_id || student?.matched_student_id ||
+            student?.canonical_student_id || student?.id || student?.pin || student?.student_pin ||
+            student?.name || student?.display_name || student?.student_name_raw || ''
+        ).toLowerCase();
+    }
+
+    function sessionStudentLaneSignature(session) {
+        const keys = (Array.isArray(session?.students) ? session.students : [])
+            .map(studentStableLaneKey)
+            .filter(Boolean)
+            .sort();
+        if (keys.length) return `students:${keys.join('|')}`;
+        return `class:${normalizeKey(session?.material || session?.class_full_name || session?.session_id || '').toLowerCase()}`;
+    }
+
+    function laneMapKey(group, teacher) {
+        return `${normalizeKey(group?.key || '')}::${teacher?.key || ''}`;
+    }
+
+    function buildAutoSlotLaneMap(groups, teachers) {
+        const result = new Map();
+        let previousByTeacher = new Map();
+        (Array.isArray(groups) ? groups : []).forEach(group => {
+            const currentByTeacher = new Map();
+            (teachers || []).forEach(teacher => {
+                const rawCards = sessionsForTeacher(group.sessions, teacher);
+                const previousLanes = previousByTeacher.get(teacher.key) || new Map();
+                const occupied = new Set();
+                const items = rawCards.map((session, index) => ({
+                    session,
+                    signature: sessionStudentLaneSignature(session),
+                    lane: 0,
+                    index
+                }));
+
+                items.forEach(item => {
+                    const previousLane = Number(previousLanes.get(item.signature) || 0);
+                    if (previousLane > 0 && !occupied.has(previousLane)) {
+                        item.lane = previousLane;
+                        occupied.add(previousLane);
+                    }
+                });
+
+                items.forEach(item => {
+                    if (item.lane) return;
+                    let lane = 1;
+                    while (occupied.has(lane)) lane += 1;
+                    item.lane = lane;
+                    occupied.add(lane);
+                });
+
+                const nextLanes = new Map();
+                items.forEach(item => {
+                    if (item.signature) nextLanes.set(item.signature, item.lane);
+                });
+                currentByTeacher.set(teacher.key, nextLanes);
+
+                result.set(laneMapKey(group, teacher), items.map(item => ({
+                    session: item.session,
+                    lane: item.lane
+                })));
+            });
+            previousByTeacher = currentByTeacher;
+        });
+        return result;
+    }
+
+    function laneItemsForSlot(group, teacher, autoLaneMap) {
+        const key = laneMapKey(group, teacher);
+        const items = autoLaneMap?.get(key);
+        if (Array.isArray(items)) return items;
+        return sessionsForTeacher(group?.sessions || [], teacher).map((session, index) => ({ session, lane: index + 1 }));
+    }
+
+    function maxLaneForSlot(group, teacher, autoLaneMap) {
+        const items = laneItemsForSlot(group, teacher, autoLaneMap).filter(item => {
+            if (!item?.session) return false;
+            const status = normalizeStatus(item.session.status);
+            return status !== 'hidden' && status !== 'archived' && status !== 'inactive';
+        });
+        return items.reduce((max, item) => Math.max(max, Number(item.lane || 1)), 0);
+    }
+
+    function applyTeacherWidthHints(groups, teachers, autoLaneMap) {
+        const safeGroups = Array.isArray(groups) ? groups : [];
+        return (teachers || []).map(teacher => {
+            const maxCards = safeGroups.reduce((max, group) => {
+                return Math.max(max, maxLaneForSlot(group, teacher, autoLaneMap));
+            }, 0);
+            return {
+                ...teacher,
+                maxCards,
+                isWide: maxCards >= 2
+            };
+        });
+    }
+
+    function teacherColumnTemplate(teachers) {
+        return (teachers || []).map(teacher => teacher?.isWide ? '334px' : '170px').join(' ');
+    }
+
+    function teacherBoardMinWidth(teachers) {
+        const rows = Array.isArray(teachers) ? teachers : [];
+        const wide = rows.filter(teacher => teacher?.isWide).length;
+        const normal = Math.max(0, rows.length - wide);
+        const columnGap = Math.max(0, rows.length - 1) * 6;
+        return `calc(var(--eie-v2-period-width) + ${normal * 170 + wide * 334 + columnGap + 30}px)`;
+    }
+
     function matchesSearch(session, query) {
         const q = normalizeKey(query).toLowerCase();
         if (!q) return true;
@@ -928,11 +1109,11 @@
         return haystack.includes(q);
     }
 
-    function renderTeacherHeaderRow(teachers) {
+    function renderTeacherHeaderRow(teachers, columnTemplate) {
         return `
-            <div class="eie-v2-teacher-frame-head" aria-label="담임">
+            <div class="eie-v2-teacher-frame-head" aria-label="담임" style="grid-template-columns:${esc(columnTemplate || '')};">
                 ${teachers.map(teacher => `
-                    <div class="eie-v2-teacher-frame-cell" data-eie-v2-teacher-key="${esc(teacher.key)}">
+                    <div class="eie-v2-teacher-frame-cell ${teacher.isWide ? 'is-wide' : 'is-normal'}" data-eie-v2-teacher-key="${esc(teacher.key)}">
                         <strong>${esc(teacher.name)}</strong>
                     </div>
                 `).join('')}
@@ -987,23 +1168,45 @@
 
     function canPasteCopiedSessionToSlot(group, teacher, cards) {
         if (!viewState.editMode || !viewState.editCopySourceSessionId) return false;
-        if (cards && cards.length) return false;
         const source = copiedSessionRecord();
         if (!source) return false;
         const target = slotDataFromGroup(group, teacher);
         if (!target.periodKey || !target.teacherKey) return false;
         if (normalizeKey(target.periodKey) === sourcePeriodKey(source)) return false;
         const targetSlotKey = slotKeyOf(target);
-        const alreadyTempCreated = (viewState.editCreates || []).some(cell => tempCellSlotKey(cell) === targetSlotKey);
-        if (alreadyTempCreated) return false;
+        const alreadySameCopy = (viewState.editCreates || []).some(cell => (
+            tempCellSlotKey(cell) === targetSlotKey &&
+            normalizeKey(cell.copy_source_session_id || '') === normalizeKey(source.session_id || '')
+        ));
+        if (alreadySameCopy) return false;
         return true;
     }
 
-    function renderTeacherSlots(group, teachers) {
+    function renderLaneCards(group, teacher, autoLaneMap) {
+        const laneItems = laneItemsForSlot(group, teacher, autoLaneMap).filter(item => item?.session);
+        if (!laneItems.length) return '';
+        const maxLane = laneItems.reduce((max, item) => Math.max(max, Number(item.lane || 1)), 1);
+        const byLane = new Map();
+        laneItems.forEach(item => {
+            const lane = Math.max(1, Number(item.lane || 1));
+            if (!byLane.has(lane)) byLane.set(lane, []);
+            byLane.get(lane).push(item.session);
+        });
+        const parts = [];
+        for (let lane = 1; lane <= maxLane; lane += 1) {
+            const laneCards = byLane.get(lane) || [];
+            if (laneCards.length) parts.push(laneCards.map(renderWeeklyCard).join(''));
+            else parts.push('<div class="eie-v2-lane-placeholder" aria-hidden="true"></div>');
+        }
+        return parts.join('');
+    }
+
+    function renderTeacherSlots(group, teachers, columnTemplate, autoLaneMap) {
         return `
-            <div class="eie-v2-teacher-frame-row" style="--eie-v2-homeroom-count:${teachers.length};">
+            <div class="eie-v2-teacher-frame-row" style="--eie-v2-homeroom-count:${teachers.length};grid-template-columns:${esc(columnTemplate || '')};">
                 ${teachers.map(teacher => {
                     const cards = sessionsForTeacher(group.sessions, teacher);
+                    const maxLane = maxLaneForSlot(group, teacher, autoLaneMap);
                     const slot = slotDataFromGroup(group, teacher);
                     const dropAttrs = viewState.editMode ? `
                         data-eie-drop-slot="true"
@@ -1030,8 +1233,9 @@
                                 aria-label="${esc(`${slot.periodLabel || '선택한 교시'} ${slot.teacherName || '담임'} 슬롯에 복사한 반 붙여넣기`)}">여기에 붙여넣기</button>`
                         : '';
                     return `
-                        <div class="eie-v2-teacher-slot" data-eie-v2-teacher-key="${esc(teacher.key)}" ${dropAttrs}>
-                            ${cards.length ? cards.map(renderWeeklyCard).join('') : `<div class="eie-v2-teacher-slot-empty" aria-hidden="${pasteButton ? 'false' : 'true'}">${pasteButton}</div>`}
+                        <div class="eie-v2-teacher-slot ${teacher.isWide ? 'is-wide' : 'is-normal'} ${maxLane >= 2 ? 'has-multiple-cards' : 'has-single-card'}" data-eie-v2-teacher-key="${esc(teacher.key)}" ${dropAttrs}>
+                            ${cards.length ? renderLaneCards(group, teacher, autoLaneMap) : `<div class="eie-v2-teacher-slot-empty" aria-hidden="${pasteButton ? 'false' : 'true'}">${pasteButton}</div>`}
+                            ${cards.length && pasteButton ? pasteButton : ''}
                         </div>
                     `;
                 }).join('')}
@@ -1046,14 +1250,19 @@
         if (!filtered.length) {
             return `<div class="eie-v2-empty-state">${query ? '검색 결과가 없습니다.' : '등록된 EIE 시간표가 없습니다.'}</div>`;
         }
-        const teachers = buildHomeroomColumns(filtered);
+        const periodGroups = buildPeriodGroups(filtered);
+        const baseTeachers = buildHomeroomColumns(filtered);
+        const autoLaneMap = buildAutoSlotLaneMap(periodGroups, baseTeachers);
+        const teachers = applyTeacherWidthHints(periodGroups, baseTeachers, autoLaneMap);
+        const columnTemplate = teacherColumnTemplate(teachers);
+        const minWidth = teacherBoardMinWidth(teachers);
         return `
             <div class="eie-v2-card-board" aria-label="EIE 교재 카드형 시간표">
                 <div class="eie-v2-board-scroll">
-                    <div class="eie-v2-board-grid" style="--eie-v2-homeroom-count:${teachers.length};">
+                    <div class="eie-v2-board-grid" style="--eie-v2-homeroom-count:${teachers.length};--eie-v2-board-min-width:${esc(minWidth)};">
                         <div class="eie-v2-board-corner" aria-hidden="true"></div>
-                        ${renderTeacherHeaderRow(teachers)}
-                        ${buildPeriodGroups(filtered).map(group => {
+                        ${renderTeacherHeaderRow(teachers, columnTemplate)}
+                        ${periodGroups.map(group => {
                             const title = periodTitle(group.sample);
                             return `
                                 <section class="eie-v2-period-row">
@@ -1061,7 +1270,7 @@
                                         <strong>${esc(title.period)}</strong>
                                         <span>${esc(title.time)}</span>
                                     </div>
-                                    ${renderTeacherSlots(group, teachers)}
+                                    ${renderTeacherSlots(group, teachers, columnTemplate, autoLaneMap)}
                                 </section>
                             `;
                         }).join('')}
@@ -1086,6 +1295,18 @@
             <option value="">선택</option>
             ${['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
         </select>`;
+    }
+
+    function renderStudentHiddenActions(sid) {
+        if (!sid) return '';
+        return `
+            <details class="eie-v2-hidden-actions">
+                <summary>숨김 목록</summary>
+                <div class="eie-v2-hidden-actions-body">
+                    <button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
+                </div>
+            </details>
+        `;
     }
 
     function renderStudentTypeSelect(id, value) {
@@ -1119,7 +1340,11 @@
         const saving = viewState.studentSaving;
         return `
             <aside class="eie-v2-detail-panel eie-v2-student-panel" aria-label="신입생 등록">
-                <div class="eie-v2-detail-head">
+                <div class="eie-v2-detail-head eie-v2-head-has-actions">
+                    <div class="eie-v2-panel-top-actions">
+                        <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '등록'}</button>
+                        <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
+                    </div>
                     <span>신입생 등록</span>
                     <h3>새 학생</h3>
                     ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
@@ -1140,10 +1365,6 @@
                     </div>
                     <label><span>주소</span><input id="eie-v2-edit-address" type="text" autocomplete="off"></label>
                 </div>
-                <div class="eie-v2-detail-actions">
-                    <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '등록'}</button>
-                    <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
-                </div>
             </aside>
         `;
     }
@@ -1158,7 +1379,11 @@
         const available = lastRenderedSessions.filter(s => s.session_id !== currentSession?.session_id);
         return `
             <aside class="eie-v2-detail-panel eie-v2-student-panel" aria-label="${esc(studentDisplayName(student))} 전반">
-                <div class="eie-v2-detail-head">
+                <div class="eie-v2-detail-head eie-v2-head-has-actions">
+                    <div class="eie-v2-panel-top-actions">
+                        <button type="button" class="eie-primary-button" data-eie-v2-transfer-confirm="${esc(sid)}" ${saving ? 'disabled' : ''}>${saving ? '이동 중...' : '이동'}</button>
+                        <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
+                    </div>
                     <span>전반</span>
                     <h3>${esc(studentDisplayName(student))}</h3>
                     ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
@@ -1173,10 +1398,6 @@
                         <option value="">반 선택</option>
                         ${available.map(s => `<option value="${esc(s.session_id)}">${esc(s.material || '-')} · ${esc(s.period_label || '')}</option>`).join('')}
                     </select>
-                </div>
-                <div class="eie-v2-detail-actions">
-                    <button type="button" class="eie-primary-button" data-eie-v2-transfer-confirm="${esc(sid)}" ${saving ? 'disabled' : ''}>${saving ? '이동 중...' : '이동'}</button>
-                    <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
                 </div>
             </aside>
         `;
@@ -1230,8 +1451,8 @@
                 ${sid ? `
                 <div class="eie-v2-detail-actions">
                     <button type="button" class="eie-secondary-button" data-eie-v2-student-transfer>전반</button>
-                    <button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
-                </div>` : ''}
+                </div>
+                ${renderStudentHiddenActions(sid)}` : ''}
             </aside>
         `;
     }
@@ -1241,14 +1462,14 @@
         const sid = studentRowId(student) || viewState.selectedStudentId;
         return `
             <aside class="eie-v2-detail-panel eie-v2-student-panel" aria-label="${esc(studentDisplayName(student))} 학생 수정">
-                <div class="eie-v2-detail-head">
-                    <span>학생 수정</span>
-                    <h3>${esc(studentDisplayName(student))}</h3>
-                    ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
-                    <div class="eie-v2-detail-actions">
+                <div class="eie-v2-detail-head eie-v2-head-has-actions">
+                    <div class="eie-v2-panel-top-actions">
                         <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '저장'}</button>
                         <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
                     </div>
+                    <span>학생 수정</span>
+                    <h3>${esc(studentDisplayName(student))}</h3>
+                    ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
                 </div>
                 <div class="eie-v2-student-form">
                     <label><span>학생명</span><input id="eie-v2-edit-name" type="text" value="${esc(studentDisplayName(student))}" autocomplete="off"></label>
@@ -1275,10 +1496,7 @@
                         </div>
                     </details>
                 </div>
-                ${sid ? `
-                <div class="eie-v2-detail-actions" style="justify-content:flex-end;margin-top:8px;">
-                    <button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
-                </div>` : ''}
+                ${sid ? renderStudentHiddenActions(sid) : ''}
             </aside>
         `;
     }
@@ -1388,7 +1606,11 @@
         const time = displayTimeRange(session.start_time, session.end_time) === '시간 미정' ? '' : displayTimeRange(session.start_time, session.end_time);
         const first = session.source_rows?.[0] || {};
         return `
-            <div class="eie-v2-detail-head eie-v2-mini-head">
+            <div class="eie-v2-detail-head eie-v2-mini-head eie-v2-head-has-actions">
+                <div class="eie-v2-panel-top-actions">
+                    <button type="button" class="eie-primary-button" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
+                    <button type="button" class="eie-secondary-button" data-eie-v2-cancel-mini ${viewState.miniSaving ? 'disabled' : ''}>취소</button>
+                </div>
                 <span>${esc(session.period_label || '교시 미정')}${time ? ` · ${esc(time)}` : ''}</span>
                 <label class="eie-v2-mini-title"><span>교재</span><input id="eie-v2-mini-material" type="text" value="${esc(session.material || '')}" placeholder="교재 없음" autocomplete="off"></label>
                 ${viewState.miniError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.miniError)}</div>` : ''}
@@ -1417,9 +1639,6 @@
                         ${renderMiniField('시작', `<input id="eie-v2-mini-start" type="text" value="${esc(displayTime(session.start_time || first.start_time || ''))}" inputmode="numeric" autocomplete="off">`)}
                         ${renderMiniField('종료', `<input id="eie-v2-mini-end" type="text" value="${esc(displayTime(session.end_time || first.end_time || ''))}" inputmode="numeric" autocomplete="off">`)}
                     </div>
-                </div>
-                <div class="eie-v2-detail-actions">
-                    <button type="button" class="eie-primary-button" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
                 </div>
             </div>
         `;
@@ -1903,6 +2122,13 @@
                 copySessionForPaste(copySessionButton.getAttribute('data-eie-copy-session') || '');
                 return;
             }
+            const deleteSessionButton = event.target.closest?.('[data-eie-delete-session]');
+            if (deleteSessionButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                deleteClassSession(deleteSessionButton.getAttribute('data-eie-delete-session') || '');
+                return;
+            }
             const pasteSessionButton = event.target.closest?.('[data-eie-paste-session]');
             if (pasteSessionButton) {
                 event.preventDefault();
@@ -1949,14 +2175,7 @@
             const cancelStudentButton = event.target.closest?.('[data-eie-v2-student-cancel]');
             if (cancelStudentButton) {
                 event.preventDefault();
-                if (viewState.studentPanelMode === 'new' && viewState.miniAddStudentSessionId) {
-                    viewState.selectedSessionId = viewState.miniAddStudentSessionId;
-                    viewState.miniAddStudentSessionId = '';
-                }
-                viewState.studentPanelMode = 'detail';
-                viewState.selectedStudentId = '';
-                viewState.selectedStudentName = '';
-                viewState.studentError = '';
+                closeTimetableDetailPanel();
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
             }
@@ -1982,6 +2201,13 @@
             if (saveMiniButton) {
                 event.preventDefault();
                 saveMiniClassroomPanel();
+                return;
+            }
+            const cancelMiniButton = event.target.closest?.('[data-eie-v2-cancel-mini]');
+            if (cancelMiniButton) {
+                event.preventDefault();
+                closeTimetableDetailPanel();
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
             }
             const assignStudentButton = event.target.closest?.('[data-eie-v2-assign-student]');
@@ -2180,6 +2406,18 @@
         viewState.studentSaving = false;
     }
 
+    function closeTimetableDetailPanel() {
+        viewState.selectedSessionId = '';
+        viewState.miniAddStudentSessionId = '';
+        viewState.miniError = '';
+        viewState.miniNotice = '';
+        if (viewState.miniNoticeTimer) {
+            window.clearTimeout(viewState.miniNoticeTimer);
+            viewState.miniNoticeTimer = 0;
+        }
+        clearStudentPanel();
+    }
+
     function studentFieldValue(id) {
         const el = document.getElementById(id);
         return normalizeKey(el && el.value);
@@ -2275,10 +2513,68 @@
             is_temp_copy: true,
             period_key: targetSlot.periodKey || '',
             copy_source_session_id: sourceSession?.session_id || '',
-            assigned_students: [],
-            student_count: 0,
+            assigned_students: (Array.isArray(sourceSession?.students) ? sourceSession.students : []).map(student => ({
+                assignment_id: student.assignment_id || '',
+                student_id: student.student_id || student.id || student.confirmed_student_id || student.matched_student_id || student.canonical_student_id || '',
+                pin: student.pin || student.student_pin || '',
+                name: student.name || student.display_name || student.student_name_raw || '',
+                display_name: student.display_name || student.name || student.student_name_raw || '',
+                grade: student.grade || student.grade_raw || '',
+                status: student.status || 'active',
+                student_type: student.student_type || student.type || '',
+                memo: student.memo || ''
+            })).filter(student => student.name || student.student_id),
+            student_count: Array.isArray(sourceSession?.students) ? sourceSession.students.length : 0,
             raw_meta_json: payload.raw_meta_json
         };
+    }
+
+    async function deleteClassSession(sessionId) {
+        if (!viewState.editMode || viewState.editSaving) return;
+        const sid = normalizeKey(sessionId);
+        if (!sid) return;
+        const session = lastRenderedSessions.find(row => row.session_id === sid);
+        if (!session) return;
+
+        if (session.is_temp_copy) {
+            const sourceIds = new Set((session.source_cell_ids || []).map(normalizeKey));
+            viewState.editCreates = (viewState.editCreates || []).filter(cell => {
+                const id = normalizeKey(cell.id || cell.cell_id || cell.temp_id || '');
+                return !sourceIds.has(id);
+            });
+            if (viewState.selectedSessionId === sid) viewState.selectedSessionId = '';
+            viewState.editNotice = `${session.material || session.class_full_name || '저장 전 반'}을(를) 삭제했습니다.`;
+            viewState.editError = '';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+
+        const cellIds = (session.source_cell_ids || []).map(normalizeKey).filter(Boolean);
+        if (!cellIds.length || !window.EieApi?.updateTimetableCellStatus) return;
+        const ok = window.confirm('이 반카드만 시간표에서 삭제할까요? 학생은 삭제되지 않습니다.');
+        if (!ok) return;
+
+        viewState.editSaving = true;
+        viewState.editError = '';
+        viewState.editNotice = '반카드를 삭제하는 중입니다.';
+        if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        try {
+            for (const cellIdValue of cellIds) {
+                await window.EieApi.updateTimetableCellStatus(cellIdValue, 'archived');
+            }
+            if (viewState.editDraft[sid]) delete viewState.editDraft[sid];
+            if (viewState.selectedSessionId === sid) viewState.selectedSessionId = '';
+            clearStudentPanel();
+            await refreshTimetableRowsAfterMiniSave();
+            viewState.editNotice = `${session.material || session.class_full_name || '반카드'}을(를) 삭제했습니다.`;
+            viewState.editError = '';
+        } catch (error) {
+            viewState.editError = error?.message || '반카드 삭제에 실패했습니다.';
+            viewState.editNotice = '';
+        } finally {
+            viewState.editSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        }
     }
 
     function copySessionForPaste(sessionId) {
@@ -2310,9 +2606,12 @@
             return;
         }
         const targetSlotKey = slotKeyOf(targetSlot);
-        const alreadyTempCreated = (viewState.editCreates || []).some(cell => tempCellSlotKey(cell) === targetSlotKey);
-        if (alreadyTempCreated) {
-            viewState.editError = '이미 붙여넣은 슬롯입니다.';
+        const alreadySameCopy = (viewState.editCreates || []).some(cell => (
+            tempCellSlotKey(cell) === targetSlotKey &&
+            normalizeKey(cell.copy_source_session_id || '') === normalizeKey(source.session_id || '')
+        ));
+        if (alreadySameCopy) {
+            viewState.editError = '같은 반은 같은 위치에 한 번만 붙여넣을 수 있습니다.';
             viewState.editNotice = '';
             if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
             return;
@@ -2365,7 +2664,16 @@
                         raw_meta_json: cell.raw_meta_json || {}
                     };
                     if (!payload.class_name_raw) throw new Error('class_name_raw is required');
-                    await window.EieApi.createTimetableCell(payload);
+                    const created = await window.EieApi.createTimetableCell(payload);
+                    const savedCell = created?.timetable_cell || created?.data || created?.cell || null;
+                    const savedCellId = normalizeKey(savedCell?.id || savedCell?.cell_id || '');
+                    if (savedCellId && window.EieApi?.assignStudentToCell && Array.isArray(cell.assigned_students) && cell.assigned_students.length) {
+                        for (const student of cell.assigned_students) {
+                            const copiedStudentId = normalizeKey(student.student_id || student.id || student.confirmed_student_id || student.matched_student_id || student.canonical_student_id || '');
+                            if (!copiedStudentId) continue;
+                            await window.EieApi.assignStudentToCell(savedCellId, copiedStudentId).catch(() => null);
+                        }
+                    }
                     successCount++;
                 } catch (err) {
                     failedCreateCells.push(cell);
@@ -2464,14 +2772,8 @@
             }
             if (window.EieApmsState?.loadFoundation)
                 await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
-            const refreshedRows = await refreshTimetableRowsAfterMiniSave();
-            const refreshedSessions = buildDisplaySessions(
-                refreshedRows.length ? refreshedRows : (window.EieState?.get?.()?.timetableCells || [])
-            );
-            const nextSession = findSessionBySourceCells(refreshedSessions, targetSession.source_cell_ids || []);
-            viewState.selectedSessionId = nextSession?.session_id || targetSessionId;
-            viewState.studentPanelMode = 'detail';
-            viewState.miniNotice = '전반 완료';
+            await refreshTimetableRowsAfterMiniSave();
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.studentError = error?.message || '전반 실패';
         } finally {
@@ -2520,15 +2822,8 @@
                 }
             }
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
-            const refreshedRows = await refreshTimetableRowsAfterMiniSave();
-            const refreshedSessions = buildDisplaySessions(refreshedRows.length ? refreshedRows : (window.EieState?.get?.()?.timetableCells || []));
-            const nextSession = findSessionBySourceCells(refreshedSessions, session?.source_cell_ids || []);
-            viewState.selectedSessionId = nextSession?.session_id || sessionId;
-            viewState.miniAddStudentSessionId = '';
-            viewState.studentPanelMode = 'detail';
-            viewState.selectedStudentId = newId;
-            viewState.selectedStudentName = name;
-            viewState.miniNotice = `${name} 등록 완료`;
+            await refreshTimetableRowsAfterMiniSave();
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.studentError = error?.message || '등록 실패';
         } finally {
@@ -2582,10 +2877,8 @@
         try {
             const result = await window.EieApi.updateStudent(sid, payload);
             const row = result?.student || result?.data || { id: sid, ...payload };
-            viewState.selectedStudentId = normalizeKey(row.id || row.student_id || sid);
-            viewState.selectedStudentName = studentDisplayName(row);
-            viewState.studentPanelMode = 'detail';
             await refreshStudentFoundation(row);
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.studentError = error?.message || '학생 정보를 저장하지 못했습니다.';
         } finally {
@@ -2673,12 +2966,8 @@
                 }
                 await window.EieApi.updateTimetableCell(rowId, payload);
             }
-            const refreshedRows = await refreshTimetableRowsAfterMiniSave();
-            const refreshedSessions = buildDisplaySessions(refreshedRows.length ? refreshedRows : (window.EieState?.get?.()?.timetableCells || []));
-            const nextSession = findSessionBySourceCells(refreshedSessions, savingSourceIds);
-            viewState.selectedSessionId = nextSession?.session_id || savingSessionId;
-            viewState.miniNotice = '저장 완료';
-            viewState.miniError = '';
+            await refreshTimetableRowsAfterMiniSave();
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.miniError = error?.message || '저장 실패';
             viewState.miniNotice = '';
@@ -2712,7 +3001,7 @@
             }
             if (!successCount && firstError) throw firstError;
             await refreshTimetableRowsAfterMiniSave();
-            viewState.miniNotice = '저장 완료';
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.miniError = error?.message || '저장 실패';
         } finally {
@@ -2744,7 +3033,7 @@
             }
             if (!successCount && firstError) throw firstError;
             await refreshTimetableRowsAfterMiniSave();
-            viewState.miniNotice = '저장 완료';
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.miniError = error?.message || '저장 실패';
         } finally {
@@ -2796,12 +3085,9 @@
                 }
             }
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
-            const refreshedRows = await refreshTimetableRowsAfterMiniSave();
-            const refreshedSessions = buildDisplaySessions(refreshedRows.length ? refreshedRows : (window.EieState?.get?.()?.timetableCells || []));
-            const nextSession = findSessionBySourceCells(refreshedSessions, session?.source_cell_ids || []);
-            viewState.selectedSessionId = nextSession?.session_id || viewState.selectedSessionId;
+            await refreshTimetableRowsAfterMiniSave();
             viewState.miniAddStudentMode = false;
-            viewState.miniNotice = `${name} 등록 완료`;
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.miniAddStudentError = error?.message || '등록 실패';
         } finally {
@@ -2830,7 +3116,7 @@
             }
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
             await refreshTimetableRowsAfterMiniSave();
-            viewState.miniNotice = '퇴원 처리되었습니다.';
+            closeTimetableDetailPanel();
         } catch (error) {
             viewState.miniError = error?.message || '퇴원 처리에 실패했습니다.';
         } finally {
@@ -2841,7 +3127,7 @@
     }
 
     function refresh() {
-        viewState.selectedSessionId = '';
+        closeTimetableDetailPanel();
         if (window.EieRouter?.open) return window.EieRouter.open('timetable-v2');
     }
 
