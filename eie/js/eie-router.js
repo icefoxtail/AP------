@@ -3,7 +3,7 @@
         dashboard: () => EieDashboardView.render(),
         timetable: () => EieTimetableV2View.render(),
         'timetable-v2': () => EieTimetableV2View.render(),
-        'timetable-editor': () => EieTimetableV2View.render(),
+        'timetable-editor': () => window.EieTimetableView?.renderEditor?.() ?? EieTimetableV2View.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
         teacher: () => EieTeacherView.render(),
