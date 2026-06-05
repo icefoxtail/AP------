@@ -90,7 +90,9 @@
         repairPreview: null,
         repairSaving: false,
         repairError: '',
-        repairNotice: ''
+        repairNotice: '',
+        miniAddStudentMode: false,
+        miniAddStudentError: ''
     };
 
     let eventsBound = false;
@@ -255,6 +257,8 @@
 
     function normalizeGrade(value) {
         const raw = normalizeKey(value).replace(/\s+/g, '');
+        const elem = raw.match(/^초(?:등|등학교)?([1-6])(?:학년)?$/);
+        if (elem) return `초${elem[1]}`;
         const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
         if (middle) return `중${middle[1]}`;
         const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
@@ -966,7 +970,7 @@
         const selected = normalizeGrade(value);
         return `<select id="${esc(id)}">
             <option value="">선택</option>
-            ${['중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
+            ${['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
         </select>`;
     }
 
@@ -1040,6 +1044,10 @@
                     <strong>메모</strong>
                     <p>${esc(studentMemo(student) || '메모가 없습니다.')}</p>
                 </div>
+                ${sid ? `
+                <div class="eie-v2-detail-actions">
+                    <button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
+                </div>` : ''}
             </aside>
         `;
     }
@@ -1059,20 +1067,21 @@
                         <label><span>학생구분</span>${renderStudentTypeSelect('eie-v2-edit-student-type', studentType(student))}</label>
                         <label><span>학년</span>${renderGradeSelect('eie-v2-edit-grade', studentGrade(student))}</label>
                     </div>
-                    <label><span>학교</span><input id="eie-v2-edit-school" type="text" value="${esc(studentSchool(student))}" autocomplete="off"></label>
-                    <label><span>학생 연락처</span><input id="eie-v2-edit-phone" type="tel" value="${esc(studentPhone(student))}" autocomplete="off"></label>
-                    <label><span>학부모 연락처</span><input id="eie-v2-edit-parent-phone" type="tel" value="${esc(studentParentPhone(student))}" autocomplete="off"></label>
+                    <div class="eie-v2-form-row">
+                        <label><span>학교</span><input id="eie-v2-edit-school" type="text" value="${esc(studentSchool(student))}" autocomplete="off"></label>
+                        <label><span>차량</span><input id="eie-v2-edit-vehicle" type="text" value="${esc(studentVehicleInfo(student))}" autocomplete="off"></label>
+                    </div>
+                    <div class="eie-v2-form-row">
+                        <label><span>학생 연락처</span><input id="eie-v2-edit-phone" type="tel" value="${esc(studentPhone(student))}" autocomplete="off"></label>
+                        <label><span>학부모 연락처</span><input id="eie-v2-edit-parent-phone" type="tel" value="${esc(studentParentPhone(student))}" autocomplete="off"></label>
+                    </div>
                     <label><span>주소</span><input id="eie-v2-edit-address" type="text" value="${esc(studentAddress(student))}" autocomplete="off"></label>
-                    <label><span>차량</span><input id="eie-v2-edit-vehicle" type="text" value="${esc(studentVehicleInfo(student))}" autocomplete="off"></label>
                     ${renderStudentTeacherPicker(student)}
                     <details class="eie-v2-extra-fields">
                         <summary>추가 정보</summary>
                         <div class="eie-v2-extra-fields-body">
                             <label><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                             <label><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
-                            <label><span>상태</span><select id="eie-v2-edit-status">
-                                ${['active', 'inactive', 'needs_review'].map(status => `<option value="${esc(status)}"${studentStatus(student) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}
-                            </select></label>
                             <label class="is-wide"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
                         </div>
                     </details>
@@ -1164,32 +1173,44 @@
 
     function renderMiniStudentManager(session) {
         const students = Array.isArray(session?.students) ? session.students : [];
-        const assignedIds = new Set(students.map(student => normalizeKey(studentDetailId(student))).filter(Boolean));
-        const candidates = dbStudents().filter(student => {
-            const sid = normalizeKey(studentRowId(student));
-            return sid && !assignedIds.has(sid) && normalizeStatus(studentStatus(student)) !== 'inactive';
-        });
         const firstCellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
         return `
-            <div class="eie-v2-mini-student-list">
+            <div class="eie-v2-mini-student-grid">
                 ${students.length ? students.map(student => {
                     const sid = studentDetailId(student);
                     const name = studentSearchName(student) || student.name || '학생';
-                    const grade = normalizeKey(student.grade || student.grade_raw || '');
-                    return `<div class="eie-v2-mini-student-row">
-                        <button type="button" class="eie-v2-card-student" ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''} ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''} data-eie-v2-return-session="${esc(session.session_id)}" ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}>${esc(name)}</button>
-                        ${grade ? `<span>${esc(grade)}</span>` : '<span></span>'}
-                        <button type="button" class="eie-small-button" ${sid ? `data-eie-v2-retire-student="${esc(sid)}"` : 'disabled'}>퇴원</button>
-                        <button type="button" class="eie-small-button" ${sid ? `data-eie-v2-remove-student="${esc(sid)}"` : 'disabled'}>수업 제외</button>
-                    </div>`;
-                }).join('') : '<div class="eie-empty-box">배정된 학생이 없습니다.</div>'}
+                    return `<button type="button" class="eie-v2-card-student"
+                        ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
+                        ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
+                        data-eie-v2-return-session="${esc(session.session_id)}"
+                        ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}
+                        >${esc(name)}</button>`;
+                }).join('') : '<div class="eie-empty-box" style="grid-column:1/-1">배정된 학생이 없습니다.</div>'}
             </div>
-            <div class="eie-v2-mini-add-student">
-                <select data-eie-v2-add-student>
-                    <option value="">학생 추가</option>
-                    ${candidates.map(student => `<option value="${esc(studentRowId(student))}">${esc(studentDisplayName(student))}${studentGrade(student) ? ` · ${esc(studentGrade(student))}` : ''}</option>`).join('')}
-                </select>
-                <button type="button" class="eie-secondary-button" data-eie-v2-assign-student ${candidates.length ? '' : 'disabled'}>저장</button>
+        `;
+    }
+
+    function renderMiniNewStudentForm(session) {
+        const firstCellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
+        if (!viewState.miniAddStudentMode) {
+            return `<button type="button" class="eie-secondary-button" data-eie-v2-add-student-toggle>+ 학생 추가</button>`;
+        }
+        return `
+            <div class="eie-v2-mini-add-form" data-eie-v2-add-student-form data-cell-id="${esc(firstCellId)}">
+                ${viewState.miniAddStudentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.miniAddStudentError)}</div>` : ''}
+                <input id="eie-v2-new-student-name" type="text" placeholder="학생명 *" autocomplete="off">
+                <div class="eie-v2-form-row">
+                    ${renderGradeSelect('eie-v2-new-student-grade', '')}
+                    <input id="eie-v2-new-student-school" type="text" placeholder="학교" autocomplete="off">
+                </div>
+                <div class="eie-v2-form-row">
+                    <input id="eie-v2-new-student-phone" type="tel" placeholder="학생 연락처" autocomplete="off">
+                    <input id="eie-v2-new-student-parent" type="tel" placeholder="학부모 연락처" autocomplete="off">
+                </div>
+                <div class="eie-v2-detail-actions">
+                    <button type="button" class="eie-primary-button" data-eie-v2-new-student-save>등록</button>
+                    <button type="button" class="eie-secondary-button" data-eie-v2-add-student-toggle>취소</button>
+                </div>
             </div>
         `;
     }
@@ -1207,31 +1228,30 @@
             </div>
             <div class="eie-v2-mini-form" data-eie-v2-mini-session="${esc(session.session_id)}">
                 <div class="eie-v2-detail-section">
-                    <strong>정보 수정</strong>
-                    <div class="eie-v2-mini-grid">
-                        ${renderMiniField('교시', `<input id="eie-v2-mini-period" type="text" value="${esc(session.period_label || first.period_label || '')}" autocomplete="off">`)}
-                        ${renderMiniField('시작', `<input id="eie-v2-mini-start" type="text" value="${esc(displayTime(session.start_time || first.start_time || ''))}" inputmode="numeric" autocomplete="off">`)}
-                        ${renderMiniField('종료', `<input id="eie-v2-mini-end" type="text" value="${esc(displayTime(session.end_time || first.end_time || ''))}" inputmode="numeric" autocomplete="off">`)}
-                        ${renderMiniField('메모', `<textarea id="eie-v2-mini-memo">${esc(session.memo || '')}</textarea>`, true)}
-                    </div>
+                    <strong>학생 명단</strong>
+                    ${renderMiniStudentManager(session)}
                 </div>
                 <div class="eie-v2-detail-section">
                     <strong>요일별 담당</strong>
                     ${renderMiniDayTeacherEditor(session)}
                 </div>
                 <div class="eie-v2-detail-section">
-                    <strong>학생 명단</strong>
-                    ${renderMiniStudentManager(session)}
+                    <strong>메모</strong>
+                    <textarea id="eie-v2-mini-memo" class="eie-v2-mini-memo-area">${esc(session.memo || '')}</textarea>
                 </div>
                 <div class="eie-v2-detail-section">
-                    <strong>수업 정보</strong>
-                    <ul class="eie-v2-source-list">
-                        ${(session.source_rows || []).map(row => `<li><span>${esc(row.day || row.day_label || '-')} · ${esc(row.period_label || session.period_label || '-')} · ${esc(displayTimeRange(row.start_time, row.end_time))}</span></li>`).join('')}
-                    </ul>
+                    ${renderMiniNewStudentForm(session)}
+                </div>
+                <div class="eie-v2-detail-section">
+                    <strong>정보 수정</strong>
+                    <div class="eie-v2-mini-grid">
+                        ${renderMiniField('교시', `<input id="eie-v2-mini-period" type="text" value="${esc(session.period_label || first.period_label || '')}" autocomplete="off">`)}
+                        ${renderMiniField('시작', `<input id="eie-v2-mini-start" type="text" value="${esc(displayTime(session.start_time || first.start_time || ''))}" inputmode="numeric" autocomplete="off">`)}
+                        ${renderMiniField('종료', `<input id="eie-v2-mini-end" type="text" value="${esc(displayTime(session.end_time || first.end_time || ''))}" inputmode="numeric" autocomplete="off">`)}
+                    </div>
                 </div>
                 <div class="eie-v2-detail-actions">
                     <button type="button" class="eie-primary-button" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
-                    <button type="button" class="eie-secondary-button" data-eie-v2-refresh>오늘</button>
                 </div>
             </div>
         `;
@@ -1701,6 +1721,20 @@
                 assignStudentToMiniClassroom();
                 return;
             }
+            const addStudentToggle = event.target.closest?.('[data-eie-v2-add-student-toggle]');
+            if (addStudentToggle) {
+                event.preventDefault();
+                viewState.miniAddStudentMode = !viewState.miniAddStudentMode;
+                viewState.miniAddStudentError = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const newStudentSave = event.target.closest?.('[data-eie-v2-new-student-save]');
+            if (newStudentSave) {
+                event.preventDefault();
+                saveNewStudentToMiniClassroom();
+                return;
+            }
             const removeStudentButton = event.target.closest?.('[data-eie-v2-remove-student]');
             if (removeStudentButton) {
                 event.preventDefault();
@@ -2058,6 +2092,63 @@
             viewState.miniNotice = '저장 완료';
         } catch (error) {
             viewState.miniError = error?.message || '저장 실패';
+        } finally {
+            viewState.miniSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            clearMiniNoticeLater(2000);
+        }
+    }
+
+    async function saveNewStudentToMiniClassroom() {
+        if (viewState.miniSaving) return;
+        const session = selectedSessionRecord();
+        const nameEl = document.getElementById('eie-v2-new-student-name');
+        const gradeEl = document.getElementById('eie-v2-new-student-grade');
+        const schoolEl = document.getElementById('eie-v2-new-student-school');
+        const phoneEl = document.getElementById('eie-v2-new-student-phone');
+        const parentEl = document.getElementById('eie-v2-new-student-parent');
+        const name = normalizeKey(nameEl?.value || '');
+        if (!name) {
+            viewState.miniAddStudentError = '학생명을 입력해 주세요.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        if (!window.EieApi?.createStudent) {
+            viewState.miniAddStudentError = 'API를 사용할 수 없습니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        viewState.miniSaving = true;
+        viewState.miniAddStudentError = '';
+        viewState.miniError = '';
+        viewState.miniNotice = '';
+        try {
+            const payload = {
+                name,
+                display_name: name,
+                grade: normalizeKey(gradeEl?.value || ''),
+                school_name: normalizeKey(schoolEl?.value || ''),
+                phone: normalizeKey(phoneEl?.value || ''),
+                parent_phone: normalizeKey(parentEl?.value || ''),
+                status: 'active'
+            };
+            const created = await window.EieApi.createStudent(payload);
+            const newId = normalizeKey(created?.id || created?.data?.id || created?.student?.id || '');
+            const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids.filter(Boolean) : [];
+            if (newId && cellIds.length && window.EieApi?.assignStudentToCell) {
+                for (const cellId of cellIds) {
+                    await window.EieApi.assignStudentToCell(cellId, newId).catch(() => null);
+                }
+            }
+            if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+            const refreshedRows = await refreshTimetableRowsAfterMiniSave();
+            const refreshedSessions = buildDisplaySessions(refreshedRows.length ? refreshedRows : (window.EieState?.get?.()?.timetableCells || []));
+            const nextSession = findSessionBySourceCells(refreshedSessions, session?.source_cell_ids || []);
+            viewState.selectedSessionId = nextSession?.session_id || viewState.selectedSessionId;
+            viewState.miniAddStudentMode = false;
+            viewState.miniNotice = `${name} 등록 완료`;
+        } catch (error) {
+            viewState.miniAddStudentError = error?.message || '등록 실패';
         } finally {
             viewState.miniSaving = false;
             if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
