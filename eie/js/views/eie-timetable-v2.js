@@ -1456,7 +1456,7 @@
         return `
             <div class="eie-v2-repair-panel">
                 <div class="eie-v2-repair-head">
-                    <h2>시간표편집 미리보기</h2>
+                    <h2>데이터 보정 미리보기</h2>
                     <p>변경 없음 <strong>${counts.same}</strong>건 &middot; 변경 필요 <strong>${counts.needs_change}</strong>건 &middot; 미매칭 <strong>${counts.unmatched}</strong>건${counts.ambiguous ? ` &middot; 중복후보 <strong>${counts.ambiguous}</strong>건` : ''}</p>
                     <p class="eie-v2-repair-legend"><em class="eie-v2-repair-badge is-match-exact">완전 일치</em> 만 기본 체크됩니다. 다른 항목은 직접 확인 후 선택하세요.</p>
                     ${viewState.repairError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.repairError)}</div>` : ''}
@@ -1515,14 +1515,6 @@
             if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
             return;
         }
-
-        // 적용 전 confirm: cell_id와 truth_row 목록 표시
-        const confirmLines = selected.map(item => {
-            const cellIds = Array.isArray(item.session.source_cell_ids) ? item.session.source_cell_ids : [];
-            return `[truth#${item.truthRow.truth_row}] ${item.truthRow.material_text} → cell: ${cellIds.join(', ') || '(id없음)'}`;
-        });
-        const confirmMsg = `적용 대상 (${selected.length}건):\n\n${confirmLines.join('\n')}\n\n계속하시겠습니까?\n\n※ material_text · homeroom_teacher · day_teachers · memo만 수정합니다.\n   학생배정 · cell_id · 교시 · 시간 · 출결 · 숙제 · 상담은 변경되지 않습니다.`;
-        if (!window.confirm(confirmMsg)) return;
 
         viewState.repairSaving = true;
         viewState.repairError = '';
@@ -1603,19 +1595,20 @@
             <div class="eie-v2-page-head eie-v2-card-head">
                 <div class="eie-v2-head-left">
                     ${viewState.repairMode
-                        ? `<button type="button" class="eie-secondary-button" data-eie-repair-close>← EIE시간표로</button>`
+                        ? `<button type="button" class="eie-secondary-button" data-eie-repair-close>← 돌아가기</button>`
                         : `<label class="eie-v2-search" aria-label="학생 또는 교재 검색">
                                <input type="search" data-eie-v2-search placeholder="학생 또는 교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
                            </label>`
                     }
                 </div>
                 <div class="eie-v2-head-center">
-                    <h1 id="eie-v2-title">${viewState.repairMode ? '시간표편집' : 'EIE시간표'}</h1>
+                    <h1 id="eie-v2-title">${viewState.repairMode ? '데이터 보정' : 'EIE시간표'}</h1>
                 </div>
                 <div class="eie-v2-head-right">
                     ${viewState.repairMode
                         ? ''
-                        : `<button type="button" class="eie-secondary-button" data-eie-repair-open>시간표편집</button>`
+                        : `<button type="button" class="eie-secondary-button" data-eie-route="timetable-editor">시간표편집</button>
+                           <button type="button" class="eie-secondary-button" data-eie-repair-open>데이터 보정</button>`
                     }
                 </div>
             </div>

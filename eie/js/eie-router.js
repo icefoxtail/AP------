@@ -3,7 +3,7 @@
         dashboard: () => EieDashboardView.render(),
         timetable: () => EieTimetableV2View.render(),
         'timetable-v2': () => EieTimetableV2View.render(),
-        'timetable-editor': () => EieTimetableV2View.render(),
+        'timetable-editor': () => window.EieTimetableView?.renderEditor?.() ?? EieTimetableV2View.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
         teacher: () => EieTeacherView.render(),
@@ -15,7 +15,7 @@
 
     function normalizeRoute(route) {
         const key = String(route || '').replace(/^#/, '').trim();
-        if (key === 'timetable' || key === 'timetable-editor') return 'timetable-v2';
+        if (key === 'timetable') return 'timetable-v2';
         return routes[key] ? key : 'dashboard';
     }
 
