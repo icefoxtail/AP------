@@ -3712,6 +3712,67 @@ body.eie-owner-dashboard-bg {
     margin-top: 10px;
 }
 
+
+/* EIE V2 detail panel action placement patch */
+.eie-v2-head-has-actions {
+    position: relative;
+    padding-right: 132px;
+    min-height: 42px;
+}
+
+.eie-v2-panel-top-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    z-index: 2;
+}
+
+.eie-v2-panel-top-actions .eie-primary-button,
+.eie-v2-panel-top-actions .eie-secondary-button {
+    min-height: 32px;
+    padding: 0 11px;
+    border-radius: 9px;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.eie-v2-hidden-actions {
+    margin-top: auto;
+    align-self: flex-end;
+    width: min(190px, 100%);
+    text-align: right;
+}
+
+.eie-v2-hidden-actions summary {
+    cursor: pointer;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+    list-style-position: inside;
+}
+
+.eie-v2-hidden-actions-body {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+@media (max-width: 520px) {
+    .eie-v2-head-has-actions {
+        padding-right: 0;
+        padding-top: 42px;
+    }
+    .eie-v2-panel-top-actions {
+        left: 0;
+        right: auto;
+        justify-content: flex-start;
+    }
+}
+
 .eie-v2-student-chip.is-clickable {
     cursor: pointer;
     font-family: inherit;
@@ -6242,3 +6303,1134 @@ td.eie-v2-repair-matched.is-unmatched em {
     color: var(--eie-muted);
 }
 /* ── end repair panel ──────────────────────────────────────── */
+
+/* EIE timetable V2 layout density experiment 20260605
+   Keep the current EIE V2 card itself. Only change the outside board/slot layout
+   and compress the top material/day chips so the current card can fit 2-up. */
+.eie-v2-layout.has-panel,
+.eie-v2-layout.is-full {
+    position: relative;
+    display: block;
+}
+
+.eie-v2-layout.has-panel .eie-v2-main,
+.eie-v2-layout.is-full .eie-v2-main {
+    min-width: 0;
+    width: 100%;
+}
+
+.eie-v2-layout.has-panel > .eie-v2-detail-panel {
+    position: fixed;
+    right: 16px;
+    top: 86px;
+    width: min(420px, calc(100vw - 32px));
+    max-height: calc(100vh - 108px);
+    overflow: auto;
+    z-index: 80;
+    box-shadow: 0 22px 56px rgba(15, 23, 42, 0.22);
+}
+
+.eie-v2-board-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    cursor: grab;
+}
+
+.eie-v2-board-scroll:active {
+    cursor: grabbing;
+}
+
+.eie-v2-board-grid {
+    --eie-v2-period-width: 72px;
+    min-width: calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 430px + 48px);
+}
+
+.eie-v2-teacher-frame-head,
+.eie-v2-teacher-frame-row {
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(420px, 1fr));
+    gap: 8px;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
+    gap: 7px;
+    padding: 7px;
+}
+
+.eie-v2-period-head {
+    min-height: 88px;
+    padding: 8px 5px;
+    border-radius: 13px;
+}
+
+.eie-v2-period-head strong {
+    font-size: 13px;
+    letter-spacing: -0.04em;
+}
+
+.eie-v2-period-head span {
+    font-size: 10px;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+}
+
+.eie-v2-teacher-slot {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    align-items: start;
+    gap: 7px;
+    min-height: 88px;
+    padding: 6px;
+}
+
+.eie-v2-teacher-slot-empty,
+.eie-v2-teacher-slot .eie-v2-paste-button {
+    grid-column: 1 / -1;
+}
+
+.eie-v2-teacher-slot .eie-v2-week-card {
+    width: 100%;
+    min-width: 0;
+    flex: none;
+}
+
+.eie-v2-week-card {
+    min-height: 88px;
+    padding: 8px;
+    gap: 6px;
+}
+
+.eie-v2-week-grid {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+    width: max-content;
+    max-width: 100%;
+}
+
+.eie-v2-week-grid span,
+.eie-v2-week-grid strong {
+    flex: 0 0 auto;
+    min-width: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-v2-week-grid.is-head span:first-child,
+.eie-v2-week-grid.is-body strong {
+    width: 38px;
+    max-width: 38px;
+}
+
+.eie-v2-week-grid.is-head span:not(:first-child),
+.eie-v2-week-grid.is-body span {
+    width: 20px;
+    max-width: 20px;
+}
+
+.eie-v2-week-grid.is-head span {
+    padding: 3px 1px;
+    font-size: 10px;
+    line-height: 1.05;
+}
+
+.eie-v2-week-grid.is-body strong,
+.eie-v2-week-grid.is-body span {
+    padding: 4px 1px;
+    font-size: 10.5px;
+    line-height: 1.05;
+}
+
+.eie-v2-week-grid.is-body strong {
+    letter-spacing: -0.05em;
+}
+
+.eie-v2-card-students {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    justify-content: start;
+    align-items: start;
+    gap: 4px;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    min-height: 20px;
+    padding: 3px 5px;
+    font-size: 10.5px;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-layout.has-panel > .eie-v2-detail-panel {
+        position: static;
+        width: auto;
+        max-height: none;
+        box-shadow: none;
+        margin-top: 8px;
+    }
+
+    .eie-v2-board-grid {
+        --eie-v2-period-width: 62px;
+        min-width: calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 330px + 40px);
+    }
+
+    .eie-v2-teacher-frame-head,
+    .eie-v2-teacher-frame-row {
+        grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(320px, 1fr));
+    }
+
+    .eie-v2-teacher-slot {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        padding: 5px;
+    }
+
+    .eie-v2-week-grid.is-head span:first-child,
+    .eie-v2-week-grid.is-body strong {
+        width: 34px;
+        max-width: 34px;
+    }
+
+    .eie-v2-week-grid.is-head span:not(:first-child),
+    .eie-v2-week-grid.is-body span {
+        width: 18px;
+        max-width: 18px;
+    }
+}
+
+/* EIE timetable V2 compact card/top layout experiment 20260605-v3
+   - Keep the existing week card shell.
+   - Move material label/value to the same row.
+   - Keep Monday-Friday teacher rows below.
+   - Student chips use 3 columns.
+   - Only homeroom columns that actually need 2-up cards are widened by JS inline grid-template. */
+.eie-v2-board-grid {
+    --eie-v2-period-width: 58px;
+    min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 230px + 44px)) !important;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr) !important;
+    gap: 6px !important;
+    padding: 6px !important;
+}
+
+.eie-v2-period-head {
+    min-height: 78px !important;
+    padding: 7px 4px !important;
+    border-radius: 12px !important;
+}
+
+.eie-v2-period-head strong {
+    font-size: 12px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.055em !important;
+}
+
+.eie-v2-period-head span {
+    font-size: 9.5px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.055em !important;
+}
+
+.eie-v2-teacher-frame-head,
+.eie-v2-teacher-frame-row {
+    gap: 7px !important;
+}
+
+.eie-v2-teacher-frame-cell.is-normal,
+.eie-v2-teacher-slot.is-normal {
+    min-width: 0 !important;
+}
+
+.eie-v2-teacher-frame-cell.is-wide,
+.eie-v2-teacher-slot.is-wide {
+    min-width: 0 !important;
+}
+
+.eie-v2-teacher-slot {
+    align-content: start !important;
+    align-items: start !important;
+    min-height: 78px !important;
+    padding: 5px !important;
+    gap: 6px !important;
+}
+
+.eie-v2-teacher-slot.is-normal {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.eie-v2-teacher-slot.is-wide,
+.eie-v2-teacher-slot.has-multiple-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.eie-v2-teacher-slot-empty,
+.eie-v2-teacher-slot .eie-v2-paste-button {
+    grid-column: 1 / -1 !important;
+}
+
+.eie-v2-week-card {
+    min-width: 0 !important;
+    min-height: 78px !important;
+    padding: 7px !important;
+    gap: 5px !important;
+}
+
+.eie-v2-card-material-row {
+    display: grid;
+    grid-template-columns: 27px minmax(0, 1fr);
+    gap: 4px;
+    align-items: center;
+    min-width: 0;
+}
+
+.eie-v2-card-material-row span,
+.eie-v2-card-material-row strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 6px;
+    line-height: 1.08;
+}
+
+.eie-v2-card-material-row span {
+    padding: 3px 2px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--eie-muted);
+    background: var(--eie-surface-2);
+}
+
+.eie-v2-card-material-row strong {
+    padding: 3px 5px;
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    color: var(--eie-ink);
+    background: rgba(37, 99, 235, 0.07);
+}
+
+.eie-v2-card-days-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+    align-items: center;
+    min-width: 0;
+}
+
+.eie-v2-card-days-row span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 6px;
+    line-height: 1.05;
+}
+
+.eie-v2-card-days-row.is-head span {
+    padding: 3px 1px;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--eie-muted);
+    background: var(--eie-surface-2);
+}
+
+.eie-v2-card-days-row.is-body span {
+    padding: 4px 1px;
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--eie-ink);
+    background: rgba(15, 23, 42, 0.035);
+}
+
+.eie-v2-card-students {
+    display: grid !important;
+    grid-template-columns: repeat(3, max-content) !important;
+    justify-content: start !important;
+    align-items: start !important;
+    gap: 4px !important;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    min-height: 20px !important;
+    padding: 3px 5px !important;
+    font-size: 10.5px !important;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-board-grid {
+        --eie-v2-period-width: 54px;
+        min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 220px + 36px)) !important;
+    }
+
+    .eie-v2-period-head strong {
+        font-size: 11px !important;
+    }
+
+    .eie-v2-period-head span {
+        font-size: 9px !important;
+    }
+
+    .eie-v2-card-material-row {
+        grid-template-columns: 25px minmax(0, 1fr);
+        gap: 3px;
+    }
+
+    .eie-v2-card-students {
+        grid-template-columns: repeat(3, max-content) !important;
+    }
+}
+
+
+/* EIE timetable V2 width correction 20260605-v4
+   Goal: reduce left/right width. Keep current card shell, but compress material/day chips
+   and add vertical breathing after the material row moved upward. */
+.eie-v2-board-grid {
+    --eie-v2-period-width: 54px !important;
+    min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 182px + 36px)) !important;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr) !important;
+    gap: 5px !important;
+    padding: 8px 5px !important;
+}
+
+.eie-v2-period-head {
+    min-height: 94px !important;
+    padding: 8px 3px !important;
+    border-radius: 12px !important;
+}
+
+.eie-v2-period-head strong {
+    font-size: 11.5px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.06em !important;
+}
+
+.eie-v2-period-head span {
+    font-size: 9px !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.06em !important;
+}
+
+.eie-v2-teacher-frame-head,
+.eie-v2-teacher-frame-row {
+    gap: 6px !important;
+}
+
+.eie-v2-teacher-slot {
+    min-height: 94px !important;
+    padding: 7px !important;
+    gap: 7px !important;
+}
+
+.eie-v2-week-card {
+    min-height: 92px !important;
+    padding: 10px 8px !important;
+    gap: 7px !important;
+}
+
+/* Material row should not stretch the card horizontally. */
+.eie-v2-card-material-row {
+    width: max-content !important;
+    max-width: 100% !important;
+    grid-template-columns: 24px minmax(46px, 86px) !important;
+    gap: 3px !important;
+}
+
+.eie-v2-card-material-row span {
+    padding: 3px 1px !important;
+    font-size: 9.5px !important;
+    line-height: 1.05 !important;
+    border-radius: 5px !important;
+}
+
+.eie-v2-card-material-row strong {
+    padding: 3px 4px !important;
+    font-size: 10px !important;
+    line-height: 1.05 !important;
+    border-radius: 5px !important;
+    letter-spacing: -0.055em !important;
+}
+
+/* Monday-Friday chips: fixed narrow chips, not full-width stretched columns. */
+.eie-v2-card-days-row {
+    width: max-content !important;
+    max-width: 100% !important;
+    grid-template-columns: repeat(5, 18px) !important;
+    gap: 2px !important;
+}
+
+.eie-v2-card-days-row.is-head span {
+    padding: 3px 0 !important;
+    font-size: 9.5px !important;
+    line-height: 1.05 !important;
+    border-radius: 5px !important;
+}
+
+.eie-v2-card-days-row.is-body span {
+    padding: 3px 0 !important;
+    font-size: 10px !important;
+    line-height: 1.05 !important;
+    border-radius: 5px !important;
+    letter-spacing: -0.055em !important;
+}
+
+.eie-v2-card-students {
+    grid-template-columns: repeat(3, max-content) !important;
+    gap: 5px 4px !important;
+    margin-top: 1px !important;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    min-height: 21px !important;
+    padding: 4px 6px !important;
+    font-size: 10.5px !important;
+    line-height: 1.05 !important;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-board-grid {
+        --eie-v2-period-width: 50px !important;
+        min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 174px + 32px)) !important;
+    }
+    .eie-v2-card-material-row {
+        grid-template-columns: 23px minmax(42px, 80px) !important;
+    }
+    .eie-v2-card-days-row {
+        grid-template-columns: repeat(5, 17px) !important;
+    }
+}
+
+
+/* EIE timetable V2 width alignment correction 20260605-v5
+   Goal: remove unused right whitespace while keeping the current card shell.
+   - One shared inner width aligns material/day/student rows.
+   - "교재" spans the same start as 월/first student.
+   - 교재명 ends at the same endpoint as 금/third student.
+   - Student chips are sorted in JS and placed in 3 equal columns. */
+.eie-v2-board-grid {
+    --eie-v2-period-width: 50px !important;
+    min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 174px + 32px)) !important;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr) !important;
+    gap: 5px !important;
+    padding: 7px 5px !important;
+}
+
+.eie-v2-period-head {
+    min-height: 96px !important;
+    padding: 9px 3px !important;
+}
+
+.eie-v2-teacher-frame-head,
+.eie-v2-teacher-frame-row {
+    gap: 6px !important;
+}
+
+.eie-v2-teacher-slot {
+    min-height: 96px !important;
+    padding: 7px !important;
+    gap: 7px !important;
+}
+
+.eie-v2-week-card {
+    --eie-v2-card-inner-width: 144px;
+    min-width: 0 !important;
+    min-height: 96px !important;
+    padding: 11px 8px 12px !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+}
+
+.eie-v2-card-material-row,
+.eie-v2-card-days-row,
+.eie-v2-card-students {
+    width: var(--eie-v2-card-inner-width) !important;
+    max-width: 100% !important;
+}
+
+.eie-v2-card-material-row {
+    display: grid !important;
+    grid-template-columns: repeat(5, 25.6px) !important;
+    column-gap: 4px !important;
+    row-gap: 0 !important;
+    align-items: center !important;
+}
+
+.eie-v2-card-material-row span {
+    grid-column: 1 / 3 !important;
+    padding: 4px 2px !important;
+    font-size: 9.5px !important;
+    line-height: 1.08 !important;
+    border-radius: 6px !important;
+    text-align: center !important;
+}
+
+.eie-v2-card-material-row strong {
+    grid-column: 3 / 6 !important;
+    padding: 4px 4px !important;
+    font-size: 10px !important;
+    line-height: 1.08 !important;
+    border-radius: 6px !important;
+    letter-spacing: -0.055em !important;
+    text-align: left !important;
+}
+
+.eie-v2-card-material-row span,
+.eie-v2-card-material-row strong {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.eie-v2-card-days-row {
+    display: grid !important;
+    grid-template-columns: repeat(5, 25.6px) !important;
+    column-gap: 4px !important;
+    align-items: center !important;
+}
+
+.eie-v2-card-days-row span {
+    min-width: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+}
+
+.eie-v2-card-days-row.is-head span {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    font-size: 9.5px !important;
+    line-height: 1.08 !important;
+}
+
+.eie-v2-card-days-row.is-body span {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    font-size: 10px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.055em !important;
+}
+
+.eie-v2-card-students {
+    display: grid !important;
+    grid-template-columns: repeat(3, 45.333px) !important;
+    column-gap: 4px !important;
+    row-gap: 5px !important;
+    justify-content: start !important;
+    align-items: start !important;
+    margin-top: 1px !important;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 22px !important;
+    padding: 4px 2px !important;
+    font-size: 10.5px !important;
+    line-height: 1.05 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-board-grid {
+        --eie-v2-period-width: 48px !important;
+        min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 168px + 30px)) !important;
+    }
+    .eie-v2-week-card {
+        --eie-v2-card-inner-width: 140px;
+        padding-left: 7px !important;
+        padding-right: 7px !important;
+    }
+    .eie-v2-card-material-row,
+    .eie-v2-card-days-row {
+        grid-template-columns: repeat(5, 24.8px) !important;
+        column-gap: 4px !important;
+    }
+    .eie-v2-card-students {
+        grid-template-columns: repeat(3, 44px) !important;
+        column-gap: 4px !important;
+    }
+}
+
+
+/* EIE timetable V2 width/time surgical fix 20260605-v6
+   Keep the restored stable layout. Only trim a little more right whitespace
+   and keep the 7교시 empty row visible through JS. */
+.eie-v2-board-grid {
+    --eie-v2-period-width: 48px !important;
+    min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 170px + 30px)) !important;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr) !important;
+    gap: 4px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+
+.eie-v2-period-head {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+.eie-v2-week-card {
+    --eie-v2-card-inner-width: 140px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+
+.eie-v2-card-material-row,
+.eie-v2-card-days-row,
+.eie-v2-card-students {
+    width: var(--eie-v2-card-inner-width) !important;
+}
+
+.eie-v2-card-material-row,
+.eie-v2-card-days-row {
+    grid-template-columns: repeat(5, 24.8px) !important;
+    column-gap: 4px !important;
+}
+
+.eie-v2-card-students {
+    grid-template-columns: repeat(3, 44px) !important;
+    column-gap: 4px !important;
+}
+
+.eie-v2-teacher-frame-cell.is-normal,
+.eie-v2-teacher-slot.is-normal {
+    min-width: 170px !important;
+}
+
+.eie-v2-teacher-frame-cell.is-wide,
+.eie-v2-teacher-slot.is-wide {
+    min-width: 340px !important;
+}
+
+
+/* EIE timetable V2 exact-card-width alignment 20260605-v7
+   Combined correction:
+   - Do not center cards inside a wide slot.
+   - Make the card box itself match the calculated inner grid width.
+   - Material label starts with 월/first student; material value ends with 금/third student.
+   - One-card teacher columns stay narrow; two-card columns have exactly two fixed-width cards.
+   - Keep the current EIE card shell and button/status styling. */
+.eie-v2-board-grid {
+    --eie-v2-period-width: 48px !important;
+    min-width: var(--eie-v2-board-min-width, calc(var(--eie-v2-period-width) + var(--eie-v2-homeroom-count) * 170px + 30px)) !important;
+}
+
+.eie-v2-teacher-frame-head,
+.eie-v2-teacher-frame-row {
+    gap: 6px !important;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr) !important;
+    gap: 4px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+
+.eie-v2-period-head {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+.eie-v2-teacher-frame-cell.is-normal,
+.eie-v2-teacher-slot.is-normal {
+    min-width: 170px !important;
+    width: 170px !important;
+}
+
+.eie-v2-teacher-frame-cell.is-wide,
+.eie-v2-teacher-slot.is-wide,
+.eie-v2-teacher-slot.has-multiple-cards {
+    min-width: 334px !important;
+    width: 334px !important;
+}
+
+.eie-v2-teacher-slot {
+    justify-content: start !important;
+    justify-items: start !important;
+    align-content: start !important;
+    align-items: start !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    gap: 8px !important;
+}
+
+.eie-v2-teacher-slot.is-normal {
+    grid-template-columns: 156px !important;
+}
+
+.eie-v2-teacher-slot.is-wide,
+.eie-v2-teacher-slot.has-multiple-cards {
+    grid-template-columns: repeat(2, 156px) !important;
+}
+
+.eie-v2-teacher-slot-empty,
+.eie-v2-teacher-slot .eie-v2-paste-button {
+    grid-column: 1 / -1 !important;
+}
+
+.eie-v2-week-card {
+    --eie-v2-card-inner-width: 140px !important;
+    box-sizing: border-box !important;
+    width: 156px !important;
+    min-width: 156px !important;
+    max-width: 156px !important;
+    flex: 0 0 156px !important;
+    padding: 11px 7px 12px !important;
+    align-items: flex-start !important;
+}
+
+.eie-v2-card-material-row,
+.eie-v2-card-days-row,
+.eie-v2-card-students {
+    width: var(--eie-v2-card-inner-width) !important;
+    max-width: var(--eie-v2-card-inner-width) !important;
+    min-width: var(--eie-v2-card-inner-width) !important;
+}
+
+.eie-v2-card-material-row,
+.eie-v2-card-days-row {
+    display: grid !important;
+    grid-template-columns: repeat(5, 24.8px) !important;
+    column-gap: 4px !important;
+    align-items: center !important;
+}
+
+.eie-v2-card-material-row span {
+    grid-column: 1 / 3 !important;
+    text-align: center !important;
+}
+
+.eie-v2-card-material-row strong {
+    grid-column: 3 / 6 !important;
+    text-align: left !important;
+}
+
+.eie-v2-card-material-row span,
+.eie-v2-card-material-row strong,
+.eie-v2-card-days-row span {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+}
+
+.eie-v2-card-students {
+    display: grid !important;
+    grid-template-columns: repeat(3, 44px) !important;
+    column-gap: 4px !important;
+    row-gap: 5px !important;
+    justify-content: start !important;
+    justify-items: stretch !important;
+    align-items: start !important;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    width: 44px !important;
+    max-width: 44px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-teacher-frame-cell.is-normal,
+    .eie-v2-teacher-slot.is-normal {
+        min-width: 166px !important;
+        width: 166px !important;
+    }
+    .eie-v2-teacher-frame-cell.is-wide,
+    .eie-v2-teacher-slot.is-wide,
+    .eie-v2-teacher-slot.has-multiple-cards {
+        min-width: 326px !important;
+        width: 326px !important;
+    }
+    .eie-v2-teacher-slot.is-normal {
+        grid-template-columns: 152px !important;
+    }
+    .eie-v2-teacher-slot.is-wide,
+    .eie-v2-teacher-slot.has-multiple-cards {
+        grid-template-columns: repeat(2, 152px) !important;
+    }
+    .eie-v2-week-card {
+        --eie-v2-card-inner-width: 136px !important;
+        width: 152px !important;
+        min-width: 152px !important;
+        max-width: 152px !important;
+    }
+    .eie-v2-card-material-row,
+    .eie-v2-card-days-row {
+        grid-template-columns: repeat(5, 24px) !important;
+        column-gap: 4px !important;
+    }
+    .eie-v2-card-students {
+        grid-template-columns: repeat(3, 42.666px) !important;
+        column-gap: 4px !important;
+    }
+    .eie-v2-card-student,
+    .eie-v2-card-student-more {
+        width: 42.666px !important;
+        max-width: 42.666px !important;
+    }
+}
+
+/* EIE timetable V2 teacher chip/header color correction 20260605
+   - Do not color the whole class card by homeroom.
+   - Match only the top teacher header cards and the small weekday teacher chips.
+   - Keep existing text colors; apply teacher distinction through chip/header background and border only.
+   - Students stay neutral. Weekday labels stay unified. */
+.eie-v2-week-card {
+    border-color: rgba(15, 23, 42, 0.10) !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.055) !important;
+}
+
+.eie-v2-week-card:hover,
+.eie-v2-week-card.is-selected {
+    border-color: rgba(37, 99, 235, 0.28) !important;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.11) !important;
+}
+
+.eie-v2-teacher-frame-cell,
+.eie-v2-card-days-row.is-body span {
+    --eie-teacher-chip-bg: rgba(248, 250, 252, 0.88);
+    --eie-teacher-chip-border: rgba(148, 163, 184, 0.16);
+    background-color: var(--eie-teacher-chip-bg) !important;
+    border: 1px solid var(--eie-teacher-chip-border) !important;
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="carmen"],
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="carmen"] {
+    --eie-teacher-chip-bg: rgba(245, 130, 98, 0.14);
+    --eie-teacher-chip-border: rgba(245, 130, 98, 0.30);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="zoe"],
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="zoe"] {
+    --eie-teacher-chip-bg: rgba(59, 130, 246, 0.13);
+    --eie-teacher-chip-border: rgba(59, 130, 246, 0.28);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="ivy"],
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="ivy"] {
+    --eie-teacher-chip-bg: rgba(139, 92, 246, 0.13);
+    --eie-teacher-chip-border: rgba(139, 92, 246, 0.28);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="stacy"],
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="stacy"] {
+    --eie-teacher-chip-bg: rgba(34, 197, 94, 0.12);
+    --eie-teacher-chip-border: rgba(34, 197, 94, 0.26);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="lily"],
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="lily"] {
+    --eie-teacher-chip-bg: rgba(234, 179, 8, 0.15);
+    --eie-teacher-chip-border: rgba(234, 179, 8, 0.30);
+}
+
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="foreigner"] {
+    --eie-teacher-chip-bg: rgba(100, 116, 139, 0.12);
+    --eie-teacher-chip-border: rgba(100, 116, 139, 0.24);
+}
+
+.eie-v2-card-days-row.is-body span[data-eie-day-teacher-key="mixed"] {
+    --eie-teacher-chip-bg: rgba(241, 245, 249, 0.92);
+    --eie-teacher-chip-border: rgba(100, 116, 139, 0.28);
+    border-style: dashed !important;
+}
+
+.eie-v2-card-material-row span,
+.eie-v2-card-material-row strong {
+    background-color: rgba(251, 243, 219, 0.82) !important;
+    border: 1px solid rgba(217, 182, 112, 0.20) !important;
+}
+
+.eie-v2-card-days-row.is-head span {
+    background-color: rgba(241, 245, 249, 0.96) !important;
+    border: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    background: rgba(255,255,255,0.88) !important;
+    border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+/* EIE timetable V2 teacher header/material/period alignment patch 20260605
+   - Make top teacher header cards visibly match teacher color chips.
+   - Keep text colors unchanged.
+   - Center material name and period labels.
+   - Do not change card layout, grid sizing, copy/paste, or panel logic. */
+.eie-v2-teacher-frame-cell {
+    border-width: 1px !important;
+    box-shadow: inset 0 -2px 0 var(--eie-teacher-header-accent, rgba(148, 163, 184, 0.28)), 0 1px 2px rgba(15, 23, 42, 0.035) !important;
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="carmen"] {
+    background-color: rgba(245, 130, 98, 0.24) !important;
+    border-color: rgba(245, 130, 98, 0.48) !important;
+    --eie-teacher-header-accent: rgba(245, 130, 98, 0.62);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="zoe"] {
+    background-color: rgba(59, 130, 246, 0.22) !important;
+    border-color: rgba(59, 130, 246, 0.44) !important;
+    --eie-teacher-header-accent: rgba(59, 130, 246, 0.58);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="ivy"] {
+    background-color: rgba(139, 92, 246, 0.22) !important;
+    border-color: rgba(139, 92, 246, 0.44) !important;
+    --eie-teacher-header-accent: rgba(139, 92, 246, 0.58);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="stacy"] {
+    background-color: rgba(34, 197, 94, 0.20) !important;
+    border-color: rgba(34, 197, 94, 0.40) !important;
+    --eie-teacher-header-accent: rgba(34, 197, 94, 0.54);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="lily"] {
+    background-color: rgba(234, 179, 8, 0.24) !important;
+    border-color: rgba(234, 179, 8, 0.46) !important;
+    --eie-teacher-header-accent: rgba(234, 179, 8, 0.58);
+}
+
+.eie-v2-teacher-frame-cell[data-eie-v2-teacher-key="foreigner"] {
+    background-color: rgba(100, 116, 139, 0.18) !important;
+    border-color: rgba(100, 116, 139, 0.34) !important;
+    --eie-teacher-header-accent: rgba(100, 116, 139, 0.44);
+}
+
+.eie-v2-card-material-row strong {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.eie-v2-period-head {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.eie-v2-period-head strong,
+.eie-v2-period-head span {
+    width: 100% !important;
+    text-align: center !important;
+}
+
+/* EIE timetable V2 class delete + paused student chip patch 20260605
+   - Delete button appears only in edit mode; archives class cells only, not students.
+   - Paused/on-leave students are distinguished by chip color only, without extra badge text. */
+.eie-v2-card-edit-actions {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.eie-v2-card-edit-actions .eie-v2-card-copy-button,
+.eie-v2-card-edit-actions .eie-v2-card-delete-button {
+    position: static !important;
+    min-height: 22px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.eie-v2-card-edit-actions .eie-v2-card-copy-button {
+    border: 1px solid rgba(37, 99, 235, 0.24);
+    background: rgba(239, 246, 255, 0.96);
+    color: #1d4ed8;
+}
+
+.eie-v2-card-edit-actions .eie-v2-card-delete-button {
+    border: 1px solid rgba(190, 24, 93, 0.22);
+    background: rgba(253, 242, 248, 0.96);
+    color: #be185d;
+}
+
+.eie-v2-card-edit-actions .eie-v2-card-delete-button:hover {
+    border-color: rgba(190, 24, 93, 0.38);
+    background: rgba(252, 231, 243, 0.98);
+}
+
+.eie-v2-card-student.is-paused,
+.eie-v2-student-chip.is-paused {
+    background: #F1F0F7 !important;
+    border-color: #D7D3E5 !important;
+    color: #6F6A7C !important;
+}
+
+button.eie-v2-card-student.is-paused:hover,
+button.eie-v2-student-chip.is-paused:hover {
+    background: #E8E6F0 !important;
+    border-color: #C9C3DA !important;
+}
+
+
+/* EIE timetable V2 edit action button position patch 20260605
+   - Move copy/delete controls to the left above the material row.
+   - Keep the existing card body layout; only reserve top space in edit mode. */
+.eie-v2-week-card.is-edit-card {
+    padding-top: 34px !important;
+}
+
+.eie-v2-card-edit-actions {
+    left: 7px !important;
+    right: auto !important;
+    top: 7px !important;
+    justify-content: flex-start !important;
+}
+
+.eie-v2-week-card.is-edit-card .eie-v2-card-copy-badge {
+    left: auto !important;
+    right: 7px !important;
+    top: 7px !important;
+}
