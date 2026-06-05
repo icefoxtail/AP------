@@ -1,6 +1,8 @@
 (function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
-    const DEFAULT_EIE_TEACHERS = ['Carmen', 'IVY', 'Lily', 'Zoe', 'Stacy'];
+    // 상단 담임 열 고정 목록 (Carmen / Zoe / IVY / STACY / Lily 만 허용 — Laura · Foreigner 제외)
+    const HOMEROOM_COLUMN_TEACHERS = ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily'];
+    const DEFAULT_EIE_TEACHERS = ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily'];
     const DEFAULT_EIE_DAY_TEACHERS = [...DEFAULT_EIE_TEACHERS, 'Foreigner'];
     const FALLBACK_DAY_LABEL = '전체';
     const STATUS_LABELS = {
@@ -863,21 +865,10 @@
         return normalizeKey(session?.homeroom_teacher || session?.teacher_name || '미정') || '미정';
     }
 
-    function buildHomeroomColumns(sessions) {
-        const values = [];
-        const unknownKey = teacherKey('미정');
-        const hasUnknownSession = (sessions || []).some(session => sessionHomeroomKey(session) === unknownKey);
-        values.push(...teacherRoster());
-        (sessions || []).forEach(session => values.push(sessionHomeroomName(session)));
-        const names = uniqueNames(values).filter(name => {
-            if (!name) return false;
-            if (isForeignerTeacher(name)) return false;
-            if (teacherKey(name) === unknownKey) return hasUnknownSession;
-            return true;
-        });
-        if (hasUnknownSession && !names.some(name => teacherKey(name) === unknownKey)) names.push('미정');
-        if (!names.length) names.push('미정');
-        return names.map((name, index) => ({
+    function buildHomeroomColumns(/* sessions unused — columns are fixed */) {
+        // 상단 담임 열은 고정 5명만: Carmen / Zoe / IVY / STACY / Lily
+        // Laura · Foreigner · 미정은 절대 열에 포함하지 않는다
+        return HOMEROOM_COLUMN_TEACHERS.map((name, index) => ({
             name,
             key: teacherKey(name),
             index

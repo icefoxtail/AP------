@@ -3307,13 +3307,15 @@ function dashboardJournalAlreadyHasConsultation(content, cn, students) {
     const source = String(content || '');
     const sName = (students || []).find(s => String(s.id) === String(cn?.student_id))?.name || cn?.student_name_snapshot || cn?.student_name || '학생';
     const body = dashboardGetConsultationBody(cn);
-    if (body) {
-        const normalizedBody = body.replace(/\r\n/g, '\n').trim();
-        if (normalizedBody && source.replace(/\r\n/g, '\n').includes(normalizedBody)) return true;
-        const firstLine = normalizedBody.split('\n').find(Boolean);
-        if (firstLine && firstLine.length >= 12 && source.includes(firstLine)) return true;
+    if (!body) {
+        // 상담 내용이 없는 경우: buildJournalContent가 생성하는 "  * 학생이름" 패턴으로 확인
+        return Boolean(sName && source.includes(`  * ${sName}`));
     }
-    return Boolean(sName && source.includes(sName) && body && source.includes(body.slice(0, Math.min(30, body.length))));
+    const normalizedBody = body.replace(/\r\n/g, '\n').trim();
+    if (normalizedBody && source.replace(/\r\n/g, '\n').includes(normalizedBody)) return true;
+    const firstLine = normalizedBody.split('\n').find(Boolean);
+    if (firstLine && firstLine.length >= 12 && source.includes(firstLine)) return true;
+    return Boolean(sName && source.includes(sName) && source.includes(body.slice(0, Math.min(30, body.length))));
 }
 
 function dashboardInsertJournalConsultationsIntoClassSection(content, className, entries) {
