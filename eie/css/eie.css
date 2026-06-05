@@ -5528,6 +5528,41 @@ button.eie-v2-card-student:hover {
     box-sizing: border-box;
 }
 
+/* ── 시간표 편집 모드 ──────────────────────────────────────── */
+.eie-v2-edit-mode-bar {
+    width: 100%;
+    padding: 8px 14px;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: 10px;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* 드래그 중인 카드 */
+.eie-v2-week-card[draggable="true"] {
+    cursor: grab;
+}
+.eie-v2-week-card.is-dragging {
+    opacity: 0.45;
+    cursor: grabbing;
+}
+
+/* 드래프트 변경된 카드 */
+.eie-v2-week-card.is-edit-drafted {
+    border-color: rgba(234, 179, 8, 0.6);
+    box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.25);
+}
+
+/* 드롭 가능 슬롯 hover */
+.eie-v2-teacher-slot.is-drop-over {
+    background: rgba(37, 99, 235, 0.07);
+    outline: 2px dashed rgba(37, 99, 235, 0.4);
+    border-radius: 12px;
+}
+
 /* 전반 select */
 .eie-v2-transfer-select {
     width: 100%;
