@@ -91,12 +91,17 @@
         repairSaving: false,
         repairError: '',
         repairNotice: '',
-        miniAddStudentSessionId: ''
+        miniAddStudentSessionId: '',
+        editMode: false,
+        editDraft: {},     // { [sessionId]: { homeroomKey, homeroomName, periodKey, periodLabel, periodOrder, startTime, endTime } }
+        editSaving: false,
+        editError: ''
     };
 
     let eventsBound = false;
     let searchRerenderTimer = null;
     let lastRenderedSessions = [];
+    let draggingSessionId = '';
 
     function esc(value) {
         if (window.EieApp?.escapeHtml) return window.EieApp.escapeHtml(value);
@@ -819,10 +824,12 @@
         const status = normalizeStatus(session.status);
         const isSpecial = status !== 'active' && status !== 'imported';
         const isSelected = viewState.selectedSessionId === session.session_id;
+        const isDrafted = viewState.editMode && !!viewState.editDraft[session.session_id];
         return `
             <article role="button" tabindex="0"
-                class="eie-v2-week-card ${isSelected ? 'is-selected' : ''}"
+                class="eie-v2-week-card ${isSelected ? 'is-selected' : ''} ${isDrafted ? 'is-edit-drafted' : ''}"
                 data-eie-v2-session="${esc(session.session_id)}"
+                ${viewState.editMode ? `draggable="true" data-eie-drag-session="${esc(session.session_id)}"` : ''}
                 aria-label="${esc(session.material)} 수업 상세 보기">
                 <div class="eie-v2-week-grid is-head" aria-hidden="true">
                     <span>교재</span>
@@ -847,8 +854,14 @@
     function buildPeriodGroups(sessions) {
         const map = new Map();
         (sessions || []).forEach(session => {
-            const key = session.period_key || `${session.period_order || ''}|${session.start_time || ''}|${session.end_time || ''}`;
-            if (!map.has(key)) map.set(key, { key, sample: session, sessions: [] });
+            const draft = viewState.editMode && viewState.editDraft[session.session_id];
+            const key = (draft?.periodKey) || session.period_key || `${session.period_order || ''}|${session.start_time || ''}|${session.end_time || ''}`;
+            if (!map.has(key)) {
+                const sample = draft
+                    ? { ...session, period_label: draft.periodLabel, period_order: draft.periodOrder, start_time: draft.startTime, end_time: draft.endTime }
+                    : session;
+                map.set(key, { key, sample, sessions: [] });
+            }
             map.get(key).sessions.push(session);
         });
         return Array.from(map.values()).sort((a, b) => {
@@ -877,9 +890,16 @@
         }));
     }
 
+    function effectiveHomeroomKey(session) {
+        if (viewState.editMode && viewState.editDraft[session.session_id]?.homeroomKey) {
+            return viewState.editDraft[session.session_id].homeroomKey;
+        }
+        return sessionHomeroomKey(session);
+    }
+
     function sessionsForTeacher(sessions, teacher) {
         const key = teacher?.key || '';
-        return (sessions || []).filter(session => sessionHomeroomKey(session) === key);
+        return (sessions || []).filter(session => effectiveHomeroomKey(session) === key);
     }
 
     function matchesSearch(session, query) {
@@ -911,12 +931,22 @@
     }
 
     function renderTeacherSlots(group, teachers) {
+        const sample = group.sample || {};
         return `
             <div class="eie-v2-teacher-frame-row" style="--eie-v2-homeroom-count:${teachers.length};">
                 ${teachers.map(teacher => {
                     const cards = sessionsForTeacher(group.sessions, teacher);
+                    const dropAttrs = viewState.editMode ? `
+                        data-eie-drop-slot="true"
+                        data-drop-teacher-key="${esc(teacher.key)}"
+                        data-drop-teacher-name="${esc(teacher.name)}"
+                        data-drop-period-key="${esc(group.key)}"
+                        data-drop-period-label="${esc(sample.period_label || '')}"
+                        data-drop-period-order="${esc(String(sample.period_order ?? ''))}"
+                        data-drop-start="${esc(sample.start_time || '')}"
+                        data-drop-end="${esc(sample.end_time || '')}"` : '';
                     return `
-                        <div class="eie-v2-teacher-slot" data-eie-v2-teacher-key="${esc(teacher.key)}">
+                        <div class="eie-v2-teacher-slot" data-eie-v2-teacher-key="${esc(teacher.key)}" ${dropAttrs}>
                             ${cards.length ? cards.map(renderWeeklyCard).join('') : '<div class="eie-v2-teacher-slot-empty" aria-hidden="true"></div>'}
                         </div>
                     `;
@@ -1673,11 +1703,14 @@
                     <h1 id="eie-v2-title">${viewState.repairMode ? '데이터 보정' : 'EIE시간표'}</h1>
                 </div>
                 <div class="eie-v2-head-right">
-                    ${viewState.repairMode
-                        ? ''
-                        : `<button type="button" class="eie-secondary-button" data-eie-route="timetable-editor">시간표편집</button>`
+                    ${viewState.repairMode ? '' : viewState.editMode
+                        ? `<button type="button" class="eie-primary-button" data-eie-edit-save ${viewState.editSaving ? 'disabled' : ''}>${viewState.editSaving ? '저장 중...' : '저장'}</button>
+                           <button type="button" class="eie-secondary-button" data-eie-edit-cancel>취소</button>`
+                        : `<button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표편집</button>`
                     }
                 </div>
+                ${viewState.editMode ? '<div class="eie-v2-edit-mode-bar">편집 모드 — 카드를 드래그해서 담임 열 또는 교시를 변경하세요</div>' : ''}
+                ${viewState.editError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.editError)}</div>` : ''}
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}
         `;
@@ -1685,6 +1718,70 @@
 
     function bindEvents() {
         if (eventsBound) return;
+
+        // ── 드래그&드롭 편집 이벤트 ─────────────────────────────────
+        document.addEventListener('dragstart', event => {
+            const card = event.target.closest?.('[data-eie-drag-session]');
+            if (!card || !viewState.editMode) return;
+            draggingSessionId = card.getAttribute('data-eie-drag-session') || '';
+            card.classList.add('is-dragging');
+            if (event.dataTransfer) {
+                event.dataTransfer.effectAllowed = 'move';
+                event.dataTransfer.setData('text/plain', draggingSessionId);
+            }
+        });
+
+        document.addEventListener('dragend', event => {
+            const card = event.target.closest?.('[data-eie-drag-session]');
+            if (card) card.classList.remove('is-dragging');
+            document.querySelectorAll('.is-drop-over').forEach(el => el.classList.remove('is-drop-over'));
+            draggingSessionId = '';
+        });
+
+        document.addEventListener('dragover', event => {
+            const slot = event.target.closest?.('[data-eie-drop-slot]');
+            if (!slot || !viewState.editMode || !draggingSessionId) return;
+            event.preventDefault();
+            if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+            slot.classList.add('is-drop-over');
+        });
+
+        document.addEventListener('dragleave', event => {
+            const slot = event.target.closest?.('[data-eie-drop-slot]');
+            if (!slot) return;
+            if (!slot.contains(event.relatedTarget)) slot.classList.remove('is-drop-over');
+        });
+
+        document.addEventListener('drop', event => {
+            const slot = event.target.closest?.('[data-eie-drop-slot]');
+            if (!slot || !viewState.editMode || !draggingSessionId) return;
+            event.preventDefault();
+            slot.classList.remove('is-drop-over');
+            const sid = draggingSessionId;
+            const session = lastRenderedSessions.find(s => s.session_id === sid);
+            if (!session) return;
+            const newHomeroomKey = slot.getAttribute('data-drop-teacher-key') || '';
+            const newHomeroomName = slot.getAttribute('data-drop-teacher-name') || '';
+            const newPeriodKey = slot.getAttribute('data-drop-period-key') || '';
+            const newPeriodLabel = slot.getAttribute('data-drop-period-label') || '';
+            const newPeriodOrder = slot.getAttribute('data-drop-period-order') || '';
+            const newStartTime = slot.getAttribute('data-drop-start') || '';
+            const newEndTime = slot.getAttribute('data-drop-end') || '';
+            const curHomeroomKey = effectiveHomeroomKey(session);
+            const curDraft = viewState.editDraft[sid] || {};
+            const curPeriodKey = curDraft.periodKey || session.period_key || '';
+            const homeroomChanged = newHomeroomKey !== curHomeroomKey;
+            const periodChanged = newPeriodKey !== curPeriodKey;
+            if (!homeroomChanged && !periodChanged) return;
+            const draft = {};
+            if (homeroomChanged) { draft.homeroomKey = newHomeroomKey; draft.homeroomName = newHomeroomName; }
+            else if (curDraft.homeroomKey) { draft.homeroomKey = curDraft.homeroomKey; draft.homeroomName = curDraft.homeroomName; }
+            if (periodChanged) { draft.periodKey = newPeriodKey; draft.periodLabel = newPeriodLabel; draft.periodOrder = Number(newPeriodOrder); draft.startTime = newStartTime; draft.endTime = newEndTime; }
+            else if (curDraft.periodKey) { draft.periodKey = curDraft.periodKey; draft.periodLabel = curDraft.periodLabel; draft.periodOrder = curDraft.periodOrder; draft.startTime = curDraft.startTime; draft.endTime = curDraft.endTime; }
+            viewState.editDraft[sid] = draft;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        });
+
         document.addEventListener('click', event => {
             const studentButton = event.target.closest?.('[data-eie-v2-student-id],[data-eie-v2-student-name]');
             if (studentButton) {
@@ -1821,6 +1918,31 @@
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
             }
+            const editToggleButton = event.target.closest?.('[data-eie-edit-toggle]');
+            if (editToggleButton) {
+                event.preventDefault();
+                viewState.editMode = true;
+                viewState.editDraft = {};
+                viewState.editError = '';
+                viewState.selectedSessionId = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const editSaveButton = event.target.closest?.('[data-eie-edit-save]');
+            if (editSaveButton) {
+                event.preventDefault();
+                saveEditDraft();
+                return;
+            }
+            const editCancelButton = event.target.closest?.('[data-eie-edit-cancel]');
+            if (editCancelButton) {
+                event.preventDefault();
+                viewState.editMode = false;
+                viewState.editDraft = {};
+                viewState.editError = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
             const repairOpenButton = event.target.closest?.('[data-eie-repair-open]');
             if (repairOpenButton) {
                 event.preventDefault();
@@ -1948,6 +2070,61 @@
         if (row && row.id && window.EieApmsState?.syncStudent) window.EieApmsState.syncStudent(row);
         if (window.EieApmsState?.loadFoundation) {
             await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        }
+    }
+
+    async function saveEditDraft() {
+        if (viewState.editSaving) return;
+        const draftEntries = Object.entries(viewState.editDraft);
+        if (!draftEntries.length) {
+            viewState.editMode = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        viewState.editSaving = true;
+        viewState.editError = '';
+        if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        let successCount = 0;
+        const failures = [];
+        try {
+            for (const [sessionId, changes] of draftEntries) {
+                const session = lastRenderedSessions.find(s => s.session_id === sessionId);
+                if (!session) continue;
+                for (const row of (session.source_rows || [])) {
+                    const rowId = normalizeKey(row?.id || row?.cell_id || '');
+                    if (!rowId) continue;
+                    try {
+                        const payload = {};
+                        if (changes.homeroomKey) {
+                            payload.homeroom_teacher = changes.homeroomName;
+                            payload.teacher_name_raw = changes.homeroomName;
+                            const meta = getRawMeta(row);
+                            payload.raw_meta_json = { ...meta, homeroom_teacher: changes.homeroomName };
+                        }
+                        if (changes.periodKey) {
+                            payload.period_label = changes.periodLabel;
+                            payload.period_order = changes.periodOrder;
+                            payload.start_time = changes.startTime;
+                            payload.end_time = changes.endTime;
+                        }
+                        await window.EieApi.updateTimetableCell(rowId, payload);
+                        successCount++;
+                    } catch (err) {
+                        failures.push(rowId);
+                    }
+                }
+            }
+            if (failures.length) {
+                viewState.editError = `${successCount}건 저장 / ${failures.length}건 실패`;
+            }
+            await refreshTimetableRowsAfterMiniSave();
+            viewState.editDraft = {};
+            viewState.editMode = false;
+        } catch (err) {
+            viewState.editError = err?.message || '저장 실패';
+        } finally {
+            viewState.editSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
         }
     }
 
