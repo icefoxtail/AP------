@@ -5556,6 +5556,69 @@ button.eie-v2-card-student:hover {
     box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.25);
 }
 
+
+/* 복사→붙여넣기 편집 상태 */
+.eie-v2-week-card.is-copy-source {
+    border-color: rgba(37, 99, 235, 0.78);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.20), 0 12px 24px rgba(37, 99, 235, 0.12);
+}
+
+.eie-v2-week-card.is-temp-copy {
+    border-color: rgba(16, 185, 129, 0.62);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.18);
+}
+
+.eie-v2-card-copy-button {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    min-height: 26px;
+    padding: 0 9px;
+    border: 1px solid rgba(37, 99, 235, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1d4ed8;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.eie-v2-card-copy-button:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.eie-v2-card-copy-badge {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.eie-v2-paste-button {
+    width: 100%;
+    min-height: 42px;
+    border: 1px dashed rgba(37, 99, 235, 0.42);
+    border-radius: 12px;
+    background: rgba(37, 99, 235, 0.07);
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.eie-v2-paste-button:hover {
+    background: rgba(37, 99, 235, 0.12);
+}
+
 /* 드롭 가능 슬롯 hover */
 .eie-v2-teacher-slot.is-drop-over {
     background: rgba(37, 99, 235, 0.07);

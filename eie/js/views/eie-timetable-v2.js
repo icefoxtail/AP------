@@ -94,8 +94,11 @@
         miniAddStudentSessionId: '',
         editMode: false,
         editDraft: {},     // { [sessionId]: { homeroomKey, homeroomName, periodKey, periodLabel, periodOrder, startTime, endTime } }
+        editCreates: [],   // 편집 모드에서 복사→붙여넣기로 만든 임시 수업 셀 목록
+        editCopySourceSessionId: '',
         editSaving: false,
-        editError: ''
+        editError: '',
+        editNotice: ''
     };
 
     let eventsBound = false;
@@ -699,6 +702,7 @@
             student_count: students.length,
             memo: ordered.map(cell => cell.memo).filter(Boolean).join(' / '),
             room: first.room || '',
+            is_temp_copy: ordered.some(cell => !!cell.is_temp_copy),
             is_merged: ordered.length > 1,
             merge_type: ordered.length > 1 ? 'weekly-card' : 'single'
         };
@@ -825,12 +829,18 @@
         const isSpecial = status !== 'active' && status !== 'imported';
         const isSelected = viewState.selectedSessionId === session.session_id;
         const isDrafted = viewState.editMode && !!viewState.editDraft[session.session_id];
+        const isCopySource = viewState.editMode && viewState.editCopySourceSessionId === session.session_id;
+        const isTempCopy = viewState.editMode && !!session.is_temp_copy;
+        const canEditCard = viewState.editMode && !isTempCopy;
+        const articleAttrs = isTempCopy
+            ? `role="group" aria-label="${esc(session.material)} 저장 전 임시 수업"`
+            : `role="button" tabindex="0" data-eie-v2-session="${esc(session.session_id)}" aria-label="${esc(session.material)} 수업 상세 보기"`;
         return `
-            <article role="button" tabindex="0"
-                class="eie-v2-week-card ${isSelected ? 'is-selected' : ''} ${isDrafted ? 'is-edit-drafted' : ''}"
-                data-eie-v2-session="${esc(session.session_id)}"
-                ${viewState.editMode ? `draggable="true" data-eie-drag-session="${esc(session.session_id)}"` : ''}
-                aria-label="${esc(session.material)} 수업 상세 보기">
+            <article ${articleAttrs}
+                class="eie-v2-week-card ${isSelected ? 'is-selected' : ''} ${isDrafted ? 'is-edit-drafted' : ''} ${isCopySource ? 'is-copy-source' : ''} ${isTempCopy ? 'is-temp-copy' : ''}"
+                ${canEditCard ? `draggable="true" data-eie-drag-session="${esc(session.session_id)}"` : ''}>
+                ${canEditCard ? `<button type="button" class="eie-v2-card-copy-button" data-eie-copy-session="${esc(session.session_id)}" title="이 반을 복사해서 빈 슬롯에 붙여넣습니다" aria-label="${esc(`${session.material || session.class_full_name || '선택한 반'} 복사`)}">${isCopySource ? '복사됨' : '복사'}</button>` : ''}
+                ${isTempCopy ? '<span class="eie-v2-card-copy-badge" aria-label="저장 전 임시 수업">저장 전</span>' : ''}
                 <div class="eie-v2-week-grid is-head" aria-hidden="true">
                     <span>교재</span>
                     ${DAY_ORDER.slice(0, 5).map(day => `<span>${esc(day)}</span>`).join('')}
@@ -840,7 +850,7 @@
                     ${DAY_ORDER.slice(0, 5).map(day => `<span title="${esc((session.day_teachers?.[day] || []).join(', ') || '-')}">${esc(teacherShortForDay(session, day))}</span>`).join('')}
                 </div>
                 ${isSpecial ? `<em class="eie-v2-status-badge is-${esc(status)}">${esc(statusLabel(status))}</em>` : ''}
-                ${renderStudentPreview(session.students, { linkStudents: true, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
+                ${!isTempCopy ? renderStudentPreview(session.students, { linkStudents: true, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' }) : '<div class="eie-v2-student-empty">학생은 복사하지 않습니다</div>'}
             </article>
         `;
     }
@@ -930,30 +940,105 @@
         `;
     }
 
+    function slotDataFromGroup(group, teacher) {
+        const sample = group?.sample || {};
+        return {
+            teacherKey: teacher?.key || '',
+            teacherName: teacher?.name || '',
+            columnIndex: Number.isFinite(Number(teacher?.index)) ? Number(teacher.index) : 0,
+            periodKey: group?.key || '',
+            periodLabel: sample.period_label || '',
+            periodOrder: Number(sample.period_order || 0),
+            startTime: sample.start_time || '',
+            endTime: sample.end_time || '',
+            // 주간 V2 보드에서는 붙여넣기 대상 요일이 특정되지 않는다.
+            // 원본 셀 day_label을 복사하면 잘못된 요일 저장이 될 수 있으므로 기본값은 빈 값으로 둔다.
+            dayLabel: ''
+        };
+    }
+
+    function sourcePeriodKey(session) {
+        return normalizeKey(session?.period_key || `${session?.period_order || ''}|${session?.start_time || ''}|${session?.end_time || ''}`);
+    }
+
+    function cellPeriodKey(cell) {
+        return normalizeKey(cell?.period_key || cell?.periodKey || periodGroupKey(cell) || `${cell?.period_order || ''}|${cell?.period_label || ''}|${cell?.start_time || ''}|${cell?.end_time || ''}`);
+    }
+
+    function slotKeyOf(targetSlot) {
+        return `${normalizeKey(targetSlot?.periodKey || '')}::${teacherKey(targetSlot?.teacherName || targetSlot?.teacherKey || '')}`;
+    }
+
+    function tempCellSlotKey(cell) {
+        return `${cellPeriodKey(cell)}::${teacherKey(cell?.teacher_name_raw || cell?.homeroom_teacher || '')}`;
+    }
+
+    function hasUnsavedEditChanges() {
+        return !!(viewState.editMode && (
+            Object.keys(viewState.editDraft || {}).length ||
+            (Array.isArray(viewState.editCreates) && viewState.editCreates.length)
+        ));
+    }
+
+    function copiedSessionRecord() {
+        if (!viewState.editCopySourceSessionId) return null;
+        return lastRenderedSessions.find(session => session.session_id === viewState.editCopySourceSessionId) || null;
+    }
+
+    function canPasteCopiedSessionToSlot(group, teacher, cards) {
+        if (!viewState.editMode || !viewState.editCopySourceSessionId) return false;
+        if (cards && cards.length) return false;
+        const source = copiedSessionRecord();
+        if (!source) return false;
+        const target = slotDataFromGroup(group, teacher);
+        if (!target.periodKey || !target.teacherKey) return false;
+        if (normalizeKey(target.periodKey) === sourcePeriodKey(source)) return false;
+        const targetSlotKey = slotKeyOf(target);
+        const alreadyTempCreated = (viewState.editCreates || []).some(cell => tempCellSlotKey(cell) === targetSlotKey);
+        if (alreadyTempCreated) return false;
+        return true;
+    }
+
     function renderTeacherSlots(group, teachers) {
-        const sample = group.sample || {};
         return `
             <div class="eie-v2-teacher-frame-row" style="--eie-v2-homeroom-count:${teachers.length};">
                 ${teachers.map(teacher => {
                     const cards = sessionsForTeacher(group.sessions, teacher);
+                    const slot = slotDataFromGroup(group, teacher);
                     const dropAttrs = viewState.editMode ? `
                         data-eie-drop-slot="true"
-                        data-drop-teacher-key="${esc(teacher.key)}"
-                        data-drop-teacher-name="${esc(teacher.name)}"
-                        data-drop-period-key="${esc(group.key)}"
-                        data-drop-period-label="${esc(sample.period_label || '')}"
-                        data-drop-period-order="${esc(String(sample.period_order ?? ''))}"
-                        data-drop-start="${esc(sample.start_time || '')}"
-                        data-drop-end="${esc(sample.end_time || '')}"` : '';
+                        data-drop-teacher-key="${esc(slot.teacherKey)}"
+                        data-drop-teacher-name="${esc(slot.teacherName)}"
+                        data-drop-column-index="${esc(String(slot.columnIndex))}"
+                        data-drop-period-key="${esc(slot.periodKey)}"
+                        data-drop-period-label="${esc(slot.periodLabel)}"
+                        data-drop-period-order="${esc(String(slot.periodOrder || ''))}"
+                        data-drop-start="${esc(slot.startTime)}"
+                        data-drop-end="${esc(slot.endTime)}"
+                        data-drop-day-label="${esc(slot.dayLabel || '')}"` : '';
+                    const pasteButton = canPasteCopiedSessionToSlot(group, teacher, cards)
+                        ? `<button type="button" class="eie-v2-paste-button" data-eie-paste-session="true"
+                                data-drop-teacher-key="${esc(slot.teacherKey)}"
+                                data-drop-teacher-name="${esc(slot.teacherName)}"
+                                data-drop-column-index="${esc(String(slot.columnIndex))}"
+                                data-drop-period-key="${esc(slot.periodKey)}"
+                                data-drop-period-label="${esc(slot.periodLabel)}"
+                                data-drop-period-order="${esc(String(slot.periodOrder || ''))}"
+                                data-drop-start="${esc(slot.startTime)}"
+                                data-drop-end="${esc(slot.endTime)}"
+                                data-drop-day-label="${esc(slot.dayLabel || '')}"
+                                aria-label="${esc(`${slot.periodLabel || '선택한 교시'} ${slot.teacherName || '담임'} 슬롯에 복사한 반 붙여넣기`)}">여기에 붙여넣기</button>`
+                        : '';
                     return `
                         <div class="eie-v2-teacher-slot" data-eie-v2-teacher-key="${esc(teacher.key)}" ${dropAttrs}>
-                            ${cards.length ? cards.map(renderWeeklyCard).join('') : '<div class="eie-v2-teacher-slot-empty" aria-hidden="true"></div>'}
+                            ${cards.length ? cards.map(renderWeeklyCard).join('') : `<div class="eie-v2-teacher-slot-empty" aria-hidden="${pasteButton ? 'false' : 'true'}">${pasteButton}</div>`}
                         </div>
                     `;
                 }).join('')}
             </div>
         `;
     }
+
 
     function renderBoard(sessions) {
         const query = viewState.searchQuery || '';
@@ -1335,7 +1420,6 @@
                 </div>
                 <div class="eie-v2-detail-actions">
                     <button type="button" class="eie-primary-button" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
-                    <button type="button" class="eie-secondary-button" data-eie-v2-copy-period ${viewState.miniSaving ? 'disabled' : ''} title="이 반을 다음 교시에도 추가합니다">교시 복사</button>
                 </div>
             </div>
         `;
@@ -1715,7 +1799,8 @@
                         : `<button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표편집</button>`
                     }
                 </div>
-                ${viewState.editMode ? '<div class="eie-v2-edit-mode-bar">편집 모드 — 카드를 드래그해서 담임 열 또는 교시를 변경하세요</div>' : ''}
+                ${viewState.editMode ? `<div class="eie-v2-edit-mode-bar">편집 모드 — 드래그로 위치를 바꾸고, 복사한 반은 원하는 빈 슬롯에 붙여넣으세요.${viewState.editCreates.length ? ` · 새 수업 ${viewState.editCreates.length}개` : ''}</div>` : ''}
+                ${viewState.editNotice ? `<div class="eie-v2-info" role="status">${esc(viewState.editNotice)}</div>` : ''}
                 ${viewState.editError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.editError)}</div>` : ''}
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}
@@ -1724,6 +1809,12 @@
 
     function bindEvents() {
         if (eventsBound) return;
+
+        window.addEventListener('beforeunload', event => {
+            if (!hasUnsavedEditChanges()) return;
+            event.preventDefault();
+            event.returnValue = '';
+        });
 
         // ── 드래그&드롭 편집 이벤트 ─────────────────────────────────
         document.addEventListener('dragstart', event => {
@@ -1805,11 +1896,33 @@
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
             }
+            const copySessionButton = event.target.closest?.('[data-eie-copy-session]');
+            if (copySessionButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                copySessionForPaste(copySessionButton.getAttribute('data-eie-copy-session') || '');
+                return;
+            }
+            const pasteSessionButton = event.target.closest?.('[data-eie-paste-session]');
+            if (pasteSessionButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                pasteCopiedSessionToSlot(pasteSessionButton);
+                return;
+            }
             const sessionButton = event.target.closest?.('[data-eie-v2-session]');
             if (sessionButton) {
                 event.preventDefault();
                 if (viewState.miniSaving) return;
-                viewState.selectedSessionId = sessionButton.getAttribute('data-eie-v2-session') || '';
+                const nextSessionId = sessionButton.getAttribute('data-eie-v2-session') || '';
+                const nextSession = lastRenderedSessions.find(s => s.session_id === nextSessionId);
+                if (nextSession?.is_temp_copy) {
+                    viewState.selectedSessionId = '';
+                    viewState.editNotice = '저장 전 임시 수업은 상세 수정할 수 없습니다. 저장 후 다시 선택해 주세요.';
+                    if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                    return;
+                }
+                viewState.selectedSessionId = nextSessionId;
                 viewState.activeTeacherDay = '월';
                 viewState.miniError = '';
                 viewState.miniNotice = '';
@@ -1891,12 +2004,6 @@
                 transferStudentToClass(transferConfirm.getAttribute('data-eie-v2-transfer-confirm') || '');
                 return;
             }
-            const copyPeriodButton = event.target.closest?.('[data-eie-v2-copy-period]');
-            if (copyPeriodButton) {
-                event.preventDefault();
-                copySessionToNextPeriod();
-                return;
-            }
             const addStudentToggle = event.target.closest?.('[data-eie-v2-add-student-toggle]');
             if (addStudentToggle) {
                 event.preventDefault();
@@ -1935,7 +2042,10 @@
                 event.preventDefault();
                 viewState.editMode = true;
                 viewState.editDraft = {};
+                viewState.editCreates = [];
+                resetEditCopyState();
                 viewState.editError = '';
+                viewState.editNotice = '';
                 viewState.selectedSessionId = '';
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
@@ -1951,7 +2061,10 @@
                 event.preventDefault();
                 viewState.editMode = false;
                 viewState.editDraft = {};
+                viewState.editCreates = [];
+                resetEditCopyState();
                 viewState.editError = '';
+                viewState.editNotice = '';
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
             }
@@ -2085,20 +2198,180 @@
         }
     }
 
+    function resetEditCopyState() {
+        viewState.editCopySourceSessionId = '';
+    }
+
+    function slotDataFromElement(el) {
+        return {
+            teacherKey: el?.getAttribute('data-drop-teacher-key') || '',
+            teacherName: el?.getAttribute('data-drop-teacher-name') || '',
+            columnIndex: Number(el?.getAttribute('data-drop-column-index') || 0),
+            periodKey: el?.getAttribute('data-drop-period-key') || '',
+            periodLabel: el?.getAttribute('data-drop-period-label') || '',
+            periodOrder: Number(el?.getAttribute('data-drop-period-order') || 0),
+            startTime: el?.getAttribute('data-drop-start') || '',
+            endTime: el?.getAttribute('data-drop-end') || '',
+            dayLabel: el?.getAttribute('data-drop-day-label') || ''
+        };
+    }
+
+    function sanitizeCopiedRawMeta(meta, sourceSession, targetSlot) {
+        const raw = { ...(meta || {}) };
+        [
+            'students',
+            'student_names',
+            'studentSeeds',
+            'student_candidates',
+            'assigned_students',
+            'assignments',
+            'student_count'
+        ].forEach(key => { delete raw[key]; });
+        const dayTeachers = sourceSession?.day_teachers || raw.day_teachers || raw.teacher_names_by_day || {};
+        raw.source_type = 'manual_copy';
+        raw.copy_source = 'timetable_v2_copy_paste';
+        raw.copied_from_session_id = sourceSession?.session_id || '';
+        raw.copied_from_cell_ids = Array.isArray(sourceSession?.source_cell_ids) ? sourceSession.source_cell_ids : [];
+        raw.material_text = sourceSession?.material || raw.material_text || '';
+        raw.homeroom_teacher = targetSlot.teacherName || sourceSession?.homeroom_teacher || raw.homeroom_teacher || '';
+        raw.teacher_names = uniqueNames([targetSlot.teacherName || sourceSession?.homeroom_teacher || sourceSession?.teacher_name || ''].filter(Boolean));
+        raw.day_teachers = dayTeachers;
+        raw.teacher_names_by_day = dayTeachers;
+        return raw;
+    }
+
+    function buildCopiedCellPayload(sourceSession, targetSlot) {
+        const first = sourceSession?.source_rows?.[0] || {};
+        const meta = getRawMeta(first);
+        const className = normalizeKey(sourceSession?.class_full_name || first.class_name_raw || first.class_name || sourceSession?.material || meta.class_name_raw || meta.material_text || '');
+        const material = normalizeKey(sourceSession?.material || first.material_text || meta.material_text || className);
+        return {
+            day_label: normalizeKey(targetSlot.dayLabel || ''),
+            period_label: targetSlot.periodLabel || '',
+            period_order: targetSlot.periodOrder || 0,
+            start_time: targetSlot.startTime || '',
+            end_time: targetSlot.endTime || '',
+            column_index: Number.isFinite(Number(targetSlot.columnIndex)) ? Number(targetSlot.columnIndex) : 0,
+            class_name_raw: className,
+            material_text: material,
+            material,
+            teacher_name_raw: targetSlot.teacherName || sourceSession?.homeroom_teacher || sourceSession?.teacher_name || '',
+            room_raw: first.room_raw || sourceSession?.room || '',
+            status: 'active',
+            memo: sourceSession?.memo || first.memo || '',
+            source_type: 'manual',
+            raw_meta_json: sanitizeCopiedRawMeta(meta, sourceSession, targetSlot)
+        };
+    }
+
+    function createTempCopiedCell(sourceSession, targetSlot) {
+        const payload = buildCopiedCellPayload(sourceSession, targetSlot);
+        const tempId = `temp_copy_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+        return {
+            ...payload,
+            id: tempId,
+            cell_id: tempId,
+            temp_id: tempId,
+            is_temp_copy: true,
+            period_key: targetSlot.periodKey || '',
+            copy_source_session_id: sourceSession?.session_id || '',
+            assigned_students: [],
+            student_count: 0,
+            raw_meta_json: payload.raw_meta_json
+        };
+    }
+
+    function copySessionForPaste(sessionId) {
+        if (!viewState.editMode) return;
+        const sid = normalizeKey(sessionId);
+        const session = lastRenderedSessions.find(row => row.session_id === sid);
+        if (!session) return;
+        viewState.editCopySourceSessionId = sid;
+        viewState.editNotice = `${session.material || session.class_full_name || '선택한 반'}을(를) 복사했습니다. 빈 슬롯의 '여기에 붙여넣기'를 누르세요.`;
+        viewState.editError = '';
+        if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    }
+
+    function pasteCopiedSessionToSlot(slotEl) {
+        if (!viewState.editMode || !viewState.editCopySourceSessionId) return;
+        const source = copiedSessionRecord();
+        if (!source) {
+            resetEditCopyState();
+            viewState.editError = '복사한 반을 찾지 못했습니다. 다시 복사해 주세요.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        const targetSlot = slotDataFromElement(slotEl);
+        if (!targetSlot.periodKey || !targetSlot.teacherKey) return;
+        if (normalizeKey(targetSlot.periodKey) === sourcePeriodKey(source)) {
+            viewState.editError = '같은 교시에는 붙여넣을 수 없습니다.';
+            viewState.editNotice = '';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        const targetSlotKey = slotKeyOf(targetSlot);
+        const alreadyTempCreated = (viewState.editCreates || []).some(cell => tempCellSlotKey(cell) === targetSlotKey);
+        if (alreadyTempCreated) {
+            viewState.editError = '이미 붙여넣은 슬롯입니다.';
+            viewState.editNotice = '';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        const tempCell = createTempCopiedCell(source, targetSlot);
+        viewState.editCreates.push(tempCell);
+        viewState.selectedSessionId = '';
+        viewState.editNotice = `${source.material || source.class_full_name || '복사한 반'}을(를) ${targetSlot.periodLabel || '선택한 교시'} · ${targetSlot.teacherName || '담임'} 슬롯에 붙여넣었습니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.`;
+        viewState.editError = '';
+        if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    }
+
     async function saveEditDraft() {
         if (viewState.editSaving) return;
         const draftEntries = Object.entries(viewState.editDraft);
-        if (!draftEntries.length) {
+        const createEntries = Array.isArray(viewState.editCreates) ? viewState.editCreates : [];
+        if (!draftEntries.length && !createEntries.length) {
             viewState.editMode = false;
+            resetEditCopyState();
+            viewState.editNotice = '';
             if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
             return;
         }
         viewState.editSaving = true;
         viewState.editError = '';
+        viewState.editNotice = '시간표를 저장하는 중입니다.';
         if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
         let successCount = 0;
         const failures = [];
         try {
+            const failedCreateCells = [];
+            const failedDraftSessionIds = new Set();
+            for (const cell of createEntries) {
+                try {
+                    const payload = {
+                        day_label: normalizeKey(cell.day_label || ''),
+                        period_label: cell.period_label || '',
+                        period_order: Number(cell.period_order || 0),
+                        start_time: cell.start_time || '',
+                        end_time: cell.end_time || '',
+                        column_index: Number.isFinite(Number(cell.column_index)) ? Number(cell.column_index) : 0,
+                        class_name_raw: cell.class_name_raw || cell.material_text || cell.material || '',
+                        material_text: cell.material_text || cell.material || cell.class_name_raw || '',
+                        material: cell.material || cell.material_text || cell.class_name_raw || '',
+                        teacher_name_raw: cell.teacher_name_raw || '',
+                        room_raw: cell.room_raw || '',
+                        status: normalizeStatus(cell.status || 'active'),
+                        memo: cell.memo || '',
+                        source_type: 'manual',
+                        raw_meta_json: cell.raw_meta_json || {}
+                    };
+                    if (!payload.class_name_raw) throw new Error('class_name_raw is required');
+                    await window.EieApi.createTimetableCell(payload);
+                    successCount++;
+                } catch (err) {
+                    failedCreateCells.push(cell);
+                    failures.push(cell.class_name_raw || cell.id || 'new-cell');
+                }
+            }
             for (const [sessionId, changes] of draftEntries) {
                 const session = lastRenderedSessions.find(s => s.session_id === sessionId);
                 if (!session) continue;
@@ -2123,15 +2396,30 @@
                         successCount++;
                     } catch (err) {
                         failures.push(rowId);
+                        failedDraftSessionIds.add(sessionId);
                     }
                 }
             }
             if (failures.length) {
-                viewState.editError = `${successCount}건 저장 / ${failures.length}건 실패`;
+                const nextDraft = {};
+                failedDraftSessionIds.forEach(sessionId => {
+                    if (viewState.editDraft[sessionId]) nextDraft[sessionId] = viewState.editDraft[sessionId];
+                });
+                viewState.editDraft = nextDraft;
+                viewState.editCreates = failedCreateCells;
+                viewState.editMode = true;
+                viewState.editError = `${successCount}건 저장 / ${failures.length}건 실패. 실패한 항목은 편집 상태로 남겨두었습니다.`;
+                viewState.editNotice = '';
+                await refreshTimetableRowsAfterMiniSave();
+            } else {
+                await refreshTimetableRowsAfterMiniSave();
+                viewState.editDraft = {};
+                viewState.editCreates = [];
+                viewState.editMode = false;
+                resetEditCopyState();
+                viewState.editNotice = '시간표를 저장했습니다.';
+                viewState.editError = '';
             }
-            await refreshTimetableRowsAfterMiniSave();
-            viewState.editDraft = {};
-            viewState.editMode = false;
         } catch (err) {
             viewState.editError = err?.message || '저장 실패';
         } finally {
@@ -2140,71 +2428,8 @@
         }
     }
 
-    async function copySessionToNextPeriod() {
-        if (viewState.miniSaving) return;
-        const session = selectedSessionRecord();
-        if (!session) return;
-        if (!window.EieApi?.createTimetableCell) {
-            viewState.miniError = 'API를 사용할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
-            return;
-        }
-        // 다음 교시 시간 계산
-        const curEnd = session.end_time || '';
-        // EIE_TRUTH_TABLE에서 현재 end_time과 start_time이 일치하는 교시 찾기
-        const nextPeriodFromTruth = EIE_TRUTH_TABLE.find(r => r.start_time === curEnd);
-        const nextStart = curEnd;
-        const nextEnd = nextPeriodFromTruth
-            ? nextPeriodFromTruth.end_time
-            : (() => {
-                // fallback: 현재 duration만큼 더함
-                const dur = timeToMinutes(session.end_time) - timeToMinutes(session.start_time);
-                return minutesToTime(timeToMinutes(curEnd) + dur);
-            })();
-        const nextOrder = Number(session.period_order || 0) + 1;
-        const nextLabel = nextPeriodFromTruth
-            ? nextPeriodFromTruth.period_label
-            : `${nextOrder}교시`;
+    // Deprecated: 기존 오른쪽 패널 "교시 복사" 흐름은 제거했다. 편집 모드 복사→붙여넣기만 사용한다.
 
-        const first = session.source_rows?.[0] || {};
-        const meta = getRawMeta(first);
-        const dayTeachers = session.day_teachers || meta.day_teachers || {};
-
-        viewState.miniSaving = true;
-        viewState.miniError = '';
-        viewState.miniNotice = '';
-        try {
-            const payload = {
-                material_text: session.material || '',
-                material: session.material || '',
-                teacher_name_raw: session.homeroom_teacher || '',
-                period_label: nextLabel,
-                period_order: nextOrder,
-                start_time: nextStart,
-                end_time: nextEnd,
-                status: 'active',
-                memo: session.memo || '',
-                raw_meta_json: {
-                    ...meta,
-                    material_text: session.material || '',
-                    homeroom_teacher: session.homeroom_teacher || '',
-                    day_teachers: dayTeachers,
-                    teacher_names_by_day: dayTeachers,
-                    ...(session.memo ? { memo: session.memo } : {})
-                }
-            };
-            await window.EieApi.createTimetableCell(payload);
-            if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
-            await refreshTimetableRowsAfterMiniSave();
-            viewState.miniNotice = `${nextLabel} (${nextStart}~${nextEnd}) 복사 완료`;
-        } catch (error) {
-            viewState.miniError = error?.message || '복사 실패';
-        } finally {
-            viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
-            clearMiniNoticeLater(3000);
-        }
-    }
 
     async function transferStudentToClass(studentId) {
         if (viewState.studentSaving) return;
@@ -2630,7 +2855,10 @@
     async function render() {
         bindEvents();
         const { rows, error } = await loadRows();
-        const sessions = buildDisplaySessions(rows);
+        const rowsForDisplay = viewState.editMode && Array.isArray(viewState.editCreates) && viewState.editCreates.length
+            ? rows.concat(viewState.editCreates)
+            : rows;
+        const sessions = buildDisplaySessions(rowsForDisplay);
         lastRenderedSessions = sessions;
 
         if (viewState.repairMode) {
