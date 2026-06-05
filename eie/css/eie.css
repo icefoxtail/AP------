@@ -3263,7 +3263,7 @@ body.eie-owner-dashboard-bg {
 
 /* ── EIE Timetable V2 read-only board ───────────────────────── */
 .eie-main:has(.eie-v2-screen) {
-    max-width: min(1680px, calc(100vw - 48px));
+    max-width: none;
 }
 
 .eie-v2-screen {
@@ -5611,9 +5611,8 @@ button.eie-v2-card-student:hover {
 }
 
 .eie-v2-board-grid {
-    --eie-v2-homeroom-width: 224px;
     --eie-v2-period-width: 96px;
-    min-width: calc(var(--eie-v2-period-width) + (var(--eie-v2-homeroom-width) * var(--eie-v2-homeroom-count)) + (8px * var(--eie-v2-homeroom-count)));
+    width: 100%;
     display: grid;
     grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
     gap: 8px;
@@ -5627,7 +5626,7 @@ button.eie-v2-card-student:hover {
 .eie-v2-teacher-frame-head {
     grid-column: 2;
     display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), var(--eie-v2-homeroom-width));
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
     gap: 8px;
     align-items: stretch;
 }
@@ -5670,7 +5669,7 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-teacher-frame-row {
     display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), var(--eie-v2-homeroom-width));
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
     gap: 8px;
     align-items: stretch;
     min-width: 0;
@@ -5705,7 +5704,6 @@ button.eie-v2-card-student:hover {
 
 @media (max-width: 760px) {
     .eie-v2-board-grid {
-        --eie-v2-homeroom-width: 210px;
         --eie-v2-period-width: 78px;
     }
 
@@ -5917,3 +5915,175 @@ body.eie-drawer-expanded .eie-desktop-topbar {
         max-width: 132px !important;
     }
 }
+
+/* ── EIE v2 시간표 정리 패널 ───────────────────────────────── */
+.eie-v2-repair-loading {
+    padding: 32px;
+    text-align: center;
+    color: var(--eie-muted);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.eie-v2-repair-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 4px 0 24px;
+}
+
+.eie-v2-repair-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.eie-v2-repair-head h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.eie-v2-repair-head p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--eie-muted);
+    font-weight: 800;
+}
+
+.eie-v2-info {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(16, 185, 129, 0.10);
+    color: #065f46;
+    font-size: 13px;
+    font-weight: 800;
+    border: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+.eie-v2-repair-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.eie-v2-repair-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--eie-border);
+    border-radius: 14px;
+    background: var(--eie-surface);
+}
+
+.eie-v2-repair-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 780px;
+    font-size: 12px;
+}
+
+.eie-v2-repair-table thead tr {
+    background: var(--eie-surface-2);
+    border-bottom: 1px solid var(--eie-border);
+}
+
+.eie-v2-repair-table th {
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--eie-muted);
+    white-space: nowrap;
+}
+
+.eie-v2-repair-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.eie-v2-repair-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.eie-v2-repair-row.is-changed {
+    background: rgba(253, 224, 71, 0.07);
+}
+
+.eie-v2-repair-row.is-unmatched {
+    background: rgba(248, 113, 113, 0.06);
+}
+
+.eie-v2-repair-row.is-skip {
+    opacity: 0.45;
+}
+
+td.eie-v2-repair-day.is-diff {
+    background: rgba(253, 186, 32, 0.22);
+    border-radius: 6px;
+    font-weight: 900;
+    color: #92400e;
+}
+
+td.eie-v2-repair-matched.is-unmatched em {
+    color: var(--eie-muted);
+    font-style: italic;
+    font-size: 11px;
+}
+
+.eie-v2-repair-num {
+    color: var(--eie-muted);
+    font-size: 11px;
+    min-width: 24px;
+}
+
+.eie-v2-repair-period {
+    font-weight: 900;
+    min-width: 42px;
+}
+
+.eie-v2-repair-mat {
+    font-weight: 900;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eie-v2-repair-teacher {
+    min-width: 52px;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.eie-v2-repair-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 900;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.eie-v2-repair-badge.is-same {
+    background: rgba(16, 185, 129, 0.10);
+    color: #065f46;
+}
+
+.eie-v2-repair-badge.is-needs_change {
+    background: rgba(251, 191, 36, 0.18);
+    color: #92400e;
+}
+
+.eie-v2-repair-badge.is-unmatched {
+    background: rgba(248, 113, 113, 0.14);
+    color: #b91c1c;
+}
+
+.eie-v2-repair-badge.is-skip {
+    background: rgba(15, 23, 42, 0.05);
+    color: var(--eie-muted);
+}
+/* ── end repair panel ──────────────────────────────────────── */
