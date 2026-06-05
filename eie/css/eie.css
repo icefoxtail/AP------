@@ -5060,31 +5060,42 @@ body.eie-owner-dashboard-bg {
 
 /* ── EIE timetable card-board refresh ───────────────────────── */
 .eie-v2-card-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    gap: 12px;
     flex-wrap: nowrap;
 }
 
-.eie-v2-title-row {
+.eie-v2-head-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: flex-start;
     min-width: 0;
 }
 
-.eie-v2-title-row h1 {
+.eie-v2-head-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.eie-v2-head-center h1 {
     margin: 0;
     white-space: nowrap;
 }
 
-.eie-v2-card-head .eie-v2-head-actions {
-    flex: 1 1 auto;
+.eie-v2-head-right {
+    display: flex;
     align-items: center;
-    flex-wrap: nowrap;
+    justify-content: flex-end;
+    min-width: 0;
 }
 
 .eie-v2-search {
-    flex: 0 1 260px;
-    margin-left: auto;
+    width: 100%;
+    max-width: 280px;
 }
 
 .eie-v2-search input {
@@ -5294,33 +5305,22 @@ button.eie-v2-card-student:hover {
 
 @media (max-width: 760px) {
     .eie-v2-card-head {
-        flex-direction: row;
-        align-items: center;
+        grid-template-columns: 1fr auto 1fr;
         gap: 8px;
         padding: 12px;
     }
 
-    .eie-v2-title-row {
-        gap: 7px;
-        flex: 0 0 auto;
-    }
-
-    .eie-v2-title-row h1 {
+    .eie-v2-head-center h1 {
         font-size: 20px;
     }
 
-    .eie-v2-card-head .eie-v2-head-actions {
-        min-width: 0;
-        gap: 6px;
-    }
-
-    .eie-v2-card-head .eie-secondary-button {
+    .eie-v2-head-right .eie-secondary-button {
         display: none;
     }
 
     .eie-v2-search {
-        flex: 1 1 auto;
-        min-width: 108px;
+        max-width: none;
+        min-width: 80px;
     }
 
     .eie-v2-search input {
