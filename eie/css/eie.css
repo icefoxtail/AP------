@@ -3358,11 +3358,14 @@ body.eie-owner-dashboard-bg {
 
 .eie-v2-board-wrap {
     width: 100%;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: visible;
     border: 1px solid var(--eie-border);
     border-radius: 22px;
     background: var(--eie-surface);
     box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148,163,184,0.4) transparent;
 }
 
 .eie-v2-board {
@@ -5419,7 +5422,7 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-mini-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
@@ -5476,24 +5479,71 @@ button.eie-v2-card-student:hover {
     margin-top: 10px;
 }
 
-.eie-v2-mini-student-list {
+/* 학생 명단 — 4열 그리드 */
+.eie-v2-mini-student-grid {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.eie-v2-mini-student-grid .eie-v2-card-student {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 신입생 등록 폼 */
+.eie-v2-mini-add-form {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
-.eie-v2-mini-student-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 0;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+.eie-v2-mini-add-form input,
+.eie-v2-mini-add-form select {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 10px 11px;
+    font-size: 14px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    box-sizing: border-box;
 }
 
-.eie-v2-mini-student-row > span {
-    color: var(--eie-muted);
-    font-size: 12px;
-    font-weight: 700;
+/* 메모 textarea */
+.eie-v2-mini-memo-area {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 10px 11px;
+    font-size: 14px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* 퇴원 버튼 — 빨간 테두리 */
+.eie-v2-retire-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    border: 2px solid #ef4444;
+    border-radius: 10px;
+    background: transparent;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.eie-v2-retire-btn:hover {
+    background: rgba(239, 68, 68, 0.08);
 }
 
 .eie-v2-mini-add-student {
@@ -5514,7 +5564,6 @@ button.eie-v2-card-student:hover {
 }
 
 @media (max-width: 760px) {
-    .eie-v2-mini-grid,
     .eie-v2-mini-add-student {
         grid-template-columns: 1fr;
     }
@@ -5525,12 +5574,8 @@ button.eie-v2-card-student:hover {
         padding-bottom: 2px;
     }
 
-    .eie-v2-mini-student-row {
-        grid-template-columns: minmax(0, 1fr) auto;
-    }
-
-    .eie-v2-mini-student-row > span {
-        display: none;
+    .eie-v2-mini-student-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -5612,9 +5657,11 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-board-grid {
     --eie-v2-period-width: 96px;
-    width: 100%;
+    --eie-v2-col-min: 130px;
+    min-width: 100%;
+    width: max-content;
     display: grid;
-    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
+    grid-template-columns: var(--eie-v2-period-width) 1fr;
     gap: 8px;
 }
 
@@ -5626,7 +5673,7 @@ button.eie-v2-card-student:hover {
 .eie-v2-teacher-frame-head {
     grid-column: 2;
     display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(var(--eie-v2-col-min, 130px), 1fr));
     gap: 8px;
     align-items: stretch;
 }
@@ -5669,7 +5716,7 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-teacher-frame-row {
     display: grid;
-    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(var(--eie-v2-col-min, 130px), 1fr));
     gap: 8px;
     align-items: stretch;
     min-width: 0;
