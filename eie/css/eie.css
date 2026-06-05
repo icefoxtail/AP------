@@ -5479,16 +5479,20 @@ button.eie-v2-card-student:hover {
 /* 학생 명단 — 4열 그리드 */
 .eie-v2-mini-student-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .eie-v2-mini-student-grid .eie-v2-card-student {
+    min-width: 0;
     width: 100%;
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: keep-all;
 }
 
 /* 신입생 등록 폼 */
@@ -5522,6 +5526,17 @@ button.eie-v2-card-student:hover {
     color: var(--eie-text);
     resize: vertical;
     box-sizing: border-box;
+}
+
+/* 전반 select */
+.eie-v2-transfer-select {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    font-size: 14px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
 }
 
 /* 퇴원 버튼 — 빨간 테두리 */
