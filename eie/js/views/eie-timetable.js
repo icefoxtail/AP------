@@ -1452,6 +1452,10 @@
             if (window.EieTimetableV2View && typeof window.EieTimetableV2View.render === 'function') {
                 return window.EieTimetableV2View.render();
             }
+            return this.renderEditor();
+        },
+
+        async renderEditor() {
             bindDomEventsOnce();
             let rows = editorState.isEditMode ? editorState.draftCells : EieState.get().timetableCells;
             let error = '';
