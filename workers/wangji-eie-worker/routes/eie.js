@@ -98,6 +98,7 @@ function normalizeManualCell(body) {
   const rawMeta = parseRawMeta(body?.raw_meta_json);
   if (teacherNames.length) rawMeta.teacher_names = teacherNames;
   if (!rawMeta.source_type) rawMeta.source_type = 'manual';
+  const rawLane = Number(body?.slot_lane);
   return {
     id: body?.id || makeId('eie_cell'),
     import_session_id: MANUAL_IMPORT_SESSION_ID,
@@ -115,7 +116,8 @@ function normalizeManualCell(body) {
     student_count: Number.isFinite(Number(body?.student_count)) ? Number(body.student_count) : 0,
     status: safeStatus(body?.status, 'active'),
     memo: safeText(body?.memo),
-    raw_meta_json: rawMeta
+    raw_meta_json: rawMeta,
+    slot_lane: (Number.isFinite(rawLane) && rawLane >= 1 && rawLane <= 2) ? rawLane : 1
   };
 }
 
@@ -158,6 +160,22 @@ async function nextColumnIndex(env, cell) {
     WHERE COALESCE(day_label, '') = COALESCE(?, '') AND period_label = ?
   `).bind(cell.day_label, cell.period_label).first();
   return Number(row?.next_column_index || 1);
+}
+
+async function checkSlotLaneDuplicate(env, cell) {
+  try {
+    const row = await env.DB.prepare(`
+      SELECT id FROM eie_timetable_cells
+      WHERE COALESCE(day_label, '') = COALESCE(?, '')
+        AND COALESCE(period_order, 0) = COALESCE(?, 0)
+        AND COALESCE(column_index, 0) = COALESCE(?, 0)
+        AND COALESCE(slot_lane, 1) = ?
+      LIMIT 1
+    `).bind(cell.day_label, cell.period_order, cell.column_index, cell.slot_lane).first();
+    return row || null;
+  } catch (error) {
+    return null;
+  }
 }
 
 async function queryLatestImport(env) {
@@ -1448,14 +1466,16 @@ async function handlePostTimetableCell(request, env) {
   if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
   await ensureManualImportSession(env);
   cell.column_index = await nextColumnIndex(env, cell);
+  const conflict = await checkSlotLaneDuplicate(env, cell);
+  if (conflict) return uniqueCellConflictResponse();
   try {
     await env.DB.prepare(`
       INSERT INTO eie_timetable_cells (
         id, import_session_id, source_type, source_import_session_id, day_label, period_label, period_order, start_time, end_time,
         class_name_raw, teacher_name_raw, room_raw, column_index, student_count, status, memo,
-        raw_meta_json, created_at, updated_at
+        raw_meta_json, slot_lane, created_at, updated_at
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     `).bind(
       cell.id,
       cell.import_session_id,
@@ -1473,7 +1493,8 @@ async function handlePostTimetableCell(request, env) {
       cell.student_count,
       cell.status,
       cell.memo,
-      toJsonText(cell.raw_meta_json)
+      toJsonText(cell.raw_meta_json),
+      cell.slot_lane
     ).run();
   } catch (error) {
     if (isUniqueConflict(error)) return uniqueCellConflictResponse();
@@ -1503,6 +1524,7 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
     if (body.teacher_names !== undefined || body.teachers !== undefined || body.teacher_name !== undefined) {
       rawMeta.teacher_names = teacherNames;
     }
+    const rawPatchLane = Number(body.slot_lane);
     const next = {
       day_label: body.day_label == null ? existing.day_label : safeText(body.day_label),
       period_label: body.period_label == null ? existing.period_label : safeText(body.period_label),
@@ -1519,7 +1541,10 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
       student_count: body.student_count == null ? existing.student_count : Number(body.student_count || 0),
       status: body.status == null ? safeStatus(existing.status, 'active') : safeStatus(body.status, 'active'),
       memo: body.memo == null ? existing.memo : safeText(body.memo),
-      raw_meta_json: toJsonText(rawMeta)
+      raw_meta_json: toJsonText(rawMeta),
+      slot_lane: (body.slot_lane != null && Number.isFinite(rawPatchLane) && rawPatchLane >= 1 && rawPatchLane <= 2)
+        ? rawPatchLane
+        : (Number(existing.slot_lane) || 1)
     };
     const validationError = validateTimetableCell(next);
     if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
@@ -1528,7 +1553,7 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
         UPDATE eie_timetable_cells
         SET day_label = ?, period_label = ?, period_order = ?, start_time = ?, end_time = ?,
             class_name_raw = ?, teacher_name_raw = ?, room_raw = ?, student_count = ?, status = ?, memo = ?,
-            raw_meta_json = ?, updated_at = CURRENT_TIMESTAMP
+            raw_meta_json = ?, slot_lane = ?, updated_at = CURRENT_TIMESTAMP
         WHERE id = ?
       `).bind(
         next.day_label,
@@ -1543,6 +1568,7 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
         next.status,
         next.memo,
         next.raw_meta_json,
+        next.slot_lane,
         cellId
       ).run();
       if (body.teacher_names !== undefined || body.teachers !== undefined || body.teacher_name !== undefined || body.teacher_name_raw !== undefined) {

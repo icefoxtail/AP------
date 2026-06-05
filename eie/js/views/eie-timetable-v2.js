@@ -717,7 +717,8 @@
             room: first.room || '',
             is_temp_copy: ordered.some(cell => !!cell.is_temp_copy),
             is_merged: ordered.length > 1,
-            merge_type: ordered.length > 1 ? 'weekly-card' : 'single'
+            merge_type: ordered.length > 1 ? 'weekly-card' : 'single',
+            slot_lane: Number(first.slot_lane) >= 1 ? Number(first.slot_lane) : 1
         };
     }
 
@@ -1020,6 +1021,15 @@
                 }));
 
                 items.forEach(item => {
+                    const storedLane = Number(item.session?.slot_lane || 0);
+                    if (storedLane >= 1 && !occupied.has(storedLane)) {
+                        item.lane = storedLane;
+                        occupied.add(storedLane);
+                    }
+                });
+
+                items.forEach(item => {
+                    if (item.lane) return;
                     const previousLane = Number(previousLanes.get(item.signature) || 0);
                     if (previousLane > 0 && !occupied.has(previousLane)) {
                         item.lane = previousLane;
@@ -1138,6 +1148,18 @@
         };
     }
 
+    function detectTargetSlotLane(targetSlot, existingCards) {
+        const usedLanes = new Set();
+        (existingCards || []).forEach(s => usedLanes.add(Number(s.slot_lane) >= 1 ? Number(s.slot_lane) : 1));
+        (viewState.editCreates || []).filter(cell => {
+            return Number(cell.period_order) === Number(targetSlot.periodOrder) &&
+                   normalizeKey(cell.teacher_name_raw || '') === normalizeKey(targetSlot.teacherName || '');
+        }).forEach(cell => usedLanes.add(Number(cell.slot_lane) >= 1 ? Number(cell.slot_lane) : 1));
+        if (!usedLanes.has(1)) return 1;
+        if (!usedLanes.has(2)) return 2;
+        return null;
+    }
+
     function sourcePeriodKey(session) {
         return normalizeKey(session?.period_key || `${session?.period_order || ''}|${session?.start_time || ''}|${session?.end_time || ''}`);
     }
@@ -1179,6 +1201,7 @@
             normalizeKey(cell.copy_source_session_id || '') === normalizeKey(source.session_id || '')
         ));
         if (alreadySameCopy) return false;
+        if (detectTargetSlotLane(target, cards) === null) return false;
         return true;
     }
 
@@ -2478,7 +2501,7 @@
         return raw;
     }
 
-    function buildCopiedCellPayload(sourceSession, targetSlot) {
+    function buildCopiedCellPayload(sourceSession, targetSlot, slotLane) {
         const first = sourceSession?.source_rows?.[0] || {};
         const meta = getRawMeta(first);
         const className = normalizeKey(sourceSession?.class_full_name || first.class_name_raw || first.class_name || sourceSession?.material || meta.class_name_raw || meta.material_text || '');
@@ -2498,12 +2521,13 @@
             status: 'active',
             memo: sourceSession?.memo || first.memo || '',
             source_type: 'manual',
+            slot_lane: (slotLane === 2) ? 2 : 1,
             raw_meta_json: sanitizeCopiedRawMeta(meta, sourceSession, targetSlot)
         };
     }
 
-    function createTempCopiedCell(sourceSession, targetSlot) {
-        const payload = buildCopiedCellPayload(sourceSession, targetSlot);
+    function createTempCopiedCell(sourceSession, targetSlot, slotLane) {
+        const payload = buildCopiedCellPayload(sourceSession, targetSlot, slotLane);
         const tempId = `temp_copy_${Date.now()}_${Math.random().toString(16).slice(2)}`;
         return {
             ...payload,
@@ -2616,7 +2640,19 @@
             if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
             return;
         }
-        const tempCell = createTempCopiedCell(source, targetSlot);
+        const existingCardsForTarget = lastRenderedSessions.filter(session =>
+            !session.is_temp_copy &&
+            Number(session.period_order) === Number(targetSlot.periodOrder) &&
+            normalizeKey(session.homeroom_teacher || '') === normalizeKey(targetSlot.teacherName || '')
+        );
+        const slotLane = detectTargetSlotLane(targetSlot, existingCardsForTarget);
+        if (slotLane === null) {
+            viewState.editError = '이 교시·선생님 칸에는 반을 더 이상 추가할 수 없습니다 (최대 2반).';
+            viewState.editNotice = '';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        const tempCell = createTempCopiedCell(source, targetSlot, slotLane);
         viewState.editCreates.push(tempCell);
         viewState.selectedSessionId = '';
         viewState.editNotice = `${source.material || source.class_full_name || '복사한 반'}을(를) ${targetSlot.periodLabel || '선택한 교시'} · ${targetSlot.teacherName || '담임'} 슬롯에 붙여넣었습니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.`;
@@ -2661,6 +2697,7 @@
                         status: normalizeStatus(cell.status || 'active'),
                         memo: cell.memo || '',
                         source_type: 'manual',
+                        slot_lane: (Number(cell.slot_lane) === 2) ? 2 : 1,
                         raw_meta_json: cell.raw_meta_json || {}
                     };
                     if (!payload.class_name_raw) throw new Error('class_name_raw is required');

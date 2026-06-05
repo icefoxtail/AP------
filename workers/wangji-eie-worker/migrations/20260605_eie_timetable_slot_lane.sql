@@ -1,0 +1,55 @@
+-- EIE 시간표 셀 slot_lane 컬럼 추가
+-- 적용 명령: wrangler d1 execute wangji-eie-os --remote --file=workers/wangji-eie-worker/migrations/20260605_eie_timetable_slot_lane.sql
+--
+-- 목적: 같은 day_label + period_order + column_index 안에서 최대 2개 반카드를 허용하기 위한 lane 식별자
+-- slot_lane = 1 : 해당 슬롯의 첫 번째(왼쪽) 카드 (기본값)
+-- slot_lane = 2 : 해당 슬롯의 두 번째(오른쪽) 카드
+--
+-- 기존 데이터는 slot_lane 없음 → COALESCE(slot_lane, 1) 로 1로 간주됨
+-- 이 ALTER 는 안전하며 기존 데이터를 변경하지 않는다.
+
+ALTER TABLE eie_timetable_cells ADD COLUMN slot_lane INTEGER DEFAULT 1;
+
+-- ──────────────────────────────────────────────────────────────────────────
+-- ⚠️  UNIQUE 제약 주의 사항 (배포 전 반드시 확인)
+-- ──────────────────────────────────────────────────────────────────────────
+-- eie_timetable_cells 에 UNIQUE(day_label, period_order, column_index) 또는
+-- UNIQUE(import_session_id, day_label, period_order, column_index) 제약이
+-- 존재하면 slot_lane=2 INSERT 가 여전히 실패한다.
+--
+-- 확인 방법:
+--   wrangler d1 execute wangji-eie-os --remote --command \
+--     "SELECT sql FROM sqlite_master WHERE type='table' AND name='eie_timetable_cells';"
+--
+-- UNIQUE 제약이 slot_lane 을 포함하지 않는 경우 아래 테이블 재생성이 필요하다.
+-- 아래 스크립트는 직접 실행하지 말고, 반드시 데이터 백업 후 검토 후 수동 적용한다.
+--
+-- ── 재생성 스크립트 (수동 검토 후 적용) ─────────────────────────────────
+-- CREATE TABLE eie_timetable_cells_new (
+--   id TEXT PRIMARY KEY,
+--   import_session_id TEXT,
+--   source_type TEXT DEFAULT 'import',
+--   source_import_session_id TEXT,
+--   day_label TEXT,
+--   period_label TEXT,
+--   period_order INTEGER,
+--   start_time TEXT,
+--   end_time TEXT,
+--   class_name_raw TEXT,
+--   teacher_name_raw TEXT,
+--   room_raw TEXT,
+--   column_index INTEGER,
+--   student_count INTEGER DEFAULT 0,
+--   status TEXT DEFAULT 'active',
+--   memo TEXT,
+--   raw_meta_json TEXT,
+--   slot_lane INTEGER DEFAULT 1,
+--   created_at TEXT,
+--   updated_at TEXT
+-- );
+-- INSERT INTO eie_timetable_cells_new SELECT *, 1 FROM eie_timetable_cells;
+-- DROP TABLE eie_timetable_cells;
+-- ALTER TABLE eie_timetable_cells_new RENAME TO eie_timetable_cells;
+-- CREATE UNIQUE INDEX IF NOT EXISTS idx_eie_timetable_cells_slot
+--   ON eie_timetable_cells(import_session_id, day_label, period_order, column_index, slot_lane);
+-- ────────────────────────────────────────────────────────────────────────
