@@ -12,6 +12,64 @@
         inactive: '비활성'
     };
 
+    // 수기 정리표 기준 truth 데이터 (46행)
+    const EIE_TRUTH_TABLE = [
+        // 1교시 15:10~15:50
+        { truth_row:1,  period_order:1, period_label:'1교시', start_time:'15:10', end_time:'15:50', material_text:'RS2-1',    homeroom_teacher:'Carmen', day_teachers:{ 월:'Carmen',   화:'Carmen',       수:'Foreigner', 목:'Zoe',       금:'Zoe'       }, memo:'' },
+        { truth_row:2,  period_order:1, period_label:'1교시', start_time:'15:10', end_time:'15:50', material_text:'LE3',       homeroom_teacher:'IVY',    day_teachers:{ 월:'IVY',      화:'STACY',        수:'IVY',       목:'STACY',     금:'IVY'       }, memo:'' },
+        { truth_row:3,  period_order:1, period_label:'1교시', start_time:'15:10', end_time:'15:50', material_text:'PHONIC2',   homeroom_teacher:'STACY',  day_teachers:{ 월:'STACY',    화:'Foreigner',    수:'STACY',                     금:'STACY'     }, memo:'목 주4일 파닉스' },
+        { truth_row:4,  period_order:1, period_label:'1교시', start_time:'15:10', end_time:'15:50', material_text:'RT 1',      homeroom_teacher:'IVY',    day_teachers:{ 월:'Foreigner',화:'IVY',          수:'Carmen',    목:'IVY',       금:'Carmen'    }, memo:'' },
+        { truth_row:5,  period_order:1, period_label:'1교시', start_time:'15:10', end_time:'15:50', material_text:'FP2',       homeroom_teacher:'Zoe',    day_teachers:{ 월:'Zoe',      화:'Zoe',          수:'Zoe',       목:'Carmen',    금:'Foreigner' }, memo:'' },
+        { truth_row:6,  period_order:1, period_label:'1교시', start_time:'15:10', end_time:'15:50', material_text:'PL2',       homeroom_teacher:'Lily',   day_teachers:{ 월:'Lily',     화:'Lily',         수:'Lily',      목:'Foreigner', 금:'Lily'      }, memo:'' },
+        // 2교시 15:50~16:30
+        { truth_row:7,  period_order:2, period_label:'2교시', start_time:'15:50', end_time:'16:30', material_text:'PHONIC1',   homeroom_teacher:'Lily',   day_teachers:{ 월:'Lily',     화:'Lily',         수:'Foreigner',                 금:'Lily'      }, memo:'목 주4일 파닉스' },
+        { truth_row:8,  period_order:2, period_label:'2교시', start_time:'15:50', end_time:'16:30', material_text:'PJ2',       homeroom_teacher:'IVY',    day_teachers:{ 월:'IVY',      화:'IVY',          수:'Zoe',       목:'IVY',       금:'IVY'       }, memo:'' },
+        { truth_row:9,  period_order:2, period_label:'2교시', start_time:'15:50', end_time:'16:30', material_text:'초 5,6',    homeroom_teacher:'Carmen', day_teachers:{ 월:'Carmen',   화:'Lily',         수:'Carmen',                    금:'Carmen'    }, memo:'' },
+        { truth_row:10, period_order:2, period_label:'2교시', start_time:'15:50', end_time:'16:30', material_text:'RS2-2',     homeroom_teacher:'Carmen', day_teachers:{ 월:'Foreigner',화:'Carmen',       수:'Carmen',    목:'Carmen',    금:'Zoe'       }, memo:'' },
+        { truth_row:11, period_order:2, period_label:'2교시', start_time:'15:50', end_time:'16:30', material_text:'FP2',       homeroom_teacher:'STACY',  day_teachers:{ 월:'STACY',    화:'Foreigner',    수:'IVY',       목:'STACY',     금:'STACY'     }, memo:'' },
+        { truth_row:12, period_order:2, period_label:'2교시', start_time:'15:50', end_time:'16:30', material_text:'RTH 2',     homeroom_teacher:'Zoe',    day_teachers:{ 월:'Zoe',      화:'Zoe',          수:'STACY',     목:'Zoe',       금:'Foreigner' }, memo:'' },
+        // 3교시 16:30~17:10
+        { truth_row:13, period_order:3, period_label:'3교시', start_time:'16:30', end_time:'17:10', material_text:'RS4',       homeroom_teacher:'STACY',  day_teachers:{ 월:'STACY',    화:'STACY',        수:'Zoe',       목:'Foreigner', 금:'STACY'     }, memo:'' },
+        { truth_row:14, period_order:3, period_label:'3교시', start_time:'16:30', end_time:'17:10', material_text:'LT4',       homeroom_teacher:'Zoe',    day_teachers:{ 월:'Zoe',      화:'Foreigner',    수:'Foreigner', 목:'Zoe',       금:'Zoe'       }, memo:'프-영-수' },
+        { truth_row:15, period_order:3, period_label:'3교시', start_time:'16:30', end_time:'17:10', material_text:'현우5',     homeroom_teacher:'IVY',    day_teachers:{                화:'Lily',                         목:'Lily',       금:'IVY'       }, memo:'' },
+        { truth_row:16, period_order:3, period_label:'3교시', start_time:'16:30', end_time:'17:10', material_text:'승재5',     homeroom_teacher:'IVY',    day_teachers:{ 월:'IVY',                         수:'IVY',                        금:'Foreigner' }, memo:'' },
+        { truth_row:17, period_order:3, period_label:'3교시', start_time:'16:30', end_time:'17:10', material_text:'CH5,6',     homeroom_teacher:'Lily',   day_teachers:{ 월:'Lily',     화:'Lily',         수:'Lily',                       금:'Lily'      }, memo:'' },
+        { truth_row:18, period_order:3, period_label:'3교시', start_time:'16:30', end_time:'17:10', material_text:'JA 2-2',    homeroom_teacher:'Carmen', day_teachers:{ 월:'Foreigner',화:'Carmen',       수:'Carmen',    목:'Carmen',    금:'Carmen'    }, memo:'' },
+        // 4교시 17:10~17:50
+        { truth_row:19, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'현우5',     homeroom_teacher:'IVY',    day_teachers:{                화:'Lily',                         목:'Lily'                       }, memo:'금 PREP' },
+        { truth_row:20, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'승재5',     homeroom_teacher:'IVY',    day_teachers:{ 월:'IVY',                         수:'Lily',                       금:'IVY'       }, memo:'' },
+        { truth_row:21, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'LE 6',      homeroom_teacher:'Carmen', day_teachers:{ 월:'Carmen',   화:'Foreigner',    수:'Carmen',    목:'Zoe'                        }, memo:'' },
+        { truth_row:22, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'준서 6',    homeroom_teacher:'STACY',  day_teachers:{ 월:'Foreigner',                   수:'STACY',                     금:'Lily'      }, memo:'수/금 준서반' },
+        { truth_row:23, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'중1 윤재',  homeroom_teacher:'Zoe',    day_teachers:{                화:'Zoe',                           목:'Foreigner'                  }, memo:'목 윤재반 / 금 PREP' },
+        { truth_row:24, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'중2 시은',  homeroom_teacher:'STACY',  day_teachers:{                화:'Carmen, STACY',                 목:'IVY',       금:'STACY'     }, memo:'' },
+        { truth_row:25, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'중1 해율/채원', homeroom_teacher:'IVY', day_teachers:{ 월:'Lily',                       수:'IVY',                        금:'Foreigner' }, memo:'' },
+        { truth_row:26, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'민채A4',    homeroom_teacher:'Carmen', day_teachers:{                화:'STACY',                         목:'Carmen',    금:'Carmen'    }, memo:'' },
+        { truth_row:27, period_order:4, period_label:'4교시', start_time:'17:10', end_time:'17:50', material_text:'중1 예빈',  homeroom_teacher:'Zoe',    day_teachers:{ 월:'Zoe',                           수:'Foreigner',                  금:'Zoe'       }, memo:'' },
+        // 5교시 17:50~18:30
+        { truth_row:28, period_order:5, period_label:'5교시', start_time:'17:50', end_time:'18:30', material_text:'중1 예빈',  homeroom_teacher:'Zoe',    day_teachers:{ 월:'Lily',                          수:'Zoe'                                        }, memo:'금 PREP' },
+        { truth_row:29, period_order:5, period_label:'5교시', start_time:'17:50', end_time:'18:30', material_text:'중1C',      homeroom_teacher:'Carmen', day_teachers:{                화:'Carmen',                         목:'Foreigner', 금:'Carmen'    }, memo:'' },
+        { truth_row:30, period_order:5, period_label:'5교시', start_time:'17:50', end_time:'18:30', material_text:'중2 시은',  homeroom_teacher:'STACY',  day_teachers:{                화:'STACY',                          목:'STACY',     금:'STACY'     }, memo:'' },
+        { truth_row:31, period_order:5, period_label:'5교시', start_time:'17:50', end_time:'18:30', material_text:'예비중A2 해율/채원', homeroom_teacher:'IVY', day_teachers:{ 월:'Carmen',              수:'IVY',                        금:'IVY'       }, memo:'' },
+        { truth_row:32, period_order:5, period_label:'5교시', start_time:'17:50', end_time:'18:30', material_text:'윤재 중1-6', homeroom_teacher:'Zoe',   day_teachers:{                화:'Zoe',                           목:'Lily',      금:'Zoe'       }, memo:'' },
+        { truth_row:33, period_order:5, period_label:'5교시', start_time:'17:50', end_time:'18:30', material_text:'준서6',     homeroom_teacher:'STACY',  day_teachers:{ 월:'STACY',                         수:'STACY',                     금:'Foreigner' }, memo:'월/수 준서' },
+        // 6교시 18:30~19:15
+        { truth_row:34, period_order:6, period_label:'6교시', start_time:'18:30', end_time:'19:15', material_text:'중3A',      homeroom_teacher:'Zoe',    day_teachers:{                화:'Zoe',                           목:'Zoe',       금:'STACY'     }, memo:'금 중3 A+B READING' },
+        { truth_row:35, period_order:6, period_label:'6교시', start_time:'18:30', end_time:'19:15', material_text:'중2-1',     homeroom_teacher:'IVY',    day_teachers:{                화:'IVY',                           목:'IVY',       금:'IVY'       }, memo:'금 중2 1+2 READING' },
+        { truth_row:36, period_order:6, period_label:'6교시', start_time:'18:30', end_time:'19:15', material_text:'중2A',      homeroom_teacher:'Zoe',    day_teachers:{ 월:'Zoe',                           수:'Foreigner',                  금:'Zoe'       }, memo:'' },
+        { truth_row:37, period_order:6, period_label:'6교시', start_time:'18:30', end_time:'19:15', material_text:'중2-2',     homeroom_teacher:'IVY',    day_teachers:{ 월:'IVY',                           수:'IVY'                                        }, memo:'금 합반' },
+        { truth_row:38, period_order:6, period_label:'6교시', start_time:'18:30', end_time:'19:15', material_text:'중1BB',     homeroom_teacher:'STACY',  day_teachers:{                화:'STACY',                          목:'STACY',     금:'Foreigner' }, memo:'' },
+        { truth_row:39, period_order:6, period_label:'6교시', start_time:'18:30', end_time:'19:15', material_text:'중3B',      homeroom_teacher:'STACY',  day_teachers:{ 월:'STACY',                         수:'STACY'                                      }, memo:'금 합반' },
+        // 7교시 19:15~20:00
+        { truth_row:40, period_order:7, period_label:'7교시', start_time:'19:15', end_time:'20:00', material_text:'중3A',      homeroom_teacher:'Zoe',    day_teachers:{                화:'Zoe',                           목:'Zoe',       금:'STACY'     }, memo:'금 중3 A+B READING' },
+        { truth_row:41, period_order:7, period_label:'7교시', start_time:'19:15', end_time:'20:00', material_text:'중2A',      homeroom_teacher:'Zoe',    day_teachers:{ 월:'Zoe',                           수:'Zoe',                        금:'Zoe'       }, memo:'' },
+        { truth_row:42, period_order:7, period_label:'7교시', start_time:'19:15', end_time:'20:00', material_text:'중1BB',     homeroom_teacher:'STACY',  day_teachers:{                화:'STACY',                          목:'STACY',     금:'Lily'      }, memo:'' },
+        { truth_row:43, period_order:7, period_label:'7교시', start_time:'19:15', end_time:'20:00', material_text:'중3',       homeroom_teacher:'STACY',  day_teachers:{ 월:'STACY',                         수:'STACY',                     금:'STACY'     }, memo:'금 중3 A+B READING' },
+        { truth_row:44, period_order:7, period_label:'7교시', start_time:'19:15', end_time:'20:00', material_text:'중2 형우',  homeroom_teacher:'STACY',  day_teachers:{ 월:'IVY',                           수:'IVY',                        금:'Foreigner' }, memo:'금 중2 합반' },
+        { truth_row:45, period_order:7, period_label:'7교시', start_time:'19:15', end_time:'20:00', material_text:'중2 나은이반', homeroom_teacher:'IVY', day_teachers:{                화:'IVY',                           목:'IVY',       금:'Foreigner' }, memo:'금 중2 합반' },
+        // 8교시 20:00~20:45
+        { truth_row:46, period_order:8, period_label:'8교시', start_time:'20:00', end_time:'20:45', material_text:'단어 클리닉', homeroom_teacher:'',     day_teachers:{}, memo:'' }
+    ];
+
     const viewState = {
         selectedDay: '',
         selectedSessionId: '',
@@ -25,7 +83,12 @@
         miniError: '',
         miniNotice: '',
         activeTeacherDay: '월',
-        lastError: ''
+        lastError: '',
+        repairMode: false,
+        repairPreview: null,
+        repairSaving: false,
+        repairError: '',
+        repairNotice: ''
     };
 
     let eventsBound = false;
@@ -1213,17 +1276,352 @@
         }
     }
 
+    // ── Repair helpers ─────────────────────────────────────────────
+
+    function normalizeTruthTeacher(raw) {
+        const t = normalizeKey(raw);
+        if (!t) return '';
+        if (/^forei|원어민|외국인/i.test(t)) return 'Foreigner';
+        if (/^stacy$/i.test(t)) return 'STACY';
+        if (/^ivy$/i.test(t)) return 'IVY';
+        if (/^zoe$/i.test(t)) return 'Zoe';
+        if (/^carmen$/i.test(t)) return 'Carmen';
+        if (/^lily$/i.test(t)) return 'Lily';
+        if (/^laura$/i.test(t)) return 'Laura';
+        return t;
+    }
+
+    function normalizeTruthDayTeachers(raw) {
+        const result = {};
+        if (!raw || typeof raw !== 'object') return result;
+        DAY_ORDER.slice(0, 5).forEach(day => {
+            const value = raw[day];
+            if (!value) return;
+            const teachers = asTeacherList(value).map(normalizeTruthTeacher).filter(Boolean);
+            if (teachers.length) result[day] = teachers;
+        });
+        return result;
+    }
+
+    // 교재명 정규화 (완전 일치 비교용): 소문자, 공백 단일화만 — 특수문자는 유지
+    function exactNormalize(s) {
+        return normalizeKey(s).toLowerCase().replace(/\s+/g, ' ').trim();
+    }
+
+    const REPAIR_MATCH_LABELS = {
+        exact:        '완전 일치',
+        homeroom_only:'담임만 일치',
+        material_only:'교재만 일치',
+        ambiguous:    '중복 후보',
+        unmatched:    '미매칭',
+        skip:         '-'
+    };
+
+    const REPAIR_RISK_LABELS = {
+        exact:        '낮음',
+        homeroom_only:'중간',
+        material_only:'높음',
+        ambiguous:    '확인필요',
+        unmatched:    '확인필요',
+        skip:         '-'
+    };
+
+    // exact: 교시 + 담임 + 교재명 모두 정규화 완전 일치
+    // homeroom_only / material_only / ambiguous / unmatched 는 자동 선택 금지
+    function matchTruthRowToSessions(truthRow, sessions) {
+        const periodOrder = Number(truthRow.period_order);
+        const truthHomeroom = normalizeTruthTeacher(truthRow.homeroom_teacher || '');
+        const truthMat = exactNormalize(truthRow.material_text || '');
+
+        const periodSessions = sessions.filter(s => Number(s.period_order) === periodOrder);
+        if (!periodSessions.length) return { session: null, matchType: 'unmatched', candidates: [] };
+
+        // 1. exact: 교시 + 담임 + 교재 모두 일치
+        if (truthHomeroom && truthMat) {
+            const exact = periodSessions.filter(s =>
+                teacherKey(truthHomeroom) === teacherKey(sessionHomeroomName(s)) &&
+                exactNormalize(s.material || '') === truthMat
+            );
+            if (exact.length === 1) return { session: exact[0], matchType: 'exact', candidates: [] };
+            if (exact.length > 1) return { session: null, matchType: 'ambiguous', candidates: exact };
+        }
+
+        // 2. homeroom_only: 교시 + 담임 일치, 교재 불일치
+        if (truthHomeroom) {
+            const hrOnly = periodSessions.filter(s =>
+                teacherKey(truthHomeroom) === teacherKey(sessionHomeroomName(s))
+            );
+            if (hrOnly.length === 1) return { session: hrOnly[0], matchType: 'homeroom_only', candidates: [] };
+            if (hrOnly.length > 1) return { session: null, matchType: 'ambiguous', candidates: hrOnly };
+        }
+
+        // 3. material_only: 교시 + 교재 일치, 담임 불일치
+        if (truthMat) {
+            const matOnly = periodSessions.filter(s =>
+                exactNormalize(s.material || '') === truthMat
+            );
+            if (matOnly.length === 1) return { session: matOnly[0], matchType: 'material_only', candidates: [] };
+        }
+
+        return { session: null, matchType: 'unmatched', candidates: [] };
+    }
+
+    function getRepairDiff(truthRow, session) {
+        const changes = [];
+        const truthMaterial = normalizeKey(truthRow.material_text);
+        const currentMaterial = normalizeKey(session ? session.material : '');
+        if (truthMaterial !== currentMaterial) {
+            changes.push({ field: 'material_text', label: '교재명', from: currentMaterial || '없음', to: truthMaterial });
+        }
+
+        const truthHomeroom = normalizeTruthTeacher(truthRow.homeroom_teacher || '');
+        const currentHomeroom = session ? sessionHomeroomName(session) : '';
+        if (truthHomeroom && teacherKey(truthHomeroom) !== teacherKey(currentHomeroom)) {
+            changes.push({ field: 'homeroom_teacher', label: '담임', from: currentHomeroom || '없음', to: truthHomeroom });
+        }
+
+        const truthDays = normalizeTruthDayTeachers(truthRow.day_teachers || {});
+        const currentDays = session ? (session.day_teachers || {}) : {};
+        DAY_ORDER.slice(0, 5).forEach(day => {
+            const tList = (truthDays[day] || []).map(normalizeTruthTeacher);
+            const cList = (currentDays[day] || []).map(normalizeTruthTeacher);
+            const tStr = tList.join(', ');
+            const cStr = cList.join(', ');
+            if (tStr !== cStr) {
+                changes.push({ field: 'day_' + day, label: day, day, from: cStr || '없음', to: tStr || '없음' });
+            }
+        });
+
+        const truthMemo = normalizeKey(truthRow.memo || '');
+        const currentMemo = normalizeKey(session ? (session.memo || '') : '');
+        if (truthMemo && truthMemo !== currentMemo) {
+            changes.push({ field: 'memo', label: '메모', from: currentMemo || '없음', to: truthMemo });
+        }
+
+        return changes;
+    }
+
+    function buildRepairPreview(truthRows, sessions) {
+        return truthRows.map((tr, idx) => {
+            if (!tr.homeroom_teacher) {
+                return { idx, truthRow: tr, session: null, matchType: 'skip', candidates: [], diff: [], status: 'skip', selected: false };
+            }
+            const { session, matchType, candidates } = matchTruthRowToSessions(tr, sessions);
+            const diff = session ? getRepairDiff(tr, session) : [];
+            const status = !session ? 'unmatched' : !diff.length ? 'same' : 'needs_change';
+            // exact + 변경있을 때만 기본 체크
+            const selected = matchType === 'exact' && status === 'needs_change';
+            return { idx, truthRow: tr, session, matchType, candidates, diff, status, selected };
+        });
+    }
+
+    function renderRepairRow(item) {
+        const { idx, truthRow, session, matchType, diff, status, selected } = item;
+        // exact만 선택 가능. 나머지(homeroom_only, material_only, ambiguous, unmatched)는 비활성
+        const selectable = matchType === 'exact' && status === 'needs_change';
+        const rowClass = {
+            same: '',
+            needs_change: matchType === 'exact' ? 'is-changed' : 'is-changed is-warn',
+            unmatched: 'is-unmatched',
+            skip: 'is-skip'
+        };
+        const statusText = { same: '변경 없음', needs_change: '변경 필요', unmatched: '미매칭', skip: '-' };
+
+        const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids : [];
+        const cellIdDisplay = cellIds.length ? cellIds[0].slice(0, 8) + (cellIds.length > 1 ? `…+${cellIds.length - 1}` : '') : '-';
+        const currentMat = session ? (session.material || '-') : '-';
+        const currentHomeroom = session ? (sessionHomeroomName(session) || '-') : '-';
+        const currentTime = session ? `${session.period_label || '-'} ${displayTimeRange(session.start_time, session.end_time)}` : '-';
+        const diffSummary = diff.length ? diff.map(d => d.label).join(', ') : '';
+
+        return `<tr class="eie-v2-repair-row ${rowClass[status] || ''}" data-repair-idx="${idx}">
+            <td><input type="checkbox" data-eie-repair-select="${idx}" ${selected ? 'checked' : ''} ${!selectable ? 'disabled' : ''}></td>
+            <td class="eie-v2-repair-num">${truthRow.truth_row}</td>
+            <td class="eie-v2-repair-cellid" title="${esc(cellIds.join(', '))}">${esc(cellIdDisplay)}</td>
+            <td class="eie-v2-repair-cur-mat ${matchType === 'material_only' || matchType === 'exact' ? '' : 'is-muted'}" title="${esc(currentMat)}">${esc(currentMat)}</td>
+            <td class="eie-v2-repair-cur-teacher ${matchType === 'homeroom_only' || matchType === 'exact' ? '' : 'is-muted'}">${esc(currentHomeroom)}</td>
+            <td class="eie-v2-repair-cur-time">${esc(currentTime)}</td>
+            <td class="eie-v2-repair-mat" title="${esc(truthRow.material_text)}">${esc(truthRow.material_text || '-')}</td>
+            <td class="eie-v2-repair-teacher">${esc(normalizeTruthTeacher(truthRow.homeroom_teacher || '') || '-')}</td>
+            <td><em class="eie-v2-repair-badge is-match-${matchType}">${esc(REPAIR_MATCH_LABELS[matchType] || matchType)}</em></td>
+            <td><em class="eie-v2-repair-badge is-risk-${REPAIR_RISK_LABELS[matchType]?.replace(/[^a-z가-힣]/g, '') || 'unknown'}">${esc(REPAIR_RISK_LABELS[matchType] || '-')}</em></td>
+            <td>
+                <em class="eie-v2-repair-badge is-${status}">${esc(statusText[status] || status)}</em>
+                ${diffSummary ? `<span class="eie-v2-repair-diff-hint" title="${esc(diff.map(d => d.label + ': ' + d.from + '→' + d.to).join(' / '))}">· ${esc(diffSummary)}</span>` : ''}
+            </td>
+        </tr>`;
+    }
+
+    function renderRepairPanel(preview) {
+        if (!preview) return '<div class="eie-v2-repair-loading">시간표 비교 중...</div>';
+        const counts = { same: 0, needs_change: 0, unmatched: 0, ambiguous: 0 };
+        preview.forEach(item => {
+            if (item.status === 'needs_change') counts.needs_change++;
+            else if (item.status === 'same') counts.same++;
+            else if (item.status === 'unmatched') counts.unmatched++;
+            if (item.matchType === 'ambiguous') counts.ambiguous++;
+        });
+        const exactSelected = preview.filter(i => i.selected && i.matchType === 'exact' && i.status === 'needs_change' && i.session);
+        const hasSelected = exactSelected.length > 0;
+        return `
+            <div class="eie-v2-repair-panel">
+                <div class="eie-v2-repair-head">
+                    <h2>시간표 정리 미리보기</h2>
+                    <p>변경 없음 <strong>${counts.same}</strong>건 &middot; 변경 필요 <strong>${counts.needs_change}</strong>건 &middot; 미매칭 <strong>${counts.unmatched}</strong>건${counts.ambiguous ? ` &middot; 중복후보 <strong>${counts.ambiguous}</strong>건` : ''}</p>
+                    <p class="eie-v2-repair-legend"><em class="eie-v2-repair-badge is-match-exact">완전 일치</em> 만 기본 체크됩니다. 다른 항목은 직접 확인 후 선택하세요.</p>
+                    ${viewState.repairError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.repairError)}</div>` : ''}
+                    ${viewState.repairNotice ? `<div class="eie-v2-info" role="status">${esc(viewState.repairNotice)}</div>` : ''}
+                </div>
+                <div class="eie-v2-repair-actions">
+                    <button type="button" class="eie-primary-button" data-eie-repair-apply ${viewState.repairSaving || !hasSelected ? 'disabled' : ''}>${viewState.repairSaving ? '적용 중...' : `선택 항목 적용 (${exactSelected.length}건)`}</button>
+                    <button type="button" class="eie-secondary-button" data-eie-repair-select-all>전체 선택</button>
+                    <button type="button" class="eie-secondary-button" data-eie-repair-select-none>전체 해제</button>
+                    <button type="button" class="eie-secondary-button" data-eie-repair-close>닫기</button>
+                </div>
+                <div class="eie-v2-repair-scroll">
+                    <table class="eie-v2-repair-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>truth#</th>
+                                <th>cell_id</th>
+                                <th>현재 교재명</th>
+                                <th>현재 담임</th>
+                                <th>현재 시간</th>
+                                <th>정답 교재명</th>
+                                <th>정답 담임</th>
+                                <th>매칭 방식</th>
+                                <th>위험도</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${preview.map(renderRepairRow).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>`;
+    }
+
+    async function applyRepairChanges() {
+        if (viewState.repairSaving) return;
+        const preview = viewState.repairPreview;
+        if (!preview) return;
+
+        const selected = preview.filter(item =>
+            item.selected &&
+            item.matchType === 'exact' &&
+            item.status === 'needs_change' &&
+            item.session &&
+            Array.isArray(item.session.source_rows) && item.session.source_rows.length
+        );
+        if (!selected.length) {
+            viewState.repairError = '적용할 변경 항목이 없습니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        if (!window.EieApi?.updateTimetableCell) {
+            viewState.repairError = 'API를 사용할 수 없습니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+
+        // 적용 전 confirm: cell_id와 truth_row 목록 표시
+        const confirmLines = selected.map(item => {
+            const cellIds = Array.isArray(item.session.source_cell_ids) ? item.session.source_cell_ids : [];
+            return `[truth#${item.truthRow.truth_row}] ${item.truthRow.material_text} → cell: ${cellIds.join(', ') || '(id없음)'}`;
+        });
+        const confirmMsg = `적용 대상 (${selected.length}건):\n\n${confirmLines.join('\n')}\n\n계속하시겠습니까?\n\n※ material_text · homeroom_teacher · day_teachers · memo만 수정합니다.\n   학생배정 · cell_id · 교시 · 시간 · 출결 · 숙제 · 상담은 변경되지 않습니다.`;
+        if (!window.confirm(confirmMsg)) return;
+
+        viewState.repairSaving = true;
+        viewState.repairError = '';
+        viewState.repairNotice = '';
+        if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+
+        let successCount = 0;
+        const failures = [];
+
+        try {
+            for (const item of selected) {
+                const { truthRow, session } = item;
+                const sourceRows = session.source_rows;
+                const truthDays = normalizeTruthDayTeachers(truthRow.day_teachers || {});
+                const homeroom = normalizeTruthTeacher(truthRow.homeroom_teacher || '');
+                const material = normalizeKey(truthRow.material_text);
+                const memo = normalizeKey(truthRow.memo || '');
+
+                let rowSuccess = 0;
+                let rowError = null;
+                for (const row of sourceRows) {
+                    const rowId = normalizeKey(row?.id || row?.cell_id || '');
+                    if (!rowId) continue;
+                    try {
+                        const meta = getRawMeta(row);
+                        const payload = {
+                            material_text: material,
+                            material,
+                            raw_meta_json: {
+                                ...meta,
+                                material_text: material,
+                                homeroom_teacher: homeroom,
+                                day_teachers: truthDays,
+                                teacher_names_by_day: truthDays,
+                                ...(memo ? { memo } : {})
+                            }
+                        };
+                        if (homeroom && homeroom !== '미정') payload.teacher_name_raw = homeroom;
+                        if (memo) payload.memo = memo;
+                        await window.EieApi.updateTimetableCell(rowId, payload);
+                        rowSuccess++;
+                    } catch (err) {
+                        rowError = rowError || err;
+                    }
+                }
+                if (rowSuccess > 0) {
+                    successCount++;
+                } else {
+                    failures.push({ label: `truth#${truthRow.truth_row} ${truthRow.material_text}`, error: rowError?.message || '저장 실패' });
+                }
+            }
+
+            const refreshed = await refreshTimetableRowsAfterMiniSave();
+            const updatedSessions = buildDisplaySessions(
+                refreshed.length ? refreshed : (window.EieState?.get?.()?.timetableCells || [])
+            );
+            viewState.repairPreview = buildRepairPreview(EIE_TRUTH_TABLE, updatedSessions);
+
+            if (successCount === 0) {
+                viewState.repairError = `전체 실패 (${failures.length}건): ${failures.map(f => f.label).join(', ')}`;
+            } else if (failures.length > 0) {
+                viewState.repairError = `${successCount}건 저장 / ${failures.length}건 실패: ${failures.map(f => f.label).join(', ')}`;
+            } else {
+                viewState.repairNotice = `${successCount}건 저장 완료`;
+            }
+        } catch (err) {
+            viewState.repairError = err?.message || '저장 실패';
+        } finally {
+            viewState.repairSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        }
+    }
+
+    // ── Repair helpers end ──────────────────────────────────────────
+
     function renderHeader(error) {
         return `
             <div class="eie-v2-page-head eie-v2-card-head">
                 <div class="eie-v2-title-row">
-                    <h1 id="eie-v2-title">시간표</h1>
+                    <h1 id="eie-v2-title">${viewState.repairMode ? '시간표 정리' : '시간표'}</h1>
                 </div>
                 <div class="eie-v2-head-actions">
-                    <button type="button" class="eie-secondary-button" data-eie-route="timetable-v2" aria-label="시간표 편집 열기">편집</button>
-                    <label class="eie-v2-search" aria-label="학생 또는 교재 검색">
-                        <input type="search" data-eie-v2-search placeholder="학생 또는 교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
-                    </label>
+                    ${viewState.repairMode
+                        ? `<button type="button" class="eie-secondary-button" data-eie-repair-close>← 시간표로</button>`
+                        : `<button type="button" class="eie-secondary-button" data-eie-repair-open>정리</button>
+                           <label class="eie-v2-search" aria-label="학생 또는 교재 검색">
+                               <input type="search" data-eie-v2-search placeholder="학생 또는 교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
+                           </label>`
+                    }
                 </div>
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}
@@ -1335,6 +1733,66 @@
                 viewState.selectedSessionId = '';
                 clearStudentPanel();
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const repairOpenButton = event.target.closest?.('[data-eie-repair-open]');
+            if (repairOpenButton) {
+                event.preventDefault();
+                viewState.repairMode = true;
+                viewState.repairPreview = null;
+                viewState.repairError = '';
+                viewState.repairNotice = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const repairCloseButton = event.target.closest?.('[data-eie-repair-close]');
+            if (repairCloseButton) {
+                event.preventDefault();
+                viewState.repairMode = false;
+                viewState.repairPreview = null;
+                viewState.repairError = '';
+                viewState.repairNotice = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const repairApplyButton = event.target.closest?.('[data-eie-repair-apply]');
+            if (repairApplyButton) {
+                event.preventDefault();
+                applyRepairChanges();
+                return;
+            }
+            const repairSelectAllButton = event.target.closest?.('[data-eie-repair-select-all]');
+            if (repairSelectAllButton) {
+                event.preventDefault();
+                if (viewState.repairPreview) {
+                    viewState.repairPreview.forEach(item => {
+                        if (item.matchType === 'exact' && item.status === 'needs_change') item.selected = true;
+                        else item.selected = false;
+                    });
+                }
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const repairSelectNoneButton = event.target.closest?.('[data-eie-repair-select-none]');
+            if (repairSelectNoneButton) {
+                event.preventDefault();
+                if (viewState.repairPreview) {
+                    viewState.repairPreview.forEach(item => { item.selected = false; });
+                }
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+        });
+        document.addEventListener('change', event => {
+            const repairCb = event.target.closest?.('[data-eie-repair-select]');
+            if (repairCb && viewState.repairPreview) {
+                const idx = Number(repairCb.getAttribute('data-eie-repair-select'));
+                if (viewState.repairPreview[idx]) viewState.repairPreview[idx].selected = repairCb.checked;
+                const applyBtn = document.querySelector('[data-eie-repair-apply]');
+                if (applyBtn) {
+                    const hasAny = viewState.repairPreview.some(i => i.selected && i.status === 'needs_change' && i.session);
+                    applyBtn.disabled = !hasAny;
+                }
             }
         });
         document.addEventListener('focusin', event => {
@@ -1665,6 +2123,23 @@
         const { rows, error } = await loadRows();
         const sessions = buildDisplaySessions(rows);
         lastRenderedSessions = sessions;
+
+        if (viewState.repairMode) {
+            if (!viewState.repairPreview) {
+                viewState.repairPreview = buildRepairPreview(EIE_TRUTH_TABLE, sessions);
+            }
+            return `
+                <section class="eie-v2-screen" aria-labelledby="eie-v2-title">
+                    ${renderHeader(error)}
+                    <div class="eie-v2-layout is-full">
+                        <div class="eie-v2-main">
+                            ${renderRepairPanel(viewState.repairPreview)}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
         const selectedSession = sessions.find(session => session.session_id === viewState.selectedSessionId) || null;
         const selectedPanel = renderSelectedPanel(selectedSession);
         const hasPanel = !!selectedPanel;
