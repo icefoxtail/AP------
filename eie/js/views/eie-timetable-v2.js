@@ -1153,12 +1153,17 @@
 
     function renderStudentEditPanel(student) {
         const saving = viewState.studentSaving;
+        const sid = studentRowId(student) || viewState.selectedStudentId;
         return `
             <aside class="eie-v2-detail-panel eie-v2-student-panel" aria-label="${esc(studentDisplayName(student))} 학생 수정">
                 <div class="eie-v2-detail-head">
                     <span>학생 수정</span>
                     <h3>${esc(studentDisplayName(student))}</h3>
                     ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
+                    <div class="eie-v2-detail-actions">
+                        <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '저장'}</button>
+                        <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
+                    </div>
                 </div>
                 <div class="eie-v2-student-form">
                     <label><span>학생명</span><input id="eie-v2-edit-name" type="text" value="${esc(studentDisplayName(student))}" autocomplete="off"></label>
@@ -1185,10 +1190,10 @@
                         </div>
                     </details>
                 </div>
-                <div class="eie-v2-detail-actions">
-                    <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '저장'}</button>
-                    <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
-                </div>
+                ${sid ? `
+                <div class="eie-v2-detail-actions" style="justify-content:flex-end;margin-top:8px;">
+                    <button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
+                </div>` : ''}
             </aside>
         `;
     }
@@ -1330,6 +1335,7 @@
                 </div>
                 <div class="eie-v2-detail-actions">
                     <button type="button" class="eie-primary-button" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
+                    <button type="button" class="eie-secondary-button" data-eie-v2-copy-period ${viewState.miniSaving ? 'disabled' : ''} title="이 반을 다음 교시에도 추가합니다">교시 복사</button>
                 </div>
             </div>
         `;
@@ -1885,6 +1891,12 @@
                 transferStudentToClass(transferConfirm.getAttribute('data-eie-v2-transfer-confirm') || '');
                 return;
             }
+            const copyPeriodButton = event.target.closest?.('[data-eie-v2-copy-period]');
+            if (copyPeriodButton) {
+                event.preventDefault();
+                copySessionToNextPeriod();
+                return;
+            }
             const addStudentToggle = event.target.closest?.('[data-eie-v2-add-student-toggle]');
             if (addStudentToggle) {
                 event.preventDefault();
@@ -2125,6 +2137,72 @@
         } finally {
             viewState.editSaving = false;
             if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        }
+    }
+
+    async function copySessionToNextPeriod() {
+        if (viewState.miniSaving) return;
+        const session = selectedSessionRecord();
+        if (!session) return;
+        if (!window.EieApi?.createTimetableCell) {
+            viewState.miniError = 'API를 사용할 수 없습니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        // 다음 교시 시간 계산
+        const curEnd = session.end_time || '';
+        // EIE_TRUTH_TABLE에서 현재 end_time과 start_time이 일치하는 교시 찾기
+        const nextPeriodFromTruth = EIE_TRUTH_TABLE.find(r => r.start_time === curEnd);
+        const nextStart = curEnd;
+        const nextEnd = nextPeriodFromTruth
+            ? nextPeriodFromTruth.end_time
+            : (() => {
+                // fallback: 현재 duration만큼 더함
+                const dur = timeToMinutes(session.end_time) - timeToMinutes(session.start_time);
+                return minutesToTime(timeToMinutes(curEnd) + dur);
+            })();
+        const nextOrder = Number(session.period_order || 0) + 1;
+        const nextLabel = nextPeriodFromTruth
+            ? nextPeriodFromTruth.period_label
+            : `${nextOrder}교시`;
+
+        const first = session.source_rows?.[0] || {};
+        const meta = getRawMeta(first);
+        const dayTeachers = session.day_teachers || meta.day_teachers || {};
+
+        viewState.miniSaving = true;
+        viewState.miniError = '';
+        viewState.miniNotice = '';
+        try {
+            const payload = {
+                material_text: session.material || '',
+                material: session.material || '',
+                teacher_name_raw: session.homeroom_teacher || '',
+                period_label: nextLabel,
+                period_order: nextOrder,
+                start_time: nextStart,
+                end_time: nextEnd,
+                status: 'active',
+                memo: session.memo || '',
+                raw_meta_json: {
+                    ...meta,
+                    material_text: session.material || '',
+                    homeroom_teacher: session.homeroom_teacher || '',
+                    day_teachers: dayTeachers,
+                    teacher_names_by_day: dayTeachers,
+                    ...(session.memo ? { memo: session.memo } : {})
+                }
+            };
+            await window.EieApi.createTimetableCell(payload);
+            if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+            await refreshTimetableRowsAfterMiniSave();
+            viewState.miniNotice = `${nextLabel} (${nextStart}~${nextEnd}) 복사 완료`;
+        } catch (error) {
+            viewState.miniError = error?.message || '복사 실패';
+        } finally {
+            viewState.miniSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            clearMiniNoticeLater(3000);
         }
     }
 
