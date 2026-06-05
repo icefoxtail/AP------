@@ -1,0 +1,509 @@
+/* v3.css — EIE 시간표 V3 전용 스타일
+   eie.css 로드 안 함. V3 독자 변수 사용.
+   카드/색상은 V2(eie-timetable-v2.js + eie.css 확정본)를 참고해 복제. */
+
+/* ─── 변수 ─── */
+:root {
+    /* 배경/텍스트 */
+    --v3-bg:           #F2F4F6;
+    --v3-surface:      #FFFFFF;
+    --v3-surface-2:    #F8FAFC;
+    --v3-text:         #191F28;
+    --v3-ink:          #0F172A;
+    --v3-muted:        #6B7684;
+    --v3-border:       #E2E8F0;
+    --v3-accent:       #1A5CFF;
+
+    /* 레이아웃 */
+    --v3-period-col-width: 54px;
+    --v3-teacher-col-min:  170px;
+    --v3-header-height:    52px;
+    --v3-tab-height:       44px;
+    --v3-radius:           14px;
+    --v3-radius-card:      12px;
+    --v3-radius-sm:        6px;
+
+    /* 카드 그림자 */
+    --v3-shadow-card: 0 5px 14px rgba(15,23,42,0.055);
+
+    /* 교사별 칩 색상 (V2 확정값 그대로) */
+    --v3-chip-bg-default:   rgba(248,250,252,0.88);
+    --v3-chip-bd-default:   rgba(148,163,184,0.16);
+    --v3-chip-bg-carmen:    rgba(245,130,98,0.14);
+    --v3-chip-bd-carmen:    rgba(245,130,98,0.30);
+    --v3-chip-bg-zoe:       rgba(59,130,246,0.13);
+    --v3-chip-bd-zoe:       rgba(59,130,246,0.28);
+    --v3-chip-bg-ivy:       rgba(139,92,246,0.13);
+    --v3-chip-bd-ivy:       rgba(139,92,246,0.28);
+    --v3-chip-bg-stacy:     rgba(34,197,94,0.12);
+    --v3-chip-bd-stacy:     rgba(34,197,94,0.26);
+    --v3-chip-bg-lily:      rgba(234,179,8,0.15);
+    --v3-chip-bd-lily:      rgba(234,179,8,0.30);
+    --v3-chip-bg-foreigner: rgba(100,116,139,0.12);
+    --v3-chip-bd-foreigner: rgba(100,116,139,0.24);
+
+    /* 교사별 헤더 색상 (V2 확정값) */
+    --v3-hdr-bg-carmen:    rgba(245,130,98,0.24);
+    --v3-hdr-bd-carmen:    rgba(245,130,98,0.48);
+    --v3-hdr-ac-carmen:    rgba(245,130,98,0.62);
+    --v3-hdr-bg-zoe:       rgba(59,130,246,0.22);
+    --v3-hdr-bd-zoe:       rgba(59,130,246,0.44);
+    --v3-hdr-ac-zoe:       rgba(59,130,246,0.58);
+    --v3-hdr-bg-ivy:       rgba(139,92,246,0.22);
+    --v3-hdr-bd-ivy:       rgba(139,92,246,0.44);
+    --v3-hdr-ac-ivy:       rgba(139,92,246,0.58);
+    --v3-hdr-bg-stacy:     rgba(34,197,94,0.20);
+    --v3-hdr-bd-stacy:     rgba(34,197,94,0.40);
+    --v3-hdr-ac-stacy:     rgba(34,197,94,0.54);
+    --v3-hdr-bg-lily:      rgba(234,179,8,0.24);
+    --v3-hdr-bd-lily:      rgba(234,179,8,0.46);
+    --v3-hdr-ac-lily:      rgba(234,179,8,0.58);
+    --v3-hdr-bg-foreigner: rgba(100,116,139,0.18);
+    --v3-hdr-bd-foreigner: rgba(100,116,139,0.34);
+    --v3-hdr-ac-foreigner: rgba(100,116,139,0.44);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--v3-bg);
+    color: var(--v3-text);
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ─── 앱 셸 ─── */
+.v3-app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ─── 헤더 ─── */
+.v3-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: var(--v3-header-height);
+    padding: 0 16px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--v3-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.v3-header-title {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--v3-text);
+}
+
+.v3-header-back {
+    font-size: 13px;
+    color: var(--v3-accent);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.v3-header-back:hover { text-decoration: underline; }
+
+/* ─── 탭 ─── */
+.v3-day-tabs {
+    position: sticky;
+    top: var(--v3-header-height);
+    z-index: 15;
+    height: var(--v3-tab-height);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px;
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid var(--v3-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.v3-day-tabs::-webkit-scrollbar { display: none; }
+
+.v3-tab {
+    flex-shrink: 0;
+    min-width: 48px;
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid var(--v3-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--v3-muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.v3-tab:hover { background: var(--v3-bg); color: var(--v3-text); }
+.v3-tab.is-active { background: var(--v3-accent); color: #fff; border-color: var(--v3-accent); }
+
+/* ─── 메인 ─── */
+.v3-main { flex: 1; padding: 12px; overflow: hidden; }
+
+/* ─── 보드 ─── */
+.v3-board { width: 100%; }
+.v3-board-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+}
+
+/* 보드 그리드: grid-template-columns / min-width 는 renderer.js에서 inline 주입 */
+.v3-board-grid {
+    display: grid;
+    gap: 0;
+    background: var(--v3-border);
+    border: 1px solid var(--v3-border);
+    border-radius: var(--v3-radius);
+    overflow: hidden;
+}
+
+/* 코너 */
+.v3-board-corner {
+    background: var(--v3-surface-2);
+    min-height: 42px;
+}
+
+/* ─── 선생님 헤더 (V2 eie-v2-teacher-frame-cell 참고) ─── */
+.v3-teacher-header {
+    min-height: 42px;
+    padding: 8px 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(241,245,249,0.92) 100%);
+    border: 1px solid rgba(15,23,42,0.10);
+    border-width: 0 0 1px 1px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--v3-ink);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 -2px 0 var(--v3-hdr-ac, rgba(148,163,184,0.28));
+}
+
+/* 선생님 헤더 교사별 색상 */
+.v3-teacher-header[data-teacher-key="carmen"]  { background-color: var(--v3-hdr-bg-carmen)  !important; border-color: var(--v3-hdr-bd-carmen)  !important; --v3-hdr-ac: var(--v3-hdr-ac-carmen); }
+.v3-teacher-header[data-teacher-key="zoe"]     { background-color: var(--v3-hdr-bg-zoe)     !important; border-color: var(--v3-hdr-bd-zoe)     !important; --v3-hdr-ac: var(--v3-hdr-ac-zoe); }
+.v3-teacher-header[data-teacher-key="ivy"]     { background-color: var(--v3-hdr-bg-ivy)     !important; border-color: var(--v3-hdr-bd-ivy)     !important; --v3-hdr-ac: var(--v3-hdr-ac-ivy); }
+.v3-teacher-header[data-teacher-key="stacy"]   { background-color: var(--v3-hdr-bg-stacy)   !important; border-color: var(--v3-hdr-bd-stacy)   !important; --v3-hdr-ac: var(--v3-hdr-ac-stacy); }
+.v3-teacher-header[data-teacher-key="lily"]    { background-color: var(--v3-hdr-bg-lily)    !important; border-color: var(--v3-hdr-bd-lily)    !important; --v3-hdr-ac: var(--v3-hdr-ac-lily); }
+.v3-teacher-header[data-teacher-key="foreigner"] { background-color: var(--v3-hdr-bg-foreigner) !important; border-color: var(--v3-hdr-bd-foreigner) !important; --v3-hdr-ac: var(--v3-hdr-ac-foreigner); }
+
+/* ─── 교시 row (V2 eie-v2-period-row 참고) ─── */
+.v3-period-row {
+    display: contents;
+}
+
+/* 교시 헤더 */
+.v3-period-head {
+    background: var(--v3-surface-2);
+    border-right: 1px solid var(--v3-border);
+    border-bottom: 1px solid var(--v3-border);
+    padding: 10px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 94px;
+}
+
+.v3-period-head strong {
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 1.08;
+    color: var(--v3-ink);
+    text-align: center;
+}
+.v3-period-head span {
+    font-size: 9px;
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+    color: var(--v3-muted);
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ─── 선생님 슬롯 (V2 eie-v2-teacher-slot 참고) ─── */
+.v3-teacher-slot {
+    min-height: 94px;
+    background: rgba(248,250,252,0.68);
+    border-left: 1px solid var(--v3-border);
+    border-bottom: 1px solid var(--v3-border);
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+}
+
+/* 2개 이상 카드: 2열 grid (renderer.js에서 inline style로 설정됨, CSS는 보조) */
+.v3-teacher-slot.has-multiple-cards {
+    align-items: start;
+}
+
+.v3-slot-empty {
+    flex: 1;
+    min-height: 60px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.42);
+}
+
+/* ─── 블록 카드 (V2 eie-v2-week-card 참고) ─── */
+.v3-week-card {
+    min-width: 0;
+    min-height: 78px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid rgba(15,23,42,0.10);
+    border-radius: var(--v3-radius-card);
+    box-shadow: var(--v3-shadow-card);
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* ─── 교재 행 (V2 eie-v2-card-material-row 참고) ─── */
+.v3-card-material-row {
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr);
+    gap: 4px;
+    align-items: center;
+    min-width: 0;
+}
+
+.v3-card-period-chip,
+.v3-card-material-chip {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 6px;
+    line-height: 1.08;
+    padding: 3px 5px;
+}
+
+/* 교시 칩: 라벨 배경 (V2 material-row span) */
+.v3-card-period-chip {
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--v3-muted);
+    background: rgba(251,243,219,0.82);
+    border: 1px solid rgba(217,182,112,0.20);
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* 교재명 칩: 강조 배경 (V2 material-row strong) */
+.v3-card-material-chip {
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    color: var(--v3-ink);
+    background: rgba(251,243,219,0.82);
+    border: 1px solid rgba(217,182,112,0.20);
+}
+
+/* ─── 요일별 담당 그리드 (V2 eie-v2-card-days-row 참고) ─── */
+.v3-card-schedule { overflow: hidden; }
+
+/* 6열 grid: 교시라벨 + 월화수목금 */
+.v3-card-days-grid {
+    display: grid;
+    grid-template-columns: auto repeat(5, minmax(0,1fr));
+    gap: 3px;
+    align-items: center;
+    min-width: 0;
+}
+
+/* head 셀 (요일 이름) */
+.v3-card-day-head {
+    display: block;
+    padding: 3px 1px;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--v3-muted);
+    background: rgba(241,245,249,0.96);
+    border: 1px solid rgba(148,163,184,0.16);
+    border-radius: 6px;
+    text-align: center;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.05;
+}
+
+/* 교시 라벨 열 */
+.v3-card-period-col {
+    display: block;
+}
+.v3-card-period-label {
+    padding: 2px 3px;
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--v3-muted);
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* 담당 칩 기본 (V2 eie-v2-card-days-row.is-body span) */
+.v3-card-day-chip {
+    display: block;
+    padding: 4px 1px;
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--v3-ink);
+    background: var(--v3-chip-bg-default);
+    border: 1px solid var(--v3-chip-bd-default);
+    border-radius: 6px;
+    text-align: center;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.05;
+}
+
+/* 교사별 담당 칩 색상 (V2 확정값 그대로) */
+.v3-card-day-chip[data-teacher-key="carmen"]   { background: var(--v3-chip-bg-carmen);   border-color: var(--v3-chip-bd-carmen); }
+.v3-card-day-chip[data-teacher-key="zoe"]      { background: var(--v3-chip-bg-zoe);      border-color: var(--v3-chip-bd-zoe); }
+.v3-card-day-chip[data-teacher-key="ivy"]      { background: var(--v3-chip-bg-ivy);      border-color: var(--v3-chip-bd-ivy); }
+.v3-card-day-chip[data-teacher-key="stacy"]    { background: var(--v3-chip-bg-stacy);    border-color: var(--v3-chip-bd-stacy); }
+.v3-card-day-chip[data-teacher-key="lily"]     { background: var(--v3-chip-bg-lily);     border-color: var(--v3-chip-bd-lily); }
+.v3-card-day-chip[data-teacher-key="foreigner"]{ background: var(--v3-chip-bg-foreigner);border-color: var(--v3-chip-bd-foreigner); }
+
+/* PREP 담당 칩 */
+.v3-card-day-chip.is-prep {
+    background: rgba(255,140,0,0.18);
+    border-color: rgba(255,140,0,0.38);
+    color: #b45309;
+}
+
+/* 요일별 보기: 선택 요일 강조 */
+.v3-card-day-chip.is-active {
+    background: rgba(26,92,255,0.16) !important;
+    border-color: rgba(26,92,255,0.38) !important;
+    color: var(--v3-accent) !important;
+    font-weight: 900;
+}
+
+/* ─── 학생 칩 (V2 eie-v2-card-student 참고) ─── */
+.v3-card-students {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.v3-card-students--empty {
+    font-size: 10.5px;
+    color: var(--v3-muted);
+}
+
+.v3-card-student {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 2px 5px;
+    border: 1px solid rgba(148,163,184,0.18);
+    border-radius: 5px;
+    background: rgba(255,255,255,0.88);
+    color: var(--v3-ink);
+    font-size: 10.5px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 48px;
+}
+
+/* 휴원 학생: 색상만 구분, 뱃지 없음 */
+.v3-card-student.is-paused {
+    background: rgba(241,245,249,0.80);
+    color: #94A3B8;
+    border-color: rgba(148,163,184,0.14);
+    opacity: 0.80;
+}
+
+/* ─── PREP 섹션 ─── */
+.v3-prep-section {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 2px solid var(--v3-border);
+}
+.v3-prep-section-title {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: #b45309;
+    margin-bottom: 10px;
+    padding: 0 2px;
+    text-transform: uppercase;
+}
+.v3-prep-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.v3-prep-cards .v3-week-card {
+    min-width: 180px;
+    max-width: 260px;
+    flex: 0 0 auto;
+}
+
+/* ─── 상태 ─── */
+.v3-loading {
+    padding: 40px 16px;
+    text-align: center;
+    color: var(--v3-muted);
+    font-size: 14px;
+}
+.v3-error {
+    padding: 24px 16px;
+    text-align: center;
+    color: #E53E3E;
+    font-size: 14px;
+    background: #FFF5F5;
+    border: 1px solid #FEB2B2;
+    border-radius: var(--v3-radius);
+    margin: 12px;
+}
+.v3-empty {
+    padding: 40px 16px;
+    text-align: center;
+    color: var(--v3-muted);
+    font-size: 14px;
+}
+
+/* ─── 반응형 ─── */
+@media (max-width: 640px) {
+    .v3-main { padding: 8px; }
+    .v3-board-grid {
+        /* 모바일: CSS 변수 재정의, grid-template-columns는 JS inline으로 갱신됨 */
+        --v3-period-col-width: 48px;
+        --v3-teacher-col-min:  140px;
+    }
+    .v3-week-card { padding: 6px; gap: 4px; }
+    .v3-card-material-chip { font-size: 10px; }
+    .v3-prep-cards .v3-week-card { min-width: 150px; }
+}

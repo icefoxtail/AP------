@@ -5548,12 +5548,16 @@ button.eie-v2-card-student:hover {
 
 .eie-v2-mini-student-grid .eie-v2-card-student {
     min-width: 0;
+    min-height: 36px;
     width: 100%;
+    padding: 7px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px;
     text-align: center;
-    white-space: normal;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    word-break: keep-all;
 }
 
 /* 신입생 등록 폼 */
@@ -5696,6 +5700,13 @@ button.eie-v2-card-student:hover {
     font-size: 14px;
     background: var(--eie-surface);
     color: var(--eie-text);
+}
+
+/* 추가 정보 섹션 하단 — 퇴원 버튼 우측 정렬 */
+.eie-v2-extra-fields-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
 }
 
 /* 퇴원 버튼 — 빨간 테두리 */

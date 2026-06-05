@@ -350,18 +350,49 @@ function renderMakeupChipPanelInner(studentId, date) {
 }
 
 async function clickMakeupChip(studentId, date, key) {
-    var sid = String(studentId);
-    var d   = String(date);
-    if (!sid || !d || !key) return;
-    // 중복 저장 방지: 동일 key가 저장 중인지 확인
-    var lockId = 'makeup-lock-' + sid + '-' + d + '-' + key;
+    var sid     = String(studentId);
+    var d       = normalizeClassroomDate(date) || getClassroomOperationDate();
+    var safeKey = String(key || '');
+    if (!sid || !d || !safeKey) return;
+    if (!MAKEUP_TAG_DEFS.some(function(t) { return t.key === safeKey; })) return;
+
+    var lockId = 'makeup-lock-' + sid + '-' + d + '-' + safeKey;
     if (window[lockId]) return;
     window[lockId] = true;
+
+    var meta     = getAttendanceMetaForStudentDate(sid, d);
+    var prevTags = stringifyAttendanceTags(meta.tags);
+    var prevMemo = meta.memo;
+    var nextTags = meta.tags.includes(safeKey)
+        ? meta.tags.filter(function(v) { return v !== safeKey; })
+        : meta.tags.concat(safeKey);
+    var nextTagText = stringifyAttendanceTags(nextTags);
+
+    // panel 존재 여부를 row 재렌더 전에 기억
+    var panelWasOpen = !!document.getElementById('makeup-panel-' + sid + '-' + d);
+
+    syncAttendanceMetaToState(sid, d, nextTags, prevMemo);
+    renderAttendanceLedgerCellIfOpen(sid, d);
+    if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+    refreshMakeupChipUi(sid, d, panelWasOpen);
+
     try {
-        await toggleAttendanceTag(sid, d, key);
+        var r = await api.patch('attendance', { studentId: sid, date: d, tags: nextTagText });
+        if (!r || !r.success) throw new Error('fail');
+    } catch (e) {
+        syncAttendanceMetaToState(sid, d, prevTags, prevMemo);
+        renderAttendanceLedgerCellIfOpen(sid, d);
+        if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+        refreshMakeupChipUi(sid, d, panelWasOpen);
+        toast('저장 실패', 'warn');
     } finally {
         window[lockId] = false;
     }
+}
+
+function refreshMakeupChipUi(studentId, date, panelWasOpen) {
+    var sid = String(studentId);
+    var d   = String(date);
     // expand 버튼 상태 갱신
     var btn = document.getElementById('makeup-btn-' + sid + '-' + d);
     if (btn) {
@@ -370,9 +401,20 @@ async function clickMakeupChip(studentId, date, key) {
         btn.setAttribute('aria-pressed', String(on));
         btn.textContent = on ? '○' : '';
     }
-    // 칩 패널 내용 갱신
-    var panel = document.getElementById('makeup-panel-' + sid + '-' + d);
-    if (panel) panel.innerHTML = renderMakeupChipPanelInner(sid, d);
+    // 칩 패널 복구/갱신
+    if (panelWasOpen) {
+        var panel = document.getElementById('makeup-panel-' + sid + '-' + d);
+        if (!panel) {
+            var row = document.getElementById('class-row-' + sid);
+            if (row) {
+                panel = document.createElement('div');
+                panel.id = 'makeup-panel-' + sid + '-' + d;
+                panel.className = 'makeup-chip-panel';
+                row.insertAdjacentElement('afterend', panel);
+            }
+        }
+        if (panel) panel.innerHTML = renderMakeupChipPanelInner(sid, d);
+    }
 }
 
 function hasConsultationForStudentDate(studentId, date) {

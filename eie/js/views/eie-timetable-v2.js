@@ -3,7 +3,7 @@
     // 상단 담임 열 고정 목록 (Carmen / Zoe / IVY / STACY / Lily 만 허용 — Laura · Foreigner 제외)
     const HOMEROOM_COLUMN_TEACHERS = ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily'];
     const DEFAULT_EIE_TEACHERS = ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily'];
-    const DEFAULT_EIE_DAY_TEACHERS = [...DEFAULT_EIE_TEACHERS, 'Foreigner'];
+    const DEFAULT_EIE_DAY_TEACHERS = [...DEFAULT_EIE_TEACHERS, 'Foreigner', 'PREP'];
     const FALLBACK_DAY_LABEL = '전체';
     const STATUS_LABELS = {
         active: '활성',
@@ -784,6 +784,9 @@
 
     function sortStudentsByName(students) {
         return [...(Array.isArray(students) ? students : [])].sort((a, b) => {
+            const aPaused = isPausedStudent(a) ? 1 : 0;
+            const bPaused = isPausedStudent(b) ? 1 : 0;
+            if (aPaused !== bPaused) return aPaused - bPaused;
             const left = studentSearchName(a) || a?.name || '';
             const right = studentSearchName(b) || b?.name || '';
             return String(left).localeCompare(String(right), 'ko', { sensitivity: 'base', numeric: true });
@@ -997,7 +1000,10 @@
             .filter(Boolean)
             .sort();
         if (keys.length) return `students:${keys.join('|')}`;
-        return `class:${normalizeKey(session?.material || session?.class_full_name || session?.session_id || '').toLowerCase()}`;
+        const mat = normalizeKey(session?.material || session?.class_full_name || '').toLowerCase();
+        const tch = normalizeKey(session?.homeroom_teacher || session?.teacher_name || '').toLowerCase();
+        if (mat) return `class:${mat}|teacher:${tch}`;
+        return `id:${normalizeKey(session?.session_id || '').toLowerCase()}`;
     }
 
     function laneMapKey(group, teacher) {
@@ -1037,13 +1043,17 @@
                     }
                 });
 
-                items.forEach(item => {
-                    if (item.lane) return;
-                    let lane = 1;
-                    while (occupied.has(lane)) lane += 1;
-                    item.lane = lane;
-                    occupied.add(lane);
-                });
+                // Pass 3: 남은 미배정 항목을 signature 기준 알파벳순으로 정렬 후 배정.
+                // rawCards 입력 순서에 무관하게 같은 반 세트가 항상 같은 lane을 받도록 한다.
+                [...items]
+                    .filter(item => !item.lane)
+                    .sort((a, b) => (a.signature || '').localeCompare(b.signature || ''))
+                    .forEach(item => {
+                        let lane = 1;
+                        while (occupied.has(lane)) lane += 1;
+                        item.lane = lane;
+                        occupied.add(lane);
+                    });
 
                 const nextLanes = new Map();
                 items.forEach(item => {
@@ -1326,7 +1336,6 @@
             <details class="eie-v2-hidden-actions">
                 <summary>숨김 목록</summary>
                 <div class="eie-v2-hidden-actions-body">
-                    <button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
                 </div>
             </details>
         `;
@@ -1516,6 +1525,7 @@
                             <label><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                             <label><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
                             <label class="is-wide"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
+                            ${sid ? `<div class="eie-v2-extra-fields-footer"><button type="button" class="eie-v2-retire-btn" data-eie-v2-retire-student="${esc(sid)}">퇴원</button></div>` : ''}
                         </div>
                     </details>
                 </div>

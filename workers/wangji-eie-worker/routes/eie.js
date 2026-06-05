@@ -166,12 +166,13 @@ async function checkSlotLaneDuplicate(env, cell) {
   try {
     const row = await env.DB.prepare(`
       SELECT id FROM eie_timetable_cells
-      WHERE COALESCE(day_label, '') = COALESCE(?, '')
-        AND COALESCE(period_order, 0) = COALESCE(?, 0)
-        AND COALESCE(column_index, 0) = COALESCE(?, 0)
-        AND COALESCE(slot_lane, 1) = ?
+      WHERE import_session_id = ?
+        AND COALESCE(day_label, '') = COALESCE(?, '')
+        AND period_label = ?
+        AND column_index = ?
+        AND slot_lane = ?
       LIMIT 1
-    `).bind(cell.day_label, cell.period_order, cell.column_index, cell.slot_lane).first();
+    `).bind(cell.import_session_id, cell.day_label, cell.period_label, cell.column_index, cell.slot_lane).first();
     return row || null;
   } catch (error) {
     return null;
@@ -1465,7 +1466,9 @@ async function handlePostTimetableCell(request, env) {
   const validationError = validateTimetableCell(cell);
   if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
   await ensureManualImportSession(env);
-  cell.column_index = await nextColumnIndex(env, cell);
+  if (!Number.isFinite(Number(cell.column_index))) {
+    cell.column_index = await nextColumnIndex(env, cell);
+  }
   const conflict = await checkSlotLaneDuplicate(env, cell);
   if (conflict) return uniqueCellConflictResponse();
   try {
