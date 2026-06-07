@@ -113,8 +113,7 @@
   .nav .divider { width: 1px; height: 16px; background: var(--border-strong); margin: 0 8px; }
 
   .hdr-actions { display: flex; align-items: center; gap: 8px; }
-  .hdr-actions .home-link { display: none; }
-  @media (min-width: 720px) { .hdr-actions .home-link { display: inline-flex; } }
+  .hdr-actions .home-link { display: inline-flex; }
 
   .burger { display: inline-flex; background: none; border: 0; padding: 8px; color: var(--fg-1); }
   @media (min-width: 980px) { .burger { display: none; } }
@@ -784,7 +783,6 @@
 </nav>
 <div class="hdr-actions">
 <a class="btn btn-secondary btn-sm home-link" href="../">왕지교육</a>
-<a class="btn btn-red btn-sm" href="#inquiry">상담 문의</a>
 <button aria-expanded="false" aria-label="메뉴 열기" class="burger" id="burger">
 <svg class="ic" height="24" width="24"><use href="#i-menu"></use></svg>
 </button>
