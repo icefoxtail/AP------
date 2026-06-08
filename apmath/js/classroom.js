@@ -1124,6 +1124,70 @@ function getClassroomActiveStudents(cid) {
         .sort((a, b) => (orderMap.get(String(a.id)) ?? 9999) - (orderMap.get(String(b.id)) ?? 9999));
 }
 
+const CLASS_PLANNER_DISCHARGED_VISIBLE_DAYS = 31;
+
+function isClassPlannerDischargedStudent(student) {
+    const status = String(student?.status || '').trim();
+    return status === '\uC81C\uC801' || status === '\uD1F4\uC6D0';
+}
+
+function getClassPlannerStudentUpdatedDate(student) {
+    const raw = String(student?.updated_at || student?.status_updated_at || '').trim();
+    const dateText = raw.match(/^\d{4}-\d{2}-\d{2}/)?.[0] || '';
+    return dateText ? parseClassPlannerDate(dateText) : null;
+}
+
+function isClassPlannerRecentlyDischargedForMonth(student, monthStart) {
+    if (!isClassPlannerDischargedStudent(student)) return false;
+    const dischargedAt = getClassPlannerStudentUpdatedDate(student);
+    const monthFirst = parseClassPlannerDate(getClassPlannerMonthStart(monthStart));
+    if (!dischargedAt || !monthFirst) return false;
+    const monthLast = new Date(monthFirst.getFullYear(), monthFirst.getMonth() + 1, 0);
+    const visibleUntil = new Date(
+        dischargedAt.getFullYear(),
+        dischargedAt.getMonth(),
+        dischargedAt.getDate() + CLASS_PLANNER_DISCHARGED_VISIBLE_DAYS
+    );
+    return dischargedAt <= monthLast && monthFirst <= visibleUntil;
+}
+
+function getClassroomMonthlyPlannerStudents(cid, monthStart) {
+    const classId = String(cid || '');
+    let rows = [];
+    if (typeof apmsGetDataIndexes === 'function') {
+        const idx = apmsGetDataIndexes();
+        rows = (idx.classStudentRowsByClassId.get(classId) || [])
+            .map((row, order) => ({ order, student: idx.studentsById.get(String(row.student_id || '')) }))
+            .filter(entry => {
+                const student = entry.student;
+                if (!student) return false;
+                if (student.status === '\uC7AC\uC6D0') return true;
+                return isClassPlannerRecentlyDischargedForMonth(student, monthStart);
+            });
+    } else {
+        const mIds = state.db.class_students
+            .filter(m => String(m.class_id) === classId)
+            .map(m => String(m.student_id));
+        const idSet = new Set(mIds);
+        const orderMap = new Map(mIds.map((id, idx) => [String(id), idx]));
+        rows = state.db.students
+            .filter(student => {
+                if (!idSet.has(String(student.id))) return false;
+                if (student.status === '\uC7AC\uC6D0') return true;
+                return isClassPlannerRecentlyDischargedForMonth(student, monthStart);
+            })
+            .map(student => ({ student, order: orderMap.get(String(student.id)) ?? 9999 }));
+    }
+    return rows
+        .sort((a, b) => a.order - b.order)
+        .map(entry => {
+            const student = entry.student;
+            return Object.assign({}, student, {
+                isPlannerDischarged: isClassPlannerRecentlyDischargedForMonth(student, monthStart)
+            });
+        });
+}
+
 function buildClassroomTodayMaps(students, today) {
     const todayAttMap = {};
     const todayHwMap = {};
@@ -2184,6 +2248,10 @@ function injectClassPlannerReviewStyles() {
             font-size: 13px;
             font-weight:500;
         }
+        .class-planner-review .cls-planner-discharged-row .cls-planner-week-student {
+            color: rgba(100, 116, 139, 0.38);
+            font-weight: 500;
+        }
         .class-planner-review .cls-planner-week-head-day,
         .class-planner-review .cls-planner-week-head-date {
             display: block;
@@ -2384,7 +2452,7 @@ async function loadClassPlannerWeek(classId, weekStart, force = false) {
     const cacheKey = buildClassPlannerWeekCacheKey(classId, weekStart);
     if (!force && state.ui.classPlannerWeekCache[cacheKey]) return state.ui.classPlannerWeekCache[cacheKey];
 
-    const students = getClassroomActiveStudents(classId);
+    const students = getClassroomMonthlyPlannerStudents(classId, safeMonthStart);
     const dates = getClassPlannerWeekDates(weekStart);
     const from = dates[0];
     const to = dates[dates.length - 1];
@@ -2495,7 +2563,7 @@ function renderClassPlannerMonthTable(classId, monthStart, monthData) {
                 </thead>
                 <tbody>
                     ${students.map(row => `
-                        <tr>
+                        <tr class="${row.student?.isPlannerDischarged ? 'cls-planner-discharged-row' : ''}">
                             <td class="cls-planner-week-student">${apEscapeHtml(row.student?.name || '학생')}</td>
                             ${dates.map(date => `<td>${renderClassPlannerWeekCell(row.plansByDate?.[date] || [])}</td>`).join('')}
                         </tr>

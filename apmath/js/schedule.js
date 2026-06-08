@@ -107,6 +107,33 @@ function formatScheduleDate(date) {
     return date.toLocaleDateString('sv-SE');
 }
 
+function parseScheduleTimeMinutes(timeText) {
+    const match = String(timeText || '').trim().match(/^(\d{1,2}):(\d{2})$/);
+    if (!match) return null;
+
+    const hours = Number(match[1]);
+    const minutes = Number(match[2]);
+    if (!Number.isInteger(hours) || !Number.isInteger(minutes)) return null;
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) return null;
+    return hours * 60 + minutes;
+}
+
+function isUnifiedScheduleVisible(row, now = new Date()) {
+    const scheduleDate = parseScheduleDate(row?.date);
+    if (!scheduleDate || !Number.isFinite(now?.getTime?.())) return true;
+
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    if (scheduleDate.getTime() < today.getTime()) return false;
+    if (scheduleDate.getTime() > today.getTime()) return true;
+
+    const endMinutes = parseScheduleTimeMinutes(row?.end_time);
+    if (endMinutes === null) return true;
+
+    const endAt = new Date(scheduleDate);
+    endAt.setHours(Math.floor(endMinutes / 60), endMinutes % 60, 0, 0);
+    return endAt.getTime() > now.getTime();
+}
+
 function getDateRangeList(startDate, endDate) {
     const start = parseScheduleDate(startDate);
     if (!start) {
@@ -134,7 +161,7 @@ function getDateRangeList(startDate, endDate) {
     return result;
 }
 
-function getUnifiedSchedules() {
+function getUnifiedSchedules(now = new Date()) {
     const examRows = (state.db.exam_schedules || []).map(e => ({
         kind: 'exam',
         id: e.id,
@@ -167,7 +194,7 @@ function getUnifiedSchedules() {
             };
         });
 
-    return [...examRows, ...academyRows].sort((a, b) => {
+    return [...examRows, ...academyRows].filter(s => isUnifiedScheduleVisible(s, now)).sort((a, b) => {
         const d = String(a.date || '').localeCompare(String(b.date || ''));
         if (d !== 0) return d;
 

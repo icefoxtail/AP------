@@ -3239,6 +3239,7 @@
                         ? `<button type="button" class="eie-primary-button" data-eie-edit-save ${viewState.editSaving ? 'disabled' : ''}>${viewState.editSaving ? '저장 중...' : '저장'}</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-cancel>취소</button>`
                         : `${renderWeekdayOverlayTabs(viewState.activeDayOverlay)}
+                           <button type="button" class="eie-secondary-button eie-v2-print-button" data-eie-print-timetable title="시간표 인쇄">인쇄</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표 편집</button>`
                     }
                 </div>
@@ -3560,6 +3561,12 @@
                 reopenPanelMountRoute();
                 return;
             }
+            const printButton = event.target.closest?.('[data-eie-print-timetable]');
+            if (printButton) {
+                event.preventDefault();
+                printTimetable();
+                return;
+            }
             const editToggleButton = event.target.closest?.('[data-eie-edit-toggle]');
             if (editToggleButton) {
                 event.preventDefault();
@@ -3682,6 +3689,20 @@
             }, 180);
         });
         eventsBound = true;
+    }
+
+    function printTimetable() {
+        const body = document && document.body;
+        if (body?.classList) body.classList.add('eie-printing-timetable');
+
+        const cleanup = () => {
+            if (body?.classList) body.classList.remove('eie-printing-timetable');
+            window.removeEventListener?.('afterprint', cleanup);
+        };
+
+        window.addEventListener?.('afterprint', cleanup, { once: true });
+        window.print?.();
+        window.setTimeout?.(cleanup, 1000);
     }
 
     function reopenPanelMountRoute() {

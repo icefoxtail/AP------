@@ -190,6 +190,8 @@ vm.runInContext(classroomSource, context, { filename: 'eie-classroom.js' });
   assert(html.includes('>전체</button>'), 'all-days tab should reset the weekday filter');
   assert(html.includes('담임 클래스'), 'all-days teacher classroom should separate homeroom classes');
   assert(html.includes('요일별 담당 클래스'), 'all-days teacher classroom should separate weekday-assigned classes');
+  assert(html.includes('eie-classroom-collapsed-group'), 'all-days teacher classroom should collapse weekday-assigned classes by default');
+  assert(html.includes('data-eie-classroom-teacher-key'), 'classroom teacher groups should carry timetable teacher color keys');
   assert(html.includes('Seungjae 5'), 'all-days tab should show the teacher full classroom list again');
 
   context.EieClassroomView.openTodayForTeacher('Lily', fixture.WEDNESDAY);
