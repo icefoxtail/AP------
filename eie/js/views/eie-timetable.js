@@ -1093,7 +1093,7 @@
         viewState.miniNoticeTimer = window.setTimeout(() => {
             viewState.miniNoticeTimer = 0;
             viewState.miniNotice = '';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }, delay || 2000);
     }
 
@@ -2745,7 +2745,16 @@
     }
 
     function classAttendanceStatusLabel(status) {
-        return normalizeKey(status) === '결석' ? '결석' : '출석';
+        const raw = normalizeKey(status);
+        const lower = raw.toLowerCase();
+        if (raw === '결석' || lower === 'absent') return '결석';
+        return '출석';
+    }
+
+    function classAttendanceStatusClass(status) {
+        const label = classAttendanceStatusLabel(status);
+        if (label === '결석') return 'is-absent';
+        return 'is-present';
     }
 
     function renderMiniClassAttendance(session) {
@@ -2761,7 +2770,8 @@
                         const name = studentSearchName(student) || student.name || '학생';
                         const record = classAttendanceRecord(sid, date);
                         const status = classAttendanceStatusLabel(record?.status);
-                        return `<button type="button" class="eie-p-chip"
+                        const statusClass = classAttendanceStatusClass(record?.status);
+                        return `<button type="button" class="eie-p-chip eie-p-attendance-chip ${esc(statusClass)}"
                             data-eie-v2-class-attendance="${esc(sid)}"
                             data-session-id="${esc(session.session_id)}"
                             data-cell-id="${esc(session.source_cell_ids?.[0] || '')}"
@@ -2807,7 +2817,10 @@
                 <div class="eie-p-head-top">
                     <div class="eie-p-head-identity">
                         <div class="eie-p-head-text">
-                            <input id="eie-v2-mini-material" class="eie-p-title-input" type="text" value="${esc(session.material || '')}" placeholder="Class" autocomplete="off">
+                            <label class="eie-p-title-row" for="eie-v2-mini-material">
+                                <span>Class</span>
+                                <input id="eie-v2-mini-material" class="eie-p-title-input" type="text" value="${esc(session.material || '')}" placeholder="반명" autocomplete="off">
+                            </label>
                             <span class="eie-p-head-sub eie-tabular">${esc(session.period_label || '교시 미정')}${time ? ` · ${esc(time)}` : ''}</span>
                         </div>
                     </div>
@@ -3124,19 +3137,19 @@
         );
         if (!selected.length) {
             viewState.repairError = '적용할 변경 항목이 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         if (!window.EieApi?.updateTimetableCell) {
             viewState.repairError = 'API를 사용할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
 
         viewState.repairSaving = true;
         viewState.repairError = '';
         viewState.repairNotice = '';
-        if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        reopenPanelMountRoute();
 
         let successCount = 0;
         const failures = [];
@@ -3201,7 +3214,7 @@
             viewState.repairError = err?.message || '저장 실패';
         } finally {
             viewState.repairSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }
     }
 
@@ -3306,7 +3319,7 @@
             if (periodChanged) { draft.periodKey = newPeriodKey; draft.periodLabel = newPeriodLabel; draft.periodOrder = Number(newPeriodOrder); draft.startTime = newStartTime; draft.endTime = newEndTime; }
             else if (curDraft.periodKey) { draft.periodKey = curDraft.periodKey; draft.periodLabel = curDraft.periodLabel; draft.periodOrder = curDraft.periodOrder; draft.startTime = curDraft.startTime; draft.endTime = curDraft.endTime; }
             viewState.editDraft[sid] = draft;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         });
 
         document.addEventListener('click', event => {
@@ -3314,14 +3327,14 @@
             if (dayOverlayButton) {
                 event.preventDefault();
                 viewState.activeDayOverlay = dayOverlayButton.getAttribute('data-eie-v2-day-overlay') || null;
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const dayOverlayClose = event.target.closest?.('[data-eie-v2-day-overlay-close]');
             if (dayOverlayClose) {
                 event.preventDefault();
                 viewState.activeDayOverlay = null;
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const studentButton = event.target.closest?.('[data-eie-v2-student-id],[data-eie-v2-student-name]');
@@ -3337,7 +3350,7 @@
                 viewState.selectedDay = dayButton.getAttribute('data-eie-v2-day') || '';
                 viewState.selectedSessionId = '';
                 clearStudentPanel();
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const copySessionButton = event.target.closest?.('[data-eie-copy-session]');
@@ -3370,7 +3383,7 @@
                 if (nextSession?.is_temp_copy) {
                     viewState.selectedSessionId = '';
                     viewState.editNotice = '저장 전 임시 수업은 상세 수정할 수 없습니다. 저장 후 다시 선택해 주세요.';
-                    if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                    reopenPanelMountRoute();
                     return;
                 }
                 viewState.selectedSessionId = nextSessionId;
@@ -3382,7 +3395,7 @@
                 viewState.miniNotice = '';
                 if (viewState.miniNoticeTimer) { window.clearTimeout(viewState.miniNoticeTimer); viewState.miniNoticeTimer = 0; }
                 clearStudentPanel();
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const backButton = event.target.closest?.('[data-eie-v2-student-back]');
@@ -3410,14 +3423,14 @@
                 viewState.studentPanelMode = 'edit';
                 viewState.studentError = '';
                 viewState.studentNotice = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const cancelStudentButton = event.target.closest?.('[data-eie-v2-student-cancel]');
             if (cancelStudentButton) {
                 event.preventDefault();
                 closeTimetableDetailPanel();
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const saveStudentButton = event.target.closest?.('[data-eie-v2-student-save]');
@@ -3454,7 +3467,7 @@
                 event.preventDefault();
                 const sessionId = normalizeKey(classAttendanceToggle.getAttribute('data-eie-v2-class-attendance-toggle') || '');
                 viewState.classAttendanceSessionId = viewState.classAttendanceSessionId === sessionId ? '' : sessionId;
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const classAttendanceButton = event.target.closest?.('[data-eie-v2-class-attendance]');
@@ -3466,8 +3479,12 @@
             const cancelMiniButton = event.target.closest?.('[data-eie-v2-cancel-mini]');
             if (cancelMiniButton) {
                 event.preventDefault();
+                if ((viewState.panelMountRoute || '') === 'classroom' && window.EieClassroomView?.closeDetail) {
+                    window.EieClassroomView.closeDetail();
+                    return;
+                }
                 closeTimetableDetailPanel();
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const assignStudentButton = event.target.closest?.('[data-eie-v2-assign-student]');
@@ -3483,7 +3500,7 @@
                 viewState.transferTargetId = '';
                 viewState.studentError = '';
                 viewState.studentNotice = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const transferPick = event.target.closest?.('[data-eie-v2-transfer-pick]');
@@ -3491,7 +3508,7 @@
                 event.preventDefault();
                 viewState.transferTargetId = normalizeKey(transferPick.getAttribute('data-eie-v2-transfer-pick') || '');
                 viewState.studentError = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const transferConfirm = event.target.closest?.('[data-eie-v2-transfer-confirm]');
@@ -3500,7 +3517,7 @@
                 const targetId = normalizeKey(viewState.transferTargetId);
                 if (!targetId) {
                     viewState.studentError = '이동할 반을 먼저 선택해 주세요.';
-                    if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                    reopenPanelMountRoute();
                     return;
                 }
                 const targetSession = lastRenderedSessions.find(s => s.session_id === targetId);
@@ -3518,7 +3535,7 @@
                 viewState.miniAddStudentSessionId = addStudentToggle.getAttribute('data-session-id') || viewState.selectedSessionId;
                 viewState.studentError = '';
                 viewState.studentNotice = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const removeStudentButton = event.target.closest?.('[data-eie-v2-remove-student]');
@@ -3540,7 +3557,7 @@
                 event.preventDefault();
                 viewState.selectedSessionId = '';
                 clearStudentPanel();
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const editToggleButton = event.target.closest?.('[data-eie-edit-toggle]');
@@ -3554,7 +3571,7 @@
                 viewState.editError = '';
                 viewState.editNotice = '';
                 viewState.selectedSessionId = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const editSaveButton = event.target.closest?.('[data-eie-edit-save]');
@@ -3572,7 +3589,7 @@
                 resetEditCopyState();
                 viewState.editError = '';
                 viewState.editNotice = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const repairOpenButton = event.target.closest?.('[data-eie-repair-open]');
@@ -3583,7 +3600,7 @@
                 viewState.repairPreview = null;
                 viewState.repairError = '';
                 viewState.repairNotice = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const repairCloseButton = event.target.closest?.('[data-eie-repair-close]');
@@ -3593,7 +3610,7 @@
                 viewState.repairPreview = null;
                 viewState.repairError = '';
                 viewState.repairNotice = '';
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const repairApplyButton = event.target.closest?.('[data-eie-repair-apply]');
@@ -3611,7 +3628,7 @@
                         else item.selected = false;
                     });
                 }
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const repairSelectNoneButton = event.target.closest?.('[data-eie-repair-select-none]');
@@ -3620,7 +3637,7 @@
                 if (viewState.repairPreview) {
                     viewState.repairPreview.forEach(item => { item.selected = false; });
                 }
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
         });
@@ -3653,7 +3670,7 @@
             clearStudentPanel();
             if (searchRerenderTimer) window.clearTimeout(searchRerenderTimer);
             searchRerenderTimer = window.setTimeout(() => {
-                const rerender = window.EieRouter?.open ? window.EieRouter.open('timetable') : Promise.resolve();
+                const rerender = window.EieRouter?.open ? reopenPanelMountRoute() : Promise.resolve();
                 Promise.resolve(rerender).then(() => {
                     const nextInput = document.querySelector('[data-eie-v2-search]');
                     if (nextInput) {
@@ -3668,7 +3685,8 @@
     }
 
     function reopenPanelMountRoute() {
-        if (window.EieRouter?.open) window.EieRouter.open(viewState.panelMountRoute || 'timetable');
+        if (window.EieRouter?.open) return window.EieRouter.open(viewState.panelMountRoute || 'timetable');
+        return null;
     }
 
     function openStudentLedgerFromTimetable(button) {
@@ -3739,7 +3757,7 @@
         if (!sid || viewState.studentSaving) return;
         if (!window.EieApi?.saveAttendanceRecord) {
             viewState.studentError = '출결 저장 API를 사용할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const dateEl = document.getElementById('eie-v2-attendance-date');
@@ -3763,7 +3781,7 @@
             viewState.studentError = error?.message || '등원을 저장하지 못했습니다.';
         } finally {
             viewState.studentSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }
     }
 
@@ -3775,7 +3793,7 @@
         if (!sid || viewState.miniSaving) return;
         if (!window.EieApi?.saveAttendanceRecord) {
             viewState.miniError = '출결 저장 API를 사용할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const current = classAttendanceRecord(sid, date);
@@ -3799,7 +3817,7 @@
             viewState.miniError = error?.message || '출결을 저장하지 못했습니다.';
         } finally {
             viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }
     }
 
@@ -3930,7 +3948,7 @@
             if (viewState.selectedSessionId === sid) viewState.selectedSessionId = '';
             viewState.editNotice = `${session.material || session.class_full_name || '저장 전 반'}을(를) 삭제했습니다.`;
             viewState.editError = '';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
 
@@ -3942,7 +3960,7 @@
         viewState.editSaving = true;
         viewState.editError = '';
         viewState.editNotice = '반카드를 삭제하는 중입니다.';
-        if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        reopenPanelMountRoute();
         try {
             for (const cellIdValue of cellIds) {
                 await window.EieApi.updateTimetableCellStatus(cellIdValue, 'archived');
@@ -3958,7 +3976,7 @@
             viewState.editNotice = '';
         } finally {
             viewState.editSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }
     }
 
@@ -3970,7 +3988,7 @@
         viewState.editCopySourceSessionId = sid;
         viewState.editNotice = `${session.material || session.class_full_name || '선택한 반'}을(를) 복사했습니다. 빈 슬롯의 '여기에 붙여넣기'를 누르세요.`;
         viewState.editError = '';
-        if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        reopenPanelMountRoute();
     }
 
     function pasteCopiedSessionToSlot(slotEl) {
@@ -3979,7 +3997,7 @@
         if (!source) {
             resetEditCopyState();
             viewState.editError = '복사한 반을 찾지 못했습니다. 다시 복사해 주세요.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const targetSlot = slotDataFromElement(slotEl);
@@ -3987,7 +4005,7 @@
         if (normalizeKey(targetSlot.periodKey) === sourcePeriodKey(source)) {
             viewState.editError = '같은 교시에는 붙여넣을 수 없습니다.';
             viewState.editNotice = '';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const targetSlotKey = slotKeyOf(targetSlot);
@@ -3998,7 +4016,7 @@
         if (alreadySameCopy) {
             viewState.editError = '같은 반은 같은 위치에 한 번만 붙여넣을 수 있습니다.';
             viewState.editNotice = '';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const existingCardsForTarget = lastRenderedSessions.filter(session =>
@@ -4010,7 +4028,7 @@
         if (slotLane === null) {
             viewState.editError = '이 교시·선생님 칸에는 반을 더 이상 추가할 수 없습니다 (최대 2반).';
             viewState.editNotice = '';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const tempCell = createTempCopiedCell(source, targetSlot, slotLane);
@@ -4018,7 +4036,7 @@
         viewState.selectedSessionId = '';
         viewState.editNotice = `${source.material || source.class_full_name || '복사한 반'}을(를) ${targetSlot.periodLabel || '선택한 교시'} · ${targetSlot.teacherName || '담임'} 슬롯에 붙여넣었습니다. 저장 전까지 실제 시간표에는 반영되지 않습니다.`;
         viewState.editError = '';
-        if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        reopenPanelMountRoute();
     }
 
     async function saveEditDraft() {
@@ -4029,13 +4047,13 @@
             viewState.editMode = false;
             resetEditCopyState();
             viewState.editNotice = '';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         viewState.editSaving = true;
         viewState.editError = '';
         viewState.editNotice = '시간표를 저장하는 중입니다.';
-        if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        reopenPanelMountRoute();
         let successCount = 0;
         const failures = [];
         try {
@@ -4130,7 +4148,7 @@
             viewState.editError = err?.message || '저장 실패';
         } finally {
             viewState.editSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }
     }
 
@@ -4143,7 +4161,7 @@
         const targetSessionId = normalizeKey(viewState.transferTargetId || targetSelect?.value || '');
         if (!targetSessionId) {
             viewState.studentError = '이동할 반을 선택해 주세요.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const sid = normalizeKey(studentId);
@@ -4176,7 +4194,7 @@
             viewState.studentError = error?.message || '전반 실패';
         } finally {
             viewState.studentSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
@@ -4185,12 +4203,12 @@
         const name = studentFieldValue('eie-v2-edit-name');
         if (!name) {
             viewState.studentError = '학생명은 필수입니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         if (!window.EieApi?.createStudent) {
             viewState.studentError = 'API를 사용할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         viewState.studentSaving = true;
@@ -4226,7 +4244,7 @@
             viewState.studentError = error?.message || '등록 실패';
         } finally {
             viewState.studentSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
@@ -4240,7 +4258,7 @@
         const sid = normalizeKey(viewState.selectedStudentId);
         if (!sid || !window.EieApi?.updateStudent) {
             viewState.studentError = '학생 id가 없어 시간표 패널에서 바로 수정할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         const payload = {
@@ -4262,12 +4280,12 @@
         };
         if (!payload.display_name) {
             viewState.studentError = '학생명은 필수입니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) {
             viewState.studentError = 'PIN은 4자리 숫자로 입력해 주세요.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         viewState.studentSaving = true;
@@ -4281,7 +4299,7 @@
             viewState.studentError = error?.message || '학생 정보를 저장하지 못했습니다.';
         } finally {
             viewState.studentSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
         }
     }
 
@@ -4482,7 +4500,7 @@
             viewState.miniNotice = '';
         } finally {
             viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
@@ -4515,7 +4533,7 @@
             viewState.miniError = error?.message || '저장 실패';
         } finally {
             viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
@@ -4547,7 +4565,7 @@
             viewState.miniError = error?.message || '저장 실패';
         } finally {
             viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
@@ -4563,12 +4581,12 @@
         const name = normalizeKey(nameEl?.value || '');
         if (!name) {
             viewState.miniAddStudentError = '학생명을 입력해 주세요.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         if (!window.EieApi?.createStudent) {
             viewState.miniAddStudentError = 'API를 사용할 수 없습니다.';
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             return;
         }
         viewState.miniSaving = true;
@@ -4601,7 +4619,7 @@
             viewState.miniAddStudentError = error?.message || '등록 실패';
         } finally {
             viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
@@ -4630,21 +4648,21 @@
             viewState.miniError = error?.message || '퇴원 처리에 실패했습니다.';
         } finally {
             viewState.miniSaving = false;
-            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            reopenPanelMountRoute();
             clearMiniNoticeLater(2000);
         }
     }
 
     function refresh() {
         closeTimetableDetailPanel();
-        if (window.EieRouter?.open) return window.EieRouter.open('timetable');
+        return reopenPanelMountRoute();
     }
 
     function openWithContext(returnCtx) {
         const ctx = returnCtx || {};
         viewState.selectedDay = normalizeKey(ctx.selectedDay || ctx.day || viewState.selectedDay);
         viewState.selectedSessionId = normalizeKey(ctx.sessionId || ctx.session_id || viewState.selectedSessionId);
-        if (window.EieRouter?.open) return window.EieRouter.open('timetable');
+        return reopenPanelMountRoute();
     }
 
     async function openStudentWithContext(returnCtx) {
@@ -4659,7 +4677,7 @@
         if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
             await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
         }
-        if (window.EieRouter?.open) return window.EieRouter.open('timetable');
+        return reopenPanelMountRoute();
     }
 
 
@@ -4702,6 +4720,9 @@
         viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
         viewState.studentError = '';
         viewState.studentNotice = '';
+        if (viewState.panelMountRoute === 'classroom' && selectedSession) {
+            viewState.classAttendanceSessionId = selectedSession.session_id;
+        }
 
         if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
             await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
@@ -4709,7 +4730,7 @@
 
         const panel = renderSelectedPanel(selectedSession);
         return panel
-            ? '<div class="eie-classroom-borrowed-panel" data-eie-classroom-borrowed-panel="timetable">' + panel + '</div>'
+            ? '<div class="eie-classroom-borrowed-panel eie-v2-screen" data-eie-classroom-borrowed-panel="timetable">' + panel + '</div>'
             : '';
     }
 
@@ -4763,6 +4784,7 @@
         openWithContext,
         openStudentWithContext,
         renderPanelOnlyWithContext,
-        _buildDisplaySessions: buildDisplaySessions
+        _buildDisplaySessions: buildDisplaySessions,
+        _buildDayTeacherSessions: buildDayTeacherSessions
     };
 })();

@@ -1316,26 +1316,26 @@ body.eie-owner-dashboard-bg {
 /* EIE summary bar */
 .eie-summary-bar {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
     margin: 14px 0 4px;
-    padding: 12px 16px;
+    padding: 10px 14px;
     background: var(--eie-surface);
     border: 1px solid var(--eie-border);
     border-radius: 12px;
 }
 
 .eie-summary-item {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--eie-muted);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .eie-summary-item strong {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--eie-primary);
-    margin-right: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--eie-text);
+    margin: 0 2px;
 }
 
 /* EIE badges */
@@ -6587,6 +6587,7 @@ td.eie-v2-repair-matched.is-unmatched em {
 .eie-v2-layout.has-panel .eie-v2-main,
 .eie-v2-layout.is-full .eie-v2-main {
     min-width: 0;
+    position: relative;
     width: 100%;
 }
 
@@ -7979,12 +7980,12 @@ button.eie-v2-student-chip.is-paused:hover {
 }
 
 .eie-weekday-overlay {
-    position: fixed;
+    position: absolute;
     inset: 0;
-    z-index: 1200;
+    z-index: 70;
     width: auto;
     margin: 0;
-    padding: 24px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8000,11 +8001,11 @@ button.eie-v2-student-chip.is-paused:hover {
 .eie-weekday-modal-window {
     position: relative;
     z-index: 1;
-    width: min(1180px, 80vw);
-    height: min(760px, 80vh);
-    min-width: min(720px, calc(100vw - 48px));
+    width: 100%;
+    height: 100%;
+    min-width: 0;
     border: 1px solid rgba(148, 163, 184, 0.28);
-    border-radius: 8px;
+    border-radius: 22px;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
     overflow: hidden;
@@ -8243,12 +8244,12 @@ button.eie-v2-student-chip.is-paused:hover {
 
 @media (max-width: 760px) {
     .eie-weekday-overlay {
-        padding: 10px;
+        padding: 0;
     }
 
     .eie-weekday-modal-window {
-        width: calc(100vw - 20px);
-        height: calc(100vh - 20px);
+        width: 100%;
+        height: 100%;
         min-width: 0;
     }
 
@@ -8833,6 +8834,17 @@ button.eie-v2-student-chip.is-paused:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.eie-v2-screen .eie-p-title-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 0;
+}
+.eie-v2-screen .eie-p-title-row > span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--eie-p-text-muted);
+}
 .eie-v2-screen .eie-p-head-text .eie-p-title-input {
     font-size: 14px;
     font-weight: 500;
@@ -9129,6 +9141,19 @@ button.eie-v2-student-chip.is-paused:hover {
     line-height: 1.4;
 }
 .eie-v2-screen .eie-p-chip.is-add { border-style: dashed; }
+.eie-v2-screen .eie-p-attendance-chip {
+    font-weight: 500;
+}
+.eie-v2-screen .eie-p-attendance-chip.is-present {
+    background: #EAF8F0;
+    border-color: #A9DFC0;
+    color: #166534;
+}
+.eie-v2-screen .eie-p-attendance-chip.is-absent {
+    background: #FDECEC;
+    border-color: #F5B5B5;
+    color: #B42318;
+}
 .eie-v2-screen .eie-p-chip-row {
     display: flex;
     flex-wrap: wrap;
@@ -9502,7 +9527,7 @@ button.eie-v2-student-chip.is-paused:hover {
     margin: 0;
     color: var(--eie-text);
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 600;
     line-height: 1.25;
 }
 
@@ -9510,7 +9535,7 @@ button.eie-v2-student-chip.is-paused:hover {
     margin: 0;
     color: var(--eie-muted);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 500;
     line-height: 1.35;
 }
 
@@ -9573,7 +9598,7 @@ button.eie-v2-student-chip.is-paused:hover {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    font-weight: 900;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -9593,15 +9618,15 @@ button.eie-v2-student-chip.is-paused:hover {
 
 .eie-teacher-day-row__main strong {
     color: var(--eie-text);
-    font-size: 15px;
-    font-weight: 900;
+    font-size: 13px;
+    font-weight: 500;
     line-height: 1.25;
 }
 
 .eie-teacher-day-row__main small {
     color: var(--eie-muted);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 500;
     line-height: 1.2;
 }
 
@@ -9677,7 +9702,7 @@ button.eie-v2-student-chip.is-paused:hover {
    - Moves visuals away from AP dashboard port classes and follows EIE class/student detail panel tokens. */
 .eie-teacher-dashboard {
     width: 100%;
-    color: var(--eie-text);
+    color: var(--eie-p-text);
 }
 
 .eie-teacher-dashboard-shell {
@@ -9687,18 +9712,18 @@ button.eie-v2-student-chip.is-paused:hover {
     padding: 0 16px 28px;
     box-sizing: border-box;
     display: grid;
-    gap: 14px;
+    gap: 12px;
 }
 
 .eie-teacher-home-head {
     display: grid;
-    gap: 14px;
+    gap: 12px;
     margin: 0;
-    padding: 16px;
-    border: 1px solid var(--eie-border);
-    border-radius: 22px;
-    background: var(--eie-surface);
-    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    padding: 14px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    box-shadow: none;
 }
 
 .eie-teacher-home-copy {
@@ -9707,51 +9732,61 @@ button.eie-v2-student-chip.is-paused:hover {
     gap: 5px;
 }
 
+.eie-teacher-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .eie-teacher-home-copy h2 {
     margin: 0;
-    color: var(--eie-text);
-    font-size: 22px;
-    font-weight: 900;
+    color: var(--eie-p-text);
+    font-size: 18px;
+    font-weight: 500;
     line-height: 1.2;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
+}
+
+.eie-teacher-title-row > span {
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .eie-teacher-home-copy p {
     margin: 0;
-    color: var(--eie-muted);
-    font-size: 13px;
-    font-weight: 800;
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 400;
     line-height: 1.35;
 }
 
 .eie-teacher-quick-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
 }
 
 .eie-teacher-quick-card {
     min-width: 0;
-    min-height: 58px;
-    padding: 0 14px;
-    border: 1px solid var(--eie-border);
-    border-radius: 16px;
-    background: var(--eie-surface-2);
-    color: var(--eie-text);
+    min-height: 36px;
+    padding: 0 10px;
     box-shadow: none;
     font: inherit;
-    font-size: 14px;
-    font-weight: 900;
-    letter-spacing: -0.02em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
     cursor: pointer;
     transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 }
 
 .eie-teacher-quick-card:hover,
 .eie-teacher-quick-card:focus-visible {
-    border-color: rgba(37, 99, 235, 0.28);
-    background: var(--eie-surface);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    border-color: var(--eie-p-border-mid);
+    box-shadow: none;
     outline: 0;
 }
 
@@ -9761,11 +9796,11 @@ button.eie-v2-student-chip.is-paused:hover {
 
 .eie-teacher-schedule {
     margin: 0;
-    padding: 16px;
-    border: 1px solid var(--eie-border);
-    border-radius: 22px;
-    background: var(--eie-surface);
-    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    padding: 14px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    box-shadow: none;
     display: grid;
     gap: 12px;
 }
@@ -9781,17 +9816,17 @@ button.eie-v2-student-chip.is-paused:hover {
 
 .eie-teacher-section-head h3 {
     margin: 0;
-    color: var(--eie-text);
-    font-size: 15px;
-    font-weight: 900;
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
     line-height: 1.25;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
 }
 
 .eie-teacher-section-head span {
-    color: var(--eie-muted);
-    font-size: 12px;
-    font-weight: 800;
+    color: var(--eie-p-text-sub);
+    font-size: 11px;
+    font-weight: 400;
     line-height: 1.2;
     white-space: nowrap;
 }
@@ -9801,32 +9836,28 @@ button.eie-v2-student-chip.is-paused:hover {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 6px;
     margin: 0;
-    padding: 5px;
-    border: 1px solid var(--eie-border);
-    border-radius: 16px;
-    background: var(--eie-surface-2);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
 }
 
 .eie-teacher-tabbar .btn {
     min-width: 0;
-    min-height: 42px;
-    padding: 0 8px;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    background: transparent;
-    color: var(--eie-muted);
+    min-height: 28px;
+    padding: 3px 9px;
     box-shadow: none;
     font: inherit;
-    font-size: 13px;
-    font-weight: 900;
+    font-size: 11px;
+    font-weight: 400;
     cursor: pointer;
 }
 
 .eie-teacher-tabbar .btn.is-active {
-    border-color: var(--eie-border);
-    background: var(--eie-surface);
-    color: var(--eie-text);
-    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.05);
+    border-color: var(--eie-p-btn-save-bg);
+    background: var(--eie-p-badge-ilban-bg);
+    color: var(--eie-p-badge-ilban-text);
+    box-shadow: none;
 }
 
 .eie-teacher-day-card-list {
@@ -9842,12 +9873,12 @@ button.eie-v2-student-chip.is-paused:hover {
 
 .eie-teacher-day-row {
     width: 100%;
-    min-height: 66px;
-    padding: 11px 12px;
-    border: 1px solid var(--eie-border);
-    border-radius: 16px;
-    background: var(--eie-surface);
-    color: var(--eie-text);
+    min-height: 54px;
+    padding: 10px 12px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text);
     display: grid;
     grid-template-columns: 42px minmax(0, 1fr) auto;
     align-items: center;
@@ -9859,33 +9890,47 @@ button.eie-v2-student-chip.is-paused:hover {
     transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
 }
 
+.eie-v2-screen .eie-teacher-day-row.eie-p-card {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    flex-direction: initial;
+}
+
 .eie-teacher-day-row:hover,
 .eie-teacher-day-row:focus-visible {
-    border-color: rgba(37, 99, 235, 0.24);
-    background: rgba(37, 99, 235, 0.035);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.045);
+    border-color: var(--eie-p-border-mid);
+    background: var(--eie-p-surface-sub);
+    box-shadow: none;
     outline: 0;
 }
 
 .eie-teacher-day-row__period {
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--eie-border);
-    border-radius: 12px;
-    background: var(--eie-surface-2);
-    color: var(--eie-text);
+    width: 32px;
+    height: 28px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 9px;
+    background: var(--eie-p-surface-sub);
+    color: var(--eie-p-text-sub);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 12px;
+    font-weight: 500;
     line-height: 1;
+}
+
+.eie-v2-screen .eie-teacher-day-row__period {
+    justify-self: start;
 }
 
 .eie-teacher-day-row__main {
     min-width: 0;
     display: grid;
     gap: 3px;
+    justify-items: start;
+    text-align: left;
 }
 
 .eie-teacher-day-row__main strong,
@@ -9897,17 +9942,17 @@ button.eie-v2-student-chip.is-paused:hover {
 }
 
 .eie-teacher-day-row__main strong {
-    color: var(--eie-text);
-    font-size: 15px;
-    font-weight: 900;
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
     line-height: 1.25;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
 }
 
 .eie-teacher-day-row__main small {
-    color: var(--eie-muted);
+    color: var(--eie-p-text-sub);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 400;
     line-height: 1.2;
 }
 
@@ -9918,36 +9963,33 @@ button.eie-v2-student-chip.is-paused:hover {
     justify-content: flex-end;
     gap: 6px;
     flex-wrap: wrap;
+    justify-self: end;
 }
 
 .eie-teacher-chip {
     max-width: 220px;
-    min-height: 26px;
-    padding: 0 8px;
-    border: 1px solid var(--eie-border);
-    border-radius: 999px;
-    background: var(--eie-surface-2);
-    color: var(--eie-muted);
+    min-height: 24px;
+    padding: 3px 9px;
     display: inline-flex;
     align-items: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 400;
     line-height: 1;
 }
 
 .eie-empty-box[data-eie-teacher-empty-today],
 .eie-teacher-day-card-list .eie-empty-box {
-    border: 1px dashed var(--eie-border);
-    border-radius: 16px;
-    background: var(--eie-surface-2);
-    color: var(--eie-muted);
+    border: 0.5px dashed var(--eie-p-border-mid);
+    border-radius: 12px;
+    background: var(--eie-p-surface-sub);
+    color: var(--eie-p-text-sub);
     padding: 22px 14px;
     text-align: center;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 400;
 }
 
 .eie-classroom-detail-only-panel.eie-panel {
@@ -9981,37 +10023,78 @@ button.eie-v2-student-chip.is-paused:hover {
         align-items: flex-start;
     }
 
+    .eie-v2-screen .eie-teacher-day-row.eie-p-card {
+        grid-template-columns: 38px minmax(0, 1fr);
+        align-items: flex-start;
+    }
+
     .eie-teacher-day-row__chips {
         grid-column: 2;
         justify-content: flex-start;
+        justify-self: start;
     }
 }
 
 
 /* EIE 클래스룸 요일별 운영표 MVP: 시간표 상세 패널 톤 재사용 */
+.eie-classroom-screen .eie-panel-title {
+    width: 100%;
+    max-width: 760px;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    color: var(--eie-p-text);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.eie-classroom-screen .eie-panel.eie-p-panel {
+    background: var(--eie-p-surface-sub);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.eie-classroom-screen .eie-classroom-panel {
+    width: min(100%, 790px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eie-classroom-screen .eie-classroom-panel.is-detail-open {
+    width: min(100%, 990px);
+}
+
+.eie-classroom-screen .eie-summary-bar {
+    width: 100%;
+    max-width: 760px;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
 .eie-classroom-weekday-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 12px 0 14px;
+    gap: 6px;
+    width: 100%;
+    max-width: 760px;
+    margin: 10px 0 12px;
+    box-sizing: border-box;
 }
 
 .eie-classroom-weekday-chip {
-    min-width: 42px;
-    min-height: 34px;
-    border: 1px solid var(--eie-border);
-    border-radius: 999px;
-    background: var(--eie-surface);
-    color: var(--eie-muted);
-    font-size: 13px;
-    font-weight: 800;
+    min-width: 38px;
+    min-height: 28px;
+    font-size: 11px;
+    font-weight: 400;
     cursor: pointer;
 }
 
 .eie-classroom-weekday-chip.is-active {
-    border-color: rgba(26, 92, 255, 0.28);
-    background: rgba(26, 92, 255, 0.08);
-    color: var(--eie-primary);
+    border-color: var(--eie-p-btn-save-bg);
+    background: var(--eie-p-badge-ilban-bg);
+    color: var(--eie-p-badge-ilban-text);
 }
 
 .eie-classroom-schedule-groups {
@@ -10019,40 +10102,91 @@ button.eie-v2-student-chip.is-paused:hover {
     gap: 12px;
 }
 
+.eie-classroom-screen .eie-timetable-main {
+    width: 100%;
+    max-width: 760px;
+    margin: 0;
+}
+
+.eie-classroom-screen .eie-timetable-layout {
+    width: fit-content;
+    max-width: 100%;
+    grid-template-columns: minmax(460px, 610px) 340px;
+    gap: 18px;
+    justify-content: start;
+    margin: 0;
+}
+
+.eie-classroom-screen .eie-timetable-layout .eie-timetable-main {
+    max-width: 610px;
+    margin: 0;
+}
+
 .eie-classroom-teacher-group {
-    border: 1px solid var(--eie-border);
-    border-radius: 18px;
-    background: var(--eie-surface);
-    box-shadow: var(--eie-shadow);
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    box-shadow: none;
+    padding: 0;
+    gap: 0;
     overflow: hidden;
 }
 
 .eie-classroom-teacher-head {
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--eie-border);
-    background: var(--eie-surface-2);
-    color: var(--eie-text);
-    font-size: 14px;
+    padding: 10px 14px;
+    border-bottom: 0.5px solid var(--eie-p-border);
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.eie-classroom-teacher-head strong {
+    font-weight: 500;
 }
 
 .eie-classroom-schedule-list {
     display: grid;
 }
 
+.eie-classroom-subgroup + .eie-classroom-subgroup {
+    border-top: 0.5px solid var(--eie-p-border);
+}
+
+.eie-classroom-subhead {
+    padding: 8px 14px 4px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text-muted);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
 .eie-classroom-schedule-row {
     width: 100%;
-    min-height: 46px;
+    min-height: 44px;
     border: 0;
-    border-bottom: 1px solid var(--eie-border);
-    background: var(--eie-surface);
+    border-bottom: 0.5px solid var(--eie-p-border);
+    border-radius: 0;
+    background: var(--eie-p-surface);
     display: grid;
     grid-template-columns: 44px minmax(0, 1fr) auto;
     align-items: center;
     gap: 10px;
     padding: 10px 14px;
     text-align: left;
-    color: var(--eie-text);
+    color: var(--eie-p-text);
     cursor: pointer;
+    box-shadow: none;
+}
+
+.eie-v2-screen .eie-classroom-schedule-row.eie-p-card {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    flex-direction: initial;
 }
 
 .eie-classroom-schedule-row:last-child {
@@ -10060,44 +10194,60 @@ button.eie-v2-student-chip.is-paused:hover {
 }
 
 .eie-classroom-schedule-row:hover {
-    background: var(--eie-surface-2);
+    background: var(--eie-p-surface-sub);
 }
 
 .eie-classroom-schedule-period {
-    color: var(--eie-muted);
+    justify-self: start;
+    color: var(--eie-p-text-sub);
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 500;
     font-variant-numeric: tabular-nums;
 }
 
 .eie-classroom-schedule-main {
+    justify-self: start;
     min-width: 0;
     overflow: hidden;
-    color: var(--eie-text);
-    font-size: 14px;
-    font-weight: 900;
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .eie-classroom-schedule-meta {
-    color: var(--eie-muted);
-    font-size: 12px;
-    font-weight: 800;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--eie-p-text-sub);
+    font-size: 11px;
+    font-weight: 400;
     white-space: nowrap;
 }
 
 .eie-classroom-borrowed-panel {
     min-width: 0;
+    margin-top: -88px;
 }
 
 .eie-classroom-borrowed-panel .eie-v2-detail-panel {
     position: sticky;
-    top: 80px;
+    top: 16px;
 }
 
 @media (max-width: 720px) {
+    .eie-classroom-screen .eie-timetable-layout {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .eie-classroom-schedule-row {
+        grid-template-columns: 34px minmax(0, 1fr);
+    }
+
+    .eie-v2-screen .eie-classroom-schedule-row.eie-p-card {
         grid-template-columns: 34px minmax(0, 1fr);
     }
 
@@ -10108,6 +10258,10 @@ button.eie-v2-student-chip.is-paused:hover {
 
     .eie-classroom-borrowed-panel .eie-v2-detail-panel {
         position: static;
+    }
+
+    .eie-classroom-borrowed-panel {
+        margin-top: 0;
     }
 }
 

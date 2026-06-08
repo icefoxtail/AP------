@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     var _teacherName = '';
     var _cells = [];
     var _loaded = false;
@@ -470,14 +470,14 @@
     function attendanceShortLabel(cell, dateValue) {
         var rows = attendanceRowsForCell(cell, dateValue);
         var count = studentCountOfCell(cell);
-        if (!rows.length) return '출결 전';
         var absent = 0;
         rows.forEach(function (row) {
             var status = text(row.status || row.attendance_status || row.value || row.result);
             if (/결석|absent|missing|no-show/i.test(status)) absent += 1;
         });
-        if (count && rows.length < count && absent === 0) return '출결 ' + rows.length + '/' + count;
-        return '결석' + absent;
+        if (count) return '등원' + Math.max(0, count - absent);
+        if (absent) return '등원0';
+        return '등원0';
     }
 
     async function loadCells() {
@@ -515,18 +515,21 @@
     }
 
     function renderShortcutRow() {
-        return '<div class="eie-teacher-quick-cards">'
-            + '<button class="eie-teacher-quick-card" type="button" onclick="EieTeacherView.openTimetable()">시간표</button>'
-            + '<button class="eie-teacher-quick-card" type="button" disabled aria-disabled="true" title="준비중">출석부</button>'
+        return '<div class="eie-teacher-quick-cards eie-p-chip-row">'
+            + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openTimetable()">시간표</button>'
+            + '<button class="eie-teacher-quick-card eie-p-btn-save" type="button" onclick="EieTeacherView.openClassroomList()">클래스룸</button>'
+            + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" disabled aria-disabled="true" title="준비중">출석부</button>'
             + '</div>';
     }
 
     function renderHomeHead(todayRows) {
         var teacherLabel = _teacherName || '선생님';
-        return '<div class="eie-teacher-home-head">'
+        return '<div class="eie-teacher-home-head eie-p-card">'
             + '<div class="eie-teacher-home-copy">'
+            + '<div class="eie-teacher-title-row">'
             + '<h2>' + esc(teacherLabel) + ' 선생님</h2>'
-            + '<p>' + esc(koreanDate(0)) + ' · 오늘 수업 ' + esc(String((todayRows || []).length)) + '개</p>'
+            + '<span>' + esc(koreanDate(0)) + '</span>'
+            + '</div>'
             + '</div>'
             + renderShortcutRow()
             + '</div>';
@@ -560,24 +563,21 @@
         var chips = [];
         if (count) chips.push('재원' + count);
         if (opts.showAttendance) chips.push(attendanceShortLabel(cell, todayIso()));
-        var meta = teacherMetaForCell(cell, dayValue);
-        var sub = [cell && (cell.day_label || cell.day), cell && cell.period_label, meta].filter(Boolean).join(' · ');
-        return '<button type="button" class="eie-teacher-day-row" data-eie-teacher-cell-id="' + esc(cellId) + '" onclick="EieTeacherView.openClassroom(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-teacher-day-row eie-p-card" data-eie-teacher-cell-id="' + esc(cellId) + '" onclick="EieTeacherView.openClassroom(' + jsArg(cellId) + ')">'
             + '<span class="eie-teacher-day-row__period">' + esc(periodLabelOf(cell)) + '</span>'
             + '<span class="eie-teacher-day-row__main">'
             + '<strong>' + esc(className) + '</strong>'
-            + (sub ? '<small>' + esc(sub) + '</small>' : '')
             + '</span>'
             + '<span class="eie-teacher-day-row__chips">'
-            + chips.map(function (chip) { return '<span class="eie-teacher-chip">' + esc(chip) + '</span>'; }).join('')
+            + chips.map(function (chip) { return '<span class="eie-teacher-chip eie-p-chip">' + esc(chip) + '</span>'; }).join('')
             + '</span>'
             + '</button>';
     }
 
     function renderTodaySchedule(todayRows) {
         var rows = sortCells(todayRows || []);
-        return '<div class="eie-teacher-schedule eie-teacher-schedule--today">'
-            + renderSectionHead('오늘 수업', rows.length ? String(rows.length) + '개 수업' : '수업 없음')
+        return '<div class="eie-teacher-schedule eie-teacher-schedule--today eie-p-card">'
+            + renderSectionHead('오늘 수업')
             + '<div class="eie-teacher-day-card-list">'
             + (rows.length ? rows.map(function (cell) { return renderClassRow(cell, { showAttendance: true, dayValue: todayIso() }); }).join('') : '<div class="eie-empty-box" data-eie-teacher-empty-today="true">오늘 수업이 없습니다.</div>')
             + '</div>'
@@ -586,9 +586,9 @@
 
     function renderDayTabbar() {
         ensureDayTab();
-        return '<div class="eie-teacher-tabbar" aria-label="요일 선택">'
+        return '<div class="eie-teacher-tabbar eie-p-chip-row" aria-label="요일 선택">'
             + WEEKDAYS.map(function (item) {
-                return '<button class="btn' + (_dayTab === item.key ? ' is-active' : '') + '" type="button" onclick="EieTeacherView.setDay(' + jsArg(item.key) + ')">' + esc(item.label) + '</button>';
+                return '<button class="btn eie-p-chip' + (_dayTab === item.key ? ' is-active' : '') + '" type="button" onclick="EieTeacherView.setDay(' + jsArg(item.key) + ')">' + esc(item.label) + '</button>';
             }).join('')
             + '</div>';
     }
@@ -598,11 +598,8 @@
         var selected = dayFromValue(_dayTab) || todayWeekday();
         var rows = sortCells(cellsForTeacherOnDay(_cells, _teacherName, selected.label));
         var showAttendance = selected.label === todayLabel();
-        var countLabel = selected.label === todayLabel()
-            ? '오늘 ' + String(rows.length) + '개 수업'
-            : selected.label + '요일 ' + String(rows.length) + '개 수업';
-        return '<div class="eie-teacher-schedule eie-teacher-schedule--today">'
-            + renderSectionHead('오늘 수업', countLabel)
+        return '<div class="eie-teacher-schedule eie-teacher-schedule--today eie-p-card">'
+            + renderSectionHead('오늘 수업')
             + renderDayTabbar()
             + '<div class="eie-teacher-day-card-list">'
             + (rows.length ? rows.map(function (cell) { return renderClassRow(cell, { showAttendance: showAttendance, dayValue: selected.label }); }).join('') : '<div class="eie-empty-box">' + esc(selected.label) + '요일 담당 수업이 없습니다.</div>')
@@ -618,7 +615,7 @@
         var todayRows = sortCells(cellsForTeacherOnDay(_cells, _teacherName, todayIso()));
         var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
 
-        return '<section class="eie-teacher-dashboard" aria-labelledby="eie-teacher-title">'
+        return '<section class="eie-teacher-dashboard eie-v2-screen" aria-labelledby="eie-teacher-title">'
             + '<h1 id="eie-teacher-title" class="eie-teacher-sr-title">' + esc(_teacherName || '선생님') + ' 선생님 대시보드</h1>'
             + '<div class="eie-teacher-dashboard-shell">'
             + errorHtml
@@ -657,16 +654,19 @@
             if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('timetable');
         },
         openClassroom: function (cellId) {
-            if (cellId && window.EieClassroomView && typeof EieClassroomView.openDetailOnly === 'function') {
-                EieClassroomView.openDetailOnly(cellId, 'teacher');
-                return;
-            }
             if (cellId && window.EieClassroomView && typeof EieClassroomView.openCell === 'function') {
                 EieClassroomView.openCell(cellId);
                 return;
             }
             if (cellId && window.EieClassroomView && typeof EieClassroomView.openDetail === 'function') {
                 EieClassroomView.openDetail(cellId);
+                return;
+            }
+            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('classroom');
+        },
+        openClassroomList: function () {
+            if (_teacherName && window.EieClassroomView && typeof EieClassroomView.openTeacher === 'function') {
+                EieClassroomView.openTeacher(_teacherName);
                 return;
             }
             if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('classroom');

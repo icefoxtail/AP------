@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     function escapeHtml(value) {
         return String(value ?? '').replace(/[&<>"']/g, ch => ({
             '&': '&amp;',
@@ -16,9 +16,10 @@
     }
 
     function renderPanel({ title, copy, note }) {
+        const homeRoute = eieHomeRouteForSession();
         return `
             <section aria-labelledby="eie-panel-title">
-                <button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
+                <button type="button" class="eie-back-button" data-eie-route="${homeRoute}" aria-label="EIE ?덉쑝濡??대룞" title="EIE ??>??EIE ??/button>
                 <div class="eie-panel">
                     <h1 id="eie-panel-title" class="eie-panel-title">${escapeHtml(title)}</h1>
                     <p class="eie-panel-copy">${escapeHtml(copy)}</p>
@@ -28,7 +29,7 @@
         `;
     }
 
-    // Shared auth fetch helper — mirrors eie-api.js auth logic without modifying that file
+    // Shared auth fetch helper ??mirrors eie-api.js auth logic without modifying that file
     function findStoredAuth() {
         const keys = [
             'WANGJI_EIE_SESSION_TOKEN',
@@ -59,7 +60,7 @@
         let data;
         try { data = JSON.parse(text); } catch (e) { data = { success: false, error: text }; }
         if (!response.ok || data?.success === false) {
-            const err = new Error(data?.error || data?.message || response.statusText || '요청 실패');
+            const err = new Error(data?.error || data?.message || response.statusText || '?붿껌 ?ㅽ뙣');
             err.status = response.status;
             throw err;
         }
@@ -87,6 +88,10 @@
         return role === 'admin' || role === 'owner' || loginId === 'admin';
     }
 
+    function eieHomeRouteForSession() {
+        return isEieTeacherSession() && !isEieOwnerSession() ? 'teacher' : 'dashboard';
+    }
+
     function ensureEieInitialRoute() {
         const current = String(window.location.hash || '').replace(/^#/, '').trim();
         if (isEieTeacherSession()) {
@@ -104,7 +109,7 @@
         if (window.localStorage) window.localStorage.removeItem('WANGJI_EIE_SESSION_TOKEN');
     }
 
-    function addLogoutButton() { /* 로그아웃 버튼은 drawer 정적 HTML에 포함 — no-op */ }
+    function addLogoutButton() { /* 濡쒓렇?꾩썐 踰꾪듉? drawer ?뺤쟻 HTML???ы븿 ??no-op */ }
     function removeLogoutButton() { /* no-op */ }
 
     function eieUpdateHeaderUser() {
@@ -147,10 +152,11 @@
     };
 
     window.eieGoHome = function () {
+        const route = eieHomeRouteForSession();
         if (window.EieRouter && typeof window.EieRouter.open === 'function') {
-            window.EieRouter.open('dashboard');
+            window.EieRouter.open(route);
         } else {
-            window.location.hash = '#dashboard';
+            window.location.hash = '#' + route;
         }
     };
 
@@ -179,37 +185,37 @@
 
                         <div style="max-width:560px;">
                             <div style="font-size:clamp(18px,2.2vw,28px); font-weight:900; line-height:1.28; letter-spacing:-1px; color:#fff;">
-                                선생님과 원장님을 위한<br>EIE 영어 운영 로그인
+                                ?좎깮?섍낵 ?먯옣?섏쓣 ?꾪븳<br>EIE ?곸뼱 ?댁쁺 濡쒓렇??
                             </div>
                             <div style="margin-top:16px; font-size:15px; font-weight:700; line-height:1.7; color:rgba(255,255,255,0.76);">
-                                시간표, 출석부, 클래스룸, 학생 관리를 한 화면에서 확인합니다.
+                                ?쒓컙?? 異쒖꽍遺, ?대옒?ㅻ８, ?숈깮 愿由щ? ???붾㈃?먯꽌 ?뺤씤?⑸땲??
                             </div>
                         </div>
                     </section>
 
                     <section style="width:100%; background:rgba(255,255,255,0.95); color:#191F28; border:1px solid rgba(255,255,255,0.46); border-radius:30px; padding:30px 26px 26px; box-shadow:0 26px 70px rgba(15,23,42,0.28); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-sizing:border-box;">
                         <div style="margin-bottom:24px;">
-                            <div style="font-size:22px; font-weight:900; line-height:1.25; letter-spacing:-0.8px; color:#191F28;">로그인</div>
-                            <div style="margin-top:6px; font-size:13px; font-weight:800; line-height:1.5; color:#6B7684;">원장님 / 선생님 계정으로 접속하세요</div>
+                            <div style="font-size:22px; font-weight:900; line-height:1.25; letter-spacing:-0.8px; color:#191F28;">濡쒓렇??/div>
+                            <div style="margin-top:6px; font-size:13px; font-weight:800; line-height:1.5; color:#6B7684;">?먯옣??/ ?좎깮??怨꾩젙?쇰줈 ?묒냽?섏꽭??/div>
                         </div>
 
                         ${msg}
 
                         <div style="display:flex; flex-direction:column; gap:12px;">
                             <div>
-                                <label style="display:block; font-size:12px; font-weight:900; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;" for="eie-login-id">아이디</label>
-                                <input id="eie-login-id" type="text" autocomplete="username" placeholder="아이디 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; outline:none; box-sizing:border-box;">
+                                <label style="display:block; font-size:12px; font-weight:900; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;" for="eie-login-id">?꾩씠??/label>
+                                <input id="eie-login-id" type="text" autocomplete="username" placeholder="?꾩씠???낅젰" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; outline:none; box-sizing:border-box;">
                             </div>
                             <div>
-                                <label style="display:block; font-size:12px; font-weight:900; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;" for="eie-login-pw">비밀번호</label>
-                                <input id="eie-login-pw" type="password" autocomplete="current-password" placeholder="비밀번호 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; outline:none; box-sizing:border-box;">
+                                <label style="display:block; font-size:12px; font-weight:900; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;" for="eie-login-pw">鍮꾨?踰덊샇</label>
+                                <input id="eie-login-pw" type="password" autocomplete="current-password" placeholder="鍮꾨?踰덊샇 ?낅젰" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; outline:none; box-sizing:border-box;">
                             </div>
-                            <button type="button" id="eie-login-submit" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:900; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#0F766E 0%,#2563EB 100%); color:#fff; box-shadow:0 14px 28px rgba(37,99,235,0.26); cursor:pointer;">로그인</button>
+                            <button type="button" id="eie-login-submit" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:900; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#0F766E 0%,#2563EB 100%); color:#fff; box-shadow:0 14px 28px rgba(37,99,235,0.26); cursor:pointer;">濡쒓렇??/button>
                         </div>
 
                         <div style="margin-top:18px; padding-top:16px; border-top:1px solid #E5E8EB; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                             <span style="font-size:11px; font-weight:900; color:#8B95A1;">EIE OS</span>
-                            <span style="font-size:11px; font-weight:900; color:#8B95A1;">Teacher · Owner</span>
+                            <span style="font-size:11px; font-weight:900; color:#8B95A1;">Teacher 쨌 Owner</span>
                         </div>
                     </section>
                 </div>
@@ -280,11 +286,11 @@
         const loginId = (document.getElementById('eie-login-id') || {}).value || '';
         const password = (document.getElementById('eie-login-pw') || {}).value || '';
         if (!loginId.trim() || !password.trim()) {
-            renderEieLogin('아이디와 비밀번호를 입력하세요.');
+            renderEieLogin('?꾩씠?붿? 鍮꾨?踰덊샇瑜??낅젰?섏꽭??');
             return;
         }
         const btn = document.getElementById('eie-login-submit');
-        if (btn) { btn.disabled = true; btn.textContent = '로그인 중...'; }
+        if (btn) { btn.disabled = true; btn.textContent = '濡쒓렇??以?..'; }
         try {
             const eieData = await window.WangjiOwnerAuthBridge.loginEieWithCredentials(loginId.trim(), password.trim());
             window.WangjiOwnerAuthBridge.saveEieSession(eieData);
@@ -295,8 +301,8 @@
                 window.EieRouter.boot();
             }
         } catch (e) {
-            let msg = '로그인 정보를 확인해 주세요.';
-            if (e && e.message && e.message.includes('fetch')) msg = 'EIE 서버에 연결하지 못했습니다.';
+            let msg = '濡쒓렇???뺣낫瑜??뺤씤??二쇱꽭??';
+            if (e && e.message && e.message.includes('fetch')) msg = 'EIE ?쒕쾭???곌껐?섏? 紐삵뻽?듬땲??';
             renderEieLogin(msg);
         }
     }
@@ -310,12 +316,12 @@
             }).catch(function () {});
         }
         clearEieToken();
-        renderEieLogin('다시 로그인해 주세요.');
+        renderEieLogin('?ㅼ떆 濡쒓렇?명빐 二쇱꽭??');
     }
 
     function handleEie401() {
         clearEieToken();
-        renderEieLogin('다시 로그인해 주세요.');
+        renderEieLogin('?ㅼ떆 濡쒓렇?명빐 二쇱꽭??');
     }
 
     function bootWhenReady() {
