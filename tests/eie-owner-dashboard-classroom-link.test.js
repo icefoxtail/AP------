@@ -62,7 +62,9 @@ const context = {
         teachers: [
           { name: 'IVY', role: 'teacher' },
           { name: 'Lily', role: 'teacher' },
-          { name: 'Carmen', role: 'teacher' }
+          { name: 'Carmen', role: 'teacher' },
+          { name: 'Laura', role: 'teacher' },
+          { name: 'Foreigner', role: 'teacher' }
         ]
       };
     },
@@ -84,10 +86,31 @@ vm.runInContext(dashboardSource, context, { filename: 'eie-dashboard.js' });
 (async () => {
   const html = await context.EieDashboardView.render();
 
+  for (const teacherName of ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily', 'Foreigner']) {
+    assert(html.includes(`>${teacherName}`), `owner dashboard should render the approved ${teacherName} teacher card`);
+  }
   assert(html.includes('Lily'), 'owner dashboard should render a Lily teacher card');
-  assert(html.includes('EieClassroomView.openTeacher'), 'teacher card should link to classroom teacher scope');
+  assert(!html.includes('>Laura'), 'owner dashboard should hide non-roster teacher Laura');
+  for (const teacherName of ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily']) {
+    assert(
+      html.includes(`EieTeacherView.openTeacher(&quot;${teacherName}&quot;)`),
+      `${teacherName} card should link to teacher dashboard scope`
+    );
+  }
+  assert(!html.includes('EieTeacherView.openTeacher(&quot;Foreigner&quot;)'), 'Foreigner card should not link to a teacher dashboard');
+  assert(!html.includes('클래스룸'), 'teacher cards should not render the classroom quick-action chip');
   assert(!html.includes('EIE 선생님 1'), 'owner dashboard should not keep teacher placeholder cards');
-  assert(html.includes('오늘 수업') && html.includes('미확인'), 'teacher cards should expose classroom operation metrics');
+  assert(html.includes('eie-admin-teacher-periods'), 'teacher cards should render period rows');
+  assert(html.includes('eie-admin-teacher-period-no'), 'teacher cards should render period numbers');
+  assert(html.includes('eie-admin-teacher-period-class'), 'teacher cards should render period class names');
+  assert((html.match(/eie-admin-teacher-period-row/g) || []).length >= 4, 'teacher cards should render visible period row HTML');
+  assert(html.includes('Malformed Raw') || html.includes('Raw Meta Stacy'), 'teacher cards should show today class names');
+  assert(html.includes('>1</span>'), 'teacher cards should show period numbers');
+  assert(html.includes('eie-admin-teacher-period-class is-empty'), 'teacher cards should keep empty-period rows with a blank class cell');
+  assert(!html.includes('>-</span>'), 'teacher cards should not render a dash for empty periods');
+  assert(!html.includes('미확인'), 'teacher cards should not emphasize attendance metric counts');
+  assert(!html.includes('담당/보조'), 'teacher cards should not emphasize assigned/support metric counts');
+  assert(!html.includes('onclick="EieTeacherView.openTeacher("'), 'teacher cards should not render broken inline onclick quoting');
   assert(
     dashboardSource.includes('EieClassroomScope.cellsForTeacher') &&
       !dashboardSource.includes('homeroom_teacher ==='),

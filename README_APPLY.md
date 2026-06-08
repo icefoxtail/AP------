@@ -1,28 +1,28 @@
-# EIE PDF 기준 교재명/요일별 담당 적용 방법
+﻿# EIE PDF 湲곗? 援먯옱紐??붿씪蹂??대떦 ?곸슜 諛⑸쾿
 
-## 목적
-`26년영어강사시간표.pdf` 기준으로 교재명과 월/화/수/목/금 요일별 담당만 현재 EIE 시간표 row에 반영한다.
-학생 배정, cell id, 교시/시간 구조는 건드리지 않는다.
+## 紐⑹쟻
+`26?꾩쁺?닿컯?ъ떆媛꾪몴.pdf` 湲곗??쇰줈 援먯옱紐낃낵 ??????紐?湲??붿씪蹂??대떦留??꾩옱 EIE ?쒓컙??row??諛섏쁺?쒕떎.
+?숈깮 諛곗젙, cell id, 援먯떆/?쒓컙 援ъ“??嫄대뱶由ъ? ?딅뒗??
 
-## 적용 순서
+## ?곸슜 ?쒖꽌
 
 PowerShell:
 
 cd C:\Users\USER\Desktop\AP------
 Expand-Archive -Path "$env:USERPROFILE\Downloads\eie_timetable_pdf_material_teacher_patch_v12_20260604.zip" -DestinationPath . -Force
-node --check .\eie\js\views\eie-timetable-v2.js
+node --check .\eie\js\views\eie-timetable.js
 node --check .\tools\eie_apply_pdf_material_teachers_20260604.js
 
-그 다음:
+洹??ㅼ쓬:
 
-1. EIE 시간표 화면을 연다.
-2. F12 → Console을 연다.
-3. `tools/eie_apply_pdf_material_teachers_20260604.js` 전체 내용을 붙여넣고 실행한다.
-4. 콘솔 preview 표를 확인한다.
-5. 확인창에서 진행한다.
-6. 다운로드되는 `eie_pdf_material_teacher_apply_report_*.json`을 확인한다.
+1. EIE ?쒓컙???붾㈃???곕떎.
+2. F12 ??Console???곕떎.
+3. `tools/eie_apply_pdf_material_teachers_20260604.js` ?꾩껜 ?댁슜??遺숈뿬?ｊ퀬 ?ㅽ뻾?쒕떎.
+4. 肄섏넄 preview ?쒕? ?뺤씤?쒕떎.
+5. ?뺤씤李쎌뿉??吏꾪뻾?쒕떎.
+6. ?ㅼ슫濡쒕뱶?섎뒗 `eie_pdf_material_teacher_apply_report_*.json`???뺤씤?쒕떎.
 
-## 주의
-- PDF 기준 정답을 반영한다.
-- EIE 현재 화면은 수정 대상이지 정답 기준이 아니다.
-- 학생 배정은 건드리지 않는다.
+## 二쇱쓽
+- PDF 湲곗? ?뺣떟??諛섏쁺?쒕떎.
+- EIE ?꾩옱 ?붾㈃? ?섏젙 ??곸씠吏 ?뺣떟 湲곗????꾨땲??
+- ?숈깮 諛곗젙? 嫄대뱶由ъ? ?딅뒗??

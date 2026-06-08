@@ -13,7 +13,6 @@ const expectedRenderOrder = [
   'renderTeacherStatus(data)',
   'renderRecentConsultationPlaceholder()',
   'renderRecentStudents(data)',
-  'renderNeedCheck(data)',
   'renderWeeklySchedulePlaceholder()',
   'renderBottomSearchPlaceholder()'
 ];
@@ -34,7 +33,6 @@ for (const requiredClass of [
   'ap-admin-shortcuts',
   'ap-admin-overview-grid',
   'ap-admin-teacher-grid',
-  'ap-admin-check-grid',
   'ap-admin-bottom-search'
 ]) {
   assert(source.includes(requiredClass), `EIE owner dashboard should reuse AP dashboard shell class ${requiredClass}`);
@@ -50,13 +48,11 @@ assert(
   'Attendance shortcut should be visible but disabled until the attendance book is implemented'
 );
 
-for (const disabledMetric of [
-  "renderMiniMetric('최근 등록', recentStudentCount(students)",
-  "renderMiniMetric('대기', countByStatus(students, '대기')",
-  "renderMiniMetric('확인 필요', (data.needsReview || []).length)"
-]) {
-  assert(source.includes(disabledMetric), `Today metric should keep AP-style text/value wiring: ${disabledMetric}`);
-}
+assert(source.includes("renderMiniMetric('재원'"), 'EIE owner dashboard should keep the active-student metric');
+assert(source.includes("renderMiniMetric('최근 등록'"), 'EIE owner dashboard should keep the recent-student metric');
+assert(!source.includes("renderMiniMetric('대기'"), 'EIE owner dashboard should remove the ambiguous waiting metric');
+assert(!source.includes("renderMiniMetric('확인 필요'"), 'EIE owner dashboard should remove the ambiguous needs-review metric');
+assert(!source.includes('renderNeedCheck(data)'), 'EIE owner dashboard should remove the lower needs-check placeholder section');
 
 assert(
   source.includes('eie-admin-mini-metric__hover') && !source.includes('<strong>${Number(value || 0).toLocaleString'),
@@ -88,7 +84,6 @@ assert(
 for (const requiredCssSelector of [
   '.eie-admin-home .ap-admin-section',
   '.eie-admin-home .ap-admin-teacher-grid',
-  '.eie-admin-home .ap-admin-check-grid',
   '.eie-admin-home .ap-admin-bottom-search'
 ]) {
   assert(css.includes(requiredCssSelector), `EIE CSS should style AP dashboard selector ${requiredCssSelector}`);

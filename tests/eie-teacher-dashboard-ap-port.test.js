@@ -79,7 +79,16 @@ vm.runInContext(teacherSource, context, { filename: 'eie-teacher.js' });
 (async () => {
   const html = await context.EieTeacherView.render();
 
-  assert(html.includes('클래스룸'), 'teacher dashboard should expose a classroom shortcut');
+  assert(html.includes('EieTeacherView.openTodayClassroom()'), 'teacher dashboard should expose a classroom shortcut');
+  assert(html.includes('eie-teacher-today-card'), 'teacher dashboard should render today classes as cards');
+  assert(html.includes('onclick="EieTeacherView.openClassroom('), 'today class card should carry the classroom cell id');
+  assert(!html.includes('onclick="EieTeacherView.openClassroom("'), 'openClassroom inline handlers must not contain raw nested double quotes');
+  assert(!html.includes('onclick="EieTeacherView.setTab("'), 'setTab inline handlers must not contain raw nested double quotes');
+  assert(/onclick="EieTeacherView\.openClassroom\(&quot;[^&]+&quot;\)"/.test(html), 'openClassroom argument should be HTML-attribute safe');
+  assert(/onclick="EieTeacherView\.setTab\(&quot;(all|elementary|middle)&quot;\)"/.test(html), 'setTab argument should be HTML-attribute safe');
+  assert(!html.includes('오늘일지'), 'teacher dashboard should not expose the journal label');
+  assert(!html.includes('출석 --'), 'teacher dashboard should not expose the old unknown-attendance placeholder');
+  assert(!html.includes('journal-day-cell'), 'teacher dashboard should not keep the AP journal placeholder rows');
   assert(html.includes('Seungjae 5'), 'teacher dashboard should show day-teacher classes, not only homeroom classes');
   assert(!html.includes('Carmen Only'), 'teacher dashboard should hide unrelated teacher-only classes');
   assert(!html.includes('보강'), 'teacher dashboard should not port the makeup tag panel');

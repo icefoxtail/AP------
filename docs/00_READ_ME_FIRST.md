@@ -17,6 +17,17 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 읽는 문서다.
 
 3대 기준 문서는 첫 고정 체크포인트다. 과거 결과 보고서, archive 문서, review request보다 우선한다.
 
+## 1-1. 공유 정책 문서 위치
+
+아래 문서들은 `AI_CENTER/wangji-wiki/raw/shared/`가 **정본**이다.
+`docs/` 서브폴더에는 복사본을 두지 않는다. 수정 시 wangji-wiki 한 곳만 수정한다.
+
+- 도메인 정책: `EIE_*`, `APMS_*`, `APMATH_*`, `WANGJI_*` 계열 정책/스펙 문서
+- 구현 현황: `EIE_APMS_FEATURE_MATRIX`, `EIE_APMS_STATE_API_COMPAT_SPEC` 등
+- 아카이브 라운드 결과: `APMS_ASSESSMENT_*`, `EIE_APMS_REBASE_*` 등
+
+경로: `C:\Users\USER\Desktop\AI_CENTER\wangji-wiki\raw\shared\`
+
 ## 2. docs 루트에 남는 문서
 
 `docs/` 루트에는 다음 통합 진입 문서만 둔다.

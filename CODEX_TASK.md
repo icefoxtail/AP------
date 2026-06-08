@@ -1,312 +1,425 @@
+````powershell
 cd C:\Users\USER\Desktop\AP------
 
-cat > CODEX_TASK.md <<'EOF'
-작업 대상 프로젝트: C:\Users\USER\Desktop\AP------
+@'
+# CODEX_TASK — EIE 원장 대시보드 선생님 카드 MVP 구현
 
-작업명:
-APMS 출제 대상 확장 Round 5-1 - 학년별 출제 보정
+## 0. 작업 성격
 
-목표:
-Round 5에서 구현한 기존 아카이브 + 시험지 보관함의 학년별 출제 UI를 보정한다.
-핵심 보정은 2가지다.
+이번 작업은 EIE 원장 대시보드의 “선생님 현황판”을 실제 운영용 MVP로 꺼내는 구현 작업이다.
 
-1. 기존 아카이브 archive/index.html의 학년별 출제에서 question_count가 0으로 저장될 위험 제거.
-2. 선생님 계정도 원장님과 동일하게 전체 학년 출제가 가능하도록 qr-classes/API/프론트 데이터 흐름을 확인하고 필요한 경우 보정.
+목표는 완성형 설계를 한 번에 끝내는 것이 아니라, 원장님 화면에서 선생님별 오늘 시간표를 바로 보고, 클릭하면 해당 선생님 대시보드로 들어갈 수 있게 만드는 것이다.
 
-이번 라운드에서는 분석표, 리포트, premium analysis, snapshot 저장, DB migration, 배포를 하지 않는다.
+이번 작업은 선생님 대시보드 fix2를 다시 크게 수정하는 작업이 아니다.
+이번 작업은 클래스룸/학생상담 전체 구현 작업도 아니다.
+이번 작업은 원장 대시보드 선생님 카드 MVP다.
 
-중요 원칙:
-- git add, git commit, git push 금지.
-- 작업 결과 파일명은 반드시 CODEX_RESULT2.md로 작성한다.
-- CODEX_RESULT.md 또는 CODEX_RESULT1.md를 새로 만들지 않는다.
-- wrangler d1 migrations apply 실행 금지.
-- wrangler deploy 실행 금지.
-- DB migration 파일 추가/수정 금지.
-- schema.sql 수정 금지.
-- 분석표 버튼/화면 구현 금지.
-- assessment_result_items 저장 로직 수정 금지.
-- premium/report snapshot 저장 구현 금지.
-- 학부모 리포트 구현 금지.
-- 원장님 대시보드, 선생님 사이드바, 휴원 기능 수정 금지.
-- 평가팩 데이터 JS 수정 금지.
-- 기존 일반 기출 출제/QR/OMR 흐름을 깨뜨리지 말 것.
-- 기존 MIXED:<key> 흐름을 유지한다.
-- ASSESSMENT:<packId>를 archive_file에 넣지 않는다.
-- 출제자 정보는 저장하지 않는다. created_by 컬럼은 이번 구현에서도 사용하지 않는다.
-- 기존 아카이브와 시험지 보관함의 출제 대상 문구/흐름은 동일하게 유지한다.
+git add, git commit, git push는 하지 않는다.
 
-반드시 먼저 확인할 파일:
-- archive/index.html
-- archive/assessment/assessment-mvp.html
-- archive/engine.html
-- archive/mixed_engine.html
-- apmath/worker-backup/worker/routes/check-omr.js
-- apmath/worker-backup/worker/routes/exams.js
-- apmath/js/qr-omr.js
-- tests/assessment-grade-target-assignment.test.js
-- tests/assessment-result-items-storage.test.js
-- tests/assessment-assignment-metadata-flow.test.js
-- tests/assessment-archive-print-flow.test.js
-- tests/assessment-mvp-archive-style.test.js
+## 1. 최종 목표
 
-현재 Round 5 검수에서 확인된 문제:
-1. archive/index.html 학년별 사전 출제 등록 payload에서 question_count가 아래처럼 0 fallback 가능성이 있음.
-   question_count: Number(item.question_count || item.questionCount || item.count || 0)
+원장 대시보드의 선생님 카드가 아래 역할을 하게 만든다.
 
-2. normalizeExamMeta() 또는 기존 아카이브 시험지 메타 구조에서 question_count/questionCount/count를 보장하지 않으면, 기존 아카이브 시험지를 학년별로 출제할 때 class_exam_assignments.question_count가 0으로 저장될 수 있음.
+1. 원장님이 오늘 EIE 선생님별 수업 배치를 한눈에 본다.
+2. 선생님 카드 클릭 시 해당 선생님 대시보드 홈으로 이동한다.
+3. Foreigner는 개인 선생님 대시보드가 없으므로 클릭되지 않는다.
+4. 선생님 카드에는 “담당/보조 45” 같은 내부 지표가 아니라, 오늘 요일/교시 기준 반명이 표시된다.
+5. 교시별 반명은 임의 하드코딩하지 않고 현재 EIE 시간표/요일/교시 데이터와 연동해서 가져온다.
+6. 화면에는 “관전모드”, “관람모드”, “읽기 전용” 같은 문구를 노출하지 않는다.
 
-3. 선생님도 전체 학년 출제가 가능해야 하는 정책인데, 현재 qr-classes API가 선생님에게 전체 반을 내려주는지 확인이 필요함. 담당반만 내려주면 정책과 다름.
+## 2. 현재 화면 문제
 
-확정 정책:
-- 원장님/선생님 모두 반별·학년별 출제 가능.
-- 선생님도 전체 학년 출제 가능.
-- 출제자 저장 안 함.
-- 학년별 출제는 DB에 반별 assignment 여러 개로 저장.
-- 같은 학년별 출제는 assignment_batch_id로 묶음.
-- 기존 아카이브 시험지 학년별 출제 시 question_count 0 저장 금지.
-- question_count를 확정할 수 없으면 학년별 사전 등록을 진행하지 말고 사용자에게 “문항 수 확인이 필요합니다.”를 보여준다.
-- 시험지 보관함 평가팩은 pack.questions.length를 사용하므로 기존 구조 유지.
-- 반별 출제 기존 흐름은 유지.
+현재 원장 대시보드 선생님 현황 카드에는 아래처럼 운영 의미가 약한 지표가 출력된다.
 
-구현 범위:
+- 오늘 수업 0
+- 담당/보조 45
+- 출석 완료 0
+- 미확인 0
 
-1. archive/index.html question_count 보정
-수정 대상:
-- archive/index.html
+이 지표들은 이번 작업에서 제거하거나 더 이상 핵심 정보로 쓰지 않는다.
 
-해야 할 일:
-- 기존 아카이브 시험지의 실제 문항 수를 안정적으로 구하는 helper를 만든다.
-- helper 이름은 코드 스타일에 맞추되 역할이 명확해야 한다.
-  예:
-  - resolveArchiveExamQuestionCount
-  - getArchiveExamQuestionCount
-  - resolveExamQuestionCountForAssignment
+특히 `담당/보조 45`는 원장님 운영 화면에 노출하지 않는다.
 
-문항 수 계산 우선순위:
-1. item.question_count
-2. item.questionCount
-3. item.count
-4. item.questions.length 또는 유사 필드가 실제 존재하면 사용
-5. db.js 메타에서 문항 수 필드가 있으면 사용
-6. 기존 archive/index.html에서 engine으로 넘기는 파일 정보나 문제 수를 이미 계산하는 함수가 있으면 그 로직 재사용
-7. 그래도 확인 불가하면 0을 쓰지 말고 null/NaN으로 처리 후 출제 등록 차단
+## 3. 새 카드 출력 형식
+
+선생님 카드 안에는 오늘 요일 기준 교시별 반명을 작은 표/리스트 형태로 표시한다.
+
+권장 형태:
+
+Carmen
+
+1  RS3
+2  FO2
+3  -
+4  R4
+5  R5
+
+출력 원칙:
+
+1. 선생님 이름을 상단에 표시한다.
+2. 그 아래에 작은 표 형식으로 교시 번호와 반명을 표시한다.
+3. 교시 번호는 짧게 `1`, `2`, `3`, `4`처럼 표시한다.
+4. 반명은 시간표 데이터의 실제 반명/수업명에서 가져온다.
+5. 해당 교시에 수업이 없으면 `-`로 표시한다.
+6. 긴 설명형 문구를 넣지 않는다.
+7. 오늘 요일 기준으로만 표시한다.
+8. 가짜 수업 수나 가짜 출결 숫자를 만들지 않는다.
+
+예시:
+
+Carmen
+1  RS3
+2  FO2
+3  -
+4  R4
+
+Zoe
+1  -
+2  RS1
+3  RS2
+4  -
+
+Foreigner
+1  Speaking
+2  -
+3  Speaking
+4  -
+
+단, Foreigner는 카드가 표시되더라도 클릭되면 안 된다.
+
+## 4. 클릭 동작
+
+### 4.1 클릭 가능 선생님
+
+아래 실제 선생님 카드는 클릭 시 해당 선생님 대시보드로 이동한다.
+
+- Carmen
+- Zoe
+- IVY
+- Stacy
+- Lily
+
+현재 코드에 실제 운영명 표기가 다르면 기존 데이터 기준 이름을 유지한다.
+단, 임의로 teacherRoster 명단을 크게 갈아엎지 않는다.
+
+### 4.2 Foreigner
+
+Foreigner는 개인 선생님 대시보드가 없다.
+
+따라서:
+
+1. Foreigner 카드가 표시되더라도 클릭 이벤트를 붙이지 않는다.
+2. 클릭 가능한 카드처럼 보이지 않게 한다.
+3. Foreigner를 클릭했을 때 EieTeacherView.openTeacher('Foreigner') 같은 동작이 발생하면 안 된다.
+4. 화면에 “대시보드 없음” 같은 긴 문구를 띄우지 않는다.
+
+### 4.3 클릭 연결 방식
+
+선생님 카드 클릭은 기존 선생님 대시보드 진입 구조를 우선 사용한다.
+
+우선 후보:
+
+- `EieTeacherView.openTeacher(name)`
+
+또는 현재 코드에 더 안전한 기존 wrapper가 있으면 그것을 사용한다.
 
 금지:
-- question_count fallback으로 0 사용 금지.
-- 학년별 출제 payload에 question_count: 0 저장 금지.
-- 하드코딩으로 모든 시험지를 20문항, 25문항 처리 금지.
-- 파일명만 보고 임의 문항 수 추정 금지.
 
-실패 처리:
-- 학년별 출제에서 문항 수를 확정할 수 없는 시험지는 사전 등록을 중단한다.
-- 사용자에게 아래 문구를 표시한다.
-  문항 수 확인이 필요합니다.
-- 콘솔에도 어떤 시험지에서 문항 수 확인이 실패했는지 남긴다.
-- 기존 반별 출제 흐름은 가능한 한 기존처럼 유지한다.
+- 새 route 만들기
+- route/hash 전체 재배선
+- `eie-router.js` 구조 변경
+- 원장 관전모드 실제 구현
+- 화면에 관전/관람/읽기전용 문구 노출
 
-2. assessment-mvp.html 문항 수 확인
-수정 대상:
-- archive/assessment/assessment-mvp.html
+## 5. 시간표 데이터 연동
 
-해야 할 일:
-- 시험지 보관함 평가팩 학년별 출제는 pack.questions.length 또는 기존 평가팩 questionCount 값을 사용하고 있는지 확인한다.
-- 여기는 0 fallback이 없어야 한다.
-- pack.questions가 없거나 빈 배열이면 학년별 출제 등록을 차단하고 “문항 수 확인이 필요합니다.”를 표시한다.
-- 정상 평가팩은 기존처럼 동작해야 한다.
+교시별 반명은 현재 EIE 시간표 데이터와 연동해서 가져와야 한다.
 
-3. qr-classes 전체 반 반환 정책 확인/보정
-수정 대상 후보:
-- apmath/worker-backup/worker/routes/check-omr.js
+확인할 후보:
 
-해야 할 일:
-- qr-classes API가 원장님/선생님에게 어떤 반 목록을 내려주는지 실제 코드로 확인한다.
-- 선생님에게 담당반만 내려주는 구조라면, AP 제출 QR 출제용 qr-classes에서는 선생님에게도 전체 반/전체 학년 출제가 가능하도록 보정한다.
-- 보정 시 기존 PIN/check-init/check-pin 인증 흐름을 깨뜨리지 않는다.
-- 보정 시 학생용 제출 보안이나 PIN 확인 흐름을 무력화하지 않는다.
-- 단순히 출제 대상 목록에 쓰이는 반 목록만 원장님/선생님 모두 전체 반을 받을 수 있게 한다.
-- 기존 API가 이미 전체 반을 반환한다면 코드 수정하지 말고 CODEX_RESULT2.md에 근거를 기록한다.
+- `eie/js/views/eie-dashboard.js`
+- `eie/js/views/eie-teacher.js`
+- `eie/js/utils/eie-classroom-scope.js`
+- `eie/js/views/eie-timetable-v2.js`
+- `eie/js/eie-state.js`
+- `eie/js/eie-api.js`
 
-정책:
-- 원장님/선생님 모두 전체 반 목록을 받아야 학년별 출제가 가능하다.
-- 출제자 저장은 하지 않는다.
-- teacher_id/created_by 같은 저장은 이번 라운드에서 추가하지 않는다.
+단, 이번 작업에서 시간표 핵심 로직을 수정하지 않는다.
+읽어서 사용하는 것은 가능하지만 `eie-timetable-v2.js`의 핵심 로직은 수정하지 않는다.
 
-4. 학년별 반 목록 추출 재확인
-수정 대상:
-- archive/index.html
-- archive/assessment/assessment-mvp.html
+확인할 데이터 후보:
 
-해야 할 일:
-- 학년별 목록이 기존 qr-classes에서 받은 반 목록 기준으로 생성되는지 확인한다.
-- 반명/학년 필드에서 중1, 중2, 중3, 고1, 고2를 추출하는 로직이 너무 약하면 보정한다.
-- 가능한 경우 명시적인 grade/grade_label 필드 우선.
-- 없으면 className/name에서 패턴 추출.
-- 학년 추출 실패 반은 학년별 목록에 넣지 않는다.
-- 해당 학년에 반이 없으면 기존 문구 유지:
-  해당 학년에 출제할 반이 없습니다.
+- 요일 정보
+- 교시 정보
+- period_label
+- period_order
+- day_label
+- class_name / classTitle / display name 계열
+- homeroom teacher
+- teacher_names
+- teacher_names_by_day
+- weekday_teachers
+- day_teachers
+- assigned teacher 관련 기존 helper
 
-5. assignment_batch_id / target_scope 보존 확인
-수정 대상:
-- archive/index.html
-- archive/assessment/assessment-mvp.html
+실제 필드명은 현재 코드 기준으로 확인하고 CODEX_RESULT1.md에 기록한다.
 
-해야 할 일:
-- 학년별 출제 시 모든 반별 POST payload에 같은 assignment_batch_id가 들어가는지 확인한다.
-- target_scope는 학년별일 때 grade.
-- 반별일 때 target_scope는 class.
-- 시험지 보관함 평가팩은 pack_id, pack_hash, grade_label도 같이 전달되어야 한다.
-- 기존 아카이브 일반 시험지는 pack_id 없이도 정상이어야 한다.
+## 6. 구현 범위
 
-6. tests 보강
-수정 또는 추가 대상:
-- tests/assessment-grade-target-assignment.test.js
-- 필요하면 tests/assessment-grade-target-round5-1.test.js 추가 가능
+### 수정 가능 파일
 
-테스트에 반드시 포함할 내용:
-- archive/index.html에 question_count 0 fallback 패턴이 없어야 한다.
-  금지 패턴 예:
-  question_count: Number(item.question_count || item.questionCount || item.count || 0)
-  또는 유사한 || 0 fallback
-- archive/index.html에 문항 수 확인 실패 시 “문항 수 확인이 필요합니다.” 문구가 있어야 한다.
-- archive/index.html에 문항 수 helper가 있어야 한다.
-- archive/assessment/assessment-mvp.html도 평가팩 question count 확인 실패를 방어해야 한다.
-- qr-classes route가 teacher에게 전체 반 출제를 막는 필터를 강제하지 않는지 확인한다.
-  문자열 기반으로 teacher_id 제한이 있으면 테스트에서 잡거나, 코드 구조상 전체 반 반환 근거를 확인한다.
-- archive/index.html과 assessment-mvp.html에 출제 대상/반별/학년별 문구가 유지되어야 한다.
-- assignment_batch_id, target_scope, grade_label 흐름이 유지되어야 한다.
-- created_by를 새로 보내는 코드가 없어야 한다.
-- ASSESSMENT:<packId>를 archive_file에 넣는 코드가 없어야 한다.
-- 분석표, assessment-analysis.html 관련 새 코드가 없어야 한다.
+주 대상:
 
-기존 테스트도 실행:
-- node tests/assessment-grade-target-assignment.test.js
-- node tests/assessment-result-items-storage.test.js
-- node tests/assessment-assignment-metadata-flow.test.js
-- node tests/assessment-archive-print-flow.test.js
-- node tests/assessment-mvp-archive-style.test.js
+- `eie/js/views/eie-dashboard.js`
+- `eie/css/eie.css`
 
-검증:
-1. node --check
-- node --check apmath/worker-backup/worker/routes/check-omr.js
-- node --check apmath/worker-backup/worker/routes/exams.js
-- node --check apmath/js/qr-omr.js
+필요 시 최소 확인/수정 가능:
 
-2. 테스트 실행
-- node tests/assessment-grade-target-assignment.test.js
-- node tests/assessment-result-items-storage.test.js
-- node tests/assessment-assignment-metadata-flow.test.js
-- node tests/assessment-archive-print-flow.test.js
-- node tests/assessment-mvp-archive-style.test.js
-- 새 테스트를 추가했다면 해당 테스트도 실행
+- `eie/js/views/eie-teacher.js`
+- 관련 테스트 파일
 
-3. git diff 확인
-실행:
-- git diff --name-only
-- git status --short --untracked-files=all
+읽기 확인만 원칙:
 
-허용 변경 파일:
-- archive/index.html
-- archive/assessment/assessment-mvp.html
-- apmath/worker-backup/worker/routes/check-omr.js
-- tests/assessment-grade-target-assignment.test.js
-- tests/assessment-grade-target-round5-1.test.js
-- CODEX_RESULT2.md
+- `eie/js/utils/eie-classroom-scope.js`
+- `eie/js/views/eie-timetable-v2.js`
+- `eie/js/eie-router.js`
+- `eie/js/eie-state.js`
+- `eie/js/eie-api.js`
+- `eie/js/views/eie-classroom.js`
+- `eie/js/views/eie-students.js`
 
-가능하면 check-omr.js는 실제 필요할 때만 수정한다.
-routes/exams.js는 이번 보정에서 수정하지 않는 것이 원칙이다. 필요 시 이유를 CODEX_RESULT2.md에 기록한다.
+## 7. 구현 세부 지시
 
-금지 파일:
-- apmath/worker-backup/worker/routes/exams.js
-- apmath/worker-backup/worker/schema.sql
-- apmath/worker-backup/worker/migrations/stage_assessment_analysis_storage_round2.sql
-- docs/APMS_ASSESSMENT_ANALYSIS_MIGRATION_DRAFT.sql
-- docs/APMS_ASSESSMENT_ANALYSIS_STORAGE_ROUND1.md
-- archive/assessment/assessment-packs-1sem.generated.js
-- archive/assessment/assessment-question-index-1sem.generated.js
-- archive/mixed_engine.html
-- archive/engine.html
-- apmath/js/dashboard.js
-- apmath/js/ui.js
-- apmath/js/report.js
-- apmath/js/classroom.js
-- apmath/js/student.js
-- apmath/js/qr-omr.js
+### 7.1 현재 선생님 카드 렌더링 함수 확인
 
-4. 실제 원격 DB 쓰기 테스트는 이번 라운드에서 하지 않는다.
-- wrangler d1 execute insert 금지.
-- 브라우저에서 실제 출제 버튼을 눌러 원격 assignment를 생성하지 않는다.
-- 이번 라운드는 코드/정적 테스트까지만 한다.
+먼저 `eie-dashboard.js`에서 현재 원장 대시보드 선생님 현황판 렌더링 함수를 찾는다.
 
-브라우저 확인 가능하면:
-- 로컬에서 archive/index.html 열기
-- AP 제출 QR 출제 흐름에서 출제 대상 모달 확인
-- 반별/학년별 선택 화면 확인
-- 문항 수 확인 실패 상황이 실제로 있으면 “문항 수 확인이 필요합니다.” 표시 확인
-- archive/assessment/assessment-mvp.html도 동일 흐름 확인
-- 실제 최종 출제 API 호출은 하지 않는다.
-- 브라우저 확인이 불가능하면 CODEX_RESULT2.md에 명시한다.
+확인할 것:
 
-이번 라운드에서 하지 말 것:
-- 실제 원격 출제 테스트
-- 원장/선생님 권한별 제한 추가
-- 출제자 저장
-- 반별 QR 통합 출력
-- assessment_result_items 저장 변경
-- 분석표 화면
-- assessment_analysis_snapshots 저장
-- assessment_report_snapshots 저장
-- premium AI 호출
-- 학부모 리포트
-- D1 migration 적용
-- 배포
+1. 선생님 카드 렌더링 함수명
+2. 현재 선생님 목록 생성 방식
+3. 현재 `오늘 수업`, `담당/보조`, `출석 완료`, `미확인` 계산 방식
+4. 현재 클래스룸 버튼/카드 클릭 동작
+5. 현재 Foreigner/PREP/Laura/원장님이 섞이는 원인
 
-CODEX_RESULT2.md 형식:
+CODEX_RESULT1.md에 실제 함수명과 근거를 기록한다.
 
-# CODEX_RESULT2
+### 7.2 기존 지표 제거
+
+아래 지표는 원장 카드에서 제거한다.
+
+- 담당/보조
+- 출석 완료
+- 미확인
+- 오늘 수업 0처럼 의미 없는 숫자 지표
+
+이번 MVP에서는 교시별 반명 표시를 우선한다.
+
+### 7.3 교시별 반명 표 생성
+
+새 helper를 만들 수 있다.
+
+권장 helper 역할:
+
+- 오늘 요일을 판단한다.
+- 현재 timetable cell 목록에서 해당 선생님의 오늘 수업을 찾는다.
+- 교시 번호 기준으로 정렬한다.
+- 각 교시별 표시 반명을 만든다.
+- 수업이 없는 교시는 `-`로 표시한다.
+
+주의:
+
+1. 새 날짜 판정 로직을 무리하게 만들지 말고 기존 요일/시간표 helper가 있으면 우선 사용한다.
+2. 같은 교시에 여러 반이 잡히면 짧게 병합하거나 CODEX_RESULT1.md에 위험으로 기록한다.
+3. 반명이 없으면 수업명/셀명/기존 display label 후보를 안전하게 fallback한다.
+4. fallback도 없으면 `-`로 둔다.
+5. 데이터 미로드 상태에서 가짜 값을 만들지 않는다.
+
+### 7.4 작은 표 UI
+
+카드 내부 UI는 작은 표/리스트 형태로 만든다.
+
+예상 class 후보:
+
+- `.eie-admin-teacher-periods`
+- `.eie-admin-teacher-period-row`
+- `.eie-admin-teacher-period-no`
+- `.eie-admin-teacher-period-class`
+
+실제 class명은 기존 CSS 규칙과 충돌하지 않게 정한다.
+
+스타일 기준:
+
+1. 흰색 카드 톤 유지
+2. 얇은 border
+3. 작은 칩/표 느낌
+4. 모바일에서도 줄 깨짐 과하지 않게
+5. 검은 테두리 박스 느낌 금지
+6. AP MATH 색상 그대로 복사 금지
+7. CSS 전체 갈아엎기 금지
+
+### 7.5 카드 클릭 연결
+
+클릭 가능 선생님 카드에는 `EieTeacherView.openTeacher(name)` 또는 현재 안전한 기존 진입 함수를 연결한다.
+
+중요:
+
+1. inline onclick을 쓸 경우 HTML attribute-safe 하게 escape한다.
+2. 1차 선생님 대시보드에서 발생했던 `onclick="...("c1")"` 같은 따옴표 깨짐을 반복하지 않는다.
+3. 가능하면 기존 escape helper나 안전한 인자 helper를 사용한다.
+4. 테스트에서 깨진 onclick 패턴을 금지한다.
+
+금지 패턴:
+
+onclick="EieTeacherView.openTeacher("Carmen")"
+
+허용 예:
+
+onclick="EieTeacherView.openTeacher(&quot;Carmen&quot;)"
+
+또는 안전한 data attribute/event binding 구조가 이미 있으면 그 구조를 사용한다.
+
+### 7.6 Foreigner non-click
+
+Foreigner 카드에는 클릭 handler를 붙이지 않는다.
+
+확인할 것:
+
+1. Foreigner 카드에 `onclick`이 없는지
+2. cursor pointer가 적용되지 않는지
+3. 클래스룸/선생님 대시보드 버튼이 표시되지 않는지
+4. 화면에서 너무 튀는 안내문이 나오지 않는지
+
+## 8. 절대 금지
+
+이번 작업에서 절대 하지 않는다.
+
+- 파일명 변경 금지
+- 파일 삭제 금지
+- rename 금지
+- route/hash 전체 재배선 금지
+- 새 route 추가 금지
+- 대량 문자열 치환 금지
+- AP MATH 원본 수정 금지
+- EIE 시간표 핵심 로직 수정 금지
+- `eie-timetable-v2.js` 핵심 로직 수정 금지
+- DB migration 금지
+- Worker/API 권한 구조 변경 금지
+- CSS 전체 갈아엎기 금지
+- 선생님 대시보드 fix2 구조 재수정 금지
+- 클래스룸/학생상담 전체 구현 금지
+- 원장 관전/관람모드 실제 구현 금지
+- 화면에 “관전모드”, “관람모드”, “읽기 전용” 문구 노출 금지
+- git add 금지
+- git commit 금지
+- git push 금지
+
+## 9. 검증
+
+가능한 경우 아래를 실행하고 CODEX_RESULT1.md에 결과를 기록한다.
+
+```powershell
+node --check eie/js/views/eie-dashboard.js
+node --check eie/js/views/eie-teacher.js
+node --check eie/js/views/eie-classroom.js
+node --check eie/js/views/eie-students.js
+node --check eie/js/eie-router.js
+````
+
+관련 테스트가 있으면 찾아서 실행한다.
+필요하면 최소 테스트만 추가한다.
+
+테스트에 포함할 것:
+
+1. 원장 대시보드 선생님 카드에서 `담당/보조`가 렌더되지 않는지
+2. 교시별 반명 표가 렌더되는지
+3. 클릭 가능 선생님 카드에 안전한 `openTeacher` 연결이 있는지
+4. Foreigner 카드에는 `openTeacher('Foreigner')` 연결이 없는지
+5. 깨진 inline onclick 패턴이 없는지
+
+브라우저 확인 후보:
+
+1. 원장 대시보드 진입
+2. 선생님 카드에 `1 RS3`, `2 FO2` 형식 교시별 반명이 보이는지
+3. Carmen/Zoe/IVY/Stacy/Lily 카드 클릭 시 해당 선생님 대시보드 진입
+4. Foreigner 클릭이 동작하지 않는지
+5. 콘솔 SyntaxError / undefined / 404 없음
+
+브라우저 확인을 못 했으면 CODEX_RESULT1.md에 “브라우저 미확인”으로 기록한다.
+
+## 10. CODEX_RESULT1.md 작성 형식
+
+작업 완료 후 루트에 `CODEX_RESULT1.md`를 작성한다.
+
+반드시 아래 구조로 작성한다.
+
+# CODEX_RESULT1
 
 ## 1. 수정 파일
-- 수정한 파일 목록
 
-## 2. 보정 내용
-- archive/index.html question_count 0 방지 내용
-- assessment-mvp.html question_count 방어 내용
-- qr-classes 전체 반 반환 정책 확인/보정 내용
-- 학년별 반 목록 추출 보정 내용
-- assignment_batch_id / target_scope 보존 확인 내용
+표로 작성한다.
 
-## 3. 정책 확인
-- 원장님/선생님 모두 학년별 출제 가능 여부
-- 출제자 저장 안 함 확인
-- question_count 0 저장 방지 확인
-- 학년별 출제는 반별 assignment 여러 개로 저장되는 구조 확인
-- ASSESSMENT:<packId> 미사용 확인
-- MIXED:<key> 유지 확인
+열:
 
-## 4. 보존 확인
-- 기존 반별 출제 흐름 보존 여부
-- 기존 일반 시험지 출력 보존 여부
-- 기존 정답/해설 동작 보존 여부
-- 시험지 보관함 카드 스타일 보존 여부
-- 분석표 미구현 여부
-- DB migration 미실행 여부
-- 원격 DB 쓰기 테스트 미실행 여부
+* 파일
+* 수정 내용
+* 수정 이유
+* 위험도
 
-## 5. 검증 결과
-- node --check 결과
-- 테스트 실행 결과
-- git diff --name-only 결과
-- git status 결과
-- 브라우저 확인 여부
-- 확인하지 못한 항목
+## 2. 구현 내용
+
+아래 항목별로 작성한다.
+
+* 원장 대시보드 선생님 카드 구조 변경
+* 제거한 기존 지표
+* 교시별 반명 표시 방식
+* 시간표 데이터 연동 방식
+* 카드 클릭 → 선생님 대시보드 연결 방식
+* Foreigner non-click 처리
+* CSS 변경
+* 테스트 변경
+
+## 3. 검증 결과
+
+실행한 명령과 결과를 그대로 기록한다.
+
+## 4. 남은 위험
+
+반드시 포함:
+
+* 교시별 반명 fallback 위험
+* 같은 교시 다중 수업 처리 위험
+* teacherRoster/운영 선생님 명단 불일치 위험
+* Foreigner/PREP/Laura/원장님 표시 정책 후속 확정 필요
+* 실제 브라우저 확인 여부
+
+## 5. 사용자 확인 필요
+
+반드시 포함:
+
+* 교시별 반명 표 형식이 보기 좋은지
+* `-` 표시를 유지할지
+* Foreigner 카드를 표시만 할지 아예 숨길지
+* Laura/PREP/원장님을 카드에서 어떻게 처리할지
+* 선생님 카드 클릭 후 선생님 대시보드 홈 진입이 맞는지
 
 ## 6. 다음 조치
-- 실제 브라우저에서 반별/학년별 출제 흐름 확인
-- 개발 DB에서 학년별 assignment_batch_id 반별 생성 확인
-- 이후 raw analysis snapshot 저장
-- 이후 premium/report snapshot 저장
 
-작업 완료 후 git add, git commit, git push는 하지 않는다.
-CODEX_RESULT2.md 작성 후 멈춘다.
-EOF
+다음 단계 후보:
 
-C:\Users\USER\Desktop\AP------의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라. 이전 작업 결과로 대체하지 마라.
+1. 브라우저에서 원장 카드 클릭 확인
+2. 선생님 대시보드 연결 후 원장 보기 전용 처리
+3. 클래스룸/학생상담 연결 흐름 정리
+4. 원장 대시보드 선생님 현황판 최종 정리
+
+## 11. 마무리
+
+CODEX_RESULT1.md 작성 후 멈춘다.
+자동 zip 생성하지 않는다.
+git add, git commit, git push는 하지 않는다.
+
+C:\Users\USER\Desktop\AP------의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라.
+'@ | Set-Content -Path "C:\Users\USER\Desktop\AP------\CODEX_TASK.md" -Encoding UTF8
+
+```
+```

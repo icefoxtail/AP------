@@ -16,6 +16,10 @@
     var _editCellTeachersMode = false;
     var _saving = false;
     var _addStudentMode = false;  // 학생 추가 패널
+    var _consultationRows = [];
+    var _consultationLoadedStudentId = '';
+    var _consultationFormOpen = false;
+    var _consultationDraftDate = '';
 
     function esc(value) {
         return EieApp.escapeHtml(value);
@@ -23,6 +27,10 @@
 
     function text(value) {
         return String(value == null ? '' : value).trim();
+    }
+
+    function jsArg(value) {
+        return esc(JSON.stringify(String(value == null ? '' : value)));
     }
 
     function rawOf(row) {
@@ -504,8 +512,114 @@
             + (cell ? renderDetailRow('교시', [cell.period_label, cell.start_time ? cell.start_time + '~' + (cell.end_time || '') : ''].filter(Boolean).join(' ') || '-') : '')
             + '</div>'
             + '<div class="eie-apms-note" style="margin-top:12px;"><span>메모</span><p>' + esc(memoOf(student) || '메모가 없습니다.') + '</p></div>'
+            + renderStudentConsultationSection(student, cell)
             + (removeBtn ? '<div class="eie-action-row" style="margin-top:14px;">' + removeBtn + '</div>' : '')
             + '</aside>';
+    }
+
+    async function loadStudentConsultations(studentId) {
+        var sid = text(studentId);
+        if (!sid || !window.EieApi || typeof EieApi.getConsultations !== 'function') {
+            _consultationRows = [];
+            _consultationLoadedStudentId = sid;
+            return;
+        }
+        if (_consultationLoadedStudentId === sid) return;
+        try {
+            var result = await EieApi.getConsultations(sid);
+            var rows = (result && (result.consultations || result.data || result.items)) || [];
+            _consultationRows = Array.isArray(rows) ? rows : [];
+            _consultationLoadedStudentId = sid;
+            if (window.EieState && typeof EieState.mergeStudentConsultations === 'function') {
+                EieState.mergeStudentConsultations(sid, _consultationRows);
+            }
+        } catch (err) {
+            _consultationRows = [];
+            _consultationLoadedStudentId = sid;
+        }
+    }
+
+    function consultationRowsFor(studentId) {
+        var sid = text(studentId);
+        if (!sid) return [];
+        return (_consultationRows || []).filter(function (row) {
+            var rowSid = text(row.student_id || row.studentId || row.sid);
+            return !rowSid || rowSid === sid;
+        });
+    }
+
+    function consultationDateOf(row) {
+        return text(row.date || row.consultation_date || row.created_at || row.updated_at).slice(0, 10);
+    }
+
+    function consultationTypeOf(row) {
+        return text(row.type || row.consultation_type || row.category) || '상담';
+    }
+
+    function renderStudentConsultationSection(student, cell) {
+        var sid = text(student && (student.student_id || student.id));
+        if (!sid) return '';
+        var cellId = text(cell && cell.id);
+        var rows = consultationRowsFor(sid);
+        return '<section class="eie-classroom-consultation-section" aria-label="상담">'
+            + '<div class="eie-classroom-consultation-head">'
+            + '<h3>상담</h3>'
+            + '<span>' + esc(String(rows.length)) + '건</span>'
+            + '</div>'
+            + (_consultationFormOpen
+                ? renderStudentConsultationForm(sid, cellId)
+                : '<div class="eie-apms-consultation-actions"><button type="button" class="eie-secondary-button" onclick="EieClassroomView.openStudentConsultationForm()">상담 추가</button></div>')
+            + renderStudentConsultationList(rows)
+            + '</section>';
+    }
+
+    function renderStudentConsultationList(rows) {
+        if (!rows.length) {
+            return '<div class="eie-apms-consultation-empty">상담 기록이 없습니다.</div>';
+        }
+        return '<div class="eie-apms-consultation-list">'
+            + rows.map(function (row) {
+                var content = text(row.content || row.memo || row.note);
+                var nextAction = text(row.next_action || row.nextAction);
+                return '<article class="eie-apms-consultation-row">'
+                    + '<div class="eie-apms-consultation-main">'
+                    + '<div class="eie-apms-consultation-meta">'
+                    + '<em>' + esc(consultationTypeOf(row)) + '</em>'
+                    + '<span>' + esc(consultationDateOf(row) || '-') + '</span>'
+                    + '</div>'
+                    + '<p>' + esc(content || '내용이 없습니다.') + '</p>'
+                    + (nextAction ? '<div class="eie-apms-consultation-next"><strong>다음</strong> ' + esc(nextAction) + '</div>' : '')
+                    + '</div>'
+                    + '</article>';
+            }).join('')
+            + '</div>';
+    }
+
+    function renderStudentConsultationForm(studentId, cellId) {
+        var defaultDate = normalizeDate(_consultationDraftDate || todayIso());
+        var options = ['상담', '학습', '태도', '성적', '기타'];
+        return '<div class="eie-apms-consultation-form">'
+            + '<div class="eie-apms-consultation-form-head">'
+            + '<strong>상담 추가</strong>'
+            + '<button type="button" class="eie-icon-button" onclick="EieClassroomView.closeStudentConsultationForm()">취소</button>'
+            + '</div>'
+            + '<div class="eie-apms-consultation-form-grid">'
+            + '<label><span>날짜</span><input type="date" id="cls-consultation-date" value="' + esc(defaultDate) + '"></label>'
+            + '<label><span>구분</span><select id="cls-consultation-type">'
+            + options.map(function (option) {
+                return '<option value="' + esc(option) + '">' + esc(option) + '</option>';
+            }).join('')
+            + '</select></label>'
+            + '</div>'
+            + '<label><span>상담 내용</span><textarea id="cls-consultation-content"></textarea></label>'
+            + '<label><span>다음 액션</span><input type="text" id="cls-consultation-next-action"></label>'
+            + '<div class="eie-apms-consultation-save-row">'
+            + '<button type="button" class="eie-primary-button" onclick="EieClassroomView.saveStudentConsultation(' + jsArg(studentId) + ',' + jsArg(cellId) + ')" ' + (_saving ? 'disabled' : '') + '>'
+            + (_saving ? '저장 중...' : '저장')
+            + '</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieClassroomView.closeStudentConsultationForm()">취소</button>'
+            + '</div>'
+            + '</div>';
     }
 
     function renderCellTeacherPicker(cell) {
@@ -718,6 +832,9 @@
             var cell = getSelectedCell();
             if (cell && !canCurrentUserUseCell(cell)) cell = null;
             var student = (_selectedStudentKey !== null) ? getSelectedStudent() : null;
+            if (student) {
+                await loadStudentConsultations(student.student_id || student.id);
+            }
             var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
             var layoutClass = showPanel ? 'eie-timetable-layout' : '';
             var panelHtml = '';
@@ -751,6 +868,8 @@
             _editStudentMode = false;
             _editCellTeachersMode = false;
             _addStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -768,6 +887,8 @@
             _editStudentMode = false;
             _editCellTeachersMode = false;
             _addStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -779,6 +900,8 @@
             _editStudentMode = false;
             _editCellTeachersMode = false;
             _addStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -788,6 +911,8 @@
             _editStudentMode = false;
             _editCellTeachersMode = false;
             _addStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -796,17 +921,23 @@
             _editStudentMode = false;
             _editCellTeachersMode = false;
             _addStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
         closeStudentDetail: function () {
             _selectedStudentKey = null;
             _editStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
         startStudentEdit: function () {
             _editStudentMode = true;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -819,6 +950,8 @@
             _editCellTeachersMode = true;
             _selectedStudentKey = null;
             _addStudentMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -922,6 +1055,8 @@
             _addStudentMode = true;
             _selectedStudentKey = null;
             _editCellTeachersMode = false;
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
             EieRouter.open('classroom');
         },
 
@@ -988,18 +1123,88 @@
             }
         },
 
+        openStudentConsultationForm: function () {
+            _consultationFormOpen = true;
+            _consultationDraftDate = '';
+            EieRouter.open('classroom');
+        },
+
+        closeStudentConsultationForm: function () {
+            _consultationFormOpen = false;
+            _consultationDraftDate = '';
+            EieRouter.open('classroom');
+        },
+
+        saveStudentConsultation: async function (studentId, cellId) {
+            if (_saving) return;
+            var sid = text(studentId);
+            if (!sid || !window.EieApi || typeof EieApi.createConsultation !== 'function') return;
+            var dateEl = document.getElementById('cls-consultation-date');
+            var typeEl = document.getElementById('cls-consultation-type');
+            var contentEl = document.getElementById('cls-consultation-content');
+            var nextActionEl = document.getElementById('cls-consultation-next-action');
+            var msgEl = document.getElementById('eie-classroom-student-msg');
+            var payload = {
+                student_id: sid,
+                date: normalizeDate(dateEl && dateEl.value ? dateEl.value : todayIso()),
+                type: text(typeEl && typeEl.value) || '상담',
+                content: text(contentEl && contentEl.value),
+                next_action: text(nextActionEl && nextActionEl.value),
+                raw_meta_json: { source: 'classroom', timetable_cell_id: text(cellId) }
+            };
+            if (!payload.content) {
+                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">상담 내용을 입력해 주세요.</div>';
+                return;
+            }
+            _saving = true;
+            if (msgEl) msgEl.innerHTML = '';
+            try {
+                var result = await EieApi.createConsultation(payload);
+                var rows = (result && (result.consultations || result.data || (result.consultation ? [result.consultation] : []))) || [];
+                if (rows.length) {
+                    var incomingIds = rows.map(function (row) { return text(row.id || row.consultation_id); }).filter(Boolean);
+                    _consultationRows = _consultationRows.filter(function (row) {
+                        var rowId = text(row.id || row.consultation_id);
+                        return rowId && incomingIds.length ? incomingIds.indexOf(rowId) < 0 : true;
+                    }).concat(rows);
+                } else if (result && result.consultation) {
+                    _consultationRows = _consultationRows.concat([result.consultation]);
+                }
+                _consultationLoadedStudentId = sid;
+                if (window.EieState && typeof EieState.mergeStudentConsultations === 'function') {
+                    EieState.mergeStudentConsultations(sid, _consultationRows);
+                }
+                _consultationFormOpen = false;
+                _consultationDraftDate = '';
+                _saving = false;
+                EieRouter.open('classroom');
+            } catch (err) {
+                _saving = false;
+                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">' + esc(err.message || '상담을 저장하지 못했습니다.') + '</div>';
+                EieRouter.open('classroom');
+            }
+        },
+
         openConsultation: function (studentId, cellId, date) {
             var sid = text(studentId);
             if (!sid) return;
-            if (window.EieStudentsView && typeof EieStudentsView.createConsultation === 'function') {
-                EieStudentsView.createConsultation(sid, {
-                    date: normalizeDate(date),
-                    type: '상담',
-                    source: 'classroom',
-                    timetable_cell_id: text(cellId)
-                });
+            var cid = text(cellId);
+            var cell = _cells.find(function (row) { return text(row && row.id) === cid; });
+            var assigned = cell ? getAssignedStudents(cell).find(function (student) {
+                return text(student && (student.student_id || student.id)) === sid;
+            }) : null;
+            if (cid) _selectedCellId = cid;
+            _selectedStudentKey = assigned
+                ? text(assigned.assignment_id || assigned.student_id || assigned.id)
+                : sid;
+            _editStudentMode = false;
+            _editCellTeachersMode = false;
+            _addStudentMode = false;
+            _consultationFormOpen = true;
+            _consultationDraftDate = normalizeDate(date || todayIso());
+            if (window.EieRouter && typeof EieRouter.open === 'function') {
+                EieRouter.open('classroom');
             }
-            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('students');
         }
     };
 })();

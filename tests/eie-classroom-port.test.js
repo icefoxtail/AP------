@@ -9,6 +9,7 @@ const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-classroom.js'),
 
 let savedAttendance = null;
 let consultationRequest = null;
+let savedConsultation = null;
 
 const context = {
   console,
@@ -124,13 +125,35 @@ const context = {
           }
         ]
       };
+    },
+    async getConsultations(studentId) {
+      return {
+        consultations: [
+          {
+            id: 'consultation_existing',
+            student_id: studentId,
+            date: '2026-06-01',
+            type: '학습',
+            content: '기존 상담',
+            next_action: '숙제 확인'
+          }
+        ]
+      };
+    },
+    async createConsultation(payload) {
+      savedConsultation = payload;
+      return {
+        consultation: { id: 'consultation_new', created_at: '2026-06-06 10:00:00', ...payload },
+        consultations: [{ id: 'consultation_new', created_at: '2026-06-06 10:00:00', ...payload }]
+      };
     }
   },
   EieState: {
     get() {
       return { db: { attendance: [] } };
     },
-    mergeStudentAttendance() {}
+    mergeStudentAttendance() {},
+    mergeStudentConsultations() {}
   },
   EieStudentsView: {
     createConsultation(studentId, draft) {
@@ -161,6 +184,36 @@ vm.runInContext(source, context, { filename: 'eie-classroom.js' });
   assert(html.includes('data-eie-class-attendance'), 'classroom should render the AP-style attendance toggle beside each student');
   assert(html.includes('data-eie-class-consultation'), 'classroom should render the AP-style consultation button beside each student');
 
+  context.EieClassroomView.openStudentDetail('assign_alpha');
+  html = await context.EieClassroomView.render();
+  assert(html.includes('eie-classroom-consultation-section'), 'timetable student detail should render a consultation section');
+  assert(html.includes('상담 추가'), 'timetable student detail should expose one consultation add action inside the consultation section');
+  assert.strictEqual((html.match(/상담 추가/g) || []).length, 1, 'consultation add action should not be duplicated');
+  assert(!html.includes('EieStudentsView.createConsultation'), 'timetable student detail should not bounce to the separate students screen for consultation entry');
+
+  context.EieClassroomView.openStudentConsultationForm();
+  html = await context.EieClassroomView.render();
+  for (const field of ['cls-consultation-date', 'cls-consultation-type', 'cls-consultation-content', 'cls-consultation-next-action']) {
+    assert(html.includes(`id="${field}"`), `timetable consultation form should render ${field}`);
+  }
+
+  const documentValues = {
+    'cls-consultation-date': { value: '2026-06-06' },
+    'cls-consultation-type': { value: '학습' },
+    'cls-consultation-content': { value: '시간표 상세 상담' },
+    'cls-consultation-next-action': { value: '다음 수업 확인' }
+  };
+  context.document.getElementById = id => documentValues[id] || null;
+  await context.EieClassroomView.saveStudentConsultation('student_alpha', 'cell_ivy_wed_lily');
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(savedConsultation)), {
+    student_id: 'student_alpha',
+    date: '2026-06-06',
+    type: '학습',
+    content: '시간표 상세 상담',
+    next_action: '다음 수업 확인',
+    raw_meta_json: { source: 'classroom', timetable_cell_id: 'cell_ivy_wed_lily' }
+  }, 'timetable consultation save payload should include student, date, type, content, next action, and classroom source');
+
   await context.EieClassroomView.toggleAttendance('student_alpha', 'cell_ivy_wed_lily', '2026-06-06');
   assert.strictEqual(savedAttendance.student_id, 'student_alpha');
   assert.strictEqual(savedAttendance.timetable_cell_id, 'cell_ivy_wed_lily');
@@ -168,15 +221,10 @@ vm.runInContext(source, context, { filename: 'eie-classroom.js' });
   assert.strictEqual(savedAttendance.status, '결석', 'first AP-style attendance toggle should move default 등원 to 결석');
 
   context.EieClassroomView.openConsultation('student_alpha', 'cell_ivy_wed_lily', '2026-06-06');
-  assert.strictEqual(JSON.stringify(consultationRequest), JSON.stringify({
-    studentId: 'student_alpha',
-    draft: {
-      date: '2026-06-06',
-      type: '상담',
-      source: 'classroom',
-      timetable_cell_id: 'cell_ivy_wed_lily'
-    }
-  }));
+  assert.strictEqual(consultationRequest, null, 'classroom consultation shortcut should stay in the timetable detail panel');
+  html = await context.EieClassroomView.render();
+  assert(html.includes('id="cls-consultation-content"'), 'classroom consultation shortcut should open the local consultation form');
+  assert(html.includes('value="2026-06-06"'), 'classroom consultation shortcut should carry the selected class date into the local form');
 
   console.log('EIE classroom port regression test passed');
 })().catch(err => {

@@ -26,8 +26,8 @@ for (const token of [
   'matchTeacherNamesForCell',
   'ap-dashboard-shell',
   'ap-dashboard-action-grid--teacher-quick',
-  '오늘일지',
-  '오늘일정',
+  '오늘 요약',
+  '오늘 수업',
   '학급관리',
   '시간표',
   '출석부',
@@ -151,16 +151,30 @@ assert.strictEqual(matcher({ teacher_name_raw: 'LT5', class_name_raw: 'LT5 zoe' 
 
 (async () => {
   const html = await context.window.EieTeacherView.render();
+  const summaryIndex = html.indexOf('오늘 요약');
+  const todayClassIndex = html.indexOf('오늘 수업');
+  const classManageIndex = html.indexOf('학급관리');
+  const shortcutIndex = html.indexOf('ap-dashboard-action-grid--teacher-quick');
   assert(html.includes('ap-dashboard-shell'), 'rendered teacher page should use AP dashboard shell');
   assert(html.includes('ap-dashboard-action-grid--teacher-quick'), 'rendered teacher page should keep AP quick-button layout');
   assert(html.includes('시간표') && html.includes('출석부') && html.includes('학생상담'), 'rendered quick actions should match requested EIE teacher actions');
-  assert(html.includes('오늘일지') && html.includes('오늘일정') && html.includes('학급관리'), 'rendered page should copy AP teacher section order');
+  assert(html.includes('오늘 요약') && html.includes('오늘 수업') && html.includes('학급관리'), 'rendered page should use the corrected teacher section labels');
+  assert(summaryIndex >= 0 && todayClassIndex > summaryIndex && classManageIndex > todayClassIndex && shortcutIndex > classManageIndex, 'teacher dashboard order should be summary, today classes, class management, shortcuts');
+  assert(!html.includes('오늘일지'), 'teacher dashboard should not expose the journal label');
+  assert(!html.includes('출석 --'), 'teacher dashboard should not expose the old unknown-attendance placeholder');
+  assert(html.includes('eie-teacher-today-card'), 'rendered page should show today classes as cards');
+  assert(html.includes('onclick="EieTeacherView.openClassroom('), 'today cards should preserve classroom entry links');
+  assert(!html.includes('onclick="EieTeacherView.openClassroom("'), 'openClassroom inline handlers must not contain raw nested double quotes');
+  assert(!html.includes('onclick="EieTeacherView.setTab("'), 'setTab inline handlers must not contain raw nested double quotes');
+  assert(/onclick="EieTeacherView\.openClassroom\(&quot;[^&]+&quot;\)"/.test(html), 'openClassroom argument should be HTML-attribute safe');
+  assert(/onclick="EieTeacherView\.setTab\(&quot;(all|elementary|middle)&quot;\)"/.test(html), 'setTab argument should be HTML-attribute safe');
+  assert(!html.includes('journal-day-cell'), 'rendered page should not keep journal placeholder cells');
   assert(html.includes('전체') && html.includes('초등') && html.includes('중등'), 'class management should keep requested EIE teacher tab structure');
   assert(!html.includes('>고등<'), 'class management should not expose the removed high-school tab');
   assert(html.includes('중1-1 Laura zoe'), 'logged-in teacher should see joint assigned class');
   assert(html.includes('고1 EIE A'), 'logged-in teacher should see explicitly assigned class');
   assert(!html.includes('rs3-1 Carmen'), 'logged-in teacher should not see unrelated owner/other-teacher class');
-  assert(html.includes('data-eie-teacher-empty-today') || html.includes('eie-teacher-schedule-row'), 'today schedule should render classroom-linked rows or a classroom empty state');
+  assert(html.includes('data-eie-teacher-empty-today') || html.includes('eie-teacher-today-card'), 'today section should render classroom-linked cards or an empty state');
   assert(!html.includes('A 중1') && !html.includes('B 고1'), 'today schedule should not render arbitrary assigned students');
   assert(html.includes('등원 1'), 'class cards should use connected attendance data for present count');
   assert(html.includes('결석 1'), 'class cards should use connected attendance data for absent count');
@@ -179,12 +193,12 @@ assert.strictEqual(matcher({ teacher_name_raw: 'LT5', class_name_raw: 'LT5 zoe' 
   assert.strictEqual(context.openedTodayTeacher, 'Laura', 'classroom shortcut should open today classroom for the logged-in teacher');
 
   context.window.EieTeacherView.openConsultations();
-  assert.strictEqual(context.openedStudent, 's1', 'student consultation button should open the first assigned student');
-  assert.strictEqual(context.openedStudentTab, 'consultation', 'student consultation button should open consultation tab');
+  assert.notStrictEqual(context.openedStudent, 's1', 'student consultation shortcut should not open an arbitrary first student');
+  assert.strictEqual(context.teacherFilter, 'Laura', 'student consultation shortcut should open the teacher-filtered student list');
 
   context.window.EieTeacherView.openAttendanceLedger();
-  assert.strictEqual(context.openedStudent, 's1', 'attendance ledger button should open the first assigned student');
-  assert.strictEqual(context.openedStudentTab, 'attendance', 'attendance ledger button should open attendance tab');
+  assert.notStrictEqual(context.openedStudent, 's1', 'attendance ledger shortcut should not open an arbitrary first student');
+  assert.strictEqual(context.teacherFilter, 'Laura', 'attendance ledger shortcut should open the teacher-filtered student list');
 
   console.log('EIE teacher page port test passed');
 })().catch(err => {
