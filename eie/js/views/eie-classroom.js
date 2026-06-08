@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     var _cells = [];
     var _students = [];          // 전체 학생 목록 (배정 추가용)
     var _error = '';
@@ -83,6 +83,27 @@
         return uniqueNames(text(value).split(/[,+/]/).map(text).filter(Boolean));
     }
 
+    function dayAliasKeys(day) {
+        var raw = text(day);
+        var key = teacherKey(raw);
+        var map = {
+            '월': ['월', '월요일', 'mon', 'monday'],
+            '화': ['화', '화요일', 'tue', 'tuesday'],
+            '수': ['수', '수요일', 'wed', 'wednesday'],
+            '목': ['목', '목요일', 'thu', 'thursday'],
+            '금': ['금', '금요일', 'fri', 'friday']
+        };
+        var values = raw ? [raw, raw.replace(/요일$/, ''), raw.toLowerCase()] : [];
+        Object.keys(map).forEach(function (ko) {
+            var aliases = map[ko];
+            if (aliases.map(teacherKey).indexOf(key) >= 0) values = values.concat(aliases);
+        });
+        if (window.EieClassroomScope && typeof EieClassroomScope.dayAliases === 'function') {
+            values = values.concat(EieClassroomScope.dayAliases(raw));
+        }
+        return uniqueNames(values).map(teacherKey).filter(Boolean);
+    }
+
     function dayTeacherSource(row) {
         var raw = rawOf(row);
         return row && (row.day_teachers || row.teacher_names_by_day || row.weekday_teachers)
@@ -95,7 +116,12 @@
     function dayTeacherValues(row, day) {
         var source = dayTeacherSource(row);
         if (!source || typeof source !== 'object') return [];
-        return asTeacherList(source[day] || source[day + '요일'] || source[String(day || '').toLowerCase()] || '');
+        var values = [];
+        var aliasKeys = dayAliasKeys(day);
+        Object.keys(source).forEach(function (key) {
+            if (aliasKeys.indexOf(teacherKey(key)) >= 0) values = values.concat(asTeacherList(source[key]));
+        });
+        return uniqueNames(values);
     }
 
     function allDayTeacherValues(row) {
@@ -127,6 +153,16 @@
         var role = text(storage.getItem && storage.getItem('WANGJI_EIE_ROLE')).toLowerCase();
         var loginId = text(storage.getItem && storage.getItem('WANGJI_EIE_LOGIN_ID')).toLowerCase();
         return role === 'admin' || role === 'owner' || loginId === 'admin';
+    }
+
+    function classroomBackRoute() {
+        return isOwnerSession() ? 'dashboard' : 'teacher';
+    }
+
+    function effectiveTeacherName() {
+        if (_filterTeacherName) return _filterTeacherName;
+        if (isOwnerSession()) return '';
+        return currentUserNames()[0] || '';
     }
 
     function teacherNamesOfCell(cell) {
@@ -171,8 +207,11 @@
 
     function visibleCellsForCurrentUser(cells) {
         var visible = (Array.isArray(cells) ? cells : []).filter(canCurrentUserUseCell);
-        if (_filterTeacherName) {
-            visible = cellsForTeacherOnDay(visible, _filterTeacherName, activeDayLabel());
+        var teacherName = effectiveTeacherName();
+        if (teacherName) {
+            var active = activeDayLabel();
+            var timetableRows = timetableDayTeacherCells(visible, teacherName, active);
+            visible = timetableRows || cellsForTeacherOnDay(visible, teacherName, active);
         }
         if (_todayFilterDate) {
             var filterDay = dayLabelFromDate(_todayFilterDate);
@@ -322,7 +361,8 @@
     }
 
     function activeDayLabel() {
-        return text(_selectedDay) || dayLabelFromDate(_todayFilterDate || todayIso());
+        if (_todayFilterDate) return dayLabelFromDate(_todayFilterDate);
+        return text(_selectedDay);
     }
 
     function cellMatchesDay(cell, day) {
@@ -332,9 +372,7 @@
             if (EieClassroomScope.isCellOnDate(cell, label)) return true;
         }
         var raw = rawOf(cell);
-        var aliases = window.EieClassroomScope && typeof EieClassroomScope.dayAliases === 'function'
-            ? EieClassroomScope.dayAliases(label).map(teacherKey)
-            : [teacherKey(label), teacherKey(label + '요일')];
+        var aliases = dayAliasKeys(label);
         var directLabels = [
             cell && cell.day_label,
             cell && cell.day,
@@ -375,6 +413,11 @@
     function cellBelongsToTeacherOnDay(cell, name, day) {
         var target = teacherKey(name);
         if (!target) return false;
+        if (!text(day)) {
+            return accessTeacherNamesOfCell(cell).map(teacherKey).some(function (key) {
+                return key === target;
+            });
+        }
         return teacherNamesForCellOnDay(cell, day).map(teacherKey).some(function (key) {
             return key === target;
         });
@@ -385,6 +428,175 @@
         return sortCells((Array.isArray(cells) ? cells : []).filter(function (cell) {
             return cellMatchesDay(cell, active) && cellBelongsToTeacherOnDay(cell, name, active);
         }));
+    }
+
+    function timetableDayTeacherCells(cells, name, day) {
+        var active = text(day);
+        var target = teacherKey(name);
+        var sourceRows = Array.isArray(cells) ? cells : [];
+        if (!active || !target || !sourceRows.length) return null;
+        if (!window.EieTimetableView
+            || typeof EieTimetableView._buildDisplaySessions !== 'function'
+            || typeof EieTimetableView._buildDayTeacherSessions !== 'function') {
+            return null;
+        }
+        try {
+            var sessions = EieTimetableView._buildDisplaySessions(sourceRows);
+            var daySessions = EieTimetableView._buildDayTeacherSessions(sessions, active);
+            var byId = {};
+            sourceRows.forEach(function (cell) {
+                var id = text(cell && cell.id);
+                if (id) byId[id] = cell;
+            });
+            var seen = {};
+            var rows = [];
+            daySessions.forEach(function (session) {
+                var sessionTeacher = teacherKey(session && (session.teacher_key || session.teacherName));
+                if (sessionTeacher !== target) return;
+                (Array.isArray(session && session.source_cell_ids) ? session.source_cell_ids : []).forEach(function (id) {
+                    var key = text(id);
+                    if (!key || seen[key] || !byId[key]) return;
+                    seen[key] = true;
+                    rows.push(byId[key]);
+                });
+            });
+            return rows;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function timetableDayTeacherGroups(cells, day) {
+        var active = text(day);
+        var sourceRows = Array.isArray(cells) ? cells : [];
+        if (!active || !sourceRows.length) return null;
+        if (!window.EieTimetableView
+            || typeof EieTimetableView._buildDisplaySessions !== 'function'
+            || typeof EieTimetableView._buildDayTeacherSessions !== 'function') {
+            return null;
+        }
+        try {
+            var sessions = EieTimetableView._buildDisplaySessions(sourceRows);
+            var daySessions = EieTimetableView._buildDayTeacherSessions(sessions, active);
+            var byId = {};
+            sourceRows.forEach(function (cell) {
+                var id = text(cell && cell.id);
+                if (id) byId[id] = cell;
+            });
+            var groups = [];
+            var byTeacher = {};
+            daySessions.forEach(function (session) {
+                var name = text(session && session.teacherName);
+                var key = teacherKey(session && (session.teacher_key || name));
+                if (!key || !name || !isAssignableTeacherName(name)) return;
+                if (!byTeacher[key]) {
+                    byTeacher[key] = { name: name, cells: [], seen: {} };
+                    groups.push(byTeacher[key]);
+                }
+                (Array.isArray(session && session.source_cell_ids) ? session.source_cell_ids : []).forEach(function (id) {
+                    var cellId = text(id);
+                    if (!cellId || byTeacher[key].seen[cellId] || !byId[cellId]) return;
+                    byTeacher[key].seen[cellId] = true;
+                    byTeacher[key].cells.push(byId[cellId]);
+                });
+            });
+            return groups.map(function (group) {
+                return { name: group.name, cells: sortCells(group.cells) };
+            }).filter(function (group) {
+                return group.cells.length;
+            });
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function homeroomTeacherOfCell(cell) {
+        var raw = rawOf(cell);
+        return text(cell && cell.homeroom_teacher)
+            || text(raw.homeroom_teacher)
+            || text(cell && (cell.teacher_name_raw || cell.teacher_name))
+            || text(raw.teacher_name_raw || raw.teacher_name)
+            || '-';
+    }
+
+    function teacherDayLabelsForCell(cell, name) {
+        var target = teacherKey(name);
+        if (!target) return [];
+        return WEEKDAY_LABELS.filter(function (day) {
+            return dayTeacherValues(cell, day).map(teacherKey).indexOf(target) >= 0;
+        });
+    }
+
+    function splitTeacherOverallCells(cells, name) {
+        var target = teacherKey(name);
+        var homeroom = [];
+        var dayAssigned = [];
+        (Array.isArray(cells) ? cells : []).forEach(function (cell) {
+            var isHomeroom = target && teacherKey(homeroomTeacherOfCell(cell)) === target;
+            var days = teacherDayLabelsForCell(cell, name);
+            if (isHomeroom) homeroom.push(cell);
+            if (days.length) dayAssigned.push({ cell: cell, days: days });
+        });
+        return {
+            homeroom: sortCells(homeroom),
+            dayAssigned: dayAssigned.sort(function (a, b) {
+                var leftOrder = Number(a.cell && a.cell.period_order || 0);
+                var rightOrder = Number(b.cell && b.cell.period_order || 0);
+                if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+                return cellTitle(a.cell).localeCompare(cellTitle(b.cell), 'ko', { numeric: true });
+            })
+        };
+    }
+
+    function timetableTeacherDayRows(cells, name, day) {
+        var active = text(day);
+        var target = teacherKey(name);
+        var sourceRows = Array.isArray(cells) ? cells : [];
+        if (!active || !target || !sourceRows.length) return null;
+        if (!window.EieTimetableView
+            || typeof EieTimetableView._buildDisplaySessions !== 'function'
+            || typeof EieTimetableView._buildDayTeacherSessions !== 'function') {
+            return null;
+        }
+        try {
+            var sessions = EieTimetableView._buildDisplaySessions(sourceRows);
+            var daySessions = EieTimetableView._buildDayTeacherSessions(sessions, active);
+            var byId = {};
+            sourceRows.forEach(function (cell) {
+                var id = text(cell && cell.id);
+                if (id) byId[id] = cell;
+            });
+            var rows = [];
+            daySessions.forEach(function (session) {
+                var sessionTeacher = text(session && session.teacherName);
+                var sessionTeacherKey = teacherKey(session && (session.teacher_key || sessionTeacher));
+                if (sessionTeacherKey !== target) return;
+                var periods = Array.isArray(session && session.periods) && session.periods.length
+                    ? session.periods
+                    : [session || {}];
+                periods.forEach(function (period) {
+                    var cellId = text(period && period.source_cell_id)
+                        || text((Array.isArray(session.source_cell_ids) ? session.source_cell_ids : [])[0]);
+                    var sourceCell = byId[cellId] || null;
+                    rows.push({
+                        cellId: cellId,
+                        periodOrder: Number(period && (period.period_order || session.period_order || 0)),
+                        periodLabel: text(period && (period.period_label || session.period_label)) || text(session && session.period_label) || '-',
+                        className: text(session && (session.material || session.class_name || session.class_full_name)) || (sourceCell ? cellTitle(sourceCell) : '수업명 없음'),
+                        homeroom: sourceCell ? homeroomTeacherOfCell(sourceCell) : text(session && session.homeroom_teacher) || '-',
+                        dayLabel: active,
+                        dayTeacher: sessionTeacher || name,
+                        sourceCell: sourceCell
+                    });
+                });
+            });
+            return rows.sort(function (a, b) {
+                if (a.periodOrder !== b.periodOrder) return a.periodOrder - b.periodOrder;
+                return String(a.className || '').localeCompare(String(b.className || ''), 'ko', { numeric: true });
+            });
+        } catch (error) {
+            return null;
+        }
     }
 
     function cellTitle(cell) {
@@ -433,12 +645,15 @@
 
     function renderWeekdayTabs() {
         var active = activeDayLabel();
-        return '<div class="eie-classroom-weekday-tabs" aria-label="요일 선택">'
-            + WEEKDAY_LABELS.map(function (day) {
-                var isActive = teacherKey(day) === teacherKey(active);
-                return '<button type="button" class="eie-classroom-weekday-chip' + (isActive ? ' is-active' : '') + '"'
-                    + ' onclick="EieClassroomView.setDay(' + jsArg(day) + ')">'
-                    + esc(day)
+        var tabs = [{ label: '전체', day: '' }].concat(WEEKDAY_LABELS.map(function (day) {
+            return { label: day, day: day };
+        }));
+        return '<div class="eie-classroom-weekday-tabs eie-p-chip-row" aria-label="요일 선택">'
+            + tabs.map(function (tab) {
+                var isActive = tab.day ? teacherKey(tab.day) === teacherKey(active) : !active;
+                return '<button type="button" class="eie-classroom-weekday-chip eie-p-chip' + (isActive ? ' is-active' : '') + '"'
+                    + ' onclick="EieClassroomView.setDay(' + jsArg(tab.day) + ')">'
+                    + esc(tab.label)
                     + '</button>';
             }).join('')
             + '</div>';
@@ -450,20 +665,103 @@
         var count = students.length ? '재원' + String(students.length) : '';
         var absence = attendanceSummaryForCell(cell);
         var meta = [count, absence].filter(Boolean).join(' · ');
-        return '<button type="button" class="eie-classroom-schedule-row" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
             + '<span class="eie-classroom-schedule-period">' + esc(text(cell && (cell.period_order || cell.period_label)) || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(cellTitle(cell)) + '</span>'
             + '<span class="eie-classroom-schedule-meta">' + esc(meta) + '</span>'
             + '</button>';
     }
 
+    function renderTeacherOverallDayRow(item, name) {
+        var cell = item && item.cell;
+        var days = item && Array.isArray(item.days) ? item.days : [];
+        var cellId = text(cell && cell.id);
+        var students = getAssignedStudents(cell);
+        var count = students.length ? '재원' + String(students.length) : '';
+        var meta = days.map(function (day) { return day + ' ' + name; }).join(' · ');
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
+            + '<span class="eie-classroom-schedule-period">' + esc(text(cell && (cell.period_order || cell.period_label)) || '-') + '</span>'
+            + '<span class="eie-classroom-schedule-main">' + esc(cellTitle(cell)) + '</span>'
+            + '<span class="eie-classroom-schedule-meta">'
+            + '<span>담임 ' + esc(homeroomTeacherOfCell(cell)) + '</span>'
+            + '<span>' + esc(meta) + '</span>'
+            + (count ? '<span>' + esc(count) + '</span>' : '')
+            + '</span>'
+            + '</button>';
+    }
+
+    function renderTeacherOverallSection(title, body) {
+        return '<div class="eie-classroom-subgroup">'
+            + '<div class="eie-classroom-subhead">' + esc(title) + '</div>'
+            + '<div class="eie-classroom-schedule-list">'
+            + (body || '<div class="eie-empty-box">표시할 수업이 없습니다.</div>')
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderTeacherOverallGroups(cells, name) {
+        var split = splitTeacherOverallCells(cells, name);
+        var homeroomHtml = split.homeroom.map(renderClassroomRow).join('');
+        var dayAssignedHtml = split.dayAssigned.map(function (item) {
+            return renderTeacherOverallDayRow(item, name);
+        }).join('');
+        return '<div class="eie-classroom-schedule-groups">'
+            + '<section class="eie-classroom-teacher-group eie-p-card">'
+            + '<div class="eie-classroom-teacher-head"><strong>' + esc(name) + '</strong></div>'
+            + renderTeacherOverallSection('담임 클래스', homeroomHtml)
+            + renderTeacherOverallSection('요일별 담당 클래스', dayAssignedHtml)
+            + '</section>'
+            + '</div>';
+    }
+
+    function renderTeacherDayRow(row) {
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" onclick="EieClassroomView.openDetail(' + jsArg(row.cellId) + ')">'
+            + '<span class="eie-classroom-schedule-period">' + esc(row.periodLabel || row.periodOrder || '-') + '</span>'
+            + '<span class="eie-classroom-schedule-main">' + esc(row.className || '수업명 없음') + '</span>'
+            + '<span class="eie-classroom-schedule-meta">'
+            + '<span>담임 ' + esc(row.homeroom || '-') + '</span>'
+            + '</span>'
+            + '</button>';
+    }
+
     function renderTeacherScheduleGroups(cells) {
         var active = activeDayLabel();
+        var teacherName = effectiveTeacherName();
         var filtered = sortCells((Array.isArray(cells) ? cells : []).filter(function (cell) {
             return cellMatchesDay(cell, active);
         }));
         if (!filtered.length) {
             return '<div class="eie-empty-box" data-eie-classroom-empty-day="true">' + esc(active) + '요일 수업이 없습니다.</div>';
+        }
+        if (teacherName) {
+            var dayRows = timetableTeacherDayRows(cells, teacherName, active);
+            if (active && dayRows) {
+                return '<div class="eie-classroom-schedule-groups">'
+                    + '<section class="eie-classroom-teacher-group eie-p-card">'
+                    + '<div class="eie-classroom-teacher-head"><strong>' + esc(teacherName) + '</strong></div>'
+                    + '<div class="eie-classroom-schedule-list">'
+                    + (dayRows.length ? dayRows.map(renderTeacherDayRow).join('') : '<div class="eie-empty-box" data-eie-classroom-empty-day="true">' + esc(active) + '요일 수업이 없습니다.</div>')
+                    + '</div>'
+                    + '</section>'
+                    + '</div>';
+            }
+            return renderTeacherOverallGroups(filtered, teacherName);
+        }
+        var timetableGroups = timetableDayTeacherGroups(filtered, active);
+        if (active && timetableGroups) {
+            if (!timetableGroups.length) {
+                return '<div class="eie-empty-box" data-eie-classroom-empty-day="true">' + esc(active) + '요일 수업이 없습니다.</div>';
+            }
+            return '<div class="eie-classroom-schedule-groups">'
+                + timetableGroups.map(function (group) {
+                    return '<section class="eie-classroom-teacher-group eie-p-card">'
+                        + '<div class="eie-classroom-teacher-head"><strong>' + esc(group.name) + '</strong></div>'
+                        + '<div class="eie-classroom-schedule-list">'
+                        + group.cells.map(renderClassroomRow).join('')
+                        + '</div>'
+                        + '</section>';
+                }).join('')
+                + '</div>';
         }
         var seen = {};
         filtered.forEach(function (cell) {
@@ -478,7 +776,7 @@
             + roster.map(function (name) {
                 var teacherCells = cellsForTeacherOnDay(filtered, name, active);
                 if (!teacherCells.length) return '';
-                return '<section class="eie-classroom-teacher-group">'
+                return '<section class="eie-classroom-teacher-group eie-p-card">'
                     + '<div class="eie-classroom-teacher-head"><strong>' + esc(name) + '</strong></div>'
                     + '<div class="eie-classroom-schedule-list">'
                     + teacherCells.map(renderClassroomRow).join('')
@@ -520,13 +818,11 @@
         var cur = text(status);
         if (cur === '결석') return '결석';
         if (cur === '출석') return '출석';
-        return '출결 전';
+        return '출석';
     }
 
     function nextAttendanceStatus(status) {
-        var raw = text(status);
-        if (!raw || raw === '미기록' || raw === '출결 전') return '출석';
-        return attendanceDisplayStatus(raw) === '출석' ? '결석' : '출석';
+        return attendanceDisplayStatus(status) === '출석' ? '결석' : '출석';
     }
 
     function attendanceCompactLabel(status) {
@@ -540,7 +836,7 @@
         var cur = attendanceDisplayStatus(status);
         if (cur === '결석') return ' is-absent';
         if (cur === '출석') return ' is-present';
-        return ' is-empty';
+        return ' is-present';
     }
 
     function studentTeacherNames(student) {
@@ -598,18 +894,31 @@
     }
 
     function renderSummary(cells) {
-        var total = cells.length;
-        var totalStudents = cells.reduce(function (sum, c) {
-            return sum + getAssignedStudents(c).length;
-        }, 0);
-        var teachers = {};
-        cells.forEach(function (c) {
-            teacherNamesOfCell(c).forEach(function (name) { teachers[name] = true; });
+        return renderClassroomSummary(cells);
+    }
+
+    function renderClassroomSummary(cells) {
+        var rows = Array.isArray(cells) ? cells : [];
+        var studentKeys = {};
+        var homeroomCount = 0;
+        var targetTeacherKey = teacherKey(effectiveTeacherName() || '');
+        rows.forEach(function (cell) {
+            getAssignedStudents(cell).forEach(function (student) {
+                var key = text(student && (student.student_id || student.id || student.assignment_id || displayName(student)));
+                if (key) studentKeys[key] = true;
+            });
+            var raw = rawOf(cell);
+            var homeroom = text(cell && cell.homeroom_teacher) || text(raw.homeroom_teacher);
+            if (targetTeacherKey) {
+                if (teacherKey(homeroom) === targetTeacherKey) homeroomCount += 1;
+            } else if (homeroom) {
+                homeroomCount += 1;
+            }
         });
         return '<div class="eie-summary-bar">'
-            + '<span class="eie-summary-item"><strong>' + esc(String(total)) + '</strong> 수업</span>'
-            + '<span class="eie-summary-item"><strong>' + esc(String(totalStudents)) + '</strong> 학생 배정</span>'
-            + '<span class="eie-summary-item"><strong>' + esc(String(Object.keys(teachers).length)) + '</strong> 선생님</span>'
+            + '<span class="eie-summary-item">담임 <strong>' + esc(String(homeroomCount)) + '</strong>개</span>'
+            + '<span class="eie-summary-item">수업 <strong>' + esc(String(rows.length)) + '</strong>개</span>'
+            + '<span class="eie-summary-item">학생 <strong>' + esc(String(Object.keys(studentKeys).length)) + '</strong>명</span>'
             + '</div>';
     }
 
@@ -796,9 +1105,9 @@ function renderCards(cells) {
             }
 
             if (_detailOnlyMode && showPanel) {
-                return '<section aria-labelledby="eie-classroom-title">'
+                return '<section class="eie-classroom-screen eie-v2-screen" aria-labelledby="eie-classroom-title">'
                     + '<button type="button" class="eie-back-button" data-eie-route="teacher" aria-label="선생님 화면으로 이동" title="선생님 화면">← 선생님 화면</button>'
-                    + '<div class="eie-panel eie-classroom-detail-only-panel">'
+                    + '<div class="eie-panel eie-p-panel eie-classroom-detail-only-panel">'
                     + '<h1 id="eie-classroom-title" class="eie-panel-title">수업 상세</h1>'
                     + errorHtml
                     + '<div class="eie-classroom-detail-only">'
@@ -808,12 +1117,11 @@ function renderCards(cells) {
                     + '</section>';
             }
 
-            return '<section aria-labelledby="eie-classroom-title">'
-                + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
-                + '<div class="eie-panel">'
+            return '<section class="eie-classroom-screen eie-v2-screen" aria-labelledby="eie-classroom-title">'
+                + '<div class="eie-panel eie-p-panel eie-classroom-panel' + (showPanel ? ' is-detail-open' : '') + '">'
                 + '<h1 id="eie-classroom-title" class="eie-panel-title">클래스룸</h1>'
                 + errorHtml
-                + (_loaded && !_error ? renderSummary(visibleCells) : '')
+                + (_loaded && !_error ? renderClassroomSummary(visibleCells) : '')
                 + (_loaded && !_error ? renderWeekdayTabs() : '')
                 + '<div class="' + layoutClass + '">'
                 + '<div class="eie-timetable-main">' + renderTeacherScheduleGroups(visibleCells) + '</div>'
@@ -839,7 +1147,7 @@ function renderCards(cells) {
         openTeacher: function (name) {
             _filterTeacherName = text(name);
             _todayFilterDate = '';
-            _selectedDay = activeDayLabel();
+            _selectedDay = dayLabelFromDate(todayIso());
             _selectedCellId = null;
             _selectedStudentKey = null;
             _editStudentMode = false;
@@ -1174,3 +1482,4 @@ openConsultation: function (studentId, cellId, date) {
         }
     };
 })();
+

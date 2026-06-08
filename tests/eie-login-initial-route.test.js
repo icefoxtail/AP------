@@ -30,7 +30,9 @@ async function runWithSession({ role, loginId, initialHash }) {
         if (type === 'DOMContentLoaded') context.domReady = handler;
       },
       EieRouter: {
-        boot() { context.bootedHash = context.window.location.hash; return Promise.resolve(); }
+        opened: [],
+        boot() { context.bootedHash = context.window.location.hash; return Promise.resolve(); },
+        open(route) { this.opened.push(route); context.openedRoute = route; }
       }
     },
     document: {
@@ -59,6 +61,12 @@ async function runWithSession({ role, loginId, initialHash }) {
 
   context = await runWithSession({ role: 'teacher', loginId: 'carmen', initialHash: '#dashboard' });
   assert.strictEqual(context.window.location.hash, '#teacher', 'teacher login should still enter the teacher dashboard');
+  context.window.eieGoHome();
+  assert.strictEqual(context.openedRoute, 'teacher', 'teacher EIE home button should stay on the teacher dashboard');
+
+  context = await runWithSession({ role: 'admin', loginId: 'admin', initialHash: '#dashboard' });
+  context.window.eieGoHome();
+  assert.strictEqual(context.openedRoute, 'dashboard', 'owner EIE home button should open the owner dashboard');
 
   console.log('EIE login initial route test passed');
 })().catch(err => {

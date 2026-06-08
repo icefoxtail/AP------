@@ -12,10 +12,18 @@
     let hashListenerBound = false;
     let routeButtonsBound = false;
 
+    function defaultRouteForSession() {
+        const storage = window.localStorage || {};
+        const role = String(storage.getItem && storage.getItem('WANGJI_EIE_ROLE') || '').toLowerCase();
+        const loginId = String(storage.getItem && storage.getItem('WANGJI_EIE_LOGIN_ID') || '').toLowerCase();
+        if ((role === 'teacher' || role === 'eieteacher') && loginId !== 'admin') return 'teacher';
+        return 'dashboard';
+    }
+
     function normalizeRoute(route) {
         const key = String(route || '').replace(/^#/, '').trim();
         if (key === 'timetable-v2') return 'timetable';
-        return routes[key] ? key : 'dashboard';
+        return routes[key] ? key : defaultRouteForSession();
     }
 
     function syncNav(route) {
