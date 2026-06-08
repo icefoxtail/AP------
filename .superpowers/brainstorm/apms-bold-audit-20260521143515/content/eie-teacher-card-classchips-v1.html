@@ -1,0 +1,55 @@
+<h2>선생님 카드: 오늘 수업 반명 표시 방식</h2>
+<p class="subtitle">Foreigner도 선생님 카드 로스터에 포함하는 전제로, 카드 안에 오늘 수업을 어떻게 보여줄지 비교합니다.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>A. 반명만 칩으로 표시</h3>
+      <div style="margin:12px 0;padding:14px;border:1px solid #f2cbc4;border-radius:12px;background:#fff3f2">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <strong>Carmen</strong><span style="font-size:12px;color:#7a6870">클래스룸</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px">RS2-1</span>
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px">JA 2-2</span>
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px">중1C</span>
+        </div>
+      </div>
+      <p>가장 단순합니다. 다만 하루 수업 순서와 시간감은 사라집니다.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>B. 교시 + 반명 칩으로 표시</h3>
+      <div style="margin:12px 0;padding:14px;border:1px solid #f2cbc4;border-radius:12px;background:#fff3f2">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <strong>Carmen</strong><span style="font-size:12px;color:#7a6870">클래스룸</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px"><b>1교시</b> RS2-1</span>
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px"><b>3교시</b> JA 2-2</span>
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px"><b>5교시</b> 중1C</span>
+        </div>
+      </div>
+      <p>추천안입니다. 숫자 지표 없이도 오늘 흐름이 보이고, 클릭 전 정보가 충분합니다.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>C. 대표 2개 + 더보기</h3>
+      <div style="margin:12px 0;padding:14px;border:1px solid #f2cbc4;border-radius:12px;background:#fff3f2">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <strong>Carmen</strong><span style="font-size:12px;color:#7a6870">클래스룸</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px"><b>1교시</b> RS2-1</span>
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:white;font-size:12px"><b>3교시</b> JA 2-2</span>
+          <span style="padding:6px 9px;border:1px solid #f2cbc4;border-radius:999px;background:#fff8f7;font-size:12px">+1</span>
+        </div>
+      </div>
+      <p>카드 높이는 안정적이지만, 원장님이 한눈에 전체 오늘 수업을 보기는 어렵습니다.</p>
+    </div>
+  </div>
+</div>

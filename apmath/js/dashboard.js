@@ -2502,7 +2502,8 @@ function renderTodoSections() {
 
     const onboardingWeeklyHtml = typeof renderOnboardingWeeklyScheduleRows === 'function' ? renderOnboardingWeeklyScheduleRows() : '';
     const onboardingWeeklyCount = typeof getDashboardWeeklyOnboardingTasks === 'function' ? getDashboardWeeklyOnboardingTasks().length : 0;
-    const hasWeeklyItems = upcomingItems.length > 0 || onboardingWeeklyCount > 0;
+    const hasCleaningSchedule = true;
+    const hasWeeklyItems = upcomingItems.length > 0 || onboardingWeeklyCount > 0 || hasCleaningSchedule;
 
     // 청소 당번 계산 (매주 월요일 기준 순환)
     const CLEANING_ROSTER = ['정겨운', '박준성', '정의한', '원장님'];
@@ -2533,7 +2534,7 @@ function renderTodoSections() {
                 ${todayHtml}
             </div>
 
-            <div id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" style="">
+            <div id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" data-has-cleaning-schedule="${hasCleaningSchedule ? '1' : '0'}" style="">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                     <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
                 </div>
@@ -2840,7 +2841,8 @@ function updateDashboardOnboardingTasksSection() {
     if (weeklyTarget) weeklyTarget.innerHTML = onboardingHtml;
     if (weeklySection) {
         const regularCount = Number(weeklySection.dataset.regularWeeklyCount || 0);
-        weeklySection.style.display = (regularCount > 0 || onboardingCount > 0) ? '' : 'none';
+        const hasCleaningSchedule = weeklySection.dataset.hasCleaningSchedule === '1';
+        weeklySection.style.display = (regularCount > 0 || onboardingCount > 0 || hasCleaningSchedule) ? '' : 'none';
     }
 
     const panelTarget = document.getElementById('dashboard-onboarding-panel-root') || document.getElementById('dashboard-onboarding-tasks-root');

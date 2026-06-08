@@ -5,7 +5,7 @@ const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const timetableSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
-const timetableV2Source = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable-v2.js'), 'utf8');
+const editorSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable-editor.js'), 'utf8');
 
 const state = {
   timetableCells: [],
@@ -81,12 +81,12 @@ context.window.addEventListener = function () {};
 
 vm.createContext(context);
 vm.runInContext(timetableSource, context, { filename: 'eie-timetable.js' });
-vm.runInContext(timetableV2Source, context, { filename: 'eie-timetable-v2.js' });
+vm.runInContext(editorSource, context, { filename: 'eie-timetable-editor.js' });
 
 (async () => {
-  const editHtml = await context.EieTimetableView.render();
-  assert(editHtml.includes('시간표 편집'), 'legacy timetable route should be labeled as timetable editor');
-  assert(editHtml.includes('편집 중'), 'legacy timetable route should enter edit mode immediately');
+  const editHtml = await context.EieTimetableEditorView.render();
+  assert(editHtml.includes('eie-timetable-title'), 'legacy timetable route should be labeled as timetable editor');
+  assert(editHtml.includes('eie-timetable-toolbar is-editing'), 'legacy timetable route should enter edit mode immediately');
   assert(editHtml.includes('eie-edit-board'), 'editor should render the v2-style time-axis edit board');
   assert(editHtml.includes('eie-edit-session-card'), 'editor should render v2-style editable session cards');
   assert(editHtml.includes('data-eie-drop-slot="true"'), 'editor should keep editable drop slots for moving and creating classes');
@@ -94,9 +94,9 @@ vm.runInContext(timetableV2Source, context, { filename: 'eie-timetable-v2.js' })
   assert(editHtml.includes('data-eie-timetable-action="prepare-save"'), 'editor should keep save validation controls');
   assert(!editHtml.includes('data-eie-timetable-action="start-edit"'), 'editor entry should not show a separate view-mode edit button');
 
-  const v2Html = await context.EieTimetableV2View.render();
-  assert(v2Html.includes('data-eie-route="timetable-editor"'), 'v2 timetable should expose a route into the dedicated timetable editor');
-  assert(v2Html.includes('시간표'), 'v2 timetable should remain the main timetable view');
+  const v2Html = await context.EieTimetableView.render();
+  assert(v2Html.includes('data-eie-edit-toggle'), 'operating timetable should keep an edit entry control');
+  assert(v2Html.includes('eie-v2-title'), 'operating timetable should remain the main timetable view');
 
   console.log('EIE timetable edit entry regression test passed');
 })().catch(err => {

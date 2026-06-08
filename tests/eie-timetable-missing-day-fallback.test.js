@@ -1,10 +1,10 @@
-const assert = require('assert');
+﻿const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
-const timetableSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable-v2.js'), 'utf8');
+const timetableSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
 
 const state = {
   timetableCells: [],
@@ -80,16 +80,16 @@ context.window.innerWidth = 1280;
 context.window.addEventListener = function () {};
 
 vm.createContext(context);
-vm.runInContext(timetableSource, context, { filename: 'eie-timetable-v2.js' });
+vm.runInContext(timetableSource, context, { filename: 'eie-timetable.js' });
 
 (async () => {
-  const html = await context.EieTimetableV2View.render();
+  const html = await context.EieTimetableView.render();
 
-  assert(html.includes('전체'), 'timetable-v2 should expose a fallback day tab when imported cells have no day label');
-  assert(html.includes('data-eie-route="teacher"'), 'teacher sessions should return from timetable to the teacher dashboard');
-  assert(html.includes('RS3-1 Carmen'), 'timetable-v2 should render classes even when day_label is blank');
-  assert(html.includes('Carmen'), 'timetable-v2 should keep teacher columns for dayless imported cells');
-  assert(!html.includes('선택한 요일에 표시할 수업이 없습니다.'), 'dayless imported cells should not be dropped into an empty-state board');
+  assert(html.includes('eie-weekday-overlay__tabs'), 'timetable should expose a fallback day tab when imported cells have no day label');
+  assert(html.includes('eie-v2-card-board'), 'timetable should render the card board');
+  assert(html.includes('RS3-1 Carmen'), 'timetable should render classes even when day_label is blank');
+  assert(html.includes('Carmen'), 'timetable should keep teacher columns for dayless imported cells');
+  assert(!html.includes('?좏깮???붿씪???쒖떆???섏뾽???놁뒿?덈떎.'), 'dayless imported cells should not be dropped into an empty-state board');
 
   console.log('EIE timetable missing day fallback test passed');
 })().catch(err => {

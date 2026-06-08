@@ -48,6 +48,13 @@
         
         .ctrl-right { display: flex; align-items: center; gap: 12px; }
         .qpp-selector { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 700; }
+        .qr-output-wrap { position: relative; }
+        #btn-qr-output { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
+        .qr-output-popover { position: absolute; right: 0; top: calc(100% + 8px); width: 190px; padding: 12px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; }
+        .qr-output-wrap.open .qr-output-popover { display: block; }
+        .qr-output-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
+        .qr-output-option { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.4; padding: 5px 0; cursor: pointer; }
+        .qr-output-option input { width: 14px; height: 14px; margin: 0; }
         #qppSelect {
             background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.1);
             border-radius: 6px; padding: 4px 8px; font-family: inherit; font-size: 11px; cursor: pointer;
@@ -177,7 +184,21 @@
         table.question-table th { font-weight: 700; }
 
         .question-table-wrap { margin: 4px 0 8px 0; }
-        .question-note-box, .box { margin: 4px 0 8px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
+        /* 조건/보기/자료 박스는 .box 또는 .question-note-box를 사용한다. question-table은 행/열이 있는 실제 표에만 사용한다. */
+        .question-note-box,
+        .box {
+            display: inline-block;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 5px 0 6px 0;
+            padding: 5px 8px;
+            border: 1px solid #222;
+            border-radius: 0;
+            background: #fff;
+            line-height: 1.45;
+            text-align: left;
+            vertical-align: top;
+        }
 
         /* [Fit] Compression Classes */
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
@@ -199,7 +220,7 @@
         .page-qr {
             position: absolute;
             right: 15mm;
-            bottom: 13mm;
+            bottom: 12mm;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -219,8 +240,8 @@
 
         .page-qr canvas {
             display: block;
-            width: 13.5mm;
-            height: 13.5mm;
+            width: 22mm;
+            height: 22mm;
             image-rendering: pixelated;
         }
 
@@ -228,46 +249,39 @@
         .page-submit-qr {
             position: absolute;
             left: 15mm;
-            bottom: 17mm;
+            bottom: 12mm;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
             z-index: 20;
             background: #fff;
-            padding: 6px;
-            border: 1px dashed #64748b;
-            border-radius: 4px;
+            padding: 1mm 0 0;
         }
         .page-submit-qr-info {
             display: flex;
             flex-direction: column;
             gap: 2px;
-            max-width: 140px;
+            align-items: center;
         }
         .page-submit-qr-label {
-            font-size: 8.5pt;
-            font-weight: 800;
-            color: #1d4ed8;
-            line-height: 1.1;
+            font-size: 7.6pt;
+            font-weight: 700;
+            color: #000;
+            line-height: 1;
             white-space: nowrap;
-        }
-        .page-submit-qr-desc {
-            font-size: 6.5pt;
-            color: #475569;
-            line-height: 1.3;
-            word-break: keep-all;
         }
         .page-submit-qr-warn {
             font-size: 6.5pt;
             color: #ef4444;
             font-weight: bold;
-            line-height: 1.3;
-            word-break: keep-all;
+            line-height: 1;
+            white-space: nowrap;
         }
         .page-submit-qr canvas {
             display: block;
-            width: 16mm;
-            height: 16mm;
+            width: 22mm;
+            height: 22mm;
             image-rendering: pixelated;
         }
 
@@ -306,6 +320,14 @@
             </div>
             <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
             <button class="mode-tab" id="btn-pdf-link" style="display:none; color:#fbbf24;">↗ PDF 새 탭</button>
+            <div class="qr-output-wrap" id="qr-output-wrap">
+                <button id="btn-qr-output" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
+                <div class="qr-output-popover" id="qr-output-popover">
+                    <div class="qr-output-title">QR 출력</div>
+                    <label class="qr-output-option"><input type="checkbox" id="chk-submit-qr" onchange="setQrOutputParam('submit', this.checked)"> 정답지 제출 QR</label>
+                    <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
+                </div>
+            </div>
             <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
         </div>
     </div>
@@ -325,8 +347,8 @@ const SE_BLOCK_GAP = 15;
 
 const QR_PATCH = {
     enabled: true,
-    label: '정답 · 해설 보기',
-    size: 150
+    label: '해설·정답 확인',
+    size: 220
 };
 
 function buildQrTargetUrl() {
@@ -349,6 +371,62 @@ function isQrSolutionMode() {
     }
 }
 
+function shouldRenderSolutionQr() {
+    if (AppState.mode !== 'exam') return false;
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('solQr') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function getQrOutputState() {
+    const params = new URLSearchParams(window.location.search);
+    const submitQr = params.get('submitQr');
+    return {
+        submit: submitQr === '1' || (submitQr !== '0' && params.get('osqr') === '1'),
+        sol: params.get('solQr') === '1'
+    };
+}
+
+function syncQrOutputControls() {
+    const state = getQrOutputState();
+    const submitBox = document.getElementById('chk-submit-qr');
+    const solBox = document.getElementById('chk-sol-qr');
+    const btn = document.getElementById('btn-qr-output');
+    if (submitBox) submitBox.checked = state.submit;
+    if (solBox) solBox.checked = state.sol;
+    if (btn) {
+        const count = Number(state.submit) + Number(state.sol);
+        btn.textContent = count ? `QR 출력: ${count}개` : 'QR 출력: 없음';
+    }
+}
+
+function toggleQrOutputPopover(event) {
+    if (event) event.stopPropagation();
+    const wrap = document.getElementById('qr-output-wrap');
+    if (wrap) wrap.classList.toggle('open');
+}
+
+function setQrOutputParam(type, checked) {
+    const url = new URL(window.location.href);
+    if (type === 'submit') {
+        url.searchParams.set('submitQr', checked ? '1' : '0');
+        url.searchParams.delete('osqr');
+    } else {
+        url.searchParams.set('solQr', checked ? '1' : '0');
+    }
+    history.replaceState(null, '', url.toString());
+    syncQrOutputControls();
+    render();
+}
+
+document.addEventListener('click', (event) => {
+    const wrap = document.getElementById('qr-output-wrap');
+    if (wrap && !wrap.contains(event.target)) wrap.classList.remove('open');
+});
+
 function applyQrSolutionLockUI() {
     if (!isQrSolutionMode()) return;
     const btnExam = document.getElementById('btn-exam');
@@ -365,7 +443,7 @@ function applyQrSolutionLockUI() {
 }
 
 function injectQrToLastExamPage(area) {
-    if (AppState.mode !== 'exam' || !QR_PATCH.enabled) return;
+    if (!shouldRenderSolutionQr() || !QR_PATCH.enabled) return;
     if (typeof QRious !== 'function') return;
 
     const pages = area.querySelectorAll('.page');
@@ -397,7 +475,9 @@ function shouldRenderSubmitQr() {
     if (AppState.mode !== 'exam') return false;
     try {
         const params = new URLSearchParams(window.location.search);
-        return params.get('submitQr') === '1' || params.get('osqr') === '1';
+        const submitQr = params.get('submitQr');
+        if (submitQr === '0') return false;
+        return submitQr === '1' || params.get('osqr') === '1';
     } catch (e) {
         return false;
     }
@@ -450,12 +530,11 @@ function injectSubmitQrToLastExamPage(area) {
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-submit-qr';
 
-    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">반 정보 없음: AP Math OS 반 화면에서 생성한 QR 사용 권장</div>`;
+    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">반 정보 없음</div>`;
 
     qrWrap.innerHTML = `
         <div class="page-submit-qr-info">
-            <div class="page-submit-qr-label">AP Math 오답 제출</div>
-            <div class="page-submit-qr-desc">학생은 QR을 찍고 이름을 선택한 뒤 오답을 제출합니다.</div>
+            <div class="page-submit-qr-label">정답지 제출</div>
             ${warnHtml}
         </div>
         <canvas></canvas>
@@ -466,7 +545,7 @@ function injectSubmitQrToLastExamPage(area) {
     new QRious({
         element: qrWrap.querySelector('canvas'),
         value: buildSubmitQrTargetUrl(),
-        size: 150,
+        size: 220,
         level: 'M',
         background: 'white',
         foreground: 'black',
@@ -772,7 +851,19 @@ function protectRenderSegments(html) {
     return {
         html: protectedHtml,
         restore(value) {
-            return String(value || '').replace(/__PROTECTED_SEGMENT_(\d+)__/g, (_, i) => tokens[Number(i)] || '');
+            let restored = String(value || '');
+            for (let pass = 0; pass < tokens.length + 2 && /__PROTECTED_SEGMENT_\d+__/.test(restored); pass++) {
+                restored = restored.replace(/__PROTECTED_SEGMENT_(\d+)__/g, (match, i) => {
+                    const idx = Number(i);
+                    if (tokens[idx] !== undefined) return tokens[idx];
+                    console.warn('[JS Archive] protected segment restore failed:', match);
+                    return '';
+                });
+            }
+            if (/__PROTECTED_SEGMENT_\d+__/.test(restored)) {
+                console.warn('[JS Archive] protected segment remained after restore:', restored);
+            }
+            return restored;
         }
     };
 }
@@ -814,6 +905,13 @@ function normalizeViewBlocks(html) {
     );
 
     return protectedState.restore(out);
+}
+
+function sanitizeProtectedSegments(html) {
+    const value = String(html || '');
+    if (!/__PROTECTED_SEGMENT_\d+__/.test(value)) return value;
+    console.warn('[JS Archive] removing leaked protected segment token:', value);
+    return value.replace(/__PROTECTED_SEGMENT_\d+__/g, '');
 }
 
 /** [Image Field Handling] */
@@ -903,10 +1001,12 @@ async function renderExam(area, data) {
         
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
-        const formattedContent = normalizeQuestionNotes(
-            normalizeViewBlocks(
-                normalizeQuestionTables(
-                    formatQuestionContent(wrapLatex(rawContent), q)
+        const formattedContent = sanitizeProtectedSegments(
+            normalizeQuestionNotes(
+                normalizeViewBlocks(
+                    normalizeQuestionTables(
+                        formatQuestionContent(wrapLatex(rawContent), q)
+                    )
                 )
             )
         );
@@ -1081,10 +1181,12 @@ async function renderSol(area, data) {
         const solText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
 
         const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
-        const reminderContent = normalizeQuestionNotes(
-            normalizeViewBlocks(
-                normalizeQuestionTables(
-                    formatQuestionContent(wrapLatex(reminderRawContent), q)
+        const reminderContent = sanitizeProtectedSegments(
+            normalizeQuestionNotes(
+                normalizeViewBlocks(
+                    normalizeQuestionTables(
+                        formatQuestionContent(wrapLatex(reminderRawContent), q)
+                    )
                 )
             )
         );
@@ -1127,6 +1229,7 @@ function renderAns(area, data) {
 
 async function render() {
     const area = document.getElementById('print-area'); area.innerHTML = '';
+    syncQrOutputControls();
     pageCount = 0;
     if (AppState.mode === 'ans') renderAns(area, AppState.data);
     else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
