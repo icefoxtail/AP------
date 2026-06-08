@@ -6,8 +6,12 @@
     var _studentsLoaded = false;
     var _teachers = [];
     var _teachersLoaded = false;
+    var _attendanceRows = [];
+    var _attendanceLoadedDate = '';
     var _selectedCellId = null;
     var _selectedStudentKey = null;
+    var _filterTeacherName = '';
+    var _todayFilterDate = '';
     var _editStudentMode = false; // 학생 상세 수정 모드
     var _editCellTeachersMode = false;
     var _saving = false;
@@ -43,14 +47,131 @@
         }).sort(function (a, b) { return a.localeCompare(b, 'ko'); });
     }
 
+    function isAssignableTeacherName(name) {
+        var key = text(name).toLowerCase().replace(/\s+/g, '');
+        // Foreigner/PREP are timetable coverage markers, not assignable 담당 선생님 options.
+        // Keep them out even if they arrive later from timetable cells or teacher API rows.
+        return key !== 'foreigner' && key !== 'foreign' && key !== '외국인' && key !== '원어민'
+            && key !== 'prep' && key !== '프랩';
+    }
+
+    function teacherKey(value) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.teacherKey === 'function') {
+            return EieClassroomScope.teacherKey(value);
+        }
+        return text(value).toLowerCase().replace(/\s+/g, '');
+    }
+
+    function asTeacherList(value) {
+        if (Array.isArray(value)) {
+            var list = [];
+            value.forEach(function (item) { list = list.concat(asTeacherList(item)); });
+            return uniqueNames(list);
+        }
+        return uniqueNames(text(value).split(/[,+/]/).map(text).filter(Boolean));
+    }
+
+    function dayTeacherSource(row) {
+        var raw = rawOf(row);
+        return row && (row.day_teachers || row.teacher_names_by_day || row.weekday_teachers)
+            || raw.day_teachers
+            || raw.teacher_names_by_day
+            || raw.weekday_teachers
+            || null;
+    }
+
+    function dayTeacherValues(row, day) {
+        var source = dayTeacherSource(row);
+        if (!source || typeof source !== 'object') return [];
+        return asTeacherList(source[day] || source[day + '요일'] || source[String(day || '').toLowerCase()] || '');
+    }
+
+    function allDayTeacherValues(row) {
+        var values = [];
+        ['월', '화', '수', '목', '금'].forEach(function (day) {
+            values = values.concat(dayTeacherValues(row, day));
+        });
+        return uniqueNames(values);
+    }
+
+    function currentUserNames() {
+        if (window.EieClassroomScope && typeof EieClassroomScope.currentSession === 'function') {
+            var session = EieClassroomScope.currentSession();
+            return uniqueNames([session.teacherName, session.loginId]);
+        }
+        var storage = window.localStorage || {};
+        return uniqueNames([
+            storage.getItem && storage.getItem('WANGJI_EIE_NAME'),
+            storage.getItem && storage.getItem('WANGJI_EIE_LOGIN_ID')
+        ]);
+    }
+
+    function isOwnerSession() {
+        if (window.EieClassroomScope && typeof EieClassroomScope.currentSession === 'function') {
+            var session = EieClassroomScope.currentSession();
+            return EieClassroomScope.isDirector(session.role, session.loginId);
+        }
+        var storage = window.localStorage || {};
+        var role = text(storage.getItem && storage.getItem('WANGJI_EIE_ROLE')).toLowerCase();
+        var loginId = text(storage.getItem && storage.getItem('WANGJI_EIE_LOGIN_ID')).toLowerCase();
+        return role === 'admin' || role === 'owner' || loginId === 'admin';
+    }
+
     function teacherNamesOfCell(cell) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.displayTeacherNamesForCell === 'function') {
+            return EieClassroomScope.displayTeacherNamesForCell(cell);
+        }
         var raw = rawOf(cell);
         var values = [];
         if (Array.isArray(cell && cell.teacher_names)) values = values.concat(cell.teacher_names);
         if (Array.isArray(raw.teacher_names)) values = values.concat(raw.teacher_names);
+        values = values.concat(text(cell && cell.homeroom_teacher).split(','));
+        values = values.concat(text(raw.homeroom_teacher).split(','));
         values = values.concat(text(cell && (cell.teacher_name_raw || cell.teacher_name)).split(','));
         values = values.concat(text(raw.teacher_name_raw || raw.teacher_name).split(','));
         return uniqueNames(values);
+    }
+
+    function accessTeacherNamesOfCell(cell) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.accessTeacherNamesForCell === 'function') {
+            return EieClassroomScope.accessTeacherNamesForCell(cell);
+        }
+        return uniqueNames(teacherNamesOfCell(cell).concat(allDayTeacherValues(cell)));
+    }
+
+    function canCurrentUserUseCell(cell) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.canUseCell === 'function') {
+            var session = EieClassroomScope.currentSession();
+            if (!session.teacherName && !session.loginId && !session.role) return true;
+            return EieClassroomScope.canUseCell({
+                teacherName: session.teacherName,
+                loginId: session.loginId,
+                role: session.role,
+                cell: cell
+            });
+        }
+        if (isOwnerSession()) return true;
+        var userKeys = currentUserNames().map(teacherKey).filter(Boolean);
+        if (!userKeys.length) return true;
+        var accessKeys = accessTeacherNamesOfCell(cell).map(teacherKey).filter(Boolean);
+        return userKeys.some(function (key) { return accessKeys.indexOf(key) >= 0; });
+    }
+
+    function visibleCellsForCurrentUser(cells) {
+        var visible = (Array.isArray(cells) ? cells : []).filter(canCurrentUserUseCell);
+        if (_filterTeacherName && window.EieClassroomScope && typeof EieClassroomScope.cellsForTeacher === 'function') {
+            visible = EieClassroomScope.cellsForTeacher({
+                teacherName: _filterTeacherName,
+                role: 'owner',
+                cells: visible
+            });
+        }
+        if (_todayFilterDate && window.EieClassroomScope && typeof EieClassroomScope.isCellOnDate === 'function') {
+            visible = visible.filter(function (cell) {
+                return EieClassroomScope.isCellOnDate(cell, _todayFilterDate);
+            });
+        }
+        return visible;
     }
 
     function teacherRoster() {
@@ -58,7 +179,7 @@
         _cells.forEach(function (cell) {
             values = values.concat(teacherNamesOfCell(cell));
         });
-        return uniqueNames(values);
+        return uniqueNames(values).filter(isAssignableTeacherName);
     }
 
     function asRows(result) {
@@ -166,6 +287,49 @@
     function statusOf(student) {
         var status = text(student && student.status) || 'active';
         return status === 'imported' ? 'active' : status;
+    }
+
+    function todayIso() {
+        return new Date().toLocaleDateString('sv-SE');
+    }
+
+    function normalizeDate(value) {
+        var raw = text(value);
+        return /^\d{4}-\d{2}-\d{2}$/.test(raw) ? raw : todayIso();
+    }
+
+    function attendanceRecordFor(studentId, date) {
+        var sid = text(studentId);
+        var day = normalizeDate(date);
+        return _attendanceRows.find(function (row) {
+            return String(row.student_id || '') === sid && String(row.date || '').slice(0, 10) === day;
+        }) || null;
+    }
+
+    function attendanceDisplayStatus(status) {
+        var cur = text(status);
+        return cur && cur !== '미기록' ? cur : '등원';
+    }
+
+    function nextAttendanceStatus(status) {
+        var cur = attendanceDisplayStatus(status);
+        if (cur === '등원') return '결석';
+        if (cur === '결석') return '수업 없음';
+        return '등원';
+    }
+
+    function attendanceCompactLabel(status) {
+        var cur = attendanceDisplayStatus(status);
+        if (cur === '등원') return '○';
+        if (cur === '결석') return '×';
+        return '';
+    }
+
+    function attendanceButtonClass(status) {
+        var cur = attendanceDisplayStatus(status);
+        if (cur === '결석') return ' is-absent';
+        if (cur === '수업 없음') return ' is-empty';
+        return ' is-present';
     }
 
     function studentTeacherNames(student) {
@@ -362,6 +526,34 @@
             + '</div>';
     }
 
+    function renderStudentOperationRow(cell, student) {
+        var sid = text(student && (student.student_id || student.id));
+        var key = text(student && (student.assignment_id || student.student_id || student.id));
+        var name = displayName(student);
+        var grade = gradeOf(student);
+        var cellId = text(cell && cell.id);
+        var date = todayIso();
+        var attendance = attendanceRecordFor(sid, date);
+        var status = attendanceDisplayStatus(attendance && attendance.status);
+        return '<div class="eie-classroom-v4-row" id="eie-class-row-' + esc(key || sid) + '">'
+            + '<button type="button" class="eie-classroom-v4-name" onclick="EieClassroomView.openStudentDetail(' + JSON.stringify(String(key)) + ')">'
+            + '<strong>' + esc(name) + '</strong>'
+            + (grade ? '<span>' + esc(grade) + '</span>' : '')
+            + '</button>'
+            + '<button type="button" class="eie-classroom-v4-status' + attendanceButtonClass(status) + '" '
+            + 'data-eie-class-attendance="' + esc(sid) + '" '
+            + 'aria-label="' + esc(name + ' 출석 ' + status) + '" '
+            + 'title="' + esc(status) + '" '
+            + 'onclick="EieClassroomView.toggleAttendance(' + JSON.stringify(sid) + ',' + JSON.stringify(cellId) + ',' + JSON.stringify(date) + ')">'
+            + esc(attendanceCompactLabel(status))
+            + '</button>'
+            + '<button type="button" class="eie-classroom-v4-status is-consult" '
+            + 'data-eie-class-consultation="' + esc(sid) + '" '
+            + 'aria-label="' + esc(name + ' 상담') + '" title="상담" '
+            + 'onclick="EieClassroomView.openConsultation(' + JSON.stringify(sid) + ',' + JSON.stringify(cellId) + ',' + JSON.stringify(date) + ')">★</button>'
+            + '</div>';
+    }
+
     // ── 수업 상세 패널 ────────────────────────────────────────────────
     function renderCellDetail(cell) {
         if (!cell) return '';
@@ -384,17 +576,9 @@
                 + '</aside>';
         }
         var studentsHtml = students.length
-            ? '<div class="eie-cell-students">'
-                + students.map(function (s) {
-                    var key = s.assignment_id || s.student_id || '';
-                    var name = s.display_name || s.name || '';
-                    var grade = s.grade || s.grade_raw || '';
-                    return '<button type="button" class="eie-student-chip"'
-                        + ' onclick="EieClassroomView.openStudentDetail(' + JSON.stringify(String(key)) + ')">'
-                        + esc(name)
-                        + (grade ? ' <span style="font-size:11px;opacity:.7;">' + esc(grade) + '</span>' : '')
-                        + '</button>';
-                }).join('')
+            ? '<div class="eie-classroom-v4-board">'
+                + '<div class="eie-classroom-v4-head"><span>이름</span><span>출석</span><span>상담</span></div>'
+                + students.map(function (s) { return renderStudentOperationRow(cell, s); }).join('')
                 + '</div>'
             : '<div class="eie-empty-box" style="margin-top:8px;">배정된 학생이 없습니다.</div>';
 
@@ -456,6 +640,9 @@
     }
 
     function renderCards(cells) {
+        if (!cells.length && _todayFilterDate) {
+            return '<div class="eie-empty-box" data-eie-classroom-empty-today="true">오늘 수업이 없습니다.</div>';
+        }
         if (!cells.length) return '<div class="eie-empty-box">등록된 수업이 없습니다.</div>';
         return '<div class="eie-admin-card-grid">'
             + sortCells(cells).map(function (cell) {
@@ -514,9 +701,22 @@
                     _teachersLoaded = true;
                 }
             }
+            var today = todayIso();
+            if (_attendanceLoadedDate !== today && window.EieApi && typeof EieApi.getAttendanceRecords === 'function') {
+                try {
+                    var aResult = await EieApi.getAttendanceRecords({ date: today });
+                    _attendanceRows = (aResult && (aResult.attendance_records || aResult.attendance || aResult.data)) || [];
+                    _attendanceLoadedDate = today;
+                } catch (aErr) {
+                    _attendanceRows = [];
+                    _attendanceLoadedDate = today;
+                }
+            }
 
+            var visibleCells = visibleCellsForCurrentUser(_cells);
             var showPanel = _selectedCellId !== null;
             var cell = getSelectedCell();
+            if (cell && !canCurrentUserUseCell(cell)) cell = null;
             var student = (_selectedStudentKey !== null) ? getSelectedStudent() : null;
             var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
             var layoutClass = showPanel ? 'eie-timetable-layout' : '';
@@ -534,16 +734,46 @@
                 + '<div class="eie-panel">'
                 + '<h1 id="eie-classroom-title" class="eie-panel-title">클래스룸</h1>'
                 + errorHtml
-                + (_loaded && !_error ? renderSummary(_cells) : '')
+                + (_loaded && !_error ? renderSummary(visibleCells) : '')
                 + '<div class="' + layoutClass + '">'
-                + '<div class="eie-timetable-main">' + renderCards(_cells) + '</div>'
+                + '<div class="eie-timetable-main">' + renderCards(visibleCells) + '</div>'
                 + panelHtml
                 + '</div>'
                 + '</div>'
                 + '</section>';
         },
 
+        openTeacher: function (name) {
+            _filterTeacherName = text(name);
+            _todayFilterDate = '';
+            _selectedCellId = null;
+            _selectedStudentKey = null;
+            _editStudentMode = false;
+            _editCellTeachersMode = false;
+            _addStudentMode = false;
+            EieRouter.open('classroom');
+        },
+
+        openCell: function (cellId) {
+            _filterTeacherName = '';
+            _todayFilterDate = '';
+            this.openDetail(cellId);
+        },
+
+        openTodayForTeacher: function (name, date) {
+            _filterTeacherName = text(name);
+            _todayFilterDate = normalizeDate(date || todayIso());
+            _selectedCellId = null;
+            _selectedStudentKey = null;
+            _editStudentMode = false;
+            _editCellTeachersMode = false;
+            _addStudentMode = false;
+            EieRouter.open('classroom');
+        },
+
         openDetail: function (cellId) {
+            _filterTeacherName = '';
+            _todayFilterDate = '';
             _selectedCellId = cellId;
             _selectedStudentKey = null;
             _editStudentMode = false;
@@ -725,6 +955,51 @@
                 if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">' + esc(err.message || '처리하지 못했습니다.') + '</div>';
                 EieRouter.open('classroom');
             }
+        },
+
+        toggleAttendance: async function (studentId, cellId, date) {
+            var sid = text(studentId);
+            var day = normalizeDate(date);
+            if (!sid) return;
+            var current = attendanceRecordFor(sid, day);
+            var next = nextAttendanceStatus(current && current.status);
+            try {
+                var result = await EieApi.saveAttendanceRecord({
+                    student_id: sid,
+                    timetable_cell_id: text(cellId),
+                    date: day,
+                    status: next,
+                    raw_meta_json: { source: 'classroom' }
+                });
+                var rows = (result && (result.attendance_records || result.attendance || (result.attendance_record ? [result.attendance_record] : (result.data ? [result.data] : [])))) || [];
+                if (rows.length) {
+                    _attendanceRows = _attendanceRows.filter(function (row) {
+                        return String(row.student_id || '') !== sid || String(row.date || '').slice(0, 10) !== day;
+                    }).concat(rows);
+                    if (window.EieState && typeof EieState.mergeStudentAttendance === 'function') {
+                        EieState.mergeStudentAttendance(sid, rows);
+                    }
+                }
+                EieRouter.open('classroom');
+            } catch (err) {
+                var msgEl = document.getElementById('eie-cell-msg');
+                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">' + esc(err.message || '출석을 저장하지 못했습니다.') + '</div>';
+                EieRouter.open('classroom');
+            }
+        },
+
+        openConsultation: function (studentId, cellId, date) {
+            var sid = text(studentId);
+            if (!sid) return;
+            if (window.EieStudentsView && typeof EieStudentsView.createConsultation === 'function') {
+                EieStudentsView.createConsultation(sid, {
+                    date: normalizeDate(date),
+                    type: '상담',
+                    source: 'classroom',
+                    timetable_cell_id: text(cellId)
+                });
+            }
+            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('students');
         }
     };
 })();

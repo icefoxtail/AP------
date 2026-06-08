@@ -8,12 +8,14 @@ const index = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8');
 const router = fs.readFileSync(path.join(root, 'eie/js/eie-router.js'), 'utf8');
 const management = fs.readFileSync(path.join(root, 'eie/js/views/eie-management.js'), 'utf8');
 const app = fs.readFileSync(path.join(root, 'eie/js/eie-app.js'), 'utf8');
+const scopeSource = fs.readFileSync(path.join(root, 'eie/js/utils/eie-classroom-scope.js'), 'utf8');
 const teacherViewPath = path.join(root, 'eie/js/views/eie-teacher.js');
 
 assert(fs.existsSync(teacherViewPath), 'EIE teacher view file should exist');
 const teacherView = fs.readFileSync(teacherViewPath, 'utf8');
 
 assert(index.includes('./js/views/eie-teacher.js'), 'EIE index should load teacher view before router');
+assert(index.includes('./js/utils/eie-classroom-scope.js'), 'EIE index should load classroom scope before views');
 assert(router.includes("teacher: () => EieTeacherView.render()"), 'EIE router should expose teacher route');
 assert(management.includes('EieManagementView.openTeacherPage'), 'management should link teacher rows to teacher page');
 assert(app.includes("window.location.hash = '#teacher'"), 'teacher sessions should default into #teacher instead of owner dashboard');
@@ -69,6 +71,8 @@ const context = {
   },
   EieRouter: { open(route) { context.openedRoute = route; } },
   EieClassroomView: {
+    openCell(cellId) { context.openedClassroom = cellId; },
+    openTodayForTeacher(teacherName) { context.openedTodayTeacher = teacherName; },
     openDetail(cellId) { context.openedClassroom = cellId; }
   },
   EieStudentsView: {
@@ -88,7 +92,7 @@ const context = {
           timetable_cells: [
             {
               id: 'cell-1',
-              day_label: '월',
+              day_label: '오늘',
               period_label: '1교시',
               teacher_name_raw: 'Zoe',
               class_name_raw: '중1-1 Laura zoe',
@@ -96,7 +100,7 @@ const context = {
             },
             {
               id: 'cell-2',
-              day_label: '화',
+              day_label: '오늘',
               period_label: '2교시',
               teacher_name_raw: 'Carmen',
               class_name_raw: 'rs3-1 Carmen',
@@ -104,7 +108,7 @@ const context = {
             },
             {
               id: 'cell-3',
-              day_label: '수',
+              day_label: '오늘',
               period_label: '3교시',
               teacher_name_raw: 'Laura',
               raw_meta_json: JSON.stringify({ teacher_names: ['Laura', 'Zoe'] }),
@@ -136,6 +140,8 @@ context.window.EieApi = context.EieApi;
 context.window.EieClassroomView = context.EieClassroomView;
 context.window.EieStudentsView = context.EieStudentsView;
 vm.createContext(context);
+vm.runInContext(scopeSource, context, { filename: 'eie-classroom-scope.js' });
+context.EieClassroomScope = context.window.EieClassroomScope;
 vm.runInContext(teacherView, context, { filename: 'eie-teacher.js' });
 
 const matcher = context.window.EieTeacherView.matchTeacherNamesForCell;
@@ -154,7 +160,7 @@ assert.strictEqual(matcher({ teacher_name_raw: 'LT5', class_name_raw: 'LT5 zoe' 
   assert(html.includes('중1-1 Laura zoe'), 'logged-in teacher should see joint assigned class');
   assert(html.includes('고1 EIE A'), 'logged-in teacher should see explicitly assigned class');
   assert(!html.includes('rs3-1 Carmen'), 'logged-in teacher should not see unrelated owner/other-teacher class');
-  assert(html.includes('준비중') && html.includes('오늘일정'), 'today schedule should stay as a preparing placeholder');
+  assert(html.includes('data-eie-teacher-empty-today') || html.includes('eie-teacher-schedule-row'), 'today schedule should render classroom-linked rows or a classroom empty state');
   assert(!html.includes('A 중1') && !html.includes('B 고1'), 'today schedule should not render arbitrary assigned students');
   assert(html.includes('등원 1'), 'class cards should use connected attendance data for present count');
   assert(html.includes('결석 1'), 'class cards should use connected attendance data for absent count');
@@ -164,13 +170,13 @@ assert.strictEqual(matcher({ teacher_name_raw: 'LT5', class_name_raw: 'LT5 zoe' 
   assert.strictEqual(context.openedRoute, 'teacher', 'openTeacher should navigate to teacher route');
 
   context.window.EieTeacherView.openTimetable();
-  assert.strictEqual(context.openedRoute, 'timetable-v2', 'time table button should open EIE timetable');
+  assert.strictEqual(context.openedRoute, 'timetable', 'time table button should open EIE timetable');
 
   context.window.EieTeacherView.openClassroom('cell-1');
-  assert.strictEqual(context.openedClassroom, 'cell-1', 'class click should open classroom detail');
+  assert.strictEqual(context.openedClassroom, 'cell-1', 'class click should open classroom through openCell/openDetail');
 
-  context.window.EieTeacherView.showPreparing('오늘일정');
-  assert.strictEqual(context.alertMessage, '오늘일정 기능은 준비중입니다.', 'today schedule should only show a preparing alert');
+  context.window.EieTeacherView.openTodayClassroom();
+  assert.strictEqual(context.openedTodayTeacher, 'Laura', 'classroom shortcut should open today classroom for the logged-in teacher');
 
   context.window.EieTeacherView.openConsultations();
   assert.strictEqual(context.openedStudent, 's1', 'student consultation button should open the first assigned student');

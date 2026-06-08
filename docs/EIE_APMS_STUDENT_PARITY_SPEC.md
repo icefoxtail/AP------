@@ -1,72 +1,72 @@
-# EIE 학생관리 APMS Parity 명세서
+﻿# EIE ?숈깮愿由?APMS Parity 紐낆꽭??
 
-## 1. 목표
-EIE 학생관리를 APMS 학생관리 UI/UX와 완전히 일치시킨다.
+## 1. 紐⑺몴
+EIE ?숈깮愿由щ? APMS ?숈깮愿由?UI/UX? ?꾩쟾???쇱튂?쒗궓??
 
-## 2. APMS에서 그대로 가져올 화면 구조
-- 학생 목록: APMS의 학생 row/카드 밀도와 상태 badge 체계를 가져온다.
-- 검색: 이름, 학년, 학교, 연락처, 배정 수업을 대상으로 한다.
-- 신규 등록: APMS `openAddStudent` modal 구조를 가져오되 AP Math 전용 필드는 숨긴다.
-- 학생 상세: APMS `renderStudentDetail` 헤더, 연락처 카드, 수정 버튼 구조를 가져온다.
-- 탭 구조: APMS `tab-bar`/`tab-btn` 패턴을 가져오고 EIE 1차 탭은 기본정보, 연락처, 상담/메모, 수업 배정으로 구성한다.
-- 기본정보: 학생명, 학년, 학교, 상태, 메모를 표시한다.
-- 연락처: 학생 전화번호, 학부모/보호자 연락처를 APMS 카드형으로 표시한다.
-- 학부모 연락처: APMS `renderParentContactSection` 구조를 가져오되 복잡한 수신동의는 1차 준비중 처리한다.
-- 상담: APMS `renderCnsTab` 카드 목록과 신규/수정 modal 구조를 가져온다.
-- 메모: 학생 memo와 수업/레벨 운영 메모를 분리 표시한다.
-- 상태 변경: active, inactive, needs_review, archived를 EIE status로 사용한다.
-- 퇴원/숨김: physical delete를 금지하고 archived 또는 inactive로 처리한다.
-- 수정 가능 운영 화면: `docs/EIE_STUDENT_CLASSROOM_EDIT_POLICY.md` 기준으로 상세 패널의 "수정" 버튼과 인라인 수정 모드를 제공한다.
+## 2. APMS?먯꽌 洹몃?濡?媛?몄삱 ?붾㈃ 援ъ“
+- ?숈깮 紐⑸줉: APMS???숈깮 row/移대뱶 諛?꾩? ?곹깭 badge 泥닿퀎瑜?媛?몄삩??
+- 寃?? ?대쫫, ?숇뀈, ?숆탳, ?곕씫泥? 諛곗젙 ?섏뾽????곸쑝濡??쒕떎.
+- ?좉퇋 ?깅줉: APMS `openAddStudent` modal 援ъ“瑜?媛?몄삤??AP Math ?꾩슜 ?꾨뱶???④릿??
+- ?숈깮 ?곸꽭: APMS `renderStudentDetail` ?ㅻ뜑, ?곕씫泥?移대뱶, ?섏젙 踰꾪듉 援ъ“瑜?媛?몄삩??
+- ??援ъ“: APMS `tab-bar`/`tab-btn` ?⑦꽩??媛?몄삤怨?EIE 1李???? 湲곕낯?뺣낫, ?곕씫泥? ?곷떞/硫붾え, ?섏뾽 諛곗젙?쇰줈 援ъ꽦?쒕떎.
+- 湲곕낯?뺣낫: ?숈깮紐? ?숇뀈, ?숆탳, ?곹깭, 硫붾え瑜??쒖떆?쒕떎.
+- ?곕씫泥? ?숈깮 ?꾪솕踰덊샇, ?숇?紐?蹂댄샇???곕씫泥섎? APMS 移대뱶?뺤쑝濡??쒖떆?쒕떎.
+- ?숇?紐??곕씫泥? APMS `renderParentContactSection` 援ъ“瑜?媛?몄삤??蹂듭옟???섏떊?숈쓽??1李?以鍮꾩쨷 泥섎━?쒕떎.
+- ?곷떞: APMS `renderCnsTab` 移대뱶 紐⑸줉怨??좉퇋/?섏젙 modal 援ъ“瑜?媛?몄삩??
+- 硫붾え: ?숈깮 memo? ?섏뾽/?덈꺼 ?댁쁺 硫붾え瑜?遺꾨━ ?쒖떆?쒕떎.
+- ?곹깭 蹂寃? active, inactive, needs_review, archived瑜?EIE status濡??ъ슜?쒕떎.
+- ?댁썝/?④?: physical delete瑜?湲덉??섍퀬 archived ?먮뒗 inactive濡?泥섎━?쒕떎.
+- ?섏젙 媛???댁쁺 ?붾㈃: `docs/EIE_STUDENT_CLASSROOM_EDIT_POLICY.md` 湲곗??쇰줈 ?곸꽭 ?⑤꼸??"?섏젙" 踰꾪듉怨??몃씪???섏젙 紐⑤뱶瑜??쒓났?쒕떎.
 
-## 3. EIE 전용 필드
-- 영어 레벨
-- EIE 수업/반 배정
-- 시간표 셀
-- 교재/레벨 메모
-- 기타 영어관 운영 메모
+## 3. EIE ?꾩슜 ?꾨뱶
+- ?곸뼱 ?덈꺼
+- EIE ?섏뾽/諛?諛곗젙
+- ?쒓컙???
+- 援먯옱/?덈꺼 硫붾え
+- 湲고? ?곸뼱愿 ?댁쁺 硫붾え
 
-## 4. 1차 구현 필드
-- 학생명
-- 학년
-- 학교
-- 학생 전화번호
-- 학부모 전화번호
-- 상태
-- 메모
-- EIE 수업 배정 목록
-- 최근 수업/클래스룸 연결 자리
+## 4. 1李?援ы쁽 ?꾨뱶
+- ?숈깮紐?
+- ?숇뀈
+- ?숆탳
+- ?숈깮 ?꾪솕踰덊샇
+- ?숇?紐??꾪솕踰덊샇
+- ?곹깭
+- 硫붾え
+- EIE ?섏뾽 諛곗젙 紐⑸줉
+- 理쒓렐 ?섏뾽/?대옒?ㅻ８ ?곌껐 ?먮━
 
-## 5. 1차에서 준비중 처리할 기능
-- 상담 AI
-- 리포트
-- 시험/성적
-- 수납
-- 복잡한 학부모 동의
-- 기타 AP 전용 기능
+## 5. 1李⑥뿉??以鍮꾩쨷 泥섎━??湲곕뒫
+- ?곷떞 AI
+- 由ы룷??
+- ?쒗뿕/?깆쟻
+- ?섎궔
+- 蹂듭옟???숇?紐??숈쓽
+- 湲고? AP ?꾩슜 湲곕뒫
 
-## 6. 저장 흐름
-- create: `EieApi.createStudent(payload)`를 adapter에 두고 Worker `POST /api/eie/students`가 준비된 뒤 연결한다. endpoint가 없는 라운드에서는 modal 버튼을 준비중으로 둔다.
-- update: `EieApi.updateStudent(studentId, payload)` → Worker `PATCH /api/eie/students/{id}` → D1 `eie_students`/`eie_student_contacts` 반영 → 응답 row로 `EieState.db` merge.
-- status update: `EieApi.updateStudentStatus(studentId, status)` → Worker `PATCH /api/eie/students/{id}/status`.
-- archive/withdraw: `EieApi.archiveStudent(studentId)` → Worker `PATCH /api/eie/students/{id}/archive` 또는 `DELETE`가 아닌 soft archive endpoint.
-- physical delete 금지: `eie_students`, `eie_student_contacts`, `eie_student_schedule_assignments`의 운영 삭제는 archived/ended 상태 처리로 제한한다.
-- 현재 확인된 차이: `EieApi.createStudent`, `updateStudent`, `updateStudentStatus` 함수는 frontend에 있으나 Worker `routes/eie.js`에는 대응 분기가 없다.
+## 6. ????먮쫫
+- create: `EieApi.createStudent(payload)`瑜?adapter???먭퀬 Worker `POST /api/eie/students`媛 以鍮꾨맂 ???곌껐?쒕떎. endpoint媛 ?녿뒗 ?쇱슫?쒖뿉?쒕뒗 modal 踰꾪듉??以鍮꾩쨷?쇰줈 ?붾떎.
+- update: `EieApi.updateStudent(studentId, payload)` ??Worker `PATCH /api/eie/students/{id}` ??D1 `eie_students`/`eie_student_contacts` 諛섏쁺 ???묐떟 row濡?`EieState.db` merge.
+- status update: `EieApi.updateStudentStatus(studentId, status)` ??Worker `PATCH /api/eie/students/{id}/status`.
+- archive/withdraw: `EieApi.archiveStudent(studentId)` ??Worker `PATCH /api/eie/students/{id}/archive` ?먮뒗 `DELETE`媛 ?꾨땶 soft archive endpoint.
+- physical delete 湲덉?: `eie_students`, `eie_student_contacts`, `eie_student_schedule_assignments`???댁쁺 ??젣??archived/ended ?곹깭 泥섎━濡??쒗븳?쒕떎.
+- ?꾩옱 ?뺤씤??李⑥씠: `EieApi.createStudent`, `updateStudent`, `updateStudentStatus` ?⑥닔??frontend???덉쑝??Worker `routes/eie.js`?먮뒗 ???遺꾧린媛 ?녿떎.
 
-## 7. 학생관리와 시간표/클래스룸 연결
-- 학생 상세 → 배정 수업: `student.assignments` 또는 `EieState.db.class_students` projection에서 `timetable_cell_id`를 열어 클래스룸으로 이동한다.
-- 시간표 v2 학생명 → 학생 상세: `assigned_students[].student_id` 또는 `assignment_id`로 `currentStudentDetailId`를 설정한다.
-- 클래스룸 학생명 → 학생 상세: EIE 클래스룸 row에서 `student_id`를 넘겨 APMS parity 학생 상세를 연다.
-- 현재 `eie/js/views/eie-timetable-v2.js`는 학생 버튼에서 `EieStudentsView.openDetail(studentId)` 또는 `EieStudentsView.setQuery(studentName)`를 호출한다. 이 연결은 학생관리 APMS parity 구현 후 그대로 사용할 수 있다.
-## Round 2 구현 반영 (2026-05-31)
+## 7. ?숈깮愿由ъ? ?쒓컙???대옒?ㅻ８ ?곌껐
+- ?숈깮 ?곸꽭 ??諛곗젙 ?섏뾽: `student.assignments` ?먮뒗 `EieState.db.class_students` projection?먯꽌 `timetable_cell_id`瑜??댁뼱 ?대옒?ㅻ８?쇰줈 ?대룞?쒕떎.
+- ?쒓컙??v2 ?숈깮紐????숈깮 ?곸꽭: `assigned_students[].student_id` ?먮뒗 `assignment_id`濡?`currentStudentDetailId`瑜??ㅼ젙?쒕떎.
+- ?대옒?ㅻ８ ?숈깮紐????숈깮 ?곸꽭: EIE ?대옒?ㅻ８ row?먯꽌 `student_id`瑜??섍꺼 APMS parity ?숈깮 ?곸꽭瑜??곕떎.
+- ?꾩옱 `eie/js/views/eie-timetable.js`???숈깮 踰꾪듉?먯꽌 `EieStudentsView.openDetail(studentId)` ?먮뒗 `EieStudentsView.setQuery(studentName)`瑜??몄텧?쒕떎. ???곌껐? ?숈깮愿由?APMS parity 援ы쁽 ??洹몃?濡??ъ슜?????덈떎.
+## Round 2 援ы쁽 諛섏쁺 (2026-05-31)
 
-- EIE 학생관리 화면은 `EieState.get().db.students`, `student_contacts`, `parent_contacts`, `class_students`, `timetable_cells`를 원본으로 사용한다.
-- 로컬 상태는 검색어, 상태 필터, 선택 학생, 상세 탭, 작성/수정 draft, 저장중 여부에 한정한다.
-- 제공 기능: 학생 목록, 검색, 상태 필터, 신규 등록, 상세 패널, 기본정보 수정, 상태 변경, `DELETE /students/{id}` soft archive, 연락처 표시, 수업 배정 표시, 시간표/클래스룸 연결.
-- 미구현 endpoint 기능: 상담 저장, 출결/숙제 저장, 복수 연락처 별도 CRUD. 이 기능들은 성공 처리하지 않고 준비중 패널 또는 비활성 버튼으로 표시한다.
-- APMS 원본 `apmath/js/student.js`는 수정하지 않고 화면 문법과 조작 흐름만 EIE 전용 view에 재구성한다.
+- EIE ?숈깮愿由??붾㈃? `EieState.get().db.students`, `student_contacts`, `parent_contacts`, `class_students`, `timetable_cells`瑜??먮낯?쇰줈 ?ъ슜?쒕떎.
+- 濡쒖뺄 ?곹깭??寃?됱뼱, ?곹깭 ?꾪꽣, ?좏깮 ?숈깮, ?곸꽭 ?? ?묒꽦/?섏젙 draft, ??μ쨷 ?щ????쒖젙?쒕떎.
+- ?쒓났 湲곕뒫: ?숈깮 紐⑸줉, 寃?? ?곹깭 ?꾪꽣, ?좉퇋 ?깅줉, ?곸꽭 ?⑤꼸, 湲곕낯?뺣낫 ?섏젙, ?곹깭 蹂寃? `DELETE /students/{id}` soft archive, ?곕씫泥??쒖떆, ?섏뾽 諛곗젙 ?쒖떆, ?쒓컙???대옒?ㅻ８ ?곌껐.
+- 誘멸뎄??endpoint 湲곕뒫: ?곷떞 ??? 異쒓껐/?숈젣 ??? 蹂듭닔 ?곕씫泥?蹂꾨룄 CRUD. ??湲곕뒫?ㅼ? ?깃났 泥섎━?섏? ?딄퀬 以鍮꾩쨷 ?⑤꼸 ?먮뒗 鍮꾪솢??踰꾪듉?쇰줈 ?쒖떆?쒕떎.
+- APMS ?먮낯 `apmath/js/student.js`???섏젙?섏? ?딄퀬 ?붾㈃ 臾몃쾿怨?議곗옉 ?먮쫫留?EIE ?꾩슜 view???ш뎄?깊븳??
 # Round 3 Student Detail Storage Notes (2026-05-31)
 
-- 학생 상세 연락처 탭은 `eie_student_contacts` 기반 조회/추가/수정을 호출한다.
-- 학생 상세 상담 탭은 remote D1에 존재하는 `consultations` 테이블 기반 조회/추가/수정을 호출한다.
-- 연락처/상담 삭제는 DB에 archive/status 컬럼이 추가될 때까지 UI에서 보류 상태로 표시하고, Worker도 물리 삭제를 수행하지 않는다.
-- 이번 라운드는 저장 기반 연결만 다루며 학생관리 전체 UI parity, classroom, timetable, dashboard 화면은 변경하지 않는다.
+- ?숈깮 ?곸꽭 ?곕씫泥???? `eie_student_contacts` 湲곕컲 議고쉶/異붽?/?섏젙???몄텧?쒕떎.
+- ?숈깮 ?곸꽭 ?곷떞 ??? remote D1??議댁옱?섎뒗 `consultations` ?뚯씠釉?湲곕컲 議고쉶/異붽?/?섏젙???몄텧?쒕떎.
+- ?곕씫泥??곷떞 ??젣??DB??archive/status 而щ읆??異붽????뚭퉴吏 UI?먯꽌 蹂대쪟 ?곹깭濡??쒖떆?섍퀬, Worker??臾쇰━ ??젣瑜??섑뻾?섏? ?딅뒗??
+- ?대쾲 ?쇱슫?쒕뒗 ???湲곕컲 ?곌껐留??ㅻ（硫??숈깮愿由??꾩껜 UI parity, classroom, timetable, dashboard ?붾㈃? 蹂寃쏀븯吏 ?딅뒗??

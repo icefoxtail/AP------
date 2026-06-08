@@ -1,4 +1,4 @@
-// EIE timetable rebuild script v21
+﻿// EIE timetable rebuild script v21
 // Purpose: replace the current imported/incorrect EIE timetable cells with the manually rebuilt truth timetable.
 // Scope: timetable cells only. Student assignments are NOT copied to the new cells.
 // Run location: EIE app timetable screen console after login.
@@ -9,1195 +9,1195 @@
     "truth_id": "truth_01_RS2-1",
     "truth_no": 1,
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "material_text": "RS2-1",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Foreigner"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "원문: RS2-1 수아 (Carmen)",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: RS2-1 ?섏븘 (Carmen)",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_02_LE3",
     "truth_no": 2,
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "material_text": "LE3",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [
+      "??: [
         "STACY"
       ],
-      "수": [
+      "??: [
         "IVY"
       ],
-      "목": [
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
-    "memo": "원문: LE3 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: LE3 IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_03_PHONIC2",
     "truth_no": 3,
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "material_text": "PHONIC2",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "Foreigner"
       ],
-      "수": [
+      "??: [
         "STACY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "목 주4일 파닉스는 담당 제외",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "紐?二????뚮땳?ㅻ뒗 ?대떦 ?쒖쇅",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_04_RT_1",
     "truth_no": 4,
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "material_text": "RT 1",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "Foreigner"
       ],
-      "화": [
+      "??: [
         "IVY"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
-    "memo": "원문: RT 1 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: RT 1 IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_05_FP2",
     "truth_no": 5,
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "material_text": "FP2",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Zoe"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "원문: FP2 Zoe",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: FP2 Zoe",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_06_PL2",
     "truth_no": 6,
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "material_text": "PL2",
     "homeroom_teacher": "Lily",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Lily"
       ],
-      "목": [
+      "紐?: [
         "Foreigner"
       ],
-      "금": [
+      "湲?: [
         "Lily"
       ]
     },
-    "memo": "원문: Lily PL2",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: Lily PL2",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_07_PHONIC1",
     "truth_no": 7,
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "material_text": "PHONIC1",
     "homeroom_teacher": "Lily",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Foreigner"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Lily"
       ]
     },
-    "memo": "목 주4일 파닉스는 담당 제외",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "紐?二????뚮땳?ㅻ뒗 ?대떦 ?쒖쇅",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_08_PJ2",
     "truth_no": 8,
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "material_text": "PJ2",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [
+      "??: [
         "IVY"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
-    "memo": "원문: PJ2 지원, 주하 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: PJ2 吏?? 二쇳븯 IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_09_초_5_6",
+    "truth_id": "truth_09_珥?5_6",
     "truth_no": 9,
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
-    "material_text": "초 5,6",
+    "material_text": "珥?5,6",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [],
-      "금": []
+      "紐?: [],
+      "湲?: []
     },
-    "memo": "원문 확인 필요: 초 5,6 Carmen",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц ?뺤씤 ?꾩슂: 珥?5,6 Carmen",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_10_RS2-2",
     "truth_no": 10,
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "material_text": "RS2-2",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [
+      "??: [
         "Foreigner"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "원문: (Car) RS2-2",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: (Car) RS2-2",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_11_FP2",
     "truth_no": 11,
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "material_text": "FP2",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "Foreigner"
       ],
-      "수": [
+      "??: [
         "IVY"
       ],
-      "목": [
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "원문: FP2 STACY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: FP2 STACY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_12_RTH_2",
     "truth_no": 12,
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "material_text": "RTH 2",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Zoe"
       ],
-      "수": [
+      "??: [
         "STACY"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "원문: RTH 2 Zoe",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: RTH 2 Zoe",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_13_RS4",
     "truth_no": 13,
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "material_text": "RS4",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "STACY"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "Foreigner"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "원문: RS4 도원 STACY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: RS4 ?꾩썝 STACY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_14_LT4",
     "truth_no": 14,
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "material_text": "LT4",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Foreigner"
       ],
-      "수": [
+      "??: [
         "Foreigner"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "프-영-수는 담당 제외",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?????섎뒗 ?대떦 ?쒖쇅",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_15_현우5",
+    "truth_id": "truth_15_?꾩슦5",
     "truth_no": 15,
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
-    "material_text": "현우5",
+    "material_text": "?꾩슦5",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Lily"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Lily"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
-    "memo": "원문: 현우5 화목금 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: ?꾩슦5 ?붾ぉ湲?IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_16_승재5",
+    "truth_id": "truth_16_?뱀옱5",
     "truth_no": 16,
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
-    "material_text": "승재5",
+    "material_text": "?뱀옱5",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "원문: 승재5 월수금 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: ?뱀옱5 ?붿닔湲?IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_17_CH5_6",
     "truth_no": 17,
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "material_text": "CH5,6",
     "homeroom_teacher": "Lily",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Lily"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Lily"
       ]
     },
-    "memo": "원문: CH5,6 Lily",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: CH5,6 Lily",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_18_JA_2-2",
     "truth_no": 18,
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "material_text": "JA 2-2",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [
+      "??: [
         "Foreigner"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
-    "memo": "원문: JA 2-2 한가람 (Carmen)",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: JA 2-2 ?쒓???(Carmen)",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_19_현우5",
+    "truth_id": "truth_19_?꾩슦5",
     "truth_no": 19,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "현우5",
+    "material_text": "?꾩슦5",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Lily"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Lily"
       ],
-      "금": []
+      "湲?: []
     },
-    "memo": "금 PREP는 담당 제외",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?PREP???대떦 ?쒖쇅",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_20_승재5",
+    "truth_id": "truth_20_?뱀옱5",
     "truth_no": 20,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "승재5",
+    "material_text": "?뱀옱5",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "Lily"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "IVY"
       ]
     },
-    "memo": "원문: 승재5 월수금 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: ?뱀옱5 ?붿닔湲?IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
     "truth_id": "truth_21_LE_6",
     "truth_no": 21,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
     "material_text": "LE 6",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Foreigner"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": []
+      "湲?: []
     },
-    "memo": "원문: LE 6 (Carmen)",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: LE 6 (Carmen)",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_22_준서_6",
+    "truth_id": "truth_22_以??6",
     "truth_no": 22,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "준서 6",
+    "material_text": "以??6",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "Foreigner"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Lily"
       ]
     },
-    "memo": "준서반은 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "以?쒕컲? 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_23_중1_윤재",
+    "truth_id": "truth_23_以?_?ㅼ옱",
     "truth_no": 23,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "중1 윤재",
+    "material_text": "以? ?ㅼ옱",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Foreigner"
       ],
-      "금": []
+      "湲?: []
     },
-    "memo": "목 윤재반 / 금 PREP는 담당 제외",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "紐??ㅼ옱諛?/ 湲?PREP???대떦 ?쒖쇅",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_24_중2_시은",
+    "truth_id": "truth_24_以?_?쒖?",
     "truth_no": 24,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "중2 시은",
+    "material_text": "以? ?쒖?",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Carmen",
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "원문: 중2(시은) 화목금 STACY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以?(?쒖?) ?붾ぉ湲?STACY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_25_중1_해율_채원",
+    "truth_id": "truth_25_以?_?댁쑉_梨꾩썝",
     "truth_no": 25,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "중1 해율/채원",
+    "material_text": "以? ?댁쑉/梨꾩썝",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "원문: 중1 해율/채원 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以? ?댁쑉/梨꾩썝 IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_26_민채A4",
+    "truth_id": "truth_26_誘쇱콈A4",
     "truth_no": 26,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "민채A4",
+    "material_text": "誘쇱콈A4",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
-    "memo": "원문: 민채A4 (Carmen)",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 誘쇱콈A4 (Carmen)",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_27_중1_예빈",
+    "truth_id": "truth_27_以?_?덈퉰",
     "truth_no": 27,
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
-    "material_text": "중1 예빈",
+    "material_text": "以? ?덈퉰",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "Foreigner"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "원문: 중1 예빈 ZOE",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以? ?덈퉰 ZOE",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_28_중1_예빈",
+    "truth_id": "truth_28_以?_?덈퉰",
     "truth_no": 28,
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
-    "material_text": "중1 예빈",
+    "material_text": "以? ?덈퉰",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "목": [],
-      "금": []
+      "紐?: [],
+      "湲?: []
     },
-    "memo": "금 PREP는 담당 제외",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?PREP???대떦 ?쒖쇅",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_29_중1C",
+    "truth_id": "truth_29_以?C",
     "truth_no": 29,
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
-    "material_text": "중1C",
+    "material_text": "以?C",
     "homeroom_teacher": "Carmen",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Carmen"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Foreigner"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
-    "memo": "원문: 중1C (Carmen)",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以?C (Carmen)",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_30_중2_시은",
+    "truth_id": "truth_30_以?_?쒖?",
     "truth_no": 30,
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
-    "material_text": "중2 시은",
+    "material_text": "以? ?쒖?",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "원문: 중2(시은) 화목금 STACY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以?(?쒖?) ?붾ぉ湲?STACY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_31_예비중A2",
+    "truth_id": "truth_31_?덈퉬以멇2",
     "truth_no": 31,
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
-    "material_text": "예비중A2",
+    "material_text": "?덈퉬以멇2",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "IVY"
       ]
     },
-    "memo": "원문: 예비중A2 해율/채원 IVY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: ?덈퉬以멇2 ?댁쑉/梨꾩썝 IVY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_32_중1-6",
+    "truth_id": "truth_32_以?-6",
     "truth_no": 32,
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
-    "material_text": "중1-6",
+    "material_text": "以?-6",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Lily"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "원문: 윤재 중1-6 Zoe 화목금",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: ?ㅼ옱 以?-6 Zoe ?붾ぉ湲?,
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_33_준서6",
+    "truth_id": "truth_33_以??",
     "truth_no": 33,
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
-    "material_text": "준서6",
+    "material_text": "以??",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "월/수 준서 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "????以??硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_34_중3A",
+    "truth_id": "truth_34_以?A",
     "truth_no": 34,
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
-    "material_text": "중3A",
+    "material_text": "以?A",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "금 중3 A+B READING 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?以? A+B READING 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_35_중2-1",
+    "truth_id": "truth_35_以?-1",
     "truth_no": 35,
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
-    "material_text": "중2-1",
+    "material_text": "以?-1",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
-    "memo": "금 중2 1+2 READING 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?以? 1+2 READING 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_36_중2A",
+    "truth_id": "truth_36_以?A",
     "truth_no": 36,
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
-    "material_text": "중2A",
+    "material_text": "以?A",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "Foreigner"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "원문: 중2A민하 월수금 ZOE",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以?A誘쇳븯 ?붿닔湲?ZOE",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_37_중2-2",
+    "truth_id": "truth_37_以?-2",
     "truth_no": 37,
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
-    "material_text": "중2-2",
+    "material_text": "以?-2",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": []
+      "紐?: [],
+      "湲?: []
     },
-    "memo": "금 합반 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲??⑸컲 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_38_중1BB",
+    "truth_id": "truth_38_以?BB",
     "truth_no": 38,
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
-    "material_text": "중1BB",
+    "material_text": "以?BB",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "원문: 중1BB 화목금 STACY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以?BB ?붾ぉ湲?STACY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_39_중3B",
+    "truth_id": "truth_39_以?B",
     "truth_no": 39,
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
-    "material_text": "중3B",
+    "material_text": "以?B",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "목": [],
-      "금": []
+      "紐?: [],
+      "湲?: []
     },
-    "memo": "금 합반 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲??⑸컲 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_40_중3A",
+    "truth_id": "truth_40_以?A",
     "truth_no": 40,
     "period_order": 7,
-    "period_label": "7교시",
+    "period_label": "7援먯떆",
     "start_time": "19:15",
     "end_time": "20:00",
-    "material_text": "중3A",
+    "material_text": "以?A",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "금 중3 A+B READING 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?以? A+B READING 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_41_중2A",
+    "truth_id": "truth_41_以?A",
     "truth_no": 41,
     "period_order": 7,
-    "period_label": "7교시",
+    "period_label": "7援먯떆",
     "start_time": "19:15",
     "end_time": "20:00",
-    "material_text": "중2A",
+    "material_text": "以?A",
     "homeroom_teacher": "Zoe",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Zoe"
       ]
     },
-    "memo": "원문: 중2A민하 월수금 ZOE",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以?A誘쇳븯 ?붿닔湲?ZOE",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_42_중1BB",
+    "truth_id": "truth_42_以?BB",
     "truth_no": 42,
     "period_order": 7,
-    "period_label": "7교시",
+    "period_label": "7援먯떆",
     "start_time": "19:15",
     "end_time": "20:00",
-    "material_text": "중1BB",
+    "material_text": "以?BB",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "Lily"
       ]
     },
-    "memo": "원문: 중1 BB 화목금 STACY",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "?먮Ц: 以? BB ?붾ぉ湲?STACY",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_43_중3",
+    "truth_id": "truth_43_以?",
     "truth_no": 43,
     "period_order": 7,
-    "period_label": "7교시",
+    "period_label": "7援먯떆",
     "start_time": "19:15",
     "end_time": "20:00",
-    "material_text": "중3",
+    "material_text": "以?",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "STACY"
       ]
     },
-    "memo": "금 중3 A+B READING 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?以? A+B READING 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_44_중2_형우",
+    "truth_id": "truth_44_以?_?뺤슦",
     "truth_no": 44,
     "period_order": 7,
-    "period_label": "7교시",
+    "period_label": "7援먯떆",
     "start_time": "19:15",
     "end_time": "20:00",
-    "material_text": "중2 형우",
+    "material_text": "以? ?뺤슦",
     "homeroom_teacher": "STACY",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "금 중2 합반 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?以? ?⑸컲 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_45_중2_나은이반",
+    "truth_id": "truth_45_以?_?섏??대컲",
     "truth_no": 45,
     "period_order": 7,
-    "period_label": "7교시",
+    "period_label": "7援먯떆",
     "start_time": "19:15",
     "end_time": "20:00",
-    "material_text": "중2 나은이반",
+    "material_text": "以? ?섏??대컲",
     "homeroom_teacher": "IVY",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "Foreigner"
       ]
     },
-    "memo": "금 중2 합반 메모",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "memo": "湲?以? ?⑸컲 硫붾え",
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   },
   {
-    "truth_id": "truth_46_단어_클리닉",
+    "truth_id": "truth_46_?⑥뼱_?대━??,
     "truth_no": 46,
     "period_order": 8,
-    "period_label": "단어 클리닉",
+    "period_label": "?⑥뼱 ?대━??,
     "start_time": "20:00",
     "end_time": "20:45",
-    "material_text": "단어 클리닉",
+    "material_text": "?⑥뼱 ?대━??,
     "homeroom_teacher": "",
     "day_teachers": {
-      "월": [],
-      "화": [],
-      "수": [],
-      "목": [],
-      "금": []
+      "??: [],
+      "??: [],
+      "??: [],
+      "紐?: [],
+      "湲?: []
     },
     "memo": "",
-    "source": "26년영어강사시간표 / 영어26.04 기준 수기 정리"
+    "source": "26?꾩쁺?닿컯?ъ떆媛꾪몴 / ?곸뼱26.04 湲곗? ?섍린 ?뺣━"
   }
 ];
-  const DAY_ORDER = ['월', '화', '수', '목', '금'];
+  const DAY_ORDER = ['??, '??, '??, '紐?, '湲?];
   const TEACHER_NAMES = ['Carmen', 'IVY', 'Lily', 'Zoe', 'STACY', 'Foreigner', 'Laura'];
   function normalizeKey(value) { return String(value == null ? '' : value).trim(); }
   function asRows(result) {
@@ -1262,11 +1262,11 @@
     time: `${card.start_time}~${card.end_time}`,
     material: card.material_text,
     homeroom: card.homeroom_teacher || '-',
-    mon: (card.day_teachers['월'] || []).join('/'),
-    tue: (card.day_teachers['화'] || []).join('/'),
-    wed: (card.day_teachers['수'] || []).join('/'),
-    thu: (card.day_teachers['목'] || []).join('/'),
-    fri: (card.day_teachers['금'] || []).join('/'),
+    mon: (card.day_teachers['??] || []).join('/'),
+    tue: (card.day_teachers['??] || []).join('/'),
+    wed: (card.day_teachers['??] || []).join('/'),
+    thu: (card.day_teachers['紐?] || []).join('/'),
+    fri: (card.day_teachers['湲?] || []).join('/'),
     memo: card.memo || ''
   })));
   console.log('Current visible timetable cells:', currentRows.length);
@@ -1322,7 +1322,7 @@
     const refreshed = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
     const refreshedRows = asRows(refreshed);
     if (window.EieState?.setTimetableCells) window.EieState.setTimetableCells(refreshedRows);
-    if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    if (window.EieRouter?.open) window.EieRouter.open('timetable');
     report.refreshed_count = refreshedRows.length;
   } catch (error) {
     report.refresh_error = error?.message || String(error);
