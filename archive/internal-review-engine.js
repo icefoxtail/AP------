@@ -33,6 +33,12 @@ const state = {
   isSaving: false,
   imageMap: new Map(),        // normalizedPath → FileSystemFileHandle
   fileSearch: '',
+  livePreviewReady: false,
+  livePreviewTimer: null,
+  isFillingEditForm: false,
+  questionJumpSearch: '',
+  saveConfirmedFiles: new Set(),
+  backupCreatedFiles: new Set(),
 };
 
 /* ================================================================
@@ -271,24 +277,70 @@ async function getImageBlobUrl(imgPath) {
 }
 
 /* ================================================================
-   iframe 갱신 (절대 location.reload 금지)
+   live preview iframe 갱신 (저장 전 currentBank 기준)
 ================================================================ */
-function refreshEnginePreviewFrameOnly() {
+function getCurrentFileKey() {
+  return state.currentFilePath || state.currentFileName || 'untitled';
+}
+
+function getLivePreviewPayload() {
+  return {
+    title: state.examTitle || state.currentFileName || 'JS아카이브',
+    bank: deepClone(state.currentBank || []),
+    mode: state.engineMode || 'exam',
+    qpp: state.qpp || 4,
+    selectedId: state.selectedId,
+    filePath: state.currentFilePath || state.currentFileName || '',
+  };
+}
+
+function getSafeMessageTargetOrigin() {
+  return (window.location && window.location.origin && window.location.origin !== 'null')
+    ? window.location.origin
+    : '*';
+}
+
+function postLivePreview(keepScroll) {
   const iframe = document.getElementById('enginePreviewFrame');
-  if (!iframe || !state.currentFilePath) return;
-  const url = new URL('engine.html', window.location.href);
-  // currentFilePath = "exams/.../foo.js"  (archive/ 없이)
-  url.searchParams.set('data', state.currentFilePath.replace(/^archive\//, '').replace(/^exams\//, 'exams/'));
-  url.searchParams.set('mode', state.engineMode || 'exam');
-  url.searchParams.set('qpp', String(state.qpp || 4));
-  url.searchParams.set('v', String(Date.now()));
-  iframe.src = url.toString();
+  if (!iframe) return;
+
+  const liveSrc = 'internal-review-live-preview.html';
+  const currentSrc = iframe.getAttribute('src') || '';
+  if (!currentSrc || currentSrc === 'about:blank' || !currentSrc.includes(liveSrc)) {
+    state.livePreviewReady = false;
+    iframe.src = liveSrc;
+    return;
+  }
+
+  if (!iframe.contentWindow) return;
+  iframe.contentWindow.postMessage({
+    type: 'internal-review-preview-data',
+    payload: getLivePreviewPayload(),
+    keepScroll: keepScroll !== false,
+  }, getSafeMessageTargetOrigin());
+}
+
+function scheduleLivePreview(delay) {
+  clearTimeout(state.livePreviewTimer);
+  state.livePreviewTimer = setTimeout(function() {
+    postLivePreview(true);
+  }, delay === undefined ? 260 : delay);
+}
+
+function refreshEnginePreviewFrameOnly() {
+  postLivePreview(true);
+}
+
+function hasUnsavedChanges() {
+  return state.modifiedIds.size > 0
+    || state.removedItems.length > 0
+    || ((state.currentBank || []).length !== (state.originalBank || []).length);
 }
 
 function updateUnsavedBadge() {
   const badge = document.getElementById('unsaved-badge');
   if (!badge) return;
-  badge.style.display = (state.modifiedIds.size > 0 || state.removedItems.length > 0) ? 'block' : 'none';
+  badge.style.display = hasUnsavedChanges() ? 'block' : 'none';
 }
 
 /* ================================================================
@@ -352,12 +404,46 @@ function serializeQuestionBank(examTitle, bank) {
   return 'window.examTitle = ' + title + ';\n\nwindow.questionBank = [\n' + questions + '\n];\n';
 }
 
+function stableStringifyQuestion(q) {
+  if (!q) return '';
+  const clone = deepClone(q);
+  return JSON.stringify(clone);
+}
+
+function stableStringifyBank(bank) {
+  return JSON.stringify(Array.isArray(bank) ? bank : []);
+}
+
+function rebuildModifiedIdsFromBanks(currentBank, originalBank) {
+  const next = new Set();
+  const originalById = new Map();
+  (Array.isArray(originalBank) ? originalBank : []).forEach(function(q) {
+    originalById.set(String(q.id), q);
+  });
+  (Array.isArray(currentBank) ? currentBank : []).forEach(function(q) {
+    const orig = originalById.get(String(q.id));
+    if (!orig || stableStringifyQuestion(orig) !== stableStringifyQuestion(q)) next.add(String(q.id));
+  });
+  return next;
+}
+
+function markQuestionModified(q) {
+  if (!q) return;
+  const orig = state.originalBank.find(function(o) { return String(o.id) === String(q.id); });
+  if (!orig || stableStringifyQuestion(orig) !== stableStringifyQuestion(q)) {
+    state.modifiedIds.add(String(q.id));
+  } else {
+    state.modifiedIds.delete(String(q.id));
+  }
+}
+
 /* ================================================================
    commitEditorDraft — 오른쪽 패널 값 → currentBank 반영
 ================================================================ */
 function commitEditorDraft() {
   if (state.selectedId === null) return;
-  const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+  if (state.isFillingEditForm) return;
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
   if (!q) return;
 
   q.level        = document.getElementById('e-level').value;
@@ -378,24 +464,22 @@ function commitEditorDraft() {
     delete q.imageSize;
   }
 
-  state.modifiedIds.add(q.id);
+  markQuestionModified(q);
 }
 
 /* ================================================================
    문항 선택
 ================================================================ */
 function selectQuestion(id) {
-  // 1. 이전 draft 저장
   commitEditorDraft();
-  // 2. 선택 설정
   state.selectedId = id;
-  // 3. currentBank에서 찾기
-  const q = state.currentBank.find(function(item) { return item.id === id; });
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(id); });
   if (!q) { closeEditPanel(); return; }
-  // 4. 오른쪽 패널 채우기
+  state.selectedId = q.id;
   openEditPanel(q);
-  // 5. 카드/행 강조 갱신
   highlightSelected();
+  renderQuestionJumpPanel();
+  scheduleLivePreview(0);
 }
 
 function highlightSelected() {
@@ -418,6 +502,7 @@ function closeEditPanel() {
 }
 
 function openEditPanel(q) {
+  state.isFillingEditForm = true;
   document.getElementById('right-empty').style.display = 'none';
   document.getElementById('edit-form').style.display = 'flex';
 
@@ -452,6 +537,7 @@ function openEditPanel(q) {
   document.getElementById('e-imagesize').value = q.imageSize || '';
 
   updateImagePreview(q.image || '');
+  state.isFillingEditForm = false;
 }
 
 async function updateImagePreview(imgPath) {
@@ -497,8 +583,9 @@ function loadBank(source, fileName) {
   closeEditPanel();
   updateSaveModeUI();
   renderAll();
+  renderQuestionJumpPanel();
 
-  if (state.previewPaneMode === 'output') refreshEnginePreviewFrameOnly();
+  refreshEnginePreviewFrameOnly();
   updateUnsavedBadge();
 
   showToast(fileName + ' 로드 완료 (' + parsed.bank.length + '문항)');
@@ -667,7 +754,7 @@ function renderFileList() {
     div.innerHTML = '<span>' + name + '</span>' + (subpath ? '<span class="file-subpath">' + subpath + '</span>' : '');
     div.title = entry.path;
     div.addEventListener('click', async function() {
-      if ((state.modifiedIds.size > 0 || state.removedItems.length > 0) &&
+      if (hasUnsavedChanges() &&
           !confirm('현재 파일에 저장하지 않은 수정이 있습니다. 다른 파일을 열까요?')) return;
       state.currentFileHandle = entry.handle;
       state.currentFilePath   = entry.path;
@@ -783,7 +870,7 @@ function applyFilter(bank) {
   // ③ 검수 필터
   if (f === 'all')        return list;
   if (f === 'warning')    return list.filter(function(e) { return detectWarnings(e.item).length > 0; });
-  if (f === 'modified')   return list.filter(function(e) { return state.modifiedIds.has(e.item.id); });
+  if (f === 'modified')   return list.filter(function(e) { return state.modifiedIds.has(String(e.item.id)); });
   if (f === 'removed')    return [];
   if (f === 'recdiff')    return list.filter(function(e) { return e.item.level !== recommendLevel(e.item); });
   if (f === 'imgneeded')  return list.filter(function(e) {
@@ -829,12 +916,22 @@ function updateStats() {
 
 function updateSaveModeUI() {
   const el = document.getElementById('status-save-mode');
-  if (state.canDirectSave) {
+  const saveBtn = document.getElementById('btn-save-file');
+  const downloadBtn = document.getElementById('btn-download');
+  const ready = !!(state.canDirectSave && state.currentFileHandle);
+
+  if (ready) {
     el.textContent = '직접 저장 가능';
     el.className = 'canwrite';
   } else {
-    el.textContent = '다운로드만 가능';
+    el.textContent = 'archive 열기 필요';
     el.className = 'nowrite';
+  }
+
+  if (saveBtn) saveBtn.disabled = !ready;
+  if (downloadBtn) {
+    downloadBtn.disabled = true;
+    downloadBtn.style.display = 'none';
   }
 }
 
@@ -881,8 +978,8 @@ function renderMathText(text) {
 function makeCard(q, displayNum) {
   const warnings  = detectWarnings(q);
   const recLevel  = recommendLevel(q);
-  const isModified = state.modifiedIds.has(q.id);
-  const isSelected = q.id === state.selectedId;
+  const isModified = state.modifiedIds.has(String(q.id));
+  const isSelected = String(q.id) === String(state.selectedId);
 
   const div = document.createElement('div');
   div.className = [
@@ -1037,11 +1134,11 @@ function makeRemovedCard(q, displayNum) {
 function makeReviewRow(q, displayNum) {
   const warnings  = detectWarnings(q);
   const recLevel  = recommendLevel(q);
-  const isModified = state.modifiedIds.has(q.id);
+  const isModified = state.modifiedIds.has(String(q.id));
 
   const tr = document.createElement('tr');
   if (warnings.length > 0) tr.classList.add('has-warning');
-  if (q.id === state.selectedId) tr.classList.add('row-selected');
+  if (String(q.id) === String(state.selectedId)) tr.classList.add('row-selected');
   tr.dataset.qid = String(q.id);
   tr.style.cursor = 'pointer';
 
@@ -1062,10 +1159,27 @@ function makeReviewRow(q, displayNum) {
   return tr;
 }
 
-function makeRemovedRow(q, displayNum) {
+function makeRemovedRow(q, displayNum, mainTable) {
   const warnings = detectWarnings(q);
   const tr = document.createElement('tr');
   tr.style.opacity = '0.6';
+
+  if (mainTable) {
+    tr.innerHTML =
+      '<td>' + displayNum + '</td>' +
+      '<td>' + q.id + '</td>' +
+      '<td>' + (q.level || '') + '</td>' +
+      '<td></td>' +
+      '<td>' + (q.questionType || '') + '</td>' +
+      '<td class="td-preview">' + (q.tags || []).join(', ') + '</td>' +
+      '<td class="td-preview">' + stripHtml(q.content || '').slice(0, 40) + '</td>' +
+      '<td class="td-preview">' + String(q.answer || '').slice(0, 20) + '</td>' +
+      '<td class="td-warn">' + warnings.slice(0, 2).join(' / ') + '</td>' +
+      '<td></td>' +
+      '<td><span class="badge badge-removed">제거됨</span></td>';
+    return tr;
+  }
+
   tr.innerHTML =
     '<td>' + displayNum + '</td>' +
     '<td>' + q.id + '</td>' +
@@ -1101,7 +1215,7 @@ function renderTablePane() {
     if (state.removedItems.length === 0) {
       tbody.innerHTML = '<tr><td colspan="11" style="color:#aaa;padding:12px">제거된 문항 없음</td></tr>';
     } else {
-      state.removedItems.forEach(function(ri, i) { tbody.appendChild(makeRemovedRow(ri.item, i + 1)); });
+      state.removedItems.forEach(function(ri, i) { tbody.appendChild(makeRemovedRow(ri.item, i + 1, true)); });
     }
     removedSection.style.display = 'none';
     return;
@@ -1117,10 +1231,67 @@ function renderTablePane() {
   // 하단 제거됨 섹션
   if (state.removedItems.length > 0) {
     removedSection.style.display = 'block';
-    state.removedItems.forEach(function(ri, i) { removedTbody.appendChild(makeRemovedRow(ri.item, i + 1)); });
+    state.removedItems.forEach(function(ri, i) { removedTbody.appendChild(makeRemovedRow(ri.item, i + 1, false)); });
   } else {
     removedSection.style.display = 'none';
   }
+}
+
+/* ================================================================
+   오른쪽 문항 바로가기
+================================================================ */
+function renderQuestionJumpPanel() {
+  const panel = document.getElementById('question-jump-panel');
+  const list = document.getElementById('question-jump-list');
+  const search = document.getElementById('question-jump-search');
+  if (!panel || !list) return;
+
+  if (!state.currentBank || state.currentBank.length === 0) {
+    panel.style.display = 'none';
+    list.innerHTML = '';
+    return;
+  }
+
+  panel.style.display = 'block';
+  if (search && search.value !== state.questionJumpSearch) search.value = state.questionJumpSearch || '';
+
+  const q = (state.questionJumpSearch || '').trim().toLowerCase();
+  list.innerHTML = '';
+
+  state.currentBank.forEach(function(item, idx) {
+    const label = String(idx + 1);
+    const idText = String(item.id || '');
+    if (q && !label.includes(q) && !idText.toLowerCase().includes(q)) return;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = [
+      'qjump-btn',
+      String(item.id) === String(state.selectedId) ? 'active' : '',
+      state.modifiedIds.has(String(item.id)) ? 'modified' : '',
+      detectWarnings(item).length > 0 ? 'warn' : '',
+    ].filter(Boolean).join(' ');
+    btn.textContent = label;
+    btn.title = label + '번 / id: ' + idText;
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectQuestion(item.id);
+    });
+    list.appendChild(btn);
+  });
+
+  if (!list.children.length) {
+    list.innerHTML = '<div style="grid-column:1/-1;color:#999;font-size:11px;padding:4px;">검색 결과 없음</div>';
+  }
+}
+
+function initQuestionJumpSearch() {
+  const search = document.getElementById('question-jump-search');
+  if (!search) return;
+  search.addEventListener('input', function() {
+    state.questionJumpSearch = this.value;
+    renderQuestionJumpPanel();
+  });
 }
 
 /* ================================================================
@@ -1132,7 +1303,7 @@ function renderCenterPane() {
   const mode = state.previewPaneMode;
   if (mode === 'editor') renderEditorPane();
   else if (mode === 'table') renderTablePane();
-  // output 탭은 iframe 갱신만 (저장 전에는 반영 안 함)
+  else if (mode === 'output') scheduleLivePreview(0);
 }
 
 function renderAll() {
@@ -1140,8 +1311,8 @@ function renderAll() {
   renderFilterBtns();
   renderEditorPane();
   renderTablePane();
+  renderQuestionJumpPanel();
   updateUnsavedBadge();
-  // output 탭은 저장 후에만 refreshEnginePreviewFrameOnly() 호출
 }
 
 /* ================================================================
@@ -1163,6 +1334,7 @@ function switchPreviewTab(tab) {
 
   if (tab === 'editor') renderEditorPane();
   else if (tab === 'table') renderTablePane();
+  else if (tab === 'output') scheduleLivePreview(0);
 }
 
 document.querySelectorAll('.preview-tab-btn').forEach(function(btn) {
@@ -1183,9 +1355,60 @@ document.querySelectorAll('.engine-mode-btn').forEach(function(btn) {
     document.querySelectorAll('.engine-mode-btn').forEach(function(b) {
       b.classList.toggle('active', b.dataset.emode === state.engineMode);
     });
-    if (state.previewPaneMode === 'output') refreshEnginePreviewFrameOnly();
+    refreshEnginePreviewFrameOnly();
   });
 });
+
+/* ================================================================
+   직접 저장 준비 확인
+   - 저장 버튼에서는 다운로드 fallback을 절대 실행하지 않는다.
+   - archive/file handle 상태를 유지한 채 현재 파일에만 직접 덮어쓴다.
+================================================================ */
+async function ensureDirectWriteReady() {
+  if (!state.currentFileHandle) {
+    state.canDirectSave = false;
+    updateSaveModeUI();
+    showError('직접 저장할 JS 파일 핸들이 없습니다. archive 폴더를 열고 왼쪽 파일 목록에서 JS 파일을 다시 선택하세요.');
+    return false;
+  }
+
+  try {
+    if (state.archiveDirHandle && typeof state.archiveDirHandle.queryPermission === 'function') {
+      let dirPerm = await state.archiveDirHandle.queryPermission({ mode: 'readwrite' });
+      if (dirPerm !== 'granted' && typeof state.archiveDirHandle.requestPermission === 'function') {
+        dirPerm = await state.archiveDirHandle.requestPermission({ mode: 'readwrite' });
+      }
+      if (dirPerm !== 'granted') {
+        state.canDirectSave = false;
+        updateSaveModeUI();
+        showError('archive 폴더 쓰기 권한이 없습니다. archive 폴더 열기를 다시 눌러 권한을 허용하세요.');
+        return false;
+      }
+    }
+
+    if (typeof state.currentFileHandle.queryPermission === 'function') {
+      let filePerm = await state.currentFileHandle.queryPermission({ mode: 'readwrite' });
+      if (filePerm !== 'granted' && typeof state.currentFileHandle.requestPermission === 'function') {
+        filePerm = await state.currentFileHandle.requestPermission({ mode: 'readwrite' });
+      }
+      if (filePerm !== 'granted') {
+        state.canDirectSave = false;
+        updateSaveModeUI();
+        showError('현재 JS 파일 쓰기 권한이 없습니다. 왼쪽 파일 목록에서 파일을 다시 선택하세요.');
+        return false;
+      }
+    }
+
+    state.canDirectSave = true;
+    updateSaveModeUI();
+    return true;
+  } catch (e) {
+    state.canDirectSave = false;
+    updateSaveModeUI();
+    showError('저장 권한 확인 실패: ' + e.message);
+    return false;
+  }
+}
 
 /* ================================================================
    저장: saveCurrentFile()
@@ -1194,123 +1417,128 @@ async function saveCurrentFile() {
   if (state.isSaving) return;
   state.isSaving = true;
 
-  // 3. commitEditorDraft
-  commitEditorDraft();
-
-  if (state.currentBank.length === 0 && state.originalBank.length > 0) {
-    if (!confirm('모든 문항이 제거되어 있습니다. 그래도 저장합니까?')) {
-      state.isSaving = false; return;
-    }
-  }
-
-  const summary = '수정: ' + state.modifiedIds.size + '문항 / 제거: ' + state.removedItems.length + '문항';
-  if (!confirm('현재 JS 파일을 덮어씁니다.\n' + summary + '\n저장 전 자동 백업을 다운로드합니다.')) {
-    state.isSaving = false; return;
-  }
-
-  // 4. 스냅샷 보관 (저장 후 절대 초기화 금지 항목 전부 포함)
-  const snap = {
-    selectedId: state.selectedId,
-    currentFilePath: state.currentFilePath,
-    currentFileHandle: state.currentFileHandle,
-    currentFileName: state.currentFileName,
-    fileEntries: state.fileEntries,
-    archiveDirHandle: state.archiveDirHandle,
-    activeFilter: state.activeFilter,
-    searchQuery: state.searchQuery,
-    engineMode: state.engineMode,
-    previewPaneMode: state.previewPaneMode,
-    qpp: state.qpp,
-  };
-
-  // 5. 직렬화
-  const newSource = serializeQuestionBank(state.examTitle, state.currentBank);
-
-  // 6. sandbox 검증
   try {
-    parseSource(newSource, state.currentFileName);
-  } catch (e) {
-    showError('직렬화 검증 실패: ' + e.message);
-    state.isSaving = false; return;
-  }
+    commitEditorDraft();
 
-  // 7. 백업 자동 다운로드
-  if (state.currentSource && state.currentFileName) {
-    const ts = formatDate();
-    const backupName = state.currentFileName.replace(/\.js$/, '') + '.before-internal-review-' + ts + '.js';
-    downloadText(state.currentSource, backupName);
-  }
+    if (state.currentBank.length === 0 && state.originalBank.length > 0) {
+      if (!confirm('모든 문항이 제거되어 있습니다. 그래도 저장합니까?')) {
+        state.isSaving = false;
+        return;
+      }
+    }
 
-  // 8. 저장
-  if (state.canDirectSave && state.currentFileHandle) {
+    const ready = await ensureDirectWriteReady();
+    if (!ready) {
+      state.isSaving = false;
+      return;
+    }
+
+    const uiSnap = captureUiSnapshot();
+    const newSource = serializeQuestionBank(state.examTitle, state.currentBank);
+
+    try {
+      parseSource(newSource, state.currentFileName);
+    } catch (e) {
+      showError('직렬화 검증 실패: ' + e.message);
+      state.isSaving = false;
+      return;
+    }
+
     try {
       const writable = await state.currentFileHandle.createWritable();
       await writable.write(newSource);
       await writable.close();
     } catch (e) {
-      showError('저장 실패: ' + e.message + '\n다운로드로 대체합니다.');
-      downloadText(newSource, state.currentFileName);
-      state.isSaving = false; return;
+      showError('저장 실패: ' + e.message + '\n다운로드 저장으로 대체하지 않습니다. archive 폴더와 현재 JS 파일은 그대로 유지됩니다.');
+      state.isSaving = false;
+      return;
     }
-  } else {
-    // 9. fallback 다운로드
-    downloadText(newSource, state.currentFileName);
-    showToast('다운로드로 저장됨 (직접 저장은 폴더/파일 권한 필요)');
-    state.isSaving = false; return;
+
+    state.currentSource = newSource;
+    state.originalBank  = deepClone(state.currentBank);
+    state.modifiedIds   = new Set();
+    state.removedItems  = [];
+    state.isSaving      = false;
+
+    updateStats();
+    renderFilterBtns();
+    renderQuestionJumpPanel();
+
+    if (state.selectedId !== null) {
+      const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
+      if (q) openEditPanel(q);
+    }
+
+    if (state.previewPaneMode === 'editor') renderEditorPane();
+    else if (state.previewPaneMode === 'table') renderTablePane();
+
+    updateUnsavedBadge();
+    postLivePreview(true);
+    restoreUiSnapshot(uiSnap);
+    persistSessionState();
+    updateSaveModeUI();
+
+    showToast('저장 완료: ' + state.currentFileName);
+  } catch (e) {
+    state.isSaving = false;
+    showError('저장 처리 중 오류: ' + e.message + '\narchive 폴더와 현재 파일 선택은 유지됩니다.');
   }
+}
 
-  // 10. 저장 성공 후 상태 갱신 (절대 초기화 금지 항목 snap으로 복원)
-  state.currentSource      = newSource;
-  state.originalBank       = deepClone(state.currentBank);
-  state.modifiedIds        = new Set();
-  state.removedItems       = [];
-  // snap 복원
-  state.selectedId         = snap.selectedId;
-  state.currentFilePath    = snap.currentFilePath;
-  state.currentFileHandle  = snap.currentFileHandle;
-  state.currentFileName    = snap.currentFileName;
-  state.fileEntries        = snap.fileEntries;
-  state.archiveDirHandle   = snap.archiveDirHandle;
-  state.activeFilter       = snap.activeFilter;
-  state.searchQuery        = snap.searchQuery;
-  state.engineMode         = snap.engineMode;
-  state.previewPaneMode    = snap.previewPaneMode;
-  state.qpp                = snap.qpp;
-  state.isSaving           = false;
-
-  // 11. 파일 목록 재렌더 (현재 파일 하이라이트 복원)
-  renderFileList();
-
-  // 12. 오른쪽 패널 재채우기 (닫지 말 것)
-  if (state.selectedId !== null) {
-    const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
-    if (q) openEditPanel(q);
+function captureUiSnapshot() {
+  const active = document.activeElement;
+  let selection = null;
+  if (active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT')) {
+    selection = {
+      id: active.id || '',
+      start: typeof active.selectionStart === 'number' ? active.selectionStart : null,
+      end: typeof active.selectionEnd === 'number' ? active.selectionEnd : null,
+    };
   }
+  let iframeScrollY = 0;
+  try {
+    const frame = document.getElementById('enginePreviewFrame');
+    iframeScrollY = frame && frame.contentWindow ? frame.contentWindow.scrollY : 0;
+  } catch(e) {}
 
-  // 13. iframe src만 갱신 (부모 페이지 reload 절대 금지)
-  refreshEnginePreviewFrameOnly();
+  return {
+    selectedId: state.selectedId,
+    rightScrollTop: document.getElementById('right-panel')?.scrollTop || 0,
+    cardsScrollTop: document.getElementById('question-cards')?.scrollTop || 0,
+    iframeScrollY: iframeScrollY,
+    selection: selection,
+  };
+}
 
-  updateStats();
-  renderFilterBtns();
-  renderEditorPane();
-  renderTablePane();
-  updateUnsavedBadge();
-
-  // 14. IndexedDB에 상태 저장 (reload 시 자동 복원용)
-  persistSessionState();
-
-  showToast('저장 완료: ' + state.currentFileName);
+function restoreUiSnapshot(snap) {
+  if (!snap) return;
+  state.selectedId = snap.selectedId;
+  setTimeout(function() {
+    const right = document.getElementById('right-panel');
+    if (right) right.scrollTop = snap.rightScrollTop || 0;
+    const cards = document.getElementById('question-cards');
+    if (cards) cards.scrollTop = snap.cardsScrollTop || 0;
+    try {
+      const frame = document.getElementById('enginePreviewFrame');
+      if (frame && frame.contentWindow) frame.contentWindow.scrollTo(0, snap.iframeScrollY || 0);
+    } catch(e) {}
+    if (snap.selection && snap.selection.id) {
+      const el = document.getElementById(snap.selection.id);
+      if (el) {
+        el.focus();
+        if (typeof el.setSelectionRange === 'function' && snap.selection.start !== null) {
+          el.setSelectionRange(snap.selection.start, snap.selection.end);
+        }
+      }
+    }
+  }, 80);
 }
 
 /* ================================================================
    다운로드 / 백업
 ================================================================ */
 function downloadModified() {
-  if (!state.currentFileName) { showToast('파일을 먼저 열어주세요.'); return; }
-  commitEditorDraft();
-  const src = serializeQuestionBank(state.examTitle, state.currentBank);
-  downloadText(src, state.currentFileName);
-  showToast('다운로드 완료');
+  showToast('수정본 다운로드는 저장 안정화를 위해 비활성화했습니다. archive 폴더를 열고 직접 저장을 사용하세요.');
 }
 
 function downloadBackup() {
@@ -1329,7 +1557,7 @@ document.getElementById('btn-apply').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
   if (state.selectedId === null) return;
   commitEditorDraft();
-  const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
   if (!q) return;
   updateStats();
   renderFilterBtns();
@@ -1338,6 +1566,7 @@ document.getElementById('btn-apply').addEventListener('click', function(e) {
   if (state.previewPaneMode === 'editor') renderEditorPane();
   else if (state.previewPaneMode === 'table') renderTablePane();
   updateUnsavedBadge();
+  scheduleLivePreview(0);
   showToast('적용됨');
 });
 
@@ -1346,7 +1575,7 @@ document.getElementById('btn-remove').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
   if (state.selectedId === null) return;
   commitEditorDraft();
-  const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
   if (!q) return;
   if (!confirm('문항 id:' + q.id + '을 검수본에서 제거합니다.\n저장 전까지 되돌릴 수 있습니다.')) return;
 
@@ -1356,6 +1585,8 @@ document.getElementById('btn-remove').addEventListener('click', function(e) {
   state.selectedId = null;
   closeEditPanel();
   renderAll();
+  renderQuestionJumpPanel();
+  scheduleLivePreview(0);
   showToast('제거됨 (되돌리기 가능)');
 });
 
@@ -1363,14 +1594,16 @@ document.getElementById('btn-remove').addEventListener('click', function(e) {
 document.getElementById('btn-revert').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
   if (state.selectedId === null) return;
-  const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
   if (!q) { showToast('문항을 찾을 수 없습니다.'); return; }
-  const orig = state.originalBank.find(function(o) { return o.id === q.id; });
+  const orig = state.originalBank.find(function(o) { return String(o.id) === String(q.id); });
   if (!orig) { showToast('원본을 찾을 수 없습니다.'); return; }
   Object.assign(q, deepClone(orig));
-  state.modifiedIds.delete(q.id);
+  markQuestionModified(q);
   openEditPanel(q);
   renderAll();
+  renderQuestionJumpPanel();
+  scheduleLivePreview(0);
   showToast('되돌림');
 });
 
@@ -1379,7 +1612,7 @@ document.getElementById('btn-copy-edit').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
   if (state.selectedId === null) return;
   commitEditorDraft();
-  const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
   if (!q) return;
 
   const text = [
@@ -1411,7 +1644,7 @@ document.getElementById('btn-copy-edit').addEventListener('click', function(e) {
 document.getElementById('btn-copy-delete').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
   if (state.selectedId === null) return;
-  const q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+  const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
   if (!q) return;
 
   const text = [
@@ -1440,6 +1673,61 @@ document.getElementById('e-image').addEventListener('input', function() {
 });
 
 /* ================================================================
+   오른쪽 패널 실시간 반영
+================================================================ */
+function handleLiveEditChanged() {
+  if (state.isFillingEditForm || state.selectedId === null) return;
+  commitEditorDraft();
+  updateStats();
+  updateUnsavedBadge();
+  renderQuestionJumpPanel();
+  highlightSelected();
+  if (state.previewPaneMode === 'table') renderTablePane();
+  scheduleLivePreview(260);
+}
+
+function initLiveEditHandlers() {
+  ['e-level','e-qtype','e-layout','e-tags','e-content','e-choices','e-answer','e-solution','e-image','e-imagesize'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const evt = (el.tagName === 'SELECT') ? 'change' : 'input';
+    el.addEventListener(evt, handleLiveEditChanged);
+  });
+}
+
+function isTrustedPreviewMessage(event) {
+  const iframe = document.getElementById('enginePreviewFrame');
+  if (!iframe || !iframe.contentWindow) return false;
+  if (event.source !== iframe.contentWindow) return false;
+  if (event.origin && event.origin !== 'null' && window.location.origin !== 'null' && event.origin !== window.location.origin) return false;
+  return true;
+}
+
+function initLivePreviewBridge() {
+  const iframe = document.getElementById('enginePreviewFrame');
+  if (iframe) {
+    iframe.addEventListener('load', function() {
+      state.livePreviewReady = true;
+      postLivePreview(true);
+    });
+  }
+
+  window.addEventListener('message', function(event) {
+    if (!isTrustedPreviewMessage(event)) return;
+    const data = event.data || {};
+    if (data.type === 'internal-review-preview-ready') {
+      state.livePreviewReady = true;
+      postLivePreview(true);
+      return;
+    }
+    if (data.type === 'internal-review-preview-select') {
+      const id = data.id;
+      if (id !== undefined && id !== null) selectQuestion(id);
+    }
+  });
+}
+
+/* ================================================================
    상단 바 버튼 이벤트
 ================================================================ */
 document.getElementById('btn-open-dir').addEventListener('click', function(e) {
@@ -1466,7 +1754,8 @@ document.addEventListener('keydown', function(e) {
     e.preventDefault(); saveCurrentFile();
   }
   if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
-    e.preventDefault(); downloadModified();
+    e.preventDefault();
+    showToast('수정본 다운로드는 비활성화했습니다. Ctrl+S로 직접 저장하세요.');
   }
   if (e.key === 'Escape') {
     state.selectedId = null;
@@ -1479,7 +1768,7 @@ document.addEventListener('keydown', function(e) {
    beforeunload
 ================================================================ */
 window.addEventListener('beforeunload', function(e) {
-  if (state.modifiedIds.size > 0 || state.removedItems.length > 0) {
+  if (hasUnsavedChanges()) {
     e.preventDefault();
     e.returnValue = '';
   }
@@ -1541,12 +1830,76 @@ async function persistSessionState() {
       examTitle:       state.examTitle,
       currentBank:     state.currentBank,
       originalBank:    state.originalBank,
+      modifiedIds:     Array.from(state.modifiedIds),
+      removedItems:    state.removedItems,
       fileSearch:      state.fileSearch,
+      questionJumpSearch: state.questionJumpSearch,
     });
     db.close();
   } catch(e) {
     console.warn('[검수엔진] persistSessionState 실패:', e);
   }
+}
+
+async function readFreshFileStateForRestore(currentFileHandle, fallbackFileName) {
+  if (!currentFileHandle) return null;
+  const file = await currentFileHandle.getFile();
+  const source = await file.text();
+  const parsed = parseSource(source, fallbackFileName || file.name);
+  return {
+    fileName: file.name || fallbackFileName || '',
+    source: source,
+    title: parsed.title,
+    bank: deepClone(parsed.bank),
+  };
+}
+
+function restoreDirectoryUi(archiveDirHandle) {
+  if (!archiveDirHandle) return;
+  var dirStatus = document.getElementById('left-dir-status');
+  dirStatus.textContent = 'archive 폴더: ' + archiveDirHandle.name + ' (복원됨)';
+  dirStatus.classList.add('open');
+}
+
+async function loadFreshFileInsteadOfStaleRestore(archiveDirHandle, currentFileHandle, fileEntries, ui, fresh, reason) {
+  state.archiveDirHandle = archiveDirHandle;
+  state.currentFileHandle = currentFileHandle;
+  state.fileEntries = Array.isArray(fileEntries) ? fileEntries : [];
+  state.currentFilePath = ui.currentFilePath || '';
+  state.currentFileName = fresh.fileName || ui.currentFileName || '';
+  state.canDirectSave = true;
+  restoreDirectoryUi(archiveDirHandle);
+  renderFileList();
+  loadBank(fresh.source, fresh.fileName || ui.currentFileName || '');
+  renderFileList();
+  showError((reason || '복원본과 실제 파일 내용이 다릅니다.') + '\n안전을 위해 IndexedDB 복원본을 자동 적용하지 않고 실제 JS 파일을 다시 열었습니다.');
+}
+
+async function validateAndApplyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui) {
+  if (!currentFileHandle) return false;
+  let fresh;
+  try {
+    fresh = await readFreshFileStateForRestore(currentFileHandle, ui.currentFileName || '');
+  } catch (e) {
+    showError('복원 중 실제 JS 파일 확인 실패: ' + e.message + '\narchive 폴더와 JS 파일을 다시 열어주세요.');
+    return false;
+  }
+
+  const idbOriginal = Array.isArray(ui.originalBank) ? ui.originalBank : [];
+  if (stableStringifyBank(fresh.bank) !== stableStringifyBank(idbOriginal)) {
+    await loadFreshFileInsteadOfStaleRestore(
+      archiveDirHandle,
+      currentFileHandle,
+      fileEntries,
+      ui,
+      fresh,
+      '실제 JS 파일이 이전 세션의 기준본과 달라졌습니다.'
+    );
+    return false;
+  }
+
+  applyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui, fresh);
+  return true;
 }
 
 async function restoreSessionState() {
@@ -1558,66 +1911,63 @@ async function restoreSessionState() {
     var ui                = await idbGet(db, 'ui');
     db.close();
 
-    if (!archiveDirHandle || !ui || !ui.currentBank) return false;
+    if (!archiveDirHandle || !currentFileHandle || !ui || !ui.currentBank) return false;
 
-    // 디렉토리 권한 확인 (이미 granted면 대화상자 없음)
     var perm = await archiveDirHandle.queryPermission({ mode: 'readwrite' });
     if (perm !== 'granted') {
-      // prompt 필요 → 복원 버튼 표시
       showRestorePrompt(archiveDirHandle, currentFileHandle, fileEntries, ui);
       return false;
     }
 
-    applyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui);
-    return true;
+    return await validateAndApplyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui);
   } catch(e) {
     console.warn('[검수엔진] restoreSessionState 실패:', e);
     return false;
   }
 }
 
-function applyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui) {
+function applyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui, fresh) {
   state.archiveDirHandle  = archiveDirHandle;
   state.currentFileHandle = currentFileHandle;
   state.fileEntries       = Array.isArray(fileEntries) ? fileEntries : [];
   state.currentFilePath   = ui.currentFilePath  || '';
-  state.currentFileName   = ui.currentFileName  || '';
+  state.currentFileName   = (fresh && fresh.fileName) || ui.currentFileName  || '';
+  state.currentSource     = (fresh && fresh.source) || state.currentSource || '';
   state.selectedId        = ui.selectedId       !== undefined ? ui.selectedId : null;
   state.activeFilter      = ui.activeFilter     || 'all';
   state.searchQuery       = ui.searchQuery      || '';
   state.engineMode        = ui.engineMode       || 'exam';
   state.previewPaneMode   = ui.previewPaneMode  || 'output';
   state.qpp               = ui.qpp              || 4;
-  state.examTitle         = ui.examTitle        || '';
-  state.currentBank       = ui.currentBank      || [];
-  state.originalBank      = ui.originalBank     || [];
+  state.examTitle         = ui.examTitle        || ((fresh && fresh.title) || '');
+  state.currentBank       = Array.isArray(ui.currentBank) ? ui.currentBank : [];
+  state.originalBank      = Array.isArray(ui.originalBank) ? ui.originalBank : [];
   state.fileSearch        = ui.fileSearch       || '';
+  state.questionJumpSearch = ui.questionJumpSearch || '';
   state.canDirectSave     = true;
-  state.modifiedIds       = new Set();
-  state.removedItems      = [];
-
-  // 디렉토리 상태 표시
-  if (archiveDirHandle) {
-    var dirStatus = document.getElementById('left-dir-status');
-    dirStatus.textContent = 'archive 폴더: ' + archiveDirHandle.name + ' (복원됨)';
-    dirStatus.classList.add('open');
+  state.modifiedIds       = rebuildModifiedIdsFromBanks(state.currentBank, state.originalBank);
+  if (Array.isArray(ui.modifiedIds)) {
+    ui.modifiedIds.forEach(function(id) { state.modifiedIds.add(String(id)); });
   }
-  if (ui.currentFileName) {
+  state.removedItems      = Array.isArray(ui.removedItems) ? ui.removedItems : [];
+
+  restoreDirectoryUi(archiveDirHandle);
+  if (state.currentFileName) {
     document.getElementById('status-file').textContent =
-      ui.currentFileName + ' (' + (ui.currentBank || []).length + '문항) [복원됨]';
+      state.currentFileName + ' (' + state.currentBank.length + '문항) [복원됨]';
   }
 
   updateSaveModeUI();
   renderFileList();
   renderAll();
+  renderQuestionJumpPanel();
 
-  if (state.previewPaneMode === 'output' && state.currentFilePath) {
+  if (state.previewPaneMode === 'output') {
     refreshEnginePreviewFrameOnly();
   }
 
-  // 선택된 문항 패널 복원
   if (state.selectedId !== null) {
-    var q = state.currentBank.find(function(item) { return item.id === state.selectedId; });
+    var q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
     if (q) {
       switchPreviewTab(state.previewPaneMode === 'table' ? 'table' : 'editor');
       openEditPanel(q);
@@ -1625,7 +1975,8 @@ function applyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui
     }
   }
 
-  showToast('이전 작업 상태가 복원되었습니다.', 3000);
+  updateUnsavedBadge();
+  showToast(hasUnsavedChanges() ? '이전 미저장 작업 상태가 복원되었습니다.' : '이전 작업 상태가 복원되었습니다.', 3000);
 }
 
 function showRestorePrompt(archiveDirHandle, currentFileHandle, fileEntries, ui) {
@@ -1649,7 +2000,7 @@ function showRestorePrompt(archiveDirHandle, currentFileHandle, fileEntries, ui)
         if (currentFileHandle) {
           await currentFileHandle.requestPermission({ mode: 'readwrite' });
         }
-        applyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui);
+        await validateAndApplyRestoredState(archiveDirHandle, currentFileHandle, fileEntries, ui);
       }
     } catch(e) {
       showToast('복원 실패: ' + e.message);
@@ -1731,6 +2082,9 @@ function initFilterToggle() {
 
   initSidebarToggle();
   initFilterToggle();
+  initQuestionJumpSearch();
+  initLiveEditHandlers();
+  initLivePreviewBridge();
   renderGradeExamBtns();
 
   // 이전 세션 복원 시도

@@ -19,7 +19,7 @@
         <button type="button" id="btn-open-file" class="btn-secondary">JS 파일 열기</button>
         <input type="file" id="fallback-input" accept=".js" style="display:none">
         <button type="button" id="btn-save-file" class="btn-save" title="Ctrl+S">수정본 저장</button>
-        <button type="button" id="btn-download" class="btn-secondary" title="Ctrl+D">수정본 다운로드</button>
+        <button type="button" id="btn-download" class="btn-secondary" title="직접 저장 안정화를 위해 비활성화" style="display:none" disabled>수정본 다운로드</button>
         <button type="button" id="btn-backup" class="btn-secondary">백업 다운로드</button>
       </div>
 
@@ -110,7 +110,7 @@
 
       <!-- 탭1: 실제 출력 -->
       <div id="pane-output" class="preview-pane active-pane">
-        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 저장 후 실제 출력에 반영됨</div>
+        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 미리보기는 편집본 기준</div>
         <iframe id="enginePreviewFrame" src="about:blank" title="실제 출력 미리보기"></iframe>
       </div>
 
@@ -153,7 +153,15 @@
     <!-- ─── 오른쪽 수정 패널 ─── -->
     <aside id="right-panel">
 
-      <div id="right-empty">문항을 클릭하면 여기에 수정 폼이 열립니다.</div>
+      <div id="question-jump-panel" style="display:none">
+        <div id="question-jump-head">
+          <div>문항 바로가기</div>
+          <input type="text" id="question-jump-search" placeholder="번호/id 검색">
+        </div>
+        <div id="question-jump-list"></div>
+      </div>
+
+      <div id="right-empty">왼쪽 미리보기에서 문항을 클릭하거나 위 번호를 누르면 수정 폼이 열립니다.</div>
 
       <div id="edit-form" style="display:none">
 

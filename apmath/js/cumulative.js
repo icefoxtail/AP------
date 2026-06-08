@@ -558,12 +558,16 @@ function getAttendanceMetaForCumulative(studentId, date) {
         String(c.date || '').slice(0, 10) === String(date)
     );
 
+    const hasMakeupTag = tags.some(tag =>
+        tag === '보강' || String(tag || '').startsWith('makeup:')
+    );
+
     return {
         record,
         tags,
         memo,
         hasLate: tags.includes('지각') || status === '지각',
-        hasMakeup: tags.includes('보강') || status === '보강',
+        hasMakeup: hasMakeupTag || status === '보강',
         hasConsultation
     };
 }

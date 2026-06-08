@@ -1,4 +1,4 @@
-// EIE v21 recovery - restore old timetable cells only.
+﻿// EIE v21 recovery - restore old timetable cells only.
 // Purpose:
 // - DO NOT touch truth cells (eie_truth_2604_*).
 // - Restore only old timetable cells that v21 archived with memo marker.
@@ -104,7 +104,7 @@
     });
     const refreshedRows = asRows(refreshed);
     if (window.EieState?.setTimetableCells) window.EieState.setTimetableCells(refreshedRows);
-    if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    if (window.EieRouter?.open) window.EieRouter.open('timetable');
     report.refreshed_count = refreshedRows.length;
   } catch (error) {
     report.refresh_error = error?.message || String(error);

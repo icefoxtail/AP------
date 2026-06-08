@@ -1,4 +1,4 @@
-# EIE APMS Port Implementation Plan
+﻿# EIE APMS Port Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -25,7 +25,7 @@
 - EIE student management has partial APMS parity according to existing docs, but still needs a strict comparison against `apmath/js/student.js`.
 - EIE timetable/classroom exist:
   - `eie/js/views/eie-timetable.js`
-  - `eie/js/views/eie-timetable-v2.js`
+  - `eie/js/views/eie-timetable.js`
   - `eie/js/views/eie-classroom.js`
 - EIE backend exists in `workers/wangji-eie-worker/`, with active support for timetable cells, students, contacts, assignments, and partial consultations.
 
@@ -80,7 +80,7 @@
 
 - [ ] Copy AP student list/detail/modal/tab structure.
 - [ ] Replace only API calls and domain labels.
-- [ ] Keep unavailable AP-only tabs visible as `준비중` or disabled, not redesigned.
+- [ ] Keep unavailable AP-only tabs visible as `以鍮꾩쨷` or disabled, not redesigned.
 - [ ] Connect create/update/status/archive to EIE Worker endpoints.
 
 ### Task 5: Port Consultation And Contact Flows
@@ -93,7 +93,7 @@
 - [ ] Use AP consultation card/modal UX.
 - [ ] Use AP parent/contact card UX.
 - [ ] Connect to EIE contacts and consultations endpoints.
-- [ ] If delete/archive schema is missing, show disabled `준비중` actions instead of inventing alternate UI.
+- [ ] If delete/archive schema is missing, show disabled `以鍮꾩쨷` actions instead of inventing alternate UI.
 
 ### Task 6: Port Classroom UX, Keep EIE Data Model
 
@@ -115,13 +115,13 @@
 
 - [ ] Copy AP management modal/list patterns.
 - [ ] Enable only EIE-backed features.
-- [ ] Leave billing/accounting/report-like areas as `준비중` if backend is absent.
+- [ ] Leave billing/accounting/report-like areas as `以鍮꾩쨷` if backend is absent.
 
 ### Task 8: Timetable Remains Custom
 
 **Files:**
 - Keep: `eie/js/views/eie-timetable.js`
-- Keep: `eie/js/views/eie-timetable-v2.js`
+- Keep: `eie/js/views/eie-timetable.js`
 - Modify only adapters/navigation as needed.
 
 - [ ] Do not force AP timetable UI.
