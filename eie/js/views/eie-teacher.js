@@ -14,6 +14,9 @@
     }
 
     function normalizeName(value) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.teacherKey === 'function') {
+            return EieClassroomScope.teacherKey(value);
+        }
         return text(value).replace(/\s+/g, '').toLowerCase();
     }
 
@@ -62,6 +65,9 @@
     }
 
     function teacherNamesFromCell(cell) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.accessTeacherNamesForCell === 'function') {
+            return EieClassroomScope.accessTeacherNamesForCell(cell);
+        }
         var raw = readJson(cell && cell.raw_meta_json);
         return uniqueNames([]
             .concat(Array.isArray(cell && cell.teacher_names) ? cell.teacher_names : [])
@@ -121,6 +127,13 @@
     }
 
     function cellsForTeacher(cells, teacherName) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.cellsForTeacher === 'function') {
+            return EieClassroomScope.cellsForTeacher({
+                teacherName: teacherName,
+                role: 'teacher',
+                cells: cells
+            });
+        }
         var roster = teacherRoster(cells);
         var targetKey = normalizeName(teacherName);
         if (!targetKey) return [];
@@ -158,6 +171,9 @@
     }
 
     function isTodayCell(cell) {
+        if (window.EieClassroomScope && typeof EieClassroomScope.isCellOnDate === 'function') {
+            return EieClassroomScope.isCellOnDate(cell, todayIso());
+        }
         var day = text(cell && (cell.day_label || cell.day));
         if (!day) return false;
         return day.indexOf(todayLabel()) !== -1;
@@ -275,6 +291,7 @@
 
     function renderShortcutRow() {
         return '<div class="eie-teacher-shortcuts ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick">'
+            + '<button class="btn ap-dashboard-action-button" type="button" onclick="EieTeacherView.openTodayClassroom()">클래스룸</button>'
             + '<button class="btn ap-dashboard-action-button" type="button" onclick="EieTeacherView.openTimetable()">시간표</button>'
             + '<button class="btn ap-dashboard-action-button" type="button" onclick="EieTeacherView.openAttendanceLedger()">출석부</button>'
             + '<button class="btn ap-dashboard-action-button" type="button" onclick="EieTeacherView.openConsultations()">학생상담</button>'
@@ -310,14 +327,17 @@
             + '</button>';
     }
 
-    function renderTodaySchedule() {
+    function renderTodaySchedule(cells) {
+        var todayRows = sortCells((cells || []).filter(isTodayCell));
         return '<div class="eie-teacher-schedule">'
             + '<div class="ap-dashboard-section-head eie-teacher-section-head"><h3>오늘일정</h3></div>'
             + '<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today">'
-            + '<button class="eie-teacher-schedule-row" type="button" onclick="EieTeacherView.showPreparing(\'오늘일정\')">'
-            + '<span class="eie-teacher-schedule-check" aria-hidden="true"></span>'
-            + '<span class="eie-teacher-schedule-copy"><strong>준비중</strong><small>오늘일정</small></span>'
-            + '</button>'
+            + (todayRows.length ? todayRows.map(function (cell) {
+                return '<button class="eie-teacher-schedule-row" type="button" onclick="EieTeacherView.openClassroom(' + JSON.stringify(String(cell.id || '')) + ')">'
+                    + '<span class="eie-teacher-schedule-check" aria-hidden="true"></span>'
+                    + '<span class="eie-teacher-schedule-copy"><strong>' + esc(cell.class_name_raw || '수업') + '</strong><small>' + esc([cell.period_label, teacherNamesFromCell(cell).join(', ')].filter(Boolean).join(' · ')) + '</small></span>'
+                    + '</button>';
+            }).join('') : '<div class="eie-empty-box" data-eie-teacher-empty-today="true">오늘 수업이 없습니다.</div>')
             + '</div>'
             + '</div>';
     }
@@ -404,11 +424,22 @@
             if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('teacher');
         },
         openTimetable: function () {
-            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('timetable-v2');
+            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('timetable');
         },
         openClassroom: function (cellId) {
+            if (cellId && window.EieClassroomView && typeof EieClassroomView.openCell === 'function') {
+                EieClassroomView.openCell(cellId);
+                return;
+            }
             if (cellId && window.EieClassroomView && typeof EieClassroomView.openDetail === 'function') {
                 EieClassroomView.openDetail(cellId);
+                return;
+            }
+            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('classroom');
+        },
+        openTodayClassroom: function () {
+            if (_teacherName && window.EieClassroomView && typeof EieClassroomView.openTodayForTeacher === 'function') {
+                EieClassroomView.openTodayForTeacher(_teacherName);
                 return;
             }
             if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('classroom');

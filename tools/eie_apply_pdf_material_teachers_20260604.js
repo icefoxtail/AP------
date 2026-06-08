@@ -1,4 +1,4 @@
-// EIE 2026 PDF material/day-teacher apply script v13
+﻿// EIE 2026 PDF material/day-teacher apply script v13
 // ASCII-safe source: Korean text is encoded as Unicode escapes to avoid Console clipboard encoding errors.
 // Run location: logged-in EIE timetable page DevTools Console.
 // Scope: update material_text/material/raw_meta_json day teachers only. Student assignments are not touched.
@@ -877,8 +877,8 @@
   }
 
   function getCurrentSessions(rows) {
-    if (window.EieTimetableV2View && typeof window.EieTimetableV2View._buildDisplaySessions === 'function') {
-      return window.EieTimetableV2View._buildDisplaySessions(rows);
+    if (window.EieTimetableView && typeof window.EieTimetableView._buildDisplaySessions === 'function') {
+      return window.EieTimetableView._buildDisplaySessions(rows);
     }
     return rows.map((row, index) => ({
       session_id: row.id || row.cell_id || `row_${index}`,
@@ -950,7 +950,7 @@
   }
 
   if (!window.EieApi?.getTimetable || !window.EieApi?.updateTimetableCell) {
-    throw new Error('EieApi.getTimetable/updateTimetableCell을 찾을 수 없습니다. EIE 시간표 화면에서 실행해 주세요.');
+    throw new Error('EieApi.getTimetable/updateTimetableCell??李얠쓣 ???놁뒿?덈떎. EIE ?쒓컙???붾㈃?먯꽌 ?ㅽ뻾??二쇱꽭??');
   }
 
   const result = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
@@ -973,21 +973,21 @@
     cell_count: (item.session.source_rows || []).length
   }));
   console.table(preview);
-  if (warnings.length) console.warn('매칭 경고:', warnings);
+  if (warnings.length) console.warn('留ㅼ묶 寃쎄퀬:', warnings);
   if (!mappings.length) {
-    alert('PDF 기준으로 매칭된 카드가 0개입니다. 저장하지 않았습니다.');
+    alert('PDF 湲곗??쇰줈 留ㅼ묶??移대뱶媛 0媛쒖엯?덈떎. ??ν븯吏 ?딆븯?듬땲??');
     return;
   }
 
-  const ok = window.confirm(`PDF 기준 교재명/요일별 담임을 ${mappings.length}개 카드에 반영합니다.\n학생 배정은 건드리지 않습니다.\n진행할까요?`);
+  const ok = window.confirm(`PDF 湲곗? 援먯옱紐??붿씪蹂??댁엫??${mappings.length}媛?移대뱶??諛섏쁺?⑸땲??\n?숈깮 諛곗젙? 嫄대뱶由ъ? ?딆뒿?덈떎.\n吏꾪뻾?좉퉴??`);
   if (!ok) {
-    console.log('취소되었습니다.');
+    console.log('痍⑥냼?섏뿀?듬땲??');
     return;
   }
 
   const report = {
     started_at: new Date().toISOString(),
-    source: '26년영어강사시간표.pdf',
+    source: '26?꾩쁺?닿컯?ъ떆媛꾪몴.pdf',
     warnings,
     total_mappings: mappings.length,
     updated_cells: [],
@@ -999,7 +999,7 @@
     for (const row of sourceRows) {
       const rowId = normalizeKey(row?.id || row?.cell_id || '');
       if (!rowId) {
-        report.failures.push({ truth_row: item.truth.truth_row, reason: 'row id 없음' });
+        report.failures.push({ truth_row: item.truth.truth_row, reason: 'row id ?놁쓬' });
         continue;
       }
       try {
@@ -1021,13 +1021,13 @@
     const refreshed = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
     const refreshedRows = asRows(refreshed);
     if (window.EieState?.setTimetableCells) window.EieState.setTimetableCells(refreshedRows);
-    if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    if (window.EieRouter?.open) window.EieRouter.open('timetable');
   } catch (error) {
     report.refresh_error = error?.message || String(error);
   }
 
   report.finished_at = new Date().toISOString();
-  console.log('PDF 기준 교재/요일별 담임 반영 완료:', report);
+  console.log('PDF 湲곗? 援먯옱/?붿씪蹂??댁엫 諛섏쁺 ?꾨즺:', report);
   const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -1035,6 +1035,6 @@
   a.click();
   URL.revokeObjectURL(a.href);
 })().catch(error => {
-  console.error('PDF 기준 교재/요일별 담임 반영 실패:', error);
+  console.error('PDF 湲곗? 援먯옱/?붿씪蹂??댁엫 諛섏쁺 ?ㅽ뙣:', error);
   alert(error?.message || String(error));
 });

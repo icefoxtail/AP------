@@ -14,6 +14,7 @@
     var _teacherRoster = [];
     var _consultationMode = 'list';
     var _editingConsultationId = '';
+    var _consultationDraft = null;
 
     function esc(value) {
         return EieApp.escapeHtml(value == null ? '' : value);
@@ -587,7 +588,7 @@
 
     function renderStudentTypeSelect(prefix, student) {
         var selected = studentTypeOf(student);
-        var types = ['일반', '신입', '재등록', '휴원'];
+        var types = ['일반', '신입', '재등록', '퇴원'];
         return '<label><span>학생구분</span><select id="' + prefix + '-student-type">'
             + types.map(function (type) {
                 return '<option value="' + esc(type) + '"' + (selected === type ? ' selected' : '') + '>' + esc(type) + '</option>';
@@ -662,10 +663,11 @@
     function renderConsultationForm(sid) {
         var editing = _consultationMode === 'edit';
         var current = editing ? currentEditingConsultation() : null;
-        var date = consultationDate(current) || todayIso();
-        var type = consultationType(current);
-        var content = text(current && current.content);
-        var nextAction = text(current && (current.next_action || current.nextAction));
+        var draft = !editing && _consultationDraft && String(_consultationDraft.student_id || '') === String(sid) ? _consultationDraft : null;
+        var date = consultationDate(current) || text(draft && draft.date) || todayIso();
+        var type = consultationType(current) || text(draft && draft.type);
+        var content = current ? text(current.content) : text(draft && draft.content);
+        var nextAction = current ? text(current.next_action || current.nextAction) : text(draft && (draft.next_action || draft.nextAction));
         return '<div class="eie-apms-consultation-form">'
             + '<div class="eie-apms-consultation-form-head">'
             + '<strong>' + (editing ? '상담 수정' : '상담 기록 추가') + '</strong>'
@@ -675,11 +677,11 @@
             + '<label><span>날짜</span><input id="consultation-date" type="date" value="' + esc(date) + '"></label>'
             + '<label><span>유형</span><select id="consultation-type">' + renderConsultationTypeOptions(type) + '</select></label>'
             + '</div>'
-            + '<label class="eie-apms-consultation-field"><span>상담 내용</span><textarea id="consultation-content" placeholder="상담 내용을 입력하세요.">' + esc(content) + '</textarea></label>'
+            + '<label class="eie-apms-consultation-field"><span>상담 내용</span><textarea id="consultation-content" placeholder="상담 내용을 입력하세요">' + esc(content) + '</textarea></label>'
             + '<label class="eie-apms-consultation-field"><span>조치 사항</span><textarea id="consultation-next-action" placeholder="다음 조치 사항 (선택)">' + esc(nextAction) + '</textarea></label>'
             + '<div class="eie-apms-consultation-ai">'
             + '<strong>상담 요약</strong>'
-            + '<p>AI 요약은 준비중입니다. 오늘은 상담 원문과 후속 조치를 저장합니다.</p>'
+            + '<p>AI 요약은 준비중입니다. 오늘은 상담 전문과 후속 조치를 저장합니다.</p>'
             + '</div>'
             + '<div class="eie-apms-consultation-save-row">'
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.saveConsultation(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : (editing ? '수정 완료' : '저장')) + '</button>'
@@ -699,7 +701,7 @@
             + '<div class="eie-apms-consultation-main">'
             + '<div class="eie-apms-consultation-meta"><span>' + esc(date) + '</span><em>' + esc(type) + '</em></div>'
             + '<p>' + esc(content) + '</p>'
-            + (nextAction ? '<div class="eie-apms-consultation-next"><strong>조치</strong> ' + esc(nextAction) + '</div>' : '')
+            + (nextAction ? '<div class="eie-apms-consultation-next"><strong>후속조치</strong> ' + esc(nextAction) + '</div>' : '')
             + (createdAt ? '<small>등록 시각 ' + esc(createdAt) + '</small>' : '')
             + '</div>'
             + '<div class="eie-apms-inline-actions">'
@@ -871,7 +873,7 @@
             + '</div>'
             + '<div id="eie-student-form-msg"></div>'
             + '<div class="eie-apms-form">'
-            + '<label><span>학생명 *</span><input id="' + prefix + '-name" type="text" value="' + esc(isEdit ? displayName(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>학생명*</span><input id="' + prefix + '-name" type="text" value="' + esc(isEdit ? displayName(student) : '') + '" autocomplete="off"></label>'
             + renderStudentTypeSelect(prefix, student)
             + renderGradeSelect(prefix, student)
             + '<label><span>학교</span><input id="' + prefix + '-school" type="text" value="' + esc(isEdit ? schoolOf(student) : '') + '" autocomplete="off"></label>'
@@ -939,10 +941,10 @@
     function normalizeReturnCtx(returnCtx) {
         if (!returnCtx || typeof returnCtx !== 'object') return null;
         var route = text(returnCtx.route || returnCtx.from);
-        if (route !== 'timetable-v2') return null;
+        if (route !== 'timetable') return null;
         return {
-            from: 'timetable-v2',
-            route: 'timetable-v2',
+            from: 'timetable',
+            route: 'timetable',
             selectedDay: text(returnCtx.selectedDay || returnCtx.day),
             sessionId: text(returnCtx.sessionId || returnCtx.session_id),
             cellId: text(returnCtx.cellId || returnCtx.cell_id)
@@ -993,7 +995,7 @@
             var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
             var loadingHtml = _loading ? '<div class="eie-api-note">학생 정보를 불러오는 중입니다.</div>' : '';
             return '<section class="eie-apms-students-screen" aria-labelledby="eie-students-title">'
-                + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
+                + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE</button>'
                 + '<div class="eie-apms-page-head">'
                 + '<div><h1 id="eie-students-title">학생관리</h1></div>'
                 + '</div>'
@@ -1190,13 +1192,14 @@
             }
         },
 
-        createConsultation: async function (studentId) {
+        createConsultation: async function (studentId, draft) {
             var sid = text(studentId || _selectedId);
             if (!sid || _saving) return;
             _selectedId = sid;
             _tab = 'consultation';
             _consultationMode = 'create';
             _editingConsultationId = '';
+            _consultationDraft = draft && typeof draft === 'object' ? Object.assign({ student_id: sid }, draft) : null;
             _notice = '';
             _error = '';
             await EieRouter.open('students');
@@ -1211,6 +1214,7 @@
             _tab = 'consultation';
             _consultationMode = 'edit';
             _editingConsultationId = id;
+            _consultationDraft = null;
             _notice = '';
             _error = '';
             await EieRouter.open('students');
@@ -1219,6 +1223,7 @@
         cancelConsultation: async function () {
             _consultationMode = 'list';
             _editingConsultationId = '';
+            _consultationDraft = null;
             await EieRouter.open('students');
         },
 
@@ -1238,7 +1243,7 @@
             };
             if (!sid) return;
             if (!payload.content) {
-                _error = '상담 내용을 입력하세요.';
+                _error = '상담 내용을 입력하세요';
                 await EieRouter.open('students');
                 return;
             }
@@ -1252,6 +1257,7 @@
                 _tab = 'consultation';
                 _consultationMode = 'list';
                 _editingConsultationId = '';
+                _consultationDraft = null;
                 await EieRouter.open('students');
             } catch (err) {
                 _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
@@ -1312,19 +1318,19 @@
         },
 
         openTimetable: function () {
-            EieRouter.open('timetable-v2');
+            EieRouter.open('timetable');
         },
 
         returnToTimetable: function () {
-            if (_returnCtx && _returnCtx.route === 'timetable-v2') {
-                if (window.EieTimetableV2View && typeof EieTimetableV2View.openWithContext === 'function') {
-                    EieTimetableV2View.openWithContext(_returnCtx);
+            if (_returnCtx && _returnCtx.route === 'timetable') {
+                if (window.EieTimetableView && typeof EieTimetableView.openWithContext === 'function') {
+                    EieTimetableView.openWithContext(_returnCtx);
                     return;
                 }
-                EieRouter.open('timetable-v2');
+                EieRouter.open('timetable');
                 return;
             }
-            EieRouter.open('timetable-v2');
+            EieRouter.open('timetable');
         },
 
         refresh: function (force) {

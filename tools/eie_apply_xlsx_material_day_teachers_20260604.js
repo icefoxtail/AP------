@@ -1,14 +1,14 @@
-// EIE 26.04 Excel 기준 교재명/요일별 담당만 반영하는 실행 스크립트 v18
-// 기준 파일: 영어26.04 (1).xlsx / sheet: 26.04
-// 실행 위치: 실제 EIE 시간표 화면 > DevTools Console
-// 반영 대상: 교재명, 월/화/수/목/금 담당
-// 절대 건드리지 않음: 상단 담임 열, 학생 배정, cell id, 교시/시간, 출결/숙제/상담
+﻿// EIE 26.04 Excel 湲곗? 援먯옱紐??붿씪蹂??대떦留?諛섏쁺?섎뒗 ?ㅽ뻾 ?ㅽ겕由쏀듃 v18
+// 湲곗? ?뚯씪: ?곸뼱26.04 (1).xlsx / sheet: 26.04
+// ?ㅽ뻾 ?꾩튂: ?ㅼ젣 EIE ?쒓컙???붾㈃ > DevTools Console
+// 諛섏쁺 ??? 援먯옱紐? ??????紐?湲??대떦
+// ?덈? 嫄대뱶由ъ? ?딆쓬: ?곷떒 ?댁엫 ?? ?숈깮 諛곗젙, cell id, 援먯떆/?쒓컙, 異쒓껐/?숈젣/?곷떞
 
 (async () => {
   const XLSX_TRUTH_CARDS = [
   {
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "excel_header_row": 2,
@@ -17,19 +17,19 @@
     "header_text": "rs3-1 Carmen",
     "material_text": "rs3-1",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
@@ -37,7 +37,7 @@
   },
   {
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "excel_header_row": 2,
@@ -46,19 +46,19 @@
     "header_text": "fp3 zoe",
     "material_text": "fp3",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Zoe"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
@@ -66,7 +66,7 @@
   },
   {
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "excel_header_row": 2,
@@ -75,19 +75,19 @@
     "header_text": "LE4 IVY",
     "material_text": "LE4",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [
+      "??: [
         "IVY"
       ],
-      "수": [
+      "??: [
         "IVY"
       ],
-      "목": [
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
@@ -95,7 +95,7 @@
   },
   {
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "excel_header_row": 2,
@@ -104,19 +104,19 @@
     "header_text": "phonic3 stacy",
     "material_text": "phonic3",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "STACY"
       ],
-      "수": [
+      "??: [
         "STACY"
       ],
-      "목": [
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
@@ -124,7 +124,7 @@
   },
   {
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "excel_header_row": 2,
@@ -133,19 +133,19 @@
     "header_text": "pl3 Lily",
     "material_text": "pl3",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Lily"
       ],
-      "목": [
+      "紐?: [
         "Lily"
       ],
-      "금": [
+      "湲?: [
         "Lily"
       ]
     },
@@ -153,7 +153,7 @@
   },
   {
     "period_order": 1,
-    "period_label": "1교시",
+    "period_label": "1援먯떆",
     "start_time": "15:10",
     "end_time": "15:50",
     "excel_header_row": 2,
@@ -162,19 +162,19 @@
     "header_text": "LT1 IVY",
     "material_text": "LT1",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [
+      "??: [
         "IVY"
       ],
-      "수": [
+      "??: [
         "IVY"
       ],
-      "목": [
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
@@ -182,7 +182,7 @@
   },
   {
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "excel_header_row": 13,
@@ -191,19 +191,19 @@
     "header_text": "pj3  ivy",
     "material_text": "pj3",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [
+      "??: [
         "IVY"
       ],
-      "수": [
+      "??: [
         "IVY"
       ],
-      "목": [
+      "紐?: [
         "IVY"
       ],
-      "금": [
+      "湲?: [
         "IVY"
       ]
     },
@@ -211,7 +211,7 @@
   },
   {
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "excel_header_row": 13,
@@ -220,19 +220,19 @@
     "header_text": "rs3-2Carmen",
     "material_text": "rs3-2",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
@@ -240,7 +240,7 @@
   },
   {
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "excel_header_row": 13,
@@ -249,19 +249,19 @@
     "header_text": "phonics1 Lily",
     "material_text": "phonics1",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Lily"
       ],
-      "목": [
+      "紐?: [
         "Lily"
       ],
-      "금": [
+      "湲?: [
         "Lily"
       ]
     },
@@ -269,28 +269,28 @@
   },
   {
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "excel_header_row": 13,
     "excel_col": 8,
     "excel_order": 4,
-    "header_text": "초문법 Lily",
-    "material_text": "초문법",
+    "header_text": "珥덈Ц踰?Lily",
+    "material_text": "珥덈Ц踰?,
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Lily"
       ],
-      "목": [
+      "紐?: [
         "Lily"
       ],
-      "금": [
+      "湲?: [
         "Lily"
       ]
     },
@@ -298,7 +298,7 @@
   },
   {
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "excel_header_row": 13,
@@ -307,19 +307,19 @@
     "header_text": "fp3 stacy",
     "material_text": "fp3",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "STACY"
       ],
-      "수": [
+      "??: [
         "STACY"
       ],
-      "목": [
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
@@ -327,7 +327,7 @@
   },
   {
     "period_order": 2,
-    "period_label": "2교시",
+    "period_label": "2援먯떆",
     "start_time": "15:50",
     "end_time": "16:30",
     "excel_header_row": 13,
@@ -336,19 +336,19 @@
     "header_text": "rth3 zoe",
     "material_text": "rth3",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Zoe"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
@@ -356,28 +356,28 @@
   },
   {
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "excel_header_row": 24,
     "excel_col": 2,
     "excel_order": 1,
-    "header_text": "5일 예비중 Carmen",
-    "material_text": "5일 예비중",
+    "header_text": "5???덈퉬以?Carmen",
+    "material_text": "5???덈퉬以?,
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
@@ -385,28 +385,28 @@
   },
   {
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "excel_header_row": 24,
     "excel_col": 4,
     "excel_order": 2,
-    "header_text": "5일 stacy",
-    "material_text": "5일",
+    "header_text": "5??stacy",
+    "material_text": "5??,
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "STACY"
       ],
-      "수": [
+      "??: [
         "STACY"
       ],
-      "목": [
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
@@ -414,24 +414,24 @@
   },
   {
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "excel_header_row": 24,
     "excel_col": 6,
     "excel_order": 3,
-    "header_text": "2IVY3일반월수금",
-    "material_text": "2/3일반",
+    "header_text": "2IVY3?쇰컲?붿닔湲?,
+    "material_text": "2/3?쇰컲",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "IVY"
       ]
     },
@@ -439,28 +439,28 @@
   },
   {
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "excel_header_row": 24,
     "excel_col": 8,
     "excel_order": 4,
-    "header_text": "Lily 3일반",
-    "material_text": "3일반",
+    "header_text": "Lily 3?쇰컲",
+    "material_text": "3?쇰컲",
     "day_teachers": {
-      "월": [
+      "??: [
         "Lily"
       ],
-      "화": [
+      "??: [
         "Lily"
       ],
-      "수": [
+      "??: [
         "Lily"
       ],
-      "목": [
+      "紐?: [
         "Lily"
       ],
-      "금": [
+      "湲?: [
         "Lily"
       ]
     },
@@ -468,7 +468,7 @@
   },
   {
     "period_order": 3,
-    "period_label": "3교시",
+    "period_label": "3援먯떆",
     "start_time": "16:30",
     "end_time": "17:10",
     "excel_header_row": 24,
@@ -477,19 +477,19 @@
     "header_text": "LT5 zoe",
     "material_text": "LT5",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Zoe"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
@@ -497,47 +497,47 @@
   },
   {
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
     "excel_header_row": 35,
     "excel_col": 2,
     "excel_order": 1,
-    "header_text": "중2-3 화목stacy",
-    "material_text": "중2-3",
+    "header_text": "以?-3 ?붾ぉstacy",
+    "material_text": "以?-3",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "STACY"
       ],
-      "금": []
+      "湲?: []
     },
     "parse_rule": "header_teacher_applies_only_to_header_weekdays"
   },
   {
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
     "excel_header_row": 35,
     "excel_col": 4,
     "excel_order": 2,
-    "header_text": "중1-3 zoe화목금",
-    "material_text": "중1-3",
+    "header_text": "以?-3 zoe?붾ぉ湲?,
+    "material_text": "以?-3",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
@@ -545,51 +545,51 @@
   },
   {
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
     "excel_header_row": 35,
     "excel_col": 6,
     "excel_order": 3,
-    "header_text": "중1-2 ivy월수",
-    "material_text": "중1-2",
+    "header_text": "以?-2 ivy?붿닔",
+    "material_text": "以?-2",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": []
+      "紐?: [],
+      "湲?: []
     },
     "parse_rule": "header_teacher_applies_only_to_header_weekdays"
   },
   {
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
     "excel_header_row": 35,
     "excel_col": 8,
     "excel_order": 4,
-    "header_text": "예비중(중등교재)stacy",
-    "material_text": "예비중(중등교재)",
+    "header_text": "?덈퉬以?以묐벑援먯옱)stacy",
+    "material_text": "?덈퉬以?以묐벑援먯옱)",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [
+      "??: [
         "STACY"
       ],
-      "수": [
+      "??: [
         "STACY"
       ],
-      "목": [
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
@@ -597,28 +597,28 @@
   },
   {
     "period_order": 4,
-    "period_label": "4교시",
+    "period_label": "4援먯떆",
     "start_time": "17:10",
     "end_time": "17:50",
     "excel_header_row": 35,
     "excel_col": 10,
     "excel_order": 5,
-    "header_text": "4일 예비중 Carmen",
-    "material_text": "4일 예비중",
+    "header_text": "4???덈퉬以?Carmen",
+    "material_text": "4???덈퉬以?,
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
@@ -626,51 +626,51 @@
   },
   {
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
     "excel_header_row": 47,
     "excel_col": 2,
     "excel_order": 1,
-    "header_text": "중2-3 화목 stacy",
-    "material_text": "중2-3",
+    "header_text": "以?-3 ?붾ぉ stacy",
+    "material_text": "以?-3",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "STACY"
       ],
-      "금": []
+      "湲?: []
     },
     "parse_rule": "header_teacher_applies_only_to_header_weekdays"
   },
   {
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
     "excel_header_row": 47,
     "excel_col": 4,
     "excel_order": 2,
-    "header_text": "중1-4 Carmen",
-    "material_text": "중1-4",
+    "header_text": "以?-4 Carmen",
+    "material_text": "以?-4",
     "day_teachers": {
-      "월": [
+      "??: [
         "Carmen"
       ],
-      "화": [
+      "??: [
         "Carmen"
       ],
-      "수": [
+      "??: [
         "Carmen"
       ],
-      "목": [
+      "紐?: [
         "Carmen"
       ],
-      "금": [
+      "湲?: [
         "Carmen"
       ]
     },
@@ -678,28 +678,28 @@
   },
   {
     "period_order": 5,
-    "period_label": "5교시",
+    "period_label": "5援먯떆",
     "start_time": "17:50",
     "end_time": "18:30",
     "excel_header_row": 47,
     "excel_col": 10,
     "excel_order": 3,
-    "header_text": "중1-1 Laura",
-    "material_text": "중1-1",
+    "header_text": "以?-1 Laura",
+    "material_text": "以?-1",
     "day_teachers": {
-      "월": [
+      "??: [
         "Laura"
       ],
-      "화": [
+      "??: [
         "Laura"
       ],
-      "수": [
+      "??: [
         "Laura"
       ],
-      "목": [
+      "紐?: [
         "Laura"
       ],
-      "금": [
+      "湲?: [
         "Laura"
       ]
     },
@@ -707,45 +707,45 @@
   },
   {
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
     "excel_header_row": 58,
     "excel_col": 2,
     "excel_order": 1,
-    "header_text": "중2-4IVY(화)",
-    "material_text": "중2-4",
+    "header_text": "以?-4IVY(??",
+    "material_text": "以?-4",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "수": [],
-      "목": [],
-      "금": []
+      "??: [],
+      "紐?: [],
+      "湲?: []
     },
     "parse_rule": "header_teacher_applies_only_to_header_weekdays"
   },
   {
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
     "excel_header_row": 58,
     "excel_col": 4,
     "excel_order": 2,
-    "header_text": "zoe2-1 월수금",
+    "header_text": "zoe2-1 ?붿닔湲?,
     "material_text": "2-1",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "Zoe"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "Zoe"
       ]
     },
@@ -753,24 +753,24 @@
   },
   {
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
     "excel_header_row": 58,
     "excel_col": 6,
     "excel_order": 3,
-    "header_text": "중2-2 월수금IVY",
-    "material_text": "중2-2",
+    "header_text": "以?-2 ?붿닔湲뉹VY",
+    "material_text": "以?-2",
     "day_teachers": {
-      "월": [
+      "??: [
         "IVY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "IVY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "IVY"
       ]
     },
@@ -778,24 +778,24 @@
   },
   {
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
     "excel_header_row": 58,
     "excel_col": 8,
     "excel_order": 4,
-    "header_text": "중3-1월수금stacy",
-    "material_text": "중3-1",
+    "header_text": "以?-1?붿닔湲늮tacy",
+    "material_text": "以?-1",
     "day_teachers": {
-      "월": [
+      "??: [
         "STACY"
       ],
-      "화": [],
-      "수": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "목": [],
-      "금": [
+      "紐?: [],
+      "湲?: [
         "STACY"
       ]
     },
@@ -803,7 +803,7 @@
   },
   {
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
     "excel_header_row": 58,
@@ -812,19 +812,19 @@
     "header_text": "3-2zoe",
     "material_text": "3-2",
     "day_teachers": {
-      "월": [
+      "??: [
         "Zoe"
       ],
-      "화": [
+      "??: [
         "Zoe"
       ],
-      "수": [
+      "??: [
         "Zoe"
       ],
-      "목": [
+      "紐?: [
         "Zoe"
       ],
-      "금": [
+      "湲?: [
         "Zoe"
       ]
     },
@@ -832,31 +832,31 @@
   },
   {
     "period_order": 6,
-    "period_label": "6교시",
+    "period_label": "6援먯떆",
     "start_time": "18:30",
     "end_time": "19:15",
     "excel_header_row": 58,
     "excel_col": 12,
     "excel_order": 6,
-    "header_text": "중1-5화목금stacy",
-    "material_text": "중1-5",
+    "header_text": "以?-5?붾ぉ湲늮tacy",
+    "material_text": "以?-5",
     "day_teachers": {
-      "월": [],
-      "화": [
+      "??: [],
+      "??: [
         "STACY"
       ],
-      "수": [],
-      "목": [
+      "??: [],
+      "紐?: [
         "STACY"
       ],
-      "금": [
+      "湲?: [
         "STACY"
       ]
     },
     "parse_rule": "header_teacher_applies_only_to_header_weekdays"
   }
 ];
-  const DAY_ORDER = ['월', '화', '수', '목', '금'];
+  const DAY_ORDER = ['??, '??, '??, '紐?, '湲?];
 
   function normalizeKey(value) {
     return String(value == null ? '' : value).trim();
@@ -865,7 +865,7 @@
   function normalizeTime(value) {
     const raw = normalizeKey(value);
     if (!raw) return '';
-    const match = raw.match(/(\d{1,2})[:시]\s*(\d{1,2})?/);
+    const match = raw.match(/(\d{1,2})[:??\s*(\d{1,2})?/);
     if (!match) return raw;
     let hour = Number(match[1]);
     const minute = Number(match[2] || 0);
@@ -937,8 +937,8 @@
   }
 
   function getCurrentSessions(rows) {
-    if (window.EieTimetableV2View && typeof window.EieTimetableV2View._buildDisplaySessions === 'function') {
-      return window.EieTimetableV2View._buildDisplaySessions(rows);
+    if (window.EieTimetableView && typeof window.EieTimetableView._buildDisplaySessions === 'function') {
+      return window.EieTimetableView._buildDisplaySessions(rows);
     }
     return rows.map((row, index) => ({
       session_id: row.id || row.cell_id || `row_${index}`,
@@ -965,7 +965,7 @@
       const truthGroup = sortTruth(truthPeriods.get(key) || []);
       if (sessionGroup.length !== truthGroup.length) {
         hardMismatch = true;
-        warnings.push(`교시/시간 ${key}: 현재 카드 ${sessionGroup.length}개, 엑셀 기준 ${truthGroup.length}개`);
+        warnings.push(`援먯떆/?쒓컙 ${key}: ?꾩옱 移대뱶 ${sessionGroup.length}媛? ?묒? 湲곗? ${truthGroup.length}媛?);
       }
       const count = Math.min(sessionGroup.length, truthGroup.length);
       for (let index = 0; index < count; index += 1) {
@@ -994,9 +994,9 @@
       class_text: truth.material_text,
       day_teachers: dayTeachers,
       teacher_names_by_day: dayTeachers,
-      // 상단 담임 열은 유지한다. homeroom_teacher는 새로 쓰지 않는다.
+      // ?곷떒 ?댁엫 ?댁? ?좎??쒕떎. homeroom_teacher???덈줈 ?곗? ?딅뒗??
       excel_truth: {
-        source: '영어26.04 (1).xlsx',
+        source: '?곸뼱26.04 (1).xlsx',
         sheet: '26.04',
         header_text: truth.header_text,
         header_row: truth.excel_header_row,
@@ -1016,13 +1016,13 @@
       material_text: truth.material_text,
       material: truth.material_text,
       raw_meta_json: rawMetaWithTruth(row, truth)
-      // teacher_names / teacher_name_raw 는 intentionally 제외한다.
-      // 상단 담임 열과 기존 row 담당 정보는 바꾸지 않는다.
+      // teacher_names / teacher_name_raw ??intentionally ?쒖쇅?쒕떎.
+      // ?곷떒 ?댁엫 ?닿낵 湲곗〈 row ?대떦 ?뺣낫??諛붽씀吏 ?딅뒗??
     };
   }
 
   if (!window.EieApi?.getTimetable || !window.EieApi?.updateTimetableCell) {
-    throw new Error('EieApi.getTimetable/updateTimetableCell을 찾을 수 없습니다. 실제 EIE 시간표 화면에서 실행해 주세요.');
+    throw new Error('EieApi.getTimetable/updateTimetableCell??李얠쓣 ???놁뒿?덈떎. ?ㅼ젣 EIE ?쒓컙???붾㈃?먯꽌 ?ㅽ뻾??二쇱꽭??');
   }
 
   const result = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
@@ -1037,34 +1037,34 @@
     current_material: item.session.material || item.session.class_name || item.session.class_full_name || '',
     xlsx_header: item.truth.header_text,
     xlsx_material: item.truth.material_text,
-    mon: (item.truth.day_teachers?.월 || []).join(', '),
-    tue: (item.truth.day_teachers?.화 || []).join(', '),
-    wed: (item.truth.day_teachers?.수 || []).join(', '),
-    thu: (item.truth.day_teachers?.목 || []).join(', '),
-    fri: (item.truth.day_teachers?.금 || []).join(', '),
+    mon: (item.truth.day_teachers?.??|| []).join(', '),
+    tue: (item.truth.day_teachers?.??|| []).join(', '),
+    wed: (item.truth.day_teachers?.??|| []).join(', '),
+    thu: (item.truth.day_teachers?.紐?|| []).join(', '),
+    fri: (item.truth.day_teachers?.湲?|| []).join(', '),
     cell_count: (item.session.source_rows || []).length
   }));
 
   console.table(preview);
-  if (warnings.length) console.warn('매칭 경고:', warnings);
+  if (warnings.length) console.warn('留ㅼ묶 寃쎄퀬:', warnings);
 
   if (hardMismatch) {
-    alert('현재 시간표 카드 수와 영어26.04 엑셀 기준 카드 수가 맞지 않아 저장을 중단합니다. Console의 매칭 경고를 확인해 주세요.');
+    alert('?꾩옱 ?쒓컙??移대뱶 ?섏? ?곸뼱26.04 ?묒? 湲곗? 移대뱶 ?섍? 留욎? ?딆븘 ??μ쓣 以묐떒?⑸땲?? Console??留ㅼ묶 寃쎄퀬瑜??뺤씤??二쇱꽭??');
     return;
   }
 
-  const ok = window.confirm(`영어26.04 엑셀 기준 교재명과 요일별 담당만 ${mappings.length}개 카드에 반영합니다.
-월/화/수/목/금 표기는 엑셀 머리글의 월수금/화목/화목금 규칙으로 제한했습니다.
-상단 담임 열, 학생 배정, 교시/시간은 건드리지 않습니다.
-진행할까요?`);
+  const ok = window.confirm(`?곸뼱26.04 ?묒? 湲곗? 援먯옱紐낃낵 ?붿씪蹂??대떦留?${mappings.length}媛?移대뱶??諛섏쁺?⑸땲??
+??????紐?湲??쒓린???묒? 癒몃━湲???붿닔湲??붾ぉ/?붾ぉ湲?洹쒖튃?쇰줈 ?쒗븳?덉뒿?덈떎.
+?곷떒 ?댁엫 ?? ?숈깮 諛곗젙, 援먯떆/?쒓컙? 嫄대뱶由ъ? ?딆뒿?덈떎.
+吏꾪뻾?좉퉴??`);
   if (!ok) {
-    console.log('취소했습니다.');
+    console.log('痍⑥냼?덉뒿?덈떎.');
     return;
   }
 
   const report = {
     started_at: new Date().toISOString(),
-    source: '영어26.04 (1).xlsx / sheet 26.04',
+    source: '?곸뼱26.04 (1).xlsx / sheet 26.04',
     scope: 'material_text_and_weekday_teachers_only',
     warnings,
     total_mappings: mappings.length,
@@ -1077,7 +1077,7 @@
     for (const row of sourceRows) {
       const rowId = normalizeKey(row?.id || row?.cell_id || '');
       if (!rowId) {
-        report.failures.push({ truth: item.truth.header_text, reason: 'row id 없음' });
+        report.failures.push({ truth: item.truth.header_text, reason: 'row id ?놁쓬' });
         continue;
       }
       try {
@@ -1098,13 +1098,13 @@
     const refreshed = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
     const refreshedRows = asRows(refreshed);
     if (window.EieState?.setTimetableCells) window.EieState.setTimetableCells(refreshedRows);
-    if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    if (window.EieRouter?.open) window.EieRouter.open('timetable');
   } catch (error) {
     report.refresh_error = error?.message || String(error);
   }
 
   report.finished_at = new Date().toISOString();
-  console.log('영어26.04 기준 교재명/요일별 담당 반영 완료:', report);
+  console.log('?곸뼱26.04 湲곗? 援먯옱紐??붿씪蹂??대떦 諛섏쁺 ?꾨즺:', report);
   const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -1112,6 +1112,6 @@
   a.click();
   URL.revokeObjectURL(a.href);
 })().catch(error => {
-  console.error('영어26.04 기준 교재명/요일별 담당 반영 실패:', error);
+  console.error('?곸뼱26.04 湲곗? 援먯옱紐??붿씪蹂??대떦 諛섏쁺 ?ㅽ뙣:', error);
   alert(error?.message || String(error));
 });

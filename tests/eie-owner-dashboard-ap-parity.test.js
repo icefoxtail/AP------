@@ -10,7 +10,7 @@ const expectedRenderOrder = [
   'renderGate()',
   'renderActionGrid()',
   'renderOverview(data)',
-  'renderTeacherStatusPlaceholder()',
+  'renderTeacherStatus(data)',
   'renderRecentConsultationPlaceholder()',
   'renderRecentStudents(data)',
   'renderNeedCheck(data)',
@@ -51,12 +51,39 @@ assert(
 );
 
 for (const disabledMetric of [
-  "renderMiniMetric('최근 등록', recentStudentCount(students))",
-  "renderMiniMetric('대기', countByStatus(students, '대기'))",
+  "renderMiniMetric('최근 등록', recentStudentCount(students)",
+  "renderMiniMetric('대기', countByStatus(students, '대기')",
   "renderMiniMetric('확인 필요', (data.needsReview || []).length)"
 ]) {
-  assert(source.includes(disabledMetric), `Unimplemented today metric should render without a route: ${disabledMetric}`);
+  assert(source.includes(disabledMetric), `Today metric should keep AP-style text/value wiring: ${disabledMetric}`);
 }
+
+assert(
+  source.includes('eie-admin-mini-metric__hover') && !source.includes('<strong>${Number(value || 0).toLocaleString'),
+  'EIE today metrics should show text only by default and keep counts in the AP-style hover panel'
+);
+
+assert(
+  source.includes('onclick="event.stopPropagation();') &&
+    source.includes("classList.toggle('is-visible')"),
+  'EIE today metrics should reveal the AP-style hover panel on click instead of navigating away'
+);
+
+assert(
+  css.includes('.eie-admin-mini-metric__hover {') &&
+    css.includes('opacity: 0;') &&
+    css.includes('pointer-events: none;') &&
+    css.includes('.eie-admin-mini-metric:hover .eie-admin-mini-metric__hover,') &&
+    css.includes('.eie-admin-mini-metric__hover.is-visible {') &&
+    css.includes('opacity: 1;'),
+  'EIE today metric counts must stay hidden by default and appear only on hover/focus/click'
+);
+
+assert(
+  css.includes('APMATH PORT LOCK') &&
+    css.includes('default state must show label text only'),
+  'EIE dashboard CSS should document the AP MATH metric behavior so it does not regress'
+);
 
 for (const requiredCssSelector of [
   '.eie-admin-home .ap-admin-section',
