@@ -92,6 +92,7 @@
         selectedStudentName: '',
         searchQuery: '',
         studentPanelMode: 'detail',
+        panelMountRoute: 'timetable',
         transferTargetId: '',
         studentSaving: false,
         studentError: '',
@@ -99,6 +100,7 @@
         miniSaving: false,
         miniError: '',
         miniNotice: '',
+        classAttendanceSessionId: '',
         activeTeacherDay: '월',
         activeTeacherSourceCellId: '',
         activeTeacherPeriodKey: '',
@@ -1575,10 +1577,10 @@
                     </div>
                     <div class="eie-weekday-overlay__scroll">
                         <div class="eie-weekday-grid"
-                            style="--eie-weekday-row-count:${periodGroups.length};grid-template-columns:72px repeat(${Math.max(laneColumnCount, 1)}, minmax(156px, 1fr));">
+                            style="--eie-weekday-row-count:${periodGroups.length};--eie-weekday-lane-columns:${Math.max(laneColumnCount, 1)};">
                             <div class="eie-weekday-grid__corner" style="grid-column:1;grid-row:1;" aria-hidden="true"></div>
                             ${teacherLayout.map(meta => `
-                                <div class="eie-weekday-grid__teacher eie-v2-teacher-frame-cell eie-v2-grid-teacher-header ${meta.laneCount > 1 ? 'is-wide' : 'is-normal'}" style="grid-column:${meta.startColumn} / span ${meta.laneCount};grid-row:1;" data-eie-day-teacher-key="${esc(meta.key)}" data-eie-v2-teacher-key="${esc(meta.key)}">
+                                <div class="eie-weekday-grid__teacher eie-v2-teacher-frame-cell eie-v2-grid-teacher-header" style="grid-column:${meta.startColumn} / span ${meta.laneCount};grid-row:1;" data-eie-day-teacher-key="${esc(meta.key)}" data-eie-v2-teacher-key="${esc(meta.key)}">
                                     <strong>${esc(meta.name)}</strong>
                                 </div>
                             `).join('')}
@@ -2429,6 +2431,7 @@
                     ${renderPField('요일', sessionDays)}
                     ${renderPField('교시', periodTime)}
                 </div>
+                ${renderStudentQuickRecords(sid)}
                 <span class="eie-p-section-label">더보기</span>
                 <details class="eie-p-drawer">
                     <summary class="eie-p-drawer-trigger">연락처·개인정보<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
@@ -2729,6 +2732,46 @@
         `;
     }
 
+    function classAttendanceRecord(studentId, date) {
+        const sid = normalizeKey(studentId);
+        const day = normalizeKey(date).slice(0, 10);
+        const rows = Array.isArray(window.EieState?.get?.()?.db?.attendance)
+            ? window.EieState.get().db.attendance
+            : [];
+        return rows.find(row => (
+            normalizeKey(row?.student_id) === sid &&
+            normalizeKey(row?.date || row?.attendance_date).slice(0, 10) === day
+        )) || null;
+    }
+
+    function classAttendanceStatusLabel(status) {
+        return normalizeKey(status) === '결석' ? '결석' : '출석';
+    }
+
+    function renderMiniClassAttendance(session) {
+        if (viewState.classAttendanceSessionId !== session?.session_id) return '';
+        const students = Array.isArray(session?.students) ? session.students : [];
+        const date = todayIso();
+        return `
+            <span class="eie-p-section-label">출결</span>
+            <div class="eie-p-card" style="padding:0;">
+                <div class="eie-p-chip-row">
+                    ${students.length ? students.map(student => {
+                        const sid = studentDetailId(student);
+                        const name = studentSearchName(student) || student.name || '학생';
+                        const record = classAttendanceRecord(sid, date);
+                        const status = classAttendanceStatusLabel(record?.status);
+                        return `<button type="button" class="eie-p-chip"
+                            data-eie-v2-class-attendance="${esc(sid)}"
+                            data-session-id="${esc(session.session_id)}"
+                            data-cell-id="${esc(session.source_cell_ids?.[0] || '')}"
+                            data-date="${esc(date)}">${esc(name)} · ${esc(status)}</button>`;
+                    }).join('') : '<span class="eie-p-field-value is-empty">배정된 학생이 없습니다.</span>'}
+                </div>
+            </div>
+        `;
+    }
+
     function renderMiniNewStudentForm(session) {
         return `<button type="button" class="eie-secondary-button eie-v2-mini-add-student-button" data-eie-v2-add-student-toggle data-session-id="${esc(session.session_id)}">+ 학생 추가</button>`;
     }
@@ -2789,6 +2832,11 @@
                 <div class="eie-p-card" style="padding:0;">
                     ${renderMiniStudentManager(session)}
                 </div>
+                ${viewState.classAttendanceSessionId !== session.session_id ? `
+                <div class="eie-v2-detail-actions">
+                    <button type="button" class="eie-secondary-button" data-eie-v2-class-attendance-toggle="${esc(session.session_id)}">출결</button>
+                </div>` : ''}
+                ${renderMiniClassAttendance(session)}
                 <span class="eie-p-section-label">더보기</span>
                 <details class="eie-p-drawer">
                     <summary class="eie-p-drawer-trigger">메모·기본 정보<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
@@ -3171,7 +3219,7 @@
                     }
                 </div>
                 <div class="eie-v2-head-center">
-                    <h1 id="eie-v2-title">${viewState.repairMode ? '데이터 보정' : 'EIE시간표'}</h1>
+                    <h1 id="eie-v2-title">${viewState.repairMode ? '데이터 보정' : 'EiE 시간표'}</h1>
                 </div>
                 <div class="eie-v2-head-right">
                     ${viewState.repairMode ? '' : viewState.editMode
@@ -3341,7 +3389,7 @@
             if (backButton) {
                 event.preventDefault();
                 clearStudentPanel();
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
                 return;
             }
             const attendanceSaveButton = event.target.closest?.('[data-eie-v2-attendance-save]');
@@ -3399,6 +3447,20 @@
             if (saveMiniButton) {
                 event.preventDefault();
                 saveMiniClassroomPanel();
+                return;
+            }
+            const classAttendanceToggle = event.target.closest?.('[data-eie-v2-class-attendance-toggle]');
+            if (classAttendanceToggle) {
+                event.preventDefault();
+                const sessionId = normalizeKey(classAttendanceToggle.getAttribute('data-eie-v2-class-attendance-toggle') || '');
+                viewState.classAttendanceSessionId = viewState.classAttendanceSessionId === sessionId ? '' : sessionId;
+                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                return;
+            }
+            const classAttendanceButton = event.target.closest?.('[data-eie-v2-class-attendance]');
+            if (classAttendanceButton) {
+                event.preventDefault();
+                saveClassAttendanceFromMiniPanel(classAttendanceButton);
                 return;
             }
             const cancelMiniButton = event.target.closest?.('[data-eie-v2-cancel-mini]');
@@ -3605,6 +3667,10 @@
         eventsBound = true;
     }
 
+    function reopenPanelMountRoute() {
+        if (window.EieRouter?.open) window.EieRouter.open(viewState.panelMountRoute || 'timetable');
+    }
+
     function openStudentLedgerFromTimetable(button) {
         const studentId = button.getAttribute('data-eie-v2-student-id') || '';
         const studentName = button.getAttribute('data-eie-v2-student-name') || button.textContent || '';
@@ -3612,16 +3678,20 @@
         viewState.selectedStudentName = normalizeStudentName(studentName);
         viewState.selectedSessionId = button.getAttribute('data-eie-v2-return-session') || viewState.selectedSessionId;
         viewState.selectedDay = button.getAttribute('data-eie-v2-return-day') || viewState.selectedDay;
-        viewState.studentPanelMode = viewState.selectedStudentId ? 'edit' : 'detail';
+        viewState.studentPanelMode = 'detail';
         viewState.studentError = '';
         viewState.studentNotice = '';
+        if ((viewState.panelMountRoute || '') === 'classroom' && window.EieClassroomView?.openStudentDetail) {
+            window.EieClassroomView.openStudentDetail(viewState.selectedStudentId || viewState.selectedStudentName);
+            return;
+        }
         if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
             window.EieApmsState.loadFoundation({ force: true }).catch(() => null).then(() => {
-                if (window.EieRouter?.open) window.EieRouter.open('timetable');
+                reopenPanelMountRoute();
             });
             return;
         }
-        if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        reopenPanelMountRoute();
     }
 
     function clearStudentPanel() {
@@ -3693,6 +3763,42 @@
             viewState.studentError = error?.message || '등원을 저장하지 못했습니다.';
         } finally {
             viewState.studentSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+        }
+    }
+
+    async function saveClassAttendanceFromMiniPanel(button) {
+        const sid = normalizeKey(button?.getAttribute?.('data-eie-v2-class-attendance') || '');
+        const sessionId = normalizeKey(button?.getAttribute?.('data-session-id') || viewState.selectedSessionId);
+        const cellId = normalizeKey(button?.getAttribute?.('data-cell-id') || '');
+        const date = normalizeKey(button?.getAttribute?.('data-date') || todayIso());
+        if (!sid || viewState.miniSaving) return;
+        if (!window.EieApi?.saveAttendanceRecord) {
+            viewState.miniError = '출결 저장 API를 사용할 수 없습니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable');
+            return;
+        }
+        const current = classAttendanceRecord(sid, date);
+        const currentStatus = classAttendanceStatusLabel(current?.status);
+        const nextStatus = current ? (currentStatus === '출석' ? '결석' : '출석') : '출석';
+        viewState.miniSaving = true;
+        viewState.miniError = '';
+        viewState.miniNotice = '';
+        try {
+            const payload = {
+                student_id: sid,
+                date,
+                status: nextStatus
+            };
+            if (cellId) payload.timetable_cell_id = cellId;
+            const result = await window.EieApi.saveAttendanceRecord(payload);
+            const rows = result?.attendance_records || result?.attendance || (result?.attendance_record ? [result.attendance_record] : (result?.data ? [result.data] : []));
+            if (window.EieState?.mergeStudentAttendance) window.EieState.mergeStudentAttendance(sid, rows);
+            viewState.classAttendanceSessionId = sessionId;
+        } catch (error) {
+            viewState.miniError = error?.message || '출결을 저장하지 못했습니다.';
+        } finally {
+            viewState.miniSaving = false;
             if (window.EieRouter?.open) window.EieRouter.open('timetable');
         }
     }
@@ -4541,8 +4647,75 @@
         if (window.EieRouter?.open) return window.EieRouter.open('timetable');
     }
 
+    async function openStudentWithContext(returnCtx) {
+        const ctx = returnCtx || {};
+        viewState.selectedDay = normalizeKey(ctx.selectedDay || ctx.day || viewState.selectedDay);
+        viewState.selectedSessionId = normalizeKey(ctx.sessionId || ctx.session_id || viewState.selectedSessionId);
+        viewState.selectedStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
+        viewState.selectedStudentName = normalizeStudentName(ctx.studentName || ctx.student_name || '');
+        viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
+        viewState.studentError = '';
+        viewState.studentNotice = '';
+        if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
+            await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        }
+        if (window.EieRouter?.open) return window.EieRouter.open('timetable');
+    }
+
+
+    async function renderPanelOnlyWithContext(returnCtx) {
+        bindEvents();
+        const ctx = returnCtx || {};
+        viewState.panelMountRoute = normalizeKey(ctx.mountRoute || ctx.mount_route || ctx.route || 'timetable') || 'timetable';
+        const { rows } = await loadRows();
+        const sessions = buildDisplaySessions(rows);
+        lastRenderedSessions = sessions;
+
+        const cellId = normalizeKey(ctx.cellId || ctx.cell_id || '');
+        let selectedSession = null;
+
+        if (ctx.sessionId || ctx.session_id) {
+            const wantedSessionId = normalizeKey(ctx.sessionId || ctx.session_id || '');
+            selectedSession = sessions.find(session => session.session_id === wantedSessionId) || null;
+        }
+
+        if (!selectedSession && cellId) {
+            selectedSession = sessions.find(session => {
+                if (!session) return false;
+                if (normalizeKey(session.session_id) === cellId) return true;
+                const sourceIds = Array.isArray(session.source_cell_ids) ? session.source_cell_ids : [];
+                if (sourceIds.map(normalizeKey).includes(cellId)) return true;
+                const rows = Array.isArray(session.source_rows) ? session.source_rows : [];
+                return rows.some(row => normalizeKey(row && row.id) === cellId);
+            }) || null;
+        }
+
+        if (ctx.selectedDay || ctx.day) {
+            viewState.selectedDay = normalizeKey(ctx.selectedDay || ctx.day);
+        } else if (selectedSession && selectedSession.day_label) {
+            viewState.selectedDay = normalizeKey(selectedSession.day_label);
+        }
+
+        viewState.selectedSessionId = selectedSession ? normalizeKey(selectedSession.session_id) : normalizeKey(ctx.sessionId || ctx.session_id || '');
+        viewState.selectedStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
+        viewState.selectedStudentName = normalizeStudentName(ctx.studentName || ctx.student_name || '');
+        viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
+        viewState.studentError = '';
+        viewState.studentNotice = '';
+
+        if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
+            await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        }
+
+        const panel = renderSelectedPanel(selectedSession);
+        return panel
+            ? '<div class="eie-classroom-borrowed-panel" data-eie-classroom-borrowed-panel="timetable">' + panel + '</div>'
+            : '';
+    }
+
     async function render() {
         bindEvents();
+        viewState.panelMountRoute = 'timetable';
         const { rows, error } = await loadRows();
         const rowsForDisplay = viewState.editMode && Array.isArray(viewState.editCreates) && viewState.editCreates.length
             ? rows.concat(viewState.editCreates)
@@ -4588,6 +4761,8 @@
         render,
         refresh,
         openWithContext,
+        openStudentWithContext,
+        renderPanelOnlyWithContext,
         _buildDisplaySessions: buildDisplaySessions
     };
 })();

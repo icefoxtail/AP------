@@ -16,7 +16,7 @@
     }
 
     function normalizeStudentRows(payload) {
-        return rowsFromPayload(payload, ['students', 'student_seeds', 'rows'])
+        return rowsFromPayload(payload, ['confirmed_students', 'students', 'student_seeds', 'rows'])
             .map(row => ({
                 ...row,
                 id: row?.id || row?.student_id || row?.seed_id || row?.candidate_id || '',
@@ -85,39 +85,46 @@
         return rows.filter(row => String(row?.status || '').includes(keyword)).length;
     }
 
+    function todayIso() {
+        const d = new Date();
+        return d.getFullYear() + '-' +
+            String(d.getMonth() + 1).padStart(2, '0') + '-' +
+            String(d.getDate()).padStart(2, '0');
+    }
+
     function recentStudentCount(rows) {
-        const now = Date.now();
-        const cutoff = now - 14 * 24 * 60 * 60 * 1000;
+        const today = todayIso();
         return rows.filter(row => {
             const raw = String(row?.created_at || '').trim();
-            if (!raw) return false;
-            const time = Date.parse(raw);
-            return Number.isFinite(time) && time >= cutoff;
+            return raw.slice(0, 10) === today;
         }).length;
     }
 
-    function buildGradeHoverRows(rows) {
-        const order = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
+    function buildGradeHoverGrid(rows) {
+        const group1 = ['초1', '초2', '초3', '초4', '초5', '초6'];
+        const group2 = ['중1', '중2', '중3', '고1', '고2', '고3'];
         const counts = {};
         (rows || []).forEach(row => {
-            const grade = String(row?.grade || row?.grade_raw || '미지정').trim() || '미지정';
-            counts[grade] = (counts[grade] || 0) + 1;
+            const grade = String(row?.grade || row?.grade_raw || '').trim();
+            if (grade) counts[grade] = (counts[grade] || 0) + 1;
         });
-        return Object.keys(counts)
-            .sort((a, b) => {
-                const ai = order.indexOf(a);
-                const bi = order.indexOf(b);
-                if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-                return a.localeCompare(b, 'ko');
-            })
-            .map(label => ({ label, value: counts[label] }));
+        const chip = (grade) => {
+            const n = counts[grade] || 0;
+            return `<span class="eie-admin-mini-metric__grade-chip${n === 0 ? ' is-zero' : ''}">${esc(grade)}<em>${n}</em></span>`;
+        };
+        return `<div class="eie-admin-mini-metric__grade-grid">
+            <div class="eie-admin-mini-metric__grade-row">${group1.map(chip).join('')}</div>
+            <div class="eie-admin-mini-metric__grade-row">${group2.map(chip).join('')}</div>
+        </div>`;
     }
 
     async function loadDashboardData() {
         const currentState = window.EieState?.get?.() || {};
         const data = {
             timetableCells: Array.isArray(currentState.timetableCells) ? currentState.timetableCells : [],
-            students: Array.isArray(currentState.studentSeeds) ? currentState.studentSeeds : [],
+            students: Array.isArray(currentState.db?.students) && currentState.db.students.length
+                ? currentState.db.students
+                : Array.isArray(currentState.studentSeeds) ? currentState.studentSeeds : [],
             needsReview: Array.isArray(currentState.needsReview) ? currentState.needsReview : [],
             teachers: [],
             attendanceRows: [],
@@ -128,7 +135,7 @@
 
         const [timetableResult, studentsResult, needsReviewResult, teachersResult, attendanceResult] = await Promise.allSettled([
             window.EieApi.getTimetable(null, { status: 'active,needs_review,hidden' }),
-            window.EieApi.getStudentSeeds(),
+            window.EieApi.getStudents ? window.EieApi.getStudents() : window.EieApi.getStudentSeeds(),
             window.EieApi.getNeedsReview(),
             window.EieApi.getTeachers ? window.EieApi.getTeachers() : Promise.resolve({ teachers: [] }),
             window.EieApi.getAttendanceRecords ? window.EieApi.getAttendanceRecords({ date: todayIso() }) : Promise.resolve({ attendance_records: [] })
@@ -144,7 +151,7 @@
 
         if (studentsResult.status === 'fulfilled') {
             data.students = normalizeStudentRows(studentsResult.value);
-            if (window.EieState?.setStudentSeeds) window.EieState.setStudentSeeds(data.students);
+            if (window.EieState?.setStudents) window.EieState.setStudents(data.students);
             if (studentsResult.value?.fallback && studentsResult.value?.error) data.errors.push(studentsResult.value.error);
         } else {
             data.errors.push(studentsResult.reason?.message || '학생 정보를 불러오지 못했습니다.');
@@ -189,38 +196,43 @@
         `;
     }
 
-    function renderMiniMetric(label, value, route, hoverRows) {
+    function renderMiniMetric(label, value, route, hoverContent) {
         const routeAttr = route ? ` data-eie-route="${esc(route)}"` : '';
         const countText = Number(value || 0).toLocaleString('ko-KR');
-        const rows = Array.isArray(hoverRows) ? hoverRows : [];
-        const detailRows = rows.length
-            ? rows.map(row => `
+        let innerHtml = '';
+        if (typeof hoverContent === 'string' && hoverContent) {
+            innerHtml = hoverContent;
+        } else if (Array.isArray(hoverContent) && hoverContent.length) {
+            innerHtml = hoverContent.map(row => `
                 <div class="eie-admin-mini-metric__hover-row">
                     <span>${esc(row.label)}</span>
                     <strong>${Number(row.value || 0).toLocaleString('ko-KR')}명</strong>
                 </div>
-            `).join('')
+            `).join('');
+        }
+        const hoverAttrs = innerHtml
+            ? ` onclick="event.stopPropagation(); this.querySelector('.eie-admin-mini-metric__hover')?.classList.toggle('is-visible')" onmouseenter="this.querySelector('.eie-admin-mini-metric__hover')?.classList.add('is-visible')" onmouseleave="this.querySelector('.eie-admin-mini-metric__hover')?.classList.remove('is-visible')" onfocus="this.querySelector('.eie-admin-mini-metric__hover')?.classList.add('is-visible')" onblur="this.querySelector('.eie-admin-mini-metric__hover')?.classList.remove('is-visible')"`
             : '';
-        // APMATH PORT LOCK: today metrics must show label text only by default.
-        // Counts/details belong only in the hover panel and are revealed by hover, focus, or click.
-        return `
-            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button"${routeAttr} aria-label="${esc(label)} ${countText}명" title="${esc(label)} ${countText}명" onclick="event.stopPropagation(); this.querySelector('.eie-admin-mini-metric__hover')?.classList.toggle('is-visible')" onmouseenter="this.querySelector('.eie-admin-mini-metric__hover')?.classList.add('is-visible')" onmouseleave="this.querySelector('.eie-admin-mini-metric__hover')?.classList.remove('is-visible')" onfocus="this.querySelector('.eie-admin-mini-metric__hover')?.classList.add('is-visible')" onblur="this.querySelector('.eie-admin-mini-metric__hover')?.classList.remove('is-visible')">
-                <span>${esc(label)}</span>
-                <div class="eie-admin-mini-metric__hover" aria-hidden="true">
+        const hoverPanel = innerHtml
+            ? `<div class="eie-admin-mini-metric__hover" aria-hidden="true">
                     <div class="eie-admin-mini-metric__hover-title">${esc(label)} ${countText}명</div>
-                    ${detailRows}
-                </div>
+                    ${innerHtml}
+                </div>`
+            : '';
+        return `
+            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button"${routeAttr} aria-label="${esc(label)} ${countText}명" title="${esc(label)} ${countText}명"${hoverAttrs}>
+                <span>${esc(label)}</span>
+                ${hoverPanel}
             </button>
         `;
     }
 
     function renderOverview(data) {
         const students = data.students || [];
+        const today = todayIso();
         const recentStudents = students.filter(row => {
             const raw = String(row?.created_at || '').trim();
-            if (!raw) return false;
-            const time = Date.parse(raw);
-            return Number.isFinite(time) && time >= Date.now() - 14 * 24 * 60 * 60 * 1000;
+            return raw.slice(0, 10) === today;
         });
         return `
             <div class="ap-admin-section eie-admin-section">
@@ -228,8 +240,8 @@
                     <h3 class="ap-admin-section-title eie-admin-section-title">오늘 운영</h3>
                 </div>
                 <div class="ap-admin-overview-grid eie-admin-overview-grid eie-surface-toolbar eie-surface-toolbar--two" aria-label="오늘 운영">
-                    ${renderMiniMetric('재원', students.length, 'students', buildGradeHoverRows(students))}
-                    ${renderMiniMetric('최근 등록', recentStudentCount(students), '', buildGradeHoverRows(recentStudents))}
+                    ${renderMiniMetric('재원', students.length, 'students', buildGradeHoverGrid(students))}
+                    ${renderMiniMetric('최근 등록', recentStudentCount(students), '', null)}
                 </div>
             </div>
         `;
@@ -280,40 +292,125 @@
         return label ? Number(label[0]) : 0;
     }
 
+    function rawOfDashboard(row) {
+        if (window.EieClassroomScope?.rawOf) return EieClassroomScope.rawOf(row);
+        if (row?.raw && typeof row.raw === 'object') return row.raw;
+        if (!row?.raw_meta_json) return {};
+        try {
+            const parsed = JSON.parse(row.raw_meta_json);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function normalizeDashboardText(value) {
+        return String(value || '').replace(/\s+/g, ' ').trim();
+    }
+
     function classNameOfCell(cell) {
-        return String(
+        const raw = rawOfDashboard(cell);
+        return normalizeDashboardText(
             cell?.class_name_raw ||
             cell?.raw_class_name ||
             cell?.class_name ||
             cell?.classTitle ||
+            cell?.title ||
+            cell?.name ||
+            cell?.display_name ||
+            cell?.class_label ||
             cell?.material_text ||
-            cell?.period_label ||
+            cell?.material ||
+            raw?.class_name_raw ||
+            raw?.raw_class_name ||
+            raw?.class_name ||
+            raw?.classTitle ||
+            raw?.title ||
+            raw?.name ||
+            raw?.display_name ||
+            raw?.class_label ||
+            raw?.material_text ||
+            raw?.material ||
             ''
-        ).trim();
+        );
+    }
+
+    function studentCountOfCell(cell) {
+        const assigned = assignedStudentsOf(cell);
+        if (assigned.length) return assigned.length;
+        const raw = rawOfDashboard(cell);
+        const count = Number(
+            cell?.student_count ||
+            cell?.studentCount ||
+            cell?.enrolled_count ||
+            cell?.enrolledCount ||
+            raw?.student_count ||
+            raw?.studentCount ||
+            raw?.enrolled_count ||
+            raw?.enrolledCount ||
+            0
+        );
+        return Number.isFinite(count) && count > 0 ? count : null;
+    }
+
+    function dayTeacherSourcesOf(cell) {
+        const raw = rawOfDashboard(cell);
+        return [
+            cell?.day_teachers,
+            cell?.teacher_names_by_day,
+            cell?.weekday_teachers,
+            raw?.day_teachers,
+            raw?.teacher_names_by_day,
+            raw?.weekday_teachers
+        ].filter(source => source && typeof source === 'object');
+    }
+
+    function daySpecificTeacherNames(cell, today) {
+        const names = [];
+        const aliases = window.EieClassroomScope?.dayAliases ? EieClassroomScope.dayAliases(today) : [today];
+        dayTeacherSourcesOf(cell).forEach(source => {
+            aliases.forEach(alias => {
+                if (Object.prototype.hasOwnProperty.call(source, alias)) {
+                    names.push(...(window.EieClassroomScope?.asTeacherList ? EieClassroomScope.asTeacherList(source[alias]) : [source[alias]]));
+                }
+            });
+        });
+        return uniqueNames(names);
+    }
+
+    function cellAppliesToDashboardDate(cell, today) {
+        if (window.EieClassroomScope?.isCellOnDate && EieClassroomScope.isCellOnDate(cell, today)) return true;
+        return daySpecificTeacherNames(cell, today).length > 0;
+    }
+
+    function cellBelongsToTeacherOnDate(cell, name, today) {
+        const dayTeachers = daySpecificTeacherNames(cell, today);
+        if (dayTeachers.length) return dayTeachers.some(teacher => teacherKey(teacher) === teacherKey(name));
+        return teacherCellsForDashboard(name, [cell]).length > 0;
     }
 
     function dashboardPeriodsForToday(cells, today) {
         const todayCells = (Array.isArray(cells) ? cells : []).filter(cell =>
-            window.EieClassroomScope?.isCellOnDate ? EieClassroomScope.isCellOnDate(cell, today) : false
+            cellAppliesToDashboardDate(cell, today)
         );
         const sourceCells = todayCells.length ? todayCells : (Array.isArray(cells) ? cells : []);
-        const maxPeriod = Math.max(4, sourceCells.reduce((max, cell) => Math.max(max, periodNumberOf(cell)), 0));
+        const maxPeriod = Math.min(8, Math.max(4, sourceCells.reduce((max, cell) => Math.max(max, periodNumberOf(cell)), 0)));
         return Array.from({ length: maxPeriod }, (_, index) => index + 1);
     }
 
     function periodRowsForTeacher(name, cells, today, periods) {
-        const teacherCells = teacherCellsForDashboard(name, cells);
-        const todayCells = window.EieClassroomScope?.isCellOnDate
-            ? teacherCells.filter(cell => EieClassroomScope.isCellOnDate(cell, today))
-            : [];
+        const todayCells = (Array.isArray(cells) ? cells : []).filter(cell =>
+            cellAppliesToDashboardDate(cell, today) && cellBelongsToTeacherOnDate(cell, name, today)
+        );
         return (periods || []).map(periodNo => {
-            const classNames = uniqueNames(todayCells
-                .filter(cell => periodNumberOf(cell) === periodNo)
-                .map(classNameOfCell)
-                .filter(Boolean));
+            const periodCells = todayCells.filter(cell => periodNumberOf(cell) === periodNo);
+            const classNames = uniqueNames(periodCells.map(classNameOfCell).filter(Boolean));
+            const counts = periodCells.map(studentCountOfCell);
+            const canShowCount = counts.length > 0 && counts.every(count => Number.isFinite(count) && count > 0);
             return {
                 periodNo,
-                className: classNames.length ? classNames.join(' / ') : ''
+                className: classNames.length ? classNames.join(' / ') : '',
+                studentCount: canShowCount ? counts.reduce((sum, count) => sum + count, 0) : null
             };
         });
     }
@@ -325,6 +422,7 @@
                     <div class="eie-admin-teacher-period-row">
                         <span class="eie-admin-teacher-period-no">${esc(row.periodNo)}</span>
                         <span class="eie-admin-teacher-period-class${row.className ? '' : ' is-empty'}">${esc(row.className || '')}</span>
+                        <span class="eie-admin-teacher-period-count${row.studentCount ? '' : ' is-empty'}">${row.studentCount ? `재원${esc(row.studentCount)}` : ''}</span>
                     </div>
                 `).join('')}
             </div>
@@ -337,28 +435,28 @@
         const periods = dashboardPeriodsForToday(data.timetableCells, today);
         const cards = teacherNames.map(name => {
             const periodRows = periodRowsForTeacher(name, data.timetableCells, today, periods);
-            const nameArg = esc(JSON.stringify(name));
-            const canOpenTeacher = teacherKey(name) !== 'foreigner';
-            const openAttr = canOpenTeacher
-                ? ` onclick='event.stopPropagation(); EieTeacherView.openTeacher(${nameArg})'`
-                : '';
-            const cardTag = canOpenTeacher ? 'button' : 'article';
-            const typeAttr = canOpenTeacher ? ' type="button"' : '';
-            const inertClass = canOpenTeacher ? '' : ' eie-admin-teacher-card--readonly';
             return `
-                <${cardTag} class="card ap-admin-teacher-card eie-admin-teacher-card${inertClass}"${typeAttr}${openAttr} aria-label="${esc(name)} 선생님 오늘 수업" title="${esc(name)} 선생님 오늘 수업">
+                <article class="card ap-admin-teacher-card eie-admin-teacher-card eie-admin-teacher-card--readonly" aria-label="${esc(name)} 선생님 오늘 수업">
                     <div class="admin-teacher-card__head">
                         <div class="admin-teacher-card__name">${esc(name)} 선생님</div>
                     </div>
                     ${renderTeacherPeriodRows(periodRows)}
-                </${cardTag}>
+                </article>
             `;
+        }).join('');
+
+        const DAY_LABELS = ['월', '화', '수', '목', '금'];
+        const todayDow = new Date().getDay();
+        const dayChips = DAY_LABELS.map((label, index) => {
+            const isActive = (index + 1) === todayDow;
+            return `<span class="eie-admin-day-chip${isActive ? ' is-active' : ''}">${esc(label)}</span>`;
         }).join('');
 
         return `
             <div class="ap-admin-section eie-admin-section">
-                <div style="margin-bottom:12px;">
+                <div class="eie-admin-teacher-status-head" style="margin-bottom:12px;">
                     <h3 class="ap-admin-section-title eie-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">선생님 현황</h3>
+                    <div class="eie-admin-day-chips" aria-label="요일">${dayChips}</div>
                 </div>
                 <div class="ap-admin-teacher-grid eie-admin-teacher-grid">
                     ${cards || '<div class="card eie-admin-empty-card">등록된 선생님이 없습니다.</div>'}

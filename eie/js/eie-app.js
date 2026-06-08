@@ -158,26 +158,117 @@
         removeLogoutButton();
         const root = document.getElementById('eie-app');
         if (!root) return;
-        const msg = message ? `<p class="eie-login-error" role="alert">${escapeHtml(message)}</p>` : '';
+        const msg = message ? `<div style="margin:0 0 14px; padding:12px 14px; border-radius:14px; background:rgba(239,68,68,0.09); border:1px solid rgba(239,68,68,0.20); color:#B42318; font-size:13px; font-weight:800; line-height:1.45;" role="alert">${escapeHtml(message)}</div>` : '';
         root.innerHTML = `
-            <div class="eie-login-overlay" id="eie-login-screen">
-                <div class="eie-login-card">
-                    <div class="eie-login-logo" aria-hidden="true">E</div>
-                    <h1 class="eie-login-title">EIE 영어 관리</h1>
-                    <p class="eie-login-sub">원장님 계정으로 로그인합니다.</p>
-                    ${msg}
-                    <label class="eie-login-label" for="eie-login-id">아이디</label>
-                    <input id="eie-login-id" type="text" class="eie-login-input" autocomplete="username" placeholder="아이디 입력">
-                    <label class="eie-login-label" for="eie-login-pw">비밀번호</label>
-                    <input id="eie-login-pw" type="password" class="eie-login-input" autocomplete="current-password" placeholder="비밀번호 입력">
-                    <button type="button" class="eie-login-btn" id="eie-login-submit">로그인</button>
-                    <p class="eie-login-notice">로그인 상태는 이 브라우저에 저장됩니다.</p>
+            <div class="eie-login-screen" id="eie-login-screen" style="position:fixed; inset:0; z-index:3000; min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; align-items:stretch; justify-content:center; background:linear-gradient(135deg,#0F766E 0%,#2563EB 50%,#7C3AED 100%); color:#fff;">
+                <div style="position:absolute; inset:0; background:
+                    radial-gradient(circle at 18% 18%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
+                    radial-gradient(circle at 88% 12%, rgba(255,255,255,0.20) 0, transparent 36%),
+                    radial-gradient(circle at 72% 86%, rgba(15,23,42,0.24) 0, transparent 42%); pointer-events:none;"></div>
+                <div style="position:absolute; inset:0; background:rgba(15,23,42,0.08); pointer-events:none;"></div>
+
+                <div style="position:relative; width:100%; max-width:1120px; min-height:100vh; min-height:100dvh; display:grid; grid-template-columns:minmax(0,1fr) 390px; align-items:center; gap:54px; padding:clamp(28px,5vw,72px); box-sizing:border-box;">
+                    <section style="min-width:0; display:flex; flex-direction:column; justify-content:center; gap:26px;">
+                        <div style="display:flex; align-items:center; gap:18px;">
+                            <img src="./assets/eie-logo.png" alt="EIE" style="width:82px; height:82px; border-radius:22px; background:#fff; box-shadow:0 18px 46px rgba(15,23,42,0.24); display:block; object-fit:contain; padding:10px; box-sizing:border-box;">
+                            <div style="min-width:0;">
+                                <div style="font-size:clamp(34px,5.2vw,64px); font-weight:900; line-height:0.95; letter-spacing:-2.8px; color:#fff; text-shadow:0 8px 24px rgba(15,23,42,0.20);">EIE</div>
+                                <div style="margin-top:9px; font-size:clamp(18px,2.2vw,27px); font-weight:800; line-height:1.1; letter-spacing:-0.9px; color:rgba(255,255,255,0.90); text-shadow:0 5px 18px rgba(15,23,42,0.16);">Operations System</div>
+                            </div>
+                        </div>
+
+                        <div style="max-width:560px;">
+                            <div style="font-size:clamp(18px,2.2vw,28px); font-weight:900; line-height:1.28; letter-spacing:-1px; color:#fff;">
+                                선생님과 원장님을 위한<br>EIE 영어 운영 로그인
+                            </div>
+                            <div style="margin-top:16px; font-size:15px; font-weight:700; line-height:1.7; color:rgba(255,255,255,0.76);">
+                                시간표, 출석부, 클래스룸, 학생 관리를 한 화면에서 확인합니다.
+                            </div>
+                        </div>
+                    </section>
+
+                    <section style="width:100%; background:rgba(255,255,255,0.95); color:#191F28; border:1px solid rgba(255,255,255,0.46); border-radius:30px; padding:30px 26px 26px; box-shadow:0 26px 70px rgba(15,23,42,0.28); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-sizing:border-box;">
+                        <div style="margin-bottom:24px;">
+                            <div style="font-size:22px; font-weight:900; line-height:1.25; letter-spacing:-0.8px; color:#191F28;">로그인</div>
+                            <div style="margin-top:6px; font-size:13px; font-weight:800; line-height:1.5; color:#6B7684;">원장님 / 선생님 계정으로 접속하세요</div>
+                        </div>
+
+                        ${msg}
+
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            <div>
+                                <label style="display:block; font-size:12px; font-weight:900; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;" for="eie-login-id">아이디</label>
+                                <input id="eie-login-id" type="text" autocomplete="username" placeholder="아이디 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; outline:none; box-sizing:border-box;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:12px; font-weight:900; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;" for="eie-login-pw">비밀번호</label>
+                                <input id="eie-login-pw" type="password" autocomplete="current-password" placeholder="비밀번호 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; outline:none; box-sizing:border-box;">
+                            </div>
+                            <button type="button" id="eie-login-submit" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:900; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#0F766E 0%,#2563EB 100%); color:#fff; box-shadow:0 14px 28px rgba(37,99,235,0.26); cursor:pointer;">로그인</button>
+                        </div>
+
+                        <div style="margin-top:18px; padding-top:16px; border-top:1px solid #E5E8EB; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                            <span style="font-size:11px; font-weight:900; color:#8B95A1;">EIE OS</span>
+                            <span style="font-size:11px; font-weight:900; color:#8B95A1;">Teacher · Owner</span>
+                        </div>
+                    </section>
                 </div>
+
+                <style>
+                    @media (max-width: 760px) {
+                        .eie-login-screen > div:nth-child(3) {
+                            display:flex !important;
+                            flex-direction:column !important;
+                            justify-content:space-between !important;
+                            gap:0 !important;
+                            padding:calc(34px + env(safe-area-inset-top)) 20px calc(22px + env(safe-area-inset-bottom)) !important;
+                        }
+                        .eie-login-screen section:first-of-type {
+                            gap:18px !important;
+                            padding-top:18px !important;
+                        }
+                        .eie-login-screen section:first-of-type > div:first-child {
+                            flex-direction:column !important;
+                            align-items:flex-start !important;
+                            gap:16px !important;
+                        }
+                        .eie-login-screen section:first-of-type img {
+                            width:76px !important;
+                            height:76px !important;
+                            border-radius:21px !important;
+                        }
+                        .eie-login-screen section:first-of-type > div:last-child {
+                            display:none !important;
+                        }
+                        .eie-login-screen section:last-of-type {
+                            border-radius:28px !important;
+                            padding:26px 20px 22px !important;
+                            background:rgba(255,255,255,0.96) !important;
+                        }
+                    }
+                    @media (max-width: 380px) {
+                        .eie-login-screen > div:nth-child(3) {
+                            padding-left:16px !important;
+                            padding-right:16px !important;
+                        }
+                        .eie-login-screen section:last-of-type {
+                            padding-left:18px !important;
+                            padding-right:18px !important;
+                        }
+                    }
+                </style>
             </div>
         `;
-        const input = document.getElementById('eie-login-pw');
-        if (input) {
-            input.addEventListener('keyup', function (e) {
+        const idInput = document.getElementById('eie-login-id');
+        const pwInput = document.getElementById('eie-login-pw');
+        if (idInput) {
+            setTimeout(function () { try { idInput.focus(); } catch (e) {} }, 0);
+            idInput.addEventListener('keyup', function (e) {
+                if (e.key === 'Enter' && pwInput) pwInput.focus();
+            });
+        }
+        if (pwInput) {
+            pwInput.addEventListener('keyup', function (e) {
                 if (e.key === 'Enter') EieApp.submitEieLogin();
             });
         }
