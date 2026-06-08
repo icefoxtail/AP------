@@ -143,7 +143,8 @@ window.questionBank = [
     "㉠: $-3$, ㉡: $+x$, ㉢: $3x-2$"
   ],
     answer: "③",
-    solution: "[키포인트] 문자와 차수가 같은 항을 동류항이라 하며, 동류항끼리 모아서 계산한다.\n조건 정리: $2x+1+x-3$\n풀이 과정:\n1단계: $2x$의 동류항은 $+x$이다. (㉠)\n2단계: $+1$의 동류항은 상수항인 $-3$이다. (㉡)\n3단계: 식을 정리하면 $(2x+x) + (1-3) = 3x-2$이다. (㉢)\n결론: 따라서 정답은 ③이다."
+    solution: "[키포인트] 문자와 차수가 같은 항을 동류항이라 하며, 동류항끼리 모아서 계산한다.\n조건 정리: $2x+1+x-3$\n풀이 과정:\n1단계: $2x$의 동류항은 $+x$이다. (㉠)\n2단계: $+1$의 동류항은 상수항인 $-3$이다. (㉡)\n3단계: 식을 정리하면 $(2x+x) + (1-3) = 3x-2$이다. (㉢)\n결론: 따라서 정답은 ③이다.",
+    image: ""
   },
   {
     id: 7,
@@ -191,7 +192,8 @@ window.questionBank = [
     "$-3x+5$"
   ],
     answer: "①",
-    solution: "[키포인트] 나눗셈은 역수의 곱셈으로 바꾸어 분배법칙을 적용한다.\n조건 정리: $(15x-25) \\times \\left(-\\frac{2}{5}\\right)$\n풀이 과정:\n$15x \\times \\left(-\\frac{2}{5}\\right) - 25 \\times \\left(-\\frac{2}{5}\\right)$\n$= -6x + 10$\n결론: 따라서 정답은 ①이다."
+    solution: "[키포인트] 나눗셈은 역수의 곱셈으로 바꾸어 분배법칙을 적용한다.\n조건 정리: $(15x-25) \\times \\left(-\\frac{2}{5}\\right)$\n풀이 과정:\n$15x \\times \\left(-\\frac{2}{5}\\right) - 25 \\times \\left(-\\frac{2}{5}\\right)$\n$= -6x + 10$\n결론: 따라서 정답은 ①이다.",
+    image: ""
   },
   {
     id: 9,
@@ -360,7 +362,8 @@ window.questionBank = [
   ],
     answer: "③",
     solution: "[키포인트] 점의 좌표는 (x좌표, y좌표) 순서로 읽는다.\n조건 정리: 그래프상의 점 위치 확인.\n풀이 과정:\nA는 (-2, 2), B는 (0, 1), C는 (4, 3), D는 (3, -2), E는 (-4, 0)이다.\n결론: 따라서 정답은 ③이다.",
-    image: "assets/images/1학기_기말평가_중1_단원평가/q15.png"
+    image: "assets/images/1학기_기말평가_중1_단원평가/q15.png",
+    imageSize: "medium"
   },
   {
     id: 16,
@@ -435,7 +438,8 @@ window.questionBank = [
   ],
     answer: "①",
     solution: "[키포인트] '속력을 올림'은 우상향 직선, '일정한 속력'은 수평 직선으로 나타난다.\n조건 정리: 속력 증가 후 일정 유지.\n풀이 과정:\n①번 그래프가 초기에 위로 향하다가 평평해지는 모양을 띠고 있다.\n결론: 따라서 정답은 ①이다.",
-    image: "assets/images/1학기_기말평가_중1_단원평가/q18.png"
+    image: "assets/images/1학기_기말평가_중1_단원평가/q18.png",
+    imageSize: "full"
   },
   {
     id: 19,
@@ -509,7 +513,8 @@ window.questionBank = [
   ],
     answer: "④",
     solution: "[키포인트] 교점의 좌표는 두 식을 모두 만족한다.\n조건 정리: 점 (-6, 2) 대입.\n풀이 과정:\n1단계: $y=ax$에 대입하면 $2 = a(-6) \\Rightarrow a = -\\frac{1}{3}$\n2단계: $y=\\frac{b}{x}$에 대입하면 $2 = \\frac{b}{-6} \\Rightarrow b = -12$\n3단계: $ab = \\left(-\\frac{1}{3}\\right) \\times (-12) = 4$\n결론: 따라서 정답은 ④이다.",
-    image: "assets/images/1학기_기말평가_중1_단원평가/q21.png"
+    image: "assets/images/1학기_기말평가_중1_단원평가/q21.png",
+    imageSize: "medium"
   },
   {
     id: 22,
@@ -528,7 +533,8 @@ window.questionBank = [
     choices: [],
     answer: "(1) $4.5x + 3y$ (mg), (2) 1350mg",
     solution: "[키포인트] 1g당 함량으로 단위를 변환하여 계산한다.\n조건 정리: A식품은 1g당 4.5mg, B식품은 1g당 3mg 함유.\n풀이 과정:\n(1) $x$g과 $y$g에 들어있는 양은 $4.5x + 3y$이다.\n(2) $x=200, y=150$을 대입하면:\n$4.5 \\times 200 + 3 \\times 150 = 900 + 450 = 1350$이다.\n결론: 따라서 구하는 값은 1350mg이다.",
-    image: "assets/images/1학기_기말평가_중1_단원평가/q22.png"
+    image: "",
+    imageSize: "medium"
   },
   {
     id: 23,
@@ -566,6 +572,7 @@ window.questionBank = [
     choices: [],
     answer: "자유 서술 (예: 거북이는 일정한 속도로 계속 달렸다.)",
     solution: "[키포인트] 그래프의 기울기와 특정 지점을 해석한다.\n조건 정리: 시간에 따른 거리 변화 분석.\n풀이 과정:\n사실 1: 토끼는 중간에 쉬었지만 거북이는 쉬지 않고 일정한 속력으로 이동했다.\n사실 2: 거북이가 토끼보다 먼저 결승선(2km 지점)에 도달하여 우승했다.\n결론: 위와 같은 두 가지 사실을 도출할 수 있다.",
-    image: "assets/images/1학기_기말평가_중1_단원평가/q24.png"
+    image: "assets/images/1학기_기말평가_중1_단원평가/q24.png",
+    imageSize: "medium"
   }
 ];

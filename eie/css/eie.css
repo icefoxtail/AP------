@@ -4491,6 +4491,32 @@ body.eie-owner-dashboard-bg {
     align-items: center;
 }
 
+.eie-classroom-consultation-section {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.eie-classroom-consultation-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.eie-classroom-consultation-head h3 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.eie-classroom-consultation-head span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
 .eie-apms-consultation-row {
     width: 100%;
     margin-top: 8px;
@@ -4925,6 +4951,7 @@ body.eie-owner-dashboard-bg {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
+    margin-top: 18px;
     margin-bottom: 18px;
     padding: 4px;
     border: 1px solid var(--eie-border);
@@ -5081,7 +5108,8 @@ body.eie-owner-dashboard-bg {
     background: var(--eie-surface);
 }
 
-.eie-teacher-schedule-row {
+.eie-teacher-schedule-row,
+.eie-teacher-today-card {
     width: 100%;
     min-height: 52px;
     padding: 0 16px;
@@ -5098,8 +5126,59 @@ body.eie-owner-dashboard-bg {
     cursor: pointer;
 }
 
-.eie-teacher-schedule-row + .eie-teacher-schedule-row {
+.eie-teacher-schedule-row + .eie-teacher-schedule-row,
+.eie-teacher-today-card + .eie-teacher-today-card {
     border-top: 1px solid var(--eie-border);
+}
+
+.eie-teacher-today-card {
+    min-height: 68px;
+    justify-content: space-between;
+}
+
+.eie-teacher-today-card__time {
+    flex: 0 0 auto;
+    min-width: 54px;
+    color: var(--eie-text);
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.eie-teacher-today-card__main {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: grid;
+    gap: 3px;
+}
+
+.eie-teacher-today-card__main strong,
+.eie-teacher-today-card__main small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-teacher-today-card__main strong {
+    color: var(--eie-text);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.eie-teacher-today-card__main small {
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.eie-teacher-today-card__chips {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    min-width: 0;
 }
 
 .eie-teacher-schedule-check {
@@ -5229,6 +5308,21 @@ body.eie-owner-dashboard-bg {
     }
 
     .eie-teacher-dashboard .ap-class-row__chips {
+        width: 100%;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+
+    .eie-teacher-today-card {
+        min-height: 90px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .eie-teacher-today-card__chips {
         width: 100%;
         justify-content: flex-start;
         overflow: hidden;
@@ -9209,6 +9303,17 @@ button.eie-v2-student-chip.is-paused:hover {
   transform: translateY(-1px);
 }
 
+.eie-admin-home .eie-admin-teacher-card--readonly {
+  cursor: default;
+}
+
+.eie-admin-home .eie-admin-teacher-card--readonly:hover {
+  background: var(--eie-surface);
+  border-color: var(--eie-border);
+  box-shadow: var(--eie-shadow);
+  transform: none;
+}
+
 .admin-teacher-card__head {
   display: flex;
   align-items: center;
@@ -9265,6 +9370,50 @@ button.eie-v2-student-chip.is-paused:hover {
 .admin-teacher-grade-pill span:last-child {
   font-weight: 700;
   color: var(--eie-text);
+}
+
+.eie-admin-teacher-periods {
+  display: grid;
+  gap: 5px;
+}
+
+.eie-admin-teacher-period-row {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.eie-admin-teacher-period-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--eie-border);
+  border-radius: 7px;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.eie-admin-teacher-period-class {
+  min-width: 0;
+  min-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--eie-text);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.eie-admin-teacher-period-class.is-empty {
+  color: transparent;
 }
 
 @media (max-width: 720px) {
