@@ -642,6 +642,7 @@
                     ${editorState.isEditMode ? `
                         <button type="button" class="eie-small-button" data-eie-timetable-action="reset-edit">원래대로</button>
                         <button type="button" class="eie-small-button" data-eie-timetable-action="exit-edit">나가기</button>
+                        <button type="button" class="eie-small-button" data-eie-timetable-action="print-edit">인쇄</button>
                         <button type="button" class="eie-primary-button" data-eie-timetable-action="prepare-save" ${validation.isValid ? '' : 'disabled'}>
                             저장 전 검증
                         </button>
@@ -1387,6 +1388,7 @@
         if (action === 'start-edit') return startEditMode();
         if (action === 'exit-edit') return exitEditMode(false);
         if (action === 'reset-edit') return resetEditMode();
+        if (action === 'print-edit') return printEditTimetable();
         if (action === 'prepare-save') return prepareSave();
         if (action === 'save-draft') return saveDraft();
         if (action === 'clear-selection') return clearSelection();
@@ -1396,6 +1398,20 @@
         if (action === 'mark-hidden') return setSelectedStatus('hidden');
         if (action === 'mark-active') return setSelectedStatus('active');
         if (action === 'close-student') return closeStudentInfo();
+    }
+
+    function printEditTimetable() {
+        const body = document && document.body;
+        if (body?.classList) body.classList.add('eie-printing-timetable-editor');
+
+        const cleanup = () => {
+            if (body?.classList) body.classList.remove('eie-printing-timetable-editor');
+            window.removeEventListener?.('afterprint', cleanup);
+        };
+
+        window.addEventListener?.('afterprint', cleanup, { once: true });
+        window.print?.();
+        window.setTimeout?.(cleanup, 1000);
     }
 
     function handleDragStart(event) {

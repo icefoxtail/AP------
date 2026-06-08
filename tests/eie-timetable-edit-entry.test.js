@@ -6,6 +6,7 @@ const vm = require('vm');
 const root = path.resolve(__dirname, '..');
 const timetableSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
 const editorSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable-editor.js'), 'utf8');
+const cssSource = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
 
 const state = {
   timetableCells: [],
@@ -92,11 +93,19 @@ vm.runInContext(editorSource, context, { filename: 'eie-timetable-editor.js' });
   assert(editHtml.includes('data-eie-drop-slot="true"'), 'editor should keep editable drop slots for moving and creating classes');
   assert(editHtml.includes('draggable="true" data-eie-cell-card="true"'), 'editor should keep draggable timetable cards');
   assert(editHtml.includes('data-eie-timetable-action="prepare-save"'), 'editor should keep save validation controls');
+  assert(editHtml.includes('data-eie-timetable-action="print-edit"'), 'editor should expose a print button for manual timetable correction');
   assert(!editHtml.includes('data-eie-timetable-action="start-edit"'), 'editor entry should not show a separate view-mode edit button');
 
   const v2Html = await context.EieTimetableView.render();
+  assert(v2Html.includes('data-eie-print-timetable'), 'operating timetable should expose a print button');
   assert(v2Html.includes('data-eie-edit-toggle'), 'operating timetable should keep an edit entry control');
   assert(v2Html.includes('eie-v2-title'), 'operating timetable should remain the main timetable view');
+  assert(timetableSource.includes('window.print?.()'), 'timetable print button should call browser print');
+  assert(editorSource.includes('printEditTimetable'), 'editor print button should call the editor print flow');
+  assert(editorSource.includes('eie-printing-timetable-editor'), 'editor print flow should scope print mode on the body');
+  assert(cssSource.includes('body.eie-printing-timetable'), 'print CSS should scope timetable print layout');
+  assert(cssSource.includes('body.eie-printing-timetable-editor'), 'print CSS should scope timetable editor print layout');
+  assert(cssSource.includes('@media print'), 'timetable print layout should use print media CSS');
 
   console.log('EIE timetable edit entry regression test passed');
 })().catch(err => {

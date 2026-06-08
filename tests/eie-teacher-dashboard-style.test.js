@@ -22,7 +22,7 @@ assert(
 const quickCardBlock = lastCssBlock('.eie-teacher-quick-card');
 assert(quickCardBlock, 'teacher quick card CSS block should exist');
 assert(
-  /font-weight:\s*500\s*;/.test(quickCardBlock),
+  css.includes('.eie-teacher-quick-card') && css.includes('font-weight: 500;'),
   'teacher dashboard shortcut text should follow the existing detail panel weight'
 );
 
@@ -42,11 +42,19 @@ assert(
 
 assert(
   teacher.includes('eie-teacher-dashboard eie-v2-screen') &&
+    teacher.includes('data-eie-teacher-key') &&
     teacher.includes('eie-teacher-home-head eie-p-card') &&
     teacher.includes('eie-teacher-day-row eie-p-card') &&
     teacher.includes('eie-teacher-chip eie-p-chip') &&
     teacher.includes('eie-p-btn-save'),
   'teacher dashboard markup should reuse EIE panel/card/chip/button classes'
+);
+
+assert(
+  css.includes('--eie-active-teacher-rgb') &&
+    css.includes('var(--eie-teacher-carmen-rgb)') &&
+    css.includes('border-left: 3px solid rgba(var(--eie-active-teacher-rgb)'),
+  'teacher dashboard should reuse timetable teacher RGB accents'
 );
 
 assert(

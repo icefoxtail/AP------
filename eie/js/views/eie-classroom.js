@@ -665,7 +665,7 @@
         var count = students.length ? '재원' + String(students.length) : '';
         var absence = attendanceSummaryForCell(cell);
         var meta = [count, absence].filter(Boolean).join(' · ');
-        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(homeroomTeacherOfCell(cell))) + '" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
             + '<span class="eie-classroom-schedule-period">' + esc(text(cell && (cell.period_order || cell.period_label)) || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(cellTitle(cell)) + '</span>'
             + '<span class="eie-classroom-schedule-meta">' + esc(meta) + '</span>'
@@ -679,7 +679,7 @@
         var students = getAssignedStudents(cell);
         var count = students.length ? '재원' + String(students.length) : '';
         var meta = days.map(function (day) { return day + ' ' + name; }).join(' · ');
-        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(name)) + '" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
             + '<span class="eie-classroom-schedule-period">' + esc(text(cell && (cell.period_order || cell.period_label)) || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(cellTitle(cell)) + '</span>'
             + '<span class="eie-classroom-schedule-meta">'
@@ -699,23 +699,46 @@
             + '</div>';
     }
 
+    function renderTeacherOverallAssignedSummary(items, name) {
+        var rows = Array.isArray(items) ? items : [];
+        var dayCounts = {};
+        rows.forEach(function (item) {
+            (Array.isArray(item && item.days) ? item.days : []).forEach(function (day) {
+                dayCounts[day] = (dayCounts[day] || 0) + 1;
+            });
+        });
+        var daySummary = ['월', '화', '수', '목', '금'].map(function (day) {
+            return dayCounts[day] ? '<span class="eie-classroom-summary-chip">' + esc(day) + ' ' + esc(String(dayCounts[day])) + '</span>' : '';
+        }).join('');
+        var listHtml = rows.map(function (item) {
+            return renderTeacherOverallDayRow(item, name);
+        }).join('');
+        return '<details class="eie-classroom-subgroup eie-classroom-collapsed-group">'
+            + '<summary class="eie-classroom-subhead">'
+            + '<span>요일별 담당 클래스</span>'
+            + '<strong>' + esc(String(rows.length)) + '개</strong>'
+            + (daySummary ? '<span class="eie-classroom-summary-chips">' + daySummary + '</span>' : '')
+            + '</summary>'
+            + '<div class="eie-classroom-schedule-list">'
+            + (listHtml || '<div class="eie-empty-box">표시할 수업이 없습니다.</div>')
+            + '</div>'
+            + '</details>';
+    }
+
     function renderTeacherOverallGroups(cells, name) {
         var split = splitTeacherOverallCells(cells, name);
         var homeroomHtml = split.homeroom.map(renderClassroomRow).join('');
-        var dayAssignedHtml = split.dayAssigned.map(function (item) {
-            return renderTeacherOverallDayRow(item, name);
-        }).join('');
         return '<div class="eie-classroom-schedule-groups">'
-            + '<section class="eie-classroom-teacher-group eie-p-card">'
+            + '<section class="eie-classroom-teacher-group eie-p-card" data-eie-classroom-teacher-key="' + esc(teacherKey(name)) + '">'
             + '<div class="eie-classroom-teacher-head"><strong>' + esc(name) + '</strong></div>'
             + renderTeacherOverallSection('담임 클래스', homeroomHtml)
-            + renderTeacherOverallSection('요일별 담당 클래스', dayAssignedHtml)
+            + renderTeacherOverallAssignedSummary(split.dayAssigned, name)
             + '</section>'
             + '</div>';
     }
 
     function renderTeacherDayRow(row) {
-        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" onclick="EieClassroomView.openDetail(' + jsArg(row.cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(effectiveTeacherName())) + '" onclick="EieClassroomView.openDetail(' + jsArg(row.cellId) + ')">'
             + '<span class="eie-classroom-schedule-period">' + esc(row.periodLabel || row.periodOrder || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(row.className || '수업명 없음') + '</span>'
             + '<span class="eie-classroom-schedule-meta">'
@@ -737,7 +760,7 @@
             var dayRows = timetableTeacherDayRows(cells, teacherName, active);
             if (active && dayRows) {
                 return '<div class="eie-classroom-schedule-groups">'
-                    + '<section class="eie-classroom-teacher-group eie-p-card">'
+                    + '<section class="eie-classroom-teacher-group eie-p-card" data-eie-classroom-teacher-key="' + esc(teacherKey(teacherName)) + '">'
                     + '<div class="eie-classroom-teacher-head"><strong>' + esc(teacherName) + '</strong></div>'
                     + '<div class="eie-classroom-schedule-list">'
                     + (dayRows.length ? dayRows.map(renderTeacherDayRow).join('') : '<div class="eie-empty-box" data-eie-classroom-empty-day="true">' + esc(active) + '요일 수업이 없습니다.</div>')
@@ -754,7 +777,7 @@
             }
             return '<div class="eie-classroom-schedule-groups">'
                 + timetableGroups.map(function (group) {
-                    return '<section class="eie-classroom-teacher-group eie-p-card">'
+                    return '<section class="eie-classroom-teacher-group eie-p-card" data-eie-classroom-teacher-key="' + esc(teacherKey(group.name)) + '">'
                         + '<div class="eie-classroom-teacher-head"><strong>' + esc(group.name) + '</strong></div>'
                         + '<div class="eie-classroom-schedule-list">'
                         + group.cells.map(renderClassroomRow).join('')
@@ -776,7 +799,7 @@
             + roster.map(function (name) {
                 var teacherCells = cellsForTeacherOnDay(filtered, name, active);
                 if (!teacherCells.length) return '';
-                return '<section class="eie-classroom-teacher-group eie-p-card">'
+                return '<section class="eie-classroom-teacher-group eie-p-card" data-eie-classroom-teacher-key="' + esc(teacherKey(name)) + '">'
                     + '<div class="eie-classroom-teacher-head"><strong>' + esc(name) + '</strong></div>'
                     + '<div class="eie-classroom-schedule-list">'
                     + teacherCells.map(renderClassroomRow).join('')

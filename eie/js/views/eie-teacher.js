@@ -563,7 +563,7 @@
         var chips = [];
         if (count) chips.push('재원' + count);
         if (opts.showAttendance) chips.push(attendanceShortLabel(cell, todayIso()));
-        return '<button type="button" class="eie-teacher-day-row eie-p-card" data-eie-teacher-cell-id="' + esc(cellId) + '" onclick="EieTeacherView.openClassroom(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-teacher-day-row eie-p-card" data-eie-teacher-cell-id="' + esc(cellId) + '" data-eie-teacher-key="' + esc(normalizeName(_teacherName)) + '" onclick="EieTeacherView.openClassroom(' + jsArg(cellId) + ')">'
             + '<span class="eie-teacher-day-row__period">' + esc(periodLabelOf(cell)) + '</span>'
             + '<span class="eie-teacher-day-row__main">'
             + '<strong>' + esc(className) + '</strong>'
@@ -598,8 +598,9 @@
         var selected = dayFromValue(_dayTab) || todayWeekday();
         var rows = sortCells(cellsForTeacherOnDay(_cells, _teacherName, selected.label));
         var showAttendance = selected.label === todayLabel();
+        var sectionTitle = showAttendance ? '오늘 수업' : selected.label + '요일 수업';
         return '<div class="eie-teacher-schedule eie-teacher-schedule--today eie-p-card">'
-            + renderSectionHead('오늘 수업')
+            + renderSectionHead(sectionTitle)
             + renderDayTabbar()
             + '<div class="eie-teacher-day-card-list">'
             + (rows.length ? rows.map(function (cell) { return renderClassRow(cell, { showAttendance: showAttendance, dayValue: selected.label }); }).join('') : '<div class="eie-empty-box">' + esc(selected.label) + '요일 담당 수업이 없습니다.</div>')
@@ -615,7 +616,7 @@
         var todayRows = sortCells(cellsForTeacherOnDay(_cells, _teacherName, todayIso()));
         var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
 
-        return '<section class="eie-teacher-dashboard eie-v2-screen" aria-labelledby="eie-teacher-title">'
+        return '<section class="eie-teacher-dashboard eie-v2-screen" data-eie-teacher-key="' + esc(normalizeName(_teacherName)) + '" aria-labelledby="eie-teacher-title">'
             + '<h1 id="eie-teacher-title" class="eie-teacher-sr-title">' + esc(_teacherName || '선생님') + ' 선생님 대시보드</h1>'
             + '<div class="eie-teacher-dashboard-shell">'
             + errorHtml
