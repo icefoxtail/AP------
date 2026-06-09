@@ -44,8 +44,8 @@ assert(
 );
 
 assert(
-  source.includes('EIE 출석부 준비중') && !source.includes('data-eie-route="classroom"'),
-  'Attendance shortcut should be visible but disabled until the attendance book is implemented'
+  source.includes('data-eie-route="attendance"') && source.includes('aria-label="EIE 출석부"'),
+  'Attendance shortcut should be enabled and route to the implemented attendance board'
 );
 
 assert(source.includes("renderMiniMetric('재원'"), 'EIE owner dashboard should keep the active-student metric');

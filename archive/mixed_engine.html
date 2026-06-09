@@ -186,6 +186,7 @@
         .question-table-wrap { margin: 4px 0 8px 0; }
         /* 조건/보기/자료 박스는 .box 또는 .question-note-box를 사용한다. question-table은 행/열이 있는 실제 표에만 사용한다. */
         .question-note-box,
+        .note-box,
         .box {
             display: inline-block;
             max-width: 100%;
@@ -930,6 +931,48 @@ function renderQuestionImageHTML(q) {
     return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
 }
 
+const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full'];
+
+function autoImageSizeClassFor(img) {
+    const width = Number(img && img.naturalWidth) || 0;
+    const height = Number(img && img.naturalHeight) || 0;
+    if (!width || !height) return 'image-medium';
+    const ratio = width / height;
+    if (ratio >= 2.2) return 'image-full';
+    if (ratio >= 1.25) return 'image-large';
+    if (ratio >= 0.8) return 'image-small';
+    return 'image-medium';
+}
+
+function waitForQuestionImage(img) {
+    if (!img || img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+        let done = false;
+        const finish = () => {
+            if (done) return;
+            done = true;
+            resolve();
+        };
+        img.addEventListener('load', finish, { once: true });
+        img.addEventListener('error', finish, { once: true });
+        setTimeout(finish, 1200);
+    });
+}
+
+async function applyAutoImageSizeClasses(root) {
+    const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
+    await Promise.all(wraps.map(async wrap => {
+        if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
+        const img = wrap.querySelector('img');
+        if (!img) {
+            wrap.classList.add('image-medium');
+            return;
+        }
+        await waitForQuestionImage(img);
+        wrap.classList.add(autoImageSizeClassFor(img));
+    }));
+}
+
 /** UI Actions & Navigation */
 function switchMode(mode) {
     if (isQrSolutionMode() && mode !== 'sol') return;
@@ -1022,6 +1065,7 @@ async function renderExam(area, data) {
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
 
+    await applyAutoImageSizeClasses(staging);
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]); await raf();
 
     for (const item of items) {

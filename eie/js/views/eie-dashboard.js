@@ -188,7 +188,7 @@
     function renderActionGrid() {
         return `
             <div class="ap-admin-shortcuts ap-admin-action-grid eie-admin-shortcuts eie-admin-action-grid eie-surface-toolbar eie-surface-toolbar--four" aria-label="원장님 바로가기">
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" disabled aria-label="EIE 출석부 준비중" title="준비중">출석부</button>
+                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="attendance" aria-label="EIE 출석부" title="출석부">출석부</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="timetable" aria-label="EIE 시간표" title="시간표">시간표</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" disabled aria-label="EIE 성적표 준비중" title="준비중">성적표</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="management" aria-label="EIE 관리" title="관리">관리</button>

@@ -24,7 +24,7 @@ export async function handleAuth(request, env, ctx = {}) {
     ).bind(login_id, hash).first();
 
     if (!teacher) {
-      return new Response(JSON.stringify({ success: false, message: '?꾩씠???먮뒗 鍮꾨?踰덊샇 ?ㅻ쪟' }), {
+      return new Response(JSON.stringify({ success: false, message: '아이디 또는 비밀번호 오류' }), {
         status: 401,
         headers
       });

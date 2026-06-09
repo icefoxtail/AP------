@@ -1,0 +1,692 @@
+window.examTitle = "25_제일고_1학기_기말_고2_확률과통계";
+
+window.questionBank = [
+  {
+    id: 1,
+    level: "하",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "7개의 문자 $a, a, a, a, b, b, c$를 일렬로 나열하는 모든 경우의 수를 구하면? (3.5점)",
+    choices: [
+    "90",
+    "95",
+    "100",
+    "105",
+    "110"
+  ],
+    answer: "④",
+    solution: "[키포인트] 같은 문자가 반복되는 배열은 전체 순열에서 같은 문자끼리 바뀐 경우를 나누어 센다.\n1단계: 전체 7자리 중 $a$가 4개, $b$가 2개, $c$가 1개이므로 중복순열의 수를 계산한다.\n2단계: 가능한 배열 수는 $\\dfrac{7!}{4!2!1!}=\\dfrac{5040}{48}=105$이다.\n∴ 정답: ④",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "1",
+    displayNo: "1",
+    pageNo: 1
+  },
+  {
+    id: 2,
+    level: "하",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "서로 다른 3개의 선물 주머니에 서로 다른 5개의 사탕을 담는 모든 경우의 수를 구하면? (3.5점) (단, 빈 선물 주머니가 있을 수 있다.)",
+    choices: [
+    "75",
+    "81",
+    "125",
+    "175",
+    "243"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 서로 다른 사탕을 서로 다른 주머니에 넣고 빈 주머니를 허용하면 각 사탕마다 선택지가 독립적으로 정해진다.\n1단계: 사탕 1개는 3개의 서로 다른 주머니 중 하나에 들어갈 수 있다.\n2단계: 서로 다른 사탕 5개가 각각 독립적으로 3가지 선택을 하므로 전체 경우의 수는 $3^5=243$이다.\n∴ 정답: ⑤",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "2",
+    displayNo: "2",
+    pageNo: 1
+  },
+  {
+    id: 3,
+    level: "하",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "두 사건 $A, B$에 대하여 $P(A)=\\dfrac{1}{2}$, $P(B)=\\dfrac{2}{5}$, $P(A\\cap B)=\\dfrac{1}{5}$일 때, $P(A\\cup B)$의 값은? (3.5점)",
+    choices: [
+    "$\\dfrac{1}{2}$",
+    "$\\dfrac{3}{5}$",
+    "$\\dfrac{7}{10}$",
+    "$\\dfrac{4}{5}$",
+    "$\\dfrac{9}{10}$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 두 사건의 합사건 확률은 두 확률의 합에서 교집합 확률을 한 번 빼서 구한다.\n1단계: 합사건 공식 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$를 적용한다.\n2단계: $P(A\\cup B)=\\dfrac{1}{2}+\\dfrac{2}{5}-\\dfrac{1}{5}=\\dfrac{5}{10}+\\dfrac{4}{10}-\\dfrac{2}{10}=\\dfrac{7}{10}$이다.\n∴ 정답: ③",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "3",
+    displayNo: "3",
+    pageNo: 1
+  },
+  {
+    id: 4,
+    level: "중",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "4쌍의 부부가 원탁에 둘러앉을 때, 부부끼리 이웃하여 앉는 모든 경우의 수를 구하면? (3.7점) (단, 회전하여 일치하는 것은 같은 것으로 본다.)",
+    choices: [
+    "80",
+    "84",
+    "88",
+    "92",
+    "96"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 각 부부를 하나의 묶음으로 보고 원순열을 만든 뒤, 각 묶음 안의 자리 바꿈을 곱한다.\n1단계: 4쌍의 부부를 각각 한 묶음으로 보면 4개의 묶음을 원탁에 배열하는 경우의 수는 $(4-1)!=6$이다.\n2단계: 각 부부 묶음 안에서 두 사람이 서로 자리를 바꿀 수 있으므로 $2^4=16$을 곱한다. 전체 경우의 수는 $6\\times16=96$이다.\n∴ 정답: ⑤",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "4",
+    displayNo: "4",
+    pageNo: 1
+  },
+  {
+    id: 5,
+    level: "하",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "주머니 속에 흰 공 5개, 검정 공 $n$개가 들어 있다. 이 주머니에서 임의로 한 개의 공을 꺼내어 색을 확인하고 다시 넣는 시행을 2000번 하였더니 그중 흰 공이 500번 나왔다. 이때 $n$의 값으로 생각할 수 있는 수는? (3.7점)",
+    choices: [
+    "15",
+    "20",
+    "25",
+    "30",
+    "35"
+  ],
+    answer: "①",
+    solution: "[키포인트] 충분히 많은 반복 시행에서 얻은 상대도수는 한 번 시행의 확률로 볼 수 있다.\n1단계: 흰 공이 나온 상대도수는 $\\dfrac{500}{2000}=\\dfrac{1}{4}$이다.\n2단계: 흰 공이 나올 확률은 $\\dfrac{5}{5+n}$이므로 $\\dfrac{5}{5+n}=\\dfrac{1}{4}$이다. 따라서 $20=5+n$이고 $n=15$이다.\n∴ 정답: ①",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "5",
+    displayNo: "5",
+    pageNo: 1
+  },
+  {
+    id: 6,
+    level: "중",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "5개의 당첨 제비를 포함하여 15개의 제비가 들어 있는 상자에서 $A, B$학생이 순서대로 각각 제비를 1개씩 임의로 뽑을 때, $B$학생이 당첨 제비를 뽑을 확률은? (3.7점) (단, 뽑은 제비는 다시 넣지 않는다.)",
+    choices: [
+    "$\\dfrac{1}{3}$",
+    "$\\dfrac{8}{21}$",
+    "$\\dfrac{3}{7}$",
+    "$\\dfrac{10}{21}$",
+    "$\\dfrac{11}{21}$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 제비를 다시 넣지 않아도 특정 순서의 학생이 받는 제비는 전체 제비 중 하나가 균등하게 정해진다.\n1단계: $B$학생이 뽑는 두 번째 제비는 15개의 제비 중 하나가 될 수 있고, 각 제비가 두 번째 위치에 올 가능성은 같다.\n2단계: 15개의 제비 중 당첨 제비가 5개이므로 $B$학생이 당첨 제비를 뽑을 확률은 $\\dfrac{5}{15}=\\dfrac{1}{3}$이다.\n∴ 정답: ①",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "6",
+    displayNo: "6",
+    pageNo: 1
+  },
+  {
+    id: 7,
+    level: "중",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "두 사건 $A$와 $B$가 서로 독립이고 $P(A)=\\dfrac{1}{3}$, $P(B)=\\dfrac{5}{7}$일 때, $P(B^C\\mid A^C)$의 값은? (3.7점)",
+    choices: [
+    "$\\dfrac{1}{7}$",
+    "$\\dfrac{2}{7}$",
+    "$\\dfrac{3}{7}$",
+    "$\\dfrac{4}{7}$",
+    "$\\dfrac{5}{7}$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 독립인 사건은 여사건으로 바꾸어도 독립성이 유지된다.\n1단계: $A$와 $B$가 서로 독립이면 $A^C$와 $B^C$도 서로 독립이므로 $P(B^C\\mid A^C)=P(B^C)$이다.\n2단계: $P(B^C)=1-P(B)=1-\\dfrac{5}{7}=\\dfrac{2}{7}$이다.\n∴ 정답: ②",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "7",
+    displayNo: "7",
+    pageNo: 1
+  },
+  {
+    id: 8,
+    level: "중",
+    category: "이항정리",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-02",
+    standardUnit: "이항정리",
+    standardUnitOrder: 2,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "다항식 $(2x-1)^5(x+1)$의 전개식에서 $x^4$의 계수는? (4.1점)",
+    choices: [
+    "-32",
+    "-16",
+    "0",
+    "16",
+    "32"
+  ],
+    answer: "③",
+    solution: "[키포인트] 곱의 전개식에서 $x^4$항은 앞 다항식의 $x^4$항과 $x^3$항에서 나온다.\n1단계: $(2x-1)^5$에서 $x^4$의 계수는 ${}_{5}C_{4}(2)^4(-1)=-80$이고, $x^3$의 계수는 ${}_{5}C_{3}(2)^3(-1)^2=80$이다.\n2단계: 뒤의 $(x+1)$을 곱하면 $x^4$의 계수는 앞의 $x^4$ 계수에 $1$을 곱한 값과 앞의 $x^3$ 계수에 $x$를 곱한 값의 합이므로 $-80+80=0$이다.\n∴ 정답: ③",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "8",
+    displayNo: "8",
+    pageNo: 2
+  },
+  {
+    id: 9,
+    level: "중",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "9명 중에서 4명 이하를 뽑는 모든 경우의 수를 구하면? (4.1점)",
+    choices: [
+    "128",
+    "256",
+    "512",
+    "1024",
+    "2048"
+  ],
+    answer: "②",
+    solution: "[키포인트] 4명 이하를 뽑는 경우는 0명, 1명, 2명, 3명, 4명을 뽑는 경우를 모두 더한다.\n1단계: 인원수별 경우의 수는 ${}_{9}C_{0}, {}_{9}C_{1}, {}_{9}C_{2}, {}_{9}C_{3}, {}_{9}C_{4}$이다.\n2단계: 전체 경우의 수는 $1+9+36+84+126=256$이다.\n∴ 정답: ②",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "9",
+    displayNo: "9",
+    pageNo: 2
+  },
+  {
+    id: 10,
+    level: "중",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 16개의 점이 가로, 세로로 각각 1만큼의 간격으로 놓여 있다. 임의로 서로 다른 두 점을 선택할 때, 선택된 두 점 사이의 거리가 1보다 클 확률은? (4.1점)<br><svg class=\"grid-dot-diagram\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" aria-label=\"4행 4열 격자점\"><circle cx=\"20\" cy=\"20\" r=\"4\"></circle><circle cx=\"50\" cy=\"20\" r=\"4\"></circle><circle cx=\"80\" cy=\"20\" r=\"4\"></circle><circle cx=\"110\" cy=\"20\" r=\"4\"></circle><circle cx=\"20\" cy=\"50\" r=\"4\"></circle><circle cx=\"50\" cy=\"50\" r=\"4\"></circle><circle cx=\"80\" cy=\"50\" r=\"4\"></circle><circle cx=\"110\" cy=\"50\" r=\"4\"></circle><circle cx=\"20\" cy=\"80\" r=\"4\"></circle><circle cx=\"50\" cy=\"80\" r=\"4\"></circle><circle cx=\"80\" cy=\"80\" r=\"4\"></circle><circle cx=\"110\" cy=\"80\" r=\"4\"></circle><circle cx=\"20\" cy=\"110\" r=\"4\"></circle><circle cx=\"50\" cy=\"110\" r=\"4\"></circle><circle cx=\"80\" cy=\"110\" r=\"4\"></circle><circle cx=\"110\" cy=\"110\" r=\"4\"></circle></svg>",
+    choices: [
+    "$\\dfrac{7}{10}$",
+    "$\\dfrac{11}{15}$",
+    "$\\dfrac{23}{30}$",
+    "$\\dfrac{4}{5}$",
+    "$\\dfrac{5}{6}$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 거리 1보다 큰 경우는 전체 두 점 선택에서 가로 또는 세로로 바로 이웃한 점쌍을 제외해서 구한다.\n1단계: 16개의 점 중 서로 다른 두 점을 고르는 전체 경우의 수는 ${}_{16}C_{2}=120$이다.\n2단계: 거리 1인 점쌍은 가로 방향 $4\\times3=12$개, 세로 방향 $4\\times3=12$개로 모두 24개이다. 따라서 거리 1보다 큰 경우는 $120-24=96$개이다.\n3단계: 구하는 확률은 $\\dfrac{96}{120}=\\dfrac{4}{5}$이다.\n∴ 정답: ④",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "10",
+    displayNo: "10",
+    pageNo: 2
+  },
+  {
+    id: 11,
+    level: "중",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "두 사건 $A, B$에 대하여 $0\\lt P(A)\\lt1$, $0\\lt P(B)\\lt1$일 때, 다음 중에서 옳은 것만을 있는 대로 고른 것은? (4.1점) (단, $A^C$은 $A$의 여사건이다.)<br><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">ㄱ. 사건 $A$와 $B$가 서로 독립이면 사건 $A$와 $B$는 서로 배반이다.<br>ㄴ. 사건 $A$와 $B$가 서로 독립이면 $P(A^C\\mid B)=1-P(A)$이다.<br>ㄷ. $P(A\\mid B^C)=0$이면 $P(A\\mid B)P(B)=P(A)$이다.</div>",
+    choices: [
+    "ㄱ",
+    "ㄴ",
+    "ㄱ, ㄴ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
+    answer: "④",
+    solution: "[키포인트] 독립과 배반은 다른 개념이며 조건부확률 식은 교집합으로 바꾸어 확인한다.\n1단계: ㄱ에서 $A$와 $B$가 독립이면 $P(A\\cap B)=P(A)P(B)\\gt0$이므로 배반이 아니다. 따라서 ㄱ은 거짓이다.\n2단계: ㄴ에서 $A$와 $B$가 독립이면 $A^C$와 $B$도 독립이므로 $P(A^C\\mid B)=P(A^C)=1-P(A)$이다. 따라서 ㄴ은 참이다.\n3단계: ㄷ에서 $P(A\\mid B^C)=0$이면 $P(A\\cap B^C)=0$이고 $P(A)=P(A\\cap B)=P(A\\mid B)P(B)$이다. 따라서 ㄷ은 참이다.\n∴ 정답: ④",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "11",
+    displayNo: "11",
+    pageNo: 2
+  },
+  {
+    id: 12,
+    level: "중",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "동전 1개와 주사위 1개를 동시에 던질 때, 세 사건 $X, Y, Z$를 다음과 같이 정의하자. 보기에서 서로 독립인 사건끼리 짝지어진 것만을 있는 대로 고른 것은? (4.1점)<br><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">$X$: 주사위가 3의 배수의 눈의 수가 나오는 사건<br>$Y$: 동전의 앞면이 나오는 사건<br>$Z$: 주사위가 4의 약수의 눈의 수가 나오는 사건</div><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">ㄱ. $X$와 $Y$ &nbsp;&nbsp; ㄴ. $X$와 $Z$ &nbsp;&nbsp; ㄷ. $Y$와 $Z$</div>",
+    choices: [
+    "ㄱ",
+    "ㄴ",
+    "ㄱ, ㄷ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
+    answer: "③",
+    solution: "[키포인트] 동전 결과로 정해지는 사건은 주사위 결과로 정해지는 사건과 독립이고, 같은 주사위 결과로 정해지는 사건끼리는 직접 확인한다.\n1단계: $X=\\{3,6\\}$, $Z=\\{1,2,4\\}$이므로 $X\\cap Z=\\varnothing$이다. 그런데 $P(X)P(Z)=\\dfrac{2}{6}\\cdot\\dfrac{3}{6}=\\dfrac{1}{6}\\ne0$이므로 $X$와 $Z$는 독립이 아니다.\n2단계: $Y$는 동전 결과만으로 정해지고 $X, Z$는 주사위 결과만으로 정해지므로 $X$와 $Y$, $Y$와 $Z$는 각각 독립이다.\n3단계: 독립인 쌍은 ㄱ, ㄷ이다.\n∴ 정답: ③",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "12",
+    displayNo: "12",
+    pageNo: 2
+  },
+  {
+    id: 13,
+    level: "중",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "어느 고등학교 학생 200명을 대상으로 방과후 활동으로 수학과 영어 중에 반드시 하나를 선택하도록 하였더니 남학생 중에서 수학을 선택한 학생이 60명, 영어를 선택한 학생이 30명이다. 이 고등학교 학생 200명 중에서 임의로 뽑은 1명의 학생이 여학생일 때, 이 학생이 방과후 활동으로 영어를 선택한 학생일 확률이 $\\dfrac{3}{5}$이다. 방과후 활동으로 수학을 선택한 여학생의 수는? (4.1점)",
+    choices: [
+    "44",
+    "50",
+    "56",
+    "62",
+    "68"
+  ],
+    answer: "①",
+    solution: "[키포인트] 여학생 수를 먼저 구한 뒤 조건부확률로 여학생 중 영어 선택 인원을 구한다.\n1단계: 남학생은 수학 선택 60명과 영어 선택 30명이므로 모두 90명이다. 따라서 여학생은 $200-90=110$명이다.\n2단계: 여학생일 때 영어를 선택한 확률이 $\\dfrac{3}{5}$이므로 여학생 중 영어 선택 인원은 $110\\times\\dfrac{3}{5}=66$명이다.\n3단계: 여학생 중 수학 선택 인원은 $110-66=44$명이다.\n∴ 정답: ①",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "13",
+    displayNo: "13",
+    pageNo: 2
+  },
+  {
+    id: 14,
+    level: "중",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "어떤 회사의 제품은 해외 공장과 국내 공장에서 각각 전체 제품의 60%, 40%가 생산되고, 두 공장에서 생산된 제품의 불량률은 각각 3%, 2%라고 한다. 이 회사의 제품 중에서 임의로 1개를 택하였더니 불량품이었을 때, 그 제품이 국내 공장에서 생산된 제품일 확률은 $k$이다. $52k$의 값은? (4.1점)",
+    choices: [
+    "8",
+    "10",
+    "12",
+    "14",
+    "16"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 불량품이라는 조건이 주어졌으므로 공장별 생산 비율과 불량률을 함께 곱해 조건부확률을 구한다.\n1단계: 국내 공장에서 생산된 불량품일 확률은 $0.4\\times0.02=0.008$이고, 해외 공장에서 생산된 불량품일 확률은 $0.6\\times0.03=0.018$이다.\n2단계: 불량품 중 국내 공장 제품일 확률은 $k=\\dfrac{0.008}{0.008+0.018}=\\dfrac{8}{26}=\\dfrac{4}{13}$이다.\n3단계: $52k=52\\times\\dfrac{4}{13}=16$이다.\n∴ 정답: ⑤",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "14",
+    displayNo: "14",
+    pageNo: 3
+  },
+  {
+    id: 15,
+    level: "중",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "다음은 $A$팀, $B$팀과의 농구 챔피언 결정전 진행에 관한 설명이다. $A$팀이 5차전에서 최종 우승할 확률은? (4.1점)<br><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">(가) 매 경기에는 무승부는 없고, 먼저 3승을 거둔 팀이 최종 우승을 하게 된다.<br>(나) $A$팀이 $B$팀을 이길 확률은 $\\dfrac{1}{3}$이다.</div>",
+    choices: [
+    "$\\dfrac{2}{27}$",
+    "$\\dfrac{8}{81}$",
+    "$\\dfrac{10}{81}$",
+    "$\\dfrac{4}{27}$",
+    "$\\dfrac{14}{81}$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 5차전에서 우승하려면 4차전까지 2승 2패이고 5차전을 이겨야 한다.\n1단계: 처음 4경기에서 $A$팀이 정확히 2승 2패를 할 확률은 ${}_{4}C_{2}(\\dfrac{1}{3})^2(\\dfrac{2}{3})^2$이다.\n2단계: 5차전에서 $A$팀이 이길 확률 $\\dfrac{1}{3}$을 곱하면 ${}_{4}C_{2}(\\dfrac{1}{3})^2(\\dfrac{2}{3})^2\\cdot\\dfrac{1}{3}=6\\cdot\\dfrac{1}{9}\\cdot\\dfrac{4}{9}\\cdot\\dfrac{1}{3}=\\dfrac{8}{81}$이다.\n∴ 정답: ②",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "15",
+    displayNo: "15",
+    pageNo: 3
+  },
+  {
+    id: 16,
+    level: "중",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "다음 조건을 만족시키는 자연수 $x, y, z$의 모든 순서쌍 $(x, y, z)$의 개수를 구하면? (4.3점)<br><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">(가) $x+y+z=20$<br>(나) $x, y$는 홀수이고, $z$는 짝수이다.</div>",
+    choices: [
+    "33",
+    "36",
+    "39",
+    "42",
+    "45"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 홀수와 짝수 조건을 치환하여 음이 아닌 정수해의 개수로 바꾼다.\n1단계: $x, y$는 홀수 자연수이므로 $x=2a+1$, $y=2b+1$로 두고, $z$는 짝수 자연수이므로 $z=2c$로 둔다. 이때 $a,b\\ge0$, $c\\ge1$이다.\n2단계: $2a+1+2b+1+2c=20$이므로 $a+b+c=9$이다. $d=c-1$로 두면 $a+b+d=8$이고 $a,b,d$는 음이 아닌 정수이다.\n3단계: 음이 아닌 정수해의 개수는 ${}_{8+3-1}C_{3-1}={}_{10}C_{2}=45$이다.\n∴ 정답: ⑤",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "16",
+    displayNo: "16",
+    pageNo: 3
+  },
+  {
+    id: 17,
+    level: "상",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "숫자 5, 6, 7, 8 중에서 중복을 허락하여 네 개를 선택한 후 일렬로 나열할 때, 다음 조건을 만족시키도록 나열하는 경우의 수를 구하면? (4.3점)<br><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">(가) 숫자 5는 두 번 이상 나온다.<br>(나) 이웃한 두 수의 차는 모두 2 이하이다.</div>",
+    choices: [
+    "32",
+    "37",
+    "42",
+    "47",
+    "52"
+  ],
+    answer: "②",
+    solution: "[키포인트] 숫자 5의 개수로 경우를 나누고, 이웃한 두 수의 차가 3이 되는 5와 8의 인접만 제외한다.\n1단계: 5가 4번 나오면 $5555$ 하나이므로 1가지이다.\n2단계: 5가 3번 나오면 나머지 한 수가 8인 배열은 8이 어느 위치에 있어도 적어도 한 5와 이웃하여 차가 3이 되므로 불가능하다. 나머지 한 수는 6 또는 7만 가능하고, 그 위치가 4곳이므로 $4\\times2=8$가지이다.\n3단계: 5가 2번 나올 때 두 5의 위치를 고정해 센다. 5의 위치가 $(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)$이면 나머지 두 칸에 들어갈 수 있는 순서쌍의 수는 각각 $6,4,6,4,4,4$이다. 따라서 $6+4+6+4+4+4=28$가지이다.\n4단계: 전체 경우의 수는 $1+8+28=37$이다.\n∴ 정답: ②",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "17",
+    displayNo: "17",
+    pageNo: 3
+  },
+  {
+    id: 18,
+    level: "상",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "한 개의 주사위를 두 번 던져 나온 눈의 수를 차례로 $a, b$라 하자. 포물선 $y=x^2-ax+b$와 직선 $y=x$가 서로 만나지 않을 때, $|a-b|$가 짝수일 확률은 $k$이다. $110k$의 값은? (4.3점)",
+    choices: [
+    "46",
+    "48",
+    "50",
+    "52",
+    "54"
+  ],
+    answer: "③",
+    solution: "[키포인트] 포물선과 직선이 만나지 않는 조건을 판별식으로 찾은 뒤, 그 조건 안에서 짝수 조건을 센다.\n1단계: 교점은 $x^2-ax+b=x$에서 $x^2-(a+1)x+b=0$의 실근 여부로 판단한다. 서로 만나지 않으려면 판별식이 음수이므로 $(a+1)^2-4b\\lt0$이어야 한다.\n2단계: $a,b$가 각각 1부터 6까지일 때 이 조건을 만족하는 순서쌍은 $(1,2),(1,3),(1,4),(1,5),(1,6),(2,3),(2,4),(2,5),(2,6),(3,5),(3,6)$의 11개이다.\n3단계: 이 중 $|a-b|$가 짝수인 경우는 $(1,3),(1,5),(2,4),(2,6),(3,5)$의 5개이므로 $k=\\dfrac{5}{11}$이다. 따라서 $110k=50$이다.\n∴ 정답: ③",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "18",
+    displayNo: "18",
+    pageNo: 3
+  },
+  {
+    id: 19,
+    level: "상",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "1부터 8까지의 자연수가 하나씩 적혀 있는 8장의 카드가 들어 있는 주머니가 있다. 이 주머니에서 임의로 두 장의 카드를 동시에 꺼내어 적혀 있는 수를 확인한 후 다시 넣는 시행을 두 번 반복한다. 첫 번째 시행에서 확인한 두 수 중 작은 것을 $a_1$, 큰 수를 $a_2$라 하고, 두 번째 시행에서 확인한 두 수 중 작은 것을 $b_1$, 큰 수를 $b_2$라 하자.<br> 두 집합 $A=\\{x\\mid a_1\\le x\\le a_2\\}$, $B=\\{x\\mid b_1\\le x\\le b_2\\}$라 할 때, $A\\cap B\\ne\\varnothing$일 확률은? (4.5점)",
+    choices: [
+    "$\\dfrac{17}{28}$",
+    "$\\dfrac{19}{28}$",
+    "$\\dfrac{3}{4}$",
+    "$\\dfrac{23}{28}$",
+    "$\\dfrac{25}{28}$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 구간이 겹치는 경우를 직접 세기보다 전체에서 서로 떨어진 경우를 빼면 계산이 단순하다.\n1단계: 한 번 시행에서 두 카드를 고르는 경우의 수는 ${}_{8}C_{2}=28$이므로 두 번 시행의 전체 경우의 수는 $28^2$이다.\n2단계: 두 구간이 겹치지 않으려면 네 끝점이 모두 달라야 하고, 작은 두 수가 한 시행의 두 수, 큰 두 수가 다른 시행의 두 수가 되어야 한다. 네 수를 고르는 방법은 ${}_{8}C_{4}$가지이다.\n3단계: 고른 네 수를 $p<q<r<s$라고 하면 겹치지 않는 배치는 첫 번째 시행이 $\\{p,q\\}$이고 두 번째 시행이 $\\{r,s\\}$인 경우와 그 반대의 2가지이다. 따라서 겹치지 않는 경우는 $2\\times{}_{8}C_{4}=140$가지이다.\n4단계: 겹치는 경우의 수는 $28^2-140=644$이고, 확률은 $\\dfrac{644}{784}=\\dfrac{23}{28}$이다.\n∴ 정답: ④",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "19",
+    displayNo: "19",
+    pageNo: 3
+  },
+  {
+    id: 20,
+    level: "상",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "기출"
+  ],
+    wide: false,
+    content: "공 15개와 비어 있는 세 바구니 $A, B, C$가 있다. 한 개의 주사위를 사용하여 다음 규칙에 따라 세 바구니 $A, B, C$에 공을 넣는 시행을 한다.<br><div class=\"note-box\" style=\"border:1.5px solid #333; border-radius:6px; padding:8px 10px; margin:8px 0; background:#fff;\">주사위를 한 번 던져 나온 눈의 수가 6의 약수이면 세 바구니 $A, B, C$에 넣는 공의 개수가 각각 1, 2, 0이고, 나온 눈의 수가 6의 약수가 아니면 세 바구니 $A, B, C$에 넣는 공의 개수가 각각 1, 1, 1이다.</div>이 시행을 5번 반복한 후 바구니 $B$에 들어 있는 공의 개수가 짝수일 때, 바구니 $A$에 들어 있는 공의 개수와 상자 $C$에 들어 있는 공의 개수의 합이 8 이상일 확률은? (4.5점)",
+    choices: [
+    "$\\dfrac{5}{61}$",
+    "$\\dfrac{8}{61}$",
+    "$\\dfrac{11}{61}$",
+    "$\\dfrac{14}{61}$",
+    "$\\dfrac{17}{61}$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 6의 약수가 아닌 눈이 나온 횟수 $n$으로 바꾸면 조건 사건과 구하는 사건을 동시에 정리할 수 있다.\n1단계: 한 시행에서 6의 약수인 눈이 나올 확률은 $\\dfrac{4}{6}=\\dfrac{2}{3}$, 6의 약수가 아닌 눈이 나올 확률은 $\\dfrac{2}{6}=\\dfrac{1}{3}$이다. 6의 약수가 아닌 눈이 나온 횟수를 $n$이라 하자.\n2단계: 5번 후 바구니 $B$의 공 개수는 $2(5-n)+n=10-n$이다. $B$의 공 개수가 짝수인 조건은 $n$이 짝수인 것이므로 $n=0,2,4$이다.\n3단계: 바구니 $A$에는 매 시행마다 1개씩 들어가므로 5개이고, 바구니 $C$에는 6의 약수가 아닌 눈이 나온 시행에서만 1개씩 들어가므로 $n$개이다. 따라서 $A+C=5+n$이고, $A+C\\ge8$이려면 $n\\ge3$이므로 조건 사건 안에서 유리한 경우는 $n=4$뿐이다.\n4단계: 조건 사건의 확률은 ${}_{5}C_{0}(\\dfrac{2}{3})^5+{}_{5}C_{2}(\\dfrac{1}{3})^2(\\dfrac{2}{3})^3+{}_{5}C_{4}(\\dfrac{1}{3})^4(\\dfrac{2}{3})$이고, 유리한 사건의 확률은 ${}_{5}C_{4}(\\dfrac{1}{3})^4(\\dfrac{2}{3})$이다.\n5단계: 따라서 구하는 조건부확률은 $\\dfrac{{}_{5}C_{4}(\\dfrac{1}{3})^4(\\dfrac{2}{3})}{{}_{5}C_{0}(\\dfrac{2}{3})^5+{}_{5}C_{2}(\\dfrac{1}{3})^2(\\dfrac{2}{3})^3+{}_{5}C_{4}(\\dfrac{1}{3})^4(\\dfrac{2}{3})}=\\dfrac{10}{122}=\\dfrac{5}{61}$이다.\n∴ 정답: ①",
+    image: "",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "20",
+    displayNo: "20",
+    pageNo: 4
+  },
+  {
+    id: 21,
+    level: "상",
+    category: "확률의 뜻과 활용",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-03",
+    standardUnit: "확률의 뜻과 활용",
+    standardUnitOrder: 3,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "기출",
+    "서술형"
+  ],
+    wide: false,
+    content: "1에서 9까지의 자연수가 하나씩 적혀 있는 9개의 공 중에서 임의로 3개의 공을 차례대로 뽑을 때, 공에 적혀 있는 수를 차례대로 $a, b, c$라 하자. $ab$가 홀수이거나 $bc$가 짝수일 확률을 구하는 과정을 구체적으로 서술하시오. (6점, 부분점수 있음.) (단, 꺼낸 공은 다시 넣지 않는다.)",
+    choices: [],
+    answer: "$\\dfrac{53}{63}$",
+    solution: "[키포인트] 직접 세기보다 여사건을 이용하면 조건을 간단히 셀 수 있다.\n1단계: 전체 경우의 수는 9개의 공 중 3개를 차례로 뽑는 경우이므로 $9\\times8\\times7=504$이다.\n2단계: 구하는 사건의 여사건은 $ab$가 홀수가 아니고 $bc$가 짝수가 아닌 경우이다. $bc$가 짝수가 아니려면 $b,c$가 모두 홀수이고, 이때 $ab$가 홀수가 아니려면 $a$는 짝수이어야 한다.\n3단계: 여사건의 경우의 수는 $a$를 짝수 4개 중에서 고르고, $b$를 홀수 5개 중에서 고른 뒤, $c$를 $b$와 다른 홀수 4개 중에서 고르므로 $4\\times5\\times4=80$이다.\n4단계: 구하는 경우의 수는 $504-80=424$이고, 확률은 $\\dfrac{424}{504}=\\dfrac{53}{63}$이다.\n∴ 정답: $\\dfrac{53}{63}$",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "21",
+    displayNo: "21",
+    pageNo: 4
+  },
+  {
+    id: 22,
+    level: "상",
+    category: "순열과 조합",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-01",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 1,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "기출",
+    "서술형"
+  ],
+    wide: false,
+    content: "비어 있는 세 상자 $A, B, C$에 먼저 흰 공 5개를 남김없이 나누어 넣은 후 검은 공 5개를 남김없이 나누어 넣을 때, 빈 상자가 생기지 않도록 나누어 넣는 경우의 수를 구하는 과정을 구체적으로 서술하시오. (단, 같은 색의 공은 구별하지 않는다.) (7점, 부분점수 있음.)",
+    choices: [],
+    answer: "$336$",
+    solution: "[키포인트] 흰 공과 검은 공을 각각 나누는 전체 경우에서 빈 상자가 생기는 경우를 포함배제로 뺀다.\n1단계: 같은 색의 공 5개를 세 상자에 나누는 경우의 수는 음이 아닌 정수해의 개수이므로 ${}_{5+3-1}C_{3-1}={}_{7}C_{2}=21$이다. 흰 공과 검은 공을 각각 나누므로 전체 경우의 수는 $21^2=441$이다.\n2단계: 특정한 한 상자가 비어 있으려면 흰 공 5개와 검은 공 5개가 모두 나머지 두 상자에만 나뉘어야 한다. 한 색을 두 상자에 나누는 경우는 6가지이므로, 특정 상자가 비는 경우는 $6^2=36$가지이고 세 상자에 대해 $3\\times36=108$가지이다.\n3단계: 두 상자가 동시에 비어 있으면 모든 흰 공과 검은 공이 나머지 한 상자에 들어가는 경우이고, 어느 상자만 비어 있지 않은지 3가지가 있다.\n4단계: 포함배제를 적용하면 빈 상자가 생기지 않는 경우의 수는 $441-108+3=336$이다.\n∴ 정답: $336$",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "22",
+    displayNo: "22",
+    pageNo: 4
+  },
+  {
+    id: 23,
+    level: "상",
+    category: "조건부확률",
+    originalCategory: "25_제일고_1학기_기말_고2_확률과통계",
+    standardCourse: "확률과 통계",
+    standardUnitKey: "H15-PS-04",
+    standardUnit: "조건부확률",
+    standardUnitOrder: 4,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "기출",
+    "서술형"
+  ],
+    wide: false,
+    content: "각 면에 숫자 1, 1, 2, 2, 2, 2가 하나씩 적혀 있는 정육면체 주사위가 있다. 이 주사위를 4번 던질 때, $a_i(1\\le i\\le4)$를 $i$번째 나온 수라 하자. $a_1+a_2\\gt a_3+a_4$일 때, $a_1=a_3=1$일 확률을 구하는 과정을 구체적으로 서술하시오. (7점, 부분점수 있음.)",
+    choices: [],
+    answer: "$\\dfrac{1}{12}$",
+    solution: "[키포인트] 각 결과의 확률이 같지 않으므로 가능한 배열을 같은 비중으로 세지 말고 실제 확률로 계산한다.\n1단계: 이 주사위에서 1이 나올 확률은 $\\dfrac{2}{6}=\\dfrac{1}{3}$, 2가 나올 확률은 $\\dfrac{4}{6}=\\dfrac{2}{3}$이다. 조건 사건을 $A: a_1+a_2\\gt a_3+a_4$라 하자.\n2단계: $A$가 일어나려면 왼쪽 두 수의 합이 오른쪽 두 수의 합보다 커야 한다. 가능한 합을 확률로 계산하면 $P(a_1+a_2=3)=\\dfrac{4}{9}$, $P(a_1+a_2=4)=\\dfrac{4}{9}$이고, 오른쪽 합이 각각 더 작아야 하므로 $P(A)=\\dfrac{4}{9}\\cdot\\dfrac{1}{9}+\\dfrac{4}{9}\\cdot\\dfrac{5}{9}=\\dfrac{24}{81}=\\dfrac{8}{27}$이다.\n3단계: $A$와 $a_1=a_3=1$이 동시에 일어나려면 $a_1=1$, $a_3=1$이고 $1+a_2\\gt1+a_4$이므로 $a_2=2$, $a_4=1$이어야 한다. 이 확률은 $\\dfrac{1}{3}\\cdot\\dfrac{2}{3}\\cdot\\dfrac{1}{3}\\cdot\\dfrac{1}{3}=\\dfrac{2}{81}$이다.\n4단계: 따라서 조건부확률은 $\\dfrac{P(A\\cap\\{a_1=a_3=1\\})}{P(A)}=\\dfrac{\\dfrac{2}{81}}{\\dfrac{8}{27}}=\\dfrac{1}{12}$이다.\n∴ 정답: $\\dfrac{1}{12}$",
+    examId: "25_제일고_1학기_기말_고2_확률과통계",
+    sourceQuestionNo: "23",
+    displayNo: "23",
+    pageNo: 4
+  }
+];

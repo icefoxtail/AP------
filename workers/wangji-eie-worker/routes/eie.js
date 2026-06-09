@@ -963,24 +963,55 @@ function consultationDeleteDeferredResponse() {
   }, 409);
 }
 
+// Attendance status vocabulary is Korean across worker/frontend/API:
+//   '등원' = present(○), '결석' = absent(×), '' = blank(공란/no mark).
+// Auxiliary marks live in `tags`: '상담'(★), '보강'(■), '지각'(▲).
 function normalizeAttendanceStatus(value) {
-  const status = safeText(value || '등원');
-  if (['등원', '결석', '지각', '조퇴', '보강', '미정'].includes(status)) return status;
+  const status = safeText(value);
+  if (status === '') return '';
+  if (['등원', '결석', '수업 없음', '지각', '조퇴', '보강', '미정'].includes(status)) return status;
+  if (/^(blank|none|empty|공란|빈값)$/i.test(status)) return '';
   if (/absent|missing/i.test(status)) return '결석';
   if (/late/i.test(status)) return '지각';
   if (/present|attended|done/i.test(status)) return '등원';
-  return status || '등원';
+  return status;
+}
+
+const EIE_ATTENDANCE_TAGS = ['상담', '보강', '지각'];
+
+function normalizeAttendanceTags(value) {
+  const list = Array.isArray(value)
+    ? value
+    : safeText(value).split(',');
+  const seen = new Set();
+  const out = [];
+  list.map(item => safeText(item)).forEach(tag => {
+    let key = tag;
+    if (/^counsel/i.test(tag) || tag === '상담') key = '상담';
+    else if (/^makeup|make-up/i.test(tag) || tag === '보강') key = '보강';
+    else if (/^late|tardy/i.test(tag) || tag === '지각') key = '지각';
+    if (EIE_ATTENDANCE_TAGS.includes(key) && !seen.has(key)) {
+      seen.add(key);
+      out.push(key);
+    }
+  });
+  return out.join(',');
 }
 
 async function queryAttendanceRecords(env, filters = {}) {
   const studentId = safeText(filters.student_id || filters.studentId);
   const date = safeText(filters.date);
   const cellId = safeText(filters.timetable_cell_id || filters.cell_id || filters.cellId);
+  const month = safeText(filters.month);
   const where = [];
   const binds = [];
   if (studentId) { where.push('student_id = ?'); binds.push(studentId); }
   if (date) { where.push('date = ?'); binds.push(date); }
   if (cellId) { where.push('timetable_cell_id = ?'); binds.push(cellId); }
+  if (!date && /^\d{4}-\d{2}$/.test(month)) {
+    where.push('date >= ? AND date <= ?');
+    binds.push(`${month}-01`, `${month}-31`);
+  }
   const sql = `
     SELECT *
     FROM eie_attendance_records
@@ -995,11 +1026,44 @@ async function handleGetAttendanceRecords(env, url) {
   const records = await queryAttendanceRecords(env, {
     student_id: url.searchParams.get('student_id'),
     date: url.searchParams.get('date'),
+    month: url.searchParams.get('month'),
     timetable_cell_id: url.searchParams.get('timetable_cell_id') || url.searchParams.get('cell_id')
   });
   return jsonResponse({ success: true, data: records, attendance: records, attendance_records: records });
 }
 
+// Look up by (student_id, date, timetable_cell_id) so the same student can hold
+// independent records for every class they attend on a given day.
+async function findAttendanceRecordId(env, studentId, date, cellId) {
+  const row = cellId
+    ? await env.DB.prepare(`
+        SELECT id FROM eie_attendance_records
+        WHERE student_id = ? AND date = ? AND timetable_cell_id = ? LIMIT 1
+      `).bind(studentId, date, cellId).first()
+    : await env.DB.prepare(`
+        SELECT id FROM eie_attendance_records
+        WHERE student_id = ? AND date = ? AND timetable_cell_id IS NULL LIMIT 1
+      `).bind(studentId, date).first();
+  return row?.id || '';
+}
+
+function upsertAttendanceStatement(env, { id, studentId, cellId, date, status, tags, memo, rawMeta, createdBy }) {
+  return env.DB.prepare(`
+    INSERT INTO eie_attendance_records
+      (id, student_id, timetable_cell_id, date, status, tags, memo, raw_meta_json, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT(student_id, date, timetable_cell_id) DO UPDATE SET
+      status = excluded.status,
+      tags = excluded.tags,
+      memo = excluded.memo,
+      raw_meta_json = excluded.raw_meta_json,
+      updated_at = CURRENT_TIMESTAMP
+  `).bind(id, studentId, cellId || null, date, status, tags, memo, rawMeta, createdBy || null);
+}
+
+// 학생별 출석 저장(실제 입력 단위). 저장 단위는 date + timetable_cell_id + student_id.
+// 공란(상태/태그 모두 없음)이면 해당 학생의 그 수업·날짜 레코드를 삭제해 표시를 없앤다.
+// 셀(수업) 전체 학생에 같은 값을 일괄 적용하는 구조는 쓰지 않는다.
 async function handlePostAttendanceRecord(request, env, teacher) {
   const body = await readJsonBody(request);
   if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
@@ -1007,27 +1071,28 @@ async function handlePostAttendanceRecord(request, env, teacher) {
   if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
   const date = safeText(body.date) || new Date().toISOString().slice(0, 10);
   const cellId = safeText(body.timetable_cell_id || body.cell_id || body.cellId);
+  // 출석은 반드시 수업(셀) 단위로 기록한다. student_id + date 만으로는 저장 금지.
+  if (!cellId) return jsonResponse({ success: false, error: 'timetable_cell_id is required' }, 400);
   const status = normalizeAttendanceStatus(body.status);
+  const tags = (status === '결석' || status === '수업 없음') ? '' : normalizeAttendanceTags(body.tags);
   const memo = safeText(body.memo);
   const rawMeta = toJsonText(body.raw_meta_json || body.raw_meta || null);
-  const existing = await env.DB.prepare(`
-    SELECT id FROM eie_attendance_records WHERE student_id = ? AND date = ? LIMIT 1
-  `).bind(studentId, date).first();
+  const isBlank = status === '' && tags === '';
 
-  const id = existing?.id || makeId('eie_att');
-  if (existing?.id) {
-    await env.DB.prepare(`
-      UPDATE eie_attendance_records
-      SET timetable_cell_id = ?, status = ?, memo = ?, raw_meta_json = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `).bind(cellId || null, status, memo, rawMeta, id).run();
-  } else {
-    await env.DB.prepare(`
-      INSERT INTO eie_attendance_records
-        (id, student_id, timetable_cell_id, date, status, memo, raw_meta_json, created_by, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(id, studentId, cellId || null, date, status, memo, rawMeta, teacher?.id || null).run();
+  const existingId = await findAttendanceRecordId(env, studentId, date, cellId);
+
+  if (isBlank) {
+    if (existingId) {
+      await env.DB.prepare('DELETE FROM eie_attendance_records WHERE id = ?').bind(existingId).run();
+    }
+    const records = await queryAttendanceRecords(env, { student_id: studentId });
+    return jsonResponse({ success: true, deleted: true, data: null, attendance_record: null, attendance_records: records, attendance: records });
   }
+
+  const id = existingId || makeId('eie_att');
+  await upsertAttendanceStatement(env, {
+    id, studentId, cellId, date, status, tags, memo, rawMeta, createdBy: teacher?.id
+  }).run();
 
   const record = await env.DB.prepare('SELECT * FROM eie_attendance_records WHERE id = ?').bind(id).first();
   const records = await queryAttendanceRecords(env, { student_id: studentId });

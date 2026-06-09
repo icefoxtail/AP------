@@ -42,6 +42,22 @@
             textbooks: [],
             materials: []
         },
+        // EIE 출석판 전용 슬라이스 (원장 월간 시간표 출석판 / 선생님 날짜 입력판)
+        attendance: {
+            month: '',                 // 원장 확인판에서 선택한 월 YYYY-MM
+            viewDate: '',              // 선생님 입력판에서 선택한 날짜 YYYY-MM-DD
+            byMonth: {},               // { 'YYYY-MM': records[] } 월간 캐시
+            index: {},                 // { 'date|cellId': records[] } 날짜+셀 인덱스
+            loadingMonth: '',          // 현재 조회 중인 월
+            selectedCellId: '',        // 입력판/드릴다운이 열린 셀
+            selectedDate: '',          // 입력판/드릴다운이 열린 날짜
+            selectedStudentId: '',     // 입력판이 열린 학생 (실제 입력 단위)
+            draftStatus: '',           // 임시 메인 상태 (등원/결석/'')
+            draftTags: [],             // 임시 보조 태그 (상담/보강)
+            saving: false,
+            error: '',
+            notice: ''
+        },
         ui: {
             currentStudentDetailId: '',
             currentStudentDetailTab: 'grade',
@@ -423,6 +439,124 @@
         getTimetableCellById(cellId) {
             if (!cellId) return null;
             return state.db.timetable_cells.find(c => String(c?.id) === String(cellId)) || null;
+        },
+
+        // ── 출석판 상태/캐시/인덱스 ────────────────────────────────────────
+        attendanceIndexKey(date, cellId) {
+            return `${String(date || '').slice(0, 10)}|${String(cellId || '')}`;
+        },
+        setAttendanceMonth(month) {
+            state.attendance.month = String(month || '');
+        },
+        setAttendanceLoadingMonth(month) {
+            state.attendance.loadingMonth = String(month || '');
+        },
+        // 월 전체 기록을 캐시에 저장하고 date|cellId 인덱스를 그 월에 대해 재구성한다.
+        setAttendanceMonthData(month, records) {
+            const key = String(month || '');
+            const rows = asArray(records);
+            state.attendance.byMonth[key] = rows;
+            // 이 월 범위의 인덱스 항목을 비우고 다시 채운다.
+            Object.keys(state.attendance.index).forEach(idxKey => {
+                if (idxKey.slice(0, 7) === key) delete state.attendance.index[idxKey];
+            });
+            rows.forEach(row => {
+                const idxKey = this.attendanceIndexKey(row?.date, row?.timetable_cell_id);
+                if (!state.attendance.index[idxKey]) state.attendance.index[idxKey] = [];
+                state.attendance.index[idxKey].push(row);
+            });
+            state.attendance.loadingMonth = '';
+        },
+        getAttendanceMonthData(month) {
+            return state.attendance.byMonth[String(month || '')] || null;
+        },
+        getAttendanceForCellDate(date, cellId) {
+            return state.attendance.index[this.attendanceIndexKey(date, cellId)] || [];
+        },
+        // 셀 저장 결과를 인덱스와 월 캐시에 반영(낙관적 갱신/롤백 공용 경로).
+        applyAttendanceCellResult(date, cellId, records) {
+            const idxKey = this.attendanceIndexKey(date, cellId);
+            const rows = asArray(records);
+            state.attendance.index[idxKey] = rows;
+            const monthKey = String(date || '').slice(0, 7);
+            const monthRows = state.attendance.byMonth[monthKey];
+            if (Array.isArray(monthRows)) {
+                const others = monthRows.filter(row =>
+                    this.attendanceIndexKey(row?.date, row?.timetable_cell_id) !== idxKey);
+                state.attendance.byMonth[monthKey] = others.concat(rows);
+            }
+        },
+        setAttendanceViewDate(date) {
+            state.attendance.viewDate = String(date || '').slice(0, 10);
+        },
+        // 학생 1명의 저장/삭제 결과를 인덱스와 월 캐시에 반영(낙관적 갱신/롤백 공용).
+        applyAttendanceStudentResult(date, cellId, studentId, record) {
+            const idxKey = this.attendanceIndexKey(date, cellId);
+            const sid = String(studentId || '');
+            const current = asArray(state.attendance.index[idxKey])
+                .filter(row => String(row && row.student_id) !== sid);
+            if (record) current.push(record);
+            state.attendance.index[idxKey] = current;
+
+            const monthKey = String(date || '').slice(0, 7);
+            const monthRows = state.attendance.byMonth[monthKey];
+            if (Array.isArray(monthRows)) {
+                const others = monthRows.filter(row =>
+                    !(this.attendanceIndexKey(row && row.date, row && row.timetable_cell_id) === idxKey
+                        && String(row && row.student_id) === sid));
+                state.attendance.byMonth[monthKey] = record ? others.concat(record) : others;
+            }
+        },
+        // 원장 확인판 셀 드릴다운(학생 목록) 선택. 학생은 아직 미선택.
+        setAttendanceCellSelection(date, cellId) {
+            state.attendance.selectedDate = String(date || '').slice(0, 10);
+            state.attendance.selectedCellId = String(cellId || '');
+            state.attendance.selectedStudentId = '';
+            state.attendance.error = '';
+            state.attendance.notice = '';
+        },
+        // 학생별 입력판 선택(실제 입력 단위).
+        setAttendanceStudentSelection(date, cellId, studentId) {
+            state.attendance.selectedDate = String(date || '').slice(0, 10);
+            state.attendance.selectedCellId = String(cellId || '');
+            state.attendance.selectedStudentId = String(studentId || '');
+            state.attendance.error = '';
+            state.attendance.notice = '';
+        },
+        clearAttendanceCellSelection() {
+            state.attendance.selectedDate = '';
+            state.attendance.selectedCellId = '';
+            state.attendance.selectedStudentId = '';
+            state.attendance.draftStatus = '';
+            state.attendance.draftTags = [];
+            state.attendance.error = '';
+        },
+        // 학생 입력판만 닫고 셀 드릴다운(학생 목록)은 유지한다.
+        clearAttendanceStudentSelection() {
+            state.attendance.selectedStudentId = '';
+            state.attendance.draftStatus = '';
+            state.attendance.draftTags = [];
+            state.attendance.error = '';
+        },
+        setAttendanceDraft(status, tags) {
+            state.attendance.draftStatus = String(status || '');
+            state.attendance.draftTags = asArray(tags).map(t => String(t || '')).filter(Boolean);
+        },
+        setAttendanceSaving(value) {
+            state.attendance.saving = !!value;
+        },
+        setAttendanceError(value) {
+            state.attendance.error = value ? String(value) : '';
+        },
+        setAttendanceNotice(value) {
+            state.attendance.notice = value ? String(value) : '';
+        },
+        invalidateAttendanceMonth(month) {
+            const key = String(month || '');
+            delete state.attendance.byMonth[key];
+            Object.keys(state.attendance.index).forEach(idxKey => {
+                if (idxKey.slice(0, 7) === key) delete state.attendance.index[idxKey];
+            });
         },
         resetApmsCompatState() {
             state.db.students = [];
