@@ -35,6 +35,13 @@ function injectClassroomStyles() {
         .cls-v4-pill.warn { color:var(--warning); background:rgba(var(--warning-rgb),0.10); border-color:rgba(var(--warning-rgb),0.20); }
         .cls-v4-tools { display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; touch-action:pan-x; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--surface-alpha); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
         .cls-v4-tools::-webkit-scrollbar { display:none; }
+        .cls-v4-tools .btn,
+        .cls-v4-tools .apms-button,
+        .cls-v4-tools button {
+            width:auto !important;
+            flex:0 0 auto !important;
+            align-self:center;
+        }
         .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:12px; font-weight:500; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
         .cls-v4-tool.primary, .cls-v4-tool.blue { background:var(--primary-soft); border-color:rgba(var(--primary-rgb),0.18); color:var(--primary); }
         .cls-v4-tool.orange { background:rgba(var(--warning-rgb),0.12); border-color:rgba(var(--warning-rgb),0.22); color:var(--warning); }
@@ -885,7 +892,7 @@ function openHomeworkPhotoAssignmentModal(classId) {
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                 <div style="font-size:15px; font-weight:500; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">학생별 제출 링크와 QR이 생성됩니다.</div>
+                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">숙제를 저장합니다.</div>
             </div>
             <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
             <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
@@ -893,8 +900,10 @@ function openHomeworkPhotoAssignmentModal(classId) {
                 <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(today)}">
                 <input id="hw-photo-time" type="time" class="cls-input" value="23:00">
             </div>
-            <button class="btn apms-button apms-button--primary btn-primary" style="min-height:48px; font-size:14px; font-weight:500;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장하고 링크 생성</button>
-            <button class="btn apms-button apms-button--quiet" style="min-height:44px; font-size:13px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;">
+                <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:44px; padding:10px 14px; font-size:13px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+                <button class="btn apms-button apms-button--primary btn-primary" style="width:auto; flex:0 0 auto; min-height:44px; padding:10px 18px; font-size:14px; font-weight:500;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
+            </div>
         </div>
     `);
 }
@@ -912,7 +921,7 @@ async function handleCreateHomeworkPhotoAssignment(classId) {
             : await api.post('homework-photo/assignments', { class_id: classId, title, description, due_date: dueDate, due_time: dueTime });
         if (!res?.success) return toast(res?.message || res?.error || '숙제 등록 실패', 'warn');
         toast('숙제가 등록되었습니다.', 'success');
-        openHomeworkPhotoLinksModal(res.assignment_id, res.links || []);
+        closeModal(true);
     } catch (e) {
         console.error('[handleCreateHomeworkPhotoAssignment] failed:', e);
         toast('숙제 등록 중 오류가 발생했습니다.', 'error');
@@ -944,10 +953,9 @@ async function openHomeworkPhotoAssignmentList(classId) {
                         </div>
                         <div style="font-size:12px; font-weight:500; color:${a.status === 'closed' ? 'var(--secondary)' : 'var(--primary)'};">${a.status === 'closed' ? '마감' : '진행'}</div>
                     </div>
-                    <div style="display:flex; gap:8px; margin-top:12px;">
-                        <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
-                        <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
-                        <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="deleteHomeworkPhotoAssignment('${a.id}', '${classId}')">삭제</button>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; margin-top:12px;">
+                        <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:36px; padding:8px 12px; font-size:12px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
+                        <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:36px; padding:8px 12px; font-size:12px; font-weight:500; border-radius:12px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="deleteHomeworkPhotoAssignment('${a.id}', '${classId}')">삭제</button>
                     </div>
                 </div>
             `;
@@ -1029,9 +1037,8 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                     <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">전체 ${total} · 제출 ${submitted} · 미제출 ${total - submitted}</div>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:40px; font-size:12px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
-                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:40px; font-size:12px; font-weight:500; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
-                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:40px; font-size:12px; font-weight:500; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="deleteHomeworkPhotoAssignment('${assignmentId}', '${apEscapeHtml(data.assignment?.class_id || '')}')">삭제</button>
+                    <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:38px; padding:8px 12px; font-size:12px; font-weight:500; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
+                    <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:38px; padding:8px 12px; font-size:12px; font-weight:500; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="deleteHomeworkPhotoAssignment('${assignmentId}', '${apEscapeHtml(data.assignment?.class_id || '')}')">삭제</button>
                 </div>
                 ${rows.map(r => {
                     const done = Number(r.is_submitted || 0) === 1;
@@ -1048,7 +1055,6 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="font-size:13px; font-weight:500; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
                                 ${canViewFiles ? `<button class="btn apms-button apms-button--quiet" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:500; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal('${safeSubmissionId}')">사진</button>` : ''}
-                                <button class="btn apms-button apms-button--quiet" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:500; border-radius:9px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
                             </div>
                         </div>
                     `;
@@ -2285,8 +2291,8 @@ function injectClassPlannerReviewStyles() {
         #modal-overlay:has(.class-planner-review) .modal-content,
         .ap-modal-overlay:has(.class-planner-review) .modal-content,
         .modal:has(.class-planner-review) .modal-content {
-            width: min(1560px, 98vw) !important;
-            max-width: min(1560px, 98vw) !important;
+            width: min(1080px, calc(100vw - 32px)) !important;
+            max-width: min(1080px, calc(100vw - 32px)) !important;
         }
         .modal-overlay:has(.class-planner-review) #modal-body,
         #modal-overlay:has(.class-planner-review) #modal-body,
@@ -2452,6 +2458,7 @@ async function loadClassPlannerWeek(classId, weekStart, force = false) {
     const cacheKey = buildClassPlannerWeekCacheKey(classId, weekStart);
     if (!force && state.ui.classPlannerWeekCache[cacheKey]) return state.ui.classPlannerWeekCache[cacheKey];
 
+    const safeMonthStart = getClassPlannerMonthStart(weekStart);
     const students = getClassroomMonthlyPlannerStudents(classId, safeMonthStart);
     const dates = getClassPlannerWeekDates(weekStart);
     const from = dates[0];
@@ -2719,8 +2726,8 @@ function expandClassPlannerModalForPc() {
     const content = body.closest('.modal-content') || body.parentElement;
     if (!content) return;
     if (typeof window !== 'undefined' && window.innerWidth > 700) {
-        content.style.width = 'min(1560px, 98vw)';
-        content.style.maxWidth = 'min(1560px, 98vw)';
+        content.style.width = 'min(1080px, calc(100vw - 32px))';
+        content.style.maxWidth = 'min(1080px, calc(100vw - 32px))';
         body.style.maxHeight = 'min(78vh, 860px)';
         body.style.overflow = 'auto';
     }

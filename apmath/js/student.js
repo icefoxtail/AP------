@@ -14,6 +14,79 @@ function injectStudentStyles() {
         @keyframes stdFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
         .std-badge { display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight:500; line-height: 1.5; }
         .std-input-base { width: 100%; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--text); padding: 12px 14px; font-family: inherit; outline: none; font-size: 15px; font-weight: 500; line-height: 1.4; }
+        .apms-eie-detail { display:flex; flex-direction:column; gap:14px; padding:0 14px 4px; box-sizing:border-box; }
+        .apms-eie-detail-head { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; }
+        .apms-eie-detail-head h1 { margin:0; font-size:24px; font-weight:700; color:var(--text); letter-spacing:-0.55px; line-height:1.16; }
+        .apms-eie-head-badges,
+        .apms-eie-detail-actions,
+        .apms-eie-tabs { display:flex; flex-wrap:wrap; gap:7px; }
+        .apms-eie-head-badges { margin-top:10px; }
+        .apms-eie-pill,
+        .apms-eie-status { display:inline-flex; align-items:center; min-height:24px; padding:3px 9px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:600; line-height:1.2; }
+        .apms-eie-status.is-active { border-color:rgba(16,185,129,.22); background:rgba(16,185,129,.10); color:#047857; }
+        .apms-eie-status.is-leave { border-color:rgba(245,158,11,.24); background:rgba(245,158,11,.10); color:#92400E; }
+        .apms-eie-status.is-archived { border-color:rgba(232,65,79,.20); background:rgba(232,65,79,.08); color:var(--error); }
+        .apms-eie-detail-actions { align-items:center; justify-content:flex-end; }
+        .apms-eie-primary,
+        .apms-eie-secondary,
+        .apms-eie-danger { min-height:40px; padding:0 14px; border-radius:10px; font-size:13px; font-weight:600; cursor:pointer; width:auto; box-shadow:none; }
+        .apms-eie-primary { border:1px solid var(--primary); background:var(--primary); color:#fff; }
+        .apms-eie-secondary { border:1px solid var(--border); background:var(--surface); color:var(--text); }
+        .apms-eie-danger { border:1px solid rgba(232,65,79,.22); background:rgba(232,65,79,.06); color:var(--error); }
+        .apms-eie-profile-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+        .apms-eie-card { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:14px; box-shadow:0 4px 14px rgba(15,23,42,.035); }
+        body.dark .apms-eie-card { box-shadow:none; }
+        .apms-eie-section-head { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px; }
+        .apms-eie-section-head h3 { margin:0; font-size:15px; font-weight:700; color:var(--text); line-height:1.25; }
+        .apms-eie-section-head span { color:var(--secondary); font-size:11px; font-weight:600; }
+        .apms-eie-field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+        .apms-eie-field,
+        .apms-eie-note,
+        .apms-eie-contact-row { border:1px solid var(--border); border-radius:12px; background:var(--surface-2); padding:11px 12px; min-width:0; }
+        .apms-eie-field span,
+        .apms-eie-note span,
+        .apms-eie-contact-row span { display:block; color:var(--secondary); font-size:11px; font-weight:600; line-height:1.25; }
+        .apms-eie-field strong,
+        .apms-eie-contact-row strong { display:block; margin-top:4px; color:var(--text); font-size:13px; font-weight:700; line-height:1.35; overflow-wrap:anywhere; }
+        .apms-eie-contact-row { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:8px; }
+        .apms-eie-contact-row button { width:auto; min-height:34px; padding:0 10px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:12px; font-weight:600; cursor:pointer; }
+        .apms-eie-note { margin-top:8px; }
+        .apms-eie-note p { margin:5px 0 0; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6; white-space:pre-wrap; }
+        .apms-eie-tabs { padding:4px; border-radius:14px; background:var(--bg); }
+        .apms-eie-tab { flex:1 1 92px; min-height:42px; border:0; border-radius:10px; background:transparent; color:var(--secondary); font-size:13px; font-weight:600; cursor:pointer; }
+        .apms-eie-tab.is-active { background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(15,23,42,.05); }
+        body.dark .apms-eie-tab.is-active { box-shadow:none; }
+        .apms-eie-form { display:flex; flex-direction:column; gap:12px; padding:0 14px 4px; box-sizing:border-box; }
+        .apms-eie-form-card { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:14px; box-shadow:0 4px 14px rgba(15,23,42,.035); }
+        body.dark .apms-eie-form-card { box-shadow:none; }
+        .apms-eie-form-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+        .apms-eie-form-head h3 { margin:0; color:var(--text); font-size:15px; font-weight:700; line-height:1.25; }
+        .apms-eie-form-head span { color:var(--secondary); font-size:11px; font-weight:600; }
+        .apms-eie-form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+        .apms-eie-form-field { min-width:0; display:grid; gap:6px; }
+        .apms-eie-form-field.is-wide,
+        .apms-eie-form-wide { grid-column:1 / -1; }
+        .apms-eie-form-field > span,
+        .apms-eie-form-label { color:var(--secondary); font-size:12px; font-weight:700; line-height:1.25; }
+        .apms-eie-form-field input,
+        .apms-eie-form-field select,
+        .apms-eie-form-field textarea { width:100%; min-height:44px; box-sizing:border-box; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); padding:10px 12px; font:inherit; font-size:14px; font-weight:500; outline:0; }
+        .apms-eie-form-field textarea { min-height:86px; resize:vertical; }
+        .apms-eie-form-flags { display:flex; flex-wrap:wrap; gap:8px; }
+        .apms-eie-form-flag { display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:0 12px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--text); font-size:13px; font-weight:600; cursor:pointer; }
+        .apms-eie-form-flag input { width:15px; height:15px; accent-color:var(--primary); cursor:pointer; }
+        .apms-eie-form-flag.is-warn input { accent-color:#D97706; }
+        .apms-eie-form-danger { width:100%; min-height:42px; border:1px solid rgba(232,65,79,.22); background:rgba(232,65,79,.06); color:var(--error); border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; }
+        @media (max-width:640px) {
+            .apms-eie-detail { padding:0 10px 4px; }
+            .apms-eie-detail-head { flex-direction:column; }
+            .apms-eie-detail-actions { width:100%; display:grid; grid-template-columns:1fr 1fr; }
+            .apms-eie-detail-actions .apms-eie-primary { grid-column:span 2; }
+            .apms-eie-profile-grid,
+            .apms-eie-field-grid,
+            .apms-eie-form-grid { grid-template-columns:1fr; }
+            .apms-eie-form { padding:0 10px 4px; }
+        }
     `;
     document.head.appendChild(style);
 }
@@ -1039,6 +1112,96 @@ function refreshCurrentStudentListViewAfterMutation(returnCtx = null) {
     return null;
 }
 
+function apmsStudentDetailEsc(value) {
+    return typeof apEscapeHtml === 'function'
+        ? apEscapeHtml(value)
+        : String(value ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+}
+
+function apmsStudentJsString(value) {
+    return JSON.stringify(String(value ?? ''));
+}
+
+function apmsStudentStatusMeta(student) {
+    if (!student) return { label: '미등록', className: 'is-muted' };
+    const status = String(student.status || '재원').trim() || '재원';
+    if (status === '재원' && isStudentOnLeave(student)) return { label: '휴원', className: 'is-leave' };
+    if (status === '재원') return { label: '재원', className: 'is-active' };
+    if (status === '제적' || status === '퇴원') return { label: '퇴원', className: 'is-archived' };
+    if (status === '휴원') return { label: '휴원', className: 'is-leave' };
+    return { label: status, className: 'is-muted' };
+}
+
+function renderApmsStudentStatusBadge(student) {
+    const meta = apmsStudentStatusMeta(student);
+    return `<span class="apms-eie-status ${meta.className}">${apmsStudentDetailEsc(meta.label)}</span>`;
+}
+
+function renderApmsStudentField(label, value) {
+    const text = String(value ?? '').trim();
+    return `<div class="apms-eie-field"><span>${apmsStudentDetailEsc(label)}</span><strong>${apmsStudentDetailEsc(text || '미등록')}</strong></div>`;
+}
+
+function getApmsStudentClassRows(sid) {
+    const ids = (state.db.class_students || [])
+        .filter(m => String(m.student_id) === String(sid))
+        .map(m => String(m.class_id || ''))
+        .filter(Boolean);
+    return ids
+        .map(id => (state.db.classes || []).find(c => String(c.id) === id))
+        .filter(Boolean);
+}
+
+function renderApmsStudentProfileDeck(student, cls) {
+    const sid = String(student.id || '');
+    const classRows = getApmsStudentClassRows(sid);
+    const primaryClass = cls || classRows[0] || null;
+    const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
+    const parentLabel = student.guardian_relation || '보호자';
+    const contactRows = [
+        { label: '학생 연락처', value: student.student_phone || '', action: student.student_phone || '' },
+        { label: `${parentLabel} 연락처`, value: student.parent_phone || '', action: student.parent_phone || '' }
+    ];
+    const classSummary = classRows.length
+        ? classRows.map(row => [row.name, row.teacher_name, row.schedule_text || row.schedule_note].filter(Boolean).join(' · ')).join('\n')
+        : (primaryClass?.name || '');
+
+    return `
+        <div class="apms-eie-profile-grid">
+            <section class="apms-eie-card">
+                <div class="apms-eie-section-head"><h3>기본정보</h3><span>AP Math</span></div>
+                <div class="apms-eie-field-grid">
+                    ${renderApmsStudentField('학교/학년', schoolGrade)}
+                    ${renderApmsStudentField('현재 반', primaryClass?.name || '')}
+                    ${renderApmsStudentField('상태', apmsStudentStatusMeta(student).label)}
+                    ${renderApmsStudentField('PIN', student.student_pin || '')}
+                </div>
+                <div class="apms-eie-note"><span>메모</span><p>${apmsStudentDetailEsc(String(student.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim() || '메모가 없습니다.')}</p></div>
+            </section>
+            <section class="apms-eie-card">
+                <div class="apms-eie-section-head"><h3>연락처</h3><span>${contactRows.filter(row => row.value).length}개</span></div>
+                ${contactRows.map(row => `
+                    <div class="apms-eie-contact-row">
+                        <div><strong>${apmsStudentDetailEsc(row.label)}</strong><span>${apmsStudentDetailEsc(row.value || '미등록')}</span></div>
+                        ${row.action ? `<button type="button" onclick="copyPhoneNumber(${apmsStudentJsString(row.action)})">복사</button>` : '<button type="button" disabled>미등록</button>'}
+                    </div>
+                `).join('')}
+            </section>
+            <section class="apms-eie-card">
+                <div class="apms-eie-section-head"><h3>수업 배정</h3><span>${classRows.length || (primaryClass ? 1 : 0)}개</span></div>
+                ${classSummary ? `<div class="apms-eie-note" style="margin-top:0;"><span>배정 정보</span><p>${apmsStudentDetailEsc(classSummary)}</p></div>` : '<p style="margin:0;color:var(--secondary);font-size:13px;font-weight:500;">배정된 반이 없습니다.</p>'}
+            </section>
+            <section class="apms-eie-card">
+                <div class="apms-eie-section-head"><h3>빠른 작업</h3><span>관리</span></div>
+                <div class="apms-eie-field-grid">
+                    ${renderApmsStudentField('최근 상담', (getStudentConsultationsFromState(sid)[0]?.date || '기록 없음'))}
+                    ${renderApmsStudentField('누적 시험', String((state.db.exam_sessions || []).filter(e => String(e.student_id) === sid).length))}
+                </div>
+            </section>
+        </div>
+    `;
+}
+
 /**
  * 탭별 내용 렌더링 엔진 (UI Standard 적용)
  */
@@ -1055,43 +1218,33 @@ function renderStudentDetailTab(sid, tab) {
     if (returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
     const backButton = '';
 
-    // 1. 프로필 헤더 (22px 대제목 및 고정 배지 규격)
+    // 1. EIE 포팅형 프로필 헤더/카드 덱
     const headerHtml = `
-        <div style="margin-bottom: 20px; padding: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
-                <div style="min-width: 0;">
-                    <h1 style="margin: 0; font-size: 22px; font-weight:500; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${s.name}</h1>
-                    <div style="display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;">
-                        <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);">${s.school_name} ${s.grade}</span>
-                        <span class="std-badge" style="background: transparent; border: 1px solid var(--border); color: var(--secondary);">${cls?.name || '반 미배정'}</span>
-                        ${s.student_pin ? `<span class="std-badge" style="background: var(--surface); border: 1px solid var(--border); color: var(--text); letter-spacing: 1px;">PIN ${s.student_pin}</span>` : ''}
-                    </div>
-                </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;">
-                    ${backButton}
-                    <button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:500; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}', { returnTo: { type: 'studentDetail', studentId: '${sid}' } })">정보 수정</button>
+        <div class="apms-eie-detail-head">
+            <div style="min-width:0;">
+                <h1>${apmsStudentDetailEsc(s.name)} 학생</h1>
+                <div class="apms-eie-head-badges">
+                    ${renderApmsStudentStatusBadge(s)}
+                    <span class="apms-eie-pill">${apmsStudentDetailEsc([s.school_name, s.grade].filter(Boolean).join(' · ') || '학년 미등록')}</span>
+                    <span class="apms-eie-pill">${apmsStudentDetailEsc(cls?.name || '반 미배정')}</span>
+                    ${s.student_pin ? `<span class="apms-eie-pill">PIN ${apmsStudentDetailEsc(s.student_pin)}</span>` : ''}
                 </div>
             </div>
-            
-            <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div class="apms-student-profile-info-card" style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 16px; min-width: 0;">
-                    <div style="font-size: 11px; color: var(--secondary); font-weight: 400; margin-bottom: 4px; line-height: 1.5;">학생 연락처</div>
-                    <div style="font-size: 13px; font-weight:500; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.student_phone}')">${s.student_phone || '미등록'}</div>
-                </div>
-                <div class="apms-student-profile-info-card" style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 16px; min-width: 0;">
-                    <div style="font-size: 11px; color: var(--secondary); font-weight: 400; margin-bottom: 4px; line-height: 1.5;">보호자 (${s.guardian_relation || '미지정'})</div>
-                    <div style="font-size: 13px; font-weight:500; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.parent_phone}')">${s.parent_phone || '미등록'}</div>
-                </div>
+            <div class="apms-eie-detail-actions">
+                ${backButton}
+                <button class="btn apms-eie-secondary" onclick="openEditStudent('${sid}', { returnTo: { type: 'studentDetail', studentId: '${sid}' } })">정보 수정</button>
+                <button class="btn apms-eie-primary" onclick="if(typeof openReportCenterModal==='function') openReportCenterModal('${sid}', 'daily'); else openStudentReportModal('${sid}')">리포트 센터</button>
             </div>
         </div>
+        ${renderApmsStudentProfileDeck(s, cls)}
     `;
 
     // 2. 탭 바 (규격화된 행간 및 버튼)
     const tabBarHtml = `
-        <div class="tab-bar" style="background: var(--bg); padding: 4px; border-radius: 16px; margin-bottom: 20px; display: flex; gap: 4px;">
-            <button class="tab-btn ${tab==='grade'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight:500; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
-            <button class="tab-btn ${tab==='weak'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight:500; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
-            <button class="tab-btn ${tab==='cns'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight:500; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
+        <div class="apms-eie-tabs">
+            <button class="apms-eie-tab ${tab==='grade'?'is-active':''}" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
+            <button class="apms-eie-tab ${tab==='weak'?'is-active':''}" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
+            <button class="apms-eie-tab ${tab==='cns'?'is-active':''}" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
         </div>
     `;
 
@@ -1103,13 +1256,13 @@ function renderStudentDetailTab(sid, tab) {
 
     // 4. 하단 액션바
     const footerHtml = `
-        <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px;">
-            <button class="btn apms-button apms-button--primary btn-primary" style="width: 100%; min-height: 52px; font-size: 15px; font-weight:500; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="if(typeof openReportCenterModal==='function') openReportCenterModal('${sid}', 'daily'); else openStudentReportModal('${sid}')">리포트 센터</button>
-            <button class="btn apms-button apms-button--quiet" style="width: 100%; min-height: 52px; font-size: 14px; font-weight:500; color: var(--primary); border: 1px solid rgba(26,92,255,0.22); background: rgba(26,92,255,0.06); border-radius: 16px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','weak')">클리닉 센터</button>
+        <div class="apms-eie-detail-actions" style="padding-top:14px; border-top:1px solid var(--border);">
+            <button class="btn apms-eie-secondary" onclick="renderStudentDetailTab('${sid}','weak')">클리닉 센터</button>
+            <button class="btn apms-eie-danger" onclick="handleDelete('${sid}')">퇴원 처리</button>
         </div>
     `;
 
-    showModal(`${s.name} 프로필`, `<div class="apms-student-contrast apms-student-profile-view" style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
+    showModal(`${s.name} 프로필`, `<div class="apms-student-contrast apms-student-profile-view apms-eie-detail">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
     if (tab === 'cns') {
         void ensureStudentDetailLazyData(sid);
@@ -1911,38 +2064,51 @@ function openEditStudent(sid, options = {}) {
     const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
 
     showModal('학생 정보 수정', `
-        <div class="apms-student-contrast apms-student-form-view" style="display: flex; flex-direction: column; gap: 12px;">
-            <input id="edit-name" class="std-input-base" value="${studentAttr(s.name)}" placeholder="이름">
-            <input id="edit-school" class="std-input-base" value="${studentAttr(s.school_name)}" placeholder="학교">
-            <div style="display: flex; gap: 8px;">
-                <select id="edit-grade" class="std-input-base" style="flex: 1;" onchange="syncEditStudentHighSubjects()">
-                    <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
-                    <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
-                </select>
-                <select id="edit-class" class="std-input-base" style="flex: 1.5;" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>
-            </div>
-            ${renderHighSubjectChecks('edit', s.grade, s.high_subjects)}
-            <input id="edit-student-phone" class="std-input-base" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호">
-            <input id="edit-parent-phone" class="std-input-base" value="${studentAttr(s.parent_phone || '')}" placeholder="학부모 전화번호">
-            <input id="edit-guardian-rel" class="std-input-base" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계">
-            <input id="edit-student-address" class="std-input-base" value="${studentAttr(s.student_address || '')}" placeholder="주소">
-            <input id="edit-vehicle-info" class="std-input-base" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량">
-            <input id="edit-student-pin" class="std-input-base" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4">
-            ${renderOnboardingStartedAtFields('edit')}
-            <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 64px;">${apEscapeHtml(cleanMemo)}</textarea>
-            <div style="display:flex; gap:20px; padding:4px 2px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 14px;">
-                <label style="display:flex; align-items:center; gap:7px; font-size:13px; font-weight:500; cursor:pointer; color:${isNew ? '#1A5CFF' : 'var(--text)'};">
-                    <input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''} style="accent-color:#1A5CFF; width:15px; height:15px; cursor:pointer;">
-                    <span>신입생</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:7px; font-size:13px; font-weight:500; cursor:pointer; color:${isLeave ? '#FF8C00' : 'var(--text)'};">
-                    <input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''} style="accent-color:#FF8C00; width:15px; height:15px; cursor:pointer;">
-                    <span>휴원</span>
-                </label>
-            </div>
-            <div style="margin-top: 4px;">
-                <button class="btn apms-button apms-button--quiet" style="width: 100%; min-height: 44px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); font-weight:500; border-radius: 12px;" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
-            </div>
+        <div class="apms-student-contrast apms-student-form-view apms-eie-form">
+            <section class="apms-eie-form-card">
+                <div class="apms-eie-form-head"><h3>기본 정보</h3><span>필수</span></div>
+                <div class="apms-eie-form-grid">
+                    <label class="apms-eie-form-field"><span>이름</span><input id="edit-name" value="${studentAttr(s.name)}" placeholder="이름"></label>
+                    <label class="apms-eie-form-field"><span>학교</span><input id="edit-school" value="${studentAttr(s.school_name)}" placeholder="학교"></label>
+                    <label class="apms-eie-form-field"><span>학년</span><select id="edit-grade" onchange="syncEditStudentHighSubjects()">
+                        <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
+                        <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
+                    </select></label>
+                    <label class="apms-eie-form-field"><span>배정 반</span><select id="edit-class" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select></label>
+                    <div class="apms-eie-form-wide">${renderHighSubjectChecks('edit', s.grade, s.high_subjects)}</div>
+                </div>
+            </section>
+            <section class="apms-eie-form-card">
+                <div class="apms-eie-form-head"><h3>연락처</h3><span>학생/보호자</span></div>
+                <div class="apms-eie-form-grid">
+                    <label class="apms-eie-form-field"><span>학생 전화번호</span><input id="edit-student-phone" type="tel" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호"></label>
+                    <label class="apms-eie-form-field"><span>학부모 전화번호</span><input id="edit-parent-phone" type="tel" value="${studentAttr(s.parent_phone || '')}" placeholder="학부모 전화번호"></label>
+                    <label class="apms-eie-form-field"><span>보호자 관계</span><input id="edit-guardian-rel" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계"></label>
+                    <label class="apms-eie-form-field"><span>주소</span><input id="edit-student-address" value="${studentAttr(s.student_address || '')}" placeholder="주소"></label>
+                </div>
+            </section>
+            <section class="apms-eie-form-card">
+                <div class="apms-eie-form-head"><h3>관리 정보</h3><span>선택</span></div>
+                <div class="apms-eie-form-grid">
+                    <label class="apms-eie-form-field"><span>차량</span><input id="edit-vehicle-info" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량"></label>
+                    <label class="apms-eie-form-field"><span>PIN</span><input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric"></label>
+                    <div class="apms-eie-form-wide">${renderOnboardingStartedAtFields('edit')}</div>
+                    <label class="apms-eie-form-field is-wide"><span>메모</span><textarea id="edit-memo" placeholder="메모">${apEscapeHtml(cleanMemo)}</textarea></label>
+                    <div class="apms-eie-form-wide">
+                        <div class="apms-eie-form-flags">
+                            <label class="apms-eie-form-flag">
+                                <input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}>
+                                <span>신입생</span>
+                            </label>
+                            <label class="apms-eie-form-flag is-warn">
+                                <input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}>
+                                <span>휴원</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <button class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
         </div>
     `, '저장', () => handleEditStudent(sid));
 }

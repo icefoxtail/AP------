@@ -62,6 +62,36 @@ function buildOmrSessionKey(row = {}) {
   ].join('|');
 }
 
+function buildAssignmentDedupeKey(row = {}) {
+  const classId = String(row.class_id || '').trim();
+  const examDate = String(row.exam_date || '').trim();
+  const archiveFile = String(row.archive_file || '').trim();
+  if (archiveFile) return [classId, examDate, archiveFile].join('|');
+  return [
+    classId,
+    examDate,
+    String(row.exam_title || '').trim().replace(/\s+/g, ' '),
+    String(Number(row.question_count || 0) || '')
+  ].join('|');
+}
+
+function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) {
+  const byExam = new Map();
+  rows.forEach(row => {
+    const key = buildAssignmentDedupeKey(row);
+    if (!key || !key.replace(/\|/g, '')) return;
+    if (!byExam.has(key)) {
+      byExam.set(key, row);
+      return;
+    }
+    const current = byExam.get(key);
+    const rowHasSession = sessionByAssignment.has(String(row.id || ''));
+    const currentHasSession = sessionByAssignment.has(String(current?.id || ''));
+    if (rowHasSession && !currentHasSession) byExam.set(key, row);
+  });
+  return Array.from(byExam.values());
+}
+
 async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
   const [assignments, sessions] = await Promise.all([
@@ -93,7 +123,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
     if (!sessionByExam.has(key)) sessionByExam.set(key, row);
   });
 
-  return (assignments.results || []).map(row => {
+  return dedupeClassExamAssignments(assignments.results || [], sessionByAssignment).map(row => {
     const session = sessionByAssignment.get(String(row.id || '')) || sessionByExam.get(buildOmrSessionKey(row)) || null;
     return {
       assignment_id: row.id,
