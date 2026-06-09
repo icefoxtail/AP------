@@ -36,6 +36,42 @@ function buildCheckInitUrl() {
         + `&archiveFile=${encodeURIComponent(state.config.archiveFile || '')}`;
 }
 
+function buildArchiveReviewUrl(mode = 'sol') {
+    const archiveFile = String(state.config.archiveFile || '').trim();
+    if (!archiveFile) return '';
+
+    const isSolution = mode === 'sol';
+    const enginePath = archiveFile.startsWith('MIXED:')
+        ? '../archive/mixed_engine.html'
+        : '../archive/engine.html';
+    const url = new URL(enginePath, window.location.href);
+
+    if (archiveFile.startsWith('MIXED:')) {
+        const key = archiveFile.slice('MIXED:'.length).trim();
+        if (!key) return '';
+        url.searchParams.set('key', key);
+        url.searchParams.set('qpp', '2');
+    } else {
+        url.searchParams.set('data', archiveFile);
+    }
+
+    url.searchParams.set('mode', isSolution ? 'sol' : 'ans');
+    if (isSolution) url.searchParams.set('solQr', '1');
+    return url.toString();
+}
+
+function renderArchiveReviewActions() {
+    const answerUrl = buildArchiveReviewUrl('ans');
+    const solutionUrl = buildArchiveReviewUrl('sol');
+    if (!answerUrl && !solutionUrl) return '';
+    return `
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
+            ${answerUrl ? `<button class="btn-sub" style="background:#fff; border:1px solid var(--border); color:var(--primary);" onclick="window.open('${answerUrl}', '_blank')">정답 보기</button>` : ''}
+            ${solutionUrl ? `<button class="btn-sub" style="background:#fff; border:1px solid var(--border); color:var(--primary);" onclick="window.open('${solutionUrl}', '_blank')">해설 보기</button>` : ''}
+        </div>
+    `;
+}
+
 async function init() {
     const params = new URLSearchParams(window.location.search);
     state.config.classId = params.get('class');
@@ -149,6 +185,7 @@ function render() {
                     <div style="color:var(--error); font-weight:900; background:rgba(255,71,87,0.1); padding:4px 10px; border-radius:8px; font-size:13px;">오답 ${state.wrongIds.length}개</div>
                 </div>
                 <div class="omr-grid">${omr}</div>
+                ${renderArchiveReviewActions()}
                 <button class="btn-sub" style="width:100%; margin-top:24px; background:var(--bg);" onclick="state.wrongIds=[]; render();">선택 모두 해제</button>
             </div>
             <div class="bottom-bar">
@@ -203,6 +240,7 @@ function render() {
                     </div>
                 </div>
                 <button class="btn-main" onclick="location.reload()" style="margin-top:16px;">처음으로 돌아가기</button>
+                ${renderArchiveReviewActions()}
                 <p id="timer" style="font-size:13px; font-weight:600; margin-top:24px; color:var(--text-sec); opacity:0.7;">
                     10초 후 자동으로 초기화됩니다.
                 </p>

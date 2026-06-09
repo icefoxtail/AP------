@@ -17,6 +17,106 @@ async function buildStudentPortalToken(studentId, studentPin) {
   return sha256hex(`${studentId}:${studentPin || ''}:student-portal:v1`);
 }
 
+async function verifyStudentPortalSession(env, studentId, studentToken) {
+  if (!studentId || !studentToken) {
+    return { error: jsonResponse({ success: false, message: '학생 로그인이 필요합니다.' }, 401) };
+  }
+
+  const student = await env.DB.prepare(`
+    SELECT id, name, grade, school_name, student_pin, status
+    FROM students
+    WHERE id = ?
+  `).bind(studentId).first();
+
+  if (!student || !['?ъ썝', '재원', 'active'].includes(String(student.status || ''))) {
+    return { error: jsonResponse({ success: false, message: '학생 정보를 확인할 수 없습니다.' }, 404) };
+  }
+
+  const expectedToken = await buildStudentPortalToken(student.id, student.student_pin);
+  if (studentToken !== expectedToken) {
+    await sleep(800);
+    return { error: jsonResponse({ success: false, message: '학생 로그인이 만료되었습니다.' }, 401) };
+  }
+
+  return { student };
+}
+
+function normalizeWrongIds(values, questionCount) {
+  const source = Array.isArray(values)
+    ? values
+    : (typeof values === 'string' ? values.split(/[\s,]+/) : []);
+  return Array.from(new Set(source
+    .map(v => String(v).trim())
+    .filter(v => /^\d+$/.test(v))
+    .map(v => parseInt(v, 10))
+    .filter(v => v >= 1 && v <= questionCount)))
+    .sort((a, b) => a - b);
+}
+
+function buildOmrSessionKey(row = {}) {
+  return [
+    String(row.exam_title || '').trim(),
+    String(row.exam_date || '').trim(),
+    String(Number(row.question_count || 0) || ''),
+    String(row.archive_file || '').trim()
+  ].join('|');
+}
+
+async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
+  const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
+  const [assignments, sessions] = await Promise.all([
+    env.DB.prepare(`
+      SELECT
+        cea.*,
+        c.name AS class_name
+      FROM class_exam_assignments cea
+      JOIN class_students cs ON cs.class_id = cea.class_id
+      LEFT JOIN classes c ON c.id = cea.class_id
+      WHERE cs.student_id = ?
+      ORDER BY cea.exam_date DESC, cea.updated_at DESC, cea.created_at DESC
+      LIMIT ?
+    `).bind(studentId, safeLimit).all(),
+    env.DB.prepare(`
+      SELECT *
+      FROM exam_sessions
+      WHERE student_id = ?
+      ORDER BY exam_date DESC, updated_at DESC
+      LIMIT 300
+    `).bind(studentId).all()
+  ]);
+
+  const sessionByAssignment = new Map();
+  const sessionByExam = new Map();
+  (sessions.results || []).forEach(row => {
+    if (row.assignment_id) sessionByAssignment.set(String(row.assignment_id), row);
+    const key = buildOmrSessionKey(row);
+    if (!sessionByExam.has(key)) sessionByExam.set(key, row);
+  });
+
+  return (assignments.results || []).map(row => {
+    const session = sessionByAssignment.get(String(row.id || '')) || sessionByExam.get(buildOmrSessionKey(row)) || null;
+    return {
+      assignment_id: row.id,
+      class_id: row.class_id,
+      class_name: row.class_name || '',
+      exam_title: row.exam_title || '',
+      exam_date: row.exam_date || '',
+      question_count: Number(row.question_count || 0),
+      archive_file: row.archive_file || '',
+      source_type: row.source_type || '',
+      pack_id: row.pack_id || null,
+      grade_label: row.grade_label || null,
+      created_at: row.created_at || '',
+      updated_at: row.updated_at || '',
+      is_submitted: session ? 1 : 0,
+      session_id: session?.id || null,
+      score: session?.score ?? null,
+      submitted_at: session?.updated_at || session?.created_at || null,
+      wrong_ids: normalizeWrongIds(session?.wrong_ids || [], Number(row.question_count || session?.question_count || 0))
+    };
+  });
+}
+
 export async function handleStudentPortal(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -108,7 +208,8 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       }, 401);
     }
 
-    const assignments = await env.DB.prepare(`
+    const [assignments, classExamAssignments] = await Promise.all([
+      env.DB.prepare(`
       SELECT
         hpa.id AS assignment_id,
         hpa.title,
@@ -130,7 +231,9 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
         hpa.due_date ASC,
         hpa.created_at DESC
       LIMIT 30
-    `).bind(studentId).all();
+      `).bind(studentId).all(),
+      loadStudentClassExamAssignments(env, studentId, 100)
+    ]);
 
     return jsonResponse({
       success: true,
@@ -158,7 +261,102 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       },
       omr: {
         enabled: true,
-        status: 'coming_soon'
+        status: 'ready'
+      },
+      class_exam_assignments: classExamAssignments
+    });
+  }
+
+  if (method === 'GET' && id === 'exams') {
+    const studentId = String(url.searchParams.get('student_id') || '').trim();
+    const studentToken = pickStudentPortalToken(url, request);
+    const verified = await verifyStudentPortalSession(env, studentId, studentToken);
+    if (verified.error) return verified.error;
+
+    const exams = await loadStudentClassExamAssignments(env, verified.student.id, 150);
+    return jsonResponse({ success: true, exams });
+  }
+
+  if (method === 'POST' && id === 'omr-submit') {
+    const d = await request.json();
+    const studentId = String(d.student_id || '').trim();
+    const studentToken = String(d.student_token || '').trim();
+    const verified = await verifyStudentPortalSession(env, studentId, studentToken);
+    if (verified.error) return verified.error;
+
+    const assignmentId = String(d.assignment_id || '').trim();
+    if (!assignmentId) {
+      return jsonResponse({ success: false, message: 'assignment_id required' }, 400);
+    }
+
+    const assignment = await env.DB.prepare(`
+      SELECT cea.*, c.name AS class_name
+      FROM class_exam_assignments cea
+      JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?
+      LEFT JOIN classes c ON c.id = cea.class_id
+      WHERE cea.id = ?
+      LIMIT 1
+    `).bind(verified.student.id, assignmentId).first();
+
+    if (!assignment) {
+      return jsonResponse({ success: false, message: '시험지를 찾을 수 없습니다.' }, 404);
+    }
+
+    const questionCount = Math.max(1, Math.min(80, parseInt(assignment.question_count, 10) || 0));
+    const wrongIds = normalizeWrongIds(d.wrong_ids, questionCount);
+    const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
+
+    const existing = await env.DB.prepare(`
+      SELECT *
+      FROM exam_sessions
+      WHERE student_id = ?
+        AND exam_title = ?
+        AND exam_date = ?
+        AND COALESCE(archive_file, '') = COALESCE(?, '')
+      ORDER BY updated_at DESC
+      LIMIT 1
+    `).bind(verified.student.id, assignment.exam_title || '', assignment.exam_date || '', assignment.archive_file || '').first();
+
+    const sessionId = existing?.id || `ex_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    await env.DB.batch([
+      env.DB.prepare(`
+        INSERT INTO exam_sessions (
+          id, student_id, exam_title, score, exam_date, question_count,
+          class_id, archive_file, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+        ON CONFLICT(id) DO UPDATE SET
+          score = excluded.score,
+          question_count = excluded.question_count,
+          class_id = excluded.class_id,
+          archive_file = excluded.archive_file,
+          updated_at = DATETIME('now')
+      `).bind(
+        sessionId,
+        verified.student.id,
+        assignment.exam_title || '',
+        score,
+        assignment.exam_date || '',
+        questionCount,
+        assignment.class_id || '',
+        assignment.archive_file || ''
+      ),
+      env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId),
+      ...wrongIds.map(qId => env.DB.prepare(
+        'INSERT INTO wrong_answers (session_id, question_id, student_id) VALUES (?, ?, ?)'
+      ).bind(sessionId, String(qId), verified.student.id))
+    ]);
+
+    return jsonResponse({
+      success: true,
+      session: {
+        id: sessionId,
+        student_id: verified.student.id,
+        assignment_id: assignmentId,
+        exam_title: assignment.exam_title || '',
+        exam_date: assignment.exam_date || '',
+        question_count: questionCount,
+        score,
+        wrong_ids: wrongIds
       }
     });
   }

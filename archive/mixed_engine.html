@@ -509,6 +509,7 @@ function buildSubmitQrTargetUrl() {
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
+    if (AppState.key) url.searchParams.set('archiveFile', 'MIXED:' + AppState.key);
 
     return url.toString();
 }
