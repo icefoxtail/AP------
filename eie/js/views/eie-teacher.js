@@ -338,9 +338,72 @@
     }
 
     function cellsForTeacherOnDay(cells, teacherName, dayValue) {
+        var helperCells = helperCellsForTeacherOnDay(cells, teacherName, dayValue);
+        if (helperCells) return helperCells;
         return (cells || []).filter(function (cell) {
             return cellMatchesDay(cell, dayValue) && cellBelongsToTeacherOnDay(cell, teacherName, dayValue);
         });
+    }
+
+    function helperDisplaySessions(cells) {
+        if (!window.EieTimetableView || typeof EieTimetableView._buildDisplaySessions !== 'function') return null;
+        try {
+            return EieTimetableView._buildDisplaySessions(cells || []) || [];
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function helperDayTeacherSessions(cells, dayValue) {
+        if (!window.EieTimetableView || typeof EieTimetableView._buildDayTeacherSessions !== 'function') return null;
+        var day = (dayFromValue(dayValue) || todayWeekday()).label;
+        var sessions = helperDisplaySessions(cells);
+        if (!Array.isArray(sessions)) return null;
+        try {
+            return EieTimetableView._buildDayTeacherSessions(sessions, day) || [];
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function helperCellsForTeacherOnDay(cells, teacherName, dayValue) {
+        var targetKey = normalizeName(teacherName);
+        if (!targetKey) return [];
+        var sessions = helperDayTeacherSessions(cells, dayValue);
+        if (!Array.isArray(sessions)) return null;
+        return sessions.filter(function (session) {
+            return normalizeName(session && (session.teacherName || session.teacher_name || session.teacher)) === targetKey
+                || normalizeName(session && session.teacher_key) === targetKey;
+        }).map(helperSessionToCell);
+    }
+
+    function helperSessionToCell(session) {
+        var periods = Array.isArray(session && session.periods) ? session.periods : [];
+        var firstPeriod = sortCells(periods.map(function (period, index) {
+            return {
+                period_order: period && (period.period_order || period.periodOrder || index + 1),
+                period_label: period && (period.period_label || period.periodLabel || ''),
+                column_index: index
+            };
+        }))[0] || {};
+        var sourceIds = Array.isArray(session && session.source_cell_ids) ? session.source_cell_ids : [];
+        var teacherName = text(session && (session.teacherName || session.teacher_name || session.teacher));
+        return {
+            id: text(sourceIds[0]) || text(session && (session.source_cell_id || session.session_id || session.id)),
+            source_cell_ids: sourceIds,
+            session_id: text(session && session.session_id),
+            day_label: text((dayFromValue(_dayTab) || todayWeekday()).label),
+            period_order: Number(firstPeriod.period_order || session.period_order || 0),
+            period_label: text(firstPeriod.period_label || session.period_label || ''),
+            class_name: text(session && (session.material || session.class_name || session.class_full_name)) || '',
+            class_name_raw: text(session && (session.material || session.class_name || session.class_full_name)) || '',
+            material: text(session && session.material),
+            assigned_students: Array.isArray(session && session.students) ? session.students : [],
+            teacher_name_raw: teacherName,
+            teacher_name: teacherName,
+            teacher_names: teacherName ? [teacherName] : [],
+            day_teachers: teacherName ? { [text((dayFromValue(_dayTab) || todayWeekday()).label)]: [teacherName] } : {}
+        };
     }
 
     function uniqueStudents(cells) {
@@ -518,7 +581,7 @@
         return '<div class="eie-teacher-quick-cards eie-p-chip-row">'
             + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openTimetable()">시간표</button>'
             + '<button class="eie-teacher-quick-card eie-p-btn-save" type="button" onclick="EieTeacherView.openClassroomList()">클래스룸</button>'
-            + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" disabled aria-disabled="true" title="준비중">출석부</button>'
+            + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openAttendanceLedger()">출석부</button>'
             + '</div>';
     }
 
@@ -695,7 +758,11 @@
             if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('students');
         },
         openAttendanceLedger: function () {
-            return false;
+            if (_teacherName && window.EieAttendanceView && typeof EieAttendanceView.openTeacher === 'function') {
+                EieAttendanceView.openTeacher(_teacherName);
+                return;
+            }
+            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('attendance');
         },
         openConsultations: function () {
             openTeacherStudentList();

@@ -113,12 +113,12 @@ assert(renderAppBody.includes('isDiagnosticReportMode() ? \'\' : renderInfo(pack
 
 const parentTableFnStart = analysisHtml.indexOf('function renderDiagnosticParentItemTable()');
 const parentTableFnBody = parentTableFnStart >= 0 ? analysisHtml.slice(parentTableFnStart, analysisHtml.indexOf('function renderDiagnosticInternalDetails()', parentTableFnStart)) : '';
-assert(parentTableFnBody.includes('문항') || parentTableFnBody.includes('臾명빆'), 'diagnostic parent table should include question column');
-assert(parentTableFnBody.includes('결과') || parentTableFnBody.includes('寃곌낵'), 'diagnostic parent table should include result column');
-assert(parentTableFnBody.includes('단원') || parentTableFnBody.includes('?⑥썝'), 'diagnostic parent table should include unit column');
-assert(parentTableFnBody.includes('유형') || parentTableFnBody.includes('?좏삎'), 'diagnostic parent table should include type column');
-assert(parentTableFnBody.includes('난이도') || parentTableFnBody.includes('?쒖씠'), 'diagnostic parent table should include difficulty column');
-assert(parentTableFnBody.includes('확인 사인') || parentTableFnBody.includes('?뺤씤 ?ъ씤'), 'diagnostic parent table should include check-sign column');
+assert(parentTableFnBody.includes('문항'), 'diagnostic parent table should include question column');
+assert(parentTableFnBody.includes('결과'), 'diagnostic parent table should include result column');
+assert(parentTableFnBody.includes('단원'), 'diagnostic parent table should include unit column');
+assert(parentTableFnBody.includes('유형'), 'diagnostic parent table should include type column');
+assert(parentTableFnBody.includes('난이도'), 'diagnostic parent table should include difficulty column');
+assert(parentTableFnBody.includes('확인 사인'), 'diagnostic parent table should include check-sign column');
 for (const internalMarker of ['sourceFile', 'sourceQuestionNo', 'sourceRef', 'raw note', '내부 메모', '원본 시험지', '원본 문항번호']) {
   assert(!parentTableFnBody.includes(internalMarker), `diagnostic parent table should not expose internal marker: ${internalMarker}`);
 }

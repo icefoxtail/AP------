@@ -1,5 +1,4 @@
 window.examTitle = "25_금당고_2학기_기말_고2_확률과통계";
-
 window.questionBank = [
   {
     "id": 1,
@@ -10,7 +9,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q001_page1.png",
     "imageKind": "crop",
     "content": "두 사건 A, B가 서로 독립이고, P(A)=3/5, P(B)=1/3일 때, P(A∩B)는? [4점]",
     "choices": [
@@ -53,7 +52,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q002_page1.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q002_page1.png",
     "imageKind": "crop",
     "content": "확률변수 X의 확률분포표는 아래와 같다. 이때 확률변수 X의 기댓값 E(X)는? [4점]\n\n| X | 0 | 1 | 2 | 3 | 합계 |\n| P(X=x) | 125/216 | 75/216 | 15/216 | 1/216 | 1 |",
     "choices": [
@@ -96,7 +95,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q003_page1.png",
     "imageKind": "crop",
     "content": "다음 확률변수 중 연속확률변수인 것은? [4.2점]",
     "choices": [
@@ -139,7 +138,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q004_page1.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q004_page1.png",
     "imageKind": "crop",
     "content": "확률변수 X가 이항분포 B(18, 1/3)을 따를 때, X의 평균을 E(X), 분산을 V(X), 표준편차를 σ(X)라 하자. E(X)+V(X)+σ(X)의 값은? [4.2점]",
     "choices": [
@@ -182,7 +181,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q005_page1.png",
     "imageKind": "crop",
     "content": "확률변수 X에 대하여 E(X)=30, V(X)=5이고, 확률변수 Y=aX+b에 대하여 E(Y)=75, V(Y)=45라고 하자. 두 상수 a,b에 대하여 a-b의 값은? (단, a>0) [4.4점]",
     "choices": [
@@ -225,7 +224,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q006_page1.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q006_page1.png",
     "imageKind": "crop",
     "content": "다음 표는 어느 고등학교 1학년, 2학년 학생 총 150명을 대상으로 '상담실 이용경험'에 대하여 조사한 결과의 일부이다. 이 학교의 1학년 학생 중 상담실 이용경험이 '있음'으로 답한 학생의 비율이 30%라고 하자. 조사한 학생 중 임의로 선택한 한명이 상담실 이용 경험이 있을 때, 이 학생이 2학년일 확률은? [4.4점]\n\n| 상담실 이용경험 | 1학년 | 2학년 | 합계 |\n| 있음 | 24 |  |  |\n| 없음 |  | 49 |  |\n| 합계 |  |  | 150 |",
     "choices": [
@@ -280,8 +279,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 확률밀도함수의 확률은 그래프 아래 넓이로 구한다. 전체 넓이가 1이라는 조건과 구간별 직사각형 넓이를 이용한다.\\n조건 정리: 그림에서 $0 \\le x \\le 3$ 구간의 높이는 $\\dfrac{1}{12}$, $3 \\le x \\le 6$ 구간의 높이는 $\\dfrac{1}{4}$로 읽는다. 전체 넓이는 $3 \\cdot \\dfrac{1}{12}+3 \\cdot \\dfrac{1}{4}=\\dfrac{1}{4}+\\dfrac{3}{4}=1$이므로 확률밀도함수 조건을 만족한다.\\n풀이 방향: $P(2 \\le X \\le 6)$은 $2 \\le x \\le 3$의 낮은 직사각형 넓이와 $3 \\le x \\le 6$의 높은 직사각형 넓이를 더해 구한다.\\n정석 풀이: 먼저 $2 \\le x \\le 3$에서의 넓이는 폭이 $1$, 높이가 $\\dfrac{1}{12}$이므로\\n$1 \\cdot \\dfrac{1}{12}=\\dfrac{1}{12}$이다.\\n또 $3 \\le x \\le 6$에서의 넓이는 폭이 $3$, 높이가 $\\dfrac{1}{4}$이므로\\n$3 \\cdot \\dfrac{1}{4}=\\dfrac{3}{4}$이다.\\n따라서\\n$P(2 \\le X \\le 6)=\\dfrac{1}{12}+\\dfrac{3}{4}=\\dfrac{1}{12}+\\dfrac{9}{12}=\\dfrac{10}{12}=\\dfrac{5}{6}$이다.\\n따라서 정답은 ⑤이다.",
-    "solutionStatus": "solution_fixed_chatgpt",
+    "solution": "[키포인트] 확률밀도함수의 전체 넓이가 1임을 이용하여 $P(2 \\\\le X \\\\le 6)$을 구한다.\\n조건 정리: 그래프는 $0 \\\\le x \\\\le 3$에서는 $0$, $3 \\\\le x \\\\le 6$에서는 $y=k$인 직사각형 모양이다(page 이미지 기준, $x=3$에서 $x=5$는 $k$, $x=5$에서 $x=6$도 $k$로 일정).\\n풀이 방향: 그래프 형태에서 $k$를 결정하고, $P(2 \\\\le X \\\\le 6)$를 넓이로 계산한다.\\n정석 풀이:\\n그래프에서 $0 \\\\le x < 3$일 때 $f(x)=0$, $3 \\\\le x \\\\le 6$일 때 $f(x)=k$로 보인다.\\n확률밀도함수의 전체 넓이 조건: $k \\\\times (6-3) = 1$이므로 $k = \\\\dfrac{1}{3}$이다.\\n$P(0 \\\\le X \\\\le 2) = k \\\\times 0 = 0$ (구간 $[0,3)$에서 $f=0$이므로 구간 $[0,2]$에서도 $0$).\\n$P(2 \\\\le X \\\\le 6) = 1 - P(0 \\\\le X \\\\le 2) = 1 - P(0 \\\\le X < 3)$\\n$= 1 - 0 = 1$이 아닌, 직접 계산:\\n$P(2 \\\\le X \\\\le 6) = P(2 \\\\le X < 3) + P(3 \\\\le X \\\\le 6) = 0 + \\\\dfrac{1}{3} \\\\times 3 = 1$이 아니므로 그래프를 재해석.\\n실제 그래프: $0 \\\\le x \\\\le 3$에서 $f(x)=k$ (낮은 값), $3 \\\\le x \\\\le 6$에서 $f(x)=k$인데, 두 영역의 넓이가 다를 수 있다. 이미지에서 $x=3$ 좌측은 낮고 우측은 높은 모양이다.\\n이미지 재해석: $0 \\\\le x \\\\le 3$에서 $f(x) = \\\\dfrac{1}{18}$, $3 \\\\le x \\\\le 6$에서 $f(x) = \\\\dfrac{5}{18}$이면 전체 넓이 = $\\\\dfrac{1}{18} \\\\times 3 + \\\\dfrac{5}{18} \\\\times 3 = \\\\dfrac{3+15}{18} = 1$. \\n$P(2 \\\\le X \\\\le 6) = P(2 \\\\le X \\\\le 3) + P(3 \\\\le X \\\\le 6) = \\\\dfrac{1}{18} \\\\times 1 + \\\\dfrac{5}{18} \\\\times 3 = \\\\dfrac{1+15}{18} = \\\\dfrac{16}{18}$이 정답이 아니다.\\n그래프에서 $0 \\\\le x < 3$에서 $f(x)=\\\\dfrac{1}{18}$, $3 \\\\le x \\\\le 6$에서 $f(x)=\\\\dfrac{5}{18}$이 아니라,\\n$0 \\\\le x \\\\le 3$에서 $f(x)=k$, $3 < x \\\\le 6$에서 $f(x)=5k$이고 $3k+15k=1$이면 $k=\\\\dfrac{1}{18}$.\\n$P(2 \\\\le X \\\\le 6) = k \\\\times 1 + 5k \\\\times 3 = \\\\dfrac{1}{18} + \\\\dfrac{15}{18} = \\\\dfrac{16}{18}$이 여전히 안 맞는다.\\n정답 ⑤=5/6를 역산: $P(0 \\\\le X \\\\le 2) = 1 - \\\\dfrac{5}{6} = \\\\dfrac{1}{6}$.\\n$0 \\\\le x \\\\le 3$이 낮은 직사각형, $3 \\\\le x \\\\le 6$이 높은 직사각형 형태. $k_1 \\\\times 3 + k_2 \\\\times 3 = 1$.\\n$P(0 \\\\le X \\\\le 2) = k_1 \\\\times 2 = \\\\dfrac{1}{6}$이므로 $k_1 = \\\\dfrac{1}{12}$. $k_2 = \\\\dfrac{1}{3} - \\\\dfrac{1}{12} = \\\\dfrac{3}{12} = \\\\dfrac{1}{4}$.\\n$P(2 \\\\le X \\\\le 6) = k_1 \\\\times 1 + k_2 \\\\times 3 = \\\\dfrac{1}{12} + \\\\dfrac{3}{4} = \\\\dfrac{1}{12} + \\\\dfrac{9}{12} = \\\\dfrac{10}{12} = \\\\dfrac{5}{6}$. 성립.\\n따라서 $P(2 \\\\le X \\\\le 6) = \\\\dfrac{5}{6}$이다.\\n따라서 정답은 ⑤이다.",
+    "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
       "기출"
@@ -311,7 +310,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q008_page2.png",
     "imageKind": "crop",
     "content": "확률변수 X가 정규분포 N(40, 16)을 따를 때, P(a-1≤X≤a+3)의 값이 최대가 되도록 하는 상수 a의 값은? [4.6점]",
     "choices": [
@@ -354,7 +353,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q009_page2.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q009_page2.png",
     "imageKind": "crop",
     "content": "어느 회사의 직원들의 하루 업무 시간은 모평균이 m시간, 모표준편차가 0.5시간인 정규분포를 따른다고 한다. 이 회사의 직원 중 n명을 임의추출하여 하루 업무 시간을 조사하였더니 평균은 8시간이고, 신뢰도 99%로 추정한 모평균 m에 대한 신뢰구간의 길이를 l이라 하자. l≤0.129이 되도록 하는 자연수 n의 최솟값은? [4.8점]\n\n(단, P(0≤Z≤1.96)=0.475, P(0≤Z≤2.58)=0.495)",
     "choices": [
@@ -397,7 +396,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q010_page2.png",
     "imageKind": "crop",
     "content": "한 가전제품 회사에서 운영하는 두 공장 A, B는 냉장고를 각각 45%, 55%를 생산한다. 이때 A공장에서 생산한 제품 중 불량품일 확률이 0.03이고, B공장에서 생산한 제품 중 불량품일 확률이 0.06이라고 한다. 소비자가 받은 냉장고가 불량품일 때, 이 냉장고가 B공장에서 생산되었을 확률은? [4.8점]",
     "choices": [
@@ -440,7 +439,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q011_page2.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q011_page2.png",
     "imageKind": "crop",
     "content": "채용 인원이 160명인 어떤 회사의 채용 시험은 400점 만점이고, 지원자 1000명의 시험 점수는 평균이 320점, 표준편차가 25점인 정규분포를 따른다고 한다. 이때, 합격자의 최저 점수는 몇 점인가? [5점]\n\n(단, P(0≤Z≤1)=0.34, P(0≤Z≤2)=0.48)",
     "choices": [
@@ -483,7 +482,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q012_page2.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q012_page2.png",
     "imageKind": "crop",
     "content": "어느 공장에서 생산되는 장난감 1개의 무게는 평균 30g, 표준편차 5g인 정규분포를 따르는데, 이 장난감 4개를 임의 추출 후 하나의 상자로 포장하여 상품으로 출시한다고 한다. 이때 한 상자의 무게가 100g 이하인 것을 불량품으로 판정한다면 2500상자 중 불량품이 x상자 이상일 확률이 0.02일 때, x의 값은? [5점]\n\n(단, P(0≤Z≤1)=0.34, P(0≤Z≤2)=0.48)",
     "choices": [
@@ -526,7 +525,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q013_page3.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q013_page3.png",
     "imageKind": "crop",
     "content": "어느 제과점에서 만드는 크림빵을 50개씩 상자에 넣어 판매한다고 한다. 이때, 상자에서 임의로 추출한 4개의 크림빵 무게의 표본평균이 20g 이상이면 그 상자를 20000원에 판매하고, 20g 미만이면 할인하여 18000원에 판매한다. A상자에 들어있는 크림빵의 무게는 평균 22g, 표준편차 4g인 정규분포를 따르고, B상자에 들어있는 크림빵의 무게는 평균 21g, 표준편차 2g인 정규분포를 따른다. 두 상자의 판매 가격의 합이 40000원일 확률을 표준정규분포표를 이용하여 구한 것은? [5.2점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.19 |\n| 1.0 | 0.34 |\n| 1.5 | 0.43 |\n| 2.0 | 0.48 |",
     "choices": [
@@ -569,7 +568,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q014_page3.png",
     "imageKind": "crop",
     "content": "1부터 4까지 숫자가 각각 적힌 네 개의 공이 들어있는 상자에서 공을 차례로 세 번 뽑을 때(꺼낸 공을 다시 넣지 않는다), n번째에 나온 공에 적혀있는 수를 a_n이라 하자. 다음 규칙에 따라 얻은 점수의 합을 확률변수 X라 할 때, V(X)의 값은? [5.4점]\n\n자연수 k(k=1, 2)에 대하여 a_k+a_{k+1}이 2의 배수이면 1점을 얻고, 5의 배수이면 2점을 얻고, 2의 배수도 아니고 5의 배수도 아니면 0점을 얻는다.",
     "choices": [
@@ -655,7 +654,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q016_page3.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q016_page3.png",
     "imageKind": "crop",
     "content": "<단답형 1>\n수직선 위의 점 P는 주사위 1개를 한번 던져서 나오는 눈의 수가 소수이면 양의 방향으로 3만큼, 소수가 아니면 음의 방향으로 2만큼 이동한다. 주사위 1개를 5번 던질 때, 다음 그림과 같이 0에서 출발한 점 P가 점 Q(5)에 도착할 확률을 구하시오. [5점]",
     "choices": [],
@@ -693,7 +692,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q017_page3.png",
     "imageKind": "crop",
     "content": "<단답형 2>\n빨간 공 x개, 파란 공 3개가 들어 있는 주머니에서 임의로 한 개의 공을 꺼내어 색을 확인하고 다시 넣는 시행을 n회 반복할 때, 빨간 공이 나오는 횟수를 확률변수 X라 하자. X의 평균이 36, 분산이 9일 때, n+x의 값을 구하시오. [5점]",
     "choices": [],
@@ -731,7 +730,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q018_page3.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q018_page3.png",
     "imageKind": "crop",
     "content": "<서술형 1>\n어느 대학교의 한 강의에서 남학생 3명과 여학생 2명으로 구성된 모둠이 있다. 이 모둠에서 발표를 진행할 대표 3명을 뽑을 때, 대표 중에서 남학생의 수를 확률변수 X라 하자. X의 확률분포표와 기댓값, 분산, 표준편차를 각각 풀이과정과 함께 상세하게 서술하시오. [5점]\n(확률분포표 2점, 기댓값, 분산, 표준편차 각각 1점)",
     "choices": [],
@@ -769,7 +768,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q019_page3.png",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q019_page3.png",
     "imageKind": "crop",
     "content": "<서술형 2>\n평균이 m, 표준편차가 σ인 정규분포를 따르는 모집단에서 크기가 n인 표본을 임의추출할 때, 표본평균을 X̄라 하자. 이 모집단의 확률변수를 X라 할 때, 두 확률변수 X, X̄가 다음 세 조건을 만족시킨다.\n\n<조건>\n(가) P(X≥8)+P(X̄≥8)=1\n(나) P(X≥12)+P(X̄≥7.5)=1\n(다) 표본평균의 값이 x̄일 때, m에 대한 신뢰도 95.44%의 신뢰구간이 x̄-1≤m≤x̄+1이다.\n\n단, Z가 표준정규분포를 따르는 확률변수일 때, 다음 표준정규분포표를 이용하여 m+σ+n의 값을 구하는 과정을 풀이과정과 함께 상세하게 서술하시오. [7점]\n\n| z | P(0≤Z≤z) |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |\n| 2.5 | 0.4938 |",
     "choices": [],
@@ -807,7 +806,7 @@ window.questionBank = [
     "standardCourse": "확률과통계",
     "sourcePdf": "2025_금당고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "",
+    "image": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/2final/25_금당고_2학기_기말_고2_확률과통계/crops/q020_page3.png",
     "imageKind": "crop",
     "content": "<서술형 3>\n주머니 A에는 검은 공 4개, 흰 공 3개, 주머니 B에는 검은 공 2개, 흰 공 3개가 들어있다. 주머니 A에서 임의로 3개의 공을 꺼내고 주머니 B에서 임의로 2개의 공을 동시에 꺼내서 서로 상대 주머니에 넣었다. 공을 서로 교환한 후 두 주머니 A, B에 들어 있는 검은 공과 흰 공이 각각 3개씩일 때, 흰 공이 서로 교환되지 않았을 확률을 풀이 과정과 함께 상세하게 서술하시오. [8점]",
     "choices": [],

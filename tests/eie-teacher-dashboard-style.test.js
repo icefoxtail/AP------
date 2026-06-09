@@ -60,8 +60,8 @@ assert(
 assert(
   teacher.includes('EieTeacherView.openTimetable()') &&
     teacher.includes('EieTeacherView.openClassroomList()') &&
-    teacher.includes('title="준비중"'),
-  'teacher dashboard should keep timetable, classroom, and attendance shortcuts'
+    teacher.includes('EieTeacherView.openAttendanceLedger()'),
+  'teacher dashboard should keep timetable, classroom, and enabled attendance shortcuts'
 );
 
 assert(

@@ -5,6 +5,7 @@
         'timetable-editor': () => EieTimetableEditorView.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
+        attendance: () => EieAttendanceView.render(),
         teacher: () => EieTeacherView.render(),
         management: () => EieManagementView.render()
     };

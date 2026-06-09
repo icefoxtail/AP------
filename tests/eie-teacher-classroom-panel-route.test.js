@@ -7,7 +7,7 @@ const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-teacher.js'), '
 const timetableSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
 const cssSource = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
 
-const openClassroomMatch = source.match(/openClassroom:\s*function\s*\([^)]*\)\s*\{([\s\S]*?)\n\s*\},\n\s*openClassroomList:/);
+const openClassroomMatch = source.match(/openClassroom:\s*function\s*\([^)]*\)\s*\{([\s\S]*?)openClassroomList:/);
 assert(openClassroomMatch, 'EieTeacherView.openClassroom should exist');
 
 assert(

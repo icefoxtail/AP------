@@ -231,11 +231,18 @@
             const params = new URLSearchParams();
             if (filters?.student_id || filters?.studentId) params.set('student_id', filters.student_id || filters.studentId);
             if (filters?.date) params.set('date', filters.date);
+            if (filters?.month) params.set('month', filters.month);
             if (filters?.timetable_cell_id || filters?.cell_id || filters?.cellId) {
                 params.set('timetable_cell_id', filters.timetable_cell_id || filters.cell_id || filters.cellId);
             }
             return get(`attendance-records${params.toString() ? `?${params}` : ''}`, 'student-seeds');
         },
+        // 선택한 월(YYYY-MM)의 EIE 출석 기록 전체. 원장 월간 출석판 데이터 원천.
+        getAttendanceMonth(month) {
+            const value = String(month || '').trim();
+            return get(`attendance-records?month=${encodeURIComponent(value)}`, 'student-seeds');
+        },
+        // 학생별 출석 저장(실제 입력 단위). date + timetable_cell_id + student_id 기준.
         async saveAttendanceRecord(payload) {
             return request('attendance-records', { method: 'POST', body: payload || {} });
         },

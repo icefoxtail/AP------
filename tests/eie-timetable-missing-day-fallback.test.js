@@ -89,7 +89,7 @@ vm.runInContext(timetableSource, context, { filename: 'eie-timetable.js' });
   assert(html.includes('eie-v2-card-board'), 'timetable should render the card board');
   assert(html.includes('RS3-1 Carmen'), 'timetable should render classes even when day_label is blank');
   assert(html.includes('Carmen'), 'timetable should keep teacher columns for dayless imported cells');
-  assert(!html.includes('?좏깮???붿씪???쒖떆???섏뾽???놁뒿?덈떎.'), 'dayless imported cells should not be dropped into an empty-state board');
+  assert(!html.includes('선택한 요일에 표시할 수업이 없습니다.'), 'dayless imported cells should not be dropped into an empty-state board');
 
   console.log('EIE timetable missing day fallback test passed');
 })().catch(err => {
