@@ -50,6 +50,11 @@
         studentSaving: false,
         studentError: '',
         studentNotice: '',
+        studentConsultationLoadedId: '',
+        studentConsultationRows: [],
+        studentConsultationSelectedId: '',
+        studentConsultationFormOpen: false,
+        studentConsultationEditingId: '',
         miniSaving: false,
         miniError: '',
         miniNotice: '',
@@ -66,6 +71,7 @@
         repairError: '',
         repairNotice: '',
         miniAddStudentSessionId: '',
+        zoomBoosted: (function () { try { return localStorage.getItem('eie-v2-zoom-boost') === '1'; } catch (_) { return false; } })(),
         editMode: false,
         editDraft: {},     // { [sessionId]: { homeroomKey, homeroomName, periodKey, periodLabel, periodOrder, startTime, endTime } }
         editCreates: [],   // 편집 모드에서 복사→붙여넣기로 만든 임시 수업 셀 목록
@@ -490,6 +496,121 @@
             return dbStudents().find(row => studentDisplayName(row) === name) || null;
         }
         return null;
+    }
+
+    function dbConsultations() {
+        const rows = window.EieState?.get?.()?.db?.consultations;
+        return Array.isArray(rows) ? rows : [];
+    }
+
+    function consultationDate(row) {
+        return normalizeKey(row?.date || row?.consultation_date || row?.created_at).slice(0, 10);
+    }
+
+    function consultationType(row) {
+        return normalizeKey(row?.type || row?.consultation_type || '상담') || '상담';
+    }
+
+    function consultationRowsForStudent(studentId) {
+        const sid = normalizeKey(studentId);
+        const rows = viewState.studentConsultationLoadedId === sid
+            ? viewState.studentConsultationRows
+            : dbConsultations().filter(row => normalizeKey(row?.student_id) === sid);
+        return (Array.isArray(rows) ? rows : []).slice().sort((a, b) => {
+            const ad = consultationDate(a) || normalizeKey(a?.created_at);
+            const bd = consultationDate(b) || normalizeKey(b?.created_at);
+            return bd.localeCompare(ad);
+        });
+    }
+
+    function consultationRowId(row) {
+        return normalizeKey(row?.id || row?.consultation_id || row?.uuid || row?.created_at || row?.date || row?.consultation_date || '');
+    }
+
+    function consultationApiId(row) {
+        return normalizeKey(row?.id || row?.consultation_id || row?.uuid || '');
+    }
+
+    function mergePanelConsultationRows(studentId, incomingRows) {
+        const sid = normalizeKey(studentId);
+        const byId = new Map();
+        const withoutId = [];
+        consultationRowsForStudent(sid)
+            .concat(Array.isArray(incomingRows) ? incomingRows : [])
+            .filter(Boolean)
+            .forEach(row => {
+                const id = consultationRowId(row);
+                if (id) byId.set(id, row);
+                else withoutId.push(row);
+            });
+        const merged = Array.from(byId.values()).concat(withoutId).sort((a, b) => {
+            const ad = consultationDate(a) || normalizeKey(a?.created_at);
+            const bd = consultationDate(b) || normalizeKey(b?.created_at);
+            return bd.localeCompare(ad);
+        });
+        viewState.studentConsultationRows = merged;
+        viewState.studentConsultationLoadedId = sid;
+        if (window.EieState?.mergeStudentConsultations) {
+            window.EieState.mergeStudentConsultations(sid, merged);
+        }
+        return merged;
+    }
+
+    function replacePanelConsultationRows(studentId, rows) {
+        const sid = normalizeKey(studentId);
+        const nextRows = (Array.isArray(rows) ? rows : []).slice().sort((a, b) => {
+            const ad = consultationDate(a) || normalizeKey(a?.created_at);
+            const bd = consultationDate(b) || normalizeKey(b?.created_at);
+            return bd.localeCompare(ad);
+        });
+        viewState.studentConsultationRows = nextRows;
+        viewState.studentConsultationLoadedId = sid;
+        if (window.EieState?.mergeStudentConsultations) {
+            window.EieState.mergeStudentConsultations(sid, nextRows);
+        }
+        return nextRows;
+    }
+
+    function consultationRowsFromResult(result) {
+        if (Array.isArray(result?.consultations)) return result.consultations;
+        if (Array.isArray(result?.data)) return result.data;
+        if (result?.consultation) return [result.consultation];
+        if (result?.data) return [result.data];
+        return [];
+    }
+
+    function consultationDateLabel(row) {
+        const date = consultationDate(row);
+        return /^\d{4}-\d{2}-\d{2}/.test(date) ? date.slice(5, 10) : (date || '날짜 없음');
+    }
+
+    function selectedPanelConsultation(rows) {
+        const wantedId = normalizeKey(viewState.studentConsultationSelectedId);
+        return (rows || []).find(row => consultationRowId(row) === wantedId) || (rows || [])[0] || null;
+    }
+
+    function renderPanelConsultationDetail(row) {
+        if (!row) {
+            return '<div class="eie-v2-panel-consultation-empty">상담 기록 없음</div>';
+        }
+        const content = normalizeKey(row?.content) || '상담 내용이 없습니다.';
+        const nextAction = normalizeKey(row?.next_action || row?.nextAction);
+        const apiId = consultationApiId(row);
+        const rowId = consultationRowId(row);
+        return `
+            <article class="eie-v2-panel-consultation-card">
+                <div class="eie-v2-panel-consultation-meta">
+                    <strong>${esc(consultationDate(row) || '날짜 없음')}</strong>
+                    <em>${esc(consultationType(row))}</em>
+                </div>
+                <p>${esc(content)}</p>
+                ${nextAction ? `<small><strong>후속조치</strong> ${esc(nextAction)}</small>` : ''}
+                <div class="eie-v2-panel-consultation-card-actions">
+                    <button type="button" class="eie-p-btn-cancel" data-eie-v2-consultation-edit="${esc(rowId)}">수정</button>
+                    <button type="button" class="eie-p-btn-danger" data-eie-v2-consultation-delete="${esc(apiId)}"${apiId ? '' : ' disabled'}>삭제</button>
+                </div>
+            </article>
+        `;
     }
 
     function getStudents(row) {
@@ -2164,22 +2285,70 @@
 
     function renderStudentQuickRecords(sid) {
         if (!sid) return '';
+        const rows = consultationRowsForStudent(sid).slice(0, 5);
+        const selected = selectedPanelConsultation(rows);
+        const selectedId = consultationRowId(selected);
+        const loadingText = viewState.studentConsultationLoadedId === sid ? '' : '불러오는 중';
+        const editing = viewState.studentConsultationFormOpen && normalizeKey(viewState.studentConsultationEditingId);
+        const editingRow = editing ? (rows.find(row => consultationRowId(row) === editing) || null) : null;
+        const editingType = consultationType(editingRow);
+        const dateButtons = rows.map(row => {
+            const id = consultationRowId(row);
+            return `<button type="button" class="eie-v2-panel-consultation-date${id === selectedId ? ' is-active' : ''}" data-eie-v2-consultation-select="${esc(id)}">${esc(consultationDateLabel(row))}</button>`;
+        }).join('');
+        const formHtml = viewState.studentConsultationFormOpen ? `
+            <div class="eie-v2-panel-consultation-form">
+                <div class="eie-v2-panel-consultation-form-head">
+                    <strong>${editingRow ? '상담 수정' : '새 상담 기록'}</strong>
+                </div>
+                <div class="eie-v2-panel-consultation-form-grid">
+                    <label class="eie-v2-student-quick-field">
+                        <span>상담일</span>
+                        <input id="eie-v2-consultation-date" type="date" value="${esc(consultationDate(editingRow) || todayIso())}">
+                    </label>
+                    <label class="eie-v2-student-quick-field">
+                        <span>유형</span>
+                        <select id="eie-v2-consultation-type">
+                            ${['학습', '생활', '진로', '학부모', '상담'].map(type => `<option value="${esc(type)}"${editingType === type ? ' selected' : ''}>${esc(type)}</option>`).join('')}
+                        </select>
+                    </label>
+                    <label class="eie-v2-student-quick-field is-wide">
+                        <span>상담 입력</span>
+                        <textarea id="eie-v2-consultation-content" placeholder="상담 내용을 입력하세요.">${esc(normalizeKey(editingRow?.content))}</textarea>
+                    </label>
+                    <label class="eie-v2-student-quick-field is-wide">
+                        <span>후속조치</span>
+                        <textarea id="eie-v2-consultation-next-action" placeholder="다음 조치가 있으면 입력하세요.">${esc(normalizeKey(editingRow?.next_action || editingRow?.nextAction))}</textarea>
+                    </label>
+                </div>
+                <div class="eie-v2-panel-consultation-form-actions">
+                    <button type="button" class="eie-p-btn-cancel" data-eie-v2-consultation-cancel>취소</button>
+                    <button type="button" class="eie-p-btn-save" data-eie-v2-consultation-save="${esc(sid)}"${viewState.studentSaving ? ' disabled' : ''}>${editingRow ? '수정 저장' : '상담 저장'}</button>
+                </div>
+            </div>
+        ` : '';
         return `
             <div class="eie-v2-detail-section eie-v2-student-quick-records">
-                <strong>등원/상담</strong>
+                <div class="eie-v2-panel-consultation-shell">
+                    <div class="eie-v2-panel-consultation-head">
+                        <strong>최근 상담</strong>
+                        ${loadingText ? `<span>${esc(loadingText)}</span>` : ''}
+                    </div>
+                    ${dateButtons ? `<div class="eie-v2-panel-consultation-dates">${dateButtons}</div>` : ''}
+                    ${renderPanelConsultationDetail(selected)}
+                    ${formHtml}
+                    ${viewState.studentConsultationFormOpen ? '' : `
+                        <div class="eie-v2-panel-consultation-footer">
+                            <button type="button" class="eie-p-btn-new" data-eie-v2-consultation-new="${esc(sid)}">+ 새 상담</button>
+                        </div>
+                    `}
+                </div>
                 <div class="eie-v2-student-quick-grid">
                     <label class="eie-v2-student-quick-field">
                         <span>등원일</span>
                         <input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}">
                     </label>
-                    <button type="button" class="eie-primary-button" data-eie-v2-attendance-save="${esc(sid)}">등원 저장</button>
-                </div>
-                <label class="eie-v2-student-quick-field is-wide">
-                    <span>상담 입력</span>
-                    <textarea id="eie-v2-consultation-content" placeholder="상담 내용을 입력한 뒤 상담 저장으로 이동하세요."></textarea>
-                </label>
-                <div class="eie-v2-detail-actions">
-                    <button type="button" class="eie-secondary-button" data-eie-v2-consultation-start="${esc(sid)}">상담 저장</button>
+                    <button type="button" class="eie-p-btn-save" data-eie-v2-attendance-save="${esc(sid)}">등원 저장</button>
                 </div>
             </div>
         `;
@@ -2376,7 +2545,7 @@
                     ${viewState.studentNotice ? `<div class="eie-v2-alert is-success" role="status">${esc(viewState.studentNotice)}</div>` : ''}
                 </div>
                 ${sid ? '' : '<div class="eie-p-card"><span class="eie-p-field-value is-empty">확정된 학생 id가 없어 이 패널에서 바로 수정할 수 없습니다. 학생관리에서 이름으로 확인해 주세요.</span></div>'}
-                <span class="eie-p-section-label">핵심 정보</span>
+                <span class="eie-p-section-label">수업 정보</span>
                 <div class="eie-p-card">
                     ${renderPField('담당 선생님', teacherNames)}
                     <div class="eie-p-divider"></div>
@@ -2975,9 +3144,9 @@
                         ? `<button type="button" class="eie-primary-button" data-eie-edit-save ${viewState.editSaving ? 'disabled' : ''}>${viewState.editSaving ? '저장 중...' : '저장'}</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-cancel>취소</button>`
                         : `${renderWeekdayOverlayTabs(viewState.activeDayOverlay)}
-                           <button type="button" class="eie-secondary-button" data-eie-repair-open>시간표 검증</button>
                            <button type="button" class="eie-secondary-button eie-v2-print-button" data-eie-print-timetable title="시간표 인쇄">인쇄</button>
-                           <button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표 편집</button>`
+                           <button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표 편집</button>
+                           <button type="button" class="eie-secondary-button${viewState.zoomBoosted ? ' is-active' : ''}" data-eie-zoom-boost>${viewState.zoomBoosted ? '압축 보기' : '크게 보기'}</button>`
                     }
                 </div>
                 ${viewState.editMode ? `<div class="eie-v2-edit-mode-bar">편집 모드 — 드래그로 위치를 바꾸고, 복사한 반은 원하는 빈 슬롯에 붙여넣으세요.${viewState.editCreates.length ? ` · 새 수업 ${viewState.editCreates.length}개` : ''}</div>` : ''}
@@ -2986,6 +3155,10 @@
             </div>
             ${error ? `<div class="eie-v2-alert" role="alert">${esc(error)}</div>` : ''}
         `;
+    }
+
+    function applyZoomBoost() {
+        document.body.style.zoom = viewState.zoomBoosted ? '1.5' : '';
     }
 
     function bindEvents() {
@@ -3149,10 +3322,54 @@
                 saveStudentAttendanceFromPanel(attendanceSaveButton.getAttribute('data-eie-v2-attendance-save') || '');
                 return;
             }
-            const consultationStartButton = event.target.closest?.('[data-eie-v2-consultation-start]');
-            if (consultationStartButton) {
+            const consultationSelectButton = event.target.closest?.('[data-eie-v2-consultation-select]');
+            if (consultationSelectButton) {
                 event.preventDefault();
-                openStudentConsultationFromPanel(consultationStartButton.getAttribute('data-eie-v2-consultation-start') || '');
+                viewState.studentConsultationSelectedId = consultationSelectButton.getAttribute('data-eie-v2-consultation-select') || '';
+                viewState.studentConsultationFormOpen = false;
+                viewState.studentConsultationEditingId = '';
+                reopenPanelMountRoute();
+                return;
+            }
+            const consultationEditButton = event.target.closest?.('[data-eie-v2-consultation-edit]');
+            if (consultationEditButton) {
+                event.preventDefault();
+                viewState.studentConsultationSelectedId = consultationEditButton.getAttribute('data-eie-v2-consultation-edit') || '';
+                viewState.studentConsultationEditingId = viewState.studentConsultationSelectedId;
+                viewState.studentConsultationFormOpen = true;
+                viewState.studentError = '';
+                viewState.studentNotice = '';
+                reopenPanelMountRoute();
+                return;
+            }
+            const consultationDeleteButton = event.target.closest?.('[data-eie-v2-consultation-delete]');
+            if (consultationDeleteButton) {
+                event.preventDefault();
+                deleteStudentConsultationFromPanel(consultationDeleteButton.getAttribute('data-eie-v2-consultation-delete') || '');
+                return;
+            }
+            const consultationNewButton = event.target.closest?.('[data-eie-v2-consultation-new]');
+            if (consultationNewButton) {
+                event.preventDefault();
+                viewState.studentConsultationFormOpen = true;
+                viewState.studentConsultationEditingId = '';
+                viewState.studentError = '';
+                viewState.studentNotice = '';
+                reopenPanelMountRoute();
+                return;
+            }
+            const consultationCancelButton = event.target.closest?.('[data-eie-v2-consultation-cancel]');
+            if (consultationCancelButton) {
+                event.preventDefault();
+                viewState.studentConsultationFormOpen = false;
+                viewState.studentConsultationEditingId = '';
+                reopenPanelMountRoute();
+                return;
+            }
+            const consultationSaveButton = event.target.closest?.('[data-eie-v2-consultation-save]');
+            if (consultationSaveButton) {
+                event.preventDefault();
+                saveStudentConsultationFromPanel(consultationSaveButton.getAttribute('data-eie-v2-consultation-save') || '');
                 return;
             }
             const editStudentButton = event.target.closest?.('[data-eie-v2-student-edit]');
@@ -3357,6 +3574,16 @@
                 reopenPanelMountRoute();
                 return;
             }
+            const zoomBoostButton = event.target.closest?.('[data-eie-zoom-boost]');
+            if (zoomBoostButton) {
+                event.preventDefault();
+                viewState.zoomBoosted = !viewState.zoomBoosted;
+                try { localStorage.setItem('eie-v2-zoom-boost', viewState.zoomBoosted ? '1' : '0'); } catch (_) {}
+                applyZoomBoost();
+                zoomBoostButton.textContent = viewState.zoomBoosted ? '압축 보기' : '크게 보기';
+                zoomBoostButton.classList.toggle('is-active', viewState.zoomBoosted);
+                return;
+            }
         });
 
         document.addEventListener('focusin', event => {
@@ -3387,6 +3614,52 @@
                 });
             }, 180);
         });
+
+        // ── 보드 잡고 끌기(드래그-팬) ─────────────────────────────────
+        // 크게 보기(150%) 상태에서 하단 가로 스크롤바까지 내려가지 않고도
+        // 시간표를 아무 곳이나 잡고 좌우/상하로 끌어서 이동할 수 있게 한다.
+        let boardPan = null;
+        document.addEventListener('pointerdown', event => {
+            if (event.button !== 0) return;
+            const scroller = event.target.closest?.('.eie-v2-board-scroll');
+            if (!scroller) return;
+            // 버튼/입력 등 인터랙티브 요소 위에서는 패닝을 시작하지 않는다.
+            if (event.target.closest?.('button, a, input, select, textarea, label')) return;
+            boardPan = {
+                scroller,
+                startX: event.clientX,
+                startY: event.clientY,
+                scrollLeft: scroller.scrollLeft,
+                scrollTop: scroller.scrollTop,
+                moved: false
+            };
+        });
+        document.addEventListener('pointermove', event => {
+            if (!boardPan) return;
+            const dx = event.clientX - boardPan.startX;
+            const dy = event.clientY - boardPan.startY;
+            if (!boardPan.moved && Math.hypot(dx, dy) < 6) return;
+            boardPan.moved = true;
+            boardPan.scroller.classList.add('is-panning');
+            boardPan.scroller.scrollLeft = boardPan.scrollLeft - dx;
+            boardPan.scroller.scrollTop = boardPan.scrollTop - dy;
+            event.preventDefault();
+        });
+        const endBoardPan = () => {
+            if (!boardPan) return;
+            const scroller = boardPan.scroller;
+            if (boardPan.moved) {
+                // 끌기로 끝난 경우, 뒤따라오는 click(카드 열림 등)을 한 번 막는다.
+                const suppress = e => { e.stopPropagation(); e.preventDefault(); };
+                scroller.addEventListener('click', suppress, { capture: true, once: true });
+                setTimeout(() => scroller.removeEventListener('click', suppress, true), 0);
+            }
+            scroller.classList.remove('is-panning');
+            boardPan = null;
+        };
+        document.addEventListener('pointerup', endBoardPan);
+        document.addEventListener('pointercancel', endBoardPan);
+
         eventsBound = true;
     }
 
@@ -3412,6 +3685,7 @@
     function openStudentLedgerFromTimetable(button) {
         const studentId = button.getAttribute('data-eie-v2-student-id') || '';
         const studentName = button.getAttribute('data-eie-v2-student-name') || button.textContent || '';
+        const previousStudentId = viewState.selectedStudentId;
         viewState.selectedStudentId = normalizeKey(studentId);
         viewState.selectedStudentName = normalizeStudentName(studentName);
         viewState.selectedSessionId = button.getAttribute('data-eie-v2-return-session') || viewState.selectedSessionId;
@@ -3419,12 +3693,23 @@
         viewState.studentPanelMode = 'detail';
         viewState.studentError = '';
         viewState.studentNotice = '';
-        if ((viewState.panelMountRoute || '') === 'classroom' && window.EieClassroomView?.openStudentDetail) {
-            window.EieClassroomView.openStudentDetail(viewState.selectedStudentId || viewState.selectedStudentName);
-            return;
+        if (previousStudentId !== viewState.selectedStudentId) {
+            viewState.studentConsultationLoadedId = '';
+            viewState.studentConsultationRows = [];
+            viewState.studentConsultationSelectedId = '';
+            viewState.studentConsultationFormOpen = false;
+            viewState.studentConsultationEditingId = '';
         }
         if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
             window.EieApmsState.loadFoundation({ force: true }).catch(() => null).then(() => {
+                loadStudentConsultationsForPanel(viewState.selectedStudentId).catch(() => null).then(() => {
+                    reopenPanelMountRoute();
+                });
+            });
+            return;
+        }
+        if (viewState.selectedStudentId) {
+            loadStudentConsultationsForPanel(viewState.selectedStudentId).catch(() => null).then(() => {
                 reopenPanelMountRoute();
             });
             return;
@@ -3440,6 +3725,11 @@
         viewState.studentError = '';
         viewState.studentNotice = '';
         viewState.studentSaving = false;
+        viewState.studentConsultationLoadedId = '';
+        viewState.studentConsultationRows = [];
+        viewState.studentConsultationSelectedId = '';
+        viewState.studentConsultationFormOpen = false;
+        viewState.studentConsultationEditingId = '';
     }
 
     function closeTimetableDetailPanel() {
@@ -3505,6 +3795,23 @@
         }
     }
 
+    async function loadStudentConsultationsForPanel(studentId) {
+        const sid = normalizeKey(studentId || viewState.selectedStudentId);
+        if (!sid || viewState.studentConsultationLoadedId === sid) return;
+        if (!window.EieApi?.getConsultations) {
+            viewState.studentConsultationRows = consultationRowsForStudent(sid);
+            viewState.studentConsultationLoadedId = sid;
+            return;
+        }
+        const result = await window.EieApi.getConsultations(sid).catch(() => null);
+        const rows = consultationRowsFromResult(result);
+        viewState.studentConsultationRows = Array.isArray(rows) ? rows : [];
+        viewState.studentConsultationLoadedId = sid;
+        if (window.EieState?.mergeStudentConsultations) {
+            window.EieState.mergeStudentConsultations(sid, viewState.studentConsultationRows);
+        }
+    }
+
     async function saveClassAttendanceFromMiniPanel(button) {
         const sid = normalizeKey(button?.getAttribute?.('data-eie-v2-class-attendance') || '');
         const sessionId = normalizeKey(button?.getAttribute?.('data-session-id') || viewState.selectedSessionId);
@@ -3541,21 +3848,105 @@
         }
     }
 
-    async function openStudentConsultationFromPanel(studentId) {
+    async function saveStudentConsultationFromPanel(studentId) {
         const sid = normalizeKey(studentId || viewState.selectedStudentId);
         if (!sid) return;
-        const dateEl = document.getElementById('eie-v2-attendance-date');
-        const contentEl = document.getElementById('eie-v2-consultation-content');
-        const draft = {
-            date: normalizeKey(dateEl && dateEl.value) || todayIso(),
-            type: '상담',
-            content: normalizeKey(contentEl && contentEl.value)
-        };
-        if (window.EieStudentsView?.createConsultation) {
-            await window.EieStudentsView.createConsultation(sid, draft);
+        if (viewState.studentSaving) return;
+        const editingId = normalizeKey(viewState.studentConsultationEditingId);
+        const editingRow = editingId ? consultationRowsForStudent(sid).find(row => consultationRowId(row) === editingId) : null;
+        const apiEditId = editingRow ? consultationApiId(editingRow) : '';
+        if ((!editingRow && !window.EieApi?.createConsultation) || (editingRow && (!apiEditId || !window.EieApi?.updateConsultation))) {
+            viewState.studentError = '상담 저장 API를 사용할 수 없습니다.';
+            reopenPanelMountRoute();
             return;
         }
-        if (window.EieRouter?.open) window.EieRouter.open('students');
+        const dateEl = document.getElementById('eie-v2-consultation-date') || document.getElementById('eie-v2-attendance-date');
+        const typeEl = document.getElementById('eie-v2-consultation-type');
+        const contentEl = document.getElementById('eie-v2-consultation-content');
+        const nextEl = document.getElementById('eie-v2-consultation-next-action');
+        const payload = {
+            student_id: sid,
+            date: normalizeKey(dateEl && dateEl.value) || todayIso(),
+            type: normalizeKey(typeEl && typeEl.value) || '학습',
+            content: normalizeKey(contentEl && contentEl.value),
+            next_action: normalizeKey(nextEl && nextEl.value)
+        };
+        if (!payload.content) {
+            viewState.studentError = '상담 내용을 입력해 주세요.';
+            reopenPanelMountRoute();
+            return;
+        }
+        viewState.studentSaving = true;
+        viewState.studentError = '';
+        viewState.studentNotice = '';
+        try {
+            const result = editingRow
+                ? await window.EieApi.updateConsultation(apiEditId, payload)
+                : await window.EieApi.createConsultation(payload);
+            let rows = consultationRowsFromResult(result);
+            if (!Array.isArray(rows)) rows = [];
+            if (!rows.length) {
+                rows = [Object.assign({}, editingRow || {}, payload, {
+                    id: apiEditId || `panel-${sid}-${Date.now()}`,
+                    created_at: normalizeKey(editingRow?.created_at) || new Date().toISOString()
+                })];
+            }
+            mergePanelConsultationRows(sid, rows);
+            viewState.studentConsultationSelectedId = consultationRowId(rows[0]);
+            if (window.EieApi?.getConsultations) {
+                const loaded = await window.EieApi.getConsultations(sid).catch(() => null);
+                const loadedRows = consultationRowsFromResult(loaded);
+                if (Array.isArray(loadedRows) && loadedRows.length) {
+                    replacePanelConsultationRows(sid, loadedRows);
+                    const savedId = consultationRowId(rows[0]);
+                    if (savedId && loadedRows.some(row => consultationRowId(row) === savedId)) {
+                        viewState.studentConsultationSelectedId = savedId;
+                    }
+                }
+            }
+            viewState.studentNotice = editingRow ? '상담을 수정했습니다.' : '상담을 저장했습니다.';
+            viewState.studentConsultationFormOpen = false;
+            viewState.studentConsultationEditingId = '';
+            if (contentEl) contentEl.value = '';
+            if (nextEl) nextEl.value = '';
+        } catch (error) {
+            viewState.studentError = error?.message || '상담을 저장하지 못했습니다.';
+        } finally {
+            viewState.studentSaving = false;
+            reopenPanelMountRoute();
+        }
+    }
+
+    async function deleteStudentConsultationFromPanel(consultationId) {
+        const id = normalizeKey(consultationId);
+        const sid = normalizeKey(viewState.selectedStudentId);
+        if (!id || !sid || viewState.studentSaving) return;
+        if (!window.EieApi?.deleteConsultation) {
+            viewState.studentError = '상담 삭제 API를 사용할 수 없습니다.';
+            reopenPanelMountRoute();
+            return;
+        }
+        if (window.confirm && !window.confirm('상담 기록을 삭제할까요?')) return;
+        viewState.studentSaving = true;
+        viewState.studentError = '';
+        viewState.studentNotice = '';
+        try {
+            const result = await window.EieApi.deleteConsultation(id);
+            const responseRows = consultationRowsFromResult(result);
+            const nextRows = responseRows.length
+                ? responseRows
+                : consultationRowsForStudent(sid).filter(row => consultationApiId(row) !== id);
+            replacePanelConsultationRows(sid, nextRows);
+            viewState.studentConsultationSelectedId = consultationRowId(nextRows[0]);
+            viewState.studentConsultationFormOpen = false;
+            viewState.studentConsultationEditingId = '';
+            viewState.studentNotice = '상담을 삭제했습니다.';
+        } catch (error) {
+            viewState.studentError = error?.message || '상담을 삭제하지 못했습니다.';
+        } finally {
+            viewState.studentSaving = false;
+            reopenPanelMountRoute();
+        }
     }
 
     function resetEditCopyState() {
@@ -4389,13 +4780,24 @@
         const ctx = returnCtx || {};
         viewState.selectedDay = normalizeKey(ctx.selectedDay || ctx.day || viewState.selectedDay);
         viewState.selectedSessionId = normalizeKey(ctx.sessionId || ctx.session_id || viewState.selectedSessionId);
+        const previousStudentId = normalizeKey(viewState.selectedStudentId);
         viewState.selectedStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
         viewState.selectedStudentName = normalizeStudentName(ctx.studentName || ctx.student_name || '');
         viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
         viewState.studentError = '';
         viewState.studentNotice = '';
+        if (previousStudentId !== viewState.selectedStudentId) {
+            viewState.studentConsultationLoadedId = '';
+            viewState.studentConsultationRows = [];
+            viewState.studentConsultationSelectedId = '';
+            viewState.studentConsultationFormOpen = false;
+            viewState.studentConsultationEditingId = '';
+        }
         if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
             await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        }
+        if (viewState.selectedStudentId) {
+            await loadStudentConsultationsForPanel(viewState.selectedStudentId).catch(() => null);
         }
         return reopenPanelMountRoute();
     }
@@ -4435,17 +4837,29 @@
         }
 
         viewState.selectedSessionId = selectedSession ? normalizeKey(selectedSession.session_id) : normalizeKey(ctx.sessionId || ctx.session_id || '');
-        viewState.selectedStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
+        const nextStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
+        const sameStudentPanel = nextStudentId && nextStudentId === normalizeKey(viewState.selectedStudentId);
+        viewState.selectedStudentId = nextStudentId;
         viewState.selectedStudentName = normalizeStudentName(ctx.studentName || ctx.student_name || '');
         viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
-        viewState.studentError = '';
-        viewState.studentNotice = '';
+        if (!sameStudentPanel) {
+            viewState.studentError = '';
+            viewState.studentNotice = '';
+            viewState.studentConsultationLoadedId = '';
+            viewState.studentConsultationRows = [];
+            viewState.studentConsultationSelectedId = '';
+            viewState.studentConsultationFormOpen = false;
+            viewState.studentConsultationEditingId = '';
+        }
         if (viewState.panelMountRoute === 'classroom' && selectedSession) {
             viewState.classAttendanceSessionId = selectedSession.session_id;
         }
 
         if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
             await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        }
+        if (viewState.selectedStudentId) {
+            await loadStudentConsultationsForPanel(viewState.selectedStudentId).catch(() => null);
         }
 
         const panel = renderSelectedPanel(selectedSession);

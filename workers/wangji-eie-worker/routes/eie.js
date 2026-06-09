@@ -954,13 +954,18 @@ async function handlePatchConsultation(request, env, id) {
   return jsonResponse({ success: true, data: consultation, consultation, consultations: await queryConsultations(env, consultation.student_id) });
 }
 
-function consultationDeleteDeferredResponse() {
+async function handleDeleteConsultation(env, id) {
+  const existing = await getConsultation(env, id);
+  if (!existing) return jsonResponse({ success: false, error: 'consultation not found' }, 404);
+  await env.DB.prepare('DELETE FROM consultations WHERE id = ?').bind(id).run();
   return jsonResponse({
-    success: false,
-    error: 'consultation archive is not available',
-    code: 'EIE_NOT_IMPLEMENTED',
-    message: 'consultations has no status/deleted_at column; physical delete is disabled.'
-  }, 409);
+    success: true,
+    deleted: true,
+    id,
+    data: null,
+    consultation: null,
+    consultations: await queryConsultations(env, existing.student_id)
+  });
 }
 
 // Attendance status vocabulary is Korean across worker/frontend/API:
@@ -2301,7 +2306,7 @@ export async function handleEie(request, env, teacher, path, url) {
   }
 
   if (method === 'DELETE' && path[2] === 'consultations' && path[3] && !path[4]) {
-    return consultationDeleteDeferredResponse();
+    return handleDeleteConsultation(env, path[3]);
   }
 
   // ── 수업 배정/해제 ───────────────────────────────────────────────────

@@ -4548,6 +4548,174 @@ body.eie-owner-dashboard-bg {
     align-items: start;
 }
 
+.eie-apms-pinned-consultation {
+    margin: 12px 0;
+    display: grid;
+    gap: 12px;
+}
+
+.eie-apms-pinned-consultation .eie-apms-section-head {
+    gap: 12px;
+    align-items: center;
+}
+
+.eie-apms-pinned-consultation .eie-apms-section-head button {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.eie-apms-consult-date-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.eie-apms-consult-date-button {
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 999px;
+    background: var(--eie-surface);
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.eie-apms-consult-date-button:hover,
+.eie-apms-consult-date-button.is-active {
+    border-color: rgba(26, 92, 255, 0.22);
+    background: rgba(26, 92, 255, 0.08);
+    color: var(--eie-primary);
+}
+
+.eie-apms-pinned-consultation-body {
+    min-width: 0;
+}
+
+.eie-apms-pinned-consultation-preview {
+    padding: 14px 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 16px;
+    background: var(--eie-surface);
+}
+
+.eie-apms-pinned-consultation-preview p {
+    margin: 5px 0 0;
+    color: var(--eie-text);
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.eie-apms-pinned-consultation-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 14px 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 16px;
+    background: var(--eie-surface);
+}
+
+.eie-apms-pinned-consultation-form label {
+    min-width: 0;
+    display: grid;
+    gap: 6px;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-pinned-consultation-form label.is-wide,
+.eie-apms-pinned-consultation-form .is-wide {
+    grid-column: 1 / -1;
+}
+
+.eie-apms-pinned-consultation-form input,
+.eie-apms-pinned-consultation-form select,
+.eie-apms-pinned-consultation-form textarea {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+    background: var(--eie-surface-2);
+    color: var(--eie-text);
+    font: inherit;
+    font-weight: 700;
+}
+
+.eie-apms-pinned-consultation-form input,
+.eie-apms-pinned-consultation-form select {
+    padding: 0 10px;
+}
+
+.eie-apms-pinned-consultation-form textarea {
+    padding: 10px;
+    resize: vertical;
+}
+
+.eie-apms-pinned-consultation .eie-apms-consultation-actions {
+    margin: 0;
+}
+
+.eie-apms-pinned-consultation .eie-apms-consultation-actions button {
+    flex: 0 0 auto;
+}
+
+.eie-apms-pinned-consultation-list-head {
+    margin: 12px 0 8px;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.eie-apms-pinned-consultation-list {
+    gap: 8px;
+}
+
+.eie-apms-pinned-consultation-first {
+    margin-top: 8px;
+    color: var(--eie-primary);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.eie-apms-pinned-consultation-empty {
+    min-height: 132px;
+    padding: 18px 14px;
+    border: 1px dashed var(--eie-border);
+    border-radius: 16px;
+    background: var(--eie-surface);
+    color: var(--eie-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.eie-apms-pinned-consultation-empty strong {
+    color: var(--eie-text);
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.eie-apms-pinned-consultation-empty button {
+    min-height: 44px;
+    margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+    .eie-apms-pinned-consultation-form {
+        grid-template-columns: 1fr;
+    }
+}
+
 .eie-apms-consultation-actions {
     display: flex;
     flex-wrap: wrap;
@@ -4635,6 +4803,12 @@ body.eie-owner-dashboard-bg {
     font-weight: 700;
     line-height: 1.5;
     white-space: pre-wrap;
+}
+
+.eie-apms-consultation-next.is-empty {
+    color: var(--eie-muted);
+    background: var(--eie-surface-2);
+    border-color: var(--eie-border);
 }
 
 .eie-apms-consultation-next strong {
@@ -6203,8 +6377,17 @@ td.eie-v2-repair-matched.is-unmatched em {
     cursor: grab;
 }
 
-.eie-v2-board-scroll:active {
+.eie-v2-board-scroll:active,
+.eie-v2-board-scroll.is-panning {
     cursor: grabbing;
+}
+
+.eie-v2-board-scroll.is-panning {
+    user-select: none;
+}
+
+.eie-v2-board-scroll.is-panning * {
+    pointer-events: none;
 }
 
 .eie-v2-board-grid {
@@ -7517,12 +7700,12 @@ button.eie-v2-student-chip.is-paused:hover {
 .eie-v2-student-quick-field input,
 .eie-v2-student-quick-field textarea {
     width: 100%;
-    border: 1px solid rgba(148, 163, 184, 0.35);
-    border-radius: 12px;
-    padding: 10px 11px;
-    background: var(--eie-surface);
-    color: var(--eie-text);
-    font-size: 14px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 7px;
+    padding: 5px 8px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text);
+    font-size: 13px;
     box-sizing: border-box;
 }
 
@@ -7533,6 +7716,200 @@ button.eie-v2-student-chip.is-paused:hover {
 
 .eie-v2-student-quick-records .eie-v2-detail-actions {
     justify-content: flex-end;
+}
+
+.eie-v2-panel-consultation-shell {
+    display: grid;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--eie-p-border);
+}
+
+.eie-v2-panel-consultation-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.eie-v2-panel-consultation-head strong {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-panel-consultation-head span {
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-panel-consultation-dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.eie-v2-panel-consultation-date {
+    min-width: 44px;
+    min-height: 28px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 999px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.eie-v2-panel-consultation-date:hover,
+.eie-v2-panel-consultation-date.is-active {
+    border-color: #93c5fd;
+    background: #dbeafe;
+    color: #0b73ff;
+}
+
+.eie-v2-panel-consultation-card,
+.eie-v2-panel-consultation-empty {
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 12px;
+    background: #f8fafc;
+    padding: 16px 12px;
+}
+
+.eie-v2-panel-consultation-empty {
+    min-height: 120px;
+    color: var(--eie-p-text-muted);
+    font-size: 12px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.eie-v2-panel-consultation-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.eie-v2-panel-consultation-meta strong {
+    color: var(--eie-p-text);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.eie-v2-panel-consultation-meta em {
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #0b73ff;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    padding: 2px 7px;
+}
+
+.eie-v2-panel-consultation-card p {
+    margin: 0;
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.eie-v2-panel-consultation-card small {
+    display: block;
+    margin-top: 14px;
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.eie-v2-panel-consultation-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.eie-v2-panel-consultation-card-actions button {
+    min-height: 40px;
+    border-radius: 10px;
+}
+
+.eie-v2-panel-consultation-form {
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 12px;
+    background: var(--eie-p-surface-sub);
+}
+
+.eie-v2-panel-consultation-form-head strong {
+    color: var(--eie-p-text);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.eie-v2-panel-consultation-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.eie-v2-panel-consultation-form-grid .is-wide {
+    grid-column: 1 / -1;
+}
+
+.eie-v2-panel-consultation-form-grid select {
+    width: 100%;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 7px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text);
+    font: inherit;
+    font-size: 13px;
+    padding: 5px 8px;
+}
+
+.eie-v2-panel-consultation-form-head {
+    margin-bottom: 4px;
+}
+
+.eie-v2-panel-consultation-form-head strong {
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-panel-consultation-card-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.eie-v2-panel-consultation-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.eie-v2-panel-consultation-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 560px) {
+    .eie-v2-panel-consultation-form-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .eie-v2-alert.is-success {
@@ -10359,4 +10736,11 @@ select.eie-att-ctrl { cursor: pointer; }
     .eie-att-future { background: transparent !important; }
     .eie-att-no-class { background: #FAFBFC !important; }
     .eie-att-selcol { background: transparent !important; }
+}
+
+/* 크게 보기 버튼 활성 상태 */
+.eie-secondary-button.is-active {
+    background: #dbeafe;
+    color: #0b73ff;
+    border-color: #93c5fd;
 }
