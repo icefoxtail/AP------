@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#4F46E5">
+  <meta name="theme-color" content="#F3F4F6">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
@@ -18,9 +18,11 @@
   <link rel="stylesheet" href="../css/apms-ui-foundation.css">
   <style>
     :root {
-      --primary:#1A5CFF;
-      --primary-2:#4F46E5;
-      --accent:#DB2777;
+      --primary:#111827;
+      --primary-2:#374151;
+      --accent:#4B5563;
+      --primary-rgb:17,24,39;
+      --primary-soft:#F3F4F6;
       --success:#00B894;
       --error:#E8414F;
       --warning:#FFA502;
@@ -45,12 +47,10 @@
       line-height:1.5;
       word-break:keep-all;
       background:
-        radial-gradient(circle at 14% 12%, rgba(255,255,255,0.34) 0, rgba(255,255,255,0.12) 25%, transparent 46%),
-        radial-gradient(circle at 88% 8%, rgba(255,255,255,0.22) 0, transparent 34%),
-        radial-gradient(circle at 74% 92%, rgba(15,23,42,0.14) 0, transparent 42%),
-        linear-gradient(135deg,#4F46E5 0%,#7C3AED 47%,#DB2777 100%);
-      background-size:220% 220%;
-      animation:apStudentBg 26s ease infinite;
+        radial-gradient(circle at 12% 0%, rgba(255,255,255,0.92) 0, rgba(255,255,255,0.35) 30%, transparent 52%),
+        linear-gradient(180deg,#EEF2F7 0%,#F3F4F6 42%,#F7F8FA 100%);
+      background-size:100% 100%;
+      animation:none;
     }
     @keyframes apStudentBg {
       0% { background-position:0% 50%; }
@@ -69,15 +69,17 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      background:rgba(255,255,255,0.12);
-      border-bottom:1px solid rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.82);
+      border-bottom:1px solid rgba(17,24,39,0.08);
       backdrop-filter:blur(16px);
       -webkit-backdrop-filter:blur(16px);
-      color:#fff;
+      color:var(--text);
     }
-    .brand { display:flex; flex-direction:column; gap:1px; min-width:0; }
-    .brand-main { font-size:17px; font-weight:500; color:#fff; letter-spacing:-0.35px; line-height:1.2; text-shadow:0 8px 22px rgba(15,23,42,0.20); }
-    .brand-sub { font-size:11px; font-weight:500; color:rgba(255,255,255,0.76); letter-spacing:-0.1px; line-height:1.2; }
+    .brand { display:flex; align-items:center; gap:9px; min-width:0; }
+    .brand-logo { width:30px; height:30px; border-radius:10px; display:block; box-shadow:0 6px 14px rgba(17,24,39,0.10); }
+    .brand-copy { display:flex; flex-direction:column; gap:1px; min-width:0; }
+    .brand-main { font-size:17px; font-weight:500; color:var(--text); letter-spacing:-0.35px; line-height:1.2; text-shadow:none; }
+    .brand-sub { font-size:11px; font-weight:500; color:var(--secondary); letter-spacing:-0.1px; line-height:1.2; }
     .top-actions { display:flex; align-items:center; gap:8px; min-width:0; }
     .chip {
       max-width:150px;
@@ -86,19 +88,19 @@
       white-space:nowrap;
       font-size:12px;
       font-weight:500;
-      color:#fff;
+      color:var(--text);
       text-align:right;
-      background:rgba(255,255,255,0.16);
-      border:1px solid rgba(255,255,255,0.22);
+      background:#F3F4F6;
+      border:1px solid rgba(17,24,39,0.10);
       border-radius:999px;
       padding:6px 10px;
       backdrop-filter:blur(10px);
     }
     .chip:empty { display:none; }
     .logout {
-      border:1px solid rgba(255,255,255,0.24);
-      background:rgba(255,255,255,0.14);
-      color:#fff;
+      border:1px solid rgba(17,24,39,0.12);
+      background:#FFFFFF;
+      color:#374151;
       border-radius:999px;
       padding:6px 10px;
       font-size:12px;
@@ -116,7 +118,7 @@
       gap:clamp(26px,6vw,70px);
       align-items:center;
     }
-    .hero { display:flex; flex-direction:column; gap:22px; min-width:0; color:#fff; }
+    .hero { display:flex; flex-direction:column; gap:22px; min-width:0; color:var(--text); }
     .hero-kicker {
       width:fit-content;
       display:inline-flex;
@@ -124,16 +126,16 @@
       min-height:32px;
       padding:7px 12px;
       border-radius:999px;
-      background:rgba(255,255,255,0.14);
-      border:1px solid rgba(255,255,255,0.20);
-      color:rgba(255,255,255,0.88);
+      background:#F3F4F6;
+      border:1px solid rgba(17,24,39,0.10);
+      color:#374151;
       font-size:12px;
       font-weight:500;
       line-height:1.2;
       backdrop-filter:blur(10px);
     }
-    .hero-title { margin:0; font-size:clamp(38px,5.8vw,68px); font-weight:500; letter-spacing:-2.8px; line-height:0.98; color:#fff; text-shadow:0 10px 26px rgba(15,23,42,0.22); }
-    .hero-desc { margin:0; max-width:520px; font-size:clamp(15px,1.45vw,18px); font-weight:500; color:rgba(255,255,255,0.82); line-height:1.7; }
+    .hero-title { margin:0; font-size:clamp(38px,5.8vw,68px); font-weight:500; letter-spacing:-2.8px; line-height:0.98; color:var(--text); text-shadow:none; }
+    .hero-desc { margin:0; max-width:520px; font-size:clamp(15px,1.45vw,18px); font-weight:500; color:var(--secondary); line-height:1.7; }
     .visual-wrap {
       position:relative;
       width:min(100%,450px);
@@ -226,7 +228,8 @@
       gap:8px;
       transition:transform .12s ease, opacity .12s ease, background .12s ease;
     }
-    .btn-primary { background:linear-gradient(135deg,#1A5CFF 0%,#4F46E5 58%,#7C3AED 100%); color:#fff; border:none; box-shadow:0 14px 28px rgba(26,92,255,0.26); }
+    .btn-primary { background:#111827; color:#fff; border:none; box-shadow:0 12px 24px rgba(17,24,39,0.18); }
+    .btn-primary:hover { background:#1F2937; }
     .btn:active { transform:scale(0.985); }
     .btn[disabled] { opacity:.58; pointer-events:none; }
     .stack { display:flex; flex-direction:column; gap:12px; }
@@ -253,7 +256,7 @@
     .profile-sub { margin:7px 0 0; font-size:13px; font-weight:400; color:var(--secondary); }
     .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; min-width:190px; }
     .summary-box { border:1px solid var(--border); border-radius:18px; background:var(--surface-2); padding:13px; text-align:center; }
-    .summary-value { font-size:24px; font-weight:500; color:var(--primary); line-height:1; }
+    .summary-value { font-size:24px; font-weight:500; color:#111827; line-height:1; }
     .summary-label { margin-top:6px; font-size:11px; font-weight:400; color:var(--secondary); }
     .portal-assignments-card { padding:18px 18px 16px; }
     .portal-assignments-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
@@ -284,9 +287,9 @@
       font-size:11px;
       font-weight:500;
     }
-    .portal-assignment-pill.type-mixed { color:var(--primary); border-color:rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); }
-    .portal-assignment-pill.type-clinic { color:#7C3AED; border-color:rgba(124,58,237,0.16); background:rgba(124,58,237,0.07); }
-    .portal-assignment-pill.status-pending { color:var(--primary); border-color:rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); }
+    .portal-assignment-pill.type-mixed { color:#374151; border-color:rgba(17,24,39,0.12); background:#F3F4F6; }
+    .portal-assignment-pill.type-clinic { color:#4B5563; border-color:rgba(17,24,39,0.12); background:#F9FAFB; }
+    .portal-assignment-pill.status-pending { color:#374151; border-color:rgba(17,24,39,0.12); background:#F3F4F6; }
     .portal-assignment-pill.status-done { color:#008F72; border-color:rgba(0,184,148,0.18); background:rgba(0,184,148,0.10); }
     .portal-assignment-pill.status-muted { color:var(--secondary); border-color:var(--border); background:var(--surface); }
     .portal-assignment-actions { margin-top:10px; display:flex; gap:8px; }
@@ -295,7 +298,7 @@
     .portal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .portal-card { display:flex; flex-direction:column; gap:14px; min-height:218px; }
     .portal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex:1; }
-    .portal-mark { flex:0 0 auto; width:42px; height:42px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:rgba(26,92,255,0.08); color:var(--primary); }
+    .portal-mark { flex:0 0 auto; width:42px; height:42px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:#F3F4F6; color:#374151; border:1px solid rgba(17,24,39,0.08); }
     .portal-mark svg { width:22px; height:22px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .portal-mark.green { background:rgba(0,184,148,0.10); color:var(--success); }
     .portal-mark.orange { background:rgba(255,165,2,0.12); color:var(--warning); }
@@ -305,7 +308,7 @@
     .omr-title { font-size:15px; font-weight:500; color:var(--text); line-height:1.35; }
     .omr-meta { margin-top:6px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; }
     .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:500; }
-    .omr-status.pending { background:rgba(26,92,255,0.09); color:var(--primary); }
+    .omr-status.pending { background:#F3F4F6; color:#4B5563; }
     .omr-status.done { background:rgba(0,184,148,0.10); color:#008F72; }
     .omr-sheet { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
     .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:500; display:flex; align-items:center; justify-content:center; }
@@ -315,7 +318,7 @@
     .material-range-tabs { display:flex; gap:8px; overflow-x:auto; padding:4px 0 10px; scrollbar-width:none; }
     .material-range-tabs::-webkit-scrollbar { display:none; }
     .material-range-tab { flex:0 0 auto; min-height:36px; padding:0 12px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; }
-    .material-range-tab.active { background:rgba(26,92,255,0.08); border-color:rgba(26,92,255,0.20); color:var(--primary); }
+    .material-range-tab.active { background:#F3F4F6; border-color:rgba(17,24,39,0.16); color:#111827; }
     .material-quick-input { width:100%; min-height:46px; border-radius:14px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); padding:0 14px; font-size:14px; font-weight:500; box-sizing:border-box; }
     .material-selected { margin-top:12px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; word-break:break-word; }
     .material-no-wrong { background:rgba(0,184,148,0.10) !important; color:#008F72 !important; border-color:rgba(0,184,148,0.18) !important; }
@@ -330,16 +333,79 @@
     .status-pill.done { background:rgba(0,184,148,0.10); color:#008F72; }
     .section-title { margin:18px 4px 10px; font-size:14px; font-weight:500; color:#fff; }
     .empty { padding:24px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400; background:rgba(255,255,255,0.92); border:1px dashed rgba(229,232,235,0.96); border-radius:22px; }
-    .row-actions { display:flex; gap:8px; margin-top:13px; }
+    .row-actions { display:flex; gap:8px; margin-top:13px; flex-wrap:wrap; }
     .row-actions .btn { min-height:44px; border-radius:15px; font-size:13px; }
-    .back-btn { width:auto; min-height:40px; padding:8px 13px; font-size:12px; border-radius:999px; margin-bottom:12px; background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.24); color:#fff; }
+    .omr-actions {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      margin-top:14px;
+    }
+    .omr-actions .btn {
+      width:100%;
+      min-width:0;
+      height:46px;
+      min-height:46px;
+      padding:0 10px;
+      border-radius:14px;
+      font-size:13px;
+      font-weight:600;
+      white-space:nowrap;
+      box-shadow:none;
+      line-height:1;
+    }
+    .omr-actions.review-hidden {
+      grid-template-columns:1fr;
+    }
+    .back-btn {
+      width:auto;
+      min-height:40px;
+      padding:8px 14px;
+      font-size:12px;
+      border-radius:999px;
+      margin-bottom:12px;
+      background:#F3F4F6;
+      border:1px solid rgba(17,24,39,0.12);
+      color:#374151;
+      box-shadow:0 8px 18px rgba(17,24,39,0.08);
+    }
+    .back-btn:hover { background:#E5E7EB; color:#111827; }
+    .review-btn {
+      flex:1 1 120px;
+      min-height:40px;
+      border-radius:14px;
+      border:1px solid rgba(17,24,39,0.14);
+      background:#FFFFFF;
+      color:#374151;
+      font-size:12px;
+      font-weight:500;
+      box-shadow:none;
+    }
+    .review-btn:hover { background:#F3F4F6; color:#111827; }
+    .review-btn.solution {
+      border-color:rgba(17,24,39,0.16);
+      background:#F9FAFB;
+      color:#111827;
+    }
+    .omr-actions .review-btn,
+    .omr-actions .btn-primary {
+      flex:none;
+      border-radius:14px;
+      font-size:13px;
+      font-weight:600;
+    }
+    .omr-actions .btn-primary {
+      background:#111827;
+      color:#FFFFFF;
+      box-shadow:0 8px 18px rgba(17,24,39,0.16);
+    }
 
     .install-card {
       margin-top:2px;
       padding:14px;
       border-radius:20px;
-      background:linear-gradient(135deg, rgba(26,92,255,0.08), rgba(124,58,237,0.08));
-      border:1px solid rgba(26,92,255,0.14);
+      background:#FFFFFF;
+      border:1px solid rgba(17,24,39,0.10);
       display:none;
       gap:12px;
       align-items:flex-start;
@@ -351,14 +417,15 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:linear-gradient(135deg,#1A5CFF 0%,#7C3AED 100%);
-      color:#fff;
+      background:#FFFFFF url('./icons/icon-192.png') center/cover no-repeat;
+      color:transparent;
       display:flex;
       align-items:center;
       justify-content:center;
       font-size:18px;
       font-weight:500;
-      box-shadow:0 10px 20px rgba(26,92,255,0.22);
+      box-shadow:0 10px 20px rgba(17,24,39,0.12);
+      overflow:hidden;
     }
     .install-body { min-width:0; flex:1; }
     .install-title { font-size:13px; font-weight:500; color:var(--text); line-height:1.35; }
@@ -369,9 +436,9 @@
       min-height:36px;
       padding:0 12px;
       border-radius:12px;
-      border:1px solid rgba(26,92,255,0.14);
+      border:1px solid rgba(17,24,39,0.12);
       background:#fff;
-      color:var(--primary);
+      color:#374151;
       font-size:12px;
       font-weight:500;
       display:inline-flex;
@@ -379,7 +446,7 @@
       justify-content:center;
       box-shadow:none;
     }
-    .install-mini-btn.primary { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .install-mini-btn.primary { background:#111827; color:#fff; border-color:#111827; }
 
     .toast {
       position:fixed;
@@ -403,7 +470,7 @@
     @media (max-width:860px) {
       body { background:
         radial-gradient(circle at 0% 0%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
-        linear-gradient(180deg,#4F46E5 0%,#7C3AED 44%,#EEF2F7 44%,#F2F4F6 100%); animation:none; }
+        linear-gradient(180deg,#EEF2F7 0%,#F3F4F6 44%,#F7F8FA 100%); animation:none; }
       .app {
         max-width:520px;
         min-height:auto;
@@ -431,6 +498,8 @@
       .portal-card { min-height:auto; }
       .omr-sheet { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
       .omr-no { min-height:44px; }
+      .omr-actions { gap:7px; }
+      .omr-actions .btn { height:42px; min-height:42px; padding:0 6px; font-size:12px; border-radius:13px; }
 
       .section-title { color:var(--text); }
     }
@@ -440,15 +509,59 @@
       .hero-title { font-size:31px; }
       .chip { max-width:120px; }
       .top { padding-left:14px; padding-right:14px; }
+      .omr-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+      .omr-actions .btn { height:42px; min-height:42px; padding:0 4px; font-size:12px; }
     }
   </style>
   <link rel="stylesheet" href="../css/apms-theme-override.css">
+  <style>
+    body.student-portal-theme {
+      --primary:#111827;
+      --primary-dark:#030712;
+      --primary-soft:#F3F4F6;
+      --primary-rgb:17,24,39;
+      --accent:#4B5563;
+      --subj-math-bg:#F3F4F6;
+      --subj-math-text:#374151;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,255,255,0.92) 0, rgba(255,255,255,0.35) 30%, transparent 52%),
+        linear-gradient(180deg,#EEF2F7 0%,#F3F4F6 42%,#F7F8FA 100%) !important;
+    }
+    body.student-portal-theme .hero-kicker,
+    body.student-portal-theme .portal-assignment-pill.type-mixed,
+    body.student-portal-theme .portal-assignment-pill.status-pending,
+    body.student-portal-theme .omr-status.pending,
+    body.student-portal-theme .material-range-tab.active {
+      background:#F3F4F6 !important;
+      border-color:rgba(17,24,39,0.12) !important;
+      color:#374151 !important;
+    }
+    body.student-portal-theme .btn-primary,
+    body.student-portal-theme button.btn-primary,
+    body.student-portal-theme .install-mini-btn.primary {
+      background:#111827 !important;
+      border-color:#111827 !important;
+      color:#FFFFFF !important;
+      box-shadow:0 8px 20px rgba(17,24,39,0.18) !important;
+    }
+    body.student-portal-theme .portal-mark {
+      background:#F3F4F6 !important;
+      color:#374151 !important;
+      border:1px solid rgba(17,24,39,0.08) !important;
+    }
+    body.student-portal-theme .summary-value {
+      color:#111827 !important;
+    }
+  </style>
 </head>
-<body>
+<body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <div class="brand-main">AP Math OS</div>
-      <div class="brand-sub">학생 포털</div>
+      <img class="brand-logo" src="./icons/icon-192.png" alt="AP Math">
+      <div class="brand-copy">
+        <div class="brand-main">AP Math OS</div>
+        <div class="brand-sub">학생 포털</div>
+      </div>
     </div>
     <div class="top-actions">
       <div id="student-chip" class="chip"></div>
@@ -1089,7 +1202,7 @@
         <div class="student-shell">
           <section class="card student-profile-card">
             <div>
-              <p class="hero-kicker" style="margin:0 0 12px;color:var(--primary);background:rgba(26,92,255,0.07);border-color:rgba(26,92,255,0.12);">AP수학 학생 화면</p>
+              <p class="hero-kicker" style="margin:0 0 12px;color:#374151;background:#F3F4F6;border-color:rgba(17,24,39,0.12);">AP수학 학생 화면</p>
               <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생</h1>
               <p class="profile-sub">${escapeHtml(schoolGrade || 'AP수학 학생 포털')}</p>
             </div>
@@ -1234,6 +1347,49 @@
     function getOmrExams() {
       return Array.isArray(omrData?.exams) ? omrData.exams : [];
     }
+    function buildOmrReviewUrl(exam, mode = 'sol') {
+      const archiveFile = String(exam?.archive_file || '').trim();
+      if (!archiveFile) return '';
+      const isSolution = mode === 'sol';
+      const enginePath = archiveFile.startsWith('MIXED:')
+        ? '../../archive/mixed_engine.html'
+        : '../../archive/engine.html';
+      const url = new URL(enginePath, window.location.href);
+
+      if (archiveFile.startsWith('MIXED:')) {
+        const key = archiveFile.slice('MIXED:'.length).trim();
+        if (!key) return '';
+        url.searchParams.set('key', key);
+        url.searchParams.set('qpp', '2');
+        if (exam?.pack_id) url.searchParams.set('packId', String(exam.pack_id));
+      } else {
+        url.searchParams.set('data', archiveFile);
+      }
+
+      url.searchParams.set('mode', isSolution ? 'sol' : 'ans');
+      if (isSolution) url.searchParams.set('solQr', '1');
+      return url.toString();
+    }
+    function isHighSchoolOmrExam(exam) {
+      const source = [
+        exam?.grade_label,
+        exam?.grade,
+        exam?.class_name,
+        exam?.exam_title,
+        exam?.archive_file
+      ].map(value => String(value || '')).join(' ');
+      if (/(중등|중학교|중[1-3])/i.test(source)) return false;
+      return /(고등|고등부|고등학교|고[1-3])/i.test(source);
+    }
+    function renderOmrReviewActions(exam) {
+      if (!isHighSchoolOmrExam(exam)) return '';
+      const answerUrl = buildOmrReviewUrl(exam, 'ans');
+      const solutionUrl = buildOmrReviewUrl(exam, 'sol');
+      return `
+        ${answerUrl ? `<button type="button" class="btn review-btn" onclick="window.open('${escapeHtml(answerUrl)}', '_blank')">정답 보기</button>` : '<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
+        ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="window.open('${escapeHtml(solutionUrl)}', '_blank')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
+      `;
+    }
     async function renderOmrExams() {
       setTopStudent(homeData?.student?.name || session?.name || '');
       $('app').innerHTML = `
@@ -1262,6 +1418,7 @@
     }
     function renderOmrExamCard(exam) {
       const submitted = Number(exam.is_submitted || 0) === 1;
+      const showReview = isHighSchoolOmrExam(exam);
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
       const status = submitted ? `제출 완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '입력 전';
@@ -1274,7 +1431,10 @@
             </div>
             <span class="omr-status ${submitted ? 'done' : 'pending'}">${escapeHtml(status)}</span>
           </div>
-          ${submitted ? '' : `<div class="row-actions"><button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">입력하기</button></div>`}
+          <div class="omr-actions ${showReview ? '' : 'review-hidden'}">
+            ${showReview ? renderOmrReviewActions(exam) : ''}
+            ${submitted ? `<button type="button" class="btn" disabled>제출 완료</button>` : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">입력하기</button>`}
+          </div>
         </article>
       `;
     }

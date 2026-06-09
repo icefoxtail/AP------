@@ -20,7 +20,9 @@
 // [Theme Manager] 다크 모드: drawer 최상단 우측 스위치 방식
 // ============================================================
 function getTheme() {
-    return localStorage.getItem('APMATH_THEME') || 'light';
+    const saved = localStorage.getItem('APMATH_THEME');
+    if (saved === 'dark' || saved === 'light') return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
 function applyTheme(theme) {
@@ -71,6 +73,14 @@ function ensureThemeToggleButton() {
 
 function bootThemeManager() {
     ensureThemeToggleButton();
+    if (window.matchMedia) {
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const syncSystemTheme = () => {
+            if (!localStorage.getItem('APMATH_THEME')) applyTheme(getTheme());
+        };
+        if (media.addEventListener) media.addEventListener('change', syncSystemTheme);
+        else if (media.addListener) media.addListener(syncSystemTheme);
+    }
 }
 
 if (document.readyState === 'loading') {
@@ -305,6 +315,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     const actionBtn = document.getElementById('modal-action-btn');
     const footer = document.getElementById('modal-footer');
     const overlay = document.getElementById('modal-overlay');
+    const contentEl = document.getElementById('modal-content');
 
     if (!titleEl || !bodyEl || !overlay) return;
 
@@ -317,6 +328,14 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
 
     titleEl.innerText = t;
     bodyEl.innerHTML = b;
+    if (contentEl) {
+        contentEl.style.width = '';
+        contentEl.style.maxWidth = '';
+        contentEl.style.height = '';
+        contentEl.style.maxHeight = '';
+    }
+    bodyEl.style.maxHeight = '';
+    bodyEl.style.overflow = '';
 
     if (actionBtn) {
         if (at && af) {

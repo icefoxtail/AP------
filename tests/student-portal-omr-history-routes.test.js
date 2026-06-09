@@ -15,6 +15,15 @@ assert(
 );
 
 assert(
+    source.includes('function buildAssignmentDedupeKey') &&
+    source.includes('function dedupeClassExamAssignments') &&
+    source.includes('return [classId, examDate, archiveFile].join') &&
+    source.includes('sessionByAssignment.has') &&
+    source.includes('dedupeClassExamAssignments(assignments.results || [], sessionByAssignment).map'),
+  'student portal should collapse duplicate class exam assignment rows by class/date/archive file while preserving submitted rows'
+);
+
+assert(
   source.includes("method === 'GET' && id === 'exams'") &&
     source.includes('loadStudentClassExamAssignments(env, verified.student.id, 150)'),
   'student portal should expose a student-token protected historical OMR exam list'

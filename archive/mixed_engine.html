@@ -514,6 +514,50 @@ function buildSubmitQrTargetUrl() {
     return url.toString();
 }
 
+function loadScriptOnce(src) {
+    return new Promise((resolve, reject) => {
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (existing) {
+            if (existing.dataset.loaded === '1') resolve();
+            else existing.addEventListener('load', resolve, { once: true });
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = src;
+        script.dataset.loaded = '0';
+        script.onload = () => {
+            script.dataset.loaded = '1';
+            resolve();
+        };
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+async function loadAssessmentPackFallback(packId) {
+    const id = String(packId || '').trim();
+    if (!id) return null;
+    await loadScriptOnce('assessment/assessment-packs-1sem.generated.js');
+    const packs = window.APMATH_ASSESSMENT_PACKS_1SEM?.packs || [];
+    const pack = packs.find(item => String(item?.id || '') === id);
+    if (!pack || !Array.isArray(pack.questions) || !pack.questions.length) return null;
+    return {
+        questions: pack.questions.map(question => ({ ...question })),
+        meta: {
+            title: pack.title,
+            customTitle: pack.title,
+            count: pack.questions.length,
+            qpp: 2,
+            assessmentPackId: pack.id,
+            category: pack.category,
+            packId: pack.id,
+            grade: pack.grade,
+            gradeLabel: pack.grade,
+            scopeLabel: pack.scopeLabel
+        }
+    };
+}
+
 function injectSubmitQrToLastExamPage(area) {
     if (!shouldRenderSubmitQr()) return;
     if (typeof QRious !== 'function') return;
@@ -1291,6 +1335,28 @@ async function init() {
     AppState.key = p.get('key') || '';
     const rawData = localStorage.getItem('mixedQuestions_' + AppState.key) || sessionStorage.getItem('mixedQuestions');
     const rawMeta = localStorage.getItem('mixedMeta_' + AppState.key) || sessionStorage.getItem('mixedMeta');
+
+    if (!rawData && p.get('packId')) {
+        try {
+            const fallback = await loadAssessmentPackFallback(p.get('packId'));
+            if (fallback) {
+                AppState.data = fallback.questions;
+                AppState.meta = fallback.meta;
+                AppState.mode = p.get('mode') || 'exam';
+                if (isQrSolutionMode()) AppState.mode = 'sol';
+                applyQrSolutionLockUI();
+                AppState.qpp = parseInt(p.get('qpp')) || AppState.meta.qpp || 4;
+                const title = AppState.meta.customTitle || AppState.meta.title || 'JS아카이브 믹서 출제';
+                document.getElementById('ctrl-title').textContent = title;
+                document.getElementById('qppSelect').value = String(AppState.qpp);
+                document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
+                await render();
+                return;
+            }
+        } catch (e) {
+            console.warn('assessment pack fallback failed:', e);
+        }
+    }
 
     if (!rawData) { alert('데이터가 없습니다.'); return; }
 
