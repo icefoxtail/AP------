@@ -15,6 +15,8 @@
     var _consultationMode = 'list';
     var _editingConsultationId = '';
     var _consultationDraft = null;
+    var _pinnedConsultationByStudent = {};
+    var _pinnedConsultationFormStudent = '';
 
     function esc(value) {
         return EieApp.escapeHtml(value == null ? '' : value);
@@ -136,6 +138,16 @@
         }).sort(function (a, b) {
             return text(b.date || b.created_at).localeCompare(text(a.date || a.created_at));
         });
+    }
+
+    function consultationId(row) {
+        return text(row && (row.id || row.consultation_id || row.created_at || row.date));
+    }
+
+    function consultationDateLabel(value) {
+        var raw = text(value);
+        if (/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw.slice(5, 10);
+        return raw || '날짜 없음';
     }
 
     function primaryPhone(student) {
@@ -640,6 +652,71 @@
             + '</div>';
     }
 
+    function selectedPinnedConsultation(student, explicitId) {
+        var sid = rowId(student);
+        var rows = consultationsOf(student);
+        var requested = text(explicitId);
+        var stored = text(_pinnedConsultationByStudent[sid]);
+        var selected = rows.find(function (row) { return consultationId(row) === requested; })
+            || rows.find(function (row) { return consultationId(row) === stored; })
+            || rows[0]
+            || null;
+        if (selected) _pinnedConsultationByStudent[sid] = consultationId(selected);
+        return selected;
+    }
+
+    function renderPinnedConsultationPreview(student, consultation) {
+        var sid = rowId(student);
+        if (!consultation) {
+            if (_pinnedConsultationFormStudent === sid) {
+                return renderPinnedConsultationCreateForm(sid);
+            }
+            return '<div class="eie-apms-pinned-consultation-empty">'
+                + '<strong>상담 기록 없음</strong>'
+                + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startPinnedConsultation(' + jsArg(sid) + ')">+ 첫 상담 기록하기</button>'
+                + '</div>';
+        }
+        var date = consultationDate(consultation) || '날짜 없음';
+        var type = consultationType(consultation);
+        var content = text(consultation.content) || '상담 내용이 없습니다.';
+        var nextAction = text(consultation.next_action || consultation.nextAction);
+        return '<div class="eie-apms-pinned-consultation-preview">'
+            + '<div class="eie-apms-consultation-meta"><span>' + esc(date) + '</span><em>' + esc(type) + '</em></div>'
+            + '<p>' + esc(content) + '</p>'
+            + (nextAction ? '<div class="eie-apms-consultation-next"><strong>후속조치</strong> ' + esc(nextAction) + '</div>' : '<div class="eie-apms-consultation-next is-empty"><strong>후속조치</strong> 다음 조치 없음</div>')
+            + '</div>';
+    }
+
+    function renderPinnedConsultationCreateForm(sid) {
+        return '<div class="eie-apms-pinned-consultation-form">'
+            + '<label>상담일<input id="pinned-consultation-date" type="date" value="' + esc(todayIso()) + '"></label>'
+            + '<label>유형<select id="pinned-consultation-type">' + renderConsultationTypeOptions('학습') + '</select></label>'
+            + '<label class="is-wide">상담 내용<textarea id="pinned-consultation-content" rows="4" placeholder="상담 내용을 입력하세요."></textarea></label>'
+            + '<label class="is-wide">후속조치<textarea id="pinned-consultation-next-action" rows="2" placeholder="다음 조치를 입력하세요."></textarea></label>'
+            + '<div class="eie-apms-consultation-actions is-wide">'
+            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.savePinnedConsultation(' + jsArg(sid) + ')">저장</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.cancelPinnedConsultation(' + jsArg(sid) + ')">취소</button>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderPinnedConsultationCard(student) {
+        var sid = rowId(student);
+        var rows = consultationsOf(student);
+        var recentRows = rows.slice(0, 5);
+        return '<div class="eie-apms-card eie-apms-pinned-consultation" data-eie-pinned-consultation-student="' + esc(sid) + '">'
+            + '<div class="eie-apms-section-head"><h3>등원/상담</h3>' + (rows.length ? '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setTab(\'consultation\')">상담 전체보기</button>' : '') + '</div>'
+            + '<div class="eie-apms-pinned-consultation-body" id="eie-pinned-consultation-body-' + esc(sid) + '">'
+            + renderPinnedConsultationCreateForm(sid)
+            + '<div class="eie-apms-pinned-consultation-list-head">상담목록</div>'
+            + '<div class="eie-apms-consultation-list eie-apms-pinned-consultation-list">'
+            + (recentRows.length ? recentRows.map(renderPinnedConsultationRow).join('') : '<div class="eie-apms-consultation-empty">상담 기록 없음</div>')
+            + '</div>'
+            + (!rows.length ? '<div class="eie-apms-pinned-consultation-first">+ 첫 상담 기록하기</div>' : '')
+            + '</div>'
+            + '</div>';
+    }
+
     function renderConsultationTypeOptions(currentType) {
         var current = text(currentType);
         var types = ['학습', '태도', '성적', '기타'];
@@ -707,6 +784,20 @@
             + '<div class="eie-apms-inline-actions">'
             + (id ? '<button type="button" onclick="EieStudentsView.editConsultation(' + jsArg(id) + ')">수정</button>' : '')
             + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderPinnedConsultationRow(row) {
+        var date = consultationDate(row) || '-';
+        var type = consultationType(row);
+        var content = text(row.content) || '상담 내용이 없습니다.';
+        var nextAction = text(row.next_action || row.nextAction);
+        return '<div class="eie-apms-consultation-row eie-apms-pinned-consultation-row">'
+            + '<div class="eie-apms-consultation-main">'
+            + '<div class="eie-apms-consultation-meta"><span>' + esc(date) + '</span><em>' + esc(type) + '</em></div>'
+            + '<p>' + esc(content) + '</p>'
+            + (nextAction ? '<div class="eie-apms-consultation-next"><strong>후속조치</strong> ' + esc(nextAction) + '</div>' : '')
             + '</div>'
             + '</div>';
     }
@@ -834,6 +925,7 @@
             + '</div>'
             + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.closeDetail()">닫기</button>'
             + '</div>'
+            + renderPinnedConsultationCard(student)
             + '<div class="eie-apms-detail-actions">'
             + renderReturnAction()
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startEdit(' + jsArg(sid) + ')">수정</button>'
@@ -1036,12 +1128,15 @@
             setReturnCtx(returnCtx);
             var previousId = _selectedId;
             _selectedId = text(studentId);
+            var sid = _selectedId;
             _mode = 'detail';
             _tab = text(tab || (returnCtx && returnCtx.tab)) || _tab || 'basic';
             _notice = '';
             if (previousId !== _selectedId) {
                 _consultationMode = 'list';
                 _editingConsultationId = '';
+                _consultationDraft = null;
+                _pinnedConsultationFormStudent = '';
             }
             if (!selectedStudent() && _selectedId) {
                 await loadFoundation(true);
@@ -1050,7 +1145,13 @@
             if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
-            return EieRouter.open('students');
+            var opened = EieRouter.open('students');
+            if (sid && _tab !== 'consultation') {
+                loadStudentConsultations(sid).then(function () {
+                    if (_selectedId === sid && _mode === 'detail') EieRouter.open('students');
+                });
+            }
+            return opened;
         },
 
         closeDetail: function () {
@@ -1262,6 +1363,77 @@
             } catch (err) {
                 _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
                 await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        selectPinnedConsultation: function (studentId, consultationId) {
+            var sid = text(studentId || _selectedId);
+            if (!sid) return;
+            _pinnedConsultationFormStudent = '';
+            _pinnedConsultationByStudent[sid] = text(consultationId);
+            var student = asArray(db().students).find(function (row) {
+                return rowId(row) === sid;
+            }) || selectedStudent();
+            if (!student) return;
+            var selected = selectedPinnedConsultation(student, consultationId);
+            var target = document.getElementById('eie-pinned-consultation-body-' + sid);
+            if (target) target.innerHTML = renderPinnedConsultationPreview(student, selected);
+            var wrap = Array.prototype.slice.call(document.querySelectorAll('[data-eie-pinned-consultation-student]')).find(function (node) {
+                return text(node.getAttribute('data-eie-pinned-consultation-student')) === sid;
+            });
+            if (wrap) {
+                Array.prototype.slice.call(wrap.querySelectorAll('.eie-apms-consult-date-button')).forEach(function (button) {
+                    button.classList.toggle('is-active', text(button.getAttribute('data-eie-consultation-id')) === text(consultationId));
+                });
+            }
+        },
+
+        startPinnedConsultation: function (studentId) {
+            var sid = text(studentId || _selectedId);
+            if (!sid) return;
+            _pinnedConsultationFormStudent = sid;
+            EieRouter.open('students');
+        },
+
+        cancelPinnedConsultation: function (studentId) {
+            var sid = text(studentId || _selectedId);
+            if (_pinnedConsultationFormStudent === sid) _pinnedConsultationFormStudent = '';
+            EieRouter.open('students');
+        },
+
+        savePinnedConsultation: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            if (!sid) return;
+            var dateEl = document.getElementById('pinned-consultation-date');
+            var typeEl = document.getElementById('pinned-consultation-type');
+            var contentEl = document.getElementById('pinned-consultation-content');
+            var nextEl = document.getElementById('pinned-consultation-next-action');
+            var payload = {
+                student_id: sid,
+                date: text(dateEl && dateEl.value) || todayIso(),
+                type: text(typeEl && typeEl.value) || '학습',
+                content: text(contentEl && contentEl.value),
+                next_action: text(nextEl && nextEl.value)
+            };
+            if (!payload.content) {
+                _error = '상담 내용을 입력하세요.';
+                EieRouter.open('students');
+                return;
+            }
+            _saving = true;
+            try {
+                var result = await EieApi.createConsultation(payload);
+                EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
+                _pinnedConsultationFormStudent = '';
+                _notice = '상담 기록을 저장했습니다.';
+                _error = '';
+                EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
+                EieRouter.open('students');
             } finally {
                 _saving = false;
             }
