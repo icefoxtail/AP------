@@ -108,6 +108,18 @@
     createStudent: function (payload) {
       return sendJson('POST', OVERLAY_API_BASE + '/students', payload, overlayAuthHeader());
     },
+    patchStudent: function (id, payload) {
+      return sendJson('PATCH', OVERLAY_API_BASE + '/students/' + encodeURIComponent(id), payload, overlayAuthHeader());
+    },
+    listQueue: function (status) {
+      return readJson(OVERLAY_API_BASE + '/writethrough-queue' + (status ? ('?status=' + encodeURIComponent(status)) : ''), overlayAuthHeader());
+    },
+    createQueueItem: function (payload) {
+      return sendJson('POST', OVERLAY_API_BASE + '/writethrough-queue', payload, overlayAuthHeader());
+    },
+    setQueueStatus: function (id, status) {
+      return sendJson('PATCH', OVERLAY_API_BASE + '/writethrough-queue/' + encodeURIComponent(id) + '/status', { status: status }, overlayAuthHeader());
+    },
     listLinks: function (wangjiStudentId) {
       return readJson(OVERLAY_API_BASE + '/students/' + encodeURIComponent(wangjiStudentId) + '/links', overlayAuthHeader());
     },
@@ -511,6 +523,11 @@
       ['연락처', item.phone], ['상태', item.status],
       ['원본 수정', '아직 지원하지 않습니다 (후속 단계에서 AP/EIE 공식 API 검증 후 연결)']
     ]));
+    if (item.source_app === 'COMMON' && overlayApi.status === 'connected') {
+      var editBtn = el('button', { class: 'wsm-btn', type: 'button', text: '기본정보 수정 (공통 저장소)' });
+      editBtn.addEventListener('click', function () { editCommonStudent(item); });
+      sumWrap.appendChild(editBtn);
+    }
     root.appendChild(sumWrap);
 
     // 연결 상태 섹션
@@ -532,6 +549,16 @@
       if (!d.detail_url) openBtn.title = item.source_app + ' 상세 연결 방식 확인 필요';
       else openBtn.addEventListener('click', function () { window.open(d.detail_url, '_blank'); });
       srcWrap.appendChild(openBtn);
+      if (overlayApi.status === 'connected') {
+        var reqInfoBtn = el('button', { class: 'wsm-btn', type: 'button', text: '학생정보 수정 요청' });
+        reqInfoBtn.addEventListener('click', function () { requestOriginChange(item, 'student_info'); });
+        var reqEnrollBtn = el('button', { class: 'wsm-btn', type: 'button', text: '수강 연결 요청' });
+        reqEnrollBtn.addEventListener('click', function () { requestOriginChange(item, 'enrollment'); });
+        srcWrap.appendChild(reqInfoBtn);
+        srcWrap.appendChild(reqEnrollBtn);
+        srcWrap.appendChild(el('div', { class: 'wsm-disabled-note',
+          text: '요청은 검토 큐에 저장되며, 원본 반영은 후속 단계에서 AP/EIE 공식 API 검증 후 진행됩니다.' }));
+      }
       root.appendChild(srcWrap);
 
       // 원본 상담 read-only
@@ -747,6 +774,112 @@
     }).join(', ');
   }
 
+  // ---- 공통 학생 신규 등록 / 기본정보 수정 -------------------------------
+  function registerCommonStudent() {
+    if (overlayApi.status !== 'connected') { window.alert('공통 저장소 로그인 후 사용할 수 있습니다.'); return; }
+    var name = window.prompt('학생 이름 (필수)');
+    if (!name || !name.trim()) return;
+    var school = window.prompt('학교 (선택)') || '';
+    var grade = window.prompt('학년 (선택)') || '';
+    var phone = window.prompt('보호자 연락처 (선택)') || '';
+    overlayApi.createStudent({
+      display_name: name.trim(), school_name_snapshot: school.trim(),
+      grade_snapshot: grade.trim(), primary_phone_snapshot: phone.trim()
+    }).then(function (res) {
+      window.alert('공통 학생으로 등록되었습니다. AP/EIE 연결은 학생 화면의 연결 상태에서 진행해 주세요.');
+      state.filter = 'common';
+      document.querySelectorAll('.wsm-chip').forEach(function (c) {
+        c.classList.toggle('is-active', c.getAttribute('data-filter') === 'common');
+      });
+      runSearch();
+    }).catch(function (e) { window.alert('등록 실패: ' + e.message); });
+  }
+
+  function editCommonStudent(item) {
+    var name = window.prompt('학생 이름', item.display_name || '');
+    if (name == null) return;
+    var school = window.prompt('학교', item.school_name || '');
+    if (school == null) return;
+    var grade = window.prompt('학년', item.grade || '');
+    if (grade == null) return;
+    var phone = window.prompt('보호자 연락처', item.phone || '');
+    if (phone == null) return;
+    overlayApi.patchStudent(item.wangji_student_id, {
+      display_name: name.trim(), school_name_snapshot: school.trim(),
+      grade_snapshot: grade.trim(), primary_phone_snapshot: phone.trim()
+    }).then(function (res) {
+      item.display_name = res.student.display_name;
+      item.school_name = res.student.school_name_snapshot;
+      item.grade = res.student.grade_snapshot;
+      item.phone = res.student.primary_phone_snapshot;
+      selectStudent(item);
+      runSearch();
+    }).catch(function (e) { window.alert('수정 실패: ' + e.message); });
+  }
+
+  // ---- 원본 수정 요청 (write-through 검토 큐 적재 — 원본 반영 없음) --------
+  function requestOriginChange(item, targetType) {
+    var anchorId = getAnchorId(item);
+    if (!anchorId) { window.alert('먼저 공통 학생 연결이 필요합니다.'); return; }
+    var reason = window.prompt('요청 사유 (예: 보호자 번호 변경)');
+    if (!reason || !reason.trim()) return;
+    var payload = window.prompt('요청 내용 (변경할 값 설명 또는 JSON)') || '';
+    overlayApi.createQueueItem({
+      wangji_student_id: anchorId,
+      target_app: item.source_app,
+      target_type: targetType,
+      target_source_id: String(item.source_student_id),
+      request_payload_json: payload,
+      request_reason: reason.trim()
+    }).then(function () {
+      window.alert('요청이 검토 큐에 저장되었습니다.\n원본 반영은 후속 단계에서 AP/EIE 공식 API 검증 후 진행됩니다.');
+    }).catch(function (e) { window.alert('요청 저장 실패: ' + e.message); });
+  }
+
+  // ---- 검토 큐 패널 -------------------------------------------------------
+  function openQueuePanel() {
+    if (overlayApi.status !== 'connected') { window.alert('공통 저장소 로그인 후 사용할 수 있습니다.'); return; }
+    var detail = $('#wsm-detail');
+    detail.innerHTML = '<div class="wsm-empty">검토 큐 불러오는 중…</div>';
+    overlayApi.listQueue('').then(function (res) {
+      var rows = res.queue || [];
+      var root = el('div');
+      var head = el('div', { class: 'wsm-section' });
+      head.appendChild(sectionTitle('원본 수정 요청 검토 큐', false));
+      head.appendChild(el('div', { class: 'wsm-disabled-note',
+        text: '승인된 요청도 이 단계에서는 원본에 반영되지 않습니다. 원본 반영은 후속 단계에서 별도 검증 후 진행됩니다.' }));
+      root.appendChild(head);
+      if (!rows.length) root.appendChild(el('div', { class: 'wsm-empty', text: '대기 중인 요청이 없습니다.' }));
+      rows.forEach(function (q) {
+        var card = el('div', { class: 'wsm-section' });
+        card.appendChild(kv([
+          ['대상', q.target_app + ' / ' + q.target_type + (q.target_source_id ? (' / ' + q.target_source_id) : '')],
+          ['상태', q.status],
+          ['사유', q.request_reason || '—'],
+          ['내용', (q.request_payload_json || '').slice(0, 120) || '—'],
+          ['요청자', q.requested_by || '—'],
+          ['검토자', q.reviewed_by || '—']
+        ]));
+        var actions = { requested: [['검토 완료', 'reviewed'], ['거절', 'rejected']],
+                        reviewed: [['승인', 'approved'], ['거절', 'rejected']] }[q.status] || [];
+        actions.forEach(function (a) {
+          var b = el('button', { class: 'wsm-btn' + (a[1] === 'approved' ? ' primary' : ''), type: 'button', text: a[0] });
+          b.addEventListener('click', function () {
+            overlayApi.setQueueStatus(q.id, a[1]).then(openQueuePanel)
+              .catch(function (e) { window.alert('상태 변경 실패: ' + e.message); });
+          });
+          card.appendChild(b);
+        });
+        root.appendChild(card);
+      });
+      detail.innerHTML = '';
+      detail.appendChild(root);
+    }).catch(function (e) {
+      detail.innerHTML = '';
+      detail.appendChild(el('div', { class: 'wsm-section-error', text: '검토 큐 조회 실패: ' + e.message }));
+    });
+  }
+
   // ---- 연결 후보 스캔 (AP/EIE 이름+보호자번호 일치 → candidate 생성) -------
   function normPhone(p) { return String(p || '').replace(/[^0-9]/g, ''); }
 
@@ -838,6 +971,10 @@
     $('#wsm-search-input').addEventListener('keydown', function (e) { if (e.key === 'Enter') runSearch(); });
     var scanBtn = $('#wsm-scan-btn');
     if (scanBtn) scanBtn.addEventListener('click', function () { scanCandidates(scanBtn); });
+    var regBtn = $('#wsm-register-btn');
+    if (regBtn) regBtn.addEventListener('click', registerCommonStudent);
+    var queueBtn = $('#wsm-queue-btn');
+    if (queueBtn) queueBtn.addEventListener('click', openQueuePanel);
     overlayApi.probe().then(function () { runSearch(); });
   }
 

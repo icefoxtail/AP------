@@ -327,6 +327,71 @@ async function deleteMemo(env, admin, id) {
 }
 
 // ---------------------------------------------------------------------
+// write-through 검토 큐 (4차: 적재/검토까지만)
+//   상태 전이 허용: requested -> reviewed -> approved | rejected
+//   applied/failed 전이는 5차 write-through 단계 전용 — 이 워커 버전에는 없음.
+//   이 큐는 overlay DB에만 기록되며 AP/EIE 원본 반영을 하지 않는다.
+// ---------------------------------------------------------------------
+const QUEUE_TARGET_APPS = ['AP', 'EIE'];
+const QUEUE_TARGET_TYPES = ['student_info', 'enrollment', 'schedule', 'consultation'];
+const QUEUE_REVIEW_TRANSITIONS = {
+  requested: ['reviewed', 'rejected'],
+  reviewed: ['approved', 'rejected'],
+  approved: [],   // 4차에서는 approved 이후 전이 없음 (applied 는 5차)
+  rejected: []
+};
+
+async function listQueue(env, url) {
+  const status = safeText(url.searchParams.get('status'));
+  const studentId = safeText(url.searchParams.get('wangji_student_id'));
+  let sql = 'SELECT * FROM wangji_writethrough_queue WHERE is_deleted = 0';
+  const binds = [];
+  if (status) { sql += ' AND status = ?'; binds.push(status); }
+  if (studentId) { sql += ' AND wangji_student_id = ?'; binds.push(studentId); }
+  sql += ' ORDER BY created_at DESC LIMIT 300';
+  const res = await env.DB.prepare(sql).bind(...binds).all();
+  return jsonResponse({ success: true, queue: res.results || [] });
+}
+
+async function createQueueItem(request, env, admin) {
+  const body = await readJsonBody(request);
+  const studentId = safeText(body?.wangji_student_id);
+  const targetApp = safeText(body?.target_app).toUpperCase();
+  const targetType = safeText(body?.target_type);
+  if (!studentId) return jsonResponse({ success: false, error: 'wangji_student_id is required' }, 400);
+  if (!QUEUE_TARGET_APPS.includes(targetApp)) return jsonResponse({ success: false, error: 'target_app must be AP or EIE' }, 400);
+  if (!QUEUE_TARGET_TYPES.includes(targetType)) return jsonResponse({ success: false, error: 'invalid target_type' }, 400);
+  const id = makeId('wtq');
+  await env.DB.prepare(
+    `INSERT INTO wangji_writethrough_queue
+     (id, wangji_student_id, target_app, target_type, target_source_id, request_payload_json, request_reason, status, requested_by)
+     VALUES (?, ?, ?, ?, ?, ?, ?, 'requested', ?)`
+  ).bind(id, studentId, targetApp, targetType, safeText(body?.target_source_id),
+         safeText(typeof body?.request_payload_json === 'string' ? body.request_payload_json : JSON.stringify(body?.request_payload_json || {})),
+         safeText(body?.request_reason), admin.login_id).run();
+  await audit(env, admin.login_id, 'create', 'wangji_writethrough_queue', id, `${targetApp}/${targetType} requested`);
+  const row = await env.DB.prepare('SELECT * FROM wangji_writethrough_queue WHERE id = ?').bind(id).first();
+  return jsonResponse({ success: true, queue_item: row });
+}
+
+async function patchQueueStatus(request, env, admin, id) {
+  const body = await readJsonBody(request);
+  const next = safeText(body?.status);
+  const row = await env.DB.prepare('SELECT * FROM wangji_writethrough_queue WHERE id = ? AND is_deleted = 0').bind(id).first();
+  if (!row) return jsonResponse({ success: false, error: 'queue item not found' }, 404);
+  const allowed = QUEUE_REVIEW_TRANSITIONS[row.status] || [];
+  if (!allowed.includes(next)) {
+    return jsonResponse({ success: false, error: `transition ${row.status} -> ${next} is not allowed in review stage` }, 400);
+  }
+  await env.DB.prepare(
+    'UPDATE wangji_writethrough_queue SET status = ?, reviewed_by = ?, decided_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?'
+  ).bind(next, admin.login_id, id).run();
+  await audit(env, admin.login_id, 'status_change', 'wangji_writethrough_queue', id, `${row.status} -> ${next}`);
+  const updated = await env.DB.prepare('SELECT * FROM wangji_writethrough_queue WHERE id = ?').bind(id).first();
+  return jsonResponse({ success: true, queue_item: updated });
+}
+
+// ---------------------------------------------------------------------
 // 라우팅: /api/wangji/...
 // ---------------------------------------------------------------------
 export async function handleWangji(request, env) {
@@ -374,6 +439,12 @@ export async function handleWangji(request, env) {
     if (method === 'POST' && !id) return createMemo(request, env, admin);
     if (method === 'PATCH' && id && !tail) return patchMemo(request, env, admin, id);
     if (method === 'DELETE' && id && !tail) return deleteMemo(env, admin, id);
+  }
+
+  if (section === 'writethrough-queue') {
+    if (method === 'GET' && !id) return listQueue(env, url);
+    if (method === 'POST' && !id) return createQueueItem(request, env, admin);
+    if (method === 'PATCH' && id && tail === 'status') return patchQueueStatus(request, env, admin, id);
   }
 
   return jsonResponse({ success: false, error: 'not found' }, 404);
