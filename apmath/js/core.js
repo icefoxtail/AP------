@@ -11,6 +11,33 @@ const CONFIG = {
 
 const AUTH_KEY = 'APMATH_SESSION';
 
+// ── vendor 지연 로드 (xlsx / Chart.js / html2canvas) ─────────────────────
+// 첫 사용 시점에만 script를 주입한다. 같은 src는 한 번만 로드.
+const __vendorScriptPromises = {};
+function loadVendorScriptOnce(src, globalName) {
+    if (globalName && window[globalName]) return Promise.resolve(window[globalName]);
+    if (__vendorScriptPromises[src]) return __vendorScriptPromises[src];
+    __vendorScriptPromises[src] = new Promise((resolve, reject) => {
+        const el = document.createElement('script');
+        el.src = src;
+        el.onload = () => resolve(globalName ? window[globalName] : true);
+        el.onerror = () => {
+            delete __vendorScriptPromises[src];
+            reject(new Error(`vendor script load failed: ${src}`));
+        };
+        document.head.appendChild(el);
+    });
+    return __vendorScriptPromises[src];
+}
+const VENDOR_SRC = {
+    xlsx: 'vendor/xlsx.full.min.js',
+    chart: 'https://cdn.jsdelivr.net/npm/chart.js',
+    html2canvas: 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'
+};
+function loadXlsxOnce() { return loadVendorScriptOnce(VENDOR_SRC.xlsx, 'XLSX'); }
+function loadChartJsOnce() { return loadVendorScriptOnce(VENDOR_SRC.chart, 'Chart'); }
+function loadHtml2CanvasOnce() { return loadVendorScriptOnce(VENDOR_SRC.html2canvas, 'html2canvas'); }
+
 function getSession() {
     try { return JSON.parse(localStorage.getItem(AUTH_KEY)) || null; } catch { return null; }
 }

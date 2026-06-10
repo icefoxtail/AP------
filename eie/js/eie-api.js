@@ -187,6 +187,13 @@
                 { method: 'DELETE' }
             );
         },
+        // 한 셀의 배정/해제를 한 번의 요청으로 처리. payload: { assign: [...], remove: [...] }
+        async batchCellStudents(cellId, payload) {
+            return request(`timetable-cells/${encodeURIComponent(cellId)}/students/batch`, {
+                method: 'POST',
+                body: payload || {}
+            });
+        },
         async deleteStudent(studentId) {
             return request(`students/${encodeURIComponent(studentId)}`, { method: 'DELETE' });
         },

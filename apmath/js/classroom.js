@@ -499,6 +499,38 @@ function syncClassroomAttendanceStatusToState(studentId, date, status) {
     return rec;
 }
 
+function syncClassroomHomeworkStatusToState(studentId, date, status) {
+    const sid = String(studentId);
+    const d = String(date || '');
+    if (!d) return null;
+
+    if (!state.db.homework) state.db.homework = [];
+    let rec = state.db.homework.find(h => String(h.student_id) === sid && String(h.date || '') === d);
+    if (!rec) {
+        rec = { student_id: sid, date: d, status: status || '미기록' };
+        state.db.homework.push(rec);
+    } else {
+        rec.status = status;
+    }
+    rec.updated_at = new Date().toISOString();
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+
+    const month = d.slice(0, 7);
+    const cache = state.ui?.monthlyAttendanceCache?.[month];
+    if (cache && Array.isArray(cache.homework)) {
+        let mRec = cache.homework.find(h => String(h.student_id) === sid && String(h.date || '') === d);
+        if (!mRec) {
+            mRec = { student_id: sid, date: d, status: rec.status || '미기록' };
+            cache.homework.push(mRec);
+        }
+        mRec.status = rec.status;
+        mRec.updated_at = rec.updated_at;
+    }
+
+    renderAttendanceLedgerCellIfOpen(sid, d);
+    return rec;
+}
+
 function openClassroomConsultation(studentId, classId, date) {
     if (typeof setManagementReturnView === 'function') {
         setManagementReturnView({ type: 'classDetail', classId: String(classId) });
@@ -1595,18 +1627,8 @@ async function toggleAtt(sid, date) {
     try {
         const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
-        if (typeof refreshDataOnly === 'function') {
-            refreshDataOnly()
-                .then(() => {
-                    renderAttendanceLedgerCellIfOpen(sid, today);
-                    if (!isLedger && typeof loadClassroomOperationDateData === 'function') {
-                        return loadClassroomOperationDateData(today, true).then(() => {
-                            if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
-                        });
-                    }
-                })
-                .catch(() => {});
-        }
+        // 낙관적 업데이트(syncClassroomAttendanceStatusToState)가 state.db/월간캐시/출석부 셀을
+        // 이미 row 단위로 갱신했으므로 전체 initial-data 재조회는 하지 않는다.
     } catch (e) {
         if (hadRecord && cur) {
             cur.status = prevStatus;
@@ -1640,7 +1662,7 @@ async function toggleHw(sid, date) {
 
     if (cur) cur.status = next;
     else list.push({ student_id: sid, date: today, status: next });
-    if (!isLedger && typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+    syncClassroomHomeworkStatusToState(sid, today, next);
 
     if (isLedger) renderLedgerTable();
     else if (state.ui.currentClassId) {
@@ -1652,28 +1674,15 @@ async function toggleHw(sid, date) {
     try {
         const r = await api.patch('homework', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
-        if (typeof refreshDataOnly === 'function') {
-            refreshDataOnly()
-                .then(() => {
-                    const month = today.slice(0, 7);
-                    if (state.ui?.monthlyAttendanceCache) {
-                        delete state.ui.monthlyAttendanceCache[month];
-                    }
-                    if (!isLedger && typeof loadClassroomOperationDateData === 'function') {
-                        return loadClassroomOperationDateData(today, true).then(() => {
-                            if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
-                        });
-                    }
-                })
-                .catch(() => {});
-        }
+        // 낙관적 업데이트(syncClassroomHomeworkStatusToState)가 state.db/월간캐시/출석부 셀을
+        // 이미 row 단위로 갱신했으므로 전체 initial-data 재조회는 하지 않는다.
     } catch (e) {
         if (hadRecord && cur) cur.status = prevStatus;
         else {
             const idx = list.findIndex(h => String(h.student_id) === String(sid) && h.date === today);
             if (idx > -1) list.splice(idx, 1);
         }
-        if (!isLedger && typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+        syncClassroomHomeworkStatusToState(sid, today, prevStatus || '미기록');
         if (isLedger) renderLedgerTable();
         else if (state.ui.currentClassId) {
             const updated = updateStudentRowDOM(sid, state.ui.currentClassId);

@@ -224,7 +224,10 @@
         window.XLSX.utils.book_append_sheet(workbook, ws, '출력정보');
     }
 
-    function downloadWorkbook(options) {
+    async function downloadWorkbook(options) {
+        if (typeof loadXlsxOnce === 'function') {
+            try { await loadXlsxOnce(); } catch (e) { /* 아래 공통 안내로 처리 */ }
+        }
         if (!window.XLSX || !window.XLSX.utils || !window.XLSX.writeFile) {
             if (typeof toast === 'function') toast('엑셀 라이브러리를 불러오지 못했습니다.', 'warn');
             return;

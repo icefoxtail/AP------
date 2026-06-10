@@ -4194,12 +4194,12 @@
                     const created = await window.EieApi.createTimetableCell(payload);
                     const savedCell = created?.timetable_cell || created?.data || created?.cell || null;
                     const savedCellId = normalizeKey(savedCell?.id || savedCell?.cell_id || '');
-                    if (savedCellId && window.EieApi?.assignStudentToCell && Array.isArray(cell.assigned_students) && cell.assigned_students.length) {
-                        for (const student of cell.assigned_students) {
-                            const copiedStudentId = normalizeKey(student.student_id || student.id || student.confirmed_student_id || student.matched_student_id || student.canonical_student_id || '');
-                            if (!copiedStudentId) continue;
-                            await window.EieApi.assignStudentToCell(savedCellId, copiedStudentId).catch(() => null);
-                        }
+                    if (savedCellId && Array.isArray(cell.assigned_students) && cell.assigned_students.length) {
+                        const assignOps = cell.assigned_students
+                            .map(student => normalizeKey(student.student_id || student.id || student.confirmed_student_id || student.matched_student_id || student.canonical_student_id || ''))
+                            .filter(Boolean)
+                            .map(copiedStudentId => ({ cell_id: savedCellId, student_id: copiedStudentId }));
+                        if (assignOps.length) await batchCellStudentOps(savedCellId, { assign: assignOps }).catch(() => null);
                     }
                     successCount++;
                 } catch (err) {
@@ -4265,6 +4265,32 @@
 
     // Deprecated: 기존 오른쪽 패널 "교시 복사" 흐름은 제거했다. 편집 모드 복사→붙여넣기만 사용한다.
 
+    // ── 배정/해제 일괄 처리 헬퍼 ──────────────────────────────────────
+    // ops: { assign: [{ cell_id, student_id }], remove: [{ cell_id, student_id }] }
+    // batch API 한 번으로 처리하고, 워커가 batch 라우트를 모르는 경우(404/405)만
+    // 기존 단건 API를 병렬 호출로 폴백한다.
+    async function batchCellStudentOps(primaryCellId, ops) {
+        const assign = Array.isArray(ops?.assign) ? ops.assign.filter(op => op && op.cell_id && op.student_id) : [];
+        const remove = Array.isArray(ops?.remove) ? ops.remove.filter(op => op && op.cell_id && op.student_id) : [];
+        if (!assign.length && !remove.length) return { success: true };
+        if (window.EieApi?.batchCellStudents) {
+            try {
+                return await window.EieApi.batchCellStudents(primaryCellId, { assign, remove });
+            } catch (error) {
+                if (error?.status !== 404 && error?.status !== 405) throw error;
+            }
+        }
+        const results = await Promise.allSettled([
+            ...assign.map(op => window.EieApi.assignStudentToCell(op.cell_id, op.student_id)),
+            ...remove.map(op => window.EieApi.removeStudentFromCell(op.cell_id, op.student_id))
+        ]);
+        const okCount = results.filter(r => r.status === 'fulfilled').length;
+        if (!okCount) {
+            const firstRejected = results.find(r => r.status === 'rejected');
+            if (firstRejected) throw firstRejected.reason;
+        }
+        return { success: true, fallback: true };
+    }
 
     async function transferStudentToClass(studentId) {
         if (viewState.studentSaving) return;
@@ -4285,17 +4311,13 @@
         try {
             const currentCellIds = Array.isArray(currentSession?.source_cell_ids)
                 ? currentSession.source_cell_ids.filter(Boolean) : [];
-            if (window.EieApi?.removeStudentFromCell) {
-                for (const cellId of currentCellIds) {
-                    await window.EieApi.removeStudentFromCell(cellId, sid).catch(() => null);
-                }
-            }
             const newCellIds = Array.isArray(targetSession.source_cell_ids)
                 ? targetSession.source_cell_ids.filter(Boolean) : [];
-            if (window.EieApi?.assignStudentToCell) {
-                for (const cellId of newCellIds) {
-                    await window.EieApi.assignStudentToCell(cellId, sid).catch(() => null);
-                }
+            const removeOps = currentCellIds.map(cellId => ({ cell_id: cellId, student_id: sid }));
+            const assignOps = newCellIds.map(cellId => ({ cell_id: cellId, student_id: sid }));
+            if (removeOps.length || assignOps.length) {
+                const primaryCellId = (assignOps[0] || removeOps[0]).cell_id;
+                await batchCellStudentOps(primaryCellId, { assign: assignOps, remove: removeOps }).catch(() => null);
             }
             if (window.EieApmsState?.loadFoundation)
                 await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
@@ -4343,10 +4365,9 @@
             const sessionId = viewState.miniAddStudentSessionId || viewState.selectedSessionId;
             const session = lastRenderedSessions.find(s => s.session_id === sessionId) || null;
             const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids.filter(Boolean) : [];
-            if (newId && cellIds.length && window.EieApi?.assignStudentToCell) {
-                for (const cid of cellIds) {
-                    await window.EieApi.assignStudentToCell(cid, newId).catch(() => null);
-                }
+            if (newId && cellIds.length) {
+                const assignOps = cellIds.map(cid => ({ cell_id: cid, student_id: newId }));
+                await batchCellStudentOps(cellIds[0], { assign: assignOps }).catch(() => null);
             }
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
             await refreshTimetableRowsAfterMiniSave();
@@ -4627,17 +4648,8 @@
         viewState.miniError = '';
         viewState.miniNotice = '';
         try {
-            let successCount = 0;
-            let firstError = null;
-            for (const cellIdValue of cellIds) {
-                try {
-                    await window.EieApi.assignStudentToCell(cellIdValue, studentId);
-                    successCount += 1;
-                } catch (error) {
-                    if (!firstError) firstError = error;
-                }
-            }
-            if (!successCount && firstError) throw firstError;
+            const assignOps = cellIds.map(cellIdValue => ({ cell_id: cellIdValue, student_id: studentId }));
+            await batchCellStudentOps(cellIds[0], { assign: assignOps });
             await refreshTimetableRowsAfterMiniSave();
             closeTimetableDetailPanel();
         } catch (error) {
@@ -4659,17 +4671,8 @@
         viewState.miniError = '';
         viewState.miniNotice = '';
         try {
-            let successCount = 0;
-            let firstError = null;
-            for (const cellIdValue of cellIds) {
-                try {
-                    await window.EieApi.removeStudentFromCell(cellIdValue, sid);
-                    successCount += 1;
-                } catch (error) {
-                    if (!firstError) firstError = error;
-                }
-            }
-            if (!successCount && firstError) throw firstError;
+            const removeOps = cellIds.map(cellIdValue => ({ cell_id: cellIdValue, student_id: sid }));
+            await batchCellStudentOps(cellIds[0], { remove: removeOps });
             await refreshTimetableRowsAfterMiniSave();
             closeTimetableDetailPanel();
         } catch (error) {
@@ -4717,10 +4720,9 @@
             const created = await window.EieApi.createStudent(payload);
             const newId = normalizeKey(created?.id || created?.data?.id || created?.student?.id || '');
             const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids.filter(Boolean) : [];
-            if (newId && cellIds.length && window.EieApi?.assignStudentToCell) {
-                for (const cellId of cellIds) {
-                    await window.EieApi.assignStudentToCell(cellId, newId).catch(() => null);
-                }
+            if (newId && cellIds.length) {
+                const assignOps = cellIds.map(cellId => ({ cell_id: cellId, student_id: newId }));
+                await batchCellStudentOps(cellIds[0], { assign: assignOps }).catch(() => null);
             }
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
             await refreshTimetableRowsAfterMiniSave();
@@ -4747,10 +4749,9 @@
         try {
             await window.EieApi.updateStudent(sid, { status: 'inactive' });
             const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids.filter(Boolean) : [];
-            if (window.EieApi?.removeStudentFromCell) {
-                for (const cellIdValue of cellIds) {
-                    await window.EieApi.removeStudentFromCell(cellIdValue, sid).catch(() => null);
-                }
+            if (cellIds.length) {
+                const removeOps = cellIds.map(cellIdValue => ({ cell_id: cellIdValue, student_id: sid }));
+                await batchCellStudentOps(cellIds[0], { remove: removeOps }).catch(() => null);
             }
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
             await refreshTimetableRowsAfterMiniSave();

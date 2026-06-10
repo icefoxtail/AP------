@@ -740,29 +740,27 @@
 
     <div id="toast-container" class="toast-container"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="vendor/xlsx.full.min.js"></script>
-    <script src="../shared/js/wangji-owner-auth-bridge.js"></script>
-    <script src="js/core.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/report.js"></script>
-    <script src="js/qr-omr.js"></script>
-    <script src="js/student.js"></script>
-    <script src="js/classroom.js"></script>
-    <script src="js/clinic-print.js"></script>
-    <script src="js/management.js"></script>
-    <script src="js/student-export.js"></script>
-    <script src="js/textbook.js"></script>
-    <script src="js/memo.js"></script>
-    <script src="js/schedule.js"></script>
-    <script src="js/cumulative.js"></script>
-    <script src="js/timetable.js"></script>
-    <script src="js/dashboard-admin.js"></script>
-    <script src="js/dashboard-teacher.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/study-material-wrong.js"></script>
-    <script src="app.js"></script>
+    <!-- vendor(chart.js/html2canvas/xlsx)는 첫 사용 시 loadVendorScriptOnce()로 지연 로드 -->
+    <script defer src="../shared/js/wangji-owner-auth-bridge.js"></script>
+    <script defer src="js/core.js"></script>
+    <script defer src="js/ui.js"></script>
+    <script defer src="js/report.js"></script>
+    <script defer src="js/qr-omr.js"></script>
+    <script defer src="js/student.js"></script>
+    <script defer src="js/classroom.js"></script>
+    <script defer src="js/clinic-print.js"></script>
+    <script defer src="js/management.js"></script>
+    <script defer src="js/student-export.js"></script>
+    <script defer src="js/textbook.js"></script>
+    <script defer src="js/memo.js"></script>
+    <script defer src="js/schedule.js"></script>
+    <script defer src="js/cumulative.js"></script>
+    <script defer src="js/timetable.js"></script>
+    <script defer src="js/dashboard-admin.js"></script>
+    <script defer src="js/dashboard-teacher.js"></script>
+    <script defer src="js/dashboard.js"></script>
+    <script defer src="js/study-material-wrong.js"></script>
+    <script defer src="app.js"></script>
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
