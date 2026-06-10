@@ -2243,7 +2243,7 @@
             <div class="eie-v2-card-board" aria-label="EIE 시간표 그리드">
                 <div class="eie-v2-board-scroll">
                     <div class="eie-v2-board-grid eie-v2-full-grid"
-                        style="--eie-v2-homeroom-count:${teachers.length};--eie-v2-row-count:${periodGroups.length};--eie-v2-board-min-width:${esc(minWidth)};grid-template-columns:var(--eie-v2-period-width) ${esc(columnTemplate)};">
+                        style="--eie-v2-homeroom-count:${teachers.length};--eie-v2-row-count:${periodGroups.length};--eie-v2-board-min-width:${esc(minWidth)};--eie-v2-column-template:${esc(columnTemplate)};grid-template-columns:var(--eie-v2-period-width) ${esc(columnTemplate)};">
                         <div class="eie-v2-board-corner eie-v2-grid-corner" style="grid-column:1;grid-row:1;" aria-hidden="true"></div>
                         ${teachers.map((teacher, index) => `
                             <div class="eie-v2-teacher-frame-cell eie-v2-grid-teacher-header ${teacher.isWide ? 'is-wide' : 'is-normal'}"
@@ -3663,6 +3663,25 @@
         eventsBound = true;
     }
 
+    function applyPrintFitScale(isWeekdayPrint) {
+        const body = document && document.body;
+        if (!body?.style) return;
+        body.style.removeProperty('--eie-print-full-scale');
+        if (isWeekdayPrint) return;
+        const board = document.querySelector?.('.eie-v2-board-grid.eie-v2-full-grid');
+        if (!board) return;
+        const measuredWidth = Math.max(
+            Number(board.scrollWidth || 0),
+            Number(board.getBoundingClientRect?.().width || 0)
+        );
+        if (!measuredWidth) return;
+        // A4 landscape 297mm - left/right 4mm margins = 289mm.
+        // CSS print px: 96px per inch. A small safety gutter prevents right-edge clipping.
+        const printableWidthPx = Math.floor((289 / 25.4) * 96) - 12;
+        const scale = Math.min(1, Math.max(0.52, printableWidthPx / measuredWidth));
+        body.style.setProperty('--eie-print-full-scale', scale.toFixed(3));
+    }
+
     function printTimetable() {
         const body = document && document.body;
         const isWeekdayPrint = !!viewState.activeDayOverlay;
@@ -3672,6 +3691,7 @@
             body.classList.toggle('eie-printing-weekday-timetable', isWeekdayPrint);
             body.classList.toggle('eie-printing-full-timetable', !isWeekdayPrint);
         }
+        applyPrintFitScale(isWeekdayPrint);
         if (titleEl) {
             titleEl.setAttribute('data-eie-print-title', isWeekdayPrint
                 ? `EiE ${viewState.activeDayOverlay}요일 시간표`
@@ -3682,6 +3702,7 @@
             if (body?.classList) {
                 body.classList.remove('eie-printing-timetable', 'eie-printing-weekday-timetable', 'eie-printing-full-timetable');
             }
+            if (body?.style) body.style.removeProperty('--eie-print-full-scale');
             if (titleEl) titleEl.removeAttribute('data-eie-print-title');
             window.removeEventListener?.('afterprint', cleanup);
         };

@@ -11113,3 +11113,190 @@ select.eie-att-ctrl { cursor: pointer; }
     }
 }
 
+
+/* ====================================================================== */
+/* EIE full timetable print lane-preserve fix 20260610                    */
+/* 전체 시간표는 카드 폭/2열 lane 구조를 유지한 채 보드 전체만 축소한다. */
+/* 요일별 시간표 인쇄 규칙은 위 one-page 규칙을 그대로 사용한다.       */
+/* ====================================================================== */
+@media print {
+    body.eie-printing-full-timetable .eie-v2-board-scroll {
+        width: max-content !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-board-grid.eie-v2-full-grid {
+        display: grid !important;
+        width: max-content !important;
+        max-width: none !important;
+        min-width: var(--eie-v2-board-min-width, max-content) !important;
+        grid-template-columns: var(--eie-v2-period-width) var(--eie-v2-column-template) !important;
+        grid-template-rows: none !important;
+        grid-auto-rows: minmax(108px, auto) !important;
+        gap: 6px !important;
+        padding: 8px !important;
+        align-items: stretch !important;
+        zoom: var(--eie-print-full-scale, 0.72) !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-full-grid .eie-v2-grid-corner,
+    body.eie-printing-full-timetable .eie-v2-full-grid .eie-v2-grid-teacher-header {
+        width: auto !important;
+        min-height: 38px !important;
+        height: auto !important;
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-teacher-header strong {
+        font-size: 13px !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.04em !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-period-label {
+        width: auto !important;
+        min-height: 108px !important;
+        height: 100% !important;
+        padding: 7px 2px !important;
+        border-radius: 12px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-period-label strong {
+        font-size: 11px !important;
+        line-height: 1.08 !important;
+        letter-spacing: -0.05em !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-period-label span {
+        font-size: 8px !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.05em !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-slot {
+        position: relative !important;
+        width: auto !important;
+        min-width: 0 !important;
+        min-height: 108px !important;
+        height: 100% !important;
+        padding: 7px !important;
+        border-radius: 12px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-card-wrapper,
+    body.eie-printing-full-timetable .eie-v2-grid-card-wrapper.has-single-card,
+    body.eie-printing-full-timetable .eie-v2-grid-card-wrapper.has-multiple-cards {
+        align-self: stretch !important;
+        justify-self: start !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        height: auto !important;
+        padding: 7px !important;
+        margin-left: calc((var(--eie-v2-card-lane, 1) - 1) * 164px) !important;
+        pointer-events: none !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-grid-card-wrapper .eie-v2-week-card,
+    body.eie-printing-full-timetable .eie-v2-week-card {
+        --eie-v2-card-inner-width: 140px !important;
+        box-sizing: border-box !important;
+        width: 156px !important;
+        min-width: 156px !important;
+        max-width: 156px !important;
+        flex: 0 0 156px !important;
+        height: 100% !important;
+        min-height: calc((var(--eie-v2-card-row-span, 1) * 108px) + ((var(--eie-v2-card-row-span, 1) - 1) * 6px) - 14px) !important;
+        padding: 11px 7px 12px !important;
+        gap: 8px !important;
+        align-items: flex-start !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-material-row,
+    body.eie-printing-full-timetable .eie-v2-card-days-row,
+    body.eie-printing-full-timetable .eie-v2-card-students {
+        width: var(--eie-v2-card-inner-width) !important;
+        max-width: var(--eie-v2-card-inner-width) !important;
+        min-width: var(--eie-v2-card-inner-width) !important;
+        border-radius: 8px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-material-row,
+    body.eie-printing-full-timetable .eie-v2-card-days-row {
+        display: grid !important;
+        grid-template-columns: repeat(5, 24.8px) !important;
+        column-gap: 4px !important;
+        gap: 4px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-material-row span,
+    body.eie-printing-full-timetable .eie-v2-card-material-row strong,
+    body.eie-printing-full-timetable .eie-v2-card-days-row span {
+        padding: 3px 1px !important;
+        border-radius: 5px !important;
+        font-size: 9.5px !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.055em !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-material-row span {
+        grid-column: auto !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-material-row strong {
+        grid-column: auto !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        font-size: 10px !important;
+        font-weight: 800 !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-teacher-table {
+        width: var(--eie-v2-card-inner-width) !important;
+        max-width: var(--eie-v2-card-inner-width) !important;
+        min-width: var(--eie-v2-card-inner-width) !important;
+        gap: 3px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-teacher-row {
+        grid-template-columns: 34px repeat(5, 18px) !important;
+        column-gap: 2px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-teacher-row > * {
+        padding: 1px 0 !important;
+        border-radius: 5px !important;
+        font-size: 9.2px !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.055em !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-students {
+        display: grid !important;
+        grid-template-columns: repeat(3, 44px) !important;
+        gap: 5px 4px !important;
+        align-items: start !important;
+        justify-content: start !important;
+        margin-top: 1px !important;
+    }
+
+    body.eie-printing-full-timetable .eie-v2-card-student,
+    body.eie-printing-full-timetable .eie-v2-card-student-more {
+        width: 44px !important;
+        max-width: 44px !important;
+        min-height: 21px !important;
+        padding: 4px 6px !important;
+        border-radius: 7px !important;
+        font-size: 10.5px !important;
+        line-height: 1.05 !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
