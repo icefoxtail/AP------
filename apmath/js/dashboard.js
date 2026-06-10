@@ -698,12 +698,12 @@ function openAdminStudentList(type) {
             : type === 'discharged'
             ? `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세 보기</button>
                     <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">목록숨김</button>
                 </div>
             `
-            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:500; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
+            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:500; border-radius:8px; background:var(--surface-2); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세 보기</button>`;
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
@@ -1109,13 +1109,15 @@ function adminOpenStudentEditOrDetail(studentId) {
         return;
     }
     closeModal(true);
-    if (typeof renderStudentDetail === 'function') renderStudentDetail(studentId);
+    if (typeof openStudentDetail === 'function') openStudentDetail(studentId, { mode: 'view', returnTo: { type: 'dashboard' } });
+    else if (typeof renderStudentDetail === 'function') renderStudentDetail(studentId, { returnTo: { type: 'dashboard' } });
     else toast('학생 화면을 불러오지 못했습니다.', 'warn');
 }
 
 function adminOpenDashboardStudentDetail(studentId) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'dashboard' });
-    if (typeof renderStudentDetail === 'function') return renderStudentDetail(studentId);
+    if (typeof openStudentDetail === 'function') return openStudentDetail(studentId, { mode: 'view', returnTo: { type: 'dashboard' } });
+    if (typeof renderStudentDetail === 'function') return renderStudentDetail(studentId, { returnTo: { type: 'dashboard' } });
     toast('학생 화면을 불러오지 못했습니다.', 'warn');
 }
 
@@ -1639,7 +1641,7 @@ function renderAdminSimpleStudentList(title, list, editable = false, showGradeSu
         const status = adminNormalizeStatus(s.status);
         const action = editable
             ? `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); color:var(--text); border:1px solid var(--border);" onclick="adminOpenStudentEditOrDetail('${s.id}')">수정</button>`
-            : `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none;" onclick="closeModal(true); renderStudentDetail('${s.id}')">상세</button>`;
+            : `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세</button>`;
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--surface);">
                 <div style="min-width:0; flex:1;">
@@ -1814,7 +1816,7 @@ function openAdminGlobalSearchResult(index) {
     if (!item) return toast('검색 결과를 찾을 수 없습니다.', 'warn');
 
     if (item.type === 'student' && item.studentId) {
-        renderStudentDetail(item.studentId);
+        openStudentDetail(item.studentId, { mode: 'view', returnTo: { type: 'dashboard' } });
         return;
     }
 
@@ -2219,7 +2221,7 @@ function renderAdminStudentSearch() {
         return `
             <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
                 <div><span style="font-size:13px; color:var(--text);; font-weight:500;">${apEscapeHtml(s.name)}</span> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
-                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세 보기</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세 보기</button>
             </div>
         `;
     }).join('');
@@ -2756,6 +2758,10 @@ function openOnboardingStudentConsultation(taskId) {
     store.error = '';
     updateDashboardOnboardingTasksSection();
 
+    if (typeof openStudentDetail === 'function') {
+        openStudentDetail(studentId, { mode: 'view', tab: 'cns', returnTo: { type: 'dashboard' } });
+        return;
+    }
     if (typeof renderStudentDetailTab === 'function') {
         renderStudentDetailTab(studentId, 'cns');
         return;
@@ -3045,7 +3051,7 @@ function renderDailyClosePanel(step = 1) {
                     <div class="daily-close-student">
                         <div class="daily-close-student__row">
                             <span class="daily-close-student__name">${apEscapeHtml(s.name)}</span>
-                            <span class="daily-close-student__link" onclick="closeModal();renderStudentDetail('${dashboardEscapeAttr(s.id)}')">상세 보기</span>
+                            <span class="daily-close-student__link" onclick="openStudentDetail('${dashboardEscapeAttr(s.id)}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세 보기</span>
                         </div>
                         <div class="daily-close-student__actions">
                             ${type === 'att'

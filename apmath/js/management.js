@@ -90,7 +90,7 @@ function renderAddressBookList() {
                     </div>
                 </div>
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:190px;">
-                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); closeModal(true); openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'addressBook' } })">상세</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'addressBook' } })">상세</button>
                     <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'edit', returnTo: { type: 'addressBook' } })">수정</button>
                     ${isActive
                         ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
