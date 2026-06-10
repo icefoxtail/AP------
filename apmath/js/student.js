@@ -87,13 +87,14 @@ function injectStudentStyles() {
         .apms-eie-form-drawer[open] summary::after { content:'닫기'; }
         .apms-eie-form-drawer-body { display:flex; flex-direction:column; gap:12px; padding:0 14px 14px; }
         .ap-student-detail-shell { display:flex; flex-direction:column; gap:14px; padding:0 14px 4px; box-sizing:border-box; }
-        .ap-student-profile-head { position:sticky; top:0; z-index:24; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:14px; padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 8px 22px rgba(15,23,42,.075); }
+        .ap-student-profile-head { position:sticky; top:0; z-index:24; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:14px; padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 8px 22px rgba(15,23,42,.075); overflow:hidden; }
+        .ap-student-profile-head.is-edit { grid-template-columns:minmax(0,1fr); }
         body.dark .ap-student-profile-head { background:var(--surface); box-shadow:none; }
-        .ap-student-head-main { min-width:0; display:flex; flex-direction:column; gap:10px; }
+        .ap-student-head-main { min-width:0; display:flex; flex-direction:column; gap:8px; overflow:hidden; }
         .ap-student-head-main h1 { margin:0; font-size:24px; font-weight:750; color:var(--text); line-height:1.18; }
         .ap-student-head-badges,
         .ap-student-head-actions { display:flex; flex-wrap:wrap; gap:7px; }
-        .ap-student-head-badges { margin:0; align-items:center; }
+        .ap-student-head-badges { margin:0; align-items:center; position:static; transform:none; overflow:visible; padding:0 0 1px; }
         .ap-student-pill,
         .ap-student-status { display:inline-flex; align-items:center; min-height:24px; padding:3px 9px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:700; line-height:1.2; }
         .ap-student-status.is-active { border-color:rgba(16,185,129,.24); background:rgba(16,185,129,.10); color:#047857; }
@@ -141,10 +142,11 @@ function injectStudentStyles() {
             .apms-eie-form-grid { grid-template-columns:1fr; }
             .apms-eie-form { padding:0 10px 4px; }
             .ap-student-detail-shell { padding:0 10px 4px; }
-            .ap-student-profile-head { grid-template-columns:minmax(0,1fr) auto; gap:10px; padding:10px 12px; border-radius:14px; align-items:start; }
-            .ap-student-head-main { min-width:0; gap:6px; }
+            .ap-student-profile-head { grid-template-columns:minmax(0,1fr) auto; gap:10px; padding:11px 12px; border-radius:14px; align-items:center; }
+            .ap-student-profile-head.is-edit { grid-template-columns:minmax(0,1fr); }
+            .ap-student-head-main { min-width:0; gap:6px; overflow:hidden; }
             .ap-student-head-main h1 { font-size:20px; line-height:1.12; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-            .ap-student-head-badges { gap:5px; margin:0; max-height:52px; overflow:hidden; }
+            .ap-student-head-badges { gap:5px; margin:0; max-height:none; overflow:visible; padding-bottom:1px; }
             .ap-student-pill,
             .ap-student-status { min-height:22px; padding:2px 7px; font-size:10.5px; line-height:1.2; white-space:nowrap; }
             .ap-student-head-actions { align-items:flex-start; justify-content:flex-end; flex:0 0 auto; }
@@ -317,7 +319,7 @@ function isStudentDetailSubModal(type = '', studentId = '') {
 function shouldRefreshCurrentStudentDetailTab(studentId, tabs = []) {
     if (!state.ui) return false;
     // Hotfix guard: edit mode에서 lazy/consultation/contact 자동 refresh가
-    // 수정 폼을 view shell로 덮어쓰면 안 된다. 저장/취소/보기로 같은 명시 전환은
+    // 수정 폼을 view shell로 덮어쓰면 안 된다. 저장/취소 같은 명시 전환은
     // 이 함수를 거치지 않으므로 영향받지 않는다.
     if (state.ui.currentStudentDetailMode === 'edit') return false;
     const key = String(studentId || '');
@@ -1130,6 +1132,41 @@ async function ensureStudentConsultationsLoaded(sid, options = {}) {
  * options.returnTo: { type, classId, studentId } 등 복귀 컨텍스트
  * 모든 학생 상세 진입은 이 함수를 경유하여 동일한 모달 셸을 사용한다.
  */
+
+function normalizeStudentDetailReturnContext(ctx, sid = '') {
+    if (!ctx || typeof ctx !== 'object' || !ctx.type) return null;
+    // 학생상세 내부 전환용 self-return은 원래 진입 경로가 아니므로 저장하지 않는다.
+    if (ctx.type === 'studentDetail' && (!ctx.studentId || String(ctx.studentId) === String(sid || ''))) return null;
+    return { ...ctx };
+}
+
+function resolveStudentDetailReturnContext(sid, options = {}) {
+    if (!state.ui) state.ui = {};
+    const key = String(sid || '');
+    const sameStudent = String(state.ui.currentStudentDetailId || '') === key;
+    const explicitCtx = normalizeStudentDetailReturnContext(options.returnTo || null, key);
+    const preservedCtx = sameStudent ? normalizeStudentDetailReturnContext(state.ui.currentStudentDetailReturnTo || null, key) : null;
+    const modalCtx = normalizeStudentDetailReturnContext(state.ui.modalReturnView || null, key);
+    const managementCtx = normalizeStudentDetailReturnContext(state.ui.returnView || null, key);
+    const nextCtx = explicitCtx || preservedCtx || modalCtx || managementCtx || null;
+    state.ui.currentStudentDetailReturnTo = nextCtx;
+    return nextCtx;
+}
+
+function applyStudentDetailModalReturnContext(returnCtx) {
+    if (!state.ui) state.ui = {};
+    const safeCtx = returnCtx && returnCtx.type ? returnCtx : null;
+    if (typeof setModalReturnView === 'function') setModalReturnView(safeCtx);
+    else state.ui.modalReturnView = safeCtx;
+}
+
+function returnStudentEditToView(sid, options = {}) {
+    const tab = normalizeStudentDetailTab(options.tab || state.ui?.currentStudentDetailTab || 'basic');
+    const returnCtx = state.ui?.currentStudentDetailReturnTo || null;
+    renderStudentDetailShell(sid, { mode: 'view', tab, returnTo: returnCtx });
+    return false;
+}
+
 async function openStudentDetail(sid, options = {}) {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
@@ -1140,8 +1177,8 @@ async function openStudentDetail(sid, options = {}) {
     state.ui.currentStudentDetailMode = mode;
     if (mode === 'view') state.ui.currentStudentDetailTab = tab;
 
-    const returnCtx = options.returnTo || state.ui.modalReturnView || state.ui.returnView || null;
-    if (returnCtx && returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
+    const returnCtx = resolveStudentDetailReturnContext(sid, options);
+    applyStudentDetailModalReturnContext(returnCtx);
 
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
     const foundationLoads = [];
@@ -1158,8 +1195,8 @@ async function openStudentDetail(sid, options = {}) {
 }
 
 // 기존 호출 호환용 wrapper (삭제 금지)
-async function renderStudentDetail(sid) {
-    return openStudentDetail(sid, { mode: 'view', tab: 'basic' });
+async function renderStudentDetail(sid, options = {}) {
+    return openStudentDetail(sid, { ...options, mode: 'view', tab: options.tab || 'basic' });
 }
 
 function returnFromStudentFlow(ctx = null) {
@@ -1428,10 +1465,10 @@ function renderStudentDetailHeader(sid, mode = 'view') {
     const status = apmsStudentStatusMeta(s);
     const isEdit = mode === 'edit';
     const actionBtn = isEdit
-        ? `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'view' })">보기로</button>`
+        ? ''
         : `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">정보 수정</button>`;
     return `
-        <header class="ap-student-profile-head">
+        <header class="ap-student-profile-head ${isEdit ? 'is-edit' : 'is-view'}">
             <div class="ap-student-head-main">
                 <h1>${apmsStudentDetailEsc(s.name || '학생')}</h1>
                 <div class="ap-student-head-badges">
@@ -1441,9 +1478,7 @@ function renderStudentDetailHeader(sid, mode = 'view') {
                     ${s.student_pin ? `<span class="ap-student-pill">PIN ${apmsStudentDetailEsc(s.student_pin)}</span>` : ''}
                 </div>
             </div>
-            <div class="ap-student-head-actions">
-                ${actionBtn}
-            </div>
+            ${actionBtn ? `<div class="ap-student-head-actions">${actionBtn}</div>` : ''}
         </header>
     `;
 }
@@ -1702,8 +1737,8 @@ function renderStudentDetailShell(sid, options = {}) {
     state.ui.currentStudentDetailTab = mode === 'view' ? tab : (previousTab || tab || 'basic');
     setStudentDetailSubModal('', sid);
 
-    const returnCtx = options.returnTo || state.ui.modalReturnView || state.ui.returnView || null;
-    if (returnCtx && returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
+    const returnCtx = resolveStudentDetailReturnContext(sid, options);
+    applyStudentDetailModalReturnContext(returnCtx);
 
     const bodyHtml = mode === 'edit'
         ? renderStudentEditBody(sid)
@@ -1719,6 +1754,15 @@ function renderStudentDetailShell(sid, options = {}) {
             ${bodyHtml}
         </div>
     `, mode === 'edit' ? '저장' : null, mode === 'edit' ? () => handleEditStudent(sid) : null);
+
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    if (cancelBtn) {
+        cancelBtn.innerText = '취소';
+        cancelBtn.onclick = mode === 'edit'
+            ? () => returnStudentEditToView(sid, { tab })
+            : () => closeModal();
+    }
+
     setTimeout(() => {
         bindStudentConsultationDateButtons(sid);
         if (mode === 'view' && tab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(sid);
@@ -1737,7 +1781,7 @@ function renderStudentDetailTab(sid, tab = 'basic') {
     return renderStudentDetailShell(sid, {
         mode: 'view',
         tab: normalizeStudentDetailTab(tab),
-        returnTo: state.ui?.modalReturnView || state.ui?.returnView || null
+        returnTo: state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null
     });
 }
 
@@ -2635,7 +2679,7 @@ function renderStudentEditBody(sid) {
 }
 
 async function handleEditStudent(sid) {
-    const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
+    const returnCtx = state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null;
     const currentStudent = state.db.students.find(st => String(st.id) === String(sid));
     const currentClassId = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id || '';
     const wasNewChecked = isStudentNewMember(currentStudent);
@@ -2695,9 +2739,9 @@ async function handleEditStudent(sid) {
             }
             toast('학생 정보가 수정되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
-            // 모달을 닫지 않고 같은 학생 프로필 셸의 view mode로 복귀한다.
+            // 수정 저장은 모달을 닫지 않고 같은 학생상세 보기 모드로 복귀한다.
             await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
-            renderStudentDetailShell(sid, { mode: 'view', tab: 'basic', returnTo: returnCtx });
+            renderStudentDetailShell(sid, { mode: 'view', tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'), returnTo: returnCtx });
             return;
         }
         toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');

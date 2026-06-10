@@ -545,7 +545,8 @@ function openClassroomConsultation(studentId, classId, date) {
         return;
     }
 
-    if (typeof renderStudentDetail === 'function') renderStudentDetail(String(studentId));
+    if (typeof openStudentDetail === 'function') openStudentDetail(String(studentId), { mode: 'view', returnTo: { type: 'classDetail', classId: String(classId) } });
+    else if (typeof renderStudentDetail === 'function') renderStudentDetail(String(studentId), { returnTo: { type: 'classDetail', classId: String(classId) } });
 }
 
 function syncAttendanceMetaToState(studentId, date, tags, memo) {
@@ -1373,7 +1374,7 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
     const html = `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
-            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${sid}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">상세 정보 열기</button>
+            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${sid}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">상세 정보 열기</button>
             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '단원평가', 20, '${cid}', '', '', 'class')">OMR / 성적 입력</button>
             ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(var(--primary-rgb),0.22);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
         </div>
