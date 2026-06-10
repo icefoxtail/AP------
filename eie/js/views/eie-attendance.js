@@ -359,16 +359,18 @@
         if (_filterTeacher) {
             const key = tKey(_filterTeacher);
             const owner = isOwner();
-            const mode = _scopeMode || (owner ? 'all' : 'teaching');
-            if (!owner && mode === 'homeroom') {
+            const mode = _scopeMode || (owner ? 'homeroom' : 'teaching');
+            if (mode === 'homeroom') {
                 rows = rows.filter(b => b.homeroomTeacherKey === key);
-            } else if (!owner && mode === 'teaching') {
+            } else if (mode === 'teaching') {
                 rows = rows.filter(b => {
                     const keys = Array.isArray(b.teachingTeacherKeys) ? b.teachingTeacherKeys : [];
                     return keys.indexOf(key) >= 0;
                 });
             } else {
-                rows = rows.filter(b => blockHasTeacherAccess(b, key) || blockHasAnyAttendanceRecord(b));
+                // 원장 화면에서 선생님을 선택했을 때 출석 기록이 있다는 이유만으로
+                // 다른 선생님 반까지 섞이지 않게 한다. 전체/담당 범위는 시간표 접근 키 기준이다.
+                rows = rows.filter(b => blockHasTeacherAccess(b, key));
             }
         }
         if (_filterClass) rows = rows.filter(b => b.className === _filterClass);
@@ -480,14 +482,8 @@
 
     function renderViewModes() {
         const owner = isOwner();
-        const mode = _scopeMode || (owner ? 'all' : 'teaching');
-        if (owner) {
-            return '<div class="eie-att-viewmodes" role="group" aria-label="관전 모드">'
-                + modeButton('all', '전체', mode)
-                + modeButton('homeroom', '담임별', mode)
-                + modeButton('class', '반별', mode)
-                + '</div>';
-        }
+        const mode = _scopeMode || (owner ? 'homeroom' : 'teaching');
+        if (owner) return '';
         return '<div class="eie-att-viewmodes" role="group" aria-label="출석부 보기">'
             + modeButton('homeroom', '담임반', mode)
             + modeButton('teaching', '수업반', mode)
@@ -498,9 +494,12 @@
         const monthLabel = Number(date.slice(5, 7)) + '월';
         const teacherOpts = [{ value: '', label: '전체 선생님' }]
             .concat(teacherRoster().map(n => ({ value: n, label: n })));
+        const classSourceBlocks = isOwner() && _filterTeacher
+            ? blocks.filter(b => b.homeroomTeacherKey === tKey(_filterTeacher))
+            : blocks;
         const classNames = [];
         const seenC = {};
-        blocks.forEach(b => { if (!seenC[b.className]) { seenC[b.className] = true; classNames.push(b.className); } });
+        classSourceBlocks.forEach(b => { if (!seenC[b.className]) { seenC[b.className] = true; classNames.push(b.className); } });
         const classOpts = [{ value: '', label: '전체 반' }].concat(classNames.sort((a, b) => a.localeCompare(b, 'ko')).map(c => ({ value: c, label: c })));
         const gradeOpts = [
             { value: '', label: '전체' },
@@ -536,11 +535,35 @@
             + '</div>';
     }
 
+    function attendanceClassDaysLabel(block) {
+        const rawDays = Array.isArray(block && block.classDays) ? block.classDays : [];
+        const seen = {};
+        const days = [];
+        rawDays.map(text).filter(Boolean).forEach(day => {
+            const compact = day.replace(/요일/g, '').trim();
+            const resolved = DAY_ORDER.indexOf(compact) >= 0 ? compact : compact.slice(0, 1);
+            if (resolved && !seen[resolved]) { seen[resolved] = true; days.push(resolved); }
+        });
+        days.sort((a, b) => {
+            const ai = DAY_ORDER.indexOf(a);
+            const bi = DAY_ORDER.indexOf(b);
+            return (ai < 0 ? 99 : ai) - (bi < 0 ? 99 : bi);
+        });
+        return days.length ? days.join(' · ') : '';
+    }
+
     function renderTimeCell(block) {
+        const period = text(block && block.periodLabel) || '-';
+        const timeRange = text(block && block.timeRange);
+        const className = text(block && block.className);
+        const daysLabel = attendanceClassDaysLabel(block);
         return '<td class="eie-att-time-nc" rowspan="' + esc(String(Math.max(1, block.students.length))) + '">'
-            + '<strong>' + esc(block.periodLabel || '-') + '</strong>'
-            + (block.timeRange ? '<span>' + esc(block.timeRange) + '</span>' : '')
-            + '<small>' + esc(block.className || '') + '</small>'
+            + '<div class="eie-att-block-card">'
+            + '<span class="eie-att-block-period">' + esc(period) + '</span>'
+            + (timeRange ? '<span class="eie-att-block-time">' + esc(timeRange) + '</span>' : '')
+            + '<strong class="eie-att-block-class">' + esc(className || '수업명 없음') + '</strong>'
+            + (daysLabel ? '<span class="eie-att-block-days">' + esc(daysLabel) + '</span>' : '')
+            + '</div>'
             + '</td>';
     }
 
@@ -589,7 +612,7 @@
         const empty = '<tbody class="eie-att-block"><tr><td colspan="' + (days.length + 2) + '" class="eie-att-empty">'
             + '선택한 날짜(' + esc(weekdayOf(date) || '주말') + ')에 표시할 수업이 없습니다.</td></tr></tbody>';
         return '<div class="eie-att-tbl-wrap"><table class="eie-att-grid">'
-            + '<thead><tr><th class="eie-att-time-nc eie-att-time-corner">교시/시간</th><th class="eie-att-nc eie-att-corner">이름</th>' + headerCells + '</tr></thead>'
+            + '<thead><tr><th class="eie-att-time-nc eie-att-time-corner">수업/시간</th><th class="eie-att-nc eie-att-corner">이름</th>' + headerCells + '</tr></thead>'
             + (bodyRows || empty) + '</table></div>';
     }
 
@@ -694,6 +717,7 @@
             _filterTeacher = '';
             _filterClass = '';
             _filterGrade = '';
+            if (isOwner()) _scopeMode = '';
             EieState.clearAttendanceCellSelection();
             EieRouter.open('attendance');
         },
@@ -701,10 +725,19 @@
             _filterTeacher = text(teacherName);
             _filterClass = '';
             _filterGrade = '';
+            if (isOwner()) _scopeMode = _filterTeacher ? 'homeroom' : '';
             EieState.clearAttendanceCellSelection();
             EieRouter.open('attendance');
         },
-        setTeacher: function (value) { _filterTeacher = text(value); EieState.clearAttendanceCellSelection(); EieRouter.open('attendance'); },
+        setTeacher: function (value) {
+            _filterTeacher = text(value);
+            if (isOwner()) {
+                _scopeMode = _filterTeacher ? 'homeroom' : '';
+                _filterClass = '';
+            }
+            EieState.clearAttendanceCellSelection();
+            EieRouter.open('attendance');
+        },
         setClass: function (value) { _filterClass = text(value); EieState.clearAttendanceCellSelection(); EieRouter.open('attendance'); },
         setGrade: function (value) { _filterGrade = text(value); EieState.clearAttendanceCellSelection(); EieRouter.open('attendance'); },
         print: function () { if (typeof window !== 'undefined' && window.print) window.print(); },

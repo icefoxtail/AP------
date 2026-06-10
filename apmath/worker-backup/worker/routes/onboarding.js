@@ -226,11 +226,44 @@ async function listTasks(env, teacher) {
   return jsonResponse({ success: true, tasks: res.results || [] });
 }
 
+
+async function getStudentOnboardingSummary(env, teacher, url) {
+  const studentId = pickText(url.searchParams.get('student_id') || url.searchParams.get('studentId'));
+  const classId = pickText(url.searchParams.get('class_id') || url.searchParams.get('classId'));
+  if (!studentId) return jsonResponse({ success: false, error: 'student_id required' }, 400);
+  if (!(await canAccessStudent(teacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+
+  let query = 'SELECT * FROM onboarding_tasks WHERE student_id = ?';
+  const params = [studentId];
+  if (classId) {
+    query += " AND IFNULL(class_id, '') = IFNULL(?, '')";
+    params.push(classId);
+  }
+  query += ' ORDER BY onboarding_started_at DESC, created_at DESC, task_order ASC';
+  const res = await env.DB.prepare(query).bind(...params).all();
+  const tasks = res.results || [];
+  const startedRow = tasks.find(row => pickText(row.onboarding_started_at));
+  const alreadyAttending = tasks.some(row =>
+    String(row?.status || '') === 'skipped' &&
+    String(row?.notes || '').includes('이미 등원 중')
+  );
+
+  return jsonResponse({
+    success: true,
+    student_id: studentId,
+    class_id: classId,
+    onboarding_started_at: startedRow?.onboarding_started_at || '',
+    already_attending: alreadyAttending ? 1 : 0,
+    tasks
+  });
+}
+
 async function bootstrapTasks(env, teacher, body) {
   const studentId = pickText(body.student_id || body.studentId);
   const classId = pickText(body.class_id || body.classId);
   const enrollmentId = pickText(body.enrollment_id || body.enrollmentId) || null;
   const startedAt = pickText(body.onboarding_started_at || body.onboardingStartedAt, todayKstDateString());
+  const alreadyAttending = Number(body.already_attending || body.alreadyAttending || 0) ? 1 : 0;
   if (!studentId) return jsonResponse({ success: false, error: 'student_id required' }, 400);
 
   const resolved = await resolveBootstrapContext(env, teacher, studentId, classId, enrollmentId);
@@ -243,10 +276,13 @@ async function bootstrapTasks(env, teacher, body) {
 
   let createdCount = 0;
   let skippedCount = 0;
+  let updatedCount = 0;
+  const tasks = [];
+  const alreadyAttendingNote = '이미 등원 중인 학생으로 온보딩 숨김 처리';
 
   for (const spec of TASK_TYPES) {
     const duplicate = await env.DB.prepare(`
-      SELECT id
+      SELECT id, status, notes
       FROM onboarding_tasks
       WHERE student_id = ?
         AND IFNULL(class_id, '') = IFNULL(?, '')
@@ -254,19 +290,51 @@ async function bootstrapTasks(env, teacher, body) {
         AND task_type = ?
       LIMIT 1
     `).bind(studentId, resolvedClassId || null, enrollmentId || null, spec.type).first();
+
+    const visibleFrom = addDays(startedAt, spec.visibleOffset);
+    const dueDate = addDays(startedAt, spec.dueOffset);
+
     if (duplicate?.id) {
-      skippedCount++;
+      if (alreadyAttending) {
+        const nextNotes = String(duplicate.notes || '').includes(alreadyAttendingNote)
+          ? duplicate.notes
+          : appendNote(duplicate.notes, alreadyAttendingNote);
+        await env.DB.prepare(`
+          UPDATE onboarding_tasks
+          SET status = CASE WHEN status IN ('completed', 'skipped') THEN status ELSE 'skipped' END,
+              onboarding_started_at = ?,
+              visible_from = ?,
+              due_date = ?,
+              notes = ?,
+              updated_at = DATETIME('now')
+          WHERE id = ?
+        `).bind(startedAt, visibleFrom, dueDate, nextNotes, duplicate.id).run();
+        skippedCount++;
+      } else {
+        await env.DB.prepare(`
+          UPDATE onboarding_tasks
+          SET onboarding_started_at = ?,
+              visible_from = ?,
+              due_date = ?,
+              updated_at = DATETIME('now')
+          WHERE id = ?
+        `).bind(startedAt, visibleFrom, dueDate, duplicate.id).run();
+        updatedCount++;
+      }
+      const updated = await getTask(env, duplicate.id);
+      if (updated) tasks.push(updated);
       continue;
     }
 
+    const taskId = makeId('ot');
     await env.DB.prepare(`
       INSERT INTO onboarding_tasks (
         id, student_id, class_id, enrollment_id, teacher_id, created_teacher_id,
         task_type, task_order, status, onboarding_started_at, visible_from, due_date,
-        created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?, DATETIME('now'), DATETIME('now'))
+        notes, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
     `).bind(
-      makeId('ot'),
+      taskId,
       studentId,
       resolvedClassId || null,
       enrollmentId || null,
@@ -274,14 +342,27 @@ async function bootstrapTasks(env, teacher, body) {
       teacher.id,
       spec.type,
       spec.order,
+      alreadyAttending ? 'skipped' : 'pending',
       startedAt,
-      addDays(startedAt, spec.visibleOffset),
-      addDays(startedAt, spec.dueOffset)
+      visibleFrom,
+      dueDate,
+      alreadyAttending ? alreadyAttendingNote : null
     ).run();
-    createdCount++;
+    if (alreadyAttending) skippedCount++;
+    else createdCount++;
+    const inserted = await getTask(env, taskId);
+    if (inserted) tasks.push(inserted);
   }
 
-  return jsonResponse({ success: true, created_count: createdCount, skipped_count: skippedCount });
+  return jsonResponse({
+    success: true,
+    created_count: createdCount,
+    skipped_count: skippedCount,
+    updated_count: updatedCount,
+    already_attending: alreadyAttending,
+    onboarding_started_at: startedAt,
+    tasks
+  });
 }
 
 async function patchTask(env, teacher, id, body) {
@@ -430,6 +511,7 @@ async function skipTask(env, teacher, id, body) {
 export async function handleOnboarding(request, env, teacher, path, url, body = {}) {
   const method = request.method;
   if (method === 'GET' && path[2] === 'tasks') return listTasks(env, teacher);
+  if (method === 'GET' && path[2] === 'student') return getStudentOnboardingSummary(env, teacher, url);
   if (method === 'POST' && path[2] === 'tasks' && path[3] === 'bootstrap') return bootstrapTasks(env, teacher, body);
   if (path[2] === 'tasks' && path[3] && method === 'PATCH') return patchTask(env, teacher, path[3], body);
   if (path[2] === 'tasks' && path[3] && method === 'POST' && path[4] === 'complete') return completeTask(env, teacher, path[3], body);
