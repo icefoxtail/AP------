@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
     // 상단 담임 열 고정 목록 (Carmen / Zoe / IVY / STACY / Lily 만 허용 — Laura · Foreigner 제외)
     const HOMEROOM_COLUMN_TEACHERS = ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily'];
@@ -3663,66 +3663,77 @@
         eventsBound = true;
     }
 
+    function resetTimetablePrintScale() {
+        const containers = document.querySelectorAll('.eie-print-fit-container');
+        containers.forEach(node => {
+            node.classList.remove('eie-print-fit-container');
+            node.style.width = '';
+            node.style.height = '';
+            node.style.margin = '';
+            node.style.overflow = '';
+        });
+        const targets = document.querySelectorAll('.eie-print-fit-target');
+        targets.forEach(node => {
+            node.classList.remove('eie-print-fit-target');
+            node.style.transform = '';
+            node.style.width = '';
+            node.style.height = '';
+        });
+    }
+
+    function applyTimetablePrintScale() {
+        resetTimetablePrintScale();
+        const weekdayGrid = document.querySelector('.eie-weekday-overlay .eie-weekday-grid');
+        const weekdayScroll = document.querySelector('.eie-weekday-overlay .eie-weekday-overlay__scroll');
+        const fullGrid = document.querySelector('.eie-v2-board-grid.eie-v2-full-grid');
+        const fullScroll = document.querySelector('.eie-v2-board-scroll');
+        const isWeekday = !!(weekdayGrid && weekdayScroll);
+        const target = isWeekday ? weekdayGrid : fullGrid;
+        const container = isWeekday ? weekdayScroll : fullScroll;
+        if (!target || !container) return;
+
+        const PRINT_AREA_WIDTH = 1060;
+        const PRINT_AREA_HEIGHT = 720;
+        const head = !isWeekday ? document.querySelector('.eie-v2-page-head.eie-v2-card-head') : null;
+        const extraHeadHeight = head ? Math.ceil(head.getBoundingClientRect().height) + 8 : 0;
+        const availableWidth = PRINT_AREA_WIDTH;
+        const availableHeight = Math.max(320, PRINT_AREA_HEIGHT - extraHeadHeight);
+
+        const rect = target.getBoundingClientRect();
+        const naturalWidth = Math.ceil(rect.width || target.scrollWidth || 0);
+        const naturalHeight = Math.ceil(rect.height || target.scrollHeight || 0);
+        if (!naturalWidth || !naturalHeight) return;
+
+        const scale = Math.min(1, availableWidth / naturalWidth, availableHeight / naturalHeight);
+        container.classList.add('eie-print-fit-container');
+        target.classList.add('eie-print-fit-target');
+        container.style.width = `${Math.ceil(naturalWidth * scale)}px`;
+        container.style.height = `${Math.ceil(naturalHeight * scale)}px`;
+        container.style.margin = '0 auto';
+        container.style.overflow = 'visible';
+        target.style.width = `${naturalWidth}px`;
+        target.style.height = `${naturalHeight}px`;
+        target.style.transform = `scale(${scale})`;
+    }
+
     function printTimetable() {
         const body = document && document.body;
-        if (!body?.classList) {
-            window.print?.();
-            return;
-        }
-
-        const mmToPx = mm => (Number(mm) || 0) * 96 / 25.4;
-        const weekdayGrid = viewState.activeDayOverlay
-            ? document.querySelector('.eie-weekday-overlay .eie-weekday-grid')
-            : null;
-        const fullGrid = document.querySelector('.eie-v2-board-grid.eie-v2-full-grid');
-        const targetGrid = weekdayGrid || fullGrid;
-        const targetScroll = weekdayGrid
-            ? document.querySelector('.eie-weekday-overlay__scroll')
-            : document.querySelector('.eie-v2-board-scroll');
-        const printClass = weekdayGrid ? 'eie-printing-weekday-timetable' : 'eie-printing-full-timetable';
-
-        body.classList.add('eie-printing-timetable', printClass);
+        if (body?.classList) body.classList.add('eie-printing-timetable');
 
         const cleanup = () => {
-            body.classList.remove('eie-printing-timetable', 'eie-printing-full-timetable', 'eie-printing-weekday-timetable');
-            ['--eie-print-scale', '--eie-print-target-width', '--eie-print-target-height', '--eie-print-scaled-width', '--eie-print-scaled-height'].forEach(name => body.style.removeProperty(name));
-            if (targetScroll) {
-                targetScroll.style.removeProperty('--eie-print-scale');
-                targetScroll.style.removeProperty('--eie-print-target-width');
-                targetScroll.style.removeProperty('--eie-print-target-height');
-                targetScroll.style.removeProperty('--eie-print-scaled-width');
-                targetScroll.style.removeProperty('--eie-print-scaled-height');
-            }
+            resetTimetablePrintScale();
+            if (body?.classList) body.classList.remove('eie-printing-timetable');
             window.removeEventListener?.('afterprint', cleanup);
         };
 
-        if (targetGrid) {
-            const rect = targetGrid.getBoundingClientRect ? targetGrid.getBoundingClientRect() : { width: 0, height: 0 };
-            const rawWidth = Math.max(1, Math.ceil(targetGrid.scrollWidth || targetGrid.offsetWidth || rect.width || 1));
-            const rawHeight = Math.max(1, Math.ceil(targetGrid.scrollHeight || targetGrid.offsetHeight || rect.height || 1));
-            // A4 landscape, @page margin 5mm. Keep a small reserve for the printed title.
-            const availableWidth = mmToPx(287);
-            const availableHeight = mmToPx(190);
-            const scale = Math.min(1, availableWidth / rawWidth, availableHeight / rawHeight);
-            const safeScale = Math.max(0.46, Math.min(1, scale || 1));
-            const scaledWidth = Math.ceil(rawWidth * safeScale);
-            const scaledHeight = Math.ceil(rawHeight * safeScale);
-            const vars = {
-                '--eie-print-scale': String(safeScale),
-                '--eie-print-target-width': `${rawWidth}px`,
-                '--eie-print-target-height': `${rawHeight}px`,
-                '--eie-print-scaled-width': `${scaledWidth}px`,
-                '--eie-print-scaled-height': `${scaledHeight}px`
-            };
-            Object.entries(vars).forEach(([name, value]) => {
-                body.style.setProperty(name, value);
-                if (targetScroll) targetScroll.style.setProperty(name, value);
-            });
-        }
-
         window.addEventListener?.('afterprint', cleanup, { once: true });
-        window.print?.();
-        window.setTimeout?.(cleanup, 1500);
+        window.requestAnimationFrame?.(() => {
+            applyTimetablePrintScale();
+            window.requestAnimationFrame?.(() => {
+                window.print?.();
+                window.setTimeout?.(cleanup, 1500);
+            });
+        });
     }
 
     function reopenPanelMountRoute() {
