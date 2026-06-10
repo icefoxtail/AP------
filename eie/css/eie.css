@@ -10354,30 +10354,6 @@ button.eie-v2-student-chip.is-paused:hover {
         -webkit-print-color-adjust: exact;
     }
 
-    body.eie-printing-timetable .eie-v2-card-board,
-    body.eie-printing-timetable .eie-v2-board-scroll,
-    body.eie-printing-timetable .eie-weekday-overlay__scroll {
-        overflow: visible !important;
-    }
-
-    body.eie-printing-timetable .eie-print-fit-container {
-        position: relative !important;
-        overflow: visible !important;
-        break-inside: avoid !important;
-        page-break-inside: avoid !important;
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
-    }
-
-    body.eie-printing-timetable .eie-print-fit-target {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform-origin: top left !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-    }
-
     body.eie-printing-timetable-editor {
         background: #fff !important;
         color: #111827 !important;
@@ -10767,4 +10743,134 @@ select.eie-att-ctrl { cursor: pointer; }
     background: #dbeafe;
     color: #0b73ff;
     border-color: #93c5fd;
+}
+
+/* EIE timetable dedicated one-page print sheet v5 */
+#eie-print-sheet {
+    display: none;
+}
+
+#eie-print-sheet.eie-print-sheet--measure {
+    display: block;
+    position: fixed;
+    left: -100000px;
+    top: 0;
+    z-index: -1;
+    width: max-content;
+    height: max-content;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: visible;
+    background: #fff;
+}
+
+#eie-print-sheet.eie-print-sheet--measure .eie-print-sheet-title {
+    display: none;
+}
+
+#eie-print-sheet.eie-print-sheet--measure .eie-print-sheet-body {
+    position: relative;
+    width: max-content;
+    height: max-content;
+    overflow: visible;
+}
+
+#eie-print-sheet.eie-print-sheet--measure .eie-print-sheet-stage {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: max-content;
+    height: max-content;
+    transform: none;
+    transform-origin: top left;
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 5mm;
+    }
+
+    html:has(body.eie-printing-timetable),
+    body.eie-printing-timetable {
+        width: 287mm !important;
+        height: 200mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+    }
+
+    body.eie-printing-timetable > :not(#eie-print-sheet) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet {
+        display: block !important;
+        position: static !important;
+        width: 287mm !important;
+        height: 200mm !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+        color: #111827 !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-before: avoid !important;
+        break-after: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-title {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 6mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        letter-spacing: -0.01em !important;
+        color: #0f172a !important;
+        background: #fff !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-body {
+        position: relative !important;
+        width: 287mm !important;
+        height: 193mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+        box-sizing: border-box !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-stage {
+        position: absolute !important;
+        transform-origin: top left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-grid-clone,
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-grid-clone * {
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-v2-board-grid.eie-v2-full-grid,
+    body.eie-printing-timetable #eie-print-sheet .eie-weekday-grid {
+        margin: 0 !important;
+    }
 }
