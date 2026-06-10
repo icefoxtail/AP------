@@ -143,15 +143,39 @@
 
   // ====================================================================
   // apStudentAdapter (read-only)
+  //   반/시간 매핑: GET /classes + /class-time-slots + /initial-data(class_students)
+  //   상담: GET /consultations?student_id=
   // ====================================================================
+  var apCache = { loaded: false, students: [], classesById: {}, slotsByClass: {}, classIdsByStudent: {} };
+
+  function ensureApCache() {
+    if (apCache.loaded) return Promise.resolve(apCache);
+    return Promise.all([
+      readJson(AP_API_BASE + '/students', apAuthHeader()),
+      readJson(AP_API_BASE + '/classes', apAuthHeader()),
+      readJson(AP_API_BASE + '/class-time-slots', apAuthHeader()),
+      readJson(AP_API_BASE + '/initial-data', apAuthHeader())
+    ]).then(function (r) {
+      apCache.students = r[0].students || [];
+      (r[1].classes || []).forEach(function (c) { apCache.classesById[c.id] = c; });
+      (r[2].class_time_slots || []).forEach(function (s) {
+        (apCache.slotsByClass[s.class_id] = apCache.slotsByClass[s.class_id] || []).push(s);
+      });
+      (r[3].class_students || []).forEach(function (m) {
+        (apCache.classIdsByStudent[m.student_id] = apCache.classIdsByStudent[m.student_id] || []).push(m.class_id);
+      });
+      apCache.loaded = true;
+      return apCache;
+    });
+  }
+
   var apStudentAdapter = {
     sourceApp: 'AP',
     search: function (query) {
-      return readJson(AP_API_BASE + '/students', apAuthHeader())
-        .then(function (res) {
-          var rows = Array.isArray(res) ? res : (res.students || res.data || []);
+      return ensureApCache()
+        .then(function (cache) {
           var q = String(query || '').trim();
-          var filtered = !q ? rows : rows.filter(function (s) {
+          var filtered = !q ? cache.students : cache.students.filter(function (s) {
             return String(s.name || '').indexOf(q) >= 0 || String(s.school_name || '').indexOf(q) >= 0;
           });
           return filtered.map(function (s) { return mapApSummary(s); });
@@ -161,19 +185,41 @@
         });
     },
     getDetail: function (sourceStudentId) {
-      var detail = { source_app: 'AP', source_student_id: sourceStudentId, section_errors: [] };
-      return readJson(AP_API_BASE + '/students/' + encodeURIComponent(sourceStudentId) + '/detail-data', apAuthHeader())
-        .then(function (res) {
-          var d = res.data || res || {};
-          Object.assign(detail, mapApSummary(d.student || d));
-          detail.enrollments = d.classes || d.enrollments || [];
-          detail.schedules = d.time_slots || d.schedules || [];
-          detail.consultations = d.consultations || [];
-          detail.detail_url = null; // deeplink 확정 전
-          return detail;
+      var detail = { source_app: 'AP', source_student_id: sourceStudentId, section_errors: [], enrollments: [], schedules: [], consultations: [] };
+      return ensureApCache()
+        .then(function (cache) {
+          var stu = null;
+          for (var i = 0; i < cache.students.length; i++) {
+            if (String(cache.students[i].id) === String(sourceStudentId)) { stu = cache.students[i]; break; }
+          }
+          if (stu) Object.assign(detail, mapApSummary(stu));
+          var classIds = cache.classIdsByStudent[sourceStudentId] || [];
+          classIds.forEach(function (cid) {
+            var cls = cache.classesById[cid];
+            if (cls) {
+              detail.enrollments.push({ name: cls.name, subject: cls.subject, teacher_name: cls.teacher_name });
+              (cache.slotsByClass[cid] || []).forEach(function (slot) {
+                detail.schedules.push({
+                  class_name: cls.name,
+                  day_of_week: slot.day_of_week,
+                  start_time: slot.start_time,
+                  end_time: slot.end_time,
+                  room_name: slot.room_name
+                });
+              });
+            }
+          });
         })
         .catch(function (e) {
-          detail.section_errors.push('AP 상세 연결 방식 확인 필요 (' + e.message + ')');
+          detail.section_errors.push('AP 반/시간 연결 상태 확인 필요 (' + e.message + ')');
+        })
+        .then(function () {
+          return readJson(AP_API_BASE + '/consultations?student_id=' + encodeURIComponent(sourceStudentId), apAuthHeader())
+            .then(function (res) { detail.consultations = res.data || res.consultations || []; })
+            .catch(function (e) { detail.section_errors.push('AP 상담 연결 상태 확인 필요 (' + e.message + ')'); });
+        })
+        .then(function () {
+          detail.detail_url = null; // AP 상세 deeplink 는 수신부 확정 후 연결
           return detail;
         });
     }
@@ -196,13 +242,27 @@
   // eieStudentAdapter (read-only)
   //   주의: 전체 시간표(/api/eie/timetable)를 학생별 수업시간으로 넣지 않는다.
   // ====================================================================
+  var eieCache = { loaded: false, studentsById: {} };
+
+  function ensureEieCache() {
+    if (eieCache.loaded) return Promise.resolve(eieCache);
+    return readJson(EIE_API_BASE + '/api/eie/confirmed-students', eieAuthHeader())
+      .then(function (res) {
+        var rows = res.students || res.confirmed_students || res.data || [];
+        rows.forEach(function (s) { eieCache.studentsById[s.id] = s; });
+        eieCache.rows = rows;
+        eieCache.loaded = true;
+        return eieCache;
+      });
+  }
+
   var eieStudentAdapter = {
     sourceApp: 'EIE',
     search: function (query) {
-      return readJson(EIE_API_BASE + '/api/eie/confirmed-students', eieAuthHeader())
-        .then(function (res) {
-          var rows = res.students || res.confirmed_students || res.data || [];
+      return ensureEieCache()
+        .then(function (cache) {
           var q = String(query || '').trim();
+          var rows = cache.rows || [];
           var filtered = !q ? rows : rows.filter(function (s) {
             return String(s.display_name || s.name || '').indexOf(q) >= 0
                 || String(s.school_name || '').indexOf(q) >= 0;
@@ -215,13 +275,37 @@
     },
     getDetail: function (sourceStudentId) {
       var detail = { source_app: 'EIE', source_student_id: sourceStudentId, section_errors: [], enrollments: [], schedules: [] };
-      // EIE 학생별 시간표 endpoint 확정 전: schedules 는 비워 두고 안내만 표시한다.
-      detail.section_errors.push('EIE 학생별 수업시간 연결이 필요합니다. 전체 시간표는 학생별 수업시간으로 표시하지 않습니다.');
-      return readJson(EIE_API_BASE + '/api/eie/consultations?student_id=' + encodeURIComponent(sourceStudentId), eieAuthHeader())
-        .then(function (res) { detail.consultations = res.consultations || res.data || []; })
-        .catch(function (e) { detail.section_errors.push('EIE 상담 연결 상태 확인 필요 (' + e.message + ')'); })
+      return ensureEieCache()
+        .then(function (cache) {
+          // 학생별 수업시간: confirmed-students 의 per-student assignments 사용.
+          // 전체 시간표(/api/eie/timetable)는 학생별 수업시간으로 표시하지 않는다.
+          var stu = cache.studentsById[sourceStudentId];
+          if (stu) {
+            Object.assign(detail, mapEieSummary(stu));
+            (stu.assignments || []).forEach(function (a) {
+              if (a.status === 'archived') return;
+              detail.enrollments.push({ name: a.class_name_raw, teacher_name: a.teacher_name_raw });
+              detail.schedules.push({
+                class_name: a.class_name_raw,
+                day_label: a.day_label,
+                start_time: a.start_time,
+                end_time: a.end_time,
+                period_label: a.period_label
+              });
+            });
+          } else {
+            detail.section_errors.push('EIE 학생 정보를 찾지 못했습니다. 연결 상태 확인 필요.');
+          }
+        })
+        .catch(function (e) { detail.section_errors.push('EIE 연결 상태 확인 필요 (' + e.message + ')'); })
         .then(function () {
-          detail.detail_url = null; // deeplink 확정 전
+          return readJson(EIE_API_BASE + '/api/eie/consultations?student_id=' + encodeURIComponent(sourceStudentId), eieAuthHeader())
+            .then(function (res) { detail.consultations = res.consultations || res.data || []; })
+            .catch(function (e) { detail.section_errors.push('EIE 상담 연결 상태 확인 필요 (' + e.message + ')'); });
+        })
+        .then(function () {
+          // EIE 학생 화면으로 이동 (학생 자동 선택은 후속 확인 항목)
+          detail.detail_url = '../eie/index.html#students';
           return detail;
         });
     }
@@ -446,6 +530,7 @@
       var openBtn = el('button', { class: 'wsm-btn', type: 'button', text: item.source_app + ' 상세 열기' });
       openBtn.disabled = !d.detail_url;
       if (!d.detail_url) openBtn.title = item.source_app + ' 상세 연결 방식 확인 필요';
+      else openBtn.addEventListener('click', function () { window.open(d.detail_url, '_blank'); });
       srcWrap.appendChild(openBtn);
       root.appendChild(srcWrap);
 
@@ -662,6 +747,78 @@
     }).join(', ');
   }
 
+  // ---- 연결 후보 스캔 (AP/EIE 이름+보호자번호 일치 → candidate 생성) -------
+  function normPhone(p) { return String(p || '').replace(/[^0-9]/g, ''); }
+
+  function scanCandidates(btn) {
+    if (overlayApi.status !== 'connected') { window.alert('공통 저장소 로그인 후 사용할 수 있습니다.'); return; }
+    btn.disabled = true;
+    btn.textContent = '후보 스캔 중…';
+    Promise.all([ensureApCache(), ensureEieCache(), readJson(OVERLAY_API_BASE + '/links', overlayAuthHeader())])
+      .then(function (r) {
+        var apStudents = r[0].students || [];
+        var eieRows = r[1].rows || [];
+        var existing = {};
+        (r[2].links || []).forEach(function (l) { existing[l.source_app + ':' + l.source_student_id] = true; });
+
+        // 이름+전화 일치만 후보로. 전화 없는 학생은 자동 후보 생성 금지(수동 연결만).
+        var matches = [];
+        apStudents.forEach(function (ap) {
+          var apPhone = normPhone(ap.parent_phone || ap.student_phone);
+          if (!apPhone) return;
+          eieRows.forEach(function (eie) {
+            var eiePhone = normPhone(eie.parent_phone || eie.phone || eie.primary_phone);
+            if (!eiePhone) return;
+            if (String(ap.name || '').trim() === String(eie.display_name || '').trim() && apPhone === eiePhone) {
+              if (existing['AP:' + ap.id] || existing['EIE:' + eie.id]) return;
+              matches.push({ ap: ap, eie: eie });
+            }
+          });
+        });
+
+        if (!matches.length) {
+          window.alert('새로운 연결 후보가 없습니다. (이름+보호자번호 동시 일치 기준)');
+          return;
+        }
+        if (!window.confirm(matches.length + '쌍의 연결 후보를 만들까요?\n자동으로 확정하지 않으며, 확정은 관리자가 각 학생 화면에서 직접 합니다.')) return;
+
+        var chain = Promise.resolve();
+        var created = 0;
+        matches.forEach(function (m) {
+          chain = chain.then(function () {
+            return overlayApi.createStudent({
+              display_name: m.ap.name,
+              school_name_snapshot: m.ap.school_name || m.eie.school_name || '',
+              grade_snapshot: m.ap.grade || m.eie.grade || '',
+              primary_phone_snapshot: m.ap.parent_phone || m.ap.student_phone || ''
+            }).then(function (res) {
+              var anchorId = res.student.id;
+              var reason = 'name+parent_phone match (자동 후보 — 확정 아님)';
+              return overlayApi.createLink({
+                wangji_student_id: anchorId, source_app: 'AP', source_student_id: String(m.ap.id),
+                source_display_name_snapshot: m.ap.name || '', source_school_snapshot: m.ap.school_name || '',
+                source_grade_snapshot: m.ap.grade || '', source_phone_snapshot: m.ap.parent_phone || '',
+                confidence_reason: reason
+              }).then(function () {
+                return overlayApi.createLink({
+                  wangji_student_id: anchorId, source_app: 'EIE', source_student_id: String(m.eie.id),
+                  source_display_name_snapshot: m.eie.display_name || '', source_school_snapshot: m.eie.school_name || '',
+                  source_grade_snapshot: m.eie.grade || '', source_phone_snapshot: m.eie.parent_phone || m.eie.phone || '',
+                  confidence_reason: reason
+                });
+              }).then(function () { created++; });
+            }).catch(function (e) { console.error('candidate create failed', e); });
+          });
+        });
+        return chain.then(function () {
+          window.alert(created + '쌍의 연결 후보를 만들었습니다. 각 학생 화면에서 확인 후 확정해 주세요.');
+          runSearch();
+        });
+      })
+      .catch(function (e) { window.alert('후보 스캔 실패: ' + e.message); })
+      .then(function () { btn.disabled = false; btn.textContent = '연결 후보 스캔'; });
+  }
+
   // ---- 부트 -------------------------------------------------------------
   function bindFilters() {
     var chips = document.querySelectorAll('.wsm-chip');
@@ -679,6 +836,8 @@
     bindFilters();
     $('#wsm-search-btn').addEventListener('click', runSearch);
     $('#wsm-search-input').addEventListener('keydown', function (e) { if (e.key === 'Enter') runSearch(); });
+    var scanBtn = $('#wsm-scan-btn');
+    if (scanBtn) scanBtn.addEventListener('click', function () { scanCandidates(scanBtn); });
     overlayApi.probe().then(function () { runSearch(); });
   }
 
