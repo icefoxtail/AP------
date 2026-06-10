@@ -1637,7 +1637,16 @@ function renderCnsTab(sid) {
 let currentStudentChart = null;
 function drawGradeChart(sid) {
     const canvas = document.getElementById('studentGradeChart');
-    if (!canvas || typeof Chart === 'undefined') return;
+    if (!canvas) return;
+    if (typeof Chart === 'undefined') {
+        if (typeof loadChartJsOnce === 'function') {
+            loadChartJsOnce().then(() => {
+                // 로드 동안 화면이 바뀌었을 수 있으니 canvas 재확인 후 다시 그린다
+                if (document.getElementById('studentGradeChart')) drawGradeChart(sid);
+            }).catch(() => {});
+        }
+        return;
+    }
 
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>a.exam_date.localeCompare(b.exam_date)).slice(-7);
     if (!exs.length) return;

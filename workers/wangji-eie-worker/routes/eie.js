@@ -2095,6 +2095,78 @@ async function handleDeleteCellStudent(request, env, teacher, cellId, studentId)
   }
 }
 
+// ── 수업 배정/해제 일괄 처리 ─────────────────────────────────────────
+// body: { assign: [...], remove: [...] }
+// 항목은 studentId 문자열(경로의 cellId 사용) 또는 { student_id, cell_id } 객체(셀 지정).
+// 단건 POST/DELETE를 학생/셀 수만큼 반복 호출하던 것을 D1 batch 한 번으로 처리한다.
+// 응답에 영향받은 셀들의 활성 배정 목록을 돌려줘서 프론트가 전체 시간표를 재조회하지 않아도 된다.
+async function handleBatchCellStudents(request, env, teacher, cellId) {
+  const body = await readJsonBody(request);
+  const normalizeOps = list => {
+    const out = [];
+    const seen = new Set();
+    for (const item of (Array.isArray(list) ? list : [])) {
+      const isObj = item && typeof item === 'object';
+      const studentId = safeText(isObj ? item.student_id : item);
+      const targetCellId = safeText((isObj && item.cell_id) || cellId);
+      if (!studentId || !targetCellId) continue;
+      const key = `${targetCellId}::${studentId}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ studentId, cellId: targetCellId });
+    }
+    return out;
+  };
+  const assign = normalizeOps(body?.assign);
+  const remove = normalizeOps(body?.remove);
+  if (!assign.length && !remove.length) {
+    return jsonResponse({ success: false, error: 'assign 또는 remove 학생 목록이 필요합니다.' }, 400);
+  }
+
+  const now = new Date().toISOString();
+  const stmts = [];
+  for (const op of assign) {
+    stmts.push(env.DB.prepare(`
+      INSERT INTO eie_student_schedule_assignments
+        (id, student_id, timetable_cell_id, status, source_type, created_by, created_at, updated_at)
+      VALUES (?, ?, ?, 'active', 'manual', ?, ?, ?)
+      ON CONFLICT(student_id, timetable_cell_id)
+      DO UPDATE SET status = 'active', updated_at = excluded.updated_at
+    `).bind(makeId('eie_assign'), op.studentId, op.cellId, teacher.id, now, now));
+  }
+  for (const op of remove) {
+    stmts.push(env.DB.prepare(`
+      UPDATE eie_student_schedule_assignments
+      SET status = 'archived', updated_at = ?
+      WHERE timetable_cell_id = ? AND student_id = ? AND COALESCE(status, 'active') != 'archived'
+    `).bind(now, op.cellId, op.studentId));
+  }
+
+  try {
+    await env.DB.batch(stmts);
+    const affectedCellIds = Array.from(new Set([...assign, ...remove].map(op => op.cellId)));
+    const placeholders = affectedCellIds.map(() => '?').join(', ');
+    const result = await env.DB.prepare(`
+      SELECT id, student_id, timetable_cell_id, status, updated_at
+      FROM eie_student_schedule_assignments
+      WHERE timetable_cell_id IN (${placeholders}) AND COALESCE(status, 'active') != 'archived'
+    `).bind(...affectedCellIds).all();
+    const assignments = result.results || [];
+    return jsonResponse({
+      success: true,
+      cell_id: cellId,
+      cell_ids: affectedCellIds,
+      assigned_count: assign.length,
+      removed_count: remove.length,
+      assignments,
+      data: assignments
+    });
+  } catch (error) {
+    if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+    return jsonResponse({ success: false, error: '일괄 배정을 처리하지 못했습니다.' }, 500);
+  }
+}
+
 function normalizeTeacherRole(value) {
   const role = safeText(value || 'teacher').toLowerCase();
   if (role === 'admin' || role === 'owner') return 'admin';
@@ -2312,6 +2384,10 @@ export async function handleEie(request, env, teacher, path, url) {
   // ── 수업 배정/해제 ───────────────────────────────────────────────────
   if (method === 'POST' && path[2] === 'attendance-records' && !path[3]) {
     return handlePostAttendanceRecord(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students' && path[5] === 'batch' && !path[6]) {
+    return handleBatchCellStudents(request, env, teacher, path[3]);
   }
 
   if (method === 'POST' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students' && !path[5]) {

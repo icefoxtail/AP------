@@ -4007,6 +4007,9 @@ function showParentReportModal(ctx) {
 
 async function saveParentReportImage(name, examTitle) {
     const card = document.getElementById('parent-report-card');
+    if (typeof loadHtml2CanvasOnce === 'function' && typeof window.html2canvas === 'undefined') {
+        try { await loadHtml2CanvasOnce(); } catch (e) { /* 아래 공통 안내로 처리 */ }
+    }
     const html2canvasFn = window.html2canvas || (typeof html2canvas !== 'undefined' ? html2canvas : null);
     const saveBtn = document.getElementById('report-save-btn');
 
