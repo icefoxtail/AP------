@@ -1,0 +1,331 @@
+﻿diff --git a/apmath/js/classroom.js b/apmath/js/classroom.js
+index bd59818..3459efa 100644
+--- a/apmath/js/classroom.js
++++ b/apmath/js/classroom.js
+@@ -1312,7 +1312,7 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
+ 
+     return `
+         <div class="cls-v4-row apms-line-row apms-line-row--clickable ap-classroom-row" id="class-row-${s.id}">
+-            <div class="cls-v4-name-col apms-line-row__main ap-classroom-row__main" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">
++            <div class="cls-v4-name-col apms-line-row__main ap-classroom-row__main" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">
+                 <div class="cls-v4-student apms-line-row__title ap-classroom-row__title">${apEscapeHtml(s.name)}</div>
+             </div>
+             <div class="cls-v4-badges apms-line-row__actions ap-classroom-row__actions">
+@@ -1373,7 +1373,7 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
+     const html = `
+         <div style="display:flex; flex-direction:column; gap:10px;">
+             <div style="font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} ?숈깮 愿由?/div>
+-            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${sid}')">?곸꽭 ?뺣낫 ?닿린</button>
++            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${sid}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">?곸꽭 ?뺣낫 ?닿린</button>
+             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '?⑥썝?됯?', 20, '${cid}', '', '', 'class')">OMR / ?깆쟻 ?낅젰</button>
+             ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(var(--primary-rgb),0.22);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">?뚮옒??留곹겕 蹂듭궗</button>` : ''}
+         </div>
+diff --git a/apmath/js/management.js b/apmath/js/management.js
+index e9ec471..814ecd4 100644
+--- a/apmath/js/management.js
++++ b/apmath/js/management.js
+@@ -90,8 +90,8 @@ function renderAddressBookList() {
+                     </div>
+                 </div>
+                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:190px;">
+-                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); closeModal(true); renderStudentDetail('${s.id}')">?곸꽭</button>
+-                    <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openEditStudent('${s.id}', { returnTo: { type: 'addressBook' } })">?섏젙</button>
++                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); closeModal(true); openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'addressBook' } })">?곸꽭</button>
++                    <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'edit', returnTo: { type: 'addressBook' } })">?섏젙</button>
+                     ${isActive
+                         ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDelete('${s.id}')">?댁썝</button>`
+                         : `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="handleRestore('${s.id}')">蹂듦뎄</button>`
+diff --git a/apmath/js/student.js b/apmath/js/student.js
+index e9b18b7..384d512 100644
+--- a/apmath/js/student.js
++++ b/apmath/js/student.js
+@@ -316,6 +316,10 @@ function isStudentDetailSubModal(type = '', studentId = '') {
+ 
+ function shouldRefreshCurrentStudentDetailTab(studentId, tabs = []) {
+     if (!state.ui) return false;
++    // Hotfix guard: edit mode?먯꽌 lazy/consultation/contact ?먮룞 refresh媛
++    // ?섏젙 ?쇱쓣 view shell濡???뼱?곕㈃ ???쒕떎. ???痍⑥냼/蹂닿린濡?媛숈? 紐낆떆 ?꾪솚?
++    // ???⑥닔瑜?嫄곗튂吏 ?딆쑝誘濡??곹뼢諛쏆? ?딅뒗??
++    if (state.ui.currentStudentDetailMode === 'edit') return false;
+     const key = String(studentId || '');
+     const subModal = state.ui.currentStudentDetailSubModal || null;
+     const allowedTabs = Array.isArray(tabs) ? tabs.map(String) : [];
+@@ -1120,22 +1124,42 @@ async function ensureStudentConsultationsLoaded(sid, options = {}) {
+ /**
+  * ?숈깮 ?곸꽭 吏꾩엯??(湲곗〈 ?좎?)
+  */
+-async function renderStudentDetail(sid) {
+-    const s = state.db.students.find(st => st.id === sid);
++/**
++ * ?숈깮 ?곸꽭/?섏젙 ?⑥씪 吏꾩엯??
++ * options.mode: 'view' | 'edit'
++ * options.returnTo: { type, classId, studentId } ??蹂듦? 而⑦뀓?ㅽ듃
++ * 紐⑤뱺 ?숈깮 ?곸꽭 吏꾩엯? ???⑥닔瑜?寃쎌쑀?섏뿬 ?숈씪??紐⑤떖 ?몄쓣 ?ъ슜?쒕떎.
++ */
++async function openStudentDetail(sid, options = {}) {
++    const s = state.db.students.find(st => String(st.id) === String(sid));
+     if (!s) { toast('?숈깮 ?뺣낫 ?놁쓬', 'warn'); return; }
++    const mode = options.mode === 'edit' ? 'edit' : 'view';
++    if (!state.ui) state.ui = {};
++    const tab = normalizeStudentDetailTab(options.tab || state.ui.currentStudentDetailTab || 'basic');
++    state.ui.currentStudentDetailId = String(sid);
++    state.ui.currentStudentDetailMode = mode;
++    if (mode === 'view') state.ui.currentStudentDetailTab = tab;
+ 
+-    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
++    const returnCtx = options.returnTo || state.ui.modalReturnView || state.ui.returnView || null;
++    if (returnCtx && returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
++
++    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
+     const foundationLoads = [];
+     if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
+     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
+-    foundationLoads.push(loadStudentOnboardingDetails(sid));
++    foundationLoads.push(loadStudentOnboardingDetails(sid, { refresh: false }));
+     if (foundationLoads.length) await Promise.all(foundationLoads);
+     await ensureBlueprintsForSessions(exs);
+     void ensureStudentDetailLazyData(sid);
+     void ensureStudentConsultationsLoaded(sid);
+     void ensureStudentParentContactDataLoaded(sid);
+ 
+-    renderStudentDetailTab(sid, 'basic');
++    renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx });
++}
++
++// 湲곗〈 ?몄텧 ?명솚??wrapper (??젣 湲덉?)
++async function renderStudentDetail(sid) {
++    return openStudentDetail(sid, { mode: 'view', tab: 'basic' });
+ }
+ 
+ function returnFromStudentFlow(ctx = null) {
+@@ -1397,11 +1421,15 @@ function apStudentDetailField(label, value, options = {}) {
+     return `<div class="ap-student-field${wide}"><span>${apmsStudentDetailEsc(label)}</span><strong>${apmsStudentDetailEsc(text || '誘몃벑濡?)}</strong></div>`;
+ }
+ 
+-function renderStudentDetailHeader(sid, tab) {
++function renderStudentDetailHeader(sid, mode = 'view') {
+     const s = state.db.students.find(st => String(st.id) === String(sid));
+     if (!s) return '';
+     const cls = getApStudentCurrentClass(sid);
+     const status = apmsStudentStatusMeta(s);
++    const isEdit = mode === 'edit';
++    const actionBtn = isEdit
++        ? `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'view' })">蹂닿린濡?/button>`
++        : `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">?뺣낫 ?섏젙</button>`;
+     return `
+         <header class="ap-student-profile-head">
+             <div class="ap-student-head-main">
+@@ -1414,7 +1442,7 @@ function renderStudentDetailHeader(sid, tab) {
+                 </div>
+             </div>
+             <div class="ap-student-head-actions">
+-                <button type="button" class="btn ap-student-action is-secondary" onclick="openEditStudent(${apmsStudentJsString(sid)}, { returnTo: { type: 'studentDetail', studentId: ${apmsStudentJsString(sid)} } })">?뺣낫 ?섏젙</button>
++                ${actionBtn}
+             </div>
+         </header>
+     `;
+@@ -1601,36 +1629,118 @@ function renderStudentContactHistoryTab(sid) {
+     `;
+ }
+ 
++const AP_STUDENT_DETAIL_TABS = ['basic', 'grade', 'weak', 'cns', 'contact'];
++
++function normalizeStudentDetailTab(tab = 'basic') {
++    const value = String(tab || 'basic');
++    return AP_STUDENT_DETAIL_TABS.includes(value) ? value : 'basic';
++}
++
++/**
++ * view mode 蹂몃Ц ??tab???곕씪 湲곗〈 ???뚮뜑 ?⑥닔濡?遺꾧린?쒕떎.
++ */
++function renderStudentViewBody(sid, tab = 'basic') {
++    const activeTab = normalizeStudentDetailTab(tab);
++    let body = '';
++    if (activeTab === 'grade') {
++        body = renderGradeTab(sid);
++    } else if (activeTab === 'weak') {
++        body = renderWeakTab(sid);
++    } else if (activeTab === 'cns') {
++        body = renderCnsTab(sid);
++    } else if (activeTab === 'contact') {
++        body = renderStudentContactHistoryTab(sid);
++    } else {
++        body = renderStudentBasicTab(sid);
++    }
++    return `<div class="std-tab-content ap-student-tab-body">${body}</div>`;
++}
++
++/**
++ * view mode ??踰꾪듉 UI.
++ */
++function renderStudentDetailTabs(sid, activeTab = 'basic') {
++    const tab = normalizeStudentDetailTab(activeTab);
++    const tabs = [
++        { key: 'basic', label: '湲곕낯' },
++        { key: 'grade', label: '?깆쟻' },
++        { key: 'weak', label: '痍⑥빟' },
++        { key: 'cns', label: '?곷떞' },
++        { key: 'contact', label: '?곕씫/?대젰' }
++    ];
++    return `
++        <div class="apms-eie-tabs ap-student-tabs">
++            ${tabs.map(item => `
++                <button
++                    type="button"
++                    class="apms-eie-tab ${item.key === tab ? 'is-active' : ''}"
++                    onclick="renderStudentDetailTab(${apmsStudentJsString(sid)}, ${apmsStudentJsString(item.key)})"
++                >${apmsStudentDetailEsc(item.label)}</button>
++            `).join('')}
++        </div>
++    `;
++}
++
+ /**
+- * ??퀎 ?댁슜 ?뚮뜑留??붿쭊 (UI Standard ?곸슜)
++ * ?숈깮 ?곸꽭 紐⑤떖???좎씪??湲곗? ?뚮뜑??
++ * view/edit 紐⑤몢 媛숈? ???ㅻ뜑 + 理쒓렐 ?곷떞 移대뱶)??怨듭쑀?섍퀬 蹂몃Ц留?援먯껜?쒕떎.
++ * view mode??tab??蹂댁〈/遺꾧린?쒕떎.
+  */
+-function renderStudentDetailTab(sid, tab) {
++function renderStudentDetailShell(sid, options = {}) {
+     injectStudentStyles();
+     if (!state.ui) state.ui = {};
++    const mode = options.mode === 'edit' ? 'edit' : 'view';
++    const s = state.db.students.find(st => String(st.id) === String(sid));
++    if (!s) { toast('?숈깮 ?뺣낫 ?놁쓬', 'warn'); return; }
++
++    const previousTab = state.ui.currentStudentDetailTab || 'basic';
++    const tab = normalizeStudentDetailTab(options.tab || previousTab || 'basic');
++
+     state.ui.currentStudentDetailId = String(sid);
+-    state.ui.currentStudentDetailTab = 'basic';
++    state.ui.currentStudentDetailMode = mode;
++    // edit mode濡??ㅼ뼱媛??湲곗〈 view tab 湲곗뼲? ?좎??쒕떎.
++    state.ui.currentStudentDetailTab = mode === 'view' ? tab : (previousTab || tab || 'basic');
+     setStudentDetailSubModal('', sid);
+-    const s = state.db.students.find(st => st.id === sid);
+-    const returnCtx = state.ui.returnView || {};
+-    if (returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
+ 
+-    let bodyHtml = `<div class="std-tab-content ap-student-tab-body">`;
+-    bodyHtml += renderStudentBasicTab(sid);
+-    bodyHtml += `</div>`;
++    const returnCtx = options.returnTo || state.ui.modalReturnView || state.ui.returnView || null;
++    if (returnCtx && returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
++
++    const bodyHtml = mode === 'edit'
++        ? renderStudentEditBody(sid)
++        : `
++            ${renderStudentDetailTabs(sid, tab)}
++            ${renderStudentViewBody(sid, tab)}
++        `;
+ 
+     showModal(`${s.name} ?꾨줈??, `
+-        <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell">
+-            ${renderStudentDetailHeader(sid, 'basic')}
++        <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
++            ${renderStudentDetailHeader(sid, mode)}
+             ${renderStudentConsultationPinnedCard(sid)}
+             ${bodyHtml}
+         </div>
+-    `);
+-    setTimeout(() => bindStudentConsultationDateButtons(sid), 0);
++    `, mode === 'edit' ? '??? : null, mode === 'edit' ? () => handleEditStudent(sid) : null);
++    setTimeout(() => {
++        bindStudentConsultationDateButtons(sid);
++        if (mode === 'view' && tab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(sid);
++    }, 0);
+ 
+     void ensureStudentConsultationsLoaded(sid);
+     void ensureStudentDetailLazyData(sid);
+ }
+ 
++/**
++ * 湲곗〈 ???몄텧 ?명솚??wrapper (??젣 湲덉?). tab???몄뿉 洹몃?濡??꾨떖?쒕떎.
++ * edit mode 以??먮룞 濡쒕뜑媛 ???⑥닔瑜??몄텧?대룄
++ * shouldRefreshCurrentStudentDetailTab??edit guard媛 ?몄텧 ?먯껜瑜?留됰뒗??
++ */
++function renderStudentDetailTab(sid, tab = 'basic') {
++    return renderStudentDetailShell(sid, {
++        mode: 'view',
++        tab: normalizeStudentDetailTab(tab),
++        returnTo: state.ui?.modalReturnView || state.ui?.returnView || null
++    });
++}
++
+ /**
+  * [Tab 1] ?깆쟻遺꾩꽍 (16px ?쒕ぉ 諛?14px 由ъ뒪??洹쒓꺽)
+  */
+@@ -2442,12 +2552,18 @@ function syncEditStudentGrade() {
+     syncEditStudentHighSubjects();
+ }
+ 
++// 湲곗〈 ?몄텧 ?명솚??wrapper (??젣 湲덉?). ?⑥씪 ?몄쓽 edit mode濡??꾩엫?쒕떎.
+ function openEditStudent(sid, options = {}) {
+-    injectStudentStyles();
+-    void ensureStudentConsultationsLoaded(sid);
+-    void loadStudentOnboardingDetails(sid);
+-    const s = state.db.students.find(st => st.id === sid);
+-    if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
++    return openStudentDetail(sid, { ...options, mode: 'edit' });
++}
++
++/**
++ * edit mode 蹂몃Ц. 理쒓렐 ?곷떞 移대뱶???몄뿉??怨듯넻 ?뚮뜑?섎?濡??ш린???ㅼ떆 ?ｌ? ?딅뒗??
++ * 湲곗〈 input id??handleEditStudent媛 ?쎌쑝誘濡?蹂寃?湲덉?.
++ */
++function renderStudentEditBody(sid) {
++    const s = state.db.students.find(st => String(st.id) === String(sid));
++    if (!s) return '<div class="ap-student-card">?숈깮 ?뺣낫瑜?李얠쓣 ???놁뒿?덈떎.</div>';
+     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
+     const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid)));
+     const opts = selectableClasses.map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, selectableClasses))}</option>`).join('');
+@@ -2458,7 +2574,7 @@ function openEditStudent(sid, options = {}) {
+     const onboardingDate = getStudentOnboardingStartedAt(sid);
+     const cleanMemo = String(s.memo || '').replace(/#?좎엯/g, '').replace(/#?댁썝/g, '').trim();
+ 
+-    showModal('?숈깮 ?뺣낫 ?섏젙', `
++    return `
+         <div class="apms-student-contrast apms-student-form-view apms-eie-form">
+             <section class="apms-eie-form-card">
+                 <div class="apms-eie-form-head"><h3>湲곕낯 ?뺣낫</h3><span>?꾩닔</span></div>
+@@ -2482,9 +2598,6 @@ function openEditStudent(sid, options = {}) {
+                     <label class="apms-eie-form-field"><span>二쇱냼</span><input id="edit-student-address" value="${studentAttr(s.student_address || '')}" placeholder="二쇱냼"></label>
+                 </div>
+             </section>
+-            <section class="apms-eie-form-card">
+-                ${renderStudentConsultationPinnedCard(sid)}
+-            </section>
+             <details class="apms-eie-form-drawer">
+                 <summary>愿由??뺣낫 쨌 ?곹깭/硫붾え 쨌 ?댁썝 泥섎━</summary>
+                 <div class="apms-eie-form-drawer-body">
+@@ -2518,8 +2631,7 @@ function openEditStudent(sid, options = {}) {
+                 </div>
+             </details>
+         </div>
+-    `, '???, () => handleEditStudent(sid));
+-    setTimeout(() => bindStudentConsultationDateButtons(sid), 0);
++    `;
+ }
+ 
+ async function handleEditStudent(sid) {
+@@ -2583,16 +2695,9 @@ async function handleEditStudent(sid) {
+             }
+             toast('?숈깮 ?뺣낫媛 ?섏젙?섏뿀?듬땲??', 'success');
+             mergeStudentCreateResponseIntoState(r);
+-            if (returnCtx?.type === 'studentDetail' && typeof renderStudentDetailTab === 'function') {
+-                const targetStudentId = returnCtx.studentId || sid;
+-                if (state.ui) state.ui.modalReturnView = null;
+-                if (typeof closeModal === 'function') closeModal(true);
+-                await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
+-                window.setTimeout?.(() => renderStudentDetailTab(targetStudentId, 'basic'), 280);
+-                return;
+-            }
+-            closeModal(true);
+-            refreshCurrentStudentListViewAfterMutation(returnCtx);
++            // 紐⑤떖???レ? ?딄퀬 媛숈? ?숈깮 ?꾨줈???몄쓽 view mode濡?蹂듦??쒕떎.
++            await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
++            renderStudentDetailShell(sid, { mode: 'view', tab: 'basic', returnTo: returnCtx });
+             return;
+         }
+         toast(r?.message || r?.error || '?숈깮 ?뺣낫 ?섏젙???ㅽ뙣?덉뒿?덈떎.', 'error');

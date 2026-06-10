@@ -1312,7 +1312,7 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
 
     return `
         <div class="cls-v4-row apms-line-row apms-line-row--clickable ap-classroom-row" id="class-row-${s.id}">
-            <div class="cls-v4-name-col apms-line-row__main ap-classroom-row__main" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">
+            <div class="cls-v4-name-col apms-line-row__main ap-classroom-row__main" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">
                 <div class="cls-v4-student apms-line-row__title ap-classroom-row__title">${apEscapeHtml(s.name)}</div>
             </div>
             <div class="cls-v4-badges apms-line-row__actions ap-classroom-row__actions">
@@ -1373,7 +1373,7 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
     const html = `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
-            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${sid}')">상세 정보 열기</button>
+            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${sid}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">상세 정보 열기</button>
             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '단원평가', 20, '${cid}', '', '', 'class')">OMR / 성적 입력</button>
             ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(var(--primary-rgb),0.22);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
         </div>

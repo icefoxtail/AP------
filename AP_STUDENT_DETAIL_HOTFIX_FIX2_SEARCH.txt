@@ -1,0 +1,39 @@
+﻿===== currentStudentDetailMode === 'edit' =====
+
+apmath\js\student.js:322:    if (state.ui.currentStudentDetailMode === 'edit') return false;
+
+===== function renderStudentDetailTab =====
+apmath\js\student.js:1662:function renderStudentDetailTabs(sid, activeTab = 'basic') {
+apmath\js\student.js:1736:function renderStudentDetailTab(sid, tab = 'basic') {
+
+===== renderStudentDetailShell =====
+apmath\js\student.js:1157:    renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx });
+apmath\js\student.js:1689:function renderStudentDetailShell(sid, options = {}) {
+apmath\js\student.js:1737:    return renderStudentDetailShell(sid, {
+apmath\js\student.js:2700:            renderStudentDetailShell(sid, { mode: 'view', tab: 'basic', returnTo: returnCtx });
+
+===== renderCnsTab(sid) =====
+apmath\js\student.js:1650:        body = renderCnsTab(sid);
+apmath\js\student.js:1812:function renderCnsTab(sid) {
+
+===== renderGradeTab(sid) =====
+apmath\js\student.js:1646:        body = renderGradeTab(sid);
+apmath\js\student.js:1747:function renderGradeTab(sid) {
+
+===== renderWeakTab(sid) =====
+apmath\js\student.js:1648:        body = renderWeakTab(sid);
+apmath\js\student.js:1794:function renderWeakTab(sid) {
+
+===== renderStudentContactHistoryTab(sid) =====
+apmath\js\student.js:1619:function renderStudentContactHistoryTab(sid) {
+apmath\js\student.js:1652:        body = renderStudentContactHistoryTab(sid);
+
+===== setTimeout.*renderStudentDetailTab =====
+
+===== closeModal(true).*renderStudentDetailTab =====
+
+===== 학생 정보 수정 =====
+apmath\js\student.js:2703:        toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');
+apmath\js\student.js:2706:        toast('학생 정보 수정 중 오류가 발생했습니다.', 'error');
+
+
