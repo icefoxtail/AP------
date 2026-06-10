@@ -87,8 +87,8 @@ function injectStudentStyles() {
         .apms-eie-form-drawer[open] summary::after { content:'닫기'; }
         .apms-eie-form-drawer-body { display:flex; flex-direction:column; gap:12px; padding:0 14px 14px; }
         .ap-student-detail-shell { display:flex; flex-direction:column; gap:14px; padding:0 14px 4px; box-sizing:border-box; }
-        .ap-student-profile-head { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:14px; padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 4px 14px rgba(15,23,42,.035); }
-        body.dark .ap-student-profile-head { box-shadow:none; }
+        .ap-student-profile-head { position:sticky; top:0; z-index:24; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:14px; padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 8px 22px rgba(15,23,42,.075); }
+        body.dark .ap-student-profile-head { background:var(--surface); box-shadow:none; }
         .ap-student-head-main { min-width:0; display:flex; flex-direction:column; gap:10px; }
         .ap-student-head-main h1 { margin:0; font-size:24px; font-weight:750; color:var(--text); line-height:1.18; }
         .ap-student-head-badges,
@@ -141,9 +141,14 @@ function injectStudentStyles() {
             .apms-eie-form-grid { grid-template-columns:1fr; }
             .apms-eie-form { padding:0 10px 4px; }
             .ap-student-detail-shell { padding:0 10px 4px; }
-            .ap-student-profile-head { grid-template-columns:1fr; padding:14px; }
-            .ap-student-head-actions { width:100%; display:grid; grid-template-columns:1fr; }
-            .ap-student-action { width:100%; }
+            .ap-student-profile-head { grid-template-columns:minmax(0,1fr) auto; gap:10px; padding:10px 12px; border-radius:14px; align-items:start; }
+            .ap-student-head-main { min-width:0; gap:6px; }
+            .ap-student-head-main h1 { font-size:20px; line-height:1.12; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+            .ap-student-head-badges { gap:5px; margin:0; max-height:52px; overflow:hidden; }
+            .ap-student-pill,
+            .ap-student-status { min-height:22px; padding:2px 7px; font-size:10.5px; line-height:1.2; white-space:nowrap; }
+            .ap-student-head-actions { align-items:flex-start; justify-content:flex-end; flex:0 0 auto; }
+            .ap-student-action { min-height:36px; padding:0 10px; border-radius:10px; font-size:12px; white-space:nowrap; }
             .ap-student-consult-date-row { flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; }
             .ap-student-consult-date-btn { flex:0 0 auto; }
             .ap-student-field-grid { grid-template-columns:1fr; }
@@ -1123,6 +1128,7 @@ async function renderStudentDetail(sid) {
     const foundationLoads = [];
     if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
+    foundationLoads.push(loadStudentOnboardingDetails(sid));
     if (foundationLoads.length) await Promise.all(foundationLoads);
     await ensureBlueprintsForSessions(exs);
     void ensureStudentDetailLazyData(sid);
@@ -1190,7 +1196,15 @@ function apmsStudentDetailEsc(value) {
 }
 
 function apmsStudentJsString(value) {
-    return JSON.stringify(String(value ?? ''));
+    const raw = JSON.stringify(String(value ?? ''));
+    return typeof apEscapeHtml === 'function'
+        ? apEscapeHtml(raw)
+        : raw
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
 }
 
 function apmsStudentStatusMeta(student) {
@@ -1276,6 +1290,99 @@ function renderApmsStudentProfileDeck(student, cls) {
 function getApStudentCurrentClass(sid) {
     const mapping = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
     return (state.db.classes || []).find(c => String(c.id) === String(mapping?.class_id || '')) || null;
+}
+
+function ensureStudentOnboardingUiState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.studentOnboardingDetails) {
+        state.ui.studentOnboardingDetails = { byStudent: {}, inFlight: {} };
+    }
+    if (!state.ui.studentOnboardingDetails.byStudent) state.ui.studentOnboardingDetails.byStudent = {};
+    if (!state.ui.studentOnboardingDetails.inFlight) state.ui.studentOnboardingDetails.inFlight = {};
+    return state.ui.studentOnboardingDetails;
+}
+
+function getStudentOnboardingEntry(sid) {
+    const key = String(sid || '');
+    const store = ensureStudentOnboardingUiState();
+    if (!store.byStudent[key]) {
+        store.byStudent[key] = {
+            loading: false,
+            loadedAt: 0,
+            error: '',
+            onboarding_started_at: '',
+            already_attending: false,
+            tasks: []
+        };
+    }
+    return store.byStudent[key];
+}
+
+function normalizeOnboardingDate(value) {
+    const text = String(value || '').trim().split('T')[0].split(' ')[0];
+    return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : '';
+}
+
+function getStudentOnboardingStartedAt(sid) {
+    return normalizeOnboardingDate(getStudentOnboardingEntry(sid).onboarding_started_at);
+}
+
+function getStudentOnboardingStartedAtLabel(sid) {
+    const date = getStudentOnboardingStartedAt(sid);
+    if (date) return date;
+    const entry = getStudentOnboardingEntry(sid);
+    if (entry.loading) return '불러오는 중';
+    return '미등록';
+}
+
+function syncStudentOnboardingEntry(sid, payload = {}) {
+    const entry = getStudentOnboardingEntry(sid);
+    const rows = Array.isArray(payload.tasks) ? payload.tasks : entry.tasks;
+    entry.tasks = rows;
+    entry.onboarding_started_at = normalizeOnboardingDate(payload.onboarding_started_at || payload.onboardingStartedAt || entry.onboarding_started_at);
+    entry.already_attending = !!(payload.already_attending || payload.alreadyAttending || rows.some(row => String(row?.status || '') === 'skipped' && String(row?.notes || '').includes('이미 등원 중')));
+    entry.loadedAt = Date.now();
+    entry.loading = false;
+    entry.error = '';
+    return entry;
+}
+
+async function loadStudentOnboardingDetails(sid, options = {}) {
+    const key = String(sid || '').trim();
+    if (!key) return getStudentOnboardingEntry(key);
+    const store = ensureStudentOnboardingUiState();
+    const entry = getStudentOnboardingEntry(key);
+    const force = !!options.force;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
+    if (!force && entry.loadedAt && (Date.now() - entry.loadedAt) < maxAgeMs) return entry;
+    if (store.inFlight[key]) return store.inFlight[key];
+
+    entry.loading = true;
+    entry.error = '';
+    const classId = String(options.classId || getApStudentCurrentClass(key)?.id || '').trim();
+    const query = [`student_id=${encodeURIComponent(key)}`];
+    if (classId) query.push(`class_id=${encodeURIComponent(classId)}`);
+
+    const promise = api.get(`onboarding/student?${query.join('&')}`)
+        .then(res => {
+            if (res?.success) return syncStudentOnboardingEntry(key, res);
+            entry.error = String(res?.error || res?.message || 'onboarding load failed');
+            return entry;
+        })
+        .catch(err => {
+            entry.error = String(err?.message || err || 'onboarding load failed');
+            return entry;
+        })
+        .finally(() => {
+            entry.loading = false;
+            store.inFlight[key] = null;
+            if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
+                renderStudentDetailTab(key, 'basic');
+            }
+        });
+
+    store.inFlight[key] = promise;
+    return promise;
 }
 
 function apStudentConsultationDateLabel(value) {
@@ -1466,6 +1573,7 @@ function renderStudentBasicTab(sid) {
                     ${apStudentDetailField('보호자 관계', s.guardian_relation)}
                     ${apStudentDetailField('PIN', s.student_pin)}
                     ${apStudentDetailField('상태', status)}
+                    ${apStudentDetailField('등원일', getStudentOnboardingStartedAtLabel(sid))}
                     ${apStudentDetailField('메모', memo || '메모가 없습니다.', { wide: true })}
                 </div>
             </section>
@@ -2209,18 +2317,28 @@ function setOnboardingStartedAtSuggestion(prefix) {
     if (checked && input) input.value = getDateTextDaysAgo(7);
 }
 
-function renderOnboardingStartedAtFields(prefix) {
+function renderOnboardingStartedAtFields(prefix, options = {}) {
     const safePrefix = apEscapeHtml(prefix);
+    const storedDate = normalizeOnboardingDate(options.value || options.onboarding_started_at || '');
+    const isEdit = prefix === 'edit';
+    const defaultDate = isEdit ? storedDate : (storedDate || getTodayKstDateText());
+    const alreadyChecked = options.alreadyAttending || options.already_attending;
+    const helperText = storedDate
+        ? '저장된 등원일입니다. 필요할 때만 수정하세요.'
+        : (isEdit ? '등원일이 없으면 비워둘 수 있습니다. 신입생 적응 확인이 필요할 때만 저장하세요.' : '신입생 적응 확인은 이 날짜를 기준으로 표시됩니다.');
+    const attendingHint = storedDate
+        ? '이미 등원 중으로 저장하면 신입생 상담 알림을 숨깁니다.'
+        : '이미 등원 중인 학생이면 체크 후 저장하세요. 신입생 상담 알림을 만들지 않습니다.';
     return `
         <div class="std-input-base" style="display:flex; flex-direction:column; gap:8px;">
-            <label for="${safePrefix}-onboarding-started-at" style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.4;">실제 등원일</label>
-            <input id="${safePrefix}-onboarding-started-at" type="date" value="${getTodayKstDateText()}" style="width:100%; min-height:44px; box-sizing:border-box; padding:0 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:13px; font-weight:500;">
-            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">* 신입생 적응 확인은 이 날짜를 기준으로 표시됩니다.</div>
+            <label for="${safePrefix}-onboarding-started-at" style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.4;">등원일</label>
+            <input id="${safePrefix}-onboarding-started-at" type="date" value="${apEscapeHtml(defaultDate)}" style="width:100%; min-height:44px; box-sizing:border-box; padding:0 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:13px; font-weight:500;">
+            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">${helperText}</div>
             <label style="display:flex; align-items:center; gap:7px; min-height:26px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                <input id="${safePrefix}-already-attending" type="checkbox" onchange="setOnboardingStartedAtSuggestion('${safePrefix}')" style="width:15px; height:15px; accent-color:var(--primary); cursor:pointer;">
+                <input id="${safePrefix}-already-attending" type="checkbox" ${alreadyChecked ? 'checked' : ''} onchange="setOnboardingStartedAtSuggestion('${safePrefix}')" style="width:15px; height:15px; accent-color:var(--primary); cursor:pointer;">
                 <span>이미 등원 중인 학생입니다</span>
             </label>
-            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">첫 등원 시작일을 확인해 주세요.</div>
+            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">${attendingHint}</div>
         </div>
     `;
 }
@@ -2229,13 +2347,26 @@ async function bootstrapOnboardingTasks(payload = {}) {
     const studentId = String(payload.student_id || payload.studentId || '').trim();
     const classId = String(payload.class_id || payload.classId || '').trim();
     if (!studentId || !classId) return null;
-    const onboardingStartedAt = String(payload.onboarding_started_at || payload.onboardingStartedAt || getTodayKstDateText()).trim();
+    const onboardingStartedAt = normalizeOnboardingDate(payload.onboarding_started_at || payload.onboardingStartedAt) || getTodayKstDateText();
+    const alreadyAttending = !!(payload.already_attending || payload.alreadyAttending);
     try {
-        return await api.post('onboarding/tasks/bootstrap', {
+        const result = await api.post('onboarding/tasks/bootstrap', {
             student_id: studentId,
             class_id: classId,
-            onboarding_started_at: onboardingStartedAt
+            onboarding_started_at: onboardingStartedAt,
+            already_attending: alreadyAttending ? 1 : 0
         });
+        if (result?.success) {
+            syncStudentOnboardingEntry(studentId, {
+                ...result,
+                onboarding_started_at: result.onboarding_started_at || onboardingStartedAt,
+                already_attending: alreadyAttending || result.already_attending
+            });
+            if (typeof refreshOnboardingTasksAfterAction === 'function') {
+                refreshOnboardingTasksAfterAction().catch?.(() => {});
+            }
+        }
+        return result;
     } catch (e) {
         console.warn('[bootstrapOnboardingTasks] failed:', e);
         return null;
@@ -2314,6 +2445,7 @@ function syncEditStudentGrade() {
 function openEditStudent(sid, options = {}) {
     injectStudentStyles();
     void ensureStudentConsultationsLoaded(sid);
+    void loadStudentOnboardingDetails(sid);
     const s = state.db.students.find(st => st.id === sid);
     if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
@@ -2322,6 +2454,8 @@ function openEditStudent(sid, options = {}) {
 
     const isNew = isStudentNewMember(s);
     const isLeave = isStudentOnLeave(s);
+    const onboardingEntry = getStudentOnboardingEntry(sid);
+    const onboardingDate = getStudentOnboardingStartedAt(sid);
     const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
 
     showModal('학생 정보 수정', `
@@ -2359,7 +2493,7 @@ function openEditStudent(sid, options = {}) {
                         <div class="apms-eie-form-grid">
                             <label class="apms-eie-form-field"><span>차량</span><input id="edit-vehicle-info" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량"></label>
                             <label class="apms-eie-form-field"><span>PIN</span><input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric"></label>
-                            <div class="apms-eie-form-wide">${renderOnboardingStartedAtFields('edit')}</div>
+                            <div class="apms-eie-form-wide">${renderOnboardingStartedAtFields('edit', { value: onboardingDate, alreadyAttending: onboardingEntry.already_attending })}</div>
                         </div>
                     </section>
                     <section class="apms-eie-form-card">
@@ -2403,9 +2537,14 @@ async function handleEditStudent(sid) {
     const rawMemo = document.getElementById('edit-memo')?.value || '';
     const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
     const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
+    const alreadyAttending = document.getElementById('edit-already-attending')?.checked || false;
+    const currentOnboardingStartedAt = getStudentOnboardingStartedAt(sid);
+    let onboardingStartedAt = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('edit'))?.value || '');
+    if (!onboardingStartedAt && alreadyAttending) onboardingStartedAt = getDateTextDaysAgo(7);
+    if (!onboardingStartedAt && isNewChecked) onboardingStartedAt = getTodayKstDateText();
     const cleanMemo = rawMemo.replace(/#신입/g, '').replace(/#휴원/g, '').trim();
     const memoParts = [];
-    if (isNewChecked) memoParts.push('#신입');
+    if (isNewChecked && !alreadyAttending) memoParts.push('#신입');
     if (isLeaveChecked) memoParts.push('#휴원');
     if (cleanMemo) memoParts.push(cleanMemo);
     const finalMemo = memoParts.join(' ').trim();
@@ -2432,17 +2571,27 @@ async function handleEditStudent(sid) {
         if (r?.success) {
             const classChanged = String(classId || '') !== String(currentClassId || '');
             const becameNew = !wasNewChecked && isNewChecked;
-            const shouldBootstrapOnboarding = !!classId && (classChanged || becameNew);
-            if (shouldBootstrapOnboarding) {
+            const onboardingDateChanged = !!onboardingStartedAt && String(currentOnboardingStartedAt || '') !== String(onboardingStartedAt);
+            const shouldSyncOnboarding = !!classId && (alreadyAttending || isNewChecked || becameNew || (classChanged && wasNewChecked) || onboardingDateChanged);
+            if (shouldSyncOnboarding) {
                 await bootstrapOnboardingTasks({
                     student_id: sid,
                     class_id: classId,
-                    onboarding_started_at: document.getElementById(getOnboardingStartDateInputId('edit'))?.value || getTodayKstDateText()
+                    onboarding_started_at: onboardingStartedAt || getTodayKstDateText(),
+                    already_attending: alreadyAttending ? 1 : 0
                 });
             }
             toast('학생 정보가 수정되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
-            closeModal();
+            if (returnCtx?.type === 'studentDetail' && typeof renderStudentDetailTab === 'function') {
+                const targetStudentId = returnCtx.studentId || sid;
+                if (state.ui) state.ui.modalReturnView = null;
+                if (typeof closeModal === 'function') closeModal(true);
+                await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
+                window.setTimeout?.(() => renderStudentDetailTab(targetStudentId, 'basic'), 280);
+                return;
+            }
+            closeModal(true);
             refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
         }
@@ -2488,6 +2637,8 @@ async function handleAddStudent() {
     const guardianRelation = document.getElementById('add-guardian-rel')?.value.trim() || '';
     const studentAddress = document.getElementById('add-student-address')?.value.trim() || '';
     const vehicleInfo = document.getElementById('add-vehicle-info')?.value.trim() || '';
+    const addAlreadyAttending = document.getElementById('add-already-attending')?.checked || false;
+    const addOnboardingStartedAt = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('add'))?.value || '') || (addAlreadyAttending ? getDateTextDaysAgo(7) : getTodayKstDateText());
     if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
 
     if (!classId) { toast('반을 선택하세요.', 'warn'); return; }
@@ -2521,7 +2672,8 @@ async function handleAddStudent() {
             if (!r?.duplicate_ignored && r?.id && classId) bootstrapOnboardingTasks({
                 student_id: r.id,
                 class_id: classId,
-                onboarding_started_at: document.getElementById(getOnboardingStartDateInputId('add'))?.value || getTodayKstDateText()
+                onboarding_started_at: addOnboardingStartedAt,
+                already_attending: addAlreadyAttending ? 1 : 0
             }).catch(e => console.warn('[handleAddStudent] onboarding bootstrap failed:', e));
             toast(r?.duplicate_ignored ? '이미 등록 처리된 학생입니다.' : '학생이 추가되었습니다.', r?.duplicate_ignored ? 'info' : 'success');
             mergeStudentCreateResponseIntoState(r);
