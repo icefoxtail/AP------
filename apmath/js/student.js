@@ -55,10 +55,11 @@ function injectStudentStyles() {
         .apms-eie-contact-row button { width:auto; min-height:34px; padding:0 10px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:12px; font-weight:600; cursor:pointer; }
         .apms-eie-note { margin-top:8px; }
         .apms-eie-note p { margin:5px 0 0; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6; white-space:pre-wrap; }
-        .apms-eie-tabs { padding:4px; border-radius:14px; background:var(--bg); }
-        .apms-eie-tab { flex:1 1 92px; min-height:42px; border:0; border-radius:10px; background:transparent; color:var(--secondary); font-size:13px; font-weight:600; cursor:pointer; }
-        .apms-eie-tab.is-active { background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(15,23,42,.05); }
-        body.dark .apms-eie-tab.is-active { box-shadow:none; }
+        .apms-eie-tabs { padding:0; border-radius:0; background:transparent; gap:4px; border-bottom:1px solid var(--border); flex-wrap:nowrap; }
+        .apms-eie-tab { flex:1 1 0; min-height:37px; border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent; color:#94A3B8; font-size:12.5px; font-weight:600; cursor:pointer; margin-bottom:-1px; }
+        .apms-eie-tab.is-active { background:transparent; color:#1F2937; border-bottom-color:#334155; box-shadow:none; }
+        body.dark .apms-eie-tab { color:var(--secondary); }
+        body.dark .apms-eie-tab.is-active { color:var(--text); border-bottom-color:var(--text); box-shadow:none; }
         .apms-eie-form { display:flex; flex-direction:column; gap:12px; padding:0 14px 4px; box-sizing:border-box; }
         .apms-eie-form-card { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:14px; box-shadow:0 4px 14px rgba(15,23,42,.035); }
         body.dark .apms-eie-form-card { box-shadow:none; }
@@ -87,51 +88,57 @@ function injectStudentStyles() {
         .apms-eie-form-drawer[open] summary::after { content:'닫기'; }
         .apms-eie-form-drawer-body { display:flex; flex-direction:column; gap:12px; padding:0 14px 14px; }
         .ap-student-detail-shell { display:flex; flex-direction:column; gap:14px; padding:0 14px 4px; box-sizing:border-box; }
-        .ap-student-profile-head { position:sticky; top:0; z-index:24; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:14px; padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 8px 22px rgba(15,23,42,.075); overflow:hidden; }
+        .ap-student-profile-head { position:sticky; top:0; z-index:24; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px; padding:12px 4px 12px; border:0; border-bottom:1px solid var(--border); border-radius:0; background:var(--bg); box-shadow:none; overflow:hidden; }
         .ap-student-profile-head.is-edit { grid-template-columns:minmax(0,1fr); }
-        body.dark .ap-student-profile-head { background:var(--surface); box-shadow:none; }
-        .ap-student-head-main { min-width:0; display:flex; flex-direction:column; gap:8px; overflow:hidden; }
-        .ap-student-head-main h1 { margin:0; font-size:24px; font-weight:750; color:var(--text); line-height:1.18; }
-        .ap-student-head-badges,
-        .ap-student-head-actions { display:flex; flex-wrap:wrap; gap:7px; }
-        .ap-student-head-badges { margin:0; align-items:center; position:static; transform:none; overflow:visible; padding:0 0 1px; }
-        .ap-student-pill,
-        .ap-student-status { display:inline-flex; align-items:center; min-height:24px; padding:3px 9px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:700; line-height:1.2; }
-        .ap-student-status.is-active { border-color:rgba(16,185,129,.24); background:rgba(16,185,129,.10); color:#047857; }
-        .ap-student-status.is-leave { border-color:rgba(217,119,6,.26); background:rgba(217,119,6,.10); color:#92400E; }
-        .ap-student-status.is-archived { border-color:rgba(232,65,79,.22); background:rgba(232,65,79,.08); color:var(--error); }
-        .ap-student-head-actions { justify-content:flex-end; align-items:center; }
-        .ap-student-action { min-height:44px; padding:0 14px; border-radius:11px; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap; }
-        .ap-student-action.is-primary { border:1px solid var(--primary); background:var(--primary); color:#fff; }
-        .ap-student-action.is-secondary { border:1px solid var(--border); background:var(--surface-2); color:var(--text); }
+        body.dark .ap-student-profile-head { background:var(--bg); box-shadow:none; }
+        .ap-student-head-main { min-width:0; display:flex; flex-direction:column; gap:5px; overflow:hidden; }
+        .ap-student-head-title { display:flex; align-items:center; gap:8px; min-width:0; }
+        .ap-student-head-title h1 { margin:0; font-size:18px; font-weight:700; color:#1F2937; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        body.dark .ap-student-head-title h1 { color:var(--text); }
+        .ap-student-head-main h1 { margin:0; font-size:18px; font-weight:700; color:#1F2937; line-height:1.2; }
+        .ap-student-status-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:#94A3B8; flex:0 0 auto; }
+        .ap-student-status-dot.is-active { background:#1D9E75; }
+        .ap-student-status-dot.is-leave { background:#D97706; }
+        .ap-student-status-dot.is-archived { background:#E8414F; }
+        .ap-student-status-text { font-size:12px; font-weight:600; color:#64748B; white-space:nowrap; }
+        .ap-student-status-text.is-active { color:#1D9E75; }
+        .ap-student-status-text.is-leave { color:#D97706; }
+        .ap-student-status-text.is-archived { color:#E8414F; }
+        .ap-student-meta-line { font-size:12.5px; font-weight:500; color:#64748B; line-height:1.4; overflow-wrap:anywhere; }
+        .ap-student-head-actions { display:flex; flex-wrap:wrap; gap:7px; justify-content:flex-end; align-items:flex-start; }
+        .ap-student-edit-btn { height:28px; padding:0 10px; border:1px solid #CBD5E1; background:#F8FAFC; color:#334155; border-radius:7px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; }
+        body.dark .ap-student-edit-btn { background:var(--surface-2); border-color:var(--border); color:var(--text); }
         .ap-student-consult-pinned,
-        .ap-student-card { border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:14px; box-shadow:0 4px 14px rgba(15,23,42,.035); }
+        .ap-student-card { border:1px solid var(--border); border-radius:10px; background:var(--surface); padding:12px; box-shadow:none; }
         body.dark .ap-student-consult-pinned,
         body.dark .ap-student-card { box-shadow:none; }
-        .ap-student-section-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
-        .ap-student-section-head h3 { margin:0; color:var(--text); font-size:15px; font-weight:750; line-height:1.25; }
-        .ap-student-section-head span { color:var(--secondary); font-size:11px; font-weight:700; }
-        .ap-student-consult-date-row { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:12px; }
-        .ap-student-consult-date-btn { min-height:44px; padding:0 12px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:750; cursor:pointer; }
-        .ap-student-consult-date-btn.is-active { border-color:rgba(var(--primary-rgb),.34); background:rgba(var(--primary-rgb),.10); color:var(--primary); }
-        .ap-student-consult-preview { border:1px solid var(--border); border-radius:14px; background:var(--surface-2); padding:13px; min-height:92px; }
-        .ap-student-consult-preview.is-updated { border-color:rgba(var(--primary-rgb),.55); box-shadow:0 0 0 3px rgba(var(--primary-rgb),.12); }
-        .ap-student-consult-empty { text-align:center; color:var(--secondary); padding:22px 10px; border:1px dashed var(--border); border-radius:14px; background:var(--surface-2); }
+        .ap-student-section-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+        .ap-student-section-head h3 { margin:0; color:var(--text); font-size:13.5px; font-weight:600; line-height:1.25; }
+        .ap-student-section-head span { color:var(--secondary); font-size:11px; font-weight:600; }
+        .ap-student-consult-date-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+        .ap-student-consult-date-btn { min-height:44px; padding:0 11px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:#334155; font-size:12px; font-weight:600; cursor:pointer; display:flex; align-items:center; }
+        .ap-student-consult-date-btn.is-active { border-color:rgba(110,102,201,.34); background:rgba(110,102,201,.10); color:#6E66C9; }
+        .ap-student-consult-preview { border:1px solid var(--border); border-radius:10px; background:var(--surface-2); padding:13px; min-height:88px; }
+        .ap-student-consult-preview.is-updated { border-color:rgba(110,102,201,.55); box-shadow:0 0 0 3px rgba(110,102,201,.12); }
+        .ap-student-consult-empty { text-align:center; color:var(--secondary); padding:20px 10px; border:1px dashed var(--border); border-radius:10px; background:var(--surface-2); }
         .ap-student-consult-row { display:flex; flex-direction:column; gap:9px; }
         .ap-student-consult-meta { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
-        .ap-student-consult-type { display:inline-flex; align-items:center; min-height:24px; padding:3px 9px; border-radius:999px; background:rgba(var(--primary-rgb),.10); color:var(--primary); font-size:11px; font-weight:750; }
-        .ap-student-consult-text { margin:0; color:var(--text); font-size:13px; font-weight:600; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
-        .ap-student-consult-next { border:1px solid rgba(217,119,6,.18); border-radius:12px; background:rgba(217,119,6,.07); color:#92400E; padding:9px 10px; font-size:12px; font-weight:650; line-height:1.55; }
-        .ap-student-consult-actions { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; margin-top:12px; }
-        .ap-student-mini-btn { min-height:38px; padding:0 12px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:12px; font-weight:700; cursor:pointer; }
-        .ap-student-mini-btn.is-primary { border-color:var(--primary); background:var(--primary); color:#fff; }
-        .ap-student-field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
-        .ap-student-field { min-width:0; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); padding:11px 12px; }
-        .ap-student-field span { display:block; color:var(--secondary); font-size:11px; font-weight:700; line-height:1.25; }
-        .ap-student-field strong { display:block; margin-top:5px; color:var(--text); font-size:13px; font-weight:750; line-height:1.4; overflow-wrap:anywhere; white-space:pre-wrap; }
+        .ap-student-consult-type { display:inline-flex; align-items:center; min-height:22px; padding:3px 9px; border-radius:999px; background:rgba(110,102,201,.10); color:#6E66C9; font-size:11px; font-weight:600; }
+        .ap-student-consult-text { margin:0; color:var(--text); font-size:13.5px; font-weight:500; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
+        .ap-student-consult-next { border:1px solid rgba(217,119,6,.18); border-radius:10px; background:rgba(217,119,6,.07); color:#92400E; padding:9px 10px; font-size:12px; font-weight:600; line-height:1.55; }
+        .ap-student-consult-actions { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; margin-top:10px; }
+        .ap-student-mini-btn { height:28px; padding:0 10px; border-radius:7px; border:1px solid var(--border); background:var(--surface); color:#334155; font-size:12px; font-weight:600; cursor:pointer; }
+        .ap-student-mini-btn.is-primary { border-color:#6E66C9; background:#6E66C9; color:#fff; }
+        .ap-student-field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+        .ap-student-field { min-width:0; border:1px solid var(--border); border-radius:8px; background:var(--surface-2); padding:9px 11px; }
+        .ap-student-field span { display:block; color:var(--secondary); font-size:11px; font-weight:600; line-height:1.25; }
+        .ap-student-field strong { display:block; margin-top:4px; color:var(--text); font-size:13px; font-weight:600; line-height:1.4; overflow-wrap:anywhere; white-space:pre-wrap; }
         .ap-student-field.is-wide { grid-column:1 / -1; }
-        .ap-student-history-row { border:1px solid var(--border); border-radius:12px; background:var(--surface-2); padding:12px; }
-        .ap-student-tab-body { display:flex; flex-direction:column; gap:14px; }
+        .ap-student-history-row { border:1px solid var(--border); border-radius:8px; background:var(--surface-2); padding:12px; }
+        .ap-student-tab-body { display:flex; flex-direction:column; gap:10px; }
+        .ap-student-detail-shell { gap:10px !important; }
+        .ap-student-card-purple { border-left:3px solid #6E66C9; }
+        .ap-student-card-amber { border-left:3px solid #D97706; }
         @media (max-width:640px) {
             .apms-eie-detail { padding:0 10px 4px; }
             .apms-eie-detail-head { flex-direction:column; }
@@ -142,15 +149,13 @@ function injectStudentStyles() {
             .apms-eie-form-grid { grid-template-columns:1fr; }
             .apms-eie-form { padding:0 10px 4px; }
             .ap-student-detail-shell { padding:0 10px 4px; }
-            .ap-student-profile-head { grid-template-columns:minmax(0,1fr) auto; gap:10px; padding:11px 12px; border-radius:14px; align-items:center; }
+            .ap-student-profile-head { grid-template-columns:minmax(0,1fr) auto; gap:10px; padding:10px 2px; border-radius:0; align-items:center; }
             .ap-student-profile-head.is-edit { grid-template-columns:minmax(0,1fr); }
-            .ap-student-head-main { min-width:0; gap:6px; overflow:hidden; }
-            .ap-student-head-main h1 { font-size:20px; line-height:1.12; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-            .ap-student-head-badges { gap:5px; margin:0; max-height:none; overflow:visible; padding-bottom:1px; }
-            .ap-student-pill,
-            .ap-student-status { min-height:22px; padding:2px 7px; font-size:10.5px; line-height:1.2; white-space:nowrap; }
+            .ap-student-head-main { min-width:0; gap:4px; overflow:hidden; }
+            .ap-student-head-title h1,
+            .ap-student-head-main h1 { font-size:17px; line-height:1.12; }
+            .ap-student-meta-line { font-size:12px; }
             .ap-student-head-actions { align-items:flex-start; justify-content:flex-end; flex:0 0 auto; }
-            .ap-student-action { min-height:36px; padding:0 10px; border-radius:10px; font-size:12px; white-space:nowrap; }
             .ap-student-consult-date-row { flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; }
             .ap-student-consult-date-btn { flex:0 0 auto; }
             .ap-student-field-grid { grid-template-columns:1fr; }
@@ -589,8 +594,8 @@ async function ensureStudentParentContactDataLoaded(sid, options = {}) {
         entry.loadedAt = Date.now();
         entry.loading = false;
         entry.error = errors.join(',');
-        if (shouldRefreshCurrentStudentDetailTab(key, ['contact'])) {
-            renderStudentDetailTab(key, 'contact');
+        if (shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
+            renderStudentDetailTab(key, 'basic');
         }
         return getStudentParentContactBundle(key);
     }).catch(err => {
@@ -639,8 +644,8 @@ async function ensureStudentParentMessageLogsLoaded(sid, options = {}) {
         .finally(() => {
             entry.messageLoading = false;
             entry.messageInFlight = null;
-            if (shouldRefreshCurrentStudentDetailTab(key, ['contact'])) {
-                renderStudentDetailTab(key, 'contact');
+            if (shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
+                renderStudentDetailTab(key, 'basic');
             }
         });
 
@@ -1466,17 +1471,23 @@ function renderStudentDetailHeader(sid, mode = 'view') {
     const isEdit = mode === 'edit';
     const actionBtn = isEdit
         ? ''
-        : `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">정보 수정</button>`;
+        : `<button type="button" class="ap-student-edit-btn" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">수정</button>`;
+    const dotClass = status.className || '';
+    const metaParts = [
+        [s.school_name, s.grade].filter(Boolean).join(' · ') || '학교/학년 미등록',
+        cls?.name || '반 미배정'
+    ];
+    if (s.student_pin) metaParts.push(`PIN ${s.student_pin}`);
+    const metaLine = metaParts.map(p => apmsStudentDetailEsc(p)).join(' · ');
     return `
         <header class="ap-student-profile-head ${isEdit ? 'is-edit' : 'is-view'}">
             <div class="ap-student-head-main">
-                <h1>${apmsStudentDetailEsc(s.name || '학생')}</h1>
-                <div class="ap-student-head-badges">
-                    <span class="ap-student-status ${status.className}">${apmsStudentDetailEsc(status.label)}</span>
-                    <span class="ap-student-pill">${apmsStudentDetailEsc([s.school_name, s.grade].filter(Boolean).join(' · ') || '학교/학년 미등록')}</span>
-                    <span class="ap-student-pill">${apmsStudentDetailEsc(cls?.name || '반 미배정')}</span>
-                    ${s.student_pin ? `<span class="ap-student-pill">PIN ${apmsStudentDetailEsc(s.student_pin)}</span>` : ''}
+                <div class="ap-student-head-title">
+                    <h1>${apmsStudentDetailEsc(s.name || '학생')}</h1>
+                    <span class="ap-student-status-dot ${dotClass}"></span>
+                    <span class="ap-student-status-text ${dotClass}">${apmsStudentDetailEsc(status.label)}</span>
                 </div>
+                <div class="ap-student-meta-line">${metaLine}</div>
             </div>
             ${actionBtn ? `<div class="ap-student-head-actions">${actionBtn}</div>` : ''}
         </header>
@@ -1594,18 +1605,14 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
         <section class="ap-student-consult-pinned" id="ap-student-consult-pinned-${apmsStudentDetailEsc(key)}">
             <div class="ap-student-section-head">
                 <h3>최근 상담</h3>
-                ${cnsState.loading ? '<span>불러오는 중</span>' : ''}
+                <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(key)})">+ 상담</button>
             </div>
+            ${cnsState.loading ? '<div style="margin-bottom:8px;font-size:11px;color:var(--secondary);font-weight:600;">불러오는 중</div>' : ''}
             ${dateButtons ? `<div class="ap-student-consult-date-row">${dateButtons}</div>` : ''}
             ${cnsState.error ? '<div style="margin-bottom:10px;color:var(--warning);font-size:12px;font-weight:700;">상담 기록을 다시 확인해 주세요.</div>' : ''}
             <div class="ap-student-consult-preview" id="ap-student-consult-preview-${apmsStudentDetailEsc(key)}">
                 ${renderStudentPinnedConsultationPreviewHtml(key, selectedId)}
             </div>
-            ${rows.length ? `
-                <div class="ap-student-consult-actions">
-                    <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(key)})">+ 새 상담</button>
-                </div>
-            ` : ''}
         </section>
     `;
 }
@@ -1647,6 +1654,12 @@ function renderStudentBasicTab(sid) {
                     ${apStudentDetailField('최근 수업', classRecord ? `${classRecord.date || ''} · ${cls?.name || '수업'}` : '기록 없음')}
                 </div>
             </section>
+            <section class="ap-student-card">
+                ${renderParentContactSection(sid)}
+            </section>
+            <section class="ap-student-card">
+                ${renderStudentOperationHistorySection(sid)}
+            </section>
         </div>
     `;
 }
@@ -1664,11 +1677,16 @@ function renderStudentContactHistoryTab(sid) {
     `;
 }
 
-const AP_STUDENT_DETAIL_TABS = ['basic', 'grade', 'weak', 'cns', 'contact'];
+// 최종 탭은 기본 / 상담 / 성적 3개. 과거 'weak'/'contact' 진입점은
+// 라우트 호환을 위해 흡수된 탭으로 매핑한다(데이터/저장 흐름 영향 없음).
+const AP_STUDENT_DETAIL_TABS = ['basic', 'cns', 'grade'];
+const AP_STUDENT_DETAIL_TAB_ALIASES = { weak: 'grade', contact: 'basic' };
 
 function normalizeStudentDetailTab(tab = 'basic') {
     const value = String(tab || 'basic');
-    return AP_STUDENT_DETAIL_TABS.includes(value) ? value : 'basic';
+    if (AP_STUDENT_DETAIL_TABS.includes(value)) return value;
+    if (AP_STUDENT_DETAIL_TAB_ALIASES[value]) return AP_STUDENT_DETAIL_TAB_ALIASES[value];
+    return 'basic';
 }
 
 /**
@@ -1679,12 +1697,8 @@ function renderStudentViewBody(sid, tab = 'basic') {
     let body = '';
     if (activeTab === 'grade') {
         body = renderGradeTab(sid);
-    } else if (activeTab === 'weak') {
-        body = renderWeakTab(sid);
     } else if (activeTab === 'cns') {
         body = renderCnsTab(sid);
-    } else if (activeTab === 'contact') {
-        body = renderStudentContactHistoryTab(sid);
     } else {
         body = renderStudentBasicTab(sid);
     }
@@ -1698,10 +1712,8 @@ function renderStudentDetailTabs(sid, activeTab = 'basic') {
     const tab = normalizeStudentDetailTab(activeTab);
     const tabs = [
         { key: 'basic', label: '기본' },
-        { key: 'grade', label: '성적' },
-        { key: 'weak', label: '취약' },
         { key: 'cns', label: '상담' },
-        { key: 'contact', label: '연락/이력' }
+        { key: 'grade', label: '성적' }
     ];
     return `
         <div class="apms-eie-tabs ap-student-tabs">
@@ -1740,17 +1752,21 @@ function renderStudentDetailShell(sid, options = {}) {
     const returnCtx = resolveStudentDetailReturnContext(sid, options);
     applyStudentDetailModalReturnContext(returnCtx);
 
+    // 최근 상담 전문 카드는 상담 탭(view) 또는 edit mode에서만 노출한다.
+    const pinnedHtml = (mode === 'edit' || tab === 'cns')
+        ? renderStudentConsultationPinnedCard(sid)
+        : '';
     const bodyHtml = mode === 'edit'
-        ? renderStudentEditBody(sid)
+        ? `${pinnedHtml}${renderStudentEditBody(sid)}`
         : `
             ${renderStudentDetailTabs(sid, tab)}
+            ${pinnedHtml}
             ${renderStudentViewBody(sid, tab)}
         `;
 
     showModal(`${s.name} 프로필`, `
         <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
             ${renderStudentDetailHeader(sid, mode)}
-            ${renderStudentConsultationPinnedCard(sid)}
             ${bodyHtml}
         </div>
     `, mode === 'edit' ? '저장' : null, mode === 'edit' ? () => handleEditStudent(sid) : null);
@@ -1791,43 +1807,79 @@ function renderStudentDetailTab(sid, tab = 'basic') {
 function renderGradeTab(sid) {
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     
-    const chartArea = exs.length > 0 
-        ? `<div style="margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
-             <canvas id="studentGradeChart" style="width: 100%; height: 180px;"></canvas>
+    const chartArea = exs.length > 0
+        ? `<div style="padding: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;">
+             <canvas id="studentGradeChart" style="width: 100%; height: 160px;"></canvas>
            </div>`
-        : `<div style="padding: 40px 20px; text-align: center; color: var(--secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 20px; font-size: 13px; font-weight:500; line-height: 1.5;">누적된 성적 기록이 없습니다.</div>`;
+        : `<div style="padding: 28px 20px; text-align: center; color: var(--secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; font-weight:500; line-height: 1.5;">누적된 성적 기록이 없습니다.</div>`;
+
+    const recentExam = [...exs].sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')))[0];
 
     const historyRows = exs.map(e => {
         const wrs = state.db.wrong_answers
             .filter(w => w.session_id === e.id)
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
-            .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; margin: 2px; color: var(--text-soft); font-weight: 500;">Q${w.question_id}</span>`)
+            .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; margin: 2px; color: var(--text-soft); font-weight: 500;">Q${w.question_id}</span>`)
             .join('');
-            
+
         return `
-            <div style="padding: 14px 4px; border-bottom: 1px solid var(--border);">
+            <div style="padding: 12px 2px; border-bottom: 1px solid var(--border);">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px;">
                     <div style="min-width: 0;">
-                        <div style="font-size: 15px; font-weight:500; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}</div>
-                        <div style="font-size: 12px; color: var(--secondary); font-weight: 400; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
+                        <div style="font-size: 13px; font-weight:600; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}</div>
+                        <div style="font-size: 12px; color: var(--secondary); font-weight: 500; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
                     </div>
-                    <div style="font-size: 20px; font-weight:500; color: var(--primary); line-height: 1.2;">${e.score}점</div>
+                    <div style="font-size: 18px; font-weight:700; color: #334155; line-height: 1.2;">${e.score}점</div>
                 </div>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 400;">오답 없음</span>'}</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 500;">오답 없음</span>'}</div>
                 <div style="display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
-                    <button class="btn apms-button apms-button--quiet" style="min-height: 32px; padding: 4px 8px; font-size: 11px; color: var(--warning); border: 1px solid rgba(255,165,2,0.2); background: rgba(255,165,2,0.05); border-radius: 10px; font-weight:500; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
-                    <button class="btn apms-button apms-button--quiet" style="min-height: 32px; padding: 4px 8px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); border-radius: 10px; font-weight:500; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
+                    <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: #D97706; border: 1px solid rgba(217,118,6,0.25); background: rgba(217,118,6,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
+                    <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(232,65,79,0.22); background: rgba(232,65,79,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
                 </div>
             </div>
         `;
     }).join('');
 
+    const recentExamCard = recentExam
+        ? `<div class="ap-student-field-grid" style="margin-bottom:10px;">
+                ${apStudentDetailField('최근 점수', `${recentExam.score ?? '-'}점`)}
+                ${apStudentDetailField('시험 날짜', recentExam.exam_date || '-')}
+                ${apStudentDetailField('시험명', recentExam.exam_title || '-', { wide: true })}
+           </div>`
+        : `<div style="padding: 20px; text-align: center; color: var(--secondary); font-size: 13px; font-weight:500; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; margin-bottom:10px;">최근 시험 기록이 없습니다.</div>`;
+
+    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const weakUnits = typeof computeStudentWeakUnits === 'function' ? computeStudentWeakUnits(sid) : [];
+    const weakHtml = typeof renderWeakUnitSummary === 'function'
+        ? renderWeakUnitSummary(weakUnits, '누적 오답 데이터가 없습니다.', { clickable: true, mode: 'student', titlePrefix: `${s?.name || ''} 약한 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s?.name || '' } })
+        : '<div style="padding: 16px; text-align: center; color: var(--secondary); font-size: 13px; font-weight:500;">데이터를 불러올 수 없습니다.</div>';
+
+    const nextPoints = Array.isArray(weakUnits)
+        ? weakUnits.slice(0, 3).map(u => String(u?.unit || u?.name || u?.label || '').trim()).filter(Boolean)
+        : [];
+    const nextPointsHtml = nextPoints.length
+        ? `<ul style="margin:0; padding-left:18px; color:var(--text); font-size:13px; font-weight:500; line-height:1.7;">${nextPoints.map(p => `<li>${apEscapeHtml(p)} 보완 학습</li>`).join('')}</ul>`
+        : '<div style="font-size:13px; color:var(--secondary); font-weight:500; line-height:1.6;">충분한 오답 데이터가 모이면 추천 학습 포인트가 표시됩니다.</div>';
+
     return `
-        <div>
-            <h4 style="margin: 0 0 12px 4px; font-size: 16px; font-weight:500; color: var(--text); line-height: 1.3;">최근 성적 추이</h4>
-            ${chartArea}
-            <h4 style="margin: 24px 0 12px 4px; font-size: 16px; font-weight:500; color: var(--text); line-height: 1.3;">전체 시험 이력</h4>
-            <div style="max-height: 400px; overflow-y: auto; padding-right: 4px;">${historyRows || '<p style="text-align: center; padding: 20px; color: var(--secondary); font-size: 13px; font-weight:500;">기록 없음</p>'}</div>
+        <div class="ap-student-tab-body">
+            <section class="ap-student-card">
+                <div class="ap-student-section-head"><h3>최근 시험 성적</h3><span>점수 · 날짜 · 시험명</span></div>
+                ${recentExamCard}
+            </section>
+            <section class="ap-student-card">
+                <div class="ap-student-section-head"><h3>성적 추이</h3><span>최근 추세</span></div>
+                ${chartArea}
+                <div style="max-height: 360px; overflow-y: auto; padding-right: 2px; margin-top:8px;">${historyRows || '<p style="text-align: center; padding: 16px; color: var(--secondary); font-size: 13px; font-weight:500;">기록 없음</p>'}</div>
+            </section>
+            <section class="ap-student-card ap-student-card-amber">
+                <div class="ap-student-section-head"><h3 style="color:#92400E;">약한 단원 / 오답 유형</h3></div>
+                ${weakHtml}
+            </section>
+            <section class="ap-student-card">
+                <div class="ap-student-section-head"><h3>다음 학습 포인트</h3></div>
+                ${nextPointsHtml}
+            </section>
         </div>
     `;
 }
@@ -1858,37 +1910,41 @@ function renderCnsTab(sid) {
     const cnsList = getStudentConsultationsFromState(sid);
 
     const cnsCards = cnsList.map(c => `
-        <div class="card apms-card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 16px; box-shadow: none; background: var(--surface);">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+        <div class="card apms-card" style="padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; box-shadow: none; background: var(--surface);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 9px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 12px; font-weight:500; color: var(--secondary); line-height: 1.5;">${c.date}</span>
-                    <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight:500; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
+                    <span style="font-size: 12px; font-weight:600; color: var(--secondary); line-height: 1.5;">${c.date}</span>
+                    <span class="std-badge" style="background: rgba(110,102,201,0.10); color: #6E66C9; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight:600; border: 1px solid rgba(110,102,201,0.18);">${c.type}</span>
                 </div>
                 <div style="display: flex; gap: 10px;">
-                    <span style="cursor: pointer; color: var(--primary); font-size: 12px; font-weight:500;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
-                    <span style="cursor: pointer; color: var(--error); font-size: 12px; font-weight:500;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
+                    <span style="cursor: pointer; color: #334155; font-size: 12px; font-weight:600;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
+                    <span style="cursor: pointer; color: var(--error); font-size: 12px; font-weight:600;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
                 </div>
             </div>
-            <div style="font-size: 13px; font-weight:500; line-height: 1.5; color: var(--text); white-space: pre-wrap;">${apEscapeHtml(c.content)}</div>
+            <div style="font-size: 13.5px; font-weight:500; line-height: 1.6; color: var(--text); white-space: pre-wrap;">${apEscapeHtml(c.content)}</div>
             ${c.next_action ? `
-                <div style="margin-top: 12px; padding: 10px; background: rgba(255,165,2,0.06); border: 1px solid rgba(255,165,2,0.1); border-radius: 10px; font-size: 12px; color: var(--warning); font-weight:500; line-height: 1.5;">
-                    <span style="color: var(--warning);; font-weight:500;">조치:</span> ${apEscapeHtml(c.next_action)}
+                <div style="margin-top: 10px; padding: 9px 10px; background: rgba(217,118,6,0.07); border: 1px solid rgba(217,118,6,0.18); border-radius: 10px; font-size: 12px; color: #92400E; font-weight:600; line-height: 1.55;">
+                    <span style="font-weight:700;">조치:</span> ${apEscapeHtml(c.next_action)}
                 </div>` : ''}
-            ${c.created_at ? `<div style="margin-top: 10px; font-size: 11px; color: var(--secondary); font-weight:500; line-height: 1.5;">등록 시각 ${apEscapeHtml(c.created_at)}</div>` : ''}
+            ${c.created_at ? `<div style="margin-top: 9px; font-size: 11px; color: var(--secondary); font-weight:500; line-height: 1.5;">등록 시각 ${apEscapeHtml(c.created_at)}</div>` : ''}
         </div>
     `).join('');
 
     return `
-        <div style="padding: 0 4px;">
-            <div style="margin: 0 0 12px 2px; font-size: 16px; font-weight:500; color: var(--text); line-height: 1.3;">상담 이력</div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
-                <button class="btn apms-button apms-button--primary btn-primary" style="flex:1 1 220px; min-height: 52px; font-size: 14px; font-weight:500; border-radius: 16px; box-shadow: none;" onclick="openAddConsultationModal('${sid}')">+ 새 상담 기록하기</button>
-                <button class="btn apms-button apms-button--quiet" style="flex:0 0 auto; min-height:52px; padding:0 14px; font-size:13px; font-weight:500; border-radius:16px;" onclick="openConsultationThreadSummaryModal('${sid}')">상담 흐름 요약</button>
-            </div>
-            ${cnsState.loading ? '<div style="margin-bottom: 12px; font-size: 12px; color: var(--secondary); font-weight:500;">상담 기록을 불러오는 중입니다.</div>' : ''}
-            <div style="max-height: 450px; overflow-y: auto; padding-right: 4px;">
-                ${cnsCards || '<div style="text-align: center; padding: 40px; color: var(--secondary); font-size: 13px; font-weight:500;">상담 기록이 없습니다.</div>'}
-            </div>
+        <div class="ap-student-tab-body">
+            <section class="ap-student-card">
+                <div class="ap-student-section-head">
+                    <h3>전체 상담</h3>
+                    <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                        <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal('${sid}')">+ 상담</button>
+                        <button class="btn ap-student-mini-btn" onclick="openConsultationThreadSummaryModal('${sid}')">흐름 요약</button>
+                    </div>
+                </div>
+                ${cnsState.loading ? '<div style="margin-bottom: 10px; font-size: 12px; color: var(--secondary); font-weight:600;">상담 기록을 불러오는 중입니다.</div>' : ''}
+                <div style="max-height: 460px; overflow-y: auto; padding-right: 2px;">
+                    ${cnsCards || '<div style="text-align: center; padding: 32px; color: var(--secondary); font-size: 13px; font-weight:500;">상담 기록이 없습니다.</div>'}
+                </div>
+            </section>
         </div>
     `;
 }
@@ -1916,7 +1972,7 @@ function drawGradeChart(sid) {
     if (currentStudentChart) { currentStudentChart.destroy(); }
 
     const isDark = document.body.classList.contains('dark');
-    const primaryColor = getComputedStyle(document.body).getPropertyValue('--primary').trim() || '#1A5CFF';
+    const primaryColor = '#6E66C9';
     const gridColor = isDark ? 'rgba(255,255,255,0.06)' : '#E5E8EB';
     const textColor = isDark ? '#A3B1C6' : '#6B7684';
 
@@ -1928,7 +1984,7 @@ function drawGradeChart(sid) {
                 label: '점수',
                 data: exs.map(e => e.score),
                 borderColor: primaryColor,
-                backgroundColor: isDark ? 'rgba(92,138,255,0.1)' : 'rgba(26,92,255,0.05)',
+                backgroundColor: isDark ? 'rgba(110,102,201,0.12)' : 'rgba(110,102,201,0.07)',
                 borderWidth: 3,
                 tension: 0.4,
                 fill: true,
