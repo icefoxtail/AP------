@@ -15,15 +15,15 @@
 </head>
 <body class="wsm-body">
   <header class="wsm-topbar">
-    <h1>왕지 학생관리</h1>
-    <span class="wsm-badge">v1 · 1차</span>
+    <h1>왕지 통합 학생관리</h1>
+    <span class="wsm-badge">안전 모드</span>
     <span class="wsm-badge">관리자 전용</span>
-    <span class="wsm-badge">read-only 연결 모드</span>
+    <span id="wsm-overlay-status"></span>
   </header>
 
   <p class="wsm-safe-banner">
-    1차 안전 모드: 기존 AP/EIE 데이터를 <strong>읽어서 표시</strong>합니다.
-    기존 데이터는 수정하지 않으며, 공통 상담 저장 등 입력 기능은 후속 단계에서 연결됩니다.
+    통합 학생관리 안전 모드입니다. AP/EIE 원본 정보는 읽기 전용으로 표시되며, 원본 수정은 아직 지원하지 않습니다.
+    공통 연결·상담·메모는 왕지 공통 저장소에 저장됩니다.
   </p>
 
   <main class="wsm-layout">
@@ -39,6 +39,10 @@
         <button class="wsm-chip" data-filter="eie" type="button">EIE</button>
         <button class="wsm-chip" data-filter="ap_eie" type="button">AP+EIE</button>
         <button class="wsm-chip" data-filter="candidate" type="button">연결 후보</button>
+        <button class="wsm-chip" data-filter="common" type="button">공통 학생</button>
+      </div>
+      <div class="wsm-disabled-note" style="margin-bottom:10px;">
+        AP+EIE / 연결 후보는 현재 표시 기준입니다. 실제 후보 매칭과 확정 연결은 공통 연결 저장소 로그인 후 활성화됩니다.
       </div>
       <div id="wsm-list" class="wsm-list"></div>
     </section>
