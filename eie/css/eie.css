@@ -10744,3 +10744,372 @@ select.eie-att-ctrl { cursor: pointer; }
     color: #0b73ff;
     border-color: #93c5fd;
 }
+
+/* ====================================================================== */
+/* EIE timetable one-page print fit 20260610                              */
+/* 전체 시간표/요일별 시간표를 A4 가로 한 장에 좌우 넘침 없이 맞춘다. */
+/* 화면용 폭/스크롤/고정 카드 폭은 보존하고, 인쇄 모드에서만 압축한다. */
+/* ====================================================================== */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 4mm;
+    }
+
+    body.eie-printing-timetable,
+    body.eie-printing-timetable * {
+        box-sizing: border-box !important;
+    }
+
+    body.eie-printing-timetable {
+        width: auto !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+        color: #111827 !important;
+        zoom: 1 !important;
+    }
+
+    body.eie-printing-timetable .eie-main,
+    body.eie-printing-timetable .eie-v2-screen,
+    body.eie-printing-timetable .eie-v2-layout,
+    body.eie-printing-timetable .eie-v2-layout.has-panel,
+    body.eie-printing-timetable .eie-v2-layout.is-full,
+    body.eie-printing-timetable .eie-v2-main,
+    body.eie-printing-timetable .eie-v2-card-board {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        border: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-page-head.eie-v2-card-head {
+        display: block !important;
+        margin: 0 0 2.4mm !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+        border: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-head-center h1 {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: transparent !important;
+        font-size: 0 !important;
+        line-height: 1 !important;
+        text-align: center !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-head-center h1::before {
+        content: attr(data-eie-print-title);
+        display: block !important;
+        color: #111827 !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        line-height: 1.12 !important;
+        letter-spacing: -0.02em !important;
+        text-align: center !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-board-scroll,
+    body.eie-printing-timetable .eie-weekday-overlay__scroll {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        cursor: default !important;
+        scrollbar-width: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-board-scroll::-webkit-scrollbar,
+    body.eie-printing-timetable .eie-weekday-overlay__scroll::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    body.eie-printing-weekday-timetable .eie-v2-main > .eie-v2-card-board {
+        display: none !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-overlay {
+        position: static !important;
+        inset: auto !important;
+        z-index: auto !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-modal-backdrop,
+    body.eie-printing-timetable .eie-weekday-overlay__bar {
+        display: none !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-modal-window {
+        position: static !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-board-grid.eie-v2-full-grid,
+    body.eie-printing-timetable .eie-weekday-grid {
+        display: grid !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        gap: 1.05mm !important;
+        align-items: stretch !important;
+        border: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-board-grid.eie-v2-full-grid {
+        --eie-v2-period-width: 33px !important;
+        grid-template-columns: var(--eie-v2-period-width) repeat(var(--eie-v2-homeroom-count, 5), minmax(0, 1fr)) !important;
+        grid-template-rows: 7mm repeat(var(--eie-v2-row-count, 8), minmax(0, 20.5mm)) !important;
+        grid-auto-rows: 20.5mm !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-grid {
+        grid-template-columns: 33px repeat(var(--eie-weekday-lane-columns, 1), minmax(0, 1fr)) !important;
+        grid-template-rows: 7mm repeat(var(--eie-weekday-row-count, 8), minmax(0, 20.5mm)) !important;
+        grid-auto-rows: 20.5mm !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-full-grid .eie-v2-grid-corner,
+    body.eie-printing-timetable .eie-v2-full-grid .eie-v2-grid-teacher-header,
+    body.eie-printing-timetable .eie-weekday-grid__corner,
+    body.eie-printing-timetable .eie-weekday-grid__teacher {
+        min-width: 0 !important;
+        width: auto !important;
+        min-height: 7mm !important;
+        height: 7mm !important;
+        padding: 1mm 1.2mm !important;
+        border-radius: 1.5mm !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-grid-teacher-header strong,
+    body.eie-printing-timetable .eie-weekday-grid__teacher strong {
+        font-size: 9.8px !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.04em !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-grid-period-label,
+    body.eie-printing-timetable .eie-weekday-grid__period,
+    body.eie-printing-timetable .eie-v2-grid-slot,
+    body.eie-printing-timetable .eie-weekday-grid__blank {
+        min-width: 0 !important;
+        width: auto !important;
+        min-height: 0 !important;
+        height: 100% !important;
+        padding: 1mm 0.8mm !important;
+        border-radius: 1.5mm !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-grid-period-label strong,
+    body.eie-printing-timetable .eie-weekday-grid__period strong {
+        font-size: 8.8px !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.07em !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-grid-period-label span,
+    body.eie-printing-timetable .eie-weekday-grid__period span {
+        font-size: 6.8px !important;
+        line-height: 1.04 !important;
+        letter-spacing: -0.07em !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-grid-card-wrapper {
+        align-self: stretch !important;
+        justify-self: stretch !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        margin-left: 0 !important;
+        padding: 0.7mm !important;
+        pointer-events: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-grid-card-wrapper.has-multiple-cards {
+        width: calc(50% - 0.45mm) !important;
+        max-width: calc(50% - 0.45mm) !important;
+        margin-left: calc((var(--eie-v2-card-lane, 1) - 1) * 50%) !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-week-card,
+    body.eie-printing-timetable .eie-weekday-card {
+        --eie-v2-card-inner-width: 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        height: 100% !important;
+        padding: 1.1mm 1.2mm !important;
+        gap: 0.9mm !important;
+        border-width: 0.45px !important;
+        border-radius: 1.7mm !important;
+        box-shadow: inset 1.8px 0 0 rgba(var(--eie-card-accent-rgb, 148, 163, 184), 0.42) !important;
+        overflow: hidden !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row,
+    body.eie-printing-timetable .eie-v2-card-days-row,
+    body.eie-printing-timetable .eie-v2-card-teacher-table,
+    body.eie-printing-timetable .eie-v2-card-students {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row,
+    body.eie-printing-timetable .eie-v2-card-days-row {
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        column-gap: 0.6mm !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row span,
+    body.eie-printing-timetable .eie-v2-card-material-row strong,
+    body.eie-printing-timetable .eie-v2-card-days-row span,
+    body.eie-printing-timetable .eie-v2-card-teacher-row > *,
+    body.eie-printing-timetable .eie-weekday-card__class span,
+    body.eie-printing-timetable .eie-weekday-card__class strong,
+    body.eie-printing-timetable .eie-v2-card-student,
+    body.eie-printing-timetable .eie-v2-card-student-more,
+    body.eie-printing-timetable .eie-weekday-card__students .eie-v2-student-chip {
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row span {
+        grid-column: 1 / 3 !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row strong {
+        grid-column: 3 / 6 !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row span,
+    body.eie-printing-timetable .eie-v2-card-material-row strong,
+    body.eie-printing-timetable .eie-v2-card-days-row span {
+        padding: 0.7mm 0.5mm !important;
+        border-radius: 1mm !important;
+        font-size: 6.8px !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.08em !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-material-row strong,
+    body.eie-printing-timetable .eie-v2-card-days-row.is-body span {
+        font-size: 7.2px !important;
+        font-weight: 800 !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-teacher-row {
+        grid-template-columns: 16px repeat(5, minmax(0, 1fr)) !important;
+        column-gap: 0.45mm !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-teacher-row > * {
+        padding: 0.5mm 0.25mm !important;
+        border-radius: 0.8mm !important;
+        font-size: 6.6px !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.08em !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-students,
+    body.eie-printing-timetable .eie-weekday-card__students .eie-v2-student-list {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 0.55mm !important;
+        align-items: start !important;
+        justify-content: stretch !important;
+        margin-top: 0 !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-card-student,
+    body.eie-printing-timetable .eie-v2-card-student-more,
+    body.eie-printing-timetable .eie-weekday-card__students .eie-v2-student-chip {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 4.4mm !important;
+        padding: 0.55mm 0.5mm !important;
+        border-radius: 1mm !important;
+        font-size: 6.9px !important;
+        line-height: 1.02 !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-card__class {
+        display: grid !important;
+        grid-template-columns: 15px minmax(0, 1fr) !important;
+        gap: 0.8mm !important;
+        min-height: 0 !important;
+        padding: 0.8mm 0.9mm !important;
+        border-radius: 1.2mm !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-card__class span {
+        font-size: 6.4px !important;
+        line-height: 1 !important;
+    }
+
+    body.eie-printing-timetable .eie-weekday-card__class strong {
+        font-size: 7.4px !important;
+        line-height: 1.04 !important;
+        letter-spacing: -0.06em !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-empty-state,
+    body.eie-printing-timetable .eie-v2-paste-button,
+    body.eie-printing-timetable .eie-v2-card-copy-button,
+    body.eie-printing-timetable .eie-v2-card-copy-badge,
+    body.eie-printing-timetable [data-eie-v2-remove-student],
+    body.eie-printing-timetable [data-eie-v2-retire-student] {
+        display: none !important;
+    }
+}
+

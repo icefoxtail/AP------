@@ -2216,7 +2216,7 @@
             const lane = gridLaneForSession(group, teacher, session, autoLaneMap);
             const span = draft?.periodKey ? Math.max(1, periods.length || 1) : gridRowSpanForSession(session, periodRowIndex, runtimePeriodMap);
             return `
-                <div class="eie-v2-grid-card-wrapper"
+                <div class="eie-v2-grid-card-wrapper ${maxLaneForSlot(group, teacher, autoLaneMap) >= 2 ? 'has-multiple-cards' : 'has-single-card'}"
                     style="grid-column:${col};grid-row:${row} / span ${span};--eie-v2-card-lane:${lane};--eie-v2-card-row-span:${span};">
                     ${renderWeeklyCard(session)}
                 </div>
@@ -3665,10 +3665,24 @@
 
     function printTimetable() {
         const body = document && document.body;
-        if (body?.classList) body.classList.add('eie-printing-timetable');
+        const isWeekdayPrint = !!viewState.activeDayOverlay;
+        const titleEl = document.getElementById('eie-v2-title');
+        if (body?.classList) {
+            body.classList.add('eie-printing-timetable');
+            body.classList.toggle('eie-printing-weekday-timetable', isWeekdayPrint);
+            body.classList.toggle('eie-printing-full-timetable', !isWeekdayPrint);
+        }
+        if (titleEl) {
+            titleEl.setAttribute('data-eie-print-title', isWeekdayPrint
+                ? `EiE ${viewState.activeDayOverlay}요일 시간표`
+                : 'EiE 전체 시간표');
+        }
 
         const cleanup = () => {
-            if (body?.classList) body.classList.remove('eie-printing-timetable');
+            if (body?.classList) {
+                body.classList.remove('eie-printing-timetable', 'eie-printing-weekday-timetable', 'eie-printing-full-timetable');
+            }
+            if (titleEl) titleEl.removeAttribute('data-eie-print-title');
             window.removeEventListener?.('afterprint', cleanup);
         };
 
