@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일'];
     // 상단 담임 열 고정 목록 (Carmen / Zoe / IVY / STACY / Lily 만 허용 — Laura · Foreigner 제외)
     const HOMEROOM_COLUMN_TEACHERS = ['Carmen', 'Zoe', 'IVY', 'STACY', 'Lily'];
@@ -2216,7 +2216,7 @@
             const lane = gridLaneForSession(group, teacher, session, autoLaneMap);
             const span = draft?.periodKey ? Math.max(1, periods.length || 1) : gridRowSpanForSession(session, periodRowIndex, runtimePeriodMap);
             return `
-                <div class="eie-v2-grid-card-wrapper ${maxLaneForSlot(group, teacher, autoLaneMap) >= 2 ? 'has-multiple-cards' : 'has-single-card'}"
+                <div class="eie-v2-grid-card-wrapper"
                     style="grid-column:${col};grid-row:${row} / span ${span};--eie-v2-card-lane:${lane};--eie-v2-card-row-span:${span};">
                     ${renderWeeklyCard(session)}
                 </div>
@@ -2243,7 +2243,7 @@
             <div class="eie-v2-card-board" aria-label="EIE 시간표 그리드">
                 <div class="eie-v2-board-scroll">
                     <div class="eie-v2-board-grid eie-v2-full-grid"
-                        style="--eie-v2-homeroom-count:${teachers.length};--eie-v2-row-count:${periodGroups.length};--eie-v2-board-min-width:${esc(minWidth)};--eie-v2-column-template:${esc(columnTemplate)};grid-template-columns:var(--eie-v2-period-width) ${esc(columnTemplate)};">
+                        style="--eie-v2-homeroom-count:${teachers.length};--eie-v2-row-count:${periodGroups.length};--eie-v2-board-min-width:${esc(minWidth)};grid-template-columns:var(--eie-v2-period-width) ${esc(columnTemplate)};">
                         <div class="eie-v2-board-corner eie-v2-grid-corner" style="grid-column:1;grid-row:1;" aria-hidden="true"></div>
                         ${teachers.map((teacher, index) => `
                             <div class="eie-v2-teacher-frame-cell eie-v2-grid-teacher-header ${teacher.isWide ? 'is-wide' : 'is-normal'}"
@@ -3663,53 +3663,66 @@
         eventsBound = true;
     }
 
-    function applyPrintFitScale(isWeekdayPrint) {
-        const body = document && document.body;
-        if (!body?.style) return;
-        body.style.removeProperty('--eie-print-full-scale');
-        if (isWeekdayPrint) return;
-        const board = document.querySelector?.('.eie-v2-board-grid.eie-v2-full-grid');
-        if (!board) return;
-        const measuredWidth = Math.max(
-            Number(board.scrollWidth || 0),
-            Number(board.getBoundingClientRect?.().width || 0)
-        );
-        if (!measuredWidth) return;
-        // A4 landscape 297mm - left/right 4mm margins = 289mm.
-        // CSS print px: 96px per inch. A small safety gutter prevents right-edge clipping.
-        const printableWidthPx = Math.floor((289 / 25.4) * 96) - 12;
-        const scale = Math.min(1, Math.max(0.52, printableWidthPx / measuredWidth));
-        body.style.setProperty('--eie-print-full-scale', scale.toFixed(3));
-    }
-
     function printTimetable() {
         const body = document && document.body;
-        const isWeekdayPrint = !!viewState.activeDayOverlay;
-        const titleEl = document.getElementById('eie-v2-title');
-        if (body?.classList) {
-            body.classList.add('eie-printing-timetable');
-            body.classList.toggle('eie-printing-weekday-timetable', isWeekdayPrint);
-            body.classList.toggle('eie-printing-full-timetable', !isWeekdayPrint);
-        }
-        applyPrintFitScale(isWeekdayPrint);
-        if (titleEl) {
-            titleEl.setAttribute('data-eie-print-title', isWeekdayPrint
-                ? `EiE ${viewState.activeDayOverlay}요일 시간표`
-                : 'EiE 전체 시간표');
+        if (!body?.classList) {
+            window.print?.();
+            return;
         }
 
+        const mmToPx = mm => (Number(mm) || 0) * 96 / 25.4;
+        const weekdayGrid = viewState.activeDayOverlay
+            ? document.querySelector('.eie-weekday-overlay .eie-weekday-grid')
+            : null;
+        const fullGrid = document.querySelector('.eie-v2-board-grid.eie-v2-full-grid');
+        const targetGrid = weekdayGrid || fullGrid;
+        const targetScroll = weekdayGrid
+            ? document.querySelector('.eie-weekday-overlay__scroll')
+            : document.querySelector('.eie-v2-board-scroll');
+        const printClass = weekdayGrid ? 'eie-printing-weekday-timetable' : 'eie-printing-full-timetable';
+
+        body.classList.add('eie-printing-timetable', printClass);
+
         const cleanup = () => {
-            if (body?.classList) {
-                body.classList.remove('eie-printing-timetable', 'eie-printing-weekday-timetable', 'eie-printing-full-timetable');
+            body.classList.remove('eie-printing-timetable', 'eie-printing-full-timetable', 'eie-printing-weekday-timetable');
+            ['--eie-print-scale', '--eie-print-target-width', '--eie-print-target-height', '--eie-print-scaled-width', '--eie-print-scaled-height'].forEach(name => body.style.removeProperty(name));
+            if (targetScroll) {
+                targetScroll.style.removeProperty('--eie-print-scale');
+                targetScroll.style.removeProperty('--eie-print-target-width');
+                targetScroll.style.removeProperty('--eie-print-target-height');
+                targetScroll.style.removeProperty('--eie-print-scaled-width');
+                targetScroll.style.removeProperty('--eie-print-scaled-height');
             }
-            if (body?.style) body.style.removeProperty('--eie-print-full-scale');
-            if (titleEl) titleEl.removeAttribute('data-eie-print-title');
             window.removeEventListener?.('afterprint', cleanup);
         };
 
+        if (targetGrid) {
+            const rect = targetGrid.getBoundingClientRect ? targetGrid.getBoundingClientRect() : { width: 0, height: 0 };
+            const rawWidth = Math.max(1, Math.ceil(targetGrid.scrollWidth || targetGrid.offsetWidth || rect.width || 1));
+            const rawHeight = Math.max(1, Math.ceil(targetGrid.scrollHeight || targetGrid.offsetHeight || rect.height || 1));
+            // A4 landscape, @page margin 5mm. Keep a small reserve for the printed title.
+            const availableWidth = mmToPx(287);
+            const availableHeight = mmToPx(190);
+            const scale = Math.min(1, availableWidth / rawWidth, availableHeight / rawHeight);
+            const safeScale = Math.max(0.46, Math.min(1, scale || 1));
+            const scaledWidth = Math.ceil(rawWidth * safeScale);
+            const scaledHeight = Math.ceil(rawHeight * safeScale);
+            const vars = {
+                '--eie-print-scale': String(safeScale),
+                '--eie-print-target-width': `${rawWidth}px`,
+                '--eie-print-target-height': `${rawHeight}px`,
+                '--eie-print-scaled-width': `${scaledWidth}px`,
+                '--eie-print-scaled-height': `${scaledHeight}px`
+            };
+            Object.entries(vars).forEach(([name, value]) => {
+                body.style.setProperty(name, value);
+                if (targetScroll) targetScroll.style.setProperty(name, value);
+            });
+        }
+
         window.addEventListener?.('afterprint', cleanup, { once: true });
         window.print?.();
-        window.setTimeout?.(cleanup, 1000);
+        window.setTimeout?.(cleanup, 1500);
     }
 
     function reopenPanelMountRoute() {
