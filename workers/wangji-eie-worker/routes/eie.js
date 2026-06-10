@@ -1222,6 +1222,7 @@ async function attachAssignedStudents(env, rows) {
              s.student_pin,
              s.student_type,
              s.status AS student_status,
+             s.raw_meta_json AS student_raw_meta_json,
              c.id AS contact_id,
              c.phone,
              c.normalized_phone,
@@ -1240,6 +1241,7 @@ async function attachAssignedStudents(env, rows) {
       const list = byCell.get(row.timetable_cell_id) || [];
       if (!list.some(item => item.assignment_id === row.assignment_id)) {
         const assignmentMeta = parseRawMeta(row.assignment_raw_meta_json);
+        const studentMeta = parseRawMeta(row.student_raw_meta_json);
         const candidateIndex = parseAssignmentCandidateIndex(row);
         list.push({
           source_kind: 'assigned',
@@ -1259,7 +1261,11 @@ async function attachAssignedStudents(env, rows) {
           student_address: row.student_address || '',
           vehicle_info: row.vehicle_info || '',
           student_pin: row.student_pin || '',
-          student_type: row.student_type || '일반',
+          student_type: row.student_type || studentMeta.student_type || '일반',
+          enrollment_date: studentMeta.enrollment_date || '',
+          first_attendance_date: studentMeta.first_attendance_date || '',
+          first_attended_at: studentMeta.first_attended_at || '',
+          raw_meta_json: row.student_raw_meta_json || {},
           phone_raw: row.phone || '',
           normalized_phone: row.normalized_phone || '',
           contact_id: row.contact_id || '',
@@ -1817,7 +1823,10 @@ const STUDENT_META_FIELDS = [
   'student_address',
   'vehicle_info',
   'student_pin',
-  'student_type'
+  'student_type',
+  'enrollment_date',
+  'first_attendance_date',
+  'first_attended_at'
 ];
 
 function applyStudentMetaFields(rawMeta, body) {

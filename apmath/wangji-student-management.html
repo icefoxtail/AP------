@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>왕지 학생관리 (1차 안전 모드 · 관리자 전용)</title>
+  <!--
+    왕지교육 공통 학생관리 v1 — 1차 독립(관리자 전용) 화면.
+    * 기존 AP/EIE 화면/메뉴를 교체하지 않는 독립 HTML.
+    * 기존 메인 메뉴에 정식 노출하지 않음. 직접 URL / 숨김 진입 전용.
+    * read-only 연결 모드. 원본 AP/EIE DB 를 수정하지 않음.
+  -->
+  <link rel="stylesheet" href="css/wangji-student-management.css" />
+</head>
+<body class="wsm-body">
+  <header class="wsm-topbar">
+    <h1>왕지 학생관리</h1>
+    <span class="wsm-badge">v1 · 1차</span>
+    <span class="wsm-badge">관리자 전용</span>
+    <span class="wsm-badge">read-only 연결 모드</span>
+  </header>
+
+  <p class="wsm-safe-banner">
+    1차 안전 모드: 기존 AP/EIE 데이터를 <strong>읽어서 표시</strong>합니다.
+    기존 데이터는 수정하지 않으며, 공통 상담 저장 등 입력 기능은 후속 단계에서 연결됩니다.
+  </p>
+
+  <main class="wsm-layout">
+    <!-- 좌측: 검색 / 필터 / 목록 -->
+    <section class="wsm-panel">
+      <div class="wsm-search-row">
+        <input id="wsm-search-input" type="text" placeholder="학생명 / 학교 검색" />
+        <button id="wsm-search-btn" class="wsm-btn primary" type="button">검색</button>
+      </div>
+      <div class="wsm-filters">
+        <button class="wsm-chip is-active" data-filter="all" type="button">전체</button>
+        <button class="wsm-chip" data-filter="ap" type="button">AP</button>
+        <button class="wsm-chip" data-filter="eie" type="button">EIE</button>
+        <button class="wsm-chip" data-filter="ap_eie" type="button">AP+EIE</button>
+        <button class="wsm-chip" data-filter="candidate" type="button">연결 후보</button>
+      </div>
+      <div id="wsm-list" class="wsm-list"></div>
+    </section>
+
+    <!-- 우측: 통합 상세 -->
+    <section class="wsm-panel">
+      <div id="wsm-detail">
+        <div class="wsm-empty">좌측에서 학생을 선택하면 통합 상세가 표시됩니다.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/wangji-student-management.js"></script>
+</body>
+</html>

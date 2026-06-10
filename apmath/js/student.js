@@ -316,6 +316,10 @@ function isStudentDetailSubModal(type = '', studentId = '') {
 
 function shouldRefreshCurrentStudentDetailTab(studentId, tabs = []) {
     if (!state.ui) return false;
+    // Hotfix guard: edit mode에서 lazy/consultation/contact 자동 refresh가
+    // 수정 폼을 view shell로 덮어쓰면 안 된다. 저장/취소/보기로 같은 명시 전환은
+    // 이 함수를 거치지 않으므로 영향받지 않는다.
+    if (state.ui.currentStudentDetailMode === 'edit') return false;
     const key = String(studentId || '');
     const subModal = state.ui.currentStudentDetailSubModal || null;
     const allowedTabs = Array.isArray(tabs) ? tabs.map(String) : [];
@@ -1120,22 +1124,42 @@ async function ensureStudentConsultationsLoaded(sid, options = {}) {
 /**
  * 학생 상세 진입점 (기존 유지)
  */
-async function renderStudentDetail(sid) {
-    const s = state.db.students.find(st => st.id === sid);
+/**
+ * 학생 상세/수정 단일 진입점.
+ * options.mode: 'view' | 'edit'
+ * options.returnTo: { type, classId, studentId } 등 복귀 컨텍스트
+ * 모든 학생 상세 진입은 이 함수를 경유하여 동일한 모달 셸을 사용한다.
+ */
+async function openStudentDetail(sid, options = {}) {
+    const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
+    const mode = options.mode === 'edit' ? 'edit' : 'view';
+    if (!state.ui) state.ui = {};
+    const tab = normalizeStudentDetailTab(options.tab || state.ui.currentStudentDetailTab || 'basic');
+    state.ui.currentStudentDetailId = String(sid);
+    state.ui.currentStudentDetailMode = mode;
+    if (mode === 'view') state.ui.currentStudentDetailTab = tab;
 
-    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    const returnCtx = options.returnTo || state.ui.modalReturnView || state.ui.returnView || null;
+    if (returnCtx && returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
+
+    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
     const foundationLoads = [];
     if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
-    foundationLoads.push(loadStudentOnboardingDetails(sid));
+    foundationLoads.push(loadStudentOnboardingDetails(sid, { refresh: false }));
     if (foundationLoads.length) await Promise.all(foundationLoads);
     await ensureBlueprintsForSessions(exs);
     void ensureStudentDetailLazyData(sid);
     void ensureStudentConsultationsLoaded(sid);
     void ensureStudentParentContactDataLoaded(sid);
 
-    renderStudentDetailTab(sid, 'basic');
+    renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx });
+}
+
+// 기존 호출 호환용 wrapper (삭제 금지)
+async function renderStudentDetail(sid) {
+    return openStudentDetail(sid, { mode: 'view', tab: 'basic' });
 }
 
 function returnFromStudentFlow(ctx = null) {
@@ -1397,11 +1421,15 @@ function apStudentDetailField(label, value, options = {}) {
     return `<div class="ap-student-field${wide}"><span>${apmsStudentDetailEsc(label)}</span><strong>${apmsStudentDetailEsc(text || '미등록')}</strong></div>`;
 }
 
-function renderStudentDetailHeader(sid, tab) {
+function renderStudentDetailHeader(sid, mode = 'view') {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '';
     const cls = getApStudentCurrentClass(sid);
     const status = apmsStudentStatusMeta(s);
+    const isEdit = mode === 'edit';
+    const actionBtn = isEdit
+        ? `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'view' })">보기로</button>`
+        : `<button type="button" class="btn ap-student-action is-secondary" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">정보 수정</button>`;
     return `
         <header class="ap-student-profile-head">
             <div class="ap-student-head-main">
@@ -1414,7 +1442,7 @@ function renderStudentDetailHeader(sid, tab) {
                 </div>
             </div>
             <div class="ap-student-head-actions">
-                <button type="button" class="btn ap-student-action is-secondary" onclick="openEditStudent(${apmsStudentJsString(sid)}, { returnTo: { type: 'studentDetail', studentId: ${apmsStudentJsString(sid)} } })">정보 수정</button>
+                ${actionBtn}
             </div>
         </header>
     `;
@@ -1601,34 +1629,116 @@ function renderStudentContactHistoryTab(sid) {
     `;
 }
 
+const AP_STUDENT_DETAIL_TABS = ['basic', 'grade', 'weak', 'cns', 'contact'];
+
+function normalizeStudentDetailTab(tab = 'basic') {
+    const value = String(tab || 'basic');
+    return AP_STUDENT_DETAIL_TABS.includes(value) ? value : 'basic';
+}
+
 /**
- * 탭별 내용 렌더링 엔진 (UI Standard 적용)
+ * view mode 본문 — tab에 따라 기존 탭 렌더 함수로 분기한다.
  */
-function renderStudentDetailTab(sid, tab) {
+function renderStudentViewBody(sid, tab = 'basic') {
+    const activeTab = normalizeStudentDetailTab(tab);
+    let body = '';
+    if (activeTab === 'grade') {
+        body = renderGradeTab(sid);
+    } else if (activeTab === 'weak') {
+        body = renderWeakTab(sid);
+    } else if (activeTab === 'cns') {
+        body = renderCnsTab(sid);
+    } else if (activeTab === 'contact') {
+        body = renderStudentContactHistoryTab(sid);
+    } else {
+        body = renderStudentBasicTab(sid);
+    }
+    return `<div class="std-tab-content ap-student-tab-body">${body}</div>`;
+}
+
+/**
+ * view mode 탭 버튼 UI.
+ */
+function renderStudentDetailTabs(sid, activeTab = 'basic') {
+    const tab = normalizeStudentDetailTab(activeTab);
+    const tabs = [
+        { key: 'basic', label: '기본' },
+        { key: 'grade', label: '성적' },
+        { key: 'weak', label: '취약' },
+        { key: 'cns', label: '상담' },
+        { key: 'contact', label: '연락/이력' }
+    ];
+    return `
+        <div class="apms-eie-tabs ap-student-tabs">
+            ${tabs.map(item => `
+                <button
+                    type="button"
+                    class="apms-eie-tab ${item.key === tab ? 'is-active' : ''}"
+                    onclick="renderStudentDetailTab(${apmsStudentJsString(sid)}, ${apmsStudentJsString(item.key)})"
+                >${apmsStudentDetailEsc(item.label)}</button>
+            `).join('')}
+        </div>
+    `;
+}
+
+/**
+ * 학생 상세 모달의 유일한 기준 렌더러.
+ * view/edit 모두 같은 셸(헤더 + 최근 상담 카드)을 공유하고 본문만 교체한다.
+ * view mode는 tab을 보존/분기한다.
+ */
+function renderStudentDetailShell(sid, options = {}) {
     injectStudentStyles();
     if (!state.ui) state.ui = {};
-    state.ui.currentStudentDetailId = String(sid);
-    state.ui.currentStudentDetailTab = 'basic';
-    setStudentDetailSubModal('', sid);
-    const s = state.db.students.find(st => st.id === sid);
-    const returnCtx = state.ui.returnView || {};
-    if (returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
+    const mode = options.mode === 'edit' ? 'edit' : 'view';
+    const s = state.db.students.find(st => String(st.id) === String(sid));
+    if (!s) { toast('학생 정보 없음', 'warn'); return; }
 
-    let bodyHtml = `<div class="std-tab-content ap-student-tab-body">`;
-    bodyHtml += renderStudentBasicTab(sid);
-    bodyHtml += `</div>`;
+    const previousTab = state.ui.currentStudentDetailTab || 'basic';
+    const tab = normalizeStudentDetailTab(options.tab || previousTab || 'basic');
+
+    state.ui.currentStudentDetailId = String(sid);
+    state.ui.currentStudentDetailMode = mode;
+    // edit mode로 들어가도 기존 view tab 기억은 유지한다.
+    state.ui.currentStudentDetailTab = mode === 'view' ? tab : (previousTab || tab || 'basic');
+    setStudentDetailSubModal('', sid);
+
+    const returnCtx = options.returnTo || state.ui.modalReturnView || state.ui.returnView || null;
+    if (returnCtx && returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
+
+    const bodyHtml = mode === 'edit'
+        ? renderStudentEditBody(sid)
+        : `
+            ${renderStudentDetailTabs(sid, tab)}
+            ${renderStudentViewBody(sid, tab)}
+        `;
 
     showModal(`${s.name} 프로필`, `
-        <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell">
-            ${renderStudentDetailHeader(sid, 'basic')}
+        <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
+            ${renderStudentDetailHeader(sid, mode)}
             ${renderStudentConsultationPinnedCard(sid)}
             ${bodyHtml}
         </div>
-    `);
-    setTimeout(() => bindStudentConsultationDateButtons(sid), 0);
+    `, mode === 'edit' ? '저장' : null, mode === 'edit' ? () => handleEditStudent(sid) : null);
+    setTimeout(() => {
+        bindStudentConsultationDateButtons(sid);
+        if (mode === 'view' && tab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(sid);
+    }, 0);
 
     void ensureStudentConsultationsLoaded(sid);
     void ensureStudentDetailLazyData(sid);
+}
+
+/**
+ * 기존 탭 호출 호환용 wrapper (삭제 금지). tab을 셸에 그대로 전달한다.
+ * edit mode 중 자동 로더가 이 함수를 호출해도
+ * shouldRefreshCurrentStudentDetailTab의 edit guard가 호출 자체를 막는다.
+ */
+function renderStudentDetailTab(sid, tab = 'basic') {
+    return renderStudentDetailShell(sid, {
+        mode: 'view',
+        tab: normalizeStudentDetailTab(tab),
+        returnTo: state.ui?.modalReturnView || state.ui?.returnView || null
+    });
 }
 
 /**
@@ -2442,12 +2552,18 @@ function syncEditStudentGrade() {
     syncEditStudentHighSubjects();
 }
 
+// 기존 호출 호환용 wrapper (삭제 금지). 단일 셸의 edit mode로 위임한다.
 function openEditStudent(sid, options = {}) {
-    injectStudentStyles();
-    void ensureStudentConsultationsLoaded(sid);
-    void loadStudentOnboardingDetails(sid);
-    const s = state.db.students.find(st => st.id === sid);
-    if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
+    return openStudentDetail(sid, { ...options, mode: 'edit' });
+}
+
+/**
+ * edit mode 본문. 최근 상담 카드는 셸에서 공통 렌더하므로 여기서 다시 넣지 않는다.
+ * 기존 input id는 handleEditStudent가 읽으므로 변경 금지.
+ */
+function renderStudentEditBody(sid) {
+    const s = state.db.students.find(st => String(st.id) === String(sid));
+    if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
     const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid)));
     const opts = selectableClasses.map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, selectableClasses))}</option>`).join('');
@@ -2458,7 +2574,7 @@ function openEditStudent(sid, options = {}) {
     const onboardingDate = getStudentOnboardingStartedAt(sid);
     const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
 
-    showModal('학생 정보 수정', `
+    return `
         <div class="apms-student-contrast apms-student-form-view apms-eie-form">
             <section class="apms-eie-form-card">
                 <div class="apms-eie-form-head"><h3>기본 정보</h3><span>필수</span></div>
@@ -2481,9 +2597,6 @@ function openEditStudent(sid, options = {}) {
                     <label class="apms-eie-form-field"><span>보호자 관계</span><input id="edit-guardian-rel" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계"></label>
                     <label class="apms-eie-form-field"><span>주소</span><input id="edit-student-address" value="${studentAttr(s.student_address || '')}" placeholder="주소"></label>
                 </div>
-            </section>
-            <section class="apms-eie-form-card">
-                ${renderStudentConsultationPinnedCard(sid)}
             </section>
             <details class="apms-eie-form-drawer">
                 <summary>관리 정보 · 상태/메모 · 퇴원 처리</summary>
@@ -2518,8 +2631,7 @@ function openEditStudent(sid, options = {}) {
                 </div>
             </details>
         </div>
-    `, '저장', () => handleEditStudent(sid));
-    setTimeout(() => bindStudentConsultationDateButtons(sid), 0);
+    `;
 }
 
 async function handleEditStudent(sid) {
@@ -2583,16 +2695,9 @@ async function handleEditStudent(sid) {
             }
             toast('학생 정보가 수정되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
-            if (returnCtx?.type === 'studentDetail' && typeof renderStudentDetailTab === 'function') {
-                const targetStudentId = returnCtx.studentId || sid;
-                if (state.ui) state.ui.modalReturnView = null;
-                if (typeof closeModal === 'function') closeModal(true);
-                await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
-                window.setTimeout?.(() => renderStudentDetailTab(targetStudentId, 'basic'), 280);
-                return;
-            }
-            closeModal(true);
-            refreshCurrentStudentListViewAfterMutation(returnCtx);
+            // 모달을 닫지 않고 같은 학생 프로필 셸의 view mode로 복귀한다.
+            await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
+            renderStudentDetailShell(sid, { mode: 'view', tab: 'basic', returnTo: returnCtx });
             return;
         }
         toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');

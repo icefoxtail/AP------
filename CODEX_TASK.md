@@ -1,444 +1,790 @@
-# AP MATH 학생상세 상단 프로필 sticky 고정 UX 핫픽스 지시서
+# CODEX_TASK.md — 왕지교육 공통 학생관리 v2 내부 준비판 구현
 
-## 0. 작업 목적
+## 0. 작업 성격
 
-AP MATH 학생상세 모달에서 스크롤/드래그 시 상단의 학생 핵심 정보가 가려지는 문제를 수정한다.
+이번 작업은 왕지교육 공통 학생관리 v2 내부 준비판 구현이다.
 
-현재 학생상세 상단에는 다음 정보가 표시된다.
+이전 1차 독립 화면을 더 크게 확장한다.
 
-```text
-학생명
-재원 상태
-학교/학년
-소속 반
-PIN
-정보 수정 버튼
-```
+목표는 단순 skeleton이 아니라, 나중에 실제 운영 화면으로 전환할 수 있는 수준의 큰 화면 구조를 미리 만드는 것이다.
+
+단, 기존 AP/EIE 원본 DB write는 아직 금지한다.
+
+이번 작업에서 중요한 점은 다음이다.
+
+* 내부 개발 단계이지만, 사용자에게 보이는 문구는 실제 운영 화면처럼 정돈한다.
+* 화면에 “실험실”, “꺼내지 않을 화면”, “임시”, “mock”, “가짜 데이터” 같은 문구를 남발하지 않는다.
+* 기능이 아직 연결되지 않은 곳은 “준비 중”, “연결 필요”, “저장 연결 전”처럼 차분하게 표시한다.
+* 기존 AP/EIE 원본 데이터는 수정하지 않는다.
+* 기존 AP/EIE 메뉴, 학생상세, 시간표, 상담, 출결은 교체하지 않는다.
+* 새 학생관리 화면만 독립적으로 크게 만든다.
+
+---
+
+## 1. 작업 시작 전 필수
+
+작업 시작 전에 반드시 CODEX_TASK.md를 먼저 읽는다.
+
+이 방에서는 최종 결과 파일을 CODEX_RESULT.md로 저장한다.
+
+CODEX_RESULT1.md에 저장하지 않는다.
+
+---
+
+## 2. 최상위 방향
+
+처음에 정한 방향을 절대 바꾸지 않는다.
+
+기존 AP/EIE 틀은 그대로 유지한다.
+
+학생관리만 새로 따로 만든다.
+
+기존 AP/EIE DB는 원본으로 유지한다.
+
+기존 데이터를 새로 다시 입력하지 않는다.
+
+처음에는 안전하게 읽고 연결한다.
+
+나중에는 왕지 공통 학생관리로 입력 중심을 옮긴다.
+
+하지만 원본 반영은 AP/EIE 공식 API 또는 검증된 write-through adapter 단계에서만 한다.
+
+이번 작업은 화면과 구조를 크게 만들 수 있다.
+
+그러나 기존 운영 화면을 침범하면 안 된다.
+
+---
+
+## 3. 이번 작업의 목표
+
+이번 작업은 작은 skeleton이 아니라, 내부 준비판 기준으로 큰 화면을 만든다.
+
+구현 목표:
+
+1. EIE 전체 시간표 오표시 문제 보정
+2. AP/EIE read-only adapter 안정화
+3. 통합 학생관리 대형 화면 구성
+4. 학생 검색/목록/필터 확장
+5. 통합 학생 상세 확장
+6. 연결 관리 섹션 확장
+7. 공통 상담 섹션 확장
+8. 공통 메모 섹션 추가
+9. 학생 이력 섹션 추가
+10. 운영 확인 항목 섹션 추가
+11. adapter 상태/오류 섹션 추가
+12. overlay/link/index schema draft 보강
+13. 향후 write-through 자리만 disabled 상태로 마련
+
+---
+
+## 4. 절대 금지
+
+아래는 이번 작업에서 절대 하지 않는다.
+
+* 기존 AP 학생 전체를 새 DB에 복사
+* 기존 EIE 학생 전체를 새 DB에 복사
+* 기존 AP/EIE 데이터를 새로 재입력
+* 기존 AP/EIE DB migration 적용
+* 기존 AP/EIE 학생상세 교체
+* 기존 AP/EIE 시간표 수정
+* 기존 AP/EIE 상담 구조 변경
+* 기존 AP/EIE 출결 구조 변경
+* 기존 AP/EIE 메뉴 정식 교체
+* 자동 병합
+* AP/EIE 원본 DB write-through 실제 구현
+* AP/EIE 원본 DB 직접 SQL write
+* AP/EIE API POST/PATCH/DELETE 호출
+* 배포
+* git commit
+* git push
+
+---
+
+## 5. 사용자에게 보이는 문구 정책
+
+이번 작업에서 문구가 중요하다.
+
+화면 문구는 실제 운영 화면으로 전환 가능한 톤으로 작성한다.
+
+### 5.1 금지 문구
+
+사용자 화면에 아래 표현을 쓰지 않는다.
+
+* 실험실
+* 안 꺼낼 화면
+* 임시 화면
+* mock
+* fake
+* 가짜 데이터
+* 테스트용 데이터
+* 대충 연결
+* 나중에 고침
+* 미완성이라 위험
+* 개발자만 보는 화면
+* 숨김 메뉴
+
+### 5.2 허용 문구
+
+아래처럼 차분하고 운영 친화적인 문구를 사용한다.
+
+* 통합 학생관리
+* 안전 모드
+* 읽기 전용 연결
+* 원본 데이터 보호
+* 저장 연결 준비 중
+* 연결 상태 확인 필요
+* 학생별 시간표 연결 필요
+* 공통 상담 저장소 연결 전
+* 원본 수정은 아직 지원하지 않습니다
+* AP/EIE 원본 정보는 읽기 전용으로 표시됩니다
+
+### 5.3 상단 안내 문구 예시
+
+화면 상단에는 아래 취지의 문구를 넣는다.
+
+왕지 통합 학생관리 준비 화면입니다. 기존 AP/EIE 원본 데이터는 읽기 전용으로 표시되며, 원본 수정은 아직 지원하지 않습니다.
+
+또는
+
+통합 학생관리 안전 모드입니다. AP/EIE 원본 데이터는 보호되며, 공통 연결·상담·메모 저장은 overlay 저장소 연결 후 활성화됩니다.
+
+---
+
+## 6. 구현 파일 원칙
+
+가능하면 아래 파일만 수정한다.
+
+* apmath/wangji-student-management.html
+* apmath/js/wangji-student-management.js
+* apmath/css/wangji-student-management.css
+* docs/WANGJI_STUDENT_MANAGEMENT_V1_SCHEMA_DRAFT.sql
+* CODEX_RESULT.md
+
+기존 AP/EIE 핵심 파일은 수정하지 않는다.
+
+수정 금지 후보:
+
+* apmath/js/student.js
+* apmath/js/classroom.js
+* apmath/js/management.js
+* eie/css/eie.css
+* eie/js/views/eie-attendance.js
+* EIE 시간표 핵심 파일
+* AP 시간표 핵심 파일
+
+기존 변경 파일이 git status에 보이더라도 이번 작업에서 건드리지 말고 CODEX_RESULT.md에 기존 변경으로 분리 보고한다.
+
+---
+
+## 7. 필수 보정 — EIE 전체 시간표 오표시 제거
+
+이전 구현에서 EIE adapter가 /api/eie/timetable 전체 결과를 선택 학생의 schedules처럼 넣는 구조가 있다면 반드시 제거한다.
+
+금지:
+
+GET /api/eie/timetable 결과 전체를 선택 학생 schedule로 표시
+
+보정:
+
+EIE 학생별 시간표 endpoint가 확정되지 않은 경우, 선택 학생의 schedules에는 전체 timetable을 넣지 않는다.
+
+대신 EIE 섹션에 다음 의미를 표시한다.
+
+EIE 학생별 시간표 연결이 필요합니다. 전체 시간표 데이터는 학생별 수업시간으로 표시하지 않습니다.
+
+section_errors에도 동일한 취지를 기록한다.
+
+---
+
+## 8. 필수 보정 — AP+EIE / 연결 후보 안내
+
+AP+EIE / 연결 후보 필터는 아직 실제 overlay DB 기반 후보가 아니다.
+
+따라서 화면에 안내를 추가한다.
+
+문구 예시:
+
+AP+EIE / 연결 후보는 현재 표시 기준입니다. 실제 후보 매칭과 확정 연결은 공통 연결 저장소가 연결된 뒤 활성화됩니다.
+
+이 문구는 학생 목록 필터 근처에 작게 표시한다.
+
+---
+
+## 9. 화면 확장 구조
+
+이번 화면은 크게 만든다.
+
+전체 구조:
+
+* 상단 헤더
+* 상태 요약 바
+* 좌측 검색/목록
+* 중앙 또는 우측 통합 상세
+* 상세 내부 탭 또는 섹션 카드
+* 하단 adapter 상태/검증 영역
+
+권장 탭:
+
+* 요약
+* AP
+* EIE
+* 연결
+* 상담
+* 메모
+* 이력
+* 확인 항목
+* 상태
+
+단, 탭 UI가 과하면 카드 섹션 방식으로 구현해도 된다.
+
+---
+
+## 10. 상단 헤더
+
+상단에는 다음을 표시한다.
+
+* 왕지 통합 학생관리
+* 안전 모드 배지
+* 읽기 전용 연결 배지
+* 원본 데이터 보호 안내
+* overlay 저장소 연결 상태
+
+문구는 운영 친화적으로 작성한다.
+
+나쁜 예:
+
+Lab 모드입니다. 아직 안 꺼낼 화면입니다.
+
+좋은 예:
+
+통합 학생관리 안전 모드입니다. AP/EIE 원본 정보는 읽기 전용으로 표시됩니다.
+
+---
+
+## 11. 상태 요약 바
+
+상단 또는 본문 상단에 상태 요약 카드를 만든다.
+
+표시 후보:
+
+* AP 연결 상태
+* EIE 연결 상태
+* overlay 저장소 상태
+* 학생별 시간표 연결 상태
+* 공통 상담 저장 상태
+* 원본 write-through 상태
+
+write-through 상태는 다음처럼 표시한다.
+
+원본 수정: 후속 단계에서 연결 예정
+
+또는
+
+AP/EIE 원본 수정은 아직 지원하지 않습니다.
+
+---
+
+## 12. 좌측 학생 검색/목록 패널
+
+좌측에는 다음을 구현한다.
+
+* 검색창
+* 검색 버튼
+* 필터 탭
+* 결과 목록
+* 결과 없음 상태
+* adapter 오류 상태
+
+필터:
+
+* 전체
+* AP
+* EIE
+* AP+EIE
+* 연결 후보
+* 공통 학생
+* 상담 후속
+* 오늘 수업
+
+결과 카드 표시:
+
+* 학생명
+* 학교
+* 학년
+* source_app 배지
+* 연결 상태 배지
+* AP/EIE 배지
+* 상담 후속 여부
+* 수업시간 후보
+* 오류 표시
+
+실제 overlay API가 없으면 연결 상태는 저장된 상태처럼 보이면 안 된다.
+
+표시 예:
+
+연결 준비
+
+후보 확인 필요
+
+저장소 연결 전
+
+---
+
+## 13. 통합 상세 — 요약 섹션
+
+학생 선택 시 요약 섹션을 표시한다.
+
+표시:
+
+* 학생명
+* 학교
+* 학년
+* 연락처 snapshot
+* AP 원본 연결 상태
+* EIE 원본 연결 상태
+* 공통 학생 anchor 상태
+* 오늘 수업 후보
+* 상담 후속 후보
+* adapter 오류 요약
+* 원본 수정 가능 여부
+
+원본 수정 가능 여부는 반드시 false 또는 disabled로 표시한다.
+
+문구:
+
+원본 수정은 후속 단계에서 AP/EIE 공식 API 검증 후 연결됩니다.
+
+---
+
+## 14. 통합 상세 — AP 섹션
+
+AP 섹션에는 read-only로 다음을 표시한다.
+
+* AP 원본 학생 정보
+* AP 반
+* AP 과목
+* AP 수업시간
+* AP 상담 read-only 요약
+* AP 상세 열기 버튼 후보
+
+deeplink가 확정되지 않았으면 버튼은 비활성으로 둔다.
+
+문구:
+
+AP 상세 연결 방식 확인 필요
+
+AP 원본 정보는 읽기 전용입니다.
+
+---
+
+## 15. 통합 상세 — EIE 섹션
+
+EIE 섹션에는 read-only로 다음을 표시한다.
+
+* EIE 원본 학생 정보
+* EIE 반/셀 정보
+* EIE 상담 read-only 요약
+* EIE 학생별 시간표 연결 필요 안내
+* EIE 상세 열기 버튼 후보
+
+전체 timetable을 학생별 schedule로 표시하지 않는다.
+
+문구:
+
+EIE 학생별 수업시간 연결이 필요합니다. 전체 시간표는 학생별 수업시간으로 표시하지 않습니다.
+
+---
+
+## 16. 연결 섹션
+
+연결 섹션은 크게 만든다.
+
+구성:
+
+* 공통 학생 anchor 상태
+* AP link 상태
+* EIE link 상태
+* candidate / active / rejected / archived 상태 설명
+* AP 학생 link 후보 추가 버튼
+* EIE 학생 link 후보 추가 버튼
+* candidate 확정 버튼
+* candidate 거절 버튼
+* link 보관 버튼
+
+단, overlay API가 없으면 버튼은 disabled 상태로 둔다.
+
+문구:
+
+공통 연결 저장소가 연결되면 저장할 수 있습니다.
+
+자동 병합은 지원하지 않는다.
+
+문구:
+
+이름이나 연락처가 같아도 자동으로 같은 학생으로 확정하지 않습니다. 관리자가 직접 확인해야 합니다.
+
+---
+
+## 17. 상담 섹션
+
+상담 섹션은 거의 완성형 UI로 만든다.
+
+필드:
+
+* 상담일
+* 상담 범위 COMMON / AP / EIE
+* 상담 유형
+* 상담 내용
+* 다음 조치
+* 후속 상태
+* 공개 범위
+* 작성자 표시 후보
+
+저장 버튼은 overlay API가 없으면 disabled 처리한다.
+
+문구:
+
+공통 상담은 왕지 공통 저장소에만 저장됩니다. AP/EIE 원본 상담에는 저장하지 않습니다.
+
+AP/EIE 원본 상담 write-through는 후속 단계입니다.
+
+---
+
+## 18. 메모 섹션
+
+공통 운영 메모 UI를 만든다.
+
+필드:
+
+* 메모 제목
+* 메모 내용
+* 중요도
+* 태그
+* 작성자
+* 작성일
+
+저장 버튼은 overlay API가 없으면 disabled 처리한다.
+
+문구:
+
+공통 메모 저장소 연결 후 저장할 수 있습니다.
+
+---
+
+## 19. 이력 섹션
+
+학생 이력 timeline 구조를 만든다.
+
+표시 후보:
+
+* AP 원본 조회 이벤트
+* EIE 원본 조회 이벤트
+* 공통 anchor 생성 예정
+* link candidate 예정
+* 상담 작성 예정
+* 메모 작성 예정
+
+주의:
+
+실제 데이터가 없으면 운영 데이터처럼 보이는 샘플을 넣지 않는다.
+
+표시 문구:
+
+이력 저장소 연결 후 학생별 변경 이력이 표시됩니다.
+
+---
+
+## 20. 확인 항목 섹션
+
+운영자가 확인해야 할 항목을 표시하는 섹션을 만든다.
+
+후보:
+
+* AP/EIE 연결 후보 확인 필요
+* EIE 학생별 시간표 endpoint 확인 필요
+* AP 상세 deeplink 확인 필요
+* EIE 상세 deeplink 확인 필요
+* overlay DB 위치 결정 필요
+* write-through 단계 결정 필요
+
+이 섹션은 다음 작업을 명확히 만드는 용도다.
+
+---
+
+## 21. 상태 섹션
+
+상태 섹션에는 다음을 표시한다.
+
+* AP adapter 상태
+* EIE adapter 상태
+* overlay API 상태
+* deeplink 상태
+* 저장 가능 여부
+* section_errors
+
+개인정보 raw payload 전체를 그대로 노출하지 않는다.
+
+---
+
+## 22. overlay/link/index API 상태 처리
+
+이번 작업에서 overlay DB 위치가 미확정이면 실제 저장 구현을 하지 않는다.
+
+대신 아래 상태 모델을 만든다.
+
+overlayApi.status:
+
+* unavailable
+* planned
+* connected
+
+현재는 unavailable 또는 planned로 둔다.
+
+버튼 동작:
+
+overlay API 없음:
+
+* disabled
+* 저장소 연결 후 사용 가능 표시
+
+overlay API 있음:
+
+* overlay DB에만 저장
+* AP/EIE 원본 DB write 금지
+
+---
+
+## 23. read-only adapter 유지
+
+AP/EIE adapter는 이번 작업에서도 read-only다.
+
+허용:
+
+* GET
+* existing API read
+* 실패 시 section_errors 표시
+
+금지:
+
+* POST
+* PATCH
+* DELETE
+* AP/EIE 원본 write
+* 전체 데이터를 학생별 데이터처럼 표시
+
+---
+
+## 24. 장기 write-through 자리만 만들기
+
+장기적으로 왕지 공통 학생관리가 입력 중심이 될 예정이다.
+
+따라서 UI에 후속 단계 자리는 만들 수 있다.
 
 예시:
 
-```text
-허홍
-재원 / 왕운중 · 중1 / 중1C / PIN 1138
-정보 수정
-```
+* 학생 정보 수정
+* AP 반 배정 수정
+* EIE 시간표 배정 수정
+* AP/EIE 상담 반영
 
-현재 이 영역이 일반 카드처럼 본문 안에 들어가 있어서, 모달을 스크롤하거나 드래그할 때 상단 모달 헤더와 겹치거나 가려져 UX가 좋지 않다.
+단, 실제 버튼은 disabled 처리한다.
 
-이번 작업은 이 상단 정보를 **학생상세 sticky identity bar**로 고정하는 작업이다.
+문구:
 
----
-
-## 1. 수정 대상 파일
-
-원칙상 수정 파일은 아래 1개만 허용한다.
-
-```text
-apmath/js/student.js
-```
-
-다음 파일은 수정하지 않는다.
-
-```text
-apmath/index.html
-apmath/js/ui.js
-apmath/js/core.js
-apmath/worker-backup/worker/index.js
-apmath/worker-backup/worker/routes/operations.js
-```
-
-백엔드/API/DB 수정 금지.
+write-through는 후속 단계에서 AP/EIE 공식 API 검증 후 연결됩니다.
 
 ---
 
-## 2. 현재 구조 확인
+## 25. schema draft 보강
 
-`apmath/js/student.js` 안에 `injectStudentStyles()` 함수가 있고, 그 안에서 학생상세 관련 CSS가 주입된다.
+docs/WANGJI_STUDENT_MANAGEMENT_V1_SCHEMA_DRAFT.sql을 보강할 수 있다.
 
-현재 핵심 클래스는 다음이다.
+단, 이 파일은 여전히 draft다.
 
-```text
-.ap-student-detail-shell
-.ap-student-profile-head
-.ap-student-head-main
-.ap-student-head-badges
-.ap-student-head-actions
-.ap-student-pill
-.ap-student-status
-.ap-student-action
-```
+금지:
 
-학생상세 상단 HTML은 `renderStudentDetailHeader(sid, tab)`에서 생성된다.
+* worker/migrations에 추가
+* D1 apply
+* 기존 AP/EIE DB에 적용
+* migration처럼 보이는 위치로 이동
 
-현재 형태는 대략 다음 구조다.
+schema draft에는 다음 개념을 명시한다.
 
-```html
-<header class="ap-student-profile-head">
-  <div class="ap-student-head-main">
-    <h1>학생명</h1>
-    <div class="ap-student-head-badges">
-      <span class="ap-student-status">재원</span>
-      <span class="ap-student-pill">학교 · 학년</span>
-      <span class="ap-student-pill">반</span>
-      <span class="ap-student-pill">PIN</span>
-    </div>
-  </div>
-  <div class="ap-student-head-actions">
-    <button class="ap-student-action">정보 수정</button>
-  </div>
-</header>
-```
-
-이 헤더는 `renderStudentDetailTab()`에서 모달 본문 최상단에 들어가며, 바로 아래에 `renderStudentConsultationPinnedCard(sid)`가 이어진다.
+* overlay/link/index 역할
+* 원본 DB 아님
+* AP/EIE 데이터 재입력 금지
+* write-through 후속 확장용 상태 필드
+* audit/log 후보
+* link 상태 candidate/active/rejected/archived
 
 ---
 
-## 3. 문제 정의
+## 26. 검증
 
-현재 문제는 다음이다.
+필수:
 
-```text
-1. 학생 프로필 헤더가 일반 카드라 스크롤 시 위로 밀려 올라감
-2. 모달 상단의 “취소 / 허홍 프로필” 헤더 아래로 학생 정보 카드가 말려 들어가면서 가려짐
-3. 모바일에서 드래그할 때 재원/반/PIN 뱃지가 상단에 겹치거나 일부 가려짐
-4. 학생상세에서 상담/기본정보를 보는 동안 학생 식별 정보가 계속 보이지 않음
-```
+git status -sb
 
-수정 목표는 다음이다.
+JS 파일을 수정했다면:
 
-```text
-학생상세 모달 안에서
-학생명 / 재원 / 학교·학년 / 반 / PIN / 정보 수정 버튼이
-상단에 안정적으로 붙어 있게 한다.
-```
+node --check apmath/js/wangji-student-management.js
 
----
+가능하면 브라우저에서 HTML을 열어 화면 구조를 확인한다.
 
-## 4. 구현 원칙
+브라우저 확인을 못 했으면 CODEX_RESULT.md에 명시한다.
 
-### 반드시 sticky 사용
+금지:
 
-이번 작업은 `position: sticky`로 처리한다.
-
-```text
-position: fixed 사용 금지
-```
-
-이유:
-
-```text
-fixed는 화면 기준으로 떠서 모달 본문을 덮을 수 있음
-fixed는 모바일 주소창/키보드/모달 하단시트와 충돌 위험이 큼
-sticky는 모달 body 스크롤 흐름 안에서 자연스럽게 고정됨
-```
-
-### top 값
-
-모달 body 안에서 sticky가 되어야 하므로 기본은 다음 기준이다.
-
-```css
-top: 0;
-```
-
-`top: 58px`, `top: 64px` 같은 전역 헤더 기준값을 넣지 않는다.
-이 학생상세는 일반 페이지가 아니라 모달 내부이므로, 전역 앱 헤더 기준으로 맞추면 기기별로 어긋날 수 있다.
-
-### JS 로직 변경 금지
-
-이번 작업은 레이아웃/UX 핫픽스다.
-
-아래 로직은 건드리지 않는다.
-
-```text
-상담 저장
-상담 조회
-정보 수정 저장
-학생 상세 데이터 로딩
-모달 step stack
-closeModal / showModalStep
-```
+* 배포 검증
+* 원격 DB 적용
+* migration apply
+* git commit
+* git push
 
 ---
 
-## 5. 구체 수정 지시
+## 27. 작업 종료 전 재확인
 
-### 5-1. `.ap-student-profile-head`를 sticky identity bar로 변경
-
-`injectStudentStyles()` 내부의 기존 `.ap-student-profile-head` 정의를 찾아 수정한다.
-
-권장 CSS:
-
-```css
-.ap-student-profile-head {
-    position: sticky;
-    top: 0;
-    z-index: 24;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: var(--surface);
-    box-shadow: 0 8px 22px rgba(15, 23, 42, .075);
-}
-```
-
-기존 카드 느낌은 유지하되, sticky로 고정한다.
-
----
-
-### 5-2. sticky 상태에서 배경 투명 문제 방지
-
-sticky가 되면 아래 내용이 뒤로 지나가므로 배경은 반드시 불투명해야 한다.
-
-```css
-.ap-student-profile-head {
-    background: var(--surface);
-}
-```
-
-다크모드 보정도 추가한다.
-
-```css
-body.dark .ap-student-profile-head {
-    background: var(--surface);
-    box-shadow: none;
-}
-```
-
-이미 `body.dark .ap-student-profile-head` 규칙이 있다면 중복되지 않게 병합한다.
-
----
-
-### 5-3. 모바일에서 압축형으로 보이게 조정
-
-모바일에서는 헤더가 너무 크면 화면을 많이 차지한다.
-학생명, 뱃지, 정보 수정 버튼이 한 카드 안에서 보기 좋게 압축되도록 아래 규칙을 추가한다.
-
-```css
-@media (max-width: 600px) {
-    .ap-student-profile-head {
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 10px;
-        padding: 10px 12px;
-        border-radius: 14px;
-        align-items: start;
-    }
-
-    .ap-student-head-main {
-        min-width: 0;
-        gap: 6px;
-    }
-
-    .ap-student-head-main h1 {
-        font-size: 20px;
-        line-height: 1.12;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .ap-student-head-badges {
-        gap: 5px;
-        margin: 0;
-        max-height: 52px;
-        overflow: hidden;
-    }
-
-    .ap-student-pill,
-    .ap-student-status {
-        min-height: 22px;
-        padding: 2px 7px;
-        font-size: 10.5px;
-        line-height: 1.2;
-        white-space: nowrap;
-    }
-
-    .ap-student-head-actions {
-        align-items: flex-start;
-        justify-content: flex-end;
-        flex: 0 0 auto;
-    }
-
-    .ap-student-action {
-        min-height: 36px;
-        padding: 0 10px;
-        border-radius: 10px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-}
-```
-
-중요:
-
-```text
-상태/반/PIN 뱃지를 display:none으로 숨기지 말 것.
-학생 식별 정보는 유지해야 한다.
-```
-
----
-
-### 5-4. 최근 상담 카드가 sticky 헤더 밑으로 자연스럽게 이어지게 하기
-
-`renderStudentDetailTab()` 구조는 유지한다.
-
-현재 구조:
-
-```js
-${renderStudentDetailHeader(sid, 'basic')}
-${renderStudentConsultationPinnedCard(sid)}
-${bodyHtml}
-```
-
-이 순서는 유지한다.
-
-다만 sticky 헤더 아래의 시각 간격이 너무 붙으면 `.ap-student-consult-pinned` 또는 `.ap-student-detail-shell` gap을 조정한다.
-
-권장:
-
-```css
-.ap-student-detail-shell {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-```
-
-이미 `gap:14px`라면 유지 가능하다.
-핵심은 sticky 헤더가 최근 상담 카드와 겹치지 않아야 한다.
-
----
-
-## 6. 금지 사항
-
-아래 작업은 하지 않는다.
-
-```text
-1. #modal-header, #modal-body, #modal-content 전역 구조 변경 금지
-2. showModal / closeModal / showModalStep 수정 금지
-3. position: fixed 사용 금지
-4. 학생상세 전체를 새 HTML로 재작성 금지
-5. 상담 핫픽스에서 수정한 onclick/문자열 escape 로직 되돌리기 금지
-6. 정보 수정 버튼 제거 금지
-7. 재원/학교/반/PIN 뱃지 숨김 처리 금지
-8. 백엔드/API/DB 수정 금지
-```
-
----
-
-## 7. 이전 상담 핫픽스 보존 조건
-
-최근 상담 핫픽스가 이미 적용되어 있다면 반드시 유지한다.
+작업 종료 전 생성/수정한 파일을 다시 열어 확인한다.
 
 확인할 것:
 
-```text
-+ 새 상담 버튼 클릭 정상
-+ 첫 상담 기록하기 클릭 정상
-상담 날짜 버튼 클릭 정상
-정보 수정 버튼 클릭 정상
-```
-
-이번 sticky 작업 중 `onclick`, `apmsStudentJsString`, `apmsStudentOnclickArg` 관련 코드를 되돌리면 안 된다.
-
----
-
-## 8. 정적 검증
-
-수정 후 반드시 실행한다.
-
-```powershell
-node --check apmath\js\student.js
-```
-
-추가 검색 검수:
-
-```powershell
-Select-String -Path "apmath\js\student.js" -Pattern "ap-student-profile-head|ap-student-head-badges|ap-student-action|position:\s*sticky|position:\s*fixed|renderStudentDetailHeader|renderStudentDetailTab" -Context 2,2
-```
-
-확인 기준:
-
-```text
-1. .ap-student-profile-head에 position: sticky가 있음
-2. .ap-student-profile-head에 top: 0이 있음
-3. .ap-student-profile-head에 z-index가 있음
-4. .ap-student-profile-head에 불투명 background가 있음
-5. position: fixed가 새로 추가되지 않았음
-6. renderStudentDetailHeader 구조가 크게 바뀌지 않았음
-```
+* EIE 전체 timetable을 학생 schedule로 표시하지 않는가
+* AP+EIE/연결 후보 필터 안내가 있는가
+* 기존 AP/EIE 원본 write가 없는가
+* 기존 데이터 재입력/복사가 없는가
+* 자동 병합이 없는가
+* overlay 저장 범위가 명확한가
+* write-through는 후속으로만 남겼는가
+* 기존 핵심 파일을 수정하지 않았는가
+* 사용자 화면에 실험실/임시/mock/가짜 같은 표현이 없는가
+* 문구가 실제 운영 화면으로 전환 가능한 톤인가
 
 ---
 
-## 9. 브라우저 수동 확인 시나리오
+## 28. 작업 종료 전 CODEX_TASK.md 재확인
 
-실제 화면 확인 없는 PASS 금지.
+작업을 끝내기 직전에 반드시 CODEX_TASK.md를 다시 읽는다.
 
-### PC 또는 모바일 공통
+마지막에 아래를 확인한다.
 
-```text
-1. AP MATH 로그인
-2. 학생상세 열기
-3. 학생명 / 재원 / 학교·학년 / 반 / PIN이 표시되는지 확인
-4. 아래로 스크롤
-5. 학생 요약 헤더가 모달 상단에 붙어 있는지 확인
-6. 최근 상담 / 기본정보가 헤더 아래에서 자연스럽게 이어지는지 확인
-7. 헤더가 최근 상담 내용을 과하게 가리지 않는지 확인
-8. 정보 수정 버튼 클릭 정상 확인
-9. + 새 상담 버튼 클릭 정상 확인
-```
-
-### 모바일/좁은 화면 확인
-
-```text
-1. 모바일 폭에서 학생상세 열기
-2. 상단 학생명과 뱃지가 2줄 이내로 보기 좋게 보이는지 확인
-3. 드래그/스크롤 시 재원/반/PIN이 상단 헤더에 가려지지 않는지 확인
-4. 정보 수정 버튼이 오른쪽에서 눌리는지 확인
-5. 모달 닫기/뒤로가기 동작이 기존과 같은지 확인
-```
+* 지시와 충돌하는 구현이 있는지
+* 누락한 필수 요구가 있는지
+* 금지 항목을 어기지 않았는지
+* CODEX_RESULT.md에 최종 결과를 저장했는지
+* git status 보고가 정확한지
 
 ---
 
-## 10. PASS 기준
+## 29. 최종 결과 저장 — CODEX_RESULT.md 필수
 
-아래 조건을 모두 만족해야 PASS다.
+이 방에서는 최종 결과 파일을 CODEX_RESULT.md로 고정한다.
 
-```text
-1. 학생상세 상단 프로필 카드가 sticky로 고정됨
-2. 스크롤/드래그 시 학생명/재원/반/PIN이 모달 상단에 가려지지 않음
-3. 최근 상담 카드와 기본정보 영역이 깨지지 않음
-4. 상담 핫픽스 기능이 유지됨
-5. 정보 수정 버튼 정상 동작
-6. node --check 통과
-7. 변경 파일은 원칙적으로 apmath/js/student.js 1개
-```
+CODEX_RESULT1.md에 저장하지 않는다.
+
+CODEX_RESULT.md 형식:
+
+# CODEX_RESULT — 왕지교육 공통 학생관리 v2 내부 준비판 구현
+
+## 1. 읽은 파일
+
+* 실제 확인한 파일 목록
+
+## 2. 구현한 내용
+
+* EIE adapter 보정
+* 화면 확장 내용
+* 요약 섹션
+* AP 섹션
+* EIE 섹션
+* 연결 섹션
+* 상담 섹션
+* 메모 섹션
+* 이력 섹션
+* 확인 항목 섹션
+* 상태 섹션
+* overlay API 상태 처리
+* schema draft 보정 여부
+
+## 3. 문구 정책 확인
+
+* 사용자 화면에 실험실/임시/mock/가짜/안 꺼낼 화면 표현 없음
+* 운영 전환 가능한 문구 사용
+* read-only와 저장소 연결 전 상태를 차분하게 표시
+
+## 4. 기존 구조 보호 확인
+
+* 기존 AP/EIE 학생상세 교체 없음
+* 기존 AP/EIE DB migration 없음
+* 기존 AP/EIE write 없음
+* 기존 메뉴 정식 교체 없음
+* 기존 변경 파일 미수정
+
+## 5. 구현하지 않은 항목
+
+* AP/EIE write-through 없음
+* AP/EIE 상담 저장 없음
+* AP/EIE 수강 배정 저장 없음
+* 기존 데이터 복사 없음
+* 자동 병합 없음
+* 배포 없음
+* git commit/push 없음
+
+## 6. 남은 결정사항
+
+* overlay DB 실제 위치
+* 신규 Worker 여부
+* AP adapter 인증 방식
+* EIE adapter 인증 방식
+* AP/EIE deeplink 방식
+* write-through 도입 단계
+* EIE 학생별 시간표 endpoint
+
+## 7. 검증 결과
+
+* git status -sb
+* node --check 결과
+* 브라우저 확인 여부
+* 수행하지 못한 검증과 이유
+
+## 8. 작업 종료 전 재확인
+
+* 생성/수정 파일을 다시 열어 읽고 지시와 충돌하지 않는지 확인했습니다.
+* 작업 종료 직전에 CODEX_TASK.md를 다시 읽고 지시와 충돌하지 않는지 확인했습니다.
 
 ---
 
-## 11. 최종 보고 형식
+## 30. 압축 파일 생성 규칙
 
-작업 완료 후 아래 형식으로 보고한다.
+검수용 zip을 만들 경우 반드시 Downloads 폴더에 생성한다.
 
-```text
-## 수정 파일
-- apmath/js/student.js
+기준 위치:
 
-## 수정 내용
-- 학생상세 상단 프로필 카드 sticky 고정
-- 모바일에서 학생명/상태/학교/반/PIN 뱃지 압축 표시
-- 정보 수정 버튼 유지
-- 상담 핫픽스 onclick 로직 보존
+C:\Users\USER\Downloads
 
-## 검증
-- node --check apmath/js/student.js 통과
-- 학생상세 스크롤 시 상단 정보 가림 없음 확인
-- + 새 상담 클릭 정상 확인
-- 정보 수정 클릭 정상 확인
+금지:
 
-## 미수행
-- 미수행 항목이 있으면 명시
-```
+* repo 루트에 zip 생성
+* 작업 폴더 안에 zip 생성
+
+zip 생성은 사용자가 요청한 경우에만 한다.
+
+---
+
+## 31. 채팅 최종 보고
+
+채팅 최종 보고에는 아래를 포함한다.
+
+* CODEX_RESULT.md 저장 완료 여부
+* 생성/수정 파일 목록
+* 코드 수정 범위
+* DB 변경 없음
+* 배포 없음
+* git commit/push 없음
+* 기존 변경 파일 보호 여부
+* EIE adapter 보정 여부
+* 화면 확장 내용
+* 문구 정책 준수 여부
+* overlay 저장 구현 여부
+* 검증 결과
+* 남은 결정사항

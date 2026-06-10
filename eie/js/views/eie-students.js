@@ -110,16 +110,22 @@
     }
 
     function rawOf(student) {
-        if (student && student.raw && typeof student.raw === 'object') return student.raw;
-        if (student && student.raw_meta_json) {
+        var base = student && student.raw && typeof student.raw === 'object' ? student.raw : student;
+        var rawMetaValue = base && base.raw_meta_json !== undefined && base.raw_meta_json !== null
+            ? base.raw_meta_json
+            : student && student.raw_meta_json;
+        var parsed = {};
+        if (rawMetaValue && typeof rawMetaValue === 'object') {
+            parsed = rawMetaValue;
+        } else if (rawMetaValue) {
             try {
-                var parsed = JSON.parse(student.raw_meta_json);
-                return parsed && typeof parsed === 'object' ? parsed : {};
+                var value = JSON.parse(rawMetaValue);
+                if (value && typeof value === 'object') parsed = value;
             } catch (error) {
-                return {};
+                parsed = {};
             }
         }
-        return {};
+        return Object.assign({}, base || {}, parsed);
     }
 
     function contactsOf(student) {
@@ -190,6 +196,10 @@
 
     function studentTypeOf(student) {
         return metaValue(student, 'student_type') || '일반';
+    }
+
+    function enrollDateOf(student) {
+        return metaValue(student, 'enrollment_date') || metaValue(student, 'first_attendance_date') || metaValue(student, 'first_attended_at');
     }
 
     function uniqueNames(rows) {
@@ -889,6 +899,7 @@
             + renderField('학년', gradeOf(student))
             + renderField('학교', schoolOf(student))
             + renderField('상태', statusLabel(statusOf(student)))
+            + renderField('등원일', enrollDateOf(student) || '미등록')
             + renderField('학생 연락처', primaryPhone(student))
             + renderField('학부모 연락처', parentPhoneOf(student))
             + renderField('보호자 관계', guardianRelationOf(student))
@@ -969,6 +980,7 @@
             + renderStudentTypeSelect(prefix, student)
             + renderGradeSelect(prefix, student)
             + '<label><span>학교</span><input id="' + prefix + '-school" type="text" value="' + esc(isEdit ? schoolOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>등원일</span><input id="' + prefix + '-enroll-date" type="date" value="' + esc(isEdit ? enrollDateOf(student) : '') + '" autocomplete="off"></label>'
             + '<label><span>학생 연락처</span><input id="' + prefix + '-phone" type="tel" value="' + esc(isEdit ? primaryPhone(student) : '') + '" autocomplete="off"></label>'
             + '<label><span>학부모 연락처</span><input id="' + prefix + '-parent-phone" type="tel" value="' + esc(isEdit ? parentPhoneOf(student) : '') + '" autocomplete="off"></label>'
             + '<label><span>보호자 관계</span><input id="' + prefix + '-guardian-relation" type="text" value="' + esc(isEdit ? guardianRelationOf(student) : '') + '" autocomplete="off"></label>'
@@ -995,6 +1007,7 @@
         var name = text(document.getElementById(prefix + '-name') && document.getElementById(prefix + '-name').value);
         var grade = text(document.getElementById(prefix + '-grade') && document.getElementById(prefix + '-grade').value);
         var school = text(document.getElementById(prefix + '-school') && document.getElementById(prefix + '-school').value);
+        var enrollDate = text(document.getElementById(prefix + '-enroll-date') && document.getElementById(prefix + '-enroll-date').value);
         var phone = text(document.getElementById(prefix + '-phone') && document.getElementById(prefix + '-phone').value);
         var parentPhone = text(document.getElementById(prefix + '-parent-phone') && document.getElementById(prefix + '-parent-phone').value);
         var guardianRelation = text(document.getElementById(prefix + '-guardian-relation') && document.getElementById(prefix + '-guardian-relation').value);
@@ -1011,6 +1024,9 @@
             name: name,
             grade: grade,
             school_name: school,
+            enrollment_date: enrollDate,
+            first_attendance_date: enrollDate,
+            first_attended_at: enrollDate,
             phone: phone,
             student_phone: phone,
             parent_phone: parentPhone,

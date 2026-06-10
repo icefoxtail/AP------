@@ -330,14 +330,22 @@
     }
 
     function rawOf(row) {
-        if (row?.raw && typeof row.raw === 'object') return row.raw;
-        if (!row?.raw_meta_json) return {};
-        try {
-            const parsed = JSON.parse(row.raw_meta_json);
-            return parsed && typeof parsed === 'object' ? parsed : {};
-        } catch (error) {
-            return {};
+        const base = row?.raw && typeof row.raw === 'object' ? row.raw : row;
+        const rawMetaValue = base?.raw_meta_json !== undefined && base?.raw_meta_json !== null
+            ? base.raw_meta_json
+            : row?.raw_meta_json;
+        let parsed = {};
+        if (rawMetaValue && typeof rawMetaValue === 'object') {
+            parsed = rawMetaValue;
+        } else if (rawMetaValue) {
+            try {
+                const value = JSON.parse(rawMetaValue);
+                if (value && typeof value === 'object') parsed = value;
+            } catch (error) {
+                parsed = {};
+            }
         }
+        return Object.assign({}, base || {}, parsed);
     }
 
     function studentRowId(row) {
@@ -405,6 +413,14 @@
 
     function studentEnrollDate(row) {
         return studentMeta(row, 'enrollment_date') || studentMeta(row, 'first_attendance_date') || studentMeta(row, 'first_attended_at');
+    }
+
+    function applyEnrollDateFields(payload, value) {
+        const date = normalizeKey(value);
+        payload.first_attendance_date = date;
+        payload.enrollment_date = date;
+        payload.first_attended_at = date;
+        return payload;
     }
 
     function studentTeacherNames(row) {
@@ -2348,7 +2364,7 @@
                         <span>등원일</span>
                         <input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}">
                     </label>
-                    <button type="button" class="eie-p-btn-save" data-eie-v2-attendance-save="${esc(sid)}">등원 저장</button>
+                    <button type="button" class="eie-p-btn-save" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-attendance-date">등원 저장</button>
                 </div>
             </div>
         `;
@@ -2449,7 +2465,7 @@
                         <div class="eie-p-danger-zone">
                             <div class="eie-p-danger-zone-left">
                                 <span>첫 등원일</span>
-                                <input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}" style="width:auto;">
+                                <input id="eie-v2-new-enroll-date" type="date" value="${esc(todayIso())}" style="width:auto;">
                             </div>
                         </div>
                     </details>
@@ -2573,8 +2589,8 @@
                             ${enrollDate
                                 ? `<span class="eie-p-enroll-done">첫 등원 ${esc(enrollDate)}</span>`
                                 : `<span class="eie-p-enroll-chip">첫 등원일 미등록</span>
-                            <input type="date" id="eie-v2-attendance-date" value="${esc(todayIso())}">
-                            ${sid ? `<button type="button" class="eie-p-btn-cancel eie-p-enroll-save" data-eie-v2-attendance-save="${esc(sid)}">저장</button>` : ''}`}
+                            <input type="date" id="eie-v2-first-attendance-date" value="${esc(todayIso())}">
+                            ${sid ? `<button type="button" class="eie-p-btn-cancel eie-p-enroll-save" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-first-attendance-date">저장</button>` : ''}`}
                         </div>
                         ${sid ? `
                         <div class="eie-p-danger-actions">
@@ -2638,6 +2654,7 @@
                                 <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                                 <label class="eie-p-form-field"><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
                             </div>
+                            <label class="eie-p-form-field"><span>등원일</span><input id="eie-v2-edit-enroll-date" type="date" value="${esc(enrollDate)}" autocomplete="off"></label>
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
                         </div>
                         <div class="eie-p-danger-zone">
@@ -2645,8 +2662,8 @@
                                 ${enrollDate
                                     ? `<span class="eie-p-enroll-done">첫 등원 ${esc(enrollDate)}</span>`
                                     : `<span class="eie-p-enroll-chip">첫 등원일 미등록</span>
-                                <input type="date" id="eie-v2-attendance-date" value="${esc(todayIso())}">
-                                ${sid ? `<button type="button" class="eie-p-btn-cancel eie-p-enroll-save" data-eie-v2-attendance-save="${esc(sid)}">저장</button>` : ''}`}
+                                <input type="date" id="eie-v2-edit-first-attendance-date" value="${esc(todayIso())}">
+                                ${sid ? `<button type="button" class="eie-p-btn-cancel eie-p-enroll-save" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-edit-first-attendance-date">저장</button>` : ''}`}
                             </div>
                             ${sid ? `
                             <div class="eie-p-danger-actions">
@@ -3319,7 +3336,10 @@
             const attendanceSaveButton = event.target.closest?.('[data-eie-v2-attendance-save]');
             if (attendanceSaveButton) {
                 event.preventDefault();
-                saveStudentAttendanceFromPanel(attendanceSaveButton.getAttribute('data-eie-v2-attendance-save') || '');
+                saveStudentAttendanceFromPanel(
+                    attendanceSaveButton.getAttribute('data-eie-v2-attendance-save') || '',
+                    attendanceSaveButton.getAttribute('data-eie-v2-attendance-date-input') || 'eie-v2-attendance-date'
+                );
                 return;
             }
             const consultationSelectButton = event.target.closest?.('[data-eie-v2-consultation-select]');
@@ -3854,7 +3874,7 @@
         }
     }
 
-    async function saveStudentAttendanceFromPanel(studentId) {
+    async function saveStudentAttendanceFromPanel(studentId, dateInputId = 'eie-v2-attendance-date') {
         const sid = normalizeKey(studentId || viewState.selectedStudentId);
         if (!sid || viewState.studentSaving) return;
         if (!window.EieApi?.saveAttendanceRecord) {
@@ -3862,7 +3882,7 @@
             reopenPanelMountRoute();
             return;
         }
-        const dateEl = document.getElementById('eie-v2-attendance-date');
+        const dateEl = document.getElementById(dateInputId || 'eie-v2-attendance-date');
         const session = selectedSessionRecord();
         const cellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
         const payload = {
@@ -3878,7 +3898,16 @@
             const result = await window.EieApi.saveAttendanceRecord(payload);
             const rows = result?.attendance_records || result?.attendance || (result?.attendance_record ? [result.attendance_record] : (result?.data ? [result.data] : []));
             if (window.EieState?.mergeStudentAttendance) window.EieState.mergeStudentAttendance(sid, rows);
-            viewState.studentNotice = '등원을 저장했습니다.';
+            const currentEnrollDate = studentEnrollDate(selectedStudentRecord());
+            const shouldWriteFirstEnrollDate = !currentEnrollDate;
+            if (shouldWriteFirstEnrollDate && window.EieApi?.updateStudent) {
+                const studentResult = await window.EieApi.updateStudent(sid, applyEnrollDateFields({}, payload.date));
+                const row = studentResult?.student || studentResult?.data || null;
+                await refreshStudentFoundation(row || { id: sid, raw_meta_json: JSON.stringify(applyEnrollDateFields({}, payload.date)) });
+            } else if (rows.length) {
+                await refreshStudentFoundation(selectedStudentRecord() || { id: sid });
+            }
+            viewState.studentNotice = shouldWriteFirstEnrollDate ? '등원일을 저장했습니다.' : '등원을 저장했습니다.';
         } catch (error) {
             viewState.studentError = error?.message || '등원을 저장하지 못했습니다.';
         } finally {
@@ -4452,6 +4481,7 @@
                 student_type: studentFieldValue('eie-v2-edit-student-type') || '일반',
                 status: 'active'
             };
+            applyEnrollDateFields(payload, studentFieldValue('eie-v2-new-enroll-date'));
             const result = await window.EieApi.createStudent(payload);
             const newId = normalizeKey(result?.id || result?.data?.id || result?.student?.id || '');
             const sessionId = viewState.miniAddStudentSessionId || viewState.selectedSessionId;
@@ -4502,6 +4532,7 @@
             status: studentFieldValue('eie-v2-edit-status') || 'active',
             memo: studentFieldValue('eie-v2-edit-memo')
         };
+        applyEnrollDateFields(payload, studentFieldValue('eie-v2-edit-enroll-date'));
         if (!payload.display_name) {
             viewState.studentError = '학생명은 필수입니다.';
             reopenPanelMountRoute();
