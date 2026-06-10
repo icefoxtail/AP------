@@ -3663,77 +3663,110 @@
         eventsBound = true;
     }
 
-    function resetTimetablePrintScale() {
-        const containers = document.querySelectorAll('.eie-print-fit-container');
-        containers.forEach(node => {
-            node.classList.remove('eie-print-fit-container');
-            node.style.width = '';
-            node.style.height = '';
-            node.style.margin = '';
-            node.style.overflow = '';
-        });
-        const targets = document.querySelectorAll('.eie-print-fit-target');
-        targets.forEach(node => {
-            node.classList.remove('eie-print-fit-target');
-            node.style.transform = '';
-            node.style.width = '';
-            node.style.height = '';
-        });
+    function removeTimetablePrintSheet() {
+        const existing = document.getElementById('eie-print-sheet');
+        if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
     }
 
-    function applyTimetablePrintScale() {
-        resetTimetablePrintScale();
+    function getTimetablePrintSource() {
         const weekdayGrid = document.querySelector('.eie-weekday-overlay .eie-weekday-grid');
-        const weekdayScroll = document.querySelector('.eie-weekday-overlay .eie-weekday-overlay__scroll');
+        if (weekdayGrid) {
+            const day = normalizeKey(viewState.activeDayOverlay || viewState.selectedDay || weekdayGrid.closest?.('.eie-weekday-overlay')?.getAttribute?.('data-eie-day') || '');
+            const label = day ? getDayLabelName(day) : '요일별';
+            return {
+                type: 'weekday',
+                title: `EIE ${label} 시간표`,
+                node: weekdayGrid
+            };
+        }
         const fullGrid = document.querySelector('.eie-v2-board-grid.eie-v2-full-grid');
-        const fullScroll = document.querySelector('.eie-v2-board-scroll');
-        const isWeekday = !!(weekdayGrid && weekdayScroll);
-        const target = isWeekday ? weekdayGrid : fullGrid;
-        const container = isWeekday ? weekdayScroll : fullScroll;
-        if (!target || !container) return;
+        if (!fullGrid) return null;
+        return {
+            type: 'full',
+            title: 'EIE 전체 시간표',
+            node: fullGrid
+        };
+    }
 
-        const PRINT_AREA_WIDTH = 1060;
-        const PRINT_AREA_HEIGHT = 720;
-        const head = !isWeekday ? document.querySelector('.eie-v2-page-head.eie-v2-card-head') : null;
-        const extraHeadHeight = head ? Math.ceil(head.getBoundingClientRect().height) + 8 : 0;
-        const availableWidth = PRINT_AREA_WIDTH;
-        const availableHeight = Math.max(320, PRINT_AREA_HEIGHT - extraHeadHeight);
+    function buildTimetablePrintSheet() {
+        removeTimetablePrintSheet();
+        const source = getTimetablePrintSource();
+        if (!source?.node) return null;
 
-        const rect = target.getBoundingClientRect();
-        const naturalWidth = Math.ceil(rect.width || target.scrollWidth || 0);
-        const naturalHeight = Math.ceil(rect.height || target.scrollHeight || 0);
-        if (!naturalWidth || !naturalHeight) return;
+        const sheet = document.createElement('div');
+        sheet.id = 'eie-print-sheet';
+        sheet.className = `eie-print-sheet eie-print-sheet--measure is-${source.type}`;
 
-        const scale = Math.min(1, availableWidth / naturalWidth, availableHeight / naturalHeight);
-        container.classList.add('eie-print-fit-container');
-        target.classList.add('eie-print-fit-target');
-        container.style.width = `${Math.ceil(naturalWidth * scale)}px`;
-        container.style.height = `${Math.ceil(naturalHeight * scale)}px`;
-        container.style.margin = '0 auto';
-        container.style.overflow = 'visible';
-        target.style.width = `${naturalWidth}px`;
-        target.style.height = `${naturalHeight}px`;
-        target.style.transform = `scale(${scale})`;
+        const title = document.createElement('div');
+        title.className = 'eie-print-sheet-title';
+        title.textContent = source.title || 'EIE 시간표';
+
+        const body = document.createElement('div');
+        body.className = 'eie-print-sheet-body';
+
+        const stage = document.createElement('div');
+        stage.className = 'eie-print-sheet-stage';
+
+        const clone = source.node.cloneNode(true);
+        clone.classList.add('eie-print-sheet-grid-clone');
+        clone.removeAttribute('id');
+        stage.appendChild(clone);
+        body.appendChild(stage);
+        sheet.appendChild(title);
+        sheet.appendChild(body);
+        document.body.appendChild(sheet);
+
+        const rect = clone.getBoundingClientRect();
+        const naturalWidth = Math.ceil(Math.max(rect.width || 0, clone.scrollWidth || 0));
+        const naturalHeight = Math.ceil(Math.max(rect.height || 0, clone.scrollHeight || 0));
+        if (!naturalWidth || !naturalHeight) {
+            removeTimetablePrintSheet();
+            return null;
+        }
+
+        const PRINT_WIDTH = 1084;
+        const PRINT_BODY_HEIGHT = 730;
+        const scale = Math.min(1, PRINT_WIDTH / naturalWidth, PRINT_BODY_HEIGHT / naturalHeight);
+        const scaledWidth = naturalWidth * scale;
+        const left = Math.max(0, Math.floor((PRINT_WIDTH - scaledWidth) / 2));
+
+        stage.style.width = `${naturalWidth}px`;
+        stage.style.height = `${naturalHeight}px`;
+        stage.style.left = `${left}px`;
+        stage.style.top = '0px';
+        stage.style.transform = `scale(${scale})`;
+        sheet.style.setProperty('--eie-print-scale', String(scale));
+        sheet.style.setProperty('--eie-print-natural-width', `${naturalWidth}px`);
+        sheet.style.setProperty('--eie-print-natural-height', `${naturalHeight}px`);
+        sheet.classList.remove('eie-print-sheet--measure');
+        return sheet;
     }
 
     function printTimetable() {
         const body = document && document.body;
+        const sheet = buildTimetablePrintSheet();
+        if (!sheet) {
+            window.print?.();
+            return;
+        }
         if (body?.classList) body.classList.add('eie-printing-timetable');
 
         const cleanup = () => {
-            resetTimetablePrintScale();
+            removeTimetablePrintSheet();
             if (body?.classList) body.classList.remove('eie-printing-timetable');
             window.removeEventListener?.('afterprint', cleanup);
         };
 
         window.addEventListener?.('afterprint', cleanup, { once: true });
-        window.requestAnimationFrame?.(() => {
-            applyTimetablePrintScale();
-            window.requestAnimationFrame?.(() => {
-                window.print?.();
-                window.setTimeout?.(cleanup, 1500);
-            });
-        });
+        const runPrint = () => {
+            window.print?.();
+            window.setTimeout?.(cleanup, 2000);
+        };
+        if (window.requestAnimationFrame) {
+            window.requestAnimationFrame(() => window.requestAnimationFrame(runPrint));
+        } else {
+            window.setTimeout(runPrint, 50);
+        }
     }
 
     function reopenPanelMountRoute() {
