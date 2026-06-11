@@ -349,23 +349,25 @@ function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, 
                 : `openDailyJournalModal('${day.date}')`;
             const labelText = `${day.label} ${apFormatMonthDay(day.date) || day.date}`;
             const ariaText = `${labelText} ${statusText} 일지 열기`;
-            const toneStyle = done
-                ? 'color:var(--text); background:var(--surface); border-color:var(--border);'
-                : (holiday
-                    ? 'color:var(--secondary); background:var(--surface); border-color:var(--border);'
-                    : 'color:var(--secondary); background:var(--surface); border-color:var(--border);');
+            // D. 미작성 행 = 좌측 보더 액센트(status-pending) + 즉시 작성 버튼. 제출완료/휴무는 배지만.
+            const isPending = !done && !holiday;
+            const badgeClass = done ? 'ap-badge--complete' : (holiday ? 'ap-badge--holiday' : 'ap-badge--pending');
+            const right = isPending
+                ? `<div style="display:flex; gap:8px; align-items:center;">
+                       <span class="ap-badge ${badgeClass}">${apEscapeHtml(statusText)}</span>
+                       <button type="button" class="ap-inline-btn" onclick="event.stopPropagation(); ${click}">일지 작성</button>
+                   </div>`
+                : `<span class="ap-badge ${badgeClass}">${apEscapeHtml(statusText)}</span>`;
             return `
-                <button class="journal-day-cell journal-day-cell--${done ? 'done' : (holiday ? 'holiday' : 'missing')}" style="width:100%; min-height:44px; padding:0 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; gap:8px; text-align:left; box-sizing:border-box;" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
-                    <span class="journal-day-cell__label" style="font-size:13px; font-weight:500; white-space:nowrap;">${apEscapeHtml(labelText)}</span>
-                    <span class="journal-day-cell__spacer" style="flex:1; min-width:8px;" aria-hidden="true"></span>
-                    <span class="journal-day-cell__status" style="min-width:66px; height:26px; padding:0 8px; border-radius:999px; border:1px solid var(--border); display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; ${toneStyle}">${apEscapeHtml(statusText)}</span>
-                    <span class="journal-day-cell__chevron" style="color:var(--secondary); font-size:18px; line-height:1;" aria-hidden="true">›</span>
-                </button>
+                <div class="ap-list-row${isPending ? ' status-pending' : ''}" style="cursor:pointer;" onclick="event.stopPropagation(); ${click}" role="button" tabindex="0" aria-label="${apEscapeHtml(ariaText)}">
+                    <span style="font-size:13px; font-weight:400; white-space:nowrap; color:var(--text);">${apEscapeHtml(labelText)}</span>
+                    ${right}
+                </div>
             `;
         }).join('');
 
     if (!cells.trim()) {
-        return `<div class="journal-matrix journal-matrix--empty" style="display:flex; min-height:50px; align-items:center; justify-content:center; border-radius:14px; border:1px solid var(--border); background:var(--surface);"><span class="journal-matrix__empty" style="color:var(--secondary); font-size:13px; font-weight:600;">이번 주 작성 대상일이 없습니다.</span></div>`;
+        return `<div class="journal-matrix journal-matrix--empty" style="display:flex; min-height:50px; align-items:center; justify-content:center; border-radius:6px; border:1px solid var(--border); background:var(--surface);"><span class="journal-matrix__empty" style="color:var(--secondary); font-size:13px; font-weight:600;">이번 주 작성 대상일이 없습니다.</span></div>`;
     }
     return `<div class="journal-matrix" data-teacher="${apEscapeHtml(teacherName || '')}" style="display:flex; flex-direction:column; gap:8px;">${cells}</div>`;
 }
@@ -460,6 +462,163 @@ function injectDashboardOpsStyles() {
     link.rel = 'stylesheet';
     link.href = './css/dashboard-foundation.css';
     document.head.appendChild(link);
+}
+
+/* ============================================================
+ * [REDESIGN] 선생님 대시보드 리디자인 (확정안 A~H)
+ * - 스펙의 하드코딩 hex → 디자인 토큰(var(--*)) 매핑
+ * - 이모지 → 인라인 SVG (currentColor, 외부 의존성 없음)
+ * ============================================================ */
+function injectDashboardRedesignStyles() {
+    if (typeof document === 'undefined') return;
+    if (document.getElementById('dashboard-redesign-css')) return;
+    const style = document.createElement('style');
+    style.id = 'dashboard-redesign-css';
+    style.textContent = `
+    body.ap-teacher-dashboard-mode main#app-root {
+        width:100% !important;
+        max-width:none !important;
+        padding-left:clamp(18px, 3vw, 48px) !important;
+        padding-right:clamp(18px, 3vw, 48px) !important;
+        box-sizing:border-box;
+    }
+    .ap-dash-redesign { width:100%; max-width:100%; padding:0 0 24px; box-sizing:border-box; }
+    @media (max-width:640px){
+        body.ap-teacher-dashboard-mode main#app-root { padding-left:14px !important; padding-right:14px !important; }
+        .ap-dash-redesign{ padding-bottom:16px; }
+    }
+
+    /* B. 상단 요약 카드: 이동 기능 없이 상태만 표시 */
+    .ap-metric-container { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-bottom:24px; }
+    @media (max-width:760px){ .ap-metric-container{ grid-template-columns:1fr; gap:10px; margin-bottom:16px; } }
+    .ap-metric-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:14px 18px; transition:border-color .2s ease, box-shadow .2s ease; }
+    .ap-metric-card--summary { cursor:default; }
+    .ap-metric-card--attention { border-left:3px solid var(--warning); }
+    .ap-metric-label { font-size:12px; color:var(--secondary); margin-bottom:4px; }
+    .ap-metric-value { font-size:20px; font-weight:700; color:var(--text); line-height:1.25; }
+    .ap-metric-value--split { font-size:17px; }
+    .ap-metric-sub { margin-top:3px; font-size:11px; font-weight:500; color:var(--secondary); }
+
+    /* A. 8:4 대시보드 그리드 */
+    .ap-dash-grid { display:grid; grid-template-columns:1fr; gap:24px; }
+    @media (min-width:1024px){
+        .ap-dash-grid { grid-template-columns:repeat(12,minmax(0,1fr)); align-items:start; }
+        .ap-dash-main { grid-column:span 8 / span 8; min-width:0; }
+        .ap-dash-side { grid-column:span 4 / span 4; min-width:0; }
+    }
+
+    /* C. 카드 / 리스트 간격 통일 */
+    .ap-dash-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:20px 24px; margin-bottom:24px; }
+    .ap-dash-card:last-child { margin-bottom:0; }
+    .ap-dash-card__title { margin:0 0 12px; font-size:14px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px; }
+    .ap-list-row { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 16px; background:var(--surface); border:1px solid var(--border); border-radius:4px; margin-bottom:8px; box-sizing:border-box; }
+    .ap-list-row:last-child { margin-bottom:0; }
+
+    /* D. 오늘일지 미작성 행 — border / border-left 분리 선언 */
+    .ap-list-row.status-pending {
+        border:1px solid color-mix(in srgb, var(--danger) 35%, var(--border));
+        border-left:3px solid var(--danger);
+        background:color-mix(in srgb, var(--danger) 8%, var(--surface));
+    }
+    .ap-badge { font-size:12px; font-weight:600; padding:3px 8px; border-radius:999px; white-space:nowrap; }
+    .ap-badge--complete { color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); }
+    .ap-badge--pending { color:var(--danger); background:color-mix(in srgb, var(--danger) 12%, var(--surface)); border:1px solid color-mix(in srgb, var(--danger) 30%, var(--border)); }
+    .ap-badge--holiday { color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); }
+    .ap-inline-btn { font-size:12px; font-weight:600; padding:6px 12px; border-radius:6px; border:1px solid var(--danger); background:var(--danger); color:#fff; cursor:pointer; white-space:nowrap; }
+    .ap-inline-btn--ghost { background:var(--surface); color:var(--primary); border:1px solid var(--border); }
+
+    /* F. 오늘일정 빈 상태 + 인라인 폼 */
+    .ap-empty-state { display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; min-height:42px; text-align:left; color:var(--secondary); border:1px solid var(--border); border-radius:6px; background:var(--surface); box-sizing:border-box; }
+    .ap-empty-state p { margin:0; font-size:13px; line-height:1.3; }
+    .ap-empty-state .ap-empty-icon { display:none; }
+    .ap-inline-form { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .ap-inline-form input { flex:1 1 120px; min-width:0; height:38px; padding:0 12px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text); font-size:13px; box-sizing:border-box; }
+    .ap-inline-form input[type="date"] { flex:0 0 auto; }
+
+    /* G. 주간일정 2단 스플릿 */
+    .ap-weekly-split { display:grid; grid-template-columns:1fr; gap:16px; }
+    @media (min-width:640px){ .ap-weekly-split { grid-template-columns:1fr 1fr; } }
+    .ap-split-cell { min-width:0; }
+    .ap-split-label { font-size:12px; font-weight:600; color:var(--secondary); margin:0 0 8px; }
+    .ap-split-cell p { margin:0 0 4px; font-size:13px; color:var(--text); display:flex; align-items:center; gap:6px; }
+    .ap-split-cell .ap-split-meta { font-size:12px; color:var(--secondary); }
+    .ap-empty-notice { font-size:13px; color:var(--secondary); }
+
+    /* 오른쪽 하단 이동 버튼 */
+    .ap-dash-quick-panel { margin-top:16px; padding:0; background:transparent; border:none; box-shadow:none; }
+    .ap-dash-quick-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+    .ap-dash-quick-card { min-width:0; height:42px; padding:0 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--text); cursor:pointer; text-align:center; display:flex; align-items:center; justify-content:center; transition:border-color .18s ease, background .18s ease; }
+    .ap-dash-quick-card:hover { border-color:var(--primary); background:var(--surface-2); }
+    .ap-dash-quick-title { font-size:13px; font-weight:700; line-height:1.2; }
+    @media (max-width:420px){ .ap-dash-quick-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } .ap-dash-quick-card { height:38px; padding:0 6px; } .ap-dash-quick-title { font-size:12px; } }
+    `;
+    document.head.appendChild(style);
+}
+
+// H. 인라인 SVG 아이콘 (이모지 전면 제거). currentColor 상속.
+function apDashIcon(name, size = 16) {
+    const a = `width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; vertical-align:middle;"`;
+    const paths = {
+        // ti ti-calendar
+        calendar: '<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M16 3v4M8 3v4M4 11h16"/>',
+        // ti ti-tools
+        tools: '<path d="M3 21h4L20 8a1.5 1.5 0 0 0-4-4L3 17v4"/><path d="M14.5 5.5l4 4"/><path d="M12 8l-5-5-3 3 5 5"/>',
+        // ti ti-speakerphone
+        speakerphone: '<path d="M18 8a3 3 0 0 1 0 6"/><path d="M10 8v8H7l-3-3v-2l3-3h3z"/><path d="M10 8l8-3v14l-8-3"/>'
+    };
+    return `<svg ${a} aria-hidden="true">${paths[name] || ''}</svg>`;
+}
+
+// B. "미작성 일지" 메트릭: 이번 주 작성 대상일 중 미작성(휴무 제외) 건수
+function computeMissingJournalCount(teacherName = '') {
+    try {
+        const week = dashboardGetWeekDates(new Date().toLocaleDateString('sv-SE'));
+        const targetDays = dashboardGetJournalTargetDayKeys(teacherName);
+        return week
+            .filter(day => targetDays.includes(day.key))
+            .filter(day => {
+                const journal = dashboardFindJournal(day.date, teacherName);
+                if (dashboardIsJournalDone(journal)) return false;
+                if (isDashboardHoliday(day.date)) return false;
+                return true;
+            }).length;
+    } catch (e) {
+        return 0;
+    }
+}
+
+// F. 오늘일정 인라인 폼 토글 / 저장
+function apDashToggleScheduleForm(btn) {
+    const form = document.getElementById('ap-dash-inline-form');
+    if (!form) return;
+    const open = form.style.display === 'none' || !form.style.display;
+    form.style.display = open ? 'flex' : 'none';
+    if (btn) btn.textContent = open ? '닫기' : '+ 일정 추가';
+    if (open) {
+        const c = document.getElementById('ap-dash-inline-content');
+        if (c) c.focus();
+    }
+}
+
+async function apDashSaveInlineSchedule() {
+    const dateEl = document.getElementById('ap-dash-inline-date');
+    const contentEl = document.getElementById('ap-dash-inline-content');
+    const d = dateEl?.value || new Date().toLocaleDateString('sv-SE');
+    const c = (contentEl?.value || '').trim();
+    if (!c) { toast('일정 내용을 입력하세요', 'warn'); return; }
+    try {
+        const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: false });
+        if (r?.success) {
+            toast('일정이 저장되었습니다.', 'success');
+            await loadData();
+            renderDashboard();
+            return;
+        }
+        toast(r?.message || r?.error || '일정 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[apDashSaveInlineSchedule] failed:', e);
+        toast('일정 저장 중 오류가 발생했습니다.', 'error');
+    }
 }
 
 function computeRiskStudents() {
@@ -2501,7 +2660,7 @@ function renderTodoSections() {
             const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
             const title = s.title || (isClosed ? '휴무' : '일정');
             return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
                 <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
             </div>`;
         }).join('');
@@ -2522,36 +2681,56 @@ function renderTodoSections() {
     thisMonday.setDate(todayDate.getDate() + diffToMonday);
     const weekDiff = Math.round((thisMonday - CLEANING_REF_MONDAY) / (7 * 24 * 60 * 60 * 1000));
     const cleaningPerson = CLEANING_ROSTER[((1 + weekDiff) % 4 + 4) % 4];
+    const iconTools = typeof apDashIcon === 'function' ? apDashIcon('tools', 14) : '';
+    const iconCalendar = typeof apDashIcon === 'function' ? apDashIcon('calendar', 28) : '';
+    const iconSpeaker = typeof apDashIcon === 'function' ? apDashIcon('speakerphone', 14) : '';
+
+    // G. 좌: 고정 루틴(청소 당번 + 신입생 상담 등 반복 항목) / 우: 학원 공지(예정 일정, 빈 상태 처리)
     const cleaningHtml = `
-        <div style="${rowBase} border-bottom:1px solid var(--border); background:transparent;">
-            <div style="display:flex; align-items:center; gap:8px; min-width:0;">
-                <span style="font-size:13px;">🧹</span>
-                <span style="font-size:13px; font-weight:400; color:var(--text);">이번 주 청소 당번</span>
-                <span style="font-size:13px; font-weight:600; color:var(--primary);">${apEscapeHtml(cleaningPerson)}</span>
-            </div>
-            <span style="font-size:11px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; white-space:nowrap; flex-shrink:0;">매주 월요일</span>
-        </div>`;
+        <p><span style="color:var(--secondary);">${iconTools}</span> 청소 당번: <strong style="color:var(--primary);">${apEscapeHtml(cleaningPerson)}</strong></p>
+        <span class="ap-split-meta">매주 월요일</span>`;
+
+    // 공지 컨테이너는 항상 렌더(비동기 신입생 상담 행 주입 대상). 빈 안내는 토글.
+    const noticeEmpty = !(upcomingHtml || onboardingWeeklyHtml);
+    const noticeHtml = `
+        ${upcomingHtml || ''}
+        <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
+        <p id="weekly-notice-empty" class="ap-empty-notice"${noticeEmpty ? '' : ' style="display:none;"'}>등록된 공지가 없습니다.</p>`;
+
+    // F. 오늘일정 빈 상태 + 인라인 폼 (페이지 전환 없이 펼침)
+    const todayBodyHtml = todayMemos.length
+        ? `<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; overflow:hidden; border-radius:6px; border:1px solid var(--border); background:var(--surface);">${todayHtml}</div>`
+        : `<div class="ap-empty-state">
+                <span class="ap-empty-icon">${iconCalendar}</span>
+                <p>오늘 등록된 일정이 없습니다.</p>
+                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 일정 추가</button>
+           </div>
+           <div id="ap-dash-inline-form" class="ap-inline-form" style="display:none;">
+                <input type="date" id="ap-dash-inline-date" value="${todayStr}">
+                <input type="text" id="ap-dash-inline-content" placeholder="일정 내용"
+                       onkeydown="if(event.key==='Enter') apDashSaveInlineSchedule();">
+                <button type="button" class="ap-inline-btn" onclick="apDashSaveInlineSchedule()">저장</button>
+           </div>`;
 
     return `
-        <div style="margin-bottom:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일정</h3>
-            </div>
-            <div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--surface);">
-                ${todayHtml}
-            </div>
+        <section class="ap-dash-card">
+            <h3 class="ap-dash-card__title">오늘일정</h3>
+            ${todayBodyHtml}
+        </section>
 
-            <div id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" data-has-cleaning-schedule="${hasCleaningSchedule ? '1' : '0'}" style="">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                    <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
-                </div>
-                <div id="dashboard-weekly-schedule-list" class="ap-dashboard-surface-list ap-dashboard-surface-list--weekly" style="overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--surface);">
+        <section class="ap-dash-card" id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" data-has-cleaning-schedule="${hasCleaningSchedule ? '1' : '0'}">
+            <h3 class="ap-dash-card__title">주간일정</h3>
+            <div id="dashboard-weekly-schedule-list" class="ap-weekly-split">
+                <div class="ap-split-cell">
+                    <p class="ap-split-label">고정 루틴</p>
                     ${cleaningHtml}
-                    ${upcomingHtml}
-                    <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
+                </div>
+                <div class="ap-split-cell">
+                    <p class="ap-split-label"><span style="color:var(--secondary);">${iconSpeaker}</span> 학원 공지</p>
+                    ${noticeHtml}
                 </div>
             </div>
-        </div>
+        </section>
     `;
 }
 
@@ -2559,30 +2738,11 @@ function renderTodoSections() {
 
 function renderTodayJournalCard(data) {
     injectDashboardOpsStyles();
-    const todayClasses = (state?.db?.classes || []).filter(c => {
-        if (Number(c?.is_active) === 0) return false;
-        if (!isMiddleSchoolClass(c)) return false;
-        if (!isClassVisibleForCurrentTeacher(c)) return false;
-
-        const summary = data?.classSummaries?.[c.id];
-        if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
-        return true;
-    });
-
-    const contentHtml = todayClasses.length === 0
-        ? '수업 없음'
-        : todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ');
-
     return `
-        <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher" style="margin-bottom:18px;">
-            <div class="ap-dashboard-section-head ap-dashboard-journal-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-dashboard-journal-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일지</h3>
-            </div>
-            <div id="dashboard-journal-content" class="ap-dashboard-journal-summary ap-dashboard-journal-summary--plain" style="min-height:28px; padding:0 4px 8px; display:flex; align-items:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.45; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                ${contentHtml}
-            </div>
+        <section id="ap-dash-journal-section" class="ap-dash-card">
+            <h3 class="ap-dash-card__title">오늘일지</h3>
             ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
-        </div>
+        </section>
     `;
 }
 
@@ -2724,7 +2884,7 @@ function renderOnboardingWeeklyScheduleRows(tasks = null) {
 
         return `<div onclick="event.stopPropagation(); openOnboardingTask('${taskId}')" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(15,23,42,0.08); background:transparent;">
             <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                <span style="font-size:11px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">상담</span>${apEscapeHtml(label)} · ${apEscapeHtml(studentName)}${className ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(className)}</span>` : ''}
+                <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">상담</span>${apEscapeHtml(label)} · ${apEscapeHtml(studentName)}${className ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(className)}</span>` : ''}
             </div>
             ${dueLabel ? `<span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${apEscapeHtml(dueLabel)}</span>` : ''}
         </div>`;
@@ -2854,6 +3014,9 @@ function updateDashboardOnboardingTasksSection() {
         const regularCount = Number(weeklySection.dataset.regularWeeklyCount || 0);
         const hasCleaningSchedule = weeklySection.dataset.hasCleaningSchedule === '1';
         weeklySection.style.display = (regularCount > 0 || onboardingCount > 0 || hasCleaningSchedule) ? '' : 'none';
+        // G. 학원 공지 빈 안내 토글 (예정 일정 + 비동기 상담 행 기준)
+        const noticeEmpty = document.getElementById('weekly-notice-empty');
+        if (noticeEmpty) noticeEmpty.style.display = (regularCount > 0 || onboardingCount > 0) ? 'none' : '';
     }
 
     const panelTarget = document.getElementById('dashboard-onboarding-panel-root') || document.getElementById('dashboard-onboarding-tasks-root');
