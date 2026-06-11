@@ -1300,26 +1300,48 @@ var SEB_COLS = [
 ];
 
 function getSebExamRecord(studentId, year, semester, examType, subject) {
-    var subj = subject || '수학';
+    // 과목명 표기 변형(미적분2/공통수학Ⅰ 등)을 정규화해서 비교해야 기존 기록 점수가 누락되지 않는다.
+    // 중등 '수학'은 정규화해도 '수학' 그대로 유지된다.
+    var subj = normalizeSebHighSubjectName(subject || '수학');
     return (state.db.school_exam_records || []).find(function(r) {
         return String(r.student_id) === String(studentId) &&
             Number(r.exam_year) === Number(year) &&
             String(r.semester || '') === semester &&
             String(r.exam_type || '') === examType &&
-            String(r.subject || '') === subj &&
+            normalizeSebHighSubjectName(r.subject || '') === subj &&
             String(r.is_deleted || 0) !== '1';
     });
 }
 
-/* 고등 전용: 해당 학생+연도에 성적이 입력된 과목 목록 반환 (SEB_HIGH_SUBJECTS 순 정렬) */
-var SEB_HIGH_SUBJECTS = ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
+/* 고등 과목 정책
+ * - 고1 입력/표시 기준: 공통수학1, 공통수학2
+ * - 고2/고3 입력/표시 기준: 대수, 미적분Ⅰ, 확률과통계, 미적분Ⅱ, 기하 (또는 학생 high_subjects)
+ * SEB_HIGH_SUBJECTS는 정렬/선택지 union 기준(공통수학1/2 + 선택과목 전체)이다. */
+var SEB_HIGH_COMMON_SUBJECTS = ['공통수학1', '공통수학2'];
+var SEB_HIGH_ADVANCED_SUBJECTS = ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
+var SEB_HIGH_SUBJECTS = SEB_HIGH_COMMON_SUBJECTS.concat(SEB_HIGH_ADVANCED_SUBJECTS);
 
 function normalizeSebHighSubjectName(subject) {
     var s = String(subject || '').trim();
     if (s === '미적분1') return '미적분Ⅰ';
     if (s === '미적분2') return '미적분Ⅱ';
     if (s === '기하와벡터') return '기하';
+    // 공통수학 표기 변형 정규화 (공통수학 1 / 공통수학Ⅰ / 공통수학I → 공통수학1)
+    var common = s.replace(/\s+/g, '');
+    if (common === '공통수학1' || common === '공통수학Ⅰ' || common === '공통수학I') return '공통수학1';
+    if (common === '공통수학2' || common === '공통수학Ⅱ' || common === '공통수학II') return '공통수학2';
     return s;
+}
+
+/* 학년별 고등 기본 과목 후보 (기록/high_subjects가 전혀 없을 때 사용) */
+function getSebDefaultHighSubjectsForStudent(student) {
+    if (!isSebHighStudent(student)) return [];
+    var grade = getSebStudentDisplayGrade(student);
+    if (grade === '고1') return SEB_HIGH_COMMON_SUBJECTS.slice();
+    // 고2/고3: 학생 high_subjects가 있으면 우선, 없으면 선택과목 전체
+    var high = sortSebSubjects(parseSebHighSubjects(student?.high_subjects));
+    if (high.length) return high;
+    return SEB_HIGH_ADVANCED_SUBJECTS.slice();
 }
 
 function parseSebHighSubjects(value) {
@@ -1368,21 +1390,24 @@ function sortSebSubjects(subjects) {
 function getSebHighSubjectsForStudent(studentId, year) {
     var student = getCumulativeStudent(studentId);
 
-    if (isSebSubjectManagedGrade(student)) {
-        return sortSebSubjects(parseSebHighSubjects(student?.high_subjects));
-    }
-
-    var records = (state.db.school_exam_records || []).filter(function(r) {
+    // 1) 해당 연도에 실제 입력된 과목은 점수 유무와 무관하게 항상 보존한다.
+    var recordSubjects = (state.db.school_exam_records || []).filter(function(r) {
         return String(r.student_id) === String(studentId) &&
             Number(r.exam_year) === Number(year) &&
-            String(r.is_deleted || 0) !== '1' &&
-            (r.score !== null && r.score !== undefined && r.score !== '');
-    });
-    var subjects = records.map(function(r) { return r.subject || ''; });
+            String(r.is_deleted || 0) !== '1';
+    }).map(function(r) { return r.subject || ''; });
 
+    // 2) 학생 high_subjects를 합친다.
+    var subjects = recordSubjects.concat(parseSebHighSubjects(student?.high_subjects)).filter(Boolean);
+
+    // 3) 기록도 high_subjects도 없으면 학년별 기본 과목으로 보조 표시한다.
     if (!subjects.length) {
-        var grade = getSebStudentDisplayGrade(student);
-        if (grade === '고1') subjects = ['공통수학1'];
+        subjects = getSebDefaultHighSubjectsForStudent(student);
+    }
+
+    // 4) 고1은 기록/high_subjects 유무와 무관하게 공통수학1/2가 항상 후보에 포함된다.
+    if (isSebHighStudent(student) && getSebStudentDisplayGrade(student) === '고1') {
+        subjects = SEB_HIGH_COMMON_SUBJECTS.concat(subjects);
     }
 
     return sortSebSubjects(subjects);
@@ -2170,18 +2195,24 @@ function openSchoolExamRecordModal(recordId, studentId) {
     var student = selectedStudentId ? getCumulativeStudent(selectedStudentId) : null;
     var targetScore = record?.target_score_snapshot ?? student?.target_score ?? '';
 
-    /* 고등 여부 판별 */
+    /* 고등 여부 판별 + 학년별 기본 과목 */
     var isHigh = student ? isSebHighStudent(student) : false;
-    var curSubject = normalizeSebHighSubjectName(record?.subject || (isHigh ? '대수' : '수학'));
+    var defaultHighSubjects = isHigh ? getSebDefaultHighSubjectsForStudent(student) : [];
+    var fallbackSubject = isHigh ? (defaultHighSubjects[0] || '대수') : '수학';
+    var curSubject = normalizeSebHighSubjectName(record?.subject || fallbackSubject);
 
     /* 과목 필드: 고등=선택박스, 중등=텍스트입력 */
     var subjectField = '';
     if (isHigh) {
-        var subjOptions = SEB_HIGH_SUBJECTS.map(function(s) {
+        /* 학년별 기본 과목을 먼저 보여주고, 수정 중인 record.subject가 목록에 없으면 보존한다. */
+        var optionSubjects = defaultHighSubjects.slice();
+        if (curSubject && optionSubjects.indexOf(curSubject) === -1) optionSubjects.push(curSubject);
+        optionSubjects = sortSebSubjects(optionSubjects);
+        var subjOptions = optionSubjects.map(function(s) {
             return '<option value="' + apEscapeHtml(s) + '"' + (curSubject === s ? ' selected' : '') + '>' + apEscapeHtml(s) + '</option>';
         }).join('');
-        subjOptions += '<option value="__custom__"' + (!SEB_HIGH_SUBJECTS.includes(curSubject) && curSubject ? ' selected' : '') + '>직접입력...</option>';
-        subjectField = '<select id="ser-subject" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);text-align:left;" onchange="if(this.value===\'__custom__\'){var v=prompt(\'과목명 직접입력\',\'\');if(v){var o=document.createElement(\'option\');o.value=v;o.text=v;this.insertBefore(o,this.lastElementChild);this.value=v;}else{this.value=\'' + apEscapeHtml(SEB_HIGH_SUBJECTS[0]) + '\';}}">'+subjOptions+'</select>';
+        subjOptions += '<option value="__custom__">직접입력...</option>';
+        subjectField = '<select id="ser-subject" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);text-align:left;" onchange="if(this.value===\'__custom__\'){var v=prompt(\'과목명 직접입력\',\'\');if(v){var o=document.createElement(\'option\');o.value=v;o.text=v;this.insertBefore(o,this.lastElementChild);this.value=v;}else{this.value=\'' + apEscapeHtml(fallbackSubject) + '\';}}">'+subjOptions+'</select>';
     } else {
         subjectField = '<input id="ser-subject" class="btn" value="' + apEscapeHtml(curSubject) + '" placeholder="과목" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">';
     }
@@ -2218,8 +2249,9 @@ async function saveSchoolExamRecord(recordId) {
 
     var student = getCumulativeStudent(studentId);
     var rawSubject = document.getElementById('ser-subject')?.value || '';
-    /* __custom__ 이 남아있으면 빈 값으로 처리 */
-    var subject = (rawSubject === '__custom__' ? '' : rawSubject.trim()) || (isSebHighStudent(student) ? '대수' : '수학');
+    /* __custom__ 이 남아있으면 빈 값으로 처리. 고등 fallback은 학년별 기본 과목을 따른다(고1=공통수학1). */
+    var highFallback = (getSebDefaultHighSubjectsForStudent(student)[0] || '대수');
+    var subject = (rawSubject === '__custom__' ? '' : rawSubject.trim()) || (isSebHighStudent(student) ? highFallback : '수학');
 
     var payload = {
         studentId: studentId,

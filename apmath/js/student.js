@@ -7,7 +7,7 @@
 // [UI Standard]: 공통 스타일 주입 (고정 규격 반영)
 function injectStudentStyles() {
     const existingStyle = document.getElementById('student-detail-style');
-    if (existingStyle && String(existingStyle.textContent || '').includes('apms-edit-form-v2')) return;
+    if (existingStyle && String(existingStyle.textContent || '').includes('ap-student-grade-subtabs')) return;
     if (existingStyle) existingStyle.remove();
     const style = document.createElement('style');
     style.id = 'student-detail-style';
@@ -181,6 +181,19 @@ function injectStudentStyles() {
         .ap-student-detail-shell { gap:10px !important; }
         .ap-student-card-purple { border-left:3px solid #6E66C9; }
         .ap-student-card-amber { border-left:3px solid #D97706; }
+        /* 성적 탭 하위 탭(학교성적/원내평가) */
+        .ap-student-grade-subtabs { margin-bottom:2px; }
+        .ap-student-school-score-table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:8px; background:var(--surface-2); }
+        .ap-student-school-score-table { width:100%; min-width:420px; border-collapse:collapse; }
+        .ap-student-school-score-table th,
+        .ap-student-school-score-table td { padding:8px 10px; border-bottom:1px solid var(--border); text-align:center; white-space:nowrap; }
+        .ap-student-school-score-table thead th { color:var(--secondary); font-size:11px; font-weight:600; }
+        .ap-student-school-score-table tbody th { color:var(--text); font-size:12px; font-weight:600; text-align:left; }
+        .ap-student-school-score-table tbody td { color:var(--text); font-size:12.5px; font-weight:500; }
+        .ap-student-school-score-table tbody tr:last-child th,
+        .ap-student-school-score-table tbody tr:last-child td { border-bottom:0; }
+        .ap-student-school-score-chip { display:inline-flex; align-items:center; min-height:22px; padding:2px 9px; border:1px solid var(--border); border-radius:999px; background:var(--surface); color:var(--text); font-size:12px; font-weight:600; }
+        .ap-student-score-empty { padding:24px 14px; text-align:center; color:var(--secondary); background:var(--surface-2); border:1px dashed var(--border); border-radius:10px; font-size:13px; font-weight:500; line-height:1.6; }
         @media (max-width:640px) {
             .apms-eie-detail { padding:0 10px 4px; }
             .apms-eie-detail-head { flex-direction:column; }
@@ -1232,7 +1245,19 @@ async function openStudentDetail(sid, options = {}) {
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
     const mode = options.mode === 'edit' ? 'edit' : 'view';
     if (!state.ui) state.ui = {};
+
+    // 상태를 덮어쓰기 전에 이전 학생/탭을 먼저 저장해야 성적 하위 탭 리셋 판단이 정확하다.
+    const oldDetailId = state.ui.currentStudentDetailId;
+    const oldTab = state.ui.currentStudentDetailTab || 'basic';
     const tab = normalizeStudentDetailTab(options.tab || state.ui.currentStudentDetailTab || 'basic');
+
+    // 성적 탭에 새로 진입(다른 탭→성적)하거나 학생이 바뀌면 기본 하위 탭은 학교성적으로 리셋한다.
+    // 같은 학생의 grade 탭 내부 하위 탭 전환(oldTab==='grade')은 유지된다.
+    if (mode === 'view' && tab === 'grade'
+        && (String(oldDetailId || '') !== String(sid) || oldTab !== 'grade')) {
+        state.ui.studentGradeSubTab = 'school';
+    }
+
     state.ui.currentStudentDetailId = String(sid);
     state.ui.currentStudentDetailMode = mode;
     if (mode === 'view') state.ui.currentStudentDetailTab = tab;
@@ -1911,7 +1936,15 @@ function renderStudentDetailShell(sid, options = {}) {
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
 
     const previousTab = state.ui.currentStudentDetailTab || 'basic';
+    const previousDetailId = state.ui.currentStudentDetailId;
     const tab = normalizeStudentDetailTab(options.tab || previousTab || 'basic');
+
+    // 성적 탭에 새로 진입(다른 탭→성적)하거나 학생이 바뀌면 기본 하위 탭은 학교성적으로 리셋한다.
+    // (같은 학생의 학교성적↔원내평가 하위 탭 전환은 previousTab이 이미 'grade'라 리셋되지 않는다.)
+    if (mode === 'view' && tab === 'grade'
+        && (String(previousDetailId || '') !== String(sid) || previousTab !== 'grade')) {
+        state.ui.studentGradeSubTab = 'school';
+    }
 
     state.ui.currentStudentDetailId = String(sid);
     state.ui.currentStudentDetailMode = mode;
@@ -1975,10 +2008,276 @@ function renderStudentDetailTab(sid, tab = 'basic') {
     });
 }
 
+/* ============================================================
+ * [Tab 1] 성적 탭 — 학교성적/원내평가 하위 탭
+ * 학교성적 데이터 규칙은 성적표(cumulative.js)와 동일하게 유지하되,
+ * student.js가 cumulative.js보다 먼저 로드되므로(index.html 순서)
+ * 학생상세 전용 helper를 독립적으로 둔다. 저장 흐름은 건드리지 않는다.
+ * ============================================================ */
+const AP_STUDENT_GRADE_SUB_TABS = ['school', 'academy'];
+const AP_STUDENT_SCHOOL_EXAM_COLS = [
+    { semester: '1학기', examType: 'midterm', label: '1학기 중간' },
+    { semester: '1학기', examType: 'final', label: '1학기 기말' },
+    { semester: '2학기', examType: 'midterm', label: '2학기 중간' },
+    { semester: '2학기', examType: 'final', label: '2학기 기말' }
+];
+const AP_STUDENT_HIGH_SUBJECTS = ['공통수학1', '공통수학2', '대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
+
+function getStudentGradeSubTab() {
+    const value = String(state.ui?.studentGradeSubTab || 'school');
+    return AP_STUDENT_GRADE_SUB_TABS.includes(value) ? value : 'school';
+}
+
+function setStudentGradeSubTab(sid, tab) {
+    if (!state.ui) state.ui = {};
+    state.ui.studentGradeSubTab = AP_STUDENT_GRADE_SUB_TABS.includes(String(tab)) ? String(tab) : 'school';
+    renderStudentDetailTab(sid, 'grade');
+}
+
+function renderStudentGradeSubTabs(sid, activeSubTab) {
+    const active = AP_STUDENT_GRADE_SUB_TABS.includes(String(activeSubTab)) ? String(activeSubTab) : 'school';
+    const tabs = [
+        { key: 'school', label: '학교성적' },
+        { key: 'academy', label: '원내평가' }
+    ];
+    return `
+        <div class="apms-eie-tabs ap-student-grade-subtabs">
+            ${tabs.map(item => `
+                <button
+                    type="button"
+                    class="apms-eie-tab ${item.key === active ? 'is-active' : ''}"
+                    onclick="setStudentGradeSubTab(${apmsStudentJsString(sid)}, ${apmsStudentJsString(item.key)})"
+                >${apmsStudentDetailEsc(item.label)}</button>
+            `).join('')}
+        </div>
+    `;
+}
+
+// cumulative.js의 normalizeSebHighSubjectName과 동일 규칙
+function normalizeStudentSchoolSubjectName(subject) {
+    const s = String(subject || '').trim();
+    if (s === '미적분1') return '미적분Ⅰ';
+    if (s === '미적분2') return '미적분Ⅱ';
+    if (s === '기하와벡터') return '기하';
+    const common = s.replace(/\s+/g, '');
+    if (common === '공통수학1' || common === '공통수학Ⅰ' || common === '공통수학I') return '공통수학1';
+    if (common === '공통수학2' || common === '공통수학Ⅱ' || common === '공통수학II') return '공통수학2';
+    return s;
+}
+
+function parseStudentHighSubjects(value) {
+    if (Array.isArray(value)) return value.map(normalizeStudentSchoolSubjectName).filter(Boolean);
+    const raw = String(value || '').trim();
+    if (!raw) return [];
+    try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed.map(normalizeStudentSchoolSubjectName).filter(Boolean);
+    } catch (e) {}
+    return raw.split(',').map(normalizeStudentSchoolSubjectName).filter(Boolean);
+}
+
+function isStudentDetailHighSchool(student) {
+    // cumulative.js가 로드되어 있으면 성적표와 같은 판별(반 정보 포함)을 그대로 쓴다.
+    if (typeof isSebHighStudent === 'function') {
+        try { return isSebHighStudent(student); } catch (e) {}
+    }
+    return /고1|고2|고3|고등/.test([student?.grade, student?.school_name].join(' '));
+}
+
+function getStudentSchoolExamRecords(sid) {
+    return (state.db.school_exam_records || []).filter(r =>
+        String(r.student_id) === String(sid) &&
+        String(r.is_deleted || 0) !== '1');
+}
+
+function getStudentSchoolExamTypeLabel(type) {
+    const map = { midterm: '중간', final: '기말', performance: '수행', etc: '기타' };
+    const key = String(type || '').trim();
+    return map[key] || key || '-';
+}
+
+function getStudentSchoolExamSemesterRank(semester) {
+    const s = String(semester || '');
+    if (s.includes('2')) return 2;
+    if (s.includes('1')) return 1;
+    return 0;
+}
+
+function getStudentSchoolExamTypeRank(type) {
+    const t = String(type || '');
+    if (t === 'final') return 2;
+    if (t === 'midterm') return 1;
+    return 0;
+}
+
+function sortStudentSchoolExamRecords(records) {
+    return [...(records || [])].sort((a, b) => {
+        const yearDiff = Number(b.exam_year || 0) - Number(a.exam_year || 0);
+        if (yearDiff) return yearDiff;
+        const semDiff = getStudentSchoolExamSemesterRank(b.semester) - getStudentSchoolExamSemesterRank(a.semester);
+        if (semDiff) return semDiff;
+        const typeDiff = getStudentSchoolExamTypeRank(b.exam_type) - getStudentSchoolExamTypeRank(a.exam_type);
+        if (typeDiff) return typeDiff;
+        const createdDiff = String(b.created_at || '').localeCompare(String(a.created_at || ''));
+        if (createdDiff) return createdDiff;
+        return String(b.id || '').localeCompare(String(a.id || ''));
+    });
+}
+
+function getStudentLatestSchoolExamRecord(sid) {
+    return sortStudentSchoolExamRecords(getStudentSchoolExamRecords(sid))[0] || null;
+}
+
+function getStudentSchoolExamSubjects(sid, records) {
+    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    if (!isStudentDetailHighSchool(student)) return ['수학'];
+
+    const seen = {};
+    const subjects = [];
+    const push = (subject) => {
+        const s = normalizeStudentSchoolSubjectName(subject);
+        if (s && !seen[s]) { seen[s] = true; subjects.push(s); }
+    };
+
+    const gradeText = [student?.grade, student?.school_name].join(' ');
+
+    // 고1은 기록/high_subjects 유무와 무관하게 공통수학1/2가 항상 후보에 포함된다.
+    if (gradeText.includes('고1')) ['공통수학1', '공통수학2'].forEach(push);
+
+    (records || []).forEach(r => push(r.subject));
+    parseStudentHighSubjects(student?.high_subjects).forEach(push);
+
+    if (!subjects.length) {
+        if (gradeText.includes('고2')) ['대수', '미적분Ⅰ', '확률과통계'].forEach(push);
+        else if (gradeText.includes('고3')) ['미적분Ⅱ', '기하'].forEach(push);
+    }
+
+    subjects.sort((a, b) => {
+        const ai = AP_STUDENT_HIGH_SUBJECTS.indexOf(a);
+        const bi = AP_STUDENT_HIGH_SUBJECTS.indexOf(b);
+        if (ai === -1 && bi === -1) return a.localeCompare(b, 'ko');
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+    });
+    return subjects;
+}
+
+function getStudentSchoolExamScoreForCell(records, year, semester, examType, subject) {
+    const subj = normalizeStudentSchoolSubjectName(subject || '수학') || '수학';
+    const rec = (records || []).find(r =>
+        Number(r.exam_year) === Number(year) &&
+        String(r.semester || '') === String(semester || '') &&
+        String(r.exam_type || '') === String(examType || '') &&
+        normalizeStudentSchoolSubjectName(r.subject || '') === subj);
+    if (!rec || rec.score === null || rec.score === undefined || rec.score === '') return null;
+    const score = Number(rec.score);
+    return Number.isFinite(score) ? score : null;
+}
+
+// 빈 상태에서 기존 성적표 화면으로만 이동한다(저장 모달을 새로 만들지 않음).
+function openStudentSchoolLedgerFromDetail() {
+    if (typeof openSchoolExamLedger !== 'function') {
+        toast('성적표 화면을 열 수 없습니다.', 'warn');
+        return;
+    }
+    if (typeof closeModal === 'function') closeModal();
+    openSchoolExamLedger();
+}
+
+function renderStudentSchoolLatestCard(sid, records) {
+    const latest = (records || [])[0];
+    if (!latest) return '';
+    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    const hasScore = !(latest.score === null || latest.score === undefined || latest.score === '');
+    const scoreNum = Number(latest.score);
+    const scoreText = hasScore && Number.isFinite(scoreNum) ? `${scoreNum}점` : '미응시';
+    const title = `${latest.exam_year || '-'}년 ${latest.semester || '-'} ${getStudentSchoolExamTypeLabel(latest.exam_type)}`;
+    const schoolName = String(latest.school_name || student?.school_name || '').trim();
+    const gradeName = String(latest.grade || student?.grade || '').trim();
+    return `
+        <div class="ap-student-field-grid">
+            ${apStudentDetailField('시험', `${title} · ${latest.subject || '수학'}`, { wide: true })}
+            ${apStudentDetailField('점수', scoreText)}
+            ${apStudentDetailField('학교 · 학년', [schoolName, gradeName].filter(Boolean).join(' · '))}
+        </div>
+    `;
+}
+
+function renderStudentSchoolExamMatrix(sid, records) {
+    if (!records || !records.length) return '';
+    const latestYear = Number(records[0].exam_year);
+    const yearRecords = records.filter(r => Number(r.exam_year) === latestYear);
+    const subjects = getStudentSchoolExamSubjects(sid, yearRecords);
+    if (!subjects.length) {
+        return '<div class="ap-student-score-empty">표시할 과목 정보가 없습니다.</div>';
+    }
+    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    const headLabel = isStudentDetailHighSchool(student) ? '과목' : '구분';
+    const headCols = AP_STUDENT_SCHOOL_EXAM_COLS.map(col => `<th>${apmsStudentDetailEsc(col.label)}</th>`).join('');
+    const rows = subjects.map(subject => {
+        const cells = AP_STUDENT_SCHOOL_EXAM_COLS.map(col => {
+            const score = getStudentSchoolExamScoreForCell(yearRecords, latestYear, col.semester, col.examType, subject);
+            return `<td>${score === null ? '-' : `<span class="ap-student-school-score-chip">${score}점</span>`}</td>`;
+        }).join('');
+        return `<tr><th scope="row">${apmsStudentDetailEsc(subject)}</th>${cells}</tr>`;
+    }).join('');
+    return `
+        <div class="ap-student-school-score-table-wrap">
+            <table class="ap-student-school-score-table">
+                <thead><tr><th>${apmsStudentDetailEsc(headLabel)}</th>${headCols}</tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderStudentSchoolGradeTab(sid) {
+    const records = sortStudentSchoolExamRecords(getStudentSchoolExamRecords(sid));
+    if (!records.length) {
+        return `
+            <section class="ap-student-card">
+                <div class="ap-student-section-head"><h3>학교 시험 성적</h3><span>성적표 연동</span></div>
+                <div class="ap-student-score-empty">
+                    성적표에 입력된 학교 시험 성적이 없습니다.
+                    <div style="margin-top:10px;"><button class="btn ap-student-mini-btn" onclick="openStudentSchoolLedgerFromDetail()">성적표 열기</button></div>
+                </div>
+            </section>
+        `;
+    }
+    const latestYear = String(records[0]?.exam_year || '');
+    return `
+        <section class="ap-student-card">
+            <div class="ap-student-section-head"><h3>최근 학교시험 성적</h3><span>성적표 기준</span></div>
+            ${renderStudentSchoolLatestCard(sid, records)}
+        </section>
+        <section class="ap-student-card">
+            <div class="ap-student-section-head"><h3>성적표 기록</h3><span>${apmsStudentDetailEsc(latestYear)}년 기준</span></div>
+            ${renderStudentSchoolExamMatrix(sid, records)}
+        </section>
+    `;
+}
+
 /**
- * [Tab 1] 성적분석 (16px 제목 및 14px 리스트 규격)
+ * 성적 탭 진입점 — 하위 탭(학교성적/원내평가)을 렌더하고 본문을 분기한다.
  */
 function renderGradeTab(sid) {
+    const subTab = getStudentGradeSubTab();
+    const body = subTab === 'academy'
+        ? renderStudentAcademyGradeTab(sid)
+        : renderStudentSchoolGradeTab(sid);
+    return `
+        <div class="ap-student-tab-body">
+            ${renderStudentGradeSubTabs(sid, subTab)}
+            ${body}
+        </div>
+    `;
+}
+
+/**
+ * 원내평가 하위 탭 — 기존 exam_sessions 기반 성적 영역(차트/오답/약한 단원) 그대로 유지.
+ */
+function renderStudentAcademyGradeTab(sid) {
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     
     const chartArea = exs.length > 0
@@ -2036,25 +2335,23 @@ function renderGradeTab(sid) {
         : '<div style="font-size:13px; color:var(--secondary); font-weight:500; line-height:1.6;">충분한 오답 데이터가 모이면 추천 학습 포인트가 표시됩니다.</div>';
 
     return `
-        <div class="ap-student-tab-body">
-            <section class="ap-student-card">
-                <div class="ap-student-section-head"><h3>최근 시험 성적</h3><span>점수 · 날짜 · 시험명</span></div>
-                ${recentExamCard}
-            </section>
-            <section class="ap-student-card">
-                <div class="ap-student-section-head"><h3>성적 추이</h3><span>최근 추세</span></div>
-                ${chartArea}
-                <div style="max-height: 360px; overflow-y: auto; padding-right: 2px; margin-top:8px;">${historyRows || '<p style="text-align: center; padding: 16px; color: var(--secondary); font-size: 13px; font-weight:500;">기록 없음</p>'}</div>
-            </section>
-            <section class="ap-student-card ap-student-card-amber">
-                <div class="ap-student-section-head"><h3 style="color:#92400E;">약한 단원 / 오답 유형</h3></div>
-                ${weakHtml}
-            </section>
-            <section class="ap-student-card">
-                <div class="ap-student-section-head"><h3>다음 학습 포인트</h3></div>
-                ${nextPointsHtml}
-            </section>
-        </div>
+        <section class="ap-student-card">
+            <div class="ap-student-section-head"><h3>최근 원내평가</h3><span>점수 · 날짜 · 시험명</span></div>
+            ${recentExamCard}
+        </section>
+        <section class="ap-student-card">
+            <div class="ap-student-section-head"><h3>원내 평가 추이</h3><span>최근 추세</span></div>
+            ${chartArea}
+            <div style="max-height: 360px; overflow-y: auto; padding-right: 2px; margin-top:8px;">${historyRows || '<p style="text-align: center; padding: 16px; color: var(--secondary); font-size: 13px; font-weight:500;">기록 없음</p>'}</div>
+        </section>
+        <section class="ap-student-card ap-student-card-amber">
+            <div class="ap-student-section-head"><h3 style="color:#92400E;">약한 단원 / 오답 유형</h3></div>
+            ${weakHtml}
+        </section>
+        <section class="ap-student-card">
+            <div class="ap-student-section-head"><h3>다음 학습 포인트</h3></div>
+            ${nextPointsHtml}
+        </section>
     `;
 }
 
