@@ -1103,22 +1103,27 @@ function adminBuildOverviewData(todayStr, todayTime) {
     };
 }
 
+// [라우트 안전장치] 학생 클릭/상세 진입은 무조건 보기모드.
+// 과거 edit 직행 위험을 제거하기 위해 detail wrapper로 위임한다.
 function adminOpenStudentEditOrDetail(studentId) {
-    if (typeof openEditStudent === 'function') {
-        openEditStudent(studentId, { returnTo: { type: 'dashboard' } });
-        return;
-    }
-    closeModal(true);
-    if (typeof openStudentDetail === 'function') openStudentDetail(studentId, { mode: 'view', returnTo: { type: 'dashboard' } });
-    else if (typeof renderStudentDetail === 'function') renderStudentDetail(studentId, { returnTo: { type: 'dashboard' } });
-    else toast('학생 화면을 불러오지 못했습니다.', 'warn');
+    return adminOpenDashboardStudentDetail(studentId);
 }
 
 function adminOpenDashboardStudentDetail(studentId) {
+    if (!studentId) return;
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'dashboard' });
     if (typeof openStudentDetail === 'function') return openStudentDetail(studentId, { mode: 'view', returnTo: { type: 'dashboard' } });
     if (typeof renderStudentDetail === 'function') return renderStudentDetail(studentId, { returnTo: { type: 'dashboard' } });
     toast('학생 화면을 불러오지 못했습니다.', 'warn');
+}
+
+// [라우트 안전장치] 수정 버튼 전용. 학생 클릭 onclick에서는 호출 금지.
+function adminOpenDashboardStudentEdit(studentId) {
+    if (!studentId) return;
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'dashboard' });
+    if (typeof openStudentDetail === 'function') return openStudentDetail(studentId, { mode: 'edit', returnTo: { type: 'dashboard' } });
+    if (typeof openEditStudent === 'function') return openEditStudent(studentId, { returnTo: { type: 'dashboard' } });
+    toast('학생 수정 화면을 불러오지 못했습니다.', 'warn');
 }
 
 function adminBuildGradeHoverRows(students = []) {
@@ -1640,7 +1645,7 @@ function renderAdminSimpleStudentList(title, list, editable = false, showGradeSu
         const classText = cls ? cls.name : '미배정';
         const status = adminNormalizeStatus(s.status);
         const action = editable
-            ? `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); color:var(--text); border:1px solid var(--border);" onclick="adminOpenStudentEditOrDetail('${s.id}')">수정</button>`
+            ? `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); color:var(--text); border:1px solid var(--border);" onclick="adminOpenDashboardStudentEdit('${s.id}')">수정</button>`
             : `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세</button>`;
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--surface);">

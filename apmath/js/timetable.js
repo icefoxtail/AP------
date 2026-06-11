@@ -700,6 +700,25 @@ function openTimetableClass(classId) {
     else if (typeof toast === 'function') toast('반 화면을 불러오지 못했습니다.', 'warn');
 }
 
+// [라우트 안전장치] 시간표 학생명 클릭은 무조건 학생상세 보기모드.
+function openStudentDetailFromTimetable(studentId) {
+    if (typeof canCurrentUserAccessStudent === 'function' && !canCurrentUserAccessStudent(studentId)) {
+        if (typeof toast === 'function') toast('담당 학생만 조회할 수 있습니다.', 'warn');
+        return;
+    }
+
+    if (typeof state !== 'undefined' && state.ui) state.ui.returnView = { type: 'timetable' };
+
+    if (typeof openStudentDetail === 'function') {
+        openStudentDetail(String(studentId), { mode: 'view', returnTo: { type: 'timetable' } });
+    } else if (typeof renderStudentDetail === 'function') {
+        renderStudentDetail(String(studentId), { returnTo: { type: 'timetable' } });
+    } else if (typeof toast === 'function') {
+        toast('학생 화면을 불러오지 못했습니다.', 'warn');
+    }
+}
+
+// 수정 진입 전용(학생명 클릭에서는 호출 금지). 호환 위해 유지.
 function openEditStudentFromTimetable(studentId) {
     if (typeof canCurrentUserAccessStudent === 'function' && !canCurrentUserAccessStudent(studentId)) {
         if (typeof toast === 'function') toast('담당 학생만 수정할 수 있습니다.', 'warn');
@@ -708,7 +727,9 @@ function openEditStudentFromTimetable(studentId) {
 
     if (typeof state !== 'undefined' && state.ui) state.ui.returnView = { type: 'timetable' };
 
-    if (typeof openEditStudent === 'function') {
+    if (typeof openStudentDetail === 'function') {
+        openStudentDetail(String(studentId), { mode: 'edit', returnTo: { type: 'timetable' } });
+    } else if (typeof openEditStudent === 'function') {
         openEditStudent(String(studentId), { returnTo: { type: 'timetable' } });
     }
 }
@@ -2889,10 +2910,10 @@ function buildTimetableStudentSlot(student, classId) {
 
     var studentClick = (isTimetableDraftMode() && student.isNew)
         ? 'event.stopPropagation();if(typeof toast===\'function\')toast(\'새학기 신입생은 운영 적용 후 학생 상세에서 확인할 수 있습니다.\',\'info\');'
-        : 'event.stopPropagation();openEditStudentFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')';
+        : 'event.stopPropagation();openStudentDetailFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')';
     return '' +
         '<div class="tt-std-slot">' +
-            '<span class="' + cls + '"' + dragAttrs + ' onclick="' + studentClick + '" title="클릭 → 정보 수정">' +
+            '<span class="' + cls + '"' + dragAttrs + ' onclick="' + studentClick + '" title="클릭 → 학생 상세">' +
                 nameText +
             '</span>' +
         '</div>';
