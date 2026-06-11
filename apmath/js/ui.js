@@ -163,12 +163,14 @@ function appHistoryCanUseBrowserBack() {
 }
 
 function updateAppBackButtons() {
-    const enabled = appHistoryCanGoBack() || appHistoryCanUseBrowserBack();
+    // The top-left back button is part of the permanent app chrome.
+    // Keep it clickable even when the internal SPA stack is empty;
+    // appHistoryBack() will fall back to the proper home/dashboard view.
     ['mobile-app-back-button', 'desktop-app-back-button'].forEach(id => {
         const btn = document.getElementById(id);
         if (!btn) return;
-        btn.disabled = !enabled;
-        btn.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+        btn.disabled = false;
+        btn.setAttribute('aria-disabled', 'false');
     });
 }
 
@@ -253,6 +255,13 @@ function appHistoryBack() {
 
     if (appHistoryCanUseBrowserBack()) {
         window.history.back();
+        return true;
+    }
+
+    // Final fallback: keep the button useful on first-load dashboard states.
+    if (typeof goHome === 'function') {
+        goHome();
+        updateAppBackButtons();
         return true;
     }
 

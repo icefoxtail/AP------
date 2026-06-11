@@ -828,3 +828,43 @@ body.ap-teacher-dashboard-mode .journal-day-cell:active {
   }
 }
 
+
+/* ============================================================
+   Round minfix — AP teacher dashboard row hover coverage only
+   - Covers class rows and journal rows that were still falling back to
+     neutral black/gray hover rules.
+   - No layout/size changes.
+============================================================ */
+.ap-dash-redesign .ap-class-row,
+.ap-dash-redesign .journal-day-cell,
+.ap-dash-redesign .dashboard-journal-card__top,
+.ap-dash-redesign .ap-list-row {
+  transition:
+    background var(--ap-dashboard-hover-duration, 140ms) ease,
+    border-color var(--ap-dashboard-hover-duration, 140ms) ease,
+    box-shadow var(--ap-dashboard-hover-duration, 140ms) ease,
+    transform var(--ap-dashboard-hover-duration, 140ms) ease !important;
+  transform-origin: center;
+}
+
+.ap-dash-redesign .ap-class-row:hover,
+.ap-dash-redesign .ap-class-row:focus-visible,
+.ap-dash-redesign .journal-day-cell:hover,
+.ap-dash-redesign .journal-day-cell:focus-visible,
+.ap-dash-redesign .dashboard-journal-card__top:hover,
+.ap-dash-redesign .dashboard-journal-card__top:focus-visible,
+.ap-dash-redesign .ap-list-row:hover,
+.ap-dash-redesign .ap-list-row:focus-visible {
+  background: var(--ap-dashboard-blue-hover-bg, color-mix(in srgb, var(--primary) 6%, var(--surface))) !important;
+  border-color: var(--ap-dashboard-blue-hover-border, color-mix(in srgb, var(--primary) 58%, var(--border))) !important;
+  box-shadow: var(--ap-dashboard-blue-hover-shadow, 0 6px 14px rgba(26, 92, 255, 0.075)) !important;
+  transform: translateY(var(--ap-dashboard-hover-lift, -1px)) scale(var(--ap-dashboard-hover-scale, 1.002)) !important;
+}
+
+.ap-dash-redesign .ap-class-row:active,
+.ap-dash-redesign .journal-day-cell:active,
+.ap-dash-redesign .dashboard-journal-card__top:active,
+.ap-dash-redesign .ap-list-row:active {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
+}
