@@ -352,7 +352,7 @@ function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, 
             // D. 미작성 행 = 좌측 보더 액센트(status-pending) + 즉시 작성 버튼. 제출완료/휴무는 배지만.
             const isPending = !done && !holiday;
             const badgeClass = done ? 'ap-badge--complete' : (holiday ? 'ap-badge--holiday' : 'ap-badge--pending');
-            const right = isPending
+            const right = (isPending && !teacherName)
                 ? `<div style="display:flex; gap:8px; align-items:center;">
                        <span class="ap-badge ${badgeClass}">${apEscapeHtml(statusText)}</span>
                        <button type="button" class="ap-inline-btn" onclick="event.stopPropagation(); ${click}">일지 작성</button>

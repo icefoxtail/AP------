@@ -202,3 +202,174 @@
     color: var(--apms-ui-accent);
     border-color: transparent;
 }
+
+/* ======================================================================
+   AP MATH 공통 UI Foundation 1차 (2026-06-11)
+   - 선생님 대시보드 카드 톤을 전체 공통 기준으로 승격한 정규 클래스.
+   - 기준: radius 6px / box-shadow none / 연한 1px border / white surface
+   - 폰트 위계: stat 20px·700, 섹션 제목 14~15px·600~700,
+     본문 13px·400~500, badge/chip 12px·500~600, 11px는 보조정보 전용.
+   - 기존 화면 클래스 bridge는 apms-theme-override.css에서 처리한다.
+   ====================================================================== */
+:root {
+    --ap-ui-radius-card: 6px;
+    --ap-ui-radius-row: 4px;
+    --ap-ui-radius-modal: 16px;
+    --ap-ui-shadow-card: none;
+    --ap-ui-font-stat: 20px;
+    --ap-ui-font-section: 15px;
+    --ap-ui-font-body: 13px;
+    --ap-ui-font-small: 12px;
+}
+
+.ap-card {
+    background: var(--surface, #ffffff);
+    border: 1px solid var(--border, #e5e8eb);
+    border-radius: var(--ap-ui-radius-card);
+    box-shadow: var(--ap-ui-shadow-card);
+    padding: 20px 24px;
+    box-sizing: border-box;
+    color: var(--text, #1c1c1e);
+}
+
+.ap-card__title {
+    margin: 0 0 12px;
+    font-size: var(--ap-ui-font-section);
+    font-weight: 700;
+    color: var(--text, #1c1c1e);
+    line-height: 1.35;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ap-card__stat {
+    font-size: var(--ap-ui-font-stat);
+    font-weight: 700;
+    color: var(--text, #1c1c1e);
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+.ap-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--surface, #ffffff);
+    border: 1px solid var(--border, #e5e8eb);
+    border-radius: var(--ap-ui-radius-row);
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    box-shadow: none;
+    font-size: var(--ap-ui-font-body);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--text, #1c1c1e);
+}
+
+.ap-list-row:last-child {
+    margin-bottom: 0;
+}
+
+.ap-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    padding: 3px 8px;
+    border: 1px solid var(--border, #e5e8eb);
+    border-radius: var(--ap-ui-radius-card);
+    background: var(--surface-2, #f9f9fb);
+    color: var(--secondary, #6c6c70);
+    font-size: var(--ap-ui-font-small);
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.ap-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--ap-ui-font-small);
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    background: var(--surface-2, #f9f9fb);
+    border: 1px solid var(--border, #e5e8eb);
+    color: var(--secondary, #6c6c70);
+}
+
+.ap-action-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 64px;
+    padding: 14px 10px;
+    border: 1px solid var(--border, #e5e8eb);
+    border-radius: var(--ap-ui-radius-card);
+    background: var(--surface, #ffffff);
+    color: var(--text, #1c1c1e);
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color .18s ease, background .18s ease;
+}
+
+.ap-action-card:hover {
+    border-color: var(--primary, #007aff);
+    background: var(--surface-2, #f9f9fb);
+}
+
+/* 모달 내부 공통: shell radius(16px)와 달리 내부 구성요소는 6px 계열 */
+.ap-modal-section {
+    border: 1px solid var(--border, #e5e8eb);
+    border-radius: var(--ap-ui-radius-card);
+    background: var(--surface, #ffffff);
+    box-shadow: none;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.ap-modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.ap-modal-section__title {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text, #1c1c1e);
+    line-height: 1.35;
+}
+
+.ap-modal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--border, #e5e8eb);
+    border-radius: var(--ap-ui-radius-row);
+    background: var(--surface, #ffffff);
+    box-shadow: none;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    font-size: var(--ap-ui-font-body);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--text, #1c1c1e);
+}
+
+.ap-modal-row:last-child {
+    margin-bottom: 0;
+}

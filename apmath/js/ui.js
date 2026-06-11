@@ -158,8 +158,12 @@ function appHistoryCanGoBack() {
     return modalStepStack.length > 0 || isModalOpen() || appHistoryState.backStack.length > 0;
 }
 
+function appHistoryCanUseBrowserBack() {
+    return typeof window !== 'undefined' && window.history && window.history.length > 1;
+}
+
 function updateAppBackButtons() {
-    const enabled = appHistoryCanGoBack();
+    const enabled = appHistoryCanGoBack() || appHistoryCanUseBrowserBack();
     ['mobile-app-back-button', 'desktop-app-back-button'].forEach(id => {
         const btn = document.getElementById(id);
         if (!btn) return;
@@ -241,14 +245,19 @@ function appHistoryBack() {
     }
 
     const previous = appHistoryState.backStack.pop();
-    if (!previous) {
-        updateAppBackButtons();
-        return false;
+    if (previous) {
+        const restored = appHistoryRestoreView(previous);
+        if (!restored) updateAppBackButtons();
+        return restored;
     }
 
-    const restored = appHistoryRestoreView(previous);
-    if (!restored) updateAppBackButtons();
-    return restored;
+    if (appHistoryCanUseBrowserBack()) {
+        window.history.back();
+        return true;
+    }
+
+    updateAppBackButtons();
+    return false;
 }
 
 function appHistoryWrapGlobal(name, meta) {
