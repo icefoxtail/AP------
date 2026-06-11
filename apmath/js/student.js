@@ -60,32 +60,35 @@ function injectStudentStyles() {
         .apms-eie-tab.is-active { background:transparent; color:#1F2937; border-bottom-color:#334155; box-shadow:none; }
         body.dark .apms-eie-tab { color:var(--secondary); }
         body.dark .apms-eie-tab.is-active { color:var(--text); border-bottom-color:var(--text); box-shadow:none; }
-        .apms-eie-form { display:flex; flex-direction:column; gap:12px; padding:0 14px 4px; box-sizing:border-box; }
-        .apms-eie-form-card { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:14px; box-shadow:0 4px 14px rgba(15,23,42,.035); }
+        .apms-eie-form { display:flex; flex-direction:column; gap:10px; padding:0 14px 4px; box-sizing:border-box; }
+        .apms-eie-form-card { border:1px solid var(--border); border-radius:10px; background:var(--surface); padding:12px; box-shadow:none; }
         body.dark .apms-eie-form-card { box-shadow:none; }
-        .apms-eie-form-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
-        .apms-eie-form-head h3 { margin:0; color:var(--text); font-size:15px; font-weight:700; line-height:1.25; }
+        .apms-eie-form-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+        .apms-eie-form-head h3 { margin:0; color:var(--text); font-size:13.5px; font-weight:600; line-height:1.25; }
         .apms-eie-form-head span { color:var(--secondary); font-size:11px; font-weight:600; }
-        .apms-eie-form-grid { display:grid; grid-template-columns:1fr; gap:12px; }
-        .apms-eie-form-field { min-width:0; width:100%; display:flex !important; flex-direction:column !important; align-items:stretch !important; gap:6px; }
+        .apms-eie-form-grid { display:grid; grid-template-columns:1fr; gap:8px; }
+        /* 보기모드 .ap-profile-info-row와 같은 가로 배치(label 88px + 값) — 모드 전환 시 레이아웃 점프 최소화 */
+        .apms-eie-form-field { min-width:0; width:100%; display:flex !important; flex-direction:row !important; align-items:center !important; gap:10px; }
         .apms-eie-form-field.is-wide,
         .apms-eie-form-wide { grid-column:1 / -1; }
         .apms-eie-form-field > span,
-        .apms-eie-form-label { display:block; color:var(--secondary); font-size:12px; font-weight:700; line-height:1.25; }
+        .apms-eie-form-label { display:block; flex:0 0 88px; color:var(--secondary); font-size:12px; font-weight:600; line-height:1.25; }
         .apms-eie-form-field input,
         .apms-eie-form-field select,
-        .apms-eie-form-field textarea { display:block !important; width:100% !important; min-width:0 !important; max-width:100% !important; min-height:44px; box-sizing:border-box; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); padding:10px 12px; font:inherit; font-size:14px; font-weight:500; outline:0; }
-        .apms-eie-form-field textarea { min-height:86px; resize:vertical; }
+        .apms-eie-form-field textarea { display:block !important; flex:1 1 auto; width:auto !important; min-width:0 !important; max-width:100% !important; min-height:38px; box-sizing:border-box; border:1px solid var(--border); border-radius:8px; background:var(--surface-2); color:var(--text); padding:8px 12px; font:inherit; font-size:13px; font-weight:500; outline:0; }
+        .apms-eie-form-field textarea { min-height:92px; resize:vertical; }
+        .apms-eie-form-field.is-wide { align-items:flex-start !important; }
+        .apms-eie-form-field.is-wide > span { padding-top:10px; }
         .apms-eie-form-flags { display:flex; flex-wrap:wrap; gap:8px; }
         .apms-eie-form-flag { display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:0 12px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--text); font-size:13px; font-weight:600; cursor:pointer; }
-        .apms-eie-form-flag input { width:15px; height:15px; accent-color:var(--primary); cursor:pointer; }
+        .apms-eie-form-flag input { width:15px; height:15px; accent-color:#6E66C9; cursor:pointer; }
         .apms-eie-form-flag.is-warn input { accent-color:#D97706; }
         .apms-eie-form-danger { width:100%; min-height:44px; border:1px solid rgba(232,65,79,.22); background:rgba(232,65,79,.06); color:var(--error); border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; }
-        .apms-eie-form-drawer { border:1px solid var(--border); border-radius:14px; background:var(--surface); overflow:hidden; }
-        .apms-eie-form-drawer summary { min-height:48px; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:0 14px; cursor:pointer; color:var(--text); font-size:13px; font-weight:750; list-style:none; }
+        .apms-eie-form-drawer { border:1px solid var(--border); border-radius:10px; background:var(--surface); overflow:hidden; }
+        .apms-eie-form-drawer summary { min-height:42px; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:0 12px; cursor:pointer; color:var(--text); font-size:13px; font-weight:700; list-style:none; }
         .apms-eie-form-drawer summary::-webkit-details-marker { display:none; }
-        .apms-eie-form-drawer summary::after { content:'열기'; color:var(--secondary); font-size:11px; font-weight:700; }
-        .apms-eie-form-drawer[open] summary::after { content:'닫기'; }
+        .apms-eie-form-drawer summary::after { content:'보기'; color:var(--secondary); font-size:12px; font-weight:650; }
+        .apms-eie-form-drawer[open] summary::after { content:'접기'; }
         .apms-eie-form-drawer-body { display:flex; flex-direction:column; gap:12px; padding:0 14px 14px; }
         .ap-student-detail-shell { display:flex; flex-direction:column; gap:14px; padding:0 14px 4px; box-sizing:border-box; }
         .ap-student-profile-head { position:sticky; top:0; z-index:24; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px; padding:12px 4px 12px; border:0; border-bottom:1px solid var(--border); border-radius:0; background:var(--bg); box-shadow:none; overflow:hidden; }
@@ -115,10 +118,44 @@ function injectStudentStyles() {
         .ap-student-section-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
         .ap-student-section-head h3 { margin:0; color:var(--text); font-size:13.5px; font-weight:600; line-height:1.25; }
         .ap-student-section-head span { color:var(--secondary); font-size:11px; font-weight:600; }
-        .ap-student-consult-date-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
-        .ap-student-consult-date-btn { min-height:44px; padding:0 11px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:#334155; font-size:12px; font-weight:600; cursor:pointer; display:flex; align-items:center; }
-        .ap-student-consult-date-btn.is-active { border-color:rgba(110,102,201,.34); background:rgba(110,102,201,.10); color:#6E66C9; }
-        .ap-student-consult-preview { border:1px solid var(--border); border-radius:10px; background:var(--surface-2); padding:13px; min-height:88px; }
+        .ap-student-consult-date-row { display:flex; gap:6px; overflow-x:auto; padding-bottom:2px; margin-bottom:10px; }
+        .ap-student-consult-date-btn { flex:0 0 auto; height:28px; min-height:28px; padding:0 10px; border:1px solid var(--ap-border); border-radius:var(--ap-radius-sm); background:var(--ap-surface-2); color:var(--ap-text-soft); font-size:12px; font-weight:650; line-height:1.2; cursor:pointer; display:inline-flex; align-items:center; white-space:nowrap; }
+        .ap-student-consult-date-btn.is-active { border-color:rgba(110,102,201,.38); background:rgba(110,102,201,.10); color:var(--ap-purple); }
+        .ap-profile-info-list { display:flex; flex-direction:column; }
+        .ap-profile-info-row { display:flex; align-items:flex-start; gap:10px; min-height:32px; padding:6px 0; border-bottom:1px solid var(--ap-border); }
+        .ap-profile-info-row:last-child { border-bottom:0; }
+        .ap-profile-info-label { flex:0 0 88px; color:var(--ap-muted); font-size:12px; font-weight:600; line-height:1.4; }
+        .ap-profile-info-value { flex:1 1 auto; min-width:0; color:var(--ap-text); font-size:13px; font-weight:500; line-height:1.45; overflow-wrap:anywhere; white-space:pre-wrap; }
+        .ap-profile-info-value.is-muted { color:var(--ap-muted); }
+        /* edit mode도 보기모드의 label-value 리스트 골격을 그대로 사용한다. */
+        .ap-student-edit-body { display:flex; flex-direction:column; gap:10px; }
+        .ap-student-edit-list { display:flex; flex-direction:column; }
+        .ap-student-edit-row { display:flex; align-items:center; gap:10px; min-height:32px; padding:6px 0; border-bottom:1px solid var(--ap-border); }
+        .ap-student-edit-row:last-child { border-bottom:0; }
+        .ap-student-edit-row.is-wide { align-items:flex-start; }
+        .ap-student-edit-label { flex:0 0 88px; color:var(--ap-muted); font-size:12px; font-weight:600; line-height:1.4; padding-top:0; }
+        .ap-student-edit-row.is-wide .ap-student-edit-label { padding-top:8px; }
+        .ap-student-edit-control { flex:1 1 auto; min-width:0; display:flex; align-items:center; gap:6px; }
+        .ap-student-edit-control input,
+        .ap-student-edit-control select,
+        .ap-student-edit-control textarea { width:100%; min-width:0; min-height:30px; box-sizing:border-box; border:1px solid #CBD5E1; border-radius:7px; background:#FFFFFF; color:var(--ap-text); padding:0 8px; font-family:inherit; font-size:13px; font-weight:500; line-height:1.35; outline:0; }
+        .ap-student-edit-control textarea { min-height:72px; padding:8px; resize:vertical; }
+        .ap-student-edit-control input:focus,
+        .ap-student-edit-control select:focus,
+        .ap-student-edit-control textarea:focus { border-color:rgba(110,102,201,.55); box-shadow:0 0 0 2px rgba(110,102,201,.12); }
+        .ap-student-edit-inline { display:grid; grid-template-columns:minmax(0,1fr) minmax(76px,.55fr); gap:6px; width:100%; }
+        .ap-student-edit-stack { display:flex; flex-direction:column; gap:6px; width:100%; }
+        .ap-student-edit-check { display:inline-flex; align-items:center; gap:7px; min-height:26px; color:var(--ap-text-soft); font-size:12px; font-weight:600; cursor:pointer; }
+        .ap-student-edit-check input { flex:0 0 auto; width:15px; height:15px; min-height:0; padding:0; accent-color:#6E66C9; cursor:pointer; }
+        .ap-student-edit-help { color:var(--ap-muted); font-size:11px; font-weight:500; line-height:1.45; }
+        .ap-student-edit-flags { display:flex; flex-wrap:wrap; gap:8px; width:100%; }
+        .ap-student-edit-flag { display:inline-flex; align-items:center; gap:7px; min-height:30px; padding:0 10px; border:1px solid var(--ap-border); border-radius:999px; background:var(--ap-surface-2); color:var(--ap-text); font-size:12px; font-weight:650; cursor:pointer; }
+        .ap-student-edit-flag input { width:15px; height:15px; accent-color:#6E66C9; cursor:pointer; }
+        .ap-student-edit-flag.is-warn input { accent-color:#D97706; }
+        body.dark .ap-student-edit-control input,
+        body.dark .ap-student-edit-control select,
+        body.dark .ap-student-edit-control textarea { background:var(--ap-surface-2); border-color:var(--ap-border); color:var(--ap-text); }
+        .ap-student-consult-preview { border:1px solid var(--ap-border); border-left:3px solid var(--ap-purple); border-radius:var(--ap-radius-card); background:var(--ap-card); padding:12px; min-height:88px; }
         .ap-student-consult-preview.is-updated { border-color:rgba(110,102,201,.55); box-shadow:0 0 0 3px rgba(110,102,201,.12); }
         .ap-student-consult-empty { text-align:center; color:var(--secondary); padding:20px 10px; border:1px dashed var(--border); border-radius:10px; background:var(--surface-2); }
         .ap-student-consult-row { display:flex; flex-direction:column; gap:9px; }
@@ -127,8 +164,13 @@ function injectStudentStyles() {
         .ap-student-consult-text { margin:0; color:var(--text); font-size:13.5px; font-weight:500; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
         .ap-student-consult-next { border:1px solid rgba(217,119,6,.18); border-radius:10px; background:rgba(217,119,6,.07); color:#92400E; padding:9px 10px; font-size:12px; font-weight:600; line-height:1.55; }
         .ap-student-consult-actions { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; margin-top:10px; }
-        .ap-student-mini-btn { height:28px; padding:0 10px; border-radius:7px; border:1px solid var(--border); background:var(--surface); color:#334155; font-size:12px; font-weight:600; cursor:pointer; }
-        .ap-student-mini-btn.is-primary { border-color:#6E66C9; background:#6E66C9; color:#fff; }
+        .ap-student-mini-btn { height:28px; min-height:28px; padding:0 10px; border-radius:var(--ap-radius-sm); border:1px solid var(--ap-btn-ghost-border); background:var(--ap-btn-ghost-bg); color:var(--ap-btn-ghost-text); font-size:12px; font-weight:650; cursor:pointer; }
+        .ap-student-mini-btn.is-primary { border-color:var(--ap-purple); background:var(--ap-purple); color:#fff; }
+        .ap-student-consult-all { border:1px solid var(--ap-border); border-radius:var(--ap-radius-card); background:var(--ap-card); overflow:hidden; }
+        .ap-student-consult-all summary { min-height:42px; display:flex; align-items:center; justify-content:space-between; padding:0 12px; cursor:pointer; color:var(--ap-text); font-size:13px; font-weight:700; list-style:none; }
+        .ap-student-consult-all summary::-webkit-details-marker { display:none; }
+        .ap-student-consult-all summary::after { content:'보기'; color:var(--ap-muted); font-size:12px; font-weight:650; }
+        .ap-student-consult-all[open] summary::after { content:'접기'; }
         .ap-student-field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
         .ap-student-field { min-width:0; border:1px solid var(--border); border-radius:8px; background:var(--surface-2); padding:9px 11px; }
         .ap-student-field span { display:block; color:var(--secondary); font-size:11px; font-weight:600; line-height:1.25; }
@@ -872,6 +914,19 @@ function renderParentContactSection(sid) {
     `;
 }
 
+// 보기모드 기본 탭의 [보호자 관리] 진입점.
+// 별도 섹션을 제거하면서도 다중 연락처/동의/연락 이력 등 기존 보호자 관리 기능을
+// 그대로 사용할 수 있도록 기존 renderParentContactSection을 서브 모달로 띄운다.
+function openStudentParentManageModal(sid) {
+    void ensureStudentParentContactDataLoaded(sid, { force: false });
+    showStudentDetailSubModalStep('parent-manage', sid, '보호자 관리', `
+        <div class="apms-student-contrast">${renderParentContactSection(sid)}</div>
+    `);
+}
+if (typeof window !== 'undefined') {
+    window.openStudentParentManageModal = openStudentParentManageModal;
+}
+
 function resetConsultationAiUiState(mode = '', studentId = '', consultationId = '') {
     const store = ensureConsultationAiUiState();
     store.mode = mode;
@@ -1358,6 +1413,24 @@ function getApStudentCurrentClass(sid) {
     return (state.db.classes || []).find(c => String(c.id) === String(mapping?.class_id || '')) || null;
 }
 
+// 담임명 안전 탐색 (API 호출/DB 수정 없이 state.db 안에서만). 없으면 빈 문자열.
+function getStudentHomeroomTeacherLabel(student) {
+    const s = student || {};
+    const direct = String(
+        s.teacher_name || s.homeroom_teacher || s.class_teacher || s.teacher || ''
+    ).trim();
+    if (direct) return direct;
+    let cls = null;
+    if (s.class_id || s.classId) {
+        cls = (state.db.classes || []).find(c => String(c.id) === String(s.class_id || s.classId || '')) || null;
+    }
+    if (!cls && s.id) cls = getApStudentCurrentClass(s.id);
+    const fromClass = String(
+        cls?.teacher_name || cls?.teacher || cls?.homeroom_teacher || ''
+    ).trim();
+    return fromClass;
+}
+
 function ensureStudentOnboardingUiState() {
     if (!state.ui) state.ui = {};
     if (!state.ui.studentOnboardingDetails) {
@@ -1463,6 +1536,74 @@ function apStudentDetailField(label, value, options = {}) {
     return `<div class="ap-student-field${wide}"><span>${apmsStudentDetailEsc(label)}</span><strong>${apmsStudentDetailEsc(text || '미등록')}</strong></div>`;
 }
 
+// 보기모드 슬림 label-value row (input처럼 보이는 회색 field box 대체)
+function apStudentInfoRow(label, value, options = {}) {
+    const text = String(value ?? '').trim();
+    const fallback = Object.prototype.hasOwnProperty.call(options, 'empty') ? String(options.empty) : '미등록';
+    const isMuted = options.muted || !text;
+    const display = text || fallback;
+    return `<div class="ap-profile-info-row"><span class="ap-profile-info-label">${apmsStudentDetailEsc(label)}</span><span class="ap-profile-info-value${isMuted ? ' is-muted' : ''}">${apmsStudentDetailEsc(display)}</span></div>`;
+}
+
+function apStudentEditRow(label, controlHtml, options = {}) {
+    const wide = options.wide ? ' is-wide' : '';
+    const idAttr = options.id ? ` id="${apEscapeHtml(options.id)}"` : '';
+    const styleAttr = options.style ? ` style="${apEscapeHtml(options.style)}"` : '';
+    return `<div class="ap-student-edit-row${wide}"${idAttr}${styleAttr}><span class="ap-student-edit-label">${apmsStudentDetailEsc(label)}</span><div class="ap-student-edit-control">${controlHtml}</div></div>`;
+}
+
+function getStudentRecentActivityValues(sid) {
+    const cls = getApStudentCurrentClass(sid);
+    const recentExam = (state.db.exam_sessions || [])
+        .filter(e => String(e.student_id) === String(sid))
+        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
+    const classRecord = cls ? (state.db.class_daily_records || [])
+        .filter(row => String(row.class_id) === String(cls.id))
+        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] : null;
+    const recentExamText = recentExam ? `${recentExam.exam_title || '시험'} · ${recentExam.exam_date || ''} · ${recentExam.score ?? '-'}점` : '';
+    const recentClassText = classRecord ? `${classRecord.date || ''} · ${cls?.name || '수업'}` : '';
+    const lastConsult = getStudentConsultationsFromState(sid)[0] || null;
+    const lastConsultText = lastConsult ? `${lastConsult.date || ''}${lastConsult.type ? ` (${lastConsult.type})` : ''}`.trim() : '';
+    return { recentExamText, recentClassText, lastConsultText };
+}
+
+function renderStudentRecentActivitySection(sid) {
+    const { recentExamText, recentClassText, lastConsultText } = getStudentRecentActivityValues(sid);
+    return `
+        <section class="ap-student-card">
+            <div class="ap-student-section-head"><h3>최근 활동</h3></div>
+            <div class="ap-profile-info-list">
+                ${apStudentInfoRow('최근 수업', recentClassText, { empty: '기록 없음' })}
+                ${apStudentInfoRow('최근 시험', recentExamText, { empty: '기록 없음' })}
+                ${apStudentInfoRow('마지막 상담', lastConsultText, { empty: '기록 없음' })}
+            </div>
+        </section>
+    `;
+}
+
+function renderStudentHistorySection(sid) {
+    return `<section class="ap-student-card">${renderStudentOperationHistorySection(sid)}</section>`;
+}
+
+function renderOnboardingStartedAtEditControl(options = {}) {
+    const prefix = 'edit';
+    const storedDate = normalizeOnboardingDate(options.value || options.onboarding_started_at || '');
+    const alreadyChecked = options.alreadyAttending || options.already_attending;
+    const helperText = storedDate
+        ? '저장된 등원일입니다. 필요할 때만 수정하세요.'
+        : '등원일이 없으면 비워둘 수 있습니다. 이미 등원 중이면 학년별 기준일이 제안됩니다.';
+    return `
+        <div class="ap-student-edit-stack">
+            <input id="${prefix}-onboarding-started-at" type="date" value="${apEscapeHtml(storedDate)}">
+            <label class="ap-student-edit-check">
+                <input id="${prefix}-already-attending" type="checkbox" ${alreadyChecked ? 'checked' : ''} onchange="setOnboardingStartedAtSuggestion('${prefix}')">
+                <span>이미 등원 중인 학생입니다</span>
+            </label>
+            <div class="ap-student-edit-help">${apmsStudentDetailEsc(helperText)}</div>
+        </div>
+    `;
+}
+
 function renderStudentDetailHeader(sid, mode = 'view') {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '';
@@ -1473,11 +1614,13 @@ function renderStudentDetailHeader(sid, mode = 'view') {
         ? ''
         : `<button type="button" class="ap-student-edit-btn" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">수정</button>`;
     const dotClass = status.className || '';
+    const teacherLabel = getStudentHomeroomTeacherLabel(s);
     const metaParts = [
         [s.school_name, s.grade].filter(Boolean).join(' · ') || '학교/학년 미등록',
         cls?.name || '반 미배정'
     ];
-    if (s.student_pin) metaParts.push(`PIN ${s.student_pin}`);
+    // PIN은 헤더에서 제거하고 담임을 우선 표시(없으면 생략).
+    metaParts.push(teacherLabel ? `담임 ${teacherLabel}` : '담임 미지정');
     const metaLine = metaParts.map(p => apmsStudentDetailEsc(p)).join(' · ');
     return `
         <header class="ap-student-profile-head ${isEdit ? 'is-edit' : 'is-view'}">
@@ -1528,6 +1671,9 @@ function renderStudentPinnedConsultationPreview(sid, consultationId) {
     if (!state.ui.studentPinnedConsultationId) state.ui.studentPinnedConsultationId = {};
     const key = String(sid || '');
     state.ui.studentPinnedConsultationId[key] = String(consultationId || '');
+
+    // 선택 상담이 바뀌면 하단 '다른 상담' 목록에서도 해당 상담을 제외한다(중복 방지).
+    refreshStudentConsultationOthersList(key, consultationId);
 
     const target = document.getElementById(`ap-student-consult-preview-${key}`);
     if (target) {
@@ -1608,7 +1754,7 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
                 <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(key)})">+ 상담</button>
             </div>
             ${cnsState.loading ? '<div style="margin-bottom:8px;font-size:11px;color:var(--secondary);font-weight:600;">불러오는 중</div>' : ''}
-            ${dateButtons ? `<div class="ap-student-consult-date-row">${dateButtons}</div>` : ''}
+            ${rows.length >= 2 && dateButtons ? `<div class="ap-student-consult-date-row">${dateButtons}</div>` : ''}
             ${cnsState.error ? '<div style="margin-bottom:10px;color:var(--warning);font-size:12px;font-weight:700;">상담 기록을 다시 확인해 주세요.</div>' : ''}
             <div class="ap-student-consult-preview" id="ap-student-consult-preview-${apmsStudentDetailEsc(key)}">
                 ${renderStudentPinnedConsultationPreviewHtml(key, selectedId)}
@@ -1620,46 +1766,28 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
 function renderStudentBasicTab(sid) {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
-    const cls = getApStudentCurrentClass(sid);
-    const recentExam = (state.db.exam_sessions || [])
-        .filter(e => String(e.student_id) === String(sid))
-        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
-    const classRecord = cls ? (state.db.class_daily_records || [])
-        .filter(row => String(row.class_id) === String(cls.id))
-        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] : null;
-    const status = apmsStudentStatusMeta(s).label;
     const memo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
+    const parentInfo = [String(s.parent_phone || '').trim(), String(s.guardian_relation || '').trim() ? `(${String(s.guardian_relation || '').trim()})` : '']
+        .filter(Boolean).join(' ');
     return `
         <div class="ap-student-tab-body">
             <section class="ap-student-card">
-                <div class="ap-student-section-head"><h3>기본정보</h3><span>학생 프로필</span></div>
-                <div class="ap-student-field-grid">
-                    ${apStudentDetailField('학생명', s.name)}
-                    ${apStudentDetailField('학교', s.school_name)}
-                    ${apStudentDetailField('학년', s.grade)}
-                    ${apStudentDetailField('소속 반', cls?.name || '')}
-                    ${apStudentDetailField('학생 연락처', s.student_phone)}
-                    ${apStudentDetailField('보호자 연락처', s.parent_phone)}
-                    ${apStudentDetailField('보호자 관계', s.guardian_relation)}
-                    ${apStudentDetailField('PIN', s.student_pin)}
-                    ${apStudentDetailField('상태', status)}
-                    ${apStudentDetailField('등원일', getStudentOnboardingStartedAtLabel(sid))}
-                    ${apStudentDetailField('메모', memo || '메모가 없습니다.', { wide: true })}
+                <div class="ap-student-section-head">
+                    <h3>학생 상세 정보</h3>
+                    <button class="ap-btn is-sm is-ghost" onclick="openStudentParentManageModal('${sid}')">보호자 관리</button>
+                </div>
+                <div class="ap-profile-info-list">
+                    ${apStudentInfoRow('학생 연락처', s.student_phone, { empty: '' })}
+                    ${apStudentInfoRow('보호자 정보', parentInfo, { empty: '' })}
+                    ${apStudentInfoRow('주소', s.student_address, { empty: '' })}
+                    ${apStudentInfoRow('차량', s.vehicle_info, { empty: '' })}
+                    ${apStudentInfoRow('등원일', getStudentOnboardingStartedAtLabel(sid))}
+                    ${apStudentInfoRow('메모', memo, { empty: '' })}
+                    ${apStudentInfoRow('PIN 번호', s.student_pin, { empty: '' })}
                 </div>
             </section>
-            <section class="ap-student-card">
-                <div class="ap-student-section-head"><h3>최근 활동</h3><span>요약</span></div>
-                <div class="ap-student-field-grid">
-                    ${apStudentDetailField('최근 시험', recentExam ? `${recentExam.exam_title || '시험'} · ${recentExam.exam_date || ''} · ${recentExam.score ?? '-'}점` : '기록 없음')}
-                    ${apStudentDetailField('최근 수업', classRecord ? `${classRecord.date || ''} · ${cls?.name || '수업'}` : '기록 없음')}
-                </div>
-            </section>
-            <section class="ap-student-card">
-                ${renderParentContactSection(sid)}
-            </section>
-            <section class="ap-student-card">
-                ${renderStudentOperationHistorySection(sid)}
-            </section>
+            ${renderStudentRecentActivitySection(sid)}
+            ${renderStudentHistorySection(sid)}
         </div>
     `;
 }
@@ -1728,6 +1856,26 @@ function renderStudentDetailTabs(sid, activeTab = 'basic') {
     `;
 }
 
+function renderStudentDetailEditTabs() {
+    const tabs = [
+        { key: 'basic', label: '기본' },
+        { key: 'cns', label: '상담' },
+        { key: 'grade', label: '성적' }
+    ];
+    return `
+        <div class="apms-eie-tabs ap-student-tabs" aria-label="수정모드 탭 위치 표시">
+            ${tabs.map(item => `
+                <button
+                    type="button"
+                    class="apms-eie-tab ${item.key === 'basic' ? 'is-active' : ''}"
+                    disabled
+                    style="cursor:default; ${item.key === 'basic' ? '' : 'opacity:.72;'}"
+                >${apmsStudentDetailEsc(item.label)}</button>
+            `).join('')}
+        </div>
+    `;
+}
+
 /**
  * 학생 상세 모달의 유일한 기준 렌더러.
  * view/edit 모두 같은 셸(헤더 + 최근 상담 카드)을 공유하고 본문만 교체한다.
@@ -1752,12 +1900,16 @@ function renderStudentDetailShell(sid, options = {}) {
     const returnCtx = resolveStudentDetailReturnContext(sid, options);
     applyStudentDetailModalReturnContext(returnCtx);
 
-    // 최근 상담 전문 카드는 상담 탭(view) 또는 edit mode에서만 노출한다.
-    const pinnedHtml = (mode === 'edit' || tab === 'cns')
+    // 최근 상담 전문 카드는 보기모드 상담 탭에서만 노출한다.
+    // 수정모드는 입력 전용이므로 상담 보기 UI를 일절 노출하지 않는다.
+    const pinnedHtml = (mode === 'view' && tab === 'cns')
         ? renderStudentConsultationPinnedCard(sid)
         : '';
     const bodyHtml = mode === 'edit'
-        ? `${pinnedHtml}${renderStudentEditBody(sid)}`
+        ? `
+            ${renderStudentDetailEditTabs()}
+            ${renderStudentEditBody(sid)}
+        `
         : `
             ${renderStudentDetailTabs(sid, tab)}
             ${pinnedHtml}
@@ -1905,11 +2057,9 @@ function renderWeakTab(sid) {
 /**
  * [Tab 3] 상담기록 (18px 라운드 및 13px 본문 규격)
  */
-function renderCnsTab(sid) {
-    const cnsState = ensureStudentConsultationUiState().byStudent[String(sid)] || {};
-    const cnsList = getStudentConsultationsFromState(sid);
-
-    const cnsCards = cnsList.map(c => `
+// 단일 상담 카드 마크업
+function apStudentConsultationCardHtml(c, sid) {
+    return `
         <div class="card apms-card" style="padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; box-shadow: none; background: var(--surface);">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 9px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
@@ -1928,23 +2078,49 @@ function renderCnsTab(sid) {
                 </div>` : ''}
             ${c.created_at ? `<div style="margin-top: 9px; font-size: 11px; color: var(--secondary); font-weight:500; line-height: 1.5;">등록 시각 ${apEscapeHtml(c.created_at)}</div>` : ''}
         </div>
-    `).join('');
+    `;
+}
+
+// 상단 preview에 표시 중인 상담(selectedId)을 제외한 '다른 상담' 목록 본문
+function apStudentConsultationOthersBodyHtml(sid, selectedId) {
+    const others = getStudentConsultationsFromState(sid).filter(c => String(c.id) !== String(selectedId || ''));
+    if (!others.length) return '<div style="text-align: center; padding: 24px; color: var(--secondary); font-size: 13px; font-weight:500;">다른 상담 기록이 없습니다.</div>';
+    return others.map(c => apStudentConsultationCardHtml(c, sid)).join('');
+}
+
+// preview 선택이 바뀌면 '다른 상담' 목록도 다시 그려 중복 노출을 막는다.
+function refreshStudentConsultationOthersList(sid, selectedId) {
+    const key = String(sid || '');
+    const container = document.getElementById(`ap-student-consult-others-${key}`);
+    if (!container) return;
+    const others = getStudentConsultationsFromState(key).filter(c => String(c.id) !== String(selectedId || ''));
+    container.innerHTML = apStudentConsultationOthersBodyHtml(key, selectedId);
+    const summary = document.getElementById(`ap-student-consult-others-summary-${key}`);
+    if (summary) summary.textContent = `다른 상담 (${others.length})`;
+}
+
+function renderCnsTab(sid) {
+    const key = String(sid || '');
+    const cnsState = ensureStudentConsultationUiState().byStudent[key] || {};
+    const cnsList = getStudentConsultationsFromState(key);
+    // 상단 preview에 표시 중인 상담을 하단 목록에서 제외(중복 방지). 선택이 없으면 최신 1건.
+    const storedId = state.ui?.studentPinnedConsultationId?.[key] || '';
+    const selectedId = cnsList.some(c => String(c.id) === String(storedId)) ? String(storedId) : String(cnsList[0]?.id || '');
+    const others = cnsList.filter(c => String(c.id) !== selectedId);
+    const listBody = apStudentConsultationOthersBodyHtml(key, selectedId);
 
     return `
         <div class="ap-student-tab-body">
-            <section class="ap-student-card">
-                <div class="ap-student-section-head">
-                    <h3>전체 상담</h3>
-                    <div style="display:flex; gap:7px; flex-wrap:wrap;">
-                        <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal('${sid}')">+ 상담</button>
-                        <button class="btn ap-student-mini-btn" onclick="openConsultationThreadSummaryModal('${sid}')">흐름 요약</button>
-                    </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                <button class="btn ap-student-mini-btn" onclick="openConsultationThreadSummaryModal('${key}')">흐름 요약</button>
+            </div>
+            ${cnsState.loading ? '<div style="font-size: 12px; color: var(--secondary); font-weight:600;">상담 기록을 불러오는 중입니다.</div>' : ''}
+            <details class="ap-student-consult-all">
+                <summary><span id="ap-student-consult-others-summary-${key}">다른 상담 (${others.length})</span></summary>
+                <div class="ap-student-consult-list" id="ap-student-consult-others-${key}" style="padding:0 12px 12px;">
+                    ${listBody}
                 </div>
-                ${cnsState.loading ? '<div style="margin-bottom: 10px; font-size: 12px; color: var(--secondary); font-weight:600;">상담 기록을 불러오는 중입니다.</div>' : ''}
-                <div style="max-height: 460px; overflow-y: auto; padding-right: 2px;">
-                    ${cnsCards || '<div style="text-align: center; padding: 32px; color: var(--secondary); font-size: 13px; font-weight:500;">상담 기록이 없습니다.</div>'}
-                </div>
-            </section>
+            </details>
         </div>
     `;
 }
@@ -2061,7 +2237,7 @@ function openAddParentContactModal(sid) {
             <input id="parent-contact-relation" class="std-input-base" placeholder="관계">
             <input id="parent-contact-phone" class="std-input-base" placeholder="연락처 (필수)">
             <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                <input type="checkbox" id="parent-contact-primary" checked style="width:16px; height:16px; accent-color:var(--primary); cursor:pointer;">
+                <input type="checkbox" id="parent-contact-primary" checked style="width:16px; height:16px; accent-color:#6E66C9; cursor:pointer;">
                 <span>대표 연락처</span>
             </label>
             <textarea id="parent-contact-memo" class="std-input-base" placeholder="비고 (선택)" style="height:80px;"></textarea>
@@ -2108,7 +2284,7 @@ function openEditParentContactModal(sid, contactId) {
             <input id="edit-parent-contact-relation" class="std-input-base" value="${studentAttr(contact.relation || '')}" placeholder="관계">
             <input id="edit-parent-contact-phone" class="std-input-base" value="${studentAttr(contact.phone || '')}" placeholder="연락처 (필수)">
             <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                <input type="checkbox" id="edit-parent-contact-primary" ${Number(contact.is_primary) ? 'checked' : ''} style="width:16px; height:16px; accent-color:var(--primary); cursor:pointer;">
+                <input type="checkbox" id="edit-parent-contact-primary" ${Number(contact.is_primary) ? 'checked' : ''} style="width:16px; height:16px; accent-color:#6E66C9; cursor:pointer;">
                 <span>대표 연락처</span>
             </label>
             <textarea id="edit-parent-contact-memo" class="std-input-base" placeholder="비고 (선택)" style="height:80px;">${apEscapeHtml(contact.memo || '')}</textarea>
@@ -2218,16 +2394,28 @@ function openAddConsultationModal(sid) {
     showStudentDetailSubModalStep('consultation-add', sid, '상담 기록 추가', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; gap: 8px;">
-                <input type="date" id="cns-date" class="std-input-base" value="${todayStr}" style="flex: 1.2;">
-                <select id="cns-type" class="std-input-base" style="flex: 1;" onchange="document.getElementById('cns-type-custom-wrap').style.display=this.value==='직접입력'?'block':'none';">
-                    <option value="학습">학습</option><option value="태도">태도</option><option value="성적">성적</option><option value="신입">신입</option><option value="기타">기타</option><option value="직접입력">직접입력...</option>
-                </select>
+                <div style="flex: 1.2; min-width:0;">
+                    <label class="ap-label" for="cns-date">상담일</label>
+                    <input type="date" id="cns-date" class="ap-input" value="${todayStr}" style="margin-top:5px;">
+                </div>
+                <div style="flex: 1; min-width:0;">
+                    <label class="ap-label" for="cns-type">상담 유형</label>
+                    <select id="cns-type" class="ap-select" style="margin-top:5px;" onchange="document.getElementById('cns-type-custom-wrap').style.display=this.value==='직접입력'?'block':'none';">
+                        <option value="학습">학습</option><option value="태도">태도</option><option value="성적">성적</option><option value="신입">신입</option><option value="기타">기타</option><option value="직접입력">직접입력...</option>
+                    </select>
+                </div>
             </div>
             <div id="cns-type-custom-wrap" style="display:none;">
-                <input id="cns-type-custom" class="std-input-base" type="text" placeholder="태그 직접 입력" style="width:100%; box-sizing:border-box;">
+                <input id="cns-type-custom" class="ap-input" type="text" placeholder="태그 직접 입력">
             </div>
-            <textarea id="cns-content" class="std-input-base" placeholder="상담 내용을 입력하세요." style="height: 140px;"></textarea>
-            <textarea id="cns-action" class="std-input-base" placeholder="조치 사항 (선택)" style="height: 70px;"></textarea>
+            <div>
+                <label class="ap-label" for="cns-content">상담 내용</label>
+                <textarea id="cns-content" class="ap-textarea" placeholder="상담 내용을 입력하세요." style="margin-top:5px; min-height:140px;"></textarea>
+            </div>
+            <div>
+                <label class="ap-label" for="cns-action">조치 사항 (선택)</label>
+                <textarea id="cns-action" class="ap-textarea" placeholder="조치 사항 (선택)" style="margin-top:5px; min-height:70px;"></textarea>
+            </div>
             <div id="consultation-ai-panel-wrap">${consultationAiPanelHtml('add')}</div>
         </div>
     `, '저장', () => handleSaveConsultation(sid));
@@ -2335,22 +2523,34 @@ function openEditConsultation(cid, sid) {
     showStudentDetailSubModalStep('consultation-edit', sid, '상담 수정', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; gap: 8px;">
-                <input type="date" id="edit-cns-date" class="std-input-base" value="${c.date}" style="flex: 1.2;">
-                <select id="edit-cns-type" class="std-input-base" style="flex: 1;" onchange="document.getElementById('edit-cns-type-custom-wrap').style.display=this.value==='직접입력'?'block':'none';">
-                    ${renderConsultationTypeOptions(c.type)}
-                    <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
-                    <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
-                    <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
-                    <option value="신입" ${c.type==='신입'?'selected':''}>신입</option>
-                    <option value="기타" ${c.type==='기타'?'selected':''}>기타</option>
-                    <option value="직접입력">직접입력...</option>
-                </select>
+                <div style="flex: 1.2; min-width:0;">
+                    <label class="ap-label" for="edit-cns-date">상담일</label>
+                    <input type="date" id="edit-cns-date" class="ap-input" value="${c.date}" style="margin-top:5px;">
+                </div>
+                <div style="flex: 1; min-width:0;">
+                    <label class="ap-label" for="edit-cns-type">상담 유형</label>
+                    <select id="edit-cns-type" class="ap-select" style="margin-top:5px;" onchange="document.getElementById('edit-cns-type-custom-wrap').style.display=this.value==='직접입력'?'block':'none';">
+                        ${renderConsultationTypeOptions(c.type)}
+                        <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
+                        <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
+                        <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
+                        <option value="신입" ${c.type==='신입'?'selected':''}>신입</option>
+                        <option value="기타" ${c.type==='기타'?'selected':''}>기타</option>
+                        <option value="직접입력">직접입력...</option>
+                    </select>
+                </div>
             </div>
             <div id="edit-cns-type-custom-wrap" style="display:none;">
-                <input id="edit-cns-type-custom" class="std-input-base" type="text" placeholder="태그 직접 입력" style="width:100%; box-sizing:border-box;">
+                <input id="edit-cns-type-custom" class="ap-input" type="text" placeholder="태그 직접 입력">
             </div>
-            <textarea id="edit-cns-content" class="std-input-base" style="height: 140px;">${apEscapeHtml(c.content || '')}</textarea>
-            <textarea id="edit-cns-action" class="std-input-base" style="height: 70px;">${apEscapeHtml(c.next_action || '')}</textarea>
+            <div>
+                <label class="ap-label" for="edit-cns-content">상담 내용</label>
+                <textarea id="edit-cns-content" class="ap-textarea" style="margin-top:5px; min-height:140px;">${apEscapeHtml(c.content || '')}</textarea>
+            </div>
+            <div>
+                <label class="ap-label" for="edit-cns-action">조치 사항 (선택)</label>
+                <textarea id="edit-cns-action" class="ap-textarea" style="margin-top:5px; min-height:70px;">${apEscapeHtml(c.next_action || '')}</textarea>
+            </div>
             <div id="consultation-ai-panel-wrap">${consultationAiPanelHtml('edit')}</div>
         </div>
     `, '수정 완료', () => handleEditConsultation(cid, sid));
@@ -2521,10 +2721,51 @@ function getDateTextDaysAgo(days) {
     return date.toISOString().slice(0, 10);
 }
 
+// 기존 재원생 학년별 기준 등원일.
+// '이미 등원 중'(= 신입 온보딩 대상이 아닌 기존 재원생)일 때 사용한다.
+function getDefaultOnboardingStartedAtByGradeText(gradeText) {
+    const text = String(gradeText || '').trim();
+    if (text.includes('중1')) return '2026-01-12';
+    if (text.includes('중2')) return '2025-03-01';
+    if (text.includes('중3')) return '2024-03-01';
+    return '';
+}
+
+function getDefaultOnboardingStartedAtByGrade(student) {
+    const rawGrade = String(
+        student?.grade ||
+        student?.student_grade ||
+        student?.grade_label ||
+        student?.school_grade ||
+        student?.level ||
+        ''
+    ).trim();
+    return getDefaultOnboardingStartedAtByGradeText(rawGrade);
+}
+
+// 폼에서 현재 학년 텍스트를 안전하게 읽는다(edit: 학년 select, add: 선택 반에서 추론).
+function getOnboardingGradeTextForPrefix(prefix) {
+    const direct = String(document.getElementById(`${prefix}-grade`)?.value || '').trim();
+    if (direct) return direct;
+    const classId = String(document.getElementById(`${prefix}-class`)?.value || '').trim();
+    if (classId) {
+        const cls = (state.db.classes || []).find(c => String(c.id) === classId);
+        if (cls) return inferGradeFromClass(cls);
+    }
+    return '';
+}
+
+// '이미 등원 중' 체크박스 onchange.
+// 체크 + 등원일이 비어 있을 때만 학년별 기준일을 제안한다.
+// 기존/직접 입력값은 덮어쓰지 않고, 학년 불명이면 아무것도 하지 않는다. (today/7일전 fallback 없음)
 function setOnboardingStartedAtSuggestion(prefix) {
     const checked = document.getElementById(`${prefix}-already-attending`)?.checked || false;
     const input = document.getElementById(getOnboardingStartDateInputId(prefix));
-    if (checked && input) input.value = getDateTextDaysAgo(7);
+    if (!checked || !input) return;
+    if (String(input.value || '').trim()) return;
+    const defaultDate = getDefaultOnboardingStartedAtByGradeText(getOnboardingGradeTextForPrefix(prefix));
+    if (!defaultDate) return;
+    input.value = defaultDate;
 }
 
 function renderOnboardingStartedAtFields(prefix, options = {}) {
@@ -2545,7 +2786,7 @@ function renderOnboardingStartedAtFields(prefix, options = {}) {
             <input id="${safePrefix}-onboarding-started-at" type="date" value="${apEscapeHtml(defaultDate)}" style="width:100%; min-height:44px; box-sizing:border-box; padding:0 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:13px; font-weight:500;">
             <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">${helperText}</div>
             <label style="display:flex; align-items:center; gap:7px; min-height:26px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                <input id="${safePrefix}-already-attending" type="checkbox" ${alreadyChecked ? 'checked' : ''} onchange="setOnboardingStartedAtSuggestion('${safePrefix}')" style="width:15px; height:15px; accent-color:var(--primary); cursor:pointer;">
+                <input id="${safePrefix}-already-attending" type="checkbox" ${alreadyChecked ? 'checked' : ''} onchange="setOnboardingStartedAtSuggestion('${safePrefix}')" style="width:15px; height:15px; accent-color:#6E66C9; cursor:pointer;">
                 <span>이미 등원 중인 학생입니다</span>
             </label>
             <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">${attendingHint}</div>
@@ -2600,16 +2841,17 @@ function isHighSubjectGrade(grade) {
     return String(grade || '').includes('고2') || String(grade || '').includes('고3');
 }
 
-function renderHighSubjectChecks(prefix, grade, selectedSubjects) {
+function renderHighSubjectChecks(prefix, grade, selectedSubjects, options = {}) {
     const selected = new Set(parseHighSubjects(selectedSubjects));
     const visible = isHighSubjectGrade(grade);
+    const showTitle = options.showTitle !== false;
     return `
         <div id="${prefix}-high-subjects-wrap" style="display:${visible ? 'block' : 'none'}; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
-            <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:9px; line-height:1.4;">내신 과목</div>
+            ${showTitle ? '<div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:9px; line-height:1.4;">내신 과목</div>' : ''}
             <div style="display:grid; grid-template-columns:1fr; gap:8px;">
                 ${AP_HIGH_SUBJECTS.map((subject, idx) => `
                     <label style="display:flex; align-items:center; gap:7px; min-height:28px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                        <input type="checkbox" class="${prefix}-high-subject" value="${apEscapeHtml(subject)}" ${selected.has(subject) ? 'checked' : ''} style="width:15px; height:15px; accent-color:var(--primary); cursor:pointer;">
+                        <input type="checkbox" class="${prefix}-high-subject" value="${apEscapeHtml(subject)}" ${selected.has(subject) ? 'checked' : ''} style="width:15px; height:15px; accent-color:#6E66C9; cursor:pointer;">
                         <span>${apEscapeHtml(subject)}</span>
                     </label>
                 `).join('')}
@@ -2619,9 +2861,12 @@ function renderHighSubjectChecks(prefix, grade, selectedSubjects) {
 }
 
 function syncHighSubjectWrap(prefix, grade) {
+    const visible = isHighSubjectGrade(grade);
+    const row = document.getElementById(`${prefix}-high-subjects-row`);
+    if (row) row.style.display = visible ? '' : 'none';
     const wrap = document.getElementById(`${prefix}-high-subjects-wrap`);
     if (!wrap) return;
-    wrap.style.display = isHighSubjectGrade(grade) ? 'block' : 'none';
+    wrap.style.display = visible ? 'block' : 'none';
 }
 
 function syncEditStudentHighSubjects() {
@@ -2664,10 +2909,9 @@ function openEditStudent(sid, options = {}) {
 function renderStudentEditBody(sid) {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
-    const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid)));
-    const opts = selectableClasses.map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, selectableClasses))}</option>`).join('');
-
+    const current = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    const opts = selectableClasses.map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id) === String(current?.class_id) ? 'selected' : ''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, selectableClasses))}</option>`).join('');
     const isNew = isStudentNewMember(s);
     const isLeave = isStudentOnLeave(s);
     const onboardingEntry = getStudentOnboardingEntry(sid);
@@ -2675,58 +2919,41 @@ function renderStudentEditBody(sid) {
     const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
 
     return `
-        <div class="apms-student-contrast apms-student-form-view apms-eie-form">
-            <section class="apms-eie-form-card">
-                <div class="apms-eie-form-head"><h3>기본 정보</h3><span>필수</span></div>
-                <div class="apms-eie-form-grid">
-                    <label class="apms-eie-form-field"><span>이름</span><input id="edit-name" value="${studentAttr(s.name)}" placeholder="이름"></label>
-                    <label class="apms-eie-form-field"><span>학교</span><input id="edit-school" value="${studentAttr(s.school_name)}" placeholder="학교"></label>
-                    <label class="apms-eie-form-field"><span>학년</span><select id="edit-grade" onchange="syncEditStudentHighSubjects()">
+        <div class="apms-student-contrast ap-student-edit-body">
+            <section class="ap-student-card">
+                <div class="ap-student-section-head"><h3>기본 정보</h3><span>필수</span></div>
+                <div class="ap-student-edit-list">
+                    ${apStudentEditRow('이름', `<input id="edit-name" value="${studentAttr(s.name)}" placeholder="이름">`)}
+                    ${apStudentEditRow('학교', `<input id="edit-school" value="${studentAttr(s.school_name)}" placeholder="학교">`)}
+                    ${apStudentEditRow('학년', `<select id="edit-grade" onchange="syncEditStudentHighSubjects()">
                         <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
                         <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
-                    </select></label>
-                    <label class="apms-eie-form-field"><span>배정 반</span><select id="edit-class" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select></label>
-                    <div class="apms-eie-form-wide">${renderHighSubjectChecks('edit', s.grade, s.high_subjects)}</div>
+                    </select>`)}
+                    ${apStudentEditRow('배정 반', `<select id="edit-class" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>`)}
+                    ${apStudentEditRow('내신 과목', renderHighSubjectChecks('edit', s.grade, s.high_subjects, { showTitle: false }), { wide: true, id: 'edit-high-subjects-row', style: isHighSubjectGrade(s.grade) ? '' : 'display:none;' })}
                 </div>
             </section>
-            <section class="apms-eie-form-card">
-                <div class="apms-eie-form-head"><h3>연락처</h3><span>학생/보호자</span></div>
-                <div class="apms-eie-form-grid">
-                    <label class="apms-eie-form-field"><span>학생 전화번호</span><input id="edit-student-phone" type="tel" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호"></label>
-                    <label class="apms-eie-form-field"><span>학부모 전화번호</span><input id="edit-parent-phone" type="tel" value="${studentAttr(s.parent_phone || '')}" placeholder="학부모 전화번호"></label>
-                    <label class="apms-eie-form-field"><span>보호자 관계</span><input id="edit-guardian-rel" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계"></label>
-                    <label class="apms-eie-form-field"><span>주소</span><input id="edit-student-address" value="${studentAttr(s.student_address || '')}" placeholder="주소"></label>
+            <section class="ap-student-card">
+                <div class="ap-student-section-head"><h3>학생 상세 정보</h3><span>연락처 · 관리</span></div>
+                <div class="ap-student-edit-list">
+                    ${apStudentEditRow('학생 연락처', `<input id="edit-student-phone" type="tel" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호">`)}
+                    ${apStudentEditRow('보호자 정보', `<div class="ap-student-edit-inline"><input id="edit-parent-phone" type="tel" value="${studentAttr(s.parent_phone || '')}" placeholder="보호자 전화번호"><input id="edit-guardian-rel" value="${studentAttr(s.guardian_relation || '')}" placeholder="관계"></div>`)}
+                    ${apStudentEditRow('주소', `<input id="edit-student-address" value="${studentAttr(s.student_address || '')}" placeholder="주소">`)}
+                    ${apStudentEditRow('차량', `<input id="edit-vehicle-info" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량">`)}
+                    ${apStudentEditRow('등원일', renderOnboardingStartedAtEditControl({ value: onboardingDate, alreadyAttending: onboardingEntry.already_attending }), { wide: true })}
+                    ${apStudentEditRow('메모', `<textarea id="edit-memo" placeholder="메모">${apEscapeHtml(cleanMemo)}</textarea>`, { wide: true })}
+                    ${apStudentEditRow('PIN 번호', `<input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric">`)}
+                    ${apStudentEditRow('상태', `<div class="ap-student-edit-flags">
+                        <label class="ap-student-edit-flag"><input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}><span>신입생</span></label>
+                        <label class="ap-student-edit-flag is-warn"><input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}><span>휴원</span></label>
+                    </div>`)}
                 </div>
             </section>
+            ${renderStudentRecentActivitySection(sid)}
+            ${renderStudentHistorySection(sid)}
             <details class="apms-eie-form-drawer">
-                <summary>관리 정보 · 상태/메모 · 퇴원 처리</summary>
+                <summary>퇴원 처리</summary>
                 <div class="apms-eie-form-drawer-body">
-                    <section class="apms-eie-form-card">
-                        <div class="apms-eie-form-head"><h3>관리 정보</h3><span>등원</span></div>
-                        <div class="apms-eie-form-grid">
-                            <label class="apms-eie-form-field"><span>차량</span><input id="edit-vehicle-info" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량"></label>
-                            <label class="apms-eie-form-field"><span>PIN</span><input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric"></label>
-                            <div class="apms-eie-form-wide">${renderOnboardingStartedAtFields('edit', { value: onboardingDate, alreadyAttending: onboardingEntry.already_attending })}</div>
-                        </div>
-                    </section>
-                    <section class="apms-eie-form-card">
-                        <div class="apms-eie-form-head"><h3>상태/메모</h3><span>관리</span></div>
-                        <div class="apms-eie-form-grid">
-                            <label class="apms-eie-form-field is-wide"><span>메모</span><textarea id="edit-memo" placeholder="메모">${apEscapeHtml(cleanMemo)}</textarea></label>
-                            <div class="apms-eie-form-wide">
-                                <div class="apms-eie-form-flags">
-                                    <label class="apms-eie-form-flag">
-                                        <input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}>
-                                        <span>신입생</span>
-                                    </label>
-                                    <label class="apms-eie-form-flag is-warn">
-                                        <input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}>
-                                        <span>휴원</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                     <button type="button" class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
                 </div>
             </details>
@@ -2751,9 +2978,10 @@ async function handleEditStudent(sid) {
     const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
     const alreadyAttending = document.getElementById('edit-already-attending')?.checked || false;
     const currentOnboardingStartedAt = getStudentOnboardingStartedAt(sid);
-    let onboardingStartedAt = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('edit'))?.value || '');
-    if (!onboardingStartedAt && alreadyAttending) onboardingStartedAt = getDateTextDaysAgo(7);
-    if (!onboardingStartedAt && isNewChecked) onboardingStartedAt = getTodayKstDateText();
+    // [등원일 회귀 방지] 수정모드에서는 today/7일전 자동 채움을 하지 않는다.
+    // input이 비어 있으면 기존 DB값을 그대로 보존한다(빈값으로 덮어쓰지 않음).
+    const onboardingInputRaw = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('edit'))?.value || '');
+    const onboardingStartedAt = onboardingInputRaw || currentOnboardingStartedAt;
     const cleanMemo = rawMemo.replace(/#신입/g, '').replace(/#휴원/g, '').trim();
     const memoParts = [];
     if (isNewChecked && !alreadyAttending) memoParts.push('#신입');
@@ -2783,13 +3011,16 @@ async function handleEditStudent(sid) {
         if (r?.success) {
             const classChanged = String(classId || '') !== String(currentClassId || '');
             const becameNew = !wasNewChecked && isNewChecked;
-            const onboardingDateChanged = !!onboardingStartedAt && String(currentOnboardingStartedAt || '') !== String(onboardingStartedAt);
-            const shouldSyncOnboarding = !!classId && (alreadyAttending || isNewChecked || becameNew || (classChanged && wasNewChecked) || onboardingDateChanged);
+            const onboardingDateChanged = !!onboardingInputRaw && String(currentOnboardingStartedAt || '') !== String(onboardingInputRaw);
+            // [등원일 회귀 방지] 보존된 등원일(onboardingStartedAt)이 실제로 있을 때만 onboarding sync.
+            // 등원일이 비어 있으면 bootstrap이 today로 덮어쓰지 않도록 sync 자체를 건너뛴다.
+            const shouldSyncOnboarding = !!classId && !!onboardingStartedAt &&
+                (alreadyAttending || isNewChecked || becameNew || (classChanged && wasNewChecked) || onboardingDateChanged);
             if (shouldSyncOnboarding) {
                 await bootstrapOnboardingTasks({
                     student_id: sid,
                     class_id: classId,
-                    onboarding_started_at: onboardingStartedAt || getTodayKstDateText(),
+                    onboarding_started_at: onboardingStartedAt,
                     already_attending: alreadyAttending ? 1 : 0
                 });
             }
@@ -2843,7 +3074,9 @@ async function handleAddStudent() {
     const studentAddress = document.getElementById('add-student-address')?.value.trim() || '';
     const vehicleInfo = document.getElementById('add-vehicle-info')?.value.trim() || '';
     const addAlreadyAttending = document.getElementById('add-already-attending')?.checked || false;
-    const addOnboardingStartedAt = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('add'))?.value || '') || (addAlreadyAttending ? getDateTextDaysAgo(7) : getTodayKstDateText());
+    // 7일전 fallback 제거: 기존 재원생(이미 등원 중)은 학년별 기준일, 그 외 신규 등록은 오늘(기존 add 기본값) 사용.
+    const addGradeDefault = addAlreadyAttending ? getDefaultOnboardingStartedAtByGradeText(getOnboardingGradeTextForPrefix('add')) : '';
+    const addOnboardingStartedAt = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('add'))?.value || '') || addGradeDefault || getTodayKstDateText();
     if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
 
     if (!classId) { toast('반을 선택하세요.', 'warn'); return; }

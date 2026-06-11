@@ -33,6 +33,51 @@
 
             --text: #191F28;
             --text-soft: #333D4B;
+
+            /* Wangji Compact Admin Tokens (신규, 기존 토큰은 유지) */
+            --ap-bg: #F8F9FB;
+            --ap-card: #FFFFFF;
+            --ap-surface: #FFFFFF;
+            --ap-surface-2: #F8FAFC;
+            --ap-border: #E5E8ED;
+
+            --ap-text: #1F2937;
+            --ap-text-soft: #334155;
+            --ap-muted: #64748B;
+            --ap-inactive: #94A3B8;
+
+            --ap-green: #1D9E75;
+            --ap-purple: #6E66C9;
+            --ap-amber: #D97706;
+            --ap-danger: #DC2626;
+
+            --ap-btn-primary-bg: #334155;
+            --ap-btn-primary-text: #FFFFFF;
+            --ap-btn-ghost-bg: #F8FAFC;
+            --ap-btn-ghost-text: #334155;
+            --ap-btn-ghost-border: #CBD5E1;
+
+            --ap-radius-sm: 7px;
+            --ap-radius: 8px;
+            --ap-radius-card: 10px;
+
+            --ap-gap-xs: 6px;
+            --ap-gap-sm: 8px;
+            --ap-gap: 10px;
+
+            --ap-pad-screen: 14px;
+            --ap-pad-card: 12px;
+
+            --ap-btn-h-sm: 28px;
+            --ap-btn-h: 32px;
+            --ap-input-h: 38px;
+
+            --ap-font-title: 18px;
+            --ap-font-section: 13.5px;
+            --ap-font-body: 13px;
+            --ap-font-meta: 12.5px;
+            --ap-font-label: 12px;
+            --ap-font-button: 12px;
         }
 
         /* =========================================
@@ -57,6 +102,29 @@
 
             --text: #F5F5F7;         /* 너무 쨍하지 않은 화이트 */
             --text-soft: #A8A8AC;
+
+            /* Wangji Compact Admin Tokens — dark 대응 (기존 다크 토큰은 유지) */
+            --ap-bg: #121212;
+            --ap-card: #1A1A1C;
+            --ap-surface: #1A1A1C;
+            --ap-surface-2: #242427;
+            --ap-border: #323238;
+
+            --ap-text: #F5F5F7;
+            --ap-text-soft: #D4D4D8;
+            --ap-muted: #A8A8AC;
+            --ap-inactive: #71717A;
+
+            --ap-green: #30D158;
+            --ap-purple: #8B83E6;
+            --ap-amber: #F59E0B;
+            --ap-danger: #F87171;
+
+            --ap-btn-primary-bg: #E5E7EB;
+            --ap-btn-primary-text: #111827;
+            --ap-btn-ghost-bg: #242427;
+            --ap-btn-ghost-text: #F5F5F7;
+            --ap-btn-ghost-border: #3F3F46;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
@@ -366,6 +434,184 @@
         .btn:active {
             background: var(--bg);
             transform: scale(0.96);
+        }
+
+        /* =========================================
+           Wangji Compact Admin — 공통 class (신규)
+           기존 .btn / .card / .btn-primary 는 그대로 두고,
+           화면별 후속 라운드에서 아래 class 로 점진 전환한다.
+           Compatibility: legacy primary remains, but future
+           screens should use .ap-btn.is-primary
+           ========================================= */
+        .ap-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--ap-btn-h);
+            padding: 0 12px;
+            border-radius: var(--ap-radius-sm);
+            border: 1px solid var(--ap-btn-ghost-border);
+            background: var(--ap-btn-ghost-bg);
+            color: var(--ap-btn-ghost-text);
+            font-size: var(--ap-font-button);
+            font-weight: 650;
+            line-height: 1.2;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: none;
+            white-space: nowrap;
+        }
+
+        .ap-btn.is-sm {
+            min-height: var(--ap-btn-h-sm);
+            padding: 0 10px;
+            font-size: 12px;
+        }
+
+        .ap-btn.is-primary {
+            border-color: var(--ap-btn-primary-bg);
+            background: var(--ap-btn-primary-bg);
+            color: var(--ap-btn-primary-text);
+        }
+
+        .ap-btn.is-ghost {
+            border-color: var(--ap-btn-ghost-border);
+            background: var(--ap-btn-ghost-bg);
+            color: var(--ap-btn-ghost-text);
+        }
+
+        .ap-btn.is-consult {
+            border-color: var(--ap-purple);
+            background: var(--ap-purple);
+            color: #FFFFFF;
+        }
+
+        .ap-btn.is-danger {
+            border-color: rgba(220, 38, 38, 0.25);
+            background: transparent;
+            color: var(--ap-danger);
+        }
+
+        .ap-card {
+            border: 1px solid var(--ap-border);
+            border-radius: var(--ap-radius-card);
+            background: var(--ap-card);
+            color: var(--ap-text);
+            padding: var(--ap-pad-card);
+            box-shadow: none;
+        }
+
+        .ap-card.is-compact {
+            padding: 10px 12px;
+        }
+
+        .ap-card.is-consult {
+            border-left: 3px solid var(--ap-purple);
+        }
+
+        .ap-card.is-warning {
+            border-left: 3px solid var(--ap-amber);
+        }
+
+        .ap-card.is-success {
+            border-left: 3px solid var(--ap-green);
+        }
+
+        .ap-input,
+        .ap-select,
+        .ap-textarea {
+            width: 100%;
+            min-height: var(--ap-input-h);
+            border: 1px solid var(--ap-border);
+            border-radius: var(--ap-radius);
+            background: var(--ap-surface-2);
+            color: var(--ap-text);
+            padding: 0 10px;
+            font-family: inherit;
+            font-size: var(--ap-font-body);
+            line-height: 1.4;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .ap-textarea {
+            min-height: 92px;
+            padding: 10px 12px;
+            resize: vertical;
+            white-space: pre-wrap;
+        }
+
+        .ap-label {
+            display: block;
+            color: var(--ap-muted);
+            font-size: var(--ap-font-label);
+            font-weight: 650;
+            line-height: 1.25;
+        }
+
+        .ap-tabs {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border-bottom: 1px solid var(--ap-border);
+            background: transparent;
+        }
+
+        .ap-tab {
+            flex: 1 1 0;
+            min-height: 37px;
+            border: 0;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            color: var(--ap-inactive);
+            font-size: 12.5px;
+            font-weight: 650;
+            cursor: pointer;
+            margin-bottom: -1px;
+        }
+
+        .ap-tab.is-active {
+            color: var(--ap-text);
+            border-bottom-color: var(--ap-text-soft);
+        }
+
+        .ap-modal-compact {
+            background: var(--ap-card);
+            color: var(--ap-text);
+        }
+
+        .ap-modal-head {
+            display: grid;
+            grid-template-columns: 64px minmax(0, 1fr) 64px;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 16px 12px;
+            border-bottom: 1px solid var(--ap-border);
+        }
+
+        .ap-modal-title {
+            margin: 0;
+            color: var(--ap-text);
+            font-size: var(--ap-font-title);
+            font-weight: 700;
+            line-height: 1.25;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ap-modal-body {
+            padding: 14px;
+        }
+
+        .ap-modal-foot {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 14px 14px;
+            border-top: 1px solid var(--ap-border);
         }
 
         table {

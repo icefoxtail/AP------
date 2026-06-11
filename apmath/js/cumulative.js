@@ -747,9 +747,24 @@ function closeAttendanceLedger() {
     if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
 }
 
+// [라우트 안전장치] 출석부 학생명 클릭은 무조건 학생상세 보기모드.
+function openStudentDetailFromAttendance(sid) {
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openStudentDetail === 'function') {
+        openStudentDetail(sid, { mode: 'view', returnTo: { type: 'attendance' } });
+    } else if (typeof renderStudentDetail === 'function') {
+        renderStudentDetail(sid, { returnTo: { type: 'attendance' } });
+    } else if (typeof toast === 'function') {
+        toast('학생 화면을 불러오지 못했습니다.', 'warn');
+    }
+}
+
+// 수정 진입 전용(학생명 클릭에서는 호출 금지). 호환 위해 유지.
 function openEditStudentFromAttendance(sid) {
     state.ui.returnView = { type: 'attendance' };
-    if (typeof openEditStudent === 'function') {
+    if (typeof openStudentDetail === 'function') {
+        openStudentDetail(sid, { mode: 'edit', returnTo: { type: 'attendance' } });
+    } else if (typeof openEditStudent === 'function') {
         openEditStudent(sid, { returnTo: { type: 'attendance' } });
     }
 }
@@ -1176,7 +1191,7 @@ function renderAttendanceLedgerTable() {
             }).join('');
 
             const nameStyle = getAttendanceStudentNameStyle(s);
-            return `<tr><td class="att-nc att-student-nc" style="${nameStyle}" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</td>${dateCells}</tr>`;
+            return `<tr><td class="att-nc att-student-nc" style="${nameStyle}" onclick="openStudentDetailFromAttendance('${sid}')">${apEscapeHtml(s.name)}</td>${dateCells}</tr>`;
         }).join('');
 
         const emptyCols = days.map(() => '<td></td>').join('');
