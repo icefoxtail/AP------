@@ -574,3 +574,24 @@ body.dark #app-drawer .drw-item:hover,
 body.dark #app-drawer .drw-item:focus-visible {
     background:rgba(255,255,255,0.07);
 }
+
+/* ============================================================
+   Round minfix — closed rail/header color parity only
+   - Keep layout unchanged.
+   - Closed desktop rail uses the same surface layer as desktop topbar.
+============================================================ */
+@media (min-width:901px) {
+    #app-drawer:not(.drw-expanded) {
+        background: var(--surface-alpha) !important;
+        border-left: 0 !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+        border-right: 1px solid var(--border) !important;
+        box-shadow: none !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+    }
+    #app-drawer:not(.drw-expanded) .drw-rail-toggle {
+        background: transparent !important;
+    }
+}
