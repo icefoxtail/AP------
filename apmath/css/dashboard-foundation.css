@@ -647,3 +647,184 @@ body.dark.ap-owner-dashboard-bg {
   .owner-dashboard-shell { padding-left: 14px; padding-right: 14px; }
   .owner-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ======================================================================
+   AP dashboard interaction standard — hover/active/focus feedback only
+   Scope: dashboards only. No layout changes.
+   AP teacher/general: blue feedback. AP owner: slate/neutral feedback.
+   ====================================================================== */
+:root {
+  --ap-dashboard-hover-lift: -1px;
+  --ap-dashboard-hover-scale: 1.002;
+  --ap-dashboard-hover-duration: 140ms;
+  --ap-dashboard-blue-hover-bg: color-mix(in srgb, var(--primary) 6%, var(--surface));
+  --ap-dashboard-blue-hover-border: color-mix(in srgb, var(--primary) 58%, var(--border));
+  --ap-dashboard-blue-hover-shadow: 0 6px 14px rgba(26, 92, 255, 0.075);
+  --ap-dashboard-owner-hover-bg: color-mix(in srgb, #0f172a 4%, var(--surface));
+  --ap-dashboard-owner-hover-border: color-mix(in srgb, #0f172a 34%, var(--border));
+  --ap-dashboard-owner-hover-shadow: 0 6px 14px rgba(15, 23, 42, 0.065);
+}
+
+body.ap-teacher-dashboard-mode .ap-metric-card,
+body.ap-teacher-dashboard-mode .ap-dash-card,
+body.ap-teacher-dashboard-mode .ap-list-row,
+body.ap-teacher-dashboard-mode .ap-class-row,
+body.ap-teacher-dashboard-mode .ap-dash-quick-card,
+body.ap-teacher-dashboard-mode .ap-empty-state,
+body.ap-teacher-dashboard-mode .ap-dashboard-surface-list,
+body.ap-teacher-dashboard-mode .dashboard-journal-card__top,
+body.ap-teacher-dashboard-mode .journal-day-cell,
+body.ap-teacher-dashboard-mode #dashboard-weekly-schedule-list > div > div,
+body.ap-teacher-dashboard-mode #dashboard-onboarding-weekly-items > div {
+  transition:
+    background var(--ap-dashboard-hover-duration) ease,
+    border-color var(--ap-dashboard-hover-duration) ease,
+    box-shadow var(--ap-dashboard-hover-duration) ease,
+    transform var(--ap-dashboard-hover-duration) ease !important;
+  transform-origin: center;
+}
+
+body.ap-teacher-dashboard-mode .ap-metric-card:hover,
+body.ap-teacher-dashboard-mode .ap-metric-card:focus-visible,
+body.ap-teacher-dashboard-mode .ap-dash-card:hover,
+body.ap-teacher-dashboard-mode .ap-dash-card:focus-visible,
+body.ap-teacher-dashboard-mode .ap-list-row:hover,
+body.ap-teacher-dashboard-mode .ap-list-row:focus-visible,
+body.ap-teacher-dashboard-mode .ap-class-row:hover,
+body.ap-teacher-dashboard-mode .ap-class-row:focus-visible,
+body.ap-teacher-dashboard-mode .ap-dash-quick-card:hover,
+body.ap-teacher-dashboard-mode .ap-dash-quick-card:focus-visible,
+body.ap-teacher-dashboard-mode .ap-empty-state:hover,
+body.ap-teacher-dashboard-mode .ap-empty-state:focus-visible,
+body.ap-teacher-dashboard-mode .ap-dashboard-surface-list:hover,
+body.ap-teacher-dashboard-mode .ap-dashboard-surface-list:focus-visible,
+body.ap-teacher-dashboard-mode .dashboard-journal-card__top:hover,
+body.ap-teacher-dashboard-mode .dashboard-journal-card__top:focus-visible,
+body.ap-teacher-dashboard-mode .journal-day-cell:hover,
+body.ap-teacher-dashboard-mode .journal-day-cell:focus-visible,
+body.ap-teacher-dashboard-mode #dashboard-weekly-schedule-list > div > div:hover,
+body.ap-teacher-dashboard-mode #dashboard-weekly-schedule-list > div > div:focus-visible,
+body.ap-teacher-dashboard-mode #dashboard-onboarding-weekly-items > div:hover,
+body.ap-teacher-dashboard-mode #dashboard-onboarding-weekly-items > div:focus-visible {
+  background: var(--ap-dashboard-blue-hover-bg) !important;
+  border-color: var(--ap-dashboard-blue-hover-border) !important;
+  box-shadow: var(--ap-dashboard-blue-hover-shadow) !important;
+  transform: translateY(var(--ap-dashboard-hover-lift)) scale(var(--ap-dashboard-hover-scale)) !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-metric-card:active,
+body.ap-teacher-dashboard-mode .ap-list-row:active,
+body.ap-teacher-dashboard-mode .ap-class-row:active,
+body.ap-teacher-dashboard-mode .ap-dash-quick-card:active,
+body.ap-teacher-dashboard-mode .journal-day-cell:active {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
+}
+
+#ap-admin-dashboard .card,
+#ap-admin-dashboard .ap-admin-card,
+#ap-admin-dashboard .ap-admin-teacher-card,
+#ap-admin-dashboard .ap-admin-mini-metric,
+#ap-admin-dashboard .ap-admin-check-item,
+#ap-admin-dashboard .ap-admin-recent-student-grid,
+#ap-admin-dashboard .ap-admin-assessment-card,
+#ap-admin-dashboard .ap-admin-consultation-row,
+#ap-admin-dashboard .ap-admin-recent-student-row,
+#ap-admin-dashboard .ap-admin-search-row,
+#ap-admin-dashboard .admin-teacher-card__quick-action,
+#ap-admin-dashboard .admin-teacher-student-row,
+#ap-admin-dashboard .ap-dashboard-surface-list,
+#ap-admin-dashboard .ap-dashboard-action-button,
+#ap-admin-dashboard .ap-admin-shortcuts .btn,
+#ap-admin-dashboard .ap-admin-app-gate .btn {
+  transition:
+    background var(--ap-dashboard-hover-duration) ease,
+    border-color var(--ap-dashboard-hover-duration) ease,
+    box-shadow var(--ap-dashboard-hover-duration) ease,
+    transform var(--ap-dashboard-hover-duration) ease !important;
+  transform-origin: center;
+}
+
+#ap-admin-dashboard .card:hover,
+#ap-admin-dashboard .card:focus-visible,
+#ap-admin-dashboard .ap-admin-card:hover,
+#ap-admin-dashboard .ap-admin-card:focus-visible,
+#ap-admin-dashboard .ap-admin-teacher-card:hover,
+#ap-admin-dashboard .ap-admin-teacher-card:focus-visible,
+#ap-admin-dashboard .ap-admin-mini-metric:hover,
+#ap-admin-dashboard .ap-admin-mini-metric:focus-visible,
+#ap-admin-dashboard .ap-admin-check-item:hover,
+#ap-admin-dashboard .ap-admin-check-item:focus-visible,
+#ap-admin-dashboard .ap-admin-recent-student-grid:hover,
+#ap-admin-dashboard .ap-admin-recent-student-grid:focus-visible,
+#ap-admin-dashboard .ap-admin-assessment-card:hover,
+#ap-admin-dashboard .ap-admin-assessment-card:focus-visible,
+#ap-admin-dashboard .ap-admin-consultation-row:hover,
+#ap-admin-dashboard .ap-admin-consultation-row:focus-visible,
+#ap-admin-dashboard .ap-admin-recent-student-row:hover,
+#ap-admin-dashboard .ap-admin-recent-student-row:focus-visible,
+#ap-admin-dashboard .ap-admin-search-row:hover,
+#ap-admin-dashboard .ap-admin-search-row:focus-visible,
+#ap-admin-dashboard .admin-teacher-card__quick-action:hover,
+#ap-admin-dashboard .admin-teacher-card__quick-action:focus-visible,
+#ap-admin-dashboard .admin-teacher-student-row:hover,
+#ap-admin-dashboard .admin-teacher-student-row:focus-visible,
+#ap-admin-dashboard .ap-dashboard-surface-list:hover,
+#ap-admin-dashboard .ap-dashboard-surface-list:focus-visible,
+#ap-admin-dashboard .ap-dashboard-action-button:hover,
+#ap-admin-dashboard .ap-dashboard-action-button:focus-visible,
+#ap-admin-dashboard .ap-admin-shortcuts .btn:hover,
+#ap-admin-dashboard .ap-admin-shortcuts .btn:focus-visible,
+#ap-admin-dashboard .ap-admin-app-gate .btn:hover,
+#ap-admin-dashboard .ap-admin-app-gate .btn:focus-visible {
+  background: var(--ap-dashboard-owner-hover-bg) !important;
+  border-color: var(--ap-dashboard-owner-hover-border) !important;
+  box-shadow: var(--ap-dashboard-owner-hover-shadow) !important;
+  transform: translateY(var(--ap-dashboard-hover-lift)) scale(var(--ap-dashboard-hover-scale)) !important;
+}
+
+#ap-admin-dashboard .card:active,
+#ap-admin-dashboard .ap-admin-teacher-card:active,
+#ap-admin-dashboard .ap-admin-mini-metric:active,
+#ap-admin-dashboard .ap-admin-check-item:active,
+#ap-admin-dashboard .ap-admin-consultation-row:active,
+#ap-admin-dashboard .ap-admin-recent-student-row:active,
+#ap-admin-dashboard .admin-teacher-card__quick-action:active,
+#ap-admin-dashboard .ap-dashboard-action-button:active,
+#ap-admin-dashboard .ap-admin-shortcuts .btn:active,
+#ap-admin-dashboard .ap-admin-app-gate .btn:active {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
+}
+
+#ap-admin-dashboard .ap-admin-shortcuts .btn[aria-current="page"],
+#ap-admin-dashboard .ap-admin-app-gate .btn[aria-current="page"],
+#ap-admin-dashboard .ap-admin-shortcuts .btn.is-active,
+#ap-admin-dashboard .ap-admin-app-gate .btn.is-active {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.ap-teacher-dashboard-mode .ap-metric-card,
+  body.ap-teacher-dashboard-mode .ap-dash-card,
+  body.ap-teacher-dashboard-mode .ap-list-row,
+  body.ap-teacher-dashboard-mode .ap-class-row,
+  body.ap-teacher-dashboard-mode .ap-dash-quick-card,
+  body.ap-teacher-dashboard-mode .ap-empty-state,
+  body.ap-teacher-dashboard-mode .ap-dashboard-surface-list,
+  body.ap-teacher-dashboard-mode .dashboard-journal-card__top,
+  body.ap-teacher-dashboard-mode .journal-day-cell,
+  #ap-admin-dashboard .card,
+  #ap-admin-dashboard .ap-admin-card,
+  #ap-admin-dashboard .ap-admin-teacher-card,
+  #ap-admin-dashboard .ap-admin-mini-metric,
+  #ap-admin-dashboard .ap-admin-check-item,
+  #ap-admin-dashboard .ap-admin-consultation-row,
+  #ap-admin-dashboard .ap-admin-recent-student-row,
+  #ap-admin-dashboard .admin-teacher-card__quick-action {
+    transition: background .01ms linear, border-color .01ms linear !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+

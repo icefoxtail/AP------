@@ -10940,3 +10940,167 @@ select.eie-att-ctrl { cursor: pointer; }
         margin: 0 !important;
     }
 }
+
+/* ======================================================================
+   EIE dashboard interaction standard — hover/active/focus feedback only
+   Scope: EIE dashboards/cards/buttons/rows. No layout changes.
+   Brand feedback: red border + very light red surface + subtle lift.
+   ====================================================================== */
+:root {
+  --eie-dashboard-hover-lift: -1px;
+  --eie-dashboard-hover-scale: 1.002;
+  --eie-dashboard-hover-duration: 140ms;
+  --eie-dashboard-red-hover-bg: color-mix(in srgb, #D94A4A 5%, var(--eie-surface));
+  --eie-dashboard-red-hover-border: color-mix(in srgb, #D94A4A 48%, var(--eie-border));
+  --eie-dashboard-red-hover-shadow: 0 6px 14px rgba(217, 74, 74, 0.07);
+}
+
+.eie-app-shell .eie-card,
+.eie-app-shell .eie-admin-card,
+.eie-app-shell .eie-summary-card,
+.eie-app-shell .eie-admin-status-card,
+.eie-app-shell .eie-admin-shortcut,
+.eie-app-shell .eie-surface-action,
+.eie-app-shell .eie-small-button:not(:disabled),
+.eie-app-shell .eie-primary-button:not(:disabled),
+.eie-app-shell .eie-back-button,
+.eie-app-shell .eie-student-row,
+.eie-app-shell .eie-admin-recent-row,
+.eie-app-shell .eie-filter-button,
+.eie-app-shell .eie-cell-card,
+.eie-app-shell .eie-student-chip,
+.eie-app-shell .eie-management-card,
+.eie-app-shell .eie-classroom-card,
+.eie-app-shell .eie-apms-card,
+.eie-app-shell .eie-apms-student-row,
+.eie-app-shell .eie-v2-session-card,
+.eie-app-shell .eie-v2-mobile-card,
+.eie-app-shell .eie-v2-student-chip.is-clickable,
+.eie-app-shell .eie-apms-consult-date-button,
+.eie-app-shell .eie-drw-item {
+  transition:
+    background var(--eie-dashboard-hover-duration) ease,
+    border-color var(--eie-dashboard-hover-duration) ease,
+    box-shadow var(--eie-dashboard-hover-duration) ease,
+    transform var(--eie-dashboard-hover-duration) ease,
+    color var(--eie-dashboard-hover-duration) ease !important;
+  transform-origin: center;
+}
+
+.eie-app-shell .eie-card:hover,
+.eie-app-shell .eie-card:focus-visible,
+.eie-app-shell .eie-admin-card:hover,
+.eie-app-shell .eie-admin-card:focus-visible,
+.eie-app-shell .eie-summary-card:hover,
+.eie-app-shell .eie-summary-card:focus-visible,
+.eie-app-shell .eie-admin-status-card:hover,
+.eie-app-shell .eie-admin-status-card:focus-visible,
+.eie-app-shell .eie-admin-shortcut:hover,
+.eie-app-shell .eie-admin-shortcut:focus-visible,
+.eie-app-shell .eie-surface-action:hover,
+.eie-app-shell .eie-surface-action:focus-visible,
+.eie-app-shell .eie-small-button:not(:disabled):hover,
+.eie-app-shell .eie-small-button:not(:disabled):focus-visible,
+.eie-app-shell .eie-primary-button:not(:disabled):hover,
+.eie-app-shell .eie-primary-button:not(:disabled):focus-visible,
+.eie-app-shell .eie-back-button:hover,
+.eie-app-shell .eie-back-button:focus-visible,
+.eie-app-shell .eie-student-row:hover,
+.eie-app-shell .eie-student-row:focus-visible,
+.eie-app-shell .eie-admin-recent-row:hover,
+.eie-app-shell .eie-admin-recent-row:focus-visible,
+.eie-app-shell .eie-filter-button:hover,
+.eie-app-shell .eie-filter-button:focus-visible,
+.eie-app-shell .eie-cell-card:hover,
+.eie-app-shell .eie-cell-card:focus-visible,
+.eie-app-shell .eie-student-chip:hover,
+.eie-app-shell .eie-student-chip:focus-visible,
+.eie-app-shell .eie-management-card:hover,
+.eie-app-shell .eie-management-card:focus-visible,
+.eie-app-shell .eie-classroom-card:hover,
+.eie-app-shell .eie-classroom-card:focus-visible,
+.eie-app-shell .eie-apms-card:hover,
+.eie-app-shell .eie-apms-card:focus-visible,
+.eie-app-shell .eie-apms-student-row:hover,
+.eie-app-shell .eie-apms-student-row:focus-visible,
+.eie-app-shell .eie-v2-session-card:hover,
+.eie-app-shell .eie-v2-session-card:focus-visible,
+.eie-app-shell .eie-v2-mobile-card:hover,
+.eie-app-shell .eie-v2-mobile-card:focus-visible,
+.eie-app-shell .eie-v2-student-chip.is-clickable:hover,
+.eie-app-shell .eie-v2-student-chip.is-clickable:focus-visible,
+.eie-app-shell .eie-apms-consult-date-button:hover,
+.eie-app-shell .eie-apms-consult-date-button:focus-visible,
+.eie-app-shell .eie-drw-item:hover,
+.eie-app-shell .eie-drw-item:focus-visible {
+  background: var(--eie-dashboard-red-hover-bg) !important;
+  border-color: var(--eie-dashboard-red-hover-border) !important;
+  box-shadow: var(--eie-dashboard-red-hover-shadow) !important;
+  transform: translateY(var(--eie-dashboard-hover-lift)) scale(var(--eie-dashboard-hover-scale)) !important;
+}
+
+.eie-app-shell .eie-card:active,
+.eie-app-shell .eie-admin-card:active,
+.eie-app-shell .eie-summary-card:active,
+.eie-app-shell .eie-admin-status-card:active,
+.eie-app-shell .eie-admin-shortcut:active,
+.eie-app-shell .eie-surface-action:active,
+.eie-app-shell .eie-small-button:not(:disabled):active,
+.eie-app-shell .eie-primary-button:not(:disabled):active,
+.eie-app-shell .eie-back-button:active,
+.eie-app-shell .eie-student-row:active,
+.eie-app-shell .eie-admin-recent-row:active,
+.eie-app-shell .eie-filter-button:active,
+.eie-app-shell .eie-cell-card:active,
+.eie-app-shell .eie-student-chip:active,
+.eie-app-shell .eie-management-card:active,
+.eie-app-shell .eie-classroom-card:active,
+.eie-app-shell .eie-apms-card:active,
+.eie-app-shell .eie-apms-student-row:active,
+.eie-app-shell .eie-v2-session-card:active,
+.eie-app-shell .eie-v2-mobile-card:active,
+.eie-app-shell .eie-v2-student-chip.is-clickable:active,
+.eie-app-shell .eie-apms-consult-date-button:active,
+.eie-app-shell .eie-drw-item:active {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
+}
+
+.eie-app-shell .eie-admin-shortcut.is-active:hover,
+.eie-app-shell .eie-admin-shortcut.is-active:focus-visible,
+.eie-app-shell .eie-surface-action--current:hover,
+.eie-app-shell .eie-surface-action--current:focus-visible,
+.eie-app-shell .eie-surface-action[aria-current="page"]:hover,
+.eie-app-shell .eie-surface-action[aria-current="page"]:focus-visible,
+.eie-app-shell .eie-v2-session-card.is-selected:hover,
+.eie-app-shell .eie-v2-session-card.is-selected:focus-visible {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eie-app-shell .eie-card,
+  .eie-app-shell .eie-admin-card,
+  .eie-app-shell .eie-summary-card,
+  .eie-app-shell .eie-admin-status-card,
+  .eie-app-shell .eie-admin-shortcut,
+  .eie-app-shell .eie-surface-action,
+  .eie-app-shell .eie-small-button:not(:disabled),
+  .eie-app-shell .eie-primary-button:not(:disabled),
+  .eie-app-shell .eie-student-row,
+  .eie-app-shell .eie-admin-recent-row,
+  .eie-app-shell .eie-filter-button,
+  .eie-app-shell .eie-cell-card,
+  .eie-app-shell .eie-student-chip,
+  .eie-app-shell .eie-management-card,
+  .eie-app-shell .eie-classroom-card,
+  .eie-app-shell .eie-apms-card,
+  .eie-app-shell .eie-apms-student-row,
+  .eie-app-shell .eie-v2-session-card,
+  .eie-app-shell .eie-v2-mobile-card,
+  .eie-app-shell .eie-v2-student-chip.is-clickable {
+    transition: background .01ms linear, border-color .01ms linear !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+

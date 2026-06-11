@@ -525,7 +525,7 @@ body.dark #ap-admin-dashboard .ap-admin-section {
 }
 #ap-admin-dashboard .ap-admin-section-title {
   font-size: 14px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   letter-spacing: 0 !important;
   line-height: 1.35 !important;
 }
@@ -536,7 +536,8 @@ body.dark #ap-admin-dashboard .ap-admin-section {
   letter-spacing: 0 !important;
 }
 #ap-admin-dashboard .ap-stat-value {
-  font-weight: 500 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
 }
 #ap-admin-dashboard .ap-admin-mini-metric div:not(.ap-stat-value),
 #ap-admin-dashboard .ap-admin-check-item span:first-child {
@@ -551,7 +552,7 @@ body.dark #ap-admin-dashboard .ap-admin-section {
 }
 .ap-dashboard-section-head h3 {
   font-size: 14px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   letter-spacing: 0 !important;
 }
 .ap-dashboard-section-head h3::before {
@@ -952,6 +953,82 @@ body.dark .apms-student-contrast .apms-student-filter-grid {
   .apms-student-profile-view > div[style*="grid-template-columns: 1fr 1fr"],
   .apms-student-profile-view [style*="grid-template-columns: 1fr 1fr"] {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* ======================================================================
+   AP MATH 공통 UI bridge (2026-06-11)
+   - 선생님 대시보드 카드 톤(radius 6px / shadow none / 연한 1px border)을
+     기존 전역 카드 계열에 bridge한다. 레이아웃/기능/배경 변경 없음.
+   - 파일 끝에 위치하여 위쪽 phase 1/2 !important 라운드·그림자 규칙을 이긴다.
+   - 모달 외곽 shell은 16px, 모달 내부 카드/row는 6px 계열을 유지한다.
+   ====================================================================== */
+.card,
+.dashboard-card,
+.stat-card,
+.report-card,
+.student-card,
+.class-card,
+.planner-card,
+.assignment-card,
+.exam-card,
+.omr-card,
+#ap-admin-dashboard .card,
+#ap-admin-dashboard .ap-admin-card,
+.ap-admin-mini-metric,
+.ap-card {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  border-color: var(--border) !important;
+}
+
+.ap-admin-check-item {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+body.dark .card,
+body.dark .dashboard-card,
+body.dark .stat-card,
+body.dark .report-card,
+body.dark .student-card,
+body.dark .class-card,
+body.dark .planner-card,
+body.dark .assignment-card,
+body.dark .exam-card,
+body.dark .omr-card {
+  box-shadow: none !important;
+}
+
+/* 모달 외곽 shell: 16px 통일 (열기/닫기/저장/취소 동작은 변경하지 않는다) */
+.modal,
+.modal-content,
+.modal-box,
+.modal-sheet,
+#modal-content,
+#modal-box {
+  border-radius: 16px !important;
+}
+
+@media (max-width: 640px) {
+  .card,
+  .dashboard-card,
+  .stat-card,
+  .report-card,
+  .student-card,
+  .class-card,
+  .planner-card,
+  .assignment-card,
+  .exam-card,
+  .omr-card {
+    border-radius: 6px !important;
+  }
+}
+
+/* 모바일 바텀시트 형태(#modal-content가 화면 하단 고정)는 상단 모서리만 둥글게 유지 */
+@media (max-width: 600px) {
+  #modal-content {
+    border-radius: 16px 16px 0 0 !important;
   }
 }
 
