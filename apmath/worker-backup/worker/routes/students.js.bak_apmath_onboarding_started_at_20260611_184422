@@ -25,7 +25,6 @@ function normalizeStudentPayload(d = {}, current = {}) {
     parentPhone: String(d.parent_phone ?? d.parentPhone ?? current.parent_phone ?? '').trim(),
     studentAddress: String(d.student_address ?? d.studentAddress ?? current.student_address ?? '').trim(),
     vehicleInfo: String(d.vehicle_info ?? d.vehicleInfo ?? current.vehicle_info ?? '').trim(),
-    onboardingStartedAt: String(d.onboarding_started_at ?? d.onboardingStartedAt ?? current.onboarding_started_at ?? '').trim(),
     studentPin: String(d.student_pin ?? d.studentPin ?? current.student_pin ?? '').trim(),
     highSubjects: normalizeHighSubjects(d.high_subjects ?? d.highSubjects ?? current.high_subjects ?? '[]'),
     classId: d.class_id !== undefined || d.classId !== undefined ? String(d.class_id ?? d.classId ?? '').trim() : undefined
@@ -140,7 +139,7 @@ async function insertStudentWithAutoPin(env, d, sid, identityKey, targetScore) {
       env.DB.prepare(`
         INSERT INTO students (
           id, name, school_name, grade, target_score, status, memo, guardian_relation,
-          student_phone, parent_phone, student_address, vehicle_info, onboarding_started_at, student_pin,
+          student_phone, parent_phone, student_address, vehicle_info, student_pin,
           high_subjects, student_identity_key, created_at, updated_at
         )
         VALUES (?, ?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
@@ -156,7 +155,6 @@ async function insertStudentWithAutoPin(env, d, sid, identityKey, targetScore) {
         d.parentPhone,
         d.studentAddress,
         d.vehicleInfo,
-        d.onboardingStartedAt,
         pin,
         d.highSubjects,
         identityKey
@@ -257,7 +255,7 @@ async function handleUpdateStudent(env, teacher, id, body) {
       UPDATE students
       SET name = ?, school_name = ?, grade = ?, target_score = ?, memo = ?,
           guardian_relation = ?, student_phone = ?, parent_phone = ?,
-          student_address = ?, vehicle_info = ?, onboarding_started_at = ?, student_pin = ?, high_subjects = ?,
+          student_address = ?, vehicle_info = ?, student_pin = ?, high_subjects = ?,
           student_identity_key = ?, updated_at = DATETIME('now')
       WHERE id = ?
     `).bind(
@@ -271,7 +269,6 @@ async function handleUpdateStudent(env, teacher, id, body) {
       d.parentPhone,
       d.studentAddress,
       d.vehicleInfo,
-      d.onboardingStartedAt,
       d.studentPin,
       d.highSubjects,
       studentIdentityKey,
