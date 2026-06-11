@@ -1462,8 +1462,26 @@ function normalizeOnboardingDate(value) {
     return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : '';
 }
 
+function getStudentOnboardingStartedAtFromStudentRow(sid) {
+    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    return normalizeOnboardingDate(
+        student?.onboarding_started_at ||
+        student?.onboardingStartedAt ||
+        student?.enrollment_started_at ||
+        student?.enrollmentStartedAt ||
+        ''
+    );
+}
+
+function setStudentOnboardingStartedAtInState(sid, value) {
+    const date = normalizeOnboardingDate(value);
+    if (!sid || !date) return;
+    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    if (student) student.onboarding_started_at = date;
+}
+
 function getStudentOnboardingStartedAt(sid) {
-    return normalizeOnboardingDate(getStudentOnboardingEntry(sid).onboarding_started_at);
+    return getStudentOnboardingStartedAtFromStudentRow(sid) || normalizeOnboardingDate(getStudentOnboardingEntry(sid).onboarding_started_at);
 }
 
 function getStudentOnboardingStartedAtLabel(sid) {
@@ -1478,7 +1496,11 @@ function syncStudentOnboardingEntry(sid, payload = {}) {
     const entry = getStudentOnboardingEntry(sid);
     const rows = Array.isArray(payload.tasks) ? payload.tasks : entry.tasks;
     entry.tasks = rows;
-    entry.onboarding_started_at = normalizeOnboardingDate(payload.onboarding_started_at || payload.onboardingStartedAt || entry.onboarding_started_at);
+    const incomingStartedAt = normalizeOnboardingDate(payload.onboarding_started_at || payload.onboardingStartedAt || '');
+    const studentRowStartedAt = getStudentOnboardingStartedAtFromStudentRow(sid);
+    entry.onboarding_started_at = studentRowStartedAt || incomingStartedAt || normalizeOnboardingDate(entry.onboarding_started_at);
+    // students row가 등원일의 1차 원본이다. onboarding 응답은 row 값이 없을 때만 보조 backfill한다.
+    if (incomingStartedAt && !studentRowStartedAt) setStudentOnboardingStartedAtInState(sid, incomingStartedAt);
     entry.already_attending = !!(payload.already_attending || payload.alreadyAttending || rows.some(row => String(row?.status || '') === 'skipped' && String(row?.notes || '').includes('이미 등원 중')));
     entry.loadedAt = Date.now();
     entry.loading = false;
@@ -3003,7 +3025,9 @@ async function handleEditStudent(sid) {
         memo: finalMemo,
         student_pin: pin,
         high_subjects: JSON.stringify(highSubjects),
-        highSubjects: highSubjects
+        highSubjects: highSubjects,
+        onboarding_started_at: onboardingStartedAt,
+        onboardingStartedAt: onboardingStartedAt
     };
 
     try {
@@ -3012,10 +3036,9 @@ async function handleEditStudent(sid) {
             const classChanged = String(classId || '') !== String(currentClassId || '');
             const becameNew = !wasNewChecked && isNewChecked;
             const onboardingDateChanged = !!onboardingInputRaw && String(currentOnboardingStartedAt || '') !== String(onboardingInputRaw);
-            // [등원일 회귀 방지] 보존된 등원일(onboardingStartedAt)이 실제로 있을 때만 onboarding sync.
-            // 등원일이 비어 있으면 bootstrap이 today로 덮어쓰지 않도록 sync 자체를 건너뛴다.
-            const shouldSyncOnboarding = !!classId && !!onboardingStartedAt &&
-                (alreadyAttending || isNewChecked || becameNew || (classChanged && wasNewChecked) || onboardingDateChanged);
+            // [등원일 회귀 방지] 학생 정보 저장은 등원일을 자동으로 다시 쓰지 않는다.
+            // 등원일 input을 직접 변경했을 때만 onboarding task sync를 보조 실행한다.
+            const shouldSyncOnboarding = !!classId && !!onboardingStartedAt && onboardingDateChanged;
             if (shouldSyncOnboarding) {
                 await bootstrapOnboardingTasks({
                     student_id: sid,
@@ -3026,6 +3049,7 @@ async function handleEditStudent(sid) {
             }
             toast('학생 정보가 수정되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
+            if (onboardingStartedAt) setStudentOnboardingStartedAtInState(sid, onboardingStartedAt);
             // 수정 저장은 모달을 닫지 않고 같은 학생상세 보기 모드로 복귀한다.
             await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
             renderStudentDetailShell(sid, { mode: 'view', tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'), returnTo: returnCtx });
@@ -3093,6 +3117,7 @@ async function handleAddStudent() {
         student_address: studentAddress, studentAddress: studentAddress,
         vehicle_info: vehicleInfo, vehicleInfo: vehicleInfo,
         high_subjects: JSON.stringify(highSubjects), highSubjects: highSubjects,
+        onboarding_started_at: addOnboardingStartedAt, onboardingStartedAt: addOnboardingStartedAt,
         memo: ''
     };
 
@@ -3115,6 +3140,7 @@ async function handleAddStudent() {
             }).catch(e => console.warn('[handleAddStudent] onboarding bootstrap failed:', e));
             toast(r?.duplicate_ignored ? '이미 등록 처리된 학생입니다.' : '학생이 추가되었습니다.', r?.duplicate_ignored ? 'info' : 'success');
             mergeStudentCreateResponseIntoState(r);
+            if (r?.id && addOnboardingStartedAt) setStudentOnboardingStartedAtInState(r.id, addOnboardingStartedAt);
             closeModal();
             refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
