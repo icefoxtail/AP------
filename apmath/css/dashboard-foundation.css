@@ -332,15 +332,32 @@
 
 .ap-surface-action--current { cursor: default; }
 
-/* 퀵 액션 버튼(시간표/출석부/아카이브): 다른 카드처럼 사각형 + 위아래 폭 확대 */
-.ap-surface-toolbar .ap-surface-action,
+/* 퀵 액션 버튼(시간표/출석부/아카이브): 실제 선생님 대시보드 클래스까지 포함 */
 .ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button,
-.ap-dashboard-action-grid.ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button {
+.ap-dashboard-action-grid.ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-card {
   height: auto !important;
-  min-height: 96px !important;
+  min-height: 64px !important;
   max-height: none !important;
-  padding: 27px 12px !important;
-  border-radius: 6px !important;
+  padding: 14px 10px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-title {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+}
+
+@media (max-width: 420px) {
+  body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-card {
+    min-height: 48px !important;
+    padding: 10px 6px !important;
+  }
+  body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-title {
+    font-size: 12px !important;
+  }
 }
 
 .ap-surface-action:hover,
