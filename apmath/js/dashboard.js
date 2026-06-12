@@ -2744,7 +2744,9 @@ function renderTodayJournalCard(data) {
     return `
         <section id="ap-dash-journal-section" class="ap-dash-card">
             <h3 class="ap-dash-card__title">오늘일지</h3>
-            ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            <div class="ap-dash-inner-list ap-dash-inner-list--journal">
+                ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            </div>
         </section>
     `;
 }

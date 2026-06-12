@@ -466,16 +466,85 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-list-row.status-pending {
   background: color-mix(in srgb, var(--primary) 5%, var(--surface)) !important;
 }
 
-/* 내부 리스트 gap 통일 */
-body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list,
-body.ap-teacher-dashboard-mode .ap-dash-redesign .journal-matrix {
+/* 학급관리 리스트 하단 40px legacy 제거 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list {
+  margin-bottom: 0 !important;
+  gap: var(--ap-dash-inner-gap) !important;
   width: 100% !important;
+}
+
+/* ======================================================================
+   내부 wrapper 공통: .ap-dash-inner-list
+   ====================================================================== */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-inner-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--ap-dash-inner-gap) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 오늘일지: journal-matrix 가 row gap 담당 — wrapper gap은 0 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-inner-list--journal {
+  gap: 0 !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign #ap-dash-journal-section .journal-matrix {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--ap-dash-inner-gap) !important;
+  width: 100% !important;
+}
+
+/* ======================================================================
+   오늘일정 surface-list: 공통 row 계열로 보정
+   ====================================================================== */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-surface-list--today {
+  border-radius: var(--ap-dash-row-radius) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-surface-list--today > *:last-child {
+  border-bottom: 0 !important;
+}
+
+/* 오늘일정 empty-state 리듬 통일 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-empty-state {
+  min-height: var(--ap-dash-row-height) !important;
+  padding: 0 var(--ap-dash-row-padding-x) !important;
+  border-radius: var(--ap-dash-row-radius) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  gap: var(--ap-dash-row-inner-gap) !important;
+}
+
+/* ======================================================================
+   주간일정 split: 공통 카드 계열로 보정
+   ====================================================================== */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-weekly-split {
+  display: grid !important;
   gap: var(--ap-dash-inner-gap) !important;
 }
 
-body.ap-teacher-dashboard-mode .ap-dash-redesign .journal-matrix {
-  display: flex !important;
-  flex-direction: column !important;
+@media (min-width: 640px) {
+  body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-weekly-split {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-split-cell {
+  min-width: 0 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--ap-dash-row-radius) !important;
+  background: var(--surface) !important;
+  padding: var(--ap-space-4) !important;
+  box-sizing: border-box !important;
 }
 
 .ap-surface-action:hover,
