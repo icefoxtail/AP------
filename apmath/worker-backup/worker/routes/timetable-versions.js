@@ -970,18 +970,17 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
   }
 }
 
-async function insertTeacherClassMappingsForClasses(env, classIds) {
-  if (!classIds.length) return 0;
+async function buildTeacherClassMappingStmts(env, classIds) {
+  if (!classIds.length) return [];
   const markers = classIds.map(() => '?').join(',');
   const classes = await env.DB.prepare(`SELECT id, teacher_name FROM classes WHERE id IN (${markers})`).bind(...classIds).all();
-  let count = 0;
+  const stmts = [];
   for (const cls of (classes.results || [])) {
     const matched = await findTeacherByAlias(env, cls.teacher_name);
     if (!matched) continue;
-    await env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(matched.id, cls.id).run();
-    count += 1;
+    stmts.push(env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(matched.id, cls.id));
   }
-  return count;
+  return stmts;
 }
 
 async function activateVersion(env, versionId, teacher) {
@@ -1018,41 +1017,46 @@ async function activateVersion(env, versionId, teacher) {
   const studentIds = uniqueValues(assignmentRows, 'student_id');
   if (!classIds.length) return jsonResponse({ success: false, error: 'version has no classes' }, 400);
 
-  await env.DB.prepare('DELETE FROM class_time_slots').run();
+  // class_time_slots 전체 삭제 후 재삽입하는 구조이므로, 중간 실패 시 시간표가
+  // 유실되지 않도록 모든 쓰기를 단일 batch(원자적 트랜잭션)로 모아 한 번에 실행한다.
+  const teacherClassStmts = await buildTeacherClassMappingStmts(env, classIds);
+  const classMarkers = classIds.map(() => '?').join(',');
+  const stmts = [];
+
+  stmts.push(env.DB.prepare('DELETE FROM class_time_slots'));
   for (const slot of activeSlotRows) {
-    await env.DB.prepare(`
+    stmts.push(env.DB.prepare(`
       INSERT INTO class_time_slots
         (id, class_id, day_of_week, start_time, end_time, room_name, memo, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(makeId('cts'), slot.class_id, slot.day_of_week, slot.start_time, slot.end_time, slot.room_name || null, slot.memo || 'activated from timetable version').run();
+    `).bind(makeId('cts'), slot.class_id, slot.day_of_week, slot.start_time, slot.end_time, slot.room_name || null, slot.memo || 'activated from timetable version'));
   }
 
-  const classMarkers = classIds.map(() => '?').join(',');
-  await env.DB.prepare(`UPDATE classes SET is_active = 1, updated_at = CURRENT_TIMESTAMP WHERE id IN (${classMarkers})`).bind(...classIds).run();
-  await insertTeacherClassMappingsForClasses(env, classIds);
+  stmts.push(env.DB.prepare(`UPDATE classes SET is_active = 1, updated_at = CURRENT_TIMESTAMP WHERE id IN (${classMarkers})`).bind(...classIds));
+  stmts.push(...teacherClassStmts);
 
   if (assignmentRows.length) {
-    await env.DB.prepare(`DELETE FROM class_students WHERE class_id IN (${classMarkers})`).bind(...classIds).run();
+    stmts.push(env.DB.prepare(`DELETE FROM class_students WHERE class_id IN (${classMarkers})`).bind(...classIds));
     for (const row of assignmentRows) {
-      await env.DB.prepare('INSERT OR IGNORE INTO class_students (class_id, student_id) VALUES (?, ?)').bind(row.class_id, row.student_id).run();
+      stmts.push(env.DB.prepare('INSERT OR IGNORE INTO class_students (class_id, student_id) VALUES (?, ?)').bind(row.class_id, row.student_id));
     }
   }
 
   if (studentIds.length) {
     const studentMarkers = studentIds.map(() => '?').join(',');
-    await env.DB.prepare(`UPDATE students SET status = '재원', updated_at = CURRENT_TIMESTAMP WHERE id IN (${studentMarkers}) AND status = '입학예정'`).bind(...studentIds).run();
-    await env.DB.prepare(`
+    stmts.push(env.DB.prepare(`UPDATE students SET status = '재원', updated_at = CURRENT_TIMESTAMP WHERE id IN (${studentMarkers}) AND status = '입학예정'`).bind(...studentIds));
+    stmts.push(env.DB.prepare(`
       UPDATE student_enrollments
       SET status = 'ended', end_date = COALESCE(end_date, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP
       WHERE status = 'active' AND branch = 'apmath' AND student_id IN (${studentMarkers})
-    `).bind(...studentIds).run();
+    `).bind(...studentIds));
 
     for (const row of assignmentRows) {
-      await env.DB.prepare(`
+      stmts.push(env.DB.prepare(`
         INSERT INTO student_enrollments
           (id, student_id, branch, class_id, status, start_date, end_date, tuition_amount, memo)
         VALUES (?, ?, 'apmath', ?, 'active', DATE('now', '+9 hours'), NULL, NULL, ?)
-      `).bind(makeId('enr'), row.student_id, row.class_id, '새학기 시간표 적용').run();
+      `).bind(makeId('enr'), row.student_id, row.class_id, '새학기 시간표 적용'));
     }
   }
 
@@ -1063,22 +1067,24 @@ async function activateVersion(env, versionId, teacher) {
   for (const row of assignmentRows) {
     const oldClassId = oldByStudent.get(String(row.student_id)) || null;
     if (oldClassId && oldClassId !== String(row.class_id)) {
-      await env.DB.prepare(`
+      stmts.push(env.DB.prepare(`
         INSERT INTO class_transfer_history
           (id, student_id, from_class_id, to_class_id, reason, changed_by)
         VALUES (?, ?, ?, ?, ?, ?)
-      `).bind(makeId('ctr'), row.student_id, oldClassId, row.class_id, '새학기 시간표 적용', teacher?.id || teacher?.login_id || teacher?.name || null).run();
+      `).bind(makeId('ctr'), row.student_id, oldClassId, row.class_id, '새학기 시간표 적용', teacher?.id || teacher?.login_id || teacher?.name || null));
     }
   }
 
   if (activeVersion?.id && activeVersion.id !== versionId) {
-    await env.DB.prepare(`UPDATE timetable_versions SET status = 'archived', effective_to = COALESCE(effective_to, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(activeVersion.id).run();
+    stmts.push(env.DB.prepare(`UPDATE timetable_versions SET status = 'archived', effective_to = COALESCE(effective_to, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(activeVersion.id));
   }
-  await env.DB.prepare(`
+  stmts.push(env.DB.prepare(`
     UPDATE timetable_versions
     SET status = 'active', activated_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP, memo = COALESCE(memo, '')
     WHERE id = ?
-  `).bind(versionId).run();
+  `).bind(versionId));
+
+  await env.DB.batch(stmts);
 
   return jsonResponse({
     success: true,

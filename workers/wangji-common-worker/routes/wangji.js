@@ -78,8 +78,9 @@ async function listStudents(env, url) {
   let sql = 'SELECT * FROM wangji_students WHERE is_deleted = 0';
   const binds = [];
   if (q) {
-    sql += ' AND (display_name LIKE ? OR school_name_snapshot LIKE ? OR primary_phone_snapshot LIKE ?)';
-    binds.push(`%${q}%`, `%${q}%`, `%${q}%`);
+    const escaped = q.replace(/[\\%_]/g, ch => `\\${ch}`);
+    sql += " AND (display_name LIKE ? ESCAPE '\\' OR school_name_snapshot LIKE ? ESCAPE '\\' OR primary_phone_snapshot LIKE ? ESCAPE '\\')";
+    binds.push(`%${escaped}%`, `%${escaped}%`, `%${escaped}%`);
   }
   sql += ' ORDER BY display_name LIMIT 500';
   const res = await env.DB.prepare(sql).bind(...binds).all();
