@@ -29,57 +29,17 @@ function renderTeacherDashboardView() {
 
     const allActiveClasses = sortClassesForDashboard((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
     const visibleClasses = allActiveClasses.filter(c => typeof isClassVisibleForCurrentTeacher === 'function' ? isClassVisibleForCurrentTeacher(c) : true);
-    const visibleClassIds = new Set(visibleClasses.map(c => String(c.id)));
-    const classStudentByStudentId = new Map((state.db.class_students || []).map(m => [String(m.student_id), String(m.class_id)]));
-    const classById = new Map((state.db.classes || []).map(c => [String(c.id), c]));
-    const activeStudents = (state.db.students || []).filter(s => String(s.status || '') === '재원');
-    const visibleStudents = activeStudents.filter(s => {
-        const cid = classStudentByStudentId.get(String(s.id));
-        if (!cid) return true;
-        return visibleClassIds.has(cid);
-    });
-    const studentScopeCounts = visibleStudents.reduce((acc, student) => {
-        const cid = classStudentByStudentId.get(String(student.id));
-        const cls = cid ? classById.get(String(cid)) : null;
-        const isMiddle = cls ? isMiddleSchoolClass(cls) : !String(student.grade || '').startsWith('고');
-        if (isMiddle) acc.middle += 1;
-        else acc.high += 1;
-        return acc;
-    }, { middle: 0, high: 0 });
-
-    const todayClassCount = visibleClasses.filter(c => data?.classSummaries?.[c.id]?.isScheduled).length;
-    const absentCount = Number(data?.global?.absentCount || 0);
-    const homeworkMissCount = Number(data?.global?.hwNotDoneCount || 0);
-    const totalScopedStudents = studentScopeCounts.middle + studentScopeCounts.high;
-
-    const metricRow = `
-        <div class="ap-metric-container" aria-label="선생님 대시보드 요약">
-            <div class="ap-metric-card ap-metric-card--summary">
-                <div class="ap-metric-label">오늘 수업</div>
-                <div class="ap-metric-value">${todayClassCount}개 반</div>
-            </div>
-            <div class="ap-metric-card ap-metric-card--summary">
-                <div class="ap-metric-label">담당 학생</div>
-                <div class="ap-metric-value ap-metric-value--split">중등 ${studentScopeCounts.middle} · 고등 ${studentScopeCounts.high}</div>
-                <div class="ap-metric-sub">총 ${totalScopedStudents}명</div>
-            </div>
-            <div class="ap-metric-card ap-metric-card--summary ${absentCount || homeworkMissCount ? 'ap-metric-card--attention' : ''}">
-                <div class="ap-metric-label">수업 체크</div>
-                <div class="ap-metric-value ap-metric-value--split">결석 ${absentCount} · 숙제 ${homeworkMissCount}</div>
-            </div>
-        </div>
-    `;
 
     const shortcutPanel = `
-        <section class="ap-dash-card ap-dash-quick-panel" aria-label="시간표 출석부 아카이브">
+        <section class="ap-dash-quick-panel" style="margin-top:0;" aria-label="출석부 시간표 아카이브">
             <div class="ap-dash-quick-grid">
-                <button class="ap-dash-quick-card" type="button"
-                        onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패','warn');">
-                    <span class="ap-dash-quick-title">시간표</span>
-                </button>
                 <button class="ap-dash-quick-card" type="button"
                         onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패','warn');">
                     <span class="ap-dash-quick-title">출석부</span>
+                </button>
+                <button class="ap-dash-quick-card" type="button"
+                        onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패','warn');">
+                    <span class="ap-dash-quick-title">시간표</span>
                 </button>
                 <button class="ap-dash-quick-card" type="button" onclick="openDashboardArchiveWindow(event);">
                     <span class="ap-dash-quick-title">아카이브</span>
@@ -122,7 +82,7 @@ function renderTeacherDashboardView() {
     `;
 
     root.innerHTML = `<style>body.ap-teacher-dashboard-mode #ap-system-gate, body.ap-teacher-dashboard-mode .ap-system-gate, body.ap-teacher-dashboard-mode [data-ap-system-gate="true"]{display:none!important;}</style><div class="ap-dashboard-shell ap-dash-redesign">
-        ${metricRow}
+        ${shortcutPanel}
         <div class="ap-dash-grid">
             <div class="ap-dash-main">
                 ${classStatus}
@@ -130,7 +90,6 @@ function renderTeacherDashboardView() {
             <div class="ap-dash-side">
                 ${todayJournalCard}
                 ${todoSections}
-                ${shortcutPanel}
                 <div id="dashboard-onboarding-panel-root"></div>
             </div>
         </div>
