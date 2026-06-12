@@ -40,7 +40,7 @@ export async function handleFoundationLogs(request, env, teacher, path, url, bod
     if (sub === 'audit' || sub === 'privacy') {
       if (!isAdminUser(teacher)) return jsonResponse({ success: true, data: [] });
       const limit = parseLimit(url, 1000, 1000);
-      const data = await safeAll(env, `SELECT * FROM ${table} ORDER BY created_at DESC LIMIT ${limit}`);
+      const data = await safeAll(env, `SELECT * FROM ${table} ORDER BY created_at DESC LIMIT ?`, [limit]);
       return jsonResponse({ success: true, data });
     }
 
@@ -63,7 +63,7 @@ export async function handleFoundationLogs(request, env, teacher, path, url, bod
       }
 
       const limit = parseLimit(url, isAdminUser(teacher) ? 1000 : 500, 1000);
-      const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY created_at DESC LIMIT ${limit}`, params);
+      const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY created_at DESC LIMIT ?`, [...params, limit]);
       return jsonResponse({ success: true, data });
     }
 
@@ -89,7 +89,7 @@ export async function handleFoundationLogs(request, env, teacher, path, url, bod
     }
 
     const limit = parseLimit(url, isAdminUser(teacher) ? 1000 : 500, 1000);
-    const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY changed_at DESC LIMIT ${limit}`, params);
+    const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY changed_at DESC LIMIT ?`, [...params, limit]);
     return jsonResponse({ success: true, data });
   }
 
