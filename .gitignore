@@ -238,56 +238,14 @@ claude_*_files_*/
 
 # Generated pipeline workspaces stay out of git until explicitly promoted
 archive/_generated/
-archive/_generated/**
-reports/high*_exam_inventory_*/
-reports/high*_exam_inventory_*/**
 
-# Generated archive image assets are promoted explicitly after review
-archive/assets/images/**/*.png
-archive/assets/images/**/*.jpg
-archive/assets/images/**/*.jpeg
-!archive/assets/images/중1_1단원_소인수분해/
-!archive/assets/images/중1_1단원_소인수분해/**
-!archive/assets/images/중1_1학기_문자의사용/
-!archive/assets/images/중1_1학기_문자의사용/**
-!archive/assets/images/중1_1학기_식의값/
-!archive/assets/images/중1_1학기_식의값/**
-!archive/assets/images/중1_1학기_일차식의계산/
-!archive/assets/images/중1_1학기_일차식의계산/**
-!archive/assets/images/중1_1학기_일차방정식의풀이/
-!archive/assets/images/중1_1학기_일차방정식의풀이/**
-!archive/assets/images/중1_1학기_정수와유리수의대소관계/
-!archive/assets/images/중1_1학기_정수와유리수의대소관계/**
-!archive/assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/
-!archive/assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/**
-!archive/assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/
-!archive/assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/**
-# Archive image assets must stay available in GitHub/runtime.
-!archive/assets/
-!archive/assets/images/
-!archive/assets/images/**
-tmp_*/
-**/.wrangler/cache/
-**/.wrangler/cache/**
-
-# Codex transient result notes
-CODEX_RESULT*.md
-
-# Local VS Code workspace exclusions
-.vscode/settings.json
-
-# Local AI audit / review output folders
-/_apmath_dashboard_ui_audit_*/
-/_apmath_dashboard_ui_audit_full_*/
-
-# Local AI/Codex patch and review outputs
-/_apmath_dashboard_ui_audit_*/
-/_apmath_dashboard_ui_audit_full_*/
-/_backup_*/
-/_patch_*/
-APPLY_*.ps1
-PATCH_RESULT.md
-GIT_DIFF_*.patch
-GIT_STATUS.txt
-MISSING_FILES.txt
-REVIEW_REQUEST.md
+# --- Security: real seed/snapshot files must never be committed ---
+apmath/worker-backup/worker/initial_*.json
+**/initial_teacher*.json
+**/initial_admin*.json
+**/*teacher*_snapshot*.json
+**/*admin*_snapshot*.json
+**/*student*_snapshot*.json
+**/*pin*_snapshot*.json
+**/*parent*_contacts*.json
+**/*guardian*_contacts*.json
