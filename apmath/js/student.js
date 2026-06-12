@@ -3382,13 +3382,20 @@ async function handleEditStudent(sid) {
     const finalMemo = memoParts.join(' ').trim();
     const highSubjects = collectHighSubjects('edit', grade);
 
+    const studentPhoneInput = (document.getElementById('edit-student-phone')?.value || '').trim();
+    const parentPhoneInput = (document.getElementById('edit-parent-phone')?.value || '').trim();
+    // 기존 데이터('010' 등 자리표시 값)를 막지 않도록 형식만 느슨하게 검사한다.
+    const phonePattern = /^[0-9+\-() ]*$/;
+    if (!phonePattern.test(studentPhoneInput)) { toast('학생 연락처에 숫자와 -, +, 괄호만 입력할 수 있습니다.', 'warn'); return; }
+    if (!phonePattern.test(parentPhoneInput)) { toast('보호자 연락처에 숫자와 -, +, 괄호만 입력할 수 있습니다.', 'warn'); return; }
+
     const payload = {
         name: document.getElementById('edit-name')?.value || '',
         school_name: document.getElementById('edit-school')?.value || '',
         grade,
         class_id: classId,
-        student_phone: document.getElementById('edit-student-phone')?.value || '',
-        parent_phone: document.getElementById('edit-parent-phone')?.value || '',
+        student_phone: studentPhoneInput,
+        parent_phone: parentPhoneInput,
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
         student_address: document.getElementById('edit-student-address')?.value || '',
         vehicle_info: document.getElementById('edit-vehicle-info')?.value || '',
