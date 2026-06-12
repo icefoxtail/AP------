@@ -3168,7 +3168,6 @@ function reportCenterPrintPremiumExamReport(studentId, sessionId = '') {
 function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     if (event && typeof event.preventDefault === 'function') event.preventDefault();
     if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
-    console.log('[reportCenterOpenPrintView] open', { studentId, sessionId });
     const data = reportCenterGetExamReportData(studentId, sessionId);
     if (!data.student || !data.session) {
         toast('출력할 평가 기록이 없습니다.', 'warn');
@@ -3238,7 +3237,6 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
 
     reportCenterInjectPrintViewStyle();
     window.scrollTo(0, 0);
-    console.log('[reportCenterOpenPrintView] rendered');
 }
 
 function reportCenterSyncPrintMemoToCenter() {
