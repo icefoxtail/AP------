@@ -32,12 +32,31 @@ import { handleOnboarding } from './routes/onboarding.js';
 import { handleEie } from './routes/eie.js';
 import { handleBackdoor } from './routes/backdoor.js';
 
+const DEFAULT_ALLOWED_ORIGINS = ['https://icefoxtail.github.io'];
+
 const headers = {
   'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': DEFAULT_ALLOWED_ORIGINS[0],
   'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token'
 };
+
+// 요청 Origin이 허용 목록(env.ALLOWED_ORIGINS 콤마 구분 또는 기본값) 또는 localhost일 때만 해당 Origin을 반환한다.
+function resolveAllowedOrigin(request, env) {
+  const origin = request.headers.get('Origin') || '';
+  const configured = String(env?.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
+  const allowList = configured.length ? configured : DEFAULT_ALLOWED_ORIGINS;
+  if (allowList.includes(origin)) return origin;
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return origin;
+  return allowList[0];
+}
+
+function withCorsOrigin(response, request, env) {
+  const newHeaders = new Headers(response.headers);
+  newHeaders.set('Access-Control-Allow-Origin', resolveAllowedOrigin(request, env));
+  newHeaders.append('Vary', 'Origin');
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers: newHeaders });
+}
 
 const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
 const TEACHER_SESSION_TOKEN_BYTES = 32;
@@ -512,7 +531,23 @@ async function getAllowedClassIds(env, teacher) {
   return (res.results || []).map(r => String(r.class_id));
 }
 
+// SQL 식별자(테이블·컬럼명)와 ORDER BY 절은 바인딩이 불가능하므로 화이트리스트 패턴으로 검증한다.
+const SQL_IDENTIFIER_RE = /^[A-Za-z_][A-Za-z0-9_]*$/;
+const SQL_ORDER_RE = /^[A-Za-z_][A-Za-z0-9_]*(\s+(ASC|DESC))?(\s*,\s*[A-Za-z_][A-Za-z0-9_]*(\s+(ASC|DESC))?)*(\s+LIMIT\s+\d+)?$/i;
+
+function assertSqlIdentifiers(keys) {
+  for (const key of keys) {
+    if (!SQL_IDENTIFIER_RE.test(key)) throw new Error(`Invalid SQL identifier: ${key}`);
+  }
+}
+
+function assertSqlOrderClause(order) {
+  if (order && !SQL_ORDER_RE.test(String(order).trim())) throw new Error(`Invalid SQL order clause: ${order}`);
+}
+
 async function foundationSelect(env, table, where = [], params = [], order = 'created_at DESC') {
+  assertSqlIdentifiers([table]);
+  assertSqlOrderClause(order);
   const sql = `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''}${order ? ` ORDER BY ${order}` : ''}`;
   const res = await env.DB.prepare(sql).bind(...params).all();
   return res.results || [];
@@ -520,6 +555,7 @@ async function foundationSelect(env, table, where = [], params = [], order = 'cr
 
 async function foundationInsert(env, table, row) {
   const keys = Object.keys(row);
+  assertSqlIdentifiers([table, ...keys]);
   const placeholders = keys.map(() => '?').join(', ');
   await env.DB.prepare(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`).bind(...keys.map(k => row[k])).run();
   return row;
@@ -533,6 +569,7 @@ async function foundationPatch(env, table, id, data, allowedKeys) {
   row.updated_at = new Date().toISOString();
   const keys = Object.keys(row);
   if (!keys.length) return null;
+  assertSqlIdentifiers([table, ...keys]);
   await env.DB.prepare(`UPDATE ${table} SET ${keys.map(k => `${k} = ?`).join(', ')} WHERE id = ?`).bind(...keys.map(k => row[k]), id).run();
   return { id, ...row };
 }
@@ -3040,6 +3077,12 @@ async function buildTeacherHomeFastData(request, env, currentUser, url) {
 
 export default {
   async fetch(request, env) {
+    const response = await handleApiRequest(request, env);
+    return withCorsOrigin(response, request, env);
+  }
+};
+
+async function handleApiRequest(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.split('/').filter(Boolean);
     const method = request.method;
@@ -3429,5 +3472,4 @@ export default {
     } catch (err) {
       return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
     }
-  }
-};
+}
