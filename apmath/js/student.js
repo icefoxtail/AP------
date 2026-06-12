@@ -875,7 +875,7 @@ function renderParentContactSection(sid) {
                 <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">기본 연락처</span>
             </div>
             <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; margin-bottom:2px;">관계 ${apEscapeHtml(fallbackRelation || '미지정')}</div>
-            <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(fallbackPhone)}')">${apEscapeHtml(fallbackPhone)}</div>
+            <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(fallbackPhone)})">${apEscapeHtml(fallbackPhone)}</div>
         </div>
     ` : '';
 
@@ -897,7 +897,7 @@ function renderParentContactSection(sid) {
                         <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:500;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
                     </div>
                 </div>
-                <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(String(contact.phone || ''))}')">${apEscapeHtml(contact.phone || '미등록')}</div>
+                <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(contact.phone || '')})">${apEscapeHtml(contact.phone || '미등록')}</div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px;">
                     <button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentConsentModal('${sid}','${contact.id}')">연락 설정</button>
                     ${historyButtonHtml}
