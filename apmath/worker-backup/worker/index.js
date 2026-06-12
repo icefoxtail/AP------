@@ -78,7 +78,7 @@ function getSessionExpiryDate() {
 }
 
 function makeSessionId() {
-  return `ts_${Date.now()}_${crypto.randomUUID ? crypto.randomUUID() : makeSessionToken().slice(0, 16)}`;
+  return `ts_${Date.now()}_${crypto.randomUUID ? crypto.randomUUID() : makeSessionToken()}`;
 }
 
 async function createTeacherSession(env, teacher) {
@@ -3470,6 +3470,7 @@ async function handleApiRequest(request, env) {
 
       return new Response(JSON.stringify({ error: 'API Endpoint Not Found' }), { status: 404, headers });
     } catch (err) {
-      return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+      console.error('[worker] unhandled error:', err);
+      return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500, headers });
     }
 }
