@@ -1706,6 +1706,7 @@ function renderStudentPinnedConsultationPreviewHtml(sid, consultationId) {
                     <strong style="color:var(--text);font-size:13px;line-height:1.35;">${apmsStudentDetailEsc(selected.date || '날짜 없음')}</strong>
                     <span class="ap-student-consult-type">${apmsStudentDetailEsc(selected.type || '상담')}</span>
                 </div>
+                <span style="cursor:pointer;color:#334155;font-size:12px;font-weight:600;" onclick="openEditConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">수정</span>
             </div>
             <p class="ap-student-consult-text">${apmsStudentDetailEsc(selected.content || '상담 내용이 없습니다.')}</p>
             ${selected.next_action ? `<div class="ap-student-consult-next"><strong>다음 조치</strong><br>${apmsStudentDetailEsc(selected.next_action)}</div>` : ''}
@@ -1903,24 +1904,54 @@ function renderStudentDetailTabs(sid, activeTab = 'basic') {
     `;
 }
 
-function renderStudentDetailEditTabs() {
+function renderStudentDetailEditTabs(sid, activeEditTab = 'basic') {
     const tabs = [
         { key: 'basic', label: '기본' },
         { key: 'cns', label: '상담' },
         { key: 'grade', label: '성적' }
     ];
     return `
-        <div class="apms-eie-tabs ap-student-tabs" aria-label="수정모드 탭 위치 표시">
+        <div class="apms-eie-tabs ap-student-tabs">
             ${tabs.map(item => `
                 <button
                     type="button"
-                    class="apms-eie-tab ${item.key === 'basic' ? 'is-active' : ''}"
-                    disabled
-                    style="cursor:default; ${item.key === 'basic' ? '' : 'opacity:.72;'}"
+                    class="apms-eie-tab ${item.key === activeEditTab ? 'is-active' : ''}"
+                    onclick="switchStudentDetailEditTab(${apmsStudentJsString(sid)}, ${apmsStudentJsString(item.key)})"
                 >${apmsStudentDetailEsc(item.label)}</button>
             `).join('')}
         </div>
     `;
+}
+
+function renderStudentEditBodyForTab(sid, editTab = 'basic') {
+    const key = String(sid || '');
+    if (editTab === 'cns') {
+        const pinnedHtml = renderStudentConsultationPinnedCard(key);
+        return `<div class="std-tab-content ap-student-tab-body">${pinnedHtml}${renderCnsTab(key)}</div>`;
+    }
+    if (editTab === 'grade') {
+        return `<div class="std-tab-content ap-student-tab-body">${renderGradeTab(key)}</div>`;
+    }
+    return renderStudentEditBody(sid);
+}
+
+function switchStudentDetailEditTab(sid, tab) {
+    if (!state.ui) state.ui = {};
+    const current = state.ui.currentStudentDetailEditTab || 'basic';
+    if (current === tab) return;
+    if (current === 'basic') {
+        const nameInput = document.getElementById('edit-name');
+        const s = state.db.students.find(st => String(st.id) === String(sid));
+        if (nameInput && s && nameInput.value.trim() !== String(s.name || '').trim()) {
+            if (!confirm('기본정보 수정 내용이 저장되지 않습니다. 탭을 이동하시겠습니까?')) return;
+        }
+    }
+    state.ui.currentStudentDetailEditTab = tab;
+    renderStudentDetailShell(sid, { mode: 'edit' });
+}
+
+if (typeof window !== 'undefined') {
+    window.switchStudentDetailEditTab = switchStudentDetailEditTab;
 }
 
 /**
@@ -1937,6 +1968,7 @@ function renderStudentDetailShell(sid, options = {}) {
 
     const previousTab = state.ui.currentStudentDetailTab || 'basic';
     const previousDetailId = state.ui.currentStudentDetailId;
+    const previousMode = state.ui.currentStudentDetailMode;
     const tab = normalizeStudentDetailTab(options.tab || previousTab || 'basic');
 
     // 성적 탭에 새로 진입(다른 탭→성적)하거나 학생이 바뀌면 기본 하위 탭은 학교성적으로 리셋한다.
@@ -1945,6 +1977,12 @@ function renderStudentDetailShell(sid, options = {}) {
         && (String(previousDetailId || '') !== String(sid) || previousTab !== 'grade')) {
         state.ui.studentGradeSubTab = 'school';
     }
+
+    // edit 탭 상태: 처음 edit 모드 진입(또는 다른 학생)이면 basic으로 리셋한다.
+    if (mode === 'edit' && (String(previousDetailId || '') !== String(sid) || previousMode !== 'edit')) {
+        state.ui.currentStudentDetailEditTab = 'basic';
+    }
+    const editTab = mode === 'edit' ? (state.ui.currentStudentDetailEditTab || 'basic') : 'basic';
 
     state.ui.currentStudentDetailId = String(sid);
     state.ui.currentStudentDetailMode = mode;
@@ -1955,15 +1993,13 @@ function renderStudentDetailShell(sid, options = {}) {
     const returnCtx = resolveStudentDetailReturnContext(sid, options);
     applyStudentDetailModalReturnContext(returnCtx);
 
-    // 최근 상담 전문 카드는 보기모드 상담 탭에서만 노출한다.
-    // 수정모드는 입력 전용이므로 상담 보기 UI를 일절 노출하지 않는다.
     const pinnedHtml = (mode === 'view' && tab === 'cns')
         ? renderStudentConsultationPinnedCard(sid)
         : '';
     const bodyHtml = mode === 'edit'
         ? `
-            ${renderStudentDetailEditTabs()}
-            ${renderStudentEditBody(sid)}
+            ${renderStudentDetailEditTabs(sid, editTab)}
+            ${renderStudentEditBodyForTab(sid, editTab)}
         `
         : `
             ${renderStudentDetailTabs(sid, tab)}
@@ -1971,12 +2007,14 @@ function renderStudentDetailShell(sid, options = {}) {
             ${renderStudentViewBody(sid, tab)}
         `;
 
+    // basic 편집 탭에서만 저장 버튼 노출 (cns/grade 탭은 별도 저장 흐름 없음)
+    const showSaveBtn = mode === 'edit' && editTab === 'basic';
     showModal(`${s.name} 프로필`, `
         <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
             ${renderStudentDetailHeader(sid, mode)}
             ${bodyHtml}
         </div>
-    `, mode === 'edit' ? '저장' : null, mode === 'edit' ? () => handleEditStudent(sid) : null);
+    `, showSaveBtn ? '저장' : null, showSaveBtn ? () => handleEditStudent(sid) : null);
 
     const cancelBtn = document.getElementById('modal-cancel-btn');
     if (cancelBtn) {
@@ -1989,6 +2027,7 @@ function renderStudentDetailShell(sid, options = {}) {
     setTimeout(() => {
         bindStudentConsultationDateButtons(sid);
         if (mode === 'view' && tab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(sid);
+        if (mode === 'edit' && editTab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(sid);
     }, 0);
 
     void ensureStudentConsultationsLoaded(sid);
@@ -2740,16 +2779,33 @@ function openAddConsultationModal(sid) {
     `, '저장', () => handleSaveConsultation(sid));
 }
 
+const _consultSaveInFlight = new Set();
+
 async function handleSaveConsultation(sid) {
+    const guardKey = `new_${sid}`;
+    if (_consultSaveInFlight.has(guardKey)) return;
+    _consultSaveInFlight.add(guardKey);
+    const btn = document.getElementById('modal-action-btn');
+    const origText = btn ? btn.textContent : null;
+    if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
+
     const date = document.getElementById('cns-date').value || new Date().toLocaleDateString('sv-SE');
     const typeRaw = document.getElementById('cns-type').value;
     const type = typeRaw === '직접입력' ? (document.getElementById('cns-type-custom')?.value.trim() || '기타') : typeRaw;
     const content = document.getElementById('cns-content').value.trim();
     const nextAction = document.getElementById('cns-action').value.trim();
-    if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
+    if (!content) {
+        toast('상담 내용을 입력하세요.', 'warn');
+        _consultSaveInFlight.delete(guardKey);
+        if (btn) { btn.disabled = false; btn.textContent = origText || '저장'; }
+        return;
+    }
+    const clientRequestId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : `cnsreq_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 
     try {
-        const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction });
+        const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction, clientRequestId });
         if (r?.success) {
             toast('상담 기록이 저장되었습니다.', 'success');
             closeModal(true);
@@ -2761,6 +2817,9 @@ async function handleSaveConsultation(sid) {
     } catch (e) {
         console.error('[handleSaveConsultation] failed:', e);
         toast('상담 기록 저장 중 오류가 발생했습니다.', 'error');
+    } finally {
+        _consultSaveInFlight.delete(guardKey);
+        if (btn) { btn.disabled = false; btn.textContent = origText || '저장'; }
     }
 }
 
@@ -2876,12 +2935,23 @@ function openEditConsultation(cid, sid) {
 }
 
 async function handleEditConsultation(cid, sid) {
+    if (_consultSaveInFlight.has(cid)) return;
+    _consultSaveInFlight.add(cid);
+    const btn = document.getElementById('modal-action-btn');
+    const origText = btn ? btn.textContent : null;
+    if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
+
     const date = document.getElementById('edit-cns-date')?.value || '';
     const typeRaw = document.getElementById('edit-cns-type')?.value || '';
     const type = typeRaw === '직접입력' ? (document.getElementById('edit-cns-type-custom')?.value.trim() || '기타') : typeRaw;
     const content = document.getElementById('edit-cns-content')?.value.trim() || '';
     const nextAction = document.getElementById('edit-cns-action')?.value.trim() || '';
-    if (!content) return toast('상담 내용을 입력하세요.', 'warn');
+    if (!content) {
+        toast('상담 내용을 입력하세요.', 'warn');
+        _consultSaveInFlight.delete(cid);
+        if (btn) { btn.disabled = false; btn.textContent = origText || '수정 완료'; }
+        return;
+    }
 
     try {
         const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
@@ -2896,6 +2966,9 @@ async function handleEditConsultation(cid, sid) {
     } catch (e) {
         console.error('[handleEditConsultation] failed:', e);
         toast('상담 기록 수정 중 오류가 발생했습니다.', 'error');
+    } finally {
+        _consultSaveInFlight.delete(cid);
+        if (btn) { btn.disabled = false; btn.textContent = origText || '수정 완료'; }
     }
 }
 
