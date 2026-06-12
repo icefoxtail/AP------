@@ -17,6 +17,26 @@ const FOUNDATION_TABLES = new Set([
   'privacy_access_logs'
 ]);
 
+function assertSqlIdentifier(value) {
+  const text = String(value || '').trim();
+  if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(text)) {
+    throw new Error(`Unsafe SQL identifier: ${text}`);
+  }
+  return text;
+}
+
+function normalizeSafeOrder(order) {
+  const raw = String(order || '').trim();
+  if (!raw) return '';
+  const parts = raw.split(',').map(part => part.trim()).filter(Boolean);
+  if (!parts.length) return '';
+  return parts.map(part => {
+    const match = part.match(/^([A-Za-z_][A-Za-z0-9_]*)(?:\s+(ASC|DESC))?$/i);
+    if (!match) throw new Error(`Unsafe SQL order clause: ${part}`);
+    return `${assertSqlIdentifier(match[1])}${match[2] ? ` ${match[2].toUpperCase()}` : ''}`;
+  }).join(', ');
+}
+
 export function makeId(prefix) {
   return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 }
@@ -71,14 +91,15 @@ export async function canAccessClass(teacher, classId, env) {
 
 export async function foundationSelect(env, table, where = [], params = [], order = 'created_at DESC') {
   assertFoundationTable(table);
-  const sql = `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''}${order ? ` ORDER BY ${order}` : ''}`;
+  const safeOrder = normalizeSafeOrder(order);
+  const sql = `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''}${safeOrder ? ` ORDER BY ${safeOrder}` : ''}`;
   const res = await env.DB.prepare(sql).bind(...params).all();
   return res.results || [];
 }
 
 export async function foundationInsert(env, table, row) {
   assertFoundationTable(table);
-  const keys = Object.keys(row);
+  const keys = Object.keys(row).map(assertSqlIdentifier);
   const placeholders = keys.map(() => '?').join(', ');
   await env.DB.prepare(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`).bind(...keys.map(k => row[k])).run();
   return row;
@@ -86,12 +107,13 @@ export async function foundationInsert(env, table, row) {
 
 export async function foundationPatch(env, table, id, data, allowedKeys) {
   assertFoundationTable(table);
+  const safeAllowedKeys = (allowedKeys || []).map(assertSqlIdentifier);
   const row = {};
-  for (const key of allowedKeys) {
+  for (const key of safeAllowedKeys) {
     if (Object.prototype.hasOwnProperty.call(data, key) && data[key] !== undefined) row[key] = data[key];
   }
   row.updated_at = new Date().toISOString();
-  const keys = Object.keys(row);
+  const keys = Object.keys(row).map(assertSqlIdentifier);
   if (!keys.length) return null;
   await env.DB.prepare(`UPDATE ${table} SET ${keys.map(k => `${k} = ?`).join(', ')} WHERE id = ?`).bind(...keys.map(k => row[k]), id).run();
   return { id, ...row };
