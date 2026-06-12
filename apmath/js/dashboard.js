@@ -548,12 +548,12 @@ function injectDashboardRedesignStyles() {
     .ap-empty-notice { font-size:13px; font-weight:500; color:var(--secondary); }
 
     /* 오른쪽 하단 이동 버튼 */
-    .ap-dash-quick-panel { margin-top:16px; padding:0; background:transparent; border:none; box-shadow:none; }
+    .ap-dash-quick-panel { margin-top:16px; margin-bottom:8px; padding:0; background:transparent; border:none; box-shadow:none; }
     .ap-dash-quick-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
     .ap-dash-quick-card { min-width:0; height:auto; min-height:64px; padding:14px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--text); cursor:pointer; text-align:center; display:flex; align-items:center; justify-content:center; transition:border-color .18s ease, background .18s ease; box-sizing:border-box; }
     .ap-dash-quick-card:hover { border-color:var(--primary); background:var(--surface-2); }
     .ap-dash-quick-title { font-size:14px; font-weight:600; line-height:1.25; }
-    @media (max-width:420px){ .ap-dash-quick-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } .ap-dash-quick-card { min-height:48px; padding:10px 6px; } .ap-dash-quick-title { font-size:12px; font-weight:600; } }
+    @media (max-width:420px){ .ap-dash-quick-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } .ap-dash-quick-card { min-height:52px; padding:10px 6px; } .ap-dash-quick-title { font-size:12px; font-weight:600; } }
     `;
     document.head.appendChild(style);
 }
