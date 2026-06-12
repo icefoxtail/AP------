@@ -69,7 +69,7 @@ function makeSessionToken() {
 }
 
 function makeSessionId() {
-  return `ts_${Date.now()}_${crypto.randomUUID ? crypto.randomUUID() : makeSessionToken().slice(0, 16)}`;
+  return `ts_${Date.now()}_${crypto.randomUUID ? crypto.randomUUID() : makeSessionToken()}`;
 }
 
 function getSessionExpiryDate() {
