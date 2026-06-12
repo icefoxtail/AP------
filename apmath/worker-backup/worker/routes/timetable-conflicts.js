@@ -166,7 +166,11 @@ export async function handleTimetableConflicts(request, env, teacher, path, url,
         params.push(...classIds, ...classIds);
       }
       const limit = parseLimit(url, 500, 1000);
-      const conflicts = await foundationSelect(env, 'timetable_conflict_logs', where, params, `created_at DESC LIMIT ${limit}`);
+      const conflicts = await safeAll(
+        env,
+        `SELECT * FROM timetable_conflict_logs${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY created_at DESC LIMIT ?`,
+        [...params, limit]
+      );
       return jsonResponse({ success: true, conflicts });
     }
     if (method === 'POST' && id === 'scan') {
