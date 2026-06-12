@@ -43,6 +43,20 @@ function assertFoundationTable(table) {
   if (!FOUNDATION_TABLES.has(table)) throw new Error(`Unsupported foundation table: ${table}`);
 }
 
+// SQL 식별자(컬럼명)와 ORDER BY 절은 바인딩이 불가능하므로 화이트리스트 패턴으로 검증한다.
+const SQL_IDENTIFIER_RE = /^[A-Za-z_][A-Za-z0-9_]*$/;
+const SQL_ORDER_RE = /^[A-Za-z_][A-Za-z0-9_]*(\s+(ASC|DESC))?(\s*,\s*[A-Za-z_][A-Za-z0-9_]*(\s+(ASC|DESC))?)*(\s+LIMIT\s+\d+)?$/i;
+
+export function assertSqlIdentifiers(keys) {
+  for (const key of keys) {
+    if (!SQL_IDENTIFIER_RE.test(key)) throw new Error(`Invalid SQL identifier: ${key}`);
+  }
+}
+
+export function assertSqlOrderClause(order) {
+  if (order && !SQL_ORDER_RE.test(String(order).trim())) throw new Error(`Invalid SQL order clause: ${order}`);
+}
+
 export async function getAllowedClassIds(env, teacher) {
   if (isAdminUser(teacher)) return null;
   const res = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
@@ -71,6 +85,7 @@ export async function canAccessClass(teacher, classId, env) {
 
 export async function foundationSelect(env, table, where = [], params = [], order = 'created_at DESC') {
   assertFoundationTable(table);
+  assertSqlOrderClause(order);
   const sql = `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''}${order ? ` ORDER BY ${order}` : ''}`;
   const res = await env.DB.prepare(sql).bind(...params).all();
   return res.results || [];
@@ -79,6 +94,7 @@ export async function foundationSelect(env, table, where = [], params = [], orde
 export async function foundationInsert(env, table, row) {
   assertFoundationTable(table);
   const keys = Object.keys(row);
+  assertSqlIdentifiers(keys);
   const placeholders = keys.map(() => '?').join(', ');
   await env.DB.prepare(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`).bind(...keys.map(k => row[k])).run();
   return row;
@@ -93,6 +109,7 @@ export async function foundationPatch(env, table, id, data, allowedKeys) {
   row.updated_at = new Date().toISOString();
   const keys = Object.keys(row);
   if (!keys.length) return null;
+  assertSqlIdentifiers(keys);
   await env.DB.prepare(`UPDATE ${table} SET ${keys.map(k => `${k} = ?`).join(', ')} WHERE id = ?`).bind(...keys.map(k => row[k]), id).run();
   return { id, ...row };
 }
