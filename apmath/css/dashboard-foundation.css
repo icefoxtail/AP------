@@ -466,6 +466,11 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-list-row.status-pending {
   background: color-mix(in srgb, var(--primary) 5%, var(--surface)) !important;
 }
 
+/* 오늘일지 row 간격 중복 제거: journal-matrix gap만 사용 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign #ap-dash-journal-section .ap-list-row {
+  margin-bottom: 0 !important;
+}
+
 /* 학급관리 리스트 하단 40px legacy 제거 */
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list {
   margin-bottom: 0 !important;
