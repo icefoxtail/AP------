@@ -347,6 +347,9 @@ body.ap-teacher-dashboard-mode {
   --ap-dash-inner-gap: var(--ap-space-2);
   --ap-dash-title-gap: var(--ap-space-3);
 
+  --ap-dash-card-radius: var(--ap-space-4);
+  --ap-dash-card-padding: var(--ap-space-5);
+
   --ap-dash-row-height: 52px;
   --ap-dash-row-padding-x: var(--ap-space-4);
   --ap-dash-row-radius: var(--ap-space-4);
@@ -414,34 +417,16 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-title {
 }
 
 /* ======================================================================
-   카드 규격 통일: 학급관리 반 카드 + 오늘일지 날짜 카드
+   큰 섹션 카드 규격 통일: 학급관리 / 오늘일지 / 오늘일정 / 주간일정
    ====================================================================== */
-body.ap-teacher-dashboard-mode .ap-class-row,
-body.ap-teacher-dashboard-mode .journal-day-cell {
-  min-height: var(--ap-dash-row-height) !important;
-  padding: 0 var(--ap-dash-row-padding-x) !important;
-  border-radius: var(--ap-dash-row-radius) !important;
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-card {
+  border-radius: var(--ap-dash-card-radius) !important;
+  padding: var(--ap-dash-card-padding) !important;
+  margin-bottom: var(--ap-dash-section-gap) !important;
   border: 1px solid var(--border) !important;
   background: var(--surface) !important;
   box-shadow: none !important;
   box-sizing: border-box !important;
-}
-
-/* 내부 리스트 gap 통일 */
-body.ap-teacher-dashboard-mode .ap-dashboard-class-list,
-body.ap-teacher-dashboard-mode .journal-matrix {
-  width: 100% !important;
-  gap: var(--ap-dash-inner-gap) !important;
-}
-
-body.ap-teacher-dashboard-mode .journal-matrix {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* 섹션 간격 통일 */
-body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-card {
-  margin-bottom: var(--ap-dash-section-gap) !important;
 }
 
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-card:last-child {
@@ -451,6 +436,46 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-card:last-child {
 /* 섹션 제목 간격 통일 */
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-card__title {
   margin: 0 0 var(--ap-dash-title-gap) 0 !important;
+}
+
+@media (max-width: 640px) {
+  body.ap-teacher-dashboard-mode {
+    --ap-dash-card-padding: var(--ap-space-4);
+  }
+}
+
+/* ======================================================================
+   row 카드 규격 통일: 학급관리 반 카드(.ap-class-row) + 오늘일지 날짜 카드(.ap-list-row)
+   ====================================================================== */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-class-row,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-list-row {
+  min-height: var(--ap-dash-row-height) !important;
+  padding: 0 var(--ap-dash-row-padding-x) !important;
+  border-radius: var(--ap-dash-row-radius) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  gap: var(--ap-dash-row-inner-gap) !important;
+}
+
+/* 오늘일지 미작성 강조: 약하게 유지 (문구/DOM 미변경) */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-list-row.status-pending {
+  border-color: color-mix(in srgb, var(--border) 78%, var(--primary)) !important;
+  border-left: 3px solid color-mix(in srgb, var(--primary) 36%, transparent) !important;
+  background: color-mix(in srgb, var(--primary) 5%, var(--surface)) !important;
+}
+
+/* 내부 리스트 gap 통일 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .journal-matrix {
+  width: 100% !important;
+  gap: var(--ap-dash-inner-gap) !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .journal-matrix {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .ap-surface-action:hover,

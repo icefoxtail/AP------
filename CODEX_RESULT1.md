@@ -1,24 +1,23 @@
 # CODEX_RESULT1
 
 ## 수정 파일
+- `apmath/js/dashboard-teacher.js`
 - `apmath/css/dashboard-foundation.css`
 
 ## 수정 내용
-- APMS 선생님 대시보드 전용 4px 스케일 토큰 추가 (`body.ap-teacher-dashboard-mode`)
-  - `--ap-space-1~6`, `--ap-dash-section-gap(20px)`, `--ap-dash-inner-gap(8px)`, `--ap-dash-title-gap(12px)`
-  - `--ap-dash-row-height(52px)`, `--ap-dash-row-padding-x(16px)`, `--ap-dash-row-radius(16px)`
-  - `--ap-dash-toolbar-padding(4px)`, `--ap-dash-toolbar-gap(8px)`, `--ap-dash-toolbar-radius(16px)`
-  - `--ap-dash-quick-height(72px)`, `--ap-dash-quick-radius(12px)`
-- 상단 3카드 규격 토큰 기반으로 교체
-  - `margin-bottom` 18px → `var(--ap-dash-section-gap)` (20px)
-  - `padding` 18px 10px → `var(--ap-space-4) var(--ap-space-3)` (16px 12px)
-  - `border-radius` 8px → `var(--ap-dash-quick-radius)` (12px)
-- 420px 이하 모바일 토큰 오버라이드: `--ap-dash-quick-height: 56px`
-- 학급관리 반 카드 + 오늘일지 날짜 카드 row 규격 통일
-  - `min-height: 52px`, `padding: 0 16px`, `border-radius: 16px` 공통 적용
-- `journal-matrix` gap 0→8px, display flex/column으로 변경
-- `ap-dash-card` 섹션 간격 `var(--ap-dash-section-gap)` (20px) 통일, last-child margin 0
-- `ap-dash-card__title` 제목 하단 간격 `var(--ap-dash-title-gap)` (12px) 통일
+- 학급관리 section inline `style="margin-bottom:0;"` 제거 → 공통 CSS 섹션 간격으로 관리
+- 선생님 대시보드 전용 토큰에 `--ap-dash-card-radius(16px)`, `--ap-dash-card-padding(20px)` 추가 (기존 토큰 블록 병합)
+- `.ap-dash-card` 큰 섹션 카드 규격 통일
+  - radius `var(--ap-dash-card-radius)` (16px), padding `var(--ap-dash-card-padding)` (20px), margin-bottom 20px, border/background/box-shadow 통일
+  - last-child margin-bottom 0
+  - 640px 이하: card padding 16px
+- `.ap-dash-card__title` 제목 하단 간격 12px 통일
+- row 카드 규격 통일: `.ap-class-row` + `.ap-list-row` (실제 오늘일지 날짜 카드 렌더 기준)
+  - min-height 52px, padding 0 16px, radius 16px, border/background 통일, 내부 gap 12px
+  - 기존 `.ap-list-row`의 radius 4px / padding 12px 16px override
+- `.ap-list-row.status-pending` 미작성 강조 약화 (border/background만, 문구·DOM 미변경)
+- 내부 리스트 gap 통일: `.ap-dashboard-class-list` + `.journal-matrix` 8px, journal-matrix flex column 보강
+- 상단 3카드 규격 유지 (이전 토큰 기반 규격 그대로)
 
 ## 검수 결과
 
@@ -35,9 +34,12 @@ node --check apmath/js/dashboard.js → PASS
 미확인 (브라우저 직접 렌더링 불가 환경)
 
 ## 미확인 항목
-- 상단 3카드 높이 72px / 모바일 56px 시각 확인 불가
-- 학급관리 반 카드와 오늘일지 날짜 카드 row 높이·padding·radius 동일 여부 시각 확인 불가
-- journal-matrix gap 8px 적용 후 줄 간격 시각 확인 불가
-- 섹션 간격 20px 시각 확인 불가
-- 섹션 제목 간격 12px 시각 확인 불가
-- 출석부/시간표/아카이브 클릭 동작 실제 실행 확인 불가
+- 학급관리 섹션 카드와 오늘일지 섹션 카드의 외곽 radius 동일 여부 시각 확인 불가
+- 학급관리 반 카드(.ap-class-row)와 오늘일지 날짜 카드(.ap-list-row)의 폭·높이·radius 동일 여부 시각 확인 불가
+- 반 카드 gap과 날짜 카드 gap 동일 여부 시각 확인 불가
+- 오늘일정/주간일정 카드가 동일 섹션 카드 규격 안에 들어오는지 시각 확인 불가
+- status-pending 강조 약화 결과 시각 확인 불가
+- 모든 클릭 동작(출석부/시간표/아카이브/반카드/일지/일정) 실제 실행 확인 불가
+
+## 비고
+- 신규 여백은 4px 스케일(4/8/12/16/20/24)만 사용. status-pending의 `border-left: 3px`는 spacing이 아닌 보더 두께로 지시서 예시값 그대로 유지.
