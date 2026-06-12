@@ -332,14 +332,30 @@
 
 .ap-surface-action--current { cursor: default; }
 
+/* 퀵 액션 패널(출석부/시간표/아카이브): 하단 여백 고정 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-panel {
+  margin: 0 0 18px 0 !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  padding: 4px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  background: var(--surface-2) !important;
+  box-sizing: border-box !important;
+}
+
 /* 퀵 액션 버튼(시간표/출석부/아카이브): 실제 선생님 대시보드 클래스까지 포함 */
 .ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button,
 .ap-dashboard-action-grid.ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button,
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-card {
   height: auto !important;
-  min-height: 64px !important;
+  min-height: 72px !important;
   max-height: none !important;
-  padding: 14px 10px !important;
+  padding: 18px 10px !important;
   border-radius: 8px !important;
   box-sizing: border-box !important;
 }
@@ -351,12 +367,17 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-title {
 }
 
 @media (max-width: 420px) {
+  body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-grid {
+    gap: 6px !important;
+    padding: 4px !important;
+  }
   body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-card {
-    min-height: 48px !important;
-    padding: 10px 6px !important;
+    min-height: 56px !important;
+    padding: 12px 6px !important;
   }
   body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-title {
     font-size: 12px !important;
+    white-space: nowrap !important;
   }
 }
 
