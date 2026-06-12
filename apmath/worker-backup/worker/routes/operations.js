@@ -45,10 +45,15 @@ export async function handleOperations(request, env, teacher, path, url) {
       const type = pickText(d.type, '기타');
       const content = pickText(d.content);
       const nextAction = pickText(d.nextAction ?? d.next_action);
+      const clientReqId = pickText(d.clientRequestId ?? d.client_request_id);
       if (!studentId || !content) return jsonResponse({ success: false, message: 'Required fields missing' }, 400);
       if (!(await canAccessStudent(currentTeacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      if (clientReqId) {
+        const dup = await env.DB.prepare('SELECT id FROM consultations WHERE client_request_id = ?').bind(clientReqId).first();
+        if (dup) return jsonResponse({ success: true, id: dup.id });
+      }
       const cid = `cns_${Date.now()}`;
-      await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action) VALUES (?, ?, ?, ?, ?, ?)').bind(cid, studentId, date, type, content, nextAction).run();
+      await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action, client_request_id) VALUES (?, ?, ?, ?, ?, ?, ?)').bind(cid, studentId, date, type, content, nextAction, clientReqId || null).run();
       return jsonResponse({ success: true, id: cid });
     }
     if (method === 'GET') {
