@@ -1537,7 +1537,7 @@ function renderAdminStudentGradeModalBody() {
         const count = g === '전체' ? list.length : Number(gradeCounts[g] || 0);
         if (g !== '전체' && count === 0) return '';
         const active = modal.grade === g;
-        return `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:12px; font-weight:500; border-radius:999px; border:1px solid var(--border); background:${active ? 'var(--surface-2)' : 'var(--surface)'}; color:var(--text); box-shadow:none;" onclick="adminSetStudentGradeModalGrade('${apEscapeHtml(g)}')">${apEscapeHtml(g)} ${count}</button>`;
+        return `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:12px; font-weight:500; border-radius:999px; border:1px solid var(--border); background:${active ? 'var(--surface-2)' : 'var(--surface)'}; color:var(--text); box-shadow:none;" onclick="adminSetStudentGradeModalGrade(${apJsArg(g)})">${apEscapeHtml(g)} ${count}</button>`;
     }).join('');
     const rows = filtered.map(s => {
         const cls = adminGetStudentClass(s.id);

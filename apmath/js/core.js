@@ -1523,6 +1523,13 @@ function apEscapeAttr(text) {
     return apEscapeHtml(text).replace(/`/g, '&#96;');
 }
 
+// onclick 등 인라인 핸들러 속성 안에서 JS 문자열 인자로 안전하게 쓰기 위한 이스케이프.
+// JSON.stringify가 따옴표를 포함한 JS 문자열 리터럴을 만들고, HTML 속성 디코딩을
+// 견디도록 추가 이스케이프한다. 사용 예: onclick="fn(${apJsArg(value)})"
+function apJsArg(value) {
+    return apEscapeAttr(JSON.stringify(String(value ?? '')));
+}
+
 function getJsArchiveBaseUrl() {
     try {
         return new URL('../', window.location.href).href;
