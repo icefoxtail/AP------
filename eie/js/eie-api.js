@@ -83,11 +83,29 @@
         return data || { success: true };
     }
 
+    // 조회 실패가 빈 데이터(stub)로 위장되므로, 사용자에게는 토스트로 알린다.
+    // 화면 진입 시 여러 GET이 동시에 실패해도 도배되지 않도록 8초에 1회만 표시한다.
+    let apiFailureToastAt = 0;
+    function notifyGetFailure(path, error) {
+        try {
+            console.error('[EieApi] 조회 실패:', path, error);
+            const now = Date.now();
+            if (now - apiFailureToastAt < 8000) return;
+            apiFailureToastAt = now;
+            const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
+            const msg = offline
+                ? '오프라인 상태입니다. 네트워크 연결을 확인해 주세요.'
+                : '서버 연결에 실패했습니다. 표시된 데이터가 최신이 아닐 수 있습니다.';
+            if (typeof window.toast === 'function') window.toast(msg, 'error');
+        } catch (e) { /* 알림 실패가 호출 흐름을 깨지 않도록 무시 */ }
+    }
+
     async function get(path, kind) {
         try {
             return await request(path, { method: 'GET' });
         } catch (error) {
             if (error.status === 401) throw error;
+            notifyGetFailure(path, error);
             return {
                 ...stubResponse(kind),
                 fallback: true,
