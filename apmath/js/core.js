@@ -461,12 +461,32 @@ const RISK_WRONG_THRESHOLD = 3;
 const RISK_MUTE_DAYS = 2;
 const RISK_MUTE_KEY = 'APMATH_MUTED_RISKS';
 
+// API 호출 실패를 사용자에게 알린다. 화면 진입 시 여러 GET이 동시에 실패해도
+// 토스트가 도배되지 않도록 8초에 1회만 표시한다.
+let __apiFailureToastAt = 0;
+function notifyApiFailure(res, err) {
+    try {
+        console.error('[api] 요청 실패:', res, err);
+        const now = Date.now();
+        if (now - __apiFailureToastAt < 8000) return;
+        __apiFailureToastAt = now;
+        const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
+        const msg = offline
+            ? '오프라인 상태입니다. 네트워크 연결을 확인해 주세요.'
+            : '서버 연결에 실패했습니다. 표시된 데이터가 최신이 아닐 수 있습니다.';
+        if (typeof window !== 'undefined' && typeof window.toast === 'function') window.toast(msg, 'error');
+    } catch (e) { /* 알림 실패가 호출 흐름을 깨지 않도록 무시 */ }
+}
+
 const api = {
     async get(res) {
         try {
             const r = await fetch(`${CONFIG.API_BASE}/${res}`, { headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
             return await parseApiResponse(r);
-        } catch (e) { return {}; }
+        } catch (e) {
+            notifyApiFailure(res, e);
+            return {};
+        }
     },
     async patch(res, d) {
         if (!navigator.onLine) return addToSyncQueue('PATCH', res, d);
