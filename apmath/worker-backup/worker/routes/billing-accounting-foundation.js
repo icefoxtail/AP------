@@ -175,6 +175,15 @@ function addGrouped(target, key, amount) {
   target[cleanKey] = (target[cleanKey] || 0) + toInt(amount, 0);
 }
 
+// SQL 식별자는 바인딩이 불가능하므로 화이트리스트 패턴으로 검증한다.
+const SQL_IDENTIFIER_RE = /^[A-Za-z_][A-Za-z0-9_]*$/;
+
+function assertSqlIdentifiers(keys) {
+  for (const key of keys) {
+    if (!SQL_IDENTIFIER_RE.test(key)) throw new Error(`Invalid SQL identifier: ${key}`);
+  }
+}
+
 async function patchById(env, table, id, data, allowedKeys) {
   const row = {};
   for (const key of allowedKeys) {
@@ -185,6 +194,7 @@ async function patchById(env, table, id, data, allowedKeys) {
   row.updated_at = new Date().toISOString();
   const keys = Object.keys(row);
   if (!keys.length) return null;
+  assertSqlIdentifiers([table, ...keys]);
   await env.DB.prepare(`UPDATE ${table} SET ${keys.map(k => `${k} = ?`).join(', ')} WHERE id = ?`)
     .bind(...keys.map(k => row[k]), id)
     .run();
@@ -193,6 +203,7 @@ async function patchById(env, table, id, data, allowedKeys) {
 
 async function insertRow(env, table, row) {
   const keys = Object.keys(row);
+  assertSqlIdentifiers([table, ...keys]);
   await env.DB.prepare(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${keys.map(() => '?').join(', ')})`)
     .bind(...keys.map(k => row[k]))
     .run();
