@@ -3163,7 +3163,7 @@
                         : `${renderWeekdayOverlayTabs(viewState.activeDayOverlay)}
                            <button type="button" class="eie-secondary-button eie-v2-print-button" data-eie-print-timetable title="시간표 인쇄">인쇄</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표 편집</button>
-                           <button type="button" class="eie-secondary-button${viewState.zoomBoosted ? ' is-active' : ''}" data-eie-zoom-boost>${viewState.zoomBoosted ? '압축 보기' : '크게 보기'}</button>`
+                           <button type="button" class="eie-secondary-button${viewState.zoomBoosted ? ' is-active' : ''}" data-eie-zoom-boost>${viewState.zoomBoosted ? '작게 보기' : '크게 보기'}</button>`
                     }
                 </div>
                 ${viewState.editMode ? `<div class="eie-v2-edit-mode-bar">편집 모드 — 드래그로 위치를 바꾸고, 복사한 반은 원하는 빈 슬롯에 붙여넣으세요.${viewState.editCreates.length ? ` · 새 수업 ${viewState.editCreates.length}개` : ''}</div>` : ''}
@@ -3600,7 +3600,7 @@
                 viewState.zoomBoosted = !viewState.zoomBoosted;
                 try { localStorage.setItem('eie-v2-zoom-boost', viewState.zoomBoosted ? '1' : '0'); } catch (_) {}
                 applyZoomBoost();
-                zoomBoostButton.textContent = viewState.zoomBoosted ? '압축 보기' : '크게 보기';
+                zoomBoostButton.textContent = viewState.zoomBoosted ? '작게 보기' : '크게 보기';
                 zoomBoostButton.classList.toggle('is-active', viewState.zoomBoosted);
                 return;
             }
