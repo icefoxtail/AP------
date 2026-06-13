@@ -272,6 +272,33 @@
             return request('attendance-records', { method: 'POST', body: payload || {} });
         },
 
+        getExamRecords(params) {
+            const filters = params || {};
+            const qs = new URLSearchParams();
+            if (filters.student_id || filters.studentId) qs.set('student_id', filters.student_id || filters.studentId);
+            if (filters.timetable_cell_id || filters.cell_id || filters.cellId) {
+                qs.set('timetable_cell_id', filters.timetable_cell_id || filters.cell_id || filters.cellId);
+            }
+            if (filters.month) qs.set('month', filters.month);
+            if (filters.category) qs.set('category', filters.category);
+            return get(`exam-records${qs.toString() ? `?${qs}` : ''}`, 'student-seeds');
+        },
+        async createExamRecord(payload) {
+            return request('exam-records', { method: 'POST', body: payload || {} });
+        },
+        async updateExamRecord(id, payload) {
+            return request(`exam-records/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async deleteExamRecord(id) {
+            return request(`exam-records/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        },
+        async batchExamRecords(payload) {
+            return request('exam-records/batch', { method: 'POST', body: payload || {} });
+        },
+
         getTeachers() {
             return get('teachers', 'student-seeds');
         },

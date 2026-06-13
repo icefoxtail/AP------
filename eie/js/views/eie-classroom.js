@@ -24,6 +24,10 @@
     var _consultationDraftDate = '';
     var _detailOnlyMode = false;
     var _detailOnlyReturnRoute = '';
+    var _examEntryPanelOpen = false;
+    var _examEntryCategory = 'month_end';
+    var _examEntryDate = '';
+    var _examEntryRecordsByCell = {};
 
     function esc(value) {
         return EieApp.escapeHtml(value);
@@ -823,7 +827,8 @@
             ctx.studentPanelMode = 'detail';
         }
         try {
-            return await EieTimetableView.renderPanelOnlyWithContext(ctx);
+            var html = await EieTimetableView.renderPanelOnlyWithContext(ctx);
+            return student ? html : html + renderClassExamEntryPanel(cell);
         } catch (error) {
             return '';
         }
@@ -1037,6 +1042,62 @@ function renderCellTeacherPicker(cell) {
             + '<div class="eie-p-card" style="padding:0;">' + rows + '</div>';
     }
 
+    var EXAM_CATEGORIES = [
+        { key: 'month_end', label: '월말평가' },
+        { key: 'vocab', label: '단어' },
+        { key: 'grammar', label: '문법' },
+        { key: 'material', label: '교재' },
+        { key: 'reading', label: 'Reading' },
+        { key: 'listening', label: 'Listening' },
+        { key: 'free', label: '자유기록' }
+    ];
+
+    function renderExamCategoryOptions() {
+        return EXAM_CATEGORIES.map(function (item) {
+            return '<option value="' + esc(item.key) + '"' + (_examEntryCategory === item.key ? ' selected' : '') + '>' + esc(item.label) + '</option>';
+        }).join('');
+    }
+
+    function renderClassExamEntryPanel(cell) {
+        var cellId = text(cell && cell.id);
+        var students = getAssignedStudents(cell);
+        var date = _examEntryDate || todayIso();
+        var savedRows = _examEntryRecordsByCell[cellId] || [];
+        return '<div class="eie-class-exam-entry eie-p-card">'
+            + '<div class="eie-apms-section-head">'
+            + '<h3>성적 빠른 입력</h3>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieClassroomView.toggleExamEntry()">'
+            + (_examEntryPanelOpen ? '닫기' : '열기')
+            + '</button>'
+            + '</div>'
+            + (_examEntryPanelOpen ? '<div class="eie-class-exam-entry-body">'
+                + '<div class="eie-class-exam-entry-controls">'
+                + '<label><span>종류</span><select id="class-exam-category" onchange="EieClassroomView.setExamEntryCategory(this.value)">' + renderExamCategoryOptions() + '</select></label>'
+                + '<label><span>날짜</span><input id="class-exam-date" type="date" value="' + esc(date) + '"></label>'
+                + '<label><span>제목</span><input id="class-exam-title" type="text" placeholder="평가명"></label>'
+                + '<label><span>만점</span><input id="class-exam-max-score" type="number" step="0.1" inputmode="decimal"></label>'
+                + '</div>'
+                + '<div class="eie-class-exam-entry-table">'
+                + '<div class="eie-class-exam-entry-head"><span>학생</span><span>점수</span><span>레벨</span><span>메모</span></div>'
+                + (students.length ? students.map(function (student) {
+                    var sid = text(student && (student.student_id || student.id));
+                    var rowId = 'class-exam-' + sid;
+                    return '<div class="eie-class-exam-entry-row" data-eie-exam-student="' + esc(sid) + '">'
+                        + '<strong>' + esc(displayName(student)) + '</strong>'
+                        + '<input id="' + esc(rowId) + '-score" type="number" step="0.1" inputmode="decimal" aria-label="' + esc(displayName(student) + ' 점수') + '">'
+                        + '<input id="' + esc(rowId) + '-level" type="text" aria-label="' + esc(displayName(student) + ' 레벨') + '">'
+                        + '<input id="' + esc(rowId) + '-memo" type="text" aria-label="' + esc(displayName(student) + ' 메모') + '">'
+                        + '</div>';
+                }).join('') : '<div class="eie-empty-box">배정된 학생이 없습니다.</div>')
+                + '</div>'
+                + '<div class="eie-exam-actions">'
+                + '<button type="button" class="eie-primary-button" onclick="EieClassroomView.saveClassExamRecords(' + jsArg(cellId) + ')" ' + (_saving || !students.length ? 'disabled' : '') + '>반 전체 저장</button>'
+                + (savedRows.length ? '<span class="eie-class-exam-entry-saved">최근 조회 ' + esc(String(savedRows.length)) + '건</span>' : '')
+                + '</div>'
+                + '</div>' : '')
+            + '</div>';
+    }
+
     // ── 수업 상세 패널 ────────────────────────────────────────────────
 // ── 학생 추가 패널 ────────────────────────────────────────────────
 function renderCards(cells) {
@@ -1218,6 +1279,7 @@ function renderCards(cells) {
             _attendancePanelOpen = false;
             _consultationFormOpen = false;
             _consultationDraftDate = '';
+            _examEntryPanelOpen = false;
             _detailOnlyMode = false;
             _detailOnlyReturnRoute = '';
             EieRouter.open('classroom');
@@ -1234,6 +1296,7 @@ function renderCards(cells) {
             _attendancePanelOpen = false;
             _consultationFormOpen = false;
             _consultationDraftDate = '';
+            _examEntryPanelOpen = false;
             _detailOnlyMode = true;
             _detailOnlyReturnRoute = text(returnRoute || 'teacher');
             EieRouter.open('classroom');
@@ -1249,9 +1312,89 @@ function renderCards(cells) {
             _attendancePanelOpen = false;
             _consultationFormOpen = false;
             _consultationDraftDate = '';
+            _examEntryPanelOpen = false;
             _detailOnlyMode = false;
             _detailOnlyReturnRoute = '';
             EieRouter.open(returnRoute);
+        },
+
+        toggleExamEntry: function () {
+            _examEntryPanelOpen = !_examEntryPanelOpen;
+            if (!_examEntryDate) _examEntryDate = todayIso();
+            _attendancePanelOpen = false;
+            _consultationFormOpen = false;
+            EieRouter.open('classroom');
+        },
+
+        setExamEntryCategory: function (category) {
+            var next = text(category);
+            if (EXAM_CATEGORIES.some(function (item) { return item.key === next; })) {
+                _examEntryCategory = next;
+            }
+            _examEntryPanelOpen = true;
+            EieRouter.open('classroom');
+        },
+
+        saveClassExamRecords: async function (cellId) {
+            if (_saving) return;
+            var cell = _cells.find(function (row) { return String(row.id || '') === String(cellId || _selectedCellId || ''); }) || getSelectedCell();
+            if (!cell) return;
+            var students = getAssignedStudents(cell);
+            var dateEl = document.getElementById('class-exam-date');
+            var titleEl = document.getElementById('class-exam-title');
+            var maxScoreEl = document.getElementById('class-exam-max-score');
+            var categoryEl = document.getElementById('class-exam-category');
+            var date = normalizeDate(dateEl && dateEl.value) || todayIso();
+            var category = text(categoryEl && categoryEl.value) || _examEntryCategory || 'month_end';
+            var records = students.map(function (student) {
+                var sid = text(student && (student.student_id || student.id));
+                var rowId = 'class-exam-' + sid;
+                var scoreEl = document.getElementById(rowId + '-score');
+                var levelEl = document.getElementById(rowId + '-level');
+                var memoEl = document.getElementById(rowId + '-memo');
+                return {
+                    student_id: sid,
+                    score: scoreEl ? text(scoreEl.value) : '',
+                    level: levelEl ? text(levelEl.value) : '',
+                    memo: memoEl ? text(memoEl.value) : ''
+                };
+            }).filter(function (row) {
+                return row.student_id && (row.score || row.level || row.memo);
+            });
+            if (!records.length) {
+                _error = '저장할 성적 입력이 없습니다.';
+                EieRouter.open('classroom');
+                return;
+            }
+            _saving = true;
+            try {
+                var result = await EieApi.batchExamRecords({
+                    timetable_cell_id: text(cell.id),
+                    category: category,
+                    exam_date: date,
+                    title: titleEl ? text(titleEl.value) : '',
+                    max_score: maxScoreEl ? text(maxScoreEl.value) : '',
+                    records: records
+                });
+                _examEntryCategory = category;
+                _examEntryDate = date;
+                _examEntryRecordsByCell[text(cell.id)] = result.exam_records || result.data || [];
+                if (EieApi.getExamRecords) {
+                    var refreshed = await EieApi.getExamRecords({ timetable_cell_id: text(cell.id), month: date.slice(0, 7), category: category });
+                    _examEntryRecordsByCell[text(cell.id)] = refreshed.exam_records || refreshed.data || _examEntryRecordsByCell[text(cell.id)];
+                }
+                _error = '';
+                _examEntryPanelOpen = true;
+                _saving = false;
+                EieRouter.open('classroom');
+            } catch (err) {
+                _error = err && err.message ? err.message : '성적 빠른 입력 저장에 실패했습니다.';
+                _examEntryPanelOpen = true;
+                _saving = false;
+                EieRouter.open('classroom');
+            } finally {
+                _saving = false;
+            }
         },
 
         openStudentDetail: function (studentKey) {
@@ -1262,6 +1405,7 @@ function renderCards(cells) {
             _attendancePanelOpen = false;
             _consultationFormOpen = false;
             _consultationDraftDate = '';
+            _examEntryPanelOpen = false;
             EieRouter.open('classroom');
         },
 

@@ -11104,3 +11104,179 @@ select.eie-att-ctrl { cursor: pointer; }
   }
 }
 
+/* EIE exam records MVP */
+.eie-app-shell .eie-exam-tab,
+.eie-app-shell .eie-class-exam-entry-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eie-app-shell .eie-exam-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.eie-app-shell .eie-exam-category-card {
+    min-height: 52px;
+    padding: 10px 12px;
+    border: 1px solid var(--eie-p-border);
+    border-radius: 8px;
+    background: var(--eie-p-card-bg);
+    color: var(--eie-p-text);
+    text-align: left;
+    cursor: pointer;
+}
+
+.eie-app-shell .eie-exam-category-card strong,
+.eie-app-shell .eie-exam-category-card span {
+    display: block;
+    line-height: 1.3;
+}
+
+.eie-app-shell .eie-exam-category-card strong {
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.eie-app-shell .eie-exam-category-card span {
+    margin-top: 3px;
+    font-size: 11px;
+    color: var(--eie-p-text-sub);
+}
+
+.eie-app-shell .eie-exam-category-card.is-active {
+    border-color: var(--eie-p-btn-save-bg);
+    background: rgba(127, 119, 221, 0.1);
+}
+
+.eie-app-shell .eie-exam-record-list,
+.eie-app-shell .eie-class-exam-entry-table {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.eie-app-shell .eie-exam-record-row,
+.eie-app-shell .eie-class-exam-entry-row,
+.eie-app-shell .eie-class-exam-entry-head {
+    display: grid;
+    grid-template-columns: minmax(96px, 1.4fr) minmax(64px, 0.7fr) minmax(64px, 0.7fr) minmax(96px, 1fr);
+    gap: 8px;
+    align-items: center;
+}
+
+.eie-app-shell .eie-exam-record-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 9px 10px;
+    border: 1px solid var(--eie-p-border);
+    border-radius: 8px;
+    background: var(--eie-p-card-bg);
+}
+
+.eie-app-shell .eie-exam-record-row strong,
+.eie-app-shell .eie-exam-record-row span {
+    display: block;
+}
+
+.eie-app-shell .eie-exam-record-row span {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--eie-p-text-sub);
+}
+
+.eie-app-shell .eie-exam-record-score {
+    font-weight: 800;
+    color: var(--eie-p-btn-save-bg);
+    white-space: nowrap;
+}
+
+.eie-app-shell .eie-exam-form,
+.eie-app-shell .eie-class-exam-entry-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.eie-app-shell .eie-exam-form label,
+.eie-app-shell .eie-class-exam-entry-controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.eie-app-shell .eie-exam-form label.is-wide,
+.eie-app-shell .eie-exam-actions.is-wide {
+    grid-column: 1 / -1;
+}
+
+.eie-app-shell .eie-exam-form span,
+.eie-app-shell .eie-class-exam-entry-controls span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--eie-p-text-sub);
+}
+
+.eie-app-shell .eie-exam-form input,
+.eie-app-shell .eie-exam-form textarea,
+.eie-app-shell .eie-class-exam-entry-controls input,
+.eie-app-shell .eie-class-exam-entry-controls select,
+.eie-app-shell .eie-class-exam-entry-row input {
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+}
+
+.eie-app-shell .eie-exam-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.eie-app-shell .eie-class-exam-entry {
+    margin-top: 12px;
+}
+
+.eie-app-shell .eie-class-exam-entry-head {
+    padding: 0 4px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--eie-p-text-sub);
+}
+
+.eie-app-shell .eie-class-exam-entry-row {
+    padding: 8px;
+    border: 1px solid var(--eie-p-border);
+    border-radius: 8px;
+    background: var(--eie-p-card-bg);
+}
+
+.eie-app-shell .eie-class-exam-entry-row strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.eie-app-shell .eie-class-exam-entry-saved {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--eie-p-text-sub);
+}
+
+@media (max-width: 640px) {
+    .eie-app-shell .eie-exam-category-grid,
+    .eie-app-shell .eie-exam-form,
+    .eie-app-shell .eie-class-exam-entry-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-app-shell .eie-class-exam-entry-head {
+        display: none;
+    }
+
+    .eie-app-shell .eie-class-exam-entry-row {
+        grid-template-columns: 1fr;
+    }
+}

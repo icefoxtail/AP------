@@ -40,6 +40,8 @@ function safeText(value) {
   return String(value == null ? '' : value).trim();
 }
 
+const EIE_EXAM_CATEGORIES = new Set(['month_end', 'vocab', 'grammar', 'material', 'reading', 'listening', 'free']);
+
 function safeStatus(value, fallback = 'active') {
   const status = safeText(value || fallback);
   if (['active', 'imported', 'needs_review', 'hidden', 'archived'].includes(status)) return status === 'imported' ? 'active' : status;
@@ -906,6 +908,202 @@ async function handleGetConsultations(env, url) {
   if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
   const rows = await queryConsultations(env, studentId);
   return jsonResponse({ success: true, data: rows, consultations: rows });
+}
+
+function parseEieExamPayloadJson(value) {
+  if (value == null || value === '') return { ok: true, value: null };
+  if (typeof value === 'string') {
+    try {
+      JSON.parse(value);
+      return { ok: true, value };
+    } catch (error) {
+      return { ok: false, error: 'payload_json must be valid JSON' };
+    }
+  }
+  try {
+    return { ok: true, value: JSON.stringify(value) };
+  } catch (error) {
+    return { ok: false, error: 'payload_json must be valid JSON' };
+  }
+}
+
+function normalizeEieExamCategory(value) {
+  const category = safeText(value);
+  return EIE_EXAM_CATEGORIES.has(category) ? category : '';
+}
+
+function nullableNumber(value) {
+  if (value == null || value === '') return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function normalizeEieExamRecordInput(body, defaults = {}) {
+  const studentId = safeText(body?.student_id || body?.studentId || defaults.student_id || defaults.studentId);
+  const category = normalizeEieExamCategory(body?.category || defaults.category);
+  const examDate = safeText(body?.exam_date || body?.examDate || defaults.exam_date || defaults.examDate);
+  const payload = parseEieExamPayloadJson(
+    body?.payload_json !== undefined ? body.payload_json
+      : body?.payloadJson !== undefined ? body.payloadJson
+        : defaults.payload_json !== undefined ? defaults.payload_json
+          : defaults.payloadJson
+  );
+  if (!studentId) return { error: 'student_id is required' };
+  if (!category) return { error: 'category is invalid' };
+  if (!examDate) return { error: 'exam_date is required' };
+  if (!payload.ok) return { error: payload.error };
+  return {
+    student_id: studentId,
+    timetable_cell_id: safeText(body?.timetable_cell_id || body?.cell_id || body?.cellId || defaults.timetable_cell_id || defaults.cell_id || defaults.cellId) || null,
+    exam_date: examDate,
+    category,
+    title: safeText(body?.title || defaults.title) || null,
+    score: nullableNumber(body?.score),
+    max_score: nullableNumber(body?.max_score !== undefined ? body.max_score : body?.maxScore !== undefined ? body.maxScore : defaults.max_score !== undefined ? defaults.max_score : defaults.maxScore),
+    level: safeText(body?.level || defaults.level) || null,
+    memo: safeText(body?.memo || defaults.memo) || null,
+    payload_json: payload.value,
+    status: safeStatus(body?.status || defaults.status || 'active'),
+  };
+}
+
+async function queryEieExamRecords(env, filters = {}) {
+  const where = ["COALESCE(status, 'active') = 'active'"];
+  const binds = [];
+  const studentId = safeText(filters.student_id || filters.studentId);
+  const cellId = safeText(filters.timetable_cell_id || filters.cell_id || filters.cellId);
+  const month = safeText(filters.month);
+  const category = normalizeEieExamCategory(filters.category);
+  if (studentId) { where.push('student_id = ?'); binds.push(studentId); }
+  if (cellId) { where.push('timetable_cell_id = ?'); binds.push(cellId); }
+  if (category) { where.push('category = ?'); binds.push(category); }
+  if (/^\d{4}-\d{2}$/.test(month)) {
+    where.push('exam_date >= ? AND exam_date <= ?');
+    binds.push(`${month}-01`, `${month}-31`);
+  }
+  const result = await env.DB.prepare(`
+    SELECT *
+    FROM eie_exam_records
+    WHERE ${where.join(' AND ')}
+    ORDER BY exam_date DESC, updated_at DESC
+  `).bind(...binds).all();
+  return result.results || [];
+}
+
+async function handleGetEieExamRecords(env, url) {
+  try {
+    const rows = await queryEieExamRecords(env, {
+      student_id: url.searchParams.get('student_id'),
+      timetable_cell_id: url.searchParams.get('timetable_cell_id') || url.searchParams.get('cell_id'),
+      month: url.searchParams.get('month'),
+      category: url.searchParams.get('category')
+    });
+    return jsonResponse({ success: true, data: rows, exam_records: rows });
+  } catch (error) {
+    return jsonResponse({ success: false, error: 'eie_exam_records table is not ready', code: 'EIE_EXAM_RECORDS_NOT_READY' }, 409);
+  }
+}
+
+function insertEieExamRecordStatement(env, item, teacherId) {
+  const id = item.id || makeId('eie_exam');
+  item.id = id;
+  return env.DB.prepare(`
+    INSERT INTO eie_exam_records
+      (id, student_id, timetable_cell_id, exam_date, category, title, score, max_score, level, memo, payload_json, status, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    item.student_id,
+    item.timetable_cell_id,
+    item.exam_date,
+    item.category,
+    item.title,
+    item.score,
+    item.max_score,
+    item.level,
+    item.memo,
+    item.payload_json,
+    item.status || 'active',
+    teacherId || null
+  );
+}
+
+async function handlePostEieExamRecord(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const item = normalizeEieExamRecordInput(body);
+  if (item.error) return jsonResponse({ success: false, error: item.error }, 400);
+  await insertEieExamRecordStatement(env, item, teacher?.id).run();
+  const rows = await queryEieExamRecords(env, { student_id: item.student_id });
+  const record = rows.find(row => String(row.id) === String(item.id)) || rows[0] || null;
+  return jsonResponse({ success: true, data: record, exam_record: record, exam_records: rows });
+}
+
+async function handlePatchEieExamRecord(request, env, recordId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await env.DB.prepare("SELECT * FROM eie_exam_records WHERE id = ? AND COALESCE(status, 'active') = 'active' LIMIT 1").bind(recordId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'exam record not found' }, 404);
+  const item = normalizeEieExamRecordInput({ ...existing, ...body }, existing);
+  if (item.error) return jsonResponse({ success: false, error: item.error }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_exam_records
+    SET student_id = ?, timetable_cell_id = ?, exam_date = ?, category = ?, title = ?, score = ?,
+        max_score = ?, level = ?, memo = ?, payload_json = ?, status = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `).bind(
+    item.student_id,
+    item.timetable_cell_id,
+    item.exam_date,
+    item.category,
+    item.title,
+    item.score,
+    item.max_score,
+    item.level,
+    item.memo,
+    item.payload_json,
+    item.status || 'active',
+    recordId
+  ).run();
+  const record = await env.DB.prepare('SELECT * FROM eie_exam_records WHERE id = ? LIMIT 1').bind(recordId).first();
+  const rows = await queryEieExamRecords(env, { student_id: record.student_id });
+  return jsonResponse({ success: true, data: record, exam_record: record, exam_records: rows });
+}
+
+async function handleDeleteEieExamRecord(env, recordId) {
+  const existing = await env.DB.prepare("SELECT * FROM eie_exam_records WHERE id = ? AND COALESCE(status, 'active') = 'active' LIMIT 1").bind(recordId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'exam record not found' }, 404);
+  await env.DB.prepare("UPDATE eie_exam_records SET status = 'archived', updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(recordId).run();
+  const rows = await queryEieExamRecords(env, { student_id: existing.student_id });
+  return jsonResponse({ success: true, archived: true, data: null, exam_record: null, exam_records: rows });
+}
+
+async function handleBatchEieExamRecords(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const records = Array.isArray(body.records) ? body.records : Array.isArray(body.students) ? body.students : [];
+  if (!records.length) return jsonResponse({ success: false, error: 'records are required' }, 400);
+  const defaults = {
+    timetable_cell_id: body.timetable_cell_id || body.cell_id || body.cellId,
+    exam_date: body.exam_date || body.examDate,
+    category: body.category,
+    title: body.title,
+    max_score: body.max_score !== undefined ? body.max_score : body.maxScore,
+    payload_json: body.payload_json !== undefined ? body.payload_json : body.payloadJson
+  };
+  const items = [];
+  for (const row of records) {
+    const item = normalizeEieExamRecordInput(row, defaults);
+    if (item.error) return jsonResponse({ success: false, error: item.error }, 400);
+    items.push(item);
+  }
+  await env.DB.batch(items.map(item => insertEieExamRecordStatement(env, item, teacher?.id)));
+  const rows = await queryEieExamRecords(env, {
+    timetable_cell_id: defaults.timetable_cell_id,
+    month: safeText(defaults.exam_date).slice(0, 7),
+    category: defaults.category
+  });
+  return jsonResponse({ success: true, data: rows, exam_records: rows, saved_count: items.length });
 }
 
 async function handlePostConsultation(request, env) {
@@ -2298,6 +2496,10 @@ export async function handleEie(request, env, teacher, path, url) {
     return handleGetAttendanceRecords(env, url);
   }
 
+  if (method === 'GET' && path[2] === 'exam-records' && !path[3]) {
+    return handleGetEieExamRecords(env, url);
+  }
+
   if (method === 'GET') {
     return handleGet(request, env, path, url);
   }
@@ -2393,6 +2595,22 @@ export async function handleEie(request, env, teacher, path, url) {
   // ── 수업 배정/해제 ───────────────────────────────────────────────────
   if (method === 'POST' && path[2] === 'attendance-records' && !path[3]) {
     return handlePostAttendanceRecord(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'exam-records' && path[3] === 'batch' && !path[4]) {
+    return handleBatchEieExamRecords(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'exam-records' && !path[3]) {
+    return handlePostEieExamRecord(request, env, teacher);
+  }
+
+  if (method === 'PATCH' && path[2] === 'exam-records' && path[3] && !path[4]) {
+    return handlePatchEieExamRecord(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'exam-records' && path[3] && !path[4]) {
+    return handleDeleteEieExamRecord(env, path[3]);
   }
 
   if (method === 'POST' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students' && path[5] === 'batch' && !path[6]) {
