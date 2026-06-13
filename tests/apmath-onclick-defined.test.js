@@ -47,6 +47,7 @@ const ignoredBareCalls = new Set([
 
 function stripComments(text) {
   return text
+    .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/(^|[^:])\/\/.*$/gm, '$1');
 }
@@ -103,9 +104,19 @@ for (const file of sourceFiles.filter(file => file.endsWith('.js'))) {
 const undefinedCalls = [];
 const onclickInventory = new Map();
 
+assert.deepStrictEqual(
+  extractOnclickAttributes(stripComments(`
+    <!-- <button onclick="missingFromHtmlComment()"></button> -->
+    // onclick="missingFromLineComment()"
+    /* onclick="missingFromBlockComment()" */
+  `)),
+  [],
+  'onclick scanner should ignore JS/HTML comment examples'
+);
+
 for (const file of sourceFiles) {
   const text = fs.readFileSync(path.join(root, file), 'utf8');
-  const attrs = extractOnclickAttributes(text);
+  const attrs = extractOnclickAttributes(stripComments(text));
   attrs.forEach((attr, index) => {
     const calls = extractCalls(attr);
     onclickInventory.set(`${file}#${index + 1}`, calls);

@@ -6,7 +6,11 @@ const root = path.resolve(__dirname, '..');
 const updateFixtures = process.argv.includes('--update');
 
 const targets = [
-  { key: 'student', source: 'apmath/js/student.js', fixture: 'tests/fixtures/apmath-surface-student.json' },
+  {
+    key: 'student',
+    sources: ['apmath/js/student.js', 'apmath/js/student-edit.js'],
+    fixture: 'tests/fixtures/apmath-surface-student.json'
+  },
   { key: 'classroom', source: 'apmath/js/classroom.js', fixture: 'tests/fixtures/apmath-surface-classroom.json' },
   { key: 'dashboard', source: 'apmath/js/dashboard.js', fixture: 'tests/fixtures/apmath-surface-dashboard.json' },
   { key: 'report', source: 'apmath/js/report.js', fixture: 'tests/fixtures/apmath-surface-report.json' }
@@ -73,14 +77,17 @@ function readJson(filePath) {
 }
 
 for (const target of targets) {
-  const sourcePath = path.join(root, target.source);
+  const sources = target.sources || [target.source];
+  const sourceLabel = sources.join(' + ');
   const fixturePath = path.join(root, target.fixture);
-  const actual = extractSurface(fs.readFileSync(sourcePath, 'utf8'));
+  const actual = extractSurface(
+    sources.map(source => fs.readFileSync(path.join(root, source), 'utf8')).join('\n')
+  );
 
   assert.deepStrictEqual(
     actual.duplicateDefinitions,
     [],
-    `${target.source} should not define the same global/function surface name more than once`
+    `${sourceLabel} should not define the same global/function surface name more than once`
   );
 
   if (updateFixtures) {
@@ -89,7 +96,7 @@ for (const target of targets) {
   }
 
   assert(fs.existsSync(fixturePath), `${target.fixture} fixture is missing; run this test with --update to create it`);
-  assert.deepStrictEqual(actual, readJson(fixturePath), `${target.source} global function surface changed`);
+  assert.deepStrictEqual(actual, readJson(fixturePath), `${sourceLabel} global function surface changed`);
 }
 
 console.log('apmath global surface guard passed');
