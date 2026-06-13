@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Syntax check (node --check)
+        shell: bash
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r f; do
+            if ! node --check "$f" > /tmp/check.log 2>&1; then
+              echo "SYNTAX ERROR: $f"
+              cat /tmp/check.log
+              fail=1
+            fi
+          done < <(git ls-files \
+            'apmath/js/*.js' 'apmath/app.js' 'apmath/service-worker.js' \
+            'apmath/worker-backup/worker/index.js' \
+            'apmath/worker-backup/worker/helpers/*.js' \
+            'apmath/worker-backup/worker/routes/*.js' \
+            'workers/**/*.js' \
+            'eie/js/**/*.js' \
+            'shared/js/*.js' \
+            'tools/run-tests.js')
+          exit $fail
+
+      - name: Run tests
+        run: node tools/run-tests.js

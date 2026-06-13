@@ -264,6 +264,7 @@ function openAddClassModal() {
 async function handleAddClass() {
     const name = document.getElementById('add-cls-name')?.value.trim() || '';
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
+    if (name.length > 30) { toast('반 이름은 30자 이내로 입력하세요.', 'warn'); return; }
 
     const grade = document.getElementById('add-cls-grade')?.value || '';
     const subject = document.getElementById('add-cls-subject')?.value.trim() || '';

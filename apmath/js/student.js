@@ -875,7 +875,7 @@ function renderParentContactSection(sid) {
                 <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">기본 연락처</span>
             </div>
             <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; margin-bottom:2px;">관계 ${apEscapeHtml(fallbackRelation || '미지정')}</div>
-            <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(fallbackPhone)}')">${apEscapeHtml(fallbackPhone)}</div>
+            <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(fallbackPhone)})">${apEscapeHtml(fallbackPhone)}</div>
         </div>
     ` : '';
 
@@ -897,7 +897,7 @@ function renderParentContactSection(sid) {
                         <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:500;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
                     </div>
                 </div>
-                <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(String(contact.phone || ''))}')">${apEscapeHtml(contact.phone || '미등록')}</div>
+                <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(contact.phone || '')})">${apEscapeHtml(contact.phone || '미등록')}</div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px;">
                     <button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentConsentModal('${sid}','${contact.id}')">연락 설정</button>
                     ${historyButtonHtml}
@@ -3382,13 +3382,20 @@ async function handleEditStudent(sid) {
     const finalMemo = memoParts.join(' ').trim();
     const highSubjects = collectHighSubjects('edit', grade);
 
+    const studentPhoneInput = (document.getElementById('edit-student-phone')?.value || '').trim();
+    const parentPhoneInput = (document.getElementById('edit-parent-phone')?.value || '').trim();
+    // 기존 데이터('010' 등 자리표시 값)를 막지 않도록 형식만 느슨하게 검사한다.
+    const phonePattern = /^[0-9+\-() ]*$/;
+    if (!phonePattern.test(studentPhoneInput)) { toast('학생 연락처에 숫자와 -, +, 괄호만 입력할 수 있습니다.', 'warn'); return; }
+    if (!phonePattern.test(parentPhoneInput)) { toast('보호자 연락처에 숫자와 -, +, 괄호만 입력할 수 있습니다.', 'warn'); return; }
+
     const payload = {
         name: document.getElementById('edit-name')?.value || '',
         school_name: document.getElementById('edit-school')?.value || '',
         grade,
         class_id: classId,
-        student_phone: document.getElementById('edit-student-phone')?.value || '',
-        parent_phone: document.getElementById('edit-parent-phone')?.value || '',
+        student_phone: studentPhoneInput,
+        parent_phone: parentPhoneInput,
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
         student_address: document.getElementById('edit-student-address')?.value || '',
         vehicle_info: document.getElementById('edit-vehicle-info')?.value || '',

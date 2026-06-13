@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -18,32 +19,67 @@ const quarantined = new Map([
 
 const includeQuarantined = process.env.APMATH_RUN_QUARANTINE === '1';
 
-const tests = fs.readdirSync(testsDir)
+const files = fs.readdirSync(testsDir)
   .filter(name => name.endsWith('.test.js'))
-  .filter(name => includeQuarantined || !quarantined.has(name))
-  .sort()
-  .map(name => path.join('tests', name));
+  .sort();
 
-let failed = 0;
+const tests = includeQuarantined
+  ? files
+  : files.filter(name => !quarantined.has(name));
 
-for (const test of tests) {
-  const result = spawnSync(process.execPath, [test], {
+let passed = 0;
+const failed = [];
+const knownFailed = [];
+const fixedKnown = [];
+
+for (const file of tests) {
+  const testPath = path.join('tests', file);
+  const result = spawnSync(process.execPath, [testPath], {
     cwd: root,
-    stdio: 'inherit'
+    stdio: 'inherit',
+    timeout: 60000
   });
 
-  if (result.status !== 0) {
-    failed += 1;
-    console.error(`Test failed: ${test}`);
+  if (result.status === 0) {
+    passed += 1;
+    if (quarantined.has(file)) fixedKnown.push(file);
+    continue;
   }
-}
 
-if (failed > 0) {
-  console.error(`${failed} test file(s) failed`);
-  process.exit(1);
+  if (quarantined.has(file)) {
+    knownFailed.push(file);
+  } else {
+    failed.push(file);
+    console.error(`Test failed: ${testPath}`);
+  }
 }
 
 if (!includeQuarantined && quarantined.size > 0) {
   console.log(`${quarantined.size} quarantined test file(s) skipped; set APMATH_RUN_QUARANTINE=1 to include them`);
 }
-console.log(`${tests.length} test file(s) passed`);
+
+console.log(`PASS ${passed} / FAIL ${failed.length} / KNOWN-FAIL ${knownFailed.length} (total ${tests.length})`);
+
+if (failed.length > 0) {
+  console.error('\nBlocking failures:');
+  for (const file of failed) console.error(`  FAIL ${file}`);
+}
+
+if (knownFailed.length > 0) {
+  console.log('\nKnown failures (non-blocking quarantine):');
+  for (const file of knownFailed) {
+    console.log(`  KNOWN ${file} - ${quarantined.get(file)}`);
+  }
+}
+
+if (fixedKnown.length > 0) {
+  console.log('\nQuarantined tests now passing; consider removing them from the quarantine list:');
+  for (const file of fixedKnown) {
+    console.log(`  FIXED ${file}`);
+  }
+}
+
+if (failed.length > 0) {
+  console.error(`${failed.length} test file(s) failed`);
+  process.exit(1);
+}
