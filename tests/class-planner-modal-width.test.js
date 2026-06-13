@@ -3,7 +3,10 @@ const path = require('path');
 const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
-const classroomSource = fs.readFileSync(path.join(root, 'apmath/js/classroom.js'), 'utf8');
+const classroomSource = [
+  'apmath/js/classroom.js',
+  'apmath/js/classroom-planner.js'
+].map(file => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
 
 assert(
   classroomSource.includes('width: min(1080px, calc(100vw - 32px)) !important;'),

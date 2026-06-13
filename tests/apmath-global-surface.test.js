@@ -11,7 +11,11 @@ const targets = [
     sources: ['apmath/js/student.js', 'apmath/js/student-edit.js'],
     fixture: 'tests/fixtures/apmath-surface-student.json'
   },
-  { key: 'classroom', source: 'apmath/js/classroom.js', fixture: 'tests/fixtures/apmath-surface-classroom.json' },
+  {
+    key: 'classroom',
+    sources: ['apmath/js/classroom.js', 'apmath/js/classroom-planner.js'],
+    fixture: 'tests/fixtures/apmath-surface-classroom.json'
+  },
   { key: 'dashboard', source: 'apmath/js/dashboard.js', fixture: 'tests/fixtures/apmath-surface-dashboard.json' },
   { key: 'report', source: 'apmath/js/report.js', fixture: 'tests/fixtures/apmath-surface-report.json' }
 ];
