@@ -17,6 +17,8 @@
     var _consultationDraft = null;
     var _pinnedConsultationByStudent = {};
     var _pinnedConsultationFormStudent = '';
+    var _examCategory = 'month_end';
+    var _examRecordsByStudent = {};
 
     function esc(value) {
         return EieApp.escapeHtml(value == null ? '' : value);
@@ -143,6 +145,30 @@
             return String(consultation.student_id || '') === String(sid);
         }).sort(function (a, b) {
             return text(b.date || b.created_at).localeCompare(text(a.date || a.created_at));
+        });
+    }
+
+    var EXAM_CATEGORIES = [
+        { key: 'month_end', label: '월말평가' },
+        { key: 'vocab', label: '단어' },
+        { key: 'grammar', label: '문법' },
+        { key: 'material', label: '교재' },
+        { key: 'reading', label: 'Reading' },
+        { key: 'listening', label: 'Listening' },
+        { key: 'free', label: '자유기록' }
+    ];
+
+    function examCategoryLabel(category) {
+        var item = EXAM_CATEGORIES.find(function (row) { return row.key === category; });
+        return item ? item.label : '성적';
+    }
+
+    function examRecordsOf(student) {
+        var sid = rowId(student);
+        return asArray(_examRecordsByStudent[sid]).filter(function (row) {
+            return String(row.status || 'active') === 'active';
+        }).sort(function (a, b) {
+            return text(b.exam_date || b.created_at).localeCompare(text(a.exam_date || a.created_at));
         });
     }
 
@@ -484,6 +510,18 @@
             }
         } catch (err) {
             _error = err && err.message ? err.message : '출석 기록을 불러오지 못했습니다.';
+        }
+    }
+
+    async function loadStudentExamRecords(studentId) {
+        var sid = text(studentId);
+        if (!sid || !window.EieApi || typeof EieApi.getExamRecords !== 'function') return;
+        try {
+            var result = await EieApi.getExamRecords({ student_id: sid });
+            _examRecordsByStudent[sid] = result.exam_records || result.data || [];
+        } catch (err) {
+            _examRecordsByStudent[sid] = _examRecordsByStudent[sid] || [];
+            _error = err && err.message ? err.message : '성적표 기록을 불러오지 못했습니다.';
         }
     }
 
@@ -886,7 +924,66 @@
             + '</div>';
     }
 
+    function renderExamCategoryCards() {
+        return '<div class="eie-exam-category-grid">'
+            + EXAM_CATEGORIES.map(function (item) {
+                return '<button type="button" class="eie-exam-category-card' + (_examCategory === item.key ? ' is-active' : '') + '" onclick="EieStudentsView.setExamCategory(' + jsArg(item.key) + ')">'
+                    + '<strong>' + esc(item.label) + '</strong>'
+                    + '<span>' + esc(item.key === 'free' ? '선생님 자유 입력' : '성적 기록') + '</span>'
+                    + '</button>';
+            }).join('')
+            + '</div>';
+    }
+
+    function renderExamRecordRow(row) {
+        var scoreLabel = row.score !== undefined && row.score !== null && row.score !== ''
+            ? String(row.score) + (row.max_score !== undefined && row.max_score !== null && row.max_score !== '' ? ' / ' + String(row.max_score) : '')
+            : '-';
+        return '<div class="eie-exam-record-row">'
+            + '<div>'
+            + '<strong>' + esc(row.title || examCategoryLabel(row.category)) + '</strong>'
+            + '<span>' + esc([row.exam_date, row.level, row.memo].filter(Boolean).join(' · ') || '메모 없음') + '</span>'
+            + '</div>'
+            + '<div class="eie-exam-record-score">' + esc(scoreLabel) + '</div>'
+            + '</div>';
+    }
+
+    function renderExamPanel(student) {
+        var sid = rowId(student);
+        var category = _examCategory || 'month_end';
+        var rows = examRecordsOf(student).filter(function (row) {
+            return text(row.category) === category;
+        });
+        var prefix = 'student-exam-' + category;
+        return '<div class="eie-apms-card eie-exam-panel" data-eie-exam-category="' + esc(category) + '">'
+            + '<div class="eie-apms-section-head"><h3>' + esc(examCategoryLabel(category)) + '</h3><span>' + esc(String(rows.length)) + '건</span></div>'
+            + '<div class="eie-exam-record-list">'
+            + (rows.length ? rows.slice(0, 12).map(renderExamRecordRow).join('') : '<div class="eie-empty-box">저장된 성적표 기록이 없습니다.</div>')
+            + '</div>'
+            + '<div class="eie-exam-form">'
+            + '<label><span>날짜</span><input id="' + prefix + '-date" type="date" value="' + esc(todayIso()) + '"></label>'
+            + '<label><span>제목</span><input id="' + prefix + '-title" type="text" placeholder="' + esc(examCategoryLabel(category)) + '"></label>'
+            + '<label><span>점수</span><input id="' + prefix + '-score" type="number" step="0.1" inputmode="decimal"></label>'
+            + '<label><span>만점</span><input id="' + prefix + '-max-score" type="number" step="0.1" inputmode="decimal"></label>'
+            + '<label><span>레벨</span><input id="' + prefix + '-level" type="text" placeholder="A, B, C 또는 교재 레벨"></label>'
+            + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo" rows="2" placeholder="수업 전달 메모"></textarea></label>'
+            + '<label class="is-wide"><span>payload_json</span><textarea id="' + prefix + '-payload" rows="3" placeholder=\'{"items":[]}\'></textarea></label>'
+            + '<div class="eie-exam-actions is-wide">'
+            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.saveExamRecord(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>저장</button>'
+            + '</div>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderExamTab(student) {
+        return '<div class="eie-exam-tab">'
+            + renderExamCategoryCards()
+            + renderExamPanel(student)
+            + '</div>';
+    }
+
     function renderTabBody(student) {
+        if (_tab === 'grades') return renderExamTab(student);
         if (_tab === 'contacts') return renderContacts(student);
         if (_tab === 'classes') return renderAssignments(student);
         if (_tab === 'consultation') return renderConsultations(student);
@@ -950,6 +1047,7 @@
             + renderTabButton('classes', '수업 배정')
             + renderTabButton('consultation', '상담')
             + renderTabButton('attendance', '출결/숙제')
+            + renderTabButton('grades', '성적표')
             + '</div>'
             + renderTabBody(student)
             + '</aside>';
@@ -1161,6 +1259,7 @@
             if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
+            if (_selectedId && _tab === 'grades') await loadStudentExamRecords(_selectedId);
             var opened = EieRouter.open('students');
             if (sid && _tab !== 'consultation') {
                 loadStudentConsultations(sid).then(function () {
@@ -1464,7 +1563,70 @@
             if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
+            if (_selectedId && _tab === 'grades') await loadStudentExamRecords(_selectedId);
             EieRouter.open('students');
+        },
+
+        setExamCategory: function (category) {
+            if (EXAM_CATEGORIES.some(function (item) { return item.key === category; })) {
+                _examCategory = category;
+            }
+            _tab = 'grades';
+            EieRouter.open('students');
+        },
+
+        saveExamRecord: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            var category = _examCategory || 'month_end';
+            var prefix = 'student-exam-' + category;
+            var dateEl = document.getElementById(prefix + '-date');
+            var titleEl = document.getElementById(prefix + '-title');
+            var scoreEl = document.getElementById(prefix + '-score');
+            var maxScoreEl = document.getElementById(prefix + '-max-score');
+            var levelEl = document.getElementById(prefix + '-level');
+            var memoEl = document.getElementById(prefix + '-memo');
+            var payloadEl = document.getElementById(prefix + '-payload');
+            var payloadText = text(payloadEl && payloadEl.value);
+            if (payloadText) {
+                try { JSON.parse(payloadText); }
+                catch (error) {
+                    _error = 'payload_json은 올바른 JSON이어야 합니다.';
+                    _tab = 'grades';
+                    _saving = false;
+                    await EieRouter.open('students');
+                    return;
+                }
+            }
+            var payload = {
+                student_id: sid,
+                category: category,
+                exam_date: text(dateEl && dateEl.value) || todayIso(),
+                title: text(titleEl && titleEl.value),
+                score: text(scoreEl && scoreEl.value),
+                max_score: text(maxScoreEl && maxScoreEl.value),
+                level: text(levelEl && levelEl.value),
+                memo: text(memoEl && memoEl.value),
+                payload_json: payloadText || null
+            };
+            if (!sid) return;
+            _saving = true;
+            try {
+                var result = await EieApi.createExamRecord(payload);
+                _examRecordsByStudent[sid] = result.exam_records || (result.exam_record ? [result.exam_record].concat(_examRecordsByStudent[sid] || []) : result.data || []);
+                _notice = '성적표 기록을 저장했습니다.';
+                _error = '';
+                _tab = 'grades';
+                _saving = false;
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '성적표 저장에 실패했습니다.';
+                _tab = 'grades';
+                _saving = false;
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
         },
 
         showPreparing: function (label) {
