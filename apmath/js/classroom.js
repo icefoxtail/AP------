@@ -877,12 +877,12 @@ async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
                 </div>
                 ${files.length ? files.map((file, index) => {
                     const image = isHomeworkPhotoImage(file);
-                    const safeUrl = String(file.url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-                    const safeTitle = String(file.file_name || `파일 ${index + 1}`).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const safeUrl = apJsArg(file.url || '');
+                    const safeTitle = apJsArg(file.file_name || `파일 ${index + 1}`);
                     return `
                         <div style="border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
                             ${image ? `
-                                <button type="button" style="display:block; width:100%; padding:0; border:none; background:transparent; cursor:pointer;" onclick="openHomeworkPhotoImageViewer('${safeUrl}', '${safeTitle}')">
+                                <button type="button" style="display:block; width:100%; padding:0; border:none; background:transparent; cursor:pointer;" onclick="openHomeworkPhotoImageViewer(${safeUrl}, ${safeTitle})">
                                     <img src="${apEscapeHtml(file.url || '')}" alt="${apEscapeHtml(file.file_name || `숙제 사진 ${index + 1}`)}" style="width:100%; max-height:240px; object-fit:contain; border-radius:12px; background:var(--surface-2); border:1px solid var(--border);">
                                 </button>
                             ` : `
@@ -893,7 +893,7 @@ async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
                                     <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(file.file_name || `파일 ${index + 1}`)}</div>
                                     <div style="font-size:11px; font-weight:500; color:var(--secondary); margin-top:4px;">${apEscapeHtml(file.file_type || '타입 미기록')} · ${apEscapeHtml(formatHomeworkPhotoFileSize(file.file_size))}</div>
                                 </div>
-                                <button class="btn apms-button apms-button--quiet" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="window.open('${safeUrl}', '_blank', 'noopener')">열기</button>
+                                <button class="btn apms-button apms-button--quiet" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="window.open(${safeUrl}, '_blank', 'noopener')">열기</button>
                             </div>
                         </div>
                     `;
@@ -913,7 +913,7 @@ function openHomeworkPhotoImageViewer(url, title = '') {
             <div style="width:100%; min-height:240px; max-height:72vh; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
                 <img src="${apEscapeHtml(url)}" alt="${apEscapeHtml(title || '숙제 사진')}" style="max-width:100%; max-height:72vh; object-fit:contain; background:#fff;">
             </div>
-            <button class="btn apms-button apms-button--quiet" style="min-height:42px; font-size:12px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="window.open('${String(url).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}', '_blank', 'noopener')">새 창에서 열기</button>
+            <button class="btn apms-button apms-button--quiet" style="min-height:42px; font-size:12px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="window.open(${apJsArg(url)}, '_blank', 'noopener')">새 창에서 열기</button>
         </div>
     `);
 }
@@ -1028,7 +1028,7 @@ function openHomeworkPhotoLinksModal(assignmentId, links) {
             </div>
             <textarea id="hw-photo-all-links" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(allText)}</textarea>
             ${normalized.length ? normalized.map(item => {
-                const safeUrl = String(item.url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const safeUrl = apJsArg(item.url || '');
                 return `
                     <div style="border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
                         <div style="display:flex; justify-content:space-between; gap:10px; align-items:center;">
@@ -1036,7 +1036,7 @@ function openHomeworkPhotoLinksModal(assignmentId, links) {
                                 <div style="font-size:14px; font-weight:500; color:var(--text);">${apEscapeHtml(item.name || '학생')}</div>
                                 <div style="font-size:11px; font-weight:500; color:var(--secondary); word-break:break-all; margin-top:4px;">${apEscapeHtml(item.url || '')}</div>
                             </div>
-                            <button class="btn apms-button apms-button--quiet" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
+                            <button class="btn apms-button apms-button--quiet" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText(${safeUrl}, '링크가 복사되었습니다.')">복사</button>
                         </div>
                         <div style="margin-top:10px; text-align:center;">
                             <img src="${getHomeworkPhotoQrSrc(item.url || '')}" alt="QR" style="width:128px; height:128px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:8px;">
@@ -1076,8 +1076,8 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                 ${rows.map(r => {
                     const done = Number(r.is_submitted || 0) === 1;
                     const studentUrl = buildHomeworkPhotoStudentUrl(assignmentId, r.student_id, r.url);
-                    const safeUrl = String(studentUrl || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-                    const safeSubmissionId = String(r.submission_id || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const safeUrl = apJsArg(studentUrl || '');
+                    const safeSubmissionId = apJsArg(r.submission_id || '');
                     const canViewFiles = done && Number(r.file_count || 0) > 0 && String(r.submission_id || '').trim();
                     return `
                         <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
@@ -1087,7 +1087,7 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                             </div>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="font-size:13px; font-weight:500; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
-                                ${canViewFiles ? `<button class="btn apms-button apms-button--quiet" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:500; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal('${safeSubmissionId}')">사진</button>` : ''}
+                                ${canViewFiles ? `<button class="btn apms-button apms-button--quiet" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:500; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal(${safeSubmissionId})">사진</button>` : ''}
                             </div>
                         </div>
                     `;
@@ -1778,8 +1778,8 @@ async function openExamGradeView(classId) {
         const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
         const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
         const pct = activeCountForAssignment ? Math.round((cnt / activeCountForAssignment) * 100) : 0;
-        const archiveArg = String(exam.archiveFile || '').replace(/'/g, "\\'");
-        return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
+        const archiveArg = apJsArg(exam.archiveFile || '');
+        return `<div onclick="openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg})" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
             <div>
                 <div style="font-weight:500; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
                 <div style="font-size: 11px; color: var(--secondary); margin-top: 4px; font-weight: 400; line-height: 1.5;">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${activeCountForAssignment}명 (${pct}%)</div>
@@ -1789,7 +1789,7 @@ async function openExamGradeView(classId) {
                     <div style="font-size: 20px; font-weight:500; color: var(--primary); line-height: 1;">${avg}</div>
                     <div style="font-size: 10px; color: var(--secondary); font-weight:500; margin-top:4px;">평균</div>
                 </div>
-               <button class="btn apms-button apms-button--quiet" onclick="event.stopPropagation(); openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}');" style="padding: 7px 10px; font-size: 11px; font-weight:500; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
+               <button class="btn apms-button apms-button--quiet" onclick="event.stopPropagation(); openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg});" style="padding: 7px 10px; font-size: 11px; font-weight:500; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
             </div>
         </div>`;
     }).join('');
@@ -1867,10 +1867,10 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     const pending = active.filter(s => !submittedIds.has(String(s.id)));
 
     const examArchiveFileObj = sessions.find(s => s.archive_file);
-    const examArchiveFile = String(examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || '').replace(/'/g, "\\'");
+    const examArchiveFile = apJsArg(examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || '');
 
     const submittedHTML = submitted.map(s => {
-        const sArchive = s.session?.archive_file ? String(s.session.archive_file).replace(/'/g, "\\'") : examArchiveFile;
+        const sArchive = s.session?.archive_file ? apJsArg(s.session.archive_file) : examArchiveFile;
         return `<tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 14px 12px; font-weight:500; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="text-align: center; font-weight:500; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
@@ -1881,8 +1881,8 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
             </td>
             <td style="text-align: right; padding: 14px 12px;">
                 <div style="display: flex; gap: 6px; justify-content: flex-end;">
-                    <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
-                    <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${sArchive}')">삭제</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}',${apJsArg(examTitle)},${qCount},'${classId}','${s.sessionId || ''}',${sArchive},'examDetail','${examDate}')">수정</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}',${apJsArg(examTitle)},'${examDate}',${sArchive})">삭제</button>
                 </div>
             </td>
         </tr>`;
@@ -1892,7 +1892,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
         <td style="padding: 14px 12px; color: var(--secondary); font-weight: 500; font-size: 14px;">${s.name}</td>
         <td colspan="2" style="text-align: center; font-size: 12px; color: var(--secondary); font-weight:500; line-height: 1.5;">미제출</td>
         <td style="text-align: right; padding: 14px 12px;">
-            <button class="btn apms-button apms-button--primary btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: 8px; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: 8px; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}',${apJsArg(examTitle)},${qCount},'${classId}','',${examArchiveFile},'examDetail','${examDate}')">입력</button>
         </td>
     </tr>`).join('');
 
@@ -1908,7 +1908,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn apms-button apms-button--quiet" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); font-weight:500; border-radius: 12px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${examArchiveFile}')">시험 기록 전체 삭제</button>
+            <button class="btn apms-button apms-button--quiet" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); font-weight:500; border-radius: 12px;" onclick="deleteExamByClass('${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile})">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>

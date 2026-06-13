@@ -311,10 +311,6 @@ function clinicPrintOpenEngine(payload) {
         const payloadJson = JSON.stringify(payload);
         sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', payloadJson);
         localStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', payloadJson);
-        console.log('[clinic-print] payload saved', {
-            sessionStorage: !!sessionStorage.getItem('AP_CLINIC_PRINT_PAYLOAD'),
-            localStorage: !!localStorage.getItem('AP_CLINIC_PRINT_PAYLOAD')
-        });
     } catch (e) {
         toast('오답지 데이터를 저장하지 못했습니다.', 'error');
         return;
