@@ -59,6 +59,22 @@ def grade_to_folder(grade):
     }.get(str(grade or "").strip(), "")
 
 
+def grade_from_types_relpath(rel_path):
+    parts = normalize_slash(rel_path).split("/")
+    if len(parts) < 3 or parts[0] != "types":
+        return ""
+
+    folder_grade_map = {
+        ("high", "h1"): "고1",
+        ("high", "h2"): "고2",
+        ("high", "h3"): "고3",
+        ("middle", "m1"): "중1",
+        ("middle", "m2"): "중2",
+        ("middle", "m3"): "중3",
+    }
+    return folder_grade_map.get((parts[1], parts[2]), "")
+
+
 def normalize_semester(value, filename=""):
     v = compact_text(value)
     if v in ("1", "1학기"):
@@ -368,10 +384,12 @@ COURSE_TABLES = [
 
 UNIT_BY_KEY = {}
 COURSE_BY_ALIAS = {}
+UNITS_BY_COURSE_CODE = {}
 UNITS_BY_GRADE = {}
 
 for course in COURSE_TABLES:
     UNITS_BY_GRADE.setdefault(course["grade"], [])
+    UNITS_BY_COURSE_CODE.setdefault(course["course_code"], [])
     COURSE_BY_ALIAS[compact_text(course["course_name"])] = course
     for alias in course["aliases"]:
         COURSE_BY_ALIAS[compact_text(alias)] = course
@@ -386,6 +404,7 @@ for course in COURSE_TABLES:
             "course_name": course["course_name"],
         }
         UNIT_BY_KEY[unit["key"]] = meta
+        UNITS_BY_COURSE_CODE[course["course_code"]].append(meta)
         UNITS_BY_GRADE[course["grade"]].append(meta)
 
 
@@ -681,7 +700,73 @@ def parse_rpm_filename(filename):
     }
 
 
-def parse_filename(filename):
+def parse_types_folder_filename(filename, rel_path):
+    grade = grade_from_types_relpath(rel_path)
+    if not grade:
+        return None
+
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
+    parts = [p.strip() for p in stem.split("_") if p.strip()]
+    if not parts:
+        return None
+
+    grade_pattern = re.compile(r"^[중고][123]$")
+    semester = ""
+    exam_type = normalize_exam_type("", base)
+    school = ""
+    subject = ""
+    topic_parts = []
+
+    if parts[0] in ("RPM", "비상"):
+        school = parts[0]
+        if len(parts) >= 2:
+            subject = parts[1]
+        topic_parts = parts[2:]
+    else:
+        topic_parts = parts[:]
+
+    filtered_topic_parts = []
+    for part in topic_parts:
+        if grade_pattern.fullmatch(part):
+            continue
+        if part == grade:
+            continue
+        if re.fullmatch(r"\d+", part):
+            continue
+        if part in ("중간대비", "기말대비"):
+            continue
+        if re.fullmatch(r"[12]학기", part):
+            semester = normalize_semester(part, base)
+            continue
+        if re.fullmatch(r"[12]단원", part):
+            continue
+        if re.fullmatch(r"(중간|기말)대비\d*", part):
+            if "중간" in part:
+                exam_type = "mid"
+            elif "기말" in part:
+                exam_type = "final"
+            continue
+        filtered_topic_parts.append(part)
+
+    topic = strip_suffixes("_".join(filtered_topic_parts).strip("_"))
+    if not topic:
+        topic = strip_suffixes(stem)
+
+    return {
+        "file": base,
+        "school": school,
+        "topic": topic,
+        "grade": grade,
+        "year": "",
+        "semester": semester,
+        "examType": exam_type,
+        "subject": subject,
+        "contentType": "유형",
+    }
+
+
+def parse_filename(filename, rel_path=""):
     base = os.path.basename(filename)
     for parser in (
         parse_eval_type_filename,
@@ -694,6 +779,8 @@ def parse_filename(filename):
         meta = parser(base)
         if meta:
             return meta
+    if rel_path:
+        return parse_types_folder_filename(base, rel_path)
     return None
 
 
@@ -906,6 +993,27 @@ def extract_standard_unit_keys(text):
     return keys
 
 
+def extract_course_units_from_course_codes(text):
+    units = []
+    seen = set()
+    patterns = [
+        r"standardUnitKey\s*:\s*[\"']([^\"']+)[\"']",
+        r"\"standardUnitKey\"\s*:\s*\"([^\"]+)\"",
+    ]
+
+    for pattern in patterns:
+        for raw in re.findall(pattern, text):
+            course_units = UNITS_BY_COURSE_CODE.get(raw.strip())
+            if not course_units:
+                continue
+            for unit in course_units:
+                if unit["key"] not in seen:
+                    seen.add(unit["key"])
+                    units.append(unit)
+
+    return units
+
+
 def extract_standard_course_names(text):
     names = []
     seen = set()
@@ -1050,6 +1158,22 @@ def resolve_units_from_names(unit_names, grade):
     return dedupe_units(resolved)
 
 
+def resolve_units_from_course_names(course_names, grade):
+    resolved = []
+    seen = set()
+
+    for course_name in course_names:
+        course = COURSE_BY_ALIAS.get(compact_text(course_name))
+        if not course or course.get("grade") != grade:
+            continue
+        for unit in UNITS_BY_COURSE_CODE.get(course["course_code"], []):
+            if unit["key"] not in seen:
+                seen.add(unit["key"])
+                resolved.append(unit)
+
+    return resolved
+
+
 def resolve_units_from_topic(topic, grade):
     topic_compact = compact_text(strip_suffixes(topic))
     if not topic_compact:
@@ -1081,12 +1205,26 @@ def resolve_units_from_topic(topic, grade):
         "사인코사인법칙": "사인법칙과 코사인법칙",
     }
 
-    target = aliases.get(topic_compact, topic_compact)
+    topic_candidates = [topic_compact]
+    topic_candidates.extend(compact_text(x) for x in re.split(r"[_/\-\s]+", str(topic or "")) if compact_text(x))
 
     for unit in UNITS_BY_GRADE.get(grade, []):
         unit_compact = compact_text(unit["name"])
-        if target == unit_compact or target in unit_compact or unit_compact in target:
-            return [unit]
+        for candidate in topic_candidates:
+            target = aliases.get(candidate, candidate)
+            if target == unit_compact or target in unit_compact or unit_compact in target:
+                return [unit]
+
+    return []
+
+
+def resolve_units_from_file_context(filename, meta):
+    stem = os.path.splitext(os.path.basename(filename))[0]
+    grade = meta.get("grade", "")
+
+    if grade == "중2" and "RPM_중2_2-2_부록_대표문제다시풀기_중2" in stem:
+        wanted = ("M2-05", "M2-06", "M2-07", "M2-08")
+        return [UNIT_BY_KEY[k] for k in wanted if k in UNIT_BY_KEY]
 
     return []
 
@@ -1124,6 +1262,10 @@ def extract_range_meta_from_js(filepath, meta, origin_range_map=None):
     if units_by_key:
         return build_range_payload(units_by_key, "question_keys", meta)
 
+    units_by_course_code = extract_course_units_from_course_codes(text)
+    if units_by_course_code:
+        return build_range_payload(units_by_course_code, "course_code_keys", meta)
+
     unit_names = extract_standard_unit_names(text)
     units_by_name = resolve_units_from_names(unit_names, meta.get("grade", ""))
 
@@ -1134,6 +1276,15 @@ def extract_range_meta_from_js(filepath, meta, origin_range_map=None):
 
     if topic_units:
         return build_range_payload(topic_units, "topic_alias_fallback", meta)
+
+    file_context_units = resolve_units_from_file_context(filename, meta)
+    if file_context_units:
+        return build_range_payload(file_context_units, "file_context_fallback", meta)
+
+    course_names = extract_standard_course_names(text)
+    units_by_course_name = resolve_units_from_course_names(course_names, meta.get("grade", ""))
+    if units_by_course_name:
+        return build_range_payload(units_by_course_name, "course_name_match", meta)
 
     return make_empty_range("unresolved")
 
@@ -1273,7 +1424,7 @@ def build_engine_db():
         filename = file_info["filename"]
         rel_path = file_info["rel_path"]
 
-        meta = parse_filename(filename)
+        meta = parse_filename(filename, rel_path)
         if meta and meta.get("file"):
             meta = normalize_meta_file_path(meta, rel_path)
             parsed_meta_map[rel_path] = meta
