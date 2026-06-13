@@ -281,11 +281,11 @@ function renderHighSubjectChecks(prefix, grade, selectedSubjects, options = {}) 
     const visible = isHighSubjectGrade(grade);
     const showTitle = options.showTitle !== false;
     return `
-        <div id="${prefix}-high-subjects-wrap" style="display:${visible ? 'block' : 'none'}; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
+        <div id="${prefix}-high-subjects-wrap" style="display:${visible ? 'inline-block' : 'none'}; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:10px 12px;">
             ${showTitle ? '<div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:9px; line-height:1.4;">내신 과목</div>' : ''}
-            <div style="display:grid; grid-template-columns:1fr; gap:8px;">
+            <div style="display:grid; grid-template-columns:repeat(3, max-content); gap:6px 14px;">
                 ${AP_HIGH_SUBJECTS.map((subject, idx) => `
-                    <label style="display:flex; align-items:center; gap:7px; min-height:28px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
+                    <label style="display:flex; align-items:center; gap:6px; min-height:24px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer; white-space:nowrap;">
                         <input type="checkbox" class="${prefix}-high-subject" value="${apEscapeHtml(subject)}" ${selected.has(subject) ? 'checked' : ''} style="width:15px; height:15px; accent-color:#6E66C9; cursor:pointer;">
                         <span>${apEscapeHtml(subject)}</span>
                     </label>
@@ -301,7 +301,7 @@ function syncHighSubjectWrap(prefix, grade) {
     if (row) row.style.display = visible ? '' : 'none';
     const wrap = document.getElementById(`${prefix}-high-subjects-wrap`);
     if (!wrap) return;
-    wrap.style.display = visible ? 'block' : 'none';
+    wrap.style.display = visible ? 'inline-block' : 'none';
 }
 
 function syncEditStudentHighSubjects() {
@@ -345,6 +345,9 @@ function renderStudentEditBody(sid) {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
     const current = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    // grade가 비어 있거나 반과 불일치하는 기존 데이터에서도 고2/고3 반 학생이면 내신 과목을 노출한다.
+    const currentClass = current ? state.db.classes.find(c => String(c.id) === String(current.class_id)) : null;
+    const effectiveGrade = s.grade || inferGradeFromClass(currentClass);
     const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0));
     const opts = selectableClasses.map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id) === String(current?.class_id) ? 'selected' : ''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, selectableClasses))}</option>`).join('');
     const isNew = isStudentNewMember(s);
@@ -361,11 +364,11 @@ function renderStudentEditBody(sid) {
                     ${apStudentEditRow('이름', `<input id="edit-name" value="${studentAttr(s.name)}" placeholder="이름">`)}
                     ${apStudentEditRow('학교', `<input id="edit-school" value="${studentAttr(s.school_name)}" placeholder="학교">`)}
                     ${apStudentEditRow('학년', `<select id="edit-grade" onchange="syncEditStudentHighSubjects()">
-                        <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
-                        <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
+                        <option value="중1" ${effectiveGrade==='중1'?'selected':''}>중1</option><option value="중2" ${effectiveGrade==='중2'?'selected':''}>중2</option><option value="중3" ${effectiveGrade==='중3'?'selected':''}>중3</option>
+                        <option value="고1" ${effectiveGrade==='고1'?'selected':''}>고1</option><option value="고2" ${effectiveGrade==='고2'?'selected':''}>고2</option><option value="고3" ${effectiveGrade==='고3'?'selected':''}>고3</option>
                     </select>`)}
                     ${apStudentEditRow('배정 반', `<select id="edit-class" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>`)}
-                    ${apStudentEditRow('내신 과목', renderHighSubjectChecks('edit', s.grade, s.high_subjects, { showTitle: false }), { wide: true, id: 'edit-high-subjects-row', style: isHighSubjectGrade(s.grade) ? '' : 'display:none;' })}
+                    ${apStudentEditRow('내신 과목', renderHighSubjectChecks('edit', effectiveGrade, s.high_subjects, { showTitle: false }), { wide: true, id: 'edit-high-subjects-row', style: isHighSubjectGrade(effectiveGrade) ? '' : 'display:none;' })}
                 </div>
             </section>
             <section class="ap-student-card">
