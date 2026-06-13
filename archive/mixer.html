@@ -56,6 +56,7 @@
         .exam-bulk-actions { display: flex; gap: 6px; }
         .btn-action { padding: 8px 0; font-size: 11px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: 0.2s; border: 1px solid var(--gray-200); background: white; color: var(--text-main); }
         .exam-bulk-actions .btn-action { flex: 1; }
+        .question-filter-bar .search-box { flex: 1 1 180px; min-width: 150px; }
         .question-filter-bar .btn-action { flex: 0 0 auto; }
         .btn-filter-all { height: 34px; padding: 0 12px; font-size: 12px; white-space: nowrap; }
         .btn-action.primary { background: var(--blue); color: white; border-color: var(--blue); }
@@ -83,7 +84,12 @@
         .stat-label { color: rgba(255,255,255,0.5); font-weight: 400; }
         .stat-value { font-weight: 800; color: #60a5fa; }
 
-        .question-filter-bar { padding: 12px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 10px; background: white; position: sticky; top: 0; z-index: 10; }
+        .question-filter-bar { padding: 12px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 10px; background: white; position: sticky; top: 0; z-index: 10; flex-wrap: wrap; }
+        .q-mode-toggle { display: inline-flex; gap: 4px; padding: 3px; border: 1px solid var(--gray-200); border-radius: 8px; background: var(--gray-50); flex: 0 0 auto; }
+        .q-mode-btn { height: 28px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; color: var(--gray-500); font-size: 11px; font-weight: 900; cursor: pointer; white-space: nowrap; }
+        .q-mode-btn.active { background: white; color: var(--blue); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
+        .q-result-note { padding: 10px 20px; background: #fff7ed; color: #9a3412; font-size: 12px; font-weight: 800; border-bottom: 1px solid #fed7aa; }
+        .q-source-file { display: inline-block; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom; }
         
         .q-item { padding: 30px; border-bottom: 1px solid var(--gray-100); position: relative; }
         .q-item:hover { background: #fafafa; }
@@ -103,12 +109,63 @@
         /* 카트 패널 */
         .panel-cart { width: 340px; flex-shrink: 0; border-right: none; }
         .cart-item { padding: 12px; border: 1px solid var(--gray-100); border-radius: 10px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; background: white; }
+        .cart-analysis { padding: 14px 16px; border-bottom: 1px solid var(--gray-100); background: var(--gray-50); }
+        .cart-analysis-title { font-size: 12px; font-weight: 900; margin-bottom: 10px; color: var(--text-main); }
+        .cart-analysis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+        .cart-analysis-stat { min-width: 0; padding: 8px; border: 1px solid var(--gray-200); border-radius: 8px; background: white; }
+        .cart-analysis-label { display: block; font-size: 10px; font-weight: 800; color: var(--gray-500); }
+        .cart-analysis-value { display: block; margin-top: 2px; font-size: 14px; font-weight: 900; color: var(--blue); }
+        .cart-unit-list { display: flex; flex-direction: column; gap: 5px; }
+        .cart-unit-row { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; font-weight: 800; color: var(--gray-500); }
+        .cart-unit-row span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-main); }
         .cart-footer { padding: 20px; border-top: 1px solid var(--gray-100); background: white; position: sticky; bottom: 0; }
         .btn-main { width: 100%; height: 52px; border: none; border-radius: var(--radius-md); background: var(--blue); color: white; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; }
         .btn-main:hover { opacity: 0.9; }
 
         .empty-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--gray-300); text-align: center; padding: 40px; }
         .empty-placeholder i { font-size: 48px; margin-bottom: 15px; }
+
+        /* [자동출제 패널] */
+        .autogen-panel { border-bottom: 1px solid var(--gray-100); background: #fcfdff; flex-shrink: 0; }
+        .autogen-head { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 13px; font-weight: 900; color: var(--text-main); user-select: none; }
+        .autogen-head .ag-title { display: flex; align-items: center; gap: 8px; }
+        .autogen-head .ag-title i { color: var(--blue); }
+        .autogen-body { padding: 0 20px 16px; max-height: 340px; overflow-y: auto; }
+        .autogen-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+        .autogen-row { display: grid; grid-template-columns: 1fr 84px 88px 32px; gap: 6px; align-items: center; }
+        .autogen-row.has-adv { grid-template-columns: 1fr 84px 80px 96px 1fr 32px; }
+        .autogen-row .form-select, .autogen-row input { height: 34px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 12px; font-weight: 700; outline: none; background: white; padding: 0 8px; min-width: 0; width: 100%; }
+        .autogen-row .ag-count { text-align: center; }
+        .btn-ag-remove { height: 34px; width: 32px; border: 1px solid #fca5a5; color: #ef4444; background: white; border-radius: 8px; cursor: pointer; font-size: 13px; }
+        .autogen-toolbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
+        .btn-ag { height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--gray-200); background: white; font-size: 11.5px; font-weight: 800; cursor: pointer; }
+        .btn-ag.primary { background: var(--blue); color: white; border-color: var(--blue); }
+        .btn-ag.dark { background: var(--navy); color: white; border-color: var(--navy); }
+        .btn-ag.reset { border-color: #fca5a5; color: #ef4444; }
+        .ag-adv-toggle { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; color: var(--gray-500); cursor: pointer; margin-left: auto; }
+        .autogen-run { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .autogen-run .btn-ag { flex: 1 1 auto; height: 38px; }
+        .ag-report { font-size: 11.5px; line-height: 1.6; }
+        .ag-report-empty { color: var(--gray-300); }
+        .ag-report-card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 10px 12px; background: white; }
+        .ag-report-head { font-weight: 900; margin-bottom: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .ag-report-head .ok { color: var(--green); }
+        .ag-report-head .miss { color: #ef4444; }
+        .ag-report-row { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; border-top: 1px dashed var(--gray-100); }
+        .ag-report-row .lack { color: #ef4444; font-weight: 900; }
+        .ag-report-row .full { color: var(--green); font-weight: 800; }
+
+        /* [고정 문항 + 출력 전 검토] */
+        .cart-item .ag-pin { cursor: pointer; color: var(--gray-300); margin-right: 8px; font-size: 12px; }
+        .cart-item.pinned { border-color: #f59e0b; background: #fffbeb; }
+        .cart-item.pinned .ag-pin { color: #f59e0b; }
+        .cart-item-actions { display: flex; align-items: center; flex-shrink: 0; }
+        .print-review { padding: 12px; border: 1px solid var(--gray-200); border-radius: 10px; background: var(--gray-50); margin-bottom: 12px; }
+        .print-review-title { font-size: 11.5px; font-weight: 900; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .print-review-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .print-review-cell { background: white; border: 1px solid var(--gray-200); border-radius: 8px; padding: 6px 8px; }
+        .print-review-cell .pr-label { display: block; font-size: 10px; font-weight: 800; color: var(--gray-500); }
+        .print-review-cell .pr-value { display: block; margin-top: 2px; font-size: 13px; font-weight: 900; color: var(--blue); }
 
         /* [모달 공용] */
         .modal-overlay {
@@ -146,6 +203,12 @@
             .mobile-output-btn { border: none; background: var(--blue); color: white; }
             
             .cart-footer { padding-bottom: 92px; }
+            .cart-analysis-grid { grid-template-columns: repeat(2, 1fr); }
+            .status-summary-bar { flex-wrap: wrap; align-items: flex-start; }
+            .question-filter-bar { align-items: stretch; gap: 8px; }
+            .question-filter-bar .form-select,
+            .question-filter-bar .search-box,
+            .question-filter-bar .btn-action { flex: 1 1 150px; width: auto !important; }
         }
     </style>
 </head>
@@ -206,20 +269,58 @@
     <div class="panel panel-questions">
         <div class="status-summary-bar" id="status-bar">
             <div class="stat-item"><span class="stat-label">Source:</span><span class="stat-value" id="cur-source-name">준비됨</span></div>
-            <div class="stat-item"><span class="stat-label">표시 단원:</span><span class="stat-value" id="cur-unit-name">전체</span></div>
-            <div class="stat-item"><span class="stat-label">표시 문항:</span><span class="stat-value" id="cur-q-count">0</span></div>
+            <div class="stat-item"><span class="stat-label">현재 단원:</span><span class="stat-value" id="cur-unit-name">전체</span></div>
+            <div class="stat-item"><span class="stat-label">검색 결과:</span><span class="stat-value" id="cur-q-count">0문항</span></div>
+            <div class="stat-item"><span class="stat-label">카트:</span><span class="stat-value" id="cur-cart-count">0문항</span></div>
         </div>
 
         <div class="question-filter-bar">
+            <div class="q-mode-toggle">
+                <button id="q-mode-paper" class="q-mode-btn active" type="button" onclick="setQuestionSearchMode('paper')">시험지 문항</button>
+                <button id="q-mode-archive" class="q-mode-btn" type="button" onclick="setQuestionSearchMode('archive')">전체 아카이브</button>
+            </div>
+            <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="q-search" placeholder="문항 검색"></div>
             <select id="q-unit-filter" class="form-select" style="width:220px;"><option value="">전체 표준단원</option></select>
             <select id="q-level-filter" class="form-select" style="width:110px;">
                 <option value="">전체 난이도</option>
                 <option value="상">상</option><option value="중">중</option><option value="하">하</option>
             </select>
+            <select id="q-cart-filter" class="form-select" style="width:120px;">
+                <option value="">전체</option>
+                <option value="in">담긴 문항</option>
+                <option value="out">안 담긴 문항</option>
+            </select>
+            <select id="q-image-filter" class="form-select" style="width:120px;">
+                <option value="">전체</option>
+                <option value="with">이미지 있음</option>
+                <option value="without">이미지 없음</option>
+            </select>
             <select id="q-view-mode" class="form-select" style="width:110px;">
                 <option value="list">문항순 보기</option><option value="group">단원별 보기</option>
             </select>
-            <button class="btn-action primary btn-filter-all" onclick="addCurrentFilterAll()">필터 담기</button>
+            <button class="btn-action primary btn-filter-all" onclick="addCurrentFilterAll()">현재 필터 전체 담기</button>
+            <button class="btn-action reset btn-filter-all" onclick="removeCurrentFilterAll()">현재 필터 전체 제거</button>
+        </div>
+
+        <div class="autogen-panel" id="autogen-panel">
+            <div class="autogen-head" onclick="toggleAutoGenPanel()">
+                <span class="ag-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 자동출제</span>
+                <i id="autogen-caret" class="fa-solid fa-caret-right"></i>
+            </div>
+            <div class="autogen-body" id="autogen-body" style="display:none;">
+                <div class="autogen-rows" id="autogen-rows"></div>
+                <div class="autogen-toolbar">
+                    <button class="btn-ag" type="button" onclick="addBlueprintRow()"><i class="fa-solid fa-plus"></i> 행 추가</button>
+                    <button class="btn-ag" type="button" onclick="addBlueprintRowFromFilter()" title="현재 표준단원/난이도 필터값으로 행 추가">현재 필터로 행 추가</button>
+                    <label class="ag-adv-toggle"><input type="checkbox" id="autogen-adv-toggle" onchange="toggleAutoGenAdvanced()"> 고급 옵션</label>
+                </div>
+                <div class="autogen-run">
+                    <button class="btn-ag primary" type="button" onclick="runAutoGenerate('add')"><i class="fa-solid fa-cart-plus"></i> 카트에 추가</button>
+                    <button class="btn-ag dark" type="button" onclick="runAutoGenerate('rebuild')"><i class="fa-solid fa-rotate"></i> 고정 제외하고 재구성</button>
+                    <button class="btn-ag reset" type="button" onclick="resetAutoGen()">조건 초기화</button>
+                </div>
+                <div class="ag-report" id="autogen-report"><span class="ag-report-empty">자동출제를 실행하면 부족/충족 리포트가 여기에 표시됩니다.</span></div>
+            </div>
         </div>
 
         <div class="panel-body" id="question-list">
@@ -235,6 +336,7 @@
             <span style="font-weight:900;">출제 카트</span>
             <span id="cart-count" style="font-weight:900; color:var(--blue); background: var(--blue-soft); padding: 2px 10px; border-radius: 99px;">0</span>
         </div>
+        <div class="cart-analysis" id="cart-analysis"></div>
         <div class="panel-body" id="cart-items"></div>
         <div class="cart-footer">
             <button class="btn-action reset" type="button" onclick="clearCartOnly()" style="margin-bottom:10px; width:100%;">카트 비우기</button>
@@ -248,6 +350,7 @@
                 <option value="2">2문항/P</option><option value="4" selected>4문항/P</option>
                 <option value="6">6문항/P</option><option value="8">8문항/P</option>
             </select>
+            <div class="print-review" id="print-review"></div>
             <button class="btn-main" onclick="openMixedOutputModeModal()">시험지 생성</button>
         </div>
     </div>
@@ -336,7 +439,9 @@ function scrollToCartPanel() {
 const COURSE_BASE_ORDER = {
     "중1 수학": 100, "중2 수학": 200, "중3 수학": 300,
     "공통수학1": 400, "공통수학2": 500, "대수": 600,
-    "미적분Ⅰ": 700, "미적분Ⅱ": 800, "확률과 통계": 900, "기하": 1000
+    "미적분I": 700, "미적분II": 800, "확률과 통계": 900, "기하": 1000,
+    "수학(상)": 1100, "수학(하)": 1200, "수학I": 1300, "수학II": 1400,
+    "미적분": 1500, "기하와 벡터": 1600
 };
 
 const MASTER_TABLE = {
@@ -389,22 +494,22 @@ const MASTER_TABLE = {
     "H22-A-06": { course: "대수", unit: "등차수열과 등비수열", order: 6 },
     "H22-A-07": { course: "대수", unit: "수열의 합", order: 7 },
     "H22-A-08": { course: "대수", unit: "수학적 귀납법", order: 8 },
-    "H22-M1-01": { course: "미적분Ⅰ", unit: "함수의 극한", order: 1 },
-    "H22-M1-02": { course: "미적분Ⅰ", unit: "함수의 연속", order: 2 },
-    "H22-M1-03": { course: "미적분Ⅰ", unit: "미분계수", order: 3 },
-    "H22-M1-04": { course: "미적분Ⅰ", unit: "도함수", order: 4 },
-    "H22-M1-05": { course: "미적분Ⅰ", unit: "도함수의 활용", order: 5 },
-    "H22-M1-06": { course: "미적분Ⅰ", unit: "부정적분", order: 6 },
-    "H22-M1-07": { course: "미적분Ⅰ", unit: "정적분", order: 7 },
-    "H22-M1-08": { course: "미적분Ⅰ", unit: "정적분의 활용", order: 8 },
-    "H22-M2-01": { course: "미적분Ⅱ", unit: "수열의 극한", order: 1 },
-    "H22-M2-02": { course: "미적분Ⅱ", unit: "급수", order: 2 },
-    "H22-M2-03": { course: "미적분Ⅱ", unit: "지수함수와 로그함수의 미분", order: 3 },
-    "H22-M2-04": { course: "미적분Ⅱ", unit: "삼각함수의 미분", order: 4 },
-    "H22-M2-05": { course: "미적분Ⅱ", unit: "여러 가지 미분법", order: 5 },
-    "H22-M2-06": { course: "미적분Ⅱ", unit: "도함수의 활용", order: 6 },
-    "H22-M2-07": { course: "미적분Ⅱ", unit: "여러 가지 적분법", order: 7 },
-    "H22-M2-08": { course: "미적분Ⅱ", unit: "정적분의 활용", order: 8 },
+    "H22-M1-01": { course: "미적분I", unit: "함수의 극한", order: 1 },
+    "H22-M1-02": { course: "미적분I", unit: "함수의 연속", order: 2 },
+    "H22-M1-03": { course: "미적분I", unit: "미분계수", order: 3 },
+    "H22-M1-04": { course: "미적분I", unit: "도함수", order: 4 },
+    "H22-M1-05": { course: "미적분I", unit: "도함수의 활용", order: 5 },
+    "H22-M1-06": { course: "미적분I", unit: "부정적분", order: 6 },
+    "H22-M1-07": { course: "미적분I", unit: "정적분", order: 7 },
+    "H22-M1-08": { course: "미적분I", unit: "정적분의 활용", order: 8 },
+    "H22-M2-01": { course: "미적분II", unit: "수열의 극한", order: 1 },
+    "H22-M2-02": { course: "미적분II", unit: "급수", order: 2 },
+    "H22-M2-03": { course: "미적분II", unit: "지수함수와 로그함수의 미분", order: 3 },
+    "H22-M2-04": { course: "미적분II", unit: "삼각함수의 미분", order: 4 },
+    "H22-M2-05": { course: "미적분II", unit: "여러 가지 미분법", order: 5 },
+    "H22-M2-06": { course: "미적분II", unit: "도함수의 활용", order: 6 },
+    "H22-M2-07": { course: "미적분II", unit: "여러 가지 적분법", order: 7 },
+    "H22-M2-08": { course: "미적분II", unit: "정적분의 활용", order: 8 },
     "H22-PS-01": { course: "확률과 통계", unit: "순열과 조합", order: 1 },
     "H22-PS-02": { course: "확률과 통계", unit: "이항정리", order: 2 },
     "H22-PS-03": { course: "확률과 통계", unit: "확률의 뜻과 활용", order: 3 },
@@ -418,7 +523,70 @@ const MASTER_TABLE = {
     "H22-GE-05": { course: "기하", unit: "벡터의 연산", order: 5 },
     "H22-GE-06": { course: "기하", unit: "벡터의 성분", order: 6 },
     "H22-GE-07": { course: "기하", unit: "벡터의 내적", order: 7 },
-    "H22-GE-08": { course: "기하", unit: "도형의 방정식", order: 8 }
+    "H22-GE-08": { course: "기하", unit: "도형의 방정식", order: 8 },
+    "H15-SA-01": { course: "수학(상)", unit: "다항식의 연산", order: 1 },
+    "H15-SA-02": { course: "수학(상)", unit: "항등식과 나머지정리", order: 2 },
+    "H15-SA-03": { course: "수학(상)", unit: "인수분해", order: 3 },
+    "H15-SA-04": { course: "수학(상)", unit: "복소수", order: 4 },
+    "H15-SA-05": { course: "수학(상)", unit: "이차방정식", order: 5 },
+    "H15-SA-06": { course: "수학(상)", unit: "이차방정식의 근과 계수", order: 6 },
+    "H15-SA-07": { course: "수학(상)", unit: "여러 가지 방정식", order: 7 },
+    "H15-SA-08": { course: "수학(상)", unit: "여러 가지 부등식", order: 8 },
+    "H15-SA-09": { course: "수학(상)", unit: "평면좌표", order: 9 },
+    "H15-SA-10": { course: "수학(상)", unit: "직선의 방정식", order: 10 },
+    "H15-SA-11": { course: "수학(상)", unit: "원의 방정식", order: 11 },
+    "H15-SA-12": { course: "수학(상)", unit: "도형의 이동", order: 12 },
+    "H15-SB-01": { course: "수학(하)", unit: "집합", order: 1 },
+    "H15-SB-02": { course: "수학(하)", unit: "명제", order: 2 },
+    "H15-SB-03": { course: "수학(하)", unit: "함수", order: 3 },
+    "H15-SB-04": { course: "수학(하)", unit: "유리함수", order: 4 },
+    "H15-SB-05": { course: "수학(하)", unit: "무리함수", order: 5 },
+    "H15-SB-06": { course: "수학(하)", unit: "경우의 수", order: 6 },
+    "H15-SB-07": { course: "수학(하)", unit: "순열", order: 7 },
+    "H15-SB-08": { course: "수학(하)", unit: "조합", order: 8 },
+    "H15-M1-01": { course: "수학I", unit: "지수의 뜻과 성질", order: 1 },
+    "H15-M1-02": { course: "수학I", unit: "로그의 뜻과 성질", order: 2 },
+    "H15-M1-03": { course: "수학I", unit: "지수함수", order: 3 },
+    "H15-M1-04": { course: "수학I", unit: "로그함수", order: 4 },
+    "H15-M1-05": { course: "수학I", unit: "삼각함수의 뜻과 값", order: 5 },
+    "H15-M1-06": { course: "수학I", unit: "삼각함수의 그래프", order: 6 },
+    "H15-M1-07": { course: "수학I", unit: "삼각방정식과 삼각부등식", order: 7 },
+    "H15-M1-08": { course: "수학I", unit: "등차수열", order: 8 },
+    "H15-M1-09": { course: "수학I", unit: "등비수열", order: 9 },
+    "H15-M1-10": { course: "수학I", unit: "수열의 합", order: 10 },
+    "H15-M1-11": { course: "수학I", unit: "수학적 귀납법", order: 11 },
+    "H15-M2-01": { course: "수학II", unit: "함수의 극한", order: 1 },
+    "H15-M2-02": { course: "수학II", unit: "함수의 연속", order: 2 },
+    "H15-M2-03": { course: "수학II", unit: "미분계수", order: 3 },
+    "H15-M2-04": { course: "수학II", unit: "도함수", order: 4 },
+    "H15-M2-05": { course: "수학II", unit: "접선의 방정식", order: 5 },
+    "H15-M2-06": { course: "수학II", unit: "도함수의 활용", order: 6 },
+    "H15-M2-07": { course: "수학II", unit: "부정적분", order: 7 },
+    "H15-M2-08": { course: "수학II", unit: "정적분", order: 8 },
+    "H15-M2-09": { course: "수학II", unit: "적분의 활용", order: 9 },
+    "H15-CALC-01": { course: "미적분", unit: "수열의 극한", order: 1 },
+    "H15-CALC-02": { course: "미적분", unit: "급수", order: 2 },
+    "H15-CALC-03": { course: "미적분", unit: "지수함수와 로그함수의 미분", order: 3 },
+    "H15-CALC-04": { course: "미적분", unit: "삼각함수의 미분", order: 4 },
+    "H15-CALC-05": { course: "미적분", unit: "여러 가지 미분법", order: 5 },
+    "H15-CALC-06": { course: "미적분", unit: "도함수의 활용", order: 6 },
+    "H15-CALC-07": { course: "미적분", unit: "여러 가지 적분법", order: 7 },
+    "H15-CALC-08": { course: "미적분", unit: "정적분의 활용", order: 8 },
+    "H15-PS-01": { course: "확률과 통계", unit: "순열과 조합", order: 1 },
+    "H15-PS-02": { course: "확률과 통계", unit: "이항정리", order: 2 },
+    "H15-PS-03": { course: "확률과 통계", unit: "확률의 뜻과 활용", order: 3 },
+    "H15-PS-04": { course: "확률과 통계", unit: "조건부확률", order: 4 },
+    "H15-PS-05": { course: "확률과 통계", unit: "확률분포", order: 5 },
+    "H15-PS-06": { course: "확률과 통계", unit: "통계적 추정", order: 6 },
+    "H15-GV-01": { course: "기하와 벡터", unit: "포물선", order: 1 },
+    "H15-GV-02": { course: "기하와 벡터", unit: "타원", order: 2 },
+    "H15-GV-03": { course: "기하와 벡터", unit: "쌍곡선", order: 3 },
+    "H15-GV-04": { course: "기하와 벡터", unit: "이차곡선과 직선", order: 4 },
+    "H15-GV-05": { course: "기하와 벡터", unit: "벡터의 연산", order: 5 },
+    "H15-GV-06": { course: "기하와 벡터", unit: "평면벡터의 성분과 내적", order: 6 },
+    "H15-GV-07": { course: "기하와 벡터", unit: "직선과 원의 방정식", order: 7 },
+    "H15-GV-08": { course: "기하와 벡터", unit: "공간도형", order: 8 },
+    "H15-GV-09": { course: "기하와 벡터", unit: "공간좌표", order: 9 }
 };
 
 function getStandardizedUnit(q) {
@@ -430,9 +598,34 @@ function getStandardizedUnit(q) {
     return { course: "기타", unit: "미분류", order: 999 };
 }
 
+/**
+ * 이미지/시각요소 판정 공통 헬퍼
+ * 구형 문항은 별도 image 필드 없이 content 내부에 <img>/<svg>/<table>로 시각요소를 담는 경우가 있다.
+ */
+function hasVisualAsset(q) {
+    const content = String(q?.content || '');
+    return Boolean(
+        q?.image ||
+        /<img\b/i.test(content) ||
+        /<svg\b/i.test(content) ||
+        /<table\b/i.test(content)
+    );
+}
+
 let engineDB = { exams: [] }, cart = [], currentDisplayQuestions = [], selectedFiles = new Set(), currentViewingSource = null;
 let includeOriginalArchiveItems = false;
 let mixerDbLoadFailed = false;
+let questionSearchMode = 'paper';
+let questionIndexLoaded = false;
+let questionIndexLoadingPromise = null;
+const questionFileCache = new Map();
+
+/* [자동출제] 고정 문항 + 블루프린트 상태 (cart 구조는 변경하지 않음) */
+const pinnedKeys = new Set();
+const AUTOGEN_MAX_CART = 50;
+let autoGenRows = [];
+let autoGenUnitList = [];
+let autoGenAdvanced = false;
 
 function formatArchiveDisplayName(file) {
     const raw = String(file || '').trim();
@@ -447,20 +640,23 @@ function formatArchiveDisplayName(file) {
 
 function resetMixerState() {
     selectedFiles.clear(); currentViewingSource = null; currentDisplayQuestions = []; cart = [];
+    pinnedKeys.clear();
+    questionSearchMode = 'paper';
     document.getElementById('paperSearch').value = ''; document.getElementById('gradeFilter').value = ''; document.getElementById('axisFilter').value = '';
     document.getElementById('q-unit-filter').innerHTML = '<option value="">전체 표준단원</option>';
-    document.getElementById('q-level-filter').value = ''; document.getElementById('q-view-mode').value = 'list'; document.getElementById('cart-level-order').value = 'original';
+    document.getElementById('q-search').value = ''; document.getElementById('q-level-filter').value = ''; document.getElementById('q-cart-filter').value = ''; document.getElementById('q-image-filter').value = ''; document.getElementById('q-view-mode').value = 'list'; document.getElementById('cart-level-order').value = 'original';
     document.getElementById('mixed-title-input').value = '';
     
     const panel = document.getElementById('filter-panel-content');
     if (panel.style.display === 'none') toggleFilterPanel();
 
-    updateOriginalArchiveToggleUI(); renderExamList(); updateBulkStatus(); updateCartUI();
-    document.getElementById('cur-source-name').innerText = '준비됨'; document.getElementById('cur-q-count').innerText = '0'; document.getElementById('cur-unit-name').innerText = '전체';
+    autoGenRows = []; resetAutoGen();
+    updateQuestionModeButtons(); updateOriginalArchiveToggleUI(); renderExamList(); updateBulkStatus(); updateCartUI(); updateQuestionStatus(0);
+    document.getElementById('cur-source-name').innerText = '준비됨'; document.getElementById('cur-q-count').innerText = '0문항'; document.getElementById('cur-unit-name').innerText = '전체';
     document.getElementById('question-list').innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-file-circle-plus"></i><p>왼쪽에서 시험지를 클릭하거나 여러 개 선택 후 불러오기를 누르세요.</p></div>';
 }
 
-function clearCartOnly() { cart = []; updateCartUI(); renderQuestionList(); }
+function clearCartOnly() { cart = []; pinnedKeys.clear(); updateCartUI(); renderQuestionList(); }
 
 function normalizeExamMeta(ex) {
     const n = { ...(ex || {}) };
@@ -589,15 +785,475 @@ function updateUnitFilter(questions) {
     document.getElementById('cur-unit-name').innerText = select.value || '전체';
 }
 
-function addCurrentFilterAll() {
-    const unitFilter = document.getElementById('q-unit-filter').value, levelFilter = document.getElementById('q-level-filter').value;
-    const targets = currentDisplayQuestions.filter(q => (!unitFilter || getStandardizedUnit(q).unit === unitFilter) && (!levelFilter || String(q.level || '').trim() === levelFilter));
+function getQuestionIndexRecords() {
+    return Array.isArray(window.questionIndex) ? window.questionIndex : [];
+}
+
+function updateQuestionModeButtons() {
+    const paperBtn = document.getElementById('q-mode-paper');
+    const archiveBtn = document.getElementById('q-mode-archive');
+    if (paperBtn) paperBtn.classList.toggle('active', questionSearchMode === 'paper');
+    if (archiveBtn) archiveBtn.classList.toggle('active', questionSearchMode === 'archive');
+}
+
+function setQuestionIndexStatus(message) {
+    const container = document.getElementById('question-list');
+    if (container) container.innerHTML = `<div class="empty-placeholder"><p>${message}</p></div>`;
+    const source = document.getElementById('cur-source-name');
+    if (source) source.innerText = '전체 아카이브';
+}
+
+function ensureQuestionIndexLoaded(opts = {}) {
+    const silent = opts.silent === true;
+    if (questionIndexLoaded && getQuestionIndexRecords().length) return Promise.resolve(true);
+    if (questionIndexLoadingPromise) return questionIndexLoadingPromise;
+    if (!silent) setQuestionIndexStatus('전문항 인덱스 불러오는 중...');
+    questionIndexLoadingPromise = new Promise(resolve => {
+        const s = document.createElement('script');
+        s.src = `question-index.js?v=${Date.now()}`;
+        s.onload = () => {
+            questionIndexLoaded = getQuestionIndexRecords().length > 0;
+            questionIndexLoadingPromise = null;
+            s.remove();
+            if (questionIndexLoaded) {
+                buildAutoGenUnitList();
+                if (!silent) {
+                    updateQuestionIndexUnitFilter();
+                    updateQuestionStatus(getFilteredQuestionIndexRecords().length);
+                    setQuestionIndexStatus(`전문항 ${getQuestionIndexRecords().length}문항 검색 준비`);
+                }
+                resolve(true);
+            } else {
+                if (!silent) setQuestionIndexStatus('전문항 인덱스를 불러오지 못했습니다.<br>question-index.js 생성 여부를 확인하세요.');
+                resolve(false);
+            }
+        };
+        s.onerror = () => {
+            questionIndexLoadingPromise = null;
+            s.remove();
+            if (!silent) setQuestionIndexStatus('전문항 인덱스를 불러오지 못했습니다.<br>question-index.js 생성 여부를 확인하세요.');
+            resolve(false);
+        };
+        document.body.appendChild(s);
+    });
+    return questionIndexLoadingPromise;
+}
+
+async function setQuestionSearchMode(mode) {
+    questionSearchMode = mode === 'archive' ? 'archive' : 'paper';
+    updateQuestionModeButtons();
+    if (questionSearchMode === 'archive') {
+        const ok = await ensureQuestionIndexLoaded();
+        if (!ok) return;
+        updateQuestionIndexUnitFilter();
+        renderQuestionList();
+    } else {
+        updateUnitFilter(currentDisplayQuestions);
+        renderQuestionList();
+    }
+}
+
+function updateQuestionIndexUnitFilter() {
+    const select = document.getElementById('q-unit-filter');
+    if (!select) return;
+    const current = select.value;
+    const units = Array.from(new Set(getQuestionIndexRecords().map(q => String(q.standardUnit || '').trim()).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'ko'));
+    select.innerHTML = '<option value="">전체 표준단원</option>';
+    units.forEach(name => {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        select.appendChild(opt);
+    });
+    if (units.includes(current)) select.value = current;
+}
+
+function getQuestionIndexSearchText(q) {
+    return [q.contentText, q.choicesText, q.sourceFile, q.standardUnit, q.course, q.level, ...(Array.isArray(q.tags) ? q.tags : [])]
+        .map(v => String(v || ''))
+        .join(' ')
+        .toLowerCase();
+}
+
+function getFilteredQuestionIndexRecords() {
+    const unitFilter = document.getElementById('q-unit-filter').value;
+    const levelFilter = document.getElementById('q-level-filter').value;
+    const cartFilter = document.getElementById('q-cart-filter').value;
+    const imageFilter = document.getElementById('q-image-filter').value;
+    const searchText = document.getElementById('q-search').value.trim().toLowerCase();
+    const cartKeys = new Set(cart.map(c => c._qKey));
+
+    return getQuestionIndexRecords().filter(q => {
+        const inCart = cartKeys.has(q.qKey);
+        if (unitFilter && String(q.standardUnit || '').trim() !== unitFilter) return false;
+        if (levelFilter && normalizeCartLevel(q.level) !== levelFilter) return false;
+        if (cartFilter === 'in' && !inCart) return false;
+        if (cartFilter === 'out' && inCart) return false;
+        if (imageFilter === 'with' && !q.hasImage) return false;
+        if (imageFilter === 'without' && q.hasImage) return false;
+        if (searchText && !getQuestionIndexSearchText(q).includes(searchText)) return false;
+        return true;
+    });
+}
+
+function getQuestionSearchText(q) {
+    return [q.content, ...(Array.isArray(q.choices) ? q.choices : [])].map(v => String(v || '')).join(' ').toLowerCase();
+}
+
+function getFilteredQuestions() {
+    if (questionSearchMode === 'archive') return getFilteredQuestionIndexRecords();
+    const unitFilter = document.getElementById('q-unit-filter').value;
+    const levelFilter = document.getElementById('q-level-filter').value;
+    const cartFilter = document.getElementById('q-cart-filter').value;
+    const imageFilter = document.getElementById('q-image-filter').value;
+    const searchText = document.getElementById('q-search').value.trim().toLowerCase();
+    const cartKeys = new Set(cart.map(c => c._qKey));
+
+    return currentDisplayQuestions.filter(q => {
+        const inCart = cartKeys.has(q._qKey);
+        if (unitFilter && getStandardizedUnit(q).unit !== unitFilter) return false;
+        if (levelFilter && String(q.level || '').trim() !== levelFilter) return false;
+        if (cartFilter === 'in' && !inCart) return false;
+        if (cartFilter === 'out' && inCart) return false;
+        if (imageFilter === 'with' && !hasVisualAsset(q)) return false;
+        if (imageFilter === 'without' && hasVisualAsset(q)) return false;
+        if (searchText && !getQuestionSearchText(q).includes(searchText)) return false;
+        return true;
+    });
+}
+
+function updateQuestionStatus(displayCount) {
+    const unitEl = document.getElementById('cur-unit-name');
+    const countEl = document.getElementById('cur-q-count');
+    const cartEl = document.getElementById('cur-cart-count');
+    if (unitEl) unitEl.innerText = document.getElementById('q-unit-filter').value || '전체';
+    if (countEl) countEl.innerText = `${displayCount}문항`;
+    if (cartEl) cartEl.innerText = `${cart.length}문항`;
+}
+
+function getSourceMetaForIndexRecord(record) {
+    return engineDB.exams.find(ex => String(ex.file || '') === String(record.sourceFile || '')) || {};
+}
+
+function getSourceTitleForIndexRecord(record) {
+    const meta = getSourceMetaForIndexRecord(record);
+    return meta.school || meta.topic || record.sourceFile;
+}
+
+function getCachedQuestionFile(sourceFile) {
+    if (questionFileCache.has(sourceFile)) return questionFileCache.get(sourceFile);
+    const promise = fetchQuestionData(sourceFile).then(questions => {
+        questionFileCache.set(sourceFile, questions);
+        return questions;
+    }).catch(error => {
+        questionFileCache.delete(sourceFile);
+        throw error;
+    });
+    questionFileCache.set(sourceFile, promise);
+    return promise;
+}
+
+async function restoreIndexRecordToCart(record) {
+    if (!record || cart.some(c => c._qKey === record.qKey)) return true;
+    try {
+        const questions = await getCachedQuestionFile(record.sourceFile);
+        const original = questions.find(q => String(q?.id) === String(record.id));
+        if (!original) return false;
+        cart.push({
+            ...original,
+            _sourceTitle: getSourceTitleForIndexRecord(record),
+            _sourceFile: record.sourceFile,
+            _qKey: record.qKey
+        });
+        return true;
+    } catch (e) {
+        console.warn('question restore failed:', record.sourceFile, record.id, e);
+        return false;
+    }
+}
+
+/* ===================== 자동출제 엔진 ===================== */
+
+function buildAutoGenUnitList() {
+    // 인덱스 원시 standardUnit은 과도하게 세분화되어 있으므로
+    // standardUnitKey → MASTER_TABLE로 매핑한 교육과정 표준단원을 사용(카트 분석/검토카드와 일치)
+    const map = new Map();
+    getQuestionIndexRecords().forEach(q => {
+        const std = getStandardizedUnit(q);
+        if (std.unit && std.unit !== '미분류') {
+            map.set(std.unit, (COURSE_BASE_ORDER[std.course] || 90000) + std.order);
+        }
+    });
+    autoGenUnitList = Array.from(map.entries()).sort((a, b) => a[1] - b[1]).map(([u]) => u);
+}
+
+function setAutoGenOpen(open) {
+    const body = document.getElementById('autogen-body');
+    const caret = document.getElementById('autogen-caret');
+    if (!body) return;
+    body.style.display = open ? 'block' : 'none';
+    if (caret) caret.className = open ? 'fa-solid fa-caret-down' : 'fa-solid fa-caret-right';
+}
+
+async function toggleAutoGenPanel() {
+    const body = document.getElementById('autogen-body');
+    const willOpen = body.style.display === 'none';
+    setAutoGenOpen(willOpen);
+    if (!willOpen) return;
+    if (!autoGenRows.length) addBlueprintRow(); else renderBlueprintRows();
+    if (!questionIndexLoaded) {
+        const ok = await ensureQuestionIndexLoaded({ silent: true });
+        if (ok) { buildAutoGenUnitList(); renderBlueprintRows(); }
+    }
+}
+
+function toggleAutoGenAdvanced() {
+    const toggle = document.getElementById('autogen-adv-toggle');
+    autoGenAdvanced = !!(toggle && toggle.checked);
+    renderBlueprintRows();
+}
+
+function addBlueprintRow(prefill) {
+    const row = { unit: '', level: '', count: 4, image: '', tags: '' };
+    if (prefill && typeof prefill === 'object') {
+        if (prefill.unit) row.unit = prefill.unit;
+        if (prefill.level) row.level = prefill.level;
+    }
+    autoGenRows.push(row);
+    renderBlueprintRows();
+}
+
+async function addBlueprintRowFromFilter() {
+    const ok = await ensureQuestionIndexLoaded({ silent: true });
+    if (ok) buildAutoGenUnitList();
+    const rawUnit = document.getElementById('q-unit-filter')?.value || '';
+    const level = document.getElementById('q-level-filter')?.value || '';
+    let unit = '';
+    if (rawUnit) {
+        if (questionSearchMode === 'archive') {
+            // 아카이브 필터값은 원시 standardUnit → 교육과정 표준단원으로 매핑
+            const rec = getQuestionIndexRecords().find(q => String(q.standardUnit || '').trim() === rawUnit);
+            const mapped = rec ? getStandardizedUnit(rec).unit : '';
+            unit = (mapped && mapped !== '미분류') ? mapped : '';
+        } else {
+            // 시험지 모드 필터값은 이미 교육과정 표준단원
+            unit = autoGenUnitList.includes(rawUnit) ? rawUnit : '';
+        }
+    }
+    setAutoGenOpen(true);
+    addBlueprintRow({ unit, level });
+}
+
+function removeBlueprintRow(idx) {
+    autoGenRows.splice(idx, 1);
+    renderBlueprintRows();
+}
+
+function resetAutoGen() {
+    autoGenRows = [];
+    addBlueprintRow();
+    const el = document.getElementById('autogen-report');
+    if (el) el.innerHTML = '<span class="ag-report-empty">자동출제를 실행하면 부족/충족 리포트가 여기에 표시됩니다.</span>';
+}
+
+function updateBlueprintField(idx, field, value) {
+    if (!autoGenRows[idx]) return;
+    if (field === 'count') {
+        const n = parseInt(value, 10);
+        autoGenRows[idx].count = isNaN(n) ? 1 : Math.max(1, Math.min(AUTOGEN_MAX_CART, n));
+    } else {
+        autoGenRows[idx][field] = value;
+    }
+}
+
+function buildBlueprintRowHtml(row, idx) {
+    const units = autoGenUnitList.slice();
+    if (row.unit && !units.includes(row.unit)) units.unshift(row.unit);
+    const unitOptions = ['<option value="">전체 단원</option>']
+        .concat(units.map(u => `<option value="${escapeMixerHtml(u)}"${u === row.unit ? ' selected' : ''}>${escapeMixerHtml(u)}</option>`))
+        .join('');
+    const levelOptions = [['', '전체'], ['상', '상'], ['중', '중'], ['하', '하']]
+        .map(([v, t]) => `<option value="${v}"${v === row.level ? ' selected' : ''}>${t}</option>`).join('');
+    const adv = autoGenAdvanced ? `
+            <select class="form-select" onchange="updateBlueprintField(${idx},'image',this.value)">
+                ${[['', '이미지 전체'], ['with', '이미지 있음'], ['without', '이미지 없음']].map(([v, t]) => `<option value="${v}"${v === row.image ? ' selected' : ''}>${t}</option>`).join('')}
+            </select>
+            <input type="text" placeholder="태그(쉼표 구분)" value="${escapeMixerHtml(row.tags || '')}" oninput="updateBlueprintField(${idx},'tags',this.value)">` : '';
+    return `<div class="autogen-row${autoGenAdvanced ? ' has-adv' : ''}">
+            <select class="form-select" onchange="updateBlueprintField(${idx},'unit',this.value)">${unitOptions}</select>
+            <select class="form-select" onchange="updateBlueprintField(${idx},'level',this.value)">${levelOptions}</select>
+            <input class="ag-count" type="number" min="1" max="${AUTOGEN_MAX_CART}" value="${row.count}" oninput="updateBlueprintField(${idx},'count',this.value)">
+            ${adv}
+            <button class="btn-ag-remove" type="button" onclick="removeBlueprintRow(${idx})" title="행 삭제"><i class="fa-solid fa-trash"></i></button>
+        </div>`;
+}
+
+function renderBlueprintRows() {
+    const wrap = document.getElementById('autogen-rows');
+    if (!wrap) return;
+    if (!autoGenRows.length) {
+        wrap.innerHTML = '<div class="ag-report-empty" style="font-size:11.5px;">행을 추가해 자동출제 조건을 만드세요.</div>';
+        return;
+    }
+    wrap.innerHTML = autoGenRows.map((row, idx) => buildBlueprintRowHtml(row, idx)).join('');
+}
+
+function blueprintTagsOk(tags, rowTags) {
+    if (!rowTags || !String(rowTags).trim()) return true;
+    const needed = String(rowTags).split(/[,\s]+/).map(t => t.trim().toLowerCase()).filter(Boolean);
+    const have = (Array.isArray(tags) ? tags : []).map(t => String(t).toLowerCase());
+    return needed.every(t => have.includes(t));
+}
+
+// 인덱스 레코드(축약 데이터) 기준 1차 매칭
+function matchesBlueprintRow(q, row) {
+    if (row.unit && getStandardizedUnit(q).unit !== row.unit) return false;
+    if (row.level && normalizeCartLevel(q.level) !== row.level) return false;
+    if (row.image === 'with' && !q.hasImage) return false;
+    if (row.image === 'without' && q.hasImage) return false;
+    return blueprintTagsOk(q.tags, row.tags);
+}
+
+// 복원된 원본 문항 기준 2차 검증
+// (생성 산출물 question-index.js에 중복 qKey/단원 불일치가 존재할 수 있으므로
+//  복원 후 실제 문항이 조건과 맞는지 다시 확인해 블루프린트 정확도를 보장)
+function matchesRestoredItem(item, row) {
+    if (row.unit && getStandardizedUnit(item).unit !== row.unit) return false;
+    if (row.level && normalizeCartLevel(item.level) !== row.level) return false;
+    if (row.image === 'with' && !hasVisualAsset(item)) return false;
+    if (row.image === 'without' && hasVisualAsset(item)) return false;
+    return blueprintTagsOk(item.tags, row.tags);
+}
+
+async function runAutoGenerate(mode) {
+    const rows = autoGenRows.filter(r => Number(r.count) > 0);
+    if (!rows.length) { alert('자동출제 조건(행)을 먼저 추가하세요.'); return; }
+
+    const ok = await ensureQuestionIndexLoaded({ silent: true });
+    if (!ok) { alert('전문항 인덱스를 불러오지 못했습니다.\nquestion-index.js 생성 여부를 확인하세요.'); return; }
+    buildAutoGenUnitList();
+
+    // [고정 제외하고 재구성] 고정 문항만 남기고 나머지 제거 (고정은 절대 삭제 금지)
+    if (mode === 'rebuild') {
+        cart = cart.filter(c => pinnedKeys.has(c._qKey));
+    }
+
+    const records = getQuestionIndexRecords();
+    const cartKeys = new Set(cart.map(c => c._qKey));
+    let capped = false;
+    const reportRows = [];
+
+    for (const row of rows) {
+        const want = Math.max(1, Math.min(AUTOGEN_MAX_CART, parseInt(row.count, 10) || 0));
+        let added = 0;
+        // 재현 가능: question-index 순서대로 선택 (랜덤 없음)
+        for (const q of records) {
+            if (added >= want) break;
+            if (cart.length >= AUTOGEN_MAX_CART) { capped = true; break; }
+            if (cartKeys.has(q.qKey)) continue;          // 이미 담긴 qKey 중복 금지
+            if (!matchesBlueprintRow(q, row)) continue;
+            const success = await restoreIndexRecordToCart(q); // 원본문항 복원 (PHASE 3B 재사용)
+            if (!success) continue;
+            const item = cart[cart.length - 1];
+            // 복원된 실제 문항이 조건과 맞지 않으면(인덱스 불일치) 되돌리고 재선택 방지
+            if (item && item._qKey === q.qKey && !matchesRestoredItem(item, row)) {
+                cart.pop();
+                cartKeys.add(q.qKey);
+                continue;
+            }
+            cartKeys.add(q.qKey); added += 1;
+        }
+        reportRows.push({ unit: row.unit || '전체 단원', level: row.level || '전체', requested: want, added });
+        if (cart.length >= AUTOGEN_MAX_CART) capped = true;
+    }
+
+    updateCartUI();
+    renderQuestionList();
+    renderAutoGenReport({ mode, rows: reportRows, capped });
+    setAutoGenOpen(true);
+}
+
+function renderAutoGenReport(report) {
+    const el = document.getElementById('autogen-report');
+    if (!el) return;
+    const totalReq = report.rows.reduce((s, r) => s + r.requested, 0);
+    const totalAdd = report.rows.reduce((s, r) => s + r.added, 0);
+    const lack = totalReq - totalAdd;
+    const head = `<div class="ag-report-head">
+            <span>요청 <b>${totalReq}</b>문항</span>
+            <span class="ok">담김 <b>${totalAdd}</b>문항</span>
+            ${lack > 0 ? `<span class="miss">부족 <b>${lack}</b>문항</span>` : ''}
+            ${report.mode === 'rebuild' ? '<span style="color:var(--gray-500);">(재구성)</span>' : ''}
+        </div>`;
+    const rowsHtml = report.rows.map(r => {
+        const short = r.requested - r.added;
+        const status = short > 0
+            ? `<span class="lack">${r.added}/${r.requested}</span>`
+            : `<span class="full">${r.added}/${r.requested}</span>`;
+        return `<div class="ag-report-row"><span>${escapeMixerHtml(r.unit)} / ${escapeMixerHtml(r.level)}</span>${status}</div>`;
+    }).join('');
+    const cap = report.capped
+        ? `<div class="ag-report-row" style="color:#9a3412;">카트 ${AUTOGEN_MAX_CART}문항 한도에 도달하여 일부만 담겼습니다.</div>`
+        : '';
+    el.innerHTML = `<div class="ag-report-card">${head}${rowsHtml}${cap}</div>`;
+}
+
+function togglePin(qKey) {
+    if (pinnedKeys.has(qKey)) pinnedKeys.delete(qKey); else pinnedKeys.add(qKey);
+    updateCartUI();
+}
+
+function renderPrintReview() {
+    const el = document.getElementById('print-review');
+    if (!el) return;
+    const qpp = Number(document.getElementById('print-qpp')?.value) || 4;
+    const levelCounts = { '상': 0, '중': 0, '하': 0 };
+    const unitSet = new Set();
+    let pinned = 0;
+    cart.forEach(q => {
+        const lv = normalizeCartLevel(q.level);
+        if (levelCounts[lv] !== undefined) levelCounts[lv] += 1;
+        unitSet.add(getStandardizedUnit(q).unit || '미분류');
+        if (pinnedKeys.has(q._qKey)) pinned += 1;
+    });
+    const pages = cart.length ? Math.ceil(cart.length / qpp) : 0;
+    el.innerHTML = `
+        <div class="print-review-title"><i class="fa-solid fa-clipboard-check"></i> 출력 전 검토</div>
+        <div class="print-review-grid">
+            <div class="print-review-cell"><span class="pr-label">총 문항</span><span class="pr-value">${cart.length}</span></div>
+            <div class="print-review-cell"><span class="pr-label">난이도 상/중/하</span><span class="pr-value">${levelCounts['상']}/${levelCounts['중']}/${levelCounts['하']}</span></div>
+            <div class="print-review-cell"><span class="pr-label">단원 수</span><span class="pr-value">${unitSet.size}</span></div>
+            <div class="print-review-cell"><span class="pr-label">고정 문항</span><span class="pr-value">${pinned}</span></div>
+            <div class="print-review-cell"><span class="pr-label">예상 페이지</span><span class="pr-value">${pages}P</span></div>
+            <div class="print-review-cell"><span class="pr-label">문항/페이지</span><span class="pr-value">${qpp}</span></div>
+        </div>`;
+}
+
+async function addCurrentFilterAll() {
+    const targets = getFilteredQuestions();
+    if (questionSearchMode === 'archive') {
+        if (targets.length > 50) {
+            alert('현재 결과가 50문항을 초과합니다.\n검색어나 단원/난이도 필터를 더 좁힌 뒤 다시 시도하세요.');
+            return;
+        }
+        for (const q of targets) await restoreIndexRecordToCart(q);
+        updateCartUI(); renderQuestionList();
+        return;
+    }
     const existing = new Set(cart.map(c => c._qKey));
     targets.forEach(q => { if (!existing.has(q._qKey)) cart.push(q); });
     updateCartUI(); renderQuestionList();
 }
 
+function removeCurrentFilterAll() {
+    const targetKeys = new Set(getFilteredQuestions().map(q => q._qKey || q.qKey));
+    cart = cart.filter(q => !targetKeys.has(q._qKey));
+    targetKeys.forEach(key => pinnedKeys.delete(key));
+    updateCartUI(); renderQuestionList();
+}
+
 async function loadSingleExam(ex) {
+    questionSearchMode = 'paper'; updateQuestionModeButtons();
     currentViewingSource = ex; renderExamList();
     const container = document.getElementById('question-list');
     container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>문항 로드 중...</p></div>';
@@ -612,6 +1268,7 @@ async function loadSingleExam(ex) {
 
 async function loadMultipleExams() {
     const files = Array.from(selectedFiles); if(!files.length) return alert('선택한 시험지가 없습니다.');
+    questionSearchMode = 'paper'; updateQuestionModeButtons();
     currentViewingSource = { file: "multi" }; renderExamList();
     const container = document.getElementById('question-list');
     container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>묶음 처리 중...</p></div>';
@@ -638,8 +1295,13 @@ function fetchQuestionData(file) {
 }
 
 function renderQuestionList() {
-    const container = document.getElementById('question-list'), unitFilter = document.getElementById('q-unit-filter').value, levelFilter = document.getElementById('q-level-filter').value, viewMode = document.getElementById('q-view-mode').value;
-    let displayQs = currentDisplayQuestions.filter(q => (!unitFilter || getStandardizedUnit(q).unit === unitFilter) && (!levelFilter || String(q.level || '').trim() === levelFilter));
+    const container = document.getElementById('question-list'), viewMode = document.getElementById('q-view-mode').value;
+    let displayQs = getFilteredQuestions();
+    updateQuestionStatus(displayQs.length);
+    if (questionSearchMode === 'archive') {
+        renderQuestionIndexList(container, displayQs);
+        return;
+    }
     if(!displayQs.length) { container.innerHTML = '<div class="empty-placeholder"><p>표시할 문항이 없습니다.</p></div>'; return; }
     container.innerHTML = '';
     if(viewMode === 'group') {
@@ -651,6 +1313,65 @@ function renderQuestionList() {
         });
     } else { displayQs.forEach(q => container.appendChild(createQuestionItem(q))); }
     if (window.MathJax) MathJax.typesetPromise([container]);
+}
+
+function escapeMixerHtml(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function summarizeIndexText(value, limit = 180) {
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    return text.length > limit ? `${text.slice(0, limit)}...` : text;
+}
+
+function renderQuestionIndexList(container, displayQs) {
+    if (!questionIndexLoaded) return;
+    if(!displayQs.length) { container.innerHTML = '<div class="empty-placeholder"><p>표시할 문항이 없습니다.</p></div>'; return; }
+    const visibleQs = displayQs.slice(0, 200);
+    container.innerHTML = '';
+    if (displayQs.length > 200) {
+        const note = document.createElement('div');
+        note.className = 'q-result-note';
+        note.textContent = `검색 결과 ${displayQs.length}문항 중 200문항만 표시 중입니다. 검색어 또는 필터를 더 좁혀 주세요.`;
+        container.appendChild(note);
+    }
+    visibleQs.forEach(q => container.appendChild(createQuestionIndexItem(q)));
+}
+
+function createQuestionIndexItem(q) {
+    const isAdded = cart.some(c => c._qKey === q.qKey);
+    const div = document.createElement('div');
+    div.className = 'q-item';
+    const safeKey = JSON.stringify(q.qKey);
+    div.innerHTML = `<div class="q-header"><div><div class="q-tag-line">
+            <span class="q-unit-tag">${escapeMixerHtml(q.course || '기타')}</span>
+            <span class="q-unit-tag" style="background:#eee; color:#666;">${escapeMixerHtml(q.standardUnit || '미분류')}</span>
+            <span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${escapeMixerHtml(q.level || '미')}</span>
+            ${q.hasImage ? '<span class="q-unit-tag" style="background:#ecfdf5; color:#047857;">이미지 있음</span>' : ''}
+        </div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;" class="q-source-file">${escapeMixerHtml(q.sourceFile)}</span></div>
+        <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick="toggleIndexCart(${safeKey})"><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
+        <div class="q-content">${escapeMixerHtml(summarizeIndexText(q.contentText))}</div>`;
+    return div;
+}
+
+async function toggleIndexCart(qKey) {
+    const idx = cart.findIndex(c => c._qKey === qKey);
+    if(idx > -1) {
+        cart.splice(idx, 1);
+        pinnedKeys.delete(qKey);
+    } else {
+        const record = getQuestionIndexRecords().find(q => q.qKey === qKey);
+        if (record) {
+            const ok = await restoreIndexRecordToCart(record);
+            if (!ok) alert('원본 문항을 불러오지 못했습니다.');
+        }
+    }
+    updateCartUI(); renderQuestionList();
 }
 
 function createQuestionItem(q) {
@@ -665,18 +1386,68 @@ function createQuestionItem(q) {
 
 function toggleCart(qKey) {
     const idx = cart.findIndex(c => c._qKey === qKey);
-    if(idx > -1) cart.splice(idx, 1); else { const q = currentDisplayQuestions.find(it => it._qKey === qKey); if(q) cart.push(q); }
+    if(idx > -1) { cart.splice(idx, 1); pinnedKeys.delete(qKey); } else { const q = currentDisplayQuestions.find(it => it._qKey === qKey); if(q) cart.push(q); }
     updateCartUI(); renderQuestionList();
+}
+
+function normalizeCartLevel(level) {
+    const raw = String(level || '').trim();
+    if (!raw) return '미분류';
+    const compact = raw.replace(/[\[\]\s]/g, '');
+    if (compact === '미입력' || compact === '미분류') return '미분류';
+    if (compact === '상') return '상';
+    if (compact === '중') return '중';
+    if (compact === '하') return '하';
+    return '기타';
+}
+
+function renderCartAnalysis() {
+    const el = document.getElementById('cart-analysis');
+    if (!el) return;
+    const levelCounts = { '상': 0, '중': 0, '하': 0, '기타': 0, '미분류': 0 };
+    const unitCounts = new Map();
+
+    cart.forEach(q => {
+        levelCounts[normalizeCartLevel(q.level)] += 1;
+        const std = getStandardizedUnit(q);
+        const unit = std.unit || '미분류';
+        unitCounts.set(unit, (unitCounts.get(unit) || 0) + 1);
+    });
+
+    const unitRows = Array.from(unitCounts.entries())
+        .sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])))
+        .slice(0, 10);
+    const unitHtml = unitRows.length
+        ? unitRows.map(([unit, count]) => `<div class="cart-unit-row"><span>${unit}</span><strong>${count}</strong></div>`).join('')
+        : '<div class="cart-unit-row"><span>미분류</span><strong>0</strong></div>';
+
+    el.innerHTML = `
+        <div class="cart-analysis-title">카트 분석</div>
+        <div class="cart-analysis-grid">
+            <div class="cart-analysis-stat"><span class="cart-analysis-label">총 문항</span><span class="cart-analysis-value">${cart.length}</span></div>
+            <div class="cart-analysis-stat"><span class="cart-analysis-label">상</span><span class="cart-analysis-value">${levelCounts['상']}</span></div>
+            <div class="cart-analysis-stat"><span class="cart-analysis-label">중</span><span class="cart-analysis-value">${levelCounts['중']}</span></div>
+            <div class="cart-analysis-stat"><span class="cart-analysis-label">하</span><span class="cart-analysis-value">${levelCounts['하']}</span></div>
+            <div class="cart-analysis-stat"><span class="cart-analysis-label">기타</span><span class="cart-analysis-value">${levelCounts['기타']}</span></div>
+            <div class="cart-analysis-stat"><span class="cart-analysis-label">미분류</span><span class="cart-analysis-value">${levelCounts['미분류']}</span></div>
+        </div>
+        <div class="cart-unit-list">${unitHtml}</div>`;
 }
 
 function updateCartUI() {
     document.getElementById('cart-count').innerText = cart.length;
+    const cartStatus = document.getElementById('cur-cart-count');
+    if (cartStatus) cartStatus.innerText = `${cart.length}문항`;
     const mNum = document.getElementById('mobile-cart-count-num');
     if (mNum) mNum.innerText = cart.length;
+    renderCartAnalysis();
     document.getElementById('cart-items').innerHTML = cart.map(c => {
         const std = getStandardizedUnit(c);
-        return `<div class="cart-item"><span style="font-size:12px; font-weight:700;"><span style="color:var(--blue); font-size:10px; margin-right:4px;">[${std.unit}]</span><span style="color:#64748b; font-size:10px; margin-right:4px;">[${c.level || '미'}]</span>${c._sourceTitle} ${c.id}번</span><i class="fa-solid fa-xmark" style="cursor:pointer; color:#ccc;" onclick="toggleCart('${c._qKey}')"></i></div>`;
+        const pinned = pinnedKeys.has(c._qKey);
+        const safeKey = JSON.stringify(c._qKey);
+        return `<div class="cart-item${pinned ? ' pinned' : ''}"><span style="font-size:12px; font-weight:700;"><span style="color:var(--blue); font-size:10px; margin-right:4px;">[${std.unit}]</span><span style="color:#64748b; font-size:10px; margin-right:4px;">[${c.level || '미'}]</span>${c._sourceTitle} ${c.id}번</span><span class="cart-item-actions"><i class="fa-solid fa-thumbtack ag-pin" title="${pinned ? '고정 해제' : '고정'}" onclick='togglePin(${safeKey})'></i><i class="fa-solid fa-xmark" style="cursor:pointer; color:#ccc;" onclick='toggleCart(${safeKey})'></i></span></div>`;
     }).join('');
+    renderPrintReview();
 }
 
 /* AP Math OS 선생님 → 반 선택 헬퍼 */
@@ -847,11 +1618,19 @@ window.onload = async () => {
     document.getElementById('paperSearch').oninput = renderExamList;
     document.getElementById('gradeFilter').onchange = renderExamList;
     document.getElementById('axisFilter').onchange = renderExamList;
-    document.getElementById('q-unit-filter').onchange = () => { renderQuestionList(); document.getElementById('cur-unit-name').innerText = document.getElementById('q-unit-filter').value || '전체'; };
+    document.getElementById('q-search').oninput = renderQuestionList;
+    document.getElementById('q-unit-filter').onchange = renderQuestionList;
 
     // 복구된 이벤트 리스너
     document.getElementById('q-level-filter').onchange = renderQuestionList;
+    document.getElementById('q-cart-filter').onchange = renderQuestionList;
+    document.getElementById('q-image-filter').onchange = renderQuestionList;
     document.getElementById('q-view-mode').onchange = renderQuestionList;
+    document.getElementById('print-qpp').onchange = renderPrintReview;
+
+    // 자동출제 패널 초기화 + 출력 전 검토 카드 초기 렌더
+    renderBlueprintRows();
+    renderPrintReview();
 };
 </script>
 </body>
