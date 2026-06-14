@@ -6,8 +6,8 @@
     const DEFAULT_EIE_DAY_TEACHERS = [...DEFAULT_EIE_TEACHERS, 'Foreigner', 'PREP'];
     const FALLBACK_DAY_LABEL = '전체';
     const STATUS_LABELS = {
-        active: '활성',
-        imported: '활성',
+        active: '재원',
+        imported: '재원',
         needs_review: '확인 필요',
         hidden: '숨김',
         archived: '숨김',
@@ -1298,7 +1298,7 @@
     }
 
     function statusLabel(status) {
-        return STATUS_LABELS[normalizeStatus(status)] || '활성';
+        return STATUS_LABELS[normalizeStatus(status)] || '재원';
     }
 
     function studentDetailId(student) {

@@ -78,8 +78,12 @@ assert(!ledger.includes('시험 관리'), 'academy tab should not keep the heavy
 assert(!ledger.includes('표시할 시험'), 'academy tab should not keep the 표시할 시험 panel heading');
 assert(!ledger.includes('표시 적용') && !ledger.includes('표에 표시') && !ledger.includes('표시 변경'), 'academy tab should not use display-apply wording');
 assert(!ledger.includes('선택한 시험만 표에 표시됩니다.') && !ledger.includes('체크한 시험만') && !ledger.includes('체크하면 아래'), 'academy tab should not keep redundant guidance sentences');
-assert(ledger.includes('월말평가') && ledger.includes('단어시험') && ledger.includes('Reading Test') && ledger.includes('숙제 확인'), 'academy tab should include default test choices');
-assert(ledger.includes('문법시험') && ledger.includes('Dictation Test'), 'academy default test names should be consistent');
+for (const label of ['Monthly', 'Vocabulary', 'Grammar', 'Reading', 'Listening', 'Speaking', 'Writing', 'Dictation', 'Memo']) {
+  assert(ledger.includes(`title: '${label}'`), `academy default test choices should include ${label}`);
+}
+for (const forbidden of ["id: 'homework'", "id: 'retest'", "title: 'Homework'", "title: 'Retake'", "title: 'Reading Test'", "title: 'Listening Test'", "title: 'Dictation Test'"]) {
+  assert(!ledger.includes(forbidden), `academy default test choices should not include ${forbidden}`);
+}
 assert(ledger.includes('testMaxLabel'), 'academy headers should show max score labels');
 assert(!ledger.includes("maxScore: 100"), 'default academy tests should not hard-code 100-point max scores');
 assert(!ledger.includes('test.max_score || 100') && !ledger.includes('test.maxScore || test.max_score || 100'), 'missing academy max score should not fall back to 100');
@@ -225,6 +229,9 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     assert(!html.includes('eie-grade-test-form'), 'default academy screen should keep the add/edit form collapsed');
     assert(!html.includes('eie-grade-edit-list'), 'default academy screen should keep the 시험 고치기 list collapsed');
     assert(!html.includes('삭제'), 'default academy screen should not surface delete actions');
+    assert(!html.includes('type="checkbox"'), 'default academy screen should show selected test chips without checkboxes');
+    assert(html.includes('Monthly') && html.includes('Vocabulary') && html.includes('Reading') && html.includes('Memo'), 'default academy screen should show selected default chips');
+    assert(!html.includes('Grammar') && !html.includes('Listening') && !html.includes('Dictation'), 'default academy screen should hide unselected default choices until edit mode opens');
   }
 
   {
@@ -265,6 +272,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     context.EieGradeLedgerView.toggleEditList();
     const opened = await context.EieGradeLedgerView.render();
     assert(opened.includes('eie-grade-edit-list') && opened.includes('수정'), 'edit list should expose 수정 only after toggling 시험 고치기');
+    assert(opened.includes('type="checkbox"') && opened.includes('Grammar') && opened.includes('Listening') && opened.includes('Dictation'), 'edit mode should expose the full normalized default checkbox list');
     assert(!opened.includes('삭제'), 'edit list itself should not surface delete actions');
   }
 
@@ -276,7 +284,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     assert(!before.includes('eie-grade-test-form'), 'edit form should be hidden before selecting a test');
     context.EieGradeLedgerView.editTest('month_end');
     const editing = await context.EieGradeLedgerView.render();
-    assert(editing.includes('eie-grade-test-form') && editing.includes('월말평가 수정'), 'edit form should open only for the selected test');
+    assert(editing.includes('eie-grade-test-form') && editing.includes('Monthly 수정'), 'edit form should open only for the selected test');
     assert(editing.includes('삭제'), 'delete should live inside the edit form');
   }
 
@@ -294,7 +302,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     // 체크박스는 별도 적용 버튼 없이 즉시 표 구성을 바꾼다.
     const context = makeContext();
     await context.EieGradeLedgerView.render();
-    assert(context.EieGradeLedgerView._test.activeTests().some(test => test.title === '메모'), 'default tests should include 메모');
+    assert(context.EieGradeLedgerView._test.activeTests().some(test => test.title === 'Memo'), 'default tests should include Memo');
     context.EieGradeLedgerView.toggleTestChoice('memo', false);
     assert(!context.EieGradeLedgerView._test.activeTests().some(test => test.id === 'memo'), 'unchecking a chip should immediately drop it from the table');
     context.EieGradeLedgerView.toggleTestChoice('grammar', true);
@@ -343,7 +351,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
       'eie-new-test-max': { value: '20' }
     };
     context.EieGradeLedgerView._test.addAcademyTestFromInputs();
-    const vocabTests = context.EieGradeLedgerView._test.activeTests().filter(test => test.title === '단어시험' && test.examDate);
+    const vocabTests = context.EieGradeLedgerView._test.activeTests().filter(test => test.title === 'Vocabulary' && test.examDate);
     assert.strictEqual(vocabTests.length, 2, 'same academy test title should be allowed on different exam dates');
     assert(vocabTests.some(test => test.examDate === '2026-06-05'), 'first dated test should be retained');
     assert(vocabTests.some(test => test.examDate === '2026-06-12'), 'second dated test should be retained');
@@ -363,7 +371,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     }[id] || null);
     context.EieGradeLedgerView._test.addAcademyTestFromInputs();
     context.EieGradeLedgerView._test.addAcademyTestFromInputs();
-    const vocabTests = context.EieGradeLedgerView._test.activeTests().filter(test => test.title === '단어시험' && test.examDate === '2026-06-05');
+    const vocabTests = context.EieGradeLedgerView._test.activeTests().filter(test => test.title === 'Vocabulary' && test.examDate === '2026-06-05');
     assert.strictEqual(vocabTests.length, 1, 'same academy test title on the same exam date should not be duplicated');
   }
 
@@ -450,7 +458,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
       id === 'eie-academy-inp-stu-1-vocab_20260612' ? { value: '19' } : null
     );
     await context.EieGradeLedgerView.saveAcademy();
-    const saved = context.savedBatch.records.find(record => record.student_id === 'stu-1' && record.title === '단어시험');
+    const saved = context.savedBatch.records.find(record => record.student_id === 'stu-1' && record.title === 'Vocabulary');
     assert.strictEqual(saved.score, 19, 'academy resave should save score-only table input');
     assert.strictEqual(saved.max_score, 20, 'academy resave should preserve existing record.max_score when the test max is unset');
   }

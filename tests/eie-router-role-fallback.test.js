@@ -66,9 +66,77 @@ async function run(role, loginId) {
   return rendered.at(-1);
 }
 
+async function runSameRouteRefresh() {
+  let skeletonCount = 0;
+  let mountCount = 0;
+  const rendered = [];
+  const context = {
+    console,
+    Promise,
+    window: {
+      location: { hash: '#students' },
+      localStorage: { getItem() { return ''; } },
+      addEventListener() {}
+    },
+    document: {
+      readyState: 'complete',
+      body: { classList: { toggle() {} } },
+      querySelectorAll() { return []; },
+      addEventListener() {},
+      getElementById() { return null; }
+    },
+    EieState: {
+      setActiveView(route) {
+        rendered.push(route);
+      }
+    },
+    EieApp: {
+      mountSkeleton() {
+        skeletonCount += 1;
+      },
+      async mount() {
+        mountCount += 1;
+      }
+    },
+    EieDashboardView: { render: () => 'dashboard' },
+    EieTimetableView: { render: () => 'timetable' },
+    EieTimetableEditorView: { render: () => 'timetable-editor' },
+    EieStudentsView: { render: () => 'students' },
+    EieClassroomView: { render: () => 'classroom' },
+    EieAttendanceView: { render: () => 'attendance' },
+    EieGradeLedgerView: { render: () => 'grades' },
+    EieTeacherView: { render: () => 'teacher' },
+    EieManagementView: { render: () => 'management' }
+  };
+  context.window.window = context.window;
+  context.window.document = context.document;
+  Object.assign(context.window, {
+    EieState: context.EieState,
+    EieApp: context.EieApp,
+    EieDashboardView: context.EieDashboardView,
+    EieTimetableView: context.EieTimetableView,
+    EieTimetableEditorView: context.EieTimetableEditorView,
+    EieStudentsView: context.EieStudentsView,
+    EieClassroomView: context.EieClassroomView,
+    EieAttendanceView: context.EieAttendanceView,
+    EieGradeLedgerView: context.EieGradeLedgerView,
+    EieTeacherView: context.EieTeacherView,
+    EieManagementView: context.EieManagementView
+  });
+
+  vm.createContext(context);
+  vm.runInContext(source, context, { filename: 'eie-router.js' });
+  await context.window.EieRouter.boot();
+  await context.window.EieRouter.open('students');
+  return { skeletonCount, mountCount, rendered };
+}
+
 (async () => {
   assert.strictEqual(await run('teacher', 'lily'), 'teacher', 'teacher fallback must not open owner dashboard');
   assert.strictEqual(await run('admin', 'admin'), 'dashboard', 'owner fallback should remain dashboard');
+  const sameRoute = await runSameRouteRefresh();
+  assert.strictEqual(sameRoute.mountCount, 2, 'same-route refresh should still mount the refreshed HTML');
+  assert.strictEqual(sameRoute.skeletonCount, 1, 'same-route refresh should not remount the route skeleton');
   console.log('EIE router role fallback regression test passed');
 })().catch(err => {
   console.error(err);

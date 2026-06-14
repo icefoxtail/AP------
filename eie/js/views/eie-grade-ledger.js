@@ -7,18 +7,26 @@
     ];
 
     var DEFAULT_TESTS = [
-        { id: 'month_end', title: '월말평가', scoreType: 'score', maxScore: null },
-        { id: 'vocab', title: '단어시험', scoreType: 'score', maxScore: null },
-        { id: 'grammar', title: '문법시험', scoreType: 'score', maxScore: null },
-        { id: 'reading', title: 'Reading Test', scoreType: 'score', maxScore: null },
-        { id: 'listening', title: 'Listening Test', scoreType: 'score', maxScore: null },
+        { id: 'month_end', title: 'Monthly', scoreType: 'score', maxScore: null },
+        { id: 'vocab', title: 'Vocabulary', scoreType: 'score', maxScore: null },
+        { id: 'grammar', title: 'Grammar', scoreType: 'score', maxScore: null },
+        { id: 'reading', title: 'Reading', scoreType: 'score', maxScore: null },
+        { id: 'listening', title: 'Listening', scoreType: 'score', maxScore: null },
         { id: 'speaking', title: 'Speaking', scoreType: 'score', maxScore: null },
         { id: 'writing', title: 'Writing', scoreType: 'score', maxScore: null },
-        { id: 'dictation', title: 'Dictation Test', scoreType: 'score', maxScore: null },
-        { id: 'homework', title: '숙제 확인', scoreType: 'memo', maxScore: null },
-        { id: 'retest', title: '재시험', scoreType: 'memo', maxScore: null },
-        { id: 'memo', title: '메모', scoreType: 'memo', maxScore: null }
+        { id: 'dictation', title: 'Dictation', scoreType: 'score', maxScore: null },
+        { id: 'memo', title: 'Memo', scoreType: 'memo', maxScore: null }
     ];
+
+    var TEST_TITLE_ALIASES = {
+        '월말평가': 'Monthly',
+        '단어시험': 'Vocabulary',
+        '문법시험': 'Grammar',
+        'Reading Test': 'Reading',
+        'Listening Test': 'Listening',
+        'Dictation Test': 'Dictation',
+        '메모': 'Memo'
+    };
 
     var _cells = [];
     var _students = [];
@@ -372,6 +380,11 @@
         return normalizeExamDate(test && (test.examDate || test.exam_date || test.date));
     }
 
+    function normalizeTestTitle(title) {
+        var raw = text(title);
+        return TEST_TITLE_ALIASES[raw] || raw;
+    }
+
     function formatExamDateLabel(test) {
         var date = testExamDate(test);
         if (!date) return '';
@@ -419,6 +432,7 @@
 
     function normalizeTestItem(item) {
         return Object.assign({}, item, {
+            title: normalizeTestTitle(item && item.title),
             scoreType: normalizeScoreType(item && item.scoreType),
             examDate: testExamDate(item)
         });
@@ -816,7 +830,7 @@
         if (!_classId) return '';
         var selected = {};
         activeTests().forEach(function (item) { selected[text(item.id)] = true; });
-        var choices = testChoiceList();
+        var choices = _editListOpen ? testChoiceList() : activeTests();
         return '<div class="eie-grade-tests">'
             + '<div class="eie-grade-tests-head">'
             + '<span class="eie-grade-tests-title">이번 달 시험</span>'
@@ -825,7 +839,9 @@
             + '<div class="eie-grade-test-chips">'
             + choices.map(function (item) {
                 var id = text(item.id);
-                return '<label class="eie-grade-chip' + (selected[id] ? ' is-on' : '') + '"><input type="checkbox"' + (selected[id] ? ' checked' : '') + ' onchange="EieGradeLedgerView.toggleTestChoice(' + jsArg(id) + ', this.checked)"><span>' + esc(item.title) + (testExamDate(item) ? ' <em>' + esc(formatExamDateLabel(item)) + '</em>' : '') + '</span></label>';
+                var label = esc(item.title) + (testExamDate(item) ? ' <em>' + esc(formatExamDateLabel(item)) + '</em>' : '');
+                if (!_editListOpen) return '<span class="eie-grade-chip is-on">' + label + '</span>';
+                return '<label class="eie-grade-chip' + (selected[id] ? ' is-on' : '') + '"><input type="checkbox"' + (selected[id] ? ' checked' : '') + ' onchange="EieGradeLedgerView.toggleTestChoice(' + jsArg(id) + ', this.checked)"><span>' + label + '</span></label>';
             }).join('')
             + '</div>'
             + (_addFormOpen ? renderTestForm(null) : '')
@@ -1059,7 +1075,7 @@
                 var tests = draftTests().slice();
                 var idx = tests.findIndex(function (item) { return text(item && item.id) === key; });
                 if (idx < 0) return;
-                var title = text(document.getElementById('eie-new-test-title') && document.getElementById('eie-new-test-title').value);
+                var title = normalizeTestTitle(document.getElementById('eie-new-test-title') && document.getElementById('eie-new-test-title').value);
                 if (!title) return;
                 var examDate = formExamDate();
                 if (formDateEnabled() && (!examDate || examDate.slice(0, 7) !== (_monthKey || todayMonthKey()))) return;
@@ -1081,7 +1097,7 @@
                 renderAgain();
             },
             addAcademyTestFromInputs: function () {
-            var title = text(document.getElementById('eie-new-test-title') && document.getElementById('eie-new-test-title').value);
+            var title = normalizeTestTitle(document.getElementById('eie-new-test-title') && document.getElementById('eie-new-test-title').value);
             if (!title) return;
             var examDate = formExamDate();
             if (formDateEnabled() && (!examDate || examDate.slice(0, 7) !== (_monthKey || todayMonthKey()))) return;

@@ -67,6 +67,7 @@
     }
 
     let renderToken = 0;
+    let lastMountedRoute = '';
 
     async function renderRoute(route) {
         const nextRoute = normalizeRoute(route);
@@ -75,7 +76,7 @@
         syncNav(nextRoute);
         syncOwnerBackground(nextRoute);
         // 즉시 골격을 그려 "멈춤" 체감을 없앤다(데이터는 뒤에서 채움).
-        if (window.EieApp && typeof window.EieApp.mountSkeleton === 'function') {
+        if (lastMountedRoute !== nextRoute && window.EieApp && typeof window.EieApp.mountSkeleton === 'function') {
             window.EieApp.mountSkeleton(nextRoute);
         }
         try {
@@ -83,6 +84,7 @@
             // 더 최신 네비게이션이 있으면 이 결과는 버린다(stale 덮어쓰기 방지).
             if (token !== renderToken) return;
             await EieApp.mount(html);
+            lastMountedRoute = nextRoute;
         } catch (e) {
             if (token !== renderToken) return;
             if (e && e.status === 401 && window.EieApp && typeof window.EieApp.handleEie401 === 'function') {
