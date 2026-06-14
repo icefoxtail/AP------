@@ -552,6 +552,61 @@
     body.student-portal-theme .summary-value {
       color:#111827 !important;
     }
+    body.student-portal-theme .omr-card {
+      background:#FFFFFF !important;
+      border:1px solid #E5E7EB !important;
+      box-shadow:none !important;
+      color:#111827 !important;
+    }
+    body.student-portal-theme .omr-card .omr-title {
+      color:#111827 !important;
+      font-weight:600 !important;
+    }
+    body.student-portal-theme .omr-card .omr-meta {
+      color:#4B5563 !important;
+    }
+    body.student-portal-theme .omr-card .omr-status.pending {
+      background:#F3F4F6 !important;
+      border:0 !important;
+      color:#374151 !important;
+    }
+    body.student-portal-theme .omr-card .omr-status.done {
+      background:rgba(0,184,148,0.10) !important;
+      color:#008F72 !important;
+    }
+    body.student-portal-theme .omr-card .omr-actions {
+      display:grid !important;
+      visibility:visible !important;
+    }
+    body.student-portal-theme .omr-card .omr-actions .review-btn {
+      background:#FFFFFF !important;
+      border:1px solid #D1D5DB !important;
+      color:#111827 !important;
+      box-shadow:none !important;
+    }
+    body.student-portal-theme .omr-card .omr-actions .review-btn:hover {
+      background:#F9FAFB !important;
+    }
+    body.student-portal-theme .omr-card .omr-actions .btn-primary {
+      background:#111827 !important;
+      border-color:#111827 !important;
+      color:#FFFFFF !important;
+      box-shadow:0 8px 18px rgba(17,24,39,0.16) !important;
+    }
+    @media (max-width:520px) {
+      body.student-portal-theme .omr-card .omr-actions {
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+        gap:7px !important;
+      }
+      body.student-portal-theme .omr-card .omr-actions .btn {
+        min-width:0 !important;
+        height:42px !important;
+        min-height:42px !important;
+        padding:0 4px !important;
+        font-size:12px !important;
+        white-space:nowrap !important;
+      }
+    }
   </style>
 </head>
 <body class="student-portal-theme">

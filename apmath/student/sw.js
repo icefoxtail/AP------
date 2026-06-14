@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apmath-student-portal-v1.0.1';
+const CACHE_NAME = 'apmath-student-portal-v1.0.2';
 const APP_SHELL = [
   './',
   './index.html',
@@ -35,6 +35,21 @@ self.addEventListener('fetch', event => {
 
   if (req.method !== 'GET') {
     event.respondWith(fetch(req));
+    return;
+  }
+
+  if (req.mode === 'navigate' || req.destination === 'document') {
+    event.respondWith(
+      fetch(req)
+        .then(response => {
+          if (response && response.status === 200) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(req).then(cached => cached || caches.match('./index.html')))
+    );
     return;
   }
 
