@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const css = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
+const css = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 const view = fs.readFileSync(path.join(root, 'eie/js/views/eie-attendance.js'), 'utf8');
 
 assert(css.includes('--eie-att-main: #0F766E;'), 'attendance should use a muted teal main color');

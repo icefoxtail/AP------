@@ -111,10 +111,10 @@
         await loadTeachers(false);
         var noticeHtml = _notice ? '<div class="eie-success-box">' + esc(_notice) + '</div>' : '';
         var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
-        return '<section class="eie-apms-students-screen" aria-labelledby="eie-management-title">'
+        return '<section class="eie-apms-students-screen eie-management-screen" aria-labelledby="eie-management-title">'
             + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
             + '<div class="eie-apms-page-head">'
-            + '<div><h1 id="eie-management-title">관리</h1><p>APMS 선생님 계정 관리 흐름을 EIE에 맞춰 사용합니다.</p></div>'
+            + '<div><h1 id="eie-management-title">관리</h1></div>'
             + '</div>'
             + noticeHtml + errorHtml
             + '<div class="eie-apms-student-layout">'
@@ -127,6 +127,8 @@
     window.EieManagementView = {
         render: render,
         refresh: async function () {
+            // 새로고침은 캐시를 무시하고 원격에서 다시 받아온다.
+            if (window.EieApi && typeof EieApi.clearReadCache === 'function') EieApi.clearReadCache();
             await loadTeachers(true);
             return EieRouter.open('management');
         },

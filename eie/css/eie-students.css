@@ -1,0 +1,36 @@
+/* ======================================================================
+   EIE Students — 학생관리 / 학생상세
+   - eie.css에서 기능별로 분리한 파일이다 (디자인 변경 없음).
+   - 로딩 순서: eie.css(공통) 다음에 로드한다.
+   - 학생 검토 사유(review-reasons) 전용 스타일. 그 외 학생 목록/상세는 .eie-v2-* 공유 셸과 얽혀 있어 eie.css에 유지.
+   ====================================================================== */
+.eie-review-reasons {
+  display: grid;
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid #fdba74;
+  border-radius: 14px;
+  background: #fff7ed;
+}
+
+.eie-review-reasons > span {
+  color: #9a3412;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-review-reasons div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.eie-review-reasons em {
+  border-radius: 999px;
+  padding: 3px 7px;
+  background: #fed7aa;
+  color: #9a3412;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+}

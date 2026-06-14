@@ -4,7 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>EIE 영어 관리</title>
+    <!-- ==== eie.css 소스 순서 분할 (cascade 동일, 반드시 이 순서로 로드) ==== -->
+    <!-- 공통 베이스: 토큰·body·헤더/카드/테이블/요약/상태 -->
     <link rel="stylesheet" href="./css/eie.css">
+    <!-- 사이드바 가이드 + 원장 admin 랜딩 -->
+    <link rel="stylesheet" href="./css/eie-landing.css">
+    <!-- 시간표 프론트 에디터 -->
+    <link rel="stylesheet" href="./css/eie-timetable-editor.css">
+    <!-- 로그인 화면 -->
+    <link rel="stylesheet" href="./css/eie-login.css">
+    <!-- AP MATH 클론 셸 v2 (헤더/탑바/드로어/메인) -->
+    <link rel="stylesheet" href="./css/eie-shell-v2.css">
+    <!-- 시간표 v2 읽기 보드 -->
+    <link rel="stylesheet" href="./css/eie-timetable-board.css">
+    <!-- 시간표 보드 override(누수 제거) -->
+    <link rel="stylesheet" href="./css/eie-timetable-board-fixes.css">
+    <!-- 시간표 카드보드 refresh -->
+    <link rel="stylesheet" href="./css/eie-timetable-board-refresh.css">
+    <!-- 시간표 편집 모드 -->
+    <link rel="stylesheet" href="./css/eie-timetable-edit.css">
+    <!-- 헤더 parity/wordmark 고정 + 정리 패널 -->
+    <link rel="stylesheet" href="./css/eie-detail-v2.css">
+    <!-- v2 상세 패널 -->
+    <link rel="stylesheet" href="./css/eie-v2-panels.css">
+    <!-- v2 주간 카드 -->
+    <link rel="stylesheet" href="./css/eie-v2-week-card.css">
+    <!-- v2 미니 클래스룸 -->
+    <link rel="stylesheet" href="./css/eie-v2-mini-classroom.css">
+    <!-- EIE Panel 토큰/컴포넌트(반·학생·신규 패널 공통 §A·§B) -->
+    <link rel="stylesheet" href="./css/eie-panel-tokens.css">
+    <!-- 원장 대시보드 카드 + 클래스룸 화면 -->
+    <link rel="stylesheet" href="./css/eie-dashboard-classroom.css">
+    <!-- 출석부 월간 그리드 -->
+    <link rel="stylesheet" href="./css/eie-attendance-grid.css">
+    <!-- 대시보드 print + interaction standard -->
+    <link rel="stylesheet" href="./css/eie-dashboard-print.css">
+    <!-- ==== 기능별 분리 파일(고유 namespace, 나중 override 없음 → 마지막 로드 안전) ==== -->
+    <link rel="stylesheet" href="./css/eie-dashboard.css">
+    <link rel="stylesheet" href="./css/eie-timetable.css">
+    <link rel="stylesheet" href="./css/eie-classroom.css">
+    <link rel="stylesheet" href="./css/eie-students.css">
+    <link rel="stylesheet" href="./css/eie-attendance.css">
+    <link rel="stylesheet" href="./css/eie-grade-ledger.css">
+    <!-- 관리(선생님 계정) 톤 보정 (스코프: .eie-management-screen) -->
+    <link rel="stylesheet" href="./css/eie-management.css">
 </head>
 <body>
 
@@ -94,6 +137,7 @@
 
     <script defer src="../shared/js/wangji-owner-auth-bridge.js"></script>
     <script defer src="./js/utils/eie-normalize.js"></script>
+    <script defer src="./js/utils/eie-grade-utils.js"></script>
     <script defer src="./js/utils/eie-classroom-scope.js"></script>
     <script defer src="./js/eie-state.js"></script>
     <script defer src="./js/eie-api.js"></script>
@@ -107,6 +151,7 @@
     <script defer src="./js/views/eie-students.js"></script>
     <script defer src="./js/views/eie-classroom.js"></script>
     <script defer src="./js/views/eie-attendance.js?v=20260609"></script>
+    <script defer src="./js/views/eie-grade-ledger.js?v=20260613"></script>
     <script defer src="./js/views/eie-management.js"></script>
     <script defer src="./js/views/eie-teacher.js?v=20260609"></script>
     <script defer src="./js/eie-router.js"></script>

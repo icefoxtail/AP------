@@ -27,6 +27,7 @@ const state = {
 let createdPayload = null;
 let createdConsultationPayload = null;
 let updatedConsultationPayload = null;
+let deletedConsultationId = null;
 
 const context = {
   console,
@@ -75,6 +76,10 @@ const context = {
       updatedConsultationPayload = { id, payload };
       const row = { id, created_at: '2026-06-02 11:00:00', ...payload };
       return { consultation: row, consultations: [row] };
+    },
+    async deleteConsultation(id) {
+      deletedConsultationId = id;
+      return { success: true, deleted: true, id, consultation: null, consultations: [] };
     }
   },
   EieApmsState: {
@@ -85,6 +90,9 @@ const context = {
   },
   EieRouter: {
     open() {}
+  },
+  confirm() {
+    return true;
   }
 };
 context.window = context;
@@ -146,10 +154,44 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
 
   await context.EieStudentsView.openDetail('eie_student_alpha', null, 'consultation');
   let consultationHtml = await context.EieStudentsView.render();
+  assert(
+    consultationHtml.indexOf('class="eie-apms-tabs eie-apms-header-tabs"') < consultationHtml.indexOf('class="eie-apms-card eie-apms-pinned-consultation"'),
+    'student detail primary tabs should render before the consultation pinned card like APMATH'
+  );
+  assert.strictEqual(
+    (consultationHtml.match(/class="eie-apms-tab(?: is-active)?"/g) || []).length,
+    3,
+    'student detail should match APMATH with only 기본/상담/성적 primary tabs'
+  );
+  for (const tabLabel of ['기본', '상담', '성적']) {
+    assert(consultationHtml.includes(`>${tabLabel}</button>`), `student detail header tabs should include ${tabLabel}`);
+  }
+  for (const removedTabLabel of ['기본정보', '연락처', '수업 배정', '출결/숙제', '성적표']) {
+    assert(!consultationHtml.includes(`>${removedTabLabel}</button>`), `student detail should not keep ${removedTabLabel} as a primary tab`);
+  }
+  assert(
+    consultationHtml.includes('eie-apms-pinned-consultation-preview') ||
+      consultationHtml.includes('eie-apms-pinned-consultation-empty'),
+    'student detail should show an AP-style pinned recent consultation summary before the consultation tab body'
+  );
+  assert(
+    !consultationHtml.includes('id="pinned-consultation-date"'),
+    'pinned recent consultation card should not render the consultation creation form by default'
+  );
   assert(consultationHtml.includes('상담 이력'), 'consultation tab should render an AP-style consultation history section');
   assert(consultationHtml.includes('+ 새 상담 기록하기'), 'consultation tab should expose a new consultation form action');
   assert(consultationHtml.includes('상담 흐름 요약'), 'consultation tab should expose the AP consultation summary action as preparing');
   assert(!consultationHtml.includes('window.prompt'), 'consultation UX should not rely on prompt-based entry');
+
+  await context.EieStudentsView.setTab('basic');
+  const basicDetailHtml = await context.EieStudentsView.render();
+  assert(
+    !basicDetailHtml.includes('class="eie-apms-card eie-apms-pinned-consultation"'),
+    'basic tab should not show the pinned consultation card; APMATH shows it only on consultation'
+  );
+  for (const basicSection of ['기본정보', '연락처', '수업 배정', '출결/숙제']) {
+    assert(basicDetailHtml.includes(basicSection), `basic tab should retain ${basicSection} instead of removing it to a top-level tab`);
+  }
 
   await context.EieStudentsView.createConsultation('eie_student_alpha');
   consultationHtml = await context.EieStudentsView.render();
@@ -207,6 +249,19 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
       next_action: '보호자 공유'
     }
   }), 'consultation edit payload should update date, type, content, and next action');
+
+  consultationHtml = await context.EieStudentsView.render();
+  assert(
+    consultationHtml.includes('EieStudentsView.deleteConsultation(&quot;consultation_new&quot;)'),
+    'consultation row should render an AP-style delete action next to edit'
+  );
+  await context.EieStudentsView.deleteConsultation('consultation_new');
+  assert.strictEqual(deletedConsultationId, 'consultation_new', 'consultation delete should call the EIE delete API with the consultation id');
+  assert.strictEqual(
+    state.db.consultations.some(row => row.id === 'consultation_new'),
+    false,
+    'consultation delete should refresh local consultation rows from the API response'
+  );
 
   context.EieStudentsView.startCreate();
   const createHtml = await context.EieStudentsView.render();

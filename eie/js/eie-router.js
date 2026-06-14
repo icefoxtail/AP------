@@ -6,6 +6,7 @@
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
         attendance: () => EieAttendanceView.render(),
+        grades: () => EieGradeLedgerView.render(),
         teacher: () => EieTeacherView.render(),
         management: () => EieManagementView.render()
     };
@@ -65,14 +66,25 @@
         routeButtonsBound = true;
     }
 
+    let renderToken = 0;
+
     async function renderRoute(route) {
         const nextRoute = normalizeRoute(route);
+        const token = ++renderToken;
         EieState.setActiveView(nextRoute);
         syncNav(nextRoute);
         syncOwnerBackground(nextRoute);
+        // 즉시 골격을 그려 "멈춤" 체감을 없앤다(데이터는 뒤에서 채움).
+        if (window.EieApp && typeof window.EieApp.mountSkeleton === 'function') {
+            window.EieApp.mountSkeleton(nextRoute);
+        }
         try {
-            await EieApp.mount(await routes[nextRoute]());
+            const html = await routes[nextRoute]();
+            // 더 최신 네비게이션이 있으면 이 결과는 버린다(stale 덮어쓰기 방지).
+            if (token !== renderToken) return;
+            await EieApp.mount(html);
         } catch (e) {
+            if (token !== renderToken) return;
             if (e && e.status === 401 && window.EieApp && typeof window.EieApp.handleEie401 === 'function') {
                 window.EieApp.handleEie401();
                 return;

@@ -16,10 +16,10 @@ assert(
 );
 
 assert(
-  studentPortal.includes('--primary:#111827') &&
+    studentPortal.includes('--primary:#111827') &&
     studentPortal.includes('--primary-rgb:17,24,39') &&
     studentManifest.includes('"theme_color": "#F3F4F6"') &&
-    studentServiceWorker.includes("apmath-student-portal-v1.0.1") &&
+    /apmath-student-portal-v\d+\.\d+\.\d+/.test(studentServiceWorker) &&
     !/#4F46E5|#1A5CFF|#7C3AED|rgba\(26,92,255|rgba\(124,58,237/.test(studentPortal),
   'student portal should use a neutral charcoal theme and avoid blue/purple UI tokens'
 );

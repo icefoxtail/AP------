@@ -1,0 +1,46 @@
+/* ======================================================================
+   EIE 관리(선생님 계정) — 글씨 두께 / 색상 톤 보정
+   - 관리 화면은 공유 .eie-apms-* 클래스를 쓰므로(학생 화면 등과 공유),
+     다른 화면에 영향을 주지 않도록 .eie-management-screen 으로만 스코프한다.
+   - 이번 보정은 색상과 font-weight 만 다룬다(레이아웃/spacing 미변경).
+   - 강조색을 강한 파랑(--eie-primary)에서 EIE 운영 accent(teal)로 낮춘다.
+   ====================================================================== */
+
+/* 제목/패널 헤더: 과한 굵기(800)를 차분하게 */
+.eie-management-screen .eie-apms-page-head h1 {
+    font-weight: 700;
+}
+
+.eie-management-screen .eie-apms-detail-head h2 {
+    font-weight: 700;
+}
+
+.eie-management-screen .eie-apms-detail-empty-title {
+    font-weight: 700;
+}
+
+.eie-management-screen .eie-apms-detail-panel.is-empty p {
+    color: var(--eie-muted);
+    font-weight: 500;
+}
+
+/* 계정 행: 이름/ID 라벨 굵기 완화(800 → 보통) */
+.eie-management-screen .eie-apms-contact-row strong {
+    font-weight: 600;
+}
+
+.eie-management-screen .eie-apms-contact-row span {
+    font-weight: 600;
+}
+
+/* 인라인 액션(페이지/수정/PW 초기화/삭제):
+   강한 파랑 + 900 → EIE accent(teal) + 보통 굵기로 톤 다운 */
+.eie-management-screen .eie-apms-contact-row button,
+.eie-management-screen .eie-apms-inline-actions button {
+    color: var(--eie-ledger-accent);
+    font-weight: 600;
+}
+
+.eie-management-screen .eie-apms-inline-actions button[disabled] {
+    color: var(--eie-muted);
+}

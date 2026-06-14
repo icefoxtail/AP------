@@ -84,7 +84,18 @@
     function studentName(student) {
         return text(student && (student.name || student.display_name || student.student_name_raw)) || '학생';
     }
-    function studentGrade(student) { return text(student && (student.grade || student.grade_raw)); }
+    function normalizeEieGrade(value) {
+        if (window.EieGradeUtils && typeof EieGradeUtils.normalizeEieGrade === 'function') {
+            return EieGradeUtils.normalizeEieGrade(value);
+        }
+        const raw = text(value).replace(/\s+/g, '');
+        const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
+        if (middle) return '중' + middle[1];
+        const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
+        if (high) return '고' + high[1];
+        return /^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
+    }
+    function studentGrade(student) { return normalizeEieGrade(student && (student.grade || student.grade_raw)); }
     function studentRaw(student) {
         if (student && student.raw && typeof student.raw === 'object') return student.raw;
         const raw = student && student.raw_meta_json;
@@ -107,8 +118,12 @@
             || memo.indexOf('#휴원') >= 0;
     }
     function gradeBand(grade) {
-        const g = text(grade);
-        if (g.indexOf('초') === 0) return '초';
+        if (window.EieGradeUtils && typeof EieGradeUtils.gradeBand === 'function') {
+            const band = EieGradeUtils.gradeBand(grade);
+            if (band === 'middle') return '중';
+            if (band === 'high') return '고';
+        }
+        const g = normalizeEieGrade(grade);
         if (g.indexOf('중') === 0) return '중';
         if (g.indexOf('고') === 0) return '고';
         return '';
@@ -567,6 +582,18 @@
             + '</td>';
     }
 
+    function renderStudentNameCell(student, sid) {
+        const nm = studentName(student);
+        const gr = studentGrade(student);
+        const gradeHtml = gr ? '<small>' + esc(gr) + '</small>' : '';
+        if (!sid) return '<td class="eie-att-nc eie-att-student-nc">' + esc(nm) + gradeHtml + '</td>';
+        return '<td class="eie-att-nc eie-att-student-nc">'
+            + '<button type="button" class="eie-att-student-link" '
+            + 'onclick="EieAttendanceView.openStudentDetail(' + jsArg(sid) + ')">'
+            + '<span>' + esc(nm) + '</span>' + gradeHtml
+            + '</button></td>';
+    }
+
     function renderTable(date, blocks) {
         const month = date.slice(0, 7);
         const days = getMonthDays(month);
@@ -600,11 +627,8 @@
                         + 'onclick="EieAttendanceView.openStudent(' + jsArg(d) + ',' + jsArg(block.cellId) + ',' + jsArg(sid) + ')">'
                         + gridCellInner(rec) + '</td>';
                 }).join('');
-                const nm = studentName(st);
-                const gr = studentGrade(st);
                 return '<tr>' + (studentIndex === 0 ? timeCell : '')
-                    + '<td class="eie-att-nc eie-att-student-nc">' + esc(nm)
-                    + (gr ? '<small>' + esc(gr) + '</small>' : '') + '</td>' + cellsHtml + '</tr>';
+                    + renderStudentNameCell(st, sid) + cellsHtml + '</tr>';
             }).join('');
             const rows = studentRows || '<tr>' + timeCell + '<td class="eie-att-nc eie-att-student-nc">-</td>' + emptyCols + '</tr>';
             return '<tbody class="eie-att-block">' + rows + '</tbody>';
@@ -741,6 +765,17 @@
         setClass: function (value) { _filterClass = text(value); EieState.clearAttendanceCellSelection(); EieRouter.open('attendance'); },
         setGrade: function (value) { _filterGrade = text(value); EieState.clearAttendanceCellSelection(); EieRouter.open('attendance'); },
         print: function () { if (typeof window !== 'undefined' && window.print) window.print(); },
+
+        openStudentDetail: async function (studentId) {
+            const sid = text(studentId);
+            if (!sid) return;
+            EieState.clearAttendanceCellSelection();
+            if (window.EieStudentsView && typeof EieStudentsView.openDetail === 'function') {
+                await EieStudentsView.openDetail(sid, null, 'basic');
+                return;
+            }
+            EieRouter.open('students');
+        },
 
         openStudent: function (date, cellId, studentId) {
             const rec = studentRecord(text(date), text(cellId), text(studentId));

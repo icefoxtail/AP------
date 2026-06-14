@@ -580,8 +580,9 @@
     function renderShortcutRow() {
         return '<div class="eie-teacher-quick-cards eie-p-chip-row">'
             + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openTimetable()">시간표</button>'
-            + '<button class="eie-teacher-quick-card eie-p-btn-save" type="button" onclick="EieTeacherView.openClassroomList()">클래스룸</button>'
+            + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openClassroomList()">클래스룸</button>'
             + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openAttendanceLedger()">출석부</button>'
+            + '<button class="eie-teacher-quick-card eie-p-btn-cancel" type="button" onclick="EieTeacherView.openGradeLedger(\'\', \'school\')">성적표</button>'
             + '</div>';
     }
 
@@ -763,6 +764,18 @@
                 return;
             }
             if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('attendance');
+        },
+        openGradeLedger: function (cellId, mode) {
+            if (window.EieGradeLedgerView && typeof EieGradeLedgerView.openLedger === 'function') {
+                EieGradeLedgerView.openLedger({
+                    classId: cellId || '',
+                    mode: mode || 'school',
+                    teacherName: _teacherName,
+                    monthKey: new Date().toLocaleDateString('sv-SE').slice(0, 7)
+                });
+                return;
+            }
+            if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('grades');
         },
         openConsultations: function () {
             openTeacherStudentList();

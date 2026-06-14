@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const css = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
+const css = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 const teacher = fs.readFileSync(path.join(root, 'eie/js/views/eie-teacher.js'), 'utf8');
 
 function lastCssBlock(selector) {
@@ -46,7 +46,7 @@ assert(
     teacher.includes('eie-teacher-home-head eie-p-card') &&
     teacher.includes('eie-teacher-day-row eie-p-card') &&
     teacher.includes('eie-teacher-chip eie-p-chip') &&
-    teacher.includes('eie-p-btn-save'),
+    teacher.includes('eie-p-btn-cancel'),
   'teacher dashboard markup should reuse EIE panel/card/chip/button classes'
 );
 

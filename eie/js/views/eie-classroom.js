@@ -286,12 +286,15 @@
     }
 
     function normalizeGrade(value) {
+        if (window.EieGradeUtils && typeof EieGradeUtils.normalizeEieGrade === 'function') {
+            return EieGradeUtils.normalizeEieGrade(value);
+        }
         var raw = text(value).replace(/\s+/g, '');
         var middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
         if (middle) return '중' + middle[1];
         var high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
         if (high) return '고' + high[1];
-        return raw;
+        return /^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
     }
 
     function schoolOf(student) {
@@ -669,7 +672,7 @@
         var count = students.length ? '재원' + String(students.length) : '';
         var absence = attendanceSummaryForCell(cell);
         var meta = [count, absence].filter(Boolean).join(' · ');
-        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(homeroomTeacherOfCell(cell))) + '" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(homeroomTeacherOfCell(cell))) + '" onclick="EieClassroomView.openDetailOnly(' + jsArg(cellId) + ', \'classroom\')">'
             + '<span class="eie-classroom-schedule-period">' + esc(text(cell && (cell.period_order || cell.period_label)) || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(cellTitle(cell)) + '</span>'
             + '<span class="eie-classroom-schedule-meta">' + esc(meta) + '</span>'
@@ -683,7 +686,7 @@
         var students = getAssignedStudents(cell);
         var count = students.length ? '재원' + String(students.length) : '';
         var meta = days.map(function (day) { return day + ' ' + name; }).join(' · ');
-        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(name)) + '" onclick="EieClassroomView.openDetail(' + jsArg(cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(name)) + '" onclick="EieClassroomView.openDetailOnly(' + jsArg(cellId) + ', \'classroom\')">'
             + '<span class="eie-classroom-schedule-period">' + esc(text(cell && (cell.period_order || cell.period_label)) || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(cellTitle(cell)) + '</span>'
             + '<span class="eie-classroom-schedule-meta">'
@@ -742,7 +745,7 @@
     }
 
     function renderTeacherDayRow(row) {
-        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(effectiveTeacherName())) + '" onclick="EieClassroomView.openDetail(' + jsArg(row.cellId) + ')">'
+        return '<button type="button" class="eie-classroom-schedule-row eie-p-card" data-eie-classroom-row-teacher-key="' + esc(teacherKey(effectiveTeacherName())) + '" onclick="EieClassroomView.openDetailOnly(' + jsArg(row.cellId) + ', \'classroom\')">'
             + '<span class="eie-classroom-schedule-period">' + esc(row.periodLabel || row.periodOrder || '-') + '</span>'
             + '<span class="eie-classroom-schedule-main">' + esc(row.className || '수업명 없음') + '</span>'
             + '<span class="eie-classroom-schedule-meta">'
@@ -828,7 +831,7 @@
         }
         try {
             var html = await EieTimetableView.renderPanelOnlyWithContext(ctx);
-            return student ? html : html + renderClassExamEntryPanel(cell);
+            return html;
         } catch (error) {
             return '';
         }
@@ -1052,52 +1055,6 @@ function renderCellTeacherPicker(cell) {
         { key: 'free', label: '자유기록' }
     ];
 
-    function renderExamCategoryOptions() {
-        return EXAM_CATEGORIES.map(function (item) {
-            return '<option value="' + esc(item.key) + '"' + (_examEntryCategory === item.key ? ' selected' : '') + '>' + esc(item.label) + '</option>';
-        }).join('');
-    }
-
-    function renderClassExamEntryPanel(cell) {
-        var cellId = text(cell && cell.id);
-        var students = getAssignedStudents(cell);
-        var date = _examEntryDate || todayIso();
-        var savedRows = _examEntryRecordsByCell[cellId] || [];
-        return '<div class="eie-class-exam-entry eie-p-card">'
-            + '<div class="eie-apms-section-head">'
-            + '<h3>성적 빠른 입력</h3>'
-            + '<button type="button" class="eie-secondary-button" onclick="EieClassroomView.toggleExamEntry()">'
-            + (_examEntryPanelOpen ? '닫기' : '열기')
-            + '</button>'
-            + '</div>'
-            + (_examEntryPanelOpen ? '<div class="eie-class-exam-entry-body">'
-                + '<div class="eie-class-exam-entry-controls">'
-                + '<label><span>종류</span><select id="class-exam-category" onchange="EieClassroomView.setExamEntryCategory(this.value)">' + renderExamCategoryOptions() + '</select></label>'
-                + '<label><span>날짜</span><input id="class-exam-date" type="date" value="' + esc(date) + '"></label>'
-                + '<label><span>제목</span><input id="class-exam-title" type="text" placeholder="평가명"></label>'
-                + '<label><span>만점</span><input id="class-exam-max-score" type="number" step="0.1" inputmode="decimal"></label>'
-                + '</div>'
-                + '<div class="eie-class-exam-entry-table">'
-                + '<div class="eie-class-exam-entry-head"><span>학생</span><span>점수</span><span>레벨</span><span>메모</span></div>'
-                + (students.length ? students.map(function (student) {
-                    var sid = text(student && (student.student_id || student.id));
-                    var rowId = 'class-exam-' + sid;
-                    return '<div class="eie-class-exam-entry-row" data-eie-exam-student="' + esc(sid) + '">'
-                        + '<strong>' + esc(displayName(student)) + '</strong>'
-                        + '<input id="' + esc(rowId) + '-score" type="number" step="0.1" inputmode="decimal" aria-label="' + esc(displayName(student) + ' 점수') + '">'
-                        + '<input id="' + esc(rowId) + '-level" type="text" aria-label="' + esc(displayName(student) + ' 레벨') + '">'
-                        + '<input id="' + esc(rowId) + '-memo" type="text" aria-label="' + esc(displayName(student) + ' 메모') + '">'
-                        + '</div>';
-                }).join('') : '<div class="eie-empty-box">배정된 학생이 없습니다.</div>')
-                + '</div>'
-                + '<div class="eie-exam-actions">'
-                + '<button type="button" class="eie-primary-button" onclick="EieClassroomView.saveClassExamRecords(' + jsArg(cellId) + ')" ' + (_saving || !students.length ? 'disabled' : '') + '>반 전체 저장</button>'
-                + (savedRows.length ? '<span class="eie-class-exam-entry-saved">최근 조회 ' + esc(String(savedRows.length)) + '건</span>' : '')
-                + '</div>'
-                + '</div>' : '')
-            + '</div>';
-    }
-
     // ── 수업 상세 패널 ────────────────────────────────────────────────
 // ── 학생 추가 패널 ────────────────────────────────────────────────
 function renderCards(cells) {
@@ -1112,7 +1069,7 @@ function renderCards(cells) {
                 var kicker = [cell.day_label, cell.period_label, teacherNamesOfCell(cell).join(', ')].filter(Boolean).join(' · ');
                 return '<button type="button"'
                     + ' class="eie-admin-card' + (isSelected ? ' is-selected' : '') + '"'
-                    + ' onclick="EieClassroomView.openDetail(' + jsArg(cell.id) + ')">'
+                    + ' onclick="EieClassroomView.openDetailOnly(' + jsArg(cell.id) + ', \'classroom\')">'
                     + '<span class="eie-admin-card-kicker">' + esc(kicker) + '</span>'
                     + '<strong>' + esc(cell.class_name_raw || '수업명 없음') + '</strong>'
                     + '<small>' + esc(String(students.length)) + '명 배정</small>'
@@ -1189,8 +1146,12 @@ function renderCards(cells) {
             }
 
             if (_detailOnlyMode && showPanel) {
+                var backRoute = _detailOnlyReturnRoute || classroomBackRoute();
+                var backLabel = backRoute === 'classroom' ? '클래스룸'
+                    : backRoute === 'dashboard' ? '대시보드'
+                    : '선생님 화면';
                 return '<section class="eie-classroom-screen eie-v2-screen" aria-labelledby="eie-classroom-title">'
-                    + '<button type="button" class="eie-back-button" data-eie-route="teacher" aria-label="선생님 화면으로 이동" title="선생님 화면">← 선생님 화면</button>'
+                    + '<button type="button" class="eie-back-button" onclick="EieClassroomView.closeDetail()" aria-label="' + esc(backLabel) + '(으)로 이동" title="' + esc(backLabel) + '">← ' + esc(backLabel) + '</button>'
                     + '<div class="eie-panel eie-p-panel eie-classroom-detail-only-panel">'
                     + '<h1 id="eie-classroom-title" class="eie-panel-title">수업 상세</h1>'
                     + errorHtml
@@ -1246,11 +1207,11 @@ function renderCards(cells) {
         },
 
         openCell: function (cellId) {
+            // 대시보드/학생 화면 등 클래스룸 목록 밖에서 진입하는 경로.
+            // split 목록을 띄우지 않고 단독 상세(detail-only)로 진입한다.
             _filterTeacherName = '';
             _todayFilterDate = '';
-            _detailOnlyMode = false;
-            _detailOnlyReturnRoute = '';
-            this.openDetail(cellId);
+            this.openDetailOnly(cellId, classroomBackRoute());
         },
 
         openTodayForTeacher: function (name, date) {
@@ -1271,23 +1232,11 @@ function renderCards(cells) {
         },
 
         openDetail: function (cellId) {
-            _selectedCellId = cellId;
-            _selectedStudentKey = null;
-            _editStudentMode = false;
-            _editCellTeachersMode = false;
-            _addStudentMode = false;
-            _attendancePanelOpen = false;
-            _consultationFormOpen = false;
-            _consultationDraftDate = '';
-            _examEntryPanelOpen = false;
-            _detailOnlyMode = false;
-            _detailOnlyReturnRoute = '';
-            EieRouter.open('classroom');
+            // 단독 상세로 진입(목록+상세 split 금지). 돌아갈 화면은 세션 기준.
+            this.openDetailOnly(cellId, classroomBackRoute());
         },
 
         openDetailOnly: function (cellId, returnRoute) {
-            _filterTeacherName = '';
-            _todayFilterDate = '';
             _selectedCellId = cellId;
             _selectedStudentKey = null;
             _editStudentMode = false;
@@ -1298,12 +1247,12 @@ function renderCards(cells) {
             _consultationDraftDate = '';
             _examEntryPanelOpen = false;
             _detailOnlyMode = true;
-            _detailOnlyReturnRoute = text(returnRoute || 'teacher');
+            _detailOnlyReturnRoute = text(returnRoute || classroomBackRoute());
             EieRouter.open('classroom');
         },
 
         closeDetail: function () {
-            var returnRoute = _detailOnlyMode ? (_detailOnlyReturnRoute || 'teacher') : 'classroom';
+            var returnRoute = _detailOnlyMode ? (_detailOnlyReturnRoute || classroomBackRoute()) : 'classroom';
             _selectedCellId = null;
             _selectedStudentKey = null;
             _editStudentMode = false;
@@ -1319,11 +1268,19 @@ function renderCards(cells) {
         },
 
         toggleExamEntry: function () {
-            _examEntryPanelOpen = !_examEntryPanelOpen;
-            if (!_examEntryDate) _examEntryDate = todayIso();
-            _attendancePanelOpen = false;
-            _consultationFormOpen = false;
-            EieRouter.open('classroom');
+            var cell = getSelectedCell();
+            this.openGradeLedger(cell && cell.id);
+        },
+        openGradeLedger: function (cellId) {
+            if (window.EieGradeLedgerView && typeof EieGradeLedgerView.openLedger === 'function') {
+                EieGradeLedgerView.openLedger({
+                    classId: cellId || _selectedCellId || '',
+                    mode: 'academy',
+                    monthKey: new Date().toLocaleDateString('sv-SE').slice(0, 7)
+                });
+                return;
+            }
+            EieRouter.open('grades');
         },
 
         setExamEntryCategory: function (category) {
@@ -1388,7 +1345,7 @@ function renderCards(cells) {
                 _saving = false;
                 EieRouter.open('classroom');
             } catch (err) {
-                _error = err && err.message ? err.message : '성적 빠른 입력 저장에 실패했습니다.';
+                _error = err && err.message ? err.message : '성적 입력 저장에 실패했습니다.';
                 _examEntryPanelOpen = true;
                 _saving = false;
                 EieRouter.open('classroom');
@@ -1510,7 +1467,7 @@ function renderCards(cells) {
             try {
                 await EieApi.updateStudent(studentId, {
                     display_name: name,
-                    grade: gradeEl ? gradeEl.value.trim() : '',
+                    grade: normalizeGrade(gradeEl ? gradeEl.value : ''),
                     school_name: schoolEl ? schoolEl.value.trim() : '',
                     phone: phoneEl ? phoneEl.value.trim() : undefined,
                     student_phone: phoneEl ? phoneEl.value.trim() : '',
