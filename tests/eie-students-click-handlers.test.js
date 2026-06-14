@@ -285,11 +285,12 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
     'create-parent-phone',
     'create-guardian-relation',
     'create-address',
-    'create-vehicle',
-    'create-pin'
+    'create-vehicle'
   ]) {
     assert(createHtml.includes(`id="${field}"`), `student create form should render ${field}`);
   }
+  assert(!createHtml.includes('id="create-pin"'), 'EIE student create form should not render a PIN field');
+  assert(!createHtml.includes('>PIN<'), 'EIE student screens should not show PIN labels');
 
   const fields = {
     'create-name': { value: '최신규' },
@@ -300,7 +301,6 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
     'create-guardian-relation': { value: '모' },
     'create-address': { value: '서울시 테스트구' },
     'create-vehicle': { value: '등원차량' },
-    'create-pin': { value: '1234' },
     'create-student-type': { value: '신입' },
     'create-status': { value: 'active' },
     'create-memo': { value: '담당 복수 선택' }
@@ -327,7 +327,7 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
   assert.strictEqual(createdPayload.guardian_relation, '모', 'student create payload should include guardian relation');
   assert.strictEqual(createdPayload.student_address, '서울시 테스트구', 'student create payload should include address');
   assert.strictEqual(createdPayload.vehicle_info, '등원차량', 'student create payload should include vehicle info');
-  assert.strictEqual(createdPayload.student_pin, '1234', 'student create payload should include PIN');
+  assert(!('student_pin' in createdPayload), 'EIE student create payload should not include PIN');
   assert.strictEqual(createdPayload.student_type, '신입', 'student create payload should include student type');
 
   console.log('EIE student click handler regression test passed');

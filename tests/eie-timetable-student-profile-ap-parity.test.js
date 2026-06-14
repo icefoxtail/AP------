@@ -238,6 +238,7 @@ async function assertGradeLedgerStudentFocus() {
   assert(html.includes('최근 활동'), 'basic tab should include recent activity');
   assert(html.includes('학생 이력'), 'basic tab should include student history');
   assert(html.includes('data-eie-v2-attendance-save="student_alpha"'), 'attendance save should remain available inside the AP-style basic body');
+  assert(!html.includes('PIN 번호') && !html.includes('eie-v2-edit-pin'), 'EIE student profile should not show or edit PIN');
 
   assert(css.includes('.eie-v2-ap-profile-panel'), 'CSS should scope the AP profile panel');
   assert(css.includes('.eie-v2-ap-tab.is-active'), 'CSS should style the AP underline active tab');
