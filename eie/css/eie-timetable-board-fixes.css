@@ -1355,21 +1355,10 @@
     align-items: center;
     background: #fff;
     border-bottom: 1px solid #e5e7eb;
-    display: grid;
-    grid-template-columns: 64px minmax(0, 1fr) 64px;
-    padding: 18px 20px 14px;
-}
-
-.eie-v2-ap-appbar strong {
-    color: #111827;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 1.2;
-    text-align: center;
-}
-
-.eie-v2-ap-appbar strong:empty {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 36px;
+    padding: 6px 10px;
 }
 
 .eie-v2-ap-appbar-cancel {
@@ -1380,8 +1369,9 @@
     font: inherit;
     font-size: 15px;
     font-weight: 700;
-    padding: 0;
-    text-align: left;
+    line-height: 1.2;
+    padding: 3px 4px;
+    text-align: right;
 }
 
 .eie-v2-ap-profile-shell {
@@ -1727,12 +1717,8 @@
 
 @media (max-width: 620px) {
     .eie-v2-ap-appbar {
-        grid-template-columns: 56px minmax(0, 1fr) 56px;
-        padding: 16px 16px 12px;
-    }
-
-    .eie-v2-ap-appbar strong {
-        font-size: 20px;
+        min-height: 34px;
+        padding: 5px 8px;
     }
 
     .eie-v2-ap-profile-shell {
