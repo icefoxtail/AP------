@@ -4,3 +4,205 @@
    - 로딩 순서: eie.css(공통) 다음에 로드한다.
    - 시간표 CSS(.eie-timetable-*, .eie-excel-*, .eie-v2-board-* 등)는 클래스룸 화면과 공유되고 반응형/print @media에서 순서 의존 override가 있어, 이번 라운드에서는 안전하게 분리할 단일 격리 블록이 없어 eie.css에 유지한다. (후속 Task에서 점진 이전.)
    ====================================================================== */
+
+/* EIE timetable mini classroom panel cleanup */
+.eie-v2-mini-classroom {
+    gap: 12px;
+    padding: 14px;
+}
+
+.eie-v2-mini-classroom .eie-p-head {
+    border-color: #d8dee8;
+    border-radius: 14px;
+    gap: 8px;
+    padding: 12px;
+}
+
+.eie-v2-mini-classroom .eie-p-head-top {
+    align-items: flex-start;
+}
+
+.eie-v2-mini-classroom .eie-p-title-row {
+    gap: 4px;
+}
+
+.eie-v2-mini-classroom .eie-p-title-row > span,
+.eie-v2-mini-classroom .eie-p-section-label {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0;
+    padding: 0;
+    text-transform: none;
+}
+
+.eie-v2-mini-classroom .eie-p-head-text .eie-p-title-input {
+    min-height: 32px;
+    border-color: #cbd5e1;
+    border-radius: 8px;
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 5px 10px;
+}
+
+.eie-v2-mini-classroom .eie-p-head-sub {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eie-v2-mini-classroom .eie-p-badge-row {
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.eie-v2-mini-classroom .eie-p-badge {
+    min-height: 24px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 9px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-form {
+    gap: 12px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-section {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-section-title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 26px;
+    padding: 0 2px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-section-action {
+    min-height: 30px;
+    padding: 0 12px;
+}
+
+.eie-v2-mini-classroom .eie-p-card,
+.eie-v2-mini-classroom .eie-p-drawer {
+    border-color: #d8dee8;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-card-compact {
+    padding: 0;
+}
+
+.eie-v2-mini-classroom .eie-p-chip-row {
+    gap: 7px;
+    padding: 10px 12px;
+}
+
+.eie-v2-mini-classroom .eie-p-chip {
+    min-height: 28px;
+    border-color: #d4dbe7;
+    border-radius: 999px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+}
+
+.eie-v2-mini-classroom .eie-v2-card-student.eie-p-chip {
+    background: #fff;
+    color: #1f2937;
+}
+
+.eie-v2-mini-classroom .eie-p-chip.is-add {
+    background: #f8fafc;
+    color: #64748b;
+}
+
+.eie-v2-mini-classroom .eie-p-day-grid {
+    gap: 6px;
+    grid-template-columns: 36px repeat(5, minmax(0, 1fr));
+}
+
+.eie-v2-mini-classroom .eie-p-day-head {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-v2-mini-classroom .eie-p-day-period {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-mini-classroom .eie-p-day-grid input {
+    min-height: 34px;
+    border-color: #cbd5e1;
+    border-radius: 7px;
+    color: #0f172a;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 5px 6px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-teacher-picker {
+    display: grid;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-teacher-list .eie-small-button {
+    min-height: 28px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+}
+
+.eie-v2-mini-classroom .eie-p-drawer-trigger {
+    min-height: 38px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 10px 12px;
+}
+
+.eie-v2-mini-classroom .eie-p-drawer-body {
+    gap: 10px;
+    padding: 12px;
+}
+
+.eie-v2-mini-classroom .eie-v2-mini-time-grid {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 620px) {
+    .eie-v2-mini-classroom {
+        padding: 10px;
+    }
+
+    .eie-v2-mini-classroom .eie-p-head-top {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .eie-v2-mini-classroom .eie-p-head-actions {
+        justify-content: flex-end;
+    }
+
+    .eie-v2-mini-classroom .eie-v2-mini-time-grid {
+        grid-template-columns: 1fr;
+    }
+}

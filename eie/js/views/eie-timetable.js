@@ -3027,23 +3027,27 @@
         const students = Array.isArray(session?.students) ? session.students : [];
         const date = todayIso();
         return `
-            <span class="eie-p-section-label">출결</span>
-            <div class="eie-p-card" style="padding:0;">
-                <div class="eie-p-chip-row">
-                    ${students.length ? students.map(student => {
-                        const sid = studentDetailId(student);
-                        const name = studentSearchName(student) || student.name || '학생';
-                        const record = classAttendanceRecord(sid, date);
-                        const status = classAttendanceStatusLabel(record?.status);
-                        const statusClass = classAttendanceStatusClass(record?.status);
-                        return `<button type="button" class="eie-p-chip eie-p-attendance-chip ${esc(statusClass)}"
-                            data-eie-v2-class-attendance="${esc(sid)}"
-                            data-session-id="${esc(session.session_id)}"
-                            data-cell-id="${esc(session.source_cell_ids?.[0] || '')}"
-                            data-date="${esc(date)}">${esc(name)} · ${esc(status)}</button>`;
-                    }).join('') : '<span class="eie-p-field-value is-empty">배정된 학생이 없습니다.</span>'}
+            <section class="eie-v2-mini-section">
+                <div class="eie-v2-mini-section-title">
+                    <span class="eie-p-section-label">출결</span>
                 </div>
-            </div>
+                <div class="eie-p-card eie-v2-mini-card-compact">
+                    <div class="eie-p-chip-row">
+                        ${students.length ? students.map(student => {
+                            const sid = studentDetailId(student);
+                            const name = studentSearchName(student) || student.name || '학생';
+                            const record = classAttendanceRecord(sid, date);
+                            const status = classAttendanceStatusLabel(record?.status);
+                            const statusClass = classAttendanceStatusClass(record?.status);
+                            return `<button type="button" class="eie-p-chip eie-p-attendance-chip ${esc(statusClass)}"
+                                data-eie-v2-class-attendance="${esc(sid)}"
+                                data-session-id="${esc(session.session_id)}"
+                                data-cell-id="${esc(session.source_cell_ids?.[0] || '')}"
+                                data-date="${esc(date)}">${esc(name)} · ${esc(status)}</button>`;
+                        }).join('') : '<span class="eie-p-field-value is-empty">배정된 학생이 없습니다.</span>'}
+                    </div>
+                </div>
+            </section>
         `;
     }
 
@@ -3083,7 +3087,7 @@
                     <div class="eie-p-head-identity">
                         <div class="eie-p-head-text">
                             <label class="eie-p-title-row" for="eie-v2-mini-material">
-                                <span>Class</span>
+                                <span>반명</span>
                                 <input id="eie-v2-mini-material" class="eie-p-title-input" type="text" value="${esc(session.material || '')}" placeholder="반명" autocomplete="off">
                             </label>
                             <span class="eie-p-head-sub eie-tabular">${esc(session.period_label || '교시 미정')}${time ? ` · ${esc(time)}` : ''}</span>
@@ -3102,32 +3106,41 @@
                 ${viewState.miniNotice ? `<div class="eie-v2-info" role="status">${esc(viewState.miniNotice)}</div>` : ''}
             </div>
             <div class="eie-v2-mini-form" data-eie-v2-mini-session="${esc(session.session_id)}">
-                <span class="eie-p-section-label">교시별 담당</span>
-                <div class="eie-p-card">
-                    ${renderMiniDayTeacherEditor(session)}
-                </div>
-                <span class="eie-p-section-label">학생 명단</span>
-                <div class="eie-p-card" style="padding:0;">
-                    ${renderMiniStudentManager(session)}
-                </div>
-                ${viewState.classAttendanceSessionId !== session.session_id ? `
-                <div class="eie-v2-detail-actions">
-                    <button type="button" class="eie-secondary-button" data-eie-v2-class-attendance-toggle="${esc(session.session_id)}">출결</button>
-                </div>` : ''}
-                ${renderMiniClassAttendance(session)}
-                <span class="eie-p-section-label">더보기</span>
-                <details class="eie-p-drawer">
-                    <summary class="eie-p-drawer-trigger">메모·기본 정보<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
-                    <div class="eie-p-drawer-body">
-                        <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-mini-memo" class="eie-v2-mini-memo-area">${esc(session.memo || '')}</textarea></label>
-                        <div class="eie-p-divider"></div>
-                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-                            <label class="eie-p-form-field"><span>교시</span><input id="eie-v2-mini-period" class="eie-tabular" type="text" value="${esc(session.period_label || first.period_label || '')}" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
-                            <label class="eie-p-form-field"><span>시작</span><input id="eie-v2-mini-start" class="eie-tabular" type="text" value="${esc(startInputValue)}" inputmode="numeric" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
-                            <label class="eie-p-form-field"><span>종료</span><input id="eie-v2-mini-end" class="eie-tabular" type="text" value="${esc(endInputValue)}" inputmode="numeric" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
-                        </div>
+                <section class="eie-v2-mini-section">
+                    <div class="eie-v2-mini-section-title">
+                        <span class="eie-p-section-label">교시별 담당</span>
                     </div>
-                </details>
+                    <div class="eie-p-card">
+                        ${renderMiniDayTeacherEditor(session)}
+                    </div>
+                </section>
+                <section class="eie-v2-mini-section">
+                    <div class="eie-v2-mini-section-title">
+                        <span class="eie-p-section-label">학생 명단</span>
+                        ${viewState.classAttendanceSessionId !== session.session_id ? `<button type="button" class="eie-secondary-button eie-v2-mini-section-action" data-eie-v2-class-attendance-toggle="${esc(session.session_id)}">출결</button>` : ''}
+                    </div>
+                    <div class="eie-p-card eie-v2-mini-card-compact">
+                        ${renderMiniStudentManager(session)}
+                    </div>
+                </section>
+                ${renderMiniClassAttendance(session)}
+                <section class="eie-v2-mini-section">
+                    <div class="eie-v2-mini-section-title">
+                        <span class="eie-p-section-label">더보기</span>
+                    </div>
+                    <details class="eie-p-drawer">
+                        <summary class="eie-p-drawer-trigger">메모·기본 정보<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
+                        <div class="eie-p-drawer-body">
+                            <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-mini-memo" class="eie-v2-mini-memo-area">${esc(session.memo || '')}</textarea></label>
+                            <div class="eie-p-divider"></div>
+                            <div class="eie-v2-mini-time-grid">
+                                <label class="eie-p-form-field"><span>교시</span><input id="eie-v2-mini-period" class="eie-tabular" type="text" value="${esc(session.period_label || first.period_label || '')}" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
+                                <label class="eie-p-form-field"><span>시작</span><input id="eie-v2-mini-start" class="eie-tabular" type="text" value="${esc(startInputValue)}" inputmode="numeric" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
+                                <label class="eie-p-form-field"><span>종료</span><input id="eie-v2-mini-end" class="eie-tabular" type="text" value="${esc(endInputValue)}" inputmode="numeric" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
+                            </div>
+                        </div>
+                    </details>
+                </section>
             </div>
         `;
     }

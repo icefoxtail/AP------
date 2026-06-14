@@ -5,7 +5,10 @@ const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
-const css = fs.readFileSync(path.join(root, 'eie/css/eie-timetable-board-fixes.css'), 'utf8');
+const css = [
+  fs.readFileSync(path.join(root, 'eie/css/eie-timetable-board-fixes.css'), 'utf8'),
+  fs.readFileSync(path.join(root, 'eie/css/eie-timetable.css'), 'utf8')
+].join('\n');
 const apmathStudentSource = fs.readFileSync(path.join(root, 'apmath/js/student.js'), 'utf8');
 const gradeLedgerSource = fs.readFileSync(path.join(root, 'eie/js/views/eie-grade-ledger.js'), 'utf8');
 const gradeLedgerCss = fs.readFileSync(path.join(root, 'eie/css/eie-grade-ledger.css'), 'utf8');
@@ -241,6 +244,16 @@ async function assertGradeLedgerStudentFocus() {
   assert(html.includes('data-eie-v2-attendance-save="student_alpha"'), 'attendance save should remain available inside the AP-style basic body');
   assert(!html.includes('PIN 번호') && !html.includes('eie-v2-edit-pin'), 'EIE student profile should not show or edit PIN');
 
+  const classHtml = await context.EieTimetableView.renderPanelOnlyWithContext({
+    route: 'timetable',
+    cellId: 'cell_alpha'
+  });
+  assert(classHtml.includes('eie-v2-mini-classroom'), 'timetable class detail should render the mini classroom panel');
+  assert((classHtml.match(/eie-v2-mini-section/g) || []).length >= 4, 'mini classroom panel should group content into consistent sections');
+  assert(classHtml.includes('eie-v2-mini-section-title'), 'mini classroom sections should expose a visible hierarchy hook');
+  assert(classHtml.includes('eie-v2-mini-card-compact'), 'mini classroom compact cards should use a reusable class instead of inline padding');
+  assert(!classHtml.includes('style="padding:0;"'), 'mini classroom panel should not rely on inline padding overrides');
+
   assert(css.includes('.eie-v2-ap-profile-panel'), 'CSS should scope the AP profile panel');
   assert(css.includes('.eie-v2-ap-tab.is-active'), 'CSS should style the AP underline active tab');
   assert(css.includes('.eie-v2-ap-profile-panel .eie-v2-panel-consultation-card'), 'CSS should restyle consultation cards inside the AP profile panel');
@@ -248,6 +261,10 @@ async function assertGradeLedgerStudentFocus() {
   assert(/@media \(max-width:\s*620px\)\s*\{[\s\S]*\.eie-v2-ap-appbar\s*\{[\s\S]*min-height:\s*34px;[\s\S]*padding:\s*5px 8px;/.test(css), 'profile appbar should stay compact on mobile');
   assert(/\.eie-v2-ap-profile-shell\s*\{[\s\S]*padding:\s*10px;/.test(css), 'profile shell padding should match APMATH mobile detail-shell padding');
   assert(/\.eie-v2-ap-card,\s*\.eie-v2-ap-form-card\s*\{[\s\S]*padding:\s*12px;/.test(css), 'profile cards should match APMATH card padding');
+  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-form\s*\{[\s\S]*gap:\s*12px;/.test(css), 'mini classroom form should use consistent vertical rhythm');
+  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-section\s*\{[\s\S]*display:\s*grid;[\s\S]*gap:\s*6px;/.test(css), 'mini classroom sections should normalize label-to-card spacing');
+  assert(/\.eie-v2-mini-classroom\s+\.eie-p-section-label\s*\{[\s\S]*font-size:\s*11px;[\s\S]*font-weight:\s*800;/.test(css), 'mini classroom section labels should have clearer hierarchy');
+  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-card-compact\s*\{[\s\S]*padding:\s*0;/.test(css), 'mini classroom compact cards should replace inline padding overrides');
 
   const gradeHtml = await context.EieTimetableView.renderPanelOnlyWithContext({
     route: 'timetable',
