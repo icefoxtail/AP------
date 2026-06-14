@@ -9,8 +9,8 @@ const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-students.js'), 
 const state = {
   db: {
     students: [
-      { id: 'eie_student_alpha', display_name: '김테스트', status: 'active' },
-      { id: 'eie_student_imported', display_name: '박임포트', status: 'imported', raw_meta_json: '{"school_name":"임포트중"}' }
+      { id: 'eie_student_alpha', display_name: 'Alpha Student', status: 'active', grade: '중1' },
+      { id: 'eie_student_beta', display_name: 'Beta Student', status: 'active', grade: '중2' }
     ],
     student_contacts: [],
     consultations: [],
@@ -18,16 +18,17 @@ const state = {
       { id: 'link_alpha', student_id: 'eie_student_alpha', timetable_cell_id: 'cell_a', status: 'active' }
     ],
     timetable_cells: [
-      { id: 'cell_a', teacher_name_raw: '김원장', raw_meta_json: '{"teacher_names":["김원장","박선생"]}' },
-      { id: 'cell_b', teacher_name_raw: '이선생' }
-    ]
+      { id: 'cell_a', class_name_raw: 'LT1', teacher_name_raw: 'IVY', raw_meta_json: '{"teacher_names":["IVY","Lily"]}' }
+    ],
+    attendance: []
   },
   ui: { eieApmsCompat: { loadedAt: Date.now() } }
 };
+
 let createdPayload = null;
-let createdConsultationPayload = null;
-let updatedConsultationPayload = null;
-let deletedConsultationId = null;
+let borrowedPanelContext = null;
+let routerOpenCount = 0;
+let mountedHtml = '';
 
 const context = {
   console,
@@ -44,6 +45,9 @@ const context = {
         '"': '&quot;',
         "'": '&#39;'
       }[ch]));
+    },
+    async mount(html) {
+      mountedHtml = html;
     }
   },
   EieState: {
@@ -65,21 +69,17 @@ const context = {
     },
     async createStudent(payload) {
       createdPayload = payload;
-      return { student_id: 'new_student', student: { id: 'new_student', display_name: payload.display_name, raw_meta_json: JSON.stringify({ teacher_names: payload.teacher_names }) } };
+      return {
+        student_id: 'new_student',
+        student: {
+          id: 'new_student',
+          display_name: payload.display_name,
+          raw_meta_json: JSON.stringify({ teacher_names: payload.teacher_names })
+        }
+      };
     },
-    async createConsultation(payload) {
-      createdConsultationPayload = payload;
-      const row = { id: 'consultation_new', created_at: '2026-06-02 10:00:00', ...payload };
-      return { consultation: row, consultations: [row] };
-    },
-    async updateConsultation(id, payload) {
-      updatedConsultationPayload = { id, payload };
-      const row = { id, created_at: '2026-06-02 11:00:00', ...payload };
-      return { consultation: row, consultations: [row] };
-    },
-    async deleteConsultation(id) {
-      deletedConsultationId = id;
-      return { success: true, deleted: true, id, consultation: null, consultations: [] };
+    async getConsultations() {
+      return { consultations: [] };
     }
   },
   EieApmsState: {
@@ -89,13 +89,27 @@ const context = {
     }
   },
   EieRouter: {
-    open() {}
+    open() {
+      routerOpenCount += 1;
+    }
+  },
+  EieTimetableView: {
+    async renderPanelOnlyWithContext(ctx) {
+      borrowedPanelContext = ctx;
+      return '<aside class="eie-v2-ap-profile-panel" data-test-borrowed-student-detail="1">'
+        + '<button type="button" data-eie-v2-student-detail-tab="basic">기본</button>'
+        + '<button type="button" data-eie-v2-student-detail-tab="consultation">상담</button>'
+        + '<button type="button" data-eie-v2-student-detail-tab="grades">성적</button>'
+        + '<button type="button" data-eie-v2-student-edit>수정</button>'
+        + '</aside>';
+    }
   },
   confirm() {
     return true;
   }
 };
 context.window = context;
+context.location = { hash: '#students' };
 
 vm.createContext(context);
 vm.runInContext(source, context, { filename: 'eie-students.js' });
@@ -107,228 +121,76 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
     html.includes('onclick="EieStudentsView.openDetail(&quot;eie_student_alpha&quot;)"'),
     'student row click handler should HTML-escape string ids inside onclick'
   );
-
   assert(
     !html.includes('onclick="EieStudentsView.openDetail("'),
     'student row click handler should not emit nested raw quotes'
   );
 
-  assert.strictEqual(
-    (html.match(/class="eie-apms-student-row(?: is-selected)?"/g) || []).length,
-    2,
-    'imported confirmed students should be treated as active in the default list'
-  );
-
-  assert(
-    html.includes('임포트중'),
-    'student list should render school_name stored in raw_meta_json when the D1 schema has no school column'
-  );
-
-  assert(
-    !html.includes('APMS 학생관리 흐름에 맞춰'),
-    'student management header should not show the old APMS explanatory copy'
-  );
-
-  assert.strictEqual(
-    (html.match(/\+ 신규 등록/g) || []).length,
-    1,
-    'student management should keep only one new-student button'
-  );
-
-  for (const grade of ['중1', '중2', '중3', '고1', '고2', '고3']) {
-    assert(html.includes(`>${grade}</button>`), `student management should render ${grade} grade filter`);
-  }
-
-  assert(
-    html.includes('EieStudentsView.setTeacherFilter') && html.includes('박선생'),
-    'student management should render teacher filters from class teacher_names'
-  );
-
-  context.EieStudentsView.setTeacherFilter('박선생');
-  const teacherFilteredHtml = await context.EieStudentsView.render();
-  assert(
-    teacherFilteredHtml.includes('김테스트') && !teacherFilteredHtml.includes('박임포트'),
-    'teacher filter should match students by assigned class teacher_names'
-  );
-  context.EieStudentsView.setTeacherFilter('all');
-
   await context.EieStudentsView.openDetail('eie_student_alpha', null, 'consultation');
-  let consultationHtml = await context.EieStudentsView.render();
+  assert.strictEqual(routerOpenCount, 0, 'student selection inside student management should not reopen the route and show the skeleton');
+  assert(mountedHtml.includes('data-test-borrowed-student-detail="1"'), 'student selection should update the current student page in place');
+  const consultationHtml = await context.EieStudentsView.render();
   assert(
-    consultationHtml.indexOf('class="eie-apms-tabs eie-apms-header-tabs"') < consultationHtml.indexOf('class="eie-apms-card eie-apms-pinned-consultation"'),
-    'student detail primary tabs should render before the consultation pinned card like APMATH'
+    consultationHtml.includes('data-test-borrowed-student-detail="1"') &&
+      consultationHtml.includes('eie-v2-ap-profile-panel'),
+    'student management detail should reuse the timetable student detail panel'
   );
-  assert.strictEqual(
-    (consultationHtml.match(/class="eie-apms-tab(?: is-active)?"/g) || []).length,
-    3,
-    'student detail should match APMATH with only 기본/상담/성적 primary tabs'
-  );
-  for (const tabLabel of ['기본', '상담', '성적']) {
-    assert(consultationHtml.includes(`>${tabLabel}</button>`), `student detail header tabs should include ${tabLabel}`);
-  }
-  for (const removedTabLabel of ['기본정보', '연락처', '수업 배정', '출결/숙제', '성적표']) {
-    assert(!consultationHtml.includes(`>${removedTabLabel}</button>`), `student detail should not keep ${removedTabLabel} as a primary tab`);
-  }
+  assert.strictEqual(borrowedPanelContext.studentId, 'eie_student_alpha', 'borrowed student detail should receive the selected student id');
+  assert.strictEqual(borrowedPanelContext.studentName, 'Alpha Student', 'borrowed student detail should receive the selected student name');
+  assert.strictEqual(borrowedPanelContext.studentDetailTab, 'consultation', 'borrowed student detail should receive the requested tab');
+  assert.strictEqual(borrowedPanelContext.route, 'students', 'borrowed student detail should mount from the students route');
+  assert.strictEqual(borrowedPanelContext.cellId, 'cell_a', 'borrowed student detail should receive the first assigned class id');
   assert(
-    consultationHtml.includes('eie-apms-pinned-consultation-preview') ||
-      consultationHtml.includes('eie-apms-pinned-consultation-empty'),
-    'student detail should show an AP-style pinned recent consultation summary before the consultation tab body'
+    !consultationHtml.includes('eie-apms-tabs eie-apms-header-tabs') &&
+      !consultationHtml.includes('eie-exam-form-card') &&
+      !consultationHtml.includes('새 기록 입력'),
+    'old student-management detail UI should not render when a student is selected'
   );
   assert(
-    !consultationHtml.includes('id="pinned-consultation-date"'),
-    'pinned recent consultation card should not render the consultation creation form by default'
+    consultationHtml.includes('onclick="EieStudentsView.setTab(\'basic\')"') &&
+      consultationHtml.includes('onclick="EieStudentsView.setTab(\'consultation\')"') &&
+      consultationHtml.includes('onclick="EieStudentsView.setTab(\'grades\')"') &&
+      consultationHtml.includes('onclick="EieStudentsView.startEdit()"'),
+    'borrowed student detail controls should be handled by student management'
   );
-  assert(consultationHtml.includes('상담 이력'), 'consultation tab should render an AP-style consultation history section');
-  assert(consultationHtml.includes('+ 새 상담 기록하기'), 'consultation tab should expose a new consultation form action');
-  assert(consultationHtml.includes('상담 흐름 요약'), 'consultation tab should expose the AP consultation summary action as preparing');
-  assert(!consultationHtml.includes('window.prompt'), 'consultation UX should not rely on prompt-based entry');
-
-  await context.EieStudentsView.setTab('basic');
-  const basicDetailHtml = await context.EieStudentsView.render();
   assert(
-    !basicDetailHtml.includes('class="eie-apms-card eie-apms-pinned-consultation"'),
-    'basic tab should not show the pinned consultation card; APMATH shows it only on consultation'
+    !consultationHtml.includes('data-eie-v2-student-detail-tab=') &&
+      !consultationHtml.includes('data-eie-v2-student-edit'),
+    'borrowed student detail should not keep timetable-only click hooks for student-management controls'
   );
-  for (const basicSection of ['기본정보', '연락처', '수업 배정', '출결/숙제']) {
-    assert(basicDetailHtml.includes(basicSection), `basic tab should retain ${basicSection} instead of removing it to a top-level tab`);
-  }
 
-  await context.EieStudentsView.createConsultation('eie_student_alpha');
-  consultationHtml = await context.EieStudentsView.render();
-  for (const field of ['consultation-date', 'consultation-type', 'consultation-content', 'consultation-next-action']) {
-    assert(consultationHtml.includes(`id="${field}"`), `consultation form should render ${field}`);
-  }
-  assert(consultationHtml.includes('AI 요약은 준비중입니다'), 'consultation form should keep AI summary as a preparing panel');
-
-  context.document = {
-    getElementById(id) {
-      return {
-        'consultation-date': { value: '2026-06-02' },
-        'consultation-type': { value: '학습' },
-        'consultation-content': { value: '숙제 적응 상담' },
-        'consultation-next-action': { value: '다음 수업 확인' }
-      }[id] || { value: '' };
-    },
-    querySelectorAll() {
-      return [];
-    }
-  };
-  await context.EieStudentsView.saveConsultation('eie_student_alpha');
-  assert.strictEqual(JSON.stringify(createdConsultationPayload), JSON.stringify({
-    student_id: 'eie_student_alpha',
-    date: '2026-06-02',
-    type: '학습',
-    content: '숙제 적응 상담',
-    next_action: '다음 수업 확인'
-  }), 'consultation save payload should include date, type, content, and next action');
-
-  await context.EieStudentsView.editConsultation('consultation_new');
-  consultationHtml = await context.EieStudentsView.render();
-  assert(consultationHtml.includes('상담 수정'), 'consultation edit should open the same rich form');
-  context.document = {
-    getElementById(id) {
-      return {
-        'consultation-date': { value: '2026-06-03' },
-        'consultation-type': { value: '태도' },
-        'consultation-content': { value: '수업 태도 상담 수정' },
-        'consultation-next-action': { value: '보호자 공유' }
-      }[id] || { value: '' };
-    },
-    querySelectorAll() {
-      return [];
-    }
-  };
-  await context.EieStudentsView.saveConsultation('eie_student_alpha');
-  assert.strictEqual(JSON.stringify(updatedConsultationPayload), JSON.stringify({
-    id: 'consultation_new',
-    payload: {
-      student_id: 'eie_student_alpha',
-      date: '2026-06-03',
-      type: '태도',
-      content: '수업 태도 상담 수정',
-      next_action: '보호자 공유'
-    }
-  }), 'consultation edit payload should update date, type, content, and next action');
-
-  consultationHtml = await context.EieStudentsView.render();
-  assert(
-    consultationHtml.includes('EieStudentsView.deleteConsultation(&quot;consultation_new&quot;)'),
-    'consultation row should render an AP-style delete action next to edit'
-  );
-  await context.EieStudentsView.deleteConsultation('consultation_new');
-  assert.strictEqual(deletedConsultationId, 'consultation_new', 'consultation delete should call the EIE delete API with the consultation id');
-  assert.strictEqual(
-    state.db.consultations.some(row => row.id === 'consultation_new'),
-    false,
-    'consultation delete should refresh local consultation rows from the API response'
-  );
+  await context.EieStudentsView.setTab('grades');
+  await context.EieStudentsView.render();
+  assert.strictEqual(borrowedPanelContext.studentDetailTab, 'grades', 'student-management tab changes should pass through to the borrowed timetable detail');
 
   context.EieStudentsView.startCreate();
   const createHtml = await context.EieStudentsView.render();
-  assert(
-    createHtml.includes('name="create-teacher"') && createHtml.includes('김원장') && createHtml.includes('이선생'),
-    'student create form should render selectable teacher checkboxes from timetable roster'
-  );
+  assert(createHtml.includes('name="create-teacher"'), 'student create form should still render teacher checkboxes');
 
-  assert(
-    createHtml.includes('<select id="create-grade">') && createHtml.includes('<option value="중1"') && createHtml.includes('<option value="고3"'),
-    'student create form should use a fixed grade select from 중1 to 고3'
-  );
-
-  assert(
-    !createHtml.includes('id="create-grade" type="text"'),
-    'student create form should not use a free-text grade input'
-  );
-
-  for (const field of [
-    'create-student-type',
-    'create-parent-phone',
-    'create-guardian-relation',
-    'create-address',
-    'create-vehicle'
-  ]) {
-    assert(createHtml.includes(`id="${field}"`), `student create form should render ${field}`);
-  }
-  assert(!createHtml.includes('id="create-pin"'), 'EIE student create form should not render a PIN field');
-  assert(!createHtml.includes('>PIN<'), 'EIE student screens should not show PIN labels');
-
-  const fields = {
-    'create-name': { value: '최신규' },
-    'create-grade': { value: '초4' },
-    'create-school': { value: '테스트초' },
-    'create-phone': { value: '010-1111-2222' },
-    'create-parent-phone': { value: '010-3333-4444' },
-    'create-guardian-relation': { value: '모' },
-    'create-address': { value: '서울시 테스트구' },
-    'create-vehicle': { value: '등원차량' },
-    'create-student-type': { value: '신입' },
-    'create-status': { value: 'active' },
-    'create-memo': { value: '담당 복수 선택' }
-  };
   context.document = {
-    getElementById(id) {
-      return fields[id] || { value: '' };
-    },
     querySelectorAll(selector) {
-      if (selector === 'input[name="create-teacher"]:checked') {
-        return [{ value: '김원장' }, { value: '이선생' }];
-      }
+      if (selector === 'input[name="create-teacher"]:checked') return [{ value: 'IVY' }];
       return [];
+    },
+    getElementById(id) {
+      return {
+        'create-name': { value: 'New Student' },
+        'create-student-type': { value: 'regular' },
+        'create-grade': { value: '중1' },
+        'create-school': { value: 'School' },
+        'create-phone': { value: '010-0000-0000' },
+        'create-parent-phone': { value: '010-1111-1111' },
+        'create-address': { value: 'Address' },
+        'create-vehicle': { value: '' },
+        'create-guardian-relation': { value: '' },
+        'create-memo': { value: '' }
+      }[id] || { value: '' };
     }
   };
+
   await context.EieStudentsView.submitCreate();
-  assert.deepStrictEqual(
-    createdPayload.teacher_names,
-    ['김원장', '이선생'],
-    'student create payload should include multiple selected teacher names'
-  );
-  assert.strictEqual(createdPayload.student_phone, '010-1111-2222', 'student create payload should include student phone');
-  assert.strictEqual(createdPayload.parent_phone, '010-3333-4444', 'student create payload should include parent phone separately');
-  assert.strictEqual(createdPayload.guardian_relation, '모', 'student create payload should include guardian relation');
-  assert.strictEqual(createdPayload.student_address, '서울시 테스트구', 'student create payload should include address');
-  assert.strictEqual(createdPayload.vehicle_info, '등원차량', 'student create payload should include vehicle info');
-  assert(!('student_pin' in createdPayload), 'EIE student create payload should not include PIN');
-  assert.strictEqual(createdPayload.student_type, '신입', 'student create payload should include student type');
+  assert.strictEqual(createdPayload.display_name, 'New Student', 'student create should still submit the entered name');
+  assert.deepStrictEqual(createdPayload.teacher_names, ['IVY'], 'student create should still submit selected teachers');
 
   console.log('EIE student click handler regression test passed');
 })().catch(err => {

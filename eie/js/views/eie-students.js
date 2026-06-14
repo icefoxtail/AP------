@@ -1057,18 +1057,35 @@
             + '</div>';
     }
 
-    function renderDetail(student) {
+    async function renderSharedStudentDetail(student) {
+        if (!student) return renderEmptyDetail();
+        if (!window.EieTimetableView || typeof EieTimetableView.renderPanelOnlyWithContext !== 'function') {
+            return '<aside class="eie-apms-detail-panel is-empty"><div class="eie-apms-detail-empty-title">학생 상세를 불러올 수 없습니다.</div></aside>';
+        }
+        var assignment = assignmentsOf(student)[0] || {};
+        var sid = rowId(student);
+        var tab = _tab === 'consultation' ? 'consultation' : (_tab === 'grades' ? 'grades' : 'basic');
+        var panel = await EieTimetableView.renderPanelOnlyWithContext({
+            route: 'students',
+            mountRoute: 'students',
+            studentId: sid,
+            studentName: displayName(student),
+            studentDetailTab: tab,
+            cellId: text(assignment.cellId || assignment.cell_id || assignment.timetable_cell_id || '')
+        });
+        return String(panel || '')
+            .replace(/data-eie-v2-student-back/g, 'onclick="EieStudentsView.closeDetail()"')
+            .replace(/data-eie-v2-student-edit/g, 'onclick="EieStudentsView.startEdit()"')
+            .replace(/data-eie-v2-student-detail-tab="basic"/g, 'onclick="EieStudentsView.setTab(\'basic\')" data-eie-students-borrowed-tab="basic"')
+            .replace(/data-eie-v2-student-detail-tab="consultation"/g, 'onclick="EieStudentsView.setTab(\'consultation\')" data-eie-students-borrowed-tab="consultation"')
+            .replace(/data-eie-v2-student-detail-tab="grades"/g, 'onclick="EieStudentsView.setTab(\'grades\')" data-eie-students-borrowed-tab="grades"');
+    }
+
+    async function renderDetail(student) {
         if (!student) return renderEmptyDetail();
         var sid = rowId(student);
         if (_mode === 'edit') return renderEditForm(student);
-
-        return '<aside class="eie-apms-detail-panel">'
-            + renderDetailHeader(student)
-            + renderDetailTabs()
-            + (_tab === 'consultation' ? renderPinnedConsultationCard(student) : '')
-            + renderReturnAction()
-            + renderTabBody(student)
-            + '</aside>';
+        return renderSharedStudentDetail(student);
     }
 
     function renderCreateForm() {
@@ -1177,6 +1194,18 @@
         if (normalized) _returnCtx = normalized;
     }
 
+    function isStudentsRouteActive() {
+        return String(window.location && window.location.hash || '').replace(/^#/, '') === 'students';
+    }
+
+    async function refreshStudentsView() {
+        if (isStudentsRouteActive() && window.EieApp && typeof EieApp.mount === 'function') {
+            await EieApp.mount(await window.EieStudentsView.render());
+            return;
+        }
+        if (window.EieRouter && typeof EieRouter.open === 'function') await EieRouter.open('students');
+    }
+
     function renderReturnAction() {
         if (!_returnCtx) return '';
         return '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.returnToTimetable()">시간표로 돌아가기</button>';
@@ -1211,7 +1240,7 @@
             await loadFoundation(false);
             var selected = selectedStudent();
             if (_selectedId && !selected) selected = null;
-            var panel = _mode === 'create' ? renderCreateForm() : renderDetail(selected);
+            var panel = _mode === 'create' ? renderCreateForm() : await renderDetail(selected);
             var noticeHtml = _notice ? '<div class="eie-success-box">' + esc(_notice) + '</div>' : '';
             var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
             var loadingHtml = _loading ? '<div class="eie-api-note">학생 정보를 불러오는 중입니다.</div>' : '';
@@ -1275,10 +1304,10 @@
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
             if (_selectedId && _tab === 'grades') await loadStudentExamRecords(_selectedId);
-            var opened = EieRouter.open('students');
+            var opened = refreshStudentsView();
             if (sid && _tab !== 'consultation') {
                 loadStudentConsultations(sid).then(function () {
-                    if (_selectedId === sid && _mode === 'detail') EieRouter.open('students');
+                    if (_selectedId === sid && _mode === 'detail') refreshStudentsView();
                 });
             }
             return opened;
@@ -1287,7 +1316,7 @@
         closeDetail: function () {
             _selectedId = '';
             _mode = 'detail';
-            EieRouter.open('students');
+            refreshStudentsView();
         },
 
         startCreate: function () {
@@ -1321,12 +1350,12 @@
             if (studentId) _selectedId = text(studentId);
             _mode = 'edit';
             _notice = '';
-            EieRouter.open('students');
+            refreshStudentsView();
         },
 
         cancelEdit: function () {
             _mode = 'detail';
-            EieRouter.open('students');
+            refreshStudentsView();
         },
 
         submitEdit: async function (studentId) {
@@ -1617,7 +1646,7 @@
             if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId);
             if (_selectedId && _tab === 'grades') await loadStudentExamRecords(_selectedId);
-            EieRouter.open('students');
+            await refreshStudentsView();
         },
 
         setExamCategory: function (category) {
@@ -1625,7 +1654,7 @@
                 _examCategory = category;
             }
             _tab = 'grades';
-            EieRouter.open('students');
+            refreshStudentsView();
         },
 
         openGradeLedger: function (studentId, classId) {

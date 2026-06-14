@@ -225,6 +225,8 @@ async function assertGradeLedgerStudentFocus() {
   });
 
   assert(html.includes('eie-v2-ap-profile-panel'), 'timetable student detail should use the AP profile panel shell');
+  assert(html.includes('>재원</span>'), 'student detail should label active students as 재원');
+  assert(!html.includes('>활성</span>'), 'student detail should not label active students as 활성');
   assert(!html.includes('eie-v2-ap-appbar'), 'student panel should not render a separate white close appbar');
   assert(/eie-v2-ap-head-actions[\s\S]*data-eie-v2-student-back[\s\S]*?>닫기</.test(html), 'student panel close should live inside the profile card header');
   assert(!html.includes('<strong></strong>'), 'panel header should not reserve empty title space');
