@@ -1351,29 +1351,6 @@
     padding: 0;
 }
 
-.eie-v2-ap-appbar {
-    align-items: center;
-    background: #fff;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: flex-end;
-    min-height: 36px;
-    padding: 6px 10px;
-}
-
-.eie-v2-ap-appbar-cancel {
-    background: transparent;
-    border: 0;
-    color: #475569;
-    cursor: pointer;
-    font: inherit;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.2;
-    padding: 3px 4px;
-    text-align: right;
-}
-
 .eie-v2-ap-profile-shell {
     border: 1px solid #d8dee8;
     border-radius: 16px;
@@ -1400,6 +1377,33 @@
     flex-direction: column;
     gap: 5px;
     min-width: 0;
+}
+
+.eie-v2-ap-head-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 8px;
+}
+
+.eie-v2-ap-edit-title {
+    cursor: text;
+}
+
+.eie-v2-ap-edit-title-label {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.eie-v2-ap-edit-title-input {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    color: #0f172a;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 8px;
+    width: 100%;
 }
 
 .eie-v2-ap-head-title {
@@ -1479,10 +1483,39 @@
     white-space: nowrap;
 }
 
+.eie-v2-ap-head-btn.is-primary,
 .eie-v2-ap-mini-btn.is-primary {
     background: #6e66c9;
     border-color: #6e66c9;
     color: #fff;
+}
+
+.eie-v2-ap-seg {
+    background: #f1f5f9;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 2px;
+    padding: 2px;
+}
+
+.eie-v2-ap-seg-btn {
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    color: #64748b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    min-height: 24px;
+    padding: 0 12px;
+}
+
+.eie-v2-ap-seg-btn.is-active {
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .08);
+    color: #1f2937;
 }
 
 .eie-v2-ap-mini-btn:disabled {
@@ -1716,13 +1749,8 @@
 }
 
 @media (max-width: 620px) {
-    .eie-v2-ap-appbar {
-        min-height: 34px;
-        padding: 5px 8px;
-    }
-
     .eie-v2-ap-profile-shell {
-        margin: 16px 24px;
+        margin: 16px;
         padding: 10px;
     }
 

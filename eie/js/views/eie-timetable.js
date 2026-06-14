@@ -56,6 +56,7 @@
         studentConsultationSelectedId: '',
         studentConsultationFormOpen: false,
         studentConsultationEditingId: '',
+        classPanelMode: 'detail',
         miniSaving: false,
         miniError: '',
         miniNotice: '',
@@ -2560,7 +2561,10 @@
                     </div>
                     <div class="eie-v2-ap-meta-line">${esc(meta || '학교/학년 미등록')}</div>
                 </div>
-                ${sid ? '<button type="button" class="eie-v2-ap-head-btn" data-eie-v2-student-edit>수정</button>' : ''}
+                <div class="eie-v2-ap-head-actions">
+                    <button type="button" class="eie-v2-ap-head-btn" data-eie-v2-student-back>닫기</button>
+                    ${sid ? '<button type="button" class="eie-v2-ap-head-btn is-primary" data-eie-v2-student-edit>수정</button>' : ''}
+                </div>
             </header>
         `;
     }
@@ -2717,9 +2721,6 @@
         const pin = studentPin(student);
         return `
             <aside class="eie-v2-detail-panel eie-v2-student-panel eie-p-panel eie-v2-ap-profile-panel" aria-label="학생 상세">
-                <div class="eie-v2-ap-appbar">
-                    <button type="button" class="eie-v2-ap-appbar-cancel" data-eie-v2-student-back>닫기</button>
-                </div>
                 <div class="eie-v2-ap-profile-shell">
                     ${renderStudentPanelProfileHead(student, sid, subtitle)}
                     ${renderStudentPanelTabs(viewState.studentDetailTab)}
@@ -2946,27 +2947,31 @@
                 </div>
             </div>
         ` : '';
+        const dayHead = DAY_ORDER.slice(0, 5).map(day => `<span class="eie-v2-mini-day-grid-day">${esc(day)}</span>`).join('');
         return `
-            <div class="eie-p-day-grid">
-                <span class="eie-p-day-head" aria-hidden="true"></span>
-                ${DAY_ORDER.slice(0, 5).map(day => `<span class="eie-p-day-head">${esc(day)}</span>`).join('')}
-                ${rows.map(row => `
-                    <strong class="eie-p-day-period" title="${esc(row.display_time_range || displayEieTimeRange(row.start_time, row.end_time, row.period_order))}">${esc(row.period_label || session.period_label || '')}</strong>
-                    ${DAY_ORDER.slice(0, 5).map(day => {
-                        const value = (row?.day_teachers?.[day] || []).join(', ');
-                        return `<label class="eie-v2-mini-day-cell">
-                            <span class="sr-only">${esc(`${row.period_label || ''} ${day}`)}</span>
-                            <input type="text"
+            <div class="eie-v2-mini-day-grid" role="table">
+                <div class="eie-v2-mini-day-grid-head" role="row">
+                    <span class="eie-v2-mini-day-grid-corner" aria-hidden="true"></span>
+                    ${dayHead}
+                </div>
+                ${rows.map(row => {
+                    const periodLabel = row.period_label || session.period_label || '';
+                    return `<div class="eie-v2-mini-day-grid-row" role="row">
+                        <span class="eie-v2-mini-day-grid-period">${esc(periodLabel)}</span>
+                        ${DAY_ORDER.slice(0, 5).map(day => {
+                            const value = (row?.day_teachers?.[day] || []).join(', ');
+                            return `<input type="text" class="eie-v2-mini-day-grid-input"
                                 data-eie-v2-day-teacher="${esc(day)}"
                                 data-eie-v2-period-index="${esc(String(row.index))}"
                                 data-eie-v2-period-key="${esc(row.period_key)}"
                                 data-eie-v2-period-source-cell="${esc(row.source_cell_id)}"
                                 value="${esc(value)}"
                                 placeholder="-"
-                                autocomplete="off">
-                        </label>`;
-                    }).join('')}
-                `).join('')}
+                                aria-label="${esc(`${periodLabel} ${day}`)}"
+                                autocomplete="off">`;
+                        }).join('')}
+                    </div>`;
+                }).join('')}
             </div>
             ${teacherButtons}
         `;
@@ -2981,18 +2986,63 @@
         const students = Array.isArray(session?.students) ? session.students : [];
         const firstCellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
         return `
-            <div class="eie-p-chip-row">
+            <div class="eie-v2-class-student-grid">
                 ${students.length ? students.map(student => {
                     const sid = studentDetailId(student);
                     const name = studentSearchName(student) || student.name || '학생';
-                    return `<button type="button" class="eie-v2-card-student eie-p-chip"
+                    return `<button type="button" class="eie-v2-class-student-cell"
                         ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
                         ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                         data-eie-v2-return-session="${esc(session.session_id)}"
                         ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}
                         >${esc(name)}</button>`;
-                }).join('') : '<span class="eie-p-field-value is-empty">배정된 학생이 없습니다.</span>'}
-                <button type="button" class="eie-p-chip is-add" data-eie-v2-add-student-toggle data-session-id="${esc(session.session_id)}">+ 추가</button>
+                }).join('') : '<span class="eie-v2-ap-info-value is-muted">배정된 학생이 없습니다.</span>'}
+                <button type="button" class="eie-v2-class-student-cell is-add" data-eie-v2-add-student-toggle data-session-id="${esc(session.session_id)}">+ 추가</button>
+            </div>
+        `;
+    }
+
+    function renderMiniStudentChips(session) {
+        const students = Array.isArray(session?.students) ? session.students : [];
+        const firstCellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
+        if (!students.length) return '<span class="eie-v2-ap-info-value is-muted">배정된 학생이 없습니다.</span>';
+        return `
+            <div class="eie-v2-class-student-grid">
+                ${students.map(student => {
+                    const sid = studentDetailId(student);
+                    const name = studentSearchName(student) || student.name || '학생';
+                    return `<button type="button" class="eie-v2-class-student-cell"
+                        ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
+                        ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
+                        data-eie-v2-return-session="${esc(session.session_id)}"
+                        ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}
+                        >${esc(name)}</button>`;
+                }).join('')}
+            </div>
+        `;
+    }
+
+    function renderClassAttendanceGrid(session) {
+        const students = Array.isArray(session?.students) ? session.students : [];
+        const date = todayIso();
+        if (!students.length) return '<span class="eie-v2-ap-info-value is-muted">배정된 학생이 없습니다.</span>';
+        return `
+            <div class="eie-v2-class-student-grid">
+                ${students.map(student => {
+                    const sid = studentDetailId(student);
+                    const name = studentSearchName(student) || student.name || '학생';
+                    const record = classAttendanceRecord(sid, date);
+                    const status = classAttendanceStatusLabel(record?.status);
+                    const statusClass = classAttendanceStatusClass(record?.status);
+                    return `<button type="button" class="eie-v2-class-student-cell is-attendance ${esc(statusClass)}"
+                        data-eie-v2-class-attendance="${esc(sid)}"
+                        data-session-id="${esc(session.session_id)}"
+                        data-cell-id="${esc(session.source_cell_ids?.[0] || '')}"
+                        data-date="${esc(date)}">
+                            <span>${esc(name)}</span>
+                            <span>${esc(status)}</span>
+                        </button>`;
+                }).join('')}
             </div>
         `;
     }
@@ -3055,6 +3105,92 @@
         return `<button type="button" class="eie-secondary-button eie-v2-mini-add-student-button" data-eie-v2-add-student-toggle data-session-id="${esc(session.session_id)}">+ 학생 추가</button>`;
     }
 
+    function classMetaLine(session) {
+        const rawTime = displaySessionTimeRange(session);
+        const time = rawTime === '시간 미정' ? '' : rawTime;
+        const days = miniActiveDays(session);
+        const parts = [
+            session?.period_label || '',
+            time,
+            days.length ? days.join('·') : ''
+        ].filter(Boolean);
+        return parts.join(' · ') || '시간 미정';
+    }
+
+    function renderClassDayTeacherInfoRow(session) {
+        const rows = miniTeacherPeriodRows(session);
+        const dayHead = DAY_ORDER.slice(0, 5).map(day => `<span class="eie-v2-class-day-grid-day">${esc(day)}</span>`).join('');
+        const bodyRows = rows.map(row => {
+            const periodLabel = row.period_label || session.period_label || '';
+            const cells = DAY_ORDER.slice(0, 5).map(day => {
+                const names = (row?.day_teachers?.[day] || []).join(', ');
+                return `<span class="eie-v2-class-day-grid-cell${names ? '' : ' is-empty'}" title="${esc(names)}">${esc(names || '-')}</span>`;
+            }).join('');
+            return `<div class="eie-v2-class-day-grid-row" role="row"><span class="eie-v2-class-day-grid-period">${esc(periodLabel)}</span>${cells}</div>`;
+        }).join('');
+        return `
+            <div class="eie-v2-class-day-grid-block">
+                <span class="eie-v2-class-day-grid-label">교시별 담당</span>
+                <div class="eie-v2-class-day-grid" role="table">
+                    <div class="eie-v2-class-day-grid-head" role="row"><span class="eie-v2-class-day-grid-corner" aria-hidden="true"></span>${dayHead}</div>
+                    ${bodyRows}
+                </div>
+            </div>
+        `;
+    }
+
+    function renderMiniClassroomDetailPanel(session) {
+        const status = normalizeStatus(session?.status || 'active');
+        const statusClass = status === 'active' || status === 'imported' ? 'is-active' : (status === 'hidden' || status === 'archived' ? 'is-archived' : '');
+        const homeroom = normalizeKey(session?.homeroom_teacher || session?.teacher_name || '');
+        const attendanceOpen = viewState.classAttendanceSessionId === session.session_id;
+        return `
+            <aside class="eie-v2-detail-panel eie-v2-class-profile-panel eie-p-panel eie-v2-ap-profile-panel" aria-label="${esc(session.material)} 수업 상세">
+                <div class="eie-v2-ap-profile-shell">
+                    <header class="eie-v2-ap-profile-head">
+                        <div class="eie-v2-ap-head-main">
+                            <div class="eie-v2-ap-head-title">
+                                <h1>${esc(session.material || '반명 미등록')}</h1>
+                                <span class="eie-v2-ap-status-dot ${esc(statusClass)}"></span>
+                                <span class="eie-v2-ap-status-text ${esc(statusClass)}">${esc(STATUS_LABELS[status] || status || '상태 미정')}</span>
+                            </div>
+                            <div class="eie-v2-ap-meta-line">${esc(classMetaLine(session))}</div>
+                        </div>
+                        <div class="eie-v2-ap-head-actions">
+                            <button type="button" class="eie-v2-ap-head-btn" data-eie-v2-class-back>닫기</button>
+                            <button type="button" class="eie-v2-ap-head-btn is-primary" data-eie-v2-class-edit="${esc(session.session_id)}">수정</button>
+                        </div>
+                    </header>
+                    ${viewState.miniError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.miniError)}</div>` : ''}
+                    ${viewState.miniNotice ? `<div class="eie-v2-alert is-success" role="status">${esc(viewState.miniNotice)}</div>` : ''}
+                    <div class="eie-v2-ap-tab-body">
+                        <section class="eie-v2-ap-card">
+                            <div class="eie-v2-ap-section-head"><h3>수업 정보</h3></div>
+                            <div class="eie-v2-ap-info-list">
+                                ${renderApProfileInfoRow('담임', homeroom, { empty: '미등록' })}
+                            </div>
+                            ${renderClassDayTeacherInfoRow(session)}
+                        </section>
+                        <section class="eie-v2-ap-card">
+                            <div class="eie-v2-ap-section-head">
+                                <h3>학생 명단</h3>
+                                <div class="eie-v2-ap-seg" role="group" aria-label="명단/출결 보기">
+                                    <button type="button" class="eie-v2-ap-seg-btn${attendanceOpen ? '' : ' is-active'}" data-eie-v2-class-attendance-toggle="${esc(session.session_id)}" data-eie-v2-class-attendance-mode="roster">명단</button>
+                                    <button type="button" class="eie-v2-ap-seg-btn${attendanceOpen ? ' is-active' : ''}" data-eie-v2-class-attendance-toggle="${esc(session.session_id)}" data-eie-v2-class-attendance-mode="attendance">출결</button>
+                                </div>
+                            </div>
+                            ${attendanceOpen ? renderClassAttendanceGrid(session) : renderMiniStudentChips(session)}
+                        </section>
+                        <section class="eie-v2-ap-card">
+                            <div class="eie-v2-ap-section-head"><h3>메모</h3></div>
+                            <div class="eie-v2-class-memo-read${normalizeKey(session?.memo) ? '' : ' is-empty'}">${esc(normalizeKey(session?.memo))}</div>
+                        </section>
+                    </div>
+                </div>
+            </aside>
+        `;
+    }
+
     function miniTimeDisplayValue(session, first, kind) {
         const periods = sortPeriods(session?.periods || []);
         const source = kind === 'end'
@@ -3074,73 +3210,46 @@
 
     function renderMiniClassroomPanel(session) {
         if (!session) return '';
-        const rawTime = displaySessionTimeRange(session);
-        const time = rawTime === '시간 미정' ? '' : rawTime;
         const first = session.source_rows?.[0] || {};
         const isMultiPeriod = (session?.periods || []).length > 1;
         const startInputValue = miniTimeDisplayValue(session, first, 'start');
         const endInputValue = miniTimeDisplayValue(session, first, 'end');
-        const activeDays = miniActiveDays(session);
         return `
-            <div class="eie-p-head eie-v2-mini-head">
-                <div class="eie-p-head-top">
-                    <div class="eie-p-head-identity">
-                        <div class="eie-p-head-text">
-                            <label class="eie-p-title-row" for="eie-v2-mini-material">
-                                <span>반명</span>
-                                <input id="eie-v2-mini-material" class="eie-p-title-input" type="text" value="${esc(session.material || '')}" placeholder="반명" autocomplete="off">
-                            </label>
-                            <span class="eie-p-head-sub eie-tabular">${esc(session.period_label || '교시 미정')}${time ? ` · ${esc(time)}` : ''}</span>
-                        </div>
+            <div class="eie-v2-ap-profile-shell" data-eie-v2-mini-session="${esc(session.session_id)}">
+                <header class="eie-v2-ap-profile-head">
+                    <label class="eie-v2-ap-head-main eie-v2-ap-edit-title" for="eie-v2-mini-material">
+                        <span class="eie-v2-ap-edit-title-label">반명</span>
+                        <input id="eie-v2-mini-material" class="eie-v2-ap-edit-title-input" type="text" value="${esc(session.material || '')}" placeholder="반명" autocomplete="off">
+                        <span class="eie-v2-ap-meta-line">${esc(classMetaLine(session))}</span>
+                    </label>
+                    <div class="eie-v2-ap-head-actions">
+                        <button type="button" class="eie-v2-ap-head-btn" data-eie-v2-cancel-mini ${viewState.miniSaving ? 'disabled' : ''}>취소</button>
+                        <button type="button" class="eie-v2-ap-head-btn is-primary" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
                     </div>
-                    <div class="eie-p-head-actions">
-                        <button type="button" class="eie-p-btn-cancel" data-eie-v2-cancel-mini ${viewState.miniSaving ? 'disabled' : ''}>취소</button>
-                        <button type="button" class="eie-p-btn-save" data-eie-v2-save-mini ${viewState.miniSaving ? 'disabled' : ''}>${viewState.miniSaving ? '저장 중...' : '저장'}</button>
-                    </div>
-                </div>
-                <div class="eie-p-badge-row">
-                    ${session.period_label ? `<span class="eie-p-badge b-neutral">${esc(session.period_label)}</span>` : ''}
-                    ${activeDays.map(day => `<span class="eie-p-badge b-day">${esc(day)}</span>`).join('')}
-                </div>
+                </header>
                 ${viewState.miniError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.miniError)}</div>` : ''}
-                ${viewState.miniNotice ? `<div class="eie-v2-info" role="status">${esc(viewState.miniNotice)}</div>` : ''}
-            </div>
-            <div class="eie-v2-mini-form" data-eie-v2-mini-session="${esc(session.session_id)}">
-                <section class="eie-v2-mini-section">
-                    <div class="eie-v2-mini-section-title">
-                        <span class="eie-p-section-label">교시별 담당</span>
-                    </div>
-                    <div class="eie-p-card">
+                ${viewState.miniNotice ? `<div class="eie-v2-alert is-success" role="status">${esc(viewState.miniNotice)}</div>` : ''}
+                <div class="eie-v2-ap-tab-body">
+                    <section class="eie-v2-ap-card">
+                        <div class="eie-v2-ap-section-head"><h3>교시별 담당</h3></div>
                         ${renderMiniDayTeacherEditor(session)}
-                    </div>
-                </section>
-                <section class="eie-v2-mini-section">
-                    <div class="eie-v2-mini-section-title">
-                        <span class="eie-p-section-label">학생 명단</span>
-                        ${viewState.classAttendanceSessionId !== session.session_id ? `<button type="button" class="eie-secondary-button eie-v2-mini-section-action" data-eie-v2-class-attendance-toggle="${esc(session.session_id)}">출결</button>` : ''}
-                    </div>
-                    <div class="eie-p-card eie-v2-mini-card-compact">
+                    </section>
+                    <section class="eie-v2-ap-card">
+                        <div class="eie-v2-ap-section-head"><h3>학생 명단</h3></div>
                         ${renderMiniStudentManager(session)}
-                    </div>
-                </section>
-                ${renderMiniClassAttendance(session)}
-                <section class="eie-v2-mini-section">
-                    <div class="eie-v2-mini-section-title">
-                        <span class="eie-p-section-label">더보기</span>
-                    </div>
-                    <details class="eie-p-drawer">
-                        <summary class="eie-p-drawer-trigger">메모·기본 정보<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
-                        <div class="eie-p-drawer-body">
+                    </section>
+                    <section class="eie-v2-ap-card">
+                        <div class="eie-v2-ap-section-head"><h3>메모·기본 정보</h3></div>
+                        <div class="eie-v2-mini-base-body">
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-mini-memo" class="eie-v2-mini-memo-area">${esc(session.memo || '')}</textarea></label>
-                            <div class="eie-p-divider"></div>
                             <div class="eie-v2-mini-time-grid">
                                 <label class="eie-p-form-field"><span>교시</span><input id="eie-v2-mini-period" class="eie-tabular" type="text" value="${esc(session.period_label || first.period_label || '')}" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
                                 <label class="eie-p-form-field"><span>시작</span><input id="eie-v2-mini-start" class="eie-tabular" type="text" value="${esc(startInputValue)}" inputmode="numeric" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
                                 <label class="eie-p-form-field"><span>종료</span><input id="eie-v2-mini-end" class="eie-tabular" type="text" value="${esc(endInputValue)}" inputmode="numeric" autocomplete="off" ${isMultiPeriod ? 'readonly' : ''}></label>
                             </div>
                         </div>
-                    </details>
-                </section>
+                    </section>
+                </div>
             </div>
         `;
     }
@@ -3149,8 +3258,9 @@
         const studentPanel = renderStudentPanel();
         if (studentPanel) return studentPanel;
         if (!session) return '';
+        if (viewState.classPanelMode !== 'edit') return renderMiniClassroomDetailPanel(session);
         return `
-            <aside class="eie-v2-detail-panel eie-v2-mini-classroom eie-p-panel" aria-label="${esc(session.material)} 수업 상세">
+            <aside class="eie-v2-detail-panel eie-v2-mini-classroom eie-p-panel eie-v2-ap-profile-panel" aria-label="${esc(session.material)} 수업 상세">
                 ${renderMiniClassroomPanel(session)}
             </aside>
         `;
@@ -3160,7 +3270,12 @@
         const stateRows = Array.isArray(window.EieState?.get?.()?.timetableCells)
             ? window.EieState.get().timetableCells
             : [];
+        const useCacheOnce = viewState.useRowsCacheOnce;
+        viewState.useRowsCacheOnce = false;
         if (!window.EieApi?.getTimetable) return { rows: stateRows, error: '' };
+        // 패널 상태 전환 등 데이터가 바뀌지 않는 재렌더는 캐시로 즉시 응답해 깜빡임을 막는다.
+        // (저장 경로는 refreshTimetableRowsAfterMiniSave로 상태를 먼저 갱신하므로 최신값이 유지된다.)
+        if (useCacheOnce && stateRows.length) return { rows: stateRows, error: '' };
         try {
             const result = await window.EieApi.getTimetable(null, { status: 'active,imported,needs_review,hidden' });
             if (result?.fallback) {
@@ -3454,6 +3569,7 @@
                     return;
                 }
                 viewState.selectedSessionId = nextSessionId;
+                viewState.classPanelMode = 'detail';
                 viewState.activeTeacherDay = '월';
                 viewState.activeTeacherSourceCellId = '';
                 viewState.activeTeacherPeriodKey = '';
@@ -3462,6 +3578,22 @@
                 viewState.miniNotice = '';
                 if (viewState.miniNoticeTimer) { window.clearTimeout(viewState.miniNoticeTimer); viewState.miniNoticeTimer = 0; }
                 clearStudentPanel();
+                reopenPanelMountRoute();
+                return;
+            }
+            const classBackButton = event.target.closest?.('[data-eie-v2-class-back]');
+            if (classBackButton) {
+                event.preventDefault();
+                closeTimetableDetailPanel();
+                reopenPanelMountRoute();
+                return;
+            }
+            const classEditButton = event.target.closest?.('[data-eie-v2-class-edit]');
+            if (classEditButton) {
+                event.preventDefault();
+                viewState.classPanelMode = 'edit';
+                viewState.miniError = '';
+                viewState.miniNotice = '';
                 reopenPanelMountRoute();
                 return;
             }
@@ -3595,7 +3727,10 @@
             if (classAttendanceToggle) {
                 event.preventDefault();
                 const sessionId = normalizeKey(classAttendanceToggle.getAttribute('data-eie-v2-class-attendance-toggle') || '');
-                viewState.classAttendanceSessionId = viewState.classAttendanceSessionId === sessionId ? '' : sessionId;
+                const mode = normalizeKey(classAttendanceToggle.getAttribute('data-eie-v2-class-attendance-mode') || '');
+                if (mode === 'attendance') viewState.classAttendanceSessionId = sessionId;
+                else if (mode === 'roster') viewState.classAttendanceSessionId = '';
+                else viewState.classAttendanceSessionId = viewState.classAttendanceSessionId === sessionId ? '' : sessionId;
                 reopenPanelMountRoute();
                 return;
             }
@@ -3608,6 +3743,13 @@
             const cancelMiniButton = event.target.closest?.('[data-eie-v2-cancel-mini]');
             if (cancelMiniButton) {
                 event.preventDefault();
+                if (viewState.classPanelMode === 'edit') {
+                    viewState.classPanelMode = 'detail';
+                    viewState.miniError = '';
+                    viewState.miniNotice = '';
+                    reopenPanelMountRoute();
+                    return;
+                }
                 if ((viewState.panelMountRoute || '') === 'classroom' && window.EieClassroomView?.closeDetail) {
                     window.EieClassroomView.closeDetail();
                     return;
@@ -3944,6 +4086,10 @@
     }
 
     function reopenPanelMountRoute() {
+        // 패널 내 상태 전환(상세<->수정, 닫기, 출결 토글 등)은 데이터가 그대로다.
+        // 같은 라우트를 다시 그릴 때 네트워크 재요청으로 화면이 하얗게 깜빡이는 걸 막기 위해
+        // 다음 loadRows 한 번은 캐시를 쓰도록 표시한다.
+        viewState.useRowsCacheOnce = true;
         if (window.EieRouter?.open) return window.EieRouter.open(viewState.panelMountRoute || 'timetable');
         return null;
     }
@@ -4028,6 +4174,7 @@
 
     function closeTimetableDetailPanel() {
         viewState.selectedSessionId = '';
+        viewState.classPanelMode = 'detail';
         viewState.miniAddStudentSessionId = '';
         viewState.miniError = '';
         viewState.miniNotice = '';
@@ -4925,7 +5072,7 @@
                 await window.EieApi.updateTimetableCell(rowId, payload);
             }
             await refreshTimetableRowsAfterMiniSave();
-            closeTimetableDetailPanel();
+            viewState.classPanelMode = 'detail';
         } catch (error) {
             viewState.miniError = error?.message || '저장 실패';
             viewState.miniNotice = '';
@@ -5073,6 +5220,7 @@
         const ctx = returnCtx || {};
         viewState.selectedDay = normalizeKey(ctx.selectedDay || ctx.day || viewState.selectedDay);
         viewState.selectedSessionId = normalizeKey(ctx.sessionId || ctx.session_id || viewState.selectedSessionId);
+        viewState.classPanelMode = normalizeKey(ctx.classPanelMode || ctx.class_panel_mode || viewState.classPanelMode || 'detail') || 'detail';
         return reopenPanelMountRoute();
     }
 
@@ -5138,6 +5286,14 @@
         }
 
         viewState.selectedSessionId = selectedSession ? normalizeKey(selectedSession.session_id) : normalizeKey(ctx.sessionId || ctx.session_id || '');
+        viewState.classPanelMode = normalizeKey(ctx.classPanelMode || ctx.class_panel_mode || 'detail') || 'detail';
+        if (ctx.classAttendanceOpen || ctx.class_attendance_open) {
+            viewState.classAttendanceSessionId = selectedSession ? selectedSession.session_id : viewState.selectedSessionId;
+        } else if (ctx.classAttendanceSessionId || ctx.class_attendance_session_id) {
+            viewState.classAttendanceSessionId = normalizeKey(ctx.classAttendanceSessionId || ctx.class_attendance_session_id || '');
+        } else if (viewState.classAttendanceSessionId && viewState.classAttendanceSessionId !== viewState.selectedSessionId) {
+            viewState.classAttendanceSessionId = '';
+        }
         const nextStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
         const sameStudentPanel = nextStudentId && nextStudentId === normalizeKey(viewState.selectedStudentId);
         viewState.selectedStudentId = nextStudentId;

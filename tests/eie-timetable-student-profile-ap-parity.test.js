@@ -225,8 +225,9 @@ async function assertGradeLedgerStudentFocus() {
   });
 
   assert(html.includes('eie-v2-ap-profile-panel'), 'timetable student detail should use the AP profile panel shell');
-  assert(html.includes('eie-v2-ap-appbar') && html.includes('>닫기</button>'), 'panel should render a compact close app bar');
-  assert(!html.includes('<strong></strong>'), 'panel appbar should not reserve empty title space');
+  assert(!html.includes('eie-v2-ap-appbar'), 'student panel should not render a separate white close appbar');
+  assert(/eie-v2-ap-head-actions[\s\S]*data-eie-v2-student-back[\s\S]*?>닫기</.test(html), 'student panel close should live inside the profile card header');
+  assert(!html.includes('<strong></strong>'), 'panel header should not reserve empty title space');
   assert(!html.includes('한세아 프로필'), 'panel should not render the removed student-name profile title');
   assert(html.includes('eie-v2-ap-profile-shell'), 'panel should render a bordered profile shell');
   assert(html.includes('eie-v2-ap-profile-head'), 'panel should render an AP-style profile header');
@@ -248,23 +249,81 @@ async function assertGradeLedgerStudentFocus() {
     route: 'timetable',
     cellId: 'cell_alpha'
   });
-  assert(classHtml.includes('eie-v2-mini-classroom'), 'timetable class detail should render the mini classroom panel');
-  assert((classHtml.match(/eie-v2-mini-section/g) || []).length >= 4, 'mini classroom panel should group content into consistent sections');
-  assert(classHtml.includes('eie-v2-mini-section-title'), 'mini classroom sections should expose a visible hierarchy hook');
-  assert(classHtml.includes('eie-v2-mini-card-compact'), 'mini classroom compact cards should use a reusable class instead of inline padding');
-  assert(!classHtml.includes('style="padding:0;"'), 'mini classroom panel should not rely on inline padding overrides');
+  assert(classHtml.includes('eie-v2-class-profile-panel') && classHtml.includes('eie-v2-ap-profile-panel'), 'timetable class detail should use the AP student-detail shell');
+  assert(classHtml.includes('eie-v2-ap-profile-head'), 'class detail view should reuse the AP profile header');
+  assert(!classHtml.includes('eie-v2-ap-appbar'), 'class detail view should not render a separate white close appbar');
+  assert(/eie-v2-ap-head-actions[\s\S]*data-eie-v2-class-back[\s\S]*?>닫기</.test(classHtml), 'class detail close should live inside the profile card header');
+  assert(!classHtml.includes('eie-v2-class-profile-head') && !classHtml.includes('eie-v2-class-head-actions'), 'class detail view should drop its bespoke header layout for the shared AP header');
+  assert(classHtml.includes('data-eie-v2-class-edit='), 'class detail view should expose an edit action');
+  assert(/class="eie-v2-ap-head-btn is-primary"[^>]*data-eie-v2-class-edit=/.test(classHtml), 'class detail edit should read as the primary header action');
+  assert(!classHtml.includes('data-eie-v2-save-mini') && !classHtml.includes('data-eie-v2-cancel-mini'), 'class detail view should not show edit save/cancel actions');
+  assert(classHtml.includes('eie-v2-ap-meta-line') && !classHtml.includes('eie-v2-mini-meta-badges'), 'class detail header should render timing and days as a single meta text line, matching the student panel');
+  assert(/eie-v2-ap-meta-line">[^<]*3교시[^<]*오후 4:30~5:10[^<]*월/.test(classHtml), 'class detail meta line should still surface period, time, and active days');
+  assert(classHtml.includes('<div class="eie-v2-ap-section-head"><h3>수업 정보</h3></div>'), 'class detail view should use AP cards for class info');
+  assert(classHtml.includes('eie-v2-class-day-grid') && classHtml.includes('eie-v2-class-day-grid-period'), 'class detail should show teachers as a read-only period-by-day grid');
+  assert((classHtml.match(/eie-v2-class-day-grid-day/g) || []).length === 5, 'class detail teacher grid should label the five weekday columns once');
+  assert(classHtml.includes('<span class="eie-v2-class-day-grid-label">교시별 담당</span>'), 'class detail teacher grid should be labelled 교시별 담당');
+  assert(!classHtml.includes('eie-v2-class-day-teacher-list'), 'class detail should drop the old aggregated weekday list');
+  assert(!classHtml.includes('<h3>교시별 담당</h3>'), 'class detail teacher grid should be a borderless block, not a separate card');
+  assert(!classHtml.includes('<span class="eie-v2-ap-info-label">선생님</span>'), 'class detail view should remove the separate teacher summary row');
+  assert(!classHtml.includes('<span class="eie-v2-ap-info-label">메모</span>'), 'class detail view should not render memo as an info row');
+  assert(classHtml.includes('<div class="eie-v2-ap-section-head"><h3>메모</h3></div>') && classHtml.includes('eie-v2-class-memo-read'), 'class detail should show a read-only memo block below the roster');
+  assert(classHtml.includes('eie-v2-class-student-grid'), 'class detail view should render students in a full-width grid');
+  assert(classHtml.includes('eie-v2-class-student-cell'), 'class detail student entries should use larger grid cells');
+  assert(!classHtml.includes('<span class="eie-p-section-label">출결</span>'), 'class detail view should not render attendance as a separate section below the roster');
+
+  const attendanceClassHtml = await context.EieTimetableView.renderPanelOnlyWithContext({
+    route: 'timetable',
+    cellId: 'cell_alpha',
+    classAttendanceOpen: true
+  });
+  assert(attendanceClassHtml.includes('eie-v2-class-student-cell is-attendance'), 'class detail attendance mode should reuse the student grid cells');
+  assert(attendanceClassHtml.includes('>명단</button>'), 'class detail attendance mode should toggle back to roster mode');
+
+  const editClassHtml = await context.EieTimetableView.renderPanelOnlyWithContext({
+    route: 'timetable',
+    cellId: 'cell_alpha',
+    classPanelMode: 'edit'
+  });
+  assert(editClassHtml.includes('eie-v2-mini-classroom') && editClassHtml.includes('eie-v2-ap-profile-panel'), 'class edit mode should reuse the shared AP profile panel shell');
+  assert(editClassHtml.includes('eie-v2-ap-profile-shell'), 'class edit mode should sit inside the same bordered profile shell as the view mode');
+  assert(editClassHtml.includes('data-eie-v2-save-mini') && editClassHtml.includes('data-eie-v2-cancel-mini'), 'class edit mode should keep save/cancel actions');
+  assert(/class="eie-v2-ap-head-btn is-primary"[^>]*data-eie-v2-save-mini/.test(editClassHtml), 'class edit save should read as the primary header action');
+  assert((editClassHtml.match(/eie-v2-ap-card/g) || []).length >= 3, 'class edit mode should group content into the same AP cards as the view mode');
+  assert((editClassHtml.match(/eie-v2-ap-section-head/g) || []).length >= 3, 'class edit sections should use in-card AP headings, matching the view mode');
+  assert(editClassHtml.includes('eie-v2-ap-edit-title-input'), 'class edit mode should keep the class name editable in the card header');
+  assert(!editClassHtml.includes('eie-v2-mini-section'), 'class edit mode should drop the old outside-the-card section wrappers');
+  assert(editClassHtml.includes('eie-v2-mini-day-grid'), 'class edit weekday teachers should use a horizontal period-by-day grid');
+  assert(editClassHtml.includes('eie-v2-mini-day-grid-head') && (editClassHtml.match(/eie-v2-mini-day-grid-day/g) || []).length === 5, 'class edit grid should label the five weekday columns once in a header row');
+  assert((editClassHtml.match(/eie-v2-mini-day-grid-row/g) || []).length >= 1, 'class edit grid should render one row per period');
+  assert(!editClassHtml.includes('eie-p-day-grid') && !editClassHtml.includes('eie-v2-mini-day-list'), 'class edit weekday teachers should not use the cramped horizontal table or the old vertical list');
+  assert(!editClassHtml.includes('<details') && !editClassHtml.includes('<summary'), 'class edit memo and time fields should stay expanded without a more drawer');
+  assert(editClassHtml.includes('<div class="eie-v2-ap-section-head"><h3>메모·기본 정보</h3></div>'), 'class edit mode should show memo and base info as an in-card AP section');
+  assert(editClassHtml.includes('eie-v2-class-student-grid'), 'class edit roster should use the same four-column grid as the view page');
+  assert(!editClassHtml.includes('style="padding:0;"'), 'class edit mode should not rely on inline padding overrides');
+  assert(!editClassHtml.includes('data-eie-v2-class-attendance-toggle'), 'class edit mode should not expose an attendance toggle (roster only)');
 
   assert(css.includes('.eie-v2-ap-profile-panel'), 'CSS should scope the AP profile panel');
   assert(css.includes('.eie-v2-ap-tab.is-active'), 'CSS should style the AP underline active tab');
   assert(css.includes('.eie-v2-ap-profile-panel .eie-v2-panel-consultation-card'), 'CSS should restyle consultation cards inside the AP profile panel');
-  assert(/\.eie-v2-ap-appbar\s*\{[\s\S]*display:\s*flex;[\s\S]*justify-content:\s*flex-end;[\s\S]*min-height:\s*36px;[\s\S]*padding:\s*6px 10px;/.test(css), 'profile appbar should be compact and right-align the close action');
-  assert(/@media \(max-width:\s*620px\)\s*\{[\s\S]*\.eie-v2-ap-appbar\s*\{[\s\S]*min-height:\s*34px;[\s\S]*padding:\s*5px 8px;/.test(css), 'profile appbar should stay compact on mobile');
+  assert(!css.includes('.eie-v2-ap-appbar'), 'the separate white close appbar styles should be removed');
   assert(/\.eie-v2-ap-profile-shell\s*\{[\s\S]*padding:\s*10px;/.test(css), 'profile shell padding should match APMATH mobile detail-shell padding');
   assert(/\.eie-v2-ap-card,\s*\.eie-v2-ap-form-card\s*\{[\s\S]*padding:\s*12px;/.test(css), 'profile cards should match APMATH card padding');
-  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-form\s*\{[\s\S]*gap:\s*12px;/.test(css), 'mini classroom form should use consistent vertical rhythm');
-  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-section\s*\{[\s\S]*display:\s*grid;[\s\S]*gap:\s*6px;/.test(css), 'mini classroom sections should normalize label-to-card spacing');
-  assert(/\.eie-v2-mini-classroom\s+\.eie-p-section-label\s*\{[\s\S]*font-size:\s*11px;[\s\S]*font-weight:\s*800;/.test(css), 'mini classroom section labels should have clearer hierarchy');
-  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-card-compact\s*\{[\s\S]*padding:\s*0;/.test(css), 'mini classroom compact cards should replace inline padding overrides');
+  assert(/\.eie-v2-ap-head-actions\s*\{[\s\S]*display:\s*flex;/.test(css), 'header close and primary actions should sit together in a flex row');
+  assert(/\.eie-v2-ap-edit-title-input\s*\{[\s\S]*width:\s*100%;/.test(css), 'class edit title input should stretch inside the shared card header');
+  assert(!/\.eie-v2-mini-classroom[\s\S]*font-weight:\s*800;/.test(css), 'mini classroom panel should not use heavy bold weights');
+  assert(!/\.eie-v2-mini-classroom[\s\S]*(gap|padding|margin-top|min-height):\s*(5|6|7|10|14|26|28|30|34|38)px/.test(css), 'mini classroom vertical spacing should stay on the 4/8/12/16/20/24 scale');
+  assert(/\.eie-v2-ap-head-btn\.is-primary,?\s*[\s\S]*?\{[\s\S]*background:\s*#6e66c9;/.test(css), 'primary header button should share the primary accent color');
+  assert(/\.eie-v2-ap-seg\s*\{[\s\S]*display:\s*inline-flex;/.test(css), 'class detail roster/attendance toggle should use a segmented control');
+  assert(/\.eie-v2-ap-seg-btn\.is-active\s*\{[\s\S]*background:\s*#fff;/.test(css), 'segmented control should visibly mark the active view');
+  assert(/\.eie-v2-class-profile-panel\s+\.eie-v2-class-student-grid,?\s*[\s\S]*?\{[\s\S]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/.test(css), 'student grid should fill the card in four columns across both modes');
+  assert(/\.eie-v2-class-student-cell,?\s*[\s\S]*?\{[\s\S]*height:\s*34px;/.test(css), 'student cells should use a uniform fixed height across view and edit modes');
+  assert(/\.eie-v2-class-profile-panel\s+\.eie-v2-class-day-grid\s*\{[\s\S]*grid-template-columns:\s*44px repeat\(5,\s*minmax\(0,\s*1fr\)\);/.test(css), 'class detail teacher grid should align the period label with five weekday columns');
+  assert(/\.eie-v2-class-profile-panel\s+\.eie-v2-class-day-grid-head,\s*[\s\S]*?\.eie-v2-class-day-grid-row\s*\{[\s\S]*display:\s*contents;/.test(css), 'class detail teacher grid head/rows should flatten into the shared column track');
+  assert(/\.eie-v2-class-profile-panel\s+\.eie-v2-class-memo-read\s*\{[\s\S]*white-space:\s*pre-wrap;/.test(css), 'class detail memo block should preserve line breaks and stay borderless');
+  assert(/\.eie-v2-class-student-cell\.is-attendance,?\s*[\s\S]*?\{[\s\S]*display:\s*grid;/.test(css), 'attendance cells should stay inside the student grid');
+  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-day-grid\s*\{[\s\S]*display:\s*grid;[\s\S]*grid-template-columns:\s*44px repeat\(5,\s*minmax\(0,\s*1fr\)\);/.test(css), 'mini classroom weekday teacher editor should align the period label with five weekday columns on one grid');
+  assert(/\.eie-v2-mini-classroom\s+\.eie-v2-mini-day-grid-head,\s*[\s\S]*?\.eie-v2-mini-day-grid-row\s*\{[\s\S]*display:\s*contents;/.test(css), 'mini classroom grid head/rows should flatten into the shared column track to avoid nested-grid collapse');
 
   const gradeHtml = await context.EieTimetableView.renderPanelOnlyWithContext({
     route: 'timetable',
