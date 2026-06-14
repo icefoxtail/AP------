@@ -4,14 +4,14 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-dashboard.js'), 'utf8');
-const css = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
+const css = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 
 const expectedRenderOrder = [
   'renderGate()',
   'renderActionGrid()',
   'renderOverview(data)',
   'renderTeacherStatus(data)',
-  'renderRecentConsultationPlaceholder()',
+  'renderRecentConsultationPanel(data)',
   'renderRecentStudents(data)',
   'renderWeeklySchedulePlaceholder()',
   'renderBottomSearchPlaceholder()'

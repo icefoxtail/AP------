@@ -1,0 +1,672 @@
+/* ======================================================================
+   EIE Timetable Front Editor v1
+   - 열람 모드와 편집 모드를 분리한다.
+   - 편집 모드에서는 반 셀 이동, 이동칸 3개, draft diff 검증만 제공한다.
+   - 실제 서버 저장은 Worker/API 연결 라운드에서 붙인다.
+   ====================================================================== */
+.eie-timetable-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface-2);
+}
+
+.eie-timetable-toolbar.is-editing {
+  border-color: rgba(180, 83, 9, 0.24);
+  background: #fff7ed;
+}
+
+.eie-timetable-toolbar-main {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.eie-timetable-toolbar-main strong {
+  color: var(--eie-text);
+  font-size: 14px;
+}
+
+.eie-timetable-toolbar-main span {
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.eie-timetable-toolbar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.eie-primary-button,
+.eie-small-button {
+  min-height: 34px;
+  border: 1px solid var(--eie-border);
+  border-radius: 12px;
+  padding: 7px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.eie-primary-button {
+  background: var(--eie-text);
+  color: #fff;
+  border-color: var(--eie-text);
+}
+
+.eie-primary-button:disabled,
+.eie-small-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+.eie-primary-button:not(:disabled):hover,
+.eie-small-button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.eie-warning-box,
+.eie-info-box {
+  margin: 10px 0;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.eie-warning-box {
+  border: 1px solid rgba(180, 83, 9, 0.24);
+  background: #fff7ed;
+  color: #92400e;
+}
+
+.eie-info-box {
+  border: 1px solid var(--eie-border);
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+}
+
+.eie-draft-count {
+  width: fit-content;
+  margin: 10px 0;
+  padding: 5px 8px;
+  border: 1px solid var(--eie-border);
+  border-radius: 999px;
+  background: var(--eie-surface);
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.eie-timetable-layout.is-editing {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
+}
+
+.eie-timetable-side {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-width: 0;
+}
+
+.eie-excel-period-row.is-editing .eie-excel-cells.is-editing {
+  grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+}
+
+.eie-timetable-drop-slot {
+  min-height: 112px;
+  border: 1px dashed var(--eie-border);
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.74);
+  padding: 4px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.eie-timetable-drop-slot.is-empty {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.eie-timetable-drop-slot.is-empty:hover,
+.eie-transfer-slot.is-empty:hover {
+  background: var(--eie-surface-2);
+  border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text));
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.eie-timetable-drop-slot.is-selected {
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.24);
+  background: var(--eie-surface-2);
+}
+
+.eie-empty-slot-label {
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.eie-excel-cell.is-editable {
+  width: 100%;
+  cursor: grab;
+  user-select: none;
+}
+
+.eie-excel-cell.is-editable:active {
+  cursor: grabbing;
+}
+
+.eie-excel-cell.is-temp {
+  border-style: dashed;
+}
+
+.eie-excel-cell.has-draft-change::after {
+  content: "변경";
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 83, 9, 0.18);
+  background: #fff7ed;
+  color: #92400e;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.eie-cell-editor-meta {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.eie-drag-hint {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.eie-student-chip.is-readonly {
+  cursor: default;
+}
+
+.eie-edit-day-tabs {
+  margin: 8px 0 12px;
+}
+
+.eie-edit-board-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--eie-border);
+  border-radius: 22px;
+  background: var(--eie-surface);
+  box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+}
+
+.eie-edit-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px repeat(var(--eie-edit-teacher-count), minmax(150px, 1fr));
+  grid-template-rows: 54px repeat(var(--eie-edit-row-count), minmax(92px, auto));
+  min-width: calc(72px + var(--eie-edit-teacher-count) * 150px);
+  isolation: isolate;
+}
+
+.eie-edit-corner,
+.eie-edit-teacher-header,
+.eie-edit-time-cell,
+.eie-edit-empty-slot {
+  border-right: 1px solid var(--eie-border);
+  border-bottom: 1px solid var(--eie-border);
+  background: var(--eie-surface);
+}
+
+.eie-edit-corner,
+.eie-edit-teacher-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  min-height: 54px;
+}
+
+.eie-edit-corner {
+  left: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-edit-teacher-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 9px;
+  background: var(--eie-surface-2);
+}
+
+.eie-edit-teacher-header strong {
+  min-width: 0;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eie-edit-teacher-header small {
+  color: var(--eie-muted);
+  font-size: 10.5px;
+}
+
+.eie-edit-time-cell {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 7px;
+  background: var(--eie-surface-2);
+}
+
+.eie-edit-time-cell strong {
+  font-size: 12px;
+}
+
+.eie-edit-time-cell small {
+  color: var(--eie-muted);
+  font-size: 9.5px;
+  line-height: 1.25;
+}
+
+.eie-edit-empty-slot {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--eie-surface) 86%, var(--eie-surface-2));
+  cursor: pointer;
+}
+
+.eie-edit-empty-slot .eie-empty-slot-label {
+  opacity: 0;
+  transition: opacity .14s ease;
+}
+
+.eie-edit-empty-slot:hover,
+.eie-edit-empty-slot.is-selected {
+  background: var(--eie-surface-2);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.16);
+}
+
+.eie-edit-empty-slot:hover .eie-empty-slot-label,
+.eie-edit-empty-slot.is-selected .eie-empty-slot-label {
+  opacity: 1;
+}
+
+.eie-edit-session-slot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding: 6px;
+}
+
+.eie-edit-session-card {
+  min-height: 72px;
+  border-radius: 16px;
+  background: #f8fbff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.eie-edit-session-card.is-selected {
+  border-color: rgba(15, 23, 42, 0.24);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+}
+
+.eie-edit-session-card .eie-cell-title {
+  font-size: 12.5px;
+  line-height: 1.25;
+}
+
+.eie-edit-session-card .eie-cell-teacher {
+  color: var(--eie-muted);
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
+.eie-transfer-area {
+  position: sticky;
+  top: 12px;
+  z-index: 1;
+  border: 1px solid var(--eie-border);
+  border-radius: 18px;
+  background: var(--eie-surface);
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+}
+
+.eie-transfer-head {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.eie-transfer-head strong {
+  color: var(--eie-text);
+  font-size: 14px;
+}
+
+.eie-transfer-head span {
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.eie-transfer-slots {
+  display: grid;
+  gap: 8px;
+}
+
+.eie-transfer-slot {
+  min-height: 92px;
+  border: 1px dashed var(--eie-border);
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.8);
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.eie-transfer-slot.has-cell {
+  background: var(--eie-surface-2);
+  border-style: solid;
+}
+
+.eie-transfer-slot-label {
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.eie-timetable-editor-panel {
+  position: sticky;
+  top: 14px;
+}
+
+.eie-editor-help {
+  margin: 0 0 12px;
+  color: var(--eie-muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.eie-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.eie-change-preview {
+  margin-top: 14px;
+  border: 1px solid var(--eie-border);
+  border-radius: 14px;
+  background: var(--eie-surface-2);
+  overflow: hidden;
+}
+
+.eie-change-preview-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--eie-border);
+  color: var(--eie-text);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-change-list {
+  display: grid;
+  gap: 1px;
+  padding: 8px;
+}
+
+.eie-change-row {
+  padding: 7px 8px;
+  border-radius: 10px;
+  background: var(--eie-surface);
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.eie-payload-preview {
+  padding: 0 12px 12px;
+}
+
+.eie-payload-preview summary {
+  cursor: pointer;
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-payload-preview pre {
+  max-height: 240px;
+  overflow: auto;
+  margin: 8px 0 0;
+  padding: 10px;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+  .eie-timetable-layout.is-editing {
+    grid-template-columns: 1fr;
+  }
+
+  .eie-timetable-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .eie-timetable-toolbar-actions {
+    justify-content: flex-start;
+  }
+
+  .eie-transfer-area,
+  .eie-timetable-editor-panel {
+    position: static;
+  }
+}
+
+/* EIE Timetable Layout v1.2
+   - 시간표를 좁은 카드 목록이 아니라 APMS처럼 넓은 운영 보드로 표시한다.
+   - 가로축은 선생님, 세로축은 교시/시간 기준이다.
+*/
+.eie-timetable-screen {
+  width: min(calc(100vw - 280px), 1680px);
+  max-width: calc(100vw - 280px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.eie-timetable-screen .eie-panel {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.eie-timetable-main {
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.eie-timetable-board {
+  min-width: 980px;
+  display: grid;
+  gap: 8px;
+}
+
+.eie-timetable-teacher-header,
+.eie-excel-period-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+  margin: 0;
+}
+
+.eie-timetable-teacher-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--eie-bg);
+  padding-bottom: 2px;
+}
+
+.eie-timetable-period-corner,
+.eie-timetable-teacher-head,
+.eie-excel-period-head {
+  border: 1px solid var(--eie-border);
+  border-radius: 14px;
+  background: var(--eie-surface-2);
+}
+
+.eie-timetable-period-corner,
+.eie-timetable-teacher-head {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.eie-timetable-teacher-cells,
+.eie-excel-cells,
+.eie-excel-period-row.is-editing .eie-excel-cells.is-editing {
+  display: grid;
+  grid-template-columns: repeat(var(--eie-teacher-columns), minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.eie-excel-period-head {
+  min-height: 116px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.eie-timetable-view-slot,
+.eie-timetable-drop-slot {
+  min-height: 116px;
+  border: 1px dashed var(--eie-border);
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.74);
+  padding: 4px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.eie-timetable-view-slot.is-empty {
+  align-items: center;
+  justify-content: center;
+}
+
+.eie-timetable-view-slot .eie-excel-cell,
+.eie-timetable-drop-slot .eie-excel-cell {
+  width: 100%;
+  min-height: 108px;
+}
+
+.eie-excel-cell {
+  min-height: 108px;
+}
+
+.eie-cell-title,
+.eie-cell-teacher {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eie-cell-students {
+  max-height: 54px;
+  overflow: hidden;
+}
+
+.eie-timetable-layout.is-editing {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
+}
+
+@media (max-width: 1180px) {
+  .eie-timetable-screen {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .eie-timetable-board {
+    min-width: 860px;
+  }
+
+  .eie-timetable-teacher-header,
+  .eie-excel-period-row {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .eie-timetable-teacher-cells,
+  .eie-excel-cells,
+  .eie-excel-period-row.is-editing .eie-excel-cells.is-editing {
+    grid-template-columns: repeat(var(--eie-teacher-columns), minmax(136px, 1fr));
+  }
+}
+

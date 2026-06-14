@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EIE consultation APMATH parity check</title>
+  <base href="http://127.0.0.1:8766/eie/">
+  <link rel="stylesheet" href="./css/eie.css">
+  <link rel="stylesheet" href="./css/eie-dashboard-classroom.css">
+  <link rel="stylesheet" href="./css/eie-timetable-board-fixes.css">
+  <style>
+    body {
+      margin: 0;
+      background: #fff3f2;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+    }
+    .verify-wrap {
+      display: grid;
+      grid-template-columns: 430px minmax(0, 1fr);
+      gap: 28px;
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+    .eie-apms-detail-panel {
+      position: static;
+      background: #f8fafc;
+      border: 1px solid var(--eie-border);
+      border-radius: 18px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .eie-apms-detail-head,
+    .eie-apms-section-head,
+    .eie-admin-section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .eie-apms-detail-head h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .eie-apms-detail-head.eie-apms-student-profile-head {
+      display: grid;
+    }
+    .eie-apms-card {
+      background: var(--eie-surface);
+      border: 1px solid var(--eie-border);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .eie-apms-tabs {
+      display: flex;
+      gap: 8px;
+      overflow: auto;
+    }
+    .eie-apms-tab {
+      border: 1px solid var(--eie-border);
+      border-radius: 999px;
+      background: #fff;
+      padding: 6px 10px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .eie-apms-tab.is-active {
+      background: #f2f4f6;
+      color: #1a5cff;
+    }
+    @media (max-width: 760px) {
+      .verify-wrap {
+        grid-template-columns: 1fr;
+        margin-top: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="verify-wrap">
+    <aside class="eie-apms-detail-panel">
+      <div class="eie-apms-detail-head eie-apms-student-profile-head">
+        <div class="eie-apms-student-head-main">
+          <div class="eie-apms-student-head-title">
+            <h1>김테스트</h1>
+            <span class="eie-apms-student-status-dot is-active"></span>
+            <span class="eie-apms-student-status-text is-active">재원</span>
+          </div>
+          <div class="eie-apms-student-meta-line">
+            <span>AP중 중2</span>
+            <span>2개 수업</span>
+            <span>Ivy</span>
+          </div>
+        </div>
+        <div class="eie-apms-student-head-actions">
+          <button class="eie-icon-button eie-apms-detail-edit">수정</button>
+          <button class="eie-icon-button eie-apms-detail-close">닫기</button>
+        </div>
+      </div>
+
+      <div class="eie-apms-tabs eie-apms-header-tabs">
+        <button class="eie-apms-tab">기본</button>
+        <button class="eie-apms-tab is-active">상담</button>
+        <button class="eie-apms-tab">성적</button>
+      </div>
+
+      <div class="eie-apms-card eie-apms-pinned-consultation">
+        <div class="eie-apms-section-head">
+          <h3>최근 상담</h3>
+          <button class="eie-primary-button">+ 상담</button>
+        </div>
+        <div class="eie-apms-pinned-consultation-body">
+          <div class="eie-apms-consult-date-row">
+            <button class="eie-apms-consult-date-button is-active">06-12</button>
+            <button class="eie-apms-consult-date-button">06-03</button>
+          </div>
+          <div class="eie-apms-pinned-consultation-preview">
+            <div class="eie-apms-consultation-meta"><span>2026-06-12</span><em>학습</em></div>
+            <p>숙제 적응과 수업 집중도에 대해 상담했습니다.</p>
+            <div class="eie-apms-consultation-next"><strong>후속조치</strong> 다음 수업에서 숙제 루틴 확인</div>
+          </div>
+          <div class="eie-apms-pinned-consultation-footer">
+            <button class="eie-secondary-button">다른 상담 보기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="eie-apms-card eie-apms-consultation-panel">
+        <div class="eie-apms-section-head"><h3>상담 이력</h3><span>2건</span></div>
+        <div class="eie-apms-consultation-actions">
+          <button class="eie-primary-button">+ 새 상담 기록하기</button>
+          <button class="eie-secondary-button">상담 흐름 요약</button>
+        </div>
+        <div class="eie-apms-consultation-list">
+          <div class="eie-apms-consultation-row">
+            <div class="eie-apms-consultation-main">
+              <div class="eie-apms-consultation-meta"><span>2026-06-03</span><em>태도</em></div>
+              <p>발표 참여가 좋아졌고 단어 암기는 추가 확인이 필요합니다.</p>
+            </div>
+            <div class="eie-apms-inline-actions"><button>수정</button><button disabled>삭제 보류</button></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="owner-dashboard-shell">
+      <div class="eie-admin-home">
+        <div class="ap-admin-section eie-admin-section">
+          <div class="eie-admin-section-title-row eie-admin-section-title-row--split">
+            <h3 class="ap-admin-section-title eie-admin-section-title">최근 상담</h3>
+            <button class="btn eie-admin-consultation-all">상담 전체 보기</button>
+          </div>
+          <div class="card eie-admin-consultation-list">
+            <button class="btn ap-admin-consultation-row eie-admin-consultation-row">
+              <span><strong>김테스트</strong><small>숙제 적응과 수업 집중도에 대해 상담했습니다.</small></span>
+              <em><span>2026-06-12 · 학습</span><small>다음 수업 확인</small></em>
+            </button>
+            <button class="btn ap-admin-consultation-row eie-admin-consultation-row">
+              <span><strong>박샘플</strong><small>보호자 연락 후 반응을 기록했습니다.</small></span>
+              <em><span>2026-06-10 · 학부모</span></em>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

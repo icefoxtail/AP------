@@ -4,9 +4,12 @@ const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
 const dashboardPath = path.join(root, 'apmath/js/dashboard.js');
+const dashboardAdminPath = path.join(root, 'apmath/js/dashboard-admin.js');
 const dashboard = fs.readFileSync(dashboardPath, 'utf8');
+const dashboardAdmin = fs.readFileSync(dashboardAdminPath, 'utf8');
+const dashboardCombined = `${dashboardAdmin}\n${dashboard}`;
 const ui = fs.readFileSync(path.join(root, 'apmath/js/ui.js'), 'utf8');
-const eieCss = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
+const eieCss = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 
 for (const file of [
   'archive/assessment/assessment-mvp.html',
@@ -16,16 +19,16 @@ for (const file of [
   assert(fs.existsSync(path.join(root, file)), `${file} should exist before wiring the dashboard card`);
 }
 
-const overviewMatch = dashboard.match(/function\s+renderAdminStudentOverviewPanel\s*\([^)]*\)\s*\{([\s\S]*?)\nfunction\s+renderAdminNeedCheckPanel/);
+const overviewMatch = dashboardAdmin.match(/function\s+renderAdminStudentOverviewPanel\s*\([^)]*\)\s*\{([\s\S]*?)\nfunction\s+renderAdminNeedCheckPanel/);
 assert(overviewMatch, 'renderAdminStudentOverviewPanel should exist');
 const overviewBody = overviewMatch[1];
 
 assert(
-  /function\s+adminBuildGradeHoverRows\s*\(/.test(dashboard),
+  /function\s+adminBuildGradeHoverRows\s*\(/.test(dashboardAdmin),
   'admin overview should build grade-level hover rows for student metrics'
 );
 assert(
-  dashboard.includes('ap-admin-mini-metric__hover') && overviewBody.includes('adminBuildGradeHoverRows(data.activeStudents)'),
+  dashboardAdmin.includes('ap-admin-mini-metric__hover') && overviewBody.includes('adminBuildGradeHoverRows(data.activeStudents)'),
   'student overview metrics should show a larger grade breakdown on hover'
 );
 assert(
@@ -35,21 +38,21 @@ assert(
   'today operation student metrics should render Korean labels instead of bare counts'
 );
 assert(
-  !dashboard.includes('title="${hoverText}"'),
+  !dashboardCombined.includes('title="${hoverText}"'),
   'student metric hover details should use the custom hover panel instead of the browser title tooltip'
 );
 
 assert(
-  dashboard.includes('시험지 보관함') && overviewBody.includes('renderAdminAssessmentArchiveMetric'),
+  dashboardAdmin.includes('시험지 보관함') && overviewBody.includes('renderAdminAssessmentArchiveMetric'),
   'admin overview should render the assessment archive card title'
 );
 assert(
-  dashboard.includes('ap-admin-assessment-card') &&
-    dashboard.includes('align-items:center; justify-content:center; text-align:center;'),
+  dashboardAdmin.includes('ap-admin-assessment-card') &&
+    dashboardAdmin.includes('align-items:center; justify-content:center; text-align:center;'),
   'admin assessment archive card should center its label like the other mini metrics'
 );
 assert(
-  dashboard.includes('진단평가 · 단원평가 · 중간·기말평가'),
+  dashboardAdmin.includes('진단평가 · 단원평가 · 중간·기말평가'),
   'admin overview should show the confirmed assessment archive helper text'
 );
 assert(
@@ -61,7 +64,7 @@ assert(
   'admin overview should not keep the old leave card in the first-screen metric grid'
 );
 assert(
-  /function\s+openAdminLeaveStudentList\s*\(/.test(dashboard) && dashboard.includes('휴원생 목록'),
+  /function\s+openAdminLeaveStudentList\s*\(/.test(dashboardAdmin) && dashboardAdmin.includes('휴원생 목록'),
   'leave student functionality should remain available outside the first-screen card'
 );
 assert(

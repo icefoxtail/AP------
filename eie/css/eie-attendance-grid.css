@@ -1,0 +1,506 @@
+/* ── EIE 출석부 — cumulative.js 월간 그리드 테라포밍 ─────────────────── */
+.eie-att-screen {
+    --eie-att-main: #0F766E;
+    --eie-att-main-soft: #E7F3F1;
+    --eie-att-today-bg: #EAF5F3;
+    --eie-att-text: #1F2933;
+    --eie-att-text-sub: #7B8794;
+    --eie-att-line: #E6E9ED;
+    --eie-att-line-strong: #D0D6DE;
+    --eie-att-bg-soft: #F8FAFB;
+    --eie-att-present: #00A58A;
+    --eie-att-absent: #D64545;
+    --eie-att-counsel: #B7791F;
+    --eie-att-makeup: #64748B;
+    --eie-att-late: #D85C4A;
+    --eie-att-day-size: 29px;
+    --eie-att-row-size: 27px;
+    --eie-att-name-width: 118px;
+    --eie-att-time-width: 168px;
+}
+.eie-sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.eie-att-screen { display: flex; flex-direction: column; gap: 10px; width: 100%; padding: 12px 18px; color: var(--eie-att-text); box-sizing: border-box; }
+.eie-att-print-head { display: none; }
+
+/* 상단 툴바 */
+.eie-att-toolbar {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+}
+.eie-att-screen-title { font-size: 22px; font-weight: 700; color: var(--eie-att-text); margin-right: 8px; letter-spacing: -0.01em; }
+.eie-att-ctrl {
+    height: 36px; padding: 0 12px;
+    border: 1px solid var(--eie-att-line); border-radius: 10px;
+    background: var(--eie-surface); color: var(--eie-att-text); font-size: 13px; font-weight: 500;
+}
+.eie-att-date-input { padding: 0 10px; }
+.eie-att-today-btn { background: var(--eie-att-today-bg); color: var(--eie-att-main); border-color: rgba(15,118,110,0.20); font-weight: 500; cursor: pointer; }
+.eie-att-print-btn { cursor: pointer; margin-left: auto; }
+select.eie-att-ctrl { cursor: pointer; }
+.eie-att-viewmodes {
+    display: inline-flex; align-items: center; gap: 2px;
+    height: 34px; padding: 2px; border: 1px solid var(--eie-att-line);
+    border-radius: 999px; background: var(--eie-att-bg-soft);
+}
+.eie-att-mode {
+    height: 28px; min-width: 54px; padding: 0 10px;
+    border: 0; border-radius: 999px; background: transparent;
+    color: var(--eie-att-text-sub); font-size: 12px; font-weight: 400; cursor: pointer;
+}
+.eie-att-mode.is-active {
+    background: var(--eie-surface); color: var(--eie-att-main); font-weight: 500;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.08);
+}
+
+/* 범례 */
+.eie-att-legend {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    padding: 7px 11px; background: var(--eie-att-bg-soft);
+    border: 1px solid var(--eie-att-line); border-radius: 10px;
+    font-size: 12px; color: var(--eie-att-text-sub);
+}
+.eie-att-legend-item { display: inline-flex; align-items: center; gap: 5px; }
+.eie-att-legend-item b { display: inline-flex; align-items: center; justify-content: center; font-style: normal; }
+.eie-att-o-o { color: var(--eie-att-present); font-weight: 500; }
+.eie-att-o-x { color: var(--eie-att-absent); font-weight: 500; }
+.eie-att-no { color: #C5CCD4; font-weight: 400; }
+.eie-att-mk-star { color: var(--eie-att-counsel); font-weight: 500; }
+.eie-att-mk-square { color: var(--eie-att-makeup); font-weight: 500; }
+.eie-att-mk-tri { color: var(--eie-att-late); font-weight: 500; }
+.eie-att-icon {
+    width: 10px; height: 10px; display: block;
+    stroke: currentColor; fill: none; stroke-width: 1.35;
+    stroke-linecap: round; stroke-linejoin: round;
+}
+.eie-att-mk-star .eie-att-icon,
+.eie-att-mk-square .eie-att-icon,
+.eie-att-mk-tri .eie-att-icon {
+    fill: currentColor; stroke-width: 0;
+}
+
+/* 그리드 */
+.eie-att-tbl-wrap {
+    width: 100%; overflow: auto; border: 1px solid var(--eie-att-line);
+    border-radius: 12px; background: var(--eie-surface); max-height: calc(100vh - 178px);
+}
+/* 날짜 칸은 눈검수하기 쉽도록 정사각형에 가깝게 고정하고, 좁은 화면은 가로 스크롤로 본다. */
+.eie-att-grid { border-collapse: collapse; width: 100%; min-width: calc(var(--eie-att-time-width) + var(--eie-att-name-width) + (31 * var(--eie-att-day-size))); table-layout: fixed; }
+.eie-att-block { break-inside: auto; page-break-inside: auto; }
+.eie-att-grid th, .eie-att-grid td {
+    border-bottom: 0.5px solid var(--eie-att-line);
+    border-right: 0.5px solid var(--eie-att-line);
+    text-align: center;
+}
+.eie-att-grid thead th {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--eie-att-bg-soft); padding: 2px 0;
+    box-shadow: 0 0.5px 0 var(--eie-att-line-strong);
+}
+.eie-att-nc {
+    position: sticky; left: 0; z-index: 11; background: var(--eie-surface);
+    border-right: 1px solid var(--eie-att-line-strong) !important;
+    width: var(--eie-att-name-width); min-width: var(--eie-att-name-width); max-width: var(--eie-att-name-width); padding: 0 6px; text-align: left;
+}
+.eie-att-time-nc {
+    position: sticky; left: 0; z-index: 12; background: var(--eie-surface);
+    border-right: 1px solid var(--eie-att-line-strong) !important;
+    width: var(--eie-att-time-width); min-width: var(--eie-att-time-width); max-width: var(--eie-att-time-width); padding: 4px 8px; text-align: center;
+    vertical-align: middle;
+}
+.eie-att-grid .eie-att-nc {
+    left: var(--eie-att-time-width);
+}
+.eie-att-grid thead .eie-att-corner { z-index: 12; text-align: center; color: var(--eie-att-text-sub); font-size: 10px; font-weight: 500; }
+.eie-att-grid thead .eie-att-time-corner { z-index: 13; text-align: center; color: var(--eie-att-text-sub); font-size: 10px; font-weight: 500; }
+.eie-att-student-nc { height: var(--eie-att-row-size); font-size: 12.5px; font-weight: 650; color: var(--eie-att-text); cursor: default; line-height: 1.1; }
+.eie-att-student-nc small { margin-left: 5px; font-size: 11px; font-weight: 500; color: var(--eie-att-text-sub); }
+.eie-att-student-link {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    max-width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 0 4px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+.eie-att-student-link:hover,
+.eie-att-student-link:focus-visible {
+    background: rgba(15, 118, 110, 0.08);
+    color: #0F766E;
+    outline: none;
+}
+.eie-att-time-nc strong,
+.eie-att-time-nc span,
+.eie-att-time-nc small {
+    display: block;
+}
+.eie-att-time-nc strong {
+    color: var(--eie-att-main);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.15;
+}
+.eie-att-time-nc span {
+    margin-top: 2px;
+    color: var(--eie-att-text-sub);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.15;
+}
+.eie-att-time-nc small {
+    margin-top: 4px;
+    color: var(--eie-att-main);
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.2;
+}
+.eie-att-block-card {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-sizing: border-box;
+    line-height: 1.12;
+}
+.eie-att-block-period {
+    display: block;
+    color: var(--eie-att-main);
+    font-size: 12px;
+    font-weight: 720;
+    letter-spacing: -0.01em;
+}
+.eie-att-block-time {
+    display: block;
+    color: var(--eie-att-text-sub);
+    font-size: 11.5px;
+    font-weight: 560;
+    white-space: nowrap;
+}
+.eie-att-block-class {
+    display: block;
+    color: #075E56;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    word-break: keep-all;
+}
+.eie-att-block-days {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 18px;
+    margin-top: 1px;
+    padding: 1px 8px;
+    border: 1px solid rgba(15, 118, 110, 0.18);
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.075);
+    color: var(--eie-att-main);
+    font-size: 10.5px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.eie-att-grid thead th .eie-att-dnum { display: block; font-size: 11px; font-weight: 650; line-height: 1.05; color: var(--eie-att-text); }
+.eie-att-grid thead th .eie-att-dwd { display: block; font-size: 9px; font-weight: 500; color: var(--eie-att-text-sub); }
+.eie-att-grid thead th:nth-child(7n+7) .eie-att-dnum { color: var(--eie-att-main); }
+.eie-att-grid thead th:nth-child(7n+8) .eie-att-dnum { color: var(--eie-att-absent); }
+
+/* 그룹 행(선생님 · 반) */
+.eie-att-grp td { background: var(--eie-surface-2); }
+.eie-att-grp-nc {
+    position: sticky; left: 0; z-index: 11; background: var(--eie-surface-2) !important;
+    border-right: 1px solid var(--eie-att-line-strong) !important;
+    font-size: 12px; font-weight: 500; color: var(--eie-att-main);
+    padding: 5px 12px; white-space: nowrap;
+}
+
+/* 날짜 셀 */
+.eie-att-day-head,
+.eie-att-dc { width: var(--eie-att-day-size); min-width: var(--eie-att-day-size); box-sizing: border-box; }
+.eie-att-dc { height: var(--eie-att-row-size); min-height: var(--eie-att-row-size); max-height: var(--eie-att-row-size); padding: 0; overflow: hidden; line-height: 1; }
+.eie-att-no-class { background: var(--eie-att-bg-soft); }
+.eie-att-future { background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(15,23,42,0.010) 4px, rgba(15,23,42,0.010) 8px); }
+.eie-att-click { cursor: pointer; position: relative; }
+.eie-att-click:hover { background: rgba(15,118,110,0.055); }
+.eie-att-selcol { background: var(--eie-att-today-bg); }
+.eie-att-dc.is-selected { outline: 1px solid rgba(15,118,110,0.36); outline-offset: -1px; }
+
+/* 셀 내부: 위 출석 기호 + 아래 보조 마크(상담/보강/지각 여러 개 함께) */
+.eie-att-cellbox {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0; width: 100%; height: 100%; min-height: 0; margin: 0 auto; line-height: 1;
+    box-sizing: border-box;
+}
+.eie-att-main { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 12px; font-weight: 650; line-height: 1; }
+.eie-att-marks {
+    display: flex; gap: 1px; align-items: center; justify-content: center;
+    line-height: 1; pointer-events: none;
+}
+.eie-att-marks .eie-att-mk { display: inline-flex; align-items: center; justify-content: center; font-size: 6px; }
+.eie-att-marks .eie-att-icon { width: 6px; height: 6px; }
+.eie-att-empty { padding: 40px; text-align: center; color: var(--eie-muted); font-size: 13px; font-weight: 600; }
+
+/* 입력판(모달형) */
+.eie-att-pad-backdrop { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,0.12); }
+.eie-att-pad {
+    position: fixed; z-index: 41; right: 24px; bottom: 24px; width: 260px;
+    padding: 14px; display: flex; flex-direction: column; gap: 10px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+.eie-att-pad-head { display: flex; flex-direction: column; gap: 2px; }
+.eie-att-pad-head strong { font-size: 16px; font-weight: 800; }
+.eie-att-pad-head span { font-size: 12px; color: var(--eie-muted); }
+.eie-att-pad-symbols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.eie-att-pad-btn {
+    height: 50px; border: 1px solid var(--eie-border); border-radius: 12px;
+    background: var(--eie-surface); font-size: 22px; font-weight: 700; cursor: pointer; color: var(--eie-text);
+}
+.eie-att-pad-btn.is-present.is-active { border-color: var(--eie-att-present); color: var(--eie-att-present); background: rgba(0,165,138,0.10); }
+.eie-att-pad-btn.is-absent.is-active { border-color: var(--eie-att-absent); color: var(--eie-att-absent); background: rgba(214,69,69,0.10); }
+.eie-att-pad-btn.is-noclass.is-active { border-color: var(--eie-att-text-sub); color: var(--eie-att-text-sub); background: rgba(123,135,148,0.10); }
+.eie-att-pad-btn.is-star.is-active { border-color: var(--eie-att-counsel); color: var(--eie-att-counsel); background: rgba(183,121,31,0.12); }
+.eie-att-pad-btn.is-square.is-active { border-color: var(--eie-att-makeup); color: var(--eie-att-makeup); background: rgba(100,116,139,0.10); }
+.eie-att-pad-btn.is-tri.is-active { border-color: var(--eie-att-late); color: var(--eie-att-late); background: rgba(216,92,74,0.10); }
+.eie-att-pad-save {
+    height: 46px; border: 0; border-radius: 12px; background: var(--eie-att-main);
+    color: #fff; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+.eie-att-pad-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 720px) {
+    .eie-att-pad { left: 12px; right: 12px; width: auto; }
+    /* 좁은 화면에선 칸을 고정 폭으로 두고 가로 스크롤 허용. */
+    .eie-att-screen { --eie-att-day-size: 24px; --eie-att-row-size: 25px; --eie-att-name-width: 92px; --eie-att-time-width: 128px; padding: 10px 10px; }
+    .eie-att-grid { width: max-content; table-layout: auto; }
+    .eie-att-dc { width: var(--eie-att-day-size); min-width: var(--eie-att-day-size); }
+    .eie-att-time-nc { width: var(--eie-att-time-width); min-width: var(--eie-att-time-width); max-width: var(--eie-att-time-width); }
+    .eie-att-grid .eie-att-nc { left: var(--eie-att-time-width); }
+    .eie-att-nc { width: var(--eie-att-name-width); min-width: var(--eie-att-name-width); max-width: var(--eie-att-name-width); }
+}
+
+@media print {
+    @page { size: A4 landscape; margin: 8mm 8mm 7mm; }
+    #eie-drawer, #eie-drawer-overlay, .eie-header, .eie-desktop-topbar,
+    .eie-att-toolbar, .eie-att-legend, .eie-att-pad, .eie-att-pad-backdrop { display: none !important; }
+    .eie-main, .eie-att-screen {
+        margin: 0; padding: 0; background: #fff !important;
+        --eie-att-day-size: 23px;
+        --eie-att-row-size: 24px;
+        --eie-att-name-width: 74px;
+        --eie-att-time-width: 108px;
+        --eie-att-print-table-width: 895px;
+    }
+    .eie-att-print-head {
+        display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; gap: 8mm;
+        width: var(--eie-att-print-table-width); margin: 0 auto 4mm;
+        padding-bottom: 2.2mm; border-bottom: 0.5px solid #E3E7EC;
+        color: #111827; font-size: 11px; font-weight: 500; line-height: 1.1;
+    }
+    .eie-att-print-head strong { font-size: 15px; font-weight: 650; letter-spacing: 0; text-align: center; }
+    .eie-att-print-head span { color: #374151; font-weight: 550; }
+    .eie-att-print-head span:first-child { text-align: left; }
+    .eie-att-print-head span:last-child { text-align: right; }
+    .eie-att-grid thead th,
+    .eie-att-nc,
+    .eie-att-time-nc,
+    .eie-att-grid .eie-att-nc {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+    }
+    .eie-att-tbl-wrap {
+        width: max-content; max-height: none; overflow: hidden;
+        margin: 0 auto;
+        border: 0.5px solid #DDE2E8; border-radius: 8px; background: #fff;
+    }
+    .eie-att-grid {
+        width: max-content; min-width: 0; table-layout: auto;
+        break-inside: auto; page-break-inside: auto;
+    }
+    .eie-att-block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    .eie-att-block tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    .eie-att-grid th,
+    .eie-att-grid td {
+        border-color: #DDE2E8 !important;
+        border-width: 0.5px !important;
+    }
+    .eie-att-grid thead th { height: 15px; padding: 0; box-shadow: none; line-height: 1; }
+    .eie-att-day-head,
+    .eie-att-dc { width: var(--eie-att-day-size); min-width: var(--eie-att-day-size); max-width: var(--eie-att-day-size); }
+    .eie-att-dc { height: var(--eie-att-row-size); min-height: var(--eie-att-row-size); max-height: var(--eie-att-row-size); }
+    .eie-att-cellbox { width: 100%; height: 100%; min-height: 0; }
+    .eie-att-icon { width: 9px; height: 9px; stroke-width: 1.15; }
+    .eie-att-marks .eie-att-icon { width: 5px; height: 5px; }
+    .eie-att-student-nc { height: var(--eie-att-row-size); font-size: 9px; padding: 0 4px; font-weight: 500; line-height: 1; }
+    .eie-att-student-nc small { font-size: 7.4px; margin-left: 1px; }
+    .eie-att-time-nc { padding: 0 3px; line-height: 1; }
+    .eie-att-time-nc strong { font-size: 8.8px; font-weight: 500; line-height: 1.05; }
+    .eie-att-time-nc span { font-size: 7.4px; margin-top: 1px; line-height: 1.05; }
+    .eie-att-time-nc small { font-size: 8px; margin-top: 1px; color: var(--eie-att-text); font-weight: 500; line-height: 1.05; }
+    .eie-att-block-card { gap: 1px; line-height: 1.02; padding: 0; }
+    .eie-att-block-period { font-size: 8.2px; font-weight: 650; line-height: 1.02; }
+    .eie-att-block-time { font-size: 6.9px; font-weight: 500; line-height: 1.02; }
+    .eie-att-block-class { font-size: 8.4px; font-weight: 650; line-height: 1.02; color: var(--eie-att-text); }
+    .eie-att-block-days { min-height: 9px; padding: 0 4px; margin-top: 0; font-size: 6.6px; font-weight: 600; line-height: 1; border-width: 0.5px; }
+    .eie-att-grid thead th .eie-att-dnum { font-size: 8.5px; line-height: 1; }
+    .eie-att-grid thead th .eie-att-dwd { font-size: 6.8px; line-height: 1; }
+    .eie-att-future { background: transparent !important; }
+    .eie-att-no-class { background: #FAFBFC !important; }
+    .eie-att-selcol { background: transparent !important; }
+}
+
+/* 크게 보기 버튼 활성 상태 */
+.eie-secondary-button.is-active {
+    background: #dbeafe;
+    color: #0b73ff;
+    border-color: #93c5fd;
+}
+
+/* EIE timetable dedicated one-page print sheet v5 */
+#eie-print-sheet {
+    display: none;
+}
+
+#eie-print-sheet.eie-print-sheet--measure {
+    display: block;
+    position: fixed;
+    left: -100000px;
+    top: 0;
+    z-index: -1;
+    width: max-content;
+    height: max-content;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: visible;
+    background: #fff;
+}
+
+#eie-print-sheet.eie-print-sheet--measure .eie-print-sheet-title {
+    display: none;
+}
+
+#eie-print-sheet.eie-print-sheet--measure .eie-print-sheet-body {
+    position: relative;
+    width: max-content;
+    height: max-content;
+    overflow: visible;
+}
+
+#eie-print-sheet.eie-print-sheet--measure .eie-print-sheet-stage {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: max-content;
+    height: max-content;
+    transform: none;
+    transform-origin: top left;
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 5mm;
+    }
+
+    html:has(body.eie-printing-timetable),
+    body.eie-printing-timetable {
+        width: 287mm !important;
+        height: 200mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+    }
+
+    body.eie-printing-timetable > :not(#eie-print-sheet) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet {
+        display: block !important;
+        position: static !important;
+        width: 287mm !important;
+        height: 200mm !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+        color: #111827 !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-before: avoid !important;
+        break-after: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-title {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 6mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        letter-spacing: -0.01em !important;
+        color: #0f172a !important;
+        background: #fff !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-body {
+        position: relative !important;
+        width: 287mm !important;
+        height: 193mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+        box-sizing: border-box !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-stage {
+        position: absolute !important;
+        transform-origin: top left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-grid-clone,
+    body.eie-printing-timetable #eie-print-sheet .eie-print-sheet-grid-clone * {
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    body.eie-printing-timetable #eie-print-sheet .eie-v2-board-grid.eie-v2-full-grid,
+    body.eie-printing-timetable #eie-print-sheet .eie-weekday-grid {
+        margin: 0 !important;
+    }
+}

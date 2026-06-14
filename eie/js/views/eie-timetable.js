@@ -50,6 +50,7 @@
         studentSaving: false,
         studentError: '',
         studentNotice: '',
+        studentDetailTab: 'basic',
         studentConsultationLoadedId: '',
         studentConsultationRows: [],
         studentConsultationSelectedId: '',
@@ -361,14 +362,15 @@
     }
 
     function normalizeGrade(value) {
+        if (window.EieGradeUtils && typeof EieGradeUtils.normalizeEieGrade === 'function') {
+            return EieGradeUtils.normalizeEieGrade(value);
+        }
         const raw = normalizeKey(value).replace(/\s+/g, '');
-        const elem = raw.match(/^초(?:등|등학교)?([1-6])(?:학년)?$/);
-        if (elem) return `초${elem[1]}`;
         const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
         if (middle) return `중${middle[1]}`;
         const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
         if (high) return `고${high[1]}`;
-        return raw;
+        return /^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
     }
 
     function studentSchool(row) {
@@ -2374,7 +2376,7 @@
         const selected = normalizeGrade(value);
         return `<select id="${esc(id)}">
             <option value="">선택</option>
-            ${['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
+            ${['중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
         </select>`;
     }
 
@@ -2515,6 +2517,189 @@
         `;
     }
 
+    function renderApProfileInfoRow(label, value, options = {}) {
+        const text = normalizeKey(value);
+        return `
+            <div class="eie-v2-ap-info-row">
+                <span class="eie-v2-ap-info-label">${esc(label)}</span>
+                <span class="eie-v2-ap-info-value${text ? '' : ' is-muted'}">${esc(text || options.empty || '')}</span>
+            </div>
+        `;
+    }
+
+    function renderStudentPanelTabs(activeTab) {
+        const tab = ['basic', 'consultation', 'grades'].includes(activeTab) ? activeTab : 'basic';
+        const tabs = [
+            ['basic', '기본'],
+            ['consultation', '상담'],
+            ['grades', '성적']
+        ];
+        return `
+            <div class="eie-v2-ap-tabs">
+                ${tabs.map(([key, label]) => `
+                    <button type="button" class="eie-v2-ap-tab${tab === key ? ' is-active' : ''}" data-eie-v2-student-detail-tab="${esc(key)}">${esc(label)}</button>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function renderStudentPanelProfileHead(student, sid, subtitle) {
+        const status = studentStatus(student);
+        const statusClass = status === 'active' || status === 'imported' ? 'is-active' : (status === 'archived' || status === 'hidden' ? 'is-archived' : '');
+        const session = selectedSessionRecord();
+        const teacherNames = studentTeacherNames(student).join(', ');
+        const meta = [
+            [studentSchool(student), normalizeGrade(studentGrade(student)) || studentGrade(student)].filter(Boolean).join(' · ') || subtitle,
+            session?.material || '',
+            teacherNames ? `담임 ${teacherNames}` : ''
+        ].filter(Boolean).join(' · ');
+        return `
+            <header class="eie-v2-ap-profile-head">
+                <div class="eie-v2-ap-head-main">
+                    <div class="eie-v2-ap-head-title">
+                        <h1>${esc(studentDisplayName(student))}</h1>
+                        <span class="eie-v2-ap-status-dot ${esc(statusClass)}"></span>
+                        <span class="eie-v2-ap-status-text ${esc(statusClass)}">${esc(statusLabel(status))}</span>
+                    </div>
+                    <div class="eie-v2-ap-meta-line">${esc(meta || '학교/학년 미등록')}</div>
+                </div>
+                ${sid ? '<button type="button" class="eie-v2-ap-head-btn" data-eie-v2-student-edit>수정</button>' : ''}
+            </header>
+        `;
+    }
+
+    function renderStudentBasicPanel(student, sid) {
+        const session = selectedSessionRecord();
+        const recentClass = session ? [session.period_label, session.material].filter(Boolean).join(' · ') : '';
+        const latestConsultation = consultationRowsForStudent(sid)[0];
+        const latestConsultationText = latestConsultation
+            ? [consultationDate(latestConsultation), consultationType(latestConsultation)].filter(Boolean).join(' ')
+            : '';
+        const parentInfo = [
+            studentParentPhone(student),
+            studentGuardianRelation(student) ? `(${studentGuardianRelation(student)})` : ''
+        ].filter(Boolean).join(' ');
+        return `
+            <div class="eie-v2-ap-tab-body">
+                <section class="eie-v2-ap-card">
+                    <div class="eie-v2-ap-section-head">
+                        <h3>학생 상세 정보</h3>
+                    </div>
+                    <div class="eie-v2-ap-info-list">
+                        ${renderApProfileInfoRow('학생 연락처', studentPhone(student))}
+                        ${renderApProfileInfoRow('보호자 정보', parentInfo)}
+                        ${renderApProfileInfoRow('주소', studentAddress(student))}
+                        ${renderApProfileInfoRow('차량', studentVehicleInfo(student))}
+                        ${renderApProfileInfoRow('등원일', studentEnrollDate(student) || '미등록')}
+                        ${renderApProfileInfoRow('메모', studentMemo(student))}
+                        ${renderApProfileInfoRow('PIN 번호', studentPin(student))}
+                    </div>
+                </section>
+                <section class="eie-v2-ap-card">
+                    <div class="eie-v2-ap-section-head"><h3>최근 활동</h3></div>
+                    <div class="eie-v2-ap-info-list">
+                        ${renderApProfileInfoRow('최근 수업', recentClass)}
+                        ${renderApProfileInfoRow('최근 시험', '')}
+                        ${renderApProfileInfoRow('마지막 상담', latestConsultationText)}
+                    </div>
+                </section>
+                <section class="eie-v2-ap-card">
+                    <div class="eie-v2-ap-history-head">
+                        <div>
+                            <h3>학생 이력</h3>
+                            <p>상태 변경 0건 · 반 이동 0건</p>
+                        </div>
+                        <div>
+                            <button type="button" class="eie-v2-ap-mini-btn" disabled>상태 변경 이력</button>
+                            <button type="button" class="eie-v2-ap-mini-btn" disabled>반 이동 이력</button>
+                        </div>
+                    </div>
+                    <div class="eie-v2-ap-attendance-save">
+                        <label><span>등원일</span><input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}"></label>
+                        ${sid ? `<button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-attendance-date">등원 저장</button>` : ''}
+                    </div>
+                </section>
+            </div>
+        `;
+    }
+
+    function renderStudentConsultationPanel(student, sid) {
+        const rows = consultationRowsForStudent(sid).slice(0, 5);
+        const selected = selectedPanelConsultation(rows);
+        const selectedId = consultationRowId(selected);
+        const loadingText = viewState.studentConsultationLoadedId === sid ? '' : '불러오는 중';
+        const editing = viewState.studentConsultationFormOpen && normalizeKey(viewState.studentConsultationEditingId);
+        const editingRow = editing ? (rows.find(row => consultationRowId(row) === editing) || null) : null;
+        const editingType = consultationType(editingRow);
+        const dateButtons = rows.map(row => {
+            const id = consultationRowId(row);
+            return `<button type="button" class="eie-v2-ap-consult-date${id === selectedId ? ' is-active' : ''}" data-eie-v2-consultation-select="${esc(id)}">${esc(consultationDateLabel(row))}</button>`;
+        }).join('');
+        const formHtml = viewState.studentConsultationFormOpen ? `
+            <div class="eie-v2-ap-form-card">
+                <div class="eie-v2-ap-section-head"><h3>${editingRow ? '상담 수정' : '새 상담 기록'}</h3></div>
+                <div class="eie-v2-panel-consultation-form-grid">
+                    <label class="eie-v2-student-quick-field"><span>상담일</span><input id="eie-v2-consultation-date" type="date" value="${esc(consultationDate(editingRow) || todayIso())}"></label>
+                    <label class="eie-v2-student-quick-field"><span>유형</span><select id="eie-v2-consultation-type">${['학습', '생활', '진로', '학부모', '상담'].map(type => `<option value="${esc(type)}"${editingType === type ? ' selected' : ''}>${esc(type)}</option>`).join('')}</select></label>
+                    <label class="eie-v2-student-quick-field is-wide"><span>상담 입력</span><textarea id="eie-v2-consultation-content" placeholder="상담 내용을 입력하세요.">${esc(normalizeKey(editingRow?.content))}</textarea></label>
+                    <label class="eie-v2-student-quick-field is-wide"><span>후속조치</span><textarea id="eie-v2-consultation-next-action" placeholder="다음 조치가 있으면 입력하세요.">${esc(normalizeKey(editingRow?.next_action || editingRow?.nextAction))}</textarea></label>
+                </div>
+                <div class="eie-v2-panel-consultation-form-actions">
+                    <button type="button" class="eie-v2-ap-mini-btn" data-eie-v2-consultation-cancel>취소</button>
+                    <button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-consultation-save="${esc(sid)}"${viewState.studentSaving ? ' disabled' : ''}>${editingRow ? '수정 저장' : '상담 저장'}</button>
+                </div>
+            </div>
+        ` : '';
+        return `
+            <div class="eie-v2-ap-tab-body">
+                <section class="eie-v2-ap-card eie-v2-ap-consult-pinned">
+                    <div class="eie-v2-ap-section-head">
+                        <h3>최근 상담</h3>
+                        <button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-consultation-new="${esc(sid)}">+ 상담</button>
+                    </div>
+                    ${loadingText ? `<div class="eie-v2-ap-loading">${esc(loadingText)}</div>` : ''}
+                    ${dateButtons ? `<div class="eie-v2-ap-consult-date-row">${dateButtons}</div>` : ''}
+                    ${renderPanelConsultationDetail(selected)}
+                </section>
+                ${formHtml}
+                <section class="eie-v2-ap-card">
+                    <div class="eie-v2-ap-section-head"><h3>상담 이력</h3><span>${esc(String(rows.length))}건</span></div>
+                    <div class="eie-v2-ap-consult-list">
+                        ${rows.length ? rows.map(renderPanelConsultationDetail).join('') : '<div class="eie-v2-panel-consultation-empty">상담 기록 없음</div>'}
+                    </div>
+                </section>
+            </div>
+        `;
+    }
+
+    function renderStudentGradesPanel(student, sid) {
+        const session = selectedSessionRecord();
+        const classId = Array.isArray(session?.source_cell_ids) && session.source_cell_ids.length ? session.source_cell_ids[0] : '';
+        return `
+            <div class="eie-v2-ap-tab-body">
+                <section class="eie-v2-ap-card">
+                    <div class="eie-v2-ap-section-head"><h3>성적</h3><span>성적표 연동</span></div>
+                    <button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-open-student-grades="${esc(sid)}" data-eie-v2-grade-class-id="${esc(classId)}">성적표 열기</button>
+                    <div class="eie-v2-ap-info-list">
+                        ${renderApProfileInfoRow('최근 시험', '')}
+                        ${renderApProfileInfoRow('최근 점수', '')}
+                    </div>
+                </section>
+                <section class="eie-v2-ap-card">
+                    <div class="eie-v2-ap-section-head"><h3>성적표 기록</h3></div>
+                    <div class="eie-v2-panel-consultation-empty">저장된 성적 기록이 없습니다.</div>
+                </section>
+            </div>
+        `;
+    }
+
+    function renderStudentPanelBody(student, sid) {
+        const tab = ['basic', 'consultation', 'grades'].includes(viewState.studentDetailTab) ? viewState.studentDetailTab : 'basic';
+        if (tab === 'consultation') return renderStudentConsultationPanel(student, sid);
+        if (tab === 'grades') return renderStudentGradesPanel(student, sid);
+        return renderStudentBasicPanel(student, sid);
+    }
+
     function renderStudentPanel() {
         if (viewState.studentPanelMode === 'new') return renderNewStudentPanel();
         if (!viewState.selectedStudentId && !viewState.selectedStudentName) return '';
@@ -2535,70 +2720,21 @@
         const periodTime = session ? [session.period_label, sessionTime].filter(Boolean).join(' · ') : '';
         const teacherNames = studentTeacherNames(student).join(', ');
         const pin = studentPin(student);
-        const pinValue = pin ? `<span class="eie-p-field-value" data-eie-v2-pin="${esc(pin)}">●●●●</span>` : '<span class="eie-p-field-value is-empty">미등록</span>';
-        const enrollDate = studentEnrollDate(student);
         return `
-            <aside class="eie-v2-detail-panel eie-v2-student-panel eie-p-panel" aria-label="${esc(studentDisplayName(student))} 학생 상세">
-                <div class="eie-p-head">
-                    <div class="eie-p-head-top">
-                        <div class="eie-p-head-identity">
-                            <div class="eie-p-head-text">
-                                <div class="eie-p-head-name">${esc(studentDisplayName(student))}</div>
-                                <div class="eie-p-head-sub">${esc(subtitle)}</div>
-                            </div>
-                        </div>
-                        <div class="eie-p-head-actions">
-                            <button type="button" class="eie-p-btn-cancel" data-eie-v2-student-back>← 수업</button>
-                            ${sid ? '<button type="button" class="eie-p-btn-save" data-eie-v2-student-edit>수정</button>' : ''}
-                        </div>
-                    </div>
-                    <div class="eie-p-badge-row">
-                        ${renderPBadge(pStudentTypeBadge(studentType(student)))}
-                        ${renderPBadge(pGradeBadge(studentGrade(student)))}
-                        ${renderPBadge(pStatusBadge(student))}
-                    </div>
+            <aside class="eie-v2-detail-panel eie-v2-student-panel eie-p-panel eie-v2-ap-profile-panel" aria-label="학생 상세">
+                <div class="eie-v2-ap-appbar">
+                    <button type="button" class="eie-v2-ap-appbar-cancel" data-eie-v2-student-back>취소</button>
+                    <strong></strong>
+                    <span aria-hidden="true"></span>
+                </div>
+                <div class="eie-v2-ap-profile-shell">
+                    ${renderStudentPanelProfileHead(student, sid, subtitle)}
+                    ${renderStudentPanelTabs(viewState.studentDetailTab)}
                     ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
                     ${viewState.studentNotice ? `<div class="eie-v2-alert is-success" role="status">${esc(viewState.studentNotice)}</div>` : ''}
+                    ${sid ? '' : '<div class="eie-v2-ap-card"><span class="eie-v2-ap-info-value is-muted">확정된 학생 id가 없어 이 패널에서 바로 수정할 수 없습니다. 학생관리에서 이름으로 확인해 주세요.</span></div>'}
+                    ${renderStudentPanelBody(student, sid)}
                 </div>
-                ${sid ? '' : '<div class="eie-p-card"><span class="eie-p-field-value is-empty">확정된 학생 id가 없어 이 패널에서 바로 수정할 수 없습니다. 학생관리에서 이름으로 확인해 주세요.</span></div>'}
-                <span class="eie-p-section-label">수업 정보</span>
-                <div class="eie-p-card">
-                    ${renderPField('담당 선생님', teacherNames)}
-                    <div class="eie-p-divider"></div>
-                    ${renderPField('수업명', className)}
-                    ${renderPField('요일', sessionDays)}
-                    ${renderPField('교시', periodTime)}
-                </div>
-                ${renderStudentQuickRecords(sid)}
-                <span class="eie-p-section-label">더보기</span>
-                <details class="eie-p-drawer">
-                    <summary class="eie-p-drawer-trigger">연락처·개인정보<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
-                    <div class="eie-p-drawer-body">
-                        ${renderPField('학생 연락처', studentPhone(student))}
-                        ${renderPField('학부모 연락처', studentParentPhone(student))}
-                        ${renderPField('보호자 관계', studentGuardianRelation(student))}
-                        ${renderPField('주소', studentAddress(student))}
-                        ${renderPField('차량', studentVehicleInfo(student))}
-                        ${renderPField('상태', statusLabel(studentStatus(student)))}
-                        <div class="eie-p-field-row"><span class="eie-p-field-label">PIN</span>${pinValue}</div>
-                        <div class="eie-p-divider"></div>
-                        ${renderPField('메모', studentMemo(student))}
-                    </div>
-                    <div class="eie-p-danger-zone">
-                        <div class="eie-p-enroll-area">
-                            ${enrollDate
-                                ? `<span class="eie-p-enroll-done">첫 등원 ${esc(enrollDate)}</span>`
-                                : `<span class="eie-p-enroll-chip">첫 등원일 미등록</span>
-                            <input type="date" id="eie-v2-first-attendance-date" value="${esc(todayIso())}">
-                            ${sid ? `<button type="button" class="eie-p-btn-cancel eie-p-enroll-save" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-first-attendance-date">저장</button>` : ''}`}
-                        </div>
-                        ${sid ? `
-                        <div class="eie-p-danger-actions">
-                            <button type="button" class="eie-p-btn-warn" data-eie-v2-student-transfer>전반</button>
-                            <button type="button" class="eie-p-btn-danger" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
-                        </div>` : ''}
-                    </div>
-                </details>
             </aside>
         `;
     }
@@ -3333,6 +3469,21 @@
                 reopenPanelMountRoute();
                 return;
             }
+            const studentDetailTabButton = event.target.closest?.('[data-eie-v2-student-detail-tab]');
+            if (studentDetailTabButton) {
+                event.preventDefault();
+                viewState.studentDetailTab = studentDetailTabButton.getAttribute('data-eie-v2-student-detail-tab') || 'basic';
+                viewState.studentConsultationFormOpen = false;
+                viewState.studentConsultationEditingId = '';
+                reopenPanelMountRoute();
+                return;
+            }
+            const studentGradesButton = event.target.closest?.('[data-eie-v2-open-student-grades]');
+            if (studentGradesButton) {
+                event.preventDefault();
+                openStudentGradesFromPanel(studentGradesButton);
+                return;
+            }
             const attendanceSaveButton = event.target.closest?.('[data-eie-v2-attendance-save]');
             if (attendanceSaveButton) {
                 event.preventDefault();
@@ -3803,6 +3954,7 @@
         viewState.selectedSessionId = button.getAttribute('data-eie-v2-return-session') || viewState.selectedSessionId;
         viewState.selectedDay = button.getAttribute('data-eie-v2-return-day') || viewState.selectedDay;
         viewState.studentPanelMode = 'detail';
+        viewState.studentDetailTab = 'basic';
         viewState.studentError = '';
         viewState.studentNotice = '';
         if (previousStudentId !== viewState.selectedStudentId) {
@@ -3829,11 +3981,38 @@
         reopenPanelMountRoute();
     }
 
+    function openStudentGradesFromPanel(button) {
+        const sid = normalizeKey(button?.getAttribute?.('data-eie-v2-open-student-grades') || viewState.selectedStudentId);
+        const classId = normalizeKey(button?.getAttribute?.('data-eie-v2-grade-class-id') || selectedSessionRecord()?.source_cell_ids?.[0] || '');
+        const student = selectedStudentRecord();
+        const studentName = studentDisplayName(student || { display_name: viewState.selectedStudentName });
+        if (window.EieGradeLedgerView && typeof EieGradeLedgerView.openStudent === 'function') {
+            return EieGradeLedgerView.openStudent({
+                studentId: sid,
+                studentName,
+                classId,
+                mode: 'academy',
+                monthKey: todayIso().slice(0, 7)
+            });
+        }
+        if (window.EieGradeLedgerView && typeof EieGradeLedgerView.openLedger === 'function') {
+            return EieGradeLedgerView.openLedger({
+                studentId: sid,
+                studentName,
+                classId,
+                mode: 'academy',
+                monthKey: todayIso().slice(0, 7)
+            });
+        }
+        if (window.EieRouter && typeof EieRouter.open === 'function') return EieRouter.open('grades');
+    }
+
     function clearStudentPanel() {
         viewState.selectedStudentId = '';
         viewState.selectedStudentName = '';
         viewState.studentPanelMode = 'detail';
         viewState.transferTargetId = '';
+        viewState.studentDetailTab = 'basic';
         viewState.studentError = '';
         viewState.studentNotice = '';
         viewState.studentSaving = false;
@@ -4471,7 +4650,7 @@
             const payload = {
                 display_name: name,
                 name,
-                grade: studentFieldValue('eie-v2-edit-grade'),
+                grade: normalizeGrade(studentFieldValue('eie-v2-edit-grade')),
                 school_name: studentFieldValue('eie-v2-edit-school'),
                 phone: studentFieldValue('eie-v2-edit-phone'),
                 student_phone: studentFieldValue('eie-v2-edit-phone'),
@@ -4518,7 +4697,7 @@
         const payload = {
             display_name: studentFieldValue('eie-v2-edit-name'),
             name: studentFieldValue('eie-v2-edit-name'),
-            grade: studentFieldValue('eie-v2-edit-grade'),
+            grade: normalizeGrade(studentFieldValue('eie-v2-edit-grade')),
             school_name: studentFieldValue('eie-v2-edit-school'),
             phone: studentFieldValue('eie-v2-edit-phone'),
             student_phone: studentFieldValue('eie-v2-edit-phone'),
@@ -4834,7 +5013,7 @@
             const payload = {
                 name,
                 display_name: name,
-                grade: normalizeKey(gradeEl?.value || ''),
+                grade: normalizeGrade(gradeEl?.value || ''),
                 school_name: normalizeKey(schoolEl?.value || ''),
                 phone: normalizeKey(phoneEl?.value || ''),
                 parent_phone: normalizeKey(parentEl?.value || ''),
@@ -4908,6 +5087,7 @@
         viewState.selectedStudentId = normalizeKey(ctx.studentId || ctx.student_id || '');
         viewState.selectedStudentName = normalizeStudentName(ctx.studentName || ctx.student_name || '');
         viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
+        viewState.studentDetailTab = normalizeKey(ctx.studentDetailTab || ctx.student_detail_tab || '') || 'basic';
         viewState.studentError = '';
         viewState.studentNotice = '';
         if (previousStudentId !== viewState.selectedStudentId) {
@@ -4966,9 +5146,11 @@
         viewState.selectedStudentId = nextStudentId;
         viewState.selectedStudentName = normalizeStudentName(ctx.studentName || ctx.student_name || '');
         viewState.studentPanelMode = normalizeKey(ctx.studentPanelMode || ctx.student_panel_mode || 'detail') || 'detail';
+        viewState.studentDetailTab = normalizeKey(ctx.studentDetailTab || ctx.student_detail_tab || viewState.studentDetailTab || 'basic') || 'basic';
         if (!sameStudentPanel) {
             viewState.studentError = '';
             viewState.studentNotice = '';
+            viewState.studentDetailTab = normalizeKey(ctx.studentDetailTab || ctx.student_detail_tab || '') || 'basic';
             viewState.studentConsultationLoadedId = '';
             viewState.studentConsultationRows = [];
             viewState.studentConsultationSelectedId = '';

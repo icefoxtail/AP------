@@ -1,0 +1,720 @@
+/* ======================================================================
+   EIE Grade Ledger — 성적표 / 학교성적 / 원내평가
+   - eie.css에서 기능별로 분리한 파일이다 (디자인 변경 없음).
+   - 로딩 순서: eie.css(공통) 다음에 로드한다.
+   - eie-grade-* / eie-academy-* / eie-teacher-grade-* 전용 스타일.
+   ====================================================================== */
+.eie-grade-ledger .eie-panel {
+    width: min(100%, 1180px);
+    max-width: none;
+    height: calc(100vh - 88px);
+    min-height: 0;
+    margin: 0 auto;
+    padding: 16px;
+    gap: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.eie-grade-head,
+.eie-grade-subhead,
+.eie-teacher-grade-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.eie-grade-head {
+    gap: 8px;
+    padding: 0 4px;
+}
+
+.eie-grade-title {
+    border: 0;
+    background: transparent;
+    color: var(--eie-ledger-text);
+    font: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    cursor: pointer;
+}
+
+.eie-grade-focus-chip {
+    border: 1px solid rgba(110, 102, 201, .24);
+    border-radius: 999px;
+    background: rgba(110, 102, 201, .08);
+    color: #6e66c9;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 5px 9px;
+}
+
+.eie-grade-head-actions,
+.eie-grade-controls,
+.eie-grade-tabs,
+.eie-grade-section-tabs,
+.eie-grade-panel-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.eie-grade-controls {
+    margin-bottom: 0;
+}
+
+.eie-grade-controls > .eie-grade-ctrl {
+    flex: 1 1 150px;
+}
+
+.eie-grade-controls > .eie-grade-section-tabs {
+    flex: 0 0 170px;
+}
+
+.eie-grade-academy,
+.eie-grade-ledger .eie-panel > .eie-grade-controls + .eie-grade-table-wrap {
+    min-height: 0;
+}
+
+.eie-grade-academy {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 원내평가: 컨트롤 + 이번 달 시험을 하나의 상단 카드로 묶는다. */
+.eie-grade-academy-top {
+    padding: 16px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 16px;
+    background: var(--eie-surface);
+    box-sizing: border-box;
+}
+
+.eie-grade-academy-top .eie-grade-controls {
+    margin-bottom: 0;
+}
+
+.eie-grade-academy-top .eie-grade-tests {
+    margin: 12px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--eie-ledger-line);
+}
+
+/* 상단 카드와 테이블 카드 사이 간격은 부모 gap(24px)으로만 처리한다. */
+.eie-grade-academy > .eie-grade-table-wrap {
+    margin-top: 0;
+}
+
+.eie-grade-tabs,
+.eie-grade-section-tabs {
+    margin: 0;
+    padding: 4px;
+    border-radius: 14px;
+    background: var(--eie-surface-2);
+}
+
+.eie-grade-tabs button,
+.eie-grade-section-tabs button {
+    min-height: 40px;
+    border: 0;
+    border-radius: 10px;
+    padding: 0 16px;
+    background: transparent;
+    color: var(--eie-ledger-muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eie-grade-section-tabs button {
+    flex: 1 1 0;
+    text-align: center;
+}
+
+.eie-grade-tabs button.is-active,
+.eie-grade-section-tabs button.is-active {
+    /* 출석부 세그먼트 active 톤: 흰 표면 + accent 텍스트 + 중립 그림자 (진한 채움 제거) */
+    background: var(--eie-surface);
+    color: var(--eie-ledger-accent);
+    box-shadow: 0 1px 2px rgba(15,23,42,0.08);
+}
+
+.eie-grade-tabs button:not(.is-active):hover,
+.eie-grade-section-tabs button:not(.is-active):hover {
+    background: var(--eie-ledger-hover);
+    color: var(--eie-ledger-accent);
+}
+
+.eie-grade-ctrl,
+.eie-grade-add-test input,
+.eie-grade-add-test select {
+    min-height: 44px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 12px;
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 12px;
+}
+
+.eie-grade-table-wrap {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 14px;
+    background: var(--eie-surface);
+    max-height: none;
+}
+
+.eie-grade-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.eie-grade-table th {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    background: var(--eie-surface);
+    color: var(--eie-ledger-muted);
+    height: 34px;
+    min-height: 34px;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--eie-ledger-line-strong);
+    padding: 8px 6px;
+    text-align: center;
+}
+
+.eie-grade-table thead tr:nth-child(2) th {
+    top: 34px;
+}
+
+.eie-grade-table td {
+    border-bottom: 1px solid var(--eie-ledger-line);
+    background: var(--eie-surface);
+    padding: 8px;
+    text-align: center;
+}
+
+.eie-grade-sticky-grade,
+.eie-grade-sticky-class,
+.eie-grade-sticky-name {
+    position: sticky;
+    background: var(--eie-surface);
+    z-index: 3;
+}
+
+.eie-grade-sticky-grade {
+    left: 0;
+    width: 44px;
+    min-width: 44px;
+    max-width: 44px;
+}
+
+.eie-grade-sticky-class {
+    left: 44px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.eie-grade-sticky-name {
+    left: 144px;
+    width: 104px;
+    min-width: 104px;
+    max-width: 104px;
+    font-weight: 600;
+}
+
+.eie-academy-table .eie-grade-sticky-class {
+    left: 0;
+    width: 96px;
+    min-width: 96px;
+    max-width: 96px;
+}
+
+.eie-academy-table .eie-grade-sticky-name {
+    left: 96px;
+    width: 112px;
+    min-width: 112px;
+    max-width: 112px;
+}
+
+/* 원내평가 테이블 컬럼 폭 기준 (가로 스크롤 허용) */
+.eie-academy-table col.eie-grade-col-class { width: 96px; }
+.eie-academy-table col.eie-grade-col-name { width: 112px; }
+.eie-academy-table col.eie-grade-col-score { width: 100px; }
+.eie-academy-table col.eie-grade-col-score.is-fraction { width: 108px; }
+.eie-academy-table col.eie-grade-col-memo { width: 200px; }
+
+.eie-grade-table thead .eie-grade-sticky-grade,
+.eie-grade-table thead .eie-grade-sticky-class,
+.eie-grade-table thead .eie-grade-sticky-name {
+    z-index: 6;
+}
+
+.eie-grade-inp {
+    width: 64px;
+    max-width: 100%;
+    height: 36px;
+    min-height: 36px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 10px;
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.eie-grade-inp:hover {
+    border-color: var(--eie-ledger-accent);
+    background: var(--eie-ledger-hover);
+}
+
+.eie-grade-inp:focus {
+    outline: none;
+    border-color: var(--eie-ledger-accent);
+    background: var(--eie-surface);
+    /* 출석부와 같은 약한 focus ring */
+    box-shadow: 0 0 0 3px rgba(15,118,110,0.10);
+}
+
+.eie-grade-inp.is-memo {
+    width: 100%;
+    min-width: 160px;
+    text-align: left;
+    padding: 0 12px;
+}
+
+.eie-grade-save-btn {
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 12px;
+    background: var(--eie-surface);
+    color: var(--eie-ledger-muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.eie-grade-save-btn:disabled {
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-muted);
+    border-color: var(--eie-ledger-line);
+    opacity: 1;
+    cursor: default;
+}
+
+.eie-grade-save-btn.is-active {
+    border-color: var(--eie-ledger-accent);
+    background: var(--eie-ledger-accent);
+    color: #fff;
+}
+
+.eie-grade-dirty-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    /* 변경 N개: 진한 채움 대신 약한 accent 칩 톤 */
+    background: rgba(15,118,110,0.12);
+    color: var(--eie-ledger-accent);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.eie-grade-dirty-badge.is-clean {
+    background: rgba(100, 116, 139, 0.08);
+    color: var(--eie-ledger-muted);
+}
+
+.eie-grade-semester-1 {
+    background: rgba(15,118,110,0.035) !important;
+}
+
+.eie-grade-semester-2 {
+    background: rgba(17,24,39,0.025) !important;
+}
+
+.eie-grade-border2 {
+    border-left: 1px solid var(--eie-ledger-line-strong) !important;
+}
+
+.eie-grade-trend {
+    margin-top: 2px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.eie-grade-trend.is-up {
+    color: #138a52;
+}
+
+.eie-grade-trend.is-down {
+    color: #d33f49;
+}
+
+.eie-grade-avg-cell,
+.eie-grade-table tr.is-grade-avg td,
+.eie-grade-table tr.is-class-avg td {
+    background: var(--eie-surface);
+    color: var(--eie-ledger-muted);
+    font-weight: 500;
+    border-top: 1px solid var(--eie-ledger-line-strong);
+}
+
+.eie-grade-empty {
+    padding: 32px !important;
+    color: var(--eie-muted);
+}
+
+/* 이번 달 시험 (가벼운 칩 + 보조 작업 영역) */
+.eie-grade-tests {
+    margin: 0 0 12px;
+}
+
+.eie-grade-tests-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.eie-grade-tests-title {
+    color: var(--eie-ledger-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.eie-grade-edit-toggle {
+    border: 0;
+    background: transparent;
+    color: var(--eie-ledger-muted);
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 8px;
+}
+
+.eie-grade-edit-toggle:hover,
+.eie-grade-edit-toggle.is-open {
+    color: var(--eie-ledger-accent);
+    background: var(--eie-ledger-hover);
+}
+
+.eie-grade-test-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.eie-grade-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--eie-ledger-line);
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-muted);
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.eie-grade-chip.is-on {
+    /* 출석부 칩 선택 톤: 연한 배경 + 얇은 accent border (강한 ring 제거) */
+    border-color: rgba(15,118,110,0.28);
+    background: rgba(15,118,110,0.075);
+    color: var(--eie-ledger-accent);
+}
+
+.eie-grade-chip input {
+    accent-color: var(--eie-ledger-accent);
+    margin: 0;
+}
+
+.eie-grade-chip span em {
+    font-style: normal;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+    margin-left: 2px;
+}
+
+/* 시험 추가/수정 폼 (보조 작업) */
+.eie-grade-test-form {
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 12px;
+    background: var(--eie-surface);
+}
+
+.eie-grade-test-form-title {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.eie-grade-test-fields {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 160px 130px;
+    gap: 12px;
+}
+
+.eie-grade-test-fields label {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.eie-grade-test-fields input,
+.eie-grade-test-fields select {
+    min-height: 40px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 10px;
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0 12px;
+}
+
+.eie-grade-date-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.eie-grade-date-field input[type="date"] {
+    min-height: 36px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 10px;
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-text);
+    font: inherit;
+    padding: 0 8px;
+}
+
+.eie-grade-test-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.eie-grade-test-form-actions--edit {
+    justify-content: space-between;
+}
+
+.eie-grade-test-form-right {
+    display: inline-flex;
+    gap: 8px;
+}
+
+/* 시험 고치기 목록 */
+.eie-grade-edit-list {
+    margin-top: 12px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 12px;
+    background: var(--eie-surface);
+    overflow: hidden;
+}
+
+.eie-grade-edit-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid var(--eie-ledger-line);
+}
+
+.eie-grade-edit-row:first-child {
+    border-top: 0;
+}
+
+.eie-grade-edit-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-weight: 600;
+}
+
+.eie-grade-edit-name em {
+    font-style: normal;
+    opacity: 0.7;
+    margin-left: 4px;
+}
+
+.eie-grade-edit-type {
+    color: var(--eie-ledger-muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.eie-grade-edit-empty {
+    padding: 16px;
+    color: var(--eie-ledger-muted);
+    font-weight: 500;
+}
+
+.eie-grade-add-btn {
+    min-height: 40px;
+    border: 0;
+    border-radius: 10px;
+    padding: 0 16px;
+    background: var(--eie-ledger-accent);
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eie-grade-add-btn:hover {
+    filter: brightness(0.96);
+}
+
+/* 원내평가 컨트롤 줄의 + 시험 추가는 보조 액션이므로 quiet 톤으로 둔다. */
+.eie-grade-controls--academy .eie-grade-add-btn {
+    background: var(--eie-surface);
+    color: var(--eie-ledger-accent);
+    border: 1px solid var(--eie-ledger-line);
+    box-shadow: none;
+}
+
+.eie-grade-controls--academy .eie-grade-add-btn:hover {
+    background: var(--eie-ledger-hover);
+    filter: none;
+}
+
+.eie-grade-btn-ghost {
+    min-height: 36px;
+    border: 1px solid var(--eie-ledger-line);
+    border-radius: 10px;
+    padding: 0 12px;
+    background: var(--eie-surface-2);
+    color: var(--eie-ledger-text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eie-grade-btn-ghost:hover {
+    background: var(--eie-ledger-hover);
+    color: var(--eie-ledger-accent);
+}
+
+.eie-grade-date-label,
+.eie-grade-max-label {
+    display: block;
+    margin-top: 2px;
+    color: var(--eie-ledger-muted);
+    font-size: 11px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.eie-grade-text-danger {
+    min-height: 36px;
+    border: 0;
+    border-radius: 10px;
+    padding: 0 12px;
+    background: transparent;
+    color: #b91c1c;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eie-grade-text-danger:hover {
+    background: rgba(185,28,28,0.08);
+}
+
+.eie-grade-help {
+    color: var(--eie-ledger-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.eie-teacher-grade-card {
+    margin: 12px 0;
+}
+
+.eie-teacher-grade-block {
+    margin-top: 12px;
+}
+
+.eie-teacher-grade-row {
+    padding: 9px 0;
+    border-top: 1px solid var(--eie-border);
+}
+
+.eie-teacher-grade-row span:first-child {
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .eie-grade-test-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-grade-table {
+        min-width: 680px;
+    }
+
+    .eie-grade-sticky-class {
+        left: 44px;
+        width: 88px;
+        min-width: 88px;
+        max-width: 88px;
+    }
+
+    .eie-grade-sticky-name {
+        left: 132px;
+        width: 92px;
+        min-width: 92px;
+        max-width: 92px;
+    }
+
+    .eie-academy-table .eie-grade-sticky-name {
+        left: 96px;
+    }
+}

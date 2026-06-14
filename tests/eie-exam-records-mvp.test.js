@@ -8,7 +8,8 @@ const worker = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes
 const api = fs.readFileSync(path.join(root, 'eie/js/eie-api.js'), 'utf8');
 const students = fs.readFileSync(path.join(root, 'eie/js/views/eie-students.js'), 'utf8');
 const classroom = fs.readFileSync(path.join(root, 'eie/js/views/eie-classroom.js'), 'utf8');
-const css = fs.readFileSync(path.join(root, 'eie/css/eie.css'), 'utf8');
+const gradeLedger = fs.readFileSync(path.join(root, 'eie/js/views/eie-grade-ledger.js'), 'utf8');
+const css = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 
 for (const column of [
   'id TEXT PRIMARY KEY',
@@ -85,7 +86,7 @@ for (const fn of [
 }
 
 assert(
-  students.includes("renderTabButton('grades', '성적표')") &&
+  students.includes("renderTabButton('grades', '성적')") &&
     students.includes('function renderExamCategoryCards()') &&
     students.includes('setExamCategory: function (category)') &&
     students.includes('saveExamRecord: async function (studentId)'),
@@ -96,11 +97,24 @@ for (const label of ['월말평가', '단어', '문법', '교재', 'Reading', 'L
   assert(students.includes(label), `student grade tab should include ${label}`);
 }
 
+// Policy change: the student detail no longer exposes a raw payload_json input
+// box, so there is no JSON.parse(payloadText) validation step. The grades tab now
+// builds a structured payload (date/title/score/level/memo) with payload_json set
+// to null and saves through EieApi.createExamRecord, staying on the grades tab.
 assert(
-  students.includes("JSON.parse(payloadText)") &&
-    students.includes("EieApi.createExamRecord(payload)") &&
+  !students.includes('JSON.parse(payloadText)') &&
+    students.includes('payload_json: null') &&
+    students.includes('EieApi.createExamRecord(payload)') &&
     students.includes("_tab = 'grades'"),
-  'student grade save should validate JSON, save through EieApi, and stay on the grades tab'
+  'student grade save should build a structured payload (no raw payload_json input UI), save through EieApi, and stay on the grades tab'
+);
+
+// 성적표 입력/저장의 정식 경로는 EieGradeLedgerView 의 eie_exam_records MVP API 흐름이다.
+assert(
+  gradeLedger.includes('window.EieGradeLedgerView') &&
+    gradeLedger.includes('EieApi.batchExamRecords') &&
+    gradeLedger.includes('getExamRecords'),
+  'grade ledger should read/write academy scores through the eie_exam_records MVP API'
 );
 
 assert(
@@ -110,12 +124,16 @@ assert(
   'classroom should use the requested isolated exam-entry state names'
 );
 
+// Policy change: the classroom no longer renders an inline exam-entry panel
+// (renderClassExamEntryPanel). Exam entry is now routed through the grade ledger
+// (EieGradeLedgerView). The batch save/requery handler is still maintained.
 assert(
-  classroom.includes('function renderClassExamEntryPanel(cell)') &&
-    classroom.includes('EieClassroomView.saveClassExamRecords') &&
+  !classroom.includes('function renderClassExamEntryPanel(cell)') &&
+    classroom.includes('saveClassExamRecords') &&
     classroom.includes('EieApi.batchExamRecords') &&
-    classroom.includes('EieApi.getExamRecords'),
-  'classroom should render and save batch exam records, then requery records'
+    classroom.includes('EieApi.getExamRecords') &&
+    classroom.includes('EieGradeLedgerView.openLedger'),
+  'classroom should batch-save/requery exam records and route exam entry through the grade ledger MVP path'
 );
 
 assert(

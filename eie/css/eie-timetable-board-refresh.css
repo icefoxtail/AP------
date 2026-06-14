@@ -1,0 +1,505 @@
+/* ── EIE timetable card-board refresh ───────────────────────── */
+.eie-v2-card-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.eie-v2-head-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+.eie-v2-head-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.eie-v2-head-center h1 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.eie-v2-head-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.eie-v2-search {
+    width: 100%;
+    max-width: 280px;
+}
+
+.eie-v2-search input {
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid var(--eie-border);
+    border-radius: 999px;
+    background: var(--eie-surface-2);
+    color: var(--eie-text);
+    padding: 0 14px;
+    font-size: 13px;
+    font-weight: 800;
+    outline: none;
+}
+
+.eie-v2-search input:focus {
+    border-color: rgba(37, 99, 235, 0.32);
+    background: var(--eie-surface);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.eie-v2-card-board {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eie-v2-period-row {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 10px;
+    align-items: stretch;
+    border: 1px solid var(--eie-border);
+    border-radius: 22px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    padding: 10px;
+}
+
+.eie-v2-period-head {
+    border-radius: 16px;
+    background: var(--eie-surface-2);
+    border: 1px solid var(--eie-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 12px 10px;
+    min-height: 104px;
+}
+
+.eie-v2-period-head strong {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.eie-v2-period-head span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.eie-v2-period-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+    gap: 10px;
+    min-width: 0;
+}
+
+.eie-v2-week-card {
+    position: relative;
+    min-width: 0;
+    min-height: 104px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    color: var(--eie-text);
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.055);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+.eie-v2-week-card:hover,
+.eie-v2-week-card.is-selected {
+    transform: translateY(-1px);
+    border-color: rgba(37, 99, 235, 0.28);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.11);
+}
+
+.eie-v2-week-grid {
+    display: grid;
+    grid-template-columns: minmax(52px, 1.4fr) repeat(5, minmax(26px, 0.72fr));
+    gap: 3px;
+    align-items: center;
+}
+
+.eie-v2-week-grid span,
+.eie-v2-week-grid strong {
+    min-width: 0;
+    border-radius: 7px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-v2-week-grid.is-head span {
+    padding: 4px 2px;
+    background: rgba(15, 23, 42, 0.045);
+    color: var(--eie-muted);
+    font-size: 10.5px;
+    font-weight: 900;
+}
+
+.eie-v2-week-grid.is-body strong,
+.eie-v2-week-grid.is-body span {
+    padding: 5px 2px;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--eie-text);
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.eie-v2-week-grid.is-body strong {
+    color: #0f172a;
+    background: rgba(16, 185, 129, 0.10);
+    letter-spacing: -0.02em;
+}
+
+.eie-v2-card-students {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: flex-start;
+    padding-top: 2px;
+}
+
+.eie-v2-card-student,
+.eie-v2-card-student-more {
+    min-height: 22px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.84);
+    color: var(--eie-text);
+    padding: 3px 6px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+button.eie-v2-card-student {
+    cursor: pointer;
+}
+
+button.eie-v2-card-student:hover {
+    border-color: rgba(37, 99, 235, 0.24);
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.eie-v2-card-student-more {
+    color: var(--eie-muted);
+}
+
+.eie-v2-card-students-empty {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-detail-week-teachers {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.eie-v2-detail-week-teachers div {
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+    background: var(--eie-surface-2);
+    padding: 8px 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.eie-v2-detail-week-teachers span {
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.eie-v2-detail-week-teachers strong {
+    font-size: 12px;
+    line-height: 1.2;
+    word-break: keep-all;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-card-head {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .eie-v2-head-center h1 {
+        font-size: 20px;
+    }
+
+    .eie-v2-head-right .eie-secondary-button {
+        display: none;
+    }
+
+    .eie-v2-search {
+        max-width: none;
+        min-width: 80px;
+    }
+
+    .eie-v2-search input {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+
+    .eie-v2-period-row {
+        grid-template-columns: 78px minmax(0, 1fr);
+        gap: 8px;
+        padding: 8px;
+        border-radius: 18px;
+    }
+
+    .eie-v2-period-head {
+        min-height: 104px;
+        padding: 10px 7px;
+    }
+
+    .eie-v2-period-head strong {
+        font-size: 13px;
+    }
+
+    .eie-v2-period-head span {
+        font-size: 10.5px;
+    }
+
+    .eie-v2-period-cards {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .eie-v2-week-card {
+        min-height: 100px;
+        padding: 9px;
+        border-radius: 16px;
+    }
+
+    .eie-v2-week-grid {
+        grid-template-columns: minmax(46px, 1.25fr) repeat(5, minmax(23px, 0.72fr));
+        gap: 2px;
+    }
+
+    .eie-v2-week-grid.is-head span {
+        font-size: 10px;
+        padding: 4px 1px;
+    }
+
+    .eie-v2-week-grid.is-body strong,
+    .eie-v2-week-grid.is-body span {
+        font-size: 11px;
+        padding: 5px 1px;
+    }
+
+    .eie-v2-card-student,
+    .eie-v2-card-student-more {
+        font-size: 10.5px;
+        min-height: 20px;
+        padding: 3px 5px;
+    }
+}
+
+/* EIE timetable mini classroom editable panel */
+.eie-v2-mini-classroom .eie-v2-detail-section {
+    gap: 10px;
+}
+
+.eie-v2-mini-head {
+    gap: 10px;
+}
+
+.eie-v2-mini-title {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-title span,
+.eie-v2-mini-field span,
+.eie-v2-mini-day-cell span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-v2-mini-title input {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 14px;
+    padding: 12px 13px;
+    color: var(--eie-text);
+    font-size: 20px;
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.eie-v2-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.eie-v2-mini-field {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-field.is-wide {
+    grid-column: 1 / -1;
+}
+
+.eie-v2-mini-field input,
+.eie-v2-mini-field select,
+.eie-v2-mini-field textarea,
+.eie-v2-mini-day-cell input,
+.eie-v2-mini-add-student select {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 10px 11px;
+    color: var(--eie-text);
+    font-size: 13px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.eie-v2-mini-field textarea {
+    min-height: 74px;
+    resize: vertical;
+}
+
+.eie-v2-mini-day-grid {
+    display: grid;
+    grid-template-columns: 58px repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    align-items: end;
+}
+
+.eie-v2-mini-day-head,
+.eie-v2-mini-period-head {
+    min-width: 0;
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--eie-muted);
+    text-align: center;
+}
+
+.eie-v2-mini-period-head {
+    align-self: center;
+    color: var(--eie-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eie-v2-mini-day-cell .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.eie-v2-mini-day-cell {
+    display: grid;
+    gap: 6px;
+}
+
+.eie-v2-mini-day-cell input {
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.eie-v2-mini-teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+/* 학생 명단 — 4열 그리드 */
+.eie-v2-mini-student-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.eie-v2-mini-student-grid .eie-v2-card-student {
+    min-width: 0;
+    min-height: 36px;
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 신입생 등록 폼 */
+.eie-v2-mini-add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eie-v2-mini-add-form input,
+.eie-v2-mini-add-form select {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 10px 11px;
+    font-size: 14px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    box-sizing: border-box;
+}
+
+/* 메모 textarea */
+.eie-v2-mini-memo-area {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 10px 11px;
+    font-size: 14px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    resize: vertical;
+    box-sizing: border-box;
+}

@@ -848,7 +848,7 @@
             + '</div>'
             + '<div class="eie-apms-inline-actions">'
             + (id ? '<button type="button" onclick="EieStudentsView.editConsultation(' + jsArg(id) + ')">수정</button>' : '')
-            + '<button type="button" disabled title="삭제 처리는 준비 중입니다.">삭제 보류</button>'
+            + (id ? '<button type="button" onclick="EieStudentsView.deleteConsultation(' + jsArg(id) + ')">삭제</button>' : '')
             + '</div>'
             + '</div>';
     }
@@ -1466,6 +1466,46 @@
             _notice = '';
             _error = '';
             await EieRouter.open('students');
+        },
+
+        deleteConsultation: async function (consultationId) {
+            var id = text(consultationId);
+            if (!id || _saving) return;
+            var current = asArray(db().consultations).find(function (row) { return String(row.id || '') === String(id); });
+            var sid = text((current && current.student_id) || _selectedId);
+            if (!sid) return;
+            if (!window.EieApi || typeof EieApi.deleteConsultation !== 'function') {
+                _error = '상담 삭제 API를 사용할 수 없습니다.';
+                await EieRouter.open('students');
+                return;
+            }
+            if (window.confirm && !window.confirm('상담 기록을 삭제하시겠습니까?')) return;
+            _saving = true;
+            _notice = '';
+            _error = '';
+            try {
+                var result = await EieApi.deleteConsultation(id);
+                if (result && Array.isArray(result.consultations) && EieState.mergeStudentConsultations) {
+                    EieState.mergeStudentConsultations(sid, result.consultations);
+                } else {
+                    await loadStudentConsultations(sid);
+                }
+                if (_editingConsultationId === id) {
+                    _consultationMode = 'list';
+                    _editingConsultationId = '';
+                    _consultationDraft = null;
+                }
+                if (text(_pinnedConsultationByStudent[sid]) === id) delete _pinnedConsultationByStudent[sid];
+                _selectedId = sid;
+                _tab = 'consultation';
+                _notice = '상담 기록이 삭제되었습니다.';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '상담 기록 삭제에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
         },
 
         cancelConsultation: async function () {

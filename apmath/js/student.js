@@ -440,7 +440,7 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
         .finally(() => {
             entry.loading = false;
             entry.inFlight = null;
-            if (shouldRefreshCurrentStudentDetailTab(key, ['basic', 'contact'])) {
+            if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic', 'contact'])) {
                 renderStudentDetailTab(key, state.ui.currentStudentDetailTab || 'basic');
             }
         });
@@ -649,7 +649,7 @@ async function ensureStudentParentContactDataLoaded(sid, options = {}) {
         entry.loadedAt = Date.now();
         entry.loading = false;
         entry.error = errors.join(',');
-        if (shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
+        if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
             renderStudentDetailTab(key, 'basic');
         }
         return getStudentParentContactBundle(key);
@@ -699,7 +699,7 @@ async function ensureStudentParentMessageLogsLoaded(sid, options = {}) {
         .finally(() => {
             entry.messageLoading = false;
             entry.messageInFlight = null;
-            if (shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
+            if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
                 renderStudentDetailTab(key, 'basic');
             }
         });
@@ -1174,7 +1174,7 @@ async function ensureStudentConsultationsLoaded(sid, options = {}) {
                 entry.loadedAt = Date.now();
                 entry.loading = false;
                 entry.error = '';
-                if (shouldRefreshCurrentStudentDetailTab(key, ['basic', 'grade', 'weak', 'cns', 'contact'])) {
+                if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic', 'grade', 'weak', 'cns', 'contact'])) {
                     renderStudentDetailTab(key, state.ui.currentStudentDetailTab || 'basic');
                 }
                 return rows;
@@ -1249,7 +1249,8 @@ async function openStudentDetail(sid, options = {}) {
     // 상태를 덮어쓰기 전에 이전 학생/탭을 먼저 저장해야 성적 하위 탭 리셋 판단이 정확하다.
     const oldDetailId = state.ui.currentStudentDetailId;
     const oldTab = state.ui.currentStudentDetailTab || 'basic';
-    const tab = normalizeStudentDetailTab(options.tab || state.ui.currentStudentDetailTab || 'basic');
+    const sameStudent = String(oldDetailId || '') === String(sid);
+    const tab = normalizeStudentDetailTab(options.tab || (sameStudent ? state.ui.currentStudentDetailTab : 'basic') || 'basic');
 
     // 성적 탭에 새로 진입(다른 탭→성적)하거나 학생이 바뀌면 기본 하위 탭은 학교성적으로 리셋한다.
     // 같은 학생의 grade 탭 내부 하위 탭 전환(oldTab==='grade')은 유지된다.
@@ -1271,12 +1272,15 @@ async function openStudentDetail(sid, options = {}) {
     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
     foundationLoads.push(loadStudentOnboardingDetails(sid, { refresh: false }));
     if (foundationLoads.length) await Promise.all(foundationLoads);
-    await ensureBlueprintsForSessions(exs);
-    void ensureStudentDetailLazyData(sid);
-    void ensureStudentConsultationsLoaded(sid);
-    void ensureStudentParentContactDataLoaded(sid);
 
-    renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx });
+    renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx, skipLazyKick: true });
+
+    void ensureBlueprintsForSessions(exs).catch(() => {});
+    void ensureStudentDetailLazyData(sid, { refresh: false });
+    void ensureStudentConsultationsLoaded(sid, { refresh: false });
+    void ensureStudentParentContactDataLoaded(sid, { refresh: false });
+    void ensureStudentParentMessageLogsLoaded(sid, { refresh: false });
+    void loadStudentOnboardingDetails(sid, { refresh: false });
 }
 
 // 기존 호출 호환용 wrapper (삭제 금지)
@@ -1804,7 +1808,6 @@ function renderStudentBasicTab(sid) {
             <section class="ap-student-card">
                 <div class="ap-student-section-head">
                     <h3>학생 상세 정보</h3>
-                    <button class="ap-btn is-sm is-ghost" onclick="openStudentParentManageModal('${sid}')">보호자 관리</button>
                 </div>
                 <div class="ap-profile-info-list">
                     ${apStudentInfoRow('학생 연락처', s.student_phone, { empty: '' })}
@@ -1942,12 +1945,32 @@ function renderStudentDetailShell(sid, options = {}) {
 
     // basic 편집 탭에서만 저장 버튼 노출 (cns/grade 탭은 별도 저장 흐름 없음)
     const showSaveBtn = mode === 'edit' && editTab === 'basic';
-    showModal(`${s.name} 프로필`, `
+    const modalTitle = '';
+    const shellHtml = `
         <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
             ${renderStudentDetailHeader(sid, mode)}
             ${bodyHtml}
         </div>
-    `, showSaveBtn ? '저장' : null, showSaveBtn ? () => handleEditStudent(sid) : null);
+    `;
+
+    // [깜박임 핫픽스] 같은 학생상세(view)가 이미 열려 있으면 모달을 다시 띄우지(showModal) 않고
+    // 셸 내부만 조용히 교체한다. 비동기 로더 완료 후 자동 재렌더에서 오버레이가 다시 깜박이지 않게 한다.
+    // (edit 폼이나 view↔edit 전환은 저장 버튼 상태가 바뀌므로 showModal 경로를 그대로 탄다.)
+    const overlayEl = document.getElementById('modal-overlay');
+    const modalBodyEl = document.getElementById('modal-body');
+    const existingShell = modalBodyEl ? modalBodyEl.querySelector('.ap-student-detail-shell') : null;
+    const modalOpen = !!overlayEl && overlayEl.classList.contains('show') && !overlayEl.classList.contains('hidden');
+    const canQuietSwap = mode === 'view' && !showSaveBtn && modalOpen && existingShell
+        && existingShell.getAttribute('data-student-detail-mode') === 'view';
+
+    if (canQuietSwap) {
+        const titleEl = document.getElementById('modal-title');
+        if (titleEl) titleEl.innerText = modalTitle;
+        modalBodyEl.innerHTML = shellHtml;
+        if (typeof updateAppBackButtons === 'function') updateAppBackButtons();
+    } else {
+        showModal(modalTitle, shellHtml, showSaveBtn ? '저장' : null, showSaveBtn ? () => handleEditStudent(sid) : null);
+    }
 
     const cancelBtn = document.getElementById('modal-cancel-btn');
     if (cancelBtn) {
@@ -1963,8 +1986,12 @@ function renderStudentDetailShell(sid, options = {}) {
         if (mode === 'edit' && editTab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(sid);
     }, 0);
 
-    void ensureStudentConsultationsLoaded(sid);
-    void ensureStudentDetailLazyData(sid);
+    // [중복 lazy 가드] 조용한 부분 교체(자동 로더 후 재렌더)에서는 로더를 다시 깨우지 않는다.
+    // 최초/모달 신규 오픈(showModal 경로)에서만 lazy 로딩을 시작해 재렌더 루프를 막는다.
+    if (!canQuietSwap && options.skipLazyKick !== true) {
+        void ensureStudentConsultationsLoaded(sid);
+        void ensureStudentDetailLazyData(sid);
+    }
 }
 
 /**
@@ -1973,11 +2000,50 @@ function renderStudentDetailShell(sid, options = {}) {
  * shouldRefreshCurrentStudentDetailTab의 edit guard가 호출 자체를 막는다.
  */
 function renderStudentDetailTab(sid, tab = 'basic') {
+    if (renderStudentDetailTabInPlace(sid, tab)) return;
     return renderStudentDetailShell(sid, {
         mode: 'view',
         tab: normalizeStudentDetailTab(tab),
         returnTo: state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null
     });
+}
+
+function renderStudentDetailTabInPlace(sid, tab = 'basic') {
+    const key = String(sid || '');
+    const nextTab = normalizeStudentDetailTab(tab);
+    if (!key || String(state.ui?.currentStudentDetailId || '') !== key || state.ui?.currentStudentDetailMode !== 'view') return false;
+
+    const overlayEl = document.getElementById('modal-overlay');
+    const modalBodyEl = document.getElementById('modal-body');
+    const shell = modalBodyEl ? modalBodyEl.querySelector('.ap-student-detail-shell[data-student-detail-mode="view"]') : null;
+    const modalOpen = !!overlayEl && overlayEl.classList.contains('show') && !overlayEl.classList.contains('hidden');
+    if (!modalOpen || !shell) return false;
+
+    const tabsEl = shell.querySelector('.ap-student-tabs');
+    const contentEl = shell.querySelector('.std-tab-content');
+    if (!tabsEl || !contentEl) return false;
+
+    const previousTab = normalizeStudentDetailTab(state.ui.currentStudentDetailTab || 'basic');
+    if (nextTab === 'grade' && previousTab !== 'grade') {
+        state.ui.studentGradeSubTab = 'school';
+    }
+    state.ui.currentStudentDetailTab = nextTab;
+
+    tabsEl.outerHTML = renderStudentDetailTabs(key, nextTab);
+    const freshTabsEl = shell.querySelector('.ap-student-tabs');
+    const pinnedEl = shell.querySelector('.ap-student-consult-pinned');
+    if (pinnedEl) pinnedEl.remove();
+    if (nextTab === 'cns' && freshTabsEl) {
+        freshTabsEl.insertAdjacentHTML('afterend', renderStudentConsultationPinnedCard(key));
+    }
+    contentEl.outerHTML = renderStudentViewBody(key, nextTab);
+
+    if (typeof updateAppBackButtons === 'function') updateAppBackButtons();
+    setTimeout(() => {
+        bindStudentConsultationDateButtons(key);
+        if (nextTab === 'grade' && typeof drawGradeChart === 'function') drawGradeChart(key);
+    }, 0);
+    return true;
 }
 
 /* ============================================================
@@ -2003,7 +2069,7 @@ function getStudentGradeSubTab() {
 function setStudentGradeSubTab(sid, tab) {
     if (!state.ui) state.ui = {};
     state.ui.studentGradeSubTab = AP_STUDENT_GRADE_SUB_TABS.includes(String(tab)) ? String(tab) : 'school';
-    renderStudentDetailTab(sid, 'grade');
+    if (!renderStudentDetailTabInPlace(sid, 'grade')) renderStudentDetailTab(sid, 'grade');
 }
 
 function renderStudentGradeSubTabs(sid, activeSubTab) {

@@ -283,6 +283,24 @@
   white-space: nowrap;
 }
 
+.ap-class-chip--active {
+  background: rgba(26, 92, 255, 0.08);
+  border-color: rgba(26, 92, 255, 0.18);
+  color: #1A5CFF;
+}
+
+.ap-class-chip--present {
+  background: rgba(16, 185, 129, 0.10);
+  border-color: rgba(16, 185, 129, 0.22);
+  color: #047857;
+}
+
+.ap-class-chip--absent {
+  background: rgba(232, 65, 79, 0.10);
+  border-color: rgba(232, 65, 79, 0.22);
+  color: #D92D3A;
+}
+
 /* ======================================================================
    APMS / EIE UI Surface & Sidebar Guideline v1.1 적용
    - Round 3: inline style 의존을 줄이기 위한 의미 class 추가
@@ -458,11 +476,11 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-list-row {
   gap: var(--ap-dash-row-inner-gap) !important;
 }
 
-/* 오늘일지 미작성 강조: 약하게 유지 (문구/DOM 미변경) */
+/* 오늘일지 미작성 행은 다른 행과 같은 중립 톤으로 유지 */
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-list-row.status-pending {
-  border-color: color-mix(in srgb, var(--border) 78%, var(--primary)) !important;
-  border-left: 3px solid color-mix(in srgb, var(--primary) 36%, transparent) !important;
-  background: color-mix(in srgb, var(--primary) 5%, var(--surface)) !important;
+  border-color: var(--border) !important;
+  border-left: 1px solid var(--border) !important;
+  background: var(--surface) !important;
 }
 
 /* 오늘일지 row 간격 중복 제거: journal-matrix gap만 사용 */
@@ -517,6 +535,62 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-surface-list--tod
 }
 
 /* 오늘일정 empty-state 리듬 통일 */
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memo {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 9px 12px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memo__text {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memo__details {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memo.is-open .ap-assistant-memo__details {
+  display: flex;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memo__detail {
+  min-width: 0;
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memo__hide {
+  flex-shrink: 0;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-empty-state {
   min-height: var(--ap-dash-row-height) !important;
   padding: 0 var(--ap-dash-row-padding-x) !important;

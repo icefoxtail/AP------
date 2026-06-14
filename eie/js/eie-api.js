@@ -66,10 +66,37 @@
         catch (error) { return { success: false, error: text }; }
     }
 
+    // ── 단기 읽기 캐시 ────────────────────────────────────────────────
+    // 화면을 옮길 때마다 같은 GET을 원격 워커에서 다시 받아오던 비용을 줄인다.
+    // - 성공한 GET 응답만 path 기준으로 짧게(기본 60초) 캐시한다.
+    // - 쓰기(POST/PATCH/DELETE)가 성공하면 전체 읽기 캐시를 비워 최신화한다.
+    //   (mutation은 navigation보다 드물어 전체 무효화로도 신선도가 보장된다.)
+    const READ_CACHE = new Map();
+    const READ_TTL_MS = 60000;
+
+    function readCacheGet(path) {
+        const hit = READ_CACHE.get(path);
+        if (!hit) return null;
+        if (Date.now() - hit.at > READ_TTL_MS) {
+            READ_CACHE.delete(path);
+            return null;
+        }
+        return hit.data;
+    }
+
+    function readCacheSet(path, data) {
+        READ_CACHE.set(path, { at: Date.now(), data });
+    }
+
+    function clearReadCache() {
+        READ_CACHE.clear();
+    }
+
     async function request(path, options) {
+        const method = options?.method || 'GET';
         const url = `${resolveApiBase()}/${String(path || '').replace(/^\/+/, '')}`;
         const response = await fetch(url, {
-            method: options?.method || 'GET',
+            method,
             headers: makeHeaders(options?.headers),
             body: options?.body ? JSON.stringify(options.body) : undefined
         });
@@ -80,6 +107,8 @@
             error.payload = data;
             throw error;
         }
+        // 데이터가 바뀌는 요청이 성공하면 읽기 캐시를 무효화한다.
+        if (method !== 'GET') clearReadCache();
         return data || { success: true };
     }
 
@@ -101,11 +130,16 @@
     }
 
     async function get(path, kind) {
+        const cached = readCacheGet(path);
+        if (cached) return cached;
         try {
-            return await request(path, { method: 'GET' });
+            const data = await request(path, { method: 'GET' });
+            readCacheSet(path, data);
+            return data;
         } catch (error) {
             if (error.status === 401) throw error;
             notifyGetFailure(path, error);
+            // 실패(fallback stub)는 캐시하지 않는다 — 다음 진입에서 다시 시도.
             return {
                 ...stubResponse(kind),
                 fallback: true,
@@ -116,6 +150,7 @@
 
     window.EieApi = {
         resolveApiBase,
+        clearReadCache,
         getLatestImport() {
             return get('import/latest', 'latest');
         },
@@ -297,6 +332,30 @@
         },
         async batchExamRecords(payload) {
             return request('exam-records/batch', { method: 'POST', body: payload || {} });
+        },
+        getSchoolGradeRecords(params) {
+            const filters = params || {};
+            const qs = new URLSearchParams();
+            if (filters.student_id || filters.studentId) qs.set('student_id', filters.student_id || filters.studentId);
+            if (filters.class_id || filters.classId) qs.set('class_id', filters.class_id || filters.classId);
+            if (filters.teacher_id || filters.teacherId) qs.set('teacher_id', filters.teacher_id || filters.teacherId);
+            if (filters.exam_year || filters.examYear) qs.set('exam_year', filters.exam_year || filters.examYear);
+            return get(`school-grade-records${qs.toString() ? `?${qs}` : ''}`, 'student-seeds');
+        },
+        async batchSchoolGradeRecords(payload) {
+            return request('school-grade-records/batch', { method: 'POST', body: payload || {} });
+        },
+        getGradeSheets(params) {
+            const filters = params || {};
+            const qs = new URLSearchParams();
+            if (filters.class_id || filters.classId) qs.set('class_id', filters.class_id || filters.classId);
+            if (filters.teacher_id || filters.teacherId) qs.set('teacher_id', filters.teacher_id || filters.teacherId);
+            if (filters.month_key || filters.monthKey) qs.set('month_key', filters.month_key || filters.monthKey);
+            if (filters.sheet_type || filters.sheetType) qs.set('sheet_type', filters.sheet_type || filters.sheetType);
+            return get(`grade-sheets${qs.toString() ? `?${qs}` : ''}`, 'student-seeds');
+        },
+        async saveGradeSheet(payload) {
+            return request('grade-sheets', { method: 'POST', body: payload || {} });
         },
 
         getTeachers() {

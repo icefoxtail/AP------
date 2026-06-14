@@ -924,7 +924,11 @@ async function loadTimetableVersionsForView(options) {
         })
         .finally(function() {
             ui.timetableVersionsLoading = null;
-            if (shouldRerender && typeof renderTimetable === 'function') renderTimetable();
+            // [깜박임 핫픽스] 시간표가 이미 떠 있으면 전체 재렌더 대신 grid만 다시 그린다.
+            if (shouldRerender) {
+                if (document.getElementById('timetable-root') && typeof renderTimetableGridOnly === 'function') renderTimetableGridOnly();
+                else if (typeof renderTimetable === 'function') renderTimetable();
+            }
         });
 
     return ui.timetableVersionsLoading;
@@ -1795,7 +1799,9 @@ function ensureTimetableClassTimeSlotsLoaded() {
             if (state.allDb) state.allDb.class_time_slots = rows;
             state.ui.timetableSlotsLoaded = true;
             state.ui.timetableSlotsLoading = false;
-            if (typeof renderTimetable === 'function') renderTimetable();
+            // [깜박임 핫픽스] 시간표가 이미 떠 있으면 전체 재렌더 대신 grid만 다시 그린다.
+            if (document.getElementById('timetable-root') && typeof renderTimetableGridOnly === 'function') renderTimetableGridOnly();
+            else if (typeof renderTimetable === 'function') renderTimetable();
         })
         .catch(function(e) {
             console.warn('[ensureTimetableClassTimeSlotsLoaded] failed:', e);

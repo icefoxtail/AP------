@@ -7,6 +7,7 @@ const worker = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes
 const api = fs.readFileSync(path.join(root, 'eie/js/eie-api.js'), 'utf8');
 const state = fs.readFileSync(path.join(root, 'eie/js/eie-state.js'), 'utf8');
 const students = fs.readFileSync(path.join(root, 'eie/js/views/eie-students.js'), 'utf8');
+const attendance = fs.readFileSync(path.join(root, 'eie/js/views/eie-attendance.js'), 'utf8');
 const teacher = fs.readFileSync(path.join(root, 'eie/js/views/eie-teacher.js'), 'utf8');
 const migration = fs.readFileSync(path.join(root, 'migrations/20260602_eie_attendance_records.sql'), 'utf8');
 
@@ -44,6 +45,15 @@ for (const token of [
   "if (_selectedId && _tab === 'attendance') await loadStudentAttendance(_selectedId)"
 ]) {
   assert(students.includes(token), `student view should include ${token}`);
+}
+
+for (const token of [
+  'openStudentDetail',
+  'EieStudentsView.openDetail',
+  'eie-att-student-link',
+  "onclick=\"EieAttendanceView.openStudentDetail("
+]) {
+  assert(attendance.includes(token), `attendance view should connect student names to detail via ${token}`);
 }
 
 assert(teacher.includes('openAttendanceLedger'), 'teacher dashboard should connect the attendance button');

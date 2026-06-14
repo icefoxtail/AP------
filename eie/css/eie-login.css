@@ -1,0 +1,101 @@
+/* ── EIE 로그인 화면 ──────────────────────────────────────── */
+.eie-login-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1A5CFF 0%, #0A3DBF 100%);
+    padding: 16px;
+}
+.eie-login-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 36px 32px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.eie-login-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--eie-primary);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+.eie-login-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--eie-text);
+    margin: 0 0 4px;
+}
+.eie-login-sub {
+    font-size: 13px;
+    color: var(--eie-muted);
+    margin: 0 0 20px;
+}
+.eie-login-error {
+    font-size: 13px;
+    color: #E03B3B;
+    background: #FFF0F0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+}
+.eie-login-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--eie-text);
+    margin-bottom: 6px;
+    display: block;
+}
+.eie-login-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1.5px solid var(--eie-border);
+    border-radius: 12px;
+    font-size: 15px;
+    background: var(--eie-surface-2);
+    color: var(--eie-text);
+    margin-bottom: 14px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.eie-login-input:focus {
+    border-color: var(--eie-primary);
+}
+.eie-login-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: var(--eie-primary);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: opacity 0.15s;
+}
+.eie-login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.eie-login-notice {
+    font-size: 12px;
+    color: var(--eie-muted);
+    text-align: center;
+    margin: 14px 0 0;
+}
+

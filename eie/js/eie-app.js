@@ -15,6 +15,32 @@
         root.innerHTML = html;
     }
 
+    // 라우트 진입 즉시 골격(스켈레톤)을 그려, 원격 데이터가 오는 동안
+    // 이전 화면이 멈춘 듯 보이는 현상을 없앤다. 실제 콘텐츠가 mount되면 교체된다.
+    const EIE_ROUTE_TITLES = {
+        dashboard: '대시보드', timetable: '시간표', students: '학생관리',
+        classroom: '클래스룸', attendance: '출석부', grades: '성적표',
+        teacher: '선생님', management: '관리'
+    };
+
+    function mountSkeleton(route) {
+        const root = document.getElementById('eie-app');
+        if (!root) return;
+        const title = EIE_ROUTE_TITLES[route] || '';
+        root.innerHTML = `
+            <section class="eie-route-skeleton" aria-busy="true" aria-live="polite" aria-label="${escapeHtml(title)} 불러오는 중">
+                <div class="eie-skel eie-skel-title"></div>
+                <div class="eie-skel-row">
+                    <span class="eie-skel eie-skel-chip"></span>
+                    <span class="eie-skel eie-skel-chip"></span>
+                    <span class="eie-skel eie-skel-chip"></span>
+                </div>
+                <div class="eie-skel eie-skel-card"></div>
+                <div class="eie-skel eie-skel-card"></div>
+                <div class="eie-skel eie-skel-card"></div>
+            </section>`;
+    }
+
     function renderPanel({ title, copy, note }) {
         const homeRoute = eieHomeRouteForSession();
         return `
@@ -349,6 +375,7 @@
     window.EieApp = {
         escapeHtml,
         mount,
+        mountSkeleton,
         renderPanel,
         fetchWithAuth,
         renderEieLogin,

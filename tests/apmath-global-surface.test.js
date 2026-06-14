@@ -16,7 +16,16 @@ const targets = [
     sources: ['apmath/js/classroom.js', 'apmath/js/classroom-planner.js'],
     fixture: 'tests/fixtures/apmath-surface-classroom.json'
   },
-  { key: 'dashboard', source: 'apmath/js/dashboard.js', fixture: 'tests/fixtures/apmath-surface-dashboard.json' },
+  {
+    key: 'dashboard',
+    sources: [
+      'apmath/js/dashboard-admin.js',
+      'apmath/js/dashboard-teacher.js',
+      'apmath/js/dashboard-assistant-memos.js',
+      'apmath/js/dashboard.js'
+    ],
+    fixture: 'tests/fixtures/apmath-surface-dashboard.json'
+  },
   { key: 'report', source: 'apmath/js/report.js', fixture: 'tests/fixtures/apmath-surface-report.json' }
 ];
 

@@ -342,7 +342,12 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
         modalCloseTimer = null;
     }
 
-    overlay.classList.remove('show');
+    // [깜박임 핫픽스] 모달이 이미 열려 있으면 열림 애니메이션을 재시작하지 않는다.
+    // .show를 제거했다가 다시 붙이면 #modal-content가 슬라이드/페이드 아웃→인을 반복해
+    // 내용만 바뀌어도 화면이 한 번 깜박인다. 이미 열려 있으면 내용만 조용히 교체한다.
+    const alreadyOpen = overlay.classList.contains('show') && !overlay.classList.contains('hidden');
+
+    if (!alreadyOpen) overlay.classList.remove('show');
 
     titleEl.innerText = t;
     bodyEl.innerHTML = b;
@@ -376,10 +381,12 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     }
 
     overlay.classList.remove('hidden');
-    overlay.getBoundingClientRect();
-    requestAnimationFrame(() => {
-        overlay.classList.add('show');
-    });
+    if (!alreadyOpen) {
+        overlay.getBoundingClientRect();
+        requestAnimationFrame(() => {
+            overlay.classList.add('show');
+        });
+    }
 }
 
 function showModal(t, b, at=null, af=null) {
@@ -445,6 +452,8 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
     if (view.type === 'textbookManage' && typeof openTextbookManageModal === 'function') return openTextbookManageModal({ returnTo: view.parentReturn || null });
     if (view.type === 'classDetail' && view.classId && typeof renderClass === 'function') {
         closeModal(true);
+        // [깜박임 핫픽스] 클래스룸 화면이 배경에 이미 살아 있으면 재렌더하지 않는다.
+        if (document.querySelector('.ap-classroom-shell')) return;
         return renderClass(view.classId);
     }
     if (view.type === 'studentDetail' && view.studentId && typeof renderStudentDetail === 'function') {
@@ -453,6 +462,8 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
     }
     if (view.type === 'timetable' && typeof renderTimetable === 'function') {
         closeModal(true);
+        // [깜박임 핫픽스] 시간표가 배경에 이미 살아 있으면 전체 재렌더하지 않는다.
+        if (document.getElementById('timetable-root')) return;
         return renderTimetable();
     }
     if (view.type === 'attendance') {

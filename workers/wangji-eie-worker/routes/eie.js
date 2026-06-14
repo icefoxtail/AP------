@@ -40,6 +40,24 @@ function safeText(value) {
   return String(value == null ? '' : value).trim();
 }
 
+function normalizeEieGrade(value) {
+  const raw = safeText(value).replace(/\s+/g, '');
+  const aliases = {
+    중1: '중1', 중학교1: '중1', 중학교1학년: '중1', 중등1: '중1', 중등1학년: '중1',
+    중2: '중2', 중학교2: '중2', 중학교2학년: '중2', 중등2: '중2', 중등2학년: '중2',
+    중3: '중3', 중학교3: '중3', 중학교3학년: '중3', 중등3: '중3', 중등3학년: '중3',
+    고1: '고1', 고등1: '고1', 고등1학년: '고1', 고등학교1: '고1', 고등학교1학년: '고1',
+    고2: '고2', 고등2: '고2', 고등2학년: '고2', 고등학교2: '고2', 고등학교2학년: '고2',
+    고3: '고3', 고등3: '고3', 고등3학년: '고3', 고등학교3: '고3', 고등학교3학년: '고3'
+  };
+  if (aliases[raw]) return aliases[raw];
+  const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
+  if (middle) return `중${middle[1]}`;
+  const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
+  if (high) return `고${high[1]}`;
+  return '';
+}
+
 const EIE_EXAM_CATEGORIES = new Set(['month_end', 'vocab', 'grammar', 'material', 'reading', 'listening', 'free']);
 
 function safeStatus(value, fallback = 'active') {
@@ -517,7 +535,7 @@ async function createConfirmedStudent(env, candidate, teacher) {
     id,
     displayName,
     normalizedName,
-    safeText(candidate?.grade_raw),
+    normalizeEieGrade(candidate?.grade || candidate?.grade_raw),
     normalizeConfirmedStatus(candidate?.flags?.includes('needs_review') ? 'needs_review' : 'active'),
     candidate?.source_type || 'candidate',
     candidate?.import_session_id || '',
@@ -927,6 +945,29 @@ function parseEieExamPayloadJson(value) {
   }
 }
 
+function parseEieExamPayloadObject(value) {
+  if (!value) return {};
+  if (typeof value === 'object') return value;
+  try {
+    const parsed = JSON.parse(value);
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function eieExamLogicalMeta(row) {
+  const payloadMeta = parseEieExamPayloadObject(row?.payload_json || row?.payloadJson);
+  const rawMeta = parseEieExamPayloadObject(row?.raw_meta_json || row?.rawMetaJson);
+  const monthFromDate = safeText(row?.exam_date || row?.examDate).slice(0, 7);
+  return {
+    class_id: safeText(payloadMeta.class_id || rawMeta.class_id || row?.class_id || row?.classId || row?.timetable_cell_id || row?.cell_id || row?.cellId),
+    month_key: safeText(payloadMeta.month_key || rawMeta.month_key || row?.month_key || row?.monthKey || monthFromDate),
+    test_id: safeText(payloadMeta.test_id || rawMeta.test_id || row?.test_id || row?.column_id || row?.columnId || row?.category),
+    payloadMeta
+  };
+}
+
 function normalizeEieExamCategory(value) {
   const category = safeText(value);
   return EIE_EXAM_CATEGORIES.has(category) ? category : '';
@@ -1097,13 +1138,276 @@ async function handleBatchEieExamRecords(request, env, teacher) {
     if (item.error) return jsonResponse({ success: false, error: item.error }, 400);
     items.push(item);
   }
-  await env.DB.batch(items.map(item => insertEieExamRecordStatement(env, item, teacher?.id)));
+  const statements = [];
+  for (const item of items) {
+    const existing = await findExistingEieExamRecord(env, item);
+    if (existing?.id) {
+      statements.push(env.DB.prepare(`
+        UPDATE eie_exam_records
+        SET exam_date = ?, category = ?, title = ?, score = ?, max_score = ?, level = ?,
+            memo = ?, payload_json = ?, status = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `).bind(
+        item.exam_date,
+        item.category,
+        item.title,
+        item.score,
+        item.max_score,
+        item.level,
+        item.memo,
+        item.payload_json,
+        item.status || 'active',
+        existing.id
+      ));
+    } else {
+      statements.push(insertEieExamRecordStatement(env, item, teacher?.id));
+    }
+  }
+  await env.DB.batch(statements);
   const rows = await queryEieExamRecords(env, {
     timetable_cell_id: defaults.timetable_cell_id,
     month: safeText(defaults.exam_date).slice(0, 7),
     category: defaults.category
   });
   return jsonResponse({ success: true, data: rows, exam_records: rows, saved_count: items.length });
+}
+
+async function findExistingEieExamRecord(env, item) {
+  const target = eieExamLogicalMeta(item);
+  const month = target.month_key || safeText(item.exam_date).slice(0, 7);
+  const start = month ? `${month}-01` : safeText(item.exam_date).slice(0, 10);
+  const end = month ? `${month}-31` : safeText(item.exam_date).slice(0, 10);
+  const result = await env.DB.prepare(`
+    SELECT *
+    FROM eie_exam_records
+    WHERE student_id = ?
+      AND COALESCE(status, 'active') = 'active'
+      AND exam_date >= ? AND exam_date <= ?
+      AND (timetable_cell_id = ? OR timetable_cell_id IS NULL OR timetable_cell_id = '')
+    ORDER BY updated_at DESC
+  `).bind(item.student_id, start, end, item.timetable_cell_id || '').all();
+  return (result.results || []).find(row => {
+    const rowMeta = eieExamLogicalMeta(row);
+    const rowClass = safeText(rowMeta.class_id);
+    const targetClass = safeText(target.class_id);
+    const sameClass = !targetClass || rowClass === targetClass || safeText(row.timetable_cell_id) === targetClass;
+    return sameClass
+      && rowMeta.month_key === month
+      && rowMeta.test_id === target.test_id;
+  }) || null;
+}
+
+function normalizeEieSchoolGradeRecordInput(body, defaults = {}) {
+  const studentId = safeText(body?.student_id || body?.studentId || defaults.student_id || defaults.studentId);
+  const examYear = Number(body?.exam_year || body?.examYear || defaults.exam_year || defaults.examYear);
+  const semester = safeText(body?.semester || defaults.semester);
+  const examType = safeText(body?.exam_type || body?.examType || defaults.exam_type || defaults.examType);
+  if (!studentId) return { error: 'student_id is required' };
+  if (!Number.isFinite(examYear)) return { error: 'exam_year is required' };
+  if (!semester) return { error: 'semester is required' };
+  if (!examType) return { error: 'exam_type is required' };
+  return {
+    student_id: studentId,
+    class_id: safeText(body?.class_id || body?.classId || defaults.class_id || defaults.classId) || null,
+    teacher_id: safeText(body?.teacher_id || body?.teacherId || defaults.teacher_id || defaults.teacherId) || null,
+    school_name: safeText(body?.school_name || body?.schoolName || defaults.school_name || defaults.schoolName) || null,
+    grade_level: safeText(body?.grade_level || body?.gradeLevel || defaults.grade_level || defaults.gradeLevel) || null,
+    exam_year: examYear,
+    semester,
+    exam_type: examType,
+    subject: safeText(body?.subject || defaults.subject || 'english') || 'english',
+    score: nullableNumber(body?.score),
+    max_score: nullableNumber(body?.max_score !== undefined ? body.max_score : body?.maxScore !== undefined ? body.maxScore : defaults.max_score !== undefined ? defaults.max_score : defaults.maxScore),
+    achievement: safeText(body?.achievement || defaults.achievement) || null,
+    memo: safeText(body?.memo || defaults.memo) || null,
+    status: safeStatus(body?.status || defaults.status || 'active')
+  };
+}
+
+async function queryEieSchoolGradeRecords(env, filters = {}) {
+  const where = ["COALESCE(status, 'active') = 'active'"];
+  const binds = [];
+  const studentId = safeText(filters.student_id || filters.studentId);
+  const classId = safeText(filters.class_id || filters.classId);
+  const teacherId = safeText(filters.teacher_id || filters.teacherId);
+  const examYear = safeText(filters.exam_year || filters.examYear);
+  if (studentId) { where.push('student_id = ?'); binds.push(studentId); }
+  if (classId) { where.push('class_id = ?'); binds.push(classId); }
+  if (teacherId) { where.push('teacher_id = ?'); binds.push(teacherId); }
+  if (examYear) { where.push('exam_year = ?'); binds.push(Number(examYear)); }
+  const result = await env.DB.prepare(`
+    SELECT *
+    FROM eie_school_grade_records
+    WHERE ${where.join(' AND ')}
+    ORDER BY exam_year DESC, student_id ASC, semester ASC, exam_type ASC
+  `).bind(...binds).all();
+  return result.results || [];
+}
+
+async function handleGetEieSchoolGradeRecords(env, url) {
+  try {
+    const rows = await queryEieSchoolGradeRecords(env, {
+      student_id: url.searchParams.get('student_id'),
+      class_id: url.searchParams.get('class_id'),
+      teacher_id: url.searchParams.get('teacher_id'),
+      exam_year: url.searchParams.get('exam_year')
+    });
+    return jsonResponse({ success: true, data: rows, school_grade_records: rows });
+  } catch (error) {
+    return jsonResponse({ success: false, error: 'eie_school_grade_records table is not ready', code: 'EIE_SCHOOL_GRADE_RECORDS_NOT_READY' }, 409);
+  }
+}
+
+async function handleBatchEieSchoolGradeRecords(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const records = Array.isArray(body.records) ? body.records : [];
+  if (!records.length) return jsonResponse({ success: false, error: 'records are required' }, 400);
+  const defaults = {
+    exam_year: body.exam_year || body.examYear,
+    semester: body.semester,
+    exam_type: body.exam_type || body.examType,
+    subject: body.subject || 'english',
+    class_id: body.class_id || body.classId,
+    teacher_id: body.teacher_id || body.teacherId
+  };
+  const items = [];
+  for (const row of records) {
+    const item = normalizeEieSchoolGradeRecordInput(row, defaults);
+    if (item.error) return jsonResponse({ success: false, error: item.error }, 400);
+    items.push(item);
+  }
+  const statements = items.map(item => env.DB.prepare(`
+    INSERT INTO eie_school_grade_records
+      (id, student_id, class_id, teacher_id, school_name, grade_level, exam_year, semester, exam_type, subject, score, max_score, achievement, memo, status, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT(student_id, exam_year, semester, exam_type, subject) DO UPDATE SET
+      class_id = excluded.class_id,
+      teacher_id = excluded.teacher_id,
+      school_name = excluded.school_name,
+      grade_level = excluded.grade_level,
+      score = excluded.score,
+      max_score = excluded.max_score,
+      achievement = excluded.achievement,
+      memo = excluded.memo,
+      status = excluded.status,
+      updated_at = CURRENT_TIMESTAMP
+  `).bind(
+    makeId('eie_school_grade'),
+    item.student_id,
+    item.class_id,
+    item.teacher_id,
+    item.school_name,
+    item.grade_level,
+    item.exam_year,
+    item.semester,
+    item.exam_type,
+    item.subject,
+    item.score,
+    item.max_score,
+    item.achievement,
+    item.memo,
+    item.status || 'active',
+    teacher?.id || null
+  ));
+  await env.DB.batch(statements);
+  const rows = await queryEieSchoolGradeRecords(env, { class_id: defaults.class_id, exam_year: defaults.exam_year });
+  return jsonResponse({ success: true, data: rows, school_grade_records: rows, saved_count: items.length });
+}
+
+async function handlePatchEieSchoolGradeRecord(request, env, recordId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await env.DB.prepare("SELECT * FROM eie_school_grade_records WHERE id = ? AND COALESCE(status, 'active') = 'active' LIMIT 1").bind(recordId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'school grade record not found' }, 404);
+  const item = normalizeEieSchoolGradeRecordInput({ ...existing, ...body }, existing);
+  if (item.error) return jsonResponse({ success: false, error: item.error }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_school_grade_records
+    SET class_id = ?, teacher_id = ?, school_name = ?, grade_level = ?, exam_year = ?, semester = ?,
+        exam_type = ?, subject = ?, score = ?, max_score = ?, achievement = ?, memo = ?, status = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `).bind(
+    item.class_id, item.teacher_id, item.school_name, item.grade_level, item.exam_year, item.semester,
+    item.exam_type, item.subject, item.score, item.max_score, item.achievement, item.memo, item.status, recordId
+  ).run();
+  const row = await env.DB.prepare('SELECT * FROM eie_school_grade_records WHERE id = ? LIMIT 1').bind(recordId).first();
+  return jsonResponse({ success: true, data: row, school_grade_record: row });
+}
+
+async function handleDeleteEieSchoolGradeRecord(env, recordId) {
+  const existing = await env.DB.prepare("SELECT * FROM eie_school_grade_records WHERE id = ? AND COALESCE(status, 'active') = 'active' LIMIT 1").bind(recordId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'school grade record not found' }, 404);
+  await env.DB.prepare("UPDATE eie_school_grade_records SET status = 'archived', updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(recordId).run();
+  return jsonResponse({ success: true, archived: true, data: null, school_grade_record: null });
+}
+
+async function queryEieGradeSheets(env, filters = {}) {
+  const where = ["COALESCE(status, 'active') = 'active'"];
+  const binds = [];
+  const classId = safeText(filters.class_id || filters.classId);
+  const teacherId = safeText(filters.teacher_id || filters.teacherId);
+  const monthKey = safeText(filters.month_key || filters.monthKey);
+  const sheetType = safeText(filters.sheet_type || filters.sheetType);
+  if (classId) { where.push('class_id = ?'); binds.push(classId); }
+  if (teacherId) { where.push('teacher_id = ?'); binds.push(teacherId); }
+  if (monthKey) { where.push('month_key = ?'); binds.push(monthKey); }
+  if (sheetType) { where.push('sheet_type = ?'); binds.push(sheetType); }
+  const result = await env.DB.prepare(`
+    SELECT *
+    FROM eie_grade_sheets
+    WHERE ${where.join(' AND ')}
+    ORDER BY month_key DESC, updated_at DESC
+  `).bind(...binds).all();
+  return result.results || [];
+}
+
+async function handleGetEieGradeSheets(env, url) {
+  try {
+    const rows = await queryEieGradeSheets(env, {
+      class_id: url.searchParams.get('class_id'),
+      teacher_id: url.searchParams.get('teacher_id'),
+      month_key: url.searchParams.get('month_key'),
+      sheet_type: url.searchParams.get('sheet_type')
+    });
+    return jsonResponse({ success: true, data: rows, grade_sheets: rows });
+  } catch (error) {
+    return jsonResponse({ success: false, error: 'eie_grade_sheets table is not ready', code: 'EIE_GRADE_SHEETS_NOT_READY' }, 409);
+  }
+}
+
+async function handleSaveEieGradeSheet(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const classId = safeText(body.class_id || body.classId);
+  const monthKey = safeText(body.month_key || body.monthKey);
+  const sheetType = safeText(body.sheet_type || body.sheetType || 'academy') || 'academy';
+  if (!classId) return jsonResponse({ success: false, error: 'class_id is required' }, 400);
+  if (!/^\d{4}-\d{2}$/.test(monthKey)) return jsonResponse({ success: false, error: 'month_key is required' }, 400);
+  const items = Array.isArray(body.tests) ? body.tests : Array.isArray(body.items) ? body.items : [];
+  const id = makeId('eie_grade_sheet');
+  await env.DB.prepare(`
+    INSERT INTO eie_grade_sheets
+      (id, teacher_id, class_id, month_key, sheet_type, title, columns_json, status, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ON CONFLICT(class_id, month_key, sheet_type) DO UPDATE SET
+      teacher_id = excluded.teacher_id,
+      title = excluded.title,
+      columns_json = excluded.columns_json,
+      status = excluded.status,
+      updated_at = CURRENT_TIMESTAMP
+  `).bind(
+    id,
+    safeText(body.teacher_id || body.teacherId) || teacher?.id || null,
+    classId,
+    monthKey,
+    sheetType,
+    safeText(body.title || '원내평가') || '원내평가',
+    toJsonText(items),
+    safeStatus(body.status || 'active')
+  ).run();
+  const rows = await queryEieGradeSheets(env, { class_id: classId, month_key: monthKey, sheet_type: sheetType });
+  return jsonResponse({ success: true, data: rows[0] || null, grade_sheet: rows[0] || null, grade_sheets: rows });
 }
 
 async function handlePostConsultation(request, env) {
@@ -1871,7 +2175,7 @@ async function handlePostStudent(request, env, teacher) {
 
   const studentId = makeId('eie_student');
   const now = new Date().toISOString();
-  const grade = safeText(body.grade || '');
+  const grade = normalizeEieGrade(body.grade || body.grade_raw);
   const memo = safeText(body.memo || '');
   const status = normalizeDirectStudentStatus(body.status, 'active');
   const normalizedName = normalizeName(name);
@@ -2064,7 +2368,7 @@ async function handlePatchStudent(request, env, teacher, studentId) {
   }
   if (body.grade !== undefined || body.grade_raw !== undefined) {
     sets.push('grade = ?');
-    binds.push(safeText(body.grade || body.grade_raw));
+    binds.push(normalizeEieGrade(body.grade || body.grade_raw));
   }
   if (body.school_name !== undefined || body.school !== undefined) {
     sets.push('school_name = ?');
@@ -2500,6 +2804,14 @@ export async function handleEie(request, env, teacher, path, url) {
     return handleGetEieExamRecords(env, url);
   }
 
+  if (method === 'GET' && path[2] === 'school-grade-records' && !path[3]) {
+    return handleGetEieSchoolGradeRecords(env, url);
+  }
+
+  if (method === 'GET' && path[2] === 'grade-sheets' && !path[3]) {
+    return handleGetEieGradeSheets(env, url);
+  }
+
   if (method === 'GET') {
     return handleGet(request, env, path, url);
   }
@@ -2601,6 +2913,14 @@ export async function handleEie(request, env, teacher, path, url) {
     return handleBatchEieExamRecords(request, env, teacher);
   }
 
+  if (method === 'POST' && path[2] === 'school-grade-records' && path[3] === 'batch' && !path[4]) {
+    return handleBatchEieSchoolGradeRecords(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'grade-sheets' && !path[3]) {
+    return handleSaveEieGradeSheet(request, env, teacher);
+  }
+
   if (method === 'POST' && path[2] === 'exam-records' && !path[3]) {
     return handlePostEieExamRecord(request, env, teacher);
   }
@@ -2611,6 +2931,14 @@ export async function handleEie(request, env, teacher, path, url) {
 
   if (method === 'DELETE' && path[2] === 'exam-records' && path[3] && !path[4]) {
     return handleDeleteEieExamRecord(env, path[3]);
+  }
+
+  if (method === 'PATCH' && path[2] === 'school-grade-records' && path[3] && !path[4]) {
+    return handlePatchEieSchoolGradeRecord(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'school-grade-records' && path[3] && !path[4]) {
+    return handleDeleteEieSchoolGradeRecord(env, path[3]);
   }
 
   if (method === 'POST' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students' && path[5] === 'batch' && !path[6]) {
