@@ -1,0 +1,1209 @@
+/* ======================================================================
+   eie-dashboard-classroom.css
+   - eie.css를 소스 순서 그대로 분할한 조각이다 (cascade 동일, 디자인 변경 없음).
+   - index.html에서 반드시 소스 순서대로 로드한다.
+   ====================================================================== */
+/* ======================================================================
+   EIE 원장 대시보드 — 선생님 현황 카드
+   다른 대시보드 카드(mini-metric, placeholder-card)와 동일한 흰색 카드 감각.
+   ====================================================================== */
+.eie-admin-home .ap-admin-teacher-card,
+.eie-admin-home .eie-admin-teacher-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  box-shadow: var(--eie-shadow);
+  color: var(--eie-text);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+.eie-admin-home .ap-admin-teacher-card:hover,
+.eie-admin-home .eie-admin-teacher-card:hover {
+  background: var(--eie-surface-2);
+  border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text));
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
+}
+
+.eie-admin-home .eie-admin-teacher-card--readonly {
+  cursor: default;
+}
+
+.eie-admin-home .eie-admin-teacher-card--readonly:hover {
+  background: var(--eie-surface);
+  border-color: var(--eie-border);
+  box-shadow: var(--eie-shadow);
+  transform: none;
+}
+
+.admin-teacher-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.admin-teacher-card__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--eie-text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-teacher-card__quick-actions {
+  flex-shrink: 0;
+}
+
+.admin-teacher-card__quick-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid var(--eie-border);
+  border-radius: 999px;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-teacher-grade-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.admin-teacher-grade-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border: 1px solid var(--eie-border);
+  border-radius: 8px;
+  background: var(--eie-surface-2);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--eie-muted);
+  white-space: nowrap;
+}
+
+.admin-teacher-grade-pill span:last-child {
+  font-weight: 700;
+  color: var(--eie-text);
+}
+
+.eie-admin-teacher-periods {
+  display: grid;
+  gap: 5px;
+}
+
+.eie-admin-teacher-period-row {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.eie-admin-teacher-period-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--eie-border);
+  border-radius: 7px;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.eie-admin-teacher-period-class {
+  min-width: 0;
+  min-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--eie-text);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.eie-admin-teacher-period-class.is-empty {
+  color: transparent;
+}
+
+@media (max-width: 720px) {
+  .eie-admin-home .ap-admin-teacher-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .eie-admin-home .ap-admin-teacher-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eie-classroom-detail-only {
+    display: block;
+    width: 100%;
+}
+
+/* EIE teacher dashboard: native detail-panel/card-token refresh 20260608
+   - Keeps the current teacher dashboard flow.
+   - Moves visuals away from AP dashboard port classes and follows EIE class/student detail panel tokens. */
+.eie-teacher-dashboard {
+    width: 100%;
+    --eie-active-teacher-rgb: 148, 163, 184;
+    color: var(--eie-p-text);
+}
+
+.eie-teacher-sr-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.eie-teacher-dashboard[data-eie-teacher-key="carmen"],
+.eie-teacher-day-row[data-eie-teacher-key="carmen"] { --eie-active-teacher-rgb: var(--eie-teacher-carmen-rgb); }
+.eie-teacher-dashboard[data-eie-teacher-key="zoe"],
+.eie-teacher-day-row[data-eie-teacher-key="zoe"] { --eie-active-teacher-rgb: var(--eie-teacher-zoe-rgb); }
+.eie-teacher-dashboard[data-eie-teacher-key="ivy"],
+.eie-teacher-day-row[data-eie-teacher-key="ivy"] { --eie-active-teacher-rgb: var(--eie-teacher-ivy-rgb); }
+.eie-teacher-dashboard[data-eie-teacher-key="stacy"],
+.eie-teacher-day-row[data-eie-teacher-key="stacy"] { --eie-active-teacher-rgb: var(--eie-teacher-stacy-rgb); }
+.eie-teacher-dashboard[data-eie-teacher-key="lily"],
+.eie-teacher-day-row[data-eie-teacher-key="lily"] { --eie-active-teacher-rgb: var(--eie-teacher-lily-rgb); }
+.eie-teacher-dashboard[data-eie-teacher-key="foreigner"],
+.eie-teacher-day-row[data-eie-teacher-key="foreigner"] { --eie-active-teacher-rgb: var(--eie-teacher-foreigner-rgb); }
+.eie-teacher-dashboard[data-eie-teacher-key="prep"],
+.eie-teacher-day-row[data-eie-teacher-key="prep"] { --eie-active-teacher-rgb: var(--eie-teacher-prep-rgb); }
+
+.eie-teacher-dashboard-shell {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 16px 28px;
+    box-sizing: border-box;
+    display: grid;
+    gap: 12px;
+}
+
+.eie-teacher-home-head {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 14px;
+    border: 0.5px solid rgba(var(--eie-active-teacher-rgb), 0.28);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    box-shadow: inset 3px 0 0 rgba(var(--eie-active-teacher-rgb), 0.46);
+}
+
+.eie-teacher-home-copy {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+}
+
+.eie-teacher-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.eie-teacher-home-copy h2 {
+    margin: 0;
+    color: var(--eie-p-text);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.eie-teacher-title-row > span {
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.eie-teacher-home-copy p {
+    margin: 0;
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.eie-teacher-quick-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.eie-teacher-quick-card {
+    min-width: 0;
+    min-height: 36px;
+    padding: 0 10px;
+    box-shadow: none;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.eie-teacher-quick-card:hover,
+.eie-teacher-quick-card:focus-visible {
+    border-color: rgba(var(--eie-active-teacher-rgb), 0.36);
+    box-shadow: none;
+    outline: 0;
+}
+
+.eie-teacher-dashboard .eie-p-btn-save.eie-teacher-quick-card {
+    background: rgba(var(--eie-active-teacher-rgb), 0.14);
+    border-color: rgba(var(--eie-active-teacher-rgb), 0.34);
+    color: var(--eie-p-text);
+}
+
+.eie-teacher-quick-card:active {
+    transform: translateY(1px);
+}
+
+.eie-teacher-schedule {
+    margin: 0;
+    padding: 14px;
+    border: 0.5px solid rgba(var(--eie-active-teacher-rgb), 0.20);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    box-shadow: none;
+    display: grid;
+    gap: 12px;
+}
+
+.eie-teacher-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.eie-teacher-section-head h3 {
+    margin: 0;
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.eie-teacher-section-head span {
+    color: var(--eie-p-text-sub);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.eie-teacher-tabbar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.eie-teacher-tabbar .btn {
+    min-width: 0;
+    min-height: 28px;
+    padding: 3px 9px;
+    box-shadow: none;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.eie-teacher-tabbar .btn.is-active {
+    border-color: rgba(var(--eie-active-teacher-rgb), 0.45);
+    background: rgba(var(--eie-active-teacher-rgb), 0.14);
+    color: var(--eie-p-text);
+    box-shadow: none;
+}
+
+.eie-teacher-day-card-list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+}
+
+.eie-teacher-day-row {
+    width: 100%;
+    min-height: 54px;
+    padding: 10px 12px;
+    border: 0.5px solid var(--eie-p-border);
+    border-left: 3px solid rgba(var(--eie-active-teacher-rgb), 0.56);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text);
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.eie-v2-screen .eie-teacher-day-row.eie-p-card {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    flex-direction: initial;
+}
+
+.eie-teacher-day-row:hover,
+.eie-teacher-day-row:focus-visible {
+    border-color: rgba(var(--eie-active-teacher-rgb), 0.38);
+    background: rgba(var(--eie-active-teacher-rgb), 0.06);
+    box-shadow: none;
+    outline: 0;
+}
+
+.eie-teacher-day-row__period {
+    width: 32px;
+    height: 28px;
+    border: 0.5px solid var(--eie-p-border);
+    border-radius: 9px;
+    background: rgba(var(--eie-active-teacher-rgb), 0.10);
+    color: var(--eie-p-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.eie-v2-screen .eie-teacher-day-row__period {
+    justify-self: start;
+}
+
+.eie-teacher-day-row__main {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+    justify-items: start;
+    text-align: left;
+}
+
+.eie-teacher-day-row__main strong,
+.eie-teacher-day-row__main small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-teacher-day-row__main strong {
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.eie-teacher-day-row__main small {
+    color: var(--eie-p-text-sub);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.eie-teacher-day-row__chips {
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-self: end;
+}
+
+.eie-teacher-chip {
+    max-width: 220px;
+    min-height: 24px;
+    padding: 3px 9px;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.eie-empty-box[data-eie-teacher-empty-today],
+.eie-teacher-day-card-list .eie-empty-box {
+    border: 0.5px dashed var(--eie-p-border-mid);
+    border-radius: 12px;
+    background: var(--eie-p-surface-sub);
+    color: var(--eie-p-text-sub);
+    padding: 22px 14px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.eie-classroom-detail-only-panel.eie-panel {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 22px;
+    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+}
+
+.eie-classroom-detail-only .eie-v2-detail-panel,
+.eie-classroom-detail-only .eie-editor-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    border-radius: 22px;
+    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+}
+
+@media (max-width: 620px) {
+    .eie-teacher-dashboard-shell {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .eie-teacher-home-head,
+    .eie-teacher-schedule {
+        border-radius: 18px;
+        padding: 14px;
+    }
+
+    .eie-teacher-day-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+        align-items: flex-start;
+    }
+
+    .eie-v2-screen .eie-teacher-day-row.eie-p-card {
+        grid-template-columns: 38px minmax(0, 1fr);
+        align-items: flex-start;
+    }
+
+    .eie-teacher-day-row__chips {
+        grid-column: 2;
+        justify-content: flex-start;
+        justify-self: start;
+    }
+}
+
+
+/* EIE 클래스룸 요일별 운영표 MVP: 시간표 상세 패널 톤 재사용 */
+.eie-classroom-screen .eie-panel-title {
+    width: 100%;
+    max-width: 760px;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    color: var(--eie-p-text);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.eie-classroom-screen .eie-panel.eie-p-panel {
+    background: var(--eie-p-surface-sub);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.eie-classroom-screen .eie-classroom-panel {
+    width: min(100%, 790px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eie-classroom-screen .eie-classroom-panel.is-detail-open {
+    width: min(100%, 990px);
+    display: grid;
+    grid-template-columns: minmax(460px, 610px) 340px;
+    gap: 10px 18px;
+    align-items: start;
+}
+
+.eie-classroom-screen .eie-classroom-panel.is-detail-open .eie-panel-title,
+.eie-classroom-screen .eie-classroom-panel.is-detail-open .eie-summary-bar,
+.eie-classroom-screen .eie-classroom-panel.is-detail-open .eie-classroom-weekday-tabs {
+    grid-column: 1;
+}
+
+.eie-classroom-screen .eie-classroom-panel.is-detail-open > .eie-timetable-layout {
+    display: contents;
+}
+
+.eie-classroom-screen .eie-classroom-panel.is-detail-open .eie-timetable-main {
+    grid-column: 1;
+}
+
+.eie-classroom-screen .eie-classroom-panel.is-detail-open .eie-classroom-borrowed-panel {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+}
+
+.eie-classroom-screen .eie-summary-bar {
+    width: 100%;
+    max-width: 760px;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
+.eie-classroom-weekday-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    max-width: 760px;
+    margin: 10px 0 12px;
+    box-sizing: border-box;
+}
+
+.eie-classroom-weekday-chip {
+    min-width: 38px;
+    min-height: 28px;
+    font-size: 11px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.eie-classroom-weekday-chip.is-active {
+    border-color: var(--eie-p-btn-save-bg);
+    background: var(--eie-p-badge-ilban-bg);
+    color: var(--eie-p-badge-ilban-text);
+}
+
+.eie-classroom-schedule-groups {
+    display: grid;
+    gap: 12px;
+}
+
+.eie-classroom-teacher-group,
+.eie-classroom-schedule-row {
+    --eie-classroom-teacher-rgb: 148, 163, 184;
+}
+
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="carmen"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="carmen"] { --eie-classroom-teacher-rgb: var(--eie-teacher-carmen-rgb); }
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="zoe"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="zoe"] { --eie-classroom-teacher-rgb: var(--eie-teacher-zoe-rgb); }
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="ivy"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="ivy"] { --eie-classroom-teacher-rgb: var(--eie-teacher-ivy-rgb); }
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="stacy"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="stacy"] { --eie-classroom-teacher-rgb: var(--eie-teacher-stacy-rgb); }
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="lily"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="lily"] { --eie-classroom-teacher-rgb: var(--eie-teacher-lily-rgb); }
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="foreigner"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="foreigner"] { --eie-classroom-teacher-rgb: var(--eie-teacher-foreigner-rgb); }
+.eie-classroom-teacher-group[data-eie-classroom-teacher-key="prep"],
+.eie-classroom-schedule-row[data-eie-classroom-row-teacher-key="prep"] { --eie-classroom-teacher-rgb: var(--eie-teacher-prep-rgb); }
+
+.eie-classroom-screen .eie-timetable-main {
+    width: 100%;
+    max-width: 760px;
+    margin: 0;
+}
+
+.eie-classroom-screen .eie-timetable-layout {
+    width: fit-content;
+    max-width: 100%;
+    grid-template-columns: minmax(460px, 610px) 340px;
+    gap: 18px;
+    justify-content: start;
+    margin: 0;
+}
+
+.eie-classroom-screen .eie-timetable-layout .eie-timetable-main {
+    max-width: 610px;
+    margin: 0;
+}
+
+.eie-classroom-teacher-group {
+    border: 0.5px solid rgba(var(--eie-classroom-teacher-rgb), 0.24);
+    border-radius: 12px;
+    background: var(--eie-p-surface);
+    box-shadow: none;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+}
+
+.eie-classroom-teacher-head {
+    padding: 10px 14px;
+    border-bottom: 0.5px solid rgba(var(--eie-classroom-teacher-rgb), 0.22);
+    background: rgba(var(--eie-classroom-teacher-rgb), 0.09);
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.eie-classroom-teacher-head strong {
+    font-weight: 500;
+}
+
+.eie-classroom-schedule-list {
+    display: grid;
+}
+
+.eie-classroom-subgroup + .eie-classroom-subgroup {
+    border-top: 0.5px solid var(--eie-p-border);
+}
+
+.eie-classroom-subhead {
+    padding: 8px 14px 4px;
+    background: var(--eie-p-surface);
+    color: var(--eie-p-text-muted);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.eie-classroom-collapsed-group > summary.eie-classroom-subhead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.eie-classroom-collapsed-group > summary.eie-classroom-subhead::-webkit-details-marker {
+    display: none;
+}
+
+.eie-classroom-collapsed-group > summary.eie-classroom-subhead::after {
+    content: '\D3BC\CE58\AE30';
+    margin-left: auto;
+    color: var(--eie-p-text-sub);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.eie-classroom-collapsed-group[open] > summary.eie-classroom-subhead::after {
+    content: '\C811\AE30';
+}
+
+.eie-classroom-summary-chips {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.eie-classroom-summary-chip {
+    border: 0.5px solid rgba(var(--eie-classroom-teacher-rgb), 0.24);
+    border-radius: 999px;
+    background: rgba(var(--eie-classroom-teacher-rgb), 0.08);
+    color: var(--eie-p-text-sub);
+    padding: 2px 6px;
+    font-size: 10px;
+    line-height: 1.1;
+}
+
+.eie-classroom-schedule-row {
+    width: 100%;
+    min-height: 44px;
+    border: 0;
+    border-bottom: 0.5px solid var(--eie-p-border);
+    border-left: 3px solid rgba(var(--eie-classroom-teacher-rgb), 0.46);
+    border-radius: 0;
+    background: var(--eie-p-surface);
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    text-align: left;
+    color: var(--eie-p-text);
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.eie-v2-screen .eie-classroom-schedule-row.eie-p-card {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    flex-direction: initial;
+}
+
+.eie-classroom-schedule-row:last-child {
+    border-bottom: 0;
+}
+
+.eie-classroom-schedule-row:hover {
+    background: rgba(var(--eie-classroom-teacher-rgb), 0.06);
+}
+
+.eie-classroom-schedule-period {
+    justify-self: start;
+    color: var(--eie-p-text-sub);
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.eie-classroom-schedule-main {
+    justify-self: start;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--eie-p-text);
+    font-size: 13px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-classroom-schedule-meta {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--eie-p-text-sub);
+    font-size: 11px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.eie-classroom-borrowed-panel {
+    min-width: 0;
+    margin-top: 0;
+}
+
+.eie-classroom-borrowed-panel .eie-v2-detail-panel {
+    position: sticky;
+    top: 16px;
+}
+
+@media (max-width: 720px) {
+    .eie-classroom-screen .eie-classroom-panel.is-detail-open {
+        display: block;
+        width: min(100%, 790px);
+    }
+
+    .eie-classroom-screen .eie-classroom-panel.is-detail-open > .eie-timetable-layout {
+        display: grid;
+    }
+
+    .eie-classroom-screen .eie-timetable-layout {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .eie-classroom-schedule-row {
+        grid-template-columns: 34px minmax(0, 1fr);
+    }
+
+    .eie-v2-screen .eie-classroom-schedule-row.eie-p-card {
+        grid-template-columns: 34px minmax(0, 1fr);
+    }
+
+    .eie-classroom-schedule-meta {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .eie-classroom-borrowed-panel .eie-v2-detail-panel {
+        position: static;
+    }
+
+    .eie-classroom-borrowed-panel {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 0;
+    }
+}
+
+/* Owner dashboard teacher card period table */
+.eie-admin-teacher-card--readonly {
+    cursor: default;
+}
+
+.eie-admin-teacher-card--readonly:hover {
+    transform: none;
+}
+
+.eie-admin-teacher-periods {
+    display: grid;
+    gap: 3px;
+}
+
+.eie-admin-teacher-period-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 7px;
+    min-height: 24px;
+    padding: 1px 0;
+}
+
+.eie-admin-teacher-period-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--eie-border);
+    border-radius: 7px;
+    background: var(--eie-surface-2);
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.eie-admin-teacher-period-class {
+    min-width: 0;
+    min-height: 18px;
+    overflow: hidden;
+    color: var(--eie-text);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-admin-teacher-period-count {
+    min-width: 0;
+    min-height: 18px;
+    overflow: hidden;
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-admin-teacher-period-class.is-empty,
+.eie-admin-teacher-period-count.is-empty {
+    color: transparent;
+}
+
+/* EIE timetable print view */
+@media (max-width: 520px) {
+    .eie-v2-head-right .eie-v2-print-button {
+        display: inline-flex;
+    }
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+    body.eie-printing-timetable {
+        background: #fff !important;
+        color: #111827 !important;
+    }
+
+    body.eie-printing-timetable .eie-header,
+    body.eie-printing-timetable .eie-desktop-topbar,
+    body.eie-printing-timetable #eie-drawer,
+    body.eie-printing-timetable #eie-drawer-overlay,
+    body.eie-printing-timetable .eie-v2-head-left,
+    body.eie-printing-timetable .eie-v2-head-right,
+    body.eie-printing-timetable .eie-v2-detail-panel,
+    body.eie-printing-timetable .eie-v2-edit-mode-bar,
+    body.eie-printing-timetable .eie-v2-info,
+    body.eie-printing-timetable .eie-v2-alert {
+        display: none !important;
+    }
+
+    body.eie-printing-timetable .eie-main,
+    body.eie-printing-timetable .eie-main:has(.eie-v2-screen),
+    body.eie-printing-timetable .eie-v2-screen {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-page-head.eie-v2-card-head {
+        display: block !important;
+        min-height: 0 !important;
+        margin: 0 0 6mm !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-head-center,
+    body.eie-printing-timetable .eie-v2-head-center h1 {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-align: center !important;
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-layout,
+    body.eie-printing-timetable .eie-v2-layout.has-panel,
+    body.eie-printing-timetable .eie-v2-layout.is-full,
+    body.eie-printing-timetable .eie-v2-main {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body.eie-printing-timetable .eie-v2-board-grid,
+    body.eie-printing-timetable .eie-weekday-grid,
+    body.eie-printing-timetable .eie-v2-card,
+    body.eie-printing-timetable .eie-v2-teacher-slot,
+    body.eie-printing-timetable .eie-v2-grid-slot {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    body.eie-printing-timetable-editor {
+        background: #fff !important;
+        color: #111827 !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-header,
+    body.eie-printing-timetable-editor .eie-desktop-topbar,
+    body.eie-printing-timetable-editor #eie-drawer,
+    body.eie-printing-timetable-editor #eie-drawer-overlay,
+    body.eie-printing-timetable-editor .eie-timetable-toolbar-actions,
+    body.eie-printing-timetable-editor .eie-error-box,
+    body.eie-printing-timetable-editor .eie-info-box,
+    body.eie-printing-timetable-editor .eie-warning-box,
+    body.eie-printing-timetable-editor .eie-draft-count,
+    body.eie-printing-timetable-editor .eie-editor-panel {
+        display: none !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-main,
+    body.eie-printing-timetable-editor .eie-timetable-screen,
+    body.eie-printing-timetable-editor .eie-timetable-screen .eie-panel {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-panel-title {
+        margin: 0 0 6mm !important;
+        text-align: center !important;
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-timetable-toolbar {
+        margin: 0 0 4mm !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-timetable-toolbar-main {
+        justify-items: center !important;
+        text-align: center !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-timetable-layout,
+    body.eie-printing-timetable-editor .eie-timetable-layout.is-editing,
+    body.eie-printing-timetable-editor .eie-timetable-main {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-timetable-side {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 5mm !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-transfer-area {
+        position: static !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    body.eie-printing-timetable-editor .eie-edit-board-wrap {
+        overflow: visible !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    body.eie-printing-timetable-editor .eie-edit-board,
+    body.eie-printing-timetable-editor .eie-excel-cell,
+    body.eie-printing-timetable-editor .eie-transfer-area,
+    body.eie-printing-timetable-editor .eie-transfer-slot {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* EIE owner dashboard recent consultation: APMATH dashboard parity */
+.eie-admin-home .eie-admin-consultation-list {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  box-shadow: none;
+}
+
+.eie-admin-home .eie-admin-consultation-row {
+  width: 100%;
+  min-height: 68px;
+  padding: 10px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--eie-border);
+  border-radius: 0;
+  background: var(--eie-surface);
+  box-shadow: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+}
+
+.eie-admin-home .eie-admin-consultation-row:last-child {
+  border-bottom: 0;
+}
+
+.eie-admin-home .eie-admin-consultation-row > span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eie-admin-home .eie-admin-consultation-row strong {
+  color: var(--eie-text);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eie-admin-home .eie-admin-consultation-row small {
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eie-admin-home .eie-admin-consultation-row em {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  color: var(--eie-muted);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.eie-admin-home .eie-admin-consultation-all {
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid var(--eie-border);
+  border-radius: 999px;
+  background: var(--eie-surface-2);
+  color: var(--eie-text);
+  box-shadow: none;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .eie-admin-home .eie-admin-consultation-row {
+    grid-template-columns: 1fr;
+  }
+
+  .eie-admin-home .eie-admin-consultation-row em {
+    align-items: flex-start;
+  }
+}
