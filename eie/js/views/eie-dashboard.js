@@ -6,6 +6,10 @@
         }[ch]));
     }
 
+    function jsArg(value) {
+        return esc(JSON.stringify(value));
+    }
+
     function rowsFromPayload(payload, keys) {
         if (!payload) return [];
         for (const key of keys) {
@@ -128,17 +132,19 @@
             needsReview: Array.isArray(currentState.needsReview) ? currentState.needsReview : [],
             teachers: [],
             attendanceRows: [],
+            consultations: Array.isArray(currentState.db?.consultations) ? currentState.db.consultations : [],
             errors: []
         };
 
         if (!window.EieApi) return data;
 
-        const [timetableResult, studentsResult, needsReviewResult, teachersResult, attendanceResult] = await Promise.allSettled([
+        const [timetableResult, studentsResult, needsReviewResult, teachersResult, attendanceResult, consultationsResult] = await Promise.allSettled([
             window.EieApi.getTimetable(null, { status: 'active,needs_review,hidden' }),
             window.EieApi.getStudents ? window.EieApi.getStudents() : window.EieApi.getStudentSeeds(),
             window.EieApi.getNeedsReview(),
             window.EieApi.getTeachers ? window.EieApi.getTeachers() : Promise.resolve({ teachers: [] }),
-            window.EieApi.getAttendanceRecords ? window.EieApi.getAttendanceRecords({ date: todayIso() }) : Promise.resolve({ attendance_records: [] })
+            window.EieApi.getAttendanceRecords ? window.EieApi.getAttendanceRecords({ date: todayIso() }) : Promise.resolve({ attendance_records: [] }),
+            window.EieApi.getConsultations ? window.EieApi.getConsultations() : Promise.resolve({ consultations: data.consultations })
         ]);
 
         if (timetableResult.status === 'fulfilled') {
@@ -173,6 +179,11 @@
             data.attendanceRows = rowsFromPayload(attendanceResult.value, ['attendance_records', 'attendance', 'rows']);
         }
 
+        if (consultationsResult.status === 'fulfilled') {
+            data.consultations = rowsFromPayload(consultationsResult.value, ['consultations', 'rows']);
+            if (window.EieState?.setConsultations) window.EieState.setConsultations(data.consultations);
+        }
+
         return data;
     }
 
@@ -190,7 +201,7 @@
             <div class="ap-admin-shortcuts ap-admin-action-grid eie-admin-shortcuts eie-admin-action-grid eie-surface-toolbar eie-surface-toolbar--four" aria-label="원장님 바로가기">
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="attendance" aria-label="EIE 출석부" title="출석부">출석부</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="timetable" aria-label="EIE 시간표" title="시간표">시간표</button>
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" disabled aria-label="EIE 성적표 준비중" title="준비중">성적표</button>
+                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="grades" aria-label="EIE 성적표" title="성적표">성적표</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="management" aria-label="EIE 관리" title="관리">관리</button>
             </div>
         `;
@@ -219,8 +230,11 @@
                     ${innerHtml}
                 </div>`
             : '';
+        // 라우트도 hover 상세도 없는 metric은 표시 전용이다. 클릭 가능한 것처럼
+        // 보이지 않도록 disabled 처리하여 "안 눌리는 버튼" 인상을 제거한다.
+        const disabledAttr = (route || innerHtml) ? '' : ' disabled';
         return `
-            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button"${routeAttr} aria-label="${esc(label)} ${countText}명" title="${esc(label)} ${countText}명"${hoverAttrs}>
+            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button"${routeAttr}${disabledAttr} aria-label="${esc(label)} ${countText}명" title="${esc(label)} ${countText}명"${hoverAttrs}>
                 <span>${esc(label)}</span>
                 ${hoverPanel}
             </button>
@@ -465,13 +479,75 @@
         `;
     }
 
-    function renderRecentConsultationPlaceholder() {
+    function renderLegacyRecentConsultationPlaceholder() {
         return `
             <div class="ap-admin-section eie-admin-section">
                 <div class="eie-admin-section-title-row">
                     <h3 class="ap-admin-section-title eie-admin-section-title">최근 상담</h3>
                 </div>
                 <div class="card eie-admin-empty-card">상담 기록 연동 준비중</div>
+            </div>
+        `;
+    }
+
+    function consultationDate(row) {
+        return String(row?.date || row?.consultation_date || row?.created_at || '').slice(0, 10);
+    }
+
+    function consultationSortValue(row) {
+        return String(row?.date || row?.consultation_date || row?.created_at || '').replace(/[^0-9]/g, '');
+    }
+
+    function consultationStudent(data, row) {
+        const sid = String(row?.student_id || '').trim();
+        return (data.students || []).find(student => studentIdOf(student) === sid) || null;
+    }
+
+    function consultationPreview(row) {
+        return String(row?.content || '').replace(/\s+/g, ' ').trim() || '상담 내용 없음';
+    }
+
+    function openDashboardConsultationStudent(studentId) {
+        if (window.EieStudentsView && typeof EieStudentsView.openDetail === 'function') {
+            return EieStudentsView.openDetail(studentId, { route: 'dashboard' }, 'consultation');
+        }
+        if (window.EieRouter && typeof EieRouter.open === 'function') return EieRouter.open('students');
+    }
+
+    function renderRecentConsultationPanel(data) {
+        const rows = (data.consultations || [])
+            .slice()
+            .sort((a, b) => String(consultationSortValue(b)).localeCompare(String(consultationSortValue(a))))
+            .slice(0, 8);
+        const rowHtml = rows.map(row => {
+            const sid = String(row?.student_id || '').trim();
+            const student = consultationStudent(data, row);
+            const name = student?.name || row?.student_name_snapshot || '학생 확인';
+            const meta = [consultationDate(row), row?.type || '상담'].filter(Boolean).join(' · ');
+            const nextAction = String(row?.next_action || row?.nextAction || '').trim();
+            return `
+                <button class="btn ap-admin-consultation-row eie-admin-consultation-row" type="button" onclick="openDashboardConsultationStudent(${jsArg(sid)})" aria-label="${esc(name)} 상담 확인" title="${esc(name)} 상담">
+                    <span>
+                        <strong>${esc(name)}</strong>
+                        <small>${esc(consultationPreview(row))}</small>
+                    </span>
+                    <em>
+                        <span>${esc(meta)}</span>
+                        ${nextAction ? `<small>${esc(nextAction)}</small>` : ''}
+                    </em>
+                </button>
+            `;
+        }).join('');
+
+        return `
+            <div class="ap-admin-section eie-admin-section">
+                <div class="eie-admin-section-title-row eie-admin-section-title-row--split">
+                    <h3 class="ap-admin-section-title eie-admin-section-title">최근 상담</h3>
+                    <button class="btn eie-admin-consultation-all" type="button" data-eie-route="students">상담 전체 보기</button>
+                </div>
+                <div class="card eie-admin-consultation-list">
+                    ${rowHtml || '<div class="eie-admin-empty-card">최근 상담 기록이 없습니다.</div>'}
+                </div>
             </div>
         `;
     }
@@ -538,7 +614,7 @@
                     ${renderActionGrid()}
                     ${renderOverview(data)}
                     ${renderTeacherStatus(data)}
-                    ${renderRecentConsultationPlaceholder()}
+                    ${renderRecentConsultationPanel(data)}
                     ${renderRecentStudents(data)}
                     ${renderWeeklySchedulePlaceholder()}
                     ${renderBottomSearchPlaceholder()}
@@ -548,5 +624,6 @@
         `;
     }
 
+    window.openDashboardConsultationStudent = openDashboardConsultationStudent;
     window.EieDashboardView = { render };
 })();

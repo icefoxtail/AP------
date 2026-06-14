@@ -61,6 +61,9 @@
     }
 
     function normalizeGrade(value) {
+        if (window.EieGradeUtils && typeof EieGradeUtils.normalizeEieGrade === 'function') {
+            return EieGradeUtils.normalizeEieGrade(value);
+        }
         var raw = text(value).replace(/\s+/g, '');
         var aliases = {
             '중1': '중1',
@@ -99,7 +102,7 @@
         if (middle) return '중' + middle[1];
         var high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
         if (high) return '고' + high[1];
-        return raw;
+        return /^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
     }
 
     function schoolOf(student) {
@@ -674,7 +677,7 @@
                     + '<div class="eie-apms-inline-actions">'
                     + '<button type="button" onclick="EieStudentsView.copyPhone(' + jsArg(contactPhone) + ')">' + esc(contactPhone) + '</button>'
                     + (contactId && contactId !== 'primary' ? '<button type="button" onclick="EieStudentsView.editContact(' + jsArg(contactId) + ')">수정</button>' : '')
-                    + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
+                    + '<button type="button" disabled title="삭제 처리는 준비 중입니다.">삭제 보류</button>'
                     + '</div>'
                     + '</div>';
             }).join('') : '<p class="eie-apms-muted">등록된 연락처가 없습니다. 학생 수정에서 대표 연락처를 저장할 수 있습니다.</p>')
@@ -752,6 +755,20 @@
         var sid = rowId(student);
         var rows = consultationsOf(student);
         var recentRows = rows.slice(0, 5);
+        var selected = selectedPinnedConsultation(student);
+        var selectedId = selected ? consultationId(selected) : '';
+        var dateButtons = recentRows.map(function (row) {
+            var id = consultationId(row);
+            return '<button type="button" class="eie-apms-consult-date-button' + (id === selectedId ? ' is-active' : '') + '" data-eie-consultation-id="' + esc(id) + '" onclick="EieStudentsView.selectPinnedConsultation(' + jsArg(sid) + ', ' + jsArg(id) + ')">' + esc(consultationDateLabel(consultationDate(row))) + '</button>';
+        }).join('');
+        return '<div class="eie-apms-card eie-apms-pinned-consultation" data-eie-pinned-consultation-student="' + esc(sid) + '">'
+            + '<div class="eie-apms-section-head"><h3>최근 상담</h3><button type="button" class="eie-primary-button" onclick="EieStudentsView.createConsultation(' + jsArg(sid) + ')">+ 상담</button></div>'
+            + '<div class="eie-apms-pinned-consultation-body" id="eie-pinned-consultation-body-' + esc(sid) + '">'
+            + (recentRows.length > 1 ? '<div class="eie-apms-consult-date-row">' + dateButtons + '</div>' : '')
+            + renderPinnedConsultationPreview(student, selected)
+            + (rows.length ? '<div class="eie-apms-pinned-consultation-footer"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.setTab(\'consultation\')">다른 상담 보기</button></div>' : '')
+            + '</div>'
+            + '</div>';
         return '<div class="eie-apms-card eie-apms-pinned-consultation" data-eie-pinned-consultation-student="' + esc(sid) + '">'
             + '<div class="eie-apms-section-head"><h3>등원/상담</h3>' + (rows.length ? '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setTab(\'consultation\')">상담 전체보기</button>' : '') + '</div>'
             + '<div class="eie-apms-pinned-consultation-body" id="eie-pinned-consultation-body-' + esc(sid) + '">'
@@ -831,7 +848,7 @@
             + '</div>'
             + '<div class="eie-apms-inline-actions">'
             + (id ? '<button type="button" onclick="EieStudentsView.editConsultation(' + jsArg(id) + ')">수정</button>' : '')
-            + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
+            + '<button type="button" disabled title="삭제 처리는 준비 중입니다.">삭제 보류</button>'
             + '</div>'
             + '</div>';
     }
@@ -967,7 +984,6 @@
             + '<label><span>만점</span><input id="' + prefix + '-max-score" type="number" step="0.1" inputmode="decimal"></label>'
             + '<label><span>레벨</span><input id="' + prefix + '-level" type="text" placeholder="A, B, C 또는 교재 레벨"></label>'
             + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo" rows="2" placeholder="수업 전달 메모"></textarea></label>'
-            + '<label class="is-wide"><span>payload_json</span><textarea id="' + prefix + '-payload" rows="3" placeholder=\'{"items":[]}\'></textarea></label>'
             + '<div class="eie-exam-actions is-wide">'
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.saveExamRecord(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>저장</button>'
             + '</div>'
@@ -982,13 +998,9 @@
             + '</div>';
     }
 
-    function renderTabBody(student) {
-        if (_tab === 'grades') return renderExamTab(student);
-        if (_tab === 'contacts') return renderContacts(student);
-        if (_tab === 'classes') return renderAssignments(student);
-        if (_tab === 'consultation') return renderConsultations(student);
-        if (_tab === 'attendance') return renderAttendancePanel(student);
-        return '<div class="eie-apms-card">'
+    function renderBasicTab(student) {
+        return '<div class="eie-apms-basic-stack">'
+            + '<div class="eie-apms-card">'
             + '<div class="eie-apms-section-head"><h3>기본정보</h3><span>EIE</span></div>'
             + '<div class="eie-apms-field-grid">'
             + renderField('학생명', displayName(student))
@@ -1009,11 +1021,54 @@
             + '<span>메모</span>'
             + '<p>' + esc(memoOf(student) || '메모가 없습니다.') + '</p>'
             + '</div>'
+            + '</div>'
+            + renderContacts(student)
+            + renderAssignments(student)
+            + renderAttendancePanel(student)
             + '</div>';
+    }
+
+    function renderTabBody(student) {
+        if (_tab === 'grades') return renderExamTab(student);
+        if (_tab === 'consultation') return renderConsultations(student);
+        return renderBasicTab(student);
     }
 
     function renderTabButton(tab, label) {
         return '<button type="button" class="eie-apms-tab' + (_tab === tab ? ' is-active' : '') + '" onclick="EieStudentsView.setTab(' + jsArg(tab) + ')">' + esc(label) + '</button>';
+    }
+
+    function renderDetailHeader(student) {
+        var sid = rowId(student);
+        var meta = [
+            [schoolOf(student), gradeOf(student)].filter(Boolean).join(' '),
+            assignmentsOf(student).length + '개 수업',
+            teacherNamesOf(student).join(', ')
+        ].filter(Boolean);
+        return '<div class="eie-apms-detail-head eie-apms-student-profile-head">'
+            + '<div class="eie-apms-student-head-main">'
+            + '<div class="eie-apms-student-head-title">'
+            + '<h1>' + esc(displayName(student)) + '</h1>'
+            + '<span class="eie-apms-student-status-dot ' + statusClass(statusOf(student)) + '"></span>'
+            + '<span class="eie-apms-student-status-text ' + statusClass(statusOf(student)) + '">' + esc(statusLabel(statusOf(student))) + '</span>'
+            + '</div>'
+            + '<div class="eie-apms-student-meta-line">' + (meta.length ? meta.map(function (item) {
+                return '<span>' + esc(item) + '</span>';
+            }).join('') : '<span>학년 미등록</span>') + '</div>'
+            + '</div>'
+            + '<div class="eie-apms-student-head-actions">'
+            + '<button type="button" class="eie-icon-button eie-apms-detail-edit" onclick="EieStudentsView.startEdit(' + jsArg(sid) + ')">수정</button>'
+            + '<button type="button" class="eie-icon-button eie-apms-detail-close" onclick="EieStudentsView.closeDetail()">닫기</button>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderDetailTabs() {
+        return '<div class="eie-apms-tabs eie-apms-header-tabs">'
+            + renderTabButton('basic', '기본')
+            + renderTabButton('consultation', '상담')
+            + renderTabButton('grades', '성적')
+            + '</div>';
     }
 
     function renderDetail(student) {
@@ -1022,33 +1077,10 @@
         if (_mode === 'edit') return renderEditForm(student);
 
         return '<aside class="eie-apms-detail-panel">'
-            + '<div class="eie-apms-detail-head">'
-            + '<div>'
-            + '<h2>' + esc(displayName(student)) + '</h2>'
-            + '<div class="eie-apms-head-badges">'
-            + renderStatusBadge(statusOf(student))
-            + '<span class="eie-apms-pill">' + esc([schoolOf(student), gradeOf(student)].filter(Boolean).join(' ') || '학년 미등록') + '</span>'
-            + '<span class="eie-apms-pill">' + esc(assignmentsOf(student).length + '개 수업') + '</span>'
-            + '</div>'
-            + '</div>'
-            + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.closeDetail()">닫기</button>'
-            + '</div>'
-            + renderPinnedConsultationCard(student)
-            + '<div class="eie-apms-detail-actions">'
+            + renderDetailHeader(student)
+            + renderDetailTabs()
+            + (_tab === 'consultation' ? renderPinnedConsultationCard(student) : '')
             + renderReturnAction()
-            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startEdit(' + jsArg(sid) + ')">수정</button>'
-            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.updateStatus(' + jsArg(sid) + ', \'active\')" ' + (statusOf(student) === 'active' ? 'disabled' : '') + '>재원</button>'
-            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.updateStatus(' + jsArg(sid) + ', \'inactive\')" ' + (statusOf(student) === 'inactive' ? 'disabled' : '') + '>비활성</button>'
-            + '<button type="button" class="eie-danger-button" onclick="EieStudentsView.archiveStudent(' + jsArg(sid) + ')" ' + (statusOf(student) === 'archived' ? 'disabled' : '') + '>보관 처리</button>'
-            + '</div>'
-            + '<div class="eie-apms-tabs">'
-            + renderTabButton('basic', '기본정보')
-            + renderTabButton('contacts', '연락처')
-            + renderTabButton('classes', '수업 배정')
-            + renderTabButton('consultation', '상담')
-            + renderTabButton('attendance', '출결/숙제')
-            + renderTabButton('grades', '성적표')
-            + '</div>'
             + renderTabBody(student)
             + '</aside>';
     }
@@ -1120,7 +1152,7 @@
         return {
             display_name: name,
             name: name,
-            grade: grade,
+            grade: normalizeGrade(grade),
             school_name: school,
             enrollment_date: enrollDate,
             first_attendance_date: enrollDate,
@@ -1586,18 +1618,6 @@
             var maxScoreEl = document.getElementById(prefix + '-max-score');
             var levelEl = document.getElementById(prefix + '-level');
             var memoEl = document.getElementById(prefix + '-memo');
-            var payloadEl = document.getElementById(prefix + '-payload');
-            var payloadText = text(payloadEl && payloadEl.value);
-            if (payloadText) {
-                try { JSON.parse(payloadText); }
-                catch (error) {
-                    _error = 'payload_json은 올바른 JSON이어야 합니다.';
-                    _tab = 'grades';
-                    _saving = false;
-                    await EieRouter.open('students');
-                    return;
-                }
-            }
             var payload = {
                 student_id: sid,
                 category: category,
@@ -1607,7 +1627,7 @@
                 max_score: text(maxScoreEl && maxScoreEl.value),
                 level: text(levelEl && levelEl.value),
                 memo: text(memoEl && memoEl.value),
-                payload_json: payloadText || null
+                payload_json: null
             };
             if (!sid) return;
             _saving = true;
