@@ -2718,9 +2718,7 @@
         return `
             <aside class="eie-v2-detail-panel eie-v2-student-panel eie-p-panel eie-v2-ap-profile-panel" aria-label="학생 상세">
                 <div class="eie-v2-ap-appbar">
-                    <button type="button" class="eie-v2-ap-appbar-cancel" data-eie-v2-student-back>취소</button>
-                    <strong></strong>
-                    <span aria-hidden="true"></span>
+                    <button type="button" class="eie-v2-ap-appbar-cancel" data-eie-v2-student-back>닫기</button>
                 </div>
                 <div class="eie-v2-ap-profile-shell">
                     ${renderStudentPanelProfileHead(student, sid, subtitle)}

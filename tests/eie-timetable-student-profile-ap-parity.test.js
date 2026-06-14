@@ -222,7 +222,8 @@ async function assertGradeLedgerStudentFocus() {
   });
 
   assert(html.includes('eie-v2-ap-profile-panel'), 'timetable student detail should use the AP profile panel shell');
-  assert(html.includes('eie-v2-ap-appbar') && html.includes('>취소</button>'), 'panel should render the APMATH-style top app bar');
+  assert(html.includes('eie-v2-ap-appbar') && html.includes('>닫기</button>'), 'panel should render a compact close app bar');
+  assert(!html.includes('<strong></strong>'), 'panel appbar should not reserve empty title space');
   assert(!html.includes('한세아 프로필'), 'panel should not render the removed student-name profile title');
   assert(html.includes('eie-v2-ap-profile-shell'), 'panel should render a bordered profile shell');
   assert(html.includes('eie-v2-ap-profile-head'), 'panel should render an AP-style profile header');
@@ -243,8 +244,8 @@ async function assertGradeLedgerStudentFocus() {
   assert(css.includes('.eie-v2-ap-profile-panel'), 'CSS should scope the AP profile panel');
   assert(css.includes('.eie-v2-ap-tab.is-active'), 'CSS should style the AP underline active tab');
   assert(css.includes('.eie-v2-ap-profile-panel .eie-v2-panel-consultation-card'), 'CSS should restyle consultation cards inside the AP profile panel');
-  assert(/\.eie-v2-ap-appbar\s*\{[\s\S]*grid-template-columns:\s*64px minmax\(0,\s*1fr\) 64px;[\s\S]*padding:\s*18px 20px 14px;/.test(css), 'profile appbar should match APMATH desktop modal header spacing');
-  assert(/@media \(max-width:\s*620px\)\s*\{[\s\S]*\.eie-v2-ap-appbar\s*\{[\s\S]*grid-template-columns:\s*56px minmax\(0,\s*1fr\) 56px;[\s\S]*padding:\s*16px 16px 12px;/.test(css), 'profile appbar should match APMATH mobile modal header spacing');
+  assert(/\.eie-v2-ap-appbar\s*\{[\s\S]*display:\s*flex;[\s\S]*justify-content:\s*flex-end;[\s\S]*min-height:\s*36px;[\s\S]*padding:\s*6px 10px;/.test(css), 'profile appbar should be compact and right-align the close action');
+  assert(/@media \(max-width:\s*620px\)\s*\{[\s\S]*\.eie-v2-ap-appbar\s*\{[\s\S]*min-height:\s*34px;[\s\S]*padding:\s*5px 8px;/.test(css), 'profile appbar should stay compact on mobile');
   assert(/\.eie-v2-ap-profile-shell\s*\{[\s\S]*padding:\s*10px;/.test(css), 'profile shell padding should match APMATH mobile detail-shell padding');
   assert(/\.eie-v2-ap-card,\s*\.eie-v2-ap-form-card\s*\{[\s\S]*padding:\s*12px;/.test(css), 'profile cards should match APMATH card padding');
 
