@@ -257,6 +257,11 @@ async function assertGradeLedgerStudentFocus() {
   assert(gradeHtml.includes('data-eie-v2-open-student-grades="student_alpha"'), 'student grades tab should expose a per-student grade ledger link');
   assert(gradeHtml.includes('data-eie-v2-grade-class-id="cell_alpha"'), 'student grades tab should pass the current class id to the grade ledger');
   assert(gradeHtml.includes('성적표 열기'), 'student grades tab should label the linked action as opening the grade ledger');
+  assert(!gradeHtml.includes('성적표 연동'), 'student grades tab should not show duplicate grade ledger helper copy');
+  assert(
+    /<div class="eie-v2-ap-section-head"><h3>성적<\/h3><button[^>]+data-eie-v2-open-student-grades="student_alpha"[\s\S]*?<\/div>/.test(gradeHtml),
+    'student grades tab should place the grade ledger button in the section header'
+  );
 
   await assertGradeLedgerStudentFocus();
 

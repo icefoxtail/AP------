@@ -2678,8 +2678,7 @@
         return `
             <div class="eie-v2-ap-tab-body">
                 <section class="eie-v2-ap-card">
-                    <div class="eie-v2-ap-section-head"><h3>성적</h3><span>성적표 연동</span></div>
-                    <button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-open-student-grades="${esc(sid)}" data-eie-v2-grade-class-id="${esc(classId)}">성적표 열기</button>
+                    <div class="eie-v2-ap-section-head"><h3>성적</h3><button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-open-student-grades="${esc(sid)}" data-eie-v2-grade-class-id="${esc(classId)}">성적표 열기</button></div>
                     <div class="eie-v2-ap-info-list">
                         ${renderApProfileInfoRow('최근 시험', '')}
                         ${renderApProfileInfoRow('최근 점수', '')}
