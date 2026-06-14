@@ -89,14 +89,23 @@ for (const fn of [
 assert(
   students.includes("renderTabButton('grades', '성적')") &&
     students.includes('function renderExamCategoryCards()') &&
-    students.includes('setExamCategory: function (category)') &&
-    students.includes('saveExamRecord: async function (studentId)'),
-  'student detail should expose the grades tab, category cards, internal switching, and save handler'
+    students.includes('setExamCategory: function (category)'),
+  'student detail should expose the grades tab and category switching'
 );
 
 for (const label of ['월말평가', '단어', '문법', '교재', 'Reading', 'Listening', '자유기록']) {
   assert(students.includes(label), `student grade tab should include ${label}`);
 }
+
+for (const forbidden of ['선생님 자유 입력', '성적 기록', '새 기록 입력', '수업 전달 메모']) {
+  assert(!students.includes(forbidden), `student grade tab should not expose ${forbidden}`);
+}
+
+assert(
+  !/function renderExamPanel\(student\)[\s\S]*eie-exam-form-card/.test(students) &&
+    !/function renderExamPanel\(student\)[\s\S]*eie-exam-save-button/.test(students),
+  'student detail grades panel should not render a direct record input form'
+);
 
 // Policy change: the student detail no longer exposes a raw payload_json input
 // box, so there is no JSON.parse(payloadText) validation step. The grades tab now
@@ -162,10 +171,11 @@ assert(
 
 assert(
   students.includes('eie-exam-panel-head') &&
-    students.includes('eie-exam-form-card') &&
-    students.includes('eie-exam-field') &&
-    students.includes('eie-exam-save-button'),
-  'student detail grade tab should render polished EIE form structure instead of browser-default controls'
+    students.includes('EieStudentsView.openGradeLedger') &&
+    students.includes('성적표 열기') &&
+    !students.includes('eie-exam-form-card') &&
+    !students.includes('eie-exam-save-button'),
+  'student detail grade tab should route entry to the grade ledger instead of rendering an inline form'
 );
 
 assert(
