@@ -2456,12 +2456,9 @@
                     </div>
                     <span class="eie-p-section-label">추가 정보 (선택)</span>
                     <details class="eie-p-drawer">
-                        <summary class="eie-p-drawer-trigger">보호자·PIN·메모<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
+                        <summary class="eie-p-drawer-trigger">보호자·메모<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
                         <div class="eie-p-drawer-body">
-                            <div class="eie-p-form-row">
-                                <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" autocomplete="off"></label>
-                                <label class="eie-p-form-field"><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" autocomplete="off"></label>
-                            </div>
+                            <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" autocomplete="off"></label>
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-edit-memo"></textarea></label>
                         </div>
                         <div class="eie-p-danger-zone">
@@ -2592,7 +2589,6 @@
                         ${renderApProfileInfoRow('차량', studentVehicleInfo(student))}
                         ${renderApProfileInfoRow('등원일', studentEnrollDate(student) || '미등록')}
                         ${renderApProfileInfoRow('메모', studentMemo(student))}
-                        ${renderApProfileInfoRow('PIN 번호', studentPin(student))}
                     </div>
                 </section>
                 <section class="eie-v2-ap-card">
@@ -2783,12 +2779,9 @@
                     </div>
                     <span class="eie-p-section-label">추가 정보</span>
                     <details class="eie-p-drawer">
-                        <summary class="eie-p-drawer-trigger">보호자·PIN·메모<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
+                        <summary class="eie-p-drawer-trigger">보호자·메모<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
                         <div class="eie-p-drawer-body">
-                            <div class="eie-p-form-row">
-                                <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
-                                <label class="eie-p-form-field"><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
-                            </div>
+                            <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                             <label class="eie-p-form-field"><span>등원일</span><input id="eie-v2-edit-enroll-date" type="date" value="${esc(enrollDate)}" autocomplete="off"></label>
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
                         </div>
@@ -4704,7 +4697,6 @@
             guardian_relation: studentFieldValue('eie-v2-edit-guardian-relation'),
             student_address: studentFieldValue('eie-v2-edit-address'),
             vehicle_info: studentFieldValue('eie-v2-edit-vehicle'),
-            student_pin: studentFieldValue('eie-v2-edit-pin'),
             student_type: studentFieldValue('eie-v2-edit-student-type') || '일반',
             teacher_names: selectedStudentTeacherNames(),
             status: studentFieldValue('eie-v2-edit-status') || 'active',
@@ -4713,11 +4705,6 @@
         applyEnrollDateFields(payload, studentFieldValue('eie-v2-edit-enroll-date'));
         if (!payload.display_name) {
             viewState.studentError = '학생명은 필수입니다.';
-            reopenPanelMountRoute();
-            return;
-        }
-        if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) {
-            viewState.studentError = 'PIN은 4자리 숫자로 입력해 주세요.';
             reopenPanelMountRoute();
             return;
         }

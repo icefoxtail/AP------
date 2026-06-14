@@ -329,10 +329,6 @@
         return metaValue(student, 'vehicle_info');
     }
 
-    function studentPinOf(student) {
-        return metaValue(student, 'student_pin') || metaValue(student, 'pin');
-    }
-
     function studentTypeOf(student) {
         return metaValue(student, 'student_type') || '일반';
     }
@@ -1444,7 +1440,6 @@ function renderCards(cells) {
             var relationEl = document.getElementById('cls-edit-guardian-relation');
             var addressEl = document.getElementById('cls-edit-address');
             var vehicleEl = document.getElementById('cls-edit-vehicle');
-            var pinEl = document.getElementById('cls-edit-pin');
             var typeEl = document.getElementById('cls-edit-student-type');
             var statusEl = document.getElementById('cls-edit-status');
             var memoEl = document.getElementById('cls-edit-memo');
@@ -1456,12 +1451,6 @@ function renderCards(cells) {
                 if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">이름은 필수입니다.</div>';
                 return;
             }
-            var pin = pinEl ? pinEl.value.trim() : '';
-            if (pin && !/^\d{4}$/.test(pin)) {
-                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">PIN은 4자리 숫자로 입력해 주세요.</div>';
-                return;
-            }
-
             _saving = true;
             if (msgEl) msgEl.innerHTML = '';
             try {
@@ -1475,7 +1464,6 @@ function renderCards(cells) {
                     guardian_relation: relationEl ? relationEl.value.trim() : '',
                     student_address: addressEl ? addressEl.value.trim() : '',
                     vehicle_info: vehicleEl ? vehicleEl.value.trim() : '',
-                    student_pin: pin,
                     student_type: typeEl ? typeEl.value : '일반',
                     teacher_names: uniqueNames(teacherInputs.map(function (input) { return input.value; })),
                     status: statusEl ? statusEl.value : undefined,

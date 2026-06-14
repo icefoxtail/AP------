@@ -219,10 +219,6 @@
         return metaValue(student, 'vehicle_info');
     }
 
-    function studentPinOf(student) {
-        return metaValue(student, 'student_pin') || metaValue(student, 'pin');
-    }
-
     function studentTypeOf(student) {
         return metaValue(student, 'student_type') || '일반';
     }
@@ -1020,7 +1016,6 @@
             + renderField('보호자 관계', guardianRelationOf(student))
             + renderField('주소', addressOf(student))
             + renderField('차량', vehicleInfoOf(student))
-            + renderField('PIN', studentPinOf(student))
             + renderField('담당 선생님', teacherNamesOf(student).join(', '))
             + '</div>'
             + '<div class="eie-apms-note">'
@@ -1122,7 +1117,6 @@
             + '<label><span>보호자 관계</span><input id="' + prefix + '-guardian-relation" type="text" value="' + esc(isEdit ? guardianRelationOf(student) : '') + '" autocomplete="off"></label>'
             + '<label><span>주소</span><input id="' + prefix + '-address" type="text" value="' + esc(isEdit ? addressOf(student) : '') + '" autocomplete="off"></label>'
             + '<label><span>차량</span><input id="' + prefix + '-vehicle" type="text" value="' + esc(isEdit ? vehicleInfoOf(student) : '') + '" autocomplete="off"></label>'
-            + '<label><span>PIN</span><input id="' + prefix + '-pin" type="text" inputmode="numeric" maxlength="4" value="' + esc(isEdit ? studentPinOf(student) : '') + '" autocomplete="off"></label>'
             + renderTeacherPicker(prefix, student)
             + '<label><span>상태</span><select id="' + prefix + '-status">'
             + '<option value="active"' + (status === 'active' ? ' selected' : '') + '>재원</option>'
@@ -1149,7 +1143,6 @@
         var guardianRelation = text(document.getElementById(prefix + '-guardian-relation') && document.getElementById(prefix + '-guardian-relation').value);
         var address = text(document.getElementById(prefix + '-address') && document.getElementById(prefix + '-address').value);
         var vehicle = text(document.getElementById(prefix + '-vehicle') && document.getElementById(prefix + '-vehicle').value);
-        var pin = text(document.getElementById(prefix + '-pin') && document.getElementById(prefix + '-pin').value);
         var studentTypeEl = document.getElementById(prefix + '-student-type');
         var statusEl = document.getElementById(prefix + '-status');
         var memo = text(document.getElementById(prefix + '-memo') && document.getElementById(prefix + '-memo').value);
@@ -1169,7 +1162,6 @@
             guardian_relation: guardianRelation,
             student_address: address,
             vehicle_info: vehicle,
-            student_pin: pin,
             student_type: studentTypeEl ? studentTypeEl.value : '일반',
             teacher_names: teacherNames,
             status: statusEl ? statusEl.value : 'active',
@@ -1329,7 +1321,6 @@
             if (_saving) return;
             var payload = formPayload('create');
             if (!payload.display_name) return showFormError('학생명은 필수입니다.');
-            if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) return showFormError('PIN은 4자리 숫자로 입력해 주세요.');
             _saving = true;
             try {
                 var result = await EieApi.createStudent(payload);
@@ -1358,7 +1349,6 @@
             var sid = text(studentId || _selectedId);
             var payload = formPayload('edit');
             if (!payload.display_name) return showFormError('학생명은 필수입니다.');
-            if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) return showFormError('PIN은 4자리 숫자로 입력해 주세요.');
             _saving = true;
             try {
                 var result = await EieApi.updateStudent(sid, payload);
