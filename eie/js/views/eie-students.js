@@ -942,9 +942,9 @@
     }
 
     function renderExamCategoryCards() {
-        return '<div class="eie-exam-category-grid">'
+        return '<div class="eie-exam-category-grid" role="tablist" aria-label="성적 기록 유형">'
             + EXAM_CATEGORIES.map(function (item) {
-                return '<button type="button" class="eie-exam-category-card' + (_examCategory === item.key ? ' is-active' : '') + '" onclick="EieStudentsView.setExamCategory(' + jsArg(item.key) + ')">'
+                return '<button type="button" role="tab" aria-selected="' + (_examCategory === item.key ? 'true' : 'false') + '" class="eie-exam-category-card' + (_examCategory === item.key ? ' is-active' : '') + '" onclick="EieStudentsView.setExamCategory(' + jsArg(item.key) + ')">'
                     + '<strong>' + esc(item.label) + '</strong>'
                     + '<span>' + esc(item.key === 'free' ? '선생님 자유 입력' : '성적 기록') + '</span>'
                     + '</button>';
@@ -973,19 +973,25 @@
         });
         var prefix = 'student-exam-' + category;
         return '<div class="eie-apms-card eie-exam-panel" data-eie-exam-category="' + esc(category) + '">'
-            + '<div class="eie-apms-section-head"><h3>' + esc(examCategoryLabel(category)) + '</h3><span>' + esc(String(rows.length)) + '건</span></div>'
+            + '<div class="eie-apms-section-head eie-exam-panel-head"><h3>' + esc(examCategoryLabel(category)) + '</h3><span>' + esc(String(rows.length)) + '건</span></div>'
+            + '<div class="eie-exam-record-card">'
+            + '<div class="eie-exam-card-title"><strong>기록</strong><span>최근 12개</span></div>'
             + '<div class="eie-exam-record-list">'
             + (rows.length ? rows.slice(0, 12).map(renderExamRecordRow).join('') : '<div class="eie-empty-box">저장된 성적표 기록이 없습니다.</div>')
             + '</div>'
+            + '</div>'
+            + '<div class="eie-exam-form-card">'
+            + '<div class="eie-exam-card-title"><strong>새 기록 입력</strong><span>' + esc(examCategoryLabel(category)) + '</span></div>'
             + '<div class="eie-exam-form">'
-            + '<label><span>날짜</span><input id="' + prefix + '-date" type="date" value="' + esc(todayIso()) + '"></label>'
-            + '<label><span>제목</span><input id="' + prefix + '-title" type="text" placeholder="' + esc(examCategoryLabel(category)) + '"></label>'
-            + '<label><span>점수</span><input id="' + prefix + '-score" type="number" step="0.1" inputmode="decimal"></label>'
-            + '<label><span>만점</span><input id="' + prefix + '-max-score" type="number" step="0.1" inputmode="decimal"></label>'
-            + '<label><span>레벨</span><input id="' + prefix + '-level" type="text" placeholder="A, B, C 또는 교재 레벨"></label>'
-            + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo" rows="2" placeholder="수업 전달 메모"></textarea></label>'
+            + '<label class="eie-exam-field"><span>날짜</span><input id="' + prefix + '-date" type="date" value="' + esc(todayIso()) + '"></label>'
+            + '<label class="eie-exam-field"><span>제목</span><input id="' + prefix + '-title" type="text" placeholder="' + esc(examCategoryLabel(category)) + '"></label>'
+            + '<label class="eie-exam-field"><span>점수</span><input id="' + prefix + '-score" type="number" step="0.1" inputmode="decimal" placeholder="예: 92"></label>'
+            + '<label class="eie-exam-field"><span>만점</span><input id="' + prefix + '-max-score" type="number" step="0.1" inputmode="decimal" placeholder="100"></label>'
+            + '<label class="eie-exam-field"><span>레벨</span><input id="' + prefix + '-level" type="text" placeholder="A, B, C 또는 교재 레벨"></label>'
+            + '<label class="eie-exam-field is-wide"><span>메모</span><textarea id="' + prefix + '-memo" rows="2" placeholder="수업 전달 메모"></textarea></label>'
             + '<div class="eie-exam-actions is-wide">'
-            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.saveExamRecord(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>저장</button>'
+            + '<button type="button" class="eie-primary-button eie-exam-save-button" onclick="EieStudentsView.saveExamRecord(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>저장</button>'
+            + '</div>'
             + '</div>'
             + '</div>'
             + '</div>';

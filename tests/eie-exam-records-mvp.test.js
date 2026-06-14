@@ -9,7 +9,8 @@ const api = fs.readFileSync(path.join(root, 'eie/js/eie-api.js'), 'utf8');
 const students = fs.readFileSync(path.join(root, 'eie/js/views/eie-students.js'), 'utf8');
 const classroom = fs.readFileSync(path.join(root, 'eie/js/views/eie-classroom.js'), 'utf8');
 const gradeLedger = fs.readFileSync(path.join(root, 'eie/js/views/eie-grade-ledger.js'), 'utf8');
-const css = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
+const index = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8');
+const css = (function(){ const list = (index.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 
 for (const column of [
   'id TEXT PRIMARY KEY',
@@ -141,6 +142,30 @@ assert(
     css.includes('.eie-app-shell .eie-class-exam-entry-row') &&
     css.includes('@media (max-width: 640px)'),
   'CSS should add scoped EIE exam styles with mobile handling'
+);
+
+for (const selector of [
+  ':is(.eie-app-shell, .eie-main) .eie-exam-tab',
+  ':is(.eie-app-shell, .eie-main) .eie-exam-category-card',
+  ':is(.eie-app-shell, .eie-main) .eie-exam-form',
+  ':is(.eie-app-shell, .eie-main) .eie-exam-record-row',
+  ':is(.eie-app-shell, .eie-main) .eie-exam-record-score'
+]) {
+  assert(css.includes(selector), `student detail grade tab should style ${selector}`);
+}
+
+assert(
+  index.includes('id="eie-app" class="eie-main"') &&
+    css.includes(':is(.eie-app-shell, .eie-main) .eie-exam-category-grid'),
+  'student detail grade tab styles should target the actual #eie-app.eie-main root'
+);
+
+assert(
+  students.includes('eie-exam-panel-head') &&
+    students.includes('eie-exam-form-card') &&
+    students.includes('eie-exam-field') &&
+    students.includes('eie-exam-save-button'),
+  'student detail grade tab should render polished EIE form structure instead of browser-default controls'
 );
 
 assert(
