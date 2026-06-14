@@ -1,8 +1,8 @@
 /* ======================================================================
-   EIE Students — 학생관리 / 학생상세
-   - eie.css에서 기능별로 분리한 파일이다 (디자인 변경 없음).
-   - 로딩 순서: eie.css(공통) 다음에 로드한다.
-   - 학생 검토 사유(review-reasons) 전용 스타일. 그 외 학생 목록/상세는 .eie-v2-* 공유 셸과 얽혀 있어 eie.css에 유지.
+   EIE Students ???�생관�?/ ?�생?�세
+   - eie.css?�서 기능별로 분리???�일?�다 (?�자??변�??�음).
+   - 로딩 ?�서: eie.css(공통) ?�음??로드?�다.
+   - ?�생 검???�유(review-reasons) ?�용 ?��??? �????�생 목록/?�세??.eie-v2-* 공유 ?�과 ?��? ?�어 eie.css???��?.
    ====================================================================== */
 .eie-review-reasons {
   display: grid;
@@ -33,4 +33,224 @@
   font-size: 11px;
   font-style: normal;
   font-weight: 900;
+}
+
+/* Student detail grade tab */
+:is(.eie-app-shell, .eie-main) .eie-exam-tab {
+  display: grid;
+  gap: 12px;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card {
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 9px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #667085;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card strong,
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card strong {
+  color: #182230;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card span {
+  margin-top: 3px;
+  color: #667085;
+  font-size: 10.5px;
+  font-weight: 650;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card:hover,
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card:focus-visible {
+  border-color: #cbd5e1;
+  background: #fff;
+  outline: none;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-category-card.is-active {
+  border-color: #1f2a44;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-panel {
+  display: grid;
+  gap: 12px;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-panel-head {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #edf1f7;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-card,
+:is(.eie-app-shell, .eie-main) .eie-exam-form-card {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e4e9f2;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-card-title strong {
+  color: #182230;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-card-title span {
+  color: #667085;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-list {
+  display: grid;
+  gap: 6px;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 9px 10px;
+  border: 1px solid #e4e9f2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-row strong,
+:is(.eie-app-shell, .eie-main) .eie-exam-record-row span {
+  display: block;
+  min-width: 0;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-row strong {
+  color: #182230;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-row span {
+  margin-top: 3px;
+  color: #667085;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-record-score {
+  min-width: 54px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #eef6ff;
+  color: #175cd3;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-field {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-field.is-wide,
+:is(.eie-app-shell, .eie-main) .eie-exam-actions.is-wide {
+  grid-column: 1 / -1;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-field span {
+  color: #344054;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-field input,
+:is(.eie-app-shell, .eie-main) .eie-exam-field textarea {
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  color: #101828;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-field textarea {
+  min-height: 64px;
+  resize: vertical;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-field input:focus,
+:is(.eie-app-shell, .eie-main) .eie-exam-field textarea:focus {
+  border-color: #1f2a44;
+  outline: 2px solid rgba(31, 42, 68, 0.12);
+  outline-offset: 0;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-exam-save-button {
+  min-width: 72px;
+}
+
+@media (max-width: 640px) {
+  :is(.eie-app-shell, .eie-main) .eie-exam-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  :is(.eie-app-shell, .eie-main) .eie-exam-form {
+    grid-template-columns: 1fr;
+  }
 }
