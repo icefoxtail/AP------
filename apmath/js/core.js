@@ -1307,12 +1307,14 @@ function sortWeakUnitEntries(mapObj) {
 }
 
 function computeStudentWeakUnits(studentId) {
-    const sessions = (state.db.exam_sessions || []).filter(e => e.student_id === studentId);
-    const sessionMap = new Map(sessions.map(e => [e.id, e]));
+    const sessions = typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(studentId)
+        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(studentId));
+    const sessionMap = new Map(sessions.map(e => [String(e.id), e]));
     const bucket = {};
 
     (state.db.wrong_answers || []).forEach(w => {
-        const session = sessionMap.get(w.session_id);
+        const session = sessionMap.get(String(w.session_id));
         if (!session || !session.archive_file) return;
 
         const concept = getWrongConceptFromSession(session, w.question_id);
