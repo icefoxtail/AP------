@@ -31,14 +31,6 @@
         <button type="button" class="engine-mode-btn" data-emode="ans">정답표</button>
       </div>
 
-      <!-- 미리보기 탭 버튼 -->
-      <div class="topbar-group" id="preview-tab-btns">
-        <span class="topbar-label">탭:</span>
-        <button type="button" class="preview-tab-btn active" data-ptab="output">실제 출력</button>
-        <button type="button" class="preview-tab-btn" data-ptab="editor">편집 검수</button>
-        <button type="button" class="preview-tab-btn" data-ptab="table">검수표</button>
-      </div>
-
     </div>
   </header>
 
@@ -83,6 +75,14 @@
             <span class="fixed-filter-label">시험</span>
             <div id="exam-type-filter-btns"></div>
           </div>
+          <div class="fixed-filter-row">
+            <span class="fixed-filter-label">학기</span>
+            <div id="semester-filter-btns"></div>
+          </div>
+          <div class="fixed-filter-row">
+            <span class="fixed-filter-label">과목</span>
+            <div id="subject-filter-btns"></div>
+          </div>
         </div>
 
         <!-- 검수 필터 (접기 가능) -->
@@ -110,42 +110,8 @@
 
       <!-- 탭1: 실제 출력 -->
       <div id="pane-output" class="preview-pane active-pane">
-        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 저장 후 실제 출력에 반영됨</div>
-        <iframe id="enginePreviewFrame" src="about:blank" title="실제 출력 미리보기"></iframe>
-      </div>
-
-      <!-- 탭2: 편집 검수 -->
-      <div id="pane-editor" class="preview-pane">
-        <div id="editor-placeholder">파일을 열면 문항 목록이 표시됩니다.</div>
-        <div id="question-cards"></div>
-      </div>
-
-      <!-- 탭3: 검수표 -->
-      <div id="pane-table" class="preview-pane">
-        <div id="table-placeholder">파일을 열면 검수표가 표시됩니다.</div>
-        <div id="review-table-wrap" style="display:none">
-          <table id="review-table">
-            <thead>
-              <tr>
-                <th>#</th><th>id</th><th>현재 level</th><th>추천 level</th>
-                <th>유형</th><th>tags</th><th>내용(preview)</th>
-                <th>정답(preview)</th><th>경고</th><th>수정</th><th>제거</th>
-              </tr>
-            </thead>
-            <tbody id="review-table-body"></tbody>
-          </table>
-          <div id="removed-table-section" style="display:none">
-            <div class="section-label-removed">제거된 문항</div>
-            <table id="removed-table">
-              <thead>
-                <tr>
-                  <th>#</th><th>id</th><th>level</th><th>유형</th><th>tags</th><th>내용(preview)</th><th>정답(preview)</th><th>경고</th>
-                </tr>
-              </thead>
-              <tbody id="removed-table-body"></tbody>
-            </table>
-          </div>
-        </div>
+        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 현재 출력은 저장 전 편집본 기준입니다</div>
+        <iframe id="enginePreviewFrame" src="about:blank" title="실제 라이브 출력 미리보기"></iframe>
       </div>
 
     </main>
@@ -167,6 +133,7 @@
         <div class="field-group">
           <label>level</label>
           <select id="e-level">
+            <option value=""></option>
             <option value="하">하</option>
             <option value="중">중</option>
             <option value="상">상</option>
@@ -176,6 +143,7 @@
         <div class="field-group">
           <label>questionType</label>
           <select id="e-qtype">
+            <option value=""></option>
             <option value="객관식">객관식</option>
             <option value="단답형">단답형</option>
             <option value="서술형">서술형</option>
@@ -243,6 +211,40 @@
         </div>
 
       </div>
+
+      <details id="right-review-tools">
+        <summary>편집 검수 / 검수표</summary>
+        <div id="pane-editor" class="right-tool-pane">
+          <div id="editor-placeholder">파일을 열면 문항 목록이 표시됩니다.</div>
+          <div id="question-cards"></div>
+        </div>
+        <div id="pane-table" class="right-tool-pane">
+          <div id="table-placeholder">파일을 열면 검수표가 표시됩니다.</div>
+          <div id="review-table-wrap" style="display:none">
+            <table id="review-table">
+              <thead>
+                <tr>
+                  <th>#</th><th>id</th><th>현재 level</th><th>추천 level</th>
+                  <th>유형</th><th>tags</th><th>내용(preview)</th>
+                  <th>정답(preview)</th><th>경고</th><th>수정</th><th>제거</th>
+                </tr>
+              </thead>
+              <tbody id="review-table-body"></tbody>
+            </table>
+            <div id="removed-table-section" style="display:none">
+              <div class="section-label-removed">제거된 문항</div>
+              <table id="removed-table">
+                <thead>
+                  <tr>
+                    <th>#</th><th>id</th><th>level</th><th>유형</th><th>tags</th><th>내용(preview)</th><th>정답(preview)</th><th>경고</th><th>복구</th>
+                  </tr>
+                </thead>
+                <tbody id="removed-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
     </aside>
 
   </div><!-- /#main-layout -->
