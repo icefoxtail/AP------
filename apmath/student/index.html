@@ -1120,9 +1120,11 @@
     }
     function getMaterialWrongBounds() {
       const material = materialWrongDraft?.material || {};
-      const start = Number(material.number_start || 1);
-      const end = Number(material.number_end || start);
-      return { start, end: Math.max(start, end) };
+      const rawStart = Number(material.number_start);
+      const start = Number.isFinite(rawStart) && rawStart > 0 ? Math.trunc(rawStart) : 1;
+      const rawEnd = Number(material.number_end);
+      const end = Number.isFinite(rawEnd) && rawEnd >= start ? Math.trunc(rawEnd) : start + 199;
+      return { start, end };
     }
     function materialWrongRanges() {
       const { start, end } = getMaterialWrongBounds();
@@ -1226,6 +1228,7 @@
           assignment_id: materialWrongDraft.assignment_id,
           student_id: session.student_id,
           token: session.student_token,
+          student_token: session.student_token,
           wrong_numbers: wrongNumbers,
           is_no_wrong: materialWrongDraft.is_no_wrong ? 1 : 0
         });
