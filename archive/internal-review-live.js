@@ -25,6 +25,8 @@ const state = {
   activeFilter: 'all',
   gradeFilter: '',            // '' | '중1' | '중2' | '중3' | '고1' | '고2'
   examTypeFilter: '',         // '' | '중간' | '기말'
+  semesterFilter: '',
+  subjectFilter: '',
   searchQuery: '',
   engineMode: 'exam',         // exam / sol / ans
   qpp: 4,
@@ -34,6 +36,8 @@ const state = {
   fileSearch: '',
   liveOutputTimer: null,
   persistTimer: null,
+  liveDataUrl: '',
+  liveFrameSeq: 0,
 };
 
 /* ================================================================
@@ -89,6 +93,8 @@ const FILTERS = [
 const GRADE_FILTERS = ['중1','중2','중3','고1','고2'];
 // 시험 유형 고정 필터
 const EXAM_TYPE_FILTERS = ['중간','기말'];
+const SEMESTER_FILTERS = ['1학기','2학기'];
+const SUBJECT_FILTERS = ['대수','수1','수2','미적분1','미적분2','확률과통계','기하','공통수학1','공통수학2'];
 
 /* ================================================================
    유틸
@@ -178,6 +184,28 @@ function getExamTypeFromPath(path) {
   const p = path.toLowerCase();
   if (/중간|1mid|2mid|_mid_/.test(p))      return '중간';
   if (/기말|1final|2final|_final_/.test(p)) return '기말';
+  return null;
+}
+
+function getSemesterFromPath(path) {
+  const p = path.toLowerCase();
+  if (/1학기|\/1(?:mid|final)\//.test(p)) return '1학기';
+  if (/2학기|\/2(?:mid|final)\//.test(p)) return '2학기';
+  return null;
+}
+
+function getSubjectFromPath(path) {
+  const name = String(path || '').split('/').pop() || String(path || '');
+  const compact = name.replace(/\s+/g, '').replace(/\.c?js$/i, '').toLowerCase();
+  if (/확률과통계|확통/.test(compact)) return '확률과통계';
+  if (/공통수학1|공수1/.test(compact)) return '공통수학1';
+  if (/공통수학2|공수2/.test(compact)) return '공통수학2';
+  if (/미적분\s*1|미적분i|미적분Ⅰ|미적1/.test(name) || /미적분1|미적1/.test(compact)) return '미적분1';
+  if (/미적분\s*2|미적분ii|미적분Ⅱ|미적2/.test(name) || /미적분2|미적2/.test(compact)) return '미적분2';
+  if (/수학\s*i(?!i)|수학Ⅰ|수1/.test(name) || /수학i(?!i)|수1/.test(compact)) return '수1';
+  if (/수학\s*ii|수학Ⅱ|수2/.test(name) || /수학ii|수2/.test(compact)) return '수2';
+  if (/대수/.test(compact)) return '대수';
+  if (/기하/.test(compact)) return '기하';
   return null;
 }
 
@@ -427,8 +455,18 @@ function selectQuestion(id) {
   openEditPanel(q);
   // 5. 카드/행 강조 갱신
   highlightSelected();
-  scheduleLiveOutputRender(true, 0);
+  refreshLiveEngineSelection();
   schedulePersistSessionState();
+}
+
+function refreshLiveEngineSelection() {
+  const iframe = document.getElementById('enginePreviewFrame');
+  if (!iframe || !iframe.contentDocument) return;
+  try {
+    iframe.contentDocument.querySelectorAll('[data-live-qid]').forEach(function(el) {
+      el.classList.toggle('ir-live-selected', el.dataset.liveQid === String(state.selectedId));
+    });
+  } catch(e) {}
 }
 
 function highlightSelected() {
@@ -512,6 +550,7 @@ async function updateImagePreview(imgPath) {
 ================================================================ */
 function loadBank(source, fileName) {
   clearError();
+  revokeLiveDataUrl();
   let parsed;
   try {
     parsed = parseSource(source, fileName);
@@ -545,6 +584,7 @@ function loadBank(source, fileName) {
    archive 폴더 열기
 ================================================================ */
 async function openArchiveDir() {
+  revokeLiveDataUrl();
   if (!window.showDirectoryPicker) {
     showError('showDirectoryPicker 미지원. Chrome/Edge 최신 버전에서 localhost로 접속하세요.');
     return;
@@ -612,6 +652,7 @@ async function collectJsFiles(dirHandle, prefix, result) {
    단일 JS 파일 열기
 ================================================================ */
 async function openSingleFile() {
+  revokeLiveDataUrl();
   if (!confirmDiscardUnsaved('저장하지 않은 수정이 있습니다. 다른 JS 파일을 열까요?')) return;
   if (window.showOpenFilePicker) {
     try {
@@ -698,6 +739,8 @@ function renderFileList() {
     if (state.gradeFilter && getGradeFromPath(e.path) !== state.gradeFilter) return false;
     // 시험유형 필터
     if (state.examTypeFilter && getExamTypeFromPath(e.path) !== state.examTypeFilter) return false;
+    if (state.semesterFilter && getSemesterFromPath(e.path) !== state.semesterFilter) return false;
+    if (state.subjectFilter && getSubjectFromPath(e.path) !== state.subjectFilter) return false;
     return true;
   });
 
@@ -782,6 +825,44 @@ function renderGradeExamBtns() {
         renderCenterPane();
       });
       examWrap.appendChild(btn);
+    });
+  }
+
+  var semesterWrap = document.getElementById('semester-filter-btns');
+  if (semesterWrap) {
+    semesterWrap.innerHTML = '';
+    SEMESTER_FILTERS.forEach(function(s) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'filter-btn semester' + (state.semesterFilter === s ? ' active' : '');
+      btn.textContent = s;
+      btn.addEventListener('click', function() {
+        commitEditorDraft();
+        state.semesterFilter = (state.semesterFilter === s) ? '' : s;
+        renderGradeExamBtns();
+        renderFileList();
+        renderCenterPane();
+      });
+      semesterWrap.appendChild(btn);
+    });
+  }
+
+  var subjectWrap = document.getElementById('subject-filter-btns');
+  if (subjectWrap) {
+    subjectWrap.innerHTML = '';
+    SUBJECT_FILTERS.forEach(function(s) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'filter-btn subject' + (state.subjectFilter === s ? ' active' : '');
+      btn.textContent = s;
+      btn.addEventListener('click', function() {
+        commitEditorDraft();
+        state.subjectFilter = (state.subjectFilter === s) ? '' : s;
+        renderGradeExamBtns();
+        renderFileList();
+        renderCenterPane();
+      });
+      subjectWrap.appendChild(btn);
     });
   }
 }
@@ -940,667 +1021,45 @@ function renderMathText(text) {
 /* ================================================================
    렌더링 — 라이브 출력 탭
 ================================================================ */
-function getLiveModeLabel() {
-  if (state.engineMode === 'sol') return '해설지';
-  if (state.engineMode === 'ans') return '정답표';
-  return '시험지';
+function revokeLiveDataUrl() {
+  if (!state.liveDataUrl) return;
+  try { URL.revokeObjectURL(state.liveDataUrl); } catch(e) {}
+  state.liveDataUrl = '';
 }
 
-function makeLiveQuestion(q, displayNum) {
-  const article = document.createElement('article');
-  article.className = 'ir-live-question';
-  if (String(q.id) === String(state.selectedId)) article.classList.add('selected');
-  article.dataset.qid = String(q.id);
-  article.tabIndex = 0;
-
-  const head = document.createElement('div');
-  head.className = 'ir-live-qhead';
-  head.innerHTML =
-    '<span class="ir-live-qnum">' + displayNum + '.</span>' +
-    '<span class="ir-live-qid">id:' + q.id + '</span>';
-  article.appendChild(head);
-
-  const content = document.createElement('div');
-  content.className = 'ir-live-content';
-  content.innerHTML = renderMathText(q.content || '');
-  article.appendChild(content);
-
-  const imgPath = normalizeImagePath(q.image || '');
-  if (imgPath) {
-    const wrap = document.createElement('div');
-    const size = ['small','half','medium','large','full'].includes(q.imageSize) ? q.imageSize : '';
-    wrap.className = 'ir-live-image-wrap' + (size ? ' image-' + size : '');
-    const img = document.createElement('img');
-    img.alt = imgPath;
-    img.dataset.imgPath = imgPath;
-    img.src = imgPath;
-    wrap.appendChild(img);
-    article.appendChild(wrap);
-  }
-
-  if (Array.isArray(q.choices) && q.choices.length > 0 && state.engineMode !== 'sol') {
-    const choices = document.createElement('div');
-    choices.className = 'ir-live-choices';
-    choices.innerHTML = q.choices.map(function(choice, i) {
-      return '<span class="ir-live-choice"><span class="circle-num">' +
-        (CIRCLE_NUMS[i] || (i + 1) + '.') + '</span> ' +
-        renderMathText(String(choice)) + '</span>';
-    }).join('');
-    article.appendChild(choices);
-  }
-
-  if (state.engineMode === 'sol') {
-    const answer = document.createElement('div');
-    answer.className = 'ir-live-answer';
-    answer.innerHTML = '[정답] ' + renderMathText(String(q.answer || ''));
-    article.appendChild(answer);
-
-    const solution = document.createElement('div');
-    solution.className = 'ir-live-solution';
-    solution.innerHTML = renderMathText(q.solution || '해설이 없습니다.');
-    article.appendChild(solution);
-  }
-
-  return article;
-}
-
-function makeLiveAnswerTable(bank) {
-  const table = document.createElement('table');
-  table.className = 'ir-live-answer-table';
-  const tbody = document.createElement('tbody');
-  bank.forEach(function(q, i) {
-    const tr = document.createElement('tr');
-    tr.dataset.qid = String(q.id);
-    if (String(q.id) === String(state.selectedId)) tr.classList.add('selected');
-    tr.innerHTML =
-      '<td class="ir-live-answer-n">' + (i + 1) + '번</td>' +
-      '<td class="ir-live-answer-v">' + renderMathText(String(q.answer || '')) + '</td>';
-    tbody.appendChild(tr);
-  });
-  table.appendChild(tbody);
-  return table;
-}
-
-function renderLiveOutputPane(keepScroll) {
-  const container = document.getElementById('live-output-preview');
-  if (!container) return;
-  const scrollTop = keepScroll ? container.scrollTop : 0;
-  container.innerHTML = '';
-
-  if (!state.currentBank || state.currentBank.length === 0) {
-    container.innerHTML = '<div class="ir-live-empty">파일을 열면 라이브 출력이 표시됩니다.</div>';
-    return;
-  }
-
-  const page = document.createElement('div');
-  page.className = 'ir-live-page';
-
-  const title = document.createElement('div');
-  title.className = 'ir-live-title';
-  title.textContent = state.examTitle || state.currentFileName || 'JS아카이브';
-  page.appendChild(title);
-
-  const meta = document.createElement('div');
-  meta.className = 'ir-live-meta';
-  meta.innerHTML =
-    '<span>' + getLiveModeLabel() + ' · 라이브 검수본</span>' +
-    '<span>' + state.currentBank.length + '문항</span>';
-  page.appendChild(meta);
-
-  if (state.engineMode === 'ans') {
-    page.appendChild(makeLiveAnswerTable(state.currentBank));
-  } else {
-    const grid = document.createElement('div');
-    grid.className = 'ir-live-grid' + (state.engineMode === 'sol' ? ' ir-live-sol' : '');
-    state.currentBank.forEach(function(q, i) {
-      grid.appendChild(makeLiveQuestion(q, i + 1));
+function bindLiveEngineQuestionClicks(iframe) {
+  try {
+    const doc = iframe.contentDocument;
+    if (!doc) return;
+    const nodes = doc.querySelectorAll('.q-box,.ans-cell');
+    if (nodes.length === 0) {
+      setTimeout(function() { bindLiveEngineQuestionClicks(iframe); }, 120);
+      return;
+    }
+    if (!doc.getElementById('ir-live-click-style')) {
+      const style = doc.createElement('style');
+      style.id = 'ir-live-click-style';
+      style.textContent = '.q-box,.ans-cell{cursor:pointer}.q-box:hover,.ans-cell:hover{outline:2px solid rgba(37,99,235,.45);outline-offset:2px}.q-box.ir-live-selected,.ans-cell.ir-live-selected{outline:3px solid rgba(37,99,235,.72);outline-offset:2px;background:rgba(219,234,254,.35)}';
+      doc.head.appendChild(style);
+    }
+    nodes.forEach(function(node) {
+      const numEl = node.querySelector('.q-num,.ans-n');
+      const displayNo = numEl ? parseInt(String(numEl.textContent || '').replace(/[^0-9]/g, ''), 10) : NaN;
+      const q = Number.isFinite(displayNo) ? state.currentBank[displayNo - 1] : null;
+      if (!q) return;
+      node.dataset.liveQid = String(q.id);
+      node.classList.toggle('ir-live-selected', String(q.id) === String(state.selectedId));
     });
-    page.appendChild(grid);
-  }
-
-  container.appendChild(page);
-  container.scrollTop = Math.min(scrollTop, container.scrollHeight);
-
-  container.querySelectorAll('img[data-img-path]').forEach(async function(img) {
-    const blobUrl = await getImageBlobUrl(img.dataset.imgPath);
-    if (blobUrl) {
-      img.src = blobUrl;
-    } else if (state.imageMap.size > 0) {
-      const miss = document.createElement('div');
-      miss.className = 'ir-live-image-missing';
-      miss.textContent = '이미지 없음: ' + normalizeImagePath(img.dataset.imgPath);
-      img.parentNode && img.parentNode.insertBefore(miss, img.nextSibling);
-      img.remove();
-    }
-  });
-}
-
-function getEngineBaseHref() {
-  return new URL('.', window.location.href).href;
-}
-
-function getLiveEnginePayload() {
-  return {
-    title: state.examTitle || state.currentFileName || 'JS아카이브',
-    data: deepClone(state.currentBank || []),
-    mode: state.engineMode || 'exam',
-    qpp: state.qpp || 4,
-    selectedId: state.selectedId,
-  };
-}
-
-function buildLiveEngineInitScript(payload) {
-  return '<script id="internal-review-live-data">\\n' +
-    'window.__INTERNAL_REVIEW_LIVE__ = ' + JSON.stringify(payload).replace(/<\/script/gi, '<\\/script') + ';\\n' +
-    '<\\/script>\\n';
-}
-
-function buildStandaloneLiveEngineSrcdoc(payload) {
-  const safePayload = JSON.stringify(payload).replace(/<\/script/gi, '<\\/script');
-  return `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <base href="${getEngineBaseHref()}">
-  <title>JS아카이브 Live Output</title>
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
-      options: { enableMenu: false },
-      startup: { typeset: false }
-    };
-  <\/script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"><\/script>
-  <style>
-    @page { size:A4; margin:0; }
-    body { margin:0; background:#f1f5f9; font-family:'Nanum Myeongjo','Times New Roman',serif; font-size:9.5pt; padding-top:54px; }
-    #mode-ctrl { position:fixed; top:0; left:0; right:0; height:54px; background:#0f172a; color:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 24px; box-sizing:border-box; z-index:10; }
-    #ctrl-title { font-weight:800; font-size:14px; max-width:65%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    #qpp-display { color:rgba(255,255,255,.72); font-size:11px; font-weight:800; }
-    #print-area { display:flex; flex-direction:column; align-items:center; gap:20px; padding:20px 0; }
-    .page { width:210mm; height:297mm; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.12); padding:14mm 15mm 20mm; box-sizing:border-box; display:flex; flex-direction:column; position:relative; }
-    .page-exam-frame { position:absolute; top:11.5mm; right:11.5mm; bottom:11.5mm; left:11.5mm; border:.8pt solid #000; pointer-events:none; box-sizing:border-box; }
-    .page-header { display:flex; flex-direction:column; justify-content:center; gap:3px; border:.8pt solid #000; padding:5px 8px 6px; margin-bottom:8px; font-weight:700; font-size:9.4pt; line-height:1.2; background:#fff; }
-    .page-header--exam { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; column-gap:18px; padding:12px 14px 10px; }
-    .page-header-title { font-size:14.2pt; line-height:1.15; font-weight:800; text-align:left; word-break:break-all; }
-    .page-header-meta-right { display:flex; align-items:center; gap:12px; white-space:nowrap; }
-    .header-fill-line { display:inline-block; min-width:78px; border-bottom:.8pt solid #000; height:.95em; vertical-align:bottom; margin-left:4px; }
-    .header-fill-line--score { min-width:34px; margin:0 3px 0 4px; }
-    .page-body { flex:1; display:flex; flex-direction:column; min-height:0; }
-    .grid-container { display:grid; grid-template-columns:1fr 1fr; position:relative; gap:0; flex:1; min-height:0; }
-    .grid-container::after { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:#000; }
-    .grid-col { display:flex; flex-direction:column; padding:0 12px; overflow:hidden; min-height:0; }
-    .q-box { flex:1; padding:10px 0; display:flex; flex-direction:column; min-height:0; overflow:hidden; cursor:pointer; }
-    .q-box:hover, .ans-cell:hover { outline:2px solid rgba(37,99,235,.45); outline-offset:2px; }
-    .q-box.live-selected, .ans-cell.live-selected { outline:3px solid rgba(37,99,235,.75); outline-offset:2px; background:rgba(219,234,254,.35); }
-    .q-num { font-weight:700; font-size:11pt; margin-bottom:6px; }
-    .q-content { line-height:1.62; word-break:keep-all; overflow-wrap:anywhere; }
-    .q-content img, .q-image-wrap img { display:block; max-width:100%; height:auto; margin:8px auto; break-inside:avoid; }
-    .q-image-wrap.image-small img { max-width:50%; max-height:95px; }
-    .q-image-wrap.image-half img { max-width:65%; max-height:125px; }
-    .q-image-wrap.image-medium img { max-width:80%; max-height:150px; }
-    .q-image-wrap.image-large img { max-width:94%; max-height:190px; }
-    .q-image-wrap.image-full img { max-width:100%; max-height:240px; }
-    .choices { margin-top:10px; font-size:9pt; }
-    .choice-item { display:flex; align-items:flex-start; line-height:1.5; }
-    .choice-no { width:20px; flex-shrink:0; font-weight:700; }
-    .choice-text { flex:1; word-break:keep-all; overflow-wrap:anywhere; }
-    .choices-compact { display:flex; flex-wrap:wrap; gap:4px 15px; }
-    .choices-compact .choice-item { min-width:15%; }
-    .choices-block { display:flex; flex-direction:column; gap:5px; }
-    .answer-box { flex:1; margin-top:10px; }
-    .sol-box { flex:none; border-bottom:.5px solid #eee; padding-bottom:2.2em; margin-bottom:2.2em; }
-    .solution-card { background:#fdfdfd; padding:8px; border:1px solid #eee; border-radius:3px; }
-    .ans-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0 20px; width:100%; }
-    .ans-cell { border-bottom:1px solid #eee; display:flex; height:40px; align-items:center; padding:0 10px; cursor:pointer; }
-    .ans-n { width:40px; font-weight:700; color:#1d4ed8; font-size:10pt; }
-    .ans-v { flex:1; font-weight:700; font-size:10.5pt; }
-    table.question-table { border-collapse:collapse; width:100%; max-width:280px; table-layout:fixed; font-size:8.6pt; line-height:1.35; margin:8px 0; text-align:left; }
-    table.question-table th, table.question-table td { border:1px solid #000; padding:3px 5px; text-align:center; vertical-align:middle; word-break:break-word; }
-    .question-note-box,.note-box,.box { display:inline-block; max-width:100%; box-sizing:border-box; margin:5px 0 6px; padding:5px 8px; border:1px solid #222; background:#fff; line-height:1.45; text-align:left; }
-    .page-num { position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555; }
-  </style>
-</head>
-<body>
-  <div id="mode-ctrl"><span id="ctrl-title"></span><span id="qpp-display"></span></div>
-  <div id="print-area"></div>
-  <script>
-    const live = ${safePayload};
-    const CIRCLED = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩'];
-    function esc(s){ return String(s ?? '').replace(/[&<>]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch])); }
-    function html(s){ const value = String(s ?? ''); return /<[a-zA-Z\\/]/.test(value) ? value : esc(value).replace(/\\r\\n|\\r|\\n/g,'<br>'); }
-    function stripChoicePrefix(text){ return String(text || '').replace(/^\\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\\(?\\d+\\)|\\d+\\.(?!\\d)|\\d+\\))\\s*/, '').trim(); }
-    function detectChoiceRenderMode(choices){
-      if (!choices || !choices.length) return 'compact';
-      const texts = choices.map(c => stripChoicePrefix(String(c ?? '')).trim());
-      const stripped = texts.map(t => t.replace(/\\$\\$[\\s\\S]*?\\$\\$/g,'~').replace(/\\$[^$\\n]*?\\$/g,'~').trim());
-      const avg = stripped.reduce((s,t)=>s+t.length,0) / Math.max(stripped.length,1);
-      return (stripped.some(t=>t.length>28) || avg>22 || texts.some(t=>/\\n|<br/i.test(t))) ? 'block' : 'compact';
-    }
-    function choicesHTML(q){
-      const choices = Array.isArray(q.choices) ? q.choices : [];
-      if (!choices.length) return '<div class="answer-box"></div>';
-      const mode = detectChoiceRenderMode(choices);
-      return '<div class="choices choices-' + mode + '">' + choices.map((c,i)=>'<div class="choice-item"><span class="choice-no">' + (CIRCLED[i] || '') + '</span><span class="choice-text">' + html(stripChoicePrefix(String(c ?? ''))) + '</span></div>').join('') + '</div>';
-    }
-    function imageHTML(q){
-      if (!q.image) return '';
-      const size = ['small','half','medium','large','full'].includes(q.imageSize) ? ' image-' + q.imageSize : '';
-      return '<div class="q-image-wrap' + size + '"><img src="' + esc(q.image) + '"></div>';
-    }
-    function makePage(pageNo, type){
-      const page = document.createElement('div'); page.className='page';
-      if(type==='exam') page.insertAdjacentHTML('beforeend','<div class="page-exam-frame"></div>');
-      const header = document.createElement('div'); header.className='page-header' + (type==='exam' ? ' page-header--exam' : '');
-      if(type==='exam') header.innerHTML='<div class="page-header-title">' + esc(live.title || '시험지') + '</div><div class="page-header-meta-right"><span>이름<span class="header-fill-line"></span></span><span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span></div>';
-      else header.innerHTML='<div style="display:flex;justify-content:space-between;gap:10px;"><div style="flex:1;">' + esc(live.title || '시험지') + '</div><div>' + (type==='sol' ? '[ 정답 및 해설 ]' : '[ 정답표 ]') + '</div></div>';
-      page.appendChild(header);
-      const body = document.createElement('div'); body.className='page-body'; page.appendChild(body);
-      page.insertAdjacentHTML('beforeend','<div class="page-num">- ' + pageNo + ' -</div>');
-      document.getElementById('print-area').appendChild(page);
-      page.body = body;
-      return page;
-    }
-    function renderExam(){
-      const qpp = parseInt(live.qpp,10) || 4;
-      const data = live.data || [];
-      for(let start=0,pageNo=1; start<data.length; start+=qpp,pageNo++){
-        const page = makePage(pageNo,'exam');
-        const grid = document.createElement('div'); grid.className='grid-container';
-        const left = document.createElement('div'); left.className='grid-col';
-        const right = document.createElement('div'); right.className='grid-col';
-        grid.appendChild(left); grid.appendChild(right); page.body.appendChild(grid);
-        const chunk = data.slice(start,start+qpp);
-        const split = Math.ceil(chunk.length/2);
-        chunk.forEach((q,idx)=>{
-          const global = start + idx;
-          const box = document.createElement('div'); box.className='q-box'; box.dataset.liveQid=String(q.id);
-          if(String(q.id)===String(live.selectedId)) box.classList.add('live-selected');
-          box.innerHTML='<div class="q-num">' + (global+1) + '.</div><div class="q-content">' + html(q.content || q.question || '') + '</div>' + imageHTML(q) + choicesHTML(q);
-          (idx < split ? left : right).appendChild(box);
-        });
-      }
-    }
-    function renderSol(){
-      const data = live.data || [];
-      for(let start=0,pageNo=1; start<data.length; start+=8,pageNo++){
-        const page = makePage(pageNo,'sol');
-        const grid = document.createElement('div'); grid.className='grid-container';
-        const left = document.createElement('div'); left.className='grid-col';
-        const right = document.createElement('div'); right.className='grid-col';
-        grid.appendChild(left); grid.appendChild(right); page.body.appendChild(grid);
-        data.slice(start,start+8).forEach((q,idx)=>{
-          const global = start + idx;
-          const box = document.createElement('div'); box.className='q-box sol-box'; box.dataset.liveQid=String(q.id);
-          if(String(q.id)===String(live.selectedId)) box.classList.add('live-selected');
-          box.innerHTML='<div class="q-num">' + (global+1) + '.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">' + html(q.content || q.question || '') + '</div><div class="solution-card"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ' + html(q.answer ?? '–') + '</div><div style="font-size:8.5pt;line-height:1.55;">' + html(q.solution || q.explanation || q.sol || '해설이 없습니다.') + '</div></div>';
-          (idx < 4 ? left : right).appendChild(box);
-        });
-      }
-    }
-    function renderAns(){
-      const data = live.data || [];
-      for(let start=0,pageNo=1; start<data.length; start+=50,pageNo++){
-        const page = makePage(pageNo,'ans');
-        const grid = document.createElement('div'); grid.className='ans-grid';
-        data.slice(start,start+50).forEach((q,idx)=>{
-          const cell = document.createElement('div'); cell.className='ans-cell'; cell.dataset.liveQid=String(q.id);
-          if(String(q.id)===String(live.selectedId)) cell.classList.add('live-selected');
-          cell.innerHTML='<div class="ans-n">' + (start+idx+1) + '.</div><div class="ans-v">' + html(q.answer ?? '–') + '</div>';
-          grid.appendChild(cell);
-        });
-        page.body.appendChild(grid);
-      }
-    }
-    function render(){
-      document.getElementById('ctrl-title').textContent = live.title || 'JS아카이브';
-      document.getElementById('qpp-display').textContent = 'QPP: ' + (live.qpp || 4);
-      if(live.mode === 'ans') renderAns();
-      else if(live.mode === 'sol') renderSol();
-      else renderExam();
-      const tryMath = () => window.MathJax && MathJax.typesetPromise && MathJax.typesetPromise([document.body]).catch(()=>{});
-      setTimeout(tryMath, 120);
-    }
-    render();
-  <\/script>
-</body>
-</html>`;
-}
-
-function buildEngineParityLiveSrcdoc(payload) {
-  const safePayload = JSON.stringify(payload).replace(/<\/script/gi, '<\\/script');
-  return `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <base href="${getEngineBaseHref()}">
-  <title>JS Archive Live Output</title>
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
-      options: { enableMenu: false },
-      startup: { typeset: false }
-    };
-  <\/script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"><\/script>
-  <style>
-    @page { size:A4; margin:0; }
-    body { margin:0; background:#eef2f7; font-family:'Nanum Myeongjo','Times New Roman',serif; font-size:9.5pt; padding-top:54px; }
-    #mode-ctrl { position:fixed; top:0; left:0; right:0; height:54px; background:#0f172a; color:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 24px; box-sizing:border-box; z-index:10; }
-    #ctrl-title { font-weight:800; font-size:14px; max-width:68%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    #qpp-display { color:rgba(255,255,255,.72); font-size:11px; font-weight:800; }
-    #print-area { display:flex; flex-direction:column; align-items:center; gap:20px; padding:20px 0; }
-    .page { width:210mm; height:297mm; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.12); padding:14mm 15mm 20mm; box-sizing:border-box; display:flex; flex-direction:column; position:relative; overflow:hidden; }
-    .page-exam-frame { position:absolute; top:11.5mm; right:11.5mm; bottom:11.5mm; left:11.5mm; border:.8pt solid #000; pointer-events:none; box-sizing:border-box; }
-    .page-header { display:flex; flex-direction:column; justify-content:center; gap:3px; border:.8pt solid #000; padding:5px 8px 6px; margin-bottom:8px; font-weight:700; font-size:9.4pt; line-height:1.2; background:#fff; }
-    .page-header--exam { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; column-gap:18px; padding:12px 14px 10px; }
-    .page-header-title { font-size:14.2pt; line-height:1.15; font-weight:800; text-align:left; word-break:break-all; }
-    .page-header-meta-right { display:flex; align-items:center; gap:12px; white-space:nowrap; }
-    .header-fill-line { display:inline-block; min-width:78px; border-bottom:.8pt solid #000; height:.95em; vertical-align:bottom; margin-left:4px; }
-    .header-fill-line--score { min-width:34px; margin:0 3px 0 4px; }
-    .page-body { flex:1; display:flex; flex-direction:column; min-height:0; }
-    .grid-container { display:grid; grid-template-columns:1fr 1fr; position:relative; gap:0; flex:1; min-height:0; }
-    .grid-container::after { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:#000; }
-    .grid-col { display:flex; flex-direction:column; padding:0 12px; overflow:hidden; min-height:0; }
-    .q-box { flex:1; padding:10px 0; display:flex; flex-direction:column; min-height:0; overflow:hidden; cursor:pointer; }
-    .q-box:hover, .ans-cell:hover { outline:2px solid rgba(37,99,235,.45); outline-offset:2px; }
-    .q-box.live-selected, .ans-cell.live-selected { outline:3px solid rgba(37,99,235,.75); outline-offset:2px; background:rgba(219,234,254,.36); }
-    .q-num { font-weight:700; font-size:11pt; margin-bottom:6px; }
-    .q-content { line-height:1.62; word-break:keep-all; overflow-wrap:anywhere; }
-    .q-content img, .q-image-wrap img { display:block; max-width:100%; height:auto; margin:8px auto; break-inside:avoid; }
-    .q-image-wrap.image-small img { max-width:50%; max-height:95px; }
-    .q-image-wrap.image-half img { max-width:65%; max-height:125px; }
-    .q-image-wrap.image-medium img { max-width:80%; max-height:150px; }
-    .q-image-wrap.image-large img { max-width:94%; max-height:190px; }
-    .q-image-wrap.image-full img { max-width:100%; max-height:240px; }
-    .fit-tight { font-size:8.7pt; line-height:1.48; }
-    .fit-tighter { font-size:8pt; line-height:1.34; }
-    .fit-micro { font-size:7.2pt; line-height:1.2; }
-    .img-fit-tight { max-height:80% !important; }
-    .img-fit-tighter { max-height:65% !important; }
-    .img-fit-micro { max-height:50% !important; }
-    .choices { margin-top:10px; font-size:9pt; }
-    .choice-item { display:flex; align-items:flex-start; line-height:1.5; }
-    .choice-no { width:20px; flex-shrink:0; font-weight:700; }
-    .choice-text { flex:1; word-break:keep-all; overflow-wrap:anywhere; }
-    .choices-compact { display:flex; flex-wrap:wrap; gap:4px 15px; }
-    .choices-compact .choice-item { min-width:15%; }
-    .choices-block, .choices-boxed { display:flex; flex-direction:column; gap:5px; }
-    .answer-box { flex:1; margin-top:10px; }
-    .sol-box { flex:none; border-bottom:.5px solid #eee; padding-bottom:2.2em; margin-bottom:2.2em; }
-    .solution-card { background:#fdfdfd; padding:8px; border:1px solid #eee; border-radius:3px; }
-    .ans-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0 20px; width:100%; }
-    .ans-cell { border-bottom:1px solid #eee; display:flex; height:40px; align-items:center; padding:0 10px; cursor:pointer; }
-    .ans-n { width:40px; font-weight:700; color:#1d4ed8; font-size:10pt; }
-    .ans-v { flex:1; font-weight:700; font-size:10.5pt; }
-    table.question-table { border-collapse:collapse; width:100%; max-width:280px; table-layout:fixed; font-size:8.6pt; line-height:1.35; margin:8px 0; text-align:left; }
-    table.question-table th, table.question-table td { border:1px solid #000; padding:3px 5px; text-align:center; vertical-align:middle; word-break:break-word; }
-    .question-note-box,.note-box,.box { display:inline-block; max-width:100%; box-sizing:border-box; margin:5px 0 6px; padding:5px 8px; border:1px solid #222; background:#fff; line-height:1.45; text-align:left; }
-    .page-num { position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555; }
-  </style>
-</head>
-<body>
-  <div id="mode-ctrl"><span id="ctrl-title"></span><span id="qpp-display"></span></div>
-  <div id="print-area"></div>
-  <script>
-    const live = ${safePayload};
-    const CIRCLED = ['&#9312;','&#9313;','&#9314;','&#9315;','&#9316;','&#9317;','&#9318;','&#9319;','&#9320;','&#9321;'];
-    function esc(s){ return String(s ?? '').replace(/[&<>]/g, function(ch){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]; }); }
-    function raf(){ return new Promise(function(resolve){ requestAnimationFrame(resolve); }); }
-    function wrapLatex(text) {
-      if (text == null) return '';
-      let s = String(text);
-      s = s.replace(/\\\\\\([\\s\\S]+?\\\\\\)/g, function(m) { return '$' + m.slice(2, -2) + '$'; });
-      s = s.replace(/\\\\\\[[\\s\\S]+?\\\\\\]/g, function(m) { return '$$' + m.slice(2, -2) + '$$'; });
-      const htmlTags = [];
-      s = s.replace(/<svg[\\s\\S]*?<\\/svg>|<img[^>]*>|<br\\s*\\/?>|<\\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, function(m) {
-        const token = '__HTMLTAG_' + htmlTags.length + '__';
-        htmlTags.push(m);
-        return token;
-      });
-      s = s.split(/(\\$\\$[\\s\\S]*?\\$\\$|\\$[^$\\n]*?\\$)/g).map(function(seg, idx) {
-        if (idx % 2 === 1) return seg;
-        return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      }).join('');
-      s = s.split(/(\\$\\$[\\s\\S]*?\\$\\$|\\$[^$\\n]*?\\$|__HTMLTAG_\\d+__)/g).map(function(seg, idx) {
-        if (idx % 2 === 1) return seg;
-        const trimmed = seg.trim();
-        if (!trimmed) return seg;
-        const hasKorean = /[\\u3131-\\u318e\\uac00-\\ud7a3]/.test(seg);
-        const hasLatex = /\\\\[a-zA-Z]/.test(seg);
-        if (!hasKorean && /\\\\begin\\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\\}/.test(seg)) return '$$' + seg + '$$';
-        if (!hasKorean && hasLatex && /^[0-9a-zA-Z\\s\\+\\-\\*\\/\\=\\^\\{\\}\\(\\)\\[\\]_\\.,\\\\!;:]+$/.test(trimmed)) return '$' + trimmed + '$';
-        if (hasKorean && hasLatex) return seg.replace(/(\\\\[a-zA-Z]+(?:\\{[^}]*\\})*(?:\\{[^}]*\\})*(?:_\\{?[^}\\s]+\\}?)?(?:\\^\\{?[^}\\s]+\\}?)?)/g, '$$$1$$');
-        return seg;
-      }).join('');
-      s = s.split(/(\\$\\$[\\s\\S]*?\\$\\$|\\$[^$\\n]*?\\$)/g).map(function(seg, idx) {
-        if (idx % 2 === 1) return seg;
-        return seg.replace(/(\\\\\\{(?:[^{}]|\\{[^}]*\\})*\\\\\\})/g, '$$$1$$');
-      }).join('');
-      s = s.replace(/\\\\n(?![a-zA-Z])/g, '<br>').replace(/\\r\\n|\\r|\\n/g, '<br>');
-      return s.replace(/__HTMLTAG_(\\d+)__/g, function(_, i) { return htmlTags[i] || ''; });
-    }
-    function extractChoice(c) {
-      if (c === null || c === undefined) return '';
-      if (typeof c === 'object') return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
-      return String(c);
-    }
-    function stripChoicePrefix(text){ return String(text || '').replace(/^\\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\\(?\\d+\\)|\\d+\\.(?!\\d)|\\d+\\))\\s*/, '').trim(); }
-    function detectChoiceRenderMode(choices){
-      if (!choices || !choices.length) return 'compact';
-      const texts = choices.map(function(c){ return stripChoicePrefix(extractChoice(c)).trim(); });
-      const stripped = texts.map(function(t){ return t.replace(/\\$\\$[\\s\\S]*?\\$\\$/g,'~').replace(/\\$[^$\\n]*?\\$/g,'~').trim(); });
-      const avg = stripped.reduce(function(s,t){ return s + t.length; },0) / Math.max(stripped.length,1);
-      const hasMultiMarker = texts.some(function(t){ return (t.match(/[①②③④⑤⑥⑦⑧⑨⑩]|\\d+\\.|\\([0-9]+\\)/g) || []).length >= 2; });
-      if (hasMultiMarker) return 'boxed';
-      return (stripped.some(function(t){ return t.length > 28; }) || avg > 22 || texts.some(function(t){ return /\\n|<br/i.test(t); })) ? 'block' : 'compact';
-    }
-    function choicesHTML(q){
-      const choices = Array.isArray(q.choices) ? q.choices : [];
-      if (!choices.length || choices.every(function(c){ return extractChoice(c).trim() === ''; })) return '<div class="answer-box"></div>';
-      const mode = detectChoiceRenderMode(choices);
-      return '<div class="choices choices-' + mode + '">' + choices.map(function(c,i){
-        return '<div class="choice-item"><span class="choice-no">' + (CIRCLED[i] || '') + '</span><span class="choice-text">' + wrapLatex(stripChoicePrefix(extractChoice(c))) + '</span></div>';
-      }).join('') + '</div>';
-    }
-    function formatQuestionContent(html) {
-      if (!html) return '';
-      let count = 0;
-      return String(html).replace(/([\\.\\?!]|\\s|>)\\s*(\\(\\d+\\))/g, function(match, p1, p2) {
-        count++;
-        if (count === 1) return match;
-        if (p1.includes('br>') || p1.includes('\\n')) return match;
-        return p1 + '<br>' + p2;
+    refreshLiveEngineSelection();
+    if (!doc.__internalReviewLiveClickBound) {
+      doc.__internalReviewLiveClickBound = true;
+      doc.addEventListener('click', function(e) {
+        const target = e.target.closest('[data-live-qid]');
+        if (!target) return;
+        selectQuestion(target.dataset.liveQid);
       });
     }
-    function normalizeQuestionTables(html) {
-      if (!html) return '';
-      return String(html)
-        .replace(/<div class="question-table-wrap">\\s*<table/gi, '<div class="question-table-wrap"><table class="question-table"')
-        .replace(/<table(?![^>]*class=)/gi, '<table class="question-table"');
-    }
-    function protectRenderSegments(html) {
-      const tokens = [];
-      const save = function(match) {
-        const token = '__PROTECTED_SEGMENT_' + tokens.length + '__';
-        tokens.push(match);
-        return token;
-      };
-      const protectedHtml = String(html || '')
-        .replace(/<div[^>]*class=["'][^"']*(?:question-table-wrap|question-note-box|box)[^"']*["'][^>]*>[\\s\\S]*?<\\/div>/gi, save)
-        .replace(/<table[\\s\\S]*?<\\/table>/gi, save)
-        .replace(/\\$\\$[\\s\\S]*?\\$\\$/g, save)
-        .replace(/\\$[^$\\n]*?\\$/g, save);
-      return {
-        html: protectedHtml,
-        restore(value) {
-          let restored = String(value || '');
-          for (let pass = 0; pass < tokens.length + 2 && /__PROTECTED_SEGMENT_\\d+__/.test(restored); pass++) {
-            restored = restored.replace(/__PROTECTED_SEGMENT_(\\d+)__/g, function(match, i) {
-              return tokens[Number(i)] !== undefined ? tokens[Number(i)] : '';
-            });
-          }
-          return restored;
-        }
-      };
-    }
-    function normalizeViewBlocks(html) {
-      if (!html) return '';
-      const protectedState = protectRenderSegments(html);
-      let out = protectedState.html;
-      out = out.replace(/((?:<br\\s*\\/?>\\s*)*)(?:\\[보기\\]|&lt;보기&gt;|<보기>|보기\\s*:|조건\\s*:|자료\\s*:)\\s*([\\s\\S]*?)(?=(?:<br\\s*\\/?>\\s*){2,}|$)/gi, function(match, breaks, body) {
-        const plain = body.replace(/<[^>]+>/g, '').trim();
-        const markerCount = (plain.match(/[①②③④⑤⑥⑦⑧⑨⑩]|\\d+\\.|\\([0-9]+\\)/g) || []).length;
-        if (plain.length < 60 && markerCount < 2) return match;
-        return breaks + '<div class="question-note-box">' + body.trim() + '</div>';
-      });
-      return protectedState.restore(out);
-    }
-    function stripInlineImagesFromContent(content, hasImageField) {
-      if (!content) return '';
-      if (!hasImageField) return content;
-      let stripped = String(content).replace(/(?:<br\\s*\\/?>\\s*)*<img[^>]*>(?:\\s*<br\\s*\\/?>)*/gi, '<br>');
-      stripped = stripped.replace(/^(?:<br\\s*\\/?>\\s*)+/i, '').replace(/(?:<br\\s*\\/?>\\s*)+$/i, '');
-      return stripped;
-    }
-    function renderQuestionContent(q) {
-      const raw = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
-      return normalizeViewBlocks(normalizeQuestionTables(formatQuestionContent(wrapLatex(raw))));
-    }
-    function imageHTML(q){
-      if (!q.image) return '';
-      const size = ['small','half','medium','large','full'].includes(q.imageSize) ? ' image-' + q.imageSize : '';
-      return '<div class="q-image-wrap' + size + '"><img src="' + esc(q.image) + '"></div>';
-    }
-    function fitQuestionBox(box) {
-      const textClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-      const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
-      const imgs = box.querySelectorAll('.q-content img, .q-image-wrap img');
-      for (const tCls of textClasses) {
-        box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
-        if (tCls) box.classList.add(tCls);
-        if (box.scrollHeight <= box.clientHeight + 1) return;
-      }
-      for (const iCls of imgClasses) {
-        imgs.forEach(function(img){ img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'); });
-        if (iCls) imgs.forEach(function(img){ img.classList.add(iCls); });
-        if (box.scrollHeight <= box.clientHeight + 1) return;
-      }
-    }
-    async function waitForQuestionImage(img) {
-      if (!img || img.complete) return;
-      return new Promise(function(resolve) {
-        let done = false;
-        const finish = function() {
-          if (done) return;
-          done = true;
-          resolve();
-        };
-        img.addEventListener('load', finish, { once:true });
-        img.addEventListener('error', finish, { once:true });
-        setTimeout(finish, 700);
-      });
-    }
-    async function applyAutoImageSizeClasses(root) {
-      const wraps = Array.from(root.querySelectorAll('.q-image-wrap:not(.image-small):not(.image-half):not(.image-medium):not(.image-large):not(.image-full)'));
-      for (const wrap of wraps) {
-        const img = wrap.querySelector('img');
-        await waitForQuestionImage(img);
-        const width = Number(img && img.naturalWidth) || 0;
-        const height = Number(img && img.naturalHeight) || 0;
-        const ratio = height ? width / height : 1;
-        let cls = 'image-medium';
-        if (ratio >= 2.2) cls = 'image-full';
-        else if (ratio >= 1.25) cls = 'image-large';
-        else if (ratio >= 0.8) cls = 'image-small';
-        wrap.classList.add(cls);
-      }
-    }
-    function makePage(pageNo, type){
-      const page = document.createElement('div'); page.className='page';
-      if(type==='exam') page.insertAdjacentHTML('beforeend','<div class="page-exam-frame"></div>');
-      const header = document.createElement('div'); header.className='page-header' + (type==='exam' ? ' page-header--exam' : '');
-      if(type==='exam') header.innerHTML='<div class="page-header-title">' + esc(live.title || '시험지') + '</div><div class="page-header-meta-right"><span>이름<span class="header-fill-line"></span></span><span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span></div>';
-      else header.innerHTML='<div style="display:flex;justify-content:space-between;gap:10px;"><div style="flex:1;">' + esc(live.title || '시험지') + '</div><div>' + (type==='sol' ? '[ 정답 및 해설 ]' : '[ 정답표 ]') + '</div></div>';
-      page.appendChild(header);
-      const body = document.createElement('div'); body.className='page-body'; page.appendChild(body);
-      page.insertAdjacentHTML('beforeend','<div class="page-num">- ' + pageNo + ' -</div>');
-      document.getElementById('print-area').appendChild(page);
-      page.body = body;
-      return page;
-    }
-    function renderExam(){
-      const qpp = parseInt(live.qpp,10) || 4;
-      const data = live.data || [];
-      for(let start=0,pageNo=1; start<data.length; start+=qpp,pageNo++){
-        const page = makePage(pageNo,'exam');
-        const grid = document.createElement('div'); grid.className='grid-container';
-        const left = document.createElement('div'); left.className='grid-col';
-        const right = document.createElement('div'); right.className='grid-col';
-        grid.appendChild(left); grid.appendChild(right); page.body.appendChild(grid);
-        const chunk = data.slice(start,start+qpp);
-        const split = Math.ceil(chunk.length/2);
-        chunk.forEach(function(q,idx){
-          const global = start + idx;
-          const box = document.createElement('div'); box.className='q-box'; box.dataset.liveQid=String(q.id);
-          if(String(q.id)===String(live.selectedId)) box.classList.add('live-selected');
-          box.innerHTML='<div class="q-num">' + (global+1) + '.</div><div class="q-content">' + renderQuestionContent(q) + '</div>' + imageHTML(q) + choicesHTML(q);
-          (idx < split ? left : right).appendChild(box);
-        });
-      }
-    }
-    function renderSol(){
-      const data = live.data || [];
-      for(let start=0,pageNo=1; start<data.length; start+=8,pageNo++){
-        const page = makePage(pageNo,'sol');
-        const grid = document.createElement('div'); grid.className='grid-container';
-        const left = document.createElement('div'); left.className='grid-col';
-        const right = document.createElement('div'); right.className='grid-col';
-        grid.appendChild(left); grid.appendChild(right); page.body.appendChild(grid);
-        data.slice(start,start+8).forEach(function(q,idx){
-          const global = start + idx;
-          const box = document.createElement('div'); box.className='q-box sol-box'; box.dataset.liveQid=String(q.id);
-          if(String(q.id)===String(live.selectedId)) box.classList.add('live-selected');
-          box.innerHTML='<div class="q-num">' + (global+1) + '.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">' + renderQuestionContent(q) + '</div><div class="solution-card"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ' + wrapLatex(q.answer ?? '-') + '</div><div style="font-size:8.5pt;line-height:1.55;">' + wrapLatex(q.solution || q.explanation || q.sol || '해설이 없습니다.') + '</div></div>';
-          (idx < 4 ? left : right).appendChild(box);
-        });
-      }
-    }
-    function renderAns(){
-      const data = live.data || [];
-      for(let start=0,pageNo=1; start<data.length; start+=50,pageNo++){
-        const page = makePage(pageNo,'ans');
-        const grid = document.createElement('div'); grid.className='ans-grid';
-        data.slice(start,start+50).forEach(function(q,idx){
-          const cell = document.createElement('div'); cell.className='ans-cell'; cell.dataset.liveQid=String(q.id);
-          if(String(q.id)===String(live.selectedId)) cell.classList.add('live-selected');
-          cell.innerHTML='<div class="ans-n">' + (start+idx+1) + '.</div><div class="ans-v">' + wrapLatex(q.answer ?? '-') + '</div>';
-          grid.appendChild(cell);
-        });
-        page.body.appendChild(grid);
-      }
-    }
-    async function finishTypesetAndFit(){
-      await raf();
-      await applyAutoImageSizeClasses(document.body);
-      if (window.MathJax && MathJax.typesetPromise) {
-        try { await MathJax.typesetPromise([document.body]); } catch(e) {}
-      }
-      await raf();
-      document.querySelectorAll('.q-box').forEach(fitQuestionBox);
-    }
-    function render(){
-      document.getElementById('ctrl-title').textContent = live.title || 'JS Archive';
-      document.getElementById('qpp-display').textContent = 'QPP: ' + (live.qpp || 4);
-      if(live.mode === 'ans') renderAns();
-      else if(live.mode === 'sol') renderSol();
-      else renderExam();
-      finishTypesetAndFit();
-    }
-    render();
-  <\/script>
-</body>
-</html>`;
+  } catch(e) {}
 }
 
 async function renderLiveEngineFrame(keepScroll) {
@@ -1608,28 +1067,42 @@ async function renderLiveEngineFrame(keepScroll) {
   if (!iframe) return;
   const previousScroll = keepScroll && iframe.contentWindow ? iframe.contentWindow.scrollY : 0;
   if (!state.currentBank || state.currentBank.length === 0) {
-    iframe.srcdoc = '<!doctype html><html lang="ko"><body style="margin:0;height:100vh;display:flex;align-items:center;justify-content:center;color:#999;font-family:sans-serif;">파일을 열면 실제 라이브 출력이 표시됩니다.</body></html>';
+    revokeLiveDataUrl();
+    iframe.removeAttribute('src' + 'doc');
+    iframe.src = 'about:blank';
     return;
   }
   try {
-    const srcdoc = buildEngineParityLiveSrcdoc(getLiveEnginePayload());
+    revokeLiveDataUrl();
+    const liveSource = serializeQuestionBank(state.examTitle || state.currentFileName || 'JS아카이브', state.currentBank || []);
+    const liveBlob = new Blob([liveSource], { type: 'text/javascript;charset=utf-8' });
+    state.liveDataUrl = URL.createObjectURL(liveBlob);
+    const url = new URL('engine.html', window.location.href);
+    url.searchParams.set('data', state.liveDataUrl);
+    url.searchParams.set('mode', state.engineMode || 'exam');
+    url.searchParams.set('qpp', String(state.qpp || 4));
+    url.searchParams.set('v', String(Date.now()));
+    const seq = ++state.liveFrameSeq;
     iframe.onload = function() {
-      if (keepScroll && previousScroll) {
-        try { iframe.contentWindow.scrollTo(0, previousScroll); } catch(e) {}
-      }
-      try {
-        const doc = iframe.contentDocument;
-        doc.addEventListener('click', function(e) {
-          const target = e.target.closest('[data-live-qid]');
-          if (!target) return;
-          selectQuestion(target.dataset.liveQid);
-        });
-      } catch(e) {}
+      if (seq !== state.liveFrameSeq) return;
+      const restoreScroll = function() {
+        if (keepScroll && previousScroll) {
+          try { iframe.contentWindow.scrollTo(0, previousScroll); } catch(e) {}
+        }
+      };
+      restoreScroll();
+      setTimeout(restoreScroll, 250);
+      setTimeout(restoreScroll, 700);
+      bindLiveEngineQuestionClicks(iframe);
     };
-    iframe.srcdoc = srcdoc;
+    iframe.removeAttribute('src' + 'doc');
+    iframe.src = url.toString();
   } catch (e) {
     console.warn('[검수엔진] 라이브 엔진 렌더 실패:', e);
-    renderLiveOutputPane(keepScroll);
+    revokeLiveDataUrl();
+    iframe.removeAttribute('src' + 'doc');
+    iframe.src = 'about:blank';
+    showError('실제 engine.html 라이브 출력 렌더 실패: ' + e.message);
   }
 }
 
@@ -1638,24 +1111,6 @@ function scheduleLiveOutputRender(keepScroll, delay) {
   state.liveOutputTimer = setTimeout(function() {
     renderLiveEngineFrame(keepScroll !== false);
   }, delay === undefined ? 180 : delay);
-}
-
-function initLiveOutputClickDelegation() {
-  const container = document.getElementById('live-output-preview');
-  if (container) {
-    container.addEventListener('click', function(e) {
-      const target = e.target.closest('[data-qid]');
-      if (!target || !container.contains(target)) return;
-      selectQuestion(target.dataset.qid);
-    });
-    container.addEventListener('keydown', function(e) {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      const target = e.target.closest('[data-qid]');
-      if (!target || !container.contains(target)) return;
-      e.preventDefault();
-      selectQuestion(target.dataset.qid);
-    });
-  }
 }
 
 function makeCard(q, displayNum) {
@@ -1941,6 +1396,8 @@ function renderTablePane() {
 function renderCenterPane() {
   updateStats();
   updateUnsavedBadge();
+  renderEditorPane();
+  renderTablePane();
   scheduleLiveOutputRender(true, 0);
 }
 
@@ -1984,6 +1441,8 @@ function captureReviewUiSnapshot() {
     fileSearch: state.fileSearch,
     gradeFilter: state.gradeFilter,
     examTypeFilter: state.examTypeFilter,
+    semesterFilter: state.semesterFilter,
+    subjectFilter: state.subjectFilter,
     engineMode: state.engineMode,
     qpp: state.qpp,
     listScrollTop: document.getElementById('file-list')?.scrollTop || 0,
@@ -2012,6 +1471,8 @@ function restoreReviewUiSnapshot(snap) {
   state.fileSearch        = snap.fileSearch;
   state.gradeFilter       = snap.gradeFilter;
   state.examTypeFilter    = snap.examTypeFilter;
+  state.semesterFilter    = snap.semesterFilter || '';
+  state.subjectFilter     = snap.subjectFilter || '';
   state.engineMode        = snap.engineMode;
   state.qpp               = snap.qpp;
 
@@ -2313,6 +1774,10 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+window.addEventListener('pagehide', function() {
+  revokeLiveDataUrl();
+});
+
 /* ================================================================
    IndexedDB 상태 영속화
    — reload가 발생해도 파일 핸들 + UI 상태를 자동 복원한다.
@@ -2374,6 +1839,8 @@ async function persistSessionState() {
       fileSearch:      state.fileSearch,
       gradeFilter:     state.gradeFilter,
       examTypeFilter:  state.examTypeFilter,
+      semesterFilter:  state.semesterFilter,
+      subjectFilter:   state.subjectFilter,
     });
     db.close();
   } catch(e) {
@@ -2433,6 +1900,8 @@ async function applyRestoredState(archiveDirHandle, currentFileHandle, fileEntri
   state.fileSearch        = ui.fileSearch       || '';
   state.gradeFilter       = ui.gradeFilter      || '';
   state.examTypeFilter    = ui.examTypeFilter   || '';
+  state.semesterFilter    = ui.semesterFilter   || '';
+  state.subjectFilter     = ui.subjectFilter    || '';
   state.canDirectSave     = true;
   state.modifiedIds       = new Set(Array.isArray(ui.modifiedIds) ? ui.modifiedIds : []);
   state.removedItems      = Array.isArray(ui.removedItems) ? ui.removedItems : [];
@@ -2571,7 +2040,6 @@ function initFilterToggle() {
 
   initSidebarToggle();
   initFilterToggle();
-  initLiveOutputClickDelegation();
   initLiveEditHandlers();
   renderGradeExamBtns();
 

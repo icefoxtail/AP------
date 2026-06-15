@@ -75,6 +75,14 @@
             <span class="fixed-filter-label">시험</span>
             <div id="exam-type-filter-btns"></div>
           </div>
+          <div class="fixed-filter-row">
+            <span class="fixed-filter-label">학기</span>
+            <div id="semester-filter-btns"></div>
+          </div>
+          <div class="fixed-filter-row">
+            <span class="fixed-filter-label">과목</span>
+            <div id="subject-filter-btns"></div>
+          </div>
         </div>
 
         <!-- 검수 필터 (접기 가능) -->
@@ -102,8 +110,7 @@
 
       <!-- 탭1: 실제 출력 -->
       <div id="pane-output" class="preview-pane active-pane">
-        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 최종 저장 전 라이브 출력에 반영 중</div>
-        <div id="live-output-preview" aria-label="라이브 출력 미리보기"></div>
+        <div id="unsaved-badge" style="display:none">미저장 수정 있음 — 현재 출력은 저장 전 편집본 기준입니다</div>
         <iframe id="enginePreviewFrame" src="about:blank" title="실제 라이브 출력 미리보기"></iframe>
       </div>
 
