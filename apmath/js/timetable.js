@@ -268,13 +268,15 @@ function applyTimetableFit() {
 
     applyTimetableResponsiveWidth();
 
-    var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+    var viewportHeight = (window.visualViewport && window.visualViewport.height)
+        ? window.visualViewport.height
+        : (window.innerHeight || document.documentElement.clientHeight || 0);
     var wrapTop = wrap.getBoundingClientRect().top;
-    
+
     // [Fix] 가로 스크롤바가 화면 하단에 너무 딱 붙지 않도록 안전 여백 확보 (미세 세로 스크롤/드래그 방지)
     var isMobile = window.innerWidth <= 900;
     var bottomPadding = isMobile ? 10 : 14;
-    
+
     var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
@@ -283,24 +285,35 @@ function applyTimetableFit() {
 
     wrap.style.height = availableHeight + 'px';
     wrap.style.maxHeight = availableHeight + 'px';
-    wrap.style.overflowX = isMobile ? 'auto' : 'hidden';
-    wrap.style.overflowY = 'hidden';
-    table.style.height = availableHeight + 'px';
+    wrap.style.overflowX = 'auto';
 
-    var theadHeight = thead ? Math.ceil(thead.getBoundingClientRect().height) : 0;
-    var bodyHeight = availableHeight - theadHeight;
+    if (isMobile) {
+        // 모바일: 세로 스크롤 허용 + 테이블 고정 높이 해제 → 마지막 교시 카드 잘림 방지
+        wrap.style.overflowY = 'auto';
+        table.style.height = 'auto';
+        rows.forEach(function(row) {
+            row.style.height = 'auto';
+            row.style.minHeight = '60px';
+        });
+    } else {
+        wrap.style.overflowY = 'hidden';
+        table.style.height = availableHeight + 'px';
 
-    if (!Number.isFinite(bodyHeight) || bodyHeight < 180) {
-        bodyHeight = availableHeight;
+        var theadHeight = thead ? Math.ceil(thead.getBoundingClientRect().height) : 0;
+        var bodyHeight = availableHeight - theadHeight;
+
+        if (!Number.isFinite(bodyHeight) || bodyHeight < 180) {
+            bodyHeight = availableHeight;
+        }
+
+        var rowHeight = Math.floor(bodyHeight / rows.length);
+        if (rowHeight < 60) rowHeight = 60;
+
+        rows.forEach(function(row) {
+            row.style.height = rowHeight + 'px';
+            row.style.minHeight = rowHeight + 'px';
+        });
     }
-
-    var rowHeight = Math.floor(bodyHeight / rows.length);
-    if (rowHeight < 60) rowHeight = 60;
-
-    rows.forEach(function(row) {
-        row.style.height = rowHeight + 'px';
-        row.style.minHeight = rowHeight + 'px';
-    });
 }
 
 // ────────────────────────────────────────────
