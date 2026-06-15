@@ -483,7 +483,7 @@ function normalizeConfirmedStatus(value, fallback = 'active') {
   return fallback;
 }
 
-const DIRECT_STUDENT_STATUSES = ['active', 'inactive', 'archived', 'needs_review'];
+const DIRECT_STUDENT_STATUSES = ['active', 'inactive', 'archived', 'needs_review', 'withdrawn'];
 
 function normalizeDirectStudentStatus(value, fallback = 'active') {
   const status = safeText(value || '');
@@ -1724,6 +1724,7 @@ async function attachAssignedStudents(env, rows) {
              s.student_pin,
              s.student_type,
              s.status AS student_status,
+             s.withdrawn_at,
              s.raw_meta_json AS student_raw_meta_json,
              c.id AS contact_id,
              c.phone,
@@ -1733,7 +1734,10 @@ async function attachAssignedStudents(env, rows) {
       JOIN eie_students s ON s.id = a.student_id
       LEFT JOIN eie_student_contacts c ON c.student_id = s.id AND COALESCE(c.is_primary, 1) = 1
       WHERE COALESCE(a.status, 'active') != 'archived'
-        AND COALESCE(s.status, 'active') != 'archived'
+        AND (
+          COALESCE(s.status, 'active') NOT IN ('inactive', 'archived', 'withdrawn', 'left', '퇴원')
+          OR (s.withdrawn_at IS NOT NULL AND DATE(s.withdrawn_at) >= DATE('now', '+9 hours', '-2 months'))
+        )
         AND a.timetable_cell_id IN (${placeholders})
       ORDER BY a.created_at ASC, s.display_name ASC, c.created_at ASC
     `).bind(...cellIds).all();
@@ -1764,9 +1768,12 @@ async function attachAssignedStudents(env, rows) {
           vehicle_info: row.vehicle_info || '',
           student_pin: row.student_pin || '',
           student_type: row.student_type || studentMeta.student_type || '일반',
+          status: row.student_status || 'active',
+          student_status: row.student_status || 'active',
           enrollment_date: studentMeta.enrollment_date || '',
           first_attendance_date: studentMeta.first_attendance_date || '',
           first_attended_at: studentMeta.first_attended_at || '',
+          withdrawn_at: row.withdrawn_at || studentMeta.withdrawn_at || '',
           raw_meta_json: row.student_raw_meta_json || {},
           phone_raw: row.phone || '',
           normalized_phone: row.normalized_phone || '',
@@ -2188,6 +2195,7 @@ async function handlePostStudent(request, env, teacher) {
   const vehicleInfo = safeText(body.vehicle_info || '');
   const studentPin = safeText(body.student_pin || body.pin || '');
   const studentType = safeText(body.student_type || '일반') || '일반';
+  const withdrawnAt = safeText(body.withdrawn_at || body.withdrawal_date || '');
   if (school) {
     rawMeta.school_name = school;
     rawMeta.school = school;
@@ -2202,13 +2210,13 @@ async function handlePostStudent(request, env, teacher) {
       INSERT INTO eie_students (
         id, display_name, normalized_name, grade, school_name, student_phone, parent_phone,
         guardian_relation, student_address, vehicle_info, student_pin, student_type,
-        status, source_type, memo, raw_meta_json, created_by, created_at, updated_at
+        status, withdrawn_at, source_type, memo, raw_meta_json, created_by, created_at, updated_at
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual', ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual', ?, ?, ?, ?, ?)
     `).bind(
       studentId, name, normalizedName, grade, school, studentPhone, parentPhone,
       guardianRelation, studentAddress, vehicleInfo, studentPin, studentType,
-      status, memo, rawMetaJson, teacher?.id || null, now, now
+      status, withdrawnAt, memo, rawMetaJson, teacher?.id || null, now, now
     ).run();
     await syncStudentTeachers(env, studentId, teacherNames);
 
@@ -2328,7 +2336,8 @@ const STUDENT_META_FIELDS = [
   'student_type',
   'enrollment_date',
   'first_attendance_date',
-  'first_attended_at'
+  'first_attended_at',
+  'withdrawn_at'
 ];
 
 function applyStudentMetaFields(rawMeta, body) {
@@ -2411,6 +2420,14 @@ async function handlePatchStudent(request, env, teacher, studentId) {
     if (!s) return jsonResponse({ success: false, error: 'invalid status' }, 400);
     sets.push('status = ?');
     binds.push(s);
+    if (['inactive', 'archived', 'withdrawn'].includes(s) && body.withdrawn_at === undefined && body.withdrawal_date === undefined && !safeText(existingStudent.withdrawn_at)) {
+      sets.push('withdrawn_at = ?');
+      binds.push(new Date().toISOString());
+    }
+  }
+  if (body.withdrawn_at !== undefined || body.withdrawal_date !== undefined) {
+    sets.push('withdrawn_at = ?');
+    binds.push(safeText(body.withdrawn_at || body.withdrawal_date || ''));
   }
   const rawMeta = parseRawMeta(existingStudent.raw_meta_json);
   const school = safeText(body.school_name || body.school || '');
@@ -2500,9 +2517,20 @@ async function handlePatchStudentStatus(request, env, teacher, studentId) {
   if (!existing) return jsonResponse({ success: false, error: 'student not found' }, 404);
 
   try {
+    const now = new Date().toISOString();
+    const updates = ['status = ?', 'updated_at = ?'];
+    const binds = [status, now];
+    if (['inactive', 'archived', 'withdrawn'].includes(status)) {
+      updates.push('withdrawn_at = COALESCE(withdrawn_at, ?)');
+      binds.push(safeText(body.withdrawn_at || body.withdrawal_date || '') || now);
+    } else if (body.withdrawn_at !== undefined || body.withdrawal_date !== undefined) {
+      updates.push('withdrawn_at = ?');
+      binds.push(safeText(body.withdrawn_at || body.withdrawal_date || ''));
+    }
+    binds.push(studentId);
     await env.DB.prepare(
-      `UPDATE eie_students SET status = ?, updated_at = ? WHERE id = ?`
-    ).bind(status, new Date().toISOString(), studentId).run();
+      `UPDATE eie_students SET ${updates.join(', ')} WHERE id = ?`
+    ).bind(...binds).run();
     const student = await getStudentWithContacts(env, studentId);
     return jsonResponse({ success: true, student, data: student, contacts: student?.contacts || [], warnings: [] });
   } catch (error) {
@@ -2546,7 +2574,7 @@ async function handleDeleteStudent(request, env, studentId) {
 
   try {
     await env.DB.prepare(
-      `UPDATE eie_students SET status = 'archived', updated_at = CURRENT_TIMESTAMP WHERE id = ?`
+      `UPDATE eie_students SET status = 'archived', withdrawn_at = COALESCE(withdrawn_at, CURRENT_TIMESTAMP), updated_at = CURRENT_TIMESTAMP WHERE id = ?`
     ).bind(studentId).run();
   } catch (error) {
     if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();

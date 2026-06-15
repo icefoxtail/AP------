@@ -468,6 +468,86 @@
             type.includes('휴원') || memo.includes('#휴원');
     }
 
+    function normalizeTimetableDate(value) {
+        const raw = normalizeKey(value);
+        if (!raw) return '';
+        const match = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+        if (!match) return '';
+        return [match[1], match[2].padStart(2, '0'), match[3].padStart(2, '0')].join('-');
+    }
+
+    function timetableTodayDate() {
+        return normalizeTimetableDate(window.TIMETABLE_WITHDRAWN_TODAY || new Date().toISOString());
+    }
+
+    function timetableTwoMonthsAgo(today) {
+        const base = normalizeTimetableDate(today || timetableTodayDate());
+        if (!base) return '';
+        const [year, month, day] = base.split('-').map(Number);
+        const date = new Date(year, month - 1, day);
+        date.setMonth(date.getMonth() - 2);
+        return [
+            String(date.getFullYear()).padStart(4, '0'),
+            String(date.getMonth() + 1).padStart(2, '0'),
+            String(date.getDate()).padStart(2, '0')
+        ].join('-');
+    }
+
+    function isWithdrawnStudent(row) {
+        if (!row || isPausedStudent(row)) return false;
+        const raw = rawOf(row);
+        const status = normalizeKey(row.status || row.student_status || row.studentStatus || raw.status).toLowerCase();
+        return ['archived', 'inactive', '퇴원', 'withdrawn', 'left'].includes(status);
+    }
+
+    function getStudentWithdrawalDate(row) {
+        const raw = rawOf(row);
+        return normalizeTimetableDate(
+            row?.withdrawn_at ||
+            row?.withdrawal_date ||
+            row?.left_at ||
+            row?.left_date ||
+            row?.inactive_at ||
+            row?.archived_at ||
+            row?.status_changed_at ||
+            row?.student_status_changed_at ||
+            row?.end_date ||
+            raw.withdrawn_at ||
+            raw.withdrawal_date ||
+            raw.left_at ||
+            raw.left_date ||
+            raw.inactive_at ||
+            raw.archived_at ||
+            raw.status_changed_at ||
+            raw.student_status_changed_at ||
+            raw.end_date ||
+            ''
+        );
+    }
+
+    function isRecentWithdrawnStudent(row, today) {
+        if (!isWithdrawnStudent(row)) return false;
+        const withdrawalDate = getStudentWithdrawalDate(row);
+        const cutoff = timetableTwoMonthsAgo(today);
+        return Boolean(withdrawalDate && cutoff && withdrawalDate >= cutoff);
+    }
+
+    function shouldShowTimetableStudent(row) {
+        if (!isWithdrawnStudent(row)) return true;
+        return isRecentWithdrawnStudent(row);
+    }
+
+    function studentChipStatusClass(row) {
+        if (isPausedStudent(row)) return ' is-paused';
+        if (isRecentWithdrawnStudent(row)) return ' is-withdrawn';
+        return '';
+    }
+
+    function studentChipTitle(row) {
+        if (isRecentWithdrawnStudent(row)) return `퇴원 / ${getStudentWithdrawalDate(row)}`;
+        return row?.name || '학생';
+    }
+
     // ── EIE Panel v1.0 공통 헬퍼 (CODEX_TASK.md §B) ──
     function pAvatarInitials(name) {
         const chars = Array.from(normalizeStudentName(name) || '');
@@ -642,10 +722,11 @@
                 pin: normalizeKey(student?.pin || student?.pin_code || student?.student_pin || ''),
                 name: normalizeStudentName(student?.name || student?.display_name || student?.student_name_raw || ''),
                 grade: normalizeKey(student?.grade_raw || student?.grade || ''),
-                status: normalizeKey(student?.status || student?.match_status || ''),
+                status: normalizeKey(student?.status || student?.student_status || student?.studentStatus || student?.match_status || ''),
+                withdrawn_at: normalizeKey(student?.withdrawn_at || student?.withdrawal_date || ''),
                 student_type: normalizeKey(student?.student_type || student?.type || ''),
                 memo: normalizeKey(student?.memo || '')
-            })).filter(student => student.name);
+            })).filter(student => student.name && shouldShowTimetableStudent(student));
         }
 
         const meta = getRawMeta(row);
@@ -666,11 +747,12 @@
                 pin: normalizeKey(item?.pin || item?.pin_code || item?.student_pin || ''),
                 name: normalizeStudentName(item?.name || item?.student_name_raw || item?.studentName || ''),
                 grade: normalizeKey(item?.grade_raw || item?.grade || ''),
-                status: normalizeKey(item?.status || item?.match_status || ''),
+                status: normalizeKey(item?.status || item?.student_status || item?.studentStatus || item?.match_status || ''),
+                withdrawn_at: normalizeKey(item?.withdrawn_at || item?.withdrawal_date || ''),
                 student_type: normalizeKey(item?.student_type || item?.type || ''),
                 memo: normalizeKey(item?.memo || '')
             };
-        }).filter(student => student.name);
+        }).filter(student => student.name && shouldShowTimetableStudent(student));
     }
 
     function dedupeStudents(rows) {
@@ -1339,6 +1421,9 @@
             const aPaused = isPausedStudent(a) ? 1 : 0;
             const bPaused = isPausedStudent(b) ? 1 : 0;
             if (aPaused !== bPaused) return aPaused - bPaused;
+            const aWithdrawn = isRecentWithdrawnStudent(a) ? 1 : 0;
+            const bWithdrawn = isRecentWithdrawnStudent(b) ? 1 : 0;
+            if (aWithdrawn !== bWithdrawn) return aWithdrawn - bWithdrawn;
             const left = studentSearchName(a) || a?.name || '';
             const right = studentSearchName(b) || b?.name || '';
             return String(left).localeCompare(String(right), 'ko', { sensitivity: 'base', numeric: true });
@@ -1357,14 +1442,14 @@
                     const context = returnContextFor(options);
                     if (shouldLink && (id || name)) {
                         return `<button type="button"
-                            class="eie-v2-student-chip is-clickable${isPausedStudent(student) ? ' is-paused' : ''}"
+                            class="eie-v2-student-chip is-clickable${studentChipStatusClass(student)}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
-                            title="${esc(name || student.name || '학생')}"
+                            title="${esc(studentChipTitle(student))}"
                             aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
                     }
-                    return `<span class="eie-v2-student-chip${isPausedStudent(student) ? ' is-paused' : ''}" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
+                    return `<span class="eie-v2-student-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipName(student.name))}</span>`;
                 }).join('')}
             </div>
         `;
@@ -1383,14 +1468,14 @@
                     const context = returnContextFor(options);
                     if (id || name) {
                         return `<button type="button"
-                            class="eie-v2-card-student${isPausedStudent(student) ? ' is-paused' : ''}"
+                            class="eie-v2-card-student${studentChipStatusClass(student)}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
-                            title="${esc(name || student.name || '학생')}"
+                            title="${esc(studentChipTitle(student))}"
                             aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
                     }
-                    return `<span class="eie-v2-card-student${isPausedStudent(student) ? ' is-paused' : ''}" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
+                    return `<span class="eie-v2-card-student${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipName(student.name))}</span>`;
                 }).join('')}
                 ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
@@ -5193,12 +5278,7 @@
         viewState.miniError = '';
         viewState.miniNotice = '';
         try {
-            await window.EieApi.updateStudent(sid, { status: 'inactive' });
-            const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids.filter(Boolean) : [];
-            if (cellIds.length) {
-                const removeOps = cellIds.map(cellIdValue => ({ cell_id: cellIdValue, student_id: sid }));
-                await batchCellStudentOps(cellIds[0], { remove: removeOps }).catch(() => null);
-            }
+            await window.EieApi.updateStudent(sid, { status: 'inactive', withdrawn_at: todayIso() });
             if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
             await refreshTimetableRowsAfterMiniSave();
             closeTimetableDetailPanel();
