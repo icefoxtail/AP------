@@ -1266,7 +1266,10 @@ async function openStudentDetail(sid, options = {}) {
     const returnCtx = resolveStudentDetailReturnContext(sid, options);
     applyStudentDetailModalReturnContext(returnCtx);
 
-    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
+    const exs = (typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(sid)
+        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
+    ).slice().sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
     const foundationLoads = [];
     if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
@@ -2316,7 +2319,10 @@ function renderGradeTab(sid) {
  * 원내평가 하위 탭 — 기존 exam_sessions 기반 성적 영역(차트/오답/약한 단원) 그대로 유지.
  */
 function renderStudentAcademyGradeTab(sid) {
-    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    const exs = (typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(sid)
+        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
+    ).slice().sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
     
     const chartArea = exs.length > 0
         ? `<div style="padding: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;">
@@ -2327,8 +2333,10 @@ function renderStudentAcademyGradeTab(sid) {
     const recentExam = [...exs].sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')))[0];
 
     const historyRows = exs.map(e => {
-        const wrs = state.db.wrong_answers
-            .filter(w => w.session_id === e.id)
+        const wrs = (typeof apmsGetWrongAnswersForSession === 'function'
+            ? apmsGetWrongAnswersForSession(e.id)
+            : (state.db.wrong_answers || []).filter(w => String(w.session_id) === String(e.id))
+        )
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
             .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; margin: 2px; color: var(--text-soft); font-weight: 500;">Q${w.question_id}</span>`)
             .join('');
@@ -2499,7 +2507,10 @@ function drawGradeChart(sid) {
         return;
     }
 
-    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>a.exam_date.localeCompare(b.exam_date)).slice(-7);
+    const exs = (typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(sid)
+        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
+    ).slice().sort((a,b)=>String(a.exam_date||'').localeCompare(String(b.exam_date||''))).slice(-7);
     if (!exs.length) return;
 
     if (currentStudentChart) { currentStudentChart.destroy(); }
@@ -2562,9 +2573,10 @@ function openReportPreview(sid) {
     const lastCns = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => b.date.localeCompare(a.date))[0];
     let cnsText = lastCns ? `\n\n[학습 피드백]\n${lastCns.content}` : '';
 
-    const lastExam = (state.db.exam_sessions || [])
-        .filter(e => e.student_id === sid)
-        .sort((a,b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
+    const lastExam = (typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(sid)
+        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
+    ).slice().sort((a,b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
     let examText = lastExam ? `\n\n[최근 평가]\n${lastExam.exam_title}: ${lastExam.score}점` : '';
 
     const template = `안녕하세요 학부모님, AP수학입니다.\n\n오늘 ${s.name}이는 ${progressText}${examText}${cnsText}\n\n궁금하신 점은 언제든 편하게 문의주세요. 감사합니다!`;

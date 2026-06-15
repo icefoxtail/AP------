@@ -352,13 +352,14 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       env.DB.prepare(`
         INSERT INTO exam_sessions (
           id, student_id, exam_title, score, exam_date, question_count,
-          class_id, archive_file, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+          class_id, archive_file, assignment_id, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
         ON CONFLICT(id) DO UPDATE SET
           score = excluded.score,
           question_count = excluded.question_count,
           class_id = excluded.class_id,
           archive_file = excluded.archive_file,
+          assignment_id = excluded.assignment_id,
           updated_at = DATETIME('now')
       `).bind(
         sessionId,
@@ -368,7 +369,8 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
         assignment.exam_date || '',
         questionCount,
         assignment.class_id || '',
-        assignment.archive_file || ''
+        assignment.archive_file || '',
+        assignmentId
       ),
       env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId),
       ...wrongIds.map(qId => env.DB.prepare(
