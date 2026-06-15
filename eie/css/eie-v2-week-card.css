@@ -307,10 +307,26 @@
     color: #6F6A7C !important;
 }
 
+.eie-v2-card-student.is-withdrawn,
+.eie-v2-student-chip.is-withdrawn {
+    color: #BE123C !important;
+    background: #FFF1F4 !important;
+    border: 1px dashed #FDA4AF !important;
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(190, 18, 60, 0.35);
+}
+
 button.eie-v2-card-student.is-paused:hover,
 button.eie-v2-student-chip.is-paused:hover {
     background: #E8E6F0 !important;
     border-color: #C9C3DA !important;
+}
+
+button.eie-v2-card-student.is-withdrawn:hover,
+button.eie-v2-student-chip.is-withdrawn:hover {
+    background: #FFE4EA !important;
+    border-color: #FB7185 !important;
 }
 
 

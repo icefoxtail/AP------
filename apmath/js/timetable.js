@@ -211,6 +211,7 @@ function installTimetableStyle() {
         '@media (hover: hover) { .tt-std-name:hover { background:var(--surface-2); color:var(--text); } }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; }',
+        '.tt-std-name.tt-withdrawn { color:#BE123C !important; background:#FFF1F4 !important; border:1px dashed #FDA4AF; text-decoration:line-through; text-decoration-thickness:1px; text-decoration-color:rgba(190,18,60,0.35); }',
         '.tt-std-name.tt-search-hit { background:#FFE66D !important; color:#111827 !important; box-shadow:0 0 0 2px rgba(245,158,11,0.45) inset; font-weight:900; }',
         '.tt-std-name[draggable="true"] { cursor:grab; }',
         '.tt-std-name[draggable="true"]:active { cursor:grabbing; }',
@@ -2792,6 +2793,99 @@ function _ttIsStudentLeave(s) {
     return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
 }
 
+function normalizeTimetableStudentStatus(value) {
+    return String(value || '').trim().toLowerCase();
+}
+
+function isTimetableWithdrawnStatus(value) {
+    var status = normalizeTimetableStudentStatus(value);
+    return ['archived', 'inactive', '퇴원', 'withdrawn', 'left'].indexOf(status) !== -1;
+}
+
+function getTimetableTodayDateString(today) {
+    return _ttNormalizeDateString(
+        today ||
+        (typeof window !== 'undefined' && window.TIMETABLE_WITHDRAWN_TODAY) ||
+        new Date().toISOString()
+    );
+}
+
+function getTimetableTwoMonthsAgoDateString(today) {
+    var base = getTimetableTodayDateString(today);
+    if (!base) return '';
+    var parts = base.split('-').map(function(part) { return Number(part); });
+    var date = new Date(parts[0], parts[1] - 1, parts[2]);
+    date.setMonth(date.getMonth() - 2);
+    return [
+        String(date.getFullYear()).padStart(4, '0'),
+        String(date.getMonth() + 1).padStart(2, '0'),
+        String(date.getDate()).padStart(2, '0')
+    ].join('-');
+}
+
+function getTimetableStudentStatusHistoryRows(student) {
+    if (!student || !student.id || typeof state === 'undefined') return [];
+    var sid = String(student.id);
+    var db = _getAllDb();
+    var mainDb = state.db || {};
+    var allDb = state.allDb || {};
+    var rows = _ttFirstNonEmptyArray(
+        mainDb.student_status_history,
+        db.student_status_history,
+        allDb.student_status_history
+    );
+    return rows.filter(function(row) {
+        return String(row && row.student_id || '') === sid && isTimetableWithdrawnStatus(row && row.new_status);
+    }).sort(function(a, b) {
+        return String(b && b.changed_at || '').localeCompare(String(a && a.changed_at || ''));
+    });
+}
+
+function getTimetableStudentWithdrawalDate(student, mapping) {
+    if (!student) return '';
+    var directDate = _ttNormalizeDateString(
+        student.withdrawn_at ||
+        student.withdrawal_date ||
+        student.left_at ||
+        student.left_date ||
+        student.inactive_at ||
+        student.archived_at ||
+        student.status_changed_at ||
+        student.student_status_changed_at ||
+        student.end_date ||
+        ''
+    );
+    if (directDate) return directDate;
+    var historyRows = Array.isArray(mapping && mapping.statusHistoryRows)
+        ? mapping.statusHistoryRows
+        : getTimetableStudentStatusHistoryRows(student);
+    return _ttNormalizeDateString((historyRows[0] && historyRows[0].changed_at) || '');
+}
+
+function isTimetableWithdrawnStudent(student, mapping) {
+    if (!student) return false;
+    if (_ttIsStudentLeave(student)) return false;
+    return isTimetableWithdrawnStatus(student.status || student.student_status || (mapping && mapping.status));
+}
+
+function isRecentTimetableWithdrawnStudent(student, mapping, today) {
+    if (!isTimetableWithdrawnStudent(student, mapping)) return false;
+    var withdrawalDate = getTimetableStudentWithdrawalDate(student, mapping);
+    var cutoff = getTimetableTwoMonthsAgoDateString(today);
+    return !!(withdrawalDate && cutoff && withdrawalDate >= cutoff);
+}
+
+function getTimetableStudentChipClass(student, mapping) {
+    if (student && student.isWithdrawn) return ' tt-withdrawn';
+    return isRecentTimetableWithdrawnStudent(student, mapping) ? ' tt-withdrawn' : '';
+}
+
+function getTimetableStudentChipTitle(student, mapping) {
+    if (student && student.isWithdrawn && student.withdrawalDate) return '퇴원 / ' + student.withdrawalDate;
+    if (!isRecentTimetableWithdrawnStudent(student, mapping)) return '클릭 → 학생 상세';
+    return '퇴원 / ' + getTimetableStudentWithdrawalDate(student, mapping);
+}
+
 function _ttFirstNonEmptyArray() {
     for (var i = 0; i < arguments.length; i++) {
         if (Array.isArray(arguments[i]) && arguments[i].length > 0) return arguments[i];
@@ -2875,13 +2969,22 @@ function getTimetableClassStudentsWithInfo(classId) {
             if (sIds.indexOf(String(s.id)) === -1) return false;
             if (s.status === '재원') return true;
             if (s.status === '휴원') return true;
+            if (isRecentTimetableWithdrawnStudent(s)) return true;
             if (isTimetableDraftMode() && s.status === '입학예정') return true;
             if (String(s.memo || '').indexOf('#휴원') !== -1) return true;
             if (isTimetableDraftMode() && String(s.memo || '').indexOf('#새학기') !== -1) return true;
             return false;
         })
         .map(function(s) {
-            return { id: s.id, name: s.name, isNew: _ttIsStudentNew(s) || (isTimetableDraftMode() && s.status === '입학예정'), isLeave: _ttIsStudentLeave(s) };
+            var isWithdrawn = isRecentTimetableWithdrawnStudent(s);
+            return {
+                id: s.id,
+                name: s.name,
+                isNew: _ttIsStudentNew(s) || (isTimetableDraftMode() && s.status === '입학예정'),
+                isLeave: _ttIsStudentLeave(s),
+                isWithdrawn: isWithdrawn,
+                withdrawalDate: isWithdrawn ? getTimetableStudentWithdrawalDate(s) : ''
+            };
         })
         .sort(function(a, b) { return String(a.name || '').localeCompare(String(b.name || ''), 'ko'); });
 
@@ -2908,7 +3011,7 @@ function buildTimetableStudentSlot(student, classId) {
     }
 
     var isSearchHit = isTimetableStudentSearchMatch(student);
-    var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '') + (isSearchHit ? ' tt-search-hit' : '');
+    var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '') + (student.isWithdrawn ? getTimetableStudentChipClass(student) : '') + (isSearchHit ? ' tt-search-hit' : '');
     var nameText = apEscapeHtml(student.name) + (student.isNew ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(신)</span>' : '');
     var dragAttrs = isTimetableAdminMode()
         ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)" ondragend="if(event.stopPropagation)event.stopPropagation();"'
@@ -2919,7 +3022,7 @@ function buildTimetableStudentSlot(student, classId) {
         : 'event.stopPropagation();openStudentDetailFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')';
     return '' +
         '<div class="tt-std-slot">' +
-            '<span class="' + cls + '"' + dragAttrs + ' onclick="' + studentClick + '" title="클릭 → 학생 상세">' +
+            '<span class="' + cls + '"' + dragAttrs + ' onclick="' + studentClick + '" title="' + apEscapeHtml(getTimetableStudentChipTitle(student)) + '">' +
                 nameText +
             '</span>' +
         '</div>';
