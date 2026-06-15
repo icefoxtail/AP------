@@ -119,7 +119,7 @@ let state = {
     },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
-        exam_sessions: [], wrong_answers: [], report_exam_cohort_stats: [], exam_blueprints: [], attendance_history: [], homework_history: [],
+        exam_sessions: [], wrong_answers: [], class_exam_assignments: [], report_exam_cohort_stats: [], exam_blueprints: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
         timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
@@ -784,6 +784,7 @@ async function loadData(isInitial = false) {
         homework: Array.isArray(data.homework) ? data.homework : [],
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [],
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [],
+        class_exam_assignments: Array.isArray(data.class_exam_assignments) ? data.class_exam_assignments : [],
         report_exam_cohort_stats: Array.isArray(data.report_exam_cohort_stats) ? data.report_exam_cohort_stats : [],
         exam_blueprints: Array.isArray(data.exam_blueprints) ? data.exam_blueprints : [],
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
@@ -834,6 +835,7 @@ async function refreshDataOnly() {
         homework: Array.isArray(data.homework) ? data.homework : [], 
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [], 
+        class_exam_assignments: Array.isArray(data.class_exam_assignments) ? data.class_exam_assignments : (state.db.class_exam_assignments || []),
         report_exam_cohort_stats: Array.isArray(data.report_exam_cohort_stats) ? data.report_exam_cohort_stats : [],
         exam_blueprints: Array.isArray(data.exam_blueprints) ? data.exam_blueprints : (state.db.exam_blueprints || []),
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [], 
@@ -1783,6 +1785,60 @@ function openClinicBasketForClass(classId) {
     const cls = (state.db.classes || []).find(c => c.id === classId);
     const key = makeClinicContextKey({ targetType: 'class', targetId: classId, targetLabel: cls?.name || '반' });
     openClinicBasketByKey(key);
+}
+
+async function openClinicSimilarForClass(classId) {
+    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
+    if (!cls) {
+        toast('반 정보를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+
+    const studentIds = new Set((state.db.class_students || [])
+        .filter(row => String(row.class_id) === String(classId))
+        .map(row => String(row.student_id)));
+    const sessions = (state.db.exam_sessions || [])
+        .filter(session => studentIds.has(String(session.student_id)) && String(session.archive_file || '').trim());
+
+    showModal('유사문항', `
+        <div style="padding:24px 18px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">
+            반 오답 단원을 확인하는 중입니다.
+        </div>
+    `);
+
+    await ensureBlueprintsForSessions(sessions);
+    const weakUnits = computeClassWeakUnits(classId);
+    const context = { targetType: 'class', targetId: classId, targetLabel: cls.name || '반' };
+    const basketKey = makeClinicContextKey(context);
+    const cartCount = getClinicCartItemsForContext(basketKey).length;
+
+    if (!weakUnits.length) {
+        showModal('유사문항', `
+            <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:12px;">
+                <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(cls.name || '반')}</div>
+                <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5; font-weight:600;">제출된 OMR 오답과 단원 정보가 있어야 유사문항 추천 기준을 만들 수 있습니다.</div>
+            </div>
+            <div style="font-size:12px; color:var(--secondary); background:var(--bg); border:1px dashed var(--border); border-radius:12px; padding:16px; text-align:center; font-weight:600; line-height:1.5;">
+                아직 추천 가능한 오답 단원이 없습니다.
+            </div>
+            <button class="btn" style="width:100%; margin-top:12px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; background:var(--primary); color:#fff; border:none; border-radius:12px; line-height:1.2;" onclick="openClinicBasketByKey('${basketKey}')">클리닉 바구니 보기</button>
+        `);
+        return;
+    }
+
+    showModal('유사문항', `
+        <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:12px;">
+            <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(cls.name || '반')}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5; font-weight:600;">오답이 많은 단원을 선택하면 JS아카이브에서 유사문항을 찾습니다. 현재 바구니 ${cartCount}개</div>
+            <button class="btn" style="width:100%; margin-top:10px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; background:var(--primary); color:#fff; border:none; border-radius:12px; line-height:1.2;" onclick="openClinicBasketByKey('${basketKey}')">클리닉 바구니 보기</button>
+        </div>
+        ${renderWeakUnitSummary(weakUnits, '추천 기준이 될 오답 단원이 없습니다.', {
+            clickable: true,
+            mode: 'class',
+            titlePrefix: `${cls.name || '반'} 유사문항`,
+            context
+        })}
+    `);
 }
 
 function openClinicBasketForStudent(studentId) {
