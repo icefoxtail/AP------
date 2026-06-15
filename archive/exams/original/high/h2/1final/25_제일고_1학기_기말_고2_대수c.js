@@ -17,7 +17,7 @@ window.questionBank = [
     content: "함수 $y = 2\\cos 2x$의 주기는?",
     choices: ["$\\pi$", "$2\\pi$", "$3\\pi$", "$4\\pi$", "$5\\pi$"],
     answer: "①",
-    solution: "[키포인트] 코사인함수 $y = k\\cos cx$의 주기는 $\\dfrac{2\\pi}{|l|}$이다.\\n조건 정리: 주어진 함수는 $y = 2\\cos 2x$이므로 $x$의 계수는 $2$이다.\\n정석 풀이:\\n기본적인 $\\cos x$의 주기는 $2\\pi$이다.\\n따라서 $y = 2\\cos 2x$의 주기는 다음과 같다.\\n$\\dfrac{2\\pi}{2} = \\pi$\\n따라서 정답은 ①이다."
+    solution: "[키포인트] $y=a\\cos bx$의 주기는 $\\dfrac{2\\pi}{|b|}$이다.\\n조건 정리: 주어진 함수는 $y=2\\cos 2x$이고, 코사인 안의 $x$의 계수는 $2$이다.\\n풀이 방향: 앞의 계수 $2$는 진폭만 바꾸므로 주기는 코사인 안쪽의 계수로 판단한다.\\n정석 풀이: 기본 함수 $\\cos x$는 $x$가 $2\\pi$만큼 변할 때 한 주기를 돈다. 그런데 $\\cos 2x$에서는 안쪽 각 $2x$가 $2\\pi$만큼 변해야 하므로 $2x$의 변화량이 $2\\pi$가 되어야 한다. 따라서 $x$의 한 주기 $T$는 $2T=2\\pi$를 만족하므로 $T=\\pi$이다.\\n따라서 정답은 ①이다."
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ window.questionBank = [
       "$x = n\\pi + \\dfrac{2}{3}\\pi$"
     ],
     answer: "③",
-    solution: "[키포인트] 탄젠트함수 $y = \\tan \\theta$의 점근선의 방정식은 $\\theta = n\\pi + \\dfrac{\pi}{2}$ ($n$은 정수)이다.\\n조건 정리: 주어진 식에서 탄젠트의 진수 부분은 $\\dfrac{3}{2}x$이다.\\n정석 풀이:\\n주어진 함수의 점근선을 구하기 위해 구조를 방정식을 세우면 다음과 같다.\\n$\\dfrac{3}{2}x = n\\pi + \\dfrac{\\pi}{2}$ (단, $n$은 정수)\\n양변에 $\\dfrac{2}{3}$를 곱하여 $x$에 대해 정리한다.\\n$x = \\dfrac{2}{3}\\left(n\\pi + \\dfrac{\\pi}{2}\\right) = \\dfrac{2n\\pi}{3} + \\dfrac{\\pi}{3}$\\n분모를 $3$으로 통분하여 식을 결합하면 다음과 같다.\\n$x = \\dfrac{(2n+1)\\pi}{3}$\\n따라서 정답은 ③이다."
+    solution: "[키포인트] 탄젠트함수 $y=\\tan u$의 점근선은 $u=\\dfrac{\\pi}{2}+n\\pi$이다.\\n조건 정리: 주어진 함수는 $y=\\tan\\dfrac{3}{2}x$이고, 탄젠트 안쪽 각은 $\\dfrac{3}{2}x$이다.\\n풀이 방향: 탄젠트가 정의되지 않는 안쪽 각의 값을 먼저 세운 뒤, $x$에 대하여 정리한다.\\n정석 풀이: $y=\\tan u$의 점근선은 $u=\\dfrac{\\pi}{2}+n\\pi$이다. 여기서 $u=\\dfrac{3}{2}x$이므로 $\\dfrac{3}{2}x=\\dfrac{\\pi}{2}+n\\pi$이다. 양변에 $\\dfrac{2}{3}$을 곱하면 $x=\\dfrac{\\pi}{3}+\\dfrac{2n\\pi}{3}=\\dfrac{(2n+1)\\pi}{3}$이다.\\n따라서 정답은 ③이다."
   },
   {
     id: 3,
@@ -231,7 +231,7 @@ window.questionBank = [
     image: "assets/images/25_제일고_1학기_기말_고2_수학I/q12.png",
     choices: ["3", "4", "5", "6", "7"],
     answer: "②",
-    solution: "[키포인트] 시행에 따른 정사각형의 넓이 변화 규칙을 찾아 등비수열의 합 공식을 적용한다.\\n조건 정리: 한 변의 길이가 $1$인 정사각형에서 반복 시행을 하며, 넓이의 누적 합이 $\\dfrac{21}{64}$를 초과하는 시점을 찾는다.\\n정석 풀이:\\n1단계: 각 시행에서 색칠되는 정사각형의 넓이 $a_n$의 규칙을 구한다.\\n1차 시행: 한 변의 길이가 $\\dfrac{1}{2}$인 정사각형이므로 $a_1 = \\left(\\dfrac{1}{2}\\right)^2 = \\dfrac{1}{4}$이다.\\n2차 시행: 남은 오른쪽 아래 정사각형(넓이 $\\dfrac{1}{4}$)에 대해 같은 시행을 하므로 $a_2 = \\dfrac{1}{4} \\times \\dfrac{1}{4} = \\dfrac{1}{16}$이다.\\n따라서 수열 $\\{a_n\\}$은 첫째항이 $\\dfrac{1}{4}$이고 공비가 $\\dfrac{1}{4}$인 등비수열이다.\\n\\n2단계: 제 $n$항까지의 합 $\\displaystyle\\sum_{k=1}^{n}a_k$를 구한다.\\n$\\displaystyle\\sum_{k=1}^{n}a_k = \\dfrac{\\dfrac{1}{4}\\left\\{1 - \\left(\\dfrac{1}{4}\\right)^n\\right\\}}{1 - \\dfrac{1}{4}} = \\dfrac{\\dfrac{1}{4}\\left\\{1 - \\left(\\dfrac{1}{4}\\right)^n\\right\\}}{\\dfrac{3}{4}} = \\dfrac{1}{3}\\left(1 - \\dfrac{1}{4^n}\right)$\\n\\n3단계: 합이 $\\dfrac{21}{64}$보다 커지는 부등식을 만족하는 자연수 $n$을 찾는다.\\n$\\dfrac{1}{3}\\left(1 - \\dfrac{1}{4^n}\right) > \\dfrac{21}{64} \\implies 1 - \\dfrac{1}{4^n} > \\dfrac{63}{64} \\implies \\dfrac{1}{4^n} < \\dfrac{1}{64}$\\n$\\dfrac{1}{4^n} < \\dfrac{1}{4^3} \\implies n > 3$\\n따라서 처음으로 부등식을 만족시키는 자연수 $n$의 값은 $4$이다.\\n따라서 정답은 ②이다."
+    solution: "[키포인트] 매 시행마다 색칠되는 정사각형의 넓이는 이전의 $\\dfrac{1}{4}$배가 된다.\\n조건 정리: 첫 번째 색칠 넓이는 $\\dfrac{1}{4}$이고, 이후 색칠 넓이는 공비가 $\\dfrac{1}{4}$인 등비수열이다.\\n풀이 방향: 색칠한 넓이의 누적합을 등비수열의 합으로 나타내고, 처음으로 $\\dfrac{21}{64}$보다 커지는 $n$을 찾는다.\\n정석 풀이: $a_1=\\dfrac{1}{4}$, 공비 $r=\\dfrac{1}{4}$이므로 $a_n=\\left(\\dfrac{1}{4}\\right)^n$이다. 따라서 $\\sum_{k=1}^{n}a_k=\\dfrac{\\dfrac{1}{4}\\{1-(\\dfrac{1}{4})^n\\}}{1-\\dfrac{1}{4}}=\\dfrac{1}{3}\\left(1-\\dfrac{1}{4^n}\\right)$이다. 이제 $\\dfrac{1}{3}\\left(1-\\dfrac{1}{4^n}\\right)>\\dfrac{21}{64}$를 풀면 $1-\\dfrac{1}{4^n}>\\dfrac{63}{64}$, 즉 $\\dfrac{1}{4^n}<\\dfrac{1}{64}=\\dfrac{1}{4^3}$이다. 따라서 $n>3$이므로 처음 만족하는 자연수는 $n=4$이다.\\n따라서 정답은 ②이다."
   },
   {
     id: 13,
@@ -267,7 +267,7 @@ window.questionBank = [
     content: "$\\displaystyle\\sum_{k=1}^{9}\\left(\\frac{k}{k+1}+\\frac{k+1}{k}\\right) = \\frac{a}{10}$일 때, $a$의 값은?",
     choices: ["181", "189", "191", "199", "201"],
     answer: "②",
-    solution: "[키포인트] 시그마 내부의 일반항을 부분분수 형태로 변형하여 소거형 급수(Telescoping sum)로 계산한다.\\n조건 정리: 주어진 식의 유한 합을 구하여 분자가 $a$인 분수식 형태로 비교한다.\\n정석 풀이:\\n1단계: 일반항 분수를 통분하여 결합 및 변형한다.\\n$\\dfrac{k}{k+1} + \\dfrac{k+1}{k} = \\dfrac{k^2 + (k+1)^2}{k(k+1)} = \\dfrac{2k^2 + 2k + 1}{k(k+1)} = \\dfrac{2k(k+1) + 1}{k(k+1)} = 2 + \\dfrac{1}{k(k+1)}$\\n부분분수 공식 $\\dfrac{1}{AB} = \\dfrac{1}{B-A}\\left(\\dfrac{1}{A} - \\dfrac{1}{B}\\right)$를 적용하면 다음과 같다.\\n$2 + \\dfrac{1}{k(k+1)} = 2 + \\left(\\dfrac{1}{k} - \\dfrac{1}{k+1}\\right)$\\n\\n2단계: 변형된 식에 시그마를 취해 값을 나열하고 소거한다.\\n$\\displaystyle\\sum_{k=1}^{9}\\left\\{2 + \\left(\\dfrac{1}{k} - \\dfrac{1}{k+1}\right)\\right\\} = \\sum_{k=1}^{9}2 + \\sum_{k=1}^{9}\\left(\\dfrac{1}{k} - \\dfrac{1}{k+1}\right)$\\n$= (2 \\times 9) + \\left\\{\\left(1 - \\dfrac{1}{2}\\right) + \\left(\\dfrac{1}{2} - \\dfrac{1}{3}\\right) + \\cdots + \\left(\\dfrac{1}{9} - \\dfrac{1}{10}\\right)\\right\\}$\\n$= 18 + \\left(1 - \\dfrac{1}{10}\right) = 18 + \\dfrac{9}{10} = \\dfrac{189}{10}$\\n\\n3단계: 결과가 $\\dfrac{a}{10}$와 같으므로 분자를 비교하여 $a$를 구한다.\\n$\\dfrac{189}{10} = \\dfrac{a}{10} \\implies a = 189$\\n따라서 정답은 ②이다."
+    solution: "[키포인트] 각 항을 $2+\\dfrac{1}{k(k+1)}$로 바꾸면 가운데 항들이 소거된다.\\n조건 정리: 구할 합은 $\\sum_{k=1}^{9}\\left(\\dfrac{k}{k+1}+\\dfrac{k+1}{k}\\right)$이고, 결과를 $\\dfrac{a}{10}$과 비교한다.\\n풀이 방향: 일반항을 통분한 뒤 부분분수로 바꾸어 합을 계산한다.\\n정석 풀이: $\\dfrac{k}{k+1}+\\dfrac{k+1}{k}=\\dfrac{k^2+(k+1)^2}{k(k+1)}=\\dfrac{2k^2+2k+1}{k(k+1)}=2+\\dfrac{1}{k(k+1)}$이다. 또한 $\\dfrac{1}{k(k+1)}=\\dfrac{1}{k}-\\dfrac{1}{k+1}$이므로 전체 합은 $\\sum_{k=1}^{9}2+\\sum_{k=1}^{9}\\left(\\dfrac{1}{k}-\\dfrac{1}{k+1}\\right)$이다. 첫 번째 합은 $18$이고, 두 번째 합은 $1-\\dfrac{1}{10}=\\dfrac{9}{10}$이다. 따라서 전체 합은 $18+\\dfrac{9}{10}=\\dfrac{189}{10}$이므로 $a=189$이다.\\n따라서 정답은 ②이다."
   },
   {
     id: 15,
@@ -304,7 +304,7 @@ window.questionBank = [
     image: "assets/images/25_제일고_1학기_기말_고2_수학I/q16.png",
     choices: ["12", "16", "20", "24", "28"],
     answer: "④",
-    solution: "[키포인트] 삼각함수 그래프의 대칭성을 이용하여 교점들의 합을 주기에 관한 식으로 표현한다.\\n조건 정리: 함수 $y = \\sin\\dfrac{k}{2}x$의 주기 $T$는 $\\dfrac{2\\pi}{\\dfrac{k}{2}} = \\dfrac{4\\pi}{k}$이다.\\n정석 풀이:\\n1단계: 대칭성을 이용해 $\\alpha + \\beta$와 $\\gamma + \\delta$를 구한다.\\n사인 그래프의 첫 번째 양의 반주기 $[0, \\dfrac{T}{2}]$에서 직선 $y=a$와의 두 교점 $\\alpha, \\beta$는 대칭축인 마루 $x = \\dfrac{T}{4}$에 대해 대칭이다.\\n$\\dfrac{\\alpha + \\beta}{2} = \\dfrac{T}{4} \\implies \\alpha + \\beta = \\dfrac{T}{2}$\\n또한, 음의 반주기 $[\\dfrac{T}{2}, T]$에서 직선 $y=-a$와의 두 교점 $\\gamma, \\delta$는 대칭축인 골 $x = \\dfrac{3T}{4}$에 대해 대칭이다.\\n$\\dfrac{\\gamma + \\delta}{2} = \\dfrac{3T}{4} \\implies \\gamma + \\delta = \\dfrac{3T}{2}$\\n\\n2단계: 네 교점의 전체 합을 주기에 대한 식으로 나타낸다.\\n$\\alpha + \\beta + \\gamma + \\delta = \\dfrac{T}{2} + \\dfrac{3T}{2} = 2T$\\n주기 $T = \\dfrac{4\\pi}{k}$를 대입하면 합은 $\\dfrac{8\\pi}{k}$가 된다.\\n\\n3단계: 주어진 탄젠트 조건식을 이용하여 양수 $k$의 최댓값을 구한다.\\n$\\tan\\left(\\dfrac{8\\pi}{k}\right) = \\sqrt{3} \\implies \\dfrac{8\\pi}{k} = n\\pi + \\dfrac{\\pi}{3} = \\dfrac{3n+1}{3}\\pi$ (단, $n$은 정수)\\n이를 $k$에 관하여 정리하면 다음과 같다.\\n$k = \\dfrac{24}{3n+1}$\\n양수 $k$가 최대가 되기 위해서는 분모 $3n+1$이 최소인 양수여야 하므로, 정수 $n = 0$일 때 분모가 $1$로 최소가 된다.\\n따라서 양수 $k$의 최댓값은 $\\dfrac{24}{3(0)+1} = 24$이다.\\n따라서 정답은 ④이다."
+    solution: "[키포인트] 사인 그래프의 대칭성을 이용하면 네 교점의 $x$좌표 합을 주기로 나타낼 수 있다.\\n조건 정리: $y=\\sin\\dfrac{k}{2}x$의 주기는 $T=\\dfrac{4\\pi}{k}$이다.\\n풀이 방향: $y=a$와 만나는 처음 두 점, $y=-a$와 만나는 처음 두 점은 각각 마루와 골을 기준으로 대칭임을 이용한다.\\n정석 풀이: $0<a<1$이므로 $y=a$와의 처음 두 교점 $\\alpha$, $\\beta$는 첫 번째 양의 반주기 안에서 마루 $x=\\dfrac{T}{4}$를 기준으로 대칭이다. 따라서 $\\dfrac{\\alpha+\\beta}{2}=\\dfrac{T}{4}$이므로 $\\alpha+\\beta=\\dfrac{T}{2}$이다. 또 $y=-a$와의 처음 두 교점 $\\gamma$, $\\delta$는 첫 번째 음의 반주기 안에서 골 $x=\\dfrac{3T}{4}$를 기준으로 대칭이다. 따라서 $\\dfrac{\\gamma+\\delta}{2}=\\dfrac{3T}{4}$이므로 $\\gamma+\\delta=\\dfrac{3T}{2}$이다. 그러므로 $\\alpha+\\beta+\\gamma+\\delta=2T=\\dfrac{8\\pi}{k}$이다. 주어진 조건에서 $\\tan\\dfrac{8\\pi}{k}=\\sqrt3$이므로 $\\dfrac{8\\pi}{k}=n\\pi+\\dfrac{\\pi}{3}$이다. 따라서 $k=\\dfrac{24}{3n+1}$이고, 양수 $k$가 최대가 되려면 양수인 분모 $3n+1$이 가장 작아야 한다. $n=0$일 때 $k=24$가 최대이다.\\n따라서 정답은 ④이다."
   },
   {
     id: 17,
