@@ -352,8 +352,8 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       env.DB.prepare(`
         INSERT INTO exam_sessions (
           id, student_id, exam_title, score, exam_date, question_count,
-          class_id, archive_file, created_at, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+          class_id, archive_file, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
         ON CONFLICT(id) DO UPDATE SET
           score = excluded.score,
           question_count = excluded.question_count,
