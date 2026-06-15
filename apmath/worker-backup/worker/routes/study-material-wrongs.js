@@ -59,7 +59,7 @@ async function requireTeacher(request, env, teacher) {
 }
 
 function pickStudentToken(request, url, body = {}) {
-  return text(body.token || url.searchParams.get('token') || request.headers.get('X-Student-Token'));
+  return text(body.token || body.student_token || url.searchParams.get('token') || request.headers.get('X-Student-Token'));
 }
 
 async function buildStudentPortalToken(studentId, studentPin) {
@@ -185,6 +185,35 @@ async function getMaterialWithAssignment(env, assignmentId) {
     LEFT JOIN classes c ON c.id = cma.class_id
     WHERE cma.id = ?
   `).bind(assignmentId).first();
+}
+
+async function ensureStudentMaterialSubmission(env, assignment, student) {
+  let submission = await env.DB.prepare(`
+    SELECT *
+    FROM student_material_submissions
+    WHERE assignment_id = ? AND student_id = ?
+  `).bind(assignment.id, student.id).first();
+  if (submission) return submission;
+
+  const member = await env.DB.prepare(`
+    SELECT 1
+    FROM class_students
+    WHERE class_id = ? AND student_id = ?
+    LIMIT 1
+  `).bind(assignment.class_id, student.id).first();
+  if (!member) return null;
+
+  await env.DB.prepare(`
+    INSERT OR IGNORE INTO student_material_submissions
+      (id, assignment_id, student_id)
+    VALUES (?, ?, ?)
+  `).bind(makeId('sms'), assignment.id, student.id).run();
+
+  return env.DB.prepare(`
+    SELECT *
+    FROM student_material_submissions
+    WHERE assignment_id = ? AND student_id = ?
+  `).bind(assignment.id, student.id).first();
 }
 
 async function findAssignmentTeacherId(env, assignment) {
@@ -576,12 +605,15 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
         COALESCE(sms.is_submitted, 0) AS is_submitted,
         COALESCE(sms.is_no_wrong, 0) AS is_no_wrong,
         sms.submitted_at
-      FROM student_material_submissions sms
-      JOIN class_material_assignments cma ON cma.id = sms.assignment_id
+      FROM class_students cs
+      JOIN class_material_assignments cma ON cma.class_id = cs.class_id
       JOIN study_materials sm ON sm.id = cma.material_id
       LEFT JOIN classes c ON c.id = cma.class_id
-      WHERE sms.student_id = ?
-        AND COALESCE(sms.status, 'active') != 'deleted'
+      LEFT JOIN student_material_submissions sms
+        ON sms.assignment_id = cma.id
+       AND sms.student_id = cs.student_id
+       AND COALESCE(sms.status, 'active') != 'deleted'
+      WHERE cs.student_id = ?
         AND COALESCE(cma.status, 'active') = 'active'
         AND COALESCE(sm.status, 'active') = 'active'
       ORDER BY COALESCE(sms.is_submitted, 0) ASC, cma.assigned_date DESC, cma.created_at DESC
@@ -596,11 +628,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
     if (!assignmentId) return fail('assignment_id required');
     const assignment = await getMaterialWithAssignment(env, assignmentId);
     if (!assignment) return fail('Assignment not found', 404);
-    const submission = await env.DB.prepare(`
-      SELECT *
-      FROM student_material_submissions
-      WHERE assignment_id = ? AND student_id = ?
-    `).bind(assignmentId, student.id).first();
+    const submission = await ensureStudentMaterialSubmission(env, assignment, student);
     if (!submission) return fail('Submission not found', 404);
     const wrongs = await env.DB.prepare(`
       SELECT question_no
@@ -644,11 +672,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
     if (!assignmentId) return fail('assignment_id required');
     const assignment = await getMaterialWithAssignment(env, assignmentId);
     if (!assignment) return fail('Assignment not found', 404);
-    const submission = await env.DB.prepare(`
-      SELECT *
-      FROM student_material_submissions
-      WHERE assignment_id = ? AND student_id = ?
-    `).bind(assignmentId, student.id).first();
+    const submission = await ensureStudentMaterialSubmission(env, assignment, student);
     if (!submission) return fail('Submission not found', 404);
     const isNoWrong = Number(body.is_no_wrong || 0) === 1 ? 1 : 0;
     let wrongNumbers;
