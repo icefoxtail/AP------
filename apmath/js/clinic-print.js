@@ -4,6 +4,7 @@
  */
 
 const AP_CLINIC_PRINT_STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
+const AP_CLINIC_PRINT_ASSIGNMENT_FROM_DATE = '2026-06-01';
 
 function clinicPrintEscapeHtml(value) {
     if (typeof apEscapeHtml === 'function') return apEscapeHtml(value);
@@ -67,6 +68,15 @@ function clinicPrintGetClass(classId) {
     return (state.db.classes || []).find(c => String(c.id) === String(classId)) || null;
 }
 
+function clinicPrintGetActiveClasses() {
+    return (state.db.classes || [])
+        .filter(cls => Number(cls.is_active ?? 1) !== 0)
+        .sort((a, b) =>
+            String(a.grade || '').localeCompare(String(b.grade || ''), 'ko') ||
+            String(a.name || '').localeCompare(String(b.name || ''), 'ko')
+        );
+}
+
 function clinicPrintGetClassStudents(classId) {
     if (typeof apmsGetStudentsForClass === 'function') {
         return apmsGetStudentsForClass(classId)
@@ -87,36 +97,119 @@ function clinicPrintGetSessionArchiveFile(session) {
     return String(session?.archive_file || '').trim();
 }
 
+function clinicPrintIsOnOrAfterFromDate(value) {
+    const date = String(value || '').slice(0, 10);
+    if (!date) return true;
+    return date >= AP_CLINIC_PRINT_ASSIGNMENT_FROM_DATE;
+}
+
+function clinicPrintMergeClassAssignments(rows) {
+    if (!Array.isArray(rows) || !rows.length) return;
+    if (!state.db) state.db = {};
+    const current = Array.isArray(state.db.class_exam_assignments) ? state.db.class_exam_assignments : [];
+    const byKey = new Map(current.map(row => [
+        String(row.id || `${row.class_id}|${row.exam_date}|${row.exam_title}|${row.archive_file || ''}`),
+        row
+    ]));
+    rows.forEach(row => {
+        const key = String(row.id || `${row.class_id}|${row.exam_date}|${row.exam_title}|${row.archive_file || ''}`);
+        byKey.set(key, row);
+    });
+    state.db.class_exam_assignments = [...byKey.values()];
+}
+
+async function clinicPrintRefreshClassAssignments(classId) {
+    if (!classId || typeof api === 'undefined' || typeof api.get !== 'function') return false;
+    try {
+        const res = await api.get(`class-exam-assignments?class=${encodeURIComponent(classId)}`);
+        clinicPrintMergeClassAssignments(res.assignments || res.items || []);
+        return true;
+    } catch (e) {
+        console.warn('[clinic-print] class exam assignment refresh failed:', e);
+        return false;
+    }
+}
+
+function clinicPrintGetClassExamAssignments(classId) {
+    return (state.db.class_exam_assignments || state.db.exam_assignments || [])
+        .filter(row => String(row.class_id || '') === String(classId || ''))
+        .filter(row => clinicPrintIsOnOrAfterFromDate(row.exam_date || row.created_at || row.updated_at));
+}
+
+function clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFile, questionCount) {
+    const normalizedArchive = clinicPrintNormalizeArchiveFile(archiveFile || '');
+    const exactKey = clinicPrintMakeExamKey(examDate, examTitle, normalizedArchive, questionCount);
+    if (grouped[exactKey]) return grouped[exactKey];
+
+    return Object.values(grouped).find(group =>
+        String(group.examDate || '') === String(examDate || '') &&
+        String(group.examTitle || '') === String(examTitle || '') &&
+        clinicPrintNormalizeArchiveFile(group.archiveFile || '') === normalizedArchive
+    ) || null;
+}
+
+function clinicPrintEnsureExamGroup(grouped, source) {
+    const archiveFile = clinicPrintNormalizeArchiveFile(source.archiveFile || source.archive_file || '');
+    const questionCount = Number(source.questionCount || source.question_count || 0);
+    const examDate = source.examDate || source.exam_date || '';
+    const examTitle = source.examTitle || source.exam_title || '시험명 없음';
+    const matched = clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFile, questionCount);
+    if (matched) {
+        if (!matched.archiveFile && archiveFile) matched.archiveFile = archiveFile;
+        if (!Number(matched.questionCount || 0) && questionCount) matched.questionCount = questionCount;
+        if (source.assignment) matched.assignment = source.assignment;
+        matched.printable = !!matched.archiveFile;
+        return matched;
+    }
+
+    const key = clinicPrintMakeExamKey(examDate, examTitle, archiveFile, questionCount);
+    grouped[key] = {
+        examKey: key,
+        examTitle,
+        examDate,
+        archiveFile,
+        questionCount,
+        sessions: [],
+        wrongCount: 0,
+        printable: !!archiveFile,
+        assignment: source.assignment || null
+    };
+    return grouped[key];
+}
+
 function clinicPrintGetClassExamGroups(classId) {
     const studentIds = new Set(clinicPrintGetClassStudents(classId).map(student => String(student.id)));
     const grouped = {};
 
+    clinicPrintGetClassExamAssignments(classId).forEach(assignment => {
+        clinicPrintEnsureExamGroup(grouped, {
+            examTitle: assignment.exam_title || '',
+            examDate: assignment.exam_date || '',
+            archiveFile: assignment.archive_file || '',
+            questionCount: Number(assignment.question_count || 0),
+            assignment
+        });
+    });
+
     (state.db.exam_sessions || []).forEach(session => {
         if (!studentIds.has(String(session.student_id))) return;
+        if (!clinicPrintIsOnOrAfterFromDate(session.exam_date || session.created_at || session.updated_at)) return;
 
         const archiveFile = clinicPrintGetSessionArchiveFile(session);
         const questionCount = Number(session.question_count || 0);
-        const key = clinicPrintMakeExamKey(session.exam_date, session.exam_title, archiveFile, questionCount);
+        const group = clinicPrintEnsureExamGroup(grouped, {
+            examTitle: session.exam_title || '',
+            examDate: session.exam_date || '',
+            archiveFile,
+            questionCount
+        });
 
-        if (!grouped[key]) {
-            grouped[key] = {
-                examKey: key,
-                examTitle: session.exam_title || '시험명 없음',
-                examDate: session.exam_date || '',
-                archiveFile,
-                questionCount,
-                sessions: [],
-                wrongCount: 0,
-                printable: !!archiveFile
-            };
-        }
-
-        grouped[key].sessions.push(session);
-        grouped[key].wrongCount += clinicPrintGetWrongIdsBySession(session.id).length;
+        group.sessions.push(session);
+        group.wrongCount += clinicPrintGetWrongIdsBySession(session.id).length;
     });
 
     return Object.values(grouped)
-        .filter(group => group.sessions.length > 0)
+        .filter(group => group.printable || group.sessions.length > 0)
         .sort((a, b) => String(b.examDate || '').localeCompare(String(a.examDate || '')) || String(b.examTitle || '').localeCompare(String(a.examTitle || ''), 'ko'));
 }
 
@@ -127,11 +220,13 @@ function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {
     return (state.db.exam_sessions || []).filter(session => {
         if (!studentIds.has(String(session.student_id))) return false;
         const key = clinicPrintMakeExamKey(session.exam_date, session.exam_title, clinicPrintGetSessionArchiveFile(session), Number(session.question_count || 0));
+        const sessionQuestionCount = Number(session.question_count || 0);
+        const countsCompatible = !group.questionCount || !sessionQuestionCount || sessionQuestionCount === group.questionCount;
         return key === examGroupKey || (
             String(session.exam_date || '') === group.examDate &&
             String(session.exam_title || '') === group.examTitle &&
             String(clinicPrintGetSessionArchiveFile(session) || '') === String(group.archiveFile || '') &&
-            Number(session.question_count || 0) === group.questionCount
+            countsCompatible
         );
     });
 }
@@ -394,6 +489,11 @@ function openClinicCenter(classId = '') {
     const hasClassId = !!String(classId || '').trim();
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
 
+    if (!hasClassId) {
+        openClinicClassPicker();
+        return;
+    }
+
     showModal('클리닉', `
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
             <button class="btn apms-button apms-button--quiet" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:500; box-shadow:none;" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
@@ -407,10 +507,44 @@ function openClinicCenter(classId = '') {
     `);
 }
 
+function openClinicClassPicker() {
+    const classes = clinicPrintGetActiveClasses();
+    const currentClassId = String(state.ui?.currentClassId || '');
+
+    if (!classes.length) {
+        toast('선택할 반이 없습니다.', 'warn');
+        return;
+    }
+
+    const classRows = classes.map(cls => {
+        const safeClassId = clinicPrintEscapeJsString(cls.id);
+        const selected = String(cls.id) === currentClassId;
+        const meta = [cls.grade, cls.teacher_name, cls.schedule_days || cls.day_group, cls.time_label]
+            .filter(Boolean)
+            .join(' · ');
+        return `
+            <button type="button" class="btn apms-button apms-button--quiet" style="width:100%; min-height:54px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:3px; padding:10px 12px; border-radius:12px; border:1px solid ${selected ? 'var(--primary)' : 'var(--border)'}; background:${selected ? 'rgba(26,92,255,0.08)' : 'var(--surface)'}; color:var(--text); box-shadow:none;" onclick="openClinicCenter('${safeClassId}')">
+                <span style="font-size:14px; font-weight:600; line-height:1.35;">${clinicPrintEscapeHtml(cls.name || '반 이름 없음')}</span>
+                <span style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.35;">${clinicPrintEscapeHtml(meta || '반 정보 없음')}</span>
+            </button>
+        `;
+    }).join('');
+
+    showModal('클리닉 반 선택', `
+        <div style="display:flex; flex-direction:column; gap:10px; max-height:62vh; overflow:auto;">
+            ${classRows}
+        </div>
+    `);
+}
+
 function clinicPrintOpenSimilarMenu(classId = '') {
     const hasClassId = !!String(classId || '').trim();
 
     if (hasClassId) {
+        if (typeof openClinicSimilarForClass === 'function') {
+            openClinicSimilarForClass(classId);
+            return;
+        }
         if (typeof openClinicBasketForClass === 'function') {
             openClinicBasketForClass(classId);
             return;
@@ -427,8 +561,11 @@ function clinicPrintOpenSimilarMenu(classId = '') {
     toast('준비 중입니다.', 'info');
 }
 
-function openClinicPrintCenter(classId) {
+async function openClinicPrintCenter(classId, options = {}) {
     const cls = clinicPrintGetClass(classId);
+    if (!options.skipAssignmentRefresh) {
+        await clinicPrintRefreshClassAssignments(classId);
+    }
     const groups = clinicPrintGetClassExamGroups(classId);
     const printableGroups = groups.filter(group => group.printable);
     const initialKeys = printableGroups.length ? [printableGroups[0].examKey] : [];

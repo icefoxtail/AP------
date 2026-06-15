@@ -3203,14 +3203,15 @@ async function handleApiRequest(request, env) {
 
           // Teacher-class repair is intentionally not run from read-only initial-data.
 
-          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
+          let stds, clss, map, att, hw, exs, wrs, cea, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
+          cea = { results: [] };
           let ttAllClassStudents = { results: [] };
           let ttAllStudents = { results: [] };
           let ttAllClassTextbooks = { results: [] };
           const foundationData = await loadFoundationInitialData(env, teacher);
 
           if (isAdminUser(teacher)) {
-            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses] = await Promise.all([
+            [stds, clss, map, att, hw, exs, wrs, cea, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
               env.DB.prepare('SELECT * FROM class_students').all(),
@@ -3227,6 +3228,7 @@ async function handleApiRequest(request, env) {
                   LIMIT 500
                 )
               `).all(),
+              env.DB.prepare('SELECT * FROM class_exam_assignments ORDER BY exam_date DESC, updated_at DESC LIMIT 500').all(),
               env.DB.prepare("SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC LIMIT 500').all(),
@@ -3282,6 +3284,7 @@ async function handleApiRequest(request, env) {
                 homework: [],
                 exam_sessions: [],
                 wrong_answers: [],
+                class_exam_assignments: [],
                 attendance_history: [],
                 homework_history: [],
                 consultations: [],
@@ -3303,9 +3306,10 @@ async function handleApiRequest(request, env) {
             }
             
             const cMarkers = classIds.map(() => '?').join(',');
-            [clss, map, txt, cdr, cdp] = await Promise.all([
+            [clss, map, cea, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare(`SELECT * FROM classes WHERE id IN (${cMarkers})`).bind(...classIds).all(),
               env.DB.prepare(`SELECT * FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all(),
+              env.DB.prepare(`SELECT * FROM class_exam_assignments WHERE class_id IN (${cMarkers}) ORDER BY exam_date DESC, updated_at DESC LIMIT 500`).bind(...classIds).all(),
               env.DB.prepare(`SELECT * FROM class_textbooks WHERE class_id IN (${cMarkers}) ORDER BY class_id ASC, status ASC, sort_order ASC`).bind(...classIds).all(),
               env.DB.prepare(`SELECT * FROM class_daily_records WHERE class_id IN (${cMarkers}) ORDER BY date DESC LIMIT 1000`).bind(...classIds).all(),
               env.DB.prepare(`SELECT * FROM class_daily_progress WHERE class_id IN (${cMarkers}) ORDER BY record_id ASC LIMIT 3000`).bind(...classIds).all()
@@ -3354,6 +3358,7 @@ async function handleApiRequest(request, env) {
             homework: hw.results,
             exam_sessions: exs.results,
             wrong_answers: wrs.results,
+            class_exam_assignments: cea.results,
             attendance_history: attHis.results,
             homework_history: hwHis.results,
             consultations: cns.results,
