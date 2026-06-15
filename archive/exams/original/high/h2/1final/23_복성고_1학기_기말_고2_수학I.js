@@ -337,7 +337,7 @@ window.questionBank = [
       "$12\\sqrt6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원에 내접하는 사각형의 넓이는 브라마굽타 공식으로 구할 수 있다.\n조건 정리: 네 변의 길이는 $2,3,5,6$이다.\n풀이 방향: 반둘레 $s$를 구한 뒤 $S=\\sqrt{(s-a)(s-b)(s-c)(s-d)}$를 적용한다.\n정석 풀이: $s=\\dfrac{2+3+5+6}{2}=8$이다.\n따라서 넓이 $S=\\sqrt{(8-2)(8-3)(8-5)(8-6)}=\\sqrt{6\\cdot5\\cdot3\\cdot2}=\\sqrt{180}=6\\sqrt5$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 원에 내접한 사각형은 마주 보는 각의 합이 $180^\\circ$이므로 두 삼각형으로 나누어 같은 사인을 이용한다.\n조건 정리: $AB=2$, $BC=3$, $CD=5$, $DA=6$이고 사각형 $ABCD$는 원에 내접한다.\n풀이 방향: 대각선 $AC$를 그어 $\\angle ABC=\\theta$라 두고, $\\angle ADC=\\pi-\\theta$를 이용해 대각선의 길이를 두 방법으로 표현한다.\n정석 풀이: 삼각형 $ABC$에서 코사인법칙을 쓰면 $AC^2=2^2+3^2-2\\cdot2\\cdot3\\cos\\theta=13-12\\cos\\theta$이다. 원에 내접하므로 $\\angle ADC=\\pi-\\theta$이고, 삼각형 $ADC$에서 $AC^2=5^2+6^2-2\\cdot5\\cdot6\\cos(\\pi-\\theta)=61+60\\cos\\theta$이다. 두 식이 같은 대각선 $AC^2$를 나타내므로 $13-12\\cos\\theta=61+60\\cos\\theta$이고, $\\cos\\theta=-\\dfrac23$이다. 따라서 $\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\dfrac{\\sqrt5}{3}$이다. 사각형의 넓이는 두 삼각형의 넓이의 합이므로 $S=\\dfrac12\\cdot2\\cdot3\\sin\\theta+\\dfrac12\\cdot5\\cdot6\\sin(\\pi-\\theta)=3\\sin\\theta+15\\sin\\theta=18\\sin\\theta=6\\sqrt5$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 15,
@@ -363,7 +363,7 @@ window.questionBank = [
       "$\\dfrac{\\sqrt6}{3}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 접선과 반지름의 수직 관계, 원주각과 중심각의 관계를 함께 사용한다.\n조건 정리: $PC$는 접선이므로 $OC\\perp PC$이고, $\\sin\\theta=\\dfrac{1}{3}$이다.\n풀이 방향: 직각삼각형 $OPC$에서 $\\angle BOC$와 연결한 뒤 원주각 $A$를 구한다.\n정석 풀이: 직각삼각형 $OPC$에서 $\\sin\\theta=\\dfrac{OC}{OP}=\\dfrac{1}{3}$이므로 $\\cos\\theta=\\dfrac{2\\sqrt2}{3}$이다.\n$OB$와 $OP$는 같은 직선 위에 있고 $OC\\perp PC$이므로 중심각 $\\angle BOC$와 $\\theta$의 관계를 이용하면 $\\sin\\angle BOC=\\cos\\theta=\\dfrac{2\\sqrt2}{3}$이다.\n점 $A$는 호 $BC$에 대한 원주각이므로 $\\angle BAC$는 중심각 $\\angle BOC$의 절반과 대응한다. 조건 $\\dfrac{\\pi}{2}<\\angle BOC<\\pi$를 함께 이용하면 $\\sin A=\\dfrac{\\sqrt6}{3}$으로 정리된다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 접선과 반지름의 수직 관계로 중심각을 구한 뒤, 중심각과 원주각의 관계를 이용한다.\n조건 정리: $PC$는 점 $C$에서의 접선이므로 $OC\\perp PC$이고, $\\angle BPC=\\theta$, $\\sin\\theta=\\dfrac13$이다.\n풀이 방향: 직각삼각형 $OPC$에서 $\\theta$와 $\\angle POC$의 관계를 구하고, $B,O,P$의 일직선 조건으로 $\\angle BOC$를 정한다.\n정석 풀이: 직각삼각형 $OPC$에서 $\\sin\\theta=\\dfrac{OC}{OP}=\\dfrac13$이므로 $\\cos\\theta=\\sqrt{1-\\dfrac19}=\\dfrac{2\\sqrt2}{3}$이다. 또 $\\angle OPC=\\theta$, $\\angle OCP=90^\\circ$이므로 $\\angle POC=\\dfrac\\pi2-\\theta$이다. 조건에서 $\\dfrac\\pi2<\\angle BOC<\\pi$이므로 $OB$는 $OP$의 반대쪽 반직선이고, $\\angle BOC=\\pi-\\angle POC=\\dfrac\\pi2+\\theta$이다. 따라서 $\\cos\\angle BOC=\\cos(\\dfrac\\pi2+\\theta)=-\\sin\\theta=-\\dfrac13$이다. 원주각 $A$는 중심각 $\\angle BOC$의 절반에 해당하므로 $A=\\dfrac12\\angle BOC$이다. 그러므로 $\\sin A=\\sqrt{\\dfrac{1-\\cos\\angle BOC}{2}}=\\sqrt{\\dfrac{1+\\dfrac13}{2}}=\\sqrt{\\dfrac23}=\\dfrac{\\sqrt6}{3}$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q15.png"
   },
   {
@@ -412,7 +412,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $1000=2^3\\cdot5^3$의 약수들을 지수쌍으로 나타낸다.\n조건 정리: $A_{1000}$의 원소는 $2^i5^j\\ (0\\le i,j\\le3)$ 꼴이다.\n풀이 방향: 네 항이 자연수 공비를 갖는 등비수열이 되려면 공비가 $2^u5^v$ 꼴이어야 한다.\n정석 풀이: 네 항의 지수쌍은 $(i,j),(i+u,j+v),(i+2u,j+2v),(i+3u,j+3v)$가 되어야 한다.\n모든 지수가 $0$ 이상 $3$ 이하이려면 가능한 $(u,v)$는 $(1,0)$, $(0,1)$, $(1,1)$뿐이다.\n$(u,v)=(1,0)$일 때 시작 지수는 $i=0$, $j=0,1,2,3$으로 4개이다. $(u,v)=(0,1)$일 때도 4개이다. $(u,v)=(1,1)$일 때는 시작 지수가 $(0,0)$뿐이므로 1개이다.\n따라서 전체 개수는 $4+4+1=9$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 약수를 $2^i5^j$로 나타내면 등비수열 조건이 지수쌍의 등차수열 조건으로 바뀐다.\n조건 정리: $1000=2^3\\cdot5^3$이므로 $A_{1000}=\\{2^i5^j\\mid 0\\le i\\le3,\\ 0\\le j\\le3\\}$이다.\n풀이 방향: 네 원소가 자연수 공비를 갖는 등비수열이 되려면 공비를 $2^u5^v$로 두고, 지수쌍 네 개가 범위 안에 들어가는 경우를 센다.\n정석 풀이: 공비가 자연수이므로 $r=2^u5^v$이고 $u,v$는 $0$ 이상의 정수이며 $(u,v)\\ne(0,0)$이다. 시작 원소를 $2^i5^j$라 하면 네 항의 지수쌍은 $(i,j)$, $(i+u,j+v)$, $(i+2u,j+2v)$, $(i+3u,j+3v)$이다. 모든 지수가 $0$ 이상 $3$ 이하이어야 하므로 $3u\\le3$, $3v\\le3$이고, 가능한 $(u,v)$는 $(1,0)$, $(0,1)$, $(1,1)$뿐이다. $(1,0)$이면 $i=0$이고 $j=0,1,2,3$이므로 4개, $(0,1)$이면 $j=0$이고 $i=0,1,2,3$이므로 4개, $(1,1)$이면 시작점은 $(0,0)$만 가능하므로 1개이다. 따라서 가능한 집합의 개수는 $4+4+1=9$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 18,
@@ -436,7 +436,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "④",
-    "solution": "[키포인트] 주기 조건으로 $a$의 형태를 정하고, 교점의 $x$좌표 합을 이용한다.\n조건 정리: $f(x)=\\sin ax$이고 $f(x+\\pi)=f(x)$이다.\n풀이 방향: $a$가 짝수임을 이용하여 $0\\le x<\\pi$에서 교점 좌표의 합을 일반식으로 나타낸다.\n정석 풀이: $f(x+\\pi)=f(x)$가 모든 $x$에서 성립하려면 $a\\pi$가 $2\\pi$의 정수배여야 하므로 $a=2k$이다.\n방정식 $\\sin ax=\\dfrac13$의 두 해는 한 주기마다 합이 $\\dfrac{\\pi}{a}$만큼의 형태로 반복되며, $0\\le x<\\pi$에는 $k$개의 주기가 들어간다.\n각 주기에서 두 해의 합을 더하면 전체 합은 $\\dfrac{(2k-1)\\pi}{2}=\\dfrac{(a-1)\\pi}{2}$이다.\n이 값이 $\\dfrac{13}{2}\\pi$이므로 $a-1=13$, 따라서 $a=14$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 주기 조건으로 $a$가 짝수임을 먼저 정하고, 한 주기마다 생기는 두 교점의 합을 정확히 누적한다.\n조건 정리: $f(x)=\\sin ax$이고 $f(x+\\pi)=f(x)$, $0\\le x<\\pi$에서 $\\sin ax=\\dfrac13$의 해들의 합이 $\\dfrac{13}{2}\\pi$이다.\n풀이 방향: $a=2k$로 두고 $t=ax$로 바꾸면 $0\\le t<2k\\pi$가 되므로, $k$개의 주기에서 해의 합을 계산한다.\n정석 풀이: $f(x+\\pi)=f(x)$가 모든 $x$에서 성립하려면 $\\sin(a x+a\\pi)=\\sin ax$이므로 $a\\pi$가 $2\\pi$의 정수배여야 한다. 따라서 $a=2k$이다. $\\sin t=\\dfrac13$의 첫 번째 주기 $0\\le t<2\\pi$에서 두 해를 $\\alpha$, $\\pi-\\alpha$라 하면 두 해의 합은 $\\pi$이다. $j$번째 주기에서는 두 해가 $\\alpha+2j\\pi$, $\\pi-\\alpha+2j\\pi$이므로 $t$값의 합은 $(4j+1)\\pi$이다. 이를 $x=\\dfrac{t}{a}$로 바꾸면 해당 주기의 $x$좌표 합은 $\\dfrac{(4j+1)\\pi}{a}$이다. $j=0,1,\\cdots,k-1$까지 더하면 전체 합은 $\\dfrac{\\pi}{a}\\{1+5+9+\\cdots+(4k-3)\\}=\\dfrac{\\pi}{2k}\\cdot k(2k-1)=\\dfrac{2k-1}{2}\\pi=\\dfrac{a-1}{2}\\pi$이다. 이 값이 $\\dfrac{13}{2}\\pi$이므로 $a-1=13$, 따라서 $a=14$이다.\n따라서 정답은 ④이다."
   },
   {
     "id": 19,
@@ -524,7 +524,7 @@ window.questionBank = [
     "content": "[서술형3] 그림과 같이 직각삼각형 $ABC$의 꼭짓점 $C$에서 빗변 $AB$에 내린 수선의 발을 $D$라 하자. 3개의 직각삼각형 $ADC$, $CDB$, $CAB$의 넓이가 이 순서로 등차수열을 이룰 때, $\\cos A$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$\\dfrac{\\sqrt3}{3}$",
-    "solution": "[키포인트] 세 삼각형의 넓이가 등차수열이라는 조건을 선분 $AD$, $DB$의 관계로 바꾼다.\n조건 정리: $CD\\perp AB$이고, 삼각형 $ADC$, $CDB$, $CAB$의 넓이가 이 순서로 등차수열이다.\n풀이 방향: $AD=a$, $DB=b$, $CD=h$로 두고 넓이 조건을 세운다.\n정석 풀이: 세 넓이는 각각 $\\dfrac12ah$, $\\dfrac12bh$, $\\dfrac12(a+b)h$이다.\n등차수열 조건에 의해 $2\\cdot\\dfrac12bh=\\dfrac12ah+\\dfrac12(a+b)h$이다.\n양변을 $\\dfrac12h$로 나누면 $2b=a+a+b$이므로 $b=2a$이다.\n직각삼각형에서 빗변에 내린 수선의 성질에 의해 $AC^2=AD\\cdot AB=a(a+b)=a(3a)=3a^2$이다. 따라서 $AC=\\sqrt3a$이고 $AB=a+b=3a$이다.\n그러므로 $\\cos A=\\dfrac{AC}{AB}=\\dfrac{\\sqrt3a}{3a}=\\dfrac{\\sqrt3}{3}$이다.\n따라서 구하는 값은 $\\dfrac{\\sqrt3}{3}$이다.",
+    "solution": "[키포인트] 세 삼각형의 넓이를 $AD$, $DB$, $CD$로 표현하고, 직각삼각형의 닮음 관계로 $AC$와 $AB$의 비를 구한다.\n조건 정리: $CD\\perp AB$이고, $[ADC]$, $[CDB]$, $[CAB]$가 이 순서로 등차수열을 이룬다.\n풀이 방향: $AD=a$, $DB=b$, $CD=h$로 두어 넓이 조건에서 $b=2a$를 얻고, 빗변에 내린 수선에서 생기는 닮음 성질을 적용한다.\n정석 풀이: 세 삼각형의 넓이는 각각 $\\dfrac12ah$, $\\dfrac12bh$, $\\dfrac12(a+b)h$이다. 세 수가 등차수열이므로 가운데 넓이의 2배는 양 끝 넓이의 합과 같아 $2\\cdot\\dfrac12bh=\\dfrac12ah+\\dfrac12(a+b)h$이다. 양변을 $\\dfrac12h$로 나누면 $2b=a+(a+b)$이므로 $b=2a$이다. 따라서 $AB=a+b=3a$이다. 이제 직각삼각형 $ABC$에서 $C$에서 빗변 $AB$에 내린 수선의 발이 $D$이므로, 닮음 관계에서 $AC^2=AD\\cdot AB$가 성립한다. 따라서 $AC^2=a\\cdot3a=3a^2$이고 $AC=\\sqrt3a$이다. 각 $A$에서 빗변은 $AB$, 인접한 변은 $AC$이므로 $\\cos A=\\dfrac{AC}{AB}=\\dfrac{\\sqrt3a}{3a}=\\dfrac{\\sqrt3}{3}$이다.\n따라서 구하는 값은 $\\dfrac{\\sqrt3}{3}$이다.",
     "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q22.png"
   }
 ];

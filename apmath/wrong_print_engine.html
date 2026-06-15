@@ -6,7 +6,7 @@
     <title>AP Math 오답 클리닉</title>
     <script>
         window.MathJax = {
-            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
@@ -45,6 +45,14 @@
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
         .q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 8px auto; break-inside: avoid; page-break-inside: avoid; }
+        .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
+        .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
+        .q-content img.img-fit-micro, .q-image-wrap img.img-fit-micro { max-width: 76%; max-height: 90px; }
+        .q-image-wrap.image-small img { max-width: 50%; max-height: 95px; }
+        .q-image-wrap.image-half img { max-width: 65%; max-height: 125px; }
+        .q-image-wrap.image-medium img { max-width: 80%; max-height: 150px; }
+        .q-image-wrap.image-large img { max-width: 94%; max-height: 190px; }
+        .q-image-wrap.image-full img { max-width: 100%; max-height: 240px; }
         .choices { margin-top: 10px; font-size: 9pt; }
         .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
         .choice-no { width: 20px; flex-shrink: 0; font-weight: bold; }
@@ -53,6 +61,8 @@
         .choices-compact .choice-item { min-width: 15%; }
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
         .choices-block .choice-item { padding: 0; background: transparent; border: none; border-radius: 0; }
+        .choices-boxed { margin-top: 8px; padding: 7px 9px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; }
+        .choices-boxed .choice-item { padding: 2px 0; background: transparent; border: none; border-radius: 0; }
         .answer-box { flex: 1; border: none; margin-top: 10px; background: transparent; }
         table.question-table { border-collapse: collapse; width: 100%; max-width: 280px; table-layout: fixed; font-size: 8.6pt; line-height: 1.35; margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left; }
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
@@ -61,6 +71,12 @@
         .question-note-box, .note-box, .box { margin: 4px 0 8px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
         .wrong-note { margin: 4px 0 8px; font-size: 7.3pt; color: #475569; line-height: 1.45; }
         .homework-check { margin-top: 10px; padding-top: 8px; border-top: 0.8pt solid #d1d5db; display: flex; gap: 16px; font-size: 8pt; font-weight: 700; }
+        .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
+        .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
+        .fit-micro { font-size: 8.1pt !important; line-height: 1.25 !important; }
+        .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
+        .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
+        .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
@@ -96,7 +112,9 @@ const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
 const state = { payload: null, banks: {}, mode: 'exam' };
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
+const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
+const CLINIC_QPP = 4;
 
 function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -175,11 +193,117 @@ function findQuestionInBank(bank, questionNo) {
 }
 
 function wrapLatex(text) {
-    return String(text || '');
+    if (text == null) return '';
+    let s = String(text);
+    s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
+    s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
+    const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
+    const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
+    const htmlTags = [];
+    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+        const token = `__HTMLTAG_${htmlTags.length}__`;
+        htmlTags.push(m);
+        return token;
+    });
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
+        if (idx % 2 === 1) return seg;
+        let t = seg;
+        t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));
+        return t.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }).join('');
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$|__HTMLTAG_\d+__)/g).map((seg, idx) => {
+        if (idx % 2 === 1) return seg;
+        const trimmed = seg.trim();
+        if (!trimmed) return seg;
+        const hasKorean = /[\uAC00-\uD7A3]/.test(seg);
+        const hasLatex = /\\[a-zA-Z]/.test(seg);
+        if (!hasKorean && /\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}/.test(seg)) return `$$${seg}$$`;
+        if (!hasKorean && hasLatex && /^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\!;:]+$/.test(trimmed)) return `$${trimmed}$`;
+        if (hasKorean && hasLatex) return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_\{?[^}\s]+\}?)?(?:\^\{?[^}\s]+\}?)?)/g, '$$$1$$');
+        return seg;
+    }).join('');
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
+        if (idx % 2 === 1) return seg;
+        return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
+    }).join('');
+    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
+    return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
 function raf() {
     return new Promise(resolve => requestAnimationFrame(resolve));
+}
+
+function autoCompress(container) {
+    let fontSize = 9.5;
+    let lineHeight = 1.58;
+    while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
+        fontSize = Math.max(fontSize - 0.3, 6.5);
+        lineHeight = Math.max(lineHeight - 0.08, 1.0);
+        container.style.fontSize = fontSize + 'pt';
+        container.style.lineHeight = String(lineHeight);
+    }
+}
+
+function fitQuestionBox(box) {
+    if (!box) return;
+    const textClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
+    const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
+    const imgs = Array.from(box.querySelectorAll('.q-content img, .q-image-wrap img'));
+
+    for (const tCls of textClasses) {
+        box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
+        if (tCls) box.classList.add(tCls);
+        if (box.scrollHeight <= box.clientHeight + 1) return;
+    }
+
+    for (const iCls of imgClasses) {
+        imgs.forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
+        if (iCls) imgs.forEach(img => img.classList.add(iCls));
+        if (box.scrollHeight <= box.clientHeight + 1) return;
+    }
+}
+
+const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full'];
+
+function autoImageSizeClassFor(img) {
+    const width = Number(img && img.naturalWidth) || 0;
+    const height = Number(img && img.naturalHeight) || 0;
+    if (!width || !height) return 'image-medium';
+    const ratio = width / height;
+    if (ratio >= 2.2) return 'image-full';
+    if (ratio >= 1.25) return 'image-large';
+    if (ratio >= 0.8) return 'image-small';
+    return 'image-medium';
+}
+
+function waitForQuestionImage(img) {
+    if (!img || img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+        let done = false;
+        const finish = () => {
+            if (done) return;
+            done = true;
+            resolve();
+        };
+        img.addEventListener('load', finish, { once: true });
+        img.addEventListener('error', finish, { once: true });
+        setTimeout(finish, 1200);
+    });
+}
+
+async function applyAutoImageSizeClasses(root) {
+    const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
+    await Promise.all(wraps.map(async wrap => {
+        if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
+        const img = wrap.querySelector('img');
+        if (!img) {
+            wrap.classList.add('image-medium');
+            return;
+        }
+        await waitForQuestionImage(img);
+        wrap.classList.add(autoImageSizeClassFor(img));
+    }));
 }
 
 function extractChoice(choice) {
@@ -191,8 +315,15 @@ function stripChoicePrefix(choice) {
 }
 
 function detectChoiceRenderMode(choices) {
-    const longText = (choices || []).some(c => stripChoicePrefix(extractChoice(c)).length > 18);
-    return longText ? 'block' : 'compact';
+    const texts = (choices || []).map(c => stripChoicePrefix(extractChoice(c)).trim());
+    const stripped = texts.map(t => t.replace(/\$\$[\s\S]*?\$\$/g, '~').replace(/\$[^$\n]*?\$/g, '~').trim());
+    const avgLen = stripped.reduce((sum, text) => sum + text.length, 0) / Math.max(stripped.length, 1);
+    const hasLineBreak = texts.some(t => /\\n|\n|<br/i.test(t));
+    const hasVeryLong = stripped.some(t => t.length > 36);
+    const hasMultiMarker = texts.some(t => (t.match(/[\u2460-\u2464]|[\u3131-\u314E]\.|[\uAC00-\uD7A3]\./g) || []).length >= 2);
+    if (hasMultiMarker) return 'boxed';
+    if (hasVeryLong || hasLineBreak || avgLen > 28) return 'block';
+    return stripped.some(t => t.length > 20) ? 'block' : 'compact';
 }
 
 function renderChoicesHTML(q) {
@@ -236,6 +367,96 @@ function normalizeQuestionNotes(html) {
     });
 }
 
+function protectRenderSegments(html) {
+    const tokens = [];
+    const save = (match) => {
+        const token = `__PROTECTED_SEGMENT_${tokens.length}__`;
+        tokens.push(match);
+        return token;
+    };
+    let protectedHtml = String(html || '')
+        .replace(/<div[^>]*class=["'][^"']*(?:question-table-wrap|question-note-box|box)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, save)
+        .replace(/<table[\s\S]*?<\/table>/gi, save)
+        .replace(/\$\$[\s\S]*?\$\$/g, save)
+        .replace(/\$[^$\n]*?\$/g, save);
+    return {
+        html: protectedHtml,
+        restore(value) {
+            let restored = String(value || '');
+            for (let pass = 0; pass < tokens.length + 2 && /__PROTECTED_SEGMENT_\d+__/.test(restored); pass++) {
+                restored = restored.replace(/__PROTECTED_SEGMENT_(\d+)__/g, (match, i) => {
+                    const idx = Number(i);
+                    if (tokens[idx] !== undefined) return tokens[idx];
+                    console.warn('[wrong_print_engine] protected segment restore failed:', match);
+                    return '';
+                });
+            }
+            if (/__PROTECTED_SEGMENT_\d+__/.test(restored)) {
+                console.warn('[wrong_print_engine] protected segment remained after restore:', restored);
+            }
+            return restored;
+        }
+    };
+}
+
+function normalizeViewBlocks(html) {
+    if (!html) return '';
+    const protectedState = protectRenderSegments(html);
+    let out = protectedState.html;
+
+    out = out.replace(
+        /((?:<br\s*\/?>\s*)*)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
+        (match, breaks, body) => {
+            const plain = body.replace(/<[^>]+>/g, '').trim();
+            const markerCount = (plain.match(/[\u3131-\u314E]\.|[\uAC00-\uD7A3]\.|[\u2460-\u2464]/g) || []).length;
+            if (plain.length < 60 && markerCount < 2) return match;
+            const label = /조건\s*:/.test(match) ? '조건' : (/자료\s*:/.test(match) ? '자료' : '보기');
+            return `${breaks}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
+        }
+    );
+
+    out = out.replace(
+        /((?:<br\s*\/?>\s*)*)((?:[\u3131-\u314E]\.\s*[\s\S]*?){2,})(?=(?:<br\s*\/?>\s*){2,}|$)/g,
+        (match, breaks, body) => {
+            const plain = body.replace(/<[^>]+>/g, '').trim();
+            const markerCount = (plain.match(/[\u3131-\u314E]\./g) || []).length;
+            if (plain.length < 60 || markerCount < 2) return match;
+            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
+        }
+    );
+
+    out = out.replace(
+        /((?:<br\s*\/?>\s*)*)((?:[\u2460-\u2464]\s*[\s\S]*?[\u2460-\u2464]\s*[\s\S]*?[\u2460-\u2464][\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}|$)/g,
+        (match, breaks, body) => {
+            const plain = body.replace(/<[^>]+>/g, '').trim();
+            const markerCount = (plain.match(/[\u2460-\u2464]/g) || []).length;
+            if (plain.length < 60 || markerCount < 3) return match;
+            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
+        }
+    );
+
+    return protectedState.restore(out);
+}
+
+function sanitizeProtectedSegments(html) {
+    const value = String(html || '');
+    if (!/__PROTECTED_SEGMENT_\d+__/.test(value)) return value;
+    console.warn('[wrong_print_engine] removing leaked protected segment token:', value);
+    return value.replace(/__PROTECTED_SEGMENT_\d+__/g, '');
+}
+
+function formatQuestionForRender(rawContent, q) {
+    return sanitizeProtectedSegments(
+        normalizeQuestionNotes(
+            normalizeViewBlocks(
+                normalizeQuestionTables(
+                    formatQuestionContent(wrapLatex(rawContent), q)
+                )
+            )
+        )
+    );
+}
+
 function stripInlineImagesFromContent(content, hasImageField) {
     if (!content) return '';
     if (!hasImageField) return content;
@@ -247,7 +468,9 @@ function stripInlineImagesFromContent(content, hasImageField) {
 function renderQuestionImageHTML(q) {
     const image = q.image || q.imageUrl || q.img || '';
     if (!image) return '';
-    return `<div class="q-image-wrap"><img src="${escapeHtml(image)}" alt=""></div>`;
+    const size = ['small', 'half', 'medium', 'large', 'full'].includes(q.imageSize) ? q.imageSize : '';
+    const sizeClass = size ? ` image-${size}` : '';
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(image)}" alt=""></div>`;
 }
 
 function getQuestionAnswer(q) {
@@ -323,11 +546,11 @@ function makePage(area, type, title, metaLeft, metaRight, pageNumber) {
 function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
     const hasImageField = !!(q.image || q.imageUrl || q.img);
     const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
-    const formattedContent = normalizeQuestionNotes(normalizeQuestionTables(formatQuestionContent(wrapLatex(rawContent))));
+    const formattedContent = formatQuestionForRender(rawContent, q);
     const imageHTML = renderQuestionImageHTML(q);
     const choicesHTML = state.mode === 'exam' ? renderChoicesHTML(q) : '';
     const wrongNote = showWrongNote && q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : '';
-    const answer = state.mode === 'ans' || state.mode === 'sol' ? `<div style="margin-top:8px;font-weight:bold;color:red;">[정답] ${wrapLatex(getQuestionAnswer(q) || '–')}</div>` : '';
+    const answer = state.mode === 'ans' || state.mode === 'sol' ? `<div style="margin-top:8px;font-weight:bold;color:red;">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div>` : '';
     const solution = state.mode === 'sol' ? `<div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;margin-top:8px;font-size:8.5pt;line-height:1.55;">${wrapLatex(getQuestionSolution(q) || '해설이 없습니다.')}</div>` : '';
     return `<div class="q-box${state.mode === 'sol' ? ' sol-box' : ''}">
         <div class="q-num">${displayNo}.</div>
@@ -358,64 +581,187 @@ async function loadAllQuestionBanks(payload) {
         }
     }
 }
-
-function paginateItems(items, perPage = 4) {
-    const pages = [];
-    for (let i = 0; i < items.length; i += perPage) {
-        pages.push(items.slice(i, i + perPage));
-    }
-    return pages;
+function htmlToElement(html) {
+    const template = document.createElement('template');
+    template.innerHTML = String(html || '').trim();
+    return template.content.firstElementChild;
 }
 
-function renderExamBlocks(body, items) {
-    const grid = document.createElement('div');
-    grid.className = 'grid-container';
-    const left = document.createElement('div');
-    left.className = 'grid-col';
-    const right = document.createElement('div');
-    right.className = 'grid-col';
-    grid.appendChild(left);
-    grid.appendChild(right);
-    const split = Math.ceil(items.length / 2);
-    items.slice(0, split).forEach((item, idx) => left.insertAdjacentHTML('beforeend', buildQuestionBoxHTML(item, idx + 1, true)));
-    items.slice(split).forEach((item, idx) => right.insertAdjacentHTML('beforeend', buildQuestionBoxHTML(item, split + idx + 1, true)));
-    body.appendChild(grid);
+function getGroupTitle(defaultTitle) {
+    return defaultTitle || (state.payload?.printTitle || '오답 클리닉');
 }
 
-function renderStudentPages(area, payload) {
-    (payload.students || []).forEach(student => {
-        const items = (student.wrongItems || []).map(item => {
-            const q = cloneQuestionForRender({
-                ...item,
-                _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
-            });
-            return q;
-        });
-        const pages = paginateItems(items, 4);
-        pages.forEach((pageItems, pageIdx) => {
-            const page = makePage(
-                area,
-                'exam',
-                `${student.studentName} 오답지`,
-                '',
-                `${payload.className || ''} · ${getStudentExamLabel(payload, student)} · ${payload.createdDate || ''}`,
-                pageIdx + 1
-            );
-            renderExamBlocks(page.body, pageItems);
-            if (pageIdx === pages.length - 1 && payload.options?.includeHomeworkCheckBox !== false) {
-                page.body.insertAdjacentHTML('beforeend', `
-                    <div class="homework-check">
-                        <span>□ 다시 풀기 완료</span>
-                        <span>□ 풀이 과정 확인</span>
-                        <span>□ 선생님 확인</span>
-                    </div>
-                `);
-            }
-        });
+async function renderMeasuredExamPages(area, items, pageMeta = {}) {
+    if (!items.length) return;
+    const staging = document.getElementById('staging');
+    staging.style.width = '83mm';
+    staging.innerHTML = '';
+
+    const stagedItems = items.map((q, idx) => {
+        const box = htmlToElement(buildQuestionBoxHTML(q, idx + 1, pageMeta.showWrongNote !== false));
+        staging.appendChild(box);
+        return { q, box };
     });
+
+    await applyAutoImageSizeClasses(staging);
+    if (window.MathJax?.typesetPromise) {
+        try { await MathJax.typesetPromise([staging]); } catch (e) { console.warn(e); }
+    }
+    await raf();
+
+    for (const item of stagedItems) {
+        const profile = {};
+        profile.proxyHeight_raw = item.box.scrollHeight;
+        item.box.classList.add('fit-tight');
+        await raf();
+        profile.proxyHeight_tight = item.box.scrollHeight;
+        item.box.classList.remove('fit-tight');
+        item.profile = profile;
+    }
+
+    const tempPage = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', 0);
+    const usablePageHeight = tempPage.body.clientHeight;
+    area.removeChild(tempPage.page);
+
+    const pages = [];
+    let currentPage = { blocks: [], usedHeight: 0 };
+    let activeChunk = [];
+    let currentType = null;
+
+    const flushBlock = () => {
+        if (!activeChunk.length) return;
+        const type = currentType || 'normal';
+        const chunk = [...activeChunk];
+        const hType = type === 'normal' ? 'proxyHeight_tight' : 'proxyHeight_raw';
+        let blockH;
+
+        if (type === 'wide') {
+            blockH = chunk[0].profile.proxyHeight_raw + SE_OVERHEAD_COL + SE_OVERHEAD_GRID;
+        } else {
+            const split = Math.ceil(chunk.length / 2);
+            const leftH = chunk.slice(0, split).reduce((sum, item) => sum + item.profile[hType], 0) + SE_OVERHEAD_COL;
+            const rightH = chunk.slice(split).reduce((sum, item) => sum + item.profile[hType], 0) + SE_OVERHEAD_COL;
+            blockH = Math.max(leftH, rightH) + SE_OVERHEAD_GRID;
+        }
+
+        const gap = currentPage.blocks.length ? SE_BLOCK_GAP : 0;
+        const normalForceBreak = type === 'normal' && currentPage.blocks.length > 0;
+        if ((normalForceBreak || currentPage.usedHeight + gap + blockH > usablePageHeight) && currentPage.blocks.length > 0) {
+            pages.push(currentPage);
+            currentPage = { blocks: [], usedHeight: 0 };
+        }
+
+        currentPage.usedHeight += (currentPage.blocks.length ? SE_BLOCK_GAP : 0) + blockH;
+        currentPage.blocks.push({ type, items: chunk, blockH });
+        activeChunk = [];
+    };
+
+    stagedItems.forEach(item => {
+        const layoutTag = item.q.layoutTag || '';
+        let qType = 'normal';
+        let limit = CLINIC_QPP;
+        if (item.q.wide === true || layoutTag === 'fullwidth') {
+            qType = 'wide';
+            limit = 1;
+        } else if (layoutTag === 'subjective-2up') {
+            qType = 'subj2';
+            limit = 2;
+        } else if (layoutTag === 'subjective-4up') {
+            qType = 'subj4';
+            limit = 4;
+        }
+
+        const isSpecialType = qType === 'subj2' || qType === 'subj4' || qType === 'wide';
+        const prevWasSpecial = currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide';
+        if ((currentType !== null && currentType !== qType) || activeChunk.length >= limit || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
+            flushBlock();
+            if (isSpecialType && currentPage.blocks.length > 0) {
+                pages.push(currentPage);
+                currentPage = { blocks: [], usedHeight: 0 };
+            }
+            currentType = qType;
+        }
+        if (currentType === null) currentType = qType;
+        activeChunk.push(item);
+    });
+    flushBlock();
+    if (currentPage.blocks.length > 0) pages.push(currentPage);
+
+    for (let pageIdx = 0; pageIdx < pages.length; pageIdx++) {
+        const pageData = pages[pageIdx];
+        const page = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageIdx + 1);
+
+        pageData.blocks.forEach((block, blockIdx) => {
+            if (block.type === 'wide') {
+                const wideCol = document.createElement('div');
+                wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
+                wideCol.appendChild(block.items[0].box.cloneNode(true));
+                page.body.appendChild(wideCol);
+                return;
+            }
+
+            const grid = document.createElement('div');
+            grid.className = 'grid-container';
+            grid.style.flex = block.type === 'normal' ? '1 1 0' : 'none';
+            if (blockIdx < pageData.blocks.length - 1) grid.style.marginBottom = `${SE_BLOCK_GAP}px`;
+
+            const left = document.createElement('div');
+            left.className = 'grid-col';
+            const right = document.createElement('div');
+            right.className = 'grid-col';
+            grid.appendChild(left);
+            grid.appendChild(right);
+            page.body.appendChild(grid);
+
+            const split = Math.ceil(block.items.length / 2);
+            block.items.slice(0, split).forEach(item => left.appendChild(item.box.cloneNode(true)));
+            block.items.slice(split).forEach(item => right.appendChild(item.box.cloneNode(true)));
+        });
+
+        if (pageIdx === pages.length - 1 && pageMeta.homeworkCheckHTML) {
+            page.body.insertAdjacentHTML('beforeend', pageMeta.homeworkCheckHTML);
+        }
+
+        if (window.MathJax?.typesetPromise) {
+            try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
+        }
+        await raf();
+
+        const boxes = page.page.querySelectorAll('.q-box');
+        boxes.forEach(box => fitQuestionBox(box));
+
+        if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
+            boxes.forEach(box => autoCompress(box));
+            await raf();
+            if (window.MathJax?.typesetPromise) {
+                try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
+            }
+        }
+    }
 }
 
-function renderClassPages(area, payload) {
+async function renderStudentPages(area, payload) {
+    for (const student of (payload.students || [])) {
+        const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
+            ...item,
+            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
+        }));
+        await renderMeasuredExamPages(area, items, {
+            title: `${student.studentName} 오답지`,
+            metaLeft: '',
+            metaRight: `${payload.className || ''} · ${getStudentExamLabel(payload, student)} · ${payload.createdDate || ''}`,
+            homeworkCheckHTML: payload.options?.includeHomeworkCheckBox === false ? '' : `
+                <div class="homework-check">
+                    <span>□ 다시 풀기 완료</span>
+                    <span>□ 오답 과정 확인</span>
+                    <span>□ 선생님 확인</span>
+                </div>
+            `
+        });
+    }
+}
+
+async function renderClassPages(area, payload) {
     const items = (payload.classWrongItems || []).map(item => {
         const names = (item.wrongStudents || []).map(student => student.studentName).join(', ');
         return cloneQuestionForRender({
@@ -423,27 +769,124 @@ function renderClassPages(area, payload) {
             _wrongNote: `오답: ${names || '-'} / 총 ${item.wrongCount || 0}명 · 원본 ${item.questionNo}번`
         });
     });
-    const pages = paginateItems(items, 4);
-    pages.forEach((pageItems, pageIdx) => {
-        const page = makePage(
-            area,
-            'exam',
-            `${payload.className || '반'} 반별 공통 오답지`,
-            '',
-            payload.createdDate || '',
-            pageIdx + 1
-        );
-        renderExamBlocks(page.body, pageItems);
+    await renderMeasuredExamPages(area, items, {
+        title: `${payload.className || '반'} 반별 공통 오답지`,
+        metaLeft: '',
+        metaRight: payload.createdDate || ''
     });
 }
 
+async function placeSolutionItems(area, items, pageMeta = {}) {
+    let pageNo = 1;
+    let current = null;
+    let colIdx = 0;
+
+    const makeGridPage = () => {
+        const page = makePage(area, 'sol', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageNo++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        grid.style.flex = '1 1 0';
+        const left = document.createElement('div');
+        left.className = 'grid-col';
+        const right = document.createElement('div');
+        right.className = 'grid-col';
+        grid.appendChild(left);
+        grid.appendChild(right);
+        page.body.appendChild(grid);
+        current = { page, cols: [left, right] };
+        colIdx = 0;
+    };
+
+    const makeBox = (q, idx) => {
+        const hasImageField = !!(q.image || q.imageUrl || q.img);
+        const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
+        const formattedContent = formatQuestionForRender(rawContent, q);
+        const box = document.createElement('div');
+        box.className = 'q-box sol-box';
+        box.innerHTML = `<div class="q-num">${idx + 1}.</div>
+            ${q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : ''}
+            <div class="q-content">${formattedContent}</div>
+            ${renderQuestionImageHTML(q)}
+            <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div><div class="sol-exp">${wrapLatex(getQuestionSolution(q) || '해설이 없습니다.')}</div></div>`;
+        return box;
+    };
+
+    async function placeBox(box) {
+        if (!current) makeGridPage();
+        let placed = false;
+        while (!placed) {
+            const targetCol = current.cols[colIdx];
+            targetCol.appendChild(box);
+            await applyAutoImageSizeClasses(targetCol);
+            if (window.MathJax?.typesetPromise) {
+                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+            }
+            await raf();
+
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                placed = true;
+                break;
+            }
+
+            autoCompress(box);
+            await raf();
+            if (window.MathJax?.typesetPromise) {
+                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+            }
+            await raf();
+
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2 || targetCol.querySelectorAll('.sol-box').length === 1) {
+                placed = true;
+                break;
+            }
+
+            targetCol.removeChild(box);
+            if (colIdx === 0) {
+                colIdx = 1;
+            } else {
+                makeGridPage();
+            }
+        }
+    }
+
+    for (let idx = 0; idx < items.length; idx++) {
+        await placeBox(makeBox(items[idx], idx));
+    }
+}
+
+async function renderSol(area, payload) {
+    if (payload.mode === 'class') {
+        const items = (payload.classWrongItems || []).map(item => cloneQuestionForRender({
+            ...item,
+            _wrongNote: `오답: ${(item.wrongStudents || []).map(student => student.studentName).join(', ')} / 총 ${item.wrongCount || 0}명`
+        }));
+        await placeSolutionItems(area, items, {
+            title: `${payload.className || '반'} 해설지`,
+            metaLeft: payload.printTitle || '',
+            metaRight: payload.createdDate || ''
+        });
+        return;
+    }
+
+    for (const student of (payload.students || [])) {
+        const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
+            ...item,
+            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
+        }));
+        await placeSolutionItems(area, items, {
+            title: `${student.studentName} 해설지`,
+            metaLeft: `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`,
+            metaRight: payload.createdDate || ''
+        });
+    }
+}
 function collectAnswerRows(payload) {
     const list = state.payload.mode === 'class' ? (payload.classWrongItems || []) : (payload.students || []).flatMap(student => (student.wrongItems || []).map(item => ({ ...item, studentName: student.studentName })));
     return list.map((item, idx) => {
         const q = cloneQuestionForRender(item);
         return {
             no: idx + 1,
-            answer: getQuestionAnswer(q) || '–'
+            answer: getQuestionAnswer(q) || '-'
         };
     });
 }
@@ -472,49 +915,6 @@ function renderAns(area, payload) {
     }
 }
 
-function renderSol(area, payload) {
-    if (payload.mode === 'class') {
-        const items = (payload.classWrongItems || []).map(item => cloneQuestionForRender({
-            ...item,
-            _wrongNote: `오답: ${(item.wrongStudents || []).map(student => student.studentName).join(', ')} / 총 ${item.wrongCount || 0}명`
-        }));
-        const page = makePage(area, 'sol', `${payload.className || '반'} 해설지`, payload.printTitle || '', payload.createdDate || '', 1);
-        const grid = document.createElement('div');
-        grid.className = 'grid-container';
-        const left = document.createElement('div');
-        left.className = 'grid-col';
-        const right = document.createElement('div');
-        right.className = 'grid-col';
-        grid.appendChild(left);
-        grid.appendChild(right);
-        const split = Math.ceil(items.length / 2);
-        items.slice(0, split).forEach((q, idx) => left.insertAdjacentHTML('beforeend', buildQuestionBoxHTML(q, idx + 1, true)));
-        items.slice(split).forEach((q, idx) => right.insertAdjacentHTML('beforeend', buildQuestionBoxHTML(q, split + idx + 1, true)));
-        page.body.appendChild(grid);
-        return;
-    }
-
-    (payload.students || []).forEach(student => {
-        const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
-            ...item,
-            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
-        }));
-        const page = makePage(area, 'sol', `${student.studentName} 해설지`, `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`, payload.createdDate || '', 1);
-        const grid = document.createElement('div');
-        grid.className = 'grid-container';
-        const left = document.createElement('div');
-        left.className = 'grid-col';
-        const right = document.createElement('div');
-        right.className = 'grid-col';
-        grid.appendChild(left);
-        grid.appendChild(right);
-        const split = Math.ceil(items.length / 2);
-        items.slice(0, split).forEach((q, idx) => left.insertAdjacentHTML('beforeend', buildQuestionBoxHTML(q, idx + 1, true)));
-        items.slice(split).forEach((q, idx) => right.insertAdjacentHTML('beforeend', buildQuestionBoxHTML(q, split + idx + 1, true)));
-        page.body.appendChild(grid);
-    });
-}
-
 async function render() {
     const area = document.getElementById('print-area');
     area.innerHTML = '<div class="notice">오답 문항을 불러오는 중입니다.</div>';
@@ -524,11 +924,11 @@ async function render() {
     if (state.mode === 'ans') {
         renderAns(area, state.payload);
     } else if (state.mode === 'sol') {
-        renderSol(area, state.payload);
+        await renderSol(area, state.payload);
     } else if (state.payload.mode === 'class') {
-        renderClassPages(area, state.payload);
+        await renderClassPages(area, state.payload);
     } else {
-        renderStudentPages(area, state.payload);
+        await renderStudentPages(area, state.payload);
     }
 
     if (!area.textContent.trim()) {
