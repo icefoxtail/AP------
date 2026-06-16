@@ -7,14 +7,12 @@ const root = path.resolve(__dirname, '..');
 const testsDir = path.join(root, 'tests');
 
 const quarantined = new Map([
-  ['admin-diagnostic-assessment-alert.test.js', 'pre-existing dashboard-admin diagnostic alert marker mismatch'],
-  ['admin-recent-consultation-panel.test.js', 'pre-existing dashboard header global search mismatch'],
-  ['apmath-dark-mode-modals.test.js', 'pre-existing AP Math dark-mode modal token mismatch'],
   ['assessment-grade-target-round5-1.test.js', 'pre-existing archive grade target assertion mismatch'],
   ['assessment-m1-diagnostic-packs.test.js', 'pre-existing M1 diagnostic pack count mismatch'],
   ['assessment-m1-type-source-integrity.test.js', 'pre-existing M1 source integrity mismatch'],
   ['eie-attendance-print-design-contract.test.js', 'pre-existing EIE print design contract mismatch'],
-  ['eie-attendance-visual-contract.test.js', 'pre-existing EIE attendance visual contract mismatch']
+  ['eie-attendance-visual-contract.test.js', 'pre-existing EIE attendance visual contract mismatch'],
+  ['eie-grade-ledger-port.test.js', 'EIE grade ledger port review-pack artifact contract requires CODEX_RESULT2.md']
 ]);
 
 const includeQuarantined = process.env.APMATH_RUN_QUARANTINE === '1';
