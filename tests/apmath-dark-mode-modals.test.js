@@ -17,7 +17,7 @@ assert(
 
 assert(
   app.includes('#modal-content') &&
-    app.includes('background: var(--surface);\n            color: var(--text);') &&
+    /#modal-content\s*\{[\s\S]*background:\s*var\(--surface\);[\s\S]*color:\s*var\(--text\);/.test(app) &&
     app.includes('body.dark'),
   'student management modal shell should use dark-mode surface/text tokens'
 );

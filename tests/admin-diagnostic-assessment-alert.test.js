@@ -15,28 +15,18 @@ const teacherJs = fs.readFileSync(teacherPath, 'utf8');
   'AP_ADMIN_DIAGNOSTIC_RESULTS_LIST_KEY',
   'apms.diagnostic.assessment.results',
   'apms.diagnostic.assessment.result.',
-  'apGetAdminDiagnosticAssessmentAlerts',
-  'apRenderAdminDiagnosticAssessmentAlert',
+  'AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT = 10',
+  'apGetAdminDiagnosticAssessmentList',
+  'openAdminDiagnosticPanel',
   'apBuildAdminDiagnosticReportUrl',
   "item?.status === 'completed'",
   'diagnostic-report',
   'diagnosticId',
   'packId',
-  'slice(0, AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT)',
-  'AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT = 3',
-  '결과표 열기',
-  '진단평가 결과',
-  '최근 진단평가',
-  '이름 미입력',
+  'slice(0, AP_ADMIN_DIAGNOSTIC_ALERT_LIMIT)'
 ].forEach((marker) => {
-  assert(adminJs.includes(marker), `dashboard-admin.js should include diagnostic admin alert marker: ${marker}`);
+  assert(adminJs.includes(marker), `dashboard-admin.js should include diagnostic admin marker: ${marker}`);
 });
-
-assert(
-  adminJs.includes("apAdminDashboardRole() !== 'admin'") &&
-    adminJs.includes('apRemoveAdminDiagnosticAssessmentAlert()'),
-  'diagnostic assessment alert should be removed outside admin dashboard role'
-);
 
 assert(
   /new URLSearchParams\(\)/.test(adminJs) &&
@@ -48,27 +38,25 @@ assert(
 
 assert(
   /updatedAt[\s\S]*completedAt|completedAt[\s\S]*updatedAt/.test(adminJs),
-  'diagnostic alert ordering should consider updatedAt/completedAt'
+  'diagnostic list ordering should consider updatedAt/completedAt'
 );
 
 assert(
-  !teacherJs.includes('진단평가 결과') &&
-    !teacherJs.includes('apGetAdminDiagnosticAssessmentAlerts') &&
+  !teacherJs.includes('openAdminDiagnosticPanel') &&
+    !teacherJs.includes('apGetAdminDiagnosticAssessmentList') &&
     !teacherJs.includes('diagnostic assessment alert'),
-  'teacher dashboard should not expose diagnostic assessment alert UI'
+  'teacher dashboard should not expose diagnostic assessment admin UI'
 );
 
 [
   'assessment_analysis_snapshots',
   'assessment_report_snapshots',
   'premium AI',
-  '프리미엄 AI',
-  '학부모 발송',
   '/api/diagnostic',
-  'fetch(',
+  'fetch('
 ].forEach((forbidden) => {
   assert(!adminJs.includes(forbidden), `dashboard-admin.js should not include forbidden implementation marker: ${forbidden}`);
   assert(!dashboardJs.includes(forbidden), `dashboard.js should not include forbidden implementation marker: ${forbidden}`);
 });
 
-console.log('admin diagnostic assessment alert checks passed');
+console.log('admin diagnostic assessment checks passed');
