@@ -534,6 +534,12 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-surface-list--tod
   border-bottom: 0 !important;
 }
 
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-today-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
 /* 오늘일정 empty-state 리듬 통일 */
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-assistant-memos {
   display: flex;
@@ -630,6 +636,10 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-cleaning-routine {
   white-space: nowrap !important;
 }
 
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-weekly-notice-cell {
+  cursor: pointer;
+}
+
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-source {
   position: relative !important;
   overflow: visible !important;
@@ -688,6 +698,18 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-preview__line {
   line-height: 1.5;
   color: var(--secondary);
   overflow-wrap: anywhere;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list .ap-hover-preview {
+  top: auto;
+  bottom: calc(100% + 8px);
+  transform: translateY(3px);
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list .ap-hover-source:hover > .ap-hover-preview,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list .ap-hover-source:focus-visible > .ap-hover-preview,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dashboard-class-list .ap-hover-source:focus-within > .ap-hover-preview {
+  transform: translateY(0);
 }
 
 .ap-surface-action:hover,

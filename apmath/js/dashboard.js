@@ -588,14 +588,16 @@ function injectDashboardRedesignStyles() {
     .ap-empty-state p { margin:0; font-size:13px; font-weight:500; line-height:1.3; }
     .ap-empty-state .ap-empty-icon { display:none; }
     .ap-inline-form { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-    .ap-inline-form input { flex:1 1 120px; min-width:0; height:38px; padding:0 12px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text); font-size:13px; box-sizing:border-box; }
-    .ap-inline-form input[type="date"] { flex:0 0 auto; }
+    .ap-inline-form input { flex:1 1 120px; min-width:0; height:38px; padding:0 12px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text); font-size:13px; box-sizing:border-box; }
+    .ap-inline-form input[type="date"] { flex:0 0 auto; }
+    .ap-dashboard-today-actions { display:flex; justify-content:flex-end; margin-top:10px; }
 
     /* G. 주간일정 2단 스플릿 */
     .ap-weekly-split { display:grid; grid-template-columns:1fr; gap:16px; }
     @media (min-width:640px){ .ap-weekly-split { grid-template-columns:minmax(150px,2fr) minmax(0,8fr); } }
-    .ap-split-cell { min-width:0; }
-    .ap-split-label { font-size:12px; font-weight:600; color:var(--secondary); margin:0 0 8px; }
+    .ap-split-cell { min-width:0; }
+    .ap-weekly-notice-cell { cursor:pointer; }
+    .ap-split-label { font-size:12px; font-weight:600; color:var(--secondary); margin:0 0 8px; }
     .ap-split-cell p { margin:0 0 4px; font-size:13px; font-weight:500; color:var(--text); display:flex; align-items:center; gap:6px; }
     .ap-cleaning-routine { flex-wrap:nowrap; white-space:nowrap; }
     .ap-split-cell .ap-split-meta { font-size:12px; font-weight:500; color:var(--secondary); }
@@ -639,6 +641,18 @@ function injectDashboardRedesignStyles() {
     .ap-hover-preview__title { margin:0 0 8px; font-size:13px; font-weight:700; line-height:1.35; color:var(--text); }
     .ap-hover-preview__body { display:flex; flex-direction:column; gap:5px; }
     .ap-hover-preview__line { font-size:12px; font-weight:500; line-height:1.5; color:var(--secondary); overflow-wrap:anywhere; }
+
+    .ap-dashboard-class-list .ap-hover-preview {
+        top:auto;
+        bottom:calc(100% + 8px);
+        transform:translateY(3px);
+    }
+
+    .ap-dashboard-class-list .ap-hover-source:hover > .ap-hover-preview,
+    .ap-dashboard-class-list .ap-hover-source:focus-visible > .ap-hover-preview,
+    .ap-dashboard-class-list .ap-hover-source:focus-within > .ap-hover-preview {
+        transform:translateY(0);
+    }
 
     /* 오른쪽 하단 이동 버튼 */
     .ap-dash-quick-panel { margin-top:16px; margin-bottom:8px; padding:0; background:transparent; border:none; box-shadow:none; }
@@ -1259,19 +1273,26 @@ function renderTodoSections() {
     });
     const assistantMemoHtml = renderDashboardAssistantMemoBlock(todayStr, todayClassesForAssistant);
 
+    const inlineScheduleFormHtml = `
+           <div id="ap-dash-inline-form" class="ap-inline-form" style="display:none;">
+                <input type="date" id="ap-dash-inline-date" value="${todayStr}">
+                <input type="text" id="ap-dash-inline-content" placeholder="일정 내용"
+                       onkeydown="if(event.key==='Enter') apDashSaveInlineSchedule();">
+                <button type="button" class="ap-inline-btn" onclick="apDashSaveInlineSchedule()">저장</button>
+           </div>`;
+
     const todayBodyHtml = todayMemos.length
-        ? `<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; overflow:hidden; border-radius:6px; border:1px solid var(--border); background:var(--surface);">${todayHtml}</div>${assistantMemoHtml}`
-        : `<div class="ap-empty-state">
-                <span class="ap-empty-icon">${iconCalendar}</span>
-                <p>오늘 등록된 일정이 없습니다.</p>
-                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 일정 추가</button>
-           </div>
-           <div id="ap-dash-inline-form" class="ap-inline-form" style="display:none;">
-                <input type="date" id="ap-dash-inline-date" value="${todayStr}">
-                <input type="text" id="ap-dash-inline-content" placeholder="일정 내용"
-                       onkeydown="if(event.key==='Enter') apDashSaveInlineSchedule();">
-                <button type="button" class="ap-inline-btn" onclick="apDashSaveInlineSchedule()">저장</button>
-           </div>${assistantMemoHtml}`;
+        ? `<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; overflow:hidden; border-radius:6px; border:1px solid var(--border); background:var(--surface);">${todayHtml}</div>
+           <div class="ap-dashboard-today-actions">
+                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 일정 추가</button>
+           </div>
+           ${inlineScheduleFormHtml}${assistantMemoHtml}`
+        : `<div class="ap-empty-state">
+                <span class="ap-empty-icon">${iconCalendar}</span>
+                <p>오늘 등록된 일정이 없습니다.</p>
+                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 일정 추가</button>
+           </div>
+           ${inlineScheduleFormHtml}${assistantMemoHtml}`;
 
     return `
         <section class="ap-dash-card">
@@ -1286,10 +1307,14 @@ function renderTodoSections() {
                     <p class="ap-split-label">고정 루틴</p>
                     ${cleaningHtml}
                 </div>
-                <div class="ap-split-cell">
-                    <p class="ap-split-label"><span style="color:var(--secondary);">${iconSpeaker}</span> 학원 공지</p>
-                    ${noticeHtml}
-                </div>
+                <div class="ap-split-cell ap-weekly-notice-cell"
+                     role="button"
+                     tabindex="0"
+                     onclick="openExamScheduleModal()"
+                     onkeydown="if(event.target===event.currentTarget&&(event.key==='Enter'||event.key===' ')){event.preventDefault(); openExamScheduleModal();}">
+                    <p class="ap-split-label"><span style="color:var(--secondary);">${iconSpeaker}</span> 학원 공지</p>
+                    ${noticeHtml}
+                </div>
             </div>
         </section>
     `;
