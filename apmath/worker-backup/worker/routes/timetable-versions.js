@@ -829,6 +829,12 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       statements.push(env.DB.prepare(`DELETE FROM class_students WHERE class_id IN (${sourceClassMarkers})`).bind(...sourceClassIds));
     }
 
+    const teacherMappingClassIds = Array.from(new Set([...sourceClassIds, ...appliedClassByVersionClassId.values()].map(id => String(id || '').trim()).filter(Boolean)));
+    if (teacherMappingClassIds.length) {
+      const teacherMappingMarkers = teacherMappingClassIds.map(() => '?').join(',');
+      statements.push(env.DB.prepare(`DELETE FROM teacher_classes WHERE class_id IN (${teacherMappingMarkers})`).bind(...teacherMappingClassIds));
+    }
+
     for (const row of teacherClassRows) {
       statements.push(env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(row.teacher_id, row.class_id));
     }
@@ -974,7 +980,9 @@ async function buildTeacherClassMappingStmts(env, classIds) {
   if (!classIds.length) return [];
   const markers = classIds.map(() => '?').join(',');
   const classes = await env.DB.prepare(`SELECT id, teacher_name FROM classes WHERE id IN (${markers})`).bind(...classIds).all();
-  const stmts = [];
+  const stmts = [
+    env.DB.prepare(`DELETE FROM teacher_classes WHERE class_id IN (${markers})`).bind(...classIds)
+  ];
   for (const cls of (classes.results || [])) {
     const matched = await findTeacherByAlias(env, cls.teacher_name);
     if (!matched) continue;
