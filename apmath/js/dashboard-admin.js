@@ -322,10 +322,7 @@ function openAdminOperationMenu() {
                 <div style="${descStyle}">결제수단, 수납 정책, 요약, 조회 목록 확인</div>
             </button>
             ` : ''}
-        </div>
-        <div class="ap-soft-note" style="margin-top:14px; padding:12px 14px;">
-            반 담당 변경과 담임 일괄 변경은 Worker 구조분리 이후 별도 연결합니다.
-        </div>
+        </div>
     `);
 }
 
