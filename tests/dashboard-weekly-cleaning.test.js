@@ -35,4 +35,10 @@ assert(
   'weekly/class dashboard rows should share the reusable hover preview component'
 );
 
+assert(
+  /ap-weekly-notice-cell/.test(dashboard) &&
+  /onclick="openExamScheduleModal\(\)"/.test(dashboard),
+  'weekly notice cell should open schedule management when clicked'
+);
+
 console.log('dashboard weekly cleaning regression test passed');
