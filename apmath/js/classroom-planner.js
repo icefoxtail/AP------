@@ -686,6 +686,79 @@ function injectClassPlannerReviewStyles() {
             font-size: 11px;
             font-weight:500;
         }
+        .class-planner-review .cls-planner-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .class-planner-review .cls-planner-badge {
+            min-height: 26px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 9px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--secondary);
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .class-planner-review .cls-planner-badge svg,
+        .class-planner-review .cls-planner-plan-mark svg,
+        .class-planner-review .cls-planner-cell-item svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex: 0 0 auto;
+        }
+        .class-planner-review .cls-planner-badge--focus {
+            border-color: rgba(0,184,148,.24);
+            background: rgba(0,184,148,.09);
+            color: #047857;
+        }
+        .class-planner-review .cls-planner-badge--rest {
+            border-color: rgba(245,159,0,.28);
+            background: rgba(245,159,0,.10);
+            color: #B45309;
+        }
+        .class-planner-review .cls-planner-badge--done {
+            border-color: rgba(var(--primary-rgb),.26);
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+        .class-planner-review .cls-planner-badge--snapshot {
+            border-color: rgba(51,65,85,.16);
+            background: rgba(51,65,85,.06);
+            color: #475569;
+        }
+        .class-planner-review .cls-planner-badge--question,
+        .class-planner-review .cls-planner-badge--reply {
+            border-color: rgba(99,102,241,.24);
+            background: rgba(99,102,241,.08);
+            color: #4F46E5;
+        }
+        .class-planner-review .cls-planner-student-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .class-planner-review .cls-planner-student-head .cls-planner-student-name {
+            margin-bottom: 0;
+        }
+        .class-planner-review .cls-planner-live-summary {
+            justify-content: flex-end;
+            margin-top: 0;
+        }
         .class-planner-review .cls-planner-empty,
         .class-planner-review .cls-planner-cell-empty {
             font-size: 12px;
@@ -751,6 +824,9 @@ function injectClassPlannerReviewStyles() {
             color: var(--text);
         }
         .class-planner-review .cls-planner-cell-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 5px;
             padding: 8px 10px;
             border-radius: 12px;
             background: var(--surface-2);
@@ -903,6 +979,66 @@ function getClassPlannerPlanSubject(plan) {
 function isClassPlannerDone(plan) {
     return Number(plan?.is_done || plan?.done || 0) === 1;
 }
+
+const classPlannerLiveUi = {
+    icon(type) {
+        const icons = {
+            focus: '<path d="M12 3v3"></path><path d="M12 18v3"></path><path d="M3 12h3"></path><path d="M18 12h3"></path><circle cx="12" cy="12" r="4"></circle>',
+            rest: '<path d="M17 8h1a3 3 0 0 1 0 6h-1"></path><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"></path><path d="M6 2v2"></path><path d="M10 2v2"></path><path d="M14 2v2"></path>',
+            done: '<path d="M20 6 9 17l-5-5"></path>',
+            snapshot: '<path d="M4 7h3l2-2h6l2 2h3v12H4Z"></path><circle cx="12" cy="13" r="3"></circle>',
+            question: '<path d="M9.1 9a3 3 0 1 1 5.4 1.8c-.9.6-1.5 1.1-1.5 2.2"></path><path d="M12 17h.01"></path><circle cx="12" cy="12" r="10"></circle>',
+            reply: '<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>'
+        };
+        return `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[type] || icons.focus}</svg>`;
+    },
+
+    badge(type, label) {
+        return `<span class="cls-planner-badge cls-planner-badge--${type}">${this.icon(type)}<span>${apEscapeHtml(label)}</span></span>`;
+    },
+
+    optionalBadge(type, label, count) {
+        return Number(count || 0) > 0 ? this.badge(type, label) : '';
+    },
+
+    count(plan, keys) {
+        for (const key of keys) {
+            const n = Number(plan && plan[key]);
+            if (Number.isFinite(n) && n > 0) return n;
+        }
+        return 0;
+    },
+
+    summarize(plans) {
+        const list = Array.isArray(plans) ? plans : [];
+        const done = list.filter(isClassPlannerDone).length;
+        return list.reduce((summary, plan) => {
+            summary.snapshots += this.count(plan, ['snapshot_count', 'photo_count', 'photos_count', 'attachment_count']);
+            summary.questions += this.count(plan, ['question_count', 'questions_count']);
+            summary.replies += this.count(plan, ['reply_count', 'replies_count']);
+            return summary;
+        }, { total: list.length, done, snapshots: 0, questions: 0, replies: 0 });
+    },
+
+    badges(plans, extraClass = '') {
+        const summary = this.summarize(plans);
+        const statusType = summary.total && summary.done === summary.total ? 'done' : summary.total ? 'focus' : 'rest';
+        const statusLabel = summary.total && summary.done === summary.total
+            ? `완료 ${summary.done}/${summary.total}`
+            : summary.total
+                ? `진행 ${summary.done}/${summary.total}`
+                : '미시작';
+        const className = `cls-planner-badges${extraClass ? ` ${extraClass}` : ''}`;
+        return `
+            <div class="${className}">
+                ${this.badge(statusType, statusLabel)}
+                ${this.optionalBadge('snapshot', '스냅샷', summary.snapshots)}
+                ${this.optionalBadge('question', `질문 ${summary.questions}`, summary.questions)}
+                ${this.optionalBadge('reply', `답변 ${summary.replies}`, summary.replies)}
+            </div>
+        `;
+    }
+};
 
 function ensureClassPlannerState() {
     if (!state.ui) state.ui = {};
@@ -1069,10 +1205,16 @@ function renderClassPlannerStudentPlanList(plans) {
                 const title = getClassPlannerPlanTitle(plan);
                 return `
                     <div class="cls-planner-plan-item ${done ? 'done' : ''}">
-                        <div class="cls-planner-plan-mark">${done ? '✓' : '-'}</div>
+                        <div class="cls-planner-plan-mark">${done ? classPlannerLiveUi.icon('done') : classPlannerLiveUi.icon('focus')}</div>
                         <div class="cls-planner-plan-main">
                             <div class="cls-planner-plan-title">${apEscapeHtml(title || '제목 없음')}</div>
                             ${subject ? `<div class="cls-planner-plan-meta"><span class="cls-planner-subject">${apEscapeHtml(subject)}</span></div>` : ''}
+                            <div class="cls-planner-badges">
+                                ${done ? classPlannerLiveUi.badge('done', '완료') : classPlannerLiveUi.badge('focus', '대기')}
+                                ${classPlannerLiveUi.optionalBadge('snapshot', '스냅샷', classPlannerLiveUi.count(plan, ['snapshot_count', 'photo_count', 'photos_count', 'attachment_count']))}
+                                ${classPlannerLiveUi.optionalBadge('question', `질문 ${classPlannerLiveUi.count(plan, ['question_count', 'questions_count'])}`, classPlannerLiveUi.count(plan, ['question_count', 'questions_count']))}
+                                ${classPlannerLiveUi.optionalBadge('reply', `답변 ${classPlannerLiveUi.count(plan, ['reply_count', 'replies_count'])}`, classPlannerLiveUi.count(plan, ['reply_count', 'replies_count']))}
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1089,7 +1231,10 @@ function renderClassPlannerDayList(classId, date, weekData) {
             <div class="cls-planner-date-title">${apEscapeHtml(getClassPlannerDayName(date, true))} ${apEscapeHtml(date)}</div>
             ${students.map(row => `
                 <div class="cls-planner-student-card">
-                    <div class="cls-planner-student-name">${apEscapeHtml(row.student?.name || '학생')}</div>
+                    <div class="cls-planner-student-head">
+                        <div class="cls-planner-student-name">${apEscapeHtml(row.student?.name || '학생')}</div>
+                        ${classPlannerLiveUi.badges(row.plansByDate?.[date] || [], 'cls-planner-live-summary')}
+                    </div>
                     ${renderClassPlannerStudentPlanList(row.plansByDate?.[date] || [])}
                 </div>
             `).join('')}
@@ -1107,7 +1252,7 @@ function renderClassPlannerWeekCell(plans) {
                 const subject = getClassPlannerPlanSubject(plan);
                 const title = getClassPlannerPlanTitle(plan) || '제목 없음';
                 const text = subject ? `${subject} · ${title}` : title;
-                return `<div class="cls-planner-cell-item ${done ? 'done' : ''}">${done ? '✓ ' : ''}${apEscapeHtml(text)}</div>`;
+                return `<div class="cls-planner-cell-item ${done ? 'done' : ''}">${done ? classPlannerLiveUi.icon('done') : ''}${apEscapeHtml(text)}</div>`;
             }).join('')}
         </div>
     `;
