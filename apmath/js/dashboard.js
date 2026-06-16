@@ -168,7 +168,7 @@ const DASHBOARD_DAY_ORDER = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DASHBOARD_DAY_LABELS = { sun: '일', mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토' };
 const DASHBOARD_DAY_INDEX_TO_KEY = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat', 7: 'sun' };
 
-function dashboardEscapeAttr(value) {
+function dashboardEscapeAttr(value) {
     const jsSafe = String(value || '')
         .replace(/\\/g, '\\\\')
         .replace(/\r/g, '\\r')
@@ -180,10 +180,28 @@ function dashboardEscapeAttr(value) {
         .replace(/&/g, '&amp;')
         .replace(/"/g, '&quot;')
         .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-}
-
-function dashboardDateFromLocalString(dateStr) {
+        .replace(/>/g, '&gt;');
+}
+
+function renderDashboardHoverPreview(title, rows = [], options = {}) {
+    const cleanTitle = String(title || '').trim();
+    const cleanRows = (Array.isArray(rows) ? rows : [rows])
+        .map(row => String(row || '').trim())
+        .filter(Boolean);
+    if (!cleanTitle && !cleanRows.length) return '';
+
+    const classes = ['ap-hover-preview'];
+    if (options.compact) classes.push('ap-hover-preview--compact');
+
+    return `
+        <div class="${classes.join(' ')}" role="tooltip">
+            ${cleanTitle ? `<div class="ap-hover-preview__title">${apEscapeHtml(cleanTitle)}</div>` : ''}
+            ${cleanRows.length ? `<div class="ap-hover-preview__body">${cleanRows.map(row => `<div class="ap-hover-preview__line">${apEscapeHtml(row)}</div>`).join('')}</div>` : ''}
+        </div>
+    `;
+}
+
+function dashboardDateFromLocalString(dateStr) {
     const parts = String(dateStr || '').split('-').map(Number);
     if (parts.length !== 3 || parts.some(v => !Number.isFinite(v))) return null;
     return new Date(parts[0], parts[1] - 1, parts[2]);
@@ -575,12 +593,51 @@ function injectDashboardRedesignStyles() {
 
     /* G. 주간일정 2단 스플릿 */
     .ap-weekly-split { display:grid; grid-template-columns:1fr; gap:16px; }
-    @media (min-width:640px){ .ap-weekly-split { grid-template-columns:1fr 1fr; } }
+    @media (min-width:640px){ .ap-weekly-split { grid-template-columns:minmax(150px,2fr) minmax(0,8fr); } }
     .ap-split-cell { min-width:0; }
     .ap-split-label { font-size:12px; font-weight:600; color:var(--secondary); margin:0 0 8px; }
     .ap-split-cell p { margin:0 0 4px; font-size:13px; font-weight:500; color:var(--text); display:flex; align-items:center; gap:6px; }
     .ap-split-cell .ap-split-meta { font-size:12px; font-weight:500; color:var(--secondary); }
-    .ap-empty-notice { font-size:13px; font-weight:500; color:var(--secondary); }
+    .ap-empty-notice { font-size:13px; font-weight:500; color:var(--secondary); }
+
+    .ap-hover-source { position:relative; overflow:visible !important; }
+
+    .ap-hover-preview {
+        position:absolute;
+        left:12px;
+        top:calc(100% + 8px);
+        z-index:40;
+        width:min(360px, calc(100vw - 48px));
+        max-height:260px;
+        overflow:auto;
+        padding:12px 14px;
+        border:1px solid var(--border);
+        border-radius:8px;
+        background:var(--surface);
+        color:var(--text);
+        box-shadow:0 14px 32px rgba(15,23,42,0.16);
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-3px);
+        pointer-events:none;
+        transition:opacity .14s ease, transform .14s ease, visibility .14s ease;
+        white-space:normal;
+        text-align:left;
+        box-sizing:border-box;
+    }
+
+    .ap-hover-source:hover > .ap-hover-preview,
+    .ap-hover-source:focus-visible > .ap-hover-preview,
+    .ap-hover-source:focus-within > .ap-hover-preview {
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+        pointer-events:auto;
+    }
+
+    .ap-hover-preview__title { margin:0 0 8px; font-size:13px; font-weight:700; line-height:1.35; color:var(--text); }
+    .ap-hover-preview__body { display:flex; flex-direction:column; gap:5px; }
+    .ap-hover-preview__line { font-size:12px; font-weight:500; line-height:1.5; color:var(--secondary); overflow-wrap:anywhere; }
 
     /* 오른쪽 하단 이동 버튼 */
     .ap-dash-quick-panel { margin-top:16px; margin-bottom:8px; padding:0; background:transparent; border:none; box-shadow:none; }
@@ -1000,34 +1057,65 @@ function openDashboardClass(cid) {
     toast('학급 화면 모듈을 불러오지 못했습니다.', 'error');
 }
 
-// [POLISH] 학급 카드: 수평적 미니멀리즘 레이아웃
-function renderClassSummaryCard(cls, data) {
-    const s = data.classSummaries[cls.id];
-    if (!s) return '';
-
-    const safeCid = dashboardEscapeAttr(cls.id);
-    const safeName = apEscapeHtml(cls.name || '');
-
-    if (!s.isScheduled) {
-        return `
-            <div class="ap-class-row ap-class-row--empty" onclick="openDashboardClass('${safeCid}')">
-                <div class="ap-class-row__name ap-class-row__name--inactive">${safeName}</div>
-                <div class="ap-class-row__meta">수업 없음</div>
-            </div>
-        `;
-    }
-
-    return `
-        <div class="ap-class-row ap-class-row--scheduled" onclick="openDashboardClass('${safeCid}')">
-            <div class="ap-class-row__name">${safeName}</div>
-            <div class="ap-class-row__chips" aria-label="${safeName} 출결 요약">
+// [POLISH] 학급 카드: 수평적 미니멀리즘 레이아웃
+function getDashboardClassStudentNames(classId) {
+    const cid = String(classId || '');
+    if (!cid) return [];
+
+    const students = typeof apmsGetStudentsForClass === 'function'
+        ? apmsGetStudentsForClass(cid)
+        : (() => {
+            const memberIds = (state?.db?.class_students || [])
+                .filter(m => String(m?.class_id || '') === cid)
+                .map(m => String(m?.student_id || ''))
+                .filter(Boolean);
+            return (state?.db?.students || []).filter(s => memberIds.includes(String(s?.id || '')));
+        })();
+
+    return (students || [])
+        .filter(s => String(s?.status || '재원') === '재원')
+        .map(s => String(s?.name || '').trim())
+        .filter(Boolean)
+        .sort((a, b) => a.localeCompare(b, 'ko'));
+}
+
+function renderClassSummaryCard(cls, data) {
+    const s = data.classSummaries[cls.id];
+    if (!s) return '';
+
+    const safeCid = dashboardEscapeAttr(cls.id);
+    const safeName = apEscapeHtml(cls.name || '');
+    const studentNames = getDashboardClassStudentNames(cls.id);
+    const scheduleText = [cls.schedule_days, cls.time_label].map(v => String(v || '').trim()).filter(Boolean).join(' · ');
+    const hoverRows = [
+        scheduleText ? `수업: ${scheduleText}` : '',
+        `재원 ${studentNames.length || s.activeCount || 0}명`,
+        studentNames.length ? studentNames.join(', ') : '등록된 재원 학생이 없습니다.'
+    ];
+    const hoverPreview = renderDashboardHoverPreview(cls.name || '반 정보', hoverRows);
+
+    if (!s.isScheduled) {
+        return `
+            <div class="ap-class-row ap-class-row--empty ap-hover-source" onclick="openDashboardClass('${safeCid}')" tabindex="0">
+                <div class="ap-class-row__name ap-class-row__name--inactive">${safeName}</div>
+                <div class="ap-class-row__meta">수업 없음</div>
+                ${hoverPreview}
+            </div>
+        `;
+    }
+
+    return `
+        <div class="ap-class-row ap-class-row--scheduled ap-hover-source" onclick="openDashboardClass('${safeCid}')" tabindex="0">
+            <div class="ap-class-row__name">${safeName}</div>
+            <div class="ap-class-row__chips" aria-label="${safeName} 출결 요약">
                 <span class="ap-class-chip ap-class-chip--active">재원 ${apEscapeHtml(String(s.activeCount))}</span>
                 <span class="ap-class-chip ap-class-chip--present">등원 ${apEscapeHtml(String(s.present))}</span>
                 <span class="ap-class-chip ap-class-chip--absent">결석 ${apEscapeHtml(String(s.absent))}</span>
-            </div>
-        </div>
-    `;
-}
+            </div>
+            ${hoverPreview}
+        </div>
+    `;
+}
 
 // [POLISH] 일정 섹션: 오렌지(오늘) vs 보라(주간) 은은한 컬러 분리
 function renderTodoSections() {
@@ -1091,27 +1179,43 @@ function renderTodoSections() {
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             const dDay = diffDays === 0 ? 'D-Day' : `D-${diffDays}`;
 
-            if (u.type === 'exam') {
-                const e = u.item;
-                const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
-                return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;">
-                    <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${displayTitle}</div>
-                    <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
-                </div>`;
-            }
-
-            const s = u.item;
-            const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
-            const label = isClosed ? '휴무' : '기타';
+            if (u.type === 'exam') {
+                const e = u.item;
+                const rawTitle = e.exam_name ? `${e.school_name || '일반'} ${e.grade || ''} ${e.exam_name}` : `${e.school_name || '일정 확인'}`;
+                const displayTitle = apEscapeHtml(rawTitle);
+                const preview = renderDashboardHoverPreview(rawTitle, [
+                    `날짜: ${u.date}`,
+                    e.memo ? `메모: ${e.memo}` : '',
+                    `상태: ${dDay}`
+                ]);
+                return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
+                    <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${displayTitle}</div>
+                    <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+                    ${preview}
+                </div>`;
+            }
+
+            const s = u.item;
+            const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
+            const label = isClosed ? '휴무' : '기타';
             const labelColor = isClosed ? 'var(--warning)' : 'var(--secondary)';
-            const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
-            const title = s.title || (isClosed ? '휴무' : '일정');
-            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
-                <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
-            </div>`;
-        }).join('');
-    }
+            const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
+            const title = s.title || (isClosed ? '휴무' : '일정');
+            const timeText = [s.start_time, s.end_time].map(v => String(v || '').trim()).filter(Boolean).join('~');
+            const preview = renderDashboardHoverPreview(title, [
+                `분류: ${label}`,
+                `날짜: ${s.schedule_date || u.date}`,
+                timeText ? `시간: ${timeText}` : '',
+                s.teacher_name ? `선생님: ${s.teacher_name}` : '',
+                s.memo ? `메모: ${s.memo}` : ''
+            ]);
+            return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
+                <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+                ${preview}
+            </div>`;
+        }).join('');
+    }
 
     const onboardingWeeklyHtml = typeof renderOnboardingWeeklyScheduleRows === 'function' ? renderOnboardingWeeklyScheduleRows() : '';
     const onboardingWeeklyCount = typeof getDashboardWeeklyOnboardingTasks === 'function' ? getDashboardWeeklyOnboardingTasks().length : 0;
@@ -1332,20 +1436,27 @@ function renderOnboardingWeeklyScheduleRows(tasks = null) {
     `;
 
     return visibleTasks.map(task => {
-        const taskId = apEscapeHtml(String(task?.id || ''));
+        const taskId = dashboardEscapeAttr(task?.id || '');
         const label = getOnboardingTaskLabel(task);
-        const studentName = task?.student_name || '학생';
-        const className = task?.class_name || '';
-        const dueLabel = getDashboardOnboardingDueLabel(task);
-
-        return `<div onclick="event.stopPropagation(); openOnboardingTask('${taskId}')" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(15,23,42,0.08); background:transparent;">
-            <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">상담</span>${apEscapeHtml(label)} · ${apEscapeHtml(studentName)}${className ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(className)}</span>` : ''}
-            </div>
-            ${dueLabel ? `<span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${apEscapeHtml(dueLabel)}</span>` : ''}
-        </div>`;
-    }).join('');
-}
+        const studentName = task?.student_name || '학생';
+        const className = task?.class_name || '';
+        const dueLabel = getDashboardOnboardingDueLabel(task);
+        const preview = renderDashboardHoverPreview(label, [
+            `학생: ${studentName}`,
+            className ? `반: ${className}` : '',
+            dueLabel ? `기한: ${dueLabel}` : '',
+            task?.memo ? `메모: ${task.memo}` : ''
+        ]);
+
+        return `<div class="ap-hover-source" onclick="event.stopPropagation(); openOnboardingTask('${taskId}')" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(15,23,42,0.08); background:transparent;" tabindex="0">
+            <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">상담</span>${apEscapeHtml(label)} · ${apEscapeHtml(studentName)}${className ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(className)}</span>` : ''}
+            </div>
+            ${dueLabel ? `<span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${apEscapeHtml(dueLabel)}</span>` : ''}
+            ${preview}
+        </div>`;
+    }).join('');
+}
 
 function getSelectedOnboardingTask() {
     const store = ensureDashboardOnboardingState();

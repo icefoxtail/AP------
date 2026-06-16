@@ -612,7 +612,7 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-weekly-split {
 
 @media (min-width: 640px) {
   body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-weekly-split {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: minmax(150px, 2fr) minmax(0, 8fr) !important;
   }
 }
 
@@ -623,6 +623,66 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-split-cell {
   background: var(--surface) !important;
   padding: var(--ap-space-4) !important;
   box-sizing: border-box !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-source {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-preview {
+  position: absolute;
+  left: 12px;
+  top: calc(100% + 8px);
+  z-index: 40;
+  width: min(360px, calc(100vw - 48px));
+  max-height: 260px;
+  overflow: auto;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-3px);
+  pointer-events: none;
+  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+  white-space: normal;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-source:hover > .ap-hover-preview,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-source:focus-visible > .ap-hover-preview,
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-source:focus-within > .ap-hover-preview {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-preview__title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-preview__body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-preview__line {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--secondary);
+  overflow-wrap: anywhere;
 }
 
 .ap-surface-action:hover,
