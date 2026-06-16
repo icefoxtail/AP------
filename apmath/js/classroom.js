@@ -1529,6 +1529,12 @@ async function saveClassRecord(cid, dateStr) {
     if (selectedUnits.length > 0) specialNote = '[단원선택] ' + selectedUnits.join(', ') + (specialNote ? '\n' + specialNote : '');
     const payload = { class_id: cid, date: dateStr, teacher_name: (typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당')), special_note: specialNote, progress: progresses };
 
-    const r = await api.post('class-daily-records', payload);
-    if (r?.success) { toast('저장 완료', 'success'); closeModal(true); await loadData(); renderClass(cid); }
+    try {
+        const r = await api.post('class-daily-records', payload);
+        if (r?.success) { toast('저장 완료', 'success'); closeModal(true); await loadData(); renderClass(cid); return; }
+        toast(r?.message || r?.error || '저장 실패', 'error');
+    } catch (e) {
+        console.error('[saveClassRecord] failed:', e);
+        toast('저장 중 오류가 발생했습니다.', 'error');
+    }
 }

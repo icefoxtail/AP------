@@ -15,4 +15,16 @@ assert(
   'onboarding refresh should keep weekly schedule visible when only the cleaning row exists'
 );
 
+assert(
+  /grid-template-columns:minmax\(150px,2fr\) minmax\(0,8fr\)/.test(dashboard),
+  'weekly schedule split should reserve about 20% for fixed routines and 80% for notices'
+);
+
+assert(
+  /function renderDashboardHoverPreview/.test(dashboard) &&
+  /ap-hover-source/.test(dashboard) &&
+  /ap-hover-preview/.test(dashboard),
+  'weekly/class dashboard rows should share the reusable hover preview component'
+);
+
 console.log('dashboard weekly cleaning regression test passed');
