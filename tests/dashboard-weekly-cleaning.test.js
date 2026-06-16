@@ -11,6 +11,14 @@ assert(
 );
 
 assert(
+  /broom:/.test(dashboard) &&
+    /iconBroom/.test(dashboard) &&
+    /class="ap-cleaning-routine"/.test(dashboard) &&
+    !/>\s*청소 당번:/.test(dashboard),
+  'weekly cleaning row should render as a broom icon and assignee name without a visible text label'
+);
+
+assert(
   /regularCount > 0 \|\| onboardingCount > 0 \|\| hasCleaningSchedule/.test(dashboard),
   'onboarding refresh should keep weekly schedule visible when only the cleaning row exists'
 );
