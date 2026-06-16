@@ -1490,6 +1490,8 @@
           gradeLabel,
           assignmentBatchId,
           keyOverride: key,
+          assignmentRegistered: true,
+          preRegistered: true,
         });
       } catch (error) {
         console.error(error);
@@ -1501,6 +1503,7 @@
     async function goAssessmentMixedEngine(pack, mode, qpp, options = {}) {
       const key = options.keyOverride || `assessment_${pack.id}_${Date.now()}`;
       const questions = (pack.questions || []).map((question) => ({ ...question }));
+      let assignmentRegistered = !!(options.assignmentRegistered || options.preRegistered);
       const meta = {
         title: pack.title,
         customTitle: pack.title,
@@ -1527,7 +1530,11 @@
       if (options.classId) url.searchParams.set('class', options.classId);
       if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
       if (options.className) url.searchParams.set('className', options.className);
-      if (options.submitQr && options.classId) {
+      if (assignmentRegistered) {
+        url.searchParams.set('assignmentRegistered', '1');
+        url.searchParams.set('preRegistered', '1');
+      }
+      if (options.submitQr && options.classId && !assignmentRegistered) {
         try {
           await registerAssessmentClassExamAssignment(
             { id: options.classId, name: options.className || '', grade: options.gradeLabel || pack.grade, teacher_name: options.teacherName || '' },
@@ -1539,6 +1546,9 @@
               gradeLabel: options.gradeLabel || pack.grade || '',
             }
           );
+          assignmentRegistered = true;
+          url.searchParams.set('assignmentRegistered', '1');
+          url.searchParams.set('preRegistered', '1');
         } catch (error) {
           console.warn('[assessment assignment] 사전 등록 실패:', error);
         }

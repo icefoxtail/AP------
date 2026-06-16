@@ -317,7 +317,12 @@ async function getLatestAssignmentForClassMaterial(env, classId, materialId) {
 }
 
 function parseWrongNumbersCsv(value) {
-  return text(value).split(',').map(Number).filter(Number.isFinite).sort((a, b) => a - b);
+  if (value === undefined || value === null || text(value) === '') return [];
+  return text(value)
+    .split(',')
+    .map(Number)
+    .filter(n => Number.isInteger(n) && n > 0)
+    .sort((a, b) => a - b);
 }
 
 async function attachQuestionMeta(env, materialId, wrongRows) {
@@ -504,19 +509,34 @@ function scopedWrongPayload(scope, rows, submissions = []) {
   for (const row of rows) {
     const no = Number(row.question_no);
     if (Number.isFinite(no)) qMap.set(no, (qMap.get(no) || 0) + 1);
-    const key = row.student_id || '';
-    const item = sMap.get(key) || { student_id: row.student_id, student_name: row.student_name || '', wrong_numbers: [] };
+    const key = `${row.material_id || ''}::${row.student_id || ''}`;
+    const item = sMap.get(key) || {
+      material_id: row.material_id || '',
+      material_title: row.material_title || '',
+      student_id: row.student_id,
+      student_name: row.student_name || '',
+      wrong_numbers: []
+    };
     if (Number.isFinite(no)) item.wrong_numbers.push(no);
     sMap.set(key, item);
   }
   for (const sub of submissions) {
-    if (!sMap.has(sub.student_id) && Number(sub.is_submitted || 0) === 1) {
-      sMap.set(sub.student_id, { student_id: sub.student_id, student_name: sub.student_name || '', wrong_numbers: parseWrongNumbersCsv(sub.wrong_numbers_csv) });
+    const key = `${sub.material_id || ''}::${sub.student_id || ''}`;
+    if (!sMap.has(key) && Number(sub.is_submitted || 0) === 1) {
+      sMap.set(key, {
+        material_id: sub.material_id || '',
+        material_title: sub.material_title || '',
+        student_id: sub.student_id,
+        student_name: sub.student_name || '',
+        wrong_numbers: parseWrongNumbersCsv(sub.wrong_numbers_csv)
+      });
     }
   }
   return {
     scope,
     submissions: submissions.map(row => ({
+      material_id: row.material_id,
+      material_title: row.material_title,
       student_id: row.student_id,
       student_name: row.student_name,
       is_submitted: Number(row.is_submitted || 0),
@@ -566,6 +586,8 @@ async function scopedSubmissionRows(env, user, scope) {
   const res = await env.DB.prepare(`
     SELECT
       sms.*,
+      cma.material_id,
+      sm.title AS material_title,
       s.name AS student_name,
       GROUP_CONCAT(CASE WHEN COALESCE(sma.status, 'active') != 'deleted' THEN sma.question_no END) AS wrong_numbers_csv
     FROM student_material_submissions sms

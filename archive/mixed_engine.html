@@ -484,6 +484,15 @@ function shouldRenderSubmitQr() {
     }
 }
 
+function isAssignmentPreRegistered() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('assignmentRegistered') === '1' || params.get('preRegistered') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
 function buildSubmitQrTargetUrl() {
     const params = new URLSearchParams(window.location.search);
     const classId = params.get('class') || '';
@@ -623,6 +632,7 @@ function getAssignmentAuthHeader() {
 
 async function registerClassExamAssignmentToOS() {
     if (!shouldRenderSubmitQr()) return;
+    if (isAssignmentPreRegistered()) return;
     if (!AppState.data.length || !AppState.key) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -774,6 +784,10 @@ function wrapLatexPreserveBlocks(text) {
     s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
         if (idx % 2 === 1) return seg;
         return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
+    }).join('');
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
+        if (idx % 2 === 0) return seg;
+        return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }).join('');
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');

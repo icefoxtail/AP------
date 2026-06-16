@@ -414,14 +414,61 @@
         }
         return lines.join('\n');
     }
+    function outputWrongNumbers(rows) {
+        return [...new Set((rows || []).flatMap(row => (row.wrong_numbers || []).map(Number).filter(n => Number.isInteger(n) && n > 0)))]
+            .sort((a, b) => a - b);
+    }
+    function outputMaterialKey(row) {
+        return String(row?.material_id || '');
+    }
+    function outputMaterialTitle(rows, submissions, materialId) {
+        const row = [...(rows || []), ...(submissions || [])].find(item => outputMaterialKey(item) === materialId);
+        return row?.material_title || getSelectedMaterialById(materialId)?.title || materialId || '교재';
+    }
+    function renderAccuracyRows(rows, submissions) {
+        const submittedRows = (submissions || []).filter(row => Number(row.is_submitted || 0) === 1);
+        const submittedKeys = new Set(submittedRows.map(row => `${outputMaterialKey(row)}::${row.student_id || ''}`));
+        const denominator = submittedRows.length;
+        const outputRows = outputWrongNumbers(rows).map(no => {
+            const wrongCount = (rows || []).filter(row => {
+                const key = `${outputMaterialKey(row)}::${row.student_id || ''}`;
+                const wrongNumbers = (row.wrong_numbers || []).map(Number).filter(n => Number.isInteger(n) && n > 0);
+                return submittedKeys.has(key) && wrongNumbers.includes(no);
+            }).length;
+            const rate = denominator ? `${Math.round(((denominator - wrongCount) / denominator) * 100)}%` : '-';
+            return `${no}번 정답률 ${rate}`;
+        });
+        return outputRows.length ? outputRows : ['결과가 없습니다.'];
+    }
     function renderOutputText() {
         const data = st().view;
         if (!data) return '';
-        const title = `${(data.scope?.label || '교재')} 오답번호`;
+        const title = `${(data.scope?.label || '교재')} 오답 출력`;
         const rows = data.student_wrongs || [];
-        if (!rows.length && data.scope?.type === 'student' && (data.items || []).length) {
+        const isStudentScope = data.scope?.type === 'student';
+        if (!rows.length && isStudentScope && (data.items || []).length) {
             const name = data.items[0].student_name || '학생';
             return `${title}\n\n${name}\n${data.items.map(x => x.question_no).join(', ')}`;
+        }
+        if (!isStudentScope) {
+            const submissions = data.submissions || [];
+            if (data.scope?.material_id) return [title, '', ...renderAccuracyRows(rows, submissions)].join('\n');
+            const materialIds = [...new Set([...rows, ...submissions].map(outputMaterialKey).filter(Boolean))].sort((a, b) => {
+                const aTitle = outputMaterialTitle(rows, submissions, a);
+                const bTitle = outputMaterialTitle(rows, submissions, b);
+                return aTitle.localeCompare(bTitle, 'ko');
+            });
+            if (!materialIds.length) return [title, '', '결과가 없습니다.'].join('\n');
+            const sections = materialIds.flatMap((materialId, index) => {
+                const materialRows = rows.filter(row => outputMaterialKey(row) === materialId);
+                const materialSubmissions = submissions.filter(row => outputMaterialKey(row) === materialId);
+                return [
+                    ...(index ? [''] : []),
+                    outputMaterialTitle(rows, submissions, materialId),
+                    ...renderAccuracyRows(materialRows, materialSubmissions)
+                ];
+            });
+            return [title, '', ...sections].join('\n');
         }
         return [title, '', ...(rows.length ? rows.map(r => `${r.student_name || r.student_id}\n${(r.wrong_numbers || []).length ? r.wrong_numbers.join(', ') : 'O'}`) : ['결과가 없습니다.'])].join('\n');
     }
