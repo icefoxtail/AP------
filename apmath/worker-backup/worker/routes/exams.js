@@ -62,12 +62,19 @@ function getAssignmentArchiveCandidates(value) {
   return [...new Set([raw, normalized].filter(Boolean))];
 }
 
+function normalizeExamTitleKey(value) {
+  return String(value || '').trim().replace(/\s+/g, ' ');
+}
+
 function buildAssignmentIdentityKey(row = {}) {
   const classId = String(row.class_id || '').trim();
   const examDate = String(row.exam_date || '').trim();
+  const packId = String(row.pack_id || '').trim();
+  const packHash = String(row.pack_hash || '').trim();
+  if (classId && examDate && packId && packHash) return `${classId}||${examDate}||PACK||${packId}||${packHash}`;
   const archiveFile = normalizeAssignmentArchiveFile(row.archive_file || '');
   if (classId && examDate && archiveFile) return `${classId}||${examDate}||${archiveFile}`;
-  return `${classId}||${String(row.exam_title || '').trim()}||${examDate}`;
+  return `${classId}||${normalizeExamTitleKey(row.exam_title)}||${examDate}`;
 }
 
 function dedupeClassExamAssignments(rows = []) {
@@ -285,6 +292,66 @@ async function loadExistingExamSession(env, sessionColumns, sessionId) {
   }
 }
 
+async function findExistingExamSessionByIdentity(env, input = {}) {
+  const studentId = normalizeOptionalText(input.student_id);
+  const examTitle = normalizeOptionalText(input.exam_title);
+  const examDate = normalizeOptionalText(input.exam_date);
+  const archiveFile = normalizeAssignmentArchiveFile(input.archive_file || '');
+  const questionCount = Math.max(0, Math.min(100, parseInt(input.question_count, 10) || 0));
+  if (!studentId || !examDate) return null;
+
+  try {
+    if (archiveFile) {
+      const archiveCandidates = getAssignmentArchiveCandidates(input.archive_file || archiveFile);
+      if (archiveCandidates.length) {
+        const markers = archiveCandidates.map(() => '?').join(',');
+        const row = await env.DB.prepare(`
+          SELECT *
+          FROM exam_sessions
+          WHERE student_id = ?
+            AND exam_date = ?
+            AND archive_file IN (${markers})
+          ORDER BY updated_at DESC, created_at DESC
+          LIMIT 1
+        `).bind(studentId, examDate, ...archiveCandidates).first();
+        if (row?.id) return row;
+      }
+
+      if (examTitle && questionCount) {
+        const legacy = await env.DB.prepare(`
+          SELECT *
+          FROM exam_sessions
+          WHERE student_id = ?
+            AND exam_title = ?
+            AND exam_date = ?
+            AND COALESCE(question_count, 0) = ?
+            AND TRIM(COALESCE(archive_file, '')) = ''
+          ORDER BY updated_at DESC, created_at DESC
+          LIMIT 1
+        `).bind(studentId, examTitle, examDate, questionCount).first();
+        if (legacy?.id) return legacy;
+      }
+    }
+
+    if (!archiveFile && examTitle) {
+      return await env.DB.prepare(`
+        SELECT *
+        FROM exam_sessions
+        WHERE student_id = ?
+          AND exam_title = ?
+          AND exam_date = ?
+          AND TRIM(COALESCE(archive_file, '')) = ''
+        ORDER BY updated_at DESC, created_at DESC
+        LIMIT 1
+      `).bind(studentId, examTitle, examDate).first();
+    }
+  } catch (e) {
+    console.warn('[exam-session-identity] existing session lookup failed:', e);
+  }
+
+  return null;
+}
+
 async function saveAssessmentResultItems(env, input) {
   const questionCount = Math.max(0, Math.min(100, parseInt(input.question_count, 10) || 0));
   if (!questionCount) return { skipped: true, reason: 'question_count_empty' };
@@ -476,6 +543,38 @@ export async function handleExams(request, env, teacher, path, url) {
         `).bind(d.class_id, d.exam_date, ...archiveCandidates).first();
       }
 
+      if (
+        !existing &&
+        assignmentColumns.has('pack_id') &&
+        assignmentColumns.has('pack_hash') &&
+        assignmentMeta.pack_id &&
+        assignmentMeta.pack_hash
+      ) {
+        existing = await env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id = ?
+            AND exam_date = ?
+            AND pack_id = ?
+            AND pack_hash = ?
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(d.class_id, d.exam_date, assignmentMeta.pack_id, assignmentMeta.pack_hash).first();
+      }
+
+      if (!existing && !archive_file) {
+        existing = await env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id = ?
+            AND exam_title = ?
+            AND exam_date = ?
+            AND TRIM(COALESCE(archive_file, '')) = ''
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(d.class_id, d.exam_title, d.exam_date).first();
+      }
+
       if (existing?.id) {
         await env.DB.prepare(`
           UPDATE class_exam_assignments
@@ -516,8 +615,52 @@ export async function handleExams(request, env, teacher, path, url) {
           ${conflictUpdateSets.join(',\n          ')}
       `).bind(...insertValues).run();
 
-      const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ? AND archive_file = ?')
-        .bind(d.class_id, d.exam_title, d.exam_date, archive_file).first();
+      let assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
+        .bind(aid).first();
+
+      if (!assignment && archive_file) {
+        assignment = await env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id = ?
+            AND exam_date = ?
+            AND archive_file = ?
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(d.class_id, d.exam_date, archive_file).first();
+      }
+
+      if (
+        !assignment &&
+        assignmentColumns.has('pack_id') &&
+        assignmentColumns.has('pack_hash') &&
+        assignmentMeta.pack_id &&
+        assignmentMeta.pack_hash
+      ) {
+        assignment = await env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id = ?
+            AND exam_date = ?
+            AND pack_id = ?
+            AND pack_hash = ?
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(d.class_id, d.exam_date, assignmentMeta.pack_id, assignmentMeta.pack_hash).first();
+      }
+
+      if (!assignment) {
+        assignment = await env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id = ?
+            AND exam_title = ?
+            AND exam_date = ?
+            AND TRIM(COALESCE(archive_file, '')) = ?
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(d.class_id, d.exam_title, d.exam_date, archive_file).first();
+      }
 
       return jsonResponse({ success: true, assignment });
     }
@@ -648,7 +791,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const examTitle = String(d.exam_title || '').trim();
       const examDate = String(d.exam_date || '').trim();
       const questionCount = Math.max(1, Math.min(80, parseInt(d.question_count, 10) || 0));
-      const archiveFile = String(d.archive_file || '').trim();
+      const archiveFile = normalizeAssignmentArchiveFile(d.archive_file || '');
       const rows = Array.isArray(d.rows) ? d.rows : [];
       const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
 
@@ -676,14 +819,13 @@ export async function handleExams(request, env, teacher, path, url) {
 
         const wrongIds = normalizeWrongIds(row.wrong_ids, questionCount);
 
-        const existing = await env.DB.prepare(`
-          SELECT id
-          FROM exam_sessions
-          WHERE student_id = ?
-            AND exam_title = ?
-            AND exam_date = ?
-          LIMIT 1
-        `).bind(studentId, examTitle, examDate).first();
+        const existing = await findExistingExamSessionByIdentity(env, {
+          student_id: studentId,
+          exam_title: examTitle,
+          exam_date: examDate,
+          question_count: questionCount,
+          archive_file: d.archive_file || archiveFile
+        });
 
         const sessionId = existing?.id || `ex_${Date.now()}_${i}_${Math.random().toString(36).slice(2, 8)}`;
         const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
@@ -765,12 +907,21 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       const d = await request.json();
       if (!(await canAccessStudent(currentTeacher, d.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
-      const sid = id === 'new' ? `ex_${Date.now()}` : id;
       const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
-      const existingSession = id === 'new' ? null : await loadExistingExamSession(env, sessionColumns, sid);
       const questionCount = d.question_count || 0;
       const wrongIds = normalizeWrongIds(d.wrong_ids, Math.max(1, Math.min(80, parseInt(questionCount, 10) || 80)));
-      const archiveFile = String(d.archive_file || '').trim();
+      const archiveFile = normalizeAssignmentArchiveFile(d.archive_file || '');
+      const existingByIdentity = id === 'new' ? await findExistingExamSessionByIdentity(env, {
+        student_id: d.student_id,
+        exam_title: d.exam_title,
+        exam_date: d.exam_date,
+        question_count: questionCount,
+        archive_file: d.archive_file || archiveFile
+      }) : null;
+      const sid = id === 'new' ? (existingByIdentity?.id || `ex_${Date.now()}`) : id;
+      const existingSession = existingByIdentity?.id
+        ? await loadExistingExamSession(env, sessionColumns, existingByIdentity.id)
+        : (id === 'new' ? null : await loadExistingExamSession(env, sessionColumns, sid));
       const assignmentMeta = await resolveExamAssignmentMeta(env, {
         assignment_id: d.assignment_id,
         pack_id: d.pack_id,

@@ -806,14 +806,17 @@ function getOmrExistingSession(studentId) {
     const ui = state.ui.omrInput || {};
     const examTitle = String(ui.examTitle || '').trim();
     const examDate = String(ui.examDate || '').trim();
-    if (!examTitle || !examDate) return null;
+    const archiveFile = normalizeQrArchiveFile(ui.archiveFile || '');
+    if ((!examTitle && !archiveFile) || !examDate) return null;
 
     const classId = getOmrClassIdForStudent(studentId);
     return (state.db.exam_sessions || [])
         .filter(e =>
             String(e.student_id) === String(studentId) &&
-            String(e.exam_title || '') === examTitle &&
             String(e.exam_date || '') === examDate &&
+            (archiveFile
+                ? normalizeQrArchiveFile(e.archive_file || '') === archiveFile
+                : String(e.exam_title || '') === examTitle) &&
             (!e.class_id || !classId || String(e.class_id) === String(classId))
         )
         .sort((a, b) => String(b.updated_at || b.created_at || '').localeCompare(String(a.updated_at || a.created_at || '')))[0] || null;
@@ -872,7 +875,16 @@ function getOmrHistoricalExamList() {
         if (updatedAt > row.updatedAt) row.updatedAt = updatedAt;
     });
 
-    return Array.from(map.values()).sort((a, b) =>
+    const rows = Array.from(map.values());
+    const archivedBaseKeys = new Set(rows
+        .filter(item => item.archiveFile)
+        .map(item => [item.examDate || '', item.examTitle || '', String(item.questionCount || '')].join('|')));
+    const visibleRows = rows.filter(item =>
+        item.archiveFile ||
+        !archivedBaseKeys.has([item.examDate || '', item.examTitle || '', String(item.questionCount || '')].join('|'))
+    );
+
+    return visibleRows.sort((a, b) =>
         String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
         String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')) ||
         String(a.examTitle || '').localeCompare(String(b.examTitle || ''), 'ko', { numeric: true })

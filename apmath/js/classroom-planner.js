@@ -207,15 +207,31 @@ async function openExamGradeView(classId) {
 
     const activeCountForAssignment = activeCount || ids.length;
     const grouped = {};
+    const assignmentById = new Map(assignments.map(a => [String(a.id || ''), a]).filter(([id]) => id));
+    const isQuestionCountCompatible = function(a, row) {
+        const aq = Number(a?.question_count || 0);
+        const rq = Number(row?.question_count || 0);
+        return !aq || !rq || aq === rq;
+    };
     const findMatchingAssignmentForSession = function(session) {
-        return assignments.find(a => {
-            if (String(a.exam_title || '') !== String(session.exam_title || '')) return false;
-            if (String(a.exam_date || '') !== String(session.exam_date || '')) return false;
-            if (!a.archive_file) return false;
-            const aq = Number(a.question_count || 0);
-            const sq = Number(session.question_count || 0);
-            return !aq || !sq || aq === sq;
-        });
+        const byAssignmentId = assignmentById.get(String(session.assignment_id || ''));
+        if (byAssignmentId) return byAssignmentId;
+
+        const sessionDate = String(session.exam_date || '');
+        const sessionArchive = normalizeClassroomArchiveFile(session.archive_file || '');
+        const candidates = assignments.filter(a =>
+            String(a.exam_date || '') === sessionDate &&
+            isQuestionCountCompatible(a, session)
+        );
+
+        if (sessionArchive) {
+            return candidates.find(a => normalizeClassroomArchiveFile(a.archive_file || '') === sessionArchive) || null;
+        }
+
+        const archivedCandidates = candidates.filter(a => normalizeClassroomArchiveFile(a.archive_file || ''));
+        if (archivedCandidates.length === 1) return archivedCandidates[0];
+
+        return candidates.find(a => String(a.exam_title || '') === String(session.exam_title || '')) || null;
     };
 
     assignments.forEach(a => {
@@ -229,8 +245,8 @@ async function openExamGradeView(classId) {
     });
 
     sessions.forEach(s => {
-        const matchedAssignment = s.archive_file ? null : findMatchingAssignmentForSession(s);
-        const resolvedArchiveFile = s.archive_file || matchedAssignment?.archive_file || '';
+        const matchedAssignment = findMatchingAssignmentForSession(s);
+        const resolvedArchiveFile = matchedAssignment?.archive_file || s.archive_file || '';
         const key = makeExamListKey(s.exam_title, s.exam_date, resolvedArchiveFile);
         if (!grouped[key]) grouped[key] = { title: s.exam_title, date: s.exam_date, archiveFile: resolvedArchiveFile, sessions: [], questionCount: s.question_count || matchedAssignment?.question_count || 0, assignment: matchedAssignment || null };
         grouped[key].sessions.push(s);
@@ -286,26 +302,37 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
     const archiveFilter = normalizeClassroomArchiveFile(archiveFile || '');
-    const isQuestionCountCompatible = function(a, row) {
-        const aq = Number(a?.question_count || 0);
-        const rq = Number(row?.question_count || 0);
-        return !aq || !rq || aq === rq;
-    };
+    const assignmentById = new Map(assignmentSource.map(a => [String(a.id || ''), a]).filter(([id]) => id));
     const matchesExamIdentity = function(row) {
         if (String(row.exam_date || '') !== String(examDate || '')) return false;
+        const rowArchive = normalizeClassroomArchiveFile(row.archive_file || '');
+        const assignmentCandidates = assignmentSource.filter(a => {
+            const aq = Number(a?.question_count || 0);
+            const rq = Number(row?.question_count || 0);
+            return String(a.exam_date || '') === String(row.exam_date || '') && (!aq || !rq || aq === rq);
+        });
+        const linkedAssignment = assignmentById.get(String(row.assignment_id || '')) ||
+            (rowArchive
+                ? assignmentCandidates.find(a => normalizeClassroomArchiveFile(a.archive_file || '') === rowArchive)
+                : (assignmentCandidates.filter(a => normalizeClassroomArchiveFile(a.archive_file || '')).length === 1
+                    ? assignmentCandidates.filter(a => normalizeClassroomArchiveFile(a.archive_file || ''))[0]
+                    : assignmentCandidates.find(a => String(a.exam_title || '') === String(row.exam_title || ''))));
+        if (linkedAssignment) {
+            if (archiveFilter && normalizeClassroomArchiveFile(linkedAssignment.archive_file || '') === archiveFilter) return true;
+            if (!archiveFilter && String(linkedAssignment.exam_title || '') === String(examTitle || '')) return true;
+        }
         if (archiveFilter) {
-            const rowArchive = normalizeClassroomArchiveFile(row.archive_file || '');
             if (rowArchive) return rowArchive === archiveFilter;
-            return assignmentSource.some(a =>
-                String(a.exam_date || '') === String(examDate || '') &&
-                normalizeClassroomArchiveFile(a.archive_file || '') === archiveFilter &&
-                isQuestionCountCompatible(a, row)
-            );
+            return false;
         }
         return String(row.exam_title || '') === String(examTitle || '');
     };
     const sessions = sessionSource.filter(es => matchesExamIdentity(es) && ids.includes(String(es.student_id)));
-    const matchedAssignment = assignmentSource.find(a => matchesExamIdentity(a));
+    const matchedAssignment = assignmentSource.find(a => {
+        if (String(a.exam_date || '') !== String(examDate || '')) return false;
+        if (archiveFilter) return normalizeClassroomArchiveFile(a.archive_file || '') === archiveFilter;
+        return String(a.exam_title || '') === String(examTitle || '');
+    });
 
     const sessionsWithArchive = sessions.filter(s => s.archive_file);
     if (sessionsWithArchive.length > 0 && typeof ensureBlueprintsForSessions === 'function') {

@@ -434,30 +434,30 @@ window.questionBank = [
     answer: "③",
     solution: "[키포인트]\n고정된 자리, 순서를 정해야 하는 자리, 크기 순서가 자동으로 정해지는 자리를 나누어 계산한다.\n조건 정리\n$a_3=5$로 고정되어 있다.\n$a_1,a_2$는 $5$보다 작고, $a_4,a_5,a_6$는 $5$보다 크면서 오름차순이어야 한다.\n풀이 과정\n$a_1,a_2$는 $5$보다 작은 수 $1,2,3,4$ 중에서 서로 다른 $2$개를 뽑아 순서 있게 나열한다.\n따라서 경우의 수는\n${}_4P_2=4\\times3=12$가지이다.\n$a_4,a_5,a_6$은 $5$보다 큰 수 $6,7,8,9$ 중에서 $3$개를 고른다.\n이때 $a_4<a_5<a_6$으로 순서가 정해져 있으므로, 고르기만 하면 배열은 하나로 결정된다.\n따라서 경우의 수는\n${}_4C_3=4$가지이다.\n두 선택은 독립적으로 이루어지므로 전체 경우의 수는\n$12\\times4=48$가지이다.\n결론\n따라서 정답은 ③이다."
   },
-  {
-    id: 19,
-    level: "상",
-    category: "여러 가지 방정식",
-    originalCategory: "여러 가지 방정식",
-    standardCourse: "공통수학1",
-    standardUnitKey: "H22-C-06",
-    standardUnit: "여러 가지 방정식과 부등식",
-    standardUnitOrder: 6,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["검수보류"],
-    wide: false,
-    content: "$x$에 대한 사차방정식 $x^4-9x^3+30x^2+px+q=0$의 서로 다른 네 실근 $\\alpha, \\beta, \\gamma, \\delta$가 $(\\alpha+\\beta)^2=3\\alpha\\beta, (\\gamma+\\delta)^2=3\\gamma\\delta$을 만족시킬 때, 두 상수 $p, q$에 대하여 $p+q$의 값은? [4.5점]",
-    choices: [
-      "-18",
-      "-16",
-      "-14",
-      "-12",
-      "-10"
-    ],
-    answer: "검수보류",
-    solution: "[검수보류]\n이 문항은 원문 조건 그대로는 수학적 충돌이 있습니다.\n원문에는 서로 다른 네 실근 $\\alpha,\\beta,\\gamma,\\delta$가 존재하고, $(\\alpha+\\beta)^2=3\\alpha\\beta$, $(\\gamma+\\delta)^2=3\\gamma\\delta$를 만족한다고 되어 있습니다.\n그런데 실수 $\\alpha,\\beta$에 대해\n$(\\alpha+\\beta)^2=3\\alpha\\beta$\n를 정리하면\n$\\alpha^2-\\alpha\\beta+\\beta^2=0$입니다.\n이는 실수 범위에서 $\\alpha=\\beta=0$일 때만 가능하므로, 서로 다른 두 실근 조건과 양립하기 어렵습니다.\n따라서 이 문항은 원본 정답표 또는 원문 조건 추가 확인 전까지 정답 확정이 불가합니다.\n현재 입고본에서는 원문을 보존하고 검수보류 문항으로 표시합니다."
-  },
+{
+  id: 19,
+  level: "상",
+  category: "여러 가지 방정식",
+  originalCategory: "여러 가지 방정식",
+  standardCourse: "공통수학1",
+  standardUnitKey: "H22-C-06",
+  standardUnit: "여러 가지 방정식과 부등식",
+  standardUnitOrder: 6,
+  questionType: "객관식",
+  layoutTag: "grid",
+  tags: [],
+  wide: false,
+  content: "$x$에 대한 사차방정식 $x^4-9x^3+30x^2+px+q=0$의 서로 다른 네 근 $\\alpha, \\beta, \\gamma, \\delta$가 $(\\alpha+\\beta)^2=3\\alpha\\beta, (\\gamma+\\delta)^2=3\\gamma\\delta$을 만족시킬 때, 두 상수 $p, q$에 대하여 $p+q$의 값은? [4.5점]",
+  choices: [
+    "$-18$",
+    "$-16$",
+    "$-14$",
+    "$-12$",
+    "$-10$"
+  ],
+  answer: "①",
+  solution: "[키포인트] 네 근을 두 쌍으로 묶고, 각 쌍의 합과 곱을 문자로 두어 비에타 정리와 연결한다.\n조건 정리: 네 근을 $\\alpha, \\beta, \\gamma, \\delta$라 하고 $\\alpha+\\beta=s$, $\\gamma+\\delta=t$로 둔다. 조건 $(\\alpha+\\beta)^2=3\\alpha\\beta$, $(\\gamma+\\delta)^2=3\\gamma\\delta$에서 $\\alpha\\beta=\\dfrac{s^2}{3}$, $\\gamma\\delta=\\dfrac{t^2}{3}$이다.\n풀이 방향: 사차방정식의 근을 두 쌍씩 묶어 두 이차식의 곱으로 나타낸 뒤, 계수를 비교하여 $s+t$, $st$를 구한다.\n정석 풀이: 두 근 $\\alpha, \\beta$를 갖는 이차식은 $x^2-(\\alpha+\\beta)x+\\alpha\\beta$이므로 $x^2-sx+\\dfrac{s^2}{3}$이다. 마찬가지로 두 근 $\\gamma, \\delta$를 갖는 이차식은 $x^2-tx+\\dfrac{t^2}{3}$이다.\n따라서 주어진 사차식은 $(x^2-sx+\\dfrac{s^2}{3})(x^2-tx+\\dfrac{t^2}{3})$로 나타낼 수 있다.\n이때 $x^3$의 계수는 $-(s+t)$이므로 $-(s+t)=-9$, 즉 $s+t=9$이다.\n또 $x^2$의 계수는 $st+\\dfrac{s^2}{3}+\\dfrac{t^2}{3}$이므로 $st+\\dfrac{s^2+t^2}{3}=30$이다.\n$s^2+t^2=(s+t)^2-2st=81-2st$이므로 $st+\\dfrac{81-2st}{3}=30$이다.\n이를 정리하면 $st+27-\\dfrac{2}{3}st=30$이므로 $27+\\dfrac{1}{3}st=30$, 따라서 $st=9$이다.\n이제 $x$의 계수를 구하면 $-\\left(s\\cdot\\dfrac{t^2}{3}+t\\cdot\\dfrac{s^2}{3}\\right)=-\\dfrac{st(s+t)}{3}$이다. 따라서 $p=-\\dfrac{9\\cdot9}{3}=-27$이다.\n상수항은 $\\dfrac{s^2}{3}\\cdot\\dfrac{t^2}{3}=\\dfrac{(st)^2}{9}=\\dfrac{81}{9}=9$이므로 $q=9$이다.\n따라서 $p+q=-27+9=-18$이므로 정답은 ①이다."
+},
   {
     id: 20,
     level: "상",
