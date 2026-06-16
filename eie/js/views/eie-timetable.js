@@ -419,7 +419,7 @@
     }
 
     function applyEnrollDateFields(payload, value) {
-        const date = normalizeKey(value);
+        const date = normalizeKey(value) || todayIso();
         payload.first_attendance_date = date;
         payload.enrollment_date = date;
         payload.first_attended_at = date;
@@ -532,6 +532,14 @@
         return Boolean(withdrawalDate && cutoff && withdrawalDate >= cutoff);
     }
 
+    function isRecentNewStudent(row, today) {
+        if (!row || isPausedStudent(row) || isWithdrawnStudent(row)) return false;
+        const enrollDate = normalizeTimetableDate(studentEnrollDate(row));
+        const current = normalizeTimetableDate(today || timetableTodayDate());
+        const cutoff = timetableTwoMonthsAgo(today);
+        return Boolean(enrollDate && current && cutoff && enrollDate <= current && enrollDate >= cutoff);
+    }
+
     function shouldShowTimetableStudent(row) {
         if (!isWithdrawnStudent(row)) return true;
         return isRecentWithdrawnStudent(row);
@@ -540,11 +548,13 @@
     function studentChipStatusClass(row) {
         if (isPausedStudent(row)) return ' is-paused';
         if (isRecentWithdrawnStudent(row)) return ' is-withdrawn';
+        if (isRecentNewStudent(row)) return ' is-new';
         return '';
     }
 
     function studentChipTitle(row) {
         if (isRecentWithdrawnStudent(row)) return `퇴원 / ${getStudentWithdrawalDate(row)}`;
+        if (isRecentNewStudent(row)) return `신입 / ${normalizeTimetableDate(studentEnrollDate(row))}`;
         return row?.name || '학생';
     }
 
@@ -724,6 +734,9 @@
                 grade: normalizeKey(student?.grade_raw || student?.grade || ''),
                 status: normalizeKey(student?.status || student?.student_status || student?.studentStatus || student?.match_status || ''),
                 withdrawn_at: normalizeKey(student?.withdrawn_at || student?.withdrawal_date || ''),
+                enrollment_date: normalizeKey(student?.enrollment_date || ''),
+                first_attendance_date: normalizeKey(student?.first_attendance_date || ''),
+                first_attended_at: normalizeKey(student?.first_attended_at || ''),
                 student_type: normalizeKey(student?.student_type || student?.type || ''),
                 memo: normalizeKey(student?.memo || '')
             })).filter(student => student.name && shouldShowTimetableStudent(student));
@@ -749,6 +762,9 @@
                 grade: normalizeKey(item?.grade_raw || item?.grade || ''),
                 status: normalizeKey(item?.status || item?.student_status || item?.studentStatus || item?.match_status || ''),
                 withdrawn_at: normalizeKey(item?.withdrawn_at || item?.withdrawal_date || ''),
+                enrollment_date: normalizeKey(item?.enrollment_date || ''),
+                first_attendance_date: normalizeKey(item?.first_attendance_date || ''),
+                first_attended_at: normalizeKey(item?.first_attended_at || ''),
                 student_type: normalizeKey(item?.student_type || item?.type || ''),
                 memo: normalizeKey(item?.memo || '')
             };
@@ -3075,7 +3091,7 @@
                 ${students.length ? students.map(student => {
                     const sid = studentDetailId(student);
                     const name = studentSearchName(student) || student.name || '학생';
-                    return `<button type="button" class="eie-v2-class-student-cell"
+                    return `<button type="button" class="eie-v2-class-student-cell${studentChipStatusClass(student)}"
                         ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
                         ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                         data-eie-v2-return-session="${esc(session.session_id)}"
@@ -3096,7 +3112,7 @@
                 ${students.map(student => {
                     const sid = studentDetailId(student);
                     const name = studentSearchName(student) || student.name || '학생';
-                    return `<button type="button" class="eie-v2-class-student-cell"
+                    return `<button type="button" class="eie-v2-class-student-cell${studentChipStatusClass(student)}"
                         ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
                         ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                         data-eie-v2-return-session="${esc(session.session_id)}"
@@ -5248,6 +5264,7 @@
                 parent_phone: normalizeKey(parentEl?.value || ''),
                 status: 'active'
             };
+            applyEnrollDateFields(payload, todayIso());
             const created = await window.EieApi.createStudent(payload);
             const newId = normalizeKey(created?.id || created?.data?.id || created?.student?.id || '');
             const cellIds = Array.isArray(session?.source_cell_ids) ? session.source_cell_ids.filter(Boolean) : [];
