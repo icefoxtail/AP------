@@ -93,14 +93,14 @@
 
 ## 10. Git 처리
 
-- Stage: 커밋 전 수행 예정
-- Commit: 커밋 전 수행 예정
-- Push: 커밋 전 수행 예정
-- Commit hash: 커밋 후 기록 예정
+- Stage: Yes
+- Commit: Yes
+- Push: Yes, 보고서 해시 기록 후 수행
+- Commit hash: `5708a54d6aa98ff94ec944cff8197b9b9ae6f099`
 
 ## 11. 남은 worktree 변경 파일
 
-- 커밋 전 기준:
+- 최종 커밋 전 기준:
   - `eie/css/eie-v2-week-card.css`
   - `eie/js/views/eie-timetable.js`
 - 위 EIE 변경은 이번 라운드 범위 밖이므로 수정/스테이징/커밋하지 않음.
