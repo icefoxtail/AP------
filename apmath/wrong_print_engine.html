@@ -747,7 +747,7 @@ async function renderStudentPages(area, payload) {
             _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
         }));
         await renderMeasuredExamPages(area, items, {
-            title: `${student.studentName} 오답지`,
+            title: `${student.studentName} 오답`,
             metaLeft: '',
             metaRight: `${payload.className || ''} · ${getStudentExamLabel(payload, student)} · ${payload.createdDate || ''}`,
             homeworkCheckHTML: payload.options?.includeHomeworkCheckBox === false ? '' : `
