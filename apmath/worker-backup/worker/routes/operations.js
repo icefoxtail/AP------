@@ -30,6 +30,34 @@ function pickText(value, fallback = '') {
   return String(value).trim();
 }
 
+function isMissingClientRequestColumn(error) {
+  const message = String(error?.message || error || '');
+  return /client_request_id/i.test(message) && /no such column|D1_ERROR|SQLITE_ERROR/i.test(message);
+}
+
+async function findConsultationDuplicate(env, clientReqId) {
+  if (!clientReqId) return null;
+  try {
+    return await env.DB.prepare('SELECT id FROM consultations WHERE client_request_id = ?').bind(clientReqId).first();
+  } catch (error) {
+    if (isMissingClientRequestColumn(error)) return null;
+    throw error;
+  }
+}
+
+async function insertConsultation(env, row) {
+  try {
+    await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action, client_request_id) VALUES (?, ?, ?, ?, ?, ?, ?)')
+      .bind(row.id, row.studentId, row.date, row.type, row.content, row.nextAction, row.clientReqId || null)
+      .run();
+  } catch (error) {
+    if (!isMissingClientRequestColumn(error)) throw error;
+    await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action) VALUES (?, ?, ?, ?, ?, ?)')
+      .bind(row.id, row.studentId, row.date, row.type, row.content, row.nextAction)
+      .run();
+  }
+}
+
 export async function handleOperations(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -48,12 +76,10 @@ export async function handleOperations(request, env, teacher, path, url) {
       const clientReqId = pickText(d.clientRequestId ?? d.client_request_id);
       if (!studentId || !content) return jsonResponse({ success: false, message: 'Required fields missing' }, 400);
       if (!(await canAccessStudent(currentTeacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
-      if (clientReqId) {
-        const dup = await env.DB.prepare('SELECT id FROM consultations WHERE client_request_id = ?').bind(clientReqId).first();
-        if (dup) return jsonResponse({ success: true, id: dup.id });
-      }
+      const dup = await findConsultationDuplicate(env, clientReqId);
+      if (dup) return jsonResponse({ success: true, id: dup.id });
       const cid = `cns_${Date.now()}`;
-      await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action, client_request_id) VALUES (?, ?, ?, ?, ?, ?, ?)').bind(cid, studentId, date, type, content, nextAction, clientReqId || null).run();
+      await insertConsultation(env, { id: cid, studentId, date, type, content, nextAction, clientReqId });
       return jsonResponse({ success: true, id: cid });
     }
     if (method === 'GET') {

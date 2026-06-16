@@ -118,6 +118,7 @@ CREATE TABLE IF NOT EXISTS consultations (
   type TEXT,
   content TEXT NOT NULL,
   next_action TEXT,
+  client_request_id TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -281,6 +282,7 @@ CREATE INDEX IF NOT EXISTS idx_wrong_answers_student ON wrong_answers(student_id
 
 CREATE INDEX IF NOT EXISTS idx_consultations_student_id ON consultations(student_id);
 CREATE INDEX IF NOT EXISTS idx_consultations_date ON consultations(date);
+CREATE INDEX IF NOT EXISTS idx_consultations_client_req ON consultations(client_request_id) WHERE client_request_id IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_operation_memos_date ON operation_memos(memo_date);
 CREATE INDEX IF NOT EXISTS idx_operation_memos_done ON operation_memos(is_done);
