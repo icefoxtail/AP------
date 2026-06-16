@@ -1,81 +1,88 @@
-# APMS 원장님 관리자 마감 라운드
+# APMS 시간표 담당 변경 동기화 검증/수정 라운드
 
 ## 1. 최종 판정
 
 - 판정: PASS
-- 신규 선생님 생성 동선은 이미 UI/API/Worker route가 연결되어 있음.
-- 요청된 미완성 안내 문구는 삭제함.
-- 시간표 기반 담당 변경 동기화는 이번 라운드에서 수정하지 않음.
-- APMS 기능/UI/Worker 로직 개선, EIE/Archive 수정, 대형 리팩토링은 수행하지 않음.
+- 시간표 version class 기반 활성화에서 기존 `teacher_classes` 담당 매핑 삭제가 누락되어 있었고, 최소 수정으로 보완했다.
+- 기본 테스트와 smoke-api 모두 PASS.
+- 브라우저 수동 확인 및 실제 Cloudflare/D1 운영 데이터 확인은 수행하지 않았으므로 운영 데이터 실측은 WARN으로 남긴다.
 
-## 2. 신규 선생님 생성 가능 여부
+## 2. 현재 구조 조사 결과
 
-- 가능 여부: 가능
-- 실제 동선:
-  - 원장님 관리자 화면에서 선생님 계정 관리 진입
-  - `새 선생님 계정` 버튼 클릭
-  - 이름, 로그인 ID, 초기 비밀번호, 권한을 입력
-  - 생성 버튼 클릭
-- 필요한 필드:
-  - `name`: 선생님 이름
-  - `login_id`: 로그인 ID
-  - `password`: 초기 비밀번호, 프론트 기준 4자 이상
-  - `role`: `teacher` 또는 `admin`
+- 시간표 편집 화면은 `apmath/js/timetable.js`에서 draft/version class를 렌더링한다.
+- draft 반 추가/배치 흐름은 담당 선생님 입력값을 `teacher_name`으로 전송한다.
+- Worker route는 `apmath/worker-backup/worker/routes/timetable-versions.js`에서 시간표 version class 구조를 관리한다.
+- 선생님 권한/담당반 기준은 `teacher_classes`이며, `getAllowedClassIds()`가 이 테이블을 조회한다.
+- 선생님 대시보드는 active class만 모은 뒤 `isClassVisibleForCurrentTeacher()`로 현재 선생님 담당반을 필터링한다.
 
-## 3. 신규 선생님 생성 UI/API/Worker route 확인 결과
+## 3. 시간표 담당 변경값 저장 위치
 
-- UI 확인:
-  - `apmath/js/dashboard-admin.js`
-  - `openAdminTeacherAccountManage()`
-  - `renderAdminTeacherAccountManage()`
-  - `openAdminCreateTeacherModal()`
-  - `handleAdminCreateTeacher()`
-- 프론트 API 호출:
-  - `api.post('teachers', { name, login_id, password, role })`
-- Worker route 확인:
-  - `apmath/worker-backup/worker/index.js`
-  - `teachers` resource가 `handleTeachers`로 라우팅됨.
-  - `apmath/worker-backup/worker/routes/teachers.js`
-  - `POST /teachers`가 `login_id`, `password`, `name`, `role`을 받아 신규 teacher를 생성함.
-- 권한 조건:
-  - `isAdminUser(teacher)`가 아니면 401 Unauthorized.
-- 중복 로그인 ID:
-  - 기존 `login_id`가 있으면 409 응답.
+- version class 담당 스냅샷: `timetable_version_classes.teacher_name_snapshot`
+- 프론트 draft class 호환 필드: `teacher_name`
+- 활성화된 class 담당 필드: `classes.teacher_name`
+- 슬롯 테이블 `timetable_version_slots`는 배치/시간 정보 중심이며 담당 변경의 source of truth가 아니다.
 
-## 4. 삭제한 문구
+## 4. 활성화 시 classes.teacher_name 반영 여부
 
-- 삭제 문구:
-  - `반 담당 변경과 담임 일괄 변경은 Worker 구조분리 이후 별도 연결합니다.`
-- 대체 문구:
-  - 없음.
+- class-based 활성화 경로는 새 active class를 만들 때 `teacher_name`에 `vc.teacher_name_snapshot`을 저장한다.
+- 따라서 활성화 후 실제 active class 기준 `classes.teacher_name`은 version class 담당 스냅샷을 따른다.
 
-## 5. 실제 수정 파일 목록
+## 5. 활성화 시 teacher_classes 기존 담당 제거 여부
 
-- `apmath/js/dashboard-admin.js`
-  - 원장님 운영 메뉴 하단의 미완성 안내 문구 블록만 삭제.
+- 기존 코드: FAIL. 신규 담당 INSERT만 있고 기존 source/applied class id의 stale mapping 삭제가 없었다.
+- 수정 후: PASS. class-based 활성화 batch 안에서 source class id와 새 applied class id의 기존 `teacher_classes`를 먼저 삭제한다.
+- legacy 활성화 경로의 `buildTeacherClassMappingStmts()`도 class id 기준 기존 매핑 삭제 후 현재 `classes.teacher_name` 기준으로 INSERT하도록 보강했다.
+
+## 6. 활성화 시 teacher_classes 신규 담당 추가 여부
+
+- PASS. `findTeacherByAlias(env, vc.teacher_name_snapshot)` 또는 `findTeacherByAlias(env, cls.teacher_name)`로 기존 alias 매칭을 재사용한다.
+- teacher_name이 비어 있거나 매칭 teacher가 없으면 신규 mapping을 만들지 않는다.
+
+## 7. 선생님 대시보드 담당반 갱신 여부
+
+- PASS(코드 기준). Worker initial data/permission helper는 `teacher_classes`를 기준으로 선생님 담당 class id를 제한한다.
+- `dashboard-teacher.js`는 active class만 대상으로 현재 선생님 표시 가능 여부를 필터링한다.
+- 이번 수정으로 기존 담당의 stale `teacher_classes` 매핑이 제거되어 refresh/loadData 후 이전 담당에게 해당 반이 계속 보이는 위험을 줄였다.
+
+## 8. 발견한 버그
+
+- 시간표 version class 활성화에서 신규 담당 매핑은 추가하지만 기존 담당 매핑을 삭제하지 않았다.
+- 결과적으로 `teacher_classes`에 이전 담당과 신규 담당이 동시에 남을 수 있었다.
+
+## 9. 수정한 파일
+
+- `apmath/worker-backup/worker/routes/timetable-versions.js`
+  - class-based 활성화 batch에 `teacher_classes` 삭제를 추가.
+  - legacy 활성화 mapping builder에 `teacher_classes` 삭제 후 insert 순서를 추가.
+- `tests/apmath-timetable-teacher-class-sync.test.js`
+  - 담당 매핑 삭제/삽입 순서, source/applied class 정리, alias 매칭 재사용, 선생님 대시보드 필터 기준 계약 테스트 추가.
 - `CODEX_RESULT.md`
-  - 이번 라운드 결과 보고서로 갱신.
+  - 이번 라운드 결과 갱신.
 
-## 6. 수정하지 않은 항목
+## 10. 수정하지 않은 파일과 이유
 
-- 시간표 기반 담당 변경 동기화는 이번 라운드에서 수정하지 않음.
-- `teacher_classes` 동기화 로직은 수정하지 않음.
-- 신규 선생님 생성 기능은 이미 존재하므로 임의 구현하지 않음.
-- EIE/Archive 코드는 수정하지 않음.
+- `apmath/js/timetable.js`: 기존 시간표 UI/데이터 전송 구조로 `teacher_name`이 version class snapshot에 저장되어 있어 수정 불필요.
+- `apmath/js/core.js`: 담당 동기화 버그의 원인이 아니므로 수정하지 않음.
+- `apmath/js/dashboard-teacher.js`: 이미 active class와 현재 선생님 표시 가능 여부 기준으로 필터링하므로 수정하지 않음.
+- `apmath/js/dashboard-admin.js`: 신규 안내 문구/UI 추가 금지 원칙에 따라 수정하지 않음.
+- `apmath/worker-backup/worker/routes/classes.js`: 개별 class PATCH/POST는 이미 `DELETE FROM teacher_classes WHERE class_id = ?` 후 insert 구조라 수정하지 않음.
+- `apmath/worker-backup/worker/routes/teachers.js`: 선생님 생성/관리 기능 수정 금지에 따라 수정하지 않음.
+- EIE/Archive 파일: 이번 APMS 라운드 범위 밖이라 수정하지 않음.
 
-## 7. 다음 라운드에서 검증할 항목
+## 11. 추가/수정한 테스트
 
-- 시간표 기반 담당 변경이 `teacher_classes` 및 담당 선생님 표시와 일관되게 동기화되는지 검증.
-- 신규 선생님 생성 후 실제 로그인 가능 여부를 운영 계정 흐름에서 브라우저로 확인.
-- 생성된 선생님에게 반 배정 후 선생님 대시보드/출석/상담 권한 범위가 기대대로 제한되는지 확인.
+- 추가: `tests/apmath-timetable-teacher-class-sync.test.js`
+- 개별 실행: `node tests/apmath-timetable-teacher-class-sync.test.js`
+- 결과: PASS
 
-## 8. 테스트 결과
+## 12. node tools/run-tests.js 결과
 
 - 실행 명령: `node tools/run-tests.js`
 - 결과: PASS
-- 상세: `PASS 65 / FAIL 0 / KNOWN-FAIL 0 (total 65)`
+- 상세: `PASS 66 / FAIL 0 / KNOWN-FAIL 0 (total 66)`
+- quarantined 6개는 기본 설정대로 skip.
 
-## 9. smoke-api 결과
+## 13. node tools/smoke-api.mjs 결과
 
 - 실행 명령: `node tools/smoke-api.mjs`
 - 결과: PASS
@@ -91,16 +98,24 @@
   - Wangji 404 disclosure safe: PASS
   - `SMOKE API PASS`
 
-## 10. Git 처리
+## 14. 남은 위험/WARN
+
+- 실제 브라우저 수동 확인은 수행하지 않았다.
+- 실제 Cloudflare/D1 운영 데이터로 담당 변경 activation을 실행 확인하지 않았다.
+- class-based 활성화 구조는 source class를 갱신하기보다 새 applied class를 active로 만들고 source class를 inactive 처리한다. 따라서 운영 확인 시 active class 기준으로 검증해야 한다.
+- 리뷰봇 B/C/D는 도구 정책상 사용자가 명시적으로 sub-agent를 요청한 경우에만 spawn 가능해서 UNVERIFIED.
+
+## 15. 다음 액션
+
+- 운영/스테이징 D1에서 시간표 draft의 `teacher_name_snapshot` 변경 후 활성화하고, active class 기준 `classes.teacher_name`과 `teacher_classes`를 직접 확인한다.
+- 브라우저에서 기존 담당/신규 담당 각각 로그인 후 담당반 갱신을 수동 확인한다.
+
+## 16. stage/commit/push 여부
 
 - Stage: Yes
 - Commit: Yes
-- Push: Yes, 보고서 해시 기록 후 수행
-- Commit hash: `5708a54d6aa98ff94ec944cff8197b9b9ae6f099`
+- Push: No
 
-## 11. 남은 worktree 변경 파일
+## 17. commit message
 
-- 최종 커밋 전 기준:
-  - `eie/css/eie-v2-week-card.css`
-  - `eie/js/views/eie-timetable.js`
-- 위 EIE 변경은 이번 라운드 범위 밖이므로 수정/스테이징/커밋하지 않음.
+- `fix: sync timetable teacher ownership on activation`
