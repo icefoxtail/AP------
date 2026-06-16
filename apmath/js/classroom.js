@@ -496,6 +496,7 @@ function syncClassroomAttendanceStatusToState(studentId, date, status) {
     }
 
     renderAttendanceLedgerCellIfOpen(sid, d);
+    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId);
     return rec;
 }
 
@@ -528,6 +529,7 @@ function syncClassroomHomeworkStatusToState(studentId, date, status) {
     }
 
     renderAttendanceLedgerCellIfOpen(sid, d);
+    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId);
     return rec;
 }
 
@@ -581,6 +583,7 @@ function syncAttendanceMetaToState(studentId, date, tags, memo) {
         mRec.updated_at = rec.updated_at;
     }
 
+    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId);
     return rec;
 }
 
@@ -1247,6 +1250,201 @@ function buildClassroomTodayMaps(students, today) {
     return { todayAttMap, todayHwMap };
 }
 
+function getClassroomMonthLabel(month) {
+    const safe = String(month || '').trim();
+    if (!/^\d{4}-\d{2}$/.test(safe)) return '';
+    const [year, monthNo] = safe.split('-').map(Number);
+    return `${year}년 ${monthNo}월`;
+}
+
+function formatClassroomMonthDay(dateStr) {
+    const safe = normalizeClassroomDate(dateStr);
+    if (!safe) return '';
+    return `${Number(safe.slice(5, 7))}/${Number(safe.slice(8, 10))}`;
+}
+
+function isClassroomMonthlyMakeupRecord(row) {
+    const status = String(row?.status || '').trim();
+    if (status === '보강') return true;
+    return normalizeAttendanceTags(row?.tags).includes('보강');
+}
+
+function isClassroomMonthlyHomeworkIssue(row) {
+    return String(row?.status || '').trim() === '미완료';
+}
+
+function isClassroomMonthlyConsultationAttendanceRecord(row) {
+    const status = String(row?.status || '').trim();
+    if (status === '상담') return true;
+    return normalizeAttendanceTags(row?.tags).includes('상담');
+}
+
+function getClassroomMonthlyRows(type, month) {
+    const cache = state.ui?.monthlyAttendanceCache?.[month] || {};
+    if (type === 'attendance') {
+        return Array.isArray(cache.attendance) ? cache.attendance : (state.db.attendance || []);
+    }
+    if (type === 'homework') {
+        return Array.isArray(cache.homework) ? cache.homework : (state.db.homework || []);
+    }
+    return [];
+}
+
+function addClassroomMonthlyIssue(groupMap, studentId, date) {
+    const sid = String(studentId || '');
+    const safeDate = normalizeClassroomDate(date);
+    if (!sid || !safeDate) return;
+    if (!groupMap.has(sid)) groupMap.set(sid, new Set());
+    groupMap.get(sid).add(safeDate);
+}
+
+function buildClassroomMonthlyStatusBoardData(classId, students, today) {
+    const month = (normalizeClassroomDate(today) || getClassroomOperationDate()).slice(0, 7);
+    const classStudents = Array.isArray(students) ? students : getClassroomActiveStudents(classId);
+    const studentIds = new Set(classStudents.map(student => String(student?.id || '')).filter(Boolean));
+    const groups = {
+        absent: new Map(),
+        makeup: new Map(),
+        homework: new Map(),
+        consultation: new Map()
+    };
+
+    getClassroomMonthlyRows('attendance', month).forEach(row => {
+        const sid = String(row?.student_id || '');
+        const date = normalizeClassroomDate(row?.date);
+        if (!studentIds.has(sid) || !date || date.slice(0, 7) !== month) return;
+        if (String(row?.status || '').trim() === '결석') addClassroomMonthlyIssue(groups.absent, sid, date);
+        if (isClassroomMonthlyMakeupRecord(row)) addClassroomMonthlyIssue(groups.makeup, sid, date);
+        if (isClassroomMonthlyConsultationAttendanceRecord(row)) addClassroomMonthlyIssue(groups.consultation, sid, date);
+    });
+
+    getClassroomMonthlyRows('homework', month).forEach(row => {
+        const sid = String(row?.student_id || '');
+        const date = normalizeClassroomDate(row?.date);
+        if (!studentIds.has(sid) || !date || date.slice(0, 7) !== month) return;
+        if (isClassroomMonthlyHomeworkIssue(row)) addClassroomMonthlyIssue(groups.homework, sid, date);
+    });
+
+    (state.db.consultations || []).forEach(row => {
+        const sid = String(row?.student_id || row?.studentId || '');
+        const date = normalizeClassroomDate(String(row?.date || row?.consultation_date || row?.created_at || '').slice(0, 10));
+        if (!studentIds.has(sid) || !date || date.slice(0, 7) !== month) return;
+        addClassroomMonthlyIssue(groups.consultation, sid, date);
+    });
+
+    return { month, students: classStudents, groups };
+}
+
+function renderClassroomMonthlyStatusCategory(title, rows, tone) {
+    const total = rows.reduce((sum, row) => sum + row.dates.length, 0);
+    const toneClass = tone ? ` is-${apEscapeHtml(tone)}` : '';
+    const body = rows.length
+        ? rows.map(row => `
+            <div class="ap-classroom-monthly-row">
+                <div class="ap-classroom-monthly-student">${apEscapeHtml(row.name)}</div>
+                <div class="ap-classroom-monthly-dates">${row.dates.map(formatClassroomMonthDay).filter(Boolean).join(' · ')}</div>
+            </div>
+        `).join('')
+        : '';
+
+    return `
+        <section class="ap-classroom-monthly-category${toneClass}" aria-label="${apEscapeHtml(title)}">
+            <div class="ap-classroom-monthly-category-head">
+                <span>${apEscapeHtml(title)}</span>
+                <strong>${total}건</strong>
+            </div>
+            ${body}
+        </section>
+    `;
+}
+
+function renderClassroomMonthlyStatusBoard(classId, students, today) {
+    const data = buildClassroomMonthlyStatusBoardData(classId, students, today);
+    const nameMap = new Map(data.students.map((student, order) => [String(student.id), { name: student.name || '학생', order }]));
+    const toRows = function(group) {
+        return Array.from(group.entries())
+            .map(([sid, dates]) => ({
+                sid,
+                name: nameMap.get(sid)?.name || '학생',
+                order: nameMap.get(sid)?.order ?? 9999,
+                dates: Array.from(dates).sort()
+            }))
+            .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name, 'ko'));
+    };
+
+    const absentRows = toRows(data.groups.absent);
+    const makeupRows = toRows(data.groups.makeup);
+    const homeworkRows = toRows(data.groups.homework);
+    const consultationRows = toRows(data.groups.consultation);
+
+    return `
+        <div class="ap-classroom-monthly-board apms-card ap-classroom-card" id="classroom-monthly-status-board">
+            <div class="ap-classroom-monthly-list">
+                ${renderClassroomMonthlyStatusCategory('결석', absentRows, 'absent')}
+                ${renderClassroomMonthlyStatusCategory('보강', makeupRows, 'makeup')}
+                ${renderClassroomMonthlyStatusCategory('숙제', homeworkRows, 'homework')}
+                ${renderClassroomMonthlyStatusCategory('상담', consultationRows, 'consultation')}
+            </div>
+        </div>
+    `;
+}
+
+function updateClassroomMonthlyStatusBoardDOM(classId) {
+    const root = document.getElementById('classroom-monthly-status-board');
+    if (!root) return false;
+    const cid = String(classId || state.ui?.currentClassId || '');
+    if (!cid) return false;
+    const today = getClassroomOperationDate();
+    root.outerHTML = renderClassroomMonthlyStatusBoard(cid, getClassroomActiveStudents(cid), today);
+    return true;
+}
+
+function mergeClassroomMonthlyStatusRows(month, attendanceRows = [], homeworkRows = []) {
+    if (!/^\d{4}-\d{2}$/.test(String(month || ''))) return;
+    if (!state.ui) state.ui = {};
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    const cache = state.ui.monthlyAttendanceCache[month] || { attendance: [], homework: [] };
+    const mergeClassroomMonthlyRows = (target, rows) => {
+        if (!Array.isArray(rows)) return target;
+        rows.forEach(row => {
+            const sid = String(row?.student_id || row?.studentId || '');
+            const date = normalizeClassroomDate(row?.date);
+            if (!sid || !date || date.slice(0, 7) !== month) return;
+            const idx = target.findIndex(item => String(item.student_id) === sid && String(item.date || '') === date);
+            const normalized = { ...row, student_id: sid, date };
+            if (idx > -1) target[idx] = { ...target[idx], ...normalized };
+            else target.push(normalized);
+        });
+        return target;
+    };
+    cache.attendance = mergeClassroomMonthlyRows(Array.isArray(cache.attendance) ? cache.attendance : [], attendanceRows);
+    cache.homework = mergeClassroomMonthlyRows(Array.isArray(cache.homework) ? cache.homework : [], homeworkRows);
+    state.ui.monthlyAttendanceCache[month] = cache;
+}
+
+async function ensureClassroomMonthlyStatusCache(classId, today, students) {
+    const safeDate = normalizeClassroomDate(today) || getClassroomOperationDate();
+    const month = safeDate.slice(0, 7);
+    if (!/^\d{4}-\d{2}$/.test(month)) return false;
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classroomMonthlyStatusCache) state.ui.classroomMonthlyStatusCache = {};
+    if (state.ui.classroomMonthlyStatusCache[month]) return true;
+
+    try {
+        const data = await api.get(`attendance-month?month=${encodeURIComponent(month)}`);
+        mergeClassroomMonthlyStatusRows(month, data?.attendance || [], data?.homework || []);
+        state.ui.classroomMonthlyStatusCache[month] = true;
+        const root = document.getElementById('classroom-monthly-status-board');
+        if (root && String(state.ui.currentClassId || '') === String(classId) && getClassroomOperationDate().slice(0, 7) === month) {
+            root.outerHTML = renderClassroomMonthlyStatusBoard(classId, students, safeDate);
+        }
+        return true;
+    } catch (e) {
+        console.warn('[ensureClassroomMonthlyStatusCache] failed:', e);
+        return false;
+    }
+}
+
 function renderClassTopBarV4B(cls, summary, today) {
     const realToday = getClassroomTodayDate();
     const dateLabel = today === realToday ? '오늘 운영' : '선택일 운영';
@@ -1413,8 +1611,11 @@ function renderClass(cid) {
                 <h3 class="apms-section-title">학생 명단</h3>
             </div>
             ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
+            ${renderClassroomMonthlyStatusBoard(cid, students, today)}
         </div>
     `;
+
+    ensureClassroomMonthlyStatusCache(cid, today, students);
 
     if (defaultTab === 'att' || defaultTab === 'hw') {
         requestAnimationFrame(() => {

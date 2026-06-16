@@ -596,7 +596,8 @@ function injectDashboardRedesignStyles() {
     @media (min-width:640px){ .ap-weekly-split { grid-template-columns:minmax(150px,2fr) minmax(0,8fr); } }
     .ap-split-cell { min-width:0; }
     .ap-split-label { font-size:12px; font-weight:600; color:var(--secondary); margin:0 0 8px; }
-    .ap-split-cell p { margin:0 0 4px; font-size:13px; font-weight:500; color:var(--text); display:flex; align-items:center; gap:6px; }
+    .ap-split-cell p { margin:0 0 4px; font-size:13px; font-weight:500; color:var(--text); display:flex; align-items:center; gap:6px; }
+    .ap-cleaning-routine { flex-wrap:nowrap; white-space:nowrap; }
     .ap-split-cell .ap-split-meta { font-size:12px; font-weight:500; color:var(--secondary); }
     .ap-empty-notice { font-size:13px; font-weight:500; color:var(--secondary); }
 
@@ -657,7 +658,9 @@ function apDashIcon(name, size = 16) {
         // ti ti-calendar
         calendar: '<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M16 3v4M8 3v4M4 11h16"/>',
         // ti ti-tools
-        tools: '<path d="M3 21h4L20 8a1.5 1.5 0 0 0-4-4L3 17v4"/><path d="M14.5 5.5l4 4"/><path d="M12 8l-5-5-3 3 5 5"/>',
+        tools: '<path d="M3 21h4L20 8a1.5 1.5 0 0 0-4-4L3 17v4"/><path d="M14.5 5.5l4 4"/><path d="M12 8l-5-5-3 3 5 5"/>',
+
+        broom: '<path d="M4 20h8"/><path d="M7 20v-5l9.5-9.5a1.7 1.7 0 0 1 2.4 2.4L9.5 17.3"/><path d="M6 15h5l2 5H4l2-5z"/><path d="M15 7l2 2"/>',
         // ti ti-speakerphone
         speakerphone: '<path d="M18 8a3 3 0 0 1 0 6"/><path d="M10 8v8H7l-3-3v-2l3-3h3z"/><path d="M10 8l8-3v14l-8-3"/>'
     };
@@ -1232,13 +1235,13 @@ function renderTodoSections() {
     thisMonday.setDate(todayDate.getDate() + diffToMonday);
     const weekDiff = Math.round((thisMonday - CLEANING_REF_MONDAY) / (7 * 24 * 60 * 60 * 1000));
     const cleaningPerson = CLEANING_ROSTER[((1 + weekDiff) % 4 + 4) % 4];
-    const iconTools = typeof apDashIcon === 'function' ? apDashIcon('tools', 14) : '';
+    const iconBroom = typeof apDashIcon === 'function' ? apDashIcon('broom', 14) : '';
     const iconCalendar = typeof apDashIcon === 'function' ? apDashIcon('calendar', 28) : '';
     const iconSpeaker = typeof apDashIcon === 'function' ? apDashIcon('speakerphone', 14) : '';
 
     // G. 좌: 고정 루틴(청소 당번 + 신입생 상담 등 반복 항목) / 우: 학원 공지(예정 일정, 빈 상태 처리)
     const cleaningHtml = `
-        <p><span style="color:var(--secondary);">${iconTools}</span> 청소 당번: <strong style="color:var(--primary);">${apEscapeHtml(cleaningPerson)}</strong></p>
+        <p class="ap-cleaning-routine" aria-label="청소 당번 ${apEscapeHtml(cleaningPerson)}"><span style="color:var(--secondary);">${iconBroom}</span><strong style="color:var(--primary);">${apEscapeHtml(cleaningPerson)}</strong></p>
         <span class="ap-split-meta">매주 월요일</span>`;
 
     // 공지 컨테이너는 항상 렌더(비동기 신입생 상담 행 주입 대상). 빈 안내는 토글.
