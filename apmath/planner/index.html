@@ -396,6 +396,117 @@
       font-weight:500;
       color:var(--secondary);
     }
+    .planner-badge-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:8px;
+    }
+    .planner-badge {
+      min-height:26px;
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      padding:0 9px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      color:var(--secondary);
+      font-size:11px;
+      font-weight:500;
+      line-height:1;
+      white-space:nowrap;
+    }
+    .planner-badge svg,
+    .planner-action-btn svg,
+    .check svg {
+      width:15px;
+      height:15px;
+      stroke:currentColor;
+      stroke-width:2;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      flex:0 0 auto;
+    }
+    .planner-badge--focus {
+      border-color:rgba(0,184,148,.24);
+      background:rgba(0,184,148,.09);
+      color:#047857;
+    }
+    .planner-badge--rest {
+      border-color:rgba(245,159,0,.28);
+      background:rgba(245,159,0,.10);
+      color:#B45309;
+    }
+    .planner-badge--done {
+      border-color:rgba(var(--primary-rgb),.26);
+      background:var(--primary-soft);
+      color:var(--primary);
+    }
+    .planner-badge--snapshot {
+      border-color:rgba(51,65,85,.16);
+      background:rgba(51,65,85,.06);
+      color:#475569;
+    }
+    .planner-badge--question,
+    .planner-badge--reply {
+      border-color:rgba(99,102,241,.24);
+      background:rgba(99,102,241,.08);
+      color:#4F46E5;
+    }
+    .planner-badge--wake {
+      border-color:rgba(249,115,22,.26);
+      background:rgba(249,115,22,.10);
+      color:#C2410C;
+    }
+    .planner-badge--seen {
+      border-color:rgba(14,165,233,.24);
+      background:rgba(14,165,233,.08);
+      color:#0284C7;
+    }
+    .planner-badge--locked {
+      border-color:rgba(232,65,79,.22);
+      background:rgba(232,65,79,.08);
+      color:var(--error);
+    }
+    .planner-action-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-left:auto;
+      justify-content:flex-end;
+      flex:0 0 auto;
+    }
+    .planner-action-btn {
+      min-height:34px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:var(--surface-2);
+      color:var(--text);
+      padding:0 10px;
+      font-size:12px;
+      font-weight:500;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .planner-action-btn.primary {
+      border-color:rgba(var(--primary-rgb),.28);
+      background:var(--primary-soft);
+      color:var(--primary);
+    }
+    .planner-action-btn.danger {
+      border-color:transparent;
+      background:transparent;
+      color:var(--secondary);
+      padding-inline:8px;
+      box-shadow:none;
+      opacity:.78;
+    }
     .delete {
       border:0;
       background:transparent;
@@ -625,6 +736,19 @@
       .timer-title { max-width:118px; }
       .timer-presets { gap:3px; margin-top:6px; }
       .timer-preset { min-height:24px; padding:0 7px; font-size:10.5px; }
+      .plan-item {
+        flex-wrap:wrap;
+        align-items:flex-start;
+      }
+      .plan-main {
+        flex:1 1 calc(100% - 40px);
+      }
+      .planner-action-row {
+        flex:0 0 calc(100% - 40px);
+        width:auto;
+        margin-left:40px;
+        justify-content:flex-start;
+      }
 
       .top-inner { height:56px; }
       .brand { font-size:18px; }
@@ -713,6 +837,55 @@
     }
     function escapeJsString(value) {
       return String(value ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
+    }
+    function plannerIconSvg(type) {
+      const icons = {
+        focus: '<path d="M12 3v3"></path><path d="M12 18v3"></path><path d="M3 12h3"></path><path d="M18 12h3"></path><circle cx="12" cy="12" r="4"></circle>',
+        rest: '<path d="M17 8h1a3 3 0 0 1 0 6h-1"></path><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"></path><path d="M6 2v2"></path><path d="M10 2v2"></path><path d="M14 2v2"></path>',
+        done: '<path d="M20 6 9 17l-5-5"></path>',
+        snapshot: '<path d="M4 7h3l2-2h6l2 2h3v12H4Z"></path><circle cx="12" cy="13" r="3"></circle>',
+        question: '<path d="M9.1 9a3 3 0 1 1 5.4 1.8c-.9.6-1.5 1.1-1.5 2.2"></path><path d="M12 17h.01"></path><circle cx="12" cy="12" r="10"></circle>',
+        reply: '<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>',
+        wake: '<path d="M10 2h4"></path><path d="M12 6v6l4 2"></path><circle cx="12" cy="13" r="8"></circle>',
+        seen: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle>',
+        locked: '<rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path>'
+      };
+      return `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[type] || icons.focus}</svg>`;
+    }
+    function renderPlannerStatusBadge(type, label) {
+      return `<span class="planner-badge planner-badge--${type}">${plannerIconSvg(type)}<span>${escapeHtml(label)}</span></span>`;
+    }
+    function renderPlannerOptionalBadge(type, label, count) {
+      return Number(count || 0) > 0 ? renderPlannerStatusBadge(type, label) : '';
+    }
+    function getPlannerCount(plan, keys) {
+      for (const key of keys) {
+        const n = Number(plan && plan[key]);
+        if (Number.isFinite(n) && n > 0) return n;
+      }
+      return 0;
+    }
+    function renderPlanStatusBadges(plan, done) {
+      const snapshots = getPlannerCount(plan, ['snapshot_count', 'photo_count', 'photos_count', 'attachment_count']);
+      const questions = getPlannerCount(plan, ['question_count', 'questions_count']);
+      const replies = getPlannerCount(plan, ['reply_count', 'replies_count']);
+      const status = done ? renderPlannerStatusBadge('done', '완료') : renderPlannerStatusBadge('focus', '공부 대기');
+      return `
+        <div class="planner-badge-row">
+          ${status}
+          ${renderPlannerOptionalBadge('snapshot', '스냅샷', snapshots)}
+          ${renderPlannerOptionalBadge('question', `질문 ${questions}`, questions)}
+          ${renderPlannerOptionalBadge('reply', `답변 ${replies}`, replies)}
+        </div>
+      `;
+    }
+    function showPlannerSoon(feature) {
+      toast(`${feature} 기능은 다음 단계에서 연결합니다.`);
+    }
+    function getRepeatHintText() {
+      return examDate
+        ? `반복은 ${examDate}까지만 생성됩니다.`
+        : '시험일을 설정하면 반복 계획 종료일이 자동 적용됩니다.';
     }
     function toast(message) {
       const el = $('toast');
@@ -1014,7 +1187,7 @@
       overlay.innerHTML = `
         <div style="background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:16px;padding:24px;width:min(320px,90vw);display:flex;flex-direction:column;gap:16px;box-shadow:0 8px 40px rgba(0,0,0,.24);">
           <div style="font-size:15px;font-weight:700;color:var(--text);">시험일 설정</div>
-          <input id="exam-date-input" type="date" value="${examDate}"
+          <input id="exam-date-input" type="date" value="${escapeHtml(examDate || '')}"
             style="border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:15px;width:100%;box-sizing:border-box;background:var(--surface-2);color:var(--text);">
           <div style="display:flex;gap:8px;">
             <button onclick="document.getElementById('exam-date-editor-overlay').remove()"
@@ -1311,15 +1484,22 @@
       const done = Number(plan.is_done || 0) === 1;
       const planId = escapeJsString(plan.id);
       const updatedAt = escapeJsString(plan.updated_at || '');
+      const nextDone = done ? 0 : 1;
       return `
         <div class="plan-item">
-          <button class="check ${done ? 'done' : ''}" onclick="toggleDone('${planId}', ${done ? 0 : 1}, '${updatedAt}')">✓</button>
+          <button class="check ${done ? 'done' : ''}" onclick="toggleDone('${planId}', ${nextDone}, '${updatedAt}')" aria-label="완료 전환">${done ? plannerIconSvg('done') : ''}</button>
           <div class="plan-main ${done ? 'done' : ''}">
             <div class="plan-item-title">${escapeHtml(plan.title)}</div>
             <div class="plan-sub">${escapeHtml(plan.subject || '수학')}${plan.repeat_rule ? ` · ${plan.repeat_rule === 'daily' ? '매일' : '매주'}` : ''}</div>
+            ${renderPlanStatusBadges(plan, done)}
           </div>
-          <button class="plan-timer" onclick="startPlannerTimerForPlan('${planId}')">타이머</button>
-          <button class="delete" onclick="deletePlan('${planId}')">삭제</button>
+          <div class="planner-action-row">
+            <button class="planner-action-btn primary" onclick="startPlannerTimerForPlan('${planId}')">${plannerIconSvg('focus')}<span>공부</span></button>
+            <button class="planner-action-btn" onclick="showPlannerSoon('집중 스냅샷')">${plannerIconSvg('snapshot')}<span>스냅샷</span></button>
+            <button class="planner-action-btn" onclick="showPlannerSoon('질문 카드')">${plannerIconSvg('question')}<span>질문</span></button>
+            <button class="planner-action-btn" onclick="toggleDone('${planId}', ${nextDone}, '${updatedAt}')">${plannerIconSvg('done')}<span>${done ? '해제' : '완료'}</span></button>
+            <button class="planner-action-btn danger" onclick="deletePlan('${planId}')">${plannerIconSvg('locked')}<span>삭제</span></button>
+          </div>
         </div>
       `;
     }
@@ -1362,7 +1542,7 @@
             <option value="daily">매일 반복</option>
             <option value="weekly">매주 반복</option>
           </select>
-          <div class="muted">반복은 ${examDate}까지만 생성됩니다.</div>
+          <div class="muted">${escapeHtml(getRepeatHintText())}</div>
           <button class="btn apms-button apms-button--primary btn-primary" onclick="saveModalPlan('${date}')">저장</button>
         </div>
       `;

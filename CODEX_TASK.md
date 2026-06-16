@@ -1,402 +1,668 @@
-# CODEX_TASK — EIE 시간표 최근 2개월 퇴원생 표시 Worker payload 핫픽스
+형님, 세부 계획서는 이렇게 잡는 게 좋습니다.
+핵심은 **열품타식 감성은 가져오되, 우리 학원 플래너답게 “할 일 카드 중심”으로 통제하는 구조**입니다.
 
-## 0. 최우선 지시
+# AP Math Planner v2 업그레이드 계획서
 
-이번 작업은 AP/EIE 시간표 퇴원생 표시 작업의 **EIE 실제 운영 경로 FAIL 수정**이다.
+## 0. 현재 상태 기준
 
-현재 판정:
+현재 우리 플래너에는 이미 학생별 할 일, 완료 체크, 과목, 반복, 타이머 버튼이 들어가 있습니다. `renderPlanPanel()`과 `renderPlanItem()`에서 할 일 목록, 과목, 완료 체크, 타이머, 삭제 버튼을 렌더링합니다. 
 
-```text
-AP 수학 시간표: PASS 후보 — 수정하지 않음
-EIE 영어 시간표: FAIL — Worker → Front payload에서 퇴원 상태가 전달되지 않음
-```
+선생님 쪽에도 반별 플래너 확인 화면이 있고, 요일별·주간별·월간별 모드가 이미 있습니다. 
 
-이번 작업은 **EIE 핀포인트 수정**이다.
-AP 수학 시간표 파일은 수정하지 않는다.
+다만 DB는 현재 `student_plans`, `planner_feedback` 중심입니다. `student_plans`에는 날짜, 제목, 과목, 완료 여부, 반복 규칙만 있고, `planner_feedback`에는 피드백 날짜, 코멘트, 배지, 완료율만 있습니다. 
 
-커밋하지 않는다.
-push하지 않는다.
-stage하지 않는다.
-
----
-
-## 1. 실패 원인
-
-`workers/wangji-eie-worker/routes/eie.js`에서 SQL은 이미 학생 상태를 가져온다.
+즉 현재 구조는:
 
 ```text
-s.status AS student_status
-```
-
-하지만 `assigned_students` 객체로 push할 때 `status` 또는 `student_status`를 넣지 않는다.
-
-현재 문제 구조:
-
-```js
-list.push({
-  ...
-  withdrawn_at: row.withdrawn_at || studentMeta.withdrawn_at || '',
-  match_status: 'confirmed',
-  ...
-})
-```
-
-반면 프론트 `eie/js/views/eie-timetable.js`는 학생 상태를 아래 흐름으로 읽는다.
-
-```js
-status: normalizeKey(student?.status || student?.match_status || '')
-```
-
-결과:
-
-```text
-실제 Worker 응답에서는 퇴원생도 match_status: "confirmed"만 들어옴
-프론트는 퇴원생으로 판단하지 못함
-최근 퇴원생 is-withdrawn class/tooltip 누락
-오래된 퇴원생/퇴원일 없는 퇴원생이 표시될 위험
+할 일 플래너 O
+완료율 O
+피드백 O
+간단 타이머 O
+공부시간 저장 X
+사진 인증 X
+질문 카드 X
+반 채팅방 X
+깨우기 X
 ```
 
 ---
 
-## 2. 수정 목표
+# 1. 최종 목표 화면
 
-EIE 실제 운영 경로에서 아래가 보장되어야 한다.
+## 학생 플래너 카드
 
 ```text
-1. Worker assigned_students payload에 실제 학생 status가 포함된다.
-2. 프론트 getStudents()가 status/student_status를 우선 읽는다.
-3. match_status: "confirmed"를 퇴원 상태로 오해하거나 상태 대체값으로 쓰지 않는다.
-4. 최근 2개월 퇴원생만 is-withdrawn 표시된다.
-5. 2개월 초과 퇴원생은 숨김.
-6. 퇴원일 없는 퇴원생은 숨김.
-7. 테스트 fixture가 실제 Worker payload를 반영한다.
+RPM 중2-2 p.42~45
+
+[공부중 38m] [사진 2] [질문 1] [답변 3]
+[공부] [사진] [질문] [완료]
+```
+
+여기서 이모지는 직접 쓰지 않습니다.
+전부 **고급 SVG 라인 아이콘 + pill badge**로 갑니다.
+
+## 선생님 반 현황
+
+```text
+중2A 실시간 플래너
+
+남지혁   공부중 38m   사진2   질문1   깨우기
+박정원   휴식 12m     사진0   답변2   깨우기
+김다희   완료 64m     사진1   질문0   확인
+```
+
+## 반 라운지
+
+```text
+중2A 라운지
+
+상단:
+공부중 6명 / 휴식 2명 / 미시작 4명
+
+채팅:
+남지혁: 12번 조건 이해 안 됨
+사진 1장
+
+박정원: 분모 확인해봐
+사진 1장
+
+선생님: 7시 30분까지 12번까지 풀기
 ```
 
 ---
 
-## 3. 수정 허용 파일
+# 2. 디자인 원칙
 
-수정 가능:
-
-```text
-workers/wangji-eie-worker/routes/eie.js
-eie/js/views/eie-timetable.js
-tests/eie-timetable-withdrawn-students.test.js
-docs/reports/ap-eie-timetable-withdrawn-students-result.md
-CODEX_RESULT1.md
-```
-
-필요한 경우에만 CSS 보정 가능:
+## 2-1. 이모지 직접 사용 금지
 
 ```text
-eie/css/eie-v2-week-card.css
+❌ 🔥 📷 ❓ ✅ 그대로 사용 금지
+✅ SVG 라인 아이콘 + 상태 배지 사용
 ```
 
-단, 기존 CSS가 이미 `is-withdrawn`을 정상 정의하고 있으면 CSS는 수정하지 않는다.
-
----
-
-## 4. 수정 금지 파일
-
-아래는 절대 수정하지 않는다.
+## 2-2. 상태 배지 규격
 
 ```text
-apmath/js/timetable.js
-apmath/js/student.js
-tests/apmath-timetable-withdrawn-students.test.js
-migrations/20260615_eie_students_withdrawn_at.sql
-dashboard.js 계열
-student.js 계열
-classroom.js 계열
-report.js
-archive/*
-output/playwright/*
-verify-*.html
+높이: 24~28px
+아이콘: 16px SVG
+폰트: 11~12px
+border-radius: 999px
+border: 1px solid
+배경: 아주 연한 색
+상태색은 점/배지에만 사용
 ```
 
-AP 수학 쪽은 현재 PASS 후보이므로 건드리지 않는다.
-
----
-
-## 5. Worker 수정 지시
-
-대상:
+## 2-3. 상태 종류
 
 ```text
-workers/wangji-eie-worker/routes/eie.js
+focus      공부중
+rest       휴식
+done       완료
+photo      사진
+question   질문
+reply      답변
+wake       깨우기
+seen       선생님 확인
+locked     잠금
+notice     공지
 ```
 
-`assigned_students`를 만드는 push 객체에 반드시 아래 필드를 추가한다.
-
-```js
-status: row.student_status || 'active',
-student_status: row.student_status || 'active',
-withdrawn_at: row.withdrawn_at || studentMeta.withdrawn_at || '',
-```
-
-주의:
+## 2-4. 색상 체계
 
 ```text
-1. match_status는 기존처럼 'confirmed'로 유지 가능.
-2. 단, match_status를 학생 재원/퇴원 상태로 사용하면 안 됨.
-3. status/student_status가 실제 학생 상태를 전달해야 함.
-```
-
-또한 SQL/필터가 아래 정책을 만족하는지 재확인한다.
-
-```text
-active / needs_review / imported 계열 학생: 기존대로 포함
-inactive / archived / withdrawn / left / 퇴원 학생: withdrawn_at이 최근 2개월일 때만 포함
-2개월 초과 퇴원생: 제외
-withdrawn_at 없는 퇴원생: 제외
+공부중: 초록 계열
+휴식: amber 계열
+질문: indigo / violet 계열
+사진: slate / blue 계열
+완료: blue 계열
+깨우기: orange 계열
+잠금/삭제: red 계열
+기본: slate 계열
 ```
 
 ---
 
-## 6. EIE 프론트 수정 지시
+# 3. 개발 단계
 
-대상:
+## 1단계: 고급 아이콘 상태 UI
 
-```text
-eie/js/views/eie-timetable.js
-```
+먼저 기능 추가 전에 **UI 컴포넌트부터 고정**합니다.
 
-`getStudents(row)` 또는 학생 객체 normalize 위치에서 status 읽기 우선순위를 아래처럼 보정한다.
-
-권장:
-
-```js
-status: normalizeKey(
-  student?.status ||
-  student?.student_status ||
-  student?.studentStatus ||
-  student?.match_status ||
-  ''
-)
-```
-
-단, 퇴원 판정 helper에서는 `match_status: confirmed`만 보고 active로 오판하지 않게 한다.
-
-권장 helper 정책:
+### 추가 컴포넌트
 
 ```text
-isWithdrawnStudent(row):
-- status/student_status/studentStatus 값을 우선 확인
-- archived/inactive/withdrawn/left/퇴원만 퇴원으로 판단
-- confirmed/candidate/needs_review는 퇴원 아님
+PlannerStatusBadge
+PlannerIconButton
+PlannerMetricPill
+PlannerLiveDot
 ```
 
-`shouldShowTimetableStudent(row)`가 있다면 아래 정책을 재확인한다.
+### 예시
+
+```html
+<span class="planner-badge planner-badge--focus">
+  <svg class="planner-icon">...</svg>
+  <span>공부중 38m</span>
+</span>
+```
+
+### 적용 위치
 
 ```text
-재원생: 표시
-휴원생: 표시 + is-paused 유지
-최근 2개월 퇴원생: 표시 + is-withdrawn
-2개월 초과 퇴원생: 숨김
-퇴원일 없는 퇴원생: 숨김
+학생 플래너 카드
+선생님 반별 플래너 확인 화면
+학생 상세 플래너 요약
+반 라운지 상단 상태판
+```
+
+이 단계에서는 DB 변경 없이 목업 데이터 또는 기존 `is_done`, 사진 수 0, 질문 수 0으로 먼저 화면만 잡습니다.
+
+---
+
+## 2단계: 저장형 공부 타이머
+
+현재 타이머는 카운트다운 후 토스트와 진동만 발생합니다. 타이머 종료 시 `plannerTimerSeconds`를 초기화하고 “집중 시간이 끝났습니다”만 띄웁니다. 
+
+이걸 **저장형 타이머**로 바꿉니다.
+
+### 추가 DB
+
+```sql
+CREATE TABLE IF NOT EXISTS planner_study_sessions (
+  id TEXT PRIMARY KEY,
+  student_id TEXT NOT NULL,
+  plan_id TEXT,
+  class_id TEXT,
+  subject TEXT,
+  status TEXT DEFAULT 'active',
+  started_at TEXT NOT NULL,
+  paused_at TEXT,
+  ended_at TEXT,
+  duration_seconds INTEGER DEFAULT 0,
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_planner_study_sessions_student_date
+ON planner_study_sessions(student_id, started_at);
+
+CREATE INDEX IF NOT EXISTS idx_planner_study_sessions_plan
+ON planner_study_sessions(plan_id);
+```
+
+### 추가 API
+
+```text
+POST   /api/planner/sessions/start
+PATCH  /api/planner/sessions/:id/pause
+PATCH  /api/planner/sessions/:id/resume
+PATCH  /api/planner/sessions/:id/finish
+GET    /api/planner/sessions/current?student_id=
+GET    /api/planner/stats?student_id=&from=&to=
+GET    /api/planner/live-overview?class_id=
+```
+
+### 학생 카드 동작
+
+```text
+[공부] 클릭
+→ session start
+→ 카드 상태: 공부중
+→ 타이머 running
+→ 선생님 화면에도 공부중 반영
+
+[휴식]
+→ pause
+→ 상태: 휴식
+
+[다시 시작]
+→ resume
+
+[완료]
+→ finish
+→ duration 저장
+→ 할 일 완료 여부와 별도 저장
 ```
 
 ---
 
-## 7. EIE 테스트 수정 지시
+## 3단계: 사진 인증
 
-대상:
+현재 `core.js`에는 `homework-photo` 관련 API 함수들이 이미 있습니다. 과제 생성, 현황 조회, 학생 링크 조회, 마감, 삭제 함수가 존재합니다. 
+
+그래서 새로 완전 별도 업로드 시스템을 만들기보다, 기존 `homework-photo` 계열과 연결 가능한 구조로 확장합니다.
+
+### 추가 DB
+
+```sql
+CREATE TABLE IF NOT EXISTS planner_attachments (
+  id TEXT PRIMARY KEY,
+  student_id TEXT NOT NULL,
+  plan_id TEXT,
+  question_id TEXT,
+  class_id TEXT,
+  type TEXT NOT NULL, -- homework, question, solution, chat
+  image_url TEXT NOT NULL,
+  thumbnail_url TEXT,
+  file_size INTEGER,
+  mime_type TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_planner_attachments_plan
+ON planner_attachments(plan_id);
+
+CREATE INDEX IF NOT EXISTS idx_planner_attachments_question
+ON planner_attachments(question_id);
+```
+
+### 학생 기능
 
 ```text
-tests/eie-timetable-withdrawn-students.test.js
+할 일 카드 → [사진]
+→ 카메라/앨범 선택
+→ 이미지 압축
+→ 업로드
+→ 카드에 사진 수 표시
 ```
 
-현재 테스트는 fixture에 직접 `status`를 넣어서 실제 Worker 응답 버그를 못 잡는다.
-
-반드시 보정한다.
-
-### 7-1. Worker source assertion 추가
-
-테스트에서 `workers/wangji-eie-worker/routes/eie.js`를 읽고 아래를 검사한다.
+### 선생님 기능
 
 ```text
-1. SQL에 s.status AS student_status 존재
-2. assigned_students push 객체에 status: row.student_status 존재
-3. assigned_students push 객체에 student_status: row.student_status 존재
-4. withdrawn_at이 payload에 포함됨
-```
-
-### 7-2. 실제 Worker payload 형태 반영
-
-프론트 테스트 fixture는 최소 2종을 포함한다.
-
-```js
-// 실제 핫픽스 후 Worker payload 형태
-{
-  name: '박최근',
-  status: 'inactive',
-  student_status: 'inactive',
-  withdrawn_at: '2026-05-02T08:00:00+09:00',
-  match_status: 'confirmed'
-}
-
-// 과거 버그 재현 형태: status가 없고 match_status만 confirmed
-{
-  name: '버그재현',
-  withdrawn_at: '2026-05-02T08:00:00+09:00',
-  match_status: 'confirmed'
-}
-```
-
-검증:
-
-```text
-1. status/student_status 있는 최근 퇴원생은 is-withdrawn 표시
-2. 오래된 퇴원생은 표시되지 않음
-3. 퇴원일 없는 퇴원생은 표시되지 않음
-4. status 없이 match_status: confirmed만 있는 row는 퇴원생으로 오판하지 않음
-5. Worker source에 status/student_status payload export가 없으면 테스트 FAIL
-```
-
-테스트에서 assertion 삭제/완화 금지.
-
----
-
-## 8. 검수팩 단독 재현성 보정
-
-이전 검수팩은 아래 파일이 없어 EIE 테스트 단독 실행이 깨졌다.
-
-```text
-eie/css/eie-timetable-board.css
-eie/css/eie-timetable.css
-```
-
-이번 결과 압축팩에는 테스트가 읽는 CSS 파일을 모두 포함한다.
-
-최소 포함:
-
-```text
-eie/css/eie-v2-week-card.css
-eie/css/eie-timetable-board.css
-eie/css/eie-timetable.css
-```
-
-제품 코드 수정이 없더라도 검수팩에는 포함한다.
-
----
-
-## 9. 테스트 실행
-
-필수:
-
-```bash
-node --check eie/js/views/eie-timetable.js
-node --check workers/wangji-eie-worker/routes/eie.js
-node --check tests/eie-timetable-withdrawn-students.test.js
-
-node tests/eie-timetable-withdrawn-students.test.js
-node tests/apmath-timetable-withdrawn-students.test.js
-node tests/apmath-onclick-defined.test.js
-node tools/run-tests.js
-node tools/smoke-api.mjs
-```
-
-브라우저 smoke는 가능하면 실행한다.
-
-```bash
-node tools/smoke-browser.mjs
-```
-
-Playwright 미설치면 미수행 사유를 기록한다.
-
----
-
-## 10. 결과 보고서 수정
-
-아래 파일을 갱신한다.
-
-```text
-docs/reports/ap-eie-timetable-withdrawn-students-result.md
-```
-
-추가해야 할 내용:
-
-```md
-## 핫픽스
-- EIE Worker assigned_students payload에 status/student_status 추가
-- 프론트 getStudents status 우선순위 보정
-- 테스트 fixture를 실제 Worker payload 기준으로 보정
-
-## 외부검수 FAIL 반영
-- 기존 실패 원인:
-- 수정 내용:
-- 재검증 결과:
+반 플래너 확인
+→ 학생별 사진 수 표시
+→ 클릭 시 사진 모아보기
 ```
 
 ---
 
-## 11. CODEX_RESULT1.md 작성
+## 4단계: 질문 카드
 
-루트 `CODEX_RESULT1.md`를 아래 형식으로 작성한다.
+반 채팅방보다 먼저 **질문 카드**를 붙이는 게 안전합니다.
+이유는 질문이 채팅에 묻히면 관리가 어려워지기 때문입니다.
 
-```md
-# CODEX_RESULT1 — EIE 시간표 퇴원생 표시 Worker payload 핫픽스
+### 추가 DB
 
-## 1. 생성/수정 파일
-- ...
+```sql
+CREATE TABLE IF NOT EXISTS planner_questions (
+  id TEXT PRIMARY KEY,
+  student_id TEXT NOT NULL,
+  class_id TEXT NOT NULL,
+  plan_id TEXT,
+  question_text TEXT,
+  visibility TEXT DEFAULT 'class', -- class, teacher_only
+  status TEXT DEFAULT 'open', -- open, resolved, locked
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now'))
+);
 
-## 2. 실패 원인
-- Worker SQL student_status 조회 여부:
-- Worker assigned_students status 누락 여부:
-- 프론트 getStudents status 읽기 문제:
-- 테스트 fixture 현실성 문제:
+CREATE TABLE IF NOT EXISTS planner_question_replies (
+  id TEXT PRIMARY KEY,
+  question_id TEXT NOT NULL,
+  student_id TEXT,
+  teacher_id TEXT,
+  body TEXT,
+  image_url TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
 
-## 3. 수정 내용
-- Worker payload:
-- EIE 프론트:
-- EIE 테스트:
-- 검수팩 CSS 포함:
+CREATE INDEX IF NOT EXISTS idx_planner_questions_class
+ON planner_questions(class_id, created_at);
 
-## 4. AP 영향
-- apmath/js/timetable.js 수정 여부:
-- AP 테스트 결과:
-- AP 회귀 여부:
+CREATE INDEX IF NOT EXISTS idx_planner_question_replies_question
+ON planner_question_replies(question_id);
+```
 
-## 5. EIE 재검증
-- 최근 2개월 퇴원생:
-- 오래된 퇴원생:
-- 퇴원일 없는 퇴원생:
-- match_status confirmed only row:
+### 학생 화면
 
-## 6. 테스트 결과
-- node --check:
-- EIE withdrawn test:
-- AP withdrawn test:
-- onclick-defined:
-- run-tests:
-- smoke-api:
-- smoke-browser:
+```text
+[질문] 클릭
 
-## 7. git 상태
-- stage/commit/push:
-- git diff --name-only:
-- untracked files:
-- 이번 작업 관련 파일:
+문제 사진 첨부
+질문 내용 입력
+
+공개 범위:
+- 선생님에게만
+- 우리 반에도 공개
+
+[질문 올리기]
+```
+
+### 카드 상태
+
+```text
+질문 1
+답변 3
+해결됨
+선생님 확인
+잠금
 ```
 
 ---
 
-## 12. 완료 기준
+## 5단계: 반 내부 라운지
 
-아래를 모두 만족해야 PASS 후보다.
+형님이 말한 카카오 오픈채팅 느낌은 가능하지만, 이름과 구조는 **반 라운지**가 좋습니다.
+
+### 원칙
 
 ```text
-1. Worker assigned_students에 status/student_status가 포함됨
-2. 프론트가 student_status도 읽음
-3. 최근 2개월 EIE 퇴원생이 is-withdrawn 표시됨
-4. 오래된 EIE 퇴원생이 숨김
-5. 퇴원일 없는 EIE 퇴원생이 숨김
-6. match_status: confirmed만 있는 row를 퇴원생으로 오판하지 않음
-7. AP 수학 시간표 파일은 수정하지 않음
-8. AP withdrawn test PASS
-9. EIE withdrawn test PASS
-10. run-tests PASS
-11. smoke-api PASS
-12. 검수팩 단독 재현성 확보
-13. stage/commit/push 없음
+1:1 DM 금지
+같은 반만 입장
+선생님 항상 입장
+원장 전체 열람 가능
+공지 고정 가능
+삭제/잠금 가능
+사진 가능
+질문 카드 전환 가능
 ```
+
+### 추가 DB
+
+```sql
+CREATE TABLE IF NOT EXISTS planner_class_messages (
+  id TEXT PRIMARY KEY,
+  class_id TEXT NOT NULL,
+  sender_type TEXT NOT NULL, -- student, teacher, admin
+  sender_id TEXT NOT NULL,
+  body TEXT,
+  image_url TEXT,
+  linked_plan_id TEXT,
+  linked_question_id TEXT,
+  message_type TEXT DEFAULT 'chat', -- chat, question, notice, wake, system
+  is_deleted INTEGER DEFAULT 0,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_planner_class_messages_class
+ON planner_class_messages(class_id, created_at);
+```
+
+### 라운지 기능
+
+```text
+일반 메시지
+사진 메시지
+질문으로 올리기
+선생님 공지
+깨우기 기록
+시스템 메시지
+```
+
+### 입력창
+
+```text
+[사진] [질문으로] [메시지 입력] [보내기]
+```
+
+---
+
+## 6단계: 깨우기 기능
+
+깨우기는 넣을 만합니다.
+다만 무제한이면 장난이 될 수 있으니 제한이 필요합니다.
+
+### 추가 DB
+
+```sql
+CREATE TABLE IF NOT EXISTS planner_wake_events (
+  id TEXT PRIMARY KEY,
+  class_id TEXT NOT NULL,
+  from_type TEXT NOT NULL, -- student, teacher, admin
+  from_id TEXT NOT NULL,
+  to_student_id TEXT NOT NULL,
+  message TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_planner_wake_events_target
+ON planner_wake_events(to_student_id, created_at);
+```
+
+### 제한
+
+```text
+학생 → 학생:
+같은 반만 가능
+10분에 1회
+하루 최대 3회
+
+선생님 → 학생:
+제한 완화
+반 전체 깨우기 가능
+
+야간:
+알림 제한
+```
+
+### 화면
+
+```text
+박정원 휴식 12m
+
+[깨우기]
+```
+
+받는 학생:
+
+```text
+남지혁님이 집중 알림을 보냈어요.
+다시 시작해볼까요?
+
+[공부 시작] [나중에]
+```
+
+---
+
+# 4. 선생님 관리 화면
+
+## 반 플래너 메인
+
+```text
+중2A 플래너
+
+상단 상태:
+공부중 6
+휴식 2
+미시작 4
+완료 8
+질문 3
+사진 12
+
+학생 리스트:
+남지혁  공부중 38m  사진2  질문1  깨우기
+박정원  휴식 12m    사진0  답변2  깨우기
+김다희  완료 64m    사진1  질문0  확인
+```
+
+## 질문 관리
+
+```text
+열린 질문
+해결된 질문
+잠긴 질문
+
+질문 카드:
+학생명
+사진
+질문 내용
+답변 수
+[답변] [해결 처리] [잠금] [삭제]
+```
+
+## 라운지 관리
+
+```text
+공지 고정
+메시지 삭제
+방 잠금
+사진 보기
+질문 카드로 전환
+```
+
+---
+
+# 5. 학생 UX 흐름
+
+## 학생이 공부할 때
+
+```text
+1. 플래너 접속
+2. 오늘 할 일 확인
+3. 공부 버튼 클릭
+4. 상태가 공부중으로 변경
+5. 필요하면 사진 인증
+6. 모르면 질문
+7. 친구 답변 확인
+8. 완료 버튼
+```
+
+## 학생이 질문할 때
+
+```text
+1. 할 일 카드에서 질문 클릭
+2. 문제 사진 촬영
+3. 질문 입력
+4. 우리 반 공개 or 선생님에게만 선택
+5. 답변 도착 시 배지 표시
+6. 해결됨 처리
+```
+
+## 학생이 라운지를 쓸 때
+
+```text
+1. 반 라운지 입장
+2. 친구 공부 상태 확인
+3. 질문/답변/사진 공유
+4. 휴식 중 친구에게 깨우기
+5. 선생님 공지 확인
+```
+
+---
+
+# 6. 구현 우선순위
+
+## 1차 MVP
+
+```text
+고급 SVG 상태 배지
+공부/사진/질문/완료 4버튼 UI
+저장형 공부 타이머
+선생님 실시간 상태판
+```
+
+## 2차 MVP
+
+```text
+사진 인증
+사진 모아보기
+질문 카드
+질문 답변
+해결됨 처리
+```
+
+## 3차 MVP
+
+```text
+반 라운지
+깨우기
+공지 고정
+메시지 삭제/잠금
+```
+
+## 4차 확장
+
+```text
+월간 공부 히트맵
+과목별 누적 시간
+반별 집중 랭킹
+알림 설정
+학생별 프로필 배지
+```
+
+---
+
+# 7. Codex 작업 지시 핵심
+
+```text
+목표:
+AP Math Planner를 열품타식 학습 허브로 확장한다.
+단, 이모지 직접 사용 금지. SVG 라인 아이콘 + 상태 배지 컴포넌트로 구현한다.
+
+현재 구조 유지:
+- apmath/planner/index.html 기존 플래너 유지
+- apmath/js/classroom-planner.js 기존 반별 플래너 확인 유지
+- worker routes/planner.js 기존 student_plans / planner_feedback API 유지
+- 기존 완료율/피드백 기능 삭제 금지
+
+1단계 작업:
+- PlannerStatusBadge 컴포넌트 CSS/HTML 유틸 추가
+- 상태 종류: focus/rest/done/photo/question/reply/wake/seen/locked
+- 학생 할 일 카드에 상태 배지 영역 추가
+- 선생님 반 플래너 리스트에도 같은 배지 스타일 재사용
+- 이모지 문자 직접 삽입 금지
+- 모든 아이콘은 inline SVG 또는 symbol sprite로 통일
+
+2단계 작업:
+- planner_study_sessions 테이블 설계 추가
+- 공부 시작/휴식/재시작/완료 API 추가
+- 기존 카운트다운 타이머를 저장형 세션 타이머로 확장
+- 타이머 종료/완료 시 duration_seconds 저장
+- 선생님 반 화면에서 공부중/휴식/완료 상태 표시
+
+3단계 작업:
+- planner_attachments 테이블 설계 추가
+- 할 일 카드별 사진 업로드 UI 추가
+- 이미지 업로드는 기존 homework-photo 계열 구조 재사용 가능 여부 먼저 확인
+- 사진 수 배지 표시
+
+4단계 작업:
+- planner_questions / planner_question_replies 추가
+- 할 일 카드별 질문 생성
+- 사진 첨부 질문 가능
+- 같은 반 공개 / 선생님에게만 공개 옵션
+- 선생님 답변/잠금/삭제 권한
+
+5단계 작업:
+- planner_class_messages 추가
+- 반 라운지 구현
+- 같은 반 학생만 접근
+- 선생님/원장 관리 권한
+- 질문 카드 연동
+- 1:1 DM 금지
+
+6단계 작업:
+- planner_wake_events 추가
+- 깨우기 기능 구현
+- 학생 간 깨우기 제한: 같은 반, 10분 1회, 하루 3회
+- 선생님은 반 전체 깨우기 가능
+- 야간 알림 제한
+```
+
+---
+
+# 8. 최종 판단
+
+형님, 이건 충분히 가능합니다.
+다만 한 번에 채팅방까지 바로 만들면 위험하니까 순서는 이렇게 가야 합니다.
+
+```text
+1. 고급 아이콘 상태 UI
+2. 저장형 공부 타이머
+3. 사진 인증
+4. 질문 카드
+5. 반 라운지
+6. 깨우기
+```
+
+가장 먼저 만들 화면은 이것입니다.
+
+```text
+할 일 카드
+
+[공부중 38m] [사진 2] [질문 1] [답변 3]
+
+[공부] [사진] [질문] [완료]
+```
+
+이 카드 하나만 제대로 잡으면, 이후 선생님 화면·라운지·깨우기까지 전부 자연스럽게 확장됩니다.
