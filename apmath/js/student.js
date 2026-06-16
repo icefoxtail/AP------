@@ -1414,7 +1414,7 @@ function renderApmsStudentProfileDeck(student, cls) {
                     ${renderApmsStudentField('상태', apmsStudentStatusMeta(student).label)}
                     ${renderApmsStudentField('PIN', student.student_pin || '')}
                 </div>
-                <div class="apms-eie-note"><span>메모</span><p>${apmsStudentDetailEsc(String(student.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim() || '메모가 없습니다.')}</p></div>
+                <div class="apms-eie-note"><span>메모</span><p>${apmsStudentDetailEsc('')}</p></div>
             </section>
             <section class="apms-eie-card">
                 <div class="apms-eie-section-head"><h3>연락처</h3><span>${contactRows.filter(row => row.value).length}개</span></div>
@@ -1803,7 +1803,7 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
 function renderStudentBasicTab(sid) {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
-    const memo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
+    const memo = '';
     const parentInfo = [String(s.parent_phone || '').trim(), String(s.guardian_relation || '').trim() ? `(${String(s.guardian_relation || '').trim()})` : '']
         .filter(Boolean).join(' ');
     return `

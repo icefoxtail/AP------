@@ -354,7 +354,7 @@ function renderStudentEditBody(sid) {
     const isLeave = isStudentOnLeave(s);
     const onboardingEntry = getStudentOnboardingEntry(sid);
     const onboardingDate = getStudentOnboardingStartedAt(sid);
-    const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
+    const cleanMemo = '';
 
     return `
         <div class="apms-student-contrast ap-student-edit-body">
@@ -411,7 +411,6 @@ async function handleEditStudent(sid) {
     const editGrade = document.getElementById('edit-grade')?.value || '';
     const grade = editGrade;
 
-    const rawMemo = document.getElementById('edit-memo')?.value || '';
     const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
     const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
     const alreadyAttending = document.getElementById('edit-already-attending')?.checked || false;
@@ -420,7 +419,7 @@ async function handleEditStudent(sid) {
     // input이 비어 있으면 기존 DB값을 그대로 보존한다(빈값으로 덮어쓰지 않음).
     const onboardingInputRaw = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('edit'))?.value || '');
     const onboardingStartedAt = onboardingInputRaw || currentOnboardingStartedAt;
-    const cleanMemo = rawMemo.replace(/#신입/g, '').replace(/#휴원/g, '').trim();
+    const cleanMemo = '';
     const memoParts = [];
     if (isNewChecked && !alreadyAttending) memoParts.push('#신입');
     if (isLeaveChecked) memoParts.push('#휴원');
