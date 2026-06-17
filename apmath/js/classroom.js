@@ -1335,13 +1335,14 @@ function buildClassroomMonthlyStatusBoardData(classId, students, today) {
     return { month, students: classStudents, groups };
 }
 
-function renderClassroomMonthlyStatusCategory(title, rows, tone) {
+function renderClassroomMonthlyStatusCategory(title, rows, tone, classId) {
     const total = rows.reduce((sum, row) => sum + row.dates.length, 0);
     const toneClass = tone ? ` is-${apEscapeHtml(tone)}` : '';
+    const detailClassId = String(classId || state.ui?.currentClassId || '');
     const body = rows.length
         ? rows.map(row => `
             <div class="ap-classroom-monthly-row">
-                <div class="ap-classroom-monthly-student">${apEscapeHtml(row.name)}</div>
+                <div class="ap-classroom-monthly-student" style="cursor:pointer;" onclick="setManagementReturnView({ type: 'classDetail', classId: '${apEscapeHtml(detailClassId)}' }); openStudentDetail('${apEscapeHtml(String(row.sid || ''))}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${apEscapeHtml(detailClassId)}' } })">${apEscapeHtml(row.name)}</div>
                 <div class="ap-classroom-monthly-dates">${row.dates.map(formatClassroomMonthDay).filter(Boolean).join(' · ')}</div>
             </div>
         `).join('')
@@ -1380,10 +1381,10 @@ function renderClassroomMonthlyStatusBoard(classId, students, today) {
     return `
         <div class="ap-classroom-monthly-board apms-card ap-classroom-card" id="classroom-monthly-status-board">
             <div class="ap-classroom-monthly-list">
-                ${renderClassroomMonthlyStatusCategory('결석', absentRows, 'absent')}
-                ${renderClassroomMonthlyStatusCategory('보강', makeupRows, 'makeup')}
-                ${renderClassroomMonthlyStatusCategory('숙제', homeworkRows, 'homework')}
-                ${renderClassroomMonthlyStatusCategory('상담', consultationRows, 'consultation')}
+                ${renderClassroomMonthlyStatusCategory('결석', absentRows, 'absent', classId)}
+                ${renderClassroomMonthlyStatusCategory('보강', makeupRows, 'makeup', classId)}
+                ${renderClassroomMonthlyStatusCategory('숙제', homeworkRows, 'homework', classId)}
+                ${renderClassroomMonthlyStatusCategory('상담', consultationRows, 'consultation', classId)}
             </div>
         </div>
     `;

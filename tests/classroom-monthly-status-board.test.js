@@ -89,7 +89,9 @@ assert(html.includes('is-makeup'), 'makeup category should carry the top-chip co
 assert(html.includes('is-homework'), 'homework category should carry the top-chip color tone');
 assert(html.includes('is-consultation'), 'consultation category should carry the top-chip color tone');
 assert(html.includes('남지혁') && html.includes('6/1 · 6/4'), 'student dates should be grouped');
-assert(!/onclick=|<button\b|href=/.test(html), 'monthly status board must remain read-only');
+assert(html.includes("openStudentDetail('s1'"), 'monthly status board student name should open student detail');
+assert(html.includes("returnTo: { type: 'classDetail', classId: 'c1' }"), 'monthly status board detail link should return to class detail');
+assert(!/<button\b|href=/.test(html), 'monthly status board should not add buttons or links');
 
 const emptyHtml = context.renderClassroomMonthlyStatusBoard('c1', students, '2026-08-16');
 assert(!emptyHtml.includes('이번 달 보강 기록 없음'), 'empty makeup copy should not be rendered');

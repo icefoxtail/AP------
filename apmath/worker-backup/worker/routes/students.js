@@ -162,7 +162,14 @@ async function insertStudentWithAutoPin(env, d, sid, identityKey, targetScore) {
         identityKey
       )
     ];
-    if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, sid));
+    if (d.classId) {
+      stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, sid));
+      stmts.push(env.DB.prepare(`
+        INSERT INTO student_enrollments
+          (id, student_id, branch, class_id, status, start_date, memo)
+        VALUES (?, ?, 'apmath', ?, 'active', COALESCE(NULLIF(?, ''), DATE('now', '+9 hours')), ?)
+      `).bind(`enr_${sid}`, sid, d.classId, d.onboardingStartedAt, 'student create'));
+    }
 
     try {
       await env.DB.batch(stmts);
