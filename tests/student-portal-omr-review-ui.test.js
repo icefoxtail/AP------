@@ -33,21 +33,23 @@ assert(
 
 assert(
   studentPortal.includes('function buildOmrReviewUrl') &&
-    studentPortal.includes('function isHighSchoolOmrExam') &&
+    studentPortal.includes('function isOmrReviewAvailable') &&
     studentPortal.includes('function renderOmrReviewActions') &&
     studentPortal.includes('packId') &&
+    studentPortal.includes('시험지 보기') &&
     studentPortal.includes('정답 보기') &&
     studentPortal.includes('해설 보기'),
-  'student portal OMR cards should expose answer and solution review actions'
+  'student portal OMR cards should expose exam, answer, and solution review actions'
 );
 
 assert(
-  studentPortal.includes('if (!isHighSchoolOmrExam(exam)) return') &&
-    studentPortal.includes('const showReview = isHighSchoolOmrExam(exam)') &&
+  studentPortal.includes("return !!String(exam?.archive_file || '').trim();") &&
+    studentPortal.includes('if (!isOmrReviewAvailable(exam)) return') &&
+    studentPortal.includes('const showReview = isOmrReviewAvailable(exam)') &&
     studentPortal.includes("showReview ? '' : 'review-hidden'") &&
-    studentPortal.includes('/(중등|중학교|중[1-3])/i.test(source)') &&
-    studentPortal.includes('/(고등|고등부|고등학교|고[1-3])/i.test(source)'),
-  'OMR answer/solution review buttons should show for high school exams and be hidden for middle school exams'
+    !studentPortal.includes('const showReview = isHighSchoolOmrExam(exam)') &&
+    !studentPortal.includes('/(중등|중학교|중[1-3])/i.test(source)'),
+  'OMR answer/solution review buttons should show for archive-backed middle and high school exams'
 );
 
 assert(
@@ -55,7 +57,7 @@ assert(
     studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
     studentPortal.includes('입력하기') &&
     studentPortal.includes('제출 완료'),
-  'OMR cards should render three equal action buttons before and after submission'
+  'OMR cards should render review actions and input status before and after submission'
 );
 
 assert(
@@ -63,9 +65,10 @@ assert(
     studentPortal.includes('.omr-status.pending { background:#F3F4F6; color:#4B5563; }') &&
     studentPortal.includes('.omr-actions {') &&
     studentPortal.includes('.omr-actions.review-hidden') &&
-    studentPortal.includes('grid-template-columns:repeat(3,minmax(0,1fr))') &&
+    studentPortal.includes('grid-template-columns:repeat(4,minmax(0,1fr))') &&
+    studentPortal.includes('grid-template-columns:repeat(2,minmax(0,1fr))') &&
     studentPortal.includes('height:46px'),
-  'OMR action colors and layout should avoid bright blue emphasis and keep three equal columns'
+  'OMR action colors and layout should avoid bright blue emphasis and keep four actions responsive'
 );
 
 assert(

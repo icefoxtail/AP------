@@ -337,7 +337,7 @@
     .row-actions .btn { min-height:44px; border-radius:15px; font-size:13px; }
     .omr-actions {
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:8px;
       margin-top:14px;
     }
@@ -398,6 +398,11 @@
       background:#111827;
       color:#FFFFFF;
       box-shadow:0 8px 18px rgba(17,24,39,0.16);
+    }
+    @media (max-width:420px) {
+      .omr-actions:not(.review-hidden) {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
     }
 
     .install-card {
@@ -1408,6 +1413,7 @@
     function buildOmrReviewUrl(exam, mode = 'sol') {
       const archiveFile = String(exam?.archive_file || '').trim();
       if (!archiveFile) return '';
+      const isExam = mode === 'exam';
       const isSolution = mode === 'sol';
       const enginePath = archiveFile.startsWith('MIXED:')
         ? '../../archive/mixed_engine.html'
@@ -1424,26 +1430,20 @@
         url.searchParams.set('data', archiveFile);
       }
 
-      url.searchParams.set('mode', isSolution ? 'sol' : 'ans');
+      url.searchParams.set('mode', isExam ? 'exam' : (isSolution ? 'sol' : 'ans'));
       if (isSolution) url.searchParams.set('solQr', '1');
       return url.toString();
     }
-    function isHighSchoolOmrExam(exam) {
-      const source = [
-        exam?.grade_label,
-        exam?.grade,
-        exam?.class_name,
-        exam?.exam_title,
-        exam?.archive_file
-      ].map(value => String(value || '')).join(' ');
-      if (/(중등|중학교|중[1-3])/i.test(source)) return false;
-      return /(고등|고등부|고등학교|고[1-3])/i.test(source);
+    function isOmrReviewAvailable(exam) {
+      return !!String(exam?.archive_file || '').trim();
     }
     function renderOmrReviewActions(exam) {
-      if (!isHighSchoolOmrExam(exam)) return '';
+      if (!isOmrReviewAvailable(exam)) return '';
+      const examUrl = buildOmrReviewUrl(exam, 'exam');
       const answerUrl = buildOmrReviewUrl(exam, 'ans');
       const solutionUrl = buildOmrReviewUrl(exam, 'sol');
       return `
+        ${examUrl ? `<button type="button" class="btn review-btn" onclick="window.open('${escapeHtml(examUrl)}', '_blank')">시험지 보기</button>` : '<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
         ${answerUrl ? `<button type="button" class="btn review-btn" onclick="window.open('${escapeHtml(answerUrl)}', '_blank')">정답 보기</button>` : '<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
         ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="window.open('${escapeHtml(solutionUrl)}', '_blank')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
       `;
@@ -1476,7 +1476,7 @@
     }
     function renderOmrExamCard(exam) {
       const submitted = Number(exam.is_submitted || 0) === 1;
-      const showReview = isHighSchoolOmrExam(exam);
+      const showReview = isOmrReviewAvailable(exam);
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
       const status = submitted ? `제출 완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '입력 전';

@@ -1266,7 +1266,7 @@ function formatClassroomMonthDay(dateStr) {
 function isClassroomMonthlyMakeupRecord(row) {
     const status = String(row?.status || '').trim();
     if (status === '보강') return true;
-    return normalizeAttendanceTags(row?.tags).includes('보강');
+    return normalizeAttendanceTags(row?.tags).some(tag => tag === '보강' || String(tag || '').startsWith('makeup:'));
 }
 
 function isClassroomMonthlyHomeworkIssue(row) {
