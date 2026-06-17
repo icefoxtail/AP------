@@ -1291,6 +1291,60 @@ function examPeriodValue(ex) {
     return semester && examType ? `${semester}-${examType}` : '';
 }
 
+const ARCHIVE_SUBJECT_SYNONYM_GROUPS = [
+    ['수학1', '수학Ⅰ', '수학I', '수학로마자1', '대수', '수1'],
+    ['수학2', '수학Ⅱ', '수학II', '수학로마자2', '미적분1', '미적분Ⅰ', '수2'],
+    ['미적분', '미적분2', '미적분Ⅱ']
+];
+
+function normalizeArchiveSearchText(value) {
+    return String(value || '')
+        .toLowerCase()
+        .replace(/[Ⅰⅰ]/g, 'i')
+        .replace(/[Ⅱⅱ]/g, 'ii')
+        .replace(/\s+/g, '');
+}
+
+const ARCHIVE_SUBJECT_SYNONYM_LOOKUP = ARCHIVE_SUBJECT_SYNONYM_GROUPS.reduce((map, group) => {
+    const normalizedGroup = [...new Set(group.map(normalizeArchiveSearchText).filter(Boolean))];
+    normalizedGroup.forEach(token => {
+        map[token] = normalizedGroup;
+    });
+    return map;
+}, {});
+
+function archiveSubjectTokenInText(text, token) {
+    const source = String(text || '');
+    const needle = String(token || '');
+    if (!needle) return false;
+    if (needle === '미적분') {
+        return /미적분($|[^0-9i])|미적분2|미적분ii/.test(source);
+    }
+    return source.includes(needle);
+}
+
+function expandArchiveSearchSubjectTerms(value) {
+    const normalized = normalizeArchiveSearchText(value);
+    if (!normalized) return [];
+    const terms = new Set([normalized]);
+    Object.keys(ARCHIVE_SUBJECT_SYNONYM_LOOKUP).forEach(token => {
+        if (!token || !archiveSubjectTokenInText(normalized, token)) return;
+        ARCHIVE_SUBJECT_SYNONYM_LOOKUP[token].forEach(alias => terms.add(alias));
+    });
+    if (normalized === '미적분') terms.delete('미적분');
+    return Array.from(terms);
+}
+
+function buildArchiveSearchHaystack(parts) {
+    const base = normalizeArchiveSearchText((Array.isArray(parts) ? parts : []).join(' '));
+    const expanded = new Set([base]);
+    Object.keys(ARCHIVE_SUBJECT_SYNONYM_LOOKUP).forEach(token => {
+        if (!token || !archiveSubjectTokenInText(base, token)) return;
+        ARCHIVE_SUBJECT_SYNONYM_LOOKUP[token].forEach(alias => expanded.add(alias));
+    });
+    return Array.from(expanded).join(' ');
+}
+
 function onFilterChange() {
     const keyword = document.getElementById('searchInput').value.trim();
     const year = document.getElementById('yearFilter').value;
@@ -1381,7 +1435,8 @@ function renderFeatured() {
 }
 
 function renderFullList() {
-    const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+    const keyword = document.getElementById('searchInput').value.trim();
+    const keywordTerms = expandArchiveSearchSubjectTerms(keyword);
     const year = document.getElementById('yearFilter').value;
     const type = compactText(document.getElementById('contentTypeFilter').value);
     const examPeriod = document.getElementById('examPeriodFilter').value;
@@ -1390,15 +1445,15 @@ function renderFullList() {
     container.innerHTML = '';
 
     let filtered = visibleExams().filter(ex => {
-        const searchBase = [
+        const searchBase = buildArchiveSearchHaystack([
             ex.school || '',
             ex.subject || '',
             ex.topic || '',
             ex.file || '',
             ex.contentType || ''
-        ].join(' ').toLowerCase();
+        ]);
 
-        const matchK = !keyword || searchBase.includes(keyword);
+        const matchK = !keywordTerms.length || keywordTerms.some(term => searchBase.includes(term));
         const matchG = !selectedGrade || ex.grade === selectedGrade;
         const matchY = !year || String(ex.year) === String(year);
         const itemType = compactText(ex.contentType || '');

@@ -1720,7 +1720,10 @@ function renderStudentPinnedConsultationPreviewHtml(sid, consultationId) {
                     <strong style="color:var(--text);font-size:13px;line-height:1.35;">${apmsStudentDetailEsc(selected.date || '날짜 없음')}</strong>
                     <span class="ap-student-consult-type">${apmsStudentDetailEsc(selected.type || '상담')}</span>
                 </div>
-                <span style="cursor:pointer;color:#334155;font-size:12px;font-weight:600;" onclick="openEditConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">수정</span>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="cursor:pointer;color:#334155;font-size:12px;font-weight:600;" onclick="openEditConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">수정</span>
+                    <span style="cursor:pointer;color:var(--error);font-size:12px;font-weight:600;" onclick="handleDeleteConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">삭제</span>
+                </div>
             </div>
             <p class="ap-student-consult-text">${apmsStudentDetailEsc(selected.content || '상담 내용이 없습니다.')}</p>
             ${selected.next_action ? `<div class="ap-student-consult-next"><strong>다음 조치</strong><br>${apmsStudentDetailEsc(selected.next_action)}</div>` : ''}
