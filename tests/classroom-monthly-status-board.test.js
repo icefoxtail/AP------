@@ -26,6 +26,7 @@ const context = {
             { student_id: 's1', date: '2026-06-01', status: '보강' },
             { student_id: 's1', date: '2026-06-04', status: '미기록', tags: '보강' },
             { student_id: 's2', date: '2026-06-03', status: '미기록', tags: '상담' },
+            { student_id: 's2', date: '2026-06-05', status: '미기록', tags: 'makeup:homework' },
             { student_id: 's2', date: '2026-07-01', status: '보강' }
           ],
           homework: [
@@ -70,6 +71,7 @@ const data = context.buildClassroomMonthlyStatusBoardData('c1', students, '2026-
 assert.strictEqual(data.month, '2026-06', 'selected date should drive the full month');
 assert.deepStrictEqual(Array.from(data.groups.absent.get('s1')).sort(), ['2026-06-02']);
 assert.deepStrictEqual(Array.from(data.groups.makeup.get('s1')).sort(), ['2026-06-01', '2026-06-04']);
+assert.deepStrictEqual(Array.from(data.groups.makeup.get('s2')).sort(), ['2026-06-05']);
 assert.deepStrictEqual(Array.from(data.groups.homework.get('s1')).sort(), ['2026-06-01']);
 assert.deepStrictEqual(Array.from(data.groups.homework.get('s2')).sort(), ['2026-06-13']);
 assert.deepStrictEqual(Array.from(data.groups.consultation.get('s2')).sort(), ['2026-06-03']);
@@ -79,7 +81,7 @@ assert(!html.includes('이번달 현황판'), 'board title should not be rendere
 assert(!html.includes('월간 누적 보기'), 'month subtitle should not be rendered');
 assert(!html.includes('이 반에서 이번 달'), 'board description should not be rendered');
 assert(html.includes('결석') && html.includes('1건'), 'absence count should be rendered');
-assert(html.includes('보강') && html.includes('2건'), 'makeup count should be rendered');
+assert(html.includes('보강') && html.includes('3건'), 'makeup count should be rendered');
 assert(html.includes('숙제') && html.includes('2건'), 'homework issue count should be rendered');
 assert(html.includes('상담') && html.includes('1건'), 'consultation count should be rendered');
 assert(html.includes('is-absent'), 'absence category should carry the top-chip color tone');
