@@ -521,7 +521,7 @@ window.questionBank = [
       "⑤ 5"
     ],
     "answer": "⑤",
-    "solution": "<b>[Logical Anchor]</b> 완전제곱식 구성을 위한 미정계수 결정<br>\\\\\\(\\\\because P(x)-Q(x)=2, \\근이 연속하는 네 자연수  n, n+1, n+2, n+3\\\\\\)<br>\\\\\\(\\\\implies Q(x)=(x-n)(x-n-3), P(x)=(x-n-1)(x-n-2)\\\\\\\\\\)<br>\\\\\\(\\\\because Q(-1)=18 \\\\implies (n+1)(n+4)=18 \\\\implies n=2\\\\\\)<br>\\\\\\(\\\\implies Q(x)=x^2-7x+10, P(x)=x^2-7x+12\\\\\\)<br>\\\\\\(\\\\implies (x^2-7x+11)^2 = (x^2-7x)^2+22(x^2-7x)+121\\\\\\)<br>\\\\\\(\\\\implies P(x)Q(x)+k = (x^2-7x+12)(x^2-7x+10)+k = (x^2-7x)^2+22(x^2-7x)+120+k\\\\\\)<br>\\\\\\(\\\\implies 120+k=121 \\\\implies k=1\\\\\\)<br>\\\\\\(\\\\therefore k+a+b = 1-7+11 = 5\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 완전제곱식 구성을 위한 미정계수 결정<br>\\\\\\(\\\\because P(x)-Q(x)=2, \\근이 연속하는 네 자연수  n, n+1, n+2, n+3\\\\\\)<br>\\\\\\(\\implies Q(x)=(x-n)(x-n-3), P(x)=(x-n-1)(x-n-2)\\\\\\\\\\)<br>\\\\\\(\\\\because Q(-1)=18 \\implies (n+1)(n+4)=18 \\implies n=2\\\\\\)<br>\\\\\\(\\implies Q(x)=x^2-7x+10, P(x)=x^2-7x+12\\\\\\)<br>\\\\\\(\\implies (x^2-7x+11)^2 = (x^2-7x)^2+22(x^2-7x)+121\\\\\\)<br>\\\\\\(\\implies P(x)Q(x)+k = (x^2-7x+12)(x^2-7x+10)+k = (x^2-7x)^2+22(x^2-7x)+120+k\\\\\\)<br>\\\\\\(\\implies 120+k=121 \\implies k=1\\\\\\)<br>\\\\\\(\\\\therefore k+a+b = 1-7+11 = 5\\\\\\)"
   },
   {
     "id": 19,
@@ -543,14 +543,14 @@ window.questionBank = [
     "wide": false,
     "content": "<div>$x$ 에 대한 이차방정식 $x^{2}-2(k-2)x+k^{2}-4k+b-5=0$ 이 실수 $k$ 의 값에 관계없이 항상 중근을 가질 때, 상수 $a, b$ 에 대하여 다항식 $x^{3}-4x^{2}+ax+b$ 를 복소수 범위에서 인수분해하고, 그 풀이 과정을 서술하시오. [6.0점]</div>",
     "choices": [
-      "① $(x+1)(x-\\\\frac{5+\\\\sqrt{11}i}{2})(x-\\\\frac{5-\\\\sqrt{11}i}{2})$",
-      "② $(x-1)(x-\\\\frac{5+\\\\sqrt{11}i}{2})(x-\\\\frac{5-\\\\sqrt{11}i}{2})$",
-      "③ $(x+1)(x-\\\\frac{3+\\\\sqrt{7}i}{2})(x-\\\\frac{3-\\\\sqrt{7}i}{2})$",
-      "④ $(x-1)(x-\\\\frac{3+\\\\sqrt{7}i}{2})(x-\\\\frac{3-\\\\sqrt{7}i}{2})$",
-      "⑤ $(x+2)(x-\\\\frac{5+\\\\sqrt{11}i}{2})(x-\\\\frac{5-\\\\sqrt{11}i}{2})$"
+      "① $(x+1)(x-\\frac{5+\\sqrt{11}i}{2})(x-\\frac{5-\\sqrt{11}i}{2})$",
+      "② $(x-1)(x-\\frac{5+\\sqrt{11}i}{2})(x-\\frac{5-\\sqrt{11}i}{2})$",
+      "③ $(x+1)(x-\\frac{3+\\sqrt{7}i}{2})(x-\\frac{3-\\sqrt{7}i}{2})$",
+      "④ $(x-1)(x-\\frac{3+\\sqrt{7}i}{2})(x-\\frac{3-\\sqrt{7}i}{2})$",
+      "⑤ $(x+2)(x-\\frac{5+\\sqrt{11}i}{2})(x-\\frac{5-\\sqrt{11}i}{2})$"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D=0$ 및 항등식 성질 활용<br>$\because \frac{D}{4}=(k-2)^{2}-(k^{2}-4k+b-5)=0$<br>$\implies 9-b=0 \implies b=9$<br>$\because a=4$ 이므로 $x^{3}-4x^{2}+4x+9=(x+1)(x^{2}-5x+9)$<br>$\therefore (x+1)\left(x-\frac{5+\sqrt{11}i}{2}\right)\left(x-\frac{5-\sqrt{11}i}{2}\right)$"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D=0$ 및 항등식 성질 활용<br>$\because \\frac{D}{4}=(k-2)^{2}-(k^{2}-4k+b-5)=0$<br>$\\implies 9-b=0 \\implies b=9$<br>$\because a=4$ 이므로 $x^{3}-4x^{2}+4x+9=(x+1)(x^{2}-5x+9)$<br>$\therefore (x+1)\\left(x-\\frac{5+\\sqrt{11}i}{2}\\right)\\left(x-\\frac{5-\\sqrt{11}i}{2}\\right)$"
   },
   {
     "id": 20,
@@ -579,7 +579,7 @@ window.questionBank = [
       "⑤ $x^{2}-26x+54=0$"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 방멱의 정리 및 지름 조건 활용<br>\\\\\\(\\\\because AP \\\\cdot PB = CP \\\\cdot DP = 10 \\\\times 8 = 80\\\\\\)<br>\\\\\\(\\\\because AP+PB = 2R = 26\\\\\\)<br>\\\\\\(\\\\implies \\두 근의 합  26, \\ 곱  80\\\\\\)<br>\\\\\\(\\\\therefore x^{2}-26x+80=0\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 방멱의 정리 및 지름 조건 활용<br>\\\\\\(\\\\because AP \\cdot PB = CP \\cdot DP = 10 \\times 8 = 80\\\\\\)<br>\\\\\\(\\\\because AP+PB = 2R = 26\\\\\\)<br>\\\\\\(\\implies \\두 근의 합  26, \\ 곱  80\\\\\\)<br>\\\\\\(\\\\therefore x^{2}-26x+80=0\\\\\\)"
   },
   {
     "id": 21,
@@ -599,7 +599,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>$0 \\\\le x \\\\le 3$ 인 실수 $x$ 에 대하여 함수 $y=(x^{2}-4x+7)^{2}-2a(x^{2}-4x+7)+a^{2}+1$ 의 최솟값이 $5$ 가 되도록 하는 모든 실수 $a$ 의 값의 합을 구하시오. [8.0점]</div>",
+    "content": "<div>$0 \\le x \\le 3$ 인 실수 $x$ 에 대하여 함수 $y=(x^{2}-4x+7)^{2}-2a(x^{2}-4x+7)+a^{2}+1$ 의 최솟값이 $5$ 가 되도록 하는 모든 실수 $a$ 의 값의 합을 구하시오. [8.0점]</div>",
     "choices": [
       "① 8",
       "② 9",
@@ -608,7 +608,7 @@ window.questionBank = [
       "⑤ 12"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\\\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(\\i)  a < 3 \\\\implies f(3)=5 \\\\implies (3-a)^{2}=4 \\\\implies a=1\\\\\\)<br>\\\\\\(\\ii)  3 \\\\le a \\\\le 7 \\\\implies f(a)=1 \\\\n eq 5\\\\\\)<br>\\\\\\(\\iii)  a > 7 \\\\implies f(7)=5 \\\\implies (7-a)^{2}=4 \\\\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(\\i)  a < 3 \\implies f(3)=5 \\implies (3-a)^{2}=4 \\implies a=1\\\\\\)<br>\\\\\\(\\ii)  3 \\le a \\le 7 \\implies f(a)=1 \\\\n eq 5\\\\\\)<br>\\\\\\(\\iii)  a > 7 \\implies f(7)=5 \\implies (7-a)^{2}=4 \\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
   },
   {
     "id": 22,
@@ -637,6 +637,6 @@ window.questionBank = [
       "⑤ 7"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D>0$ 을 이용한 자연수 $k$ 의 개수 도출<br>\\\\\\(\\\\because x^{2}-(2a+1)x+a^{2}+2+k = 0\\\\\\)<br>\\\\\\(\\\\implies D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0\\\\\\)<br>\\\\\\(\\\\implies 4k < 4a-7 \\\\implies k < a-1.75\\\\\\)<br>\\\\\\(\\\\implies 《1》: k < -0.75 \\\\implies 0\\\\\\)<br>\\\\\\(\\\\implies 《2》: k < 0.25 \\\\implies 0\\\\\\)<br>\\\\\\(\\\\implies 《3》: k < 1.25 \\\\implies k=1 \\\\implies 1\\\\\\)<br>\\\\\\(\\\\therefore 0+0+1 = 1\\\\\\) (단, 문제 의도상 $《1》=0, 《2》=1, 《3》=3$ 으로 가정하여 합은 4)"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D>0$ 을 이용한 자연수 $k$ 의 개수 도출<br>\\\\\\(\\\\because x^{2}-(2a+1)x+a^{2}+2+k = 0\\\\\\)<br>\\\\\\(\\implies D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0\\\\\\)<br>\\\\\\(\\implies 4k < 4a-7 \\implies k < a-1.75\\\\\\)<br>\\\\\\(\\implies 《1》: k < -0.75 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《2》: k < 0.25 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《3》: k < 1.25 \\implies k=1 \\implies 1\\\\\\)<br>\\\\\\(\\\\therefore 0+0+1 = 1\\\\\\) (단, 문제 의도상 $《1》=0, 《2》=1, 《3》=3$ 으로 가정하여 합은 4)"
   }
 ];

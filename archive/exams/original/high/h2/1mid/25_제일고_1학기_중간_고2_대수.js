@@ -133,7 +133,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","삼각함수","함수","조건해석","계산"],
     "wide": false,
-    "content": "다음을 만족시키는 $\theta$와 같은 사분면에 속하는 각은? (3.3점)<br>$\\sin \theta \\cos \theta > 0, \\sin \theta \tan \theta < 0$",
+    "content": "다음을 만족시키는 $\\theta$와 같은 사분면에 속하는 각은? (3.3점)<br>$\\sin \\theta \\cos \\theta > 0, \\sin \\theta \\tan \\theta < 0$",
     "choices": [
       "$-\\frac{9}{5}\\pi$",
       "$-\\frac{1}{4}\\pi$",
@@ -142,7 +142,7 @@ window.questionBank = [
       "$\\frac{7}{4}\\pi$"
     ],
     "answer": "④",
-    "solution": "<b>[논리 분석]</b> 삼각함수 부호를 통한 사분면 판정\n이유: $\\sin \theta \\cos \theta > 0$는 제1, 3사분면을 의미함\n근거: $\\sin \theta \tan \theta = \\frac{\\sin^2 \theta}{\\cos \theta} < 0$에서 $\\cos \theta < 0$이므로 제3사분면임\n결론적으로 제3사분면 각인 $\\frac{4}{3}\\pi$가 정답임"
+    "solution": "<b>[논리 분석]</b> 삼각함수 부호를 통한 사분면 판정\n이유: $\\sin \\theta \\cos \\theta > 0$는 제1, 3사분면을 의미함\n근거: $\\sin \\theta \\tan \\theta = \\frac{\\sin^2 \\theta}{\\cos \\theta} < 0$에서 $\\cos \\theta < 0$이므로 제3사분면임\n결론적으로 제3사분면 각인 $\\frac{4}{3}\\pi$가 정답임"
   },
   {
     "id": 7,

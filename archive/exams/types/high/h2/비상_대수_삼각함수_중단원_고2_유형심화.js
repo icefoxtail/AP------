@@ -89,7 +89,7 @@ window.questionBank = [
     content: "$0 < \\theta < \\pi$인 각 $\\theta$에 대하여 각 $\\theta$를 나타내는 동경과 각 $3\\theta$를 나타내는 동경이 $y$축에 대하여 대칭일 때, 모든 $\\theta$의 값의 합을 구하시오.",
     choices: [],
     answer: "$\\pi$",
-    solution: "[키포인트] 두 동경이 $y$축에 대하여 대칭이면 두 각의 합은 홀수배의 $\\pi$이다.\\n조건 정리: 각 $\\theta$와 각 $3\\theta$가 $y$축에 대하여 대칭이고 $0<\\theta<\\pi$이다.\\n풀이 방향: $\\theta+3\\theta=(2n+1)\\pi$로 두고 범위 조건을 적용한다.\\n정석 풀이: $4\\theta=(2n+1)\pi$이므로 $\\theta=\\dfrac{2n+1}{4}\\pi$이다.\\n$0<\\theta<\\pi$이므로 $0<\\dfrac{2n+1}{4}<1$이고, $0<2n+1<4$이다.\\n가능한 홀수는 $1,3$이므로 $\\theta=\\dfrac\\pi4,\\ \\dfrac{3\\pi}{4}$이다.\\n따라서 모든 $\\theta$의 값의 합은 $\\dfrac\\pi4+\\dfrac{3\\pi}{4}=\\pi$이다.\\n따라서 구하는 값은 $\\pi$이다."
+    solution: "[키포인트] 두 동경이 $y$축에 대하여 대칭이면 두 각의 합은 홀수배의 $\\pi$이다.\\n조건 정리: 각 $\\theta$와 각 $3\\theta$가 $y$축에 대하여 대칭이고 $0<\\theta<\\pi$이다.\\n풀이 방향: $\\theta+3\\theta=(2n+1)\\pi$로 두고 범위 조건을 적용한다.\\n정석 풀이: $4\\theta=(2n+1)\\pi$이므로 $\\theta=\\dfrac{2n+1}{4}\\pi$이다.\\n$0<\\theta<\\pi$이므로 $0<\\dfrac{2n+1}{4}<1$이고, $0<2n+1<4$이다.\\n가능한 홀수는 $1,3$이므로 $\\theta=\\dfrac\\pi4,\\ \\dfrac{3\\pi}{4}$이다.\\n따라서 모든 $\\theta$의 값의 합은 $\\dfrac\\pi4+\\dfrac{3\\pi}{4}=\\pi$이다.\\n따라서 구하는 값은 $\\pi$이다."
   },
   {
     id: 6,
@@ -125,7 +125,7 @@ window.questionBank = [
     content: "각 $\\theta$가 제3사분면의 각일 때, $\\sqrt{\\cos^2 \\theta} - \\sqrt{(\\sin \\theta - \\tan \\theta)^2} + | \\sin \\theta + \\cos \\theta |$를 간단히 하시오.",
     choices: [],
     answer: "$-2\\cos \\theta - \\tan \\theta$",
-    solution: "[키포인트] 제3사분면에서 $\\sin\\theta<0$, $\\cos\\theta<0$, $\\tan\\theta>0$임을 이용하여 절댓값을 푼다.\\n조건 정리: $\\theta$는 제3사분면의 각이다.\\n풀이 방향: 각 항을 절댓값으로 바꾸고 부호를 판단한다.\\n정석 풀이: $\\sqrt{\\cos^2\\theta}=|\\cos\\theta|=-\\cos\\theta$이다.\\n또 $\\sqrt{(\\sin\\theta-\\tan\\theta)^2}=|\\sin\\theta-\\tan\\theta|$이다. 제3사분면에서 $\\sin\\theta<0$, $\\tan\\theta>0$이므로 $\\sin\\theta-\\tan\\theta<0$이다. 따라서 $|\\sin\\theta-\\tan\\theta|=-\\sin\\theta+\\tan\\theta$이다.\\n또 $\\sin\\theta+\cos\\theta<0$이므로 $|\\sin\\theta+\cos\\theta|=-\\sin\\theta-\\cos\\theta$이다.\\n주어진 식은 $(-\\cos\\theta)-(-\\sin\\theta+\\tan\\theta)+(-\\sin\\theta-\\cos\\theta)$이다.\\n정리하면 $-\\cos\\theta+\\sin\\theta-\\tan\\theta-\\sin\\theta-\\cos\\theta=-2\\cos\\theta-\\tan\\theta$이다.\\n따라서 구하는 값은 $-2\\cos\\theta-\\tan\\theta$이다."
+    solution: "[키포인트] 제3사분면에서 $\\sin\\theta<0$, $\\cos\\theta<0$, $\\tan\\theta>0$임을 이용하여 절댓값을 푼다.\\n조건 정리: $\\theta$는 제3사분면의 각이다.\\n풀이 방향: 각 항을 절댓값으로 바꾸고 부호를 판단한다.\\n정석 풀이: $\\sqrt{\\cos^2\\theta}=|\\cos\\theta|=-\\cos\\theta$이다.\\n또 $\\sqrt{(\\sin\\theta-\\tan\\theta)^2}=|\\sin\\theta-\\tan\\theta|$이다. 제3사분면에서 $\\sin\\theta<0$, $\\tan\\theta>0$이므로 $\\sin\\theta-\\tan\\theta<0$이다. 따라서 $|\\sin\\theta-\\tan\\theta|=-\\sin\\theta+\\tan\\theta$이다.\\n또 $\\sin\\theta+\\cos\\theta<0$이므로 $|\\sin\\theta+\\cos\\theta|=-\\sin\\theta-\\cos\\theta$이다.\\n주어진 식은 $(-\\cos\\theta)-(-\\sin\\theta+\\tan\\theta)+(-\\sin\\theta-\\cos\\theta)$이다.\\n정리하면 $-\\cos\\theta+\\sin\\theta-\\tan\\theta-\\sin\\theta-\\cos\\theta=-2\\cos\\theta-\\tan\\theta$이다.\\n따라서 구하는 값은 $-2\\cos\\theta-\\tan\\theta$이다."
   },
   {
     id: 8,
@@ -143,7 +143,7 @@ window.questionBank = [
     content: "$\\pi < \\theta < \\frac{3}{2}\\pi$이고 $\\tan \\theta = \\frac{3}{4}$일 때, $\\frac{1}{\\sin \\theta + \\cos \\theta} + \\frac{1}{\\sin \\theta - \\cos \\theta}$의 값을 구하시오.",
     choices: [],
     answer: "$\\frac{30}{7}$",
-    solution: "[키포인트] 제3사분면에서 $\\sin\\theta$와 $\\cos\\theta$가 모두 음수임을 반영한다.\\n조건 정리: $\\pi<\\theta<\\dfrac32\\pi$이므로 제3사분면이고, $\\tan\\theta=\\dfrac34$이다.\\n풀이 방향: $\\sin\\theta$, $\\cos\\theta$를 구한 뒤 주어진 식을 통분하여 계산한다.\\n정석 풀이: $\\tan\\theta=\\dfrac34$이고 제3사분면이므로 $\\sin\\theta=-\\dfrac35$, $\\cos\\theta=-\\dfrac45$이다.\\n주어진 식을 통분하면 $\\dfrac{1}{\\sin\\theta+\\cos\\theta}+\\dfrac{1}{\\sin\\theta-\cos\\theta}=\\dfrac{2\\sin\\theta}{\\sin^2\\theta-\cos^2\\theta}$이다.\\n분자는 $2\\sin\\theta=-\\dfrac65$이고, 분모는 $\\sin^2\\theta-\cos^2\\theta=\\dfrac9{25}-\\dfrac{16}{25}=-\\dfrac7{25}$이다.\\n따라서 값은 $\\dfrac{-6/5}{-7/25}=\\dfrac{30}{7}$이다.\\n따라서 구하는 값은 $\\frac{30}{7}$이다."
+    solution: "[키포인트] 제3사분면에서 $\\sin\\theta$와 $\\cos\\theta$가 모두 음수임을 반영한다.\\n조건 정리: $\\pi<\\theta<\\dfrac32\\pi$이므로 제3사분면이고, $\\tan\\theta=\\dfrac34$이다.\\n풀이 방향: $\\sin\\theta$, $\\cos\\theta$를 구한 뒤 주어진 식을 통분하여 계산한다.\\n정석 풀이: $\\tan\\theta=\\dfrac34$이고 제3사분면이므로 $\\sin\\theta=-\\dfrac35$, $\\cos\\theta=-\\dfrac45$이다.\\n주어진 식을 통분하면 $\\dfrac{1}{\\sin\\theta+\\cos\\theta}+\\dfrac{1}{\\sin\\theta-\\cos\\theta}=\\dfrac{2\\sin\\theta}{\\sin^2\\theta-\\cos^2\\theta}$이다.\\n분자는 $2\\sin\\theta=-\\dfrac65$이고, 분모는 $\\sin^2\\theta-\\cos^2\\theta=\\dfrac9{25}-\\dfrac{16}{25}=-\\dfrac7{25}$이다.\\n따라서 값은 $\\dfrac{-6/5}{-7/25}=\\dfrac{30}{7}$이다.\\n따라서 구하는 값은 $\\frac{30}{7}$이다."
   },
   {
     id: 9,
@@ -161,7 +161,7 @@ window.questionBank = [
     content: "$\\sin \\theta + \\cos \\theta = \\frac{\\sqrt{5}}{5}$일 때, $\\sin^3 \\theta + \\cos^3 \\theta$의 값을 구하시오. (단, $\\frac{\\pi}{2} < \\theta < \\pi$)",
     choices: [],
     answer: "$\\frac{7\\sqrt{5}}{25}$",
-    solution: "[키포인트] $\\sin\\theta+\\cos\\theta$를 제곱하여 $\\sin\\theta\\cos\\theta$를 먼저 구한다.\\n조건 정리: $\\sin\\theta+\\cos\\theta=\\dfrac{\\sqrt5}{5}$이고 $\\theta$는 제2사분면의 각이다.\\n풀이 방향: 세제곱 합 공식 $a^3+b^3=(a+b)(a^2-ab+b^2)$를 이용한다.\\n정석 풀이: 양변을 제곱하면 $(\\sin\\theta+\cos\\theta)^2=\\dfrac15$이다.\\n즉 $1+2\\sin\\theta\\cos\\theta=\\dfrac15$이므로 $\\sin\\theta\\cos\\theta=-\\dfrac25$이다.\\n이제 $\\sin^3\\theta+\cos^3\\theta=(\\sin\\theta+\cos\\theta)(\\sin^2\\theta-\\sin\\theta\\cos\\theta+\cos^2\\theta)$이다.\\n따라서 $\\sin^3\\theta+\cos^3\\theta=(\\sin\\theta+\cos\\theta)(1-\\sin\\theta\\cos\\theta)$이다.\\n값을 대입하면 $\\dfrac{\\sqrt5}{5}\\left(1+\\dfrac25\\right)=\\dfrac{\\sqrt5}{5}\\cdot\\dfrac75=\\dfrac{7\\sqrt5}{25}$이다.\\n따라서 구하는 값은 $\\frac{7\\sqrt{5}}{25}$이다."
+    solution: "[키포인트] $\\sin\\theta+\\cos\\theta$를 제곱하여 $\\sin\\theta\\cos\\theta$를 먼저 구한다.\\n조건 정리: $\\sin\\theta+\\cos\\theta=\\dfrac{\\sqrt5}{5}$이고 $\\theta$는 제2사분면의 각이다.\\n풀이 방향: 세제곱 합 공식 $a^3+b^3=(a+b)(a^2-ab+b^2)$를 이용한다.\\n정석 풀이: 양변을 제곱하면 $(\\sin\\theta+\\cos\\theta)^2=\\dfrac15$이다.\\n즉 $1+2\\sin\\theta\\cos\\theta=\\dfrac15$이므로 $\\sin\\theta\\cos\\theta=-\\dfrac25$이다.\\n이제 $\\sin^3\\theta+\\cos^3\\theta=(\\sin\\theta+\\cos\\theta)(\\sin^2\\theta-\\sin\\theta\\cos\\theta+\\cos^2\\theta)$이다.\\n따라서 $\\sin^3\\theta+\\cos^3\\theta=(\\sin\\theta+\\cos\\theta)(1-\\sin\\theta\\cos\\theta)$이다.\\n값을 대입하면 $\\dfrac{\\sqrt5}{5}\\left(1+\\dfrac25\\right)=\\dfrac{\\sqrt5}{5}\\cdot\\dfrac75=\\dfrac{7\\sqrt5}{25}$이다.\\n따라서 구하는 값은 $\\frac{7\\sqrt{5}}{25}$이다."
   },
   {
     id: 10,
@@ -197,7 +197,7 @@ window.questionBank = [
     content: "$\\theta = \\frac{\\pi}{10}$일 때, $\\sin^2 \\theta + \\sin^2 2\\theta + \\sin^2 3\\theta + \\sin^2 4\\theta + \\sin^2 5\\theta$의 값을 구하시오.",
     choices: [],
     answer: "$3$",
-    solution: "[키포인트] $5\\theta=\\dfrac\\pi2$이므로 여각 관계를 이용하여 짝을 만든다.\\n조건 정리: $\\theta=\\dfrac\\pi{10}$이다.\\n풀이 방향: $\\sin^2 4\\theta=\\cos^2\\theta$, $\\sin^2 3\\theta=\\cos^2 2\\theta$를 이용한다.\\n정석 풀이: $5\\theta=\\dfrac\\pi2$이므로 $\\sin^2 5\\theta=1$이다.\\n또 $4\\theta=\\dfrac\\pi2-\\theta$이므로 $\\sin^2 4\\theta=\\cos^2\\theta$이고, $3\\theta=\\dfrac\\pi2-2\\theta$이므로 $\\sin^2 3\\theta=\\cos^2 2\\theta$이다.\\n따라서 주어진 식은 $\\sin^2\\theta+\\sin^2 2\\theta+\\cos^2 2\\theta+\\cos^2\\theta+1$이다.\\n이는 $(\\sin^2\\theta+\cos^2\\theta)+(\\sin^2 2\\theta+\cos^2 2\\theta)+1=1+1+1=3$이다.\\n따라서 구하는 값은 $3$이다."
+    solution: "[키포인트] $5\\theta=\\dfrac\\pi2$이므로 여각 관계를 이용하여 짝을 만든다.\\n조건 정리: $\\theta=\\dfrac\\pi{10}$이다.\\n풀이 방향: $\\sin^2 4\\theta=\\cos^2\\theta$, $\\sin^2 3\\theta=\\cos^2 2\\theta$를 이용한다.\\n정석 풀이: $5\\theta=\\dfrac\\pi2$이므로 $\\sin^2 5\\theta=1$이다.\\n또 $4\\theta=\\dfrac\\pi2-\\theta$이므로 $\\sin^2 4\\theta=\\cos^2\\theta$이고, $3\\theta=\\dfrac\\pi2-2\\theta$이므로 $\\sin^2 3\\theta=\\cos^2 2\\theta$이다.\\n따라서 주어진 식은 $\\sin^2\\theta+\\sin^2 2\\theta+\\cos^2 2\\theta+\\cos^2\\theta+1$이다.\\n이는 $(\\sin^2\\theta+\\cos^2\\theta)+(\\sin^2 2\\theta+\\cos^2 2\\theta)+1=1+1+1=3$이다.\\n따라서 구하는 값은 $3$이다."
   },
   {
     id: 12,
@@ -215,7 +215,7 @@ window.questionBank = [
     content: "$\\frac{\\pi}{2} < x < \\pi$에서 $2 \\sin^2 x + 5 \\cos x + 1 = 0$의 해를 $\\alpha$라 할 때, $\\tan(\\pi - \\alpha)$의 값을 구하시오.",
     choices: [],
     answer: "$\\sqrt{3}$",
-    solution: "[키포인트] $\\sin^2x=1-\\cos^2x$로 바꾸어 $\\cos x$에 대한 방정식으로 푼다.\\n조건 정리: $\\dfrac\\pi2<x<\\pi$이므로 제2사분면이다.\\n풀이 방향: 먼저 $\\cos\\alpha$를 구하고, 각을 결정한 뒤 $\\tan(\\pi-\\alpha)$를 계산한다.\\n정석 풀이: $2\\sin^2x+5\\cos x+1=0$에 $\\sin^2x=1-\cos^2x$를 대입하면 $2(1-\cos^2x)+5\\cos x+1=0$이다.\\n정리하면 $2\\cos^2x-5\\cos x-3=0$이고, $(\\cos x-3)(2\\cos x+1)=0$이다.\\n$-1\\le\\cos x\\le1$이므로 $\\cos x=-\\dfrac12$이다.\\n제2사분면에서 이를 만족하는 해는 $\\alpha=\\dfrac{2\\pi}{3}$이다.\\n따라서 $\\tan(\\pi-\alpha)=\\tan\\left(\\dfrac\\pi3\\right)=\\sqrt3$이다.\\n따라서 구하는 값은 $\\sqrt3$이다."
+    solution: "[키포인트] $\\sin^2x=1-\\cos^2x$로 바꾸어 $\\cos x$에 대한 방정식으로 푼다.\\n조건 정리: $\\dfrac\\pi2<x<\\pi$이므로 제2사분면이다.\\n풀이 방향: 먼저 $\\cos\\alpha$를 구하고, 각을 결정한 뒤 $\\tan(\\pi-\\alpha)$를 계산한다.\\n정석 풀이: $2\\sin^2x+5\\cos x+1=0$에 $\\sin^2x=1-\\cos^2x$를 대입하면 $2(1-\\cos^2x)+5\\cos x+1=0$이다.\\n정리하면 $2\\cos^2x-5\\cos x-3=0$이고, $(\\cos x-3)(2\\cos x+1)=0$이다.\\n$-1\\le\\cos x\\le1$이므로 $\\cos x=-\\dfrac12$이다.\\n제2사분면에서 이를 만족하는 해는 $\\alpha=\\dfrac{2\\pi}{3}$이다.\\n따라서 $\\tan(\\pi-\\alpha)=\\tan\\left(\\dfrac\\pi3\\right)=\\sqrt3$이다.\\n따라서 구하는 값은 $\\sqrt3$이다."
   },
   {
     id: 13,
@@ -251,7 +251,7 @@ window.questionBank = [
     content: "$0 \\le x \\le 2$일 때, 방정식 $\\sin \\pi x = \\frac{2}{3}$의 두 실근을 $\\alpha, \\beta$라 하고, $\\sin \\pi x = -\\frac{2}{3}$의 두 실근을 $\\gamma, \\delta$라 하자. $\\alpha + \\beta + \\gamma + \\delta$의 값을 구하시오.",
     choices: [],
     answer: "$4$",
-    solution: "[키포인트] 한 주기 안에서 $\\sin\\pi x$의 그래프 대칭성을 이용한다.\\n조건 정리: $0\\le x\\le2$에서 $y=\\sin\\pi x$의 주기는 $2$이다.\\n풀이 방향: 양수 구간의 두 해와 음수 구간의 두 해를 각각 대칭으로 묶는다.\\n정석 풀이: $0\\le x\\le1$에서 $\\sin\\pi x>0$이고, $\\sin\\pi x=\\dfrac23$의 두 실근 $\\alpha,\\beta$는 $x=\\dfrac12$에 대하여 대칭이다. 따라서 $\\alpha+\\beta=1$이다.\\n$1\\le x\\le2$에서 $\\sin\\pi x<0$이고, $\\sin\\pi x=-\\dfrac23$의 두 실근 $\\gamma,\\delta$는 $x=\\dfrac32$에 대하여 대칭이다. 따라서 $\\gamma+\\delta=3$이다.\\n그러므로 $\\alpha+\\beta+\gamma+\delta=1+3=4$이다.\\n따라서 구하는 값은 $4$이다."
+    solution: "[키포인트] 한 주기 안에서 $\\sin\\pi x$의 그래프 대칭성을 이용한다.\\n조건 정리: $0\\le x\\le2$에서 $y=\\sin\\pi x$의 주기는 $2$이다.\\n풀이 방향: 양수 구간의 두 해와 음수 구간의 두 해를 각각 대칭으로 묶는다.\\n정석 풀이: $0\\le x\\le1$에서 $\\sin\\pi x>0$이고, $\\sin\\pi x=\\dfrac23$의 두 실근 $\\alpha,\\beta$는 $x=\\dfrac12$에 대하여 대칭이다. 따라서 $\\alpha+\\beta=1$이다.\\n$1\\le x\\le2$에서 $\\sin\\pi x<0$이고, $\\sin\\pi x=-\\dfrac23$의 두 실근 $\\gamma,\\delta$는 $x=\\dfrac32$에 대하여 대칭이다. 따라서 $\\gamma+\\delta=3$이다.\\n그러므로 $\\alpha+\\beta+\\gamma+\delta=1+3=4$이다.\\n따라서 구하는 값은 $4$이다."
   },
   {
     id: 15,
@@ -323,6 +323,6 @@ window.questionBank = [
     content: "$\\frac{\\pi}{4} < x < \\frac{\\pi}{2}$일 때, $A = \\sin(\\cos x)$, $B = \\cos(\\sin x)$, $C = \\cos x$의 대소 관계를 비교하시오.",
     choices: [],
     answer: "$A < C < B$",
-    solution: "[키포인트] $0<t<1$에서 $\\sin t<t$이고, $0<t<\\dfrac\\pi2$에서 $\\cos t$의 값을 비교한다.\\n조건 정리: $\\dfrac\\pi4<x<\\dfrac\\pi2$이므로 $0<\\cos x<\\sin x<1$이다.\\n풀이 방향: 먼저 $A$와 $C$를 비교하고, 다음으로 $C$와 $B$를 비교한다.\\n정석 풀이: $0<\\cos x<1$이므로 $\\sin(\\cos x)<\\cos x$이다. 따라서 $A<C$이다.\\n또 $\\dfrac\\pi4<x<\\dfrac\\pi2$에서 $0<\\cos x<\\dfrac{\\sqrt2}{2}$이고, $\\dfrac{\\sqrt2}{2}<\\sin x<1$이다.\\n$B=\\cos(\sin x)$에서 $\\sin x<1<\\dfrac\\pi2$이므로 $B=\\cos(\sin x)>\\cos 1$이다. 한편 $C=\cos x<\\dfrac{\\sqrt2}{2}$이고 $\\cos 1\\approx0.54$이므로 직접 수치 비교만으로는 부족하다.\\n보다 안정적으로 함수 $g(t)=\\cos t-t$를 보자. $0<t<1$에서 $g'(t)=-\\sin t-1<0$이므로 감소함수이고, $g(1)=\\cos1-1<0$이다. 따라서 $g(t)>0$이 되는 구간이 존재한다. 그런데 $t=\\sin x$에 대해 $\\cos(\sin x)>\\cos x$는 감소함수 $\\cos$에서 $\\sin x<x$와 동치이다. $0<x<\\dfrac\\pi2$에서 $\\sin x<x$이므로 $\\cos(\sin x)>\\cos x$이다. 따라서 $C<B$이다.\\n종합하면 $A<C<B$이다.\\n따라서 대소 관계는 $A < C < B$이다."
+    solution: "[키포인트] $0<t<1$에서 $\\sin t<t$이고, $0<t<\\dfrac\\pi2$에서 $\\cos t$의 값을 비교한다.\\n조건 정리: $\\dfrac\\pi4<x<\\dfrac\\pi2$이므로 $0<\\cos x<\\sin x<1$이다.\\n풀이 방향: 먼저 $A$와 $C$를 비교하고, 다음으로 $C$와 $B$를 비교한다.\\n정석 풀이: $0<\\cos x<1$이므로 $\\sin(\\cos x)<\\cos x$이다. 따라서 $A<C$이다.\\n또 $\\dfrac\\pi4<x<\\dfrac\\pi2$에서 $0<\\cos x<\\dfrac{\\sqrt2}{2}$이고, $\\dfrac{\\sqrt2}{2}<\\sin x<1$이다.\\n$B=\\cos(\\sin x)$에서 $\\sin x<1<\\dfrac\\pi2$이므로 $B=\\cos(\\sin x)>\\cos 1$이다. 한편 $C=\\cos x<\\dfrac{\\sqrt2}{2}$이고 $\\cos 1\\approx0.54$이므로 직접 수치 비교만으로는 부족하다.\\n보다 안정적으로 함수 $g(t)=\\cos t-t$를 보자. $0<t<1$에서 $g'(t)=-\\sin t-1<0$이므로 감소함수이고, $g(1)=\\cos1-1<0$이다. 따라서 $g(t)>0$이 되는 구간이 존재한다. 그런데 $t=\\sin x$에 대해 $\\cos(\\sin x)>\\cos x$는 감소함수 $\\cos$에서 $\\sin x<x$와 동치이다. $0<x<\\dfrac\\pi2$에서 $\\sin x<x$이므로 $\\cos(\\sin x)>\\cos x$이다. 따라서 $C<B$이다.\\n종합하면 $A<C<B$이다.\\n따라서 대소 관계는 $A < C < B$이다."
   }
 ];
