@@ -1241,7 +1241,19 @@ function returnStudentEditToView(sid, options = {}) {
 }
 
 async function openStudentDetail(sid, options = {}) {
-    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const studentId = String(sid || '');
+    const sources = [
+        state?.db?.students,
+        state?.allDb?.students,
+        state?.db?.timetable_students,
+        state?.allDb?.timetable_students
+    ];
+    let sourceStudent = null;
+    for (const source of sources) {
+        sourceStudent = (Array.isArray(source) ? source : []).find(st => String(st.id) === studentId);
+        if (sourceStudent) break;
+    }
+    const s = mergeStudentIntoState(sourceStudent);
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
     const mode = options.mode === 'edit' ? 'edit' : 'view';
     if (!state.ui) state.ui = {};
@@ -1310,6 +1322,13 @@ function mergeStudentIntoState(student) {
     const idx = state.db.students.findIndex(s => String(s.id) === sid);
     if (idx > -1) state.db.students[idx] = { ...state.db.students[idx], ...student };
     else state.db.students.push(student);
+    ['db', 'allDb'].forEach(key => {
+        if (!state[key]) return;
+        if (!Array.isArray(state[key].timetable_students)) state[key].timetable_students = [];
+        const ttIdx = state[key].timetable_students.findIndex(s => String(s.id) === sid);
+        if (ttIdx > -1) state[key].timetable_students[ttIdx] = { ...state[key].timetable_students[ttIdx], ...student };
+        else if (state[key].timetable_students.length > 0 || key === 'db') state[key].timetable_students.push(student);
+    });
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
     return student;
 }
@@ -1321,6 +1340,12 @@ function mergeClassStudentIntoState(classStudent) {
     const cid = String(classStudent.class_id || '');
     state.db.class_students = state.db.class_students.filter(m => String(m.student_id) !== sid);
     if (cid) state.db.class_students.push({ ...classStudent, class_id: cid, student_id: sid });
+    ['db', 'allDb'].forEach(key => {
+        if (!state[key]) return;
+        if (!Array.isArray(state[key].timetable_class_students)) state[key].timetable_class_students = [];
+        state[key].timetable_class_students = state[key].timetable_class_students.filter(m => String(m.student_id) !== sid);
+        if (cid) state[key].timetable_class_students.push({ ...classStudent, class_id: cid, student_id: sid });
+    });
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
     return cid ? classStudent : null;
 }
