@@ -169,8 +169,8 @@
             position: absolute;
             right: 0;
             top: 44px;
-            width: 380px;
-            min-height: 188px;
+            width: 430px;
+            min-height: 270px;
             border: 1px solid rgba(147,197,253,0.22);
             border-radius: 12px;
             background: rgba(15, 23, 42, 0.54);
@@ -223,14 +223,14 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            max-height: 120px;
+            max-height: 202px;
             overflow: auto;
             padding-right: 2px;
         }
 
         .assignment-board-row {
             display: grid;
-            grid-template-columns: minmax(0, 1.25fr) 74px 58px 58px;
+            grid-template-columns: minmax(0, 1.35fr) 72px minmax(86px, 0.8fr);
             gap: 8px;
             align-items: center;
             min-height: 28px;
@@ -976,12 +976,7 @@
             }
 
             .assignment-board-row {
-                grid-template-columns: minmax(0, 1fr) 72px;
-            }
-
-            .assignment-board-row span:nth-child(3),
-            .assignment-board-row span:nth-child(4) {
-                display: none;
+                grid-template-columns: minmax(0, 1fr) 56px minmax(76px, 0.75fr);
             }
         }
     </style>
@@ -1072,7 +1067,7 @@
                 <div class="assignment-board-title" id="assignmentBoardTitle">학년 출제보드</div>
                 <input class="assignment-board-date" id="assignmentBoardDate" type="date" onchange="onAssignmentBoardDateChange()">
             </div>
-            <div class="assignment-board-range" id="assignmentBoardRange">기준일 앞뒤 2주</div>
+            <div class="assignment-board-range" id="assignmentBoardRange">기준일 기준 최근 30일</div>
             <div class="assignment-board-list" id="assignmentBoardList">
                 <div class="assignment-board-empty">학년을 선택하면 출제 기록이 표시됩니다.</div>
             </div>
@@ -1323,11 +1318,39 @@ function getArchiveBoardClassRowsForGrade(grade) {
     return (assignmentBoardState.classes || []).filter(row => getArchiveBoardClassGrade(row) === grade);
 }
 
-function flattenArchiveBoardAssignments(grade) {
-    const start = archiveBoardAddDays(assignmentBoardState.date, -14);
-    const end = archiveBoardAddDays(assignmentBoardState.date, 14);
+function getArchiveBoardAssignmentTitle(row) {
+    return String(row?.exam_title || row?.title || row?.archive_title || row?.archive_file || row?.file_name || '시험지').trim();
+}
+
+function getArchiveBoardPaperKey(row) {
+    const file = compactText(row?.archive_file || row?.file_name || row?.source_file || '');
+    const title = compactText(getArchiveBoardAssignmentTitle(row));
+    const count = String(row?.question_count || row?.questionCount || row?.total_questions || '').trim();
+    if (file) return `file:${file}|q:${count}`;
+    return `title:${title}|q:${count}`;
+}
+
+function getArchiveBoardTeacherKey(cls, row) {
+    return String(
+        row?.teacher_id ||
+        row?.teacherId ||
+        cls?.teacher_id ||
+        cls?.teacherId ||
+        compactText(getArchiveBoardTeacherName(cls) || row?.teacher_name || row?.teacherName || '')
+    ).trim();
+}
+
+function getArchiveBoardClassKey(cls, teacherKey) {
+    const id = String(cls?.id || '').trim();
+    if (id) return id;
+    return `${teacherKey}:${compactText(getArchiveBoardClassName(cls))}`;
+}
+
+function groupArchiveBoardAssignments(grade) {
+    const start = archiveBoardAddDays(assignmentBoardState.date, -30);
+    const end = assignmentBoardState.date;
     const classRows = getArchiveBoardClassRowsForGrade(grade);
-    const rows = [];
+    const groups = new Map();
 
     classRows.forEach(cls => {
         const classId = String(cls.id || '');
@@ -1335,20 +1358,52 @@ function flattenArchiveBoardAssignments(grade) {
         assignments.forEach(row => {
             const date = String(row.exam_date || row.date || '').slice(0, 10);
             if (!date || date < start || date > end) return;
-            rows.push({
-                title: row.exam_title || row.title || row.archive_file || '시험지',
-                date,
-                teacher: getArchiveBoardTeacherName(cls) || row.teacher_name || '',
-                className: getArchiveBoardClassName(cls)
-            });
+            const paperKey = getArchiveBoardPaperKey(row);
+            const teacher = getArchiveBoardTeacherName(cls) || row.teacher_name || row.teacherName || '-';
+            const teacherKey = getArchiveBoardTeacherKey(cls, row) || compactText(teacher);
+            const groupKey = `${paperKey}::teacher:${teacherKey}`;
+
+            if (!groups.has(groupKey)) {
+                groups.set(groupKey, {
+                    title: getArchiveBoardAssignmentTitle(row),
+                    paperKey,
+                    teacher,
+                    teacherKey,
+                    classMap: new Map(),
+                    assignments: [],
+                    firstDate: date,
+                    lastDate: date
+                });
+            }
+
+            const group = groups.get(groupKey);
+            const classKey = getArchiveBoardClassKey(cls, teacherKey);
+            if (!group.classMap.has(classKey)) {
+                group.classMap.set(classKey, getArchiveBoardClassName(cls));
+            }
+            group.assignments.push({ classId, className: getArchiveBoardClassName(cls), teacher, date, row });
+            if (date < group.firstDate) group.firstDate = date;
+            if (date > group.lastDate) group.lastDate = date;
         });
     });
 
-    return rows.sort((a, b) =>
-        String(a.date || '').localeCompare(String(b.date || '')) ||
+    return [...groups.values()].map(group => {
+        const classNames = [...group.classMap.values()].sort((a, b) => String(a).localeCompare(String(b), 'ko'));
+        return {
+            title: group.title,
+            paperKey: group.paperKey,
+            teacher: group.teacher,
+            teacherKey: group.teacherKey,
+            classLabel: classNames.join(', '),
+            classCount: classNames.length,
+            assignments: group.assignments,
+            firstDate: group.firstDate,
+            lastDate: group.lastDate
+        };
+    }).sort((a, b) =>
+        String(a.title || '').localeCompare(String(b.title || ''), 'ko') ||
         String(a.teacher || '').localeCompare(String(b.teacher || ''), 'ko') ||
-        String(a.className || '').localeCompare(String(b.className || ''), 'ko') ||
-        String(a.title || '').localeCompare(String(b.title || ''), 'ko')
+        String(a.classLabel || '').localeCompare(String(b.classLabel || ''), 'ko')
     );
 }
 
@@ -1368,25 +1423,24 @@ function renderAssignmentBoard(message) {
     board.classList.add('open');
     title.textContent = `${selectedGrade} 출제보드`;
     dateInput.value = assignmentBoardState.date;
-    range.textContent = `${archiveBoardAddDays(assignmentBoardState.date, -14)} ~ ${archiveBoardAddDays(assignmentBoardState.date, 14)}`;
+    range.textContent = `${archiveBoardAddDays(assignmentBoardState.date, -30)} ~ ${assignmentBoardState.date}`;
 
     if (message) {
         list.innerHTML = `<div class="assignment-board-empty">${archiveBoardEscape(message)}</div>`;
         return;
     }
 
-    const rows = flattenArchiveBoardAssignments(selectedGrade);
+    const rows = groupArchiveBoardAssignments(selectedGrade);
     if (!rows.length) {
         list.innerHTML = '<div class="assignment-board-empty">해당 기간 출제 기록이 없습니다.</div>';
         return;
     }
 
     list.innerHTML = rows.map(row => `
-        <div class="assignment-board-row" title="${archiveBoardEscape(`${row.title} | ${row.date} | ${row.teacher || '-'} | ${row.className || '-'}`)}">
+        <div class="assignment-board-row" title="${archiveBoardEscape(`${row.title} | ${row.teacher || '-'} | ${row.classLabel || '-'} | ${row.firstDate} ~ ${row.lastDate}`)}">
             <span>${archiveBoardEscape(row.title)}</span>
-            <span>${archiveBoardEscape(row.date)}</span>
             <span>${archiveBoardEscape(row.teacher || '-')}</span>
-            <span>${archiveBoardEscape(row.className || '-')}</span>
+            <span>${archiveBoardEscape(row.classLabel || '-')}</span>
         </div>
     `).join('');
 }
@@ -1981,11 +2035,28 @@ function resolveExamQuestionCountForAssignment(item) {
     return questionCount;
 }
 
+function encodeIndexBasicAuth(value) {
+    const str = String(value || '');
+    try {
+        return btoa(unescape(encodeURIComponent(str)));
+    } catch (e) {
+        return btoa(str);
+    }
+}
+
 function getIndexAssignmentAuthHeader() {
     try {
         const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session?.login_id || !session?.raw_password) return null;
-        return { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+        if (!session) return null;
+        if (session.session_token) {
+            return { 'Authorization': 'Bearer ' + session.session_token };
+        }
+
+        const mem = window.__APMATH_AUTH_MEMORY || {};
+        const loginId = mem.login_id || session.login_id || session.loginId;
+        const rawPassword = mem.raw_password || session.raw_password;
+        if (!loginId || !rawPassword) return null;
+        return { 'Authorization': 'Basic ' + encodeIndexBasicAuth(`${loginId}:${rawPassword}`) };
     } catch(e) {
         return null;
     }
@@ -2083,10 +2154,9 @@ async function openClassSelectionModalForIndex(item, qpp) {
     body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
 
     // [5G] APMATH_SESSION 인증 정보 로드
-    let authHeader = {};
+    let authHeader = getIndexAssignmentAuthHeader();
     try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session || !session.login_id || !session.raw_password) {
+        if (!authHeader) {
             body.innerHTML = `
                 <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
                     <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
@@ -2097,7 +2167,6 @@ async function openClassSelectionModalForIndex(item, qpp) {
                 </div>`;
             return;
         }
-        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
     } catch(e) {
         body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">오류가 발생했습니다. 새로고침 후 다시 시도하세요.</div>';
         return;
@@ -2208,7 +2277,7 @@ async function doApmathLoginAndLoadGrades(e) {
         });
         const data = await res.json();
         if (!data.success) { if (errEl) errEl.innerText = '아이디 또는 비밀번호가 맞지 않습니다.'; return; }
-        localStorage.setItem('APMATH_SESSION', JSON.stringify({ login_id: loginId, raw_password: pw, name: data.name, role: data.role }));
+        localStorage.setItem('APMATH_SESSION', JSON.stringify({ login_id: loginId, raw_password: pw, name: data.name, role: data.role, session_token: data.session_token || '' }));
         openGradeSelectionModalForIndex(window._pendingClassSelectItem, window._pendingClassSelectQpp);
     } catch(err) {
         if (errEl) errEl.innerText = '서버 연결 실패. 다시 시도하세요.';
@@ -2230,7 +2299,7 @@ async function doApmathLoginAndLoadClasses(e) {
         });
         const data = await res.json();
         if (!data.success) { if (errEl) errEl.innerText = '아이디 또는 비밀번호가 맞지 않습니다.'; return; }
-        localStorage.setItem('APMATH_SESSION', JSON.stringify({ login_id: loginId, raw_password: pw, name: data.name, role: data.role }));
+        localStorage.setItem('APMATH_SESSION', JSON.stringify({ login_id: loginId, raw_password: pw, name: data.name, role: data.role, session_token: data.session_token || '' }));
         openClassSelectionModalForIndex(window._pendingClassSelectItem, window._pendingClassSelectQpp);
     } catch(err) {
         if (errEl) errEl.innerText = '서버 연결 실패. 다시 시도하세요.';
