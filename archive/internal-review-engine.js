@@ -323,6 +323,7 @@ function updateUnsavedBadge() {
 }
 
 function hasUnsavedChanges() {
+  reconcileModifiedIds();
   return state.modifiedIds.size > 0 || state.removedItems.length > 0;
 }
 
@@ -407,6 +408,15 @@ function markQuestionModified(q) {
   } else {
     state.modifiedIds.delete(q.id);
   }
+}
+
+function reconcileModifiedIds() {
+  const next = new Set();
+  state.currentBank.forEach(function(q) {
+    const orig = state.originalBank.find(function(o) { return String(o.id) === String(q.id); });
+    if (!orig || stableQuestionString(orig) !== stableQuestionString(q)) next.add(q.id);
+  });
+  state.modifiedIds = next;
 }
 
 function originalHasField(q, key) {
@@ -959,6 +969,7 @@ function applyFilter(bank) {
    통계 / 상태 UI
 ================================================================ */
 function updateStats() {
+  reconcileModifiedIds();
   const total = state.originalBank.length;
   const cur   = state.currentBank.length;
   const warnCount = state.currentBank.filter(function(q) { return detectWarnings(q).length > 0; }).length;

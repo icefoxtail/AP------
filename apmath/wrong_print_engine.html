@@ -482,6 +482,12 @@ function getQuestionAnswer(q) {
     return q?.answer ?? q?.correctAnswer ?? q?.correct ?? q?.ans ?? '';
 }
 
+function formatCorrectRateLabel(item) {
+    const rate = Number(item?.correctRate);
+    if (!Number.isFinite(rate)) return '';
+    return `정답률 ${Math.round(rate)}%`;
+}
+
 function getQuestionSolution(q) {
     return q?.solution || q?.explanation || q?.commentary || q?.sol || '';
 }
@@ -769,9 +775,11 @@ async function renderStudentPages(area, payload) {
 async function renderClassPages(area, payload) {
     const items = (payload.classWrongItems || []).map(item => {
         const names = (item.wrongStudents || []).map(student => student.studentName).join(', ');
+        const rateLabel = formatCorrectRateLabel(item);
+        const wrongLabel = `오답: ${names || '-'} / 총 ${item.wrongCount || 0}명 · 원본 ${item.questionNo}번`;
         return cloneQuestionForRender({
             ...item,
-            _wrongNote: `오답: ${names || '-'} / 총 ${item.wrongCount || 0}명 · 원본 ${item.questionNo}번`
+            _wrongNote: rateLabel ? `${rateLabel} · ${wrongLabel}` : wrongLabel
         });
     });
     await renderMeasuredExamPages(area, items, {
@@ -861,10 +869,15 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
 
 async function renderSol(area, payload) {
     if (payload.mode === 'class') {
-        const items = (payload.classWrongItems || []).map(item => cloneQuestionForRender({
-            ...item,
-            _wrongNote: `오답: ${(item.wrongStudents || []).map(student => student.studentName).join(', ')} / 총 ${item.wrongCount || 0}명`
-        }));
+        const items = (payload.classWrongItems || []).map(item => {
+            const names = (item.wrongStudents || []).map(student => student.studentName).join(', ');
+            const rateLabel = formatCorrectRateLabel(item);
+            const wrongLabel = `오답: ${names || '-'} / 총 ${item.wrongCount || 0}명`;
+            return cloneQuestionForRender({
+                ...item,
+                _wrongNote: rateLabel ? `${rateLabel} · ${wrongLabel}` : wrongLabel
+            });
+        });
         await placeSolutionItems(area, items, {
             title: `${payload.className || '반'} 해설지`,
             metaLeft: payload.printTitle || '',
