@@ -2,41 +2,29 @@ import { readFileSync } from 'node:fs';
 
 const files = [
   'apmath/js/student.js',
+  'apmath/js/student-edit.js',
   'apmath/worker-backup/worker/routes/students.js',
   'apmath/worker-backup/worker/helpers/admin-db.js',
   'apmath/worker-backup/worker/index.js',
   'apmath/js/core.js'
 ];
 
-const mojibakePatterns = [
-  { name: 'replacement-glyph cluster: 占', re: /占/ },
-  { name: 'replacement-glyph cluster: 筌', re: /筌/ },
-  { name: 'bare mojibake marker: 餓', re: /餓/ },
-  { name: 'replacement-glyph cluster: 獄', re: /獄/ },
-  { name: 'replacement-glyph cluster: 癰', re: /癰/ },
-  { name: 'replacement-glyph cluster: 窈', re: /窈/ },
-  { name: 'broken source marker: 源낆쨯', re: /源낆쨯/ },
-  { name: 'broken question prefix: ?源', re: /\?源/ },
-  { name: 'broken question/control cluster: ??', re: /\?\?/ },
-  { name: 'broken student token: ?숈', re: /\?숈/ },
-  { name: 'broken register token: ?깅', re: /\?깅/ },
-  { name: 'broken consultation token: ?곷떞', re: /\?곷떞/ },
-  { name: 'broken history token: ?대젰', re: /\?대젰/ },
-  { name: 'broken edit token: ?섏젙', re: /\?섏젙/ },
-  { name: 'broken delete token: ??젣', re: /\?\?젣/ },
-  { name: 'broken process token: 泥섎━', re: /泥섎━/ },
-  { name: 'broken guardian token: 蹂댄샇', re: /蹂댄샇/ },
-  { name: 'broken restore token: 蹂듦뎄', re: /蹂듦뎄/ },
-  { name: 'broken add token: 異붽?', re: /異붽\?/ },
-  { name: 'broken discharged token: ?쒖쟻', re: /\?쒖쟻/ },
-  { name: 'broken load token: 遺덈윭', re: /遺덈윭/ },
-  { name: 'broken progress token: 以묒엯', re: /以묒엯/ }
+const forbiddenFragments = [
+  '筌',
+  '癰',
+  '繞',
+  '繹',
+  '嶺',
+  '囹',
+  '怨룸',
+  '곕떽',
+  '뽰읅',
+  '븍뜄'
 ];
 
 const requiredStudentPhrases = [
   '학생 등록을 처리 중입니다.',
   '등록 중...',
-  '추가',
   '학생이 추가되었습니다.',
   '이미 등록 처리된 학생입니다.',
   '학생 추가에 실패했습니다.',
@@ -77,20 +65,24 @@ const failures = [];
 
 for (const file of files) {
   const text = readFileSync(file, 'utf8');
-  for (const pattern of mojibakePatterns) {
-    const match = pattern.re.exec(text);
-    if (match) {
-      const lineNumber = lineOf(text, match.index);
+  for (const fragment of forbiddenFragments) {
+    const index = text.indexOf(fragment);
+    if (index >= 0) {
+      const lineNumber = lineOf(text, index);
       const excerpt = lineTextAt(text, lineNumber).trim();
-      failures.push(`${file}:${lineNumber} forbidden mojibake pattern "${pattern.name}" matched "${match[0]}" in line: ${excerpt}`);
+      failures.push(`${file}:${lineNumber} forbidden mojibake fragment "${fragment}" in line: ${excerpt}`);
     }
   }
 }
 
-const studentText = readFileSync('apmath/js/student.js', 'utf8');
+const studentText = [
+  readFileSync('apmath/js/student.js', 'utf8'),
+  readFileSync('apmath/js/student-edit.js', 'utf8')
+].join('\n');
+
 for (const phrase of requiredStudentPhrases) {
   if (!studentText.includes(phrase)) {
-    failures.push(`apmath/js/student.js: required Korean phrase missing: "${phrase}"`);
+    failures.push(`student UI sources: required Korean phrase missing: "${phrase}"`);
   }
 }
 

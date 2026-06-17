@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS students (
   parent_phone TEXT,
   student_address TEXT,
   vehicle_info TEXT,
+  onboarding_started_at TEXT,
+  high_subjects TEXT DEFAULT '[]',
   student_identity_key TEXT,
   student_pin TEXT UNIQUE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
