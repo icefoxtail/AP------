@@ -1167,7 +1167,7 @@ function makeCard(q, displayNum) {
   div.appendChild(content);
 
   if (q.image) {
-    const sizeClass = ['small','half','medium','large','full','wide'].includes(q.imageSize) ? ' image-' + q.imageSize : '';
+    const sizeClass = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? ' image-' + q.imageSize : '';
     const wrap = document.createElement('div');
     wrap.className = 'q-image-wrap' + sizeClass;
     const img = document.createElement('img');
