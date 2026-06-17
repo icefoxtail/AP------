@@ -1536,10 +1536,28 @@ function apJsArg(value) {
 
 function getJsArchiveBaseUrl() {
     try {
-        return new URL('../', window.location.href).href;
+        return new URL('../archive/', window.location.href).href;
     } catch (e) {
-        return `${window.location.origin}/`;
+        return `${window.location.origin}/archive/`;
     }
+}
+
+function getJsArchiveBaseUrlCandidates() {
+    const candidates = [];
+    const add = (value) => {
+        if (value && !candidates.includes(value)) candidates.push(value);
+    };
+
+    try {
+        add(getJsArchiveBaseUrl());
+        add(new URL('../', window.location.href).href);
+        add(new URL('/archive/', window.location.href).href);
+    } catch (e) {
+        add(`${window.location.origin}/archive/`);
+        add(`${window.location.origin}/`);
+    }
+
+    return candidates;
 }
 
 function normalizeArchivePath(file) {
@@ -1555,11 +1573,18 @@ function getExamDisplayTitle(meta = {}, file = '') {
 }
 
 async function fetchArchiveScriptText(relativePath) {
-    const base = getJsArchiveBaseUrl();
-    const url = new URL(relativePath, base).href;
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`JS아카이브 파일 로드 실패: ${relativePath}`);
-    return await res.text();
+    const failures = [];
+    for (const base of getJsArchiveBaseUrlCandidates()) {
+        const url = new URL(relativePath, base).href;
+        try {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (res.ok) return await res.text();
+            failures.push(`${url} (${res.status})`);
+        } catch (e) {
+            failures.push(`${url} (${e?.message || e})`);
+        }
+    }
+    throw new Error(`JS아카이브 파일 로드 실패: ${relativePath} / ${failures.join(', ')}`);
 }
 
 async function loadJsArchiveDBForRecommend() {
