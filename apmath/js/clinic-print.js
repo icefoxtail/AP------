@@ -314,26 +314,51 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
         .sort((a, b) => String(a.studentName || '').localeCompare(String(b.studentName || ''), 'ko'));
 }
 
-function clinicPrintBuildClassWrongItems(studentWrongItems) {
+function clinicPrintBuildExamCohortCounts(classId, selectedExamKeys, selectedStudentIds) {
+    const selectedStudents = new Set((selectedStudentIds || []).map(id => String(id)));
+    const counts = {};
+
+    (selectedExamKeys || []).forEach(examKey => {
+        const studentIds = new Set();
+        clinicPrintGetSessionsForExamGroup(classId, examKey).forEach(session => {
+            const studentId = String(session.student_id || '');
+            if (!studentId || (selectedStudents.size && !selectedStudents.has(studentId))) return;
+            studentIds.add(studentId);
+        });
+        counts[examKey] = studentIds.size;
+    });
+
+    return counts;
+}
+
+function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {}) {
     const map = {};
 
     (studentWrongItems || []).forEach(student => {
         (student.wrongItems || []).forEach(item => {
             const key = `${clinicPrintNormalizeArchiveFile(item.archiveFile)}|${Number(item.questionNo)}`;
+            const totalCount = Number(examCohortCounts[item.examKey] || 0);
             if (!map[key]) {
                 map[key] = {
                     itemKey: key,
                     examTitle: item.examTitle || '',
                     examDate: item.examDate || '',
+                    examKey: item.examKey || '',
                     archiveFile: clinicPrintNormalizeArchiveFile(item.archiveFile),
                     questionNo: Number(item.questionNo),
                     wrongCount: 0,
+                    totalCount,
+                    correctRate: null,
                     wrongStudents: [],
                     unitKey: item.unitKey || '',
                     unit: item.unit || '',
                     course: item.course || '',
                     cluster: item.cluster || ''
                 };
+            }
+
+            if (totalCount && totalCount > Number(map[key].totalCount || 0)) {
+                map[key].totalCount = totalCount;
             }
 
             if (!map[key].wrongStudents.some(row => String(row.studentId) === String(student.studentId))) {
@@ -346,7 +371,13 @@ function clinicPrintBuildClassWrongItems(studentWrongItems) {
         });
     });
 
-    return Object.values(map).sort((a, b) =>
+    return Object.values(map).map(item => {
+        const total = Number(item.totalCount || 0);
+        return {
+            ...item,
+            correctRate: total ? Math.max(0, Math.min(100, Math.round(((total - Number(item.wrongCount || 0)) / total) * 100))) : null
+        };
+    }).sort((a, b) =>
         Number(b.wrongCount || 0) - Number(a.wrongCount || 0) ||
         String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
         Number(a.questionNo) - Number(b.questionNo)
@@ -359,7 +390,8 @@ function clinicPrintBuildPayload(classId, config) {
     const selectedStudentIds = config.selectedStudentIds || [];
     const mode = config.mode || 'student';
     const studentWrongItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, { excludeEmpty: true });
-    const classWrongItems = clinicPrintBuildClassWrongItems(studentWrongItems);
+    const examCohortCounts = clinicPrintBuildExamCohortCounts(classId, selectedExamKeys, selectedStudentIds);
+    const classWrongItems = clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts);
     const examMap = new Map(clinicPrintGetClassExamGroups(classId).map(group => [group.examKey, group]));
     const today = new Date().toLocaleDateString('sv-SE');
 
