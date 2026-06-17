@@ -21,6 +21,8 @@ const editHandler = functionBlock(studentEditSource, 'handleEditStudent', 'openA
 assert(!profileDeck.includes('String(student.memo'), 'profile deck memo slot should not render student.memo');
 assert(basicTab.includes("const memo = '';"), 'basic tab memo row should render as blank');
 assert(!basicTab.includes('String(s.memo || \'\').replace'), 'basic tab should not derive memo text from students.memo');
+assert(basicTab.includes('parentPhoneRaw.replace(/^\\(([^()]*)\\)$/'), 'basic tab should unwrap one redundant phone-only outer parenthesis pair');
+assert(basicTab.includes('parentRelation ? `(${parentRelation})` : \'\''), 'basic tab should only wrap the guardian relation');
 assert(editBody.includes("const cleanMemo = '';"), 'edit memo textarea should start blank');
 assert(!editBody.includes('String(s.memo || \'\').replace'), 'edit form should not prefill memo textarea from students.memo');
 assert(editHandler.includes("const cleanMemo = '';"), 'edit save should not persist freeform memo text into students.memo');
