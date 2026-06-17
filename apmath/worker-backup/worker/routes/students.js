@@ -143,7 +143,7 @@ async function insertStudentWithAutoPin(env, d, sid, identityKey, targetScore) {
           student_phone, parent_phone, student_address, vehicle_info, onboarding_started_at, student_pin,
           high_subjects, student_identity_key, created_at, updated_at
         )
-        VALUES (?, ?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+        VALUES (?, ?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
       `).bind(
         sid,
         d.name,

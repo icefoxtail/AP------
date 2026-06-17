@@ -19,6 +19,8 @@ function functionBlock(source, name) {
 }
 
 const student = read('apmath/js/student.js');
+const studentEdit = read('apmath/js/student-edit.js');
+const studentMutationSource = `${student}\n${studentEdit}`;
 const route = read('apmath/worker-backup/worker/routes/students.js');
 
 for (const helper of [
@@ -31,11 +33,11 @@ for (const helper of [
 }
 
 for (const name of ['handleAddStudent', 'handleEditStudent', 'handleDelete', 'handleRestore']) {
-  const block = functionBlock(student, name);
+  const block = functionBlock(studentMutationSource, name);
   assert(!block.includes('await loadData()'), `${name} should not perform a full initial-data reload`);
 }
 
-const addBlock = functionBlock(student, 'handleAddStudent');
+const addBlock = functionBlock(studentMutationSource, 'handleAddStudent');
 assert(!addBlock.includes('await bootstrapOnboardingTasks'), 'handleAddStudent should not await onboarding bootstrap');
 assert(addBlock.includes('!r?.duplicate_ignored'), 'handleAddStudent should skip onboarding bootstrap for duplicate_ignored responses');
 assert(addBlock.includes('.catch') || addBlock.includes('console.warn'), 'handleAddStudent should fire-and-forget onboarding failures without failing student creation');

@@ -16,6 +16,7 @@ const adminDb = read('apmath/worker-backup/worker/helpers/admin-db.js');
 const studentsRoute = read('apmath/worker-backup/worker/routes/students.js');
 const schema = read('apmath/worker-backup/worker/schema.sql');
 const identityMigration = read('apmath/worker-backup/worker/migrations/20260527_student_identity_key.sql');
+const profileColumnsMigration = read('apmath/worker-backup/worker/migrations/20260617_students_profile_columns.sql');
 
 for (const exported of [
   'normalizeStudentIdentityPayload',
@@ -39,10 +40,22 @@ assert(studentsRoute.includes('duplicate_ignored: true'), 'duplicate creates sho
 assert(studentsRoute.includes('isStudentIdentityUniqueError'), 'identity unique errors should be distinguished from PIN errors');
 assert(!studentsRoute.includes('const duplicateCutoff'), 'unreachable legacy duplicate-window code should be removed');
 assert(!studentsRoute.includes('const pin = d.studentPin || await generateStudentPin'), 'unreachable legacy insert code should be removed');
+
+const insertSqlStart = studentsRoute.indexOf('INSERT INTO students (');
+assert(insertSqlStart >= 0, 'student insert SQL should exist');
+const insertSqlEnd = studentsRoute.indexOf('`).bind', insertSqlStart);
+assert(insertSqlEnd > insertSqlStart, 'student insert SQL bind block should exist');
+const insertSql = studentsRoute.slice(insertSqlStart, insertSqlEnd);
+assert.equal((insertSql.match(/\?/g) || []).length, 15, 'student insert SQL should have one placeholder per bound value before timestamps');
+
 assert(schema.includes('student_identity_key TEXT'), 'schema should include student_identity_key');
+assert(schema.includes('onboarding_started_at TEXT'), 'schema should include onboarding_started_at');
+assert(schema.includes("high_subjects TEXT DEFAULT '[]'"), 'schema should include high_subjects');
 assert(schema.includes('idx_students_identity_key'), 'schema should include a student identity unique index');
 assert(identityMigration.includes('student_identity_key TEXT'), 'student identity migration should add student_identity_key');
 assert(identityMigration.includes('idx_students_identity_key'), 'student identity migration should create the identity unique index');
+assert(profileColumnsMigration.includes('onboarding_started_at TEXT'), 'profile migration should add onboarding_started_at');
+assert(profileColumnsMigration.includes("high_subjects TEXT DEFAULT '[]'"), 'profile migration should add high_subjects');
 
 assert.equal(normalizeStudentIdentityValue('  A   B  '), 'A B', 'identity text normalization should collapse whitespace');
 assert.equal(normalizeStudentPhoneIdentityValue('010-1234 5678'), '01012345678', 'phone normalization should keep only digits');
