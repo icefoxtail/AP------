@@ -134,6 +134,7 @@
         .q-image-wrap.image-medium img { max-width: 80%; max-height: 150px; }
         .q-image-wrap.image-large  img { max-width: 94%; max-height: 190px; }
         .q-image-wrap.image-full   img { max-width: 100%; max-height: 240px; }
+        .q-image-wrap.image-wide   img { width: 100%; max-width: 100%; max-height: none; }
 
         .choices { margin-top: 10px; font-size: 9pt; }
         .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
@@ -936,12 +937,12 @@ function stripInlineImagesFromContent(content, hasImageField) {
 
 function renderQuestionImageHTML(q) {
     if (!q.image) return '';
-    const size = ['small','half','medium','large','full'].includes(q.imageSize) ? q.imageSize : '';
+    const size = ['small','half','medium','large','full','wide'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
     return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
 }
 
-const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full'];
+const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-wide'];
 
 function autoImageSizeClassFor(img) {
     const width = Number(img && img.naturalWidth) || 0;
