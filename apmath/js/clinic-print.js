@@ -93,6 +93,40 @@ function clinicPrintGetClassStudents(classId) {
         .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 }
 
+function clinicPrintGetClassGrade(classId) {
+    return String(clinicPrintGetClass(classId)?.grade || '').trim();
+}
+
+function clinicPrintGetGradeClasses(classId) {
+    const grade = clinicPrintGetClassGrade(classId);
+    if (!grade) return [];
+    return clinicPrintGetActiveClasses().filter(cls => String(cls.grade || '').trim() === grade);
+}
+
+function clinicPrintGetGradeStudents(classId) {
+    const classes = clinicPrintGetGradeClasses(classId);
+    const byStudent = new Map();
+
+    classes.forEach(cls => {
+        clinicPrintGetClassStudents(cls.id).forEach(student => {
+            const studentId = String(student.id || '');
+            if (!studentId || byStudent.has(studentId)) return;
+            byStudent.set(studentId, {
+                ...student,
+                classId: cls.id,
+                className: cls.name || '',
+                teacherName: cls.teacher_name || ''
+            });
+        });
+    });
+
+    return [...byStudent.values()]
+        .sort((a, b) =>
+            String(a.className || '').localeCompare(String(b.className || ''), 'ko') ||
+            String(a.name || '').localeCompare(String(b.name || ''), 'ko')
+        );
+}
+
 function clinicPrintGetSessionArchiveFile(session) {
     return String(session?.archive_file || '').trim();
 }
@@ -231,6 +265,41 @@ function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {
     });
 }
 
+function clinicPrintGetGradeSessionsForExamGroup(classId, examGroupKey) {
+    const studentIds = new Set(clinicPrintGetGradeStudents(classId).map(student => String(student.id)));
+    const group = clinicPrintParseExamKey(examGroupKey);
+    const groupArchive = clinicPrintNormalizeArchiveFile(group.archiveFile || '');
+
+    return (state.db.exam_sessions || []).filter(session => {
+        if (!studentIds.has(String(session.student_id))) return false;
+        const sessionArchive = clinicPrintNormalizeArchiveFile(clinicPrintGetSessionArchiveFile(session));
+        const sessionQuestionCount = Number(session.question_count || 0);
+        const countsCompatible = !group.questionCount || !sessionQuestionCount || sessionQuestionCount === group.questionCount;
+        return !!groupArchive && sessionArchive === groupArchive && countsCompatible;
+    });
+}
+
+function clinicPrintDedupeLatestSessionByStudent(sessions) {
+    const sessionSortValue = session => String(
+        session?.updated_at ||
+        session?.created_at ||
+        session?.submitted_at ||
+        session?.completed_at ||
+        session?.exam_date ||
+        ''
+    );
+    const sorted = [...(sessions || [])].sort((a, b) =>
+        sessionSortValue(b).localeCompare(sessionSortValue(a)) ||
+        String(b.id || '').localeCompare(String(a.id || ''))
+    );
+    const byStudent = new Map();
+    sorted.forEach(session => {
+        const studentId = String(session.student_id || '');
+        if (studentId && !byStudent.has(studentId)) byStudent.set(studentId, session);
+    });
+    return [...byStudent.values()];
+}
+
 function clinicPrintGetWrongIdsBySession(sessionId) {
     const rows = typeof apmsGetWrongAnswersForSession === 'function'
         ? apmsGetWrongAnswersForSession(sessionId)
@@ -331,6 +400,72 @@ function clinicPrintBuildExamCohortCounts(classId, selectedExamKeys, selectedStu
     return counts;
 }
 
+function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
+    const gradeStudents = clinicPrintGetGradeStudents(classId);
+    const studentMap = new Map(gradeStudents.map(student => [String(student.id), student]));
+    const rowsByStudent = {};
+    const cohortCounts = {};
+
+    (selectedExamKeys || []).forEach(examKey => {
+        const sessions = clinicPrintDedupeLatestSessionByStudent(clinicPrintGetGradeSessionsForExamGroup(classId, examKey));
+        cohortCounts[examKey] = sessions.length;
+
+        sessions.forEach(session => {
+            const studentId = String(session.student_id || '');
+            const student = studentMap.get(studentId);
+            if (!student) return;
+
+            const archiveFile = clinicPrintGetSessionArchiveFile(session);
+            if (!archiveFile) return;
+
+            const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
+                const bp = clinicPrintFindBlueprint(session, questionNo);
+                return {
+                    examKey,
+                    examTitle: session.exam_title || '',
+                    examDate: session.exam_date || '',
+                    archiveFile,
+                    questionNo,
+                    unitKey: bp?.standard_unit_key || '',
+                    unit: bp?.standard_unit || '',
+                    course: bp?.standard_course || '',
+                    cluster: bp?.concept_cluster_key || ''
+                };
+            });
+
+            if (!wrongItems.length) return;
+
+            if (!rowsByStudent[studentId]) {
+                rowsByStudent[studentId] = {
+                    studentId,
+                    studentName: student.name || '이름 없음',
+                    classId: student.classId || '',
+                    className: student.className || '',
+                    wrongItems: []
+                };
+            }
+            rowsByStudent[studentId].wrongItems.push(...wrongItems);
+        });
+    });
+
+    return {
+        cohortCounts,
+        studentWrongItems: Object.values(rowsByStudent)
+            .map(row => ({
+                ...row,
+                wrongItems: row.wrongItems.sort((a, b) =>
+                    String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
+                    String(a.examTitle || '').localeCompare(String(b.examTitle || ''), 'ko') ||
+                    Number(a.questionNo) - Number(b.questionNo)
+                )
+            }))
+            .sort((a, b) =>
+                String(a.className || '').localeCompare(String(b.className || ''), 'ko') ||
+                String(a.studentName || '').localeCompare(String(b.studentName || ''), 'ko')
+            )
+    };
+}
+
 function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {}) {
     const map = {};
 
@@ -392,15 +527,23 @@ function clinicPrintBuildPayload(classId, config) {
     const studentWrongItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, { excludeEmpty: true });
     const examCohortCounts = clinicPrintBuildExamCohortCounts(classId, selectedExamKeys, selectedStudentIds);
     const classWrongItems = clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts);
+    const gradeSource = mode === 'grade'
+        ? clinicPrintBuildGradeWrongSource(classId, selectedExamKeys)
+        : { cohortCounts: {}, studentWrongItems: [] };
+    const gradeWrongItems = mode === 'grade'
+        ? clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts)
+        : [];
     const examMap = new Map(clinicPrintGetClassExamGroups(classId).map(group => [group.examKey, group]));
     const today = new Date().toLocaleDateString('sv-SE');
+    const gradeName = String(cls?.grade || '').trim();
 
     return {
         version: '1.0',
         mode,
-        printTitle: `${cls?.name || '반'} 오답 클리닉`,
+        printTitle: mode === 'grade' ? `${gradeName || '학년'} 오답 클리닉` : `${cls?.name || '반'} 오답 클리닉`,
         classId,
         className: cls?.name || '',
+        gradeName,
         range: {
             type: selectedExamKeys.length > 1 ? 'multi_exam' : 'single_exam',
             from: '',
@@ -409,7 +552,7 @@ function clinicPrintBuildPayload(classId, config) {
         options: {
             groupByStudent: mode === 'student',
             groupByExam: true,
-            dedupeByQuestion: mode === 'class',
+            dedupeByQuestion: mode === 'class' || mode === 'grade',
             showWrongStudents: true,
             pageBreakByStudent: true,
             includeAnswer: false,
@@ -428,6 +571,7 @@ function clinicPrintBuildPayload(classId, config) {
         }),
         students: studentWrongItems,
         classWrongItems,
+        gradeWrongItems,
         createdAt: new Date().toISOString(),
         createdDate: today
     };
@@ -458,17 +602,43 @@ function clinicPrintUpdateStudentList(classId) {
     const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const selectedStudentIds = new Set(clinicPrintGetClassStudents(classId).map(student => String(student.id)));
     const studentItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, Array.from(selectedStudentIds), { excludeEmpty: true });
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
     const root = document.getElementById('clinic-print-student-list');
     const countEl = document.getElementById('clinic-print-summary');
     if (!root) return;
 
     if (countEl) {
-        const totalWrong = studentItems.reduce((sum, row) => sum + row.wrongItems.length, 0);
-        countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · 오답 학생 ${studentItems.length}명 · 오답 ${totalWrong}문항`;
+        if (mode === 'grade') {
+            const gradeSource = clinicPrintBuildGradeWrongSource(classId, selectedExamKeys);
+            const gradeItems = clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
+            const cohortTotal = Object.values(gradeSource.cohortCounts || {}).reduce((sum, count) => sum + Number(count || 0), 0);
+            countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · 학년 제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항`;
+        } else {
+            const totalWrong = studentItems.reduce((sum, row) => sum + row.wrongItems.length, 0);
+            countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · 오답 학생 ${studentItems.length}명 · 오답 ${totalWrong}문항`;
+        }
     }
 
     if (!selectedExamKeys.length) {
         root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">시험을 선택하세요.</div>';
+        return;
+    }
+
+    if (mode === 'grade') {
+        const gradeSource = clinicPrintBuildGradeWrongSource(classId, selectedExamKeys);
+        const gradeItems = clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
+        if (!gradeItems.length) {
+            root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">선택한 시험에 출력 가능한 학년 오답이 없습니다.</div>';
+            return;
+        }
+
+        const cohortTotal = Object.values(gradeSource.cohortCounts || {}).reduce((sum, count) => sum + Number(count || 0), 0);
+        root.innerHTML = `
+            <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface);">
+                <div style="font-size:13px; font-weight:600; color:var(--text); line-height:1.4;">${clinicPrintEscapeHtml(clinicPrintGetClassGrade(classId) || '학년')} 공통 오답</div>
+                <div style="margin-top:4px; font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45;">제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항</div>
+            </div>
+        `;
         return;
     }
 
@@ -499,13 +669,15 @@ function clinicPrintSubmit(classId) {
         return;
     }
 
-    if (!selectedStudentIds.length) {
+    if (mode !== 'grade' && !selectedStudentIds.length) {
         toast('출력할 학생을 선택하세요.', 'warn');
         return;
     }
 
     const payload = clinicPrintBuildPayload(classId, { selectedExamKeys, selectedStudentIds, mode });
-    const itemCount = mode === 'class'
+    const itemCount = mode === 'grade'
+        ? payload.gradeWrongItems.length
+        : mode === 'class'
         ? payload.classWrongItems.length
         : payload.students.reduce((sum, row) => sum + row.wrongItems.length, 0);
 
@@ -632,12 +804,15 @@ async function openClinicPrintCenter(classId, options = {}) {
 
             <section>
                 <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">출력 방식</div>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
                     <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:500;">
-                        <input type="radio" name="clinic-print-mode" value="student" checked> 학생별
+                        <input type="radio" name="clinic-print-mode" value="student" checked onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')"> 학생별
                     </label>
                     <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:500;">
-                        <input type="radio" name="clinic-print-mode" value="class"> 반별
+                        <input type="radio" name="clinic-print-mode" value="class" onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')"> 반별
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:500;">
+                        <input type="radio" name="clinic-print-mode" value="grade" onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')"> 학년별
                     </label>
                 </div>
             </section>
