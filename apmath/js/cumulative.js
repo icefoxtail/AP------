@@ -496,10 +496,11 @@ function isCumulativeAttendancePresentStatus(status) {
     return CUMULATIVE_ATTENDANCE_PRESENT_STATUSES.has(String(status || '').trim());
 }
 
-function isCumulativeAttendancePresentMeta(meta) {
+function isCumulativeAttendancePresentMeta(meta, options = {}) {
     const status = meta?.record?.status || '';
     if (isCumulativeAttendanceAbsentStatus(status)) return false;
-    return isCumulativeAttendancePresentStatus(status) || !!(meta?.hasLate || meta?.hasMakeup);
+    const countMakeupAsPresent = options.countMakeupAsPresent !== false;
+    return isCumulativeAttendancePresentStatus(status) || !!meta?.hasLate || (countMakeupAsPresent && !!meta?.hasMakeup);
 }
 
 function getMonthlyAttendanceStatus(studentId, date) {
@@ -797,7 +798,7 @@ function renderAttendanceCellContent(studentId, date) {
 
     if (isCumulativeAttendanceAbsentStatus(status)) {
         statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
-    } else if (isCumulativeAttendancePresentMeta(meta)) {
+    } else if (isCumulativeAttendancePresentMeta(meta, { countMakeupAsPresent: isClassDay })) {
         statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
     } else if (!isHol && !isClassDay) {
         statusHtml = '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
@@ -888,7 +889,7 @@ function getAttendanceLedgerPrintCell(studentId, date) {
     if (isCumulativeAttendanceAbsentStatus(status)) {
         symbol = 'X';
         counted = 'absent';
-    } else if (isCumulativeAttendancePresentMeta(meta)) {
+    } else if (isCumulativeAttendancePresentMeta(meta, { countMakeupAsPresent: isClassDay })) {
         symbol = 'O';
         counted = 'present';
     } else if (!isHol && !isClassDay) {
