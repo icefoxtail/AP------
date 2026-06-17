@@ -62,6 +62,13 @@ const BROKEN_CHAR_PATTERNS = ['ï','»¼','â€','Ã','Â','ã','½','¤','¹',
 
 const CONTENT_RESIDUES = ['이미지 설명','그림 설명','원본 그림','예시 규칙 배열'];
 
+const LATEX_ESCAPE_WARNING_PATTERNS = [
+  { label: 'LaTeX 백슬래시 과다', re: /\\\\(?:implies|times|dfrac|frac|sqrt|pm|left|right|text|lt|gt)(?:\b|\{|\s|[+\-=])/ },
+  { label: 'LaTeX 부등호 명령 결합', re: /\\(?:lt|gt)[A-Za-z]/ },
+  { label: 'LaTeX 미지원 textcircled', re: /\\textcircled\{/ },
+  { label: 'LaTeX pm 백슬래시 소실', re: /(^|[^\\A-Za-z])pm(?=\\(?:text|sqrt|dfrac|frac)|[0-9])/ },
+];
+
 const FIELD_ORDER = [
   'id','level','category','originalCategory','standardCourse',
   'standardUnitKey','standardUnit','standardUnitOrder',
@@ -242,6 +249,9 @@ function detectWarnings(q) {
 
   const allText = contentStr + ' ' + sol + ' ' + String(q.answer || '');
   BROKEN_CHAR_PATTERNS.forEach(function(c) { if (allText.includes(c)) warnings.push('깨진 문자 후보'); });
+  LATEX_ESCAPE_WARNING_PATTERNS.forEach(function(p) {
+    if (p.re.test(allText)) warnings.push(p.label);
+  });
 
   const ans = String(q.answer || '');
   if (ans.includes('또는') || ans.includes('변형') || ans.includes('원본'))
