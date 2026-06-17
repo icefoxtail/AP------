@@ -1829,8 +1829,11 @@ function renderStudentBasicTab(sid) {
     const s = state.db.students.find(st => String(st.id) === String(sid));
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
     const memo = '';
-    const parentInfo = [String(s.parent_phone || '').trim(), String(s.guardian_relation || '').trim() ? `(${String(s.guardian_relation || '').trim()})` : '']
-        .filter(Boolean).join(' ');
+    const parentPhoneRaw = String(s.parent_phone || '').trim();
+    const parentPhoneUnwrapped = parentPhoneRaw.replace(/^\(([^()]*)\)$/, '$1').trim();
+    const parentPhone = parentPhoneUnwrapped && /^[0-9+\-\s.]+$/.test(parentPhoneUnwrapped) ? parentPhoneUnwrapped : parentPhoneRaw;
+    const parentRelation = String(s.guardian_relation || '').trim();
+    const parentInfo = [parentPhone, parentRelation ? `(${parentRelation})` : ''].filter(Boolean).join(' ');
     return `
         <div class="ap-student-tab-body">
             <section class="ap-student-card">
