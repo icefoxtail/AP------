@@ -126,7 +126,6 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
-        .sol-continuation { color: #555; font-size: 8pt; font-weight: 400; margin-left: 4px; }
         .sol-chunk { display: inline; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
 
@@ -703,7 +702,7 @@ function makeLongSolutionShell(sourceBox, qNo, continuation) {
         if (exp) exp.innerHTML = '';
         return shell;
     }
-    shell.innerHTML = `<div class="q-num">${qNo}.<span class="sol-continuation">계속</span></div><div class="sol-meta"><div class="sol-exp"></div></div>`;
+    shell.innerHTML = `<div class="sol-meta"><div class="sol-exp"></div></div>`;
     return shell;
 }
 
