@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -1438,11 +1438,9 @@ async function renderSol(area, data) {
                 )
             )
         );
-        const reminderImageHTML = renderQuestionImageHTML(q);
 
         box.innerHTML = `<div class="q-num">${i+1}.</div>
                          <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
-                         ${reminderImageHTML}
                          <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${wrapLatex(solText)}</div></div>`;
 
         await placeSolutionBox(box);
