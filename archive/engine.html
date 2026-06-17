@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -126,7 +126,6 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
-        .sol-long-col { flex: 1; padding: 0 10px; min-height: 0; overflow: hidden; }
         .sol-continuation { color: #555; font-size: 8pt; font-weight: 400; margin-left: 4px; }
         .sol-chunk { display: inline; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
@@ -1154,41 +1153,39 @@ async function renderSol(area, data) {
             grid.appendChild(l); grid.appendChild(r); p.body.appendChild(grid);
             return { p, cols: [l, r] };
         };
-        const makeLongPage = () => {
-            const p = makePage(area, 'sol', pNum++);
-            const col = document.createElement('div');
-            col.className = 'sol-long-col';
-            p.body.appendChild(col);
-            return { p, col };
+        const advanceColumn = () => {
+            if (colIdx === 0) colIdx = 1;
+            else { ({ cols } = makeGridPage()); colIdx = 0; }
+            return cols[colIdx];
         };
-        const renderLongSolutionBox = async (sourceBox, qNo) => {
+        const renderSplitSolutionBox = async (sourceBox, qNo) => {
             const originalExp = sourceBox.querySelector('.sol-exp');
             const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
-            let pageData = makeLongPage();
             let shell = makeLongSolutionShell(sourceBox, qNo, false);
             let exp = shell.querySelector('.sol-exp');
-            pageData.col.appendChild(shell);
+            let targetCol = cols[colIdx];
+            targetCol.appendChild(shell);
 
             for (const chunkHtml of chunks) {
                 const chunk = document.createElement('span');
                 chunk.className = 'sol-chunk';
                 chunk.innerHTML = chunkHtml;
                 exp.appendChild(chunk);
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([pageData.p]);
+                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
                 await raf();
-                if (pageData.col.scrollHeight <= pageData.col.clientHeight + 2) continue;
+                if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
 
                 if (exp.children.length > 1) {
                     exp.removeChild(chunk);
-                    pageData = makeLongPage();
+                    targetCol = advanceColumn();
                     shell = makeLongSolutionShell(sourceBox, qNo, true);
                     exp = shell.querySelector('.sol-exp');
-                    pageData.col.appendChild(shell);
+                    targetCol.appendChild(shell);
                     exp.appendChild(chunk);
-                    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([pageData.p]);
+                    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
                     await raf();
                 }
-            if (pageData.col.scrollHeight > pageData.col.clientHeight + 2) {
+                if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     autoCompress(shell);
                     await raf();
                 }
@@ -1211,13 +1208,10 @@ async function renderSol(area, data) {
                 const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
                 targetCol.removeChild(box);
                 if (isOnlyBoxInColumn) {
-                    await renderLongSolutionBox(box, qNo);
-                    ({ cols } = makeGridPage());
-                    colIdx = 0;
+                    await renderSplitSolutionBox(box, qNo);
                     return;
                 }
-                if (colIdx === 0) colIdx = 1;
-                else { ({ cols } = makeGridPage()); colIdx = 0; }
+                advanceColumn();
             }
         };
 
@@ -1235,11 +1229,10 @@ async function renderSol(area, data) {
                     )
                 )
             );
-            const reminderImageHTML = renderQuestionImageHTML(q);
             const solutionHtml = wrapLatex(solutionText);
             const box = document.createElement('div'); box.className = 'q-box sol-box';
             box.dataset.solutionHtml = solutionHtml;
-            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div>${reminderImageHTML}<div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
+            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
             await placeSolutionBox(box, i + 1);
         }
         return;
