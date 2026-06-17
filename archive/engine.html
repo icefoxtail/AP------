@@ -122,6 +122,13 @@
 
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
+        .q-box.sol-box.sol-box-long { overflow: visible; padding-bottom: 1em; margin-bottom: 0; }
+        .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
+        .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
+        .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        .sol-long-col { flex: 1; padding: 0 10px; min-height: 0; overflow: hidden; }
+        .sol-continuation { color: #555; font-size: 8pt; font-weight: 400; margin-left: 4px; }
+        .sol-chunk { display: inline; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
 
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
@@ -655,6 +662,52 @@ function fitQuestionBox(box) {
     }
 }
 
+function makeSolutionHtmlChunks(html) {
+    const host = document.createElement('div');
+    host.innerHTML = html || '';
+    const chunks = [];
+    const pushTextChunks = (text) => {
+        const parts = String(text || '').split(/(\s+)/);
+        let buf = '';
+        for (const part of parts) {
+            if ((buf + part).length > 260 && buf.trim()) {
+                const span = document.createElement('span');
+                span.textContent = buf;
+                chunks.push(span.outerHTML);
+                buf = part;
+            } else {
+                buf += part;
+            }
+        }
+        if (buf) {
+            const span = document.createElement('span');
+            span.textContent = buf;
+            chunks.push(span.outerHTML);
+        }
+    };
+    host.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            pushTextChunks(node.textContent || '');
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.tagName === 'BR') chunks.push('<br>');
+            else chunks.push(node.outerHTML);
+        }
+    });
+    return chunks.length ? chunks : [''];
+}
+
+function makeLongSolutionShell(sourceBox, qNo, continuation) {
+    const shell = sourceBox.cloneNode(true);
+    shell.classList.add('sol-box-long');
+    if (!continuation) {
+        const exp = shell.querySelector('.sol-exp');
+        if (exp) exp.innerHTML = '';
+        return shell;
+    }
+    shell.innerHTML = `<div class="q-num">${qNo}.<span class="sol-continuation">계속</span></div><div class="sol-meta"><div class="sol-exp"></div></div>`;
+    return shell;
+}
+
 function parseExamTitle(raw) {
     if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
     const p = raw.split('_');
@@ -1089,6 +1142,108 @@ async function renderExam(area, data) {
 }
 
 async function renderSol(area, data) {
+    {
+        let pNum = 1;
+        let cols;
+        let colIdx = 0;
+        const makeGridPage = () => {
+            const p = makePage(area, 'sol', pNum++);
+            const grid = document.createElement('div'); grid.className = 'grid-container';
+            const l = document.createElement('div'); l.className = 'grid-col';
+            const r = document.createElement('div'); r.className = 'grid-col';
+            grid.appendChild(l); grid.appendChild(r); p.body.appendChild(grid);
+            return { p, cols: [l, r] };
+        };
+        const makeLongPage = () => {
+            const p = makePage(area, 'sol', pNum++);
+            const col = document.createElement('div');
+            col.className = 'sol-long-col';
+            p.body.appendChild(col);
+            return { p, col };
+        };
+        const renderLongSolutionBox = async (sourceBox, qNo) => {
+            const originalExp = sourceBox.querySelector('.sol-exp');
+            const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
+            let pageData = makeLongPage();
+            let shell = makeLongSolutionShell(sourceBox, qNo, false);
+            let exp = shell.querySelector('.sol-exp');
+            pageData.col.appendChild(shell);
+
+            for (const chunkHtml of chunks) {
+                const chunk = document.createElement('span');
+                chunk.className = 'sol-chunk';
+                chunk.innerHTML = chunkHtml;
+                exp.appendChild(chunk);
+                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([pageData.p]);
+                await raf();
+                if (pageData.col.scrollHeight <= pageData.col.clientHeight + 2) continue;
+
+                if (exp.children.length > 1) {
+                    exp.removeChild(chunk);
+                    pageData = makeLongPage();
+                    shell = makeLongSolutionShell(sourceBox, qNo, true);
+                    exp = shell.querySelector('.sol-exp');
+                    pageData.col.appendChild(shell);
+                    exp.appendChild(chunk);
+                    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([pageData.p]);
+                    await raf();
+                }
+            if (pageData.col.scrollHeight > pageData.col.clientHeight + 2) {
+                    autoCompress(shell);
+                    await raf();
+                }
+            }
+        };
+        const placeSolutionBox = async (box, qNo) => {
+            while (true) {
+                const targetCol = cols[colIdx];
+                targetCol.appendChild(box);
+                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+                await raf();
+                if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
+
+                autoCompress(box);
+                await raf();
+                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+                await raf();
+                if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
+
+                const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
+                targetCol.removeChild(box);
+                if (isOnlyBoxInColumn) {
+                    await renderLongSolutionBox(box, qNo);
+                    ({ cols } = makeGridPage());
+                    colIdx = 0;
+                    return;
+                }
+                if (colIdx === 0) colIdx = 1;
+                else { ({ cols } = makeGridPage()); colIdx = 0; }
+            }
+        };
+
+        ({ cols } = makeGridPage());
+        for (let i = 0; i < data.length; i++) {
+            const q = data[i];
+            const solutionText = q.solution || q.explanation || q.sol || '';
+            const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
+            const reminderContent = sanitizeProtectedSegments(
+                normalizeQuestionNotes(
+                    normalizeViewBlocks(
+                        normalizeQuestionTables(
+                            formatQuestionContent(wrapLatex(reminderRawContent), q)
+                        )
+                    )
+                )
+            );
+            const reminderImageHTML = renderQuestionImageHTML(q);
+            const solutionHtml = wrapLatex(solutionText);
+            const box = document.createElement('div'); box.className = 'q-box sol-box';
+            box.dataset.solutionHtml = solutionHtml;
+            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div>${reminderImageHTML}<div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
+            await placeSolutionBox(box, i + 1);
+        }
+        return;
+    }
     let pNum = 1;
     function makeGridPage() {
         const p = makePage(area, 'sol', pNum++);
