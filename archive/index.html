@@ -165,6 +165,100 @@
             min-width: 0;
         }
 
+        .assignment-board {
+            position: absolute;
+            right: 0;
+            top: 44px;
+            width: 380px;
+            min-height: 188px;
+            border: 1px solid rgba(147,197,253,0.22);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.54);
+            box-shadow: 0 18px 42px rgba(2, 8, 23, 0.24);
+            backdrop-filter: blur(16px);
+            padding: 14px;
+            color: #e5eefc;
+            display: none;
+        }
+
+        .assignment-board.open { display: block; }
+
+        .assignment-board-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .assignment-board-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .assignment-board-date {
+            width: 126px;
+            height: 30px;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            color: #e5eefc;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 0 8px;
+        }
+
+        .assignment-board-date::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.72; }
+
+        .assignment-board-range {
+            font-size: 11px;
+            font-weight: 700;
+            color: #9fb6d8;
+            margin-bottom: 8px;
+        }
+
+        .assignment-board-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 120px;
+            overflow: auto;
+            padding-right: 2px;
+        }
+
+        .assignment-board-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) 74px 58px 58px;
+            gap: 8px;
+            align-items: center;
+            min-height: 28px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.055);
+            padding: 6px 8px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .assignment-board-row span {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .assignment-board-empty {
+            border: 1px dashed rgba(255,255,255,0.16);
+            border-radius: 10px;
+            padding: 18px 10px;
+            text-align: center;
+            color: #9fb6d8;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
         .hero-title {
             font-size: clamp(32px, 5vw, 46px);
             font-weight: 800;
@@ -177,15 +271,6 @@
         .hero-title em {
             color: #7db8ff;
             font-style: normal;
-        }
-
-        .hero-sub {
-            margin-top: 18px;
-            font-size: 15px;
-            line-height: 1.78;
-            color: #cbd5e1;
-            max-width: 760px;
-            word-break: keep-all;
         }
 
         .hero-stats {
@@ -848,10 +933,6 @@
                 font-size: clamp(28px, 8vw, 36px);
             }
 
-            .hero-sub {
-                font-size: 14px;
-            }
-
             .filter-band {
                 top: 58px;
             }
@@ -886,6 +967,21 @@
             .modal-box {
                 width: calc(100% - 28px);
                 padding: 30px 22px;
+            }
+
+            .assignment-board {
+                position: static;
+                width: 100%;
+                margin-top: 22px;
+            }
+
+            .assignment-board-row {
+                grid-template-columns: minmax(0, 1fr) 72px;
+            }
+
+            .assignment-board-row span:nth-child(3),
+            .assignment-board-row span:nth-child(4) {
+                display: none;
             }
         }
     </style>
@@ -969,17 +1065,23 @@
                 <div class="logo-mark"><div></div><div></div><div></div><div></div></div>
                 <span class="logo-name"><em>JS</em>아카이브</span>
             </div>
-            <span class="hero-panel-badge">INDEX</span>
         </div>
+
+        <section class="assignment-board" id="assignmentBoard" aria-live="polite">
+            <div class="assignment-board-head">
+                <div class="assignment-board-title" id="assignmentBoardTitle">학년 출제보드</div>
+                <input class="assignment-board-date" id="assignmentBoardDate" type="date" onchange="onAssignmentBoardDateChange()">
+            </div>
+            <div class="assignment-board-range" id="assignmentBoardRange">기준일 앞뒤 2주</div>
+            <div class="assignment-board-list" id="assignmentBoardList">
+                <div class="assignment-board-empty">학년을 선택하면 출제 기록이 표시됩니다.</div>
+            </div>
+        </section>
 
         <div class="hero-left">
             <div class="hero-title">
                 학교별 기출부터 단원 자료까지,<br>
                 <em>가장 빠르게 찾고 바로 출력하는</em> 수학 아카이브
-            </div>
-            <div class="hero-sub">
-                기출 · 유형 · 단원평가 · 쪽지시험을 한 화면에서 정리하고, 시험지·해설·정답까지 바로 열 수 있도록
-                식별성과 탐색 속도를 함께 잡은 인덱스입니다.
             </div>
             <div class="hero-stats">
                 <div class="hero-stat"><i class="fa-solid fa-school"></i> 학교별 기출 정리</div>
@@ -1039,6 +1141,14 @@ let engineDB = { exams: [] };
 let selectedGrade = '';
 let includeOriginalArchiveItems = false;
 let archiveDbLoadFailed = false;
+let assignmentBoardState = {
+    date: new Date().toLocaleDateString('sv-SE'),
+    grade: '',
+    classes: [],
+    assignmentsByClass: {},
+    loading: false,
+    loadedGrades: new Set()
+};
 
 function compactText(value) {
     return String(value || '').replace(/\s+/g, '').trim();
@@ -1182,6 +1292,171 @@ function examTypeLabel(examType) {
     return examType || '';
 }
 
+function archiveBoardAddDays(dateText, delta) {
+    const date = new Date(`${dateText || new Date().toLocaleDateString('sv-SE')}T00:00:00`);
+    date.setDate(date.getDate() + delta);
+    return date.toLocaleDateString('sv-SE');
+}
+
+function archiveBoardEscape(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function getArchiveBoardClassGrade(row) {
+    return normalizeGrade(row?.grade || row?.grade_label || row?.class_grade || '');
+}
+
+function getArchiveBoardClassName(row) {
+    return String(row?.name || row?.class_name || row?.className || '반').trim();
+}
+
+function getArchiveBoardTeacherName(row) {
+    return String(row?.teacher_name || row?.teacherName || row?.teacher || '').trim();
+}
+
+function getArchiveBoardClassRowsForGrade(grade) {
+    return (assignmentBoardState.classes || []).filter(row => getArchiveBoardClassGrade(row) === grade);
+}
+
+function flattenArchiveBoardAssignments(grade) {
+    const start = archiveBoardAddDays(assignmentBoardState.date, -14);
+    const end = archiveBoardAddDays(assignmentBoardState.date, 14);
+    const classRows = getArchiveBoardClassRowsForGrade(grade);
+    const rows = [];
+
+    classRows.forEach(cls => {
+        const classId = String(cls.id || '');
+        const assignments = assignmentBoardState.assignmentsByClass[classId] || [];
+        assignments.forEach(row => {
+            const date = String(row.exam_date || row.date || '').slice(0, 10);
+            if (!date || date < start || date > end) return;
+            rows.push({
+                title: row.exam_title || row.title || row.archive_file || '시험지',
+                date,
+                teacher: getArchiveBoardTeacherName(cls) || row.teacher_name || '',
+                className: getArchiveBoardClassName(cls)
+            });
+        });
+    });
+
+    return rows.sort((a, b) =>
+        String(a.date || '').localeCompare(String(b.date || '')) ||
+        String(a.teacher || '').localeCompare(String(b.teacher || ''), 'ko') ||
+        String(a.className || '').localeCompare(String(b.className || ''), 'ko') ||
+        String(a.title || '').localeCompare(String(b.title || ''), 'ko')
+    );
+}
+
+function renderAssignmentBoard(message) {
+    const board = document.getElementById('assignmentBoard');
+    const title = document.getElementById('assignmentBoardTitle');
+    const dateInput = document.getElementById('assignmentBoardDate');
+    const range = document.getElementById('assignmentBoardRange');
+    const list = document.getElementById('assignmentBoardList');
+    if (!board || !title || !dateInput || !range || !list) return;
+
+    if (!selectedGrade) {
+        board.classList.remove('open');
+        return;
+    }
+
+    board.classList.add('open');
+    title.textContent = `${selectedGrade} 출제보드`;
+    dateInput.value = assignmentBoardState.date;
+    range.textContent = `${archiveBoardAddDays(assignmentBoardState.date, -14)} ~ ${archiveBoardAddDays(assignmentBoardState.date, 14)}`;
+
+    if (message) {
+        list.innerHTML = `<div class="assignment-board-empty">${archiveBoardEscape(message)}</div>`;
+        return;
+    }
+
+    const rows = flattenArchiveBoardAssignments(selectedGrade);
+    if (!rows.length) {
+        list.innerHTML = '<div class="assignment-board-empty">해당 기간 출제 기록이 없습니다.</div>';
+        return;
+    }
+
+    list.innerHTML = rows.map(row => `
+        <div class="assignment-board-row" title="${archiveBoardEscape(`${row.title} | ${row.date} | ${row.teacher || '-'} | ${row.className || '-'}`)}">
+            <span>${archiveBoardEscape(row.title)}</span>
+            <span>${archiveBoardEscape(row.date)}</span>
+            <span>${archiveBoardEscape(row.teacher || '-')}</span>
+            <span>${archiveBoardEscape(row.className || '-')}</span>
+        </div>
+    `).join('');
+}
+
+async function ensureAssignmentBoardClasses() {
+    if (assignmentBoardState.classes.length) return true;
+    const authHeader = getIndexAssignmentAuthHeader();
+    if (!authHeader) {
+        renderAssignmentBoard('AP Math OS 로그인 후 출제보드를 볼 수 있습니다.');
+        return false;
+    }
+
+    const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
+    if (!res.ok) throw new Error('qr-classes failed');
+    const data = await res.json();
+    assignmentBoardState.classes = Array.isArray(data.classes) ? data.classes : [];
+    return true;
+}
+
+async function loadAssignmentBoardForGrade(grade) {
+    if (!grade) {
+        renderAssignmentBoard();
+        return;
+    }
+
+    assignmentBoardState.grade = grade;
+    renderAssignmentBoard('출제 기록을 불러오는 중...');
+
+    try {
+        const hasClasses = await ensureAssignmentBoardClasses();
+        if (!hasClasses) return;
+
+        const classRows = getArchiveBoardClassRowsForGrade(grade);
+        if (!classRows.length) {
+            renderAssignmentBoard('해당 학년 반이 없습니다.');
+            return;
+        }
+
+        const authHeader = getIndexAssignmentAuthHeader();
+        if (!authHeader) {
+            renderAssignmentBoard('AP Math OS 로그인 후 출제보드를 볼 수 있습니다.');
+            return;
+        }
+
+        const targets = classRows.filter(row => !assignmentBoardState.assignmentsByClass[String(row.id || '')]);
+        await Promise.all(targets.map(async cls => {
+            const classId = String(cls.id || '');
+            if (!classId) return;
+            const res = await fetch(`https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments?class=${encodeURIComponent(classId)}`, { headers: authHeader });
+            if (!res.ok) {
+                assignmentBoardState.assignmentsByClass[classId] = [];
+                return;
+            }
+            const data = await res.json();
+            assignmentBoardState.assignmentsByClass[classId] = data.assignments || data.items || [];
+        }));
+
+        renderAssignmentBoard();
+    } catch (e) {
+        console.warn('[archive assignment board] load failed:', e);
+        renderAssignmentBoard('출제 기록을 불러오지 못했습니다.');
+    }
+}
+
+function onAssignmentBoardDateChange() {
+    const input = document.getElementById('assignmentBoardDate');
+    assignmentBoardState.date = input?.value || new Date().toLocaleDateString('sv-SE');
+    renderAssignmentBoard();
+}
+
 async function init() {
     await new Promise(res => {
         archiveDbLoadFailed = false;
@@ -1205,6 +1480,8 @@ async function init() {
     });
 
     updateOriginalArchiveToggleUI();
+    const boardDate = document.getElementById('assignmentBoardDate');
+    if (boardDate) boardDate.value = assignmentBoardState.date;
     populateYearFilter();
     initGradeBar();
 
@@ -1253,6 +1530,11 @@ function initGradeBar() {
             tab.classList.add('active');
             selectedGrade = tab.dataset.grade;
             onFilterChange();
+            if (selectedGrade) {
+                loadAssignmentBoardForGrade(selectedGrade);
+            } else {
+                renderAssignmentBoard();
+            }
 
             if (selectedGrade) {
                 requestAnimationFrame(() => {

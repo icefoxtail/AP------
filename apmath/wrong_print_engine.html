@@ -12,6 +12,7 @@
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -83,6 +84,9 @@
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
         .page-num { position: absolute; bottom: 15mm; left: 0; width: 100%; text-align: center; font-size: 9pt; color: #555; }
+        .page-qr { position: absolute; right: 15mm; bottom: 12mm; display: flex; flex-direction: column; align-items: center; gap: 2px; z-index: 20; background: #fff; padding: 1mm 0 0; }
+        .page-qr-label { font-size: 7.6pt; font-weight: 700; line-height: 1; color: #000; white-space: nowrap; }
+        .page-qr canvas { display: block; width: 22mm; height: 22mm; image-rendering: pixelated; }
         .notice { width: min(720px, calc(100% - 32px)); margin: 32px auto; padding: 18px; border-radius: 12px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 700; }
         @media print {
             #mode-ctrl { display: none; }
@@ -116,9 +120,33 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 const CLINIC_QPP = 4;
+const WRONG_QR_PATCH = {
+    enabled: true,
+    label: '정답·해설 확인',
+    size: 220
+};
 
 function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+function encodeBase64Url(value) {
+    const bytes = new TextEncoder().encode(String(value || ''));
+    let binary = '';
+    const chunkSize = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunkSize) {
+        binary += String.fromCharCode(...bytes.slice(i, i + chunkSize));
+    }
+    return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+}
+
+function decodeBase64Url(value) {
+    const normalized = String(value || '').replace(/-/g, '+').replace(/_/g, '/');
+    const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, '=');
+    const binary = atob(padded);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
 }
 
 function normalizeArchiveFile(file) {
@@ -137,6 +165,138 @@ function getArchiveUrl(file) {
     if (/^https?:\/\//i.test(path)) return path;
     const encodedPath = path.split('/').map(part => encodeURIComponent(part)).join('/');
     return ARCHIVE_BASE_URL + encodedPath;
+}
+
+function compactWrongItem(item) {
+    const rate = Number(item?.correctRate);
+    return [
+        normalizeArchiveFile(item?.archiveFile || ''),
+        Number(item?.questionNo || 0),
+        Number.isFinite(rate) ? Math.round(rate) : null
+    ];
+}
+
+function expandWrongItem(row) {
+    const data = Array.isArray(row) ? row : [];
+    const rate = Number(data[2]);
+    return {
+        archiveFile: data[0] || '',
+        questionNo: Number(data[1] || 0),
+        correctRate: Number.isFinite(rate) ? rate : null
+    };
+}
+
+function buildClassQrPayload(payload) {
+    return {
+        v: 2,
+        m: 'class',
+        i: (payload.classWrongItems || []).map(compactWrongItem)
+    };
+}
+
+function buildGradeQrPayload(payload) {
+    return {
+        v: 2,
+        m: 'grade',
+        i: (payload.gradeWrongItems || []).map(compactWrongItem)
+    };
+}
+
+function buildStudentQrPayload(payload, student) {
+    return {
+        v: 2,
+        m: 'student',
+        i: (student?.wrongItems || []).map(compactWrongItem)
+    };
+}
+
+function expandWrongQrPayload(compact) {
+    const mode = compact?.m === 'class' || compact?.m === 'grade' ? compact.m : 'student';
+    const base = {
+        version: 'qr-2',
+        mode,
+        printTitle: '오답 클리닉',
+        className: '',
+        createdDate: '',
+        options: { includeHomeworkCheckBox: false },
+        students: [],
+        classWrongItems: []
+    };
+
+    if (mode === 'class') {
+        base.classWrongItems = (compact?.i || []).map(expandWrongItem).filter(item => item.archiveFile && item.questionNo);
+    } else if (mode === 'grade') {
+        base.gradeWrongItems = (compact?.i || []).map(expandWrongItem).filter(item => item.archiveFile && item.questionNo);
+    } else {
+        base.students = [{
+            studentName: '오답',
+            wrongItems: (compact?.i || []).map(expandWrongItem).filter(item => item.archiveFile && item.questionNo)
+        }];
+    }
+    return base;
+}
+
+function encodeWrongQrPayload(compact) {
+    return encodeBase64Url(JSON.stringify(compact));
+}
+
+function decodeWrongQrPayload(value) {
+    return expandWrongQrPayload(JSON.parse(decodeBase64Url(value)));
+}
+
+function buildQrTargetUrl(compactPayload) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', 'sol');
+    url.searchParams.set('qr', '1');
+    url.searchParams.set('wp', encodeWrongQrPayload(compactPayload));
+    return url.toString();
+}
+
+function isQrSolutionMode() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('qr') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function applyQrSolutionLockUI() {
+    if (!isQrSolutionMode()) return;
+    const btnExam = document.getElementById('btn-exam');
+    const btnAns = document.getElementById('btn-ans');
+    const btnSol = document.getElementById('btn-sol');
+    if (btnExam) btnExam.style.display = 'none';
+    if (btnAns) btnAns.style.display = 'none';
+    if (btnSol) {
+        btnSol.classList.add('active');
+        btnSol.style.pointerEvents = 'none';
+    }
+    const title = document.getElementById('ctrl-title');
+    if (title) title.textContent = 'AP Math 오답 해설지';
+}
+
+function injectSolutionQrToPage(targetPage, compactPayload) {
+    if (!WRONG_QR_PATCH.enabled || !targetPage || !compactPayload) return;
+    if (typeof QRious !== 'function') return;
+
+    const oldQr = targetPage.querySelector('.page-qr');
+    if (oldQr) oldQr.remove();
+
+    const qrWrap = document.createElement('div');
+    qrWrap.className = 'page-qr';
+    qrWrap.innerHTML = `<div class="page-qr-label">${WRONG_QR_PATCH.label}</div><canvas></canvas>`;
+    targetPage.appendChild(qrWrap);
+
+    new QRious({
+        element: qrWrap.querySelector('canvas'),
+        value: buildQrTargetUrl(compactPayload),
+        size: WRONG_QR_PATCH.size,
+        level: 'M',
+        background: 'white',
+        foreground: 'black',
+        padding: 0
+    });
 }
 
 async function fetchArchiveText(file) {
@@ -497,6 +657,11 @@ function getStudentExamLabel(payload, student) {
     return titles.length === 1 ? titles[0] : (payload.printTitle || '오답 클리닉');
 }
 
+function getGradePrintLabel(payload) {
+    const grade = String(payload?.gradeName || '').trim();
+    return grade || '학년';
+}
+
 function cloneQuestionForRender(item) {
     const file = normalizeArchiveFile(item.archiveFile);
     const bank = state.banks[file] || [];
@@ -577,7 +742,8 @@ function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
 async function loadAllQuestionBanks(payload) {
     const files = [...new Set([
         ...((payload.students || []).flatMap(student => (student.wrongItems || []).map(item => item.archiveFile))),
-        ...((payload.classWrongItems || []).map(item => item.archiveFile))
+        ...((payload.classWrongItems || []).map(item => item.archiveFile)),
+        ...((payload.gradeWrongItems || []).map(item => item.archiveFile))
     ].filter(Boolean))];
 
     for (const file of files) {
@@ -748,6 +914,10 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
                 try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
             }
         }
+
+        if (pageIdx === pages.length - 1 && state.mode === 'exam' && !isQrSolutionMode() && pageMeta.solutionQrPayload) {
+            injectSolutionQrToPage(page.page, pageMeta.solutionQrPayload);
+        }
     }
 }
 
@@ -761,6 +931,7 @@ async function renderStudentPages(area, payload) {
             title: `${student.studentName} 오답`,
             metaLeft: '',
             metaRight: `${payload.className || ''} · ${getStudentExamLabel(payload, student)} · ${payload.createdDate || ''}`,
+            solutionQrPayload: buildStudentQrPayload(payload, student),
             homeworkCheckHTML: payload.options?.includeHomeworkCheckBox === false ? '' : `
                 <div class="homework-check">
                     <span>□ 다시 풀기 완료</span>
@@ -774,18 +945,33 @@ async function renderStudentPages(area, payload) {
 
 async function renderClassPages(area, payload) {
     const items = (payload.classWrongItems || []).map(item => {
-        const names = (item.wrongStudents || []).map(student => student.studentName).join(', ');
         const rateLabel = formatCorrectRateLabel(item);
-        const wrongLabel = `오답: ${names || '-'} / 총 ${item.wrongCount || 0}명 · 원본 ${item.questionNo}번`;
         return cloneQuestionForRender({
             ...item,
-            _wrongNote: rateLabel ? `${rateLabel} · ${wrongLabel}` : wrongLabel
+            _wrongNote: rateLabel
         });
     });
     await renderMeasuredExamPages(area, items, {
         title: `${payload.className || '반'} 반별 공통 오답지`,
         metaLeft: '',
-        metaRight: payload.createdDate || ''
+        metaRight: payload.createdDate || '',
+        solutionQrPayload: buildClassQrPayload(payload)
+    });
+}
+
+async function renderGradePages(area, payload) {
+    const items = (payload.gradeWrongItems || []).map(item => {
+        const rateLabel = formatCorrectRateLabel(item);
+        return cloneQuestionForRender({
+            ...item,
+            _wrongNote: rateLabel
+        });
+    });
+    await renderMeasuredExamPages(area, items, {
+        title: `${getGradePrintLabel(payload)} 공통 오답지`,
+        metaLeft: '',
+        metaRight: payload.createdDate || '',
+        solutionQrPayload: buildGradeQrPayload(payload)
     });
 }
 
@@ -868,18 +1054,17 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
 }
 
 async function renderSol(area, payload) {
-    if (payload.mode === 'class') {
-        const items = (payload.classWrongItems || []).map(item => {
-            const names = (item.wrongStudents || []).map(student => student.studentName).join(', ');
+    if (payload.mode === 'class' || payload.mode === 'grade') {
+        const sourceItems = payload.mode === 'grade' ? (payload.gradeWrongItems || []) : (payload.classWrongItems || []);
+        const items = sourceItems.map(item => {
             const rateLabel = formatCorrectRateLabel(item);
-            const wrongLabel = `오답: ${names || '-'} / 총 ${item.wrongCount || 0}명`;
             return cloneQuestionForRender({
                 ...item,
-                _wrongNote: rateLabel ? `${rateLabel} · ${wrongLabel}` : wrongLabel
+                _wrongNote: rateLabel
             });
         });
         await placeSolutionItems(area, items, {
-            title: `${payload.className || '반'} 해설지`,
+            title: payload.mode === 'grade' ? `${getGradePrintLabel(payload)} 해설지` : `${payload.className || '반'} 해설지`,
             metaLeft: payload.printTitle || '',
             metaRight: payload.createdDate || ''
         });
@@ -899,7 +1084,11 @@ async function renderSol(area, payload) {
     }
 }
 function collectAnswerRows(payload) {
-    const list = state.payload.mode === 'class' ? (payload.classWrongItems || []) : (payload.students || []).flatMap(student => (student.wrongItems || []).map(item => ({ ...item, studentName: student.studentName })));
+    const list = state.payload.mode === 'grade'
+        ? (payload.gradeWrongItems || [])
+        : state.payload.mode === 'class'
+        ? (payload.classWrongItems || [])
+        : (payload.students || []).flatMap(student => (student.wrongItems || []).map(item => ({ ...item, studentName: student.studentName })));
     return list.map((item, idx) => {
         const q = cloneQuestionForRender(item);
         return {
@@ -915,7 +1104,12 @@ function renderAns(area, payload) {
     let pageNo = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
-        const page = makePage(area, 'ans', payload.mode === 'class' ? `${payload.className || '반'} 정답표` : '학생별 정답표', payload.printTitle || '', `p.${pageNo}`, pageNo);
+        const title = payload.mode === 'grade'
+            ? `${getGradePrintLabel(payload)} 정답표`
+            : payload.mode === 'class'
+            ? `${payload.className || '반'} 정답표`
+            : '학생별 정답표';
+        const page = makePage(area, 'ans', title, payload.printTitle || '', `p.${pageNo}`, pageNo);
         pageNo += 1;
         const grid = document.createElement('div');
         grid.className = 'ans-grid';
@@ -943,6 +1137,8 @@ async function render() {
         renderAns(area, state.payload);
     } else if (state.mode === 'sol') {
         await renderSol(area, state.payload);
+    } else if (state.payload.mode === 'grade') {
+        await renderGradePages(area, state.payload);
     } else if (state.payload.mode === 'class') {
         await renderClassPages(area, state.payload);
     } else {
@@ -961,19 +1157,45 @@ async function render() {
 }
 
 function switchMode(mode) {
+    if (isQrSolutionMode() && mode !== 'sol') {
+        mode = 'sol';
+    }
     state.mode = mode;
     document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
     render();
 }
 
-function boot() {
+function loadPayloadFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const packed = params.get('wp');
+    if (!packed) return null;
     try {
-        const payloadJson = sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || 'null';
-        state.payload = JSON.parse(payloadJson);
-        console.log('[wrong_print_engine] payload loaded', !!state.payload);
+        return decodeWrongQrPayload(packed);
     } catch (e) {
-        state.payload = null;
+        console.warn('[wrong_print_engine] QR payload decode failed:', e);
+        return null;
     }
+}
+
+function boot() {
+    const qrMode = isQrSolutionMode();
+    state.payload = loadPayloadFromUrl();
+    if (!state.payload && !qrMode) {
+        try {
+            const payloadJson = sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || 'null';
+            state.payload = JSON.parse(payloadJson);
+            console.log('[wrong_print_engine] payload loaded', !!state.payload);
+        } catch (e) {
+            state.payload = null;
+        }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    state.mode = qrMode ? 'sol' : (params.get('mode') || state.mode || 'exam');
+    document.querySelectorAll('.mode-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === state.mode);
+    });
+    applyQrSolutionLockUI();
 
     document.querySelectorAll('.mode-tab').forEach(btn => {
         btn.addEventListener('click', () => switchMode(btn.dataset.mode || 'exam'));
