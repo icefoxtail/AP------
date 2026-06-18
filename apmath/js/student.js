@@ -2257,6 +2257,29 @@ function openStudentSchoolLedgerFromDetail() {
     openSchoolExamLedger();
 }
 
+function getStudentAcademyExamSessionsForDetail(sid) {
+    return (typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(sid)
+        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
+    ).slice().sort((a, b) =>
+        String(b.exam_date || '').localeCompare(String(a.exam_date || '')) ||
+        String(b.id || '').localeCompare(String(a.id || '')));
+}
+
+function openStudentReportOutputFromDetail(sid, sessionId = '') {
+    const key = String(sid || '');
+    if (typeof openReportCenterExam !== 'function') {
+        toast('리포트 출력 화면을 열 수 없습니다.', 'warn');
+        return;
+    }
+    const sessions = getStudentAcademyExamSessionsForDetail(key);
+    if (!sessions.length) {
+        toast('출력할 원내평가 기록이 없습니다.', 'warn');
+        return;
+    }
+    openReportCenterExam(key, sessionId || sessions[0].id || '');
+}
+
 function renderStudentSchoolLatestCard(sid, records) {
     const latest = (records || [])[0];
     if (!latest) return '';
@@ -2350,10 +2373,7 @@ function renderGradeTab(sid) {
  * 원내평가 하위 탭 — 기존 exam_sessions 기반 성적 영역(차트/오답/약한 단원) 그대로 유지.
  */
 function renderStudentAcademyGradeTab(sid) {
-    const exs = (typeof apmsGetExamSessionsForStudent === 'function'
-        ? apmsGetExamSessionsForStudent(sid)
-        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
-    ).slice().sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
+    const exs = getStudentAcademyExamSessionsForDetail(sid);
     
     const chartArea = exs.length > 0
         ? `<div style="padding: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;">
@@ -2383,6 +2403,7 @@ function renderStudentAcademyGradeTab(sid) {
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 500;">오답 없음</span>'}</div>
                 <div style="display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
+                    <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: var(--primary); border: 1px solid rgba(26,92,255,0.18); background: rgba(26,92,255,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="openStudentReportOutputFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(e.id)})">리포트 출력</button>
                     <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: #D97706; border: 1px solid rgba(217,118,6,0.25); background: rgba(217,118,6,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
                     <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(232,65,79,0.22); background: rgba(232,65,79,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
                 </div>
@@ -2413,7 +2434,12 @@ function renderStudentAcademyGradeTab(sid) {
 
     return `
         <section class="ap-student-card">
-            <div class="ap-student-section-head"><h3>최근 원내평가</h3><span>점수 · 날짜 · 시험명</span></div>
+            <div class="ap-student-section-head">
+                <h3>최근 원내평가</h3>
+                ${recentExam
+                    ? `<button class="btn ap-student-mini-btn is-primary" onclick="openStudentReportOutputFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(recentExam.id)})">리포트 출력</button>`
+                    : '<span>점수 · 날짜 · 시험명</span>'}
+            </div>
             ${recentExamCard}
         </section>
         <section class="ap-student-card">
