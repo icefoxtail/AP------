@@ -227,9 +227,9 @@ function installTimetableStyle() {
         '.tt-std-slot { min-width:0; min-height:18px; display:flex; align-items:center; justify-content:flex-start; border-radius:4px; overflow:hidden; }',
         '.tt-std-name { display:block; width:100%; min-width:0; font-size:12px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:2px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.2; letter-spacing:-0.2px; }',
         '@media (hover: hover) { .tt-std-name:hover { background:var(--surface-2); color:var(--text); } }',
-        '.tt-std-name.tt-new { color:#1A5CFF !important; }',
-        '.tt-std-name.tt-leave { color:#FF8C00 !important; }',
-        '.tt-std-name.tt-withdrawn { color:#F9A8B8 !important; background:transparent !important; border:0 !important; text-decoration:none !important; }',
+        '.tt-status-student-chip.tt-new, .tt-std-name.tt-new { color:#1A5CFF !important; }',
+        '.tt-status-student-chip.tt-leave, .tt-std-name.tt-leave { color:#FF8C00 !important; }',
+        '.tt-status-student-chip.tt-withdrawn, .tt-std-name.tt-withdrawn { color:#F9A8B8 !important; background:transparent !important; border:0 !important; text-decoration:none !important; }',
         '.tt-std-name.tt-search-hit { background:#FFE66D !important; color:#111827 !important; box-shadow:0 0 0 2px rgba(245,158,11,0.45) inset; font-weight:900; }',
         '.tt-std-name[draggable="true"] { cursor:grab; }',
         '.tt-std-name[draggable="true"]:active { cursor:grabbing; }',
@@ -3067,6 +3067,47 @@ function getTimetableClassStudentsWithInfo(classId) {
 // ────────────────────────────────────────────
 
 
+function getTimetableStudentStatusChipClass(student) {
+    return [
+        'tt-std-name',
+        'tt-status-student-chip',
+        student && student.isNew ? 'tt-new' : '',
+        student && student.isLeave ? 'tt-leave' : '',
+        student && student.isWithdrawn ? getTimetableStudentChipClass(student).trim() : '',
+        isTimetableStudentSearchMatch(student) ? 'tt-search-hit' : ''
+    ].filter(Boolean).join(' ');
+}
+
+function getTimetableStudentChipDisplayHtml(student) {
+    var newDateText = student && student.isNew ? _ttFormatMonthDay(student.enrollmentDate || '') : '';
+    return apEscapeHtml(student && student.name || '') +
+        (student && student.isNew && newDateText
+            ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(' + apEscapeHtml(newDateText) + ')</span>'
+            : '');
+}
+
+function getTimetableStudentClickHandler(student) {
+    if (isTimetableDraftMode() && student.isNew) {
+        return 'event.stopPropagation();if(typeof toast===\'function\')toast(\'\uc0c8\ud559\uae30\u0020\uc2e0\uc785\uc0dd\uc740\u0020\uc6b4\uc601\u0020\uc801\uc6a9\u0020\ud6c4\u0020\ud559\uc0dd\u0020\uc0c1\uc138\uc5d0\uc11c\u0020\ud655\uc778\ud560\u0020\uc218\u0020\uc788\uc2b5\ub2c8\ub2e4\u002e\',\'info\');';
+    }
+    return 'event.stopPropagation();openStudentDetailFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')';
+}
+
+function renderTimetableStudentStatusChip(student, classId) {
+    var dragAttrs = isTimetableAdminMode()
+        ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)" ondragend="if(event.stopPropagation)event.stopPropagation();"'
+        : '';
+
+    var studentClick = getTimetableStudentClickHandler(student);
+
+    return '<span class="' + apEscapeHtml(getTimetableStudentStatusChipClass(student)) + '"' +
+        dragAttrs +
+        ' onclick="' + studentClick + '"' +
+        ' title="' + apEscapeHtml(getTimetableStudentChipTitle(student)) + '">' +
+            getTimetableStudentChipDisplayHtml(student) +
+        '</span>';
+}
+
 function buildTimetableStudentSlot(student, classId) {
     if (!student) {
         if (isTimetableMonthArchiveMode()) return '';
@@ -3081,23 +3122,11 @@ function buildTimetableStudentSlot(student, classId) {
             '</div>';
     }
 
-    var isSearchHit = isTimetableStudentSearchMatch(student);
-    var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '') + (student.isWithdrawn ? getTimetableStudentChipClass(student) : '') + (isSearchHit ? ' tt-search-hit' : '');
-    var newDateText = student.isNew ? _ttFormatMonthDay(student.enrollmentDate || '') : '';
-    var nameText = apEscapeHtml(student.name) + (student.isNew && newDateText ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(' + apEscapeHtml(newDateText) + ')</span>' : '');
-    var dragAttrs = isTimetableAdminMode()
-        ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)" ondragend="if(event.stopPropagation)event.stopPropagation();"'
-        : '';
-
-    var studentClick = (isTimetableDraftMode() && student.isNew)
-        ? 'event.stopPropagation();if(typeof toast===\'function\')toast(\'새학기 신입생은 운영 적용 후 학생 상세에서 확인할 수 있습니다.\',\'info\');'
-        : 'event.stopPropagation();openStudentDetailFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')';
     return '' +
         '<div class="tt-std-slot">' +
-            '<span class="' + cls + '"' + dragAttrs + ' onclick="' + studentClick + '" title="' + apEscapeHtml(getTimetableStudentChipTitle(student)) + '">' +
-                nameText +
-            '</span>' +
+            renderTimetableStudentStatusChip(student, classId) +
         '</div>';
+
 }
 
 

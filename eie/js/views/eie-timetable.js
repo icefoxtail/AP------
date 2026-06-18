@@ -1579,6 +1579,10 @@
         return enrollLabel ? `${base}(${enrollLabel})` : base;
     }
 
+    function timetableStudentPlainNameText(student) {
+        return normalizeStudentName(studentSearchName(student) || student?.display_name || student?.student_name_raw || student?.normalized_name || student?.name || '') || '학생';
+    }
+
     function returnContextFor(options) {
         return {
             from: 'timetable',
@@ -1596,6 +1600,38 @@
             ctx.sessionId ? `data-eie-v2-return-session="${esc(ctx.sessionId)}"` : '',
             ctx.cellId ? `data-eie-v2-return-cell="${esc(ctx.cellId)}"` : ''
         ].filter(Boolean).join(' ');
+    }
+
+    function renderTimetableStudentStatusChip(student, options) {
+        const opts = options || {};
+        const tag = opts.tag || 'span';
+        const baseClass = opts.baseClass || 'eie-v2-student-name-chip';
+        const extraClass = normalizeKey(opts.extraClass);
+        const id = studentDetailId(student);
+        const name = studentSearchName(student) || student?.name || '학생';
+        const displayName = opts.display === 'plain' ? timetableStudentPlainNameText(student) : timetableStudentNameText(student);
+        const statusClass = studentChipStatusClass(student);
+        const classes = [
+            baseClass,
+            'eie-v2-status-student-chip',
+            statusClass.trim(),
+            extraClass
+        ].filter(Boolean).join(' ');
+        const attrs = [
+            `class="${esc(classes)}"`,
+            `title="${esc(studentChipTitle(student))}"`,
+            opts.ariaLabel ? `aria-label="${esc(opts.ariaLabel(displayName, student))}"` : '',
+            opts.linkStudent && id ? `data-eie-v2-student-id="${esc(id)}"` : '',
+            opts.linkStudent && !id && name ? `data-eie-v2-student-name="${esc(name)}"` : '',
+            opts.context ? contextAttrs(opts.context) : '',
+            opts.extraAttrs || ''
+        ].filter(Boolean).join(' ');
+
+        if (tag === 'button') {
+            return `<button type="button" ${attrs}>${esc(displayName)}</button>`;
+        }
+        const roleAttrs = opts.linkStudent && (id || name) ? ' role="button" tabindex="0"' : '';
+        return `<span${roleAttrs} ${attrs}>${esc(displayName)}</span>`;
     }
 
     function sortStudentsByName(students) {
@@ -1619,20 +1655,12 @@
         return `
             <div class="eie-v2-student-list" aria-label="학생 명단">
                 ${list.map(student => {
-                    const id = studentDetailId(student);
-                    const name = studentSearchName(student);
-                    const displayName = timetableStudentNameText(student);
                     const context = returnContextFor(options);
-                    if (shouldLink && (id || name)) {
-                        return `<span role="button" tabindex="0"
-                            class="eie-v2-student-name-chip${studentChipStatusClass(student)}"
-                            ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
-                            ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
-                            ${contextAttrs(context)}
-                            title="${esc(studentChipTitle(student))}"
-                            aria-label="${esc(displayName)} 학생관리 열기">${esc(displayName)}</span>`;
-                    }
-                    return `<span class="eie-v2-student-name-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(displayName)}</span>`;
+                    return renderTimetableStudentStatusChip(student, {
+                        linkStudent: shouldLink,
+                        context,
+                        ariaLabel: displayName => `${displayName} 학생관리 열기`
+                    });
                 }).join('')}
             </div>
         `;
@@ -1646,20 +1674,12 @@
         return `
             <div class="eie-v2-card-students" aria-label="학생 명단">
                 ${visible.map(student => {
-                    const id = studentDetailId(student);
-                    const name = studentSearchName(student);
-                    const displayName = timetableStudentNameText(student);
                     const context = returnContextFor(options);
-                    if (id || name) {
-                        return `<span role="button" tabindex="0"
-                            class="eie-v2-student-name-chip${studentChipStatusClass(student)}"
-                            ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
-                            ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
-                            ${contextAttrs(context)}
-                            title="${esc(studentChipTitle(student))}"
-                            aria-label="${esc(displayName)} 학생관리 열기">${esc(displayName)}</span>`;
-                    }
-                    return `<span class="eie-v2-student-name-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(displayName)}</span>`;
+                    return renderTimetableStudentStatusChip(student, {
+                        linkStudent: true,
+                        context,
+                        ariaLabel: displayName => `${displayName} 학생관리 열기`
+                    });
                 }).join('')}
                 ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
@@ -3272,14 +3292,17 @@
         return `
             <div class="eie-v2-class-student-grid">
                 ${students.length ? students.map(student => {
-                    const sid = studentDetailId(student);
                     const name = studentSearchName(student) || student.name || '학생';
-                    return `<button type="button" class="eie-v2-class-student-cell${studentChipStatusClass(student)}"
-                        ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
-                        ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
-                        data-eie-v2-return-session="${esc(session.session_id)}"
-                        ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}
-                        >${esc(name)}</button>`;
+                    return renderTimetableStudentStatusChip({ ...student, name }, {
+                        tag: 'button',
+                        baseClass: 'eie-v2-class-student-cell',
+                        display: 'plain',
+                        linkStudent: true,
+                        context: {
+                            sessionId: session.session_id,
+                            cellId: firstCellId
+                        }
+                    });
                 }).join('') : '<span class="eie-v2-ap-info-value is-muted">배정된 학생이 없습니다.</span>'}
                 <button type="button" class="eie-v2-class-student-cell is-add" data-eie-v2-add-student-toggle data-session-id="${esc(session.session_id)}">+ 추가</button>
             </div>
@@ -3294,14 +3317,17 @@
         return `
             <div class="eie-v2-class-student-grid">
                 ${students.map(student => {
-                    const sid = studentDetailId(student);
                     const name = studentSearchName(student) || student.name || '학생';
-                    return `<button type="button" class="eie-v2-class-student-cell${studentChipStatusClass(student)}"
-                        ${sid ? `data-eie-v2-student-id="${esc(sid)}"` : ''}
-                        ${!sid ? `data-eie-v2-student-name="${esc(name)}"` : ''}
-                        data-eie-v2-return-session="${esc(session.session_id)}"
-                        ${firstCellId ? `data-eie-v2-return-cell="${esc(firstCellId)}"` : ''}
-                        >${esc(name)}</button>`;
+                    return renderTimetableStudentStatusChip({ ...student, name }, {
+                        tag: 'button',
+                        baseClass: 'eie-v2-class-student-cell',
+                        display: 'plain',
+                        linkStudent: true,
+                        context: {
+                            sessionId: session.session_id,
+                            cellId: firstCellId
+                        }
+                    });
                 }).join('')}
             </div>
         `;

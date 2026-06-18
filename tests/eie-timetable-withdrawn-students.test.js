@@ -6,10 +6,12 @@ const vm = require('vm');
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
 const workerSource = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes/eie.js'), 'utf8');
+const miniClassroomCss = fs.readFileSync(path.join(root, 'eie/css/eie-v2-mini-classroom.css'), 'utf8');
 const css = [
   fs.readFileSync(path.join(root, 'eie/css/eie-v2-week-card.css'), 'utf8'),
   fs.readFileSync(path.join(root, 'eie/css/eie-timetable-board.css'), 'utf8'),
-  fs.readFileSync(path.join(root, 'eie/css/eie-timetable.css'), 'utf8')
+  fs.readFileSync(path.join(root, 'eie/css/eie-timetable.css'), 'utf8'),
+  miniClassroomCss
 ].join('\n');
 
 const rows = [{
@@ -48,6 +50,56 @@ function functionBody(name) {
   }
   assert.strictEqual(depth, 0, `${name} body should parse`);
   return source.slice(match.index + match[0].length, index - 1);
+}
+
+function decodeHtml(value) {
+  return String(value || '')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&');
+}
+
+function attrsOf(value) {
+  const attrs = {};
+  String(value || '').replace(/([:\w-]+)="([^"]*)"/g, (_, key, raw) => {
+    attrs[key] = decodeHtml(raw);
+    return '';
+  });
+  return attrs;
+}
+
+function elementsByClass(html, className) {
+  const result = [];
+  const pattern = /<(span|button)\b([^>]*)>([\s\S]*?)<\/\1>/g;
+  let match;
+  while ((match = pattern.exec(html))) {
+    const attrs = attrsOf(match[2]);
+    const classes = String(attrs.class || '').split(/\s+/).filter(Boolean);
+    if (!classes.includes(className)) continue;
+    result.push({
+      tag: match[1],
+      attrs,
+      classes,
+      text: decodeHtml(match[3].replace(/<[^>]+>/g, ''))
+    });
+  }
+  return result;
+}
+
+function findChip(chips, text) {
+  return chips.find(chip => chip.text.includes(text));
+}
+
+function assertLateStatusCss(status, label) {
+  const reset = '.eie-v2-week-card .eie-v2-card-students > .eie-v2-student-name-chip';
+  const selector = `.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.${status}`;
+  assert(miniClassroomCss.includes(selector), `late-loaded mini classroom CSS should preserve ${label} chips`);
+  assert(
+    miniClassroomCss.indexOf(reset) < miniClassroomCss.indexOf(selector),
+    `${label} color override should come after the generic student chip reset`
+  );
 }
 
 const state = { timetableCells: [], db: { timetable_cells: [], students: [] } };
@@ -104,6 +156,7 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
 
 (async () => {
   const html = await context.EieTimetableView.render();
+  const chips = elementsByClass(html, 'eie-v2-status-student-chip');
 
   assert(html.includes('강재원'), 'active student should remain visible');
   assert(html.includes('김휴원'), 'paused student should remain visible');
@@ -113,14 +166,28 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
   assert(!html.includes('최미상'), 'withdrawn student without a withdrawal date should be hidden');
   assert(html.includes('버그재현'), 'confirmed-only legacy payload should remain visible as a non-withdrawn student');
   assert(!html.includes('퇴원 / 2026-05-03'), 'confirmed-only legacy payload should not be treated as withdrawn');
-  assert(html.includes('is-withdrawn'), 'recent withdrawn EIE chip should include withdrawn class');
+  const withdrawnChip = chips.find(chip => chip.classes.includes('is-withdrawn'));
+  assert(withdrawnChip, 'recent withdrawn EIE chip should render as a student status chip');
+  assert(/2026-06-02$/.test(withdrawnChip.attrs.title), 'recent withdrawn EIE chip title should carry the withdrawal date');
   assert(html.includes('퇴원 / 2026-06-02'), 'recent withdrawn EIE chip should include withdrawal tooltip');
-  assert(html.includes('is-paused'), 'paused EIE chip should keep paused class');
+  const pausedChip = chips.find(chip => chip.classes.includes('is-paused'));
+  assert(pausedChip, 'paused EIE chip should render as a student status chip');
+  assert(pausedChip.text, 'paused EIE chip should keep text content');
+  const newChip = chips.find(chip => chip.classes.includes('is-new'));
+  assert(newChip, 'new EIE student should render as a student status chip');
+  assert(/\(6\/12\)$/.test(newChip.text), 'new EIE student chip text should show enrollment month/day');
   assert(html.includes('신규(6/12)'), 'new EIE student should show enrollment month/day');
   assert(!html.includes('(신)'), 'new EIE student should not show the old new-student marker');
 
+  assert(source.includes('function renderTimetableStudentStatusChip'), 'EIE timetable should use a single student status chip renderer');
+  assert(!source.includes('class="eie-v2-student-name-chip${studentChipStatusClass'), 'student name chip status classes should not be hand-built outside the common renderer');
+
   assert(css.includes('.eie-v2-student-chip.is-withdrawn'), 'EIE CSS should define student chip withdrawn style');
   assert(css.includes('.eie-v2-card-student.is-withdrawn'), 'EIE CSS should define card student withdrawn style');
+  assert(css.includes('.eie-v2-status-student-chip.is-withdrawn'), 'EIE CSS should define common withdrawn status chip style');
+  assertLateStatusCss('is-new', 'new-student blue');
+  assertLateStatusCss('is-paused', 'paused');
+  assertLateStatusCss('is-withdrawn', 'withdrawn');
   assert(css.includes('color: #F9A8B8'), 'EIE withdrawn chip should use very pale pink text');
   assert(css.includes('background: transparent'), 'EIE withdrawn chip should not fill the class box');
   assert(css.includes('border-color: transparent'), 'EIE withdrawn chip should not draw a border');
