@@ -126,25 +126,28 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
     'student row click handler should not emit nested raw quotes'
   );
   assert(
-    html.includes('onclick="EieStudentsView.selectGradeCard(&quot;중1&quot;)"') &&
-      html.includes('onclick="EieStudentsView.selectTeacherCard(&quot;IVY&quot;)"'),
-    'breakdown cards should use card-specific handlers that jump to that full student group'
+    html.includes('onchange="EieStudentsView.setGradeFilter(this.value)"') &&
+      html.includes('onchange="EieStudentsView.setTeacherFilter(this.value)"') &&
+      !html.includes('EieStudentsView.selectGradeCard') &&
+      !html.includes('EieStudentsView.selectTeacherCard'),
+    'student management should use grade and teacher dropdown filters instead of breakdown card handlers'
   );
 
-  context.EieStudentsView.selectGradeCard('중2');
-  const gradeCardHtml = await context.EieStudentsView.render();
+  context.EieStudentsView.setGradeFilter('중2');
+  const gradeFilterHtml = await context.EieStudentsView.render();
   assert(
-    gradeCardHtml.includes('Beta Student') &&
-      !gradeCardHtml.includes('Alpha Student'),
-    'clicking a grade card should show students from that grade in the visible student list'
+    gradeFilterHtml.includes('Beta Student') &&
+      !gradeFilterHtml.includes('Alpha Student'),
+    'selecting a grade should show students from that grade in the visible student list'
   );
 
-  context.EieStudentsView.selectTeacherCard('IVY');
-  const teacherCardHtml = await context.EieStudentsView.render();
+  context.EieStudentsView.setGradeFilter('all');
+  context.EieStudentsView.setTeacherFilter('IVY');
+  const teacherFilterHtml = await context.EieStudentsView.render();
   assert(
-    teacherCardHtml.includes('Alpha Student') &&
-      !teacherCardHtml.includes('Beta Student'),
-    'clicking a teacher card should clear the grade filter and show students connected to that teacher'
+    teacherFilterHtml.includes('Alpha Student') &&
+      !teacherFilterHtml.includes('Beta Student'),
+    'selecting a teacher should show students connected to that teacher'
   );
   routerOpenCount = 0;
 

@@ -96,12 +96,39 @@
             String(d.getDate()).padStart(2, '0');
     }
 
+    function rawOf(row) {
+        if (!row || typeof row !== 'object') return {};
+        if (row.raw && typeof row.raw === 'object') return row.raw;
+        const raw = row.raw_meta_json || row.raw_json || row.meta_json;
+        if (typeof raw === 'string' && raw.trim()) {
+            try { return JSON.parse(raw); } catch (_) { return {}; }
+        }
+        return {};
+    }
+
+    function dashboardEnrollDateOf(row) {
+        const raw = rawOf(row);
+        return String(row?.enrollment_date || row?.first_attendance_date || row?.first_attended_at
+            || raw.enrollment_date || raw.first_attendance_date || raw.first_attended_at || '').slice(0, 10);
+    }
+
+    function dateFromIso(value) {
+        const raw = String(value || '').slice(0, 10);
+        const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (!match) return null;
+        return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    }
+
+    function isNewStudent(row) {
+        const enrollDate = dateFromIso(dashboardEnrollDateOf(row));
+        const today = dateFromIso(todayIso());
+        if (!enrollDate || !today) return false;
+        const from = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
+        return enrollDate >= from && enrollDate <= today;
+    }
+
     function recentStudentCount(rows) {
-        const today = todayIso();
-        return rows.filter(row => {
-            const raw = String(row?.created_at || '').trim();
-            return raw.slice(0, 10) === today;
-        }).length;
+        return rows.filter(isNewStudent).length;
     }
 
     function buildGradeHoverGrid(rows) {
@@ -530,7 +557,7 @@
         const cards = teacherNames.map(name => {
             const periodRows = periodRowsForTeacher(name, data.timetableCells, today, periods);
             return `
-                <article class="card ap-admin-teacher-card eie-admin-teacher-card" role="button" tabindex="0" onclick="openDashboardTeacher(${jsArg(name)})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDashboardTeacher(${jsArg(name)})}" aria-label="${esc(name)} 선생님 현황판">
+                <article class="card ap-admin-teacher-card eie-admin-teacher-card eie-admin-teacher-card--readonly" aria-label="${esc(name)} 선생님 현황판">
                     <div class="admin-teacher-card__head">
                         <div class="admin-teacher-card__name">${esc(name)} 선생님</div>
                         <div class="admin-teacher-card__quick-actions">
@@ -539,9 +566,8 @@
                         </div>
                     </div>
                     <div class="admin-teacher-card__journal eie-admin-teacher-board">
-                        <div class="admin-teacher-card__journal-title" style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                        <div class="admin-teacher-card__journal-title">
                             <span>선생님별 현황판</span>
-                            <button type="button" class="btn admin-teacher-card__quick-action" style="min-height:28px; height:28px; padding:0 8px; font-size:11px;" onclick="event.stopPropagation(); openDashboardTeacher(${jsArg(name)})">상세</button>
                         </div>
                         ${renderTeacherPeriodRows(periodRows)}
                     </div>
@@ -742,9 +768,10 @@
     /* [REDESIGN] 운영 통계 카드 — AP 대시보드와 동일 언어.
        앞면은 큰 라인 아이콘 + 큰 라벨만(숫자/•• 없음), 호버 시 학년 브레이크다운 툴팁,
        카드 클릭 시 route로 이동. */
-    function renderEieOverviewStatCard(label, tone, iconSvg, route, hoverGridHtml) {
+    function renderEieOverviewStatCard(label, tone, iconSvg, route, hoverGridHtml, onClick) {
         const toneClass = ['blue', 'green', 'amber', 'red'].includes(tone) ? tone : 'blue';
-        const routeAttr = route ? ` role="button" tabindex="0" data-eie-route="${esc(route)}"` : '';
+        const clickAttr = onClick ? ` role="button" tabindex="0" onclick="${esc(onClick)}"` : '';
+        const routeAttr = !onClick && route ? ` role="button" tabindex="0" data-eie-route="${esc(route)}"` : '';
         const tip = hoverGridHtml
             ? `<div class="eie-owner-stat__tip"><div class="eie-owner-stat__tip-title">${esc(label)}</div>${hoverGridHtml}</div>`
             : '';
@@ -759,10 +786,9 @@
 
     function renderOverview(data) {
         const students = data.students || [];
-        const today = todayIso();
         const isDischarged = row => /퇴원|제적|discharged|inactive/i.test(String(row?.status || row?.student_status || ''));
         const activeStudents = students.filter(row => !isDischarged(row));
-        const recentStudents = students.filter(row => String(row?.created_at || '').slice(0, 10) === today);
+        const recentStudents = students.filter(isNewStudent);
         const dischargedStudents = students.filter(isDischarged);
         const icoActive = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20.5v-1.5a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4v1.5"/><circle cx="9.2" cy="7.5" r="3.6"/><path d="M21.5 20.5v-1.5a4 4 0 0 0-3-3.87"/><path d="M16.5 3.9a3.6 3.6 0 0 1 0 6.97"/></svg>';
         const icoRecent = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20.5v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1.5"/><circle cx="8" cy="7.5" r="3.6"/><path d="M19 7.5v6M22 10.5h-6"/></svg>';
@@ -771,11 +797,19 @@
             <div class="ap-admin-section eie-admin-section" style="margin-bottom:18px;">
                 <div class="eie-owner-stat-grid" aria-label="오늘 운영">
                     ${renderEieOverviewStatCard('재원생', 'blue', icoActive, 'students', buildGradeHoverGrid(activeStudents))}
-                    ${renderEieOverviewStatCard('최근 등록', 'green', icoRecent, 'students', buildGradeHoverGrid(recentStudents))}
-                    ${renderEieOverviewStatCard('퇴원', 'amber', icoLeave, 'students', buildGradeHoverGrid(dischargedStudents))}
+                    ${renderEieOverviewStatCard('최근 등록', 'green', icoRecent, 'students', buildGradeHoverGrid(recentStudents), "EieDashboardView.openStudentStatusFilter('new')")}
+                    ${renderEieOverviewStatCard('퇴원', 'amber', icoLeave, 'students', buildGradeHoverGrid(dischargedStudents), "EieDashboardView.openStudentStatusFilter('inactive')")}
                 </div>
             </div>
         `;
+    }
+
+    function openStudentStatusFilter(status) {
+        if (window.EieStudentsView && typeof EieStudentsView.setStatusFilter === 'function') {
+            EieStudentsView.setStatusFilter(status);
+            return;
+        }
+        if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('students');
     }
 
     function openDashboardStudent(studentId) {
@@ -942,10 +976,11 @@
     window.openDashboardTeacherClassroom = openDashboardTeacherClassroom;
     window.openDashboardTeacherStudents = openDashboardTeacherStudents;
     window.openDashboardStudent = openDashboardStudent;
+    window.openDashboardStudentStatusFilter = openStudentStatusFilter;
     window.openDashboardConsultationStudent = openDashboardConsultationStudent;
     window.addEieOwnerMemo = addEieOwnerMemo;
     window.toggleEieOwnerMemo = toggleEieOwnerMemo;
     window.removeEieOwnerMemo = removeEieOwnerMemo;
     window.handleOwnerMemoInputKey = handleOwnerMemoInputKey;
-    window.EieDashboardView = { render };
+    window.EieDashboardView = { render, openStudentStatusFilter };
 })();
