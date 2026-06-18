@@ -429,6 +429,22 @@
         return metaValue(student, 'enrollment_date') || metaValue(student, 'first_attendance_date') || metaValue(student, 'first_attended_at');
     }
 
+    function dateFromIso(value) {
+        var raw = text(value).slice(0, 10);
+        var match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (!match) return null;
+        return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    }
+
+    function isNewStudent(student) {
+        var enrollDate = dateFromIso(enrollDateOf(student));
+        if (!enrollDate) return false;
+        var today = dateFromIso(todayIso());
+        if (!today) return false;
+        var from = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
+        return enrollDate >= from && enrollDate <= today;
+    }
+
     function uniqueNames(rows) {
         var seen = {};
         return asArray(rows).map(text).filter(function (name) {
@@ -477,10 +493,25 @@
         timetableCells().forEach(function (cell) {
             values = values.concat(teacherNamesOfCell(cell));
         });
-        studentsFromState().forEach(function (student) {
+        studentsFromState().filter(function (student) {
+            return statusOf(student) !== 'archived';
+        }).forEach(function (student) {
             values = values.concat(teacherNamesOf(student));
         });
         return uniqueNames(values);
+    }
+
+    function teacherFilterRoster() {
+        var excludedNames = ['원장님', '프랩', 'PREP', '외국인', 'Foreigner'];
+        var values = [];
+        studentsFromState().filter(function (student) {
+            return statusOf(student) !== 'archived';
+        }).forEach(function (student) {
+            values = values.concat(teacherNamesOf(student));
+        });
+        return uniqueNames(values).filter(function (name) {
+            return excludedNames.indexOf(name) === -1;
+        });
     }
 
     async function loadTeacherRoster() {
@@ -553,13 +584,14 @@
         if (key === 'paused') return '휴원';
         if (key === 'inactive') return '퇴원';
         if (key === 'needs_review') return '확인 필요';
-        if (key === 'archived') return '보관';
         return key;
     }
 
     function statusClass(status) {
         var key = text(status) || 'active';
         if (key === 'active') return 'is-active';
+        if (key === 'paused') return 'is-paused';
+        if (key === 'inactive' || key === 'withdrawn') return 'is-withdrawn';
         if (key === 'needs_review') return 'is-review';
         if (key === 'archived') return 'is-archived';
         return 'is-muted';
@@ -588,8 +620,11 @@
 
     function matchesStatus(student) {
         var status = statusOf(student);
+        if (status === 'archived') return false;
         if (_statusFilter === 'all') return true;
+        if (_statusFilter === 'new') return isNewStudent(student);
         if (_statusFilter === 'active') return status === 'active' || status === '';
+        if (_statusFilter === 'inactive') return status === 'inactive' || status === 'withdrawn';
         return status === _statusFilter;
     }
 
@@ -787,103 +822,49 @@
         }
     }
 
-    function renderSummary() {
-        var rows = studentsFromState();
-        var active = rows.filter(function (row) { return statusOf(row) === 'active' || statusOf(row) === ''; }).length;
-        var paused = rows.filter(function (row) { return statusOf(row) === 'paused'; }).length;
-        var review = rows.filter(function (row) { return statusOf(row) === 'needs_review'; }).length;
-        var inactive = rows.filter(function (row) { return statusOf(row) === 'inactive'; }).length;
-        var archived = rows.filter(function (row) { return statusOf(row) === 'archived'; }).length;
-        return '<div class="eie-apms-summary">'
-            + '<button type="button" class="' + (_statusFilter === 'active' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'active\')"><strong>' + active + '</strong><span>재원</span></button>'
-            + '<button type="button" class="' + (_statusFilter === 'paused' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'paused\')"><strong>' + paused + '</strong><span>휴원</span></button>'
-            + '<button type="button" class="' + (_statusFilter === 'needs_review' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'needs_review\')"><strong>' + review + '</strong><span>확인 필요</span></button>'
-            + '<button type="button" class="' + (_statusFilter === 'inactive' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'inactive\')"><strong>' + inactive + '</strong><span>퇴원</span></button>'
-            + '<button type="button" class="' + (_statusFilter === 'archived' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'archived\')"><strong>' + archived + '</strong><span>보관</span></button>'
-            + '<button type="button" class="' + (_statusFilter === 'all' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'all\')"><strong>' + rows.length + '</strong><span>전체</span></button>'
-            + '</div>';
-    }
-
-    function renderGradeFilters() {
-        return '<div class="eie-apms-grade-filter" aria-label="학년 필터">'
-            + '<button type="button" class="' + (_gradeFilter === 'all' ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setGradeFilter(\'all\')">전체</button>'
-            + STUDENT_GRADE_OPTIONS.map(function (grade) {
-                return '<button type="button" class="' + (_gradeFilter === grade ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setGradeFilter(' + jsArg(grade) + ')">' + esc(grade) + '</button>';
-            }).join('')
-            + '</div>';
-    }
-
     function renderStatusFilters() {
         var items = [
-            ['active', '재원'],
-            ['paused', '휴원'],
-            ['needs_review', '확인 필요'],
-            ['inactive', '퇴원'],
-            ['archived', '보관'],
-            ['all', '전체']
+            ['active', '재원', 'active'],
+            ['new', '신입', 'new'],
+            ['paused', '휴원', 'paused'],
+            ['inactive', '퇴원', 'inactive'],
+            ['all', '전체', 'all']
         ];
-        return '<div class="eie-apms-grade-filter" aria-label="상태 필터">'
+        return '<div class="eie-apms-status-filter" aria-label="상태 필터">'
             + items.map(function (item) {
-                return '<button type="button" class="' + (_statusFilter === item[0] ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setStatusFilter(' + jsArg(item[0]) + ')">' + esc(item[1]) + '</button>';
+                return '<button type="button" class="' + (_statusFilter === item[0] ? 'is-active ' : '') + 'eie-apms-filter-chip is-' + esc(item[2]) + '" onclick="EieStudentsView.setStatusFilter(' + jsArg(item[0]) + ')">' + esc(item[1]) + '</button>';
             }).join('')
             + '</div>';
     }
 
-    function renderGradeCards() {
-        var rows = studentsFromState();
-        return '<section class="eie-apms-breakdown" aria-label="학년별 학생">'
-            + '<div class="eie-apms-breakdown-head"><h2>학년별 학생</h2><span>초1부터 고3까지 전체 학년</span></div>'
-            + '<div class="eie-apms-grade-cards">'
+    function renderFilterControls() {
+        var roster = teacherFilterRoster();
+        return '<div class="eie-apms-filter-bar">'
+            + renderStatusFilters()
+            + '<div class="eie-apms-select-filters">'
+            + '<label class="eie-apms-soft-select"><span>학년</span><select onchange="EieStudentsView.setGradeFilter(this.value)">'
+            + '<option value="all"' + (_gradeFilter === 'all' ? ' selected' : '') + '>전체</option>'
             + STUDENT_GRADE_OPTIONS.map(function (grade) {
-                var summary = studentCountSummary(studentsForGrade(grade, rows));
-                return '<button type="button" class="eie-apms-breakdown-card' + (_gradeFilter === grade && _teacherFilter === 'all' ? ' is-active' : '') + '" onclick="EieStudentsView.selectGradeCard(' + jsArg(grade) + ')">'
-                    + '<strong>' + esc(grade) + '</strong>'
-                    + '<em>' + summary.total + '명</em>'
-                    + '<span>재원 ' + summary.active + ' · 휴원 ' + summary.paused + '</span>'
-                    + '</button>';
+                return '<option value="' + esc(grade) + '"' + (_gradeFilter === grade ? ' selected' : '') + '>' + esc(grade) + '</option>';
             }).join('')
-            + '</div>'
-            + '</section>';
-    }
-
-    function renderTeacherFilters() {
-        var roster = teacherRoster();
-        if (!roster.length) return '';
-        return '<div class="eie-apms-grade-filter" aria-label="담당 선생님 필터">'
-            + '<button type="button" class="' + (_teacherFilter === 'all' ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setTeacherFilter(\'all\')">선생님 전체</button>'
+            + '</select></label>'
+            + '<label class="eie-apms-soft-select"><span>선생님</span><select onchange="EieStudentsView.setTeacherFilter(this.value)">'
+            + '<option value="all"' + (_teacherFilter === 'all' ? ' selected' : '') + '>전체</option>'
             + roster.map(function (name) {
-                return '<button type="button" class="' + (_teacherFilter === name ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setTeacherFilter(' + jsArg(name) + ')">' + esc(name) + '</button>';
+                return '<option value="' + esc(name) + '"' + (_teacherFilter === name ? ' selected' : '') + '>' + esc(name) + '</option>';
             }).join('')
+            + '</select></label>'
+            + '</div>'
             + '</div>';
-    }
-
-    function renderTeacherCards() {
-        var roster = teacherRoster();
-        if (!roster.length) return '';
-        var rows = studentsFromState();
-        return '<section class="eie-apms-breakdown" aria-label="선생님별 학생">'
-            + '<div class="eie-apms-breakdown-head"><h2>선생님별 학생</h2><span>담당 선생님/수업 배정 기준</span></div>'
-            + '<div class="eie-apms-teacher-cards">'
-            + roster.map(function (name) {
-                var summary = studentCountSummary(studentsForTeacher(name, rows));
-                return '<button type="button" class="eie-apms-breakdown-card' + (_teacherFilter === name && _gradeFilter === 'all' ? ' is-active' : '') + '" onclick="EieStudentsView.selectTeacherCard(' + jsArg(name) + ')">'
-                    + '<strong>' + esc(name) + '</strong>'
-                    + '<em>' + summary.total + '명</em>'
-                    + '<span>재원 ' + summary.active + ' · 휴원 ' + summary.paused + '</span>'
-                    + '</button>';
-            }).join('')
-            + '</div>'
-            + '</section>';
     }
 
     function renderSearchToolbar() {
         return '<div class="eie-apms-toolbar">'
             + '<label class="eie-apms-search" aria-label="학생 검색">'
-            + '<span>검색</span>'
-            + '<input type="search" value="' + esc(_query) + '" placeholder="이름, 학년, 학교, 연락처, 수업명" oninput="EieStudentsView.setQuery(this.value)">'
+            + '<span aria-hidden="true">⌕</span>'
+            + '<input type="search" value="' + esc(_query) + '" placeholder="이름, 학교, 연락처, 수업으로 검색" oninput="EieStudentsView.setQuery(this.value)">'
             + '</label>'
             + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.refresh(true)" ' + (_loading ? 'disabled' : '') + '>새로고침</button>'
-            + '<button type="button" class="' + (_printPanelOpen ? 'is-active ' : '') + 'eie-secondary-button" onclick="EieStudentsView.togglePrintPanel()">' + (_printPanelOpen ? '인쇄 닫기' : '인쇄') + '</button>'
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startCreate()">+ 신규 등록</button>'
             + '</div>';
     }
@@ -1048,7 +1029,7 @@
     function renderEmptyDetail() {
         return '<aside class="eie-apms-detail-panel is-empty">'
             + '<div class="eie-apms-detail-empty-title">학생을 선택하세요</div>'
-            + '<p>왼쪽 목록에서 학생을 선택하면 APMS 방식의 상세 패널이 열립니다.</p>'
+            + '<p>왼쪽 목록에서 학생 정보를 확인할 수 있습니다.</p>'
             + '</aside>';
     }
 
@@ -1701,18 +1682,12 @@
             var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
             var loadingHtml = _loading ? '<div class="eie-api-note">학생 정보를 불러오는 중입니다.</div>' : '';
             return '<section class="eie-apms-students-screen" aria-labelledby="eie-students-title">'
-                + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE</button>'
                 + '<div class="eie-apms-page-head">'
                 + '<div><h1 id="eie-students-title">학생관리</h1></div>'
                 + '</div>'
                 + noticeHtml + errorHtml + loadingHtml
-                + renderStatusFilters()
-                + renderGradeFilters()
-                + renderTeacherFilters()
-                + renderGradeCards()
-                + renderTeacherCards()
                 + renderSearchToolbar()
-                + renderPrintPanel()
+                + renderFilterControls()
                 + '<div class="eie-apms-student-layout">'
                 + '<div class="eie-apms-list-panel">' + renderList() + '</div>'
                 + panel

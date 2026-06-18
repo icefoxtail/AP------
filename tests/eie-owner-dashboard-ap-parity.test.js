@@ -65,6 +65,23 @@ assert(
   'EIE overview should render three large stat cards (재원생 / 최근 등록 / 퇴원) with tones'
 );
 
+assert(
+  source.includes("renderEieOverviewStatCard('퇴원', 'amber'") &&
+    source.includes("EieDashboardView.openStudentStatusFilter('inactive')") &&
+    source.includes('function openStudentStatusFilter') &&
+    source.includes('EieStudentsView.setStatusFilter(status)'),
+  'EIE withdrawn overview card should open student management with the withdrawn status filter'
+);
+
+assert(
+  source.includes("renderEieOverviewStatCard('최근 등록', 'green'") &&
+    source.includes("EieDashboardView.openStudentStatusFilter('new')") &&
+    source.includes('function isNewStudent(row)') &&
+    source.includes('today.getMonth() - 2') &&
+    source.includes('dashboardEnrollDateOf(row)'),
+  'EIE recent-registration card should use 2-month enrollment date logic and open the new-student filter'
+);
+
 const statMatch = source.match(/function\s+renderEieOverviewStatCard\s*\([^)]*\)\s*\{([\s\S]*?)\n    \}/);
 assert(statMatch, 'renderEieOverviewStatCard should exist');
 const statBody = statMatch[1];

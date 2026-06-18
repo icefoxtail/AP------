@@ -7,17 +7,18 @@ const students = fs.readFileSync(path.join(root, 'eie/js/views/eie-students.js')
 const css = fs.readFileSync(path.join(root, 'eie/css/eie-timetable-board-fixes.css'), 'utf8');
 
 assert(
-  students.includes('function renderGradeCards') &&
-    students.includes('function renderTeacherCards') &&
-    students.includes('studentsForGrade(grade, rows)') &&
-    students.includes('studentsForTeacher(name, rows)'),
-  'EIE students screen should render real grade and teacher breakdown cards from connected student data'
+  !students.includes('function renderGradeCards') &&
+    !students.includes('function renderTeacherCards') &&
+    !students.includes('renderGradeCards()') &&
+    !students.includes('renderTeacherCards()'),
+  'EIE students main screen should not render grade or teacher breakdown cards'
 );
 
 assert(
   students.includes("var STUDENT_GRADE_OPTIONS = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3']") &&
+    students.includes('<label class="eie-apms-soft-select"><span>학년</span><select onchange="EieStudentsView.setGradeFilter(this.value)">') &&
     students.includes('STUDENT_GRADE_OPTIONS.map(function (grade)'),
-  'EIE grade cards should include fixed 초1 through 고3 cards'
+  'EIE grade filtering should use a fixed 초1 through 고3 dropdown'
 );
 
 assert(
@@ -35,8 +36,49 @@ assert(
 assert(
   students.includes('var _printPanelOpen = false') &&
     students.includes("if (!_printPanelOpen) return ''") &&
-    students.includes("onclick=\"EieStudentsView.togglePrintPanel()\""),
-  'print controls should stay hidden on the main student-management screen until the user clicks the print button'
+    !students.includes("onclick=\"EieStudentsView.togglePrintPanel()\""),
+  'print controls should not be exposed in the main student-management toolbar'
+);
+
+assert(
+    students.includes('function renderStatusFilters') &&
+    students.includes("['active', '재원', 'active']") &&
+    students.includes("['new', '신입', 'new']") &&
+    students.includes("['paused', '휴원', 'paused']") &&
+    students.includes("['inactive', '퇴원', 'inactive']") &&
+    students.includes("['all', '전체', 'all']") &&
+    !students.includes("['archived', '보관'"),
+  'main status filters should show only 재원, 신입, 휴원, 퇴원, 전체 chips'
+);
+
+assert(
+  students.includes('function renderFilterControls') &&
+    students.includes('class="eie-apms-soft-select"') &&
+    students.includes('이름, 학교, 연락처, 수업으로 검색'),
+  'student-management filters should use soft dropdown controls and CRM-style search copy'
+);
+
+assert(
+  !students.includes('eie-back-button') &&
+    !students.includes('EIE 홈으로 이동') &&
+    !students.includes('← EIE'),
+  'student-management main screen should not render the EIE back button above the title'
+);
+
+assert(
+  students.includes('function teacherFilterRoster') &&
+    students.includes("'원장님', '프랩', 'PREP', '외국인', 'Foreigner'") &&
+    students.includes('var roster = teacherFilterRoster()'),
+  'teacher dropdown should exclude owner/prep/foreigner names without affecting form teacher roster'
+);
+
+assert(
+  students.includes("if (status === 'archived') return false") &&
+    students.includes("if (_statusFilter === 'new') return isNewStudent(student)") &&
+    students.includes('function isNewStudent(student)') &&
+    students.includes('today.getMonth() - 2') &&
+    students.includes("if (_statusFilter === 'inactive') return status === 'inactive' || status === 'withdrawn'"),
+  'main status filtering should exclude archived students, show new students by 2-month enroll date, and group inactive/withdrawn together'
 );
 
 assert(
@@ -57,13 +99,14 @@ for (const header of ['No', '학생명', '학년', '학교', '상태', '담당 �
 }
 
 assert(
-  css.includes('.eie-apms-grade-cards') &&
-    css.includes('.eie-apms-teacher-cards') &&
-    css.includes('.eie-student-print-table') &&
+  css.includes('.eie-student-print-table') &&
     css.includes('.eie-student-print-summary-line') &&
     css.includes('.eie-student-print-memo') &&
-    css.includes('.eie-apms-breakdown-card:hover') &&
     css.includes('.eie-apms-student-row:hover') &&
+    css.includes('--eie-primary: #0f766e') &&
+    css.includes('.eie-apms-filter-chip.is-new.is-active') &&
+    css.includes('.eie-apms-filter-bar') &&
+    css.includes('.eie-apms-soft-select') &&
     css.includes('-webkit-line-clamp: 2') &&
     css.includes('body.eie-printing-students') &&
     css.includes('size: A4 landscape'),
