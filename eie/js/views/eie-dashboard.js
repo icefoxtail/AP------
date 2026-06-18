@@ -241,81 +241,6 @@
         `;
     }
 
-    function renderActionGrid() {
-        return `
-            <div class="ap-admin-shortcuts ap-admin-action-grid eie-admin-shortcuts eie-admin-action-grid eie-surface-toolbar eie-surface-toolbar--four" aria-label="원장님 바로가기">
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="attendance" aria-label="EIE 출석부" title="출석부"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="4" width="13" height="17" rx="2.2"/><path d="M9 4V3.2A1.2 1.2 0 0 1 10.2 2h3.6A1.2 1.2 0 0 1 15 3.2V4"/><path d="M8.6 12.4l2.1 2.1 4.1-4.2"/></svg></span>출석부</button>
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="timetable" aria-label="EIE 시간표" title="시간표"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M3.5 9.5h17"/><path d="M8 3.2v3.4M16 3.2v3.4"/><path d="M7.5 13h3M13.5 13h3M7.5 16.6h3"/></svg></span>시간표</button>
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="grades" aria-label="EIE 성적표" title="성적표"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5v15a2 2 0 0 0 2 2h15"/><path d="M7.5 15l3.2-3.4 2.8 2 4.4-5.3"/></svg></span>성적표</button>
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="management" aria-label="EIE 관리" title="관리"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h8M16.5 7H20"/><path d="M4 17h3.5M11.5 17H20"/><circle cx="14.5" cy="7" r="2.3"/><circle cx="9" cy="17" r="2.3"/></svg></span>관리</button>
-            </div>
-        `;
-    }
-
-    function renderMiniMetric(label, value, route, hoverContent) {
-        const routeAttr = route ? ` data-eie-route="${esc(route)}"` : '';
-        const countText = Number(value || 0).toLocaleString('ko-KR');
-        let innerHtml = '';
-        if (typeof hoverContent === 'string' && hoverContent) {
-            innerHtml = hoverContent;
-        } else if (Array.isArray(hoverContent) && hoverContent.length) {
-            innerHtml = hoverContent.map(row => `
-                <div class="eie-admin-mini-metric__hover-row">
-                    <span>${esc(row.label)}</span>
-                    <strong>${Number(row.value || 0).toLocaleString('ko-KR')}명</strong>
-                </div>
-            `).join('');
-        }
-        const hoverAttrs = innerHtml
-            ? ` onclick="event.stopPropagation(); this.querySelector('.eie-admin-mini-metric__hover')?.classList.toggle('is-visible')" onmouseenter="this.querySelector('.eie-admin-mini-metric__hover')?.classList.add('is-visible')" onmouseleave="this.querySelector('.eie-admin-mini-metric__hover')?.classList.remove('is-visible')" onfocus="this.querySelector('.eie-admin-mini-metric__hover')?.classList.add('is-visible')" onblur="this.querySelector('.eie-admin-mini-metric__hover')?.classList.remove('is-visible')"`
-            : '';
-        const hoverPanel = innerHtml
-            ? `<div class="eie-admin-mini-metric__hover" aria-hidden="true">
-                    <div class="eie-admin-mini-metric__hover-title">${esc(label)} ${countText}명</div>
-                    ${innerHtml}
-                </div>`
-            : '';
-        // 라우트도 hover 상세도 없는 metric은 표시 전용이다. 클릭 가능한 것처럼
-        // 보이지 않도록 disabled 처리하여 "안 눌리는 버튼" 인상을 제거한다.
-        const disabledAttr = (route || innerHtml) ? '' : ' disabled';
-        return `
-            <button class="ap-admin-mini-metric eie-admin-mini-metric eie-surface-inner-card" type="button"${routeAttr}${disabledAttr} aria-label="${esc(label)} ${countText}명" title="${esc(label)} ${countText}명"${hoverAttrs}>
-                <span>${esc(label)}</span>
-                ${hoverPanel}
-            </button>
-        `;
-    }
-
-    function renderOverview(data) {
-        const students = data.students || [];
-        const today = todayIso();
-        const recentStudents = students.filter(row => {
-            const raw = String(row?.created_at || '').trim();
-            return raw.slice(0, 10) === today;
-        });
-        return `
-            <div class="ap-admin-section eie-admin-section">
-                <div class="eie-admin-section-title-row">
-                    <h3 class="ap-admin-section-title eie-admin-section-title">오늘 운영</h3>
-                </div>
-                <div class="ap-admin-overview-grid eie-admin-overview-grid eie-surface-toolbar eie-surface-toolbar--two" aria-label="오늘 운영">
-                    ${renderMiniMetric('재원', students.length, 'students', buildGradeHoverGrid(students))}
-                    ${renderMiniMetric('최근 등록', recentStudentCount(students), '', null)}
-                </div>
-            </div>
-        `;
-    }
-
-    function renderPlaceholderCard(title, copy, route) {
-        const routeAttr = route ? ` data-eie-route="${esc(route)}"` : ' disabled';
-        return `
-            <button class="card ap-admin-card eie-admin-placeholder-card eie-surface-big-card" type="button"${routeAttr} aria-label="${esc(title)}" title="${esc(title)}">
-                <strong>${esc(title)}</strong>
-                <small>${esc(copy || '준비중')}</small>
-            </button>
-        `;
-    }
-
     function attendanceRecordKey(row) {
         return String(row?.student_id || row?.studentId || row?.eie_student_id || '').trim()
             + '|'
@@ -519,44 +444,6 @@
         const cards = teacherNames.map(name => {
             const periodRows = periodRowsForTeacher(name, data.timetableCells, today, periods);
             return `
-                <article class="card ap-admin-teacher-card eie-admin-teacher-card eie-admin-teacher-card--readonly" aria-label="${esc(name)} 선생님 오늘 수업">
-                    <div class="admin-teacher-card__head">
-                        <div class="admin-teacher-card__name">${esc(name)} 선생님</div>
-                    </div>
-                    ${renderTeacherPeriodRows(periodRows)}
-                </article>
-            `;
-        }).join('');
-
-        const DAY_LABELS = ['월', '화', '수', '목', '금'];
-        const todayDow = new Date().getDay();
-        const dayChips = DAY_LABELS.map((label, index) => {
-            const isActive = (index + 1) === todayDow;
-            return `<span class="eie-admin-day-chip${isActive ? ' is-active' : ''}">${esc(label)}</span>`;
-        }).join('');
-
-        return `
-            <div class="ap-admin-section eie-admin-section">
-                <div class="eie-admin-teacher-status-head" style="margin-bottom:12px;">
-                    <h3 class="ap-admin-section-title eie-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">선생님 현황</h3>
-                    <span class="eie-owner-panel-sub">EIE · ${teacherNames.length}명</span>
-                    <div class="eie-admin-day-chips" aria-label="요일">${dayChips}</div>
-                    <span class="eie-owner-panel-meta">${['일', '월', '화', '수', '목', '금', '토'][new Date().getDay()]} ${new Date().getMonth() + 1}/${new Date().getDate()} 기준</span>
-                </div>
-                <div class="ap-admin-teacher-grid eie-admin-teacher-grid">
-                    ${cards || '<div class="card eie-admin-empty-card">등록된 선생님이 없습니다.</div>'}
-                </div>
-            </div>
-        `;
-    }
-
-    function renderTeacherStatus(data) {
-        const today = todayIso();
-        const teacherNames = teacherNamesForDashboard(data);
-        const periods = dashboardPeriodsForToday(data.timetableCells, today);
-        const cards = teacherNames.map(name => {
-            const periodRows = periodRowsForTeacher(name, data.timetableCells, today, periods);
-            return `
                 <article class="card ap-admin-teacher-card eie-admin-teacher-card eie-admin-teacher-card--readonly" aria-label="${esc(name)} 선생님 현황판">
                     <div class="admin-teacher-card__head">
                         <div class="admin-teacher-card__name">${esc(name)} 선생님</div>
@@ -665,31 +552,6 @@
                 </div>
                 <div class="card eie-admin-consultation-list">
                     ${rowHtml || '<div class="eie-admin-empty-card">최근 상담 기록이 없습니다.</div>'}
-                </div>
-            </div>
-        `;
-    }
-
-    function renderRecentStudents(data) {
-        const rows = (data.students || []).slice(0, 6);
-        const rowHtml = rows.map(student => `
-            <button class="ap-admin-recent-student-row eie-admin-recent-row" type="button" data-eie-route="students" aria-label="${esc(student.name || '학생')} 확인" title="${esc(student.name || '학생')}">
-                <span>
-                    <strong>${esc(student.name || '이름 없음')}</strong>
-                    <small>${esc([student.grade, student.status].filter(Boolean).join(' · ') || 'EIE 학생')}</small>
-                </span>
-                <em>상세</em>
-            </button>
-        `).join('');
-
-        return `
-            <div class="ap-admin-section eie-admin-section">
-                <div class="eie-admin-section-title-row eie-admin-section-title-row--split">
-                    <h3 class="ap-admin-section-title eie-admin-section-title">최근 등록 학생</h3>
-                    <span>표시 ${rows.length}명</span>
-                </div>
-                <div class="ap-admin-recent-student-grid eie-admin-recent-list">
-                    ${rowHtml || '<div class="eie-admin-empty-row">표시할 학생 정보가 없습니다.</div>'}
                 </div>
             </div>
         `;

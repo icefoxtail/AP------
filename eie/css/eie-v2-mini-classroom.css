@@ -5,7 +5,7 @@
     padding: 0 10px !important;
     border-radius: 11px !important;
     font-size: 14px !important;
-    font-weight: 800 !important;
+    font-weight: 700 !important;
     line-height: 1.2 !important;
 }
 
@@ -191,7 +191,7 @@
 .eie-weekday-grid__period span {
     color: var(--eie-muted);
     font-size: 10px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.25;
 }
 
@@ -693,6 +693,47 @@
     background: rgba(255, 255, 255, 0.90) !important;
     border-color: rgba(148, 163, 184, 0.20) !important;
     color: var(--eie-text) !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-student-name-chip,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-student-name-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: start !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 20px !important;
+    box-sizing: border-box !important;
+    padding: 3px 5px !important;
+    border: 1px solid rgba(148, 163, 184, 0.20) !important;
+    border-radius: 7px !important;
+    background: rgba(255, 255, 255, 0.90) !important;
+    color: var(--eie-text, #0f172a) !important;
+    font: inherit !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-decoration: none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-student-name-chip:hover,
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-student-name-chip:focus-visible,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-student-name-chip:hover,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-student-name-chip:focus-visible {
+    border-color: rgba(148, 163, 184, 0.28) !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    color: var(--eie-text, #0f172a) !important;
+    text-decoration: none !important;
+    outline: 2px solid rgba(15, 23, 42, 0.12) !important;
+    outline-offset: 1px !important;
 }
 
 @media (max-width: 760px) {

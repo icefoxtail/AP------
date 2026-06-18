@@ -1617,15 +1617,15 @@
                     const name = studentSearchName(student);
                     const context = returnContextFor(options);
                     if (shouldLink && (id || name)) {
-                        return `<button type="button"
-                            class="eie-v2-student-chip is-clickable${studentChipStatusClass(student)}"
+                        return `<span role="button" tabindex="0"
+                            class="eie-v2-student-name-chip${studentChipStatusClass(student)}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(studentChipTitle(student))}"
-                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipDisplayName(student))}</button>`;
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipDisplayName(student))}</span>`;
                     }
-                    return `<span class="eie-v2-student-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipDisplayName(student))}</span>`;
+                    return `<span class="eie-v2-student-name-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipDisplayName(student))}</span>`;
                 }).join('')}
             </div>
         `;
@@ -1643,15 +1643,15 @@
                     const name = studentSearchName(student);
                     const context = returnContextFor(options);
                     if (id || name) {
-                        return `<button type="button"
-                            class="eie-v2-card-student${studentChipStatusClass(student)}"
+                        return `<span role="button" tabindex="0"
+                            class="eie-v2-student-name-chip${studentChipStatusClass(student)}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(studentChipTitle(student))}"
-                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipDisplayName(student))}</button>`;
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipDisplayName(student))}</span>`;
                     }
-                    return `<span class="eie-v2-card-student${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipDisplayName(student))}</span>`;
+                    return `<span class="eie-v2-student-name-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipDisplayName(student))}</span>`;
                 }).join('')}
                 ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
@@ -3784,6 +3784,15 @@
             else if (curDraft.periodKey) { draft.periodKey = curDraft.periodKey; draft.periodLabel = curDraft.periodLabel; draft.periodOrder = curDraft.periodOrder; draft.startTime = curDraft.startTime; draft.endTime = curDraft.endTime; }
             viewState.editDraft[sid] = draft;
             reopenPanelMountRoute();
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            const studentNameChip = event.target.closest?.('.eie-v2-student-name-chip[data-eie-v2-student-id],.eie-v2-student-name-chip[data-eie-v2-student-name]');
+            if (!studentNameChip) return;
+            event.preventDefault();
+            event.stopPropagation();
+            openStudentLedgerFromTimetable(studentNameChip);
         });
 
         document.addEventListener('click', event => {
