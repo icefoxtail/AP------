@@ -9,6 +9,7 @@ import { handleEnrollments } from './routes/enrollments.js';
 import { handleClassTimeSlots } from './routes/class-time-slots.js';
 import { handleTimetableConflicts } from './routes/timetable-conflicts.js';
 import { handleTimetableVersions } from './routes/timetable-versions.js';
+import { handleTimetableMonths } from './routes/timetable-months.js';
 import { handleFoundationSync } from './routes/foundation-sync.js';
 import { handleBillingFoundation } from './routes/billing-foundation.js';
 import { handleBillingAccountingFoundation } from './routes/billing-accounting-foundation.js';
@@ -3107,7 +3108,7 @@ async function handleApiRequest(request, env) {
           if (routed) return routed;
         }
 
-        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'timetable-versions', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync', 'onboarding'].includes(resource)) {
+        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'timetable-versions', 'timetable-months', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync', 'onboarding'].includes(resource)) {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
@@ -3117,6 +3118,7 @@ async function handleApiRequest(request, env) {
             resource === 'class-time-slots' ? handleClassTimeSlots :
             (resource === 'timetable-conflicts' || resource === 'timetable-conflict-overrides') ? handleTimetableConflicts :
             resource === 'timetable-versions' ? handleTimetableVersions :
+            resource === 'timetable-months' ? handleTimetableMonths :
             resource === 'foundation-sync' ? handleFoundationSync :
             resource === 'billing-foundation' ? handleBillingFoundation :
             resource === 'billing-accounting-foundation' ? handleBillingAccountingFoundation :

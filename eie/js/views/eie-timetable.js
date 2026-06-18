@@ -477,6 +477,13 @@
         return [match[1], match[2].padStart(2, '0'), match[3].padStart(2, '0')].join('-');
     }
 
+    function formatTimetableMonthDay(value) {
+        const date = normalizeTimetableDate(value);
+        if (!date) return '';
+        const parts = date.split('-');
+        return `${Number(parts[1])}/${Number(parts[2])}`;
+    }
+
     function timetableTodayDate() {
         return normalizeTimetableDate(window.TIMETABLE_WITHDRAWN_TODAY || new Date().toISOString());
     }
@@ -492,6 +499,12 @@
             String(date.getMonth() + 1).padStart(2, '0'),
             String(date.getDate()).padStart(2, '0')
         ].join('-');
+    }
+
+    function timetableWithdrawalCutoff(today) {
+        const base = normalizeTimetableDate(today || timetableTodayDate());
+        const year = base ? base.slice(0, 4) : String(new Date().getFullYear());
+        return `${year}-06-01`;
     }
 
     function isWithdrawnStudent(row) {
@@ -529,7 +542,7 @@
     function isRecentWithdrawnStudent(row, today) {
         if (!isWithdrawnStudent(row)) return false;
         const withdrawalDate = getStudentWithdrawalDate(row);
-        const cutoff = timetableTwoMonthsAgo(today);
+        const cutoff = timetableWithdrawalCutoff(today);
         return Boolean(withdrawalDate && cutoff && withdrawalDate >= cutoff);
     }
 
@@ -1414,6 +1427,12 @@
         return chars.length > 3 ? chars.slice(0, 3).join('') : text;
     }
 
+    function studentChipDisplayName(student) {
+        const base = studentChipName(studentSearchName(student) || student?.name || '');
+        const enrollLabel = isRecentNewStudent(student) ? formatTimetableMonthDay(studentEnrollDate(student)) : '';
+        return enrollLabel ? `${base}(${enrollLabel})` : base;
+    }
+
     function returnContextFor(options) {
         return {
             from: 'timetable',
@@ -1464,9 +1483,9 @@
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(studentChipTitle(student))}"
-                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipDisplayName(student))}</button>`;
                     }
-                    return `<span class="eie-v2-student-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipName(student.name))}</span>`;
+                    return `<span class="eie-v2-student-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipDisplayName(student))}</span>`;
                 }).join('')}
             </div>
         `;
@@ -1490,9 +1509,9 @@
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(studentChipTitle(student))}"
-                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipDisplayName(student))}</button>`;
                     }
-                    return `<span class="eie-v2-card-student${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipName(student.name))}</span>`;
+                    return `<span class="eie-v2-card-student${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(studentChipDisplayName(student))}</span>`;
                 }).join('')}
                 ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
@@ -3531,6 +3550,7 @@
                         ? `<button type="button" class="eie-primary-button" data-eie-edit-save ${viewState.editSaving ? 'disabled' : ''}>${viewState.editSaving ? '저장 중...' : '저장'}</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-cancel>취소</button>`
                         : `${renderWeekdayOverlayTabs(viewState.activeDayOverlay)}
+                           <button type="button" class="eie-secondary-button" data-eie-route="timetable-months">월별 시간표</button>
                            <button type="button" class="eie-secondary-button eie-v2-print-button" data-eie-print-timetable title="시간표 인쇄">인쇄</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표 편집</button>
                            <button type="button" class="eie-secondary-button${viewState.zoomBoosted ? ' is-active' : ''}" data-eie-zoom-boost>${viewState.zoomBoosted ? '작게 보기' : '크게 보기'}</button>`

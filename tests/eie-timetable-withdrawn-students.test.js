@@ -25,11 +25,12 @@ const rows = [{
   assigned_students: [
     { student_id: 's_active', name: '강재원', status: 'active' },
     { student_id: 's_paused', name: '김휴원', status: 'paused' },
-    { student_id: 's_recent', name: '박최근', status: 'inactive', student_status: 'inactive', withdrawn_at: '2026-05-02T08:00:00+09:00', match_status: 'confirmed' },
-    { student_id: 's_boundary', name: '오경계', status: 'archived', student_status: 'archived', withdrawn_at: '2026-04-14', match_status: 'confirmed' },
-    { student_id: 's_old', name: '이오래', status: 'withdrawn', student_status: 'withdrawn', withdrawn_at: '2026-04-13', match_status: 'confirmed' },
+    { student_id: 's_recent', name: '박최근', status: 'inactive', student_status: 'inactive', withdrawn_at: '2026-06-02T08:00:00+09:00', match_status: 'confirmed' },
+    { student_id: 's_boundary', name: '오경계', status: 'archived', student_status: 'archived', withdrawn_at: '2026-06-01', match_status: 'confirmed' },
+    { student_id: 's_old', name: '이오래', status: 'withdrawn', student_status: 'withdrawn', withdrawn_at: '2026-05-31', match_status: 'confirmed' },
     { student_id: 's_missing', name: '최미상', status: 'inactive', student_status: 'inactive', match_status: 'confirmed' },
-    { student_id: 's_bug', name: '버그재현', withdrawn_at: '2026-05-03T08:00:00+09:00', match_status: 'confirmed' }
+    { student_id: 's_bug', name: '버그재현', withdrawn_at: '2026-05-03T08:00:00+09:00', match_status: 'confirmed' },
+    { student_id: 's_new', name: '신규', status: 'active', enrollment_date: '2026-06-12', match_status: 'confirmed' }
   ]
 }];
 
@@ -113,8 +114,10 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
   assert(html.includes('버그재현'), 'confirmed-only legacy payload should remain visible as a non-withdrawn student');
   assert(!html.includes('퇴원 / 2026-05-03'), 'confirmed-only legacy payload should not be treated as withdrawn');
   assert(html.includes('is-withdrawn'), 'recent withdrawn EIE chip should include withdrawn class');
-  assert(html.includes('퇴원 / 2026-05-02'), 'recent withdrawn EIE chip should include withdrawal tooltip');
+  assert(html.includes('퇴원 / 2026-06-02'), 'recent withdrawn EIE chip should include withdrawal tooltip');
   assert(html.includes('is-paused'), 'paused EIE chip should keep paused class');
+  assert(html.includes('신규(6/12)'), 'new EIE student should show enrollment month/day');
+  assert(!html.includes('(신)'), 'new EIE student should not show the old new-student marker');
 
   assert(css.includes('.eie-v2-student-chip.is-withdrawn'), 'EIE CSS should define student chip withdrawn style');
   assert(css.includes('.eie-v2-card-student.is-withdrawn'), 'EIE CSS should define card student withdrawn style');

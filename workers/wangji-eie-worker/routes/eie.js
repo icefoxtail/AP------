@@ -1828,6 +1828,313 @@ async function attachAssignedStudents(env, rows) {
   }
 }
 
+function monthKeyFromDate(date = new Date()) {
+  const kst = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+  return `${kst.getUTCFullYear()}-${String(kst.getUTCMonth() + 1).padStart(2, '0')}`;
+}
+
+function monthEndDate(monthKey) {
+  const match = String(monthKey || '').match(/^(\d{4})-(\d{2})$/);
+  if (!match) return '';
+  return new Date(Date.UTC(Number(match[1]), Number(match[2]), 0)).toISOString().slice(0, 10);
+}
+
+function normalizeMonthKey(value) {
+  const text = safeText(value);
+  return /^\d{4}-\d{2}$/.test(text) ? text : monthKeyFromDate();
+}
+
+function normalizeSnapshotDate(value, monthKey) {
+  const text = safeText(value);
+  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : monthEndDate(monthKey);
+}
+
+export function normalizeSnapshotStudentKey(row) {
+  const sourceId = safeText(row.source_student_id);
+  if (sourceId) return `id:${sourceId}`;
+  return [
+    safeText(row.normalized_name || row.display_name).replace(/\s+/g, ''),
+    row.grade || '',
+    row.school_name || ''
+  ].join('::');
+}
+
+export function snapshotPositionKey(row) {
+  return [
+    row.source_cell_id || '',
+    row.day_label || '',
+    row.period_label || '',
+    row.start_time || '',
+    row.end_time || '',
+    row.class_name_raw || '',
+    row.teacher_name_raw || '',
+    row.column_index == null ? '' : String(row.column_index),
+    row.slot_lane == null ? '' : String(row.slot_lane)
+  ].join(' / ');
+}
+
+function sortedUniqueSnapshotPositions(values) {
+  return Array.from(new Set((values || []).filter(Boolean))).sort();
+}
+
+function snapshotSetDiff(a, b) {
+  const bSet = new Set(b);
+  return a.filter(value => !bSet.has(value));
+}
+
+function sameSnapshotSet(a, b) {
+  return a.length === b.length && a.every((value, index) => value === b[index]);
+}
+
+export function buildEieTimetableMonthChangeSet(previous, current) {
+  const previousRows = Array.isArray(previous?.students) ? previous.students : [];
+  const currentRows = Array.isArray(current?.students) ? current.students : [];
+  const previousCells = new Map((previous?.timetable_cells || []).map(row => [row.id, row]));
+  const currentCells = new Map((current?.timetable_cells || []).map(row => [row.id, row]));
+  const prevByKey = new Map();
+  const curByKey = new Map();
+
+  for (const row of previousRows) {
+    const key = normalizeSnapshotStudentKey(row);
+    const list = prevByKey.get(key) || [];
+    list.push(row);
+    prevByKey.set(key, list);
+  }
+  for (const row of currentRows) {
+    const key = normalizeSnapshotStudentKey(row);
+    const list = curByKey.get(key) || [];
+    list.push(row);
+    curByKey.set(key, list);
+  }
+
+  const joined = [];
+  const left = [];
+  const moved = [];
+  for (const [key, rows] of curByKey.entries()) {
+    if (!prevByKey.has(key)) {
+      joined.push({ student: rows[0], rows, positions: sortedUniqueSnapshotPositions(rows.map(row => snapshotPositionKey(currentCells.get(row.snapshot_cell_id) || {}))) });
+    }
+  }
+  for (const [key, rows] of prevByKey.entries()) {
+    if (!curByKey.has(key)) {
+      left.push({ student: rows[0], rows, positions: sortedUniqueSnapshotPositions(rows.map(row => snapshotPositionKey(previousCells.get(row.snapshot_cell_id) || {}))) });
+    }
+  }
+  for (const [key, currentList] of curByKey.entries()) {
+    const previousList = prevByKey.get(key);
+    if (!previousList) continue;
+    const beforePositions = sortedUniqueSnapshotPositions(previousList.map(row => snapshotPositionKey(previousCells.get(row.snapshot_cell_id) || {})));
+    const afterPositions = sortedUniqueSnapshotPositions(currentList.map(row => snapshotPositionKey(currentCells.get(row.snapshot_cell_id) || {})));
+    if (!sameSnapshotSet(beforePositions, afterPositions)) {
+      moved.push({
+        student: currentList[0],
+        before: previousList[0],
+        rows: currentList,
+        before_rows: previousList,
+        before_positions: beforePositions,
+        after_positions: afterPositions,
+        removed_positions: snapshotSetDiff(beforePositions, afterPositions),
+        added_positions: snapshotSetDiff(afterPositions, beforePositions),
+        before_position: beforePositions.join(' | '),
+        after_position: afterPositions.join(' | ')
+      });
+    }
+  }
+  return { joined, left, moved };
+}
+
+async function listEieTimetableMonthSnapshots(env) {
+  const res = await env.DB.prepare(`
+    SELECT s.*, COUNT(c.id) AS cell_count, COALESCE(SUM(c.student_count), 0) AS student_count
+    FROM eie_timetable_month_snapshots s
+    LEFT JOIN eie_timetable_month_snapshot_cells c ON c.snapshot_id = s.id
+    GROUP BY s.id
+    ORDER BY s.month_key DESC, s.snapshot_date DESC
+  `).all();
+  return res.results || [];
+}
+
+async function loadEieTimetableMonthSnapshot(env, monthKey) {
+  const snapshot = await env.DB.prepare(`
+    SELECT *
+    FROM eie_timetable_month_snapshots
+    WHERE month_key = ?
+    ORDER BY snapshot_date DESC, created_at DESC
+    LIMIT 1
+  `).bind(monthKey).first();
+  if (!snapshot) return null;
+  const [cellsRes, studentsRes] = await Promise.all([
+    env.DB.prepare(`
+      SELECT *
+      FROM eie_timetable_month_snapshot_cells
+      WHERE snapshot_id = ?
+      ORDER BY sort_order ASC, day_label ASC, period_order ASC, column_index ASC
+    `).bind(snapshot.id).all(),
+    env.DB.prepare(`
+      SELECT *
+      FROM eie_timetable_month_snapshot_students
+      WHERE snapshot_id = ?
+      ORDER BY sort_order ASC, display_name ASC
+    `).bind(snapshot.id).all()
+  ]);
+  const cells = cellsRes.results || [];
+  const students = studentsRes.results || [];
+  const byCell = new Map();
+  for (const row of students) {
+    const list = byCell.get(row.snapshot_cell_id) || [];
+    list.push(row);
+    byCell.set(row.snapshot_cell_id, list);
+  }
+  return {
+    snapshot,
+    timetable_cells: cells.map(cell => ({ ...cell, assigned_students: byCell.get(cell.id) || [] })),
+    students
+  };
+}
+
+async function buildCurrentEieSnapshotRows(env) {
+  const currentCells = await attachAssignedStudents(env, await queryTimetableCells(env, '', { statuses: ['active', 'imported', 'needs_review'] }));
+  const cells = [];
+  const students = [];
+  currentCells.forEach((cell, cellIndex) => {
+    const snapshotCellId = makeId('eie_tmc');
+    const teacherNames = normalizeTeacherNames(cell.teacher_names || parseRawMeta(cell.raw_meta_json).teacher_names || cell.teacher_name_raw);
+    const assigned = Array.isArray(cell.assigned_students) ? cell.assigned_students : [];
+    cells.push({
+      id: snapshotCellId,
+      source_cell_id: cell.id || '',
+      day_label: cell.day_label || '',
+      period_label: cell.period_label || '',
+      period_order: cell.period_order,
+      start_time: cell.start_time || '',
+      end_time: cell.end_time || '',
+      class_name_raw: cell.class_name_raw || '',
+      teacher_name_raw: cell.teacher_name_raw || '',
+      teacher_names_json: JSON.stringify(teacherNames),
+      room_raw: cell.room_raw || '',
+      column_index: cell.column_index,
+      slot_lane: Number(cell.slot_lane) || 1,
+      student_count: assigned.length,
+      memo: cell.memo || '',
+      raw_meta_json: toJsonText({ cell }),
+      sort_order: cellIndex
+    });
+    assigned.forEach((student, studentIndex) => {
+      students.push({
+        id: makeId('eie_tms'),
+        snapshot_cell_id: snapshotCellId,
+        source_assignment_id: student.assignment_id || student.id || '',
+        source_student_id: student.student_id || student.id || '',
+        display_name: student.display_name || student.name || '',
+        normalized_name: student.normalized_name || normalizeName(student.display_name || student.name || ''),
+        grade: student.grade || student.grade_raw || '',
+        school_name: student.school_name || parseRawMeta(student.raw_meta_json).school_name || '',
+        student_status: student.student_status || student.status || '',
+        student_type: student.student_type || parseRawMeta(student.raw_meta_json).student_type || '',
+        student_phone: student.student_phone || '',
+        parent_phone: student.parent_phone || '',
+        enrollment_date: student.enrollment_date || parseRawMeta(student.raw_meta_json).enrollment_date || '',
+        withdrawn_at: student.withdrawn_at || '',
+        raw_meta_json: toJsonText({ student }),
+        sort_order: cellIndex * 1000 + studentIndex
+      });
+    });
+  });
+  return { cells, students };
+}
+
+async function createEieTimetableMonthSnapshot(request, env, teacher) {
+  const ownerOnly = requireEieOwner(teacher);
+  if (ownerOnly) return ownerOnly;
+  const body = await readJsonBody(request) || {};
+  const monthKey = normalizeMonthKey(body.month_key || body.monthKey);
+  const snapshotDate = normalizeSnapshotDate(body.snapshot_date || body.snapshotDate, monthKey);
+  const mode = body.mode === 'upsert' ? 'upsert' : 'insert';
+  const existing = await env.DB.prepare(`
+    SELECT id FROM eie_timetable_month_snapshots
+    WHERE month_key = ? AND snapshot_date = ?
+    LIMIT 1
+  `).bind(monthKey, snapshotDate).first();
+  if (existing && mode !== 'upsert') return jsonResponse({ success: false, error: 'snapshot already exists' }, 409);
+  if (existing) await env.DB.prepare('DELETE FROM eie_timetable_month_snapshots WHERE id = ?').bind(existing.id).run();
+
+  const snapshotId = makeId('eie_tmsnap');
+  const rows = await buildCurrentEieSnapshotRows(env);
+  await env.DB.prepare(`
+    INSERT INTO eie_timetable_month_snapshots
+      (id, month_key, snapshot_date, title, status, source_type, source_hash, memo, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, 'active', ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    snapshotId,
+    monthKey,
+    snapshotDate,
+    body.title || `${monthKey} EIE timetable`,
+    body.source_type || body.sourceType || 'manual',
+    await sha256hex(JSON.stringify(rows)),
+    body.memo || '',
+    teacher?.id || null
+  ).run();
+
+  const stmts = [];
+  for (const cell of rows.cells) {
+    stmts.push(env.DB.prepare(`
+      INSERT INTO eie_timetable_month_snapshot_cells
+        (id, snapshot_id, source_cell_id, day_label, period_label, period_order, start_time, end_time, class_name_raw,
+         teacher_name_raw, teacher_names_json, room_raw, column_index, slot_lane, student_count, memo, raw_meta_json, sort_order)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(
+      cell.id, snapshotId, cell.source_cell_id, cell.day_label, cell.period_label, cell.period_order,
+      cell.start_time, cell.end_time, cell.class_name_raw, cell.teacher_name_raw, cell.teacher_names_json,
+      cell.room_raw, cell.column_index, cell.slot_lane, cell.student_count, cell.memo, cell.raw_meta_json, cell.sort_order
+    ));
+  }
+  for (const student of rows.students) {
+    stmts.push(env.DB.prepare(`
+      INSERT INTO eie_timetable_month_snapshot_students
+        (id, snapshot_id, snapshot_cell_id, source_assignment_id, source_student_id, display_name, normalized_name,
+         grade, school_name, student_status, student_type, student_phone, parent_phone, enrollment_date, withdrawn_at,
+         raw_meta_json, sort_order)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(
+      student.id, snapshotId, student.snapshot_cell_id, student.source_assignment_id, student.source_student_id,
+      student.display_name, student.normalized_name, student.grade, student.school_name, student.student_status,
+      student.student_type, student.student_phone, student.parent_phone, student.enrollment_date, student.withdrawn_at,
+      student.raw_meta_json, student.sort_order
+    ));
+  }
+  if (stmts.length) await env.DB.batch(stmts);
+  const loaded = await loadEieTimetableMonthSnapshot(env, monthKey);
+  return jsonResponse({ success: true, ...loaded, data: loaded });
+}
+
+async function compareEieTimetableMonthSnapshots(env, monthKey, compareMonthKey) {
+  const current = await loadEieTimetableMonthSnapshot(env, monthKey);
+  const previous = await loadEieTimetableMonthSnapshot(env, compareMonthKey);
+  if (!current || !previous) return { current, previous, joined: [], left: [], moved: [] };
+  return { current, previous, ...buildEieTimetableMonthChangeSet(previous, current) };
+}
+
+async function handleEieTimetableMonths(request, env, teacher, path, url) {
+  const method = request.method;
+  const monthKey = path[3] || '';
+  const action = path[4] || '';
+  if (method === 'GET' && !monthKey) {
+    const months = await listEieTimetableMonthSnapshots(env);
+    return jsonResponse({ success: true, months, data: months });
+  }
+  if (method === 'GET' && monthKey && action === 'changes') {
+    const changes = await compareEieTimetableMonthSnapshots(env, normalizeMonthKey(monthKey), normalizeMonthKey(url.searchParams.get('compare')));
+    return jsonResponse({ success: true, ...changes, data: changes });
+  }
+  if (method === 'GET' && monthKey && !action) {
+    const loaded = await loadEieTimetableMonthSnapshot(env, normalizeMonthKey(monthKey));
+    if (!loaded) return jsonResponse({ success: false, error: 'snapshot not found' }, 404);
+    return jsonResponse({ success: true, ...loaded, data: loaded });
+  }
+  if (method === 'POST' && monthKey === 'snapshot') return createEieTimetableMonthSnapshot(request, env, teacher);
+  return null;
+}
+
 async function handleGet(request, env, path, url) {
   const section = path[2] || '';
   const action = path[3] || '';
@@ -2834,6 +3141,11 @@ export async function handleEie(request, env, teacher, path, url) {
   if (!teacher || !teacher.id) return jsonResponse({ success: false, error: 'unauthorized' }, 401);
 
   const method = request.method;
+
+  if (path[2] === 'timetable-months') {
+    const routed = await handleEieTimetableMonths(request, env, teacher, path, url);
+    if (routed) return routed;
+  }
 
   if (method === 'GET' && path[2] === 'teachers' && !path[3]) {
     const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
