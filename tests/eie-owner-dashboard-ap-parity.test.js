@@ -7,19 +7,22 @@ const source = fs.readFileSync(path.join(root, 'eie/js/views/eie-dashboard.js'),
 const css = (function(){ const idx = fs.readFileSync(path.join(root, 'eie/index.html'), 'utf8'); const list = (idx.match(/href="\.\/css\/(eie[\w-]*\.css)"/g) || []).map(function(m){ return m.replace(/^.*\/css\//, '').replace(/".*$/, ''); }); return list.map(function(f){ return fs.readFileSync(path.join(root, 'eie/css', f), 'utf8'); }).join('\n'); })();
 
 const expectedRenderOrder = [
-  'renderGate()',
+  'renderTopbar()',
   'renderActionGrid()',
   'renderOverview(data)',
   'renderTeacherStatus(data)',
   'renderRecentConsultationPanel(data)',
-  'renderRecentStudents(data)',
   'renderWeeklySchedulePlaceholder()',
+  'renderRecentStudents(data)',
   'renderBottomSearchPlaceholder()'
 ];
 
+const renderBodyMatch = source.match(/async\s+function\s+render\s*\(\)\s*\{([\s\S]*?)\n    \}/);
+assert(renderBodyMatch, 'EIE dashboard should expose an async render function');
+const renderBody = renderBodyMatch[1];
 let previousIndex = -1;
 for (const token of expectedRenderOrder) {
-  const index = source.indexOf(token);
+  const index = renderBody.indexOf(token);
   assert(index > previousIndex, `EIE owner dashboard should render ${token} in AP dashboard order`);
   previousIndex = index;
 }
@@ -27,6 +30,16 @@ for (const token of expectedRenderOrder) {
 assert(
   !source.includes('renderStatusGrid') && !source.includes('eie-admin-status-grid'),
   'EIE dashboard should not keep its old custom status-grid layout'
+);
+
+for (const fnName of ['renderActionGrid', 'renderOverview', 'renderTeacherStatus', 'renderRecentStudents']) {
+  const matches = source.match(new RegExp(`function\\s+${fnName}\\s*\\(`, 'g')) || [];
+  assert.strictEqual(matches.length, 1, `EIE dashboard should keep exactly one ${fnName} implementation`);
+}
+
+assert(
+  !source.includes('function renderMiniMetric') && !source.includes('function renderPlaceholderCard'),
+  'EIE dashboard should not retain legacy metric/placeholder card renderers'
 );
 
 // [REDESIGN] 상단 바: 날짜 + 컴팩트 AP/EIE pill 토글 + 통합검색 (AP 새 디자인 언어와 정렬)
