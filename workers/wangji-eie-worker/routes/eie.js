@@ -43,6 +43,12 @@ function safeText(value) {
 function normalizeEieGrade(value) {
   const raw = safeText(value).replace(/\s+/g, '');
   const aliases = {
+    초1: '초1', 초등1: '초1', 초등1학년: '초1', 초등학교1: '초1', 초등학교1학년: '초1',
+    초2: '초2', 초등2: '초2', 초등2학년: '초2', 초등학교2: '초2', 초등학교2학년: '초2',
+    초3: '초3', 초등3: '초3', 초등3학년: '초3', 초등학교3: '초3', 초등학교3학년: '초3',
+    초4: '초4', 초등4: '초4', 초등4학년: '초4', 초등학교4: '초4', 초등학교4학년: '초4',
+    초5: '초5', 초등5: '초5', 초등5학년: '초5', 초등학교5: '초5', 초등학교5학년: '초5',
+    초6: '초6', 초등6: '초6', 초등6학년: '초6', 초등학교6: '초6', 초등학교6학년: '초6',
     중1: '중1', 중학교1: '중1', 중학교1학년: '중1', 중등1: '중1', 중등1학년: '중1',
     중2: '중2', 중학교2: '중2', 중학교2학년: '중2', 중등2: '중2', 중등2학년: '중2',
     중3: '중3', 중학교3: '중3', 중학교3학년: '중3', 중등3: '중3', 중등3학년: '중3',
@@ -51,6 +57,8 @@ function normalizeEieGrade(value) {
     고3: '고3', 고등3: '고3', 고등3학년: '고3', 고등학교3: '고3', 고등학교3학년: '고3'
   };
   if (aliases[raw]) return aliases[raw];
+  const elementary = raw.match(/^초(?:등|등학교)?([1-6])(?:학년)?$/);
+  if (elementary) return `초${elementary[1]}`;
   const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
   if (middle) return `중${middle[1]}`;
   const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
@@ -903,12 +911,20 @@ function contactDeleteDeferredResponse() {
 }
 
 async function queryConsultations(env, studentId) {
+  if (studentId) {
+    const result = await env.DB.prepare(`
+      SELECT id, student_id, date, type, content, next_action, created_at
+      FROM consultations
+      WHERE student_id = ?
+      ORDER BY date DESC, created_at DESC
+    `).bind(studentId).all();
+    return result.results || [];
+  }
   const result = await env.DB.prepare(`
     SELECT id, student_id, date, type, content, next_action, created_at
     FROM consultations
-    WHERE student_id = ?
     ORDER BY date DESC, created_at DESC
-  `).bind(studentId).all();
+  `).all();
   return result.results || [];
 }
 
@@ -923,8 +939,7 @@ async function getConsultation(env, id) {
 
 async function handleGetConsultations(env, url) {
   const studentId = safeText(url.searchParams.get('student_id'));
-  if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
-  const rows = await queryConsultations(env, studentId);
+  const rows = await queryConsultations(env, studentId || null);
   return jsonResponse({ success: true, data: rows, consultations: rows });
 }
 
@@ -1897,7 +1912,7 @@ async function handleGet(request, env, path, url) {
 
   if (section === 'consultations') {
     try {
-      return handleGetConsultations(env, url);
+      return await handleGetConsultations(env, url);
     } catch (error) {
       return jsonResponse({ success: false, error: 'consultations table is not ready', code: 'EIE_NOT_IMPLEMENTED' }, 409);
     }

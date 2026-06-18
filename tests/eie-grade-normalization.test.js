@@ -26,6 +26,11 @@ const normalize = context.EieGradeUtils.normalizeEieGrade;
   ['중학교2', '중2'],
   ['중등2학년', '중2'],
   ['중학교3학년', '중3'],
+  ['초1', '초1'],
+  ['초등1', '초1'],
+  ['초등학교1학년', '초1'],
+  ['초6', '초6'],
+  ['초등학교6학년', '초6'],
   ['고 1', '고1'],
   ['고등학교1학년', '고1'],
   ['고등2', '고2'],
@@ -35,10 +40,11 @@ const normalize = context.EieGradeUtils.normalizeEieGrade;
   assert.strictEqual(normalize(input), expected, `${input} should normalize to ${expected}`);
 });
 
-['', null, undefined, 'fp3', '영어', '초4', '학년'].forEach(value => {
+['', null, undefined, 'fp3', '영어', '학년'].forEach(value => {
   assert.strictEqual(normalize(value), '', `${value} should not become a fake grade`);
 });
 
+assert.strictEqual(context.EieGradeUtils.gradeBand('초3'), 'elementary');
 assert.strictEqual(context.EieGradeUtils.gradeBand('중1'), 'middle');
 assert.strictEqual(context.EieGradeUtils.gradeBand('고2'), 'high');
 assert.strictEqual(context.EieGradeUtils.gradeBand('fp3'), '');
@@ -55,7 +61,7 @@ assert(utilLoadIndex > 0, 'index should load EIE grade utility');
 });
 
 const timetable = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
-assert(!timetable.includes("'초1', '초2', '초3', '초4', '초5', '초6'"), 'timetable grade select should not expose elementary grades for this MVP');
+assert(timetable.includes("'초1', '초2', '초3', '초4', '초5', '초6'"), 'timetable grade select should include elementary grades');
 assert(timetable.includes("normalizeGrade(studentFieldValue('eie-v2-edit-grade'))"), 'timetable student payloads should normalize grade before save');
 
 const worker = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes/eie.js'), 'utf8');
