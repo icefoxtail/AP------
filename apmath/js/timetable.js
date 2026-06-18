@@ -2371,6 +2371,7 @@ async function confirmTimetableClassMove() {
 }
 
 function buildTimetableCellAttrs(section, data) {
+    if (isTimetableMonthArchiveMode()) return '';
     if (!isTimetableAdminMode()) return '';
     return ' data-timetable-cell="1"' +
         ' data-section="' + apEscapeHtml(section || '') + '"' +
@@ -2387,6 +2388,7 @@ function buildTimetableCellAttrs(section, data) {
 
 
 function buildTimetableAddClassButton(cell) {
+    if (isTimetableMonthArchiveMode()) return '';
     if (!isTimetableAdminMode() || cell.section !== 'middle') return '';
     var encoded = encodeURIComponent(JSON.stringify(cell));
     return '<button class="tt-add-class-cell" onclick="event.stopPropagation();openTimetableAddClassModal(\'' + encoded + '\')">+ 반 추가</button>';
@@ -3134,10 +3136,10 @@ function buildTimetableCard(cls, options) {
     var progressHtml = progress
         ? '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>'
         : '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
-    var cardDragAttrs = isTimetableAdminMode() && options.enableClassDrag !== false
+    var cardDragAttrs = !isTimetableMonthArchiveMode() && isTimetableAdminMode() && options.enableClassDrag !== false
         ? ' draggable="true" data-drag-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableClassCardDragStart(event)"'
         : '';
-    var dropAttrs = isTimetableAdminMode()
+    var dropAttrs = !isTimetableMonthArchiveMode() && isTimetableAdminMode()
         ? ' data-drop-class-id="' + apEscapeHtml(String(classId)) + '" ondragover="handleTimetableClassDragOver(event)" ondragleave="handleTimetableClassDragLeave(event)" ondrop="handleTimetableClassDrop(event)"'
         : '';
 
