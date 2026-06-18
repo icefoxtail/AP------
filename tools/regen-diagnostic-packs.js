@@ -131,6 +131,7 @@ function selectByUnitGroups(unitGroups, usedGlobal) {
 // ── 소스 풀 로딩 ──────────────────────────────────────────────────────────────
 
 const m1types = valid(loadDirRec(path.join(EXAMS_BASE, 'types/middle/m1')));
+const m1similar = valid(loadDirRec(path.join(EXAMS_BASE, 'similar/middle/m1')));
 const m2orig  = valid(loadDirRec(path.join(EXAMS_BASE, 'original/middle/m2')));
 const m3orig  = valid(loadDirRec(path.join(EXAMS_BASE, 'original/middle/m3')));
 const m3sim   = valid(loadDirRec(path.join(EXAMS_BASE, 'similar/middle/m3')));
@@ -147,9 +148,9 @@ const PACK_CONFIGS = [
     id: 'DIAG_1SEM_M1_U12_25',
     unitGroups: [
       // M1-01: 소인수분해 (하5/중5/상2 = 12)
-      { pool: m1types.filter(q => q.standardUnitKey === 'M1-01'), ha: 5, jung: 5, sang: 2 },
+      { pool: m1types.filter(q => q.standardUnitKey === 'M1-01'), ha: 2, jung: 6, sang: 4 },
       // M1-02: 정수와 유리수 (하5/중5/상2 = 12)
-      { pool: m1types.filter(q => q.standardUnitKey === 'M1-02'), ha: 5, jung: 5, sang: 2 },
+      { pool: m1types.filter(q => q.standardUnitKey === 'M1-02'), ha: 2, jung: 6, sang: 4 },
     ],
     scopeLabel: '소인수분해(M1-01) 12문항, 정수와 유리수(M1-02) 12문항',
   },
@@ -157,9 +158,16 @@ const PACK_CONFIGS = [
     id: 'DIAG_1SEM_M1_U34_25',
     unitGroups: [
       // 문자와 식 (ALGEBRAIC_EXPRESSION, 하5/중5/상2 = 12)
-      { pool: m1types.filter(q => q.standardUnitKey === 'M1-03' && q.conceptClusterKey === 'ALGEBRAIC_EXPRESSION'), ha: 5, jung: 5, sang: 2 },
+      { pool: m1types.filter(q => q.standardUnitKey === 'M1-03' && q.conceptClusterKey === 'ALGEBRAIC_EXPRESSION'), ha: 2, jung: 3, sang: 7 },
       // 일차방정식 (LINEAR_EQUATION, 하5/중5/상2 = 12)
-      { pool: m1types.filter(q => q.standardUnitKey === 'M1-03' && q.conceptClusterKey === 'LINEAR_EQUATION'), ha: 5, jung: 5, sang: 2 },
+      { pool: [...m1types, ...m1similar].filter(q =>
+        q.standardUnitKey === 'M1-03' &&
+        (
+          q.conceptClusterKey === 'LINEAR_EQUATION' ||
+          String(q.category || q.originalCategory || q.subUnit || '').includes('일차방정식') ||
+          (q.tags || []).includes('일차방정식')
+        )
+      ), ha: 2, jung: 9, sang: 1 },
     ],
     scopeLabel: '문자와 식 12문항, 일차방정식 12문항',
   },
@@ -264,8 +272,11 @@ for (const cfg of PACK_CONFIGS) {
   const sangCount = sang.length;
   const total     = haCount + jungCount + sangCount;
 
-  if (haCount < 10 || jungCount < 10 || sangCount < 4) {
-    console.warn(`WARNING ${cfg.id}: 하${haCount}/중${jungCount}/상${sangCount} (목표 10/10/4)`);
+  const targetMix = cfg.id.startsWith('DIAG_1SEM_M1_')
+    ? { ha: 4, jung: 12, sang: 8, label: '4/12/8' }
+    : { ha: 10, jung: 10, sang: 4, label: '10/10/4' };
+  if (haCount < targetMix.ha || jungCount < targetMix.jung || sangCount < targetMix.sang) {
+    console.warn(`WARNING ${cfg.id}: 하${haCount}/중${jungCount}/상${sangCount} (목표 ${targetMix.label})`);
   }
 
   const questions = [...ha, ...jung, ...sang].map(q => ({ ...q, _assessmentPackId: cfg.id }));
@@ -295,7 +306,7 @@ for (const cfg of PACK_CONFIGS) {
 
 data.sourceSummary = {
   ...data.sourceSummary,
-  diagnosticRegen: '2026-06-04: 하10/중10/상4=24, 단원균등배분, 유형중복제거, 팩간중복제거',
+  diagnosticRegen: '2026-06-18: M1 하4/중12/상8, others 하10/중10/상4=24, 단원균등배분, 유형중복제거, 팩간중복제거',
 };
 
 const commentLine = fs.readFileSync(PACKS_FILE, 'utf8').split('\n')[0];

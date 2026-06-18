@@ -47,8 +47,10 @@ assert(
     students.includes("['paused', '휴원', 'paused']") &&
     students.includes("['inactive', '퇴원', 'inactive']") &&
     students.includes("['all', '전체', 'all']") &&
-    !students.includes("['archived', '보관'"),
-  'main status filters should show only 재원, 신입, 휴원, 퇴원, 전체 chips'
+    !students.includes("['archived', '보관'") &&
+    !students.includes('>보관</option>') &&
+    !students.includes('보관 처리'),
+  'main status filters and user-facing form controls should show only 재원, 신입, 휴원, 퇴원, 전체 without 보관 copy'
 );
 
 assert(
@@ -107,6 +109,8 @@ assert(
     css.includes('.eie-apms-filter-chip.is-new.is-active') &&
     css.includes('.eie-apms-filter-bar') &&
     css.includes('.eie-apms-soft-select') &&
+    css.includes('min-height: 44px') &&
+    css.includes('height: 44px') &&
     css.includes('-webkit-line-clamp: 2') &&
     css.includes('body.eie-printing-students') &&
     css.includes('size: A4 landscape'),

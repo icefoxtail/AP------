@@ -26,21 +26,21 @@ vm.runInContext(fs.readFileSync(packsPath, 'utf8'), context, { filename: packsPa
 const data = context.window.APMATH_ASSESSMENT_PACKS_1SEM;
 const packs = data.packs || [];
 
-// 2026-06-04: diagnostic packs rebuilt to 하10/중10/상4=24
+// 2026-06-18: M1 diagnostic packs raised to 하4/중12/상8=24
 const specs = [
   {
     id: 'DIAG_1SEM_M1_U12_25',
     count: 24,
-    mix: { [ko.low]: 10, [ko.mid]: 10, [ko.high]: 4 },
+    mix: { [ko.low]: 4, [ko.mid]: 12, [ko.high]: 8 },
     units: ['M1-01', 'M1-02'],
-    sourcePrefix: 'types/middle/m1/',
+    sourcePrefixes: ['types/middle/m1/'],
   },
   {
     id: 'DIAG_1SEM_M1_U34_25',
     count: 24,
-    mix: { [ko.low]: 10, [ko.mid]: 10, [ko.high]: 4 },
+    mix: { [ko.low]: 4, [ko.mid]: 12, [ko.high]: 8 },
     units: ['M1-03', 'M1-04'],
-    sourcePrefix: 'types/middle/m1/',
+    sourcePrefixes: ['types/middle/m1/', 'similar/middle/m1/'],
   },
 ];
 
@@ -80,8 +80,8 @@ for (const spec of specs) {
 
   // Source files from correct scope
   assert(
-    pack.questions.every((question) => String(question._sourceFile || '').startsWith(spec.sourcePrefix)),
-    `${spec.id} should use ${spec.sourcePrefix} source questions`
+    pack.questions.every((question) => spec.sourcePrefixes.some((prefix) => String(question._sourceFile || '').startsWith(prefix))),
+    `${spec.id} should use allowed source questions`
   );
 
   // All questions from allowed units
@@ -95,7 +95,7 @@ for (const spec of specs) {
     pack.difficultyMix[ko.low] === spec.mix[ko.low] &&
       pack.difficultyMix[ko.mid] === spec.mix[ko.mid] &&
       pack.difficultyMix[ko.high] === spec.mix[ko.high],
-    `${spec.id} difficultyMix should match the new 하10/중10/상4 spec`
+    `${spec.id} difficultyMix should match the new 하4/중12/상8 spec`
   );
 }
 

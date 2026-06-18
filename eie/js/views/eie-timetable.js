@@ -1574,7 +1574,9 @@
     }
 
     function timetableStudentNameText(student) {
-        return normalizeStudentName(studentSearchName(student) || student?.display_name || student?.student_name_raw || student?.normalized_name || student?.name || '') || '학생';
+        const base = normalizeStudentName(studentSearchName(student) || student?.display_name || student?.student_name_raw || student?.normalized_name || student?.name || '') || '학생';
+        const enrollLabel = isRecentNewStudent(student) ? formatTimetableMonthDay(studentEnrollDate(student)) : '';
+        return enrollLabel ? `${base}(${enrollLabel})` : base;
     }
 
     function returnContextFor(options) {
@@ -1623,14 +1625,14 @@
                     const context = returnContextFor(options);
                     if (shouldLink && (id || name)) {
                         return `<span role="button" tabindex="0"
-                            class="eie-v2-student-name-chip"
+                            class="eie-v2-student-name-chip${studentChipStatusClass(student)}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(studentChipTitle(student))}"
                             aria-label="${esc(displayName)} 학생관리 열기">${esc(displayName)}</span>`;
                     }
-                    return `<span class="eie-v2-student-name-chip" title="${esc(studentChipTitle(student))}">${esc(displayName)}</span>`;
+                    return `<span class="eie-v2-student-name-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(displayName)}</span>`;
                 }).join('')}
             </div>
         `;
@@ -1650,14 +1652,14 @@
                     const context = returnContextFor(options);
                     if (id || name) {
                         return `<span role="button" tabindex="0"
-                            class="eie-v2-student-name-chip"
+                            class="eie-v2-student-name-chip${studentChipStatusClass(student)}"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
                             ${contextAttrs(context)}
                             title="${esc(studentChipTitle(student))}"
                             aria-label="${esc(displayName)} 학생관리 열기">${esc(displayName)}</span>`;
                     }
-                    return `<span class="eie-v2-student-name-chip" title="${esc(studentChipTitle(student))}">${esc(displayName)}</span>`;
+                    return `<span class="eie-v2-student-name-chip${studentChipStatusClass(student)}" title="${esc(studentChipTitle(student))}">${esc(displayName)}</span>`;
                 }).join('')}
                 ${rest ? `<span class="eie-v2-card-student-more">+${rest}명</span>` : ''}
             </div>
