@@ -106,6 +106,10 @@ assert(
   'stat card face should show an icon plus the label, never a bare count'
 );
 assert(
+  statBody.includes('${clickAttr || routeAttr}'),
+  'stat cards with explicit handlers should render their onclick attribute'
+);
+assert(
   statBody.includes('eie-owner-stat__tip') && source.includes('buildGradeHoverGrid('),
   'student counts should appear only in the hover tooltip (grade breakdown)'
 );

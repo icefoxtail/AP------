@@ -638,7 +638,7 @@
             ? `<div class="eie-owner-stat__tip"><div class="eie-owner-stat__tip-title">${esc(label)}</div>${hoverGridHtml}</div>`
             : '';
         return `
-            <div class="eie-owner-stat eie-owner-stat--${toneClass}"${routeAttr} aria-label="${esc(label)} 상세 보기">
+            <div class="eie-owner-stat eie-owner-stat--${toneClass}"${clickAttr || routeAttr} aria-label="${esc(label)} 상세 보기">
                 <span class="eie-owner-stat__icon" aria-hidden="true">${iconSvg}</span>
                 <span class="eie-owner-stat__title">${esc(label)}</span>
                 ${tip}
