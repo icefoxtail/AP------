@@ -44,6 +44,20 @@ var TIMETABLE_FIT_BOUND = false;
 var TIMETABLE_FIT_TIMER = null;
 var TIMETABLE_RENDER_CONTEXT = null;
 
+function getTimetableMonthArchiveState() {
+    if (typeof state === 'undefined') return { active: false, months: [], monthKey: '', detail: null, virtualDb: null, loading: false };
+    if (!state.ui) state.ui = {};
+    if (!state.ui.timetableMonthArchive) {
+        state.ui.timetableMonthArchive = { active: false, months: [], monthKey: '', detail: null, virtualDb: null, loading: false };
+    }
+    return state.ui.timetableMonthArchive;
+}
+
+function isTimetableMonthArchiveMode() {
+    var archive = getTimetableMonthArchiveState();
+    return !!(archive && archive.active && archive.virtualDb);
+}
+
 // ────────────────────────────────────────────
 // 렌더링 성능 캐시
 // ────────────────────────────────────────────
@@ -177,6 +191,10 @@ function installTimetableStyle() {
         '.tt-tab-scroll .tab-btn, .tt-print-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; font-family:inherit; }',
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
         '.tt-print-btn { margin-left:auto; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); }',
+        '.tt-month-nav { display:flex; align-items:center; gap:4px; margin-left:auto; min-width:0; }',
+        '.tt-month-icon { width:30px; height:30px; border:1px solid rgba(0,0,0,0.08); border-radius:8px; background:var(--surface); color:var(--secondary); font-size:18px; font-weight:800; cursor:pointer; }',
+        '.tt-month-select { height:30px; max-width:118px; border:1px solid rgba(0,0,0,0.08); border-radius:8px; background:var(--surface); color:var(--text); font:inherit; font-size:12px; font-weight:700; padding:0 6px; }',
+        '.tt-month-label { font-size:12px; font-weight:800; color:var(--secondary); white-space:nowrap; }',
         '.tt-search-wrap { flex:0 1 240px; min-width:180px; display:flex; align-items:center; gap:6px; min-height:38px; padding:0 9px 0 12px; border:1px solid rgba(0,0,0,0.08); border-radius:8px; background:var(--surface); }',
         '.tt-search-input { flex:1; min-width:0; border:0; outline:0; background:transparent; color:var(--text); font:inherit; font-size:13px; font-weight:600; }',
         '.tt-search-input::placeholder { color:var(--secondary); font-weight:600; }',
@@ -321,6 +339,8 @@ function applyTimetableFit() {
 // ────────────────────────────────────────────
 
 function _getAllDb() {
+    var archive = getTimetableMonthArchiveState();
+    if (archive && archive.active && archive.virtualDb) return archive.virtualDb;
     return (typeof state !== 'undefined') ? (state.allDb || state.db || {}) : {};
 }
 
@@ -766,6 +786,7 @@ function openAddStudentToClass(classId) {
 // ────────────────────────────────────────────
 
 function isTimetableAdminMode() {
+    if (isTimetableMonthArchiveMode()) return false;
     if (typeof state === 'undefined') return false;
     var role = String(state.auth && state.auth.role || '').trim().toLowerCase();
     var scope = String(state.ui && state.ui.viewScope || '').trim().toLowerCase();
@@ -803,6 +824,7 @@ function getTimetableTodayString() {
 }
 
 function isTimetableDraftMode() {
+    if (isTimetableMonthArchiveMode()) return false;
     var ui = ensureTimetableVersionUiState();
     return isTimetableAdminMode() && ui.timetableViewMode === 'draft' && !!ui.selectedTimetableVersionId;
 }
@@ -2609,6 +2631,11 @@ function getTimetableDateTitle() {
     var now = new Date();
     var yy = String(now.getFullYear()).slice(2);
     var mm = now.getMonth() + 1;
+    if (isTimetableMonthArchiveMode()) {
+        var archive = getTimetableMonthArchiveState();
+        var parts = String(archive.monthKey || '').split('-');
+        if (parts.length === 2) return 'AP수학 시간표 (' + Number(parts[0]) + '년 ' + Number(parts[1]) + '월)';
+    }
     if (isTimetableDraftMode()) {
         var version = getSelectedTimetableVersionForView();
         var effectiveFrom = String(version && version.effective_from || '').trim();
@@ -2819,7 +2846,7 @@ function normalizeTimetableStudentStatus(value) {
 
 function isTimetableWithdrawnStatus(value) {
     var status = normalizeTimetableStudentStatus(value);
-    return ['archived', 'inactive', '퇴원', 'withdrawn', 'left'].indexOf(status) !== -1;
+    return ['archived', 'inactive', '퇴원', '제적', 'withdrawn', 'left'].indexOf(status) !== -1;
 }
 
 function getTimetableTodayDateString(today) {
@@ -2879,6 +2906,8 @@ function getTimetableStudentWithdrawalDate(student, mapping) {
         student.status_changed_at ||
         student.student_status_changed_at ||
         student.end_date ||
+        student.updated_at ||
+        student.updatedAt ||
         ''
     );
     if (directDate) return directDate;
@@ -3026,6 +3055,7 @@ function getTimetableClassStudentsWithInfo(classId) {
 
 function buildTimetableStudentSlot(student, classId) {
     if (!student) {
+        if (isTimetableMonthArchiveMode()) return '';
         var addHandler = isTimetableDraftMode()
             ? 'openTimetableDraftAddStudentModal(\'' + apEscapeHtml(String(classId)) + '\')'
             : 'openAddStudentToClass(\'' + apEscapeHtml(String(classId)) + '\')';
@@ -3077,7 +3107,7 @@ function buildTimetableStudentSlots(students, classId) {
         );
     }
 
-    slots.push(buildTimetableStudentSlot(null, classId));
+    if (!isTimetableMonthArchiveMode()) slots.push(buildTimetableStudentSlot(null, classId));
     return '<div class="tt-std-list">' + slots.join('') + '</div>';
 }
 
@@ -3088,7 +3118,7 @@ function buildTimetableCard(cls, options) {
     var progress = getTimetableRecentProgress(classId);
     var students = getTimetableClassStudentsWithInfo(classId);
 
-    var headerClick = isTimetableDraftMode() ? 'event.stopPropagation();' : 'event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')';
+    var headerClick = (isTimetableDraftMode() || isTimetableMonthArchiveMode()) ? 'event.stopPropagation();' : 'event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')';
     var hdrHtml = '<div class="tt-card-hdr">' +
         '<span class="tt-cls-name" onclick="' + headerClick + '">' +
             apEscapeHtml(cls.name) +
@@ -3235,6 +3265,7 @@ function renderTimetableGridOnly() {
     updateTimetableTabActiveState();
     var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
     renderTimetableGrid(section);
+    bindApTimetableMonthNavigation();
 }
 
 window.ttSetSection = function(sec) {
@@ -3520,6 +3551,208 @@ function printTimetableReport() {
 
 window.ttPrintTimetableReport = printTimetableReport;
 
+function apTimetableCurrentMonthKey() {
+    var now = new Date();
+    return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+}
+
+function apTimetableMonthLabel(monthKey) {
+    var parts = String(monthKey || '').split('-');
+    if (parts.length !== 2) return '';
+    return Number(parts[0]) + '년 ' + Number(parts[1]) + '월';
+}
+
+function apMonthCellDayGroup(dayLabel) {
+    var text = String(dayLabel || '').toLowerCase();
+    if (/tue|thu|화|목/.test(text)) return 'ttf';
+    return 'mwf';
+}
+
+function apBuildArchiveVirtualDb(detail) {
+    var cells = Array.isArray(detail && detail.timetable_cells) ? detail.timetable_cells : [];
+    var classes = [];
+    var slots = [];
+    var students = [];
+    var classStudents = [];
+    var seenClasses = {};
+    var seenStudents = {};
+
+    cells.forEach(function(cell, index) {
+        var classId = String(cell.source_class_id || cell.id || ('ap_month_class_' + index));
+        if (!seenClasses[classId]) {
+            seenClasses[classId] = true;
+            classes.push({
+                id: classId,
+                name: cell.class_name || cell.class_name_raw || '수업',
+                grade: cell.grade || '',
+                subject: cell.subject || '',
+                teacher_name: cell.teacher_name || cell.teacher_name_raw || '',
+                schedule_days: cell.day_label || '',
+                day_group: apMonthCellDayGroup(cell.day_label),
+                time_label: cell.period_label || cell.start_time || '',
+                textbook: '',
+                is_active: 1
+            });
+        }
+        slots.push({
+            id: cell.source_cell_id || cell.id || ('ap_month_slot_' + index),
+            class_id: classId,
+            day_of_week: cell.day_label || '',
+            start_time: cell.start_time || '',
+            end_time: cell.end_time || '',
+            room_name: cell.room || '',
+            memo: cell.memo || cell.period_label || ''
+        });
+        (Array.isArray(cell.assigned_students) ? cell.assigned_students : []).forEach(function(student, studentIndex) {
+            var studentId = String(student.source_student_id || student.id || (classId + '_student_' + studentIndex));
+            if (!seenStudents[studentId]) {
+                seenStudents[studentId] = true;
+                students.push({
+                    id: studentId,
+                    name: student.display_name || student.name || '',
+                    grade: student.grade || cell.grade || '',
+                    school_name: student.school_name || '',
+                    status: student.student_status || '재원',
+                    onboarding_started_at: student.enrollment_date || ''
+                });
+            }
+            classStudents.push({ class_id: classId, student_id: studentId });
+        });
+    });
+
+    return {
+        classes: classes,
+        timetable_classes: classes,
+        class_time_slots: slots,
+        class_students: classStudents,
+        timetable_class_students: classStudents,
+        students: students,
+        timetable_students: students
+    };
+}
+
+function apRenderMonthPickerOptions() {
+    var archive = getTimetableMonthArchiveState();
+    var saved = {};
+    (archive.months || []).forEach(function(row) { if (row && row.month_key) saved[String(row.month_key)] = true; });
+    var current = apTimetableCurrentMonthKey();
+    var selected = archive.active ? archive.monthKey : current;
+    var values = Object.keys(saved).sort().reverse();
+    if (values.indexOf(current) === -1) values.unshift(current);
+    return values.map(function(monthKey) {
+        return '<option value="' + apEscapeHtml(monthKey) + '"' +
+            (monthKey === selected ? ' selected' : '') +
+            (monthKey !== current && !saved[monthKey] ? ' disabled' : '') +
+            '>' + apEscapeHtml(apTimetableMonthLabel(monthKey)) + '</option>';
+    }).join('');
+}
+
+function apTimetableMonthControlsHtml() {
+    var archive = getTimetableMonthArchiveState();
+    var label = archive.active ? apTimetableMonthLabel(archive.monthKey) : '';
+    return '' +
+        '<div class="tt-month-nav" aria-label="월 이동">' +
+            '<button class="tt-month-icon" type="button" data-tt-month-prev title="이전 달">‹</button>' +
+            '<select class="tt-month-select" data-tt-month-select title="월 선택">' + apRenderMonthPickerOptions() + '</select>' +
+            '<button class="tt-month-icon" type="button" data-tt-month-next title="다음 달">›</button>' +
+            (label ? '<span class="tt-month-label">' + apEscapeHtml(label) + '</span>' : '') +
+        '</div>';
+}
+
+function apTimetableSavedMonthKeys() {
+    var archive = getTimetableMonthArchiveState();
+    return (archive.months || []).map(function(row) { return String(row.month_key || ''); }).filter(Boolean).sort();
+}
+
+function apFindAdjacentMonth(direction) {
+    var keys = apTimetableSavedMonthKeys();
+    if (!keys.length) return '';
+    var archive = getTimetableMonthArchiveState();
+    var current = archive.active ? archive.monthKey : apTimetableCurrentMonthKey();
+    var idx = keys.indexOf(current);
+    if (idx === -1) idx = direction < 0 ? keys.length : -1;
+    var next = keys[idx + direction];
+    return next || '';
+}
+
+async function apEnsureTimetableMonthsLoaded() {
+    var archive = getTimetableMonthArchiveState();
+    if (archive.loaded || archive.loading || typeof api === 'undefined' || !api.getTimetableMonths) return archive.months || [];
+    archive.loading = true;
+    try {
+        var res = await api.getTimetableMonths();
+        archive.months = Array.isArray(res.months) ? res.months : (Array.isArray(res.data) ? res.data : []);
+        archive.loaded = true;
+    } catch (error) {
+        archive.months = [];
+    }
+    archive.loading = false;
+    return archive.months || [];
+}
+
+async function apSelectTimetableMonth(monthKey) {
+    var archive = getTimetableMonthArchiveState();
+    var current = apTimetableCurrentMonthKey();
+    await apEnsureTimetableMonthsLoaded();
+    if (!monthKey || monthKey === current) {
+        archive.active = false;
+        archive.monthKey = '';
+        archive.detail = null;
+        archive.virtualDb = null;
+        renderTimetable();
+        return;
+    }
+    var saved = (archive.months || []).some(function(row) { return String(row.month_key || '') === String(monthKey); });
+    if (!saved || typeof api === 'undefined' || !api.getTimetableMonth) return;
+    try {
+        var detail = await api.getTimetableMonth(monthKey);
+        if (!detail || detail.success === false) return;
+        archive.active = true;
+        archive.monthKey = monthKey;
+        archive.detail = detail;
+        archive.virtualDb = apBuildArchiveVirtualDb(detail);
+        renderTimetable();
+    } catch (error) {
+        archive.active = false;
+        archive.monthKey = '';
+        archive.detail = null;
+        archive.virtualDb = null;
+        renderTimetable();
+    }
+}
+
+function bindApTimetableMonthNavigation() {
+    var root = document.getElementById('timetable-root');
+    if (!root) return;
+    apEnsureTimetableMonthsLoaded().then(function() {
+        var select = root.querySelector('[data-tt-month-select]');
+        if (select) select.innerHTML = apRenderMonthPickerOptions();
+    });
+    root.querySelector('[data-tt-month-select]')?.addEventListener('change', function(event) {
+        apSelectTimetableMonth(event.target.value);
+    });
+    root.querySelector('[data-tt-month-prev]')?.addEventListener('click', function() {
+        var next = apFindAdjacentMonth(-1);
+        if (next) apSelectTimetableMonth(next);
+    });
+    root.querySelector('[data-tt-month-next]')?.addEventListener('click', function() {
+        var next = apFindAdjacentMonth(1);
+        if (next) apSelectTimetableMonth(next);
+    });
+
+    var wrapper = document.getElementById('timetable-grid-wrapper');
+    if (!wrapper || wrapper.dataset.monthSwipeBound === '1') return;
+    wrapper.dataset.monthSwipeBound = '1';
+    var startX = 0;
+    wrapper.addEventListener('pointerdown', function(event) { startX = event.clientX || 0; });
+    wrapper.addEventListener('pointerup', function(event) {
+        var dx = (event.clientX || 0) - startX;
+        if (Math.abs(dx) < 70) return;
+        var next = apFindAdjacentMonth(dx < 0 ? 1 : -1);
+        if (next) apSelectTimetableMonth(next);
+    });
+}
+
 function renderTimetable() {
     var root = document.getElementById('app-root');
     if (!root) return;
@@ -3555,7 +3788,7 @@ function renderTimetable() {
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
                 buildTimetableVersionHeaderActionsHtml() +
-                '<button class="tt-print-btn" type="button" onclick="if(typeof renderTimetableMonths===\'function\') renderTimetableMonths()">월별 시간표</button>' +
+                apTimetableMonthControlsHtml() +
             '</div>' +
             buildTimetableVersionBannerHtml() +
             '<div class="tt-tab-row">' +
@@ -3575,6 +3808,7 @@ function renderTimetable() {
         '</div>';
 
     renderTimetableGrid(section);
+    bindApTimetableMonthNavigation();
 }
 
 

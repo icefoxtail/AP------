@@ -9,7 +9,7 @@ import { handleEnrollments } from './routes/enrollments.js';
 import { handleClassTimeSlots } from './routes/class-time-slots.js';
 import { handleTimetableConflicts } from './routes/timetable-conflicts.js';
 import { handleTimetableVersions } from './routes/timetable-versions.js';
-import { handleTimetableMonths } from './routes/timetable-months.js';
+import { handleTimetableMonths, saveCurrentMonthTimetableArchive } from './routes/timetable-months.js';
 import { handleFoundationSync } from './routes/foundation-sync.js';
 import { handleBillingFoundation } from './routes/billing-foundation.js';
 import { handleBillingAccountingFoundation } from './routes/billing-accounting-foundation.js';
@@ -3077,6 +3077,14 @@ async function buildTeacherHomeFastData(request, env, currentUser, url) {
 }
 
 export default {
+  async scheduled(event, env, ctx) {
+    const task = saveCurrentMonthTimetableArchive(env, new Date(event?.scheduledTime || Date.now()))
+      .then(result => console.log('[timetable-months] scheduled archive', result))
+      .catch(error => console.error('[timetable-months] scheduled archive failed', error));
+    if (ctx?.waitUntil) ctx.waitUntil(task);
+    else await task;
+  },
+
   async fetch(request, env) {
     const response = await handleApiRequest(request, env);
     return withCorsOrigin(response, request, env);
