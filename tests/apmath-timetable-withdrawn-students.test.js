@@ -42,6 +42,8 @@ const context = {
         { id: 's_boundary', name: '오경계', status: 'inactive' },
         { id: 's_old', name: '이오래', status: '퇴원' },
         { id: 's_missing', name: '최미상', status: 'withdrawn' },
+        { id: 's_jejeok_recent', name: '제적최근', status: '제적', updated_at: '2026-06-02 10:00:00' },
+        { id: 's_jejeok_old', name: '제적과거', status: '제적', updated_at: '2026-05-31 10:00:00' },
         { id: 's_new', name: '신규', status: '재원', enrollment_date: '2026-06-12' }
       ],
       class_students: [
@@ -51,6 +53,8 @@ const context = {
         { class_id: 'c1', student_id: 's_boundary' },
         { class_id: 'c1', student_id: 's_old' },
         { class_id: 'c1', student_id: 's_missing' },
+        { class_id: 'c1', student_id: 's_jejeok_recent' },
+        { class_id: 'c1', student_id: 's_jejeok_old' },
         { class_id: 'c1', student_id: 's_new' }
       ],
       student_status_history: [
@@ -75,12 +79,18 @@ assert(names.includes('강재원'), 'active student should remain visible');
 assert(names.includes('김휴원'), 'paused student should remain visible');
 assert(names.includes('박최근'), 'recent withdrawn student should be visible');
 assert(names.includes('오경계'), 'withdrawal boundary date should be included');
+assert(names.includes('제적최근'), 'recent Jejeok student should be treated as withdrawn and visible');
 assert(!names.includes('이오래'), 'withdrawn student older than two months should be hidden');
 assert(!names.includes('최미상'), 'withdrawn student without a withdrawal date should be hidden');
+assert(!names.includes('제적과거'), 'Jejeok student before June 1 should stay hidden');
 
 const recent = students.find(student => student.id === 's_recent');
 assert.strictEqual(recent.isWithdrawn, true, 'recent withdrawn student should be marked');
 assert.strictEqual(recent.withdrawalDate, '2026-06-02', 'recent withdrawn date should come from status history');
+
+const recentJejeok = students.find(student => student.id === 's_jejeok_recent');
+assert.strictEqual(recentJejeok.isWithdrawn, true, 'recent Jejeok student should be marked as withdrawn');
+assert.strictEqual(recentJejeok.withdrawalDate, '2026-06-02', 'recent Jejeok date should fall back to updated_at');
 
 const paused = students.find(student => student.id === 's_paused');
 assert.strictEqual(paused.isLeave, true, 'paused student should keep leave marker');

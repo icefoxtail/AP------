@@ -15,7 +15,28 @@ function monthEndDate(monthKey) {
   if (!match) return '';
   const year = Number(match[1]);
   const month = Number(match[2]);
-  return new Date(Date.UTC(year, month, 0)).toISOString().slice(0, 10);
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return `${year}-${String(month).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`;
+}
+
+export function kstDateParts(date = new Date()) {
+  const kst = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+  return {
+    year: kst.getUTCFullYear(),
+    month: kst.getUTCMonth() + 1,
+    day: kst.getUTCDate()
+  };
+}
+
+export function kstDateString(date = new Date()) {
+  const parts = kstDateParts(date);
+  return `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`;
+}
+
+export function isKstMonthEnd(date = new Date()) {
+  const parts = kstDateParts(date);
+  const monthKey = `${parts.year}-${String(parts.month).padStart(2, '0')}`;
+  return kstDateString(date) === monthEndDate(monthKey);
 }
 
 function normalizeMonthKey(value) {
@@ -36,6 +57,60 @@ function readRawMeta(value) {
 
 function jsonText(value) {
   try { return JSON.stringify(value || {}); } catch (error) { return '{}'; }
+}
+
+function normalizeDate(value) {
+  const match = String(value || '').trim().match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+  if (!match) return '';
+  return `${match[1]}-${String(match[2]).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`;
+}
+
+function normalizeStudentStatus(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function isLeaveStatus(value) {
+  return normalizeStudentStatus(value) === '휴원';
+}
+
+function isActiveStatus(value) {
+  const status = normalizeStudentStatus(value);
+  return !status || status === '재원' || status === 'active';
+}
+
+function isWithdrawnStatus(value) {
+  const status = normalizeStudentStatus(value);
+  return ['퇴원', '제적', 'inactive', 'archived', 'withdrawn', 'left'].includes(status);
+}
+
+function withdrawalDate(student = {}) {
+  return normalizeDate(
+    student.withdrawn_at ||
+    student.withdrawal_date ||
+    student.left_at ||
+    student.left_date ||
+    student.inactive_at ||
+    student.archived_at ||
+    student.status_changed_at ||
+    student.student_status_changed_at ||
+    student.end_date ||
+    student.updated_at ||
+    student.updatedAt ||
+    ''
+  );
+}
+
+function withdrawalCutoff(date = new Date()) {
+  const parts = kstDateParts(date);
+  return `${parts.year}-06-01`;
+}
+
+function shouldIncludeSnapshotStudent(student = {}, date = new Date()) {
+  const status = student.status || student.student_status || '';
+  if (isActiveStatus(status) || isLeaveStatus(status)) return true;
+  if (!isWithdrawnStatus(status)) return false;
+  const dateText = withdrawalDate(student);
+  return Boolean(dateText && dateText >= withdrawalCutoff(date));
 }
 
 export function normalizeNameKey(row) {
@@ -194,7 +269,7 @@ async function buildCurrentSnapshotRows(env) {
       ORDER BY day_of_week ASC, start_time ASC, class_id ASC
     `).all().catch(() => ({ results: [] })),
     env.DB.prepare('SELECT * FROM class_students ORDER BY class_id ASC, student_id ASC').all(),
-    env.DB.prepare('SELECT id, name, grade, school, school_name, status, onboarding_started_at FROM students').all()
+    env.DB.prepare('SELECT * FROM students').all()
   ]);
   const classes = classRes.results || [];
   const slots = slotRes.results || [];
@@ -230,7 +305,10 @@ async function buildCurrentSnapshotRows(env) {
     baseSlots.forEach((slot, slotIndex) => {
       const cellId = makeId('ap_tmc');
       const order = classIndex * 100 + slotIndex;
-      const assigned = mapsByClass.get(String(cls.id)) || [];
+      const assigned = (mapsByClass.get(String(cls.id)) || []).filter(map => {
+        const student = studentsById.get(String(map.student_id)) || {};
+        return shouldIncludeSnapshotStudent(student);
+      });
       cells.push({
         id: cellId,
         source_cell_id: slot.id || null,
@@ -263,7 +341,7 @@ async function buildCurrentSnapshotRows(env) {
           school_name: student.school_name || student.school || '',
           student_status: student.status || '',
           enrollment_date: student.onboarding_started_at || '',
-          discharged_at: '',
+          discharged_at: withdrawalDate(student),
           raw_meta_json: jsonText({ class_student: map, student }),
           sort_order: order * 1000 + studentIndex
         });
@@ -273,18 +351,18 @@ async function buildCurrentSnapshotRows(env) {
   return { cells, students: studentRows };
 }
 
-async function createSnapshot(request, env, teacher, body = {}) {
-  if (!isAdminUser(teacher)) return forbidden();
-  const monthKey = normalizeMonthKey(body.month_key || body.monthKey);
-  const snapshotDate = normalizeSnapshotDate(body.snapshot_date || body.snapshotDate, monthKey);
-  const mode = body.mode === 'upsert' ? 'upsert' : 'insert';
+async function saveCurrentSnapshot(env, options = {}) {
+  const monthKey = normalizeMonthKey(options.month_key || options.monthKey);
+  const snapshotDate = normalizeSnapshotDate(options.snapshot_date || options.snapshotDate, monthKey);
+  const mode = options.mode === 'upsert' ? 'upsert' : 'insert';
+  const sourceType = options.source_type || options.sourceType || 'manual';
   const existing = await env.DB.prepare(`
     SELECT id FROM ap_timetable_month_snapshots
     WHERE month_key = ? AND snapshot_date = ?
     LIMIT 1
   `).bind(monthKey, snapshotDate).first();
   if (existing && mode !== 'upsert') {
-    return jsonResponse({ success: false, error: 'snapshot already exists' }, 409);
+    return { success: true, created: false, skipped: 'already_exists', month_key: monthKey, snapshot_date: snapshotDate, id: existing.id };
   }
   if (existing) {
     await env.DB.prepare('DELETE FROM ap_timetable_month_snapshots WHERE id = ?').bind(existing.id).run();
@@ -300,11 +378,11 @@ async function createSnapshot(request, env, teacher, body = {}) {
     snapshotId,
     monthKey,
     snapshotDate,
-    body.title || `${monthKey} AP Math timetable`,
-    body.source_type || body.sourceType || 'manual',
+    options.title || `${monthKey} AP Math timetable`,
+    sourceType,
     await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(rows))).then(buf => Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('')),
-    body.memo || '',
-    teacher?.id || null
+    options.memo || '',
+    options.created_by || options.createdBy || null
   ).run();
 
   const stmts = [];
@@ -334,7 +412,35 @@ async function createSnapshot(request, env, teacher, body = {}) {
   }
   if (stmts.length) await env.DB.batch(stmts);
   const loaded = await loadSnapshot(env, monthKey);
-  return jsonResponse({ success: true, ...loaded, data: loaded });
+  return { success: true, created: true, ...loaded, data: loaded };
+}
+
+async function createSnapshot(request, env, teacher, body = {}) {
+  if (!isAdminUser(teacher)) return forbidden();
+  const result = await saveCurrentSnapshot(env, {
+    ...body,
+    created_by: teacher?.id || null
+  });
+  if (result.created === false) {
+    return jsonResponse({ success: false, error: 'snapshot already exists' }, 409);
+  }
+  return jsonResponse(result);
+}
+
+export async function saveCurrentMonthTimetableArchive(env, date = new Date()) {
+  if (!isKstMonthEnd(date)) {
+    return { success: true, created: false, skipped: 'not_kst_month_end', kst_date: kstDateString(date) };
+  }
+  const monthKey = monthKeyFromDate(date);
+  const snapshotDate = kstDateString(date);
+  return saveCurrentSnapshot(env, {
+    month_key: monthKey,
+    snapshot_date: snapshotDate,
+    mode: 'insert',
+    source_type: 'scheduled',
+    title: `${monthKey} AP Math timetable`,
+    memo: 'KST month-end automatic archive'
+  });
 }
 
 async function compareSnapshots(env, monthKey, compareMonthKey) {
