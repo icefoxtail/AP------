@@ -384,6 +384,7 @@ function renderStudentEditBody(sid) {
                     ${apStudentEditRow('상태', `<div class="ap-student-edit-flags">
                         <label class="ap-student-edit-flag"><input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}><span>신입생</span></label>
                         <label class="ap-student-edit-flag is-warn"><input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}><span>휴원</span></label>
+                        <button type="button" class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원</button>
                     </div>`)}
                 </div>
             </section>
@@ -392,7 +393,7 @@ function renderStudentEditBody(sid) {
             <details class="apms-eie-form-drawer">
                 <summary>퇴원 처리</summary>
                 <div class="apms-eie-form-drawer-body">
-                    <button type="button" class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
+                    <button type="button" class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원 처리</button>
                 </div>
             </details>
         </div>
