@@ -1553,7 +1553,6 @@
             + '<option value="paused"' + (status === 'paused' ? ' selected' : '') + '>휴원</option>'
             + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>퇴원</option>'
             + '<option value="needs_review"' + (status === 'needs_review' ? ' selected' : '') + '>확인 필요</option>'
-            + '<option value="archived"' + (status === 'archived' ? ' selected' : '') + '>보관</option>'
             + '</select></label>'
             + (isEdit ? '<div class="eie-action-row is-wide">'
                 + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'paused\')">휴원 입력</button>'
@@ -1917,13 +1916,13 @@
         archiveStudent: async function (studentId) {
             if (_saving) return;
             var sid = text(studentId);
-            if (!window.confirm('이 학생을 보관 처리할까요? 실제 삭제 없이 상태만 보관으로 변경됩니다.')) return;
+            if (!window.confirm('이 학생을 숨김 처리할까요? 실제 삭제 없이 목록에서 제외됩니다.')) return;
             _saving = true;
             try {
                 var result = await EieApi.deleteStudent(sid);
                 await afterWrite(result, sid);
             } catch (err) {
-                _error = err && err.message ? err.message : '보관 처리에 실패했습니다.';
+                _error = err && err.message ? err.message : '숨김 처리에 실패했습니다.';
                 await EieRouter.open('students');
             } finally {
                 _saving = false;
