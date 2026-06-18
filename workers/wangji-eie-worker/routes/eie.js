@@ -903,12 +903,20 @@ function contactDeleteDeferredResponse() {
 }
 
 async function queryConsultations(env, studentId) {
+  if (studentId) {
+    const result = await env.DB.prepare(`
+      SELECT id, student_id, date, type, content, next_action, created_at
+      FROM consultations
+      WHERE student_id = ?
+      ORDER BY date DESC, created_at DESC
+    `).bind(studentId).all();
+    return result.results || [];
+  }
   const result = await env.DB.prepare(`
     SELECT id, student_id, date, type, content, next_action, created_at
     FROM consultations
-    WHERE student_id = ?
     ORDER BY date DESC, created_at DESC
-  `).bind(studentId).all();
+  `).all();
   return result.results || [];
 }
 
@@ -923,8 +931,7 @@ async function getConsultation(env, id) {
 
 async function handleGetConsultations(env, url) {
   const studentId = safeText(url.searchParams.get('student_id'));
-  if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
-  const rows = await queryConsultations(env, studentId);
+  const rows = await queryConsultations(env, studentId || null);
   return jsonResponse({ success: true, data: rows, consultations: rows });
 }
 
@@ -1897,7 +1904,7 @@ async function handleGet(request, env, path, url) {
 
   if (section === 'consultations') {
     try {
-      return handleGetConsultations(env, url);
+      return await handleGetConsultations(env, url);
     } catch (error) {
       return jsonResponse({ success: false, error: 'consultations table is not ready', code: 'EIE_NOT_IMPLEMENTED' }, 409);
     }
