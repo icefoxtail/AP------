@@ -60,7 +60,8 @@ assert(utilLoadIndex > 0, 'index should load EIE grade utility');
 
 const students = fs.readFileSync(path.join(root, 'eie/js/views/eie-students.js'), 'utf8');
 assert(
-  students.includes("['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3']"),
+  students.includes("var STUDENT_GRADE_OPTIONS = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3']") &&
+    students.includes('STUDENT_GRADE_OPTIONS.map(function (grade)'),
   'student detail edit grade select should expose 초1 through 고3'
 );
 

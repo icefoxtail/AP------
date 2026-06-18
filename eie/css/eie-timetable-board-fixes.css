@@ -149,9 +149,321 @@
     color: var(--eie-primary);
 }
 
+.eie-apms-breakdown {
+    margin: 12px 0;
+}
+
+.eie-apms-breakdown-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 8px;
+}
+
+.eie-apms-breakdown-head h2 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.eie-apms-breakdown-head span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eie-apms-grade-cards,
+.eie-apms-teacher-cards {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.eie-apms-teacher-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.eie-apms-breakdown-card {
+    min-height: 78px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    color: var(--eie-muted);
+    display: grid;
+    gap: 4px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.eie-apms-breakdown-card strong {
+    color: var(--eie-text);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.eie-apms-breakdown-card em {
+    color: var(--eie-primary);
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.eie-apms-breakdown-card span {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-apms-breakdown-card.is-active {
+    border-color: rgba(26, 92, 255, 0.35);
+    background: rgba(26, 92, 255, 0.08);
+}
+
+.eie-student-print-panel {
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    margin: 12px 0 14px;
+    padding: 12px;
+}
+
+.eie-student-print-panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.eie-student-print-panel-head h2 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.eie-student-print-panel-head span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eie-student-print-options {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(140px, 1fr) repeat(3, auto) auto;
+    gap: 8px;
+    align-items: end;
+}
+
+.eie-student-print-options label {
+    display: grid;
+    gap: 4px;
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-student-print-options select {
+    min-height: 38px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: #fff;
+    padding: 0 10px;
+    color: var(--eie-text);
+    font-weight: 800;
+}
+
+.eie-student-print-options .is-check {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--eie-text);
+}
+
+.eie-student-print-sheet {
+    margin-top: 12px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    padding: 14px;
+    color: #111827;
+    max-height: 360px;
+    overflow: auto;
+}
+
+.eie-student-print-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 2px solid #111827;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.eie-student-print-title h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.eie-student-print-title p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.eie-student-print-summary {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border: 1px solid #9ca3af;
+    margin-bottom: 10px;
+}
+
+.eie-student-print-summary span {
+    border-right: 1px solid #d1d5db;
+    padding: 6px 8px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-student-print-summary span:last-child {
+    border-right: 0;
+}
+
+.eie-student-print-summary strong {
+    float: right;
+    font-size: 13px;
+}
+
+.eie-student-print-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 10px 0 14px;
+}
+
+.eie-student-print-section h3 {
+    margin: 0;
+    background: #f3f4f6;
+    border: 1px solid #9ca3af;
+    border-bottom: 0;
+    padding: 6px 8px;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.eie-student-print-section h3 span {
+    float: right;
+    color: #4b5563;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.eie-student-print-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 10.5px;
+}
+
+.eie-student-print-table th,
+.eie-student-print-table td {
+    border: 1px solid #cbd5e1;
+    padding: 4px 5px;
+    vertical-align: top;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.eie-student-print-table th {
+    background: #e5e7eb;
+    color: #111827;
+    font-weight: 900;
+}
+
+.eie-student-print-table td:first-child {
+    text-align: center;
+    width: 28px;
+}
+
+.eie-student-print-table .is-empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 10px;
+}
+
+@media (max-width: 980px) {
+    .eie-apms-grade-cards,
+    .eie-apms-teacher-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .eie-student-print-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+    body.eie-printing-students > :not(#eie-app) {
+        display: none !important;
+    }
+
+    body.eie-printing-students #eie-app > :not(.eie-main),
+    body.eie-printing-students .eie-main > :not(.eie-apms-students-screen),
+    body.eie-printing-students .eie-apms-students-screen > :not(.eie-student-print-panel),
+    body.eie-printing-students .eie-student-print-panel > :not(.eie-student-print-sheet) {
+        display: none !important;
+    }
+
+    body.eie-printing-students,
+    body.eie-printing-students .eie-main,
+    body.eie-printing-students .eie-apms-students-screen,
+    body.eie-printing-students .eie-student-print-panel,
+    body.eie-printing-students .eie-student-print-sheet {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        width: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    body.eie-printing-students .eie-student-print-title,
+    body.eie-printing-students .eie-student-print-summary,
+    body.eie-printing-students .eie-student-print-table,
+    body.eie-printing-students .eie-student-print-table * {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    body.eie-printing-students .eie-student-print-title h2 {
+        font-size: 16px;
+    }
+
+    body.eie-printing-students .eie-student-print-table {
+        font-size: 9px;
+    }
+
+    body.eie-printing-students .eie-student-print-section {
+        margin: 6mm 0;
+    }
+}
+
 .eie-apms-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
     gap: 8px;
     align-items: stretch;
     margin: 12px 0 14px;
