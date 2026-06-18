@@ -11,7 +11,8 @@
         needs_review: '확인 필요',
         hidden: '숨김',
         archived: '숨김',
-        inactive: '비활성'
+        paused: '휴원',
+        inactive: '퇴원'
     };
     const STANDARD_PERIOD_TIMES = [
         { period_order: 1, period_label: '1교시', start_time: '15:10', end_time: '15:50' },
@@ -318,7 +319,7 @@
 
     function normalizeStatus(value) {
         const status = normalizeKey(value || 'active');
-        if (['active', 'imported', 'needs_review', 'hidden', 'archived', 'inactive'].includes(status)) return status;
+        if (['active', 'imported', 'needs_review', 'hidden', 'archived', 'paused', 'inactive'].includes(status)) return status;
         return 'active';
     }
 
@@ -2883,6 +2884,20 @@
                         <div class="eie-p-drawer-body">
                             <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
                             <label class="eie-p-form-field"><span>등원일</span><input id="eie-v2-edit-enroll-date" type="date" value="${esc(enrollDate)}" autocomplete="off"></label>
+                            <label class="eie-p-form-field"><span>상태</span>
+                                <select id="eie-v2-edit-status">
+                                    <option value="active"${studentStatus(student) === 'active' || studentStatus(student) === 'imported' ? ' selected' : ''}>재원</option>
+                                    <option value="paused"${studentStatus(student) === 'paused' ? ' selected' : ''}>휴원</option>
+                                    <option value="inactive"${studentStatus(student) === 'inactive' ? ' selected' : ''}>퇴원</option>
+                                    <option value="needs_review"${studentStatus(student) === 'needs_review' ? ' selected' : ''}>확인 필요</option>
+                                    <option value="archived"${studentStatus(student) === 'archived' ? ' selected' : ''}>보관</option>
+                                </select>
+                            </label>
+                            <div class="eie-p-form-row">
+                                <button type="button" class="eie-p-btn-cancel" onclick="document.getElementById('eie-v2-edit-status').value='paused'">휴원 입력</button>
+                                <button type="button" class="eie-p-btn-danger" onclick="document.getElementById('eie-v2-edit-status').value='inactive'">퇴원 입력</button>
+                                <button type="button" class="eie-p-btn-cancel" onclick="document.getElementById('eie-v2-edit-status').value='active'">재원 복구</button>
+                            </div>
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
                         </div>
                         <div class="eie-p-danger-zone">
@@ -4961,6 +4976,8 @@
             status: studentFieldValue('eie-v2-edit-status') || 'active',
             memo: studentFieldValue('eie-v2-edit-memo')
         };
+        if (['inactive', 'withdrawn'].includes(payload.status)) payload.withdrawn_at = todayIso();
+        if (payload.status === 'active') payload.withdrawn_at = '';
         applyEnrollDateFields(payload, studentFieldValue('eie-v2-edit-enroll-date'));
         if (!payload.display_name) {
             viewState.studentError = '학생명은 필수입니다.';

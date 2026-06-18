@@ -12,7 +12,7 @@ assert(worker.includes('async function handlePostTeacher'), 'EIE worker should e
 assert(worker.includes('async function handlePatchTeacher'), 'EIE worker should expose teacher update handler');
 assert(worker.includes('async function handleResetTeacherPassword'), 'EIE worker should expose teacher password reset handler');
 assert(worker.includes('async function handleDeleteTeacher'), 'EIE worker should expose teacher delete/disable handler');
-assert(worker.includes('async function handleSeedDefaultTeachers'), 'EIE worker should expose default teacher seed handler');
+assert(worker.includes('async function handleSeedDefaultTeachers'), 'EIE worker should keep the internal default teacher seed handler');
 assert(worker.includes("UPDATE teachers SET role = 'disabled'"), 'teacher delete should be a safe disable, not physical deletion');
 
 for (const method of [
@@ -27,15 +27,16 @@ for (const method of [
 }
 
 for (const token of [
-  '새 선생님 등록',
   'EieManagementView.startCreate',
   'EieManagementView.startEdit',
   'EieManagementView.submitForm',
   'EieManagementView.resetPassword',
-  'EieManagementView.deleteTeacher',
-  'EieManagementView.seedDefaultTeachers'
+  'EieManagementView.deleteTeacher'
 ]) {
   assert(view.includes(token), `EIE management view should include ${token}`);
 }
+
+assert(!view.includes('기본 계정 생성'), 'EIE management view should not expose default account creation');
+assert(!view.includes('EieManagementView.seedDefaultTeachers'), 'EIE management view should not expose default seed handler');
 
 console.log('EIE teacher management port test passed');
