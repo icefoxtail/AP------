@@ -2478,7 +2478,7 @@
         const selected = normalizeGrade(value);
         return `<select id="${esc(id)}">
             <option value="">선택</option>
-            ${['중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
+            ${['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
         </select>`;
     }
 
