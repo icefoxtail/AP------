@@ -1,5 +1,5 @@
 import { jsonResponse } from '../helpers/response.js';
-import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, makeId } from '../helpers/foundation-db.js';
 import {
   buildStudentIdentityKey,
   generateUniqueStudentPin,
@@ -12,6 +12,12 @@ import {
 
 const DUPLICATE_MESSAGE = '이미 등록 처리된 학생입니다.';
 const PIN_CONFLICT_MESSAGE = '이미 사용 중인 PIN입니다.';
+const STUDENT_STATUSES = new Set(['재원', '휴원', '퇴원', '제적', '숨김']);
+
+function normalizeStudentStatus(value, fallback = '재원') {
+  const status = String(value ?? '').trim();
+  return STUDENT_STATUSES.has(status) ? status : fallback;
+}
 
 function normalizeStudentPayload(d = {}, current = {}) {
   return {
@@ -28,6 +34,9 @@ function normalizeStudentPayload(d = {}, current = {}) {
     onboardingStartedAt: String(d.onboarding_started_at ?? d.onboardingStartedAt ?? current.onboarding_started_at ?? '').trim(),
     studentPin: String(d.student_pin ?? d.studentPin ?? current.student_pin ?? '').trim(),
     highSubjects: normalizeHighSubjects(d.high_subjects ?? d.highSubjects ?? current.high_subjects ?? '[]'),
+    status: d.status !== undefined || d.student_status !== undefined || d.studentStatus !== undefined
+      ? normalizeStudentStatus(d.status ?? d.student_status ?? d.studentStatus, current.status || '재원')
+      : undefined,
     classId: d.class_id !== undefined || d.classId !== undefined ? String(d.class_id ?? d.classId ?? '').trim() : undefined
   };
 }
@@ -259,13 +268,14 @@ async function handleUpdateStudent(env, teacher, id, body) {
   const nextClassId = d.classId !== undefined ? d.classId : currentBundle.class_student?.class_id || '';
   const studentIdentityKey = await buildStudentIdentityKey({ ...d, class_id: nextClassId });
   const targetScore = normalizeTargetScore(d.targetScore);
+  const nextStatus = d.status !== undefined ? d.status : current.status || '재원';
   const stmts = [
     env.DB.prepare(`
       UPDATE students
       SET name = ?, school_name = ?, grade = ?, target_score = ?, memo = ?,
           guardian_relation = ?, student_phone = ?, parent_phone = ?,
           student_address = ?, vehicle_info = ?, onboarding_started_at = ?, student_pin = ?, high_subjects = ?,
-          student_identity_key = ?, updated_at = DATETIME('now')
+          status = ?, student_identity_key = ?, updated_at = DATETIME('now')
       WHERE id = ?
     `).bind(
       d.name,
@@ -281,10 +291,18 @@ async function handleUpdateStudent(env, teacher, id, body) {
       d.onboardingStartedAt,
       d.studentPin,
       d.highSubjects,
+      nextStatus,
       studentIdentityKey,
       id
     )
   ];
+  if (String(nextStatus || '') !== String(current.status || '')) {
+    stmts.push(env.DB.prepare(`
+      INSERT INTO student_status_history
+        (id, student_id, old_status, new_status, reason, changed_by, changed_at)
+      VALUES (?, ?, ?, ?, ?, ?, DATETIME('now', '+9 hours'))
+    `).bind(makeId('ssh'), id, current.status || '', nextStatus, 'student detail edit', teacher?.id || teacher?.name || ''));
+  }
   if (d.classId !== undefined) {
     stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id));
     if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, id));
@@ -387,7 +405,15 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
   if (method === 'PATCH' && id) {
     if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     if (path[3] === 'restore') {
-      await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
+      const current = await env.DB.prepare('SELECT status FROM students WHERE id = ? LIMIT 1').bind(id).first();
+      await env.DB.batch([
+        env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id),
+        env.DB.prepare(`
+          INSERT INTO student_status_history
+            (id, student_id, old_status, new_status, reason, changed_by, changed_at)
+          VALUES (?, ?, ?, '재원', 'student restore', ?, DATETIME('now', '+9 hours'))
+        `).bind(makeId('ssh'), id, current?.status || '', teacher?.id || teacher?.name || '')
+      ]);
       const bundle = await getStudentMutationBundle(env, id);
       return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
     }
@@ -443,7 +469,15 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
 
   if (method === 'DELETE' && id) {
     if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
-    await env.DB.prepare("UPDATE students SET status = '제적', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
+    const current = await env.DB.prepare('SELECT status FROM students WHERE id = ? LIMIT 1').bind(id).first();
+    await env.DB.batch([
+      env.DB.prepare("UPDATE students SET status = '퇴원', updated_at = DATETIME('now') WHERE id = ?").bind(id),
+      env.DB.prepare(`
+        INSERT INTO student_status_history
+          (id, student_id, old_status, new_status, reason, changed_by, changed_at)
+        VALUES (?, ?, ?, '퇴원', 'student withdrawn', ?, DATETIME('now', '+9 hours'))
+      `).bind(makeId('ssh'), id, current?.status || '', teacher?.id || teacher?.name || '')
+    ]);
     const bundle = await getStudentMutationBundle(env, id);
     return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
   }

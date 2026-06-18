@@ -5,6 +5,8 @@ const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'apmath/js/timetable.js'), 'utf8');
+const studentEditSource = fs.readFileSync(path.join(root, 'apmath/js/student-edit.js'), 'utf8');
+const studentRouteSource = fs.readFileSync(path.join(root, 'apmath/worker-backup/worker/routes/students.js'), 'utf8');
 
 const context = {
   console,
@@ -96,5 +98,11 @@ assert(sourceCss.includes('background:#FFF1F4'), 'AP withdrawn chip should use p
 assert(sourceCss.includes('color:#BE123C'), 'AP withdrawn chip should use soft rose text');
 assert(sourceCss.includes('border:1px dashed #FDA4AF'), 'AP withdrawn chip should use pale pink dashed border');
 assert(sourceCss.includes('text-decoration-color:rgba(190,18,60,0.35)'), 'AP withdrawn chip should use soft rose strike color');
+
+assert(studentEditSource.includes('handleDelete') && studentEditSource.includes('>퇴원</button>'), 'AP student edit should expose a direct withdrawn button');
+assert(studentEditSource.includes('id="edit-is-leave"'), 'AP student edit should keep the existing leave input');
+assert(studentRouteSource.includes("UPDATE students SET status = '퇴원'"), 'AP student delete route should mark withdrawn instead of removing timetable visibility');
+assert(studentRouteSource.includes('INSERT INTO student_status_history'), 'AP withdrawn route should write status history for the two-month timetable window');
+assert(!studentRouteSource.includes("UPDATE students SET status = '제적', updated_at = DATETIME('now') WHERE id = ?"), 'AP delete route should not use 제적 for timetable-visible withdrawal');
 
 console.log('apmath timetable withdrawn students test passed');
