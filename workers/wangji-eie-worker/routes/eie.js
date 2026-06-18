@@ -468,6 +468,35 @@ function isEieBaseTableMissing(error) {
   );
 }
 
+// `eie_students.withdrawn_at` is added by migrations/20260615_eie_students_withdrawn_at.sql,
+// which lives in the repo-root migrations/ folder. This Worker's wrangler config has no
+// migrations_dir, so wrangler only ever sees workers/wangji-eie-worker/migrations/ and never
+// applies that file. When the operator deploys without manually applying it, every read/write
+// that touches withdrawn_at (timetable query, withdrawal PATCH) fails with "no such column".
+// Self-heal once per isolate so the withdrawal flow works regardless of migration state.
+let withdrawnAtColumnEnsured = false;
+async function ensureWithdrawnAtColumn(env) {
+  if (withdrawnAtColumnEnsured) return;
+  try {
+    await env.DB.prepare('ALTER TABLE eie_students ADD COLUMN withdrawn_at TEXT').run();
+    withdrawnAtColumnEnsured = true;
+  } catch (error) {
+    const text = String(error?.message || error || '').toLowerCase();
+    if (text.includes('duplicate column')) {
+      withdrawnAtColumnEnsured = true; // column already present, nothing to do
+    } else {
+      return; // base table missing or transient error: let the caller surface it
+    }
+  }
+  try {
+    await env.DB.prepare(
+      'CREATE INDEX IF NOT EXISTS idx_eie_students_withdrawn_at ON eie_students(withdrawn_at)'
+    ).run();
+  } catch (_) {
+    // index is best-effort; a missing index only affects query speed, not correctness
+  }
+}
+
 function isEieOwner(teacher) {
   return String(teacher?.role || '').toLowerCase() === 'admin';
 }
@@ -1836,7 +1865,30 @@ function monthKeyFromDate(date = new Date()) {
 function monthEndDate(monthKey) {
   const match = String(monthKey || '').match(/^(\d{4})-(\d{2})$/);
   if (!match) return '';
-  return new Date(Date.UTC(Number(match[1]), Number(match[2]), 0)).toISOString().slice(0, 10);
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return `${year}-${String(month).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`;
+}
+
+export function eieKstDateParts(date = new Date()) {
+  const kst = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+  return {
+    year: kst.getUTCFullYear(),
+    month: kst.getUTCMonth() + 1,
+    day: kst.getUTCDate()
+  };
+}
+
+export function eieKstDateString(date = new Date()) {
+  const parts = eieKstDateParts(date);
+  return `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`;
+}
+
+export function isEieKstMonthEnd(date = new Date()) {
+  const parts = eieKstDateParts(date);
+  const monthKey = `${parts.year}-${String(parts.month).padStart(2, '0')}`;
+  return eieKstDateString(date) === monthEndDate(monthKey);
 }
 
 function normalizeMonthKey(value) {
@@ -2043,19 +2095,19 @@ async function buildCurrentEieSnapshotRows(env) {
   return { cells, students };
 }
 
-async function createEieTimetableMonthSnapshot(request, env, teacher) {
-  const ownerOnly = requireEieOwner(teacher);
-  if (ownerOnly) return ownerOnly;
-  const body = await readJsonBody(request) || {};
-  const monthKey = normalizeMonthKey(body.month_key || body.monthKey);
-  const snapshotDate = normalizeSnapshotDate(body.snapshot_date || body.snapshotDate, monthKey);
-  const mode = body.mode === 'upsert' ? 'upsert' : 'insert';
+async function saveCurrentEieTimetableMonthArchive(env, options = {}) {
+  const monthKey = normalizeMonthKey(options.month_key || options.monthKey);
+  const snapshotDate = normalizeSnapshotDate(options.snapshot_date || options.snapshotDate, monthKey);
+  const mode = options.mode === 'upsert' ? 'upsert' : 'insert';
+  const sourceType = options.source_type || options.sourceType || 'manual';
   const existing = await env.DB.prepare(`
     SELECT id FROM eie_timetable_month_snapshots
     WHERE month_key = ? AND snapshot_date = ?
     LIMIT 1
   `).bind(monthKey, snapshotDate).first();
-  if (existing && mode !== 'upsert') return jsonResponse({ success: false, error: 'snapshot already exists' }, 409);
+  if (existing && mode !== 'upsert') {
+    return { success: true, created: false, skipped: 'already_exists', month_key: monthKey, snapshot_date: snapshotDate, id: existing.id };
+  }
   if (existing) await env.DB.prepare('DELETE FROM eie_timetable_month_snapshots WHERE id = ?').bind(existing.id).run();
 
   const snapshotId = makeId('eie_tmsnap');
@@ -2068,11 +2120,11 @@ async function createEieTimetableMonthSnapshot(request, env, teacher) {
     snapshotId,
     monthKey,
     snapshotDate,
-    body.title || `${monthKey} EIE timetable`,
-    body.source_type || body.sourceType || 'manual',
+    options.title || `${monthKey} EIE timetable`,
+    sourceType,
     await sha256hex(JSON.stringify(rows)),
-    body.memo || '',
-    teacher?.id || null
+    options.memo || '',
+    options.created_by || options.createdBy || null
   ).run();
 
   const stmts = [];
@@ -2104,7 +2156,36 @@ async function createEieTimetableMonthSnapshot(request, env, teacher) {
   }
   if (stmts.length) await env.DB.batch(stmts);
   const loaded = await loadEieTimetableMonthSnapshot(env, monthKey);
-  return jsonResponse({ success: true, ...loaded, data: loaded });
+  return { success: true, created: true, ...loaded, data: loaded };
+}
+
+async function createEieTimetableMonthSnapshot(request, env, teacher) {
+  const ownerOnly = requireEieOwner(teacher);
+  if (ownerOnly) return ownerOnly;
+  const body = await readJsonBody(request) || {};
+  const result = await saveCurrentEieTimetableMonthArchive(env, {
+    ...body,
+    created_by: teacher?.id || null
+  });
+  if (result.created === false) return jsonResponse({ success: false, error: 'snapshot already exists' }, 409);
+  return jsonResponse(result);
+}
+
+export async function saveCurrentEieMonthTimetableArchive(env, date = new Date()) {
+  if (!isEieKstMonthEnd(date)) {
+    return { success: true, created: false, skipped: 'not_kst_month_end', kst_date: eieKstDateString(date) };
+  }
+  await ensureWithdrawnAtColumn(env);
+  const monthKey = monthKeyFromDate(date);
+  const snapshotDate = eieKstDateString(date);
+  return saveCurrentEieTimetableMonthArchive(env, {
+    month_key: monthKey,
+    snapshot_date: snapshotDate,
+    mode: 'insert',
+    source_type: 'scheduled',
+    title: `${monthKey} EIE timetable`,
+    memo: 'KST month-end automatic archive'
+  });
 }
 
 async function compareEieTimetableMonthSnapshots(env, monthKey, compareMonthKey) {
@@ -3139,6 +3220,8 @@ async function handleDeleteTeacher(request, env, teacherId) {
 
 export async function handleEie(request, env, teacher, path, url) {
   if (!teacher || !teacher.id) return jsonResponse({ success: false, error: 'unauthorized' }, 401);
+
+  await ensureWithdrawnAtColumn(env);
 
   const method = request.method;
 

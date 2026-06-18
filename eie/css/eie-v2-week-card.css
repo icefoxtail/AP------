@@ -301,7 +301,8 @@
 }
 
 .eie-v2-card-student.is-paused,
-.eie-v2-student-chip.is-paused {
+.eie-v2-student-chip.is-paused,
+.eie-v2-class-student-cell.is-paused {
     background: #F1F0F7 !important;
     border-color: #D7D3E5 !important;
     color: #6F6A7C !important;
@@ -309,12 +310,10 @@
 
 .eie-v2-card-student.is-withdrawn,
 .eie-v2-student-chip.is-withdrawn {
-    color: #BE123C !important;
-    background: #FFF1F4 !important;
-    border: 1px dashed #FDA4AF !important;
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
-    text-decoration-color: rgba(190, 18, 60, 0.35);
+    color: #F9A8B8 !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    text-decoration: none !important;
 }
 
 .eie-v2-card-student.is-new,
@@ -326,7 +325,8 @@
 }
 
 button.eie-v2-card-student.is-paused:hover,
-button.eie-v2-student-chip.is-paused:hover {
+button.eie-v2-student-chip.is-paused:hover,
+button.eie-v2-class-student-cell.is-paused:hover {
     background: #E8E6F0 !important;
     border-color: #C9C3DA !important;
 }

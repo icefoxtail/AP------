@@ -19,7 +19,7 @@ for (const file of [
   assert(fs.existsSync(path.join(root, file)), `${file} should exist before wiring the dashboard card`);
 }
 
-const overviewMatch = dashboardAdmin.match(/function\s+renderAdminStudentOverviewPanel\s*\([^)]*\)\s*\{([\s\S]*?)\nfunction\s+renderAdminNeedCheckPanel/);
+const overviewMatch = dashboardAdmin.match(/function\s+renderAdminStudentOverviewPanel\s*\([^)]*\)\s*\{([\s\S]*?)\n\}/);
 assert(overviewMatch, 'renderAdminStudentOverviewPanel should exist');
 const overviewBody = overviewMatch[1];
 
@@ -28,40 +28,63 @@ assert(
   'admin overview should build grade-level hover rows for student metrics'
 );
 assert(
-  dashboardAdmin.includes('ap-admin-mini-metric__hover') && overviewBody.includes('adminBuildGradeHoverRows(data.activeStudents)'),
-  'student overview metrics should show a larger grade breakdown on hover'
+  dashboardAdmin.includes('ap-owner-stat__tip') && overviewBody.includes('adminBuildGradeHoverRows(data.activeStudents)'),
+  'student overview stat cards should show a grade breakdown on hover'
 );
 assert(
-  overviewBody.includes("renderAdminMiniMetric('재원'") &&
-    overviewBody.includes("renderAdminMiniMetric('최근등록'") &&
-    overviewBody.includes("renderAdminMiniMetric('퇴원'"),
-  'today operation student metrics should render Korean labels instead of bare counts'
+  overviewBody.includes("renderAdminOverviewStatCard('재원생'") &&
+    overviewBody.includes("renderAdminOverviewStatCard('최근 등록'") &&
+    overviewBody.includes("renderAdminOverviewStatCard('휴원·퇴원'"),
+  'first-screen overview should render the three large stat cards (재원생 / 최근 등록 / 휴원·퇴원)'
+);
+const statCardMatch = dashboardAdmin.match(/function\s+renderAdminOverviewStatCard\s*\([^)]*\)\s*\{([\s\S]*?)\n\}/);
+assert(statCardMatch, 'renderAdminOverviewStatCard should exist');
+const statCardBody = statCardMatch[1];
+assert(
+  statCardBody.includes('ap-owner-stat__icon') &&
+    statCardBody.includes('${iconSvg}') &&
+    /ap-owner-stat__title[^>]*>\$\{safeLabel\}/.test(statCardBody),
+  'overview stat card face should show a line icon plus the large label'
+);
+assert(
+  !statCardBody.includes('••') && !statCardBody.includes('ap-owner-stat__num'),
+  'overview stat card face should not render the masked/blurred number anymore'
+);
+assert(
+  !/\.ap-owner-stat__num\s*\{[^}]*filter\s*:\s*blur/.test(dashboardAdmin),
+  'overview stat card numbers should not use the blur treatment'
+);
+assert(
+  /ap-owner-stat__tip-title[\s\S]*?\$\{safeValue\}/.test(statCardBody),
+  'the real count should still be revealed only in the hover tooltip'
+);
+assert(
+  /renderAdminOverviewStatCard\('재원생',[^,]+,\s*'blue',\s*icoActive/.test(dashboardAdmin) &&
+    /renderAdminOverviewStatCard\('최근 등록',[^,]+,\s*'green',\s*icoRecent/.test(dashboardAdmin) &&
+    /renderAdminOverviewStatCard\('휴원·퇴원',[^,]+,\s*'amber',\s*icoLeave/.test(dashboardAdmin),
+  'each stat card should pass a tone and a dedicated line icon'
 );
 assert(
   !dashboardCombined.includes('title="${hoverText}"'),
   'student metric hover details should use the custom hover panel instead of the browser title tooltip'
 );
 
+const shortcutMatch = dashboardAdmin.match(/ap-admin-shortcuts[\s\S]*?ap-surface-toolbar--five([\s\S]*?)`;/);
+assert(shortcutMatch, 'admin shortcut row should exist and use the five-column toolbar');
+const shortcutBody = shortcutMatch[1];
 assert(
-  dashboardAdmin.includes('시험지 보관함') && overviewBody.includes('renderAdminAssessmentArchiveMetric'),
-  'admin overview should render the assessment archive card title'
+  shortcutBody.includes('시험지 보관함') &&
+    shortcutBody.includes('openAdminAssessmentArchiveWindow(event)') &&
+    shortcutBody.includes('../archive/assessment/assessment-mvp.html'),
+  'assessment archive should be a top action button in the shortcut row'
 );
 assert(
-  dashboardAdmin.includes('ap-admin-assessment-card') &&
-    dashboardAdmin.includes('align-items:center; justify-content:center; text-align:center;'),
-  'admin assessment archive card should center its label like the other mini metrics'
+  !overviewBody.includes('시험지 보관함') && !overviewBody.includes('renderAdminAssessmentArchiveMetric'),
+  'assessment archive should no longer live inside the first-screen overview grid'
 );
 assert(
-  dashboardAdmin.includes('진단평가 · 단원평가 · 중간·기말평가'),
-  'admin overview should show the confirmed assessment archive helper text'
-);
-assert(
-  overviewBody.includes('../archive/assessment/assessment-mvp.html'),
-  'admin overview should link to the assessment MVP using the correct path from apmath/index.html'
-);
-assert(
-  !overviewBody.includes("renderAdminMiniMetric('휴원'"),
-  'admin overview should not keep the old leave card in the first-screen metric grid'
+  !overviewBody.includes('renderAdminMiniMetric('),
+  'overview should use the large stat cards instead of the old mini metrics'
 );
 assert(
   /function\s+openAdminLeaveStudentList\s*\(/.test(dashboardAdmin) && dashboardAdmin.includes('휴원생 목록'),

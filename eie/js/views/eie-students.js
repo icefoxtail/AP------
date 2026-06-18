@@ -24,6 +24,11 @@
     var _printIncludeContacts = true;
     var _printIncludeClass = true;
     var _printIncludeMemo = true;
+    var _printPanelOpen = false;
+    var _gradeReportPeriod = '6';
+    var _gradeReportIncludes = { vocab: true, grammar: true, reading: false, listening: false, material: false, month_end: false, free: false };
+    var _gradeReportNote = '';
+    var _gradeReportPreviewStudentId = '';
 
     var STUDENT_GRADE_OPTIONS = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
 
@@ -212,6 +217,164 @@
         }).sort(function (a, b) {
             return text(b.exam_date || b.created_at).localeCompare(text(a.exam_date || a.created_at));
         });
+    }
+
+    function normalizeExamDate(value) {
+        var raw = text(value);
+        var match = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+        if (!match) return '';
+        return [match[1], match[2].padStart(2, '0'), match[3].padStart(2, '0')].join('-');
+    }
+
+    function monthKeyOf(value) {
+        var date = normalizeExamDate(value);
+        return date ? date.slice(0, 7) : '';
+    }
+
+    function monthLabel(monthKey) {
+        var match = text(monthKey).match(/^(\d{4})-(\d{2})$/);
+        return match ? String(Number(match[2])) + '월' : '-';
+    }
+
+    function reportPercent(row) {
+        if (!row || row.score === undefined || row.score === null || text(row.score) === '') return null;
+        var score = Number(row && row.score);
+        if (!Number.isFinite(score)) return null;
+        var maxScore = Number(row && row.max_score);
+        if (Number.isFinite(maxScore) && maxScore > 0) return Math.max(0, Math.min(100, (score / maxScore) * 100));
+        return Math.max(0, Math.min(100, score));
+    }
+
+    function selectedGradeReportCategories() {
+        return Object.keys(_gradeReportIncludes).filter(function (key) { return !!_gradeReportIncludes[key]; });
+    }
+
+    function gradeReportRows(student) {
+        var selected = selectedGradeReportCategories();
+        return examRecordsOf(student).filter(function (row) {
+            return selected.indexOf(text(row.category)) !== -1 && reportPercent(row) !== null && monthKeyOf(row.exam_date || row.created_at);
+        }).map(function (row) {
+            return {
+                category: text(row.category),
+                title: text(row.title || examCategoryLabel(row.category)),
+                examDate: normalizeExamDate(row.exam_date || row.created_at),
+                monthKey: monthKeyOf(row.exam_date || row.created_at),
+                percent: reportPercent(row),
+                score: Number(row.score),
+                maxScore: Number(row.max_score)
+            };
+        });
+    }
+
+    function gradeReportMonthKeys(rows) {
+        var keys = Array.from(new Set(rows.map(function (row) { return row.monthKey; }).filter(Boolean))).sort();
+        if (_gradeReportPeriod === 'all') return keys;
+        var count = Number(_gradeReportPeriod || 6);
+        return keys.slice(Math.max(0, keys.length - count));
+    }
+
+    function buildGradeReportSeries(student) {
+        var rows = gradeReportRows(student);
+        var months = gradeReportMonthKeys(rows);
+        var categories = selectedGradeReportCategories();
+        var byCategory = {};
+        categories.forEach(function (category) {
+            byCategory[category] = months.map(function (month) {
+                var inMonth = rows.filter(function (row) { return row.category === category && row.monthKey === month; });
+                if (!inMonth.length) return { month: month, average: null, count: 0 };
+                var sum = inMonth.reduce(function (total, row) { return total + row.percent; }, 0);
+                return { month: month, average: Math.round(sum / inMonth.length), count: inMonth.length };
+            });
+        });
+        return { rows: rows, months: months, categories: categories, byCategory: byCategory };
+    }
+
+    function renderReportBars(points, tone) {
+        var max = 100;
+        return '<div class="eie-grade-report-bars">'
+            + points.map(function (point) {
+                var height = point.average === null ? 0 : Math.max(4, Math.round((point.average / max) * 100));
+                return '<div class="eie-grade-report-bar-cell">'
+                    + '<div class="eie-grade-report-bar-track"><span class="is-' + esc(tone) + '" style="height:' + height + '%"></span></div>'
+                    + '<strong>' + (point.average === null ? '-' : esc(point.average + '')) + '</strong>'
+                    + '<em>' + esc(monthLabel(point.month)) + '</em>'
+                    + '</div>';
+            }).join('')
+            + '</div>';
+    }
+
+    function renderGradeReportChart(category, points) {
+        var tone = category === 'grammar' ? 'grammar' : category === 'vocab' ? 'vocab' : 'other';
+        var latest = points.slice().reverse().find(function (point) { return point.average !== null; });
+        var count = points.reduce(function (total, point) { return total + Number(point.count || 0); }, 0);
+        return '<section class="eie-grade-report-chart-card">'
+            + '<div class="eie-grade-report-chart-head"><div><h4>' + esc(examCategoryLabel(category)) + '</h4><span>월별 평균 흐름</span></div><strong>' + (latest ? esc(latest.average + '점') : '-') + '</strong></div>'
+            + renderReportBars(points, tone)
+            + '<p>응시 ' + esc(count) + '회 · 점수는 만점 기준 100점 환산으로 표시됩니다.</p>'
+            + '</section>';
+    }
+
+    function renderGradeReportSummaryTable(series) {
+        if (!series.months.length) return '<div class="eie-empty-box">출력할 성적 기록이 없습니다.</div>';
+        return '<table class="eie-grade-report-table"><thead><tr><th>월</th>'
+            + series.categories.map(function (category) { return '<th>' + esc(examCategoryLabel(category)) + '</th>'; }).join('')
+            + '</tr></thead><tbody>'
+            + series.months.map(function (month) {
+                return '<tr><td>' + esc(monthLabel(month)) + '</td>'
+                    + series.categories.map(function (category) {
+                        var point = (series.byCategory[category] || []).find(function (row) { return row.month === month; });
+                        return '<td>' + (point && point.average !== null ? esc(point.average + '점 / ' + point.count + '회') : '-') + '</td>';
+                    }).join('')
+                    + '</tr>';
+            }).join('')
+            + '</tbody></table>';
+    }
+
+    function renderGradeReportSheet(student) {
+        var series = buildGradeReportSeries(student);
+        var periodText = _gradeReportPeriod === 'all' ? '전체 기간' : '최근 ' + _gradeReportPeriod + '개월';
+        return '<section id="eie-grade-report-sheet" class="eie-grade-report-sheet" aria-label="학생 누적 성적 리포트">'
+            + '<header class="eie-grade-report-header">'
+            + '<div><span>EIE 학습 상담 리포트</span><h2>' + esc(displayName(student)) + ' 학생 학습 성장 리포트</h2><p>' + esc([schoolOf(student), gradeOf(student)].filter(Boolean).join(' · ') || '학년 정보 미등록') + '</p></div>'
+            + '<dl><div><dt>기간</dt><dd>' + esc(periodText) + '</dd></div><div><dt>출력일</dt><dd>' + esc(todayIso()) + '</dd></div></dl>'
+            + '</header>'
+            + '<div class="eie-grade-report-guidance"><strong>월별 학습 흐름</strong><p>단어와 문법 성적을 중심으로 최근 학습 흐름을 확인하고 다음 상담 방향을 정리합니다.</p></div>'
+            + '<div class="eie-grade-report-chart-grid">'
+            + series.categories.map(function (category) { return renderGradeReportChart(category, series.byCategory[category] || []); }).join('')
+            + '</div>'
+            + '<section class="eie-grade-report-summary"><h3>월별 요약</h3>' + renderGradeReportSummaryTable(series) + '</section>'
+            + '<section class="eie-grade-report-consult"><h3>상담 메모</h3><div>' + esc(_gradeReportNote || '상담 시 학생의 강점, 보완할 부분, 가정 학습 안내를 적어 활용합니다.') + '</div></section>'
+            + '<footer>본 리포트는 학생의 월별 학습 흐름을 확인하고 다음 학습 방향을 상담하기 위한 자료입니다.</footer>'
+            + '</section>';
+    }
+
+    function renderGradeReportPanel(student) {
+        var sid = rowId(student);
+        var opened = _gradeReportPreviewStudentId === sid;
+        if (!opened) {
+            return '<div class="eie-grade-report-entry"><div><strong>학부모 상담용 누적 성적표</strong><span>단어·문법 월별 그래프와 상담란을 인쇄합니다.</span></div><button type="button" class="eie-primary-button" onclick="EieStudentsView.openGradeReportPreview(' + jsArg(sid) + ')">누적 성적표 인쇄</button></div>';
+        }
+        var categoryCheck = function (key, label, disabledDefault) {
+            return '<label class="eie-grade-report-check"><input type="checkbox" ' + (_gradeReportIncludes[key] ? 'checked ' : '') + 'onchange="EieStudentsView.setGradeReportOption(' + jsArg(key) + ', this.checked)"><span>' + esc(label) + (disabledDefault ? ' 선택' : '') + '</span></label>';
+        };
+        return '<section class="eie-grade-report-preview">'
+            + '<div class="eie-grade-report-toolbar">'
+            + '<div><h3>누적 성적표 인쇄</h3><p>출력 전용 화면에는 학생 상담에 필요한 항목만 담습니다.</p></div>'
+            + '<div class="eie-grade-report-actions"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.closeGradeReportPreview()">닫기</button><button type="button" class="eie-primary-button" onclick="EieStudentsView.printGradeReport()">인쇄</button></div>'
+            + '</div>'
+            + '<div class="eie-grade-report-options">'
+            + '<label><span>기간</span><select onchange="EieStudentsView.setGradeReportPeriod(this.value)"><option value="3"' + (_gradeReportPeriod === '3' ? ' selected' : '') + '>최근 3개월</option><option value="6"' + (_gradeReportPeriod === '6' ? ' selected' : '') + '>최근 6개월</option><option value="12"' + (_gradeReportPeriod === '12' ? ' selected' : '') + '>최근 12개월</option><option value="all"' + (_gradeReportPeriod === 'all' ? ' selected' : '') + '>전체</option></select></label>'
+            + '<div class="eie-grade-report-checks">'
+            + categoryCheck('vocab', '단어', false)
+            + categoryCheck('grammar', '문법', false)
+            + categoryCheck('reading', 'Reading', true)
+            + categoryCheck('listening', 'Listening', true)
+            + categoryCheck('material', '교재', true)
+            + '</div>'
+            + '<label class="eie-grade-report-note-field"><span>상담란</span><textarea oninput="EieStudentsView.setGradeReportNote(this.value)" placeholder="잘하고 있는 점, 보완할 점, 가정 학습 안내를 적어주세요.">' + esc(_gradeReportNote) + '</textarea></label>'
+            + '</div>'
+            + renderGradeReportSheet(student)
+            + '</section>';
     }
 
     function consultationId(row) {
@@ -437,6 +600,7 @@
 
     function teacherNamesForStudent(student) {
         var values = teacherNamesOf(student);
+        if (values.length) return uniqueNames(values);
         assignmentsOf(student).forEach(function (assignment) {
             values = values.concat(assignment.teacherNames || []);
         });
@@ -649,6 +813,22 @@
             + '</div>';
     }
 
+    function renderStatusFilters() {
+        var items = [
+            ['active', '재원'],
+            ['paused', '휴원'],
+            ['needs_review', '확인 필요'],
+            ['inactive', '퇴원'],
+            ['archived', '보관'],
+            ['all', '전체']
+        ];
+        return '<div class="eie-apms-grade-filter" aria-label="상태 필터">'
+            + items.map(function (item) {
+                return '<button type="button" class="' + (_statusFilter === item[0] ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setStatusFilter(' + jsArg(item[0]) + ')">' + esc(item[1]) + '</button>';
+            }).join('')
+            + '</div>';
+    }
+
     function renderGradeCards() {
         var rows = studentsFromState();
         return '<section class="eie-apms-breakdown" aria-label="학년별 학생">'
@@ -656,7 +836,7 @@
             + '<div class="eie-apms-grade-cards">'
             + STUDENT_GRADE_OPTIONS.map(function (grade) {
                 var summary = studentCountSummary(studentsForGrade(grade, rows));
-                return '<button type="button" class="eie-apms-breakdown-card' + (_gradeFilter === grade ? ' is-active' : '') + '" onclick="EieStudentsView.setGradeFilter(' + jsArg(grade) + ')">'
+                return '<button type="button" class="eie-apms-breakdown-card' + (_gradeFilter === grade && _teacherFilter === 'all' ? ' is-active' : '') + '" onclick="EieStudentsView.selectGradeCard(' + jsArg(grade) + ')">'
                     + '<strong>' + esc(grade) + '</strong>'
                     + '<em>' + summary.total + '명</em>'
                     + '<span>재원 ' + summary.active + ' · 휴원 ' + summary.paused + '</span>'
@@ -686,7 +866,7 @@
             + '<div class="eie-apms-teacher-cards">'
             + roster.map(function (name) {
                 var summary = studentCountSummary(studentsForTeacher(name, rows));
-                return '<button type="button" class="eie-apms-breakdown-card' + (_teacherFilter === name ? ' is-active' : '') + '" onclick="EieStudentsView.setTeacherFilter(' + jsArg(name) + ')">'
+                return '<button type="button" class="eie-apms-breakdown-card' + (_teacherFilter === name && _gradeFilter === 'all' ? ' is-active' : '') + '" onclick="EieStudentsView.selectTeacherCard(' + jsArg(name) + ')">'
                     + '<strong>' + esc(name) + '</strong>'
                     + '<em>' + summary.total + '명</em>'
                     + '<span>재원 ' + summary.active + ' · 휴원 ' + summary.paused + '</span>'
@@ -703,7 +883,7 @@
             + '<input type="search" value="' + esc(_query) + '" placeholder="이름, 학년, 학교, 연락처, 수업명" oninput="EieStudentsView.setQuery(this.value)">'
             + '</label>'
             + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.refresh(true)" ' + (_loading ? 'disabled' : '') + '>새로고침</button>'
-            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.printStudents()">인쇄</button>'
+            + '<button type="button" class="' + (_printPanelOpen ? 'is-active ' : '') + 'eie-secondary-button" onclick="EieStudentsView.togglePrintPanel()">' + (_printPanelOpen ? '인쇄 닫기' : '인쇄') + '</button>'
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startCreate()">+ 신규 등록</button>'
             + '</div>';
     }
@@ -813,8 +993,9 @@
     }
 
     function renderPrintPanel() {
+        if (!_printPanelOpen) return '';
         return '<section class="eie-student-print-panel" aria-label="학생 명단 인쇄">'
-            + '<div class="eie-student-print-panel-head"><h2>인쇄</h2><span>엑셀 워크시트형 명단</span></div>'
+            + '<div class="eie-student-print-panel-head"><div><h2>인쇄</h2><span>엑셀 워크시트형 명단</span></div><button type="button" class="eie-secondary-button" onclick="EieStudentsView.togglePrintPanel(false)">닫기</button></div>'
             + '<div class="eie-student-print-options">'
             + '<label><span>출력 방식</span><select onchange="EieStudentsView.setPrintOption(\'grouping\', this.value)">'
             + '<option value="grade"' + (_printGrouping === 'grade' ? ' selected' : '') + '>학년별</option>'
@@ -1245,6 +1426,7 @@
 
     function renderExamTab(student) {
         return '<div class="eie-exam-tab">'
+            + renderGradeReportPanel(student)
             + renderExamCategoryCards()
             + renderExamPanel(student)
             + '</div>';
@@ -1524,11 +1706,11 @@
                 + '<div><h1 id="eie-students-title">학생관리</h1></div>'
                 + '</div>'
                 + noticeHtml + errorHtml + loadingHtml
-                + renderSummary()
-                + renderGradeCards()
-                + renderTeacherCards()
+                + renderStatusFilters()
                 + renderGradeFilters()
                 + renderTeacherFilters()
+                + renderGradeCards()
+                + renderTeacherCards()
                 + renderSearchToolbar()
                 + renderPrintPanel()
                 + '<div class="eie-apms-student-layout">'
@@ -1559,6 +1741,23 @@
             EieRouter.open('students');
         },
 
+        selectGradeCard: function (grade) {
+            _gradeFilter = text(grade) || 'all';
+            _teacherFilter = 'all';
+            EieRouter.open('students');
+        },
+
+        selectTeacherCard: function (teacherName) {
+            _teacherFilter = text(teacherName) || 'all';
+            _gradeFilter = 'all';
+            EieRouter.open('students');
+        },
+
+        togglePrintPanel: function (forceOpen) {
+            _printPanelOpen = typeof forceOpen === 'boolean' ? forceOpen : !_printPanelOpen;
+            EieRouter.open('students');
+        },
+
         setPrintOption: function (key, value) {
             if (key === 'grouping') _printGrouping = text(value) || 'grade';
             if (key === 'status') _printStatus = text(value) || 'active_paused';
@@ -1572,6 +1771,54 @@
             document.body.classList.add('eie-printing-students');
             var cleanup = function () {
                 document.body.classList.remove('eie-printing-students');
+                window.removeEventListener('afterprint', cleanup);
+            };
+            window.addEventListener('afterprint', cleanup);
+            if (window.print) window.print();
+            else cleanup();
+            setTimeout(cleanup, 1200);
+        },
+
+        openGradeReportPreview: async function (studentId) {
+            var sid = text(studentId || _selectedId);
+            if (!sid) return;
+            _selectedId = sid;
+            _tab = 'grades';
+            _gradeReportPreviewStudentId = sid;
+            if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
+            await refreshStudentsView();
+        },
+
+        closeGradeReportPreview: function () {
+            _gradeReportPreviewStudentId = '';
+            refreshStudentsView();
+        },
+
+        setGradeReportPeriod: function (period) {
+            _gradeReportPeriod = ['3', '6', '12', 'all'].indexOf(text(period)) !== -1 ? text(period) : '6';
+            refreshStudentsView();
+        },
+
+        setGradeReportOption: function (key, checked) {
+            var safeKey = text(key);
+            if (Object.prototype.hasOwnProperty.call(_gradeReportIncludes, safeKey)) {
+                _gradeReportIncludes[safeKey] = !!checked;
+                if (!selectedGradeReportCategories().length) _gradeReportIncludes.grammar = true;
+            }
+            refreshStudentsView();
+        },
+
+        setGradeReportNote: function (value) {
+            _gradeReportNote = text(value);
+        },
+
+        printGradeReport: function () {
+            var sid = text(_gradeReportPreviewStudentId || _selectedId);
+            if (!sid) return;
+            _gradeReportPreviewStudentId = sid;
+            document.body.classList.add('eie-printing-grade-report');
+            var cleanup = function () {
+                document.body.classList.remove('eie-printing-grade-report');
                 window.removeEventListener('afterprint', cleanup);
             };
             window.addEventListener('afterprint', cleanup);

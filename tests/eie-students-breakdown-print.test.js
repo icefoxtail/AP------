@@ -26,9 +26,17 @@ assert(
     students.includes('function printGroups') &&
     students.includes('function printColumnConfig') &&
     students.includes('function printColumnCount') &&
+    students.includes('EieStudentsView.togglePrintPanel') &&
     students.includes('EieStudentsView.printStudents') &&
     students.includes('EieStudentsView.setPrintOption'),
   'EIE students screen should expose worksheet-style print controls and print flow'
+);
+
+assert(
+  students.includes('var _printPanelOpen = false') &&
+    students.includes("if (!_printPanelOpen) return ''") &&
+    students.includes("onclick=\"EieStudentsView.togglePrintPanel()\""),
+  'print controls should stay hidden on the main student-management screen until the user clicks the print button'
 );
 
 assert(
@@ -54,6 +62,8 @@ assert(
     css.includes('.eie-student-print-table') &&
     css.includes('.eie-student-print-summary-line') &&
     css.includes('.eie-student-print-memo') &&
+    css.includes('.eie-apms-breakdown-card:hover') &&
+    css.includes('.eie-apms-student-row:hover') &&
     css.includes('-webkit-line-clamp: 2') &&
     css.includes('body.eie-printing-students') &&
     css.includes('size: A4 landscape'),

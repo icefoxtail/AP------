@@ -109,12 +109,20 @@ assert(newHtml.includes('tt-new'), 'new AP student should keep new-student color
 assert(newHtml.includes('(6/12)'), 'new AP student should show enrollment month/day');
 assert(!newHtml.includes('(신)'), 'new AP student should not show the old new-student marker');
 
+const manyHtml = context.buildTimetableStudentSlots(students.concat([
+  { id: 'extra1', name: '추가1' },
+  { id: 'extra2', name: '추가2' },
+  { id: 'extra3', name: '추가3' }
+]), 'c1');
+assert(!manyHtml.includes('tt-std-slot-more'), 'AP timetable should not render +N hidden student marker');
+assert(manyHtml.includes('추가3'), 'AP timetable should render all visible student names instead of +N marker');
+
 const sourceCss = source;
 assert(sourceCss.includes('.tt-std-name.tt-withdrawn'), 'AP timetable CSS should define withdrawn chip style');
-assert(sourceCss.includes('background:#FFF1F4'), 'AP withdrawn chip should use pale pink background');
-assert(sourceCss.includes('color:#BE123C'), 'AP withdrawn chip should use soft rose text');
-assert(sourceCss.includes('border:1px dashed #FDA4AF'), 'AP withdrawn chip should use pale pink dashed border');
-assert(sourceCss.includes('text-decoration-color:rgba(190,18,60,0.35)'), 'AP withdrawn chip should use soft rose strike color');
+assert(sourceCss.includes('color:#F9A8B8'), 'AP withdrawn chip should use very pale pink text');
+assert(sourceCss.includes('background:transparent'), 'AP withdrawn chip should not fill the class box');
+assert(sourceCss.includes('border:0'), 'AP withdrawn chip should not draw a border');
+assert(sourceCss.includes('text-decoration:none'), 'AP withdrawn chip should not strike through the name');
 
 assert(studentEditSource.includes('handleDelete') && studentEditSource.includes('>퇴원</button>'), 'AP student edit should expose a direct withdrawn button');
 assert(studentEditSource.includes('id="edit-is-leave"'), 'AP student edit should keep the existing leave input');

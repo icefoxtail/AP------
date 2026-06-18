@@ -209,3 +209,68 @@
         grid-template-columns: 1fr;
     }
 }
+.eie-v2-month-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.eie-v2-month-select {
+    height: 32px;
+    max-width: 112px;
+    border: 1px solid var(--eie-border, rgba(15, 23, 42, 0.12));
+    border-radius: 8px;
+    background: var(--eie-surface, #fff);
+    color: var(--eie-text, #111827);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 6px;
+}
+
+.eie-v2-month-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--eie-muted, #64748b);
+    white-space: nowrap;
+}
+
+.eie-drw-item[data-eie-route="timetable-months"] {
+    display: none !important;
+}
+
+/* ======================================================================
+   [REDESIGN] EIE 시간표 헤더 — AP 새 디자인 언어 정렬
+   (검색 pill에 돋보기 아이콘 / 우측 컨트롤 버튼에 라인아이콘 + 포인트컬러)
+   ====================================================================== */
+.eie-v2-screen .eie-v2-search {
+    position: relative;
+}
+.eie-v2-screen .eie-v2-search__icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--eie-muted, #64748b);
+    pointer-events: none;
+}
+.eie-v2-screen .eie-v2-search input {
+    padding-left: 38px;
+}
+.eie-v2-screen .eie-v2-head-right .eie-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.eie-v2-screen .eie-v2-head-ico {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    color: var(--eie-primary);
+}
+.eie-v2-screen .eie-v2-head-ico svg {
+    display: block;
+}
+.eie-v2-screen .eie-secondary-button.is-active .eie-v2-head-ico {
+    color: inherit;
+}

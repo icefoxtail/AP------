@@ -2,7 +2,6 @@
     const routes = {
         dashboard: () => EieDashboardView.render(),
         timetable: () => EieTimetableView.render(),
-        'timetable-months': () => EieTimetableMonthsView.render(),
         'timetable-editor': () => EieTimetableEditorView.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
@@ -26,6 +25,7 @@
     function normalizeRoute(route) {
         const key = String(route || '').replace(/^#/, '').trim();
         if (key === 'timetable-v2') return 'timetable';
+        if (key === 'timetable-months') return 'timetable';
         return routes[key] ? key : defaultRouteForSession();
     }
 
@@ -82,7 +82,7 @@
         }
         try {
             const html = await routes[nextRoute]();
-            // 더 최신 네비게이션이 있으면 이 결과는 버린다(stale 덮어쓰기 방지).
+            // 더 최신 네비게이션이 있으면 이 결과는 버린다.
             if (token !== renderToken) return;
             await EieApp.mount(html);
             lastMountedRoute = nextRoute;
