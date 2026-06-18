@@ -65,12 +65,16 @@
 }
 
 .admin-teacher-card__quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   flex-shrink: 0;
 }
 
 .admin-teacher-card__quick-action {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 3px 8px;
   border: 1px solid var(--eie-border);
   border-radius: 999px;
@@ -78,6 +82,21 @@
   color: var(--eie-muted);
   font-size: 11px;
   font-weight: 700;
+}
+
+.eie-admin-home .admin-teacher-card__journal,
+.eie-admin-home .eie-admin-teacher-board {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.eie-admin-home .admin-teacher-card__journal-title {
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .admin-teacher-grade-pills {
@@ -103,6 +122,337 @@
 .admin-teacher-grade-pill span:last-child {
   font-weight: 700;
   color: var(--eie-text);
+}
+
+body.eie-owner-dashboard-bg .eie-main {
+  max-width: 1340px;
+}
+
+body.eie-owner-dashboard-bg .owner-dashboard-shell {
+  max-width: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.eie-admin-home .ap-owner-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 18px;
+}
+
+.eie-admin-home .ap-owner-cell {
+  min-width: 0;
+}
+
+.eie-admin-home .ap-owner-cell--8 {
+  grid-column: span 8;
+}
+
+.eie-admin-home .ap-owner-cell--4 {
+  grid-column: span 4;
+}
+
+.eie-admin-home .ap-owner-cell--12 {
+  grid-column: span 12;
+}
+
+.eie-admin-home .ap-owner-grid .ap-admin-section {
+  margin-bottom: 0 !important;
+}
+
+.eie-admin-home .ap-owner-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.eie-admin-home .ap-owner-kpi {
+  position: relative;
+  min-height: 118px;
+  padding: 18px 20px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  box-shadow: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  cursor: pointer;
+}
+
+.eie-admin-home .ap-owner-kpi__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.eie-admin-home .ap-owner-kpi__label {
+  color: var(--eie-muted);
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.eie-admin-home .ap-owner-kpi__eye,
+.eie-admin-home .ap-owner-kpi__arch-ico {
+  margin-left: auto;
+  display: flex;
+  color: var(--eie-primary);
+}
+
+.eie-admin-home .ap-owner-kpi__eye-on {
+  display: none;
+}
+
+.eie-admin-home .ap-owner-kpi:hover .ap-owner-kpi__eye-off {
+  display: none;
+}
+
+.eie-admin-home .ap-owner-kpi:hover .ap-owner-kpi__eye-on {
+  display: block;
+}
+
+.eie-admin-home .ap-owner-kpi__num {
+  color: var(--eie-text);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.eie-admin-home .ap-owner-kpi__num small {
+  margin-left: 4px;
+  color: var(--eie-muted);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.eie-admin-home .ap-owner-kpi__num,
+.eie-admin-home .ap-owner-kpi__hover {
+  filter: blur(8px);
+  opacity: .42;
+  user-select: none;
+  transition: filter .24s ease, opacity .24s ease;
+}
+
+.eie-admin-home .ap-owner-kpi:hover .ap-owner-kpi__num,
+.eie-admin-home .ap-owner-kpi:focus-visible .ap-owner-kpi__num,
+.eie-admin-home .ap-owner-kpi:hover .ap-owner-kpi__hover,
+.eie-admin-home .ap-owner-kpi:focus-visible .ap-owner-kpi__hover {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.eie-admin-home .ap-owner-kpi__arch-sub {
+  margin-top: auto;
+  color: var(--eie-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.eie-admin-home .ap-owner-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 0 2px;
+}
+
+.eie-admin-home .ap-owner-panel-title {
+  margin: 0;
+}
+
+.eie-admin-home .ap-owner-panel-meta {
+  margin-left: auto;
+  color: var(--eie-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.eie-admin-home .eie-owner-linked-card {
+  width: 100%;
+  min-height: 72px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.eie-admin-home .eie-owner-memo-card {
+  padding: 10px 12px 12px !important;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  box-shadow: none;
+}
+
+.eie-admin-home .eie-owner-memo-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.eie-admin-home .eie-owner-memo-empty {
+  padding: 20px 8px;
+  text-align: center;
+  color: var(--eie-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.eie-admin-home .eie-owner-memo-row {
+  min-height: 40px;
+  padding: 8px 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.eie-admin-home .eie-owner-memo-row:hover {
+  background: var(--eie-surface-2);
+}
+
+.eie-admin-home .eie-owner-memo-row input {
+  flex: 0 0 auto;
+  accent-color: var(--eie-primary);
+}
+
+.eie-admin-home .eie-owner-memo-row span {
+  flex: 1;
+  min-width: 0;
+  color: var(--eie-text);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.eie-admin-home .eie-owner-memo-row.is-done span {
+  color: var(--eie-muted);
+  text-decoration: line-through;
+}
+
+.eie-admin-home .eie-owner-memo-row button {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--eie-muted);
+  cursor: pointer;
+}
+
+.eie-admin-home .eie-owner-memo-row button:hover {
+  background: var(--eie-surface-2);
+  color: var(--eie-danger, #b7141b);
+}
+
+.eie-admin-home .eie-owner-memo-add {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 9px;
+  border-top: 1px solid var(--eie-border);
+}
+
+.eie-admin-home .eie-owner-memo-add input {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--eie-border);
+  border-radius: 10px;
+  background: var(--eie-surface-2);
+  color: var(--eie-text);
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+.eie-admin-home .eie-owner-memo-add button {
+  flex: 0 0 auto;
+  height: 38px;
+  padding: 0 15px;
+  border: 1px solid var(--eie-primary);
+  border-radius: 10px;
+  background: var(--eie-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.eie-admin-home .ap-admin-recent-student-grid,
+.eie-admin-home .eie-admin-recent-list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 1px !important;
+  max-height: 360px !important;
+  overflow: auto !important;
+  padding: 0 !important;
+  background: rgba(15, 23, 42, 0.08) !important;
+  border: 1px solid var(--eie-border) !important;
+  border-radius: 16px !important;
+}
+
+.eie-admin-home .ap-admin-recent-student-grid > *,
+.eie-admin-home .eie-admin-recent-list > * {
+  background: var(--eie-surface) !important;
+}
+
+.eie-admin-home .eie-admin-recent-row {
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 720px) {
+  .eie-admin-home .ap-admin-recent-student-grid,
+  .eie-admin-home .eie-admin-recent-list {
+    grid-template-columns: 1fr !important;
+    max-height: 420px !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .eie-admin-home .ap-owner-cell--8 {
+    grid-column: span 12;
+  }
+
+  .eie-admin-home .ap-owner-cell--4 {
+    grid-column: span 6;
+  }
+
+  .eie-admin-home .ap-owner-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .eie-admin-home .ap-owner-cell--8,
+  .eie-admin-home .ap-owner-cell--4 {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 560px) {
+  .eie-admin-home .ap-owner-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eie-admin-home .ap-owner-kpi__num {
+    font-size: 34px;
+  }
 }
 
 .eie-admin-teacher-periods {
@@ -1206,4 +1556,207 @@
   .eie-admin-home .eie-admin-consultation-row em {
     align-items: flex-start;
   }
+}
+
+/* ======================================================================
+   [REDESIGN] EIE 원장 대시보드 — AP 새 디자인 언어 정렬
+   상단바(날짜 · AP/EIE pill 토글 · 통합검색) / 액션 아이콘 / 통계 카드 3개
+   ====================================================================== */
+.eie-admin-home .eie-owner-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.eie-admin-home .eie-owner-topbar__date {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--eie-text);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.eie-admin-home .eie-owner-topbar__tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  min-width: 0;
+}
+
+/* AP/EIE pill 토글 */
+.eie-admin-home .eie-owner-sysgate {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--eie-border);
+  border-radius: 999px;
+  background: var(--eie-surface-2);
+  flex: 0 0 auto;
+}
+.eie-admin-home .eie-owner-sysgate__tab {
+  appearance: none;
+  height: 34px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--eie-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.eie-admin-home .eie-owner-sysgate__tab.is-current {
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+/* 통합 검색 pill (모양만 — 실제 검색 연결은 추후) */
+.eie-admin-home .eie-owner-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: min(360px, 42vw);
+  height: 42px;
+  flex: 0 1 360px;
+  border: 1px solid var(--eie-border);
+  border-radius: 999px;
+  background: var(--eie-surface);
+}
+.eie-admin-home .eie-owner-search__icon {
+  position: absolute;
+  left: 14px;
+  color: var(--eie-muted);
+  pointer-events: none;
+}
+.eie-admin-home .eie-owner-search input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--eie-text);
+  padding: 0 14px 0 40px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 999px;
+  outline: none;
+}
+
+/* 액션 버튼 아이콘 (포인트 컬러) */
+.eie-admin-home .eie-admin-shortcuts .eie-surface-action {
+  gap: 8px;
+}
+.eie-admin-home .eie-action-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--eie-primary);
+}
+.eie-admin-home .eie-action-ico svg { display: block; }
+
+/* 통계 카드 3개 (아이콘 배지 + 큰 라벨, 숫자 미노출, 호버 툴팁) */
+.eie-admin-home .eie-owner-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.eie-admin-home .eie-owner-stat {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  min-height: 118px;
+  padding: 20px 22px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  box-sizing: border-box;
+  transition: border-color .16s ease, transform .16s ease;
+}
+.eie-admin-home .eie-owner-stat[role="button"] { cursor: pointer; }
+.eie-admin-home .eie-owner-stat__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  flex: 0 0 auto;
+}
+.eie-admin-home .eie-owner-stat__title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--eie-text);
+  line-height: 1.2;
+}
+.eie-admin-home .eie-owner-stat--blue .eie-owner-stat__icon { color: var(--eie-primary); background: color-mix(in srgb, var(--eie-primary) 12%, transparent); }
+.eie-admin-home .eie-owner-stat--green .eie-owner-stat__icon { color: #16a34a; background: color-mix(in srgb, #16a34a 13%, transparent); }
+.eie-admin-home .eie-owner-stat--amber .eie-owner-stat__icon { color: #d97706; background: color-mix(in srgb, #d97706 15%, transparent); }
+.eie-admin-home .eie-owner-stat--red .eie-owner-stat__icon { color: #dc2626; background: color-mix(in srgb, #dc2626 12%, transparent); }
+@media (hover: hover) {
+  .eie-admin-home .eie-owner-stat[role="button"]:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--eie-primary) 35%, var(--eie-border));
+  }
+}
+
+/* 호버 툴팁 — 카드 아래 드롭다운(안 잘리게) */
+.eie-admin-home .eie-owner-stat__tip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--eie-surface);
+  border: 1px solid var(--eie-border);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.16);
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+  z-index: 20;
+}
+.eie-admin-home .eie-owner-stat:hover .eie-owner-stat__tip,
+.eie-admin-home .eie-owner-stat:focus-within .eie-owner-stat__tip {
+  opacity: 1;
+  transform: translateY(0);
+}
+.eie-admin-home .eie-owner-stat__tip-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--eie-text);
+  margin-bottom: 8px;
+}
+
+/* 선생님 현황 헤더 — 부제 / 기준일 */
+.eie-admin-home .eie-owner-panel-sub {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--eie-muted);
+}
+.eie-admin-home .eie-owner-panel-meta {
+  margin-left: auto;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--eie-muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .eie-admin-home .eie-owner-topbar { flex-direction: column; align-items: stretch; }
+  .eie-admin-home .eie-owner-topbar__tools { margin-left: 0; flex-wrap: wrap; }
+  .eie-admin-home .eie-owner-search { width: 100%; flex: 1 1 100%; }
+  .eie-admin-home .eie-owner-stat-grid { grid-template-columns: 1fr; }
 }

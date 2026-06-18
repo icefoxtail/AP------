@@ -42,6 +42,28 @@ node --check .\helpers\response.js
 npx wrangler deploy --config .\wrangler.jsonc
 ```
 
+### D1 migrations (important)
+
+This Worker's `wrangler.jsonc` has **no `migrations_dir`**, and several EIE migrations
+live in the **repo-root** `migrations/` folder (e.g.
+`migrations/20260615_eie_students_withdrawn_at.sql`), not in this folder's `migrations/`.
+`wrangler deploy` never applies these — they must be run against the live D1 by hand:
+
+```powershell
+cd C:\Users\USER\Desktop\AP------
+npx wrangler d1 execute wangji-eie-os --remote --file=.\migrations\20260615_eie_students_withdrawn_at.sql
+```
+
+Verify the column exists:
+
+```powershell
+npx wrangler d1 execute wangji-eie-os --remote --command="PRAGMA table_info(eie_students);"
+```
+
+As a safety net, the Worker also self-heals `eie_students.withdrawn_at` at runtime
+(`ensureWithdrawnAtColumn` in `routes/eie.js`), so the withdrawal flow works even if this
+migration was missed — but applying the migration is still the canonical fix.
+
 ## APMS Separation
 
 | | EIE Worker | APMS Worker |

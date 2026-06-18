@@ -81,7 +81,16 @@
         editCopySourceSessionId: '',
         editSaving: false,
         editError: '',
-        editNotice: ''
+        editNotice: '',
+        monthArchive: {
+            active: false,
+            loaded: false,
+            loading: false,
+            monthKey: '',
+            months: [],
+            detail: null,
+            rows: []
+        }
     };
 
     let eventsBound = false;
@@ -110,6 +119,137 @@
         if (Array.isArray(result?.data)) return result.data;
         if (Array.isArray(result?.rows)) return result.rows;
         return [];
+    }
+
+    function currentMonthKey() {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    }
+
+    function monthLabel(monthKey) {
+        const parts = String(monthKey || '').split('-');
+        if (parts.length !== 2) return '';
+        return `${Number(parts[0])}년 ${Number(parts[1])}월`;
+    }
+
+    function archiveState() {
+        if (!viewState.monthArchive) {
+            viewState.monthArchive = { active: false, loaded: false, loading: false, monthKey: '', months: [], detail: null, rows: [] };
+        }
+        return viewState.monthArchive;
+    }
+
+    function isArchiveMode() {
+        const archive = archiveState();
+        return !!(archive.active && Array.isArray(archive.rows));
+    }
+
+    function archiveRowsFromDetail(detail) {
+        const cells = Array.isArray(detail?.timetable_cells) ? detail.timetable_cells : [];
+        return cells.map((cell, index) => ({
+            id: cell.source_cell_id || cell.id || `eie_month_cell_${index}`,
+            day_label: cell.day_label || '',
+            period_label: cell.period_label || '',
+            period_order: cell.period_order,
+            start_time: cell.start_time || '',
+            end_time: cell.end_time || '',
+            class_name_raw: cell.class_name_raw || cell.class_name || 'Class',
+            material_text: cell.class_name_raw || cell.class_name || 'Class',
+            material: cell.class_name_raw || cell.class_name || 'Class',
+            teacher_name_raw: cell.teacher_name_raw || cell.teacher_name || '',
+            teacher_names: cell.teacher_names_json ? (function () { try { return JSON.parse(cell.teacher_names_json); } catch (_) { return []; } })() : [],
+            room_raw: cell.room_raw || cell.room || '',
+            column_index: cell.column_index,
+            slot_lane: Number(cell.slot_lane) || 1,
+            student_count: Number(cell.student_count || 0),
+            memo: cell.memo || '',
+            status: 'active',
+            assigned_students: (Array.isArray(cell.assigned_students) ? cell.assigned_students : []).map(student => ({
+                id: student.source_student_id || student.id || '',
+                student_id: student.source_student_id || student.id || '',
+                name: student.display_name || student.name || '',
+                display_name: student.display_name || student.name || '',
+                normalized_name: student.normalized_name || normalizeName(student.display_name || student.name || ''),
+                grade: student.grade || '',
+                school_name: student.school_name || '',
+                status: student.student_status || 'active',
+                student_status: student.student_status || 'active'
+            }))
+        }));
+    }
+
+    async function ensureArchiveMonthsLoaded() {
+        const archive = archiveState();
+        if (archive.loaded || archive.loading || !window.EieApi?.getTimetableMonths) return archive.months || [];
+        archive.loading = true;
+        try {
+            const res = await window.EieApi.getTimetableMonths();
+            archive.months = Array.isArray(res?.months) ? res.months : (Array.isArray(res?.data) ? res.data : []);
+            archive.loaded = true;
+        } catch (_) {
+            archive.months = [];
+        }
+        archive.loading = false;
+        return archive.months || [];
+    }
+
+    function savedArchiveMonthKeys() {
+        return (archiveState().months || []).map(row => normalizeKey(row?.month_key)).filter(Boolean).sort();
+    }
+
+    async function selectArchiveMonth(monthKey) {
+        const archive = archiveState();
+        const current = currentMonthKey();
+        await ensureArchiveMonthsLoaded();
+        if (!monthKey || monthKey === current) {
+            archive.active = false;
+            archive.monthKey = '';
+            archive.detail = null;
+            archive.rows = [];
+            viewState.editMode = false;
+            await refresh();
+            return;
+        }
+        const saved = (archive.months || []).some(row => normalizeKey(row?.month_key) === monthKey);
+        if (!saved || !window.EieApi?.getTimetableMonth) return;
+        const detail = await window.EieApi.getTimetableMonth(monthKey).catch(() => null);
+        if (!detail || detail.success === false) return;
+        archive.active = true;
+        archive.monthKey = monthKey;
+        archive.detail = detail;
+        archive.rows = archiveRowsFromDetail(detail);
+        viewState.editMode = false;
+        await refresh();
+    }
+
+    function adjacentArchiveMonth(direction) {
+        const keys = savedArchiveMonthKeys();
+        if (!keys.length) return '';
+        const current = isArchiveMode() ? archiveState().monthKey : currentMonthKey();
+        let idx = keys.indexOf(current);
+        if (idx === -1) idx = direction < 0 ? keys.length : -1;
+        return keys[idx + direction] || '';
+    }
+
+    function monthSelectOptions() {
+        const archive = archiveState();
+        const current = currentMonthKey();
+        const keys = savedArchiveMonthKeys().slice().reverse();
+        if (!keys.includes(current)) keys.unshift(current);
+        const selected = archive.active ? archive.monthKey : current;
+        return keys.map(key => `<option value="${esc(key)}"${key === selected ? ' selected' : ''}>${key === current ? '오늘' : esc(monthLabel(key))}</option>`).join('');
+    }
+
+    function monthControlsHtml() {
+        const archive = archiveState();
+        return `
+            <div class="eie-v2-month-nav" aria-label="월 이동">
+                <button type="button" class="eie-secondary-button" data-eie-month-prev title="이전 달">‹</button>
+                <select class="eie-v2-month-select" data-eie-month-select title="월 선택">${monthSelectOptions()}</select>
+                <button type="button" class="eie-secondary-button" data-eie-month-next title="다음 달">›</button>
+                ${archive.active ? `<span class="eie-v2-month-label">${esc(monthLabel(archive.monthKey))}</span>` : ''}
+            </div>
+        `;
     }
 
     function normalizeKey(value) {
@@ -3118,7 +3258,8 @@
     }
 
     function renderMiniStudentManager(session) {
-        const students = Array.isArray(session?.students) ? session.students : [];
+        // 반 상세는 퇴원생을 숨겨 선생님이 헷갈리지 않게 한다(시간표 그리드에서는 연한 핑크로 유지).
+        const students = (Array.isArray(session?.students) ? session.students : []).filter(student => !isWithdrawnStudent(student));
         const firstCellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
         return `
             <div class="eie-v2-class-student-grid">
@@ -3138,7 +3279,8 @@
     }
 
     function renderMiniStudentChips(session) {
-        const students = Array.isArray(session?.students) ? session.students : [];
+        // 반 상세는 퇴원생을 숨겨 선생님이 헷갈리지 않게 한다(시간표 그리드에서는 연한 핑크로 유지).
+        const students = (Array.isArray(session?.students) ? session.students : []).filter(student => !isWithdrawnStudent(student));
         const firstCellId = normalizeKey(session?.source_cell_ids?.[0] || session?.source_rows?.[0]?.id || '');
         if (!students.length) return '<span class="eie-v2-ap-info-value is-muted">배정된 학생이 없습니다.</span>';
         return `
@@ -3158,7 +3300,8 @@
     }
 
     function renderClassAttendanceGrid(session) {
-        const students = Array.isArray(session?.students) ? session.students : [];
+        // 반 상세 출석부도 퇴원생을 숨긴다(시간표 그리드에서는 연한 핑크로 유지).
+        const students = (Array.isArray(session?.students) ? session.students : []).filter(student => !isWithdrawnStudent(student));
         const date = todayIso();
         if (!students.length) return '<span class="eie-v2-ap-info-value is-muted">배정된 학생이 없습니다.</span>';
         return `
@@ -3390,6 +3533,7 @@
     }
 
     function renderSelectedPanel(session) {
+        if (isArchiveMode()) return '';
         const studentPanel = renderStudentPanel();
         if (studentPanel) return studentPanel;
         if (!session) return '';
@@ -3402,6 +3546,7 @@
     }
 
     async function loadRows() {
+        if (isArchiveMode()) return { rows: archiveState().rows || [], error: '' };
         const stateRows = Array.isArray(window.EieState?.get?.()?.timetableCells)
             ? window.EieState.get().timetableCells
             : [];
@@ -3538,6 +3683,7 @@
                     ${viewState.repairMode
                         ? `<button type="button" class="eie-secondary-button" data-eie-repair-close>← 돌아가기</button>`
                         : `<label class="eie-v2-search" aria-label="학생 또는 교재 검색">
+                               <svg class="eie-v2-search__icon" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21L16.65 16.65M10.8 18.1C6.77 18.1 3.5 14.83 3.5 10.8C3.5 6.77 6.77 3.5 10.8 3.5C14.83 3.5 18.1 6.77 18.1 10.8C18.1 14.83 14.83 18.1 10.8 18.1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                <input type="search" data-eie-v2-search placeholder="학생 또는 교재 검색" value="${esc(viewState.searchQuery || '')}" autocomplete="off">
                            </label>`
                     }
@@ -3550,10 +3696,10 @@
                         ? `<button type="button" class="eie-primary-button" data-eie-edit-save ${viewState.editSaving ? 'disabled' : ''}>${viewState.editSaving ? '저장 중...' : '저장'}</button>
                            <button type="button" class="eie-secondary-button" data-eie-edit-cancel>취소</button>`
                         : `${renderWeekdayOverlayTabs(viewState.activeDayOverlay)}
-                           <button type="button" class="eie-secondary-button" data-eie-route="timetable-months">월별 시간표</button>
-                           <button type="button" class="eie-secondary-button eie-v2-print-button" data-eie-print-timetable title="시간표 인쇄">인쇄</button>
-                           <button type="button" class="eie-secondary-button" data-eie-edit-toggle>시간표 편집</button>
-                           <button type="button" class="eie-secondary-button${viewState.zoomBoosted ? ' is-active' : ''}" data-eie-zoom-boost>${viewState.zoomBoosted ? '작게 보기' : '크게 보기'}</button>`
+                           ${monthControlsHtml()}
+                           <button type="button" class="eie-secondary-button eie-v2-print-button" data-eie-print-timetable title="시간표 인쇄"><span class="eie-v2-head-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3.5" width="12" height="5" rx="1"/><path d="M6 8.5H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1"/><path d="M18 8.5h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6.5" y="13.5" width="11" height="6" rx="1"/></svg></span>인쇄</button>
+                           ${isArchiveMode() ? '' : '<button type="button" class="eie-secondary-button" data-eie-edit-toggle><span class="eie-v2-head-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2 2 0 0 0 0-2.8l-1.2-1.2a2 2 0 0 0-2.8 0L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg></span>시간표 편집</button>'}
+                           <button type="button" class="eie-secondary-button${viewState.zoomBoosted ? ' is-active' : ''}" data-eie-zoom-boost><span class="eie-v2-head-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5H4.5a1 1 0 0 0-1 1V8"/><path d="M16 3.5h3.5a1 1 0 0 1 1 1V8"/><path d="M8 20.5H4.5a1 1 0 0 1-1-1V16"/><path d="M16 20.5h3.5a1 1 0 0 0 1-1V16"/></svg></span>${viewState.zoomBoosted ? '작게 보기' : '크게 보기'}</button>`
                     }
                 </div>
                 ${viewState.editMode ? `<div class="eie-v2-edit-mode-bar">편집 모드 — 드래그로 위치를 바꾸고, 복사한 반은 원하는 빈 슬롯에 붙여넣으세요.${viewState.editCreates.length ? ` · 새 수업 ${viewState.editCreates.length}개` : ''}</div>` : ''}
@@ -3641,6 +3787,20 @@
         });
 
         document.addEventListener('click', event => {
+            const monthPrev = event.target.closest?.('[data-eie-month-prev]');
+            if (monthPrev) {
+                event.preventDefault();
+                const next = adjacentArchiveMonth(-1);
+                if (next) selectArchiveMonth(next);
+                return;
+            }
+            const monthNext = event.target.closest?.('[data-eie-month-next]');
+            if (monthNext) {
+                event.preventDefault();
+                const next = adjacentArchiveMonth(1);
+                if (next) selectArchiveMonth(next);
+                return;
+            }
             const dayOverlayButton = event.target.closest?.('[data-eie-v2-day-overlay]');
             if (dayOverlayButton) {
                 event.preventDefault();
@@ -4036,6 +4196,28 @@
                 zoomBoostButton.classList.toggle('is-active', viewState.zoomBoosted);
                 return;
             }
+        });
+
+        document.addEventListener('change', event => {
+            const monthSelect = event.target.closest?.('[data-eie-month-select]');
+            if (!monthSelect) return;
+            selectArchiveMonth(monthSelect.value || '');
+        });
+
+        document.addEventListener('pointerdown', event => {
+            const board = event.target.closest?.('.eie-v2-card-board');
+            if (!board) return;
+            board.dataset.swipeStartX = String(event.clientX || 0);
+        });
+
+        document.addEventListener('pointerup', event => {
+            const board = event.target.closest?.('.eie-v2-card-board');
+            if (!board) return;
+            const start = Number(board.dataset.swipeStartX || 0);
+            const dx = (event.clientX || 0) - start;
+            if (Math.abs(dx) < 70) return;
+            const next = adjacentArchiveMonth(dx < 0 ? 1 : -1);
+            if (next) selectArchiveMonth(next);
         });
 
         document.addEventListener('focusin', event => {
@@ -5464,6 +5646,11 @@
     async function render() {
         bindEvents();
         viewState.panelMountRoute = 'timetable';
+        await ensureArchiveMonthsLoaded();
+        if (isArchiveMode()) {
+            viewState.editMode = false;
+            viewState.repairMode = false;
+        }
         const { rows, error } = await loadRows();
         const rowsForDisplay = viewState.editMode && Array.isArray(viewState.editCreates) && viewState.editCreates.length
             ? rows.concat(viewState.editCreates)

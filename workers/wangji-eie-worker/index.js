@@ -1,7 +1,7 @@
 // wangji-eie-os — EIE 전용 최소 Worker
 // APMS 라우트 없음. /api/eie, /api/eie/* 만 처리.
 
-import { handleEie } from './routes/eie.js';
+import { handleEie, saveCurrentEieMonthTimetableArchive } from './routes/eie.js';
 
 const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
 const TEACHER_SESSION_TOKEN_BYTES = 32;
@@ -187,6 +187,14 @@ async function handleAuth(request, env, url) {
 }
 
 export default {
+  async scheduled(event, env, ctx) {
+    const task = saveCurrentEieMonthTimetableArchive(env, new Date(event?.scheduledTime || Date.now()))
+      .then(result => console.log('[eie-timetable-months] scheduled archive', result))
+      .catch(error => console.error('[eie-timetable-months] scheduled archive failed', error));
+    if (ctx?.waitUntil) ctx.waitUntil(task);
+    else await task;
+  },
+
   async fetch(request, env, ctx) {
     const response = await handleRequest(request, env, ctx);
     return withCorsOrigin(response, request, env);

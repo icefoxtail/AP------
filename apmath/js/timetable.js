@@ -229,7 +229,7 @@ function installTimetableStyle() {
         '@media (hover: hover) { .tt-std-name:hover { background:var(--surface-2); color:var(--text); } }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; }',
-        '.tt-std-name.tt-withdrawn { color:#BE123C !important; background:#FFF1F4 !important; border:1px dashed #FDA4AF; text-decoration:line-through; text-decoration-thickness:1px; text-decoration-color:rgba(190,18,60,0.35); }',
+        '.tt-std-name.tt-withdrawn { color:#F9A8B8 !important; background:transparent !important; border:0 !important; text-decoration:none !important; }',
         '.tt-std-name.tt-search-hit { background:#FFE66D !important; color:#111827 !important; box-shadow:0 0 0 2px rgba(245,158,11,0.45) inset; font-weight:900; }',
         '.tt-std-name[draggable="true"] { cursor:grab; }',
         '.tt-std-name[draggable="true"]:active { cursor:grabbing; }',
@@ -1580,13 +1580,25 @@ function buildTimetableVersionHeaderActionsHtml() {
     var draftVersions = getDraftTimetableVersionsForView();
     var selectedVersion = getSelectedTimetableVersionForView();
     var primaryDraft = draftVersions[0] || null;
+    var btnStyle = getTimetableHeaderActionButtonStyle();
+
+    if (!isTimetableDraftMode()) {
+        var activeHtml = '<div style="display:flex; align-items:center; justify-content:flex-end; gap:6px; min-width:0;">';
+        if (primaryDraft) {
+            activeHtml += '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">시간표 수정</button>';
+        } else {
+            activeHtml += '<button class="btn" style="' + btnStyle + '" onclick="window.ttCreateNextDraft()">내년시간표</button>';
+        }
+        activeHtml += '</div>';
+        return activeHtml;
+    }
+
     var nextYear = getNextTimetableDraftYear(new Date());
     var hasNextYearDraft = draftVersions.some(function(version) {
         return Number(version && version.school_year || 0) === nextYear;
     });
-    var shouldShowCreate = shouldShowNextYearDraftPrompt(new Date()) && !hasNextYearDraft;
-    var btnStyle = getTimetableHeaderActionButtonStyle();
-    var html = '<div style="margin-left:auto; display:flex; align-items:center; justify-content:flex-end; gap:6px; min-width:0;">';
+    var shouldShowCreate = !hasNextYearDraft;
+    var html = '<div style="display:flex; align-items:center; justify-content:flex-end; gap:6px; min-width:0;">';
 
     if (isTimetableDraftMode() && selectedVersion) {
         html += '<span style="font-size:12px; font-weight:800; color:var(--text); white-space:nowrap;">' + apEscapeHtml(selectedVersion.title || '시간표 초안') + '</span>';
@@ -3090,23 +3102,12 @@ function buildTimetableStudentSlot(student, classId) {
 
 
 function buildTimetableStudentSlots(students, classId) {
-    var maxVisible = TIMETABLE_STUDENT_SLOT_COUNT;
     var slots = [];
     var visibleStudents = sortTimetableStudentsForSearch(students);
-    var displayCount = Math.min(visibleStudents.length, maxVisible);
+    var displayCount = visibleStudents.length;
 
     for (var i = 0; i < displayCount; i++) {
         slots.push(buildTimetableStudentSlot(visibleStudents[i], classId));
-    }
-
-    if (visibleStudents.length > maxVisible) {
-        var remain = visibleStudents.length - maxVisible;
-        var moreClick = isTimetableDraftMode() ? 'event.stopPropagation();' : 'event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')';
-        slots.push(
-            '<div class="tt-std-slot tt-std-slot-more" onclick="' + moreClick + '" title="클릭 시 반 상세로 이동">' +
-                '+' + remain +
-            '</div>'
-        );
     }
 
     if (!isTimetableMonthArchiveMode()) slots.push(buildTimetableStudentSlot(null, classId));
@@ -3389,9 +3390,9 @@ function buildTimetablePrintClassBlock(cls, includeSchedule) {
         ? '<div class="pt-class-progress">' + apEscapeHtml(progress.text) + '</div>'
         : '';
     var studentHtml = students.length
-        ? '<div class="pt-students">' + students.slice(0, TIMETABLE_STUDENT_SLOT_COUNT).map(function(student) {
+        ? '<div class="pt-students">' + students.map(function(student) {
             return '<span>' + apEscapeHtml(student.name || '') + '</span>';
-        }).join('') + (students.length > TIMETABLE_STUDENT_SLOT_COUNT ? '<span>+' + (students.length - TIMETABLE_STUDENT_SLOT_COUNT) + '</span>' : '') + '</div>'
+        }).join('') + '</div>'
         : '<div class="pt-students pt-students-empty">학생 없음</div>';
 
     var printClass = 'pt-class';
@@ -3789,7 +3790,6 @@ function renderTimetable() {
         '<div id="timetable-root" style="width:100%; padding:0; box-sizing:border-box;">' +
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
-                buildTimetableVersionHeaderActionsHtml() +
                 apTimetableMonthControlsHtml() +
             '</div>' +
             buildTimetableVersionBannerHtml() +
@@ -3804,6 +3804,7 @@ function renderTimetable() {
                     '<input id="tt-student-search" class="tt-search-input" value="' + apEscapeHtml(studentSearch) + '" placeholder="학생 검색" oninput="window.ttSetStudentSearch(this.value)">' +
                     '<button class="tt-search-clear" type="button" onclick="window.ttClearStudentSearch()" title="검색 지우기">×</button>' +
                 '</div>' +
+                buildTimetableVersionHeaderActionsHtml() +
                 '<button class="tt-print-btn" type="button" onclick="window.ttPrintTimetableReport()">인쇄</button>' +
             '</div>' +
             '<div id="timetable-grid-wrapper"></div>' +

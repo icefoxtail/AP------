@@ -121,10 +121,10 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
 
   assert(css.includes('.eie-v2-student-chip.is-withdrawn'), 'EIE CSS should define student chip withdrawn style');
   assert(css.includes('.eie-v2-card-student.is-withdrawn'), 'EIE CSS should define card student withdrawn style');
-  assert(css.includes('background: #FFF1F4'), 'EIE withdrawn chip should use pale pink background');
-  assert(css.includes('color: #BE123C'), 'EIE withdrawn chip should use soft rose text');
-  assert(css.includes('border: 1px dashed #FDA4AF'), 'EIE withdrawn chip should use pale pink dashed border');
-  assert(css.includes('text-decoration-color: rgba(190, 18, 60, 0.35)'), 'EIE withdrawn chip should use soft rose strike color');
+  assert(css.includes('color: #F9A8B8'), 'EIE withdrawn chip should use very pale pink text');
+  assert(css.includes('background: transparent'), 'EIE withdrawn chip should not fill the class box');
+  assert(css.includes('border-color: transparent'), 'EIE withdrawn chip should not draw a border');
+  assert(css.includes('text-decoration: none'), 'EIE withdrawn chip should not strike through the name');
 
   const retireBody = functionBody('retireMiniStudent');
   assert(retireBody.includes('window.EieApi.updateStudent'), 'retire flow should update the student status');
