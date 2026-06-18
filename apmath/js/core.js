@@ -529,6 +529,18 @@ const api = {
     },
     deleteHomeworkPhotoAssignment(assignmentId) {
         return this.delete('homework-photo', assignmentId);
+    },
+    getTimetableMonths() {
+        return this.get('timetable-months');
+    },
+    getTimetableMonth(monthKey) {
+        return this.get(`timetable-months/${encodeURIComponent(monthKey)}`);
+    },
+    saveTimetableMonthSnapshot(payload) {
+        return this.post('timetable-months/snapshot', payload || {});
+    },
+    getTimetableMonthChanges(monthKey, compareMonthKey) {
+        return this.get(`timetable-months/${encodeURIComponent(monthKey)}/changes?compare=${encodeURIComponent(compareMonthKey || '')}`);
     }
 };
 

@@ -41,7 +41,8 @@ const context = {
         { id: 's_recent', name: '박최근', status: '퇴원' },
         { id: 's_boundary', name: '오경계', status: 'inactive' },
         { id: 's_old', name: '이오래', status: '퇴원' },
-        { id: 's_missing', name: '최미상', status: 'withdrawn' }
+        { id: 's_missing', name: '최미상', status: 'withdrawn' },
+        { id: 's_new', name: '신규', status: '재원', enrollment_date: '2026-06-12' }
       ],
       class_students: [
         { class_id: 'c1', student_id: 's_active' },
@@ -49,12 +50,13 @@ const context = {
         { class_id: 'c1', student_id: 's_recent' },
         { class_id: 'c1', student_id: 's_boundary' },
         { class_id: 'c1', student_id: 's_old' },
-        { class_id: 'c1', student_id: 's_missing' }
+        { class_id: 'c1', student_id: 's_missing' },
+        { class_id: 'c1', student_id: 's_new' }
       ],
       student_status_history: [
-        { student_id: 's_recent', new_status: '퇴원', changed_at: '2026-05-01T09:00:00+09:00' },
-        { student_id: 's_boundary', new_status: 'inactive', changed_at: '2026-04-14' },
-        { student_id: 's_old', new_status: '퇴원', changed_at: '2026-04-13' }
+        { student_id: 's_recent', new_status: '퇴원', changed_at: '2026-06-02T09:00:00+09:00' },
+        { student_id: 's_boundary', new_status: 'inactive', changed_at: '2026-06-01' },
+        { student_id: 's_old', new_status: '퇴원', changed_at: '2026-05-31' }
       ]
     },
     allDb: {}
@@ -78,7 +80,7 @@ assert(!names.includes('최미상'), 'withdrawn student without a withdrawal dat
 
 const recent = students.find(student => student.id === 's_recent');
 assert.strictEqual(recent.isWithdrawn, true, 'recent withdrawn student should be marked');
-assert.strictEqual(recent.withdrawalDate, '2026-05-01', 'recent withdrawn date should come from status history');
+assert.strictEqual(recent.withdrawalDate, '2026-06-02', 'recent withdrawn date should come from status history');
 
 const paused = students.find(student => student.id === 's_paused');
 assert.strictEqual(paused.isLeave, true, 'paused student should keep leave marker');
@@ -86,11 +88,16 @@ assert.strictEqual(paused.isWithdrawn, false, 'paused student should not be trea
 
 const recentHtml = context.buildTimetableStudentSlot(recent, 'c1');
 assert(recentHtml.includes('tt-withdrawn'), 'AP withdrawn chip should include withdrawn class');
-assert(recentHtml.includes('퇴원 / 2026-05-01'), 'AP withdrawn chip should include withdrawal tooltip');
+assert(recentHtml.includes('퇴원 / 2026-06-02'), 'AP withdrawn chip should include withdrawal tooltip');
 assert(recentHtml.includes('박최근'), 'AP withdrawn chip should keep the student name visible');
 
 const activeHtml = context.buildTimetableStudentSlot(students.find(student => student.id === 's_active'), 'c1');
 assert(!activeHtml.includes('tt-withdrawn'), 'active student should not receive withdrawn class');
+
+const newHtml = context.buildTimetableStudentSlot(students.find(student => student.id === 's_new'), 'c1');
+assert(newHtml.includes('tt-new'), 'new AP student should keep new-student color');
+assert(newHtml.includes('(6/12)'), 'new AP student should show enrollment month/day');
+assert(!newHtml.includes('(신)'), 'new AP student should not show the old new-student marker');
 
 const sourceCss = source;
 assert(sourceCss.includes('.tt-std-name.tt-withdrawn'), 'AP timetable CSS should define withdrawn chip style');

@@ -2787,6 +2787,13 @@ function _ttGetStudentJoinDate(s) {
     );
 }
 
+function _ttFormatMonthDay(value) {
+    var date = _ttNormalizeDateString(value);
+    if (!date) return '';
+    var parts = date.split('-');
+    return String(Number(parts[1])) + '/' + String(Number(parts[2]));
+}
+
 function _ttIsStudentNewByJuneFirst(s) {
     var joinDate = _ttGetStudentJoinDate(s);
     if (!joinDate) return false;
@@ -2834,6 +2841,12 @@ function getTimetableTwoMonthsAgoDateString(today) {
         String(date.getMonth() + 1).padStart(2, '0'),
         String(date.getDate()).padStart(2, '0')
     ].join('-');
+}
+
+function getTimetableWithdrawalCutoffDateString(today) {
+    var base = getTimetableTodayDateString(today);
+    var year = base ? base.slice(0, 4) : String(new Date().getFullYear());
+    return year + '-06-01';
 }
 
 function getTimetableStudentStatusHistoryRows(student) {
@@ -2884,7 +2897,7 @@ function isTimetableWithdrawnStudent(student, mapping) {
 function isRecentTimetableWithdrawnStudent(student, mapping, today) {
     if (!isTimetableWithdrawnStudent(student, mapping)) return false;
     var withdrawalDate = getTimetableStudentWithdrawalDate(student, mapping);
-    var cutoff = getTimetableTwoMonthsAgoDateString(today);
+    var cutoff = getTimetableWithdrawalCutoffDateString(today);
     return !!(withdrawalDate && cutoff && withdrawalDate >= cutoff);
 }
 
@@ -2996,7 +3009,8 @@ function getTimetableClassStudentsWithInfo(classId) {
                 isNew: _ttIsStudentNew(s) || (isTimetableDraftMode() && s.status === '입학예정'),
                 isLeave: _ttIsStudentLeave(s),
                 isWithdrawn: isWithdrawn,
-                withdrawalDate: isWithdrawn ? getTimetableStudentWithdrawalDate(s) : ''
+                withdrawalDate: isWithdrawn ? getTimetableStudentWithdrawalDate(s) : '',
+                enrollmentDate: _ttGetStudentJoinDate(s)
             };
         })
         .sort(function(a, b) { return String(a.name || '').localeCompare(String(b.name || ''), 'ko'); });
@@ -3025,7 +3039,8 @@ function buildTimetableStudentSlot(student, classId) {
 
     var isSearchHit = isTimetableStudentSearchMatch(student);
     var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '') + (student.isWithdrawn ? getTimetableStudentChipClass(student) : '') + (isSearchHit ? ' tt-search-hit' : '');
-    var nameText = apEscapeHtml(student.name) + (student.isNew ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(신)</span>' : '');
+    var newDateText = student.isNew ? _ttFormatMonthDay(student.enrollmentDate || '') : '';
+    var nameText = apEscapeHtml(student.name) + (student.isNew && newDateText ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(' + apEscapeHtml(newDateText) + ')</span>' : '');
     var dragAttrs = isTimetableAdminMode()
         ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)" ondragend="if(event.stopPropagation)event.stopPropagation();"'
         : '';
@@ -3540,6 +3555,7 @@ function renderTimetable() {
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
                 buildTimetableVersionHeaderActionsHtml() +
+                '<button class="tt-print-btn" type="button" onclick="if(typeof renderTimetableMonths===\'function\') renderTimetableMonths()">월별 시간표</button>' +
             '</div>' +
             buildTimetableVersionBannerHtml() +
             '<div class="tt-tab-row">' +

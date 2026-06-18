@@ -214,6 +214,10 @@ function appHistoryRestoreView(view) {
             window.renderTimetable();
             return true;
         }
+        if (view.type === 'timetableMonths' && typeof window.renderTimetableMonths === 'function') {
+            window.renderTimetableMonths();
+            return true;
+        }
         if (view.type === 'attendance' && typeof window.openAttendanceLedger === 'function') {
             window.openAttendanceLedger();
             return true;
@@ -795,6 +799,8 @@ function buildDrawerMenu(roleKey) {
 
             ${drawerSection('운영')}
             ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('timetable', '월별 시간표', "closeAppDrawer(); if(typeof renderTimetableMonths==='function') renderTimetableMonths(); else toast('월별 시간표 기능을 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') openAdminDiagnosticPanel(); else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');")}
 
@@ -807,6 +813,7 @@ function buildDrawerMenu(roleKey) {
     return `
         ${drawerSection('수업 관리')}
         ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('timetable', '월별 시간표', "closeAppDrawer(); if(typeof renderTimetableMonths==='function') renderTimetableMonths(); else toast('월별 시간표 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('journal', '일지', "closeAppDrawer(); openDailyJournalModal();")}
         ${drawerItem('memo', '메모', "closeAppDrawer(); openTodoMemoModal();")}

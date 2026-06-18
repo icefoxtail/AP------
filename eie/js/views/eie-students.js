@@ -738,33 +738,56 @@
         return [{ title: '현재 필터', rows: rows }];
     }
 
+    function printColumnConfig() {
+        return {
+            grade: _printGrouping !== 'grade',
+            teacher: _printGrouping !== 'teacher',
+            classInfo: _printIncludeClass,
+            contacts: _printIncludeContacts,
+            memo: _printIncludeMemo
+        };
+    }
+
+    function printColumnCount(config) {
+        return 5
+            + (config.grade ? 1 : 0)
+            + (config.teacher ? 1 : 0)
+            + (config.classInfo ? 2 : 0)
+            + (config.contacts ? 2 : 0)
+            + (config.memo ? 1 : 0);
+    }
+
     function renderPrintTable(group) {
         var summary = studentCountSummary(group.rows);
+        var config = printColumnConfig();
         return '<section class="eie-student-print-section">'
             + '<h3>' + esc(group.title) + '<span>전체 ' + summary.total + '명 · 재원 ' + summary.active + '명 · 휴원 ' + summary.paused + '명</span></h3>'
             + '<table class="eie-student-print-table">'
             + '<thead><tr>'
-            + '<th>No</th><th>학생명</th><th>학년</th><th>학교</th><th>상태</th><th>담당 선생님</th>'
-            + (_printIncludeClass ? '<th>수업/반</th><th>요일/교시</th>' : '')
-            + (_printIncludeContacts ? '<th>학생 연락처</th><th>학부모 연락처</th>' : '')
+            + '<th>No</th><th>학생명</th>'
+            + (config.grade ? '<th>학년</th>' : '')
+            + '<th>학교</th><th>상태</th>'
+            + (config.teacher ? '<th>담당 선생님</th>' : '')
+            + (config.classInfo ? '<th>수업/반</th><th>요일/교시</th>' : '')
+            + (config.contacts ? '<th>학생 연락처</th><th>학부모 연락처</th>' : '')
             + '<th>등원일</th>'
-            + (_printIncludeMemo ? '<th>메모</th>' : '')
+            + (config.memo ? '<th>메모</th>' : '')
             + '</tr></thead>'
             + '<tbody>'
             + (group.rows.length ? group.rows.map(function (student, index) {
                 return '<tr>'
                     + '<td>' + (index + 1) + '</td>'
                     + '<td><strong>' + esc(displayName(student)) + '</strong></td>'
-                    + '<td>' + esc(gradeOf(student)) + '</td>'
+                    + (config.grade ? '<td>' + esc(gradeOf(student)) + '</td>' : '')
                     + '<td>' + esc(schoolOf(student)) + '</td>'
                     + '<td>' + esc(statusLabel(statusOf(student))) + '</td>'
-                    + '<td>' + esc(teacherNamesForStudent(student).join(', ')) + '</td>'
-                    + (_printIncludeClass ? '<td>' + esc(classSummaryOf(student)) + '</td><td>' + esc(scheduleSummaryOf(student)) + '</td>' : '')
-                    + (_printIncludeContacts ? '<td>' + esc(primaryPhone(student)) + '</td><td>' + esc(parentPhoneOf(student)) + '</td>' : '')
+                    + (config.teacher ? '<td>' + esc(teacherNamesForStudent(student).join(', ')) + '</td>' : '')
+                    + (config.classInfo ? '<td>' + esc(classSummaryOf(student)) + '</td><td>' + esc(scheduleSummaryOf(student)) + '</td>' : '')
+                    + (config.contacts ? '<td>' + esc(primaryPhone(student)) + '</td><td>' + esc(parentPhoneOf(student)) + '</td>' : '')
                     + '<td>' + esc(enrollDateOf(student)) + '</td>'
-                    + (_printIncludeMemo ? '<td>' + esc(memoOf(student)) + '</td>' : '')
+                    + (config.memo ? '<td class="eie-student-print-memo">' + esc(memoOf(student)) + '</td>' : '')
                     + '</tr>';
-            }).join('') : '<tr><td colspan="12" class="is-empty">해당 학생 없음</td></tr>')
+            }).join('') : '<tr><td colspan="' + printColumnCount(config) + '" class="is-empty">해당 학생 없음</td></tr>')
             + '</tbody></table>'
             + '</section>';
     }
@@ -778,12 +801,12 @@
             + '<h2>EIE 학생관리 명단</h2>'
             + '<p>출력 방식: ' + esc(_printGrouping) + ' · 상태: ' + esc(printStatusLabel()) + ' · 필터: ' + esc(currentFilterLabel()) + ' · 출력일: ' + todayIso() + '</p>'
             + '</div>'
-            + '<div class="eie-student-print-summary">'
-            + '<span>전체 <strong>' + summary.total + '</strong></span>'
-            + '<span>재원 <strong>' + summary.active + '</strong></span>'
-            + '<span>휴원 <strong>' + summary.paused + '</strong></span>'
-            + '<span>퇴원 <strong>' + summary.inactive + '</strong></span>'
-            + '<span>확인 필요 <strong>' + summary.review + '</strong></span>'
+            + '<div class="eie-student-print-summary-line">'
+            + '<span>전체 <strong>' + summary.total + '</strong>명</span>'
+            + '<span>재원 <strong>' + summary.active + '</strong>명</span>'
+            + '<span>휴원 <strong>' + summary.paused + '</strong>명</span>'
+            + '<span>퇴원 <strong>' + summary.inactive + '</strong>명</span>'
+            + '<span>확인 필요 <strong>' + summary.review + '</strong>명</span>'
             + '</div>'
             + groups.map(renderPrintTable).join('')
             + '</div>';

@@ -24,35 +24,40 @@ assert(
   students.includes('function renderPrintPanel') &&
     students.includes('function renderPrintSheet') &&
     students.includes('function printGroups') &&
+    students.includes('function printColumnConfig') &&
+    students.includes('function printColumnCount') &&
     students.includes('EieStudentsView.printStudents') &&
     students.includes('EieStudentsView.setPrintOption'),
   'EIE students screen should expose worksheet-style print controls and print flow'
 );
 
-for (const header of [
-  '<th>No</th>',
-  '<th>학생명</th>',
-  '<th>학년</th>',
-  '<th>학교</th>',
-  '<th>상태</th>',
-  '<th>담당 선생님</th>',
-  '<th>수업/반</th>',
-  '<th>요일/교시</th>',
-  '<th>학생 연락처</th>',
-  '<th>학부모 연락처</th>',
-  '<th>등원일</th>',
-  '<th>메모</th>'
-]) {
-  assert(students.includes(header), `print worksheet should include ${header}`);
+assert(
+  students.includes("grade: _printGrouping !== 'grade'") &&
+    students.includes("teacher: _printGrouping !== 'teacher'"),
+  'print worksheet should omit grade or teacher columns when the section title already supplies that grouping'
+);
+
+assert(
+  students.includes('<div class="eie-student-print-summary-line">') &&
+    students.includes('eie-student-print-memo') &&
+    students.includes('printColumnCount(config)'),
+  'print worksheet should use a compact summary line, two-line memo cells, and dynamic empty-row colspan'
+);
+
+for (const header of ['No', '학생명', '학년', '학교', '상태', '담당 선생님', '수업/반', '요일/교시', '학생 연락처', '학부모 연락처', '등원일', '메모']) {
+  assert(students.includes(`<th>${header}</th>`), `print worksheet should define ${header} column`);
 }
 
 assert(
   css.includes('.eie-apms-grade-cards') &&
     css.includes('.eie-apms-teacher-cards') &&
     css.includes('.eie-student-print-table') &&
+    css.includes('.eie-student-print-summary-line') &&
+    css.includes('.eie-student-print-memo') &&
+    css.includes('-webkit-line-clamp: 2') &&
     css.includes('body.eie-printing-students') &&
     css.includes('size: A4 landscape'),
-  'EIE students CSS should style breakdown cards and A4 landscape worksheet printing'
+  'EIE students CSS should style breakdown cards and compact A4 landscape worksheet printing'
 );
 
 console.log('EIE students breakdown and print contract test passed');

@@ -357,6 +357,18 @@
         async saveGradeSheet(payload) {
             return request('grade-sheets', { method: 'POST', body: payload || {} });
         },
+        getTimetableMonths() {
+            return get('timetable-months', 'timetable');
+        },
+        getTimetableMonth(monthKey) {
+            return get(`timetable-months/${encodeURIComponent(monthKey)}`, 'timetable');
+        },
+        async saveTimetableMonthSnapshot(payload) {
+            return request('timetable-months/snapshot', { method: 'POST', body: payload || {} });
+        },
+        getTimetableMonthChanges(monthKey, compareMonthKey) {
+            return get(`timetable-months/${encodeURIComponent(monthKey)}/changes?compare=${encodeURIComponent(compareMonthKey || '')}`, 'timetable');
+        },
 
         getTeachers() {
             return get('teachers', 'student-seeds');

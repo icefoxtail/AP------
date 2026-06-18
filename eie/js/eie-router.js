@@ -2,6 +2,7 @@
     const routes = {
         dashboard: () => EieDashboardView.render(),
         timetable: () => EieTimetableView.render(),
+        'timetable-months': () => EieTimetableMonthsView.render(),
         'timetable-editor': () => EieTimetableEditorView.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
