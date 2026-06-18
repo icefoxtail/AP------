@@ -75,7 +75,6 @@
     function renderList() {
         return '<div class="eie-apms-toolbar">'
             + '<button type="button" class="eie-primary-button" onclick="EieManagementView.startCreate()">+ 새 선생님 등록</button>'
-            + '<button type="button" class="eie-secondary-button" onclick="EieManagementView.seedDefaultTeachers()">기본 계정 생성</button>'
             + '<button type="button" class="eie-secondary-button" onclick="EieManagementView.refresh()"' + (_loading ? ' disabled' : '') + '>새로고침</button>'
             + '</div>'
             + renderTeacherRows();
@@ -155,17 +154,6 @@
                 return;
             }
             EieRouter.open('teacher');
-        },
-        seedDefaultTeachers: async function () {
-            if (!window.confirm('Carmen, IVY, Lily, Stacy, Zoe, Laura 계정을 만들고 비밀번호를 eie1234로 맞출까요?')) return;
-            try {
-                await EieApi.seedDefaultTeachers();
-                _notice = '기본 선생님 계정을 생성했습니다. 초기 비밀번호는 eie1234입니다.';
-                await loadTeachers(true);
-            } catch (err) {
-                _error = err && err.message ? err.message : '기본 선생님 계정 생성에 실패했습니다.';
-            }
-            return EieRouter.open('management');
         },
         submitForm: async function () {
             if (_saving) return;

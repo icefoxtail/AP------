@@ -66,6 +66,36 @@
         }
         var raw = text(value).replace(/\s+/g, '');
         var aliases = {
+            '초1': '초1',
+            '초등1': '초1',
+            '초등1학년': '초1',
+            '초등학교1': '초1',
+            '초등학교1학년': '초1',
+            '초2': '초2',
+            '초등2': '초2',
+            '초등2학년': '초2',
+            '초등학교2': '초2',
+            '초등학교2학년': '초2',
+            '초3': '초3',
+            '초등3': '초3',
+            '초등3학년': '초3',
+            '초등학교3': '초3',
+            '초등학교3학년': '초3',
+            '초4': '초4',
+            '초등4': '초4',
+            '초등4학년': '초4',
+            '초등학교4': '초4',
+            '초등학교4학년': '초4',
+            '초5': '초5',
+            '초등5': '초5',
+            '초등5학년': '초5',
+            '초등학교5': '초5',
+            '초등학교5학년': '초5',
+            '초6': '초6',
+            '초등6': '초6',
+            '초등6학년': '초6',
+            '초등학교6': '초6',
+            '초등학교6학년': '초6',
             '중1': '중1',
             '중학교1': '중1',
             '중학교1학년': '중1',
@@ -98,6 +128,8 @@
             '고등학교3학년': '고3'
         };
         if (aliases[raw]) return aliases[raw];
+        var elementary = raw.match(/^초(?:등|등학교)?([1-6])(?:학년)?$/);
+        if (elementary) return '초' + elementary[1];
         var middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
         if (middle) return '중' + middle[1];
         var high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
@@ -348,7 +380,8 @@
     function statusLabel(status) {
         var key = text(status) || 'active';
         if (key === 'active') return '재원';
-        if (key === 'inactive') return '비활성';
+        if (key === 'paused') return '휴원';
+        if (key === 'inactive') return '퇴원';
         if (key === 'needs_review') return '확인 필요';
         if (key === 'archived') return '보관';
         return key;
@@ -527,13 +560,15 @@
     function renderSummary() {
         var rows = studentsFromState();
         var active = rows.filter(function (row) { return statusOf(row) === 'active' || statusOf(row) === ''; }).length;
+        var paused = rows.filter(function (row) { return statusOf(row) === 'paused'; }).length;
         var review = rows.filter(function (row) { return statusOf(row) === 'needs_review'; }).length;
         var inactive = rows.filter(function (row) { return statusOf(row) === 'inactive'; }).length;
         var archived = rows.filter(function (row) { return statusOf(row) === 'archived'; }).length;
         return '<div class="eie-apms-summary">'
             + '<button type="button" class="' + (_statusFilter === 'active' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'active\')"><strong>' + active + '</strong><span>재원</span></button>'
+            + '<button type="button" class="' + (_statusFilter === 'paused' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'paused\')"><strong>' + paused + '</strong><span>휴원</span></button>'
             + '<button type="button" class="' + (_statusFilter === 'needs_review' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'needs_review\')"><strong>' + review + '</strong><span>확인 필요</span></button>'
-            + '<button type="button" class="' + (_statusFilter === 'inactive' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'inactive\')"><strong>' + inactive + '</strong><span>비활성</span></button>'
+            + '<button type="button" class="' + (_statusFilter === 'inactive' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'inactive\')"><strong>' + inactive + '</strong><span>퇴원</span></button>'
             + '<button type="button" class="' + (_statusFilter === 'archived' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'archived\')"><strong>' + archived + '</strong><span>보관</span></button>'
             + '<button type="button" class="' + (_statusFilter === 'all' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'all\')"><strong>' + rows.length + '</strong><span>전체</span></button>'
             + '</div>';
@@ -636,7 +671,7 @@
 
     function renderGradeSelect(prefix, student) {
         var selected = normalizeGrade(gradeOf(student)) || gradeOf(student);
-        var grades = ['중1', '중2', '중3', '고1', '고2', '고3'];
+        var grades = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
         return '<label><span>학년</span><select id="' + prefix + '-grade">'
             + '<option value="">선택</option>'
             + grades.map(function (grade) {
@@ -1122,10 +1157,16 @@
             + renderTeacherPicker(prefix, student)
             + '<label><span>상태</span><select id="' + prefix + '-status">'
             + '<option value="active"' + (status === 'active' ? ' selected' : '') + '>재원</option>'
-            + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>비활성</option>'
+            + '<option value="paused"' + (status === 'paused' ? ' selected' : '') + '>휴원</option>'
+            + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>퇴원</option>'
             + '<option value="needs_review"' + (status === 'needs_review' ? ' selected' : '') + '>확인 필요</option>'
             + '<option value="archived"' + (status === 'archived' ? ' selected' : '') + '>보관</option>'
             + '</select></label>'
+            + (isEdit ? '<div class="eie-action-row is-wide">'
+                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'paused\')">휴원 입력</button>'
+                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'inactive\')">퇴원 입력</button>'
+                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'active\')">재원 복구</button>'
+                + '</div>' : '')
             + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo">' + esc(isEdit ? memoOf(student) : '') + '</textarea></label>'
             + '<div class="eie-action-row is-wide">'
             + '<button type="button" class="eie-primary-button" onclick="' + (isEdit ? 'EieStudentsView.submitEdit(' + jsArg(sid) + ')' : 'EieStudentsView.submitCreate()') + '" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : '저장') + '</button>'
@@ -1150,7 +1191,7 @@
         var memo = text(document.getElementById(prefix + '-memo') && document.getElementById(prefix + '-memo').value);
         var teacherInputs = Array.prototype.slice.call(document.querySelectorAll('input[name="' + prefix + '-teacher"]:checked'));
         var teacherNames = uniqueNames(teacherInputs.map(function (input) { return input.value; }));
-        return {
+        var payload = {
             display_name: name,
             name: name,
             grade: normalizeGrade(grade),
@@ -1169,6 +1210,9 @@
             status: statusEl ? statusEl.value : 'active',
             memo: memo
         };
+        if (['inactive', 'withdrawn'].includes(payload.status)) payload.withdrawn_at = todayIso();
+        if (payload.status === 'active') payload.withdrawn_at = '';
+        return payload;
     }
 
     function showFormError(message) {
@@ -1356,6 +1400,11 @@
         cancelEdit: function () {
             _mode = 'detail';
             refreshStudentsView();
+        },
+
+        setEditStatus: function (status) {
+            var el = document.getElementById('edit-status');
+            if (el) el.value = text(status) || 'active';
         },
 
         submitEdit: async function (studentId) {
