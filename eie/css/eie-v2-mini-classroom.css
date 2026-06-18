@@ -744,6 +744,55 @@
     outline-offset: 1px !important;
 }
 
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-new,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-new {
+    color: #1D4ED8 !important;
+    background: #EFF6FF !important;
+    border-color: #93C5FD !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-paused,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-paused {
+    color: #6F6A7C !important;
+    background: #F1F0F7 !important;
+    border-color: #D7D3E5 !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-withdrawn,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-withdrawn {
+    color: #F9A8B8 !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    text-decoration: none !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-new:hover,
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-new:focus-visible,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-new:hover,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-new:focus-visible {
+    color: #1D4ED8 !important;
+    background: #DBEAFE !important;
+    border-color: #60A5FA !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-paused:hover,
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-paused:focus-visible,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-paused:hover,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-paused:focus-visible {
+    color: #6F6A7C !important;
+    background: #E8E6F0 !important;
+    border-color: #C9C3DA !important;
+}
+
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-withdrawn:hover,
+.eie-v2-week-card .eie-v2-card-students > .eie-v2-status-student-chip.is-withdrawn:focus-visible,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-withdrawn:hover,
+.eie-weekday-card .eie-weekday-card__students .eie-v2-status-student-chip.is-withdrawn:focus-visible {
+    color: #F9A8B8 !important;
+    background: #FFE4EA !important;
+    border-color: #FB7185 !important;
+}
+
 @media (max-width: 760px) {
     .eie-v2-page-head.eie-v2-card-head {
         grid-template-columns: minmax(90px, 1fr) auto minmax(64px, 1fr);
