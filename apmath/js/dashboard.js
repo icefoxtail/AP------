@@ -369,7 +369,7 @@ function openDashboardArchiveWindow(event) {
 function openAdminAssessmentArchiveWindow(event) {
     if (event && typeof event.preventDefault === 'function') event.preventDefault();
     if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
-    const url = '../archive/assessment/assessment-mvp.html';
+    const url = appendArchiveSessionToUrl('../archive/assessment/assessment-mvp.html');
     window.open(url, '_blank', 'noopener');
 }
 

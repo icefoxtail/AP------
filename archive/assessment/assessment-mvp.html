@@ -1120,13 +1120,99 @@
       return sortAssessmentQrClassesForSelect((_assessmentQrClassRows || []).filter((row) => getAssessmentClassGrade(row) === grade));
     }
 
-    function getAssessmentAssignmentAuthHeader() {
+    const ASSESSMENT_AP_API_BASE = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
+
+    function getApmathSession() {
       try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session?.login_id || !session?.raw_password) return null;
-        return { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+        return JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
       } catch (error) {
         return null;
+      }
+    }
+
+    function sanitizeApmathSessionForStorage(data) {
+      const safe = { ...(data || {}) };
+      delete safe.raw_password;
+      delete safe.password;
+      delete safe.pw;
+      return safe;
+    }
+
+    function saveApmathSession(data) {
+      localStorage.setItem('APMATH_SESSION', JSON.stringify(sanitizeApmathSessionForStorage(data)));
+    }
+
+    function encodeAssessmentSessionPayload(payload) {
+      return encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+    }
+
+    function appendCurrentArchiveSessionToHash(url) {
+      const session = getApmathSession();
+      if (!session) return url;
+      const payload = sanitizeApmathSessionForStorage({
+        login_id: session.login_id || session.loginId || '',
+        id: session.id || session.user?.id || '',
+        name: session.name || session.user?.name || '',
+        role: session.role || session.user?.role || session.auth?.role || '',
+        session_token: session.session_token || '',
+        expires_at: session.expires_at || ''
+      });
+      if (!payload.session_token && !payload.login_id) return url;
+      return url + (url.indexOf('#') === -1 ? '#' : '&') + 'apmsess=' + encodeAssessmentSessionPayload(payload);
+    }
+
+    function encodeBasicAuthUnicodeSafe(value) {
+      const str = String(value || '');
+      try {
+        return btoa(unescape(encodeURIComponent(str)));
+      } catch (error) {
+        return btoa(str);
+      }
+    }
+
+    function getAssessmentAssignmentAuthHeader() {
+      try {
+        const session = getApmathSession();
+        if (!session) return null;
+        if (session.session_token) return { 'Authorization': 'Bearer ' + session.session_token };
+        const mem = window.__APMATH_AUTH_MEMORY || {};
+        const loginId = mem.login_id || session.login_id || session.loginId;
+        const rawPassword = mem.raw_password || session.raw_password;
+        if (!loginId || !rawPassword) return null;
+        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function restoreApmathSessionFromHash() {
+      const hash = String(window.location.hash || '');
+      const match = /(?:^#|&)apmsess=([^&]+)/.exec(hash);
+      if (!match) return false;
+      try {
+        const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
+        if (!incoming || (!incoming.session_token && !incoming.login_id)) return false;
+        const existing = getApmathSession();
+        saveApmathSession({
+          ...(existing || {}),
+          ...incoming,
+          login_id: incoming.login_id || incoming.loginId || (existing && (existing.login_id || existing.loginId)) || '',
+          id: incoming.id || (existing && existing.id) || '',
+          name: incoming.name || (existing && existing.name) || '',
+          role: incoming.role || (existing && existing.role) || '',
+          session_token: incoming.session_token || (existing && existing.session_token) || '',
+          expires_at: incoming.expires_at || (existing && existing.expires_at) || '',
+          restored_from_archive_hash: true,
+          restored_at: new Date().toISOString()
+        });
+        return true;
+      } catch (error) {
+        console.warn('[assessment auth] failed to restore AP session from hash:', error);
+        return false;
+      } finally {
+        try {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (error) {}
       }
     }
 
@@ -1182,7 +1268,7 @@
         assignment_batch_id: options.assignmentBatchId || getAssessmentAssignmentBatchId(pack, gradeLabel),
         target_scope: options.target_scope || 'class'
       };
-      const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments', {
+      const res = await fetch(`${ASSESSMENT_AP_API_BASE}/class-exam-assignments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...authHeader },
         body: JSON.stringify(payload),
@@ -1247,8 +1333,8 @@
 
       let authHeader = {};
       try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session || !session.login_id || !session.raw_password) {
+        authHeader = getAssessmentAssignmentAuthHeader();
+        if (!authHeader) {
           body.innerHTML = `
             <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
               <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
@@ -1259,16 +1345,19 @@
             </div>`;
           return;
         }
-        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
       } catch (error) {
         body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">오류가 발생했습니다. 새로고침 후 다시 시도하세요.</div>';
         return;
       }
 
       try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
+        const res = await fetch(`${ASSESSMENT_AP_API_BASE}/qr-classes`, { headers: authHeader });
         if (res.status === 401) {
           body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+          return;
+        }
+        if (res.status === 403) {
+          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">권한이 없습니다. 계정 권한을 확인해 주세요.</div>';
           return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -1339,7 +1428,15 @@
       }
 
       try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
+        const res = await fetch(`${ASSESSMENT_AP_API_BASE}/qr-classes`, { headers: authHeader });
+        if (res.status === 401) {
+          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+          return;
+        }
+        if (res.status === 403) {
+          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">권한이 없습니다. 계정 권한을 확인해 주세요.</div>';
+          return;
+        }
         if (!res.ok) throw new Error('API Request Failed');
         const data = await res.json();
         if (!data || !data.success || !Array.isArray(data.classes)) throw new Error('Invalid data format');
@@ -1362,7 +1459,7 @@
       }
       if (errorElement) errorElement.innerText = '로그인 중...';
       try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/auth/login', {
+        const res = await fetch(`${ASSESSMENT_AP_API_BASE}/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ login_id: loginId, password }),
@@ -1372,12 +1469,15 @@
           if (errorElement) errorElement.innerText = '아이디 또는 비밀번호가 맞지 않습니다.';
           return;
         }
-        localStorage.setItem('APMATH_SESSION', JSON.stringify({
-          login_id: loginId,
-          raw_password: password,
+        window.__APMATH_AUTH_MEMORY = { login_id: loginId, raw_password: password };
+        saveApmathSession({
+          login_id: data.login_id || loginId,
+          id: data.id,
           name: data.name,
           role: data.role,
-        }));
+          session_token: data.session_token || '',
+          expires_at: data.expires_at || '',
+        });
         openAssessmentGradeSelectionModal(window._pendingAssessmentClassSelectPack, window._pendingAssessmentClassSelectQpp);
       } catch (error) {
         if (errorElement) errorElement.innerText = '서버 연결 실패. 다시 시도하세요.';
@@ -1395,7 +1495,7 @@
       }
       if (errorElement) errorElement.innerText = '로그인 중...';
       try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/auth/login', {
+        const res = await fetch(`${ASSESSMENT_AP_API_BASE}/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ login_id: loginId, password }),
@@ -1405,12 +1505,15 @@
           if (errorElement) errorElement.innerText = '아이디 또는 비밀번호가 맞지 않습니다.';
           return;
         }
-        localStorage.setItem('APMATH_SESSION', JSON.stringify({
-          login_id: loginId,
-          raw_password: password,
+        window.__APMATH_AUTH_MEMORY = { login_id: loginId, raw_password: password };
+        saveApmathSession({
+          login_id: data.login_id || loginId,
+          id: data.id,
           name: data.name,
           role: data.role,
-        }));
+          session_token: data.session_token || '',
+          expires_at: data.expires_at || '',
+        });
         openAssessmentClassSelectionModal(window._pendingAssessmentClassSelectPack, window._pendingAssessmentClassSelectQpp);
       } catch (error) {
         if (errorElement) errorElement.innerText = '서버 연결 실패. 다시 시도하세요.';
@@ -1553,7 +1656,7 @@
           console.warn('[assessment assignment] 사전 등록 실패:', error);
         }
       }
-      window.open(url.toString(), '_blank');
+      window.open(appendCurrentArchiveSessionToHash(url.toString()), '_blank');
     }
 
     window.openPack = openPack;
@@ -1571,6 +1674,7 @@
     window.closeAssessmentModal = closeAssessmentModal;
     window.goAssessmentMixedEngine = goAssessmentMixedEngine;
 
+    restoreApmathSessionFromHash();
     renderStats();
     setupControls();
     render();

@@ -1,9 +1,23 @@
 // Phase 1c: classroom ledger, exam, and planner handlers moved from classroom.js without logic changes.
 
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
+function handlePlannerDirectFetchAuthStatus(response) {
+    if (!response) return false;
+    if (response.status === 401) {
+        if (typeof handleUnauthorizedResponse === 'function') handleUnauthorizedResponse();
+        return true;
+    }
+    if (response.status === 403) {
+        if (typeof toast === 'function') toast('권한이 없습니다. 계정 권한을 확인해 주세요.', 'warn');
+        return true;
+    }
+    return false;
+}
+
 async function loadLedger() {
     try {
         const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`, { headers: getAuthHeader() });
+        if (handlePlannerDirectFetchAuthStatus(r)) return;
         const data = await r.json();
         ledgerState.attendance = data.attendance || []; ledgerState.homework = data.homework || []; renderLedgerTable();
     } catch (e) { toast('데이터 로드 실패', 'warn'); }
@@ -433,6 +447,7 @@ async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '')
         const archiveQuery = archiveFile ? `&archive=${encodeURIComponent(archiveFile)}` : '';
         const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}${archiveQuery}`;
         const r = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
+        if (handlePlannerDirectFetchAuthStatus(r)) return;
         const data = await r.json();
         if (!r.ok || !data.success) { toast('시험 전체삭제 실패', 'warn'); return; }
         toast('시험 전체 기록이 삭제되었습니다.', 'info');
