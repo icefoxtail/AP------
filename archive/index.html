@@ -1264,6 +1264,29 @@ function getApmathSession() {
 }
 
 const ARCHIVE_AP_API_BASE = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
+const ARCHIVE_QR_AUTH_REQUIRED_HTML = 'AP 제출 QR은 AP Math OS 로그인 후 사용할 수 있습니다. 일반 출력은 가능합니다.';
+const ARCHIVE_QR_LOGIN_REQUIRED_HTML = 'AP Math OS 로그인 후 다시 시도해 주세요.';
+const ARCHIVE_QR_FORBIDDEN_HTML = '권한이 없습니다. 원장/담당 선생님 권한을 확인하세요.';
+const ARCHIVE_QR_NETWORK_HTML = '서버 연결에 실패했습니다. 일반 출력은 가능합니다.';
+
+function archiveQrNoticeHtml(message, buttonHtml = '') {
+    return `<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">${message}</div>${buttonHtml}`;
+}
+
+function archiveQrGeneralPrintButtonHtml() {
+    return '<button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
+}
+
+function notifyArchiveQrApiFailure(status, context) {
+    const message = status === 401
+        ? ARCHIVE_QR_LOGIN_REQUIRED_HTML
+        : status === 403
+            ? ARCHIVE_QR_FORBIDDEN_HTML
+            : ARCHIVE_QR_NETWORK_HTML;
+    console.warn(`[archive QR] ${context || 'api'} failed:`, status, message);
+    if (typeof window.toast === 'function') window.toast(message, status === 403 ? 'warn' : 'error');
+    else if (typeof alert === 'function') alert(message);
+}
 
 function sanitizeApmathSessionForStorage(data) {
     const safe = { ...(data || {}) };
@@ -2170,7 +2193,10 @@ function getIndexAssignmentBatchId(item, gradeLabel) {
 
 async function registerIndexClassExamAssignment(classRow, item, options = {}) {
     const authHeader = getIndexAssignmentAuthHeader();
-    if (!authHeader) throw new Error('auth required');
+    if (!authHeader) {
+        notifyArchiveQrApiFailure(401, 'class-exam-assignments auth');
+        throw new Error('auth required');
+    }
     const questionCount = resolveExamQuestionCountForAssignment(item);
     if (!questionCount) throw new Error('question count required');
     const gradeLabel = options.gradeLabel || getIndexClassGrade(classRow) || item?.grade || '';
@@ -2190,7 +2216,10 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         headers: { 'Content-Type': 'application/json', ...authHeader },
         body: JSON.stringify(payload)
     });
-    if (!res.ok) throw new Error(`assignment failed: ${res.status}`);
+    if (!res.ok) {
+        notifyArchiveQrApiFailure(res.status, 'class-exam-assignments');
+        throw new Error(`assignment failed: ${res.status}`);
+    }
     return res.json().catch(() => ({}));
 }
 
@@ -2271,11 +2300,11 @@ async function openClassSelectionModalForIndex(item, qpp) {
     try {
         const res = await fetch(`${ARCHIVE_AP_API_BASE}/qr-classes`, { headers: authHeader });
         if (res.status === 401) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div><button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
+            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_LOGIN_REQUIRED_HTML, archiveQrGeneralPrintButtonHtml());
             return;
         }
         if (res.status === 403) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">권한이 없습니다. 계정 권한을 확인해 주세요.</div><button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
+            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_FORBIDDEN_HTML, archiveQrGeneralPrintButtonHtml());
             return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -2294,7 +2323,7 @@ async function openClassSelectionModalForIndex(item, qpp) {
         }
     } catch(e) {
         console.error(e);
-        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+        body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_NETWORK_HTML, archiveQrGeneralPrintButtonHtml());
     }
 }
 
@@ -2348,11 +2377,11 @@ async function openGradeSelectionModalForIndex(item, qpp) {
     try {
         const res = await fetch(`${ARCHIVE_AP_API_BASE}/qr-classes`, { headers: authHeader });
         if (res.status === 401) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div><button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
+            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_LOGIN_REQUIRED_HTML, archiveQrGeneralPrintButtonHtml());
             return;
         }
         if (res.status === 403) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">권한이 없습니다. 계정 권한을 확인해 주세요.</div><button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
+            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_FORBIDDEN_HTML, archiveQrGeneralPrintButtonHtml());
             return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -2363,7 +2392,7 @@ async function openGradeSelectionModalForIndex(item, qpp) {
         renderIndexGradeClassPreview();
     } catch(e) {
         console.error(e);
-        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+        body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_NETWORK_HTML, archiveQrGeneralPrintButtonHtml());
     }
 }
 

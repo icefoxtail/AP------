@@ -18,7 +18,11 @@ async function loadLedger() {
     try {
         const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`, { headers: getAuthHeader() });
         if (handlePlannerDirectFetchAuthStatus(r)) return;
-        const data = await r.json();
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok || data.success === false) {
+            if (typeof toast === 'function') toast(data.message || data.error || '데이터 로드 실패', 'warn');
+            return;
+        }
         ledgerState.attendance = data.attendance || []; ledgerState.homework = data.homework || []; renderLedgerTable();
     } catch (e) { toast('데이터 로드 실패', 'warn'); }
 }

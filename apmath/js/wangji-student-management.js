@@ -39,7 +39,11 @@
         var raw = window.localStorage.getItem(keys[i]);
         if (raw && raw.trim()) {
           var t = raw.trim();
-          return { 'Authorization': /^(Bearer|Basic)\s+/i.test(t) ? t : 'Bearer ' + t };
+          if (/^Basic\s+/i.test(t)) {
+            try { window.localStorage.removeItem(keys[i]); } catch (e) {}
+            continue;
+          }
+          return { 'Authorization': /^Bearer\s+/i.test(t) ? t : 'Bearer ' + t };
         }
       } catch (e) {}
     }

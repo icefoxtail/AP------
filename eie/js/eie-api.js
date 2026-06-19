@@ -1,5 +1,6 @@
 (function () {
     const PROD_WORKER_ORIGIN = 'https://wangji-eie-os.js-pdf.workers.dev';
+    let legacyBasicAuthRemoved = false;
 
     function trimSlash(value) {
         return String(value || '').replace(/\/+$/, '');
@@ -31,6 +32,7 @@
             const trimmed = String(value).trim();
             if (!trimmed) continue;
             if (/^Basic\s+/i.test(trimmed)) {
+                legacyBasicAuthRemoved = true;
                 try { window.localStorage.removeItem(key); } catch (e) {}
                 continue;
             }
@@ -45,9 +47,25 @@
             'Content-Type': 'application/json',
             ...(extra || {})
         };
+        if (headers.Authorization && /^Basic\s+/i.test(String(headers.Authorization).trim())) {
+            legacyBasicAuthRemoved = true;
+            delete headers.Authorization;
+        }
         const authHeader = findStoredAuthHeader();
         if (authHeader) headers.Authorization = authHeader;
         return headers;
+    }
+
+    function makeAuthError(status, message) {
+        const error = new Error(message || (status === 403 ? '권한이 없습니다.' : '로그인이 만료되었습니다.'));
+        error.status = status;
+        return error;
+    }
+
+    function notifyAuthError(error) {
+        if (typeof window === 'undefined' || !window.EieApp || typeof window.EieApp.handleEie401 !== 'function') return;
+        if (error.status === 401) window.EieApp.handleEie401(error.message || '로그인이 만료되었습니다. 다시 로그인해 주세요.');
+        if (error.status === 403) window.EieApp.handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
     }
 
     function stubResponse(kind) {
@@ -99,16 +117,24 @@
     async function request(path, options) {
         const method = options?.method || 'GET';
         const url = `${resolveApiBase()}/${String(path || '').replace(/^\/+/, '')}`;
+        const headers = makeHeaders(options?.headers);
+        if (!headers.Authorization && legacyBasicAuthRemoved) {
+            legacyBasicAuthRemoved = false;
+            const error = makeAuthError(401, '기존 Basic 인증 정보가 제거되었습니다. 다시 로그인해 주세요.');
+            notifyAuthError(error);
+            throw error;
+        }
         const response = await fetch(url, {
             method,
-            headers: makeHeaders(options?.headers),
+            headers,
             body: options?.body ? JSON.stringify(options.body) : undefined
         });
         const data = await parseResponse(response);
         if (!response.ok || data?.success === false) {
-            const error = new Error(normalizeError(data?.error || data?.message || response.statusText));
+            const error = makeAuthError(response.status, normalizeError(data?.error || data?.message || response.statusText));
             error.status = response.status;
             error.payload = data;
+            if (response.status === 401 || response.status === 403) notifyAuthError(error);
             throw error;
         }
         // 데이터가 바뀌는 요청이 성공하면 읽기 캐시를 무효화한다.
