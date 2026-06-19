@@ -54,7 +54,7 @@
     // 1차에서는 timetable_cell_id로 class_id 역할을 대리한다.
     // 정책 근거: docs/EIE_APMS_STATE_API_COMPAT_SPEC.md
     function normalizeAssignment(row, cell) {
-        const cellId = (cell && cell.id) || row.timetable_cell_id || '';
+        const cellId = row.timetable_cell_id || row.cell_id || row.class_id || (cell && cell.id) || '';
         return {
             id: row.id || row.assignment_id || '',
             student_id: row.student_id || '',
@@ -126,6 +126,8 @@
         var errors = [];
         var studentsPayload = null;
         var timetablePayload = null;
+        var contactsPayload = null;
+        var assignmentsPayload = null;
 
         try {
             studentsPayload = await EieApi.getStudents();
@@ -155,7 +157,36 @@
             }
         }
 
+        if (typeof EieApi.getConfirmedContacts === 'function') {
+            try {
+                contactsPayload = await EieApi.getConfirmedContacts();
+            } catch (err) {
+                if (err && (err.status === 401 || err.status === 403)) errors.push({ source: 'confirmed-contacts', error: (err && err.message) || String(err), status: err.status });
+            }
+        }
+
+        if (typeof EieApi.getScheduleAssignments === 'function') {
+            try {
+                assignmentsPayload = await EieApi.getScheduleAssignments();
+            } catch (err) {
+                if (err && (err.status === 401 || err.status === 403)) errors.push({ source: 'schedule-assignments', error: (err && err.message) || String(err), status: err.status });
+            }
+        }
+
         var foundation = normalizeFoundation(studentsPayload, timetablePayload);
+        var confirmedContacts = (contactsPayload && (contactsPayload.confirmed_contacts || contactsPayload.contacts || contactsPayload.data)) || [];
+        var scheduleAssignments = (assignmentsPayload && (assignmentsPayload.schedule_assignments || assignmentsPayload.assignments || assignmentsPayload.data)) || [];
+        if (Array.isArray(confirmedContacts) && confirmedContacts.length) {
+            foundation.student_contacts = confirmedContacts.map(normalizeContact);
+            foundation.parent_contacts = foundation.student_contacts.filter(function (contact) {
+                return contact.is_primary || contact.relation === 'parent';
+            });
+        }
+        if (Array.isArray(scheduleAssignments) && scheduleAssignments.length) {
+            foundation.class_students = scheduleAssignments.map(function (row) {
+                return normalizeAssignment(row, row);
+            });
+        }
         applyFoundation(foundation);
 
         if (errors.length) {

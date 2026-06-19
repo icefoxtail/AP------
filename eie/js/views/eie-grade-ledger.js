@@ -581,13 +581,20 @@
     function _buildEieGradeRow(student, year, gradeText, classText) {
         var sid = getStudentId(student);
         var cols = EIE_GRADE_COLS.map(function (col, i) {
-            var score = getEieGradeScore(sid, year, col.key, 'english');
+            var record = getEieGradeExamRecord(sid, year, col.semester, col.examType, 'english');
+            var score = record && record.score !== null && record.score !== undefined && record.score !== '' ? Number(record.score) : null;
+            if (!Number.isFinite(score)) score = null;
             var prevKey = getPrevEieGradeColKey(col.key);
             var prevScore = prevKey ? getEieGradeScore(sid, year, prevKey, 'english') : null;
             var value = score !== null ? score : '';
+            var recordId = text(record && record.id);
             return '<td class="' + ((i === 0 || i === 2) ? 'eie-grade-border2 ' : '') + 'eie-grade-score-cell">'
                 + '<input type="number" class="eie-grade-inp" id="eie-grade-inp-' + esc(sid) + '-' + esc(col.key) + '" value="' + esc(value) + '" min="0" max="100" oninput="EieGradeLedgerView.markSchoolDirty(' + jsArg(sid + '|' + col.key) + ')">'
                 + buildEieGradeTrendHtml(score, prevScore)
+                + '<div class="eie-grade-cell-actions">'
+                + '<button type="button" class="eie-grade-btn-ghost" onclick="EieGradeLedgerView.updateSchoolGradeRecord(' + jsArg(sid) + ', ' + jsArg(col.key) + ')">수정</button>'
+                + (recordId ? '<button type="button" class="eie-grade-btn-ghost is-danger" onclick="EieGradeLedgerView.deleteSchoolGradeRecord(' + jsArg(recordId) + ')">삭제</button>' : '')
+                + '</div>'
                 + '</td>';
         }).join('');
         return '<tr>'
@@ -596,6 +603,39 @@
             + '<td class="eie-grade-sticky-name">' + esc(displayName(student)) + '</td>'
             + cols
             + '</tr>';
+    }
+
+    function schoolGradePayloadForCell(studentId, colKey) {
+        var student = getEieGradeVisibleStudents().find(function (row) { return getStudentId(row) === text(studentId); });
+        var col = EIE_GRADE_COLS.find(function (item) { return item.key === text(colKey); });
+        if (!student || !col) return { error: 'school grade target not found' };
+        var sid = getStudentId(student);
+        var raw = text(document.getElementById('eie-grade-inp-' + sid + '-' + col.key) && document.getElementById('eie-grade-inp-' + sid + '-' + col.key).value);
+        var score = raw === '' ? null : Number(raw);
+        if (raw !== '' && (!Number.isFinite(score) || score < 0 || score > 100)) return { error: 'score must be 0~100' };
+        var existing = getEieGradeExamRecord(sid, Number(_year) || new Date().getFullYear(), col.semester, col.examType, 'english');
+        return {
+            id: text(existing && existing.id),
+            payload: {
+                student_id: sid,
+                studentId: sid,
+                class_id: _classId || student.class_id || '',
+                classId: _classId || student.class_id || '',
+                teacher_id: _teacherId,
+                teacherId: _teacherId,
+                school_name: student.school_name || student.school || '',
+                grade_level: gradeOfStudent(student),
+                exam_year: Number(_year) || new Date().getFullYear(),
+                examYear: Number(_year) || new Date().getFullYear(),
+                semester: col.semester,
+                exam_type: col.examType,
+                examType: col.examType,
+                subject: 'english',
+                score: score,
+                max_score: 100,
+                status: 'active'
+            }
+        };
     }
 
     function renderEieSchoolGradeTable() {
@@ -711,6 +751,57 @@
             await loadFoundation();
         } catch (error) {
             _notice = '저장 실패';
+        } finally {
+            _saving = false;
+            renderAgain();
+        }
+    }
+
+    async function updateEieSchoolGradeRecord(studentId, colKey) {
+        if (_saving) return;
+        var built = schoolGradePayloadForCell(studentId, colKey);
+        if (built.error) {
+            _notice = built.error;
+            return renderAgain();
+        }
+        _saving = true;
+        renderAgain();
+        try {
+            if (built.id && EieApi.updateSchoolGradeRecord) {
+                await EieApi.updateSchoolGradeRecord(built.id, built.payload);
+            } else {
+                await EieApi.batchSchoolGradeRecords({
+                    records: [built.payload],
+                    examYear: built.payload.exam_year,
+                    subject: built.payload.subject
+                });
+            }
+            delete _schoolDirty[text(studentId) + '|' + text(colKey)];
+            _notice = '개별 성적 저장 완료';
+            _loaded = false;
+            await loadFoundation();
+        } catch (error) {
+            _notice = error && error.message ? error.message : '개별 성적 저장 실패';
+        } finally {
+            _saving = false;
+            renderAgain();
+        }
+    }
+
+    async function deleteEieSchoolGradeRecord(recordId) {
+        var id = text(recordId);
+        if (!id || _saving) return;
+        if (typeof window.confirm === 'function' && !window.confirm('이 학교 성적 기록을 삭제할까요?')) return;
+        _saving = true;
+        renderAgain();
+        try {
+            await EieApi.deleteSchoolGradeRecord(id);
+            _schoolRows = _schoolRows.filter(function (row) { return text(row && row.id) !== id; });
+            _notice = '개별 성적 삭제 완료';
+            _loaded = false;
+            await loadFoundation();
+        } catch (error) {
+            _notice = error && error.message ? error.message : '개별 성적 삭제 실패';
         } finally {
             _saving = false;
             renderAgain();
@@ -1010,6 +1101,8 @@
         setSortCol: function (key) { _schoolSortCol = text(key) || '1H-mid'; renderAgain(); },
         markSchoolDirty: function (key) { _schoolDirty[text(key)] = true; updateDirtyUi(); },
         markAcademyDirty: function (key) { _academyDirty[text(key)] = true; updateDirtyUi(); },
+        updateSchoolGradeRecord: updateEieSchoolGradeRecord,
+        deleteSchoolGradeRecord: deleteEieSchoolGradeRecord,
         openAddTest: function () { _addFormOpen = true; _editingTestId = ''; _editListOpen = false; renderAgain(); },
         closeTestForm: function () { _addFormOpen = false; _editingTestId = ''; renderAgain(); },
         toggleEditList: function () { _editListOpen = !_editListOpen; _addFormOpen = false; _editingTestId = ''; renderAgain(); },

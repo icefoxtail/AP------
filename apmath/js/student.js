@@ -122,7 +122,7 @@ function injectStudentStyles() {
         .ap-student-consult-date-btn { flex:0 0 auto; height:28px; min-height:28px; padding:0 10px; border:1px solid var(--ap-border); border-radius:var(--ap-radius-sm); background:var(--ap-surface-2); color:var(--ap-text-soft); font-size:12px; font-weight:650; line-height:1.2; cursor:pointer; display:inline-flex; align-items:center; white-space:nowrap; }
         .ap-student-consult-date-btn.is-active { border-color:rgba(110,102,201,.38); background:rgba(110,102,201,.10); color:var(--ap-purple); }
         .ap-profile-info-list { display:flex; flex-direction:column; }
-        .ap-profile-info-row { display:flex; align-items:flex-start; gap:10px; min-height:32px; padding:6px 0; border-bottom:1px solid var(--ap-border); }
+        .ap-profile-info-row { display:flex; align-items:flex-start; gap:10px; min-height:32px; padding:6px 0; border-bottom:1px solid var(--ap-border); min-width:0; }
         .ap-profile-info-row:last-child { border-bottom:0; }
         .ap-profile-info-label { flex:0 0 88px; color:var(--ap-muted); font-size:12px; font-weight:600; line-height:1.4; }
         .ap-profile-info-value { flex:1 1 auto; min-width:0; color:var(--ap-text); font-size:13px; font-weight:500; line-height:1.45; overflow-wrap:anywhere; white-space:pre-wrap; }
@@ -143,7 +143,7 @@ function injectStudentStyles() {
         .ap-student-edit-control input:focus,
         .ap-student-edit-control select:focus,
         .ap-student-edit-control textarea:focus { border-color:rgba(110,102,201,.55); box-shadow:0 0 0 2px rgba(110,102,201,.12); }
-        .ap-student-edit-inline { display:grid; grid-template-columns:minmax(0,1fr) minmax(76px,.55fr); gap:6px; width:100%; }
+        .ap-student-edit-inline { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px; width:100%; min-width:0; }
         .ap-student-edit-stack { display:flex; flex-direction:column; gap:6px; width:100%; }
         .ap-student-edit-check { display:inline-flex; align-items:center; gap:7px; min-height:26px; color:var(--ap-text-soft); font-size:12px; font-weight:600; cursor:pointer; }
         .ap-student-edit-check input { flex:0 0 auto; width:15px; height:15px; min-height:0; padding:0; accent-color:#6E66C9; cursor:pointer; }
@@ -164,7 +164,7 @@ function injectStudentStyles() {
         .ap-student-consult-text { margin:0; color:var(--text); font-size:13.5px; font-weight:500; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
         .ap-student-consult-next { border:1px solid rgba(217,119,6,.18); border-radius:10px; background:rgba(217,119,6,.07); color:#92400E; padding:9px 10px; font-size:12px; font-weight:600; line-height:1.55; }
         .ap-student-consult-actions { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; margin-top:10px; }
-        .ap-student-mini-btn { height:28px; min-height:28px; padding:0 10px; border-radius:var(--ap-radius-sm); border:1px solid var(--ap-btn-ghost-border); background:var(--ap-btn-ghost-bg); color:var(--ap-btn-ghost-text); font-size:12px; font-weight:650; cursor:pointer; }
+        .ap-student-mini-btn { height:28px; min-height:28px; max-width:100%; padding:0 10px; border-radius:var(--ap-radius-sm); border:1px solid var(--ap-btn-ghost-border); background:var(--ap-btn-ghost-bg); color:var(--ap-btn-ghost-text); font-size:12px; font-weight:650; line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; }
         .ap-student-mini-btn.is-primary { border-color:var(--ap-purple); background:var(--ap-purple); color:#fff; }
         .ap-student-consult-all { border:1px solid var(--ap-border); border-radius:var(--ap-radius-card); background:var(--ap-card); overflow:hidden; }
         .ap-student-consult-all summary { min-height:42px; display:flex; align-items:center; justify-content:space-between; padding:0 12px; cursor:pointer; color:var(--ap-text); font-size:13px; font-weight:700; list-style:none; }
@@ -1852,13 +1852,53 @@ function renderStudentBasicTab(sid) {
                     ${apStudentInfoRow('차량', s.vehicle_info, { empty: '' })}
                     ${apStudentInfoRow('등원일', getStudentOnboardingStartedAtLabel(sid))}
                     ${apStudentInfoRow('메모', memo, { empty: '' })}
-                    ${apStudentInfoRow('PIN 번호', s.student_pin, { empty: '' })}
+                    <div class="ap-profile-info-row">
+                        <span class="ap-profile-info-label">PIN 번호</span>
+                        <span class="ap-profile-info-value${s.student_pin ? '' : ' is-muted'}">${apmsStudentDetailEsc(s.student_pin || '')}</span>
+                        <button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button>
+                    </div>
                 </div>
             </section>
             ${renderStudentRecentActivitySection(sid)}
             ${renderStudentHistorySection(sid)}
         </div>
     `;
+}
+
+async function autoGenerateStudentPin(sid) {
+    const studentId = String(sid || '').trim();
+    if (!studentId) return toast('학생 정보가 없습니다.', 'warn');
+    const currentStudent = (state.db.students || []).find(st => String(st.id) === studentId);
+    const hasPin = !!String(currentStudent?.student_pin || '').trim();
+    if (hasPin && typeof confirm === 'function' && !confirm('기존 PIN을 새 번호로 초기화할까요?')) return;
+    try {
+        const result = await api.post(`students/${studentId}/auto-pin`, hasPin ? { reset: true } : {});
+        if (!result?.success) {
+            toast(result?.message || result?.error || 'PIN 자동생성에 실패했습니다.', 'error');
+            return;
+        }
+        const pin = String(result.pin || result.student_pin || '').trim();
+        const student = currentStudent || (state.db.students || []).find(st => String(st.id) === studentId);
+        if (student && pin) student.student_pin = pin;
+        const input = document.getElementById('edit-student-pin');
+        if (input && pin) input.value = pin;
+        toast('PIN이 생성되었습니다.', 'success');
+        if (typeof renderStudentDetailShell === 'function') {
+            renderStudentDetailShell(studentId, {
+                mode: 'view',
+                tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'),
+                returnTo: state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null
+            });
+        } else if (typeof renderStudentDetail === 'function') {
+            renderStudentDetail(studentId);
+        }
+    } catch (error) {
+        toast(error?.message || 'PIN 자동생성 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+if (typeof window !== 'undefined') {
+    window.autoGenerateStudentPin = autoGenerateStudentPin;
 }
 
 function renderStudentContactHistoryTab(sid) {

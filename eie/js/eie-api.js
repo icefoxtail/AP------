@@ -294,6 +294,9 @@
         getStudentContacts(studentId) {
             return get(`students/${encodeURIComponent(studentId)}/contacts`, 'contact-seeds');
         },
+        getConfirmedContacts() {
+            return get('confirmed-contacts', 'contact-seeds');
+        },
         async createStudentContact(studentId, payload) {
             return request(`students/${encodeURIComponent(studentId)}/contacts`, {
                 method: 'POST',
@@ -313,6 +316,9 @@
             const params = new URLSearchParams();
             if (studentId) params.set('student_id', studentId);
             return get(`consultations${params.toString() ? `?${params}` : ''}`, 'student-seeds');
+        },
+        getScheduleAssignments() {
+            return get('schedule-assignments', 'student-seeds');
         },
         async createConsultation(payload) {
             return request('consultations', { method: 'POST', body: payload || {} });
@@ -384,6 +390,15 @@
         },
         async batchSchoolGradeRecords(payload) {
             return request('school-grade-records/batch', { method: 'POST', body: payload || {} });
+        },
+        async updateSchoolGradeRecord(id, payload) {
+            return request(`school-grade-records/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async deleteSchoolGradeRecord(id) {
+            return request(`school-grade-records/${encodeURIComponent(id)}`, { method: 'DELETE' });
         },
         getGradeSheets(params) {
             const filters = params || {};
