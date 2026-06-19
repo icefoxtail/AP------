@@ -3202,7 +3202,8 @@ async function handleApiRequest(request, env) {
           resource === 'check-init' ||
           resource === 'qr-classes'
         ) {
-          const routed = await handleCheckOmr(request, env, null, path, url);
+          const teacher = resource === 'qr-classes' ? await verifyAuth(request, env) : null;
+          const routed = await handleCheckOmr(request, env, teacher, path, url);
           if (routed) return routed;
         }
 
