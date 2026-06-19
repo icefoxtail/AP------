@@ -1,84 +1,44 @@
-# AP/EIE Archive Auth Remediation Result
+# Student Portal Version Cache Bust Hotfix Result
 
 ## 수정 파일
-- `archive/index.html`
-- `archive/mixer.html`
-- `archive/engine.html`
-- `archive/mixed_engine.html`
-- `archive/assessment/assessment-mvp.html`
-- `apmath/js/dashboard.js`
-- `apmath/js/ui.js`
-- `eie/js/eie-api.js`
-- `eie/js/eie-router.js`
-- `eie/js/eie-app.js`
-- `apmath/js/classroom-planner.js`
-- `apmath/js/report.js`
-- `apmath/js/study-material-wrong.js`
+- apmath/student/index.html
+- apmath/student/manifest.json
+- apmath/student/student-version.json
 
-## 해결한 문제
-- Archive engine/mixed_engine/assessment Basic-only 인증
-- Archive 자체 로그인 후 `raw_password` localStorage 저장
-- AP -> assessment 세션 브리지 누락
-- mixer -> mixed_engine 세션 브리지 누락
-- Archive index -> engine 세션 브리지 누락
-- EIE client가 legacy `Basic ...` auth header를 Worker로 보낼 수 있던 문제
-- AP direct fetch 401/403 처리 누락
-- Archive 파일 내 hardcoded AP worker URL 반복
+## 문제 원인
+- 모바일 홈 화면 앱/PWA가 예전 index/CSS/manifest를 캐시해 업데이트 후에도 예전 화면이 보일 수 있었다.
+- 학생 프로그램에 명시적 앱 버전 확인/업데이트 안내 구조가 없었다.
 
 ## 핵심 변경
-- Archive 출력 엔진 계열 인증을 `session_token` Bearer 우선으로 통일했다.
-- Basic fallback은 `window.__APMATH_AUTH_MEMORY` 또는 기존 legacy `session.raw_password` 읽기만 허용했다.
-- 새 `APMATH_SESSION` 저장은 `raw_password/password/pw`를 제거하는 sanitizer를 거치도록 했다.
-- `apmsess` hash bridge를 Archive index -> engine, index -> mixer, mixer -> mixed_engine, AP -> assessment에 적용했다.
-- engine/mixed_engine/assessment에 hash 복원 함수를 추가하고 복원 후 URL hash를 제거했다.
-- EIE auth helper에서 `Basic ...` 값을 발견하면 제거하고 전송하지 않도록 했다.
-- EIE 403은 권한 오류 안내로 로그인 화면에 복귀하도록 보강했다.
-- AP direct fetch 파일은 401에서 `handleUnauthorizedResponse()`, 403에서 권한 안내를 수행하도록 보강했다.
-- Archive 파일별 `ARCHIVE_AP_API_BASE` / `ASSESSMENT_AP_API_BASE` 상수로 AP API base를 모았다.
+- STUDENT_APP_VERSION 추가
+- student-version.json 추가
+- 시작 시 student-version.json을 cache:no-store로 확인
+- 새 버전 감지 시 업데이트 안내 표시
+- 업데이트 버튼으로 version query/timestamp를 붙여 강제 재로딩
+- manifest/icon/CSS 링크에 version query 추가
+- 학생 세션 유지
+- ?omr=1 기존 처리 유지
 
-## 검증 결과
-- AP -> Archive index: hash bridge 기존 동작 유지
-- Archive index -> engine: `engine.html?...#apmsess=...` 적용
-- Archive index -> mixer: `buildArchiveInternalUrl('mixer.html')` 유지
-- mixer -> mixed_engine: 기존 `qpp/key/submitQr/class/teacher/className` query 유지 + hash bridge 적용
-- AP -> assessment-mvp: dashboard/drawer 직접 진입에 hash bridge 적용
-- session_token only: engine/mixed_engine/assessment auth header가 Bearer 우선으로 동작
-- Basic fallback: memory/legacy fallback만 유지
-- raw_password localStorage 미저장: `APMATH_SESSION` writes는 sanitizer 경유
-- EIE Bearer-only: `Basic ...` legacy auth header는 제거 후 전송하지 않음
-- AP direct fetch 401: common unauthorized handler 호출
-- 일반 출력: authHeader가 없어도 submit QR API만 skip하고 출력 흐름은 유지
-- QR 제출 출력: session이 있으면 Bearer 인증으로 class/assignment API 호출
-- 모바일/WebView: hash bridge 적용. 실제 기기 origin/scope 검증은 별도 필요
-- URL hash 제거: 복원 함수에서 `history.replaceState` 호출
-- 콘솔 치명 오류: standalone JS와 Archive inline scripts parse 확인 통과
+## 검수 결과
+- 새 버전 감지: checkStudentPortalVersion()이 ./student-version.json?ts=Date.now()를 cache:'no-store'로 요청하고, 버전 불일치 시 showStudentUpdateNotice()를 호출하도록 확인
+- 업데이트 버튼: reloadStudentPortalWithVersion()이 기존 URL의 query를 유지하면서 v/t를 set하고 window.location.replace()로 재로딩하도록 확인
+- 기존 학생 세션 유지: 업데이트 경로에서 localStorage/sessionStorage 삭제 없음, clearSession() 미사용 확인
+- OMR URL: shouldOpenOmrFromUrl()이 URLSearchParams로 omr=1만 확인하므로 v/t query와 충돌하지 않음
+- manifest 로드: ./manifest.json?v=2026.06.19.1 링크 확인, manifest JSON parse 통과
+- CSS/icon cache bust: apms-ui-foundation.css, apms-theme-override.css, manifest/icon/apple-touch-icon/brand/install icon에 v=2026.06.19.1 확인
+- 모바일 홈 화면 앱: 기존 sw.js는 navigation network-first이며 query cache key와 충돌하지 않도록 확인, 실제 모바일 기기 검수는 미실행
+- 콘솔 치명 오류: HTML 내부 script를 OS temp로 추출해 node --check 통과
 
 ## 확인 명령
-- `git diff --check`: 통과. LF/CRLF warning만 표시
-- `node --check apmath/js/dashboard.js`
-- `node --check apmath/js/ui.js`
-- `node --check apmath/js/classroom-planner.js`
-- `node --check apmath/js/report.js`
-- `node --check apmath/js/study-material-wrong.js`
-- `node --check eie/js/eie-api.js`
-- `node --check eie/js/eie-app.js`
-- `node --check eie/js/eie-router.js`
-- `node --check eie/js/apms-compat/eie-apms-state.js`
-- Node `vm.Script` inline script parse: `archive/index.html`, `archive/mixer.html`, `archive/engine.html`, `archive/mixed_engine.html`, `archive/assessment/assessment-mvp.html` 통과
-- 요청된 `Select-String` checks 수행
-- `Select-String -SimpleMatch "localStorage.setItem('APMATH_SESSION'"`: 모든 결과가 sanitizer 함수 내부 저장으로 확인됨
+- git diff --check: 통과, LF to CRLF working copy warning만 표시
+- Select-String: STUDENT_APP_VERSION, student-version.json, cache:'no-store', showStudentUpdateNotice, reloadStudentPortalWithVersion, omr, manifest.json, apms-ui-foundation.css 확인
+- JS parse 확인: UTF-8로 HTML 내부 script를 OS temp에 추출 후 node --check 통과
 
 ## 수정하지 않은 항목
-- DB schema 변경 없음
-- Worker endpoint 이름/응답 구조 변경 없음
-- QR submit query/payload 구조 변경 없음
-- 출력 엔진 레이아웃/문항 렌더링/MathJax 구조 변경 없음
-- EIE 시간표 UI/레이아웃 변경 없음
-- `mixedQuestions` localStorage 구조 변경 없음
-- `CODEX_RESULT1.md` 작성 없음
-- zip 생성 명령 작성 없음
+- Service Worker 신규 도입 없음
+- 학생 로그인 API 변경 없음
+- DB/Worker 변경 없음
 
 ## 남은 위험
-- 실제 모바일 WebView/PWA origin/scope 차이는 실기기 확인이 필요하다.
-- 운영 배포 Worker가 repo의 backup worker와 다르면 배포본 기준 추가 확인이 필요하다.
-- API base 완전 공통화는 후속 구조 개선으로 남겨 두었다.
+- 일부 모바일 WebView는 HTML 자체를 강하게 캐시할 수 있어 최초 1회는 앱 완전 종료 또는 URL version 진입이 필요할 수 있음
+- 홈 화면 아이콘/앱 이름 변경은 재설치가 필요할 수 있음
