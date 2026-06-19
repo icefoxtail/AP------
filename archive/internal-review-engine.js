@@ -324,6 +324,9 @@ function updateUnsavedBadge() {
 
 function hasUnsavedChanges() {
   reconcileModifiedIds();
+  if (state.modifiedIds.size === 0 && state.removedItems.length > 0 && banksHaveSameContent(state.currentBank, state.originalBank)) {
+    state.removedItems = [];
+  }
   return state.modifiedIds.size > 0 || state.removedItems.length > 0;
 }
 
@@ -400,6 +403,10 @@ function stableQuestionString(q) {
   return JSON.stringify(q || {});
 }
 
+function banksHaveSameContent(a, b) {
+  return stableQuestionString(a || []) === stableQuestionString(b || []);
+}
+
 function markQuestionModified(q) {
   if (!q) return;
   const orig = state.originalBank.find(function(o) { return String(o.id) === String(q.id); });
@@ -417,6 +424,35 @@ function reconcileModifiedIds() {
     if (!orig || stableQuestionString(orig) !== stableQuestionString(q)) next.add(q.id);
   });
   state.modifiedIds = next;
+}
+
+async function syncRestoredOriginalFromFileHandle() {
+  if (!state.currentFileHandle) {
+    reconcileModifiedIds();
+    return;
+  }
+
+  try {
+    const file = await state.currentFileHandle.getFile();
+    const source = await file.text();
+    const parsed = parseSource(source, state.currentFileName || file.name || '');
+    const restoredMatchesDisk = banksHaveSameContent(state.currentBank, parsed.bank);
+
+    state.currentSource = source;
+    state.originalBank = deepClone(parsed.bank);
+
+    if (restoredMatchesDisk) {
+      state.examTitle = parsed.title;
+      state.currentBank = deepClone(parsed.bank);
+      state.modifiedIds = new Set();
+      state.removedItems = [];
+    } else {
+      reconcileModifiedIds();
+    }
+  } catch (e) {
+    console.warn('[寃?섏뿏吏? restore original sync ?ㅽ뙣:', e);
+    reconcileModifiedIds();
+  }
 }
 
 function originalHasField(q, key) {
@@ -1566,6 +1602,11 @@ async function saveCurrentFile() {
     await writable.write(newSource);
     await writable.close();
 
+    if (state.persistTimer) {
+      clearTimeout(state.persistTimer);
+      state.persistTimer = null;
+    }
+
     state.currentSource = newSource;
     state.originalBank = deepClone(state.currentBank);
     state.modifiedIds = new Set();
@@ -1872,6 +1913,7 @@ async function persistSessionState() {
 function schedulePersistSessionState(delay) {
   clearTimeout(state.persistTimer);
   state.persistTimer = setTimeout(function() {
+    state.persistTimer = null;
     persistSessionState();
   }, delay === undefined ? 600 : delay);
 }
@@ -1926,6 +1968,7 @@ async function applyRestoredState(archiveDirHandle, currentFileHandle, fileEntri
   state.canDirectSave     = true;
   state.modifiedIds       = new Set(Array.isArray(ui.modifiedIds) ? ui.modifiedIds : []);
   state.removedItems      = Array.isArray(ui.removedItems) ? ui.removedItems : [];
+  await syncRestoredOriginalFromFileHandle();
   await buildImageMap(archiveDirHandle);
 
   // 디렉토리 상태 표시
