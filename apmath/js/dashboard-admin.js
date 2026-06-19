@@ -241,7 +241,7 @@ function openAdminStudentList(type) {
         });
         title = "최근 등록 원생"; 
     } else if (type === 'discharged') { 
-        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '제적'); 
+        list = state.db.students.filter(s => isWithdrawnStudentStatus(s.status));
         title = "퇴원생 목록"; 
     } else if (type === 'hidden') {
         list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '숨김');
@@ -327,7 +327,7 @@ function openAdminOperationMenu() {
 }
 
 function openAdminPinBatchModal() {
-    const activeStudents = (state.db.students || []).filter(s => String(s.status || '재원') === '재원');
+    const activeStudents = (state.db.students || []).filter(s => isActiveStudentStatus(s.status));
     const missingPins = activeStudents.filter(s => !String(s.student_pin || '').trim());
 
     const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
@@ -374,7 +374,7 @@ function openAdminPinBatchModal() {
 }
 
 async function handleAdminBatchGeneratePins() {
-    const activeStudents = (state.db.students || []).filter(s => String(s.status || '재원') === '재원');
+    const activeStudents = (state.db.students || []).filter(s => isActiveStudentStatus(s.status));
     const missingPins = activeStudents.filter(s => !String(s.student_pin || '').trim());
 
     if (!missingPins.length) {
@@ -411,7 +411,7 @@ function getAdminClassGradeRank(cls) {
 }
 
 function adminNormalizeStatus(value) {
-    return String(value || '재원').trim() || '재원';
+    return normalizeStudentStatus(value);
 }
 
 function adminGetStudentClassMap(studentId) {
@@ -460,7 +460,7 @@ function adminBuildOverviewData(todayStr, todayTime) {
     const maps = state.db.class_students || [];
 
     const activeStudents = students.filter(s => adminNormalizeStatus(s.status) === '재원');
-    const dischargedStudents = students.filter(s => adminNormalizeStatus(s.status) === '제적');
+    const dischargedStudents = students.filter(s => isWithdrawnStudentStatus(s.status));
     const leaveStudents = students.filter(s => adminNormalizeStatus(s.status) === '휴원');
     const recentStudents = activeStudents
         .filter(s => adminIsRecentStudent(s, todayTime, 60))
@@ -858,7 +858,7 @@ function adminGetStudentListByType(type) {
             .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
     }
     if (type === 'leave') return students.filter(s => adminNormalizeStatus(s.status) === '휴원');
-    if (type === 'discharged') return students.filter(s => adminNormalizeStatus(s.status) === '제적');
+    if (type === 'discharged') return students.filter(s => isWithdrawnStudentStatus(s.status));
     return activeStudents.sort((a, b) => adminGetGradeOrder(adminGetGradeLabel(a)) - adminGetGradeOrder(adminGetGradeLabel(b)) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 }
 

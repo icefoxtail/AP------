@@ -1153,7 +1153,7 @@ function getClassroomActiveStudents(cid) {
         const maps = idx.classStudentRowsByClassId.get(classId) || [];
         return maps
             .map(row => idx.studentsById.get(String(row.student_id || '')))
-            .filter(student => student && student.status === '재원');
+            .filter(student => student && isActiveStudentStatus(student.status));
     }
 
     const mIds = state.db.class_students
@@ -1162,15 +1162,14 @@ function getClassroomActiveStudents(cid) {
     const idSet = new Set(mIds);
     const orderMap = new Map(mIds.map((id, idx) => [String(id), idx]));
     return state.db.students
-        .filter(s => idSet.has(String(s.id)) && s.status === '재원')
+        .filter(s => idSet.has(String(s.id)) && isActiveStudentStatus(s.status))
         .sort((a, b) => (orderMap.get(String(a.id)) ?? 9999) - (orderMap.get(String(b.id)) ?? 9999));
 }
 
 const CLASS_PLANNER_DISCHARGED_VISIBLE_DAYS = 31;
 
 function isClassPlannerDischargedStudent(student) {
-    const status = String(student?.status || '').trim();
-    return status === '\uC81C\uC801' || status === '\uD1F4\uC6D0';
+    return isWithdrawnStudentStatus(student?.status);
 }
 
 function getClassPlannerStudentUpdatedDate(student) {
@@ -1203,7 +1202,7 @@ function getClassroomMonthlyPlannerStudents(cid, monthStart) {
             .filter(entry => {
                 const student = entry.student;
                 if (!student) return false;
-                if (student.status === '\uC7AC\uC6D0') return true;
+                if (isActiveStudentStatus(student.status)) return true;
                 return isClassPlannerRecentlyDischargedForMonth(student, monthStart);
             });
     } else {
@@ -1215,7 +1214,7 @@ function getClassroomMonthlyPlannerStudents(cid, monthStart) {
         rows = state.db.students
             .filter(student => {
                 if (!idSet.has(String(student.id))) return false;
-                if (student.status === '\uC7AC\uC6D0') return true;
+                if (isActiveStudentStatus(student.status)) return true;
                 return isClassPlannerRecentlyDischargedForMonth(student, monthStart);
             })
             .map(student => ({ student, order: orderMap.get(String(student.id)) ?? 9999 }));

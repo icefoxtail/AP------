@@ -12,11 +12,27 @@ import {
 
 const DUPLICATE_MESSAGE = '이미 등록 처리된 학생입니다.';
 const PIN_CONFLICT_MESSAGE = '이미 사용 중인 PIN입니다.';
-const STUDENT_STATUSES = new Set(['재원', '휴원', '퇴원', '제적', '숨김']);
-
 function normalizeStudentStatus(value, fallback = '재원') {
   const status = String(value ?? '').trim();
-  return STUDENT_STATUSES.has(status) ? status : fallback;
+  if (status === '제적' || status === '퇴원' || status === 'withdrawn' || status === 'withdraw') return '퇴원';
+  if (status === '숨김' || status === 'hidden') return '숨김';
+  if (status === '휴원' || status === 'paused') return '휴원';
+  if (status === '재원' || status === 'active') return '재원';
+  const fallbackStatus = String(fallback ?? '재원').trim();
+  if (fallbackStatus === '제적' || fallbackStatus === '퇴원' || fallbackStatus === 'withdrawn' || fallbackStatus === 'withdraw') return '퇴원';
+  if (fallbackStatus === '숨김' || fallbackStatus === 'hidden') return '숨김';
+  if (fallbackStatus === '휴원' || fallbackStatus === 'paused') return '휴원';
+  if (fallbackStatus === '재원' || fallbackStatus === 'active') return '재원';
+  return '재원';
+}
+
+function isHiddenStudentStatus(value) {
+  return normalizeStudentStatus(value, '') === '숨김';
+}
+
+function normalizeStudentRowForResponse(row) {
+  if (!row || typeof row !== 'object') return row;
+  return { ...row, status: normalizeStudentStatus(row.status, '재원') };
 }
 
 function normalizeStudentPayload(d = {}, current = {}) {
@@ -73,7 +89,7 @@ async function getStudentMutationBundle(env, studentId) {
     env.DB.prepare('SELECT * FROM students WHERE id = ? LIMIT 1').bind(sid).first(),
     env.DB.prepare('SELECT * FROM class_students WHERE student_id = ? ORDER BY class_id ASC LIMIT 1').bind(sid).first()
   ]);
-  return { student: student || null, class_student: classStudent || null };
+  return { student: normalizeStudentRowForResponse(student) || null, class_student: classStudent || null };
 }
 
 async function findDuplicateStudentByIdentity(env, identityKey) {
@@ -268,7 +284,7 @@ async function handleUpdateStudent(env, teacher, id, body) {
   const nextClassId = d.classId !== undefined ? d.classId : currentBundle.class_student?.class_id || '';
   const studentIdentityKey = await buildStudentIdentityKey({ ...d, class_id: nextClassId });
   const targetScore = normalizeTargetScore(d.targetScore);
-  const nextStatus = d.status !== undefined ? d.status : current.status || '재원';
+  const nextStatus = d.status !== undefined ? d.status : normalizeStudentStatus(current.status, '재원');
   const stmts = [
     env.DB.prepare(`
       UPDATE students
@@ -326,7 +342,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
   if (method === 'GET' && !id) {
     if (isAdminUser(teacher)) {
       const res = await env.DB.prepare('SELECT * FROM students ORDER BY grade, name').all();
-      return jsonResponse({ success: true, students: res.results || [] });
+      return jsonResponse({ success: true, students: (res.results || []).map(normalizeStudentRowForResponse) });
     }
     const classIds = await getAllowedClassIds(env, teacher);
     if (!classIds?.length) return jsonResponse({ success: true, students: [] });
@@ -337,7 +353,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
       WHERE id IN (SELECT student_id FROM class_students WHERE class_id IN (${markers}))
       ORDER BY grade, name
     `).bind(...classIds).all();
-    return jsonResponse({ success: true, students: res.results || [] });
+    return jsonResponse({ success: true, students: (res.results || []).map(normalizeStudentRowForResponse) });
   }
 
   if (method === 'GET' && id && path[3] === 'detail-data') {
@@ -372,8 +388,8 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     if (!class_id && !isAdminUser(teacher)) return jsonResponse({ error: 'Class ID required' }, 403);
     if (class_id && !(await canAccessClass(teacher, class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     const targets = class_id
-      ? await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND status = '재원' AND id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(class_id).all()
-      : await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND status = '재원'").all();
+      ? await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND COALESCE(NULLIF(TRIM(status), ''), '재원') IN ('재원', 'active') AND id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(class_id).all()
+      : await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND COALESCE(NULLIF(TRIM(status), ''), '재원') IN ('재원', 'active')").all();
     let count = 0;
     let skipped = 0;
     const details = [];
@@ -429,7 +445,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
     const current = await env.DB.prepare('SELECT id, status FROM students WHERE id = ?').bind(id).first();
     if (!current) return jsonResponse({ error: 'Not found' }, 404);
-    if (String(current.status || '') !== '숨김') {
+    if (!isHiddenStudentStatus(current.status)) {
       return jsonResponse({ success: false, error: 'only_hidden_students_can_be_deleted', message: '숨김 처리된 학생만 완전 삭제할 수 있습니다.' }, 409);
     }
     const blockingChecks = await Promise.all([

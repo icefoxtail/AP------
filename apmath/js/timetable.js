@@ -2851,11 +2851,11 @@ function _ttIsStudentNew(s) {
 
 function _ttIsStudentLeave(s) {
     if (typeof isStudentOnLeave === 'function') return isStudentOnLeave(s);
-    return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
+    return !!(s && (normalizeStudentStatus(s.status) === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
 }
 
 function normalizeTimetableStudentStatus(value) {
-    return String(value || '').trim().toLowerCase();
+    return normalizeStudentStatus(value).toLowerCase();
 }
 
 function isTimetableWithdrawnStatus(value) {
@@ -3036,8 +3036,8 @@ function getTimetableClassStudentsWithInfo(classId) {
     result = stSource
         .filter(function(s) {
             if (sIds.indexOf(String(s.id)) === -1) return false;
-            if (s.status === '재원') return true;
-            if (s.status === '휴원') return true;
+            if (isActiveStudentStatus(s.status)) return true;
+            if (normalizeStudentStatus(s.status) === '휴원') return true;
             if (isRecentTimetableWithdrawnStudent(s)) return true;
             if (isTimetableDraftMode() && s.status === '입학예정') return true;
             if (String(s.memo || '').indexOf('#휴원') !== -1) return true;

@@ -761,7 +761,7 @@ function computeRiskStudents() {
     const todayTime = apParseLocalDateTime(todayStr);
     if (todayTime === null) return [];
 
-    const active = (state?.db?.students || []).filter(s => String(s?.status || '') === '재원');
+    const active = (state?.db?.students || []).filter(s => isActiveStudentStatus(s?.status));
     const attendanceHistory = state?.db?.attendance_history || [];
     const homeworkHistory = state?.db?.homework_history || [];
     const consultations = state?.db?.consultations || [];
@@ -1020,7 +1020,7 @@ function sortClassesForDashboard(classes) {
 
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
-    const activeStudents = state.db.students.filter(s => s.status === '재원');
+    const activeStudents = state.db.students.filter(s => isActiveStudentStatus(s.status));
     
     const scheduledActiveStudents = activeStudents.filter(s => {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
@@ -1113,7 +1113,7 @@ function getDashboardClassStudentNames(classId) {
         })();
 
     return (students || [])
-        .filter(s => String(s?.status || '재원') === '재원')
+        .filter(s => isActiveStudentStatus(s?.status))
         .map(s => String(s?.name || '').trim())
         .filter(Boolean)
         .sort((a, b) => a.localeCompare(b, 'ko'));
@@ -1761,7 +1761,7 @@ function computeTodayCloseData() {
     const homework = state?.db?.homework || [];
 
     const scheduledActive = students.filter(s => {
-        if (String(s?.status || '') !== '재원') return false;
+        if (!isActiveStudentStatus(s?.status)) return false;
         const cid = classStudents.find(m => String(m?.student_id) === String(s?.id))?.class_id;
         const cls = classes.find(c => String(c?.id) === String(cid || ''));
         if (cls && Number(cls.is_active) === 0) return false;
@@ -2141,7 +2141,7 @@ function mergeJournalConsultationsIntoContent(content, targetDate) {
 
     classes.forEach(cls => {
         const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
-        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && isActiveStudentStatus(s.status));
         const missingEntries = dashboardGetJournalConsultationsForClass(targetDate, memberIds)
             .filter(cn => !dashboardJournalAlreadyHasConsultation(merged, cn, students))
             .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
@@ -2169,7 +2169,7 @@ function buildJournalContent(dateStr) {
         text += `■ ${cls.name}반\n`;
 
         const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
-        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && isActiveStudentStatus(s.status));
         const total = students.length;
 
         const absents = [];

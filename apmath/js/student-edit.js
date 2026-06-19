@@ -414,7 +414,7 @@ async function handleEditStudent(sid) {
 
     const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
     const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
-    const currentStatus = String(currentStudent?.status || '재원').trim() || '재원';
+    const currentStatus = normalizeStudentStatus(currentStudent?.status);
     const hasLegacyLeaveMemo = currentStatus === '재원' && String(currentStudent?.memo || '').indexOf('#휴원') !== -1;
     const currentWasLeave = currentStatus === '휴원' || hasLegacyLeaveMemo;
     const nextStudentStatus = isLeaveChecked ? '휴원' : (currentWasLeave ? '재원' : currentStatus);
@@ -587,7 +587,7 @@ async function handleAddStudent() {
 }
 
 function openDischargedStudents() {
-    const discharged = state.db.students.filter(s => s.status === '제적');
+    const discharged = state.db.students.filter(s => isWithdrawnStudentStatus(s.status));
     const rows = discharged.map(s => `
         <div class="apms-discharged-student-row" style="padding: 14px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface);">
             <div><span style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">${apEscapeHtml(s.name)}</span> <span style="font-size: 12px; color: var(--secondary); font-weight: 400; line-height: 1.5; margin-left: 4px;">${apEscapeHtml(s.school_name || '')}</span></div>

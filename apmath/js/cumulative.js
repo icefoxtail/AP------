@@ -96,8 +96,8 @@ function buildCumulativeAttendanceTeacherOptions(selectedTeacher = '') {
 
 function getCumulativeVisibleStudents(filters = {}) {
     let students = filters.classId && typeof apmsGetStudentsForClass === 'function'
-        ? apmsGetStudentsForClass(filters.classId).filter(s => s.status === '재원')
-        : (state.db.students || []).filter(s => s.status === '재원');
+        ? apmsGetStudentsForClass(filters.classId).filter(s => isActiveStudentStatus(s.status))
+        : (state.db.students || []).filter(s => isActiveStudentStatus(s.status));
 
     if (filters.classId && typeof apmsGetStudentsForClass !== 'function') {
         const ids = new Set((state.db.class_students || [])
@@ -701,7 +701,7 @@ function isAttendanceNewStudent(student) {
 }
 
 function isAttendanceLeaveStudent(student) {
-    return !!(student && (student.status === '휴원' || String(student.memo || '').includes('#휴원')));
+    return !!(student && (normalizeStudentStatus(student.status) === '휴원' || String(student.memo || '').includes('#휴원')));
 }
 
 function getAttendanceStudentNameStyle(student) {

@@ -10,7 +10,7 @@ function mgmtEscape(value) {
 
 function getClassStudentCount(classId) {
     const activeStudentIds = new Set((state.db.students || [])
-        .filter(s => String(s.status || '재원').trim() === '재원')
+        .filter(s => isActiveStudentStatus(s.status))
         .map(s => String(s.id)));
     return (state.db.class_students || [])
         .filter(m => String(m.class_id) === String(classId) && activeStudentIds.has(String(m.student_id)))
@@ -36,8 +36,7 @@ function renderAddressBookList() {
     if (!listRoot) return;
 
     let stds = (state.db.students || []).filter(s => {
-        const status = String(s.status || '재원').trim();
-        return status === '재원';
+        return isActiveStudentStatus(s.status);
     });
 
     if (cid) {
@@ -56,7 +55,7 @@ function renderAddressBookList() {
     }
 
     stds.sort((a, b) => {
-        const statusRank = (s) => String(s.status || '재원') === '재원' ? 0 : 1;
+        const statusRank = (s) => isActiveStudentStatus(s.status) ? 0 : 1;
         return statusRank(a) - statusRank(b)
             || String(a.grade || '').localeCompare(String(b.grade || ''), 'ko')
             || String(a.name || '').localeCompare(String(b.name || ''), 'ko');
@@ -69,8 +68,8 @@ function renderAddressBookList() {
 
     listRoot.innerHTML = stds.map(s => {
         const cls = getStudentClass(s.id);
-        const status = String(s.status || '재원');
-        const isActive = status === '재원';
+        const status = normalizeStudentStatus(s.status);
+        const isActive = isActiveStudentStatus(status);
         const statusStyle = isActive
             ? 'color:var(--success); background:rgba(0,208,132,0.08); border:1px solid rgba(0,208,132,0.15);'
             : 'color:var(--secondary); background:var(--surface-2); border:1px solid var(--border);';
