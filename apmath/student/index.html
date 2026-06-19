@@ -9,13 +9,13 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.json?v=2026.06.19.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.06.19.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.06.19.1">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.06.19.1">
   <title>AP Math OS | 학생 포털</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.06.19.1">
   <style>
     :root {
       --primary:#111827;
@@ -422,7 +422,7 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png') center/cover no-repeat;
+      background:#FFFFFF url('./icons/icon-192.png?v=2026.06.19.1') center/cover no-repeat;
       color:transparent;
       display:flex;
       align-items:center;
@@ -472,6 +472,48 @@
       box-shadow:0 10px 28px rgba(25,31,40,0.18);
     }
     .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
+    .student-update-notice {
+      position:fixed;
+      left:50%;
+      bottom:calc(18px + env(safe-area-inset-bottom));
+      width:min(92vw,420px);
+      transform:translateX(-50%);
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 13px 12px 15px;
+      border:1px solid rgba(17,24,39,0.12);
+      border-radius:18px;
+      background:rgba(255,255,255,0.96);
+      color:var(--text);
+      box-shadow:0 14px 34px rgba(17,24,39,0.16);
+      z-index:120;
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+    }
+    .student-update-notice.show { display:flex; }
+    .student-update-copy { min-width:0; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.45; }
+    .student-update-copy strong { display:block; margin-bottom:2px; font-size:13px; font-weight:600; color:var(--text); }
+    .student-update-btn {
+      flex:0 0 auto;
+      min-height:36px;
+      border:0;
+      border-radius:12px;
+      padding:0 13px;
+      background:#111827;
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+    }
+    .student-app-version {
+      margin-top:12px;
+      text-align:center;
+      font-size:11px;
+      font-weight:500;
+      color:var(--secondary);
+      opacity:.78;
+    }
     @media (max-width:860px) {
       body { background:
         radial-gradient(circle at 0% 0%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
@@ -518,7 +560,7 @@
       .omr-actions .btn { height:42px; min-height:42px; padding:0 4px; font-size:12px; }
     }
   </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css">
+  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.06.19.1">
   <style>
     body.student-portal-theme {
       --primary:#111827;
@@ -617,7 +659,7 @@
 <body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.06.19.1" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -630,8 +672,10 @@
   </header>
   <main id="app" class="app"></main>
   <div id="toast" class="toast"></div>
+  <div id="student-update-notice" class="student-update-notice" role="status" aria-live="polite"></div>
 
   <script>
+    const STUDENT_APP_VERSION = '2026.06.19.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
 
@@ -656,6 +700,47 @@
       el.classList.add('show');
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1900);
+    }
+    function renderStudentAppVersion() {
+      return `<div class="student-app-version">v${escapeHtml(STUDENT_APP_VERSION)}</div>`;
+    }
+    async function checkStudentPortalVersion() {
+      try {
+        const res = await fetch('./student-version.json?ts=' + Date.now(), {
+          cache: 'no-store'
+        });
+        if (!res.ok) return;
+
+        const data = await res.json().catch(() => null);
+        const latest = String(data?.version || '').trim();
+        if (!latest || latest === STUDENT_APP_VERSION) return;
+
+        showStudentUpdateNotice(latest, data?.message || '');
+      } catch (e) {
+        console.warn('[student portal] version check failed:', e);
+      }
+    }
+    function showStudentUpdateNotice(version, message) {
+      const el = $('student-update-notice');
+      if (!el) return;
+      const latest = String(version || '').trim().replace(/[^\w.-]/g, '');
+      const detail = String(message || '').trim() || '화면이 예전처럼 보이면 업데이트를 눌러주세요.';
+      if (!latest) return;
+      el.innerHTML = `
+        <div class="student-update-copy">
+          <strong>새 버전이 있습니다.</strong>
+          <span>${escapeHtml(detail)}</span>
+        </div>
+        <button type="button" class="student-update-btn" onclick="reloadStudentPortalWithVersion('${escapeHtml(latest)}')">업데이트</button>
+      `;
+      el.classList.add('show');
+    }
+    function reloadStudentPortalWithVersion(version) {
+      const nextVersion = encodeURIComponent(version || STUDENT_APP_VERSION);
+      const url = new URL(window.location.href);
+      url.searchParams.set('v', nextVersion);
+      url.searchParams.set('t', String(Date.now()));
+      window.location.replace(url.toString());
     }
     function setTopStudent(name) {
       $('student-chip').textContent = name || '';
@@ -807,6 +892,7 @@
             <input id="student-pin" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')loginStudent()">
             <button id="login-btn" class="btn btn-primary" onclick="loginStudent()">로그인</button>
             ${renderInstallCard()}
+            ${renderStudentAppVersion()}
           </div>
         </section>
       `;
@@ -1180,6 +1266,7 @@
           <div class="omr-submit-bar">
             <button id="material-submit-btn" class="btn btn-primary" onclick="submitMaterialWrongOmr()">제출</button>
           </div>
+          ${renderStudentAppVersion()}
         </div>
       `;
     }
@@ -1326,6 +1413,7 @@
               <button class="btn" onclick="renderOmrExams()">OMR 입력</button>
             </section>
           </div>
+          ${renderStudentAppVersion()}
         </div>
       `;
       if (typeof refreshStudentPortalAssignmentOmrStatus === 'function') refreshStudentPortalAssignmentOmrStatus();
@@ -1612,6 +1700,8 @@
       renderLogin();
     }
     async function boot() {
+      console.info('[student portal] version:', STUDENT_APP_VERSION);
+      checkStudentPortalVersion();
       session = readSession();
       if (session?.student_id && session?.student_token) {
         setTopStudent(session.name || '');
