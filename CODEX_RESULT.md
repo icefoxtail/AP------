@@ -1,43 +1,50 @@
-# AP Class Archive & Archive Engine Script Allowlist Result
+# EIE P1 CRUD Auth Stabilization Result
 
 ## 수정 파일
-- apmath/js/management.js
-- apmath/worker-backup/worker/routes/classes.js
-- archive/engine.html
+- eie/js/eie-api.js
+- eie/js/views/eie-students.js
+- workers/wangji-eie-worker/index.js
+- workers/wangji-eie-worker/routes/eie.js
+- workers/wangji-eie-worker/migrations/20260619_eie_student_contacts_deleted_at.sql
+- CODEX_RESULT.md
 
 ## 해결한 문제
-- AP 학급 hard delete 차단
-- 학급 archive/soft-delete 전환
-- Archive engine data script allowlist 적용
+- EIE 학생 상세 출결 저장 cell context 누락
+- EIE 연락처 삭제 front/backend mismatch
+- EIE disabled teacher session 유지 위험
+- EIE GET 실패 stub masking
 
 ## 핵심 변경
-- DELETE /api/classes/:id에서 classes row 및 관련 운영 기록 DELETE를 제거하고 classes.is_active = 0 업데이트로 전환
-- class_students, teacher_classes, class_textbooks, class_daily_records, class_daily_progress, class_exam_assignments, exam_sessions, school_exam_records 보존
-- 기존 api.delete('classes', classId) 호출과 success 응답 호환 유지
-- 학급 삭제 확인/결과 문구를 보관 처리 및 기록 보존 기준으로 변경
-- archive/engine.html의 data query script src를 exams/**/*.js allowlist 통과 경로로 제한
-- http/https, protocol-relative URL, javascript/data/blob, ../, backslash, encoded traversal, exams 밖 경로, 비-js 확장자 차단
-- invalid data 차단 시 script를 추가하지 않고 console.warn 및 안전한 오류 안내 표시
+- 학생 상세 출결 저장 시 학생 배정, return context, 기존 당일 기록에서 `timetable_cell_id`를 resolve해 payload에 포함
+- cell 후보가 없거나 여러 개라 특정할 수 없는 경우 저장하지 않고 안내
+- 연락처 삭제 버튼을 기존 `deleteStudentContact()` wrapper와 `student-contacts/:id` DELETE route에 연결
+- `eie_student_contacts.deleted_at` 최소 migration과 Worker self-heal을 추가
+- 연락처 삭제는 `deleted_at` soft delete로 처리하고 조회/학생 상세/대표 연락처 join에서 삭제 연락처 제외
+- 삭제된 동일 번호 연락처 재추가 시 기존 row를 복구해 unique 충돌 방지
+- disabled/archived teacher session은 verify 단계에서 거부하고 현재 세션 revoke
+- teacher PATCH로 `role=disabled` 전환하거나 DELETE teacher 처리 시 기존 `teacher_sessions` revoke
+- critical GET 실패는 throw 유지, optional import/contact-seeds/needs-review만 명시적 fallback 허용
+- fallback 응답에 `stub`, `fallback`, `source`, `warning`을 명시
 
 ## 검수 결과
-- 학급 archive: PASS (DELETE route가 classes.is_active = 0으로 archive 처리)
-- related records 보존: PASS (class DELETE route 내 관련 테이블 DELETE 제거 확인)
-- 기본 학급 목록: PASS (GET /classes 및 관리 목록 active 기준 유지 확인)
-- 학생 등록/수정 학급 선택: PASS (기존 classes 응답/프론트 호출 구조 유지, 런타임 미실행)
-- 시간표/출석/성적 회귀: PASS (관련 기록 삭제 제거 및 출력/조회 구조 미수정, 런타임 미실행)
-- engine 정상 data: PASS (exams/*.js, ./exams/*.js, archive/exams/*.js 정규화 테스트 통과)
-- engine 악성 data 차단: PASS (https/http, //, javascript, data, blob, ../, backslash, %5c, %2e%2e, .html, .json 차단 테스트 통과)
-- node --check: PASS (apmath/js/management.js, apmath/worker-backup/worker/routes/classes.js)
-- HTML inline parse: PASS (archive/engine.html inline script 2개 parse)
+- 학생 상세 출결 저장: PASS (payload에 `timetable_cell_id` 포함, missing/ambiguous cell은 안내 후 저장 중단)
+- 연락처 삭제: PASS (`student-contacts/:id` DELETE soft delete, 조회 제외, 추가/수정 유지, 삭제 duplicate 복구 확인)
+- disabled teacher session: PASS (verify 차단, role disable/teacher DELETE 시 session revoke)
+- GET 실패 fallback: PASS (critical GET throw, optional fallback metadata 확인)
+- EIE 401/403: PASS (기존 auth notify/throw 흐름 유지)
+- node --check: PASS (`eie-api.js`, `eie-students.js`, `index.js`, `routes/eie.js`)
 - git diff --check: PASS (공백 오류 없음, LF-to-CRLF warning만 출력)
+- 검색 확인: PASS (요구 패턴 확인)
+- 런타임 브라우저/운영 D1 시나리오: UNVERIFIED (정적 검수 기준)
 
 ## 수정하지 않은 항목
-- 학생 status 정규화 재수정 없음
-- EIE 수정 없음
+- AP 학생 status 재수정 없음
+- AP 학급 archive 재수정 없음
+- Archive 수정 없음
 - Student Portal 수정 없음
-- Archive 출력 렌더링/MathJax/인쇄 구조 수정 없음
+- EIE 시간표 UI/레이아웃 변경 없음
 
 ## 남은 위험
-- 실제 운영 DB class 상태 column 값은 운영 데이터 확인 필요
-- 운영 배포 Worker가 backup worker와 다르면 배포본 확인 필요
-- 브라우저 클릭, 운영 DB row 확인, 실제 인쇄/MathJax 시각 검수는 이번 로컬 정적 검수에서 실행하지 않음
+- 실제 운영 Worker와 repo worker가 다르면 배포본 확인 필요
+- disabled session revoke는 운영 세션 데이터 확인 필요
+- 운영 D1 row 보존과 브라우저 Network payload는 배포 환경에서 최종 확인 필요

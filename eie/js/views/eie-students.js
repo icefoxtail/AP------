@@ -1097,7 +1097,7 @@
                     + '<div class="eie-apms-inline-actions">'
                     + '<button type="button" onclick="EieStudentsView.copyPhone(' + jsArg(contactPhone) + ')">' + esc(contactPhone) + '</button>'
                     + (contactId && contactId !== 'primary' ? '<button type="button" onclick="EieStudentsView.editContact(' + jsArg(contactId) + ')">수정</button>' : '')
-                    + '<button type="button" disabled title="삭제 처리는 준비 중입니다.">삭제 보류</button>'
+                    + (contactId && contactId !== 'primary' ? '<button type="button" onclick="EieStudentsView.deleteContact(' + jsArg(contactId) + ')">삭제</button>' : '')
                     + '</div>'
                     + '</div>';
             }).join('') : '<p class="eie-apms-muted">등록된 연락처가 없습니다. 학생 수정에서 대표 연락처를 저장할 수 있습니다.</p>')
@@ -1328,6 +1328,45 @@
         }).sort(function (a, b) {
             return text(b.date || b.created_at).localeCompare(text(a.date || a.created_at));
         });
+    }
+
+    function uniqueAttendanceCellIds(student) {
+        var ids = [];
+        function add(value) {
+            var id = text(value);
+            if (id && ids.indexOf(id) === -1) ids.push(id);
+        }
+        assignmentsOf(student).forEach(function (assignment) {
+            add(assignment.cellId || assignment.cell_id || assignment.timetable_cell_id);
+        });
+        asArray(rawOf(student).assignments).forEach(function (assignment) {
+            add(assignment.timetable_cell_id || assignment.cell_id || assignment.class_id);
+        });
+        classLinksFor(student).forEach(function (link) {
+            add(link.timetable_cell_id || link.cell_id || link.class_id);
+        });
+        return ids;
+    }
+
+    function resolveAttendanceCellId(student, date) {
+        var sid = rowId(student);
+        var ctxCellId = text(_returnCtx && (_returnCtx.cellId || _returnCtx.cell_id || _returnCtx.timetable_cell_id));
+        var candidates = uniqueAttendanceCellIds(student);
+        if (ctxCellId && (!candidates.length || candidates.indexOf(ctxCellId) !== -1)) return { cellId: ctxCellId };
+
+        var sameDayRows = attendanceOf(student).filter(function (row) {
+            return text(row.date || row.attendance_date || row.created_at).slice(0, 10) === date;
+        });
+        var existingCellIds = [];
+        sameDayRows.forEach(function (row) {
+            var id = text(row.timetable_cell_id || row.cell_id || row.cellId);
+            if (id && existingCellIds.indexOf(id) === -1) existingCellIds.push(id);
+        });
+        if (existingCellIds.length === 1) return { cellId: existingCellIds[0] };
+        if (candidates.length === 1) return { cellId: candidates[0] };
+        if (candidates.length > 1) return { error: '출결을 저장할 수업을 특정할 수 없습니다. 시간표 또는 클래스룸에서 해당 수업을 선택한 뒤 저장해 주세요.' };
+        if (!sid) return { error: '학생 정보를 찾을 수 없습니다.' };
+        return { error: '출결 저장에 필요한 수업 배정 정보가 없습니다.' };
     }
 
     function consultationDate(row) {
@@ -1971,6 +2010,29 @@
             }
         },
 
+        deleteContact: async function (contactId) {
+            if (_saving) return;
+            var id = text(contactId);
+            var current = asArray(db().student_contacts).find(function (contact) { return String(contact.id || '') === String(id); });
+            if (!id || !current) return;
+            var sid = text(current.student_id || _selectedId);
+            if (!sid) return;
+            if (window.confirm && !window.confirm('이 연락처를 삭제할까요?')) return;
+            _saving = true;
+            try {
+                var result = await EieApi.deleteStudentContact(id);
+                if (EieState.mergeStudentContacts) EieState.mergeStudentContacts(sid, result.contacts || []);
+                _notice = '연락처를 삭제했습니다.';
+                _tab = 'contacts';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '연락처 삭제에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
         createConsultation: async function (studentId, draft) {
             var sid = text(studentId || _selectedId);
             if (!sid || _saving) return;
@@ -2244,12 +2306,23 @@
             if (_saving) return;
             var sid = text(studentId || _selectedId);
             if (!sid) return;
+            var student = asArray(db().students).find(function (row) { return rowId(row) === sid; }) || selectedStudent();
+            var date = new Date().toLocaleDateString('sv-SE');
+            var resolved = resolveAttendanceCellId(student || {}, date);
+            if (!resolved.cellId) {
+                _error = resolved.error || '출결 저장에 필요한 수업 정보를 찾을 수 없습니다.';
+                _tab = 'attendance';
+                await EieRouter.open('students');
+                return;
+            }
             _saving = true;
             try {
                 var result = await EieApi.saveAttendanceRecord({
                     student_id: sid,
-                    date: new Date().toLocaleDateString('sv-SE'),
-                    status: status
+                    timetable_cell_id: resolved.cellId,
+                    date: date,
+                    status: status,
+                    raw_meta_json: { source: 'eie-student-detail' }
                 });
                 var rows = result.attendance_records || result.attendance || (result.attendance_record ? [result.attendance_record] : (result.data ? [result.data] : []));
                 if (window.EieState && typeof EieState.mergeStudentAttendance === 'function') {
