@@ -545,6 +545,44 @@ def parse_eval_type_filename(filename):
     }
 
 
+def parse_named_term_grade_filename(filename):
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
+    parts = stem.split("_")
+    if len(parts) < 5:
+        return None
+    if parts[1] not in ("1학기", "2학기"):
+        return None
+    if parts[2] not in ("중간", "기말", "중간고사", "기말고사", "중간평가", "기말평가"):
+        return None
+    if not re.fullmatch(r"[중고][123]", parts[3]):
+        return None
+
+    school = parts[0].strip()
+    semester = normalize_semester(parts[1], base)
+    exam_type = normalize_exam_type(parts[2], base)
+    grade = normalize_grade(parts[3].strip())
+    topic = strip_suffixes("_".join(parts[4:]).strip("_"))
+
+    content_type = "유형"
+    if "단원평가" in stem:
+        content_type = "단원평가"
+    elif "쪽지" in stem:
+        content_type = "쪽지"
+
+    return {
+        "file": base,
+        "school": school,
+        "topic": topic,
+        "grade": grade,
+        "year": "",
+        "semester": semester,
+        "examType": exam_type,
+        "subject": "",
+        "contentType": content_type,
+    }
+
+
 def parse_publisher_unit_type_filename(filename):
     base = os.path.basename(filename)
     stem = os.path.splitext(base)[0]
@@ -771,6 +809,7 @@ def parse_filename(filename, rel_path=""):
     for parser in (
         parse_eval_type_filename,
         parse_unit_type_filename,
+        parse_named_term_grade_filename,
         parse_apmath_legacy_filename,
         parse_rpm_filename,
         parse_publisher_unit_type_filename,

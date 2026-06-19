@@ -681,7 +681,7 @@ window.mainDB = {
       "examType": "final",
       "subject": "대수c",
       "contentType": "기출",
-      "qCount": 25,
+      "qCount": 23,
       "rangeStartUnitKey": "",
       "rangeStartUnit": "",
       "rangeStartUnitOrder": 999,
@@ -6646,6 +6646,68 @@ window.mainDB = {
           "rangeEndUnitKey": "M1-07",
           "rangeEndUnit": "입체도형의 성질",
           "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/1final/AP수학학원_1학기_기말_중1_모의고사_1회.js",
+      "school": "AP수학학원",
+      "topic": "모의고사_1회",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 25,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-04",
+      "rangeEndUnit": "좌표평면과 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-04",
+          "rangeEndUnit": "좌표평면과 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/1final/AP수학학원_1학기_기말_중1_모의고사_2회.js",
+      "school": "AP수학학원",
+      "topic": "모의고사_2회",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 25,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-04",
+      "rangeEndUnit": "좌표평면과 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-04",
+          "rangeEndUnit": "좌표평면과 그래프",
+          "rangeEndUnitOrder": 4
         }
       ],
       "primaryStandardCourse": "중1 수학"
