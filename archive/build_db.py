@@ -1439,6 +1439,65 @@ def validate_db_js_content(content):
         raise ValueError('window.mainDB.exams 구조가 없습니다.')
 
 
+def parse_existing_db_content(content):
+    m = re.search(r"window\.mainDB\s*=\s*(\{.*\})\s*;?\s*$", content, re.S)
+    if not m:
+        return {"exams": []}
+    data = json.loads(m.group(1))
+    if not isinstance(data, dict) or not isinstance(data.get("exams"), list):
+        return {"exams": []}
+    return data
+
+
+def load_existing_db(output_path):
+    if not output_path.exists():
+        return {"exams": []}
+    try:
+        return parse_existing_db_content(read_text_file(output_path))
+    except Exception as e:
+        print(f"⚠️ 기존 db.js 비교 생략: {e}")
+        return {"exams": []}
+
+
+def build_db_diff_summary(previous_db, next_db):
+    prev_items = {
+        str(item.get("file", "")): item
+        for item in previous_db.get("exams", [])
+        if isinstance(item, dict) and item.get("file")
+    }
+    next_items = {
+        str(item.get("file", "")): item
+        for item in next_db.get("exams", [])
+        if isinstance(item, dict) and item.get("file")
+    }
+
+    added = sorted(set(next_items) - set(prev_items))
+    removed = sorted(set(prev_items) - set(next_items))
+    changed = sorted(
+        file
+        for file in set(prev_items) & set(next_items)
+        if prev_items[file] != next_items[file]
+    )
+
+    return {
+        "added": added,
+        "removed": removed,
+        "changed": changed,
+        "previous_count": len(prev_items),
+        "next_count": len(next_items),
+    }
+
+
+def print_limited_file_list(title, files, limit=20):
+    if not files:
+        return
+    print(f"{title}({len(files)}개):")
+    for file in files[:limit]:
+        print("  -", file)
+    if len(files) > limit:
+        print(f"  ... 외 {len(files) - limit}개")
+
+
 def build_engine_db():
     try:
         archive_dir, exams_path, output_path = resolve_project_paths()
@@ -1522,6 +1581,8 @@ def build_engine_db():
     exams_list.sort(key=sort_key)
 
     db_content = {"exams": exams_list}
+    previous_db_content = load_existing_db(output_path)
+    diff_summary = build_db_diff_summary(previous_db_content, db_content)
 
     output_text = "window.mainDB = "
     output_text += json.dumps(db_content, ensure_ascii=False, indent=2)
@@ -1533,6 +1594,14 @@ def build_engine_db():
         f.write(output_text)
 
     print(f"✅ db.js 생성 완료: 총 {len(exams_list)}개 파일 등록")
+    print(
+        "✅ DB 변경 요약: "
+        f"이전 {diff_summary['previous_count']}개 → 현재 {diff_summary['next_count']}개 "
+        f"(추가 {len(diff_summary['added'])} / 삭제 {len(diff_summary['removed'])} / 메타 변경 {len(diff_summary['changed'])})"
+    )
+    print_limited_file_list("➕ 새로 추가됨", diff_summary["added"])
+    print_limited_file_list("➖ DB에서 제거됨", diff_summary["removed"])
+    print_limited_file_list("✏️ 메타 변경됨", diff_summary["changed"])
     print(f"✅ archive 기준 위치: {archive_dir}")
     print(f"✅ exams 기준 위치: {exams_path}")
     print(f"✅ db.js 출력 위치: {output_path}")

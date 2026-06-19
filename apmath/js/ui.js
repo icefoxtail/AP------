@@ -83,6 +83,28 @@ function bootThemeManager() {
     }
 }
 
+function appendArchiveSessionToUrlForUi(url) {
+    try {
+        const session = typeof getSession === 'function'
+            ? getSession()
+            : JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (!session) return url;
+        const payload = {
+            login_id: session.login_id || '',
+            id: session.id || '',
+            name: session.name || '',
+            role: session.role || '',
+            session_token: session.session_token || '',
+            expires_at: session.expires_at || ''
+        };
+        if (!payload.session_token && !payload.login_id) return url;
+        const token = encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+        return url + (url.indexOf('#') === -1 ? '#' : '&') + 'apmsess=' + token;
+    } catch (e) {
+        return url;
+    }
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', bootThemeManager);
 } else {
@@ -819,7 +841,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerSection('수업 자료')}
         ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openTextbookManageModal==='function') openTextbookManageModal(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open('../archive/assessment/assessment-mvp.html', '_blank', 'noopener');")}
+        ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
 
         ${drawerSection('평가')}

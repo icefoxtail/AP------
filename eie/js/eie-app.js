@@ -71,7 +71,11 @@
             if (!value) continue;
             const trimmed = String(value).trim();
             if (!trimmed) continue;
-            if (/^(Bearer|Basic)\s+/i.test(trimmed)) return trimmed;
+            if (/^Basic\s+/i.test(trimmed)) {
+                try { window.localStorage.removeItem(key); } catch (e) {}
+                continue;
+            }
+            if (/^Bearer\s+/i.test(trimmed)) return trimmed;
             return `Bearer ${trimmed}`;
         }
         return '';
@@ -345,9 +349,9 @@
         renderEieLogin('다시 로그인해 주세요.');
     }
 
-    function handleEie401() {
+    function handleEie401(message) {
         clearEieToken();
-        renderEieLogin('다시 로그인해 주세요.');
+        renderEieLogin(message || '다시 로그인해 주세요.');
     }
 
     function bootWhenReady() {
@@ -364,11 +368,13 @@
                 return await originalBoot();
             } catch (e) {
                 if (e && e.status === 401) { handleEie401(); return; }
+                if (e && e.status === 403) { handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.'); return; }
                 throw e;
             }
         };
         window.EieRouter.boot().catch(function (e) {
             if (e && e.status === 401) handleEie401();
+            if (e && e.status === 403) handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
         });
     }
 

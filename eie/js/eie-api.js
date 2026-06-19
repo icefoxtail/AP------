@@ -30,7 +30,11 @@
             if (!value) continue;
             const trimmed = String(value).trim();
             if (!trimmed) continue;
-            if (/^(Bearer|Basic)\s+/i.test(trimmed)) return trimmed;
+            if (/^Basic\s+/i.test(trimmed)) {
+                try { window.localStorage.removeItem(key); } catch (e) {}
+                continue;
+            }
+            if (/^Bearer\s+/i.test(trimmed)) return trimmed;
             return `Bearer ${trimmed}`;
         }
         return '';
@@ -137,7 +141,7 @@
             readCacheSet(path, data);
             return data;
         } catch (error) {
-            if (error.status === 401) throw error;
+            if (error.status === 401 || error.status === 403) throw error;
             notifyGetFailure(path, error);
             // 실패(fallback stub)는 캐시하지 않는다 — 다음 진입에서 다시 시도.
             return {

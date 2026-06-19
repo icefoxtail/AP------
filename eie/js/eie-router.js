@@ -92,6 +92,10 @@
                 window.EieApp.handleEie401();
                 return;
             }
+            if (e && e.status === 403 && window.EieApp && typeof window.EieApp.handleEie401 === 'function') {
+                window.EieApp.handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
+                return;
+            }
             throw e;
         }
     }

@@ -32,6 +32,14 @@
         const headers = { 'Content-Type': 'application/json', ...(typeof getAuthHeader === 'function' ? getAuthHeader() : {}) };
         const res = await fetch(`${CONFIG.API_BASE}/${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined });
         const data = await res.json().catch(() => ({}));
+        if (res.status === 401) {
+            if (typeof handleUnauthorizedResponse === 'function') handleUnauthorizedResponse();
+            throw new Error('unauthorized');
+        }
+        if (res.status === 403) {
+            notify('권한이 없습니다. 계정 권한을 확인해 주세요.', 'warn');
+            throw new Error('forbidden');
+        }
         if (!res.ok || data.success === false) throw new Error(data.message || data.error || '요청 실패');
         return data;
     }

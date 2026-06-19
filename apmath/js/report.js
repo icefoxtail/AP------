@@ -659,6 +659,15 @@ async function requestAiReport(sid, type, options = {}) {
             headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
             body: JSON.stringify(payload)
         });
+        if (r.status === 401) {
+            if (typeof handleUnauthorizedResponse === 'function') handleUnauthorizedResponse();
+            return;
+        }
+        if (r.status === 403) {
+            toast('권한이 없습니다. 계정 권한을 확인해 주세요.', 'warn');
+            closeModal();
+            return;
+        }
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const data = await r.json();
 

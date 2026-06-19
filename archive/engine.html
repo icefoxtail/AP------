@@ -554,13 +554,81 @@ function getKstTodayString() {
     return kst.toISOString().split('T')[0];
 }
 
-function getAssignmentAuthHeader() {
+const ARCHIVE_AP_API_BASE = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
+
+function getApmathSession() {
     try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session?.login_id || !session?.raw_password) return null;
-        return { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+        return JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
     } catch (e) {
         return null;
+    }
+}
+
+function sanitizeApmathSessionForStorage(data) {
+    const safe = { ...(data || {}) };
+    delete safe.raw_password;
+    delete safe.password;
+    delete safe.pw;
+    return safe;
+}
+
+function saveApmathSession(data) {
+    localStorage.setItem('APMATH_SESSION', JSON.stringify(sanitizeApmathSessionForStorage(data)));
+}
+
+function encodeBasicAuthUnicodeSafe(value) {
+    const str = String(value || '');
+    try {
+        return btoa(unescape(encodeURIComponent(str)));
+    } catch (e) {
+        return btoa(str);
+    }
+}
+
+function getAssignmentAuthHeader() {
+    try {
+        const session = getApmathSession();
+        if (!session) return null;
+        if (session.session_token) return { 'Authorization': 'Bearer ' + session.session_token };
+
+        const mem = window.__APMATH_AUTH_MEMORY || {};
+        const loginId = mem.login_id || session.login_id || session.loginId;
+        const rawPassword = mem.raw_password || session.raw_password;
+        if (!loginId || !rawPassword) return null;
+        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+    } catch (e) {
+        return null;
+    }
+}
+
+function restoreApmathSessionFromHash() {
+    const hash = String(window.location.hash || '');
+    const match = /(?:^#|&)apmsess=([^&]+)/.exec(hash);
+    if (!match) return false;
+    try {
+        const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
+        if (!incoming || (!incoming.session_token && !incoming.login_id)) return false;
+        const existing = getApmathSession();
+        saveApmathSession({
+            ...(existing || {}),
+            ...incoming,
+            login_id: incoming.login_id || incoming.loginId || (existing && (existing.login_id || existing.loginId)) || '',
+            id: incoming.id || (existing && existing.id) || '',
+            name: incoming.name || (existing && existing.name) || '',
+            role: incoming.role || (existing && existing.role) || '',
+            session_token: incoming.session_token || (existing && existing.session_token) || '',
+            expires_at: incoming.expires_at || (existing && existing.expires_at) || '',
+            restored_from_archive_hash: true,
+            restored_at: new Date().toISOString()
+        });
+        return true;
+    } catch (e) {
+        console.warn('[archive auth] failed to restore AP session from hash:', e);
+        return false;
+    } finally {
+        try {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (e) {}
     }
 }
 
@@ -585,7 +653,7 @@ async function registerClassExamAssignmentToOS() {
     if (sig === _classExamAssignmentRegisteredSig) return;
 
     try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments', {
+        const res = await fetch(`${ARCHIVE_AP_API_BASE}/class-exam-assignments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', ...authHeader },
             body: JSON.stringify({
@@ -1343,12 +1411,8 @@ async function registerBlueprintToOS() {
     const sig = archiveFile + '|' + AppState.data.map(q => q.id).join(',');
     if (sig === _blueprintRegisteredSig) return;
 
-    let authHeader = {};
-    try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session?.login_id || !session?.raw_password) return;
-        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
-    } catch(e) { return; }
+    const authHeader = getAssignmentAuthHeader();
+    if (!authHeader) return;
 
     const getKey = window.getConceptClusterKey || (() => '__UNMAPPED__'); // WARN2
 
@@ -1363,7 +1427,7 @@ async function registerBlueprintToOS() {
     }));
 
     try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints', {
+        const res = await fetch(`${ARCHIVE_AP_API_BASE}/exam-blueprints`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', ...authHeader },
             body: JSON.stringify({ archive_file: archiveFile, items })
@@ -1375,7 +1439,10 @@ async function registerBlueprintToOS() {
     }
 }
 
-window.onload = init;
+window.onload = () => {
+    restoreApmathSessionFromHash();
+    init();
+};
 </script>
 </body>
 </html>
