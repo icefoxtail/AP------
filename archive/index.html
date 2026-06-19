@@ -219,6 +219,30 @@
             margin-bottom: 8px;
         }
 
+        .assignment-board-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .assignment-board-tab {
+            height: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.055);
+            color: #b8c8e2;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .assignment-board-tab.active {
+            border-color: rgba(147,197,253,0.48);
+            background: rgba(96,165,250,0.22);
+            color: #eff6ff;
+        }
+
         .assignment-board-list {
             display: flex;
             flex-direction: column;
@@ -230,10 +254,10 @@
 
         .assignment-board-row {
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) 72px minmax(86px, 0.8fr);
+            grid-template-columns: 72px minmax(0, 1fr) minmax(84px, 0.74fr);
             gap: 8px;
             align-items: center;
-            min-height: 28px;
+            min-height: 30px;
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 8px;
             background: rgba(255,255,255,0.055);
@@ -248,6 +272,14 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
+        .assignment-board-teacher {
+            color: #9fb6d8;
+        }
+
+        .assignment-board-paper { color: #f8fbff; }
+
+        .assignment-board-classes { color: #dbeafe; }
 
         .assignment-board-empty {
             border: 1px dashed rgba(255,255,255,0.16);
@@ -976,7 +1008,7 @@
             }
 
             .assignment-board-row {
-                grid-template-columns: minmax(0, 1fr) 56px minmax(76px, 0.75fr);
+                grid-template-columns: 60px minmax(0, 1fr) minmax(72px, 0.7fr);
             }
         }
     </style>
@@ -1068,6 +1100,11 @@
                 <input class="assignment-board-date" id="assignmentBoardDate" type="date" onchange="onAssignmentBoardDateChange()">
             </div>
             <div class="assignment-board-range" id="assignmentBoardRange">기준일 기준 최근 30일</div>
+            <div class="assignment-board-tabs" role="tablist" aria-label="출제보드 보기">
+                <button class="assignment-board-tab active" id="assignmentBoardTabAll" type="button" onclick="setAssignmentBoardMode('all')">전체</button>
+                <button class="assignment-board-tab" id="assignmentBoardTabMine" type="button" onclick="setAssignmentBoardMode('mine')">내 출제</button>
+                <button class="assignment-board-tab" id="assignmentBoardTabOther" type="button" onclick="setAssignmentBoardMode('other')">다른 선생님</button>
+            </div>
             <div class="assignment-board-list" id="assignmentBoardList">
                 <div class="assignment-board-empty">학년을 선택하면 출제 기록이 표시됩니다.</div>
             </div>
@@ -1139,10 +1176,9 @@ let archiveDbLoadFailed = false;
 let assignmentBoardState = {
     date: new Date().toLocaleDateString('sv-SE'),
     grade: '',
-    classes: [],
-    assignmentsByClass: {},
-    loading: false,
-    loadedGrades: new Set()
+    boardRows: [],
+    mode: 'all',
+    loading: false
 };
 
 function compactText(value) {
@@ -1353,10 +1389,6 @@ function getArchiveBoardTeacherName(row) {
     return String(row?.teacher_name || row?.teacherName || row?.teacher || '').trim();
 }
 
-function getArchiveBoardClassRowsForGrade(grade) {
-    return (assignmentBoardState.classes || []).filter(row => getArchiveBoardClassGrade(row) === grade);
-}
-
 function getArchiveBoardAssignmentTitle(row) {
     return String(row?.exam_title || row?.title || row?.archive_title || row?.archive_file || row?.file_name || '시험지').trim();
 }
@@ -1385,45 +1417,63 @@ function getArchiveBoardClassKey(cls, teacherKey) {
     return `${teacherKey}:${compactText(getArchiveBoardClassName(cls))}`;
 }
 
+function getArchiveCurrentTeacherName() {
+    const session = getApmathSession() || {};
+    return String(session.name || session.user?.name || session.auth?.name || '').trim();
+}
+
+function isArchiveBoardMine(row) {
+    if (row?.is_mine === true) return true;
+    const current = compactText(getArchiveCurrentTeacherName());
+    const teacher = compactText(row?.teacher_name || row?.teacherName || row?.owner_name || row?.class_teacher_name || '');
+    return !!(current && teacher && current === teacher);
+}
+
+function filterArchiveBoardRows(rows) {
+    const mode = assignmentBoardState.mode || 'all';
+    if (mode === 'mine') return rows.filter(row => isArchiveBoardMine(row));
+    if (mode === 'other') return rows.filter(row => !isArchiveBoardMine(row));
+    return rows;
+}
+
 function groupArchiveBoardAssignments(grade) {
     const start = archiveBoardAddDays(assignmentBoardState.date, -30);
     const end = assignmentBoardState.date;
-    const classRows = getArchiveBoardClassRowsForGrade(grade);
+    const boardRows = filterArchiveBoardRows(assignmentBoardState.boardRows || []);
     const groups = new Map();
 
-    classRows.forEach(cls => {
-        const classId = String(cls.id || '');
-        const assignments = assignmentBoardState.assignmentsByClass[classId] || [];
-        assignments.forEach(row => {
-            const date = String(row.exam_date || row.date || '').slice(0, 10);
-            if (!date || date < start || date > end) return;
-            const paperKey = getArchiveBoardPaperKey(row);
-            const teacher = getArchiveBoardTeacherName(cls) || row.teacher_name || row.teacherName || '-';
-            const teacherKey = getArchiveBoardTeacherKey(cls, row) || compactText(teacher);
-            const groupKey = `${paperKey}::teacher:${teacherKey}`;
+    boardRows.forEach(row => {
+        const date = String(row.exam_date || row.date || '').slice(0, 10);
+        if (!date || date < start || date > end) return;
+        if (grade && normalizeGrade(row.class_grade || row.grade_label || row.grade || '') !== grade) return;
 
-            if (!groups.has(groupKey)) {
-                groups.set(groupKey, {
-                    title: getArchiveBoardAssignmentTitle(row),
-                    paperKey,
-                    teacher,
-                    teacherKey,
-                    classMap: new Map(),
-                    assignments: [],
-                    firstDate: date,
-                    lastDate: date
-                });
-            }
+        const paperKey = getArchiveBoardPaperKey(row);
+        const teacher = String(row.teacher_name || row.teacherName || row.owner_name || row.class_teacher_name || '-').trim();
+        const teacherKey = String(row.teacher_id || row.teacherId || compactText(teacher)).trim();
+        const groupKey = `${paperKey}::teacher:${teacherKey}`;
 
-            const group = groups.get(groupKey);
-            const classKey = getArchiveBoardClassKey(cls, teacherKey);
-            if (!group.classMap.has(classKey)) {
-                group.classMap.set(classKey, getArchiveBoardClassName(cls));
-            }
-            group.assignments.push({ classId, className: getArchiveBoardClassName(cls), teacher, date, row });
-            if (date < group.firstDate) group.firstDate = date;
-            if (date > group.lastDate) group.lastDate = date;
-        });
+        if (!groups.has(groupKey)) {
+            groups.set(groupKey, {
+                title: getArchiveBoardAssignmentTitle(row),
+                paperKey,
+                teacher,
+                teacherKey,
+                isMine: isArchiveBoardMine(row),
+                classMap: new Map(),
+                assignments: [],
+                firstDate: date,
+                lastDate: date
+            });
+        }
+
+        const group = groups.get(groupKey);
+        const classId = String(row.class_id || '');
+        const className = String(row.class_name || row.className || '-').trim();
+        const classKey = classId || `${teacherKey}:${compactText(className)}`;
+        if (!group.classMap.has(classKey)) group.classMap.set(classKey, className);
+        group.assignments.push({ classId, className, teacher, date, row });
+        if (date < group.firstDate) group.firstDate = date;
+        if (date > group.lastDate) group.lastDate = date;
     });
 
     return [...groups.values()].map(group => {
@@ -1433,6 +1483,7 @@ function groupArchiveBoardAssignments(grade) {
             paperKey: group.paperKey,
             teacher: group.teacher,
             teacherKey: group.teacherKey,
+            isMine: group.isMine,
             classLabel: classNames.join(', '),
             classCount: classNames.length,
             assignments: group.assignments,
@@ -1453,6 +1504,7 @@ function renderAssignmentBoard(message) {
     const range = document.getElementById('assignmentBoardRange');
     const list = document.getElementById('assignmentBoardList');
     if (!board || !title || !dateInput || !range || !list) return;
+    syncAssignmentBoardTabs();
 
     if (!selectedGrade) {
         board.classList.remove('open');
@@ -1471,83 +1523,78 @@ function renderAssignmentBoard(message) {
 
     const rows = groupArchiveBoardAssignments(selectedGrade);
     if (!rows.length) {
-        list.innerHTML = '<div class="assignment-board-empty">해당 기간 출제 기록이 없습니다.</div>';
+        const emptyText = assignmentBoardState.mode === 'mine'
+            ? '\uD574\uB2F9 \uAE30\uAC04 \uB0B4 \uCD9C\uC81C \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.'
+            : assignmentBoardState.mode === 'other'
+                ? '\uD574\uB2F9 \uAE30\uAC04 \uB2E4\uB978 \uC120\uC0DD\uB2D8 \uCD9C\uC81C \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.'
+                : '\uD574\uB2F9 \uAE30\uAC04 \uCD9C\uC81C \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.';
+        list.innerHTML = `<div class="assignment-board-empty">${archiveBoardEscape(emptyText)}</div>`;
         return;
     }
 
     list.innerHTML = rows.map(row => `
         <div class="assignment-board-row" title="${archiveBoardEscape(`${row.title} | ${row.teacher || '-'} | ${row.classLabel || '-'} | ${row.firstDate} ~ ${row.lastDate}`)}">
-            <span>${archiveBoardEscape(row.title)}</span>
-            <span>${archiveBoardEscape(row.teacher || '-')}</span>
-            <span>${archiveBoardEscape(row.classLabel || '-')}</span>
+            <span class="assignment-board-teacher">${archiveBoardEscape(row.teacher || '-')}</span>
+            <span class="assignment-board-paper">${archiveBoardEscape(row.title)}</span>
+            <span class="assignment-board-classes">${archiveBoardEscape(row.classLabel || '-')}</span>
         </div>
     `).join('');
 }
 
-async function ensureAssignmentBoardClasses() {
-    if (assignmentBoardState.classes.length) return true;
-    const authHeader = getIndexAssignmentAuthHeader();
-    if (!authHeader) {
-        renderAssignmentBoard('AP Math OS 로그인 후 출제보드를 볼 수 있습니다.');
-        return false;
-    }
+function syncAssignmentBoardTabs() {
+    const mode = assignmentBoardState.mode || 'all';
+    [
+        ['assignmentBoardTabAll', 'all'],
+        ['assignmentBoardTabMine', 'mine'],
+        ['assignmentBoardTabOther', 'other']
+    ].forEach(([id, value]) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('active', mode === value);
+    });
+}
 
-    const res = await fetch(`${ARCHIVE_AP_API_BASE}/qr-classes`, { headers: authHeader });
-    if (!res.ok) throw new Error('qr-classes failed');
-    const data = await res.json();
-    assignmentBoardState.classes = Array.isArray(data.classes) ? data.classes : [];
-    return true;
+function setAssignmentBoardMode(mode) {
+    assignmentBoardState.mode = ['mine', 'other'].includes(mode) ? mode : 'all';
+    renderAssignmentBoard();
 }
 
 async function loadAssignmentBoardForGrade(grade) {
     if (!grade) {
+        assignmentBoardState.boardRows = [];
         renderAssignmentBoard();
         return;
     }
 
     assignmentBoardState.grade = grade;
-    renderAssignmentBoard('출제 기록을 불러오는 중...');
+    renderAssignmentBoard('\uCD9C\uC81C \uAE30\uB85D\uC744 \uBD88\uB7EC\uC624\uB294 \uC911...');
 
     try {
-        const hasClasses = await ensureAssignmentBoardClasses();
-        if (!hasClasses) return;
-
-        const classRows = getArchiveBoardClassRowsForGrade(grade);
-        if (!classRows.length) {
-            renderAssignmentBoard('해당 학년 반이 없습니다.');
-            return;
-        }
-
         const authHeader = getIndexAssignmentAuthHeader();
         if (!authHeader) {
-            renderAssignmentBoard('AP Math OS 로그인 후 출제보드를 볼 수 있습니다.');
+            renderAssignmentBoard('AP Math OS \uB85C\uADF8\uC778 \uD6C4 \uCD9C\uC81C\uBCF4\uB4DC\uB97C \uBCFC \uC218 \uC788\uC2B5\uB2C8\uB2E4.');
             return;
         }
 
-        const targets = classRows.filter(row => !assignmentBoardState.assignmentsByClass[String(row.id || '')]);
-        await Promise.all(targets.map(async cls => {
-            const classId = String(cls.id || '');
-            if (!classId) return;
-            const res = await fetch(`${ARCHIVE_AP_API_BASE}/class-exam-assignments?class=${encodeURIComponent(classId)}`, { headers: authHeader });
-            if (!res.ok) {
-                assignmentBoardState.assignmentsByClass[classId] = [];
-                return;
-            }
-            const data = await res.json();
-            assignmentBoardState.assignmentsByClass[classId] = data.assignments || data.items || [];
-        }));
-
+        const from = archiveBoardAddDays(assignmentBoardState.date, -30);
+        const to = assignmentBoardState.date;
+        const url = `${ARCHIVE_AP_API_BASE}/class-exam-assignments/board?grade=${encodeURIComponent(grade)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
+        const res = await fetch(url, { headers: authHeader });
+        if (!res.ok) throw new Error(`assignment board failed: ${res.status}`);
+        const data = await res.json();
+        assignmentBoardState.boardRows = data.assignments || data.items || [];
         renderAssignmentBoard();
     } catch (e) {
         console.warn('[archive assignment board] load failed:', e);
-        renderAssignmentBoard('출제 기록을 불러오지 못했습니다.');
+        assignmentBoardState.boardRows = [];
+        renderAssignmentBoard('\uCD9C\uC81C \uAE30\uB85D\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.');
     }
 }
 
 function onAssignmentBoardDateChange() {
     const input = document.getElementById('assignmentBoardDate');
     assignmentBoardState.date = input?.value || new Date().toLocaleDateString('sv-SE');
-    renderAssignmentBoard();
+    if (selectedGrade) loadAssignmentBoardForGrade(selectedGrade);
+    else renderAssignmentBoard();
 }
 
 async function init() {
