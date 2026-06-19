@@ -1,5 +1,5 @@
 import { sha256hex } from '../helpers/admin-db.js';
-import { canAccessClass, canAccessStudent } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, isAdminUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 
 async function verifyAuth(request, env) {
@@ -87,6 +87,22 @@ function dedupeClassExamAssignments(rows = []) {
     deduped.push(row);
   }
   return deduped;
+}
+
+function normalizeBoardGrade(value) {
+  return String(value || '').replace(/\s+/g, '').trim();
+}
+
+function normalizeBoardDate(value) {
+  const text = String(value || '').trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : '';
+}
+
+function getBoardDateOffset(dateText, delta) {
+  const base = normalizeBoardDate(dateText) || new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const date = new Date(`${base}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + delta);
+  return date.toISOString().slice(0, 10);
 }
 
 function normalizeTargetScope(value) {
@@ -496,6 +512,47 @@ export async function handleExams(request, env, teacher, path, url) {
   }
 
   if (resource === 'class-exam-assignments') {
+    if (method === 'GET' && id === 'board') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+      const grade = normalizeBoardGrade(url.searchParams.get('grade') || '');
+      if (!grade) return jsonResponse({ success: false, error: 'grade required' }, 400);
+
+      const to = normalizeBoardDate(url.searchParams.get('to')) || getBoardDateOffset('', 0);
+      const from = normalizeBoardDate(url.searchParams.get('from')) || getBoardDateOffset(to, -30);
+      const mineKey = normalizeBoardGrade(currentTeacher.name || '');
+
+      const res = await env.DB.prepare(`
+        SELECT
+          a.*,
+          c.name AS class_name,
+          c.grade AS class_grade,
+          c.teacher_name AS class_teacher_name
+        FROM class_exam_assignments a
+        JOIN classes c ON c.id = a.class_id
+        WHERE (c.is_active != 0 OR c.is_active IS NULL)
+          AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?
+          AND SUBSTR(COALESCE(a.exam_date, ''), 1, 10) BETWEEN ? AND ?
+        ORDER BY a.exam_date DESC, c.teacher_name ASC, c.name ASC, a.updated_at DESC
+        LIMIT 1000
+      `).bind(grade, from, to).all();
+
+      const rows = dedupeClassExamAssignments(res.results || []).map(row => {
+        const ownerName = String(row.class_teacher_name || row.teacher_name || '').trim();
+        const ownerKey = normalizeBoardGrade(ownerName);
+        return {
+          ...row,
+          teacher_name: ownerName,
+          owner_name: ownerName,
+          is_mine: !!(mineKey && ownerKey && mineKey === ownerKey),
+          can_manage: isAdminUser(currentTeacher) || !!(mineKey && ownerKey && mineKey === ownerKey)
+        };
+      });
+
+      return jsonResponse({ success: true, from, to, grade, assignments: rows });
+    }
+
     if (method === 'POST') {
       const d = await request.json();
       if (!d.class_id || !d.exam_title || !d.exam_date) {
