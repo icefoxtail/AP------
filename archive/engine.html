@@ -881,6 +881,43 @@ function makePage(area, type, pNum) {
     area.appendChild(page); return page;
 }
 
+function normalizeArchiveExamScriptPath(raw) {
+    const value = String(raw || '').trim();
+    if (!value || value.length > 512) return '';
+    if (/\\|%5c/i.test(value)) return '';
+
+    let decoded = value;
+    try {
+        decoded = decodeURIComponent(value);
+    } catch (e) {
+        return '';
+    }
+
+    if (/\\/.test(decoded)) return '';
+    decoded = decoded.trim().replace(/^\.\/+/, '');
+    decoded = decoded.replace(/^archive\/exams\//, 'exams/');
+
+    if (!decoded || decoded.length > 512) return '';
+    if (/[?#]/.test(decoded)) return '';
+    if (/^(https?:)?\/\//i.test(decoded)) return '';
+    if (/^(javascript|data|blob):/i.test(decoded)) return '';
+    if (decoded.includes('../') || decoded.includes('/./') || decoded.includes('//')) return '';
+    if (/%2e|%2f|%5c/i.test(decoded)) return '';
+    if (!/^exams\/[a-zA-Z0-9가-힣_\-./]+\.js$/.test(decoded)) return '';
+
+    return decoded;
+}
+
+function showArchiveDataLoadError(message) {
+    const text = message || '시험지 데이터 경로가 올바르지 않아 불러올 수 없습니다. 아카이브에서 다시 출력해 주세요.';
+    const area = document.getElementById('print-area');
+    if (area) {
+        area.innerHTML = `<div style="margin:80px auto; max-width:520px; padding:24px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#0f172a; font-weight:700; line-height:1.6; text-align:center;">${text}</div>`;
+    }
+    const title = document.getElementById('ctrl-title');
+    if (title) title.innerText = '시험지 데이터를 불러올 수 없습니다';
+}
+
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode = p.get('mode') || 'exam'; AppState.qpp = parseInt(p.get('qpp')) || 4;
@@ -893,14 +930,24 @@ async function init() {
     if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
 
     const dataUrl = p.get('data'); if (!dataUrl) return;
+    const safeDataUrl = normalizeArchiveExamScriptPath(dataUrl);
+    if (!safeDataUrl) {
+        console.warn('[archive-engine] blocked invalid exam data script path:', dataUrl);
+        showArchiveDataLoadError();
+        return;
+    }
     const s = document.createElement('script');
-    s.src = /^(blob:|data:)/i.test(dataUrl) ? dataUrl : dataUrl + '?v=' + Date.now();
+    s.src = safeDataUrl + '?v=' + Date.now();
     s.onload = async () => {
         const qb = window.questionBank;
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
         AppState.title = window.examTitle || p.get('title') || '수학 시험지';
         document.getElementById('ctrl-title').innerText = AppState.title;
         await render();
+    };
+    s.onerror = () => {
+        console.warn('[archive-engine] failed to load exam data script:', safeDataUrl);
+        showArchiveDataLoadError('시험지 데이터를 불러올 수 없습니다. 아카이브에서 다시 출력해 주세요.');
     };
     document.body.appendChild(s);
 }
