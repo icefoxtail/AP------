@@ -7,8 +7,9 @@ const checkJs = fs.readFileSync(path.join(root, 'check/check.js'), 'utf8');
 const mixedEngine = fs.readFileSync(path.join(root, 'archive/mixed_engine.html'), 'utf8');
 
 assert(
-  mixedEngine.includes("url.searchParams.set('archiveFile', 'MIXED:' + AppState.key)"),
-  'mixed assessment submit QR should carry the MIXED archive key into the student check page'
+  mixedEngine.includes("const archiveFile = AppState.key ? 'MIXED:' + AppState.key : ''") &&
+    mixedEngine.includes("if (archiveFile) url.searchParams.set('archiveFile', archiveFile)"),
+  'mixed assessment submit QR should carry the MIXED archive key into the target page'
 );
 
 assert(

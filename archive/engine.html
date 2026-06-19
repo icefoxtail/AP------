@@ -471,6 +471,17 @@ function buildSubmitQrTargetUrl() {
     
     const q = params.get('q') || AppState.data.length || 0;
     const exam = AppState.title || '시험지';
+    const dataUrl = params.get('data') || '';
+
+    if (!classId) {
+        const url = new URL('../apmath/student/', window.location.href);
+        url.searchParams.set('omr', '1');
+        url.searchParams.set('exam', exam);
+        url.searchParams.set('date', date);
+        url.searchParams.set('q', q);
+        if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
+        return url.toString();
+    }
 
     const url = new URL('../check/', window.location.href);
     if (classId) url.searchParams.set('class', classId);
@@ -481,7 +492,6 @@ function buildSubmitQrTargetUrl() {
     url.searchParams.set('q', q);
 
     // [3B] archive_file 전달
-    const dataUrl = params.get('data') || '';
     if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
 
     return url.toString();
@@ -505,7 +515,7 @@ function injectSubmitQrToLastExamPage(area) {
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-submit-qr';
     
-    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">반 정보 없음</div>`;
+    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">학생페이지로 이동</div>`;
     
     qrWrap.innerHTML = `
         <div class="page-submit-qr-info">

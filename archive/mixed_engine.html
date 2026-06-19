@@ -512,6 +512,17 @@ function buildSubmitQrTargetUrl() {
 
     const q = params.get('q') || AppState.data.length || 0;
     const exam = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
+    const archiveFile = AppState.key ? 'MIXED:' + AppState.key : '';
+
+    if (!classId) {
+        const url = new URL('../apmath/student/', window.location.href);
+        url.searchParams.set('omr', '1');
+        url.searchParams.set('exam', exam);
+        url.searchParams.set('date', date);
+        url.searchParams.set('q', q);
+        if (archiveFile) url.searchParams.set('archiveFile', archiveFile);
+        return url.toString();
+    }
 
     const url = new URL('../check/', window.location.href);
     if (classId) url.searchParams.set('class', classId);
@@ -520,7 +531,7 @@ function buildSubmitQrTargetUrl() {
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
-    if (AppState.key) url.searchParams.set('archiveFile', 'MIXED:' + AppState.key);
+    if (archiveFile) url.searchParams.set('archiveFile', archiveFile);
 
     return url.toString();
 }
@@ -587,7 +598,7 @@ function injectSubmitQrToLastExamPage(area) {
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-submit-qr';
 
-    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">반 정보 없음</div>`;
+    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">학생페이지로 이동</div>`;
 
     qrWrap.innerHTML = `
         <div class="page-submit-qr-info">
