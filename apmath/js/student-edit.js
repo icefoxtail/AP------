@@ -414,6 +414,10 @@ async function handleEditStudent(sid) {
 
     const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
     const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
+    const currentStatus = String(currentStudent?.status || '재원').trim() || '재원';
+    const hasLegacyLeaveMemo = currentStatus === '재원' && String(currentStudent?.memo || '').indexOf('#휴원') !== -1;
+    const currentWasLeave = currentStatus === '휴원' || hasLegacyLeaveMemo;
+    const nextStudentStatus = isLeaveChecked ? '휴원' : (currentWasLeave ? '재원' : currentStatus);
     const alreadyAttending = document.getElementById('edit-already-attending')?.checked || false;
     const currentOnboardingStartedAt = getStudentOnboardingStartedAt(sid);
     // [등원일 회귀 방지] 수정모드에서는 today/7일전 자동 채움을 하지 않는다.
@@ -445,6 +449,7 @@ async function handleEditStudent(sid) {
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
         student_address: document.getElementById('edit-student-address')?.value || '',
         vehicle_info: document.getElementById('edit-vehicle-info')?.value || '',
+        status: nextStudentStatus,
         memo: finalMemo,
         student_pin: pin,
         high_subjects: JSON.stringify(highSubjects),

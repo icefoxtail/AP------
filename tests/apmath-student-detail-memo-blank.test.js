@@ -28,5 +28,8 @@ assert(!editBody.includes('String(s.memo || \'\').replace'), 'edit form should n
 assert(editHandler.includes("const cleanMemo = '';"), 'edit save should not persist freeform memo text into students.memo');
 assert(editHandler.includes('if (isNewChecked && !alreadyAttending) memoParts.push'), 'edit save should preserve new-student flag behavior');
 assert(editHandler.includes('if (isLeaveChecked) memoParts.push'), 'edit save should preserve leave flag behavior');
+assert(editHandler.includes("const hasLegacyLeaveMemo = currentStatus === '재원'"), 'edit save should only treat legacy leave memo as active-student leave state');
+assert(editHandler.includes("const nextStudentStatus = isLeaveChecked ? '휴원' : (currentWasLeave ? '재원' : currentStatus);"), 'edit save should convert the leave checkbox into a real student status');
+assert(editHandler.includes('status: nextStudentStatus'), 'edit save should persist leave status through students.status');
 
 console.log('AP Math student detail memo blank contract passed');
