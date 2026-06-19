@@ -238,7 +238,7 @@ function isStudentNewMember(s) {
 }
 
 function isStudentOnLeave(s) {
-    return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
+    return !!(s && (normalizeStudentStatus(s.status) === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
 }
 
 function sortConsultationsByLatest(rows = []) {
@@ -548,12 +548,13 @@ function renderStudentOperationHistorySection(sid) {
 
 function renderStudentStatusHistoryModalHtml(sid) {
     const rows = getStudentStatusHistoryRows(sid);
+    const statusLabel = value => value ? normalizeStudentStatus(value) : '';
     return `
         <div style="display:flex; flex-direction:column; gap:12px;">
             ${rows.length ? rows.map(row => `
                 <div class="card apms-card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
                     <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
-                        <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(row.old_status || '이전 상태')} → ${apEscapeHtml(row.new_status || '상태 확인')}</div>
+                        <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(statusLabel(row.old_status) || '이전 상태')} → ${apEscapeHtml(statusLabel(row.new_status) || '상태 확인')}</div>
                         <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
                     </div>
                     ${row.reason ? `<div style="font-size:12px; color:var(--text); font-weight:500; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(row.reason)}</div>` : '<div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.6;">사유 기록 없음</div>'}
@@ -1317,6 +1318,7 @@ function returnFromStudentFlow(ctx = null) {
 
 function mergeStudentIntoState(student) {
     if (!student || !student.id) return null;
+    student = typeof normalizeStudentRow === 'function' ? normalizeStudentRow(student) : { ...student, status: normalizeStudentStatus(student.status) };
     if (!state.db.students) state.db.students = [];
     const sid = String(student.id);
     const idx = state.db.students.findIndex(s => String(s.id) === sid);
@@ -1387,10 +1389,10 @@ function apmsStudentJsString(value) {
 
 function apmsStudentStatusMeta(student) {
     if (!student) return { label: '미등록', className: 'is-muted' };
-    const status = String(student.status || '재원').trim() || '재원';
+    const status = normalizeStudentStatus(student.status);
     if (status === '재원' && isStudentOnLeave(student)) return { label: '휴원', className: 'is-leave' };
     if (status === '재원') return { label: '재원', className: 'is-active' };
-    if (status === '제적' || status === '퇴원') return { label: '퇴원', className: 'is-archived' };
+    if (status === '퇴원') return { label: '퇴원', className: 'is-archived' };
     if (status === '휴원') return { label: '휴원', className: 'is-leave' };
     return { label: status, className: 'is-muted' };
 }

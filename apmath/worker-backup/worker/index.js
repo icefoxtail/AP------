@@ -59,6 +59,22 @@ function withCorsOrigin(response, request, env) {
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers: newHeaders });
 }
 
+function normalizeApStudentStatus(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '재원';
+  if (raw === '제적' || raw === '퇴원' || raw === 'withdrawn' || raw === 'withdraw') return '퇴원';
+  if (raw === '숨김' || raw === 'hidden') return '숨김';
+  if (raw === '휴원' || raw === 'paused') return '휴원';
+  if (raw === '재원' || raw === 'active') return '재원';
+  return raw;
+}
+
+function normalizeApStudentRows(rows) {
+  return (Array.isArray(rows) ? rows : []).map(row => (
+    row && typeof row === 'object' ? { ...row, status: normalizeApStudentStatus(row.status) } : row
+  ));
+}
+
 const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
 const TEACHER_SESSION_TOKEN_BYTES = 32;
 
@@ -3309,7 +3325,7 @@ async function handleApiRequest(request, env) {
                 class_daily_progress: [],
                 timetable_classes: timetableClasses.results,
                 timetable_class_students: ttAllClassStudents.results,
-                timetable_students: ttAllStudents.results,
+                timetable_students: normalizeApStudentRows(ttAllStudents.results),
                 timetable_class_textbooks: ttAllClassTextbooks.results,
                 report_exam_cohort_stats: [],
                 ...foundationData
@@ -3362,7 +3378,7 @@ async function handleApiRequest(request, env) {
           );
 
           return new Response(JSON.stringify({
-            students: stds.results,
+            students: normalizeApStudentRows(stds.results),
             classes: clss.results,
             class_students: map.results,
             attendance: att.results,
@@ -3383,7 +3399,7 @@ async function handleApiRequest(request, env) {
             class_daily_progress: cdp.results,
             timetable_classes: timetableClasses.results,
             timetable_class_students: ttAllClassStudents.results,
-            timetable_students: ttAllStudents.results,
+            timetable_students: normalizeApStudentRows(ttAllStudents.results),
             timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results,
             report_exam_cohort_stats: reportExamCohortStats,
             ...foundationData

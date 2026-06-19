@@ -130,6 +130,37 @@ let state = {
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
 
+function normalizeStudentStatus(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '재원';
+    if (raw === '제적' || raw === '퇴원' || raw === 'withdrawn' || raw === 'withdraw') return '퇴원';
+    if (raw === '숨김' || raw === 'hidden') return '숨김';
+    if (raw === '휴원' || raw === 'paused') return '휴원';
+    if (raw === '재원' || raw === 'active') return '재원';
+    return raw;
+}
+
+function isWithdrawnStudentStatus(value) {
+    return normalizeStudentStatus(value) === '퇴원';
+}
+
+function isHiddenStudentStatus(value) {
+    return normalizeStudentStatus(value) === '숨김';
+}
+
+function isActiveStudentStatus(value) {
+    return normalizeStudentStatus(value) === '재원';
+}
+
+function normalizeStudentRow(row) {
+    if (!row || typeof row !== 'object') return row;
+    return { ...row, status: normalizeStudentStatus(row.status) };
+}
+
+function normalizeStudentRows(rows) {
+    return (Array.isArray(rows) ? rows : []).map(normalizeStudentRow);
+}
+
 // ── 기준일(baseDate) 헬퍼 ─────────────────────────────────────────────
 // 기본값: 오늘 날짜(sv-SE). 화면별 전면 교체는 다음 번들에서 진행.
 function normalizeDateStr(value) {
@@ -790,7 +821,7 @@ async function loadData(isInitial = false) {
         timetable_class_students: Array.isArray(data.timetable_class_students) ? data.timetable_class_students : [],
         timetable_students: Array.isArray(data.timetable_students) ? data.timetable_students : [],
         timetable_class_textbooks: Array.isArray(data.timetable_class_textbooks) ? data.timetable_class_textbooks : [],
-        students: Array.isArray(data.students) ? data.students : [],
+        students: normalizeStudentRows(data.students),
         class_students: Array.isArray(data.class_students) ? data.class_students : [],
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
         homework: Array.isArray(data.homework) ? data.homework : [],
