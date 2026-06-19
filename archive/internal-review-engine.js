@@ -330,9 +330,8 @@ function hasUnsavedChanges() {
   return state.modifiedIds.size > 0 || state.removedItems.length > 0;
 }
 
-function confirmDiscardUnsaved(message) {
-  if (!hasUnsavedChanges()) return true;
-  return confirm(message || '저장하지 않은 수정이 있습니다. 계속 진행하면 현재 수정 내용이 유지되지 않을 수 있습니다. 계속할까요?');
+function confirmDiscardUnsaved() {
+  return true;
 }
 
 /* ================================================================
@@ -645,7 +644,7 @@ async function openArchiveDir() {
     showError('showDirectoryPicker 미지원. Chrome/Edge 최신 버전에서 localhost로 접속하세요.');
     return;
   }
-  if (!confirmDiscardUnsaved('저장하지 않은 수정이 있습니다. 다른 archive 폴더를 열까요?')) return;
+  if (!confirmDiscardUnsaved()) return;
   try {
     const handle = await window.showDirectoryPicker({ mode: 'readwrite' });
     state.archiveDirHandle = handle;
@@ -709,7 +708,7 @@ async function collectJsFiles(dirHandle, prefix, result) {
 ================================================================ */
 async function openSingleFile() {
   revokeLiveDataUrl();
-  if (!confirmDiscardUnsaved('저장하지 않은 수정이 있습니다. 다른 JS 파일을 열까요?')) return;
+  if (!confirmDiscardUnsaved()) return;
   if (window.showOpenFilePicker) {
     try {
       const [handle] = await window.showOpenFilePicker({
@@ -823,7 +822,7 @@ function renderFileList() {
     div.innerHTML = '<span>' + name + '</span>' + (subpath ? '<span class="file-subpath">' + subpath + '</span>' : '');
     div.title = entry.path;
     div.addEventListener('click', async function() {
-      if (!confirmDiscardUnsaved('현재 파일에 저장하지 않은 수정이 있습니다. 다른 파일을 열까요?')) return;
+      if (!confirmDiscardUnsaved()) return;
       state.currentFileHandle = entry.handle;
       state.currentFilePath   = entry.path;
       await loadFileHandle(entry.handle);
