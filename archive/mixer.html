@@ -1599,7 +1599,7 @@ async function loadMultipleExams() {
         try {
             const qs = await fetchQuestionData(file), ex = engineDB.exams.find(e => e.file === file) || {};
             allQs.push(...qs.map(q => ({ ...q, _sourceTitle: ex.school || ex.topic || '기출', _sourceFile: file, _qKey: `${file}_${q.id}` })));
-        } catch(e) {}
+        } catch(e) { console.warn('[mixer] 시험지 로드 실패:', file, e); }
     }
     currentDisplayQuestions = allQs;
     document.getElementById('cur-source-name').innerText = `${files.length}개 시험지`;
@@ -1679,7 +1679,7 @@ function createQuestionIndexItem(record) {
             <span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${escapeMixerHtml(record.level || '미')}</span>
             ${record.hasImage ? '<span class="q-unit-tag" style="background:#ecfdf5; color:#047857;">이미지 있음</span>' : ''}
         </div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;" class="q-source-file">${escapeMixerHtml(record.sourceFile)}</span></div>
-        <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick="toggleIndexCart(${safeKey})"><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
+        <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick='toggleIndexCart(${safeKey})'><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
         <div class="q-content">${escapeMixerHtml(summarizeIndexText(q.contentText || q.content))}</div>`;
     return div;
 }
