@@ -1,44 +1,48 @@
-# Archive Session Bridge Completion Hotfix Result
+# Archive Session Bridge Mobile QR Auth Hotfix Result
 
-## 수정 파일
-- archive/index.html
-- archive/mixer.html
+## Modified Files
+- apmath/worker-backup/worker/index.js
 - CODEX_RESULT.md
 
-## 문제 원인
-- AP Math OS 대시보드는 #apmsess 해시로 세션을 전달하고 있었지만 archive/index.html의 복원 함수명이 일관되지 않았고 init() 시작부에서 복원되지 않았다.
-- archive/index.html에서 세션 복원이 DB 로드와 권한 계산보다 먼저 보장되지 않으면 mixer.html로도 세션이 안정적으로 이어지지 않는다.
-- archive/mixer.html은 window.onload에서 restoreApmathSessionFromHash()를 호출하므로 함수 정의와 호출 순서가 유지되어야 한다.
+## Root Cause
+- The archive pages already restore the AP Math OS session from `#apmsess`.
+- The mobile app path restores a session that has `session_token` but no `raw_password`.
+- The frontend correctly sends `Authorization: Bearer <session_token>` for `qr-classes`.
+- The Worker entrypoint called `handleCheckOmr()` with `teacher = null` for `qr-classes`.
+- Inside `routes/check-omr.js`, the local fallback verifier only supports Basic auth, so Bearer-only mobile bridge sessions received 401.
 
-## 핵심 변경
-- archive/index.html에 restoreApmathSessionFromHash() 복원 흐름을 명명 일관화
-- archive/index.html init() 시작부에서 세션 복원
-- archive/index.html -> mixer.html 이동 시 APMATH_SESSION 기반 #apmsess 유지
-- archive/mixer.html의 #apmsess 복원 함수 정의 유지 및 index와 동일한 payload 허용 기준 적용
-- mixer QR 인증은 session_token Bearer 우선, Basic fallback 유지
-- index/mixer 세션 없음 fallback에서 일반 시험지 출력 유지
+## Key Change
+- For `/api/qr-classes`, `apmath/worker-backup/worker/index.js` now verifies the request through the shared `verifyAuth()` helper before calling `handleCheckOmr()`.
+- `check-pin` and `check-init` still pass `teacher = null`; their public student flows are unchanged.
+- Archive index/mixer frontend behavior from the previous hotfix is preserved:
+  - `#apmsess` restore
+  - no `raw_password` in URL
+  - Bearer first, Basic fallback
+  - general exam output available without login
 
-## 검수 결과
-- AP 대시보드 -> archive/index 세션 복원: PASS, init() 시작부에서 restoreApmathSessionFromHash() 호출
-- archive/index 기출 보기 권한: PASS, includeOriginalArchiveItems 계산 전에 복원 실행
-- archive/index -> mixer 세션 유지: PASS, buildArchiveInternalUrl('mixer.html') 구조 유지
-- mixer AP 제출 QR 반 목록: PASS, getMixerAssignmentAuthHeader() Bearer 우선 유지
-- session_token only 상태: PASS, 정적 계약 검증 통과
-- raw_password fallback 상태: PASS, Basic fallback 유지
-- 세션 없음 fallback: PASS, index와 mixer 모두 일반 시험지 출력 버튼 유지
-- 일반 시험지 출력: PASS, 로그인 필수로 변경하지 않음
-- 모바일 앱/WebView: UNVERIFIED, 실제 모바일 WebView 실기기 확인 필요
-- URL 해시 제거: PASS, 복원 시 history.replaceState()로 hash 제거
-- 콘솔 치명 오류: PASS, inline script parse 검증 통과
+## Verification Results
+- Worker qr-classes Bearer path: PASS, static contract verified.
+- check-pin/check-init public behavior: PASS, unchanged in the routing branch.
+- AP dashboard -> archive/index session restore: PASS, existing code preserved.
+- archive/index -> mixer session handoff: PASS, existing code preserved.
+- mixer QR auth priority: PASS, Bearer first then Basic fallback preserved.
+- session_token only mobile path: PASS by code path; live mobile runtime still requires deployed Worker.
+- no-session fallback: PASS, general output remains available.
+- URL hash removal: PASS, existing restore code preserved.
+- mobile app/WebView: UNVERIFIED after Worker deploy.
 
-## 확인 명령
-- 브라우저 콘솔 기준 치명 JS 오류 없음: inline script parse로 대체 확인
-- git diff --check 통과
-- 수정 파일 외 불필요 파일 생성 없음
-- node tests/archive-subject-synonym-search.test.js 통과
-- node tests/assessment-grade-target-assignment.test.js 통과
+## Commands Checked
+- `git diff --check`
+- `node --check apmath/worker-backup/worker/index.js`
+- `node --check apmath/worker-backup/worker/routes/check-omr.js`
+- `node tests/archive-subject-synonym-search.test.js`
+- `node tests/assessment-grade-target-assignment.test.js`
+- Worker qr-classes static contract check
 
-## 남은 위험
-- WebView별 localStorage 격리 차이
-- session_token 만료 시 재로그인 UX
-- Worker Bearer 인증 지원 범위
+## Known Separate Failure
+- `node tests/assessment-grade-target-round5-1.test.js` still fails at the existing `archive/index.html: resolvedCount null` assertion.
+- This failure predates and is outside the current Worker Bearer-routing fix.
+
+## Remaining Risk
+- The production mobile app will keep showing the QR auth fallback until the AP Worker is deployed with this change.
+- Live mobile WebView verification was not run in this session.
