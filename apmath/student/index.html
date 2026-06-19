@@ -675,6 +675,12 @@
   <div id="student-update-notice" class="student-update-notice" role="status" aria-live="polite"></div>
 
   <script>
+    // 학생 포털 배포 시 함께 올릴 값:
+    // 1. index.html STUDENT_APP_VERSION
+    // 2. student-version.json version
+    // 3. manifest.json version
+    // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
+    // 5. index.html 정적 리소스 ?v=
     const STUDENT_APP_VERSION = '2026.06.19.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
@@ -1724,7 +1730,11 @@
     });
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=' + encodeURIComponent(STUDENT_APP_VERSION))
+          .then(reg => {
+            try { reg.update(); } catch (e) {}
+          })
+          .catch(() => {});
       });
     }
   </script>
