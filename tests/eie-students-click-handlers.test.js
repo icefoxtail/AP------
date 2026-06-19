@@ -80,6 +80,18 @@ const context = {
     },
     async getConsultations() {
       return { consultations: [] };
+    },
+    async getTeachers() {
+      return {
+        teachers: [
+          { id: 'teacher_carmen', name: 'Carmen', role: 'teacher' },
+          { id: 'teacher_ivy', name: 'IVY', role: 'teacher' },
+          { id: 'teacher_lily', name: 'Lily', role: 'teacher' },
+          { id: 'teacher_stacy', name: 'Stacy', role: 'teacher' },
+          { id: 'teacher_zoe', name: 'Zoe', role: 'teacher' },
+          { id: 'teacher_laura', name: 'Laura', role: 'teacher' }
+        ]
+      };
     }
   },
   EieApmsState: {
@@ -116,6 +128,13 @@ vm.runInContext(source, context, { filename: 'eie-students.js' });
 
 (async () => {
   const html = await context.EieStudentsView.render();
+
+  for (const teacherName of ['Carmen', 'IVY', 'Lily', 'Stacy', 'Zoe', 'Laura']) {
+    assert(
+      html.includes(`<option value="${teacherName}"`),
+      `student management teacher filter should include teacher account ${teacherName}`
+    );
+  }
 
   assert(
     html.includes('onclick="EieStudentsView.openDetail(&quot;eie_student_alpha&quot;)"'),

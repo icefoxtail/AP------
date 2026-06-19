@@ -503,13 +503,7 @@
 
     function teacherFilterRoster() {
         var excludedNames = ['원장님', '프랩', 'PREP', '외국인', 'Foreigner'];
-        var values = [];
-        studentsFromState().filter(function (student) {
-            return statusOf(student) !== 'archived';
-        }).forEach(function (student) {
-            values = values.concat(teacherNamesOf(student));
-        });
-        return uniqueNames(values).filter(function (name) {
+        return teacherRoster().filter(function (name) {
             return excludedNames.indexOf(name) === -1;
         });
     }
@@ -730,7 +724,10 @@
         if (_loading) return;
         var compat = ui().eieApmsCompat || {};
         var needsLoad = force || !compat.loadedAt || !studentsFromState().length;
-        if (!needsLoad) return;
+        if (!needsLoad) {
+            await loadTeacherRoster();
+            return;
+        }
         _loading = true;
         _error = '';
         try {
