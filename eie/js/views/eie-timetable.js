@@ -600,7 +600,14 @@
         return normalizeKey(row?.status || 'active') || 'active';
     }
 
+    function isWithdrawnStatus(row) {
+        const raw = rawOf(row);
+        const status = normalizeKey(row?.status || row?.student_status || row?.studentStatus || raw.status).toLowerCase();
+        return ['archived', 'inactive', '퇴원', 'withdrawn', 'left'].includes(status);
+    }
+
     function isPausedStudent(row) {
+        if (isWithdrawnStatus(row)) return false;
         const raw = rawOf(row);
         const status = normalizeKey(row?.status || row?.student_status || row?.match_status || raw.status).toLowerCase();
         const type = normalizeKey(row?.student_type || raw.student_type).replace(/\s+/g, '');
@@ -648,10 +655,8 @@
     }
 
     function isWithdrawnStudent(row) {
-        if (!row || isPausedStudent(row)) return false;
-        const raw = rawOf(row);
-        const status = normalizeKey(row.status || row.student_status || row.studentStatus || raw.status).toLowerCase();
-        return ['archived', 'inactive', '퇴원', 'withdrawn', 'left'].includes(status);
+        if (!row) return false;
+        return isWithdrawnStatus(row);
     }
 
     function getStudentWithdrawalDate(row) {
@@ -700,8 +705,8 @@
     }
 
     function studentChipStatusClass(row) {
-        if (isPausedStudent(row)) return ' is-paused';
         if (isRecentWithdrawnStudent(row)) return ' is-withdrawn';
+        if (isPausedStudent(row)) return ' is-paused';
         if (isRecentNewStudent(row)) return ' is-new';
         return '';
     }
@@ -732,9 +737,9 @@
         return { cls: 'b-grade-' + key, label: g };
     }
     function pStatusBadge(student) {
-        if (isPausedStudent(student)) return { cls: 'b-status-hyuwon', label: '휴원' };
         const status = normalizeStatus(studentStatus(student));
         if (status === 'archived' || status === 'inactive') return { cls: 'b-status-toewon', label: '퇴원' };
+        if (isPausedStudent(student)) return { cls: 'b-status-hyuwon', label: '휴원' };
         return { cls: 'b-status-jaewon', label: '재원' };
     }
     function renderPBadge(badge) {

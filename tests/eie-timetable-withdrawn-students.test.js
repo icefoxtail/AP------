@@ -28,6 +28,7 @@ const rows = [{
     { student_id: 's_active', name: '강재원', status: 'active' },
     { student_id: 's_paused', name: '김휴원', status: 'paused' },
     { student_id: 's_recent', name: '박최근', status: 'inactive', student_status: 'inactive', withdrawn_at: '2026-06-02T08:00:00+09:00', match_status: 'confirmed' },
+    { student_id: 's_leave_then_withdrawn', name: 'LeaveThenWithdrawn', status: 'inactive', student_status: 'inactive', student_type: 'leave', memo: '#leave', withdrawn_at: '2026-06-03T08:00:00+09:00', match_status: 'confirmed' },
     { student_id: 's_boundary', name: '오경계', status: 'archived', student_status: 'archived', withdrawn_at: '2026-06-01', match_status: 'confirmed' },
     { student_id: 's_old', name: '이오래', status: 'withdrawn', student_status: 'withdrawn', withdrawn_at: '2026-05-31', match_status: 'confirmed' },
     { student_id: 's_missing', name: '최미상', status: 'inactive', student_status: 'inactive', match_status: 'confirmed' },
@@ -161,20 +162,29 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
   assert(html.includes('강재원'), 'active student should remain visible');
   assert(html.includes('김휴원'), 'paused student should remain visible');
   assert(html.includes('박최근'), 'recent withdrawn student should be visible');
+  assert(html.includes('LeaveThenWithdrawn'), 'student changed from leave to withdrawn should remain visible as a recent withdrawn student');
   assert(html.includes('오경계'), 'withdrawal boundary date should be included');
   assert(!html.includes('이오래'), 'withdrawn student older than two months should be hidden');
   assert(!html.includes('최미상'), 'withdrawn student without a withdrawal date should be hidden');
   assert(html.includes('버그재현'), 'confirmed-only legacy payload should remain visible as a non-withdrawn student');
   assert(!html.includes('퇴원 / 2026-05-03'), 'confirmed-only legacy payload should not be treated as withdrawn');
-  const withdrawnChip = chips.find(chip => chip.classes.includes('is-withdrawn'));
+  const withdrawnChip = findChip(chips, '박최근');
   assert(withdrawnChip, 'recent withdrawn EIE chip should render as a student status chip');
+  assert(withdrawnChip.classes.includes('is-withdrawn'), 'recent withdrawn EIE chip should use withdrawn class');
   assert(/2026-06-02$/.test(withdrawnChip.attrs.title), 'recent withdrawn EIE chip title should carry the withdrawal date');
   assert(html.includes('퇴원 / 2026-06-02'), 'recent withdrawn EIE chip should include withdrawal tooltip');
-  const pausedChip = chips.find(chip => chip.classes.includes('is-paused'));
+  const leaveThenWithdrawnChip = findChip(chips, 'LeaveThenWithdrawn');
+  assert(leaveThenWithdrawnChip, 'student changed from leave to withdrawn should render as a status chip');
+  assert(leaveThenWithdrawnChip.classes.includes('is-withdrawn'), 'student changed from leave to withdrawn should use withdrawn pink class');
+  assert(!leaveThenWithdrawnChip.classes.includes('is-paused'), 'student changed from leave to withdrawn should not keep paused gray class');
+  assert(/2026-06-03$/.test(leaveThenWithdrawnChip.attrs.title), 'student changed from leave to withdrawn should carry the withdrawal date');
+  const pausedChip = findChip(chips, '김휴원');
   assert(pausedChip, 'paused EIE chip should render as a student status chip');
+  assert(pausedChip.classes.includes('is-paused'), 'paused EIE chip should keep paused class');
   assert(pausedChip.text, 'paused EIE chip should keep text content');
-  const newChip = chips.find(chip => chip.classes.includes('is-new'));
+  const newChip = findChip(chips, '신규');
   assert(newChip, 'new EIE student should render as a student status chip');
+  assert(newChip.classes.includes('is-new'), 'new EIE student should use new class');
   assert(/\(6\/12\)$/.test(newChip.text), 'new EIE student chip text should show enrollment month/day');
   assert(html.includes('신규(6/12)'), 'new EIE student should show enrollment month/day');
   assert(!html.includes('(신)'), 'new EIE student should not show the old new-student marker');
