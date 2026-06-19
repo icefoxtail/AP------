@@ -109,6 +109,10 @@ async function verifyTeacher(request, env) {
     LIMIT 1
   `).bind(token, now).first().catch(() => null);
   if (!session) return null;
+  if (isDisabledRole(session.role)) {
+    await revokeTeacherSession(env, token).catch(() => {});
+    return null;
+  }
   env.DB.prepare('UPDATE teacher_sessions SET last_used_at = CURRENT_TIMESTAMP WHERE session_token = ?')
     .bind(token).run().catch(() => {});
   if (String(session.role || '').toLowerCase() === 'owner') {

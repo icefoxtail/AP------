@@ -69,11 +69,20 @@
     }
 
     function stubResponse(kind) {
-        if (kind === 'latest') return { success: true, stub: true, data: null, latest_import: null };
-        if (kind === 'timetable') return { success: true, stub: true, data: [], timetable_cells: [] };
-        if (kind === 'contact-seeds') return { success: true, stub: true, data: [], contact_seeds: [] };
-        if (kind === 'needs-review') return { success: true, stub: true, data: [], needs_review: [] };
-        return { success: true, stub: true, data: [], student_seeds: [] };
+        const base = { success: true, stub: true, fallback: true, source: 'fallback', warning: 'EIE API 조회에 실패해 임시 데이터를 표시합니다.' };
+        if (kind === 'latest') return { ...base, data: null, latest_import: null };
+        if (kind === 'timetable') return { ...base, data: [], timetable_cells: [] };
+        if (kind === 'contact-seeds') return { ...base, data: [], contact_seeds: [] };
+        if (kind === 'needs-review') return { ...base, data: [], needs_review: [] };
+        return { ...base, data: [], student_seeds: [] };
+    }
+
+    function isOptionalGetPath(path, kind) {
+        const value = String(path || '').replace(/^\/+/, '');
+        if (kind === 'latest' && /^import(\/latest|\/[^/?]+)?(\?|$)/.test(value)) return true;
+        if (/^(import\/[^/]+\/)?(contact-seeds|needs-review)(\?|$)/.test(value)) return true;
+        if (/^import\/latest(\?|$)/.test(value)) return true;
+        return false;
     }
 
     function normalizeError(error) {
@@ -169,11 +178,12 @@
         } catch (error) {
             if (error.status === 401 || error.status === 403) throw error;
             notifyGetFailure(path, error);
+            if (!isOptionalGetPath(path, kind)) throw error;
             // 실패(fallback stub)는 캐시하지 않는다 — 다음 진입에서 다시 시도.
             return {
                 ...stubResponse(kind),
-                fallback: true,
-                error: normalizeError(error)
+                error: normalizeError(error),
+                warning: 'EIE API 조회에 실패했습니다. 연결 상태를 확인해 주세요.'
             };
         }
     }

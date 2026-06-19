@@ -497,6 +497,27 @@ async function ensureWithdrawnAtColumn(env) {
   }
 }
 
+let contactDeletedAtColumnEnsured = false;
+async function ensureContactDeletedAtColumn(env) {
+  if (contactDeletedAtColumnEnsured) return;
+  try {
+    await env.DB.prepare('ALTER TABLE eie_student_contacts ADD COLUMN deleted_at TEXT').run();
+    contactDeletedAtColumnEnsured = true;
+  } catch (error) {
+    const text = String(error?.message || error || '').toLowerCase();
+    if (text.includes('duplicate column')) {
+      contactDeletedAtColumnEnsured = true;
+    } else {
+      return;
+    }
+  }
+  try {
+    await env.DB.prepare(
+      'CREATE INDEX IF NOT EXISTS idx_eie_student_contacts_deleted_at ON eie_student_contacts(deleted_at)'
+    ).run();
+  } catch (_) {}
+}
+
 function isEieOwner(teacher) {
   return String(teacher?.role || '').toLowerCase() === 'admin';
 }
@@ -552,6 +573,7 @@ async function findConfirmedStudent(env, candidate) {
     JOIN eie_student_contacts c ON c.student_id = s.id
     WHERE s.normalized_name = ?
       AND c.normalized_phone = ?
+      AND c.deleted_at IS NULL
       AND COALESCE(s.status, 'active') != 'archived'
     ORDER BY s.created_at ASC
     LIMIT 1
@@ -590,7 +612,7 @@ async function ensureConfirmedContact(env, studentId, candidate, teacher) {
   const existing = await env.DB.prepare(`
     SELECT *
     FROM eie_student_contacts
-    WHERE student_id = ? AND normalized_phone = ?
+    WHERE student_id = ? AND normalized_phone = ? AND deleted_at IS NULL
     LIMIT 1
   `).bind(studentId, normalizedPhone).first();
   if (existing) return existing;
@@ -612,7 +634,7 @@ async function ensureConfirmedContact(env, studentId, candidate, teacher) {
     toJsonText(candidate),
     teacher?.id || null
   ).run();
-  return env.DB.prepare('SELECT * FROM eie_student_contacts WHERE id = ?').bind(id).first();
+  return env.DB.prepare('SELECT * FROM eie_student_contacts WHERE id = ? AND deleted_at IS NULL').bind(id).first();
 }
 
 async function ensureScheduleAssignment(env, studentId, candidate, teacher) {
@@ -662,7 +684,7 @@ async function findExistingCandidateConfirmation(env, cell, candidateIndex) {
   const contactId = safeText(row.contact_id);
   const assignmentId = safeText(row.assignment_id);
   const contact = contactId
-    ? await env.DB.prepare('SELECT * FROM eie_student_contacts WHERE id = ? LIMIT 1').bind(contactId).first()
+    ? await env.DB.prepare('SELECT * FROM eie_student_contacts WHERE id = ? AND deleted_at IS NULL LIMIT 1').bind(contactId).first()
     : null;
   const assignment = assignmentId
     ? await env.DB.prepare('SELECT * FROM eie_student_schedule_assignments WHERE id = ? LIMIT 1').bind(assignmentId).first()
@@ -726,6 +748,7 @@ async function queryConfirmedStudents(env) {
     const contactsResult = await env.DB.prepare(`
       SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
       FROM eie_student_contacts
+      WHERE deleted_at IS NULL
       ORDER BY COALESCE(is_primary, 1) DESC, created_at ASC
     `).all();
     contactRows = contactsResult.results || [];
@@ -809,6 +832,7 @@ async function queryConfirmedContacts(env) {
     SELECT c.*, s.display_name, s.normalized_name, s.grade
     FROM eie_student_contacts c
     LEFT JOIN eie_students s ON s.id = c.student_id
+    WHERE c.deleted_at IS NULL
     ORDER BY c.updated_at DESC, c.created_at DESC
   `).all();
   return result.results || [];
@@ -819,6 +843,7 @@ async function queryStudentContacts(env, studentId) {
     SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, created_at, updated_at
     FROM eie_student_contacts
     WHERE student_id = ?
+      AND deleted_at IS NULL
     ORDER BY COALESCE(is_primary, 0) DESC, updated_at DESC, created_at ASC
   `).bind(studentId).all();
   return result.results || [];
@@ -829,6 +854,7 @@ async function getStudentContact(env, contactId) {
     SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, created_at, updated_at
     FROM eie_student_contacts
     WHERE id = ?
+      AND deleted_at IS NULL
     LIMIT 1
   `).bind(contactId).first();
 }
@@ -851,17 +877,36 @@ async function handlePostStudentContact(request, env, teacher, studentId) {
   if (!phone || !normalizedPhone) return jsonResponse({ success: false, error: 'phone is required' }, 400);
 
   const existing = await env.DB.prepare(`
-    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, created_at, updated_at
+    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, deleted_at, created_at, updated_at
     FROM eie_student_contacts
     WHERE student_id = ? AND normalized_phone = ?
     LIMIT 1
   `).bind(studentId, normalizedPhone).first();
-  if (existing) return jsonResponse({ success: true, data: existing, contact: existing, duplicate_ignored: true });
+  if (existing && !existing.deleted_at) return jsonResponse({ success: true, data: existing, contact: existing, duplicate_ignored: true });
 
   const isPrimary = body.is_primary === true || body.is_primary === 1 || body.is_primary === '1';
   if (isPrimary) {
-    await env.DB.prepare('UPDATE eie_student_contacts SET is_primary = 0, updated_at = CURRENT_TIMESTAMP WHERE student_id = ?')
+    await env.DB.prepare('UPDATE eie_student_contacts SET is_primary = 0, updated_at = CURRENT_TIMESTAMP WHERE student_id = ? AND deleted_at IS NULL')
       .bind(studentId).run();
+  }
+
+  if (existing && existing.deleted_at) {
+    await env.DB.prepare(`
+      UPDATE eie_student_contacts
+      SET phone = ?, normalized_phone = ?, contact_label = ?, is_primary = ?, memo = ?,
+          raw_meta_json = ?, deleted_at = NULL, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(
+      phone,
+      normalizedPhone,
+      safeText(body.contact_label || body.relation || 'contact'),
+      isPrimary ? 1 : 0,
+      safeText(body.memo),
+      toJsonText({ relation: safeText(body.relation), source: 'student-management', restored: true }),
+      existing.id
+    ).run();
+    const restored = await getStudentContact(env, existing.id);
+    return jsonResponse({ success: true, data: restored, contact: restored, contacts: await queryStudentContacts(env, studentId), restored: true });
   }
 
   const id = makeId('eie_contact');
@@ -874,7 +919,7 @@ async function handlePostStudentContact(request, env, teacher, studentId) {
     studentId,
     phone,
     normalizedPhone,
-    safeText(body.contact_label || body.relation || '연락처'),
+    safeText(body.contact_label || body.relation || 'contact'),
     isPrimary ? 1 : 0,
     safeText(body.memo),
     toJsonText({ relation: safeText(body.relation), source: 'student-management' }),
@@ -910,7 +955,7 @@ async function handlePatchStudentContact(request, env, contactId) {
   if (body.is_primary !== undefined) {
     const isPrimary = body.is_primary === true || body.is_primary === 1 || body.is_primary === '1';
     if (isPrimary) {
-      await env.DB.prepare('UPDATE eie_student_contacts SET is_primary = 0, updated_at = CURRENT_TIMESTAMP WHERE student_id = ? AND id != ?')
+      await env.DB.prepare('UPDATE eie_student_contacts SET is_primary = 0, updated_at = CURRENT_TIMESTAMP WHERE student_id = ? AND id != ? AND deleted_at IS NULL')
         .bind(existing.student_id, contactId).run();
     }
     sets.push('is_primary = ?');
@@ -930,13 +975,20 @@ async function handlePatchStudentContact(request, env, contactId) {
   return jsonResponse({ success: true, data: contact, contact, contacts: await queryStudentContacts(env, contact.student_id) });
 }
 
-function contactDeleteDeferredResponse() {
+async function handleDeleteStudentContact(env, contactId) {
+  const existing = await getStudentContact(env, contactId);
+  if (!existing) return jsonResponse({ success: false, error: 'contact not found' }, 404);
+  await env.DB.prepare(`
+    UPDATE eie_student_contacts
+    SET deleted_at = CURRENT_TIMESTAMP, is_primary = 0, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ? AND deleted_at IS NULL
+  `).bind(contactId).run();
   return jsonResponse({
-    success: false,
-    error: 'contact archive is not available',
-    code: 'EIE_NOT_IMPLEMENTED',
-    message: 'eie_student_contacts has no status/deleted_at column; physical delete is disabled.'
-  }, 409);
+    success: true,
+    id: contactId,
+    deleted: true,
+    contacts: await queryStudentContacts(env, existing.student_id)
+  });
 }
 
 async function queryConsultations(env, studentId) {
@@ -1777,7 +1829,7 @@ async function attachAssignedStudents(env, rows) {
              c.contact_label
       FROM eie_student_schedule_assignments a
       JOIN eie_students s ON s.id = a.student_id
-      LEFT JOIN eie_student_contacts c ON c.student_id = s.id AND COALESCE(c.is_primary, 1) = 1
+      LEFT JOIN eie_student_contacts c ON c.student_id = s.id AND COALESCE(c.is_primary, 1) = 1 AND c.deleted_at IS NULL
       WHERE COALESCE(a.status, 'active') != 'archived'
         AND (
           COALESCE(s.status, 'active') NOT IN ('inactive', 'archived', 'withdrawn', 'left', '퇴원')
@@ -2881,7 +2933,7 @@ async function handlePatchStudent(request, env, teacher, studentId) {
     const now = new Date().toISOString();
     try {
       const existing = await env.DB.prepare(
-        `SELECT id FROM eie_student_contacts WHERE student_id = ? AND COALESCE(is_primary, 1) = 1 ORDER BY created_at ASC LIMIT 1`
+        `SELECT id FROM eie_student_contacts WHERE student_id = ? AND COALESCE(is_primary, 1) = 1 AND deleted_at IS NULL ORDER BY created_at ASC LIMIT 1`
       ).bind(studentId).first();
 
       if (existing) {
@@ -2957,6 +3009,7 @@ async function getStudentWithContacts(env, studentId) {
     SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
     FROM eie_student_contacts
     WHERE student_id = ?
+      AND deleted_at IS NULL
     ORDER BY COALESCE(is_primary, 1) DESC, created_at ASC
   `).bind(studentId).all();
   const contacts = result.results || [];
@@ -3192,6 +3245,10 @@ async function handlePatchTeacher(request, env, teacherId) {
   if (!name) return jsonResponse({ success: false, error: 'name is required' }, 400);
   const role = normalizeTeacherRole(body.role);
   await env.DB.prepare('UPDATE teachers SET name = ?, role = ? WHERE id = ?').bind(name, role, teacherId).run();
+  if (role === 'disabled') {
+    await env.DB.prepare('UPDATE teacher_sessions SET revoked_at = CURRENT_TIMESTAMP WHERE teacher_id = ? AND revoked_at IS NULL')
+      .bind(teacherId).run().catch(() => {});
+  }
   const teacher = await env.DB.prepare('SELECT id, name, login_id, role, created_at FROM teachers WHERE id = ?').bind(teacherId).first();
   return jsonResponse({ success: true, teacher, data: teacher });
 }
@@ -3222,6 +3279,7 @@ export async function handleEie(request, env, teacher, path, url) {
   if (!teacher || !teacher.id) return jsonResponse({ success: false, error: 'unauthorized' }, 401);
 
   await ensureWithdrawnAtColumn(env);
+  await ensureContactDeletedAtColumn(env);
 
   const method = request.method;
 
@@ -3328,7 +3386,7 @@ export async function handleEie(request, env, teacher, path, url) {
   }
 
   if (method === 'DELETE' && path[2] === 'student-contacts' && path[3] && !path[4]) {
-    return contactDeleteDeferredResponse();
+    return handleDeleteStudentContact(env, path[3]);
   }
 
   if (method === 'POST' && path[2] === 'consultations' && !path[3]) {
