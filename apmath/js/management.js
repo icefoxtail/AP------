@@ -209,7 +209,7 @@ function renderClassManageRow(c) {
                     ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
                     : `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--warning); background:rgba(255,165,2,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
                 }
-                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDeleteClass('${c.id}')">삭제</button>
+                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDeleteClass('${c.id}')">보관</button>
             </div>
         </div>
     `;
@@ -317,7 +317,7 @@ function openEditClassModal(cid) {
                 ${getTimeLabelOptions(selectedPeriod)}
             </select>
             <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
-            <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 삭제</button>
+            <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 보관</button>
         </div>
     `, '저장', () => handleEditClass(cid));
 }
@@ -375,26 +375,26 @@ async function toggleClassActive(cid, status) {
 async function handleDeleteClass(classId) {
     if (!classId) return;
 
-    const first = confirm('이 반을 삭제할까요?');
+    const first = confirm('\uC774 \uD559\uAE09\uC744 \uBCF4\uAD00 \uCC98\uB9AC\uD560\uAE4C\uC694?');
     if (!first) return;
 
-    const second = confirm('반 삭제 시 반 배정, 교재, 진도, 시험 배정 등 연결 기록이 함께 삭제될 수 있습니다. 계속할까요?');
+    const second = confirm('\uAE30\uC874 \uCD9C\uACB0, \uC131\uC801, \uC2DC\uD5D8 \uAE30\uB85D\uC740 \uC0AD\uC81C\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uBCF4\uAD00 \uCC98\uB9AC \uD6C4 \uAE30\uBCF8 \uBAA9\uB85D\uC5D0\uC11C\uB294 \uC228\uACA8\uC9D1\uB2C8\uB2E4. \uACC4\uC18D\uD560\uAE4C\uC694?');
     if (!second) return;
 
     try {
         const r = await api.delete('classes', classId);
 
         if (r?.success) {
-            toast('반이 삭제되었습니다.', 'info');
+            toast('\uD559\uAE09\uC774 \uBCF4\uAD00 \uCC98\uB9AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4.', 'info');
             await loadData();
             openClassManageModal();
             return;
         }
 
-        toast(r?.message || r?.error || '반 삭제에 실패했습니다.', 'warn');
+        toast(r?.message || r?.error || '\uD559\uAE09 \uBCF4\uAD00 \uCC98\uB9AC\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
     } catch (e) {
         console.error('[handleDeleteClass] failed:', e);
-        toast('반 삭제 중 오류가 발생했습니다.', 'warn');
+        toast('\uD559\uAE09 \uBCF4\uAD00 \uCC98\uB9AC \uC911 \uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
     }
 }
 

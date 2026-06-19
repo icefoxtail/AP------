@@ -93,7 +93,7 @@ export async function handleClasses(request, env, teacher, path, url, body = {})
   if (method === 'DELETE' && id) {
     const classId = String(id || '').trim();
     if (!classId) return jsonResponse({ error: 'class id required' }, 400);
-    const current = await env.DB.prepare('SELECT id FROM classes WHERE id = ?').bind(classId).first();
+    const current = await env.DB.prepare('SELECT id, is_active FROM classes WHERE id = ?').bind(classId).first();
     if (!current) return jsonResponse({ error: 'Not found' }, 404);
     if (!(await canAccessClass(teacher, classId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
 
@@ -101,7 +101,7 @@ export async function handleClasses(request, env, teacher, path, url, body = {})
       const row = await env.DB.prepare(`SELECT COUNT(*) AS count FROM ${table} WHERE class_id = ?`).bind(classId).first();
       return Number(row?.count || 0);
     };
-    const deleted = {
+    const preserved = {
       class_students: await countRows('class_students'),
       teacher_classes: await countRows('teacher_classes'),
       class_textbooks: await countRows('class_textbooks'),
@@ -113,25 +113,18 @@ export async function handleClasses(request, env, teacher, path, url, body = {})
       classes: 1
     };
 
-    const sessionRes = await env.DB.prepare('SELECT id FROM exam_sessions WHERE class_id = ?').bind(classId).all();
-    const sessionIds = (sessionRes.results || []).map(r => String(r.id || '').trim()).filter(Boolean);
-    const wrongAnswerDelete = sessionIds.length
-      ? [env.DB.prepare(`DELETE FROM wrong_answers WHERE session_id IN (${sessionIds.map(() => '?').join(',')})`).bind(...sessionIds)]
-      : [];
+    await env.DB.prepare(`
+      UPDATE classes
+      SET is_active = 0, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(classId).run();
 
-    await env.DB.batch([
-      ...wrongAnswerDelete,
-      env.DB.prepare('DELETE FROM teacher_classes WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM class_students WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM class_textbooks WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM class_daily_progress WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM class_daily_records WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM exam_sessions WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM school_exam_records WHERE class_id = ?').bind(classId),
-      env.DB.prepare('DELETE FROM classes WHERE id = ?').bind(classId)
-    ]);
-    return jsonResponse({ success: true, mode: 'deleted', deleted });
+    return jsonResponse({
+      success: true,
+      mode: 'archived',
+      archived: { id: classId, previous_is_active: current.is_active },
+      preserved
+    });
   }
 
   return null;
