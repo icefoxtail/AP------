@@ -1,88 +1,44 @@
-# CODEX_RESULT: 월별 시간표 UI 기존 화면 통합
+# Archive Session Bridge Completion Hotfix Result
 
-## 1. UI 방향 보정 내역
+## 수정 파일
+- archive/index.html
+- archive/mixer.html
+- CODEX_RESULT.md
 
-- AP Math는 별도 월별 시간표 화면 대신 기존 `renderTimetable()` 화면 안에서 월 선택을 처리하도록 바꿨다.
-- EIE는 `#timetable-months` route를 `#timetable`로 보정하고, 별도 월별 페이지 자산 로드를 제거했다.
-- 상단 월 칩 목록은 만들지 않았다.
-- 기존 시간표 보드/카드/그리드 렌더러를 재사용한다.
+## 문제 원인
+- AP Math OS 대시보드는 #apmsess 해시로 세션을 전달하고 있었지만 archive/index.html의 복원 함수명이 일관되지 않았고 init() 시작부에서 복원되지 않았다.
+- archive/index.html에서 세션 복원이 DB 로드와 권한 계산보다 먼저 보장되지 않으면 mixer.html로도 세션이 안정적으로 이어지지 않는다.
+- archive/mixer.html은 window.onload에서 restoreApmathSessionFromHash()를 호출하므로 함수 정의와 호출 순서가 유지되어야 한다.
 
-## 2. AP 구현 내역
+## 핵심 변경
+- archive/index.html에 restoreApmathSessionFromHash() 복원 흐름을 명명 일관화
+- archive/index.html init() 시작부에서 세션 복원
+- archive/index.html -> mixer.html 이동 시 APMATH_SESSION 기반 #apmsess 유지
+- archive/mixer.html의 #apmsess 복원 함수 정의 유지 및 index와 동일한 payload 허용 기준 적용
+- mixer QR 인증은 session_token Bearer 우선, Basic fallback 유지
+- index/mixer 세션 없음 fallback에서 일반 시험지 출력 유지
 
-- `apmath/js/timetable.js`
-  - 기존 시간표 헤더에 작은 월 선택 select와 이전/다음 버튼을 추가했다.
-  - 저장된 월 선택 시 월별 데이터를 기존 `classes`, `class_students`, `class_time_slots`, `students` 형태의 가상 DB로 변환한다.
-  - 기존 `renderTimetableGrid(section)`를 그대로 사용해 과거 월을 렌더링한다.
-  - 과거 월 모드에서는 admin 편집 affordance와 빈 학생 추가 슬롯을 비활성화한다.
-  - 시간표 보드 영역에 pointer drag/swipe 월 이동을 추가했다.
-- `apmath/js/timetable-months.js`
-  - 별도 화면 렌더러를 제거하고 기존 `renderTimetable()`로 귀착되는 호환 alias만 남겼다.
-- `apmath/js/ui.js`
-  - drawer에서 `renderTimetableMonths` 별도 항목을 렌더하지 않도록 했다.
+## 검수 결과
+- AP 대시보드 -> archive/index 세션 복원: PASS, init() 시작부에서 restoreApmathSessionFromHash() 호출
+- archive/index 기출 보기 권한: PASS, includeOriginalArchiveItems 계산 전에 복원 실행
+- archive/index -> mixer 세션 유지: PASS, buildArchiveInternalUrl('mixer.html') 구조 유지
+- mixer AP 제출 QR 반 목록: PASS, getMixerAssignmentAuthHeader() Bearer 우선 유지
+- session_token only 상태: PASS, 정적 계약 검증 통과
+- raw_password fallback 상태: PASS, Basic fallback 유지
+- 세션 없음 fallback: PASS, index와 mixer 모두 일반 시험지 출력 버튼 유지
+- 일반 시험지 출력: PASS, 로그인 필수로 변경하지 않음
+- 모바일 앱/WebView: UNVERIFIED, 실제 모바일 WebView 실기기 확인 필요
+- URL 해시 제거: PASS, 복원 시 history.replaceState()로 hash 제거
+- 콘솔 치명 오류: PASS, inline script parse 검증 통과
 
-## 3. EIE 구현 내역
+## 확인 명령
+- 브라우저 콘솔 기준 치명 JS 오류 없음: inline script parse로 대체 확인
+- git diff --check 통과
+- 수정 파일 외 불필요 파일 생성 없음
+- node tests/archive-subject-synonym-search.test.js 통과
+- node tests/assessment-grade-target-assignment.test.js 통과
 
-- `eie/js/views/eie-timetable.js`
-  - 기존 EIE 시간표 헤더에 작은 월 선택 select와 이전/다음 버튼을 추가했다.
-  - 저장된 월 선택 시 월별 데이터를 기존 timetable cell row 형태로 변환한다.
-  - 기존 `buildDisplaySessions()`와 `renderBoard(sessions)`를 그대로 사용한다.
-  - 과거 월 모드에서는 편집 버튼과 상세/편집 패널을 숨긴다.
-  - 시간표 보드 영역에 pointer drag/swipe 월 이동을 추가했다.
-- `eie/js/eie-router.js`
-  - `#timetable-months`를 `#timetable`로 redirect한다.
-- `eie/index.html`
-  - 별도 월별 화면 CSS/JS 로드를 제거했다.
-- `eie/css/eie-timetable.css`
-  - 기존 시간표 헤더 안의 작은 월 선택 컨트롤 스타일만 추가했다.
-  - 남아 있는 legacy drawer route는 화면에서 숨긴다.
-
-## 4. 사용자 화면 금지 문구 확인
-
-다음 문구가 AP/EIE 기존 시간표 화면 파일에서 노출되지 않도록 확인했다.
-
-- `이번 달 저장`
-- `덮어쓰기`
-- `자동저장`
-- `자동 보관`
-- `스냅샷`
-- `보관본`
-- `저장본`
-- `기준일`
-
-## 5. 자동 저장 서버 로직 보존
-
-- AP/EIE Worker scheduled handler와 wrangler cron은 유지했다.
-- KST 말일 체크, `source_type: scheduled`, `month_key + snapshot_date` 중복 방지는 유지했다.
-- remote migration/deploy는 실행하지 않았다.
-
-## 6. 검증 결과
-
-PASS:
-
-- `node --check .\apmath\js\timetable.js`
-- `node --check .\apmath\js\timetable-months.js`
-- `node --check .\apmath\js\ui.js`
-- `node --check .\eie\js\views\eie-timetable.js`
-- `node --check .\eie\js\eie-router.js`
-- `node .\tests\timetable-monthly-snapshot-schema.test.js`
-- `node .\tests\apmath-monthly-timetable-snapshot.test.js`
-- `node .\tests\eie-monthly-timetable-snapshot.test.js`
-- AP/EIE worker route/index dynamic import
-- 금지 문구 검색
-
-## 7. 리뷰 보정 내역
-
-- Codex B logic/routing 1차 리뷰: PASS.
-- Codex C UI/UX 1차 리뷰: FAIL 항목 확인.
-  - EIE drawer의 legacy `timetable-months` 항목은 `eie/index.html`에서 제거된 상태를 재확인했다.
-  - EIE 월별 전용 파일은 기존 시간표로 보내는 shim으로 축소되어 금지 문구가 없다.
-  - AP `renderTimetable()`는 현재 헤더에 `apTimetableMonthControlsHtml()`를 직접 렌더하고 `bindApTimetableMonthNavigation()`을 호출한다.
-  - AP 과거 월 모드에서 cell drag/drop, add class, card drag/drop, 빈 학생 추가 슬롯을 명시적으로 막았다.
-- Codex C UI/UX 재리뷰: PASS. 이전 FAIL 항목 모두 해소 확인.
-- Codex D tests/regression: PASS.
-
-## 8. 미실행 확인
-
-- remote D1 migration 실행 안 함.
-- Worker deploy 실행 안 함.
-- `git add`, `git commit`, `git push` 실행 안 함.
+## 남은 위험
+- WebView별 localStorage 격리 차이
+- session_token 만료 시 재로그인 UX
+- Worker Bearer 인증 지원 범위

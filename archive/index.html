@@ -1255,7 +1255,7 @@ function appendCurrentArchiveSessionToHash(url) {
         expires_at: session.expires_at || ''
     };
 
-    if (!payload.session_token) return url;
+    if (!payload.session_token && !payload.login_id) return url;
     return url + (url.indexOf('#') === -1 ? '#' : '&') + 'apmsess=' + encodeArchiveSessionPayload(payload);
 }
 
@@ -1537,6 +1537,8 @@ function onAssignmentBoardDateChange() {
 }
 
 async function init() {
+    restoreApmathSessionFromHash();
+
     await new Promise(res => {
         archiveDbLoadFailed = false;
         const s = document.createElement('script');
@@ -2087,6 +2089,13 @@ function getIndexAssignmentAuthHeader() {
     }
 }
 
+function printIndexPendingGeneralExam() {
+    const item = normalizedExams().find(e => e.file === _pendingFile);
+    if (!item) return;
+    closeModal();
+    goEngine(item, _pendingAction || 'exam', _pendingQpp || 4);
+}
+
 function getIndexExamTitle(item) {
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
     return `${baseTitle} ${item.subject || ''}`.trim();
@@ -2189,6 +2198,7 @@ async function openClassSelectionModalForIndex(item, qpp) {
                     <input id="apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
                     <div id="apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
                     <button class="modal-btn-primary" onclick="doApmathLoginAndLoadClasses(event)">로그인 후 반 목록 불러오기</button>
+                    <button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>
                 </div>`;
             return;
         }
@@ -2200,7 +2210,7 @@ async function openClassSelectionModalForIndex(item, qpp) {
     try {
         const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
         if (res.status === 401) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div><button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
             return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -2265,6 +2275,7 @@ async function openGradeSelectionModalForIndex(item, qpp) {
                 <input id="apmath-grade-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
                 <div id="apmath-grade-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
                 <button class="modal-btn-primary" onclick="doApmathLoginAndLoadGrades(event)">로그인 후 반 목록 불러오기</button>
+                <button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>
             </div>`;
         return;
     }
@@ -2272,7 +2283,7 @@ async function openGradeSelectionModalForIndex(item, qpp) {
     try {
         const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
         if (res.status === 401) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div><button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>';
             return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -2449,13 +2460,13 @@ function resetView() {
 
 // PWA(/apmath/) 안에서 열린 아카이브는 모바일에서 외부 브라우저로 떠 localStorage가
 // 공유되지 않는다. AP Math OS가 URL 해시로 넘긴 세션을 이 페이지 저장소에 복원한다.
-function hydrateApmathSessionFromUrl() {
+function restoreApmathSessionFromHash() {
     const hash = window.location.hash || '';
     const match = /[#&]apmsess=([^&]+)/.exec(hash);
     if (!match) return false;
     try {
         const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
-        if (incoming && incoming.session_token) {
+        if (incoming && (incoming.session_token || incoming.login_id)) {
             let existing = null;
             try { existing = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null'); } catch (e) {}
             // 이미 사용 가능한 세션 토큰이 있으면 덮어쓰지 않는다.
@@ -2486,7 +2497,6 @@ function hydrateApmathSessionFromUrl() {
 }
 
 window.onload = function () {
-    hydrateApmathSessionFromUrl();
     init();
 };
 </script>

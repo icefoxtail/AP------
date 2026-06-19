@@ -1051,7 +1051,7 @@ function restoreApmathSessionFromHash() {
 
     try {
         const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
-        if (!incoming || !incoming.session_token) return false;
+        if (!incoming || (!incoming.session_token && !incoming.login_id)) return false;
 
         const existing = getApmathSession();
         const session = {
