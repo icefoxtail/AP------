@@ -1045,6 +1045,13 @@ function getApmathSession() {
 }
 
 const ARCHIVE_AP_API_BASE = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
+const ARCHIVE_QR_LOGIN_REQUIRED_MESSAGE = 'AP Math OS 로그인 후 다시 시도해 주세요.';
+const ARCHIVE_QR_FORBIDDEN_MESSAGE = '권한이 없습니다. 원장/담당 선생님 권한을 확인하세요.';
+const ARCHIVE_QR_NETWORK_MESSAGE = '서버 연결에 실패했습니다. 일반 출력은 가능합니다.';
+
+function mixerQrNoticeHtml(message) {
+    return `<div style="color:#ef4444; font-size:13px; line-height:1.5;">${message}</div><button class="btn-main" onclick="closeClassModal(); openMixedEngine(false)">일반 시험지 출력</button>`;
+}
 
 function sanitizeApmathSessionForStorage(data) {
     const safe = { ...(data || {}) };
@@ -1983,9 +1990,9 @@ async function openClassSelectionModal() {
     }
     try {
         const res = await fetch(`${ARCHIVE_AP_API_BASE}/qr-classes`, { headers: authHeader });
-        if (res.status === 401) { renderMixerQrAuthFallback(body); return; }
+        if (res.status === 401) { body.innerHTML = mixerQrNoticeHtml(ARCHIVE_QR_LOGIN_REQUIRED_MESSAGE); return; }
         if (res.status === 403) {
-            body.innerHTML = '<div style="color:#ef4444; font-size:13px; line-height:1.5;">권한이 없습니다. 계정 권한을 확인해 주세요.</div><button class="btn-main" onclick="closeClassModal(); openMixedEngine(false)">일반 시험지 출력</button>';
+            body.innerHTML = mixerQrNoticeHtml(ARCHIVE_QR_FORBIDDEN_MESSAGE);
             return;
         }
         const data = await res.json();
@@ -1997,7 +2004,7 @@ async function openClassSelectionModal() {
             renderMixerClassSelectByTeacher();
             setMixerClassModalFooterVisible(true);
         } else { throw new Error(); }
-    } catch(e) { body.innerHTML = '<div style="color:#ef4444; font-size:13px;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>'; }
+    } catch(e) { body.innerHTML = mixerQrNoticeHtml(ARCHIVE_QR_NETWORK_MESSAGE); }
 }
 
 function closeClassModal() { document.getElementById('class-modal-overlay').style.display = 'none'; }

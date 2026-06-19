@@ -634,6 +634,22 @@ function getKstTodayString() {
 }
 
 const ARCHIVE_AP_API_BASE = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
+const ARCHIVE_QR_AUTH_REQUIRED_MESSAGE = 'AP 제출 QR은 AP Math OS 로그인이 필요합니다. 일반 출력은 가능합니다.';
+const ARCHIVE_QR_LOGIN_REQUIRED_MESSAGE = 'AP Math OS 로그인 후 다시 시도해 주세요.';
+const ARCHIVE_QR_FORBIDDEN_MESSAGE = '권한이 없습니다. 원장/담당 선생님 권한을 확인하세요.';
+const ARCHIVE_QR_NETWORK_MESSAGE = '서버 연결에 실패했습니다. 일반 출력은 가능합니다.';
+
+function notifyArchiveQrApiFailure(status, context) {
+    const message = status === 401
+        ? ARCHIVE_QR_LOGIN_REQUIRED_MESSAGE
+        : status === 403
+            ? ARCHIVE_QR_FORBIDDEN_MESSAGE
+            : status === 'auth'
+                ? ARCHIVE_QR_AUTH_REQUIRED_MESSAGE
+                : ARCHIVE_QR_NETWORK_MESSAGE;
+    console.warn(`[archive QR] ${context || 'api'} failed:`, status, message);
+    if (typeof window.toast === 'function') window.toast(message, status === 403 ? 'warn' : 'error');
+}
 
 function getApmathSession() {
     try {
@@ -721,7 +737,10 @@ async function registerClassExamAssignmentToOS() {
     if (!classId) return;
 
     const authHeader = getAssignmentAuthHeader();
-    if (!authHeader) return;
+    if (!authHeader) {
+        notifyArchiveQrApiFailure('auth', 'class-exam-assignments auth');
+        return;
+    }
 
     const examDate = params.get('date') || getKstTodayString();
     const qCountRaw = params.get('q');
@@ -746,11 +765,13 @@ async function registerClassExamAssignmentToOS() {
             })
         });
         if (!res.ok) {
+            notifyArchiveQrApiFailure(res.status, 'class-exam-assignments');
             console.warn('[3H] class_exam_assignment 등록 실패:', res.status);
             return;
         }
         _classExamAssignmentRegisteredSig = sig;
     } catch (e) {
+        notifyArchiveQrApiFailure(0, 'class-exam-assignments');
         console.warn('[3H] class_exam_assignment 등록 오류:', e);
     }
 }
@@ -791,7 +812,10 @@ async function registerBlueprintToOS() {
     if (sig === _mixedBlueprintRegisteredSig) return;
 
     const authHeader = getAssignmentAuthHeader();
-    if (!authHeader) return;
+    if (!authHeader) {
+        notifyArchiveQrApiFailure('auth', 'exam-blueprints auth');
+        return;
+    }
 
     const getKey = window.getConceptClusterKey || (() => '__UNMAPPED__');
     const items = AppState.data.map((q, i) => {
@@ -823,11 +847,13 @@ async function registerBlueprintToOS() {
             body: JSON.stringify({ archive_file: archiveFile, items })
         });
         if (!res.ok) {
+            notifyArchiveQrApiFailure(res.status, 'exam-blueprints');
             console.warn('[3B-MIXED] blueprint 등록 실패:', res.status);
             return;
         }
         _mixedBlueprintRegisteredSig = sig;
     } catch (e) {
+        notifyArchiveQrApiFailure(0, 'exam-blueprints');
         console.warn('[3B-MIXED] blueprint 등록 오류:', e);
     }
 }

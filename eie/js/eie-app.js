@@ -1,4 +1,6 @@
 ﻿(function () {
+    const EIE_AUTH_API_BASE = (window.EIE_AUTH_API_BASE || 'https://wangji-eie-os.js-pdf.workers.dev/api').replace(/\/+$/, '');
+
     function escapeHtml(value) {
         return String(value ?? '').replace(/[&<>"']/g, ch => ({
             '&': '&amp;',
@@ -57,6 +59,7 @@
 
     // Shared auth fetch helper mirrors eie-api.js auth logic without modifying that file.
     function findStoredAuth() {
+        let removedBasic = false;
         const keys = [
             'WANGJI_EIE_SESSION_TOKEN',
             'WANGJI_AUTH_HEADER',
@@ -72,18 +75,26 @@
             const trimmed = String(value).trim();
             if (!trimmed) continue;
             if (/^Basic\s+/i.test(trimmed)) {
+                removedBasic = true;
                 try { window.localStorage.removeItem(key); } catch (e) {}
                 continue;
             }
             if (/^Bearer\s+/i.test(trimmed)) return trimmed;
             return `Bearer ${trimmed}`;
         }
+        if (removedBasic) handleEie401('기존 Basic 인증 정보가 제거되었습니다. 다시 로그인해 주세요.');
         return '';
     }
 
     async function fetchWithAuth(url) {
         const headers = { 'Content-Type': 'application/json' };
         const auth = findStoredAuth();
+        if (!auth) {
+            const err = new Error('로그인이 만료되었습니다. 다시 로그인해 주세요.');
+            err.status = 401;
+            handleEie401(err.message);
+            throw err;
+        }
         if (auth) headers['Authorization'] = auth;
         const response = await fetch(url, { method: 'GET', headers });
         const text = await response.text();
@@ -92,6 +103,8 @@
         if (!response.ok || data?.success === false) {
             const err = new Error(data?.error || data?.message || response.statusText || '요청 실패');
             err.status = response.status;
+            if (err.status === 401) handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
+            if (err.status === 403) handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
             throw err;
         }
         return data || { success: true };
@@ -340,7 +353,7 @@
     async function handleEieLogout() {
         const token = getEieToken();
         if (token) {
-            fetch('https://wangji-eie-os.js-pdf.workers.dev/api/auth/logout', {
+            fetch(`${EIE_AUTH_API_BASE}/auth/logout`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
             }).catch(function () {});

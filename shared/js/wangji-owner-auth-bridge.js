@@ -1,6 +1,6 @@
 (function () {
-    const EIE_WORKER = 'https://wangji-eie-os.js-pdf.workers.dev';
-    const APMATH_API = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
+    const WANGJI_EIE_WORKER_BASE = (window.WANGJI_EIE_WORKER_BASE || 'https://wangji-eie-os.js-pdf.workers.dev').replace(/\/+$/, '');
+    const WANGJI_APMATH_API_BASE = (window.WANGJI_APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
 
     const KEYS = {
         token: 'WANGJI_EIE_SESSION_TOKEN',
@@ -41,7 +41,7 @@
     }
 
     async function loginEieWithCredentials(loginId, password) {
-        const res = await fetch(EIE_WORKER + '/api/auth/login', {
+        const res = await fetch(WANGJI_EIE_WORKER_BASE + '/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ login_id: loginId, password: password })
@@ -64,7 +64,7 @@
     async function bridgeAfterEieLogin(loginId, password, eiePayload) {
         saveEieSession(eiePayload);
         try {
-            const apiBase = (window.CONFIG && window.CONFIG.API_BASE) || APMATH_API;
+            const apiBase = ((window.CONFIG && window.CONFIG.API_BASE) || WANGJI_APMATH_API_BASE).replace(/\/+$/, '');
             const r = await fetch(apiBase + '/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

@@ -1121,6 +1121,28 @@
     }
 
     const ASSESSMENT_AP_API_BASE = (window.APMATH_API_BASE || 'https://ap-math-os-v2612.js-pdf.workers.dev/api').replace(/\/+$/, '');
+    const ASSESSMENT_QR_AUTH_REQUIRED_HTML = 'AP 제출 QR은 AP Math OS 로그인 후 사용할 수 있습니다. 일반 출력은 가능합니다.';
+    const ASSESSMENT_QR_LOGIN_REQUIRED_HTML = 'AP Math OS 로그인 후 다시 시도해 주세요.';
+    const ASSESSMENT_QR_FORBIDDEN_HTML = '권한이 없습니다. 원장/담당 선생님 권한을 확인하세요.';
+    const ASSESSMENT_QR_NETWORK_HTML = '서버 연결에 실패했습니다. 일반 출력은 가능합니다.';
+
+    function assessmentGeneralPrintButtonHtml() {
+      return `<button class="modal-btn-primary" type="button" onclick="closeAssessmentModal(); goAssessmentMixedEngine(window._pendingAssessmentClassSelectPack, 'exam', window._pendingAssessmentClassSelectQpp || 4)">일반 시험지 출력</button>`;
+    }
+
+    function assessmentQrNoticeHtml(message) {
+      return `<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">${message}</div>${assessmentGeneralPrintButtonHtml()}`;
+    }
+
+    function notifyAssessmentQrApiFailure(status, context) {
+      const message = status === 401
+        ? ASSESSMENT_QR_LOGIN_REQUIRED_HTML
+        : status === 403
+          ? ASSESSMENT_QR_FORBIDDEN_HTML
+          : ASSESSMENT_QR_NETWORK_HTML;
+      console.warn(`[assessment QR] ${context || 'api'} failed:`, status, message);
+      if (typeof window.toast === 'function') window.toast(message, status === 403 ? 'warn' : 'error');
+    }
 
     function getApmathSession() {
       try {
@@ -1253,7 +1275,10 @@
 
     async function registerAssessmentClassExamAssignment(classRow, pack, key, options = {}) {
       const authHeader = getAssessmentAssignmentAuthHeader();
-      if (!authHeader) throw new Error('auth required');
+      if (!authHeader) {
+        notifyAssessmentQrApiFailure(401, 'class-exam-assignments auth');
+        throw new Error('auth required');
+      }
       const gradeLabel = options.gradeLabel || pack?.grade || getAssessmentClassGrade(classRow);
       const payload = {
         class_id: classRow.id,
@@ -1273,7 +1298,10 @@
         headers: { 'Content-Type': 'application/json', ...authHeader },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(`assignment failed: ${res.status}`);
+      if (!res.ok) {
+        notifyAssessmentQrApiFailure(res.status, 'class-exam-assignments');
+        throw new Error(`assignment failed: ${res.status}`);
+      }
       return res.json().catch(() => ({}));
     }
 
@@ -1342,6 +1370,7 @@
               <input id="assessment-apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
               <div id="assessment-apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
               <button class="modal-btn-primary" type="button" onclick="doAssessmentApmathLoginAndLoadClasses(event)">로그인 후 반 목록 불러오기</button>
+              ${assessmentGeneralPrintButtonHtml()}
             </div>`;
           return;
         }
@@ -1353,11 +1382,11 @@
       try {
         const res = await fetch(`${ASSESSMENT_AP_API_BASE}/qr-classes`, { headers: authHeader });
         if (res.status === 401) {
-          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+          body.innerHTML = assessmentQrNoticeHtml(ASSESSMENT_QR_LOGIN_REQUIRED_HTML);
           return;
         }
         if (res.status === 403) {
-          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">권한이 없습니다. 계정 권한을 확인해 주세요.</div>';
+          body.innerHTML = assessmentQrNoticeHtml(ASSESSMENT_QR_FORBIDDEN_HTML);
           return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -1376,7 +1405,8 @@
         }
       } catch (error) {
         console.error(error);
-        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+        body.innerHTML = assessmentQrNoticeHtml(ASSESSMENT_QR_NETWORK_HTML);
+        return;
       }
     }
 
@@ -1423,6 +1453,7 @@
             <input id="assessment-grade-apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
             <div id="assessment-grade-apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
             <button class="modal-btn-primary" type="button" onclick="doAssessmentApmathLoginAndLoadGrades(event)">로그인 후 반 목록 불러오기</button>
+            ${assessmentGeneralPrintButtonHtml()}
           </div>`;
         return;
       }
@@ -1430,11 +1461,11 @@
       try {
         const res = await fetch(`${ASSESSMENT_AP_API_BASE}/qr-classes`, { headers: authHeader });
         if (res.status === 401) {
-          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+          body.innerHTML = assessmentQrNoticeHtml(ASSESSMENT_QR_LOGIN_REQUIRED_HTML);
           return;
         }
         if (res.status === 403) {
-          body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">권한이 없습니다. 계정 권한을 확인해 주세요.</div>';
+          body.innerHTML = assessmentQrNoticeHtml(ASSESSMENT_QR_FORBIDDEN_HTML);
           return;
         }
         if (!res.ok) throw new Error('API Request Failed');
@@ -1444,7 +1475,8 @@
         renderAssessmentGradeClassPreview();
       } catch (error) {
         console.error(error);
-        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+        body.innerHTML = assessmentQrNoticeHtml(ASSESSMENT_QR_NETWORK_HTML);
+        return;
       }
     }
 

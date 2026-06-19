@@ -1,41 +1,67 @@
-# Student Portal Service Worker Version Sync Result
+# AP/EIE/Archive Auth Backend Cleanup Round 2 Result
 
 ## 수정 파일
-- apmath/student/index.html
-- apmath/student/sw.js
-- apmath/student/manifest.json
-- apmath/student/student-version.json
+- apmath/js/classroom-planner.js
+- apmath/js/wangji-student-management.js
+- archive/index.html
+- archive/mixer.html
+- archive/engine.html
+- archive/mixed_engine.html
+- archive/assessment/assessment-mvp.html
+- eie/js/eie-api.js
+- eie/js/eie-app.js
+- shared/js/wangji-owner-auth-bridge.js
 
-## 문제 원인
-- 학생 포털 앱 버전과 service worker cache name이 따로 관리되고 있었다.
-- service worker가 일부 정적 리소스를 cache-first로 잡아 새 화면 반영이 늦을 수 있었다.
-- student-version.json이 service worker 캐시에 잡힐 위험이 있었다.
+## 전제
+- 이전 P0 인증 브릿지 수정은 유지
+- 학생 포털 캐시 수정은 건드리지 않음
+
+## 해결한 문제
+- hardcoded API base 반복 정리
+- AP direct fetch 401/403 처리 보강
+- Archive QR API 실패 안내 보강
+- EIE Basic 전송 차단/401/403 처리 보강
+- Wangji/shared bridge API base 정리
 
 ## 핵심 변경
-- STUDENT_SW_VERSION 추가
-- CACHE_NAME을 학생 포털 버전 기반으로 변경
-- student-version.json network-only 처리
-- ?v / ?t / ?ts 요청 network-first 처리
-- service worker register에 version query 및 update() 보강
-- 학생 세션 유지
-- ?omr=1 기존 처리 유지
+- Archive/AP/Wangji 계열 API base를 파일 내부 상수와 기존 window override 중심으로 정리했다.
+- AP classroom planner direct fetch가 401/403 외 실패에서 기존 ledger 데이터를 빈 배열로 덮어쓰지 않도록 보강했다.
+- Archive QR class 조회, assignment 저장, blueprint 저장 실패에 401/403/auth/network 안내를 추가했다.
+- assessment QR 실패 상태에서도 일반 시험지 출력 버튼을 유지했다.
+- EIE API wrapper와 EIE app auth helper에서 legacy Basic 값을 제거하고, Bearer가 없으면 Worker 호출 전에 로그인 흐름으로 복귀하게 했다.
+- Wangji student management의 EIE auth header 생성 경로에서 Basic 전송을 차단했다.
 
 ## 검수 결과
-- 버전 일치: STUDENT_APP_VERSION, STUDENT_SW_VERSION, manifest.json version, student-version.json version 모두 2026.06.19.1로 확인
-- 새 버전 감지: 기존 checkStudentPortalVersion()이 student-version.json?ts=Date.now()와 cache:'no-store'를 사용하고, service worker도 student-version.json을 network-only로 처리함
-- 업데이트 버튼: reloadStudentPortalWithVersion()이 기존 query를 유지하면서 v/t를 set하고 location.replace()를 호출함
-- service worker cache 교체: CACHE_NAME이 apmath-student-portal-2026.06.19.1로 변경되며 activate에서 다른 cache key를 삭제함
-- student-version.json no-store: sw.js fetch handler에서 /student-version.json 요청을 fetch(req, { cache:'no-store' })로 처리함
-- OMR URL: shouldOpenOmrFromUrl()은 omr=1만 확인하므로 ?omr=1&v=2026.06.19.1과 충돌하지 않음
-- 기존 학생 세션: 업데이트 및 service worker 흐름에서 APMATH_STUDENT_PORTAL_SESSION, PLANNER_SID, PLANNER_PIN 삭제 없음
-- 로그인/홈/과제/플래너/OMR: API, 세션, 데이터 구조 변경 없음
-- 콘솔 치명 오류: sw.js node --check 통과, HTML 내부 script OS temp 추출 후 node --check 통과
+- AP direct fetch 401: PASS - handleUnauthorizedResponse 호출 경로 확인
+- AP direct fetch 403: PASS - 권한 안내 toast 경로 확인
+- Archive QR 401: PASS - 로그인 후 재시도 안내 및 일반 출력 경로 유지
+- Archive QR 403: PASS - 원장/담당 선생님 권한 확인 안내 및 일반 출력 경로 유지
+- Archive 일반 출력: PASS - QR API 실패 분기만 변경, 출력/렌더링 구조 미변경
+- EIE Bearer 정상: PASS - Bearer header 유지
+- EIE Basic legacy 차단: PASS - Basic 제거 후 Bearer 없으면 로그인 복귀
+- API base 반복 정리: PASS - 파일 내부 상수/해석기 사용, endpoint path 유지
+- 콘솔 치명 오류: PASS - node --check 및 HTML inline parse 통과
 
 ## 확인 명령
-- git diff --check: 통과, LF to CRLF working copy warning만 표시
-- node --check sw.js: 통과
-- Select-String: STUDENT_APP_VERSION, student-version.json, serviceWorker.register, reloadStudentPortalWithVersion, omr, STUDENT_SW_VERSION, CACHE_NAME, skipWaiting, clients.claim, searchParams, manifest/student-version version 확인
+- git diff --check: PASS, LF/CRLF 경고만 있음
+- Select-String: PASS, 지정 패턴 확인
+- node --check: PASS, touched JS 확인
+- HTML inline parse: PASS, OS temp 추출 후 parse 확인
+
+## 수정하지 않은 항목
+- DB schema: 변경하지 않음
+- Worker endpoint 이름/응답 구조: 변경하지 않음
+- EIE 시간표 UI/레이아웃: 변경하지 않음
+- AP 대시보드 디자인: 변경하지 않음
+- Archive 출력 엔진 렌더링/MathJax/인쇄 구조: 변경하지 않음
+- 학생 포털 캐시/서비스워커: 변경하지 않음
+- P0 인증 브릿지 재작성: 변경하지 않음
 
 ## 남은 위험
-- 이미 아주 오래된 service worker가 잡힌 기기는 최초 1회 앱 완전 종료 또는 브라우저 캐시 삭제가 필요할 수 있음
-- 홈 화면 아이콘/앱 이름 변경은 OS 정책상 재설치가 필요할 수 있음
+- 실제 모바일 WebView/배포 Worker 차이는 실기기 확인 필요
+- live Worker 401/403 응답은 로컬 정적 검증으로만 확인했으며 실서버 호출 검증은 하지 않음
+
+## 리뷰 봇 결과
+- Codex B logic/routing: PASS after rerun
+- Codex C UI/UX/CSS: PASS, runtime screenshot은 UNVERIFIED
+- Codex D tests/regression: PASS, live browser/WebView는 UNVERIFIED
