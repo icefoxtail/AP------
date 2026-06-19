@@ -1,67 +1,62 @@
-# AP/EIE/Archive Auth Backend Cleanup Round 2 Result
+# AP/EIE/Archive Live Flow Smoke Test Result
 
-## 수정 파일
-- apmath/js/classroom-planner.js
-- apmath/js/wangji-student-management.js
-- archive/index.html
-- archive/mixer.html
-- archive/engine.html
-- archive/mixed_engine.html
-- archive/assessment/assessment-mvp.html
-- eie/js/eie-api.js
-- eie/js/eie-app.js
-- shared/js/wangji-owner-auth-bridge.js
+## 작업 성격
+- 검수 전용
+- 코드 수정 없음
+- 결과 보고서 CODEX_RESULT.md만 갱신
 
-## 전제
-- 이전 P0 인증 브릿지 수정은 유지
-- 학생 포털 캐시 수정은 건드리지 않음
+## 검수 환경
+- 로컬: http://127.0.0.1:8765 임시 HTTP 서버
+- GitHub Pages: https://icefoxtail.github.io/AP------/ 주요 URL 200 응답 확인
+- 모바일 WebView/PWA: UNVERIFIED
+- 브라우저: Codex in-app browser
 
-## 해결한 문제
-- hardcoded API base 반복 정리
-- AP direct fetch 401/403 처리 보강
-- Archive QR API 실패 안내 보강
-- EIE Basic 전송 차단/401/403 처리 보강
-- Wangji/shared bridge API base 정리
+## 검수 결과 요약
+- AP → Archive: UNVERIFIED - 운영 로그인 계정 없음. 세션 없는 로컬 Archive 진입 시 기출 보기 OFF 확인.
+- Archive index AP 제출 QR: UNVERIFIED - 운영 로그인 계정 없음. 인증 없는 QR 진입은 로그인 안내와 일반 출력 버튼 표시 확인.
+- Archive 일반 출력 fallback: PASS - no-session QR 흐름에서 일반 시험지 출력 버튼 표시 확인.
+- Mixer → mixed_engine: UNVERIFIED - mixer 로드와 mixed_engine 참조/query 구성 코드는 확인, 카트 구성 후 실제 QR 출력은 미검수.
+- Assessment MVP: PASS/PARTIAL - 페이지 로드, AP QR no-session fallback, 일반 출력 버튼 유지 확인. 인증된 반 목록은 UNVERIFIED.
+- EIE 진입: PASS/PARTIAL - 토큰 없음 상태에서 로그인 화면 표시 확인. Bearer 정상/실제 401/403 Worker 응답은 UNVERIFIED.
+- Wangji 학생관리: PASS/PARTIAL - 화면 로드, AP/EIE 401 section error 분리 확인. 인증된 AP/EIE 조회는 UNVERIFIED.
+- 학생 포털 캐시: PASS/PARTIAL - v2026.06.19.1 표시 확인. in-app browser에서 serviceWorker API 미노출로 SW 등록/Cache Storage는 UNVERIFIED.
 
-## 핵심 변경
-- Archive/AP/Wangji 계열 API base를 파일 내부 상수와 기존 window override 중심으로 정리했다.
-- AP classroom planner direct fetch가 401/403 외 실패에서 기존 ledger 데이터를 빈 배열로 덮어쓰지 않도록 보강했다.
-- Archive QR class 조회, assignment 저장, blueprint 저장 실패에 401/403/auth/network 안내를 추가했다.
-- assessment QR 실패 상태에서도 일반 시험지 출력 버튼을 유지했다.
-- EIE API wrapper와 EIE app auth helper에서 legacy Basic 값을 제거하고, Bearer가 없으면 Worker 호출 전에 로그인 흐름으로 복귀하게 했다.
-- Wangji student management의 EIE auth header 생성 경로에서 Basic 전송을 차단했다.
+## PASS 항목
+- `git diff --check` 통과.
+- 지정 JS `node --check` 통과.
+- Archive/engine/mixer/mixed_engine/assessment HTML inline script OS temp 추출 parse 통과.
+- GitHub Pages root, archive index, student portal URL 200 응답 확인.
+- Archive index 로컬 로드 확인.
+- Archive no-session AP 제출 QR 흐름에서 로그인 안내와 일반 시험지 출력 버튼 표시 확인.
+- Assessment MVP 로컬 로드 및 no-session AP 제출 QR fallback에서 일반 시험지 출력 버튼 표시 확인.
+- EIE 토큰 없음 상태에서 로그인 화면 표시 확인.
+- Wangji 학생관리에서 AP/EIE 401이 전체 화면 중단이 아니라 section error로 분리되는 것 확인.
+- 학생 포털 화면 하단 `v2026.06.19.1` 표시 확인.
+- `student-version.json`, `apmath/student/sw.js`, `apmath/student/index.html` 버전 문자열 일치 확인.
+- EIE Basic 제거/Bearer 우선 코드 경로 확인.
+- Wangji EIE auth header가 Basic 제거 후 Bearer만 보내는 코드 경로 확인.
 
-## 검수 결과
-- AP direct fetch 401: PASS - handleUnauthorizedResponse 호출 경로 확인
-- AP direct fetch 403: PASS - 권한 안내 toast 경로 확인
-- Archive QR 401: PASS - 로그인 후 재시도 안내 및 일반 출력 경로 유지
-- Archive QR 403: PASS - 원장/담당 선생님 권한 확인 안내 및 일반 출력 경로 유지
-- Archive 일반 출력: PASS - QR API 실패 분기만 변경, 출력/렌더링 구조 미변경
-- EIE Bearer 정상: PASS - Bearer header 유지
-- EIE Basic legacy 차단: PASS - Basic 제거 후 Bearer 없으면 로그인 복귀
-- API base 반복 정리: PASS - 파일 내부 상수/해석기 사용, endpoint path 유지
-- 콘솔 치명 오류: PASS - node --check 및 HTML inline parse 통과
+## FAIL 항목
+- 없음.
 
-## 확인 명령
-- git diff --check: PASS, LF/CRLF 경고만 있음
-- Select-String: PASS, 지정 패턴 확인
-- node --check: PASS, touched JS 확인
-- HTML inline parse: PASS, OS temp 추출 후 parse 확인
+## 발견된 위험
+- 운영 AP/EIE 계정이 없어 실제 Bearer 로그인 후 Archive 반 목록, QR 생성, `class-exam-assignments`, `exam-blueprints` live 응답은 UNVERIFIED.
+- in-app browser 환경에서 `window.navigator.serviceWorker`가 노출되지 않아 학생 포털 Service Worker 등록과 Cache Storage 이름은 브라우저 런타임에서 UNVERIFIED.
+- Mixer는 로드와 출력 버튼/`mixed_engine.html` 참조까지 확인했지만, 실제 문항 카트 구성 후 QR 출력은 UNVERIFIED.
+- Archive index fallback 일반 출력 버튼 클릭 후 로컬 브라우저 URL 전환은 확정 검증하지 못함. 버튼 노출은 확인했으나 엔진 이동은 추가 수동 확인 권장.
 
-## 수정하지 않은 항목
-- DB schema: 변경하지 않음
-- Worker endpoint 이름/응답 구조: 변경하지 않음
-- EIE 시간표 UI/레이아웃: 변경하지 않음
-- AP 대시보드 디자인: 변경하지 않음
-- Archive 출력 엔진 렌더링/MathJax/인쇄 구조: 변경하지 않음
-- 학생 포털 캐시/서비스워커: 변경하지 않음
-- P0 인증 브릿지 재작성: 변경하지 않음
+## 수정 필요 시 최소 수정안
+- 현재 smoke test에서 즉시 수정할 FAIL은 없음.
+- 인증 실사용 확인을 위해 AP 원장/선생님 테스트 계정으로 다음만 추가 검수 필요:
+  - Archive `/qr-classes` 200 및 반 목록 표시
+  - Engine/Mixed Engine QR 표시
+  - `/class-exam-assignments`, `/exam-blueprints` 200/2xx 응답
+  - EIE Bearer 상태에서 dashboard/teacher/timetable/students route 진입
+- 학생 포털 SW/Cache는 일반 Chrome 또는 모바일 PWA에서 Application 탭으로 추가 확인 필요.
 
-## 남은 위험
-- 실제 모바일 WebView/배포 Worker 차이는 실기기 확인 필요
-- live Worker 401/403 응답은 로컬 정적 검증으로만 확인했으며 실서버 호출 검증은 하지 않음
-
-## 리뷰 봇 결과
-- Codex B logic/routing: PASS after rerun
-- Codex C UI/UX/CSS: PASS, runtime screenshot은 UNVERIFIED
-- Codex D tests/regression: PASS, live browser/WebView는 UNVERIFIED
+## 건드리지 않은 항목
+- DB schema
+- Worker endpoint
+- 출력 렌더링
+- EIE 시간표 UI
+- 학생 포털 UI
