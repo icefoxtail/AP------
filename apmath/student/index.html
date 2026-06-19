@@ -734,6 +734,14 @@
     function readSession() {
       try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch (e) { return null; }
     }
+    function shouldOpenOmrFromUrl() {
+      try {
+        const params = new URLSearchParams(window.location.search || '');
+        return params.get('omr') === '1';
+      } catch (e) {
+        return false;
+      }
+    }
     function clearSession() {
       localStorage.removeItem(SESSION_KEY);
       localStorage.removeItem('PLANNER_SID');
@@ -850,6 +858,9 @@
       try {
         setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
         renderHome();
+        if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
+          await renderOmrExams();
+        }
       } catch (e) {
         clearSession();
         renderLogin(e.message || '학생 로그인이 만료되었습니다. 다시 로그인하세요.');
