@@ -1113,7 +1113,7 @@
         <button type="button" class="fb-original-toggle" id="originalArchiveToggle" onclick="toggleOriginalArchiveVisibility()">
             <i class="fa-solid fa-lock"></i><span>기출 보기 OFF</span>
         </button>
-        <button class="fb-mixer" onclick="location.href='mixer.html'">믹서 출제</button>
+        <button class="fb-mixer" onclick="location.href=buildArchiveInternalUrl('mixer.html')">믹서 출제</button>
     </div>
 </div>
 
@@ -1236,6 +1236,31 @@ function isTeacherArchiveSession() {
     const loginId = compactText(session.login_id || session.loginId || session.user?.login_id || session.user?.loginId || '').toLowerCase();
 
     return role === 'teacher' || role === 'admin' || role === 'owner' || id === 't_admin' || loginId === 'admin';
+}
+
+function encodeArchiveSessionPayload(payload) {
+    return encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+}
+
+function appendCurrentArchiveSessionToHash(url) {
+    const session = getApmathSession();
+    if (!session) return url;
+
+    const payload = {
+        login_id: session.login_id || session.loginId || '',
+        id: session.id || session.user?.id || '',
+        name: session.name || session.user?.name || '',
+        role: session.role || session.user?.role || session.auth?.role || '',
+        session_token: session.session_token || '',
+        expires_at: session.expires_at || ''
+    };
+
+    if (!payload.session_token) return url;
+    return url + (url.indexOf('#') === -1 ? '#' : '&') + 'apmsess=' + encodeArchiveSessionPayload(payload);
+}
+
+function buildArchiveInternalUrl(path) {
+    return appendCurrentArchiveSessionToHash(path);
 }
 
 function isOriginalArchiveItem(ex) {
@@ -2427,23 +2452,27 @@ function resetView() {
 function hydrateApmathSessionFromUrl() {
     const hash = window.location.hash || '';
     const match = /[#&]apmsess=([^&]+)/.exec(hash);
-    if (!match) return;
+    if (!match) return false;
     try {
         const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
-        if (incoming && (incoming.session_token || incoming.login_id)) {
+        if (incoming && incoming.session_token) {
             let existing = null;
             try { existing = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null'); } catch (e) {}
             // 이미 사용 가능한 세션 토큰이 있으면 덮어쓰지 않는다.
-            if (!existing || !existing.session_token) {
-                localStorage.setItem('APMATH_SESSION', JSON.stringify({
-                    login_id: incoming.login_id || (existing && existing.login_id) || '',
-                    id: incoming.id || (existing && existing.id) || '',
-                    name: incoming.name || (existing && existing.name) || '',
-                    role: incoming.role || (existing && existing.role) || '',
-                    session_token: incoming.session_token || (existing && existing.session_token) || '',
-                    expires_at: incoming.expires_at || (existing && existing.expires_at) || ''
-                }));
-            }
+            const session = {
+                ...(existing || {}),
+                ...incoming,
+                login_id: incoming.login_id || incoming.loginId || (existing && (existing.login_id || existing.loginId)) || '',
+                id: incoming.id || (existing && existing.id) || '',
+                name: incoming.name || (existing && existing.name) || '',
+                role: incoming.role || (existing && existing.role) || '',
+                session_token: incoming.session_token || (existing && existing.session_token) || '',
+                expires_at: incoming.expires_at || (existing && existing.expires_at) || '',
+                restored_from_archive_hash: true,
+                restored_at: new Date().toISOString()
+            };
+            localStorage.setItem('APMATH_SESSION', JSON.stringify(session));
+            return true;
         }
     } catch (e) {
         // 잘못된 페이로드는 무시한다.
@@ -2453,6 +2482,7 @@ function hydrateApmathSessionFromUrl() {
             history.replaceState(null, '', window.location.pathname + window.location.search);
         } catch (e) {}
     }
+    return false;
 }
 
 window.onload = function () {

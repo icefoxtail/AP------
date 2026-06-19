@@ -407,7 +407,7 @@
     <div class="modal-content">
         <div class="modal-title">출제 학급 선택</div>
         <div id="class-modal-body"></div>
-        <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
+        <div id="class-modal-footer" style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
             <button class="btn-action reset" style="padding:8px 16px;" onclick="closeClassModal()">취소</button>
             <button class="btn-action primary" style="padding:8px 16px;" onclick="confirmClassSelection()">확인</button>
         </div>
@@ -1041,6 +1041,41 @@ function getApmathSession() {
         return JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
     } catch (e) {
         return null;
+    }
+}
+
+function restoreApmathSessionFromHash() {
+    const hash = String(window.location.hash || '');
+    const match = /(?:^#|&)apmsess=([^&]+)/.exec(hash);
+    if (!match) return false;
+
+    try {
+        const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
+        if (!incoming || !incoming.session_token) return false;
+
+        const existing = getApmathSession();
+        const session = {
+            ...(existing || {}),
+            ...incoming,
+            login_id: incoming.login_id || incoming.loginId || (existing && (existing.login_id || existing.loginId)) || '',
+            id: incoming.id || (existing && existing.id) || '',
+            name: incoming.name || (existing && existing.name) || '',
+            role: incoming.role || (existing && existing.role) || '',
+            session_token: incoming.session_token || (existing && existing.session_token) || '',
+            expires_at: incoming.expires_at || (existing && existing.expires_at) || '',
+            restored_from_archive_hash: true,
+            restored_at: new Date().toISOString()
+        };
+
+        localStorage.setItem('APMATH_SESSION', JSON.stringify(session));
+        return true;
+    } catch (e) {
+        console.warn('[archive auth] failed to restore AP session from hash:', e);
+        return false;
+    } finally {
+        try {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (e) {}
     }
 }
 
@@ -1857,25 +1892,65 @@ function renderMixerClassSelectByTeacher() {
     }).join('');
 }
 
+function encodeMixerBasicAuth(value) {
+    const str = String(value || '');
+    try {
+        return btoa(unescape(encodeURIComponent(str)));
+    } catch (e) {
+        return btoa(str);
+    }
+}
+
+function getMixerAssignmentAuthHeader() {
+    try {
+        const session = getApmathSession();
+        if (!session) return null;
+
+        if (session.session_token) {
+            return { 'Authorization': 'Bearer ' + session.session_token };
+        }
+
+        const mem = window.__APMATH_AUTH_MEMORY || {};
+        const loginId = mem.login_id || session.login_id || session.loginId;
+        const rawPassword = mem.raw_password || session.raw_password;
+
+        if (!loginId || !rawPassword) return null;
+        return { 'Authorization': 'Basic ' + encodeMixerBasicAuth(`${loginId}:${rawPassword}`) };
+    } catch (e) {
+        return null;
+    }
+}
+
+function setMixerClassModalFooterVisible(visible) {
+    const footer = document.getElementById('class-modal-footer');
+    if (footer) footer.style.display = visible ? 'flex' : 'none';
+}
+
+function renderMixerQrAuthFallback(body) {
+    setMixerClassModalFooterVisible(false);
+    body.innerHTML = '<div style="display:flex; flex-direction:column; gap:12px; color:var(--gray-700); font-size:13px; line-height:1.5;">'
+        + '<div style="color:#ef4444; font-weight:700;">AP Math OS &#47196;&#44536;&#51064; &#51221;&#48372;&#44032; &#50630;&#50612; &#48152; &#47785;&#47197;&#51012; &#48520;&#47084;&#50732; &#49688; &#50630;&#49845;&#45768;&#45796;.</div>'
+        + '<div>&#54617;&#49373; &#50724;&#45813; &#49688;&#51665; QR &#49884;&#54744;&#51648;&#45716; &#47196;&#44536;&#51064; &#54980; &#49324;&#50857;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.<br>&#51068;&#48152; &#49884;&#54744;&#51648;&#45716; &#48148;&#47196; &#52636;&#47141;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.</div>'
+        + '<button class="btn-main" onclick="closeClassModal(); openMixedEngine(false)">&#51068;&#48152; &#49884;&#54744;&#51648; &#52636;&#47141;</button>'
+        + "<button class=\"btn-main\" style=\"background:var(--navy);\" onclick=\"location.href='../apmath/'\">AP Math OS&#47196; &#46028;&#50500;&#44032;&#44592;</button>"
+        + '<button class="btn-main" style="background:var(--gray-500);" onclick="closeClassModal()">&#52712;&#49548;</button>'
+        + '</div>';
+}
+
 async function openClassSelectionModal() {
     const overlay = document.getElementById('class-modal-overlay'), body = document.getElementById('class-modal-body');
     overlay.style.display = 'flex'; body.innerHTML = '<p style="text-align:center; padding:20px; color:var(--gray-500);">반 목록을 불러오는 중...</p>';
+    setMixerClassModalFooterVisible(false);
 
     // [5G] APMATH_SESSION 인증 정보 로드
-    let authHeader = {};
-    try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session || !session.login_id || !session.raw_password) {
-            body.innerHTML = '<div style="color:#ef4444; font-size:13px;">AP Math OS 로그인 후 다시 시도하세요.</div>'; return;
-        }
-        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
-    } catch(e) {
-        body.innerHTML = '<div style="color:#ef4444; font-size:13px;">AP Math OS 로그인 후 다시 시도하세요.</div>'; return;
+    const authHeader = getMixerAssignmentAuthHeader();
+    if (!authHeader) {
+        renderMixerQrAuthFallback(body);
+        return;
     }
-
     try {
         const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
-        if (res.status === 401) { body.innerHTML = '<div style="color:#ef4444; font-size:13px;">AP Math OS 로그인 후 다시 시도하세요.</div>'; return; }
+        if (res.status === 401) { renderMixerQrAuthFallback(body); return; }
         const data = await res.json();
         if (data && data.success && Array.isArray(data.classes)) {
             if (data.classes.length === 0) {
@@ -1883,6 +1958,7 @@ async function openClassSelectionModal() {
             }
             body.innerHTML = renderMixerTeacherClassSelector(data.classes);
             renderMixerClassSelectByTeacher();
+            setMixerClassModalFooterVisible(true);
         } else { throw new Error(); }
     } catch(e) { body.innerHTML = '<div style="color:#ef4444; font-size:13px;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>'; }
 }
@@ -1930,6 +2006,7 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
  * [FAIL 3 수정] 필터 이벤트 리스너 복구
  */
 window.onload = async () => {
+    restoreApmathSessionFromHash();
     mixerDbLoadFailed = false;
     const s = document.createElement('script');
     s.src = 'db.js?v=' + Date.now();
