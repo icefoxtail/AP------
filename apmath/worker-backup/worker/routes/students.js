@@ -411,9 +411,14 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     const student = await env.DB.prepare('SELECT grade, student_pin FROM students WHERE id = ?').bind(id).first();
     if (!student) return jsonResponse({ error: 'Not found' }, 404);
+    const reset = body.reset === true || body.reset === 1 || body.reset === '1' || body.reset === 'true';
+    if (student.student_pin && reset) {
+      const pin = await assignUniqueStudentPin(env, id, student.grade);
+      return jsonResponse({ success: true, pin, student_pin: pin, reset: true });
+    }
     if (student.student_pin) return jsonResponse({ message: '이미 PIN이 설정된 학생입니다.' }, 400);
     const pin = await assignUniqueStudentPin(env, id, student.grade);
-    return jsonResponse({ success: true, pin });
+    return jsonResponse({ success: true, pin, student_pin: pin, reset: false });
   }
 
   if (method === 'POST' && !id) return handleCreateStudent(env, teacher, body);

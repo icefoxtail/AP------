@@ -87,9 +87,25 @@ export async function handleOperations(request, env, teacher, path, url) {
       if (sid) {
         if (!(await canAccessStudent(currentTeacher, sid, env))) return jsonResponse({ error: 'Forbidden' }, 403);
         const res = await env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC, id DESC').bind(sid).all();
-        return jsonResponse({ success: true, data: res.results });
+        return jsonResponse({ success: true, data: res.results, consultations: res.results });
       }
-      return jsonResponse({ success: false, message: 'student_id required' }, 400);
+      const limit = Math.min(Number(url.searchParams.get('limit') || 200) || 200, 500);
+      if (isAdminUser(currentTeacher)) {
+        const res = await env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC, id DESC LIMIT ?').bind(limit).all();
+        return jsonResponse({ success: true, data: res.results, consultations: res.results });
+      }
+      const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(currentTeacher.id).all();
+      const classIds = (tcls.results || []).map(r => r.class_id).filter(Boolean);
+      if (!classIds.length) return jsonResponse({ success: true, data: [], consultations: [] });
+      const markers = classIds.map(() => '?').join(',');
+      const res = await env.DB.prepare(`
+        SELECT *
+        FROM consultations
+        WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${markers}))
+        ORDER BY date DESC, created_at DESC, id DESC
+        LIMIT ?
+      `).bind(...classIds, limit).all();
+      return jsonResponse({ success: true, data: res.results, consultations: res.results });
     }
     if (method === 'PATCH' && id) {
       const existing = await env.DB.prepare('SELECT student_id FROM consultations WHERE id = ?').bind(id).first();

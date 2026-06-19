@@ -1350,6 +1350,9 @@
 
     function resolveAttendanceCellId(student, date) {
         var sid = rowId(student);
+        var selectedEl = document.getElementById('eie-student-attendance-cell');
+        var selectedCellId = text(selectedEl && selectedEl.value);
+        if (selectedCellId) return { cellId: selectedCellId };
         var ctxCellId = text(_returnCtx && (_returnCtx.cellId || _returnCtx.cell_id || _returnCtx.timetable_cell_id));
         var candidates = uniqueAttendanceCellIds(student);
         if (ctxCellId && (!candidates.length || candidates.indexOf(ctxCellId) !== -1)) return { cellId: ctxCellId };
@@ -1367,6 +1370,24 @@
         if (candidates.length > 1) return { error: '출결을 저장할 수업을 특정할 수 없습니다. 시간표 또는 클래스룸에서 해당 수업을 선택한 뒤 저장해 주세요.' };
         if (!sid) return { error: '학생 정보를 찾을 수 없습니다.' };
         return { error: '출결 저장에 필요한 수업 배정 정보가 없습니다.' };
+    }
+
+    function attendanceCellSelector(student) {
+        var candidates = assignmentsOf(student).filter(function (assignment) {
+            return text(assignment.cellId || assignment.cell_id || assignment.timetable_cell_id);
+        });
+        if (candidates.length <= 1) return '';
+        return '<label class="eie-apms-attendance-cell-select" style="display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px;min-width:0;margin-bottom:8px;">'
+            + '<span style="white-space:nowrap;font-size:11px;font-weight:800;color:#667085;">저장 반</span>'
+            + '<select id="eie-student-attendance-cell" style="width:100%;min-width:0;max-width:100%;height:34px;box-sizing:border-box;text-overflow:ellipsis;">'
+            + '<option value="">반 선택</option>'
+            + candidates.map(function (assignment) {
+                var cellId = text(assignment.cellId || assignment.cell_id || assignment.timetable_cell_id);
+                var label = [assignment.className, assignment.teacherName, assignment.day, assignment.period].filter(Boolean).join(' · ') || cellId;
+                return '<option value="' + esc(cellId) + '">' + esc(label) + '</option>';
+            }).join('')
+            + '</select>'
+            + '</label>';
     }
 
     function consultationDate(row) {
@@ -1390,6 +1411,7 @@
         }).join('');
         return '<div class="eie-apms-card">'
             + '<div class="eie-apms-section-head"><h3>출결/숙제</h3><span>오늘 ' + esc(status) + '</span></div>'
+            + attendanceCellSelector(student)
             + '<div class="eie-apms-attendance-actions">' + buttons + '</div>'
             + '<p class="eie-apms-muted">숙제 저장은 다음 단계입니다. 오늘은 출석 상태를 EIE 전용 출석부에 저장합니다.</p>'
             + (rows.length ? '<div class="eie-apms-attendance-history">'

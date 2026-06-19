@@ -380,7 +380,7 @@ function renderStudentEditBody(sid) {
                     ${apStudentEditRow('차량', `<input id="edit-vehicle-info" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량">`)}
                     ${apStudentEditRow('등원일', renderOnboardingStartedAtEditControl({ value: onboardingDate, alreadyAttending: onboardingEntry.already_attending }), { wide: true })}
                     ${apStudentEditRow('메모', `<textarea id="edit-memo" placeholder="메모">${apEscapeHtml(cleanMemo)}</textarea>`, { wide: true })}
-                    ${apStudentEditRow('PIN 번호', `<input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric">`)}
+                    ${apStudentEditRow('PIN 번호', `<div class="ap-student-edit-inline"><input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric"><button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button></div>`)}
                     ${apStudentEditRow('상태', `<div class="ap-student-edit-flags">
                         <label class="ap-student-edit-flag"><input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}><span>신입생</span></label>
                         <label class="ap-student-edit-flag is-warn"><input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}><span>휴원</span></label>
