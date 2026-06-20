@@ -25,10 +25,12 @@
     var _printIncludeClass = true;
     var _printIncludeMemo = true;
     var _printPanelOpen = false;
-    var _gradeReportPeriod = '6';
+    var _gradeReportRangeStart = '';
+    var _gradeReportRangeEnd = '';
     var _gradeReportIncludes = { vocab: true, grammar: true, reading: false, listening: false, material: false, month_end: false, free: false };
     var _gradeReportNote = '';
     var _gradeReportMemo = { strength: '', improve: '', home: '', goal: '' };
+    var _gradeReportFinalMessage = '';
     var _gradeReportPreviewStudentId = '';
 
     var STUDENT_GRADE_OPTIONS = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
@@ -237,6 +239,48 @@
         return match ? String(Number(match[2])) + '월' : '-';
     }
 
+    function monthFullLabel(monthKey) {
+        var match = text(monthKey).match(/^(\d{4})-(\d{2})$/);
+        return match ? match[1] + '년 ' + String(Number(match[2])) + '월' : '-';
+    }
+
+    function normalizeMonthInput(value) {
+        var raw = text(value);
+        var match = raw.match(/^(\d{4})-(\d{1,2})$/);
+        if (!match) return '';
+        return match[1] + '-' + match[2].padStart(2, '0');
+    }
+
+    function gradeReportCustomRange() {
+        var start = normalizeMonthInput(_gradeReportRangeStart);
+        var end = normalizeMonthInput(_gradeReportRangeEnd);
+        if (!start || !end) return null;
+        if (start > end) {
+            var tmp = start;
+            start = end;
+            end = tmp;
+        }
+        return { start: start, end: end };
+    }
+
+    function formatGradeReportPeriod(months) {
+        var range = gradeReportCustomRange();
+        if (range) {
+            var sameYear = range.start.slice(0, 4) === range.end.slice(0, 4);
+            var startMonth = String(Number(range.start.slice(5, 7))) + '월';
+            var endMonth = String(Number(range.end.slice(5, 7))) + '월';
+            return sameYear
+                ? range.start.slice(0, 4) + '년 ' + startMonth + '~' + endMonth + ' 누적 리포트'
+                : monthFullLabel(range.start) + '~' + monthFullLabel(range.end) + ' 누적 리포트';
+        }
+        return '조회 기간 선택 필요';
+    }
+
+    function formatGradeReportRange(months) {
+        if (!months || !months.length) return '기록 없음';
+        return monthFullLabel(months[0]) + ' ~ ' + monthFullLabel(months[months.length - 1]);
+    }
+
     function reportPercent(row) {
         if (!row || row.score === undefined || row.score === null || text(row.score) === '') return null;
         var score = Number(row && row.score);
@@ -308,26 +352,20 @@
 
     function gradeReportMonthKeys(rows) {
         var keys = Array.from(new Set(rows.map(function (row) { return row.monthKey; }).filter(Boolean))).sort();
-        if (_gradeReportPeriod === 'all') {
-            if (!keys.length) return [];
-            var startParts = keys[0].split('-').map(Number);
-            var endParts = keys[keys.length - 1].split('-').map(Number);
-            var cursor = new Date(startParts[0], startParts[1] - 1, 1);
-            var end = new Date(endParts[0], endParts[1] - 1, 1);
-            var allKeys = [];
-            while (cursor <= end) {
-                allKeys.push(monthKeyFromDate(cursor));
-                cursor = addMonths(cursor, 1);
+        var customRange = gradeReportCustomRange();
+        if (customRange) {
+            var customStart = customRange.start.split('-').map(Number);
+            var customEnd = customRange.end.split('-').map(Number);
+            var customCursor = new Date(customStart[0], customStart[1] - 1, 1);
+            var customLast = new Date(customEnd[0], customEnd[1] - 1, 1);
+            var customKeys = [];
+            while (customCursor <= customLast) {
+                customKeys.push(monthKeyFromDate(customCursor));
+                customCursor = addMonths(customCursor, 1);
             }
-            return allKeys;
+            return customKeys;
         }
-        var count = Number(_gradeReportPeriod || 6);
-        var latestKey = keys.length ? keys[keys.length - 1] : todayIso().slice(0, 7);
-        var parts = latestKey.split('-').map(Number);
-        var latest = new Date(parts[0], parts[1] - 1, 1);
-        var months = [];
-        for (var i = count - 1; i >= 0; i -= 1) months.push(monthKeyFromDate(addMonths(latest, -i)));
-        return months;
+        return [];
     }
 
     function buildGradeReportSeries(student) {
@@ -362,12 +400,54 @@
     }
 
     function gradeTrendText(series, category, label) {
-        var values = (series.byCategory[category] || []).filter(function (point) { return point.average !== null; }).slice(-2);
+        var values = (series.byCategory[category] || []).filter(function (point) { return point.average !== null; }).slice(-3);
         if (!values.length) return label + ' 기록이 부족합니다.';
-        if (values.length === 1) return label + ' 최근 평균은 ' + values[0].average + '점입니다.';
-        var diff = values[1].average - values[0].average;
-        if (Math.abs(diff) < 1) return label + '은 최근 두 달 동안 비슷한 흐름입니다.';
-        return label + '은 전월 대비 ' + Math.abs(diff) + '점 ' + (diff > 0 ? '상승' : '하락') + '했습니다.';
+        if (values.length === 1) return label + ' 최근 평균은 ' + values[0].average + '점입니다. 기록이 더 쌓이면 흐름을 함께 확인하겠습니다.';
+        var diff = values[values.length - 1].average - values[0].average;
+        if (Math.abs(diff) < 3) return label + '은 최근 ' + values.length + '개월 동안 안정적으로 유지되고 있습니다.';
+        return label + '은 최근 ' + values.length + '개월 기준 ' + Math.abs(diff) + '점 ' + (diff > 0 ? '상승' : '하락') + '했습니다.';
+    }
+
+    function gradeTrendInfo(series, category) {
+        var values = (series.byCategory[category] || []).filter(function (point) { return point.average !== null; }).slice(-3);
+        if (!values.length) return { status: 'insufficient', latest: null, diff: 0, count: 0 };
+        if (values.length === 1) return { status: 'single', latest: values[0].average, diff: 0, count: 1 };
+        var diff = values[values.length - 1].average - values[0].average;
+        var status = Math.abs(diff) < 3 ? 'steady' : (diff > 0 ? 'up' : 'down');
+        return {
+            status: status,
+            latest: values[values.length - 1].average,
+            diff: diff,
+            count: values.length
+        };
+    }
+
+    function gradeTrendSentence(series, category, label) {
+        var info = gradeTrendInfo(series, category);
+        if (info.status === 'insufficient') return label + ' 기록은 아직 충분하지 않아 다음 수업부터 응시 흐름을 더 쌓아 보겠습니다.';
+        if (info.status === 'single') return label + '은 최근 ' + info.latest + '점으로 확인되었습니다. 추가 기록이 쌓이면 상승/유지 흐름을 더 정확히 안내드리겠습니다.';
+        if (info.status === 'up') return label + '은 최근 ' + info.count + '개월 기준 ' + Math.abs(info.diff) + '점 상승해 학습 누적 효과가 보입니다.';
+        if (info.status === 'down') return label + '은 최근 ' + info.count + '개월 기준 ' + Math.abs(info.diff) + '점 하락해 복습 루틴을 다시 잡을 필요가 있습니다.';
+        return label + '은 최근 ' + info.count + '개월 동안 큰 흔들림 없이 유지되고 있습니다.';
+    }
+
+    function gradeReportAchievementText(summary) {
+        var parts = [];
+        if (summary.vocabTrendInfo.status === 'up' || (summary.vocabAvg !== null && summary.vocabAvg >= 85)) parts.push('단어 성취도');
+        if (summary.grammarTrendInfo.status === 'up' || (summary.grammarAvg !== null && summary.grammarAvg >= 85)) parts.push('문법 이해도');
+        if (summary.monthEnd !== null && summary.monthEnd >= 85) parts.push('월말평가');
+        if (!parts.length) return '현재는 성취 영역을 더 명확히 보기 위해 단어와 문법 기록을 꾸준히 누적하는 단계입니다.';
+        return parts.join(', ') + '에서 긍정적인 흐름이 확인됩니다.';
+    }
+
+    function gradeReportImproveText(summary) {
+        var parts = [];
+        if (summary.vocabTrendInfo.status === 'down') parts.push('단어 복습 간격 조정');
+        if (summary.grammarTrendInfo.status === 'down') parts.push('문법 개념 확인과 예문 적용 연습');
+        if (summary.retryCount > 0) parts.push('재시험/보완 기록 ' + summary.retryCount + '회에 대한 재확인');
+        if (summary.monthEnd !== null && summary.monthEnd < 75) parts.push('월말평가 이후 약한 영역 보강');
+        if (!parts.length) return '큰 하락 신호는 없으며, 다음 달에도 단어 암기 정확도와 문법 적용력을 함께 유지하겠습니다.';
+        return parts.join(', ') + '이 우선 보완 포인트입니다.';
     }
 
     function gradeReportRetryCount(series) {
@@ -395,9 +475,24 @@
         var retryCount = gradeReportRetryCount(series);
         var vocabTrend = gradeTrendText(series, 'vocab', '단어 성취도');
         var grammarTrend = gradeTrendText(series, 'grammar', '문법 이해도');
-        var improve = reportMemoValue('improve', retryCount ? '재시험 또는 보완이 필요한 기록을 우선 확인합니다.' : '기록이 부족한 영역은 다음 수업에서 추가 확인합니다.');
+        var vocabTrendInfo = gradeTrendInfo(series, 'vocab');
+        var grammarTrendInfo = gradeTrendInfo(series, 'grammar');
+        var baseSummary = {
+            vocabAvg: vocabAvg,
+            grammarAvg: grammarAvg,
+            monthEnd: monthEnd,
+            retryCount: retryCount,
+            vocabTrend: vocabTrend,
+            grammarTrend: grammarTrend,
+            vocabTrendInfo: vocabTrendInfo,
+            grammarTrendInfo: grammarTrendInfo
+        };
+        var autoImprove = gradeReportImproveText(baseSummary);
+        var improve = reportMemoValue('improve', autoImprove);
         var home = reportMemoValue('home', '가정에서는 단어 복습과 문장 단위 해석 연습을 짧게 반복해 주세요.');
         var goal = reportMemoValue('goal', '다음 달에는 단어와 문법 모두 안정적인 응시 흐름을 만드는 것을 목표로 합니다.');
+        var strength = reportMemoValue('strength', gradeReportAchievementText(baseSummary));
+        var counselComment = strength + ' ' + improve + ' 상담 시에는 최근 흐름과 가정 학습 루틴을 함께 안내드리겠습니다.';
         return {
             vocabAvg: vocabAvg,
             grammarAvg: grammarAvg,
@@ -405,11 +500,15 @@
             retryCount: retryCount,
             vocabTrend: vocabTrend,
             grammarTrend: grammarTrend,
+            vocabTrendInfo: vocabTrendInfo,
+            grammarTrendInfo: grammarTrendInfo,
+            achievement: strength,
             improve: improve,
             home: home,
             goal: goal,
-            periodText: _gradeReportPeriod === 'all' ? '전체 기간' : '최근 ' + _gradeReportPeriod + '개월',
-            periodRange: series.months.length ? monthLabel(series.months[0]) + ' - ' + monthLabel(series.months[series.months.length - 1]) : '기록 없음',
+            counselComment: counselComment,
+            periodText: formatGradeReportPeriod(series.months),
+            periodRange: formatGradeReportRange(series.months),
             studentName: displayName(student)
         };
     }
@@ -500,18 +599,55 @@
 
     function buildGradeReportMessage(student, series) {
         var summary = gradeReportSummary(student, series);
+        var monthEndText = summary.monthEnd === null
+            ? '월말평가는 아직 조회 기간 내 유효 기록이 부족합니다.'
+            : '최근 월말평가는 100점 환산 기준 ' + summary.monthEnd + '점으로 확인됩니다.';
+        var retryText = summary.retryCount > 0
+            ? '또한 조회 기간 중 재시험/보완 필요 기록이 ' + summary.retryCount + '회 있어 해당 부분을 우선 점검하겠습니다.'
+            : '재시험/보완 필요 기록은 크게 두드러지지 않습니다.';
         return '안녕하세요. EIE 영어학원입니다.\n\n'
-            + summary.studentName + ' 학생의 ' + summary.periodText + ' 학습 상담 리포트를 안내드립니다.\n'
-            + '- 조회 기간: ' + summary.periodRange + '\n'
-            + '- 단어 흐름: ' + summary.vocabTrend + '\n'
-            + '- 문법 흐름: ' + summary.grammarTrend + '\n'
-            + '- 최근 보완 포인트: ' + summary.improve + '\n'
-            + '- 가정 학습 안내: ' + summary.home + '\n\n'
-            + '다음 달 목표는 ' + summary.goal + '\n상담 시 자세히 안내드리겠습니다.';
+            + summary.studentName + ' 학생의 ' + summary.periodText + '를 안내드립니다.\n'
+            + '조회 기간은 ' + summary.periodRange + '이며, 단어와 문법 기록은 모두 100점 환산 월평균 기준으로 확인했습니다.\n\n'
+            + '[최근 학습 흐름]\n'
+            + gradeTrendSentence(series, 'vocab', 'Vocabulary') + '\n'
+            + gradeTrendSentence(series, 'grammar', 'Grammar') + '\n'
+            + monthEndText + '\n'
+            + retryText + '\n\n'
+            + '[성취 영역]\n'
+            + summary.achievement + '\n\n'
+            + '[보완 영역]\n'
+            + summary.improve + '\n\n'
+            + '[가정 학습 안내]\n'
+            + summary.home + '\n\n'
+            + '[다음 목표]\n'
+            + summary.goal + '\n\n'
+            + '[상담 코멘트]\n'
+            + summary.counselComment + '\n\n'
+            + '상담 시 자세한 학습 방향을 함께 안내드리겠습니다. 감사합니다.';
     }
 
     function renderGradeReportSendText(student, series) {
-        return '<section class="eie-grade-report-send"><h3>학부모 발송 문구</h3><pre id="eie-grade-report-send-text">' + esc(buildGradeReportMessage(student, series)) + '</pre></section>';
+        var message = _gradeReportFinalMessage || buildGradeReportMessage(student, series);
+        return '<section class="eie-grade-report-send"><h3>학부모 발송 문구</h3><textarea id="eie-grade-report-send-text" oninput="EieStudentsView.setGradeReportFinalMessage(this.value)" aria-label="학부모 발송 최종 문구">' + esc(message) + '</textarea><div id="eie-grade-report-send-print" class="eie-grade-report-send-print">' + esc(message) + '</div></section>';
+    }
+
+    function currentGradeReportMessage(student, series) {
+        var textarea = document.getElementById('eie-grade-report-send-text');
+        if (textarea) return String(textarea.value == null ? '' : textarea.value);
+        if (text(_gradeReportFinalMessage)) return text(_gradeReportFinalMessage);
+        return buildGradeReportMessage(student, series);
+    }
+
+    function refreshGradeReportGeneratedMessage(student) {
+        if (!student) return '';
+        var series = buildGradeReportSeries(student);
+        var message = buildGradeReportMessage(student, series);
+        _gradeReportFinalMessage = message;
+        var target = document.getElementById('eie-grade-report-send-text');
+        if (target) target.value = message;
+        var printTarget = document.getElementById('eie-grade-report-send-print');
+        if (printTarget) printTarget.textContent = message;
+        return message;
     }
 
     function renderGradeReportSheet(student) {
@@ -556,7 +692,8 @@
             + '<div class="eie-grade-report-actions"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.closeGradeReportPreview()">닫기</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.copyGradeReportMessage()">학부모 발송 문구 복사</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.saveGradeReportConsultation()">상담기록 저장</button><button type="button" class="eie-primary-button" onclick="EieStudentsView.printGradeReport()">인쇄</button></div>'
             + '</div>'
             + '<div class="eie-grade-report-options">'
-            + '<label><span>기간</span><select onchange="EieStudentsView.setGradeReportPeriod(this.value)"><option value="3"' + (_gradeReportPeriod === '3' ? ' selected' : '') + '>최근 3개월</option><option value="6"' + (_gradeReportPeriod === '6' ? ' selected' : '') + '>최근 6개월</option><option value="12"' + (_gradeReportPeriod === '12' ? ' selected' : '') + '>최근 12개월</option><option value="all"' + (_gradeReportPeriod === 'all' ? ' selected' : '') + '>전체</option></select></label>'
+            + '<label><span>시작월</span><input type="month" value="' + esc(normalizeMonthInput(_gradeReportRangeStart)) + '" onchange="EieStudentsView.setGradeReportRange(\'start\', this.value)"></label>'
+            + '<label><span>종료월</span><input type="month" value="' + esc(normalizeMonthInput(_gradeReportRangeEnd)) + '" onchange="EieStudentsView.setGradeReportRange(\'end\', this.value)"></label>'
             + '<div class="eie-grade-report-checks">'
             + categoryCheck('vocab', '단어', false)
             + categoryCheck('grammar', '문법', false)
@@ -2014,6 +2151,7 @@
             _selectedId = sid;
             _tab = 'grades';
             _gradeReportPreviewStudentId = sid;
+            _gradeReportFinalMessage = '';
             if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
             await refreshStudentsView();
         },
@@ -2023,8 +2161,11 @@
             refreshStudentsView();
         },
 
-        setGradeReportPeriod: function (period) {
-            _gradeReportPeriod = ['3', '6', '12', 'all'].indexOf(text(period)) !== -1 ? text(period) : '6';
+        setGradeReportRange: function (edge, value) {
+            var month = normalizeMonthInput(value);
+            if (edge === 'start') _gradeReportRangeStart = month;
+            if (edge === 'end') _gradeReportRangeEnd = month;
+            _gradeReportFinalMessage = '';
             refreshStudentsView();
         },
 
@@ -2035,6 +2176,7 @@
                 _gradeReportIncludes.vocab = true;
                 _gradeReportIncludes.grammar = true;
             }
+            _gradeReportFinalMessage = '';
             refreshStudentsView();
         },
 
@@ -2050,8 +2192,13 @@
             var target = document.getElementById('eie-grade-report-memo-' + safeKey);
             if (target) target.textContent = reportMemoValue(safeKey, target.textContent || '');
             var student = selectedStudent();
-            var sendTarget = document.getElementById('eie-grade-report-send-text');
-            if (student && sendTarget) sendTarget.textContent = buildGradeReportMessage(student, buildGradeReportSeries(student));
+            if (student) refreshGradeReportGeneratedMessage(student);
+        },
+
+        setGradeReportFinalMessage: function (value) {
+            _gradeReportFinalMessage = String(value == null ? '' : value);
+            var printTarget = document.getElementById('eie-grade-report-send-print');
+            if (printTarget) printTarget.textContent = _gradeReportFinalMessage;
         },
 
         copyGradeReportMessage: async function () {
@@ -2059,7 +2206,14 @@
             var student = selectedStudent();
             if (!sid || !student) return;
             if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
-            var message = buildGradeReportMessage(student, buildGradeReportSeries(student));
+            var series = buildGradeReportSeries(student);
+            var message = currentGradeReportMessage(student, series);
+            if (!text(message)) {
+                _error = '복사할 학부모 발송 문구를 입력해 주세요.';
+                _notice = '';
+                await refreshStudentsView();
+                return;
+            }
             try {
                 if (navigator.clipboard && navigator.clipboard.writeText) await navigator.clipboard.writeText(message);
                 _notice = '학부모 발송 문구를 복사했습니다.';
@@ -2079,23 +2233,13 @@
             if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
             var series = buildGradeReportSeries(student);
             var summary = gradeReportSummary(student, series);
-            var content = [
-                '[학부모 상담용 리포트 저장]',
-                '조회 기간: ' + summary.periodText + ' · ' + summary.periodRange,
-                '최근 단어 평균: ' + (summary.vocabAvg === null ? '-' : summary.vocabAvg + '점'),
-                '최근 문법 평균: ' + (summary.grammarAvg === null ? '-' : summary.grammarAvg + '점'),
-                '최근 월말평가: ' + (summary.monthEnd === null ? '-' : summary.monthEnd + '점'),
-                '재시험/보완 필요: ' + summary.retryCount + '회',
-                '',
-                '[최근 흐름]',
-                summary.vocabTrend + ' ' + summary.grammarTrend,
-                '',
-                '[상담 메모]',
-                '잘하고 있는 점: ' + reportMemoValue('strength', '성실하게 누적 기록을 만들어가고 있습니다.'),
-                '보완할 점: ' + summary.improve,
-                '가정 학습 안내: ' + summary.home,
-                '다음 달 목표: ' + summary.goal
-            ].join('\n');
+            var content = currentGradeReportMessage(student, series);
+            if (!text(content)) {
+                _error = '상담기록에 저장할 최종 발송 문구를 입력해 주세요.';
+                _notice = '';
+                await refreshStudentsView();
+                return;
+            }
             _saving = true;
             try {
                 var result = await EieApi.createConsultation({

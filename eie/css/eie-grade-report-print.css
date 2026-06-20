@@ -72,6 +72,7 @@
 }
 
 :is(.eie-app-shell, .eie-main) .eie-grade-report-options select,
+:is(.eie-app-shell, .eie-main) .eie-grade-report-options input[type="month"],
 :is(.eie-app-shell, .eie-main) .eie-grade-report-note-field textarea {
   width: 100%;
   box-sizing: border-box;
@@ -83,7 +84,8 @@
   font-size: 13px;
 }
 
-:is(.eie-app-shell, .eie-main) .eie-grade-report-options select {
+:is(.eie-app-shell, .eie-main) .eie-grade-report-options select,
+:is(.eie-app-shell, .eie-main) .eie-grade-report-options input[type="month"] {
   height: 36px;
   padding: 0 9px;
 }
@@ -436,7 +438,26 @@
   white-space: pre-wrap;
 }
 
-.eie-grade-report-send pre {
+.eie-grade-report-send textarea {
+  width: 100%;
+  min-height: 170px;
+  box-sizing: border-box;
+  margin: 8px 0 0;
+  padding: 11px 12px;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #344054;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 650;
+  line-height: 1.5;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+.eie-grade-report-send-print {
+  display: none;
   margin: 8px 0 0;
   padding: 11px 12px;
   border: 1px solid #d8e0ea;
@@ -612,11 +633,21 @@
 
   body.eie-printing-grade-report .eie-grade-report-flow div,
   body.eie-printing-grade-report .eie-grade-report-consult-grid div,
-  body.eie-printing-grade-report .eie-grade-report-send pre {
+  body.eie-printing-grade-report .eie-grade-report-send-print {
     padding: 7px 8px !important;
   }
 
-  body.eie-printing-grade-report .eie-grade-report-send pre,
+  body.eie-printing-grade-report .eie-grade-report-send textarea {
+    display: none !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-send-print {
+    display: block !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-send-print,
   body.eie-printing-grade-report .eie-grade-report-sheet footer {
     font-size: 10.2px !important;
   }
