@@ -453,9 +453,6 @@
                         </div>
                     </div>
                     <div class="admin-teacher-card__journal eie-admin-teacher-board">
-                        <div class="admin-teacher-card__journal-title">
-                            <span>선생님별 현황판</span>
-                        </div>
                         ${renderTeacherPeriodRows(periodRows)}
                     </div>
                 </article>
