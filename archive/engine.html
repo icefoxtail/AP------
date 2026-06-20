@@ -898,9 +898,16 @@ function normalizeArchiveExamScriptPath(raw) {
     decoded = decoded.replace(/^archive\/exams\//, 'exams/');
 
     if (!decoded || decoded.length > 512) return '';
+    if (/^blob:/i.test(decoded)) {
+        try {
+            const blobUrl = new URL(decoded);
+            if (blobUrl.origin === window.location.origin) return decoded;
+        } catch (e) {}
+        return '';
+    }
     if (/[?#]/.test(decoded)) return '';
     if (/^(https?:)?\/\//i.test(decoded)) return '';
-    if (/^(javascript|data|blob):/i.test(decoded)) return '';
+    if (/^(javascript|data):/i.test(decoded)) return '';
     if (decoded.includes('../') || decoded.includes('/./') || decoded.includes('//')) return '';
     if (/%2e|%2f|%5c/i.test(decoded)) return '';
     if (!/^exams\/[a-zA-Z0-9가-힣_\-./]+\.js$/.test(decoded)) return '';
@@ -937,7 +944,7 @@ async function init() {
         return;
     }
     const s = document.createElement('script');
-    s.src = safeDataUrl + '?v=' + Date.now();
+    s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : safeDataUrl + '?v=' + Date.now();
     s.onload = async () => {
         const qb = window.questionBank;
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);

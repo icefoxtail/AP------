@@ -12,16 +12,22 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","부등식","범위","조건해석","계산"],
+    tags: [
+    "객관식",
+    "부등식",
+    "범위",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "연립부등식 $2 < x^2 - x \\le 6$의 해는?",
     choices: [
-      "$-2 \\le x < -1$ 또는 $2 < x \\le 3$",
-      "$-2 < x \\le -1$ 또는 $2 \\le x < 3$",
-      "$-1 \\le x \\le 2$",
-      "$x < -1$ 또는 $x > 2$",
-      "해 가 없다."
-    ],
+    "$-2 \\le x < -1$ 또는 $2 < x \\le 3$",
+    "$-2 < x \\le -1$ 또는 $2 \\le x < 3$",
+    "$-1 \\le x \\le 2$",
+    "$x < -1$ 또는 $x > 2$",
+    "해 가 없다."
+  ],
     answer: "①",
     solution: "[키포인트] 연립부등식의 각 부등식을 풀어 공통 범위를 구한다.\\n(i) $2 < x^2 - x \\Rightarrow x^2 - x - 2 > 0 \\Rightarrow (x-2)(x+1) > 0$\\n$\\therefore x < -1$ 또는 $x > 2$\\n(ii) $x^2 - x \\le 6 \\Rightarrow x^2 - x - 6 \\le 0 \\Rightarrow (x-3)(x+2) \\le 0$\\n$\\therefore -2 \\le x \\le 3$\\n(i), (ii)의 공통 범위를 구하면 $-2 \\le x < -1$ 또는 $2 < x \\le 3$이다.\\n따라서 정답은 ①이다."
   },
@@ -36,10 +42,22 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","인수분해","경우의수","개수세기","계산"],
+    tags: [
+    "객관식",
+    "인수분해",
+    "경우의수",
+    "개수세기",
+    "계산"
+  ],
     wide: false,
     content: "$50$의 약수의 개수는?",
-    choices: ["$4$", "$5$", "$6$", "$7$", "$8$"],
+    choices: [
+    "$4$",
+    "$5$",
+    "$6$",
+    "$7$",
+    "$8$"
+  ],
     answer: "③",
     solution: "[키포인트] 소인수분해를 이용하여 약수의 개수를 구한다.\\n$50 = 2 \\times 5^2$이므로\\n약수의 개수는 $(1+1) \\times (2+1) = 2 \\times 3 = 6$이다.\\n따라서 정답은 ③이다."
   },
@@ -54,10 +72,25 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","로그","경우의수","순열","조합","도형","원","조건해석"],
+    tags: [
+    "객관식",
+    "로그",
+    "경우의수",
+    "순열",
+    "조합",
+    "도형",
+    "원",
+    "조건해석"
+  ],
     wide: false,
     content: "학생자치회에서 교내 버스킹 프로그램을 구성하려고 한다. 지원한 $10$개의 팀 중에서 공연할 $3$개의 팀을 뽑는 경우의 수는?",
-    choices: ["$10$", "$45$", "$90$", "$120$", "$720$"],
+    choices: [
+    "$10$",
+    "$45$",
+    "$90$",
+    "$120$",
+    "$720$"
+  ],
     answer: "④",
     solution: "[키포인트] $10$팀 중 순서와 상관없이 $3$팀을 선택하므로 조합을 이용한다.\\n구하는 경우의 수는 ${}_{10}C_{3}$이다.\\n${}_{10}C_{3} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$\\n따라서 정답은 ④이다."
   },
@@ -72,10 +105,22 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","조건해석","계산","하난도","기출"],
+    tags: [
+    "객관식",
+    "조건해석",
+    "계산",
+    "하난도",
+    "기출"
+  ],
     wide: false,
     content: "등식 $\\begin{pmatrix} a-1 & 6 \\\\ -2 & b \\end{pmatrix} = \\begin{pmatrix} b+1 & 6 \\\\ -2 & 4-a \\end{pmatrix}$을 만족시키는 두 상수 $a, b$에 대하여 $a+b$의 값은?",
-    choices: ["$4$", "$5$", "$6$", "$7$", "$8$"],
+    choices: [
+    "$4$",
+    "$5$",
+    "$6$",
+    "$7$",
+    "$8$"
+  ],
     answer: "①",
     solution: "[키포인트] 행렬이 서로 같으려면 대응하는 각 성분이 모두 같아야 한다.\\n$a-1 = b+1 \\Rightarrow a-b = 2$\\n$b = 4-a \\Rightarrow a+b = 4$\\n위의 식에서 $a+b=4$임을 바로 알 수 있다.\\n따라서 정답은 ①이다."
   },
@@ -90,10 +135,25 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","나머지정리","계수비교","근과계수","부등식","대입","조건해석","계산"],
+    tags: [
+    "객관식",
+    "나머지정리",
+    "계수비교",
+    "근과계수",
+    "부등식",
+    "대입",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "삼차방정식 $x^3 - 3x^2 + ax + 5 = 0$의 한 근이 $-1$일 때, 나머지 두 근의 합은?",
-    choices: ["$-4$", "$-2$", "$2$", "$4$", "$5$"],
+    choices: [
+    "$-4$",
+    "$-2$",
+    "$2$",
+    "$4$",
+    "$5$"
+  ],
     answer: "④",
     solution: "[키포인트] 근을 대입하여 상수를 구한 후 근과 계수의 관계를 이용한다.\\n$x=-1$을 대입하면 $(-1)^3 - 3(-1)^2 + a(-1) + 5 = 0$\\n$-1-3-a+5=0 \\Rightarrow a=1$\\n방정식은 $x^3 - 3x^2 + x + 5 = 0$이다.\\n삼차방정식의 세 근을 $-1, \\alpha, \\beta$라 하면 근과 계수의 관계에 의해\\n$-1 + \\alpha + \\beta = -(-3) = 3$\\n$\\therefore \\alpha + \\beta = 4$\\n따라서 정답은 ④이다."
   },
@@ -108,10 +168,23 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","판별식","부등식","연립방정식","대입","계산"],
+    tags: [
+    "객관식",
+    "판별식",
+    "부등식",
+    "연립방정식",
+    "대입",
+    "계산"
+  ],
     wide: false,
     content: "연립방정식 $\\begin{cases} x-y = k \\\\ x^2 + xy + y^2 = 4 \\end{cases}$가 오직 한 쌍의 해를 갖게 하는 음수 $k$의 값은?",
-    choices: ["$-5$", "$-4$", "$-3$", "$-2$", "$-1$"],
+    choices: [
+    "$-5$",
+    "$-4$",
+    "$-3$",
+    "$-2$",
+    "$-1$"
+  ],
     answer: "②",
     solution: "[키포인트] 일차식을 이차식에 대입하여 판별식이 $0$임을 이용한다.\\n$x = y+k$를 두 번째 식에 대입하면\\n$(y+k)^2 + (y+k)y + y^2 = 4 \\Rightarrow 3y^2 + 3ky + k^2 - 4 = 0$\\n해 가 한 쌍이려면 판별식 $D = (3k)^2 - 4(3)(k^2-4) = 0$이어야 한다.\\n$9k^2 - 12k^2 + 48 = 0 \\Rightarrow k^2 = 16$\\n$k = -4$ ($k$는 음수)\\n따라서 정답은 ②이다."
   },
@@ -126,10 +199,24 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","경우의수","순열","조합","조건해석","계산","개념"],
+    tags: [
+    "객관식",
+    "경우의수",
+    "순열",
+    "조합",
+    "조건해석",
+    "계산",
+    "개념"
+  ],
     wide: false,
     content: "등식 ${}_{7}C_{4} \\times 3! = {}_{n}P_{3}$을 만족시키는 상수 $n$의 값은?",
-    choices: ["$3$", "$4$", "$5$", "$6$", "$7$"],
+    choices: [
+    "$3$",
+    "$4$",
+    "$5$",
+    "$6$",
+    "$7$"
+  ],
     answer: "⑤",
     solution: "[키포인트] 조합과 순열의 정의를 사용하여 식을 정리한다.\\n좌변: ${}_{7}C_{4} \\times 3! = {}_{7}C_{3} \\times 3! = {}_{7}P_{3} = 7 \\times 6 \\times 5 = 210$\\n우변: ${}_{n}P_{3} = n(n-1)(n-2) = 210$\\n$210 = 7 \\times 6 \\times 5$이므로 $n=7$이다.\\n따라서 정답은 ⑤이다."
   },
@@ -144,16 +231,22 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","참거짓","조건해석","개념","중난도"],
+    tags: [
+    "객관식",
+    "참거짓",
+    "조건해석",
+    "개념",
+    "중난도"
+  ],
     wide: false,
     content: "두 행렬 $A = \\begin{pmatrix} 1 & 0 & -4 \\\\ 0 & 1 & 2 \\end{pmatrix}, B = \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix}$에 대하여 등식 $2X + B = 2A$를 만족시키는 행렬 $X$는?",
     choices: [
-      "$\\begin{pmatrix} 0 & 2 & -4 \\\\ -2 & 0 & 2 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 1 & 0 & -3 \\\\ 0 & -1 & 2 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 1 & 2 & -3 \\\\ -2 & 1 & 3 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 1 & 2 & 4 \\\\ 2 & 1 & 2 \\end{pmatrix}$"
-    ],
+    "$\\begin{pmatrix} 0 & 2 & -4 \\\\ -2 & 0 & 2 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 1 & 0 & -3 \\\\ 0 & -1 & 2 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 1 & 2 & -3 \\\\ -2 & 1 & 3 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 1 & 2 & 4 \\\\ 2 & 1 & 2 \\end{pmatrix}$"
+  ],
     answer: "③",
     solution: "[키포인트] 행렬 방정식을 정리하여 $X$를 구한다.\\n$2X = 2A - B = 2\\begin{pmatrix} 1 & 0 & -4 \\\\ 0 & 1 & 2 \\end{pmatrix} - \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix}$\\n$2X = \\begin{pmatrix} 2 & 0 & -8 \\\\ 0 & 2 & 4 \\end{pmatrix} - \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix} = \\begin{pmatrix} 2 & 4 & -6 \\\\ -4 & 2 & 6 \\end{pmatrix}$\\n$\\therefore X = \\begin{pmatrix} 1 & 2 & -3 \\\\ -2 & 1 & 3 \\end{pmatrix}$\\n따라서 정답은 ③이다."
   },
@@ -168,10 +261,24 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","절댓값","부등식","정수조건","범위","조건해석","계산"],
+    tags: [
+    "객관식",
+    "절댓값",
+    "부등식",
+    "정수조건",
+    "범위",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "부등식 $| |x-1| - 2 | \\le 1$을 만족시키는 정수 $x$는 $n$개다. 가능한 정수 $x$의 총합을 $m$이라 할 때, $m+n$의 값은?",
-    choices: ["$8$", "$9$", "$10$", "$11$", "$12$"],
+    choices: [
+    "$8$",
+    "$9$",
+    "$10$",
+    "$11$",
+    "$12$"
+  ],
     answer: "⑤",
     solution: "[키포인트] 절댓값을 포함한 부등식을 단계적으로 푼다.\\n$-1 \\le |x-1| - 2 \\le 1 \\Rightarrow 1 \\le |x-1| \\le 3$\\n(i) $|x-1| \\le 3 \\Rightarrow -3 \\le x-1 \\le 3 \\Rightarrow -2 \\le x \\le 4$\\n(ii) $|x-1| \\ge 1 \\Rightarrow x-1 \\ge 1$ 또는 $x-1 \\le -1 \\Rightarrow x \\ge 2$ 또는 $x \\le 0$\\n공통 범위: $-2 \\le x \\le 0$ 또는 $2 \\le x \\le 4$\\n정수 $x$는 $-2, -1, 0, 2, 3, 4$로 $n=6$이다.\\n총합 $m = -2-1+0+2+3+4 = 6$\\n$\\therefore m+n = 6+6=12$\\n따라서 정답은 ⑤이다."
   },
@@ -186,10 +293,22 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","경우의수","도형","원","계산"],
+    tags: [
+    "객관식",
+    "경우의수",
+    "도형",
+    "원",
+    "계산"
+  ],
     wide: false,
     content: "$10$원짜 동전 $4$개, $50$원짜리 동전 $3$개, $100$원짜리 동전 $2$개가 있다. 이 동전의 일부 또는 전부를 사용하여 지불할 수 있는 금액의 수는? (단, $0$원을 지불하는 경우는 제외한다.)",
-    choices: ["$27$", "$31$", "$35$", "$39$", "$43$"],
+    choices: [
+    "$27$",
+    "$31$",
+    "$35$",
+    "$39$",
+    "$43$"
+  ],
     answer: "④",
     solution: "[키포인트] 중복되는 금액을 처리하기 위해 큰 단위의 동전을 작은 단위로 환산한다.\\n$50$원 $2$개로 $100$원을 만들 수 있으므로 $100$원 동전을 $50$원 동전으로 바꾼다.\\n$100$원 $2$개 $\\rightarrow 50$원 $4$개. 기존 $50$원 $3$개를 더하면 $50$원 동전은 총 $7$개이다.\\n$10$원 동전 $4$개로는 $50$원을 만들 수 없으므로 그대로 둔다.\\n금액의 수: $(4+1) \\times (7+1) - 1 = 5 \\times 8 - 1 = 39$\\n따라서 정답은 ④이다."
   },
@@ -204,10 +323,22 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","복소수","지수","조건해석","계산"],
+    tags: [
+    "객관식",
+    "복소수",
+    "지수",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "$2 \\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\\n$a_{ij} = \\begin{cases} ij & (i < j) \\\\ 1 & (i = j) \\\\ 2-ij & (i > j) \\end{cases}$일 때, 행렬 $A^7$의 모든 성분의 합은?",
-    choices: ["$16$", "$44$", "$73$", "$98$", "$130$"],
+    choices: [
+    "$16$",
+    "$44$",
+    "$73$",
+    "$98$",
+    "$130$"
+  ],
     answer: "①",
     solution: "[키포인트] 행렬 $A$를 구하고 거듭제곱의 규칙성을 찾는다.\\n$a_{11}=1, a_{12}=1 \\times 2 = 2, a_{21}=2-2 \\times 1 = 0, a_{22}=1$\\n$A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$이므로 $A^n = \\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix}$이다.\\n$A^7 = \\begin{pmatrix} 1 & 14 \\\\ 0 & 1 \\end{pmatrix}$의 모든 성분의 합은 $1+14+0+1 = 16$이다.\\n따라서 정답은 ①이다."
   },
@@ -222,10 +353,18 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: ["그래프"],
+    tags: [
+    "그래프"
+  ],
     wide: false,
-    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, <보기>에서 옳은 것만 있는 대로 고른 것은? [4.2 점]\\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\\n</svg>\\n<div class=\"question-table-wrap\">\\n <table class=\"question-table\" style=\"width:100%; border:1px solid black;\">\\n <tr>\\n <td>\\n &lt;보기&gt;<br/>\\n ㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.<br/>\\n ㄴ. $q-p = s-r$<br/>\\n ㄷ. 부등식 $f(-2x) < 0$의 해는 $-2r < x < -2q$이다.\\n </td>\\n </tr>\\n </table>\\n</div>",
-    choices: ["ㄱ", "ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
+    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, &lt;보기&gt;에서 옳은 것만 있는 대로 고른 것은? [4.2점]<br>\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:0 auto; padding:0;\">\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n</div><div style=\"width:100%; margin:0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n&lt;보기&gt;<br>\nㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.<br>\nㄴ. $q-p=s-r$<br>\nㄷ. 부등식 $f(-2x) \\lt 0$의 해는 $-2r \\lt x \\lt -2q$이다.\n</div>",
+    choices: [
+    "ㄱ",
+    "ㄴ",
+    "ㄱ, ㄷ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
     answer: "②",
     solution: "[키포인트] 이차함수 그래프의 대칭성과 부등식의 성질을 이용하여 각 보기를 판단한다.\\n이차함수 $y=f(x)$의 대칭축을 $x=k$라고 하자.\\nㄱ. $f(x) - 2 \\ge 0 \\Rightarrow f(x) \\ge 2$이다. 그래프에서 함숫값이 $2$보다 크거나 같은 구간은 $x \\le p$ 또는 $x \\ge s$이므로 ㄱ은 옳지 않다.\\nㄴ. 이차함수는 대칭축에 대하여 선대칭이다. $f(p)=f(s)=2$이므로 $p$와 $s$의 중점은 $k$이다. 즉, $\\frac{p+s}{2}=k$이므로 $p+s=2k$이다. 마찬가지로 $f(q)=f(r)=0$이므로 $q$와 $r$의 중점은 $k$이다. 즉, $\\frac{q+r}{2}=k$이므로 $q+r=2k$이다. 따라서 $p+s=q+r \\Rightarrow s-r=q-p$가 성립하므로 ㄴ은 옳다.\\nㄷ. 그래프에서 $f(x) < 0$의 해는 $q < x < r$이다. $f(-2x) < 0$이려면 $q < -2x < r$을 만족해야 한다. 각 변을 $-2$로 나누면 부등호의 방향이 바뀌어 $-\\frac{r}{2} < x < -\\frac{q}{2}$가 된다. 따라서 ㄷ은 옳지 않다.\\n옳은 것은 ㄴ뿐이므로 정답은 ②이다."
   },
@@ -240,10 +379,22 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","참거짓","개념","조건해석","상난도"],
+    tags: [
+    "객관식",
+    "참거짓",
+    "개념",
+    "조건해석",
+    "상난도"
+  ],
     wide: false,
     content: "두 $2 \\times 2$ 행렬 $A, B$에 대하여 다음 <보기>에서 항상 옳은 것만을 있는 대로 고른 것은? (단, $O=\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}, I=\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$이다.)",
-    choices: ["ㄱ", "ㄷ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
+    choices: [
+    "ㄱ",
+    "ㄷ",
+    "ㄱ, ㄴ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
     answer: "②",
     solution: "[키포인트] 행렬 연산의 기본 법칙과 반례를 적용한다.\\nㄱ. $AB=O$라고 해서 $A=O$ 또는 $B=O$인 것은 아니다. (거짓)\\nㄴ. 교환법칙이 성립한다고 해서 어느 한 행렬이 단위행렬인 것은 아니다. (거짓)\\nㄷ. $AB=A, BA=B$이면 $A^2 = A(BA) = (AB)A = AA = A$가 성립한다. (참)\\n따라서 정답은 ②이다."
   },
@@ -258,16 +409,25 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","최대최소","부등식","함수","범위","조건해석","계산","상급"],
+    tags: [
+    "객관식",
+    "최대최소",
+    "부등식",
+    "함수",
+    "범위",
+    "조건해석",
+    "계산",
+    "상급"
+  ],
     wide: false,
     content: "$1 \\le x \\le 3$인 모든 실수 $x$가 부등식 $ax > x^2 + 2x + 5$를 만족할 때, 실수 $a$의 값의 범위는?",
     choices: [
-      "$a > \\frac{20}{3}$",
-      "$a < \\frac{20}{3}$",
-      "$\\frac{20}{3} < a < 8$",
-      "$a > 8$",
-      "모든 실수"
-    ],
+    "$a > \\frac{20}{3}$",
+    "$a < \\frac{20}{3}$",
+    "$\\frac{20}{3} < a < 8$",
+    "$a > 8$",
+    "모든 실수"
+  ],
     answer: "④",
     solution: "[키포인트] 부등식을 정리하여 함수의 최댓값을 이용한다.\\n$a > x + 2 + \\frac{5}{x}$이 $[1, 3]$에서 성립해야 한다.\\n$f(x) = x + 2 + \\frac{5}{x}$라 하면, $x=1$에서 $f(1)=8$, $x=3$에서 $f(3)=3+2+5/3=20/3$이다.\\n함수 $f(x)$는 주어진 구간에서 $x=1$일 때 최대이므로 $a > 8$이어야 한다.\\n따라서 정답은 ④이다."
   },
@@ -282,19 +442,22 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: ["도형"],
+    tags: [
+    "도형"
+  ],
     wide: false,
-    image: "assets/images/25_순천고_1학기_기말_고1_기출/q15.png",
     content: "연립부등식 $\\begin{cases} ax-b \\le 0 \\\\ cx+d > 0 \\end{cases}$의 해를 수직선 위에 나타내면 그림과 같다. 이때 연립부등식 $\\begin{cases} ax+b \\le 0 \\\\ -cx+d > 0 \\end{cases}$의 해는? (단, $a, b, c, d$는 상수이다.)",
     choices: [
-      "$x \\le -2$ 또는 $x > 1$",
-      "$-2 \\le x < 1$",
-      "$-1 < x \\le 2$",
-      "$x < -1$ 또는 $x \\ge 2$",
-      "해 가 없다."
-    ],
+    "$x \\le -2$ 또는 $x > 1$",
+    "$-2 \\le x < 1$",
+    "$-1 < x \\le 2$",
+    "$x < -1$ 또는 $x \\ge 2$",
+    "해 가 없다."
+  ],
     answer: "⑤",
-    solution: "[키포인트] 주어진 해를 통해 계수 간의 관계식을 세운다.\\n그림의 해는 $-1 < x \\le 2$이다.\\n(i) $ax-b \\le 0 \\Rightarrow x \\le b/a = 2 \\Rightarrow b=2a, a > 0$\\n(ii) $cx+d > 0$의 해가 $x < -1$이므로 $c < 0$이고 $-d/c = -1 \\Rightarrow d=c$\\n구하는 부등식:\\n1) $ax+b \\le 0 \\Rightarrow ax+2a \\le 0 \\Rightarrow x \\le -2$\\n2) $-cx+d > 0 \\Rightarrow -cx+c > 0 \\Rightarrow c(-x+1) > 0$. $c < 0$이므로 $-x+1 < 0 \\Rightarrow x > 1$\\n$x \\le -2$와 $x > 1$의 공통 범위가 없으므로 해가 없다.\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 주어진 해를 통해 계수 간의 관계식을 세운다.\\n그림의 해는 $-1 < x \\le 2$이다.\\n(i) $ax-b \\le 0 \\Rightarrow x \\le b/a = 2 \\Rightarrow b=2a, a > 0$\\n(ii) $cx+d > 0$의 해가 $x < -1$이므로 $c < 0$이고 $-d/c = -1 \\Rightarrow d=c$\\n구하는 부등식:\\n1) $ax+b \\le 0 \\Rightarrow ax+2a \\le 0 \\Rightarrow x \\le -2$\\n2) $-cx+d > 0 \\Rightarrow -cx+c > 0 \\Rightarrow c(-x+1) > 0$. $c < 0$이므로 $-x+1 < 0 \\Rightarrow x > 1$\\n$x \\le -2$와 $x > 1$의 공통 범위가 없으므로 해가 없다.\\n따라서 정답은 ⑤이다.",
+    image: "assets/images/25_순천고_1학기_기말_고1_기출/q15.png",
+    imageSize: "medium"
   },
   {
     id: 16,
@@ -307,13 +470,23 @@ window.questionBank = [
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
-    tags: ["그래프", "도형"],
+    tags: [
+    "그래프",
+    "도형"
+  ],
     wide: false,
-    image: "assets/images/25_순천고_1학기_기말_고1_기출/q16.png",
     content: "두 이차함수 $y=f(x), y=g(x)$의 그래프는 다음과 같다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
-    choices: ["ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ"],
+    choices: [
+    "ㄱ",
+    "ㄴ",
+    "ㄱ, ㄴ",
+    "ㄱ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
     answer: "⑤",
-    solution: "[키포인트] 그래프의 상하 관계와 절편을 분석한다.\\nㄱ. $f(x) > g(x)$인 구간은 교점 $b$와 $d$를 기준으로 바깥쪽이므로 $x < b$ 또는 $x > d$이다. (참)\\nㄴ. $f(x)g(x)=0$의 해는 $f(x)=0$ 또는 $g(x)=0$의 실근이므로 그림에서 $a, c, d$가 근이 된다. (참)\\nㄷ. $f(x)g(x) < 0$은 두 함수의 부호가 서로 다른 구간이다. $x < a$ 또는 $x > c$ 구간에서 성립한다. (참)\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 그래프의 상하 관계와 절편을 분석한다.\\nㄱ. $f(x) > g(x)$인 구간은 교점 $b$와 $d$를 기준으로 바깥쪽이므로 $x < b$ 또는 $x > d$이다. (참)\\nㄴ. $f(x)g(x)=0$의 해는 $f(x)=0$ 또는 $g(x)=0$의 실근이므로 그림에서 $a, c, d$가 근이 된다. (참)\\nㄷ. $f(x)g(x) < 0$은 두 함수의 부호가 서로 다른 구간이다. $x < a$ 또는 $x > c$ 구간에서 성립한다. (참)\\n따라서 정답은 ⑤이다.",
+    image: "assets/images/25_순천고_1학기_기말_고1_기출/q16.png",
+    imageSize: "large"
   },
   {
     id: 17,
@@ -326,16 +499,22 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    "tags": ["객관식","계산","조건해석","중난도","기출"],
+    tags: [
+    "객관식",
+    "계산",
+    "조건해석",
+    "중난도",
+    "기출"
+  ],
     wide: false,
     content: "P, Q지역 사과와 배의 생산 비용 및 이익금에 대한 정보가 주어졌을 때, 생산 비용이 $10\\%$ 증가하고 판매 가격은 유지될 때의 2025년 이익금을 행렬로 나타내면?",
     choices: [
-      "$\\begin{pmatrix} 400 & 300 \\\\ 500 & 370 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 405 & 300 \\\\ 500 & 375 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 410 & 300 \\\\ 500 & 380 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 415 & 300 \\\\ 500 & 385 \\end{pmatrix}$",
-      "$\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$"
-    ],
+    "$\\begin{pmatrix} 400 & 300 \\\\ 500 & 370 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 405 & 300 \\\\ 500 & 375 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 410 & 300 \\\\ 500 & 380 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 415 & 300 \\\\ 500 & 385 \\end{pmatrix}$",
+    "$\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$"
+  ],
     answer: "⑤",
     solution: "[키포인트] 새로운 이익금 = 기존 이익금 - (생산 비용의 $10\\%$)임을 이용한다.\\n판매 가격이 일정하므로 생산 비용이 $10\\%$ 늘어난 만큼 이익금은 줄어든다.\\nP지역 사과 이익금: $700 - 2800 \\times 0.1 = 420$\\nP지역 배 이익금: $900 - 4000 \\times 0.1 = 500$\\nQ지역 사과 이익금: $600 - 3000 \\times 0.1 = 300$\\nQ지역 배 이익금: $800 - 4100 \\times 0.1 = 390$\\n행렬로 나타내면 $\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$이다.\\n따라서 정답은 ⑤이다."
   },
@@ -350,7 +529,16 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "주관식",
     layoutTag: "grid",
-    "tags": ["서술형","판별식","최대최소","부등식","연립방정식","대입","조건해석","계산"],
+    tags: [
+    "서술형",
+    "판별식",
+    "최대최소",
+    "부등식",
+    "연립방정식",
+    "대입",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "연립방정식 $\\begin{cases} x+y = 2a \\\\ x^2+y^2 = -2a+12 \\end{cases}$의 해가 모두 실수일 때, $p \\le a^2 + 2a - 1 \\le q$이다. $q-p$의 최솟값을 구하시오.",
     choices: [],
@@ -368,7 +556,16 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "주관식",
     layoutTag: "grid",
-    "tags": ["서술형","최대최소","경우의수","조합","자연수조건","개수세기","조건해석","계산"],
+    tags: [
+    "서술형",
+    "최대최소",
+    "경우의수",
+    "조합",
+    "자연수조건",
+    "개수세기",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "$0$부터 $9$까지 카드 $10$장 중 $3$장을 택하여 만든 세 자리 자연수 중 각 자리 수의 합이 $9$의 배수인 것의 개수를 구하시오.",
     choices: [],
@@ -386,7 +583,13 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "주관식",
     layoutTag: "grid",
-    "tags": ["서술형","지수","대입","조건해석","계산"],
+    tags: [
+    "서술형",
+    "지수",
+    "대입",
+    "조건해석",
+    "계산"
+  ],
     wide: false,
     content: "행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$ 성분 합이 $4$가 되는 $x$를 $a$, $A^3 = \\frac{3}{4}A - \\frac{1}{4}I$가 되는 $x$를 $b$라 할 때 $a+b$를 구하시오.",
     choices: [],
@@ -404,9 +607,11 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: ["서술형"],
+    tags: [
+    "서술형"
+  ],
     wide: false,
-    content: "허수 $x$가 $x + \\frac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오.\\n(1) $x^3$의 값을 구하시오.\\n(2) $\\frac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하시오.",
+    content: "허수 $x$가 $x + \\frac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오.\\n(1) $x^3$의 값을 구하시오.\\n\n(2) $\\frac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하시오.",
     choices: [],
     answer: "(1) $-1$, (2) $1$",
     solution: "[키포인트] $x^2-x+1=0$을 만들고 켤레복소수의 성질을 이용한다.\\n주어진 식에서 $x \\ne 0$이므로 양변에 $x$를 곱하면\\n$x^2-x+1=0$\\n이다.\\n(1) 양변에 $(x+1)$을 곱하면\\n$(x+1)(x^2-x+1)=x^3+1=0$\\n이므로 $x^3=-1$이다.\\n(2) $x^2=x-1$이므로\\n$\\frac{x^2}{x-1}=1$\\n또한 $x$는 허수근이므로 켤레복소수 $\\bar{x}$도 같은 방정식의 근이고, 두 근의 합은 $1$이므로\\n$x+\\bar{x}=1$\\n이다. 따라서\\n\\bar{x}(1-x)+x=\\bar{x}(x+\\bar{x}-x)+x=\\bar{x}^2+x$\\n한편 $\\bar{x}$도 $t^2-t+1=0$의 근이므로 $\\bar{x}^2=\\bar{x}-1$이다.\\n그러므로\\n\\bar{x}^2+x=(\\bar{x}-1)+x=(x+\\bar{x})-1=1-1=0$\\n이다.\\n따라서 전체 값은\\n$\\frac{x^2}{x-1}+\\bar{x}(1-x)+x=1+0=1$\\n이다.\\n따라서 정답은 (1) $-1$, (2) $1$이다."
@@ -422,7 +627,9 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: ["서술형"],
+    tags: [
+    "서술형"
+  ],
     wide: false,
     content: "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 \\\\ |x-2| \\le k \\end{cases}$의 정수 해 가 $3$개가 되도록 하는 $k$의 범위를 구하시오.",
     choices: [],
@@ -440,12 +647,15 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "서술형",
     layoutTag: "grid",
-    tags: ["서술형", "도형"],
+    tags: [
+    "서술형",
+    "도형"
+  ],
     wide: false,
-    image: "assets/images/25_순천고_1학기_기말_고1_기출/q23.png",
     content: "그림의 $6$개 영역을 $5$가지 색으로 칠하는 방법의 수를 구하시오. (단, 이웃하는 영역은 다른 색을 칠한다.)",
     choices: [],
     answer: "$480$",
-    solution: "[키포인트] 위쪽과 아래쪽 영역의 색을 먼저 정한 뒤, 가운데 네 영역을 차례로 센다.\\n위쪽 영역 $A$는 $5$가지 색 중 하나로 칠할 수 있다.\\n아래쪽 영역 $F$는 $A$와 이웃하므로 $4$가지이다.\\n가운데 네 영역 $B, C, D, E$는 각각 $A$, $F$와 이웃하므로 $A$, $F$의 색을 제외한 $3$가지 색만 사용할 수 있다.\\n이때 $B, C, D, E$는 가로로 서로 이웃한 일렬 구조이므로\\n$B$는 $3$가지, $C$는 $B$와 달라야 하므로 $2$가지, $D$는 $C$와 달라야 하므로 $2$가지, $E$는 $D$와 달라야 하므로 $2$가지이다.\\n따라서 전체 경우의 수는\\n$5 \\times 4 \\times 3 \\times 2 \\times 2 \\times 2 = 480$\\n이다.\\n따라서 정답은 $480$이다."
+    solution: "[키포인트] 위쪽과 아래쪽 영역의 색을 먼저 정한 뒤, 가운데 네 영역을 차례로 센다.\\n위쪽 영역 $A$는 $5$가지 색 중 하나로 칠할 수 있다.\\n아래쪽 영역 $F$는 $A$와 이웃하므로 $4$가지이다.\\n가운데 네 영역 $B, C, D, E$는 각각 $A$, $F$와 이웃하므로 $A$, $F$의 색을 제외한 $3$가지 색만 사용할 수 있다.\\n이때 $B, C, D, E$는 가로로 서로 이웃한 일렬 구조이므로\\n$B$는 $3$가지, $C$는 $B$와 달라야 하므로 $2$가지, $D$는 $C$와 달라야 하므로 $2$가지, $E$는 $D$와 달라야 하므로 $2$가지이다.\\n따라서 전체 경우의 수는\\n$5 \\times 4 \\times 3 \\times 2 \\times 2 \\times 2 = 480$\\n이다.\\n따라서 정답은 $480$이다.",
+    image: "assets/images/25_순천고_1학기_기말_고1_기출/q23.png"
   }
 ];
