@@ -3450,6 +3450,7 @@ async function handleApiRequest(request, env) {
 
         if (
           resource === 'consultations' ||
+          resource === 'student-report-archives' ||
           resource === 'operation-memos' ||
           resource === 'exam-schedules' ||
           resource === 'academy-schedules' ||

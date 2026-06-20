@@ -518,6 +518,51 @@ async function ensureContactDeletedAtColumn(env) {
   } catch (_) {}
 }
 
+let consultationReportIdColumnEnsured = false;
+async function ensureConsultationReportIdColumn(env) {
+  if (consultationReportIdColumnEnsured) return;
+  try {
+    await env.DB.prepare('ALTER TABLE consultations ADD COLUMN report_id TEXT').run();
+    consultationReportIdColumnEnsured = true;
+  } catch (error) {
+    const text = String(error?.message || error || '').toLowerCase();
+    if (text.includes('duplicate column')) {
+      consultationReportIdColumnEnsured = true;
+    } else {
+      return;
+    }
+  }
+}
+
+let gradeReportsTableEnsured = false;
+async function ensureGradeReportsTable(env) {
+  if (gradeReportsTableEnsured) return;
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS eie_grade_reports (
+      report_id TEXT PRIMARY KEY,
+      student_id TEXT NOT NULL,
+      title TEXT NOT NULL,
+      range_start TEXT,
+      range_end TEXT,
+      included_categories TEXT,
+      memo_strength TEXT,
+      memo_improve TEXT,
+      memo_home TEXT,
+      memo_goal TEXT,
+      final_message TEXT NOT NULL,
+      generated_snapshot TEXT,
+      consultation_id TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )
+  `).run();
+  await env.DB.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_eie_grade_reports_student_updated
+      ON eie_grade_reports(student_id, updated_at)
+  `).run();
+  gradeReportsTableEnsured = true;
+}
+
 function isEieOwner(teacher) {
   return String(teacher?.role || '').toLowerCase() === 'admin';
 }
@@ -992,9 +1037,10 @@ async function handleDeleteStudentContact(env, contactId) {
 }
 
 async function queryConsultations(env, studentId) {
+  await ensureConsultationReportIdColumn(env);
   if (!studentId) {
     const result = await env.DB.prepare(`
-      SELECT id, student_id, date, type, content, next_action, created_at
+      SELECT id, student_id, date, type, content, next_action, report_id, created_at
       FROM consultations
       ORDER BY date DESC, created_at DESC
       LIMIT 50
@@ -1002,7 +1048,7 @@ async function queryConsultations(env, studentId) {
     return result.results || [];
   }
   const result = await env.DB.prepare(`
-    SELECT id, student_id, date, type, content, next_action, created_at
+    SELECT id, student_id, date, type, content, next_action, report_id, created_at
     FROM consultations
     WHERE student_id = ?
     ORDER BY date DESC, created_at DESC
@@ -1011,8 +1057,9 @@ async function queryConsultations(env, studentId) {
 }
 
 async function getConsultation(env, id) {
+  await ensureConsultationReportIdColumn(env);
   return env.DB.prepare(`
-    SELECT id, student_id, date, type, content, next_action, created_at
+    SELECT id, student_id, date, type, content, next_action, report_id, created_at
     FROM consultations
     WHERE id = ?
     LIMIT 1
@@ -1023,6 +1070,91 @@ async function handleGetConsultations(env, url) {
   const studentId = safeText(url.searchParams.get('student_id'));
   const rows = await queryConsultations(env, studentId);
   return jsonResponse({ success: true, data: rows, consultations: rows });
+}
+
+function gradeReportPayloadFromBody(body) {
+  return {
+    studentId: safeText(body.student_id),
+    title: safeText(body.title),
+    rangeStart: safeText(body.range_start),
+    rangeEnd: safeText(body.range_end),
+    includedCategories: safeText(body.included_categories),
+    memoStrength: safeText(body.memo_strength),
+    memoImprove: safeText(body.memo_improve),
+    memoHome: safeText(body.memo_home),
+    memoGoal: safeText(body.memo_goal),
+    finalMessage: safeText(body.final_message),
+    generatedSnapshot: safeText(body.generated_snapshot),
+    consultationId: safeText(body.consultation_id)
+  };
+}
+
+async function handlePostGradeReport(request, env) {
+  await ensureGradeReportsTable(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const payload = gradeReportPayloadFromBody(body);
+  if (!payload.studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
+  if (!payload.title) return jsonResponse({ success: false, error: 'title is required' }, 400);
+  if (!payload.finalMessage) return jsonResponse({ success: false, error: 'final_message is required' }, 400);
+  const reportId = makeId('eie_grpt');
+  await env.DB.prepare(`
+    INSERT INTO eie_grade_reports (
+      report_id, student_id, title, range_start, range_end, included_categories,
+      memo_strength, memo_improve, memo_home, memo_goal, final_message,
+      generated_snapshot, consultation_id, created_at, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    reportId,
+    payload.studentId,
+    payload.title,
+    payload.rangeStart,
+    payload.rangeEnd,
+    payload.includedCategories,
+    payload.memoStrength,
+    payload.memoImprove,
+    payload.memoHome,
+    payload.memoGoal,
+    payload.finalMessage,
+    payload.generatedSnapshot,
+    payload.consultationId
+  ).run();
+  const report = await getGradeReport(env, reportId);
+  return jsonResponse({ success: true, data: report, grade_report: report, grade_reports: await queryGradeReports(env, payload.studentId) });
+}
+
+async function handlePatchGradeReport(request, env, reportId) {
+  await ensureGradeReportsTable(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await getGradeReport(env, reportId);
+  if (!existing) return jsonResponse({ success: false, error: 'grade report not found' }, 404);
+  const payload = gradeReportPayloadFromBody(Object.assign({}, existing, body));
+  if (!payload.title) return jsonResponse({ success: false, error: 'title is required' }, 400);
+  if (!payload.finalMessage) return jsonResponse({ success: false, error: 'final_message is required' }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_grade_reports
+    SET title = ?, range_start = ?, range_end = ?, included_categories = ?,
+        memo_strength = ?, memo_improve = ?, memo_home = ?, memo_goal = ?,
+        final_message = ?, generated_snapshot = ?, consultation_id = ?,
+        updated_at = CURRENT_TIMESTAMP
+    WHERE report_id = ?
+  `).bind(
+    payload.title,
+    payload.rangeStart,
+    payload.rangeEnd,
+    payload.includedCategories,
+    payload.memoStrength,
+    payload.memoImprove,
+    payload.memoHome,
+    payload.memoGoal,
+    payload.finalMessage,
+    payload.generatedSnapshot,
+    payload.consultationId,
+    reportId
+  ).run();
+  const report = await getGradeReport(env, reportId);
+  return jsonResponse({ success: true, data: report, grade_report: report, grade_reports: await queryGradeReports(env, existing.student_id) });
 }
 
 function parseEieExamPayloadJson(value) {
@@ -1508,23 +1640,26 @@ async function handleSaveEieGradeSheet(request, env, teacher) {
 }
 
 async function handlePostConsultation(request, env) {
+  await ensureConsultationReportIdColumn(env);
   const body = await readJsonBody(request);
   if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
   const studentId = safeText(body.student_id);
   const content = safeText(body.content);
+  const reportId = safeText(body.report_id);
   if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
   if (!content) return jsonResponse({ success: false, error: 'content is required' }, 400);
   const id = makeId('eie_cns');
   await env.DB.prepare(`
-    INSERT INTO consultations (id, student_id, date, type, content, next_action, created_at)
-    VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+    INSERT INTO consultations (id, student_id, date, type, content, next_action, report_id, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
   `).bind(
     id,
     studentId,
     safeText(body.date) || new Date().toISOString().slice(0, 10),
     safeText(body.type || '상담'),
     content,
-    safeText(body.next_action)
+    safeText(body.next_action),
+    reportId
   ).run();
   const consultation = await getConsultation(env, id);
   return jsonResponse({ success: true, data: consultation, consultation, consultations: await queryConsultations(env, studentId) });
@@ -1546,6 +1681,7 @@ async function handlePatchConsultation(request, env, id) {
     binds.push(content);
   }
   if (body.next_action !== undefined) { sets.push('next_action = ?'); binds.push(safeText(body.next_action)); }
+  if (body.report_id !== undefined) { sets.push('report_id = ?'); binds.push(safeText(body.report_id)); }
   if (!sets.length) return jsonResponse({ success: false, error: 'no fields to update' }, 400);
   binds.push(id);
   await env.DB.prepare(`UPDATE consultations SET ${sets.join(', ')} WHERE id = ?`).bind(...binds).run();
@@ -2356,6 +2492,14 @@ async function handleGet(request, env, path, url) {
       return handleGetConsultations(env, url);
     } catch (error) {
       return jsonResponse({ success: false, error: 'consultations table is not ready', code: 'EIE_NOT_IMPLEMENTED' }, 409);
+    }
+  }
+
+  if (section === 'grade-reports') {
+    try {
+      return handleGetGradeReports(env, url);
+    } catch (error) {
+      return jsonResponse({ success: false, error: 'grade reports table is not ready', code: 'EIE_GRADE_REPORTS_NOT_READY' }, 409);
     }
   }
 
@@ -3253,6 +3397,39 @@ async function handlePatchTeacher(request, env, teacherId) {
   return jsonResponse({ success: true, teacher, data: teacher });
 }
 
+async function queryGradeReports(env, studentId) {
+  await ensureGradeReportsTable(env);
+  if (!studentId) return [];
+  const result = await env.DB.prepare(`
+    SELECT report_id, student_id, title, range_start, range_end, included_categories,
+           memo_strength, memo_improve, memo_home, memo_goal, final_message,
+           generated_snapshot, consultation_id, created_at, updated_at
+    FROM eie_grade_reports
+    WHERE student_id = ?
+    ORDER BY updated_at DESC, created_at DESC
+  `).bind(studentId).all();
+  return result.results || [];
+}
+
+async function getGradeReport(env, reportId) {
+  await ensureGradeReportsTable(env);
+  return env.DB.prepare(`
+    SELECT report_id, student_id, title, range_start, range_end, included_categories,
+           memo_strength, memo_improve, memo_home, memo_goal, final_message,
+           generated_snapshot, consultation_id, created_at, updated_at
+    FROM eie_grade_reports
+    WHERE report_id = ?
+    LIMIT 1
+  `).bind(reportId).first();
+}
+
+async function handleGetGradeReports(env, url) {
+  const studentId = safeText(url.searchParams.get('student_id'));
+  if (!studentId) return jsonResponse({ success: true, data: [], grade_reports: [] });
+  const rows = await queryGradeReports(env, studentId);
+  return jsonResponse({ success: true, data: rows, grade_reports: rows });
+}
+
 async function handleResetTeacherPassword(request, env, teacherId) {
   const body = await readJsonBody(request);
   if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
@@ -3391,6 +3568,14 @@ export async function handleEie(request, env, teacher, path, url) {
 
   if (method === 'POST' && path[2] === 'consultations' && !path[3]) {
     return handlePostConsultation(request, env);
+  }
+
+  if (method === 'POST' && path[2] === 'grade-reports' && !path[3]) {
+    return handlePostGradeReport(request, env);
+  }
+
+  if (method === 'PATCH' && path[2] === 'grade-reports' && path[3] && !path[4]) {
+    return handlePatchGradeReport(request, env, path[3]);
   }
 
   if (method === 'PATCH' && path[2] === 'consultations' && path[3] && !path[4]) {

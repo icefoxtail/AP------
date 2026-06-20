@@ -19,6 +19,70 @@ function getRecentAverage(studentId, limit = 3) {
     return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
 }
 
+function copyReportLegacy(sid, type, options = {}) {
+    const ctx = buildReportContext(sid, options);
+    const s = ctx.student;
+
+    if (!s) {
+        toast('?숈깮 ?뺣낫瑜?李얠쓣 ???놁뒿?덈떎.', 'warn');
+        return;
+    }
+
+    let text = '';
+    let title = '蹂닿퀬 臾멸뎄';
+    if (type === 'parent') {
+        text = buildParentReportText(ctx);
+        title = '?숇?紐⑥슜 臾멸뎄';
+    } else if (type === 'student') {
+        text = buildStudentReportText(ctx);
+        title = '?숈깮??臾멸뎄';
+    } else {
+        text = buildCounselReportText(ctx);
+        title = '?곷떞??臾멸뎄';
+    }
+
+    const safeSid = escapeReportJsString(sid);
+    const safeType = escapeReportJsString(type);
+    const today = reportArchiveToday();
+    const defaultTitle = reportArchiveDefaultTitle(s.name || '', today, today);
+    reportArchiveState().currentArchiveId = '';
+    reportArchiveState().loadedArchive = null;
+    reportArchiveState().autoText = text;
+    reportArchiveState().dirty = false;
+
+    showModal(title, `
+        <div style="display:grid; grid-template-columns:minmax(0, 1fr) 280px; gap:14px; align-items:start;">
+            <div style="background:var(--bg); padding:16px; border-radius:18px;">
+                <div style="display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:8px; margin-bottom:10px;">
+                    <input id="report-archive-title" class="btn" value="${escapeHtmlForTextarea(defaultTitle)}" style="min-height:42px; text-align:left; background:var(--surface); border:1px solid var(--border); font-size:12px; font-weight:700;" oninput="reportArchiveHandleTextInput()">
+                    <input id="report-archive-range-start" type="date" class="btn" value="${today}" style="min-height:42px; background:var(--surface); border:1px solid var(--border); font-size:12px; font-weight:700;" onchange="reportArchiveHandleOptionChange('${safeSid}', '${safeType}', 'basic')">
+                    <input id="report-archive-range-end" type="date" class="btn" value="${today}" style="min-height:42px; background:var(--surface); border:1px solid var(--border); font-size:12px; font-weight:700;" onchange="reportArchiveHandleOptionChange('${safeSid}', '${safeType}', 'basic')">
+                </div>
+                <div style="display:flex; justify-content:space-between; gap:8px; align-items:center; margin-bottom:8px;">
+                    <p style="margin:0; font-size:12px; color:var(--secondary); font-weight:700;">\uC790\uB3D9 \uC0DD\uC131 \uD6C4 \uC218\uC815\uD55C \uBB38\uAD6C\uB294 \uC790\uB3D9\uC73C\uB85C \uB36E\uC5B4\uC4F0\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>
+                    <span id="report-archive-dirty-badge" style="font-size:11px; font-weight:800; color:var(--secondary); white-space:nowrap;">\uC800\uC7A5\uB428</span>
+                </div>
+                <textarea id="report-copy-text" class="btn" style="width:100%; height:300px; text-align:left; background:var(--surface); border:none; padding:16px; font-size:14px; line-height:1.7; resize:vertical; font-family:inherit; white-space:pre-wrap;" oninput="reportArchiveHandleTextInput()">${escapeHtmlForTextarea(text)}</textarea>
+                <textarea id="report-archive-memo" class="btn" placeholder="\uC0C1\uB2F4 \uBA54\uBAA8" style="width:100%; min-height:70px; margin-top:8px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:12px; font-size:12px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportArchiveHandleTextInput()"></textarea>
+                <div id="report-archive-option-warning" style="min-height:18px; margin-top:8px; font-size:11px; color:#b45309; font-weight:700; line-height:1.5;"></div>
+                <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-top:10px;">
+                    <button class="btn btn-primary" style="min-height:42px; font-size:12px; font-weight:800; border-radius:12px;" onclick="reportArchiveSave('${safeSid}', '${safeType}', 'basic', 'upsert')">\uB9AC\uD3EC\uD2B8 \uC800\uC7A5</button>
+                    <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="reportArchiveSave('${safeSid}', '${safeType}', 'basic', 'update')">\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5</button>
+                    <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="reportArchiveSaveAs('${safeSid}', '${safeType}', 'basic')">\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5</button>
+                    <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="reportArchiveRegenerateText('${safeSid}', '${safeType}', 'basic', true)">\uBB38\uAD6C \uB2E4\uC2DC \uC0DD\uC131</button>
+                    <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="reportArchivePrintCurrent('${safeSid}')">\uC800\uC7A5\uBCF8 \uC778\uC1C4</button>
+                    <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportArchiveSaveConsultationAndLink('${safeSid}', '${safeType}', 'basic', 'report-copy-text')">\uC0C1\uB2F4\uAE30\uB85D\uC5D0\uB3C4 \uC800\uC7A5</button>
+                </div>
+            </div>
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:12px; max-height:520px; overflow:auto;">
+                <div style="font-size:13px; font-weight:900; color:var(--text); margin-bottom:8px;">\uC800\uC7A5 \uB9AC\uD3EC\uD2B8</div>
+                <div id="report-archive-list"></div>
+            </div>
+        </div>
+    `, '理쒖쥌 蹂듭궗', copyStaticReportText);
+    reportArchiveLoadList(sid);
+}
+
 /**
  * 보고 문구 생성용 기본 데이터 수집
  */
@@ -59,6 +123,17 @@ function buildReportContext(sid, options = {}) {
         ? apmsGetStudentById(safeSid)
         : state.db.students.find(x => String(x.id) === safeSid);
     const today = new Date().toLocaleDateString('sv-SE');
+    const rangeStart = String(reportOptions.rangeStart || '').trim();
+    const rangeEnd = String(reportOptions.rangeEnd || '').trim();
+    const inReportRange = dateValue => {
+        const d = String(dateValue || '').slice(0, 10);
+        if (!d) return false;
+        if (rangeStart && d < rangeStart) return false;
+        if (rangeEnd && d > rangeEnd) return false;
+        return true;
+    };
+    const attendanceRows = (state.db.attendance || []).filter(a => String(a.student_id) === safeSid && inReportRange(a.date || a.created_at));
+    const homeworkRows = (state.db.homework || []).filter(h => String(h.student_id) === safeSid && inReportRange(h.date || h.created_at));
 
     const attendance = state.db.attendance.find(a => String(a.student_id) === safeSid && a.date === today)?.status || '미기록';
     const homework = state.db.homework.find(h => String(h.student_id) === safeSid && h.date === today)?.status || '미기록';
@@ -139,7 +214,11 @@ function buildReportContext(sid, options = {}) {
         latestConsultation,
         targetProgress,
         riskInfo: reportOptions.riskInfo || null,
-        missingExamInfo: reportOptions.missingExamInfo || null
+        missingExamInfo: reportOptions.missingExamInfo || null,
+        rangeStart,
+        rangeEnd,
+        attendanceRows,
+        homeworkRows
     };
 }
 
@@ -439,6 +518,315 @@ function escapeReportJsString(value) {
     return String(value || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }
 
+const AP_REPORT_ARCHIVE_REPORT_TYPE = 'parent_report';
+
+function reportArchiveState() {
+    window.AP_REPORT_ARCHIVE_MODAL_STATE = window.AP_REPORT_ARCHIVE_MODAL_STATE || {};
+    return window.AP_REPORT_ARCHIVE_MODAL_STATE;
+}
+
+function reportArchiveText(value) {
+    return String(value || '').trim();
+}
+
+function reportArchiveToday() {
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function reportArchivePeriodLabel(start, end) {
+    const s = reportArchiveText(start);
+    const e = reportArchiveText(end);
+    if (s && e && s !== e) return `${s} ~ ${e}`;
+    return s || e || reportArchiveToday();
+}
+
+function reportArchiveDefaultTitle(studentName, start, end) {
+    return `${studentName || 'AP MATH'} ${reportArchivePeriodLabel(start, end)} \uD559\uBD80\uBAA8 \uB9AC\uD3EC\uD2B8`;
+}
+
+function reportArchiveGetInputs() {
+    return {
+        title: document.getElementById('report-archive-title'),
+        start: document.getElementById('report-archive-range-start'),
+        end: document.getElementById('report-archive-range-end'),
+        memo: document.getElementById('report-archive-memo'),
+        textarea: document.getElementById('report-copy-text')
+    };
+}
+
+function reportArchiveBuildSnapshot(studentId, targetType, sourceType, autoText, finalMessage, options = {}) {
+    const ctx = buildReportContext(studentId, options);
+    const s = ctx.student || {};
+    const sessions = (ctx.exams || []).slice(0, 10).map(e => ({
+        id: e.id || '',
+        exam_date: e.exam_date || '',
+        exam_title: e.exam_title || '',
+        score: e.score ?? '',
+        question_count: e.question_count ?? ''
+    }));
+    return {
+        version: 1,
+        system_type: 'apmath',
+        report_type: AP_REPORT_ARCHIVE_REPORT_TYPE,
+        target_type: targetType || 'parent',
+        source_type: sourceType || 'basic',
+        saved_at: new Date().toISOString(),
+        student_snapshot: {
+            id: s.id || studentId,
+            name: s.name || '',
+            school_name: s.school_name || '',
+            grade: s.grade || '',
+            status: s.status || ''
+        },
+        class_snapshot: {
+            class_id: ctx.classId || '',
+            class_name: ctx.className || ''
+        },
+        range: {
+            start: options.rangeStart || '',
+            end: options.rangeEnd || '',
+            label: reportArchivePeriodLabel(options.rangeStart, options.rangeEnd)
+        },
+        attendance_summary: {
+            current_status: ctx.attendance || '',
+            rows: (ctx.attendanceRows || []).map(r => ({ date: r.date || '', status: r.status || '', memo: r.memo || '' }))
+        },
+        homework_summary: {
+            current_status: ctx.homework || '',
+            rows: (ctx.homeworkRows || []).map(r => ({ date: r.date || '', status: r.status || '', memo: r.memo || '' }))
+        },
+        exam_summary: {
+            latest_exam: ctx.latestExam ? {
+                id: ctx.latestExam.id || '',
+                exam_date: ctx.latestExam.exam_date || '',
+                exam_title: ctx.latestExam.exam_title || '',
+                score: ctx.latestExam.score ?? '',
+                question_count: ctx.latestExam.question_count ?? ''
+            } : null,
+            recent_average: ctx.avg,
+            sessions,
+            wrong_ids: ctx.wrongIds || []
+        },
+        weak_units_summary: {
+            wrong_ids: ctx.wrongIds || []
+        },
+        progress_summary: {
+            progress_text: ctx.progressText || '',
+            target_progress: ctx.targetProgress || null
+        },
+        options: {
+            rangeStart: options.rangeStart || '',
+            rangeEnd: options.rangeEnd || ''
+        },
+        counsel_memo: reportArchiveGetInputs().memo?.value || '',
+        auto_message: autoText || '',
+        final_message: finalMessage || ''
+    };
+}
+
+function reportArchivePayloadFromLoaded(row) {
+    const payload = row?.payload_json || row?.payloadJson || {};
+    return payload && typeof payload === 'object' ? payload : {};
+}
+
+function reportArchiveSetDirty(isDirty) {
+    const st = reportArchiveState();
+    st.dirty = !!isDirty;
+    const badge = document.getElementById('report-archive-dirty-badge');
+    if (badge) badge.textContent = st.dirty ? '\uC218\uC815\uB428' : '\uC800\uC7A5\uB428';
+}
+
+function reportArchiveHandleTextInput() {
+    reportArchiveSetDirty(true);
+}
+
+function reportArchiveHandleOptionChange(studentId, targetType, sourceType) {
+    const st = reportArchiveState();
+    const info = document.getElementById('report-archive-option-warning');
+    if (st.dirty && info) {
+        info.textContent = '\uAE30\uAC04/\uC635\uC158\uC774 \uBCC0\uACBD\uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uC218\uC815\uBB38\uAD6C\uB294 \uC790\uB3D9\uC73C\uB85C \uB36E\uC5B4\uC4F0\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uD544\uC694\uD558\uBA74 "\uBB38\uAD6C \uB2E4\uC2DC \uC0DD\uC131"\uC744 \uB204\uB974\uC138\uC694.';
+        return;
+    }
+    reportArchiveRegenerateText(studentId, targetType, sourceType, false);
+}
+
+function reportArchiveRegenerateText(studentId, targetType, sourceType, force = true) {
+    const inputs = reportArchiveGetInputs();
+    if (!inputs.textarea) return;
+    if (reportArchiveState().dirty && !force) return;
+    const options = { rangeStart: inputs.start?.value || '', rangeEnd: inputs.end?.value || '' };
+    const ctx = buildReportContext(studentId, options);
+    let text = '';
+    if (targetType === 'parent') text = buildParentReportText(ctx);
+    else if (targetType === 'student') text = buildStudentReportText(ctx);
+    else text = buildCounselReportText(ctx);
+    inputs.textarea.value = text;
+    reportArchiveState().autoText = text;
+    reportArchiveState().currentArchiveId = force ? '' : reportArchiveState().currentArchiveId;
+    reportArchiveSetDirty(false);
+    const info = document.getElementById('report-archive-option-warning');
+    if (info) info.textContent = '';
+}
+
+async function reportArchiveLoadList(studentId) {
+    const listEl = document.getElementById('report-archive-list');
+    if (!listEl || typeof api === 'undefined') return;
+    listEl.innerHTML = '<div style="padding:12px; font-size:12px; color:var(--secondary); font-weight:700;">Loading...</div>';
+    try {
+        const r = await api.get(`student-report-archives?student_id=${encodeURIComponent(studentId)}`);
+        const rows = Array.isArray(r.data) ? r.data : (Array.isArray(r.report_archives) ? r.report_archives : []);
+        reportArchiveState().archives = rows;
+        if (!rows.length) {
+            listEl.innerHTML = `<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:700;">\uC800\uC7A5\uB41C \uB9AC\uD3EC\uD2B8\uAC00 \uC544\uC9C1 \uC5C6\uC2B5\uB2C8\uB2E4.</div>`;
+            return;
+        }
+        listEl.innerHTML = rows.map(row => {
+            const title = reportCenterEscape(row.title || '\uBB34\uC81C \uB9AC\uD3EC\uD2B8');
+            const period = reportCenterEscape(row.period_label || reportArchivePeriodLabel(row.range_start, row.range_end));
+            const updated = reportCenterEscape(String(row.updated_at || row.created_at || '').replace('T', ' ').slice(0, 16));
+            const createdBy = reportCenterEscape(row.created_by || '-');
+            const cns = row.consultation_saved ? '\uC0C1\uB2F4\uC800\uC7A5 \uC644\uB8CC' : '\uC0C1\uB2F4\uBBF8\uC5F0\uACB0';
+            return `<button type="button" class="btn" style="width:100%; text-align:left; display:block; padding:11px 12px; border:1px solid var(--border); border-radius:12px; background:var(--surface); margin-bottom:8px;" onclick="reportArchiveOpenSaved('${escapeReportJsString(studentId)}', '${escapeReportJsString(row.id)}')">
+                <div style="font-size:13px; font-weight:800; color:var(--text);">${title}</div>
+                <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${period} · ${updated} · ${createdBy} · ${cns}</div>
+            </button>`;
+        }).join('');
+    } catch (e) {
+        listEl.innerHTML = `<div style="padding:12px; color:#dc2626; font-size:12px; font-weight:700;">\uC800\uC7A5 \uBAA9\uB85D\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.</div>`;
+    }
+}
+
+function reportArchiveOpenSaved(studentId, archiveId) {
+    const st = reportArchiveState();
+    const row = (st.archives || []).find(item => String(item.id) === String(archiveId));
+    if (!row) return;
+    const payload = reportArchivePayloadFromLoaded(row);
+    const inputs = reportArchiveGetInputs();
+    if (inputs.title) inputs.title.value = row.title || '';
+    if (inputs.start) inputs.start.value = row.range_start || payload.range?.start || '';
+    if (inputs.end) inputs.end.value = row.range_end || payload.range?.end || '';
+    if (inputs.memo) inputs.memo.value = payload.counsel_memo || '';
+    if (inputs.textarea) inputs.textarea.value = row.final_message || payload.final_message || '';
+    st.currentArchiveId = row.id;
+    st.loadedArchive = row;
+    st.autoText = payload.auto_message || row.final_message || '';
+    reportArchiveSetDirty(false);
+    const info = document.getElementById('report-archive-option-warning');
+    if (info) info.textContent = '\uC800\uC7A5\uBCF8\uC744 \uBD88\uB7EC\uC654\uC2B5\uB2C8\uB2E4. \uC774 \uC0C1\uD0DC\uC5D0\uC11C \uCD9C\uB825\uD558\uBA74 \uC800\uC7A5\uB41C \uBB38\uAD6C \uAE30\uC900\uC785\uB2C8\uB2E4.';
+}
+
+async function reportArchiveSave(studentId, targetType, sourceType, mode = 'upsert') {
+    const inputs = reportArchiveGetInputs();
+    const finalMessage = inputs.textarea?.value || '';
+    if (!reportArchiveText(finalMessage)) {
+        toast('\uC800\uC7A5\uD560 \uB9AC\uD3EC\uD2B8 \uBB38\uAD6C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.', 'warn');
+        return null;
+    }
+    const student = typeof apmsGetStudentById === 'function' ? apmsGetStudentById(studentId) : (state.db.students || []).find(s => String(s.id) === String(studentId));
+    const rangeStart = inputs.start?.value || '';
+    const rangeEnd = inputs.end?.value || '';
+    const title = reportArchiveText(inputs.title?.value) || reportArchiveDefaultTitle(student?.name, rangeStart, rangeEnd);
+    const payload = reportArchiveBuildSnapshot(studentId, targetType, sourceType, reportArchiveState().autoText || finalMessage, finalMessage, { rangeStart, rangeEnd });
+    const body = {
+        studentId,
+        report_type: AP_REPORT_ARCHIVE_REPORT_TYPE,
+        title,
+        range_start: rangeStart,
+        range_end: rangeEnd,
+        period_label: reportArchivePeriodLabel(rangeStart, rangeEnd),
+        payload_json: payload,
+        final_message: finalMessage
+    };
+    const st = reportArchiveState();
+    const usePatch = (mode === 'update' && st.currentArchiveId) || (mode === 'upsert' && st.currentArchiveId);
+    const r = usePatch
+        ? await api.patch(`student-report-archives/${encodeURIComponent(st.currentArchiveId)}`, body)
+        : await api.post('student-report-archives', body);
+    if (r?.success) {
+        st.currentArchiveId = r.id || r.data?.id || st.currentArchiveId;
+        st.loadedArchive = r.data || st.loadedArchive;
+        reportArchiveSetDirty(false);
+        await reportArchiveLoadList(studentId);
+        toast(mode === 'copy' ? '\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4.' : '\uB9AC\uD3EC\uD2B8\uB97C \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4.', 'success');
+        return st.currentArchiveId;
+    }
+    toast('\uB9AC\uD3EC\uD2B8 \uC800\uC7A5\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+    return null;
+}
+
+function reportArchiveSaveAs(studentId, targetType, sourceType) {
+    const inputs = reportArchiveGetInputs();
+    if (inputs.title && !/\(\uBCF5\uC0AC\)$/.test(inputs.title.value)) inputs.title.value = `${inputs.title.value || '\uB9AC\uD3EC\uD2B8'} (\uBCF5\uC0AC)`;
+    return reportArchiveSave(studentId, targetType, sourceType, 'copy');
+}
+
+function reportArchivePrintCurrent(studentId) {
+    const inputs = reportArchiveGetInputs();
+    const title = inputs.title?.value || 'AP MATH Report';
+    const text = inputs.textarea?.value || reportArchiveState().loadedArchive?.final_message || '';
+    if (!reportArchiveText(text)) {
+        toast('\uCD9C\uB825\uD560 \uB9AC\uD3EC\uD2B8\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.', 'warn');
+        return;
+    }
+    const printId = 'report-archive-print-text';
+    let hidden = document.getElementById(printId);
+    if (!hidden) {
+        hidden = document.createElement('textarea');
+        hidden.id = printId;
+        hidden.style.display = 'none';
+        document.body.appendChild(hidden);
+    }
+    hidden.value = text;
+    reportCenterPrintText(printId, title);
+}
+
+async function reportArchiveSaveConsultationAndLink(studentId, targetType, sourceType, textareaId) {
+    const inputs = reportArchiveGetInputs();
+    const text = inputs.textarea?.value ?? document.getElementById(textareaId)?.value ?? '';
+    if (!reportArchiveText(text)) {
+        toast('\uC0C1\uB2F4\uAE30\uB85D\uC5D0 \uC800\uC7A5\uD560 \uBB38\uAD6C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.', 'warn');
+        return;
+    }
+    const archiveId = await reportArchiveSave(studentId, targetType, sourceType, 'upsert');
+    if (!archiveId) return;
+    const date = reportArchiveToday();
+    const student = typeof apmsGetStudentById === 'function' ? apmsGetStudentById(studentId) : (state.db.students || []).find(s => String(s.id) === String(studentId));
+    const title = reportArchiveText(inputs.title?.value) || reportArchiveDefaultTitle(student?.name, inputs.start?.value || '', inputs.end?.value || '');
+    const period = reportArchivePeriodLabel(inputs.start?.value || '', inputs.end?.value || '');
+    const content = [
+        '[\uB9AC\uD3EC\uD2B8 \uC0C1\uB2F4\uAE30\uB85D]',
+        `\uB9AC\uD3EC\uD2B8: ${title || '-'}`,
+        `\uAE30\uAC04: ${period || '-'}`,
+        `report_archive_id: ${archiveId || '-'}`,
+        '',
+        text
+    ].join('\n');
+    try {
+        const r = await api.post('consultations', {
+            studentId,
+            date,
+            type: '\uD559\uC2B5',
+            content,
+            nextAction: '\uB9AC\uD3EC\uD2B8 \uBC1C\uC1A1 \uD6C4 \uB2E4\uC74C \uC0C1\uB2F4 \uD750\uB984 \uD655\uC778'
+        });
+        if (r?.success) {
+            if (archiveId) {
+                await api.patch(`student-report-archives/${encodeURIComponent(archiveId)}`, {
+                    consultation_id: r.id || '',
+                    consultation_saved_at: new Date().toISOString()
+                });
+            }
+            await reportArchiveLoadList(studentId);
+            await loadData();
+            toast('\uC0C1\uB2F4\uAE30\uB85D\uC5D0\uB3C4 \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4.', 'success');
+            return;
+        }
+        toast('\uC0C1\uB2F4\uAE30\uB85D \uC800\uC7A5\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+    } catch (e) {
+        toast('\uC0C1\uB2F4\uAE30\uB85D \uC800\uC7A5\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+    }
+}
+
 function makeClassReportTextId(studentId) {
     return `class-report-${String(studentId || '').replace(/[^a-zA-Z0-9_-]/g, '_')}`;
 }
@@ -529,7 +917,7 @@ function getReportTargetLabel(targetType) {
     return '상담용';
 }
 
-async function saveReportToConsultation(studentId, targetType, sourceType, textareaId) {
+async function saveReportToConsultation(studentId, targetType, sourceType, textareaId, archiveId = '') {
     const textarea = document.getElementById(textareaId);
     const text = textarea ? textarea.value.trim() : '';
 
@@ -553,6 +941,17 @@ async function saveReportToConsultation(studentId, targetType, sourceType, texta
         });
 
         if (r?.success) {
+            if (archiveId) {
+                try {
+                    await api.patch(`student-report-archives/${encodeURIComponent(archiveId)}`, {
+                        consultation_id: r.id || '',
+                        consultation_saved_at: new Date().toISOString()
+                    });
+                    if (typeof reportArchiveLoadList === 'function') await reportArchiveLoadList(studentId);
+                } catch (linkErr) {
+                    console.warn('[saveReportToConsultation] archive link failed:', linkErr);
+                }
+            }
             await loadData();
             toast('상담기록에 저장되었습니다.', 'success');
         } else {
@@ -4045,3 +4444,5 @@ async function saveParentReportImage(name, examTitle) {
         if (saveBtn) saveBtn.disabled = false;
     }
 }
+
+window.copyReport = copyReportLegacy;
