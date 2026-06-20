@@ -317,6 +317,20 @@
             if (studentId) params.set('student_id', studentId);
             return get(`consultations${params.toString() ? `?${params}` : ''}`, 'student-seeds');
         },
+        getGradeReports(studentId) {
+            const params = new URLSearchParams();
+            if (studentId) params.set('student_id', studentId);
+            return get(`grade-reports${params.toString() ? `?${params}` : ''}`, 'student-seeds');
+        },
+        async createGradeReport(payload) {
+            return request('grade-reports', { method: 'POST', body: payload || {} });
+        },
+        async updateGradeReport(id, payload) {
+            return request(`grade-reports/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
         getScheduleAssignments() {
             return get('schedule-assignments', 'student-seeds');
         },

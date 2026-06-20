@@ -30,6 +30,34 @@ function pickText(value, fallback = '') {
   return String(value).trim();
 }
 
+function parseJsonObject(value, fallback = {}) {
+  if (!value) return fallback;
+  if (typeof value === 'object') return value;
+  try {
+    const parsed = JSON.parse(String(value));
+    return parsed && typeof parsed === 'object' ? parsed : fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function stringifyJsonObject(value) {
+  if (!value || typeof value !== 'object') return '{}';
+  try {
+    return JSON.stringify(value);
+  } catch (e) {
+    return '{}';
+  }
+}
+
+function normalizeReportArchiveRow(row = {}) {
+  return {
+    ...row,
+    payload_json: parseJsonObject(row.payload_json, {}),
+    consultation_saved: row.consultation_id || row.consultation_saved_at ? 1 : 0
+  };
+}
+
 function isMissingClientRequestColumn(error) {
   const message = String(error?.message || error || '');
   return /client_request_id/i.test(message) && /no such column|D1_ERROR|SQLITE_ERROR/i.test(message);
@@ -126,6 +154,97 @@ export async function handleOperations(request, env, teacher, path, url) {
       if (!(await canAccessStudent(currentTeacher, existing.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
       await env.DB.prepare('DELETE FROM consultations WHERE id = ?').bind(id).run();
       return jsonResponse({ success: true });
+    }
+  }
+
+  if (resource === 'student-report-archives') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    if (method === 'GET') {
+      const sid = pickText(url.searchParams.get('studentId') || url.searchParams.get('student_id'));
+      if (!sid) return jsonResponse({ success: false, message: 'student_id required' }, 400);
+      if (!(await canAccessStudent(currentTeacher, sid, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      const res = await env.DB.prepare(`
+        SELECT *
+        FROM student_report_archives
+        WHERE system_type = 'apmath' AND student_id = ?
+        ORDER BY updated_at DESC, created_at DESC, id DESC
+      `).bind(sid).all();
+      const rows = (res.results || []).map(normalizeReportArchiveRow);
+      return jsonResponse({ success: true, data: rows, report_archives: rows });
+    }
+
+    if (method === 'POST') {
+      const d = await request.json();
+      const studentId = pickText(d.studentId || d.student_id);
+      if (!studentId) return jsonResponse({ success: false, message: 'student_id required' }, 400);
+      if (!(await canAccessStudent(currentTeacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      const title = pickText(d.title, 'AP MATH report');
+      const payloadJson = stringifyJsonObject(d.payload_json || d.payloadJson || d.payload || {});
+      const finalMessage = pickText(d.final_message ?? d.finalMessage);
+      if (!finalMessage) return jsonResponse({ success: false, message: 'final_message required' }, 400);
+      const idValue = `sra_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      await env.DB.prepare(`
+        INSERT INTO student_report_archives
+          (id, system_type, student_id, report_type, title, range_start, range_end, period_label, payload_json, final_message, created_by, created_at, updated_at)
+        VALUES
+          (?, 'apmath', ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+      `).bind(
+        idValue,
+        studentId,
+        pickText(d.report_type || d.reportType, 'parent_report'),
+        title,
+        pickText(d.range_start || d.rangeStart),
+        pickText(d.range_end || d.rangeEnd),
+        pickText(d.period_label || d.periodLabel),
+        payloadJson,
+        finalMessage,
+        pickText(currentTeacher.name || currentTeacher.id)
+      ).run();
+      const row = await env.DB.prepare('SELECT * FROM student_report_archives WHERE id = ?').bind(idValue).first();
+      return jsonResponse({ success: true, id: idValue, data: normalizeReportArchiveRow(row) });
+    }
+
+    if (method === 'PATCH' && id) {
+      const existing = await env.DB.prepare('SELECT * FROM student_report_archives WHERE id = ?').bind(id).first();
+      if (!existing) return jsonResponse({ error: 'Not found' }, 404);
+      if (!(await canAccessStudent(currentTeacher, existing.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      const d = await request.json();
+      const payloadJson = d.payload_json !== undefined || d.payloadJson !== undefined || d.payload !== undefined
+        ? stringifyJsonObject(d.payload_json || d.payloadJson || d.payload || {})
+        : existing.payload_json;
+      const finalMessage = d.final_message !== undefined || d.finalMessage !== undefined
+        ? pickText(d.final_message ?? d.finalMessage)
+        : existing.final_message;
+      if (!finalMessage) return jsonResponse({ success: false, message: 'final_message required' }, 400);
+      await env.DB.prepare(`
+        UPDATE student_report_archives
+        SET report_type = ?,
+            title = ?,
+            range_start = ?,
+            range_end = ?,
+            period_label = ?,
+            payload_json = ?,
+            final_message = ?,
+            consultation_id = COALESCE(?, consultation_id),
+            consultation_saved_at = COALESCE(?, consultation_saved_at),
+            updated_at = DATETIME('now')
+        WHERE id = ?
+      `).bind(
+        pickText(d.report_type || d.reportType, existing.report_type || 'parent_report'),
+        pickText(d.title, existing.title || 'AP MATH report'),
+        pickText(d.range_start || d.rangeStart, existing.range_start || ''),
+        pickText(d.range_end || d.rangeEnd, existing.range_end || ''),
+        pickText(d.period_label || d.periodLabel, existing.period_label || ''),
+        payloadJson,
+        finalMessage,
+        pickText(d.consultation_id || d.consultationId) || null,
+        pickText(d.consultation_saved_at || d.consultationSavedAt) || null,
+        id
+      ).run();
+      const row = await env.DB.prepare('SELECT * FROM student_report_archives WHERE id = ?').bind(id).first();
+      return jsonResponse({ success: true, id, data: normalizeReportArchiveRow(row) });
     }
   }
 

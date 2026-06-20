@@ -19,6 +19,7 @@
     var _pinnedConsultationFormStudent = '';
     var _examCategory = 'month_end';
     var _examRecordsByStudent = {};
+    var _gradeReportsByStudent = {};
     var _printGrouping = 'grade';
     var _printStatus = 'active_paused';
     var _printIncludeContacts = true;
@@ -31,6 +32,8 @@
     var _gradeReportNote = '';
     var _gradeReportMemo = { strength: '', improve: '', home: '', goal: '' };
     var _gradeReportFinalMessage = '';
+    var _gradeReportFinalDirty = false;
+    var _gradeReportLoadedReportId = '';
     var _gradeReportPreviewStudentId = '';
 
     var STUDENT_GRADE_OPTIONS = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
@@ -207,6 +210,7 @@
         { key: 'listening', label: 'Listening' },
         { key: 'free', label: '자유기록' }
     ];
+    var GRADE_REPORT_CONSULTATION_TYPE = '학부모 상담 리포트';
 
     function examCategoryLabel(category) {
         var item = EXAM_CATEGORIES.find(function (row) { return row.key === category; });
@@ -326,6 +330,67 @@
         } catch (error) {
             return {};
         }
+    }
+
+    function isGradeReportConsultation(row) {
+        return text(row && row.type) === GRADE_REPORT_CONSULTATION_TYPE;
+    }
+
+    function parseGradeReportJson(value, fallback) {
+        if (!value) return fallback || {};
+        if (typeof value === 'object') return value;
+        try {
+            var parsed = JSON.parse(value);
+            return parsed && typeof parsed === 'object' ? parsed : (fallback || {});
+        } catch (error) {
+            return fallback || {};
+        }
+    }
+
+    function gradeReportsOf(student) {
+        var sid = rowId(student);
+        return asArray(_gradeReportsByStudent[sid]).slice().sort(function (a, b) {
+            return text(b.updated_at || b.created_at).localeCompare(text(a.updated_at || a.created_at));
+        });
+    }
+
+    function gradeReportRowId(row) {
+        return text(row && (row.report_id || row.id));
+    }
+
+    function gradeReportRowIncludedCategories(row) {
+        var parsed = parseGradeReportJson(row && row.included_categories, {});
+        if (Array.isArray(parsed)) {
+            return parsed.reduce(function (map, key) {
+                map[text(key)] = true;
+                return map;
+            }, {});
+        }
+        return parsed && typeof parsed === 'object' ? parsed : {};
+    }
+
+    function gradeReportTitle(series) {
+        var period = formatGradeReportPeriod(series && series.months);
+        return period.replace(/\s*누적 리포트\s*$/, ' 리포트');
+    }
+
+    function buildGradeReportSnapshot(student, series, summary) {
+        return {
+            kind: 'eie_grade_report',
+            version: 1,
+            studentId: rowId(student),
+            periodLabel: formatGradeReportPeriod(series.months),
+            rangeLabel: formatGradeReportRange(series.months),
+            months: series.months.slice(),
+            categories: series.categories.slice(),
+            summary: {
+                vocabAvg: summary.vocabAvg,
+                grammarAvg: summary.grammarAvg,
+                monthEnd: summary.monthEnd,
+                retryCount: summary.retryCount,
+                goal: summary.goal
+            }
+        };
     }
 
     function isRetryRecord(row) {
@@ -627,22 +692,30 @@
     }
 
     function renderGradeReportSendText(student, series) {
-        var message = _gradeReportFinalMessage || buildGradeReportMessage(student, series);
-        return '<section class="eie-grade-report-send"><h3>학부모 발송 문구</h3><textarea id="eie-grade-report-send-text" oninput="EieStudentsView.setGradeReportFinalMessage(this.value)" aria-label="학부모 발송 최종 문구">' + esc(message) + '</textarea><div id="eie-grade-report-send-print" class="eie-grade-report-send-print">' + esc(message) + '</div></section>';
+        var message = _gradeReportFinalDirty ? _gradeReportFinalMessage : (_gradeReportFinalMessage || buildGradeReportMessage(student, series));
+        return '<section class="eie-grade-report-send"><div class="eie-grade-report-send-head"><h3>학부모 발송 문구</h3>' + (_gradeReportFinalDirty ? '<span class="eie-grade-report-send-dirty">수정본 보호 중</span>' : '') + '</div><textarea id="eie-grade-report-send-text" oninput="EieStudentsView.setGradeReportFinalMessage(this.value)" aria-label="학부모 발송 최종 문구">' + esc(message) + '</textarea><div id="eie-grade-report-send-print" class="eie-grade-report-send-print">' + esc(message) + '</div></section>';
     }
 
     function currentGradeReportMessage(student, series) {
         var textarea = document.getElementById('eie-grade-report-send-text');
         if (textarea) return String(textarea.value == null ? '' : textarea.value);
+        if (_gradeReportFinalDirty) return _gradeReportFinalMessage;
         if (text(_gradeReportFinalMessage)) return text(_gradeReportFinalMessage);
         return buildGradeReportMessage(student, series);
     }
 
-    function refreshGradeReportGeneratedMessage(student) {
+    function refreshGradeReportGeneratedMessage(student, force) {
         if (!student) return '';
+        if (_gradeReportFinalDirty && !force) {
+            var currentMessage = currentGradeReportMessage(student, buildGradeReportSeries(student));
+            var currentPrintTarget = document.getElementById('eie-grade-report-send-print');
+            if (currentPrintTarget) currentPrintTarget.textContent = currentMessage;
+            return currentMessage;
+        }
         var series = buildGradeReportSeries(student);
         var message = buildGradeReportMessage(student, series);
         _gradeReportFinalMessage = message;
+        _gradeReportFinalDirty = false;
         var target = document.getElementById('eie-grade-report-send-text');
         if (target) target.value = message;
         var printTarget = document.getElementById('eie-grade-report-send-print');
@@ -686,10 +759,27 @@
             var value = reportMemoValue(key, '');
             return '<label class="eie-grade-report-note-field"><span>' + esc(label) + '</span><textarea oninput="EieStudentsView.setGradeReportMemo(' + jsArg(key) + ', this.value)" placeholder="' + esc(placeholder) + '">' + esc(value) + '</textarea></label>';
         };
+        var savedReports = function () {
+            var rows = gradeReportsOf(student);
+            var items = rows.map(function (row) {
+                var id = gradeReportRowId(row);
+                var active = id && id === _gradeReportLoadedReportId;
+                var date = text(row.updated_at || row.created_at) || '-';
+                var title = text(row.title) || gradeReportTitle(buildGradeReportSeries(student));
+                var range = [monthFullLabel(row.range_start), monthFullLabel(row.range_end)].filter(function (value) { return value && value !== '-'; }).join(' ~ ');
+                return '<div class="eie-grade-report-saved-row' + (active ? ' is-active' : '') + '">'
+                    + '<div><strong>' + esc(title) + '</strong><span>' + esc((range || '기간 정보 없음') + ' · ' + consultationDateLabel(date)) + '</span></div>'
+                    + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.loadGradeReport(' + jsArg(id) + ')">불러오기</button>'
+                    + '</div>';
+            }).join('');
+            return '<section class="eie-grade-report-saved"><div class="eie-grade-report-saved-head"><h4>저장된 학부모 상담 리포트</h4><span>' + esc(String(rows.length)) + '건</span></div>'
+                + (rows.length ? items : '<div class="eie-grade-report-saved-empty">저장된 학부모 상담 리포트가 없습니다.</div>')
+                + '</section>';
+        };
         return '<section class="eie-grade-report-preview">'
             + '<div class="eie-grade-report-toolbar">'
-            + '<div><h3>학부모 상담용 리포트</h3><p>상담란 메모를 수정하면 아래 A4 출력물과 발송 문구에 즉시 반영됩니다.</p></div>'
-            + '<div class="eie-grade-report-actions"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.closeGradeReportPreview()">닫기</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.copyGradeReportMessage()">학부모 발송 문구 복사</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.saveGradeReportConsultation()">상담기록 저장</button><button type="button" class="eie-primary-button" onclick="EieStudentsView.printGradeReport()">인쇄</button></div>'
+            + '<div><h3>학부모 상담용 리포트</h3><p>상담란 메모는 A4 출력물에 즉시 반영됩니다. 발송 문구를 직접 수정한 뒤에는 문구 다시 생성을 눌렀을 때만 자동 문구가 갱신됩니다.</p></div>'
+            + '<div class="eie-grade-report-actions"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.newGradeReport()">새 리포트 생성</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.closeGradeReportPreview()">닫기</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.regenerateGradeReportMessage()">문구 다시 생성</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.copyGradeReportMessage()">학부모 발송 문구 복사</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.saveGradeReportConsultation()">리포트 저장</button><button type="button" class="eie-primary-button" onclick="EieStudentsView.printGradeReport()">인쇄</button></div>'
             + '</div>'
             + '<div class="eie-grade-report-options">'
             + '<label><span>시작월</span><input type="month" value="' + esc(normalizeMonthInput(_gradeReportRangeStart)) + '" onchange="EieStudentsView.setGradeReportRange(\'start\', this.value)"></label>'
@@ -707,6 +797,7 @@
             + memoField('home', '가정 학습 안내', '가정에서 도와주실 복습 방법을 적어주세요.')
             + memoField('goal', '다음 달 목표', '다음 달 상담 목표를 적어주세요.')
             + '</div>'
+            + savedReports()
             + renderGradeReportSheet(student)
             + '</section>';
     }
@@ -1127,6 +1218,21 @@
         }
     }
 
+    async function loadStudentGradeReports(studentId) {
+        var sid = text(studentId);
+        if (!sid || !window.EieApi || typeof EieApi.getGradeReports !== 'function') {
+            if (sid && !_gradeReportsByStudent[sid]) _gradeReportsByStudent[sid] = [];
+            return;
+        }
+        try {
+            var result = await EieApi.getGradeReports(sid);
+            _gradeReportsByStudent[sid] = result.grade_reports || result.reports || result.data || [];
+        } catch (err) {
+            _gradeReportsByStudent[sid] = _gradeReportsByStudent[sid] || [];
+            _error = err && err.message ? err.message : '저장된 리포트를 불러오지 못했습니다.';
+        }
+    }
+
     async function loadStudentAttendance(studentId) {
         var sid = text(studentId);
         if (!sid || !window.EieApi || typeof EieApi.getAttendanceRecords !== 'function') return;
@@ -1484,7 +1590,7 @@
         var date = consultationDate(consultation) || '날짜 없음';
         var type = consultationType(consultation);
         var content = text(consultation.content) || '상담 내용이 없습니다.';
-        var nextAction = text(consultation.next_action || consultation.nextAction);
+        var nextAction = isGradeReportConsultation(consultation) ? '' : text(consultation.next_action || consultation.nextAction);
         return '<div class="eie-apms-pinned-consultation-preview">'
             + '<div class="eie-apms-consultation-meta"><span>' + esc(date) + '</span><em>' + esc(type) + '</em></div>'
             + '<p>' + esc(content) + '</p>'
@@ -1563,7 +1669,9 @@
         var date = consultationDate(current) || text(draft && draft.date) || todayIso();
         var type = consultationType(current) || text(draft && draft.type);
         var content = current ? text(current.content) : text(draft && draft.content);
-        var nextAction = current ? text(current.next_action || current.nextAction) : text(draft && (draft.next_action || draft.nextAction));
+        var nextAction = current
+            ? (isGradeReportConsultation(current) ? '' : text(current.next_action || current.nextAction))
+            : text(draft && (draft.next_action || draft.nextAction));
         return '<div class="eie-apms-consultation-form">'
             + '<div class="eie-apms-consultation-form-head">'
             + '<strong>' + (editing ? '상담 수정' : '상담 기록 추가') + '</strong>'
@@ -1591,7 +1699,7 @@
         var date = consultationDate(row) || '-';
         var type = consultationType(row);
         var content = text(row.content) || '내용 없음';
-        var nextAction = text(row.next_action || row.nextAction);
+        var nextAction = isGradeReportConsultation(row) ? '' : text(row.next_action || row.nextAction);
         var createdAt = text(row.created_at);
         return '<div class="eie-apms-consultation-row">'
             + '<div class="eie-apms-consultation-main">'
@@ -1611,7 +1719,7 @@
         var date = consultationDate(row) || '-';
         var type = consultationType(row);
         var content = text(row.content) || '상담 내용이 없습니다.';
-        var nextAction = text(row.next_action || row.nextAction);
+        var nextAction = isGradeReportConsultation(row) ? '' : text(row.next_action || row.nextAction);
         return '<div class="eie-apms-consultation-row eie-apms-pinned-consultation-row">'
             + '<div class="eie-apms-consultation-main">'
             + '<div class="eie-apms-consultation-meta"><span>' + esc(date) + '</span><em>' + esc(type) + '</em></div>'
@@ -2152,7 +2260,11 @@
             _tab = 'grades';
             _gradeReportPreviewStudentId = sid;
             _gradeReportFinalMessage = '';
+            _gradeReportFinalDirty = false;
+            _gradeReportLoadedReportId = '';
             if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
+            await loadStudentConsultations(sid);
+            await loadStudentGradeReports(sid);
             await refreshStudentsView();
         },
 
@@ -2165,7 +2277,7 @@
             var month = normalizeMonthInput(value);
             if (edge === 'start') _gradeReportRangeStart = month;
             if (edge === 'end') _gradeReportRangeEnd = month;
-            _gradeReportFinalMessage = '';
+            if (!_gradeReportFinalDirty) _gradeReportFinalMessage = '';
             refreshStudentsView();
         },
 
@@ -2176,7 +2288,7 @@
                 _gradeReportIncludes.vocab = true;
                 _gradeReportIncludes.grammar = true;
             }
-            _gradeReportFinalMessage = '';
+            if (!_gradeReportFinalDirty) _gradeReportFinalMessage = '';
             refreshStudentsView();
         },
 
@@ -2197,8 +2309,69 @@
 
         setGradeReportFinalMessage: function (value) {
             _gradeReportFinalMessage = String(value == null ? '' : value);
+            _gradeReportFinalDirty = true;
+            var head = document.querySelector('.eie-grade-report-send-head');
+            if (head && !head.querySelector('.eie-grade-report-send-dirty')) {
+                head.insertAdjacentHTML('beforeend', '<span class="eie-grade-report-send-dirty">수정본 보호 중</span>');
+            }
             var printTarget = document.getElementById('eie-grade-report-send-print');
             if (printTarget) printTarget.textContent = _gradeReportFinalMessage;
+        },
+
+        regenerateGradeReportMessage: async function () {
+            var sid = text(_gradeReportPreviewStudentId || _selectedId);
+            var student = selectedStudent();
+            if (!sid || !student) return;
+            if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
+            refreshGradeReportGeneratedMessage(student, true);
+            _notice = '학부모 발송 문구를 다시 생성했습니다.';
+            await refreshStudentsView();
+        },
+
+        newGradeReport: async function () {
+            var sid = text(_gradeReportPreviewStudentId || _selectedId);
+            var student = selectedStudent();
+            if (!sid || !student) return;
+            _gradeReportLoadedReportId = '';
+            _gradeReportFinalMessage = '';
+            _gradeReportFinalDirty = false;
+            _gradeReportMemo = { strength: '', improve: '', home: '', goal: '' };
+            _notice = '새 학부모 상담 리포트를 생성합니다.';
+            _error = '';
+            await refreshStudentsView();
+        },
+
+        loadGradeReport: async function (reportIdValue) {
+            var sid = text(_gradeReportPreviewStudentId || _selectedId);
+            var id = text(reportIdValue);
+            if (!sid || !id) return;
+            if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
+            await loadStudentGradeReports(sid);
+            var row = gradeReportsOf({ id: sid }).find(function (item) { return gradeReportRowId(item) === id; });
+            if (!row) {
+                _error = '저장된 학부모 상담 리포트를 찾지 못했습니다.';
+                _notice = '';
+                await refreshStudentsView();
+                return;
+            }
+            _gradeReportRangeStart = normalizeMonthInput(row.range_start) || '';
+            _gradeReportRangeEnd = normalizeMonthInput(row.range_end) || '';
+            var includes = gradeReportRowIncludedCategories(row);
+            Object.keys(_gradeReportIncludes).forEach(function (key) {
+                _gradeReportIncludes[key] = (key === 'vocab' || key === 'grammar') ? true : !!includes[key];
+            });
+            _gradeReportMemo = {
+                strength: text(row.memo_strength),
+                improve: text(row.memo_improve),
+                home: text(row.memo_home),
+                goal: text(row.memo_goal)
+            };
+            _gradeReportFinalMessage = String(row.final_message == null ? '' : row.final_message);
+            _gradeReportFinalDirty = true;
+            _gradeReportLoadedReportId = id;
+            _notice = '저장된 학부모 상담 리포트를 불러왔습니다.';
+            _error = '';
+            await refreshStudentsView();
         },
 
         copyGradeReportMessage: async function () {
@@ -2229,33 +2402,64 @@
             if (_saving) return;
             var sid = text(_gradeReportPreviewStudentId || _selectedId);
             var student = selectedStudent();
-            if (!sid || !student || !window.EieApi || typeof EieApi.createConsultation !== 'function') return;
+            if (!sid || !student || !window.EieApi || typeof EieApi.createGradeReport !== 'function') return;
             if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
             var series = buildGradeReportSeries(student);
             var summary = gradeReportSummary(student, series);
             var content = currentGradeReportMessage(student, series);
             if (!text(content)) {
-                _error = '상담기록에 저장할 최종 발송 문구를 입력해 주세요.';
+                _error = '저장할 최종 발송 문구를 입력해 주세요.';
                 _notice = '';
                 await refreshStudentsView();
                 return;
             }
             _saving = true;
             try {
-                var result = await EieApi.createConsultation({
+                var reportPayload = {
                     student_id: sid,
-                    date: todayIso(),
-                    type: '학부모 상담 리포트',
-                    content: content,
-                    next_action: summary.goal
-                });
-                if (window.EieState && typeof EieState.mergeStudentConsultations === 'function') {
-                    EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
+                    title: gradeReportTitle(series),
+                    range_start: normalizeMonthInput(_gradeReportRangeStart),
+                    range_end: normalizeMonthInput(_gradeReportRangeEnd),
+                    included_categories: JSON.stringify(Object.assign({}, _gradeReportIncludes)),
+                    memo_strength: text(_gradeReportMemo.strength),
+                    memo_improve: text(_gradeReportMemo.improve),
+                    memo_home: text(_gradeReportMemo.home),
+                    memo_goal: text(_gradeReportMemo.goal),
+                    final_message: content,
+                    generated_snapshot: JSON.stringify(buildGradeReportSnapshot(student, series, summary))
+                };
+                var reportResult = _gradeReportLoadedReportId && typeof EieApi.updateGradeReport === 'function'
+                    ? await EieApi.updateGradeReport(_gradeReportLoadedReportId, reportPayload)
+                    : await EieApi.createGradeReport(reportPayload);
+                var report = reportResult.grade_report || reportResult.report || reportResult.data || null;
+                if (report && gradeReportRowId(report)) _gradeReportLoadedReportId = gradeReportRowId(report);
+                await loadStudentGradeReports(sid);
+                if (window.EieApi && typeof EieApi.createConsultation === 'function' && _gradeReportLoadedReportId) {
+                    var consultationResult = await EieApi.createConsultation({
+                        student_id: sid,
+                        date: todayIso(),
+                        type: GRADE_REPORT_CONSULTATION_TYPE,
+                        content: '학부모 상담 리포트 사용 기록\n리포트: ' + reportPayload.title + '\nreport_id: ' + _gradeReportLoadedReportId,
+                        next_action: '저장본 기준 상담 완료',
+                        report_id: _gradeReportLoadedReportId
+                    });
+                    var consultationRow = consultationResult.consultation || consultationResult.data || null;
+                    var linkedConsultationId = consultationId(consultationRow);
+                    if (linkedConsultationId && typeof EieApi.updateGradeReport === 'function') {
+                        reportPayload.consultation_id = linkedConsultationId;
+                        reportResult = await EieApi.updateGradeReport(_gradeReportLoadedReportId, reportPayload);
+                        report = reportResult.grade_report || reportResult.report || reportResult.data || report;
+                        await loadStudentGradeReports(sid);
+                    }
+                    if (window.EieState && typeof EieState.mergeStudentConsultations === 'function') {
+                        EieState.mergeStudentConsultations(sid, consultationResult.consultations || (consultationResult.consultation ? [consultationResult.consultation] : (consultationResult.data ? [consultationResult.data] : [])));
+                    }
                 }
-                _notice = '상담기록에 리포트 요약을 저장했습니다.';
+                _gradeReportFinalDirty = true;
+                _notice = '학부모 상담 리포트를 저장하고 상담기록에 연결했습니다.';
                 _error = '';
             } catch (err) {
-                _error = err && err.message ? err.message : '상담기록 저장에 실패했습니다.';
+                _error = err && err.message ? err.message : '리포트 저장에 실패했습니다.';
             } finally {
                 _saving = false;
                 await refreshStudentsView();

@@ -272,6 +272,76 @@
   font-weight: 900;
 }
 
+.eie-grade-report-send-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.eie-grade-report-send-dirty {
+  flex: none;
+  padding: 3px 8px;
+  border: 1px solid #98a2b3;
+  border-radius: 999px;
+  color: #344054;
+  background: #ffffff;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.eie-grade-report-saved {
+  margin: 0 0 14px;
+  padding: 12px;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.eie-grade-report-saved-head,
+.eie-grade-report-saved-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.eie-grade-report-saved-head {
+  margin-bottom: 8px;
+}
+
+.eie-grade-report-saved-head h4 {
+  margin: 0;
+  color: #172033;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.eie-grade-report-saved-head span,
+.eie-grade-report-saved-row span,
+.eie-grade-report-saved-empty {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.eie-grade-report-saved-row {
+  padding: 9px 0;
+  border-top: 1px solid #edf1f7;
+}
+
+.eie-grade-report-saved-row.is-active strong {
+  color: #175cd3;
+}
+
+.eie-grade-report-saved-row strong {
+  display: block;
+  color: #172033;
+  font-size: 13px;
+  font-weight: 900;
+}
+
 .eie-grade-report-guidance p {
   margin: 4px 0 0;
   color: #475467;
@@ -504,6 +574,16 @@
     width: 100%;
   }
 
+  .eie-grade-report-saved-head,
+  .eie-grade-report-saved-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .eie-grade-report-saved-row button {
+    width: 100%;
+  }
+
   :is(.eie-app-shell, .eie-main) .eie-grade-report-options .eie-grade-report-note-field {
     grid-column: 1 / -1;
   }
@@ -638,6 +718,10 @@
   }
 
   body.eie-printing-grade-report .eie-grade-report-send textarea {
+    display: none !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-send-dirty {
     display: none !important;
   }
 
