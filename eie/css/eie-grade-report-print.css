@@ -102,11 +102,11 @@
 }
 
 :is(.eie-app-shell, .eie-main) .eie-grade-report-note-field {
-  grid-column: 1 / -1;
+  grid-column: auto;
 }
 
 :is(.eie-app-shell, .eie-main) .eie-grade-report-note-field textarea {
-  min-height: 86px;
+  min-height: 78px;
   padding: 9px 10px;
   resize: vertical;
   line-height: 1.45;
@@ -120,6 +120,79 @@
   border-radius: 8px;
   background: #fff;
   color: #172033;
+}
+
+:is(.eie-app-shell, .eie-main) .eie-grade-report-options .eie-grade-report-note-field {
+  grid-column: span 2;
+}
+
+.eie-grade-report-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.eie-grade-report-metric {
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.eie-grade-report-metric span,
+.eie-grade-report-metric em {
+  display: block;
+  color: #667085;
+  font-size: 10.5px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.eie-grade-report-metric strong {
+  display: block;
+  margin: 4px 0 3px;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.eie-grade-report-flow {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  gap: 8px;
+}
+
+.eie-grade-report-flow h3 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.eie-grade-report-flow div {
+  padding: 10px 12px;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.eie-grade-report-flow strong {
+  display: block;
+  color: #172033;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-grade-report-flow p {
+  margin: 5px 0 0;
+  color: #344054;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.55;
 }
 
 .eie-grade-report-header {
@@ -154,7 +227,7 @@
 
 .eie-grade-report-header dl {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
   gap: 8px;
   margin: 0;
 }
@@ -189,7 +262,8 @@
 
 .eie-grade-report-guidance strong,
 .eie-grade-report-summary h3,
-.eie-grade-report-consult h3 {
+.eie-grade-report-consult h3,
+.eie-grade-report-send h3 {
   margin: 0;
   color: #172033;
   font-size: 14px;
@@ -328,15 +402,51 @@
 }
 
 .eie-grade-report-consult div {
-  min-height: 84px;
+  margin-top: 8px;
+}
+
+.eie-grade-report-consult-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.eie-grade-report-consult-grid div {
+  min-height: 58px;
   margin-top: 8px;
   padding: 12px;
   border: 1px solid #d8e0ea;
   border-radius: 8px;
   background: #fffdf8;
+}
+
+.eie-grade-report-consult-grid strong {
+  display: block;
+  color: #172033;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-grade-report-consult-grid p {
+  margin: 5px 0 0;
   color: #344054;
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.eie-grade-report-send pre {
+  margin: 8px 0 0;
+  padding: 11px 12px;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #344054;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 650;
+  line-height: 1.5;
   white-space: pre-wrap;
 }
 
@@ -352,6 +462,9 @@
   :is(.eie-app-shell, .eie-main) .eie-grade-report-entry,
   .eie-grade-report-header,
   .eie-grade-report-chart-grid,
+  .eie-grade-report-metrics,
+  .eie-grade-report-flow,
+  .eie-grade-report-consult-grid,
   :is(.eie-app-shell, .eie-main) .eie-grade-report-options {
     grid-template-columns: 1fr;
   }
@@ -360,9 +473,27 @@
     align-items: stretch;
     flex-direction: column;
   }
+
+  :is(.eie-app-shell, .eie-main) .eie-grade-report-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  :is(.eie-app-shell, .eie-main) .eie-grade-report-actions button {
+    width: 100%;
+  }
+
+  :is(.eie-app-shell, .eie-main) .eie-grade-report-options .eie-grade-report-note-field {
+    grid-column: 1 / -1;
+  }
 }
 
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 9mm;
+  }
+
   body.eie-printing-grade-report > :not(#eie-app) {
     display: none !important;
   }
@@ -406,14 +537,87 @@
   }
 
   body.eie-printing-grade-report .eie-grade-report-sheet {
-    width: 190mm !important;
+    width: 192mm !important;
     margin: 0 auto !important;
     padding: 0 !important;
     border: 0 !important;
     border-radius: 0 !important;
+    gap: 8px !important;
+    color: #111827 !important;
   }
 
   body.eie-printing-grade-report .eie-grade-report-chart-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-flow {
+    grid-template-columns: 1.25fr 1fr 1fr !important;
+    gap: 6px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-consult-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-header {
+    padding-bottom: 8px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-header h2 {
+    font-size: 20px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-header dl {
+    grid-template-columns: repeat(3, auto) !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-metric {
+    padding: 7px 8px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-metric strong {
+    font-size: 18px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-chart-card {
+    gap: 8px !important;
+    padding: 9px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-bars {
+    min-height: 118px !important;
+    padding: 6px 6px 5px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-bar-cell {
+    grid-template-rows: 82px auto auto !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-bar-track {
+    height: 82px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-table th,
+  body.eie-printing-grade-report .eie-grade-report-table td {
+    padding: 5px 7px !important;
+    font-size: 10.5px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-flow div,
+  body.eie-printing-grade-report .eie-grade-report-consult-grid div,
+  body.eie-printing-grade-report .eie-grade-report-send pre {
+    padding: 7px 8px !important;
+  }
+
+  body.eie-printing-grade-report .eie-grade-report-send pre,
+  body.eie-printing-grade-report .eie-grade-report-sheet footer {
+    font-size: 10.2px !important;
   }
 }
