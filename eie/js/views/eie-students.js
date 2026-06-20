@@ -28,6 +28,7 @@
     var _gradeReportPeriod = '6';
     var _gradeReportIncludes = { vocab: true, grammar: true, reading: false, listening: false, material: false, month_end: false, free: false };
     var _gradeReportNote = '';
+    var _gradeReportMemo = { strength: '', improve: '', home: '', goal: '' };
     var _gradeReportPreviewStudentId = '';
 
     var STUDENT_GRADE_OPTIONS = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
@@ -246,13 +247,16 @@
     }
 
     function selectedGradeReportCategories() {
-        return Object.keys(_gradeReportIncludes).filter(function (key) { return !!_gradeReportIncludes[key]; });
+        var selected = Object.keys(_gradeReportIncludes).filter(function (key) { return !!_gradeReportIncludes[key]; });
+        ['vocab', 'grammar'].forEach(function (required) {
+            if (selected.indexOf(required) === -1) selected.unshift(required);
+        });
+        return selected.filter(function (key, index, list) { return list.indexOf(key) === index; });
     }
 
-    function gradeReportRows(student) {
-        var selected = selectedGradeReportCategories();
+    function gradeReportAllRows(student) {
         return examRecordsOf(student).filter(function (row) {
-            return selected.indexOf(text(row.category)) !== -1 && reportPercent(row) !== null && monthKeyOf(row.exam_date || row.created_at);
+            return reportPercent(row) !== null && monthKeyOf(row.exam_date || row.created_at);
         }).map(function (row) {
             return {
                 category: text(row.category),
@@ -261,22 +265,76 @@
                 monthKey: monthKeyOf(row.exam_date || row.created_at),
                 percent: reportPercent(row),
                 score: Number(row.score),
-                maxScore: Number(row.max_score)
+                maxScore: Number(row.max_score),
+                memo: text(row.memo),
+                retry: isRetryRecord(row)
             };
         });
     }
 
+    function parseReportPayload(row) {
+        var value = row && row.payload_json;
+        if (!value) return {};
+        if (typeof value === 'object') return value;
+        try {
+            var parsed = JSON.parse(value);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function isRetryRecord(row) {
+        var payload = parseReportPayload(row);
+        var raw = [
+            row && row.retry_required,
+            row && row.retest_required,
+            payload.retry_required,
+            payload.retest_required,
+            payload.needs_retest
+        ];
+        if (raw.some(function (value) { return value === true || value === 1 || value === '1' || text(value).toLowerCase() === 'true'; })) return true;
+        return /재시험|보완|재응시|retry/i.test([row && row.memo, payload.memo, payload.note].map(text).join(' '));
+    }
+
+    function addMonths(date, amount) {
+        var next = new Date(date.getFullYear(), date.getMonth() + amount, 1);
+        return next;
+    }
+
+    function monthKeyFromDate(date) {
+        return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
+    }
+
     function gradeReportMonthKeys(rows) {
         var keys = Array.from(new Set(rows.map(function (row) { return row.monthKey; }).filter(Boolean))).sort();
-        if (_gradeReportPeriod === 'all') return keys;
+        if (_gradeReportPeriod === 'all') {
+            if (!keys.length) return [];
+            var startParts = keys[0].split('-').map(Number);
+            var endParts = keys[keys.length - 1].split('-').map(Number);
+            var cursor = new Date(startParts[0], startParts[1] - 1, 1);
+            var end = new Date(endParts[0], endParts[1] - 1, 1);
+            var allKeys = [];
+            while (cursor <= end) {
+                allKeys.push(monthKeyFromDate(cursor));
+                cursor = addMonths(cursor, 1);
+            }
+            return allKeys;
+        }
         var count = Number(_gradeReportPeriod || 6);
-        return keys.slice(Math.max(0, keys.length - count));
+        var latestKey = keys.length ? keys[keys.length - 1] : todayIso().slice(0, 7);
+        var parts = latestKey.split('-').map(Number);
+        var latest = new Date(parts[0], parts[1] - 1, 1);
+        var months = [];
+        for (var i = count - 1; i >= 0; i -= 1) months.push(monthKeyFromDate(addMonths(latest, -i)));
+        return months;
     }
 
     function buildGradeReportSeries(student) {
-        var rows = gradeReportRows(student);
-        var months = gradeReportMonthKeys(rows);
+        var allRows = gradeReportAllRows(student);
+        var months = gradeReportMonthKeys(allRows);
         var categories = selectedGradeReportCategories();
+        var rows = allRows.filter(function (row) { return categories.indexOf(row.category) !== -1; });
         var byCategory = {};
         categories.forEach(function (category) {
             byCategory[category] = months.map(function (month) {
@@ -286,7 +344,74 @@
                 return { month: month, average: Math.round(sum / inMonth.length), count: inMonth.length };
             });
         });
-        return { rows: rows, months: months, categories: categories, byCategory: byCategory };
+        return { rows: rows, allRows: allRows, months: months, categories: categories, byCategory: byCategory };
+    }
+
+    function gradeReportPoint(series, category, month) {
+        return (series.byCategory[category] || []).find(function (row) { return row.month === month; }) || { average: null, count: 0 };
+    }
+
+    function latestGradePoint(series, category) {
+        return (series.byCategory[category] || []).slice().reverse().find(function (point) { return point.average !== null; }) || null;
+    }
+
+    function averageRecentGrade(series, category, limit) {
+        var values = (series.byCategory[category] || []).filter(function (point) { return point.average !== null; }).slice(-limit);
+        if (!values.length) return null;
+        return Math.round(values.reduce(function (sum, point) { return sum + point.average; }, 0) / values.length);
+    }
+
+    function gradeTrendText(series, category, label) {
+        var values = (series.byCategory[category] || []).filter(function (point) { return point.average !== null; }).slice(-2);
+        if (!values.length) return label + ' 기록이 부족합니다.';
+        if (values.length === 1) return label + ' 최근 평균은 ' + values[0].average + '점입니다.';
+        var diff = values[1].average - values[0].average;
+        if (Math.abs(diff) < 1) return label + '은 최근 두 달 동안 비슷한 흐름입니다.';
+        return label + '은 전월 대비 ' + Math.abs(diff) + '점 ' + (diff > 0 ? '상승' : '하락') + '했습니다.';
+    }
+
+    function gradeReportRetryCount(series) {
+        return series.allRows.filter(function (row) {
+            return series.months.indexOf(row.monthKey) !== -1 && row.retry;
+        }).length;
+    }
+
+    function gradeReportMonthEndLatest(series) {
+        var point = latestGradePoint(series, 'month_end');
+        return point ? point.average : null;
+    }
+
+    function reportMemoValue(key, fallback) {
+        var value = text(_gradeReportMemo && _gradeReportMemo[key]);
+        if (value) return value;
+        if (key === 'strength' && _gradeReportNote) return _gradeReportNote;
+        return fallback || '';
+    }
+
+    function gradeReportSummary(student, series) {
+        var vocabAvg = averageRecentGrade(series, 'vocab', 3);
+        var grammarAvg = averageRecentGrade(series, 'grammar', 3);
+        var monthEnd = gradeReportMonthEndLatest(series);
+        var retryCount = gradeReportRetryCount(series);
+        var vocabTrend = gradeTrendText(series, 'vocab', '단어 성취도');
+        var grammarTrend = gradeTrendText(series, 'grammar', '문법 이해도');
+        var improve = reportMemoValue('improve', retryCount ? '재시험 또는 보완이 필요한 기록을 우선 확인합니다.' : '기록이 부족한 영역은 다음 수업에서 추가 확인합니다.');
+        var home = reportMemoValue('home', '가정에서는 단어 복습과 문장 단위 해석 연습을 짧게 반복해 주세요.');
+        var goal = reportMemoValue('goal', '다음 달에는 단어와 문법 모두 안정적인 응시 흐름을 만드는 것을 목표로 합니다.');
+        return {
+            vocabAvg: vocabAvg,
+            grammarAvg: grammarAvg,
+            monthEnd: monthEnd,
+            retryCount: retryCount,
+            vocabTrend: vocabTrend,
+            grammarTrend: grammarTrend,
+            improve: improve,
+            home: home,
+            goal: goal,
+            periodText: _gradeReportPeriod === 'all' ? '전체 기간' : '최근 ' + _gradeReportPeriod + '개월',
+            periodRange: series.months.length ? monthLabel(series.months[0]) + ' - ' + monthLabel(series.months[series.months.length - 1]) : '기록 없음',
+            studentName: displayName(student)
+        };
     }
 
     function renderReportBars(points, tone) {
@@ -307,43 +432,107 @@
         var tone = category === 'grammar' ? 'grammar' : category === 'vocab' ? 'vocab' : 'other';
         var latest = points.slice().reverse().find(function (point) { return point.average !== null; });
         var count = points.reduce(function (total, point) { return total + Number(point.count || 0); }, 0);
+        var titleMap = {
+            vocab: '단어 성취도',
+            grammar: '문법 이해도',
+            reading: 'Reading 흐름',
+            listening: 'Listening 흐름',
+            material: '교재/단원 성취도',
+            month_end: '월말평가 흐름',
+            free: '추가 기록 흐름'
+        };
         return '<section class="eie-grade-report-chart-card">'
-            + '<div class="eie-grade-report-chart-head"><div><h4>' + esc(examCategoryLabel(category)) + '</h4><span>월별 평균 흐름</span></div><strong>' + (latest ? esc(latest.average + '점') : '-') + '</strong></div>'
+            + '<div class="eie-grade-report-chart-head"><div><h4>' + esc(titleMap[category] || examCategoryLabel(category)) + '</h4><span>월별 평균 흐름 · 응시 ' + esc(count) + '회</span></div><strong>' + (latest ? esc(latest.average + '점') : '-') + '</strong></div>'
             + renderReportBars(points, tone)
-            + '<p>응시 ' + esc(count) + '회 · 점수는 만점 기준 100점 환산으로 표시됩니다.</p>'
+            + '<p>점수는 원점수가 아닌 100점 환산 월평균입니다. 기록이 없는 달은 -로 표시합니다.</p>'
             + '</section>';
     }
 
     function renderGradeReportSummaryTable(series) {
-        if (!series.months.length) return '<div class="eie-empty-box">출력할 성적 기록이 없습니다.</div>';
-        return '<table class="eie-grade-report-table"><thead><tr><th>월</th>'
-            + series.categories.map(function (category) { return '<th>' + esc(examCategoryLabel(category)) + '</th>'; }).join('')
-            + '</tr></thead><tbody>'
+        if (!series.months.length) return '<div class="eie-empty-box">출력할 누적 리포트 자료가 없습니다.</div>';
+        return '<table class="eie-grade-report-table"><thead><tr><th>월</th><th>단어 평균/응시</th><th>문법 평균/응시</th><th>월말평가</th><th>재시험 여부</th></tr></thead><tbody>'
             + series.months.map(function (month) {
+                var vocab = gradeReportPoint(series, 'vocab', month);
+                var grammar = gradeReportPoint(series, 'grammar', month);
+                var monthEnd = gradeReportPoint(series, 'month_end', month);
+                var retry = series.allRows.some(function (row) { return row.monthKey === month && row.retry; });
                 return '<tr><td>' + esc(monthLabel(month)) + '</td>'
-                    + series.categories.map(function (category) {
-                        var point = (series.byCategory[category] || []).find(function (row) { return row.month === month; });
-                        return '<td>' + (point && point.average !== null ? esc(point.average + '점 / ' + point.count + '회') : '-') + '</td>';
-                    }).join('')
+                    + '<td>' + (vocab.average !== null ? esc(vocab.average + '점 / ' + vocab.count + '회') : '-') + '</td>'
+                    + '<td>' + (grammar.average !== null ? esc(grammar.average + '점 / ' + grammar.count + '회') : '-') + '</td>'
+                    + '<td>' + (monthEnd.average !== null ? esc(monthEnd.average + '점') : '-') + '</td>'
+                    + '<td>' + (retry ? '필요' : '-') + '</td>'
                     + '</tr>';
             }).join('')
             + '</tbody></table>';
     }
 
+    function renderGradeReportMetricCards(summary) {
+        var metric = function (label, value, help) {
+            return '<div class="eie-grade-report-metric"><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong><em>' + esc(help) + '</em></div>';
+        };
+        return '<section class="eie-grade-report-metrics" aria-label="핵심 요약">'
+            + metric('최근 단어 평균', summary.vocabAvg === null ? '-' : summary.vocabAvg + '점', '최근 기록 기준')
+            + metric('최근 문법 평균', summary.grammarAvg === null ? '-' : summary.grammarAvg + '점', '최근 기록 기준')
+            + metric('최근 월말평가', summary.monthEnd === null ? '-' : summary.monthEnd + '점', '100점 환산')
+            + metric('재시험/보완 필요', summary.retryCount + '회', '조회 기간 내')
+            + '</section>';
+    }
+
+    function renderGradeReportFlow(summary) {
+        return '<section class="eie-grade-report-flow"><h3>최근 흐름과 보완 포인트</h3>'
+            + '<div><strong>최근 흐름</strong><p>' + esc(summary.vocabTrend + ' ' + summary.grammarTrend) + '</p></div>'
+            + '<div><strong>보완 포인트</strong><p>' + esc(summary.improve) + '</p></div>'
+            + '<div><strong>다음 목표</strong><p>' + esc(summary.goal) + '</p></div>'
+            + '</section>';
+    }
+
+    function renderGradeReportConsultMemo(summary) {
+        var item = function (key, title, fallback) {
+            return '<div><strong>' + esc(title) + '</strong><p id="eie-grade-report-memo-' + esc(key) + '">' + esc(reportMemoValue(key, fallback)) + '</p></div>';
+        };
+        return '<section class="eie-grade-report-consult"><h3>상담 메모</h3><div class="eie-grade-report-consult-grid">'
+            + item('strength', '잘하고 있는 점', '성실하게 누적 기록을 만들어가고 있습니다.')
+            + item('improve', '보완할 점', summary.improve)
+            + item('home', '가정 학습 안내', summary.home)
+            + item('goal', '다음 달 목표', summary.goal)
+            + '</div></section>';
+    }
+
+    function buildGradeReportMessage(student, series) {
+        var summary = gradeReportSummary(student, series);
+        return '안녕하세요. EIE 영어학원입니다.\n\n'
+            + summary.studentName + ' 학생의 ' + summary.periodText + ' 학습 상담 리포트를 안내드립니다.\n'
+            + '- 조회 기간: ' + summary.periodRange + '\n'
+            + '- 단어 흐름: ' + summary.vocabTrend + '\n'
+            + '- 문법 흐름: ' + summary.grammarTrend + '\n'
+            + '- 최근 보완 포인트: ' + summary.improve + '\n'
+            + '- 가정 학습 안내: ' + summary.home + '\n\n'
+            + '다음 달 목표는 ' + summary.goal + '\n상담 시 자세히 안내드리겠습니다.';
+    }
+
+    function renderGradeReportSendText(student, series) {
+        return '<section class="eie-grade-report-send"><h3>학부모 발송 문구</h3><pre id="eie-grade-report-send-text">' + esc(buildGradeReportMessage(student, series)) + '</pre></section>';
+    }
+
     function renderGradeReportSheet(student) {
         var series = buildGradeReportSeries(student);
-        var periodText = _gradeReportPeriod === 'all' ? '전체 기간' : '최근 ' + _gradeReportPeriod + '개월';
+        var summary = gradeReportSummary(student, series);
+        var assignments = assignmentsOf(student);
+        var classText = classSummaryOf(student) || (assignments[0] && assignments[0].className) || '-';
+        var teacherText = teacherNamesOf(student).join(', ') || assignments.map(function (item) { return item.teacherName; }).filter(Boolean).join(', ') || '-';
         return '<section id="eie-grade-report-sheet" class="eie-grade-report-sheet" aria-label="학생 누적 성적 리포트">'
             + '<header class="eie-grade-report-header">'
-            + '<div><span>EIE 학습 상담 리포트</span><h2>' + esc(displayName(student)) + ' 학생 학습 성장 리포트</h2><p>' + esc([schoolOf(student), gradeOf(student)].filter(Boolean).join(' · ') || '학년 정보 미등록') + '</p></div>'
-            + '<dl><div><dt>기간</dt><dd>' + esc(periodText) + '</dd></div><div><dt>출력일</dt><dd>' + esc(todayIso()) + '</dd></div></dl>'
+            + '<div><span>EIE 학습 상담 리포트</span><h2>' + esc(displayName(student)) + ' 학생 월별 학습 흐름</h2><p>' + esc([schoolOf(student), gradeOf(student)].filter(Boolean).join(' · ') || '학교/학년 정보 미등록') + '</p></div>'
+            + '<dl><div><dt>반/담당</dt><dd>' + esc([classText, teacherText].filter(function (value) { return value && value !== '-'; }).join(' · ') || '-') + '</dd></div><div><dt>출력일</dt><dd>' + esc(todayIso()) + '</dd></div><div><dt>조회 기간</dt><dd>' + esc(summary.periodText + ' · ' + summary.periodRange) + '</dd></div></dl>'
             + '</header>'
-            + '<div class="eie-grade-report-guidance"><strong>월별 학습 흐름</strong><p>단어와 문법 성적을 중심으로 최근 학습 흐름을 확인하고 다음 상담 방향을 정리합니다.</p></div>'
+            + renderGradeReportMetricCards(summary)
+            + renderGradeReportFlow(summary)
             + '<div class="eie-grade-report-chart-grid">'
             + series.categories.map(function (category) { return renderGradeReportChart(category, series.byCategory[category] || []); }).join('')
             + '</div>'
             + '<section class="eie-grade-report-summary"><h3>월별 요약</h3>' + renderGradeReportSummaryTable(series) + '</section>'
-            + '<section class="eie-grade-report-consult"><h3>상담 메모</h3><div>' + esc(_gradeReportNote || '상담 시 학생의 강점, 보완할 부분, 가정 학습 안내를 적어 활용합니다.') + '</div></section>'
+            + renderGradeReportConsultMemo(summary)
+            + renderGradeReportSendText(student, series)
             + '<footer>본 리포트는 학생의 월별 학습 흐름을 확인하고 다음 학습 방향을 상담하기 위한 자료입니다.</footer>'
             + '</section>';
     }
@@ -352,15 +541,19 @@
         var sid = rowId(student);
         var opened = _gradeReportPreviewStudentId === sid;
         if (!opened) {
-            return '<div class="eie-grade-report-entry"><div><strong>학부모 상담용 누적 성적표</strong><span>단어·문법 월별 그래프와 상담란을 인쇄합니다.</span></div><button type="button" class="eie-primary-button" onclick="EieStudentsView.openGradeReportPreview(' + jsArg(sid) + ')">누적 성적표 인쇄</button></div>';
+            return '<div class="eie-grade-report-entry"><div><strong>학부모 상담용 리포트</strong><span>누적 성적표 인쇄용 A4 상담지입니다. 단어·문법 월별 그래프와 상담 메모를 포함합니다.</span></div><button type="button" class="eie-primary-button" onclick="EieStudentsView.openGradeReportPreview(' + jsArg(sid) + ')">상담 리포트 보기</button></div>';
         }
         var categoryCheck = function (key, label, disabledDefault) {
             return '<label class="eie-grade-report-check"><input type="checkbox" ' + (_gradeReportIncludes[key] ? 'checked ' : '') + 'onchange="EieStudentsView.setGradeReportOption(' + jsArg(key) + ', this.checked)"><span>' + esc(label) + (disabledDefault ? ' 선택' : '') + '</span></label>';
         };
+        var memoField = function (key, label, placeholder) {
+            var value = reportMemoValue(key, '');
+            return '<label class="eie-grade-report-note-field"><span>' + esc(label) + '</span><textarea oninput="EieStudentsView.setGradeReportMemo(' + jsArg(key) + ', this.value)" placeholder="' + esc(placeholder) + '">' + esc(value) + '</textarea></label>';
+        };
         return '<section class="eie-grade-report-preview">'
             + '<div class="eie-grade-report-toolbar">'
-            + '<div><h3>누적 성적표 인쇄</h3><p>출력 전용 화면에는 학생 상담에 필요한 항목만 담습니다.</p></div>'
-            + '<div class="eie-grade-report-actions"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.closeGradeReportPreview()">닫기</button><button type="button" class="eie-primary-button" onclick="EieStudentsView.printGradeReport()">인쇄</button></div>'
+            + '<div><h3>학부모 상담용 리포트</h3><p>상담란 메모를 수정하면 아래 A4 출력물과 발송 문구에 즉시 반영됩니다.</p></div>'
+            + '<div class="eie-grade-report-actions"><button type="button" class="eie-secondary-button" onclick="EieStudentsView.closeGradeReportPreview()">닫기</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.copyGradeReportMessage()">학부모 발송 문구 복사</button><button type="button" class="eie-secondary-button" onclick="EieStudentsView.saveGradeReportConsultation()">상담기록 저장</button><button type="button" class="eie-primary-button" onclick="EieStudentsView.printGradeReport()">인쇄</button></div>'
             + '</div>'
             + '<div class="eie-grade-report-options">'
             + '<label><span>기간</span><select onchange="EieStudentsView.setGradeReportPeriod(this.value)"><option value="3"' + (_gradeReportPeriod === '3' ? ' selected' : '') + '>최근 3개월</option><option value="6"' + (_gradeReportPeriod === '6' ? ' selected' : '') + '>최근 6개월</option><option value="12"' + (_gradeReportPeriod === '12' ? ' selected' : '') + '>최근 12개월</option><option value="all"' + (_gradeReportPeriod === 'all' ? ' selected' : '') + '>전체</option></select></label>'
@@ -370,8 +563,12 @@
             + categoryCheck('reading', 'Reading', true)
             + categoryCheck('listening', 'Listening', true)
             + categoryCheck('material', '교재', true)
+            + categoryCheck('month_end', '월말평가', true)
             + '</div>'
-            + '<label class="eie-grade-report-note-field"><span>상담란</span><textarea oninput="EieStudentsView.setGradeReportNote(this.value)" placeholder="잘하고 있는 점, 보완할 점, 가정 학습 안내를 적어주세요.">' + esc(_gradeReportNote) + '</textarea></label>'
+            + memoField('strength', '잘하고 있는 점', '성실도, 참여도, 강점을 적어주세요.')
+            + memoField('improve', '보완할 점', '재시험, 약한 영역, 보완할 습관을 적어주세요.')
+            + memoField('home', '가정 학습 안내', '가정에서 도와주실 복습 방법을 적어주세요.')
+            + memoField('goal', '다음 달 목표', '다음 달 상담 목표를 적어주세요.')
             + '</div>'
             + renderGradeReportSheet(student)
             + '</section>';
@@ -1834,14 +2031,91 @@
         setGradeReportOption: function (key, checked) {
             var safeKey = text(key);
             if (Object.prototype.hasOwnProperty.call(_gradeReportIncludes, safeKey)) {
-                _gradeReportIncludes[safeKey] = !!checked;
-                if (!selectedGradeReportCategories().length) _gradeReportIncludes.grammar = true;
+                _gradeReportIncludes[safeKey] = (safeKey === 'vocab' || safeKey === 'grammar') ? true : !!checked;
+                _gradeReportIncludes.vocab = true;
+                _gradeReportIncludes.grammar = true;
             }
             refreshStudentsView();
         },
 
         setGradeReportNote: function (value) {
             _gradeReportNote = text(value);
+        },
+
+        setGradeReportMemo: function (key, value) {
+            var safeKey = text(key);
+            if (!Object.prototype.hasOwnProperty.call(_gradeReportMemo, safeKey)) return;
+            _gradeReportMemo[safeKey] = text(value);
+            if (safeKey === 'strength') _gradeReportNote = text(value);
+            var target = document.getElementById('eie-grade-report-memo-' + safeKey);
+            if (target) target.textContent = reportMemoValue(safeKey, target.textContent || '');
+            var student = selectedStudent();
+            var sendTarget = document.getElementById('eie-grade-report-send-text');
+            if (student && sendTarget) sendTarget.textContent = buildGradeReportMessage(student, buildGradeReportSeries(student));
+        },
+
+        copyGradeReportMessage: async function () {
+            var sid = text(_gradeReportPreviewStudentId || _selectedId);
+            var student = selectedStudent();
+            if (!sid || !student) return;
+            if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
+            var message = buildGradeReportMessage(student, buildGradeReportSeries(student));
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) await navigator.clipboard.writeText(message);
+                _notice = '학부모 발송 문구를 복사했습니다.';
+                _error = '';
+            } catch (err) {
+                _notice = message;
+                _error = '';
+            }
+            await refreshStudentsView();
+        },
+
+        saveGradeReportConsultation: async function () {
+            if (_saving) return;
+            var sid = text(_gradeReportPreviewStudentId || _selectedId);
+            var student = selectedStudent();
+            if (!sid || !student || !window.EieApi || typeof EieApi.createConsultation !== 'function') return;
+            if (!_examRecordsByStudent[sid]) await loadStudentExamRecords(sid);
+            var series = buildGradeReportSeries(student);
+            var summary = gradeReportSummary(student, series);
+            var content = [
+                '[학부모 상담용 리포트 저장]',
+                '조회 기간: ' + summary.periodText + ' · ' + summary.periodRange,
+                '최근 단어 평균: ' + (summary.vocabAvg === null ? '-' : summary.vocabAvg + '점'),
+                '최근 문법 평균: ' + (summary.grammarAvg === null ? '-' : summary.grammarAvg + '점'),
+                '최근 월말평가: ' + (summary.monthEnd === null ? '-' : summary.monthEnd + '점'),
+                '재시험/보완 필요: ' + summary.retryCount + '회',
+                '',
+                '[최근 흐름]',
+                summary.vocabTrend + ' ' + summary.grammarTrend,
+                '',
+                '[상담 메모]',
+                '잘하고 있는 점: ' + reportMemoValue('strength', '성실하게 누적 기록을 만들어가고 있습니다.'),
+                '보완할 점: ' + summary.improve,
+                '가정 학습 안내: ' + summary.home,
+                '다음 달 목표: ' + summary.goal
+            ].join('\n');
+            _saving = true;
+            try {
+                var result = await EieApi.createConsultation({
+                    student_id: sid,
+                    date: todayIso(),
+                    type: '학부모 상담 리포트',
+                    content: content,
+                    next_action: summary.goal
+                });
+                if (window.EieState && typeof EieState.mergeStudentConsultations === 'function') {
+                    EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
+                }
+                _notice = '상담기록에 리포트 요약을 저장했습니다.';
+                _error = '';
+            } catch (err) {
+                _error = err && err.message ? err.message : '상담기록 저장에 실패했습니다.';
+            } finally {
+                _saving = false;
+                await refreshStudentsView();
+            }
         },
 
         printGradeReport: function () {
