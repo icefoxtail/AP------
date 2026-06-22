@@ -512,11 +512,13 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
             ...item,
             correctRate: total ? Math.max(0, Math.min(100, Math.round(((total - Number(item.wrongCount || 0)) / total) * 100))) : null
         };
-    }).sort((a, b) =>
-        Number(b.wrongCount || 0) - Number(a.wrongCount || 0) ||
-        String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
-        Number(a.questionNo) - Number(b.questionNo)
-    );
+    }).sort((a, b) => {
+        const aRate = a.correctRate !== null ? a.correctRate : -1;
+        const bRate = b.correctRate !== null ? b.correctRate : -1;
+        return (bRate - aRate) ||
+            String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
+            Number(a.questionNo) - Number(b.questionNo);
+    });
 }
 
 function clinicPrintBuildPayload(classId, config) {
