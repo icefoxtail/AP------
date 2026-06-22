@@ -232,9 +232,9 @@
                 <div class="eie-owner-topbar__date">${esc(dateLabel)}</div>
                 <div class="eie-owner-topbar__tools">
                     ${renderGate()}
-                    <label class="eie-owner-search" aria-label="학생 · 반 통합 검색" title="통합 검색 (준비중)">
+                    <label class="eie-owner-search" aria-label="학생 · 반 통합 검색" title="통합 검색 기능을 준비하고 있습니다">
                         <svg class="eie-owner-search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21L16.65 16.65M10.8 18.1C6.77 18.1 3.5 14.83 3.5 10.8C3.5 6.77 6.77 3.5 10.8 3.5C14.83 3.5 18.1 6.77 18.1 10.8C18.1 14.83 14.83 18.1 10.8 18.1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <input type="search" placeholder="학생 · 반 통합 검색" autocomplete="off" aria-label="학생 · 반 통합 검색">
+                        <input type="search" placeholder="학생 · 반 통합 검색" autocomplete="off" aria-label="학생 · 반 통합 검색" disabled>
                     </label>
                 </div>
             </div>
@@ -337,6 +337,67 @@
         return Number.isFinite(count) && count > 0 ? count : null;
     }
 
+    function isForeignerTeacherName(value) {
+        const text = normalizeDashboardText(value).toLowerCase();
+        return text === 'foreigner'
+            || text === 'foreign'
+            || text.startsWith('forei')
+            || text.includes('원어민')
+            || text.includes('외국인');
+    }
+
+    function uniqueTeacherNamesInOrder(values) {
+        const seen = new Set();
+        return (Array.isArray(values) ? values : []).map(normalizeDashboardText).filter(name => {
+            const key = teacherKey(name);
+            if (!key || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+    }
+
+    function teacherNameOfCell(cell) {
+        return normalizeDashboardText(
+            cell?.teacher_name_raw ||
+            cell?.teacher_name ||
+            cell?.teacher ||
+            '미정'
+        ) || '미정';
+    }
+
+    function teacherNamesOfCell(cell) {
+        const raw = rawOfDashboard(cell);
+        const values = [];
+        if (Array.isArray(cell?.teacher_names)) values.push(...cell.teacher_names);
+        if (Array.isArray(raw?.teacher_names)) values.push(...raw.teacher_names);
+        values.push(normalizeDashboardText(cell?.homeroom_teacher || raw?.homeroom_teacher));
+        values.push(...normalizeDashboardText(cell?.teacher_name_raw || cell?.teacher_name || cell?.teacher).split(','));
+        return uniqueTeacherNamesInOrder(values);
+    }
+
+    function primaryTeacherOfCell(cell) {
+        const raw = rawOfDashboard(cell);
+        const explicit = normalizeDashboardText(cell?.homeroom_teacher || raw?.homeroom_teacher);
+        if (explicit && !isForeignerTeacherName(explicit)) return explicit;
+        const names = teacherNamesOfCell(cell).filter(name => !isForeignerTeacherName(name));
+        const fallback = teacherNameOfCell(cell);
+        if (names.length) return names[0];
+        return fallback && !isForeignerTeacherName(fallback) ? fallback : '미정';
+    }
+
+    function homeroomStudentCountForTeacher(name, cells) {
+        const targetKey = teacherKey(name);
+        const countedClasses = new Set();
+        return (Array.isArray(cells) ? cells : []).reduce((total, cell) => {
+            if (teacherKey(primaryTeacherOfCell(cell)) !== targetKey) return total;
+            const className = classNameOfCell(cell);
+            if (!className || countedClasses.has(className)) return total;
+            countedClasses.add(className);
+            const count = studentCountOfCell(cell);
+            return total + (Number.isFinite(count) ? count : 0);
+        }, 0);
+    }
+
     function dayTeacherSourcesOf(cell) {
         const raw = rawOfDashboard(cell);
         return [
@@ -421,35 +482,23 @@
         if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('teacher');
     }
 
-    function openDashboardTeacherClassroom(teacherName) {
-        if (window.EieClassroomView && typeof EieClassroomView.openTeacher === 'function') {
-            EieClassroomView.openTeacher(teacherName);
-            return;
-        }
-        openDashboardTeacher(teacherName);
-    }
-
-    function openDashboardTeacherStudents(teacherName) {
-        if (window.EieStudentsView && typeof EieStudentsView.setTeacherFilter === 'function') {
-            EieStudentsView.setTeacherFilter(teacherName);
-            return;
-        }
-        if (window.EieRouter && typeof EieRouter.open === 'function') EieRouter.open('students');
-    }
-
     function renderTeacherStatus(data) {
         const today = todayIso();
         const teacherNames = teacherNamesForDashboard(data);
         const periods = dashboardPeriodsForToday(data.timetableCells, today);
         const cards = teacherNames.map(name => {
             const periodRows = periodRowsForTeacher(name, data.timetableCells, today, periods);
+            const homeroomStudentCount = homeroomStudentCountForTeacher(name, data.timetableCells);
             return `
                 <article class="card ap-admin-teacher-card eie-admin-teacher-card eie-admin-teacher-card--readonly" aria-label="${esc(name)} 선생님 현황판">
                     <div class="admin-teacher-card__head">
                         <div class="admin-teacher-card__name">${esc(name)} 선생님</div>
                         <div class="admin-teacher-card__quick-actions">
-                            <button class="btn admin-teacher-card__quick-action" type="button" onclick="event.stopPropagation(); openDashboardTeacherClassroom(${jsArg(name)})">담당반</button>
-                            <button class="btn admin-teacher-card__quick-action" type="button" onclick="event.stopPropagation(); openDashboardTeacherStudents(${jsArg(name)})">재원</button>
+                            <span class="admin-teacher-card__quick-action admin-teacher-card__quick-action--static">담당반</span>
+                            <span class="admin-teacher-card__quick-action admin-teacher-card__quick-action--hover" tabindex="0" aria-label="${esc(name)} 담임반 재원">
+                                재원
+                                <span class="eie-owner-stat__tip eie-owner-stat__tip--inline">담임반 재원 ${esc(homeroomStudentCount)}명</span>
+                            </span>
                         </div>
                     </div>
                     <div class="admin-teacher-card__journal eie-admin-teacher-board">
@@ -477,17 +526,6 @@
                 <div class="ap-admin-teacher-grid eie-admin-teacher-grid">
                     ${cards || '<div class="card eie-admin-empty-card">등록된 선생님이 없습니다.</div>'}
                 </div>
-            </div>
-        `;
-    }
-
-    function renderLegacyRecentConsultationPlaceholder() {
-        return `
-            <div class="ap-admin-section eie-admin-section">
-                <div class="eie-admin-section-title-row">
-                    <h3 class="ap-admin-section-title eie-admin-section-title">최근 상담</h3>
-                </div>
-                <div class="card eie-admin-empty-card">상담 기록 연동 준비중</div>
             </div>
         `;
     }
@@ -550,15 +588,6 @@
                 <div class="card eie-admin-consultation-list">
                     ${rowHtml || '<div class="eie-admin-empty-card">최근 상담 기록이 없습니다.</div>'}
                 </div>
-            </div>
-        `;
-    }
-
-    function renderWeeklySchedulePlaceholder() {
-        return `
-            <div class="ap-admin-section eie-admin-section">
-                <h3 class="ap-admin-section-title eie-admin-section-title" style="margin:0 0 12px 0; font-size:14px; font-weight:500; color:var(--secondary);">주간일정</h3>
-                <div class="card eie-admin-empty-card">주간일정 연동 준비중</div>
             </div>
         `;
     }
@@ -832,8 +861,6 @@
     }
 
     window.openDashboardTeacher = openDashboardTeacher;
-    window.openDashboardTeacherClassroom = openDashboardTeacherClassroom;
-    window.openDashboardTeacherStudents = openDashboardTeacherStudents;
     window.openDashboardStudent = openDashboardStudent;
     window.openDashboardStudentStatusFilter = openStudentStatusFilter;
     window.openDashboardConsultationStudent = openDashboardConsultationStudent;

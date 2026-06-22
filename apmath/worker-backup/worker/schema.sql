@@ -177,6 +177,9 @@ CREATE TABLE IF NOT EXISTS academy_schedules (
   student_id TEXT,
   teacher_name TEXT,
   memo TEXT,
+  series_id TEXT,
+  series_kind TEXT DEFAULT 'single',
+  series_until TEXT,
   is_closed INTEGER DEFAULT 0,
   is_deleted INTEGER DEFAULT 0,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -315,6 +318,7 @@ CREATE INDEX IF NOT EXISTS idx_exam_schedules_date ON exam_schedules(exam_date);
 CREATE INDEX IF NOT EXISTS idx_academy_schedules_date ON academy_schedules(schedule_date);
 CREATE INDEX IF NOT EXISTS idx_academy_schedules_student ON academy_schedules(student_id);
 CREATE INDEX IF NOT EXISTS idx_academy_schedules_deleted ON academy_schedules(is_deleted);
+CREATE INDEX IF NOT EXISTS idx_academy_schedules_series ON academy_schedules(series_id);
 
 CREATE INDEX IF NOT EXISTS idx_school_exam_records_student ON school_exam_records(student_id);
 CREATE INDEX IF NOT EXISTS idx_school_exam_records_class ON school_exam_records(class_id);

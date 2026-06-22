@@ -74,3 +74,12 @@
 2. route는 payment methods, templates, payments, transactions, cashbook, refund, carryover, summaries 처리
 3. 실제 결제/발송은 구현 또는 실행하지 않는다
 4. UI 기본 노출은 사용자 승인 필요
+
+## 8. 학원 일정 시리즈
+
+1. `schedule.js`가 휴무/기타 반복 규칙에 따라 occurrence 날짜 배열을 만든다.
+2. 단일 occurrence는 `POST /api/academy-schedules`, 복수 occurrence는 `POST /api/academy-schedules/batch`로 저장한다.
+3. 각 row는 같은 `series_id`, `series_kind`, `series_until`을 보유하며 기존 row는 `series_id || id`로 호환한다.
+4. 한 날짜 수정/삭제는 기존 단건 route를 사용하고, 전체 공통 필드 수정은 `PATCH /api/academy-schedules/series/:seriesId`, 전체 삭제는 `DELETE /api/academy-schedules/series/:seriesId`를 사용한다.
+5. 날짜 구성 변경은 frontend가 기존 시리즈를 소프트 삭제한 뒤 occurrence를 재생성한다.
+6. `exam_schedules` 저장·수정·삭제 경로는 변경하지 않는다.

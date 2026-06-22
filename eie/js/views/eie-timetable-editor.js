@@ -734,7 +734,7 @@
                     <h2>수업 추가</h2>
                     <button type="button" class="eie-icon-button" data-eie-timetable-action="clear-selection">닫기</button>
                 </div>
-                <p class="eie-editor-help">선택한 빈 칸에 임시 수업을 만듭니다.</p>
+                <p class="eie-editor-help">선택한 빈 칸에 수업을 추가합니다.</p>
                 <div class="eie-edit-form" data-eie-new-cell-form="true">
                     ${renderInput('수업명', 'class_name_raw', '', 'text')}
                     ${renderInput('선생님', 'teacher_name_raw', slot.teacherName || '', 'text')}
@@ -752,7 +752,7 @@
                     </label>
                 </div>
                 <div class="eie-action-row">
-                    <button type="button" class="eie-primary-button" data-eie-timetable-action="create-draft-cell">임시 수업 만들기</button>
+                    <button type="button" class="eie-primary-button" data-eie-timetable-action="create-draft-cell">수업 추가</button>
                 </div>
                 <div class="eie-api-note">${esc(slot.periodLabel || '-')} · ${esc([slot.startTime, slot.endTime].filter(Boolean).join('~') || '시간 미정')} · ${esc(slot.teacherName || `${Number(slot.columnIndex) + 1}칸`)}</div>
                 ${renderChangePreview()}
@@ -797,12 +797,6 @@
                 <div class="eie-change-list">
                     ${lines.map(line => `<div class="eie-change-row">${esc(line)}</div>`).join('')}
                 </div>
-                ${editorState.lastPayload ? `
-                    <details class="eie-payload-preview">
-                        <summary>저장 payload 보기</summary>
-                        <pre>${esc(JSON.stringify(editorState.lastPayload, null, 2))}</pre>
-                    </details>
-                ` : ''}
             </div>
         `;
     }
@@ -1083,7 +1077,7 @@
         editorState.draftCells.push(cell);
         editorState.selectedCellId = tempId;
         editorState.selectedSlot = null;
-        editorState.notice = '임시 수업을 추가했습니다. 실제 저장은 다음 API 연결 단계에서 반영됩니다.';
+        editorState.notice = '수업을 추가했습니다. 저장 전까지는 시간표에 반영되지 않으며, 저장하면 시간표에 적용됩니다.';
         editorState.error = '';
         editorState.invalidCreateField = '';
         editorState.lastPayload = null;

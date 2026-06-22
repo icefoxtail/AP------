@@ -19,9 +19,9 @@ assert(
 );
 
 assert(
-  indexSource.includes('./js/views/eie-timetable.js?v=20260609') &&
+  indexSource.includes('./js/views/eie-timetable.js?v=20260622') &&
     indexSource.includes('./js/views/eie-attendance.js?v=20260609') &&
-    indexSource.includes('./js/views/eie-teacher.js?v=20260609'),
+    indexSource.includes('./js/views/eie-teacher.js?v=20260622'),
   'EIE changed timetable/attendance/teacher scripts should have cache-busting versions'
 );
 

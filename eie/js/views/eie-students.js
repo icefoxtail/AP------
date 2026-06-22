@@ -1696,7 +1696,7 @@
             + '<label class="eie-apms-consultation-field"><span>조치 사항</span><textarea id="consultation-next-action" placeholder="다음 조치 사항 (선택)">' + esc(nextAction) + '</textarea></label>'
             + '<div class="eie-apms-consultation-ai">'
             + '<strong>상담 요약</strong>'
-            + '<p>AI 요약은 준비중입니다. 오늘은 상담 전문과 후속 조치를 저장합니다.</p>'
+            + '<p>입력한 상담 내용과 후속 조치가 기록으로 저장됩니다.</p>'
             + '</div>'
             + '<div class="eie-apms-consultation-save-row">'
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.saveConsultation(' + jsArg(sid) + ')" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : (editing ? '수정 완료' : '저장')) + '</button>'
@@ -1755,18 +1755,6 @@
             + '<div class="eie-action-row">'
             + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.openTimetable()">시간표 보기</button>'
             + '</div>'
-            + '</div>';
-    }
-
-    function renderReadyPanel(kind) {
-        var title = kind === 'consultation' ? '상담' : '출결/숙제';
-        var body = kind === 'consultation'
-            ? '상담 저장 endpoint는 다음 라운드에서 연결합니다. 현재는 APMS와 같은 위치와 문법만 유지합니다.'
-            : '출결과 숙제 저장 endpoint는 다음 라운드에서 연결합니다. 지금은 학생별 운영 정보를 읽기 전용으로 정리합니다.';
-        return '<div class="eie-apms-card">'
-            + '<div class="eie-apms-section-head"><h3>' + esc(title) + '</h3><span>준비중</span></div>'
-            + '<p class="eie-apms-muted">' + esc(body) + '</p>'
-            + '<button type="button" class="eie-secondary-button" disabled>저장 준비중</button>'
             + '</div>';
     }
 
@@ -1866,7 +1854,7 @@
             + '<div class="eie-apms-section-head"><h3>출결/숙제</h3><span>오늘 ' + esc(status) + '</span></div>'
             + attendanceCellSelector(student)
             + '<div class="eie-apms-attendance-actions">' + buttons + '</div>'
-            + '<p class="eie-apms-muted">숙제 저장은 다음 단계입니다. 오늘은 출석 상태를 EIE 전용 출석부에 저장합니다.</p>'
+            + '<p class="eie-apms-muted">선택한 출석 상태가 EIE 출석부에 저장됩니다.</p>'
             + (rows.length ? '<div class="eie-apms-attendance-history">'
                 + rows.slice(0, 8).map(function (row) {
                     return '<div class="eie-apms-contact-row"><div><strong>' + esc(text(row.date || row.created_at).slice(0, 10) || '-') + '</strong><span>' + esc(row.memo || '메모 없음') + '</span></div><strong>' + esc(row.status || '-') + '</strong></div>';
@@ -2979,7 +2967,7 @@
         },
 
         showPreparing: function (label) {
-            if (typeof window !== 'undefined' && window.alert) window.alert(text(label || '기능') + ' 기능은 준비중입니다.');
+            if (typeof window !== 'undefined' && window.alert) window.alert(text(label || '기능') + ' 기능은 곧 제공될 예정입니다.');
         },
 
         saveAttendance: async function (studentId, status) {

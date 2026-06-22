@@ -28,7 +28,7 @@
 | `consultations` | 상담 기록 | 운영 | `consultations` | `student.js`, `report.js` | 노출됨 | 개인정보 |
 | `operation_memos` | 운영 메모 | 운영 | `operation-memos` | `dashboard.js` | 노출됨 | 내부 메모 노출 |
 | `exam_schedules` | 시험 일정 | 운영 | `exam-schedules` | 확인 필요 | 노출 추정, 확인 필요 | 일정 회귀 |
-| `academy_schedules` | 학원 일정 | 운영 | `academy-schedules` | 확인 필요 | 노출 추정, 확인 필요 | target scope |
+| `academy_schedules` | 학원 일정 occurrence 및 반복/기간 시리즈 | 운영 | `academy-schedules`, `academy-schedules/batch`, `academy-schedules/series/:id` | `schedule.js`, dashboard | 노출됨 | target scope, series 단건/전체 mutation |
 | `school_exam_records` | 학교시험 기록 | AP Math/운영 | `school-exam-records` | `cumulative.js` | 노출됨 | 성적 기록 |
 | `exam_blueprints` | archive 문항 메타 | AP Math 특화 | `exam-blueprints` | `archive/*`, `report.js` | 노출됨 | archive 분석 |
 | `class_exam_assignments` | 반 시험 배정 | AP Math 특화 | `class-exam-assignments` | `archive/*`, `student/index.html` | 노출됨 | 학생 시험 직접 열기 금지 |
@@ -91,3 +91,11 @@
 ## 7. 리포트 cohort 산출 기준
 
 리포트 통계 cohort는 schema 변경 없이 기존 `exam_sessions.archive_file`, `exam_sessions.exam_title`, `exam_sessions.exam_date`, `exam_sessions.question_count`, `students.grade`, `classes.grade`, `wrong_answers`를 사용한다. 최우선 기준은 같은 연도의 같은 `archive_file`과 같은 학년이며, `archive_file`이 없으면 제목+날짜+문항 수, 제목+날짜 순서로 fallback한다.
+
+## 8. academy_schedules 시리즈 컬럼
+
+- `series_id`: 날짜별 occurrence를 묶는 논리 일정 ID. 기존 row는 migration에서 `id`로 백필한다.
+- `series_kind`: `single`, `range`, `weekly`.
+- `series_until`: 반복/기간 종료일 표시값.
+- 인덱스: `idx_academy_schedules_series(series_id)`.
+- 기준 migration: `apmath/worker-backup/worker/migrations/20260622_academy_schedules_series.sql`.

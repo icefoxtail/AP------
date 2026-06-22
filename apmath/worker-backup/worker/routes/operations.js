@@ -304,7 +304,7 @@ export async function handleOperations(request, env, teacher, path, url) {
     const currentTeacher = await requireTeacher(request, env, teacher);
     if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
-    const normalizeAcademySchedulePayload = (d) => {
+    const normalizeAcademySchedulePayload = (d, seriesDefaults = {}) => {
       const scheduleType = String(d.scheduleType || '').trim();
       const title = String(d.title || '').trim();
       const scheduleDate = String(d.scheduleDate || '').trim();
@@ -312,6 +312,10 @@ export async function handleOperations(request, env, teacher, path, url) {
       const targetScope = ['global', 'teacher', 'student'].includes(rawTargetScope) ? rawTargetScope : 'global';
       const studentId = targetScope === 'student' ? String(d.studentId || '').trim() : null;
       const isClosed = scheduleType === 'closed' ? 1 : (d.isClosed ? 1 : 0);
+      const rawSeriesKind = String(seriesDefaults.seriesKind || d.seriesKind || 'single').trim();
+      const seriesKind = ['single', 'range', 'weekly'].includes(rawSeriesKind) ? rawSeriesKind : 'single';
+      const seriesId = String(seriesDefaults.seriesId || d.seriesId || '').trim();
+      const seriesUntil = String(seriesDefaults.seriesUntil || d.seriesUntil || scheduleDate || '').trim();
 
       if (!scheduleType || !title || !scheduleDate) return { error: 'Required fields missing' };
       if (targetScope === 'student' && !studentId) return { error: 'Student ID required' };
@@ -327,9 +331,52 @@ export async function handleOperations(request, env, teacher, path, url) {
         studentId,
         teacherName: d.teacherName || currentTeacher.name || '',
         memo: d.memo || '',
-        isClosed
+        isClosed,
+        seriesId,
+        seriesKind,
+        seriesUntil
       };
     };
+
+    const canMutateAcademySchedule = async (row) => {
+      if (!row) return false;
+      if (row.target_scope === 'global') return isStaffUser(currentTeacher);
+      if (row.target_scope === 'teacher') return isAdminUser(currentTeacher) || row.teacher_name === currentTeacher.name;
+      if (row.target_scope === 'student') return canAccessStudent(currentTeacher, row.student_id, env);
+      return false;
+    };
+
+    const canMutateAcademyScheduleSeries = async (seriesId) => {
+      const result = await env.DB.prepare(
+        'SELECT target_scope, student_id, teacher_name FROM academy_schedules WHERE series_id = ? AND is_deleted = 0'
+      ).bind(seriesId).all();
+      const rows = result.results || [];
+      if (!rows.length) return { exists: false, allowed: false };
+      for (const row of rows) {
+        if (!(await canMutateAcademySchedule(row))) return { exists: true, allowed: false };
+      }
+      return { exists: true, allowed: true };
+    };
+
+    const insertAcademyScheduleStatement = (d, idValue) => env.DB.prepare(`INSERT INTO academy_schedules
+      (id, schedule_type, title, schedule_date, start_time, end_time, target_scope, student_id, teacher_name, memo, series_id, series_kind, series_until, is_closed, is_deleted, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, DATETIME('now'), DATETIME('now'))`)
+      .bind(
+        idValue,
+        d.scheduleType,
+        d.title,
+        d.scheduleDate,
+        d.startTime,
+        d.endTime,
+        d.targetScope,
+        d.studentId,
+        d.teacherName,
+        d.memo,
+        d.seriesId || idValue,
+        d.seriesKind,
+        d.seriesUntil,
+        d.isClosed
+      );
 
     if (method === 'GET') {
       const from = url.searchParams.get('from') || '';
@@ -360,36 +407,107 @@ export async function handleOperations(request, env, teacher, path, url) {
       return jsonResponse({ success: true, data: res.results });
     }
 
+    if (method === 'POST' && id === 'batch') {
+      const body = await request.json();
+      const items = Array.isArray(body.items) ? body.items : [];
+      if (!items.length || items.length > 400) return jsonResponse({ success: false, message: 'Items must contain 1-400 schedules' }, 400);
+
+      const seriesId = pickText(body.seriesId) || `srs_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      const seriesKind = pickText(body.seriesKind, 'range');
+      const seriesUntil = pickText(body.seriesUntil);
+      const normalized = items.map(item => normalizeAcademySchedulePayload(item, { seriesId, seriesKind, seriesUntil }));
+      const invalid = normalized.find(item => item.error);
+      if (invalid) return jsonResponse({ success: false, message: invalid.error }, 400);
+      const firstScope = normalized[0];
+      const mixedScope = normalized.some(item =>
+        item.targetScope !== firstScope.targetScope ||
+        item.studentId !== firstScope.studentId ||
+        item.teacherName !== firstScope.teacherName
+      );
+      if (mixedScope) return jsonResponse({ success: false, message: 'All series items must share the same target scope' }, 400);
+
+      for (const item of normalized) {
+        if (item.targetScope === 'global' && !isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+        if (item.targetScope === 'student' && !(await canAccessStudent(currentTeacher, item.studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      }
+
+      const ids = normalized.map((item, index) => `acs_${Date.now()}_${index}_${Math.random().toString(36).slice(2, 7)}`);
+      await env.DB.batch(normalized.map((item, index) => insertAcademyScheduleStatement(item, ids[index])));
+      return jsonResponse({ success: true, ids, seriesId });
+    }
+
     if (method === 'POST') {
       const d = normalizeAcademySchedulePayload(await request.json());
       if (d.error) return jsonResponse({ success: false, message: d.error }, 400);
       if (d.targetScope === 'global' && !isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
       if (d.targetScope === 'student' && !(await canAccessStudent(currentTeacher, d.studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
       const sid = `acs_${Date.now()}`;
-      await env.DB.prepare(`INSERT INTO academy_schedules
-        (id, schedule_type, title, schedule_date, start_time, end_time, target_scope, student_id, teacher_name, memo, is_closed, is_deleted, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, DATETIME('now'), DATETIME('now'))`)
-        .bind(sid, d.scheduleType, d.title, d.scheduleDate, d.startTime, d.endTime, d.targetScope, d.studentId, d.teacherName, d.memo, d.isClosed).run();
-      return jsonResponse({ success: true, id: sid });
+      await insertAcademyScheduleStatement(d, sid).run();
+      return jsonResponse({ success: true, id: sid, seriesId: d.seriesId || sid });
+    }
+
+    if (method === 'PATCH' && id === 'series' && path[3]) {
+      const seriesId = decodeURIComponent(path[3]);
+      const access = await canMutateAcademyScheduleSeries(seriesId);
+      if (!access.exists) return jsonResponse({ error: 'Not found' }, 404);
+      if (!access.allowed) return jsonResponse({ error: 'Forbidden' }, 403);
+
+      const body = await request.json();
+      const scheduleType = pickText(body.scheduleType);
+      const title = pickText(body.title);
+      const rawSeriesKind = pickText(body.seriesKind, 'single');
+      const seriesKind = ['single', 'range', 'weekly'].includes(rawSeriesKind) ? rawSeriesKind : 'single';
+      if (!scheduleType || !title) return jsonResponse({ success: false, message: 'Required fields missing' }, 400);
+      const isClosed = scheduleType === 'closed' ? 1 : (body.isClosed ? 1 : 0);
+
+      await env.DB.prepare(`UPDATE academy_schedules
+        SET schedule_type=?, title=?, start_time=?, end_time=?, memo=?, is_closed=?, series_kind=?, series_until=?, updated_at=DATETIME('now')
+        WHERE series_id=? AND is_deleted=0`)
+        .bind(
+          scheduleType,
+          title,
+          pickText(body.startTime),
+          pickText(body.endTime),
+          pickText(body.memo),
+          isClosed,
+          seriesKind,
+          pickText(body.seriesUntil),
+          seriesId
+        ).run();
+      return jsonResponse({ success: true, seriesId });
     }
 
     if (method === 'PATCH' && id) {
+      const existingAcs = await env.DB.prepare(
+        'SELECT target_scope, student_id, teacher_name FROM academy_schedules WHERE id = ? AND is_deleted = 0'
+      ).bind(id).first();
+      if (!existingAcs) return jsonResponse({ error: 'Not found' }, 404);
+      if (!(await canMutateAcademySchedule(existingAcs))) return jsonResponse({ error: 'Forbidden' }, 403);
       const d = normalizeAcademySchedulePayload(await request.json());
       if (d.error) return jsonResponse({ success: false, message: d.error }, 400);
       if (d.targetScope === 'global' && !isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
       if (d.targetScope === 'student' && !(await canAccessStudent(currentTeacher, d.studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
       await env.DB.prepare(`UPDATE academy_schedules
-        SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, is_closed=?, updated_at=DATETIME('now')
+        SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, series_id=?, series_kind=?, series_until=?, is_closed=?, updated_at=DATETIME('now')
         WHERE id=? AND is_deleted = 0`)
-        .bind(d.scheduleType, d.title, d.scheduleDate, d.startTime, d.endTime, d.targetScope, d.studentId, d.teacherName, d.memo, d.isClosed, id).run();
+        .bind(d.scheduleType, d.title, d.scheduleDate, d.startTime, d.endTime, d.targetScope, d.studentId, d.teacherName, d.memo, d.seriesId || id, d.seriesKind, d.seriesUntil, d.isClosed, id).run();
       return jsonResponse({ success: true });
+    }
+
+    if (method === 'DELETE' && id === 'series' && path[3]) {
+      const seriesId = decodeURIComponent(path[3]);
+      const access = await canMutateAcademyScheduleSeries(seriesId);
+      if (!access.exists) return jsonResponse({ error: 'Not found' }, 404);
+      if (!access.allowed) return jsonResponse({ error: 'Forbidden' }, 403);
+      await env.DB.prepare(
+        "UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE series_id = ? AND is_deleted = 0"
+      ).bind(seriesId).run();
+      return jsonResponse({ success: true, seriesId });
     }
 
     if (method === 'DELETE' && id) {
       const existingAcs = await env.DB.prepare('SELECT target_scope, student_id, teacher_name FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
-      if (existingAcs && existingAcs.target_scope === 'global' && !isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
-      if (existingAcs && existingAcs.target_scope === 'teacher' && !isAdminUser(currentTeacher) && existingAcs.teacher_name !== currentTeacher.name) return jsonResponse({ error: 'Forbidden' }, 403);
-      if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(currentTeacher, existingAcs.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      if (existingAcs && !(await canMutateAcademySchedule(existingAcs))) return jsonResponse({ error: 'Forbidden' }, 403);
       await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
       return jsonResponse({ success: true });
     }
