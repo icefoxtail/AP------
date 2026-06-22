@@ -30,7 +30,7 @@ index.js에 API 본문을 직접 추가하는 방식은 금지한다. 새 API는
 | `routes/student-portal.js` | `handleStudentPortal` | `student-portal/*` | student token/PIN | students, exams, assignments | 시험지 직접 열기 금지 |
 | `routes/planner.js` | `handlePlanner` | `planner`, `planner-auth`, `planner-auth-by-name` | student/teacher helper | planner schema | SSO |
 | `routes/reports-ai.js` | `handleReportsAi` | `ai/student-report`, report-analysis, consultation summary | teacher | consultations/exams | 학부모 문구 |
-| `routes/operations.js` | `handleOperations` | consultations, memos, schedules, school exam records, daily journals | teacher | 운영 tables | 개인정보 |
+| `routes/operations.js` | `handleOperations` | consultations, memos, exam/academy schedules, academy schedule batch·series CRUD, school exam records, daily journals | teacher, global 일정 mutation은 staff | 운영 tables | 개인정보, 일정 시리즈 권한 |
 | `routes/class-daily.js` | `handleClassDaily` | class-textbooks, class-daily-records/progress | teacher | class_daily_* | 수업일지 |
 | `routes/homework-photo.js` | `handleHomeworkPhoto` | homework-photo assignments/files/student submit | teacher/student | homework_photo_* + R2 | 파일 만료 |
 | `routes/study-material-wrongs.js` | `handleStudyMaterialWrongs` | material-* | teacher/student token | material_* | 일반 OMR과 정책 혼선 |

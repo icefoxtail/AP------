@@ -153,7 +153,15 @@
 
         <div class="field-group">
           <label>layoutTag</label>
-          <input type="text" id="e-layout" placeholder="grid / stack / wide ...">
+          <select id="e-layout">
+            <option value="grid">grid</option>
+            <option value="subjective-2up">subjective-2up</option>
+            <option value="subjective-4up">subjective-4up</option>
+            <option value="fullwidth">fullwidth</option>
+            <option value="custom">custom</option>
+          </select>
+          <input type="text" id="e-layout-custom" class="layout-custom-input"
+                 placeholder="custom layoutTag" style="display:none">
         </div>
 
         <div class="field-group">

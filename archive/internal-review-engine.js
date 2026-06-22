@@ -469,6 +469,47 @@ function setDraftArrayField(q, key, value) {
   else q[key] = value;
 }
 
+const LAYOUT_TAG_OPTIONS = [
+  'grid',
+  'subjective-2up',
+  'subjective-4up',
+  'fullwidth'
+];
+
+function syncLayoutTagCustomInput() {
+  const select = document.getElementById('e-layout');
+  const customInput = document.getElementById('e-layout-custom');
+  if (!select || !customInput) return;
+  customInput.style.display = select.value === 'custom' ? 'block' : 'none';
+}
+
+function getEditorLayoutTag() {
+  const select = document.getElementById('e-layout');
+  const customInput = document.getElementById('e-layout-custom');
+  if (!select) return 'grid';
+  if (select.value !== 'custom') return select.value || 'grid';
+  return customInput && customInput.value.trim() ? customInput.value.trim() : 'custom';
+}
+
+function setEditorLayoutTag(layoutTag) {
+  const select = document.getElementById('e-layout');
+  const customInput = document.getElementById('e-layout-custom');
+  if (!select || !customInput) return;
+
+  const value = typeof layoutTag === 'string' && layoutTag.trim()
+    ? layoutTag.trim()
+    : 'grid';
+
+  if (LAYOUT_TAG_OPTIONS.indexOf(value) !== -1) {
+    select.value = value;
+    customInput.value = '';
+  } else {
+    select.value = 'custom';
+    customInput.value = value;
+  }
+  syncLayoutTagCustomInput();
+}
+
 function commitEditorDraft() {
   if (state.selectedId === null) return;
   const q = state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); });
@@ -476,7 +517,7 @@ function commitEditorDraft() {
 
   setDraftStringField(q, 'level', document.getElementById('e-level').value);
   setDraftStringField(q, 'questionType', document.getElementById('e-qtype').value);
-  setDraftStringField(q, 'layoutTag', document.getElementById('e-layout').value.trim());
+  setDraftStringField(q, 'layoutTag', getEditorLayoutTag());
   setDraftArrayField(q, 'tags', document.getElementById('e-tags').value
                     .split(/[,\n]/).map(function(t) { return t.trim(); }).filter(Boolean));
   setDraftStringField(q, 'content', document.getElementById('e-content').value);
@@ -571,7 +612,7 @@ function openEditPanel(q) {
 
   document.getElementById('e-level').value   = q.level || '';
   document.getElementById('e-qtype').value   = q.questionType || '';
-  document.getElementById('e-layout').value  = q.layoutTag || '';
+  setEditorLayoutTag(q.layoutTag);
   document.getElementById('e-tags').value    = (q.tags || []).join('\n');
   document.getElementById('e-content').value = q.content || '';
   document.getElementById('e-choices').value = (q.choices || []).join('\n');
@@ -1778,8 +1819,15 @@ document.getElementById('e-image').addEventListener('input', function() {
   updateImagePreview(this.value.trim());
 });
 
-function handleEditFieldChanged() {
+function handleEditFieldChanged(event) {
   if (state.selectedId === null) return;
+  if (event && event.target && event.target.id === 'e-layout') {
+    const customInput = document.getElementById('e-layout-custom');
+    if (event.target.value === 'custom' && customInput && !customInput.value.trim()) {
+      customInput.value = 'custom';
+    }
+    syncLayoutTagCustomInput();
+  }
   commitEditorDraft();
   updateStats();
   updateUnsavedBadge();
@@ -1789,7 +1837,7 @@ function handleEditFieldChanged() {
 
 function initLiveEditHandlers() {
   [
-    'e-level','e-qtype','e-layout','e-tags','e-content',
+    'e-level','e-qtype','e-layout','e-layout-custom','e-tags','e-content',
     'e-choices','e-answer','e-solution','e-image','e-imagesize'
   ].forEach(function(id) {
     const el = document.getElementById(id);

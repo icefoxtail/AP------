@@ -34,3 +34,10 @@ AP Math는 기능 보호를 우선하고, 새 상위 OS는 AP Math를 감싸는 
 
 AP Math 기능 변경 시 관련 도메인, `CURRENT_FRONTEND_MAP.md`, `CURRENT_API_FLOW_MAP.md`, `CURRENT_REGRESSION_RISK_MAP.md`, `CODEX_RESULT.md`를 업데이트한다.
 
+## G. 일정관리 시리즈 확장
+
+- `academy_schedules`의 휴무/기타 일정은 날짜별 occurrence row를 유지하면서 `series_id`로 논리 묶음을 구성한다.
+- 지원 반복은 `single`, `range`, `weekly`이며 종료일이 있는 유한 반복만 허용한다.
+- 시험 일정은 기존 `exam_schedules` API와 스키마를 유지한다.
+- 일정관리 진입점은 `openExamScheduleModal()`을 유지하고 월/주/아젠다 보기만 확장한다.
+- 학생/학부모 공유와 알림은 이 범위에 포함하지 않는다.

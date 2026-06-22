@@ -72,6 +72,7 @@
 }
 
 .admin-teacher-card__quick-action {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -82,6 +83,11 @@
   color: var(--eie-muted);
   font-size: 11px;
   font-weight: 700;
+}
+
+.eie-admin-home .admin-teacher-card__quick-action--hover,
+.eie-admin-home .admin-teacher-card__quick-action--static {
+  cursor: default;
 }
 
 .eie-admin-home .admin-teacher-card__journal,
@@ -1730,6 +1736,17 @@ body.eie-owner-dashboard-bg .owner-dashboard-shell {
 }
 .eie-admin-home .eie-owner-stat:hover .eie-owner-stat__tip,
 .eie-admin-home .eie-owner-stat:focus-within .eie-owner-stat__tip {
+  opacity: 1;
+  transform: translateY(0);
+}
+.eie-admin-home .admin-teacher-card__quick-action--hover .eie-owner-stat__tip--inline {
+  left: auto;
+  right: 0;
+  min-width: max-content;
+  white-space: nowrap;
+}
+.eie-admin-home .admin-teacher-card__quick-action--hover:hover .eie-owner-stat__tip,
+.eie-admin-home .admin-teacher-card__quick-action--hover:focus-within .eie-owner-stat__tip {
   opacity: 1;
   transform: translateY(0);
 }

@@ -781,7 +781,7 @@
             openTeacherStudentList();
         },
         showPreparing: function (label) {
-            if (typeof window !== 'undefined' && window.alert) window.alert(label + ' 기능은 준비중입니다.');
+            if (typeof window !== 'undefined' && window.alert) window.alert(label + ' 기능은 곧 제공될 예정입니다.');
         },
         matchTeacherNamesForCell: matchTeacherNamesForCell,
         cellsForTeacher: cellsForTeacher,

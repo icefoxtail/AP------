@@ -24,6 +24,7 @@ Student add closes/refreshes the visible state before onboarding bootstrap. Boot
 | `apmath/js/report.js` | 리포트/AI | 학부모/학생/상담 리포트, AI 분석, print | ai/report-analysis, consultations, archive fetch | 학부모 문장 |
 | `apmath/js/qr-omr.js` | QR/OMR | OMR 세션 생성/제출, archive fetch | exam-sessions | 제출 완료 |
 | `apmath/js/cumulative.js` | 월간 출결/성적 | 출결 월간, school exam records, 반 필터, 월간/누적 출석부 A4 가로 인쇄 전용 HTML 출력 | attendance-month, school-exam-records | 성적/출결 |
+| `apmath/js/schedule.js` | 일정관리 | 시험/휴무/기타 통합 모달, academy 일정 반복·기간 시리즈 CRUD, 월/주/아젠다 보기, 날짜 필터 | exam-schedules, academy-schedules, academy-schedules/batch, academy-schedules/series/:id | 시험 경로 회귀, 시리즈 단건/전체 범위 |
 | `apmath/js/study-material-wrong.js` | 교재 오답 | material OMR/manage/review | material-* | 일반 OMR 정책 혼선 |
 | `apmath/js/wangji-foundation.js` | foundation helper | branch/time/conflict helper | 확인 필요 | 공통 helper |
 
@@ -57,3 +58,7 @@ Student add closes/refreshes the visible state before onboarding bootstrap. Boot
 ## 7. 대시보드 UI 규칙 Round 1
 
 `apmath/js/dashboard.js`는 원장님 모드와 선생님 뷰의 빠른 이동 버튼, 실제 필터 segmented control, 섹션 헤더, 리스트 row, 배지/태그, 빈 상태 규격을 같은 class 체계로 정리한다. 오늘 운영은 숫자 없는 진입 카드로 유지하며 기능/데이터/API/DB 흐름은 변경하지 않는다.
+
+## 8. 일정관리 시리즈 표시
+
+`apmath/js/schedule.js`는 `series_id || id` 기준으로 기존 단일 row와 새 시리즈를 함께 집계한다. `dashboard.js`와 `dashboard-admin.js`는 주간 범위에 occurrence가 하나라도 있는 시리즈를 한 줄로 표시하며 `openExamScheduleModal()` 진입을 유지한다.

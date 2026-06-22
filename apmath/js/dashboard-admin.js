@@ -8,6 +8,31 @@ function apAdminDashboardRole() {
     return String((typeof state !== 'undefined' && state?.auth?.role) || '').toLowerCase();
 }
 
+function apAdminAcademyScheduleSeries(fromDate, toDate) {
+    const groups = new Map();
+    (state.db.academy_schedules || [])
+        .filter(s => String(s.is_deleted || 0) !== '1' && String(s.target_scope || 'global') === 'global')
+        .forEach((row) => {
+            const key = String(row.series_id || row.id || '');
+            if (!groups.has(key)) groups.set(key, []);
+            groups.get(key).push(row);
+        });
+
+    return [...groups.values()].map((rows) => {
+        rows.sort((a, b) => String(a.schedule_date || '').localeCompare(String(b.schedule_date || '')));
+        const first = rows[0];
+        const last = rows[rows.length - 1] || first;
+        const visibleDate = rows.find(row => row.schedule_date >= fromDate && row.schedule_date <= toDate)?.schedule_date || '';
+        return {
+            ...first,
+            schedule_date: visibleDate,
+            range_start: first.schedule_date || '',
+            range_end: last.schedule_date || first.schedule_date || '',
+            occurrence_count: rows.length
+        };
+    }).filter(item => item.schedule_date);
+}
+
 function apRemoveAdminSystemGate() {
     if (typeof document === 'undefined') return;
     document.querySelectorAll('#ap-system-gate, .ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
@@ -1524,13 +1549,7 @@ function renderAdminControlCenter() {
         .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr)
         .forEach(e => adminWeeklyItems.push({ type: 'exam', date: e.exam_date, item: e }));
 
-    (state.db.academy_schedules || [])
-        .filter(s =>
-            String(s.is_deleted || 0) !== '1' &&
-            String(s.target_scope || 'global') === 'global' &&
-            s.schedule_date >= todayStr &&
-            s.schedule_date <= nextWeekStr
-        )
+    apAdminAcademyScheduleSeries(todayStr, nextWeekStr)
         .forEach(s => adminWeeklyItems.push({ type: 'academy', date: s.schedule_date, item: s }));
 
     adminWeeklyItems.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
@@ -1552,7 +1571,10 @@ function renderAdminControlCenter() {
                     const labelColor = isClosed ? 'var(--warning)' : 'var(--secondary)';
                     const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
                     const title = s.title || (isClosed ? '휴무' : '일정');
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(title)}</span>${s.memo ? ` <span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--secondary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--surface-2); border:1px solid var(--border); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                    const rangeLabel = s.range_end && s.range_end !== s.range_start
+                        ? `${apFormatMonthDay(s.range_start) || s.range_start} ~ ${apFormatMonthDay(s.range_end) || s.range_end}`
+                        : dateLabel;
+                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(title)}</span>${s.memo ? ` <span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--secondary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--surface-2); border:1px solid var(--border); padding:2px 8px; border-radius:6px;">${apEscapeHtml(rangeLabel)}</div></div>`;
                 }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:500;">이번 주 예정된 일정이 없습니다.</div>`}
             </div>
         </div>

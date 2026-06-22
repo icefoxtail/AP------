@@ -1158,6 +1158,31 @@ function renderClassSummaryCard(cls, data) {
 }
 
 // [POLISH] 일정 섹션: 오렌지(오늘) vs 보라(주간) 은은한 컬러 분리
+function getDashboardAcademyScheduleSeries(fromDate, toDate) {
+    const groups = new Map();
+    (state.db.academy_schedules || [])
+        .filter(s => String(s.is_deleted || 0) !== '1' && String(s.target_scope || 'global') === 'global')
+        .forEach((row) => {
+            const key = String(row.series_id || row.id || '');
+            if (!groups.has(key)) groups.set(key, []);
+            groups.get(key).push(row);
+        });
+
+    return [...groups.values()].map((rows) => {
+        rows.sort((a, b) => String(a.schedule_date || '').localeCompare(String(b.schedule_date || '')));
+        const first = rows[0];
+        const last = rows[rows.length - 1] || first;
+        const visibleDate = rows.find(row => row.schedule_date >= fromDate && row.schedule_date <= toDate)?.schedule_date || '';
+        return {
+            ...first,
+            schedule_date: visibleDate,
+            range_start: first.schedule_date || '',
+            range_end: last.schedule_date || first.schedule_date || '',
+            occurrence_count: rows.length
+        };
+    }).filter(item => item.schedule_date);
+}
+
 function renderTodoSections() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
@@ -1185,12 +1210,7 @@ function renderTodoSections() {
     });
     
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
-    const upcomingAcademySchedules = (state.db.academy_schedules || []).filter(s =>
-        String(s.is_deleted || 0) !== '1' &&
-        String(s.target_scope || 'global') === 'global' &&
-        s.schedule_date >= todayStr &&
-        s.schedule_date <= nextWeekStr
-    );
+    const upcomingAcademySchedules = getDashboardAcademyScheduleSeries(todayStr, nextWeekStr);
 
     const todayHtml = todayMemos.length ? todayMemos.map(m => {
         const isPinned = isMemoPinned(m);
@@ -1242,15 +1262,18 @@ function renderTodoSections() {
             const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
             const title = s.title || (isClosed ? '휴무' : '일정');
             const timeText = [s.start_time, s.end_time].map(v => String(v || '').trim()).filter(Boolean).join('~');
+            const rangeText = s.range_end && s.range_end !== s.range_start
+                ? `${s.range_start} ~ ${s.range_end}`
+                : (s.range_start || s.schedule_date || u.date);
             const preview = renderDashboardHoverPreview(title, [
                 `분류: ${label}`,
-                `날짜: ${s.schedule_date || u.date}`,
+                `날짜: ${rangeText}`,
                 timeText ? `시간: ${timeText}` : '',
                 s.teacher_name ? `선생님: ${s.teacher_name}` : '',
                 s.memo ? `메모: ${s.memo}` : ''
             ]);
             return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.occurrence_count > 1 ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(rangeText)}</span>` : ''}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
                 <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
                 ${preview}
             </div>`;

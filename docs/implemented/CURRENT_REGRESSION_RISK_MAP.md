@@ -30,3 +30,4 @@
 | timetable print | 화면 DOM/사이드바/필터를 그대로 인쇄해 A4 가로 출력이 잘리거나 현재 보기 조건이 누락됨 | 인쇄 전용 HTML, 중등부/고등부 및 전체/내 반 조건 반영 |
 | UI 문구 | 현장 용어 변경 | 기존 버튼/화면명/문구 diff 확인 |
 | hidden foundation | 승인 없는 UI 노출 | `CURRENT_HIDDEN_FOUNDATION_MAP.md` 대조 |
+| academy schedule series | 날짜별 row가 중복 목록으로 보이거나 단건 수정이 전체 series metadata를 훼손하고, 전체 삭제가 일부 occurrence만 남김 | `series_id || id` 집계, one/series scope, batch·series API, legacy row 테스트, 시험 경로 보존 |

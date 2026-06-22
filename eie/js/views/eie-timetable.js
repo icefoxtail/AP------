@@ -2019,7 +2019,7 @@
         const isTempCopy = viewState.editMode && !!session.is_temp_copy;
         const canEditCard = viewState.editMode && !isTempCopy;
         const articleAttrs = isTempCopy
-            ? `role="group" aria-label="${esc(session.material)} 저장 전 임시 수업"`
+            ? `role="group" aria-label="${esc(session.material)} 저장 전 수업"`
             : `role="button" tabindex="0" data-eie-v2-session="${esc(session.session_id)}" aria-label="${esc(session.material)} 수업 상세 보기"`;
         const homeroomColorKey = teacherKey(session.homeroom_teacher || session.teacher_name || '');
         return `
@@ -2034,7 +2034,7 @@
                         <button type="button" class="eie-v2-card-delete-button" data-eie-delete-session="${esc(session.session_id)}" title="반카드만 삭제합니다. 학생은 삭제되지 않습니다." aria-label="${esc(`${session.material || session.class_full_name || '선택한 반'} 반카드 삭제`)}">삭제</button>
                     </div>
                 ` : ''}
-                ${isTempCopy ? '<span class="eie-v2-card-copy-badge" aria-label="저장 전 임시 수업">저장 전</span>' : ''}
+                ${isTempCopy ? '<span class="eie-v2-card-copy-badge" aria-label="저장 전 수업">저장 전</span>' : ''}
                 <div class="eie-v2-card-material-row">
                     <span>Class</span>
                     <strong title="${esc(session.class_full_name || session.material)}">${esc(session.material || 'Class 없음')}</strong>
@@ -3908,7 +3908,7 @@
                 const nextSession = lastRenderedSessions.find(s => s.session_id === nextSessionId);
                 if (nextSession?.is_temp_copy) {
                     viewState.selectedSessionId = '';
-                    viewState.editNotice = '저장 전 임시 수업은 상세 수정할 수 없습니다. 저장 후 다시 선택해 주세요.';
+                    viewState.editNotice = '저장 전 수업은 상세 수정할 수 없습니다. 저장 후 다시 선택해 주세요.';
                     reopenPanelMountRoute();
                     return;
                 }
