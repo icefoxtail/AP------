@@ -72,9 +72,10 @@ assert(ledger.includes('renderAcademyTable'), 'academy tab should render through
 assert(!ledger.includes('eie-academy-card'), 'academy tab should not introduce a separate card-style visual system');
 // 원내평가 시험 영역은 점수 입력표가 중심이고, 시험 관리는 보조 작업으로 정리한다.
 assert(ledger.includes('이번 달 시험'), 'academy tab should keep the lightweight 이번 달 시험 area');
-assert(ledger.includes('+ 시험 추가'), 'academy tab should expose a single 시험 추가 button');
-assert(ledger.includes('시험 고치기'), 'academy tab should provide a collapsible 시험 고치기 toggle');
-assert(!ledger.includes('시험 관리'), 'academy tab should not keep the heavy 시험 관리 panel wording');
+assert(!ledger.includes('+ ' + '시험 추가'), 'academy controls should not expose a separate add-test button');
+assert(ledger.includes('+ 새 시험'), 'academy management chips should expose new test creation');
+assert(ledger.includes('시험 관리'), 'academy tab should provide a single 시험 관리 toggle');
+assert(!ledger.includes('시험 ' + '고치기'), 'academy tab should not keep the separate edit-test flow');
 assert(!ledger.includes('표시할 시험'), 'academy tab should not keep the 표시할 시험 panel heading');
 assert(!ledger.includes('표시 적용') && !ledger.includes('표에 표시') && !ledger.includes('표시 변경'), 'academy tab should not use display-apply wording');
 assert(!ledger.includes('선택한 시험만 표에 표시됩니다.') && !ledger.includes('체크한 시험만') && !ledger.includes('체크하면 아래'), 'academy tab should not keep redundant guidance sentences');
@@ -101,10 +102,12 @@ assert(ledger.includes('eie-new-test-date') && ledger.includes('eie-new-test-dat
 assert(ledger.includes('formatExamDateLabel'), 'academy table headers should show each test date');
 assert(ledger.includes('exam_date: testExamDate(test)'), 'academy records should save the individual test date');
 assert(ledger.includes('editTest') && ledger.includes('deleteTest'), 'academy tests should expose edit and delete actions');
-assert(ledger.includes('renderTestForm') && ledger.includes('renderEditList'), 'academy test management should split add/edit form from the edit list');
+assert(ledger.includes('renderTestForm'), 'academy test management should keep the add/edit form');
+assert(!ledger.includes('renderEdit' + 'List') && !ledger.includes('renderManage' + 'List'), 'academy management should not create a separate row list renderer');
 assert(!ledger.includes('eie-grade-test-panel') && !ledger.includes('수정할 시험') && !ledger.includes('eie-edit-test-select'), 'academy tab should drop the old settings-style panel and edit dropdown');
-assert(!ledger.includes('eie-grade-test-actions'), 'display checkbox list should not include inline edit action controls');
-assert(!ledger.includes("EieGradeLedgerView.editTest(' + jsArg(item.id)") && !ledger.includes("EieGradeLedgerView.deleteTest(' + jsArg(item.id)"), 'edit/delete should not be exposed directly inside the test chips');
+assert(!ledger.includes('eie-grade-test-' + 'actions'), 'display checkbox list should not include inline edit action controls');
+assert(!ledger.includes('eie-grade-chip-delete'), 'delete should not be exposed directly on test chips');
+assert(ledger.includes('eie-grade-chip-toggle') && ledger.includes('eie-grade-chip-edit'), 'manage mode should keep controls inside the chip row');
 assert(!ledger.includes('만점 미설정') && !ledger.includes('점수 제외'), 'academy test picker should not show noisy max/memo status labels');
 assert(ledger.includes('eie-grade-sticky-name') && css.includes('.eie-grade-sticky-name') && css.includes('position: sticky'), 'ledger CSS should preserve sticky student names');
 assert(css.includes('.eie-grade-section-tabs button') && css.includes('flex: 1 1 0'), 'middle/high section tabs should fill the segmented bar evenly');
@@ -227,7 +230,7 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     assert(html.includes('이번 달 시험'), 'default academy screen should show the lightweight 이번 달 시험 area');
     assert(html.includes('eie-academy-table') && html.includes('eie-academy-inp-'), 'default academy screen should lead with the student score table');
     assert(!html.includes('eie-grade-test-form'), 'default academy screen should keep the add/edit form collapsed');
-    assert(!html.includes('eie-grade-edit-list'), 'default academy screen should keep the 시험 고치기 list collapsed');
+    assert(!html.includes('is-managing'), 'default academy screen should keep 시험 관리 mode closed');
     assert(!html.includes('삭제'), 'default academy screen should not surface delete actions');
     assert(!html.includes('type="checkbox"'), 'default academy screen should show selected test chips without checkboxes');
     assert(html.includes('Monthly') && html.includes('Vocabulary') && html.includes('Reading') && html.includes('Memo'), 'default academy screen should show selected default chips');
@@ -265,19 +268,22 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
   }
 
   {
-    // 시험 고치기는 접혀 있다가 토글했을 때만 수정 링크가 보인다.
+    // 시험 관리는 같은 칩 줄 안에서 토글과 작은 수정 버튼만 추가한다.
     const context = makeContext();
     const collapsed = await context.EieGradeLedgerView.render();
-    assert(!collapsed.includes('eie-grade-edit-list'), 'edit list should be collapsed by default');
-    context.EieGradeLedgerView.toggleEditList();
+    assert(!collapsed.includes('is-managing'), 'manage mode should be collapsed by default');
+    context.EieGradeLedgerView.toggleManage();
     const opened = await context.EieGradeLedgerView.render();
-    assert(opened.includes('eie-grade-edit-list') && opened.includes('수정'), 'edit list should expose 수정 only after toggling 시험 고치기');
-    assert(opened.includes('type="checkbox"') && opened.includes('Grammar') && opened.includes('Listening') && opened.includes('Dictation'), 'edit mode should expose the full normalized default checkbox list');
-    assert(!opened.includes('삭제'), 'edit list itself should not surface delete actions');
+    assert(opened.includes('is-managing') && opened.includes('eie-grade-chip-toggle') && opened.includes('eie-grade-chip-edit'), 'manage mode should add chip toggle/edit controls');
+    assert(opened.includes('aria-pressed="true"') && opened.includes('aria-pressed="false"'), 'manage chips should expose selected and unselected states');
+    assert(opened.includes('Grammar') && opened.includes('Listening') && opened.includes('Dictation'), 'manage mode should expose the full normalized default chip list');
+    assert(opened.includes('+ 새 시험'), 'manage chip row should include the new test button');
+    assert(!opened.includes('삭제'), 'delete should not be exposed in the chip row');
+    assert(!opened.includes('type="checkbox"'), 'manage mode should use buttons, not checkboxes');
   }
 
   {
-    // 수정 폼은 특정 시험을 눌렀을 때만 열리고, 삭제는 그 안에서만 보인다.
+    // 수정 폼은 특정 시험을 눌렀을 때만 열린다.
     const context = makeContext();
     await context.EieGradeLedgerView.render();
     const before = await context.EieGradeLedgerView.render();
@@ -285,16 +291,17 @@ function makeContext({ classId = 'cell-rs3', sheets = [], records = [] } = {}) {
     context.EieGradeLedgerView.editTest('month_end');
     const editing = await context.EieGradeLedgerView.render();
     assert(editing.includes('eie-grade-test-form') && editing.includes('Monthly 수정'), 'edit form should open only for the selected test');
+    assert(editing.includes('is-managing'), 'editTest should open management mode');
     assert(editing.includes('삭제'), 'delete should live inside the edit form');
   }
 
   {
-    // + 시험 추가를 눌렀을 때만 추가 폼이 열린다.
+    // 새 시험 만들기를 눌렀을 때만 추가 폼이 열린다.
     const context = makeContext();
     await context.EieGradeLedgerView.render();
     context.EieGradeLedgerView.openAddTest();
     const adding = await context.EieGradeLedgerView.render();
-    assert(adding.includes('eie-grade-test-form') && adding.includes('시험 추가'), 'add form should open after pressing + 시험 추가');
+    assert(adding.includes('is-managing') && adding.includes('eie-grade-test-form') && adding.includes('시험 추가'), 'add form should open inside 시험 관리');
     assert(adding.includes('취소') && adding.includes('추가'), 'add form should provide 취소 and 추가 actions');
   }
 

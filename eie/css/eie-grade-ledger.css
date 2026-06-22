@@ -410,7 +410,7 @@
     font-weight: 600;
 }
 
-.eie-grade-edit-toggle {
+.eie-grade-manage-toggle {
     border: 0;
     background: transparent;
     color: var(--eie-ledger-muted);
@@ -422,8 +422,8 @@
     border-radius: 8px;
 }
 
-.eie-grade-edit-toggle:hover,
-.eie-grade-edit-toggle.is-open {
+.eie-grade-manage-toggle:hover,
+.eie-grade-manage-toggle.is-open {
     color: var(--eie-ledger-accent);
     background: var(--eie-ledger-hover);
 }
@@ -447,7 +447,7 @@
     font-weight: 600;
     font-size: 13px;
     white-space: nowrap;
-    cursor: pointer;
+    cursor: default;
 }
 
 .eie-grade-chip.is-on {
@@ -457,16 +457,73 @@
     color: var(--eie-ledger-accent);
 }
 
-.eie-grade-chip input {
-    accent-color: var(--eie-ledger-accent);
-    margin: 0;
-}
-
-.eie-grade-chip span em {
+.eie-grade-chip em {
     font-style: normal;
     font-variant-numeric: tabular-nums;
     opacity: 0.75;
     margin-left: 2px;
+}
+
+.eie-grade-chip--manage {
+    gap: 2px;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.eie-grade-chip--manage:not(.is-on) {
+    border-color: rgba(100,116,139,0.22);
+    background: var(--eie-surface);
+    color: var(--eie-ledger-muted);
+}
+
+.eie-grade-chip-toggle,
+.eie-grade-chip-edit {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.eie-grade-chip-toggle {
+    min-height: 30px;
+    padding: 0 10px 0 12px;
+    font-weight: 600;
+}
+
+.eie-grade-chip-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    min-height: 30px;
+    border-left: 1px solid rgba(100,116,139,0.16);
+    color: var(--eie-ledger-muted);
+    font-size: 13px;
+}
+
+.eie-grade-chip-toggle:hover,
+.eie-grade-chip-edit:hover,
+.eie-grade-chip-toggle:focus-visible,
+.eie-grade-chip-edit:focus-visible {
+    outline: 0;
+    background: var(--eie-ledger-hover);
+    color: var(--eie-ledger-accent);
+}
+
+.eie-grade-chip-toggle:focus-visible,
+.eie-grade-chip-edit:focus-visible {
+    box-shadow: inset 0 0 0 2px rgba(15,118,110,0.24);
+}
+
+.eie-grade-chip-new {
+    min-height: 30px;
+    border-radius: 999px;
+    padding: 0 12px;
+    background: var(--eie-surface);
+    color: var(--eie-ledger-accent);
+    border: 1px dashed rgba(15,118,110,0.32);
 }
 
 /* 시험 추가/수정 폼 (보조 작업) */
@@ -548,51 +605,6 @@
     gap: 8px;
 }
 
-/* 시험 고치기 목록 */
-.eie-grade-edit-list {
-    margin-top: 12px;
-    border: 1px solid var(--eie-ledger-line);
-    border-radius: 12px;
-    background: var(--eie-surface);
-    overflow: hidden;
-}
-
-.eie-grade-edit-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-top: 1px solid var(--eie-ledger-line);
-}
-
-.eie-grade-edit-row:first-child {
-    border-top: 0;
-}
-
-.eie-grade-edit-name {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-weight: 600;
-}
-
-.eie-grade-edit-name em {
-    font-style: normal;
-    opacity: 0.7;
-    margin-left: 4px;
-}
-
-.eie-grade-edit-type {
-    color: var(--eie-ledger-muted);
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.eie-grade-edit-empty {
-    padding: 16px;
-    color: var(--eie-ledger-muted);
-    font-weight: 500;
-}
-
 .eie-grade-add-btn {
     min-height: 40px;
     border: 0;
@@ -610,7 +622,7 @@
     filter: brightness(0.96);
 }
 
-/* 원내평가 컨트롤 줄의 + 시험 추가는 보조 액션이므로 quiet 톤으로 둔다. */
+/* 원내평가 컨트롤 줄의 보조 액션은 quiet 톤으로 둔다. */
 .eie-grade-controls--academy .eie-grade-add-btn {
     background: var(--eie-surface);
     color: var(--eie-ledger-accent);

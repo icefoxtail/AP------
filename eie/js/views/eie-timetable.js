@@ -4623,6 +4623,7 @@
         const rows = consultationRowsFromResult(result);
         viewState.studentConsultationRows = Array.isArray(rows) ? rows : [];
         viewState.studentConsultationLoadedId = sid;
+        viewState.studentError = '';
         if (window.EieState?.mergeStudentConsultations) {
             window.EieState.mergeStudentConsultations(sid, viewState.studentConsultationRows);
         }
@@ -4726,7 +4727,7 @@
             if (contentEl) contentEl.value = '';
             if (nextEl) nextEl.value = '';
         } catch (error) {
-            viewState.studentError = error?.message || '상담을 저장하지 못했습니다.';
+            viewState.studentError = '상담을 저장하지 못했습니다.';
         } finally {
             viewState.studentSaving = false;
             reopenPanelMountRoute();
@@ -4758,7 +4759,7 @@
             viewState.studentConsultationEditingId = '';
             viewState.studentNotice = '상담을 삭제했습니다.';
         } catch (error) {
-            viewState.studentError = error?.message || '상담을 삭제하지 못했습니다.';
+            viewState.studentError = '상담을 삭제하지 못했습니다.';
         } finally {
             viewState.studentSaving = false;
             reopenPanelMountRoute();

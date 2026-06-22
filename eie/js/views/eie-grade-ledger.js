@@ -48,8 +48,8 @@
     var _year = new Date().getFullYear();
     var _studentFocusId = '';
     var _studentFocusName = '';
-    var _addFormOpen = false;
-    var _editListOpen = false;
+    var _manageOpen = false;
+    var _formOpen = false;
     var _saving = false;
     var _schoolDirty = {};
     var _academyDirty = {};
@@ -324,8 +324,8 @@
         _monthKey = text(opts.monthKey || opts.month_key || _monthKey) || todayMonthKey();
         _year = Number(opts.year || _year) || new Date().getFullYear();
         _loaded = false;
-        _addFormOpen = false;
-        _editListOpen = false;
+        _manageOpen = false;
+        _formOpen = false;
         _schoolDirty = {};
         _academyDirty = {};
         _sheetDraftTests = null;
@@ -574,7 +574,6 @@
         return '<div class="eie-grade-controls eie-grade-controls--academy">'
             + '<select class="eie-grade-ctrl" onchange="EieGradeLedgerView.setClassId(this.value)">' + classOptions('반 선택') + '</select>'
             + '<input class="eie-grade-ctrl" type="month" value="' + esc(_monthKey || todayMonthKey()) + '" onchange="EieGradeLedgerView.setMonth(this.value)">'
-            + (_classId ? '<button type="button" class="eie-grade-add-btn" onclick="EieGradeLedgerView.openAddTest()">+ 시험 추가</button>' : '')
             + '</div>';
     }
 
@@ -921,38 +920,26 @@
         if (!_classId) return '';
         var selected = {};
         activeTests().forEach(function (item) { selected[text(item.id)] = true; });
-        var choices = _editListOpen ? testChoiceList() : activeTests();
-        return '<div class="eie-grade-tests">'
+        var choices = _manageOpen ? testChoiceList() : activeTests();
+        return '<div class="eie-grade-tests' + (_manageOpen ? ' is-managing' : '') + '">'
             + '<div class="eie-grade-tests-head">'
             + '<span class="eie-grade-tests-title">이번 달 시험</span>'
-            + '<button type="button" class="eie-grade-edit-toggle' + (_editListOpen ? ' is-open' : '') + '" onclick="EieGradeLedgerView.toggleEditList()">시험 고치기</button>'
+            + '<button type="button" class="eie-grade-manage-toggle' + (_manageOpen ? ' is-open' : '') + '" onclick="EieGradeLedgerView.toggleManage()">시험 관리</button>'
             + '</div>'
             + '<div class="eie-grade-test-chips">'
             + choices.map(function (item) {
                 var id = text(item.id);
                 var label = esc(item.title) + (testExamDate(item) ? ' <em>' + esc(formatExamDateLabel(item)) + '</em>' : '');
-                if (!_editListOpen) return '<span class="eie-grade-chip is-on">' + label + '</span>';
-                return '<label class="eie-grade-chip' + (selected[id] ? ' is-on' : '') + '"><input type="checkbox"' + (selected[id] ? ' checked' : '') + ' onchange="EieGradeLedgerView.toggleTestChoice(' + jsArg(id) + ', this.checked)"><span>' + label + '</span></label>';
+                if (!_manageOpen) return '<span class="eie-grade-chip is-on">' + label + '</span>';
+                var on = !!selected[id];
+                return '<span class="eie-grade-chip eie-grade-chip--manage' + (on ? ' is-on' : '') + '">'
+                    + '<button type="button" class="eie-grade-chip-toggle" aria-pressed="' + (on ? 'true' : 'false') + '" onclick="EieGradeLedgerView.toggleTestChoice(' + jsArg(id) + ', ' + (on ? 'false' : 'true') + ')">' + label + '</button>'
+                    + '<button type="button" class="eie-grade-chip-edit" title="시험 수정" aria-label="시험 수정" onclick="EieGradeLedgerView.editTest(' + jsArg(id) + ')">✎</button>'
+                    + '</span>';
             }).join('')
+            + (_manageOpen ? '<button type="button" class="eie-grade-add-btn eie-grade-chip-new" onclick="EieGradeLedgerView.openAddTest()">+ 새 시험</button>' : '')
             + '</div>'
-            + (_addFormOpen ? renderTestForm(null) : '')
-            + (_editListOpen ? renderEditList() : '')
-            + (_editingTestId ? renderTestForm(testById(_editingTestId)) : '')
-            + '</div>';
-    }
-
-    function renderEditList() {
-        var tests = activeTests();
-        if (!tests.length) return '<div class="eie-grade-edit-list"><div class="eie-grade-edit-empty">시험이 없습니다.</div></div>';
-        return '<div class="eie-grade-edit-list">'
-            + tests.map(function (item) {
-                var id = text(item.id);
-                return '<div class="eie-grade-edit-row">'
-                    + '<span class="eie-grade-edit-name">' + esc(item.title) + (testExamDate(item) ? ' <em>' + esc(formatExamDateLabel(item)) + '</em>' : '') + '</span>'
-                    + '<span class="eie-grade-edit-type">' + esc(scoreTypeLabel(normalizeScoreType(item.scoreType))) + '</span>'
-                    + '<button type="button" class="eie-grade-btn-ghost" onclick="EieGradeLedgerView.editTest(' + jsArg(id) + ')">수정</button>'
-                    + '</div>';
-            }).join('')
+            + (_manageOpen && (_formOpen || _editingTestId) ? renderTestForm(_editingTestId ? testById(_editingTestId) : null) : '')
             + '</div>';
     }
 
@@ -1103,9 +1090,9 @@
         markAcademyDirty: function (key) { _academyDirty[text(key)] = true; updateDirtyUi(); },
         updateSchoolGradeRecord: updateEieSchoolGradeRecord,
         deleteSchoolGradeRecord: deleteEieSchoolGradeRecord,
-        openAddTest: function () { _addFormOpen = true; _editingTestId = ''; _editListOpen = false; renderAgain(); },
-        closeTestForm: function () { _addFormOpen = false; _editingTestId = ''; renderAgain(); },
-        toggleEditList: function () { _editListOpen = !_editListOpen; _addFormOpen = false; _editingTestId = ''; renderAgain(); },
+        openAddTest: function () { _manageOpen = true; _formOpen = true; _editingTestId = ''; renderAgain(); },
+        closeTestForm: function () { _formOpen = false; _editingTestId = ''; renderAgain(); },
+        toggleManage: function () { _manageOpen = !_manageOpen; _formOpen = false; _editingTestId = ''; renderAgain(); },
         toggleTestChoice: function (id, checked) {
             var key = text(id);
             var list = fullTestList().slice();
@@ -1132,7 +1119,8 @@
         },
         editTest: function (id) {
             _editingTestId = text(id);
-            _addFormOpen = false;
+            _formOpen = false;
+            _manageOpen = true;
             renderAgain();
         },
         deleteTest: function (id) {
@@ -1160,6 +1148,7 @@
                 if (!key) return;
                 _sheetDraftTests = draftTests().filter(function (item) { return text(item && item.id) !== key; });
                 if (_editingTestId === key) _editingTestId = '';
+                _formOpen = false;
                 _sheetDirty = true;
                 renderAgain();
             },
@@ -1186,6 +1175,7 @@
                 });
                 _sheetDraftTests = tests;
                 _editingTestId = '';
+                _formOpen = false;
                 _sheetDirty = true;
                 renderAgain();
             },
@@ -1209,7 +1199,7 @@
                 enabled: true
             });
             _sheetDraftTests = tests;
-            _addFormOpen = false;
+            _formOpen = false;
             _sheetDirty = true;
             renderAgain();
         },
