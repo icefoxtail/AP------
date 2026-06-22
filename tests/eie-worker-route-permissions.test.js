@@ -54,11 +54,15 @@ for (const allowed of [
   "method === 'GET'",
   "method === 'POST' && path[2] === 'students'",
   "method === 'PATCH' && path[2] === 'students'",
-  "method === 'DELETE' && path[2] === 'students'",
   "method === 'POST' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students'",
   "method === 'DELETE' && path[2] === 'timetable-cells' && path[3] && path[4] === 'students'"
 ]) {
   assert(worker.includes(allowed), `teacher-allowed route should remain available: ${allowed}`);
 }
+
+assert(
+  /method === 'DELETE' && path\[2\] === 'students'[\s\S]*?requireEieOwner\(teacher\)/.test(worker),
+  'student hard delete should be owner-only'
+);
 
 console.log('EIE worker route permissions test passed');

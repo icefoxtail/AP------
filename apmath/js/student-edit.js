@@ -384,7 +384,6 @@ function renderStudentEditBody(sid) {
                     ${apStudentEditRow('상태', `<div class="ap-student-edit-flags">
                         <label class="ap-student-edit-flag"><input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}><span>신입생</span></label>
                         <label class="ap-student-edit-flag is-warn"><input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}><span>휴원</span></label>
-                        <button type="button" class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원</button>
                     </div>`)}
                 </div>
             </section>
@@ -420,10 +419,8 @@ async function handleEditStudent(sid) {
     const nextStudentStatus = isLeaveChecked ? '휴원' : (currentWasLeave ? '재원' : currentStatus);
     const alreadyAttending = document.getElementById('edit-already-attending')?.checked || false;
     const currentOnboardingStartedAt = getStudentOnboardingStartedAt(sid);
-    // [등원일 회귀 방지] 수정모드에서는 today/7일전 자동 채움을 하지 않는다.
-    // input이 비어 있으면 기존 DB값을 그대로 보존한다(빈값으로 덮어쓰지 않음).
     const onboardingInputRaw = normalizeOnboardingDate(document.getElementById(getOnboardingStartDateInputId('edit'))?.value || '');
-    const onboardingStartedAt = onboardingInputRaw || currentOnboardingStartedAt;
+    const onboardingDateChanged = !!onboardingInputRaw && String(currentOnboardingStartedAt || '') !== String(onboardingInputRaw);
     const cleanMemo = '';
     const memoParts = [];
     if (isNewChecked && !alreadyAttending) memoParts.push('#신입');
@@ -454,8 +451,7 @@ async function handleEditStudent(sid) {
         student_pin: pin,
         high_subjects: JSON.stringify(highSubjects),
         highSubjects: highSubjects,
-        onboarding_started_at: onboardingStartedAt,
-        onboardingStartedAt: onboardingStartedAt
+        ...(onboardingDateChanged ? { onboarding_started_at: onboardingInputRaw, onboardingStartedAt: onboardingInputRaw } : {})
     };
 
     try {
@@ -463,21 +459,17 @@ async function handleEditStudent(sid) {
         if (r?.success) {
             const classChanged = String(classId || '') !== String(currentClassId || '');
             const becameNew = !wasNewChecked && isNewChecked;
-            const onboardingDateChanged = !!onboardingInputRaw && String(currentOnboardingStartedAt || '') !== String(onboardingInputRaw);
-            // [등원일 회귀 방지] 학생 정보 저장은 등원일을 자동으로 다시 쓰지 않는다.
-            // 등원일 input을 직접 변경했을 때만 onboarding task sync를 보조 실행한다.
-            const shouldSyncOnboarding = !!classId && !!onboardingStartedAt && onboardingDateChanged;
-            if (shouldSyncOnboarding) {
+            if (!!classId && onboardingDateChanged) {
                 await bootstrapOnboardingTasks({
                     student_id: sid,
                     class_id: classId,
-                    onboarding_started_at: onboardingStartedAt,
+                    onboarding_started_at: onboardingInputRaw,
                     already_attending: alreadyAttending ? 1 : 0
                 });
             }
             toast('학생 정보가 수정되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
-            if (onboardingStartedAt) setStudentOnboardingStartedAtInState(sid, onboardingStartedAt);
+            if (onboardingDateChanged) setStudentOnboardingStartedAtInState(sid, onboardingInputRaw);
             // 수정 저장은 모달을 닫지 않고 같은 학생상세 보기 모드로 복귀한다.
             await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
             renderStudentDetailShell(sid, { mode: 'view', tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'), returnTo: returnCtx });

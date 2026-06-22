@@ -883,7 +883,7 @@
 
     function getStudents(row) {
         const assigned = Array.isArray(row?.assigned_students) ? row.assigned_students : [];
-        if (assigned.length) {
+        if (assigned.length || row?.assigned_students_resolved === true) {
             return assigned.map((student, index) => ({
                 key: normalizeKey(student?.assignment_id || student?.student_id || student?.pin || student?.pin_code || student?.student_pin || student?.id || ''),
                 assignment_id: normalizeKey(student?.assignment_id || ''),
