@@ -2005,8 +2005,39 @@ function openAdminRecentTeacherJournals(teacherName, baseDateStr = '') {
     showModal('최근 일지', `<div style="max-height:55vh; overflow-y:auto;">${rows}</div>`);
 }
 
+function injectAdminTeacherTooltipStyles() {
+    if (typeof document === 'undefined') return;
+    if (document.getElementById('admin-teacher-tooltip-css')) return;
+    const style = document.createElement('style');
+    style.id = 'admin-teacher-tooltip-css';
+    style.textContent = `
+        .ap-teacher-count-tip { position: relative; }
+        .ap-teacher-count-tip::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--surface);
+            background: var(--text);
+            padding: 3px 8px;
+            border-radius: 6px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            z-index: 10;
+        }
+        .ap-teacher-count-tip:hover::after { opacity: 1; }
+    `;
+    document.head.appendChild(style);
+}
+
 function renderAdminTeacherCards(todayStr) {
     injectDashboardOpsStyles();
+    injectAdminTeacherTooltipStyles();
     const activeClasses = (state?.db?.classes || []).filter(c => Number(c?.is_active) !== 0);
     const teacherMap = {};
     activeClasses.forEach(c => {
@@ -2021,6 +2052,15 @@ function renderAdminTeacherCards(todayStr) {
     return teacherNames.map(tName => {
         const myClasses = teacherMap[tName];
         const safeName = dashboardEscapeAttr(tName);
+        const myClassIds = new Set(myClasses.map(c => String(c.id)));
+        const myStudentIds = new Set(
+            (state?.db?.class_students || [])
+                .filter(m => myClassIds.has(String(m.class_id)))
+                .map(m => String(m.student_id))
+        );
+        const activeCount = (state?.db?.students || [])
+            .filter(s => myStudentIds.has(String(s.id)) && adminNormalizeStatus(s.status) === '재원')
+            .length;
 
         return `
             <div class="card ap-admin-teacher-card">
@@ -2028,7 +2068,7 @@ function renderAdminTeacherCards(todayStr) {
                     <div class="admin-teacher-card__name">${apEscapeHtml(tName)} 선생님</div>
                     <div class="admin-teacher-card__quick-actions">
                         <button class="btn admin-teacher-card__quick-action" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반</button>
-                        <button class="btn admin-teacher-card__quick-action" onclick="event.stopPropagation(); renderAdminTeacherAllStudents('${safeName}')">재원</button>
+                        <button class="btn admin-teacher-card__quick-action ap-teacher-count-tip" data-tip="총원 ${activeCount}명" onclick="event.stopPropagation(); renderAdminTeacherAllStudents('${safeName}')">재원</button>
                     </div>
                 </div>
                 <div class="admin-teacher-card__journal">

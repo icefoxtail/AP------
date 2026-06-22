@@ -2035,7 +2035,8 @@ async function attachAssignedStudents(env, rows) {
 
     return timetableRows.map(row => ({
       ...row,
-      assigned_students: byCell.get(row.id) || []
+      assigned_students: byCell.get(row.id) || [],
+      assigned_students_resolved: true
     }));
   } catch (error) {
     if (isRound6TableMissing(error)) {
@@ -3168,28 +3169,36 @@ async function getStudentWithContacts(env, studentId) {
   };
 }
 
-// ── 학생 soft delete ──────────────────────────────────────────────────
+// ── 원장 전용 학생 완전 삭제 ─────────────────────────────────────────
 async function handleDeleteStudent(request, env, studentId) {
   const existing = await getStudentById(env, studentId);
   if (!existing) return jsonResponse({ success: false, error: '학생을 찾을 수 없습니다.' }, 404);
 
   try {
-    await env.DB.prepare(
-      `UPDATE eie_students SET status = 'archived', withdrawn_at = COALESCE(withdrawn_at, CURRENT_TIMESTAMP), updated_at = CURRENT_TIMESTAMP WHERE id = ?`
-    ).bind(studentId).run();
+    await env.DB.batch([
+      env.DB.prepare('DELETE FROM eie_grade_reports WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM consultations WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_school_grade_records WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_exam_records WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_attendance_records WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_student_teachers WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_student_contacts WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_student_schedule_assignments WHERE student_id = ?').bind(studentId),
+      env.DB.prepare('DELETE FROM eie_students WHERE id = ?').bind(studentId)
+    ]);
   } catch (error) {
     if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
     return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
   }
 
-  const student = await getStudentWithContacts(env, studentId);
   return jsonResponse({
     success: true,
-    student,
-    data: student,
-    soft_deleted: true,
-    archived: true,
-    contacts: student?.contacts || [],
+    student_id: studentId,
+    student: null,
+    data: null,
+    hard_deleted: true,
+    deleted: true,
+    contacts: [],
     warnings: []
   });
 }
@@ -3530,6 +3539,7 @@ export async function handleEie(request, env, teacher, path, url) {
   }
 
   if (method === 'DELETE' && path[2] === 'students' && path[3] && !path[4]) {
+    const ownerOnly = requireEieOwner(teacher); if (ownerOnly) return ownerOnly;
     return handleDeleteStudent(request, env, path[3]);
   }
 
