@@ -6,7 +6,7 @@ window.questionBank = [
     level: "하",
     category: "여러 가지 부등식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
@@ -22,21 +22,21 @@ window.questionBank = [
     wide: false,
     content: "연립부등식 $2 < x^2 - x \\le 6$의 해는? [3.2점]",
     choices: [
-    "$-2 \\le x < -1$ 또는 $2 < x \\le 3$",
-    "$-2 < x \\le -1$ 또는 $2 \\le x < 3$",
+    "$-2 \\le x \\lt -1$ 또는 $2 \\lt x \\le 3$",
+    "$-2 \\lt x \\le -1$ 또는 $2 \\le x \\lt 3$",
     "$-1 \\le x \\le 2$",
-    "$x < -1$ 또는 $x > 2$",
+    "$x \\lt -1$ 또는 $x \\gt 2$",
     "해 가 없다."
   ],
     answer: "①",
-    solution: "[키포인트] 연립부등식의 각 부등식을 풀어 공통 범위를 구한다.\\n(i) $2 < x^2 - x \\Rightarrow x^2 - x - 2 > 0 \\Rightarrow (x-2)(x+1) > 0$\\n$\\therefore x < -1$ 또는 $x > 2$\\n(ii) $x^2 - x \\le 6 \\Rightarrow x^2 - x - 6 \\le 0 \\Rightarrow (x-3)(x+2) \\le 0$\\n$\\therefore -2 \\le x \\le 3$\\n(i), (ii)의 공통 범위를 구하면 $-2 \\le x < -1$ 또는 $2 < x \\le 3$이다.\\n따라서 정답은 ①이다."
+    solution: "[키포인트] 연립부등식의 각 부등식을 풀어 공통 범위를 구한다.\\n1단계: $2<x^2-x$에서 $(x-2)(x+1)>0$이므로 $x<-1$ 또는 $x>2$이다.\\n2단계: $x^2-x\\le6$에서 $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\\n3단계: 두 해의 공통 범위는 $-2\\le x<-1$ 또는 $2<x\\le3$이다.\\n∴ 정답: ①"
   },
   {
     id: 2,
     level: "하",
     category: "경우의 수",
     originalCategory: "합의 법칙과 곱의 법칙",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-07",
     standardUnit: "합의 법칙과 곱의 법칙",
     standardUnitOrder: 7,
@@ -44,7 +44,6 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
-    "인수분해",
     "경우의수",
     "개수세기",
     "계산"
@@ -59,14 +58,14 @@ window.questionBank = [
     "$8$"
   ],
     answer: "③",
-    solution: "[키포인트] 소인수분해를 이용하여 약수의 개수를 구한다.\\n$50 = 2 \\times 5^2$이므로\\n약수의 개수는 $(1+1) \\times (2+1) = 2 \\times 3 = 6$이다.\\n따라서 정답은 ③이다."
+    solution: "[키포인트] 소인수분해한 뒤 지수에 $1$을 더하여 약수의 개수를 구한다.\\n1단계: $50=2^1\\times5^2$이다.\\n2단계: 약수의 개수는 $(1+1)(2+1)=6$이다.\\n∴ 정답: ③"
   },
   {
     id: 3,
     level: "하",
     category: "경우의 수",
     originalCategory: "순열과 조합",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-08",
     standardUnit: "순열과 조합",
     standardUnitOrder: 8,
@@ -74,13 +73,10 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
-    "로그",
     "경우의수",
-    "순열",
     "조합",
-    "도형",
-    "원",
-    "조건해석"
+    "조건해석",
+    "계산"
   ],
     wide: false,
     content: "학생자치회에서 교내 버스킹 프로그램을 구성하려고 한다. 지원한 $10$개의 팀 중에서 공연할 $3$개의 팀을 뽑는 경우의 수는? [3.2점]",
@@ -92,14 +88,14 @@ window.questionBank = [
     "$720$"
   ],
     answer: "④",
-    solution: "[키포인트] $10$팀 중 순서와 상관없이 $3$팀을 선택하므로 조합을 이용한다.\\n구하는 경우의 수는 ${}_{10}C_{3}$이다.\\n${}_{10}C_{3} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$\\n따라서 정답은 ④이다."
+    solution: "[키포인트] 공연 순서는 고려하지 않으므로 조합을 이용한다.\\n1단계: $10$개의 팀 중 $3$개의 팀을 고르는 경우의 수는 ${}_{10}C_{3}$이다.\\n2단계: ${}_{10}C_{3}=\\dfrac{10\\times9\\times8}{3\\times2\\times1}=120$이다.\\n∴ 정답: ④"
   },
   {
     id: 4,
     level: "하",
     category: "행렬",
     originalCategory: "행렬과 그 연산",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
@@ -107,10 +103,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
+    "행렬",
     "조건해석",
-    "계산",
-    "하난도",
-    "기출"
+    "계산"
   ],
     wide: false,
     content: "등식 $\\begin{pmatrix} a-1 & 6 \\\\ -2 & b \\end{pmatrix} = \\begin{pmatrix} b+1 & 6 \\\\ -2 & 4-a \\end{pmatrix}$을 만족시키는 두 상수 $a, b$에 대하여 $a+b$의 값은? [3.2점]",
@@ -122,14 +117,14 @@ window.questionBank = [
     "$8$"
   ],
     answer: "①",
-    solution: "[키포인트] 행렬이 서로 같으려면 대응하는 각 성분이 모두 같아야 한다.\\n$a-1 = b+1 \\Rightarrow a-b = 2$\\n$b = 4-a \\Rightarrow a+b = 4$\\n위의 식에서 $a+b=4$임을 바로 알 수 있다.\\n따라서 정답은 ①이다."
+    solution: "[키포인트] 두 행렬이 같으면 대응하는 성분이 각각 같다.\\n1단계: $(1,1)$성분을 비교하면 $a-1=b+1$이므로 $a-b=2$이다.\\n2단계: $(2,2)$성분을 비교하면 $b=4-a$이므로 $a+b=4$이다.\\n∴ 정답: ①"
   },
   {
     id: 5,
     level: "중",
     category: "여러 가지 방정식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
@@ -137,10 +132,8 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
-    "나머지정리",
-    "계수비교",
+    "삼차방정식",
     "근과계수",
-    "부등식",
     "대입",
     "조건해석",
     "계산"
@@ -155,14 +148,14 @@ window.questionBank = [
     "$5$"
   ],
     answer: "④",
-    solution: "[키포인트] 근을 대입하여 상수를 구한 후 근과 계수의 관계를 이용한다.\\n$x=-1$을 대입하면 $(-1)^3 - 3(-1)^2 + a(-1) + 5 = 0$\\n$-1-3-a+5=0 \\Rightarrow a=1$\\n방정식은 $x^3 - 3x^2 + x + 5 = 0$이다.\\n삼차방정식의 세 근을 $-1, \\alpha, \\beta$라 하면 근과 계수의 관계에 의해\\n$-1 + \\alpha + \\beta = -(-3) = 3$\\n$\\therefore \\alpha + \\beta = 4$\\n따라서 정답은 ④이다."
+    solution: "[키포인트] 주어진 근을 대입하고 삼차방정식의 근과 계수의 관계를 이용한다.\\n1단계: $x=-1$을 대입하면 $-1-3-a+5=0$이므로 $a=1$이다.\\n2단계: 나머지 두 근을 $\\alpha$, $\\beta$라 하면 세 근의 합은 $3$이므로 $-1+\\alpha+\\beta=3$이다.\\n3단계: 따라서 $\\alpha+\\beta=4$이다.\\n∴ 정답: ④"
   },
   {
     id: 6,
     level: "중",
     category: "여러 가지 방정식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
@@ -186,14 +179,14 @@ window.questionBank = [
     "$-1$"
   ],
     answer: "②",
-    solution: "[키포인트] 일차식을 이차식에 대입하여 판별식이 $0$임을 이용한다.\\n$x = y+k$를 두 번째 식에 대입하면\\n$(y+k)^2 + (y+k)y + y^2 = 4 \\Rightarrow 3y^2 + 3ky + k^2 - 4 = 0$\\n해 가 한 쌍이려면 판별식 $D = (3k)^2 - 4(3)(k^2-4) = 0$이어야 한다.\\n$9k^2 - 12k^2 + 48 = 0 \\Rightarrow k^2 = 16$\\n$k = -4$ ($k$는 음수)\\n따라서 정답은 ②이다."
+    solution: "[키포인트] 한 식을 대입하여 얻은 이차방정식의 판별식을 이용한다.\\n1단계: $x=y+k$를 두 번째 식에 대입하면 $3y^2+3ky+k^2-4=0$이다.\\n2단계: 오직 한 쌍의 해를 가지려면 판별식이 $0$이어야 하므로 $(3k)^2-12(k^2-4)=0$이다.\\n3단계: $k^2=16$이고 $k$는 음수이므로 $k=-4$이다.\\n∴ 정답: ②"
   },
   {
     id: 7,
     level: "하",
     category: "경우의 수",
     originalCategory: "순열과 조합",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-08",
     standardUnit: "순열과 조합",
     standardUnitOrder: 8,
@@ -218,14 +211,14 @@ window.questionBank = [
     "$7$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 조합과 순열의 정의를 사용하여 식을 정리한다.\\n좌변: ${}_{7}C_{4} \\times 3! = {}_{7}C_{3} \\times 3! = {}_{7}P_{3} = 7 \\times 6 \\times 5 = 210$\\n우변: ${}_{n}P_{3} = n(n-1)(n-2) = 210$\\n$210 = 7 \\times 6 \\times 5$이므로 $n=7$이다.\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 조합과 순열의 관계를 이용하여 양변을 비교한다.\\n1단계: ${}_{7}C_{4}\\times3!={}_{7}C_{3}\\times3!={}_{7}P_{3}=7\\times6\\times5=210$이다.\\n2단계: ${}_{n}P_{3}=n(n-1)(n-2)=210=7\\times6\\times5$이므로 $n=7$이다.\\n∴ 정답: ⑤"
   },
   {
     id: 8,
     level: "중",
     category: "행렬",
     originalCategory: "행렬과 그 연산",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
@@ -233,10 +226,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
-    "참거짓",
+    "행렬",
     "조건해석",
-    "개념",
-    "중난도"
+    "계산"
   ],
     wide: false,
     content: "두 행렬 $A = \\begin{pmatrix} 1 & 0 & -4 \\\\ 0 & 1 & 2 \\end{pmatrix}, B = \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix}$에 대하여 등식 $2X + B = 2A$를 만족시키는 행렬 $X$는? [3.6점]",
@@ -248,14 +240,14 @@ window.questionBank = [
     "$\\begin{pmatrix} 1 & 2 & 4 \\\\ 2 & 1 & 2 \\end{pmatrix}$"
   ],
     answer: "③",
-    solution: "[키포인트] 행렬 방정식을 정리하여 $X$를 구한다.\\n$2X = 2A - B = 2\\begin{pmatrix} 1 & 0 & -4 \\\\ 0 & 1 & 2 \\end{pmatrix} - \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix}$\\n$2X = \\begin{pmatrix} 2 & 0 & -8 \\\\ 0 & 2 & 4 \\end{pmatrix} - \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix} = \\begin{pmatrix} 2 & 4 & -6 \\\\ -4 & 2 & 6 \\end{pmatrix}$\\n$\\therefore X = \\begin{pmatrix} 1 & 2 & -3 \\\\ -2 & 1 & 3 \\end{pmatrix}$\\n따라서 정답은 ③이다."
+    solution: "[키포인트] 행렬 방정식을 $X$에 대하여 정리한다.\\n1단계: $2X=2A-B$이다.\\n2단계: $2A-B=\\begin{pmatrix}2&4&-6\\\\-4&2&6\\end{pmatrix}$이다.\\n3단계: 양변을 $2$로 나누면 $X=\\begin{pmatrix}1&2&-3\\\\-2&1&3\\end{pmatrix}$이다.\\n∴ 정답: ③"
   },
   {
     id: 9,
     level: "상",
     category: "여러 가지 부등식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
@@ -280,14 +272,14 @@ window.questionBank = [
     "$12$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 절댓값을 포함한 부등식을 단계적으로 푼다.\\n$-1 \\le |x-1| - 2 \\le 1 \\Rightarrow 1 \\le |x-1| \\le 3$\\n(i) $|x-1| \\le 3 \\Rightarrow -3 \\le x-1 \\le 3 \\Rightarrow -2 \\le x \\le 4$\\n(ii) $|x-1| \\ge 1 \\Rightarrow x-1 \\ge 1$ 또는 $x-1 \\le -1 \\Rightarrow x \\ge 2$ 또는 $x \\le 0$\\n공통 범위: $-2 \\le x \\le 0$ 또는 $2 \\le x \\le 4$\\n정수 $x$는 $-2, -1, 0, 2, 3, 4$로 $n=6$이다.\\n총합 $m = -2-1+0+2+3+4 = 6$\\n$\\therefore m+n = 6+6=12$\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 이중 절댓값 부등식을 두 조건으로 나누어 정수해를 구한다.\\n1단계: $\\left||x-1|-2\\right|\\le1$에서 $1\\le|x-1|\\le3$이다.\\n2단계: $|x-1|\\le3$과 $|x-1|\\ge1$의 공통 범위는 $-2\\le x\\le0$ 또는 $2\\le x\\le4$이다.\\n3단계: 정수해는 $-2,-1,0,2,3,4$이므로 $n=6$, $m=6$이다. 따라서 $m+n=12$이다.\\n∴ 정답: ⑤"
   },
   {
     id: 10,
     level: "중",
     category: "경우의 수",
     originalCategory: "합의 법칙과 곱의 법칙",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-07",
     standardUnit: "합의 법칙과 곱의 법칙",
     standardUnitOrder: 7,
@@ -296,8 +288,7 @@ window.questionBank = [
     tags: [
     "객관식",
     "경우의수",
-    "도형",
-    "원",
+    "개수세기",
     "계산"
   ],
     wide: false,
@@ -310,14 +301,14 @@ window.questionBank = [
     "$43$"
   ],
     answer: "④",
-    solution: "[키포인트] 중복되는 금액을 처리하기 위해 큰 단위의 동전을 작은 단위로 환산한다.\\n$50$원 $2$개로 $100$원을 만들 수 있으므로 $100$원 동전을 $50$원 동전으로 바꾼다.\\n$100$원 $2$개 $\\rightarrow 50$원 $4$개. 기존 $50$원 $3$개를 더하면 $50$원 동전은 총 $7$개이다.\\n$10$원 동전 $4$개로는 $50$원을 만들 수 없으므로 그대로 둔다.\\n금액의 수: $(4+1) \\times (7+1) - 1 = 5 \\times 8 - 1 = 39$\\n따라서 정답은 ④이다."
+    solution: "[키포인트] $100$원 동전을 $50$원 단위로 환산하여 중복 없이 금액을 센다.\\n1단계: $100$원 동전 $2$개는 $50$원 동전 $4$개와 같으므로 $50$원 단위는 모두 $7$개까지 사용할 수 있다.\\n2단계: $10$원 동전은 $0$개부터 $4$개까지, $50$원 단위는 $0$개부터 $7$개까지 사용할 수 있다.\\n3단계: $0$원을 제외하면 $(4+1)(7+1)-1=39$가지이다.\\n∴ 정답: ④"
   },
   {
     id: 11,
     level: "중",
     category: "행렬",
     originalCategory: "행렬과 그 연산",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
@@ -325,8 +316,8 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
-    "복소수",
-    "지수",
+    "행렬",
+    "거듭제곱",
     "조건해석",
     "계산"
   ],
@@ -340,24 +331,28 @@ window.questionBank = [
     "$130$"
   ],
     answer: "①",
-    solution: "[키포인트] 행렬 $A$를 구하고 거듭제곱의 규칙성을 찾는다.\\n$a_{11}=1, a_{12}=1 \\times 2 = 2, a_{21}=2-2 \\times 1 = 0, a_{22}=1$\\n$A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$이므로 $A^n = \\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix}$이다.\\n$A^7 = \\begin{pmatrix} 1 & 14 \\\\ 0 & 1 \\end{pmatrix}$의 모든 성분의 합은 $1+14+0+1 = 16$이다.\\n따라서 정답은 ①이다."
+    solution: "[키포인트] 행렬 $A$를 구한 뒤 거듭제곱의 규칙성을 이용한다.\\n1단계: 성분의 정의에서 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$이다.\\n2단계: $A^n=\\begin{pmatrix}1&2n\\\\0&1\\end{pmatrix}$이므로 $A^7=\\begin{pmatrix}1&14\\\\0&1\\end{pmatrix}$이다.\\n3단계: 모든 성분의 합은 $1+14+0+1=16$이다.\\n∴ 정답: ①"
   },
   {
     id: 12,
     level: "중",
-    category: "이차부등식",
-    originalCategory: "이차함수와 이차부등식",
-    standardCourse: "공통수학 1",
-    standardUnitKey: "H22-C-06",
-    standardUnit: "여러 가지 방정식과 부등식",
-    standardUnitOrder: 6,
+    category: "이차함수",
+    originalCategory: "이차방정식과 이차함수",
+    standardCourse: "공통수학1",
+    standardUnitKey: "H22-C-05",
+    standardUnit: "이차방정식과 이차함수",
+    standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
     tags: [
-    "그래프"
+    "객관식",
+    "그래프",
+    "이차함수",
+    "참거짓",
+    "조건해석"
   ],
     wide: false,
-    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.2점]<br>\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:0 auto; padding:0;\">\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n</div><div style=\"width:100%; margin:0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n&lt;보기&gt;<br>\nㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.<br>\nㄴ. $q-p=s-r$<br>\nㄷ. 부등식 $f(-2x) \\lt 0$의 해는 $-2r \\lt x \\lt -2q$이다.\n</div>",
+    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.2점]<br>\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:0 auto; padding:0;\">\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n</div><div class=\"note-box\" style=\"margin:0; text-align:left;\">&lt;보기&gt;\nㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.\nㄴ. $q-p=s-r$\nㄷ. 부등식 $f(-2x) \\lt 0$의 해는 $-2r \\lt x \\lt -2q$이다.\n</div>",
     choices: [
     "ㄱ",
     "ㄴ",
@@ -366,14 +361,14 @@ window.questionBank = [
     "ㄱ, ㄴ, ㄷ"
   ],
     answer: "②",
-    solution: "[키포인트] 이차함수 그래프의 대칭성과 부등식의 성질을 이용하여 각 보기를 판단한다.\\n이차함수 $y=f(x)$의 대칭축을 $x=k$라고 하자.\\nㄱ. $f(x) - 2 \\ge 0 \\Rightarrow f(x) \\ge 2$이다. 그래프에서 함숫값이 $2$보다 크거나 같은 구간은 $x \\le p$ 또는 $x \\ge s$이므로 ㄱ은 옳지 않다.\\nㄴ. 이차함수는 대칭축에 대하여 선대칭이다. $f(p)=f(s)=2$이므로 $p$와 $s$의 중점은 $k$이다. 즉, $\\frac{p+s}{2}=k$이므로 $p+s=2k$이다. 마찬가지로 $f(q)=f(r)=0$이므로 $q$와 $r$의 중점은 $k$이다. 즉, $\\frac{q+r}{2}=k$이므로 $q+r=2k$이다. 따라서 $p+s=q+r \\Rightarrow s-r=q-p$가 성립하므로 ㄴ은 옳다.\\nㄷ. 그래프에서 $f(x) < 0$의 해는 $q < x < r$이다. $f(-2x) < 0$이려면 $q < -2x < r$을 만족해야 한다. 각 변을 $-2$로 나누면 부등호의 방향이 바뀌어 $-\\frac{r}{2} < x < -\\frac{q}{2}$가 된다. 따라서 ㄷ은 옳지 않다.\\n옳은 것은 ㄴ뿐이므로 정답은 ②이다."
+    solution: "[키포인트] 그래프의 위치와 이차함수의 대칭성을 이용하여 각 보기를 판단한다.\\n1단계: $f(x)\\ge2$인 구간은 $x\\le p$ 또는 $x\\ge s$이므로 ㄱ은 거짓이다.\\n2단계: $f(p)=f(s)=2$, $f(q)=f(r)=0$이고 대칭축이 같으므로 $p+s=q+r$이다. 따라서 $q-p=s-r$이므로 ㄴ은 참이다.\\n3단계: $f(-2x)<0$에서 $q<-2x<r$이므로 $-\\dfrac{r}{2}<x<-\\dfrac{q}{2}$이다. 따라서 ㄷ은 거짓이다.\\n∴ 정답: ②"
   },
   {
     id: 13,
     level: "상",
     category: "행렬",
     originalCategory: "행렬과 그 연산",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
@@ -381,13 +376,13 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
+    "행렬",
     "참거짓",
     "개념",
-    "조건해석",
-    "상난도"
+    "조건해석"
   ],
     wide: false,
-    content: "두 $2 \\times 2$ 행렬 $A, B$에 대하여 다음 &lt;보기&gt;에서 항상 옳은 것만을 있는 대로 고른 것은? (단, $O=\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}, I=\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$이다.) [4.2점]<br>\n<div style=\"width:100%; margin:8px 0 0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n<div style=\"text-align:center;\">&lt;보기&gt;</div>\nㄱ. $AB=O$이면 $A=O$ 또는 $B=O$이다.<br>\nㄴ. $AB=BA$이면 $A=I$ 또는 $B=I$이다.<br>\nㄷ. $AB=A$, $BA=B$이면 $A^2=A$이다.\n</div>",
+    content: "두 $2 \\times 2$ 행렬 $A, B$에 대하여 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은? \n(단, $O=\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}, I=\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$이다.) [4.2점]\n<div style=\"width:100%; margin:8px 0 0; padding:0px 0px; border:0px solid #000; box-sizing:border-box; text-align:left; line-height:0;\">\n<div style=\"text-align:center;\"></div>\nㄱ. $AB=O$이면 $A=O$ 또는 $B=O$이다.\nㄴ. $AB=BA$이면 $A=I$ 또는 $B=I$이다.\nㄷ. $AB=A$, $BA=B$이면 $A^2=A$이다.\n</div>",
     choices: [
     "ㄱ",
     "ㄷ",
@@ -396,14 +391,14 @@ window.questionBank = [
     "ㄱ, ㄴ, ㄷ"
   ],
     answer: "②",
-    solution: "[키포인트] 행렬 연산의 기본 법칙과 반례를 적용한다.\\nㄱ. $AB=O$라고 해서 $A=O$ 또는 $B=O$인 것은 아니다. (거짓)\\nㄴ. $AB=BA$라고 해서 $A=I$ 또는 $B=I$인 것은 아니다. (거짓)\\nㄷ. $AB=A$, $BA=B$이면 결합법칙에 의해 $A=AB=A(BA)=(AB)A=A^2$이므로 $A^2=A$이다. (참)\\n따라서 정답은 ②이다."
+    solution: "[키포인트] 행렬의 곱셈 법칙과 반례를 이용하여 판단한다.\\n1단계: $AB=O$이어도 두 행렬이 모두 영행렬이 아닐 수 있으므로 ㄱ은 거짓이다.\\n2단계: $AB=BA$이어도 $A=I$ 또는 $B=I$일 필요가 없으므로 ㄴ은 거짓이다.\\n3단계: $AB=A$, $BA=B$이면 $A=AB=A(BA)=(AB)A=A^2$이므로 ㄷ은 참이다.\\n∴ 정답: ②"
   },
   {
     id: 14,
     level: "중",
     category: "여러 가지 부등식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
@@ -416,46 +411,48 @@ window.questionBank = [
     "함수",
     "범위",
     "조건해석",
-    "계산",
-    "상급"
+    "계산"
   ],
     wide: false,
     content: "$1 \\le x \\le 3$인 모든 실수 $x$가 부등식 $ax > x^2 + 2x + 5$를 만족할 때, 실수 $a$의 값의 범위는? [4.2점]",
     choices: [
-    "$a > \\frac{20}{3}$",
-    "$a < \\frac{20}{3}$",
-    "$\\frac{20}{3} < a < 8$",
-    "$a > 8$",
+    "$a \\gt \\dfrac{20}{3}$",
+    "$a \\lt \\dfrac{20}{3}$",
+    "$\\dfrac{20}{3} \\lt a \\lt 8$",
+    "$a \\gt 8$",
     "모든 실수"
   ],
     answer: "④",
-    solution: "[키포인트] 부등식을 정리하여 함수의 최댓값을 이용한다.\\n$1\\le x\\le3$에서 $x>0$이므로 주어진 부등식을 $x$로 나누면 $a>x+2+\\frac{5}{x}$이다.\\n$f(x)=x+2+\\frac{5}{x}$라 하자. $f''(x)=\\frac{10}{x^3}>0$이므로 $f$는 $[1,3]$에서 아래로 볼록하고, 최댓값은 양 끝점 중 하나에서 갖는다.\\n$f(1)=8$, $f(3)=3+2+\\frac{5}{3}=\\frac{20}{3}$이므로 최댓값은 $8$이다.\\n모든 $x$에 대하여 부등식이 성립하려면 $a>8$이어야 한다.\\n따라서 정답은 ④이다."
+    solution: "[키포인트] 부등식을 $a$에 대하여 정리하고 주어진 구간에서 식의 최댓값을 구한다.\\n1단계: $x>0$이므로 $ax>x^2+2x+5$에서 $a>x+2+\\dfrac{5}{x}$이다.\\n2단계: $1\\le x\\le3$에서 $(x-1)(x-5)\\le0$이므로 $x^2-6x+5\\le0$이다. 양변을 $x$로 나누면 $x+\\dfrac5x\\le6$이다.\\n3단계: 따라서 $x+2+\\dfrac5x\\le8$이고 $x=1$일 때 등호가 성립하므로, 모든 $x$에서 주어진 부등식이 성립하려면 $a>8$이다.\\n∴ 정답: ④"
   },
   {
     id: 15,
     level: "중",
     category: "여러 가지 부등식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
     tags: [
-    "도형"
+    "객관식",
+    "도형",
+    "부등식",
+    "조건해석"
   ],
     wide: false,
     content: "연립부등식 $\\begin{cases} ax-b \\le 0 \\\\ cx+d > 0 \\end{cases}$의 해를 수직선 위에 나타내면 그림과 같다. 이때 연립부등식 $\\begin{cases} ax+b \\le 0 \\\\ -cx+d > 0 \\end{cases}$의 해는? (단, $a, b, c, d$는 상수이다.) [4.5점]",
     choices: [
-    "$x \\le -2$ 또는 $x > 1$",
-    "$-2 \\le x < 1$",
-    "$-1 < x \\le 2$",
-    "$x < -1$ 또는 $x \\ge 2$",
+    "$x \\le -2$ 또는 $x \\gt 1$",
+    "$-2 \\le x \\lt 1$",
+    "$-1 \\lt x \\le 2$",
+    "$x \\lt -1$ 또는 $x \\ge 2$",
     "해 가 없다."
   ],
     answer: "⑤",
-    solution: "[키포인트] 주어진 해를 통해 계수 간의 관계식을 세운다.\\n그림에서 $ax-b \\le 0$의 해는 $x \\le 2$이고, $cx+d>0$의 해는 $x<-1$이다.\\n(i) $ax-b \\le 0 \\Rightarrow x \\le b/a = 2 \\Rightarrow b=2a, a > 0$\\n(ii) $cx+d > 0$의 해가 $x < -1$이므로 $c < 0$이고 $-d/c = -1 \\Rightarrow d=c$\\n구하는 부등식:\\n1) $ax+b \\le 0 \\Rightarrow ax+2a \\le 0 \\Rightarrow x \\le -2$\\n2) $-cx+d > 0 \\Rightarrow -cx+c > 0 \\Rightarrow c(-x+1) > 0$. $c < 0$이므로 $-x+1 < 0 \\Rightarrow x > 1$\\n$x \\le -2$와 $x > 1$의 공통 범위가 없으므로 해가 없다.\\n따라서 정답은 ⑤이다.",
+    solution: "[키포인트] 수직선에 나타난 각 부등식의 해에서 계수의 관계를 찾는다.\\n1단계: $ax-b\\le0$의 해가 $x\\le2$이므로 $a>0$, $b=2a$이다.\\n2단계: $cx+d>0$의 해가 $x<-1$이므로 $c<0$, $d=c$이다.\\n3단계: $ax+b\\le0$의 해는 $x\\le-2$이고, $-cx+d>0$의 해는 $x>1$이다. 두 조건을 동시에 만족하는 $x$는 없다.\\n∴ 정답: ⑤",
     image: "assets/images/25_순천고_1학기_기말_고1_기출/q15.png",
     imageSize: "medium"
   },
@@ -464,18 +461,21 @@ window.questionBank = [
     level: "상",
     category: "이차함수",
     originalCategory: "이차방정식과 이차함수",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-05",
     standardUnit: "이차방정식과 이차함수",
     standardUnitOrder: 5,
     questionType: "객관식",
     layoutTag: "grid",
     tags: [
+    "객관식",
     "그래프",
-    "도형"
+    "이차함수",
+    "참거짓",
+    "조건해석"
   ],
     wide: false,
-    content: "두 이차함수 $y=f(x), y=g(x)$의 그래프는 다음과 같다.<br>\n<div style=\"text-align:center; margin:8px 0;\">\n<img src=\"assets/images/25_순천고_1학기_기말_고1_기출/q16.png\" alt=\"두 이차함수의 그래프\" style=\"display:block; width:100%; max-width:410px; height:auto; margin:0 auto;\">\n</div>\n&lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.5점]<br>\n<div style=\"width:100%; margin:8px 0 0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n<div style=\"text-align:center;\">&lt;보기&gt;</div>\nㄱ. $f(x)-g(x)>0$의 해는 $x<b$ 또는 $x>d$이다.<br>\nㄴ. $f(x)g(x)=0$의 해는 $x=a$ 또는 $x=c$ 또는 $x=d$이다.<br>\nㄷ. $f(x)g(x)<0$의 해는 $x<a$ 또는 $x>c$이다.\n</div>",
+    content: "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프는 다음과 같다. &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.5점]\n<div class=\"note-box\" style=\"margin:0; text-align:left;\">ㄱ. $f(x)-g(x)\\gt0$의 해는 $x\\lt b$ 또는 $x\\gt d$이다.\nㄴ. $f(x)g(x)=0$의 해는 $x=a$ 또는 $x=c$ 또는 $x=d$이다.\nㄷ. $f(x)g(x)\\lt0$의 해는 $x\\lt a$ 또는 $x\\gt c$이다.</div>",
     choices: [
     "ㄱ",
     "ㄴ",
@@ -484,14 +484,16 @@ window.questionBank = [
     "ㄱ, ㄴ, ㄷ"
   ],
     answer: "⑤",
-    solution: "[키포인트] 그래프의 상하 관계와 절편을 분석한다.\\nㄱ. $f(x) > g(x)$인 구간은 교점 $b$와 $d$를 기준으로 바깥쪽이므로 $x < b$ 또는 $x > d$이다. (참)\\nㄴ. $f(x)g(x)=0$의 해는 $f(x)=0$ 또는 $g(x)=0$의 실근이므로 그림에서 $a, c, d$가 근이 된다. (참)\\nㄷ. $f(x)g(x) < 0$은 두 함수의 부호가 서로 다른 구간이다. $x < a$ 또는 $x > c$ 구간에서 성립한다. (참)\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 두 그래프의 상하 관계와 $x$축과의 교점을 이용한다.\\n1단계: 두 그래프의 교점의 $x$좌표는 $b$, $d$이고, 바깥 구간에서 $f(x)>g(x)$이므로 ㄱ은 참이다.\\n2단계: $g(x)=0$의 해는 $a$, $d$이고 $f(x)=0$의 해는 $c$, $d$이므로 $f(x)g(x)=0$의 해는 $a$, $c$, $d$이다. 따라서 ㄴ은 참이다.\\n3단계: 두 함수의 부호가 다른 구간은 $x<a$ 또는 $x>c$이므로 ㄷ은 참이다.\\n∴ 정답: ⑤",
+    image: "assets/images/25_순천고_1학기_기말_고1_기출/q16.png",
+    imageSize: "medium"
   },
   {
     id: 17,
     level: "중",
     category: "행렬",
     originalCategory: "행렬과 그 연산",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
@@ -499,10 +501,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "객관식",
+    "행렬",
     "계산",
-    "조건해석",
-    "중난도",
-    "기출"
+    "조건해석"
   ],
     wide: false,
     content: "2024년 $P$지역에서 생산한 사과와 배의 개당 생산 비용은 각각 $2800$원, $4000$원, $Q$지역에서 생산한 사과와 배의 개당 생산 비용은 각각 $3000$원, $4100$원이고, $P$지역에서 생산한 사과와 배의 이익금은 각각 $700$원, $900$원, $Q$지역에서 생산한 사과와 배의 이익금은 각각 $600$원, $800$원이다. 2025년에는 생산량이 감소하여 두 지역 모두 두 과일의 개당 생산 비용이 각각 $10\\%$씩 증가하였지만 판매 가격은 작년과 같게 하려고 한다. 두 지역 $P$, $Q$의 2025년 이익금을 행렬로 나타낸 것은? (단, 판매 가격은 생산 비용과 이익금을 합한 것으로 한다.) [4.5점]",
@@ -514,21 +515,21 @@ window.questionBank = [
     "$\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 새로운 이익금 = 기존 이익금 - (생산 비용의 $10\\%$)임을 이용한다.\\n판매 가격이 일정하므로 생산 비용이 $10\\%$ 늘어난 만큼 이익금은 줄어든다.\\n$P$지역 사과 이익금: $700-2800\\times0.1=420$\\n$P$지역 배 이익금: $900-4000\\times0.1=500$\\n$Q$지역 사과 이익금: $600-3000\\times0.1=300$\\n$Q$지역 배 이익금: $800-4100\\times0.1=390$\\n행은 사과와 배, 열은 $P$지역과 $Q$지역의 순서이므로 이익금 행렬은 $\\begin{pmatrix}420&300\\\\500&390\\end{pmatrix}$이다.\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 판매 가격이 같으면 생산 비용의 증가액만큼 이익금이 감소한다.\\n1단계: $P$지역의 사과와 배의 이익금은 각각 $700-2800\\times0.1=420$, $900-4000\\times0.1=500$이다.\\n2단계: $Q$지역의 사과와 배의 이익금은 각각 $600-3000\\times0.1=300$, $800-4100\\times0.1=390$이다.\\n3단계: 행을 사과와 배, 열을 $P$지역과 $Q$지역의 순서로 나타내면 $\\begin{pmatrix}420&300\\\\500&390\\end{pmatrix}$이다.\\n∴ 정답: ⑤"
   },
   {
     id: 18,
     level: "상",
     category: "여러 가지 방정식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
-    questionType: "주관식",
+    questionType: "단답형",
     layoutTag: "grid",
     tags: [
-    "서술형",
+    "단답형",
     "판별식",
     "최대최소",
     "부등식",
@@ -541,22 +542,21 @@ window.questionBank = [
     content: "$x, y$에 대한 연립방정식 $\\begin{cases} x+y = 2a \\\\ x^2+y^2 = -2a+12 \\end{cases}$의 해 중에서 $x$와 $y$의 값이 모두 실수인 해가 존재할 때, $p \\le a^2 + 2a - 1 \\le q$이다. $q-p$의 최솟값을 구하시오. (단, $a$는 실수) [부분 점수 없음, 5점]",
     choices: [],
     answer: "$9$",
-    solution: "[키포인트] 실수가 존재할 조건을 판별식을 통해 구한다.\\n$y=2a-x$를 대입하면 $x^2+(2a-x)^2 = -2a+12 \\rightarrow x^2-2ax+2a^2+a-6=0$\\n$D/4 = a^2 - (2a^2+a-6) \\ge 0 \\rightarrow a^2+a-6 \\le 0 \\rightarrow -3 \\le a \\le 2$\\n$f(a) = a^2+2a-1 = (a+1)^2-2$에서\\n$a=-1$일 때 최솟값 $p=-2$, $a=2$일 때 최댓값 $q=7$이다.\\n$\\therefore q-p = 7 - (-2) = 9$\\n따라서 구하는 값은 $9$이다."
+    solution: "[키포인트] 연립방정식의 실수해 존재 조건과 이차함수의 최댓값·최솟값을 이용한다.\\n1단계: $y=2a-x$를 대입하면 $x^2-2ax+2a^2+a-6=0$이다. 실수해가 존재하려면 판별식이 $0$ 이상이므로 $-3\\le a\\le2$이다.\\n2단계: $a^2+2a-1=(a+1)^2-2$이므로 최솟값은 $-2$이다.\\n3단계: 구간의 양 끝값을 비교하면 최댓값은 $a=2$일 때 $7$이므로 $q-p=7-(-2)=9$이다.\\n∴ 정답: $9$"
   },
   {
     id: 19,
     level: "상",
     category: "경우의 수",
-    originalCategory: "합의 법칙과 곱의 법칙",
-    standardCourse: "공통수학 1",
-    standardUnitKey: "H22-C-07",
-    standardUnit: "합의 법칙과 곱의 법칙",
-    standardUnitOrder: 7,
-    questionType: "주관식",
+    originalCategory: "순열과 조합",
+    standardCourse: "공통수학1",
+    standardUnitKey: "H22-C-08",
+    standardUnit: "순열과 조합",
+    standardUnitOrder: 8,
+    questionType: "단답형",
     layoutTag: "grid",
     tags: [
-    "서술형",
-    "최대최소",
+    "단답형",
     "경우의수",
     "조합",
     "자연수조건",
@@ -565,81 +565,87 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "$0$부터 $9$까지의 정수가 각각 하나씩 적힌 $10$장의 카드 중에서 $3$장의 카드를 택하여 다음 조건을 만족시키도록 세 자리 자연수를 만들려고 한다.<br>\n<div style=\"width:100%; margin:8px 0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:center; line-height:1.45;\">\n각 자리의 수의 합이 $9$의 배수이다.\n</div>\n조건을 만족시키는 세 자리 자연수의 개수를 구하시오. [부분 점수 없음, 5점]",
+    content: "$0$부터 $9$까지의 정수가 각각 하나씩 적힌 $10$장의 카드 중에서 $3$장의 카드를 택하여 다음 조건을 만족시키도록 세 자리 자연수를 만들려고 한다.\n<div class=\"note-box\" style=\"margin:0; text-align:left;\">각 자리의 수의 합이 $9$의 배수이다.</div>\n조건을 만족시키는 세 자리 자연수의 개수를 구하시오. [부분 점수 없음, 5점]",
     choices: [],
     answer: "$76$",
-    solution: "[키포인트] 세 숫자의 합이 $9$의 배수가 되도록 먼저 조합을 구한 뒤, 각 조합으로 만들 수 있는 세 자리 자연수의 개수를 센다.\\n세 숫자의 합은 최대 $24$이므로 가능한 값은 $9$ 또는 $18$이다.\\n합이 $9$인 조합은 $\\{0,1,8\\}, \\{0,2,7\\}, \\{0,3,6\\}, \\{0,4,5\\}, \\{1,2,6\\}, \\{1,3,5\\}, \\{2,3,4\\}$이다.\\n이 중 $0$이 포함된 네 조합은 각각 $4$개씩, $0$이 없는 세 조합은 각각 $6$개씩의 세 자리 자연수를 만든다.\\n따라서 합이 $9$인 경우의 수는 $4 \\times 4 + 3 \\times 6 = 34$이다.\\n합이 $18$인 조합은 $\\{1,8,9\\}, \\{2,7,9\\}, \\{3,6,9\\}, \\{3,7,8\\}, \\{4,5,9\\}, \\{4,6,8\\}, \\{5,6,7\\}$의 일곱 개이고, 모두 $0$이 없으므로 각각 $6$개씩이다.\\n따라서 합이 $18$인 경우의 수는 $7 \\times 6 = 42$이다.\\n전체 경우의 수는 $34+42=76$이다.\\n따라서 정답은 $76$이다."
+    solution: "[키포인트] 세 숫자의 합이 $9$ 또는 $18$인 경우를 나누어 센다.\\n1단계: 합이 $9$인 조합은 $\\{0,1,8\\}$, $\\{0,2,7\\}$, $\\{0,3,6\\}$, $\\{0,4,5\\}$, $\\{1,2,6\\}$, $\\{1,3,5\\}$, $\\{2,3,4\\}$이다. $0$이 있는 네 조합은 각각 $4$개, 나머지 세 조합은 각각 $6$개를 만들므로 $34$개이다.\\n2단계: 합이 $18$인 조합은 $\\{1,8,9\\}$, $\\{2,7,9\\}$, $\\{3,6,9\\}$, $\\{3,7,8\\}$, $\\{4,5,9\\}$, $\\{4,6,8\\}$, $\\{5,6,7\\}$이다. 각각 $6$개를 만들므로 $42$개이다.\\n3단계: 전체 개수는 $34+42=76$이다.\\n∴ 정답: $76$"
   },
   {
     id: 20,
     level: "중",
     category: "행렬",
     originalCategory: "행렬과 그 연산",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
-    questionType: "주관식",
+    questionType: "단답형",
     layoutTag: "grid",
     tags: [
-    "서술형",
-    "지수",
+    "단답형",
+    "행렬",
+    "거듭제곱",
     "대입",
     "조건해석",
     "계산"
   ],
     wide: false,
-    content: "$2 \\times 2$ 행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$의 모든 성분의 합이 $4$가 되게 하는 실수 $x$의 값을 $a$, 등식 $A^3 = \\frac{3}{4}A - \\frac{1}{4}I$가 성립하게 하는 실수 $x$의 값을 $b$라 할 때, $a+b$의 값을 구하시오. (단, $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [부분 점수 없음, 5점]",
+    content: "$2 \\times 2$ 행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$의 모든 성분의 합이 $4$가 되게 하는 실수 $x$의 값을 $a$, 등식 $A^3 = \\dfrac{3}{4}A - \\dfrac{1}{4}I$가 성립하게 하는 실수 $x$의 값을 $b$라 할 때, $a+b$의 값을 구하시오. (단, $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [부분 점수 없음, 5점]",
     choices: [],
-    answer: "$\\frac{5}{2}$",
-    solution: "[키포인트] 거듭제곱 행렬의 성분을 직접 계산한다.\\n$A^2=\\begin{pmatrix}x^2&-x+1\\\\0&1\\end{pmatrix}$, $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이다.\\n1) $A^3$의 모든 성분의 합이 $4$이므로 $x^3-x^2+x-2=4$, 즉 $x^3-x^2+x-6=0$이다.\\n$x^3-x^2+x-6=(x-2)(x^2+x+3)$이고 $x^2+x+3$은 판별식이 $-11$이므로 실근이 없다. 따라서 $a=2$이다.\\n2) $A^3=\\frac34A-\\frac14I$에서 $(1,2)$성분을 비교하면 $-x^2+x-1=-\\frac34$이다.\\n$x^2-x+\\frac14=0$, 즉 $\\left(x-\\frac12\\right)^2=0$이므로 $x=\\frac12$이다. 이 값을 대입하면 나머지 성분의 등식도 모두 성립하므로 $b=\\frac12$이다.\\n따라서 $a+b=2+\\frac12=\\frac52$이다."
+    answer: "$\\dfrac{5}{2}$",
+    solution: "[키포인트] $A^3$을 직접 구하여 두 조건을 각각 적용한다.\\n1단계: $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이다. 모든 성분의 합이 $4$이면 $(x-2)(x^2+x+3)=0$이고 실수해는 $x=2$뿐이므로 $a=2$이다.\\n2단계: $A^3=\\dfrac34A-\\dfrac14I$의 $(1,2)$성분을 비교하면 $-x^2+x-1=-\\dfrac34$이다. 따라서 $\\left(x-\\dfrac12\\right)^2=0$이고 $b=\\dfrac12$이다.\\n3단계: $a+b=2+\\dfrac12=\\dfrac52$이다.\\n∴ 정답: $\\dfrac{5}{2}$"
   },
   {
     id: 21,
     level: "중",
     category: "복소수와 이차방정식",
     originalCategory: "복소수",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-04",
     standardUnit: "복소수와 이차방정식",
     standardUnitOrder: 4,
     questionType: "서술형",
     layoutTag: "grid",
     tags: [
-    "서술형"
+    "서술형",
+    "복소수",
+    "계산"
   ],
     wide: false,
-    content: "허수 $x$가 방정식 $x + \\frac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오. [부분 점수 있음, 6점]<br>\n(1) $x^3$의 값이 되는 실수를 구하는 풀이과정과 답을 서술하시오.<br>\n(2) $\\frac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하는 풀이과정과 답을 서술하시오.",
+    content: "허수 $x$가 방정식 $x + \\dfrac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오. [부분 점수 있음, 6점]\\n\n(1) $x^3$의 값이 되는 실수를 구하는 풀이과정과 답을 서술하시오.\\n\n(2) $\\dfrac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하는 풀이과정과 답을 서술하시오.",
     choices: [],
     answer: "(1) $-1$, (2) $1$",
-    solution: "[키포인트] $x^2-x+1=0$을 만들고 켤레복소수의 성질을 이용한다.\\n주어진 식에서 $x \\ne 0$이므로 양변에 $x$를 곱하면\\n$x^2-x+1=0$\\n이다.\\n(1) 양변에 $(x+1)$을 곱하면\\n$(x+1)(x^2-x+1)=x^3+1=0$\\n이므로 $x^3=-1$이다.\\n(2) $x^2=x-1$이므로\\n$\\frac{x^2}{x-1}=1$\\n또한 $x$는 허수근이므로 켤레복소수 $\\bar{x}$도 같은 방정식의 근이고, 두 근의 합은 $1$이므로\\n$x+\\bar{x}=1$\\n이다. 따라서\\n\\bar{x}(1-x)+x=\\bar{x}(x+\\bar{x}-x)+x=\\bar{x}^2+x$\\n한편 $\\bar{x}$도 $t^2-t+1=0$의 근이므로 $\\bar{x}^2=\\bar{x}-1$이다.\\n그러므로\\n\\bar{x}^2+x=(\\bar{x}-1)+x=(x+\\bar{x})-1=1-1=0$\\n이다.\\n따라서 전체 값은\\n$\\frac{x^2}{x-1}+\\bar{x}(1-x)+x=1+0=1$\\n이다.\\n따라서 정답은 (1) $-1$, (2) $1$이다."
+    solution: "[키포인트] $x^2-x+1=0$과 켤레복소수의 성질을 이용한다.\\n(1) $x+\\dfrac1x=1$의 양변에 $x$를 곱하면 $x^2-x+1=0$이다. $(x+1)(x^2-x+1)=x^3+1=0$이므로 $x^3=-1$이다.\\n(2) $x^2=x-1$이므로 $\\dfrac{x^2}{x-1}=1$이다. 또한 $x+\\bar{x}=1$이고 $\\bar{x}^2=\\bar{x}-1$이므로 $\\bar{x}(1-x)+x=\\bar{x}^2+x=0$이다.\\n따라서 주어진 식의 값은 $1+0=1$이다.\\n∴ 정답: (1) $-1$, (2) $1$"
   },
   {
     id: 22,
     level: "중",
     category: "여러 가지 부등식",
     originalCategory: "여러 가지 방정식과 부등식",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
     questionType: "서술형",
     layoutTag: "grid",
     tags: [
-    "서술형"
+    "서술형",
+    "절댓값",
+    "부등식",
+    "정수조건"
   ],
     wide: false,
-    content: "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 & \\cdots\\cdots\\cdots\\ (a) \\\\ |x-2| < k & \\cdots\\cdots\\cdots\\ (b) \\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 7점]<br>\n(1) 부등식 $(a)$의 해를 구하는 풀이과정과 답을 서술하시오.<br>\n(2) 부등식 $(b)$의 해를 구하는 풀이과정과 답을 서술하시오.<br>\n(3) 연립부등식을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 $k$의 범위를 구하는 풀이과정과 답을 서술하시오.",
+    content: "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 & \\cdots\\cdots\\cdots\\ (a) \\\\ |x-2| \\lt k & \\cdots\\cdots\\cdots\\ (b) \\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 7점]\\n\n(1) 부등식 $(a)$의 해를 구하는 풀이과정과 답을 서술하시오.\\n\n(2) 부등식 $(b)$의 해를 구하는 풀이과정과 답을 서술하시오.\\n\n(3) 연립부등식을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 $k$의 범위를 구하는 풀이과정과 답을 서술하시오.",
     choices: [],
     answer: "(1) $-2 \\le x \\le 3$, (2) $k>0$일 때 $2-k<x<2+k$이고 $k\\le0$일 때 해가 없다, (3) $1<k\\le2$",
-    solution: "[키포인트] 각 부등식의 해를 구한 뒤 공통 범위에서 정수의 개수를 센다.\\n(1) $x^2-x-6\\le0$에서 $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\\n(2) $k>0$이면 $|x-2|<k$에서 $-k<x-2<k$이므로 $2-k<x<2+k$이다. $k\\le0$이면 절댓값은 항상 $0$ 이상이므로 부등식을 만족하는 실수 $x$는 없다.\\n(3) 정수해가 $3$개 존재하려면 반드시 $k>0$이다. 첫 번째 부등식의 정수해 $-2,-1,0,1,2,3$ 중 $|x-2|<k$를 만족하는 정수가 정확히 $3$개여야 한다. $x=1,2,3$은 포함하고 $x=0$은 포함하지 않아야 하므로 $1<k\\le2$이다.\\n따라서 정답은 (1) $-2\\le x\\le3$, (2) $k>0$일 때 $2-k<x<2+k$이고 $k\\le0$일 때 해가 없다, (3) $1<k\\le2$이다."
+    solution: "[키포인트] 두 부등식의 해를 구한 뒤 공통 정수해의 개수를 센다.\\n(1) $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\\n(2) $k>0$이면 $|x-2|<k$에서 $2-k<x<2+k$이고, $k\\le0$이면 해가 없다.\\n(3) 정수 $1,2,3$은 포함되고 $0$은 포함되지 않아야 하므로 $1<k\\le2$이다.\\n∴ 정답: (1) $-2\\le x\\le3$, (2) $k>0$일 때 $2-k<x<2+k$, $k\\le0$일 때 해가 없다, (3) $1<k\\le2$"
   },
   {
     id: 23,
     level: "중",
     category: "경우의 수",
     originalCategory: "합의 법칙과 곱의 법칙",
-    standardCourse: "공통수학 1",
+    standardCourse: "공통수학1",
     standardUnitKey: "H22-C-07",
     standardUnit: "합의 법칙과 곱의 법칙",
     standardUnitOrder: 7,
@@ -647,13 +653,15 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [
     "서술형",
-    "도형"
+    "도형",
+    "경우의수",
+    "색칠하기"
   ],
     wide: false,
     content: "다음 그림의 $6$개의 영역을 서로 다른 $5$가지 색으로 칠하려고 한다. 같은 색을 중복하여 사용할 수 있으나 이웃하는 영역은 서로 다른 색을 칠할 때, 칠하는 방법의 수를 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점]",
     choices: [],
     answer: "$1020$",
-    solution: "[키포인트] 영역 $A$와 $F$에 같은 색을 칠하는 경우와 서로 다른 색을 칠하는 경우로 나눈다.\\n(i) $A$와 $F$의 색이 같은 경우: 공통 색을 정하는 방법은 $5$가지이다. $B,C,D,E$에는 그 색을 제외한 $4$가지 색을 사용할 수 있고, 이 네 영역은 차례로 이웃하므로 경우의 수는 $4\\times3^3$이다. 따라서 $5\\times4\\times3^3=540$가지이다.\\n(ii) $A$와 $F$의 색이 다른 경우: 두 색을 정하는 방법은 $5\\times4$가지이다. $B,C,D,E$에는 두 색을 제외한 $3$가지 색을 사용할 수 있고, 차례로 이웃하므로 경우의 수는 $3\\times2^3$이다. 따라서 $5\\times4\\times3\\times2^3=480$가지이다.\\n전체 경우의 수는 $540+480=1020$이다.\\n따라서 정답은 $1020$이다.",
+    solution: "[키포인트] 영역 $A$와 $F$의 색이 같은 경우와 다른 경우로 나눈다.\\n1단계: $A$와 $F$의 색이 같으면 그 색은 $5$가지이고, $B,C,D,E$는 $4\\times3^3$가지로 칠할 수 있으므로 $540$가지이다.\\n2단계: $A$와 $F$의 색이 다르면 두 색은 $5\\times4$가지이고, $B,C,D,E$는 $3\\times2^3$가지로 칠할 수 있으므로 $480$가지이다.\\n3단계: 전체 방법의 수는 $540+480=1020$이다.\\n∴ 정답: $1020$",
     image: "assets/images/25_순천고_1학기_기말_고1_기출/q23.png"
   }
 ];
