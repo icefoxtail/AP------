@@ -20,7 +20,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "연립부등식 $2 < x^2 - x \\le 6$의 해는?",
+    content: "연립부등식 $2 < x^2 - x \\le 6$의 해는? [3.2점]",
     choices: [
     "$-2 \\le x < -1$ 또는 $2 < x \\le 3$",
     "$-2 < x \\le -1$ 또는 $2 \\le x < 3$",
@@ -50,7 +50,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "$50$의 약수의 개수는?",
+    content: "$50$의 약수의 개수는? [3.2점]",
     choices: [
     "$4$",
     "$5$",
@@ -83,7 +83,7 @@ window.questionBank = [
     "조건해석"
   ],
     wide: false,
-    content: "학생자치회에서 교내 버스킹 프로그램을 구성하려고 한다. 지원한 $10$개의 팀 중에서 공연할 $3$개의 팀을 뽑는 경우의 수는?",
+    content: "학생자치회에서 교내 버스킹 프로그램을 구성하려고 한다. 지원한 $10$개의 팀 중에서 공연할 $3$개의 팀을 뽑는 경우의 수는? [3.2점]",
     choices: [
     "$10$",
     "$45$",
@@ -113,7 +113,7 @@ window.questionBank = [
     "기출"
   ],
     wide: false,
-    content: "등식 $\\begin{pmatrix} a-1 & 6 \\\\ -2 & b \\end{pmatrix} = \\begin{pmatrix} b+1 & 6 \\\\ -2 & 4-a \\end{pmatrix}$을 만족시키는 두 상수 $a, b$에 대하여 $a+b$의 값은?",
+    content: "등식 $\\begin{pmatrix} a-1 & 6 \\\\ -2 & b \\end{pmatrix} = \\begin{pmatrix} b+1 & 6 \\\\ -2 & 4-a \\end{pmatrix}$을 만족시키는 두 상수 $a, b$에 대하여 $a+b$의 값은? [3.2점]",
     choices: [
     "$4$",
     "$5$",
@@ -146,7 +146,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "삼차방정식 $x^3 - 3x^2 + ax + 5 = 0$의 한 근이 $-1$일 때, 나머지 두 근의 합은?",
+    content: "삼차방정식 $x^3 - 3x^2 + ax + 5 = 0$의 한 근이 $-1$일 때, 나머지 두 근의 합은? [3.6점]",
     choices: [
     "$-4$",
     "$-2$",
@@ -177,7 +177,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "연립방정식 $\\begin{cases} x-y = k \\\\ x^2 + xy + y^2 = 4 \\end{cases}$가 오직 한 쌍의 해를 갖게 하는 음수 $k$의 값은?",
+    content: "연립방정식 $\\begin{cases} x-y = k \\\\ x^2 + xy + y^2 = 4 \\end{cases}$가 오직 한 쌍의 해를 갖게 하는 음수 $k$의 값은? [3.6점]",
     choices: [
     "$-5$",
     "$-4$",
@@ -209,7 +209,7 @@ window.questionBank = [
     "개념"
   ],
     wide: false,
-    content: "등식 ${}_{7}C_{4} \\times 3! = {}_{n}P_{3}$을 만족시키는 상수 $n$의 값은?",
+    content: "등식 ${}_{7}C_{4} \\times 3! = {}_{n}P_{3}$을 만족시키는 상수 $n$의 값은? [3.6점]",
     choices: [
     "$3$",
     "$4$",
@@ -239,7 +239,7 @@ window.questionBank = [
     "중난도"
   ],
     wide: false,
-    content: "두 행렬 $A = \\begin{pmatrix} 1 & 0 & -4 \\\\ 0 & 1 & 2 \\end{pmatrix}, B = \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix}$에 대하여 등식 $2X + B = 2A$를 만족시키는 행렬 $X$는?",
+    content: "두 행렬 $A = \\begin{pmatrix} 1 & 0 & -4 \\\\ 0 & 1 & 2 \\end{pmatrix}, B = \\begin{pmatrix} 0 & -4 & -2 \\\\ 4 & 0 & -2 \\end{pmatrix}$에 대하여 등식 $2X + B = 2A$를 만족시키는 행렬 $X$는? [3.6점]",
     choices: [
     "$\\begin{pmatrix} 0 & 2 & -4 \\\\ -2 & 0 & 2 \\end{pmatrix}$",
     "$\\begin{pmatrix} 1 & 0 & -3 \\\\ 0 & -1 & 2 \\end{pmatrix}$",
@@ -271,7 +271,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "부등식 $| |x-1| - 2 | \\le 1$을 만족시키는 정수 $x$는 $n$개다. 가능한 정수 $x$의 총합을 $m$이라 할 때, $m+n$의 값은?",
+    content: "부등식 $\\left||x-1|-2\\right| \\le 1$을 만족시키는 정수 $x$는 $n$개다. 가능한 정수 $x$의 총합을 $m$이라 할 때, $m+n$의 값은? [3.9점]",
     choices: [
     "$8$",
     "$9$",
@@ -301,7 +301,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "$10$원짜 동전 $4$개, $50$원짜리 동전 $3$개, $100$원짜리 동전 $2$개가 있다. 이 동전의 일부 또는 전부를 사용하여 지불할 수 있는 금액의 수는? (단, $0$원을 지불하는 경우는 제외한다.)",
+    content: "$10$원짜리 동전 $4$개, $50$원짜리 동전 $3$개, $100$원짜리 동전 $2$개가 있다. 이 동전의 일부 또는 전부를 사용하여 지불할 수 있는 금액의 수는? (단, $0$원을 지불하는 경우는 제외한다.) [3.9점]",
     choices: [
     "$27$",
     "$31$",
@@ -331,7 +331,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "$2 \\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\\n$a_{ij} = \\begin{cases} ij & (i < j) \\\\ 1 & (i = j) \\\\ 2-ij & (i > j) \\end{cases}$일 때, 행렬 $A^7$의 모든 성분의 합은?",
+    content: "$2 \\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\\n$a_{ij} = \\begin{cases} ij & (i < j) \\\\ 1 & (i = j) \\\\ 2-ij & (i > j) \\end{cases}$일 때, 행렬 $A^7$의 모든 성분의 합은? [3.9점]",
     choices: [
     "$16$",
     "$44$",
@@ -357,7 +357,7 @@ window.questionBank = [
     "그래프"
   ],
     wide: false,
-    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, &lt;보기&gt;에서 옳은 것만 있는 대로 고른 것은? [4.2점]<br>\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:0 auto; padding:0;\">\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n</div><div style=\"width:100%; margin:0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n&lt;보기&gt;<br>\nㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.<br>\nㄴ. $q-p=s-r$<br>\nㄷ. 부등식 $f(-2x) \\lt 0$의 해는 $-2r \\lt x \\lt -2q$이다.\n</div>",
+    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.2점]<br>\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:0 auto; padding:0;\">\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n</div><div style=\"width:100%; margin:0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n&lt;보기&gt;<br>\nㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.<br>\nㄴ. $q-p=s-r$<br>\nㄷ. 부등식 $f(-2x) \\lt 0$의 해는 $-2r \\lt x \\lt -2q$이다.\n</div>",
     choices: [
     "ㄱ",
     "ㄴ",
@@ -396,7 +396,7 @@ window.questionBank = [
     "ㄱ, ㄴ, ㄷ"
   ],
     answer: "②",
-    solution: "[키포인트] 행렬 연산의 기본 법칙과 반례를 적용한다.\\nㄱ. $AB=O$라고 해서 $A=O$ 또는 $B=O$인 것은 아니다. (거짓)\\nㄴ. 교환법칙이 성립한다고 해서 어느 한 행렬이 단위행렬인 것은 아니다. (거짓)\\nㄷ. $AB=A, BA=B$이면 $A^2 = A(BA) = (AB)A = AA = A$가 성립한다. (참)\\n따라서 정답은 ②이다."
+    solution: "[키포인트] 행렬 연산의 기본 법칙과 반례를 적용한다.\\nㄱ. $AB=O$라고 해서 $A=O$ 또는 $B=O$인 것은 아니다. (거짓)\\nㄴ. $AB=BA$라고 해서 $A=I$ 또는 $B=I$인 것은 아니다. (거짓)\\nㄷ. $AB=A$, $BA=B$이면 결합법칙에 의해 $A=AB=A(BA)=(AB)A=A^2$이므로 $A^2=A$이다. (참)\\n따라서 정답은 ②이다."
   },
   {
     id: 14,
@@ -420,7 +420,7 @@ window.questionBank = [
     "상급"
   ],
     wide: false,
-    content: "$1 \\le x \\le 3$인 모든 실수 $x$가 부등식 $ax > x^2 + 2x + 5$를 만족할 때, 실수 $a$의 값의 범위는?",
+    content: "$1 \\le x \\le 3$인 모든 실수 $x$가 부등식 $ax > x^2 + 2x + 5$를 만족할 때, 실수 $a$의 값의 범위는? [4.2점]",
     choices: [
     "$a > \\frac{20}{3}$",
     "$a < \\frac{20}{3}$",
@@ -429,7 +429,7 @@ window.questionBank = [
     "모든 실수"
   ],
     answer: "④",
-    solution: "[키포인트] 부등식을 정리하여 함수의 최댓값을 이용한다.\\n$a > x + 2 + \\frac{5}{x}$이 $[1, 3]$에서 성립해야 한다.\\n$f(x) = x + 2 + \\frac{5}{x}$라 하면, $x=1$에서 $f(1)=8$, $x=3$에서 $f(3)=3+2+5/3=20/3$이다.\\n함수 $f(x)$는 주어진 구간에서 $x=1$일 때 최대이므로 $a > 8$이어야 한다.\\n따라서 정답은 ④이다."
+    solution: "[키포인트] 부등식을 정리하여 함수의 최댓값을 이용한다.\\n$1\\le x\\le3$에서 $x>0$이므로 주어진 부등식을 $x$로 나누면 $a>x+2+\\frac{5}{x}$이다.\\n$f(x)=x+2+\\frac{5}{x}$라 하자. $f''(x)=\\frac{10}{x^3}>0$이므로 $f$는 $[1,3]$에서 아래로 볼록하고, 최댓값은 양 끝점 중 하나에서 갖는다.\\n$f(1)=8$, $f(3)=3+2+\\frac{5}{3}=\\frac{20}{3}$이므로 최댓값은 $8$이다.\\n모든 $x$에 대하여 부등식이 성립하려면 $a>8$이어야 한다.\\n따라서 정답은 ④이다."
   },
   {
     id: 15,
@@ -446,7 +446,7 @@ window.questionBank = [
     "도형"
   ],
     wide: false,
-    content: "연립부등식 $\\begin{cases} ax-b \\le 0 \\\\ cx+d > 0 \\end{cases}$의 해를 수직선 위에 나타내면 그림과 같다. 이때 연립부등식 $\\begin{cases} ax+b \\le 0 \\\\ -cx+d > 0 \\end{cases}$의 해는? (단, $a, b, c, d$는 상수이다.)",
+    content: "연립부등식 $\\begin{cases} ax-b \\le 0 \\\\ cx+d > 0 \\end{cases}$의 해를 수직선 위에 나타내면 그림과 같다. 이때 연립부등식 $\\begin{cases} ax+b \\le 0 \\\\ -cx+d > 0 \\end{cases}$의 해는? (단, $a, b, c, d$는 상수이다.) [4.5점]",
     choices: [
     "$x \\le -2$ 또는 $x > 1$",
     "$-2 \\le x < 1$",
@@ -455,7 +455,7 @@ window.questionBank = [
     "해 가 없다."
   ],
     answer: "⑤",
-    solution: "[키포인트] 주어진 해를 통해 계수 간의 관계식을 세운다.\\n그림의 해는 $-1 < x \\le 2$이다.\\n(i) $ax-b \\le 0 \\Rightarrow x \\le b/a = 2 \\Rightarrow b=2a, a > 0$\\n(ii) $cx+d > 0$의 해가 $x < -1$이므로 $c < 0$이고 $-d/c = -1 \\Rightarrow d=c$\\n구하는 부등식:\\n1) $ax+b \\le 0 \\Rightarrow ax+2a \\le 0 \\Rightarrow x \\le -2$\\n2) $-cx+d > 0 \\Rightarrow -cx+c > 0 \\Rightarrow c(-x+1) > 0$. $c < 0$이므로 $-x+1 < 0 \\Rightarrow x > 1$\\n$x \\le -2$와 $x > 1$의 공통 범위가 없으므로 해가 없다.\\n따라서 정답은 ⑤이다.",
+    solution: "[키포인트] 주어진 해를 통해 계수 간의 관계식을 세운다.\\n그림에서 $ax-b \\le 0$의 해는 $x \\le 2$이고, $cx+d>0$의 해는 $x<-1$이다.\\n(i) $ax-b \\le 0 \\Rightarrow x \\le b/a = 2 \\Rightarrow b=2a, a > 0$\\n(ii) $cx+d > 0$의 해가 $x < -1$이므로 $c < 0$이고 $-d/c = -1 \\Rightarrow d=c$\\n구하는 부등식:\\n1) $ax+b \\le 0 \\Rightarrow ax+2a \\le 0 \\Rightarrow x \\le -2$\\n2) $-cx+d > 0 \\Rightarrow -cx+c > 0 \\Rightarrow c(-x+1) > 0$. $c < 0$이므로 $-x+1 < 0 \\Rightarrow x > 1$\\n$x \\le -2$와 $x > 1$의 공통 범위가 없으므로 해가 없다.\\n따라서 정답은 ⑤이다.",
     image: "assets/images/25_순천고_1학기_기말_고1_기출/q15.png",
     imageSize: "medium"
   },
@@ -505,7 +505,7 @@ window.questionBank = [
     "기출"
   ],
     wide: false,
-    content: "P, Q지역 사과와 배의 생산 비용 및 이익금에 대한 정보가 주어졌을 때, 생산 비용이 $10\\%$ 증가하고 판매 가격은 유지될 때의 2025년 이익금을 행렬로 나타내면?",
+    content: "2024년 $P$지역에서 생산한 사과와 배의 개당 생산 비용은 각각 $2800$원, $4000$원, $Q$지역에서 생산한 사과와 배의 개당 생산 비용은 각각 $3000$원, $4100$원이고, $P$지역에서 생산한 사과와 배의 이익금은 각각 $700$원, $900$원, $Q$지역에서 생산한 사과와 배의 이익금은 각각 $600$원, $800$원이다. 2025년에는 생산량이 감소하여 두 지역 모두 두 과일의 개당 생산 비용이 각각 $10\\%$씩 증가하였지만 판매 가격은 작년과 같게 하려고 한다. 두 지역 $P$, $Q$의 2025년 이익금을 행렬로 나타낸 것은? (단, 판매 가격은 생산 비용과 이익금을 합한 것으로 한다.) [4.5점]",
     choices: [
     "$\\begin{pmatrix} 400 & 300 \\\\ 500 & 370 \\end{pmatrix}$",
     "$\\begin{pmatrix} 405 & 300 \\\\ 500 & 375 \\end{pmatrix}$",
@@ -514,7 +514,7 @@ window.questionBank = [
     "$\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 새로운 이익금 = 기존 이익금 - (생산 비용의 $10\\%$)임을 이용한다.\\n판매 가격이 일정하므로 생산 비용이 $10\\%$ 늘어난 만큼 이익금은 줄어든다.\\nP지역 사과 이익금: $700 - 2800 \\times 0.1 = 420$\\nP지역 배 이익금: $900 - 4000 \\times 0.1 = 500$\\nQ지역 사과 이익금: $600 - 3000 \\times 0.1 = 300$\\nQ지역 배 이익금: $800 - 4100 \\times 0.1 = 390$\\n행렬로 나타내면 $\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$이다.\\n따라서 정답은 ⑤이다."
+    solution: "[키포인트] 새로운 이익금 = 기존 이익금 - (생산 비용의 $10\\%$)임을 이용한다.\\n판매 가격이 일정하므로 생산 비용이 $10\\%$ 늘어난 만큼 이익금은 줄어든다.\\n$P$지역 사과 이익금: $700-2800\\times0.1=420$\\n$P$지역 배 이익금: $900-4000\\times0.1=500$\\n$Q$지역 사과 이익금: $600-3000\\times0.1=300$\\n$Q$지역 배 이익금: $800-4100\\times0.1=390$\\n행은 사과와 배, 열은 $P$지역과 $Q$지역의 순서이므로 이익금 행렬은 $\\begin{pmatrix}420&300\\\\500&390\\end{pmatrix}$이다.\\n따라서 정답은 ⑤이다."
   },
   {
     id: 18,
@@ -538,7 +538,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "연립방정식 $\\begin{cases} x+y = 2a \\\\ x^2+y^2 = -2a+12 \\end{cases}$의 해가 모두 실수일 때, $p \\le a^2 + 2a - 1 \\le q$이다. $q-p$의 최솟값을 구하시오.",
+    content: "$x, y$에 대한 연립방정식 $\\begin{cases} x+y = 2a \\\\ x^2+y^2 = -2a+12 \\end{cases}$의 해 중에서 $x$와 $y$의 값이 모두 실수인 해가 존재할 때, $p \\le a^2 + 2a - 1 \\le q$이다. $q-p$의 최솟값을 구하시오. (단, $a$는 실수) [부분 점수 없음, 5점]",
     choices: [],
     answer: "$9$",
     solution: "[키포인트] 실수가 존재할 조건을 판별식을 통해 구한다.\\n$y=2a-x$를 대입하면 $x^2+(2a-x)^2 = -2a+12 \\rightarrow x^2-2ax+2a^2+a-6=0$\\n$D/4 = a^2 - (2a^2+a-6) \\ge 0 \\rightarrow a^2+a-6 \\le 0 \\rightarrow -3 \\le a \\le 2$\\n$f(a) = a^2+2a-1 = (a+1)^2-2$에서\\n$a=-1$일 때 최솟값 $p=-2$, $a=2$일 때 최댓값 $q=7$이다.\\n$\\therefore q-p = 7 - (-2) = 9$\\n따라서 구하는 값은 $9$이다."
@@ -565,7 +565,7 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "$0$부터 $9$까지 카드 $10$장 중 $3$장을 택하여 만든 세 자리 자연수 중 각 자리 수의 합이 $9$의 배수인 것의 개수를 구하시오.",
+    content: "$0$부터 $9$까지의 정수가 각각 하나씩 적힌 $10$장의 카드 중에서 $3$장의 카드를 택하여 다음 조건을 만족시키도록 세 자리 자연수를 만들려고 한다.<br>\n<div style=\"width:100%; margin:8px 0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:center; line-height:1.45;\">\n각 자리의 수의 합이 $9$의 배수이다.\n</div>\n조건을 만족시키는 세 자리 자연수의 개수를 구하시오. [부분 점수 없음, 5점]",
     choices: [],
     answer: "$76$",
     solution: "[키포인트] 세 숫자의 합이 $9$의 배수가 되도록 먼저 조합을 구한 뒤, 각 조합으로 만들 수 있는 세 자리 자연수의 개수를 센다.\\n세 숫자의 합은 최대 $24$이므로 가능한 값은 $9$ 또는 $18$이다.\\n합이 $9$인 조합은 $\\{0,1,8\\}, \\{0,2,7\\}, \\{0,3,6\\}, \\{0,4,5\\}, \\{1,2,6\\}, \\{1,3,5\\}, \\{2,3,4\\}$이다.\\n이 중 $0$이 포함된 네 조합은 각각 $4$개씩, $0$이 없는 세 조합은 각각 $6$개씩의 세 자리 자연수를 만든다.\\n따라서 합이 $9$인 경우의 수는 $4 \\times 4 + 3 \\times 6 = 34$이다.\\n합이 $18$인 조합은 $\\{1,8,9\\}, \\{2,7,9\\}, \\{3,6,9\\}, \\{3,7,8\\}, \\{4,5,9\\}, \\{4,6,8\\}, \\{5,6,7\\}$의 일곱 개이고, 모두 $0$이 없으므로 각각 $6$개씩이다.\\n따라서 합이 $18$인 경우의 수는 $7 \\times 6 = 42$이다.\\n전체 경우의 수는 $34+42=76$이다.\\n따라서 정답은 $76$이다."
@@ -589,10 +589,10 @@ window.questionBank = [
     "계산"
   ],
     wide: false,
-    content: "행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$ 성분 합이 $4$가 되는 $x$를 $a$, $A^3 = \\frac{3}{4}A - \\frac{1}{4}I$가 되는 $x$를 $b$라 할 때 $a+b$를 구하시오.",
+    content: "$2 \\times 2$ 행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$의 모든 성분의 합이 $4$가 되게 하는 실수 $x$의 값을 $a$, 등식 $A^3 = \\frac{3}{4}A - \\frac{1}{4}I$가 성립하게 하는 실수 $x$의 값을 $b$라 할 때, $a+b$의 값을 구하시오. (단, $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [부분 점수 없음, 5점]",
     choices: [],
     answer: "$\\frac{5}{2}$",
-    solution: "[키포인트] 거듭제곱 행렬의 성분을 직접 계산한다.\\n$A^2 = \\begin{pmatrix} x^2 & -x+1 \\\\ 0 & 1 \\end{pmatrix}$, $A^3 = \\begin{pmatrix} x^3 & -x^2+x-1 \\\\ 0 & -1 \\end{pmatrix}$이다.\\n1) 성분의 합이 $4$이므로\\n$x^3-x^2+x-1+0-1=4 \\Rightarrow x^3-x^2+x-6=0$\\n$x=2$를 대입하면 성립하므로 $a=2$이다.\\n2) $A^3 = \\frac{3}{4}A - \\frac{1}{4}I$에서 $(1,2)$성분을 비교하면\\n$-x^2+x-1=-\\frac{3}{4}$\\n$x^2-x+\\frac{1}{4}=0 \\Rightarrow \\left(x-\\frac{1}{2}\\right)^2=0$\\n따라서 $b=\\frac{1}{2}$이다.\\n$\\therefore a+b=2+\\frac{1}{2}=\\frac{5}{2}$\\n따라서 정답은 $\\frac{5}{2}$이다."
+    solution: "[키포인트] 거듭제곱 행렬의 성분을 직접 계산한다.\\n$A^2=\\begin{pmatrix}x^2&-x+1\\\\0&1\\end{pmatrix}$, $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이다.\\n1) $A^3$의 모든 성분의 합이 $4$이므로 $x^3-x^2+x-2=4$, 즉 $x^3-x^2+x-6=0$이다.\\n$x^3-x^2+x-6=(x-2)(x^2+x+3)$이고 $x^2+x+3$은 판별식이 $-11$이므로 실근이 없다. 따라서 $a=2$이다.\\n2) $A^3=\\frac34A-\\frac14I$에서 $(1,2)$성분을 비교하면 $-x^2+x-1=-\\frac34$이다.\\n$x^2-x+\\frac14=0$, 즉 $\\left(x-\\frac12\\right)^2=0$이므로 $x=\\frac12$이다. 이 값을 대입하면 나머지 성분의 등식도 모두 성립하므로 $b=\\frac12$이다.\\n따라서 $a+b=2+\\frac12=\\frac52$이다."
   },
   {
     id: 21,
@@ -609,7 +609,7 @@ window.questionBank = [
     "서술형"
   ],
     wide: false,
-    content: "허수 $x$가 $x + \\frac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오.\\n(1) $x^3$의 값을 구하시오.\\n\n(2) $\\frac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하시오.",
+    content: "허수 $x$가 방정식 $x + \\frac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오. [부분 점수 있음, 6점]<br>\n(1) $x^3$의 값이 되는 실수를 구하는 풀이과정과 답을 서술하시오.<br>\n(2) $\\frac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하는 풀이과정과 답을 서술하시오.",
     choices: [],
     answer: "(1) $-1$, (2) $1$",
     solution: "[키포인트] $x^2-x+1=0$을 만들고 켤레복소수의 성질을 이용한다.\\n주어진 식에서 $x \\ne 0$이므로 양변에 $x$를 곱하면\\n$x^2-x+1=0$\\n이다.\\n(1) 양변에 $(x+1)$을 곱하면\\n$(x+1)(x^2-x+1)=x^3+1=0$\\n이므로 $x^3=-1$이다.\\n(2) $x^2=x-1$이므로\\n$\\frac{x^2}{x-1}=1$\\n또한 $x$는 허수근이므로 켤레복소수 $\\bar{x}$도 같은 방정식의 근이고, 두 근의 합은 $1$이므로\\n$x+\\bar{x}=1$\\n이다. 따라서\\n\\bar{x}(1-x)+x=\\bar{x}(x+\\bar{x}-x)+x=\\bar{x}^2+x$\\n한편 $\\bar{x}$도 $t^2-t+1=0$의 근이므로 $\\bar{x}^2=\\bar{x}-1$이다.\\n그러므로\\n\\bar{x}^2+x=(\\bar{x}-1)+x=(x+\\bar{x})-1=1-1=0$\\n이다.\\n따라서 전체 값은\\n$\\frac{x^2}{x-1}+\\bar{x}(1-x)+x=1+0=1$\\n이다.\\n따라서 정답은 (1) $-1$, (2) $1$이다."
@@ -629,10 +629,10 @@ window.questionBank = [
     "서술형"
   ],
     wide: false,
-    content: "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 \\\\ |x-2| \\le k \\end{cases}$의 정수 해 가 $3$개가 되도록 하는 $k$의 범위를 구하시오.",
+    content: "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 & \\cdots\\cdots\\cdots\\ (a) \\\\ |x-2| < k & \\cdots\\cdots\\cdots\\ (b) \\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 7점]<br>\n(1) 부등식 $(a)$의 해를 구하는 풀이과정과 답을 서술하시오.<br>\n(2) 부등식 $(b)$의 해를 구하는 풀이과정과 답을 서술하시오.<br>\n(3) 연립부등식을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 $k$의 범위를 구하는 풀이과정과 답을 서술하시오.",
     choices: [],
-    answer: "$1 \\le k \\lt 2$",
-    solution: "[키포인트] 각 부등식의 해를 구한 뒤 공통 범위에서 정수의 개수를 센다.\\n첫 번째 부등식은\\n$(x-3)(x+2) \\le 0 \\Rightarrow -2 \\le x \\le 3$\\n이다.\\n두 번째 부등식은\\n$-k \\le x-2 \\le k \\Rightarrow 2-k \\le x \\le 2+k$\\n이다.\\n연립부등식의 정수해가 $3$개가 되려면 공통 범위의 정수해가 정확히 $1,2,3$이 되어야 한다.\\n이를 위해 오른쪽 끝은 $3$을 포함하고 $4$는 포함하지 않아야 하므로\\n$2+k \\ge 3$, $2+k < 4$\\n즉\\n$1 \\le k < 2$\\n이다. 이때 왼쪽 끝 $2-k$는 $1$ 이하가 되어 $1,2,3$을 모두 포함한다.\\n따라서 정답은 $1 \\le k \\lt 2$이다."
+    answer: "(1) $-2 \\le x \\le 3$, (2) $k>0$일 때 $2-k<x<2+k$이고 $k\\le0$일 때 해가 없다, (3) $1<k\\le2$",
+    solution: "[키포인트] 각 부등식의 해를 구한 뒤 공통 범위에서 정수의 개수를 센다.\\n(1) $x^2-x-6\\le0$에서 $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\\n(2) $k>0$이면 $|x-2|<k$에서 $-k<x-2<k$이므로 $2-k<x<2+k$이다. $k\\le0$이면 절댓값은 항상 $0$ 이상이므로 부등식을 만족하는 실수 $x$는 없다.\\n(3) 정수해가 $3$개 존재하려면 반드시 $k>0$이다. 첫 번째 부등식의 정수해 $-2,-1,0,1,2,3$ 중 $|x-2|<k$를 만족하는 정수가 정확히 $3$개여야 한다. $x=1,2,3$은 포함하고 $x=0$은 포함하지 않아야 하므로 $1<k\\le2$이다.\\n따라서 정답은 (1) $-2\\le x\\le3$, (2) $k>0$일 때 $2-k<x<2+k$이고 $k\\le0$일 때 해가 없다, (3) $1<k\\le2$이다."
   },
   {
     id: 23,
@@ -650,10 +650,10 @@ window.questionBank = [
     "도형"
   ],
     wide: false,
-    content: "그림의 $6$개 영역을 $5$가지 색으로 칠하는 방법의 수를 구하시오. (단, 이웃하는 영역은 다른 색을 칠한다.)",
+    content: "다음 그림의 $6$개의 영역을 서로 다른 $5$가지 색으로 칠하려고 한다. 같은 색을 중복하여 사용할 수 있으나 이웃하는 영역은 서로 다른 색을 칠할 때, 칠하는 방법의 수를 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점]",
     choices: [],
-    answer: "$480$",
-    solution: "[키포인트] 위쪽과 아래쪽 영역의 색을 먼저 정한 뒤, 가운데 네 영역을 차례로 센다.\\n위쪽 영역 $A$는 $5$가지 색 중 하나로 칠할 수 있다.\\n아래쪽 영역 $F$는 $A$와 이웃하므로 $4$가지이다.\\n가운데 네 영역 $B, C, D, E$는 각각 $A$, $F$와 이웃하므로 $A$, $F$의 색을 제외한 $3$가지 색만 사용할 수 있다.\\n이때 $B, C, D, E$는 가로로 서로 이웃한 일렬 구조이므로\\n$B$는 $3$가지, $C$는 $B$와 달라야 하므로 $2$가지, $D$는 $C$와 달라야 하므로 $2$가지, $E$는 $D$와 달라야 하므로 $2$가지이다.\\n따라서 전체 경우의 수는\\n$5 \\times 4 \\times 3 \\times 2 \\times 2 \\times 2 = 480$\\n이다.\\n따라서 정답은 $480$이다.",
+    answer: "$1020$",
+    solution: "[키포인트] 영역 $A$와 $F$에 같은 색을 칠하는 경우와 서로 다른 색을 칠하는 경우로 나눈다.\\n(i) $A$와 $F$의 색이 같은 경우: 공통 색을 정하는 방법은 $5$가지이다. $B,C,D,E$에는 그 색을 제외한 $4$가지 색을 사용할 수 있고, 이 네 영역은 차례로 이웃하므로 경우의 수는 $4\\times3^3$이다. 따라서 $5\\times4\\times3^3=540$가지이다.\\n(ii) $A$와 $F$의 색이 다른 경우: 두 색을 정하는 방법은 $5\\times4$가지이다. $B,C,D,E$에는 두 색을 제외한 $3$가지 색을 사용할 수 있고, 차례로 이웃하므로 경우의 수는 $3\\times2^3$이다. 따라서 $5\\times4\\times3\\times2^3=480$가지이다.\\n전체 경우의 수는 $540+480=1020$이다.\\n따라서 정답은 $1020$이다.",
     image: "assets/images/25_순천고_1학기_기말_고1_기출/q23.png"
   }
 ];
