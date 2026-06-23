@@ -387,7 +387,7 @@ window.questionBank = [
     "상난도"
   ],
     wide: false,
-    content: "두 $2 \\times 2$ 행렬 $A, B$에 대하여 다음 <보기>에서 항상 옳은 것만을 있는 대로 고른 것은? (단, $O=\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}, I=\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$이다.)",
+    content: "두 $2 \\times 2$ 행렬 $A, B$에 대하여 다음 &lt;보기&gt;에서 항상 옳은 것만을 있는 대로 고른 것은? (단, $O=\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}, I=\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$이다.) [4.2점]<br>\n<div style=\"width:100%; margin:8px 0 0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n<div style=\"text-align:center;\">&lt;보기&gt;</div>\nㄱ. $AB=O$이면 $A=O$ 또는 $B=O$이다.<br>\nㄴ. $AB=BA$이면 $A=I$ 또는 $B=I$이다.<br>\nㄷ. $AB=A$, $BA=B$이면 $A^2=A$이다.\n</div>",
     choices: [
     "ㄱ",
     "ㄷ",
@@ -475,7 +475,7 @@ window.questionBank = [
     "도형"
   ],
     wide: false,
-    content: "두 이차함수 $y=f(x), y=g(x)$의 그래프는 다음과 같다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+    content: "두 이차함수 $y=f(x), y=g(x)$의 그래프는 다음과 같다.<br>\n<div style=\"text-align:center; margin:8px 0;\">\n<img src=\"assets/images/25_순천고_1학기_기말_고1_기출/q16.png\" alt=\"두 이차함수의 그래프\" style=\"display:block; width:100%; max-width:410px; height:auto; margin:0 auto;\">\n</div>\n&lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.5점]<br>\n<div style=\"width:100%; margin:8px 0 0; padding:6px 10px; border:1px solid #000; box-sizing:border-box; text-align:left; line-height:1.45;\">\n<div style=\"text-align:center;\">&lt;보기&gt;</div>\nㄱ. $f(x)-g(x)>0$의 해는 $x<b$ 또는 $x>d$이다.<br>\nㄴ. $f(x)g(x)=0$의 해는 $x=a$ 또는 $x=c$ 또는 $x=d$이다.<br>\nㄷ. $f(x)g(x)<0$의 해는 $x<a$ 또는 $x>c$이다.\n</div>",
     choices: [
     "ㄱ",
     "ㄴ",
@@ -484,9 +484,7 @@ window.questionBank = [
     "ㄱ, ㄴ, ㄷ"
   ],
     answer: "⑤",
-    solution: "[키포인트] 그래프의 상하 관계와 절편을 분석한다.\\nㄱ. $f(x) > g(x)$인 구간은 교점 $b$와 $d$를 기준으로 바깥쪽이므로 $x < b$ 또는 $x > d$이다. (참)\\nㄴ. $f(x)g(x)=0$의 해는 $f(x)=0$ 또는 $g(x)=0$의 실근이므로 그림에서 $a, c, d$가 근이 된다. (참)\\nㄷ. $f(x)g(x) < 0$은 두 함수의 부호가 서로 다른 구간이다. $x < a$ 또는 $x > c$ 구간에서 성립한다. (참)\\n따라서 정답은 ⑤이다.",
-    image: "assets/images/25_순천고_1학기_기말_고1_기출/q16.png",
-    imageSize: "large"
+    solution: "[키포인트] 그래프의 상하 관계와 절편을 분석한다.\\nㄱ. $f(x) > g(x)$인 구간은 교점 $b$와 $d$를 기준으로 바깥쪽이므로 $x < b$ 또는 $x > d$이다. (참)\\nㄴ. $f(x)g(x)=0$의 해는 $f(x)=0$ 또는 $g(x)=0$의 실근이므로 그림에서 $a, c, d$가 근이 된다. (참)\\nㄷ. $f(x)g(x) < 0$은 두 함수의 부호가 서로 다른 구간이다. $x < a$ 또는 $x > c$ 구간에서 성립한다. (참)\\n따라서 정답은 ⑤이다."
   },
   {
     id: 17,

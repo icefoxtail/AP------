@@ -7,10 +7,14 @@
 /**
  * 학생의 최근 성적 평균 계산
  */
+function reportCenterGetSortedStudentExamSessions(studentId) {
+    return (state.db.exam_sessions || [])
+        .filter(s => String(s.student_id) === String(studentId))
+        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
+}
+
 function getRecentAverage(studentId, limit = 3) {
-    const scores = (state.db.exam_sessions || [])
-        .filter(s => s.student_id === studentId)
-        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))
+    const scores = reportCenterGetSortedStudentExamSessions(studentId)
         .slice(0, limit)
         .map(s => Number(s.score))
         .filter(v => Number.isFinite(v));
@@ -249,14 +253,10 @@ function buildExamSummary(ctx) {
     const avgText = ctx.avg !== null ? ` 최근 3회 평균은 ${ctx.avg}점입니다.` : '';
 
     if (!ctx.wrongIds.length) {
-        return `최근 평가인 「${exam.exam_title}」에서 ${score}점을 기록했습니다.${avgText} 모든 문항을 빠짐없이 맞혀 이번 단원 내용을 탄탄하게 소화하고 있습니다.`;
+        return `최근 평가인 「${exam.exam_title}」에서 ${score}점을 기록했습니다.${avgText} 모든 문항을 정확하게 해결했습니다.`;
     }
 
-    const wrongStr = ctx.wrongIds.length === 1
-        ? `${ctx.wrongIds[0]}번 문항`
-        : `${ctx.wrongIds.join(', ')}번 문항`;
-
-    return `최근 평가인 「${exam.exam_title}」에서 ${score}점을 기록했습니다.${avgText} ${wrongStr}은 다음 수업에서 풀이 흐름을 함께 확인하고 유사 문제 풀이로 안정적으로 보완하겠습니다.`;
+    return `최근 평가인 「${exam.exam_title}」에서 ${score}점을 기록했습니다.${avgText} 오답 ${ctx.wrongIds.length}개가 확인되었습니다.`;
 }
 
 function buildNextPoint(ctx) {
@@ -268,8 +268,8 @@ function buildNextPoint(ctx) {
     }
 
     const wrongStr = ctx.wrongIds.length === 1
-        ? `${ctx.wrongIds[0]}번 문항 풀이 흐름 확인`
-        : `${ctx.wrongIds.join(', ')}번 문항 풀이 흐름 확인`;
+        ? `${ctx.wrongIds[0]}번 문항을 다시 풀고 유사 문제로 연결하는 것`
+        : `${ctx.wrongIds.join(', ')}번 문항을 다시 풀고 유사 문제로 연결하는 것`;
 
     if (ctx.progressText) {
         return `${wrongStr} 및 ${ctx.progressText} 흐름을 이어가는 것`;
@@ -1127,6 +1127,29 @@ function reportCenterEscape(value) {
 
 function reportCenterAttr(value) {
     return reportCenterEscape(String(value ?? ''));
+}
+
+function reportCenterNormalizeSentenceForCompare(value) {
+    return String(value || '')
+        .normalize('NFKC')
+        .toLowerCase()
+        .replace(/[“”"'‘’「」『』()[\]{}<>·ㆍ,，.。!?！？:：;；/\\|~`…—–_-]/g, '')
+        .replace(/(은|는|이|가|을|를|와|과|도|만|에서|으로|로|의|에|에게|께|부터|까지|처럼|보다|마다|이나|나|이며|이고|하고|하며)(?=\s|$)/g, '')
+        .replace(/\s+/g, '')
+        .replace(/(은|는|이|가|을|를|와|과|도|만|에서|으로|로|의|에|에게|께|부터|까지|처럼|보다|마다|이나|나|이며|이고|하고|하며|합니다|했습니다|됩니다|입니다|겠습니다)+$/g, '');
+}
+
+function reportCenterIsDuplicateText(a, b) {
+    const left = reportCenterNormalizeSentenceForCompare(a);
+    const right = reportCenterNormalizeSentenceForCompare(b);
+    if (!left || !right) return false;
+    return left === right || (Math.min(left.length, right.length) >= 18 && (left.includes(right) || right.includes(left)));
+}
+
+function reportCenterPickNonDuplicateText(primary, fallback, previousTexts = []) {
+    const candidates = [primary, fallback].map(value => String(value || '').trim()).filter(Boolean);
+    const previous = (Array.isArray(previousTexts) ? previousTexts : [previousTexts]).filter(Boolean);
+    return candidates.find(candidate => !previous.some(text => reportCenterIsDuplicateText(candidate, text))) || '';
 }
 
 function reportCenterGetStudentClass(studentId) {
@@ -2088,10 +2111,11 @@ function reportCenterBuildExamAiPayload(studentId, sessionId) {
     const archiveQuestionDetails = session ? reportCenterGetCachedArchiveDetails(session.id) : null;
     const teacherMemo = reportCenterGetExamReportTeacherMemo();
     const baseReportDraft = reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo);
+    const trendData = reportCenterGetExamTrendData(studentId, { limit: 5 });
     return {
         reportType: 'exam_revision',
         revisionMode: true,
-        instruction: '기존 기본 리포트를 처음부터 갈아엎지 말고, 중복을 줄이고 문장을 더 자연스럽고 신뢰감 있게 다듬어라.',
+        instruction: '기존 기본 리포트를 처음부터 갈아엎지 말고, 중복을 줄이고 문장을 더 자연스럽고 신뢰감 있게 다듬어라. 최근 여러 시험의 점수 흐름을 먼저 해석하고, 최종 평가의 문항 분석은 마지막에 연결하라.',
         student: student ? {
             id: student.id,
             name: student.name,
@@ -2120,6 +2144,10 @@ function reportCenterBuildExamAiPayload(studentId, sessionId) {
         },
         questionAnalysis: stats.rows,
         wrongAnalysis: stats.wrongRows,
+        selectedSessions: trendData.selectedSessions,
+        examTrend: trendData.trend,
+        weaknessTrend: trendData.weaknessTrend,
+        finalSession: trendData.finalSession,
         baseReportDraft,
         archiveQuestionDetails: archiveQuestionDetails ? {
             status: archiveQuestionDetails.status,
@@ -2476,9 +2504,7 @@ function reportCenterGetTargetProgressForReport(studentId) {
 
 function reportCenterGetExamReportData(studentId, sessionId = '') {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
-    const sessions = (state.db.exam_sessions || [])
-        .filter(e => String(e.student_id) === String(studentId))
-        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
+    const sessions = reportCenterGetSortedStudentExamSessions(studentId);
     const session = sessionId
         ? sessions.find(e => String(e.id) === String(sessionId))
         : sessions[0];
@@ -2579,6 +2605,11 @@ function reportCenterNormalizeAiAnalysis(raw = {}) {
         riskLevel: ['stable', 'watch', 'focus'].includes(risk) ? risk : 'stable',
         mainWeaknesses: safeArray(raw.mainWeaknesses),
         nextActions: safeArray(raw.nextActions),
+        trendSummary: safeString(raw.trendSummary),
+        trendDiagnosis: safeString(raw.trendDiagnosis),
+        finalExamComment: safeString(raw.finalExamComment),
+        recurringWeaknesses: safeArray(raw.recurringWeaknesses),
+        longitudinalPlan: safeArray(raw.longitudinalPlan),
         source: safeString(raw.source || raw._source || ''),
         generatedAt: safeString(raw.generatedAt || new Date().toISOString())
     };
@@ -2850,17 +2881,17 @@ function reportCenterBuildShortReportSummaryItems(data, aiAnalysis = null) {
     const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
     const excellentRows = reportCenterSelectExcellentRows(stats, 3);
     const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
-    const rawAiSummary = reportCenterFirstSentence(aiAnalysis?.summary, 180);
+    const rawAiSummary = reportCenterFirstSentence(aiAnalysis?.finalExamComment || aiAnalysis?.summary, 180);
     const rawAiWrong = reportCenterFirstSentence(aiAnalysis?.wrongAnalysis, 180);
     const rawAiPlan = reportCenterFirstSentence(aiAnalysis?.nextPlan, 180);
     const priorityText = reportCenterShortQuestionList(priorityRows, 5);
 
     const position = rawAiSummary || (wrongRows.length
-        ? '이번 평가에서 확인된 성취와 보완 포인트를 함께 정리했습니다. 점수보다 풀이 흐름과 다음 수업에서 바로 잡을 순서를 중심으로 보겠습니다.'
-        : '이번 평가의 안정적인 풀이 흐름을 바탕으로 다음 확장 방향을 정리했습니다. 현재 성취를 유지하면서 심화 응용으로 이어가겠습니다.');
+        ? `이번 평가에서는 오답 ${wrongRows.length}개가 확인되었습니다. 동일 평가 평균과 비교한 위치는 상단 카드에 정리했습니다.`
+        : '이번 평가에서는 전 문항을 정확하게 해결했습니다. 동일 평가 평균과 비교한 위치는 상단 카드에 정리했습니다.');
     const focus = rawAiWrong || (wrongRows.length
-        ? `${priorityText || '우선 확인 문항'}을 중심으로 풀이 흐름을 확인합니다. 문항별 난도와 단원 흐름을 함께 보며 우선순위를 잡겠습니다.`
-        : `${reportCenterShortQuestionList(excellentRows, 3) || '난도 있는 문항'}까지 해결한 흐름을 확인합니다. 정확도 유지와 심화 확장을 함께 준비하겠습니다.`);
+        ? `${priorityText || '우선 확인 문항'}과 반복 오답 단원을 보완 우선순위로 잡겠습니다.`
+        : `${reportCenterShortQuestionList(excellentRows, 3) || '난도 있는 문항'}까지 안정적으로 해결해 뚜렷한 반복 약점은 확인되지 않았습니다.`);
     const plan = rawAiPlan || (wrongRows.length
         ? `${unitNames.length ? `${unitNames.join(', ')} 단원의 ` : ''}조건 확인과 풀이 순서를 다시 잡고 유사 문제로 연결하겠습니다.`
         : '현재 정확도를 유지하면서 심화 응용과 다음 단원으로 연결하겠습니다.');
@@ -2884,7 +2915,7 @@ function reportCenterSoftenDiagnosisText(value) {
 }
 
 function reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo = '', aiAnalysis = null) {
-    const aiDiagnosis = reportCenterSoftenDiagnosisText(aiAnalysis?.diagnosis);
+    const aiDiagnosis = reportCenterSoftenDiagnosisText(aiAnalysis?.trendDiagnosis || aiAnalysis?.diagnosis);
     if (aiDiagnosis) {
         const paragraphs = String(aiDiagnosis)
             .split(/\n{2,}/)
@@ -2928,8 +2959,8 @@ function reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo = '', aiA
                     ? '난도가 있었던 문항에서 조건을 해석하고 필요한 개념을 연결하는 과정이 확인 포인트로 보입니다'
                     : '풀이 과정의 세부 순서를 조금 더 정리하면 안정화할 수 있는 부분이 보였습니다';
         const unitText = unitNames.length ? `${unitNames.join(', ')} 단원에서 ` : '';
-        parts.push(`${unitText}${typeText}. 다음 수업에서는 바로 정답을 맞히는 연습보다 문제 조건을 표시하고, 필요한 개념을 고른 뒤 풀이 순서를 세우는 과정을 먼저 확인하겠습니다.`);
-        parts.push('이 과정을 차근차근 잡아가면 같은 유형의 유사 문제에서 흔들림을 줄일 수 있고, 이후 난도가 올라간 문항에서도 스스로 풀이 흐름을 점검하는 힘을 기를 수 있습니다.');
+        parts.push(`${unitText}${typeText}. 문항별 분석표에서는 이 판단의 근거가 된 난도와 정답률을 확인할 수 있습니다.`);
+        parts.push('반복해서 나타난 약점과 최종 평가에서 새로 확인된 약점을 나누어 다음 수업의 우선순위를 정하겠습니다.');
     }
 
     if (teacherMemo) {
@@ -2944,7 +2975,9 @@ function reportCenterBuildNextPlanItems(data, aiAnalysis = null) {
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
     const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
     const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
-    const aiItems = Array.isArray(aiAnalysis?.nextActions) ? aiAnalysis.nextActions : [];
+    const aiItems = Array.isArray(aiAnalysis?.longitudinalPlan) && aiAnalysis.longitudinalPlan.length
+        ? aiAnalysis.longitudinalPlan
+        : (Array.isArray(aiAnalysis?.nextActions) ? aiAnalysis.nextActions : []);
     const splitAiPlan = aiAnalysis?.nextPlan
         ? (reportCenterStripHtml(aiAnalysis.nextPlan).match(/[^.!?。！？]+[.!?。！？]?/g) || []).map(s => s.trim()).filter(Boolean)
         : [];
@@ -3082,6 +3115,122 @@ function reportCenterBuildCurrentPositionText(data, correctRate, wrongCount) {
     return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 이번 리포트에서는 점수뿐 아니라 문항별 정답률과 오답 흐름을 함께 보며 다음 수업 보완 방향을 정리했습니다.${wrongText}`;
 }
 
+function reportCenterBuildSingleExamSummaryText(data, wrongCount) {
+    const stats = data?.stats || {};
+    const rawScore = data?.session?.score;
+    const score = rawScore !== null && rawScore !== undefined ? Number(rawScore) : NaN;
+    const comparisons = [];
+    if (Number.isFinite(score) && stats.overallAvg !== null && stats.overallAvg !== undefined && Number.isFinite(Number(stats.overallAvg))) {
+        comparisons.push(`전체 평균보다 ${score >= Number(stats.overallAvg) ? '높은' : '낮은'} 위치`);
+    }
+    if (Number.isFinite(score) && stats.classAvg !== null && stats.classAvg !== undefined && Number.isFinite(Number(stats.classAvg))) {
+        comparisons.push(`${stats.className || '소속 반'} 평균보다 ${score >= Number(stats.classAvg) ? '높은' : '낮은'} 위치`);
+    }
+    const result = comparisons.length ? comparisons.join('이며, ') : '동일 평가 비교 자료는 아직 충분하지 않으며,';
+    return Number(wrongCount || 0) > 0
+        ? `이번 한 회 결과는 ${result} 오답 ${wrongCount}개가 확인되었습니다.`
+        : `이번 한 회 결과는 ${result} 전 문항을 정확하게 해결했습니다.`;
+}
+
+function reportCenterBuildTrendSummaryText(trendData, aiAnalysis = null) {
+    const selected = trendData?.selectedSessions || [];
+    const trend = trendData?.trend || {};
+    if (!selected.length) return '평가 추이를 확인할 기록이 없습니다.';
+    if (selected.length === 1) return '첫 평가 기록입니다. 다음 평가부터 점수 변화와 평균 대비 흐름을 함께 확인합니다.';
+    const directionLabel = trend.direction === 'up'
+        ? '상승'
+        : trend.direction === 'down'
+            ? '하강'
+            : trend.direction === 'mixed'
+                ? '등락'
+                : '유지';
+    const fallback = `${selected.length}회 흐름은 ${directionLabel} 상태이며, 최고 ${trend.bestScore}점·최저 ${trend.worstScore}점입니다. ${trendData.finalEvaluation?.scorePosition || ''}`.trim();
+    return reportCenterTrimText(aiAnalysis?.trendSummary || fallback, 320);
+}
+
+function reportCenterBuildWeaknessSummaryText(trendData, data, aiAnalysis = null) {
+    const recurring = (trendData?.weaknessTrend || []).filter(item => item.appearedInSessions > 1 && !item.resolved);
+    const active = (trendData?.weaknessTrend || []).filter(item => !item.resolved);
+    const priorityRows = reportCenterSelectPriorityWrongRows(data?.stats?.wrongRows || [], 3);
+    const priorityText = reportCenterShortQuestionList(priorityRows, 3);
+    const fallback = recurring.length
+        ? `${recurring.slice(0, 2).map(item => item.unit).join(', ')} 단원이 여러 평가에서 반복되었습니다.${priorityText ? ` 최종 평가에서는 ${priorityText}을 우선 확인합니다.` : ''}`
+        : active.length
+            ? `${active.slice(0, 2).map(item => item.unit).join(', ')} 단원이 최종 평가의 우선 보완 영역입니다.${priorityText ? ` ${priorityText}부터 확인합니다.` : ''}`
+            : '반복해서 이어진 오답 단원은 확인되지 않았습니다. 최종 평가의 핵심 문항을 중심으로 강점을 유지합니다.';
+    const aiText = Array.isArray(aiAnalysis?.recurringWeaknesses) ? aiAnalysis.recurringWeaknesses.join(' ') : '';
+    return reportCenterTrimText(aiText || aiAnalysis?.wrongAnalysis || fallback, 320);
+}
+
+function reportCenterBuildTrendSvg(trend, selectedSessions = []) {
+    const rows = (selectedSessions || []).filter(row => Number.isFinite(Number(row.score)));
+    if (rows.length < 2) return '<div class="aprc-trend-empty">첫 평가 기록입니다.</div>';
+    const width = 680;
+    const height = 210;
+    const left = 46;
+    const right = 22;
+    const top = 24;
+    const bottom = 42;
+    const plotWidth = width - left - right;
+    const plotHeight = height - top - bottom;
+    const values = rows.flatMap(row => [row.score, row.overallAvg, row.classAvg]).filter(Number.isFinite);
+    const minValue = Math.max(0, Math.floor((Math.min(...values, 100) - 10) / 10) * 10);
+    const maxValue = Math.min(100, Math.ceil((Math.max(...values, 0) + 10) / 10) * 10);
+    const range = Math.max(10, maxValue - minValue);
+    const x = index => left + (rows.length === 1 ? plotWidth / 2 : (plotWidth * index) / (rows.length - 1));
+    const y = value => top + ((maxValue - Number(value)) / range) * plotHeight;
+    const points = key => rows
+        .map((row, index) => row[key] !== null && row[key] !== undefined && Number.isFinite(Number(row[key])) ? `${x(index).toFixed(1)},${y(row[key]).toFixed(1)}` : null);
+    const buildSegments = (key, color, dash = '') => {
+        const source = points(key);
+        const segments = [];
+        let current = [];
+        source.forEach(point => {
+            if (point) current.push(point);
+            else if (current.length) {
+                segments.push(current);
+                current = [];
+            }
+        });
+        if (current.length) segments.push(current);
+        return segments.filter(segment => segment.length > 1).map(segment =>
+            `<polyline points="${segment.join(' ')}" fill="none" stroke="${color}" stroke-width="2.2" ${dash ? `stroke-dasharray="${dash}"` : ''} stroke-linecap="round" stroke-linejoin="round"/>`
+        ).join('');
+    };
+    const gridValues = [minValue, Math.round((minValue + maxValue) / 2), maxValue];
+    const directionArrow = trend?.direction === 'up' ? '↗ 상승' : trend?.direction === 'down' ? '↘ 하강' : trend?.direction === 'mixed' ? '↕ 등락' : '→ 유지';
+    const hasOverall = rows.some(row => Number.isFinite(row.overallAvg));
+    const hasClass = rows.some(row => Number.isFinite(row.classAvg));
+    const legendItems = [
+        '<line x1="0" y1="0" x2="20" y2="0" stroke="#2563eb" stroke-width="2.5"/><text x="25" y="3" fill="#64748b" font-size="9">학생</text>',
+        hasOverall ? '<line x1="74" y1="0" x2="94" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/><text x="99" y="3" fill="#64748b" font-size="9">전체 평균</text>' : '',
+        hasClass ? '<line x1="160" y1="0" x2="180" y2="0" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 4"/><text x="185" y="3" fill="#64748b" font-size="9">반 평균</text>' : ''
+    ].join('');
+    return `
+        <svg class="aprc-trend-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="최근 평가 점수 추이">
+            ${gridValues.map(value => `<g><line x1="${left}" y1="${y(value)}" x2="${width - right}" y2="${y(value)}" stroke="#e2e8f0" stroke-width="1"/><text x="${left - 8}" y="${y(value) + 4}" text-anchor="end" fill="#64748b" font-size="12">${value}</text></g>`).join('')}
+            ${buildSegments('overallAvg', '#94a3b8', '7 5')}
+            ${buildSegments('classAvg', '#f59e0b', '3 4')}
+            ${buildSegments('score', '#2563eb')}
+            ${rows.map((row, index) => {
+                const isLast = index === rows.length - 1;
+                return `<g><circle cx="${x(index)}" cy="${y(row.score)}" r="${isLast ? 6 : 4}" fill="${isLast ? '#1d4ed8' : '#ffffff'}" stroke="#2563eb" stroke-width="2.5"/><text x="${x(index)}" y="${y(row.score) - 10}" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="800">${reportCenterEscape(row.score)}</text><text x="${x(index)}" y="${height - 16}" text-anchor="middle" fill="#64748b" font-size="11">${reportCenterEscape(String(row.date || `${index + 1}회`).slice(5).replace('-', '.'))}</text></g>`;
+            }).join('')}
+            <text x="${width - right}" y="14" text-anchor="end" fill="${trend?.direction === 'down' ? '#dc2626' : trend?.direction === 'up' ? '#16a34a' : '#475569'}" font-size="12" font-weight="800">${directionArrow}</text>
+            <g transform="translate(${left},${height - 2})">${legendItems}</g>
+        </svg>`;
+}
+
+function reportCenterBuildWeaknessTrendTable(weaknessTrend = []) {
+    const rows = weaknessTrend.slice(0, 6);
+    if (!rows.length) return '<div class="aprc-trend-empty">반복 약점 기록이 없습니다.</div>';
+    return `
+        <table class="aprc-weakness-table">
+            <thead><tr><th>단원</th><th>오답</th><th>등장 회차</th><th>최근 확인</th><th>상태</th></tr></thead>
+            <tbody>${rows.map(row => `<tr><td>${reportCenterEscape(row.unit || row.unitKey)}</td><td>${row.wrongCount}회</td><td>${row.appearedInSessions}회</td><td>${reportCenterEscape(row.lastSeenDate || '-')}</td><td><span class="aprc-weakness-status ${row.resolved ? 'is-resolved' : 'is-active'}">${row.resolved ? '해소 관찰' : '보완 중'}</span></td></tr>`).join('')}</tbody>
+        </table>`;
+}
+
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     const student = data.student;
@@ -3098,7 +3247,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const wrongCount = wrongRows.length;
     const qCount = Number(session.question_count || 0);
     const correctRate = qCount ? Math.round(((qCount - wrongCount) / qCount) * 100) : null;
-    const recentAvg = getRecentAverage(student.id, 3);
+    const trendData = reportCenterGetExamTrendData(student.id, { limit: options.trendLimit || 5 });
+    const recentAvg = trendData.trend.averageScore;
     const target = data.targetProgress;
     const targetText = target && target.targetScore !== null
         ? `${target.targetScore}점 목표${target.currentAverage !== null ? ` · 최근 평균 ${target.currentAverage}점` : ''}${target.remainScore !== undefined && target.currentAverage !== null ? ` · 목표까지 ${target.remainScore}점` : ''}`
@@ -3107,18 +3257,26 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const tableMeta = reportCenterGetPremiumTableMeta(data);
     const summaryItems = reportCenterBuildShortReportSummaryItems(data, aiAnalysis);
     const meaningItems = reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, aiAnalysis);
+    const singleExamSummaryText = reportCenterBuildSingleExamSummaryText(data, wrongCount);
+    const trendSummaryText = reportCenterBuildTrendSummaryText(trendData, aiAnalysis);
+    const weaknessSummaryText = reportCenterBuildWeaknessSummaryText(trendData, data, aiAnalysis);
     const coreItems = [
-        { title: '성취', text: reportCenterTrimText(aiAnalysis?.summary || meaningItems[0] || summaryItems[0]?.text || '', 360) },
-        { title: '보완', text: reportCenterTrimText(aiAnalysis?.wrongAnalysis || meaningItems[1] || summaryItems[1]?.text || '', 320) },
+        { title: '성취', text: reportCenterTrimText(singleExamSummaryText || summaryItems[0]?.text || '', 360) },
+        { title: '보완', text: reportCenterTrimText(weaknessSummaryText || summaryItems[1]?.text || '', 320) },
         { title: '계획', text: reportCenterTrimText(aiAnalysis?.nextPlan || meaningItems[2] || summaryItems[2]?.text || '', 320) }
     ];
-    const parentSummaryText = reportCenterTrimText(
-        aiAnalysis?.summary || meaningItems.slice(0, 2).filter(Boolean).join(' ') || summaryItems[0]?.text || '',
-        520
+    const parentSummaryText = reportCenterPickNonDuplicateText(
+        singleExamSummaryText,
+        summaryItems[0]?.text || '이번 한 회 결과를 동일 평가 기준과 함께 정리했습니다.',
+        []
     );
-    const currentPositionText = reportCenterBuildCurrentPositionText(data, correctRate, wrongCount);
+    coreItems[1].text = reportCenterPickNonDuplicateText(
+        coreItems[1].text,
+        summaryItems[1]?.text || '최종 평가의 우선 보완 문항을 확인합니다.',
+        [parentSummaryText]
+    );
     const diagnosisLines = reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo, aiAnalysis).slice(0, 2);
-    const nextPlanItems = reportCenterBuildNextPlanItems(data, aiAnalysis).slice(0, 4);
+    const nextPlanItems = (aiAnalysis ? reportCenterBuildNextPlanItems(data, aiAnalysis) : trendData.finalEvaluation.nextPlan).slice(0, 4);
     const parentMessageText = reportCenterEnsureParentOpening(aiAnalysis?.parentMessage || reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo)?.parentMessage || '');
     const archiveMessage = data.archiveDetails
         ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
@@ -3180,23 +3338,25 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             </section>
 
             <section class="aprc-pdf-section aprc-pdf-parent-summary aprc-pdf-panel">
-                <div class="aprc-section-title">이번 평가 핵심 요약</div>
+                <div class="aprc-section-title">이번 시험, 이렇게 봤습니다</div>
                 <p>${reportCenterEscape(parentSummaryText || '이번 평가의 핵심 결과와 다음 수업 관리 방향을 정리했습니다.')}</p>
             </section>
 
             <section class="aprc-pdf-section aprc-pdf-point-grid">
                 <article class="aprc-pdf-panel">
-                    <div class="aprc-section-title">현재 위치</div>
-                    <p>${reportCenterEscape(currentPositionText)}</p>
+                    <div class="aprc-section-title">지금 어디쯤 있나요</div>
+                    ${reportCenterBuildTrendSvg(trendData.trend, trendData.selectedSessions)}
+                    <p class="aprc-trend-summary">${reportCenterEscape(trendSummaryText)}</p>
                 </article>
                 <article class="aprc-pdf-panel">
-                    <div class="aprc-section-title">우선 확인할 점</div>
+                    <div class="aprc-section-title">다음에 꼭 짚어볼 부분</div>
                     <p>${reportCenterEscape(coreItems[1].text || '다음 수업에서 확인할 문항과 풀이 습관을 함께 점검하겠습니다.')}</p>
+                    ${reportCenterBuildWeaknessTrendTable(trendData.weaknessTrend)}
                 </article>
             </section>
 
             <section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">
-                <div class="aprc-section-title">다음 수업 보완 계획</div>
+                <div class="aprc-section-title">다음 수업에서 이렇게 합니다</div>
                 <ol class="aprc-plan-list">
                     ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
                 </ol>
@@ -3204,7 +3364,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             </section>
 
             <section class="aprc-pdf-section aprc-pdf-table-panel">
-                <div class="aprc-section-title">세부 문항 분석 자료</div>
+                <div class="aprc-section-title">문항별 분석</div>
                 <table class="aprc-pdf-table aprc-table">
                     <thead>
                         <tr>
@@ -3222,7 +3382,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             </section>
 
             <section class="aprc-pdf-section aprc-pdf-diagnosis aprc-pdf-panel">
-                <div class="aprc-section-title">종합 진단</div>
+                <div class="aprc-section-title">선생님 종합 의견</div>
                 ${diagnosisLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
             </section>
 
@@ -3235,51 +3395,61 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         </main>
     `;
 
-    html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText });
+    html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
     return html;
 }
 
 function reportCenterPolishCleanPdfDocumentHtml(html, context = {}) {
-    const { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText } = context;
+    const { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData } = context;
     const score = session?.score ?? '-';
     const safeTargetText = reportCenterEscape(targetText || '');
     const scorePositionText = data ? reportCenterEscape(reportCenterBuildScorePositionText(data)) : '';
+    const selectedCount = trendData?.selectedSessions?.length || 0;
+    const trend = trendData?.trend || {};
+    const directionLabel = selectedCount < 2
+        ? '첫 평가'
+        : trend.direction === 'up'
+            ? '상승'
+            : trend.direction === 'down'
+                ? '하강'
+                : trend.direction === 'mixed'
+                    ? '등락'
+                    : '유지';
+    const directionNote = selectedCount < 2
+        ? '다음 평가부터 추이를 비교합니다.'
+        : `첫 평가 대비 ${trend.scoreDelta >= 0 ? '+' : ''}${trend.scoreDelta}점`;
     const scoreGridHtml = `
             <section class="aprc-pdf-section aprc-pdf-score-grid">
                 <div class="aprc-pdf-score-card aprc-main-score">
                     <div class="aprc-card-label">이번 점수</div>
                     <div class="aprc-score-value">${reportCenterEscape(score)}<span>점</span></div>
-                    <div class="aprc-card-note">${scorePositionText}</div>
+                    <div class="aprc-card-note">${correctRate === null ? '' : `정답률 ${correctRate}% · 오답 ${wrongCount}개<br>`}${scorePositionText}</div>
                 </div>
                 <div class="aprc-pdf-score-card">
-                    <div class="aprc-card-label">맞힌 문항</div>
-                    <div class="aprc-metric-value">${qCount ? `${Math.max(0, qCount - wrongCount)} / ${qCount}` : '-'}</div>
-                    <div class="aprc-card-note">${correctRate === null ? '정답률 확인 전입니다.' : `정답률 ${correctRate}%`}</div>
-                </div>
-                <div class="aprc-pdf-score-card">
-                    <div class="aprc-card-label">전체 평균</div>
-                    <div class="aprc-metric-value">${stats?.overallAvg == null ? '-' : `${stats.overallAvg}점`}</div>
-                    <div class="aprc-card-note">전체 ${stats?.totalSessions || 0}명 기준</div>
-                </div>
-                <div class="aprc-pdf-score-card">
-                    <div class="aprc-card-label">우리 반 평균</div>
-                    <div class="aprc-metric-value">${stats?.classAvg == null ? '-' : `${stats.classAvg}점`}</div>
-                    <div class="aprc-card-note">반 ${stats?.classSessions || 0}명 기준</div>
-                </div>
-                <div class="aprc-pdf-score-card">
-                    <div class="aprc-card-label">최근 3회 평균</div>
+                    <div class="aprc-card-label">최근 ${selectedCount || '-'}회 평균</div>
                     <div class="aprc-metric-value">${recentAvg === null ? '-' : `${recentAvg}점`}</div>
                     <div class="aprc-card-note">${safeTargetText}</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">첫 평가 → 최근</div>
+                    <div class="aprc-metric-value">${trend.firstScore == null ? '-' : `${trend.firstScore} → ${trend.latestScore}`}</div>
+                    <div class="aprc-card-note">${selectedCount < 2 ? '첫 평가 기록입니다.' : `${selectedCount}회 흐름`}</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">최고 · 최저</div>
+                    <div class="aprc-metric-value">${trend.bestScore == null ? '-' : `${trend.bestScore} · ${trend.worstScore}`}</div>
+                    <div class="aprc-card-note">선택된 최근 평가 기준</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">상승 · 하강 상태</div>
+                    <div class="aprc-metric-value">${directionLabel}</div>
+                    <div class="aprc-card-note">${directionNote}</div>
                 </div>
             </section>`;
 
     return String(html || '')
         .replace(/<section class="aprc-pdf-section aprc-pdf-score-grid">[\s\S]*?<\/section>/, scoreGridHtml)
-        .replace(/(<section class="aprc-pdf-section aprc-pdf-parent-summary aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1이번 시험, 이렇게 봤습니다$2')
-        .replace(/(<article class="aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)(\s*<p>[\s\S]*?<\/p>\s*<\/article>\s*<article class="aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1지금 어디쯤 있나요$2$3다음에 꼭 짚어볼 부분$4')
-        .replace(/(<section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1다음 수업에서 이렇게 합니다$2')
-        .replace(/(<section class="aprc-pdf-section aprc-pdf-table-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1문항별 분석$2')
-        .replace(/(<section class="aprc-pdf-section aprc-pdf-diagnosis aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1선생님 종합 의견$2');
+        ;
 }
 
 function reportCenterPremiumReportStyle() {
@@ -3370,7 +3540,17 @@ function reportCenterPremiumReportStyle() {
             .aprc-pdf-score-grid { display:grid; grid-template-columns:1.25fr repeat(4,minmax(0,1fr)); gap:3mm; }
             .aprc-pdf-score-card { min-width:0; padding:4.2mm; border:1px solid #e5e7eb; border-radius:12px; background:#fff; }
             .aprc-pdf-core-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4mm; }
-            .aprc-pdf-point-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4mm; }
+            .aprc-pdf-point-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:4mm; }
+            .aprc-trend-svg { display:block; width:100%; height:auto; margin:1mm 0 2mm; }
+            .aprc-trend-summary { margin-top:2mm !important; }
+            .aprc-trend-empty { padding:8mm 3mm; border:1px dashed #cbd5e1; border-radius:10px; background:#f8fafc; color:#64748b; text-align:center; font-size:11px; font-weight:800; }
+            .aprc-weakness-table { width:100%; margin-top:3mm; border-collapse:collapse; table-layout:fixed; font-size:10px; }
+            .aprc-weakness-table th, .aprc-weakness-table td { padding:5px 4px; border-bottom:1px solid #e5e7eb; color:#475569; text-align:left; overflow-wrap:break-word; }
+            .aprc-weakness-table th { background:#f8fafc; color:#64748b; font-weight:850; }
+            .aprc-weakness-table th:first-child, .aprc-weakness-table td:first-child { width:40%; }
+            .aprc-weakness-status { display:inline-block; padding:2px 5px; border-radius:999px; white-space:nowrap; font-weight:850; }
+            .aprc-weakness-status.is-active { background:#fff7ed; color:#c2410c; }
+            .aprc-weakness-status.is-resolved { background:#f0fdf4; color:#15803d; }
             .aprc-pdf-parent-summary { border:1.5pt solid #bfdbfe; background:#f8faff; }
             .aprc-pdf-bridge-note { margin:3.5mm 0 0; padding:3mm 3.5mm; border-radius:10px; background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; line-height:1.5; }
             .aprc-pdf-diagnosis + .aprc-pdf-parent-message { margin-top:6mm; }
@@ -3396,7 +3576,7 @@ function reportCenterPremiumReportStyle() {
                 .report-print-stage { padding:0 !important; margin:0 !important; background:#fff !important; overflow:visible !important; }
                 .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
                 .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary { break-inside:avoid !important; page-break-inside:avoid !important; }
-                .aprc-pdf-point-grid { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:4mm !important; }
+                .aprc-pdf-point-grid { display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:4mm !important; }
                 .aprc-pdf-table-panel { break-inside:auto !important; page-break-inside:auto !important; }
                 .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; margin-bottom:7px; }
                 .aprc-section-title + p, .aprc-section-title + ol, .aprc-section-title + ul, .aprc-section-title + .aprc-table-wrap, .aprc-section-title + table { break-before:avoid !important; page-break-before:avoid !important; }
@@ -3439,7 +3619,7 @@ ${reportCenterPremiumReportStyle()}
     @media print {
         html, body { background:#fff !important; margin:0 !important; padding:0 !important; overflow:visible !important; }
         .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; overflow:visible !important; }
-        .aprc-pdf-point-grid { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:4mm !important; }
+        .aprc-pdf-point-grid { display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:4mm !important; }
         .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; margin-bottom:7px; }
         .aprc-section-title + p, .aprc-section-title + ol, .aprc-section-title + ul, .aprc-section-title + .aprc-table-wrap, .aprc-section-title + table { break-before:avoid !important; page-break-before:avoid !important; }
         .aprc-pdf-next-plan > .aprc-section-title + ol, .aprc-pdf-next-plan > .aprc-section-title + ul { break-before:avoid !important; page-break-before:avoid !important; }
@@ -4209,10 +4389,8 @@ function openParentReport(sid) {
     const classId = state.db.class_students.find(m => m.student_id === sid)?.class_id;
     const className = state.db.classes.find(c => c.id === classId)?.name || '';
 
-    const sessions = state.db.exam_sessions
-        .filter(e => e.student_id === sid)
-        .sort((a, b) => String(b.exam_date).localeCompare(String(a.exam_date)))
-        .slice(0, 4);
+    const trendData = reportCenterGetExamTrendData(sid, { limit: 4 });
+    const sessions = reportCenterGetSortedStudentExamSessions(sid).slice(0, 4);
 
     if (!sessions.length) {
         toast('시험 기록이 없어 리포트를 생성할 수 없습니다.', 'warn');
@@ -4264,7 +4442,7 @@ function openParentReport(sid) {
     const ctx = {
         student: s, className, latest, sessions,
         classAvg, recentAvg, wrongAnswers, weakUnits,
-        att: att?.status || null, hw: hw?.status || null,
+        trendData, att: att?.status || null, hw: hw?.status || null,
         scoreDiff, correctRate, qCount
     };
 
@@ -4273,10 +4451,11 @@ function openParentReport(sid) {
 
 function showParentReportModal(ctx) {
     const { student, className, latest, sessions, classAvg, recentAvg,
-            wrongAnswers, weakUnits, att, hw, scoreDiff, correctRate, qCount } = ctx;
+            wrongAnswers, weakUnits, trendData: suppliedTrendData, att, hw, scoreDiff, correctRate, qCount } = ctx;
 
     const dateStr = String(latest.exam_date || '').replace(/-/g, '.');
-    const trendScores = [...sessions].reverse().map(e => e.score);
+    const trendData = suppliedTrendData || reportCenterGetExamTrendData(student.id, { limit: Math.max(4, sessions?.length || 0) });
+    const trendScores = trendData.selectedSessions.map(e => e.score).filter(Number.isFinite);
 
     const trendHtml = (() => {
         if (trendScores.length < 2) {
@@ -4443,6 +4622,123 @@ async function saveParentReportImage(name, examTitle) {
     } finally {
         if (saveBtn) saveBtn.disabled = false;
     }
+}
+
+function reportCenterGetExamTrendData(studentId, options = {}) {
+    const parsedLimit = Number(options?.limit);
+    const limit = Number.isFinite(parsedLimit) && parsedLimit > 0 ? Math.floor(parsedLimit) : 5;
+    const recentSessions = reportCenterGetSortedStudentExamSessions(studentId).slice(0, limit);
+    const selectedSessions = recentSessions.slice().reverse().map(session => {
+        const stats = reportCenterBuildQuestionStats(session);
+        const questionCount = Number(session.question_count || 0);
+        const wrongCount = reportCenterGetWrongIds(session.id).length;
+        return {
+            id: session.id,
+            date: session.exam_date || '',
+            title: session.exam_title || '평가',
+            score: Number.isFinite(Number(session.score)) ? Number(session.score) : null,
+            questionCount,
+            wrongCount,
+            correctRate: questionCount ? Math.round(((questionCount - wrongCount) / questionCount) * 100) : null,
+            overallAvg: stats.overallAvg !== null && stats.overallAvg !== undefined && Number.isFinite(Number(stats.overallAvg)) ? Number(stats.overallAvg) : null,
+            classAvg: stats.classAvg !== null && stats.classAvg !== undefined && Number.isFinite(Number(stats.classAvg)) ? Number(stats.classAvg) : null
+        };
+    });
+    const scores = selectedSessions.map(row => row.score).filter(Number.isFinite);
+    const firstScore = scores.length ? scores[0] : null;
+    const latestScore = scores.length ? scores[scores.length - 1] : null;
+    const scoreDelta = firstScore !== null && latestScore !== null ? latestScore - firstScore : null;
+    const changes = scores.slice(1).map((score, index) => score - scores[index]);
+    let direction = 'flat';
+    if (changes.length) {
+        const hasUp = changes.some(value => value > 0);
+        const hasDown = changes.some(value => value < 0);
+        direction = hasUp && hasDown ? 'mixed' : hasUp ? 'up' : hasDown ? 'down' : 'flat';
+    }
+
+    const latestSessionId = selectedSessions[selectedSessions.length - 1]?.id;
+    const latestWrongUnits = new Set();
+    const weaknessMap = new Map();
+    selectedSessions.forEach(row => {
+        const seenInSession = new Set();
+        const rawSession = recentSessions.find(session => String(session.id) === String(row.id)) || { id: row.id };
+        reportCenterBuildWrongSummary(rawSession).forEach(item => {
+            const unitKey = String(item.unitKey || item.unit || '').trim();
+            if (!unitKey) return;
+            const unit = String(item.unit || item.unitKey || '').trim();
+            const mapItem = weaknessMap.get(unitKey) || {
+                unitKey,
+                unit,
+                wrongCount: 0,
+                appearedInSessions: 0,
+                lastSeenDate: '',
+                resolved: false
+            };
+            mapItem.wrongCount += 1;
+            if (!seenInSession.has(unitKey)) {
+                mapItem.appearedInSessions += 1;
+                seenInSession.add(unitKey);
+            }
+            if (String(row.date || '') >= String(mapItem.lastSeenDate || '')) mapItem.lastSeenDate = row.date || '';
+            weaknessMap.set(unitKey, mapItem);
+            if (String(row.id) === String(latestSessionId)) latestWrongUnits.add(unitKey);
+        });
+    });
+    const weaknessTrend = Array.from(weaknessMap.values())
+        .map(item => ({ ...item, resolved: !latestWrongUnits.has(item.unitKey) }))
+        .sort((a, b) => b.appearedInSessions - a.appearedInSessions || b.wrongCount - a.wrongCount || String(b.lastSeenDate).localeCompare(String(a.lastSeenDate)));
+
+    const finalSession = selectedSessions[selectedSessions.length - 1] || null;
+    const averageScore = scores.length ? Math.round(scores.reduce((sum, value) => sum + value, 0) / scores.length) : null;
+    const recentAverage = scores.length
+        ? Math.round(scores.slice(-Math.min(3, scores.length)).reduce((sum, value) => sum + value, 0) / Math.min(3, scores.length))
+        : null;
+    const trendComment = selectedSessions.length < 2
+        ? (selectedSessions.length === 1 ? '첫 평가 기록입니다.' : '평가 추이를 계산할 기록이 없습니다.')
+        : direction === 'up'
+            ? `첫 평가보다 최근 평가가 ${Math.abs(scoreDelta)}점 상승했습니다.`
+            : direction === 'down'
+                ? `첫 평가보다 최근 평가가 ${Math.abs(scoreDelta)}점 하락했습니다.`
+                : direction === 'mixed'
+                    ? `최근 ${selectedSessions.length}회 점수가 오르내리는 혼합 흐름입니다.`
+                    : `최근 ${selectedSessions.length}회 점수가 같은 수준을 유지하고 있습니다.`;
+    let scorePosition = '동일 평가 비교 자료가 부족합니다.';
+    if (finalSession && Number.isFinite(finalSession.score)) {
+        if (Number.isFinite(finalSession.overallAvg)) {
+            const diff = finalSession.score - finalSession.overallAvg;
+            scorePosition = `최종 평가는 전체 평균보다 ${Math.abs(diff)}점 ${diff >= 0 ? '높습니다' : '낮습니다'}.`;
+        } else if (Number.isFinite(finalSession.classAvg)) {
+            const diff = finalSession.score - finalSession.classAvg;
+            scorePosition = `최종 평가는 반 평균보다 ${Math.abs(diff)}점 ${diff >= 0 ? '높습니다' : '낮습니다'}.`;
+        }
+    }
+    const activeWeaknesses = weaknessTrend.filter(item => !item.resolved).slice(0, 2);
+    const nextPlan = activeWeaknesses.length
+        ? [
+            `${activeWeaknesses.map(item => item.unit).join(', ')} 단원의 핵심 개념을 다시 확인합니다.`,
+            '최종 평가의 우선 문항을 재풀이합니다.',
+            '같은 유형의 유사 문항으로 풀이 순서를 안정화합니다.',
+            '검산 결과를 오답노트에 짧게 남깁니다.'
+        ]
+        : ['최종 평가의 핵심 문항을 다시 확인합니다.', '심화 유사 문항으로 현재 흐름을 확장합니다.', '검산 과정을 짧게 기록합니다.'];
+
+    return {
+        selectedSessions,
+        trend: {
+            firstScore,
+            latestScore,
+            scoreDelta,
+            direction,
+            bestScore: scores.length ? Math.max(...scores) : null,
+            worstScore: scores.length ? Math.min(...scores) : null,
+            averageScore,
+            recentAverage,
+            hasMultipleSessions: selectedSessions.length >= 2
+        },
+        weaknessTrend,
+        finalSession,
+        finalEvaluation: { scorePosition, trendComment, nextPlan }
+    };
 }
 
 window.copyReport = copyReportLegacy;
