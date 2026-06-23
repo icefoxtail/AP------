@@ -1211,10 +1211,7 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
     upcomingItems.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
 
     const upcomingHtml = upcomingItems.slice(0, 5).map(u => {
-        const timeVal = apParseLocalDateTime(u.date);
-        const diffTime = timeVal !== null ? (timeVal - todayTime) : 0;
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        const dDay = diffDays === 0 ? 'D-Day' : `D-${diffDays}`;
+        const dDay = dashboardGetDdayLabel(u.date, todayStr);
 
         if (u.type === 'exam') {
             const e = u.item;
@@ -1309,23 +1306,36 @@ function renderTodoSections() {
         overflow:hidden;
     `;
 
-    const todayMemos = state.db.operation_memos.filter(m => {
+    // 노출 범위: 미완료 메모 중 고정 메모 + 오늘~7일 이내 메모 (1주일 전부터 미리 노출)
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    const nextWeekStr = new Date(todayTime + 7 * 24 * 60 * 60 * 1000).toLocaleDateString('sv-SE');
+
+    const visibleMemos = state.db.operation_memos.filter(m => {
+        if (isMemoDone(m)) return false;
+        if (isMemoPinned(m)) return true;
         const memoDate = getMemoDate(m);
-        return !isMemoDone(m) && (isMemoPinned(m) || memoDate === todayStr);
+        return memoDate >= todayStr && memoDate <= nextWeekStr;
     });
-    
-    const todayHtml = todayMemos.length ? todayMemos.map(m => {
+
+    // 정렬: 고정 → D-Day → D-1 ~ D-7
+    visibleMemos.sort((a, b) => {
+        const ap = isMemoPinned(a), bp = isMemoPinned(b);
+        if (ap !== bp) return ap ? -1 : 1;
+        return getMemoDate(a).localeCompare(getMemoDate(b));
+    });
+
+    const todayHtml = visibleMemos.length ? visibleMemos.map(m => {
         const isPinned = isMemoPinned(m);
+        const badge = isPinned ? '고정' : dashboardGetDdayLabel(getMemoDate(m), todayStr);
         return `
         <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
-                <span style="font-size:13px; font-weight:400; color:var(--text); ${isPinned ? 'color:var(--text);' : ''} white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                    ${isPinned ? `<span style="background:var(--surface-2); border:1px solid var(--border); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}
-                </span>
+                <span style="font-size:13px; font-weight:400; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(m.content)}</span>
             </label>
+            ${badge ? `<span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0; margin-left:8px;">${badge}</span>` : ''}
         </div>
-    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
+    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">표시할 메모가 없습니다.</div>`;
 
     const iconCalendar = typeof apDashIcon === 'function' ? apDashIcon('calendar', 28) : '';
 
@@ -1340,27 +1350,27 @@ function renderTodoSections() {
     const inlineScheduleFormHtml = `
            <div id="ap-dash-inline-form" class="ap-inline-form" style="display:none;">
                 <input type="date" id="ap-dash-inline-date" value="${todayStr}">
-                <input type="text" id="ap-dash-inline-content" placeholder="일정 내용"
+                <input type="text" id="ap-dash-inline-content" placeholder="메모 내용"
                        onkeydown="if(event.key==='Enter') apDashSaveInlineSchedule();">
                 <button type="button" class="ap-inline-btn" onclick="apDashSaveInlineSchedule()">저장</button>
            </div>`;
 
-    const todayBodyHtml = todayMemos.length
+    const todayBodyHtml = visibleMemos.length
         ? `<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; overflow:hidden; border-radius:6px; border:1px solid var(--border); background:var(--surface);">${todayHtml}</div>
            <div class="ap-dashboard-today-actions">
-                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 일정 추가</button>
+                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 메모 추가</button>
            </div>
            ${inlineScheduleFormHtml}${assistantMemoHtml}`
         : `<div class="ap-empty-state">
                 <span class="ap-empty-icon">${iconCalendar}</span>
-                <p>오늘 등록된 일정이 없습니다.</p>
-                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 일정 추가</button>
+                <p>표시할 메모가 없습니다.</p>
+                <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 메모 추가</button>
            </div>
            ${inlineScheduleFormHtml}${assistantMemoHtml}`;
 
     return `
         <section class="ap-dash-card">
-            <h3 class="ap-dash-card__title">오늘일정</h3>
+            <h3 class="ap-dash-card__title">메모</h3>
             ${todayBodyHtml}
         </section>
 
@@ -1457,15 +1467,21 @@ function getDashboardOnboardingDate(value) {
     return apParseLocalDateTime(text);
 }
 
-function getDashboardOnboardingDueLabel(task) {
-    const todayStr = new Date().toLocaleDateString('sv-SE');
-    const todayTime = apParseLocalDateTime(todayStr);
-    const dueTime = getDashboardOnboardingDate(task?.due_date);
-    if (todayTime === null || dueTime === null) return '';
-    const diffDays = Math.round((dueTime - todayTime) / (24 * 60 * 60 * 1000));
+// 공용 D-Day 라벨 계산 (주간일정·신입생상담·메모 사이드바 공유)
+function dashboardGetDdayLabel(dateStr, baseDateStr = null) {
+    const baseStr = baseDateStr || new Date().toLocaleDateString('sv-SE');
+    const cleanTarget = String(dateStr || '').trim().split('T')[0].split(' ')[0];
+    const baseTime = apParseLocalDateTime(baseStr);
+    const targetTime = apParseLocalDateTime(cleanTarget);
+    if (baseTime === null || targetTime === null) return '';
+    const diffDays = Math.round((targetTime - baseTime) / (24 * 60 * 60 * 1000));
     if (diffDays === 0) return 'D-Day';
     if (diffDays > 0) return `D-${diffDays}`;
     return `D+${Math.abs(diffDays)}`;
+}
+
+function getDashboardOnboardingDueLabel(task) {
+    return dashboardGetDdayLabel(task?.due_date);
 }
 
 function getDashboardWeeklyOnboardingTasks(tasks = null) {
