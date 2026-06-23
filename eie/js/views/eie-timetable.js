@@ -3096,8 +3096,9 @@
                                     <option value="active"${studentStatus(student) === 'active' || studentStatus(student) === 'imported' ? ' selected' : ''}>재원</option>
                                     <option value="paused"${studentStatus(student) === 'paused' ? ' selected' : ''}>휴원</option>
                                     <option value="inactive"${studentStatus(student) === 'inactive' ? ' selected' : ''}>퇴원</option>
-                                    <option value="needs_review"${studentStatus(student) === 'needs_review' ? ' selected' : ''}>확인 필요</option>
-                                    <option value="archived"${studentStatus(student) === 'archived' ? ' selected' : ''}>보관</option>
+                                    ${!['active', 'imported', 'paused', 'inactive'].includes(studentStatus(student))
+                                        ? `<option value="${esc(studentStatus(student))}" selected>${esc(statusLabel(studentStatus(student)))}</option>`
+                                        : ''}
                                 </select>
                             </label>
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>

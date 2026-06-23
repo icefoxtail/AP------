@@ -2654,6 +2654,78 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        },
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-03",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-SA-08",
+      "rangeStartUnit": "여러 가지 부등식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-08",
+          "rangeStartUnit": "여러 가지 부등식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js",
       "school": "여수고",
       "topic": "",
@@ -2680,6 +2752,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H15-SA-05",
           "rangeEndUnit": "이차방정식",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
         }
       ],
       "primaryStandardCourse": "수학(상)"
@@ -3594,6 +3697,68 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
       "school": "매산고",
       "topic": "",
@@ -3625,6 +3790,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1final/23_복성고_1학기_기말_고1_기출.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-07",
+      "rangeStartUnit": "여러 가지 방정식",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-07",
+          "rangeStartUnit": "여러 가지 방정식",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
       "school": "부영여고",
       "topic": "",
@@ -3651,6 +3847,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H15-SA-07",
           "rangeEndUnit": "여러 가지 방정식",
           "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1final/23_순천여고_1학기_기말_고1_기출.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-SA-05",
+      "rangeStartUnit": "이차방정식",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-05",
+          "rangeStartUnit": "이차방정식",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
         }
       ],
       "primaryStandardCourse": "수학(상)"
@@ -3738,6 +3965,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-03",
+      "rangeStartUnit": "인수분해",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-03",
+          "rangeStartUnit": "인수분해",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
       "school": "충무고",
       "topic": "",
@@ -3777,6 +4035,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-07",
+      "rangeStartUnit": "여러 가지 방정식",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-07",
+          "rangeStartUnit": "여러 가지 방정식",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",

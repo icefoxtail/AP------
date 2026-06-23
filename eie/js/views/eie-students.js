@@ -2053,7 +2053,7 @@
             + '<option value="active"' + (status === 'active' ? ' selected' : '') + '>재원</option>'
             + '<option value="paused"' + (status === 'paused' ? ' selected' : '') + '>휴원</option>'
             + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>퇴원</option>'
-            + '<option value="needs_review"' + (status === 'needs_review' ? ' selected' : '') + '>확인 필요</option>'
+            + (['active', 'paused', 'inactive'].indexOf(status) === -1 ? '<option value="' + esc(status) + '" selected>' + esc(statusLabel(status)) + '</option>' : '')
             + '</select></label>'
             + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo">' + esc(isEdit ? memoOf(student) : '') + '</textarea></label>'
             + '<div class="eie-action-row is-wide">'
