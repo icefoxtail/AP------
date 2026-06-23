@@ -23,17 +23,17 @@ function openTodoMemoModal() {
         </div>
     `}).join('');
 
-    showModal('메모 / 할 일', `
+    showModal('메모', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="date" id="new-memo-date" class="btn" value="${todayStr}" style="text-align:left; flex:1; border:none; background:var(--surface);">
                 <label style="font-size:13px; font-weight:500; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);"><input type="checkbox" id="new-memo-pin"> 고정</label>
             </div>
-            <input type="text" id="new-memo-content" class="btn" placeholder="할 일 입력 (예: 고2 직전보강)" style="text-align:left; border:none; background:var(--surface);">
+            <input type="text" id="new-memo-content" class="btn" placeholder="메모 입력 (예: 고2 직전보강)" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px; font-size:13px; font-weight:500; margin-top:4px;" onclick="addTodoMemo()">저장</button>
         </div>
         <div style="max-height:45vh; overflow-y:auto; padding-right:4px;">
-            ${memos.length ? memoRows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:400; padding:20px;">등록된 할 일이 없습니다.</div>`}
+            ${memos.length ? memoRows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:400; padding:20px;">표시할 메모가 없습니다.</div>`}
         </div>
     `);
 }
