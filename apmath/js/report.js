@@ -3126,7 +3126,7 @@ function reportCenterBuildSingleExamSummaryText(data, wrongCount) {
     if (Number.isFinite(score) && stats.classAvg !== null && stats.classAvg !== undefined && Number.isFinite(Number(stats.classAvg))) {
         comparisons.push(`${stats.className || '소속 반'} 평균보다 ${score >= Number(stats.classAvg) ? '높은' : '낮은'} 위치`);
     }
-    const result = comparisons.length ? comparisons.join('이며, ') : '동일 평가 비교 자료는 아직 충분하지 않으며,';
+    const result = comparisons.length ? `${comparisons.join('이며, ')}이며,` : '동일 평가 비교 자료는 아직 충분하지 않으며,';
     return Number(wrongCount || 0) > 0
         ? `이번 한 회 결과는 ${result} 오답 ${wrongCount}개가 확인되었습니다.`
         : `이번 한 회 결과는 ${result} 전 문항을 정확하게 해결했습니다.`;
@@ -3177,12 +3177,12 @@ function reportCenterBuildTrendSvg(trend, selectedSessions = []) {
     const minValue = Math.max(0, Math.floor((Math.min(...values, 100) - 10) / 10) * 10);
     const maxValue = Math.min(100, Math.ceil((Math.max(...values, 0) + 10) / 10) * 10);
     const range = Math.max(10, maxValue - minValue);
-    const x = index => left + (rows.length === 1 ? plotWidth / 2 : (plotWidth * index) / (rows.length - 1));
-    const y = value => top + ((maxValue - Number(value)) / range) * plotHeight;
-    const points = key => rows
-        .map((row, index) => row[key] !== null && row[key] !== undefined && Number.isFinite(Number(row[key])) ? `${x(index).toFixed(1)},${y(row[key]).toFixed(1)}` : null);
+    const scaleX = index => left + (rows.length === 1 ? plotWidth / 2 : (plotWidth * index) / (rows.length - 1));
+    const scaleY = value => top + ((maxValue - Number(value)) / range) * plotHeight;
+    const buildPoints = key => rows
+        .map((row, index) => row[key] !== null && row[key] !== undefined && Number.isFinite(Number(row[key])) ? `${scaleX(index).toFixed(1)},${scaleY(row[key]).toFixed(1)}` : null);
     const buildSegments = (key, color, dash = '') => {
-        const source = points(key);
+        const source = buildPoints(key);
         const segments = [];
         let current = [];
         source.forEach(point => {
@@ -3208,13 +3208,13 @@ function reportCenterBuildTrendSvg(trend, selectedSessions = []) {
     ].join('');
     return `
         <svg class="aprc-trend-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="최근 평가 점수 추이">
-            ${gridValues.map(value => `<g><line x1="${left}" y1="${y(value)}" x2="${width - right}" y2="${y(value)}" stroke="#e2e8f0" stroke-width="1"/><text x="${left - 8}" y="${y(value) + 4}" text-anchor="end" fill="#64748b" font-size="12">${value}</text></g>`).join('')}
+            ${gridValues.map(value => `<g><line x1="${left}" y1="${scaleY(value)}" x2="${width - right}" y2="${scaleY(value)}" stroke="#e2e8f0" stroke-width="1"/><text x="${left - 8}" y="${scaleY(value) + 4}" text-anchor="end" fill="#64748b" font-size="12">${value}</text></g>`).join('')}
             ${buildSegments('overallAvg', '#94a3b8', '7 5')}
             ${buildSegments('classAvg', '#f59e0b', '3 4')}
             ${buildSegments('score', '#2563eb')}
             ${rows.map((row, index) => {
                 const isLast = index === rows.length - 1;
-                return `<g><circle cx="${x(index)}" cy="${y(row.score)}" r="${isLast ? 6 : 4}" fill="${isLast ? '#1d4ed8' : '#ffffff'}" stroke="#2563eb" stroke-width="2.5"/><text x="${x(index)}" y="${y(row.score) - 10}" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="800">${reportCenterEscape(row.score)}</text><text x="${x(index)}" y="${height - 16}" text-anchor="middle" fill="#64748b" font-size="11">${reportCenterEscape(String(row.date || `${index + 1}회`).slice(5).replace('-', '.'))}</text></g>`;
+                return `<g><circle cx="${scaleX(index)}" cy="${scaleY(row.score)}" r="${isLast ? 6 : 4}" fill="${isLast ? '#1d4ed8' : '#ffffff'}" stroke="#2563eb" stroke-width="2.5"/><text x="${scaleX(index)}" y="${scaleY(row.score) - 10}" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="800">${reportCenterEscape(row.score)}</text><text x="${scaleX(index)}" y="${height - 16}" text-anchor="middle" fill="#64748b" font-size="11">${reportCenterEscape(String(row.date || `${index + 1}회`).slice(5).replace('-', '.'))}</text></g>`;
             }).join('')}
             <text x="${width - right}" y="14" text-anchor="end" fill="${trend?.direction === 'down' ? '#dc2626' : trend?.direction === 'up' ? '#16a34a' : '#475569'}" font-size="12" font-weight="800">${directionArrow}</text>
             <g transform="translate(${left},${height - 2})">${legendItems}</g>

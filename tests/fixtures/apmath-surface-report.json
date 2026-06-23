@@ -1,10 +1,10 @@
 {
   "counts": {
-    "functionDeclarations": 164,
+    "functionDeclarations": 174,
     "asyncFunctionDeclarations": 13,
     "windowAssignments": 15,
-    "functionExpressions": 6,
-    "allDefinitions": 197
+    "functionExpressions": 10,
+    "allDefinitions": 211
   },
   "functionDeclarations": [
     "appendRiskSummaryToReportText",
@@ -96,6 +96,11 @@
     "reportCenterBuildQuestionStats",
     "reportCenterBuildScorePositionText",
     "reportCenterBuildShortReportSummaryItems",
+    "reportCenterBuildSingleExamSummaryText",
+    "reportCenterBuildTrendSummaryText",
+    "reportCenterBuildTrendSvg",
+    "reportCenterBuildWeaknessSummaryText",
+    "reportCenterBuildWeaknessTrendTable",
     "reportCenterBuildWrongSummary",
     "reportCenterClampText",
     "reportCenterClearCachedAiAnalysis",
@@ -122,6 +127,7 @@
     "reportCenterGetExamIdentity",
     "reportCenterGetExamReportData",
     "reportCenterGetExamReportTeacherMemo",
+    "reportCenterGetExamTrendData",
     "reportCenterGetPremiumTableMeta",
     "reportCenterGetQuestionDetailMap",
     "reportCenterGetQuestionDifficultyLabel",
@@ -130,6 +136,7 @@
     "reportCenterGetRecentConsultations",
     "reportCenterGetSameExamSessions",
     "reportCenterGetSessionGrade",
+    "reportCenterGetSortedStudentExamSessions",
     "reportCenterGetStudentClass",
     "reportCenterGetTargetProgressForReport",
     "reportCenterGetWrongIds",
@@ -137,6 +144,7 @@
     "reportCenterGetWrongSetBySession",
     "reportCenterHandlePrintViewMemoInput",
     "reportCenterInjectPrintViewStyle",
+    "reportCenterIsDuplicateText",
     "reportCenterIsPremiumAiSource",
     "reportCenterLimitText",
     "reportCenterLooksLikeCodeText",
@@ -144,7 +152,9 @@
     "reportCenterNormalizeArchiveFile",
     "reportCenterNormalizeQuestionBank",
     "reportCenterNormalizeQuestionDetail",
+    "reportCenterNormalizeSentenceForCompare",
     "reportCenterOpenPrintView",
+    "reportCenterPickNonDuplicateText",
     "reportCenterPolishCleanPdfDocumentHtml",
     "reportCenterPremiumReportStyle",
     "reportCenterPreserveArchiveText",
@@ -205,10 +215,14 @@
     "onload"
   ],
   "functionExpressions": [
+    "buildPoints",
+    "buildSegments",
     "compareText",
     "inReportRange",
     "safeArray",
     "safeString",
+    "scaleX",
+    "scaleY",
     "trendHtml",
     "wait"
   ],
