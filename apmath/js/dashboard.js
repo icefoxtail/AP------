@@ -1183,11 +1183,116 @@ function getDashboardAcademyScheduleSeries(fromDate, toDate) {
     }).filter(item => item.schedule_date);
 }
 
-function renderTodoSections() {
-    const todayStr = new Date().toLocaleDateString('sv-SE');
+function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
+    const todayStr = baseDateStr || new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
     const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
     const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
+    const rowBase = `
+        height:52px;
+        min-height:52px;
+        max-height:52px;
+        padding:0 16px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        box-sizing:border-box;
+        overflow:hidden;
+    `;
+    const upcomingItems = [];
+
+    (state.db.exam_schedules || [])
+        .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr)
+        .forEach(e => upcomingItems.push({ type: 'exam', date: e.exam_date, item: e }));
+
+    getDashboardAcademyScheduleSeries(todayStr, nextWeekStr)
+        .forEach(s => upcomingItems.push({ type: 'academy', date: s.schedule_date, item: s }));
+
+    upcomingItems.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+
+    const upcomingHtml = upcomingItems.slice(0, 5).map(u => {
+        const timeVal = apParseLocalDateTime(u.date);
+        const diffTime = timeVal !== null ? (timeVal - todayTime) : 0;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const dDay = diffDays === 0 ? 'D-Day' : `D-${diffDays}`;
+
+        if (u.type === 'exam') {
+            const e = u.item;
+            const rawTitle = e.exam_name ? `${e.school_name || '일반'} ${e.grade || ''} ${e.exam_name}` : `${e.school_name || '일정 확인'}`;
+            const preview = renderDashboardHoverPreview(rawTitle, [
+                `날짜: ${u.date}`,
+                e.memo ? `메모: ${e.memo}` : '',
+                `상태: ${dDay}`
+            ]);
+            return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(rawTitle)}</div>
+                <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+                ${preview}
+            </div>`;
+        }
+
+        const s = u.item;
+        const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
+        const label = isClosed ? '휴무' : '기타';
+        const title = s.title || (isClosed ? '휴무' : '일정');
+        const timeText = [s.start_time, s.end_time].map(v => String(v || '').trim()).filter(Boolean).join('~');
+        const rangeText = s.range_end && s.range_end !== s.range_start
+            ? `${s.range_start} ~ ${s.range_end}`
+            : (s.range_start || s.schedule_date || u.date);
+        const preview = renderDashboardHoverPreview(title, [
+            `분류: ${label}`,
+            `날짜: ${rangeText}`,
+            timeText ? `시간: ${timeText}` : '',
+            s.teacher_name ? `선생님: ${s.teacher_name}` : '',
+            s.memo ? `메모: ${s.memo}` : ''
+        ]);
+        return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
+            <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.occurrence_count > 1 ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(rangeText)}</span>` : ''}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
+            <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+            ${preview}
+        </div>`;
+    }).join('');
+
+    const onboardingWeeklyHtml = typeof renderOnboardingWeeklyScheduleRows === 'function' ? renderOnboardingWeeklyScheduleRows() : '';
+    const hasCleaningSchedule = true;
+    const cleaningRoster = ['정겨운', '박준성', '정의한', '원장님'];
+    const cleaningReferenceMonday = new Date('2026-06-09T00:00:00');
+    const todayDate = new Date(todayStr + 'T00:00:00');
+    const diffToMonday = todayDate.getDay() === 0 ? -6 : 1 - todayDate.getDay();
+    const thisMonday = new Date(todayDate);
+    thisMonday.setDate(todayDate.getDate() + diffToMonday);
+    const weekDiff = Math.round((thisMonday - cleaningReferenceMonday) / (7 * 24 * 60 * 60 * 1000));
+    const cleaningPerson = cleaningRoster[((1 + weekDiff) % cleaningRoster.length + cleaningRoster.length) % cleaningRoster.length];
+    const iconBroom = typeof apDashIcon === 'function' ? apDashIcon('broom', 14) : '';
+    const iconSpeaker = typeof apDashIcon === 'function' ? apDashIcon('speakerphone', 14) : '';
+    const noticeEmpty = !(upcomingHtml || onboardingWeeklyHtml);
+
+    return `
+        <section class="ap-dash-card ap-dashboard-weekly-parity" id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" data-has-cleaning-schedule="${hasCleaningSchedule ? '1' : '0'}">
+            <h3 class="ap-dash-card__title">주간일정</h3>
+            <div id="dashboard-weekly-schedule-list" class="ap-weekly-split">
+                <div class="ap-split-cell">
+                    <p class="ap-split-label">고정 루틴</p>
+                    <p class="ap-cleaning-routine" aria-label="청소 당번 ${apEscapeHtml(cleaningPerson)}"><span style="color:var(--secondary);">${iconBroom}</span><strong style="color:var(--primary);">${apEscapeHtml(cleaningPerson)}</strong></p>
+                    <span class="ap-split-meta">매주 월요일</span>
+                </div>
+                <div class="ap-split-cell ap-weekly-notice-cell"
+                     role="button"
+                     tabindex="0"
+                     onclick="openExamScheduleModal()"
+                     onkeydown="if(event.target===event.currentTarget&&(event.key==='Enter'||event.key===' ')){event.preventDefault(); openExamScheduleModal();}">
+                    <p class="ap-split-label"><span style="color:var(--secondary);">${iconSpeaker}</span> 학원 공지</p>
+                    ${upcomingHtml}
+                    <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
+                    <p id="weekly-notice-empty" class="ap-empty-notice"${noticeEmpty ? '' : ' style="display:none;"'}>등록된 공지가 없습니다.</p>
+                </div>
+            </div>
+        </section>
+    `;
+}
+
+function renderTodoSections() {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
     const getMemoDate = (m) => String(m.memo_date || m.memoDate || m.date || '').split('T')[0].split(' ')[0];
     const isMemoDone = (m) => m.is_done == 1 || m.is_done === true || m.isDone === true;
     const isMemoPinned = (m) => m.is_pinned == 1 || m.is_pinned === true || m.isPinned === true;
@@ -1209,9 +1314,6 @@ function renderTodoSections() {
         return !isMemoDone(m) && (isMemoPinned(m) || memoDate === todayStr);
     });
     
-    const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
-    const upcomingAcademySchedules = getDashboardAcademyScheduleSeries(todayStr, nextWeekStr);
-
     const todayHtml = todayMemos.length ? todayMemos.map(m => {
         const isPinned = isMemoPinned(m);
         return `
@@ -1225,91 +1327,7 @@ function renderTodoSections() {
         </div>
     `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
 
-    let upcomingHtml = '';
-    const upcomingItems = [];
-    upcomingExams.forEach(e => upcomingItems.push({ type: 'exam', date: e.exam_date, item: e }));
-    upcomingAcademySchedules.forEach(s => upcomingItems.push({ type: 'academy', date: s.schedule_date, item: s }));
-    
-    upcomingItems.sort((a,b) => a.date.localeCompare(b.date));
-
-    if (upcomingItems.length) {
-        upcomingHtml = upcomingItems.slice(0, 5).map(u => {
-            const timeVal = apParseLocalDateTime(u.date);
-            const diffTime = timeVal !== null ? (timeVal - todayTime) : 0;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            const dDay = diffDays === 0 ? 'D-Day' : `D-${diffDays}`;
-
-            if (u.type === 'exam') {
-                const e = u.item;
-                const rawTitle = e.exam_name ? `${e.school_name || '일반'} ${e.grade || ''} ${e.exam_name}` : `${e.school_name || '일정 확인'}`;
-                const displayTitle = apEscapeHtml(rawTitle);
-                const preview = renderDashboardHoverPreview(rawTitle, [
-                    `날짜: ${u.date}`,
-                    e.memo ? `메모: ${e.memo}` : '',
-                    `상태: ${dDay}`
-                ]);
-                return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
-                    <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${displayTitle}</div>
-                    <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
-                    ${preview}
-                </div>`;
-            }
-
-            const s = u.item;
-            const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
-            const label = isClosed ? '휴무' : '기타';
-            const labelColor = isClosed ? 'var(--warning)' : 'var(--secondary)';
-            const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
-            const title = s.title || (isClosed ? '휴무' : '일정');
-            const timeText = [s.start_time, s.end_time].map(v => String(v || '').trim()).filter(Boolean).join('~');
-            const rangeText = s.range_end && s.range_end !== s.range_start
-                ? `${s.range_start} ~ ${s.range_end}`
-                : (s.range_start || s.schedule_date || u.date);
-            const preview = renderDashboardHoverPreview(title, [
-                `분류: ${label}`,
-                `날짜: ${rangeText}`,
-                timeText ? `시간: ${timeText}` : '',
-                s.teacher_name ? `선생님: ${s.teacher_name}` : '',
-                s.memo ? `메모: ${s.memo}` : ''
-            ]);
-            return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.occurrence_count > 1 ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(rangeText)}</span>` : ''}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
-                <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
-                ${preview}
-            </div>`;
-        }).join('');
-    }
-
-    const onboardingWeeklyHtml = typeof renderOnboardingWeeklyScheduleRows === 'function' ? renderOnboardingWeeklyScheduleRows() : '';
-    const onboardingWeeklyCount = typeof getDashboardWeeklyOnboardingTasks === 'function' ? getDashboardWeeklyOnboardingTasks().length : 0;
-    const hasCleaningSchedule = true;
-    const hasWeeklyItems = upcomingItems.length > 0 || onboardingWeeklyCount > 0 || hasCleaningSchedule;
-
-    // 청소 당번 계산 (매주 월요일 기준 순환)
-    const CLEANING_ROSTER = ['정겨운', '박준성', '정의한', '원장님'];
-    const CLEANING_REF_MONDAY = new Date('2026-06-09T00:00:00'); // 기준: 박준성(index 1)
-    const todayDate = new Date(todayStr + 'T00:00:00');
-    const todayDay = todayDate.getDay(); // 0=일,1=월,...,6=토
-    const diffToMonday = todayDay === 0 ? -6 : 1 - todayDay;
-    const thisMonday = new Date(todayDate);
-    thisMonday.setDate(todayDate.getDate() + diffToMonday);
-    const weekDiff = Math.round((thisMonday - CLEANING_REF_MONDAY) / (7 * 24 * 60 * 60 * 1000));
-    const cleaningPerson = CLEANING_ROSTER[((1 + weekDiff) % 4 + 4) % 4];
-    const iconBroom = typeof apDashIcon === 'function' ? apDashIcon('broom', 14) : '';
     const iconCalendar = typeof apDashIcon === 'function' ? apDashIcon('calendar', 28) : '';
-    const iconSpeaker = typeof apDashIcon === 'function' ? apDashIcon('speakerphone', 14) : '';
-
-    // G. 좌: 고정 루틴(청소 당번 + 신입생 상담 등 반복 항목) / 우: 학원 공지(예정 일정, 빈 상태 처리)
-    const cleaningHtml = `
-        <p class="ap-cleaning-routine" aria-label="청소 당번 ${apEscapeHtml(cleaningPerson)}"><span style="color:var(--secondary);">${iconBroom}</span><strong style="color:var(--primary);">${apEscapeHtml(cleaningPerson)}</strong></p>
-        <span class="ap-split-meta">매주 월요일</span>`;
-
-    // 공지 컨테이너는 항상 렌더(비동기 신입생 상담 행 주입 대상). 빈 안내는 토글.
-    const noticeEmpty = !(upcomingHtml || onboardingWeeklyHtml);
-    const noticeHtml = `
-        ${upcomingHtml || ''}
-        <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
-        <p id="weekly-notice-empty" class="ap-empty-notice"${noticeEmpty ? '' : ' style="display:none;"'}>등록된 공지가 없습니다.</p>`;
 
     // F. 오늘일정 빈 상태 + 인라인 폼 (페이지 전환 없이 펼침)
     const todayClassesForAssistant = (state?.db?.classes || []).filter(cls => {
@@ -1346,23 +1364,7 @@ function renderTodoSections() {
             ${todayBodyHtml}
         </section>
 
-        <section class="ap-dash-card" id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" data-has-cleaning-schedule="${hasCleaningSchedule ? '1' : '0'}">
-            <h3 class="ap-dash-card__title">주간일정</h3>
-            <div id="dashboard-weekly-schedule-list" class="ap-weekly-split">
-                <div class="ap-split-cell">
-                    <p class="ap-split-label">고정 루틴</p>
-                    ${cleaningHtml}
-                </div>
-                <div class="ap-split-cell ap-weekly-notice-cell"
-                     role="button"
-                     tabindex="0"
-                     onclick="openExamScheduleModal()"
-                     onkeydown="if(event.target===event.currentTarget&&(event.key==='Enter'||event.key===' ')){event.preventDefault(); openExamScheduleModal();}">
-                    <p class="ap-split-label"><span style="color:var(--secondary);">${iconSpeaker}</span> 학원 공지</p>
-                    ${noticeHtml}
-                </div>
-            </div>
-        </section>
+        ${renderDashboardWeeklyScheduleSection(todayStr)}
     `;
 }
 

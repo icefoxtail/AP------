@@ -1443,6 +1443,9 @@ function renderAdminGlobalSearchPanel() {
 }
 
 function renderAdminControlCenter() {
+    if (typeof injectDashboardRedesignStyles === 'function') {
+        injectDashboardRedesignStyles();
+    }
     if (typeof document !== 'undefined' && document.body) {
         document.body.classList.remove('ap-teacher-dashboard-mode');
         document.body.classList.add('ap-owner-dashboard-bg');
@@ -1541,44 +1544,9 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
-    const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
-    const adminWeeklyItems = [];
-
-    (state.db.exam_schedules || [])
-        .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr)
-        .forEach(e => adminWeeklyItems.push({ type: 'exam', date: e.exam_date, item: e }));
-
-    apAdminAcademyScheduleSeries(todayStr, nextWeekStr)
-        .forEach(s => adminWeeklyItems.push({ type: 'academy', date: s.schedule_date, item: s }));
-
-    adminWeeklyItems.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
-
-    const adminScheduleHtml = `
-        <div class="ap-admin-section" style="margin-bottom:32px;">
-            <h3 class="ap-admin-section-title" style="margin:0 0 12px 0; font-size:14px; font-weight:500; color:var(--secondary);">주간일정</h3>
-            <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${adminWeeklyItems.length > 0 ? adminWeeklyItems.map(w => {
-                    const dateLabel = apFormatMonthDay(w.date) || w.date;
-                    if (w.type === 'exam') {
-                        const e = w.item;
-                        const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:500;">학교공통</span> ';
-                        return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.10); padding:3px 8px; border-radius:8px; margin-right:6px;">시험</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(e.school_name)}</span> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--secondary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--surface-2); border:1px solid var(--border); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
-                    }
-                    const s = w.item;
-                    const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
-                    const label = isClosed ? '휴무' : '기타';
-                    const labelColor = isClosed ? 'var(--warning)' : 'var(--secondary)';
-                    const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--surface-2)';
-                    const title = s.title || (isClosed ? '휴무' : '일정');
-                    const rangeLabel = s.range_end && s.range_end !== s.range_start
-                        ? `${apFormatMonthDay(s.range_start) || s.range_start} ~ ${apFormatMonthDay(s.range_end) || s.range_end}`
-                        : dateLabel;
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(title)}</span>${s.memo ? ` <span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--secondary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--surface-2); border:1px solid var(--border); padding:2px 8px; border-radius:6px;">${apEscapeHtml(rangeLabel)}</div></div>`;
-                }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:500;">이번 주 예정된 일정이 없습니다.</div>`}
-            </div>
-        </div>
-    `;
+    const adminScheduleHtml = typeof renderDashboardWeeklyScheduleSection === 'function'
+        ? renderDashboardWeeklyScheduleSection(todayStr)
+        : '';
 
     const adminUnifiedStyle = `
         <style>
@@ -1918,7 +1886,7 @@ function renderAdminControlCenter() {
             <div class="ap-owner-cell ap-owner-cell--8">${teacherCardsHtml}</div>
             <div class="ap-owner-cell ap-owner-cell--4">${todayMemoHtml}</div>
             <div class="ap-owner-cell ap-owner-cell--8">${recentConsultationHtml}</div>
-            <div class="ap-owner-cell ap-owner-cell--4">${adminScheduleHtml}</div>
+            <div class="ap-owner-cell ap-owner-cell--12 ap-owner-weekly-parity-cell">${adminScheduleHtml}</div>
             <div class="ap-owner-cell ap-owner-cell--12">${recentStudentsHtml}</div>
         </div>
     </div>`;
