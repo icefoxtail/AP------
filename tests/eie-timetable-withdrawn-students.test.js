@@ -33,7 +33,7 @@ const rows = [{
     { student_id: 's_old', name: '이오래', status: 'withdrawn', student_status: 'withdrawn', withdrawn_at: '2026-05-31', match_status: 'confirmed' },
     { student_id: 's_missing', name: '최미상', status: 'inactive', student_status: 'inactive', match_status: 'confirmed' },
     { student_id: 's_bug', name: '버그재현', withdrawn_at: '2026-05-03T08:00:00+09:00', match_status: 'confirmed' },
-    { student_id: 's_new', name: '신규', status: 'active', enrollment_date: '2026-06-12', match_status: 'confirmed' }
+    { student_id: 's_new', name: '신규', status: 'active', enrollment_date: '2026-06-25', match_status: 'confirmed' }
   ]
 }];
 
@@ -149,7 +149,9 @@ const context = {
 };
 context.window = context;
 context.window.innerWidth = 1280;
-context.window.TIMETABLE_WITHDRAWN_TODAY = '2026-06-14';
+context.window.TIMETABLE_WITHDRAWN_TODAY = '2026-06-30';
+// eie-normalize.js는 이 테스트 컨텍스트에 로드되지 않으므로 신입 컷오버 상수를 직접 주입한다.
+context.window.EIE_NEW_STUDENT_CUTOFF_DATE = '2026-06-23';
 context.window.addEventListener = function () {};
 
 vm.createContext(context);
@@ -185,8 +187,8 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
   const newChip = findChip(chips, '신규');
   assert(newChip, 'new EIE student should render as a student status chip');
   assert(newChip.classes.includes('is-new'), 'new EIE student should use new class');
-  assert(/\(6\/12\)$/.test(newChip.text), 'new EIE student chip text should show enrollment month/day');
-  assert(html.includes('신규(6/12)'), 'new EIE student should show enrollment month/day');
+  assert(/\(6\/25\)$/.test(newChip.text), 'new EIE student chip text should show enrollment month/day');
+  assert(html.includes('신규(6/25)'), 'new EIE student should show enrollment month/day');
   assert(!html.includes('(신)'), 'new EIE student should not show the old new-student marker');
 
   assert(source.includes('function renderTimetableStudentStatusChip'), 'EIE timetable should use a single student status chip renderer');

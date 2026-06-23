@@ -2087,9 +2087,6 @@
             name: name,
             grade: normalizeGrade(grade),
             school_name: school,
-            enrollment_date: enrollDate,
-            first_attendance_date: enrollDate,
-            first_attended_at: enrollDate,
             phone: phone,
             student_phone: phone,
             parent_phone: parentPhone,
@@ -2103,6 +2100,12 @@
         };
         if (['inactive', 'withdrawn'].includes(payload.status)) payload.withdrawn_at = todayIso();
         if (payload.status === 'active') payload.withdrawn_at = '';
+        // 등원일이 비어 있으면 기존 값을 덮어쓰지 않도록 날짜 필드를 보내지 않는다(부분 업데이트).
+        if (enrollDate) {
+            payload.enrollment_date = enrollDate;
+            payload.first_attendance_date = enrollDate;
+            payload.first_attended_at = enrollDate;
+        }
         return payload;
     }
 

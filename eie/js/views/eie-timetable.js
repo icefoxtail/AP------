@@ -5249,7 +5249,9 @@
         };
         if (['inactive', 'withdrawn'].includes(payload.status)) payload.withdrawn_at = todayIso();
         if (payload.status === 'active') payload.withdrawn_at = '';
-        applyEnrollDateFields(payload, studentFieldValue('eie-v2-edit-enroll-date'));
+        // 등원일 필드가 비어 있으면 오늘로 덮어쓰지 않고 기존 값을 유지한다(부분 업데이트).
+        const editEnrollDate = studentFieldValue('eie-v2-edit-enroll-date');
+        if (editEnrollDate) applyEnrollDateFields(payload, editEnrollDate);
         if (!payload.display_name) {
             viewState.studentError = '학생명은 필수입니다.';
             reopenPanelMountRoute();
