@@ -596,6 +596,12 @@
         return uniqueNames(values);
     }
 
+    function isEieOwnerSession() {
+        var role = String((window.localStorage && window.localStorage.getItem('WANGJI_EIE_ROLE')) || '').toLowerCase();
+        var loginId = String((window.localStorage && window.localStorage.getItem('WANGJI_EIE_LOGIN_ID')) || '').toLowerCase();
+        return role === 'admin' || role === 'owner' || loginId === 'admin';
+    }
+
     function studentStatus(row) {
         return normalizeKey(row?.status || 'active') || 'active';
     }
@@ -3085,11 +3091,6 @@
                                     <option value="archived"${studentStatus(student) === 'archived' ? ' selected' : ''}>보관</option>
                                 </select>
                             </label>
-                            <div class="eie-p-form-row">
-                                <button type="button" class="eie-p-btn-cancel" onclick="document.getElementById('eie-v2-edit-status').value='paused'">휴원 입력</button>
-                                <button type="button" class="eie-p-btn-danger" onclick="document.getElementById('eie-v2-edit-status').value='inactive'">퇴원 입력</button>
-                                <button type="button" class="eie-p-btn-cancel" onclick="document.getElementById('eie-v2-edit-status').value='active'">재원 복구</button>
-                            </div>
                             <label class="eie-p-form-field"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
                         </div>
                         <div class="eie-p-danger-zone">
@@ -3104,6 +3105,9 @@
                             <div class="eie-p-danger-actions">
                                 <button type="button" class="eie-p-btn-warn" data-eie-v2-student-transfer>전반</button>
                                 <button type="button" class="eie-p-btn-danger" data-eie-v2-retire-student="${esc(sid)}">퇴원</button>
+                                ${(isEieOwnerSession() && ['inactive', 'withdrawn', 'archived'].includes(studentStatus(student)))
+                                    ? `<button type="button" class="eie-p-btn-danger" data-eie-v2-hard-delete-student="${esc(sid)}">완전삭제</button>`
+                                    : ''}
                             </div>` : ''}
                         </div>
                     </details>
@@ -4165,6 +4169,13 @@
                 event.preventDefault();
                 event.stopPropagation();
                 retireMiniStudent(retireStudentButton.getAttribute('data-eie-v2-retire-student') || '');
+                return;
+            }
+            const hardDeleteButton = event.target.closest?.('[data-eie-v2-hard-delete-student]');
+            if (hardDeleteButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                hardDeleteMiniStudent(hardDeleteButton.getAttribute('data-eie-v2-hard-delete-student') || '');
                 return;
             }
             const refreshButton = event.target.closest?.('[data-eie-v2-refresh]');
@@ -5569,6 +5580,29 @@
             closeTimetableDetailPanel();
         } catch (error) {
             viewState.miniError = error?.message || '퇴원 처리에 실패했습니다.';
+        } finally {
+            viewState.miniSaving = false;
+            reopenPanelMountRoute();
+            clearMiniNoticeLater(2000);
+        }
+    }
+
+    async function hardDeleteMiniStudent(studentId) {
+        if (viewState.miniSaving || !isEieOwnerSession()) return;
+        const sid = normalizeKey(studentId);
+        const student = dbStudents().find(row => String(studentRowId(row)) === String(sid)) || null;
+        if (!sid || !student || !['inactive', 'withdrawn', 'archived'].includes(studentStatus(student)) || !window.EieApi?.deleteStudent) return;
+        if (!window.confirm('이 퇴원생을 완전히 삭제할까요?\n시간표 배정, 출석, 성적, 상담 기록도 함께 삭제되며 복구할 수 없습니다.')) return;
+        viewState.miniSaving = true;
+        viewState.miniError = '';
+        viewState.miniNotice = '';
+        try {
+            await window.EieApi.deleteStudent(sid);
+            if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+            await refreshTimetableRowsAfterMiniSave();
+            closeTimetableDetailPanel();
+        } catch (error) {
+            viewState.miniError = error?.message || '학생 완전삭제에 실패했습니다.';
         } finally {
             viewState.miniSaving = false;
             reopenPanelMountRoute();
