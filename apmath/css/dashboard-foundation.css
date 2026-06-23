@@ -641,6 +641,64 @@ body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-weekly-notice-cell {
   cursor: pointer;
 }
 
+.ap-dashboard-weekly-parity {
+  --ap-space-2: 8px;
+  --ap-space-3: 12px;
+  --ap-space-4: 16px;
+  --ap-space-5: 20px;
+  width: 100%;
+  margin: 0 0 20px;
+  padding: var(--ap-space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--ap-space-4);
+  background: var(--surface);
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.ap-dashboard-weekly-parity .ap-dash-card__title {
+  margin: 0 0 var(--ap-space-3);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ap-dashboard-weekly-parity .ap-weekly-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ap-space-2);
+}
+
+.ap-dashboard-weekly-parity .ap-split-cell {
+  min-width: 0;
+  padding: var(--ap-space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--ap-space-4);
+  background: var(--surface);
+  box-sizing: border-box;
+}
+
+.ap-dashboard-weekly-parity .ap-weekly-notice-cell {
+  cursor: pointer;
+}
+
+.ap-owner-weekly-parity-cell {
+  width: 100%;
+  max-width: 850px;
+}
+
+@media (min-width: 640px) {
+  .ap-dashboard-weekly-parity .ap-weekly-split {
+    grid-template-columns: minmax(150px, 2fr) minmax(0, 8fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ap-dashboard-weekly-parity {
+    padding: var(--ap-space-4);
+  }
+}
+
 body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-hover-source {
   position: relative !important;
   overflow: visible !important;

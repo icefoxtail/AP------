@@ -44,3 +44,13 @@ test('admin dashboard aggregates academy occurrences into one weekly item', () =
   assert.equal(result[0].range_end, '2026-07-03');
   assert.equal(result[0].occurrence_count, 3);
 });
+
+test('teacher and admin dashboards use the same weekly schedule renderer', () => {
+  const teacherSource = fs.readFileSync(path.join(root, 'apmath/js/dashboard.js'), 'utf8');
+  const adminSource = fs.readFileSync(path.join(root, 'apmath/js/dashboard-admin.js'), 'utf8');
+
+  assert.match(teacherSource, /function renderDashboardWeeklyScheduleSection/);
+  assert.match(teacherSource, /\$\{renderDashboardWeeklyScheduleSection\(todayStr\)\}/);
+  assert.match(adminSource, /renderDashboardWeeklyScheduleSection\(todayStr\)/);
+  assert.doesNotMatch(adminSource, /adminWeeklyItems/);
+});
