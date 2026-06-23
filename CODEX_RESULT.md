@@ -2,66 +2,57 @@
 
 ## 변경 파일
 
-- `eie/js/views/eie-timetable.js`
-  - 원장/관리자 세션 판정 헬퍼 추가.
-  - 퇴원/보관 학생에게만 시간표 학생 편집 패널의 `완전삭제` 버튼 노출.
-  - 완전삭제 클릭 위임과 `EieApi.deleteStudent` 호출 핸들러 추가.
-  - `휴원 입력`/`퇴원 입력`/`재원 복구` 상태 단축버튼 제거.
+- `eie/js/utils/eie-normalize.js`
+  - 신입 판정 컷오버 상수 `EIE_NEW_STUDENT_CUTOFF_DATE = '2026-06-23'`를 정의하고 `window.EIE_NEW_STUDENT_CUTOFF_DATE`로 노출.
+- `eie/js/views/eie-dashboard.js`
+  - 대시보드 신입 판정에 컷오버 이전 등원자 제외 조건 추가.
 - `eie/js/views/eie-students.js`
-  - `휴원 입력`/`퇴원 입력`/`재원 복구` 상태 단축버튼 제거.
-  - 전체 `eie/` 검색에서 다른 호출이 없어 `setEditStatus` 제거.
-- `tests/eie-student-worker-crud-parity.test.js`
-  - 상태 단축버튼 존재 계약을 상태 드롭다운 유지 계약으로 갱신.
+  - 학생관리 신입 판정에 컷오버 이전 등원자 제외 조건 추가.
+- `eie/js/views/eie-timetable.js`
+  - 시간표 신입 판정에 컷오버 조건 추가.
+  - quick-grid와 상세 basic 탭의 등원 저장 위젯을 첫 등원일 미등록 학생에게만 노출.
+  - 학생 수정 패널의 `보호자·메모` 서랍을 기본 펼침으로 변경.
 - `CODEX_RESULT.md`
-  - 이번 작업 결과와 검증 결과 기록.
+  - 이번 작업 및 검증 결과 기록.
 
-사용자 기존/동시 변경인 `CODEX_TASK.md`와 `apmath/js/*` 파일들은 수정하거나 정리하지 않았다.
+기존 작업 트리의 `CODEX_TASK.md`, `.vscode/tasks.json`, `archive/` 관련 변경은 수정하지 않았다.
 
-## 작업 1 — 시간표 패널 완전삭제
+## 작업 1 — 신입 판정 컷오버
 
-- owner 판정 헬퍼: `eie/js/views/eie-timetable.js:599`
-  - `WANGJI_EIE_ROLE`이 `admin`/`owner`이거나 로그인 ID가 `admin`인 경우만 허용.
-- 버튼 렌더: `eie/js/views/eie-timetable.js:3108`
-  - owner 세션이면서 상태가 `inactive`/`withdrawn`/`archived`인 학생에게만 노출.
-  - 기존 `eie-p-btn-danger` 스타일 재사용.
-- 클릭 위임: `eie/js/views/eie-timetable.js:4174`
-- 핸들러: `eie/js/views/eie-timetable.js:5590`
-  - owner 세션과 학생 상태를 다시 검사.
-  - 비가역 삭제 확인창 표시.
-  - `window.EieApi.deleteStudent(sid)` 호출 후 foundation과 시간표 목록 갱신 및 패널 닫기.
-  - 실패 시 기존 mini panel 오류 흐름 사용.
+- 공용 상수 위치: `eie/js/utils/eie-normalize.js:2`, 전역 노출 `:51`
+  - `eie/index.html`에서 공용 유틸이 세 뷰보다 먼저 defer 로드되는 것을 확인해 파일별 중복 대신 공용 노출 방식을 사용했다.
+- 대시보드 판정: `eie/js/views/eie-dashboard.js:122-129`
+- 학생관리 판정: `eie/js/views/eie-students.js:875-883`
+- 시간표 판정: `eie/js/views/eie-timetable.js:700-707`
+  - 기존 2개월 계산은 유지하고 `enrollDate >= cutoff` 조건만 AND로 추가했다.
 
-기존 전반 버튼(`:3106`), 퇴원 버튼(`:3107`), 퇴원 위임/핸들러는 변경하지 않았다.
+## 작업 2 — 등원 저장 1회성 UI
 
-## 작업 2 — 상태 단축버튼 제거
+- quick-grid: `eie/js/views/eie-timetable.js:2607-2676`
+  - 함수가 `sid`만 받으므로 `selectedStudentRecord()`로 현재 학생을 조회했다.
+  - 첫 등원일이 있으면 `첫 등원 {날짜}`만 표시하고, 없으면 기존 날짜 입력과 `등원 저장` 버튼을 표시한다.
+- 상세 basic 탭: `eie/js/views/eie-timetable.js:2878-2928`
+  - 전달받은 `student`에서 `studentEnrollDate(student)`를 조회해 동일 조건을 적용했다.
+- `saveStudentAttendanceFromPanel` 핸들러와 출석/첫 등원 기록 로직은 변경하지 않았다.
 
-- 시간표 패널
-  - 기존 상태 드롭다운은 `eie/js/views/eie-timetable.js:3086`에 유지.
-  - 드롭다운 아래 상태 단축버튼 3개 제거.
-- students 화면
-  - 학생 편집 폼의 상태 단축버튼 3개 제거.
-  - 상태 드롭다운 및 저장 payload는 유지.
-- `setEditStatus`
-  - 전체 `eie/`에서 `setEditStatus`, `EieStudentsView.setEditStatus` 참조가 0건임을 확인하고 제거.
-- 제거 문구 검색
-  - 전체 `eie/`에서 `휴원 입력`, `퇴원 입력`, `재원 복구` 검색 결과 0건.
-- 상태 저장 유지
-  - students: `eie/js/views/eie-students.js:2102`
-  - timetable: `eie/js/views/eie-timetable.js:5241`
-  - 퇴원 상태 저장 시 `withdrawn_at` 설정 경로 유지.
+## 작업 3 — 수정 패널 서랍 펼침
+
+- `eie/js/views/eie-timetable.js:3089`
+  - 수정 패널의 `<details class="eie-p-drawer">`에 `open`만 추가했다.
+  - 상세 모드의 기존 서랍은 접힌 상태로 유지했다.
 
 ## 검증 결과
 
 통과:
 
-- `node --check eie/js/views/eie-timetable.js`
+- `node --check eie/js/utils/eie-normalize.js`
+- `node --check eie/js/views/eie-dashboard.js`
 - `node --check eie/js/views/eie-students.js`
-- `node tests/eie-owner-hard-delete-student.test.js`
-  - `EIE owner hard-delete student test passed`
-- `node tests/eie-student-worker-crud-parity.test.js`
-  - `EIE student worker CRUD parity test passed`
+- `node --check eie/js/views/eie-timetable.js`
+- `node --test tests/eie-timetable-dual-mode.test.js tests/eie-timetable-edit-entry.test.js`
+  - 2 tests passed
 - `git diff --check`
-- 전체 `eie/` 단축버튼/미사용 함수 grep
+- 컷오버 조건, 수정 패널 `open`, 저장 핸들러 비변경 정적 확인
 
 실패:
 
@@ -72,11 +63,27 @@ Student mojibake guard failed:
 - student UI sources: required Korean phrase missing: "제적"
 ```
 
-이번 변경 대상이 아닌 `apmath/js/student.js`와 `apmath/js/student-edit.js`를 검사하는 기존 가드 실패이며, EIE 허용 범위를 벗어나 수정하지 않았다.
+지시서에 별개 기존 실패로 명시된 항목이며 이번 EIE 변경에서 신규 mojibake는 확인되지 않았다.
+
+- 관련 테스트 묶음 중 `tests/eie-timetable-withdrawn-students.test.js`
+
+```text
+AssertionError [ERR_ASSERTION]: new EIE student should use new class
+```
+
+fixture의 등원일 `2026-06-12`가 새 컷오버 `2026-06-23` 이전인데도 신입을 기대하는 기존 계약이므로 새 정책과 충돌한다. 허용 수정 범위가 `eie/` 프론트로 제한되어 테스트 파일은 변경하지 않았다.
+
+- 관련 테스트 묶음 중 `tests/eie-timetable-student-profile-ap-parity.test.js`
+
+```text
+AssertionError [ERR_ASSERTION]: mini classroom panel should not use heavy bold weights
+```
+
+이번 변경 대상이 아닌 CSS 굵기 계약 실패이며 관련 CSS는 수정하지 않았다.
 
 ## 미해결/판단 보류
 
-- 실제 로그인 세션을 이용한 수동 UI 및 DELETE 호출 E2E는 수행하지 못해 UNVERIFIED.
-- 하위 봇은 사용자 지시에 따라 사용하지 않았으며 B/C/D 독립 리뷰는 UNVERIFIED.
-- AP mojibake 가드의 기존 `제적` 누락은 후속 정리가 필요하다.
+- 실제 브라우저 데이터로 수행하는 수동 UI 확인은 미실행.
+- 새 컷오버 정책과 충돌하는 기존 신입 fixture 테스트는 후속 갱신이 필요하다.
+- 기존 CSS 굵기 테스트 실패와 mojibake 가드의 `"제적"` 누락은 별도 작업이 필요하다.
 - Git add/commit/push/deploy는 수행하지 않았다.

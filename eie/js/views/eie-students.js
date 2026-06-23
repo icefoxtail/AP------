@@ -877,6 +877,8 @@
         if (!enrollDate) return false;
         var today = dateFromIso(todayIso());
         if (!today) return false;
+        var cutoff = dateFromIso(window.EIE_NEW_STUDENT_CUTOFF_DATE);
+        if (cutoff && enrollDate < cutoff) return false;
         var from = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
         return enrollDate >= from && enrollDate <= today;
     }
