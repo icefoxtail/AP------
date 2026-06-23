@@ -295,7 +295,7 @@ async function openExamGradeView(classId) {
         </div>`;
     }).join('');
 
-    showModal('시험성적', `
+    showModal('원내평가', `
         <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
             <button class="btn apms-button apms-button--primary btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:500; border-radius: 12px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
         </div>

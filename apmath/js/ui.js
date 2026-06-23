@@ -799,9 +799,9 @@ function openManualCenter() {
 }
 
 function openExamScoreMenu() {
-    showModal('시험성적', `
+    showModal('원내평가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <button class="btn btn-primary" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px;" onclick="closeModal(); openGlobalExamGradeView();">원내 시험성적</button>
+            <button class="btn btn-primary" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px;" onclick="closeModal(); openGlobalExamGradeView();">원내평가</button>
             <button class="btn" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="closeModal(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else openCumulativeOpsModal('school');">학교 성적표</button>
         </div>
     `);
@@ -846,7 +846,7 @@ function buildDrawerMenu(roleKey) {
 
         ${drawerSection('평가')}
         ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('exam', '시험성적', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('시험성적 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('exam', '원내평가', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('원내평가 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('omr', 'OMR 입력', "closeAppDrawer(); if(typeof openOmrInput==='function') openOmrInput(); else toast('OMR 입력 기능을 불러오지 못했습니다.', 'warn');")}
 
         ${drawerSection('지원')}

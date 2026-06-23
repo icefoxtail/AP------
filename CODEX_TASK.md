@@ -1,152 +1,174 @@
-# EIE 대시보드 — 선생님 현황 "재원" 호버 전환 작업 지시서
+# EIE 학생 패널 — 완전삭제 추가 + 상태 단축버튼 제거 작업 지시서
 
-형님 지시: **EIE 대시보드 "선생님 현황" 카드에서 `담당반`/`재원` 클릭 이동을 없애고, `재원`은 호버 시 그 선생님이 담임인 반의 재원 인원수만 뜨게 한다.**
-
-- "선생님이 들어가는 수업 인원"이 아니라 **"담임을 맡고 있는 반의 재원 인원"** 이어야 함.
-- `재원` 호버 내용은 **총 인원수만** (상단 재원생 카드 같은 학년별 그리드 X).
-- `담당반`은 **클릭만 제거** — 카드 하단에 이미 교시별 담당 반이 뜨므로 그 부분에 대한 안내 라벨 역할.
+형님 지시: **EIE 시간표 학생 편집 패널에 원장/관리자 전용 "완전삭제(완전퇴원)" 버튼을 추가하고, 시간표 패널과 students 화면 양쪽의 중복 상태 단축버튼(`휴원 입력`/`퇴원 입력`/`재원 복구`)을 제거한다.**
 
 실행: Codex / 검수: Claude
 
 ---
 
-## 0. 현재 상태 기준 (확인된 사실)
+## 1. 목적
 
-- 대상 렌더: `eie/js/views/eie-dashboard.js` 의 `renderTeacherStatus(data)` (약 440행~).
-- 선생님 카드에 두 개의 클릭 버튼이 있음:
-  - **담당반** — `eie-dashboard.js:451`, `onclick="... openDashboardTeacherClassroom(name)"` → 교실(Classroom) 화면 이동.
-  - **재원** — `eie-dashboard.js:452`, `onclick="... openDashboardTeacherStudents(name)"` → 학생 화면(교사 필터) 이동.
-- 카드 하단 `renderTeacherPeriodRows`(`eie-dashboard.js:402`)에 이미 교시별 담당 반/인원이 표시됨.
-- 상단 "재원생 / 최근 등록 / 퇴원" 카드의 **호버 툴팁** 패턴:
-  - `renderEieOverviewStatCard(...)` (`eie-dashboard.js:630`)가 `.eie-owner-stat__tip` div를 만들고,
-  - CSS `eie/css/eie-dashboard-classroom.css:1715~1735` 에서 `:hover` / `:focus-within` 시 노출.
-- quick-action 버튼 CSS: `eie/css/eie-dashboard-classroom.css:67~85`.
-- 대시보드 roster: `DASHBOARD_TEACHER_ROSTER = ['Carmen','Zoe','IVY','STACY','Lily','Foreigner']` (`eie-dashboard.js:53`).
+- 원장/관리자용 "학생 완전삭제"는 현재 **students 화면에만** 있고, 시간표 학생 편집 패널에는 없다. 시간표 패널에서도 퇴원생을 완전삭제할 수 있게 한다.
+- `휴원 입력`/`퇴원 입력`/`재원 복구` 단축버튼은 상태 드롭다운 value만 바꾸는 **순수 중복 UI**(별도 저장 없음)이며, 상태 변경은 드롭다운+저장, 원클릭 퇴원은 danger-zone `퇴원` 버튼이 이미 담당하므로 제거한다.
 
-### 담임(담당) 판정 — 시간표와 동일하게
+---
 
-시간표 "담임 열"에 뜨는 사람 = `eie/js/views/eie-timetable.js:1079` 의 `getPrimaryTeacherName(cell)` 결과. 로직:
+## 2. 절대 금지
 
 ```text
-담임(cell) =
-  1) homeroom_teacher (cell.homeroom_teacher || raw.homeroom_teacher) 가 있고 Foreigner가 아니면 → 그 사람
-  2) 없으면: Foreigner 제외한 첫 교사명 → teacher_name_raw / teacher_name 폴백
-  3) 그래도 없으면 '미정'
+- git add / git commit / git push / deploy 금지. (작업 트리 변경까지만)
+- 백엔드/DB/마이그레이션 변경 금지 — 완전삭제 백엔드는 이미 완비됨(아래 5. 참고).
+- 완전삭제의 권한 정책 완화 금지: 반드시 owner(원장/관리자) 세션 + 퇴원/보관 상태 학생일 때만 노출.
+- EIE 외 다른 도메인(attendance/classroom/grade 등) 로직 변경 금지.
+- 카드/패널 레이아웃의 그 외 요소(전반/퇴원/저장/연락처/담당교사 등) 변경 금지.
+- 검수요청서 작성 금지.
 ```
-
-- raw 접근: 대시보드 셀은 API raw 셀이며 담임은 `raw_meta_json` 안 `homeroom_teacher` 로 실려옴. 대시보드에는 이미 `rawOfDashboard(cell)`(`eie-dashboard.js:279`) 헬퍼가 있음.
-- 사용할 기존 헬퍼: `classNameOfCell(cell)`(`:295`), `studentCountOfCell(cell)`(`:322`), `teacherKey(value)`(`:55`), `esc`, `uniqueNames`.
-- **이 판정 로직을 그대로 쓰면 "담임 폴백 포함 여부"는 따로 결정할 필요 없음.**
 
 ---
 
-## 1. 핵심 설계 결정
+## 3. 반드시 읽을 문서
 
-1. `재원` / `담당반` **둘 다 클릭 네비게이션 제거**. `<button onclick=...>` → 비클릭 요소.
-2. `재원` 은 **호버 트리거**로 전환 — 상단 stat 카드의 `.eie-owner-stat__tip` 패턴을 재사용해 "담임반 재원 N명" 한 줄(총 인원수만) 표시.
-3. `담당반` 은 **클릭만 제거한 안내 라벨**. 별도 툴팁/이동 없음 (하단 교시별 목록이 실제 담당 반 정보).
-4. 담임 판정은 **시간표 `getPrimaryTeacherName` 로직을 복제**해서 일관성 유지.
-5. 재원 인원은 **반 단위 중복 제거 후 합산** — 같은 반이 요일/교시별 여러 셀로 들어와 합산 시 부풀지 않게.
+- `docs/codex/CODEX_TASK_WRITING_RULE.md` (이 지시서 형식 근거)
+- 본 파일(`CODEX_TASK.md`)
 
 ---
 
-## 2. 단계별 작업 (모두 `eie/` 프론트 한정, 백엔드/DB 변경 없음)
+## 4. 반드시 확인할 파일 (현재 상태 기준 — 확인된 사실)
 
-### 1단계: 담임 판정 헬퍼 추가 (`eie/js/views/eie-dashboard.js`)
+### 참고용 기존 구현 (그대로 미러링, 수정 대상 아님)
+- `eie/js/views/eie-students.js:69` — `isOwnerSession()` (role admin/owner 또는 loginId admin)
+- `eie/js/views/eie-students.js:75` — `canHardDeleteStudent(student)` (owner && status ∈ inactive/withdrawn/archived)
+- `eie/js/views/eie-students.js:2065` — 완전삭제 버튼 렌더
+- `eie/js/views/eie-students.js:2614` — `hardDeleteStudent` 핸들러 (`EieApi.deleteStudent` 호출)
+- `eie/js/eie-api.js:290` — `deleteStudent(studentId)` → `DELETE students/:id`
 
-`renderTeacherStatus` 근처에 추가:
+### 수정 대상
+- `eie/js/views/eie-timetable.js`
+  - `:3088-3092` — 제거 대상 단축버튼 `<div class="eie-p-form-row">…휴원 입력/퇴원 입력/재원 복구…</div>`
+  - `:3103-3107` — danger-zone 액션 영역(현재 `전반`/`퇴원` 버튼). 여기에 완전삭제 추가.
+  - `:3081` 등 — 상태 헬퍼 `studentStatus(student)` 이미 존재(재사용).
+  - `:4163` 부근 — `data-eie-v2-retire-student` 클릭 위임 처리 블록(바로 아래에 완전삭제 위임 추가).
+  - `:5556` — `retireMiniStudent` (완전삭제 핸들러 미러링 기준).
+  - ⚠️ 이 파일에는 owner 판정 헬퍼가 **없음** → 신규 추가 필요.
+- `eie/js/views/eie-students.js`
+  - `:2056-2060` — 제거 대상 단축버튼 블록
+  - `:2562` — `setEditStatus` (단축버튼 제거 후 미사용 시 정리)
 
-1. `isForeignerTeacherName(name)` — `teacherKey(name)`가 `'foreigner'` 인지(또는 시간표의 `isForeignerTeacher`와 동일 기준) 판정.
-2. `primaryTeacherOfCell(cell)` — 위 "담임 판정" 로직 복제:
-   - `cell.homeroom_teacher || rawOfDashboard(cell).homeroom_teacher` 우선(Foreigner 제외),
-   - 없으면 Foreigner 제외 교사명(`teacher_names` / `teacher_name_raw` / `teacher_name`, cell·raw 양쪽), 폴백.
-   - 시간표 결과와 어긋나지 않게 `eie-timetable.js:1064~1087`(`getTeacherNames`/`getPrimaryTeacherName`)와 동일 우선순위 유지.
+### 서버 게이트(변경 불필요, 동작 확인용)
+- `workers/wangji-eie-worker/routes/eie.js:3541` — `DELETE /students/:id` 라우트, `requireEieOwner(teacher)` 게이트
+- `workers/wangji-eie-worker/routes/eie.js:3173` — `handleDeleteStudent` cascade 삭제(성적/상담/출석/담당/연락처/시간표 배정/학생)
+- `workers/wangji-eie-worker/index.js:118` — `verifyTeacher`가 owner→admin 정규화
 
-### 2단계: 담임반 재원 합산 헬퍼 (`eie/js/views/eie-dashboard.js`)
+---
 
-`homeroomStudentCountForTeacher(name, cells)`:
+## 5. 허용 수정 범위 (모두 `eie/` 프론트 한정)
 
-- `cells`에서 `teacherKey(primaryTeacherOfCell(cell)) === teacherKey(name)` 인 셀만 필터.
-- `classNameOfCell(cell)` 기준으로 **반 중복 제거**(같은 반 1회만 카운트).
-- 반별 `studentCountOfCell(cell)` 합산. (값 없으면 0으로 무시.)
-- 정수 합계 반환.
+### 작업 1 — 시간표 패널에 "완전삭제" 버튼 추가 (`eie/js/views/eie-timetable.js`)
 
-> 참고: `assigned_students` 명단이 있으면 학생 식별자 기준 dedup이 더 정확하지만, 기존 `studentCountOfCell`이 명단 우선 처리하므로 **반 단위 dedup + 합산**이면 충분.
-
-### 3단계: "재원" 버튼 → 비클릭 호버 (`eie-dashboard.js:452`)
-
-- `<button ... onclick="... openDashboardTeacherStudents(...)">재원</button>` 제거.
-- 대체: 비클릭 호버 요소 (예시)
-
-```html
-<span class="admin-teacher-card__quick-action admin-teacher-card__quick-action--hover"
-      tabindex="0" aria-label="${esc(name)} 담임반 재원">
-  재원
-  <span class="eie-owner-stat__tip eie-owner-stat__tip--inline">담임반 재원 ${esc(count)}명</span>
-</span>
-```
-
-- `count = homeroomStudentCountForTeacher(name, data.timetableCells)`. 0명도 "담임반 재원 0명"으로 표시.
-- 상단 카드의 `.eie-owner-stat__tip` 클래스를 재사용하되, 학년 그리드 없이 **텍스트 한 줄만**.
-
-### 4단계: "담당반" 버튼 → 비클릭 라벨 (`eie-dashboard.js:451`)
-
-- `onclick` 제거. `<button>` → `<span class="admin-teacher-card__quick-action admin-teacher-card__quick-action--static">담당반</span>`.
-- 이동/툴팁 없음. 하단 교시별 목록 안내 라벨 역할.
-
-### 5단계: CSS (`eie/css/eie-dashboard-classroom.css`)
-
-- `.admin-teacher-card__quick-action` 호버 요소가 툴팁 기준점이 되도록 `position: relative` 보장.
-- 비클릭이므로 `cursor: default` (호버 요소는 정보 강조만).
-- 인라인 툴팁 표시 규칙 추가(상단 `eie-owner-stat__tip` 규칙 재사용/복제):
-
-```css
-.eie-admin-home .admin-teacher-card__quick-action--hover { position: relative; cursor: default; }
-.eie-admin-home .admin-teacher-card__quick-action--hover .eie-owner-stat__tip--inline {
-  /* 카드 폭 좁으므로 버튼 기준 드롭다운, 안 잘리게 */
-  left: auto; right: 0; min-width: max-content; white-space: nowrap;
+**1-1. owner 판정 헬퍼 추가** (`eie-students.js:69`와 동일 규칙):
+```js
+function isEieOwnerSession() {
+    var role = String((window.localStorage && window.localStorage.getItem('WANGJI_EIE_ROLE')) || '').toLowerCase();
+    var loginId = String((window.localStorage && window.localStorage.getItem('WANGJI_EIE_LOGIN_ID')) || '').toLowerCase();
+    return role === 'admin' || role === 'owner' || loginId === 'admin';
 }
-.eie-admin-home .admin-teacher-card__quick-action--hover:hover .eie-owner-stat__tip,
-.eie-admin-home .admin-teacher-card__quick-action--hover:focus-within .eie-owner-stat__tip {
-  opacity: 1; transform: translateY(0);
+```
+
+**1-2. danger-zone에 버튼 추가** (`:3103-3107`, `전반`/`퇴원` 옆). owner 세션 && status ∈ inactive/withdrawn/archived 일 때만:
+```js
+${(isEieOwnerSession() && ['inactive','withdrawn','archived'].includes(studentStatus(student)))
+    ? `<button type="button" class="eie-p-btn-danger" data-eie-v2-hard-delete-student="${esc(sid)}">완전삭제</button>`
+    : ''}
+```
+
+**1-3. 클릭 위임 추가** (`:4163` 부근 retire 처리 블록 바로 아래):
+```js
+const hardDeleteButton = event.target.closest?.('[data-eie-v2-hard-delete-student]');
+if (hardDeleteButton) {
+    event.preventDefault();
+    event.stopPropagation();
+    hardDeleteMiniStudent(hardDeleteButton.getAttribute('data-eie-v2-hard-delete-student') || '');
+    return;
 }
-.eie-admin-home .admin-teacher-card__quick-action--static { cursor: default; }
 ```
 
-> 기존 `.eie-owner-stat__tip` 의 `position:absolute; top:calc(100%+8px)` 등이 그대로 적용되도록 셀렉터를 맞출 것. 카드가 좁아 좌우로 잘리면 `right:0` 기준 정렬 + `min-width:max-content`.
+**1-4. 핸들러 추가** (`retireMiniStudent` `:5556` 미러링 + owner 재확인 + `EieApi.deleteStudent`):
+```js
+async function hardDeleteMiniStudent(studentId) {
+    if (viewState.miniSaving || !isEieOwnerSession()) return;
+    const sid = normalizeKey(studentId);
+    if (!sid || !window.EieApi?.deleteStudent) return;
+    if (!window.confirm('이 퇴원생을 완전히 삭제할까요?\n시간표 배정, 출석, 성적, 상담 기록도 함께 삭제되며 복구할 수 없습니다.')) return;
+    viewState.miniSaving = true;
+    viewState.miniError = '';
+    viewState.miniNotice = '';
+    try {
+        await window.EieApi.deleteStudent(sid);
+        if (window.EieApmsState?.loadFoundation) await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        await refreshTimetableRowsAfterMiniSave();
+        closeTimetableDetailPanel();
+    } catch (error) {
+        viewState.miniError = error?.message || '학생 완전삭제에 실패했습니다.';
+    } finally {
+        viewState.miniSaving = false;
+        reopenPanelMountRoute();
+        clearMiniNoticeLater(2000);
+    }
+}
+```
 
-### 6단계: 미사용 함수 정리
+### 작업 2 — 중복 상태 단축버튼 제거 (양쪽 화면)
 
-- `openDashboardTeacherClassroom`(`:424`) / `openDashboardTeacherStudents`(`:432`) 가 이 카드 외 **다른 사용처가 없는지** `eie/` 전체 검색.
-  - 없으면 제거. 있으면(다른 진입점에서 호출) **그대로 유지**.
+**2-1. 시간표 패널**: `eie/js/views/eie-timetable.js:3088-3092` 의 `<div class="eie-p-form-row">…휴원 입력/퇴원 입력/재원 복구…</div>` 블록 삭제.
+
+**2-2. students 화면**: `eie/js/views/eie-students.js:2056-2060` 의 `isEdit ? '<div class="eie-action-row is-wide">…휴원 입력/퇴원 입력/재원 복구…</div>' : ''` 블록 삭제.
+- 삭제 후 `eie/js/views/eie-students.js:2562` 의 `setEditStatus`가 더 이상 호출되지 않으면(전체 `eie/` grep으로 참조 확인) 함께 제거. 다른 사용처가 있으면 유지.
+
+> 상태 변경 경로는 드롭다운 + 패널 `저장`으로 유지되고, 원클릭 퇴원은 danger-zone `퇴원`(`data-eie-v2-retire-student`)이 담당하므로 기능 손실 없음.
 
 ---
 
-## 3. 변경 금지 / 주의
+## 6. 제외 범위
 
 ```text
-- EIE 외 다른 화면(timetable/classroom/students/attendance) 로직 변경 금지.
-- 담임 판정은 반드시 시간표 getPrimaryTeacherName와 동일 결과여야 함(불일치 시 형님 혼란).
-- 백엔드/DB/마이그레이션 변경 없음 (순수 프론트 표시 변경).
-- 카드 레이아웃·다른 카드(재원생/최근등록/퇴원 상단 카드)는 건드리지 말 것.
-- 0명일 때도 깨지지 않게(툴팁 정상 표시).
+- 완전삭제를 재원/휴원/확인필요 상태나 교사 세션에 노출하지 말 것.
+- danger-zone의 전반/퇴원 동작 변경 금지(완전삭제만 신규 추가).
+- 단축버튼 "기능화"(원클릭 저장 등)는 이번 범위 아님 — 제거만 한다.
+- CSS는 기존 `eie-p-btn-danger` 클래스 재사용. 신규 스타일 추가 불필요(필요 최소만).
 ```
 
 ---
 
-## 4. 검수 체크리스트 (완료 후 Claude 검수용)
+## 7. 검증 명령
 
 ```text
-[ ] 선생님 카드의 "재원" 클릭 시 더 이상 화면 이동 안 됨
-[ ] 선생님 카드의 "담당반" 클릭 시 더 이상 화면 이동 안 됨
-[ ] "재원"에 마우스 호버 시 "담임반 재원 N명" 툴팁 표시 (총 인원수만)
-[ ] 표시되는 N = 그 선생님이 "담임"인 반들의 재원 합계 (= 시간표 담임 열 기준)
-[ ] "선생님이 들어가기만 하는 수업"은 N에 포함되지 않음
-[ ] 같은 반이 여러 요일/교시로 있어도 중복 합산되지 않음
-[ ] Foreigner 등은 담임 판정에서 제외되어 시간표와 동일
-[ ] 0명 선생님도 툴팁 정상("담임반 재원 0명"), 레이아웃 안 깨짐
-[ ] 키보드 포커스(tab)로도 툴팁 노출(:focus-within)
-[ ] 카드 폭에서 툴팁이 잘리지 않음(좌우/하단)
-[ ] openDashboardTeacherClassroom/Students 미사용 시 제거, 사용 중이면 유지(회귀 없음)
-[ ] EIE 다른 화면 회귀 없음
+- 한글 인코딩(mojibake) 가드: tools/test-student-js-mojibake-guard.mjs 실행해 통과 확인.
+- 관련 기존 테스트 실행:
+    tests/eie-owner-hard-delete-student.test.js
+    tests/eie-student-worker-crud-parity.test.js
+- (프로젝트 표준 테스트 러너로 위 테스트가 녹색인지 확인. 회귀 없을 것.)
+```
+
+수동 확인:
+```text
+[ ] 원장/관리자 세션 + 퇴원/보관 학생 → 시간표 패널 danger-zone에 "완전삭제" 노출
+[ ] 재원/휴원/확인필요 또는 교사 세션 → "완전삭제" 미노출
+[ ] 완전삭제 → 확인창 → 확정 시 DELETE /api/eie/students/:id 호출, 패널 닫힘 + 시간표/명단 갱신(학생 사라짐)
+[ ] 시간표 패널 / students 화면 모두 휴원·퇴원·재원복구 단축버튼 사라짐
+[ ] 상태 변경(드롭다운+저장), 원클릭 퇴원(danger-zone) 정상 동작
+[ ] 교사 세션 기존 동작(전반/퇴원/저장) 회귀 없음
+```
+
+---
+
+## 8. `CODEX_RESULT.md` 작성 기준
+
+작업 완료 후 `CODEX_RESULT.md`에 다음을 기록:
+
+```text
+- 변경 파일 목록 + 각 파일에서 한 일 요약
+- 작업 1(완전삭제 추가): 추가한 헬퍼/렌더/위임/핸들러 위치(라인)
+- 작업 2(단축버튼 제거): 시간표/students 제거 위치, setEditStatus 처리(제거/유지) 및 판단 근거(grep 결과)
+- 검증 명령 실행 결과(통과/실패, 실패 시 원문)
+- 미해결/판단 보류 항목(있으면)
 ```
