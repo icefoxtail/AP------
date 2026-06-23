@@ -701,8 +701,10 @@
         if (!row || isPausedStudent(row) || isWithdrawnStudent(row)) return false;
         const enrollDate = normalizeTimetableDate(studentEnrollDate(row));
         const current = normalizeTimetableDate(today || timetableTodayDate());
-        const cutoff = timetableTwoMonthsAgo(today);
-        return Boolean(enrollDate && current && cutoff && enrollDate <= current && enrollDate >= cutoff);
+        const cutoffTwoMonths = timetableTwoMonthsAgo(today);
+        const cutoff = normalizeTimetableDate(window.EIE_NEW_STUDENT_CUTOFF_DATE);
+        return Boolean(enrollDate && current && cutoffTwoMonths && cutoff
+            && enrollDate <= current && enrollDate >= cutoffTwoMonths && enrollDate >= cutoff);
     }
 
     function shouldShowTimetableStudent(row) {
@@ -2604,6 +2606,8 @@
 
     function renderStudentQuickRecords(sid) {
         if (!sid) return '';
+        const student = selectedStudentRecord();
+        const enrollDate = studentEnrollDate(student);
         const rows = consultationRowsForStudent(sid).slice(0, 5);
         const selected = selectedPanelConsultation(rows);
         const selectedId = consultationRowId(selected);
@@ -2663,11 +2667,13 @@
                     `}
                 </div>
                 <div class="eie-v2-student-quick-grid">
-                    <label class="eie-v2-student-quick-field">
-                        <span>등원일</span>
-                        <input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}">
-                    </label>
-                    <button type="button" class="eie-p-btn-save" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-attendance-date">등원 저장</button>
+                    ${enrollDate
+                        ? `<span class="eie-p-enroll-done">첫 등원 ${esc(enrollDate)}</span>`
+                        : `<label class="eie-v2-student-quick-field">
+                            <span>등원일</span>
+                            <input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}">
+                        </label>
+                        <button type="button" class="eie-p-btn-save" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-attendance-date">등원 저장</button>`}
                 </div>
             </div>
         `;
@@ -2871,6 +2877,7 @@
 
     function renderStudentBasicPanel(student, sid) {
         const session = selectedSessionRecord();
+        const enrollDate = studentEnrollDate(student);
         const recentClass = session ? [session.period_label, session.material].filter(Boolean).join(' · ') : '';
         const latestConsultation = consultationRowsForStudent(sid)[0];
         const latestConsultationText = latestConsultation
@@ -2915,8 +2922,10 @@
                         </div>
                     </div>
                     <div class="eie-v2-ap-attendance-save">
-                        <label><span>등원일</span><input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}"></label>
-                        ${sid ? `<button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-attendance-date">등원 저장</button>` : ''}
+                        ${enrollDate
+                            ? `<span class="eie-p-enroll-done">첫 등원 ${esc(enrollDate)}</span>`
+                            : `<label><span>등원일</span><input id="eie-v2-attendance-date" type="date" value="${esc(todayIso())}"></label>
+                            ${sid ? `<button type="button" class="eie-v2-ap-mini-btn is-primary" data-eie-v2-attendance-save="${esc(sid)}" data-eie-v2-attendance-date-input="eie-v2-attendance-date">등원 저장</button>` : ''}`}
                     </div>
                 </section>
             </div>
@@ -3077,7 +3086,7 @@
                         ${renderStudentTeacherPicker(student)}
                     </div>
                     <span class="eie-p-section-label">추가 정보</span>
-                    <details class="eie-p-drawer">
+                    <details class="eie-p-drawer" open>
                         <summary class="eie-p-drawer-trigger">보호자·메모<span class="eie-p-drawer-caret" aria-hidden="true">⌄</span></summary>
                         <div class="eie-p-drawer-body">
                             <label class="eie-p-form-field"><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>

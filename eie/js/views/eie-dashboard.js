@@ -123,6 +123,8 @@
         const enrollDate = dateFromIso(dashboardEnrollDateOf(row));
         const today = dateFromIso(todayIso());
         if (!enrollDate || !today) return false;
+        const cutoff = dateFromIso(window.EIE_NEW_STUDENT_CUTOFF_DATE);
+        if (cutoff && enrollDate < cutoff) return false;
         const from = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
         return enrollDate >= from && enrollDate <= today;
     }

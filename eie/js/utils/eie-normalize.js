@@ -1,4 +1,6 @@
 (function () {
+    const EIE_NEW_STUDENT_CUTOFF_DATE = '2026-06-23';
+
     function normalizeText(value) {
         return String(value || '').trim().replace(/\s+/g, ' ');
     }
@@ -46,4 +48,5 @@
         extractPhoneCandidates,
         stripPhoneFromText
     };
+    window.EIE_NEW_STUDENT_CUTOFF_DATE = EIE_NEW_STUDENT_CUTOFF_DATE;
 })();
