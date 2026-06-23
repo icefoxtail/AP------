@@ -1475,7 +1475,7 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
             <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassRecordModal('${cid}')">진도</button>
             <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제</button>
             <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openQrGenerator('${cid}')">QR/OMR</button>
-            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openExamGradeView('${cid}')">시험성적</button>
+            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openExamGradeView('${cid}')">원내평가</button>
             <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="if(typeof openClinicCenter==='function') openClinicCenter('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
             ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
         </div>
