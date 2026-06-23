@@ -4,10 +4,8 @@
         {
             "label": "Build archive DB",
             "type": "process",
-            "command": "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
-            "args": [
-                "${workspaceFolder}\\archive\\build_db.py"
-            ],
+            "command": "${workspaceFolder}\\build_archive_db.cmd",
+            "args": [],
             "options": {
                 "cwd": "${workspaceFolder}"
             },

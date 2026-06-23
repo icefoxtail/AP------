@@ -1,89 +1,96 @@
 # CODEX_RESULT
 
-## 변경 파일
+## 생성/수정 파일
 
-- `eie/js/utils/eie-normalize.js`
-  - 신입 판정 컷오버 상수 `EIE_NEW_STUDENT_CUTOFF_DATE = '2026-06-23'`를 정의하고 `window.EIE_NEW_STUDENT_CUTOFF_DATE`로 노출.
-- `eie/js/views/eie-dashboard.js`
-  - 대시보드 신입 판정에 컷오버 이전 등원자 제외 조건 추가.
-- `eie/js/views/eie-students.js`
-  - 학생관리 신입 판정에 컷오버 이전 등원자 제외 조건 추가.
-- `eie/js/views/eie-timetable.js`
-  - 시간표 신입 판정에 컷오버 조건 추가.
-  - quick-grid와 상세 basic 탭의 등원 저장 위젯을 첫 등원일 미등록 학생에게만 노출.
-  - 학생 수정 패널의 `보호자·메모` 서랍을 기본 펼침으로 변경.
+- `tools/backfill-academy-schedule-series.mjs`
+  - 원격 D1의 `academy_schedules`를 읽는 CLI와 순수 그룹핑 함수 `buildSeriesBackfill(rows)` 구현.
+  - `--dry-run`에서는 파일을 쓰지 않고 시리즈 수, row 수, 예시만 출력.
+  - 일반 실행에서는 백필 SQL과 롤백 SQL을 `migrations/`에 생성.
+- `tests/backfill-academy-schedule-series.test.mjs`
+  - 연속 3일, 날짜 틈, 시그니처 분리, 단일 일정, 기존 시리즈 제외, 삭제 row 제외, 멱등성, 월 경계 등 8개 케이스 추가.
+- `migrations/20260623_academy_schedules_series_backfill.sql`
+  - `2026-07-29 ~ 2026-07-31` 여름방학 3개 row에 공유 `series_id`, `series_kind='range'`, `series_until='2026-07-31'`을 부여하는 SQL.
+- `migrations/20260623_academy_schedules_series_backfill_rollback.sql`
+  - 위 3개 row를 `series_id=id`, `series_kind='single'`, `series_until=NULL`로 되돌리는 SQL.
 - `CODEX_RESULT.md`
-  - 이번 작업 및 검증 결과 기록.
+  - 이번 작업과 검증 결과 기록.
 
-기존 작업 트리의 `CODEX_TASK.md`, `.vscode/tasks.json`, `archive/` 관련 변경은 수정하지 않았다.
+기존 작업 트리의 `.vscode/`, `archive/`, `eie/`, `CODEX_TASK.md` 변경은 수정하지 않았다. 금지된 프론트, 백엔드 라우트, 스키마 마이그레이션 파일도 변경하지 않았다.
 
-## 작업 1 — 신입 판정 컷오버
+## 구현 요약
 
-- 공용 상수 위치: `eie/js/utils/eie-normalize.js:2`, 전역 노출 `:51`
-  - `eie/index.html`에서 공용 유틸이 세 뷰보다 먼저 defer 로드되는 것을 확인해 파일별 중복 대신 공용 노출 방식을 사용했다.
-- 대시보드 판정: `eie/js/views/eie-dashboard.js:122-129`
-- 학생관리 판정: `eie/js/views/eie-students.js:875-883`
-- 시간표 판정: `eie/js/views/eie-timetable.js:700-707`
-  - 기존 2개월 계산은 유지하고 `enrollDate >= cutoff` 조건만 AND로 추가했다.
+- 후보는 `is_deleted=0`이고 `series_id`가 비었거나 `series_id === id`인 row로 제한했다.
+- `schedule_type`, trim한 `title`, `start_time`, `end_time`, `memo`, `target_scope`, `student_id`가 모두 같은 row만 같은 시그니처로 묶었다.
+- 각 시그니처를 날짜순으로 정렬하고 UTC 달력 기준 하루 차이인 연속 run만 연결했다.
+- 길이 2 이상 run에만 `srs_bf_<timestamp>_<rand>` 형식의 공유 ID와 `range` 메타를 생성했다.
+- 백필 후에는 `series_id !== id`가 되므로 같은 입력을 재실행해도 후보에서 제외된다.
+- SQL에는 검증된 `acs_`/`srs_` ID만 사용하고 작은따옴표를 이스케이프한다.
 
-## 작업 2 — 등원 저장 1회성 UI
+## dry-run 및 SQL 통계
 
-- quick-grid: `eie/js/views/eie-timetable.js:2607-2676`
-  - 함수가 `sid`만 받으므로 `selectedStudentRecord()`로 현재 학생을 조회했다.
-  - 첫 등원일이 있으면 `첫 등원 {날짜}`만 표시하고, 없으면 기존 날짜 입력과 `등원 저장` 버튼을 표시한다.
-- 상세 basic 탭: `eie/js/views/eie-timetable.js:2878-2928`
-  - 전달받은 `student`에서 `studentEnrollDate(student)`를 조회해 동일 조건을 적용했다.
-- `saveStudentAttendanceFromPanel` 핸들러와 출석/첫 등원 기록 로직은 변경하지 않았다.
+원격 D1 `ap-math-os` 읽기 결과:
 
-## 작업 3 — 수정 패널 서랍 펼침
+```text
+묶일 시리즈 수: 1
+대상 row 수: 3
+- 2026-07-29 ~ 2026-07-31 / 3건
+  schedule_type=closed, title=여름방학, target_scope=global
+```
 
-- `eie/js/views/eie-timetable.js:3089`
-  - 수정 패널의 `<details class="eie-p-drawer">`에 `open`만 추가했다.
-  - 상세 모드의 기존 서랍은 접힌 상태로 유지했다.
+생성 파일:
+
+- `migrations/20260623_academy_schedules_series_backfill.sql`
+- `migrations/20260623_academy_schedules_series_backfill_rollback.sql`
+
+백필 대상 ID:
+
+```text
+acs_1779952705053
+acs_1779952705724
+acs_1779952705989
+```
+
+생성된 공유 ID:
+
+```text
+srs_bf_1782212906561_va4myi
+```
 
 ## 검증 결과
 
 통과:
 
-- `node --check eie/js/utils/eie-normalize.js`
-- `node --check eie/js/views/eie-dashboard.js`
-- `node --check eie/js/views/eie-students.js`
-- `node --check eie/js/views/eie-timetable.js`
-- `node --test tests/eie-timetable-dual-mode.test.js tests/eie-timetable-edit-entry.test.js`
-  - 2 tests passed
-- `git diff --check`
-- 컷오버 조건, 수정 패널 `open`, 저장 핸들러 비변경 정적 확인
-
-실패:
-
-- `node tools/test-student-js-mojibake-guard.mjs`
-
 ```text
-Student mojibake guard failed:
-- student UI sources: required Korean phrase missing: "제적"
+node --check tools/backfill-academy-schedule-series.mjs
+node --test tests/backfill-academy-schedule-series.test.mjs
+  8 tests passed, 0 failed
+node tools/backfill-academy-schedule-series.mjs --dry-run
+  원격 D1 읽기 성공, 1 series / 3 rows
 ```
 
-지시서에 별개 기존 실패로 명시된 항목이며 이번 EIE 변경에서 신규 mojibake는 확인되지 않았다.
+## 운영 적용 결과
 
-- 관련 테스트 묶음 중 `tests/eie-timetable-withdrawn-students.test.js`
+- 운영 D1 스키마 확인:
+  - `series_id`, `series_kind`, `series_until` 컬럼과 `idx_academy_schedules_series` 인덱스가 이미 존재해 스키마 SQL은 중복 적용하지 않았다.
+- 적용 전 전체 백업:
+  - `_tmp/ap-math-os_before_schedule_series_20260623_201722.sql`
+- 백필 SQL 적용 완료:
+  - 대상 3개 row가 모두 `srs_bf_1782212906561_va4myi`, `range`, `2026-07-31`로 저장됨.
+  - 적용 후 dry-run 결과: `0 series / 0 rows`로 멱등성 확인.
+- 워커 배포 완료:
+  - Worker: `ap-math-os-v2612`
+  - URL: `https://ap-math-os-v2612.js-pdf.workers.dev`
+  - Version ID: `36c8b8f3-4650-4ee1-929b-63aea859e307`
+- 일정 시리즈 관련 회귀 테스트:
+  - 24 tests passed, 0 failed.
 
-```text
-AssertionError [ERR_ASSERTION]: new EIE student should use new class
-```
+## 다음 조치
 
-fixture의 등원일 `2026-06-12`가 새 컷오버 `2026-06-23` 이전인데도 신입을 기대하는 기존 계약이므로 새 정책과 충돌한다. 허용 수정 범위가 `eie/` 프론트로 제한되어 테스트 파일은 변경하지 않았다.
+1. 지시서의 일정 목록/시리즈 전체 수정·삭제 수동 확인 수행.
 
-- 관련 테스트 묶음 중 `tests/eie-timetable-student-profile-ap-parity.test.js`
-
-```text
-AssertionError [ERR_ASSERTION]: mini classroom panel should not use heavy bold weights
-```
-
-이번 변경 대상이 아닌 CSS 굵기 계약 실패이며 관련 CSS는 수정하지 않았다.
+문제 발생 시 `migrations/20260623_academy_schedules_series_backfill_rollback.sql`로 메타를 원복한다.
 
 ## 미해결/판단 보류
 
-- 실제 브라우저 데이터로 수행하는 수동 UI 확인은 미실행.
-- 새 컷오버 정책과 충돌하는 기존 신입 fixture 테스트는 후속 갱신이 필요하다.
-- 기존 CSS 굵기 테스트 실패와 mojibake 가드의 `"제적"` 누락은 별도 작업이 필요하다.
-- Git add/commit/push/deploy는 수행하지 않았다.
+- 없음.
+- 수동 브라우저 UI 확인은 별도로 필요하다.
