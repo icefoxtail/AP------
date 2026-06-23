@@ -81,18 +81,16 @@ assert(
 
 assert(
   studentsView.includes('value="paused"') &&
-    studentsView.includes('휴원 입력') &&
-    studentsView.includes('퇴원 입력') &&
+    studentsView.includes('value="inactive"') &&
     studentsView.includes('payload.withdrawn_at = todayIso()'),
-  'EIE student edit page should expose leave/withdraw buttons and send withdrawn_at for withdrawn students'
+  'EIE student edit page should offer leave/withdraw via the status dropdown and send withdrawn_at for withdrawn students'
 );
 
 assert(
   timetableView.includes('value="paused"') &&
-    timetableView.includes('휴원 입력') &&
-    timetableView.includes('퇴원 입력') &&
+    timetableView.includes('value="inactive"') &&
     timetableView.includes('payload.withdrawn_at = todayIso()'),
-  'EIE timetable student edit panel should expose leave/withdraw buttons and send withdrawn_at for withdrawn students'
+  'EIE timetable student edit panel should offer leave/withdraw via the status dropdown and send withdrawn_at for withdrawn students'
 );
 
 console.log('EIE student worker CRUD parity test passed');

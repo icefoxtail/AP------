@@ -2053,11 +2053,6 @@
             + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>퇴원</option>'
             + '<option value="needs_review"' + (status === 'needs_review' ? ' selected' : '') + '>확인 필요</option>'
             + '</select></label>'
-            + (isEdit ? '<div class="eie-action-row is-wide">'
-                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'paused\')">휴원 입력</button>'
-                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'inactive\')">퇴원 입력</button>'
-                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.setEditStatus(\'active\')">재원 복구</button>'
-                + '</div>' : '')
             + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo">' + esc(isEdit ? memoOf(student) : '') + '</textarea></label>'
             + '<div class="eie-action-row is-wide">'
             + '<button type="button" class="eie-primary-button" onclick="' + (isEdit ? 'EieStudentsView.submitEdit(' + jsArg(sid) + ')' : 'EieStudentsView.submitCreate()') + '" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : '저장') + '</button>'
@@ -2557,11 +2552,6 @@
         cancelEdit: function () {
             _mode = 'detail';
             refreshStudentsView();
-        },
-
-        setEditStatus: function (status) {
-            var el = document.getElementById('edit-status');
-            if (el) el.value = text(status) || 'active';
         },
 
         submitEdit: async function (studentId) {
