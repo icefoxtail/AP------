@@ -798,6 +798,8 @@ function renderUnifiedScheduleList(options = {}) {
     }).join('');
 }
 function openExamScheduleModal(baseDateStr = '') {
+    if (typeof clearModalSteps === 'function') clearModalSteps();
+
     const todayStr = new Date().toLocaleDateString('sv-SE');
 
     if (!state.ui) state.ui = {};
@@ -1018,7 +1020,7 @@ function openEditUnifiedScheduleModal(kind, id, seriesId = '') {
 
     const isSeries = kind !== 'exam' && item.occurrence_count > 1;
     const mutationSeriesArg = item.series_id || '';
-    showModal('일정 수정', `
+    showModalStep('일정 수정', `
         <style>
             .unified-schedule-modal .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
             .unified-schedule-modal .exam-schedule-row { display:flex; gap:10px; width:100%; }
@@ -1038,9 +1040,8 @@ function openEditUnifiedScheduleModal(kind, id, seriesId = '') {
             <label><input type="radio" name="edit-sch-scope" value="one" onchange="handleUnifiedScheduleScopeChange()"> 이 날짜만</label>
             <label><input type="radio" name="edit-sch-scope" value="series" checked onchange="handleUnifiedScheduleScopeChange()"> 시리즈 전체</label>
         </div>` : ''}
-        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(mutationSeriesArg)}')">수정 저장</button>
         <div class="exam-schedule-row">
-            <button class="btn ap-mid-btn" style="border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
+            <button class="btn btn-primary ap-primary-btn" onclick="handleEditUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(mutationSeriesArg)}')">저장</button>
             <button class="btn ap-mid-btn" style="color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="deleteUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(mutationSeriesArg)}')">삭제</button>
         </div>
         </div>
@@ -1067,7 +1068,7 @@ function openGroupedExamScheduleActionModal(occurrenceIdsText, selectedOccurrenc
     const singleEditLabel = selectedDate ? '이 날짜만 수정' : '시작일만 수정';
     const singleDeleteLabel = selectedDate ? '이 날짜만 삭제' : '시작일만 삭제';
 
-    showModal('기간 시험 작업 선택', `
+    showModalStep('기간 시험 작업 선택', `
         <div class="unified-schedule-modal">
             <div style="padding:4px 0 14px;">
                 <div style="font-size:15px; font-weight:600; line-height:1.45; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(title)}</div>
@@ -1079,7 +1080,6 @@ function openGroupedExamScheduleActionModal(occurrenceIdsText, selectedOccurrenc
                 <button class="btn btn-primary ap-primary-btn" style="width:100%;" onclick="openEditGroupedExamScheduleModal('${idsArg}')">전체 기간 수정</button>
                 <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface-2); color:var(--error);" onclick="deleteUnifiedSchedule('exam', '${apEscapeHtml(selectedId)}')">${apEscapeHtml(singleDeleteLabel)}${actionDateText ? `: ${apEscapeHtml(actionDateText)}` : ''}</button>
                 <button class="btn ap-mid-btn" style="width:100%; border:none; background:rgba(255,71,87,0.1); color:var(--error);" onclick="deleteGroupedExamSchedule('${idsArg}')">전체 기간 삭제</button>
-                <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
             </div>
         </div>
     `);
@@ -1091,7 +1091,7 @@ function openEditGroupedExamScheduleModal(occurrenceIdsText) {
     if (!item) return toast('기간 시험 정보를 찾지 못했습니다.', 'error');
 
     const idsArg = occurrenceIds.map(id => apEscapeHtml(id)).join(',');
-    showModal('기간 시험 전체 수정', `
+    showModalStep('기간 시험 전체 수정', `
         <style>
             .unified-schedule-modal .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
             .unified-schedule-modal .exam-schedule-row { display:flex; gap:10px; width:100%; }
@@ -1105,8 +1105,7 @@ function openEditGroupedExamScheduleModal(occurrenceIdsText) {
         </style>
         <div class="unified-schedule-modal">
             ${renderUnifiedScheduleForm('edit-sch', item, { isEdit: true })}
-            <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditGroupedExamSchedule('${idsArg}')">전체 기간 저장</button>
-            <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
+            <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditGroupedExamSchedule('${idsArg}')">저장</button>
         </div>
     `);
     handleUnifiedScheduleTypeChange('edit-sch');
