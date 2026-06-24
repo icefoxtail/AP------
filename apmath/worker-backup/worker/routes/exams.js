@@ -21,7 +21,7 @@ async function requireTeacher(request, env, teacher) {
   return teacher || await verifyAuth(request, env);
 }
 
-const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignment_batch_id', 'target_scope'];
+const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignment_batch_id', 'target_scope', 'subject'];
 const EXAM_SESSION_META_COLUMNS = ['assignment_id', 'pack_id', 'result_hash', 'analysis_status'];
 const BLUEPRINT_META_COLUMNS = ['assessment_pack_id', 'type_key', 'difficulty'];
 const RESULT_ITEM_COLUMNS = [
@@ -54,6 +54,50 @@ function normalizeAssignmentArchiveFile(value) {
   if (/^(exams|assets|data)\//.test(path)) return path;
   if (!path.endsWith('.js')) path += '.js';
   return `exams/${path}`;
+}
+
+function normalizeAssignmentSubject(raw) {
+  let text = String(raw || '').trim();
+  if (!text) return null;
+  text = text.replace(/\s+/g, '');
+  text = text.replace(/^기출/i, '');
+  text = text.replace(/^[Cc]/, '').replace(/[Cc]$/, '');
+  text = text.trim();
+  if (!text) return null;
+
+  const directMap = new Map([
+    ['대수', '대수'],
+    ['미적분Ⅱ', '미적분Ⅱ'],
+    ['미적분II', '미적분Ⅱ'],
+    ['미적분2', '미적분Ⅱ'],
+    ['확률과통계', '확률과통계'],
+    ['확통', '확률과통계'],
+    ['미적분Ⅰ', '미적분Ⅰ'],
+    ['미적분I', '미적분Ⅰ'],
+    ['미적분1', '미적분Ⅰ'],
+    ['기하', '기하'],
+    ['기하와벡터', '기하'],
+    ['기하벡터', '기하'],
+    ['기벡', '기하']
+  ]);
+
+  if (directMap.has(text)) return directMap.get(text);
+  if (/^공통수학[12]$/.test(text)) return null;
+  if (/^수학[12IⅡII]*$/.test(text)) return null;
+  return null;
+}
+
+function parseStudentHighSubjects(value) {
+  let raw = value;
+  if (typeof raw === 'string') {
+    try {
+      raw = JSON.parse(raw);
+    } catch (e) {
+      raw = raw.split(/[,\s/]+/);
+    }
+  }
+  if (!Array.isArray(raw)) return [];
+  return Array.from(new Set(raw.map(normalizeAssignmentSubject).filter(Boolean)));
 }
 
 function getAssignmentArchiveCandidates(value) {
@@ -187,6 +231,65 @@ async function getTableColumnSet(env, tableName) {
   } catch (e) {
     console.warn('[assessment-meta] column check failed:', tableName, e);
     return new Set();
+  }
+}
+
+async function hasClassExamAssignmentExclusions(env) {
+  const columns = await getTableColumnSet(env, 'class_exam_assignment_exclusions');
+  return columns.has('assignment_id') && columns.has('student_id');
+}
+
+async function isStudentExcludedFromAssignment(env, assignmentId, studentId) {
+  if (!assignmentId || !studentId) return false;
+  if (!(await hasClassExamAssignmentExclusions(env))) return false;
+  try {
+    const row = await env.DB.prepare(`
+      SELECT 1
+      FROM class_exam_assignment_exclusions
+      WHERE assignment_id = ? AND student_id = ?
+      LIMIT 1
+    `).bind(assignmentId, studentId).first();
+    return !!row;
+  } catch (e) {
+    console.warn('[assignment-exclusions] lookup failed:', e);
+    return false;
+  }
+}
+
+async function refreshSubjectMismatchExclusions(env, assignment) {
+  if (!assignment?.id || !assignment?.class_id) return;
+  if (!(await hasClassExamAssignmentExclusions(env))) return;
+
+  try {
+    await env.DB.prepare(`
+      DELETE FROM class_exam_assignment_exclusions
+      WHERE assignment_id = ? AND reason = 'subject_mismatch'
+    `).bind(assignment.id).run();
+
+    const subject = normalizeAssignmentSubject(assignment.subject);
+    if (!subject) return;
+
+    const students = await env.DB.prepare(`
+      SELECT s.id, s.high_subjects
+      FROM students s
+      JOIN class_students cs ON cs.student_id = s.id
+      WHERE cs.class_id = ?
+        AND s.status = '재원'
+    `).bind(assignment.class_id).all();
+
+    const stmts = [];
+    for (const student of students.results || []) {
+      const highSubjects = parseStudentHighSubjects(student.high_subjects);
+      if (!highSubjects.length) continue;
+      if (highSubjects.includes(subject)) continue;
+      stmts.push(env.DB.prepare(`
+        INSERT OR IGNORE INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
+        VALUES (?, ?, 'subject_mismatch')
+      `).bind(assignment.id, student.id));
+    }
+    if (stmts.length) await env.DB.batch(stmts);
+  } catch (e) {
+    console.warn('[assignment-exclusions] refresh failed:', e);
   }
 }
 
@@ -574,8 +677,10 @@ export async function handleExams(request, env, teacher, path, url) {
         grade_label: normalizeOptionalText(d.grade_label),
         pack_hash: normalizeOptionalText(d.pack_hash),
         assignment_batch_id: normalizeOptionalText(d.assignment_batch_id),
-        target_scope: normalizeTargetScope(d.target_scope)
+        target_scope: normalizeTargetScope(d.target_scope),
+        subject: normalizeOptionalText(d.subject)
       };
+      const subjectInputProvided = Object.prototype.hasOwnProperty.call(d, 'subject') && String(d.subject ?? '').trim();
       const updateSets = [
         'exam_title = ?',
         'question_count = ?',
@@ -648,6 +753,7 @@ export async function handleExams(request, env, teacher, path, url) {
 
         const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
           .bind(existing.id).first();
+        if (subjectInputProvided) await refreshSubjectMismatchExclusions(env, assignment);
         return jsonResponse({ success: true, assignment });
       }
 
@@ -719,6 +825,7 @@ export async function handleExams(request, env, teacher, path, url) {
         `).bind(d.class_id, d.exam_title, d.exam_date, archive_file).first();
       }
 
+      if (assignment && assignmentMeta.subject) await refreshSubjectMismatchExclusions(env, assignment);
       return jsonResponse({ success: true, assignment });
     }
 
@@ -987,6 +1094,9 @@ export async function handleExams(request, env, teacher, path, url) {
         exam_date: d.exam_date,
         archive_file: archiveFile
       });
+      if (assignmentMeta.assignment_id && await isStudentExcludedFromAssignment(env, assignmentMeta.assignment_id, d.student_id)) {
+        return jsonResponse({ success: false, error: 'assignment excluded for student' }, 403);
+      }
       const resultHash = d.result_hash || buildResultHash({
         student_id: d.student_id,
         class_id: d.class_id || null,

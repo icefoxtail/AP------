@@ -2207,6 +2207,7 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         question_count: questionCount,
         archive_file: `exams/${item.file}`,
         source_type: 'archive',
+        subject: item.subject || '',
         grade_label: gradeLabel,
         assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, gradeLabel),
         target_scope: options.target_scope || 'class'
@@ -2542,6 +2543,7 @@ function goEngine(item, action, qpp, options = {}) {
     url.searchParams.set('qpp', qpp);
     url.searchParams.set('data', 'exams/' + item.file);
     url.searchParams.set('title', title);
+    url.searchParams.set('subject', item.subject || '');
 
     if (options.submitQr) url.searchParams.set('submitQr', '1');
     if (options.classId) url.searchParams.set('class', options.classId);

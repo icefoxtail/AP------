@@ -1,6 +1,8 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
 
+const columnCacheByEnv = new WeakMap();
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -39,6 +41,30 @@ async function verifyStudentPortalSession(env, studentId, studentToken) {
   }
 
   return { student };
+}
+
+async function getTableColumnSet(env, tableName) {
+  let cache = columnCacheByEnv.get(env);
+  if (!cache) {
+    cache = {};
+    columnCacheByEnv.set(env, cache);
+  }
+  if (cache[tableName]) return cache[tableName];
+  if (!/^[a-zA-Z0-9_]+$/.test(tableName)) return new Set();
+  try {
+    const res = await env.DB.prepare(`PRAGMA table_info(${tableName})`).all();
+    const set = new Set((res.results || []).map(row => row.name).filter(Boolean));
+    cache[tableName] = set;
+    return set;
+  } catch (e) {
+    console.warn('[student-portal] column check failed:', tableName, e);
+    return new Set();
+  }
+}
+
+async function hasClassExamAssignmentExclusions(env) {
+  const columns = await getTableColumnSet(env, 'class_exam_assignment_exclusions');
+  return columns.has('assignment_id') && columns.has('student_id');
 }
 
 function normalizeWrongIds(values, questionCount) {
@@ -94,6 +120,14 @@ function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) 
 
 async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
+  const exclusionFilter = await hasClassExamAssignmentExclusions(env)
+    ? `AND NOT EXISTS (
+        SELECT 1
+        FROM class_exam_assignment_exclusions ex
+        WHERE ex.assignment_id = cea.id
+          AND ex.student_id = ?
+      )`
+    : '';
   const [assignments, sessions] = await Promise.all([
     env.DB.prepare(`
       SELECT
@@ -103,9 +137,10 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
       JOIN class_students cs ON cs.class_id = cea.class_id
       LEFT JOIN classes c ON c.id = cea.class_id
       WHERE cs.student_id = ?
+        ${exclusionFilter}
       ORDER BY cea.exam_date DESC, cea.updated_at DESC, cea.created_at DESC
       LIMIT ?
-    `).bind(studentId, safeLimit).all(),
+    `).bind(...(exclusionFilter ? [studentId, studentId, safeLimit] : [studentId, safeLimit])).all(),
     env.DB.prepare(`
       SELECT *
       FROM exam_sessions
@@ -319,14 +354,24 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       return jsonResponse({ success: false, message: 'assignment_id required' }, 400);
     }
 
+    const hasExclusions = await hasClassExamAssignmentExclusions(env);
+    const exclusionFilter = hasExclusions
+      ? `AND NOT EXISTS (
+          SELECT 1
+          FROM class_exam_assignment_exclusions ex
+          WHERE ex.assignment_id = cea.id
+            AND ex.student_id = ?
+        )`
+      : '';
     const assignment = await env.DB.prepare(`
       SELECT cea.*, c.name AS class_name
       FROM class_exam_assignments cea
       JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?
       LEFT JOIN classes c ON c.id = cea.class_id
       WHERE cea.id = ?
+        ${exclusionFilter}
       LIMIT 1
-    `).bind(verified.student.id, assignmentId).first();
+    `).bind(...(hasExclusions ? [verified.student.id, assignmentId, verified.student.id] : [verified.student.id, assignmentId])).first();
 
     if (!assignment) {
       return jsonResponse({ success: false, message: '시험지를 찾을 수 없습니다.' }, 404);

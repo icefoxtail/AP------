@@ -226,6 +226,7 @@ CREATE TABLE IF NOT EXISTS class_exam_assignments (
   question_count INTEGER DEFAULT 0,
   archive_file TEXT DEFAULT '',
   source_type TEXT DEFAULT 'archive',
+  subject TEXT DEFAULT '',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   UNIQUE(class_id, exam_title, exam_date, archive_file)
@@ -233,6 +234,20 @@ CREATE TABLE IF NOT EXISTS class_exam_assignments (
 
 CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_source_identity
 ON class_exam_assignments (class_id, exam_date, archive_file);
+
+CREATE TABLE IF NOT EXISTS class_exam_assignment_exclusions (
+  assignment_id TEXT NOT NULL,
+  student_id TEXT NOT NULL,
+  reason TEXT DEFAULT 'subject_mismatch',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (assignment_id, student_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_assignment_exclusions_assignment
+ON class_exam_assignment_exclusions(assignment_id);
+
+CREATE INDEX IF NOT EXISTS idx_assignment_exclusions_student
+ON class_exam_assignment_exclusions(student_id);
 
 CREATE TABLE IF NOT EXISTS daily_journals (
   id TEXT PRIMARY KEY,
