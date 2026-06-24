@@ -665,6 +665,7 @@ async function registerClassExamAssignmentToOS() {
 
     const examDate = params.get('date') || getKstTodayString();
     const archiveFile = params.get('data') || '';
+    const subject = params.get('subject') || '';
     const qCountRaw = params.get('q');
     const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
     const examTitle = AppState.title || window.examTitle || '시험지';
@@ -682,7 +683,8 @@ async function registerClassExamAssignmentToOS() {
                 exam_date: examDate,
                 question_count: questionCount,
                 archive_file: archiveFile,
-                source_type: 'archive'
+                source_type: 'archive',
+                subject
             })
         });
         if (!res.ok) {

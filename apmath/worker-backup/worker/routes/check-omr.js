@@ -2,6 +2,8 @@ import { sha256hex } from '../helpers/admin-db.js';
 import { isAdminUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 
+const columnCacheByEnv = new WeakMap();
+
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
   if (!auth.startsWith('Basic ')) return null;
@@ -19,6 +21,84 @@ async function verifyAuth(request, env) {
 
 function todayKstDateString() {
   return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
+function normalizeAssignmentArchiveFile(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  if (raw.startsWith('MIXED:')) return raw;
+  if (/^https?:\/\//i.test(raw)) return raw;
+  let path = raw
+    .replace(/^archive\//, '')
+    .replace(/^\.\//, '')
+    .replace(/^\/+/, '');
+  if (!path) return '';
+  if (/^(exams|assets|data)\//.test(path)) return path;
+  if (!path.endsWith('.js')) path += '.js';
+  return `exams/${path}`;
+}
+
+function getAssignmentArchiveCandidates(value) {
+  const raw = String(value || '').trim();
+  const normalized = normalizeAssignmentArchiveFile(raw);
+  return [...new Set([raw, normalized].filter(Boolean))];
+}
+
+async function getTableColumnSet(env, tableName) {
+  let cache = columnCacheByEnv.get(env);
+  if (!cache) {
+    cache = {};
+    columnCacheByEnv.set(env, cache);
+  }
+  if (cache[tableName]) return cache[tableName];
+  if (!/^[a-zA-Z0-9_]+$/.test(tableName)) return new Set();
+  try {
+    const res = await env.DB.prepare(`PRAGMA table_info(${tableName})`).all();
+    const set = new Set((res.results || []).map(row => row.name).filter(Boolean));
+    cache[tableName] = set;
+    return set;
+  } catch (e) {
+    console.warn('[check-omr] column check failed:', tableName, e);
+    return new Set();
+  }
+}
+
+async function hasClassExamAssignmentExclusions(env) {
+  const columns = await getTableColumnSet(env, 'class_exam_assignment_exclusions');
+  return columns.has('assignment_id') && columns.has('student_id');
+}
+
+async function resolveCheckOmrAssignment(env, classId, examTitle, examDate, archiveFile) {
+  try {
+    const archiveCandidates = getAssignmentArchiveCandidates(archiveFile);
+    if (archiveCandidates.length) {
+      const markers = archiveCandidates.map(() => '?').join(',');
+      const row = await env.DB.prepare(`
+        SELECT id
+        FROM class_exam_assignments
+        WHERE class_id = ?
+          AND exam_date = ?
+          AND archive_file IN (${markers})
+        ORDER BY updated_at DESC
+        LIMIT 1
+      `).bind(classId, examDate, ...archiveCandidates).first();
+      if (row?.id) return row;
+    }
+    if (examTitle) {
+      return await env.DB.prepare(`
+        SELECT id
+        FROM class_exam_assignments
+        WHERE class_id = ?
+          AND exam_date = ?
+          AND exam_title = ?
+        ORDER BY updated_at DESC
+        LIMIT 1
+      `).bind(classId, examDate, examTitle).first();
+    }
+  } catch (e) {
+    console.warn('[check-omr] assignment lookup failed:', e);
+  }
+  return null;
 }
 
 async function handleQrClasses(request, env, teacher, url) {
@@ -62,12 +142,33 @@ export async function handleCheckOmr(request, env, teacher, path, url) {
 
     const todayKST = todayKstDateString();
     const targetDate = examDate || todayKST;
+    const assignment = await resolveCheckOmrAssignment(env, classId, examTitle, targetDate, archiveFile);
+    const canFilterExclusions = !!(assignment?.id && await hasClassExamAssignmentExclusions(env));
 
     const [clsInfo, stds, sessions] = await Promise.all([
       env.DB.prepare('SELECT name FROM classes WHERE id = ?').bind(classId).first(),
       env.DB.prepare("SELECT id, name, school_name, grade, student_pin FROM students WHERE id IN (SELECT student_id FROM class_students WHERE class_id = ?) AND status = '재원'").bind(classId).all(),
       env.DB.prepare("SELECT id, student_id, exam_title, exam_date, score FROM exam_sessions WHERE exam_title = ? AND exam_date = ? AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(examTitle, targetDate, classId).all()
     ]);
+
+    if (assignment?.id && canFilterExclusions && Array.isArray(stds.results) && stds.results.length) {
+      try {
+        const studentIds = stds.results.map(row => row.id).filter(Boolean);
+        if (studentIds.length) {
+          const markers = studentIds.map(() => '?').join(',');
+          const excluded = await env.DB.prepare(`
+            SELECT student_id
+            FROM class_exam_assignment_exclusions
+            WHERE assignment_id = ?
+              AND student_id IN (${markers})
+          `).bind(assignment.id, ...studentIds).all();
+          const excludedIds = new Set((excluded.results || []).map(row => String(row.student_id || '')));
+          stds.results = stds.results.filter(row => !excludedIds.has(String(row.id || '')));
+        }
+      } catch (e) {
+        console.warn('[check-omr] exclusion filter failed:', e);
+      }
+    }
 
     return jsonResponse({
       success: true,
