@@ -465,8 +465,8 @@ window.questionBank = [
     "$a=-1,\\ b=1$",
     "$a=1,\\ b=-1$"
   ],
-    answer: "⑤",
-    solution: "삼각형을 만들려면 세 직선이 서로 평행하지 않고 한 점에서 만나지 않아야 함<br>①~④는 두 직선 중 하나와 평행하거나 같은 점을 지나 삼각형 불가<br>⑤에서 삼각형 가능"
+    answer: "①, ⑤",
+    solution: "세 직선이 삼각형을 만들려면 두 직선이 서로 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.<br>앞의 두 직선은 $2x+y+2=0$, $3x+y+3=0$이고, 이 두 직선의 교점은 $(-1,0)$이다.<br>세 번째 직선 $ax+by-1=0$이 이 점을 지나면 $-a-1=0$이므로 $a=-1$일 때는 세 직선이 한 점에서 만나 삼각형이 되지 않는다.<br>또 세 번째 직선이 $2x+y+2=0$과 평행하려면 $a:b=2:1$, $3x+y+3=0$과 평행하려면 $a:b=3:1$이어야 한다.<br>① $a=2, b=-1$은 평행도 아니고 $a=-1$도 아니므로 삼각형을 만든다.<br>②는 $3x+y-1=0$으로 $3x+y+3=0$과 평행하므로 삼각형을 만들지 못한다.<br>③, ④는 $a=-1$이므로 세 직선이 $(-1,0)$에서 만나 삼각형을 만들지 못한다.<br>⑤ $a=1, b=-1$은 평행도 아니고 $a=-1$도 아니므로 삼각형을 만든다.<br>따라서 정답은 ①, ⑤이다."
   },
   {
     id: 20,
@@ -530,8 +530,8 @@ window.questionBank = [
     wide: false,
     content: "다음 그림과 같이 두 일차함수 $y=ax+2$, $y=-x+b$의 그래프가 $y$축 위의 점 $A$에서 만나고, 두 일차함수의 그래프와 $x$축으로 둘러싸인 삼각형 $ABC$의 넓이가 60이다. 이때 두 상수 $a$, $b$에 대하여 $ab$의 값을 구하는 과정과 답을 서술하시오.",
     choices: [],
-    answer: "1",
-    solution: "$A$가 $y$축 위이고 $y=ax+2$ 위에 있으므로 $A(0,2)$<br>$y=-x+b$도 $A$를 지나므로 $b=2$<br>$B\\left(-\\dfrac2a,0\\right),\\ C(2,0)$<br>넓이 $=\\dfrac12\\times BC\\times2=60$<br>$BC=60$<br>$2-\\left(-\\dfrac2a\\right)=60\\Rightarrow a=\\dfrac12$<br>$ab=1$",
+    answer: "$\\dfrac{2}{29}$",
+    solution: "$A$는 $y$축 위에 있고 $y=ax+2$ 위에 있으므로 $A(0,2)$이다.<br>또 $A$가 $y=-x+b$ 위에도 있으므로 $2=b$, 즉 $b=2$이다.<br>$y=-x+2$의 $x$절편은 $0=-x+2$에서 $x=2$이므로 $C(2,0)$이다.<br>$y=ax+2$의 $x$절편은 $0=ax+2$에서 $x=-\\dfrac{2}{a}$이므로 $B\\left(-\\dfrac{2}{a},0\\right)$이다.<br>삼각형 $ABC$의 높이는 $A$에서 $x$축까지의 거리인 $2$이므로 넓이는 $\\dfrac12\\times BC\\times2=BC$이다.<br>넓이가 $60$이므로 $BC=60$이다.<br>그림과 같이 $B$가 $C$의 왼쪽에 있으므로 $BC=2-\\left(-\\dfrac{2}{a}\\right)=2+\\dfrac{2}{a}$이다.<br>따라서 $2+\\dfrac{2}{a}=60$, $\\dfrac{2}{a}=58$, $a=\\dfrac{1}{29}$이다.<br>$b=2$이므로 $ab=\\dfrac{1}{29}\\times2=\\dfrac{2}{29}$이다.<br>따라서 구하는 값은 $\\dfrac{2}{29}$이다.",
     image: "assets/images/24_승평중_1학기_기말_중2_기출/q22.png",
     imageSize: "medium"
   },
@@ -572,7 +572,7 @@ window.questionBank = [
     wide: false,
     content: "일차방정식 $5x-2y+3=0$의 그래프를 $y$축 방향으로 $-a$만큼 평행이동한 그래프가 점 $(a,5)$를 지날 때, 상수 $a$의 값을 구하는 과정과 답을 서술하시오.",
     choices: [],
-    answer: "3",
-    solution: "$5x-2y+3=0\\Rightarrow y=\\dfrac52x+\\dfrac32$<br>$y$축 방향으로 $-a$만큼 이동<br>$y=\\dfrac52x+\\dfrac32-a$<br>$(a,5)$ 대입<br>$5=\\dfrac52a+\\dfrac32-a$<br>$\\dfrac32a=\\dfrac72$<br>$a=3$"
+    answer: "$\\dfrac{7}{3}$",
+    solution: "$5x-2y+3=0$을 $y$에 대하여 정리하면 $y=\\dfrac52x+\\dfrac32$이다.<br>이 그래프를 $y$축 방향으로 $-a$만큼 평행이동하면 모든 $y$값이 $a$만큼 작아지므로 새 그래프는 $y=\\dfrac52x+\\dfrac32-a$이다.<br>이 그래프가 점 $(a,5)$를 지나므로 $x=a$, $y=5$를 대입한다.<br>$5=\\dfrac52a+\\dfrac32-a$<br>$5=\\dfrac32a+\\dfrac32$<br>$\\dfrac72=\\dfrac32a$<br>따라서 $a=\\dfrac73$이다.<br>따라서 구하는 값은 $\\dfrac{7}{3}$이다."
   }
 ];
