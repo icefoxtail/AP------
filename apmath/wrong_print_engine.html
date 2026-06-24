@@ -26,6 +26,7 @@
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; page-break-after: always; }
         .page:last-child { page-break-after: avoid; }
+        .page-blank { padding: 0; }
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
         .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
         .page-header.page-header--exam { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 18px; row-gap: 0; padding: 12px 14px 10px; }
@@ -165,6 +166,41 @@ function getArchiveUrl(file) {
     if (/^https?:\/\//i.test(path)) return path;
     const encodedPath = path.split('/').map(part => encodeURIComponent(part)).join('/');
     return ARCHIVE_BASE_URL + encodedPath;
+}
+
+function resolveArchiveAssetUrl(src, archiveFile) {
+    const raw = String(src || '').trim();
+    if (!raw) return '';
+    // Absolute / inline sources are left untouched.
+    if (/^(https?:|data:|blob:)/i.test(raw)) return raw;
+    let path = raw.replace(/^\.\//, '').replace(/^\//, '');
+    // "archive/assets/images/…" and "assets/images/…" both resolve under ARCHIVE_BASE_URL.
+    path = path.replace(/^archive\//i, '');
+    if (!/^assets\//i.test(path) && archiveFile) {
+        // Relative to the source archive file's directory (e.g. "q1.png").
+        const dir = normalizeArchiveFile(archiveFile).split('/').slice(0, -1).join('/');
+        path = (dir ? dir + '/' : '') + path;
+    }
+    const encoded = path.split('/').map(part => encodeURIComponent(part)).join('/');
+    return ARCHIVE_BASE_URL + encoded;
+}
+
+function rewriteImgSrcInHtml(html, archiveFile) {
+    return String(html || '').replace(
+        /(<img\b[^>]*?\bsrc\s*=\s*)(["'])([\s\S]*?)\2/gi,
+        (match, pre, quote, src) => {
+            const resolved = resolveArchiveAssetUrl(src, archiveFile);
+            return `${pre}${quote}${resolved || src}${quote}`;
+        }
+    );
+}
+
+function getQuestionImageRaw(q) {
+    return q?.image || q?.imageUrl || q?.img || q?.imageTag || q?.imagePath || q?.image_path || '';
+}
+
+function getQuestionArchiveFile(q) {
+    return (q && (q._archiveFile || q._sourceArchiveFile)) || '';
 }
 
 function compactWrongItem(item) {
@@ -459,7 +495,7 @@ function waitForQuestionImage(img) {
 
 async function applyAutoImageSizeClasses(root) {
     const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
-    await Promise.all(wraps.map(async wrap => {
+    const wrapTasks = wraps.map(async wrap => {
         if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
         const img = wrap.querySelector('img');
         if (!img) {
@@ -468,7 +504,13 @@ async function applyAutoImageSizeClasses(root) {
         }
         await waitForQuestionImage(img);
         wrap.classList.add(autoImageSizeClassFor(img));
-    }));
+    });
+    // Inline content images (not inside a .q-image-wrap) must also finish loading
+    // before MathJax typeset / height measurement, or page heights are mis-computed.
+    const contentTasks = Array.from(root.querySelectorAll('.q-content img'))
+        .filter(img => !img.closest('.q-image-wrap'))
+        .map(img => waitForQuestionImage(img));
+    await Promise.all([...wrapTasks, ...contentTasks]);
 }
 
 function extractChoice(choice) {
@@ -476,7 +518,18 @@ function extractChoice(choice) {
 }
 
 function stripChoicePrefix(choice) {
-    return String(choice || '').replace(/^\s*[\(\[]?\d+[\)\].]?\s*/, '').trim();
+    const s = String(choice || '');
+    // ① ② ③ … (U+2460–U+2473) and parenthesized ⑴ ⑵ … (U+2474–U+2487)
+    const circled = /^\s*[①-⒇]\s*/;
+    if (circled.test(s)) return s.replace(circled, '').trim();
+    // "(1) …"  "[1] …"  "1) …"  — number explicitly wrapped or followed by a bracket
+    const bracketed = /^\s*(?:\(\s*\d{1,2}\s*\)|\[\s*\d{1,2}\s*\]|\d{1,2}\))\s*/;
+    if (bracketed.test(s)) return s.replace(bracketed, '').trim();
+    // "1. …" — number then dot then whitespace (avoid decimals like 1.5 and units like 1분)
+    const dotted = /^\s*\d{1,2}\.\s+/;
+    if (dotted.test(s)) return s.replace(dotted, '').trim();
+    // Bare numbers ("10", "500명", "18분 후", "2시간 30분", "$4$") are kept intact.
+    return s.trim();
 }
 
 function detectChoiceRenderMode(choices) {
@@ -631,11 +684,18 @@ function stripInlineImagesFromContent(content, hasImageField) {
 }
 
 function renderQuestionImageHTML(q) {
-    const image = q.image || q.imageUrl || q.img || '';
+    const image = getQuestionImageRaw(q);
     if (!image) return '';
+    const archiveFile = getQuestionArchiveFile(q);
+    // imageTag (or any field) may carry a full <img …> tag — rewrite its src in place.
+    if (/<img/i.test(image)) {
+        return `<div class="q-image-wrap">${rewriteImgSrcInHtml(image, archiveFile)}</div>`;
+    }
+    const url = resolveArchiveAssetUrl(image, archiveFile);
+    if (!url) return '';
     const size = ['small', 'half', 'medium', 'large', 'full', 'tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(image)}" alt=""></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(url)}" alt=""></div>`;
 }
 
 function getQuestionAnswer(q) {
@@ -675,14 +735,27 @@ function cloneQuestionForRender(item) {
             solution: '',
             _wrongNote: item._wrongNote || '',
             _examLabel: item.examTitle || '',
-            _sourceNo: item.questionNo
+            _sourceNo: item.questionNo,
+            _archiveFile: file,
+            _sourceArchiveFile: file
         };
     }
     const q = JSON.parse(JSON.stringify(original));
     q._wrongNote = item._wrongNote || '';
     q._examLabel = item.examTitle || '';
     q._sourceNo = item.questionNo;
+    q._archiveFile = file;
+    q._sourceArchiveFile = file;
     return q;
+}
+
+function appendBlankPage(area) {
+    // A physical, intentionally empty A4 page (no header, frame, QR, or page number)
+    // so the next student's output starts on a fresh sheet front when duplex printing.
+    const page = document.createElement('section');
+    page.className = 'page page-blank';
+    area.appendChild(page);
+    return page;
 }
 
 function makePage(area, type, title, metaLeft, metaRight, pageNumber) {
@@ -720,9 +793,9 @@ function makePage(area, type, title, metaLeft, metaRight, pageNumber) {
 }
 
 function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
-    const hasImageField = !!(q.image || q.imageUrl || q.img);
+    const hasImageField = !!getQuestionImageRaw(q);
     const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
-    const formattedContent = formatQuestionForRender(rawContent, q);
+    const formattedContent = rewriteImgSrcInHtml(formatQuestionForRender(rawContent, q), getQuestionArchiveFile(q));
     const imageHTML = renderQuestionImageHTML(q);
     const choicesHTML = state.mode === 'exam' ? renderChoicesHTML(q) : '';
     const wrongNote = showWrongNote && q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : '';
@@ -922,7 +995,10 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
 }
 
 async function renderStudentPages(area, payload) {
-    for (const student of (payload.students || [])) {
+    const students = payload.students || [];
+    for (let sIdx = 0; sIdx < students.length; sIdx++) {
+        const student = students[sIdx];
+        const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
             _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
@@ -940,7 +1016,16 @@ async function renderStudentPages(area, payload) {
                 </div>
             `
         });
+        maybeInsertStudentDuplexBreak(area, payload, sIdx, students.length, pagesBefore);
     }
+}
+
+function maybeInsertStudentDuplexBreak(area, payload, studentIdx, studentCount, pagesBefore) {
+    if (payload.options?.pageBreakByStudent === false) return;
+    const hasNextStudent = studentIdx < studentCount - 1;
+    if (!hasNextStudent) return;
+    const pagesAdded = area.querySelectorAll('.page').length - pagesBefore;
+    if (pagesAdded > 0 && pagesAdded % 2 === 1) appendBlankPage(area);
 }
 
 async function renderClassPages(area, payload) {
@@ -997,9 +1082,9 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
     };
 
     const makeBox = (q, idx) => {
-        const hasImageField = !!(q.image || q.imageUrl || q.img);
+        const hasImageField = !!getQuestionImageRaw(q);
         const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
-        const formattedContent = formatQuestionForRender(rawContent, q);
+        const formattedContent = rewriteImgSrcInHtml(formatQuestionForRender(rawContent, q), getQuestionArchiveFile(q));
         const box = document.createElement('div');
         box.className = 'q-box sol-box';
         box.innerHTML = `<div class="q-num">${idx + 1}.</div>
@@ -1071,7 +1156,10 @@ async function renderSol(area, payload) {
         return;
     }
 
-    for (const student of (payload.students || [])) {
+    const students = payload.students || [];
+    for (let sIdx = 0; sIdx < students.length; sIdx++) {
+        const student = students[sIdx];
+        const pagesBefore = area.querySelectorAll('.page').length;
         const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
             ...item,
             _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
@@ -1081,6 +1169,7 @@ async function renderSol(area, payload) {
             metaLeft: `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`,
             metaRight: payload.createdDate || ''
         });
+        maybeInsertStudentDuplexBreak(area, payload, sIdx, students.length, pagesBefore);
     }
 }
 function collectAnswerRows(payload) {
