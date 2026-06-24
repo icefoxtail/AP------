@@ -283,7 +283,7 @@ function decodeWrongQrPayload(value) {
 
 function buildQrTargetUrl(compactPayload) {
     const url = new URL(window.location.href);
-    url.searchParams.set('mode', 'sol');
+    url.searchParams.set('mode', 'review');
     url.searchParams.set('qr', '1');
     url.searchParams.set('wp', encodeWrongQrPayload(compactPayload));
     return url.toString();
@@ -303,14 +303,16 @@ function applyQrSolutionLockUI() {
     const btnExam = document.getElementById('btn-exam');
     const btnAns = document.getElementById('btn-ans');
     const btnSol = document.getElementById('btn-sol');
+    const tabs = document.querySelector('.mode-tabs');
+    if (tabs) tabs.style.display = 'none';
     if (btnExam) btnExam.style.display = 'none';
     if (btnAns) btnAns.style.display = 'none';
     if (btnSol) {
-        btnSol.classList.add('active');
+        btnSol.classList.remove('active');
         btnSol.style.pointerEvents = 'none';
     }
     const title = document.getElementById('ctrl-title');
-    if (title) title.textContent = 'AP Math 오답 해설지';
+    if (title) title.textContent = 'AP Math 오답 확인';
 }
 
 function injectSolutionQrToPage(targetPage, compactPayload) {
@@ -1188,18 +1190,13 @@ function collectAnswerRows(payload) {
     });
 }
 
-function renderAns(area, payload) {
-    const data = collectAnswerRows(payload);
+function renderAnswerRows(area, rows, pageMeta = {}) {
+    const data = rows || [];
     const PER_PAGE = 48; // 4의 배수(열당 24=6세트)로 두 열의 세트 경계를 맞춘다
     let pageNo = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
-        const title = payload.mode === 'grade'
-            ? `${getGradePrintLabel(payload)} 정답표`
-            : payload.mode === 'class'
-            ? `${payload.className || '반'} 정답표`
-            : '학생별 정답표';
-        const page = makePage(area, 'ans', title, payload.printTitle || '', `p.${pageNo}`, pageNo);
+        const page = makePage(area, 'ans', pageMeta.title || '정답표', pageMeta.metaLeft || '', pageMeta.metaRight || `p.${pageNo}`, pageNo);
         pageNo += 1;
         const grid = document.createElement('div');
         grid.className = 'ans-grid';
@@ -1219,6 +1216,97 @@ function renderAns(area, payload) {
     }
 }
 
+function renderAns(area, payload) {
+    const data = collectAnswerRows(payload);
+    const title = payload.mode === 'grade'
+        ? `${getGradePrintLabel(payload)} 정답표`
+        : payload.mode === 'class'
+        ? `${payload.className || '반'} 정답표`
+        : '학생별 정답표';
+    renderAnswerRows(area, data, {
+        title,
+        metaLeft: payload.printTitle || ''
+    });
+}
+
+function renderAnswerPagesForStudent(area, student, items, pageMeta = {}) {
+    const rows = (items || []).map((q, idx) => ({
+        no: idx + 1,
+        answer: getQuestionAnswer(q) || '-'
+    }));
+    renderAnswerRows(area, rows, {
+        title: pageMeta.title || `${student?.studentName || '학생'} 정답표`,
+        metaLeft: pageMeta.metaLeft || '',
+        metaRight: pageMeta.metaRight || ''
+    });
+}
+
+async function renderSolutionPagesForStudent(area, student, items, pageMeta = {}) {
+    await placeSolutionItems(area, items || [], {
+        title: pageMeta.title || `${student?.studentName || '학생'} 해설지`,
+        metaLeft: pageMeta.metaLeft || '',
+        metaRight: pageMeta.metaRight || ''
+    });
+}
+
+function maybeInsertReviewPacketDuplexBreak(area, payload, pagesBefore) {
+    if (payload.options?.pageBreakByStudent === false) return;
+    const pagesAdded = area.querySelectorAll('.page').length - pagesBefore;
+    if (pagesAdded > 0 && pagesAdded % 2 === 1) appendBlankPage(area);
+}
+
+async function renderStudentReviewPacket(area, payload) {
+    if (payload.mode === 'class' || payload.mode === 'grade') {
+        const pagesBefore = area.querySelectorAll('.page').length;
+        const sourceItems = payload.mode === 'grade' ? (payload.gradeWrongItems || []) : (payload.classWrongItems || []);
+        const label = payload.mode === 'grade' ? getGradePrintLabel(payload) : (payload.className || '반');
+        const items = sourceItems.map(item => {
+            const rateLabel = formatCorrectRateLabel(item);
+            return cloneQuestionForRender({
+                ...item,
+                _wrongNote: rateLabel
+            });
+        });
+        const metaLeft = payload.printTitle || '';
+        const metaRight = payload.createdDate || '';
+        renderAnswerPagesForStudent(area, { studentName: label }, items, {
+            title: `${label} 공통 오답 정답표`,
+            metaLeft,
+            metaRight
+        });
+        await renderSolutionPagesForStudent(area, { studentName: label }, items, {
+            title: `${label} 공통 오답 해설지`,
+            metaLeft,
+            metaRight
+        });
+        maybeInsertReviewPacketDuplexBreak(area, payload, pagesBefore);
+        return;
+    }
+
+    const students = payload.students || [];
+    for (let sIdx = 0; sIdx < students.length; sIdx++) {
+        const student = students[sIdx];
+        const pagesBefore = area.querySelectorAll('.page').length;
+        const items = (student.wrongItems || []).map(item => cloneQuestionForRender({
+            ...item,
+            _wrongNote: `${item.examTitle || '시험'} · 원본 ${item.questionNo}번`
+        }));
+        const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
+        const metaRight = payload.createdDate || '';
+        renderAnswerPagesForStudent(area, student, items, {
+            title: `${student.studentName} 정답표`,
+            metaLeft,
+            metaRight
+        });
+        await renderSolutionPagesForStudent(area, student, items, {
+            title: `${student.studentName} 해설지`,
+            metaLeft,
+            metaRight
+        });
+        maybeInsertReviewPacketDuplexBreak(area, payload, pagesBefore);
+    }
+}
+
 async function render() {
     const area = document.getElementById('print-area');
     area.innerHTML = '<div class="notice">오답 문항을 불러오는 중입니다.</div>';
@@ -1227,6 +1315,8 @@ async function render() {
 
     if (state.mode === 'ans') {
         renderAns(area, state.payload);
+    } else if (state.mode === 'review') {
+        await renderStudentReviewPacket(area, state.payload);
     } else if (state.mode === 'sol') {
         await renderSol(area, state.payload);
     } else if (state.payload.mode === 'grade') {
@@ -1249,8 +1339,8 @@ async function render() {
 }
 
 function switchMode(mode) {
-    if (isQrSolutionMode() && mode !== 'sol') {
-        mode = 'sol';
+    if (isQrSolutionMode() && mode !== 'review') {
+        mode = 'review';
     }
     state.mode = mode;
     document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
@@ -1283,7 +1373,7 @@ function boot() {
     }
 
     const params = new URLSearchParams(window.location.search);
-    state.mode = qrMode ? 'sol' : (params.get('mode') || state.mode || 'exam');
+    state.mode = qrMode ? 'review' : (params.get('mode') || state.mode || 'exam');
     document.querySelectorAll('.mode-tab').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.mode === state.mode);
     });
