@@ -117,6 +117,11 @@
         ui.eieApmsCompat.loading = false;
     }
 
+    function isAuthError(err) {
+        return !!(err && (err.status === 401 || err.status === 403))
+            || !!(window.EieApi && typeof EieApi.isAuthError === 'function' && EieApi.isAuthError(err));
+    }
+
     async function loadFoundation(options) {
         var ui = EieState.get().ui;
         ui.eieApmsCompat.loading = true;
@@ -132,44 +137,23 @@
         try {
             studentsPayload = await EieApi.getStudents();
         } catch (err) {
-            if (err && (err.status === 401 || err.status === 403)) {
-                var authMsg = err.status === 401
-                    ? '인증 만료: EIE 학생 조회 실패 (401)'
-                    : '권한 없음: EIE 학생 조회 실패 (403)';
-                errors.push({ source: 'students', error: authMsg, status: err.status });
-                ui.eieApmsCompat.loading = false;
-                ui.eieApmsCompat.error = authMsg;
-                return { success: false, auth_error: true, students: [], contacts: [], timetable_cells: [], class_students: [], errors: errors };
-            }
+            if (isAuthError(err)) throw err;
             errors.push({ source: 'students', error: (err && err.message) || String(err) });
         }
 
         try {
             timetablePayload = await EieApi.getTimetable(null, { status: 'active,imported,needs_review' });
         } catch (err) {
-            if (err && (err.status === 401 || err.status === 403)) {
-                var ttMsg = err.status === 401
-                    ? '인증 만료: EIE 시간표 조회 실패 (401)'
-                    : '권한 없음: EIE 시간표 조회 실패 (403)';
-                errors.push({ source: 'timetable', error: ttMsg, status: err.status });
-            } else {
-                errors.push({ source: 'timetable', error: (err && err.message) || String(err) });
-            }
+            if (isAuthError(err)) throw err;
+            errors.push({ source: 'timetable', error: (err && err.message) || String(err) });
         }
 
         if (typeof EieApi.getConfirmedContacts === 'function') {
             try {
                 contactsPayload = await EieApi.getConfirmedContacts();
             } catch (err) {
-                if (err && (err.status === 401 || err.status === 403)) {
-                    var ccMsg = err.status === 401
-                        ? '인증 만료: EIE 연락처 조회 실패 (401)'
-                        : '권한 없음: EIE 연락처 조회 실패 (403)';
-                    errors.push({ source: 'confirmed-contacts', error: ccMsg, status: err.status });
-                    ui.eieApmsCompat.loading = false;
-                    ui.eieApmsCompat.error = ccMsg;
-                    return { success: false, auth_error: true, students: [], contacts: [], timetable_cells: [], class_students: [], errors: errors };
-                }
+                if (isAuthError(err)) throw err;
+                errors.push({ source: 'confirmed-contacts', error: (err && err.message) || String(err) });
             }
         }
 
@@ -177,15 +161,8 @@
             try {
                 assignmentsPayload = await EieApi.getScheduleAssignments();
             } catch (err) {
-                if (err && (err.status === 401 || err.status === 403)) {
-                    var saMsg = err.status === 401
-                        ? '인증 만료: EIE 수업배정 조회 실패 (401)'
-                        : '권한 없음: EIE 수업배정 조회 실패 (403)';
-                    errors.push({ source: 'schedule-assignments', error: saMsg, status: err.status });
-                    ui.eieApmsCompat.loading = false;
-                    ui.eieApmsCompat.error = saMsg;
-                    return { success: false, auth_error: true, students: [], contacts: [], timetable_cells: [], class_students: [], errors: errors };
-                }
+                if (isAuthError(err)) throw err;
+                errors.push({ source: 'schedule-assignments', error: (err && err.message) || String(err) });
             }
         }
 

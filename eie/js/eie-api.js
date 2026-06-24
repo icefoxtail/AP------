@@ -57,14 +57,17 @@
     }
 
     function makeAuthError(status, message) {
-        const error = new Error(message || (status === 403 ? '권한이 없습니다.' : '로그인이 만료되었습니다.'));
+        let safeMessage = message || '';
+        if (status === 401) safeMessage = '로그인이 만료되었습니다. 다시 로그인해 주세요.';
+        if (status === 403) safeMessage = '권한이 없습니다. 계정 권한을 확인해 주세요.';
+        const error = new Error(safeMessage || '요청을 처리하지 못했습니다.');
         error.status = status;
         return error;
     }
 
     function notifyAuthError(error) {
         if (typeof window === 'undefined' || !window.EieApp || typeof window.EieApp.handleEie401 !== 'function') return;
-        if (error.status === 401) window.EieApp.handleEie401(error.message || '로그인이 만료되었습니다. 다시 로그인해 주세요.');
+        if (error.status === 401) window.EieApp.handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
         if (error.status === 403) window.EieApp.handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
     }
 

@@ -3,7 +3,8 @@
 
 import { handleEie, saveCurrentEieMonthTimetableArchive } from './routes/eie.js';
 
-const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
+const TEACHER_SESSION_TTL_SECONDS = 90 * 24 * 60 * 60;
+const TEACHER_SESSION_REFRESH_THRESHOLD_SECONDS = 30 * 24 * 60 * 60;
 const TEACHER_SESSION_TOKEN_BYTES = 32;
 
 const DEFAULT_ALLOWED_ORIGINS = ['https://icefoxtail.github.io'];
@@ -76,6 +77,12 @@ function getSessionExpiryDate() {
   return new Date(Date.now() + (TEACHER_SESSION_TTL_SECONDS * 1000)).toISOString();
 }
 
+function shouldRefreshTeacherSession(expiresAt, nowMs = Date.now()) {
+  const expiresMs = Date.parse(expiresAt || '');
+  if (!Number.isFinite(expiresMs)) return false;
+  return expiresMs - nowMs <= TEACHER_SESSION_REFRESH_THRESHOLD_SECONDS * 1000;
+}
+
 async function createTeacherSession(env, teacher) {
   const sessionToken = makeSessionToken();
   const expiresAt = getSessionExpiryDate();
@@ -100,7 +107,7 @@ async function verifyTeacher(request, env) {
   if (!token) return null;
   const now = new Date().toISOString();
   const session = await env.DB.prepare(`
-    SELECT ts.id AS session_id, t.id, t.login_id, t.name, t.role
+    SELECT ts.id AS session_id, ts.expires_at, t.id, t.login_id, t.name, t.role
     FROM teacher_sessions ts
     JOIN teachers t ON t.id = ts.teacher_id
     WHERE ts.session_token = ?
@@ -113,12 +120,26 @@ async function verifyTeacher(request, env) {
     await revokeTeacherSession(env, token).catch(() => {});
     return null;
   }
-  env.DB.prepare('UPDATE teacher_sessions SET last_used_at = CURRENT_TIMESTAMP WHERE session_token = ?')
-    .bind(token).run().catch(() => {});
-  if (String(session.role || '').toLowerCase() === 'owner') {
-    return { ...session, original_role: session.role, role: 'admin' };
+  let refreshedExpiresAt = '';
+  if (shouldRefreshTeacherSession(session.expires_at)) {
+    refreshedExpiresAt = getSessionExpiryDate();
+    env.DB.prepare(`
+      UPDATE teacher_sessions
+      SET last_used_at = CURRENT_TIMESTAMP, expires_at = ?
+      WHERE session_token = ?
+    `).bind(refreshedExpiresAt, token).run().catch(() => {});
+  } else {
+    env.DB.prepare('UPDATE teacher_sessions SET last_used_at = CURRENT_TIMESTAMP WHERE session_token = ?')
+      .bind(token).run().catch(() => {});
   }
-  return session;
+  const finalSession = {
+    ...session,
+    expires_at: refreshedExpiresAt || session.expires_at
+  };
+  if (String(finalSession.role || '').toLowerCase() === 'owner') {
+    return { ...finalSession, original_role: finalSession.role, role: 'admin' };
+  }
+  return finalSession;
 }
 
 function isEieApiPath(pathname) {

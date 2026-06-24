@@ -101,7 +101,11 @@
         let data;
         try { data = JSON.parse(text); } catch (e) { data = { success: false, error: text }; }
         if (!response.ok || data?.success === false) {
-            const err = new Error(data?.error || data?.message || response.statusText || '요청 실패');
+            // 401/403은 서버 원문(예: 'unauthorized')이 화면에 노출되지 않도록 안전 문구로 치환한다.
+            let message = data?.error || data?.message || response.statusText || '요청 실패';
+            if (response.status === 401) message = '로그인이 만료되었습니다. 다시 로그인해 주세요.';
+            if (response.status === 403) message = '권한이 없습니다. 계정 권한을 확인해 주세요.';
+            const err = new Error(message);
             err.status = response.status;
             if (err.status === 401) handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
             if (err.status === 403) handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
@@ -149,7 +153,16 @@
     function clearEieToken() {
         const bridge = window.WangjiOwnerAuthBridge;
         if (bridge) { bridge.clearEieSession(); return; }
-        if (window.localStorage) window.localStorage.removeItem('WANGJI_EIE_SESSION_TOKEN');
+        if (!window.localStorage) return;
+        [
+            'WANGJI_EIE_SESSION_TOKEN',
+            'WANGJI_EIE_LOGIN_ID',
+            'WANGJI_EIE_ROLE',
+            'WANGJI_EIE_NAME',
+            'WANGJI_EIE_EXPIRES_AT'
+        ].forEach(function (key) {
+            window.localStorage.removeItem(key);
+        });
     }
 
     function addLogoutButton() { /* 로그아웃 버튼은 drawer 정적 HTML에 포함되어 no-op. */ }
