@@ -1158,6 +1158,50 @@ function renderClassSummaryCard(cls, data) {
 }
 
 // [POLISH] 일정 섹션: 오렌지(오늘) vs 보라(주간) 은은한 컬러 분리
+function dashboardFormatDateWithDay(dateStr) {
+    const parts = String(dateStr || '').split('-').map(Number);
+    if (parts.length !== 3 || parts.some(v => !Number.isFinite(v))) return '';
+    const [y, m, d] = parts;
+    const date = new Date(y, m - 1, d);
+    if (Number.isNaN(date.getTime())) return '';
+    const dayLabels = ['일','월','화','수','목','금','토'];
+    return `${m}/${d}(${dayLabels[date.getDay()]})`;
+}
+
+function dashboardFormatDateRangeWithDay(startDate, endDate) {
+    const s = dashboardFormatDateWithDay(startDate);
+    if (!s) return '';
+    if (!endDate || startDate === endDate) return s;
+    const e = dashboardFormatDateWithDay(endDate);
+    return e ? `${s}~${e}` : s;
+}
+
+function dashboardGetRangeDdayLabel(startDate, endDate, baseDateStr = null) {
+    const baseStr = baseDateStr || new Date().toLocaleDateString('sv-SE');
+    const baseTime = apParseLocalDateTime(baseStr);
+    const startTime = apParseLocalDateTime(String(startDate || '').split('T')[0].split(' ')[0]);
+    const endTime = apParseLocalDateTime(String(endDate || startDate || '').split('T')[0].split(' ')[0]);
+    if (baseTime === null || startTime === null) return '';
+    if (baseTime < startTime) {
+        const diffDays = Math.round((startTime - baseTime) / (24 * 60 * 60 * 1000));
+        return `D-${diffDays}`;
+    }
+    if (baseTime === startTime) return 'D-Day';
+    if (endTime !== null && baseTime <= endTime) return '진행중';
+    const refTime = endTime !== null ? endTime : startTime;
+    const diffDays = Math.round((baseTime - refTime) / (24 * 60 * 60 * 1000));
+    return `D+${diffDays}`;
+}
+
+function dashboardGetExamGroupKey(e) {
+    return [
+        String(e.school_name || '').trim(),
+        String(e.grade || '').trim(),
+        String(e.exam_name || '').trim(),
+        String(e.memo || '').trim()
+    ].join('|');
+}
+
 function getDashboardAcademyScheduleSeries(fromDate, toDate) {
     const groups = new Map();
     (state.db.academy_schedules || [])
@@ -1189,41 +1233,85 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
     const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
     const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
     const rowBase = `
-        height:52px;
         min-height:52px;
-        max-height:52px;
-        padding:0 16px;
+        height:auto;
+        padding:8px 16px;
         display:flex;
         align-items:center;
-        justify-content:space-between;
         box-sizing:border-box;
-        overflow:hidden;
     `;
     const upcomingItems = [];
 
+    // 시험 일정: 같은 시험의 연속 날짜를 기간으로 병합
+    const examGroups = new Map();
     (state.db.exam_schedules || [])
         .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr)
-        .forEach(e => upcomingItems.push({ type: 'exam', date: e.exam_date, item: e }));
+        .forEach(e => {
+            const key = dashboardGetExamGroupKey(e);
+            if (!examGroups.has(key)) examGroups.set(key, { ref: e, dates: [] });
+            examGroups.get(key).dates.push(e.exam_date);
+        });
+    examGroups.forEach(({ ref, dates }) => {
+        dates.sort();
+        const segments = [];
+        let seg = [dates[0]];
+        for (let i = 1; i < dates.length; i++) {
+            const prevTime = apParseLocalDateTime(dates[i - 1]);
+            const currTime = apParseLocalDateTime(dates[i]);
+            if (prevTime !== null && currTime !== null && currTime - prevTime === 24 * 60 * 60 * 1000) {
+                seg.push(dates[i]);
+            } else {
+                segments.push(seg);
+                seg = [dates[i]];
+            }
+        }
+        segments.push(seg);
+        segments.forEach(s => {
+            upcomingItems.push({
+                type: 'exam',
+                date: s[0],
+                item: { ...ref, _rangeStart: s[0], _rangeEnd: s[s.length - 1] }
+            });
+        });
+    });
 
     getDashboardAcademyScheduleSeries(todayStr, nextWeekStr)
         .forEach(s => upcomingItems.push({ type: 'academy', date: s.schedule_date, item: s }));
 
-    upcomingItems.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+    const typeOrder = { exam: 0, academy: 1 };
+    upcomingItems.sort((a, b) => {
+        const dateCmp = String(a.date || '').localeCompare(String(b.date || ''));
+        if (dateCmp !== 0) return dateCmp;
+        const typeCmp = (typeOrder[a.type] ?? 9) - (typeOrder[b.type] ?? 9);
+        if (typeCmp !== 0) return typeCmp;
+        const aTitle = a.type === 'exam'
+            ? [a.item.school_name, a.item.grade, a.item.exam_name].filter(Boolean).join(' ')
+            : (a.item.title || '');
+        const bTitle = b.type === 'exam'
+            ? [b.item.school_name, b.item.grade, b.item.exam_name].filter(Boolean).join(' ')
+            : (b.item.title || '');
+        return aTitle.localeCompare(bTitle, 'ko');
+    });
 
     const upcomingHtml = upcomingItems.slice(0, 5).map(u => {
-        const dDay = dashboardGetDdayLabel(u.date, todayStr);
-
         if (u.type === 'exam') {
             const e = u.item;
-            const rawTitle = e.exam_name ? `${e.school_name || '일반'} ${e.grade || ''} ${e.exam_name}` : `${e.school_name || '일정 확인'}`;
+            const rawTitle = e.exam_name
+                ? [e.school_name || '일반', e.grade, e.exam_name].filter(Boolean).join(' ')
+                : (e.school_name || '일정 확인');
+            const rangeStr = dashboardFormatDateRangeWithDay(e._rangeStart, e._rangeEnd);
+            const dDay = dashboardGetRangeDdayLabel(e._rangeStart, e._rangeEnd, todayStr);
+            const metaText = [rangeStr, dDay].filter(Boolean).join(' · ');
             const preview = renderDashboardHoverPreview(rawTitle, [
-                `날짜: ${u.date}`,
-                e.memo ? `메모: ${e.memo}` : '',
-                `상태: ${dDay}`
+                rangeStr ? `날짜: ${rangeStr}` : '',
+                dDay ? `상태: ${dDay}` : '',
+                e.memo ? `메모: ${e.memo}` : ''
             ]);
             return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(rawTitle)}</div>
-                <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+                <div style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
+                    <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(rawTitle)}</div>
+                    ${metaText ? `<div style="font-size:12px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(metaText)}</div>` : ''}
+                </div>
                 ${preview}
             </div>`;
         }
@@ -1233,19 +1321,23 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
         const label = isClosed ? '휴무' : '기타';
         const title = s.title || (isClosed ? '휴무' : '일정');
         const timeText = [s.start_time, s.end_time].map(v => String(v || '').trim()).filter(Boolean).join('~');
-        const rangeText = s.range_end && s.range_end !== s.range_start
-            ? `${s.range_start} ~ ${s.range_end}`
-            : (s.range_start || s.schedule_date || u.date);
+        const rangeStart = s.range_start || s.schedule_date || u.date;
+        const rangeEnd = s.range_end || rangeStart;
+        const rangeStr = dashboardFormatDateRangeWithDay(rangeStart, rangeEnd);
+        const dDay = dashboardGetRangeDdayLabel(rangeStart, rangeEnd, todayStr);
+        const metaText = [rangeStr, dDay].filter(Boolean).join(' · ');
         const preview = renderDashboardHoverPreview(title, [
             `분류: ${label}`,
-            `날짜: ${rangeText}`,
+            rangeStr ? `날짜: ${rangeStr}` : '',
             timeText ? `시간: ${timeText}` : '',
             s.teacher_name ? `선생님: ${s.teacher_name}` : '',
             s.memo ? `메모: ${s.memo}` : ''
         ]);
         return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
-            <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.occurrence_count > 1 ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(rangeText)}</span>` : ''}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
-            <span style="font-size:12px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+            <div style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
+                <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}</div>
+                ${metaText ? `<div style="font-size:12px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(metaText)}</div>` : ''}
+            </div>
             ${preview}
         </div>`;
     }).join('');
@@ -1295,15 +1387,13 @@ function renderTodoSections() {
     const isMemoPinned = (m) => m.is_pinned == 1 || m.is_pinned === true || m.isPinned === true;
 
     const rowBase = `
-        height:52px;
         min-height:52px;
-        max-height:52px;
-        padding:0 16px;
+        height:auto;
+        padding:8px 16px;
         display:flex;
         align-items:center;
         justify-content:space-between;
         box-sizing:border-box;
-        overflow:hidden;
     `;
 
     // 노출 범위: 미완료 메모 중 고정 메모 + 오늘~7일 이내 메모 (1주일 전부터 미리 노출)
@@ -1326,16 +1416,33 @@ function renderTodoSections() {
 
     const todayHtml = visibleMemos.length ? visibleMemos.map(m => {
         const isPinned = isMemoPinned(m);
-        const badge = isPinned ? '고정' : dashboardGetDdayLabel(getMemoDate(m), todayStr);
-        return `
+        if (isPinned) {
+            return `
         <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
                 <span style="font-size:13px; font-weight:400; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(m.content)}</span>
             </label>
-            ${badge ? `<span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0; margin-left:8px;">${badge}</span>` : ''}
+            <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0; margin-left:8px;">고정</span>
         </div>
-    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">표시할 메모가 없습니다.</div>`;
+            `;
+        }
+        const memoDate = getMemoDate(m);
+        const dDay = dashboardGetDdayLabel(memoDate, todayStr);
+        const dateLabel = dashboardFormatDateWithDay(memoDate);
+        const metaText = dateLabel ? [dateLabel, dDay].filter(Boolean).join(' · ') : dDay;
+        return `
+        <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
+            <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
+                <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
+                <span style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
+                    <span style="font-size:13px; font-weight:400; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(m.content)}</span>
+                    ${metaText ? `<span style="font-size:12px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(metaText)}</span>` : ''}
+                </span>
+            </label>
+        </div>
+        `;
+    }).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">표시할 메모가 없습니다.</div>`;
 
     const iconCalendar = typeof apDashIcon === 'function' ? apDashIcon('calendar', 28) : '';
 
