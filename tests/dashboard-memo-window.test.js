@@ -44,6 +44,7 @@ function buildContext(memos) {
   vm.createContext(context);
   const src = [
     extractFunction(dashboardSource, 'apParseLocalDateTime', 'apFormatMonthDay'),
+    extractFunction(dashboardSource, 'dashboardFormatDateWithDay', 'getDashboardAcademyScheduleSeries'),
     extractFunction(dashboardSource, 'dashboardGetDdayLabel', 'getDashboardOnboardingDueLabel'),
     extractFunction(dashboardSource, 'renderTodoSections', 'renderTodayJournalCard')
   ].join('\n');
