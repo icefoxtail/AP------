@@ -1171,6 +1171,12 @@
         try {
             if (window.EieApmsState && typeof EieApmsState.loadFoundation === 'function') {
                 var result = await EieApmsState.loadFoundation({ force: !!force });
+                if (result && result.auth_error) {
+                    if (window.EieApp && typeof EieApp.handleEie401 === 'function') {
+                        EieApp.handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
+                    }
+                    return 'auth_redirected';
+                }
                 if (result && result.success === false && Array.isArray(result.errors) && result.errors.length) {
                     _error = result.errors.map(function (entry) { return entry.error || String(entry); }).join('; ');
                 }
@@ -1184,8 +1190,8 @@
             await loadTeacherRoster();
         } catch (err) {
             if (EieApi.isAuthError && EieApi.isAuthError(err) && window.EieApp && typeof EieApp.handleEie401 === 'function') {
-                EieApp.handleEie401();
-                return;
+                EieApp.handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
+                return 'auth_redirected';
             }
             _error = err && err.message ? err.message : '학생 목록을 불러오지 못했습니다.';
         } finally {
@@ -1194,7 +1200,8 @@
     }
 
     async function refreshView(force) {
-        await loadFoundation(!!force);
+        var loadResult = await loadFoundation(!!force);
+        if (loadResult === 'auth_redirected') return;
         if (_selectedId && !selectedStudent()) {
             _query = _query || _selectedId;
             _selectedId = '';
