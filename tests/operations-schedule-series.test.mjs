@@ -45,6 +45,39 @@ function jsonRequest(method, url, body) {
 
 const admin = { id: 't1', name: '원장', role: 'admin' };
 
+function createGroupExamDb(rows = []) {
+  const prepared = [];
+  const batched = [];
+  const DB = {
+    prepare(sql) {
+      const statement = {
+        sql,
+        values: [],
+        bind(...values) {
+          this.values = values;
+          return this;
+        },
+        async first() {
+          return rows[0] || null;
+        },
+        async run() {
+          return { success: true, meta: { changes: this.values.length || 1 } };
+        },
+        async all() {
+          return { results: rows };
+        }
+      };
+      prepared.push(statement);
+      return statement;
+    },
+    async batch(statements) {
+      batched.push(...statements);
+      return statements.map(() => ({ success: true }));
+    }
+  };
+  return { DB, prepared, batched };
+}
+
 test('existing exam schedule create route remains operational', async () => {
   const env = createDb();
   const request = jsonRequest('POST', 'https://example.test/api/exam-schedules', {
@@ -61,6 +94,173 @@ test('existing exam schedule create route remains operational', async () => {
   const insert = env.prepared.find(statement => statement.sql.includes('INSERT INTO exam_schedules'));
   assert.ok(insert);
   assert.equal(insert.values.length, 6);
+});
+
+test('group exam create inserts date-range rows in one batch', async () => {
+  const env = createGroupExamDb();
+  const request = jsonRequest('POST', 'https://example.test/api/exam-schedules/group', {
+    schoolName: 'Deoma',
+    grade: 'G1',
+    examName: 'Final',
+    startDate: '2026-06-30',
+    endDate: '2026-07-02',
+    memo: 'math'
+  });
+
+  const response = await handleOperations(request, { DB: env.DB }, admin, ['api', 'exam-schedules', 'group'], new URL(request.url));
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(payload.success, true);
+  assert.equal(payload.count, 3);
+  assert.equal(env.batched.length, 3);
+  assert.deepEqual(env.batched.map(statement => statement.values[4]), ['2026-06-30', '2026-07-01', '2026-07-02']);
+});
+
+test('group exam create rejects invalid date range and missing title', async () => {
+  const invalidRangeEnv = createGroupExamDb();
+  const invalidRangeRequest = jsonRequest('POST', 'https://example.test/api/exam-schedules/group', {
+    schoolName: 'Deoma',
+    grade: 'G1',
+    examName: 'Final',
+    startDate: '2026-07-02',
+    endDate: '2026-06-30',
+    memo: ''
+  });
+  const invalidRangeResponse = await handleOperations(invalidRangeRequest, { DB: invalidRangeEnv.DB }, admin, ['api', 'exam-schedules', 'group'], new URL(invalidRangeRequest.url));
+  assert.equal(invalidRangeResponse.status, 400);
+  assert.equal(invalidRangeEnv.batched.length, 0);
+
+  const missingTitleEnv = createGroupExamDb();
+  const missingTitleRequest = jsonRequest('POST', 'https://example.test/api/exam-schedules/group', {
+    schoolName: 'Deoma',
+    grade: 'G1',
+    examName: '',
+    startDate: '2026-06-30',
+    endDate: '2026-07-02',
+    memo: ''
+  });
+  const missingTitleResponse = await handleOperations(missingTitleRequest, { DB: missingTitleEnv.DB }, admin, ['api', 'exam-schedules', 'group'], new URL(missingTitleRequest.url));
+  assert.equal(missingTitleResponse.status, 400);
+  assert.equal(missingTitleEnv.batched.length, 0);
+});
+
+test('group exam patch replaces old occurrences with the new date range in one batch', async () => {
+  const env = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e3', exam_date: '2026-07-02', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const request = jsonRequest('PATCH', 'https://example.test/api/exam-schedules/group', {
+    occurrenceIds: ['e1', 'e2', 'e3'],
+    schoolName: 'Deoma',
+    grade: 'G1',
+    examName: 'Final',
+    startDate: '2026-07-03',
+    endDate: '2026-07-04',
+    memo: 'math'
+  });
+
+  const response = await handleOperations(request, { DB: env.DB }, admin, ['api', 'exam-schedules', 'group'], new URL(request.url));
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(payload.success, true);
+  assert.equal(payload.count, 2);
+  assert.equal(env.batched.length, 3);
+  assert.ok(env.batched[0].sql.includes('DELETE FROM exam_schedules'));
+  assert.equal(env.batched.filter(statement => statement.sql.includes('INSERT INTO exam_schedules')).length, 2);
+});
+
+test('group exam delete rejects missing occurrence ids before deleting', async () => {
+  const env = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const request = jsonRequest('POST', 'https://example.test/api/exam-schedules/group-delete', {
+    occurrenceIds: ['e1', 'e2']
+  });
+
+  const response = await handleOperations(request, { DB: env.DB }, admin, ['api', 'exam-schedules', 'group-delete'], new URL(request.url));
+  assert.equal(response.status, 404);
+  const deletion = env.prepared.find(statement => statement.sql.includes('DELETE FROM exam_schedules'));
+  assert.equal(deletion, undefined);
+});
+
+test('group exam delete removes all requested occurrences with one statement', async () => {
+  const env = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const request = jsonRequest('POST', 'https://example.test/api/exam-schedules/group-delete', {
+    occurrenceIds: ['e1', 'e2']
+  });
+
+  const response = await handleOperations(request, { DB: env.DB }, admin, ['api', 'exam-schedules', 'group-delete'], new URL(request.url));
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(payload.success, true);
+  const deletion = env.prepared.find(statement => statement.sql.includes('DELETE FROM exam_schedules'));
+  assert.ok(deletion);
+  assert.deepEqual(deletion.values, ['e1', 'e2']);
+});
+
+test('group exam patch rejects mixed group rows', async () => {
+  const env = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Other', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const request = jsonRequest('PATCH', 'https://example.test/api/exam-schedules/group', {
+    occurrenceIds: ['e1', 'e2'],
+    schoolName: 'Deoma',
+    grade: 'G1',
+    examName: 'Final',
+    startDate: '2026-07-03',
+    endDate: '2026-07-04',
+    memo: 'math'
+  });
+
+  const response = await handleOperations(request, { DB: env.DB }, admin, ['api', 'exam-schedules', 'group'], new URL(request.url));
+  assert.equal(response.status, 400);
+  assert.equal(env.batched.length, 0);
+});
+
+test('group exam patch rejects non-consecutive occurrence rows', async () => {
+  const env = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e3', exam_date: '2026-07-04', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const request = jsonRequest('PATCH', 'https://example.test/api/exam-schedules/group', {
+    occurrenceIds: ['e1', 'e2', 'e3'],
+    schoolName: 'Deoma',
+    grade: 'G1',
+    examName: 'Final',
+    startDate: '2026-07-03',
+    endDate: '2026-07-05',
+    memo: 'math'
+  });
+
+  const response = await handleOperations(request, { DB: env.DB }, admin, ['api', 'exam-schedules', 'group'], new URL(request.url));
+  assert.equal(response.status, 400);
+  assert.equal(env.batched.length, 0);
+});
+
+test('group exam delete rejects mixed and non-consecutive rows', async () => {
+  const mixedEnv = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Other', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const mixedRequest = jsonRequest('POST', 'https://example.test/api/exam-schedules/group-delete', { occurrenceIds: ['e1', 'e2'] });
+  const mixedResponse = await handleOperations(mixedRequest, { DB: mixedEnv.DB }, admin, ['api', 'exam-schedules', 'group-delete'], new URL(mixedRequest.url));
+  assert.equal(mixedResponse.status, 400);
+  assert.equal(mixedEnv.prepared.some(statement => statement.sql.includes('DELETE FROM exam_schedules')), false);
+
+  const gapEnv = createGroupExamDb([
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' },
+    { id: 'e2', exam_date: '2026-07-02', school_name: 'Deoma', grade: 'G1', exam_name: 'Final', memo: 'math' }
+  ]);
+  const gapRequest = jsonRequest('POST', 'https://example.test/api/exam-schedules/group-delete', { occurrenceIds: ['e1', 'e2'] });
+  const gapResponse = await handleOperations(gapRequest, { DB: gapEnv.DB }, admin, ['api', 'exam-schedules', 'group-delete'], new URL(gapRequest.url));
+  assert.equal(gapResponse.status, 400);
+  assert.equal(gapEnv.prepared.some(statement => statement.sql.includes('DELETE FROM exam_schedules')), false);
 });
 
 test('batch create inserts all occurrences with one series id', async () => {

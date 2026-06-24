@@ -38,11 +38,30 @@ function loadScheduleContext(overrides = {}) {
     globalThis.__schedule = {
       getOccurrenceDateList,
       groupAcademyScheduleRows,
+      buildUnifiedExamScheduleGroups,
+      getUnifiedScheduleDisplayDateText,
+      isUnifiedScheduleInDate,
+      isUnifiedScheduleOverlappingRange,
       getUnifiedSchedules,
       getWeekDates,
-      openExamScheduleModal
+      openExamScheduleModal,
+      openGroupedExamScheduleActionModal,
+      addUnifiedSchedule,
+      handleEditGroupedExamSchedule,
+      deleteGroupedExamSchedule
     };`, context);
   return context;
+}
+
+function scheduleFormDocument(values) {
+  return {
+    getElementById(id) {
+      if (!(id in values)) return null;
+      return { value: values[id], style: {}, disabled: false, required: false };
+    },
+    querySelector: () => null,
+    querySelectorAll: () => []
+  };
 }
 
 test('weekly recurrence keeps only the starting weekday through the end date', () => {
@@ -111,6 +130,40 @@ test('academy occurrences aggregate into one visible series row', () => {
   assert.deepEqual(Array.from(rows[0].occurrence_dates), ['2026-07-01', '2026-07-02', '2026-07-03']);
 });
 
+test('consecutive exam rows aggregate into one date-range item', () => {
+  const context = loadScheduleContext();
+  context.state.db.exam_schedules = [
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Deoma', grade: '', exam_name: 'Final', memo: '7/1 math' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Deoma', grade: '', exam_name: 'Final', memo: '7/1 math' },
+    { id: 'e3', exam_date: '2026-07-02', school_name: 'Deoma', grade: '', exam_name: 'Final', memo: '7/1 math' }
+  ];
+
+  const rows = context.__schedule.getUnifiedSchedules(new Date('2026-06-30T00:00:00'));
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].date, '2026-06-30');
+  assert.equal(rows[0].end_date, '2026-07-02');
+  assert.equal(rows[0].memo, '7/1 math');
+  assert.deepEqual(Array.from(rows[0].occurrence_ids), ['e1', 'e2', 'e3']);
+  assert.equal(context.__schedule.isUnifiedScheduleInDate(rows[0], '2026-07-01'), true);
+  assert.equal(context.__schedule.isUnifiedScheduleOverlappingRange(rows[0], '2026-07-01', '2026-07-07'), true);
+});
+
+test('non-consecutive exam rows split into separate date-range items', () => {
+  const context = loadScheduleContext();
+  context.state.db.exam_schedules = [
+    { id: 'e1', exam_date: '2026-06-30', school_name: 'Maesan', grade: 'G1', exam_name: 'Final', memo: '' },
+    { id: 'e2', exam_date: '2026-07-01', school_name: 'Maesan', grade: 'G1', exam_name: 'Final', memo: '' },
+    { id: 'e3', exam_date: '2026-07-04', school_name: 'Maesan', grade: 'G1', exam_name: 'Final', memo: '' }
+  ];
+
+  const rows = context.__schedule.getUnifiedSchedules(new Date('2026-06-30T00:00:00'));
+  assert.equal(rows.length, 2);
+  assert.deepEqual(Array.from(rows, row => [row.date, row.end_date]), [
+    ['2026-06-30', '2026-07-01'],
+    ['2026-07-04', '2026-07-04']
+  ]);
+});
+
 test('legacy rows without series columns remain standalone schedules', () => {
   const context = loadScheduleContext();
   const grouped = context.__schedule.groupAcademyScheduleRows([
@@ -121,13 +174,13 @@ test('legacy rows without series columns remain standalone schedules', () => {
   assert.deepEqual(Array.from(grouped, row => row.series_id), ['legacy-1', 'legacy-2']);
 });
 
-test('moving to another month clears a stale selected-date filter', () => {
+test('moving to another month selects the first day instead of showing every schedule', () => {
   const context = loadScheduleContext();
   context.state.ui.examCalendarView = 'month';
   context.state.ui.examCalendarMonth = '2026-07-01';
   context.state.ui.examCalendarSelectedDate = '2026-07-15';
   context.__schedule.openExamScheduleModal('2026-08-01');
-  assert.equal(context.state.ui.examCalendarSelectedDate, '');
+  assert.equal(context.state.ui.examCalendarSelectedDate, '2026-08-01');
 });
 
 test('backend and migration expose the series endpoints and columns', () => {
@@ -146,4 +199,97 @@ test('date-structure replacement creates the new series before deleting the old 
   const deleteIndex = scheduleSource.indexOf("const removed = await api.delete('academy-schedules/series'", createIndex);
   assert.ok(createIndex >= 0);
   assert.ok(deleteIndex > createIndex);
+});
+
+test('grouped exam row opens an action choice before single-occurrence editing', () => {
+  assert.match(scheduleSource, /openGroupedExamScheduleActionModal/);
+  assert.match(scheduleSource, /openEditUnifiedScheduleModal\('exam', '\$\{apEscapeHtml\(selectedId\)\}'\)/);
+  assert.match(scheduleSource, /openEditGroupedExamScheduleModal/);
+  assert.match(scheduleSource, /deleteGroupedExamSchedule/);
+});
+
+test('grouped exam edit and delete use one server group API call', () => {
+  assert.doesNotMatch(scheduleSource, /parseUnifiedScheduleIdList/);
+  assert.doesNotMatch(scheduleSource, /for \(const occurrenceId of occurrenceIds\)/);
+  assert.match(scheduleSource, /if \(payload\.kind === 'exam'\) \{\s*r = await api\.patch\('exam-schedules\/' \+ id, body\);/);
+  assert.match(scheduleSource, /api\.patch\('exam-schedules\/group'/);
+  assert.match(scheduleSource, /api\.post\('exam-schedules\/group-delete'/);
+});
+
+test('new date-range exam uses one group create API call', async () => {
+  const calls = [];
+  const context = loadScheduleContext({
+    document: scheduleFormDocument({
+      'new-sch-kind': 'exam',
+      'new-sch-title': 'Final',
+      'new-sch-date': '2026-06-30',
+      'new-sch-end-date': '2026-07-02',
+      'new-sch-repeat': 'single',
+      'new-sch-start-time': '',
+      'new-sch-end-time': '',
+      'new-sch-memo': 'math',
+      'new-sch-school': 'Deoma',
+      'new-sch-grade': 'G1'
+    }),
+    api: {
+      post: async (resource, body) => {
+        calls.push({ resource, body });
+        return { success: true };
+      }
+    }
+  });
+
+  await context.__schedule.addUnifiedSchedule();
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].resource, 'exam-schedules/group');
+  assert.equal(calls[0].body.startDate, '2026-06-30');
+  assert.equal(calls[0].body.endDate, '2026-07-02');
+});
+
+test('new single-day exam keeps the existing single create API call', async () => {
+  const calls = [];
+  const context = loadScheduleContext({
+    document: scheduleFormDocument({
+      'new-sch-kind': 'exam',
+      'new-sch-title': 'Final',
+      'new-sch-date': '2026-06-30',
+      'new-sch-end-date': '',
+      'new-sch-repeat': 'single',
+      'new-sch-start-time': '',
+      'new-sch-end-time': '',
+      'new-sch-memo': 'math',
+      'new-sch-school': 'Deoma',
+      'new-sch-grade': 'G1'
+    }),
+    api: {
+      post: async (resource, body) => {
+        calls.push({ resource, body });
+        return { success: true };
+      }
+    }
+  });
+
+  await context.__schedule.addUnifiedSchedule();
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].resource, 'exam-schedules');
+  assert.equal(calls[0].body.examDate, '2026-06-30');
+});
+
+test('grouped exam action wording distinguishes selected date from start date', () => {
+  assert.match(scheduleSource, /const singleEditLabel = selectedDate \? '.*' : '.*'/);
+  assert.match(scheduleSource, /actionDateText \? `: \$\{apEscapeHtml\(actionDateText\)\}` : ''/);
+  assert.match(scheduleSource, /openGroupedExamScheduleActionModal\('[^`]+selectedDate/);
+});
+
+test('schedule source has no encoding-corrupted markup', () => {
+  // Guards against the UTF-8 round-trip corruption that turned Korean/symbols
+  // inside template literals into stray "?" runs (e.g. `>??/button>`), which
+  // node --check cannot catch but breaks the rendered month/week navigation.
+  assert.ok(!scheduleSource.includes('??/button'), 'found corrupted "??/button" markup');
+  assert.ok(!scheduleSource.includes('??/div'), 'found corrupted "??/div" markup');
+  assert.ok(!scheduleSource.includes('??/span'), 'found corrupted "??/span" markup');
+  // month/week navigation buttons must use safe ASCII entities, not lost glyphs
+  assert.match(scheduleSource, /aria-label="이전 달">&lt;<\/button>/);
+  assert.match(scheduleSource, /aria-label="다음 달">&gt;<\/button>/);
+  assert.match(scheduleSource, /\$\{targetYear\}년 \$\{targetMonth \+ 1\}월<\/div>/);
 });

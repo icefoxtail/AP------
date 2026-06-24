@@ -111,6 +111,27 @@ function formatScheduleDate(date) {
     return date.toLocaleDateString('sv-SE');
 }
 
+function addScheduleDays(date, days) {
+    const next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    next.setDate(next.getDate() + days);
+    return next;
+}
+
+function formatUnifiedScheduleDateWithDay(dateStr) {
+    const date = parseScheduleDate(dateStr);
+    if (!date) return dateStr || '';
+
+    const dayNames = ['\uc77c', '\uc6d4', '\ud654', '\uc218', '\ubaa9', '\uae08', '\ud1a0'];
+    return `${date.getMonth() + 1}/${date.getDate()}(${dayNames[date.getDay()]})`;
+}
+
+function formatUnifiedScheduleDateRange(startDate, endDate) {
+    if (endDate && endDate !== startDate) {
+        return `${formatUnifiedScheduleDateWithDay(startDate)}~${formatUnifiedScheduleDateWithDay(endDate)}`;
+    }
+    return formatUnifiedScheduleDateWithDay(startDate);
+}
+
 function getScheduleSeriesId(row) {
     return String(row?.series_id || row?.seriesId || row?.id || '');
 }
@@ -135,6 +156,14 @@ function setUnifiedScheduleView(view) {
     if (!state.ui) state.ui = {};
     state.ui.examCalendarView = ['month', 'week', 'agenda'].includes(view) ? view : 'month';
     openExamScheduleModal(state.ui.examCalendarMonth || '');
+}
+
+function toggleUnifiedScheduleCreateForm() {
+    const form = document.getElementById('unified-schedule-create-form');
+    if (!form) return;
+    const isOpen = form.style.display !== 'none';
+    form.style.display = isOpen ? 'none' : 'block';
+    if (!isOpen) handleUnifiedScheduleTypeChange('new-sch');
 }
 
 function parseScheduleTimeMinutes(timeText) {
@@ -251,19 +280,111 @@ function groupAcademyScheduleRows(rows) {
     });
 }
 
+function getUnifiedExamGroupKey(row) {
+    return [
+        String(row?.school_name || '').trim(),
+        String(row?.grade || '').trim(),
+        String(row?.exam_name || '').trim(),
+        String(row?.memo || '').trim()
+    ].join('|');
+}
+
+function buildUnifiedExamScheduleGroups(examRows) {
+    const grouped = new Map();
+
+    (examRows || []).forEach((row) => {
+        if (!row?.exam_date) return;
+        const key = getUnifiedExamGroupKey(row);
+        if (!grouped.has(key)) grouped.set(key, []);
+        grouped.get(key).push(row);
+    });
+
+    const result = [];
+    grouped.forEach((items) => {
+        items.sort((a, b) => String(a.exam_date || '').localeCompare(String(b.exam_date || '')));
+
+        let chunk = [];
+        let prevDate = null;
+
+        const flush = () => {
+            if (!chunk.length) return;
+
+            const uniqueDates = [...new Set(chunk.map(item => item.exam_date).filter(Boolean))].sort();
+            const first = chunk[0] || {};
+            const lastDate = uniqueDates[uniqueDates.length - 1] || first.exam_date || '';
+
+            result.push({
+                kind: 'exam',
+                id: first.id,
+                occurrence_ids: chunk.map(item => item.id).filter(id => id !== undefined && id !== null),
+                date: uniqueDates[0] || first.exam_date || '',
+                end_date: lastDate,
+                title: first.exam_name || '일정',
+                school_name: first.school_name || '',
+                grade: first.grade || '',
+                memo: first.memo || '',
+                start_time: '',
+                end_time: '',
+                target_scope: 'global',
+                occurrence_dates: uniqueDates,
+                raw_items: chunk.slice()
+            });
+            chunk = [];
+        };
+
+        items.forEach((item) => {
+            const currentDate = parseScheduleDate(item.exam_date);
+            const prevDateStr = prevDate ? formatScheduleDate(prevDate) : '';
+            const nextDateStr = prevDate ? formatScheduleDate(addScheduleDays(prevDate, 1)) : '';
+            const isSameDate = prevDateStr && item.exam_date === prevDateStr;
+            const isNextDate = nextDateStr && item.exam_date === nextDateStr;
+
+            if (chunk.length && !isSameDate && !isNextDate) flush();
+
+            chunk.push(item);
+            if (currentDate) prevDate = currentDate;
+        });
+
+        flush();
+    });
+
+    return result;
+}
+
+function getUnifiedScheduleDisplayDateText(item) {
+    return formatUnifiedScheduleDateRange(item?.date || '', item?.end_date || item?.date || '');
+}
+
+function isUnifiedScheduleInDate(item, dateStr) {
+    if (!dateStr) return true;
+    const start = item?.date || '';
+    const end = item?.end_date || start;
+    return start <= dateStr && dateStr <= end;
+}
+
+function isUnifiedScheduleOverlappingRange(item, startDate, endDate) {
+    const start = item?.date || '';
+    const end = item?.end_date || start;
+    return start <= endDate && end >= startDate;
+}
+
+function getUnifiedScheduleOccurrenceIds(item) {
+    const ids = item?.occurrenceIds || item?.occurrence_ids || [];
+    return Array.isArray(ids) ? ids.map(id => String(id)).filter(Boolean) : [];
+}
+
+function getUnifiedExamGroupedItemByIds(occurrenceIds) {
+    const ids = Array.isArray(occurrenceIds) ? occurrenceIds.map(id => String(id)) : [];
+    if (ids.length < 2) return null;
+    return buildUnifiedExamScheduleGroups(state.db.exam_schedules || [])
+        .find(item => {
+            const itemIds = getUnifiedScheduleOccurrenceIds(item);
+            return itemIds.length === ids.length && ids.every(id => itemIds.includes(id));
+        }) || null;
+}
+
 function getUnifiedSchedules(now = new Date()) {
-    const examRows = (state.db.exam_schedules || []).map(e => ({
-        kind: 'exam',
-        id: e.id,
-        date: e.exam_date || '',
-        title: e.exam_name || '일정',
-        school_name: e.school_name || '',
-        grade: e.grade || '',
-        memo: e.memo || '',
-        start_time: '',
-        end_time: '',
-        target_scope: 'global'
-    }));
+    const examRows = buildUnifiedExamScheduleGroups(state.db.exam_schedules || []);
 
     const academyRows = (state.db.academy_schedules || [])
         .filter(s => String(s.is_deleted || 0) !== '1')
@@ -271,7 +392,6 @@ function getUnifiedSchedules(now = new Date()) {
     const academySeries = groupAcademyScheduleRows(academyRows);
 
     return [...examRows, ...academySeries].filter(s => {
-        if (s.kind === 'exam') return isUnifiedScheduleVisible(s, now);
         return isUnifiedScheduleVisible({ ...s, date: s.end_date || s.date }, now);
     }).sort((a, b) => {
         const d = String(a.date || '').localeCompare(String(b.date || ''));
@@ -310,8 +430,8 @@ function handleUnifiedScheduleTypeChange(prefix) {
     }
     if (titleEl) {
         if (kind === 'exam') titleEl.placeholder = '시험명';
-        else if (kind === 'closed') titleEl.placeholder = '휴무명 예) 학원방학, 추석연휴';
-        else titleEl.placeholder = '일정명 예) 회의, 설명회, 공지';
+        else if (kind === 'closed') titleEl.placeholder = '휴무명 예: 학원방학, 추석연휴';
+        else titleEl.placeholder = '일정명 예: 회의, 설명회 공지';
     }
     if (repeatEl) {
         repeatEl.disabled = isExam;
@@ -361,6 +481,12 @@ function collectUnifiedSchedulePayload(prefix) {
 
         return {
             kind,
+            title,
+            date: startDate,
+            endDate,
+            schoolName,
+            grade,
+            memo,
             dates,
             seriesId: '',
             seriesKind: 'single',
@@ -451,9 +577,9 @@ function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstD
     let calendarHtml = `
         <div class="exam-calendar-shell">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px;">
-                <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${prevStr}')">‹</button>
+                <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${prevStr}')" aria-label="이전 달">&lt;</button>
                 <div style="font-size:18px; font-weight:500; line-height:1.3; color:var(--text);">${targetYear}년 ${targetMonth + 1}월</div>
-                <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${nextStr}')">›</button>
+                <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${nextStr}')" aria-label="다음 달">&gt;</button>
             </div>
             <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center; font-size:13px; font-weight:500; line-height:1.3; color:var(--secondary); margin-bottom:8px;">
                 <div style="color:var(--error);">일</div>
@@ -526,39 +652,25 @@ function getWeekDates(baseDateStr) {
 function renderUnifiedScheduleWeek(todayStr) {
     const baseDate = state.ui?.examCalendarSelectedDate || state.ui?.examCalendarMonth || todayStr;
     const weekDates = getWeekDates(baseDate);
-    const schedules = getUnifiedSchedules(new Date(0));
+    const schedules = getUnifiedSchedules(new Date(0))
+        .filter(item => isUnifiedScheduleOverlappingRange(item, weekDates[0], weekDates[6]));
     const prevBase = parseScheduleDate(weekDates[0]);
     const nextBase = parseScheduleDate(weekDates[6]);
     prevBase.setDate(prevBase.getDate() - 7);
     nextBase.setDate(nextBase.getDate() + 7);
-    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
     return `
         <div class="exam-calendar-shell">
             <div class="exam-week-nav">
-                <button class="btn ap-small-btn" onclick="openExamScheduleModal('${formatScheduleDate(prevBase)}')">‹</button>
-                <div>${weekDates[0]} ~ ${weekDates[6]}</div>
-                <button class="btn ap-small-btn" onclick="openExamScheduleModal('${formatScheduleDate(nextBase)}')">›</button>
+                <button class="btn ap-small-btn" onclick="openExamScheduleModal('${formatScheduleDate(prevBase)}')" aria-label="이전 주">&lt;</button>
+                <div>${formatUnifiedScheduleDateWithDay(weekDates[0])} ~ ${formatUnifiedScheduleDateWithDay(weekDates[6])}</div>
+                <button class="btn ap-small-btn" onclick="openExamScheduleModal('${formatScheduleDate(nextBase)}')" aria-label="다음 주">&gt;</button>
             </div>
-            <div class="exam-week-grid">
-                ${weekDates.map((date, index) => {
-                    const dayItems = schedules.filter(item => item.kind === 'exam'
-                        ? item.date === date
-                        : (item.occurrence_dates || [item.date]).includes(date));
-                    return `<button type="button" class="exam-week-day ${date === todayStr ? 'today' : ''}" onclick="selectExamCalendarDate('${date}')">
-                        <span class="exam-week-day-label">${dayNames[index]} · ${Number(date.slice(-2))}</span>
-                        <span class="exam-week-items">${dayItems.length ? dayItems.map(item => {
-                            const tone = getScheduleTone(item.kind);
-                            const timeText = item.start_time ? `${item.start_time} ` : '';
-                            return `<span class="exam-week-item" style="border-color:${tone.border}; color:${tone.color}; background:${tone.bg};">${apEscapeHtml(timeText + item.title)}</span>`;
-                        }).join('') : '<span class="exam-week-empty">일정 없음</span>'}</span>
-                    </button>`;
-                }).join('')}
-            </div>
+            <div style="font-size:15px; font-weight:500; margin-bottom:10px;">이번 주 일정</div>
+            <div class="exam-schedule-list">${renderUnifiedScheduleList({ items: schedules })}</div>
         </div>
     `;
 }
-
 function renderUnifiedScheduleAgenda() {
     return `
         <div class="exam-calendar-shell">
@@ -637,10 +749,10 @@ function renderUnifiedScheduleForm(prefix = 'new-sch', item = null, options = {}
 
 function renderUnifiedScheduleList(options = {}) {
     const selectedDate = options.selectedDate || '';
-    const schedules = getUnifiedSchedules().filter(item => {
+    const sourceItems = Array.isArray(options.items) ? options.items : getUnifiedSchedules();
+    const schedules = sourceItems.filter(item => {
         if (!selectedDate) return true;
-        if (item.kind === 'exam') return item.date === selectedDate;
-        return (item.occurrence_dates || [item.date]).includes(selectedDate);
+        return isUnifiedScheduleInDate(item, selectedDate);
     });
 
     if (!schedules.length) {
@@ -650,36 +762,41 @@ function renderUnifiedScheduleList(options = {}) {
     return schedules.map(s => {
         const tone = getScheduleTone(s.kind);
         const timeText = [s.start_time, s.end_time].filter(Boolean).join(' - ');
-        const dateText = s.end_date && s.end_date !== s.date ? `${s.date} ~ ${s.end_date}` : s.date;
+        const dateText = getUnifiedScheduleDisplayDateText(s);
         const repeatText = s.series_kind === 'weekly' ? ' · 매주' : '';
-        const subParts = [];
+        const titleParts = [];
 
         if (s.kind === 'exam' && (s.school_name || s.grade)) {
-            subParts.push(`${s.school_name || '일반'} ${s.grade || ''}`.trim());
+            titleParts.push(`${s.school_name || ''} ${s.grade || ''}`.trim());
         }
+        titleParts.push(s.title || '');
 
         const editRow = selectedDate && Array.isArray(s.raw_items)
-            ? s.raw_items.find(item => item.schedule_date === selectedDate)
+            ? s.raw_items.find(item => s.kind === 'exam' ? item.exam_date === selectedDate : item.schedule_date === selectedDate)
             : null;
         const editId = editRow?.id || s.id;
+        const editSeriesArg = s.kind === 'exam' ? '' : (s.series_id || '');
+        const occurrenceIds = getUnifiedScheduleOccurrenceIds(s);
+        const isGroupedExam = s.kind === 'exam' && occurrenceIds.length > 1;
+        const clickAction = isGroupedExam
+            ? `openGroupedExamScheduleActionModal('${occurrenceIds.map(id => apEscapeHtml(id)).join(',')}', '${apEscapeHtml(editId)}', '${apEscapeHtml(selectedDate)}')`
+            : `openEditUnifiedScheduleModal('${s.kind}', '${editId}', '${apEscapeHtml(editSeriesArg)}')`;
 
         return `
-            <div class="exam-schedule-item" style="border-color:${tone.border};">
-                <div style="flex:1; min-width:0;">
-                    <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:5px;">
+            <button type="button" class="exam-schedule-item" style="border-color:${tone.border};" onclick="${clickAction}">
+                <span style="flex:1; min-width:0; display:block; text-align:left;">
+                    <span style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:5px;">
                         <span style="font-size:11px; font-weight:500; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:3px 8px; border-radius:8px;">${getScheduleTypeLabel(s.kind)}</span>
                         <span style="font-size:11px; font-weight:400; color:var(--secondary);">${apEscapeHtml(dateText || '')}${repeatText}${timeText ? ` · ${apEscapeHtml(timeText)}` : ''}</span>
-                    </div>
-                    <div style="font-size:15px; font-weight:500; line-height:1.35; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(s.title || '')}</div>
-                    ${subParts.length ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(subParts.join(' · '))}</div>` : ''}
-                    ${s.memo ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(s.memo)}</div>` : ''}
-                </div>
-                <button class="btn ap-small-btn" style="background:var(--surface-2); border:none; flex:0 0 auto;" onclick="openEditUnifiedScheduleModal('${s.kind}', '${editId}', '${apEscapeHtml(s.series_id || '')}')">수정</button>
-            </div>
+                    </span>
+                    <span style="display:block; font-size:15px; font-weight:500; line-height:1.35; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(titleParts.filter(Boolean).join(' '))}</span>
+                    ${s.memo ? `<span style="display:block; font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere; white-space:pre-line;">${apEscapeHtml(s.memo)}</span>` : ''}
+                    ${s.kind === 'exam' && (s.occurrence_dates || []).length > 1 ? `<span style="display:block; font-size:11px; font-weight:400; line-height:1.4; color:var(--secondary); margin-top:4px;">기간 시험 일정 · 개별 날짜 수정</span>` : ''}
+                </span>
+            </button>
         `;
     }).join('');
 }
-
 function openExamScheduleModal(baseDateStr = '') {
     const todayStr = new Date().toLocaleDateString('sv-SE');
 
@@ -687,13 +804,6 @@ function openExamScheduleModal(baseDateStr = '') {
     if (baseDateStr) {
         state.ui.examCalendarMonth = baseDateStr;
         if (getScheduleView() === 'week') state.ui.examCalendarSelectedDate = baseDateStr;
-        if (
-            getScheduleView() === 'month' &&
-            state.ui.examCalendarSelectedDate &&
-            !state.ui.examCalendarSelectedDate.startsWith(baseDateStr.slice(0, 7))
-        ) {
-            state.ui.examCalendarSelectedDate = '';
-        }
     } else if (!state.ui.examCalendarMonth) {
         state.ui.examCalendarMonth = todayStr;
     }
@@ -708,82 +818,91 @@ function openExamScheduleModal(baseDateStr = '') {
     const prevStr = `${prevMonthDate.getFullYear()}-${String(prevMonthDate.getMonth() + 1).padStart(2, '0')}-01`;
     const nextStr = `${nextMonthDate.getFullYear()}-${String(nextMonthDate.getMonth() + 1).padStart(2, '0')}-01`;
     const view = getScheduleView();
+    if (view === 'month') {
+        const targetMonthKey = `${targetYear}-${String(targetMonth + 1).padStart(2, '0')}`;
+        if (!state.ui.examCalendarSelectedDate || !state.ui.examCalendarSelectedDate.startsWith(targetMonthKey)) {
+            state.ui.examCalendarSelectedDate = todayStr.startsWith(targetMonthKey)
+                ? todayStr
+                : `${targetMonthKey}-01`;
+        }
+    }
+    const selectedDate = view === 'month' ? (state.ui.examCalendarSelectedDate || '') : '';
     const calendarContent = view === 'week'
         ? renderUnifiedScheduleWeek(todayStr)
         : view === 'agenda'
             ? renderUnifiedScheduleAgenda()
             : renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstDay, lastDate, prevStr, nextStr);
-    const selectedDate = view === 'month' ? (state.ui.examCalendarSelectedDate || '') : '';
 
     const body = `
         <style>
-            .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
-            .exam-schedule-row { display:flex; gap:10px; width:100%; }
-            .exam-schedule-row > * { flex:1; min-width:0; width:100%; }
-            .exam-calendar-shell { background:var(--surface-2); border-radius:14px; padding:12px; margin-bottom:16px; }
-            .exam-view-toggle { display:flex; gap:4px; padding:4px; margin-bottom:12px; border-radius:12px; background:var(--surface-2); }
-            .exam-view-toggle button { flex:1; min-height:36px; border:0; border-radius:9px; background:transparent; color:var(--secondary); cursor:pointer; }
-            .exam-view-toggle button.active { background:var(--surface); color:var(--primary); box-shadow:0 1px 3px rgba(15,23,42,.08); }
-            .exam-calendar-day { min-height:66px; background:var(--surface); border:1px solid transparent; border-radius:10px; padding:5px 3px; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:2px; font-size:14px; font-weight:500; line-height:1.2; color:var(--text); overflow:hidden; }
-            .exam-calendar-day.today { border-color:var(--primary); color:var(--primary); }
-            .exam-calendar-day.selected { background:rgba(26,92,255,0.08); border-color:var(--primary); color:var(--primary); }
-            .exam-calendar-day-number { align-self:center; }
-            .exam-calendar-bars { display:flex; flex-direction:column; gap:2px; min-height:24px; }
-            .exam-calendar-series-bar { display:block; min-width:0; height:11px; padding:0 3px; border-radius:4px; background:var(--series-bg); color:var(--series-color); font-size:8px; line-height:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-            .exam-calendar-series-bar.has-prev { margin-left:-4px; border-top-left-radius:0; border-bottom-left-radius:0; }
-            .exam-calendar-series-bar.has-next { margin-right:-4px; border-top-right-radius:0; border-bottom-right-radius:0; }
-            .exam-calendar-dot { width:4px; height:4px; border-radius:50%; margin-top:1px; display:inline-block; }
-            .exam-schedule-list { max-height:38vh; overflow-y:auto; padding-right:2px; margin-bottom:12px; }
-            .exam-schedule-item { padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; }
-            .exam-schedule-time-row { display:flex; align-items:center; gap:6px; }
-            .exam-schedule-time-row input { min-width:0; flex:1; border:0; background:var(--surface); }
-            .exam-schedule-scope { display:flex; gap:10px; margin:0 0 12px; padding:10px 12px; border-radius:12px; background:var(--surface-2); }
-            .exam-schedule-scope label { flex:1; display:flex; align-items:center; gap:6px; font-size:13px; cursor:pointer; }
-            .exam-week-nav { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; font-size:14px; font-weight:500; }
-            .exam-week-nav button { border:0; background:var(--surface); }
-            .exam-week-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; }
-            .exam-week-day { min-height:132px; padding:8px 5px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); text-align:left; cursor:pointer; }
-            .exam-week-day.today { border-color:var(--primary); }
-            .exam-week-day-label { display:block; text-align:center; margin-bottom:8px; font-size:12px; font-weight:500; }
-            .exam-week-items { display:flex; flex-direction:column; gap:4px; }
-            .exam-week-item { display:block; padding:4px; border:1px solid; border-radius:6px; font-size:9px; line-height:1.3; overflow-wrap:anywhere; }
-            .exam-week-empty { display:block; text-align:center; color:var(--secondary); font-size:9px; }
-            .exam-agenda-list { max-height:42vh; overflow:auto; }
+            .unified-schedule-modal .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
+            .unified-schedule-modal .exam-schedule-row { display:flex; gap:10px; width:100%; }
+            .unified-schedule-modal .exam-schedule-row > * { flex:1; min-width:0; width:100%; }
+            .unified-schedule-modal .exam-calendar-shell { background:var(--surface-2); border-radius:14px; padding:12px; margin-bottom:16px; }
+            .unified-schedule-modal .exam-view-toggle { display:flex; gap:4px; padding:4px; margin-bottom:12px; border-radius:12px; background:var(--surface-2); }
+            .unified-schedule-modal .exam-view-toggle button { flex:1; min-height:36px; border:0; border-radius:9px; background:transparent; color:var(--secondary); cursor:pointer; }
+            .unified-schedule-modal .exam-view-toggle button.active { background:var(--surface); color:var(--primary); box-shadow:0 1px 3px rgba(15,23,42,.08); }
+            .unified-schedule-modal .exam-calendar-day { min-height:66px; background:var(--surface); border:1px solid transparent; border-radius:10px; padding:5px 3px; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:2px; font-size:14px; font-weight:500; line-height:1.2; color:var(--text); overflow:hidden; }
+            .unified-schedule-modal .exam-calendar-day.today { border-color:var(--primary); color:var(--primary); }
+            .unified-schedule-modal .exam-calendar-day.selected { background:rgba(26,92,255,0.08); border-color:var(--primary); color:var(--primary); }
+            .unified-schedule-modal .exam-calendar-day-number { align-self:center; }
+            .unified-schedule-modal .exam-calendar-bars { display:flex; flex-direction:column; gap:2px; min-height:24px; }
+            .unified-schedule-modal .exam-calendar-series-bar { display:block; min-width:0; height:11px; padding:0 3px; border-radius:4px; background:var(--series-bg); color:var(--series-color); font-size:8px; line-height:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+            .unified-schedule-modal .exam-calendar-series-bar.has-prev { margin-left:-4px; border-top-left-radius:0; border-bottom-left-radius:0; }
+            .unified-schedule-modal .exam-calendar-series-bar.has-next { margin-right:-4px; border-top-right-radius:0; border-bottom-right-radius:0; }
+            .unified-schedule-modal .exam-calendar-dot { width:4px; height:4px; border-radius:50%; margin-top:1px; display:inline-block; }
+            .unified-schedule-modal .exam-schedule-list { max-height:38vh; overflow-y:auto; padding-right:2px; margin-bottom:12px; }
+            .unified-schedule-modal .exam-schedule-item { width:100%; padding:12px 0; border:0; border-bottom:1px solid var(--border); background:transparent; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer; color:inherit; }
+            .unified-schedule-modal .exam-schedule-item:hover { background:rgba(15,23,42,0.03); }
+            .unified-schedule-modal .exam-schedule-time-row { display:flex; align-items:center; gap:6px; }
+            .unified-schedule-modal .exam-schedule-time-row input { min-width:0; flex:1; border:0; background:var(--surface); }
+            .unified-schedule-modal .exam-schedule-scope { display:flex; gap:10px; margin:0 0 12px; padding:10px 12px; border-radius:12px; background:var(--surface-2); }
+            .unified-schedule-modal .exam-schedule-scope label { flex:1; display:flex; align-items:center; gap:6px; font-size:13px; cursor:pointer; }
+            .unified-schedule-modal .exam-week-nav { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; font-size:14px; font-weight:500; }
+            .unified-schedule-modal .exam-week-nav button { border:0; background:var(--surface); }
+            .unified-schedule-modal .exam-week-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; }
+            .unified-schedule-modal .exam-week-day { min-height:132px; padding:8px 5px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); text-align:left; cursor:pointer; }
+            .unified-schedule-modal .exam-week-day.today { border-color:var(--primary); }
+            .unified-schedule-modal .exam-week-day-label { display:block; text-align:center; margin-bottom:8px; font-size:12px; font-weight:500; }
+            .unified-schedule-modal .exam-week-items { display:flex; flex-direction:column; gap:4px; }
+            .unified-schedule-modal .exam-week-item { display:block; padding:4px; border:1px solid; border-radius:6px; font-size:9px; line-height:1.3; overflow-wrap:anywhere; }
+            .unified-schedule-modal .exam-week-empty { display:block; text-align:center; color:var(--secondary); font-size:9px; }
+            .unified-schedule-modal .exam-agenda-list { max-height:42vh; overflow:auto; }
             @media (max-width:600px) {
-                .exam-schedule-form { padding:12px; }
-                .exam-schedule-row { flex-direction:column; }
-                .exam-schedule-list { max-height:34vh; padding-right:0; }
-                .exam-schedule-item { align-items:flex-start; }
-                .exam-calendar-day { min-height:56px; padding:4px 1px; font-size:12px; }
-                .exam-calendar-series-bar { font-size:0; height:8px; }
-                .exam-week-grid { display:flex; flex-direction:column; }
-                .exam-week-day { min-height:72px; }
-                .exam-week-items { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+                .unified-schedule-modal .exam-schedule-form { padding:12px; }
+                .unified-schedule-modal .exam-schedule-row { flex-direction:column; }
+                .unified-schedule-modal .exam-schedule-list { max-height:34vh; padding-right:0; }
+                .unified-schedule-modal .exam-schedule-item { align-items:flex-start; }
+                .unified-schedule-modal .exam-calendar-day { min-height:56px; padding:4px 1px; font-size:12px; }
+                .unified-schedule-modal .exam-calendar-series-bar { font-size:0; height:8px; }
+                .unified-schedule-modal .exam-week-grid { display:flex; flex-direction:column; }
+                .unified-schedule-modal .exam-week-day { min-height:72px; }
+                .unified-schedule-modal .exam-week-items { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
             }
         </style>
 
+        <div class="unified-schedule-modal">
         <div class="exam-view-toggle" role="tablist" aria-label="일정 보기 방식">
             <button type="button" class="${view === 'month' ? 'active' : ''}" onclick="setUnifiedScheduleView('month')">월</button>
             <button type="button" class="${view === 'week' ? 'active' : ''}" onclick="setUnifiedScheduleView('week')">주</button>
-            <button type="button" class="${view === 'agenda' ? 'active' : ''}" onclick="setUnifiedScheduleView('agenda')">아젠다</button>
+            <button type="button" class="${view === 'agenda' ? 'active' : ''}" onclick="setUnifiedScheduleView('agenda')">목록</button>
         </div>
 
         ${calendarContent}
-
-        <div style="margin:18px 0 10px;">
-            <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.35;">일정 등록</div>
-            <div style="font-size:12px; font-weight:400; color:var(--secondary); line-height:1.45; margin-top:2px;">종료일은 긴 일정일 때만 선택합니다. 반복 일정은 종료일이 필수입니다.</div>
+        ${view === 'month' ? `<div style="margin:18px 0 10px;">
+            <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.35;">선택한 날짜 일정</div>
         </div>
+        <div class="exam-schedule-list">${renderUnifiedScheduleList({ selectedDate })}</div>` : ''}
 
-        ${renderUnifiedScheduleForm('new-sch')}
-
-        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:16px;" onclick="addUnifiedSchedule()">일정 저장</button>
-
-        ${view === 'agenda' ? '' : `<div style="margin:18px 0 10px;">
-            <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.35;">일정 목록</div>
-        </div>`}
-
-        ${view === 'agenda' ? '' : `<div class="exam-schedule-list">${renderUnifiedScheduleList({ selectedDate })}</div>`}
+        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin:4px 0 12px;" onclick="toggleUnifiedScheduleCreateForm()">+ 일정 등록</button>
+        <div id="unified-schedule-create-form" style="display:none;">
+            <div style="margin:6px 0 10px;">
+                <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.35;">일정 등록</div>
+            </div>
+            ${renderUnifiedScheduleForm('new-sch')}
+            <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:16px;" onclick="addUnifiedSchedule()">일정 저장</button>
+        </div>
+        </div>
     `;
 
     showModal('일정관리', body);
@@ -820,29 +939,24 @@ async function addUnifiedSchedule() {
             return;
         }
 
-        let successCount = 0;
-        let failCount = 0;
+        const response = payload.dates.length > 1
+            ? await api.post('exam-schedules/group', {
+                schoolName: payload.schoolName,
+                grade: payload.grade,
+                examName: payload.title,
+                startDate: payload.date,
+                endDate: payload.endDate || payload.date,
+                memo: payload.memo
+            })
+            : await api.post('exam-schedules', payload.buildPayload(payload.dates[0]));
 
-        for (const date of payload.dates) {
-            const r = await api.post('exam-schedules', payload.buildPayload(date));
-
-            if (r?.success) successCount++;
-            else failCount++;
-        }
-
-        if (successCount > 0 && failCount === 0) {
+        if (response?.success) {
             toast('일정이 저장되었습니다.', 'success');
             await loadData();
             openExamScheduleModal();
             return;
         }
 
-        if (successCount > 0) {
-            toast(`일부 일정만 저장되었습니다. 성공 ${successCount}건, 실패 ${failCount}건`, 'warn');
-            await loadData();
-            openExamScheduleModal();
-            return;
-        }
 
         toast('일정 저장에 실패했습니다.', 'error');
     } catch (e) {
@@ -862,6 +976,7 @@ function openEditUnifiedScheduleModal(kind, id, seriesId = '') {
             kind: 'exam',
             id: e.id,
             date: e.exam_date || '',
+            end_date: '',
             title: e.exam_name || '',
             school_name: e.school_name || '',
             grade: e.grade || '',
@@ -902,19 +1017,98 @@ function openEditUnifiedScheduleModal(kind, id, seriesId = '') {
     }
 
     const isSeries = kind !== 'exam' && item.occurrence_count > 1;
+    const mutationSeriesArg = item.series_id || '';
     showModal('일정 수정', `
+        <style>
+            .unified-schedule-modal .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
+            .unified-schedule-modal .exam-schedule-row { display:flex; gap:10px; width:100%; }
+            .unified-schedule-modal .exam-schedule-row > * { flex:1; min-width:0; width:100%; }
+            .unified-schedule-modal .exam-schedule-time-row { display:flex; align-items:center; gap:6px; }
+            .unified-schedule-modal .exam-schedule-time-row input { min-width:0; flex:1; border:0; background:var(--surface); }
+            .unified-schedule-modal .exam-schedule-scope { display:flex; gap:10px; margin:0 0 12px; padding:10px 12px; border-radius:12px; background:var(--surface-2); }
+            .unified-schedule-modal .exam-schedule-scope label { flex:1; display:flex; align-items:center; gap:6px; font-size:13px; cursor:pointer; }
+            @media (max-width:600px) {
+                .unified-schedule-modal .exam-schedule-form { padding:12px; }
+                .unified-schedule-modal .exam-schedule-row { flex-direction:column; }
+            }
+        </style>
+        <div class="unified-schedule-modal">
         ${renderUnifiedScheduleForm('edit-sch', item, { isEdit: true })}
         ${isSeries ? `<div class="exam-schedule-scope">
             <label><input type="radio" name="edit-sch-scope" value="one" onchange="handleUnifiedScheduleScopeChange()"> 이 날짜만</label>
             <label><input type="radio" name="edit-sch-scope" value="series" checked onchange="handleUnifiedScheduleScopeChange()"> 시리즈 전체</label>
         </div>` : ''}
-        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(item.series_id || '')}')">수정 저장</button>
+        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(mutationSeriesArg)}')">수정 저장</button>
         <div class="exam-schedule-row">
             <button class="btn ap-mid-btn" style="border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
-            <button class="btn ap-mid-btn" style="color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="deleteUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(item.series_id || '')}')">삭제</button>
+            <button class="btn ap-mid-btn" style="color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="deleteUnifiedSchedule('${kind}', '${id}', '${apEscapeHtml(mutationSeriesArg)}')">삭제</button>
+        </div>
         </div>
     `);
 
+    handleUnifiedScheduleTypeChange('edit-sch');
+}
+
+function openGroupedExamScheduleActionModal(occurrenceIdsText, selectedOccurrenceId = '', selectedDate = '') {
+    const occurrenceIds = String(occurrenceIdsText || '').split(',').map(id => id.trim()).filter(Boolean);
+    const item = getUnifiedExamGroupedItemByIds(occurrenceIds);
+    if (!item) {
+        openEditUnifiedScheduleModal('exam', selectedOccurrenceId || occurrenceIds[0] || '');
+        return;
+    }
+
+    const title = [item.school_name, item.grade, item.title].filter(Boolean).join(' ');
+    const rangeText = getUnifiedScheduleDisplayDateText(item);
+    const idsArg = occurrenceIds.map(id => apEscapeHtml(id)).join(',');
+    const selectedId = selectedOccurrenceId || occurrenceIds[0];
+    const selectedRow = (item.raw_items || []).find(row => String(row.id) === String(selectedId));
+    const actionDate = selectedDate || selectedRow?.exam_date || item.date || '';
+    const actionDateText = actionDate ? formatUnifiedScheduleDateWithDay(actionDate) : '';
+    const singleEditLabel = selectedDate ? '이 날짜만 수정' : '시작일만 수정';
+    const singleDeleteLabel = selectedDate ? '이 날짜만 삭제' : '시작일만 삭제';
+
+    showModal('기간 시험 작업 선택', `
+        <div class="unified-schedule-modal">
+            <div style="padding:4px 0 14px;">
+                <div style="font-size:15px; font-weight:600; line-height:1.45; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(title)}</div>
+                <div style="font-size:12px; font-weight:400; line-height:1.5; color:var(--secondary); margin-top:4px;">${apEscapeHtml(rangeText)}</div>
+                ${item.memo ? `<div style="font-size:12px; font-weight:400; line-height:1.5; color:var(--secondary); margin-top:4px; white-space:pre-line;">${apEscapeHtml(item.memo)}</div>` : ''}
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+                <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface-2);" onclick="openEditUnifiedScheduleModal('exam', '${apEscapeHtml(selectedId)}')">${apEscapeHtml(singleEditLabel)}${actionDateText ? `: ${apEscapeHtml(actionDateText)}` : ''}</button>
+                <button class="btn btn-primary ap-primary-btn" style="width:100%;" onclick="openEditGroupedExamScheduleModal('${idsArg}')">전체 기간 수정</button>
+                <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface-2); color:var(--error);" onclick="deleteUnifiedSchedule('exam', '${apEscapeHtml(selectedId)}')">${apEscapeHtml(singleDeleteLabel)}${actionDateText ? `: ${apEscapeHtml(actionDateText)}` : ''}</button>
+                <button class="btn ap-mid-btn" style="width:100%; border:none; background:rgba(255,71,87,0.1); color:var(--error);" onclick="deleteGroupedExamSchedule('${idsArg}')">전체 기간 삭제</button>
+                <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
+            </div>
+        </div>
+    `);
+}
+
+function openEditGroupedExamScheduleModal(occurrenceIdsText) {
+    const occurrenceIds = String(occurrenceIdsText || '').split(',').map(id => id.trim()).filter(Boolean);
+    const item = getUnifiedExamGroupedItemByIds(occurrenceIds);
+    if (!item) return toast('기간 시험 정보를 찾지 못했습니다.', 'error');
+
+    const idsArg = occurrenceIds.map(id => apEscapeHtml(id)).join(',');
+    showModal('기간 시험 전체 수정', `
+        <style>
+            .unified-schedule-modal .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
+            .unified-schedule-modal .exam-schedule-row { display:flex; gap:10px; width:100%; }
+            .unified-schedule-modal .exam-schedule-row > * { flex:1; min-width:0; width:100%; }
+            .unified-schedule-modal .exam-schedule-time-row { display:flex; align-items:center; gap:6px; }
+            .unified-schedule-modal .exam-schedule-time-row input { min-width:0; flex:1; border:0; background:var(--surface); }
+            @media (max-width:600px) {
+                .unified-schedule-modal .exam-schedule-form { padding:12px; }
+                .unified-schedule-modal .exam-schedule-row { flex-direction:column; }
+            }
+        </style>
+        <div class="unified-schedule-modal">
+            ${renderUnifiedScheduleForm('edit-sch', item, { isEdit: true })}
+            <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditGroupedExamSchedule('${idsArg}')">전체 기간 저장</button>
+            <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
+        </div>
+    `);
     handleUnifiedScheduleTypeChange('edit-sch');
 }
 
@@ -940,6 +1134,7 @@ function handleUnifiedScheduleScopeChange() {
     }
     handleUnifiedScheduleTypeChange('edit-sch');
 }
+
 
 async function handleEditUnifiedSchedule(kind, id, seriesId = '') {
     const payload = collectUnifiedSchedulePayload('edit-sch');
@@ -1012,10 +1207,67 @@ async function handleEditUnifiedSchedule(kind, id, seriesId = '') {
     }
 }
 
+async function handleEditGroupedExamSchedule(occurrenceIdsText) {
+    const occurrenceIds = String(occurrenceIdsText || '').split(',').map(id => id.trim()).filter(Boolean);
+    if (occurrenceIds.length < 2) return toast('기간 시험 전체 수정은 2개 이상의 날짜가 필요합니다.', 'error');
+
+    const payload = collectUnifiedSchedulePayload('edit-sch');
+    if (!payload || payload.kind !== 'exam') return;
+
+    try {
+        const r = await api.patch('exam-schedules/group', {
+            occurrenceIds,
+            schoolName: payload.schoolName,
+            grade: payload.grade,
+            examName: payload.title,
+            startDate: payload.date,
+            endDate: payload.endDate || payload.date,
+            memo: payload.memo
+        });
+
+        if (r?.success) {
+            toast('기간 시험을 수정하였습니다.', 'success');
+            await loadData();
+            openExamScheduleModal(state.ui?.examCalendarMonth || '');
+            return;
+        }
+
+        toast(r?.message || r?.error || '기간 시험 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditGroupedExamSchedule] failed:', e);
+        toast('기간 시험 수정 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function deleteGroupedExamSchedule(occurrenceIdsText) {
+    const occurrenceIds = String(occurrenceIdsText || '').split(',').map(id => id.trim()).filter(Boolean);
+    if (occurrenceIds.length < 2) return toast('기간 시험 전체 삭제는 2개 이상의 날짜가 필요합니다.', 'error');
+
+    const item = getUnifiedExamGroupedItemByIds(occurrenceIds);
+    const title = item ? [item.school_name, item.grade, item.title].filter(Boolean).join(' ') : '기간 시험';
+    const rangeText = item ? getUnifiedScheduleDisplayDateText(item) : '';
+    if (!confirm(`${title} ${rangeText} 전체 일정을 삭제할까요?\n이 작업은 기간 내의 모든 날짜 시험 일정을 삭제합니다.`)) return;
+
+    try {
+        const r = await api.post('exam-schedules/group-delete', { occurrenceIds });
+        if (r?.success) {
+            toast('기간 시험을 삭제하였습니다.', 'info');
+            await loadData();
+            openExamScheduleModal(state.ui?.examCalendarMonth || '');
+            return;
+        }
+
+        toast(r?.message || r?.error || '기간 시험 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[deleteGroupedExamSchedule] failed:', e);
+        toast('기간 시험 삭제 중 오류가 발생했습니다.', 'error');
+    }
+}
+
 async function deleteUnifiedSchedule(kind, id, seriesId = '') {
     const scope = kind === 'exam' ? 'one' : getUnifiedScheduleMutationScope();
     const isSeriesDelete = scope === 'series' && seriesId;
-    if (!confirm(isSeriesDelete ? '시리즈 전체 일정을 삭제하시겠습니까?' : '이 일정을 삭제하시겠습니까?')) return;
+    if (!confirm(isSeriesDelete ? '기간 전체 일정을 삭제하시겠습니까?' : '이 일정을 삭제하시겠습니까?')) return;
 
     try {
         const r = kind === 'exam'
@@ -1023,7 +1275,6 @@ async function deleteUnifiedSchedule(kind, id, seriesId = '') {
             : isSeriesDelete
                 ? await api.delete('academy-schedules/series', encodeURIComponent(seriesId))
                 : await api.delete('academy-schedules', id);
-
         if (r?.success) {
             toast('일정이 삭제되었습니다.', 'info');
             await loadData();

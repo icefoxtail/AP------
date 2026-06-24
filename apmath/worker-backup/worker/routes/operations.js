@@ -286,6 +286,111 @@ export async function handleOperations(request, env, teacher, path, url) {
     if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
     if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(); return jsonResponse({ success: true, data: res.results }); }
     if (!isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+    const normalizeExamOccurrenceIds = (ids) => Array.isArray(ids)
+      ? ids.map(value => String(value || '').trim()).filter(Boolean)
+      : [];
+    const getExamDateRange = (startDate, endDate) => {
+      const startText = String(startDate || '').trim();
+      const endText = String(endDate || startText).trim();
+      const start = new Date(`${startText}T00:00:00`);
+      const end = new Date(`${endText}T00:00:00`);
+      if (!startText || !endText || Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || start > end) return null;
+      const dates = [];
+      const cursor = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+      const endLocal = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+      while (cursor <= endLocal) {
+        dates.push(cursor.toLocaleDateString('sv-SE'));
+        cursor.setDate(cursor.getDate() + 1);
+      }
+      return dates;
+    };
+    const fetchExamRowsByIds = async (occurrenceIds) => {
+      const markers = occurrenceIds.map(() => '?').join(',');
+      const result = await env.DB.prepare(`SELECT * FROM exam_schedules WHERE id IN (${markers})`).bind(...occurrenceIds).all();
+      return result.results || [];
+    };
+    const validateExamGroupRows = (rows, expectedCount) => {
+      if (!Array.isArray(rows) || rows.length !== expectedCount) return 'Some occurrenceIds were not found';
+      if (rows.length < 2) return 'Group requires at least 2 occurrenceIds';
+      const first = rows[0] || {};
+      const sameGroup = rows.every(row =>
+        String(row.school_name || '') === String(first.school_name || '') &&
+        String(row.grade || '') === String(first.grade || '') &&
+        String(row.exam_name || '') === String(first.exam_name || '') &&
+        String(row.memo || '') === String(first.memo || '')
+      );
+      if (!sameGroup) return '기간 시험 그룹이 일치하지 않습니다.';
+
+      const dates = [...new Set(rows.map(row => String(row.exam_date || '').trim()).filter(Boolean))].sort();
+      if (dates.length !== rows.length) return '기간 시험 그룹이 일치하지 않습니다.';
+      for (let index = 1; index < dates.length; index += 1) {
+        const prev = new Date(`${dates[index - 1]}T00:00:00`);
+        const current = new Date(`${dates[index]}T00:00:00`);
+        if (Number.isNaN(prev.getTime()) || Number.isNaN(current.getTime())) return '기간 시험 그룹이 일치하지 않습니다.';
+        prev.setDate(prev.getDate() + 1);
+        if (prev.toLocaleDateString('sv-SE') !== dates[index]) return '기간 시험 그룹이 일치하지 않습니다.';
+      }
+      return '';
+    };
+    const insertExamGroupStatements = (d, dates) => {
+      const now = Date.now();
+      return dates.map((date, index) => env.DB.prepare(
+        'INSERT INTO exam_schedules (id, school_name, grade, exam_name, exam_date, memo) VALUES (?, ?, ?, ?, ?, ?)'
+      ).bind(`exs_${now}_${index}`, d.schoolName, d.grade, d.examName, date, d.memo || ''));
+    };
+    if (method === 'POST' && id === 'group') {
+      const d = await request.json();
+      const examName = String(d.examName || '').trim();
+      const dates = getExamDateRange(d.startDate, d.endDate || d.startDate);
+      if (!examName || !dates || dates.length < 1) return jsonResponse({ success: false, message: 'Required fields missing' }, 400);
+      const statements = insertExamGroupStatements({
+        schoolName: String(d.schoolName || '').trim(),
+        grade: String(d.grade || '').trim(),
+        examName,
+        memo: String(d.memo || '')
+      }, dates);
+      await env.DB.batch(statements);
+      return jsonResponse({ success: true, count: dates.length });
+    }
+    if (method === 'POST' && id === 'group-delete') {
+      const d = await request.json();
+      const occurrenceIds = normalizeExamOccurrenceIds(d.occurrenceIds || d.occurrence_ids);
+      if (occurrenceIds.length < 2) return jsonResponse({ success: false, message: 'Group delete requires at least 2 occurrenceIds' }, 400);
+      const rows = await fetchExamRowsByIds(occurrenceIds);
+      if (rows.length !== occurrenceIds.length) return jsonResponse({ success: false, message: 'Some occurrenceIds were not found' }, 404);
+      const groupError = validateExamGroupRows(rows, occurrenceIds.length);
+      if (groupError) return jsonResponse({ success: false, message: groupError }, 400);
+
+      const markers = occurrenceIds.map(() => '?').join(',');
+      const removed = await env.DB.prepare(`DELETE FROM exam_schedules WHERE id IN (${markers})`).bind(...occurrenceIds).run();
+      const deletedCount = removed?.meta?.changes ?? occurrenceIds.length;
+      if (deletedCount !== occurrenceIds.length) return jsonResponse({ success: false, message: 'Deleted count did not match request count' }, 409);
+      return jsonResponse({ success: true, deletedCount });
+    }
+    if (method === 'PATCH' && id === 'group') {
+      const d = await request.json();
+      const occurrenceIds = normalizeExamOccurrenceIds(d.occurrenceIds || d.occurrence_ids);
+      if (occurrenceIds.length < 2) return jsonResponse({ success: false, message: 'Group update requires at least 2 occurrenceIds' }, 400);
+      const rows = await fetchExamRowsByIds(occurrenceIds);
+      if (rows.length !== occurrenceIds.length) return jsonResponse({ success: false, message: 'Some occurrenceIds were not found' }, 404);
+      const groupError = validateExamGroupRows(rows, occurrenceIds.length);
+      if (groupError) return jsonResponse({ success: false, message: groupError }, 400);
+
+      const schoolName = String(d.schoolName || '').trim();
+      const grade = String(d.grade || '').trim();
+      const examName = String(d.examName || '').trim();
+      const memo = String(d.memo || '');
+      const dates = getExamDateRange(d.startDate, d.endDate || d.startDate);
+      if (!examName || !dates || dates.length < 1) return jsonResponse({ success: false, message: 'Required fields missing' }, 400);
+
+      const markers = occurrenceIds.map(() => '?').join(',');
+      const statements = [
+        env.DB.prepare(`DELETE FROM exam_schedules WHERE id IN (${markers})`).bind(...occurrenceIds),
+        ...insertExamGroupStatements({ schoolName, grade, examName, memo }, dates)
+      ];
+      await env.DB.batch(statements);
+      return jsonResponse({ success: true, count: dates.length });
+    }
     if (method === 'POST') {
       const d = await request.json();
       const eid = `exs_${Date.now()}`;

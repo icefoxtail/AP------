@@ -1202,6 +1202,14 @@ function dashboardGetExamGroupKey(e) {
     ].join('|');
 }
 
+function dashboardFormatInlineMemo(memo) {
+    return String(memo || '')
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean)
+        .join(' · ');
+}
+
 function getDashboardAcademyScheduleSeries(fromDate, toDate) {
     const groups = new Map();
     (state.db.academy_schedules || [])
@@ -1303,7 +1311,8 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
                 : (e.school_name || '일정 확인');
             const rangeStr = dashboardFormatDateRangeWithDay(e._rangeStart, e._rangeEnd);
             const dDay = dashboardGetRangeDdayLabel(e._rangeStart, e._rangeEnd, todayStr);
-            const metaText = [rangeStr, dDay].filter(Boolean).join(' · ');
+            const memoText = dashboardFormatInlineMemo(e.memo);
+            const metaText = [rangeStr, dDay, memoText].filter(Boolean).join(' · ');
             const preview = renderDashboardHoverPreview(rawTitle, [
                 rangeStr ? `날짜: ${rangeStr}` : '',
                 dDay ? `상태: ${dDay}` : '',
