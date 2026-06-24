@@ -189,6 +189,7 @@
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
+        .ans-cell.group-end { border-bottom: 2px solid #6b7280; } /* 4문제(한 장)마다 채점 구분선 */
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
@@ -1428,17 +1429,20 @@ async function renderSol(area, data) {
 }
 
 function renderAns(area, data) {
-    const PER_PAGE = 50; let pCount = 1;
+    const PER_PAGE = 48; let pCount = 1; // 4의 배수(열당 24=6세트)로 두 열의 세트 경계를 맞춘다
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
         const p = makePage(area, 'ans', pCount++);
         const grid = document.createElement('div'); grid.className = 'ans-grid';
-        const splitIndex = Math.ceil(chunk.length / 2);
+        // 열 분할점을 4의 배수로 올려, 한 세트(4문제)가 두 열에 걸치지 않게 한다
+        const splitIndex = Math.ceil(Math.ceil(chunk.length / 2) / 4) * 4;
         for (let i = 0; i < splitIndex; i++) {
             [i, splitIndex + i].forEach(idx => {
                 if (chunk[idx]) {
+                    const num = start + idx + 1;
                     const u = document.createElement('div'); u.className = 'ans-cell';
-                    u.innerHTML = `<div class="ans-n">${start + idx + 1}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
+                    if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
+                    u.innerHTML = `<div class="ans-n">${num}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
                     grid.appendChild(u);
                 }
             });

@@ -82,6 +82,7 @@
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
+        .ans-cell.group-end { border-bottom: 2px solid #6b7280; } /* 4문제(한 장)마다 채점 구분선 */
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
         .page-num { position: absolute; bottom: 15mm; left: 0; width: 100%; text-align: center; font-size: 9pt; color: #555; }
@@ -1189,7 +1190,7 @@ function collectAnswerRows(payload) {
 
 function renderAns(area, payload) {
     const data = collectAnswerRows(payload);
-    const PER_PAGE = 50;
+    const PER_PAGE = 48; // 4의 배수(열당 24=6세트)로 두 열의 세트 경계를 맞춘다
     let pageNo = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
@@ -1202,12 +1203,14 @@ function renderAns(area, payload) {
         pageNo += 1;
         const grid = document.createElement('div');
         grid.className = 'ans-grid';
-        const splitIndex = Math.ceil(chunk.length / 2);
+        // 열 분할점을 4의 배수로 올려, 한 세트(4문제)가 두 열에 걸치지 않게 한다
+        const splitIndex = Math.ceil(Math.ceil(chunk.length / 2) / 4) * 4;
         for (let i = 0; i < splitIndex; i++) {
             [i, splitIndex + i].forEach(idx => {
                 if (!chunk[idx]) return;
                 const cell = document.createElement('div');
                 cell.className = 'ans-cell';
+                if (chunk[idx].no % 4 === 0) cell.classList.add('group-end'); // 4문제마다 채점 구분선
                 cell.innerHTML = `<div class="ans-n">${chunk[idx].no}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer)}</div>`;
                 grid.appendChild(cell);
             });
