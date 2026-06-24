@@ -2475,6 +2475,7 @@ async function confirmClassSelectionForIndex() {
             return;
         }
         closeModal();
+        if (selectedGrade) loadAssignmentBoardForGrade(selectedGrade);
         goEngine(item, "exam", _pendingQpp, {
             submitQr: true,
             classId: selectedClassId,
@@ -2513,6 +2514,7 @@ async function confirmGradeSelectionForIndex() {
             });
         }
         closeModal();
+        if (selectedGrade) loadAssignmentBoardForGrade(selectedGrade);
         const representative = rows[0];
         goEngine(item, "exam", _pendingQpp, {
             submitQr: true,
