@@ -1249,15 +1249,17 @@ async function renderSolutionPagesForStudent(area, student, items, pageMeta = {}
     });
 }
 
-function maybeInsertReviewPacketDuplexBreak(area, payload, pagesBefore) {
+function maybeInsertReviewPacketDuplexBreak(area, payload, studentIdx, studentCount, pagesBefore) {
     if (payload.options?.pageBreakByStudent === false) return;
+    // No trailing blank after the final packet (single QR student, class/grade, or last student).
+    const hasNextStudent = studentIdx < studentCount - 1;
+    if (!hasNextStudent) return;
     const pagesAdded = area.querySelectorAll('.page').length - pagesBefore;
     if (pagesAdded > 0 && pagesAdded % 2 === 1) appendBlankPage(area);
 }
 
 async function renderStudentReviewPacket(area, payload) {
     if (payload.mode === 'class' || payload.mode === 'grade') {
-        const pagesBefore = area.querySelectorAll('.page').length;
         const sourceItems = payload.mode === 'grade' ? (payload.gradeWrongItems || []) : (payload.classWrongItems || []);
         const label = payload.mode === 'grade' ? getGradePrintLabel(payload) : (payload.className || '반');
         const items = sourceItems.map(item => {
@@ -1279,7 +1281,7 @@ async function renderStudentReviewPacket(area, payload) {
             metaLeft,
             metaRight
         });
-        maybeInsertReviewPacketDuplexBreak(area, payload, pagesBefore);
+        // Single common-wrong packet — no trailing blank.
         return;
     }
 
@@ -1303,7 +1305,7 @@ async function renderStudentReviewPacket(area, payload) {
             metaLeft,
             metaRight
         });
-        maybeInsertReviewPacketDuplexBreak(area, payload, pagesBefore);
+        maybeInsertReviewPacketDuplexBreak(area, payload, sIdx, students.length, pagesBefore);
     }
 }
 
