@@ -5,6 +5,7 @@ import { handleEie, saveCurrentEieMonthTimetableArchive } from './routes/eie.js'
 
 const TEACHER_SESSION_TTL_SECONDS = 90 * 24 * 60 * 60;
 const TEACHER_SESSION_REFRESH_THRESHOLD_SECONDS = 30 * 24 * 60 * 60;
+const TEACHER_SESSION_LAST_USED_THROTTLE_SECONDS = 24 * 60 * 60;
 const TEACHER_SESSION_TOKEN_BYTES = 32;
 
 const DEFAULT_ALLOWED_ORIGINS = ['https://icefoxtail.github.io'];
@@ -83,6 +84,24 @@ function shouldRefreshTeacherSession(expiresAt, nowMs = Date.now()) {
   return expiresMs - nowMs <= TEACHER_SESSION_REFRESH_THRESHOLD_SECONDS * 1000;
 }
 
+// ISO(...Z)와 SQLite CURRENT_TIMESTAMP('YYYY-MM-DD HH:MM:SS', UTC)를 모두 UTC ms로 파싱한다.
+// SQLite 포맷은 TZ가 없어 V8 Date.parse가 로컬로 해석하므로 명시적으로 UTC(Z)를 붙인다.
+function parseDbTimestampMs(value) {
+  const s = String(value || '').trim();
+  if (!s) return NaN;
+  const hasTz = /[zZ]$|[+-]\d\d:?\d\d$/.test(s);
+  const iso = (s.includes('T') ? s : s.replace(' ', 'T')) + (hasTz ? '' : 'Z');
+  return Date.parse(iso);
+}
+
+// last_used_at은 읽는 곳이 없어 매 요청 기록은 순수 D1 write churn이다.
+// 마지막 기록이 스로틀 간격보다 오래됐을 때만 갱신해 활성 세션당 ~1회/일로 줄인다.
+function shouldTouchLastUsed(lastUsedAt, nowMs = Date.now()) {
+  const lastMs = parseDbTimestampMs(lastUsedAt);
+  if (!Number.isFinite(lastMs)) return true;
+  return nowMs - lastMs >= TEACHER_SESSION_LAST_USED_THROTTLE_SECONDS * 1000;
+}
+
 async function createTeacherSession(env, teacher) {
   const sessionToken = makeSessionToken();
   const expiresAt = getSessionExpiryDate();
@@ -107,7 +126,7 @@ async function verifyTeacher(request, env) {
   if (!token) return null;
   const now = new Date().toISOString();
   const session = await env.DB.prepare(`
-    SELECT ts.id AS session_id, ts.expires_at, t.id, t.login_id, t.name, t.role
+    SELECT ts.id AS session_id, ts.expires_at, ts.last_used_at, t.id, t.login_id, t.name, t.role
     FROM teacher_sessions ts
     JOIN teachers t ON t.id = ts.teacher_id
     WHERE ts.session_token = ?
@@ -128,7 +147,7 @@ async function verifyTeacher(request, env) {
       SET last_used_at = CURRENT_TIMESTAMP, expires_at = ?
       WHERE session_token = ?
     `).bind(refreshedExpiresAt, token).run().catch(() => {});
-  } else {
+  } else if (shouldTouchLastUsed(session.last_used_at)) {
     env.DB.prepare('UPDATE teacher_sessions SET last_used_at = CURRENT_TIMESTAMP WHERE session_token = ?')
       .bind(token).run().catch(() => {});
   }
