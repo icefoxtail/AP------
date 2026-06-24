@@ -1242,15 +1242,13 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
     `;
     const upcomingItems = [];
 
-    // 시험 일정: 같은 시험의 연속 날짜를 기간으로 병합
+    // 시험 일정: 전체 key 기준으로 먼저 그룹화 → 연속 구간 분리 → visible window와 겹치는 구간만 노출
     const examGroups = new Map();
-    (state.db.exam_schedules || [])
-        .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr)
-        .forEach(e => {
-            const key = dashboardGetExamGroupKey(e);
-            if (!examGroups.has(key)) examGroups.set(key, { ref: e, dates: [] });
-            examGroups.get(key).dates.push(e.exam_date);
-        });
+    (state.db.exam_schedules || []).forEach(e => {
+        const key = dashboardGetExamGroupKey(e);
+        if (!examGroups.has(key)) examGroups.set(key, { ref: e, dates: [] });
+        examGroups.get(key).dates.push(e.exam_date);
+    });
     examGroups.forEach(({ ref, dates }) => {
         dates.sort();
         const segments = [];
@@ -1267,11 +1265,15 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
         }
         segments.push(seg);
         segments.forEach(s => {
-            upcomingItems.push({
-                type: 'exam',
-                date: s[0],
-                item: { ...ref, _rangeStart: s[0], _rangeEnd: s[s.length - 1] }
-            });
+            const segStart = s[0];
+            const segEnd = s[s.length - 1];
+            if (segStart <= nextWeekStr && segEnd >= todayStr) {
+                upcomingItems.push({
+                    type: 'exam',
+                    date: segStart,
+                    item: { ...ref, _rangeStart: segStart, _rangeEnd: segEnd }
+                });
+            }
         });
     });
 
@@ -1386,13 +1388,23 @@ function renderTodoSections() {
     const isMemoDone = (m) => m.is_done == 1 || m.is_done === true || m.isDone === true;
     const isMemoPinned = (m) => m.is_pinned == 1 || m.is_pinned === true || m.isPinned === true;
 
-    const rowBase = `
+    const pinnedRowBase = `
+        height:52px;
+        min-height:52px;
+        max-height:52px;
+        padding:0 16px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        box-sizing:border-box;
+        overflow:hidden;
+    `;
+    const dateRowBase = `
         min-height:52px;
         height:auto;
         padding:8px 16px;
         display:flex;
         align-items:center;
-        justify-content:space-between;
         box-sizing:border-box;
     `;
 
@@ -1418,7 +1430,7 @@ function renderTodoSections() {
         const isPinned = isMemoPinned(m);
         if (isPinned) {
             return `
-        <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
+        <div style="${pinnedRowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
                 <span style="font-size:13px; font-weight:400; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(m.content)}</span>
@@ -1432,7 +1444,7 @@ function renderTodoSections() {
         const dateLabel = dashboardFormatDateWithDay(memoDate);
         const metaText = dateLabel ? [dateLabel, dDay].filter(Boolean).join(' · ') : dDay;
         return `
-        <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
+        <div style="${dateRowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
                 <span style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
@@ -1442,7 +1454,7 @@ function renderTodoSections() {
             </label>
         </div>
         `;
-    }).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">표시할 메모가 없습니다.</div>`;
+    }).join('') : `<div style="${dateRowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">표시할 메모가 없습니다.</div>`;
 
     const iconCalendar = typeof apDashIcon === 'function' ? apDashIcon('calendar', 28) : '';
 
