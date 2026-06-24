@@ -545,7 +545,7 @@ window.questionBank = [
     "등비수열"
   ],
     wide: false,
-    content: "1이 아닌 양의 실수 $a$, $b$, $c$가 순서대로 등비수열을 이룰 때, $\\langle$보기$\\rangle$에서 항상 옳은 것만을 모두 고른 것은? (4.7점)\\n\\n$\\langle$보기$\\rangle$\\n㉠ $a+c$의 최솟값은 $2b$이다.\\n㉡ $\\log_5 a$, $\\log_5 b$, $\\log_5 c$는 순서대로 등비수열을 이룬다.\\n㉢ $\\log_a x = \\log_b y = \\log_c z = 5$이면, $x$, $y$, $z$는 순서대로 등비수열을 이룬다.",
+    content: "1이 아닌 양의 실수 $a$, $b$, $c$가 순서대로 등비수열을 이룰 때, $\\langle$보기$\\rangle$에서 항상 옳은 것만을 모두 고른 것은? (4.7점)㉠ $a+c$의 최솟값은 $2b$이다.\\n\n㉡ $\\log_5 a$, $\\log_5 b$, $\\log_5 c$는 순서대로 등비수열을 이룬다.\\n\n㉢ $\\log_a x = \\log_b y = \\log_c z = 5$이면, $x$, $y$, $z$는 순서대로 등비수열을 이룬다.",
     choices: [
     "㉠",
     "㉡, ㉢",
@@ -677,7 +677,7 @@ window.questionBank = [
     "서술형"
   ],
     wide: false,
-    content: "서술형 5\n\\n등식\\n$$1\\times n+2\\times(n-1)+3\\times(n-2)+\\cdots+(n-1)\\times2+n\\times1=\\dfrac{n(n+a)(n+b)}{6}$$\\n가 성립할 때, 상수 $a$, $b$를 구하고 그 과정을 서술하시오.\\n(총 5점-부분점수 있음)",
+    content: "서술형 5\n등식\n$1\\times n+2\\times(n-1)+3\\times(n-2)+\\cdots$\n$+(n-1)\\times2+n\\times1$\n$=\\dfrac{n(n+a)(n+b)}{6}$\n가 성립할 때, 상수 $a$, $b$를 구하고 그 과정을 서술하시오.\n(총 5점-부분점수 있음)",
     choices: [],
     answer: "$a=1,\\ b=2$ 또는 $a=2,\\ b=1$",
     solution: "[키포인트] 좌변의 규칙적인 유한 합 구조를 일반항 $k(n-k+1)$로 설정하여 시그마 공식으로 합산한다.\\n조건 정리: 좌변의 제$k$번째 항은 $k\\times\\{n-(k-1)\\}=k(n-k+1)$로 나타낼 수 있다.\\n정석 풀이:\\n좌변을 시그마로 나타내면\\n$\\displaystyle\\sum_{k=1}^{n}k(n-k+1)$이다.\\n이를 전개하면\\n$\\displaystyle\\sum_{k=1}^{n}\\{(n+1)k-k^2\\}=(n+1)\\sum_{k=1}^{n}k-\\sum_{k=1}^{n}k^2$이다.\\n자연수의 합 공식을 대입하면\\n$(n+1)\\cdot\\dfrac{n(n+1)}{2}-\\dfrac{n(n+1)(2n+1)}{6}$\\n$=\\dfrac{n(n+1)}{6}\\{3(n+1)-(2n+1)\\}$\\n$=\\dfrac{n(n+1)}{6}(n+2)=\\dfrac{n(n+1)(n+2)}{6}$이다.\\n이 식이 $\\dfrac{n(n+a)(n+b)}{6}$과 같으므로 $n+a$, $n+b$는 각각 $n+1$, $n+2$이다.\\n따라서 $(a,b)=(1,2)$ 또는 $(2,1)$이다.\\n결론: 따라서 $a=1$, $b=2$ 또는 $a=2$, $b=1$이다."
