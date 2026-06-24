@@ -1,8 +1,8 @@
-# JS아카이브 프로젝트 룰북 (v2.3)
+# JS아카이브 프로젝트 룰북 (v2.5)
 
 > **운영자**: 박준성 (마스터)  
 > **저장소**: icefoxtail.github.io/AP------  
-> **최종 갱신**: 2026년 (v2.3 — 기본 JS 스키마 필드 확정, questionType/layoutTag/tags/wide 기본 유지, layoutTag·wide 마스터 명시 지시 전용화, image 필드 우선 구조 및 시각요소 tags 유지 의무 유지)  
+> **최종 갱신**: 2026년 (v2.5 — 기존 JS 기본 스키마 보존, 기출 PDF 변환 파이프라인 원칙 추가, 유사문제용 확장 태그·마스터테이블 정책 추가, generated 후보/검수 후 편입 원칙 추가, 복수정답 인정·검수 기준 추가)  
 > **역할**: GPT(계획·총괄) / Claude(검수) / Gemini(구현·데이터 변환) / 마스터(최종결정)
 
 ---
@@ -69,7 +69,129 @@
 
 ---
 
-## 0-3. 문서 체계## 0-3. 문서 체계
+
+## 0-2-1. 유사문제·기출 변환용 확장 메타데이터 운영 기준
+
+본 항목은 기존 JS 문항 객체의 기본 스키마를 바꾸기 위한 규칙이 아니다.  
+기존 기본 스키마(`id`, `level`, `category`, `originalCategory`, `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder`, `questionType`, `layoutTag`, `tags`, `wide`, `content`, `choices`, `answer`, `solution`)는 그대로 유지한다.
+
+### 확장 메타데이터의 목적
+
+확장 메타데이터는 아래 목적에 한해 사용한다.
+
+- 기존 JS 문항의 검색·분류 정확도 향상
+- 유사문제 추천
+- 자동 시험지 구성 시 중복 유형 방지
+- 기출 PDF 변환 결과의 검수 상태 추적
+- 정답/해설/이미지 자산의 누락 및 검수 상태 추적
+
+### 확장 메타데이터 필드
+
+아래 필드는 기본 스키마를 대체하지 않는 선택 확장 필드다.
+
+```js
+{
+  subUnitKey: "",
+  subUnit: "",
+  conceptClusterKey: "",
+  problemTypeKey: "",
+  templateKey: "",
+  difficultyBucket: "",
+  tagConfidence: "",
+  tagStatus: "",
+  sourceType: "",
+  imageStatus: "",
+  answerStatus: "",
+  solutionStatus: "",
+  reviewStatus: ""
+}
+```
+
+### 기본 필드와 확장 필드의 관계
+
+- `standardUnitKey`는 기존 단원 필터와 교육과정 매핑의 기준이다.
+- `subUnitKey`는 중등 대단원 또는 고등 중단원 내부를 더 잘게 나누기 위한 세부 단원 키다.
+- `conceptClusterKey`는 같은 개념 묶음이다.
+- `problemTypeKey`는 같은 문제 유형을 뜻한다.
+- `templateKey`는 거의 같은 풀이 구조 또는 출제 패턴을 뜻한다.
+- `difficultyBucket`은 `level`을 대체하지 않고, 자동 추천·자동 출제용 보조 난이도 구간으로만 사용한다.
+- `tagConfidence`와 `tagStatus`는 자동 태깅 결과의 신뢰도와 검수 상태를 표시한다.
+
+### 자동 태깅 허용 범위
+
+기존 JS 파일에 대해 자동 태깅을 수행할 때는 다음 범위만 허용한다.
+
+- 문항 원문(`content`) 수정 금지
+- 보기(`choices`) 수정 금지
+- 정답(`answer`) 수정 금지
+- 해설(`solution`) 수정 금지
+- 이미지(`image`) 경로 수정 금지
+- `layoutTag`, `wide` 자동 변경 금지
+- 확장 메타데이터 후보 생성 및 검수 리포트 생성 허용
+- 마스터 승인 또는 명시된 태그 고도화 작업 범위 안에서만 확장 메타데이터 반영 허용
+
+### 자동 태깅 상태값
+
+```text
+tagStatus:
+- existing
+- auto_high
+- auto_medium
+- auto_low
+- manual_review
+- reviewed_pass
+- reviewed_fail
+```
+
+운영 원칙:
+
+- `auto_high`는 자동 반영 후보가 될 수 있다.
+- `auto_medium`은 검수 우선 후보로 둔다.
+- `auto_low`와 `manual_review`는 유사문제 추천과 자동 시험지 구성에 사용하지 않는다.
+- `reviewed_pass`만 최종 확정 태그로 본다.
+- `reviewed_fail`은 같은 기준으로 재사용하지 않는다.
+
+### 유사문제 추천 기준
+
+유사문제 추천에서 `standardUnitKey`만 같은 문항은 “같은 단원 문제”일 뿐, 유사문제로 보지 않는다.
+
+유사문제 판정 우선순위:
+
+1. 같은 `templateKey`
+2. 같은 `problemTypeKey`
+3. 같은 `conceptClusterKey`
+4. 같은 `subUnitKey`
+5. 같은 `standardUnitKey`
+
+운영 기준:
+
+- 유사문제 1순위: `templateKey`가 같고 `sourceFile` 또는 출처가 다른 문항
+- 유사문제 2순위: `problemTypeKey`와 `conceptClusterKey`가 같고 난이도 차이가 크지 않은 문항
+- 보충문제: `conceptClusterKey` 또는 `subUnitKey`가 같은 문항
+- 같은 `standardUnitKey`만 같은 문항은 유사문제라 하지 않고 단원 보충 후보로만 사용한다.
+
+### 자동 시험지 구성 기준
+
+자동 시험지 구성에서는 같은 `templateKey` 문항이 과도하게 반복되지 않도록 한다.
+
+- 같은 `templateKey` 연속 출제 방지
+- 같은 `problemTypeKey` 과다 출제 방지
+- 같은 학교/파일/source 과다 출제 방지
+- 같은 문항 또는 거의 같은 문항 중복 출제 방지
+- `auto_low`, `manual_review`, `reviewed_fail` 태그 문항은 자동 구성에서 제외
+
+### 확장 태그 마스터테이블 우선 원칙
+
+`subUnitKey`, `conceptClusterKey`, `problemTypeKey`, `templateKey`는 `# JS아카이브 표준단원키 마스터 테이블.md`의 확장 태그 정책을 기준으로 한다.
+
+- 룰북은 운영 원칙을 정의한다.
+- 실제 키 명명, 세부 단원, 유형, 템플릿 기준은 마스터 테이블을 따른다.
+- 룰북과 마스터 테이블이 충돌할 경우, 키 명명과 단원/유형 정의는 마스터 테이블을 우선한다.
+- 마스터 테이블에 없는 키를 자동 생성해 최종 반영하지 않는다.
+- 신규 키가 필요하면 `PROPOSED-` 또는 `manual_review` 상태로 분리한 뒤 마스터 테이블에 먼저 편입한다.
+
+
+## 0-3. 문서 체계
 
 프로젝트 운영 문서는 아래 4종을 기본으로 한다.
 
@@ -264,6 +386,47 @@ window.examTitle = "YY_학교_N학기_시험종류_학년_과목";
 * **선택지 하나는 하나의 블록 단위로 처리하며, 선택지와 선택지 사이의 시각적 분리가 보장되어야 한다.**
 * **보기 내부 수식이 길더라도 번호-본문 정렬이 무너지지 않아야 한다.**
 * **선택지 줄바꿈은 선택지 내부 의미 단위에서만 허용하며, 선택지끼리 붙는 출력은 금지한다.**
+
+### 3-4-1. 복수정답 answer 운영 기준
+
+복수정답은 문항 오류로 단정하지 않고, 실제 수학적 성립 여부와 `answer`·`solution`의 일치 여부를 기준으로 판정한다.
+
+#### 기본 원칙
+
+* 객관식 문항이라도 수학적으로 보기 2개 이상이 정답이면 복수정답을 인정할 수 있다.
+* `answer`에는 복수정답을 쉼표로 구분하여 표기한다.
+* 표준 표기는 `"①,⑤"` 또는 `"①, ⑤"` 형태를 허용한다.
+* 다만 신규 작성·수정 시에는 가독성을 위해 `"①, ⑤"`를 우선한다.
+* 복수정답 문항은 `solution`에서 각 정답 보기가 왜 성립하는지 모두 설명해야 한다.
+* `answer`의 복수정답과 `solution`의 결론이 일치하면 정답·해설 오류로 보지 않는다.
+
+#### 검수 판정 기준
+
+* 수학적으로 복수정답이 성립하고 `answer`와 `solution`이 이를 명시하면 **PASS 또는 복수정답 인정 문항**으로 판정한다.
+* 발문이 “고르면?”처럼 단일 선택 표현이어도, 실제 원문 또는 현 데이터에서 복수정답이 성립하면 즉시 FAIL로 처리하지 않는다.
+* 이 경우 최종 보고에는 `정오답 오류 아님 / 복수정답 인정 문항`으로 적는다.
+* 단, `answer`가 단일정답인데 수학적으로 복수정답이면 **정답 누락 오류**로 본다.
+* `answer`가 복수정답인데 실제로는 한 보기만 정답이면 **정답 과다 오류**로 본다.
+* `answer`와 `solution`의 복수정답 목록이 다르면 **정답·해설 불일치**로 본다.
+
+#### 엔진·정답표 호환 기준
+
+* 복수정답 자체는 문항 오류가 아니지만, 엔진/정답표/채점 로직이 복수정답을 정상 표시·처리하지 못하면 별도 호환 이슈로 보고한다.
+* 정답표에서 `①, ⑤`가 깨지거나 일부만 표시되면 데이터 오류가 아니라 렌더링/정답표 처리 오류로 분리한다.
+* 채점 로직이 복수정답을 단일 문자열로만 비교하여 정상 채점하지 못하면 채점 엔진 보완 대상으로 분리한다.
+* 복수정답을 단일정답으로 강제하기 위해 발문·보기·정답을 임의 수정하지 않는다.
+* 단일정답으로 고쳐야 하는 경우에는 마스터가 명시적으로 승인한 뒤, 수학적으로 한 보기만 정답이 되도록 `choices` 또는 발문을 최소 수정한다.
+
+#### 보고 문구 표준
+
+```text
+○번 — 복수정답 인정 문항
+- 수학적으로 정답: ①, ⑤
+- 현재 answer: ①, ⑤
+- 해설 결론과 일치
+- 정오답 오류 아님
+- 단, 정답표/채점 엔진의 복수정답 표시·처리 여부만 확인 필요
+```
 
 ### 3-5. 보기(choices) 출력 규칙
 
@@ -680,6 +843,7 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
 * 해설은 학생이 실제로 읽는 풀이만 남긴다.
 * 운영 규칙, 검수 규칙, 생성 로그, 내부 메모, cite 흔적은 제거 대상이다.
 * 해설 결론은 answer와 반드시 일치해야 한다.
+* 복수정답 문항은 해설 결론에서 복수정답 전체를 명시해야 하며, answer와 같은 정답 목록을 가져야 한다.
 * 정답을 역으로 끼워 맞춘 해설은 금지한다.
 * 해설 길이는 원본과 지나치게 동떨어지지 않게 유지한다.
 
@@ -697,6 +861,201 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
 * wide를 자동 부여하는 행위
 * 전체 수정본 요청에서 일부 생략
 * 부분 수정 요청인데 전문항 전체 출력
+
+
+
+### 5-10. 기출 PDF → JS아카이브 변환 정책
+
+기출 PDF 변환은 “문제집/교재 변환”이 아니라, 학교 기출 PDF를 JS아카이브의 `exams/*.js` 후보 데이터로 변환하는 작업이다.
+
+#### 기본 흐름
+
+```text
+기출 PDF
+→ exam manifest 작성
+→ 페이지 이미지 추출
+→ 문제별 crop
+→ crop 이미지 에셋 정리
+→ 발문/보기 추출
+→ JS 후보 생성
+→ 기출 태그 자동 채움
+→ 정답/해설 1차 후보 연결
+→ 검수 리포트 생성
+→ reviewed_pass 이후 archive/exams 편입
+→ db.js 등록
+```
+
+#### 기출 examId / outputPrefix 규칙
+
+```text
+{연도}_{학교명}_{학기}_{시험종류}_{학년}_{기출구분}
+```
+
+예:
+
+```text
+24_연향중_1학기_기말_중3_기출
+23_여수여고_1학기_중간_고1_기출
+24_순천여중_1학기_중간_중2_기출
+```
+
+#### manifest 필수 필드
+
+```text
+examId
+year
+schoolName
+grade
+semester
+examType
+sourceType
+pdfPath
+answerPdfPath
+pageRange
+expectedQuestionCount
+outputFileName
+outputDir
+status
+notes
+```
+
+#### 기출 변환 금지사항
+
+- 원문 문제, 보기, 정답, 해설을 근거 없이 창작하지 않는다.
+- 정답을 추측하지 않는다.
+- 해설을 최종 확정본으로 자동 편입하지 않는다.
+- PDF 전체 텍스트를 문항번호 기준으로 단순 분리해 JS를 만들지 않는다.
+- 수식 의미를 임의 보정하지 않는다.
+- 소문항을 임의 분리하지 않는다.
+- 불확실한 문항 때문에 전체 작업을 멈추지 않는다.
+- generated 후보 JS를 검수 없이 `archive/exams`에 바로 넣지 않는다.
+- `db.js` 등록은 generated 후보 검수 이후에만 한다.
+- 엔진 성역 함수와 렌더링 코어는 변환 파이프라인 때문에 수정하지 않는다.
+
+#### 기출 변환 상태값
+
+```text
+job status:
+- pending
+- prepared
+- pages_extracted
+- crops_ready
+- records_generated
+- tags_enriched
+- answer_solution_drafted
+- validated
+- review_pack_ready
+- blocked
+
+question status:
+- ready
+- image_fallback
+- content_manual_review
+- answer_solution_manual_review
+- formula_manual_review
+- tag_low_confidence
+- generated_pending
+- reviewed_pass
+- reviewed_fail
+```
+
+### 5-11. 기출 crop 이미지 에셋 정책
+
+- 기출 PDF 변환에서는 문제별 crop 이미지를 반드시 보존한다.
+- 텍스트 추출이 확실한 문항도 원본 crop 이미지 경로를 남긴다.
+- 텍스트 추출이 애매한 문항은 억지로 `content`를 확정하지 않고 `image_fallback` 또는 `content_manual_review`로 분리한다.
+- 도형, 그래프, 표, 긴 조건박스가 있는 문제는 `image` 필드 또는 crop 자산을 우선 보존한다.
+- 이미지 에셋은 기존 원칙처럼 `assets/images/시험지전체명/q{id}.png` 구조를 따른다.
+- generated 후보 단계에서는 `archive/_generated/past-exams/{examId}/assets/` 같은 격리된 경로를 사용할 수 있다.
+- live archive 편입 시에는 엔진 기준 상대경로로 정리한다.
+- `image_fallback` 문항은 이미지가 없으면 무결성 실패다.
+- `q.image` 경로가 실제 파일과 맞지 않으면 무결성 실패 또는 중대 WARN이다.
+
+### 5-12. 기존 JS 태그 고도화 정책
+
+기존 `archive/exams/*.js` 문항은 이미 운영 중인 문제풀이다.  
+태그 고도화는 기존 문제의 원문·보기·정답·해설을 고치는 작업이 아니라, 유사문제 추천과 자동 시험지 구성을 위한 메타데이터 보강 작업이다.
+
+#### 태그 고도화 기본 흐름
+
+```text
+기존 exams/**/*.js 스캔
+→ 문항별 기존 메타 수집
+→ content / choices / answer / solution 기반 태그 후보 생성
+→ 기존 standardUnitKey와 충돌 검사
+→ subUnitKey / conceptClusterKey / problemTypeKey / templateKey 후보 생성
+→ tagConfidence 부여
+→ high 후보와 review 후보 분리
+→ 검수 후 확장 메타데이터만 반영
+```
+
+#### 절대 보존 필드
+
+태그 고도화 작업에서 아래 필드는 승인 없이 수정하지 않는다.
+
+```text
+content
+choices
+answer
+solution
+image
+layoutTag
+wide
+```
+
+#### 태그 고도화 필드
+
+```text
+subUnitKey
+subUnit
+conceptClusterKey
+problemTypeKey
+templateKey
+difficultyBucket
+tagConfidence
+tagStatus
+reviewStatus
+```
+
+#### 유사문제 기준
+
+- `standardUnitKey`만 같은 문항은 유사문제가 아니다.
+- 유사문제는 최소 `problemTypeKey`가 같아야 한다.
+- 거의 같은 풀이 구조는 `templateKey`가 같아야 한다.
+- 자동 추천에는 `reviewed_pass`와 신뢰도 높은 `auto_high`만 사용한다.
+- `manual_review`, `auto_low`, `reviewed_fail`은 자동 추천과 자동 시험지 구성에 사용하지 않는다.
+
+### 5-13. 정답·해설 초안 상태 정책
+
+기출 변환이나 기존 JS 보강 과정에서 해설을 새로 쓰는 경우, 자동 생성 해설은 최종 해설이 아니라 초안이다.
+
+```text
+solutionStatus:
+- existing_verified
+- generated_pending
+- reviewed_pass
+- reviewed_fail
+- missing_solution
+
+answerStatus:
+- existing_verified
+- generated_pending
+- reviewed_pass
+- reviewed_fail
+- multiple_answer_verified
+- missing_answer
+```
+
+운영 원칙:
+
+- 기존 검수 완료 해설은 `existing_verified`로 둘 수 있다.
+- 새로 생성한 해설은 반드시 `generated_pending`으로 둔다.
+- `generated_pending` 해설은 최종 사용자용 해설지에 포함하지 않는다.
+- 최종 해설지 출력 허용 상태는 `existing_verified` 또는 `reviewed_pass`뿐이다.
+- 정답이 불확실하면 `answer_solution_manual_review`로 분리한다.
+- 복수정답이 수학적으로 확인되고 answer와 solution이 일치하면 `multiple_answer_verified`로 둘 수 있다.
+- `multiple_answer_verified`는 정답 오류가 아니라 복수정답 인정 상태다. 단, 정답표·채점 엔진 호환성은 별도 확인한다.
+- 해설 초안이 있어도 정답 근거가 불확실하면 최종 편입하지 않는다.
 
 
 ---
@@ -820,6 +1179,10 @@ exam-list (db.js) → 클릭 → JS 로드 → question-list 렌더
 * 보기 전용 selector를 어디까지 고정할지 여부
 * PNG width 표준값을 엔진 CSS 차원에서 더 고정할지 여부
 
+* 유사문제용 `problemTypeKey` / `templateKey` 마스터테이블을 실제 기출·유형 데이터 기준으로 계속 확장해야 함
+* 중등 대단원 기반 기존 문항의 `subUnitKey` 자동 태깅 정확도 검수 필요
+* 기출 PDF 변환 파이프라인의 crop 자동화 수준과 image_fallback 허용 범위 확정 필요
+
 ---
 
 ## 10. Gemini 지시 원칙
@@ -887,6 +1250,16 @@ Gemini에게 작업 지시 시 아래 원칙을 명시해야 한다.
 * [ ] 고2 이상 문항에서 과목명까지 포함된 시험지 전체명 기준 폴더를 사용했는가
 * [ ] 발문-이미지-보기 순서를 어기지 않았는가
 * [ ] 서술형 내부 `(1)(2)(3)` 소문항이 독립 줄에서 시작하는가
+
+* [ ] 기존 JS 태그 고도화 작업에서 content/choices/answer/solution/image/layoutTag/wide를 수정하지 않았는가
+* [ ] 유사문제용 확장 필드(subUnitKey/conceptClusterKey/problemTypeKey/templateKey)는 마스터 테이블 기준 키만 사용했는가
+* [ ] standardUnitKey만 같은 문항을 유사문제로 판정하지 않았는가
+* [ ] problemTypeKey/templateKey 없는 문항을 유사문제 자동 추천에 사용하지 않았는가
+* [ ] tagConfidence가 낮은 문항은 manual_review 또는 tag_low_confidence로 분리했는가
+* [ ] generated_pending 해설이 최종 solution 또는 최종 해설지에 섞이지 않았는가
+* [ ] 기출 PDF 변환 결과를 검수 없이 archive/exams 또는 db.js에 바로 편입하지 않았는가
+* [ ] image_fallback 문항에 실제 image/crop 자산이 존재하는가
+
 
 ### 10-4. SVG · table HTML 무결성 규칙
 
