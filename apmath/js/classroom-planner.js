@@ -445,7 +445,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn apms-button apms-button--quiet" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); font-weight:500; border-radius: 12px;" onclick="deleteExamByClass('${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile})">시험 기록 전체 삭제</button>
+            <button class="btn apms-button apms-button--quiet btn-danger" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: var(--radius-sm);" onclick="deleteExamByClass('${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile})">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>

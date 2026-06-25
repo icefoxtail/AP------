@@ -45,7 +45,6 @@ function loadScheduleContext(overrides = {}) {
       getUnifiedSchedules,
       getWeekDates,
       openExamScheduleModal,
-      openGroupedExamScheduleActionModal,
       addUnifiedSchedule,
       handleEditGroupedExamSchedule,
       deleteGroupedExamSchedule
@@ -201,12 +200,13 @@ test('date-structure replacement creates the new series before deleting the old 
   assert.ok(deleteIndex > createIndex);
 });
 
-test('grouped exam row opens an edit/delete action choice for the whole period', () => {
-  assert.match(scheduleSource, /openGroupedExamScheduleActionModal/);
-  assert.match(scheduleSource, /openEditGroupedExamScheduleModal/);
-  assert.match(scheduleSource, /deleteGroupedExamSchedule/);
-  // The grouped action modal is simplified to whole-period 수정/삭제 only;
-  // per-date 이 날짜만 수정/삭제 options were removed.
+test('clicking any schedule opens the edit form directly (no intermediate action sheet)', () => {
+  // 모든 일정 클릭 → 바로 수정 폼으로 통일. 중간 액션시트(openGroupedExamScheduleActionModal) 제거.
+  assert.doesNotMatch(scheduleSource, /openGroupedExamScheduleActionModal/);
+  // 기간시험은 전체 기간 수정 폼으로, 그 외는 단일 수정 폼으로 분기.
+  assert.match(scheduleSource, /isGroupedExam\s*\?\s*`openEditGroupedExamScheduleModal\(/);
+  assert.match(scheduleSource, /:\s*`openEditUnifiedScheduleModal\(/);
+  // 제거된 옵션들이 남아있지 않아야 함.
   assert.doesNotMatch(scheduleSource, /이 날짜만 수정/);
   assert.doesNotMatch(scheduleSource, /이 날짜만 삭제/);
 });
@@ -278,12 +278,12 @@ test('new single-day exam keeps the existing single create API call', async () =
   assert.equal(calls[0].body.examDate, '2026-06-30');
 });
 
-test('grouped exam action modal shows only whole-period 수정/삭제 buttons', () => {
-  const modalStart = scheduleSource.indexOf('function openGroupedExamScheduleActionModal');
-  const modalEnd = scheduleSource.indexOf('function openEditGroupedExamScheduleModal');
+test('grouped exam edit form exposes both 저장 and 삭제', () => {
+  const modalStart = scheduleSource.indexOf('function openEditGroupedExamScheduleModal');
+  const modalEnd = scheduleSource.indexOf('function getUnifiedScheduleMutationScope');
   const modalSource = scheduleSource.slice(modalStart, modalEnd);
   assert.ok(modalStart >= 0 && modalEnd > modalStart);
-  assert.match(modalSource, /onclick="openEditGroupedExamScheduleModal\('\$\{idsArg\}'\)">수정</);
+  assert.match(modalSource, /onclick="handleEditGroupedExamSchedule\('\$\{idsArg\}'\)">저장</);
   assert.match(modalSource, /onclick="deleteGroupedExamSchedule\('\$\{idsArg\}'\)">삭제</);
 });
 

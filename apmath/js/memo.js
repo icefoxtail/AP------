@@ -123,7 +123,7 @@ function openEditTodoMemoModal(id) {
             <button class="btn apms-button apms-button--primary btn-primary" style="padding:12px; font-size:13px; font-weight:500; margin-top:4px;" onclick="handleEditTodoMemo('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openTodoMemoModal()">취소</button>
-                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:500;" onclick="deleteMemo('${id}')">완전 삭제</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(var(--error-rgb),0.1); border:none; font-weight:500;" onclick="deleteMemo('${id}')">완전 삭제</button>
             </div>
         </div>
     `);
