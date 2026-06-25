@@ -275,8 +275,8 @@ test('new single-day exam keeps the existing single create API call', async () =
   assert.equal(calls[0].body.examDate, '2026-06-30');
 });
 
-test('grouped exam action wording distinguishes selected date from start date', () => {
-  assert.match(scheduleSource, /const singleEditLabel = selectedDate \? '.*' : '.*'/);
+test('grouped exam action wording uses actionDate for label and appends date text', () => {
+  assert.match(scheduleSource, /const singleEditLabel = actionDate \? '.*' : '.*'/);
   assert.match(scheduleSource, /actionDateText \? `: \$\{apEscapeHtml\(actionDateText\)\}` : ''/);
   assert.match(scheduleSource, /openGroupedExamScheduleActionModal\('[^`]+selectedDate/);
 });
