@@ -1065,10 +1065,10 @@ function openGroupedExamScheduleActionModal(occurrenceIdsText, selectedOccurrenc
     const selectedRow = (item.raw_items || []).find(row => String(row.id) === String(selectedId));
     const actionDate = selectedDate || selectedRow?.exam_date || item.date || '';
     const actionDateText = actionDate ? formatUnifiedScheduleDateWithDay(actionDate) : '';
-    const singleEditLabel = selectedDate ? '이 날짜만 수정' : '시작일만 수정';
-    const singleDeleteLabel = selectedDate ? '이 날짜만 삭제' : '시작일만 삭제';
+    const singleEditLabel = actionDate ? '이 날짜만 수정' : '날짜 수정';
+    const singleDeleteLabel = actionDate ? '이 날짜만 삭제' : '날짜 삭제';
 
-    showModalStep('기간 시험 작업 선택', `
+    showModalStep('', `
         <div class="unified-schedule-modal">
             <div style="padding:4px 0 14px;">
                 <div style="font-size:15px; font-weight:600; line-height:1.45; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(title)}</div>
