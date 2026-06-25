@@ -201,11 +201,14 @@ test('date-structure replacement creates the new series before deleting the old 
   assert.ok(deleteIndex > createIndex);
 });
 
-test('grouped exam row opens an action choice before single-occurrence editing', () => {
+test('grouped exam row opens an edit/delete action choice for the whole period', () => {
   assert.match(scheduleSource, /openGroupedExamScheduleActionModal/);
-  assert.match(scheduleSource, /openEditUnifiedScheduleModal\('exam', '\$\{apEscapeHtml\(selectedId\)\}'\)/);
   assert.match(scheduleSource, /openEditGroupedExamScheduleModal/);
   assert.match(scheduleSource, /deleteGroupedExamSchedule/);
+  // The grouped action modal is simplified to whole-period 수정/삭제 only;
+  // per-date 이 날짜만 수정/삭제 options were removed.
+  assert.doesNotMatch(scheduleSource, /이 날짜만 수정/);
+  assert.doesNotMatch(scheduleSource, /이 날짜만 삭제/);
 });
 
 test('grouped exam edit and delete use one server group API call', () => {
@@ -275,10 +278,13 @@ test('new single-day exam keeps the existing single create API call', async () =
   assert.equal(calls[0].body.examDate, '2026-06-30');
 });
 
-test('grouped exam action wording uses actionDate for label and appends date text', () => {
-  assert.match(scheduleSource, /const singleEditLabel = actionDate \? '.*' : '.*'/);
-  assert.match(scheduleSource, /actionDateText \? `: \$\{apEscapeHtml\(actionDateText\)\}` : ''/);
-  assert.match(scheduleSource, /openGroupedExamScheduleActionModal\('[^`]+selectedDate/);
+test('grouped exam action modal shows only whole-period 수정/삭제 buttons', () => {
+  const modalStart = scheduleSource.indexOf('function openGroupedExamScheduleActionModal');
+  const modalEnd = scheduleSource.indexOf('function openEditGroupedExamScheduleModal');
+  const modalSource = scheduleSource.slice(modalStart, modalEnd);
+  assert.ok(modalStart >= 0 && modalEnd > modalStart);
+  assert.match(modalSource, /onclick="openEditGroupedExamScheduleModal\('\$\{idsArg\}'\)">수정</);
+  assert.match(modalSource, /onclick="deleteGroupedExamSchedule\('\$\{idsArg\}'\)">삭제</);
 });
 
 test('schedule source has no encoding-corrupted markup', () => {
