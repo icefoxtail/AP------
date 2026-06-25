@@ -90,9 +90,9 @@ function renderAddressBookList() {
                 </div>
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:190px;">
                     <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'addressBook' } })">상세</button>
-                    <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'edit', returnTo: { type: 'addressBook' } })">수정</button>
+                    <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(var(--primary-rgb),0.08); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'edit', returnTo: { type: 'addressBook' } })">수정</button>
                     ${isActive
-                        ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
+                        ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
                         : `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="handleRestore('${s.id}')">복구</button>`
                     }
                 </div>
@@ -131,7 +131,7 @@ function openGlobalPinManagement() {
     const rows = classes.map(c => `
         <button class="btn apms-button apms-button--quiet" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
             <span style="font-weight:500; font-size:14px; color:var(--text);">${mgmtEscape(c.name)}</span>
-            <span style="font-size:11px; color:var(--primary); font-weight:500; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
+            <span style="font-size:11px; color:var(--primary); font-weight:500; background:rgba(var(--primary-rgb),0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
         </button>
     `).join('');
 
@@ -192,7 +192,7 @@ function renderClassManageRow(c) {
             <div style="flex:1; min-width:0; cursor:pointer;" onclick="setManagementReturnView({ type: 'classManage' }); closeModal(true); state.ui.currentClassId='${c.id}'; if(typeof renderClass==='function') renderClass('${c.id}');">
                 <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
                     <span style="font-size:15px; color:var(--text); line-height:1.35;; font-weight:500;">${mgmtEscape(c.name)}</span>
-                    <span style="font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); padding:3px 7px; border-radius:999px;">${mgmtEscape(c.grade || '-')}</span>
+                    <span style="font-size:11px; font-weight:500; color:var(--primary); background:rgba(var(--primary-rgb),0.08); padding:3px 7px; border-radius:999px;">${mgmtEscape(c.grade || '-')}</span>
                     ${isHidden ? `<span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 7px; border-radius:999px;">숨김</span>` : ''}
                 </div>
                 <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; font-size:12px; color:var(--secondary); line-height:1.5;">
@@ -209,7 +209,7 @@ function renderClassManageRow(c) {
                     ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
                     : `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--warning); background:rgba(255,165,2,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
                 }
-                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDeleteClass('${c.id}')">보관</button>
+                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="handleDeleteClass('${c.id}')">보관</button>
             </div>
         </div>
     `;
@@ -317,7 +317,7 @@ function openEditClassModal(cid) {
                 ${getTimeLabelOptions(selectedPeriod)}
             </select>
             <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
-            <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 보관</button>
+            <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 보관</button>
         </div>
     `, '저장', () => handleEditClass(cid));
 }
@@ -1039,7 +1039,7 @@ function renderBillingAccountingSummaryTab(ui) {
         </div>
         <div style="display:flex; gap:8px; margin-bottom:14px;">
             <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="reloadBillingAccountingSummaries()">조회</button>
-            <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="billingAccountingFetchAll()">새로고침</button>
+            <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500; color:var(--primary); background:rgba(var(--primary-rgb),0.08); border:none;" onclick="billingAccountingFetchAll()">새로고침</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px; margin-bottom:12px;">
             ${metricCards}
@@ -1174,7 +1174,7 @@ function renderBillingAccountingListTab(ui, tab) {
                 </div>
                 <div style="display:flex; gap:8px;">
                     <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">수정</button>
-                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">취소</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="cancelBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">취소</button>
                 </div>
             </div>
         `).join('');
@@ -1211,7 +1211,7 @@ function renderBillingAccountingListTab(ui, tab) {
                     <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">수정</button>
                     ${String(item.status || 'active') === 'cancelled' || Number(item.is_active) === 0
                         ? `<button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:none;" disabled>취소</button>`
-                        : `<button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">취소</button>`
+                        : `<button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="cancelBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">취소</button>`
                     }
                 </div>
             </div>
@@ -1260,7 +1260,7 @@ function renderBillingAccountingListTab(ui, tab) {
                 <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">${billingAccountingEscape(item.refund_date || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
                 <div style="display:flex; gap:8px;">
                     <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingRefund('${billingAccountingEscape(item.id)}')">수정</button>
-                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingRefund('${billingAccountingEscape(item.id)}')">취소</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="cancelBillingAccountingRefund('${billingAccountingEscape(item.id)}')">취소</button>
                 </div>
             </div>
         `).join('');
@@ -1296,7 +1296,7 @@ function renderBillingAccountingListTab(ui, tab) {
             <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">${billingAccountingEscape(item.carryover_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
             <div style="display:flex; gap:8px;">
                 <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">수정</button>
-                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">취소</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="cancelBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">취소</button>
             </div>
         </div>
     `).join('');
@@ -1360,7 +1360,7 @@ function renderBillingAccountingFoundationModal() {
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; background:var(--surface-2); padding:4px; border-radius:12px;">
             ${tabButtons}
         </div>
-        ${ui.error ? `<div style="margin-bottom:12px; padding:10px 12px; border-radius:12px; background:rgba(255,71,87,0.08); color:var(--error); font-size:12px; font-weight:500;">${billingAccountingEscape(ui.error)}</div>` : ''}
+        ${ui.error ? `<div style="margin-bottom:12px; padding:10px 12px; border-radius:12px; background:rgba(var(--error-rgb),0.08); color:var(--error); font-size:12px; font-weight:500;">${billingAccountingEscape(ui.error)}</div>` : ''}
         <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5; margin-bottom:12px;">실제 수납 등록, 환불 처리, 이월 처리, 장부 자동 반영은 이번 단계에서 연결하지 않습니다.</div>
         <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${body}</div>
     `);

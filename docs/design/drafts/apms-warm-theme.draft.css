@@ -1,0 +1,148 @@
+/* =============================================================
+   APMS / EIE — zinc 테마 오버라이드 (초안 / 검토용)
+   -------------------------------------------------------------
+   ⚠️ 이 파일은 아직 어떤 HTML에도 link 되지 않았다 = 라이브 무영향.
+   적용은 다음 단계(원내평가 or 클래스룸 한 화면)에서 마지막에 import.
+
+   기준 문서 : docs/design/apms-eie-DESIGN.md
+   매핑표    : docs/design/drafts/apms-warm-mapping.md
+
+   핵심 원칙
+   - primary action = near-black(--action-primary), 파란색 아님.
+   - 블루(--primary/--accent) = 링크·포커스·선택·오늘 같은 기능 액센트에만.
+   - 기존 --primary 를 검정으로 '덮지' 않는다. iOS블루 → 차분한 블루로 톤다운만.
+   - 삭제 = 흰/투명 + 빨간 글씨. solid red 배경 금지.
+
+   ⚠️ 적용 범위 가드 (보정 ③ — 절대 전역 import 금지)
+   - 1차: 원내평가 또는 클래스룸 '한 화면'에만 import.
+   - APMATH/EIE 운영 화면에만. archive/ 출력·인쇄, 홈/블로그는 제외.
+     (archive 는 js-archive-theme-override.css 별도 테마 보유 → 오염 주의)
+   - 전역 공통 CSS 승격은 한 화면 검수 PASS 후 단계적으로.
+   ============================================================= */
+
+/* ---------- 1. 라이트 토큰 ---------- */
+:root {
+  /* 신규: 주요 액션(near-black) — 저장/확정 버튼 전용 */
+  --action-primary: #18181b;
+  --action-primary-hover: #27272a;
+  --on-primary: #ffffff;
+
+  /* 신규: 기능 액센트 보조 틴트 */
+  --accent-soft: #eff6ff;   /* 선택 행 / 오늘 배경 */
+  --error-soft: #fef2f2;    /* danger hover 배경 */
+
+  /* 기능 블루 — 변수 유지, 톤다운만 (링크·선택·포커스·오늘 전용) */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-soft: rgba(37, 99, 235, 0.08);
+  --primary-rgb: 37, 99, 235;
+  --accent: #2563eb;
+  --subj-math-bg: rgba(37, 99, 235, 0.08);
+  --subj-math-text: #2563eb;
+
+  /* 표면 / 무채색 (zinc) */
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --surface-2: #f4f4f3;
+  --surface-soft: #f4f4f3;
+  --border: #e4e4e7;
+  --border-soft: #f0f0f1;
+  --text: #18181b;
+  --text-soft: #3f3f46;
+  --secondary: #71717a;
+
+  /* 시맨틱 (톤다운) */
+  --success: #16a34a;
+  --success-rgb: 22, 163, 74;
+  --warning: #ca8a04;
+  --warning-rgb: 202, 138, 4;
+  --error: #dc2626;
+  --error-rgb: 220, 38, 38;
+  --danger: #dc2626;
+
+  /* 둥글기 / 그림자 — 🟡 조정 제안 (적용 시 화면에서 먼저 확인) */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  /* 그림자: 카드는 보더로 구분 → 평탄화. (--shadow 16곳·--shadow-sm 8곳 실사용 → 의도된 변경)
+     --shadow-md 는 현재 사용 0곳. 모달용은 별도 --shadow-modal 로 분리해 오염 방지(보정 ①).
+     ⚠️ --shadow-modal 은 모달 클래스가 이 변수를 가리켜야 효과 발생(2차 컴포넌트 작업). */
+  --shadow: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-modal: 0 8px 28px rgba(0, 0, 0, 0.12);
+  /* --shadow-lg 는 기존 유지 */
+}
+
+/* ---------- 2. 다크 토큰 (기존 body.dark 구조에 맞춤) ---------- */
+body.dark {
+  --action-primary: #fafafa;        /* 다크에선 near-white 버튼 */
+  --action-primary-hover: #e4e4e7;
+  --on-primary: #18181b;
+
+  --accent-soft: rgba(59, 130, 246, 0.15);
+  --error-soft: rgba(239, 68, 68, 0.15);
+
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-soft: rgba(59, 130, 246, 0.15);
+  --primary-rgb: 59, 130, 246;
+  --accent: #3b82f6;
+  --subj-math-bg: rgba(59, 130, 246, 0.15);
+  --subj-math-text: #60a5fa;
+
+  --bg: #09090b;
+  --surface: #141416;
+  --surface-2: #18181b;
+  --surface-soft: #18181b;
+  --border: #27272a;
+  --border-soft: #1f1f23;
+  --text: #fafafa;
+  --text-soft: #d4d4d8;
+  --secondary: #a1a1aa;
+
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #ef4444;
+  --danger: #ef4444;
+}
+
+/* ---------- 3. 컴포넌트 remap (변수로 안 끝나는 핵심 2개) ---------- */
+
+/* 3-1. 주요 버튼 = near-black (현재 .btn-primary 는 --primary 파랑) */
+.btn-primary,
+button.btn-primary,
+.ap-primary-btn {
+  background: var(--action-primary) !important;
+  color: var(--on-primary) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.btn-primary:hover,
+button.btn-primary:hover,
+.ap-primary-btn:hover {
+  background: var(--action-primary-hover) !important;
+}
+
+/* 3-2. 삭제 = 흰/투명 + 빨간 글씨, solid red 배경 금지.
+   (인라인 rgba(255,71,87,.1) 등은 여기서 못 잡음 → 화면별 수동 정리: 보정 6) */
+.btn-danger,
+button.btn-danger {
+  background: transparent !important;
+  color: var(--error) !important;
+  border: 1px solid var(--error) !important;
+  box-shadow: none !important;
+}
+.btn-danger:hover,
+button.btn-danger:hover {
+  background: var(--error-soft) !important;
+}
+
+/* 3-3. 포커스 링 — 신규 규칙 두지 않음 (보정 ②).
+   apms-theme-override.css:362 에 이미 좁힌 :focus-visible 규칙 존재
+   (.btn/button/a/input/select/textarea → box-shadow 0 0 0 4px rgba(var(--primary-rgb),0.14)).
+   --primary-rgb 를 위에서 37,99,235 로 톤다운했으므로 기존 규칙이 자동으로 차분한 블루 링이 됨.
+   전역 :focus-visible 를 새로 걸면 모달 닫기/숨김 요소까지 outline 생겨 중복·충돌 → 추가 안 함.
+
+   선택 행 / '오늘' 표시는 적용 화면에서 해당 클래스에 직접:
+     background: var(--accent-soft); box-shadow: inset 2px 0 0 var(--accent);  (예시) */

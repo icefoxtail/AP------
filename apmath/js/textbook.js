@@ -60,7 +60,7 @@ function renderTextbookManageList() {
 
     const renderGroup = (groups) => groups.map(g => `
         <div style="margin-bottom:16px;">
-            <div style="font-size:12px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.06); padding:6px 10px; border-radius:8px; margin-bottom:4px;">${apEscapeHtml(g.cName)}</div>
+            <div style="font-size:12px; font-weight:500; color:var(--primary); background:rgba(var(--primary-rgb),0.06); padding:6px 10px; border-radius:8px; margin-bottom:4px;">${apEscapeHtml(g.cName)}</div>
             ${g.books.map(renderTbRow).join('')}
         </div>
     `).join('');
@@ -164,7 +164,7 @@ function openEditTextbookModal(tbId) {
                        <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; background:var(--surface-2); border:none;" onclick="handlePatchTextbook('${tbId}', true, 'hidden')">숨김 보류</button>`
                 }
             </div>
-            <button class="btn apms-button apms-button--quiet" style="margin-top:12px; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:500;" onclick="handleDeleteTextbook('${tbId}')">교재 완전 삭제</button>
+            <button class="btn apms-button apms-button--quiet" style="margin-top:12px; padding:10px; font-size:12px; color:var(--error); background:rgba(var(--error-rgb),0.1); border:none; font-weight:500;" onclick="handleDeleteTextbook('${tbId}')">교재 완전 삭제</button>
         </div>
     `);
 }
