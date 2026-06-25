@@ -1061,12 +1061,6 @@ function openGroupedExamScheduleActionModal(occurrenceIdsText, selectedOccurrenc
     const title = [item.school_name, item.grade, item.title].filter(Boolean).join(' ');
     const rangeText = getUnifiedScheduleDisplayDateText(item);
     const idsArg = occurrenceIds.map(id => apEscapeHtml(id)).join(',');
-    const selectedId = selectedOccurrenceId || occurrenceIds[0];
-    const selectedRow = (item.raw_items || []).find(row => String(row.id) === String(selectedId));
-    const actionDate = selectedDate || selectedRow?.exam_date || item.date || '';
-    const actionDateText = actionDate ? formatUnifiedScheduleDateWithDay(actionDate) : '';
-    const singleEditLabel = actionDate ? '이 날짜만 수정' : '날짜 수정';
-    const singleDeleteLabel = actionDate ? '이 날짜만 삭제' : '날짜 삭제';
 
     showModalStep('', `
         <div class="unified-schedule-modal">
@@ -1076,10 +1070,8 @@ function openGroupedExamScheduleActionModal(occurrenceIdsText, selectedOccurrenc
                 ${item.memo ? `<div style="font-size:12px; font-weight:400; line-height:1.5; color:var(--secondary); margin-top:4px; white-space:pre-line;">${apEscapeHtml(item.memo)}</div>` : ''}
             </div>
             <div style="display:flex; flex-direction:column; gap:8px;">
-                <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface-2);" onclick="openEditUnifiedScheduleModal('exam', '${apEscapeHtml(selectedId)}')">${apEscapeHtml(singleEditLabel)}${actionDateText ? `: ${apEscapeHtml(actionDateText)}` : ''}</button>
-                <button class="btn btn-primary ap-primary-btn" style="width:100%;" onclick="openEditGroupedExamScheduleModal('${idsArg}')">전체 기간 수정</button>
-                <button class="btn ap-mid-btn" style="width:100%; border:none; background:var(--surface-2); color:var(--error);" onclick="deleteUnifiedSchedule('exam', '${apEscapeHtml(selectedId)}')">${apEscapeHtml(singleDeleteLabel)}${actionDateText ? `: ${apEscapeHtml(actionDateText)}` : ''}</button>
-                <button class="btn ap-mid-btn" style="width:100%; border:none; background:rgba(255,71,87,0.1); color:var(--error);" onclick="deleteGroupedExamSchedule('${idsArg}')">전체 기간 삭제</button>
+                <button class="btn btn-primary ap-primary-btn" style="width:100%;" onclick="openEditGroupedExamScheduleModal('${idsArg}')">수정</button>
+                <button class="btn ap-mid-btn" style="width:100%; border:none; background:rgba(255,71,87,0.1); color:var(--error);" onclick="deleteGroupedExamSchedule('${idsArg}')">삭제</button>
             </div>
         </div>
     `);
