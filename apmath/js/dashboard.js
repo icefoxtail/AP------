@@ -519,10 +519,36 @@ function renderDashboardAssistantMemoBlock(todayStr, todayClasses) {
     return renderDashboardAssistantMemos(todayStr, memos);
 }
 
+// 일지 플레인 텍스트를 폰트 위계가 있는 읽기 전용 HTML로 렌더한다.
+// (편집은 textarea 플레인 텍스트가 원본 — 여기서 위계를 바꾸지 않는다)
+// 위계: Lv0 제목 → Lv1 ■ 섹션 → Lv2 필드/학년/상담대상 → Lv3 본문
+function formatJournalHtml(text) {
+    const lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
+    const html = lines.map(raw => {
+        const trimmed = raw.trim();
+        if (!trimmed) return '<div class="jr-line jr-blank"></div>';
+        if (/^\[.*\]$/.test(trimmed) || /^작성자\s*:/.test(trimmed)) {
+            return `<div class="jr-line jr-title">${apEscapeHtml(trimmed)}</div>`;
+        }
+        // Lv1 섹션: 통일된 ■ 헤더(반/보강/상담). 구버전 마커 없는 보강/상담도 호환.
+        // (반 헤더는 구버전에도 ■가 있었으므로 별도 휴리스틱 불필요)
+        if (/^■\s/.test(trimmed) || /^(보강|상담)$/.test(trimmed)) {
+            return `<div class="jr-line jr-section">${apEscapeHtml(trimmed.replace(/^■\s*/, ''))}</div>`;
+        }
+        // Lv2 필드/학년줄/상담 대상
+        if (/^- /.test(trimmed) || /^(중[123]|고[123])\s/.test(trimmed) || /^\*\s/.test(trimmed)) {
+            return `<div class="jr-line jr-field">${apEscapeHtml(trimmed)}</div>`;
+        }
+        // Lv3 본문(진도 상세/상담 내용 등) — 들여쓰기 보존
+        return `<div class="jr-line jr-body">${apEscapeHtml(raw.replace(/\s+$/, ''))}</div>`;
+    }).join('');
+    return `<div class="journal-render">${html}</div>`;
+}
+
 function renderJournalDraftPreview(dateStr) {
     return `
         <div class="journal-draft journal-draft--simple">
-            <pre class="journal-draft__plain">${apEscapeHtml(buildJournalContent(dateStr))}</pre>
+            ${formatJournalHtml(buildJournalContent(dateStr))}
         </div>
     `;
 }
@@ -2363,7 +2389,7 @@ function dashboardBuildJournalMakeupSection(targetDate) {
         lines.push(`${grade} ${body}`);
     });
     if (!lines.length) return '';
-    return `보강\n${lines.join('\n')}`;
+    return `■ 보강\n${lines.join('\n')}`;
 }
 
 // 상담 섹션 텍스트. 기존 엔트리 포맷 유지, 그 날짜 상담을 한곳에 모은다.(고등부 제외)
@@ -2374,7 +2400,7 @@ function dashboardBuildJournalConsultationSection(targetDate) {
         .filter(cn => !dashboardIsHighSchoolGradeLabel(dashboardGetStudentGradeLabel(cn?.student_id)))
         .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
     if (!entries.length) return '';
-    return `상담\n${entries.join('').replace(/\s+$/, '')}`;
+    return `■ 상담\n${entries.join('').replace(/\s+$/, '')}`;
 }
 
 // 저장된 일지에 뒤늦게 추가된 상담을 하단 상담 섹션에 끼워 넣는다.
@@ -2382,12 +2408,14 @@ function dashboardInsertJournalConsultationsIntoBottomSection(content, entries) 
     if (!entries.length) return content;
     const source = String(content || '').replace(/\s+$/, '');
     const entryText = entries.join('').replace(/\s+$/, '');
-    const headerMatch = source.match(/^상담[ \t]*$/m);
+    // 구버전 일지(마커 없는 '상담' 헤더)도 함께 인식한다.
+    const headerMatch = source.match(/^(?:■ )?상담[ \t]*$/m);
     if (!headerMatch || typeof headerMatch.index !== 'number') {
-        return `${source}\n\n상담\n${entryText}`;
+        return `${source}\n\n■ 상담\n${entryText}`;
     }
     const afterHeader = headerMatch.index + headerMatch[0].length;
     const rest = source.slice(afterHeader);
+    // 섹션 경계: 다음 섹션 헤더(통일된 ■ … 또는 구버전 보강/상담 단독줄)
     const nextRel = rest.search(/\n(?:■ |보강[ \t]*\n|상담[ \t]*\n)/);
     const sectionEnd = nextRel >= 0 ? afterHeader + nextRel : source.length;
     const before = source.slice(0, sectionEnd).replace(/\s+$/, '');

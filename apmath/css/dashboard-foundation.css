@@ -79,6 +79,16 @@
 .journal-draft--simple{display:block}
 .journal-draft__plain{margin:0;white-space:pre-wrap;font-family:inherit;font-size:13px;font-weight:400;line-height:1.55;color:var(--text);background:transparent;border:0;padding:0}
 
+/* 일지 읽기 전용 렌더 — 폰트로 4단 위계 (편집 textarea는 영향 없음) */
+.journal-render{font-family:inherit;color:var(--text)}
+.journal-render .jr-line{white-space:pre-wrap;word-break:break-word;line-height:1.55}
+.journal-render .jr-blank{height:8px;line-height:8px}
+.journal-render .jr-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em}
+.journal-render .jr-section{font-size:14px;font-weight:700;color:var(--text);margin-top:14px;padding-top:8px;border-top:1px solid var(--border)}
+.journal-render .jr-title + .jr-section,.journal-render .jr-section:first-child{margin-top:8px}
+.journal-render .jr-field{font-size:13px;font-weight:600;color:var(--text)}
+.journal-render .jr-body{font-size:13px;font-weight:400;color:var(--text-soft);padding-left:10px}
+
 /* ======================================================================
    APMS Dashboard Card Shell Restore + Typography Unification
    - 기존 foundation selector는 보존한다.
