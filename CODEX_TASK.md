@@ -1,935 +1,688 @@
-# AP MATH Loop Experiment 01
+# APMS 오답 출력 센터 고도화 계획서
 
-## APMath 메모·주간일정 → EIE 원장/선생님 대시보드 공통 이식
+# 0. 핵심 전제
 
-## 0. 실험 목적
-
-이번 작업은 단순 구현 지시가 아니다.
-
-목적은 Codex 작업을 한 번에 맡기는 것이 아니라,
-조사 → 설계 검증 → 백엔드 이식 → 프론트 이식 → UI/UX 검수 → 회귀 검수까지
-작은 루프로 쪼개서 실패 지점을 조기에 잡는 것이다.
-
-이번 루프의 핵심은 다음 3가지를 검증하는 것이다.
+이번 작업은 오답 출력 센터를 다음 4개 카드 구조로 재정리하는 작업이다.
 
 ```text
-1. APMath의 기존 메모/주간일정 구조를 EIE에 새로 만들지 않고 이식할 수 있는가
-2. EIE 원장 대시보드와 선생님 대시보드 양쪽에 같은 운영 카드 경험을 붙일 수 있는가
-3. 메모는 개인, 주간일정은 공용이라는 scope를 코드와 UI에서 정확히 분리할 수 있는가
+학생
+반
+학년
+유형
+```
+
+기존 `학생별 / 반별 / 학년별` 오답 출력은 유지한다.
+새로 추가하는 고도화 영역은 `유형` 카드 안에 둔다.
+
+`분석 오답`이라는 문구는 사용하지 않는다.
+
+최종 화면 구조는 다음 기준으로 간다.
+
+```text
+오답 출력
+
+[ 학생 ] [ 반 ] [ 학년 ] [ 유형 ]
+
+카드 클릭 시 하단 설정 영역이 변경됨
+```
+
+이번 작업에서 가장 중요한 기준은 단원이다.
+
+깃 확인 결과, JS아카이브에는 이미 표준단원키 마스터 문서와 `archive/concept_map.js`가 존재한다.
+따라서 이번 작업에서 단원 마스터를 새로 invent하지 않는다.
+
+```text
+단원 기준 = JS아카이브 표준단원키 / concept_map.js 우선 재사용
+오답 문항 연결키 = standard_unit_key / unitKey
+```
+
+APMS DB에 별도 `standard_units` 또는 `unit_master` 테이블을 새로 만드는 것은 이번 1차 구현 범위가 아니다.
+필요하면 이후 저장형 오답 세트 단계에서 DB 테이블화한다.
+
+---
+
+# 1. 최종 목표
+
+오답 출력 센터를 다음 구조로 개편한다.
+
+```text
+상위 카드:
+- 학생
+- 반
+- 학년
+- 유형
+```
+
+## 학생 카드
+
+기존 학생별 오답 출력 유지.
+
+```text
+- 시험 선택
+- 학생 선택
+- 학생별 오답 출력
+```
+
+## 반 카드
+
+기존 반별 오답 출력 유지.
+
+```text
+- 시험 선택
+- 현재 반 기준
+- 반별 공통 오답 출력
+```
+
+## 학년 카드
+
+기존 학년별 오답 출력 유지.
+
+```text
+- 시험 선택
+- 같은 학년 전체 기준
+- 학년별 공통 오답 출력
+```
+
+학년별 오답은 코드상 `teacher_name`으로 담임 필터를 걸지 않고, 같은 grade의 active class 전체를 모으는 구조다.
+단, 실제 결과는 현재 로그인 역할에서 로드된 `state.db.classes`, `state.db.exam_sessions` 범위에 영향을 받을 수 있으므로 이 부분은 구현 시 검수한다.
+
+## 유형 카드
+
+유형 카드 안에는 작은 카드들을 둔다.
+
+```text
+[ 최다빈출 ]
+정답률 50% 이상
+반복 오답 문항
+
+[ 최다오답 ]
+정답률 50% 미만
+다수 취약 문항
+
+[ 단원별 오답 ]
+마스터 단원 기준 선택 출력
 ```
 
 ---
 
-# 1. 절대 전제
+# 2. Scope 규칙
 
-## 1-1. 새 기능 개발 아님
+## 이번 작업에서 건드리는 범위
 
-이번 작업은 EIE에 새 메모 기능이나 새 일정 기능을 만드는 작업이 아니다.
-
-APMath에 이미 있는 다음 기능을 EIE에 이식한다.
+주요 대상 파일 후보는 다음이다.
 
 ```text
-- 메모 카드
-- 메모 전체 모달
-- 메모 추가/완료/수정/삭제
-- 주간일정 카드
-- 일정관리 모달
-- 시험/휴무/기타 일정 출력
-- D-Day / 기간 일정 표시
-- 대시보드 카드 UI/UX
+apmath/js/clinic-print.js
+apmath/wrong_print_engine.html
+오답 출력 센터 관련 CSS
+필요 시 APMS HTML 모달 영역
 ```
 
-원본 파일:
+단원 마스터 데이터 연결 확인 대상은 다음이다.
 
 ```text
-apmath/js/memo.js               # 메모 모달/추가/완료/수정/삭제 (대시보드 카드 렌더는 여기 없음)
-apmath/js/schedule.js
-apmath/js/dashboard.js          # 메모/일정 대시보드 카드 렌더는 dashboard.js / dashboard-admin.js 안에 있음
-apmath/js/dashboard-admin.js    # 원장 대시보드 본체(약 156KB) — Loop 0 조사 필수
-apmath/js/dashboard-teacher.js  # 약 5KB 래퍼
-apmath/js/dashboard-assistant-memos.js  # 별도 메모 보조 파일
+archive/concept_map.js
+docs/rules/JS아카이브_표준단원키_마스터테이블.md
+docs/rules/# JS아카이브 표준단원키 마스터 테이블.md
+apmath/worker-backup/worker/schema.sql
+apmath/worker-backup/worker/migrations/stage6a_exam_blueprints.sql
 ```
 
-> 주의: 메모 "대시보드 카드" 렌더 함수는 `memo.js`에 없다. `memo.js`는 모달/CRUD만 담당한다.
-> 카드 렌더 지점은 `dashboard.js` / `dashboard-admin.js`에서 찾아야 한다.
+## 이번 작업에서 건드리지 않는 범위
 
-메모 백엔드 원본:
+다음은 건드리지 않는다.
 
 ```text
-apmath/worker-backup/worker/routes/operations.js   # operation-memos GET/POST/PATCH/DELETE
+archive/engine.html 핵심 렌더링 알고리즘
+archive/mixed_engine.html 핵심 렌더링 알고리즘
+wrapLatex
+autoCompress
+fitQuestionBox
+renderSol
+renderAns
+기존 시험지 출력 페이지 압축 로직
+기존 학생별/반별/학년별 payload 호환성
 ```
 
-대상 파일 후보:
+## DB 원칙
+
+이번 라운드에서는 단원 마스터 DB 테이블을 새로 만들지 않는다.
+
+이유:
 
 ```text
-eie/js/views/eie-dashboard.js
-eie/js/eie-api.js
-workers/wangji-eie-worker/routes/eie.js
-workers/wangji-eie-worker/index.js
-eie/index.html
-EIE CSS 파일
-EIE migration 파일
+1. JS아카이브 표준단원키 마스터가 이미 존재함
+2. concept_map.js가 이미 있음
+3. APMS 오답 item에는 unitKey / standard_unit_key가 이미 들어감
+4. 1차 목표는 UI/출력 고도화이지 마스터 데이터 재설계가 아님
+```
+
+단, 장기 저장형 오답 세트 단계에서는 별도 DB snapshot을 만든다.
+
+---
+
+# 3. 데이터 기준
+
+## 현재 오답 item 기준
+
+현재 오답 출력 쪽에서 문항별로 다음 정보가 들어간다.
+
+```text
+examKey
+examTitle
+examDate
+archiveFile
+questionNo
+unitKey
+unit
+course
+cluster
+```
+
+이 중 단원 연결의 핵심은 `unitKey`다.
+
+```text
+wrongItem.unitKey
+= exam_blueprints.standard_unit_key
+= JS아카이브 표준단원키
+```
+
+## 단원 마스터 기준
+
+단원 목록은 다음 우선순위로 만든다.
+
+```text
+1순위: archive/concept_map.js의 표준단원키 데이터
+2순위: JS아카이브 표준단원키 마스터 문서 기준
+3순위: exam_blueprints에 실제 등장한 unitKey 목록
+```
+
+1순위와 2순위는 마스터 기준이다.
+3순위는 fallback이다.
+
+단원명 문자열만 보고 목록을 만들면 안 된다.
+
+금지 예시:
+
+```text
+standard_unit 이름만 모아서 Set으로 단원 목록 생성
+```
+
+허용 예시:
+
+```text
+unitKey 기준으로 마스터 단원에 매칭
+마스터에 있으면 마스터 표시명/순서 사용
+마스터에 없으면 기타 / 단원 미분류로 보냄
 ```
 
 ---
 
-# 2. 가장 중요한 scope 규칙
+# 4. UI 구조
 
-## 2-1. 메모는 개인 메모
-
-메모는 공용이 아니다.
+## 상위 카드
 
 ```text
-원장 로그인 → 원장 개인 메모만 출력
-선생님 로그인 → 해당 선생님 개인 메모만 출력
+학생
+반
+학년
+유형
 ```
 
-예시:
+카드 클릭 시 하단 설정 패널이 바뀐다.
+
+## 유형 카드 내부
+
+유형 카드 클릭 시 다음 작은 카드를 표시한다.
 
 ```text
-박준성 로그인 → 박준성 메모만
-정겨운 로그인 → 정겨운 메모만
-정의한 로그인 → 정의한 메모만
-원장 로그인 → 원장 메모만
+최다빈출
+최다오답
+단원별 오답
 ```
 
-다른 사용자의 개인 메모가 보이면 실패다.
-
-메모 저장 기준은 이름 문자열보다 로그인 사용자 id 기준을 우선한다.
-
-권장 기준:
+## 최다빈출
 
 ```text
-owner_user_id = auth.id
+기준:
+- 정답률 50% 이상
+- 오답 발생 수 많은 순
+
+의미:
+- 절반 이상은 맞혔지만 반복적으로 틀린 학생이 있는 문항
+- 실수, 조건 누락, 계산 실수, 개인 약점 점검용
 ```
 
-보조 표시 필드:
+화면 문구:
 
 ```text
-owner_name
-owner_role
+최다빈출
+정답률 50% 이상
+반복 오답 문항
 ```
 
-메모 API는 항상 현재 로그인 사용자 기준으로 필터링한다.
-
-```sql
-SELECT *
-FROM eie_operation_memos
-WHERE owner_user_id = ?
-ORDER BY is_pinned DESC, memo_date ASC, created_at DESC;
-```
-
-### ⚠️ 중요: 이것은 "그대로 이식"이 아니라 "의도적 동작 변경"이다
-
-APMath 원본 메모(`operations.js` operation-memos GET)는 EIE가 원하는 개인 메모 동작과 다르다.
+## 최다오답
 
 ```text
-APMath 원본 동작:
-- admin(원장)  → 필터 없음. 모든 선생님 메모를 본다.
-- teacher      → teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL
-                 (본인 메모 + 빈 이름 공용 메모)
-- 식별자       → owner_user_id 가 아니라 teacher_name (이름 문자열)
+기준:
+- 정답률 50% 미만
+- 오답 발생 수 많은 순
+
+의미:
+- 다수 학생이 막힌 문항
+- 개념 재설명, 단원 보강 필요 문항
 ```
 
-EIE는 위 동작을 그대로 복사하면 안 된다. EIE에서는 다음을 새로 정의한다.
+화면 문구:
 
 ```text
-EIE 메모 동작 (의도적 변경):
-- 원장도 예외 없이 owner_user_id = auth.id 로 필터링한다.
-  → 원장 화면에서 다른 선생님 메모가 보이면 FAIL.
-- 식별자는 teacher_name 이 아니라 owner_user_id(=auth.id) 를 1차 기준으로 한다.
-- "빈 이름 = 공용 메모" 분기는 제거한다. EIE 메모는 100% 개인이다.
-- PATCH / DELETE 의 소유권 체크도 teacher_name 비교가 아니라
-  owner_user_id = auth.id 비교로 한다. (타인 메모 수정/삭제 → 403)
+최다오답
+정답률 50% 미만
+다수 취약 문항
 ```
 
-즉 "새 메모 기능 개발 금지" 전제는 UI/CRUD 흐름에 적용되는 것이고,
-메모 scope 규칙만은 EIE에서 새로 정의하는 것이 정상이다.
+## 단원별 오답
 
-## 2-2. 주간일정은 공용 일정
-
-주간일정은 개인 일정이 아니다.
+단원별 오답은 마스터 단원 기준으로 선택한다.
 
 ```text
-원장 대시보드 → 공용 주간일정 출력
-선생님 대시보드 → 같은 공용 주간일정 출력
-```
+범위 선택:
+- 현재 반
+- 같은 학년 전체
 
-주간일정에 포함되는 것:
+유형 선택:
+- 최다빈출
+- 최다오답
 
-```text
-- 시험 일정
-- 휴무 일정
-- 학원 공지
-- 설명회
-- 기타 학원 운영 일정
-```
-
-주간일정 API에는 선생님별 개인 필터를 걸지 않는다.
-
-```text
-exam_schedules = 공용
-academy_schedules = 공용
+단원 선택:
+- 마스터 단원 목록에서 선택
+- 선택한 단원은 출력할 단원 목록으로 이동
+- 출력할 단원 목록은 드래그로 순서 변경 가능
 ```
 
 ---
 
-# 3. 최종 화면 목표
+# 5. 단원 드래그 설계
 
-## 3-1. 원장 대시보드
-
-원장 대시보드에는 다음이 출력되어야 한다.
+단원별 오답 화면은 다음 구조로 만든다.
 
 ```text
-메모 카드:
-- 원장 개인 메모만 출력
-- 고정/완료/추가/수정/삭제 가능
+단원별 오답
 
-주간일정 카드:
-- 공용 시험/휴무/기타 일정 출력
-- 모든 선생님 화면과 동일한 일정
+[현재 반] [같은 학년 전체]
+
+[최다빈출] [최다오답]
+
+마스터 단원
+┌────────────────────┐
+│ 여러 가지 방정식과 부등식  + │
+│ 이차함수                  + │
+│ 도형의 방정식              + │
+└────────────────────┘
+
+출력할 단원
+┌────────────────────┐
+│ ≡ 1. 여러 가지 방정식과 부등식 │
+│ ≡ 2. 이차함수                 │
+└────────────────────┘
+
+[오답지 출력]
 ```
 
-## 3-2. 선생님 대시보드
-
-선생님 대시보드에도 반드시 출력되어야 한다.
+## 드래그 기능
 
 ```text
-메모 카드:
-- 로그인한 선생님 개인 메모만 출력
-- 다른 선생님 메모 노출 금지
-
-주간일정 카드:
-- 원장과 동일한 공용 주간일정 출력
+1. 출력할 단원 목록 안에서 순서 변경 가능
+2. 모바일 터치 조작 가능
+3. 드래그가 어려운 환경을 위해 위/아래 버튼도 보조 제공 가능
 ```
 
-원장 대시보드에만 붙고 선생님 대시보드에 없으면 실패다.
+## 단원 미분류 처리
 
----
-
-# 4. UI/UX 목표
-
-## 4-1. 메모 카드
-
-제목:
+마스터에 매칭되지 않는 문항은 누락시키지 않는다.
 
 ```text
-메모
+기타 / 단원 미분류
 ```
 
-출력 예시:
+로 모은다.
+
+FAIL 조건:
 
 ```text
-┌────────────────────────────┐
-│ 메모                 6/26  │
-├────────────────────────────┤
-│ □ 고정 안내문        고정  │
-│ □ 상담 전화                │
-│   6/27(토) · D-1           │
-│ □ 교재 주문                │
-│   6/30(화) · D-4           │
-├────────────────────────────┤
-│                 + 메모 추가 │
-└────────────────────────────┘
-```
-
-메모 없음:
-
-```text
-┌────────────────────────────┐
-│ 메모                 6/26  │
-├────────────────────────────┤
-│ 표시할 메모가 없습니다.    │
-│                 + 메모 추가 │
-└────────────────────────────┘
-```
-
-UX 기준:
-
-```text
-- 고정 메모는 상단
-- 일반 메모는 오늘~7일 이내 표시
-- 완료 체크 시 즉시 사라짐
-- + 메모 추가는 카드 안에서 자연스럽게 펼침
-- Enter 저장 가능
-- 카드 본문 클릭 시 전체 메모 모달
-- 전체 모달에서 수정/삭제/완료 가능
-- 새로고침 후 유지
-```
-
-## 4-2. 주간일정 카드
-
-제목:
-
-```text
-주간일정
-```
-
-출력 예시:
-
-```text
-┌────────────────────────────┐
-│ 주간일정                   │
-├────────────────────────────┤
-│ [시험] 순천고 고1 기말     │
-│       6/28(일)~6/30(화) D-2│
-│ [휴무] 학원방학            │
-│       7/1(수) D-5          │
-│ [기타] 설명회              │
-│       7/2(목) D-6          │
-└────────────────────────────┘
-```
-
-UX 기준:
-
-```text
-- 오늘부터 7일 안의 공용 일정 출력
-- 시험 / 휴무 / 기타 라벨 표시
-- 시험 일정 우선
-- 날짜 빠른 순
-- 기간 일정은 날짜 범위로 표시
-- 오늘이면 D-Day
-- 기간 중이면 진행중
-- 미래면 D-n
-- 행 클릭 시 일정관리 모달
+unitKey 없는 문항을 조용히 버림
+마스터 매칭 실패 문항을 출력에서 누락
 ```
 
 ---
 
-# 5. 디자인 기준
+# 6. 출력 payload 설계
 
-EIE 화면에서 APMath 파란색이 튀면 안 된다.
+기존 payload 호환성을 깨지 않는다.
+
+신규 유형 출력에는 payload에 다음 정보를 추가한다.
 
 ```text
-- EIE 기존 card/surface 톤 사용
-- 슬레이트/블루 계열의 차분한 색감
-- 버튼은 EIE 버튼 톤
-- 행 높이 48~52px
-- 카드 안쪽 여백 12~14px
-- hover 시 아주 약한 배경 변화
-- active/focus 시 카드 반응 있음
+mode: "type" 또는 기존 mode 확장
+typeMode: "frequent" | "mostWrong" | "unit"
+scope: "class" | "grade"
+rateRule: "gte50" | "lt50"
+selectedUnitKeys: []
+unitOrder: []
 ```
 
-금지:
+기존 `students`, `classWrongItems`, `gradeWrongItems` 구조는 유지한다.
+
+## 최다빈출 payload
 
 ```text
-- APMath 파란 버튼 그대로 복붙
-- 하단 버튼이 허접하게 붙는 것
-- 일정관리로 이동 버튼 하나만 있는 placeholder
-- 카드 안에 텍스트만 덩그러니 있는 것
-- 모바일에서 체크박스/라벨/날짜가 겹치는 것
+scope = class 또는 grade
+rateRule = gte50
+정렬 = wrongCount desc
 ```
 
----
-
-# 6. 루프 설계
-
-## Loop 0. 조사 전용
-
-목표:
+## 최다오답 payload
 
 ```text
-코드 수정 금지.
-현재 구조만 조사한다.
+scope = class 또는 grade
+rateRule = lt50
+정렬 = wrongCount desc
 ```
 
-Codex 작업:
+## 단원별 payload
 
 ```text
-1. EIE 원장 대시보드 렌더 함수 확인 (renderTodayMemoPanel / renderWeeklySchedulePlaceholder 위치)
-2. EIE 선생님 대시보드 렌더 함수 확인 (eie-teacher.js render)
-3. 원장/선생님이 같은 파일을 쓰는지 role 분기인지 확인
-4. EIE 선생님 대시보드가 "로그인 사용자" 기준인지 "보고 있는 _teacherName" 기준인지 확인 (★ scope 핵심)
-   - openTeacher(name) 으로 임의 선생님 화면을 열 수 있는지 확인
-5. EIE 프론트에서 로그인 사용자 식별 방법 확인 (WANGJI_EIE_ROLE / WANGJI_EIE_LOGIN_ID / Bearer 토큰)
-6. EIE index.html script 순서 확인
-7. EIE CSS 파일 위치 확인
-8. EIE worker route 구조 + 토큰→teacher(id/name/role) 해석 지점 확인
-9. EIE migration 위치/파일명 컨벤션 확인 (YYYYMMDD_eie_*.sql)
-10. APMath memo.js에서 이식할 함수 목록 작성 (모달/CRUD만)
-11. APMath operations.js operation-memos 백엔드 동작 확인 (admin 필터 유무, teacher_name 기준)
-12. APMath schedule.js에서 이식할 함수 목록 작성
-13. APMath dashboard.js / dashboard-admin.js에서 메모·일정 "대시보드 카드" 렌더 지점 확인
+scope = class 또는 grade
+rateRule = gte50 또는 lt50
+selectedUnitKeys = 사용자가 선택한 단원키
+unitOrder = 드래그 순서
 ```
 
-산출물:
+출력 엔진에서는 단원별 section을 만든다.
 
 ```text
-INVESTIGATION_EIE_MEMO_SCHEDULE_LOOP0.md
-```
+[여러 가지 방정식과 부등식]
+문항 1
+문항 2
 
-보고서 필수 포함:
-
-```text
-- 현재 EIE 원장 대시보드 구조
-- 현재 EIE 선생님 대시보드 구조
-- 메모 localStorage 사용 지점
-- 주간일정 placeholder 사용 지점
-- 이식 대상 함수 매핑표
-- 수정 예상 파일
-- 회귀 위험
-- 다음 루프 제안
-```
-
-PASS:
-
-```text
-- 코드 변경 없음
-- 원장/선생님 대시보드 위치 확인
-- 메모/주간일정 원본 함수 매핑 완료
-```
-
-FAIL:
-
-```text
-- 조사 없이 코드 수정
-- 선생님 대시보드 위치 미확인
-- 선생님 대시보드가 _teacherName 기준인지 로그인 사용자 기준인지 미확인
-- APMath operations.js 메모 백엔드 실제 동작(admin 무필터) 미확인
-- localStorage 메모 제거 계획 누락
-- 주간일정 placeholder 제거 계획 누락
+[이차함수]
+문항 1
+문항 2
 ```
 
 ---
 
-## Loop 1. Backend / DB 이식
+# 7. 구현 Loop 설계
 
-목표:
+## Loop 0. 마스터 단원 연결 검증
+
+이번에는 단순 조사가 아니라, 이미 깃에서 확인된 전제를 바탕으로 **연결 검증**만 한다.
+
+### 목표
 
 ```text
-EIE에서 개인 메모 API와 공용 일정 API가 작동하도록 만든다.
+1. archive/concept_map.js를 APMS 오답 출력 센터에서 읽을 수 있는지 확인
+2. concept_map.js 안의 단원키/단원명/순서 구조 확인
+3. exam_blueprints.standard_unit_key와 매칭 가능한지 확인
+4. clinic-print.js의 unitKey와 연결 가능한지 확인
 ```
 
-추가 API:
+### 산출물
 
 ```text
-GET    /api/eie/operation-memos
-POST   /api/eie/operation-memos
-PATCH  /api/eie/operation-memos/:id
-DELETE /api/eie/operation-memos/:id
-
-GET    /api/eie/exam-schedules
-POST   /api/eie/exam-schedules
-POST   /api/eie/exam-schedules/group
-PATCH  /api/eie/exam-schedules/group
-POST   /api/eie/exam-schedules/group-delete
-PATCH  /api/eie/exam-schedules/:id
-DELETE /api/eie/exam-schedules/:id
-
-GET    /api/eie/academy-schedules
-POST   /api/eie/academy-schedules
-POST   /api/eie/academy-schedules/batch
-PATCH  /api/eie/academy-schedules/:id
-PATCH  /api/eie/academy-schedules/series/:seriesId
-DELETE /api/eie/academy-schedules/:id
-DELETE /api/eie/academy-schedules/series/:seriesId
+CODEX_LOOP0_WRONG_PRINT_UNIT_MASTER_VERIFY.md
 ```
 
-DB 권장:
+### 금지
 
 ```text
-eie_operation_memos
-eie_exam_schedules
-eie_academy_schedules
-```
-
-마이그레이션 파일명은 EIE 컨벤션을 따른다.
-
-```text
-workers/wangji-eie-worker/migrations/YYYYMMDD_eie_*.sql
-예: 20260626_eie_operation_memos.sql
-```
-
-> 주의: 기존 eie_exam_records(학생별 성적 기록)와 eie_exam_schedules(공용 시험 일정)는
-> 완전히 다른 개념이다. 이름이 비슷하니 혼동·재사용 금지.
-
-중요:
-
-```text
-operation_memos는 owner_user_id(=auth.id) 기준 개인 필터
-  - 원장(admin)도 예외 없이 owner_user_id 로 필터링한다 (APMath 원본의 admin 무필터를 따라가지 말 것)
-  - PATCH/DELETE 소유권 체크도 owner_user_id = auth.id 로 한다 (타인 메모 → 403)
-  - "빈 이름 공용 메모" 분기는 만들지 않는다
-exam_schedules / academy_schedules는 공용 (필터 없음)
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP1_BACKEND.md
-```
-
-PASS:
-
-```text
-- 로그인 사용자별 개인 메모 API 동작
-- 원장/선생님 메모 분리 (원장도 본인 메모만, admin 무필터 아님)
-- 타인 메모 PATCH/DELETE 시 403
-- 공용 주간일정 API 동작
-- 기존 EIE 학생/출석/상담 API 영향 없음
-```
-
-FAIL:
-
-```text
-- 메모를 공용으로 처리
-- 주간일정을 선생님별로 필터링
-- owner_user_id 없이 teacher_name만 의존
-- 기존 EIE API 깨짐
+UI 구현 금지
+DB 생성 금지
+기존 출력 수정 금지
 ```
 
 ---
 
-## Loop 2. Front API Adapter 이식
+## Loop 1. 오답 출력 카드 UI 개편
 
-목표:
+### 목표
+
+상위 카드를 다음으로 개편한다.
 
 ```text
-EIE 프론트에서 APMath와 비슷한 방식으로 메모/일정 API를 호출할 수 있게 한다.
+학생
+반
+학년
+유형
 ```
 
-대상:
+### 구현
 
 ```text
-eie/js/eie-api.js
+기존 학생별/반별/학년별 로직 유지
+mode 선택 UI만 카드형으로 정리
+유형 카드는 신규 패널로 연결
 ```
 
-추가 메서드:
+### 산출물
 
 ```text
-getOperationMemos()
-createOperationMemo()
-updateOperationMemo()
-deleteOperationMemo()
-
-getExamSchedules()
-createExamSchedule()
-updateExamSchedule()
-deleteExamSchedule()
-
-getAcademySchedules()
-createAcademySchedule()
-updateAcademySchedule()
-deleteAcademySchedule()
-```
-
-중요:
-
-```text
-메모 API는 개인 데이터라고 가정
-일정 API는 공용 데이터라고 가정
-모든 호출은 기존 eie-api.js 흐름(Bearer 토큰)을 그대로 탄다.
-  - EIE는 레거시 Basic 인증을 제거했으므로 Basic/btoa 직접 작성 금지
-  - 메모 API에 teacher_name / teacherName 파라미터를 절대 넘기지 않는다
-    (개인 식별은 서버가 토큰→auth.id 로만 한다)
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP2_API_ADAPTER.md
-```
-
-PASS:
-
-```text
-- 대시보드 loadData 계층에서 operationMemos/examSchedules/academySchedules를 받을 수 있음
-- non-GET 후 캐시 갱신 또는 대시보드 리렌더 가능
-```
-
-FAIL:
-
-```text
-- 프론트에서 APMath api/state를 직접 참조
-- EIE API base를 우회
-- 원장/선생님 분리 로직을 프론트에만 의존
+CODEX_LOOP1_WRONG_PRINT_CARD_UI.md
 ```
 
 ---
 
-## Loop 3. 공통 UI 컴포넌트 이식
+## Loop 2. 유형 카드 내부 구현
 
-목표:
+### 목표
 
-```text
-원장/선생님이 같이 쓰는 EIE 운영 카드 컴포넌트를 만든다.
-```
-
-권장 파일:
+유형 카드 안에 작은 카드 3개를 만든다.
 
 ```text
-eie/js/views/eie-operation-memos.js
-eie/js/views/eie-operation-schedule.js
+최다빈출
+최다오답
+단원별 오답
 ```
 
-공통 함수:
+### 구현
 
 ```text
-renderEieMemoDashboardCard(data, options)
-renderEieWeeklyScheduleDashboardCard(data, options)
-
-openEieTodoMemoModal()
-addEieTodoMemo()
-toggleEieMemoDone()
-deleteEieMemo()
-openEditEieTodoMemoModal()
-handleEditEieTodoMemo()
-
-openEieScheduleModal()
-addEieUnifiedSchedule()
-openEditEieUnifiedScheduleModal()
-handleEditEieUnifiedSchedule()
-deleteEieUnifiedSchedule()
+최다빈출 = 정답률 50% 이상
+최다오답 = 정답률 50% 미만
+단원별 오답 = 마스터 단원 선택 패널 진입
 ```
 
-options:
-
-```js
-{
-  mode: 'owner' | 'teacher'
-}
-```
-
-주의:
+### 산출물
 
 ```text
-메모 필터는 서버가 1차 책임.
-프론트는 받은 개인 메모를 출력만 한다.
-주간일정은 원장/선생님 모두 같은 공용 데이터를 출력한다.
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP3_COMMON_UI.md
-```
-
-PASS:
-
-```text
-- 메모 카드 UI 출력
-- 주간일정 카드 UI 출력
-- 모달 열림
-- 완료/추가/수정/삭제 가능
-- EIE 톤 유지
-```
-
-FAIL:
-
-```text
-- 원장/선생님용 코드를 각각 중복 복붙
-- APMath 전역 함수명 그대로 사용
-- localStorage 메모 함수 계속 사용
-- placeholder 유지
+CODEX_LOOP2_WRONG_PRINT_TYPE_CARDS.md
 ```
 
 ---
 
-## Loop 4. 원장 대시보드 연결
+## Loop 3. 단원별 오답 드래그 UI
 
-목표:
+### 목표
+
+마스터 단원 기준으로 단원을 선택하고, 출력 순서를 드래그로 바꿀 수 있게 한다.
+
+### 구현
 
 ```text
-EIE 원장 대시보드에 개인 메모 + 공용 주간일정을 연결한다.
+마스터 단원 목록 생성
+선택 단원 목록 생성
+선택 단원 순서 변경
+모바일 터치 대응
+위/아래 버튼 보조 검토
 ```
 
-변경:
+### 산출물
 
 ```text
-renderTodayMemoPanel(today)
-→ renderEieMemoDashboardCard(data, { mode: 'owner' })
-
-renderWeeklySchedulePlaceholder()
-→ renderEieWeeklyScheduleDashboardCard(data, { mode: 'owner' })
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP4_OWNER_DASHBOARD.md
-```
-
-PASS:
-
-```text
-- 원장 개인 메모만 출력
-- 공용 주간일정 출력
-- localStorage 메모 미사용
-- placeholder 제거
-- 기존 선생님 현황/최근상담/최근등록학생 레이아웃 유지
-```
-
-FAIL:
-
-```text
-- 원장 화면에 선생님 개인 메모 노출
-- 주간일정 placeholder 유지
-- 대시보드 레이아웃 흔들림
+CODEX_LOOP3_WRONG_PRINT_UNIT_DRAG.md
 ```
 
 ---
 
-## Loop 5. 선생님 대시보드 연결
+## Loop 4. 유형별 payload 연결
 
-목표:
+### 목표
+
+유형별 카드 선택 결과를 실제 오답 출력 payload에 연결한다.
+
+### 구현
 
 ```text
-EIE 선생님 대시보드에도 개인 메모 + 공용 주간일정을 연결한다.
+최다빈출 payload 생성
+최다오답 payload 생성
+단원별 payload 생성
+wrong_print_engine.html에서 유형별 제목/섹션 출력
 ```
 
-Codex는 Loop 0에서 확인한 선생님 대시보드 위치에 붙인다.
-
-출력:
+### 산출물
 
 ```text
-메모 = 로그인한 선생님 개인 메모
-주간일정 = 공용 일정
-```
-
-### ⚠️ 중요: 메모는 "화면에 표시된 _teacherName"이 아니라 "로그인 사용자"다
-
-EIE 선생님 대시보드(eie-teacher.js)는 _teacherName(이름 문자열)으로 렌더되고,
-openTeacher(name) 으로 임의 선생님 대시보드를 열 수 있다.
-
-따라서 메모 카드를 _teacherName 기준으로 붙이면,
-원장이 박준성 대시보드를 열었을 때 박준성 개인 메모가 노출된다 → FAIL.
-
-```text
-- 메모는 반드시 서버가 토큰(auth.id)으로 필터링한 결과만 출력한다.
-- 메모 API 호출 시 _teacherName 을 파라미터로 넘기지 않는다.
-- _teacherName 은 시간표/수업 표시용일 뿐, 메모 식별에 쓰지 않는다.
-- 주간일정은 공용이므로 _teacherName 과 무관하다.
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP5_TEACHER_DASHBOARD.md
-```
-
-PASS:
-
-```text
-- 선생님 대시보드에 메모 카드 출력
-- 선생님 대시보드에 주간일정 카드 출력
-- 다른 선생님 메모 노출 없음
-- 공용 주간일정은 원장과 동일
-- 모바일에서 깨지지 않음
-```
-
-FAIL:
-
-```text
-- 원장 대시보드에만 붙음
-- 선생님 화면에서 다른 선생님 메모가 보임
-- 메모를 _teacherName 기준으로 조회함 (auth.id 기준이어야 함)
-- 원장이 특정 선생님 대시보드를 열었을 때 그 선생님 메모가 노출됨
-- 선생님 주간일정이 비어 있음
-- 선생님 대시보드 레이아웃 깨짐
+CODEX_LOOP4_WRONG_PRINT_TYPE_PAYLOAD.md
 ```
 
 ---
 
-## Loop 6. UI/UX 검수 루프
+## Loop 5. UI/UX 검수
 
-목표:
+### 목표
+
+선생님이 실제로 이해하고 쓸 수 있는지 검수한다.
+
+### 검수 기준
 
 ```text
-기능 완료가 아니라 실제 대시보드 출력 품질을 검수한다.
+학생/반/학년/유형 카드가 명확한가
+유형 안의 작은 카드가 과하지 않은가
+최다빈출/최다오답 문구가 헷갈리지 않는가
+단원 드래그가 모바일에서 가능한가
+선택한 단원 순서가 출력에 반영되는가
+빈 데이터 안내가 있는가
 ```
 
-검수 상태:
+### 산출물
 
 ```text
-1. 원장 메모 없음
-2. 원장 메모 있음
-3. 원장 고정 메모 있음
-4. 선생님 메모 없음
-5. 선생님 메모 있음
-6. 선생님 고정 메모 있음
-7. 주간일정 없음
-8. 시험 일정 있음
-9. 휴무 일정 있음
-10. 기타 일정 있음
-11. 기간 일정 있음
-12. 모바일 폭
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP6_UI_REVIEW.md
-```
-
-PASS:
-
-```text
-- 카드가 EIE 톤과 어울림
-- 버튼이 허접하게 붙지 않음
-- 긴 텍스트 말줄임
-- 체크박스와 카드 클릭 충돌 없음
-- hover/active/focus 반응 있음
-- 모바일 카드 깨짐 없음
-```
-
-FAIL:
-
-```text
-- 하단 버튼이 대충 붙어 보임
-- 텍스트만 덩그러니 출력
-- APMath 파란 스타일 튐
-- 모바일에서 라벨/날짜 겹침
+CODEX_LOOP5_WRONG_PRINT_UI_REVIEW.md
 ```
 
 ---
 
-## Loop 7. 회귀 검수 루프
+## Loop 6. 회귀 검수
 
-목표:
+### 목표
+
+기존 출력 기능이 깨지지 않았는지 확인한다.
+
+### 검수 항목
 
 ```text
-메모/주간일정 이식이 기존 EIE 핵심 기능을 깨지 않았는지 확인한다.
+기존 학생별 오답 출력 정상
+기존 반별 오답 출력 정상
+기존 학년별 오답 출력 정상
+기존 QR payload 정상
+기존 archiveFile 문항 로드 정상
+이미지 문항 로드 정상
+단원 없는 문항 누락 없음
+콘솔 에러 없음
+모바일 깨짐 없음
 ```
 
-검수 항목:
+### 산출물
 
 ```text
-- 로그인
-- 원장 대시보드 진입
-- 선생님 대시보드 진입
-- 시간표 이동
-- 출석부 이동
-- 성적표 이동
-- 관리 이동
-- 학생 상세
-- 상담 목록
-- 최근 등록 학생
-- EIE timetable grid
-- 학생 이름 렌더링
-```
-
-산출물:
-
-```text
-CODEX_RESULT_LOOP7_REGRESSION.md
-```
-
-PASS:
-
-```text
-- 기존 기능 영향 없음
-- 콘솔 에러 없음
-- 대시보드 재렌더 정상
-```
-
-FAIL:
-
-```text
-- 기존 EIE 시간표 깨짐
-- 학생 상세 깨짐
-- 로그인/role 분기 깨짐
-- 콘솔 에러 발생
+CODEX_LOOP6_WRONG_PRINT_REGRESSION.md
 ```
 
 ---
 
-# 7. 최종 PASS 기준
-
-최종 완료는 다음을 모두 만족해야 한다.
+# 8. PASS 기준
 
 ```text
-1. 원장 대시보드에 원장 개인 메모만 출력된다. (원장이 선생님 메모를 보지 않는다)
-2. 선생님 대시보드에 로그인한 본인 개인 메모만 출력된다. (auth.id 기준, _teacherName 기준 아님)
-3. 다른 사용자의 메모가 노출되지 않는다. (조회/수정/삭제 모두)
-4. 원장/선생님 대시보드에 같은 공용 주간일정이 출력된다.
-5. 주간일정 placeholder가 완전히 사라진다.
-6. EIE localStorage 메모가 최종 데이터 원천으로 쓰이지 않는다.
-7. 메모 추가/완료/수정/삭제가 된다.
-8. 일정 등록/수정/삭제가 된다.
-9. UI가 EIE 대시보드 톤과 맞는다.
-10. 모바일에서 깨지지 않는다.
-11. 기존 EIE 핵심 기능이 깨지지 않는다.
+학생/반/학년/유형 카드 구조가 적용됨
+기존 학생별/반별/학년별 출력 유지
+유형 카드 안에 최다빈출/최다오답/단원별 오답 표시
+최다빈출 = 정답률 50% 이상
+최다오답 = 정답률 50% 미만
+단원별 오답 = 마스터 단원키 기준
+단원 선택 순서가 출력 순서에 반영
+단원 미분류 문항 누락 없음
+기존 출력 엔진 회귀 없음
+모바일 사용 가능
 ```
 
 ---
 
-# 8. 최종 FAIL 기준
-
-아래 중 하나라도 있으면 실패다.
+# 9. FAIL 기준
 
 ```text
-- 메모를 공용으로 처리함
-- 원장(admin)이 모든 선생님 메모를 봄 (APMath 원본 admin 무필터를 그대로 이식함)
-- 메모를 owner_user_id 대신 teacher_name 으로만 식별함
-- 주간일정을 개인 일정처럼 처리함
-- 원장 대시보드에만 붙고 선생님 대시보드에 안 붙음
-- 선생님 화면에서 다른 선생님 메모가 보임
-- localStorage 메모가 계속 사용됨
-- 주간일정이 placeholder로 남음
-- API만 붙이고 대시보드 출력이 허접함
-- 버튼이 하단에 대충 붙어 보임
-- 모바일에서 카드가 깨짐
-- 기존 EIE 시간표/학생/상담 기능이 깨짐
+단원 목록을 standard_unit 문자열만 모아서 만듦
+JS아카이브 표준단원키 / concept_map.js를 무시하고 새 기준을 invent함
+최다빈출/최다오답 기준이 50% 이상/미만과 다르게 작동함
+학생별/반별/학년별 기존 출력이 깨짐
+유형 카드가 기존 모드와 섞여 의미가 불명확함
+단원 드래그 순서가 출력에 반영되지 않음
+unitKey 없는 문항이 누락됨
+마스터 매칭 실패 문항이 누락됨
+모바일에서 카드/드래그 UI가 깨짐
+권한 밖 학년/반 데이터가 노출됨
+기존 렌더링 엔진 핵심 함수를 불필요하게 수정함
 ```
 
 ---
 
-# 9. Codex 1차 지시문
+# 10. Codex 지시문
+
+## 작업명
 
 ```text
-# 작업명
-APMath 메모·주간일정 → EIE 원장/선생님 대시보드 공통 이식 Loop 0 조사
+APMS 오답 출력 센터 고도화 - Loop 0 마스터 단원 연결 검증
+```
 
-# 이번 라운드 목표
-코드 수정 금지.
-현재 구조 조사와 이식 매핑표 작성만 한다.
+## 지시문
 
-# 핵심 전제
-메모는 개인 메모다.
-원장은 원장 개인 메모만 보고, 선생님은 자기 개인 메모만 본다.
+```text
+APMS 오답 출력 센터 고도화를 위한 Loop 0 마스터 단원 연결 검증을 진행해줘.
 
-주간일정은 공용 일정이다.
-원장과 모든 선생님은 같은 시험/휴무/기타 일정을 본다.
+이번 라운드는 코드 수정 금지다.
+UI 구현, CSS 수정, DB 생성, API 추가 모두 금지다.
 
-이번 작업은 새 기능 개발이 아니다.
-APMath의 기존 메모/주간일정/일정관리/대시보드 카드 UI를 EIE에 이식하는 작업이다.
+이미 깃에서 다음 파일 존재는 확인했다.
 
-# 조사할 것
-1. EIE 원장 대시보드 렌더 함수 위치
-2. EIE 선생님 대시보드 렌더 함수 위치
-3. 원장/선생님 dashboard role 분기 구조
-4. EIE localStorage 메모 사용 함수
-5. EIE 주간일정 placeholder 사용 함수
-6. EIE index.html script 순서
-7. EIE CSS 파일 위치
-8. EIE worker route 구조
-9. EIE migration 위치
-10. APMath memo.js에서 이식할 함수 목록
-11. APMath schedule.js에서 이식할 함수 목록
-12. APMath dashboard.js/dashboard-teacher.js에서 대시보드 출력 함수 목록
-13. Backend API 이식 필요 목록
-14. DB 테이블 추가 필요 여부
-15. 회귀 위험
+- docs/rules/JS아카이브_표준단원키_마스터테이블.md
+- docs/rules/# JS아카이브 표준단원키 마스터 테이블.md
+- archive/concept_map.js
 
-# 산출물
-INVESTIGATION_EIE_MEMO_SCHEDULE_LOOP0.md
+이번 Loop 0의 목표는 “마스터 단원 기준을 새로 만들지 않고 기존 JS아카이브 표준단원키/ concept_map.js를 APMS 오답 출력 센터에서 재사용할 수 있는지” 검증하는 것이다.
 
-# 산출물 필수 포함
-- 현재 EIE 원장 대시보드 구조
-- 현재 EIE 선생님 대시보드 구조
-- APMath 원본 함수 → EIE 이식 함수 매핑표
-- 메모 개인 scope 처리 계획
-- 주간일정 공용 scope 처리 계획
-- 수정 예상 파일 목록
-- 구현 루프 제안
-- 회귀 위험
-- 다음 라운드에서 수정할 정확한 범위
+확인할 것:
 
-# 금지
-- 코드 수정 금지
-- 새 기능 설계 금지
-- localStorage 메모 유지 전제 금지
-- 주간일정 placeholder 유지 전제 금지
-- 메모를 공용으로 처리 금지
-- 주간일정을 개인으로 처리 금지
+1. archive/concept_map.js의 실제 데이터 구조
+2. 표준단원키, 단원명, 과목/course, 순서/order 필드 존재 여부
+3. APMS의 exam_blueprints.standard_unit_key와 concept_map.js 단원키가 매칭 가능한지
+4. clinic-print.js에서 생성하는 wrongItem.unitKey와 concept_map.js 단원키가 매칭 가능한지
+5. 현재 wrongItem에 unitKey, unit, course, cluster가 들어가는 흐름
+6. 단원별 오답 UI에서 마스터 단원 목록을 생성할 최소 경로
+7. concept_map.js를 APMS 화면에서 직접 로드할지, 빌드된 별도 JSON/API adapter가 필요한지
+8. 마스터에 없는 unitKey를 “기타 / 단원 미분류”로 처리할 방법
+9. 단원 드래그 UI 구현 시 필요한 데이터 형태
+10. 회귀 위험 파일과 함수
+
+보고서 파일명:
+
+CODEX_LOOP0_WRONG_PRINT_UNIT_MASTER_VERIFY.md
+
+보고서에는 반드시 다음 결론을 포함해라.
+
+- 기존 마스터 단원 데이터를 재사용 가능한가
+- 재사용한다면 어떤 파일/필드를 기준으로 할 것인가
+- APMS DB에 새 standard_units 테이블이 필요한가, 아니면 이번 라운드에서는 불필요한가
+- 단원별 오답 드래그 UI 구현 전 필요한 최소 adapter는 무엇인가
+- 다음 Loop 1에서 바로 UI 개편으로 들어가도 되는가
+
+이번 라운드에서는 구현하지 말고, 검증 보고서만 제출해라.
 ```
