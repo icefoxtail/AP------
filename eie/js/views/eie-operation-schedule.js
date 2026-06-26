@@ -49,6 +49,15 @@
         if (typeof window.toast === 'function') window.toast(message, type || 'info');
     }
 
+    // CRUD 성공 후 현재 라우트(원장/선생님 대시보드)를 다시 그려 주간일정 카드를
+    // 최신화한다. READ_CACHE 무효화는 EieApi가 mutation 성공 시 처리한다.
+    function refreshDashboardCards() {
+        if (typeof window.refreshEieOperationDashboardCards === 'function') {
+            try { return window.refreshEieOperationDashboardCards(); } catch (err) { /* 갱신 실패가 흐름을 깨지 않게 */ }
+        }
+        return undefined;
+    }
+
     function openCompatModal(title, body) {
         if (typeof window.openModal === 'function') {
             window.openModal(title, body);
@@ -242,7 +251,9 @@
             + '<div onclick="openEieScheduleModal()" style="flex:1;cursor:pointer;">'
             + (rows.length ? rows.map(function (row) { return renderScheduleRow(row, false); }).join('') : '<div style="padding:12px 0;color:var(--eie-p-text-sub);font-size:13px;">표시할 일정이 없습니다.</div>')
             + '</div>'
-            + '<button type="button" class="eie-p-btn-new" onclick="openEieScheduleModal()" style="width:100%;margin-top:auto;">+ 일정 추가</button>'
+            + '<div class="eie-operation-card-footer">'
+            + '<button type="button" class="eie-p-btn-new eie-operation-add-btn" onclick="event.stopPropagation(); openEieScheduleModal()">+ 일정 추가</button>'
+            + '</div>'
             + '</section>');
     }
 
@@ -350,6 +361,7 @@
             }
             notify('일정을 추가했습니다.', 'success');
             await openEieScheduleModal();
+            refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '일정 추가에 실패했습니다.', 'error');
         }
@@ -429,6 +441,7 @@
             }
             notify('일정을 저장했습니다.', 'success');
             await openEieScheduleModal();
+            refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '일정 저장에 실패했습니다.', 'error');
         }
@@ -447,6 +460,7 @@
             }
             notify('일정을 삭제했습니다.', 'success');
             await openEieScheduleModal();
+            refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '일정 삭제에 실패했습니다.', 'error');
         }
