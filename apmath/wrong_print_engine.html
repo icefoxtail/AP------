@@ -1193,7 +1193,7 @@ function collectAnswerRows(payload) {
 
 function renderAnswerRows(area, rows, pageMeta = {}) {
     const data = rows || [];
-    const PER_PAGE = 48; // 4의 배수(열당 24=6세트)로 두 열의 세트 경계를 맞춘다
+    const PER_PAGE = 40; // 푸터와 겹치지 않도록 열당 20개(4문제 5세트)로 제한한다
     let pageNo = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
