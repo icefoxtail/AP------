@@ -4,6 +4,8 @@
     var _loaded = false;
     var _error = '';
     var _dayTab = '';
+    var _operationData = { operationMemos: [], examSchedules: [], academySchedules: [] };
+    var _operationError = '';
 
     var WEEKDAYS = [
         { key: 'mon', label: '월', full: '월요일', index: 1, en: 'mon', enFull: 'monday' },
@@ -88,11 +90,11 @@
         return rows.sort(function (a, b) { return a.localeCompare(b, 'ko'); });
     }
 
-    function rowsFromPayload(payload) {
-        if (Array.isArray(payload && payload.timetable_cells)) return payload.timetable_cells;
-        if (Array.isArray(payload && payload.cells)) return payload.cells;
-        if (Array.isArray(payload && payload.rows)) return payload.rows;
-        if (Array.isArray(payload && payload.data)) return payload.data;
+    function rowsFromPayload(payload, keys) {
+        var names = Array.isArray(keys) && keys.length ? keys : ['timetable_cells', 'cells', 'rows', 'data'];
+        for (var i = 0; i < names.length; i += 1) {
+            if (Array.isArray(payload && payload[names[i]])) return payload[names[i]];
+        }
         return [];
     }
 
@@ -274,6 +276,12 @@
 
     function todayIso() {
         return isoDate(0);
+    }
+
+    function addDays(iso, days) {
+        var date = new Date(String(iso || todayIso()) + 'T00:00:00');
+        date.setDate(date.getDate() + Number(days || 0));
+        return date.toLocaleDateString('sv-SE');
     }
 
     function isTodayCell(cell) {
@@ -566,6 +574,42 @@
         }
     }
 
+    async function loadOperationDashboardData() {
+        // 매 render마다 재조회한다. 중복/신선도는 EieApi READ_CACHE가 처리한다
+        // (60초 TTL dedup + 쓰기 성공 시 자동 무효화). 별도 loaded 가드를 두면
+        // 메모/일정 CRUD 후에도 카드가 갱신되지 않아 stale 상태가 된다.
+        _operationError = '';
+        if (!window.EieApi) return;
+
+        var today = todayIso();
+        var results = await Promise.allSettled([
+            EieApi.getOperationMemos ? EieApi.getOperationMemos() : Promise.resolve({ operation_memos: [] }),
+            EieApi.getExamSchedules ? EieApi.getExamSchedules() : Promise.resolve({ exam_schedules: [] }),
+            EieApi.getAcademySchedules ? EieApi.getAcademySchedules({ from: today, to: addDays(today, 7) }) : Promise.resolve({ academy_schedules: [] })
+        ]);
+
+        if (results[0].status === 'fulfilled') {
+            _operationData.operationMemos = rowsFromPayload(results[0].value, ['operation_memos', 'operationMemos', 'memos', 'rows', 'data']);
+        } else {
+            _operationData.operationMemos = [];
+            _operationError = results[0].reason && results[0].reason.message ? results[0].reason.message : '메모를 불러오지 못했습니다.';
+        }
+
+        if (results[1].status === 'fulfilled') {
+            _operationData.examSchedules = rowsFromPayload(results[1].value, ['exam_schedules', 'examSchedules', 'rows', 'data']);
+        } else if (!_operationError) {
+            _operationData.examSchedules = [];
+            _operationError = results[1].reason && results[1].reason.message ? results[1].reason.message : '시험 일정을 불러오지 못했습니다.';
+        }
+
+        if (results[2].status === 'fulfilled') {
+            _operationData.academySchedules = rowsFromPayload(results[2].value, ['academy_schedules', 'academySchedules', 'rows', 'data']);
+        } else if (!_operationError) {
+            _operationData.academySchedules = [];
+            _operationError = results[2].reason && results[2].reason.message ? results[2].reason.message : '학원 일정을 불러오지 못했습니다.';
+        }
+    }
+
     function ensureTeacherName(roster) {
         if (_teacherName) return;
         var stored = storedTeacherName();
@@ -672,19 +716,35 @@
             + '</div>';
     }
 
+    function renderOperationCards() {
+        var memoHtml = typeof window.renderEieMemoDashboardCard === 'function'
+            ? window.renderEieMemoDashboardCard(_operationData, { mode: 'teacher' })
+            : '<section class="eie-p-card"><h2 style="margin:0;font-size:16px;">메모</h2><div style="padding:12px 0;color:#777;font-size:13px;">메모 UI를 불러오지 못했습니다.</div></section>';
+        var scheduleHtml = typeof window.renderEieWeeklyScheduleDashboardCard === 'function'
+            ? window.renderEieWeeklyScheduleDashboardCard(_operationData, { mode: 'teacher' })
+            : '<section class="eie-p-card"><h2 style="margin:0;font-size:16px;">주간일정</h2><div style="padding:12px 0;color:#777;font-size:13px;">일정 UI를 불러오지 못했습니다.</div></section>';
+
+        return '<div class="eie-teacher-operation-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">'
+            + memoHtml
+            + scheduleHtml
+            + '</div>';
+    }
+
     async function render() {
-        await loadCells();
+        await Promise.all([loadCells(), loadOperationDashboardData()]);
         var roster = teacherRoster(_cells);
         ensureTeacherName(roster);
         ensureDayTab();
         var todayRows = sortCells(cellsForTeacherOnDay(_cells, _teacherName, todayIso()));
-        var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
+        var errors = [_error, _operationError].filter(Boolean);
+        var errorHtml = errors.length ? '<div class="eie-error-box">' + esc(errors.join(' / ')) + '</div>' : '';
 
         return '<section class="eie-teacher-dashboard eie-v2-screen" data-eie-teacher-key="' + esc(normalizeName(_teacherName)) + '" aria-labelledby="eie-teacher-title">'
             + '<h1 id="eie-teacher-title" class="eie-teacher-sr-title">' + esc(_teacherName || '선생님') + ' 선생님 대시보드</h1>'
             + '<div class="eie-teacher-dashboard-shell">'
             + errorHtml
             + renderHomeHead(todayRows)
+            + renderOperationCards()
             + renderWeekdaySchedule()
             + '</div>'
             + '</section>';

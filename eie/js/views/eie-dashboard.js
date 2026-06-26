@@ -96,6 +96,12 @@
             String(d.getDate()).padStart(2, '0');
     }
 
+    function addDays(iso, days) {
+        const date = new Date(String(iso || todayIso()) + 'T00:00:00');
+        date.setDate(date.getDate() + Number(days || 0));
+        return date.toLocaleDateString('sv-SE');
+    }
+
     function rawOf(row) {
         if (!row || typeof row !== 'object') return {};
         if (row.raw && typeof row.raw === 'object') return row.raw;
@@ -162,18 +168,25 @@
             teachers: [],
             attendanceRows: [],
             consultations: Array.isArray(currentState.db?.consultations) ? currentState.db.consultations : [],
+            operationMemos: [],
+            examSchedules: [],
+            academySchedules: [],
             errors: []
         };
 
         if (!window.EieApi) return data;
 
-        const [timetableResult, studentsResult, needsReviewResult, teachersResult, attendanceResult, consultationsResult] = await Promise.allSettled([
+        const today = todayIso();
+        const [timetableResult, studentsResult, needsReviewResult, teachersResult, attendanceResult, consultationsResult, memoResult, examScheduleResult, academyScheduleResult] = await Promise.allSettled([
             window.EieApi.getTimetable(null, { status: 'active,needs_review,hidden' }),
             window.EieApi.getStudents ? window.EieApi.getStudents() : window.EieApi.getStudentSeeds(),
             window.EieApi.getNeedsReview(),
             window.EieApi.getTeachers ? window.EieApi.getTeachers() : Promise.resolve({ teachers: [] }),
-            window.EieApi.getAttendanceRecords ? window.EieApi.getAttendanceRecords({ date: todayIso() }) : Promise.resolve({ attendance_records: [] }),
-            window.EieApi.getConsultations ? window.EieApi.getConsultations() : Promise.resolve({ consultations: data.consultations })
+            window.EieApi.getAttendanceRecords ? window.EieApi.getAttendanceRecords({ date: today }) : Promise.resolve({ attendance_records: [] }),
+            window.EieApi.getConsultations ? window.EieApi.getConsultations() : Promise.resolve({ consultations: data.consultations }),
+            window.EieApi.getOperationMemos ? window.EieApi.getOperationMemos() : Promise.resolve({ operation_memos: [] }),
+            window.EieApi.getExamSchedules ? window.EieApi.getExamSchedules() : Promise.resolve({ exam_schedules: [] }),
+            window.EieApi.getAcademySchedules ? window.EieApi.getAcademySchedules({ from: today, to: addDays(today, 7) }) : Promise.resolve({ academy_schedules: [] })
         ]);
 
         if (timetableResult.status === 'fulfilled') {
@@ -211,6 +224,24 @@
         if (consultationsResult.status === 'fulfilled') {
             data.consultations = rowsFromPayload(consultationsResult.value, ['consultations', 'rows']);
             if (window.EieState?.setConsultations) window.EieState.setConsultations(data.consultations);
+        }
+
+        if (memoResult.status === 'fulfilled') {
+            data.operationMemos = rowsFromPayload(memoResult.value, ['operation_memos', 'operationMemos', 'memos', 'rows']);
+        } else {
+            data.errors.push(memoResult.reason?.message || '메모를 불러오지 못했습니다.');
+        }
+
+        if (examScheduleResult.status === 'fulfilled') {
+            data.examSchedules = rowsFromPayload(examScheduleResult.value, ['exam_schedules', 'examSchedules', 'rows']);
+        } else {
+            data.errors.push(examScheduleResult.reason?.message || '시험 일정을 불러오지 못했습니다.');
+        }
+
+        if (academyScheduleResult.status === 'fulfilled') {
+            data.academySchedules = rowsFromPayload(academyScheduleResult.value, ['academy_schedules', 'academySchedules', 'rows']);
+        } else {
+            data.errors.push(academyScheduleResult.reason?.message || '학원 일정을 불러오지 못했습니다.');
         }
 
         return data;
@@ -738,101 +769,29 @@
         `;
     }
 
-    function renderWeeklySchedulePlaceholder() {
+    function renderOwnerWeeklySchedulePanel(data) {
+        if (typeof window.renderEieWeeklyScheduleDashboardCard === 'function') {
+            return window.renderEieWeeklyScheduleDashboardCard(data, { mode: 'owner' });
+        }
         return `
             <div class="ap-admin-section eie-admin-section">
                 <h3 class="ap-admin-section-title eie-admin-section-title" style="margin:0 0 12px 0; font-size:14px; font-weight:500; color:var(--secondary);">주간일정</h3>
-                <button class="card eie-admin-empty-card eie-owner-linked-card" type="button" data-eie-route="management">일정관리로 이동</button>
+                <div class="card eie-admin-empty-card eie-owner-linked-card">일정 UI를 불러오지 못했습니다.</div>
             </div>
         `;
     }
 
-    function ownerMemoKey(dateStr) {
-        return 'eie.owner.dashboard.memo.' + String(dateStr || todayIso()).slice(0, 10);
-    }
-
-    function readOwnerMemos(dateStr) {
-        try {
-            const raw = window.localStorage && window.localStorage.getItem(ownerMemoKey(dateStr));
-            const parsed = raw ? JSON.parse(raw) : [];
-            return Array.isArray(parsed) ? parsed : [];
-        } catch (error) {
-            return [];
+    function renderOwnerMemoPanel(data) {
+        if (typeof window.renderEieMemoDashboardCard === 'function') {
+            return window.renderEieMemoDashboardCard(data, { mode: 'owner' });
         }
-    }
-
-    function writeOwnerMemos(dateStr, rows) {
-        try {
-            if (window.localStorage) window.localStorage.setItem(ownerMemoKey(dateStr), JSON.stringify(Array.isArray(rows) ? rows : []));
-        } catch (error) {}
-    }
-
-    function renderOwnerMemoRows(dateStr) {
-        const rows = readOwnerMemos(dateStr);
-        if (!rows.length) {
-            return `<div class="eie-owner-memo-empty">오늘 메모가 없습니다. 아래에서 추가하세요.</div>`;
-        }
-        return rows.map(row => {
-            const id = String(row.id || '');
-            const done = !!row.done;
-            return `
-                <label class="eie-owner-memo-row${done ? ' is-done' : ''}" onclick="event.stopPropagation()">
-                    <input type="checkbox" ${done ? 'checked' : ''} onchange="toggleEieOwnerMemo(${jsArg(dateStr)}, ${jsArg(id)}, this.checked)">
-                    <span>${esc(row.text || '')}</span>
-                    <button type="button" aria-label="삭제" onclick="event.preventDefault(); event.stopPropagation(); removeEieOwnerMemo(${jsArg(dateStr)}, ${jsArg(id)})">×</button>
-                </label>
-            `;
-        }).join('');
-    }
-
-    function refreshOwnerMemoPanel(dateStr) {
-        const host = document.getElementById('eie-owner-memo-list');
-        if (host) host.innerHTML = renderOwnerMemoRows(dateStr);
-    }
-
-    function addEieOwnerMemo(dateStr) {
-        const input = document.getElementById('eie-owner-memo-input');
-        const text = String(input && input.value || '').trim();
-        if (!text) return;
-        const rows = readOwnerMemos(dateStr);
-        rows.push({ id: 'memo_' + Date.now().toString(36), text, done: false });
-        writeOwnerMemos(dateStr, rows);
-        if (input) input.value = '';
-        refreshOwnerMemoPanel(dateStr);
-    }
-
-    function toggleEieOwnerMemo(dateStr, id, done) {
-        const rows = readOwnerMemos(dateStr).map(row => String(row.id) === String(id) ? { ...row, done: !!done } : row);
-        writeOwnerMemos(dateStr, rows);
-        refreshOwnerMemoPanel(dateStr);
-    }
-
-    function removeEieOwnerMemo(dateStr, id) {
-        const rows = readOwnerMemos(dateStr).filter(row => String(row.id) !== String(id));
-        writeOwnerMemos(dateStr, rows);
-        refreshOwnerMemoPanel(dateStr);
-    }
-
-    function handleOwnerMemoInputKey(event, dateStr) {
-        if (event && event.key === 'Enter') {
-            event.preventDefault();
-            addEieOwnerMemo(dateStr);
-        }
-    }
-
-    function renderTodayMemoPanel(dateStr) {
         return `
             <div class="ap-admin-section eie-admin-section eie-owner-memo-section" style="margin-bottom:0;">
                 <div class="ap-owner-panel-head">
-                    <h3 class="ap-admin-section-title ap-owner-panel-title">오늘 일정 · 메모</h3>
-                    <span class="ap-owner-panel-meta">${esc(dateStr)}</span>
+                    <h3 class="ap-admin-section-title ap-owner-panel-title">메모</h3>
                 </div>
                 <div class="card eie-owner-memo-card">
-                    <div id="eie-owner-memo-list" class="eie-owner-memo-list">${renderOwnerMemoRows(dateStr)}</div>
-                    <div class="eie-owner-memo-add">
-                        <input id="eie-owner-memo-input" type="text" placeholder="메모 추가" autocomplete="off" onkeydown="handleOwnerMemoInputKey(event, ${jsArg(dateStr)})">
-                        <button type="button" onclick="addEieOwnerMemo(${jsArg(dateStr)})">추가</button>
-                    </div>
+                    <div class="eie-owner-memo-empty">메모 UI를 불러오지 못했습니다.</div>
                 </div>
             </div>
         `;
@@ -840,8 +799,6 @@
 
     async function render() {
         const data = await loadDashboardData();
-        const today = todayIso();
-
         return `
             <div class="owner-dashboard-shell ap-owner-redesign">
                 <section class="eie-admin-home" aria-label="EIE 원장 대시보드">
@@ -850,9 +807,9 @@
                     ${renderOverview(data)}
                     <div class="ap-owner-grid">
                         <div class="ap-owner-cell ap-owner-cell--8">${renderTeacherStatus(data)}</div>
-                        <div class="ap-owner-cell ap-owner-cell--4">${renderTodayMemoPanel(today)}</div>
+                        <div class="ap-owner-cell ap-owner-cell--4">${renderOwnerMemoPanel(data)}</div>
                         <div class="ap-owner-cell ap-owner-cell--8">${renderRecentConsultationPanel(data)}</div>
-                        <div class="ap-owner-cell ap-owner-cell--4">${renderWeeklySchedulePlaceholder()}</div>
+                        <div class="ap-owner-cell ap-owner-cell--4">${renderOwnerWeeklySchedulePanel(data)}</div>
                         <div class="ap-owner-cell ap-owner-cell--12">${renderRecentStudents(data)}</div>
                     </div>
                     ${renderBottomSearchPlaceholder()}
@@ -866,9 +823,5 @@
     window.openDashboardStudent = openDashboardStudent;
     window.openDashboardStudentStatusFilter = openStudentStatusFilter;
     window.openDashboardConsultationStudent = openDashboardConsultationStudent;
-    window.addEieOwnerMemo = addEieOwnerMemo;
-    window.toggleEieOwnerMemo = toggleEieOwnerMemo;
-    window.removeEieOwnerMemo = removeEieOwnerMemo;
-    window.handleOwnerMemoInputKey = handleOwnerMemoInputKey;
     window.EieDashboardView = { render, openStudentStatusFilter };
 })();

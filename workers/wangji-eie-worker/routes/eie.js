@@ -572,6 +572,468 @@ function requireEieOwner(teacher) {
   return jsonResponse({ success: false, error: 'EIE management is owner only' }, 403);
 }
 
+let operationScheduleTablesEnsured = false;
+async function ensureOperationScheduleTables(env) {
+  if (operationScheduleTablesEnsured) return;
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS eie_operation_memos (
+      id TEXT PRIMARY KEY,
+      owner_user_id TEXT NOT NULL,
+      owner_name TEXT,
+      owner_role TEXT,
+      memo_date TEXT NOT NULL,
+      content TEXT NOT NULL,
+      is_pinned INTEGER NOT NULL DEFAULT 0,
+      is_done INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )
+  `).run();
+  await env.DB.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_eie_operation_memos_owner_order
+      ON eie_operation_memos(owner_user_id, is_done, is_pinned, memo_date, created_at)
+  `).run();
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS eie_exam_schedules (
+      id TEXT PRIMARY KEY,
+      school_name TEXT,
+      grade TEXT,
+      exam_name TEXT NOT NULL,
+      exam_date TEXT NOT NULL,
+      memo TEXT,
+      created_by TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )
+  `).run();
+  await env.DB.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_eie_exam_schedules_date
+      ON eie_exam_schedules(exam_date)
+  `).run();
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS eie_academy_schedules (
+      id TEXT PRIMARY KEY,
+      schedule_type TEXT NOT NULL,
+      title TEXT NOT NULL,
+      schedule_date TEXT NOT NULL,
+      start_time TEXT,
+      end_time TEXT,
+      memo TEXT,
+      series_id TEXT,
+      series_kind TEXT DEFAULT 'single',
+      series_until TEXT,
+      is_closed INTEGER NOT NULL DEFAULT 0,
+      is_deleted INTEGER NOT NULL DEFAULT 0,
+      created_by TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )
+  `).run();
+  await env.DB.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_eie_academy_schedules_date
+      ON eie_academy_schedules(is_deleted, schedule_date)
+  `).run();
+  await env.DB.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_eie_academy_schedules_series
+      ON eie_academy_schedules(series_id, is_deleted)
+  `).run();
+  operationScheduleTablesEnsured = true;
+}
+
+function boolInt(value) {
+  return value === true || value === 1 || value === '1' ? 1 : 0;
+}
+
+function dateText(value) {
+  return safeText(value).slice(0, 10);
+}
+
+function normalizeScheduleDateRange(startDate, endDate) {
+  const startText = dateText(startDate);
+  const endText = dateText(endDate || startDate);
+  const start = new Date(`${startText}T00:00:00`);
+  const end = new Date(`${endText}T00:00:00`);
+  if (!startText || !endText || Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || start > end) return null;
+  const dates = [];
+  const cursor = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const endLocal = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  while (cursor <= endLocal) {
+    dates.push(cursor.toLocaleDateString('sv-SE'));
+    cursor.setDate(cursor.getDate() + 1);
+  }
+  return dates;
+}
+
+function normalizeExamSchedulePayload(body) {
+  const examName = safeText(body?.examName || body?.exam_name || body?.title);
+  const examDate = dateText(body?.examDate || body?.exam_date || body?.date);
+  if (!examName || !examDate) return { error: 'examName and examDate are required' };
+  return {
+    schoolName: safeText(body?.schoolName || body?.school_name),
+    grade: safeText(body?.grade),
+    examName,
+    examDate,
+    memo: safeText(body?.memo)
+  };
+}
+
+function normalizeAcademySchedulePayload(body, seriesDefaults = {}) {
+  const scheduleType = safeText(body?.scheduleType || body?.schedule_type || body?.kind || 'notice');
+  const title = safeText(body?.title) || (scheduleType === 'closed' ? '휴무' : '');
+  const scheduleDate = dateText(body?.scheduleDate || body?.schedule_date || body?.date);
+  const rawSeriesKind = safeText(seriesDefaults.seriesKind || body?.seriesKind || body?.series_kind || 'single');
+  const seriesKind = ['single', 'range', 'weekly'].includes(rawSeriesKind) ? rawSeriesKind : 'single';
+  const seriesId = safeText(seriesDefaults.seriesId || body?.seriesId || body?.series_id);
+  const seriesUntil = dateText(seriesDefaults.seriesUntil || body?.seriesUntil || body?.series_until || scheduleDate);
+  if (!scheduleType || !title || !scheduleDate) return { error: 'scheduleType, title and scheduleDate are required' };
+  return {
+    scheduleType,
+    title,
+    scheduleDate,
+    startTime: safeText(body?.startTime || body?.start_time),
+    endTime: safeText(body?.endTime || body?.end_time),
+    memo: safeText(body?.memo),
+    seriesId,
+    seriesKind,
+    seriesUntil,
+    isClosed: scheduleType === 'closed' ? 1 : boolInt(body?.isClosed || body?.is_closed)
+  };
+}
+
+async function handleGetOperationMemos(env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const result = await env.DB.prepare(`
+    SELECT id, owner_user_id, owner_name, owner_role, memo_date, content, is_pinned, is_done, created_at, updated_at
+    FROM eie_operation_memos
+    WHERE owner_user_id = ?
+    ORDER BY is_done ASC, is_pinned DESC, memo_date ASC, created_at DESC
+  `).bind(teacher.id).all();
+  const rows = result.results || [];
+  return jsonResponse({ success: true, data: rows, operation_memos: rows });
+}
+
+async function handlePostOperationMemo(request, env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const content = safeText(body.content || body.text || body.memo);
+  const memoDate = dateText(body.memoDate || body.memo_date || body.date) || new Date().toLocaleDateString('sv-SE');
+  if (!content) return jsonResponse({ success: false, error: 'content is required' }, 400);
+  const id = makeId('eie_memo');
+  await env.DB.prepare(`
+    INSERT INTO eie_operation_memos
+      (id, owner_user_id, owner_name, owner_role, memo_date, content, is_pinned, is_done, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    teacher.id,
+    safeText(teacher.name),
+    safeText(teacher.role),
+    memoDate,
+    content,
+    boolInt(body.isPinned ?? body.is_pinned)
+  ).run();
+  const row = await env.DB.prepare('SELECT * FROM eie_operation_memos WHERE id = ?').bind(id).first();
+  return jsonResponse({ success: true, id, data: row, memo: row });
+}
+
+async function getOwnedOperationMemo(env, memoId, teacher) {
+  await ensureOperationScheduleTables(env);
+  const row = await env.DB.prepare('SELECT * FROM eie_operation_memos WHERE id = ? LIMIT 1').bind(memoId).first();
+  if (!row) return { response: jsonResponse({ success: false, error: 'memo not found' }, 404) };
+  if (String(row.owner_user_id || '') !== String(teacher.id || '')) {
+    return { response: jsonResponse({ success: false, error: 'forbidden' }, 403) };
+  }
+  return { row };
+}
+
+async function handlePatchOperationMemo(request, env, teacher, memoId) {
+  const owned = await getOwnedOperationMemo(env, memoId, teacher);
+  if (owned.response) return owned.response;
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const next = {
+    memoDate: body.memoDate !== undefined || body.memo_date !== undefined || body.date !== undefined
+      ? dateText(body.memoDate || body.memo_date || body.date)
+      : owned.row.memo_date,
+    content: body.content !== undefined || body.text !== undefined || body.memo !== undefined
+      ? safeText(body.content || body.text || body.memo)
+      : owned.row.content,
+    isPinned: body.isPinned !== undefined || body.is_pinned !== undefined
+      ? boolInt(body.isPinned ?? body.is_pinned)
+      : boolInt(owned.row.is_pinned),
+    isDone: body.isDone !== undefined || body.is_done !== undefined
+      ? boolInt(body.isDone ?? body.is_done)
+      : boolInt(owned.row.is_done)
+  };
+  if (!next.memoDate || !next.content) return jsonResponse({ success: false, error: 'memo_date and content are required' }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_operation_memos
+    SET memo_date = ?, content = ?, is_pinned = ?, is_done = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ? AND owner_user_id = ?
+  `).bind(next.memoDate, next.content, next.isPinned, next.isDone, memoId, teacher.id).run();
+  const row = await env.DB.prepare('SELECT * FROM eie_operation_memos WHERE id = ?').bind(memoId).first();
+  return jsonResponse({ success: true, data: row, memo: row });
+}
+
+async function handleDeleteOperationMemo(env, teacher, memoId) {
+  const owned = await getOwnedOperationMemo(env, memoId, teacher);
+  if (owned.response) return owned.response;
+  await env.DB.prepare('DELETE FROM eie_operation_memos WHERE id = ? AND owner_user_id = ?').bind(memoId, teacher.id).run();
+  return jsonResponse({ success: true });
+}
+
+async function handleGetExamSchedules(env) {
+  await ensureOperationScheduleTables(env);
+  const result = await env.DB.prepare(`
+    SELECT id, school_name, grade, exam_name, exam_date, memo, created_by, created_at, updated_at
+    FROM eie_exam_schedules
+    ORDER BY exam_date ASC, created_at ASC
+  `).all();
+  const rows = result.results || [];
+  return jsonResponse({ success: true, data: rows, exam_schedules: rows });
+}
+
+async function insertExamSchedule(env, payload, teacher, id = makeId('eie_exs')) {
+  await env.DB.prepare(`
+    INSERT INTO eie_exam_schedules
+      (id, school_name, grade, exam_name, exam_date, memo, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(id, payload.schoolName, payload.grade, payload.examName, payload.examDate, payload.memo, teacher.id).run();
+  return id;
+}
+
+async function handlePostExamSchedule(request, env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const payload = normalizeExamSchedulePayload(body);
+  if (payload.error) return jsonResponse({ success: false, error: payload.error }, 400);
+  const id = await insertExamSchedule(env, payload, teacher);
+  const row = await env.DB.prepare('SELECT * FROM eie_exam_schedules WHERE id = ?').bind(id).first();
+  return jsonResponse({ success: true, id, data: row, exam_schedule: row });
+}
+
+async function handlePostExamScheduleGroup(request, env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const examName = safeText(body.examName || body.exam_name || body.title);
+  const dates = normalizeScheduleDateRange(body.startDate || body.start_date || body.examDate || body.exam_date, body.endDate || body.end_date);
+  if (!examName || !dates || !dates.length) return jsonResponse({ success: false, error: 'examName and date range are required' }, 400);
+  const ids = [];
+  for (const examDate of dates) {
+    ids.push(await insertExamSchedule(env, {
+      schoolName: safeText(body.schoolName || body.school_name),
+      grade: safeText(body.grade),
+      examName,
+      examDate,
+      memo: safeText(body.memo)
+    }, teacher, makeId('eie_exs')));
+  }
+  return jsonResponse({ success: true, ids, count: ids.length });
+}
+
+async function handlePatchExamSchedule(request, env, scheduleId) {
+  await ensureOperationScheduleTables(env);
+  const existing = await env.DB.prepare('SELECT id FROM eie_exam_schedules WHERE id = ? LIMIT 1').bind(scheduleId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'exam schedule not found' }, 404);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const payload = normalizeExamSchedulePayload(body);
+  if (payload.error) return jsonResponse({ success: false, error: payload.error }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_exam_schedules
+    SET school_name = ?, grade = ?, exam_name = ?, exam_date = ?, memo = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `).bind(payload.schoolName, payload.grade, payload.examName, payload.examDate, payload.memo, scheduleId).run();
+  const row = await env.DB.prepare('SELECT * FROM eie_exam_schedules WHERE id = ?').bind(scheduleId).first();
+  return jsonResponse({ success: true, data: row, exam_schedule: row });
+}
+
+async function handlePatchExamScheduleGroup(request, env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const occurrenceIds = Array.isArray(body.occurrenceIds || body.occurrence_ids)
+    ? (body.occurrenceIds || body.occurrence_ids).map(value => safeText(value)).filter(Boolean)
+    : [];
+  if (occurrenceIds.length < 1) return jsonResponse({ success: false, error: 'occurrenceIds are required' }, 400);
+  const examName = safeText(body.examName || body.exam_name || body.title);
+  const dates = normalizeScheduleDateRange(body.startDate || body.start_date || body.examDate || body.exam_date, body.endDate || body.end_date);
+  if (!examName || !dates || !dates.length) return jsonResponse({ success: false, error: 'examName and date range are required' }, 400);
+  const markers = occurrenceIds.map(() => '?').join(',');
+  await env.DB.prepare(`DELETE FROM eie_exam_schedules WHERE id IN (${markers})`).bind(...occurrenceIds).run();
+  const ids = [];
+  for (const examDate of dates) {
+    ids.push(await insertExamSchedule(env, {
+      schoolName: safeText(body.schoolName || body.school_name),
+      grade: safeText(body.grade),
+      examName,
+      examDate,
+      memo: safeText(body.memo)
+    }, teacher, makeId('eie_exs')));
+  }
+  return jsonResponse({ success: true, ids, count: ids.length });
+}
+
+async function handleDeleteExamSchedule(env, scheduleId) {
+  await ensureOperationScheduleTables(env);
+  const result = await env.DB.prepare('DELETE FROM eie_exam_schedules WHERE id = ?').bind(scheduleId).run();
+  if ((result.meta?.changes || 0) === 0) return jsonResponse({ success: false, error: 'exam schedule not found' }, 404);
+  return jsonResponse({ success: true });
+}
+
+async function handleDeleteExamScheduleGroup(request, env) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const occurrenceIds = Array.isArray(body.occurrenceIds || body.occurrence_ids)
+    ? (body.occurrenceIds || body.occurrence_ids).map(value => safeText(value)).filter(Boolean)
+    : [];
+  if (!occurrenceIds.length) return jsonResponse({ success: false, error: 'occurrenceIds are required' }, 400);
+  const markers = occurrenceIds.map(() => '?').join(',');
+  const result = await env.DB.prepare(`DELETE FROM eie_exam_schedules WHERE id IN (${markers})`).bind(...occurrenceIds).run();
+  return jsonResponse({ success: true, deletedCount: result.meta?.changes || 0 });
+}
+
+async function handleGetAcademySchedules(env, url) {
+  await ensureOperationScheduleTables(env);
+  const from = dateText(url.searchParams.get('from'));
+  const to = dateText(url.searchParams.get('to'));
+  const params = [];
+  let dateClause = '';
+  if (from) { dateClause += ' AND schedule_date >= ?'; params.push(from); }
+  if (to) { dateClause += ' AND schedule_date <= ?'; params.push(to); }
+  const result = params.length
+    ? await env.DB.prepare(`SELECT *, 'global' AS target_scope FROM eie_academy_schedules WHERE is_deleted = 0${dateClause} ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(...params).all()
+    : await env.DB.prepare(`SELECT *, 'global' AS target_scope FROM eie_academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).all();
+  const rows = result.results || [];
+  return jsonResponse({ success: true, data: rows, academy_schedules: rows });
+}
+
+async function insertAcademySchedule(env, payload, teacher, id = makeId('eie_acs')) {
+  const seriesId = payload.seriesId || id;
+  await env.DB.prepare(`
+    INSERT INTO eie_academy_schedules
+      (id, schedule_type, title, schedule_date, start_time, end_time, memo, series_id, series_kind, series_until, is_closed, is_deleted, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    payload.scheduleType,
+    payload.title,
+    payload.scheduleDate,
+    payload.startTime,
+    payload.endTime,
+    payload.memo,
+    seriesId,
+    payload.seriesKind,
+    payload.seriesUntil,
+    payload.isClosed,
+    teacher.id
+  ).run();
+  return { id, seriesId };
+}
+
+async function handlePostAcademySchedule(request, env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const payload = normalizeAcademySchedulePayload(body);
+  if (payload.error) return jsonResponse({ success: false, error: payload.error }, 400);
+  const ids = await insertAcademySchedule(env, payload, teacher);
+  const row = await env.DB.prepare('SELECT *, \'global\' AS target_scope FROM eie_academy_schedules WHERE id = ?').bind(ids.id).first();
+  return jsonResponse({ success: true, ...ids, data: row, academy_schedule: row });
+}
+
+async function handlePostAcademyScheduleBatch(request, env, teacher) {
+  await ensureOperationScheduleTables(env);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const items = Array.isArray(body.items) ? body.items : [];
+  if (!items.length || items.length > 400) return jsonResponse({ success: false, error: 'items must contain 1-400 schedules' }, 400);
+  const seriesId = safeText(body.seriesId || body.series_id) || makeId('eie_srs');
+  const seriesKind = safeText(body.seriesKind || body.series_kind || 'range');
+  const seriesUntil = dateText(body.seriesUntil || body.series_until);
+  const normalized = items.map(item => normalizeAcademySchedulePayload(item, { seriesId, seriesKind, seriesUntil }));
+  const invalid = normalized.find(item => item.error);
+  if (invalid) return jsonResponse({ success: false, error: invalid.error }, 400);
+  const ids = [];
+  for (const item of normalized) {
+    ids.push((await insertAcademySchedule(env, item, teacher)).id);
+  }
+  return jsonResponse({ success: true, ids, seriesId });
+}
+
+async function handlePatchAcademySchedule(request, env, scheduleId) {
+  await ensureOperationScheduleTables(env);
+  const existing = await env.DB.prepare('SELECT id FROM eie_academy_schedules WHERE id = ? AND is_deleted = 0 LIMIT 1').bind(scheduleId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'academy schedule not found' }, 404);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const payload = normalizeAcademySchedulePayload(body);
+  if (payload.error) return jsonResponse({ success: false, error: payload.error }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_academy_schedules
+    SET schedule_type = ?, title = ?, schedule_date = ?, start_time = ?, end_time = ?, memo = ?,
+        series_id = ?, series_kind = ?, series_until = ?, is_closed = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ? AND is_deleted = 0
+  `).bind(
+    payload.scheduleType,
+    payload.title,
+    payload.scheduleDate,
+    payload.startTime,
+    payload.endTime,
+    payload.memo,
+    payload.seriesId || scheduleId,
+    payload.seriesKind,
+    payload.seriesUntil,
+    payload.isClosed,
+    scheduleId
+  ).run();
+  const row = await env.DB.prepare('SELECT *, \'global\' AS target_scope FROM eie_academy_schedules WHERE id = ?').bind(scheduleId).first();
+  return jsonResponse({ success: true, data: row, academy_schedule: row });
+}
+
+async function handlePatchAcademyScheduleSeries(request, env, seriesId) {
+  await ensureOperationScheduleTables(env);
+  const existing = await env.DB.prepare('SELECT id FROM eie_academy_schedules WHERE series_id = ? AND is_deleted = 0 LIMIT 1').bind(seriesId).first();
+  if (!existing) return jsonResponse({ success: false, error: 'academy schedule series not found' }, 404);
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const payload = normalizeAcademySchedulePayload({ ...body, scheduleDate: body.scheduleDate || body.schedule_date || new Date().toLocaleDateString('sv-SE') }, { seriesId });
+  if (payload.error) return jsonResponse({ success: false, error: payload.error }, 400);
+  await env.DB.prepare(`
+    UPDATE eie_academy_schedules
+    SET schedule_type = ?, title = ?, start_time = ?, end_time = ?, memo = ?,
+        series_kind = ?, series_until = ?, is_closed = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE series_id = ? AND is_deleted = 0
+  `).bind(payload.scheduleType, payload.title, payload.startTime, payload.endTime, payload.memo, payload.seriesKind, payload.seriesUntil, payload.isClosed, seriesId).run();
+  return jsonResponse({ success: true, seriesId });
+}
+
+async function handleDeleteAcademySchedule(env, scheduleId) {
+  await ensureOperationScheduleTables(env);
+  const result = await env.DB.prepare(`
+    UPDATE eie_academy_schedules
+    SET is_deleted = 1, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ? AND is_deleted = 0
+  `).bind(scheduleId).run();
+  if ((result.meta?.changes || 0) === 0) return jsonResponse({ success: false, error: 'academy schedule not found' }, 404);
+  return jsonResponse({ success: true });
+}
+
+async function handleDeleteAcademyScheduleSeries(env, seriesId) {
+  await ensureOperationScheduleTables(env);
+  const result = await env.DB.prepare(`
+    UPDATE eie_academy_schedules
+    SET is_deleted = 1, updated_at = CURRENT_TIMESTAMP
+    WHERE series_id = ? AND is_deleted = 0
+  `).bind(seriesId).run();
+  if ((result.meta?.changes || 0) === 0) return jsonResponse({ success: false, error: 'academy schedule series not found' }, 404);
+  return jsonResponse({ success: true, seriesId });
+}
+
 function round6MigrationRequiredResponse() {
   return jsonResponse({
     success: false,
@@ -3495,8 +3957,81 @@ export async function handleEie(request, env, teacher, path, url) {
     return handleGetEieGradeSheets(env, url);
   }
 
+  if (method === 'GET' && path[2] === 'operation-memos' && !path[3]) {
+    return handleGetOperationMemos(env, teacher);
+  }
+
+  if (method === 'GET' && path[2] === 'exam-schedules' && !path[3]) {
+    return handleGetExamSchedules(env);
+  }
+
+  if (method === 'GET' && path[2] === 'academy-schedules' && !path[3]) {
+    return handleGetAcademySchedules(env, url);
+  }
+
   if (method === 'GET') {
     return handleGet(request, env, path, url);
+  }
+
+  if (method === 'POST' && path[2] === 'operation-memos' && !path[3]) {
+    return handlePostOperationMemo(request, env, teacher);
+  }
+
+  if (method === 'PATCH' && path[2] === 'operation-memos' && path[3] && !path[4]) {
+    return handlePatchOperationMemo(request, env, teacher, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'operation-memos' && path[3] && !path[4]) {
+    return handleDeleteOperationMemo(env, teacher, path[3]);
+  }
+
+  // 주간일정(시험/학원)은 공용 데이터: 인증된 모든 선생님이 등록/수정/삭제 가능
+  if (method === 'POST' && path[2] === 'exam-schedules' && path[3] === 'group' && !path[4]) {
+    return handlePostExamScheduleGroup(request, env, teacher);
+  }
+
+  if (method === 'PATCH' && path[2] === 'exam-schedules' && path[3] === 'group' && !path[4]) {
+    return handlePatchExamScheduleGroup(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'exam-schedules' && path[3] === 'group-delete' && !path[4]) {
+    return handleDeleteExamScheduleGroup(request, env);
+  }
+
+  if (method === 'POST' && path[2] === 'exam-schedules' && !path[3]) {
+    return handlePostExamSchedule(request, env, teacher);
+  }
+
+  if (method === 'PATCH' && path[2] === 'exam-schedules' && path[3] && !path[4]) {
+    return handlePatchExamSchedule(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'exam-schedules' && path[3] && !path[4]) {
+    return handleDeleteExamSchedule(env, path[3]);
+  }
+
+  if (method === 'POST' && path[2] === 'academy-schedules' && path[3] === 'batch' && !path[4]) {
+    return handlePostAcademyScheduleBatch(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'academy-schedules' && !path[3]) {
+    return handlePostAcademySchedule(request, env, teacher);
+  }
+
+  if (method === 'PATCH' && path[2] === 'academy-schedules' && path[3] === 'series' && path[4] && !path[5]) {
+    return handlePatchAcademyScheduleSeries(request, env, decodeURIComponent(path[4]));
+  }
+
+  if (method === 'PATCH' && path[2] === 'academy-schedules' && path[3] && !path[4]) {
+    return handlePatchAcademySchedule(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'academy-schedules' && path[3] === 'series' && path[4] && !path[5]) {
+    return handleDeleteAcademyScheduleSeries(env, decodeURIComponent(path[4]));
+  }
+
+  if (method === 'DELETE' && path[2] === 'academy-schedules' && path[3] && !path[4]) {
+    return handleDeleteAcademySchedule(env, path[3]);
   }
 
   if (method === 'POST' && path[2] === 'import' && !path[3]) {

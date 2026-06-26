@@ -337,6 +337,81 @@
         getScheduleAssignments() {
             return get('schedule-assignments', 'student-seeds');
         },
+
+        getOperationMemos() {
+            return get('operation-memos', 'student-seeds');
+        },
+        async createOperationMemo(payload) {
+            return request('operation-memos', { method: 'POST', body: payload || {} });
+        },
+        async updateOperationMemo(id, payload) {
+            return request(`operation-memos/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async deleteOperationMemo(id) {
+            return request(`operation-memos/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        },
+
+        getExamSchedules() {
+            return get('exam-schedules', 'student-seeds');
+        },
+        async createExamSchedule(payload) {
+            return request('exam-schedules', { method: 'POST', body: payload || {} });
+        },
+        async createExamScheduleGroup(payload) {
+            return request('exam-schedules/group', { method: 'POST', body: payload || {} });
+        },
+        async updateExamSchedule(id, payload) {
+            return request(`exam-schedules/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async updateExamScheduleGroup(payload) {
+            return request('exam-schedules/group', { method: 'PATCH', body: payload || {} });
+        },
+        async deleteExamSchedule(id) {
+            return request(`exam-schedules/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        },
+        async deleteExamScheduleGroup(occurrenceIds) {
+            return request('exam-schedules/group-delete', {
+                method: 'POST',
+                body: { occurrenceIds: Array.isArray(occurrenceIds) ? occurrenceIds : [] }
+            });
+        },
+
+        getAcademySchedules(filters) {
+            const params = new URLSearchParams();
+            if (filters?.from) params.set('from', filters.from);
+            if (filters?.to) params.set('to', filters.to);
+            return get(`academy-schedules${params.toString() ? `?${params}` : ''}`, 'student-seeds');
+        },
+        async createAcademySchedule(payload) {
+            return request('academy-schedules', { method: 'POST', body: payload || {} });
+        },
+        async createAcademyScheduleBatch(payload) {
+            return request('academy-schedules/batch', { method: 'POST', body: payload || {} });
+        },
+        async updateAcademySchedule(id, payload) {
+            return request(`academy-schedules/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async updateAcademyScheduleSeries(seriesId, payload) {
+            return request(`academy-schedules/series/${encodeURIComponent(seriesId)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async deleteAcademySchedule(id) {
+            return request(`academy-schedules/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        },
+        async deleteAcademyScheduleSeries(seriesId) {
+            return request(`academy-schedules/series/${encodeURIComponent(seriesId)}`, { method: 'DELETE' });
+        },
         async createConsultation(payload) {
             return request('consultations', { method: 'POST', body: payload || {} });
         },
