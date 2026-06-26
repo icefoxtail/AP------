@@ -641,4 +641,48 @@
     cursor: default;
 }
 
+/* ════════════════════════════════════════════════════════════════
+   EIE 운영 카드(메모 · 주간일정) — 원장/선생님 대시보드 공용
+   행 hover/focus 피드백 + 하단 액션 버튼 정렬(100% 폭 띠 방지)
+   ════════════════════════════════════════════════════════════════ */
+.eie-v2-screen .eie-operation-memo-row,
+.eie-v2-screen .eie-operation-schedule-row {
+    transition: background 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+    border-radius: 9px;
+}
+.eie-v2-screen .eie-operation-memo-row:hover,
+.eie-v2-screen .eie-operation-schedule-row:hover,
+.eie-v2-screen .eie-operation-memo-row:focus-within,
+.eie-v2-screen .eie-operation-schedule-row:focus-visible {
+    background: rgba(127,119,221,0.06);
+}
+.eie-v2-screen .eie-operation-memo-row:active,
+.eie-v2-screen .eie-operation-schedule-row:active {
+    transform: translateY(1px);
+}
+
+/* 하단 액션 버튼은 카드 우측 하단에 작게 정렬 */
+.eie-v2-screen .eie-operation-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 6px;
+    margin-top: auto;
+}
+.eie-v2-screen .eie-operation-add-btn {
+    width: auto;
+    min-height: 32px;
+    padding: 6px 14px;
+}
+
+/* 모바일(620px 이하): 행 겹침 방지 + 버튼 가독성 보정 */
+@media (max-width: 620px) {
+    .eie-v2-screen .eie-operation-memo-row,
+    .eie-v2-screen .eie-operation-schedule-row {
+        gap: 6px;
+    }
+    .eie-v2-screen .eie-operation-add-btn {
+        width: 100%;
+    }
+}
+
 

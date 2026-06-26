@@ -90,6 +90,15 @@
         if (typeof window.toast === 'function') window.toast(message, type || 'info');
     }
 
+    // CRUD 성공 후 현재 라우트(원장/선생님 대시보드)를 다시 그려 메모 카드를
+    // 최신화한다. READ_CACHE 무효화는 EieApi가 mutation 성공 시 처리한다.
+    function refreshDashboardCards() {
+        if (typeof window.refreshEieOperationDashboardCards === 'function') {
+            try { return window.refreshEieOperationDashboardCards(); } catch (err) { /* 갱신 실패가 흐름을 깨지 않게 */ }
+        }
+        return undefined;
+    }
+
     function openCompatModal(title, body) {
         if (typeof window.openModal === 'function') {
             window.openModal(title, body);
@@ -133,7 +142,9 @@
             + '<div onclick="openEieTodoMemoModal()" style="flex:1;cursor:pointer;">'
             + (rows.length ? rows.map(function (row) { return renderMemoRow(row, true); }).join('') : renderEmpty())
             + '</div>'
-            + '<button type="button" class="eie-p-btn-new" onclick="openEieTodoMemoModal()" style="width:100%;margin-top:auto;">+ 메모 추가</button>'
+            + '<div class="eie-operation-card-footer">'
+            + '<button type="button" class="eie-p-btn-new eie-operation-add-btn" onclick="event.stopPropagation(); openEieTodoMemoModal()">+ 메모 추가</button>'
+            + '</div>'
             + '</section>');
     }
 
@@ -188,6 +199,7 @@
             });
             notify('메모를 추가했습니다.', 'success');
             await openEieTodoMemoModal();
+            refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '메모 추가에 실패했습니다.', 'error');
         }
@@ -198,8 +210,11 @@
         try {
             await EieApi.updateOperationMemo(id, { isDone: !!done });
             notify(done ? '메모를 완료했습니다.' : '메모 완료를 해제했습니다.', 'success');
+            // 모달이 열려 있으면 모달 목록도 갱신하되, 대시보드 카드는 모달 여부와
+            // 무관하게 항상 다시 그린다(카드에서 직접 체크한 경우 즉시 사라지도록).
             var overlay = document.getElementById('eie-compat-modal-overlay');
             if (overlay && overlay.style.display !== 'none') await openEieTodoMemoModal();
+            refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '메모 상태 변경에 실패했습니다.', 'error');
         }
@@ -212,6 +227,7 @@
                 await EieApi.deleteOperationMemo(id);
                 notify('메모를 삭제했습니다.', 'success');
                 await openEieTodoMemoModal();
+                refreshDashboardCards();
             } catch (err) {
                 notify(err && err.message ? err.message : '메모 삭제에 실패했습니다.', 'error');
             }
@@ -259,6 +275,7 @@
             });
             notify('메모를 저장했습니다.', 'success');
             await openEieTodoMemoModal();
+            refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '메모 저장에 실패했습니다.', 'error');
         }
