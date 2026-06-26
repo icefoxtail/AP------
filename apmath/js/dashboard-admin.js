@@ -1886,7 +1886,7 @@ function renderAdminControlCenter() {
             <div class="ap-owner-cell ap-owner-cell--8">${teacherCardsHtml}</div>
             <div class="ap-owner-cell ap-owner-cell--4">${todayMemoHtml}</div>
             <div class="ap-owner-cell ap-owner-cell--8">${recentConsultationHtml}</div>
-            <div class="ap-owner-cell ap-owner-cell--12 ap-owner-weekly-parity-cell">${adminScheduleHtml}</div>
+            <div class="ap-owner-cell ap-owner-cell--4 ap-owner-weekly-parity-cell">${adminScheduleHtml}</div>
             <div class="ap-owner-cell ap-owner-cell--12">${recentStudentsHtml}</div>
         </div>
     </div>`;
