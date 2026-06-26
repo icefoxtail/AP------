@@ -519,10 +519,36 @@ function renderDashboardAssistantMemoBlock(todayStr, todayClasses) {
     return renderDashboardAssistantMemos(todayStr, memos);
 }
 
+// 일지 플레인 텍스트를 폰트 위계가 있는 읽기 전용 HTML로 렌더한다.
+// (편집은 textarea 플레인 텍스트가 원본 — 여기서 위계를 바꾸지 않는다)
+// 위계: Lv0 제목 → Lv1 ■ 섹션 → Lv2 필드/학년/상담대상 → Lv3 본문
+function formatJournalHtml(text) {
+    const lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
+    const html = lines.map(raw => {
+        const trimmed = raw.trim();
+        if (!trimmed) return '<div class="jr-line jr-blank"></div>';
+        if (/^\[.*\]$/.test(trimmed) || /^작성자\s*:/.test(trimmed)) {
+            return `<div class="jr-line jr-title">${apEscapeHtml(trimmed)}</div>`;
+        }
+        // Lv1 섹션: 통일된 ■ 헤더(반/보강/상담). 구버전 마커 없는 보강/상담도 호환.
+        // (반 헤더는 구버전에도 ■가 있었으므로 별도 휴리스틱 불필요)
+        if (/^■\s/.test(trimmed) || /^(보강|상담)$/.test(trimmed)) {
+            return `<div class="jr-line jr-section">${apEscapeHtml(trimmed.replace(/^■\s*/, ''))}</div>`;
+        }
+        // Lv2 필드/학년줄/상담 대상
+        if (/^- /.test(trimmed) || /^(중[123]|고[123])\s/.test(trimmed) || /^\*\s/.test(trimmed)) {
+            return `<div class="jr-line jr-field">${apEscapeHtml(trimmed)}</div>`;
+        }
+        // Lv3 본문(진도 상세/상담 내용 등) — 들여쓰기 보존
+        return `<div class="jr-line jr-body">${apEscapeHtml(raw.replace(/\s+$/, ''))}</div>`;
+    }).join('');
+    return `<div class="journal-render">${html}</div>`;
+}
+
 function renderJournalDraftPreview(dateStr) {
     return `
         <div class="journal-draft journal-draft--simple">
-            <pre class="journal-draft__plain">${apEscapeHtml(buildJournalContent(dateStr))}</pre>
+            ${formatJournalHtml(buildJournalContent(dateStr))}
         </div>
     `;
 }
@@ -2244,14 +2270,6 @@ function dashboardGetConsultationBody(cn) {
     ).trim();
 }
 
-function dashboardGetJournalConsultationsForClass(targetDate, memberIds) {
-    const memberSet = new Set((memberIds || []).map(id => String(id)));
-    return (state.db.consultations || []).filter(cn => {
-        if (dashboardGetConsultationDate(cn) !== targetDate) return false;
-        return memberSet.has(String(cn?.student_id || ''));
-    });
-}
-
 function dashboardFormatJournalConsultationEntry(cn, students) {
     const sName = (students || []).find(s => String(s.id) === String(cn?.student_id))?.name || cn?.student_name_snapshot || cn?.student_name || '학생';
     const body = dashboardGetConsultationBody(cn);
@@ -2274,51 +2292,150 @@ function dashboardJournalAlreadyHasConsultation(content, cn, students) {
         // 상담 내용이 없는 경우: buildJournalContent가 생성하는 "  * 학생이름" 패턴으로 확인
         return Boolean(sName && source.includes(`  * ${sName}`));
     }
-    const normalizedBody = body.replace(/\r\n/g, '\n').trim();
-    if (normalizedBody && source.replace(/\r\n/g, '\n').includes(normalizedBody)) return true;
+    // 일지 본문은 각 줄을 들여쓰기(4칸)해 저장하므로, 줄별 공백을 제거해 비교한다.
+    const stripIndent = (t) => String(t).replace(/\r\n/g, '\n').split('\n').map(l => l.trim()).join('\n').trim();
+    const normalizedBody = stripIndent(body);
+    const normalizedSource = stripIndent(source);
+    if (normalizedBody && normalizedSource.includes(normalizedBody)) return true;
     const firstLine = normalizedBody.split('\n').find(Boolean);
-    if (firstLine && firstLine.length >= 12 && source.includes(firstLine)) return true;
-    return Boolean(sName && source.includes(sName) && source.includes(body.slice(0, Math.min(30, body.length))));
+    if (firstLine && firstLine.length >= 8 && normalizedSource.includes(firstLine)) return true;
+    return Boolean(sName && normalizedSource.includes(sName) && normalizedSource.includes(normalizedBody.slice(0, Math.min(30, normalizedBody.length))));
 }
 
-function dashboardInsertJournalConsultationsIntoClassSection(content, className, entries) {
-    if (!entries.length) return content;
-    const source = String(content || '');
-    const header = `■ ${className}반`;
-    const start = source.indexOf(header);
-    const entryText = entries.join('');
+// 반별 일지 하단에 별도로 붙는 보강/상담 섹션 공통 유틸 ─────────────────
+// 보강은 정규 수업일이 아닌 날 진행되는 경우가 많아, 반별 일지(정규 수업반)만
+// 보면 누락된다. 그래서 그 날짜의 출결 전체를 스캔해 학년별로 따로 집계한다.
+const DASHBOARD_JOURNAL_MAKEUP_LABELS = {
+    'makeup:progress': '진도',
+    'makeup:homework': '숙제',
+    'makeup:absence': '결석',
+    'makeup:exam': '시험',
+    'makeup:other': '기타',
+};
+const DASHBOARD_MIDDLE_GRADE_ORDER = ['중1', '중2', '중3'];
 
-    if (start < 0) {
-        return `${source.trimEnd()}\n\n■ ${className}반\n- 상담:\n${entryText}`;
+function dashboardNormalizeGradeLabel(value) {
+    const text = String(value || '').trim();
+    if (/중\s*1|예비\s*중\s*1/.test(text)) return '중1';
+    if (/중\s*2|예비\s*중\s*2/.test(text)) return '중2';
+    if (/중\s*3|예비\s*중\s*3/.test(text)) return '중3';
+    if (/고\s*1|예비\s*고\s*1/.test(text)) return '고1';
+    if (/고\s*2|예비\s*고\s*2/.test(text)) return '고2';
+    if (/고\s*3|예비\s*고\s*3/.test(text)) return '고3';
+    return text;
+}
+
+function dashboardIsHighSchoolGradeLabel(grade) {
+    return /^고/.test(String(grade || ''));
+}
+
+// 학생의 학년 라벨(중1~고3)을 소속 반 기준으로 구한다. 반에서 못 찾으면 학생 레코드로 보조.
+function dashboardGetStudentGradeLabel(studentId) {
+    const sid = String(studentId || '');
+    const memberships = (state.db.class_students || []).filter(m => String(m.student_id) === sid);
+    for (const m of memberships) {
+        const cls = (state.db.classes || []).find(c => String(c.id) === String(m.class_id));
+        if (!cls) continue;
+        const g = dashboardNormalizeGradeLabel(cls.grade || cls.name);
+        if (DASHBOARD_MIDDLE_GRADE_ORDER.includes(g) || dashboardIsHighSchoolGradeLabel(g)) return g;
     }
+    const student = (state.db.students || []).find(s => String(s.id) === sid);
+    return dashboardNormalizeGradeLabel(student?.grade || '');
+}
 
-    const nextStart = source.indexOf('\n■ ', start + header.length);
-    const sectionEnd = nextStart >= 0 ? nextStart : source.length;
-    const section = source.slice(start, sectionEnd);
-    const hasConsultationTitle = /\n- 상담:\s*\n/.test(section);
-    const insertion = hasConsultationTitle ? entryText : `- 상담:\n${entryText}`;
-    const trimmedSectionEnd = sectionEnd - (source.slice(0, sectionEnd).match(/\s*$/)?.[0]?.length || 0);
-    const safeInsertAt = Math.max(start + header.length, trimmedSectionEnd);
+// 그 날짜에 보강이 기록된 학생을 {name, grade, reason}로 모은다.(고등부 제외 — 계획된 설계)
+function dashboardCollectJournalMakeups(targetDate) {
+    const seen = new Set();
+    const results = [];
+    (state.db.attendance || []).forEach(a => {
+        if (a.date !== targetDate) return;
+        const sid = String(a.student_id || '');
+        if (!sid || seen.has(sid)) return;
+        const status = String(a.status || '').trim();
+        const tagList = String(a.tags || '').split(',').map(v => v.trim()).filter(Boolean);
+        const makeupTags = tagList.filter(t => t.startsWith('makeup:'));
+        const isMakeup = status === '보강' || tagList.includes('보강') || makeupTags.length > 0;
+        if (!isMakeup) return;
+        const student = (state.db.students || []).find(s => String(s.id) === sid);
+        if (!student || !isActiveStudentStatus(student.status)) return;
+        const grade = dashboardGetStudentGradeLabel(sid);
+        if (!DASHBOARD_MIDDLE_GRADE_ORDER.includes(grade)) return; // 고등부/미배정 제외
+        seen.add(sid);
+        const reason = makeupTags.map(t => DASHBOARD_JOURNAL_MAKEUP_LABELS[t] || t).join('·');
+        results.push({ name: student.name || '', grade, reason });
+    });
+    return results;
+}
 
-    return source.slice(0, safeInsertAt) + `\n${insertion}` + source.slice(safeInsertAt);
+// 보강 섹션 텍스트. 형식 예) 보강\n중1 김땡땡,임노노(진도)양고고(숙제)\n중2 이모모(결석)
+function dashboardBuildJournalMakeupSection(targetDate) {
+    const makeups = dashboardCollectJournalMakeups(targetDate);
+    if (!makeups.length) return '';
+    const lines = [];
+    DASHBOARD_MIDDLE_GRADE_ORDER.forEach(grade => {
+        const inGrade = makeups.filter(m => m.grade === grade);
+        if (!inGrade.length) return;
+        const reasonOrder = [];
+        const byReason = new Map();
+        inGrade.forEach(m => {
+            if (!byReason.has(m.reason)) { byReason.set(m.reason, []); reasonOrder.push(m.reason); }
+            byReason.get(m.reason).push(m.name);
+        });
+        let body = '';
+        reasonOrder.forEach(reason => {
+            const names = byReason.get(reason).slice().sort((a, b) => a.localeCompare(b, 'ko'));
+            body += names.join(',') + (reason ? `(${reason})` : '');
+        });
+        lines.push(`${grade} ${body}`);
+    });
+    if (!lines.length) return '';
+    return `■ 보강\n${lines.join('\n')}`;
+}
+
+// 상담 섹션 텍스트. 기존 엔트리 포맷 유지, 그 날짜 상담을 한곳에 모은다.(고등부 제외)
+function dashboardBuildJournalConsultationSection(targetDate) {
+    const students = state.db.students || [];
+    const entries = (state.db.consultations || [])
+        .filter(cn => dashboardGetConsultationDate(cn) === targetDate)
+        .filter(cn => !dashboardIsHighSchoolGradeLabel(dashboardGetStudentGradeLabel(cn?.student_id)))
+        .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
+    if (!entries.length) return '';
+    return `■ 상담\n${entries.join('').replace(/\s+$/, '')}`;
+}
+
+// 저장된 일지에 뒤늦게 추가된 상담을 하단 상담 섹션에 끼워 넣는다.
+function dashboardInsertJournalConsultationsIntoBottomSection(content, entries) {
+    if (!entries.length) return content;
+    const source = String(content || '').replace(/\s+$/, '');
+    const entryText = entries.join('').replace(/\s+$/, '');
+    // 구버전 일지(마커 없는 '상담' 헤더)도 함께 인식한다.
+    const headerMatch = source.match(/^(?:■ )?상담[ \t]*$/m);
+    if (!headerMatch || typeof headerMatch.index !== 'number') {
+        return `${source}\n\n■ 상담\n${entryText}`;
+    }
+    const afterHeader = headerMatch.index + headerMatch[0].length;
+    const rest = source.slice(afterHeader);
+    // 섹션 경계: 다음 섹션 헤더(통일된 ■ … 또는 구버전 보강/상담 단독줄)
+    const nextRel = rest.search(/\n(?:■ |보강[ \t]*\n|상담[ \t]*\n)/);
+    const sectionEnd = nextRel >= 0 ? afterHeader + nextRel : source.length;
+    const before = source.slice(0, sectionEnd).replace(/\s+$/, '');
+    return `${before}\n${entryText}${source.slice(sectionEnd)}`;
 }
 
 function mergeJournalConsultationsIntoContent(content, targetDate) {
-    const classes = dashboardGetJournalClassRows(targetDate);
     let merged = String(content || '').trimEnd();
     if (!merged) merged = buildJournalContent(targetDate).trimEnd();
 
-    classes.forEach(cls => {
-        const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
-        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && isActiveStudentStatus(s.status));
-        const missingEntries = dashboardGetJournalConsultationsForClass(targetDate, memberIds)
-            .filter(cn => !dashboardJournalAlreadyHasConsultation(merged, cn, students))
-            .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
+    const students = state.db.students || [];
+    const missingEntries = (state.db.consultations || [])
+        .filter(cn => dashboardGetConsultationDate(cn) === targetDate)
+        .filter(cn => !dashboardIsHighSchoolGradeLabel(dashboardGetStudentGradeLabel(cn?.student_id)))
+        .filter(cn => !dashboardJournalAlreadyHasConsultation(merged, cn, students))
+        .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
 
-        if (missingEntries.length > 0) {
-            merged = dashboardInsertJournalConsultationsIntoClassSection(merged, cls.name, missingEntries);
-        }
-    });
+    if (missingEntries.length > 0) {
+        merged = dashboardInsertJournalConsultationsIntoBottomSection(merged, missingEntries);
+    }
 
     return merged.trim() + '\n';
 }
@@ -2331,91 +2448,70 @@ function buildJournalContent(dateStr) {
 
     if (activeClasses.length === 0) {
         text += `해당 날짜에 담당 학급이 없습니다.\n`;
-        return text;
+    } else {
+        activeClasses.forEach(cls => {
+            text += `■ ${cls.name}반\n`;
+
+            const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
+            const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && isActiveStudentStatus(s.status));
+            const total = students.length;
+
+            const absents = [];
+            const lates = [];
+            const hwMiss = [];
+
+            students.forEach(s => {
+                const att = (state.db.attendance || []).find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
+                const hw = (state.db.homework || []).find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
+                const attStatus = String(att?.status || '').trim();
+                const tagList = String(att?.tags || '')
+                    .split(',')
+                    .map(v => v.trim())
+                    .filter(Boolean);
+
+                if (attStatus === '결석') absents.push(s.name);
+                if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
+                if (hw?.status === '미완료') hwMiss.push(s.name);
+            });
+
+            const attendanceCount = Math.max(0, total - absents.length);
+            const homeworkCount = Math.max(0, total - hwMiss.length);
+
+            text += `- 출석: ${attendanceCount}/${total}\n`;
+            text += `- 숙제: ${homeworkCount}/${total}\n`;
+            if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
+            if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
+            if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
+
+            const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
+            if (dailyRecord) {
+                const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
+                const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
+                if (progresses.length > 0) {
+                    text += `- 진도:\n`;
+                    progresses.forEach(p => {
+                        text += formatJournalProgressLine(p, noteData.units) + `\n`;
+                    });
+                } else text += `- 진도: (기록 없음)\n`;
+
+                text = appendJournalNote(text, noteData.note);
+            } else {
+                text += `- 진도: (수업 기록 미입력)\n`;
+            }
+
+            text += `\n`;
+        });
     }
 
-    activeClasses.forEach(cls => {
-        text += `■ ${cls.name}반\n`;
+    // 보강/상담은 반별 일지와 별개로 하단에 따로 집계한다.
+    // 보강은 정규 수업일이 아닌 날에도 발생하므로 그 날짜 출결 전체를 기준으로 본다.
+    let body = text.replace(/\s+$/, '');
+    const makeupSection = dashboardBuildJournalMakeupSection(targetDate);
+    if (makeupSection) body += `\n\n${makeupSection}`;
+    const consultationSection = dashboardBuildJournalConsultationSection(targetDate);
+    if (consultationSection) body += `\n\n${consultationSection}`;
 
-        const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
-        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && isActiveStudentStatus(s.status));
-        const total = students.length;
-
-        const absents = [];
-        const lates = [];
-        const makeups = []; // { name, makeupTags: string[] }
-        const hwMiss = [];
-        const MAKEUP_LABEL_MAP = {
-            'makeup:progress': '진도',
-            'makeup:homework': '숙제',
-            'makeup:absence': '결석',
-            'makeup:exam': '시험',
-            'makeup:other': '기타',
-        };
-
-        students.forEach(s => {
-            const att = (state.db.attendance || []).find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
-            const hw = (state.db.homework || []).find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
-            const attStatus = String(att?.status || '').trim();
-            const tagList = String(att?.tags || '')
-                .split(',')
-                .map(v => v.trim())
-                .filter(Boolean);
-
-            if (attStatus === '결석') absents.push(s.name);
-            if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
-            const makeupTags = tagList.filter(t => t.startsWith('makeup:'));
-            if (attStatus === '보강' || tagList.includes('보강') || makeupTags.length > 0) {
-                makeups.push({ name: s.name, makeupTags });
-            }
-            if (hw?.status === '미완료') hwMiss.push(s.name);
-        });
-
-        const attendanceCount = Math.max(0, total - absents.length);
-        const homeworkCount = Math.max(0, total - hwMiss.length);
-
-        text += `- 출석: ${attendanceCount}/${total}\n`;
-        text += `- 숙제: ${homeworkCount}/${total}\n`;
-        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
-        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
-        if (makeups.length > 0) {
-            const makeupStr = makeups.map(m => {
-                if (!m.makeupTags.length) return m.name;
-                const labels = m.makeupTags.map(t => MAKEUP_LABEL_MAP[t] || t).join('·');
-                return `${m.name}(${labels})`;
-            }).join(', ');
-            text += `- 보강: ${makeupStr}\n`;
-        }
-        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
-
-        const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
-        if (dailyRecord) {
-            const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
-            const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
-            if (progresses.length > 0) {
-                text += `- 진도:\n`;
-                progresses.forEach(p => {
-                    text += formatJournalProgressLine(p, noteData.units) + `\n`;
-                });
-            } else text += `- 진도: (기록 없음)\n`;
-
-            text = appendJournalNote(text, noteData.note);
-        } else {
-            text += `- 진도: (수업 기록 미입력)\n`;
-        }
-
-        const cns = dashboardGetJournalConsultationsForClass(targetDate, memberIds);
-        if (cns.length > 0) {
-            text += `- 상담:\n`;
-            cns.forEach(cn => {
-                text += dashboardFormatJournalConsultationEntry(cn, students);
-            });
-        }
-
-        text += `\n`;
-    });
-
-    return text.trim() + '\n';
+    return body.replace(/\s+$/, '') + '\n';
 }
 
 

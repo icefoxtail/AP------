@@ -1942,7 +1942,7 @@ function openAdminJournalFeedback(id, teacherName = '') {
     const safeTeacher = dashboardEscapeAttr(teacherName || journal.teacher_name || '');
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
-        <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${apEscapeHtml(journal.content)}</textarea>
+        <div class="journal-render-box" style="width:100%; max-height:260px; overflow-y:auto; text-align:left; background:var(--surface-2); border-radius:12px; padding:16px; margin-bottom:12px;">${typeof formatJournalHtml === 'function' ? formatJournalHtml(journal.content) : apEscapeHtml(journal.content)}</div>
         <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; background:var(--surface); color:var(--text);">${apEscapeHtml(journal.feedback || '')}</textarea>
         <div style="margin-top:16px;">
             <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:500; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
