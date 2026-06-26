@@ -820,7 +820,8 @@ async function loadAllQuestionBanks(payload) {
     const files = [...new Set([
         ...((payload.students || []).flatMap(student => (student.wrongItems || []).map(item => item.archiveFile))),
         ...((payload.classWrongItems || []).map(item => item.archiveFile)),
-        ...((payload.gradeWrongItems || []).map(item => item.archiveFile))
+        ...((payload.gradeWrongItems || []).map(item => item.archiveFile)),
+        ...((payload.typeItems || []).map(item => item.archiveFile))
     ].filter(Boolean))];
 
     for (const file of files) {
@@ -1064,6 +1065,83 @@ async function renderGradePages(area, payload) {
     });
 }
 
+function getTypePrintLabel(payload) {
+    if (payload.typeMode === 'unit') return '단원별 오답';
+    if (payload.typeMode === 'frequent') return '최다빈출 오답';
+    if (payload.typeMode === 'mostWrong') return '최다오답';
+    return payload.printTitle || '유형별 오답';
+}
+
+function getTypeScopeLabel(payload) {
+    if (payload.scope === 'grade') return getGradePrintLabel(payload);
+    return payload.className || '반';
+}
+
+function getTypeItems(payload) {
+    if (Array.isArray(payload.typeItems)) return payload.typeItems;
+    return payload.scope === 'grade' ? (payload.gradeWrongItems || []) : (payload.classWrongItems || []);
+}
+
+function getTypeUnitLabel(key, items) {
+    if (key === '__UNCLASSIFIED__') return '기타 / 단원 미분류';
+    const found = (items || []).find(item => (item.unitKey || '__UNCLASSIFIED__') === key);
+    return found?.unit || key || '기타 / 단원 미분류';
+}
+
+function getTypeSections(payload) {
+    const items = getTypeItems(payload);
+    if (payload.typeMode !== 'unit') {
+        return [{ key: '', title: getTypePrintLabel(payload), items }];
+    }
+
+    const byUnit = new Map();
+    items.forEach(item => {
+        const key = item.unitKey || '__UNCLASSIFIED__';
+        if (!byUnit.has(key)) byUnit.set(key, []);
+        byUnit.get(key).push(item);
+    });
+
+    const orderedKeys = (payload.unitOrder || []).filter(key => byUnit.has(key));
+    byUnit.forEach((_, key) => {
+        if (!orderedKeys.includes(key)) orderedKeys.push(key);
+    });
+
+    return orderedKeys.map(key => ({
+        key,
+        title: getTypeUnitLabel(key, items),
+        items: byUnit.get(key) || []
+    })).filter(section => section.items.length);
+}
+
+function buildTypeQrPayload(payload) {
+    return {
+        v: 2,
+        m: payload.scope === 'grade' ? 'grade' : 'class',
+        i: getTypeItems(payload).map(compactWrongItem)
+    };
+}
+
+async function renderTypePages(area, payload) {
+    const sections = getTypeSections(payload);
+    const label = getTypePrintLabel(payload);
+    const scopeLabel = getTypeScopeLabel(payload);
+    for (const section of sections) {
+        const items = section.items.map(item => {
+            const rateLabel = formatCorrectRateLabel(item);
+            return cloneQuestionForRender({
+                ...item,
+                _wrongNote: rateLabel
+            });
+        });
+        await renderMeasuredExamPages(area, items, {
+            title: payload.typeMode === 'unit' ? section.title : `${scopeLabel} ${label}`,
+            metaLeft: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
+            metaRight: payload.createdDate || '',
+            solutionQrPayload: buildTypeQrPayload(payload)
+        });
+    }
+}
+
 async function placeSolutionItems(area, items, pageMeta = {}) {
     let pageNo = 1;
     let current = null;
@@ -1143,6 +1221,27 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
 }
 
 async function renderSol(area, payload) {
+    if (payload.mode === 'type') {
+        const sections = getTypeSections(payload);
+        const label = getTypePrintLabel(payload);
+        const scopeLabel = getTypeScopeLabel(payload);
+        for (const section of sections) {
+            const items = section.items.map(item => {
+                const rateLabel = formatCorrectRateLabel(item);
+                return cloneQuestionForRender({
+                    ...item,
+                    _wrongNote: rateLabel
+                });
+            });
+            await placeSolutionItems(area, items, {
+                title: payload.typeMode === 'unit' ? `${section.title} 해설지` : `${scopeLabel} ${label} 해설지`,
+                metaLeft: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : (payload.printTitle || ''),
+                metaRight: payload.createdDate || ''
+            });
+        }
+        return;
+    }
+
     if (payload.mode === 'class' || payload.mode === 'grade') {
         const sourceItems = payload.mode === 'grade' ? (payload.gradeWrongItems || []) : (payload.classWrongItems || []);
         const items = sourceItems.map(item => {
@@ -1177,7 +1276,9 @@ async function renderSol(area, payload) {
     }
 }
 function collectAnswerRows(payload) {
-    const list = state.payload.mode === 'grade'
+    const list = state.payload.mode === 'type'
+        ? getTypeItems(payload)
+        : state.payload.mode === 'grade'
         ? (payload.gradeWrongItems || [])
         : state.payload.mode === 'class'
         ? (payload.classWrongItems || [])
@@ -1224,6 +1325,13 @@ function renderAnswerRows(area, rows, pageMeta = {}) {
 
 function renderAns(area, payload) {
     const data = collectAnswerRows(payload);
+    if (payload.mode === 'type') {
+        renderAnswerRows(area, data, {
+            title: `${getTypeScopeLabel(payload)} ${getTypePrintLabel(payload)} 정답표`,
+            metaLeft: payload.printTitle || ''
+        });
+        return;
+    }
     const title = payload.mode === 'grade'
         ? `${getGradePrintLabel(payload)} 정답표`
         : payload.mode === 'class'
@@ -1265,6 +1373,30 @@ function maybeInsertReviewPacketDuplexBreak(area, payload, studentIdx, studentCo
 }
 
 async function renderStudentReviewPacket(area, payload) {
+    if (payload.mode === 'type') {
+        const label = `${getTypeScopeLabel(payload)} ${getTypePrintLabel(payload)}`;
+        const items = getTypeItems(payload).map(item => {
+            const rateLabel = formatCorrectRateLabel(item);
+            return cloneQuestionForRender({
+                ...item,
+                _wrongNote: rateLabel
+            });
+        });
+        const metaLeft = payload.printTitle || '';
+        const metaRight = payload.createdDate || '';
+        renderAnswerPagesForStudent(area, { studentName: label }, items, {
+            title: `${label} 정답표`,
+            metaLeft,
+            metaRight
+        });
+        await renderSolutionPagesForStudent(area, { studentName: label }, items, {
+            title: `${label} 해설지`,
+            metaLeft,
+            metaRight
+        });
+        return;
+    }
+
     if (payload.mode === 'class' || payload.mode === 'grade') {
         const sourceItems = payload.mode === 'grade' ? (payload.gradeWrongItems || []) : (payload.classWrongItems || []);
         const label = payload.mode === 'grade' ? getGradePrintLabel(payload) : (payload.className || '반');
@@ -1327,6 +1459,8 @@ async function render() {
         await renderStudentReviewPacket(area, state.payload);
     } else if (state.mode === 'sol') {
         await renderSol(area, state.payload);
+    } else if (state.payload.mode === 'type') {
+        await renderTypePages(area, state.payload);
     } else if (state.payload.mode === 'grade') {
         await renderGradePages(area, state.payload);
     } else if (state.payload.mode === 'class') {
