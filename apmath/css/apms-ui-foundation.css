@@ -13,6 +13,21 @@
     --apms-ui-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
+/* 다크모드 대응: --surface/--text 등의 다크 오버라이드는 body(.dark)에 선언돼 있다.
+   위 :root 블록에서 var(--surface) 를 한 번 풀어버리면 html(:root) 컨텍스트의
+   라이트값으로 고정돼, 다크모드에서도 흰 카드/검은 글씨가 그대로 상속된다.
+   (예: 일지 하단 결석/보강 월간 현황 보드가 다크모드에서 흰 박스로 표시되던 버그)
+   같은 매핑을 body 에서 다시 선언해 body 컨텍스트의 다크 토큰으로 재해석되게 한다. */
+body {
+    --apms-ui-bg: var(--bg, #f2f4f6);
+    --apms-ui-surface: var(--surface, #ffffff);
+    --apms-ui-surface-soft: var(--surface-2, #f8fafc);
+    --apms-ui-border: var(--border, #e5e8eb);
+    --apms-ui-text: var(--text, #191f28);
+    --apms-ui-muted: var(--secondary, #6b7684);
+    --apms-ui-accent: var(--primary, #1a5cff);
+}
+
 .apms-card {
     background: var(--apms-ui-surface);
     border: 1px solid var(--apms-ui-border);
