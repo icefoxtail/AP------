@@ -153,8 +153,15 @@
 
     window.eieHistoryBack = eieHistoryBack;
 
+    // 현재 라우트를 그대로 다시 렌더한다(해시 변경 없음). 메모/일정 CRUD 후
+    // 원장·선생님 대시보드의 운영 카드를 즉시 최신화하는 데 쓴다.
+    function refresh() {
+        return renderRoute(window.location.hash || 'dashboard');
+    }
+
     window.EieRouter = {
         open,
+        refresh,
         boot() {
             bindRouteButtons();
             if (!hashListenerBound) {
@@ -165,6 +172,18 @@
         },
         syncNav,
         bindRouteButtons
+    };
+
+    // 운영 카드(메모·주간일정) 공용 갱신 콜백. 모달이 떠 있어도(overlay 는 body
+    // 직속이라 mount 교체에 영향 없음) 뒤편 대시보드 카드를 최신 데이터로 다시 그린다.
+    window.refreshEieOperationDashboardCards = function () {
+        if (window.EieRouter && typeof window.EieRouter.refresh === 'function') {
+            return window.EieRouter.refresh();
+        }
+        if (window.EieRouter && typeof window.EieRouter.open === 'function') {
+            return window.EieRouter.open((window.location.hash || '').replace(/^#/, '') || 'dashboard');
+        }
+        return Promise.resolve();
     };
 
     if (typeof document !== 'undefined') {
