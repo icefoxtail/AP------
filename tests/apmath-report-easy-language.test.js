@@ -12,7 +12,9 @@ const path = require('path');
 const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
-const reportSrc = fs.readFileSync(path.join(root, 'apmath', 'js', 'report.js'), 'utf8');
+const reportSrc = ['report-text.js', 'report-center.js', 'report-print.js']
+  .map(file => fs.readFileSync(path.join(root, 'apmath', 'js', file), 'utf8'))
+  .join('\n');
 
 // 생성기가 reportCenterGetExamReportData를 부르는 경우(카톡 요약 등)를 위해 목으로 오버라이드한다.
 const MOCK_STATS = {

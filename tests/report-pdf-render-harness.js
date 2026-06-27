@@ -15,7 +15,9 @@ const path = require('path');
 const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
-const reportSrc = fs.readFileSync(path.join(root, 'apmath', 'js', 'report.js'), 'utf8');
+const reportSrc = ['report-text.js', 'report-center.js', 'report-print.js']
+  .map(file => fs.readFileSync(path.join(root, 'apmath', 'js', file), 'utf8'))
+  .join('\n');
 
 const htmlFlagIdx = process.argv.indexOf('--html');
 const htmlDir = htmlFlagIdx !== -1 ? process.argv[htmlFlagIdx + 1] : '';

@@ -5,7 +5,9 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = fs.readFileSync(path.join(root, 'apmath/js/report.js'), 'utf8');
+const source = ['report-text.js', 'report-center.js', 'report-print.js']
+  .map(file => fs.readFileSync(path.join(root, 'apmath/js', file), 'utf8'))
+  .join('\n');
 
 const state = {
   db: {

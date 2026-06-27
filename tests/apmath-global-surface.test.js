@@ -26,7 +26,11 @@ const targets = [
     ],
     fixture: 'tests/fixtures/apmath-surface-dashboard.json'
   },
-  { key: 'report', source: 'apmath/js/report.js', fixture: 'tests/fixtures/apmath-surface-report.json' }
+  {
+    key: 'report',
+    sources: ['apmath/js/report-text.js', 'apmath/js/report-center.js', 'apmath/js/report-print.js'],
+    fixture: 'tests/fixtures/apmath-surface-report.json'
+  }
 ];
 
 function uniqueSorted(values) {

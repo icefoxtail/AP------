@@ -4,7 +4,9 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const student = fs.readFileSync(path.join(root, 'apmath/js/student.js'), 'utf8');
-const report = fs.readFileSync(path.join(root, 'apmath/js/report.js'), 'utf8');
+const report = ['report-text.js', 'report-center.js', 'report-print.js']
+  .map(file => fs.readFileSync(path.join(root, 'apmath/js', file), 'utf8'))
+  .join('\n');
 
 assert(
   student.includes('function openStudentReportOutputFromDetail') &&
