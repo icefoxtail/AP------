@@ -603,11 +603,9 @@ function clinicPrintGetCheckedValues(name) {
 function clinicPrintSwitchMode(classId) {
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
 
-    document.querySelectorAll('#clinic-print-mode-cards .clinic-mode-card').forEach(card => {
+    document.querySelectorAll('#clinic-print-mode-cards .clinic-print-mode-card').forEach(card => {
         const active = card.getAttribute('data-mode') === mode;
-        card.style.borderColor = active ? 'var(--primary)' : 'var(--border)';
-        card.style.background = active ? 'rgba(26,92,255,0.08)' : 'var(--surface)';
-        card.style.color = active ? 'var(--primary)' : 'var(--text)';
+        card.classList.toggle('clinic-print-mode-card--active', active);
     });
 
     const isType = mode === 'type';
@@ -710,11 +708,9 @@ function clinicPrintBuildTypePayload(classId) {
 function clinicPrintSetTypeScope(classId, scope) {
     const input = document.getElementById('clinic-print-type-scope');
     if (input) input.value = scope;
-    document.querySelectorAll('#clinic-print-type-scope-toggle .clinic-scope-btn').forEach(btn => {
+    document.querySelectorAll('#clinic-print-type-scope-toggle .clinic-print-scope-btn').forEach(btn => {
         const active = btn.getAttribute('data-scope') === scope;
-        btn.style.borderColor = active ? 'var(--primary)' : 'var(--border)';
-        btn.style.background = active ? 'rgba(26,92,255,0.08)' : 'var(--surface)';
-        btn.style.color = active ? 'var(--primary)' : 'var(--text)';
+        btn.classList.toggle('clinic-print-scope-btn--active', active);
     });
     clinicPrintRenderTypePanel(classId);
 }
@@ -722,10 +718,9 @@ function clinicPrintSetTypeScope(classId, scope) {
 function clinicPrintSetTypeMode(classId, typeMode) {
     const input = document.getElementById('clinic-print-type-mode');
     if (input) input.value = typeMode;
-    document.querySelectorAll('#clinic-print-type-cards .clinic-type-card').forEach(card => {
+    document.querySelectorAll('#clinic-print-type-cards .clinic-print-type-card').forEach(card => {
         const active = card.getAttribute('data-type-mode') === typeMode;
-        card.style.borderColor = active ? 'var(--primary)' : 'var(--border)';
-        card.style.background = active ? 'rgba(26,92,255,0.08)' : 'var(--surface)';
+        card.classList.toggle('clinic-print-type-card--active', active);
     });
     clinicPrintRenderTypePanel(classId);
 }
@@ -740,7 +735,7 @@ function clinicPrintRenderTypePanel(classId) {
     const typeMode = document.getElementById('clinic-print-type-mode')?.value || 'frequent';
     const scopeLabel = scope === 'grade' ? (clinicPrintGetClassGrade(classId) || '학년') + ' 전체' : '현재 반';
 
-    const emptyBox = msg => `<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">${clinicPrintEscapeHtml(msg)}</div>`;
+    const emptyBox = msg => `<div class="clinic-print-empty">${clinicPrintEscapeHtml(msg)}</div>`;
 
     if (!selectedExamKeys.length) {
         root.innerHTML = emptyBox('시험을 선택하세요.');
@@ -762,7 +757,7 @@ function clinicPrintRenderTypePanel(classId) {
     if (summaryEl) summaryEl.textContent = `${scopeLabel} · ${typeMode === 'frequent' ? '최다빈출' : '최다오답'} · ${filtered.length}문항`;
 
     if (!filtered.length) {
-        root.innerHTML = `<div style="display:flex; flex-direction:column; gap:8px;"><div style="font-size:11px; font-weight:500; color:var(--secondary);">${clinicPrintEscapeHtml(typeLabel)} · ${clinicPrintEscapeHtml(scopeLabel)}</div>${emptyBox('해당 조건의 오답 문항이 없습니다.')}</div>`;
+        root.innerHTML = `<div class="clinic-print-result"><div class="clinic-print-subtitle">${clinicPrintEscapeHtml(typeLabel)} · ${clinicPrintEscapeHtml(scopeLabel)}</div>${emptyBox('해당 조건의 오답 문항이 없습니다.')}</div>`;
         return;
     }
 
@@ -771,27 +766,27 @@ function clinicPrintRenderTypePanel(classId) {
         const unitText = item.unitKey ? (item.unit || item.unitKey) : '기타 / 단원 미분류';
         const rateText = item.correctRate === null || item.correctRate === undefined ? '-' : `${item.correctRate}%`;
         return `
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 11px; border:1px solid var(--border); border-radius:10px; background:var(--surface);">
-                <span style="min-width:0; display:flex; flex-direction:column; gap:2px;">
-                    <span style="font-size:12px; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${clinicPrintEscapeHtml(item.examTitle || '시험')} · ${item.questionNo}번</span>
-                    <span style="font-size:10px; font-weight:500; color:var(--secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${clinicPrintEscapeHtml(unitText)}</span>
+            <div class="clinic-print-preview-row">
+                <span class="clinic-print-preview-row__main">
+                    <span class="clinic-print-preview-row__title">${clinicPrintEscapeHtml(item.examTitle || '시험')} · ${item.questionNo}번</span>
+                    <span class="clinic-print-preview-row__meta">${clinicPrintEscapeHtml(unitText)}</span>
                 </span>
-                <span style="display:flex; flex-direction:column; align-items:flex-end; gap:2px; white-space:nowrap;">
-                    <span style="font-size:11px; font-weight:600; color:var(--text);">정답률 ${rateText}</span>
-                    <span style="font-size:10px; font-weight:500; color:var(--error);">오답 ${item.wrongCount}명</span>
+                <span class="clinic-print-preview-row__stat">
+                    <span class="clinic-print-preview-row__rate">정답률 ${rateText}</span>
+                    <span class="clinic-print-preview-row__wrong">오답 ${item.wrongCount}명</span>
                 </span>
             </div>
         `;
     }).join('');
 
-    const moreText = filtered.length > previewLimit ? `<div style="font-size:10px; font-weight:500; color:var(--secondary); text-align:center;">외 ${filtered.length - previewLimit}문항</div>` : '';
+    const moreText = filtered.length > previewLimit ? `<div class="clinic-print-more">외 ${filtered.length - previewLimit}문항</div>` : '';
 
     root.innerHTML = `
-        <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45;">${clinicPrintEscapeHtml(typeLabel)} · ${clinicPrintEscapeHtml(scopeLabel)} · 오답수 많은 순</div>
+        <div class="clinic-print-result">
+            <div class="clinic-print-subtitle">${clinicPrintEscapeHtml(typeLabel)} · ${clinicPrintEscapeHtml(scopeLabel)} · 오답수 많은 순</div>
             ${rows}
             ${moreText}
-            <div style="padding:11px 12px; border:1px dashed var(--border); border-radius:12px; background:var(--bg); font-size:11px; font-weight:500; color:var(--secondary); line-height:1.5; text-align:center;">오답지 만들기를 누르면 위 조건으로 출력됩니다.</div>
+            <div class="clinic-print-note">오답지 만들기를 누르면 위 조건으로 출력됩니다.</div>
         </div>
     `;
 }
@@ -820,7 +815,7 @@ function clinicPrintUnitOrder(unitKey) {
 }
 
 function clinicPrintTypeEmptyBox(msg) {
-    return `<div style="padding:13px; border:1px dashed var(--border); border-radius:11px; color:var(--secondary); font-size:11px; font-weight:500; text-align:center;">${clinicPrintEscapeHtml(msg)}</div>`;
+    return `<div class="clinic-print-empty clinic-print-empty--sm">${clinicPrintEscapeHtml(msg)}</div>`;
 }
 
 // 현재 범위/정답률 규칙으로 단원 목록을 만든다.
@@ -856,24 +851,25 @@ function clinicPrintRenderUnitMode(classId, scopeLabel) {
     if (!root) return;
     const isFrequent = clinicPrintTypeState.unitRate === 'gte50';
     const safeClassId = clinicPrintEscapeJsString(classId);
+    const activeCls = on => on ? ' clinic-print-rate-btn--active' : '';
     root.innerHTML = `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">유형</div>
-                <div id="clinic-print-unit-rate-toggle" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px;">
-                    <button type="button" class="clinic-unit-rate-btn" data-rate="gte50" style="min-height:40px; padding:8px 10px; border:1px solid ${isFrequent ? 'var(--primary)' : 'var(--border)'}; border-radius:11px; background:${isFrequent ? 'rgba(26,92,255,0.08)' : 'var(--surface)'}; color:${isFrequent ? 'var(--primary)' : 'var(--text)'}; font-size:12px; font-weight:600; cursor:pointer;" onclick="clinicPrintSetUnitRate('${safeClassId}','gte50')">최다빈출 (50%↑)</button>
-                    <button type="button" class="clinic-unit-rate-btn" data-rate="lt50" style="min-height:40px; padding:8px 10px; border:1px solid ${isFrequent ? 'var(--border)' : 'var(--primary)'}; border-radius:11px; background:${isFrequent ? 'var(--surface)' : 'rgba(26,92,255,0.08)'}; color:${isFrequent ? 'var(--text)' : 'var(--primary)'}; font-size:12px; font-weight:600; cursor:pointer;" onclick="clinicPrintSetUnitRate('${safeClassId}','lt50')">최다오답 (50%↓)</button>
+        <div class="clinic-print-type-panel">
+            <div class="clinic-print-field">
+                <div class="clinic-print-section-title">유형</div>
+                <div id="clinic-print-unit-rate-toggle" class="clinic-print-rate-grid">
+                    <button type="button" class="clinic-print-rate-btn${activeCls(isFrequent)}" data-rate="gte50" onclick="clinicPrintSetUnitRate('${safeClassId}','gte50')">최다빈출 (50%↑)</button>
+                    <button type="button" class="clinic-print-rate-btn${activeCls(!isFrequent)}" data-rate="lt50" onclick="clinicPrintSetUnitRate('${safeClassId}','lt50')">최다오답 (50%↓)</button>
                 </div>
             </div>
-            <div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:6px;">마스터 단원</div>
-                <div id="clinic-print-unit-master" style="display:flex; flex-direction:column; gap:6px; max-height:200px; overflow:auto;"></div>
+            <div class="clinic-print-field">
+                <div class="clinic-print-section-title">마스터 단원</div>
+                <div id="clinic-print-unit-master" class="clinic-print-unit-list clinic-print-unit-list--master"></div>
             </div>
-            <div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:6px;">출력할 단원 <span style="font-weight:400;">(드래그 또는 ↑↓로 순서 변경)</span></div>
-                <div id="clinic-print-unit-selected" style="display:flex; flex-direction:column; gap:6px; max-height:240px; overflow:auto;"></div>
+            <div class="clinic-print-field">
+                <div class="clinic-print-section-title">출력할 단원 <span class="clinic-print-section-title--soft">(드래그 또는 ↑↓로 순서 변경)</span></div>
+                <div id="clinic-print-unit-selected" class="clinic-print-unit-list clinic-print-unit-list--selected"></div>
             </div>
-            <div style="padding:11px 12px; border:1px dashed var(--border); border-radius:12px; background:var(--bg); font-size:11px; font-weight:500; color:var(--secondary); line-height:1.5; text-align:center;">오답지 만들기를 누르면 선택한 단원 순서대로 출력됩니다.</div>
+            <div class="clinic-print-note">오답지 만들기를 누르면 선택한 단원 순서대로 출력됩니다.</div>
         </div>
     `;
     clinicPrintRenderUnitLists(classId);
@@ -881,11 +877,9 @@ function clinicPrintRenderUnitMode(classId, scopeLabel) {
 
 function clinicPrintSetUnitRate(classId, rate) {
     clinicPrintTypeState.unitRate = rate;
-    document.querySelectorAll('#clinic-print-unit-rate-toggle .clinic-unit-rate-btn').forEach(btn => {
+    document.querySelectorAll('#clinic-print-unit-rate-toggle .clinic-print-rate-btn').forEach(btn => {
         const active = btn.getAttribute('data-rate') === rate;
-        btn.style.borderColor = active ? 'var(--primary)' : 'var(--border)';
-        btn.style.background = active ? 'rgba(26,92,255,0.08)' : 'var(--surface)';
-        btn.style.color = active ? 'var(--primary)' : 'var(--text)';
+        btn.classList.toggle('clinic-print-rate-btn--active', active);
     });
     clinicPrintRenderUnitLists(classId);
 }
@@ -914,12 +908,12 @@ function clinicPrintRenderUnitLists(classId) {
         ? available.map(u => {
             const k = clinicPrintEscapeJsString(u.key);
             return `
-                <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:9px 11px; border:1px solid var(--border); border-radius:10px; background:var(--surface);">
-                    <span style="min-width:0; display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:12px; font-weight:500; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${clinicPrintEscapeHtml(u.label)}</span>
-                        <span style="font-size:10px; font-weight:500; color:var(--secondary); white-space:nowrap;">${u.count}문항</span>
+                <div class="clinic-print-unit-row">
+                    <span class="clinic-print-unit-row__main">
+                        <span class="clinic-print-unit-row__label">${clinicPrintEscapeHtml(u.label)}</span>
+                        <span class="clinic-print-unit-row__count">${u.count}문항</span>
                     </span>
-                    <button type="button" aria-label="추가" style="flex:none; width:28px; height:28px; border:1px solid var(--border); border-radius:8px; background:var(--bg); color:var(--primary); font-size:16px; font-weight:700; line-height:1; cursor:pointer;" onclick="clinicPrintUnitAdd('${clinicPrintEscapeJsString(classId)}','${k}')">+</button>
+                    <button type="button" class="clinic-print-unit-action clinic-print-unit-action--add" aria-label="추가" onclick="clinicPrintUnitAdd('${clinicPrintEscapeJsString(classId)}','${k}')">+</button>
                 </div>
             `;
         }).join('')
@@ -931,16 +925,16 @@ function clinicPrintRenderUnitLists(classId) {
             const k = clinicPrintEscapeJsString(key);
             const cid = clinicPrintEscapeJsString(classId);
             return `
-                <div data-unit-row data-key="${clinicPrintEscapeAttr(key)}" style="display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface);">
-                    <span class="clinic-unit-handle" style="flex:none; cursor:grab; color:var(--secondary); font-size:15px; line-height:1; touch-action:none; user-select:none; padding:2px 2px;" title="드래그로 순서 변경">≡</span>
-                    <span style="min-width:0; flex:1; display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:12px; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${i + 1}. ${clinicPrintEscapeHtml(u.label)}</span>
-                        <span style="font-size:10px; font-weight:500; color:var(--secondary); white-space:nowrap;">${u.count}문항</span>
+                <div data-unit-row data-key="${clinicPrintEscapeAttr(key)}" class="clinic-print-unit-row clinic-print-unit-row--selected">
+                    <span class="clinic-print-unit-handle" title="드래그로 순서 변경">≡</span>
+                    <span class="clinic-print-unit-row__main">
+                        <span class="clinic-print-unit-row__label">${i + 1}. ${clinicPrintEscapeHtml(u.label)}</span>
+                        <span class="clinic-print-unit-row__count">${u.count}문항</span>
                     </span>
-                    <span style="flex:none; display:flex; align-items:center; gap:4px;">
-                        <button type="button" aria-label="위로" ${i === 0 ? 'disabled' : ''} style="width:26px; height:26px; border:1px solid var(--border); border-radius:7px; background:var(--bg); color:var(--text); font-size:12px; line-height:1; cursor:${i === 0 ? 'default' : 'pointer'}; opacity:${i === 0 ? '0.4' : '1'};" onclick="clinicPrintUnitMove('${cid}',${i},-1)">↑</button>
-                        <button type="button" aria-label="아래로" ${i === selectedKeys.length - 1 ? 'disabled' : ''} style="width:26px; height:26px; border:1px solid var(--border); border-radius:7px; background:var(--bg); color:var(--text); font-size:12px; line-height:1; cursor:${i === selectedKeys.length - 1 ? 'default' : 'pointer'}; opacity:${i === selectedKeys.length - 1 ? '0.4' : '1'};" onclick="clinicPrintUnitMove('${cid}',${i},1)">↓</button>
-                        <button type="button" aria-label="제거" style="width:26px; height:26px; border:1px solid var(--border); border-radius:7px; background:var(--bg); color:var(--error); font-size:13px; line-height:1; cursor:pointer;" onclick="clinicPrintUnitRemove('${cid}','${k}')">×</button>
+                    <span class="clinic-print-unit-actions">
+                        <button type="button" class="clinic-print-unit-action" aria-label="위로" ${i === 0 ? 'disabled' : ''} onclick="clinicPrintUnitMove('${cid}',${i},-1)">↑</button>
+                        <button type="button" class="clinic-print-unit-action" aria-label="아래로" ${i === selectedKeys.length - 1 ? 'disabled' : ''} onclick="clinicPrintUnitMove('${cid}',${i},1)">↓</button>
+                        <button type="button" class="clinic-print-unit-action clinic-print-unit-action--remove" aria-label="제거" onclick="clinicPrintUnitRemove('${cid}','${k}')">×</button>
                     </span>
                 </div>
             `;
@@ -974,7 +968,7 @@ function clinicPrintUnitMove(classId, index, dir) {
 function clinicPrintAttachUnitDnD(classId) {
     const selEl = document.getElementById('clinic-print-unit-selected');
     if (!selEl) return;
-    selEl.querySelectorAll('[data-unit-row] .clinic-unit-handle').forEach(handle => {
+    selEl.querySelectorAll('[data-unit-row] .clinic-print-unit-handle').forEach(handle => {
         handle.addEventListener('pointerdown', e => {
             e.preventDefault();
             const row = handle.closest('[data-unit-row]');
@@ -1037,7 +1031,7 @@ function clinicPrintUpdateStudentList(classId) {
     }
 
     if (!selectedExamKeys.length) {
-        root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">시험을 선택하세요.</div>';
+        root.innerHTML = '<div class="clinic-print-empty">시험을 선택하세요.</div>';
         return;
     }
 
@@ -1045,32 +1039,32 @@ function clinicPrintUpdateStudentList(classId) {
         const gradeSource = clinicPrintBuildGradeWrongSource(classId, selectedExamKeys);
         const gradeItems = clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
         if (!gradeItems.length) {
-            root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">선택한 시험에 출력 가능한 학년 오답이 없습니다.</div>';
+            root.innerHTML = '<div class="clinic-print-empty">선택한 시험에 출력 가능한 학년 오답이 없습니다.</div>';
             return;
         }
 
         const cohortTotal = Object.values(gradeSource.cohortCounts || {}).reduce((sum, count) => sum + Number(count || 0), 0);
         root.innerHTML = `
-            <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface);">
-                <div style="font-size:13px; font-weight:600; color:var(--text); line-height:1.4;">${clinicPrintEscapeHtml(clinicPrintGetClassGrade(classId) || '학년')} 공통 오답</div>
-                <div style="margin-top:4px; font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45;">제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항</div>
+            <div class="clinic-print-info-card">
+                <div class="clinic-print-info-card__title">${clinicPrintEscapeHtml(clinicPrintGetClassGrade(classId) || '학년')} 공통 오답</div>
+                <div class="clinic-print-info-card__meta">제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항</div>
             </div>
         `;
         return;
     }
 
     if (!studentItems.length) {
-        root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">선택한 시험에 출력 가능한 오답이 없습니다.</div>';
+        root.innerHTML = '<div class="clinic-print-empty">선택한 시험에 출력 가능한 오답이 없습니다.</div>';
         return;
     }
 
     root.innerHTML = studentItems.map(row => `
-        <label style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--surface);">
-            <span style="display:flex; align-items:center; gap:8px; min-width:0;">
+        <label class="clinic-print-student-row">
+            <span class="clinic-print-student-row__main">
                 <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" checked>
-                <span style="font-size:13px; font-weight:500; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${clinicPrintEscapeHtml(row.studentName)}</span>
+                <span class="clinic-print-student-row__name">${clinicPrintEscapeHtml(row.studentName)}</span>
             </span>
-            <span style="font-size:12px; font-weight:500; color:var(--error); white-space:nowrap;">${row.wrongItems.length}문항</span>
+            <span class="clinic-print-student-row__count">${row.wrongItems.length}문항</span>
         </label>
     `).join('');
 }
@@ -1134,15 +1128,10 @@ function openClinicCenter(classId = '') {
     }
 
     showModal('클리닉', `
-        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
-            <button class="btn apms-button apms-button--quiet" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:500; box-shadow:none;" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
-            <button class="btn apms-button apms-button--quiet" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:500; box-shadow:none;" onclick="clinicPrintOpenSimilarMenu('${safeClassIdForJs}')">유사문항</button>
+        <div class="clinic-print-menu-grid">
+            <button class="btn apms-button apms-button--quiet clinic-print-menu-btn" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
+            <button class="btn apms-button apms-button--quiet clinic-print-menu-btn" onclick="clinicPrintOpenSimilarMenu('${safeClassIdForJs}')">유사문항</button>
         </div>
-        <style>
-            @media (max-width:520px) {
-                #modal-body > div { grid-template-columns:1fr !important; }
-            }
-        </style>
     `);
 }
 
@@ -1162,15 +1151,15 @@ function openClinicClassPicker() {
             .filter(Boolean)
             .join(' · ');
         return `
-            <button type="button" class="btn apms-button apms-button--quiet" style="width:100%; min-height:54px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:3px; padding:10px 12px; border-radius:12px; border:1px solid ${selected ? 'var(--primary)' : 'var(--border)'}; background:${selected ? 'rgba(26,92,255,0.08)' : 'var(--surface)'}; color:var(--text); box-shadow:none;" onclick="openClinicCenter('${safeClassId}')">
-                <span style="font-size:14px; font-weight:600; line-height:1.35;">${clinicPrintEscapeHtml(cls.name || '반 이름 없음')}</span>
-                <span style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.35;">${clinicPrintEscapeHtml(meta || '반 정보 없음')}</span>
+            <button type="button" class="btn apms-button apms-button--quiet clinic-print-class-btn${selected ? ' clinic-print-class-btn--current' : ''}" onclick="openClinicCenter('${safeClassId}')">
+                <span class="clinic-print-class-btn__name">${clinicPrintEscapeHtml(cls.name || '반 이름 없음')}</span>
+                <span class="clinic-print-class-btn__meta">${clinicPrintEscapeHtml(meta || '반 정보 없음')}</span>
             </button>
         `;
     }).join('');
 
     showModal('클리닉 반 선택', `
-        <div style="display:flex; flex-direction:column; gap:10px; max-height:62vh; overflow:auto;">
+        <div class="clinic-print-class-list">
             ${classRows}
         </div>
     `);
@@ -1219,94 +1208,94 @@ async function openClinicPrintCenter(classId, options = {}) {
             const status = group.printable
                 ? `${group.questionCount || '-'}문항 · 제출 ${group.sessions.length}명 · 오답 ${group.wrongCount}문항`
                 : '원문 연결 불가';
-            const tone = group.printable ? 'var(--secondary)' : 'var(--error)';
+            const metaCls = group.printable ? 'clinic-print-exam-row__meta' : 'clinic-print-exam-row__meta clinic-print-exam-row__meta--error';
             return `
-                <label style="display:flex; align-items:flex-start; gap:10px; padding:12px; border:1px solid var(--border); border-radius:12px; background:${group.printable ? 'var(--surface)' : 'var(--bg)'}; opacity:${group.printable ? '1' : '0.62'};">
-                    <input type="checkbox" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')" style="margin-top:3px;">
-                    <span style="min-width:0; display:block;">
-                        <span style="display:block; font-size:13px; font-weight:500; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
-                        <span style="display:block; margin-top:3px; font-size:11px; font-weight:500; color:${tone}; line-height:1.45;">${clinicPrintEscapeHtml(status)}</span>
+                <label class="clinic-print-exam-row${group.printable ? '' : ' clinic-print-exam-row--disabled'}">
+                    <input type="checkbox" class="clinic-print-exam-row__check" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')">
+                    <span class="clinic-print-exam-row__main">
+                        <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
+                        <span class="${metaCls}">${clinicPrintEscapeHtml(status)}</span>
                     </span>
                 </label>
             `;
         }).join('')
-        : '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">시험 기록이 없습니다.</div>';
+        : '<div class="clinic-print-empty">시험 기록이 없습니다.</div>';
 
     showModal('오답 클리닉 출력 센터', `
-        <div style="display:flex; flex-direction:column; gap:16px;">
-            <div style="background:var(--bg); border:1px solid transparent; border-radius:14px; padding:12px 14px;">
-                <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(cls?.name || '반')}</div>
-                <div id="clinic-print-summary" style="margin-top:4px; font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45;">선택 시험 0개 · 오답 학생 0명 · 오답 0문항</div>
+        <div class="clinic-print-shell">
+            <div class="clinic-print-summary-card">
+                <div class="clinic-print-summary-card__title">${clinicPrintEscapeHtml(cls?.name || '반')}</div>
+                <div id="clinic-print-summary" class="clinic-print-summary-card__meta">선택 시험 0개 · 오답 학생 0명 · 오답 0문항</div>
             </div>
 
-            <section>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">출력 방식</div>
-                <div id="clinic-print-mode-cards" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;">
-                    <label class="clinic-mode-card" data-mode="student" style="position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:62px; padding:9px 6px; border:1px solid var(--primary); border-radius:12px; background:rgba(26,92,255,0.08); color:var(--primary); cursor:pointer; text-align:center;">
-                        <input type="radio" name="clinic-print-mode" value="student" checked onchange="clinicPrintSwitchMode('${safeClassIdForJs}')" style="position:absolute; opacity:0; width:0; height:0;">
-                        <span style="font-size:14px; font-weight:600; line-height:1.2;">학생</span>
-                        <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.2;">학생별 오답</span>
+            <section class="clinic-print-section">
+                <div class="clinic-print-section-title">출력 방식</div>
+                <div id="clinic-print-mode-cards" class="clinic-print-mode-grid">
+                    <label class="clinic-print-mode-card clinic-print-mode-card--active" data-mode="student">
+                        <input type="radio" class="clinic-print-mode-card__radio" name="clinic-print-mode" value="student" checked onchange="clinicPrintSwitchMode('${safeClassIdForJs}')">
+                        <span class="clinic-print-mode-card__title">학생</span>
+                        <span class="clinic-print-mode-card__sub">학생별 오답</span>
                     </label>
-                    <label class="clinic-mode-card" data-mode="class" style="position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:62px; padding:9px 6px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text); cursor:pointer; text-align:center;">
-                        <input type="radio" name="clinic-print-mode" value="class" onchange="clinicPrintSwitchMode('${safeClassIdForJs}')" style="position:absolute; opacity:0; width:0; height:0;">
-                        <span style="font-size:14px; font-weight:600; line-height:1.2;">반</span>
-                        <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.2;">반별 공통 오답</span>
+                    <label class="clinic-print-mode-card" data-mode="class">
+                        <input type="radio" class="clinic-print-mode-card__radio" name="clinic-print-mode" value="class" onchange="clinicPrintSwitchMode('${safeClassIdForJs}')">
+                        <span class="clinic-print-mode-card__title">반</span>
+                        <span class="clinic-print-mode-card__sub">반별 공통 오답</span>
                     </label>
-                    <label class="clinic-mode-card" data-mode="grade" style="position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:62px; padding:9px 6px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text); cursor:pointer; text-align:center;">
-                        <input type="radio" name="clinic-print-mode" value="grade" onchange="clinicPrintSwitchMode('${safeClassIdForJs}')" style="position:absolute; opacity:0; width:0; height:0;">
-                        <span style="font-size:14px; font-weight:600; line-height:1.2;">학년</span>
-                        <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.2;">학년별 공통 오답</span>
+                    <label class="clinic-print-mode-card" data-mode="grade">
+                        <input type="radio" class="clinic-print-mode-card__radio" name="clinic-print-mode" value="grade" onchange="clinicPrintSwitchMode('${safeClassIdForJs}')">
+                        <span class="clinic-print-mode-card__title">학년</span>
+                        <span class="clinic-print-mode-card__sub">학년별 공통 오답</span>
                     </label>
-                    <label class="clinic-mode-card" data-mode="type" style="position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:62px; padding:9px 6px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text); cursor:pointer; text-align:center;">
-                        <input type="radio" name="clinic-print-mode" value="type" onchange="clinicPrintSwitchMode('${safeClassIdForJs}')" style="position:absolute; opacity:0; width:0; height:0;">
-                        <span style="font-size:14px; font-weight:600; line-height:1.2;">유형</span>
-                        <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.2;">최다빈출·단원별</span>
+                    <label class="clinic-print-mode-card" data-mode="type">
+                        <input type="radio" class="clinic-print-mode-card__radio" name="clinic-print-mode" value="type" onchange="clinicPrintSwitchMode('${safeClassIdForJs}')">
+                        <span class="clinic-print-mode-card__title">유형</span>
+                        <span class="clinic-print-mode-card__sub">최다빈출·단원별</span>
                     </label>
                 </div>
             </section>
 
-            <section>
-                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">
-                    <div style="font-size:12px; font-weight:500; color:var(--secondary);">시험 목록</div>
-                    <button class="btn apms-button apms-button--quiet" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${safeClassIdForJs}');">전체 선택</button>
+            <section class="clinic-print-section">
+                <div class="clinic-print-section-head">
+                    <div class="clinic-print-section-title">시험 목록</div>
+                    <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${safeClassIdForJs}');">전체 선택</button>
                 </div>
-                <div style="display:flex; flex-direction:column; gap:8px; max-height:230px; overflow:auto;">${examHtml}</div>
+                <div class="clinic-print-exam-list">${examHtml}</div>
             </section>
 
-            <section id="clinic-print-student-section">
-                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">
-                    <div style="font-size:12px; font-weight:500; color:var(--secondary);">학생</div>
-                    <button class="btn apms-button apms-button--quiet" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true);">전체 선택</button>
+            <section id="clinic-print-student-section" class="clinic-print-section">
+                <div class="clinic-print-section-head">
+                    <div class="clinic-print-section-title">학생</div>
+                    <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true);">전체 선택</button>
                 </div>
-                <div id="clinic-print-student-list" style="display:flex; flex-direction:column; gap:8px; max-height:250px; overflow:auto;"></div>
+                <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
             </section>
 
-            <section id="clinic-print-type-panel" style="display:none; flex-direction:column; gap:14px;">
+            <section id="clinic-print-type-panel" class="clinic-print-type-panel" style="display:none;">
                 <input type="hidden" id="clinic-print-type-mode" value="frequent">
                 <input type="hidden" id="clinic-print-type-scope" value="class">
 
-                <div>
-                    <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">범위</div>
-                    <div id="clinic-print-type-scope-toggle" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px;">
-                        <button type="button" class="clinic-scope-btn" data-scope="class" style="min-height:42px; padding:9px 10px; border:1px solid var(--primary); border-radius:12px; background:rgba(26,92,255,0.08); color:var(--primary); font-size:13px; font-weight:600; cursor:pointer;" onclick="clinicPrintSetTypeScope('${safeClassIdForJs}','class')">현재 반</button>
-                        <button type="button" class="clinic-scope-btn" data-scope="grade" style="min-height:42px; padding:9px 10px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text); font-size:13px; font-weight:600; cursor:pointer;" onclick="clinicPrintSetTypeScope('${safeClassIdForJs}','grade')">같은 학년 전체</button>
+                <div class="clinic-print-field">
+                    <div class="clinic-print-section-title">범위</div>
+                    <div id="clinic-print-type-scope-toggle" class="clinic-print-scope-grid">
+                        <button type="button" class="clinic-print-scope-btn clinic-print-scope-btn--active" data-scope="class" onclick="clinicPrintSetTypeScope('${safeClassIdForJs}','class')">현재 반</button>
+                        <button type="button" class="clinic-print-scope-btn" data-scope="grade" onclick="clinicPrintSetTypeScope('${safeClassIdForJs}','grade')">같은 학년 전체</button>
                     </div>
                 </div>
 
-                <div>
-                    <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">유형 선택</div>
-                    <div id="clinic-print-type-cards" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
-                        <button type="button" class="clinic-type-card" data-type-mode="frequent" style="display:flex; flex-direction:column; gap:4px; padding:12px 10px; border:1px solid var(--primary); border-radius:12px; background:rgba(26,92,255,0.08); cursor:pointer; text-align:left;" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','frequent')">
-                            <span style="font-size:13px; font-weight:700; color:var(--text); line-height:1.25;">최다빈출</span>
-                            <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.35;">정답률 50% 이상<br>반복 오답 문항</span>
+                <div class="clinic-print-field">
+                    <div class="clinic-print-section-title">유형 선택</div>
+                    <div id="clinic-print-type-cards" class="clinic-print-type-grid">
+                        <button type="button" class="clinic-print-type-card clinic-print-type-card--active" data-type-mode="frequent" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','frequent')">
+                            <span class="clinic-print-type-card__title">최다빈출</span>
+                            <span class="clinic-print-type-card__sub">정답률 50% 이상<br>반복 오답 문항</span>
                         </button>
-                        <button type="button" class="clinic-type-card" data-type-mode="mostWrong" style="display:flex; flex-direction:column; gap:4px; padding:12px 10px; border:1px solid var(--border); border-radius:12px; background:var(--surface); cursor:pointer; text-align:left;" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','mostWrong')">
-                            <span style="font-size:13px; font-weight:700; color:var(--text); line-height:1.25;">최다오답</span>
-                            <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.35;">정답률 50% 미만<br>다수 취약 문항</span>
+                        <button type="button" class="clinic-print-type-card" data-type-mode="mostWrong" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','mostWrong')">
+                            <span class="clinic-print-type-card__title">최다오답</span>
+                            <span class="clinic-print-type-card__sub">정답률 50% 미만<br>다수 취약 문항</span>
                         </button>
-                        <button type="button" class="clinic-type-card" data-type-mode="unit" style="display:flex; flex-direction:column; gap:4px; padding:12px 10px; border:1px solid var(--border); border-radius:12px; background:var(--surface); cursor:pointer; text-align:left;" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','unit')">
-                            <span style="font-size:13px; font-weight:700; color:var(--text); line-height:1.25;">단원별 오답</span>
-                            <span style="font-size:10px; font-weight:500; color:var(--secondary); line-height:1.35;">마스터 단원 기준<br>선택 출력</span>
+                        <button type="button" class="clinic-print-type-card" data-type-mode="unit" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','unit')">
+                            <span class="clinic-print-type-card__title">단원별 오답</span>
+                            <span class="clinic-print-type-card__sub">마스터 단원 기준<br>선택 출력</span>
                         </button>
                     </div>
                 </div>
@@ -1314,14 +1303,7 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div id="clinic-print-type-result"></div>
             </section>
 
-            <button id="clinic-print-submit-btn" class="btn apms-button apms-button--primary btn-primary" style="width:100%; min-height:48px; border-radius:14px; font-size:14px; font-weight:500;" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
-
-            <style>
-                @media (max-width:520px) {
-                    #clinic-print-mode-cards { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
-                    #clinic-print-type-cards { grid-template-columns:1fr !important; }
-                }
-            </style>
+            <button id="clinic-print-submit-btn" class="btn apms-button apms-button--primary btn-primary clinic-print-submit" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
         </div>
     `);
 
