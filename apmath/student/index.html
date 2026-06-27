@@ -692,6 +692,7 @@
     let omrIndex = null;
     let omrDraft = null;
     let materialWrongData = null;
+    let wrongClinicData = null;
     let materialWrongDraft = null;
     let isLoading = false;
     let deferredInstallPrompt = null;
@@ -844,6 +845,7 @@
       homeIndex = null;
       omrData = null;
       omrIndex = null;
+      wrongClinicData = null;
     }
     async function apiPost(path, body) {
       const r = await fetch(`${API_BASE}/${path}`, {
@@ -950,6 +952,7 @@
       try {
         setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
         renderHome();
+        refreshWrongClinicPackets();
         if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
           await renderOmrExams();
         }
@@ -1176,6 +1179,68 @@
         if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">수업자료 오답을 불러오지 못했습니다.</div>';
       }
     }
+    async function loadWrongClinicPackets(force = false) {
+      if (!session?.student_id || !session?.student_token) return { packets: [] };
+      if (!force && wrongClinicData?.packets) return wrongClinicData;
+      wrongClinicData = await apiGet(`student-portal/wrong-clinics?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      return wrongClinicData;
+    }
+    function getWrongClinicPackets() {
+      return Array.isArray(wrongClinicData?.packets) ? wrongClinicData.packets : [];
+    }
+    async function refreshWrongClinicPackets() {
+      if (!session?.student_id || !session?.student_token) return;
+      const root = $('wrong-clinic-section');
+      try {
+        await loadWrongClinicPackets(true);
+        const nextRoot = $('wrong-clinic-section');
+        if (nextRoot) nextRoot.outerHTML = renderWrongClinicPackets();
+      } catch (e) {
+        const nextRoot = $('wrong-clinic-section');
+        if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">오답 클리닉을 불러오지 못했습니다.</div>';
+      }
+    }
+    function openWrongClinicPacket(packetKey, mode = 'review') {
+      const key = String(packetKey || '').trim();
+      if (!key) return;
+      const url = new URL('../wrong_print_engine.html', window.location.href);
+      url.searchParams.set('packet', key);
+      url.searchParams.set('mode', mode);
+      window.open(url.toString(), '_blank', 'noopener');
+    }
+    function renderWrongClinicPackets() {
+      const list = getWrongClinicPackets();
+      const visible = list.slice(0, 6);
+      const rows = visible.length ? visible.map(item => {
+        const meta = [item.source_class_name ? `출처 ${item.source_class_name}` : '', item.created_at ? String(item.created_at).slice(0, 10) : ''].filter(Boolean).join(' · ');
+        const packetKey = escapeHtml(item.packet_key || '');
+        return `
+          <div class="portal-assignment-row">
+            <div class="portal-assignment-line">${escapeHtml(item.title || '오답 클리닉')}</div>
+            <div class="portal-assignment-meta">
+              <span class="portal-assignment-pill">${escapeHtml(meta || '-')}</span>
+              <span class="portal-assignment-pill status-done">${Number(item.item_count || 0)}문항</span>
+            </div>
+            <div class="portal-assignment-actions">
+              <button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'exam')">문제</button>
+              <button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'ans')">정답</button>
+              <button type="button" class="btn btn-primary" onclick="openWrongClinicPacket('${packetKey}', 'sol')">해설</button>
+            </div>
+          </div>
+        `;
+      }).join('') : '<div class="empty">배포된 오답 클리닉이 없습니다.</div>';
+      return `
+        <section id="wrong-clinic-section" class="card portal-assignments-card">
+          <div class="portal-assignments-head">
+            <div>
+              <h2 class="card-title">오답 클리닉</h2>
+              <p class="card-desc">선생님이 배포한 오답 문제와 정답·해설을 확인합니다.</p>
+            </div>
+          </div>
+          <div class="portal-assignments-list">${rows}</div>
+        </section>
+      `;
+    }
     function renderMaterialWrongAssignments() {
       const list = getMaterialWrongAssignments();
       const visible = list.slice(0, 6);
@@ -1386,6 +1451,7 @@
           </section>
           ${renderInstallCard(true)}
           ${renderStudentPortalAssignments()}
+          ${renderWrongClinicPackets()}
           ${renderMaterialWrongAssignments()}
           <div class="portal-grid">
             <section class="card portal-card">

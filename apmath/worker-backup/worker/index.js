@@ -29,6 +29,7 @@ import { handleHomeworkPhoto } from './routes/homework-photo.js';
 import { handlePlanner } from './routes/planner.js';
 import { handleAuth } from './routes/auth.js';
 import { handleStudyMaterialWrongs } from './routes/study-material-wrongs.js';
+import { handleWrongClinics } from './routes/wrong-clinics.js';
 import { handleOnboarding } from './routes/onboarding.js';
 import { handleEie } from './routes/eie.js';
 import { handleBackdoor } from './routes/backdoor.js';
@@ -3435,6 +3436,12 @@ async function handleApiRequest(request, env) {
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
           const teacher = await verifyAuth(request, env);
           const routed = await handleStudyMaterialWrongs(request, env, teacher, path, url, body);
+          if (routed) return routed;
+        }
+
+        if (resource === 'wrong-clinics') {
+          const teacher = (path[2] === 'packet' || path[2] === 'set') ? null : await verifyAuth(request, env);
+          const routed = await handleWrongClinics(request, env, teacher, path, url);
           if (routed) return routed;
         }
 

@@ -1,5 +1,6 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { listWrongClinicPacketsForStudent } from './wrong-clinics.js';
 
 const columnCacheByEnv = new WeakMap();
 
@@ -340,6 +341,16 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
 
     const exams = await loadStudentClassExamAssignments(env, verified.student.id, 150);
     return jsonResponse({ success: true, exams });
+  }
+
+  if (method === 'GET' && id === 'wrong-clinics') {
+    const studentId = String(url.searchParams.get('student_id') || '').trim();
+    const studentToken = pickStudentPortalToken(url, request);
+    const verified = await verifyStudentPortalSession(env, studentId, studentToken);
+    if (verified.error) return verified.error;
+
+    const packets = await listWrongClinicPacketsForStudent(env, verified.student.id);
+    return jsonResponse({ success: true, packets });
   }
 
   if (method === 'POST' && id === 'omr-submit') {

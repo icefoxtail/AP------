@@ -39,6 +39,8 @@
         .page-header-meta-right { display: flex; align-items: flex-end; gap: 14px; white-space: nowrap; }
         .page-header.page-header--exam .page-header-meta-right { align-items: center; gap: 12px; }
         .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
+        .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
+        .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
@@ -92,7 +94,6 @@
         .page-qr { position: absolute; right: 15mm; bottom: 12mm; display: flex; flex-direction: column; align-items: center; gap: 2px; z-index: 20; background: #fff; padding: 1mm 0 0; }
         .page-qr-label { font-size: 7.6pt; font-weight: 700; line-height: 1; color: #000; white-space: nowrap; }
         .page-qr canvas { display: block; width: 22mm; height: 22mm; image-rendering: pixelated; }
-        .page-qr-warn { max-width: 34mm; margin-top: 1mm; font-size: 6.4pt; font-weight: 700; line-height: 1.25; color: #b91c1c; text-align: center; white-space: normal; }
         .sol-load-warn { margin-top: 8px; padding: 6px 8px; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2; color: #b91c1c; font-size: 8pt; font-weight: 700; line-height: 1.4; }
         .notice { width: min(720px, calc(100% - 32px)); margin: 32px auto; padding: 18px; border-radius: 12px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 700; }
         @media print {
@@ -123,6 +124,7 @@ const STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
 const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
 // 내부망/로컬에서 출력해도 QR은 항상 공개 URL로 생성한다(학생/학부모 폰에서 열려야 하므로).
 const WRONG_PRINT_PUBLIC_URL = 'https://icefoxtail.github.io/AP------/apmath/wrong_print_engine.html';
+const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 // QR URL 길이별 스캔 안정성 기준(LOOP 4).
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam' };
@@ -139,6 +141,71 @@ const WRONG_QR_PATCH = {
 
 function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+function clampText(value, maxLength) {
+    return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+}
+
+function getDefaultPrintHeaderOptions(payload = state.payload) {
+    return {
+        title: payload?.printTitle || '오답 클리닉',
+        metaRight: '',
+        subtitle: '',
+        showNameLine: true,
+        showScoreLine: true,
+        applyToSolution: true,
+        applyToAnswer: true
+    };
+}
+
+function normalizePrintHeaderOptions(raw, payload = state.payload) {
+    const base = getDefaultPrintHeaderOptions(payload);
+    const source = raw && typeof raw === 'object' ? raw : {};
+    return {
+        title: clampText(source.title ?? base.title, 80) || base.title,
+        metaRight: clampText(source.metaRight ?? base.metaRight, 60),
+        subtitle: clampText(source.subtitle ?? base.subtitle, 120),
+        showNameLine: source.showNameLine !== false,
+        showScoreLine: source.showScoreLine !== false,
+        applyToSolution: source.applyToSolution !== false,
+        applyToAnswer: source.applyToAnswer !== false
+    };
+}
+
+function getPrintHeaderOptions(payload = state.payload) {
+    if (!payload) return getDefaultPrintHeaderOptions(payload);
+    payload.headerOptions = normalizePrintHeaderOptions(payload.headerOptions, payload);
+    return payload.headerOptions;
+}
+
+function shouldApplyPrintHeader(type) {
+    const opts = getPrintHeaderOptions();
+    return type === 'exam'
+        || (type === 'sol' && opts.applyToSolution)
+        || (type === 'ans' && opts.applyToAnswer);
+}
+
+function getRenderHeaderTitle(type, fallbackTitle) {
+    const opts = getPrintHeaderOptions();
+    if (shouldApplyPrintHeader(type) && opts.title) return opts.title;
+    return fallbackTitle || state.payload?.printTitle || '오답 클리닉';
+}
+
+function getRenderHeaderMetaRight(type, fallbackMetaRight) {
+    const opts = getPrintHeaderOptions();
+    if (shouldApplyPrintHeader(type) && opts.metaRight) return opts.metaRight;
+    return fallbackMetaRight || '';
+}
+
+function getRenderHeaderSubtitle(type) {
+    const opts = getPrintHeaderOptions();
+    return shouldApplyPrintHeader(type) ? opts.subtitle : '';
+}
+
+function renderHeaderFill(label, scoreSuffix = '') {
+    const lineClass = scoreSuffix ? 'header-fill-line header-fill-line--score' : 'header-fill-line';
+    return `<span>${escapeHtml(label)}<span class="${lineClass}"></span>${scoreSuffix ? escapeHtml(scoreSuffix) : ''}</span>`;
 }
 
 function encodeBase64Url(value) {
@@ -345,6 +412,32 @@ function buildQrTargetUrl(compactPayload) {
     return url.toString();
 }
 
+function buildStoredQrTargetUrl(kind, key) {
+    const safeKey = String(key || '').trim();
+    if (!safeKey) return '';
+    const url = new URL(WRONG_PRINT_PUBLIC_URL);
+    url.searchParams.set('mode', 'review');
+    url.searchParams.set('qr', '1');
+    url.searchParams.set(kind === 'set' ? 'set' : 'packet', safeKey);
+    return url.toString();
+}
+
+function getPayloadSetKey(payload) {
+    return String(payload?.serverSetKey || payload?.publicSetKey || payload?.setKey || payload?.public_set_key || '').trim();
+}
+
+function getStudentPacketKey(student) {
+    return String(student?.serverPacketKey || student?.packetKey || student?.packet_key || '').trim();
+}
+
+function buildQrTargetUrlForPayload(compactPayload, payload, student = null) {
+    const packetKey = student ? getStudentPacketKey(student) : '';
+    if (packetKey) return buildStoredQrTargetUrl('packet', packetKey);
+    const setKey = getPayloadSetKey(payload);
+    if (setKey) return buildStoredQrTargetUrl('set', setKey);
+    return buildQrTargetUrl(compactPayload);
+}
+
 // QR URL 길이로 스캔 안정성 수준을 판정한다(LOOP 4). safe/warn/danger.
 function evaluateQrUrlLength(qrUrl) {
     const length = String(qrUrl || '').length;
@@ -380,14 +473,17 @@ function applyQrSolutionLockUI() {
     if (title) title.textContent = 'AP Math 오답 확인';
 }
 
-function injectSolutionQrToPage(targetPage, compactPayload) {
-    if (!WRONG_QR_PATCH.enabled || !targetPage || !compactPayload) return;
+function injectSolutionQrToPage(targetPage, qrPayload) {
+    if (!WRONG_QR_PATCH.enabled || !targetPage || !qrPayload) return;
     if (typeof QRious !== 'function') return;
 
     const oldQr = targetPage.querySelector('.page-qr');
     if (oldQr) oldQr.remove();
 
-    const qrUrl = buildQrTargetUrl(compactPayload);
+    const compactPayload = qrPayload && typeof qrPayload === 'object' && qrPayload.payload ? qrPayload.payload : qrPayload;
+    const qrUrl = qrPayload && typeof qrPayload === 'object' && qrPayload.url
+        ? String(qrPayload.url)
+        : buildQrTargetUrl(compactPayload);
     const lengthInfo = evaluateQrUrlLength(qrUrl);
 
     const qrWrap = document.createElement('div');
@@ -406,13 +502,8 @@ function injectSolutionQrToPage(targetPage, compactPayload) {
     });
 
     if (lengthInfo.level !== 'safe') {
+        // 출력물에는 경고 문구를 박지 않고 콘솔에만 남긴다(QR 하단 문구 제거 요청).
         console.warn('[wrong_print_engine] QR URL length', lengthInfo.length, '→', lengthInfo.level);
-    }
-    if (lengthInfo.level === 'danger') {
-        const warn = document.createElement('div');
-        warn.className = 'page-qr-warn';
-        warn.textContent = 'QR 데이터가 너무 길어 일부 기기에서 스캔이 실패할 수 있습니다. 문항 수를 줄이거나 학생별로 출력해 주세요.';
-        qrWrap.appendChild(warn);
     }
 }
 
@@ -884,12 +975,26 @@ function makePage(area, type, title, metaLeft, metaRight, pageNumber) {
     frame.className = 'page-exam-frame';
     const header = document.createElement('div');
     header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
+    const renderTitle = getRenderHeaderTitle(type, title);
+    const renderMetaRight = getRenderHeaderMetaRight(type, metaRight);
+    const subtitle = getRenderHeaderSubtitle(type);
+    const opts = getPrintHeaderOptions();
+    const fillHtml = type === 'exam'
+        ? [
+            opts.showNameLine ? renderHeaderFill('이름') : '',
+            opts.showScoreLine ? renderHeaderFill('점수', '/ 100') : ''
+        ].filter(Boolean).join('')
+        : '';
     header.innerHTML = `
-        <div class="page-header-title">${escapeHtml(title)}</div>
+        <div>
+            <div class="page-header-title">${escapeHtml(renderTitle)}</div>
+            ${subtitle ? `<div class="page-header-subtitle">${escapeHtml(subtitle)}</div>` : ''}
+        </div>
         <div class="page-header-meta">
             <div class="page-header-meta-left">${escapeHtml(metaLeft || '')}</div>
             <div class="page-header-meta-right">
-                ${metaRight ? `<span>${escapeHtml(metaRight)}</span>` : ''}
+                ${renderMetaRight ? `<span>${escapeHtml(renderMetaRight)}</span>` : ''}
+                ${fillHtml}
             </div>
         </div>
     `;
@@ -1129,7 +1234,10 @@ async function renderStudentPages(area, payload) {
             title: `${student.studentName} 오답`,
             metaLeft: '',
             metaRight: `${payload.className || ''} · ${getStudentExamLabel(payload, student)} · ${payload.createdDate || ''}`,
-            solutionQrPayload: buildStudentQrPayload(payload, student),
+            solutionQrPayload: {
+                payload: buildStudentQrPayload(payload, student),
+                url: buildQrTargetUrlForPayload(buildStudentQrPayload(payload, student), payload, student)
+            },
             homeworkCheckHTML: payload.options?.includeHomeworkCheckBox === false ? '' : `
                 <div class="homework-check">
                     <span>□ 다시 풀기 완료</span>
@@ -1162,7 +1270,10 @@ async function renderClassPages(area, payload) {
         title: `${payload.className || '반'} 반별 공통 오답지`,
         metaLeft: '',
         metaRight: payload.createdDate || '',
-        solutionQrPayload: buildClassQrPayload(payload)
+        solutionQrPayload: {
+            payload: buildClassQrPayload(payload),
+            url: buildQrTargetUrlForPayload(buildClassQrPayload(payload), payload)
+        }
     });
 }
 
@@ -1178,7 +1289,10 @@ async function renderGradePages(area, payload) {
         title: `${getGradePrintLabel(payload)} 공통 오답지`,
         metaLeft: '',
         metaRight: payload.createdDate || '',
-        solutionQrPayload: buildGradeQrPayload(payload)
+        solutionQrPayload: {
+            payload: buildGradeQrPayload(payload),
+            url: buildQrTargetUrlForPayload(buildGradeQrPayload(payload), payload)
+        }
     });
 }
 
@@ -1246,7 +1360,10 @@ async function renderTypePages(area, payload) {
             title: payload.typeMode === 'unit' ? section.title : `${scopeLabel} ${label}`,
             metaLeft: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
             metaRight: payload.createdDate || '',
-            solutionQrPayload: buildTypeQrPayload(payload)
+            solutionQrPayload: {
+                payload: buildTypeQrPayload(payload),
+                url: buildQrTargetUrlForPayload(buildTypeQrPayload(payload), payload)
+            }
         });
     }
 }
@@ -1702,17 +1819,44 @@ function loadPayloadFromUrl() {
     }
 }
 
-function boot() {
+async function loadWrongClinicPayloadFromServer(kind, key) {
+    const safeKind = kind === 'set' ? 'set' : 'packet';
+    const res = await fetch(`${WRONG_CLINIC_API_BASE}/wrong-clinics/${safeKind}/${encodeURIComponent(key)}`, {
+        headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.success === false || !data.payload) {
+        throw new Error(data.message || data.error || '오답 클리닉 데이터를 불러오지 못했습니다.');
+    }
+    return data.payload;
+}
+
+async function loadPayloadFromUrlOrStorage() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('packet')) return loadWrongClinicPayloadFromServer('packet', params.get('packet'));
+    if (params.get('set')) return loadWrongClinicPayloadFromServer('set', params.get('set'));
+
+    const urlPayload = loadPayloadFromUrl();
+    if (urlPayload) return urlPayload;
+
+    try {
+        const payloadJson = sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || 'null';
+        const payload = JSON.parse(payloadJson);
+        console.log('[wrong_print_engine] payload loaded', !!payload);
+        return payload;
+    } catch (e) {
+        return null;
+    }
+}
+
+async function boot() {
     const qrMode = isQrSolutionMode();
-    state.payload = loadPayloadFromUrl();
-    if (!state.payload && !qrMode) {
-        try {
-            const payloadJson = sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || 'null';
-            state.payload = JSON.parse(payloadJson);
-            console.log('[wrong_print_engine] payload loaded', !!state.payload);
-        } catch (e) {
-            state.payload = null;
-        }
+    try {
+        state.payload = await loadPayloadFromUrlOrStorage();
+    } catch (e) {
+        console.warn('[wrong_print_engine] server payload load failed:', e);
+        document.getElementById('print-area').innerHTML = `<div class="notice">${escapeHtml(e.message || '오답지 데이터를 불러오지 못했습니다.')}</div>`;
+        return;
     }
 
     const params = new URLSearchParams(window.location.search);
