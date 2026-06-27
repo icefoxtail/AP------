@@ -6,7 +6,9 @@ const vm = require('vm');
 const root = path.resolve(__dirname, '..');
 const operations = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'operations.js'), 'utf8');
 const schema = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'schema.sql'), 'utf8');
-const report = fs.readFileSync(path.join(root, 'apmath', 'js', 'report.js'), 'utf8');
+const report = ['report-text.js', 'report-center.js', 'report-print.js']
+  .map(file => fs.readFileSync(path.join(root, 'apmath', 'js', file), 'utf8'))
+  .join('\n');
 
 assert(
   operations.includes('findConsultationDuplicate') &&
