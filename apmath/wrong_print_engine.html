@@ -44,6 +44,8 @@
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
+        .q-box.sol-box.sol-box-long { overflow: visible; padding-bottom: 1em; margin-bottom: 0; }
+        .sol-chunk { display: inline; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
         .q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 8px auto; break-inside: avoid; page-break-inside: avoid; }
@@ -90,6 +92,8 @@
         .page-qr { position: absolute; right: 15mm; bottom: 12mm; display: flex; flex-direction: column; align-items: center; gap: 2px; z-index: 20; background: #fff; padding: 1mm 0 0; }
         .page-qr-label { font-size: 7.6pt; font-weight: 700; line-height: 1; color: #000; white-space: nowrap; }
         .page-qr canvas { display: block; width: 22mm; height: 22mm; image-rendering: pixelated; }
+        .page-qr-warn { max-width: 34mm; margin-top: 1mm; font-size: 6.4pt; font-weight: 700; line-height: 1.25; color: #b91c1c; text-align: center; white-space: normal; }
+        .sol-load-warn { margin-top: 8px; padding: 6px 8px; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2; color: #b91c1c; font-size: 8pt; font-weight: 700; line-height: 1.4; }
         .notice { width: min(720px, calc(100% - 32px)); margin: 32px auto; padding: 18px; border-radius: 12px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 700; }
         @media print {
             #mode-ctrl { display: none; }
@@ -117,6 +121,10 @@
 <script>
 const STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
 const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+// 내부망/로컬에서 출력해도 QR은 항상 공개 URL로 생성한다(학생/학부모 폰에서 열려야 하므로).
+const WRONG_PRINT_PUBLIC_URL = 'https://icefoxtail.github.io/AP------/apmath/wrong_print_engine.html';
+// QR URL 길이별 스캔 안정성 기준(LOOP 4).
+const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam' };
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
@@ -205,13 +213,19 @@ function getQuestionArchiveFile(q) {
     return (q && (q._archiveFile || q._sourceArchiveFile)) || '';
 }
 
-function compactWrongItem(item) {
+// compact 문항: [archiveFile, questionNo, correctRate, examTitle?]
+// 복원 정확도를 위해 "원본 아카이브 문항"(sourceArchiveFile/sourceQuestionNo)을 우선 직렬화한다.
+// 일반 단일 시험은 source==exam이라 동일하고, MIXED/조립 시험만 원본으로 교정된다(길이 증가 없음).
+// examTitle은 학생별에서만 보존한다(반/학년/유형은 문항이 많아 길이 폭증을 막기 위해 생략).
+function compactWrongItem(item, includeExamTitle = false) {
     const rate = Number(item?.correctRate);
-    return [
-        normalizeArchiveFile(item?.archiveFile || ''),
-        Number(item?.questionNo || 0),
+    const row = [
+        normalizeArchiveFile(item?.sourceArchiveFile || item?.archiveFile || ''),
+        Number(item?.sourceQuestionNo || item?.questionNo || 0),
         Number.isFinite(rate) ? Math.round(rate) : null
     ];
+    if (includeExamTitle) row.push(String(item?.examTitle || ''));
+    return row;
 }
 
 function expandWrongItem(row) {
@@ -220,55 +234,96 @@ function expandWrongItem(row) {
     return {
         archiveFile: data[0] || '',
         questionNo: Number(data[1] || 0),
-        correctRate: Number.isFinite(rate) ? rate : null
+        correctRate: Number.isFinite(rate) ? rate : null,
+        examTitle: data[3] || ''
     };
 }
 
 function buildClassQrPayload(payload) {
     return {
-        v: 2,
+        v: 3,
         m: 'class',
-        i: (payload.classWrongItems || []).map(compactWrongItem)
+        c: payload.className || '',
+        t: payload.printTitle || '',
+        d: payload.createdDate || '',
+        i: (payload.classWrongItems || []).map(item => compactWrongItem(item))
     };
 }
 
 function buildGradeQrPayload(payload) {
     return {
-        v: 2,
+        v: 3,
         m: 'grade',
-        i: (payload.gradeWrongItems || []).map(compactWrongItem)
+        g: payload.gradeName || '',
+        t: payload.printTitle || '',
+        d: payload.createdDate || '',
+        i: (payload.gradeWrongItems || []).map(item => compactWrongItem(item))
     };
 }
 
 function buildStudentQrPayload(payload, student) {
     return {
-        v: 2,
+        v: 3,
         m: 'student',
-        i: (student?.wrongItems || []).map(compactWrongItem)
+        n: student?.studentName || '',
+        c: payload.className || '',
+        t: payload.printTitle || '',
+        d: payload.createdDate || '',
+        i: (student?.wrongItems || []).map(item => compactWrongItem(item, true))
     };
 }
 
+function buildTypeQrPayload(payload) {
+    return {
+        v: 3,
+        m: 'type',
+        y: payload.typeMode || '',
+        l: getTypePrintLabel(payload),
+        s: getTypeScopeLabel(payload),
+        t: payload.printTitle || '',
+        d: payload.createdDate || '',
+        i: getTypeItems(payload).map(item => compactWrongItem(item))
+    };
+}
+
+// v2(레거시 배열형) + v3(메타 포함)을 모두 복원한다. 복원 실패 문항을 조용히 버리지 않도록
+// archiveFile/questionNo 누락 문항도 그대로 통과시키고, cloneQuestionForRender가 경고 박스를 출력한다.
 function expandWrongQrPayload(compact) {
-    const mode = compact?.m === 'class' || compact?.m === 'grade' ? compact.m : 'student';
+    const rawMode = compact?.m;
+    const mode = rawMode === 'class' || rawMode === 'grade' || rawMode === 'type' ? rawMode : 'student';
+    const items = (compact?.i || []).map(expandWrongItem);
     const base = {
-        version: 'qr-2',
+        version: compact?.v >= 3 ? 'qr-3' : 'qr-2',
         mode,
-        printTitle: '오답 클리닉',
-        className: '',
-        createdDate: '',
-        options: { includeHomeworkCheckBox: false },
+        printTitle: compact?.t || '오답 클리닉',
+        className: compact?.c || '',
+        gradeName: compact?.g || '',
+        createdDate: compact?.d || '',
+        options: { includeHomeworkCheckBox: false, pageBreakByStudent: false },
         students: [],
-        classWrongItems: []
+        classWrongItems: [],
+        gradeWrongItems: []
     };
 
     if (mode === 'class') {
-        base.classWrongItems = (compact?.i || []).map(expandWrongItem).filter(item => item.archiveFile && item.questionNo);
+        base.classWrongItems = items;
     } else if (mode === 'grade') {
-        base.gradeWrongItems = (compact?.i || []).map(expandWrongItem).filter(item => item.archiveFile && item.questionNo);
+        base.gradeWrongItems = items;
+    } else if (mode === 'type') {
+        base.typeMode = compact?.y || 'mostWrong';
+        base.typeLabel = compact?.l || '';
+        base.scopeLabel = compact?.s || '';
+        // 범위 라벨을 className에 실어 QR review 제목(getTypeScopeLabel)에 그대로 노출한다.
+        if (compact?.s) base.className = compact.s;
+        base.typeItems = items;
+        base.classWrongItems = items;
+        if (!base.printTitle || base.printTitle === '오답 클리닉') {
+            base.printTitle = [compact?.s, compact?.l].filter(Boolean).join(' ') || '유형별 오답';
+        }
     } else {
         base.students = [{
-            studentName: '오답',
-            wrongItems: (compact?.i || []).map(expandWrongItem).filter(item => item.archiveFile && item.questionNo)
+            studentName: compact?.n || '오답',
+            wrongItems: items
         }];
     }
     return base;
@@ -283,11 +338,20 @@ function decodeWrongQrPayload(value) {
 }
 
 function buildQrTargetUrl(compactPayload) {
-    const url = new URL(window.location.href);
+    const url = new URL(WRONG_PRINT_PUBLIC_URL);
     url.searchParams.set('mode', 'review');
     url.searchParams.set('qr', '1');
     url.searchParams.set('wp', encodeWrongQrPayload(compactPayload));
     return url.toString();
+}
+
+// QR URL 길이로 스캔 안정성 수준을 판정한다(LOOP 4). safe/warn/danger.
+function evaluateQrUrlLength(qrUrl) {
+    const length = String(qrUrl || '').length;
+    let level = 'safe';
+    if (length > QR_URL_LENGTH.warn) level = 'danger';
+    else if (length > QR_URL_LENGTH.safe) level = 'warn';
+    return { length, level };
 }
 
 function isQrSolutionMode() {
@@ -323,6 +387,9 @@ function injectSolutionQrToPage(targetPage, compactPayload) {
     const oldQr = targetPage.querySelector('.page-qr');
     if (oldQr) oldQr.remove();
 
+    const qrUrl = buildQrTargetUrl(compactPayload);
+    const lengthInfo = evaluateQrUrlLength(qrUrl);
+
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-qr';
     qrWrap.innerHTML = `<div class="page-qr-label">${WRONG_QR_PATCH.label}</div><canvas></canvas>`;
@@ -330,13 +397,23 @@ function injectSolutionQrToPage(targetPage, compactPayload) {
 
     new QRious({
         element: qrWrap.querySelector('canvas'),
-        value: buildQrTargetUrl(compactPayload),
+        value: qrUrl,
         size: WRONG_QR_PATCH.size,
         level: 'M',
         background: 'white',
         foreground: 'black',
         padding: 0
     });
+
+    if (lengthInfo.level !== 'safe') {
+        console.warn('[wrong_print_engine] QR URL length', lengthInfo.length, '→', lengthInfo.level);
+    }
+    if (lengthInfo.level === 'danger') {
+        const warn = document.createElement('div');
+        warn.className = 'page-qr-warn';
+        warn.textContent = 'QR 데이터가 너무 길어 일부 기기에서 스캔이 실패할 수 있습니다. 문항 수를 줄이거나 학생별로 출력해 주세요.';
+        qrWrap.appendChild(warn);
+    }
 }
 
 async function fetchArchiveText(file) {
@@ -386,11 +463,44 @@ function getQuestionNoValue(question, fallbackIndex) {
     return fallbackIndex + 1;
 }
 
-function findQuestionInBank(bank, questionNo) {
+function toQuestionNumber(value) {
+    const match = String(value ?? '').match(/\d+/);
+    return match ? Number(match[0]) : null;
+}
+
+// item이 제공할 수 있는 원본 식별자를 우선순위대로 모아 bank에서 문항을 찾는다(LOOP 2 보강).
+// 순서: sourceQuestionNo → originalId → questionId → id → questionNo.
+function findQuestionInBank(bank, item) {
     const list = normalizeQuestionBank(bank);
-    const qNo = Number(questionNo);
-    if (!qNo || !list.length) return null;
-    return list.find((q, idx) => getQuestionNoValue(q, idx) === qNo) || list[qNo - 1] || null;
+    if (!list.length) return null;
+    // 하위 호환: questionNo(숫자/문자)만 넘어와도 동작한다.
+    const src = (item && typeof item === 'object') ? item : { questionNo: item };
+    const candidates = [
+        src.sourceQuestionNo,
+        src.originalId,
+        src.questionId,
+        src.source_question_no,
+        src.id,
+        src.questionNo
+    ].map(toQuestionNumber).filter(n => n != null);
+    if (!candidates.length) return null;
+    const seen = new Set();
+    const ordered = candidates.filter(n => (seen.has(n) ? false : seen.add(n)));
+    // 1) bank의 questionNo/id 필드 직접 매칭
+    for (const c of ordered) {
+        const hit = list.find(q => toQuestionNumber(q?.questionNo) === c || toQuestionNumber(q?.id) === c);
+        if (hit) return hit;
+    }
+    // 2) 파생 번호(getQuestionNoValue) 매칭
+    for (const c of ordered) {
+        const hit = list.find((q, idx) => getQuestionNoValue(q, idx) === c);
+        if (hit) return hit;
+    }
+    // 3) 배열 index + 1
+    for (const c of ordered) {
+        if (list[c - 1]) return list[c - 1];
+    }
+    return null;
 }
 
 function wrapLatex(text) {
@@ -727,16 +837,21 @@ function getGradePrintLabel(payload) {
 }
 
 function cloneQuestionForRender(item) {
-    const file = normalizeArchiveFile(item.archiveFile);
+    // 원본(조립/MIXED 교정) 아카이브를 우선 사용해 문항을 복원한다.
+    const file = normalizeArchiveFile(item.sourceArchiveFile || item.archiveFile);
     const bank = state.banks[file] || [];
-    const original = findQuestionInBank(bank, item.questionNo);
+    const original = findQuestionInBank(bank, item);
     if (!original) {
+        // 복원 실패를 조용히 버리지 않는다(LOOP 2): 콘솔 경고 + 출력물 경고 박스.
+        console.warn('[wrong_print_engine] 문항 복원 실패:', { archiveFile: file, questionNo: item.questionNo, examTitle: item.examTitle || '' });
+        const warnHtml = `<div class="sol-load-warn">[문항 로드 실패]<br>archiveFile: ${escapeHtml(file || '(없음)')}<br>questionNo: ${escapeHtml(String(item.questionNo || '(없음)'))}<br>이 문항은 원본 아카이브에서 찾지 못했습니다.</div>`;
         return {
             id: item.questionNo,
-            content: '<span style="color:#dc2626;font-weight:800;">문항 원문을 불러오지 못했습니다.</span>',
+            content: warnHtml,
             choices: [],
             answer: '',
-            solution: '',
+            solution: '원본 아카이브에서 문항을 찾지 못했습니다.',
+            _loadFailed: true,
             _wrongNote: item._wrongNote || '',
             _examLabel: item.examTitle || '',
             _sourceNo: item.questionNo,
@@ -817,11 +932,13 @@ function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
 }
 
 async function loadAllQuestionBanks(payload) {
+    // 복원은 sourceArchiveFile(원본)을 우선 사용하므로, 원본 파일도 함께 적재한다.
+    const itemFile = item => item.sourceArchiveFile || item.archiveFile;
     const files = [...new Set([
-        ...((payload.students || []).flatMap(student => (student.wrongItems || []).map(item => item.archiveFile))),
-        ...((payload.classWrongItems || []).map(item => item.archiveFile)),
-        ...((payload.gradeWrongItems || []).map(item => item.archiveFile)),
-        ...((payload.typeItems || []).map(item => item.archiveFile))
+        ...((payload.students || []).flatMap(student => (student.wrongItems || []).map(itemFile))),
+        ...((payload.classWrongItems || []).map(itemFile)),
+        ...((payload.gradeWrongItems || []).map(itemFile)),
+        ...((payload.typeItems || []).map(itemFile))
     ].filter(Boolean))];
 
     for (const file of files) {
@@ -1113,14 +1230,6 @@ function getTypeSections(payload) {
     })).filter(section => section.items.length);
 }
 
-function buildTypeQrPayload(payload) {
-    return {
-        v: 2,
-        m: payload.scope === 'grade' ? 'grade' : 'class',
-        i: getTypeItems(payload).map(compactWrongItem)
-    };
-}
-
 async function renderTypePages(area, payload) {
     const sections = getTypeSections(payload);
     const label = getTypePrintLabel(payload);
@@ -1142,9 +1251,58 @@ async function renderTypePages(area, payload) {
     }
 }
 
+// 긴 해설 HTML을 컬럼/페이지 경계로 넘길 수 있도록 조각낸다(archive/engine.html 이식).
+function makeSolutionHtmlChunks(html) {
+    const host = document.createElement('div');
+    host.innerHTML = html || '';
+    const chunks = [];
+    const pushTextChunks = (text) => {
+        const parts = String(text || '').split(/(\s+)/);
+        let buf = '';
+        for (const part of parts) {
+            if ((buf + part).length > 260 && buf.trim()) {
+                const span = document.createElement('span');
+                span.textContent = buf;
+                chunks.push(span.outerHTML);
+                buf = part;
+            } else {
+                buf += part;
+            }
+        }
+        if (buf) {
+            const span = document.createElement('span');
+            span.textContent = buf;
+            chunks.push(span.outerHTML);
+        }
+    };
+    host.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            pushTextChunks(node.textContent || '');
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.tagName === 'BR') chunks.push('<br>');
+            else chunks.push(node.outerHTML);
+        }
+    });
+    return chunks.length ? chunks : [''];
+}
+
+// 분할 출력용 해설 박스 쉘. 첫 조각은 원본 문항/정답을 유지하고 해설만 비우며,
+// 이어지는 조각은 해설만 담는 빈 쉘을 만든다.
+function makeLongSolutionShell(sourceBox, continuation) {
+    const shell = sourceBox.cloneNode(true);
+    shell.classList.add('sol-box-long');
+    if (!continuation) {
+        const exp = shell.querySelector('.sol-exp');
+        if (exp) exp.innerHTML = '';
+        return shell;
+    }
+    shell.innerHTML = `<div class="sol-meta"><div class="sol-exp"></div></div>`;
+    return shell;
+}
+
 async function placeSolutionItems(area, items, pageMeta = {}) {
     let pageNo = 1;
-    let current = null;
+    let cols = null;
     let colIdx = 0;
 
     const makeGridPage = () => {
@@ -1159,40 +1317,84 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
         grid.appendChild(left);
         grid.appendChild(right);
         page.body.appendChild(grid);
-        current = { page, cols: [left, right] };
+        cols = [left, right];
         colIdx = 0;
+        return cols;
+    };
+
+    const advanceColumn = () => {
+        if (colIdx === 0) colIdx = 1;
+        else { makeGridPage(); }
+        return cols[colIdx];
     };
 
     const makeBox = (q, idx) => {
         const hasImageField = !!getQuestionImageRaw(q);
         const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
         const formattedContent = rewriteImgSrcInHtml(formatQuestionForRender(rawContent, q), getQuestionArchiveFile(q));
+        const solutionHtml = wrapLatex(getQuestionSolution(q) || '해설이 없습니다.');
         const box = document.createElement('div');
         box.className = 'q-box sol-box';
+        box.dataset.solutionHtml = solutionHtml;
         box.innerHTML = `<div class="q-num">${idx + 1}.</div>
             ${q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : ''}
             <div class="q-content">${formattedContent}</div>
             ${renderQuestionImageHTML(q)}
-            <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div><div class="sol-exp">${wrapLatex(getQuestionSolution(q) || '해설이 없습니다.')}</div></div>`;
+            <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
         return box;
     };
 
+    // 한 컬럼에 해설 박스 하나만 있는데도 안 들어가면 해설을 조각내 다음 컬럼/페이지로 이어붙인다.
+    async function renderSplitSolutionBox(sourceBox) {
+        const originalExp = sourceBox.querySelector('.sol-exp');
+        const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
+        let shell = makeLongSolutionShell(sourceBox, false);
+        let exp = shell.querySelector('.sol-exp');
+        let targetCol = cols[colIdx];
+        targetCol.appendChild(shell);
+        await applyAutoImageSizeClasses(targetCol);
+
+        for (const chunkHtml of chunks) {
+            const chunk = document.createElement('span');
+            chunk.className = 'sol-chunk';
+            chunk.innerHTML = chunkHtml;
+            exp.appendChild(chunk);
+            if (window.MathJax?.typesetPromise) {
+                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+            }
+            await raf();
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
+
+            // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
+            if (exp.children.length > 1) {
+                exp.removeChild(chunk);
+                targetCol = advanceColumn();
+                shell = makeLongSolutionShell(sourceBox, true);
+                exp = shell.querySelector('.sol-exp');
+                targetCol.appendChild(shell);
+                exp.appendChild(chunk);
+                if (window.MathJax?.typesetPromise) {
+                    try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
+                }
+                await raf();
+            }
+            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                autoCompress(shell);
+                await raf();
+            }
+        }
+    }
+
     async function placeBox(box) {
-        if (!current) makeGridPage();
-        let placed = false;
-        while (!placed) {
-            const targetCol = current.cols[colIdx];
+        while (true) {
+            const targetCol = cols[colIdx];
             targetCol.appendChild(box);
             await applyAutoImageSizeClasses(targetCol);
             if (window.MathJax?.typesetPromise) {
                 try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
             }
             await raf();
-
-            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
-                placed = true;
-                break;
-            }
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
             autoCompress(box);
             await raf();
@@ -1200,21 +1402,20 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
                 try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
             }
             await raf();
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
-            if (targetCol.scrollHeight <= targetCol.clientHeight + 2 || targetCol.querySelectorAll('.sol-box').length === 1) {
-                placed = true;
-                break;
-            }
-
+            // 이 컬럼에 이 해설 박스 하나뿐이면 쪼개서 출력한다(잘림 금지).
+            const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
             targetCol.removeChild(box);
-            if (colIdx === 0) {
-                colIdx = 1;
-            } else {
-                makeGridPage();
+            if (isOnlyBoxInColumn) {
+                await renderSplitSolutionBox(box);
+                return;
             }
+            advanceColumn();
         }
     }
 
+    makeGridPage();
     for (let idx = 0; idx < items.length; idx++) {
         await placeBox(makeBox(items[idx], idx));
     }

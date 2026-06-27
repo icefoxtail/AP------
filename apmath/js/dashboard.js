@@ -1463,13 +1463,16 @@ function renderTodoSections() {
 
     const todayHtml = visibleMemos.length ? visibleMemos.map(m => {
         const isPinned = isMemoPinned(m);
+        const memoIdArg = typeof apJsArg === 'function' ? apJsArg(m.id) : `'${apEscapeHtml(String(m.id ?? ''))}'`;
         if (isPinned) {
             return `
-        <div style="${pinnedRowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
-            <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
-                <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
-                <span style="font-size:13px; font-weight:400; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(m.content)}</span>
+        <div class="ap-dashboard-memo-row ap-dashboard-memo-row--pinned" onclick="openEditTodoMemoModal(${memoIdArg}, 'dashboard')" role="button" tabindex="0" style="${pinnedRowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
+            <label onclick="event.stopPropagation()" class="ap-dashboard-memo-row__check">
+                <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone(${memoIdArg}, this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
             </label>
+            <div class="ap-dashboard-memo-row__main">
+                <span class="ap-dashboard-memo-row__content">${apEscapeHtml(m.content)}</span>
+            </div>
             <span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0; margin-left:8px;">고정</span>
         </div>
             `;
@@ -1479,14 +1482,14 @@ function renderTodoSections() {
         const dateLabel = dashboardFormatDateWithDay(memoDate);
         const metaText = dateLabel ? [dateLabel, dDay].filter(Boolean).join(' · ') : dDay;
         return `
-        <div style="${dateRowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
-            <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
-                <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
-                <span style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
-                    <span style="font-size:13px; font-weight:400; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(m.content)}</span>
-                    ${metaText ? `<span style="font-size:12px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(metaText)}</span>` : ''}
-                </span>
+        <div class="ap-dashboard-memo-row" onclick="openEditTodoMemoModal(${memoIdArg}, 'dashboard')" role="button" tabindex="0" style="${dateRowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
+            <label onclick="event.stopPropagation()" class="ap-dashboard-memo-row__check">
+                <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone(${memoIdArg}, this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
             </label>
+            <div class="ap-dashboard-memo-row__main">
+                <span class="ap-dashboard-memo-row__content">${apEscapeHtml(m.content)}</span>
+                ${metaText ? `<span class="ap-dashboard-memo-row__meta">${apEscapeHtml(metaText)}</span>` : ''}
+            </div>
         </div>
         `;
     }).join('') : `<div style="${dateRowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">표시할 메모가 없습니다.</div>`;
@@ -1510,7 +1513,7 @@ function renderTodoSections() {
            </div>`;
 
     const todayBodyHtml = visibleMemos.length
-        ? `<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" onclick="openTodoMemoModal()" style="cursor:pointer; overflow:hidden; border-radius:6px; border:1px solid var(--border); background:var(--surface);">${todayHtml}</div>
+        ? `<div class="ap-dashboard-surface-list ap-dashboard-surface-list--today" style="overflow:hidden; border-radius:6px; border:1px solid var(--border); background:var(--surface);">${todayHtml}</div>
            <div class="ap-dashboard-today-actions">
                 <button type="button" class="ap-inline-btn ap-inline-btn--ghost" onclick="apDashToggleScheduleForm(this)">+ 메모 추가</button>
            </div>

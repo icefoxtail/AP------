@@ -1225,6 +1225,71 @@ body.ap-teacher-dashboard-mode .journal-day-cell:active {
   transform: none !important;
 }
 
+body.ap-teacher-dashboard-mode .ap-dashboard-surface-list--today:hover,
+body.ap-teacher-dashboard-mode .ap-dashboard-surface-list--today:focus-visible {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row {
+  cursor: pointer;
+  min-height: 52px;
+  transition:
+    background var(--ap-dashboard-hover-duration, 140ms) ease,
+    transform var(--ap-dashboard-hover-duration, 140ms) ease !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row:hover,
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row:focus-visible {
+  background: color-mix(in srgb, var(--surface-2) 72%, var(--surface)) !important;
+  outline: none;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row:active {
+  transform: scale(0.995) !important;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  min-width: 32px;
+  min-height: 44px;
+  margin: 0;
+  cursor: pointer;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row__main {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row__content {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.ap-teacher-dashboard-mode .ap-dashboard-memo-row__meta {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (prefers-reduced-motion: reduce) {
   body.ap-teacher-dashboard-mode .ap-metric-card,
   body.ap-teacher-dashboard-mode .ap-dash-card,
@@ -1233,6 +1298,7 @@ body.ap-teacher-dashboard-mode .journal-day-cell:active {
   body.ap-teacher-dashboard-mode .ap-dash-quick-card,
   body.ap-teacher-dashboard-mode .ap-empty-state,
   body.ap-teacher-dashboard-mode .ap-dashboard-surface-list,
+  body.ap-teacher-dashboard-mode .ap-dashboard-memo-row,
   body.ap-teacher-dashboard-mode .dashboard-journal-card__top,
   body.ap-teacher-dashboard-mode .journal-day-cell,
   #ap-admin-dashboard .card,
