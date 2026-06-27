@@ -1,0 +1,849 @@
+/* ======================================================================
+   APMS 오답 출력 센터 전용 UI (2026-06-26)
+   - 기능 추가 없음. 오답 출력 센터(clinic-print.js)의 inline style을
+     걷어내고 APMS 공통 톤(카드/row/버튼/모달)에 맞추기 위한 전용 클래스.
+   - 색·둥글기·간격은 모두 APMS token 재사용. 새 색 invent 금지.
+     허용 token: --surface / --surface-2 / --bg / --border / --text /
+     --secondary / --primary / --primary-soft / --primary-rgb / --error /
+     --apms-ui-* 계열.
+   - 다크모드 대응은 token 자체가 처리한다(하드코딩 #fff/#000 금지).
+   ====================================================================== */
+
+.clinic-print-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ---- 요약 카드 ---- */
+.clinic-print-summary-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.clinic-print-summary-card__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+}
+
+.clinic-print-summary-card__meta {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.45;
+}
+
+/* ---- 섹션 공통 ---- */
+.clinic-print-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.clinic-print-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.clinic-print-section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--secondary);
+    line-height: 1.35;
+}
+
+.clinic-print-section-title--soft {
+    font-weight: 500;
+}
+
+.clinic-print-subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.45;
+}
+
+/* 작은 보조 버튼(전체 선택 등): apms-button 톤을 따른다. */
+.clinic-print-mini-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 150ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.clinic-print-mini-btn:hover {
+    background: var(--surface-2);
+    border-color: rgba(var(--primary-rgb), 0.22);
+}
+
+.clinic-print-mini-btn:active {
+    transform: scale(0.98);
+}
+
+.clinic-print-mini-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+/* ---- 출력 방식: 학생/반/학년/유형 카드 ---- */
+.clinic-print-mode-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.clinic-print-mode-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 64px;
+    padding: 9px 6px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    color: var(--text);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 150ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.clinic-print-mode-card:hover {
+    border-color: rgba(var(--primary-rgb), 0.22);
+    background: var(--surface-2);
+}
+
+.clinic-print-mode-card:active {
+    transform: scale(0.98);
+}
+
+.clinic-print-mode-card:focus-within {
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-mode-card--active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.clinic-print-mode-card--active:hover {
+    background: var(--primary-soft);
+}
+
+.clinic-print-mode-card__radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.clinic-print-mode-card__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+.clinic-print-mode-card--active .clinic-print-mode-card__title {
+    color: var(--primary);
+}
+
+.clinic-print-mode-card__sub {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.2;
+}
+
+/* ---- 시험 목록 ---- */
+.clinic-print-exam-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 230px;
+    overflow: auto;
+}
+
+.clinic-print-exam-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 44px;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+.clinic-print-exam-row:hover {
+    background: var(--surface-2);
+    border-color: rgba(var(--primary-rgb), 0.18);
+}
+
+.clinic-print-exam-row:focus-within {
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-exam-row--disabled {
+    background: var(--bg);
+    opacity: 0.62;
+    cursor: default;
+}
+
+.clinic-print-exam-row--disabled:hover {
+    background: var(--bg);
+    border-color: var(--border);
+}
+
+.clinic-print-exam-row__check {
+    margin-top: 3px;
+    flex: none;
+}
+
+.clinic-print-exam-row__main {
+    min-width: 0;
+}
+
+.clinic-print-exam-row__title {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.35;
+}
+
+.clinic-print-exam-row__meta {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.45;
+}
+
+.clinic-print-exam-row__meta--error {
+    color: var(--error);
+}
+
+/* ---- 학생 목록 ---- */
+.clinic-print-student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 250px;
+    overflow: auto;
+}
+
+.clinic-print-student-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+.clinic-print-student-row:hover {
+    background: var(--surface-2);
+    border-color: rgba(var(--primary-rgb), 0.18);
+}
+
+.clinic-print-student-row:focus-within {
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-student-row__main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.clinic-print-student-row__name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.clinic-print-student-row__count {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--error);
+    white-space: nowrap;
+}
+
+/* 학생/학년 요약 박스(반·학년 모드) */
+.clinic-print-info-card {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+.clinic-print-info-card__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.clinic-print-info-card__meta {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.45;
+}
+
+/* ---- 유형 패널 ---- */
+.clinic-print-type-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.clinic-print-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 범위 토글(현재 반 / 같은 학년 전체) */
+.clinic-print-scope-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.clinic-print-scope-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: transform 150ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.clinic-print-scope-btn:hover {
+    border-color: rgba(var(--primary-rgb), 0.22);
+    background: var(--surface-2);
+}
+
+.clinic-print-scope-btn:active {
+    transform: scale(0.98);
+}
+
+.clinic-print-scope-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-scope-btn--active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.clinic-print-scope-btn--active:hover {
+    background: var(--primary-soft);
+}
+
+/* 유형 선택(최다빈출 / 최다오답 / 단원별) */
+.clinic-print-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.clinic-print-type-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 150ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.clinic-print-type-card:hover {
+    border-color: rgba(var(--primary-rgb), 0.22);
+    background: var(--surface-2);
+}
+
+.clinic-print-type-card:active {
+    transform: scale(0.98);
+}
+
+.clinic-print-type-card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-type-card--active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.clinic-print-type-card--active:hover {
+    background: var(--primary-soft);
+}
+
+.clinic-print-type-card__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+}
+
+.clinic-print-type-card--active .clinic-print-type-card__title {
+    color: var(--primary);
+}
+
+.clinic-print-type-card__sub {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.35;
+}
+
+/* 유형 미리보기 결과 묶음 */
+.clinic-print-result {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.clinic-print-preview-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+.clinic-print-preview-row__main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.clinic-print-preview-row__title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.clinic-print-preview-row__meta {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.clinic-print-preview-row__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    white-space: nowrap;
+}
+
+.clinic-print-preview-row__rate {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.clinic-print-preview-row__wrong {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--error);
+}
+
+.clinic-print-more {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--secondary);
+    text-align: center;
+}
+
+/* ---- 단원별 오답: 정답률 토글 ---- */
+.clinic-print-rate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.clinic-print-rate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: transform 150ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.clinic-print-rate-btn:hover {
+    border-color: rgba(var(--primary-rgb), 0.22);
+    background: var(--surface-2);
+}
+
+.clinic-print-rate-btn:active {
+    transform: scale(0.98);
+}
+
+.clinic-print-rate-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-rate-btn--active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.clinic-print-rate-btn--active:hover {
+    background: var(--primary-soft);
+}
+
+/* ---- 단원 목록(마스터 / 출력할 단원) ---- */
+.clinic-print-unit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow: auto;
+}
+
+.clinic-print-unit-list--master {
+    max-height: 200px;
+}
+
+.clinic-print-unit-list--selected {
+    max-height: 240px;
+}
+
+.clinic-print-unit-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    transition: background 180ms ease, border-color 180ms ease, opacity 150ms ease;
+}
+
+.clinic-print-unit-row:hover {
+    background: var(--surface-2);
+    border-color: rgba(var(--primary-rgb), 0.18);
+}
+
+.clinic-print-unit-row--selected {
+    background: var(--surface);
+    border-color: rgba(var(--primary-rgb), 0.20);
+}
+
+.clinic-print-unit-row__main {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clinic-print-unit-row__label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.clinic-print-unit-row--selected .clinic-print-unit-row__label {
+    font-weight: 600;
+}
+
+.clinic-print-unit-row__count {
+    flex: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondary);
+    white-space: nowrap;
+}
+
+.clinic-print-unit-actions {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 드래그 핸들 */
+.clinic-print-unit-handle {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    min-height: 34px;
+    color: var(--secondary);
+    font-size: 16px;
+    line-height: 1;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    border-radius: 10px;
+}
+
+.clinic-print-unit-handle:hover {
+    background: var(--surface-2);
+}
+
+/* 단원 액션 버튼: + / ↑ / ↓ / ×  → APMS button 기준(34px) */
+.clinic-print-unit-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 150ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.clinic-print-unit-action:hover {
+    border-color: rgba(var(--primary-rgb), 0.22);
+    background: var(--surface);
+}
+
+.clinic-print-unit-action:active {
+    transform: scale(0.96);
+}
+
+.clinic-print-unit-action:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14);
+}
+
+.clinic-print-unit-action--add {
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.clinic-print-unit-action--remove {
+    color: var(--error);
+}
+
+.clinic-print-unit-action:disabled,
+.clinic-print-unit-action[disabled] {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+}
+
+.clinic-print-unit-action:disabled:hover,
+.clinic-print-unit-action[disabled]:hover {
+    background: var(--surface-2);
+    border-color: var(--border);
+}
+
+/* ---- 안내 / 빈 상태 ---- */
+.clinic-print-note {
+    padding: 11px 12px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.5;
+    text-align: center;
+}
+
+.clinic-print-empty {
+    padding: 14px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.clinic-print-empty--sm {
+    padding: 13px;
+    border-radius: 11px;
+    font-size: 11px;
+    background: transparent;
+}
+
+/* ---- 제출 버튼 ---- */
+.clinic-print-submit {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ---- 모달 진입 메뉴(오답/유사문항) ---- */
+.clinic-print-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.clinic-print-menu-btn {
+    min-height: 68px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: none;
+}
+
+/* 반 선택 리스트 */
+.clinic-print-class-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 62vh;
+    overflow: auto;
+}
+
+.clinic-print-class-btn {
+    width: 100%;
+    min-height: 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: none;
+    text-align: left;
+}
+
+.clinic-print-class-btn--current {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.clinic-print-class-btn__name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.clinic-print-class-btn__meta {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--secondary);
+    line-height: 1.35;
+}
+
+/* ====================================================================
+   모바일 (≤520px)
+   - 상위 카드 2열, 유형 카드 1열, 단원 row 가로 스크롤 없이 표시.
+   ==================================================================== */
+@media (max-width: 520px) {
+    .clinic-print-mode-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .clinic-print-type-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clinic-print-menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 단원 row: 라벨이 줄어도 핸들/버튼은 뭉개지지 않게 유지 */
+    .clinic-print-unit-row {
+        flex-wrap: nowrap;
+    }
+
+    .clinic-print-unit-actions {
+        gap: 4px;
+    }
+}
