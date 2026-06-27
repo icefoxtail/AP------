@@ -326,6 +326,15 @@ function clinicPrintFindBlueprint(session, questionNo) {
     }) || null;
 }
 
+// 시험 문항이 가리키는 "원본 아카이브 문항" 식별자.
+// 조립/MIXED 시험은 session.archive_file/question_no가 원본과 다를 수 있으므로
+// blueprint의 source_archive_file/source_question_no를 우선 보존한다(report.js와 동일 계약).
+function clinicPrintGetSourceIdentity(bp, archiveFile, questionNo) {
+    const sourceArchiveFile = clinicPrintNormalizeArchiveFile(bp?.source_archive_file || archiveFile || '');
+    const sourceQuestionNo = Number(bp?.source_question_no) || Number(questionNo) || 0;
+    return { sourceArchiveFile, sourceQuestionNo };
+}
+
 function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, options = {}) {
     const selectedExams = new Set(selectedExamKeys || []);
     const selectedStudents = new Set((selectedStudentIds || []).map(id => String(id)));
@@ -344,12 +353,15 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
                 const bp = clinicPrintFindBlueprint(session, questionNo);
+                const { sourceArchiveFile, sourceQuestionNo } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
                 return {
                     examKey,
                     examTitle: session.exam_title || '',
                     examDate: session.exam_date || '',
                     archiveFile,
                     questionNo,
+                    sourceArchiveFile,
+                    sourceQuestionNo,
                     unitKey: bp?.standard_unit_key || '',
                     unit: bp?.standard_unit || '',
                     course: bp?.standard_course || '',
@@ -420,12 +432,15 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
                 const bp = clinicPrintFindBlueprint(session, questionNo);
+                const { sourceArchiveFile, sourceQuestionNo } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
                 return {
                     examKey,
                     examTitle: session.exam_title || '',
                     examDate: session.exam_date || '',
                     archiveFile,
                     questionNo,
+                    sourceArchiveFile,
+                    sourceQuestionNo,
                     unitKey: bp?.standard_unit_key || '',
                     unit: bp?.standard_unit || '',
                     course: bp?.standard_course || '',
@@ -481,6 +496,8 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
                     examKey: item.examKey || '',
                     archiveFile: clinicPrintNormalizeArchiveFile(item.archiveFile),
                     questionNo: Number(item.questionNo),
+                    sourceArchiveFile: clinicPrintNormalizeArchiveFile(item.sourceArchiveFile || item.archiveFile),
+                    sourceQuestionNo: Number(item.sourceQuestionNo) || Number(item.questionNo),
                     wrongCount: 0,
                     totalCount,
                     correctRate: null,

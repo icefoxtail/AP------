@@ -87,8 +87,17 @@ async function toggleMemoDone(id, done) {
     }
 }
 
+function refreshAfterTodoMemoSource(source) {
+    if (source === 'dashboard') {
+        if (typeof closeModal === 'function') closeModal(true);
+        if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
+        else if (typeof renderDashboard === 'function') renderDashboard();
+        return;
+    }
+    openTodoMemoModal();
+}
 
-async function deleteMemo(id) {
+async function deleteMemo(id, source = 'list') {
     if (!confirm('삭제하시겠습니까?')) return;
 
     try {
@@ -96,7 +105,7 @@ async function deleteMemo(id) {
         if (r?.success) {
             toast('메모가 삭제되었습니다.', 'info');
             await loadData();
-            openTodoMemoModal();
+            refreshAfterTodoMemoSource(source);
             return;
         }
         toast(r?.message || r?.error || '메모 삭제에 실패했습니다.', 'error');
@@ -107,10 +116,12 @@ async function deleteMemo(id) {
 }
 
 
-function openEditTodoMemoModal(id) {
-    const m = state.db.operation_memos.find(x => x.id === id);
+function openEditTodoMemoModal(id, source = 'list') {
+    const m = state.db.operation_memos.find(x => String(x.id) === String(id));
     if(!m) return;
     const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+    const safeSource = source === 'dashboard' ? 'dashboard' : 'list';
+    const memoIdArg = typeof apJsArg === 'function' ? apJsArg(id) : `'${apEscapeHtml(String(id ?? ''))}'`;
     showModal('메모 수정', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
@@ -120,16 +131,16 @@ function openEditTodoMemoModal(id) {
                 </label>
             </div>
             <input type="text" id="edit-memo-content" class="btn" value="${apEscapeHtml(m.content)}" style="text-align:left; border:none; background:var(--surface);">
-            <button class="btn apms-button apms-button--primary btn-primary" style="padding:12px; font-size:13px; font-weight:500; margin-top:4px;" onclick="handleEditTodoMemo('${id}')">수정 저장</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding:12px; font-size:13px; font-weight:500; margin-top:4px;" onclick="handleEditTodoMemo(${memoIdArg}, '${safeSource}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
-                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openTodoMemoModal()">취소</button>
-                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(var(--error-rgb),0.1); border:none; font-weight:500;" onclick="deleteMemo('${id}')">완전 삭제</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="${safeSource === 'dashboard' ? 'closeModal(true)' : 'openTodoMemoModal()'}">취소</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(var(--error-rgb),0.1); border:none; font-weight:500;" onclick="deleteMemo(${memoIdArg}, '${safeSource}')">완전 삭제</button>
             </div>
         </div>
     `);
 }
 
-async function handleEditTodoMemo(id) {
+async function handleEditTodoMemo(id, source = 'list') {
     const m = state.db.operation_memos.find(x => String(x.id) === String(id));
     if (!m) return toast('메모를 찾을 수 없습니다.', 'warn');
     const d = document.getElementById('edit-memo-date')?.value || '';
@@ -143,7 +154,7 @@ async function handleEditTodoMemo(id) {
         if (r?.success) {
             toast('메모가 수정되었습니다.', 'info');
             await loadData();
-            openTodoMemoModal();
+            refreshAfterTodoMemoSource(source);
             return;
         }
         toast(r?.message || r?.error || '메모 수정에 실패했습니다.', 'error');
@@ -152,4 +163,3 @@ async function handleEditTodoMemo(id) {
         toast('메모 수정 중 오류가 발생했습니다.', 'error');
     }
 }
-
