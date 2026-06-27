@@ -1916,7 +1916,7 @@ function renderStudentContactHistoryTab(sid) {
 
 // 최종 탭은 기본 / 상담 / 성적 3개. 과거 'weak'/'contact' 진입점은
 // 라우트 호환을 위해 흡수된 탭으로 매핑한다(데이터/저장 흐름 영향 없음).
-const AP_STUDENT_DETAIL_TABS = ['basic', 'cns', 'grade'];
+const AP_STUDENT_DETAIL_TABS = ['basic', 'cns', 'grade', 'wrong'];
 const AP_STUDENT_DETAIL_TAB_ALIASES = { weak: 'grade', contact: 'basic' };
 
 function normalizeStudentDetailTab(tab = 'basic') {
@@ -1924,6 +1924,109 @@ function normalizeStudentDetailTab(tab = 'basic') {
     if (AP_STUDENT_DETAIL_TABS.includes(value)) return value;
     if (AP_STUDENT_DETAIL_TAB_ALIASES[value]) return AP_STUDENT_DETAIL_TAB_ALIASES[value];
     return 'basic';
+}
+
+function getStudentWrongClinicState(sid) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.studentWrongClinicPackets) state.ui.studentWrongClinicPackets = {};
+    const key = String(sid || '');
+    if (!state.ui.studentWrongClinicPackets[key]) {
+        state.ui.studentWrongClinicPackets[key] = { loading: false, loaded: false, packets: [], error: '' };
+    }
+    return state.ui.studentWrongClinicPackets[key];
+}
+
+async function ensureStudentWrongClinicPacketsLoaded(sid, force = false) {
+    const key = String(sid || '');
+    if (!key || typeof api === 'undefined' || typeof api.get !== 'function') return;
+    const store = getStudentWrongClinicState(key);
+    if (store.loading || (store.loaded && !force)) return;
+    store.loading = true;
+    store.error = '';
+    try {
+        const res = await api.get(`wrong-clinics/packets?student_id=${encodeURIComponent(key)}`);
+        store.packets = Array.isArray(res.packets) ? res.packets : [];
+        store.loaded = true;
+    } catch (e) {
+        store.error = e.message || '오답 클리닉 목록을 불러오지 못했습니다.';
+    } finally {
+        store.loading = false;
+        if (state.ui?.currentStudentDetailTab === 'wrong' && String(state.ui?.currentStudentDetailId || '') === key) {
+            renderStudentDetailTabInPlace(key, 'wrong');
+        }
+    }
+}
+
+function openStudentWrongClinicPacket(packetKey, mode = 'review') {
+    const key = String(packetKey || '').trim();
+    if (!key) return;
+    const url = new URL('wrong_print_engine.html', window.location.href);
+    url.searchParams.set('packet', key);
+    url.searchParams.set('mode', mode);
+    const win = window.open(url.toString(), '_blank', 'noopener');
+    if (!win && typeof toast === 'function') toast('팝업 차단을 해제하세요', 'warn');
+}
+
+function renderStudentWrongClinicTab(sid) {
+    const store = getStudentWrongClinicState(sid);
+    if (!store.loaded && !store.loading) {
+        setTimeout(() => ensureStudentWrongClinicPacketsLoaded(sid), 0);
+    }
+    if (store.loading && !store.loaded) {
+        return `
+            <section class="ap-student-card">
+                <div class="muted">오답 클리닉을 불러오는 중입니다.</div>
+            </section>
+        `;
+    }
+    if (store.error) {
+        return `
+            <section class="ap-student-card">
+                <div class="muted">${apmsStudentDetailEsc(store.error)}</div>
+                <button type="button" class="btn apms-button apms-button--quiet" onclick="ensureStudentWrongClinicPacketsLoaded(${apmsStudentJsString(sid)}, true)">다시 불러오기</button>
+            </section>
+        `;
+    }
+    const packets = store.packets || [];
+    if (!packets.length) {
+        return `
+            <section class="ap-student-card">
+                <div class="muted">배포된 오답 클리닉이 없습니다.</div>
+            </section>
+        `;
+    }
+    const rowsHtml = packets.map(packet => {
+        const meta = [
+            packet.source_class_name ? `출처: ${packet.source_class_name}` : '',
+            packet.recipient_class_name ? `받은 반: ${packet.recipient_class_name}` : '',
+            packet.created_at ? String(packet.created_at).slice(0, 16) : ''
+        ].filter(Boolean).join(' · ');
+        const key = apmsStudentJsString(packet.packet_key || '');
+        return `
+            <div class="ap-student-card" style="margin:8px 0;">
+                <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;">
+                    <div>
+                        <div style="font-weight:700;">${apmsStudentDetailEsc(packet.title || '오답 클리닉')}</div>
+                        <div class="muted">${apmsStudentDetailEsc(meta)}</div>
+                        <div class="muted">${Number(packet.item_count || 0)}문항</div>
+                    </div>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'exam')">문제</button>
+                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'ans')">정답</button>
+                        <button type="button" class="btn apms-button apms-button--primary" onclick="openStudentWrongClinicPacket(${key}, 'sol')">해설</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    return `
+        <section class="ap-student-card">
+            <div class="ap-student-card-title">오답 클리닉</div>
+            <div class="ap-student-list">
+                ${rowsHtml}
+            </div>
+        </section>
+    `;
 }
 
 /**
@@ -1936,6 +2039,8 @@ function renderStudentViewBody(sid, tab = 'basic') {
         body = renderGradeTab(sid);
     } else if (activeTab === 'cns') {
         body = renderCnsTab(sid);
+    } else if (activeTab === 'wrong') {
+        body = renderStudentWrongClinicTab(sid);
     } else {
         body = renderStudentBasicTab(sid);
     }
@@ -1950,7 +2055,8 @@ function renderStudentDetailTabs(sid, activeTab = 'basic') {
     const tabs = [
         { key: 'basic', label: '기본' },
         { key: 'cns', label: '상담' },
-        { key: 'grade', label: '성적' }
+        { key: 'grade', label: '성적' },
+        { key: 'wrong', label: '오답' }
     ];
     return `
         <div class="apms-eie-tabs ap-student-tabs">

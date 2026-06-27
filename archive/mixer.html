@@ -2032,7 +2032,22 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
     }
     const customTitle = String(document.getElementById('mixed-title-input')?.value || '').trim();
     const autoTitle = currentViewingSource ? (currentViewingSource.school || currentViewingSource.topic || currentViewingSource.file || `믹서 출제 (${exportCart.length}문항)`) : `믹서 출제 (${exportCart.length}문항)`;
-    const meta = { title: customTitle || autoTitle, count: exportCart.length, generatedAt: new Date().toISOString() };
+    const identityTitle = customTitle || autoTitle;
+    const meta = {
+        title: identityTitle,
+        identityTitle,
+        count: exportCart.length,
+        generatedAt: new Date().toISOString(),
+        printHeaderOptions: {
+            title: identityTitle,
+            metaRight: '',
+            subtitle: '',
+            showNameLine: true,
+            showScoreLine: true,
+            applyToSolution: true,
+            applyToAnswer: true
+        }
+    };
     const sessionKey = 'mix_' + Date.now();
     localStorage.setItem('mixedQuestions_' + sessionKey, JSON.stringify(exportCart));
     localStorage.setItem('mixedMeta_' + sessionKey, JSON.stringify(meta));

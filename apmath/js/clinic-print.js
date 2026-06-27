@@ -34,6 +34,56 @@ function clinicPrintEscapeJsString(value) {
         .replace(/`/g, '\\x60');
 }
 
+function clinicPrintClampText(value, maxLength) {
+    return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+}
+
+function clinicPrintGetTypeLabel(typeMode) {
+    if (typeMode === 'unit') return '단원별 오답';
+    if (typeMode === 'mostWrong') return '최다오답';
+    return '최다빈출 오답';
+}
+
+function clinicPrintGetHeaderDefaultTitle(classId) {
+    const cls = clinicPrintGetClass(classId);
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    const className = cls?.name || '반';
+    const gradeName = String(cls?.grade || '').trim() || '학년';
+    if (mode === 'class') return `${className} 반별 공통 오답지`;
+    if (mode === 'grade') return `${gradeName} 공통 오답지`;
+    if (mode === 'type') {
+        const scope = document.getElementById('clinic-print-type-scope')?.value || 'class';
+        const typeMode = document.getElementById('clinic-print-type-mode')?.value || 'frequent';
+        return `${scope === 'grade' ? gradeName : className} ${clinicPrintGetTypeLabel(typeMode)}`;
+    }
+    return `${className} 학생별 오답 클리닉`;
+}
+
+function clinicPrintSetHeaderTitleDirty(dirty = true) {
+    const input = document.getElementById('clinic-print-header-title-dirty');
+    if (input) input.value = dirty ? '1' : '0';
+}
+
+function clinicPrintRefreshHeaderDefault(classId) {
+    const titleInput = document.getElementById('clinic-print-header-title');
+    const dirty = document.getElementById('clinic-print-header-title-dirty')?.value === '1';
+    if (titleInput && !dirty) titleInput.value = clinicPrintGetHeaderDefaultTitle(classId);
+}
+
+function clinicPrintGetHeaderOptions(classId) {
+    const titleDefault = clinicPrintGetHeaderDefaultTitle(classId);
+    const title = clinicPrintClampText(document.getElementById('clinic-print-header-title')?.value || titleDefault, 80) || titleDefault;
+    return {
+        title,
+        metaRight: clinicPrintClampText(document.getElementById('clinic-print-header-meta')?.value || '', 60),
+        subtitle: clinicPrintClampText(document.getElementById('clinic-print-header-subtitle')?.value || '', 120),
+        showNameLine: document.getElementById('clinic-print-header-name')?.checked !== false,
+        showScoreLine: document.getElementById('clinic-print-header-score')?.checked !== false,
+        applyToSolution: document.getElementById('clinic-print-header-sol')?.checked !== false,
+        applyToAnswer: document.getElementById('clinic-print-header-ans')?.checked !== false
+    };
+}
+
 function clinicPrintNormalizeArchiveFile(file) {
     const raw = String(file || '').trim();
     if (!raw) return '';
@@ -578,6 +628,7 @@ function clinicPrintBuildPayload(classId, config) {
             includeSolution: false,
             includeHomeworkCheckBox: true
         },
+        headerOptions: config.headerOptions || null,
         exams: selectedExamKeys.map(key => {
             const group = examMap.get(key) || clinicPrintParseExamKey(key);
             return {
@@ -613,6 +664,78 @@ function clinicPrintOpenEngine(payload) {
     }
 }
 
+function clinicPrintOpenEngineUrl(url) {
+    const absoluteUrl = new URL(url, window.location.href).toString();
+    const win = window.open(absoluteUrl, '_blank', 'noopener');
+    if (!win) {
+        toast('팝업 차단을 해제하세요', 'warn');
+    }
+}
+
+function clinicPrintBuildWrongClinicTargets(classId, payload, selectedStudentIds = []) {
+    const mode = payload?.mode || 'student';
+    if (mode === 'student') {
+        const selected = new Set((selectedStudentIds || []).map(String));
+        return clinicPrintGetClassStudents(classId)
+            .filter(student => selected.has(String(student.id)))
+            .map(student => ({
+                type: 'student',
+                student_id: student.id,
+                student_name: student.name || '',
+                class_id: classId,
+                class_name: clinicPrintGetClass(classId)?.name || ''
+            }));
+    }
+    if (mode === 'grade' || (mode === 'type' && payload.scope === 'grade')) {
+        return clinicPrintGetGradeStudents(classId).map(student => ({
+            type: 'student',
+            student_id: student.id,
+            student_name: student.name || '',
+            class_id: student.classId || '',
+            class_name: student.className || ''
+        }));
+    }
+    return [{
+        type: 'class',
+        class_id: classId,
+        class_name: clinicPrintGetClass(classId)?.name || ''
+    }];
+}
+
+async function clinicPrintSaveAndOpen(classId, payload, selectedStudentIds = []) {
+    const cls = clinicPrintGetClass(classId);
+    const targets = clinicPrintBuildWrongClinicTargets(classId, payload, selectedStudentIds);
+    const result = await api.post('wrong-clinics', {
+        title: payload.printTitle || clinicPrintGetHeaderDefaultTitle(classId),
+        mode: payload.mode || 'student',
+        source: {
+            scope_type: payload.mode === 'grade' || payload.scope === 'grade' ? 'grade' : 'class',
+            class_id: classId,
+            class_name: cls?.name || '',
+            grade: payload.gradeName || cls?.grade || ''
+        },
+        targets,
+        payload
+    });
+    if (result?.success === false || result?.error || result?.message === 'Forbidden' || !result?.public_set_key) {
+        throw new Error(result.message || result.error || '저장형 오답 클리닉 생성 실패');
+    }
+    const engineUrl = result?.print?.engine_url || `wrong_print_engine.html?set=${encodeURIComponent(result.public_set_key || '')}`;
+    clinicPrintOpenEngineUrl(engineUrl);
+    toast(`오답 클리닉 저장 완료 · ${Number(result.packet_count || 0)}명`, 'success');
+    return result;
+}
+
+async function clinicPrintOpenStoredOrFallback(classId, payload, selectedStudentIds = []) {
+    try {
+        await clinicPrintSaveAndOpen(classId, payload, selectedStudentIds);
+    } catch (e) {
+        console.warn('[clinic-print] stored wrong clinic failed; fallback to storage payload:', e);
+        toast('저장형 오답 클리닉 생성 실패. 임시 출력으로 진행합니다.', 'warn');
+        clinicPrintOpenEngine(payload);
+    }
+}
+
 function clinicPrintGetCheckedValues(name) {
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
 }
@@ -632,6 +755,7 @@ function clinicPrintSwitchMode(classId) {
     if (studentSection) studentSection.style.display = isType ? 'none' : '';
     if (typePanel) typePanel.style.display = isType ? 'flex' : 'none';
     if (submitBtn) submitBtn.style.display = '';
+    clinicPrintRefreshHeaderDefault(classId);
 
     if (isType) {
         clinicPrintRenderTypePanel(classId);
@@ -699,7 +823,8 @@ function clinicPrintBuildTypePayload(classId) {
     const payload = clinicPrintBuildPayload(classId, {
         selectedExamKeys,
         selectedStudentIds: clinicPrintGetClassStudents(classId).map(student => String(student.id)),
-        mode: scope === 'grade' ? 'grade' : 'class'
+        mode: scope === 'grade' ? 'grade' : 'class',
+        headerOptions: clinicPrintGetHeaderOptions(classId)
     });
     const cls = clinicPrintGetClass(classId);
     const gradeName = String(cls?.grade || '').trim();
@@ -729,6 +854,7 @@ function clinicPrintSetTypeScope(classId, scope) {
         const active = btn.getAttribute('data-scope') === scope;
         btn.classList.toggle('clinic-print-scope-btn--active', active);
     });
+    clinicPrintRefreshHeaderDefault(classId);
     clinicPrintRenderTypePanel(classId);
 }
 
@@ -739,6 +865,7 @@ function clinicPrintSetTypeMode(classId, typeMode) {
         const active = card.getAttribute('data-type-mode') === typeMode;
         card.classList.toggle('clinic-print-type-card--active', active);
     });
+    clinicPrintRefreshHeaderDefault(classId);
     clinicPrintRenderTypePanel(classId);
 }
 
@@ -1086,7 +1213,7 @@ function clinicPrintUpdateStudentList(classId) {
     `).join('');
 }
 
-function clinicPrintSubmit(classId) {
+async function clinicPrintSubmit(classId) {
     const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
     const modeEl = document.querySelector('input[name="clinic-print-mode"]:checked');
@@ -1106,7 +1233,7 @@ function clinicPrintSubmit(classId) {
             toast('출력 가능한 오답 문항이 없습니다.', 'warn');
             return;
         }
-        clinicPrintOpenEngine(typePayload);
+        await clinicPrintOpenStoredOrFallback(classId, typePayload, clinicPrintGetClassStudents(classId).map(student => String(student.id)));
         return;
     }
 
@@ -1120,7 +1247,12 @@ function clinicPrintSubmit(classId) {
         return;
     }
 
-    const payload = clinicPrintBuildPayload(classId, { selectedExamKeys, selectedStudentIds, mode });
+    const payload = clinicPrintBuildPayload(classId, {
+        selectedExamKeys,
+        selectedStudentIds,
+        mode,
+        headerOptions: clinicPrintGetHeaderOptions(classId)
+    });
     const itemCount = mode === 'grade'
         ? payload.gradeWrongItems.length
         : mode === 'class'
@@ -1132,7 +1264,7 @@ function clinicPrintSubmit(classId) {
         return;
     }
 
-    clinicPrintOpenEngine(payload);
+    await clinicPrintOpenStoredOrFallback(classId, payload, selectedStudentIds);
 }
 
 function openClinicCenter(classId = '') {
@@ -1268,6 +1400,31 @@ async function openClinicPrintCenter(classId, options = {}) {
                         <span class="clinic-print-mode-card__title">유형</span>
                         <span class="clinic-print-mode-card__sub">최다빈출·단원별</span>
                     </label>
+                </div>
+            </section>
+
+            <section class="clinic-print-section clinic-print-header-card">
+                <input type="hidden" id="clinic-print-header-title-dirty" value="0">
+                <div class="clinic-print-section-title">출력 헤더</div>
+                <label class="clinic-print-header-field">
+                    <span>출력 제목</span>
+                    <input id="clinic-print-header-title" class="clinic-print-header-input" type="text" maxlength="80" value="${clinicPrintEscapeAttr(clinicPrintGetHeaderDefaultTitle(classId))}" oninput="clinicPrintSetHeaderTitleDirty(true)">
+                </label>
+                <div class="clinic-print-header-grid">
+                    <label class="clinic-print-header-field">
+                        <span>우측 메타</span>
+                        <input id="clinic-print-header-meta" class="clinic-print-header-input" type="text" maxlength="60" placeholder="반 · 학생 · 날짜">
+                    </label>
+                    <label class="clinic-print-header-field">
+                        <span>보조 문구</span>
+                        <input id="clinic-print-header-subtitle" class="clinic-print-header-input" type="text" maxlength="120" placeholder="선택 입력">
+                    </label>
+                </div>
+                <div class="clinic-print-header-checks">
+                    <label><input id="clinic-print-header-name" type="checkbox" checked> 이름칸</label>
+                    <label><input id="clinic-print-header-score" type="checkbox" checked> 점수칸</label>
+                    <label><input id="clinic-print-header-sol" type="checkbox" checked> 해설지 적용</label>
+                    <label><input id="clinic-print-header-ans" type="checkbox" checked> 정답표 적용</label>
                 </div>
             </section>
 

@@ -1,0 +1,724 @@
+import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser, makeId } from '../helpers/foundation-db.js';
+import { jsonResponse } from '../helpers/response.js';
+
+const ROUTE = 'wrong-clinics';
+
+function text(value, fallback = '') {
+  const raw = value === undefined || value === null ? fallback : value;
+  return String(raw ?? '').trim();
+}
+
+function num(value, fallback = 0) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function safeJson(value, fallback = null) {
+  if (value === undefined) return fallback;
+  try {
+    return JSON.stringify(value ?? fallback);
+  } catch (e) {
+    return JSON.stringify(fallback);
+  }
+}
+
+function parseJson(value, fallback = null) {
+  if (!value) return fallback;
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function todayKst() {
+  return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+}
+
+function ok(data = {}) {
+  return jsonResponse({ success: true, ...data });
+}
+
+function fail(message, status = 400, extra = {}) {
+  return jsonResponse({ success: false, message, ...extra }, status);
+}
+
+function randomKey(prefix) {
+  const bytes = new Uint8Array(10);
+  crypto.getRandomValues(bytes);
+  const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let out = '';
+  for (const b of bytes) out += alphabet[b % alphabet.length];
+  return `${prefix}_${out}`;
+}
+
+async function ensureWrongClinicTables(env) {
+  await env.DB.batch([
+    env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS wrong_clinic_sets (
+        id TEXT PRIMARY KEY,
+        title TEXT NOT NULL,
+        mode TEXT NOT NULL,
+        source_scope_type TEXT NOT NULL,
+        source_class_id TEXT,
+        source_class_name TEXT,
+        source_grade TEXT,
+        source_exam_title TEXT,
+        source_exam_keys_json TEXT,
+        print_title TEXT,
+        header_options_json TEXT,
+        type_meta_json TEXT,
+        created_by TEXT,
+        created_by_name TEXT,
+        created_at TEXT DEFAULT (datetime('now', '+9 hours')),
+        memo TEXT,
+        public_set_key TEXT UNIQUE,
+        status TEXT DEFAULT 'active'
+      )
+    `),
+    env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS wrong_clinic_set_items (
+        id TEXT PRIMARY KEY,
+        set_id TEXT NOT NULL,
+        order_no INTEGER NOT NULL,
+        archive_file TEXT NOT NULL,
+        question_no INTEGER NOT NULL,
+        source_question_id TEXT,
+        original_id TEXT,
+        exam_title TEXT,
+        exam_date TEXT,
+        correct_rate REAL,
+        wrong_count INTEGER,
+        total_count INTEGER,
+        standard_unit_key TEXT,
+        standard_unit TEXT,
+        item_json TEXT,
+        created_at TEXT DEFAULT (datetime('now', '+9 hours')),
+        FOREIGN KEY (set_id) REFERENCES wrong_clinic_sets(id)
+      )
+    `),
+    env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS wrong_clinic_distributions (
+        id TEXT PRIMARY KEY,
+        set_id TEXT NOT NULL,
+        target_type TEXT NOT NULL,
+        target_class_id TEXT,
+        target_class_name TEXT,
+        target_student_id TEXT,
+        target_student_name TEXT,
+        target_label TEXT,
+        distributed_by TEXT,
+        distributed_by_name TEXT,
+        distributed_at TEXT DEFAULT (datetime('now', '+9 hours')),
+        due_date TEXT,
+        memo TEXT,
+        status TEXT DEFAULT 'active',
+        FOREIGN KEY (set_id) REFERENCES wrong_clinic_sets(id)
+      )
+    `),
+    env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS wrong_clinic_packets (
+        id TEXT PRIMARY KEY,
+        set_id TEXT NOT NULL,
+        distribution_id TEXT,
+        recipient_student_id TEXT NOT NULL,
+        recipient_student_name TEXT,
+        recipient_class_id TEXT,
+        recipient_class_name TEXT,
+        source_class_id TEXT,
+        source_class_name TEXT,
+        source_grade TEXT,
+        packet_key TEXT UNIQUE NOT NULL,
+        item_count INTEGER DEFAULT 0,
+        viewed_at TEXT,
+        last_opened_at TEXT,
+        created_at TEXT DEFAULT (datetime('now', '+9 hours')),
+        status TEXT DEFAULT 'active',
+        FOREIGN KEY (set_id) REFERENCES wrong_clinic_sets(id),
+        FOREIGN KEY (distribution_id) REFERENCES wrong_clinic_distributions(id)
+      )
+    `),
+    env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS wrong_clinic_packet_items (
+        id TEXT PRIMARY KEY,
+        packet_id TEXT NOT NULL,
+        set_item_id TEXT,
+        order_no INTEGER NOT NULL,
+        archive_file TEXT NOT NULL,
+        question_no INTEGER NOT NULL,
+        source_question_id TEXT,
+        original_id TEXT,
+        exam_title TEXT,
+        exam_date TEXT,
+        correct_rate REAL,
+        wrong_count INTEGER,
+        total_count INTEGER,
+        wrong_note TEXT,
+        item_json TEXT,
+        created_at TEXT DEFAULT (datetime('now', '+9 hours')),
+        FOREIGN KEY (packet_id) REFERENCES wrong_clinic_packets(id),
+        FOREIGN KEY (set_item_id) REFERENCES wrong_clinic_set_items(id)
+      )
+    `),
+    env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_wrong_clinic_packets_recipient ON wrong_clinic_packets(recipient_student_id, status, created_at)`),
+    env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_wrong_clinic_packet_items_packet ON wrong_clinic_packet_items(packet_id, order_no)`),
+    env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_wrong_clinic_set_items_set ON wrong_clinic_set_items(set_id, order_no)`)
+  ]);
+}
+
+function normalizeItem(item = {}, orderNo = 1) {
+  const archiveFile = text(item.archiveFile || item.archive_file);
+  const questionNo = Math.trunc(num(item.questionNo || item.question_no || item.sourceQuestionNo || item.originalId || item.original_id, 0));
+  return {
+    ...item,
+    archiveFile,
+    questionNo,
+    sourceQuestionId: text(item.sourceQuestionId || item.source_question_id || item.questionId || item.question_id),
+    originalId: text(item.originalId || item.original_id || item.id),
+    examTitle: text(item.examTitle || item.exam_title),
+    examDate: text(item.examDate || item.exam_date),
+    correctRate: num(item.correctRate ?? item.correct_rate, 0),
+    wrongCount: Math.trunc(num(item.wrongCount ?? item.wrong_count, 0)),
+    totalCount: Math.trunc(num(item.totalCount ?? item.total_count, 0)),
+    unitKey: text(item.unitKey || item.standardUnitKey || item.standard_unit_key),
+    unitText: text(item.unitText || item.standardUnit || item.standard_unit),
+    orderNo
+  };
+}
+
+function getSetItemsFromPayload(payload = {}) {
+  const mode = text(payload.mode || 'student');
+  const source = mode === 'type'
+    ? payload.typeItems
+    : mode === 'grade'
+    ? payload.gradeWrongItems
+    : mode === 'class'
+    ? payload.classWrongItems
+    : [];
+  return (Array.isArray(source) ? source : []).map((item, idx) => normalizeItem(item, idx + 1)).filter(item => item.archiveFile && item.questionNo);
+}
+
+function getStudentItemsFromPayload(payload = {}, studentId) {
+  const student = (payload.students || []).find(row => String(row.studentId || row.student_id || '') === String(studentId));
+  return (student?.wrongItems || []).map((item, idx) => normalizeItem(item, idx + 1)).filter(item => item.archiveFile && item.questionNo);
+}
+
+function getStudentRowsFromPayload(payload = {}) {
+  return (Array.isArray(payload.students) ? payload.students : []).map(row => ({
+    student_id: text(row.studentId || row.student_id),
+    student_name: text(row.studentName || row.student_name),
+    class_id: text(row.classId || row.class_id || payload.classId),
+    class_name: text(row.className || row.class_name || payload.className)
+  })).filter(row => row.student_id);
+}
+
+async function loadClassStudents(env, classId) {
+  const res = await env.DB.prepare(`
+    SELECT s.id AS student_id, s.name AS student_name, cs.class_id, c.name AS class_name
+    FROM class_students cs
+    JOIN students s ON s.id = cs.student_id
+    LEFT JOIN classes c ON c.id = cs.class_id
+    WHERE cs.class_id = ?
+      AND COALESCE(s.status, '재원') IN ('재원', 'active')
+    ORDER BY s.name
+  `).bind(classId).all();
+  return res.results || [];
+}
+
+async function loadStudentTarget(env, studentId, fallback = {}) {
+  const row = await env.DB.prepare(`
+    SELECT
+      s.id AS student_id,
+      s.name AS student_name,
+      cs.class_id,
+      c.name AS class_name
+    FROM students s
+    LEFT JOIN class_students cs ON cs.student_id = s.id
+    LEFT JOIN classes c ON c.id = cs.class_id
+    WHERE s.id = ?
+      AND COALESCE(s.status, '재원') IN ('재원', 'active')
+    ORDER BY c.name ASC
+    LIMIT 1
+  `).bind(studentId).first();
+  return {
+    student_id: text(row?.student_id || studentId),
+    student_name: text(row?.student_name || fallback.student_name || fallback.studentName),
+    class_id: text(row?.class_id || fallback.class_id || fallback.classId),
+    class_name: text(row?.class_name || fallback.class_name || fallback.className)
+  };
+}
+
+function getTargetStudentIds(target = {}) {
+  const values = Array.isArray(target.students)
+    ? target.students.map(row => row?.student_id || row?.studentId || row?.id || row)
+    : Array.isArray(target.student_ids)
+    ? target.student_ids
+    : [];
+  return values.map(value => text(value)).filter(Boolean);
+}
+
+async function normalizeDistributionTargets(env, body, payload) {
+  const explicitTargets = Array.isArray(body.targets) ? body.targets : [];
+  if (explicitTargets.length) {
+    const distributions = [];
+    for (const target of explicitTargets) {
+      const type = text(target.type || target.target_type || 'student');
+      if (type === 'class' && text(target.class_id)) {
+        const students = await loadClassStudents(env, text(target.class_id));
+        distributions.push({
+          target_type: 'class',
+          target_class_id: text(target.class_id),
+          target_class_name: text(target.class_name),
+          target_student_id: '',
+          target_student_name: '',
+          target_label: text(target.target_label || target.label || target.class_name),
+          students: dedupeTargets(students)
+        });
+      } else if (type === 'student' && text(target.student_id)) {
+        const student = await loadStudentTarget(env, text(target.student_id), target);
+        distributions.push({
+          target_type: 'student',
+          target_class_id: student.class_id,
+          target_class_name: student.class_name,
+          target_student_id: student.student_id,
+          target_student_name: student.student_name,
+          target_label: text(target.target_label || target.label || target.student_name || student.student_name),
+          students: [student]
+        });
+      } else if (type === 'custom_group') {
+        const rows = [];
+        for (const studentId of getTargetStudentIds(target)) {
+          rows.push(await loadStudentTarget(env, studentId, {}));
+        }
+        distributions.push({
+          target_type: 'custom_group',
+          target_class_id: text(target.class_id),
+          target_class_name: text(target.class_name),
+          target_student_id: '',
+          target_student_name: '',
+          target_label: text(target.target_label || target.label || '임시 그룹'),
+          students: dedupeTargets(rows)
+        });
+      }
+    }
+    return distributions.filter(distribution => distribution.students.length);
+  }
+
+  const mode = text(payload.mode || 'student');
+  if (mode === 'student') {
+    const rows = [];
+    for (const row of getStudentRowsFromPayload(payload)) {
+      rows.push(await loadStudentTarget(env, row.student_id, row));
+    }
+    return [{
+      target_type: rows.length === 1 ? 'student' : 'custom_group',
+      target_class_id: rows.length === 1 ? text(rows[0]?.class_id) : text(payload.classId),
+      target_class_name: rows.length === 1 ? text(rows[0]?.class_name) : text(payload.className),
+      target_student_id: rows.length === 1 ? text(rows[0]?.student_id) : '',
+      target_student_name: rows.length === 1 ? text(rows[0]?.student_name) : '',
+      target_label: rows.length === 1 ? text(rows[0]?.student_name) : `${rows.length}명`,
+      students: dedupeTargets(rows)
+    }].filter(distribution => distribution.students.length);
+  }
+  if (text(payload.classId)) {
+    const rows = await loadClassStudents(env, text(payload.classId));
+    return [{
+      target_type: 'class',
+      target_class_id: text(payload.classId),
+      target_class_name: text(payload.className),
+      target_student_id: '',
+      target_student_name: '',
+      target_label: text(payload.className || '반 전체'),
+      students: dedupeTargets(rows)
+    }].filter(distribution => distribution.students.length);
+  }
+  return [];
+}
+
+function dedupeTargets(rows) {
+  const map = new Map();
+  for (const row of rows || []) {
+    const sid = text(row.student_id || row.studentId);
+    if (!sid || map.has(sid)) continue;
+    map.set(sid, {
+      student_id: sid,
+      student_name: text(row.student_name || row.studentName),
+      class_id: text(row.class_id || row.classId),
+      class_name: text(row.class_name || row.className)
+    });
+  }
+  return Array.from(map.values());
+}
+
+async function assertCreatePermission(env, teacher, source, targets) {
+  if (!isStaffUser(teacher)) return false;
+  if (isAdminUser(teacher)) return true;
+  const sourceClassId = text(source.class_id || source.classId);
+  if (sourceClassId && !(await canAccessClass(teacher, sourceClassId, env))) return false;
+  for (const target of targets) {
+    if (!(await canAccessStudent(teacher, target.student_id, env))) return false;
+  }
+  return true;
+}
+
+async function insertItems(env, statements, setId, packetId, items, setItemIdByKey = new Map()) {
+  const packetItemIds = [];
+  items.forEach((item, idx) => {
+    const key = `${item.archiveFile}|${item.questionNo}|${item.examTitle}|${item.examDate}`;
+    const setItemId = setItemIdByKey.get(key) || null;
+    const id = makeId(packetId ? 'wcpi' : 'wcsi');
+    const sql = packetId ? `
+      INSERT INTO wrong_clinic_packet_items (
+        id, packet_id, set_item_id, order_no, archive_file, question_no, source_question_id,
+        original_id, exam_title, exam_date, correct_rate, wrong_count, total_count, wrong_note, item_json
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ` : `
+      INSERT INTO wrong_clinic_set_items (
+        id, set_id, order_no, archive_file, question_no, source_question_id, original_id,
+        exam_title, exam_date, correct_rate, wrong_count, total_count, standard_unit_key, standard_unit, item_json
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    if (packetId) {
+      statements.push(env.DB.prepare(sql).bind(
+        id, packetId, setItemId, idx + 1, item.archiveFile, item.questionNo, item.sourceQuestionId,
+        item.originalId, item.examTitle, item.examDate, item.correctRate, item.wrongCount, item.totalCount,
+        text(item.wrongNote || item._wrongNote), safeJson(item, {})
+      ));
+      packetItemIds.push(id);
+    } else {
+      statements.push(env.DB.prepare(sql).bind(
+        id, setId, idx + 1, item.archiveFile, item.questionNo, item.sourceQuestionId,
+        item.originalId, item.examTitle, item.examDate, item.correctRate, item.wrongCount, item.totalCount,
+        item.unitKey, item.unitText, safeJson(item, {})
+      ));
+      setItemIdByKey.set(key, id);
+    }
+  });
+  return packetItemIds;
+}
+
+async function createWrongClinic(request, env, teacher) {
+  const body = await request.json().catch(() => ({}));
+  const payload = body.payload || {};
+  const mode = text(payload.mode || body.mode || 'student');
+  const source = body.source || {};
+  const sourceClassId = text(source.class_id || source.classId || payload.classId);
+  const sourceClassName = text(source.class_name || source.className || payload.className);
+  const sourceGrade = text(source.grade || source.grade_name || payload.gradeName);
+  const distributions = await normalizeDistributionTargets(env, body, payload);
+  const targets = dedupeTargets(distributions.flatMap(distribution => distribution.students));
+  if (!targets.length) return fail('배포 대상 학생이 없습니다.');
+  if (!(await assertCreatePermission(env, teacher, { class_id: sourceClassId }, targets))) return fail('Forbidden', 403);
+
+  await ensureWrongClinicTables(env);
+
+  const setId = makeId('wcs');
+  const setKey = randomKey('SET');
+  const title = text(body.title || payload.printTitle || `${sourceClassName || sourceGrade || '오답'} 클리닉`);
+  const setItems = getSetItemsFromPayload(payload);
+  const statements = [
+    env.DB.prepare(`
+      INSERT INTO wrong_clinic_sets (
+        id, title, mode, source_scope_type, source_class_id, source_class_name, source_grade,
+        source_exam_title, source_exam_keys_json, print_title, header_options_json, type_meta_json,
+        created_by, created_by_name, public_set_key, memo, status
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')
+    `).bind(
+      setId,
+      title,
+      mode,
+      text(source.scope_type || payload.scope || (mode === 'grade' ? 'grade' : 'class')),
+      sourceClassId,
+      sourceClassName,
+      sourceGrade,
+      text((payload.exams || [])[0]?.examTitle || ''),
+      safeJson(payload.exams || [], []),
+      text(payload.printTitle || title),
+      safeJson(payload.headerOptions || null, null),
+      safeJson({
+        typeMode: payload.typeMode || null,
+        scope: payload.scope || null,
+        rateRule: payload.rateRule || null,
+        selectedUnitKeys: payload.selectedUnitKeys || [],
+        unitOrder: payload.unitOrder || []
+      }, {}),
+      text(teacher?.id),
+      text(teacher?.name),
+      setKey,
+      text(body.memo)
+    )
+  ];
+  const setItemIdByKey = new Map();
+  await insertItems(env, statements, setId, null, setItems, setItemIdByKey);
+
+  const packetSummaries = [];
+  for (const distribution of distributions) {
+    const distributionId = makeId('wcd');
+    statements.push(env.DB.prepare(`
+      INSERT INTO wrong_clinic_distributions (
+        id, set_id, target_type, target_class_id, target_class_name, target_student_id,
+        target_student_name, target_label, distributed_by, distributed_by_name, memo, status
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')
+    `).bind(
+      distributionId,
+      setId,
+      distribution.target_type,
+      distribution.target_class_id,
+      distribution.target_class_name,
+      distribution.target_student_id,
+      distribution.target_student_name,
+      distribution.target_label,
+      text(teacher?.id),
+      text(teacher?.name),
+      text(body.memo)
+    ));
+
+    for (const target of distribution.students) {
+      const packetId = makeId('wcp');
+      const packetKey = randomKey('PKT');
+      const studentItems = mode === 'student' ? getStudentItemsFromPayload(payload, target.student_id) : setItems;
+      statements.push(env.DB.prepare(`
+        INSERT INTO wrong_clinic_packets (
+          id, set_id, distribution_id, recipient_student_id, recipient_student_name, recipient_class_id,
+          recipient_class_name, source_class_id, source_class_name, source_grade, packet_key, item_count, status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')
+      `).bind(
+        packetId,
+        setId,
+        distributionId,
+        target.student_id,
+        target.student_name,
+        target.class_id,
+        target.class_name,
+        sourceClassId,
+        sourceClassName,
+        sourceGrade,
+        packetKey,
+        studentItems.length
+      ));
+      await insertItems(env, statements, setId, packetId, studentItems, setItemIdByKey);
+      packetSummaries.push({
+        packet_id: packetId,
+        student_id: target.student_id,
+        student_name: target.student_name,
+        packet_key: packetKey,
+        item_count: studentItems.length
+      });
+    }
+  }
+
+  await env.DB.batch(statements);
+  return ok({
+    set_id: setId,
+    public_set_key: setKey,
+    packet_count: packetSummaries.length,
+    packets: packetSummaries,
+    print: {
+      engine_url: `https://icefoxtail.github.io/AP------/apmath/wrong_print_engine.html?set=${encodeURIComponent(setKey)}`
+    }
+  });
+}
+
+function itemFromRow(row) {
+  const base = parseJson(row.item_json, {}) || {};
+  return {
+    ...base,
+    archiveFile: row.archive_file,
+    questionNo: Number(row.question_no || 0),
+    sourceQuestionId: row.source_question_id || base.sourceQuestionId || '',
+    originalId: row.original_id || base.originalId || '',
+    examTitle: row.exam_title || base.examTitle || '',
+    examDate: row.exam_date || base.examDate || '',
+    correctRate: Number(row.correct_rate || 0),
+    wrongCount: Number(row.wrong_count || 0),
+    totalCount: Number(row.total_count || 0)
+  };
+}
+
+function basePayloadFromSet(set) {
+  const typeMeta = parseJson(set.type_meta_json, {}) || {};
+  return {
+    version: '2.0',
+    mode: set.mode || 'student',
+    publicSetKey: set.public_set_key || '',
+    serverSetKey: set.public_set_key || '',
+    printTitle: set.print_title || set.title || '오답 클리닉',
+    classId: set.source_class_id || '',
+    className: set.source_class_name || '',
+    sourceClassName: set.source_class_name || '',
+    gradeName: set.source_grade || '',
+    createdDate: String(set.created_at || '').slice(0, 10) || todayKst(),
+    headerOptions: parseJson(set.header_options_json, null),
+    exams: parseJson(set.source_exam_keys_json, []) || [],
+    options: {
+      groupByStudent: set.mode === 'student',
+      groupByExam: true,
+      dedupeByQuestion: set.mode !== 'student',
+      showWrongStudents: true,
+      pageBreakByStudent: true,
+      includeAnswer: false,
+      includeSolution: false,
+      includeHomeworkCheckBox: true
+    },
+    ...typeMeta
+  };
+}
+
+async function loadSetPayload(env, setKey) {
+  await ensureWrongClinicTables(env);
+  const set = await env.DB.prepare(`
+    SELECT *
+    FROM wrong_clinic_sets
+    WHERE public_set_key = ? AND COALESCE(status, 'active') = 'active'
+  `).bind(setKey).first();
+  if (!set) return null;
+  const itemsRes = await env.DB.prepare(`
+    SELECT *
+    FROM wrong_clinic_set_items
+    WHERE set_id = ?
+    ORDER BY order_no ASC
+  `).bind(set.id).all();
+  const items = (itemsRes.results || []).map(itemFromRow);
+  const payload = basePayloadFromSet(set);
+  if (payload.mode === 'type') payload.typeItems = items;
+  if (payload.mode === 'grade') payload.gradeWrongItems = items;
+  if (payload.mode === 'class') payload.classWrongItems = items;
+  if (payload.mode === 'student') {
+    const packetsRes = await env.DB.prepare(`
+      SELECT *
+      FROM wrong_clinic_packets
+      WHERE set_id = ?
+        AND COALESCE(status, 'active') = 'active'
+      ORDER BY created_at ASC, recipient_student_name ASC
+    `).bind(set.id).all();
+    const students = [];
+    for (const packet of packetsRes.results || []) {
+      const packetItemsRes = await env.DB.prepare(`
+        SELECT *
+        FROM wrong_clinic_packet_items
+        WHERE packet_id = ?
+        ORDER BY order_no ASC
+      `).bind(packet.id).all();
+      students.push({
+        studentId: packet.recipient_student_id,
+        studentName: packet.recipient_student_name || '학생',
+        packetKey: packet.packet_key || '',
+        serverPacketKey: packet.packet_key || '',
+        wrongItems: (packetItemsRes.results || []).map(itemFromRow)
+      });
+    }
+    payload.students = students;
+  }
+  return payload;
+}
+
+async function loadPacketPayload(env, packetKey) {
+  await ensureWrongClinicTables(env);
+  const packet = await env.DB.prepare(`
+    SELECT p.*, s.title, s.mode, s.print_title, s.public_set_key, s.header_options_json, s.type_meta_json, s.source_exam_keys_json
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.packet_key = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+  `).bind(packetKey).first();
+  if (!packet) return null;
+  const itemsRes = await env.DB.prepare(`
+    SELECT *
+    FROM wrong_clinic_packet_items
+    WHERE packet_id = ?
+    ORDER BY order_no ASC
+  `).bind(packet.id).all();
+  const payload = basePayloadFromSet({
+    ...packet,
+    source_class_id: packet.source_class_id,
+    source_class_name: packet.source_class_name,
+    source_grade: packet.source_grade,
+    created_at: packet.created_at
+  });
+  payload.mode = 'student';
+  payload.publicSetKey = packet.public_set_key || payload.publicSetKey || '';
+  payload.serverSetKey = packet.public_set_key || payload.serverSetKey || '';
+  payload.classId = packet.recipient_class_id || '';
+  payload.className = packet.recipient_class_name || '';
+  payload.sourceClassName = packet.source_class_name || '';
+  payload.students = [{
+    studentId: packet.recipient_student_id,
+    studentName: packet.recipient_student_name || '학생',
+    packetKey: packet.packet_key || '',
+    serverPacketKey: packet.packet_key || '',
+    wrongItems: (itemsRes.results || []).map(itemFromRow)
+  }];
+  return payload;
+}
+
+async function listPacketsForTeacher(env, teacher, url) {
+  await ensureWrongClinicTables(env);
+  if (!isStaffUser(teacher)) return fail('Forbidden', 403);
+  const studentId = text(url.searchParams.get('student_id'));
+  if (!studentId) return fail('student_id required');
+  if (!(await canAccessStudent(teacher, studentId, env))) return fail('Forbidden', 403);
+  const res = await env.DB.prepare(`
+    SELECT p.*, s.title, s.mode, s.print_title
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.recipient_student_id = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+    ORDER BY p.created_at DESC
+    LIMIT 100
+  `).bind(studentId).all();
+  return ok({ packets: (res.results || []).map(packetSummary) });
+}
+
+function packetSummary(row) {
+  return {
+    packet_id: row.id,
+    packet_key: row.packet_key,
+    title: row.print_title || row.title || '오답 클리닉',
+    source_class_name: row.source_class_name || '',
+    recipient_class_name: row.recipient_class_name || '',
+    recipient_student_name: row.recipient_student_name || '',
+    item_count: Number(row.item_count || 0),
+    created_at: row.created_at || '',
+    mode: row.mode || 'student'
+  };
+}
+
+export async function listWrongClinicPacketsForStudent(env, studentId) {
+  await ensureWrongClinicTables(env);
+  const res = await env.DB.prepare(`
+    SELECT p.*, s.title, s.mode, s.print_title
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.recipient_student_id = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+    ORDER BY p.created_at DESC
+    LIMIT 100
+  `).bind(studentId).all();
+  return (res.results || []).map(packetSummary);
+}
+
+export async function handleWrongClinics(request, env, teacher, path, url) {
+  const method = request.method;
+  const resource = path[1];
+  const id = path[2];
+  const key = path[3];
+  if (resource !== ROUTE) return null;
+
+  if (method === 'POST' && !id) return createWrongClinic(request, env, teacher);
+  if (method === 'GET' && id === 'packets') return listPacketsForTeacher(env, teacher, url);
+  if (method === 'GET' && id === 'packet' && key) {
+    const payload = await loadPacketPayload(env, key);
+    if (!payload) return fail('오답 packet을 찾을 수 없습니다.', 404);
+    await env.DB.prepare(`UPDATE wrong_clinic_packets SET last_opened_at = datetime('now', '+9 hours') WHERE packet_key = ?`).bind(key).run();
+    return ok({ payload });
+  }
+  if (method === 'GET' && id === 'set' && key) {
+    const payload = await loadSetPayload(env, key);
+    if (!payload) return fail('오답 세트를 찾을 수 없습니다.', 404);
+    return ok({ payload });
+  }
+  return null;
+}

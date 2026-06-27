@@ -29,6 +29,17 @@
         .qr-output-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
         .qr-output-option { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.4; padding: 5px 0; cursor: pointer; }
         .qr-output-option input { width: 14px; height: 14px; margin: 0; }
+        .print-header-editor-wrap { position: relative; }
+        .print-header-editor-btn { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
+        .print-header-editor-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 310px; padding: 14px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; box-sizing: border-box; }
+        .print-header-editor-wrap.open .print-header-editor-panel { display: block; }
+        .print-header-editor-title { font-size: 13px; font-weight: 800; margin-bottom: 10px; }
+        .print-header-editor-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 9px; font-size: 11px; font-weight: 800; }
+        .print-header-editor-input { width: 100%; height: 32px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 9px; font-size: 12px; font-weight: 700; box-sizing: border-box; }
+        .print-header-editor-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 10px; margin-top: 8px; }
+        .print-header-editor-check { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; line-height: 1.35; cursor: pointer; }
+        .print-header-editor-check input { width: 14px; height: 14px; margin: 0; }
+        .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
 
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
@@ -286,6 +297,27 @@
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
             <span id="qpp-display" style="color:rgba(255,255,255,0.7); font-size:11px; font-weight:bold;"></span>
+            <div class="print-header-editor-wrap" id="print-header-editor-wrap">
+                <button class="print-header-editor-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
+                <div class="print-header-editor-panel" onclick="event.stopPropagation()">
+                    <div class="print-header-editor-title">출력 헤더</div>
+                    <label class="print-header-editor-field">제목
+                        <input id="print-header-title-input" class="print-header-editor-input" type="text" maxlength="80" oninput="setPrintHeaderOptions({ title: this.value })">
+                    </label>
+                    <label class="print-header-editor-field">우측 메타
+                        <input id="print-header-meta-input" class="print-header-editor-input" type="text" maxlength="60" oninput="setPrintHeaderOptions({ metaRight: this.value })">
+                    </label>
+                    <label class="print-header-editor-field">보조 문구
+                        <input id="print-header-subtitle-input" class="print-header-editor-input" type="text" maxlength="120" oninput="setPrintHeaderOptions({ subtitle: this.value })">
+                    </label>
+                    <div class="print-header-editor-checks">
+                        <label class="print-header-editor-check"><input id="print-header-name-check" type="checkbox" onchange="setPrintHeaderOptions({ showNameLine: this.checked })"> 이름칸</label>
+                        <label class="print-header-editor-check"><input id="print-header-score-check" type="checkbox" onchange="setPrintHeaderOptions({ showScoreLine: this.checked })"> 점수칸</label>
+                        <label class="print-header-editor-check"><input id="print-header-sol-check" type="checkbox" onchange="setPrintHeaderOptions({ applyToSolution: this.checked })"> 해설지 적용</label>
+                        <label class="print-header-editor-check"><input id="print-header-ans-check" type="checkbox" onchange="setPrintHeaderOptions({ applyToAnswer: this.checked })"> 정답표 적용</label>
+                    </div>
+                </div>
+            </div>
             <div class="qr-output-wrap" id="qr-output-wrap">
                 <button id="btn-qr-output" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
                 <div class="qr-output-popover" id="qr-output-popover">
@@ -306,13 +338,127 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
-const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
+const AppState = { data: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
 
 const QR_PATCH = {
     enabled: true,
     label: '해설·정답 확인',
     size: 220
 };
+
+function clampText(value, maxLength) {
+    return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+}
+
+function getIdentityTitle() {
+    return AppState.identityTitle || AppState.title || window.examTitle || '수학 시험지';
+}
+
+function getDefaultPrintHeaderOptions() {
+    return {
+        title: getIdentityTitle(),
+        metaRight: '',
+        subtitle: '',
+        showNameLine: true,
+        showScoreLine: true,
+        applyToSolution: true,
+        applyToAnswer: true
+    };
+}
+
+function normalizePrintHeaderOptions(raw) {
+    const base = getDefaultPrintHeaderOptions();
+    const source = raw && typeof raw === 'object' ? raw : {};
+    return {
+        title: clampText(source.title ?? base.title, 80) || base.title,
+        metaRight: clampText(source.metaRight ?? base.metaRight, 60),
+        subtitle: clampText(source.subtitle ?? base.subtitle, 120),
+        showNameLine: source.showNameLine !== false,
+        showScoreLine: source.showScoreLine !== false,
+        applyToSolution: source.applyToSolution !== false,
+        applyToAnswer: source.applyToAnswer !== false
+    };
+}
+
+function getPrintHeaderOptions() {
+    AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
+    return AppState.printHeaderOptions;
+}
+
+function shouldApplyPrintHeader(type) {
+    const opts = getPrintHeaderOptions();
+    return type === 'exam'
+        || (type === 'sol' && opts.applyToSolution)
+        || (type === 'ans' && opts.applyToAnswer);
+}
+
+function setPrintHeaderOptions(next) {
+    AppState.printHeaderOptions = normalizePrintHeaderOptions({
+        ...getPrintHeaderOptions(),
+        ...(next || {})
+    });
+    renderPrintHeaderControls();
+    render();
+}
+
+function renderPrintHeaderControls() {
+    const opts = getPrintHeaderOptions();
+    const titleInput = document.getElementById('print-header-title-input');
+    const metaInput = document.getElementById('print-header-meta-input');
+    const subtitleInput = document.getElementById('print-header-subtitle-input');
+    const nameCheck = document.getElementById('print-header-name-check');
+    const scoreCheck = document.getElementById('print-header-score-check');
+    const solCheck = document.getElementById('print-header-sol-check');
+    const ansCheck = document.getElementById('print-header-ans-check');
+    if (titleInput && titleInput.value !== opts.title) titleInput.value = opts.title;
+    if (metaInput && metaInput.value !== opts.metaRight) metaInput.value = opts.metaRight;
+    if (subtitleInput && subtitleInput.value !== opts.subtitle) subtitleInput.value = opts.subtitle;
+    if (nameCheck) nameCheck.checked = !!opts.showNameLine;
+    if (scoreCheck) scoreCheck.checked = !!opts.showScoreLine;
+    if (solCheck) solCheck.checked = !!opts.applyToSolution;
+    if (ansCheck) ansCheck.checked = !!opts.applyToAnswer;
+}
+
+function togglePrintHeaderEditor(event) {
+    if (event) event.stopPropagation();
+    const wrap = document.getElementById('print-header-editor-wrap');
+    if (wrap) wrap.classList.toggle('open');
+}
+
+function getRenderHeaderTitle(type, fallbackTitle) {
+    const opts = getPrintHeaderOptions();
+    if (shouldApplyPrintHeader(type) && opts.title) return opts.title;
+    return fallbackTitle || getIdentityTitle();
+}
+
+function getRenderHeaderMetaRight(type, fallbackMetaRight) {
+    const opts = getPrintHeaderOptions();
+    if (shouldApplyPrintHeader(type) && opts.metaRight) return opts.metaRight;
+    return fallbackMetaRight || '';
+}
+
+function getRenderHeaderSubtitle(type) {
+    const opts = getPrintHeaderOptions();
+    return shouldApplyPrintHeader(type) ? opts.subtitle : '';
+}
+
+function appendTextElement(parent, tagName, className, text) {
+    const el = document.createElement(tagName);
+    if (className) el.className = className;
+    el.textContent = text || '';
+    parent.appendChild(el);
+    return el;
+}
+
+function appendHeaderFill(metaWrap, label, scoreSuffix = '') {
+    const span = document.createElement('span');
+    span.appendChild(document.createTextNode(label));
+    const line = document.createElement('span');
+    line.className = 'header-fill-line' + (scoreSuffix ? ' header-fill-line--score' : '');
+    span.appendChild(line);
+    if (scoreSuffix) span.appendChild(document.createTextNode(scoreSuffix));
+    metaWrap.appendChild(span);
+}
 
 function buildQrTargetUrl() {
     const url = new URL(window.location.href);
@@ -387,6 +533,8 @@ function setQrOutputParam(type, checked) {
 document.addEventListener('click', (event) => {
     const wrap = document.getElementById('qr-output-wrap');
     if (wrap && !wrap.contains(event.target)) wrap.classList.remove('open');
+    const headerWrap = document.getElementById('print-header-editor-wrap');
+    if (headerWrap && !headerWrap.contains(event.target)) headerWrap.classList.remove('open');
 });
 
 function applyQrSolutionLockUI() {
@@ -472,7 +620,7 @@ function buildSubmitQrTargetUrl() {
     }
     
     const q = params.get('q') || AppState.data.length || 0;
-    const exam = AppState.title || '시험지';
+    const exam = getIdentityTitle() || '시험지';
     const dataUrl = params.get('data') || '';
 
     if (!classId) {
@@ -669,7 +817,7 @@ async function registerClassExamAssignmentToOS() {
     const subject = params.get('subject') || '';
     const qCountRaw = params.get('q');
     const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
-    const examTitle = AppState.title || window.examTitle || '시험지';
+    const examTitle = getIdentityTitle() || '시험지';
 
     const sig = [classId, examDate, archiveFile, questionCount, 'archive'].join('|');
     if (sig === _classExamAssignmentRegisteredSig) return;
@@ -832,7 +980,7 @@ function normalizeExamTypeLabel(value) {
 
 function getExamTitleFull() {
     if (window.examTitle) return window.examTitle;
-    if (AppState.title && AppState.title !== '수학 시험지') return AppState.title;
+    if (getIdentityTitle() && getIdentityTitle() !== '수학 시험지') return getIdentityTitle();
     try {
         const p = new URLSearchParams(window.location.search);
         const dataUrl = p.get('data');
@@ -842,7 +990,7 @@ function getExamTitleFull() {
             if (filename) return filename;
         }
     } catch(e) {}
-    return AppState.title || '수학 시험지';
+    return getIdentityTitle() || '수학 시험지';
 }
 
 function makePage(area, type, pNum) {
@@ -857,23 +1005,40 @@ function makePage(area, type, pNum) {
     if (showHeader) {
         const header = document.createElement('div');
         header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
-        const t = parseExamTitle(AppState.title);
+        const t = parseExamTitle(getIdentityTitle());
 
         if (type === 'exam') {
-            const headerTitle = getExamTitleFull();
-            header.innerHTML = `
-                <div class="page-header-title">${headerTitle}</div>
-                <div class="page-header-meta">
-                    <div class="page-header-meta-left"></div>
-                    <div class="page-header-meta-right">
-                        <span>이름<span class="header-fill-line"></span></span>
-                        <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
-                    </div>
-                </div>`;
+            const textWrap = document.createElement('div');
+            appendTextElement(textWrap, 'div', 'page-header-title', getRenderHeaderTitle(type, getExamTitleFull()));
+            const subtitle = getRenderHeaderSubtitle(type);
+            if (subtitle) appendTextElement(textWrap, 'div', 'page-header-subtitle', subtitle);
+            header.appendChild(textWrap);
+
+            const meta = document.createElement('div');
+            meta.className = 'page-header-meta';
+            appendTextElement(meta, 'div', 'page-header-meta-left', '');
+            const metaRight = document.createElement('div');
+            metaRight.className = 'page-header-meta-right';
+            const customMetaRight = getRenderHeaderMetaRight(type, '');
+            if (customMetaRight) appendTextElement(metaRight, 'span', '', customMetaRight);
+            const opts = getPrintHeaderOptions();
+            if (opts.showNameLine) appendHeaderFill(metaRight, '이름');
+            if (opts.showScoreLine) appendHeaderFill(metaRight, '점수', '/ 100');
+            meta.appendChild(metaRight);
+            header.appendChild(meta);
         } else {
-            const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
+            const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || getIdentityTitle();
             const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
-            header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
+            const row = document.createElement('div');
+            row.style.cssText = 'display:flex; justify-content:space-between; align-items:flex-end; gap:10px;';
+            const left = document.createElement('div');
+            left.style.flex = '1';
+            appendTextElement(left, 'div', '', getRenderHeaderTitle(type, leftText));
+            const subtitle = getRenderHeaderSubtitle(type);
+            if (subtitle) appendTextElement(left, 'div', 'page-header-subtitle', subtitle);
+            row.appendChild(left);
+            appendTextElement(row, 'div', '', getRenderHeaderMetaRight(type, rightText));
+            header.appendChild(row);
         }
 
         page.appendChild(header);
@@ -953,7 +1118,10 @@ async function init() {
         const qb = window.questionBank;
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
         AppState.title = window.examTitle || p.get('title') || '수학 시험지';
+        AppState.identityTitle = AppState.title;
+        AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
         document.getElementById('ctrl-title').innerText = AppState.title;
+        renderPrintHeaderControls();
         await render();
     };
     s.onerror = () => {
