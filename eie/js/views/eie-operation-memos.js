@@ -1,5 +1,6 @@
 (function () {
     var memoModalRows = [];
+    var memoSaveInFlight = new Set();
 
     function esc(value) {
         if (window.EieApp && typeof EieApp.escapeHtml === 'function') return EieApp.escapeHtml(value);
@@ -88,6 +89,38 @@
 
     function notify(message, type) {
         if (typeof window.toast === 'function') window.toast(message, type || 'info');
+    }
+
+    function clientRequestId(prefix) {
+        if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+        return String(prefix || 'eie') + '-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+    }
+
+    async function withMemoSaveGuard(key, action) {
+        if (memoSaveInFlight.has(key)) return;
+        memoSaveInFlight.add(key);
+        var btn = document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement : null;
+        var originalText = btn ? btn.textContent : '';
+        if (btn) {
+            btn.disabled = true;
+            btn.textContent = '저장 중...';
+        }
+        try {
+            return await action();
+        } finally {
+            memoSaveInFlight.delete(key);
+            if (btn) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
+    }
+
+    function upsertMemoModalRow(row) {
+        if (!row || !memoId(row)) return;
+        var index = memoModalRows.findIndex(function (item) { return String(memoId(item)) === String(memoId(row)); });
+        if (index >= 0) memoModalRows[index] = Object.assign({}, memoModalRows[index], row);
+        else memoModalRows.unshift(row);
     }
 
     // CRUD 성공 후 현재 라우트(원장/선생님 대시보드)를 다시 그려 메모 카드를
@@ -195,33 +228,47 @@
             notify('메모 내용을 입력해 주세요.', 'warn');
             return;
         }
+        return withMemoSaveGuard('add:' + content, async function () {
         try {
-            await EieApi.createOperationMemo({
+            var reqId = clientRequestId('eie-memo');
+            var result = await EieApi.createOperationMemo({
                 content: content,
                 memoDate: dateEl && dateEl.value ? dateEl.value : todayIso(),
-                isPinned: !!(pinnedEl && pinnedEl.checked)
+                isPinned: !!(pinnedEl && pinnedEl.checked),
+                clientRequestId: reqId
             });
             notify('메모를 추가했습니다.', 'success');
-            await openEieTodoMemoModal();
+            upsertMemoModalRow((result && (result.memo || result.data)) || {
+                id: result && result.id || reqId,
+                content: content,
+                memo_date: dateEl && dateEl.value ? dateEl.value : todayIso(),
+                is_pinned: !!(pinnedEl && pinnedEl.checked),
+                is_done: false
+            });
+            openCompatModal('\uba54\ubaa8', renderMemoModal(memoModalRows));
             refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '메모 추가에 실패했습니다.', 'error');
         }
+        });
     }
 
     async function toggleEieMemoDone(id, done) {
         if (!id) return;
+        return withMemoSaveGuard('toggle:' + id + ':' + done, async function () {
         try {
-            await EieApi.updateOperationMemo(id, { isDone: !!done });
+            var result = await EieApi.updateOperationMemo(id, { isDone: !!done });
             notify(done ? '메모를 완료했습니다.' : '메모 완료를 해제했습니다.', 'success');
             // 모달이 열려 있으면 모달 목록도 갱신하되, 대시보드 카드는 모달 여부와
             // 무관하게 항상 다시 그린다(카드에서 직접 체크한 경우 즉시 사라지도록).
+            upsertMemoModalRow((result && (result.memo || result.data)) || { id: id, is_done: !!done });
             var overlay = document.getElementById('eie-compat-modal-overlay');
-            if (overlay && overlay.style.display !== 'none') await openEieTodoMemoModal();
+            if (overlay && overlay.style.display !== 'none') openCompatModal('\uba54\ubaa8', renderMemoModal(memoModalRows));
             refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '메모 상태 변경에 실패했습니다.', 'error');
         }
+        });
     }
 
     async function deleteEieMemo(id) {
@@ -270,19 +317,28 @@
             notify('메모 내용을 입력해 주세요.', 'warn');
             return;
         }
+        return withMemoSaveGuard('edit:' + id, async function () {
         try {
-            await EieApi.updateOperationMemo(id, {
+            var result = await EieApi.updateOperationMemo(id, {
                 content: content,
                 memoDate: dateEl && dateEl.value ? dateEl.value : todayIso(),
                 isPinned: !!(pinnedEl && pinnedEl.checked),
                 isDone: !!(doneEl && doneEl.checked)
             });
             notify('메모를 저장했습니다.', 'success');
-            await openEieTodoMemoModal();
+            upsertMemoModalRow((result && (result.memo || result.data)) || {
+                id: id,
+                content: content,
+                memo_date: dateEl && dateEl.value ? dateEl.value : todayIso(),
+                is_pinned: !!(pinnedEl && pinnedEl.checked),
+                is_done: !!(doneEl && doneEl.checked)
+            });
+            openCompatModal('\uba54\ubaa8', renderMemoModal(memoModalRows));
             refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '메모 저장에 실패했습니다.', 'error');
         }
+        });
     }
 
     window.renderEieMemoDashboardCard = renderEieMemoDashboardCard;

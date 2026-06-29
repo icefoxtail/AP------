@@ -948,6 +948,8 @@
 
     async function loadTeacherRoster() {
         if (_teacherRoster.length || !window.EieApi || typeof EieApi.getTeachers !== 'function') return;
+        // GET /teachers는 원장 전용(teacher 역할엔 서버가 403)이다. 선생님 세션은 건너뛴다.
+        if (!isOwnerSession()) { _teacherRoster = []; return; }
         try {
             var result = await EieApi.getTeachers();
             var rows = result.teachers || result.data || [];
@@ -1189,7 +1191,8 @@
             }
             await loadTeacherRoster();
         } catch (err) {
-            if (EieApi.isAuthError && EieApi.isAuthError(err) && window.EieApp && typeof EieApp.handleEie401 === 'function') {
+            // 401(세션 만료)만 재로그인. 403(권한 없음)은 화면을 유지하고 에러만 표시.
+            if (err && err.status === 401 && window.EieApp && typeof EieApp.handleEie401 === 'function') {
                 EieApp.handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
                 return 'auth_redirected';
             }

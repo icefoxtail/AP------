@@ -290,11 +290,13 @@
             return EieGradeUtils.normalizeEieGrade(value);
         }
         var raw = text(value).replace(/\s+/g, '');
+        var elementary = raw.match(/^초(?:등|등학교)?([1-6])(?:학년)?$/);
+        if (elementary) return '초' + elementary[1];
         var middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
         if (middle) return '중' + middle[1];
         var high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
         if (high) return '고' + high[1];
-        return /^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
+        return /^초[1-6]$|^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
     }
 
     function schoolOf(student) {
@@ -882,9 +884,14 @@
 
     function renderGradeSelect(id, value) {
         var selected = normalizeGrade(value);
-        var grades = ['중1', '중2', '중3', '고1', '고2', '고3'];
+        var grades = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
+        // 현재 학년이 목록 밖 값이면 저장 시 빈값으로 날아가지 않도록 selected 옵션을 임시 추가한다.
+        var extra = (selected && grades.indexOf(selected) === -1)
+            ? '<option value="' + esc(selected) + '" selected>' + esc(selected) + '</option>'
+            : '';
         return '<select id="' + esc(id) + '">'
             + '<option value="">선택</option>'
+            + extra
             + grades.map(function (grade) {
                 return '<option value="' + esc(grade) + '"' + (selected === grade ? ' selected' : '') + '>' + esc(grade) + '</option>';
             }).join('')
@@ -1100,7 +1107,9 @@ function renderCards(cells) {
                     _students = [];
                 }
             }
-            if (!_teachersLoaded) {
+            // GET /teachers는 원장 전용(서버에서 teacher 역할엔 403)이다. 선생님 세션은
+            // 호출 자체를 건너뛴다 — 선생님 화면은 본인 수업만 다루므로 전체 명단이 불필요.
+            if (!_teachersLoaded && isOwnerSession()) {
                 try {
                     var tResult = await EieApi.getTeachers();
                     var tRows = (tResult && tResult.teachers) || (tResult && tResult.data) || [];
@@ -1114,6 +1123,9 @@ function renderCards(cells) {
                     _teachers = [];
                     _teachersLoaded = true;
                 }
+            } else if (!_teachersLoaded) {
+                _teachers = [];
+                _teachersLoaded = true;
             }
             var today = todayIso();
             if (_attendanceLoadedDate !== today && window.EieApi && typeof EieApi.getAttendanceRecords === 'function') {

@@ -3,6 +3,69 @@
  * Split from dashboard.js.
  */
 
+const todoMemoSaveInFlight = new Set();
+
+function todoMemoClientRequestId() {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+    return `memo-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+function withTodoMemoSaveGuard(key, action) {
+    if (todoMemoSaveInFlight.has(key)) return Promise.resolve();
+    todoMemoSaveInFlight.add(key);
+    const btn = document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement : null;
+    const originalText = btn ? btn.textContent : '';
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+    }
+    return Promise.resolve()
+        .then(action)
+        .finally(() => {
+            todoMemoSaveInFlight.delete(key);
+            if (btn) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        });
+}
+
+function normalizeTodoMemoRow(row, fallback = {}) {
+    const source = row && typeof row === 'object' ? row : {};
+    return {
+        ...fallback,
+        ...source,
+        id: source.id || fallback.id,
+        memo_date: source.memo_date || source.memoDate || fallback.memo_date || fallback.memoDate || new Date().toLocaleDateString('sv-SE'),
+        content: source.content || fallback.content || '',
+        is_pinned: source.is_pinned ?? source.isPinned ?? fallback.is_pinned ?? fallback.isPinned ?? false,
+        is_done: source.is_done ?? source.isDone ?? fallback.is_done ?? fallback.isDone ?? false
+    };
+}
+
+function todoMemoRowFromResponse(response, fallback) {
+    return normalizeTodoMemoRow(
+        response?.operation_memo || response?.operationMemo || response?.memo || response?.data || response?.item,
+        fallback
+    );
+}
+
+function upsertTodoMemoInState(row) {
+    if (!state.db) state.db = {};
+    const normalized = normalizeTodoMemoRow(row);
+    if (!normalized.id) return;
+    const rows = Array.isArray(state.db.operation_memos) ? state.db.operation_memos.slice() : [];
+    const index = rows.findIndex(item => String(item.id) === String(normalized.id));
+    if (index >= 0) rows[index] = { ...rows[index], ...normalized };
+    else rows.unshift(normalized);
+    state.db.operation_memos = rows;
+}
+
+function removeTodoMemoFromState(id) {
+    if (!state.db) state.db = {};
+    state.db.operation_memos = (state.db.operation_memos || []).filter(item => String(item.id) !== String(id));
+}
+
 function openTodoMemoModal() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const memos = state.db.operation_memos || [];
@@ -44,11 +107,13 @@ async function addTodoMemo() {
     const p = !!document.getElementById('new-memo-pin')?.checked;
     if (!c) return toast('내용을 입력하세요', 'warn');
 
+    return withTodoMemoSaveGuard(`add:${d}:${c}:${p}`, async () => {
     try {
-        const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: p });
+        const clientRequestId = todoMemoClientRequestId();
+        const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: p, clientRequestId });
         if (r?.success) {
             toast('메모가 저장되었습니다.', 'success');
-            await loadData();
+            upsertTodoMemoInState(todoMemoRowFromResponse(r, { id: r?.id || clientRequestId, memo_date: d, content: c, is_pinned: p, is_done: false }));
             openTodoMemoModal();
             return;
         }
@@ -57,6 +122,7 @@ async function addTodoMemo() {
         console.error('[addTodoMemo] failed:', e);
         toast('메모 저장 중 오류가 발생했습니다.', 'error');
     }
+    });
 }
 
 
@@ -68,11 +134,12 @@ async function toggleMemoDone(id, done) {
     }
     const p = m.is_pinned == 1 || m.is_pinned === true;
 
+    return withTodoMemoSaveGuard(`toggle:${id}:${done}`, async () => {
     try {
         const r = await api.patch(`operation-memos/${id}`, { memoDate: m.memo_date, content: m.content, isPinned: p, isDone: done });
         if (r?.success) {
             toast(done ? '완료 처리되었습니다.' : '완료가 취소되었습니다.', 'info');
-            await loadData();
+            upsertTodoMemoInState(todoMemoRowFromResponse(r, { ...m, is_done: done, isDone: done }));
             if (document.getElementById('new-memo-content') || document.getElementById('edit-memo-content')) openTodoMemoModal();
             else {
                 if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
@@ -85,6 +152,7 @@ async function toggleMemoDone(id, done) {
         console.error('[toggleMemoDone] failed:', e);
         toast('메모 상태 변경 중 오류가 발생했습니다.', 'error');
     }
+    });
 }
 
 function refreshAfterTodoMemoSource(source) {
@@ -104,7 +172,7 @@ async function deleteMemo(id, source = 'list') {
         const r = await api.delete('operation-memos', id);
         if (r?.success) {
             toast('메모가 삭제되었습니다.', 'info');
-            await loadData();
+            removeTodoMemoFromState(id);
             refreshAfterTodoMemoSource(source);
             return;
         }
@@ -149,11 +217,12 @@ async function handleEditTodoMemo(id, source = 'list') {
     if (!c) return toast('내용을 입력하세요', 'warn');
 
     const isDone = m.is_done == 1 || m.is_done === true;
+    return withTodoMemoSaveGuard(`edit:${id}`, async () => {
     try {
         const r = await api.patch('operation-memos/' + id, { memoDate: d, content: c, isPinned: p, isDone: isDone });
         if (r?.success) {
             toast('메모가 수정되었습니다.', 'info');
-            await loadData();
+            upsertTodoMemoInState(todoMemoRowFromResponse(r, { ...m, memo_date: d, content: c, is_pinned: p, is_done: isDone }));
             refreshAfterTodoMemoSource(source);
             return;
         }
@@ -162,4 +231,5 @@ async function handleEditTodoMemo(id, source = 'list') {
         console.error('[handleEditTodoMemo] failed:', e);
         toast('메모 수정 중 오류가 발생했습니다.', 'error');
     }
+    });
 }

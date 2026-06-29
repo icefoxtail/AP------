@@ -435,6 +435,33 @@ function getBillingAccountingFoundationState() {
     return state.ui.billingAccountingFoundation;
 }
 
+const billingAccountingSaveInFlight = new Set();
+
+function billingAccountingClientRequestId() {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+    return `baf-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+async function withBillingAccountingSaveGuard(key, action) {
+    if (billingAccountingSaveInFlight.has(key)) return;
+    billingAccountingSaveInFlight.add(key);
+    const btn = document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement : null;
+    const originalText = btn ? btn.textContent : '';
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+    }
+    try {
+        return await action();
+    } finally {
+        billingAccountingSaveInFlight.delete(key);
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    }
+}
+
 function billingAccountingResetMethodForm() {
     const ui = getBillingAccountingFoundationState();
     ui.methodForm = { id: '', method_key: 'card', name: '', category: '', is_active: 1, sort_order: 0, memo: '' };
@@ -790,7 +817,9 @@ async function saveBillingAccountingMethod() {
     const endpoint = form.id
         ? `billing-accounting-foundation/payment-methods/${encodeURIComponent(form.id)}`
         : 'billing-accounting-foundation/payment-methods';
-    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    return withBillingAccountingSaveGuard(`method:${form.id || payload.method_key || payload.name}`, async () => {
+    const body = form.id ? payload : { ...payload, clientRequestId: billingAccountingClientRequestId() };
+    const result = form.id ? await api.patch(endpoint, body) : await api.post(endpoint, body);
     if (result?.success) {
         toast('저장되었습니다.', 'success');
         billingAccountingResetMethodForm();
@@ -798,6 +827,7 @@ async function saveBillingAccountingMethod() {
         return;
     }
     toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+    });
 }
 
 async function saveBillingAccountingPolicy() {
@@ -826,7 +856,9 @@ async function saveBillingAccountingPolicy() {
     const endpoint = form.id
         ? `billing-accounting-foundation/billing-policy-rules/${encodeURIComponent(form.id)}`
         : 'billing-accounting-foundation/billing-policy-rules';
-    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    return withBillingAccountingSaveGuard(`policy:${form.id || `${payload.branch}:${payload.rule_type}:${payload.rule_key}`}`, async () => {
+    const body = form.id ? payload : { ...payload, clientRequestId: billingAccountingClientRequestId() };
+    const result = form.id ? await api.patch(endpoint, body) : await api.post(endpoint, body);
     if (result?.success) {
         toast('저장되었습니다.', 'success');
         billingAccountingResetPolicyForm();
@@ -834,6 +866,7 @@ async function saveBillingAccountingPolicy() {
         return;
     }
     toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+    });
 }
 
 async function saveBillingAccountingTransaction() {
@@ -859,7 +892,9 @@ async function saveBillingAccountingTransaction() {
     const endpoint = form.id
         ? `billing-accounting-foundation/payment-transactions/${encodeURIComponent(form.id)}`
         : 'billing-accounting-foundation/payment-transactions';
-    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    return withBillingAccountingSaveGuard(`transaction:${form.id || `${payload.student_id}:${payload.transaction_date}:${payload.amount}:${payload.method_key}`}`, async () => {
+    const body = form.id ? payload : { ...payload, clientRequestId: billingAccountingClientRequestId() };
+    const result = form.id ? await api.patch(endpoint, body) : await api.post(endpoint, body);
     if (result?.success) {
         toast('저장되었습니다.', 'success');
         billingAccountingResetTransactionForm();
@@ -867,6 +902,7 @@ async function saveBillingAccountingTransaction() {
         return;
     }
     toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+    });
 }
 
 async function saveBillingAccountingCashbook() {
@@ -892,7 +928,9 @@ async function saveBillingAccountingCashbook() {
     const endpoint = form.id
         ? `billing-accounting-foundation/cashbook-entries/${encodeURIComponent(form.id)}`
         : 'billing-accounting-foundation/cashbook-entries';
-    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    return withBillingAccountingSaveGuard(`cashbook:${form.id || `${payload.entry_date}:${payload.entry_type}:${payload.amount}:${payload.title}`}`, async () => {
+    const body = form.id ? payload : { ...payload, clientRequestId: billingAccountingClientRequestId() };
+    const result = form.id ? await api.patch(endpoint, body) : await api.post(endpoint, body);
     if (result?.success) {
         toast('저장되었습니다.', 'success');
         billingAccountingResetCashbookForm();
@@ -900,6 +938,7 @@ async function saveBillingAccountingCashbook() {
         return;
     }
     toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+    });
 }
 
 async function saveBillingAccountingRefund() {
@@ -922,7 +961,9 @@ async function saveBillingAccountingRefund() {
     const endpoint = form.id
         ? `billing-accounting-foundation/refund-records/${encodeURIComponent(form.id)}`
         : 'billing-accounting-foundation/refund-records';
-    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    return withBillingAccountingSaveGuard(`refund:${form.id || `${payload.student_id}:${payload.refund_date}:${payload.refund_amount}`}`, async () => {
+    const body = form.id ? payload : { ...payload, clientRequestId: billingAccountingClientRequestId() };
+    const result = form.id ? await api.patch(endpoint, body) : await api.post(endpoint, body);
     if (result?.success) {
         toast('저장되었습니다.', 'success');
         billingAccountingResetRefundForm();
@@ -930,6 +971,7 @@ async function saveBillingAccountingRefund() {
         return;
     }
     toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+    });
 }
 
 async function saveBillingAccountingCarryover() {
@@ -951,7 +993,9 @@ async function saveBillingAccountingCarryover() {
     const endpoint = form.id
         ? `billing-accounting-foundation/carryover-records/${encodeURIComponent(form.id)}`
         : 'billing-accounting-foundation/carryover-records';
-    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    return withBillingAccountingSaveGuard(`carryover:${form.id || `${payload.student_id}:${payload.amount}:${payload.carryover_type}`}`, async () => {
+    const body = form.id ? payload : { ...payload, clientRequestId: billingAccountingClientRequestId() };
+    const result = form.id ? await api.patch(endpoint, body) : await api.post(endpoint, body);
     if (result?.success) {
         toast('저장되었습니다.', 'success');
         billingAccountingResetCarryoverForm();
@@ -959,6 +1003,7 @@ async function saveBillingAccountingCarryover() {
         return;
     }
     toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+    });
 }
 
 async function reloadBillingAccountingSummaries() {

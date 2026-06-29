@@ -740,6 +740,52 @@ function clinicPrintGetCheckedValues(name) {
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
 }
 
+let clinicPrintPreviewPushTimer = null;
+
+function clinicPrintGetPreviewEngineMode() {
+    const frame = document.getElementById('clinic-print-preview-frame');
+    try {
+        return frame?.contentDocument?.querySelector('.mode-tab.active')?.dataset?.mode || '';
+    } catch (e) {
+        return '';
+    }
+}
+
+function clinicPrintPushPreview(classId) {
+    const frame = document.getElementById('clinic-print-preview-frame');
+    if (!frame?.contentWindow) return;
+
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    let payload = null;
+    try {
+        payload = mode === 'type'
+            ? clinicPrintBuildTypePayload(classId)
+            : clinicPrintBuildPayload(classId, {
+                selectedExamKeys: clinicPrintGetCheckedValues('clinic-print-exam'),
+                selectedStudentIds: clinicPrintGetCheckedValues('clinic-print-student'),
+                mode,
+                headerOptions: clinicPrintGetHeaderOptions(classId)
+            });
+    } catch (e) {
+        console.warn('[clinic-print] preview payload build failed:', e);
+    }
+
+    if (!payload) return;
+    const engineMode = clinicPrintGetPreviewEngineMode();
+    frame.contentWindow.postMessage({
+        type: 'AP_CLINIC_PREVIEW',
+        payload,
+        mode: engineMode || undefined
+    }, window.location.origin);
+}
+
+function clinicPrintSchedulePreviewPush(classId, delay = 150) {
+    clearTimeout(clinicPrintPreviewPushTimer);
+    clinicPrintPreviewPushTimer = setTimeout(() => {
+        clinicPrintPushPreview(classId);
+    }, delay);
+}
+
 function clinicPrintSwitchMode(classId) {
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
 
@@ -759,10 +805,12 @@ function clinicPrintSwitchMode(classId) {
 
     if (isType) {
         clinicPrintRenderTypePanel(classId);
+        clinicPrintSchedulePreviewPush(classId);
         return;
     }
 
     clinicPrintUpdateStudentList(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 // ---- 유형 카드 (최다빈출 / 최다오답 / 단원별) ----
@@ -856,6 +904,7 @@ function clinicPrintSetTypeScope(classId, scope) {
     });
     clinicPrintRefreshHeaderDefault(classId);
     clinicPrintRenderTypePanel(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 function clinicPrintSetTypeMode(classId, typeMode) {
@@ -867,6 +916,7 @@ function clinicPrintSetTypeMode(classId, typeMode) {
     });
     clinicPrintRefreshHeaderDefault(classId);
     clinicPrintRenderTypePanel(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 function clinicPrintRenderTypePanel(classId) {
@@ -1026,6 +1076,7 @@ function clinicPrintSetUnitRate(classId, rate) {
         btn.classList.toggle('clinic-print-rate-btn--active', active);
     });
     clinicPrintRenderUnitLists(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 function clinicPrintRenderUnitLists(classId) {
@@ -1091,11 +1142,13 @@ function clinicPrintRenderUnitLists(classId) {
 function clinicPrintUnitAdd(classId, key) {
     if (!clinicPrintTypeState.unitSelection.includes(key)) clinicPrintTypeState.unitSelection.push(key);
     clinicPrintRenderUnitLists(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 function clinicPrintUnitRemove(classId, key) {
     clinicPrintTypeState.unitSelection = clinicPrintTypeState.unitSelection.filter(k => k !== key);
     clinicPrintRenderUnitLists(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 function clinicPrintUnitMove(classId, index, dir) {
@@ -1106,6 +1159,7 @@ function clinicPrintUnitMove(classId, index, dir) {
     arr[index] = arr[j];
     arr[j] = tmp;
     clinicPrintRenderUnitLists(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 // 포인터 기반 드래그(마우스·터치·펜 공통). 드래그 중에는 DOM 노드만 이동하고, 놓을 때 순서를 확정한다.
@@ -1141,6 +1195,7 @@ function clinicPrintAttachUnitDnD(classId) {
                 clinicPrintTypeState.unitSelection = Array.from(selEl.querySelectorAll('[data-unit-row]'))
                     .map(r => r.getAttribute('data-key'));
                 clinicPrintRenderUnitLists(classId);
+                clinicPrintSchedulePreviewPush(classId);
             };
             document.addEventListener('pointermove', onMove);
             document.addEventListener('pointerup', onUp);
@@ -1176,6 +1231,7 @@ function clinicPrintUpdateStudentList(classId) {
 
     if (!selectedExamKeys.length) {
         root.innerHTML = '<div class="clinic-print-empty">시험을 선택하세요.</div>';
+        clinicPrintSchedulePreviewPush(classId);
         return;
     }
 
@@ -1184,6 +1240,7 @@ function clinicPrintUpdateStudentList(classId) {
         const gradeItems = clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
         if (!gradeItems.length) {
             root.innerHTML = '<div class="clinic-print-empty">선택한 시험에 출력 가능한 학년 오답이 없습니다.</div>';
+            clinicPrintSchedulePreviewPush(classId);
             return;
         }
 
@@ -1194,23 +1251,26 @@ function clinicPrintUpdateStudentList(classId) {
                 <div class="clinic-print-info-card__meta">제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항</div>
             </div>
         `;
+        clinicPrintSchedulePreviewPush(classId);
         return;
     }
 
     if (!studentItems.length) {
         root.innerHTML = '<div class="clinic-print-empty">선택한 시험에 출력 가능한 오답이 없습니다.</div>';
+        clinicPrintSchedulePreviewPush(classId);
         return;
     }
 
     root.innerHTML = studentItems.map(row => `
         <label class="clinic-print-student-row">
             <span class="clinic-print-student-row__main">
-                <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" checked>
+                <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" checked onchange="clinicPrintSchedulePreviewPush('${clinicPrintEscapeJsString(classId)}')">
                 <span class="clinic-print-student-row__name">${clinicPrintEscapeHtml(row.studentName)}</span>
             </span>
             <span class="clinic-print-student-row__count">${row.wrongItems.length}문항</span>
         </label>
     `).join('');
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 async function clinicPrintSubmit(classId) {
@@ -1371,6 +1431,8 @@ async function openClinicPrintCenter(classId, options = {}) {
         : '<div class="clinic-print-empty">시험 기록이 없습니다.</div>';
 
     showModal('오답 클리닉 출력 센터', `
+        <div class="clinic-print-layout">
+        <div class="clinic-print-layout__controls">
         <div class="clinic-print-shell">
             <div class="clinic-print-summary-card">
                 <div class="clinic-print-summary-card__title">${clinicPrintEscapeHtml(cls?.name || '반')}</div>
@@ -1479,7 +1541,26 @@ async function openClinicPrintCenter(classId, options = {}) {
 
             <button id="clinic-print-submit-btn" class="btn apms-button apms-button--primary btn-primary clinic-print-submit" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
         </div>
+        </div>
+        <div class="clinic-print-layout__preview" aria-label="출력 미리보기">
+            <iframe id="clinic-print-preview-frame" title="출력 미리보기" src="wrong_print_engine.html?preview=1"></iframe>
+        </div>
+        </div>
     `);
+
+    document.getElementById('modal-content')?.classList.add('clinic-print-fullscreen');
+    document.getElementById('clinic-print-preview-frame')?.addEventListener('load', () => {
+        clinicPrintSchedulePreviewPush(classId, 0);
+    });
+    document.querySelectorAll('#clinic-print-header-title, #clinic-print-header-meta, #clinic-print-header-subtitle').forEach(input => {
+        input.addEventListener('input', () => clinicPrintSchedulePreviewPush(classId));
+    });
+    document.querySelectorAll('#clinic-print-header-name, #clinic-print-header-score, #clinic-print-header-sol, #clinic-print-header-ans').forEach(input => {
+        input.addEventListener('change', () => clinicPrintSchedulePreviewPush(classId));
+    });
+    document.querySelector('#clinic-print-student-section .clinic-print-mini-btn')?.addEventListener('click', () => {
+        clinicPrintSchedulePreviewPush(classId);
+    });
 
     setTimeout(() => clinicPrintSwitchMode(classId), 0);
 }

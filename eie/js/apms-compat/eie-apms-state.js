@@ -117,9 +117,10 @@
         ui.eieApmsCompat.loading = false;
     }
 
+    // 세션 만료(401)만 foundation 로드를 중단/재로그인 트리거로 본다.
+    // 403(권한 없음)은 세션이 유효하므로 중단하지 않고 부분 에러로 흘려보낸다.
     function isAuthError(err) {
-        return !!(err && (err.status === 401 || err.status === 403))
-            || !!(window.EieApi && typeof EieApi.isAuthError === 'function' && EieApi.isAuthError(err));
+        return !!(err && err.status === 401);
     }
 
     async function loadFoundation(options) {

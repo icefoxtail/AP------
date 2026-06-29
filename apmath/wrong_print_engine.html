@@ -23,6 +23,12 @@
         .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
         .mode-tab.active { background: white; color: #0f172a; }
         #btn-print { padding: 8px 16px; border-radius: 6px; border: none; background: #378ADD; color: white; font-weight: bold; cursor: pointer; }
+        body.preview-mode { padding-top: 44px; }
+        body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; }
+        body.preview-mode #ctrl-title,
+        body.preview-mode #btn-print { display: none; }
+        body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
+        body.preview-mode #print-area { gap: 12px; padding: 12px 0 24px; transform: scale(0.72); transform-origin: top center; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; page-break-after: always; }
         .page:last-child { page-break-after: avoid; }
@@ -128,6 +134,7 @@ const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 // QR URL 길이별 스캔 안정성 기준(LOOP 4).
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam' };
+let previewRenderTimer = null;
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
@@ -1798,6 +1805,13 @@ async function render() {
     await raf();
 }
 
+function schedulePreviewRender() {
+    clearTimeout(previewRenderTimer);
+    previewRenderTimer = setTimeout(() => {
+        render();
+    }, 250);
+}
+
 function switchMode(mode) {
     if (isQrSolutionMode() && mode !== 'review') {
         mode = 'review';
@@ -1805,6 +1819,20 @@ function switchMode(mode) {
     state.mode = mode;
     document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
     render();
+}
+
+function installPreviewMessageChannel() {
+    window.addEventListener('message', event => {
+        if (event.origin !== window.location.origin) return;
+        const msg = event.data || {};
+        if (msg.type !== 'AP_CLINIC_PREVIEW') return;
+        state.payload = msg.payload;
+        if (msg.mode) state.mode = msg.mode;
+        document.querySelectorAll('.mode-tab').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.mode === state.mode);
+        });
+        schedulePreviewRender();
+    });
 }
 
 function loadPayloadFromUrl() {
@@ -1851,6 +1879,12 @@ async function loadPayloadFromUrlOrStorage() {
 
 async function boot() {
     const qrMode = isQrSolutionMode();
+    const params = new URLSearchParams(window.location.search);
+    const previewMode = params.get('preview') === '1';
+    if (previewMode) {
+        document.body.classList.add('preview-mode');
+        installPreviewMessageChannel();
+    }
     try {
         state.payload = await loadPayloadFromUrlOrStorage();
     } catch (e) {
@@ -1859,7 +1893,6 @@ async function boot() {
         return;
     }
 
-    const params = new URLSearchParams(window.location.search);
     state.mode = qrMode ? 'review' : (params.get('mode') || state.mode || 'exam');
     document.querySelectorAll('.mode-tab').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.mode === state.mode);
@@ -1869,6 +1902,11 @@ async function boot() {
     document.querySelectorAll('.mode-tab').forEach(btn => {
         btn.addEventListener('click', () => switchMode(btn.dataset.mode || 'exam'));
     });
+
+    if (previewMode && (!state.payload || typeof state.payload !== 'object')) {
+        document.getElementById('print-area').innerHTML = '<div class="notice">설정을 선택하면 미리보기가 표시됩니다.</div>';
+        return;
+    }
 
     if (!state.payload || typeof state.payload !== 'object') {
         document.getElementById('print-area').innerHTML = '<div class="notice">오답지 데이터를 찾을 수 없습니다. AP Math OS에서 다시 열어주세요.</div>';

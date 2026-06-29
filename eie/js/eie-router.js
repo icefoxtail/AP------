@@ -92,10 +92,9 @@
                 window.EieApp.handleEie401();
                 return;
             }
-            if (e && e.status === 403 && window.EieApp && typeof window.EieApp.handleEie401 === 'function') {
-                window.EieApp.handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
-                return;
-            }
+            // 403(권한 없음)은 세션 만료가 아니다 — 로그인 화면으로 보내지 않고
+            // 현재 화면을 유지한다. (선생님이 원장 전용 자원에 닿은 경우 등)
+            if (e && e.status === 403) return;
             throw e;
         }
     }

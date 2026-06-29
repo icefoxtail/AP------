@@ -374,6 +374,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     titleEl.innerText = t;
     bodyEl.innerHTML = b;
     if (contentEl) {
+        contentEl.classList.remove('clinic-print-fullscreen');
         contentEl.style.width = '';
         contentEl.style.maxWidth = '';
         contentEl.style.height = '';
