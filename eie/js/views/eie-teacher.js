@@ -724,7 +724,7 @@
             ? window.renderEieWeeklyScheduleDashboardCard(_operationData, { mode: 'teacher' })
             : '<section class="eie-p-card"><h2 style="margin:0;font-size:16px;">주간일정</h2><div style="padding:12px 0;color:#777;font-size:13px;">일정 UI를 불러오지 못했습니다.</div></section>';
 
-        return '<div class="eie-teacher-operation-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">'
+        return '<div class="eie-teacher-operation-grid">'
             + memoHtml
             + scheduleHtml
             + '</div>';
@@ -744,8 +744,14 @@
             + '<div class="eie-teacher-dashboard-shell">'
             + errorHtml
             + renderHomeHead(todayRows)
-            + renderOperationCards()
+            + '<div class="eie-teacher-grid">'
+            + '<div class="eie-teacher-main">'
             + renderWeekdaySchedule()
+            + '</div>'
+            + '<div class="eie-teacher-side">'
+            + renderOperationCards()
+            + '</div>'
+            + '</div>'
             + '</div>'
             + '</section>';
     }

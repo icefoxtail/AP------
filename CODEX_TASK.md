@@ -1,848 +1,330 @@
-형님, 실제 코드 기준으로 보면 이건 **“오답 클리닉 저장형 packet 시스템”**을 기존 APMS 흐름에 붙이는 작업이 맞습니다.
-특히 핵심은 **오답 출처 반(source)** 과 **받는 학생/반(recipient)** 을 완전히 분리하는 겁니다.
+형님, 이번 과제는 **EIE 선생님 대시보드의 셸 구조를 APMath 선생님 대시보드(8:4 메인/사이드)처럼 포팅**하는 작업입니다.
+메모·일정 기능은 이미 API 기반으로 붙어 동작하므로, 신규 기능 추가가 아니라 **레이아웃 셸을 AP식 2단(메인/사이드)으로 재구성**하고, 그 과정에서 알려진 결함(빠른버튼 그리드 깨짐, 메모 직접수정 부재, 시험 그룹 삭제 미연결)을 함께 정리합니다.
 
-현재 코드상 중요한 지점은 이렇습니다.
+핵심 전제:
 
-`clinic-print.js`는 지금 오답 payload를 만든 뒤 `sessionStorage/localStorage`에 넣고 `wrong_print_engine.html`을 새 창으로 엽니다. 즉 서버 저장 없이 브라우저 임시 payload로만 출력됩니다.
-학생 상세는 `student.js` 안에서 모달 셸을 만들고, 탭은 현재 `기본 / 상담 / 성적` 3개뿐입니다.
-학생 포털은 이미 학생 PIN/token 기반으로 로그인하고, `student-portal/home`, `student-portal/exams` 같은 API로 과제/시험 자료를 받아오는 구조입니다.
-또 학생 포털에는 이미 시험지/정답/해설 보기 버튼을 만들어 `archive/engine.html` 또는 `mixed_engine.html`을 여는 흐름이 있습니다.
+- **원장(원장님) 대시보드는 절대 손대지 않는다.** `EieDashboardView.render()` 및 원장 경로의 레이아웃·시각·동작은 과제 전후 동일해야 한다(PC·모바일 모두).
+- 포팅은 **AP의 콘텐츠가 아니라 셸 구조**를 옮기는 것이다. EIE 콘텐츠(요일 수업, 메모, 주간일정)는 그대로 두고 배치만 AP식 8:4로 바꾼다.
+- 메모/일정 카드는 원장·선생님 **공용 컴포넌트**다. 선생님 전용 변경은 반드시 `mode`로 분기해 **원장 경로 동작을 보존**한다.
 
-그래서 오답 클리닉도 이 흐름에 맞춰야 합니다.
-
----
-
-# 1. 핵심 설계 원칙
-
-## 절대 하면 안 되는 구조
+## 확정 결정 (형님 컨펌)
 
 ```text
-wrong_clinic.class_id = 중3B
-→ 중3B 학생만 조회 가능
-```
-
-이렇게 하면 형님이 말한 상황에서 바로 꼬입니다.
-
-예:
-
-```text
-출처: 중3B 공통오답
-수신자: 중3A 학생 김민준
-```
-
-김민준은 중3A 소속이지만, 중3B 오답을 받았습니다.
-따라서 학생 페이지 조회 기준은 `source_class_id`가 아니라 **recipient_student_id** 여야 합니다.
-
----
-
-# 2. DB 구조
-
-## 2-1. wrong_clinic_sets
-
-오답 콘텐츠의 “출처”입니다.
-
-```sql
-CREATE TABLE IF NOT EXISTS wrong_clinic_sets (
-  id TEXT PRIMARY KEY,
-  title TEXT NOT NULL,
-  mode TEXT NOT NULL,                 -- student, class, grade, type
-  source_scope_type TEXT NOT NULL,    -- class, grade, custom
-  source_class_id TEXT,
-  source_class_name TEXT,
-  source_grade TEXT,
-  source_exam_title TEXT,
-  source_exam_keys_json TEXT,
-  print_title TEXT,
-  created_by TEXT,
-  created_by_name TEXT,
-  created_at TEXT DEFAULT (datetime('now', '+9 hours')),
-  memo TEXT,
-  public_set_key TEXT UNIQUE,
-  status TEXT DEFAULT 'active'
-);
-```
-
-예:
-
-```text
-title: 중3B 공통오답
-source_class_id: m3b
-source_class_name: 중3B
-source_grade: 중3
-mode: class
-```
-
-이 테이블은 “이 오답이 어디서 만들어졌는가”만 나타냅니다.
-
----
-
-## 2-2. wrong_clinic_set_items
-
-오답 세트의 공통 문항 목록입니다.
-
-```sql
-CREATE TABLE IF NOT EXISTS wrong_clinic_set_items (
-  id TEXT PRIMARY KEY,
-  set_id TEXT NOT NULL,
-  order_no INTEGER NOT NULL,
-  archive_file TEXT NOT NULL,
-  question_no INTEGER NOT NULL,
-  source_question_id TEXT,
-  original_id TEXT,
-  exam_title TEXT,
-  exam_date TEXT,
-  correct_rate REAL,
-  wrong_count INTEGER,
-  total_count INTEGER,
-  standard_unit_key TEXT,
-  standard_unit TEXT,
-  created_at TEXT DEFAULT (datetime('now', '+9 hours')),
-  FOREIGN KEY (set_id) REFERENCES wrong_clinic_sets(id)
-);
-```
-
-반별/학년별/유형별 공통오답은 여기에 들어갑니다.
-
----
-
-## 2-3. wrong_clinic_distributions
-
-오답 세트를 누구에게 배포했는지입니다.
-
-```sql
-CREATE TABLE IF NOT EXISTS wrong_clinic_distributions (
-  id TEXT PRIMARY KEY,
-  set_id TEXT NOT NULL,
-  target_type TEXT NOT NULL,          -- class, student, custom_group
-  target_class_id TEXT,
-  target_class_name TEXT,
-  target_student_id TEXT,
-  target_student_name TEXT,
-  target_label TEXT,
-  distributed_by TEXT,
-  distributed_by_name TEXT,
-  distributed_at TEXT DEFAULT (datetime('now', '+9 hours')),
-  due_date TEXT,
-  memo TEXT,
-  status TEXT DEFAULT 'active',
-  FOREIGN KEY (set_id) REFERENCES wrong_clinic_sets(id)
-);
-```
-
-예:
-
-```text
-set_id: 중3B 공통오답
-target_type: class
-target_class_id: 중3A
-target_label: 중3A 전체
-```
-
-또는:
-
-```text
-set_id: 중3B 공통오답
-target_type: student
-target_student_id: 김민준
-target_label: 중3A 김민준
+[메인 8칸]  요일 수업 승격 — 현재 renderWeekdaySchedule 을 메인 컬럼으로 올린다.
+            AP식 "학급관리 반 목록"은 신규 구현하지 않는다.
+[사이드 4칸] 메모 → 주간일정 세로 스택. (오늘일지 카드는 생략 — EIE 일지 데이터 없음)
+[일정 권한] 옵션 A 현행 유지 — 선생님도 공용 일정 편집 가능. 권한 코드 변경 없음.
 ```
 
 ---
 
-## 2-4. wrong_clinic_packets
+# 1. 작업 범위와 불변식
 
-학생별 실제 접근 단위입니다.
+## 1-1. 절대 불변 (FAIL 조건)
 
-```sql
-CREATE TABLE IF NOT EXISTS wrong_clinic_packets (
-  id TEXT PRIMARY KEY,
-  set_id TEXT NOT NULL,
-  distribution_id TEXT,
-  recipient_student_id TEXT NOT NULL,
-  recipient_student_name TEXT,
-  recipient_class_id TEXT,
-  recipient_class_name TEXT,
-  source_class_id TEXT,
-  source_class_name TEXT,
-  source_grade TEXT,
-  packet_key TEXT UNIQUE NOT NULL,
-  item_count INTEGER DEFAULT 0,
-  viewed_at TEXT,
-  last_opened_at TEXT,
-  created_at TEXT DEFAULT (datetime('now', '+9 hours')),
-  status TEXT DEFAULT 'active',
-  FOREIGN KEY (set_id) REFERENCES wrong_clinic_sets(id),
-  FOREIGN KEY (distribution_id) REFERENCES wrong_clinic_distributions(id)
-);
+```text
+원장 대시보드 EieDashboardView.render() 출력이 바뀌면 FAIL — PC/모바일 모두
+  - ap-owner-grid 셀 배치(8/4/8/4/12)·카드 배치·호출 순서 변경 금지
+  - 원장 메모 카드 행 클릭 동작 변경 금지
+  - 원장 일정 카드/모달의 추가·수정·삭제 동작 변경 금지
+  - 공용 카드 렌더러(renderEieMemoDashboardCard / renderEieWeeklyScheduleDashboardCard)의
+    mode==='owner'(기본값) 경로 출력이 바뀌면 FAIL
+
+메모 scope 가 owner_user_id(auth.id) 외 기준으로 바뀌면 FAIL
+  - getOperationMemos 에 teacherName/teacher_name 파라미터 추가 금지
+
+일정 권한은 옵션 A 현행 유지
+  - 워커 일정 라우트에 requireEieOwner 가드 추가 금지, 선생님 일정 버튼 숨김 금지
 ```
 
-학생 페이지는 이 테이블을 기준으로 조회합니다.
+## 1-2. 이번 과제 대상 (PASS 목표)
 
-```sql
-WHERE recipient_student_id = ?
+```text
+선생님 대시보드 셸을 AP식 8:4 메인/사이드 2단으로 포팅
+  - 메인(8): 요일 수업
+  - 사이드(4): 메모 → 주간일정 세로 스택
+  - <1024px 에서는 단일 컬럼으로 접힘
+빠른버튼 그리드 깨짐(4버튼 3칸) 수정
+선생님 메모 행에서 해당 메모 직접 수정 진입 (mode 게이팅)
+시험 기간 일정의 그룹 삭제/수정 배선 (mode 게이팅)
+메모/일정 카드 보조 라벨 보강(내 개인 메모 / 학원 공용 일정)
 ```
 
 ---
 
-## 2-5. wrong_clinic_packet_items
-
-실제로 학생이 받는 문항 목록입니다.
-
-이게 중요합니다.
-`set_items`만 있으면 학생별 오답처럼 학생마다 문항이 다른 경우를 처리하기 어렵습니다.
-
-```sql
-CREATE TABLE IF NOT EXISTS wrong_clinic_packet_items (
-  id TEXT PRIMARY KEY,
-  packet_id TEXT NOT NULL,
-  set_item_id TEXT,
-  order_no INTEGER NOT NULL,
-  archive_file TEXT NOT NULL,
-  question_no INTEGER NOT NULL,
-  source_question_id TEXT,
-  original_id TEXT,
-  exam_title TEXT,
-  exam_date TEXT,
-  correct_rate REAL,
-  wrong_count INTEGER,
-  total_count INTEGER,
-  wrong_note TEXT,
-  created_at TEXT DEFAULT (datetime('now', '+9 hours')),
-  FOREIGN KEY (packet_id) REFERENCES wrong_clinic_packets(id),
-  FOREIGN KEY (set_item_id) REFERENCES wrong_clinic_set_items(id)
-);
-```
-
-이렇게 해야 합니다.
+# 2. 현재 EIE 선생님 구조 (수정 기준점)
 
 ```text
-반별/학년별 공통오답:
-set_items = 공통 문항
-packet_items = set_items를 각 학생 packet에 복사 또는 참조
+파일: eie/js/views/eie-teacher.js
+render():742
+  section.eie-teacher-dashboard.eie-v2-screen
+    h1.eie-teacher-sr-title
+    div.eie-teacher-dashboard-shell   ← display:grid; gap:12px; max-width:860px (단일 컬럼)
+      errorHtml
+      renderHomeHead(:633)            선생님명 + 날짜 + renderShortcutRow(빠른버튼 4개)
+      renderOperationCards(:719)      메모+주간일정 (auto-fit minmax 260 → 2칸 grid)
+      renderWeekdaySchedule(:704)     요일 탭 + 요일 수업 행
 
-학생별 오답:
-set_items = 선택적으로 비워도 됨
-packet_items = 학생별 실제 오답 문항
+CSS: eie/css/eie-dashboard-classroom.css
+  .eie-teacher-dashboard-shell:561   display:grid; max-width:860px; gap:12px  (단일 컬럼)
+  .eie-teacher-quick-cards:620       grid-template-columns: repeat(3,...)  ← 버튼 4개와 불일치
+  .eie-teacher-schedule / day-row    요일 수업 카드/행 스타일 (재사용)
+```
+
+AP 참고 구조(목표 형태):
+
+```text
+파일: apmath/js/dashboard-teacher.js + injectDashboardRedesignStyles()(dashboard.js:573)
+  .ap-dash-redesign
+    .ap-dash-quick-panel             상단 빠른버튼
+    .ap-dash-grid                    @min-width:1024px → 12칼럼
+      .ap-dash-main (span 8)         학급관리(반 목록)        ← EIE에선 "요일 수업"
+      .ap-dash-side (span 4)         오늘일지 + 메모 + 주간일정 ← EIE에선 "메모 + 주간일정"(일지 생략)
+  .ap-dash-grid 기본 1fr, 1024px 미만에서 단일 컬럼
 ```
 
 ---
 
-# 3. API 설계
+# 3. AP 선생님 구조 → EIE 매핑
 
-현재 Worker는 route 파일로 위임하는 구조가 맞고, 새 API는 `index.js`에 직접 본문을 넣지 말고 `routes/*.js`로 빼야 한다고 문서화되어 있습니다.
+| AP 컴포넌트 | EIE 처리 | 비고 |
+|---|---|---|
+| `.ap-dash-redesign` 넓은 캔버스(~1640px) | `.eie-teacher-dashboard-shell` max-width 확대(~1280px) | 2단 수용 위해 폭 확대 |
+| `.ap-dash-quick-panel` (버튼 3개) | `renderHomeHead` 안의 `renderShortcutRow`(버튼 4개) | 기존 유지, 그리드만 수정 |
+| `.ap-dash-grid` 8:4 | 신규 `.eie-teacher-grid` (main 8 / side 4) | 1024px 미만 단일 컬럼 |
+| `.ap-dash-main` = 학급관리 | `renderWeekdaySchedule`(요일 수업) | **요일 수업 승격** |
+| `.ap-dash-side` 오늘일지 | (생략) | EIE 일지 데이터 없음 |
+| `.ap-dash-side` 메모 + 주간일정 | `renderOperationCards`(메모 → 주간일정) | 2칸 grid → **세로 스택** |
+| `.ap-dash-card` 흰 카드 | 기존 `.eie-p-card` 토큰 유지 | 새 카드 톤 도입 안 함 |
 
-따라서 새 파일:
-
-```text
-apmath/worker-backup/worker/routes/wrong-clinics.js
-```
-
-그리고 `index.js`에는 import와 위임만 추가합니다.
-
----
-
-## 3-1. 선생님용 생성 API
+원칙:
 
 ```text
-POST /api/wrong-clinics
-```
-
-요청:
-
-```json
-{
-  "title": "중3B 공통오답",
-  "mode": "class",
-  "source": {
-    "scope_type": "class",
-    "class_id": "m3b",
-    "class_name": "중3B",
-    "grade": "중3"
-  },
-  "targets": [
-    {
-      "type": "class",
-      "class_id": "m3a",
-      "class_name": "중3A"
-    },
-    {
-      "type": "student",
-      "student_id": "stu_123",
-      "student_name": "김민준",
-      "class_id": "m3a",
-      "class_name": "중3A"
-    }
-  ],
-  "payload": {
-    "mode": "class",
-    "classWrongItems": [],
-    "gradeWrongItems": [],
-    "students": []
-  }
-}
-```
-
-응답:
-
-```json
-{
-  "success": true,
-  "set_id": "wcs_...",
-  "public_set_key": "SET_A8K2P9Q4",
-  "packet_count": 18,
-  "packets": [
-    {
-      "student_id": "stu_123",
-      "student_name": "김민준",
-      "packet_key": "PKT_Q9M2A7K8",
-      "item_count": 12
-    }
-  ],
-  "print": {
-    "engine_url": "apmath/wrong_print_engine.html?set=SET_A8K2P9Q4"
-  }
-}
+새 CSS 는 AP 클래스(.ap-dash-*, body.ap-teacher-dashboard-mode)를 재사용하지 않는다.
+  → EIE 네임스페이스(.eie-teacher-grid / -main / -side)로 새로 만든다.
+카드 내부(메모/일정/수업 행) 스타일은 기존 eie-p-card / eie-v2-screen 토큰을 그대로 쓴다.
 ```
 
 ---
 
-## 3-2. 선생님용 학생별 목록 API
+# 4. 구현 루프
+
+## Loop 1 — AP 8:4 셸 포팅 (1순위, 본 과제 핵심)
+
+파일: `eie/js/views/eie-teacher.js`, `eie/css/eie-dashboard-classroom.css`
+
+`render()`를 헤더(풀폭) + 8:4 그리드(메인/사이드)로 재구성한다.
 
 ```text
-GET /api/wrong-clinics/packets?student_id=...
+변경 후 구조:
+  section.eie-teacher-dashboard.eie-v2-screen
+    h1.eie-teacher-sr-title
+    div.eie-teacher-dashboard-shell
+      errorHtml
+      renderHomeHead(todayRows)              ← 풀폭 상단(선생님명/날짜/빠른버튼)
+      div.eie-teacher-grid
+        div.eie-teacher-main                 → renderWeekdaySchedule()   (요일 수업)
+        div.eie-teacher-side                 → renderOperationCards()    (메모 → 주간일정)
 ```
 
-교사용 학생상세에서 씁니다.
-
-응답:
-
-```json
-{
-  "success": true,
-  "packets": [
-    {
-      "packet_id": "wcp_001",
-      "packet_key": "PKT_Q9M2A7K8",
-      "title": "중3B 공통오답",
-      "source_class_name": "중3B",
-      "recipient_class_name": "중3A",
-      "item_count": 12,
-      "created_at": "2026-06-27 12:30",
-      "mode": "class"
-    }
-  ]
-}
-```
-
----
-
-## 3-3. QR/엔진용 packet 조회
+CSS:
 
 ```text
-GET /api/wrong-clinics/packet/:packetKey
+.eie-teacher-dashboard-shell
+  max-width 860px → ~1280px 로 확대, display:grid; gap:16px (헤더/그리드 세로)
+
+.eie-teacher-grid
+  기본: grid-template-columns: 1fr; gap:16px;          (모바일/태블릿 단일 컬럼)
+  @media (min-width:1024px):
+    grid-template-columns: minmax(0,8fr) minmax(0,4fr);
+    align-items: start;
+.eie-teacher-main { min-width:0; }
+.eie-teacher-side { min-width:0; display:grid; gap:12px; align-content:start; }
 ```
 
-응답은 `wrong_print_engine.html`이 바로 렌더링할 수 있는 payload 형태여야 합니다.
-
-```json
-{
-  "success": true,
-  "payload": {
-    "version": "2.0",
-    "mode": "student",
-    "printTitle": "중3B 공통오답",
-    "className": "중3A",
-    "sourceClassName": "중3B",
-    "createdDate": "2026-06-27",
-    "students": [
-      {
-        "studentId": "stu_123",
-        "studentName": "김민준",
-        "wrongItems": []
-      }
-    ]
-  }
-}
-```
-
----
-
-## 3-4. QR/엔진용 set 조회
-
-공통오답 한 장을 여러 명에게 나눠주는 경우에는 같은 QR을 써야 할 수도 있습니다.
+renderOperationCards 수정:
 
 ```text
-GET /api/wrong-clinics/set/:setKey
-```
-
-이건 개인 추적 없이 “공통 콘텐츠”를 여는 용도입니다.
-
-```text
-wrong_print_engine.html?set=SET_A8K2P9Q4&mode=review
-```
-
-반면 학생 개별 페이지에서는 반드시 packet 기준으로 엽니다.
-
-```text
-wrong_print_engine.html?packet=PKT_Q9M2A7K8&mode=review
-```
-
----
-
-## 3-5. 학생 포털용 목록 API
-
-현재 학생 포털은 학생 token으로 `student-portal/home`과 `student-portal/exams`를 불러옵니다.
-
-여기에 둘 중 하나로 붙입니다.
-
-### 방법 A: home 응답에 포함
-
-```json
-{
-  "wrong_clinic_packets": []
-}
-```
-
-### 방법 B: 별도 endpoint
-
-```text
-GET /api/student-portal/wrong-clinics?student_id=...
-```
-
-초기에는 **방법 B가 안전합니다.**
-`student-portal/home`은 이미 과제, OMR, 배정자료가 얽혀 있어서 너무 커지면 회귀 위험이 있습니다.
-
----
-
-# 4. 실제 프론트 이동 흐름
-
-## 4-1. 선생님 화면: clinic-print.js
-
-현재 최종 제출은 `clinicPrintSubmit()`에서 payload를 만들고 바로 `clinicPrintOpenEngine(payload)`를 호출합니다.
-
-이걸 이렇게 바꿉니다.
-
-```text
-현재:
-clinicPrintSubmit()
-→ clinicPrintBuildPayload()
-→ clinicPrintOpenEngine(payload)
-→ sessionStorage/localStorage 저장
-→ wrong_print_engine.html open
-
-변경:
-clinicPrintSubmit()
-→ clinicPrintBuildPayload()
-→ 배포 대상 resolve
-→ POST /api/wrong-clinics
-→ 서버가 set/packet 저장
-→ wrong_print_engine.html?set=... 또는 packet=... open
-→ 저장 실패 시 기존 wp/sessionStorage 방식 fallback
-```
-
-중요한 점:
-
-```text
-기존 즉시 출력 흐름은 깨지면 안 됨.
-서버 저장 실패 시 “저장형 QR 생성 실패, 임시 출력으로 진행” 안내 후 기존 방식 fallback.
-```
-
----
-
-## 4-2. 배포 대상 선택 UI
-
-현재 오답 출력은 기본적으로 현재 반 학생 목록에서 체크합니다.
-
-여기에 “배포 대상”을 따로 둬야 합니다.
-
-```text
-[오답 출처]
-중3B 공통오답
-
-[배포 대상]
-☑ 출처 반 전체: 중3B
-+ 다른 반 추가
-+ 학생 직접 추가
-+ 임시 그룹 만들기
-```
-
-출처와 배포 대상은 별도입니다.
-
-```text
-source_class_id = 중3B
-recipient_class_id = 중3A
-recipient_student_id = 김민준
-```
-
----
-
-## 4-3. 학생상세: student.js
-
-현재 학생 상세 탭은 3개입니다.
-
-```js
-const AP_STUDENT_DETAIL_TABS = ['basic', 'cns', 'grade'];
-```
-
-그리고 탭 라벨도 기본/상담/성적만 있습니다.
-
-여기에 `wrong` 탭을 추가합니다.
-
-```js
-const AP_STUDENT_DETAIL_TABS = ['basic', 'cns', 'grade', 'wrong'];
-```
-
-탭:
-
-```js
-{ key: 'wrong', label: '오답' }
-```
-
-`renderStudentViewBody()` 분기 추가:
-
-```js
-if (activeTab === 'wrong') {
-  body = renderStudentWrongClinicTab(sid);
-}
-```
-
-`renderStudentWrongClinicTab(sid)`는 처음에는 카드 껍데기만 그리고 lazy load합니다.
-
-```text
-학생상세 → 오답 탭
-→ api.get('wrong-clinics/packets?student_id=...')
-→ 받은 오답 packet 목록 표시
-```
-
-표시 예:
-
-```text
-2026-06-27  중3B 공통오답 12문항
-출처: 중3B · 받은 반: 중3A
-[문제] [정답] [해설]
-```
-
-버튼은 `wrong_print_engine.html?packet=...`을 엽니다.
-
----
-
-## 4-4. 학생 포털: apmath/student/index.html
-
-학생 포털은 이미 `renderStudentPortalAssignments()`로 배정 자료 섹션을 그리고, OMR/해설 보기 URL도 만듭니다.
-
-여기에 새 섹션을 추가합니다.
-
-```text
-오답 클리닉
-
-2026-06-27 중3B 공통오답
-12문항 · 해설 가능
-[문제 보기] [정답 보기] [해설 보기]
-```
-
-새 함수:
-
-```js
-async function loadWrongClinicPackets(force = false)
-function getWrongClinicPackets()
-function renderWrongClinicPackets()
-function openWrongClinicPacket(packetKey, mode)
-```
-
-URL:
-
-```js
-../../apmath/wrong_print_engine.html?packet=PKT_Q9M2A7K8&mode=review
-```
-
-학생 포털에서는 반드시 현재 로그인 학생의 packet만 보여야 합니다.
-백엔드는 `student_token` 검증 후 `recipient_student_id = verified.student.id`인 packet만 반환해야 합니다.
-
----
-
-## 4-5. wrong_print_engine.html
-
-현재는 `wp=` 또는 sessionStorage payload 중심입니다.
-여기에 서버 조회 모드를 추가합니다.
-
-우선순위:
-
-```text
-1. packet=... 있으면 서버에서 packet payload 조회
-2. set=... 있으면 서버에서 set payload 조회
-3. wp=... 있으면 기존 QR payload 복원
-4. sessionStorage/localStorage 있으면 기존 출력 payload 사용
-```
-
-즉 기존 기능은 유지하고, 새 저장형만 추가합니다.
-
-```js
-async function loadPayloadFromUrlOrStorage() {
-  const p = new URLSearchParams(location.search);
-
-  if (p.get('packet')) {
-    return await loadWrongClinicPacketPayload(p.get('packet'));
-  }
-
-  if (p.get('set')) {
-    return await loadWrongClinicSetPayload(p.get('set'));
-  }
-
-  if (p.get('wp')) {
-    return decodeWrongQrPayload(p.get('wp'));
-  }
-
-  return loadClinicPrintPayloadFromStorage();
-}
-```
-
----
-
-# 5. 중3B 오답을 다른 반에 배포하는 실제 흐름
-
-## 케이스 A: 중3B 공통오답을 중3A 전체에게 배포
-
-```text
-1. 선생님이 중3B 오답 클리닉 생성
-2. source_class_id = 중3B
-3. 배포 대상에서 중3A 전체 선택
-4. wrong_clinic_sets 1개 생성
-5. wrong_clinic_set_items 12개 생성
-6. wrong_clinic_distributions 1개 생성
-   - target_type = class
-   - target_class_id = 중3A
-7. 중3A 재원생 수만큼 wrong_clinic_packets 생성
-8. 각 packet에 packet_items 12개 생성
-9. 중3A 학생 페이지에 “중3B 공통오답” 표시
-```
-
-학생 상세에는 이렇게 보여야 합니다.
-
-```text
-김민준 / 현재 반: 중3A
-
-오답 클리닉
-- 중3B 공통오답 12문항
-  출처: 중3B
-  받은 대상: 중3A 전체
-  [문제] [정답] [해설]
-```
-
----
-
-## 케이스 B: 중3B 공통오답을 중3A 김민준 한 명에게만 배포
-
-```text
-set.source_class_id = 중3B
-distribution.target_type = student
-packet.recipient_student_id = 김민준
-packet.recipient_class_id = 중3A
-```
-
-학생 페이지에는 김민준에게만 보입니다.
-
----
-
-## 케이스 C: 중3B 오답을 임시 그룹에 배포
-
-예: “기말대비 보강반”
-
-```text
-distribution.target_type = custom_group
-distribution.target_label = 기말대비 보강반
-packets = 선택 학생별로 생성
-```
-
-학생 상세에는:
-
-```text
-출처: 중3B
-배포: 기말대비 보강반
-```
-
----
-
-# 6. 권한 설계
-
-## 선생님/원장
-
-현재 Worker에는 `canAccessStudent`, `canAccessClass` 같은 권한 헬퍼가 있습니다. `canAccessStudent`는 교사가 담당하는 반의 학생인지 확인합니다.
-
-오답 클리닉 생성 권한은 이렇게 가야 합니다.
-
-```text
-원장(admin): 모든 source/recipient 가능
-선생님(teacher):
-  - source_class_id는 본인 담당반만 가능
-  - recipient_student_id도 본인 담당 학생만 가능
-  - 다른 선생님 반 학생에게 배포하려면 admin 권한 필요
-```
-
-형님이 원장 계정으로 전체 배포하는 건 가능해야 합니다.
-
----
-
-## 학생 포털
-
-학생은 자기 packet만 봅니다.
-
-```sql
-WHERE recipient_student_id = verified.student.id
-```
-
-절대 source_class_id로 조회하면 안 됩니다.
-
----
-
-## QR
-
-QR은 두 종류로 나눕니다.
-
-```text
-packet QR:
-학생별 접근용
-wrong_print_engine.html?packet=PKT_...
-
-set QR:
-공통오답 콘텐츠용
-wrong_print_engine.html?set=SET_...
-```
-
-학생별 오답은 반드시 packet QR을 씁니다.
-반별/학년별 공통 출력은 set QR을 기본으로 써도 됩니다. 대신 학생 포털에는 각 학생 packet이 따로 보입니다.
-
----
-
-# 7. 이번 구현을 단계로 나누면
-
-## 1차: DB/API 기반
-
-작업:
-
-```text
-routes/wrong-clinics.js 추가
-wrong_clinic_* 테이블 ensure 함수 추가
-POST /wrong-clinics
-GET /wrong-clinics/packet/:key
-GET /wrong-clinics/set/:key
-GET /wrong-clinics/packets?student_id=...
+현재: .eie-teacher-operation-grid  grid auto-fit minmax(260,1fr)  (메모|일정 2칸)
+변경: 사이드(4칸)로 들어가므로 세로 스택으로 — display:grid; gap:12px; (1 컬럼)
+      메모 카드 → 주간일정 카드 순서 유지.
 ```
 
 주의:
 
 ```text
-initial-data에 넣지 말 것
-학생상세는 lazy API로 불러올 것
-```
-
-현재 route map에서도 initial-data는 프론트 전체 회귀 위험이 크다고 되어 있습니다.
-
----
-
-## 2차: clinic-print.js 저장형 연결
-
-현재 `clinicPrintOpenEngine(payload)`는 session/localStorage 방식입니다.
-
-변경:
-
-```text
-clinicPrintSubmit()
-→ POST /wrong-clinics
-→ 성공 시 wrong_print_engine.html?set=... 또는 packet=...
-→ 실패 시 기존 clinicPrintOpenEngine(payload) fallback
+eie-v2-screen 래퍼, data-eie-teacher-key, sr-title, errorHtml 위치는 유지(다크모드/테마/접근성).
+renderWeekdaySchedule 자체(요일 탭/수업 행)는 콘텐츠 변경 없이 메인 컬럼으로 이동만.
+메모/일정 카드 렌더러(공용)는 호출만 하고 내부는 손대지 않는다(원장 불변).
+1024px 미만에서 사이드가 메인 아래로 자연스럽게 떨어지는지 확인(요일수업 → 메모 → 주간일정).
 ```
 
 ---
 
-## 3차: wrong_print_engine.html packet/set 모드
+## Loop 2 — 빠른버튼 그리드 수정 (셸 일부)
 
-추가:
+파일: `eie/css/eie-dashboard-classroom.css`
 
 ```text
-?packet=...
-?set=...
+.eie-teacher-quick-cards
+  현재: grid-template-columns: repeat(3, minmax(0,1fr));
+  변경:
+    PC(기본):        repeat(4, minmax(0,1fr));
+    모바일(<=620px): repeat(2, minmax(0,1fr));   ← 2×2
 ```
 
-기존:
-
 ```text
-?wp=...
-sessionStorage/localStorage
-```
-
-유지.
-
----
-
-## 4차: 학생상세 오답 탭
-
-`AP_STUDENT_DETAIL_TABS`에 `wrong` 추가.
-`renderStudentWrongClinicTab(sid)` 추가.
-
-현재 학생상세 셸은 탭 변경 시 `renderStudentViewBody()`로 본문을 갈아끼우므로 이 구조에 맞추면 됩니다.
-
----
-
-## 5차: 학생 포털 오답 클리닉 섹션
-
-`apmath/student/index.html`에:
-
-```text
-loadWrongClinicPackets()
-renderWrongClinicPackets()
-openWrongClinicPacket()
-```
-
-추가.
-
-홈에는 `renderMaterialWrongAssignments()` 아래나 위에 `renderWrongClinicPackets()`를 넣으면 됩니다. 현재 홈은 배정자료, 수업자료 오답, 과제/플래너/OMR 카드 순서로 구성됩니다.
-
-추천 위치:
-
-```text
-배정 자료
-오답 클리닉
-수업자료 오답
-과제 / 플래너 / OMR
+JS(renderShortcutRow) 버튼 수/순서 변경 금지. .eie-teacher-quick-card 토큰 스타일 유지.
 ```
 
 ---
 
-# 8. Codex 지시 핵심 문장
+## Loop 3 — 메모 행 직접 수정 진입 (mode 게이팅)
+
+파일: `eie/js/views/eie-operation-memos.js`
 
 ```text
-오답 클리닉 저장형 packet 시스템을 설계/구현한다.
+현재: renderMemoRow(row, compact=true) → rowAction = openEieTodoMemoModal()  (목록 모달)
+변경: renderMemoRow(row, compact, mode)
+        mode==='teacher' → openEditEieTodoMemoModal(id)   (해당 메모 직접 수정)
+        그 외(원장)       → openEieTodoMemoModal()          (현행 유지)
+      renderEieMemoDashboardCard 에서 mode 를 행까지 주입.
+```
 
-핵심 원칙:
-source_class_id와 recipient_class_id를 절대 같은 의미로 사용하지 않는다.
-
-source_class_id/source_class_name은 오답 세트가 어디서 생성되었는지 나타내는 “출처”다.
-recipient_student_id/recipient_class_id는 실제로 오답을 받은 “대상”이다.
-
-학생상세와 학생포털의 오답 클리닉 목록은 source_class_id가 아니라 recipient_student_id 기준으로 조회한다.
-
-예:
-중3A 학생이 중3B 공통오답을 받으면,
-학생상세/학생포털에는 “중3B 공통오답”이 표시되어야 한다.
-단, 접근 권한과 목록 노출은 recipient_student_id 기준으로 판단한다.
+```text
+options.mode 기본값 'owner' 유지 → 원장 경로 동작 보존(불변식 1-1).
+체크박스 완료 토글·stopPropagation 동작 유지.
 ```
 
 ---
 
-# 9. 최종 검수 기준
+## Loop 4 — 시험 기간 일정 그룹 삭제/수정 배선 (mode 게이팅 필수)
+
+파일: `eie/js/views/eie-operation-schedule.js`
 
 ```text
-1. 중3B 오답을 중3B 전체에게 배포 → 중3B 학생 페이지에 표시
-2. 중3B 오답을 중3A 전체에게 배포 → 중3A 학생 페이지에 “중3B 공통오답” 표시
-3. 중3B 오답을 중3A 학생 1명에게만 배포 → 그 학생에게만 표시
-4. 학생상세 오답 탭은 recipient_student_id 기준으로 조회
-5. 학생포털 오답 클리닉 섹션도 recipient_student_id 기준으로 조회
-6. source_class_name과 recipient_class_name이 둘 다 화면에 표시
-7. wrong_print_engine.html?packet=... 으로 정답/해설 열림
-8. wrong_print_engine.html?set=... 으로 공통오답 열림
-9. 기존 wp/sessionStorage 출력 방식은 fallback으로 유지
-10. QR은 긴 payload가 아니라 packet/set key만 포함
-11. 다른 학생 packet이 섞이면 FAIL
-12. source_class_id 기준으로 학생 목록을 필터링하면 FAIL
+*** 카드/모달은 원장·선생님 공용. 그룹 삭제/수정·그룹 표시는 mode==='teacher' 에서만 켠다.
+    원장(mode==='owner', 기본값) 경로는 현행 코드를 그대로 통과시킨다. ***
+
+mode 를 모달 열기 체인까지 전달:
+  openEieScheduleModal(mode) / renderScheduleModal(data, mode)
+  openEditEieUnifiedScheduleModal(kind, id, seriesId, occurrenceIds, mode)
+
+표시(teacher 한정):
+  renderScheduleModal mode==='teacher' → combinedRows(data,{group:true}), 행에 occurrenceIds 실음
+  원장 → 현행 combinedRows(data)(개별 일자 행) 유지
+
+삭제 deleteEieUnifiedSchedule (teacher + exam):
+  occurrenceIds 길이 > 1 → EieApi.deleteExamScheduleGroup(occurrenceIds)
+  단건                   → EieApi.deleteExamSchedule(id)   (현행)
+  academy / 원장          → 현행 유지
+
+수정 handleEditEieUnifiedSchedule (teacher + exam):
+  기간 변경 → EieApi.updateExamScheduleGroup(payload)
+  단건      → EieApi.updateExamSchedule(id, payload)
+  원장      → 현행 updateExamSchedule 유지
 ```
 
+```text
+그룹 API(create/update/deleteExamScheduleGroup)와 워커 group-delete 라우트는 이미 존재 → 백엔드 추가 불필요.
+mode 스레딩이 전역 onclick 구조상 과도하게 침습적이면 Loop 4 보류 후 별도 과제로 분리(원장 불변 우선).
+```
+
+---
+
+## Loop 5 — 카드 보조 라벨 보강
+
+파일: `eie/js/views/eie-operation-memos.js`, `eie/js/views/eie-operation-schedule.js`
+
+```text
+메모 카드:     "메모"     + 보조 "내 개인 메모"
+주간일정 카드: "주간일정"  + 보조 "학원 공용 일정"
+```
+
+```text
+기능명 변경 금지, 보조 문구만 추가. --eie-p-text-sub 토큰 사용.
+원장 톤이 어색하면 mode==='teacher' 일 때만 노출(불변식 1-1 우선).
+```
+
+---
+
+# 5. 범위 외 / 보류 (이번 과제에서 하지 않음)
+
+```text
+AP식 학급관리(반 목록) 메인 컬럼 신규 구현 — 이번엔 요일수업 승격으로 대체.
+오늘일지 카드 — EIE 일지 데이터/기능 없음. 별도 대형 과제.
+원장 화면 선생님 명단 하드코딩(DASHBOARD_TEACHER_ROSTER, eie-dashboard.js:53) — 원장 파일이라 제외.
+AP 선생님 보조 자동 메모(결석/숙제/일지 알림) — 데이터 모델 연계 필요, 후속.
+메모 인라인 빠른 추가 폼 — 현행 모달 유지.
+주간일정 편집 권한 분리 — 옵션 A 확정, 변경 없음.
+```
+
+---
+
+# 6. 회귀 위험
+
+```text
+높음:
+  공용 카드(메모/일정) 변경이 원장 경로 동작을 바꾸는 것
+    → 모든 변경 mode 게이팅, 원장 경로는 기존 분기 그대로 통과 검증.
+  셸 그리드 도입 시 min-width:0 누락으로 카드 내용이 컬럼을 밀어 가로 오버플로
+    → main/side 에 min-width:0, grid 컬럼 minmax(0,*fr) 적용.
+
+중간:
+  1024px 경계에서 사이드가 메인 아래로 안 떨어지거나 순서 꼬임
+    → 요일수업 → 메모 → 주간일정 순서 확인.
+  빠른버튼 그리드 변경이 모바일에서 줄바꿈/높이 깨짐 → PC4 / 모바일2×2 양쪽 확인.
+  eie-v2-screen 래퍼/data 속성 누락으로 다크모드·테마 색 깨짐 → 래퍼·속성 보존.
+```
+
+---
+
+# 7. Codex 지시 핵심 문장
+
+```text
+EIE 선생님 대시보드 셸을 APMath 선생님(8:4 메인/사이드)처럼 포팅한다. 원장 대시보드는 손대지 않는다.
+
+구조:
+  헤더(선생님명/날짜/빠른버튼)는 풀폭 상단.
+  그 아래 8:4 그리드 — 메인(8)=요일 수업, 사이드(4)=메모 → 주간일정 세로 스택.
+  1024px 미만은 단일 컬럼. 오늘일지/학급관리 신규 구현은 하지 않는다.
+  새 CSS 는 .ap-dash-* 를 재사용하지 말고 .eie-teacher-grid/-main/-side 로 만든다.
+  카드 내부는 기존 eie-p-card / eie-v2-screen 토큰 유지.
+
+원장 불변:
+  공용 메모/일정 컴포넌트 수정은 options.mode 로 분기, mode='owner' 경로 출력/동작을 보존한다.
+
+선생님 변경:
+  1) render 를 헤더 → 8:4 그리드(메인=요일수업 / 사이드=메모·주간일정)로 재구성.
+  2) .eie-teacher-quick-cards 를 PC 4칸 / 모바일 2×2 로 고친다.
+  3) 선생님 메모 행 클릭은 해당 메모 수정창으로 직행(mode==='teacher' 한정).
+  4) 시험 기간 일정 삭제/수정을 그룹 단위로 연결(mode==='teacher' 한정).
+  5) 메모 "내 개인 메모", 일정 "학원 공용 일정" 보조 라벨 추가.
+
+메모 scope 는 절대 바꾸지 않는다(teacher 파라미터 금지). 일정 권한은 옵션 A 현행 유지.
+원장 대시보드는 PC·모바일 모두 과제 전과 동일해야 한다.
+```
+
+---
+
+# 8. 최종 검수 기준 (PASS/FAIL)
+
+```text
+1.  원장 대시보드 렌더 결과가 과제 전과 동일하다 — PC.                               [불변]
+2.  원장 대시보드가 모바일 폭에서도 과제 전과 동일하다.                              [불변]
+3.  원장 메모/일정 카드 동작(행 클릭·추가·수정·삭제)이 과제 전과 동일하다.          [불변]
+4.  선생님 대시보드가 ≥1024px 에서 8:4 2단(메인=요일수업 / 사이드=메모·주간일정)이다.
+5.  선생님 대시보드가 <1024px 에서 단일 컬럼(요일수업 → 메모 → 주간일정)으로 접힌다.
+6.  사이드에서 메모 → 주간일정 순으로 세로 스택된다(2칸 grid 아님).
+7.  오늘일지 카드는 없다(생략 확정).
+8.  선생님 빠른버튼 4개가 PC 한 줄(4칸), 모바일 2×2 로 정렬된다.
+9.  선생님 메모 행을 누르면 해당 메모 수정창이 바로 열린다.
+10. 선생님 화면에서 시험 기간(예 7/2~7/4) 일정을 한 번에 삭제하면 전체 일자가 삭제된다.
+11. 선생님 화면에서 시험 기간 일정을 그룹 수정하면 묶인 일자에 반영된다.
+12. 메모 카드 "내 개인 메모", 일정 카드 "학원 공용 일정" 보조 라벨이 보인다.
+13. 메모 API 호출에 teacher_name/teacherName 파라미터가 없다.                        [scope]
+14. 선생님도 공용 일정을 추가/수정/삭제할 수 있다(옵션 A).
+15. 다크모드·선생님 테마색이 정상(eie-v2-screen 토큰 적용)이다.
+16. 가로 스크롤/카드 오버플로가 없다(min-width:0 적용).
+17. 위 항목 중 원장 화면이 PC·모바일 어느 한 군데라도 바뀌면 FAIL.
+```

@@ -1413,7 +1413,9 @@ function getArchiveBoardTeacherName(row) {
 }
 
 function getArchiveBoardAssignmentTitle(row) {
-    return String(row?.exam_title || row?.title || row?.archive_title || row?.archive_file || row?.file_name || '시험지').trim();
+    const fileTitle = formatArchiveDisplayName(row?.archive_file || row?.file_name || row?.source_file || '');
+    if (fileTitle) return fileTitle;
+    return String(row?.exam_title || row?.title || row?.archive_title || '시험지').trim();
 }
 
 function getArchiveBoardPaperKey(row) {

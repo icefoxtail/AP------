@@ -115,10 +115,11 @@
         return '<div class="eie-operation-empty" style="padding:12px 0;color:var(--eie-p-text-sub);font-size:13px;">표시할 메모가 없습니다.</div>';
     }
 
-    function renderMemoRow(row, compact) {
+    function renderMemoRow(row, compact, mode) {
         var id = memoId(row);
         var label = memoPinned(row) ? '고정' : formatShortDate(memoDate(row));
-        var rowAction = compact
+        var isTeacher = String(mode || 'owner') === 'teacher';
+        var rowAction = compact && !isTeacher
             ? 'event.stopPropagation(); openEieTodoMemoModal()'
             : 'event.stopPropagation(); openEditEieTodoMemoModal(' + jsArg(id) + ')';
         return '<div class="eie-operation-memo-row" style="display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--eie-p-border);">'
@@ -134,13 +135,16 @@
         var mode = options && options.mode ? String(options.mode) : 'owner';
         var rows = visibleMemos(memoRowsFromData(data));
         var today = formatShortDate(todayIso());
+        var openAction = mode === 'teacher' ? '' : ' onclick="openEieTodoMemoModal()"';
+        var openStyle = mode === 'teacher' ? 'flex:1;' : 'flex:1;cursor:pointer;';
         return eieScreenWrap('<section class="eie-operation-card eie-operation-memos-card eie-p-card" data-eie-operation-mode="' + esc(mode) + '" style="min-height:100%;display:flex;flex-direction:column;gap:8px;color:var(--eie-p-text);">'
             + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">'
-            + '<h2 style="margin:0;font-size:16px;line-height:1.2;">메모</h2>'
+            + '<div style="min-width:0;"><h2 style="margin:0;font-size:16px;line-height:1.2;">메모</h2>'
+            + '<p style="margin:3px 0 0;color:var(--eie-p-text-sub);font-size:12px;line-height:1.2;">내 개인 메모</p></div>'
             + '<span style="font-size:12px;color:var(--eie-p-text-sub);">' + esc(today) + '</span>'
             + '</div>'
-            + '<div onclick="openEieTodoMemoModal()" style="flex:1;cursor:pointer;">'
-            + (rows.length ? rows.map(function (row) { return renderMemoRow(row, true); }).join('') : renderEmpty())
+            + '<div' + openAction + ' style="' + openStyle + '">'
+            + (rows.length ? rows.map(function (row) { return renderMemoRow(row, true, mode); }).join('') : renderEmpty())
             + '</div>'
             + '<div class="eie-operation-card-footer">'
             + '<button type="button" class="eie-p-btn-new eie-operation-add-btn" onclick="event.stopPropagation(); openEieTodoMemoModal()">+ 메모 추가</button>'
