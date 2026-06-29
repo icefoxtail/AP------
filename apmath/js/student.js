@@ -1967,6 +1967,129 @@ function openStudentWrongClinicPacket(packetKey, mode = 'review') {
     if (!win && typeof toast === 'function') toast('팝업 차단을 해제하세요', 'warn');
 }
 
+async function deleteStudentWrongClinicPacket(sid, packetKey) {
+    const key = String(packetKey || '').trim();
+    if (!key) return;
+    if (!confirm('이 오답 클리닉을 완전 삭제할까요?')) return;
+    try {
+        const res = await api.delete('wrong-clinics/packet', encodeURIComponent(key));
+        if (res && res.success === false) {
+            toast(res.message || res.error || '오답 클리닉 삭제에 실패했습니다.', 'error');
+            return;
+        }
+        const store = getStudentWrongClinicState(sid);
+        store.loaded = false;
+        store.packets = [];
+        toast('오답 클리닉을 삭제했습니다.', 'info');
+        await ensureStudentWrongClinicPacketsLoaded(sid, true);
+    } catch (e) {
+        toast('오답 클리닉 삭제 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function buildStudentWrongClinicReissuePayload(sid, sourcePacket, candidates) {
+    const first = candidates[0] || {};
+    const studentId = String(sid || first.recipient_student_id || sourcePacket?.recipient_student_id || '');
+    const studentName = first.recipient_student_name || sourcePacket?.recipient_student_name || '';
+    const classId = first.recipient_class_id || sourcePacket?.recipient_class_id || '';
+    const className = first.recipient_class_name || sourcePacket?.recipient_class_name || '';
+    const today = new Date().toLocaleDateString('sv-SE');
+    const wrongItems = candidates.map(row => ({
+        ...(row.item || {}),
+        examKey: `review:${row.packet_key || ''}:${row.order_no || ''}`,
+        examTitle: row.exam_title || row.item?.examTitle || '',
+        examDate: row.exam_date || row.item?.examDate || '',
+        archiveFile: row.archive_file || row.item?.archiveFile || '',
+        questionNo: Number(row.question_no || row.item?.questionNo || 0),
+        sourceArchiveFile: row.item?.sourceArchiveFile || row.archive_file || '',
+        sourceQuestionNo: Number(row.item?.sourceQuestionNo || row.question_no || 0),
+        reviewSourcePacketKey: row.packet_key || '',
+        reviewSourceOrderNo: Number(row.order_no || 0)
+    })).filter(item => item.archiveFile && item.questionNo);
+    return {
+        version: '1.0',
+        mode: 'student',
+        printTitle: `${studentName || '학생'} 오답의 오답 클리닉`,
+        classId,
+        className,
+        createdAt: new Date().toISOString(),
+        createdDate: today,
+        range: { type: 'review_wrong', from: '', to: '' },
+        options: {
+            groupByStudent: true,
+            groupByExam: true,
+            dedupeByQuestion: false,
+            showWrongStudents: true,
+            pageBreakByStudent: true,
+            includeAnswer: false,
+            includeSolution: false,
+            includeHomeworkCheckBox: true
+        },
+        exams: [],
+        students: [{
+            studentId,
+            studentName: studentName || '학생',
+            wrongItems
+        }],
+        classWrongItems: [],
+        gradeWrongItems: []
+    };
+}
+
+async function reissueStudentWrongClinicPacket(sid, packetKey) {
+    const studentId = String(sid || '').trim();
+    const key = String(packetKey || '').trim();
+    if (!studentId || !key || typeof api === 'undefined') return;
+    const sourcePacket = (getStudentWrongClinicState(studentId).packets || [])
+        .find(packet => String(packet.packet_key || '') === key) || {};
+    try {
+        const res = await api.get(`wrong-clinics/review-wrongs?student_id=${encodeURIComponent(studentId)}&packet_key=${encodeURIComponent(key)}`);
+        const candidates = Array.isArray(res.items) ? res.items : [];
+        if (!candidates.length) {
+            toast('재출제할 오답 후보가 없습니다. 이미 재출제했거나 저장된 오답 번호가 없습니다.', 'info');
+            return;
+        }
+        const payload = buildStudentWrongClinicReissuePayload(studentId, sourcePacket, candidates);
+        if (!payload.students[0].wrongItems.length) {
+            toast('재출제할 문항 정보를 찾지 못했습니다.', 'warn');
+            return;
+        }
+        const first = candidates[0] || {};
+        const classId = payload.classId || first.source_class_id || '';
+        const result = await api.post('wrong-clinics', {
+            title: payload.printTitle,
+            mode: 'student',
+            source: {
+                scope_type: 'student_review_wrong',
+                class_id: classId,
+                class_name: payload.className || first.source_class_name || '',
+                grade: ''
+            },
+            targets: [{
+                type: 'student',
+                student_id: studentId,
+                student_name: payload.students[0].studentName,
+                class_id: payload.classId,
+                class_name: payload.className
+            }],
+            payload
+        });
+        if (result?.success === false || result?.error || !result?.public_set_key) {
+            throw new Error(result.message || result.error || '오답 클리닉 재출제에 실패했습니다.');
+        }
+        const engineUrl = result?.print?.engine_url || `wrong_print_engine.html?set=${encodeURIComponent(result.public_set_key || '')}`;
+        window.open(new URL(engineUrl, window.location.href).toString(), '_blank', 'noopener');
+        toast(`오답의 오답 ${payload.students[0].wrongItems.length}문항을 재출제했습니다.`, 'success');
+        const store = getStudentWrongClinicState(studentId);
+        store.loaded = false;
+        store.packets = [];
+        await ensureStudentWrongClinicPacketsLoaded(studentId, true);
+    } catch (e) {
+        toast(e.message || '오답 클리닉 재출제 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+
 function renderStudentWrongClinicTab(sid) {
     const store = getStudentWrongClinicState(sid);
     if (!store.loaded && !store.loading) {
@@ -1996,24 +2119,29 @@ function renderStudentWrongClinicTab(sid) {
         `;
     }
     const rowsHtml = packets.map(packet => {
+        const reviewWrongIds = Array.isArray(packet.review_wrong_ids) ? packet.review_wrong_ids : [];
         const meta = [
             packet.source_class_name ? `출처: ${packet.source_class_name}` : '',
             packet.recipient_class_name ? `받은 반: ${packet.recipient_class_name}` : '',
             packet.created_at ? String(packet.created_at).slice(0, 16) : ''
         ].filter(Boolean).join(' · ');
+        const status = Number(packet.is_submitted || 0) === 1 ? '제출 완료' : '미제출';
+        const wrongText = reviewWrongIds.length ? `저장 오답: ${reviewWrongIds.join(', ')}번` : '저장 오답 없음';
         const key = apmsStudentJsString(packet.packet_key || '');
+        const reissueButton = reviewWrongIds.length
+            ? `<button type="button" class="btn apms-button apms-button--primary" onclick="reissueStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">재출제</button>`
+            : '';
         return `
             <div class="ap-student-card" style="margin:8px 0;">
                 <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;">
                     <div>
                         <div style="font-weight:700;">${apmsStudentDetailEsc(packet.title || '오답 클리닉')}</div>
                         <div class="muted">${apmsStudentDetailEsc(meta)}</div>
-                        <div class="muted">${Number(packet.item_count || 0)}문항</div>
+                        <div class="muted">${Number(packet.item_count || 0)}문항 · ${apmsStudentDetailEsc(status)} · ${apmsStudentDetailEsc(wrongText)}</div>
                     </div>
                     <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'exam')">문제</button>
-                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'ans')">정답</button>
-                        <button type="button" class="btn apms-button apms-button--primary" onclick="openStudentWrongClinicPacket(${key}, 'sol')">해설</button>
+                        ${reissueButton}
+                        <button type="button" class="btn apms-button apms-button--quiet" style="color:var(--error);" onclick="deleteStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">삭제</button>
                     </div>
                 </div>
             </div>

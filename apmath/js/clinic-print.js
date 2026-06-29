@@ -75,7 +75,7 @@ function clinicPrintGetHeaderOptions(classId) {
     const title = clinicPrintClampText(document.getElementById('clinic-print-header-title')?.value || titleDefault, 80) || titleDefault;
     return {
         title,
-        metaRight: clinicPrintClampText(document.getElementById('clinic-print-header-meta')?.value || '', 60),
+        metaRight: '',
         subtitle: clinicPrintClampText(document.getElementById('clinic-print-header-subtitle')?.value || '', 120),
         showNameLine: document.getElementById('clinic-print-header-name')?.checked !== false,
         showScoreLine: document.getElementById('clinic-print-header-score')?.checked !== false,
@@ -741,6 +741,27 @@ function clinicPrintGetCheckedValues(name) {
 }
 
 let clinicPrintPreviewPushTimer = null;
+let clinicPrintActiveClassId = null;
+
+// 미리보기 헤더 인라인 편집(iframe) → 좌측 입력칸 반영 → 재동기화.
+// 리스너는 1회만 등록하고, 대상 반은 clinicPrintActiveClassId 로 추적한다.
+if (typeof window !== 'undefined' && !window.__clinicPrintHeaderEditBound) {
+    window.__clinicPrintHeaderEditBound = true;
+    window.addEventListener('message', event => {
+        if (event.origin !== window.location.origin) return;
+        const msg = event.data || {};
+        if (msg.type !== 'AP_CLINIC_HEADER_EDIT' || !clinicPrintActiveClassId) return;
+        const fieldToId = {
+            title: 'clinic-print-header-title',
+            subtitle: 'clinic-print-header-subtitle'
+        };
+        const input = document.getElementById(fieldToId[msg.field] || '');
+        if (!input) return;
+        input.value = msg.value || '';
+        if (msg.field === 'title') clinicPrintSetHeaderTitleDirty(true);
+        clinicPrintSchedulePreviewPush(clinicPrintActiveClassId);
+    });
+}
 
 function clinicPrintGetPreviewEngineMode() {
     const frame = document.getElementById('clinic-print-preview-frame');
@@ -1399,6 +1420,7 @@ function clinicPrintOpenSimilarMenu(classId = '') {
 }
 
 async function openClinicPrintCenter(classId, options = {}) {
+    clinicPrintActiveClassId = classId;
     clinicPrintTypeState.unitSelection = [];
     clinicPrintTypeState.dragKey = null;
     const cls = clinicPrintGetClass(classId);
@@ -1472,16 +1494,11 @@ async function openClinicPrintCenter(classId, options = {}) {
                     <span>출력 제목</span>
                     <input id="clinic-print-header-title" class="clinic-print-header-input" type="text" maxlength="80" value="${clinicPrintEscapeAttr(clinicPrintGetHeaderDefaultTitle(classId))}" oninput="clinicPrintSetHeaderTitleDirty(true)">
                 </label>
-                <div class="clinic-print-header-grid">
-                    <label class="clinic-print-header-field">
-                        <span>우측 메타</span>
-                        <input id="clinic-print-header-meta" class="clinic-print-header-input" type="text" maxlength="60" placeholder="반 · 학생 · 날짜">
-                    </label>
-                    <label class="clinic-print-header-field">
-                        <span>보조 문구</span>
-                        <input id="clinic-print-header-subtitle" class="clinic-print-header-input" type="text" maxlength="120" placeholder="선택 입력">
-                    </label>
-                </div>
+                <label class="clinic-print-header-field">
+                    <span>보조 문구 <span class="clinic-print-section-title--soft">(비우면 반·시험 자동)</span></span>
+                    <input id="clinic-print-header-subtitle" class="clinic-print-header-input" type="text" maxlength="120" placeholder="선택 입력">
+                </label>
+                <div class="clinic-print-note">제목·보조 문구는 우측 미리보기 헤더를 직접 클릭해서도 수정할 수 있어요. 이름·점수·날짜는 1페이지 헤더에 자동 입력되고, 2페이지부터는 작은 이름표가 붙습니다.</div>
                 <div class="clinic-print-header-checks">
                     <label><input id="clinic-print-header-name" type="checkbox" checked> 이름칸</label>
                     <label><input id="clinic-print-header-score" type="checkbox" checked> 점수칸</label>
@@ -1552,7 +1569,7 @@ async function openClinicPrintCenter(classId, options = {}) {
     document.getElementById('clinic-print-preview-frame')?.addEventListener('load', () => {
         clinicPrintSchedulePreviewPush(classId, 0);
     });
-    document.querySelectorAll('#clinic-print-header-title, #clinic-print-header-meta, #clinic-print-header-subtitle').forEach(input => {
+    document.querySelectorAll('#clinic-print-header-title, #clinic-print-header-subtitle').forEach(input => {
         input.addEventListener('input', () => clinicPrintSchedulePreviewPush(classId));
     });
     document.querySelectorAll('#clinic-print-header-name, #clinic-print-header-score, #clinic-print-header-sol, #clinic-print-header-ans').forEach(input => {

@@ -1154,12 +1154,7 @@ function renderCards(cells) {
             }
 
             if (_detailOnlyMode && showPanel) {
-                var backRoute = _detailOnlyReturnRoute || classroomBackRoute();
-                var backLabel = backRoute === 'classroom' ? '클래스룸'
-                    : backRoute === 'dashboard' ? '대시보드'
-                    : '선생님 화면';
                 return '<section class="eie-classroom-screen eie-v2-screen" aria-labelledby="eie-classroom-title">'
-                    + '<button type="button" class="eie-back-button" onclick="EieClassroomView.closeDetail()" aria-label="' + esc(backLabel) + '(으)로 이동" title="' + esc(backLabel) + '">← ' + esc(backLabel) + '</button>'
                     + '<div class="eie-panel eie-p-panel eie-classroom-detail-only-panel">'
                     + '<h1 id="eie-classroom-title" class="eie-panel-title">수업 상세</h1>'
                     + errorHtml

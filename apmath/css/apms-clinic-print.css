@@ -928,15 +928,35 @@
     }
 }
 
+/* 풀블리드가 아니라, 좌측 고정 레일(#app-drawer, 데스크톱 56px)을 비켜 가는 큰 패널.
+   레일이 z-index:9999로 모달 위에 떠 있어 inset:0이면 컨트롤 왼쪽이 가려진다. */
 #modal-content.clinic-print-fullscreen {
     position: fixed;
-    inset: 0;
-    width: 100vw;
+    top: 14px;
+    right: 14px;
+    bottom: 14px;
+    left: 70px;
+    width: auto;
     max-width: none;
-    height: 100vh;
+    height: auto;
     max-height: none;
     margin: 0;
-    border-radius: 0;
+    border-radius: 16px;
+    /* 진입 애니메이션(transform/opacity) 유지 + 드로어 펼침 따라 좌측 슬라이드 */
+    transition:
+        transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        opacity .3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        left .22s ease;
+}
+
+/* 드로어를 펼치면(데스크톱 260px) 패널도 그만큼 우측으로 밀려 가려지지 않게 한다.
+   `body.ap-drawer-expanded`는 toggleAppDrawer/closeAppDrawer/syncDrawerResponsiveState가
+   `#app-drawer.drw-expanded`와 항상 동기화해 토글한다(ui.js). :has() 미지원 브라우저에서도
+   동작하는 폴백. 펼침은 데스크톱(min-width:901px)에서만 일어난다. */
+@media (min-width: 901px) {
+    body.ap-drawer-expanded #modal-content.clinic-print-fullscreen {
+        left: 274px;
+    }
 }
 
 #modal-content.clinic-print-fullscreen #modal-body {
@@ -979,6 +999,17 @@
     height: 100%;
     border: 0;
     background: var(--bg);
+}
+
+/* 데스크톱 레일(56px)은 min-width:901px에서만 존재한다.
+   그 아래에서는 드로어가 화면 밖으로 빠지므로 좌측 여백을 줄여 폭을 확보한다. */
+@media (max-width: 900px) {
+    #modal-content.clinic-print-fullscreen {
+        top: 10px;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+    }
 }
 
 @media (max-width: 880px) {
