@@ -1,6 +1,10 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
-import { listWrongClinicPacketsForStudent } from './wrong-clinics.js';
+import {
+  listWrongClinicPacketsForStudent,
+  saveWrongClinicReviewWrongsForStudent,
+  submitWrongClinicPacketForStudent
+} from './wrong-clinics.js';
 
 const columnCacheByEnv = new WeakMap();
 
@@ -351,6 +355,33 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
 
     const packets = await listWrongClinicPacketsForStudent(env, verified.student.id);
     return jsonResponse({ success: true, packets });
+  }
+
+  if (method === 'POST' && id === 'wrong-clinics' && path[4] === 'submit') {
+    const packetKey = String(path[3] || '').trim();
+    const d = await request.json().catch(() => ({}));
+    const studentId = String(d.student_id || url.searchParams.get('student_id') || '').trim();
+    const studentToken = String(d.student_token || pickStudentPortalToken(url, request)).trim();
+    const verified = await verifyStudentPortalSession(env, studentId, studentToken);
+    if (verified.error) return verified.error;
+    if (!packetKey) return jsonResponse({ success: false, message: 'packet required' }, 400);
+    const packet = await submitWrongClinicPacketForStudent(env, verified.student.id, packetKey);
+    if (!packet) return jsonResponse({ success: false, message: '오답 클리닉을 찾을 수 없습니다.' }, 404);
+    return jsonResponse({ success: true, packet });
+  }
+
+  if (method === 'POST' && id === 'wrong-clinics' && path[4] === 'review-wrongs') {
+    const packetKey = String(path[3] || '').trim();
+    const d = await request.json().catch(() => ({}));
+    const studentId = String(d.student_id || url.searchParams.get('student_id') || '').trim();
+    const studentToken = String(d.student_token || pickStudentPortalToken(url, request)).trim();
+    const verified = await verifyStudentPortalSession(env, studentId, studentToken);
+    if (verified.error) return verified.error;
+    if (!packetKey) return jsonResponse({ success: false, message: 'packet required' }, 400);
+    const packet = await saveWrongClinicReviewWrongsForStudent(env, verified.student.id, packetKey, d.wrong_ids || []);
+    if (!packet) return jsonResponse({ success: false, message: '오답 클리닉을 찾을 수 없습니다.' }, 404);
+    if (packet.error === 'not_submitted') return jsonResponse({ success: false, message: '제출 후 오답을 저장할 수 있습니다.' }, 409);
+    return jsonResponse({ success: true, packet });
   }
 
   if (method === 'POST' && id === 'omr-submit') {

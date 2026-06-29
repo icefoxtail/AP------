@@ -297,6 +297,12 @@
     .portal-assignments-more { margin-top:10px; text-align:right; font-size:11px; font-weight:400; color:var(--secondary); }
     .portal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .portal-card { display:flex; flex-direction:column; gap:14px; min-height:218px; }
+    .portal-grid.compact { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .portal-grid.compact .portal-card { min-height:auto; }
+    .portal-support-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .portal-quick-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .portal-quick-actions .btn { min-height:44px; border-radius:14px; }
+    .portal-omr-home-list { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
     .portal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex:1; }
     .portal-mark { flex:0 0 auto; width:42px; height:42px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:#F3F4F6; color:#374151; border:1px solid rgba(17,24,39,0.08); }
     .portal-mark svg { width:22px; height:22px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
@@ -542,6 +548,9 @@
       .student-profile-card { grid-template-columns:1fr; }
       .summary-grid { min-width:0; width:100%; }
       .portal-grid { grid-template-columns:1fr; gap:12px; }
+      .portal-grid.compact,
+      .portal-support-grid,
+      .portal-quick-actions { grid-template-columns:1fr; }
       .portal-card { min-height:auto; }
       .omr-sheet { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
       .omr-no { min-height:44px; }
@@ -681,7 +690,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.06.29.1';
+    const STUDENT_APP_VERSION = '2026.06.29.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
 
@@ -694,6 +703,7 @@
     let materialWrongData = null;
     let wrongClinicData = null;
     let materialWrongDraft = null;
+    let wrongClinicDraft = null;
     let isLoading = false;
     let deferredInstallPrompt = null;
 
@@ -1091,7 +1101,7 @@
     }
     function renderStudentPortalAssignments() {
       const list = getStudentPortalAssignments();
-      const visible = list.slice(0, 5);
+      const visible = list.slice(0, 2);
       const canClick = typeof toast === 'function';
       if (!visible.length) {
         return `
@@ -1208,23 +1218,134 @@
       url.searchParams.set('mode', mode);
       window.open(url.toString(), '_blank', 'noopener');
     }
+    function findWrongClinicPacket(packetKey) {
+      return getWrongClinicPackets().find(item => String(item.packet_key || '') === String(packetKey || ''));
+    }
+    function normalizeWrongClinicWrongIds(values) {
+      return Array.from(new Set((Array.isArray(values) ? values : [])
+        .map(v => parseInt(v, 10))
+        .filter(v => Number.isFinite(v) && v > 0)))
+        .sort((a, b) => a - b);
+    }
+    async function submitWrongClinicPacket(packetKey) {
+      const packet = findWrongClinicPacket(packetKey);
+      if (!packet) return toast('오답 클리닉을 찾을 수 없습니다.');
+      if (isLoading) return;
+      isLoading = true;
+      try {
+        const data = await apiPost(`student-portal/wrong-clinics/${encodeURIComponent(packetKey)}/submit`, {
+          student_id: session.student_id,
+          student_token: session.student_token
+        });
+        Object.assign(packet, data.packet || {}, { is_submitted: 1 });
+        toast('제출되었습니다. 이제 정답과 해설을 확인하세요.');
+        await refreshWrongClinicPackets();
+      } catch (e) {
+        toast(e.message || '제출에 실패했습니다.');
+      } finally {
+        isLoading = false;
+      }
+    }
+    function renderWrongClinicReview(packetKey) {
+      const packet = findWrongClinicPacket(packetKey);
+      if (!packet) return toast('오답 클리닉을 찾을 수 없습니다.');
+      if (Number(packet.is_submitted || 0) !== 1) return toast('제출 후 오답을 저장할 수 있습니다.');
+      const count = Math.max(0, Number(packet.item_count || 0));
+      if (!count) return toast('문항 수를 확인할 수 없습니다.');
+      wrongClinicDraft = {
+        packet_key: String(packet.packet_key || ''),
+        wrong_ids: normalizeWrongClinicWrongIds(packet.review_wrong_ids)
+      };
+      drawWrongClinicReview(packet);
+    }
+    function drawWrongClinicReview(packet) {
+      const count = Math.max(0, Number(packet.item_count || 0));
+      const wrongSet = new Set(normalizeWrongClinicWrongIds(wrongClinicDraft?.wrong_ids));
+      const buttons = Array.from({ length: count }, (_, idx) => {
+        const no = idx + 1;
+        return `<button class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" onclick="toggleWrongClinicWrong(${no})">${no}</button>`;
+      }).join('');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderHome()">← 홈</button>
+          <section class="card">
+            <h1 class="card-title">${escapeHtml(packet.title || '오답 클리닉')}</h1>
+            <p class="card-desc">정답과 해설을 확인한 뒤, 다시 틀린 번호만 선택해 저장하세요.</p>
+            <div class="notice" style="margin-top:14px;">선택한 오답 <span style="font-weight:600;">${wrongSet.size}개</span></div>
+            <div class="omr-sheet">${buttons}</div>
+          </section>
+          <div class="omr-submit-bar">
+            <button id="wrong-clinic-review-save-btn" class="btn btn-primary" onclick="saveWrongClinicReviewWrongs()">오답 저장</button>
+          </div>
+        </div>
+      `;
+    }
+    function toggleWrongClinicWrong(no) {
+      if (!wrongClinicDraft) return;
+      const wrong = new Set(normalizeWrongClinicWrongIds(wrongClinicDraft.wrong_ids));
+      if (wrong.has(no)) wrong.delete(no);
+      else wrong.add(no);
+      wrongClinicDraft.wrong_ids = Array.from(wrong).sort((a, b) => a - b);
+      const packet = findWrongClinicPacket(wrongClinicDraft.packet_key);
+      if (packet) drawWrongClinicReview(packet);
+    }
+    async function saveWrongClinicReviewWrongs() {
+      if (isLoading || !wrongClinicDraft) return;
+      const packet = findWrongClinicPacket(wrongClinicDraft.packet_key);
+      if (!packet) return toast('오답 클리닉을 찾을 수 없습니다.');
+      const btn = $('wrong-clinic-review-save-btn');
+      isLoading = true;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+      }
+      try {
+        const data = await apiPost(`student-portal/wrong-clinics/${encodeURIComponent(wrongClinicDraft.packet_key)}/review-wrongs`, {
+          student_id: session.student_id,
+          student_token: session.student_token,
+          wrong_ids: normalizeWrongClinicWrongIds(wrongClinicDraft.wrong_ids)
+        });
+        Object.assign(packet, data.packet || {});
+        toast('오답이 저장되었습니다.');
+        wrongClinicDraft = null;
+        await refreshWrongClinicPackets();
+        renderHome();
+      } catch (e) {
+        toast(e.message || '오답 저장에 실패했습니다.');
+      } finally {
+        isLoading = false;
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '오답 저장';
+        }
+      }
+    }
     function renderWrongClinicPackets() {
       const list = getWrongClinicPackets();
       const visible = list.slice(0, 6);
       const rows = visible.length ? visible.map(item => {
         const meta = [item.source_class_name ? `출처 ${item.source_class_name}` : '', item.created_at ? String(item.created_at).slice(0, 10) : ''].filter(Boolean).join(' · ');
         const packetKey = escapeHtml(item.packet_key || '');
+        const isSubmitted = Number(item.is_submitted || 0) === 1;
+        const reviewWrongIds = normalizeWrongClinicWrongIds(item.review_wrong_ids);
+        const statusText = isSubmitted ? (reviewWrongIds.length ? `오답 ${reviewWrongIds.length}개 저장` : '제출 완료') : '미제출';
+        const statusClass = isSubmitted ? 'status-done' : 'status-pending';
         return `
           <div class="portal-assignment-row">
             <div class="portal-assignment-line">${escapeHtml(item.title || '오답 클리닉')}</div>
             <div class="portal-assignment-meta">
               <span class="portal-assignment-pill">${escapeHtml(meta || '-')}</span>
               <span class="portal-assignment-pill status-done">${Number(item.item_count || 0)}문항</span>
+              <span class="portal-assignment-pill ${statusClass}">${escapeHtml(statusText)}</span>
             </div>
             <div class="portal-assignment-actions">
-              <button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'exam')">문제</button>
-              <button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'ans')">정답</button>
-              <button type="button" class="btn btn-primary" onclick="openWrongClinicPacket('${packetKey}', 'sol')">해설</button>
+              ${isSubmitted
+                ? `<button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'exam')">문제</button>
+                   <button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'ans')">정답</button>
+                   <button type="button" class="btn btn-primary" onclick="openWrongClinicPacket('${packetKey}', 'sol')">해설</button>
+                   <button type="button" class="btn" onclick="renderWrongClinicReview('${packetKey}')">오답 체크</button>`
+                : `<button type="button" class="btn" onclick="openWrongClinicPacket('${packetKey}', 'exam')">문제 풀기</button>
+                   <button type="button" class="btn btn-primary" onclick="submitWrongClinicPacket('${packetKey}')">제출하기</button>`}
             </div>
           </div>
         `;
@@ -1234,7 +1355,7 @@
           <div class="portal-assignments-head">
             <div>
               <h2 class="card-title">오답 클리닉</h2>
-              <p class="card-desc">선생님이 배포한 오답 문제와 정답·해설을 확인합니다.</p>
+              <p class="card-desc">문제를 푼 뒤 제출하면 정답과 해설을 확인할 수 있습니다.</p>
             </div>
           </div>
           <div class="portal-assignments-list">${rows}</div>
@@ -1243,7 +1364,7 @@
     }
     function renderMaterialWrongAssignments() {
       const list = getMaterialWrongAssignments();
-      const visible = list.slice(0, 6);
+      const visible = list.slice(0, 2);
       const rows = visible.length ? visible.map(item => {
         const status = getMaterialWrongStatus(item);
         const isSubmitted = Number(item.is_submitted || 0) === 1;
@@ -1425,6 +1546,73 @@
       if (type === 'planner') return '<svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 13h3"/><path d="M8 17h6"/></svg>';
       return '<svg viewBox="0 0 24 24"><path d="M5 5h14v14H5z"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h3"/></svg>';
     }
+    async function openHomeOmrInput(assignmentId) {
+      try {
+        await loadOmrExams(false);
+        renderOmrInput(assignmentId);
+      } catch (e) {
+        toast(e.message || 'OMR 정보를 불러오지 못했습니다.');
+      }
+    }
+    function renderOmrHomeSection() {
+      const pending = getStudentPortalAssignments()
+        .filter(row => Number(row?.is_submitted || 0) !== 1)
+        .slice(0, 3);
+      const rows = pending.length ? pending.map(row => {
+        const assignmentId = escapeHtml(String(row?.assignment_id || ''));
+        const examDate = escapeHtml(String(row?.exam_date || ''));
+        const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험지');
+        const questionCount = Number(row?.question_count || 0);
+        const meta = [examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
+        return `
+          <div class="omr-card">
+            <div class="omr-top">
+              <div style="min-width:0;">
+                <div class="omr-title">${examTitle}</div>
+                <div class="omr-meta">${escapeHtml(meta || 'OMR 입력 필요')}</div>
+              </div>
+              <span class="omr-status pending">입력 필요</span>
+            </div>
+            <div class="row-actions">
+              <button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>
+            </div>
+          </div>
+        `;
+      }).join('') : `
+        <div class="empty">바로 입력할 OMR이 없습니다.</div>
+      `;
+      return `
+        <section id="student-portal-omr-home-section" class="card portal-assignments-card">
+          <div class="portal-assignments-head">
+            <div>
+              <h2 class="card-title">OMR 입력</h2>
+              <p class="card-desc">미제출 시험지를 먼저 입력합니다.</p>
+            </div>
+            <div class="portal-mark orange">${renderIcon('omr')}</div>
+          </div>
+          <div class="portal-omr-home-list">${rows}</div>
+          <div class="portal-quick-actions">
+            <button class="btn btn-primary" onclick="renderOmrExams()">전체 OMR 보기</button>
+          </div>
+        </section>
+      `;
+    }
+    function renderStudentQuickActions() {
+      return `
+        <section class="card portal-assignments-card">
+          <div class="portal-assignments-head">
+            <div>
+              <h2 class="card-title">과제 · 플래너</h2>
+              <p class="card-desc">필요할 때 바로 엽니다.</p>
+            </div>
+          </div>
+          <div class="portal-quick-actions">
+            <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
+            <button class="btn" onclick="openPlanner()">플래너 열기</button>
+          </div>
+        </section>
+      `;
+    }
     function renderHome() {
       const student = homeData?.student || session || {};
       const { missing, done } = splitAssignments();
@@ -1450,40 +1638,12 @@
             </div>
           </section>
           ${renderInstallCard(true)}
-          ${renderStudentPortalAssignments()}
+          ${renderOmrHomeSection()}
           ${renderWrongClinicPackets()}
-          ${renderMaterialWrongAssignments()}
-          <div class="portal-grid">
-            <section class="card portal-card">
-              <div class="portal-head">
-                <div>
-                  <h2 class="card-title">과제</h2>
-                  <p class="card-desc">진행 중인 과제와 제출 상태를 확인합니다.</p>
-                </div>
-                <div class="portal-mark green">${renderIcon('task')}</div>
-              </div>
-              <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
-            </section>
-            <section class="card portal-card">
-              <div class="portal-head">
-                <div>
-                  <h2 class="card-title">플래너</h2>
-                  <p class="card-desc">오늘 계획을 확인하고 완료 체크를 합니다.</p>
-                </div>
-                <div class="portal-mark">${renderIcon('planner')}</div>
-              </div>
-              <button class="btn" onclick="openPlanner()">플래너 열기</button>
-            </section>
-            <section class="card portal-card">
-              <div class="portal-head">
-                <div>
-                  <h2 class="card-title">OMR 입력</h2>
-                  <p class="card-desc">선생님이 출제한 시험지를 선택하고 틀린 번호만 체크합니다.</p>
-                </div>
-                <div class="portal-mark orange">${renderIcon('omr')}</div>
-              </div>
-              <button class="btn" onclick="renderOmrExams()">OMR 입력</button>
-            </section>
+          ${renderStudentQuickActions()}
+          <div class="portal-support-grid">
+            ${renderStudentPortalAssignments()}
+            ${renderMaterialWrongAssignments()}
           </div>
           ${renderStudentAppVersion()}
         </div>

@@ -5704,8 +5704,17 @@
             viewState.selectedDay = normalizeKey(selectedSession.day_label);
         }
 
-        viewState.selectedSessionId = selectedSession ? normalizeKey(selectedSession.session_id) : normalizeKey(ctx.sessionId || ctx.session_id || '');
-        viewState.classPanelMode = normalizeKey(ctx.classPanelMode || ctx.class_panel_mode || 'detail') || 'detail';
+        const incomingClassPanelMode = normalizeKey(ctx.classPanelMode || ctx.class_panel_mode || '');
+        const currentSessionId = normalizeKey(viewState.selectedSessionId || '');
+        const nextSessionId = selectedSession ? normalizeKey(selectedSession.session_id) : '';
+        viewState.selectedSessionId = nextSessionId || normalizeKey(ctx.sessionId || ctx.session_id || '');
+        if (incomingClassPanelMode) {
+            viewState.classPanelMode = incomingClassPanelMode;
+        } else if (!nextSessionId || currentSessionId !== nextSessionId) {
+            viewState.classPanelMode = 'detail';
+        } else {
+            viewState.classPanelMode = viewState.classPanelMode || 'detail';
+        }
         if (ctx.classAttendanceOpen || ctx.class_attendance_open) {
             viewState.classAttendanceSessionId = selectedSession ? selectedSession.session_id : viewState.selectedSessionId;
         } else if (ctx.classAttendanceSessionId || ctx.class_attendance_session_id) {

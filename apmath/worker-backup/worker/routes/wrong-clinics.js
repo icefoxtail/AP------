@@ -130,6 +130,10 @@ async function ensureWrongClinicTables(env) {
         source_grade TEXT,
         packet_key TEXT UNIQUE NOT NULL,
         item_count INTEGER DEFAULT 0,
+        is_submitted INTEGER DEFAULT 0,
+        submitted_at TEXT,
+        review_wrong_ids_json TEXT,
+        review_saved_at TEXT,
         viewed_at TEXT,
         last_opened_at TEXT,
         created_at TEXT DEFAULT (datetime('now', '+9 hours')),
@@ -164,6 +168,18 @@ async function ensureWrongClinicTables(env) {
     env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_wrong_clinic_packet_items_packet ON wrong_clinic_packet_items(packet_id, order_no)`),
     env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_wrong_clinic_set_items_set ON wrong_clinic_set_items(set_id, order_no)`)
   ]);
+  await ensureWrongClinicPacketProgressColumns(env);
+}
+
+async function ensureWrongClinicPacketProgressColumns(env) {
+  const columns = await env.DB.prepare(`PRAGMA table_info(wrong_clinic_packets)`).all();
+  const names = new Set((columns.results || []).map(row => row.name));
+  const statements = [];
+  if (!names.has('is_submitted')) statements.push(env.DB.prepare(`ALTER TABLE wrong_clinic_packets ADD COLUMN is_submitted INTEGER DEFAULT 0`));
+  if (!names.has('submitted_at')) statements.push(env.DB.prepare(`ALTER TABLE wrong_clinic_packets ADD COLUMN submitted_at TEXT`));
+  if (!names.has('review_wrong_ids_json')) statements.push(env.DB.prepare(`ALTER TABLE wrong_clinic_packets ADD COLUMN review_wrong_ids_json TEXT`));
+  if (!names.has('review_saved_at')) statements.push(env.DB.prepare(`ALTER TABLE wrong_clinic_packets ADD COLUMN review_saved_at TEXT`));
+  if (statements.length) await env.DB.batch(statements);
 }
 
 function normalizeItem(item = {}, orderNo = 1) {
@@ -672,6 +688,7 @@ async function listPacketsForTeacher(env, teacher, url) {
 }
 
 function packetSummary(row) {
+  const reviewWrongIds = parseJson(row.review_wrong_ids_json, []);
   return {
     packet_id: row.id,
     packet_key: row.packet_key,
@@ -679,10 +696,194 @@ function packetSummary(row) {
     source_class_name: row.source_class_name || '',
     recipient_class_name: row.recipient_class_name || '',
     recipient_student_name: row.recipient_student_name || '',
+    recipient_class_id: row.recipient_class_id || '',
+    recipient_student_id: row.recipient_student_id || '',
+    source_class_id: row.source_class_id || '',
     item_count: Number(row.item_count || 0),
+    is_submitted: Number(row.is_submitted || 0),
+    submitted_at: row.submitted_at || '',
+    review_wrong_ids: Array.isArray(reviewWrongIds) ? reviewWrongIds : [],
+    review_saved_at: row.review_saved_at || '',
     created_at: row.created_at || '',
     mode: row.mode || 'student'
   };
+}
+
+function normalizePacketWrongIds(values, itemCount) {
+  const max = Math.max(0, Math.min(200, Math.trunc(num(itemCount, 0))));
+  const source = Array.isArray(values)
+    ? values
+    : (typeof values === 'string' ? values.split(/[\s,]+/) : []);
+  return Array.from(new Set(source
+    .map(value => parseInt(value, 10))
+    .filter(value => Number.isFinite(value) && value > 0 && (!max || value <= max))))
+    .sort((a, b) => a - b);
+}
+
+async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
+  await ensureWrongClinicTables(env);
+  if (!isStaffUser(teacher)) return fail('Forbidden', 403);
+  const studentId = text(url.searchParams.get('student_id'));
+  const packetKey = text(url.searchParams.get('packet_key'));
+  if (!studentId) return fail('student_id required');
+  if (!(await canAccessStudent(teacher, studentId, env))) return fail('Forbidden', 403);
+
+  const packetRes = await env.DB.prepare(`
+    SELECT p.*, s.title, s.mode, s.print_title
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.recipient_student_id = ?
+      AND (? = '' OR p.packet_key = ?)
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+      AND COALESCE(p.review_wrong_ids_json, '') != ''
+    ORDER BY p.review_saved_at DESC, p.created_at DESC
+    LIMIT 100
+  `).bind(studentId, packetKey, packetKey).all();
+  const packets = packetRes.results || [];
+  if (!packets.length) return ok({ items: [], packets: [] });
+
+  const ownerRes = await env.DB.prepare(`
+    SELECT p.id AS packet_id, i.archive_file, i.question_no
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    JOIN wrong_clinic_packet_items i ON i.packet_id = p.id
+    WHERE p.recipient_student_id = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+  `).bind(studentId).all();
+  const ownersByQuestion = new Map();
+  for (const row of ownerRes.results || []) {
+    const questionKey = `${text(row.archive_file)}|${Number(row.question_no || 0)}`;
+    if (!ownersByQuestion.has(questionKey)) ownersByQuestion.set(questionKey, new Set());
+    ownersByQuestion.get(questionKey).add(row.packet_id);
+  }
+
+  const items = [];
+  for (const packet of packets) {
+    const wrongOrderNos = new Set(normalizePacketWrongIds(parseJson(packet.review_wrong_ids_json, []), packet.item_count));
+    if (!wrongOrderNos.size) continue;
+    const itemRes = await env.DB.prepare(`
+      SELECT *
+      FROM wrong_clinic_packet_items
+      WHERE packet_id = ?
+      ORDER BY order_no ASC
+    `).bind(packet.id).all();
+    for (const row of itemRes.results || []) {
+      const orderNo = Number(row.order_no || 0);
+      if (!wrongOrderNos.has(orderNo)) continue;
+      const questionKey = `${text(row.archive_file)}|${Number(row.question_no || 0)}`;
+      const owners = ownersByQuestion.get(questionKey) || new Set();
+      if (Array.from(owners).some(id => String(id) !== String(packet.id))) continue;
+      const item = itemFromRow(row);
+      items.push({
+        packet_key: packet.packet_key,
+        packet_title: packet.print_title || packet.title || '오답 클리닉',
+        packet_id: packet.id,
+        recipient_student_id: packet.recipient_student_id || '',
+        recipient_student_name: packet.recipient_student_name || '',
+        recipient_class_id: packet.recipient_class_id || '',
+        recipient_class_name: packet.recipient_class_name || '',
+        source_class_id: packet.source_class_id || '',
+        source_class_name: packet.source_class_name || '',
+        order_no: orderNo,
+        archive_file: row.archive_file,
+        question_no: Number(row.question_no || 0),
+        exam_title: row.exam_title || item.examTitle || '',
+        exam_date: row.exam_date || item.examDate || '',
+        created_at: packet.created_at || '',
+        item: {
+          ...item,
+          orderNo,
+          archiveFile: row.archive_file,
+          questionNo: Number(row.question_no || 0),
+          sourceArchiveFile: item.sourceArchiveFile || item.archiveFile || row.archive_file,
+          sourceQuestionNo: Number(item.sourceQuestionNo || item.questionNo || row.question_no || 0),
+          reviewSourcePacketKey: packet.packet_key,
+          reviewSourceOrderNo: orderNo
+        }
+      });
+    }
+  }
+
+  return ok({ items, packets: packets.map(packetSummary) });
+}
+
+export async function submitWrongClinicPacketForStudent(env, studentId, packetKey) {
+  await ensureWrongClinicTables(env);
+  const packet = await env.DB.prepare(`
+    SELECT p.*, s.title, s.mode, s.print_title
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.packet_key = ?
+      AND p.recipient_student_id = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+    LIMIT 1
+  `).bind(packetKey, studentId).first();
+  if (!packet) return null;
+  await env.DB.prepare(`
+    UPDATE wrong_clinic_packets
+    SET is_submitted = 1,
+        submitted_at = COALESCE(submitted_at, datetime('now', '+9 hours')),
+        last_opened_at = datetime('now', '+9 hours')
+    WHERE id = ?
+  `).bind(packet.id).run();
+  return packetSummary({
+    ...packet,
+    is_submitted: 1,
+    submitted_at: packet.submitted_at || todayKst()
+  });
+}
+
+export async function saveWrongClinicReviewWrongsForStudent(env, studentId, packetKey, wrongIds) {
+  await ensureWrongClinicTables(env);
+  const packet = await env.DB.prepare(`
+    SELECT p.*, s.title, s.mode, s.print_title
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.packet_key = ?
+      AND p.recipient_student_id = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+    LIMIT 1
+  `).bind(packetKey, studentId).first();
+  if (!packet) return null;
+  if (Number(packet.is_submitted || 0) !== 1) return { error: 'not_submitted' };
+  const normalized = normalizePacketWrongIds(wrongIds, packet.item_count);
+  const savedAt = new Date().toISOString();
+  const wrongJson = safeJson(normalized, []);
+  await env.DB.prepare(`
+    UPDATE wrong_clinic_packets
+    SET review_wrong_ids_json = ?,
+        review_saved_at = ?,
+        last_opened_at = datetime('now', '+9 hours')
+    WHERE id = ?
+  `).bind(wrongJson, savedAt, packet.id).run();
+  return packetSummary({
+    ...packet,
+    is_submitted: 1,
+    review_wrong_ids_json: wrongJson,
+    review_saved_at: savedAt
+  });
+}
+
+async function deletePacketForTeacher(env, teacher, packetKey) {
+  await ensureWrongClinicTables(env);
+  if (!isStaffUser(teacher)) return fail('Forbidden', 403);
+  const packet = await env.DB.prepare(`
+    SELECT *
+    FROM wrong_clinic_packets
+    WHERE packet_key = ?
+    LIMIT 1
+  `).bind(packetKey).first();
+  if (!packet) return fail('오답 클리닉을 찾을 수 없습니다.', 404);
+  if (!(await canAccessStudent(teacher, packet.recipient_student_id, env))) return fail('Forbidden', 403);
+  await env.DB.batch([
+    env.DB.prepare(`DELETE FROM wrong_clinic_packet_items WHERE packet_id = ?`).bind(packet.id),
+    env.DB.prepare(`DELETE FROM wrong_clinic_packets WHERE id = ?`).bind(packet.id)
+  ]);
+  return ok({ deleted: true, packet_key: packetKey });
 }
 
 export async function listWrongClinicPacketsForStudent(env, studentId) {
@@ -709,12 +910,14 @@ export async function handleWrongClinics(request, env, teacher, path, url) {
 
   if (method === 'POST' && !id) return createWrongClinic(request, env, teacher);
   if (method === 'GET' && id === 'packets') return listPacketsForTeacher(env, teacher, url);
+  if (method === 'GET' && id === 'review-wrongs') return listReviewWrongCandidatesForTeacher(env, teacher, url);
   if (method === 'GET' && id === 'packet' && key) {
     const payload = await loadPacketPayload(env, key);
     if (!payload) return fail('오답 packet을 찾을 수 없습니다.', 404);
     await env.DB.prepare(`UPDATE wrong_clinic_packets SET last_opened_at = datetime('now', '+9 hours') WHERE packet_key = ?`).bind(key).run();
     return ok({ payload });
   }
+  if (method === 'DELETE' && id === 'packet' && key) return deletePacketForTeacher(env, teacher, key);
   if (method === 'GET' && id === 'set' && key) {
     const payload = await loadSetPayload(env, key);
     if (!payload) return fail('오답 세트를 찾을 수 없습니다.', 404);

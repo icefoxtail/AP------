@@ -29,6 +29,12 @@
         body.preview-mode #btn-print { display: none; }
         body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
         body.preview-mode #print-area { gap: 12px; padding: 12px 0 24px; transform: scale(0.72); transform-origin: top center; }
+        /* 미리보기 헤더 인라인 편집: 클릭해서 직접 수정 */
+        body.preview-mode .clinic-editable { cursor: text; border-radius: 3px; outline: 1px dashed transparent; transition: background .12s ease, outline-color .12s ease; }
+        body.preview-mode .clinic-editable:hover { background: rgba(55,138,221,0.08); outline-color: rgba(55,138,221,0.45); }
+        body.preview-mode .clinic-editable:focus { background: rgba(55,138,221,0.12); outline: 1px solid #378ADD; }
+        body.preview-mode .clinic-editable.page-header-meta-text { display: inline-block; min-width: 28px; }
+        body.preview-mode .clinic-editable:empty::before { content: attr(data-placeholder); color: #9aa4b2; font-weight: 500; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; page-break-after: always; }
         .page:last-child { page-break-after: avoid; }
@@ -46,6 +52,15 @@
         .page-header.page-header--exam .page-header-meta-right { align-items: center; gap: 12px; }
         .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
         .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
+        /* 재설계 헤더: 자동 이름(굵게) + 작은 날짜 + 작은 보조문구 */
+        .page-header.page-header--exam .page-header-meta { flex-direction: column; align-items: flex-end; gap: 3px; }
+        .page-header-fill-label { font-weight: 700; }
+        .page-header-fill-value { font-weight: 800; margin-left: 4px; }
+        .page-header.page-header--exam .page-header-subtitle { font-size: 8.4pt; color: #555; font-weight: 600; margin-top: 2px; }
+        .page-header-date { font-size: 7.6pt; color: #555; font-weight: 700; letter-spacing: -0.01em; }
+        /* 2페이지~ 러닝 이름표: 박스 없이 우측 상단 작게 */
+        .page-header.page-header--running { display: flex; flex-direction: row; justify-content: flex-end; align-items: center; border: 0; padding: 0 2px; margin-bottom: 6px; min-height: 0; background: transparent; }
+        .page-header-running-label { font-size: 8pt; color: #444; font-weight: 700; letter-spacing: -0.01em; }
         .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
@@ -205,9 +220,10 @@ function getRenderHeaderMetaRight(type, fallbackMetaRight) {
     return fallbackMetaRight || '';
 }
 
-function getRenderHeaderSubtitle(type) {
+function getRenderHeaderSubtitle(type, fallback = '') {
     const opts = getPrintHeaderOptions();
-    return shouldApplyPrintHeader(type) ? opts.subtitle : '';
+    if (!shouldApplyPrintHeader(type)) return '';
+    return opts.subtitle || fallback || '';
 }
 
 function renderHeaderFill(label, scoreSuffix = '') {
@@ -975,36 +991,63 @@ function appendBlankPage(area) {
     return page;
 }
 
-function makePage(area, type, title, metaLeft, metaRight, pageNumber) {
+// 이름칸: 값이 있으면 라벨+값(굵게)으로 인쇄, 없으면 빈 밑줄. 모드별 라벨(이름/반/학년).
+function renderHeaderNameFill(label, value) {
+    const safeLabel = escapeHtml(label || '이름');
+    if (value) {
+        return `<span><span class="page-header-fill-label">${safeLabel}</span><span class="page-header-fill-value">${escapeHtml(value)}</span></span>`;
+    }
+    return renderHeaderFill(label || '이름');
+}
+
+function makePage(area, type, title, metaLeft, metaRight, pageNumber, extra = {}) {
     const page = document.createElement('section');
     page.className = 'page';
     const frame = document.createElement('div');
     frame.className = 'page-exam-frame';
     const header = document.createElement('div');
-    header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
-    const renderTitle = getRenderHeaderTitle(type, title);
-    const renderMetaRight = getRenderHeaderMetaRight(type, metaRight);
-    const subtitle = getRenderHeaderSubtitle(type);
     const opts = getPrintHeaderOptions();
-    const fillHtml = type === 'exam'
-        ? [
-            opts.showNameLine ? renderHeaderFill('이름') : '',
-            opts.showScoreLine ? renderHeaderFill('점수', '/ 100') : ''
-        ].filter(Boolean).join('')
-        : '';
-    header.innerHTML = `
-        <div>
-            <div class="page-header-title">${escapeHtml(renderTitle)}</div>
-            ${subtitle ? `<div class="page-header-subtitle">${escapeHtml(subtitle)}</div>` : ''}
-        </div>
-        <div class="page-header-meta">
-            <div class="page-header-meta-left">${escapeHtml(metaLeft || '')}</div>
-            <div class="page-header-meta-right">
-                ${renderMetaRight ? `<span>${escapeHtml(renderMetaRight)}</span>` : ''}
-                ${fillHtml}
+
+    // 2페이지~ : 헤더 박스 없이 작은 러닝 이름표만(섞여도 식별 가능)
+    if (type === 'exam' && extra.headerMode === 'running') {
+        header.className = 'page-header page-header--running';
+        const runningName = extra.nameValue ? `${extra.nameValue} · ` : '';
+        header.innerHTML = `<span class="page-header-running-label">${escapeHtml(runningName)}p.${pageNumber || ''}</span>`;
+    } else if (type === 'exam') {
+        header.className = 'page-header page-header--exam';
+        const renderTitle = getRenderHeaderTitle(type, title);
+        const subtitle = getRenderHeaderSubtitle(type, extra.subtitleFallback);
+        const nameHtml = opts.showNameLine ? renderHeaderNameFill(extra.nameLabel || '이름', extra.nameValue || '') : '';
+        const scoreHtml = opts.showScoreLine ? renderHeaderFill('점수', '/ 100') : '';
+        header.innerHTML = `
+            <div class="page-header-titlecol">
+                <div class="page-header-title">${escapeHtml(renderTitle)}</div>
+                ${subtitle ? `<div class="page-header-subtitle">${escapeHtml(subtitle)}</div>` : ''}
             </div>
-        </div>
-    `;
+            <div class="page-header-meta">
+                <div class="page-header-meta-right">${nameHtml}${scoreHtml}</div>
+                ${extra.dateText ? `<div class="page-header-date">${escapeHtml(extra.dateText)}</div>` : ''}
+            </div>
+        `;
+    } else {
+        // 해설지/정답표 등 비-문제지 헤더는 기존 동작 유지
+        header.className = 'page-header';
+        const renderTitle = getRenderHeaderTitle(type, title);
+        const renderMetaRight = getRenderHeaderMetaRight(type, metaRight);
+        const subtitle = getRenderHeaderSubtitle(type);
+        header.innerHTML = `
+            <div>
+                <div class="page-header-title">${escapeHtml(renderTitle)}</div>
+                ${subtitle ? `<div class="page-header-subtitle">${escapeHtml(subtitle)}</div>` : ''}
+            </div>
+            <div class="page-header-meta">
+                <div class="page-header-meta-left">${escapeHtml(metaLeft || '')}</div>
+                <div class="page-header-meta-right">
+                    ${renderMetaRight ? `<span class="page-header-meta-text">${escapeHtml(renderMetaRight)}</span>` : ''}
+                </div>
+            </div>
+        `;
+    }
     const body = document.createElement('div');
     body.style.flex = '1';
     body.style.display = 'flex';
@@ -1103,7 +1146,14 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
         item.profile = profile;
     }
 
-    const tempPage = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', 0);
+    const headerExtra = {
+        nameLabel: pageMeta.nameLabel || '이름',
+        nameValue: pageMeta.nameValue || '',
+        dateText: pageMeta.dateText || '',
+        subtitleFallback: pageMeta.subtitleFallback || ''
+    };
+    // 첫 페이지 기준(전체 헤더)으로 본문 높이를 측정한다.
+    const tempPage = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', 0, { ...headerExtra, headerMode: 'full' });
     const usablePageHeight = tempPage.body.clientHeight;
     area.removeChild(tempPage.page);
 
@@ -1173,7 +1223,8 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
 
     for (let pageIdx = 0; pageIdx < pages.length; pageIdx++) {
         const pageData = pages[pageIdx];
-        const page = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageIdx + 1);
+        // 첫 페이지만 전체 헤더, 2페이지부터는 작은 러닝 이름표
+        const page = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageIdx + 1, { ...headerExtra, headerMode: pageIdx === 0 ? 'full' : 'running' });
 
         pageData.blocks.forEach((block, blockIdx) => {
             if (block.type === 'wide') {
@@ -1240,7 +1291,10 @@ async function renderStudentPages(area, payload) {
         await renderMeasuredExamPages(area, items, {
             title: `${student.studentName} 오답`,
             metaLeft: '',
-            metaRight: `${payload.className || ''} · ${getStudentExamLabel(payload, student)} · ${payload.createdDate || ''}`,
+            nameLabel: '이름',
+            nameValue: student.studentName || '',
+            dateText: payload.createdDate || '',
+            subtitleFallback: [payload.className || '', getStudentExamLabel(payload, student)].filter(Boolean).join(' · '),
             solutionQrPayload: {
                 payload: buildStudentQrPayload(payload, student),
                 url: buildQrTargetUrlForPayload(buildStudentQrPayload(payload, student), payload, student)
@@ -1276,7 +1330,9 @@ async function renderClassPages(area, payload) {
     await renderMeasuredExamPages(area, items, {
         title: `${payload.className || '반'} 반별 공통 오답지`,
         metaLeft: '',
-        metaRight: payload.createdDate || '',
+        nameLabel: '반',
+        nameValue: payload.className || '',
+        dateText: payload.createdDate || '',
         solutionQrPayload: {
             payload: buildClassQrPayload(payload),
             url: buildQrTargetUrlForPayload(buildClassQrPayload(payload), payload)
@@ -1295,7 +1351,9 @@ async function renderGradePages(area, payload) {
     await renderMeasuredExamPages(area, items, {
         title: `${getGradePrintLabel(payload)} 공통 오답지`,
         metaLeft: '',
-        metaRight: payload.createdDate || '',
+        nameLabel: '학년',
+        nameValue: getGradePrintLabel(payload) || payload.gradeName || '',
+        dateText: payload.createdDate || '',
         solutionQrPayload: {
             payload: buildGradeQrPayload(payload),
             url: buildQrTargetUrlForPayload(buildGradeQrPayload(payload), payload)
@@ -1365,8 +1423,11 @@ async function renderTypePages(area, payload) {
         });
         await renderMeasuredExamPages(area, items, {
             title: payload.typeMode === 'unit' ? section.title : `${scopeLabel} ${label}`,
-            metaLeft: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
-            metaRight: payload.createdDate || '',
+            metaLeft: '',
+            nameLabel: payload.scope === 'grade' ? '학년' : '반',
+            nameValue: scopeLabel || '',
+            dateText: payload.createdDate || '',
+            subtitleFallback: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
             solutionQrPayload: {
                 payload: buildTypeQrPayload(payload),
                 url: buildQrTargetUrlForPayload(buildTypeQrPayload(payload), payload)
@@ -1803,6 +1864,7 @@ async function render() {
         try { await MathJax.typesetPromise([area]); } catch (e) { console.warn(e); }
     }
     await raf();
+    enableHeaderInlineEdit();
 }
 
 function schedulePreviewRender() {
@@ -1810,6 +1872,50 @@ function schedulePreviewRender() {
     previewRenderTimer = setTimeout(() => {
         render();
     }, 250);
+}
+
+// 미리보기에서 헤더 텍스트를 직접 클릭해 수정한다. blur(확정) 시 부모(클리닉)로 값 전송.
+function bindHeaderEditable(el, field, placeholder) {
+    if (!el) return;
+    el.classList.add('clinic-editable');
+    el.setAttribute('contenteditable', 'true');
+    el.setAttribute('data-clinic-field', field);
+    el.setAttribute('data-placeholder', placeholder);
+    el.setAttribute('title', '클릭해서 수정');
+    el.spellcheck = false;
+    const normalize = () => (el.textContent || '').replace(/\s+/g, ' ').trim();
+    // 편집 시작값 기록 → 변경 없는 blur는 저장하지 않는다(자동 보조문구를 클릭만 한 경우 수동값으로 굳는 것 방지).
+    el.addEventListener('focus', () => { el._editStartValue = normalize(); });
+    el.addEventListener('keydown', e => {
+        if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+        if (e.key === 'Escape') { e.preventDefault(); el.textContent = el._editStartValue ?? el.textContent; el.blur(); }
+    });
+    el.addEventListener('blur', () => {
+        const value = normalize();
+        if (value === (el._editStartValue ?? '')) return;
+        try {
+            window.parent?.postMessage({ type: 'AP_CLINIC_HEADER_EDIT', field, value }, window.location.origin);
+        } catch (e) { /* 부모 없거나 출처 불일치 시 무시 */ }
+    });
+}
+
+// 첫 페이지 헤더만 편집 대상으로 삼는다(blur→부모→재렌더로 전 페이지 동기화).
+function enableHeaderInlineEdit() {
+    if (!document.body.classList.contains('preview-mode')) return;
+    const header = document.querySelector('#print-area .page-header');
+    if (!header) return;
+
+    bindHeaderEditable(header.querySelector('.page-header-title'), 'title', '제목 입력');
+
+    // 제목/보조문구만 직접 편집(이름·점수·날짜는 자동). 보조문구가 비어 있으면 편집용 빈 줄 생성.
+    const col = header.querySelector('.page-header-titlecol') || header.querySelector('div');
+    let subEl = header.querySelector('.page-header-subtitle');
+    if (!subEl && col) {
+        subEl = document.createElement('div');
+        subEl.className = 'page-header-subtitle';
+        col.appendChild(subEl);
+    }
+    bindHeaderEditable(subEl, 'subtitle', '보조 문구 입력');
 }
 
 function switchMode(mode) {
@@ -1821,7 +1927,32 @@ function switchMode(mode) {
     render();
 }
 
+// 헤더를 편집(포커스가 .clinic-editable)하는 동안에는 재렌더를 미룬다.
+// 빠르게 제목→보조문구로 옮겨 칠 때 contenteditable이 재생성돼 포커스/입력이 날아가는 것 방지.
+let previewRenderPending = false;
+function requestPreviewRender() {
+    const active = document.activeElement;
+    if (active && active.classList && active.classList.contains('clinic-editable')) {
+        previewRenderPending = true;
+        return;
+    }
+    previewRenderPending = false;
+    schedulePreviewRender();
+}
+
 function installPreviewMessageChannel() {
+    document.addEventListener('focusout', () => {
+        if (!previewRenderPending) return;
+        // 다음 틱에 포커스가 편집영역을 완전히 벗어났는지 확인 후 flush
+        setTimeout(() => {
+            const a = document.activeElement;
+            if (!(a && a.classList && a.classList.contains('clinic-editable'))) {
+                previewRenderPending = false;
+                schedulePreviewRender();
+            }
+        }, 0);
+    });
+
     window.addEventListener('message', event => {
         if (event.origin !== window.location.origin) return;
         const msg = event.data || {};
@@ -1831,7 +1962,7 @@ function installPreviewMessageChannel() {
         document.querySelectorAll('.mode-tab').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.mode === state.mode);
         });
-        schedulePreviewRender();
+        requestPreviewRender();
     });
 }
 
