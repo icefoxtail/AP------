@@ -508,11 +508,13 @@
             return EieGradeUtils.normalizeEieGrade(value);
         }
         const raw = normalizeKey(value).replace(/\s+/g, '');
+        const elementary = raw.match(/^초(?:등|등학교)?([1-6])(?:학년)?$/);
+        if (elementary) return `초${elementary[1]}`;
         const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
         if (middle) return `중${middle[1]}`;
         const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
         if (high) return `고${high[1]}`;
-        return /^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
+        return /^초[1-6]$|^중[1-3]$|^고[1-3]$/.test(raw) ? raw : '';
     }
 
     function studentSchool(row) {
@@ -2681,9 +2683,15 @@
 
     function renderGradeSelect(id, value) {
         const selected = normalizeGrade(value);
+        const grades = ['초1', '초2', '초3', '초4', '초5', '초6', '중1', '중2', '중3', '고1', '고2', '고3'];
+        // 현재 학년이 목록 밖 값이면 저장 시 빈값으로 날아가지 않도록 selected 옵션을 임시 추가한다.
+        const extra = (selected && grades.indexOf(selected) === -1)
+            ? `<option value="${esc(selected)}" selected>${esc(selected)}</option>`
+            : '';
         return `<select id="${esc(id)}">
             <option value="">선택</option>
-            ${['중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
+            ${extra}
+            ${grades.map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
         </select>`;
     }
 

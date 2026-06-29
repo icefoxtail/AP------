@@ -107,8 +107,8 @@
             if (response.status === 403) message = '권한이 없습니다. 계정 권한을 확인해 주세요.';
             const err = new Error(message);
             err.status = response.status;
+            // 401(세션 만료)만 재로그인. 403(권한 없음)은 세션 유지 — 호출부가 처리.
             if (err.status === 401) handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
-            if (err.status === 403) handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
             throw err;
         }
         return data || { success: true };
@@ -393,14 +393,14 @@
             try {
                 return await originalBoot();
             } catch (e) {
+                // 401만 재로그인. 403(권한 없음)은 세션을 유지하고 조용히 무시한다.
                 if (e && e.status === 401) { handleEie401(); return; }
-                if (e && e.status === 403) { handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.'); return; }
+                if (e && e.status === 403) return;
                 throw e;
             }
         };
         window.EieRouter.boot().catch(function (e) {
             if (e && e.status === 401) handleEie401();
-            if (e && e.status === 403) handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
         });
     }
 

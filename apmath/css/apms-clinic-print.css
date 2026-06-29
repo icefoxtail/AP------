@@ -927,3 +927,77 @@
         grid-template-columns: 1fr;
     }
 }
+
+#modal-content.clinic-print-fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+}
+
+#modal-content.clinic-print-fullscreen #modal-body {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+}
+
+#modal-content.clinic-print-fullscreen #modal-footer {
+    display: none;
+}
+
+.clinic-print-layout {
+    display: grid;
+    grid-template-columns: minmax(360px, 420px) minmax(0, 1fr);
+    gap: 0;
+    height: 100%;
+    min-height: 0;
+}
+
+.clinic-print-layout__controls {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 16px;
+}
+
+.clinic-print-layout__preview {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    border-left: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.clinic-print-layout__preview iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: var(--bg);
+}
+
+@media (max-width: 880px) {
+    #modal-content.clinic-print-fullscreen {
+        overflow: hidden;
+    }
+
+    .clinic-print-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(360px, 54vh) minmax(320px, 46vh);
+    }
+
+    .clinic-print-layout__controls {
+        padding-right: 0;
+        padding-bottom: 14px;
+    }
+
+    .clinic-print-layout__preview {
+        border-left: 0;
+        border-top: 1px solid var(--border);
+    }
+}

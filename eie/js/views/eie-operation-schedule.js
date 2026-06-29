@@ -1,6 +1,7 @@
 (function () {
     var scheduleModalState = { exam: [], academy: [] };
     var scheduleModalMode = 'owner';
+    var scheduleSaveInFlight = new Set();
 
     function esc(value) {
         if (window.EieApp && typeof EieApp.escapeHtml === 'function') return EieApp.escapeHtml(value);
@@ -52,6 +53,31 @@
 
     function notify(message, type) {
         if (typeof window.toast === 'function') window.toast(message, type || 'info');
+    }
+
+    function scheduleClientRequestId() {
+        if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+        return 'eie-schedule-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+    }
+
+    async function withScheduleSaveGuard(key, action) {
+        if (scheduleSaveInFlight.has(key)) return;
+        scheduleSaveInFlight.add(key);
+        var btn = document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement : null;
+        var originalText = btn ? btn.textContent : '';
+        if (btn) {
+            btn.disabled = true;
+            btn.textContent = '저장 중...';
+        }
+        try {
+            return await action();
+        } finally {
+            scheduleSaveInFlight.delete(key);
+            if (btn) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
     }
 
     // CRUD 성공 후 현재 라우트(원장/선생님 대시보드)를 다시 그려 주간일정 카드를
@@ -327,10 +353,13 @@
         var startDate = start && start.value ? start.value : todayIso();
         var endDate = end && end.value ? end.value : startDate;
         var name = title ? title.value.trim() : '';
+        var saveKey = 'add:' + scheduleKind + ':' + startDate + ':' + endDate + ':' + name;
         if (!name) {
             notify('일정 제목을 입력해 주세요.', 'warn');
             return;
         }
+        return withScheduleSaveGuard(saveKey, async function () {
+        var clientRequestId = scheduleClientRequestId();
         try {
             if (scheduleKind === 'exam') {
                 var examPayload = {
@@ -340,7 +369,8 @@
                     examDate: startDate,
                     startDate: startDate,
                     endDate: endDate,
-                    memo: memo ? memo.value.trim() : ''
+                    memo: memo ? memo.value.trim() : '',
+                    clientRequestId: clientRequestId
                 };
                 if (endDate > startDate && typeof EieApi.createExamScheduleGroup === 'function') {
                     await EieApi.createExamScheduleGroup(examPayload);
@@ -353,7 +383,8 @@
                     scheduleType: scheduleKind,
                     title: name,
                     memo: memo ? memo.value.trim() : '',
-                    isClosed: scheduleKind === 'closed'
+                    isClosed: scheduleKind === 'closed',
+                    clientRequestId: clientRequestId
                 };
                 if (endDate > startDate && typeof EieApi.createAcademyScheduleBatch === 'function') {
                     var seriesId = 'series-' + Date.now();
@@ -375,6 +406,7 @@
         } catch (err) {
             notify(err && err.message ? err.message : '일정 추가에 실패했습니다.', 'error');
         }
+        });
     }
 
     function findSchedule(kind, id) {
@@ -421,10 +453,13 @@
         var title = document.getElementById('eie-edit-schedule-title');
         var memo = document.getElementById('eie-edit-schedule-memo');
         var name = title ? title.value.trim() : '';
+        var editKey = 'edit:' + kind + ':' + id + ':' + seriesId + ':' + name;
         if (!name) {
             notify('일정 제목을 입력해 주세요.', 'warn');
             return;
         }
+        return withScheduleSaveGuard(editKey, async function () {
+        var clientRequestId = scheduleClientRequestId();
         try {
             if (kind === 'exam') {
                 var examPayload = {
@@ -434,7 +469,8 @@
                     examDate: start && start.value ? start.value : todayIso(),
                     startDate: start && start.value ? start.value : todayIso(),
                     endDate: end && end.value ? end.value : (start && start.value ? start.value : todayIso()),
-                    memo: memo ? memo.value.trim() : ''
+                    memo: memo ? memo.value.trim() : '',
+                    clientRequestId: clientRequestId
                 };
                 if (mode === 'teacher' && groupedOccurrenceIds.length > 1 && typeof EieApi.updateExamScheduleGroup === 'function') {
                     examPayload.occurrenceIds = groupedOccurrenceIds;
@@ -451,7 +487,8 @@
                     scheduleType: type,
                     title: name,
                     memo: memo ? memo.value.trim() : '',
-                    isClosed: type === 'closed'
+                    isClosed: type === 'closed',
+                    clientRequestId: clientRequestId
                 };
                 if (seriesId && typeof EieApi.updateAcademyScheduleSeries === 'function') {
                     await EieApi.updateAcademyScheduleSeries(seriesId, payload);
@@ -465,6 +502,7 @@
         } catch (err) {
             notify(err && err.message ? err.message : '일정 저장에 실패했습니다.', 'error');
         }
+        });
     }
 
     async function deleteEieUnifiedSchedule(kind, id, seriesId, mode, occurrenceIds) {

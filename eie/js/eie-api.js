@@ -67,8 +67,11 @@
 
     function notifyAuthError(error) {
         if (typeof window === 'undefined' || !window.EieApp || typeof window.EieApp.handleEie401 !== 'function') return;
+        // 401(세션 만료)만 재로그인 화면으로 보낸다. 403(권한 없음)은 세션이
+        // 유효한 상태이므로 절대 로그아웃시키지 않는다 — 선생님이 원장 전용
+        // 엔드포인트(예: GET /teachers)에 닿아도 호출부의 try/catch가 비어 있는
+        // 데이터로 graceful하게 처리하고, 현재 화면을 그대로 유지한다.
         if (error.status === 401) window.EieApp.handleEie401('로그인이 만료되었습니다. 다시 로그인해 주세요.');
-        if (error.status === 403) window.EieApp.handleEie401('권한이 없습니다. 계정 권한을 확인해 주세요.');
     }
 
     function stubResponse(kind) {
@@ -122,8 +125,15 @@
         READ_CACHE.set(path, { at: Date.now(), data });
     }
 
-    function clearReadCache() {
-        READ_CACHE.clear();
+    function clearReadCache(pathPrefix) {
+        if (!pathPrefix) {
+            READ_CACHE.clear();
+            return;
+        }
+        const prefix = String(pathPrefix);
+        Array.from(READ_CACHE.keys()).forEach(function (key) {
+            if (String(key).indexOf(prefix) === 0) READ_CACHE.delete(key);
+        });
     }
 
     async function request(path, options) {
@@ -146,11 +156,15 @@
             const error = makeAuthError(response.status, normalizeError(data?.error || data?.message || response.statusText));
             error.status = response.status;
             error.payload = data;
-            if (response.status === 401 || response.status === 403) notifyAuthError(error);
+            // 403은 세션을 건드리지 않는다(권한 문제일 뿐). 401만 재로그인 처리.
+            if (response.status === 401) notifyAuthError(error);
             throw error;
         }
         // 데이터가 바뀌는 요청이 성공하면 읽기 캐시를 무효화한다.
-        if (method !== 'GET') clearReadCache();
+        if (method !== 'GET') {
+            if (options?.invalidatePrefix) clearReadCache(options.invalidatePrefix);
+            else clearReadCache();
+        }
         return data || { success: true };
     }
 
@@ -342,43 +356,46 @@
             return get('operation-memos', 'student-seeds');
         },
         async createOperationMemo(payload) {
-            return request('operation-memos', { method: 'POST', body: payload || {} });
+            return request('operation-memos', { method: 'POST', body: payload || {}, invalidatePrefix: 'operation-memos' });
         },
         async updateOperationMemo(id, payload) {
             return request(`operation-memos/${encodeURIComponent(id)}`, {
                 method: 'PATCH',
-                body: payload || {}
+                body: payload || {},
+                invalidatePrefix: 'operation-memos'
             });
         },
         async deleteOperationMemo(id) {
-            return request(`operation-memos/${encodeURIComponent(id)}`, { method: 'DELETE' });
+            return request(`operation-memos/${encodeURIComponent(id)}`, { method: 'DELETE', invalidatePrefix: 'operation-memos' });
         },
 
         getExamSchedules() {
             return get('exam-schedules', 'student-seeds');
         },
         async createExamSchedule(payload) {
-            return request('exam-schedules', { method: 'POST', body: payload || {} });
+            return request('exam-schedules', { method: 'POST', body: payload || {}, invalidatePrefix: 'exam-schedules' });
         },
         async createExamScheduleGroup(payload) {
-            return request('exam-schedules/group', { method: 'POST', body: payload || {} });
+            return request('exam-schedules/group', { method: 'POST', body: payload || {}, invalidatePrefix: 'exam-schedules' });
         },
         async updateExamSchedule(id, payload) {
             return request(`exam-schedules/${encodeURIComponent(id)}`, {
                 method: 'PATCH',
-                body: payload || {}
+                body: payload || {},
+                invalidatePrefix: 'exam-schedules'
             });
         },
         async updateExamScheduleGroup(payload) {
-            return request('exam-schedules/group', { method: 'PATCH', body: payload || {} });
+            return request('exam-schedules/group', { method: 'PATCH', body: payload || {}, invalidatePrefix: 'exam-schedules' });
         },
         async deleteExamSchedule(id) {
-            return request(`exam-schedules/${encodeURIComponent(id)}`, { method: 'DELETE' });
+            return request(`exam-schedules/${encodeURIComponent(id)}`, { method: 'DELETE', invalidatePrefix: 'exam-schedules' });
         },
         async deleteExamScheduleGroup(occurrenceIds) {
             return request('exam-schedules/group-delete', {
                 method: 'POST',
-                body: { occurrenceIds: Array.isArray(occurrenceIds) ? occurrenceIds : [] }
+                body: { occurrenceIds: Array.isArray(occurrenceIds) ? occurrenceIds : [] },
+                invalidatePrefix: 'exam-schedules'
             });
         },
 
@@ -389,28 +406,30 @@
             return get(`academy-schedules${params.toString() ? `?${params}` : ''}`, 'student-seeds');
         },
         async createAcademySchedule(payload) {
-            return request('academy-schedules', { method: 'POST', body: payload || {} });
+            return request('academy-schedules', { method: 'POST', body: payload || {}, invalidatePrefix: 'academy-schedules' });
         },
         async createAcademyScheduleBatch(payload) {
-            return request('academy-schedules/batch', { method: 'POST', body: payload || {} });
+            return request('academy-schedules/batch', { method: 'POST', body: payload || {}, invalidatePrefix: 'academy-schedules' });
         },
         async updateAcademySchedule(id, payload) {
             return request(`academy-schedules/${encodeURIComponent(id)}`, {
                 method: 'PATCH',
-                body: payload || {}
+                body: payload || {},
+                invalidatePrefix: 'academy-schedules'
             });
         },
         async updateAcademyScheduleSeries(seriesId, payload) {
             return request(`academy-schedules/series/${encodeURIComponent(seriesId)}`, {
                 method: 'PATCH',
-                body: payload || {}
+                body: payload || {},
+                invalidatePrefix: 'academy-schedules'
             });
         },
         async deleteAcademySchedule(id) {
-            return request(`academy-schedules/${encodeURIComponent(id)}`, { method: 'DELETE' });
+            return request(`academy-schedules/${encodeURIComponent(id)}`, { method: 'DELETE', invalidatePrefix: 'academy-schedules' });
         },
         async deleteAcademyScheduleSeries(seriesId) {
-            return request(`academy-schedules/series/${encodeURIComponent(seriesId)}`, { method: 'DELETE' });
+            return request(`academy-schedules/series/${encodeURIComponent(seriesId)}`, { method: 'DELETE', invalidatePrefix: 'academy-schedules' });
         },
         async createConsultation(payload) {
             return request('consultations', { method: 'POST', body: payload || {} });

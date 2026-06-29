@@ -767,11 +767,19 @@ async function apDashSaveInlineSchedule() {
     const d = dateEl?.value || new Date().toLocaleDateString('sv-SE');
     const c = (contentEl?.value || '').trim();
     if (!c) { toast('일정 내용을 입력하세요', 'warn'); return; }
+    const runSave = async () => {
     try {
-        const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: false });
+        const clientRequestId = typeof todoMemoClientRequestId === 'function'
+            ? todoMemoClientRequestId()
+            : `memo-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: false, clientRequestId });
         if (r?.success) {
             toast('일정이 저장되었습니다.', 'success');
-            await loadData();
+            if (typeof upsertTodoMemoInState === 'function' && typeof todoMemoRowFromResponse === 'function') {
+                upsertTodoMemoInState(todoMemoRowFromResponse(r, { id: r?.id || clientRequestId, memo_date: d, content: c, is_pinned: false, is_done: false }));
+            } else {
+                state.db.operation_memos = [{ id: r?.id || clientRequestId, memo_date: d, content: c, is_pinned: false, is_done: false }, ...(state.db.operation_memos || [])];
+            }
             renderDashboard();
             return;
         }
@@ -780,6 +788,11 @@ async function apDashSaveInlineSchedule() {
         console.error('[apDashSaveInlineSchedule] failed:', e);
         toast('일정 저장 중 오류가 발생했습니다.', 'error');
     }
+    };
+    if (typeof withTodoMemoSaveGuard === 'function') {
+        return withTodoMemoSaveGuard(`dashboard-add:${d}:${c}`, runSave);
+    }
+    return runSave();
 }
 
 function computeRiskStudents() {
