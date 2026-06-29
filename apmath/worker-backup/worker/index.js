@@ -3440,7 +3440,8 @@ async function handleApiRequest(request, env) {
         }
 
         if (resource === 'wrong-clinics') {
-          const teacher = (path[2] === 'packet' || path[2] === 'set') ? null : await verifyAuth(request, env);
+          const isPublicWrongClinicRead = method === 'GET' && (path[2] === 'packet' || path[2] === 'set');
+          const teacher = isPublicWrongClinicRead ? null : await verifyAuth(request, env);
           const routed = await handleWrongClinics(request, env, teacher, path, url);
           if (routed) return routed;
         }

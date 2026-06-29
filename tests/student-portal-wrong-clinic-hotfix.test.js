@@ -8,6 +8,7 @@ const studentSw = fs.readFileSync(path.join(root, 'apmath', 'student', 'sw.js'),
 const manifest = fs.readFileSync(path.join(root, 'apmath', 'student', 'manifest.json'), 'utf8');
 const versionJson = fs.readFileSync(path.join(root, 'apmath', 'student', 'student-version.json'), 'utf8');
 const workerRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'student-portal.js'), 'utf8');
+const workerIndex = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'index.js'), 'utf8');
 const wrongClinicRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'wrong-clinics.js'), 'utf8');
 const teacherStudentJs = fs.readFileSync(path.join(root, 'apmath', 'js', 'student.js'), 'utf8');
 
@@ -57,6 +58,12 @@ assert(
     wrongClinicRoute.includes('DELETE FROM wrong_clinic_packet_items') &&
     wrongClinicRoute.includes('DELETE FROM wrong_clinic_packets'),
   'wrong clinic route should store self-review wrong ids, expose reissue candidates, and support teacher hard delete'
+);
+
+assert(
+  workerIndex.includes("method === 'GET' && (path[2] === 'packet' || path[2] === 'set')") &&
+    workerIndex.includes('isPublicWrongClinicRead ? null : await verifyAuth(request, env)'),
+  'worker router should keep public packet/set reads but require auth for teacher packet delete'
 );
 
 assert(
