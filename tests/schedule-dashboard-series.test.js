@@ -54,3 +54,15 @@ test('teacher and admin dashboards use the same weekly schedule renderer', () =>
   assert.match(adminSource, /renderDashboardWeeklyScheduleSection\(todayStr\)/);
   assert.doesNotMatch(adminSource, /adminWeeklyItems/);
 });
+
+test('weekly schedule rows do not render hover preview overlays', () => {
+  const teacherSource = fs.readFileSync(path.join(root, 'apmath/js/dashboard.js'), 'utf8');
+  const weeklyRenderer = extractFunction(
+    teacherSource,
+    'renderDashboardWeeklyScheduleSection',
+    'renderOnboardingWeeklyScheduleRows'
+  );
+
+  assert.doesNotMatch(weeklyRenderer, /class="ap-hover-source"/);
+  assert.doesNotMatch(weeklyRenderer, /\$\{preview\}/);
+});

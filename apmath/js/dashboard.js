@@ -1339,17 +1339,11 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
             const dDay = dashboardGetRangeDdayLabel(e._rangeStart, e._rangeEnd, todayStr);
             const memoText = dashboardFormatInlineMemo(e.memo);
             const metaText = [rangeStr, dDay, memoText].filter(Boolean).join(' · ');
-            const preview = renderDashboardHoverPreview(rawTitle, [
-                rangeStr ? `날짜: ${rangeStr}` : '',
-                dDay ? `상태: ${dDay}` : '',
-                e.memo ? `메모: ${e.memo}` : ''
-            ]);
-            return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
+            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
                 <div style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
                     <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(rawTitle)}</div>
                     ${metaText ? `<div style="font-size:12px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(metaText)}</div>` : ''}
                 </div>
-                ${preview}
             </div>`;
         }
 
@@ -1363,19 +1357,11 @@ function renderDashboardWeeklyScheduleSection(baseDateStr = null) {
         const rangeStr = dashboardFormatDateRangeWithDay(rangeStart, rangeEnd);
         const dDay = dashboardGetRangeDdayLabel(rangeStart, rangeEnd, todayStr);
         const metaText = [rangeStr, dDay].filter(Boolean).join(' · ');
-        const preview = renderDashboardHoverPreview(title, [
-            `분류: ${label}`,
-            rangeStr ? `날짜: ${rangeStr}` : '',
-            timeText ? `시간: ${timeText}` : '',
-            s.teacher_name ? `선생님: ${s.teacher_name}` : '',
-            s.memo ? `메모: ${s.memo}` : ''
-        ]);
-        return `<div class="ap-hover-source" onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
+        return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid var(--border); background:transparent;" tabindex="0">
             <div style="min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; overflow:hidden;">
                 <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}</div>
                 ${metaText ? `<div style="font-size:12px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(metaText)}</div>` : ''}
             </div>
-            ${preview}
         </div>`;
     }).join('');
 

@@ -560,12 +560,38 @@ body.eie-owner-dashboard-bg .owner-dashboard-shell {
 
 .eie-teacher-dashboard-shell {
     width: 100%;
-    max-width: 860px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 16px 28px;
     box-sizing: border-box;
     display: grid;
+    gap: 16px;
+}
+
+.eie-teacher-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+    min-width: 0;
+}
+
+.eie-teacher-main,
+.eie-teacher-side {
+    min-width: 0;
+}
+
+.eie-teacher-side {
+    display: grid;
     gap: 12px;
+    align-content: start;
+}
+
+.eie-teacher-operation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-width: 0;
 }
 
 .eie-teacher-home-head {
@@ -619,7 +645,7 @@ body.eie-owner-dashboard-bg .owner-dashboard-shell {
 
 .eie-teacher-quick-cards {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
 }
 
@@ -688,6 +714,12 @@ body.eie-owner-dashboard-bg .owner-dashboard-shell {
     font-weight: 400;
     line-height: 1.2;
     white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+    .eie-teacher-grid {
+        grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    }
 }
 
 .eie-teacher-tabbar {
@@ -879,6 +911,10 @@ body.eie-owner-dashboard-bg .owner-dashboard-shell {
     .eie-teacher-schedule {
         border-radius: 18px;
         padding: 14px;
+    }
+
+    .eie-teacher-quick-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .eie-teacher-day-row {

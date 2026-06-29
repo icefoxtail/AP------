@@ -1,5 +1,6 @@
 (function () {
     var scheduleModalState = { exam: [], academy: [] };
+    var scheduleModalMode = 'owner';
 
     function esc(value) {
         if (window.EieApp && typeof EieApp.escapeHtml === 'function') return EieApp.escapeHtml(value);
@@ -16,6 +17,10 @@
 
     function jsArg(value) {
         return esc(JSON.stringify(String(value == null ? '' : value)));
+    }
+
+    function jsArrayArg(values) {
+        return esc(JSON.stringify(Array.isArray(values) ? values.map(function (value) { return String(value == null ? '' : value); }) : []));
     }
 
     function todayIso() {
@@ -225,10 +230,11 @@
         });
     }
 
-    function renderScheduleRow(row, editable) {
+    function renderScheduleRow(row, editable, mode) {
+        var occurrenceArg = mode === 'teacher' ? ', ' + jsArrayArg(row.occurrenceIds) : '';
         var open = editable
-            ? 'event.stopPropagation(); openEditEieUnifiedScheduleModal(' + jsArg(row.kind) + ', ' + jsArg(row.id) + ', ' + jsArg(row.seriesId) + ')'
-            : 'event.stopPropagation(); openEieScheduleModal()';
+            ? 'event.stopPropagation(); openEditEieUnifiedScheduleModal(' + jsArg(row.kind) + ', ' + jsArg(row.id) + ', ' + jsArg(row.seriesId) + ', ' + jsArg(mode || 'owner') + occurrenceArg + ')'
+            : 'event.stopPropagation(); openEieScheduleModal(' + jsArg(mode || 'owner') + ')';
         return '<button type="button" class="eie-operation-schedule-row" onclick="' + open + '" style="width:100%;display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;text-align:left;padding:8px 0;border:0;border-top:1px solid var(--eie-p-border);background:transparent;cursor:pointer;">'
             + '<span style="font-size:12px;font-weight:800;color:' + (row.kind === 'exam' ? 'var(--eie-p-btn-save-bg)' : 'var(--eie-p-btn-new-bg)') + ';">[' + esc(row.typeLabel) + ']</span>'
             + '<span style="min-width:0;">'
@@ -245,14 +251,15 @@
         var rows = combinedRows(data, { group: true });
         return eieScreenWrap('<section class="eie-operation-card eie-operation-schedule-card eie-p-card" data-eie-operation-mode="' + esc(mode) + '" style="min-height:100%;display:flex;flex-direction:column;gap:8px;color:var(--eie-p-text);">'
             + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">'
-            + '<h2 style="margin:0;font-size:16px;line-height:1.2;">주간일정</h2>'
+            + '<div style="min-width:0;"><h2 style="margin:0;font-size:16px;line-height:1.2;">주간일정</h2>'
+            + '<p style="margin:3px 0 0;color:var(--eie-p-text-sub);font-size:12px;line-height:1.2;">학원 공용 일정</p></div>'
             + '<span style="font-size:12px;color:var(--eie-p-text-sub);">7일</span>'
             + '</div>'
-            + '<div onclick="openEieScheduleModal()" style="flex:1;cursor:pointer;">'
-            + (rows.length ? rows.map(function (row) { return renderScheduleRow(row, false); }).join('') : '<div style="padding:12px 0;color:var(--eie-p-text-sub);font-size:13px;">표시할 일정이 없습니다.</div>')
+            + '<div onclick="openEieScheduleModal(' + jsArg(mode) + ')" style="flex:1;cursor:pointer;">'
+            + (rows.length ? rows.map(function (row) { return renderScheduleRow(row, mode === 'teacher', mode); }).join('') : '<div style="padding:12px 0;color:var(--eie-p-text-sub);font-size:13px;">표시할 일정이 없습니다.</div>')
             + '</div>'
             + '<div class="eie-operation-card-footer">'
-            + '<button type="button" class="eie-p-btn-new eie-operation-add-btn" onclick="event.stopPropagation(); openEieScheduleModal()">+ 일정 추가</button>'
+            + '<button type="button" class="eie-p-btn-new eie-operation-add-btn" onclick="event.stopPropagation(); openEieScheduleModal(' + jsArg(mode) + ')">+ 일정 추가</button>'
             + '</div>'
             + '</section>');
     }
@@ -272,10 +279,11 @@
         return { examSchedules: scheduleModalState.exam, academySchedules: scheduleModalState.academy };
     }
 
-    function renderScheduleModal(data) {
-        var rows = combinedRows(data);
+    function renderScheduleModal(data, mode) {
+        var isTeacher = String(mode || 'owner') === 'teacher';
+        var rows = combinedRows(data, { group: isTeacher });
         var list = rows.length
-            ? rows.map(function (row) { return renderScheduleRow(row, true); }).join('')
+            ? rows.map(function (row) { return renderScheduleRow(row, true, mode); }).join('')
             : '<div style="padding:12px 0;color:var(--eie-p-text-sub);font-size:13px;">표시할 일정이 없습니다.</div>';
         return '<div class="eie-v2-screen">'
             + '<div class="eie-p-card" style="box-shadow:none;border:0;background:transparent;padding:0;gap:10px;">'
@@ -296,10 +304,12 @@
             + '</div>';
     }
 
-    async function openEieScheduleModal() {
+    async function openEieScheduleModal(mode) {
+        mode = mode || 'owner';
+        scheduleModalMode = mode;
         try {
             var data = await loadSchedules();
-            openCompatModal('일정관리', renderScheduleModal(data));
+            openCompatModal('일정관리', renderScheduleModal(data, mode));
         } catch (err) {
             notify(err && err.message ? err.message : '일정을 불러오지 못했습니다.', 'error');
         }
@@ -360,7 +370,7 @@
                 }
             }
             notify('일정을 추가했습니다.', 'success');
-            await openEieScheduleModal();
+            await openEieScheduleModal(scheduleModalMode);
             refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '일정 추가에 실패했습니다.', 'error');
@@ -372,7 +382,9 @@
         return rows.find(function (row) { return String(rowId(row)) === String(id); });
     }
 
-    async function openEditEieUnifiedScheduleModal(kind, id, seriesId) {
+    async function openEditEieUnifiedScheduleModal(kind, id, seriesId, mode, occurrenceIds) {
+        mode = mode || 'owner';
+        var groupedOccurrenceIds = Array.isArray(occurrenceIds) ? occurrenceIds.filter(Boolean) : [];
         try {
             if (!scheduleModalState.exam.length && !scheduleModalState.academy.length) await loadSchedules();
             var row = findSchedule(kind, id);
@@ -391,8 +403,8 @@
                     : '<label style="display:grid;gap:4px;font-size:12px;color:var(--eie-p-text-sub);">구분<select id="eie-edit-schedule-kind"><option value="notice"' + (academyType(row) !== 'closed' ? ' selected' : '') + '>기타</option><option value="closed"' + (academyType(row) === 'closed' ? ' selected' : '') + '>휴무</option></select></label>')
                 + '<label style="display:grid;gap:4px;font-size:12px;color:var(--eie-p-text-sub);">메모<textarea id="eie-edit-schedule-memo" rows="3">' + esc(row.memo || '') + '</textarea></label>'
                 + '<div style="display:flex;gap:8px;justify-content:flex-end;">'
-                + '<button type="button" class="eie-p-btn-danger" onclick="deleteEieUnifiedSchedule(' + jsArg(kind) + ', ' + jsArg(id) + ', ' + jsArg(seriesId) + ')">삭제</button>'
-                + '<button type="button" class="eie-p-btn-save" onclick="handleEditEieUnifiedSchedule(' + jsArg(kind) + ', ' + jsArg(id) + ', ' + jsArg(seriesId) + ')">저장</button>'
+                + '<button type="button" class="eie-p-btn-danger" onclick="deleteEieUnifiedSchedule(' + jsArg(kind) + ', ' + jsArg(id) + ', ' + jsArg(seriesId) + ', ' + jsArg(mode) + ', ' + jsArrayArg(groupedOccurrenceIds) + ')">삭제</button>'
+                + '<button type="button" class="eie-p-btn-save" onclick="handleEditEieUnifiedSchedule(' + jsArg(kind) + ', ' + jsArg(id) + ', ' + jsArg(seriesId) + ', ' + jsArg(mode) + ', ' + jsArrayArg(groupedOccurrenceIds) + ')">저장</button>'
                 + '</div>'
                 + '</div>'
                 + '</div>');
@@ -401,7 +413,9 @@
         }
     }
 
-    async function handleEditEieUnifiedSchedule(kind, id, seriesId) {
+    async function handleEditEieUnifiedSchedule(kind, id, seriesId, mode, occurrenceIds) {
+        mode = mode || 'owner';
+        var groupedOccurrenceIds = Array.isArray(occurrenceIds) ? occurrenceIds.filter(Boolean) : [];
         var start = document.getElementById('eie-edit-schedule-start');
         var end = document.getElementById('eie-edit-schedule-end');
         var title = document.getElementById('eie-edit-schedule-title');
@@ -413,7 +427,7 @@
         }
         try {
             if (kind === 'exam') {
-                await EieApi.updateExamSchedule(id, {
+                var examPayload = {
                     schoolName: (document.getElementById('eie-edit-schedule-school') || {}).value || '',
                     grade: (document.getElementById('eie-edit-schedule-grade') || {}).value || '',
                     examName: name,
@@ -421,7 +435,13 @@
                     startDate: start && start.value ? start.value : todayIso(),
                     endDate: end && end.value ? end.value : (start && start.value ? start.value : todayIso()),
                     memo: memo ? memo.value.trim() : ''
-                });
+                };
+                if (mode === 'teacher' && groupedOccurrenceIds.length > 1 && typeof EieApi.updateExamScheduleGroup === 'function') {
+                    examPayload.occurrenceIds = groupedOccurrenceIds;
+                    await EieApi.updateExamScheduleGroup(examPayload);
+                } else {
+                    await EieApi.updateExamSchedule(id, examPayload);
+                }
             } else {
                 var typeEl = document.getElementById('eie-edit-schedule-kind');
                 var type = typeEl ? typeEl.value : 'notice';
@@ -440,26 +460,32 @@
                 }
             }
             notify('일정을 저장했습니다.', 'success');
-            await openEieScheduleModal();
+            await openEieScheduleModal(mode);
             refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '일정 저장에 실패했습니다.', 'error');
         }
     }
 
-    async function deleteEieUnifiedSchedule(kind, id, seriesId) {
+    async function deleteEieUnifiedSchedule(kind, id, seriesId, mode, occurrenceIds) {
+        mode = mode || 'owner';
+        var groupedOccurrenceIds = Array.isArray(occurrenceIds) ? occurrenceIds.filter(Boolean) : [];
         if (!id && !seriesId) return;
         if (window.confirm && !window.confirm('일정을 삭제할까요?')) return;
         try {
             if (kind === 'exam') {
-                await EieApi.deleteExamSchedule(id);
+                if (mode === 'teacher' && groupedOccurrenceIds.length > 1 && typeof EieApi.deleteExamScheduleGroup === 'function') {
+                    await EieApi.deleteExamScheduleGroup(groupedOccurrenceIds);
+                } else {
+                    await EieApi.deleteExamSchedule(id);
+                }
             } else if (seriesId && typeof EieApi.deleteAcademyScheduleSeries === 'function') {
                 await EieApi.deleteAcademyScheduleSeries(seriesId);
             } else {
                 await EieApi.deleteAcademySchedule(id);
             }
             notify('일정을 삭제했습니다.', 'success');
-            await openEieScheduleModal();
+            await openEieScheduleModal(mode);
             refreshDashboardCards();
         } catch (err) {
             notify(err && err.message ? err.message : '일정 삭제에 실패했습니다.', 'error');
