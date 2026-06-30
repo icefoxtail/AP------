@@ -579,8 +579,10 @@
             if (payload != null) opts.body = payload;
             return request(path, opts);
         },
+        // 재로그인이 필요한 "세션 만료(401)"만 true. 403(권한 없음)은 세션이
+        // 유효하므로 여기서 제외한다 — 403을 로그아웃 신호로 쓰면 안 된다.
         isAuthError(error) {
-            return !!(error && (error.status === 401 || error.status === 403));
+            return !!(error && error.status === 401);
         }
     };
 })();
