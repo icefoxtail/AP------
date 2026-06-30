@@ -47,13 +47,16 @@ function loadReportExports() {
             reportCenterBuildEasyTeacherOpinionLines,
             reportCenterBuildEasyParentMessage,
             reportCenterBuildEasyKakaoSummary,
+            reportCenterBuildRemediationText,
+            reportCenterBuildWrongCareText,
             reportCenterBuildParentQuestionInsight,
             reportCenterBuildPremiumQuestionRows,
             reportCenterBuildQuestionCommentCards,
             reportCenterBuildSingleExamSummaryText,
             reportCenterBuildTrendSummaryText,
             reportCenterBuildWeaknessSummaryText,
-            reportHumanizeApMathText
+            reportHumanizeApMathText,
+            REPORT_WRONGCARE_FLOW
         };`;
     const noop = () => {};
     const shim = new Proxy({}, { get: () => noop });
@@ -120,12 +123,22 @@ const mockTrend = {
     assertClean(`summary(wrong=${wrong})`, R.reportCenterBuildEasySummaryText(data, data.stats.wrongRows.length, 75));
     assertClean(`trend(wrong=${wrong})`, R.reportCenterBuildEasyTrendText(mockTrend));
     assertClean(`weakness(wrong=${wrong})`, R.reportCenterBuildEasyWeaknessText(mockTrend, data));
+    const remediation = R.reportCenterBuildRemediationText(data, mockTrend, null);
+    const wrongCare = R.reportCenterBuildWrongCareText(data, mockTrend);
+    assertClean(`remediation(wrong=${wrong})`, remediation);
+    assertClean(`wrongCare(wrong=${wrong})`, wrongCare);
+    assert.ok(remediation.trim().length > 0, `remediation(wrong=${wrong}) 비어 있음`);
+    assert.ok(wrongCare.trim().length > 0, `wrongCare(wrong=${wrong}) 비어 있음`);
+    assert.ok(!/\d+번/.test(remediation), `remediation(wrong=${wrong}) 문항 번호 유출: ${remediation}`);
+    assert.ok(!/\d+번/.test(wrongCare), `wrongCare(wrong=${wrong}) 문항 번호 유출: ${wrongCare}`);
     assertClean(`plan(wrong=${wrong})`, R.reportCenterBuildEasyPlanItems(data, mockTrend).join(' '));
     assertClean(`teacher(wrong=${wrong})`, R.reportCenterBuildEasyTeacherOpinionLines(data, '검산 습관을 지도 중입니다.').join(' '));
     assertClean(`parent(wrong=${wrong})`, R.reportCenterBuildEasyParentMessage(data));
     assert.ok(R.reportCenterBuildEasyParentMessage(data).trim().length > 0, `parent(wrong=${wrong}) 비어 있음`);
     ok();
 });
+assertClean('wrongCareFlow', R.REPORT_WRONGCARE_FLOW.join(' → '));
+assert.ok(R.REPORT_WRONGCARE_FLOW.join(' → ').trim().length > 0, 'REPORT_WRONGCARE_FLOW 비어 있음');
 assertClean('kakao', R.reportCenterBuildEasyKakaoSummary('s1', 'e1'));
 ok();
 

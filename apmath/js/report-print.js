@@ -68,8 +68,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const reportLength = (options.studioState?.textOptions?.length || options.length) === 'detailed' ? 'detailed' : 'standard';
     const isDetailed = reportLength === 'detailed';
     const blockLimit = isDetailed
-        ? { summary: 480, weakness: 480, plan: 220, teacher: 520 }
-        : { summary: 360, weakness: 320, plan: 180, teacher: 320 };
+        ? { summary: 480, weakness: 480, remediation: 280, wrongCare: 300, plan: 220, teacher: 520 }
+        : { summary: 360, weakness: 320, remediation: 220, wrongCare: 240, plan: 180, teacher: 320 };
     const teacherLineMax = isDetailed ? 4 : 2;
     const planItemMax = isDetailed ? 6 : 3;
     const trendData = reportCenterGetExamTrendData(student.id, { limit: options.trendLimit || 5 });
@@ -117,6 +117,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         summary: parentSummaryText,
         trend: trendSummaryText,
         weakness: wrongCount ? coreItems[1].text : '',
+        remediation: reportCenterBuildRemediationText(data, trendData, aiAnalysis),
+        wrongCare: reportCenterBuildWrongCareText(data, trendData),
         plan: nextPlanItems.join('\n'),
         teacherOpinion: diagnosisLines.join('\n\n'),
         parentMessage: parentMessageText,
@@ -129,6 +131,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         summary: reportCenterStudioBlockIsDirty(studioState, 'summary'),
         trend: reportCenterStudioBlockIsDirty(studioState, 'trend'),
         weakness: reportCenterStudioBlockIsDirty(studioState, 'weakness'),
+        remediation: reportCenterStudioBlockIsDirty(studioState, 'remediation'),
+        wrongCare: reportCenterStudioBlockIsDirty(studioState, 'wrongCare'),
         plan: reportCenterStudioBlockIsDirty(studioState, 'plan'),
         teacherOpinion: reportCenterStudioBlockIsDirty(studioState, 'teacherOpinion'),
         parentMessage: reportCenterStudioBlockIsDirty(studioState, 'parentMessage')
@@ -136,6 +140,14 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     parentSummaryText = dirtyBlocks.summary ? studioTexts.summary : reportCenterApplyEasyFinalLanguage(studioTexts.summary);
     trendSummaryText = dirtyBlocks.trend ? studioTexts.trend : reportCenterApplyEasyFinalLanguage(studioTexts.trend);
     coreItems[1].text = dirtyBlocks.weakness ? studioTexts.weakness : reportCenterApplyEasyFinalLanguage(studioTexts.weakness);
+    const remediationText = reportCenterTrimText(
+        dirtyBlocks.remediation ? studioTexts.remediation : reportCenterApplyEasyFinalLanguage(studioTexts.remediation),
+        blockLimit.remediation
+    );
+    const wrongCareText = reportCenterTrimText(
+        dirtyBlocks.wrongCare ? studioTexts.wrongCare : reportCenterApplyEasyFinalLanguage(studioTexts.wrongCare),
+        blockLimit.wrongCare
+    );
     nextPlanItems = String(studioTexts.plan || '')
         .split(/\n+/)
         .map(item => item.trim())
@@ -244,8 +256,19 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 ${reportCenterBuildReportChartHtml(distributionChart)}
             </section>` : ''}
 
+            ${studioOptions.includeRemediation ? `<section class="aprc-pdf-section aprc-pdf-remediation aprc-pdf-panel">
+                <div class="aprc-section-title">이번 시험 보완 방향</div>
+                <p>${reportCenterEscape(remediationText)}</p>
+            </section>` : ''}
+
+            ${studioOptions.includeWrongCare ? `<section class="aprc-pdf-section aprc-pdf-wrong-care aprc-pdf-panel">
+                <div class="aprc-section-title">AP수학 오답관리</div>
+                ${String(wrongCareText || '').split(/\n+/).map(line => line.trim()).filter(Boolean).map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+                <div class="aprc-wrongcare-flow">${reportCenterEscape(REPORT_WRONGCARE_FLOW.join(' → '))}</div>
+            </section>` : ''}
+
             <section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">
-                <div class="aprc-section-title">다음 수업에서 이렇게 합니다</div>
+                <div class="aprc-section-title">다음 수업 복습 계획</div>
                 <ol class="aprc-plan-list">
                     ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
                 </ol>
@@ -412,6 +435,8 @@ function reportCenterPremiumReportStyle() {
             .aprc-source-note { margin-top:7px; padding:7px 9px; border-radius:10px; background:#f8fafc; color:#64748b; font-size:10.3px; font-weight:700; line-height:1.4; }
             .aprc-bottom-grid { align-items:stretch; padding-top:4mm; }
             .aprc-paragraph p { margin:0 0 8px; color:#334155; font-size:11.7px; font-weight:650; line-height:1.62; word-break:keep-all; }
+            .aprc-pdf-remediation p, .aprc-pdf-wrong-care p { margin:0 0 6px; color:#334155; font-size:11.7px; font-weight:700; line-height:1.62; word-break:keep-all; }
+            .aprc-wrongcare-flow { margin-top:7px; padding:7px 9px; border-radius:9px; background:#f8fafc; color:#475569; font-size:10.5px; font-weight:850; line-height:1.45; word-break:keep-all; }
             .aprc-plan-list { margin:0; padding-left:18px; color:#334155; font-size:11.8px; font-weight:700; line-height:1.65; }
             .aprc-plan-list li { margin:0 0 4px; }
             .aprc-qcomment-list { display:flex; flex-direction:column; gap:2.6mm; }
@@ -477,7 +502,7 @@ function reportCenterPremiumReportStyle() {
                 .report-print-toolbar, .report-print-actions, .no-print { display:none !important; }
                 .report-print-stage { padding:0 !important; margin:0 !important; background:#fff !important; overflow:visible !important; }
                 .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
-                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary { break-inside:avoid !important; page-break-inside:avoid !important; }
+                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary, .aprc-pdf-remediation, .aprc-pdf-wrong-care { break-inside:avoid !important; page-break-inside:avoid !important; }
                 .aprc-pdf-point-grid { display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:4mm !important; }
                 .aprc-pdf-table-panel { break-inside:auto !important; page-break-inside:auto !important; }
                 .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; margin-bottom:7px; }
@@ -879,4 +904,4 @@ async function saveParentReportImage(name, examTitle) {
         if (saveBtn) saveBtn.disabled = false;
     }
 }
-
+
