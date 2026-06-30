@@ -15,8 +15,23 @@ const context = {
   setTimeout() {},
   requestAnimationFrame(callback) { callback(); },
   navigator: {},
+  // core.js globals dashboard-admin.js relies on at runtime (core.js loads first in index.html).
+  normalizeStudentStatus(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '재원';
+    if (raw === '제적' || raw === '퇴원' || raw === 'withdrawn' || raw === 'withdraw') return '퇴원';
+    if (raw === '숨김' || raw === 'hidden') return '숨김';
+    if (raw === '휴원' || raw === 'paused') return '휴원';
+    if (raw === '재원' || raw === 'active') return '재원';
+    return raw;
+  },
+  isActiveStudentStatus(value) {
+    return context.normalizeStudentStatus(value) === '재원';
+  },
   document: {
     body: { classList: { add() {}, remove() {} } },
+    head: { appendChild() {} },
+    createElement() { return { style: {}, setAttribute() {}, appendChild() {} }; },
     querySelector() { return null; },
     querySelectorAll() { return []; },
     getElementById() { return null; }

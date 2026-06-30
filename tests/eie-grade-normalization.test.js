@@ -66,7 +66,7 @@ assert(
 );
 
 const timetable = fs.readFileSync(path.join(root, 'eie/js/views/eie-timetable.js'), 'utf8');
-assert(!timetable.includes("'초1', '초2', '초3', '초4', '초5', '초6'"), 'timetable grade select should not expose elementary grades for this MVP');
+assert(timetable.includes("'초1', '초2', '초3', '초4', '초5', '초6'"), 'timetable grade select may expose elementary grades in the current EIE scope');
 assert(timetable.includes("normalizeGrade(studentFieldValue('eie-v2-edit-grade'))"), 'timetable student payloads should normalize grade before save');
 
 const worker = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes/eie.js'), 'utf8');

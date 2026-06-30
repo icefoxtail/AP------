@@ -313,8 +313,9 @@ async function assertGradeLedgerStudentFocus() {
   assert(/\.eie-v2-ap-card,\s*\.eie-v2-ap-form-card\s*\{[\s\S]*padding:\s*12px;/.test(css), 'profile cards should match APMATH card padding');
   assert(/\.eie-v2-ap-head-actions\s*\{[\s\S]*display:\s*flex;/.test(css), 'header close and primary actions should sit together in a flex row');
   assert(/\.eie-v2-ap-edit-title-input\s*\{[\s\S]*width:\s*100%;/.test(css), 'class edit title input should stretch inside the shared card header');
-  assert(!/\.eie-v2-mini-classroom[\s\S]*font-weight:\s*800;/.test(css), 'mini classroom panel should not use heavy bold weights');
-  assert(!/\.eie-v2-mini-classroom[\s\S]*(gap|padding|margin-top|min-height):\s*(5|6|7|10|14|26|28|30|34|38)px/.test(css), 'mini classroom vertical spacing should stay on the 4/8/12/16/20/24 scale');
+  const miniClassroomCssBlocks = (css.match(/[^{}]*\.eie-v2-mini-classroom[^{}]*\{[^{}]*\}/g) || []).join('\n');
+  assert(!/font-weight:\s*(800|900);/.test(miniClassroomCssBlocks), 'mini classroom panel should not use heavy bold weights');
+  assert(!/(gap|padding|margin-top|min-height):\s*(5|6|7|10|14|26|28|30|34|38)px/.test(miniClassroomCssBlocks), 'mini classroom vertical spacing should stay on the 4/8/12/16/20/24 scale');
   assert(/\.eie-v2-ap-head-btn\.is-primary,?\s*[\s\S]*?\{[\s\S]*background:\s*#6e66c9;/.test(css), 'primary header button should share the primary accent color');
   assert(/\.eie-v2-ap-seg\s*\{[\s\S]*display:\s*inline-flex;/.test(css), 'class detail roster/attendance toggle should use a segmented control');
   assert(/\.eie-v2-ap-seg-btn\.is-active\s*\{[\s\S]*background:\s*#fff;/.test(css), 'segmented control should visibly mark the active view');

@@ -28,7 +28,7 @@ const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
     assert(api.includes(name), `EIE api missing ${name}`);
   });
 
-  assert(router.includes("if (key === 'timetable-months') return 'timetable';"), 'EIE #timetable-months must redirect to existing timetable route');
+  assert(/key === 'timetable-months'\)\s*resolved\s*=\s*'timetable'/.test(router), 'EIE #timetable-months must redirect to existing timetable route');
   assert(!html.includes('eie-timetable-months.js'), 'EIE must not load separate monthly timetable page script');
   assert(!html.includes('eie-timetable-months.css'), 'EIE must not load separate monthly timetable page css');
   assert(css.includes('.eie-drw-item[data-eie-route="timetable-months"]'), 'EIE drawer monthly route must be hidden');

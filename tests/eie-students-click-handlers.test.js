@@ -122,6 +122,13 @@ const context = {
 };
 context.window = context;
 context.location = { hash: '#students' };
+// GET /teachers 로스터는 원장 전용 경로다. owner 세션을 모사해야 전체 교사 계정이 필터에 노출된다.
+context.localStorage = {
+  _data: { WANGJI_EIE_ROLE: 'owner', WANGJI_EIE_LOGIN_ID: 'admin' },
+  getItem(key) { return Object.prototype.hasOwnProperty.call(this._data, key) ? this._data[key] : null; },
+  setItem(key, value) { this._data[key] = String(value); },
+  removeItem(key) { delete this._data[key]; }
+};
 
 vm.createContext(context);
 vm.runInContext(source, context, { filename: 'eie-students.js' });
