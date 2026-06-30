@@ -247,6 +247,16 @@
     color: #7c3aed;
 }
 
+.ap-classroom-monthly-category.is-exam .ap-classroom-monthly-category-head span,
+.ap-classroom-monthly-category.is-exam .ap-classroom-monthly-category-head strong {
+    color: #d97706;
+}
+
+.ap-classroom-monthly-category.is-clinic .ap-classroom-monthly-category-head span,
+.ap-classroom-monthly-category.is-clinic .ap-classroom-monthly-category-head strong {
+    color: var(--error);
+}
+
 .ap-classroom-monthly-row {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
@@ -275,6 +285,26 @@
     word-break: keep-all;
 }
 
+.ap-classroom-monthly-row--exam {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    cursor: pointer;
+}
+
+.ap-classroom-monthly-row--exam:focus-visible {
+    border-radius: 6px;
+    outline: 2px solid var(--primary, #2563eb);
+    outline-offset: 2px;
+}
+
+.ap-classroom-monthly-row--exam .ap-classroom-monthly-student {
+    max-width: none;
+}
+
+.ap-classroom-monthly-row--exam .ap-classroom-monthly-dates {
+    text-align: right;
+    white-space: nowrap;
+}
+
 @media (min-width: 800px) {
     .ap-classroom-monthly-board {
         margin: 12px 16px 0;
@@ -293,5 +323,15 @@
 @media (max-width: 420px) {
     .ap-classroom-monthly-board {
         padding: 10px;
+    }
+
+    .ap-classroom-monthly-row--exam {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
+    }
+
+    .ap-classroom-monthly-row--exam .ap-classroom-monthly-dates {
+        text-align: left;
+        white-space: normal;
     }
 }

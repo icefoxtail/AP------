@@ -823,6 +823,8 @@ async function clinicPrintSaveAndOpen(classId, payload, selectedStudentIds = [])
     const engineUrl = result?.print?.engine_url || `wrong_print_engine.html?set=${encodeURIComponent(result.public_set_key || '')}`;
     clinicPrintOpenEngineUrl(engineUrl);
     toast(`오답 클리닉 저장 완료 · ${Number(result.packet_count || 0)}명`, 'success');
+    if (state.ui?.classroomWrongClinicStatus?.[String(classId || '')]) state.ui.classroomWrongClinicStatus[String(classId || '')].loadedAt = 0;
+    if (typeof updateClassroomMonthlyStatusBoardDOM === 'function') updateClassroomMonthlyStatusBoardDOM(classId);
     return result;
 }
 

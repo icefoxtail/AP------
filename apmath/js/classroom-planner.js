@@ -478,7 +478,7 @@ async function deleteExamSession(sessionId, classId, examTitle, examDate, archiv
             });
             if (!r?.success) { toast('삭제 실패', 'warn'); return; }
             toast('학생을 시험에서 삭제했습니다.', 'info');
-            closeModal(true); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate, archiveFile);
+            closeModal(true); await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamDetail(classId, examTitle, examDate, archiveFile);
         } catch (e) {
             console.warn(e);
             toast('삭제 실패', 'warn');
@@ -490,7 +490,11 @@ async function deleteExamSession(sessionId, classId, examTitle, examDate, archiv
     const r = await api.delete('exam-sessions', sessionId);
     if (!r?.success) { toast('삭제 실패', 'warn'); return; }
     toast('기록이 삭제되었습니다.', 'info');
-    closeModal(true); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate, archiveFile);
+    closeModal(true); await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamDetail(classId, examTitle, examDate, archiveFile);
+}
+
+function refreshClassroomStatusBoardAfterExamChange(classId) {
+    if (typeof updateClassroomMonthlyStatusBoardDOM === 'function') updateClassroomMonthlyStatusBoardDOM(classId);
 }
 
 async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '', assignmentId = '') {
@@ -504,7 +508,7 @@ async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '',
         const data = await r.json();
         if (!r.ok || !data.success) { toast('시험 전체삭제 실패', 'warn'); return; }
         toast('시험 전체 기록이 삭제되었습니다.', 'info');
-        closeModal(true); await refreshDataOnly(); openExamGradeView(classId);
+        closeModal(true); await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamGradeView(classId);
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
 }
 

@@ -687,6 +687,77 @@ async function listPacketsForTeacher(env, teacher, url) {
   return ok({ packets: (res.results || []).map(packetSummary) });
 }
 
+async function listClassClinicStatusForTeacher(env, teacher, url) {
+  await ensureWrongClinicTables(env);
+  if (!isStaffUser(teacher)) return fail('Forbidden', 403);
+  const classId = text(url.searchParams.get('class_id') || url.searchParams.get('class'));
+  if (!classId) return fail('class_id required');
+  if (!(await canAccessClass(teacher, classId, env))) return fail('Forbidden', 403);
+
+  const res = await env.DB.prepare(`
+    SELECT
+      p.id AS packet_id,
+      p.set_id,
+      p.recipient_student_id,
+      p.recipient_student_name,
+      p.recipient_class_id,
+      p.item_count,
+      p.is_submitted,
+      p.submitted_at,
+      p.review_wrong_ids_json,
+      p.review_saved_at,
+      p.created_at AS packet_created_at,
+      s.title,
+      s.mode,
+      s.print_title,
+      s.public_set_key,
+      s.source_exam_title,
+      s.source_exam_keys_json,
+      s.source_class_id,
+      s.source_class_name,
+      s.created_at AS set_created_at
+    FROM wrong_clinic_packets p
+    JOIN wrong_clinic_sets s ON s.id = p.set_id
+    WHERE p.recipient_class_id = ?
+      AND COALESCE(p.status, 'active') = 'active'
+      AND COALESCE(s.status, 'active') = 'active'
+    ORDER BY s.created_at DESC, p.created_at DESC
+    LIMIT 500
+  `).bind(classId).all();
+
+  const grouped = new Map();
+  for (const row of res.results || []) {
+    const setId = text(row.set_id);
+    if (!setId) continue;
+    if (!grouped.has(setId)) {
+      const exams = parseJson(row.source_exam_keys_json, []);
+      grouped.set(setId, {
+        set_id: setId,
+        public_set_key: row.public_set_key || '',
+        title: row.print_title || row.title || '오답 클리닉',
+        mode: row.mode || 'student',
+        source_exam_title: row.source_exam_title || '',
+        source_exam_count: Array.isArray(exams) ? exams.length : 0,
+        source_class_id: row.source_class_id || '',
+        source_class_name: row.source_class_name || '',
+        created_at: row.set_created_at || row.packet_created_at || '',
+        packet_count: 0,
+        submitted_count: 0,
+        total_item_count: 0,
+        review_wrong_count: 0
+      });
+    }
+    const group = grouped.get(setId);
+    group.packet_count += 1;
+    group.total_item_count += Number(row.item_count || 0);
+    if (Number(row.is_submitted || 0)) group.submitted_count += 1;
+    const reviewWrongIds = parseJson(row.review_wrong_ids_json, []);
+    if (Array.isArray(reviewWrongIds)) group.review_wrong_count += reviewWrongIds.length;
+  }
+
+  return ok({ clinics: [...grouped.values()] });
+}
+
 function packetSummary(row) {
   const reviewWrongIds = parseJson(row.review_wrong_ids_json, []);
   return {
@@ -910,6 +981,7 @@ export async function handleWrongClinics(request, env, teacher, path, url) {
 
   if (method === 'POST' && !id) return createWrongClinic(request, env, teacher);
   if (method === 'GET' && id === 'packets') return listPacketsForTeacher(env, teacher, url);
+  if (method === 'GET' && id === 'class-status') return listClassClinicStatusForTeacher(env, teacher, url);
   if (method === 'GET' && id === 'review-wrongs') return listReviewWrongCandidatesForTeacher(env, teacher, url);
   if (method === 'GET' && id === 'packet' && key) {
     const payload = await loadPacketPayload(env, key);
