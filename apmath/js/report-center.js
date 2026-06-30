@@ -1882,6 +1882,8 @@ function reportCenterBuildRemediationText(data, trendData = null, aiAnalysis = n
 
 function reportCenterBuildWrongCareText(data, trendData = null) {
     const bank = REPORT_COPY_BANK.wrongCare || {};
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    if (!wrongRows.length) return reportCopyFillSlots(bank.noWrong || '', {});
     return [bank.line1, bank.line2].filter(Boolean).join('\n');
 }
 
@@ -3804,4 +3806,4 @@ function reportCenterGetExamTrendData(studentId, options = {}) {
         finalEvaluation: { scorePosition, trendComment, nextPlan }
     };
 }
-
+

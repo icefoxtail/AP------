@@ -264,7 +264,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             ${studioOptions.includeWrongCare ? `<section class="aprc-pdf-section aprc-pdf-wrong-care aprc-pdf-panel">
                 <div class="aprc-section-title">AP수학 오답관리</div>
                 ${String(wrongCareText || '').split(/\n+/).map(line => line.trim()).filter(Boolean).map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
-                <div class="aprc-wrongcare-flow">${reportCenterEscape(REPORT_WRONGCARE_FLOW.join(' → '))}</div>
+                ${wrongCount ? `<div class="aprc-wrongcare-flow">${reportCenterEscape(REPORT_WRONGCARE_FLOW.join(' → '))}</div>` : ''}
             </section>` : ''}
 
             <section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">
