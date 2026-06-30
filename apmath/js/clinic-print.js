@@ -203,6 +203,14 @@ function clinicPrintMergeClassAssignments(rows) {
     state.db.class_exam_assignments = [...byKey.values()];
 }
 
+function clinicPrintReplaceClassAssignments(classId, rows) {
+    if (!state.db) state.db = {};
+    const incoming = Array.isArray(rows) ? rows : [];
+    const keep = (state.db.class_exam_assignments || state.db.exam_assignments || [])
+        .filter(row => String(row.class_id || '') !== String(classId || ''));
+    state.db.class_exam_assignments = [...keep, ...incoming];
+}
+
 function clinicPrintMergeClassAssignmentExclusions(rows) {
     if (!Array.isArray(rows)) return;
     if (!state.db) state.db = {};
@@ -220,16 +228,64 @@ function clinicPrintMergeClassAssignmentExclusions(rows) {
     state.db.class_exam_assignment_exclusions = [...byKey.values()];
 }
 
+function clinicPrintReplaceClassAssignmentExclusions(rows) {
+    if (!Array.isArray(rows)) return;
+    if (!state.db) state.db = {};
+    const assignmentIds = new Set(rows.map(row => String(row.assignment_id || '').trim()).filter(Boolean));
+    const keep = (state.db.class_exam_assignment_exclusions || [])
+        .filter(row => !assignmentIds.has(String(row.assignment_id || '').trim()));
+    state.db.class_exam_assignment_exclusions = [...keep, ...rows];
+}
+
 async function clinicPrintRefreshClassAssignments(classId) {
     if (!classId || typeof api === 'undefined' || typeof api.get !== 'function') return false;
     try {
         const res = await api.get(`class-exam-assignments?class=${encodeURIComponent(classId)}`);
-        clinicPrintMergeClassAssignments(res.assignments || res.items || []);
-        clinicPrintMergeClassAssignmentExclusions(res.exclusions || []);
+        const assignments = res.assignments || res.items || [];
+        clinicPrintReplaceClassAssignments(classId, assignments);
+        clinicPrintReplaceClassAssignmentExclusions(res.exclusions || []);
         return true;
     } catch (e) {
         console.warn('[clinic-print] class exam assignment refresh failed:', e);
         return false;
+    }
+}
+
+async function clinicPrintDeleteExamGroup(classId, examKey) {
+    const groups = clinicPrintGetClassExamGroups(classId);
+    const group = groups.find(row => String(row.examKey || '') === String(examKey || ''));
+    if (!group) {
+        toast('삭제할 시험을 찾을 수 없습니다.', 'warn');
+        return;
+    }
+
+    const label = `${group.examDate || ''} ${group.examTitle || '시험명 없음'}`.trim();
+    const submittedCount = Number(group.sessions?.length || 0);
+    const detail = submittedCount
+        ? `제출 ${submittedCount}명, 오답 ${Number(group.wrongCount || 0)}문항 기록도 함께 삭제됩니다.`
+        : '제출 기록이 없어서 출제 기록만 삭제됩니다.';
+    if (!confirm(`${label}\n이 시험을 삭제할까요?\n${detail}`)) return;
+
+    try {
+        const archiveQuery = group.archiveFile ? `&archive=${encodeURIComponent(group.archiveFile)}` : '';
+        const assignmentQuery = group.assignment?.id ? `&assignment=${encodeURIComponent(group.assignment.id)}` : '';
+        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(group.examTitle || '')}&date=${encodeURIComponent(group.examDate || '')}${archiveQuery}${assignmentQuery}`;
+        const res = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
+        if (res.status === 401 && typeof handleUnauthorizedResponse === 'function') {
+            handleUnauthorizedResponse();
+            return;
+        }
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.success === false) {
+            toast(data.message || data.error || '시험 삭제에 실패했습니다.', 'warn');
+            return;
+        }
+        toast('시험 기록을 삭제했습니다.', 'info');
+        if (typeof refreshDataOnly === 'function') await refreshDataOnly();
+        await openClinicPrintCenter(classId);
+    } catch (e) {
+        console.warn('[clinic-print] delete exam failed:', e);
+        toast('시험 삭제 중 오류가 발생했습니다.', 'error');
     }
 }
 
@@ -1480,6 +1536,7 @@ async function openClinicPrintCenter(classId, options = {}) {
         ? groups.map((group, idx) => {
             const disabled = group.printable ? '' : 'disabled';
             const checked = initialKeys.includes(group.examKey) ? 'checked' : '';
+            const safeExamKey = clinicPrintEscapeJsString(group.examKey || '');
             const status = group.printable
                 ? `${group.questionCount || '-'}문항 · 제출 ${group.sessions.length}명 · 오답 ${group.wrongCount}문항`
                 : '원문 연결 불가';
@@ -1491,6 +1548,7 @@ async function openClinicPrintCenter(classId, options = {}) {
                         <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
                         <span class="${metaCls}">${clinicPrintEscapeHtml(status)}</span>
                     </span>
+                    <button type="button" class="btn apms-button apms-button--quiet btn-danger clinic-print-exam-row__delete" title="시험 삭제" onclick="event.preventDefault(); event.stopPropagation(); clinicPrintDeleteExamGroup('${safeClassIdForJs}','${safeExamKey}')">삭제</button>
                 </label>
             `;
         }).join('')

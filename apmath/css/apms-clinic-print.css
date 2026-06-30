@@ -223,6 +223,7 @@
 }
 
 .clinic-print-exam-row__main {
+    flex: 1 1 auto;
     min-width: 0;
 }
 
@@ -245,6 +246,32 @@
 
 .clinic-print-exam-row__meta--error {
     color: var(--error);
+}
+
+.clinic-print-exam-row__delete {
+    flex: none;
+    align-self: center;
+    min-height: 28px;
+    padding: 0 9px;
+    border: 1px solid rgba(var(--error-rgb), 0.18);
+    border-radius: 7px;
+    background: rgba(var(--error-rgb), 0.07);
+    color: var(--error);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 180ms ease, border-color 180ms ease, transform 150ms ease;
+}
+
+.clinic-print-exam-row__delete:hover {
+    background: rgba(var(--error-rgb), 0.11);
+    border-color: rgba(var(--error-rgb), 0.28);
+}
+
+.clinic-print-exam-row__delete:active {
+    transform: scale(0.98);
 }
 
 /* ---- 학생 목록 ---- */

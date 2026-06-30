@@ -292,6 +292,7 @@ async function openExamGradeView(classId) {
         const targetCount = Math.max(0, activeCountForAssignment - excludedCount);
         const pct = targetCount ? Math.round((cnt / targetCount) * 100) : 0;
         const archiveArg = apJsArg(exam.archiveFile || '');
+        const assignmentArg = apJsArg(exam.assignment?.id || '');
         return `<div onclick="openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg})" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
             <div>
                 <div style="font-weight:500; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
@@ -303,6 +304,7 @@ async function openExamGradeView(classId) {
                     <div style="font-size: 10px; color: var(--secondary); font-weight:500; margin-top:4px;">평균</div>
                 </div>
                <button class="btn apms-button apms-button--quiet" onclick="event.stopPropagation(); openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg});" style="padding: 7px 10px; font-size: 11px; font-weight:500; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
+               <button class="btn apms-button apms-button--quiet btn-danger" onclick="event.stopPropagation(); deleteExamByClass('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg}, ${assignmentArg});" style="min-height:32px; padding: 4px 10px; font-size: 11px; font-weight:500; border-radius: 8px; color: var(--error); background: rgba(var(--error-rgb),0.08); border: 1px solid rgba(var(--error-rgb),0.18);">삭제</button>
             </div>
         </div>`;
     }).join('');

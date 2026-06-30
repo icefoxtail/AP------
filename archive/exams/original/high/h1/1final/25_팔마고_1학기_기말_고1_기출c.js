@@ -384,7 +384,8 @@ window.questionBank = [
       "도형"
     ],
     wide: false,
-    
+    image: "assets/images/25_팔마고_1학기_기말_고1_기출/q18.png",
+
     content: "오른쪽 그림과 같이 한 변의 길이가 $1$인 정사각형 $10$개로 이루어진 도형이 있다. 이 도형의 선으로 만들 수 있는 정사각형이 아닌 직사각형의 개수를 구하시오.",
     choices: [
       "$20$",
