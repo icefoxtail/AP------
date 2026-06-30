@@ -79,6 +79,7 @@ function clinicPrintGetHeaderOptions(classId) {
         subtitle: clinicPrintClampText(document.getElementById('clinic-print-header-subtitle')?.value || '', 120),
         showNameLine: document.getElementById('clinic-print-header-name')?.checked !== false,
         showScoreLine: document.getElementById('clinic-print-header-score')?.checked !== false,
+        showDate: document.getElementById('clinic-print-header-date')?.checked === true,
         applyToSolution: document.getElementById('clinic-print-header-sol')?.checked !== false,
         applyToAnswer: document.getElementById('clinic-print-header-ans')?.checked !== false
     };
@@ -1502,6 +1503,7 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div class="clinic-print-header-checks">
                     <label><input id="clinic-print-header-name" type="checkbox" checked> 이름칸</label>
                     <label><input id="clinic-print-header-score" type="checkbox" checked> 점수칸</label>
+                    <label><input id="clinic-print-header-date" type="checkbox"> 날짜</label>
                     <label><input id="clinic-print-header-sol" type="checkbox" checked> 해설지 적용</label>
                     <label><input id="clinic-print-header-ans" type="checkbox" checked> 정답표 적용</label>
                 </div>
@@ -1572,7 +1574,7 @@ async function openClinicPrintCenter(classId, options = {}) {
     document.querySelectorAll('#clinic-print-header-title, #clinic-print-header-subtitle').forEach(input => {
         input.addEventListener('input', () => clinicPrintSchedulePreviewPush(classId));
     });
-    document.querySelectorAll('#clinic-print-header-name, #clinic-print-header-score, #clinic-print-header-sol, #clinic-print-header-ans').forEach(input => {
+    document.querySelectorAll('#clinic-print-header-name, #clinic-print-header-score, #clinic-print-header-date, #clinic-print-header-sol, #clinic-print-header-ans').forEach(input => {
         input.addEventListener('change', () => clinicPrintSchedulePreviewPush(classId));
     });
     document.querySelector('#clinic-print-student-section .clinic-print-mini-btn')?.addEventListener('click', () => {
