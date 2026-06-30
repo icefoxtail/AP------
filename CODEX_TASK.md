@@ -1,864 +1,290 @@
-좋습니다.
-이번 건은 **학부모 리포트 고도화 세부 계획서**로 잡겠습니다.
+# CODEX_TASK — 학부모 리포트 "시험 후 후속 대책" 고도화 (v5)
 
-핵심 방향은 이겁니다.
+> 작성: 설계 팀장 검토본. 이 문서는 처음부터 끝까지 읽고 루프 순서대로 실행한다.
+> GPT 원안(신규 4블록 + 새 copy bank 5종 + 평가 종류 분기)은 코드 대조·현장 검토를 거쳐
+> **신규 2블록 + 새 산문 0 + 종류 분기 0**으로 축소 확정되었다. 아래가 확정안이다.
 
-```text id="rp64gh"
-현재 리포트 = 시험 결과 분석 리포트
-업그레이드 목표 = 시험 전 준비 + 시험 후 보완 + 오답관리 + 다음 수업 복습까지 보이는 학부모 리포트
+---
+
+## 0. 한 줄 방향
+
 ```
-
-현재 코드에는 이미 표준형/상세형, 문구/그래프/표·구성 탭, PDF 섹션 구조가 있습니다. `report-center.js`에는 문구 스타일과 `표준형/상세형` 선택 UI가 있고, 표/구성 탭에는 “문항별 분석표 포함”을 상세형 전용으로 처리하는 구조가 들어가 있습니다.
-`report-print.js`에도 “이번 시험, 이렇게 봤습니다”, “다음에 꼭 짚어볼 부분”, “다음 수업에서 이렇게 합니다”, “문제별 분석”, “문제별 코멘트”, “학부모님께 드리는 말씀” 섹션이 이미 있습니다.
-
-즉, 새로 갈아엎는 게 아니라 **현재 리포트 뼈대에 학원 운영 흐름을 얹는 작업**입니다.
-
-# 1. 목표
-
-## 최종 목표
-
-학부모가 리포트를 봤을 때 이렇게 느껴야 합니다.
-
-```text id="0dkgbl"
-시험 전에 학원에서 어떻게 준비했는지 보인다.
-이번 시험 결과를 어떻게 해석했는지 보인다.
-이후에 어떤 보완 수업과 오답관리가 이어지는지 보인다.
-다음 수업에서 무엇을 복습할지 보인다.
-```
-
-## 금지 방향
-
-```text id="9ox0wv"
-단순 홍보성 문구 추가 금지
-“체계적으로 관리합니다” 같은 빈말 금지
-없는 데이터를 있는 것처럼 쓰기 금지
-문구만 길게 늘리기 금지
-```
-
-## 권장 방향
-
-```text id="b548hq"
-짧은 문장
-명확한 섹션
-학원 운영이 보이는 구조
-데이터가 있으면 데이터 기반
-데이터가 없으면 선생님이 직접 수정 가능한 블록
+리포트를 "시험 결과 안내문"에서 "시험 후 보완·오답관리·복습 계획이 보이는 학부모 리포트"로 올린다.
+단, 새 문구를 만들지 않고 이미 검수 통과된 기존 문구 자산을 재배치·집계해서 만든다.
 ```
 
 ---
 
-# 2. 용어 기준
+## 1. 목적
 
-이번에 제일 중요한 건 용어를 무조건 하나로 통일하지 않는 겁니다.
+현재 PDF 리포트(`reportCenterBuildCleanPdfDocument`)에 **후속 대책 흐름**을 얹는다.
 
-## 용어 역할
+- 점수카드 → 요약/추이 → **이번 시험 보완 방향(신규)** → **AP수학 오답관리(신규)** → **다음 수업 복습 계획(라벨 변경)** → 상세 문항 분석 → 의견/메시지
+- 신규 블록 2개는 **기존 생성기·문구 bank를 재사용하는 얇은 composer**로만 만든다.
+- 번호별(문항별) 피드백은 신규 블록에 넣지 않는다. 그건 기존 상세형 "문제별 분석/코멘트"가 담당한다. 신규 블록은 **전체(집계) 피드백 전용**이다.
 
-```text id="73z8vd"
-관리 = 학원이 지속적으로 책임지고 보는 구조
-복습 = 수업 중 학생이 실제로 다시 하는 활동
-보완 = 시험 결과를 보고 부족한 부분을 채우는 방향
-오답관리 = 틀린 문항을 누적·분류·재풀이·유사문항으로 이어가는 학원 프로세스
-점검 = 너무 많이 쓰면 약함. 필요한 곳에만 제한적으로 사용
-```
+### 설계 배경 (왜 이렇게 줄었나 — 임의 변경 금지)
 
-## 사용 위치
-
-| 용어   | 쓰는 곳        | 예           |
-| ---- | ----------- | ----------- |
-| 오답관리 | 학원 시스템 설명   | AP수학 오답관리   |
-| 학습관리 | 전체 운영 개념    | 학생별 학습관리 방향 |
-| 보완   | 시험 결과 후속 방향 | 이번 시험 보완 방향 |
-| 복습   | 실제 수업 행동    | 다음 수업 복습 계획 |
-| 재풀이  | 오답 직접 처리    | 오답 문항 재풀이   |
-| 유사문항 | 후속 문제 훈련    | 유사문항 복습     |
-
-## 섹션명 후보
-
-```text id="m2dywt"
-시험 전 준비 내용
-이번 시험 결과 분석
-이번 시험 보완 방향
-AP수학 오답관리
-다음 수업 복습 계획
-학부모님께 드리는 말씀
-```
-
-이 조합이 가장 자연스럽습니다.
+- "시험 전 준비" 블록은 **제외**한다. (a) 유일하게 새 산문이 필요했고, (b) 단원·내부평가에 "학교 기출 확인" 같은 오문구를 유발했으며, (c) 학부모 신뢰는 사전 준비 자기보고보다 사후 대책에서 나온다.
+- 쪽지시험은 애초에 학부모 리포트 대상이 아니므로 **평가 종류 분기 자체가 불필요**하다. 단원/월말/모의/학교고사의 후속 대책은 동일 문구로 통일한다. `exam_title` 파싱·종류 판별 코드를 만들지 않는다.
 
 ---
 
-# 3. 리포트 구조 개편안
+## 2. 절대 금지
 
-## 현재 구조
-
-현재 PDF는 대략 이런 구조입니다.
-
-```text id="c33b7y"
-헤더
-학생 정보
-점수 카드
-이번 시험 요약
-추이 그래프
-다시 볼 부분
-다음 수업 계획
-문제별 분석
-문제별 코멘트
-선생님 종합 의견
-학부모 메시지
-```
-
-## 변경 후 구조
-
-```text id="21j75v"
-헤더
-학생 정보
-점수 카드
-
-1. 시험 전 준비 내용
-2. 이번 시험 결과 분석
-3. 이번 시험 보완 방향
-4. AP수학 오답관리
-5. 다음 수업 복습 계획
-6. 문제별 분석 / 상세형 전용
-7. 문제별 코멘트 / 상세형 전용
-8. 학부모님께 드리는 말씀
-```
-
-중요한 변화는 이것입니다.
-
-```text id="muwwpn"
-현재: 결과 → 분석 → 다음 수업
-변경: 시험 전 준비 → 결과 → 보완 방향 → 오답관리 → 다음 수업 복습
-```
-
-이렇게 되면 리포트가 단순 성적표가 아니라 **학원 수업 흐름이 보이는 리포트**가 됩니다.
+- `git add`, `git commit`, `git push`, deploy. (코드만 수정하고 멈춘다.)
+- 기존 dirty 파일 되돌리기/임의 정리.
+- 기존 UI 문구·버튼명·화면명 변경 (단, `plan` 블록 라벨 "다음 수업 계획"→"다음 수업 복습 계획" 변경은 **이 작업의 지시 범위로 허용**).
+- **Codex의 즉석 산문 창작**. 블록 텍스트는 둘 중 하나에서만 온다: (a) 기존 생성기 출력, (b) 이 문서 §7-4에 **글자 그대로 박아둔 확정 문구를 `REPORT_COPY_BANK` 고정 상수/템플릿으로 옮긴 것**(`reportCopyFillSlots` 슬롯 채움만 허용, `questionInsight`와 동일 패턴). Codex가 새 설명문을 지어내지 않는다. §7-4 문구는 한 글자도 바꾸지 않는다. (§7-3 흐름 띠 라벨 = 구조물, 산문 아님)
+- 평가 종류 판별/분기 로직 신설 금지.
+- 블록 키 신규 추가 시 **기존 `plan` 키 삭제/대체 금지** (저장본 호환). `plan`은 라벨만 바꾼다.
+- DB / Worker API / migration / SQL 수정 금지.
+- 내부 시스템 표현을 학부모 문장에 노출 금지 (`docs/codex/CODEX_FORBIDDEN_CHANGES.md` Report AI 항목). "오답관리" 블록은 학원 서비스로 읽혀야 하며 내부 운영 용어(클리닉 출력 로그, payload, 큐 등)를 노출하지 않는다.
 
 ---
 
-# 4. 표준형 / 상세형 구성
+## 3. 반드시 읽을 문서 (작업 전, 최소 4)
 
-## 표준형 목표
-
-```text id="zuw476"
-A4 1장
-학부모가 30초 안에 이해
-복잡한 표보다 관리 방향 중심
-```
-
-## 표준형 구성
-
-```text id="ycoqu7"
-1. 점수 카드
-2. 시험 전 준비 내용 2~3줄
-3. 이번 시험 결과 분석 2~3줄
-4. 이번 시험 보완 방향 2~3개 항목
-5. 다음 수업 복습 계획 2~3개 항목
-6. 학부모 안내 1문단
-```
-
-표준형에서는 문항별 분석표를 빼거나 최소화합니다.
-현재 코드도 표준형에서는 문항별 분석표를 상세형 전용으로 비활성화하고 있으므로 이 방향과 맞습니다.
-
-## 상세형 목표
-
-```text id="vdzww1"
-A4 2~3장
-상담용 / 원장 검토용 / 시험 직후 분석용
-근거와 후속 계획까지 확인
-```
-
-## 상세형 구성
-
-```text id="fc7swo"
-1. 점수 카드
-2. 시험 전 준비 내용
-3. 이번 시험 결과 분석
-4. 이번 시험 보완 방향
-5. AP수학 오답관리
-6. 다음 수업 복습 계획
-7. 문항별 분석표
-8. 문제별 코멘트
-9. 학부모님께 드리는 말씀
-```
-
-상세형에서는 현재 구현된 “문제별 분석”과 “문제별 코멘트”를 유지하되, 그 앞에 보완/오답관리/복습 방향을 넣는 게 좋습니다.
+1. `docs/codex/06_CODEX_EXECUTION_RULE.md`
+2. `docs/codex/CODEX_FORBIDDEN_CHANGES.md`
+3. `docs/codex/CODEX_RESULT_RULE.md`
+4. `docs/codex/CODEX_ALLOWED_CHANGE_SCOPE.md`
+5. (참고) `tests/apmath-report-easy-language.test.js` — 신규 블록이 통과해야 할 금지어/품질 기준의 사실상의 사양
 
 ---
 
-# 5. 신규 블록 설계
+## 4. 반드시 확인할 파일 (라인 앵커는 작성 시점 기준, 함수명으로 재확인)
 
-## A. 시험 전 준비 내용
-
-### 목적
-
-학부모에게 “시험 전에 학원이 무엇을 했는지” 보여주는 블록입니다.
-
-### 위치
-
-점수 카드 아래, 결과 분석 위.
-
-### 데이터 우선순위
-
-```text id="s2s7tj"
-1순위: 선생님이 리포트 편집창에서 직접 입력한 시험 전 준비 메모
-2순위: 수업일지 / 교사 메모에서 시험 대비 관련 내용 추출
-3순위: 오답 클리닉 출력 기록 / 기출 출력 기록
-4순위: 기본 안내 문구
-```
-
-### 들어갈 내용 유형
-
-```text id="6k0uj6"
-시험 범위 복습
-학교별 기출 확인
-수업 중 오답 재풀이
-유사문항 풀이
-시험 전 마지막 수업 정리
-```
-
-### 구현 방식
-
-새 블록 키:
-
-```text id="n4z2dd"
-examPrepSummary
-```
-
-Report Studio 문구 탭에 추가:
-
-```text id="w0xrro"
-시험 전 준비 내용
-```
-
-처음에는 자동 생성보다 **선생님 수정 가능 블록**으로 넣는 게 안전합니다.
-없는 데이터를 억지로 만들면 신뢰가 떨어집니다.
+| 파일 | 위치 | 무엇 |
+|---|---|---|
+| `apmath/js/report-center.js` | `AP_REPORT_STUDIO_BLOCKS` (≈1871) | 블록 배열 — 여기에 2개 추가 + plan 라벨 변경 |
+| `apmath/js/report-center.js` | `reportCenterStudioDefaultOptions` (≈1889) | 기본 토글 — 신규 2개 기본 ON |
+| `apmath/js/report-center.js` | `reportCenterBuildReportDraft` (≈1932) | 블록 draft 조립(autoTexts 소비) |
+| `apmath/js/report-center.js` | `reportCenterMergeAiAnalysisIntoStudioState` (≈2065) | aiText 병합 (신규 블록은 aiText 없음 = 빈 문자열 처리) |
+| `apmath/js/report-center.js` | `reportCenterCreateStudioStateForPrintView` autoTexts (≈2372) | **autoText 배선 1** (편집/프린트뷰 경로) |
+| `apmath/js/report-center.js` | `reportCenterRenderStudioLayoutTab` rows (≈2488) | 표/구성 탭 토글 행 |
+| `apmath/js/report-center.js` | 재사용 생성기들 | `reportCenterBuildParentQuestionInsight`(1459), `reportCenterBuildEvaluationMeaningItems`(1790), `reportCenterBuildEasyPlanItems`(1656), `reportCenterBuildEasyTeacherOpinionLines`(1666), `reportCenterSelectPriorityWrongRows`(1476) |
+| `apmath/js/report-print.js` | `reportCenterBuildCleanPdfDocument` autoTexts (≈116) | **autoText 배선 2** (PDF 경로) |
+| `apmath/js/report-print.js` | 같은 함수 섹션 조립부 (≈224~286) | PDF 섹션 HTML 배치 |
+| `apmath/js/report-text.js` | `REPORT_COPY_BANK.questionInsight`(62), `reportCenterApplyEasyFinalLanguage`(224) | 재사용 bank + 최종 정화기 |
 
 ---
 
-## B. 이번 시험 보완 방향
+## 5. 허용 수정 범위
 
-### 목적
+- `apmath/js/report-center.js`
+- `apmath/js/report-print.js`
+- `apmath/js/report-text.js`
+- `tests/apmath-report-easy-language.test.js` (신규 검사 추가)
+- `CODEX_RESULT.md` (결과 작성)
+- 필요 시 관련 문서(`docs/**`) — §10의 master 문서 판정 포함
 
-시험 결과를 보고 앞으로 무엇을 채울지 보여주는 블록입니다.
+## 6. 제외 범위 (불가침)
 
-### 위치
-
-“이번 시험 결과 분석” 다음.
-
-### 데이터
-
-```text id="72c4z4"
-wrongRows
-difficulty
-correctRate
-classCorrectRate
-unit
-trendData.weaknessTrend
-aiAnalysis.nextPlan
-teacherMemo
-```
-
-### 보완 분류
-
-```text id="rm72km"
-개념 보완
-유형 보완
-계산·검산 보완
-조건 해석 보완
-고난도 문항 보완
-반복 오답 보완
-```
-
-### 구현 함수
-
-```text id="hge9jg"
-reportCenterBuildRemediationGuide(data, trendData, aiAnalysis)
-```
-
-### 출력 형태
-
-표준형:
-
-```text id="i8a2su"
-2~3개 항목
-```
-
-상세형:
-
-```text id="q5utcs"
-3~5개 항목
-각 항목에 근거 문항 번호 포함 가능
-```
+DB / Worker API / migration / `eie/**` / `archive/**` / `planner` / wrong-print 엔진 / 대시보드 전체 구조 / 기존 차트 SVG 빌더 / `openParentReport`·`showParentReportModal`(카드형 리포트, 별개 흐름) 는 건드리지 않는다.
 
 ---
 
-## C. AP수학 오답관리
+## 7. 설계 확정 사항
 
-### 목적
+### 7-1. 최종 블록 구성 (총 9블록, 신규는 plan 뒤가 아니라 의미 흐름 위치에)
 
-학원이 시험 후 오답을 어떻게 이어가는지 보여주는 시스템 블록입니다.
-
-### 위치
-
-보완 방향 다음.
-
-### 성격
-
-이 블록은 학생별 문항 데이터와 일부 연결하되, 기본적으로 학원의 고정 프로세스를 보여주는 블록입니다.
-
-### 내용 구조
-
-```text id="unpgme"
-1단계: 오답 문항 재풀이
-2단계: 유사문항 복습
-3단계: 반복 오답 단원 관리
-4단계: 다음 시험 전 재확인
+```
+summary        이번 시험 요약            (기존)
+trend          추이 해석                 (기존)
+weakness       다시 볼 부분              (기존)
+remediation    이번 시험 보완 방향        ← 신규 ①
+wrongCare      AP수학 오답관리            ← 신규 ②
+plan           다음 수업 복습 계획         ← 라벨 변경(키·생성기 유지)
+teacherOpinion 선생님 종합 의견           (기존)
+parentMessage  학부모님께 드리는 말씀      (기존)
+kakaoSummary   카톡 요약문               (기존)
 ```
 
-여기서 “관리”를 빼면 안 됩니다.
-이 블록은 학원 시스템을 보여주는 부분이라 “오답관리”가 맞습니다.
+`AP_REPORT_STUDIO_BLOCKS` 배열 순서도 위와 동일하게 맞춘다(문구 탭 입력칸 순서 = 리포트 흐름 순서).
 
-### 구현 함수
+### 7-2. 구성 원칙 (모순 해소판 — 반드시 이 규칙으로)
 
-```text id="sd0yqw"
-reportCenterBuildWrongCareProcess(data, trendData)
+> 검토 결과 "집계 문장을 함수가 조립" 방식은 결국 산문 창작이라 "새 산문 0" 원칙과 충돌한다.
+> 해소: **신규 블록의 문장은 §7-4의 확정 문구를 `REPORT_COPY_BANK`에 상수/템플릿으로 박고, 데이터로 채우는 부분만 슬롯**으로 둔다. 함수는 "어떤 템플릿을 고르고 어떤 슬롯을 채울지"만 결정한다. 카드/라벨 나열로 바꾸지 않는다(학부모 톤은 문장형이 맞다 — 형님 확정).
+
+- **remediation(보완 방향)** = §7-4 `remediation` 템플릿 + `{labels}` 슬롯.
+  - `reportCenterSelectPriorityWrongRows(wrongRows, 5)`로 우선 오답행을 고른다.
+  - 각 행에 `reportCenterBuildParentQuestionInsight(row, null, { mode: 'short' })` → 구간별 라벨(`계산·검산 점검`/`풀이 순서 정리`/`조건 해석·식 세우기`/`개념부터 재정리`/`재점검 문항`).
+  - 라벨을 **중복 제거**해 `{labels}`(예: `계산·검산 점검, 개념부터 재정리`)로 만들고 §7-4 `withWrong` 템플릿에 `reportCopyFillSlots`로 채운다.
+  - 오답 0개: §7-4 `noWrong` 템플릿(슬롯 없음) 사용.
+  - 번호 미포함(라벨만 슬롯).
+
+- **wrongCare(AP수학 오답관리)** = §7-4 `wrongCare` **고정 2문장(슬롯 없음)** + 얇은 흐름 띠(§7-3, PDF 구조물).
+  - 문항번호가 들어가는 `reportCenterBuildEasyPlanItems` 결과를 **쓰지 않는다**(번호 유입 차단). §7-4 고정 문구만 사용.
+  - 학부모 친화 톤 유지, 내부 운영 용어 금지. 결과에 `/\d+번/` 패턴이 없어야 한다.
+
+- **plan(다음 수업 복습 계획)** = 기존 `reportCenterBuildNextPlanItems` / `reportCenterBuildEasyPlanItems` 출력 **그대로**. 라벨/섹션 제목만 "다음 수업 복습 계획"으로. (이 블록은 번호 허용 — 기존 동작 유지)
+
+- 모든 신규 블록 텍스트는 출력 직전 `reportCenterApplyEasyFinalLanguage()`를 통과시킨다. dirty(사용자 편집) 블록은 정화기 미적용 — 기존 `dirtyBlocks` 처리 규칙을 그대로 따른다.
+
+### 7-3. 흐름 띠 상수 (유일하게 새로 추가하는 "문구" — 산문 아님)
+
+`report-text.js`에 라벨 상수 1개만 추가:
+```
+const REPORT_WRONGCARE_FLOW = ['재풀이', '유사문항 복습', '반복 오답 관리', '시험 전 재확인'];
+```
+표시는 ` → ` 조인. 학부모 노출 텍스트이므로 금지어 검사 대상에 포함시킨다.
+이 상수는 테스트에서 참조하므로 **§8 LOOP 4에서 `loadReportExports()` return에 `REPORT_WRONGCARE_FLOW`도 추가**한다.
+
+### 7-4. 신규 블록 확정 문구 (bank에 글자 그대로 박는다 — Codex 변경 금지)
+
+`REPORT_COPY_BANK`에 아래를 그대로 추가한다. 이것이 "새 산문 0"의 실체다 — Codex는 이 문장을 옮겨 담을 뿐 창작하지 않는다.
+
+```
+REPORT_COPY_BANK.remediation = {
+  withWrong: '이번 오답은 {labels} 중심으로 다음 수업에서 보완하겠습니다.',
+  noWrong:   '이번 시험은 오답이 없어, 다음 단원과 한 단계 높은 난도로 보완 학습을 이어가겠습니다.'
+};
+REPORT_COPY_BANK.wrongCare = {
+  line1: '오답 문항은 다음 수업과 보강에서 다시 풀이한 뒤, 유사 유형으로 한 번 더 복습합니다.',
+  line2: '반복해서 틀리는 단원은 따로 모아 관리하고, 다음 시험 전에 다시 확인합니다.'
+};
 ```
 
-### 표준형
-
-작은 4단계 카드.
-
-### 상세형
-
-4단계 카드 + 현재 학생에게 해당되는 단계 강조.
-
-예:
-
-```text id="0d28be"
-이번 리포트에서는 1단계, 2단계가 우선 적용됩니다.
-```
-
-단, 이 문구는 최종 문구 bank에서 확정해야 합니다.
+- `{labels}` = §7-2 라벨 중복제거 조인(`, `).
+- 이 문구들은 금지어/깨진 한국어 0으로 사전 검수됨. **수정 시 §10 회귀 위험** — 바꾸지 말 것.
+- 슬롯은 `{labels}` 하나뿐. 다른 슬롯/문장 추가 금지.
 
 ---
 
-## D. 다음 수업 복습 계획
+## 8. 루프별 실행 계획
 
-### 목적
+> 각 루프는 **독립 커밋 단위가 아니라 작업 단위**다(커밋 금지). 루프 끝마다 §9 검증을 돌려 회귀 0을 확인하고 다음 루프로 간다. 한 루프라도 검증 실패 시 그 루프 안에서 해결한 뒤 진행한다.
 
-학부모가 “다음 수업에서 실제로 뭘 하는지” 알게 하는 블록입니다.
+### LOOP 1 — 구조 뼈대 (배선만, 출력 변화 최소)
 
-### 현재 상태
+**목표:** 신규 블록 2개가 데이터 파이프라인·문구 탭·토글에 "빈 값이어도 안 깨지게" 올라온다.
 
-이미 “다음 수업에서 이렇게 합니다” 섹션이 있습니다. `nextPlanItems`를 리스트로 출력합니다.
+1. `AP_REPORT_STUDIO_BLOCKS`(≈1871)에 순서대로 추가/변경:
+   - `['plan', '다음 수업 계획']` → `['plan', '다음 수업 복습 계획']` (라벨만)
+   - `['remediation', '이번 시험 보완 방향']` 추가 (weakness 다음, plan 앞 위치)
+   - `['wrongCare', 'AP수학 오답관리']` 추가 (remediation 다음, plan 앞)
+   - 최종 배열 순서는 §7-1과 동일하게 정렬.
+2. `reportCenterStudioDefaultOptions()`(≈1889)에 토글 2개 추가, 기본값 ON:
+   - `includeRemediation: true`, `includeWrongCare: true`
+3. autoText 배선 2곳에 키 추가(LOOP 1에서는 **빈 문자열 placeholder** 또는 임시 호출 없이 `''`로 둬도 됨 — 실제 문구는 LOOP 2에서):
+   - `report-center.js` `reportCenterCreateStudioStateForPrintView` autoTexts(≈2372): `remediation: '', wrongCare: ''`
+   - `report-print.js` `reportCenterBuildCleanPdfDocument` autoTexts(≈116): `remediation: '', wrongCare: ''`
+4. `reportCenterRenderStudioLayoutTab` rows(≈2488)에 토글 행 2개 추가:
+   - `['includeRemediation', '이번 시험 보완 방향 포함']`
+   - `['includeWrongCare', 'AP수학 오답관리 포함']`
+   (둘 다 종류 무관 = scope 인자 없음. 문항별 분석표만 'detailed' scope 유지.)
+5. `dirtyBlocks` 객체(`report-print.js` ≈128)에 `remediation`, `wrongCare` 추가.
+6. `blockLimit`(`report-print.js` ≈70, standard/detailed 분기)에 신규 블록 길이 캡 추가 — dirty(사용자 편집) 텍스트가 길어져 레이아웃을 흩뜨리는 것 방지용(장수 제한 목적 아님):
+   - standard: `remediation: 220, wrongCare: 240`
+   - detailed: `remediation: 280, wrongCare: 300`
+   - 출력부에서 신규 블록도 기존 `reportCenterTrimText(text, blockLimit.xxx)` 패턴으로 트림.
 
-### 변경 방향
+**완료 기준:** 문구 탭에 신규 입력칸 2개가 보이고, 표/구성 탭에 토글 2개가 보인다. PDF는 아직 신규 섹션이 안 나와도 됨(LOOP 3). 기존 출력 회귀 0.
+**회귀 가드:** `plan` 키는 그대로 존재(저장본 호환). 기존 토글/블록 누락 없음.
 
-현재 섹션명을 바꾸거나 역할을 더 명확히 합니다.
+### LOOP 2 — composer 함수 2개 (문구 채우기, 기존 문구 재사용)
 
-기존:
+**목표:** remediation/wrongCare autoText를 기존 문구 조합으로 생성.
 
-```text id="1aiayy"
-다음 수업에서 이렇게 합니다
-```
+1. `report-text.js`에 §7-3 `REPORT_WRONGCARE_FLOW` 상수 + §7-4 `REPORT_COPY_BANK.remediation`/`REPORT_COPY_BANK.wrongCare` 확정 문구 추가(글자 그대로).
+2. `report-center.js`에 composer 2개 신설 — **함수는 템플릿 선택·슬롯 채움만**, 문장 조립 금지:
+   - `reportCenterBuildRemediationText(data, trendData, aiAnalysis)`: 오답 有 → §7-4 `remediation.withWrong`에 `{labels}`(§7-2 라벨 중복제거 조인) 채움 / 오답 無 → `remediation.noWrong`. `reportCopyFillSlots` 사용. 정화는 출력부에서.
+   - `reportCenterBuildWrongCareText(data, trendData)`: §7-4 `wrongCare.line1` + `\n` + `wrongCare.line2` 반환(고정 문구, 슬롯 없음). `reportCenterBuildEasyPlanItems` **사용 금지**(번호 유입). 흐름 띠는 PDF 구조물이라 여기 미포함.
+   - 두 함수 모두 §7-4 문구 외 새 문장 생성 금지. 결과에 `/\d+번/` 없어야 함(remediation은 라벨만, wrongCare는 고정 문구).
+3. autoText 배선 2곳의 `remediation`/`wrongCare`를 placeholder→실제 호출로 교체:
+   - `remediation: reportCenterBuildRemediationText(data, trendData, aiAnalysis)`
+   - `wrongCare: reportCenterBuildWrongCareText(data, trendData)`
+   (각 호출부에서 `data`/`trendData`/`aiAnalysis` 변수가 이미 스코프에 있는지 확인 후 사용. PDF 빌더에는 `data`,`trendData`,`aiAnalysis` 모두 존재함.)
 
-변경 후보:
+**완료 기준:** `node tests/apmath-report-easy-language.test.js`에 신규 export를 추가하면(LOOP 4) 금지어 0으로 통과할 문구가 생성된다. 수동 확인: 두 함수가 빈 문자열이 아닌 학부모 친화 문장을 반환(오답 유/무 양쪽).
+**회귀 가드:** remediation·wrongCare 결과 모두 `/\d+번/` 미포함. §7-4 외 새 문장 없음. 내부 용어 미포함.
 
-```text id="ot0dg4"
-다음 수업 복습 계획
-```
+### LOOP 3 — PDF 섹션 배치
 
-### 내용
+**목표:** PDF에 신규 2섹션을 의미 순서대로 출력 + 토글/정화기 연동.
 
-```text id="9e20aa"
-오답 문항 재풀이
-유사문항 복습
-관련 개념 복습
-과제 반영
-시험 전 다시 볼 문항 표시
-```
+1. `report-print.js` 섹션 조립부(≈247 "다음 수업에서 이렇게 합니다" 앞)에 삽입 순서:
+   - (기존 trend/weakness 그리드 ≈229 다음) →
+   - **보완 방향** 섹션: `studioOptions.includeRemediation`일 때만. 제목 "이번 시험 보완 방향", 본문 = 정화 처리된 `studioTexts.remediation`.
+   - **AP수학 오답관리** 섹션: `studioOptions.includeWrongCare`일 때만. 제목 "AP수학 오답관리", 본문 2문장 + 하단 흐름 띠(`REPORT_WRONGCARE_FLOW.join(' → ')`)를 작은 칩/텍스트로.
+   - (기존 "다음 수업에서 이렇게 합니다" 섹션 제목을 **"다음 수업 복습 계획"** 으로 변경.)
+2. 정화/ dirty 처리: 기존 `studioTexts`/`dirtyBlocks` 패턴 그대로. 신규 2블록도
+   `dirtyBlocks.remediation ? studioTexts.remediation : reportCenterApplyEasyFinalLanguage(studioTexts.remediation)` 형태로 처리.
+3. 흐름 띠 스타일은 기존 `.aprc-*` 클래스 톤에 맞춘 인라인/기존 클래스 재사용. 새 광고성 비주얼 금지(얇은 텍스트 띠 수준).
+4. 표준형/상세형: 두 블록 모두 양쪽 ON(장수 제한 없음). 단 상세형에서만 remediation 끝에 근거를 덧붙이고 싶으면 **번호가 아니라** 기존 상세 분석표가 담당하므로 추가하지 않는다(분리 원칙 유지).
+5. **[PDF 안정성 — 필수]** 신규 두 섹션은 한 문단·한 띠가 페이지 경계에서 쪼개지면 안 된다. 각 섹션에 전용 클래스(예: `aprc-pdf-remediation`, `aprc-pdf-wrongcare`)를 주고, **`@media print`의 `break-inside:avoid !important` 목록 두 곳에 모두 추가**한다:
+   - `reportCenterPremiumReportStyle()` 내 `.aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary { break-inside:avoid … }` (≈505)
+   - `reportCenterBuildCleanPdfShell()` 내 동일 성격 블록 (≈521~533)
+   - 흐름 띠는 오답관리 본문과 같은 패널 안에 두어 함께 묶이게 한다(제목·문장·띠가 분리되지 않도록). 제목+첫 문단은 기존 `.aprc-section-title` break 규칙으로 이미 보호됨 — 신규 섹션도 `.aprc-section-title` 구조를 따른다.
 
-### 구현 방식
+**완료 기준:** 표준형/상세형 모두에서 보완 방향·오답관리 섹션이 복습 계획 위에 출력. 토글 OFF 시 해당 섹션 사라짐. **신규 섹션의 문단/흐름 띠가 페이지 경계에서 잘리지 않는다(한 섹션이 통째로 같은 페이지에).**
+**회귀 가드:** 기존 섹션(요약/추이/문항분석/코멘트/의견/메시지) 위치·동작 유지. 상세형 문항별 분석표는 여전히 'detailed' + `includeQuestionAnalysis`에서만. **기존 break-inside 목록 항목 삭제 금지(추가만).**
 
-기존 `nextPlanItems`를 완전히 버리지 말고, 아래 함수로 감쌉니다.
+### LOOP 4 — 테스트 확장
 
-```text id="nkn5dw"
-reportCenterBuildNextReviewPlanItems(data, trendData, aiAnalysis)
-```
+**목표:** 신규 블록을 회귀 스위트에 고정.
 
-기존 `reportCenterBuildEasyPlanItems()` 또는 `reportCenterBuildNextPlanItems()` 결과를 그대로 쓰되, 항목의 성격을 복습 중심으로 분류합니다.
+1. `tests/apmath-report-easy-language.test.js`의 `loadReportExports()` return에 **3개 모두** 추가:
+   `reportCenterBuildRemediationText, reportCenterBuildWrongCareText, REPORT_WRONGCARE_FLOW`
+2. 검사 추가(기존 `assertClean` 재사용):
+   - 오답 有/無 양쪽에서 두 함수 결과가 금지어 0, 깨진 한국어 0, 비어있지 않음.
+   - **remediation·wrongCare 둘 다** 숫자+"번" 패턴(`/\d+번/`)이 **없어야** 함.
+   - wrongCare 결과 + `REPORT_WRONGCARE_FLOW.join(' → ')`가 금지어 0.
+3. 가능하면 `tests/report-exam-trend.test.mjs`도 무회귀 확인(읽기만, 실패 시 원인 분리 기록).
 
----
+**완료 기준:** `node tests/apmath-report-easy-language.test.js` 통과(그룹 수 증가). 기존 검사 전부 유지.
 
-## E. 학부모님께 드리는 말씀
+### LOOP 5 — 육안 검수 + 무회귀 확정
 
-### 목적
+**목표:** 실제 출력 확인.
 
-마지막 안내 문단입니다.
-
-### 방향
-
-여기는 시스템 설명을 길게 넣지 않습니다.
-
-들어갈 내용:
-
-```text id="0w5jlv"
-시험 전 준비를 진행했다
-이번 결과는 이렇게 보완하겠다
-다음 수업에서 오답과 유사문항을 복습하겠다
-가정에서는 무리한 추가 학습보다 수업 후 복습 흐름만 봐달라
-```
-
-### 구현 방식
-
-기존 `parentMessage` 블록 유지.
-다만 신규 블록 내용과 중복되지 않게 짧게 정리.
-
----
-
-# 6. 데이터 연결 계획
-
-## 1차: 데이터 없이도 안전하게 작동
-
-먼저 신규 블록을 추가하되, 데이터가 없으면 선생님이 편집할 수 있게 합니다.
-
-```text id="vu53dk"
-examPrepSummary
-remediationGuide
-wrongCareProcess
-nextReviewPlan
-```
-
-이 4개 블록을 Report Studio 문구 탭에 추가합니다.
-
-## 2차: 기존 데이터 연결
-
-연결 후보:
-
-```text id="czr4nj"
-시험 기록: exam_sessions
-문항별 오답: stats.wrongRows
-최근 추이: trendData
-반복 오답: weaknessTrend
-교사 메모: teacherMemo
-AI 분석: aiAnalysis
-```
-
-## 3차: APMS 운영 데이터 연결
-
-추후 연결 후보:
-
-```text id="o9e5d5"
-수업일지
-숙제/과제 기록
-오답 클리닉 출력 기록
-기출 출력 기록
-플래너 기록
-시험 대비 메모
-```
-
-이 단계가 들어가면 진짜 강해집니다.
+1. `tests/report-pdf-render-harness.js`가 있으면 활용해 표준형/상세형 1건씩 렌더 결과를 확인(오답 有/無 각각이면 더 좋음).
+2. 체크리스트:
+   - 보완 방향: 집계 문장, 번호 없음, 금지어 없음.
+   - 오답관리: 2문장 + 흐름 띠, 광고처럼 안 보임, 내부 용어 없음.
+   - 복습 계획: 라벨이 "다음 수업 복습 계획", 내용은 기존과 동일.
+   - **[PDF 안정성 — 최우선 검수]** 신규 두 섹션이 페이지 경계에서 쪼개지지 않는지 실제 인쇄 미리보기로 확인. 문단 중간/흐름 띠가 다음 페이지로 넘어가면 **불합격** — `break-inside:avoid` 누락이므로 LOOP 3-5로 돌아가 수정.
+   - 긴 dirty 입력(사용자가 길게 편집)·오답 다수 케이스에서도 섹션 단위로 안 잘리는지 확인(`blockLimit` 캡 동작 포함).
+   - 표준형도 2장 넘어가도 무방(장수 제한 없음). 단 **섹션이 통째로 넘어가는 건 OK, 섹션 내부가 갈라지는 건 불가**.
+   - 토글 ON/OFF, 편집 후 PDF 반영, 편집 취소 동작 정상.
+3. 확인 못 한 항목은 `CODEX_RESULT.md` 미검증 섹션에 명시. **PDF page-break 검수 결과는 §13 자체 검수에 반드시 기록**(통과/케이스).
 
 ---
 
-# 7. 코드 작업 범위
+## 9. 검증 명령
 
-## 수정 대상 파일
-
-```text id="f4izlm"
-apmath/js/report-text.js
-apmath/js/report-center.js
-apmath/js/report-print.js
-tests/apmath-report-easy-language.test.js
-tests/report-exam-trend.test.mjs
-tests/fixtures/apmath-surface-report.json
-docs/report-copy-plan.md
+```
+node --check apmath/js/report-text.js
+node --check apmath/js/report-center.js
+node --check apmath/js/report-print.js
+node tests/apmath-report-easy-language.test.js
+node tests/report-exam-trend.test.mjs      # 존재 시, 무회귀 확인용
 ```
 
-## 가능하면 건드리지 말 것
-
-```text id="il2f12"
-DB
-Worker API
-EIE
-Archive
-Planner
-wrong print engine
-dashboard 전체 구조
-```
-
-이번 1차는 리포트 내부 구조 확장만 합니다.
+- `node --check` 3개로 문법 오류를 테스트 실행 전에 먼저 잡는다(JS 3파일 수정 작업).
+- 두 테스트가 통과해야 한다. 실패 시 추정 금지 — 원인을 코드에서 확인하고 해결.
+- 테스트 실행 외 `git`/deploy 명령 금지.
 
 ---
 
-# 8. 구현 세부 단계
+## 10. CODEX_RESULT.md 작성 기준
 
-## Phase 1. 리포트 블록 구조 추가
+`docs/codex/CODEX_RESULT_RULE.md` 형식(1~14 섹션)을 그대로 따른다. 특히:
 
-### 작업
-
-`AP_REPORT_STUDIO_BLOCKS`에 신규 블록 추가.
-
-추가 키:
-
-```text id="0fuwv5"
-examPrepSummary
-remediationGuide
-wrongCareProcess
-nextReviewPlan
-```
-
-기존 블록과 합치면:
-
-```text id="hxng65"
-summary
-examPrepSummary
-trend
-weakness
-remediationGuide
-wrongCareProcess
-nextReviewPlan
-teacherOpinion
-parentMessage
-kakaoSummary
-```
-
-### 검수 기준
-
-```text id="ypr82i"
-문구 탭에서 신규 블록이 보인다.
-각 블록은 직접 수정 가능하다.
-수정한 문구는 PDF에 반영된다.
-취소/편집 완료 동작이 깨지지 않는다.
-```
+- 1. 생성/수정 파일: 실제 수정한 파일만.
+- 3. 실행 결과: 위 검증 명령 출력 요약(통과/그룹 수).
+- 8. 미검증: 육안 검수에서 확인 못 한 평가 종류/케이스.
+- 10~12. master 문서 3종(`docs/MASTER_RULEBOOK.md`, `docs/MASTER_CURRENT_PROGRESS.md`, `docs/MASTER_NEXT_WORK.md`) 업데이트 판정과 사유를 명시. (이번 작업은 리포트 내부 확장이므로 RULEBOOK 변경은 통상 불필요 — 판정 근거를 적을 것.)
+- 13. 자체 검수: §8 LOOP 5 체크리스트 결과.
+- 검수요청서/외부감사 문서는 작성하지 않는다.
 
 ---
 
-## Phase 2. 신규 생성 함수 추가
+## 11. 한 줄 인수 메모
 
-### 추가 함수
-
-```text id="qosf7k"
-reportCenterBuildExamPrepSummary(data, trendData, teacherMemo)
-reportCenterBuildRemediationGuide(data, trendData, aiAnalysis)
-reportCenterBuildWrongCareProcess(data, trendData)
-reportCenterBuildNextReviewPlanItems(data, trendData, aiAnalysis)
 ```
-
-### 원칙
-
-```text id="mfyrmu"
-없는 데이터를 지어내지 않는다.
-시험 전 준비 데이터가 없으면 기본 안내 + 선생님 수정 가능 상태로 둔다.
-AI 문구가 있어도 최종 출력 전 문구 검수 함수를 통과시킨다.
+신규 산문 0. 기존 문구 재배치만. plan은 라벨만. 종류 분기 없음. 커밋 금지.
+막히면 "기존 생성기에서 가져온다"로 돌아온다 — 그게 이 작업의 핵심 제약이다.
 ```
-
----
-
-## Phase 3. PDF 배치 변경
-
-현재 `reportCenterBuildCleanPdfDocument()` 안에서 PDF를 조립합니다.
-
-### 변경 배치
-
-```text id="rfldbd"
-점수 카드
-↓
-시험 전 준비 내용
-↓
-이번 시험, 이렇게 봤습니다
-↓
-이번 시험 보완 방향
-↓
-AP수학 오답관리
-↓
-다음 수업 복습 계획
-↓
-상세형 문항별 분석
-↓
-상세형 문제별 코멘트
-↓
-선생님 종합 의견
-↓
-학부모님께 드리는 말씀
-```
-
-### 표준형
-
-```text id="k4vnsc"
-시험 전 준비 내용: 짧게
-보완 방향: 2~3개
-오답관리: 4단계 미니 카드
-다음 수업 복습 계획: 2~3개
-문항별 분석표: 제외
-```
-
-### 상세형
-
-```text id="vwoxbq"
-시험 전 준비 내용: 조금 자세히
-보완 방향: 문항번호/단원 근거 포함
-오답관리: 현재 학생 우선 단계 표시
-다음 수업 복습 계획: 3~5개
-문항별 분석표: 포함
-문제별 코멘트: 포함
-```
-
----
-
-## Phase 4. 표/구성 탭 옵션 추가
-
-현재 표/구성 탭에 그래프, 반복 오답 표, 문항별 분석표, 선생님 의견, 학부모 메시지 옵션이 있습니다.
-
-여기에 신규 옵션을 추가합니다.
-
-```text id="m6vj2o"
-시험 전 준비 내용 포함
-보완 방향 포함
-AP수학 오답관리 포함
-다음 수업 복습 계획 포함
-```
-
-### 기본값
-
-```text id="ngl6ja"
-표준형:
-시험 전 준비 내용 ON
-보완 방향 ON
-AP수학 오답관리 ON
-다음 수업 복습 계획 ON
-문항별 분석표 OFF
-
-상세형:
-전부 ON
-문항별 분석표 ON
-문제별 코멘트 ON
-```
-
----
-
-## Phase 5. 문구 bank 정리
-
-문구는 Claude가 임의 생성하면 안 됩니다.
-
-`REPORT_COPY_BANK`를 아래처럼 확장합니다.
-
-```text id="3qvakt"
-examPrepSummary
-remediationGuide
-wrongCareProcess
-nextReviewPlan
-parentMessage
-```
-
-### 문구 bank 원칙
-
-```text id="hmsmpy"
-문구는 최종 확정된 것만 넣는다.
-코드는 슬롯만 채운다.
-슬롯 예: {studentName}, {wrongCount}, {priorityQuestions}, {priorityUnits}
-문구가 부족하면 빈칸 또는 “문구 확정 필요”로 둔다.
-```
-
-### 금지
-
-```text id="pkap2t"
-AI식 문구 자동 생성
-장황한 광고식 문구
-데이터 없는 시험 전 준비 내역 생성
-모든 문구를 복습으로 통일
-모든 문구를 관리로 통일
-```
-
----
-
-# 9. 디자인 방향
-
-## 표준형
-
-카드 3개 중심.
-
-```text id="wz6smj"
-시험 전 준비
-보완 방향
-다음 수업 복습
-```
-
-`AP수학 오답관리`는 하단 미니 프로세스로 넣습니다.
-
-```text id="c69e5h"
-오답 재풀이 → 유사문항 복습 → 반복 오답 관리 → 시험 전 재확인
-```
-
-## 상세형
-
-상담 자료처럼 구성.
-
-```text id="gz7kqr"
-시험 전 준비 내용
-이번 결과 분석
-보완 방향
-오답관리 과정
-문항별 분석표
-문제별 코멘트
-다음 수업 복습 계획
-```
-
-## 디자인 주의
-
-```text id="1hgssr"
-표준형은 복잡하면 안 됨
-상세형만 표와 코멘트 확장
-오답관리 블록은 광고처럼 보이면 안 됨
-문장은 짧게
-제목은 명확하게
-```
-
----
-
-# 10. 테스트 계획
-
-## 기능 테스트
-
-```text id="jciwuf"
-1. 문구 탭에 신규 블록 4개 표시
-2. 신규 블록 수정 후 PDF 반영
-3. 표준형/상세형 전환 시 블록 길이와 구성 변화
-4. 표/구성 탭 ON/OFF 반영
-5. 문항별 분석표는 상세형 전용 유지
-6. 기존 프리미엄 분석/기본 리포트/편집 완료/취소 동작 유지
-```
-
-## 문구 테스트
-
-금지 표현:
-
-```text id="fn9c1m"
-학습 흐름
-성취 흐름
-풀이 흐름
-시사점
-유의미한 자료
-다각도로
-향후
-체계적인 관리
-학습 폭
-확인 포인트
-```
-
-허용 표현:
-
-```text id="li1zkp"
-오답관리
-학습관리
-보완
-복습
-재풀이
-유사문항
-시험 전 준비
-```
-
-깨진 표현 검사:
-
-```text id="zjf2ia"
-문제은
-문항은은
-부분하겠습니다
-복습관리
-오답복습관리
-학습복습
-```
-
-## PDF 테스트
-
-```text id="8pmf2s"
-표준형 A4 1장 유지
-상세형 A4 2~3장 허용
-문항별 분석표 상세형에서만 출력
-긴 문구 입력 시 레이아웃 깨짐 없음
-그래프/표/카드 page-break 이상 없음
-```
-
----
-
-# 11. 작업 우선순위
-
-## 1순위
-
-```text id="sfmggu"
-시험 전 준비 내용 블록 추가
-```
-
-이게 학부모 신뢰도에 가장 큽니다.
-
-## 2순위
-
-```text id="mjx57y"
-이번 시험 보완 방향 블록 추가
-```
-
-점수 결과를 후속 수업과 연결합니다.
-
-## 3순위
-
-```text id="5cbmk2"
-AP수학 오답관리 블록 추가
-```
-
-학원의 시스템이 보이게 합니다.
-
-## 4순위
-
-```text id="r86591"
-다음 수업 복습 계획으로 기존 nextPlanItems 재정리
-```
-
-실제 수업 행동이 보이게 합니다.
-
-## 5순위
-
-```text id="b9hoxh"
-PDF 레이아웃 검수
-```
-
-블록이 늘어나므로 표준형 1장 유지가 핵심입니다.
-
----
-
-# 12. 최종 산출물
-
-이번 작업이 끝나면 결과물은 이렇게 되어야 합니다.
-
-```text id="zhj7sc"
-1. 표준형 학부모 리포트
-- 시험 전 준비 내용
-- 결과 분석
-- 보완 방향
-- 오답관리
-- 다음 수업 복습 계획
-
-2. 상세형 학부모 리포트
-- 표준형 내용 전체
-- 문항별 분석표
-- 문제별 코멘트
-- 상세 보완 계획
-
-3. Report Studio 편집 패널
-- 신규 블록 직접 수정 가능
-- 표/구성 탭에서 포함 여부 조절 가능
-
-4. 테스트
-- 문구 품질 테스트
-- 표준형/상세형 테스트
-- PDF 레이아웃 테스트
-```
-
----
-
-# 최종 방향 한 줄
-
-```text id="6gmevt"
-리포트는 “시험 결과 안내문”에서 “시험 전 준비와 시험 후 보완·오답관리·복습 계획이 보이는 학부모 리포트”로 업그레이드한다.
-```
-
-이 계획대로 가면 지금 리포트가 단순히 고급 PDF가 아니라, **AP수학이 학생을 어떻게 보고 있고 어떻게 이어서 수업하는지 보여주는 리포트**가 됩니다.

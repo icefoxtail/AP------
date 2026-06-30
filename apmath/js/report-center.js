@@ -1868,11 +1868,30 @@ function reportCenterBuildWeaknessSummaryText(trendData, data, aiAnalysis = null
     return reportCenterTrimText(reportCenterApplyEasyFinalLanguage(aiText || aiAnalysis?.wrongAnalysis || reportCenterBuildEasyWeaknessText(trendData, data)), 320);
 }
 
+function reportCenterBuildRemediationText(data, trendData = null, aiAnalysis = null) {
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    const bank = REPORT_COPY_BANK.remediation || {};
+    if (!wrongRows.length) return reportCopyFillSlots(bank.noWrong || '', {});
+    const labels = reportCenterSelectPriorityWrongRows(wrongRows, 5)
+        .map(row => reportCenterBuildParentQuestionInsight(row, null, { mode: 'short' }))
+        .filter(Boolean)
+        .filter((label, index, arr) => arr.indexOf(label) === index)
+        .join(', ');
+    return reportCopyFillSlots(bank.withWrong || '', { labels });
+}
+
+function reportCenterBuildWrongCareText(data, trendData = null) {
+    const bank = REPORT_COPY_BANK.wrongCare || {};
+    return [bank.line1, bank.line2].filter(Boolean).join('\n');
+}
+
 const AP_REPORT_STUDIO_BLOCKS = [
     ['summary', '이번 시험 요약'],
     ['trend', '추이 해석'],
     ['weakness', '다시 볼 부분'],
-    ['plan', '다음 수업 계획'],
+    ['remediation', '이번 시험 보완 방향'],
+    ['wrongCare', 'AP수학 오답관리'],
+    ['plan', '다음 수업 복습 계획'],
     ['teacherOpinion', '선생님 종합 의견'],
     ['parentMessage', '학부모님께 드리는 말씀'],
     ['kakaoSummary', '카톡 요약문']
@@ -1892,6 +1911,8 @@ function reportCenterStudioDefaultOptions() {
         includeDistributionGraph: false,
         includeWeaknessTrend: false,
         includeQuestionAnalysis: true,
+        includeRemediation: true,
+        includeWrongCare: true,
         includeTeacherOpinion: true,
         includeParentMessage: true,
         includeSignature: true
@@ -2373,6 +2394,8 @@ function reportCenterCreateStudioStateForPrintView(studentId, sessionId, teacher
         summary: reportCenterBuildSingleExamSummaryText(data, wrongCount),
         trend: reportCenterBuildTrendSummaryText(trendData, aiAnalysis),
         weakness: reportCenterBuildWeaknessSummaryText(trendData, data, aiAnalysis),
+        remediation: reportCenterBuildRemediationText(data, trendData, aiAnalysis),
+        wrongCare: reportCenterBuildWrongCareText(data, trendData),
         plan: (aiAnalysis ? reportCenterBuildNextPlanItems(data, aiAnalysis) : reportCenterBuildEasyPlanItems(data, trendData)).join('\n'),
         teacherOpinion: reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo, aiAnalysis).slice(0, 2).join('\n\n'),
         parentMessage: base?.parentMessage || '',
@@ -2490,6 +2513,8 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
         ['includeDistributionGraph', '점수 분포 그래프 포함'],
         ['includeWeaknessTrend', '계속 틀린 문제 표 포함'],
         ['includeQuestionAnalysis', '문항별 분석표 포함', 'detailed'],
+        ['includeRemediation', '이번 시험 보완 방향 포함'],
+        ['includeWrongCare', 'AP수학 오답관리 포함'],
         ['includeTeacherOpinion', '선생님 종합 의견 포함'],
         ['includeParentMessage', '학부모님께 드리는 말씀 포함'],
         ['includeSignature', '서명란 포함']

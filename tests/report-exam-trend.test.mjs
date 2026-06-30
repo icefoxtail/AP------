@@ -395,11 +395,12 @@ const kakaoSentenceCount = (longKakao.match(/[^.!?。！？]+[.!?。！？]?/g) 
 assert.ok(kakaoSentenceCount >= 1 && kakaoSentenceCount <= 4, 'kakao_short should keep the copy compact');
 assert.doesNotMatch(longKakao, /결론적으로|향후|시사점|또한,|따라서,/);
 
+// 전문체 정책: humanize는 문항/오답/평가 등 전문 용어를 캐주얼로 바꾸지 않는다(AI식 모호어만 정리).
 const naturalText = '이번 평가는 점수 자체보다 오답이 나온 문항의 성격을 함께 보는 것이 중요합니다.';
 assert.equal(
   context.reportCenterHumanizeKoreanText(naturalText, { blockKey: 'summary' }),
-  '이번 시험은 점수 자체보다 틀린 문제가 나온 문제의 성격을 함께 보는 것이 중요합니다.',
-  'humanize should apply final easy-language terminology without changing facts'
+  '이번 평가는 점수 자체보다 오답이 나온 문항의 성격을 함께 보는 것이 중요합니다.',
+  'humanize keeps professional terminology and only removes AI-vague phrasing'
 );
 
 const easySummaryWrong = context.reportCenterBuildEasySummaryText({
@@ -407,21 +408,22 @@ const easySummaryWrong = context.reportCenterBuildEasySummaryText({
   session: { score: 82 },
   stats: { classAvg: null }
 }, 3, null);
-assert.match(easySummaryWrong, /이번 시험은 3문제 틀렸습니다/);
-assert.match(easySummaryWrong, /틀린 문제는 다음 시간에 다시 풀어보겠습니다/);
-assert.doesNotMatch(easySummaryWrong, /오답|확인되었습니다|유의미|보완/);
+assert.match(easySummaryWrong, /이번 시험에서는 3문항을 틀렸습니다/);
+assert.match(easySummaryWrong, /다음 수업에서 해당 문항을 다시 풀이하겠습니다/);
+assert.doesNotMatch(easySummaryWrong, /확인되었습니다|유의미|시사점/);
 
 const perfectHtml = context.reportCenterBuildCleanPdfDocument('s3', 'p1', { teacherMemo: '' });
-assert.match(perfectHtml, /이번 시험은 다 맞았습니다/);
+assert.match(perfectHtml, /전 문항을 정확히 풀었습니다/);
 assert.doesNotMatch(perfectHtml, /다음에 꼭 짚어볼 부분/, 'perfect report should hide weakness block');
 assert.doesNotMatch(perfectHtml, /반복 오답 단원은 확인되지 않았습니다|다시 볼 부분이 없습니다/);
 const perfectParentSection = perfectHtml.match(/aprc-pdf-parent-message[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
-assert.match(perfectParentSection, /이번 시험에서 다 맞았습니다/);
-assert.doesNotMatch(perfectParentSection, /틀린 문제|오답|약점|보완/);
+assert.match(perfectParentSection, /전 문항을 정확히 풀었습니다/);
+assert.doesNotMatch(perfectParentSection, /틀린 문제|약점/);
 
+// 전문체 정책: 보완/오답/유사 유형은 의도된 용어이므로 금지 목록에서 제외. AI식 모호어만 금지.
 const wrongPdfForbiddenText = context.reportCenterBuildCleanPdfDocument('s1', 'e3', { teacherMemo: '' });
-assert.doesNotMatch(wrongPdfForbiddenText, /유사문항|유사 문제|조건 표시|보완|약점|학습 흐름|시사점/);
-assert.match(wrongPdfForbiddenText, /비슷한 문제|틀린 문제/);
+assert.doesNotMatch(wrongPdfForbiddenText, /유사 문제|조건 표시|학습 흐름|시사점/);
+assert.match(wrongPdfForbiddenText, /오답/);
 
 assert.equal(context.reportCenterEasyScoreDeltaText(5), '첫 시험보다 5점 올랐습니다.');
 assert.equal(context.reportCenterEasyScoreDeltaText(-5), '첫 시험보다 5점 낮아졌습니다.');
@@ -431,14 +433,14 @@ const wrongKakao = context.reportCenterBuildEasyKakaoSummary('s1', 'e3');
 assert.match(wrongKakao, /안녕하세요, AP수학입니다/);
 assert.match(wrongKakao, /3회/);
 assert.match(wrongKakao, /90점/);
-assert.match(wrongKakao, /틀린 문제/);
-assert.doesNotMatch(wrongKakao, /유사문항|보완|학습 흐름|시사점/);
+assert.match(wrongKakao, /틀린 문항/);
+assert.doesNotMatch(wrongKakao, /학습 흐름|시사점/);
 
 const perfectKakao = context.reportCenterBuildEasyKakaoSummary('s3', 'p1');
 assert.match(perfectKakao, /안녕하세요, AP수학입니다/);
 assert.match(perfectKakao, /만점회/);
 assert.match(perfectKakao, /100점/);
-assert.match(perfectKakao, /다 맞았습니다/);
+assert.match(perfectKakao, /전 문항을 정확히 풀었습니다/);
 assert.doesNotMatch(perfectKakao, /유사문항|보완|학습 흐름|시사점|오답/);
 
 console.log('report exam trend tests passed');
