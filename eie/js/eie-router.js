@@ -14,19 +14,30 @@
     let hashListenerBound = false;
     let routeButtonsBound = false;
 
-    function defaultRouteForSession() {
+    // 원장 전용 화면 — 선생님 세션은 진입할 수 없다. (원장 UI가 owner-only API를
+    // 호출해 빈 데이터/에러로 깨지는 것을 막고, 항상 본인 홈으로 되돌린다.)
+    const OWNER_ONLY_ROUTES = { dashboard: true, management: true };
+
+    function isTeacherOnlySession() {
         const storage = window.localStorage || {};
         const role = String(storage.getItem && storage.getItem('WANGJI_EIE_ROLE') || '').toLowerCase();
         const loginId = String(storage.getItem && storage.getItem('WANGJI_EIE_LOGIN_ID') || '').toLowerCase();
-        if ((role === 'teacher' || role === 'eieteacher') && loginId !== 'admin') return 'teacher';
-        return 'dashboard';
+        return (role === 'teacher' || role === 'eieteacher') && loginId !== 'admin';
+    }
+
+    function defaultRouteForSession() {
+        return isTeacherOnlySession() ? 'teacher' : 'dashboard';
     }
 
     function normalizeRoute(route) {
         const key = String(route || '').replace(/^#/, '').trim();
-        if (key === 'timetable-v2') return 'timetable';
-        if (key === 'timetable-months') return 'timetable';
-        return routes[key] ? key : defaultRouteForSession();
+        let resolved;
+        if (key === 'timetable-v2') resolved = 'timetable';
+        else if (key === 'timetable-months') resolved = 'timetable';
+        else resolved = routes[key] ? key : defaultRouteForSession();
+        // 선생님이 북마크·뒤로가기 등으로 원장 화면에 닿아도 본인 홈으로 가드한다.
+        if (OWNER_ONLY_ROUTES[resolved] && isTeacherOnlySession()) return 'teacher';
+        return resolved;
     }
 
     function syncNav(route) {
