@@ -1334,6 +1334,205 @@ function buildClassroomMonthlyStatusBoardData(classId, students, today) {
     return { month, students: classStudents, groups };
 }
 
+function normalizeClassroomStatusArchiveFile(raw = '') {
+    const value = String(raw || '').trim();
+    if (!value) return '';
+    if (value.startsWith('MIXED:')) return value;
+    if (/^https?:\/\//i.test(value)) return value;
+    let path = value.replace(/^archive\//, '').replace(/^\.\//, '').replace(/^\/+/, '');
+    if (!path) return '';
+    if (/^(exams|assets|data)\//.test(path)) return path;
+    if (!path.endsWith('.js')) path += '.js';
+    return `exams/${path}`;
+}
+
+function makeClassroomStatusExamKey(row = {}) {
+    const date = String(row.exam_date || row.date || '').slice(0, 10);
+    const archive = normalizeClassroomStatusArchiveFile(row.archive_file || '');
+    if (archive) return `${date}||${archive}`;
+    return `${date}||${String(row.exam_title || row.title || '')}`;
+}
+
+function isClassroomStatusQuestionCountCompatible(assignment, row) {
+    const assignmentCount = Number(assignment?.question_count || 0);
+    const rowCount = Number(row?.question_count || 0);
+    return !assignmentCount || !rowCount || assignmentCount === rowCount;
+}
+
+function isClassroomStatusSessionForAssignment(session, assignment) {
+    if (!session || !assignment) return false;
+    const assignmentId = String(assignment.id || '');
+    if (assignmentId && String(session.assignment_id || '') === assignmentId) return true;
+    if (String(session.exam_date || '').slice(0, 10) !== String(assignment.exam_date || '').slice(0, 10)) return false;
+    if (!isClassroomStatusQuestionCountCompatible(assignment, session)) return false;
+
+    const assignmentArchive = normalizeClassroomStatusArchiveFile(assignment.archive_file || '');
+    const sessionArchive = normalizeClassroomStatusArchiveFile(session.archive_file || '');
+    if (assignmentArchive) return assignmentArchive === sessionArchive;
+    return String(session.exam_title || '') === String(assignment.exam_title || '');
+}
+
+function buildClassroomAssignmentStatusRows(classId, students) {
+    const classStudents = Array.isArray(students) ? students : getClassroomActiveStudents(classId);
+    const studentIds = new Set(classStudents.map(student => String(student?.id || '')).filter(Boolean));
+    const activeCount = classStudents.length || studentIds.size;
+    const assignments = (state.db.class_exam_assignments || [])
+        .filter(row => String(row?.class_id || '') === String(classId || ''));
+    if (!assignments.length) return [];
+
+    const groups = new Map();
+    assignments.forEach(assignment => {
+        const key = makeClassroomStatusExamKey(assignment);
+        if (!groups.has(key)) {
+            groups.set(key, {
+                key,
+                title: assignment.exam_title || '',
+                date: String(assignment.exam_date || '').slice(0, 10),
+                archiveFile: assignment.archive_file || '',
+                questionCount: Number(assignment.question_count || 0),
+                assignments: [],
+                sessions: []
+            });
+        }
+        const group = groups.get(key);
+        group.assignments.push(assignment);
+        if (!group.title && assignment.exam_title) group.title = assignment.exam_title;
+        if (!group.date && assignment.exam_date) group.date = String(assignment.exam_date || '').slice(0, 10);
+        if (!group.archiveFile && assignment.archive_file) group.archiveFile = assignment.archive_file;
+        if (!group.questionCount && assignment.question_count) group.questionCount = Number(assignment.question_count || 0);
+    });
+
+    const assignmentList = Array.from(groups.values()).flatMap(group => group.assignments);
+    (state.db.exam_sessions || []).forEach(session => {
+        const sid = String(session?.student_id || '');
+        if (!studentIds.has(sid)) return;
+        const matched = assignmentList.find(assignment => isClassroomStatusSessionForAssignment(session, assignment));
+        if (!matched) return;
+        const group = groups.get(makeClassroomStatusExamKey(matched));
+        if (!group) return;
+        if (!group.sessions.some(row => String(row.id || '') === String(session.id || ''))) group.sessions.push(session);
+    });
+
+    const wrongs = state.db.wrong_answers || [];
+    const exclusions = state.db.class_exam_assignment_exclusions || [];
+    return Array.from(groups.values())
+        .map(group => {
+            const sessionIds = new Set(group.sessions.map(session => String(session.id || '')).filter(Boolean));
+            const assignmentIds = new Set(group.assignments.map(assignment => String(assignment.id || '')).filter(Boolean));
+            const excludedStudents = new Set(
+                exclusions
+                    .filter(row => assignmentIds.has(String(row?.assignment_id || '')))
+                    .map(row => String(row?.student_id || ''))
+                    .filter(id => id && studentIds.has(id))
+            );
+            return {
+                ...group,
+                submittedCount: group.sessions.length,
+                targetCount: Math.max(0, activeCount - excludedStudents.size),
+                wrongCount: wrongs.filter(row => sessionIds.has(String(row?.session_id || ''))).length
+            };
+        })
+        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || String(b.title || '').localeCompare(String(a.title || ''), 'ko'));
+}
+
+function renderClassroomAssignmentStatusCategory(classId, students) {
+    const rows = buildClassroomAssignmentStatusRows(classId, students);
+    const body = rows.length
+        ? rows.map(row => {
+            const title = row.title || '출제 시험';
+            const date = row.date || '';
+            const qCount = Number(row.questionCount || 0);
+            const meta = [
+                date,
+                qCount ? `${qCount}문항` : '',
+                `제출 ${row.submittedCount}/${row.targetCount}`,
+                `오답 ${row.wrongCount}문항`
+            ].filter(Boolean).join(' · ');
+            return `
+                <div class="ap-classroom-monthly-row ap-classroom-monthly-row--exam" role="button" tabindex="0" onclick="if(typeof openExamDetail==='function') openExamDetail('${apEscapeHtml(String(classId || ''))}', ${apJsArg(title)}, '${apEscapeHtml(date)}', ${apJsArg(row.archiveFile || '')})">
+                    <div class="ap-classroom-monthly-student">${apEscapeHtml(title)}</div>
+                    <div class="ap-classroom-monthly-dates">${apEscapeHtml(meta)}</div>
+                </div>
+            `;
+        }).join('')
+        : '';
+
+    return `
+        <section class="ap-classroom-monthly-category is-exam" aria-label="출제">
+            <div class="ap-classroom-monthly-category-head">
+                <span>출제</span>
+                <strong>${rows.length}건</strong>
+            </div>
+            ${body}
+        </section>
+    `;
+}
+
+function getClassroomWrongClinicStatusRows(classId) {
+    return (state.db.wrong_clinic_status || [])
+        .filter(row => String(row?.class_id || '') === String(classId || ''))
+        .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')));
+}
+
+function scheduleClassroomWrongClinicStatusRefresh(classId) {
+    const cid = String(classId || '').trim();
+    if (!cid || typeof api === 'undefined' || typeof api.get !== 'function') return;
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classroomWrongClinicStatus) state.ui.classroomWrongClinicStatus = {};
+    const cache = state.ui.classroomWrongClinicStatus[cid] || {};
+    if (cache.loading) return;
+    if (cache.loadedAt && Date.now() - cache.loadedAt < 60000) return;
+    state.ui.classroomWrongClinicStatus[cid] = { ...cache, loading: true };
+    setTimeout(async () => {
+        try {
+            const res = await api.get(`wrong-clinics/class-status?class_id=${encodeURIComponent(cid)}`);
+            const rows = (res?.clinics || []).map(row => ({ ...row, class_id: cid }));
+            const keep = (state.db.wrong_clinic_status || []).filter(row => String(row?.class_id || '') !== cid);
+            state.db.wrong_clinic_status = [...keep, ...rows];
+            state.ui.classroomWrongClinicStatus[cid] = { loading: false, loadedAt: Date.now() };
+            updateClassroomMonthlyStatusBoardDOM(cid);
+        } catch (e) {
+            console.warn('[classroom] wrong clinic status refresh failed:', e);
+            state.ui.classroomWrongClinicStatus[cid] = { loading: false, loadedAt: Date.now() };
+        }
+    }, 0);
+}
+
+function renderClassroomWrongClinicStatusCategory(classId) {
+    const rows = getClassroomWrongClinicStatusRows(classId);
+    const loading = !!state.ui?.classroomWrongClinicStatus?.[String(classId || '')]?.loading;
+    const body = rows.length
+        ? rows.map(row => {
+            const title = row.title || '오답 클리닉';
+            const createdDate = String(row.created_at || '').slice(0, 10);
+            const reviewWrongCount = Number(row.review_wrong_count || 0);
+            const meta = [
+                createdDate,
+                `${Number(row.packet_count || 0)}명`,
+                `제출 ${Number(row.submitted_count || 0)}/${Number(row.packet_count || 0)}`,
+                `${Number(row.total_item_count || 0)}문항`,
+                reviewWrongCount ? `재오답 ${reviewWrongCount}문항` : ''
+            ].filter(Boolean).join(' · ');
+            return `
+                <div class="ap-classroom-monthly-row ap-classroom-monthly-row--exam" role="button" tabindex="0" onclick="if(typeof openClinicPrintCenter==='function') openClinicPrintCenter('${apEscapeHtml(String(classId || ''))}')">
+                    <div class="ap-classroom-monthly-student">${apEscapeHtml(title)}</div>
+                    <div class="ap-classroom-monthly-dates">${apEscapeHtml(meta)}</div>
+                </div>
+            `;
+        }).join('')
+        : (loading ? '<div class="ap-classroom-monthly-dates">불러오는 중</div>' : '');
+
+    return `
+        <section class="ap-classroom-monthly-category is-clinic" aria-label="오답">
+            <div class="ap-classroom-monthly-category-head">
+                <span>오답</span>
+                <strong>${rows.length}건</strong>
+            </div>
+            ${body}
+        </section>
+    `;
+}
+
 function renderClassroomMonthlyStatusCategory(title, rows, tone, classId) {
     const total = rows.reduce((sum, row) => sum + row.dates.length, 0);
     const toneClass = tone ? ` is-${apEscapeHtml(tone)}` : '';
@@ -1360,6 +1559,7 @@ function renderClassroomMonthlyStatusCategory(title, rows, tone, classId) {
 
 function renderClassroomMonthlyStatusBoard(classId, students, today) {
     const data = buildClassroomMonthlyStatusBoardData(classId, students, today);
+    scheduleClassroomWrongClinicStatusRefresh(classId);
     const nameMap = new Map(data.students.map((student, order) => [String(student.id), { name: student.name || '학생', order }]));
     const toRows = function(group) {
         return Array.from(group.entries())
@@ -1380,6 +1580,8 @@ function renderClassroomMonthlyStatusBoard(classId, students, today) {
     return `
         <div class="ap-classroom-monthly-board apms-card ap-classroom-card" id="classroom-monthly-status-board">
             <div class="ap-classroom-monthly-list">
+                ${renderClassroomAssignmentStatusCategory(classId, data.students)}
+                ${renderClassroomWrongClinicStatusCategory(classId)}
                 ${renderClassroomMonthlyStatusCategory('결석', absentRows, 'absent', classId)}
                 ${renderClassroomMonthlyStatusCategory('보강', makeupRows, 'makeup', classId)}
                 ${renderClassroomMonthlyStatusCategory('숙제', homeworkRows, 'homework', classId)}
