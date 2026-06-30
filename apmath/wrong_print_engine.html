@@ -176,6 +176,7 @@ function getDefaultPrintHeaderOptions(payload = state.payload) {
         subtitle: '',
         showNameLine: true,
         showScoreLine: true,
+        showDate: false,
         applyToSolution: true,
         applyToAnswer: true
     };
@@ -190,6 +191,7 @@ function normalizePrintHeaderOptions(raw, payload = state.payload) {
         subtitle: clampText(source.subtitle ?? base.subtitle, 120),
         showNameLine: source.showNameLine !== false,
         showScoreLine: source.showScoreLine !== false,
+        showDate: source.showDate === true,
         applyToSolution: source.applyToSolution !== false,
         applyToAnswer: source.applyToAnswer !== false
     };
@@ -1026,7 +1028,7 @@ function makePage(area, type, title, metaLeft, metaRight, pageNumber, extra = {}
             </div>
             <div class="page-header-meta">
                 <div class="page-header-meta-right">${nameHtml}${scoreHtml}</div>
-                ${extra.dateText ? `<div class="page-header-date">${escapeHtml(extra.dateText)}</div>` : ''}
+                ${(opts.showDate && extra.dateText) ? `<div class="page-header-date">${escapeHtml(extra.dateText)}</div>` : ''}
             </div>
         `;
     } else {
