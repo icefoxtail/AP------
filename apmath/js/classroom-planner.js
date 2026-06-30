@@ -445,7 +445,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn apms-button apms-button--quiet btn-danger" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: var(--radius-sm);" onclick="deleteExamByClass('${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile})">시험 기록 전체 삭제</button>
+            <button class="btn apms-button apms-button--quiet btn-danger" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: var(--radius-sm);" onclick="deleteExamByClass('${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile},${assignmentIdArg})">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>
@@ -491,11 +491,12 @@ async function deleteExamSession(sessionId, classId, examTitle, examDate, archiv
     closeModal(true); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate, archiveFile);
 }
 
-async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '') {
+async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '', assignmentId = '') {
     if (!confirm('이 시험의 제출 기록 전체를 삭제할까요?\n오답 기록도 모두 삭제됩니다.')) return;
     try {
         const archiveQuery = archiveFile ? `&archive=${encodeURIComponent(archiveFile)}` : '';
-        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}${archiveQuery}`;
+        const assignmentQuery = assignmentId ? `&assignment=${encodeURIComponent(assignmentId)}` : '';
+        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}${archiveQuery}${assignmentQuery}`;
         const r = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
         if (handlePlannerDirectFetchAuthStatus(r)) return;
         const data = await r.json();

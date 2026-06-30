@@ -34,6 +34,19 @@ const context = {
       "'": '&#39;'
     }[ch]));
   },
+  // core.js globals that timetable.js relies on at runtime (core.js loads first in index.html).
+  normalizeStudentStatus(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '재원';
+    if (raw === '제적' || raw === '퇴원' || raw === 'withdrawn' || raw === 'withdraw') return '퇴원';
+    if (raw === '숨김' || raw === 'hidden') return '숨김';
+    if (raw === '휴원' || raw === 'paused') return '휴원';
+    if (raw === '재원' || raw === 'active') return '재원';
+    return raw;
+  },
+  isActiveStudentStatus(value) {
+    return context.normalizeStudentStatus(value) === '재원';
+  },
   document: {
     getElementById() { return null; },
     addEventListener() {}
@@ -214,7 +227,7 @@ assert(sourceCss.includes('background:transparent'), 'AP withdrawn chip should n
 assert(sourceCss.includes('border:0'), 'AP withdrawn chip should not draw a border');
 assert(sourceCss.includes('text-decoration:none'), 'AP withdrawn chip should not strike through the name');
 
-assert(studentEditSource.includes('handleDelete') && studentEditSource.includes('>퇴원</button>'), 'AP student edit should expose a direct withdrawn button');
+assert(studentEditSource.includes('handleDelete') && studentEditSource.includes('>퇴원 처리</button>'), 'AP student edit should expose a direct withdrawn button');
 assert(studentEditSource.includes('id="edit-is-leave"'), 'AP student edit should keep the existing leave input');
 assert(studentRouteSource.includes("UPDATE students SET status = '퇴원'"), 'AP student delete route should mark withdrawn instead of removing timetable visibility');
 assert(studentRouteSource.includes('INSERT INTO student_status_history'), 'AP withdrawn route should write status history for the two-month timetable window');

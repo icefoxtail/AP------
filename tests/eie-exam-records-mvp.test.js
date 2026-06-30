@@ -62,10 +62,17 @@ assert(
   'worker default query should only return active records'
 );
 
+// DELETE /exam-records/:id 엔드포인트 계약만 검사한다.
+// (원장 전용 학생 완전 삭제 handleDeleteStudent의 카스케이드 물리 삭제는 허용 — Round 3 product decision #6)
+const deleteExamRecordFn = (worker.match(/async function handleDeleteEieExamRecord\([\s\S]*?\n\}/) || [''])[0];
 assert(
-  worker.includes("UPDATE eie_exam_records SET status = 'archived'") &&
-    !worker.includes('DELETE FROM eie_exam_records'),
-  'DELETE /exam-records/:id should archive instead of physically deleting'
+  /method === 'DELETE'[\s\S]*?path\[2\] === 'exam-records'[\s\S]*?handleDeleteEieExamRecord\(/.test(worker),
+  'DELETE /exam-records/:id should route to handleDeleteEieExamRecord'
+);
+assert(
+  deleteExamRecordFn.includes("UPDATE eie_exam_records SET status = 'archived'") &&
+    !deleteExamRecordFn.includes('DELETE FROM eie_exam_records'),
+  'DELETE /exam-records/:id endpoint should archive instead of physically deleting'
 );
 
 for (const route of [

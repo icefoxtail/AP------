@@ -203,11 +203,29 @@ function clinicPrintMergeClassAssignments(rows) {
     state.db.class_exam_assignments = [...byKey.values()];
 }
 
+function clinicPrintMergeClassAssignmentExclusions(rows) {
+    if (!Array.isArray(rows)) return;
+    if (!state.db) state.db = {};
+    const current = Array.isArray(state.db.class_exam_assignment_exclusions) ? state.db.class_exam_assignment_exclusions : [];
+    const byKey = new Map(current.map(row => [
+        `${row.assignment_id || ''}|${row.student_id || ''}`,
+        row
+    ]));
+    rows.forEach(row => {
+        const assignmentId = String(row.assignment_id || '').trim();
+        const studentId = String(row.student_id || '').trim();
+        if (!assignmentId || !studentId) return;
+        byKey.set(`${assignmentId}|${studentId}`, row);
+    });
+    state.db.class_exam_assignment_exclusions = [...byKey.values()];
+}
+
 async function clinicPrintRefreshClassAssignments(classId) {
     if (!classId || typeof api === 'undefined' || typeof api.get !== 'function') return false;
     try {
         const res = await api.get(`class-exam-assignments?class=${encodeURIComponent(classId)}`);
         clinicPrintMergeClassAssignments(res.assignments || res.items || []);
+        clinicPrintMergeClassAssignmentExclusions(res.exclusions || []);
         return true;
     } catch (e) {
         console.warn('[clinic-print] class exam assignment refresh failed:', e);
@@ -215,9 +233,22 @@ async function clinicPrintRefreshClassAssignments(classId) {
     }
 }
 
+function clinicPrintIsAssignmentFullyExcluded(classId, assignment) {
+    const assignmentId = String(assignment?.id || '').trim();
+    if (!assignmentId) return false;
+    const studentIds = clinicPrintGetClassStudents(classId).map(student => String(student.id || '')).filter(Boolean);
+    if (!studentIds.length) return false;
+    const excludedIds = new Set((state.db.class_exam_assignment_exclusions || [])
+        .filter(row => String(row.assignment_id || '') === assignmentId)
+        .map(row => String(row.student_id || ''))
+        .filter(Boolean));
+    return studentIds.every(studentId => excludedIds.has(studentId));
+}
+
 function clinicPrintGetClassExamAssignments(classId) {
     return (state.db.class_exam_assignments || state.db.exam_assignments || [])
         .filter(row => String(row.class_id || '') === String(classId || ''))
+        .filter(row => !clinicPrintIsAssignmentFullyExcluded(classId, row))
         .filter(row => clinicPrintIsOnOrAfterFromDate(row.exam_date || row.created_at || row.updated_at));
 }
 
@@ -225,6 +256,18 @@ function clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFi
     const normalizedArchive = clinicPrintNormalizeArchiveFile(archiveFile || '');
     const exactKey = clinicPrintMakeExamKey(examDate, examTitle, normalizedArchive, questionCount);
     if (grouped[exactKey]) return grouped[exactKey];
+
+    if (normalizedArchive) {
+        const qCount = Number(questionCount || 0);
+        const archiveMatch = Object.values(grouped).find(group => {
+            const groupCount = Number(group.questionCount || 0);
+            const countsCompatible = !qCount || !groupCount || qCount === groupCount;
+            return String(group.examDate || '') === String(examDate || '') &&
+                clinicPrintNormalizeArchiveFile(group.archiveFile || '') === normalizedArchive &&
+                countsCompatible;
+        });
+        if (archiveMatch) return archiveMatch;
+    }
 
     return Object.values(grouped).find(group =>
         String(group.examDate || '') === String(examDate || '') &&

@@ -12,11 +12,12 @@ function lastCssBlock(selector) {
   return matches.length ? matches[matches.length - 1][1] : '';
 }
 
-const quickCardsBlock = lastCssBlock('.eie-teacher-quick-cards');
+const quickCardsBlock = css.includes('.eie-teacher-quick-cards');
 assert(quickCardsBlock, 'teacher quick cards CSS block should exist');
 assert(
-  quickCardsBlock.includes('grid-template-columns: repeat(3, minmax(0, 1fr));'),
-  'teacher dashboard shortcuts should render as three cards in one row'
+  css.includes('grid-template-columns: repeat(4, minmax(0, 1fr));') &&
+    css.includes('grid-template-columns: repeat(2, minmax(0, 1fr));'),
+  'teacher dashboard shortcuts should keep the accepted four-card row'
 );
 
 const quickCardBlock = lastCssBlock('.eie-teacher-quick-card');

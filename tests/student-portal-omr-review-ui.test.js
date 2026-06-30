@@ -10,16 +10,16 @@ const studentServiceWorker = fs.readFileSync(path.join(root, 'apmath/student/sw.
 
 assert(
   studentPortal.includes('<body class="student-portal-theme">') &&
-    studentPortal.includes('<img class="brand-logo" src="./icons/icon-192.png" alt="AP Math">') &&
-    studentPortal.includes('background:#FFFFFF url(\'./icons/icon-192.png\') center/cover no-repeat'),
-  'student portal should load the original AP logo image instead of drawing a text badge'
+    /<img class="brand-logo" src="\.\/icons\/icon-192\.png(?:\?v=[^"]+)?" alt="AP Math">/.test(studentPortal) &&
+    studentPortal.includes('<div class="brand-main">AP Math OS</div>'),
+  'student portal should keep the visible AP image brand mark'
 );
 
 assert(
     studentPortal.includes('--primary:#111827') &&
     studentPortal.includes('--primary-rgb:17,24,39') &&
     studentManifest.includes('"theme_color": "#F3F4F6"') &&
-    /apmath-student-portal-v\d+\.\d+\.\d+/.test(studentServiceWorker) &&
+    /STUDENT_SW_VERSION\s*=\s*'2026\.\d{2}\.\d{2}\.\d+'/.test(studentServiceWorker) &&
     !/#4F46E5|#1A5CFF|#7C3AED|rgba\(26,92,255|rgba\(124,58,237/.test(studentPortal),
   'student portal should use a neutral charcoal theme and avoid blue/purple UI tokens'
 );

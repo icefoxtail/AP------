@@ -12,7 +12,9 @@ const expectedRenderOrder = [
   'renderOverview(data)',
   'renderTeacherStatus(data)',
   'renderRecentConsultationPanel(data)',
-  'renderWeeklySchedulePlaceholder()',
+  // AP 내부 함수명(renderWeeklySchedulePlaceholder) 대신 EIE가 실제 마운트하는 주간일정 블록을
+  // 동일 순서에서 확인한다(렌더 계약 검증, 내부 네이밍 일치 불요) — Round 3 deferred-item decision
+  'renderOwnerWeeklySchedulePanel(data)',
   'renderRecentStudents(data)',
   'renderBottomSearchPlaceholder()'
 ];

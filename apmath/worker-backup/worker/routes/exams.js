@@ -377,6 +377,65 @@ async function refreshSubjectMismatchExclusions(env, assignment) {
   }
 }
 
+async function cleanupAssignmentIfNoTargets(env, assignment) {
+  if (!assignment?.id || !assignment?.class_id) return false;
+  if (!(await hasClassExamAssignmentExclusions(env))) return false;
+
+  try {
+    const remainingTargets = await env.DB.prepare(`
+      SELECT COUNT(*) AS count
+      FROM class_students cs
+      WHERE cs.class_id = ?
+        AND NOT EXISTS (
+          SELECT 1
+          FROM class_exam_assignment_exclusions ex
+          WHERE ex.assignment_id = ? AND ex.student_id = cs.student_id
+        )
+    `).bind(assignment.class_id, assignment.id).first();
+    if (Number(remainingTargets?.count || 0) > 0) return false;
+
+    const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
+    let remainingSessions = null;
+    if (sessionColumns.has('assignment_id')) {
+      remainingSessions = await env.DB.prepare(`
+        SELECT COUNT(*) AS count
+        FROM exam_sessions
+        WHERE assignment_id = ?
+          AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+      `).bind(assignment.id, assignment.class_id).first();
+    }
+
+    if (!remainingSessions) {
+      const archiveCandidates = getAssignmentArchiveCandidates(assignment.archive_file || '');
+      remainingSessions = archiveCandidates.length
+        ? await env.DB.prepare(`
+          SELECT COUNT(*) AS count
+          FROM exam_sessions
+          WHERE exam_date = ?
+            AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+            AND archive_file IN (${archiveCandidates.map(() => '?').join(',')})
+        `).bind(assignment.exam_date, assignment.class_id, ...archiveCandidates).first()
+        : await env.DB.prepare(`
+          SELECT COUNT(*) AS count
+          FROM exam_sessions
+          WHERE exam_title = ?
+            AND exam_date = ?
+            AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+        `).bind(assignment.exam_title, assignment.exam_date, assignment.class_id).first();
+    }
+    if (Number(remainingSessions?.count || 0) > 0) return false;
+
+    await env.DB.batch([
+      env.DB.prepare('DELETE FROM class_exam_assignment_exclusions WHERE assignment_id = ?').bind(assignment.id),
+      env.DB.prepare('DELETE FROM class_exam_assignments WHERE id = ?').bind(assignment.id)
+    ]);
+    return true;
+  } catch (e) {
+    console.warn('[assignment-exclusions] empty assignment cleanup failed:', e);
+    return false;
+  }
+}
+
 function pickExistingColumns(columnSet, candidates) {
   return candidates.filter(name => columnSet.has(name));
 }
@@ -777,12 +836,14 @@ export async function handleExams(request, env, teacher, path, url) {
         stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
       }
       await env.DB.batch(stmts);
+      const assignment_deleted = await cleanupAssignmentIfNoTargets(env, assignment);
 
       return jsonResponse({
         success: true,
         assignment_id: assignment.id,
         student_id: studentId,
-        deleted_session: sessionIds.length > 0
+        deleted_session: sessionIds.length > 0,
+        assignment_deleted
       });
     }
 
@@ -1014,7 +1075,9 @@ export async function handleExams(request, env, teacher, path, url) {
         ORDER BY exam_date DESC, updated_at DESC
       `).bind(classId).all();
 
-      return jsonResponse({ success: true, assignments: dedupeClassExamAssignments(res.results || []) });
+      const assignments = dedupeClassExamAssignments(res.results || []);
+      const exclusions = await loadClassAssignmentExclusions(env, assignments.map(a => a.id));
+      return jsonResponse({ success: true, assignments, exclusions });
     }
   }
 
@@ -1027,6 +1090,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const examTitle = url.searchParams.get('exam') || '';
       const examDate = url.searchParams.get('date') || '';
       const archiveFile = normalizeAssignmentArchiveFile(url.searchParams.get('archive') || '');
+      const assignmentId = normalizeOptionalText(url.searchParams.get('assignment'));
 
       if (!classId || !examTitle || !examDate) {
         return jsonResponse({ success: false, error: 'class, exam, date required' }, 400);
@@ -1035,21 +1099,34 @@ export async function handleExams(request, env, teacher, path, url) {
         return jsonResponse({ error: 'Forbidden' }, 403);
       }
 
-      const targets = archiveFile
-        ? await env.DB.prepare(`
+      const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
+      const archiveCandidates = getAssignmentArchiveCandidates(url.searchParams.get('archive') || archiveFile);
+      let targets = { results: [] };
+      if (assignmentId && sessionColumns.has('assignment_id')) {
+        targets = await env.DB.prepare(`
           SELECT id
           FROM exam_sessions
-          WHERE exam_date = ?
+          WHERE assignment_id = ?
             AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
-            AND (archive_file = ? OR (COALESCE(archive_file, '') = '' AND exam_title = ?))
-        `).bind(examDate, classId, archiveFile, examTitle).all()
-        : await env.DB.prepare(`
-          SELECT id
-          FROM exam_sessions
-          WHERE exam_title = ?
-            AND exam_date = ?
-            AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
-        `).bind(examTitle, examDate, classId).all();
+        `).bind(assignmentId, classId).all();
+      }
+      if (!(targets.results || []).length) {
+        targets = archiveCandidates.length
+          ? await env.DB.prepare(`
+            SELECT id
+            FROM exam_sessions
+            WHERE exam_date = ?
+              AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+              AND (archive_file IN (${archiveCandidates.map(() => '?').join(',')}) OR (COALESCE(archive_file, '') = '' AND exam_title = ?))
+          `).bind(examDate, classId, ...archiveCandidates, examTitle).all()
+          : await env.DB.prepare(`
+            SELECT id
+            FROM exam_sessions
+            WHERE exam_title = ?
+              AND exam_date = ?
+              AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+          `).bind(examTitle, examDate, classId).all();
+      }
 
       const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
       const stmts = [];
@@ -1059,17 +1136,27 @@ export async function handleExams(request, env, teacher, path, url) {
         stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
       }
 
-      const assignmentTargets = archiveFile
-        ? await env.DB.prepare(`
+      let assignmentTargets = { results: [] };
+      if (assignmentId) {
+        assignmentTargets = await env.DB.prepare(`
           SELECT id
           FROM class_exam_assignments
-          WHERE class_id = ? AND exam_date = ? AND archive_file = ?
-        `).bind(classId, examDate, archiveFile).all()
-        : await env.DB.prepare(`
-          SELECT id
-          FROM class_exam_assignments
-          WHERE class_id = ? AND exam_title = ? AND exam_date = ?
-        `).bind(classId, examTitle, examDate).all();
+          WHERE id = ? AND class_id = ?
+        `).bind(assignmentId, classId).all();
+      }
+      if (!(assignmentTargets.results || []).length) {
+        assignmentTargets = archiveCandidates.length
+          ? await env.DB.prepare(`
+            SELECT id
+            FROM class_exam_assignments
+            WHERE class_id = ? AND exam_date = ? AND archive_file IN (${archiveCandidates.map(() => '?').join(',')})
+          `).bind(classId, examDate, ...archiveCandidates).all()
+          : await env.DB.prepare(`
+            SELECT id
+            FROM class_exam_assignments
+            WHERE class_id = ? AND exam_title = ? AND exam_date = ?
+          `).bind(classId, examTitle, examDate).all();
+      }
       const assignmentIds = (assignmentTargets.results || []).map(r => r.id).filter(Boolean);
       if (assignmentIds.length && await hasClassExamAssignmentExclusions(env)) {
         const assignmentMarkers = assignmentIds.map(() => '?').join(',');
@@ -1079,10 +1166,9 @@ export async function handleExams(request, env, teacher, path, url) {
         `).bind(...assignmentIds));
       }
 
-      if (archiveFile) {
-        stmts.push(env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ? AND exam_date = ? AND archive_file = ?').bind(classId, examDate, archiveFile));
-      } else {
-        stmts.push(env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ?').bind(classId, examTitle, examDate));
+      if (assignmentIds.length) {
+        const assignmentMarkers = assignmentIds.map(() => '?').join(',');
+        stmts.push(env.DB.prepare(`DELETE FROM class_exam_assignments WHERE id IN (${assignmentMarkers})`).bind(...assignmentIds));
       }
 
       if (stmts.length > 0) {

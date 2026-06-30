@@ -1,206 +1,259 @@
-# Claude Code Task: APMS 안정화 우선 점검 및 최소 수정
+# Claude Code Task: APMS 안정화 2차 — 실제 화면 흐름 검증 및 잔여 FAIL 분류
 
 ## Goal
 
-이번 작업의 목표는 신규 기능 구현이 아니라 APMS/EIE/Archive의 기존 기능 안정화입니다.
+이전 결과는 테스트 환경 일부 복구와 정적 회귀 가드 확인에 그쳤습니다.
 
-새 기능을 추가하지 말고, 현재 사용 중인 기능이 깨지지 않도록 주요 흐름을 점검하고 필요한 최소 수정만 적용하세요.
+이번 작업의 목표는 APMS/EIE/Archive의 실제 사용 흐름을 기준으로 안정화 상태를 확인하고, 남은 FAIL 15개가 실제 화면 문제인지 테스트 계약 drift인지 명확히 분류하는 것입니다.
 
-## Absolute Scope
+신규 기능은 추가하지 않습니다.
 
-Do not add new features.
+## Important Correction
 
-Do not redesign the UI.
+Do not mark this task as PASS only because some tests pass.
 
-Do not change database schema unless a confirmed bug cannot be fixed otherwise.
+A PASS is allowed only if actual user-facing flows are verified or each unverified flow is clearly reported as NOT VERIFIED.
 
-Do not refactor large modules.
+Do not change only tests and call the application stabilized.
 
-Do not rename files.
+## Scope
 
-Do not change route structure.
+No new features.
 
-Do not remove existing behavior.
+No broad redesign.
 
-Do not introduce temporary workaround files.
+No DB schema changes.
 
-This is a stabilization pass, not a feature pass.
+No route rewrites.
 
-## First Step: Read Before Editing
+No large refactor.
 
-Before making any code changes, inspect the existing implementation and identify the actual files involved.
+No deploy.
 
-Focus areas:
+Only inspect, reproduce, minimally fix confirmed breakage, and report accurately.
 
-* Authentication / role routing
-* Admin dashboard
-* Teacher dashboard
-* Student detail view
-* EIE timetable
-* Archive / print flow
-* Mobile layout stability
+## Required Verification
 
-Do not guess.
-Confirm the current structure from the repository first.
+### 1. Real Browser Flow Verification
 
-## Main Problems To Check
+Run or manually verify the actual app in a browser-like environment.
 
-### 1. Role / Navigation Stability
+Check these flows:
 
-Check whether admin and teacher flows are separated correctly.
+1. Admin login → admin dashboard
+2. Teacher login → teacher dashboard
+3. Teacher dashboard → student detail → back
+4. Admin dashboard → student detail → back
+5. EIE timetable open
+6. EIE class/student click behavior
+7. Archive open after login
+8. Archive print screen open
+9. Mobile-width dashboard check
+10. Mobile-width timetable check
 
-Verify:
-
-* Admin user enters admin dashboard.
-* Teacher user enters teacher dashboard.
-* Browser back navigation does not send a teacher into the admin dashboard.
-* Dashboard transitions preserve the current role.
-* Shared state does not leak between admin and teacher views.
-
-If there is a bug, fix it with the smallest possible change.
-
-### 2. Dashboard Stability
-
-Check the main dashboard flows.
-
-Verify:
-
-* Admin dashboard loads without UI reset loops.
-* Teacher dashboard loads without UI reset loops.
-* Main buttons continue to work:
-
-  * 출석부
-  * 시간표
-  * 성적표
-  * 관리
-* Returning from student detail or subpages does not break the dashboard.
-* Empty today schedule / weekly schedule data does not break layout.
-
-### 3. Student Detail Stability
-
-Check student detail entry and return flow.
-
-Verify:
-
-* Student detail opens normally.
-* Returning from student detail preserves the previous dashboard context.
-* Saving student data does not disappear after reload.
-* Withdrawn student visibility is consistent by role.
-* Opening student detail does not unnecessarily restart global UI.
-
-### 4. EIE Timetable Stability
-
-Check the EIE timetable rendering.
-
-Known issue to prevent:
-
-* Student names should not become blue cards/chips.
-* Student names should not collapse into `...`.
-* Student names should render as plain readable text.
-
-Verify:
-
-* Multi-period class cards still span correctly.
-* Teacher headers remain aligned.
-* Homeroom columns remain aligned.
-* Class detail modal saves correctly.
-* Day/teacher modal still opens correctly.
-* Existing copy/paste/edit timetable behavior still works.
-
-Only fix confirmed timetable rendering issues.
-Do not rewrite the timetable engine.
-
-### 5. Archive / Print Stability
-
-Check archive and print flows.
-
-Verify:
-
-* Archive loads after login.
-* Exam list loads.
-* Exam print works.
-* Wrong-answer print works if currently supported.
-* QR connection is preserved.
-* Print view does not include unnecessary UI controls.
-* Student-by-student print output does not visually mix students.
-
-Do not redesign archive pages.
-Only fix confirmed breakage.
-
-### 6. Mobile Stability
-
-Check mobile layouts for the main screens.
-
-Verify:
-
-* Buttons do not overflow.
-* Cards do not overflow horizontally.
-* Close buttons remain accessible.
-* Timetable does not become unreadable.
-* Bottom action buttons do not cover important content.
-* Basic scroll and back behavior is usable.
-
-Do not redesign the mobile UI.
-Only correct broken or obviously unstable layout behavior.
-
-## Implementation Rules
-
-Use the smallest safe patch.
-
-Prefer local fixes over global changes.
-
-If a shared utility is causing a bug, confirm every place that utility is used before changing it.
-
-Avoid broad CSS changes that affect unrelated screens.
-
-Avoid changing class names unless absolutely necessary.
-
-Preserve existing naming conventions.
-
-Do not add a new dependency.
-
-Do not add speculative code.
-
-Do not leave console logs unless they already exist for debugging convention.
-
-## Verification Required
-
-After changes, verify at least the following flows manually or with available scripts:
-
-1. Admin login → admin dashboard.
-2. Teacher login → teacher dashboard.
-3. Teacher dashboard → student detail → back.
-4. Admin dashboard → student detail → back.
-5. EIE timetable renders student names as plain text.
-6. EIE timetable multi-period cards still align.
-7. Archive loads after login.
-8. Archive print flow still opens.
-9. Mobile dashboard does not overflow horizontally.
-10. No new feature was added.
-
-## Output Format
-
-When finished, report in this exact format:
+If a real browser environment is unavailable, report:
 
 ```text
-RESULT: PASS or FAIL
+REAL BROWSER E2E: NOT VERIFIED
+Reason:
+```
+
+Do not replace this with node tests only.
+
+---
+
+## 2. Remaining 15 FAIL Tests Classification
+
+Review every remaining failing test.
+
+For each failing test, classify it into exactly one category:
+
+### Category A — Real user-facing bug
+
+The failing test corresponds to a current visible or functional issue.
+
+Action:
+
+* Fix with the smallest safe app-code change.
+* Re-run the related test.
+* Report the changed files.
+
+### Category B — Intentional product change / stale test contract
+
+The app behavior is correct, but the test expectation is outdated.
+
+Action:
+
+* Do not silently update the test.
+* Explain why the current app behavior is correct.
+* Only update the test if the product behavior is already confirmed.
+
+### Category C — Needs design decision
+
+The failure involves UI direction, parity, layout contract, or policy decision.
+
+Action:
+
+* Do not guess.
+* Report the exact decision needed.
+
+### Category D — Cannot verify in current environment
+
+The test cannot be responsibly resolved without browser/PDF/manual check.
+
+Action:
+
+* Mark as not verified.
+* Explain what exact manual check is needed.
+
+---
+
+## 3. Tests That Must Not Be Blanket-Dismissed
+
+Do not dismiss the following as simply “design contract” without checking actual impact:
+
+* eie-teacher-dashboard-style
+* eie-owner-dashboard-ap-parity
+* eie-timetable-dual-mode
+* eie-timetable-student-profile-ap-parity
+* eie-students-click-handlers
+* eie-monthly-timetable-snapshot
+* apmath-global-surface
+* assessment-grade-target-round5-1
+* assessment-m1-type-source-integrity
+
+For each one, state:
+
+```text
+Test:
+Current failure:
+Actual screen impact:
+Classification:
+Fix needed:
+```
+
+---
+
+## 4. EIE Timetable Specific Checks
+
+Verify actual EIE timetable screen.
+
+Must check:
+
+* Student names are plain readable text.
+* Student names do not appear as blue chips/cards.
+* Student names do not collapse into "...".
+* Multi-period cards still span correctly.
+* Teacher headers align.
+* Student/class click handlers still work.
+* Teacher filter does not break click behavior.
+* Owner/admin view and AP parity are not accidentally broken.
+
+If this is only checked through tests, say so clearly.
+
+---
+
+## 5. Navigation / Role Specific Checks
+
+Verify actual admin/teacher separation.
+
+Must check:
+
+* Teacher does not land in admin dashboard through browser back.
+* Admin dashboard does not leak into teacher session.
+* Role state is preserved after student detail open/back.
+* Shared global state is not reset unnecessarily.
+
+If not checked in a browser, report as NOT VERIFIED.
+
+---
+
+## 6. Archive / Print Specific Checks
+
+Verify actual archive and print flow.
+
+Must check:
+
+* Login-gated archive access works.
+* Exam list loads.
+* Print screen opens.
+* Wrong-answer print flow opens if available.
+* Print UI does not show unnecessary buttons.
+* No obvious page mixing in student-by-student output.
+
+PDF/page split rendering may be marked NOT VERIFIED only if no browser/PDF environment is available.
+
+---
+
+## Allowed Changes
+
+Allowed:
+
+* Minimal app-code fixes for confirmed user-facing bugs.
+* Minimal test update only when the current product behavior is confirmed correct.
+* Report-only classification when a design decision is needed.
+
+Not allowed:
+
+* New feature implementation.
+* Broad CSS rewrite.
+* Large module refactor.
+* Route structure changes.
+* DB schema changes.
+* Silent test expectation regeneration.
+* Calling the task PASS without verification.
+
+---
+
+## Required Output Format
+
+Return exactly this structure:
+
+```text
+RESULT: PASS / PARTIAL PASS / FAIL
 
 SUMMARY
-- Briefly explain what was checked and what was fixed.
+- ...
 
-FILES CHANGED
-- path/to/file.js
-- path/to/file.css
-
-CONFIRMED WORKING
-- Admin dashboard:
-- Teacher dashboard:
+REAL BROWSER E2E
+- Admin login:
+- Teacher login:
+- Back navigation:
 - Student detail:
 - EIE timetable:
 - Archive:
 - Mobile:
+- PDF/print:
+
+FILES CHANGED
+- ...
+
+APP CODE CHANGED
+- Yes / No
+- If yes, list why each app-code change was necessary.
+
+TESTS CHANGED
+- Yes / No
+- If yes, explain why each test change was valid.
+
+REMAINING FAILURES CLASSIFICATION
+
+1. test name:
+   Current failure:
+   Actual screen impact:
+   Classification: A / B / C / D
+   Action taken or needed:
+
+2. test name:
+   ...
+
+CONFIRMED WORKING
+- ...
 
 BUGS FIXED
+- ...
+
+NOT VERIFIED
 - ...
 
 RISKS / NOT FIXED
@@ -210,5 +263,12 @@ NEW FEATURES ADDED
 - None
 ```
 
-If a problem cannot be safely fixed without a larger refactor, do not attempt the refactor.
-Report it under `RISKS / NOT FIXED` with the exact reason.
+## PASS Rule
+
+Use PASS only if:
+
+* Actual browser flows were verified, and
+* No known user-facing bug remains unresolved inside this task scope, and
+* Remaining failures are clearly proven stale tests, intentional product changes, or out-of-scope design decisions.
+
+If browser verification was not performed, the maximum allowed result is PARTIAL PASS.

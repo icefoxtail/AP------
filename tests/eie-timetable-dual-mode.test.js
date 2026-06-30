@@ -16,7 +16,8 @@ assert(
 );
 
 assert(
-  router.includes(`key === '${legacyRoute}'`) && router.includes("return 'timetable'"),
+  router.includes(`key === '${legacyRoute}'`) &&
+    new RegExp(`key === '${legacyRoute}'\\)\\s*resolved\\s*=\\s*'timetable'`).test(router),
   'legacy timetable alias route should normalize to canonical timetable'
 );
 

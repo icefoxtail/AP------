@@ -25,10 +25,11 @@ assert(
   'archive/index.html: 문항 수 확인 실패 시 "문항 수 확인이 필요합니다." 문구가 있어야 한다'
 );
 
-// 4. archive/index.html: null 반환 시 throw 또는 early return 로직 확인
+// 4. archive/index.html: 문항 수 확인 실패 시 경고 노출 + early return으로 잘못된 배정/인쇄를 막는지 확인
+//    (throw 대신 경고 UI + early return 방어를 정상 동작으로 수용 — Round 3 product decision #5)
 assert(
-  archiveIndex.includes("throw new Error('문항 수 확인이 필요합니다.')"),
-  'archive/index.html: resolvedCount null 시 throw를 해야 한다'
+  /if \(!resolveExamQuestionCountForAssignment\(item\)\)\s*\{[\s\S]*?문항 수 확인이 필요합니다\.[\s\S]*?return;[\s\S]*?\}/.test(archiveIndex),
+  'archive/index.html: 문항 수 확인 실패 시 경고 노출 후 early return으로 배정을 중단해야 한다'
 );
 
 // 5. assessment-mvp.html: 평가팩 question count 확인 실패 방어 확인
