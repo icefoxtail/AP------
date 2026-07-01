@@ -690,7 +690,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.06.29.2';
+    const STUDENT_APP_VERSION = '2026.07.01.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
 
@@ -823,7 +823,17 @@
       toast('나중에 브라우저 메뉴에서 추가할 수 있습니다.');
     }
     function saveSession(next) {
+      const prevStudentId = session?.student_id;
       session = next;
+      if (String(prevStudentId || '') !== String(next?.student_id || '')) {
+        homeData = null;
+        homeIndex = null;
+        omrData = null;
+        omrIndex = null;
+        materialWrongData = null;
+        wrongClinicData = null;
+        wrongClinicDraft = null;
+      }
       localStorage.setItem(SESSION_KEY, JSON.stringify(next));
 
       if (next?.student_id && next?.pin) {
@@ -843,6 +853,21 @@
       } catch (e) {
         return false;
       }
+    }
+    function getPendingWrongClinicKeyFromUrl() {
+      try {
+        const params = new URLSearchParams(window.location.search || '');
+        return String(params.get('wrong_clinic') || '').trim();
+      } catch (e) {
+        return '';
+      }
+    }
+    function clearPendingWrongClinicKeyFromUrl() {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('wrong_clinic');
+        window.history.replaceState(null, '', url.toString());
+      } catch (e) {}
     }
     function clearSession() {
       localStorage.removeItem(SESSION_KEY);
@@ -962,7 +987,8 @@
       try {
         setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
         renderHome();
-        refreshWrongClinicPackets();
+        await refreshWrongClinicPackets();
+        tryOpenPendingWrongClinicFromUrl();
         if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
           await renderOmrExams();
         }
@@ -1210,16 +1236,32 @@
         if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">오답 클리닉을 불러오지 못했습니다.</div>';
       }
     }
-    function openWrongClinicPacket(packetKey, mode = 'review') {
+    function openWrongClinicPacket(packetKey, mode = 'review', sameTab = false) {
       const key = String(packetKey || '').trim();
       if (!key) return;
       const url = new URL('../wrong_print_engine.html', window.location.href);
       url.searchParams.set('packet', key);
       url.searchParams.set('mode', mode);
+      if (sameTab) {
+        window.location.href = url.toString();
+        return;
+      }
       window.open(url.toString(), '_blank', 'noopener');
     }
     function findWrongClinicPacket(packetKey) {
       return getWrongClinicPackets().find(item => String(item.packet_key || '') === String(packetKey || ''));
+    }
+    function tryOpenPendingWrongClinicFromUrl() {
+      const key = getPendingWrongClinicKeyFromUrl();
+      if (!key) return false;
+      const packet = findWrongClinicPacket(key);
+      if (!packet) {
+        toast('내 오답 클리닉을 찾지 못했습니다.');
+        return false;
+      }
+      clearPendingWrongClinicKeyFromUrl();
+      openWrongClinicPacket(key, Number(packet.is_submitted || 0) === 1 ? 'sol' : 'exam', true);
+      return true;
     }
     function normalizeWrongClinicWrongIds(values) {
       return Array.from(new Set((Array.isArray(values) ? values : [])
