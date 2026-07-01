@@ -8,36 +8,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --navy: #07111f;
-            --navy-2: #0c1a2e;
-            --navy-3: #12233f;
-            --navy-4: #173056;
-            --blue-main: #2563eb;
-            --blue-strong: #1d4ed8;
-            --blue-light: #60a5fa;
-            --blue-pale: #dbeafe;
-            --blue-soft: #eff6ff;
+            --navy: #111113;
+            --navy-2: #18181b;
+            --navy-3: #202024;
+            --navy-4: #27272a;
+            --blue-main: #27272a;
+            --blue-strong: #18181b;
+            --blue-light: #a1a1aa;
+            --blue-pale: #e4e4e7;
+            --blue-soft: #f4f4f5;
             --green-main: #059669;
             --green-soft: #ecfdf5;
             --green-border: #b7efd4;
             --gray-muted: #94a3b8;
-            --bg-soft: #f4f7fb;
+            --bg-soft: #f4f4f5;
             --card-bg: #ffffff;
-            --card-active: #f7faff;
-            --card-border: #e2e8f0;
-            --card-border-hover: #93c5fd;
-            --card-border-active: #60a5fa;
+            --card-active: #f7f7f8;
+            --card-border: #e4e4e7;
+            --card-border-hover: #d4d4d8;
+            --card-border-active: #a1a1aa;
             --text-main: #0f172a;
             --text-sub: #64748b;
             --text-weak: #94a3b8;
-            --badge-bg: #eef4ff;
-            --badge-text: #315ea8;
-            --badge-border: #d8e5fb;
+            --badge-bg: #f4f4f5;
+            --badge-text: #27272a;
+            --badge-border: #e4e4e7;
             --warn-bg: #fff7ed;
             --warn-border: #fed7aa;
             --warn-text: #9a3412;
             --shadow-card: 0 14px 32px rgba(15, 23, 42, 0.06);
-            --shadow-card-hover: 0 22px 44px rgba(37, 99, 235, 0.12);
+            --shadow-card-hover: 0 22px 44px rgba(0, 0, 0, 0.12);
             --shadow-panel: 0 24px 48px rgba(2, 8, 23, 0.22);
             --radius-xl: 24px;
             --radius-lg: 20px;
@@ -50,8 +50,8 @@
         body {
             font-family: 'Pretendard', sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(59,130,246,0.06), transparent 26%),
-                linear-gradient(180deg, #f8fbff 0%, var(--bg-soft) 100%);
+                radial-gradient(circle at top left, rgba(0,0,0,0.04), transparent 26%),
+                linear-gradient(180deg, #f9f9fa 0%, var(--bg-soft) 100%);
             color: #1e293b;
             overflow-x: hidden;
         }
@@ -108,15 +108,15 @@
         .gtab.active {
             color: white;
             background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.11) 100%);
-            border-color: rgba(147, 197, 253, 0.32);
+            border-color: rgba(255, 255, 255, 0.30);
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 8px 16px rgba(0,0,0,0.12);
         }
 
         .hero {
             background:
-                radial-gradient(circle at 86% 14%, rgba(96,165,250,0.22), transparent 24%),
-                radial-gradient(circle at 16% 22%, rgba(37,99,235,0.18), transparent 28%),
-                radial-gradient(circle at 50% 110%, rgba(37,99,235,0.14), transparent 32%),
+                radial-gradient(circle at 86% 14%, rgba(255,255,255,0.10), transparent 24%),
+                radial-gradient(circle at 16% 22%, rgba(255,255,255,0.07), transparent 28%),
+                radial-gradient(circle at 50% 110%, rgba(255,255,255,0.05), transparent 32%),
                 linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 52%, var(--navy-3) 100%);
             padding: 38px 24px 56px;
             position: relative;
@@ -130,7 +130,7 @@
             width: 420px;
             height: 420px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(96,165,250,0.12) 0%, rgba(96,165,250,0) 72%);
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 72%);
             pointer-events: none;
         }
 
@@ -141,7 +141,7 @@
             width: 460px;
             height: 460px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(37,99,235,0.16) 0%, rgba(37,99,235,0) 72%);
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 72%);
             pointer-events: none;
         }
 
@@ -171,13 +171,13 @@
             top: 44px;
             width: 430px;
             min-height: 270px;
-            border: 1px solid rgba(147,197,253,0.22);
+            border: 1px solid rgba(255,255,255,0.16);
             border-radius: 12px;
             background: rgba(15, 23, 42, 0.54);
             box-shadow: 0 18px 42px rgba(2, 8, 23, 0.24);
             backdrop-filter: blur(16px);
             padding: 14px;
-            color: #e5eefc;
+            color: #e4e4e7;
             display: none;
         }
 
@@ -204,7 +204,7 @@
             border: 1px solid rgba(255,255,255,0.14);
             border-radius: 8px;
             background: rgba(255,255,255,0.08);
-            color: #e5eefc;
+            color: #e4e4e7;
             font-size: 11px;
             font-weight: 700;
             padding: 0 8px;
@@ -215,7 +215,7 @@
         .assignment-board-range {
             font-size: 11px;
             font-weight: 700;
-            color: #9fb6d8;
+            color: #a1a1aa;
             margin-bottom: 8px;
         }
 
@@ -231,16 +231,16 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             background: rgba(255,255,255,0.055);
-            color: #b8c8e2;
+            color: #c4c4c9;
             font-size: 11px;
             font-weight: 800;
             cursor: pointer;
         }
 
         .assignment-board-tab.active {
-            border-color: rgba(147,197,253,0.48);
-            background: rgba(96,165,250,0.22);
-            color: #eff6ff;
+            border-color: rgba(255,255,255,0.38);
+            background: rgba(255,255,255,0.16);
+            color: #f4f4f5;
         }
 
         .assignment-board-list {
@@ -274,19 +274,19 @@
         }
 
         .assignment-board-teacher {
-            color: #9fb6d8;
+            color: #a1a1aa;
         }
 
-        .assignment-board-paper { color: #f8fbff; }
+        .assignment-board-paper { color: #f4f4f5; }
 
-        .assignment-board-classes { color: #dbeafe; }
+        .assignment-board-classes { color: #d4d4d8; }
 
         .assignment-board-empty {
             border: 1px dashed rgba(255,255,255,0.16);
             border-radius: 10px;
             padding: 18px 10px;
             text-align: center;
-            color: #9fb6d8;
+            color: #a1a1aa;
             font-size: 12px;
             font-weight: 700;
         }
@@ -301,7 +301,7 @@
         }
 
         .hero-title em {
-            color: #7db8ff;
+            color: #d4d4d8;
             font-style: normal;
         }
 
@@ -328,7 +328,7 @@
         }
 
         .hero-stat i {
-            color: #93c5fd;
+            color: #a1a1aa;
         }
 
         .hero-panel-badge {
@@ -338,11 +338,11 @@
             height: 30px;
             padding: 0 12px;
             border-radius: 999px;
-            background: rgba(96,165,250,0.18);
-            color: #bfdbfe;
+            background: rgba(255,255,255,0.14);
+            color: #e4e4e7;
             font-size: 11px;
             font-weight: 800;
-            border: 1px solid rgba(147,197,253,0.18);
+            border: 1px solid rgba(255,255,255,0.16);
             flex-shrink: 0;
         }
 
@@ -460,7 +460,7 @@
 
         .fb-sel:hover,
         .fb-sel:focus {
-            border-color: #bfd3f8;
+            border-color: #d4d4d8;
             box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
             transform: translateY(-1px);
             outline: none;
@@ -504,7 +504,7 @@
         }
 
         .fb-original-toggle:hover {
-            border-color: #bfd3f8;
+            border-color: #d4d4d8;
             box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
             transform: translateY(-1px);
         }
@@ -534,7 +534,7 @@
 
         .sec-block.dark {
             background:
-                radial-gradient(circle at right top, rgba(96,165,250,0.10), transparent 20%),
+                radial-gradient(circle at right top, rgba(255,255,255,0.06), transparent 20%),
                 linear-gradient(180deg, var(--navy-2) 0%, var(--navy-4) 100%);
             color: white;
         }
@@ -595,7 +595,7 @@
         .exam-card.is-active {
             background: linear-gradient(180deg, #ffffff 0%, var(--card-active) 100%);
             border-color: var(--card-border-active);
-            box-shadow: 0 18px 36px rgba(96, 165, 250, 0.16);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
         }
 
         .card-top {
@@ -604,7 +604,7 @@
         }
 
         .exam-card.type-sheet .card-top {
-            background: linear-gradient(90deg, var(--blue-main) 0%, #7db8ff 100%);
+            background: linear-gradient(90deg, var(--blue-main) 0%, #a1a1aa 100%);
         }
 
         .exam-card.type-study .card-top {
@@ -644,7 +644,7 @@
             font-size: 11px;
             font-weight: 800;
             border: 1px solid var(--badge-border);
-            background: rgba(238,244,255,0.86);
+            background: rgba(244,244,245,0.86);
             color: var(--badge-text);
             flex-shrink: 0;
             backdrop-filter: blur(8px);
@@ -701,8 +701,8 @@
 
         .meta-badge.primary {
             color: var(--blue-main);
-            background: rgba(239,246,255,0.95);
-            border-color: #dbeafe;
+            background: rgba(244,244,245,0.95);
+            border-color: #e4e4e7;
         }
 
         .meta-badge.green {
@@ -725,19 +725,19 @@
 
         .exam-card.is-active .card-file-name {
             color: #000000;
-            border-top-color: #d7e6fb;
+            border-top-color: #e4e4e7;
         }
 
         .card-actions {
             border-top: 1px solid var(--card-border);
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            background: linear-gradient(180deg, #fcfdff 0%, #f9fbff 100%);
+            background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
         }
 
         .exam-card.is-active .card-actions {
-            background: linear-gradient(180deg, #f8fbff 0%, #f3f8ff 100%);
-            border-top-color: #dbeafe;
+            background: linear-gradient(180deg, #f9f9fa 0%, #f4f4f5 100%);
+            border-top-color: #e4e4e7;
         }
 
         .action-btn {
@@ -757,12 +757,12 @@
         }
 
         .action-btn:hover {
-            background: #f2f7ff;
-            color: #315ea8;
+            background: #f4f4f5;
+            color: #27272a;
         }
 
         .exam-card.is-active .action-btn + .action-btn {
-            border-left-color: #e3edfb;
+            border-left-color: #e4e4e7;
         }
 
         .empty-state {
@@ -803,6 +803,291 @@
             border: 1px solid rgba(226,232,240,0.9);
         }
 
+        .modal-box--wide {
+            width: min(920px, calc(100vw - 40px));
+            max-height: min(88vh, 860px);
+            text-align: left;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .assign-target-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            max-height: min(88vh, 860px);
+        }
+
+        .assign-target-head {
+            padding: 24px 28px 16px;
+            border-bottom: 1px solid rgba(226,232,240,0.9);
+        }
+
+        .assign-target-head .modal-title { margin-bottom: 4px; }
+
+        .assign-grade-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .assign-grade-tab {
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 999px;
+            cursor: pointer;
+            border: 1px solid var(--card-border, #e2e8f0);
+            background: #f8fafc;
+            color: var(--text-sub);
+            transition: 0.15s ease;
+        }
+
+        .assign-grade-tab:hover { background: #f4f4f5; }
+
+        .assign-grade-tab.active {
+            background: var(--blue-main);
+            border-color: var(--blue-main);
+            color: #fff;
+        }
+
+        .assign-search-input {
+            width: 100%;
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border, #e2e8f0);
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        .assign-target-body {
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .assign-class-col {
+            width: 240px;
+            flex: none;
+            border-right: 1px solid rgba(226,232,240,0.9);
+            overflow-y: auto;
+            padding: 14px;
+        }
+
+        .assign-class-all-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 6px 12px;
+            border-bottom: 1px dashed var(--card-border, #e2e8f0);
+            margin-bottom: 8px;
+        }
+
+        .assign-class-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 8px;
+            border-radius: 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .assign-class-row:hover { background: #f1f5f9; }
+
+        .assign-class-row .name { flex: 1; font-weight: 600; }
+
+        .assign-class-row .count { font-size: 11px; color: var(--text-sub); }
+
+        .assign-class-row.partial .count { color: #b45309; font-weight: 700; }
+
+        .assign-student-col {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px 20px;
+        }
+
+        .assign-student-col .empty-hint {
+            color: var(--text-sub);
+            font-size: 13px;
+            padding: 24px 4px;
+        }
+
+        .assign-class-section {
+            border: 1px solid rgba(226,232,240,0.9);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+        }
+
+        .assign-class-section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .assign-class-section-title { font-size: 14px; font-weight: 800; }
+
+        .assign-preset-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+
+        .assign-preset-btn {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--card-border, #e2e8f0);
+            background: #f8fafc;
+            color: var(--text-sub);
+            cursor: pointer;
+        }
+
+        .assign-preset-btn:hover { background: #f4f4f5; color: var(--blue-main); }
+
+        .assign-student-search {
+            width: 100%;
+            margin: 10px 0 8px;
+            padding: 7px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border, #e2e8f0);
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        .assign-student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 6px 10px;
+        }
+
+        .assign-student-check {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            padding: 4px 2px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .assign-student-check.absent .name::after {
+            content: ' 결석';
+            color: #b45309;
+            font-size: 10px;
+        }
+
+        .assign-student-check.submitted .name::after {
+            content: ' 응시완료';
+            color: #64748b;
+            font-size: 10px;
+        }
+
+        .assign-excluded-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--card-border, #e2e8f0);
+        }
+
+        .assign-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+            cursor: pointer;
+        }
+
+        .assign-chip:hover { background: #fee2e2; }
+
+        .assign-toast {
+            font-size: 12px;
+            color: var(--blue-main);
+            background: #f4f4f5;
+            border: 1px solid #d4d4d8;
+            border-radius: 8px;
+            padding: 6px 10px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .assign-toast button {
+            border: none;
+            background: none;
+            color: var(--blue-main);
+            font-weight: 700;
+            font-size: 11.5px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .assign-target-foot {
+            border-top: 1px solid rgba(226,232,240,0.9);
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .assign-summary-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .assign-foot-btns { display: flex; gap: 10px; }
+
+        .assign-review-list { padding: 4px 2px; font-size: 13px; line-height: 1.8; }
+
+        .assign-review-list .class-full { font-weight: 700; }
+
+        .assign-review-list .class-partial-names { color: var(--text-sub); font-size: 12.5px; margin-left: 18px; }
+
+        .assign-review-list .class-excluded-names { color: #b91c1c; font-size: 12.5px; margin-left: 18px; }
+
+        .assign-progress-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 4px;
+            font-size: 13px;
+        }
+
+        .assign-progress-row .icon { width: 18px; text-align: center; font-weight: 800; }
+        .assign-progress-row.success .icon { color: #16a34a; }
+        .assign-progress-row.error .icon { color: #dc2626; }
+        .assign-progress-row.pending .icon { color: var(--text-sub); }
+
+        @media (max-width: 860px) {
+            .assign-target-body { flex-direction: column; }
+            .assign-class-col {
+                width: auto;
+                max-height: 34vh;
+                border-right: none;
+                border-bottom: 1px solid rgba(226,232,240,0.9);
+            }
+        }
+
         .modal-title {
             font-size: 20px;
             font-weight: 800;
@@ -832,7 +1117,7 @@
             font-size: 32px;
             font-weight: 800;
             transition: all 0.2s ease;
-            background: linear-gradient(180deg, #fcfdfe 0%, #f8fbff 100%);
+            background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
             color: #cbd5e1;
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
         }
@@ -840,9 +1125,9 @@
         .qpp-opt:hover {
             border-color: var(--blue-main);
             color: var(--blue-main);
-            background: linear-gradient(180deg, #f2f8ff 0%, var(--blue-pale) 100%);
+            background: linear-gradient(180deg, #f4f4f5 0%, var(--blue-pale) 100%);
             transform: scale(1.04);
-            box-shadow: 0 16px 26px rgba(37, 99, 235, 0.10);
+            box-shadow: 0 16px 26px rgba(0, 0, 0, 0.10);
         }
 
         .modal-btn-primary {
@@ -1001,6 +1286,25 @@
                 padding: 30px 22px;
             }
 
+            .modal-box--wide {
+                width: calc(100% - 16px);
+                max-height: 92vh;
+                padding: 0;
+            }
+
+            .assign-target-head { padding: 16px 16px 12px; }
+            .assign-target-foot { padding: 12px 16px; }
+
+            .assign-target-body { flex-direction: column; }
+            .assign-class-col {
+                width: auto;
+                max-height: 28vh;
+                border-right: none;
+                border-bottom: 1px solid rgba(226,232,240,0.9);
+                padding: 10px;
+            }
+            .assign-student-col { padding: 10px 14px; }
+
             .assignment-board {
                 position: static;
                 width: 100%;
@@ -1040,34 +1344,9 @@
     </div>
 </div>
 
-<div class="modal-overlay" id="targetModalOverlay">
-    <div class="modal-box">
-        <div class="modal-title">출제 대상</div>
-        <div class="modal-sub">시험지를 출제할 대상을 선택하세요.</div>
-        <div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
-            <button class="modal-btn-primary" onclick="selectIndexTarget('class')">반별</button>
-            <button class="modal-btn-primary" style="background: var(--navy);" onclick="selectIndexTarget('grade')">학년별</button>
-        </div>
-        <button class="modal-close-btn" onclick="closeModal()">취소</button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="gradeModalOverlay">
-    <div class="modal-box">
-        <div class="modal-title">출제 학년 선택</div>
-        <div class="modal-sub">선택한 학년의 모든 반에 시험지가 출제됩니다.</div>
-        <div id="gradeModalBody"></div>
-        <button class="modal-btn-cancel" onclick="closeModal()">취소</button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="classModalOverlay">
-    <div class="modal-box">
-        <div class="modal-title">출제 학급 선택</div>
-        <div class="modal-sub">학생 오답을 수집할 반을 선택하세요.</div>
-        <div id="classModalBody">
-            </div>
-        <button class="modal-btn-cancel" onclick="closeModal()">취소</button>
+<div class="modal-overlay" id="assignTargetModalOverlay">
+    <div class="modal-box modal-box--wide" id="assignTargetBox">
+        <div id="assignTargetBody"></div>
     </div>
 </div>
 
@@ -2060,25 +2339,14 @@ function confirmQpp(qpp) {
 
     if (_pendingSubmitQr) {
         _pendingQpp = qpp;
-        window._pendingClassSelectItem = item;
-        window._pendingClassSelectQpp = qpp;
-        document.getElementById('targetModalOverlay').classList.add('open');
+        openAssignTargetPanel(item, qpp);
     } else {
         goEngine(item, _pendingAction, qpp);
     }
 }
 
-function selectIndexTarget(targetType) {
-    document.getElementById('targetModalOverlay').classList.remove('open');
-    const item = normalizedExams().find(e => e.file === _pendingFile);
-    if (!item) return;
-    if (targetType === 'grade') openGradeSelectionModalForIndex(item, _pendingQpp);
-    else openClassSelectionModalForIndex(item, _pendingQpp);
-}
-
 /* AP Math OS 선생님 → 반 선택 헬퍼 */
 let _indexQrClassRows = [];
-let _indexQrGroupedByTeacher = {};
 
 function escapeModalText(value) {
     return String(value ?? '')
@@ -2226,184 +2494,90 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
     return res.json().catch(() => ({}));
 }
 
-function renderIndexTeacherClassSelector(classes) {
-    _indexQrClassRows = Array.isArray(classes) ? classes : [];
-    _indexQrGroupedByTeacher = {};
-
-    _indexQrClassRows.forEach(c => {
-        const teacher = getQrTeacherName(c);
-        if (!_indexQrGroupedByTeacher[teacher]) _indexQrGroupedByTeacher[teacher] = [];
-        _indexQrGroupedByTeacher[teacher].push(c);
-    });
-
-    const teachers = Object.keys(_indexQrGroupedByTeacher).sort((a, b) => a.localeCompare(b, 'ko'));
-    if (!teachers.length) {
-        return '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
-    }
-
-    const teacherOptions = teachers.map(t => `<option value="${escapeModalText(t)}">${escapeModalText(t)} 선생님</option>`).join('');
-
-    return `
-        <div class="teacher-class-stack">
-            <div>
-                <label class="teacher-class-label" for="index-teacher-select">1. 선생님 선택</label>
-                <select id="index-teacher-select" class="teacher-class-select" onchange="renderIndexClassSelectByTeacher()">${teacherOptions}</select>
-            </div>
-            <div>
-                <label class="teacher-class-label" for="index-class-select">2. 반 선택</label>
-                <select id="index-class-select" class="teacher-class-select"></select>
-                <div class="teacher-class-note">같은 반명이라도 선택한 선생님의 class_id로 분리되어 QR에 연결됩니다.</div>
-            </div>
-            <button class="modal-btn-primary" onclick="confirmClassSelectionForIndex()">확인</button>
-        </div>`;
+function closeModal() {
+    document.getElementById('qppModal').classList.remove('open');
+    document.getElementById('examModeModal').classList.remove('open');
+    const assignModal = document.getElementById('assignTargetModalOverlay');
+    if (assignModal) assignModal.classList.remove('open');
+    AssignTarget = null;
 }
 
-function renderIndexClassSelectByTeacher() {
-    const teacherSelect = document.getElementById('index-teacher-select');
-    const classSelect = document.getElementById('index-class-select');
-    if (!teacherSelect || !classSelect) return;
+/* ===== 출제 대상 선택: 학년 -> 반 -> 학생 통합 패널 ===== */
 
-    const teacher = teacherSelect.value || Object.keys(_indexQrGroupedByTeacher)[0] || '';
-    const rows = sortQrClassesForSelect(_indexQrGroupedByTeacher[teacher] || []);
+let AssignTarget = null;
 
-    classSelect.innerHTML = rows.map(c => {
-        const labelParts = [c.name || '이름 없는 반', c.grade ? `(${c.grade})` : ''].filter(Boolean).join(' ');
-        return `<option value="${escapeModalText(c.id)}" data-teacher="${escapeModalText(teacher)}" data-class-name="${escapeModalText(c.name || '')}">${escapeModalText(labelParts)}</option>`;
-    }).join('');
+function assignTargetBodyEl() {
+    return document.getElementById('assignTargetBody');
 }
 
-/* API 기반 학급 선택 모달 */
-async function openClassSelectionModalForIndex(item, qpp) {
-    const overlay = document.getElementById('classModalOverlay');
-    const body = document.getElementById('classModalBody');
-
-    overlay.classList.add('open');
-    body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
-
-    // [5G] APMATH_SESSION 인증 정보 로드
-    let authHeader = getIndexAssignmentAuthHeader();
-    try {
-        if (!authHeader) {
-            body.innerHTML = `
-                <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
-                    <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
-                    <input id="apmath-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-                    <input id="apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-                    <div id="apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
-                    <button class="modal-btn-primary" onclick="doApmathLoginAndLoadClasses(event)">로그인 후 반 목록 불러오기</button>
-                    <button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>
-                </div>`;
-            return;
-        }
-    } catch(e) {
-        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">오류가 발생했습니다. 새로고침 후 다시 시도하세요.</div>';
-        return;
-    }
-
-    try {
-        const res = await fetch(`${ARCHIVE_AP_API_BASE}/qr-classes`, { headers: authHeader });
-        if (res.status === 401) {
-            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_LOGIN_REQUIRED_HTML, archiveQrGeneralPrintButtonHtml());
-            return;
-        }
-        if (res.status === 403) {
-            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_FORBIDDEN_HTML, archiveQrGeneralPrintButtonHtml());
-            return;
-        }
-        if (!res.ok) throw new Error('API Request Failed');
-
-        const data = await res.json();
-        if (data && data.success && Array.isArray(data.classes)) {
-            if (data.classes.length === 0) {
-                body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
-                return;
-            }
-
-            body.innerHTML = renderIndexTeacherClassSelector(data.classes);
-            renderIndexClassSelectByTeacher();
-        } else {
-            throw new Error('Invalid data format');
-        }
-    } catch(e) {
-        console.error(e);
-        body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_NETWORK_HTML, archiveQrGeneralPrintButtonHtml());
-    }
-}
-
-function renderIndexGradeSelector(classes) {
-    _indexQrClassRows = Array.isArray(classes) ? classes : [];
-    const grades = getIndexAvailableGrades(_indexQrClassRows);
-    if (!grades.length) {
-        return '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">해당 학년에 출제할 반이 없습니다.</div>';
-    }
-    const options = grades.map(grade => `<option value="${escapeModalText(grade)}">${escapeModalText(grade)} 전체</option>`).join('');
-    return `
-        <div class="teacher-class-stack">
-            <div>
-                <label class="teacher-class-label" for="index-grade-select">학년 선택</label>
-                <select id="index-grade-select" class="teacher-class-select" onchange="renderIndexGradeClassPreview()">${options}</select>
-                <div id="index-grade-class-preview" class="teacher-class-note"></div>
-            </div>
-            <button class="modal-btn-primary" onclick="confirmGradeSelectionForIndex()">확인</button>
-        </div>`;
-}
-
-function renderIndexGradeClassPreview() {
-    const select = document.getElementById('index-grade-select');
-    const preview = document.getElementById('index-grade-class-preview');
-    if (!select || !preview) return;
-    const rows = getIndexClassesForGrade(select.value);
-    preview.textContent = rows.length ? `${select.value} 전체 ${rows.length}개 반에 출제됩니다.` : '해당 학년에 출제할 반이 없습니다.';
-}
-
-async function openGradeSelectionModalForIndex(item, qpp) {
-    const overlay = document.getElementById('gradeModalOverlay');
-    const body = document.getElementById('gradeModalBody');
-
-    overlay.classList.add('open');
-    body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
+async function openAssignTargetPanel(item, qpp) {
+    AssignTarget = {
+        item, qpp,
+        grade: '',
+        classRows: [],
+        gradeStates: {},
+        classState: {},
+        view: 'select',
+        progress: null,
+        assignmentBatchId: '',
+        scope: 'class'
+    };
+    document.getElementById('assignTargetModalOverlay').classList.add('open');
+    assignTargetBodyEl().innerHTML = '<div style="padding:60px; text-align:center; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
 
     const authHeader = getIndexAssignmentAuthHeader();
     if (!authHeader) {
-        body.innerHTML = `
-            <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
-                <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
-                <input id="apmath-grade-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-                <input id="apmath-grade-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-                <div id="apmath-grade-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
-                <button class="modal-btn-primary" onclick="doApmathLoginAndLoadGrades(event)">로그인 후 반 목록 불러오기</button>
-                <button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>
-            </div>`;
+        renderAssignTargetLoginPrompt();
         return;
     }
 
     try {
         const res = await fetch(`${ARCHIVE_AP_API_BASE}/qr-classes`, { headers: authHeader });
-        if (res.status === 401) {
-            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_LOGIN_REQUIRED_HTML, archiveQrGeneralPrintButtonHtml());
-            return;
-        }
-        if (res.status === 403) {
-            body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_FORBIDDEN_HTML, archiveQrGeneralPrintButtonHtml());
-            return;
-        }
+        if (res.status === 401) { renderAssignTargetNotice(ARCHIVE_QR_LOGIN_REQUIRED_HTML); return; }
+        if (res.status === 403) { renderAssignTargetNotice(ARCHIVE_QR_FORBIDDEN_HTML); return; }
         if (!res.ok) throw new Error('API Request Failed');
 
         const data = await res.json();
         if (!data || !data.success || !Array.isArray(data.classes)) throw new Error('Invalid data format');
-        body.innerHTML = renderIndexGradeSelector(data.classes);
-        renderIndexGradeClassPreview();
+        if (!data.classes.length) { renderAssignTargetNotice('등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.'); return; }
+
+        _indexQrClassRows = data.classes;
+        AssignTarget.classRows = data.classes;
+        const grades = getIndexAvailableGrades(data.classes);
+        if (!grades.length) { renderAssignTargetNotice('해당 학년에 출제할 반이 없습니다.'); return; }
+        assignTargetSwitchGrade(grades[0]);
     } catch(e) {
         console.error(e);
-        body.innerHTML = archiveQrNoticeHtml(ARCHIVE_QR_NETWORK_HTML, archiveQrGeneralPrintButtonHtml());
+        renderAssignTargetNotice(ARCHIVE_QR_NETWORK_HTML);
     }
 }
 
-async function doApmathLoginAndLoadGrades(e) {
+function renderAssignTargetNotice(message) {
+    assignTargetBodyEl().innerHTML = `
+        <div style="padding:48px 32px; text-align:center;">
+            <div style="color:var(--warn-text); font-size:13px; margin-bottom:16px;">${message}</div>
+            <button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()">일반 시험지 출력</button>
+            <button class="modal-btn-cancel" type="button" onclick="closeModal()" style="margin-top:10px;">취소</button>
+        </div>`;
+}
+
+function renderAssignTargetLoginPrompt() {
+    assignTargetBodyEl().innerHTML = `
+        <div style="padding:36px; max-width:320px; margin:0 auto;">
+            <div style="font-size:12px; color:var(--text-sub); margin-bottom:10px;">AP Math OS 계정으로 로그인하세요.</div>
+            <input id="assign-target-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box; margin-bottom:8px;">
+            <input id="assign-target-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
+            <div id="assign-target-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px; margin:6px 0;"></div>
+            <button class="modal-btn-primary" onclick="doApmathLoginAndOpenAssignTarget(event)" style="width:100%;">로그인 후 반 목록 불러오기</button>
+            <button class="modal-btn-primary" type="button" onclick="printIndexPendingGeneralExam()" style="width:100%; margin-top:8px;">일반 시험지 출력</button>
+        </div>`;
+}
+
+async function doApmathLoginAndOpenAssignTarget(e) {
     if (e && e.preventDefault) e.preventDefault();
-    const loginId = document.getElementById('apmath-grade-login-id')?.value.trim();
-    const pw = document.getElementById('apmath-grade-login-pw')?.value;
-    const errEl = document.getElementById('apmath-grade-login-err');
+    const loginId = document.getElementById('assign-target-login-id')?.value.trim();
+    const pw = document.getElementById('assign-target-login-pw')?.value;
+    const errEl = document.getElementById('assign-target-login-err');
     if (!loginId || !pw) { if (errEl) errEl.innerText = '아이디와 비밀번호를 입력하세요.'; return; }
     if (errEl) errEl.innerText = '로그인 중...';
     try {
@@ -2416,122 +2590,469 @@ async function doApmathLoginAndLoadGrades(e) {
         if (!data.success) { if (errEl) errEl.innerText = '아이디 또는 비밀번호가 맞지 않습니다.'; return; }
         window.__APMATH_AUTH_MEMORY = { login_id: loginId, raw_password: pw };
         saveApmathSession({ login_id: data.login_id || loginId, id: data.id, name: data.name, role: data.role, session_token: data.session_token || '', expires_at: data.expires_at || '' });
-        openGradeSelectionModalForIndex(window._pendingClassSelectItem, window._pendingClassSelectQpp);
+        if (AssignTarget?.item) openAssignTargetPanel(AssignTarget.item, AssignTarget.qpp);
     } catch(err) {
         if (errEl) errEl.innerText = '서버 연결 실패. 다시 시도하세요.';
     }
 }
 
-async function doApmathLoginAndLoadClasses(e) {
-    if (e && e.preventDefault) e.preventDefault();
-    const loginId = document.getElementById('apmath-login-id')?.value.trim();
-    const pw = document.getElementById('apmath-login-pw')?.value;
-    const errEl = document.getElementById('apmath-login-err');
-    if (!loginId || !pw) { if (errEl) errEl.innerText = '아이디와 비밀번호를 입력하세요.'; return; }
-    if (errEl) errEl.innerText = '로그인 중...';
-    try {
-        const res = await fetch(`${ARCHIVE_AP_API_BASE}/auth/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ login_id: loginId, password: pw })
+function ensureAssignTargetGradeState(grade) {
+    if (!AssignTarget.gradeStates[grade]) {
+        const state = {};
+        getIndexClassesForGrade(grade).forEach(row => {
+            state[row.id] = {
+                row,
+                checked: true,
+                studentIds: null,
+                roster: null,
+                rosterLoading: false,
+                rosterError: null,
+                toast: null,
+                toastUndo: null
+            };
         });
+        AssignTarget.gradeStates[grade] = state;
+    }
+    return AssignTarget.gradeStates[grade];
+}
+
+function assignTargetSwitchGrade(grade) {
+    if (!AssignTarget) return;
+    AssignTarget.grade = grade;
+    AssignTarget.classState = ensureAssignTargetGradeState(grade);
+    renderAssignTargetSelectView();
+    Object.keys(AssignTarget.classState).forEach(id => {
+        if (AssignTarget.classState[id].checked) ensureAssignClassRoster(id);
+    });
+}
+
+async function ensureAssignClassRoster(classId) {
+    const st = AssignTarget?.classState?.[classId];
+    if (!st || st.roster || st.rosterLoading) return;
+    st.rosterLoading = true;
+    renderAssignTargetSelectView();
+    try {
+        const authHeader = getIndexAssignmentAuthHeader();
+        if (!authHeader) throw new Error('AP Math OS 로그인이 필요합니다.');
+        const examTitle = getIndexExamTitle(AssignTarget.item);
+        const examDate = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0];
+        const url = `${ARCHIVE_AP_API_BASE}/class-exam-assignments/roster?class_id=${encodeURIComponent(classId)}&exam_title=${encodeURIComponent(examTitle)}&exam_date=${encodeURIComponent(examDate)}`;
+        const res = await fetch(url, { headers: authHeader });
+        if (!res.ok) throw new Error('roster fetch failed: ' + res.status);
         const data = await res.json();
-        if (!data.success) { if (errEl) errEl.innerText = '아이디 또는 비밀번호가 맞지 않습니다.'; return; }
-        window.__APMATH_AUTH_MEMORY = { login_id: loginId, raw_password: pw };
-        saveApmathSession({ login_id: data.login_id || loginId, id: data.id, name: data.name, role: data.role, session_token: data.session_token || '', expires_at: data.expires_at || '' });
-        openClassSelectionModalForIndex(window._pendingClassSelectItem, window._pendingClassSelectQpp);
-    } catch(err) {
-        if (errEl) errEl.innerText = '서버 연결 실패. 다시 시도하세요.';
+        st.roster = Array.isArray(data.students) ? data.students : [];
+        st.rosterError = null;
+    } catch(e) {
+        console.warn('[assign target] roster fetch failed:', classId, e);
+        st.rosterError = '학생 목록을 불러오지 못했습니다.';
+        st.roster = null;
+    } finally {
+        st.rosterLoading = false;
+        if (AssignTarget) renderAssignTargetSelectView();
     }
 }
 
-function closeModal() {
-    document.getElementById('qppModal').classList.remove('open');
-    document.getElementById('examModeModal').classList.remove('open');
-    const targetModal = document.getElementById('targetModalOverlay');
-    if (targetModal) targetModal.classList.remove('open');
-    const gradeModal = document.getElementById('gradeModalOverlay');
-    if (gradeModal) gradeModal.classList.remove('open');
-    const classModal = document.getElementById('classModalOverlay');
-    if (classModal) classModal.classList.remove('open');
+function assignRetryRoster(classId) {
+    const st = AssignTarget?.classState?.[classId];
+    if (!st) return;
+    st.roster = null;
+    st.rosterError = null;
+    ensureAssignClassRoster(classId);
 }
 
-async function confirmClassSelectionForIndex() {
-    const select = document.getElementById('index-class-select');
-    if (!select || !select.value) return;
-    const selectedOption = select.options[select.selectedIndex];
-    const selectedClassId = select.value;
-    const selectedTeacherName = selectedOption?.dataset?.teacher || document.getElementById('index-teacher-select')?.value || '';
-    const selectedClassName = selectedOption?.dataset?.className || '';
-    const item = normalizedExams().find(e => e.file === _pendingFile);
-    if (item) {
-        const selectedClassRow = (_indexQrClassRows || []).find(row => String(row.id) === String(selectedClassId)) || { id: selectedClassId, name: selectedClassName };
-        const classBody = document.getElementById('classModalBody');
-        try {
-            await registerIndexClassExamAssignment(selectedClassRow, item, {
-                target_scope: 'class',
-                gradeLabel: getIndexClassGrade(selectedClassRow) || item.grade || ''
-            });
-        } catch(e) {
-            console.warn('[archive class assignment] 등록 실패:', e);
-            if (classBody) classBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
-            return;
+function assignTargetToggleAll(checked) {
+    Object.keys(AssignTarget.classState).forEach(id => {
+        AssignTarget.classState[id].checked = checked;
+        AssignTarget.classState[id].studentIds = null;
+    });
+    renderAssignTargetSelectView();
+    if (checked) {
+        Object.keys(AssignTarget.classState).forEach(id => ensureAssignClassRoster(id));
+    }
+}
+
+function assignTargetToggleClass(classId, checked) {
+    const st = AssignTarget.classState[classId];
+    if (!st) return;
+    st.checked = checked;
+    if (checked) {
+        st.studentIds = null;
+        ensureAssignClassRoster(classId);
+    }
+    renderAssignTargetSelectView();
+}
+
+function assignTargetToggleStudent(classId, studentId, checked) {
+    const st = AssignTarget.classState[classId];
+    if (!st || !st.roster) return;
+    if (!st.studentIds) st.studentIds = new Set(st.roster.map(s => s.id));
+    if (checked) st.studentIds.add(studentId); else st.studentIds.delete(studentId);
+    if (st.studentIds.size === st.roster.length) st.studentIds = null;
+    st.toast = null;
+    st.toastUndo = null;
+    renderAssignTargetSelectView();
+}
+
+function assignTargetSelectAllStudents(classId) {
+    const st = AssignTarget.classState[classId];
+    if (!st) return;
+    st.studentIds = null;
+    st.toast = null;
+    st.toastUndo = null;
+    renderAssignTargetSelectView();
+}
+
+function assignTargetApplyPreset(classId, kind) {
+    const st = AssignTarget.classState[classId];
+    if (!st || !st.roster) return;
+    const before = st.studentIds ? new Set(st.studentIds) : new Set(st.roster.map(s => s.id));
+    const matches = st.roster.filter(s => kind === 'absent' ? s.recently_absent : s.already_submitted);
+    if (!matches.length) return;
+    const next = new Set(before);
+    matches.forEach(s => next.delete(s.id));
+    st.toastUndo = before;
+    st.studentIds = next.size === st.roster.length ? null : next;
+    st.toast = `${matches.length}명 자동 제외됨 (${kind === 'absent' ? '결석생' : '이미 응시한 학생'})`;
+    renderAssignTargetSelectView();
+}
+
+function assignTargetUndoLastPreset(classId) {
+    const st = AssignTarget.classState[classId];
+    if (!st || !st.toastUndo) return;
+    st.studentIds = (st.roster && st.toastUndo.size === st.roster.length) ? null : new Set(st.toastUndo);
+    st.toast = null;
+    st.toastUndo = null;
+    renderAssignTargetSelectView();
+}
+
+function assignTargetSearchStudents(classId, value) {
+    const section = document.getElementById('assign-class-section-' + classId);
+    if (!section) return;
+    const q = value.trim();
+    section.querySelectorAll('.assign-student-check').forEach(label => {
+        const name = label.querySelector('.name')?.textContent || '';
+        label.style.display = (!q || name.includes(q)) ? '' : 'none';
+    });
+}
+
+function computeAssignTargetSummary() {
+    const classIds = Object.keys(AssignTarget.classState);
+    const checkedIds = classIds.filter(id => AssignTarget.classState[id].checked);
+    let fullCount = 0, partialCount = 0, totalStudents = 0;
+    checkedIds.forEach(id => {
+        const st = AssignTarget.classState[id];
+        if (st.studentIds) {
+            partialCount++;
+            totalStudents += st.studentIds.size;
+        } else {
+            fullCount++;
+            totalStudents += (st.roster ? st.roster.length : 0);
         }
-        closeModal();
-        if (selectedGrade) loadAssignmentBoardForGrade(selectedGrade);
-        goEngine(item, "exam", _pendingQpp, {
-            submitQr: true,
-            classId: selectedClassId,
-            teacherName: selectedTeacherName,
-            className: selectedClassName,
-            target_scope: 'class'
-        });
+    });
+    if (!checkedIds.length) {
+        return { text: `${AssignTarget.grade} · 선택된 반 없음`, totalStudents: 0 };
     }
+    const parts = [];
+    if (fullCount) parts.push(`${fullCount}개 반 전체`);
+    if (partialCount) parts.push(`${partialCount}개 반 일부`);
+    return { text: `${AssignTarget.grade} · ${parts.join(' + ')} · 총 ${totalStudents}명`, totalStudents };
 }
 
-async function confirmGradeSelectionForIndex() {
-    const select = document.getElementById('index-grade-select');
-    if (!select || !select.value) return;
-    const gradeLabel = select.value;
-    const rows = getIndexClassesForGrade(gradeLabel);
-    if (!rows.length) {
-        const preview = document.getElementById('index-grade-class-preview');
-        if (preview) preview.textContent = '해당 학년에 출제할 반이 없습니다.';
-        return;
+function renderAssignClassRowHtml(classId) {
+    const st = AssignTarget.classState[classId];
+    const countLabel = st.studentIds
+        ? `${st.studentIds.size}/${st.roster ? st.roster.length : '?'}명`
+        : (st.roster ? `${st.roster.length}명` : (st.rosterLoading ? '...' : ''));
+    return `
+        <div class="assign-class-row ${st.studentIds ? 'partial' : ''}">
+            <input type="checkbox" id="assign-class-check-${classId}" ${st.checked ? 'checked' : ''} onchange="assignTargetToggleClass('${classId}', this.checked)">
+            <span class="name">${escapeModalText(st.row.name || '이름 없는 반')}</span>
+            <span class="count">${countLabel}</span>
+        </div>`;
+}
+
+function renderAssignClassSectionHtml(classId) {
+    const st = AssignTarget.classState[classId];
+    const countText = st.roster ? `${st.roster.length}명` : '...';
+    const title = `${escapeModalText(st.row.name || '이름 없는 반')} (${countText})`;
+    const head = `<div class="assign-class-section-head"><div class="assign-class-section-title">${title}</div>`;
+
+    if (st.rosterLoading || (!st.roster && !st.rosterError)) {
+        return `<div class="assign-class-section" id="assign-class-section-${classId}">${head}</div><div class="empty-hint">학생 목록 불러오는 중...</div></div>`;
     }
-    const item = normalizedExams().find(e => e.file === _pendingFile);
-    if (!item) return;
-    if (!resolveExamQuestionCountForAssignment(item)) {
-        const gradeBody = document.getElementById('gradeModalBody');
-        if (gradeBody) gradeBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
+    if (st.rosterError) {
+        return `<div class="assign-class-section" id="assign-class-section-${classId}">${head}</div><div class="empty-hint" style="color:var(--warn-text);">${st.rosterError} <button class="assign-preset-btn" onclick="assignRetryRoster('${classId}')">다시 시도</button></div></div>`;
+    }
+    if (!st.roster.length) {
+        return `<div class="assign-class-section" id="assign-class-section-${classId}">${head}</div><div class="empty-hint">재원 학생이 없습니다.</div></div>`;
+    }
+
+    const excludedSet = st.studentIds ? new Set(st.roster.filter(s => !st.studentIds.has(s.id)).map(s => s.id)) : new Set();
+
+    const gridHtml = st.roster.map(s => {
+        const checked = !st.studentIds || st.studentIds.has(s.id);
+        const classes = ['assign-student-check'];
+        if (s.recently_absent) classes.push('absent');
+        if (s.already_submitted) classes.push('submitted');
+        return `<label class="${classes.join(' ')}"><input type="checkbox" ${checked ? 'checked' : ''} onchange="assignTargetToggleStudent('${classId}','${s.id}', this.checked)"><span class="name">${escapeModalText(s.name)}</span></label>`;
+    }).join('');
+
+    const excludedChips = excludedSet.size
+        ? `<div class="assign-excluded-chips">${st.roster.filter(s => excludedSet.has(s.id)).map(s => `<span class="assign-chip" onclick="assignTargetToggleStudent('${classId}','${s.id}', true)">${escapeModalText(s.name)} ✕</span>`).join('')}</div>`
+        : '';
+
+    const toastHtml = st.toast
+        ? `<div class="assign-toast"><span>${escapeModalText(st.toast)}</span><button onclick="assignTargetUndoLastPreset('${classId}')">되돌리기</button></div>`
+        : '';
+
+    const hasAbsentCandidate = st.roster.some(s => s.recently_absent);
+    const hasSubmittedCandidate = st.roster.some(s => s.already_submitted);
+
+    return `
+        <div class="assign-class-section" id="assign-class-section-${classId}">
+            <div class="assign-class-section-head">
+                <div class="assign-class-section-title">${title}</div>
+                <div class="assign-preset-btns">
+                    ${excludedSet.size ? `<button class="assign-preset-btn" onclick="assignTargetSelectAllStudents('${classId}')">전체 선택</button>` : ''}
+                    ${hasAbsentCandidate ? `<button class="assign-preset-btn" onclick="assignTargetApplyPreset('${classId}','absent')">결석생 제외</button>` : ''}
+                    ${hasSubmittedCandidate ? `<button class="assign-preset-btn" onclick="assignTargetApplyPreset('${classId}','submitted')">이 시험 미응시자만</button>` : ''}
+                </div>
+            </div>
+            ${st.roster.length > 8 ? `<input class="assign-student-search" placeholder="학생 이름 검색" oninput="assignTargetSearchStudents('${classId}', this.value)">` : ''}
+            <div class="assign-student-grid">${gridHtml}</div>
+            ${excludedChips}
+            ${toastHtml}
+        </div>`;
+}
+
+function renderAssignTargetSelectView() {
+    if (!AssignTarget) return;
+    const grades = getIndexAvailableGrades(AssignTarget.classRows);
+    const classIds = Object.keys(AssignTarget.classState);
+    const allChecked = classIds.length > 0 && classIds.every(id => AssignTarget.classState[id].checked && !AssignTarget.classState[id].studentIds);
+    const noneChecked = classIds.every(id => !AssignTarget.classState[id].checked);
+
+    const tabsHtml = grades.map(g => `<div class="assign-grade-tab ${g === AssignTarget.grade ? 'active' : ''}" onclick="assignTargetSwitchGrade('${g}')">${g}</div>`).join('');
+    const classRowsHtml = classIds.map(id => renderAssignClassRowHtml(id)).join('') || '<div class="empty-hint">해당 학년에 반이 없습니다.</div>';
+    const checkedIds = classIds.filter(id => AssignTarget.classState[id].checked);
+    const studentColHtml = checkedIds.length
+        ? checkedIds.map(id => renderAssignClassSectionHtml(id)).join('')
+        : '<div class="empty-hint">왼쪽에서 반을 선택하면 학생 목록이 표시됩니다.</div>';
+
+    const summary = computeAssignTargetSummary();
+
+    assignTargetBodyEl().innerHTML = `
+        <div class="assign-target-panel">
+            <div class="assign-target-head">
+                <div class="modal-title">출제 대상 선택</div>
+                <div class="modal-sub">${escapeModalText(getIndexExamTitle(AssignTarget.item))} · 학년을 고르고, 반과 학생을 필요한 만큼 좁혀서 출제하세요.</div>
+                <div class="assign-grade-tabs">${tabsHtml}</div>
+            </div>
+            <div class="assign-target-body">
+                <div class="assign-class-col">
+                    <label class="assign-class-all-toggle">
+                        <input type="checkbox" id="assign-class-all-toggle" ${allChecked ? 'checked' : ''} onchange="assignTargetToggleAll(this.checked)">
+                        전체 반 선택
+                    </label>
+                    ${classRowsHtml}
+                </div>
+                <div class="assign-student-col">${studentColHtml}</div>
+            </div>
+            <div class="assign-target-foot">
+                <div class="assign-summary-text">${summary.text}</div>
+                <div class="assign-foot-btns">
+                    <button class="modal-btn-cancel" onclick="closeModal()">취소</button>
+                    <button class="modal-btn-primary" ${summary.totalStudents ? '' : 'disabled'} onclick="assignTargetGoReview()">출제 대상 최종 확인</button>
+                </div>
+            </div>
+        </div>`;
+
+    classIds.forEach(id => {
+        const st = AssignTarget.classState[id];
+        const el = document.getElementById('assign-class-check-' + id);
+        if (el) el.indeterminate = st.checked && !!st.studentIds;
+    });
+    const allToggleEl = document.getElementById('assign-class-all-toggle');
+    if (allToggleEl) allToggleEl.indeterminate = !allChecked && !noneChecked;
+}
+
+function assignTargetGoReview() {
+    const summary = computeAssignTargetSummary();
+    if (!summary.totalStudents) return;
+    AssignTarget.view = 'review';
+    renderAssignTargetReviewView();
+}
+
+function assignTargetBackToSelect() {
+    AssignTarget.view = 'select';
+    renderAssignTargetSelectView();
+}
+
+function renderAssignTargetReviewView() {
+    const classIds = Object.keys(AssignTarget.classState).filter(id => AssignTarget.classState[id].checked);
+    const rowsHtml = classIds.map(id => {
+        const st = AssignTarget.classState[id];
+        const name = escapeModalText(st.row.name || '이름 없는 반');
+        if (!st.studentIds) {
+            return `<div class="class-full">${name} (${st.roster ? st.roster.length : 0}명 전체)</div>`;
+        }
+        const includedNames = st.roster.filter(s => st.studentIds.has(s.id)).map(s => s.name);
+        const excludedNames = st.roster.filter(s => !st.studentIds.has(s.id)).map(s => s.name);
+        return `
+            <div class="class-full">${name} (${includedNames.length}명만)</div>
+            <div class="class-partial-names">대상: ${includedNames.map(escapeModalText).join(', ')}</div>
+            <div class="class-excluded-names">제외(${excludedNames.length}명): ${excludedNames.map(escapeModalText).join(', ')}</div>`;
+    }).join('');
+
+    const summary = computeAssignTargetSummary();
+
+    assignTargetBodyEl().innerHTML = `
+        <div class="assign-target-panel">
+            <div class="assign-target-head">
+                <div class="modal-title">최종 확인 — 이 명단으로 출제됩니다</div>
+                <div class="modal-sub">${escapeModalText(getIndexExamTitle(AssignTarget.item))}</div>
+            </div>
+            <div class="assign-target-body" style="display:block; padding:16px 28px; overflow-y:auto;">
+                <div class="assign-review-list">${rowsHtml}</div>
+            </div>
+            <div class="assign-target-foot">
+                <div class="assign-summary-text">${summary.text}</div>
+                <div class="assign-foot-btns">
+                    <button class="modal-btn-cancel" onclick="assignTargetBackToSelect()">뒤로</button>
+                    <button class="modal-btn-primary" onclick="assignTargetSubmit()">총 ${summary.totalStudents}명에게 출제</button>
+                </div>
+            </div>
+        </div>`;
+}
+
+async function assignTargetSubmit() {
+    const classIds = Object.keys(AssignTarget.classState).filter(id => AssignTarget.classState[id].checked);
+    if (!classIds.length) return;
+    if (!resolveExamQuestionCountForAssignment(AssignTarget.item)) {
+        renderAssignTargetNotice('문항 수 확인이 필요합니다.');
         return;
     }
 
-    const assignmentBatchId = getIndexAssignmentBatchId(item, gradeLabel);
+    AssignTarget.scope = classIds.length === 1 ? 'class' : 'grade';
+    AssignTarget.assignmentBatchId = getIndexAssignmentBatchId(AssignTarget.item, AssignTarget.grade);
+    AssignTarget.view = 'progress';
+    AssignTarget.progress = {};
+    classIds.forEach(id => { AssignTarget.progress[id] = { status: 'pending' }; });
+    renderAssignTargetProgressView();
+
+    for (const classId of classIds) {
+        await assignTargetProcessOneClass(classId);
+        if (!AssignTarget) return;
+        renderAssignTargetProgressView();
+    }
+    assignTargetMaybeFinish();
+}
+
+async function assignTargetProcessOneClass(classId) {
+    const st = AssignTarget.classState[classId];
+    AssignTarget.progress[classId] = { status: 'pending' };
     try {
-        for (const row of rows) {
-            await registerIndexClassExamAssignment(row, item, {
-                assignmentBatchId,
-                target_scope: 'grade',
-                gradeLabel
-            });
+        await registerIndexClassExamAssignment(st.row, AssignTarget.item, {
+            assignmentBatchId: AssignTarget.assignmentBatchId,
+            target_scope: AssignTarget.scope,
+            gradeLabel: AssignTarget.grade
+        });
+        if (st.studentIds) {
+            const excludedIds = st.roster.filter(s => !st.studentIds.has(s.id)).map(s => s.id);
+            if (excludedIds.length) {
+                const authHeader = getIndexAssignmentAuthHeader();
+                const examDate = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0];
+                const res = await fetch(`${ARCHIVE_AP_API_BASE}/class-exam-assignments/exclude-students`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', ...authHeader },
+                    body: JSON.stringify({
+                        class_id: classId,
+                        student_ids: excludedIds,
+                        exam_title: getIndexExamTitle(AssignTarget.item),
+                        exam_date: examDate,
+                        archive_file: `exams/${AssignTarget.item.file}`
+                    })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok || !data.success) throw new Error('exclude-students failed: ' + res.status);
+            }
         }
-        closeModal();
-        if (selectedGrade) loadAssignmentBoardForGrade(selectedGrade);
-        const representative = rows[0];
-        goEngine(item, "exam", _pendingQpp, {
+        AssignTarget.progress[classId] = { status: 'success' };
+    } catch(e) {
+        console.warn('[assign target] class 처리 실패:', classId, e);
+        AssignTarget.progress[classId] = { status: 'error', error: String(e?.message || e) };
+    }
+}
+
+function renderAssignTargetProgressView() {
+    const classIds = Object.keys(AssignTarget.progress);
+    const rowsHtml = classIds.map(id => {
+        const st = AssignTarget.classState[id];
+        const p = AssignTarget.progress[id];
+        const icon = p.status === 'success' ? '✔' : p.status === 'error' ? '✕' : '…';
+        return `<div class="assign-progress-row ${p.status}"><span class="icon">${icon}</span><span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — 등록 실패' : ''}</span></div>`;
+    }).join('');
+
+    const anyError = classIds.some(id => AssignTarget.progress[id].status === 'error');
+    const anyPending = classIds.some(id => AssignTarget.progress[id].status === 'pending');
+
+    assignTargetBodyEl().innerHTML = `
+        <div class="assign-target-panel">
+            <div class="assign-target-head">
+                <div class="modal-title">${anyPending ? '출제 처리 중' : (anyError ? '일부 실패' : '출제 완료')}</div>
+            </div>
+            <div class="assign-target-body" style="display:block; padding:12px 28px; overflow-y:auto;">
+                ${rowsHtml}
+            </div>
+            <div class="assign-target-foot">
+                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '실패한 반만 다시 시도할 수 있습니다.' : '모두 완료되었습니다.')}</div>
+                <div class="assign-foot-btns">
+                    ${(!anyPending && anyError) ? '<button class="modal-btn-primary" onclick="assignTargetRetryFailed()">실패한 반만 재시도</button>' : ''}
+                    ${(!anyPending && !anyError) ? '<button class="modal-btn-primary" onclick="closeModal()">닫기</button>' : ''}
+                </div>
+            </div>
+        </div>`;
+}
+
+async function assignTargetRetryFailed() {
+    const failedIds = Object.keys(AssignTarget.progress).filter(id => AssignTarget.progress[id].status === 'error');
+    for (const classId of failedIds) {
+        await assignTargetProcessOneClass(classId);
+        if (!AssignTarget) return;
+        renderAssignTargetProgressView();
+    }
+    assignTargetMaybeFinish();
+}
+
+function assignTargetMaybeFinish() {
+    if (!AssignTarget) return;
+    const allSuccess = Object.values(AssignTarget.progress).every(p => p.status === 'success');
+    if (!allSuccess) return;
+    if (AssignTarget.grade) loadAssignmentBoardForGrade(AssignTarget.grade);
+    setTimeout(() => assignTargetFinishAndOpenEngine(), 700);
+}
+
+function assignTargetFinishAndOpenEngine() {
+    if (!AssignTarget) return;
+    const classIds = Object.keys(AssignTarget.classState).filter(id => AssignTarget.classState[id].checked);
+    const representativeId = classIds[0];
+    const representative = representativeId ? AssignTarget.classState[representativeId].row : null;
+    const item = AssignTarget.item;
+    const qpp = AssignTarget.qpp;
+    const gradeLabel = AssignTarget.grade;
+    const assignmentBatchId = AssignTarget.assignmentBatchId;
+    const scope = AssignTarget.scope;
+    closeModal();
+    if (representative) {
+        goEngine(item, "exam", qpp, {
             submitQr: true,
             classId: representative.id,
             teacherName: getQrTeacherName(representative),
             className: representative.name || '',
-            target_scope: 'grade',
+            target_scope: scope,
             gradeLabel,
             assignmentBatchId
         });
-    } catch(e) {
-        console.error(e);
-        const body = document.getElementById('gradeModalBody');
-        if (body) body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">학년별 출제 등록에 실패했습니다. AP Math OS 연결을 확인하세요.</div>';
     }
 }
 
