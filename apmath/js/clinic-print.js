@@ -1527,9 +1527,9 @@ function clinicPrintUpdateStudentList(classId) {
     clinicPrintSchedulePreviewPush(classId);
 }
 
-// "오답지 만들기"는 서버에 저장/배포하지 않고 지금 설정(시험/범위/유형/단원)으로 풀페이지 미리보기만 연다.
-// 반/학년/유형 모드는 콘텐츠가 학생 선택과 무관하므로 그대로 검토 가능하고,
-// 학생 모드만 콘텐츠 자체가 "누구를 골랐는가"이므로 최소 1명은 선택돼 있어야 미리볼 게 생긴다.
+// "미리보기"는 새 창을 띄우지 않고 우측에 이미 떠 있는 임베드 미리보기 패널(clinic-print-preview-frame)을
+// 갱신해서 보여준다. 설정이 바뀔 때마다 이 패널은 어차피 자동 갱신되므로, 이 버튼은 시험/단원/학생 선택이
+// 빠졌는지 확인해 안내 토스트를 띄우고, 패널을 최신 상태로 강제 갱신 + 화면에 보이도록 스크롤만 해준다.
 function clinicPrintPreview(classId) {
     const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
@@ -1549,34 +1549,33 @@ function clinicPrintPreview(classId) {
             toast('출력 가능한 오답 문항이 없습니다.', 'warn');
             return;
         }
-        clinicPrintOpenEngine(typePayload);
-        return;
+    } else {
+        const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
+        if (mode === 'student' && !selectedStudentIds.length) {
+            toast('미리볼 학생을 선택하세요.', 'warn');
+            return;
+        }
+
+        const payload = clinicPrintBuildPayload(classId, {
+            selectedExamKeys,
+            selectedStudentIds,
+            mode,
+            headerOptions: clinicPrintGetHeaderOptions(classId)
+        });
+        const itemCount = mode === 'grade'
+            ? payload.gradeWrongItems.length
+            : mode === 'class'
+            ? payload.classWrongItems.length
+            : payload.students.reduce((sum, row) => sum + row.wrongItems.length, 0);
+
+        if (!itemCount) {
+            toast('출력 가능한 오답 문항이 없습니다.', 'warn');
+            return;
+        }
     }
 
-    const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
-    if (mode === 'student' && !selectedStudentIds.length) {
-        toast('미리볼 학생을 선택하세요.', 'warn');
-        return;
-    }
-
-    const payload = clinicPrintBuildPayload(classId, {
-        selectedExamKeys,
-        selectedStudentIds,
-        mode,
-        headerOptions: clinicPrintGetHeaderOptions(classId)
-    });
-    const itemCount = mode === 'grade'
-        ? payload.gradeWrongItems.length
-        : mode === 'class'
-        ? payload.classWrongItems.length
-        : payload.students.reduce((sum, row) => sum + row.wrongItems.length, 0);
-
-    if (!itemCount) {
-        toast('출력 가능한 오답 문항이 없습니다.', 'warn');
-        return;
-    }
-
-    clinicPrintOpenEngine(payload);
+    clinicPrintPushPreview(classId);
+    document.getElementById('clinic-print-preview-frame')?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
 }
 
 async function clinicPrintSubmit(classId) {
