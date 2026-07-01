@@ -106,6 +106,77 @@ function getAssignmentArchiveCandidates(value) {
   return [...new Set([raw, normalized].filter(Boolean))];
 }
 
+// 아카이브 원본 문항(standardUnitKey 등, 카멜케이스)을 exam_blueprints(스네이크케이스)로 옮겨 담는 동기화.
+// 아카이브는 GitHub Pages 정적 URL이라 워커에서 바로 fetch 가능하다.
+const EXAM_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+
+function extractQuestionBankFromArchiveText(jsText) {
+  const sandboxWindow = { questionBank: null, __questionBank: null };
+  const sandboxDocument = {
+    createElement: () => ({ style: {}, setAttribute() {}, appendChild() {}, innerHTML: '' }),
+    head: { appendChild() {} },
+    body: { appendChild() {} },
+    addEventListener() {},
+    querySelector: () => null,
+    querySelectorAll: () => []
+  };
+  try {
+    const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null);`);
+    const bank = fn(sandboxWindow, sandboxDocument);
+    return Array.isArray(bank) ? bank : [];
+  } catch (e) {
+    console.warn('[exams] archive questionBank parse failed:', e);
+    return [];
+  }
+}
+
+// archiveFile 하나당 한 번만 동기화한다(이미 blueprint 행이 있으면 건너뜀). 실패해도 시험 배정 자체는 막지 않는다.
+async function syncExamBlueprintsFromArchive(env, archiveFile) {
+  const file = normalizeAssignmentArchiveFile(archiveFile);
+  if (!file || file.startsWith('MIXED:') || /^https?:\/\//i.test(file)) return;
+  try {
+    const already = await env.DB.prepare('SELECT 1 FROM exam_blueprints WHERE archive_file = ? LIMIT 1').bind(file).first();
+    if (already) return;
+
+    const url = EXAM_ARCHIVE_BASE_URL + file.split('/').map(encodeURIComponent).join('/');
+    const res = await fetch(url);
+    if (!res.ok) return;
+    const jsText = await res.text();
+    const bank = extractQuestionBankFromArchiveText(jsText);
+    if (!bank.length) return;
+
+    const stmts = bank.map(q => {
+      const questionNo = Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0);
+      if (!questionNo) return null;
+      return env.DB.prepare(`
+        INSERT INTO exam_blueprints (
+          archive_file, question_no, source_archive_file, source_question_no,
+          standard_unit_key, standard_unit, standard_course, concept_cluster_key, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+        ON CONFLICT(archive_file, question_no) DO UPDATE SET
+          standard_unit_key = excluded.standard_unit_key,
+          standard_unit = excluded.standard_unit,
+          standard_course = excluded.standard_course,
+          concept_cluster_key = excluded.concept_cluster_key,
+          updated_at = DATETIME('now')
+      `).bind(
+        file,
+        questionNo,
+        file,
+        questionNo,
+        q?.standardUnitKey || null,
+        q?.standardUnit || null,
+        q?.standardCourse || null,
+        q?.conceptClusterKey || null
+      );
+    }).filter(Boolean);
+
+    if (stmts.length) await env.DB.batch(stmts);
+  } catch (e) {
+    console.warn('[exams] archive blueprint sync failed:', archiveFile, e);
+  }
+}
+
 function normalizeExamTitleKey(value) {
   return String(value || '').trim().replace(/\s+/g, ' ');
 }
@@ -986,6 +1057,7 @@ export async function handleExams(request, env, teacher, path, url) {
         const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
           .bind(existing.id).first();
         if (subjectInputProvided) await refreshSubjectMismatchExclusions(env, assignment);
+        if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
         return jsonResponse({ success: true, assignment });
       }
 
@@ -1058,6 +1130,7 @@ export async function handleExams(request, env, teacher, path, url) {
       }
 
       if (assignment && assignmentMeta.subject) await refreshSubjectMismatchExclusions(env, assignment);
+      if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
       return jsonResponse({ success: true, assignment });
     }
 
@@ -1077,6 +1150,10 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const assignments = dedupeClassExamAssignments(res.results || []);
       const exclusions = await loadClassAssignmentExclusions(env, assignments.map(a => a.id));
+      // 이 시험이 배정된 시점에 blueprint 동기화가 안 됐던 옛 데이터를 여기서 한 번만 소급 채운다
+      // (이미 동기화된 archive_file은 syncExamBlueprintsFromArchive 내부에서 즉시 스킵되므로 이후 요청은 거의 비용이 없다).
+      const archiveFilesToSync = [...new Set(assignments.map(a => a.archive_file).filter(Boolean))];
+      await Promise.all(archiveFilesToSync.map(file => syncExamBlueprintsFromArchive(env, file)));
       return jsonResponse({ success: true, assignments, exclusions });
     }
   }
@@ -1317,6 +1394,9 @@ export async function handleExams(request, env, teacher, path, url) {
         ...(sessionsRes.results || []).map(row => row.archive_file),
         ...(assignmentsRes.results || []).map(row => row.archive_file)
       ].map(value => normalizeAssignmentArchiveFile(value || '')).filter(Boolean))];
+
+      // 옛 데이터 소급 동기화(이미 동기화된 archive_file은 즉시 스킵됨).
+      await Promise.all(archiveFiles.map(file => syncExamBlueprintsFromArchive(env, file)));
 
       let blueprints = { results: [] };
       if (archiveFiles.length > 0) {
