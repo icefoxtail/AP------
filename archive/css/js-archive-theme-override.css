@@ -4,22 +4,22 @@
 */
 
 :root {
-  --archive-accent: #007AFF;
-  --archive-accent-strong: #0066CC;
-  --archive-accent-soft: rgba(0, 122, 255, 0.08);
-  --archive-accent-ring: rgba(0, 122, 255, 0.20);
+  --archive-accent: #27272A;
+  --archive-accent-strong: #18181B;
+  --archive-accent-soft: rgba(39, 39, 42, 0.08);
+  --archive-accent-ring: rgba(39, 39, 42, 0.20);
 
-  --archive-bg: #F2F2F7;
+  --archive-bg: #F2F2F2;
   --archive-surface: #FFFFFF;
-  --archive-surface-soft: #F9F9FB;
+  --archive-surface-soft: #F9F9F9;
   --archive-border: rgba(0, 0, 0, 0.10);
   --archive-border-soft: rgba(0, 0, 0, 0.06);
   --archive-text: #1C1C1E;
   --archive-text-soft: #6C6C70;
 
-  --archive-navy: #0B1220;
-  --archive-navy-2: #101828;
-  --archive-navy-3: #172033;
+  --archive-navy: #111113;
+  --archive-navy-2: #18181B;
+  --archive-navy-3: #232326;
 
   --archive-radius-sm: 12px;
   --archive-radius-md: 16px;
@@ -34,26 +34,26 @@
   --navy: var(--archive-navy);
   --navy-2: var(--archive-navy-2);
   --navy-3: var(--archive-navy-3);
-  --navy-4: #1F2937;
+  --navy-4: #27272A;
   --blue-main: var(--archive-accent);
   --blue-strong: var(--archive-accent-strong);
-  --blue-light: #64A9FF;
-  --blue-pale: rgba(0, 122, 255, 0.14);
-  --blue-soft: rgba(0, 122, 255, 0.07);
+  --blue-light: #A1A1AA;
+  --blue-pale: rgba(39, 39, 42, 0.14);
+  --blue-soft: rgba(39, 39, 42, 0.07);
   --bg-soft: var(--archive-bg);
   --card-bg: var(--archive-surface);
-  --card-active: #F7FBFF;
+  --card-active: #F7F7F8;
   --card-border: var(--archive-border);
   --card-border-hover: var(--archive-accent-ring);
-  --card-border-active: rgba(0, 122, 255, 0.42);
+  --card-border-active: rgba(39, 39, 42, 0.42);
   --text-main: var(--archive-text);
   --text-sub: var(--archive-text-soft);
   --text-weak: #8E8E93;
-  --badge-bg: rgba(0, 122, 255, 0.08);
-  --badge-text: #007AFF;
-  --badge-border: rgba(0, 122, 255, 0.16);
+  --badge-bg: rgba(39, 39, 42, 0.08);
+  --badge-text: #27272A;
+  --badge-border: rgba(39, 39, 42, 0.16);
   --shadow-card: var(--archive-shadow-sm);
-  --shadow-card-hover: 0 18px 44px rgba(0, 122, 255, 0.14);
+  --shadow-card-hover: 0 18px 44px rgba(0, 0, 0, 0.14);
   --shadow-panel: var(--archive-shadow-lg);
 }
 
@@ -75,9 +75,9 @@ header {
 
 .hero {
   background:
-    radial-gradient(circle at 86% 14%, rgba(0,122,255,0.20), transparent 24%),
-    radial-gradient(circle at 16% 22%, rgba(10,132,255,0.14), transparent 28%),
-    radial-gradient(circle at 50% 110%, rgba(0,122,255,0.10), transparent 32%),
+    radial-gradient(circle at 86% 14%, rgba(255,255,255,0.10), transparent 24%),
+    radial-gradient(circle at 16% 22%, rgba(255,255,255,0.07), transparent 28%),
+    radial-gradient(circle at 50% 110%, rgba(255,255,255,0.05), transparent 32%),
     linear-gradient(180deg, var(--archive-navy) 0%, var(--archive-navy-2) 54%, var(--archive-navy-3) 100%);
 }
 
@@ -89,7 +89,7 @@ header {
 .gtab:hover,
 .gtab.active {
   background: rgba(255,255,255,0.13);
-  border-color: rgba(100,169,255,0.34);
+  border-color: rgba(255,255,255,0.30);
 }
 
 .filter-band {
@@ -129,12 +129,12 @@ button {
 
 .fb-mixer {
   background: var(--archive-accent);
-  box-shadow: 0 10px 24px rgba(0,122,255,0.18);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
 }
 
 .fb-mixer:hover {
   background: var(--archive-accent-strong);
-  box-shadow: 0 16px 34px rgba(0,122,255,0.22);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.22);
 }
 
 .exam-card {
@@ -150,7 +150,7 @@ button {
 
 .exam-card.is-active {
   border-color: var(--card-border-active);
-  box-shadow: 0 16px 36px rgba(0,122,255,0.14);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.14);
 }
 
 .card-head,

@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)</title>
     <script>
         window.MathJax = {
@@ -41,6 +42,18 @@
         .print-header-editor-check input { width: 14px; height: 14px; margin: 0; }
         .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        body.screen-fit-mode { overflow-x: hidden; }
+        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
+        body.screen-fit-mode .page { flex: 0 0 auto; }
+        @media screen and (max-width: 640px) {
+            body.screen-fit-mode { padding-top: 44px; }
+            body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
+            body.screen-fit-mode #ctrl-title,
+            body.screen-fit-mode #btn-print,
+            body.screen-fit-mode .qr-output-wrap,
+            body.screen-fit-mode .print-header-editor-wrap { display: none; }
+            body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
+        }
 
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
@@ -279,7 +292,7 @@
         @media print {
             #mode-ctrl { display: none; }
             body { margin: 0 !important; padding: 0 !important; background: white; }
-            #print-area { display: block !important; padding: 0 !important; }
+            #print-area { display: block !important; width: auto !important; padding: 0 !important; transform: none !important; }
             .page { box-shadow: none; height: 296.5mm; overflow: hidden; page-break-after: always; }
             .page:last-child { page-break-after: avoid; }
             #staging { display: none; }
@@ -326,7 +339,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
+            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -1326,9 +1339,10 @@ function autoImageSizeClassFor(img) {
     if (!width || !height) return 'image-medium';
     const ratio = width / height;
     if (ratio >= 2.2) return 'image-full';
-    if (ratio >= 1.25) return 'image-large';
-    if (ratio >= 0.8) return 'image-small';
-    return 'image-medium';
+    if (ratio >= 1.4) return 'image-large';
+    if (ratio >= 0.7) return 'image-medium';
+    if (ratio >= 0.4) return 'image-half';
+    return 'image-small';
 }
 
 function waitForQuestionImage(img) {
@@ -1646,8 +1660,28 @@ async function render() {
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
     applyQrSolutionLockUI();
+    updateScreenFitScale();
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
+}
+
+function shouldUseScreenFit(params) {
+    return params.get('fit') === 'screen' || window.matchMedia('(max-width: 900px)').matches;
+}
+
+function updateScreenFitScale() {
+    if (!document.body.classList.contains('screen-fit-mode')) return;
+    const area = document.getElementById('print-area');
+    const page = area?.querySelector('.page');
+    if (!area || !page) return;
+    const pageWidth = page.offsetWidth || 794;
+    const availableWidth = Math.max(280, window.innerWidth - 16);
+    const scale = Math.max(0.32, Math.min(1, availableWidth / pageWidth));
+    document.documentElement.style.setProperty('--screen-page-scale', String(scale));
+}
+
+if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('resize', () => requestAnimationFrame(updateScreenFitScale));
 }
 
 // [3B] exam_blueprints 자동 등록 (AP 제출 QR 모드 전용)
@@ -1702,6 +1736,8 @@ async function registerBlueprintToOS() {
 
 window.onload = () => {
     restoreApmathSessionFromHash();
+    const params = new URLSearchParams(window.location.search);
+    if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
     init();
 };
 </script>
