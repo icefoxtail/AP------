@@ -70,6 +70,12 @@
     line-height: 1.45;
 }
 
+.clinic-print-mini-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 /* 작은 보조 버튼(전체 선택 등): apms-button 톤을 따른다. */
 .clinic-print-mini-btn {
     display: inline-flex;
@@ -249,6 +255,7 @@
 }
 
 .clinic-print-exam-row__delete {
+    display: var(--clinic-print-delete-display, inline-flex);
     flex: none;
     align-self: center;
     min-height: 28px;

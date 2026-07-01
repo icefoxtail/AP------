@@ -50,7 +50,7 @@ assert(
 );
 
 assert(
-  clinicPrint.includes('clinicPrintGetClassExamAssignments(classId).forEach') &&
+  clinicPrint.includes('clinicPrintGetGradeExamAssignments(classId) : clinicPrintGetClassExamAssignments(classId)).forEach') &&
     clinicPrint.includes('.filter(group => group.printable || group.sessions.length > 0)'),
   'clinic print should show printable assigned exams even before any student session exists'
 );

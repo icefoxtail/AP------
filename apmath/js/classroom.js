@@ -694,6 +694,21 @@ function normalizeClassroomDate(value) {
     return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : '';
 }
 
+function getClassroomStatusLookbackRange(today) {
+    const to = normalizeClassroomDate(today) || getClassroomOperationDate();
+    const [year, month, day] = to.split('-').map(Number);
+    const prevMonthLastDay = new Date(year, month - 1, 0).getDate();
+    const fromDate = new Date(year, month - 2, Math.min(day, prevMonthLastDay));
+    const from = fromDate.toLocaleDateString('sv-SE');
+    return { from, to };
+}
+
+function isClassroomDateInRange(date, range) {
+    const safeDate = normalizeClassroomDate(date);
+    if (!safeDate) return false;
+    return safeDate >= range.from && safeDate <= range.to;
+}
+
 function mergeClassroomDateRecords(date, attendanceRows = [], homeworkRows = []) {
     const d = normalizeClassroomDate(date);
     if (!d) return;
@@ -1346,6 +1361,24 @@ function normalizeClassroomStatusArchiveFile(raw = '') {
     return `exams/${path}`;
 }
 
+function getClassroomStatusArchiveDisplayTitle(raw = '') {
+    const value = String(raw || '').trim();
+    if (!value) return '';
+    const compact = value.replace(/^MIXED:/, '');
+    const leaf = compact.split(/[\\/]/).pop() || compact;
+    return leaf
+        .replace(/\.js(?:\?.*)?$/i, '')
+        .replace(/^exams\//, '')
+        .replace(/^archive\//, '')
+        .trim();
+}
+
+function getClassroomStatusExamDisplayTitle(row = {}) {
+    return getClassroomStatusArchiveDisplayTitle(row.archiveFile || row.archive_file || '') ||
+        String(row.exam_title || row.title || '').trim() ||
+        '출제 시험';
+}
+
 function makeClassroomStatusExamKey(row = {}) {
     const date = String(row.exam_date || row.date || '').slice(0, 10);
     const archive = normalizeClassroomStatusArchiveFile(row.archive_file || '');
@@ -1376,8 +1409,10 @@ function buildClassroomAssignmentStatusRows(classId, students) {
     const classStudents = Array.isArray(students) ? students : getClassroomActiveStudents(classId);
     const studentIds = new Set(classStudents.map(student => String(student?.id || '')).filter(Boolean));
     const activeCount = classStudents.length || studentIds.size;
+    const range = getClassroomStatusLookbackRange(getClassroomOperationDate());
     const assignments = (state.db.class_exam_assignments || [])
-        .filter(row => String(row?.class_id || '') === String(classId || ''));
+        .filter(row => String(row?.class_id || '') === String(classId || ''))
+        .filter(row => isClassroomDateInRange(String(row?.exam_date || row?.date || '').slice(0, 10), range));
     if (!assignments.length) return [];
 
     const groups = new Map();
@@ -1387,6 +1422,7 @@ function buildClassroomAssignmentStatusRows(classId, students) {
             groups.set(key, {
                 key,
                 title: assignment.exam_title || '',
+                displayTitle: getClassroomStatusExamDisplayTitle(assignment),
                 date: String(assignment.exam_date || '').slice(0, 10),
                 archiveFile: assignment.archive_file || '',
                 questionCount: Number(assignment.question_count || 0),
@@ -1397,6 +1433,7 @@ function buildClassroomAssignmentStatusRows(classId, students) {
         const group = groups.get(key);
         group.assignments.push(assignment);
         if (!group.title && assignment.exam_title) group.title = assignment.exam_title;
+        if (!group.displayTitle) group.displayTitle = getClassroomStatusExamDisplayTitle(assignment);
         if (!group.date && assignment.exam_date) group.date = String(assignment.exam_date || '').slice(0, 10);
         if (!group.archiveFile && assignment.archive_file) group.archiveFile = assignment.archive_file;
         if (!group.questionCount && assignment.question_count) group.questionCount = Number(assignment.question_count || 0);
@@ -1439,7 +1476,8 @@ function renderClassroomAssignmentStatusCategory(classId, students) {
     const rows = buildClassroomAssignmentStatusRows(classId, students);
     const body = rows.length
         ? rows.map(row => {
-            const title = row.title || '출제 시험';
+            const title = row.displayTitle || getClassroomStatusExamDisplayTitle(row);
+            const examTitleForOpen = row.title || title;
             const date = row.date || '';
             const qCount = Number(row.questionCount || 0);
             const meta = [
@@ -1449,7 +1487,7 @@ function renderClassroomAssignmentStatusCategory(classId, students) {
                 `오답 ${row.wrongCount}문항`
             ].filter(Boolean).join(' · ');
             return `
-                <div class="ap-classroom-monthly-row ap-classroom-monthly-row--exam" role="button" tabindex="0" onclick="if(typeof openExamDetail==='function') openExamDetail('${apEscapeHtml(String(classId || ''))}', ${apJsArg(title)}, '${apEscapeHtml(date)}', ${apJsArg(row.archiveFile || '')})">
+                <div class="ap-classroom-monthly-row ap-classroom-monthly-row--exam" role="button" tabindex="0" onclick="if(typeof openExamDetail==='function') openExamDetail('${apEscapeHtml(String(classId || ''))}', ${apJsArg(examTitleForOpen)}, '${apEscapeHtml(date)}', ${apJsArg(row.archiveFile || '')})">
                     <div class="ap-classroom-monthly-student">${apEscapeHtml(title)}</div>
                     <div class="ap-classroom-monthly-dates">${apEscapeHtml(meta)}</div>
                 </div>
@@ -1469,8 +1507,10 @@ function renderClassroomAssignmentStatusCategory(classId, students) {
 }
 
 function getClassroomWrongClinicStatusRows(classId) {
+    const range = getClassroomStatusLookbackRange(getClassroomOperationDate());
     return (state.db.wrong_clinic_status || [])
         .filter(row => String(row?.class_id || '') === String(classId || ''))
+        .filter(row => isClassroomDateInRange(String(row?.created_at || row?.set_created_at || '').slice(0, 10), range))
         .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')));
 }
 
@@ -1479,23 +1519,54 @@ function scheduleClassroomWrongClinicStatusRefresh(classId) {
     if (!cid || typeof api === 'undefined' || typeof api.get !== 'function') return;
     if (!state.ui) state.ui = {};
     if (!state.ui.classroomWrongClinicStatus) state.ui.classroomWrongClinicStatus = {};
+    const range = getClassroomStatusLookbackRange(getClassroomOperationDate());
     const cache = state.ui.classroomWrongClinicStatus[cid] || {};
     if (cache.loading) return;
-    if (cache.loadedAt && Date.now() - cache.loadedAt < 60000) return;
-    state.ui.classroomWrongClinicStatus[cid] = { ...cache, loading: true };
+    if (cache.loadedAt && cache.from === range.from && cache.to === range.to && Date.now() - cache.loadedAt < 60000) return;
+    state.ui.classroomWrongClinicStatus[cid] = { ...cache, loading: true, from: range.from, to: range.to };
     setTimeout(async () => {
         try {
-            const res = await api.get(`wrong-clinics/class-status?class_id=${encodeURIComponent(cid)}`);
+            const params = new URLSearchParams({ class_id: cid, from: range.from, to: range.to });
+            const res = await api.get(`wrong-clinics/class-status?${params.toString()}`);
             const rows = (res?.clinics || []).map(row => ({ ...row, class_id: cid }));
             const keep = (state.db.wrong_clinic_status || []).filter(row => String(row?.class_id || '') !== cid);
             state.db.wrong_clinic_status = [...keep, ...rows];
-            state.ui.classroomWrongClinicStatus[cid] = { loading: false, loadedAt: Date.now() };
+            state.ui.classroomWrongClinicStatus[cid] = { loading: false, loadedAt: Date.now(), from: range.from, to: range.to };
             updateClassroomMonthlyStatusBoardDOM(cid);
         } catch (e) {
             console.warn('[classroom] wrong clinic status refresh failed:', e);
-            state.ui.classroomWrongClinicStatus[cid] = { loading: false, loadedAt: Date.now() };
+            state.ui.classroomWrongClinicStatus[cid] = { loading: false, loadedAt: Date.now(), from: range.from, to: range.to };
         }
     }, 0);
+}
+
+function renderClassroomClinicPacketItems(items = []) {
+    const list = Array.isArray(items) ? items : [];
+    if (!list.length) return '문항 없음';
+    const labels = list.slice(0, 8).map(item => {
+        const title = getClassroomStatusArchiveDisplayTitle(item.display_archive_file || item.archive_file || '') ||
+            String(item.exam_title || '').trim() ||
+            '문항';
+        const no = Number(item.display_question_no || item.question_no || item.order_no || 0);
+        return `${title}${no ? ` ${no}번` : ''}`;
+    });
+    const extra = list.length > labels.length ? ` 외 ${list.length - labels.length}문항` : '';
+    return `${labels.join(', ')}${extra}`;
+}
+
+function renderClassroomClinicStudentPackets(row = {}) {
+    const packets = Array.isArray(row.student_packets) ? row.student_packets : [];
+    if (!packets.length) return '';
+    return `
+        <div class="ap-classroom-monthly-dates" style="margin-top:4px;padding-left:8px;display:grid;gap:2px;">
+            ${packets.map(packet => {
+                const duplicateCount = Number(packet.duplicate_item_count || 0);
+                const warn = duplicateCount ? ` · 중복 ${duplicateCount}문항` : '';
+                const submitted = Number(packet.is_submitted || 0) ? '제출' : '미제출';
+                return `<div><b>${apEscapeHtml(packet.student_name || '학생')}</b>: ${apEscapeHtml(renderClassroomClinicPacketItems(packet.items || []))} <span style="color:${duplicateCount ? 'var(--error)' : 'var(--secondary)'};">(${submitted}${warn})</span></div>`;
+            }).join('')}
+        </div>
+    `;
 }
 
 function renderClassroomWrongClinicStatusCategory(classId) {
@@ -1517,6 +1588,7 @@ function renderClassroomWrongClinicStatusCategory(classId) {
                 <div class="ap-classroom-monthly-row ap-classroom-monthly-row--exam" role="button" tabindex="0" onclick="if(typeof openClinicPrintCenter==='function') openClinicPrintCenter('${apEscapeHtml(String(classId || ''))}')">
                     <div class="ap-classroom-monthly-student">${apEscapeHtml(title)}</div>
                     <div class="ap-classroom-monthly-dates">${apEscapeHtml(meta)}</div>
+                    ${renderClassroomClinicStudentPackets(row)}
                 </div>
             `;
         }).join('')

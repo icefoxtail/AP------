@@ -1,5 +1,5 @@
 import { sha256hex } from '../helpers/admin-db.js';
-import { canAccessClass, canAccessStudent, isAdminUser } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 
 async function verifyAuth(request, env) {
@@ -1223,6 +1223,126 @@ export async function handleExams(request, env, teacher, path, url) {
         sessions: sessions.results,
         wrong_answers: wrongs.results,
         blueprints: blueprints.results,
+        assignments: dedupedAssignments,
+        exclusions
+      });
+    }
+
+    if (method === 'GET' && id === 'by-grade') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      if (!isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+
+      const baseClassId = normalizeOptionalText(url.searchParams.get('class') || url.searchParams.get('class_id'));
+      const from = normalizeBoardDate(url.searchParams.get('from')) || '2026-06-01';
+      const to = normalizeBoardDate(url.searchParams.get('to')) || getBoardDateOffset('', 0);
+      if (!baseClassId) {
+        return jsonResponse({ error: 'class required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 400);
+      }
+      if (!(await canAccessClass(currentTeacher, baseClassId, env))) {
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      }
+
+      const baseClass = await env.DB.prepare('SELECT id, grade FROM classes WHERE id = ? LIMIT 1').bind(baseClassId).first();
+      if (!baseClass) {
+        return jsonResponse({ error: 'class not found', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 404);
+      }
+      const grade = normalizeBoardGrade(baseClass.grade || '');
+      if (!grade) {
+        return jsonResponse({ error: 'grade required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 400);
+      }
+
+      const classRes = await env.DB.prepare(`
+        SELECT *
+        FROM classes
+        WHERE (is_active != 0 OR is_active IS NULL)
+          AND REPLACE(COALESCE(grade, ''), ' ', '') = ?
+        ORDER BY teacher_name ASC, name ASC
+      `).bind(grade).all();
+      const classes = classRes.results || [];
+      const classIds = classes.map(row => String(row.id || '').trim()).filter(Boolean);
+      if (!classIds.length) {
+        return jsonResponse({ success: true, grade, from, to, classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] });
+      }
+
+      const classMarkers = classIds.map(() => '?').join(',');
+      const [classStudentsRes, assignmentsRes, sessionsRes] = await Promise.all([
+        env.DB.prepare(`
+          SELECT *
+          FROM class_students
+          WHERE class_id IN (${classMarkers})
+        `).bind(...classIds).all(),
+        env.DB.prepare(`
+          SELECT *
+          FROM class_exam_assignments
+          WHERE class_id IN (${classMarkers})
+            AND SUBSTR(COALESCE(exam_date, created_at, updated_at, ''), 1, 10) BETWEEN ? AND ?
+          ORDER BY exam_date DESC, updated_at DESC
+        `).bind(...classIds, from, to).all(),
+        env.DB.prepare(`
+          SELECT *
+          FROM exam_sessions
+          WHERE class_id IN (${classMarkers})
+            AND SUBSTR(COALESCE(exam_date, created_at, updated_at, ''), 1, 10) BETWEEN ? AND ?
+          ORDER BY exam_date DESC, id DESC
+          LIMIT 2000
+        `).bind(...classIds, from, to).all()
+      ]);
+
+      const classStudents = classStudentsRes.results || [];
+      const studentIds = [...new Set(classStudents.map(row => String(row.student_id || '').trim()).filter(Boolean))];
+      let students = { results: [] };
+      if (studentIds.length) {
+        const studentMarkers = studentIds.map(() => '?').join(',');
+        students = await env.DB.prepare(`
+          SELECT id, name, school_name, grade, status
+          FROM students
+          WHERE id IN (${studentMarkers})
+            AND COALESCE(status, '재원') IN ('재원', 'active')
+        `).bind(...studentIds).all();
+      }
+
+      const sessionIds = [...new Set((sessionsRes.results || []).map(row => String(row.id || '').trim()).filter(Boolean))];
+      let wrongs = { results: [] };
+      if (sessionIds.length) {
+        const sessionMarkers = sessionIds.map(() => '?').join(',');
+        wrongs = await env.DB.prepare(`
+          SELECT *
+          FROM wrong_answers
+          WHERE session_id IN (${sessionMarkers})
+        `).bind(...sessionIds).all();
+      }
+
+      const archiveFiles = [...new Set([
+        ...(sessionsRes.results || []).map(row => row.archive_file),
+        ...(assignmentsRes.results || []).map(row => row.archive_file)
+      ].map(value => normalizeAssignmentArchiveFile(value || '')).filter(Boolean))];
+
+      let blueprints = { results: [] };
+      if (archiveFiles.length > 0) {
+        const bpMarkers = archiveFiles.map(() => '?').join(',');
+        blueprints = await env.DB.prepare(`
+          SELECT *
+          FROM exam_blueprints
+          WHERE archive_file IN (${bpMarkers})
+          ORDER BY archive_file ASC, question_no ASC
+        `).bind(...archiveFiles).all();
+      }
+
+      const dedupedAssignments = dedupeClassExamAssignments(assignmentsRes.results || []);
+      const exclusions = await loadClassAssignmentExclusions(env, dedupedAssignments.map(a => a.id));
+
+      return jsonResponse({
+        success: true,
+        grade,
+        from,
+        to,
+        classes,
+        class_students: classStudents,
+        students: students.results || [],
+        sessions: sessionsRes.results || [],
+        wrong_answers: wrongs.results || [],
+        blueprints: blueprints.results || [],
         assignments: dedupedAssignments,
         exclusions
       });

@@ -212,6 +212,9 @@ function shouldApplyPrintHeader(type) {
 
 function getRenderHeaderTitle(type, fallbackTitle) {
     const opts = getPrintHeaderOptions();
+    if ((type === 'ans' || type === 'sol') && state.payload?.mode === 'student' && fallbackTitle) {
+        return fallbackTitle;
+    }
     if (shouldApplyPrintHeader(type) && opts.title) return opts.title;
     return fallbackTitle || state.payload?.printTitle || '오답 클리닉';
 }
@@ -1723,9 +1726,9 @@ function renderAns(area, payload) {
             const student = students[sIdx];
             const pagesBefore = area.querySelectorAll('.page').length;
             const items = (student.wrongItems || []).map(item => cloneQuestionForRender(item));
-            const metaLeft = `${payload.className || ''} 쨌 ${getStudentExamLabel(payload, student)}`.replace(/^ 쨌 | 쨌 $/g, '');
+            const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
             renderAnswerPagesForStudent(area, student, items, {
-                title: `${student.studentName} 정답표`,
+                title: getStudentWrongClinicHeaderTitle(student),
                 metaLeft,
                 metaRight: payload.createdDate || ''
             });
@@ -1758,15 +1761,19 @@ function renderAnswerPagesForStudent(area, student, items, pageMeta = {}) {
         answer: getQuestionAnswer(q) || '-'
     }));
     renderAnswerRows(area, rows, {
-        title: pageMeta.title || `${student?.studentName || '학생'} 정답표`,
+        title: pageMeta.title || getStudentWrongClinicHeaderTitle(student),
         metaLeft: pageMeta.metaLeft || '',
         metaRight: pageMeta.metaRight || ''
     });
 }
 
+function getStudentWrongClinicHeaderTitle(student) {
+    return `${student?.studentName || '학생'} 오답 클리닉`;
+}
+
 async function renderSolutionPagesForStudent(area, student, items, pageMeta = {}) {
     await placeSolutionItems(area, items || [], {
-        title: pageMeta.title || `${student?.studentName || '학생'} 해설지`,
+        title: pageMeta.title || getStudentWrongClinicHeaderTitle(student),
         metaLeft: pageMeta.metaLeft || '',
         metaRight: pageMeta.metaRight || ''
     });
@@ -1843,12 +1850,12 @@ async function renderStudentReviewPacket(area, payload) {
         const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
         const metaRight = payload.createdDate || '';
         renderAnswerPagesForStudent(area, student, items, {
-            title: `${student.studentName} 정답표`,
+            title: getStudentWrongClinicHeaderTitle(student),
             metaLeft,
             metaRight
         });
         await renderSolutionPagesForStudent(area, student, items, {
-            title: `${student.studentName} 해설지`,
+            title: getStudentWrongClinicHeaderTitle(student),
             metaLeft,
             metaRight
         });
