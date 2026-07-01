@@ -1317,7 +1317,7 @@ function clinicPrintRenderUnitMode(classId, scopeLabel) {
     root.innerHTML = `
         <div class="clinic-print-type-panel">
             <div class="clinic-print-field">
-                <div class="clinic-print-section-title">유형</div>
+                <div class="clinic-print-section-title">정답률 기준</div>
                 <div id="clinic-print-unit-rate-toggle" class="clinic-print-rate-grid">
                     <button type="button" class="clinic-print-rate-btn${activeCls('gte75')}" data-rate="gte75" onclick="clinicPrintSetUnitRate('${safeClassId}','gte75')">최다빈출 (75%초과)</button>
                     <button type="button" class="clinic-print-rate-btn${activeCls('mid5075')}" data-rate="mid5075" onclick="clinicPrintSetUnitRate('${safeClassId}','mid5075')">중간 (50~75%)</button>
@@ -1496,7 +1496,7 @@ function clinicPrintUpdateStudentList(classId) {
         const totalWrong = poolItems.reduce((sum, row) => sum + row.wrongItems.length, 0);
         const scopeLabel = mode === 'student'
             ? '오답 학생'
-            : (scope === 'grade' ? '학년 대상 학생' : '대상 학생');
+            : (scope === 'grade' ? '학년 전체 학생' : '반 전체 학생');
         countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · ${scopeLabel} ${poolItems.length}명 · 오답 ${totalWrong}문항`;
     }
 
@@ -1527,6 +1527,58 @@ function clinicPrintUpdateStudentList(classId) {
     clinicPrintSchedulePreviewPush(classId);
 }
 
+// "오답지 만들기"는 서버에 저장/배포하지 않고 지금 설정(시험/범위/유형/단원)으로 풀페이지 미리보기만 연다.
+// 반/학년/유형 모드는 콘텐츠가 학생 선택과 무관하므로 그대로 검토 가능하고,
+// 학생 모드만 콘텐츠 자체가 "누구를 골랐는가"이므로 최소 1명은 선택돼 있어야 미리볼 게 생긴다.
+function clinicPrintPreview(classId) {
+    const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+
+    if (!selectedExamKeys.length) {
+        toast('출력할 시험을 선택하세요.', 'warn');
+        return;
+    }
+
+    if (mode === 'type') {
+        const typePayload = clinicPrintBuildTypePayload(classId);
+        if (typePayload.typeMode === 'unit' && !(typePayload.unitOrder || []).length) {
+            toast('출력할 단원을 선택하세요.', 'warn');
+            return;
+        }
+        if (!(typePayload.typeItems || []).length) {
+            toast('출력 가능한 오답 문항이 없습니다.', 'warn');
+            return;
+        }
+        clinicPrintOpenEngine(typePayload);
+        return;
+    }
+
+    const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
+    if (mode === 'student' && !selectedStudentIds.length) {
+        toast('미리볼 학생을 선택하세요.', 'warn');
+        return;
+    }
+
+    const payload = clinicPrintBuildPayload(classId, {
+        selectedExamKeys,
+        selectedStudentIds,
+        mode,
+        headerOptions: clinicPrintGetHeaderOptions(classId)
+    });
+    const itemCount = mode === 'grade'
+        ? payload.gradeWrongItems.length
+        : mode === 'class'
+        ? payload.classWrongItems.length
+        : payload.students.reduce((sum, row) => sum + row.wrongItems.length, 0);
+
+    if (!itemCount) {
+        toast('출력 가능한 오답 문항이 없습니다.', 'warn');
+        return;
+    }
+
+    clinicPrintOpenEngine(payload);
+}
+
 async function clinicPrintSubmit(classId) {
     const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
@@ -1538,9 +1590,9 @@ async function clinicPrintSubmit(classId) {
         return;
     }
 
-    // 모드/범위와 무관하게 출제 대상 학생은 반드시 직접 선택해야 한다(반·학년 전체 자동 배포 금지).
+    // 모드/범위와 무관하게 출제할 학생은 반드시 직접 선택해야 한다(반·학년 전체 자동 배포 금지).
     if (!selectedStudentIds.length) {
-        toast('출제 대상 학생을 선택하세요.', 'warn');
+        toast('출제할 학생을 선택하세요.', 'warn');
         return;
     }
 
@@ -1749,7 +1801,7 @@ async function openClinicPrintCenter(classId, options = {}) {
             </div>
 
             <section class="clinic-print-section">
-                <div class="clinic-print-section-title">출력 방식</div>
+                <div class="clinic-print-section-title">출제 기준</div>
                 <div id="clinic-print-mode-cards" class="clinic-print-mode-grid">
                     <label class="clinic-print-mode-card clinic-print-mode-card--active" data-mode="student">
                         <input type="radio" class="clinic-print-mode-card__radio" name="clinic-print-mode" value="student" checked onchange="clinicPrintSwitchMode('${safeClassIdForJs}')">
@@ -1776,13 +1828,13 @@ async function openClinicPrintCenter(classId, options = {}) {
 
             <section class="clinic-print-section clinic-print-header-card">
                 <input type="hidden" id="clinic-print-header-title-dirty" value="0">
-                <div class="clinic-print-section-title">출력 헤더</div>
+                <div class="clinic-print-section-title">인쇄 설정</div>
                 <label class="clinic-print-header-field">
-                    <span>출력 제목</span>
+                    <span>제목</span>
                     <input id="clinic-print-header-title" class="clinic-print-header-input" type="text" maxlength="80" value="${clinicPrintEscapeAttr(clinicPrintGetHeaderDefaultTitle(classId))}" oninput="clinicPrintSetHeaderTitleDirty(true)">
                 </label>
                 <label class="clinic-print-header-field">
-                    <span>보조 문구 <span class="clinic-print-section-title--soft">(비우면 반·시험 자동)</span></span>
+                    <span>부제목 <span class="clinic-print-section-title--soft">(비우면 반·시험 자동 입력)</span></span>
                     <input id="clinic-print-header-subtitle" class="clinic-print-header-input" type="text" maxlength="120" placeholder="선택 입력">
                 </label>
                 <div class="clinic-print-note">제목·보조 문구는 우측 미리보기 헤더를 직접 클릭해서도 수정할 수 있어요. 이름·점수·날짜는 1페이지 헤더에 자동 입력되고, 2페이지부터는 작은 이름표가 붙습니다.</div>
@@ -1801,17 +1853,6 @@ async function openClinicPrintCenter(classId, options = {}) {
                     <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintOnExamChange('${safeClassIdForJs}');">전체 선택</button>
                 </div>
                 <div id="clinic-print-exam-list" class="clinic-print-exam-list">${examHtml}</div>
-            </section>
-
-            <section id="clinic-print-student-section" class="clinic-print-section">
-                <div class="clinic-print-section-head">
-                    <div class="clinic-print-section-title">출제 대상 학생</div>
-                    <div class="clinic-print-mini-btn-group">
-                        <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true); clinicPrintSchedulePreviewPush('${safeClassIdForJs}');">전체 선택</button>
-                        <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=false); clinicPrintSchedulePreviewPush('${safeClassIdForJs}');">전체 해제</button>
-                    </div>
-                </div>
-                <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
             </section>
 
             <section id="clinic-print-type-panel" class="clinic-print-type-panel" style="display:none;">
@@ -1847,7 +1888,20 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div id="clinic-print-type-result"></div>
             </section>
 
-            <button id="clinic-print-submit-btn" class="btn apms-button apms-button--primary btn-primary clinic-print-submit" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
+            <button id="clinic-print-preview-btn" class="btn apms-button apms-button--quiet clinic-print-submit" onclick="clinicPrintPreview('${safeClassIdForJs}')">미리보기</button>
+
+            <section id="clinic-print-student-section" class="clinic-print-section">
+                <div class="clinic-print-section-head">
+                    <div class="clinic-print-section-title">출제할 학생 선택</div>
+                    <div class="clinic-print-mini-btn-group">
+                        <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true); clinicPrintSchedulePreviewPush('${safeClassIdForJs}');">전체 선택</button>
+                        <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=false); clinicPrintSchedulePreviewPush('${safeClassIdForJs}');">전체 해제</button>
+                    </div>
+                </div>
+                <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
+            </section>
+
+            <button id="clinic-print-submit-btn" class="btn apms-button apms-button--primary btn-primary clinic-print-submit" onclick="clinicPrintSubmit('${safeClassIdForJs}')">출제하기</button>
         </div>
         </div>
         <div class="clinic-print-layout__preview" aria-label="출력 미리보기">
