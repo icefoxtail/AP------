@@ -485,6 +485,22 @@ function clinicPrintGetSourceIdentity(bp, archiveFile, questionNo) {
     return { sourceArchiveFile, sourceQuestionNo };
 }
 
+function clinicPrintGetWrongItemSourceKey(item) {
+    const file = clinicPrintNormalizeArchiveFile(item?.sourceArchiveFile || item?.archiveFile || '');
+    const no = Number(item?.sourceQuestionNo || item?.questionNo || 0);
+    return `${file}|${no}`;
+}
+
+function clinicPrintDedupeWrongItemsBySource(items) {
+    const seen = new Set();
+    return (items || []).filter(item => {
+        const key = clinicPrintGetWrongItemSourceKey(item);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+}
+
 function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, options = {}) {
     const selectedExams = new Set(selectedExamKeys || []);
     const selectedStudents = new Set((selectedStudentIds || []).map(id => String(id)));
@@ -535,11 +551,11 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
     return Object.values(rowsByStudent)
         .map(row => ({
             ...row,
-            wrongItems: row.wrongItems.sort((a, b) =>
+            wrongItems: clinicPrintDedupeWrongItemsBySource(row.wrongItems.sort((a, b) =>
                 String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
                 String(a.examTitle || '').localeCompare(String(b.examTitle || ''), 'ko') ||
                 Number(a.questionNo) - Number(b.questionNo)
-            )
+            ))
         }))
         .filter(row => options.excludeEmpty === false || row.wrongItems.length > 0)
         .sort((a, b) => String(a.studentName || '').localeCompare(String(b.studentName || ''), 'ko'));
@@ -618,11 +634,11 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
         studentWrongItems: Object.values(rowsByStudent)
             .map(row => ({
                 ...row,
-                wrongItems: row.wrongItems.sort((a, b) =>
+                wrongItems: clinicPrintDedupeWrongItemsBySource(row.wrongItems.sort((a, b) =>
                     String(b.examDate || '').localeCompare(String(a.examDate || '')) ||
                     String(a.examTitle || '').localeCompare(String(b.examTitle || ''), 'ko') ||
                     Number(a.questionNo) - Number(b.questionNo)
-                )
+                ))
             }))
             .sort((a, b) =>
                 String(a.className || '').localeCompare(String(b.className || ''), 'ko') ||
@@ -636,7 +652,7 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
 
     (studentWrongItems || []).forEach(student => {
         (student.wrongItems || []).forEach(item => {
-            const key = `${clinicPrintNormalizeArchiveFile(item.archiveFile)}|${Number(item.questionNo)}`;
+            const key = clinicPrintGetWrongItemSourceKey(item);
             const totalCount = Number(examCohortCounts[item.examKey] || 0);
             if (!map[key]) {
                 map[key] = {
@@ -694,8 +710,13 @@ function clinicPrintBuildPayload(classId, config) {
     const selectedStudentIds = config.selectedStudentIds || [];
     const mode = config.mode || 'student';
     const studentWrongItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, { excludeEmpty: true });
-    const examCohortCounts = clinicPrintBuildExamCohortCounts(classId, selectedExamKeys, selectedStudentIds);
-    const classWrongItems = clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts);
+
+    // 반 공통 오답 통계는 배포 대상 선택과 무관하게 반 전체 모집단 기준으로 계산한다.
+    // (선택한 학생은 "누구에게 배포할지"만 결정하며, "공통 오답이 무엇인지" 통계는 좁히지 않는다)
+    const allClassStudentIds = clinicPrintGetClassStudents(classId).map(student => String(student.id));
+    const classCohortWrongItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, allClassStudentIds, { excludeEmpty: true });
+    const classCohortCounts = clinicPrintBuildExamCohortCounts(classId, selectedExamKeys, allClassStudentIds);
+    const classWrongItems = clinicPrintBuildClassWrongItems(classCohortWrongItems, classCohortCounts);
     const gradeSource = mode === 'grade'
         ? clinicPrintBuildGradeWrongSource(classId, selectedExamKeys)
         : { cohortCounts: {}, studentWrongItems: [] };
@@ -772,34 +793,34 @@ function clinicPrintOpenEngineUrl(url) {
     }
 }
 
+// 모드/범위와 무관하게 배포 대상은 항상 화면에서 선택한 학생으로만 제한한다.
+// (반/학년 전체에 자동 배포되지 않도록 - 통계 모집단과 배포 대상을 분리)
 function clinicPrintBuildWrongClinicTargets(classId, payload, selectedStudentIds = []) {
     const mode = payload?.mode || 'student';
-    if (mode === 'student') {
-        const selected = new Set((selectedStudentIds || []).map(String));
-        return clinicPrintGetClassStudents(classId)
+    const selected = new Set((selectedStudentIds || []).map(String));
+    const isGradeScope = mode === 'grade' || (mode === 'type' && payload.scope === 'grade');
+
+    if (isGradeScope) {
+        return clinicPrintGetGradeStudents(classId)
             .filter(student => selected.has(String(student.id)))
             .map(student => ({
                 type: 'student',
                 student_id: student.id,
                 student_name: student.name || '',
-                class_id: classId,
-                class_name: clinicPrintGetClass(classId)?.name || ''
+                class_id: student.classId || '',
+                class_name: student.className || ''
             }));
     }
-    if (mode === 'grade' || (mode === 'type' && payload.scope === 'grade')) {
-        return clinicPrintGetGradeStudents(classId).map(student => ({
+
+    return clinicPrintGetClassStudents(classId)
+        .filter(student => selected.has(String(student.id)))
+        .map(student => ({
             type: 'student',
             student_id: student.id,
             student_name: student.name || '',
-            class_id: student.classId || '',
-            class_name: student.className || ''
+            class_id: classId,
+            class_name: clinicPrintGetClass(classId)?.name || ''
         }));
-    }
-    return [{
-        type: 'class',
-        class_id: classId,
-        class_name: clinicPrintGetClass(classId)?.name || ''
-    }];
 }
 
 async function clinicPrintSaveAndOpen(classId, payload, selectedStudentIds = []) {
@@ -921,17 +942,13 @@ function clinicPrintSwitchMode(classId) {
     const studentSection = document.getElementById('clinic-print-student-section');
     const typePanel = document.getElementById('clinic-print-type-panel');
     const submitBtn = document.getElementById('clinic-print-submit-btn');
-    if (studentSection) studentSection.style.display = isType ? 'none' : '';
+    // 학생 선택 영역은 모드와 무관하게 항상 노출한다(반/학년/유형 모드도 배포 대상을 직접 골라야 함).
+    if (studentSection) studentSection.style.display = '';
     if (typePanel) typePanel.style.display = isType ? 'flex' : 'none';
     if (submitBtn) submitBtn.style.display = '';
     clinicPrintRefreshHeaderDefault(classId);
 
-    if (isType) {
-        clinicPrintRenderTypePanel(classId);
-        clinicPrintSchedulePreviewPush(classId);
-        return;
-    }
-
+    if (isType) clinicPrintRenderTypePanel(classId);
     clinicPrintUpdateStudentList(classId);
     clinicPrintSchedulePreviewPush(classId);
 }
@@ -951,17 +968,43 @@ function clinicPrintGetScopeWrongItems(classId, selectedExamKeys, scope) {
     return clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts);
 }
 
-// 최다빈출 = 정답률 50% 이상 / 최다오답 = 정답률 50% 미만, 둘 다 오답수 내림차순.
+// 배포 대상 선택 목록의 모집단(반 또는 학년)을 반환한다. 오답이 없는 학생은 선택지에서 제외.
+function clinicPrintGetDeliveryPoolStudents(classId, selectedExamKeys, scope) {
+    if (scope === 'grade') {
+        return clinicPrintBuildGradeWrongSource(classId, selectedExamKeys).studentWrongItems;
+    }
+    const allStudentIds = clinicPrintGetClassStudents(classId).map(student => String(student.id));
+    return clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, allStudentIds, { excludeEmpty: true });
+}
+
+function clinicPrintGetDeliveryScope(mode) {
+    if (mode === 'grade') return 'grade';
+    if (mode === 'type') return document.getElementById('clinic-print-type-scope')?.value || 'class';
+    return 'class';
+}
+
+// 시험 선택이 바뀌면 유형 모드는 문항 미리보기를, 그 외 모드는 학생 목록을 갱신해야 한다.
+function clinicPrintOnExamChange(classId) {
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    if (mode === 'type') clinicPrintRenderTypePanel(classId);
+    clinicPrintUpdateStudentList(classId);
+}
+
+// 최다빈출 = 정답률 50% 초과 / 최다오답 = 정답률 50% 이하 (2단계, 유형 카드용).
+// 단원별 오답은 3단계: 75%초과 / 50~75% / 50%이하. 둘 다 오답수 내림차순.
 function clinicPrintFilterTypeItems(items, rateRule) {
     return (items || [])
         .filter(item => {
             const rate = item.correctRate;
             if (rate === null || rate === undefined) return false;
-            return rateRule === 'gte50' ? rate >= 50 : rate < 50;
+            if (rateRule === 'gte75') return rate > 75;
+            if (rateRule === 'mid5075') return rate > 50 && rate <= 75;
+            if (rateRule === 'lte50') return rate <= 50;
+            return rateRule === 'gte50' ? rate > 50 : rate <= 50;
         })
         .sort((a, b) =>
-            Number(b.wrongCount || 0) - Number(a.wrongCount || 0) ||
             Number(b.correctRate || 0) - Number(a.correctRate || 0) ||
+            Number(b.wrongCount || 0) - Number(a.wrongCount || 0) ||
             Number(a.questionNo || 0) - Number(b.questionNo || 0)
         );
 }
@@ -986,6 +1029,7 @@ function clinicPrintBuildTypePayload(classId) {
                 const ak = a.unitKey || '__UNCLASSIFIED__';
                 const bk = b.unitKey || '__UNCLASSIFIED__';
                 return (orderIndex.get(ak) - orderIndex.get(bk)) ||
+                    Number(b.correctRate || 0) - Number(a.correctRate || 0) ||
                     Number(b.wrongCount || 0) - Number(a.wrongCount || 0) ||
                     Number(a.questionNo || 0) - Number(b.questionNo || 0);
             });
@@ -1027,6 +1071,7 @@ function clinicPrintSetTypeScope(classId, scope) {
     });
     clinicPrintRefreshHeaderDefault(classId);
     clinicPrintRenderTypePanel(classId);
+    clinicPrintUpdateStudentList(classId); // 범위(반/학년)가 바뀌면 배포 대상 모집단도 바뀐다
     clinicPrintSchedulePreviewPush(classId);
 }
 
@@ -1069,7 +1114,7 @@ function clinicPrintRenderTypePanel(classId) {
 
     const rateRule = typeMode === 'frequent' ? 'gte50' : 'lt50';
     const filtered = clinicPrintFilterTypeItems(scopeItems, rateRule);
-    const typeLabel = typeMode === 'frequent' ? '최다빈출 (정답률 50% 이상)' : '최다오답 (정답률 50% 미만)';
+    const typeLabel = typeMode === 'frequent' ? '최다빈출 (정답률 50% 초과)' : '최다오답 (정답률 50% 이하)';
 
     if (summaryEl) summaryEl.textContent = `${scopeLabel} · ${typeMode === 'frequent' ? '최다빈출' : '최다오답'} · ${filtered.length}문항`;
 
@@ -1111,7 +1156,7 @@ function clinicPrintRenderTypePanel(classId) {
 // ---- 단원별 오답 드래그 UI (Loop 3) ----
 
 // 유형 패널의 단원 선택/순서 상태. 모달 재생성 시 초기화되며, root 재렌더에는 영향받지 않는다.
-const clinicPrintTypeState = { unitSelection: [], unitRate: 'lt50', dragKey: null };
+const clinicPrintTypeState = { unitSelection: [], unitRate: 'lte50', dragKey: null };
 
 // 과목 prefix 정렬 우선순위. 표준단원키 접두로 마스터 과목 순서를 부여한다(JS아카이브 마스터 테이블 순서 기준).
 const CLINIC_COURSE_RANK = {
@@ -1166,16 +1211,16 @@ function clinicPrintComputeScopeUnits(classId) {
 function clinicPrintRenderUnitMode(classId, scopeLabel) {
     const root = document.getElementById('clinic-print-type-result');
     if (!root) return;
-    const isFrequent = clinicPrintTypeState.unitRate === 'gte50';
     const safeClassId = clinicPrintEscapeJsString(classId);
-    const activeCls = on => on ? ' clinic-print-rate-btn--active' : '';
+    const activeCls = rate => rate === clinicPrintTypeState.unitRate ? ' clinic-print-rate-btn--active' : '';
     root.innerHTML = `
         <div class="clinic-print-type-panel">
             <div class="clinic-print-field">
                 <div class="clinic-print-section-title">유형</div>
                 <div id="clinic-print-unit-rate-toggle" class="clinic-print-rate-grid">
-                    <button type="button" class="clinic-print-rate-btn${activeCls(isFrequent)}" data-rate="gte50" onclick="clinicPrintSetUnitRate('${safeClassId}','gte50')">최다빈출 (50%↑)</button>
-                    <button type="button" class="clinic-print-rate-btn${activeCls(!isFrequent)}" data-rate="lt50" onclick="clinicPrintSetUnitRate('${safeClassId}','lt50')">최다오답 (50%↓)</button>
+                    <button type="button" class="clinic-print-rate-btn${activeCls('gte75')}" data-rate="gte75" onclick="clinicPrintSetUnitRate('${safeClassId}','gte75')">최다빈출 (75%초과)</button>
+                    <button type="button" class="clinic-print-rate-btn${activeCls('mid5075')}" data-rate="mid5075" onclick="clinicPrintSetUnitRate('${safeClassId}','mid5075')">중간 (50~75%)</button>
+                    <button type="button" class="clinic-print-rate-btn${activeCls('lte50')}" data-rate="lte50" onclick="clinicPrintSetUnitRate('${safeClassId}','lte50')">최다오답 (50%이하)</button>
                 </div>
             </div>
             <div class="clinic-print-field">
@@ -1219,7 +1264,8 @@ function clinicPrintRenderUnitLists(classId) {
     const summaryEl = document.getElementById('clinic-print-summary');
     const scope = document.getElementById('clinic-print-type-scope')?.value || 'class';
     const scopeLabel = scope === 'grade' ? (clinicPrintGetClassGrade(classId) || '학년') + ' 전체' : '현재 반';
-    const rateLabel = clinicPrintTypeState.unitRate === 'gte50' ? '최다빈출' : '최다오답';
+    const rateLabel = clinicPrintTypeState.unitRate === 'gte75' ? '최다빈출'
+        : (clinicPrintTypeState.unitRate === 'mid5075' ? '중간' : '최다오답');
     if (summaryEl) summaryEl.textContent = `${scopeLabel} · 단원별(${rateLabel}) · 선택 ${selectedKeys.length}/${units.length}단원 · ${totalFiltered}문항`;
 
     masterEl.innerHTML = available.length
@@ -1326,69 +1372,42 @@ function clinicPrintAttachUnitDnD(classId) {
     });
 }
 
+// 배포 대상 학생 체크리스트. 반/학년/유형 모드 모두 여기서 "실제로 인쇄물을 받을 학생"을 고른다.
+// 공통 오답 통계(정답률 등)는 항상 반/학년 전체 모집단 기준으로 별도 계산되며, 이 목록은 배포 범위만 좁힌다.
 function clinicPrintUpdateStudentList(classId) {
-    const currentMode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
-    if (currentMode === 'type') {
-        clinicPrintSwitchMode(classId);
-        return;
-    }
-    const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
-    const selectedStudentIds = new Set(clinicPrintGetClassStudents(classId).map(student => String(student.id)));
-    const studentItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, Array.from(selectedStudentIds), { excludeEmpty: true });
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    const scope = clinicPrintGetDeliveryScope(mode);
+    const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const root = document.getElementById('clinic-print-student-list');
     const countEl = document.getElementById('clinic-print-summary');
     if (!root) return;
 
-    if (countEl) {
-        if (mode === 'grade') {
-            const gradeSource = clinicPrintBuildGradeWrongSource(classId, selectedExamKeys);
-            const gradeItems = clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
-            const cohortTotal = Object.values(gradeSource.cohortCounts || {}).reduce((sum, count) => sum + Number(count || 0), 0);
-            countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · 학년 제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항`;
-        } else {
-            const totalWrong = studentItems.reduce((sum, row) => sum + row.wrongItems.length, 0);
-            countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · 오답 학생 ${studentItems.length}명 · 오답 ${totalWrong}문항`;
-        }
-    }
-
     if (!selectedExamKeys.length) {
         root.innerHTML = '<div class="clinic-print-empty">시험을 선택하세요.</div>';
+        if (countEl && mode !== 'type') countEl.textContent = '시험을 선택하세요.';
         clinicPrintSchedulePreviewPush(classId);
         return;
     }
 
-    if (mode === 'grade') {
-        const gradeSource = clinicPrintBuildGradeWrongSource(classId, selectedExamKeys);
-        const gradeItems = clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
-        if (!gradeItems.length) {
-            root.innerHTML = '<div class="clinic-print-empty">선택한 시험에 출력 가능한 학년 오답이 없습니다.</div>';
-            clinicPrintSchedulePreviewPush(classId);
-            return;
-        }
+    const poolItems = clinicPrintGetDeliveryPoolStudents(classId, selectedExamKeys, scope);
 
-        const cohortTotal = Object.values(gradeSource.cohortCounts || {}).reduce((sum, count) => sum + Number(count || 0), 0);
-        root.innerHTML = `
-            <div class="clinic-print-info-card">
-                <div class="clinic-print-info-card__title">${clinicPrintEscapeHtml(clinicPrintGetClassGrade(classId) || '학년')} 공통 오답</div>
-                <div class="clinic-print-info-card__meta">제출 ${cohortTotal}명 · 공통 오답 ${gradeItems.length}문항</div>
-            </div>
-        `;
-        clinicPrintSchedulePreviewPush(classId);
-        return;
+    if (countEl && mode !== 'type') {
+        const totalWrong = poolItems.reduce((sum, row) => sum + row.wrongItems.length, 0);
+        const scopeLabel = scope === 'grade' ? '학년 오답 학생' : '오답 학생';
+        countEl.textContent = `선택 시험 ${selectedExamKeys.length}개 · ${scopeLabel} ${poolItems.length}명 · 오답 ${totalWrong}문항`;
     }
 
-    if (!studentItems.length) {
+    if (!poolItems.length) {
         root.innerHTML = '<div class="clinic-print-empty">선택한 시험에 출력 가능한 오답이 없습니다.</div>';
         clinicPrintSchedulePreviewPush(classId);
         return;
     }
 
-    root.innerHTML = studentItems.map(row => `
+    root.innerHTML = poolItems.map(row => `
         <label class="clinic-print-student-row">
             <span class="clinic-print-student-row__main">
                 <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" checked onchange="clinicPrintSchedulePreviewPush('${clinicPrintEscapeJsString(classId)}')">
-                <span class="clinic-print-student-row__name">${clinicPrintEscapeHtml(row.studentName)}</span>
+                <span class="clinic-print-student-row__name">${clinicPrintEscapeHtml(row.studentName)}${row.className ? ` · ${clinicPrintEscapeHtml(row.className)}` : ''}</span>
             </span>
             <span class="clinic-print-student-row__count">${row.wrongItems.length}문항</span>
         </label>
@@ -1402,11 +1421,18 @@ async function clinicPrintSubmit(classId) {
     const modeEl = document.querySelector('input[name="clinic-print-mode"]:checked');
     const mode = modeEl?.value || 'student';
 
+    if (!selectedExamKeys.length) {
+        toast('출력할 시험을 선택하세요.', 'warn');
+        return;
+    }
+
+    // 모드/범위와 무관하게 출제 대상 학생은 반드시 직접 선택해야 한다(반·학년 전체 자동 배포 금지).
+    if (!selectedStudentIds.length) {
+        toast('출제 대상 학생을 선택하세요.', 'warn');
+        return;
+    }
+
     if (mode === 'type') {
-        if (!selectedExamKeys.length) {
-            toast('출력할 시험을 선택하세요.', 'warn');
-            return;
-        }
         const typePayload = clinicPrintBuildTypePayload(classId);
         if (typePayload.typeMode === 'unit' && !(typePayload.unitOrder || []).length) {
             toast('출력할 단원을 선택하세요.', 'warn');
@@ -1416,17 +1442,7 @@ async function clinicPrintSubmit(classId) {
             toast('출력 가능한 오답 문항이 없습니다.', 'warn');
             return;
         }
-        await clinicPrintOpenStoredOrFallback(classId, typePayload, clinicPrintGetClassStudents(classId).map(student => String(student.id)));
-        return;
-    }
-
-    if (!selectedExamKeys.length) {
-        toast('출력할 시험을 선택하세요.', 'warn');
-        return;
-    }
-
-    if (mode !== 'grade' && !selectedStudentIds.length) {
-        toast('출력할 학생을 선택하세요.', 'warn');
+        await clinicPrintOpenStoredOrFallback(classId, typePayload, selectedStudentIds);
         return;
     }
 
@@ -1545,7 +1561,7 @@ async function openClinicPrintCenter(classId, options = {}) {
             const metaCls = group.printable ? 'clinic-print-exam-row__meta' : 'clinic-print-exam-row__meta clinic-print-exam-row__meta--error';
             return `
                 <label class="clinic-print-exam-row${group.printable ? '' : ' clinic-print-exam-row--disabled'}">
-                    <input type="checkbox" class="clinic-print-exam-row__check" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')">
+                    <input type="checkbox" class="clinic-print-exam-row__check" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintOnExamChange('${safeClassIdForJs}')">
                     <span class="clinic-print-exam-row__main">
                         <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
                         <span class="${metaCls}">${clinicPrintEscapeHtml(status)}</span>
@@ -1615,14 +1631,14 @@ async function openClinicPrintCenter(classId, options = {}) {
             <section class="clinic-print-section">
                 <div class="clinic-print-section-head">
                     <div class="clinic-print-section-title">시험 목록</div>
-                    <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${safeClassIdForJs}');">전체 선택</button>
+                    <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintOnExamChange('${safeClassIdForJs}');">전체 선택</button>
                 </div>
                 <div class="clinic-print-exam-list">${examHtml}</div>
             </section>
 
             <section id="clinic-print-student-section" class="clinic-print-section">
                 <div class="clinic-print-section-head">
-                    <div class="clinic-print-section-title">학생</div>
+                    <div class="clinic-print-section-title">출제 대상 학생</div>
                     <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true);">전체 선택</button>
                 </div>
                 <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
@@ -1645,11 +1661,11 @@ async function openClinicPrintCenter(classId, options = {}) {
                     <div id="clinic-print-type-cards" class="clinic-print-type-grid">
                         <button type="button" class="clinic-print-type-card clinic-print-type-card--active" data-type-mode="frequent" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','frequent')">
                             <span class="clinic-print-type-card__title">최다빈출</span>
-                            <span class="clinic-print-type-card__sub">정답률 50% 이상<br>반복 오답 문항</span>
+                            <span class="clinic-print-type-card__sub">정답률 50% 초과<br>반복 오답 문항</span>
                         </button>
                         <button type="button" class="clinic-print-type-card" data-type-mode="mostWrong" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','mostWrong')">
                             <span class="clinic-print-type-card__title">최다오답</span>
-                            <span class="clinic-print-type-card__sub">정답률 50% 미만<br>다수 취약 문항</span>
+                            <span class="clinic-print-type-card__sub">정답률 50% 이하<br>다수 취약 문항</span>
                         </button>
                         <button type="button" class="clinic-print-type-card" data-type-mode="unit" onclick="clinicPrintSetTypeMode('${safeClassIdForJs}','unit')">
                             <span class="clinic-print-type-card__title">단원별 오답</span>

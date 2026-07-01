@@ -2141,6 +2141,9 @@ function renderStudentWrongClinicTab(sid) {
                     </div>
                     <div style="display:flex;gap:6px;flex-wrap:wrap;">
                         ${reissueButton}
+                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'exam')">문제</button>
+                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'ans')">정답</button>
+                        <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'sol')">해설</button>
                         <button type="button" class="btn apms-button apms-button--quiet" style="color:var(--error);" onclick="deleteStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">삭제</button>
                     </div>
                 </div>

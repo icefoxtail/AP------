@@ -183,12 +183,18 @@ async function ensureWrongClinicPacketProgressColumns(env) {
 }
 
 function normalizeItem(item = {}, orderNo = 1) {
-  const archiveFile = text(item.archiveFile || item.archive_file);
-  const questionNo = Math.trunc(num(item.questionNo || item.question_no || item.sourceQuestionNo || item.originalId || item.original_id, 0));
+  const displayArchiveFile = text(item.archiveFile || item.archive_file);
+  const displayQuestionNo = Math.trunc(num(item.questionNo || item.question_no || item.originalId || item.original_id, 0));
+  const archiveFile = text(item.sourceArchiveFile || item.source_archive_file || displayArchiveFile);
+  const questionNo = Math.trunc(num(item.sourceQuestionNo || item.source_question_no || displayQuestionNo, 0));
   return {
     ...item,
     archiveFile,
     questionNo,
+    sourceArchiveFile: archiveFile,
+    sourceQuestionNo: questionNo,
+    displayArchiveFile,
+    displayQuestionNo,
     sourceQuestionId: text(item.sourceQuestionId || item.source_question_id || item.questionId || item.question_id),
     originalId: text(item.originalId || item.original_id || item.id),
     examTitle: text(item.examTitle || item.exam_title),
@@ -537,10 +543,18 @@ async function createWrongClinic(request, env, teacher) {
 
 function itemFromRow(row) {
   const base = parseJson(row.item_json, {}) || {};
+  const sourceArchiveFile = text(base.sourceArchiveFile || base.source_archive_file || row.archive_file);
+  const sourceQuestionNo = Math.trunc(num(base.sourceQuestionNo || base.source_question_no || row.question_no, 0));
+  const displayArchiveFile = text(base.displayArchiveFile || base.display_archive_file || row.archive_file);
+  const displayQuestionNo = Math.trunc(num(base.displayQuestionNo || base.display_question_no || row.question_no, 0));
   return {
     ...base,
-    archiveFile: row.archive_file,
-    questionNo: Number(row.question_no || 0),
+    archiveFile: sourceArchiveFile,
+    questionNo: sourceQuestionNo,
+    sourceArchiveFile,
+    sourceQuestionNo,
+    displayArchiveFile,
+    displayQuestionNo,
     sourceQuestionId: row.source_question_id || base.sourceQuestionId || '',
     originalId: row.original_id || base.originalId || '',
     examTitle: row.exam_title || base.examTitle || '',
