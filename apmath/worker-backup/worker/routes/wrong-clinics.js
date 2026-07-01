@@ -703,6 +703,21 @@ async function loadSetPayload(env, setKey) {
       });
     }
     payload.students = students;
+  } else {
+    // class/grade/type 모드도 학생마다 packet_key가 배포되어 있으므로,
+    // 인쇄 시 학생별로 개인 QR(→ 학생페이지)을 붙일 수 있도록 수신자 목록을 함께 내려준다.
+    const recipientsRes = await env.DB.prepare(`
+      SELECT recipient_student_id, recipient_student_name, packet_key
+      FROM wrong_clinic_packets
+      WHERE set_id = ?
+        AND COALESCE(status, 'active') = 'active'
+      ORDER BY recipient_student_name ASC
+    `).bind(set.id).all();
+    payload.recipients = (recipientsRes.results || []).map(row => ({
+      studentId: row.recipient_student_id || '',
+      studentName: row.recipient_student_name || '학생',
+      packetKey: row.packet_key || ''
+    }));
   }
   return payload;
 }

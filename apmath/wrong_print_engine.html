@@ -463,6 +463,11 @@ function getStudentPacketKey(student) {
     return String(student?.serverPacketKey || student?.packetKey || student?.packet_key || '').trim();
 }
 
+// class/grade/type 모드에서 학생별로 배포된 packet_key 목록(있으면 학생 개인 QR을 붙일 수 있다).
+function getPrintRecipients(payload) {
+    return Array.isArray(payload?.recipients) ? payload.recipients.filter(r => r && getStudentPacketKey(r)) : [];
+}
+
 function buildQrTargetUrlForPayload(compactPayload, payload, student = null) {
     const packetKey = student ? getStudentPacketKey(student) : '';
     if (packetKey) return buildStoredQrTargetUrl('packet', packetKey);
@@ -1329,46 +1334,93 @@ function maybeInsertStudentDuplexBreak(area, payload, studentIdx, studentCount, 
     if (pagesAdded > 0 && pagesAdded % 2 === 1) appendBlankPage(area);
 }
 
+function buildClassRenderItems(payload) {
+    return (payload.classWrongItems || []).map(item => cloneQuestionForRender({
+        ...item,
+        _wrongNote: formatCorrectRateLabel(item)
+    }));
+}
+
 async function renderClassPages(area, payload) {
-    const items = (payload.classWrongItems || []).map(item => {
-        const rateLabel = formatCorrectRateLabel(item);
-        return cloneQuestionForRender({
-            ...item,
-            _wrongNote: rateLabel
+    const title = `${payload.className || '반'} 반별 공통 오답지`;
+    const recipients = getPrintRecipients(payload);
+
+    if (!recipients.length) {
+        await renderMeasuredExamPages(area, buildClassRenderItems(payload), {
+            title,
+            metaLeft: '',
+            nameLabel: '반',
+            nameValue: payload.className || '',
+            dateText: payload.createdDate || '',
+            solutionQrPayload: {
+                payload: buildClassQrPayload(payload),
+                url: buildQrTargetUrlForPayload(buildClassQrPayload(payload), payload)
+            }
         });
-    });
-    await renderMeasuredExamPages(area, items, {
-        title: `${payload.className || '반'} 반별 공통 오답지`,
-        metaLeft: '',
-        nameLabel: '반',
-        nameValue: payload.className || '',
-        dateText: payload.createdDate || '',
-        solutionQrPayload: {
-            payload: buildClassQrPayload(payload),
-            url: buildQrTargetUrlForPayload(buildClassQrPayload(payload), payload)
-        }
-    });
+        return;
+    }
+
+    // 학생마다 packet_key가 있으면 개인 QR(→ 학생페이지)을 붙인 개인별 사본을 인쇄한다.
+    for (let rIdx = 0; rIdx < recipients.length; rIdx++) {
+        const recipient = recipients[rIdx];
+        const pagesBefore = area.querySelectorAll('.page').length;
+        await renderMeasuredExamPages(area, buildClassRenderItems(payload), {
+            title,
+            metaLeft: '',
+            nameLabel: '이름',
+            nameValue: recipient.studentName || '',
+            dateText: payload.createdDate || '',
+            solutionQrPayload: {
+                payload: null,
+                url: buildStoredQrTargetUrl('packet', getStudentPacketKey(recipient))
+            }
+        });
+        maybeInsertStudentDuplexBreak(area, payload, rIdx, recipients.length, pagesBefore);
+    }
+}
+
+function buildGradeRenderItems(payload) {
+    return (payload.gradeWrongItems || []).map(item => cloneQuestionForRender({
+        ...item,
+        _wrongNote: formatCorrectRateLabel(item)
+    }));
 }
 
 async function renderGradePages(area, payload) {
-    const items = (payload.gradeWrongItems || []).map(item => {
-        const rateLabel = formatCorrectRateLabel(item);
-        return cloneQuestionForRender({
-            ...item,
-            _wrongNote: rateLabel
+    const title = `${getGradePrintLabel(payload)} 공통 오답지`;
+    const recipients = getPrintRecipients(payload);
+
+    if (!recipients.length) {
+        await renderMeasuredExamPages(area, buildGradeRenderItems(payload), {
+            title,
+            metaLeft: '',
+            nameLabel: '학년',
+            nameValue: getGradePrintLabel(payload) || payload.gradeName || '',
+            dateText: payload.createdDate || '',
+            solutionQrPayload: {
+                payload: buildGradeQrPayload(payload),
+                url: buildQrTargetUrlForPayload(buildGradeQrPayload(payload), payload)
+            }
         });
-    });
-    await renderMeasuredExamPages(area, items, {
-        title: `${getGradePrintLabel(payload)} 공통 오답지`,
-        metaLeft: '',
-        nameLabel: '학년',
-        nameValue: getGradePrintLabel(payload) || payload.gradeName || '',
-        dateText: payload.createdDate || '',
-        solutionQrPayload: {
-            payload: buildGradeQrPayload(payload),
-            url: buildQrTargetUrlForPayload(buildGradeQrPayload(payload), payload)
-        }
-    });
+        return;
+    }
+
+    for (let rIdx = 0; rIdx < recipients.length; rIdx++) {
+        const recipient = recipients[rIdx];
+        const pagesBefore = area.querySelectorAll('.page').length;
+        await renderMeasuredExamPages(area, buildGradeRenderItems(payload), {
+            title,
+            metaLeft: '',
+            nameLabel: '이름',
+            nameValue: recipient.studentName || '',
+            dateText: payload.createdDate || '',
+            solutionQrPayload: {
+                payload: null,
+                url: buildStoredQrTargetUrl('packet', getStudentPacketKey(recipient))
+            }
+        });
+        maybeInsertStudentDuplexBreak(area, payload, rIdx, recipients.length, pagesBefore);
+    }
 }
 
 function getTypePrintLabel(payload) {
@@ -1419,30 +1471,56 @@ function getTypeSections(payload) {
     })).filter(section => section.items.length);
 }
 
+function buildTypeSectionRenderItems(section) {
+    return (section.items || []).map(item => cloneQuestionForRender({
+        ...item,
+        _wrongNote: formatCorrectRateLabel(item)
+    }));
+}
+
 async function renderTypePages(area, payload) {
     const sections = getTypeSections(payload);
     const label = getTypePrintLabel(payload);
     const scopeLabel = getTypeScopeLabel(payload);
-    for (const section of sections) {
-        const items = section.items.map(item => {
-            const rateLabel = formatCorrectRateLabel(item);
-            return cloneQuestionForRender({
-                ...item,
-                _wrongNote: rateLabel
+    const recipients = getPrintRecipients(payload);
+
+    if (!recipients.length) {
+        for (const section of sections) {
+            await renderMeasuredExamPages(area, buildTypeSectionRenderItems(section), {
+                title: payload.typeMode === 'unit' ? section.title : `${scopeLabel} ${label}`,
+                metaLeft: '',
+                nameLabel: payload.scope === 'grade' ? '학년' : '반',
+                nameValue: scopeLabel || '',
+                dateText: payload.createdDate || '',
+                subtitleFallback: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
+                solutionQrPayload: {
+                    payload: buildTypeQrPayload(payload),
+                    url: buildQrTargetUrlForPayload(buildTypeQrPayload(payload), payload)
+                }
             });
-        });
-        await renderMeasuredExamPages(area, items, {
-            title: payload.typeMode === 'unit' ? section.title : `${scopeLabel} ${label}`,
-            metaLeft: '',
-            nameLabel: payload.scope === 'grade' ? '학년' : '반',
-            nameValue: scopeLabel || '',
-            dateText: payload.createdDate || '',
-            subtitleFallback: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
-            solutionQrPayload: {
-                payload: buildTypeQrPayload(payload),
-                url: buildQrTargetUrlForPayload(buildTypeQrPayload(payload), payload)
-            }
-        });
+        }
+        return;
+    }
+
+    // 학생마다 packet_key가 있으면 섹션 전체를 학생 개인 QR(→ 학생페이지)이 붙은 개인 사본으로 반복 인쇄한다.
+    for (let rIdx = 0; rIdx < recipients.length; rIdx++) {
+        const recipient = recipients[rIdx];
+        const pagesBefore = area.querySelectorAll('.page').length;
+        for (const section of sections) {
+            await renderMeasuredExamPages(area, buildTypeSectionRenderItems(section), {
+                title: payload.typeMode === 'unit' ? section.title : `${scopeLabel} ${label}`,
+                metaLeft: '',
+                nameLabel: '이름',
+                nameValue: recipient.studentName || '',
+                dateText: payload.createdDate || '',
+                subtitleFallback: payload.typeMode === 'unit' ? `${scopeLabel} · ${label}` : '',
+                solutionQrPayload: {
+                    payload: null,
+                    url: buildStoredQrTargetUrl('packet', getStudentPacketKey(recipient))
+                }
+            });
+        }
+        maybeInsertStudentDuplexBreak(area, payload, rIdx, recipients.length, pagesBefore);
     }
 }
 
