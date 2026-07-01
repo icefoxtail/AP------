@@ -248,7 +248,9 @@ async function loadClassStudents(env, classId) {
 }
 
 // 대상 학생 수만큼 개별 조회하면(학년 전체 배포 등) D1 왕복이 N번 발생한다.
-// 동일한 조회를 IN() 한 번으로 묶고, 학생당 첫 행(class_name ASC, 기존 LIMIT 1과 동일 우선순위)만 취한다.
+// 동일한 조회를 IN() 한 번으로 묶되, 학생이 여러 반에 동시 소속된 경우(재원반+특강반 등)
+// class_name 알파벳순 첫 행을 무조건 고르면 클리닉을 실제로 생성한 반과 다른 반이 배정될 수 있다.
+// 그래서 학생당 모든 소속 반 후보를 모아두고, 호출부가 알려준(fallback) class_id와 일치하는 행을 우선 채택한다.
 async function loadStudentTargetsBatch(env, studentIds, fallbackByStudentId = new Map()) {
   const uniqueIds = [...new Set((studentIds || []).map(id => text(id)).filter(Boolean))];
   const out = new Map();
@@ -269,16 +271,19 @@ async function loadStudentTargetsBatch(env, studentIds, fallbackByStudentId = ne
     ORDER BY c.name ASC
   `).bind(...uniqueIds).all();
 
-  const firstRowByStudent = new Map();
+  const rowsByStudent = new Map();
   for (const row of res.results || []) {
     const sid = text(row.student_id);
-    if (!sid || firstRowByStudent.has(sid)) continue;
-    firstRowByStudent.set(sid, row);
+    if (!sid) continue;
+    if (!rowsByStudent.has(sid)) rowsByStudent.set(sid, []);
+    rowsByStudent.get(sid).push(row);
   }
 
   for (const sid of uniqueIds) {
-    const row = firstRowByStudent.get(sid);
+    const candidates = rowsByStudent.get(sid) || [];
     const fallback = fallbackByStudentId.get(sid) || {};
+    const preferredClassId = text(fallback.class_id || fallback.classId);
+    const row = (preferredClassId && candidates.find(r => text(r.class_id) === preferredClassId)) || candidates[0];
     out.set(sid, {
       student_id: text(row?.student_id || sid),
       student_name: text(row?.student_name || fallback.student_name || fallback.studentName),
@@ -896,6 +901,7 @@ async function listClassClinicStatusForTeacher(env, teacher, url) {
         packet.items = items;
         packet.duplicate_item_count = duplicateCount;
       }
+    }
   }
 
   return ok({ clinics: [...grouped.values()] });
