@@ -1,4 +1,4 @@
-import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser, makeId } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, canAccessStudentsBatch, isAdminUser, isStaffUser, makeId } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 
 const ROUTE = 'wrong-clinics';
@@ -247,8 +247,15 @@ async function loadClassStudents(env, classId) {
   return res.results || [];
 }
 
-async function loadStudentTarget(env, studentId, fallback = {}) {
-  const row = await env.DB.prepare(`
+// 대상 학생 수만큼 개별 조회하면(학년 전체 배포 등) D1 왕복이 N번 발생한다.
+// 동일한 조회를 IN() 한 번으로 묶고, 학생당 첫 행(class_name ASC, 기존 LIMIT 1과 동일 우선순위)만 취한다.
+async function loadStudentTargetsBatch(env, studentIds, fallbackByStudentId = new Map()) {
+  const uniqueIds = [...new Set((studentIds || []).map(id => text(id)).filter(Boolean))];
+  const out = new Map();
+  if (!uniqueIds.length) return out;
+
+  const placeholders = uniqueIds.map(() => '?').join(', ');
+  const res = await env.DB.prepare(`
     SELECT
       s.id AS student_id,
       s.name AS student_name,
@@ -257,17 +264,29 @@ async function loadStudentTarget(env, studentId, fallback = {}) {
     FROM students s
     LEFT JOIN class_students cs ON cs.student_id = s.id
     LEFT JOIN classes c ON c.id = cs.class_id
-    WHERE s.id = ?
+    WHERE s.id IN (${placeholders})
       AND COALESCE(s.status, '재원') IN ('재원', 'active')
     ORDER BY c.name ASC
-    LIMIT 1
-  `).bind(studentId).first();
-  return {
-    student_id: text(row?.student_id || studentId),
-    student_name: text(row?.student_name || fallback.student_name || fallback.studentName),
-    class_id: text(row?.class_id || fallback.class_id || fallback.classId),
-    class_name: text(row?.class_name || fallback.class_name || fallback.className)
-  };
+  `).bind(...uniqueIds).all();
+
+  const firstRowByStudent = new Map();
+  for (const row of res.results || []) {
+    const sid = text(row.student_id);
+    if (!sid || firstRowByStudent.has(sid)) continue;
+    firstRowByStudent.set(sid, row);
+  }
+
+  for (const sid of uniqueIds) {
+    const row = firstRowByStudent.get(sid);
+    const fallback = fallbackByStudentId.get(sid) || {};
+    out.set(sid, {
+      student_id: text(row?.student_id || sid),
+      student_name: text(row?.student_name || fallback.student_name || fallback.studentName),
+      class_id: text(row?.class_id || fallback.class_id || fallback.classId),
+      class_name: text(row?.class_name || fallback.class_name || fallback.className)
+    });
+  }
+  return out;
 }
 
 function getTargetStudentIds(target = {}) {
@@ -282,6 +301,21 @@ function getTargetStudentIds(target = {}) {
 async function normalizeDistributionTargets(env, body, payload) {
   const explicitTargets = Array.isArray(body.targets) ? body.targets : [];
   if (explicitTargets.length) {
+    // 학생 조회가 필요한 대상(student/custom_group)을 먼저 모아 한 번의 IN() 쿼리로 해석한다.
+    const studentIdsToLoad = [];
+    const fallbackByStudentId = new Map();
+    for (const target of explicitTargets) {
+      const type = text(target.type || target.target_type || 'student');
+      if (type === 'student' && text(target.student_id)) {
+        const sid = text(target.student_id);
+        studentIdsToLoad.push(sid);
+        fallbackByStudentId.set(sid, target);
+      } else if (type === 'custom_group') {
+        studentIdsToLoad.push(...getTargetStudentIds(target));
+      }
+    }
+    const studentMap = await loadStudentTargetsBatch(env, studentIdsToLoad, fallbackByStudentId);
+
     const distributions = [];
     for (const target of explicitTargets) {
       const type = text(target.type || target.target_type || 'student');
@@ -297,7 +331,8 @@ async function normalizeDistributionTargets(env, body, payload) {
           students: dedupeTargets(students)
         });
       } else if (type === 'student' && text(target.student_id)) {
-        const student = await loadStudentTarget(env, text(target.student_id), target);
+        const student = studentMap.get(text(target.student_id));
+        if (!student) continue;
         distributions.push({
           target_type: 'student',
           target_class_id: student.class_id,
@@ -308,10 +343,7 @@ async function normalizeDistributionTargets(env, body, payload) {
           students: [student]
         });
       } else if (type === 'custom_group') {
-        const rows = [];
-        for (const studentId of getTargetStudentIds(target)) {
-          rows.push(await loadStudentTarget(env, studentId, {}));
-        }
+        const rows = getTargetStudentIds(target).map(sid => studentMap.get(sid)).filter(Boolean);
         distributions.push({
           target_type: 'custom_group',
           target_class_id: text(target.class_id),
@@ -328,10 +360,10 @@ async function normalizeDistributionTargets(env, body, payload) {
 
   const mode = text(payload.mode || 'student');
   if (mode === 'student') {
-    const rows = [];
-    for (const row of getStudentRowsFromPayload(payload)) {
-      rows.push(await loadStudentTarget(env, row.student_id, row));
-    }
+    const payloadRows = getStudentRowsFromPayload(payload);
+    const fallbackByStudentId = new Map(payloadRows.map(row => [text(row.student_id), row]));
+    const studentMap = await loadStudentTargetsBatch(env, payloadRows.map(row => row.student_id), fallbackByStudentId);
+    const rows = payloadRows.map(row => studentMap.get(text(row.student_id))).filter(Boolean);
     return [{
       target_type: rows.length === 1 ? 'student' : 'custom_group',
       target_class_id: rows.length === 1 ? text(rows[0]?.class_id) : text(payload.classId),
@@ -372,15 +404,37 @@ function dedupeTargets(rows) {
   return Array.from(map.values());
 }
 
+// 학년 범위 배포는 대상 학생이 (담임 여부와 무관하게) 출제 반과 같은 학년에 속하는지만 서버에서 재검증한다.
+// class_id는 클라이언트가 보낸 값이라 신뢰할 수 없으므로 DB의 실제 반 배정을 기준으로 확인한다.
+async function canDistributeToGradeStudents(env, sourceClassId, targets) {
+  const studentIds = [...new Set(targets.map(t => text(t.student_id)).filter(Boolean))];
+  if (!studentIds.length) return true;
+  const baseClass = await env.DB.prepare('SELECT grade FROM classes WHERE id = ? LIMIT 1').bind(sourceClassId).first();
+  const grade = text(baseClass?.grade || '').replace(/\s+/g, '');
+  if (!grade) return false;
+  const placeholders = studentIds.map(() => '?').join(', ');
+  const res = await env.DB.prepare(`
+    SELECT DISTINCT cs.student_id
+    FROM class_students cs
+    JOIN classes c ON c.id = cs.class_id
+    WHERE cs.student_id IN (${placeholders})
+      AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?
+  `).bind(...studentIds, grade).all();
+  const allowedIds = new Set((res.results || []).map(row => text(row.student_id)));
+  return studentIds.every(id => allowedIds.has(id));
+}
+
 async function assertCreatePermission(env, teacher, source, targets) {
   if (!isStaffUser(teacher)) return false;
   if (isAdminUser(teacher)) return true;
   const sourceClassId = text(source.class_id || source.classId);
   if (sourceClassId && !(await canAccessClass(teacher, sourceClassId, env))) return false;
-  for (const target of targets) {
-    if (!(await canAccessStudent(teacher, target.student_id, env))) return false;
+  if (text(source.scope_type) === 'grade') {
+    return canDistributeToGradeStudents(env, sourceClassId, targets);
   }
-  return true;
+  // 대상 학생 수만큼 순차 조회하면 학년 전체 배포 시 D1 왕복이 N번 발생하므로 한 번에 확인한다.
+  const allowedStudentIds = await canAccessStudentsBatch(teacher, targets.map(t => t.student_id), env);
+  return targets.every(target => allowedStudentIds.has(text(target.student_id)));
 }
 
 async function insertItems(env, statements, setId, packetId, items, setItemIdByKey = new Map()) {
@@ -427,10 +481,11 @@ async function createWrongClinic(request, env, teacher) {
   const sourceClassId = text(source.class_id || source.classId || payload.classId);
   const sourceClassName = text(source.class_name || source.className || payload.className);
   const sourceGrade = text(source.grade || source.grade_name || payload.gradeName);
+  const scopeType = text(source.scope_type || payload.scope || (mode === 'grade' ? 'grade' : 'class'));
   const distributions = await normalizeDistributionTargets(env, body, payload);
   const targets = dedupeTargets(distributions.flatMap(distribution => distribution.students));
   if (!targets.length) return fail('배포 대상 학생이 없습니다.');
-  if (!(await assertCreatePermission(env, teacher, { class_id: sourceClassId }, targets))) return fail('Forbidden', 403);
+  if (!(await assertCreatePermission(env, teacher, { class_id: sourceClassId, scope_type: scopeType }, targets))) return fail('Forbidden', 403);
 
   await ensureWrongClinicTables(env);
 
@@ -449,7 +504,7 @@ async function createWrongClinic(request, env, teacher) {
       setId,
       title,
       mode,
-      text(source.scope_type || payload.scope || (mode === 'grade' ? 'grade' : 'class')),
+      scopeType,
       sourceClassId,
       sourceClassName,
       sourceGrade,
@@ -474,6 +529,8 @@ async function createWrongClinic(request, env, teacher) {
   await insertItems(env, statements, setId, null, setItems, setItemIdByKey);
 
   const packetSummaries = [];
+  // 서로 다른 배포(distribution)에 같은 학생이 중복으로 들어와도 세트당 패킷은 학생 1명당 1개만 생성한다.
+  const packetedStudentIds = new Set();
   for (const distribution of distributions) {
     const distributionId = makeId('wcd');
     statements.push(env.DB.prepare(`
@@ -496,6 +553,9 @@ async function createWrongClinic(request, env, teacher) {
     ));
 
     for (const target of distribution.students) {
+      const targetStudentId = text(target.student_id);
+      if (!targetStudentId || packetedStudentIds.has(targetStudentId)) continue;
+      packetedStudentIds.add(targetStudentId);
       const packetId = makeId('wcp');
       const packetKey = randomKey('PKT');
       const studentItems = mode === 'student' ? getStudentItemsFromPayload(payload, target.student_id) : setItems;
@@ -708,6 +768,23 @@ async function listClassClinicStatusForTeacher(env, teacher, url) {
   if (!classId) return fail('class_id required');
   if (!(await canAccessClass(teacher, classId, env))) return fail('Forbidden', 403);
 
+  const from = text(url.searchParams.get('from'));
+  const to = text(url.searchParams.get('to'));
+  const where = [
+    `p.recipient_class_id = ?`,
+    `COALESCE(p.status, 'active') = 'active'`,
+    `COALESCE(s.status, 'active') = 'active'`
+  ];
+  const binds = [classId];
+  if (/^\d{4}-\d{2}-\d{2}$/.test(from)) {
+    where.push(`date(COALESCE(s.created_at, p.created_at)) >= date(?)`);
+    binds.push(from);
+  }
+  if (/^\d{4}-\d{2}-\d{2}$/.test(to)) {
+    where.push(`date(COALESCE(s.created_at, p.created_at)) <= date(?)`);
+    binds.push(to);
+  }
+
   const res = await env.DB.prepare(`
     SELECT
       p.id AS packet_id,
@@ -732,17 +809,19 @@ async function listClassClinicStatusForTeacher(env, teacher, url) {
       s.created_at AS set_created_at
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
-    WHERE p.recipient_class_id = ?
-      AND COALESCE(p.status, 'active') = 'active'
-      AND COALESCE(s.status, 'active') = 'active'
+    WHERE ${where.join(' AND ')}
     ORDER BY s.created_at DESC, p.created_at DESC
     LIMIT 500
-  `).bind(classId).all();
+  `).bind(...binds).all();
 
   const grouped = new Map();
+  const packetIds = [];
   for (const row of res.results || []) {
     const setId = text(row.set_id);
     if (!setId) continue;
+    if (row.packet_id) {
+      packetIds.push(row.packet_id);
+    }
     if (!grouped.has(setId)) {
       const exams = parseJson(row.source_exam_keys_json, []);
       grouped.set(setId, {
@@ -758,7 +837,8 @@ async function listClassClinicStatusForTeacher(env, teacher, url) {
         packet_count: 0,
         submitted_count: 0,
         total_item_count: 0,
-        review_wrong_count: 0
+        review_wrong_count: 0,
+        student_packets: []
       });
     }
     const group = grouped.get(setId);
@@ -767,6 +847,55 @@ async function listClassClinicStatusForTeacher(env, teacher, url) {
     if (Number(row.is_submitted || 0)) group.submitted_count += 1;
     const reviewWrongIds = parseJson(row.review_wrong_ids_json, []);
     if (Array.isArray(reviewWrongIds)) group.review_wrong_count += reviewWrongIds.length;
+    group.student_packets.push({
+      packet_id: row.packet_id || '',
+      student_id: row.recipient_student_id || '',
+      student_name: row.recipient_student_name || '',
+      item_count: Number(row.item_count || 0),
+      is_submitted: Number(row.is_submitted || 0),
+      submitted_at: row.submitted_at || '',
+      review_wrong_count: Array.isArray(reviewWrongIds) ? reviewWrongIds.length : 0,
+      items: [],
+      duplicate_item_count: 0
+    });
+  }
+
+  if (packetIds.length) {
+    const markers = packetIds.map(() => '?').join(',');
+    const itemRes = await env.DB.prepare(`
+      SELECT *
+      FROM wrong_clinic_packet_items
+      WHERE packet_id IN (${markers})
+      ORDER BY packet_id ASC, order_no ASC
+    `).bind(...packetIds).all();
+    const itemsByPacket = new Map();
+    for (const row of itemRes.results || []) {
+      const packetId = text(row.packet_id);
+      if (!itemsByPacket.has(packetId)) itemsByPacket.set(packetId, []);
+      const item = itemFromRow(row);
+      itemsByPacket.get(packetId).push({
+        order_no: Number(row.order_no || item.orderNo || 0),
+        archive_file: item.sourceArchiveFile || item.archiveFile || row.archive_file || '',
+        question_no: Number(item.sourceQuestionNo || item.questionNo || row.question_no || 0),
+        display_archive_file: item.displayArchiveFile || item.archiveFile || row.archive_file || '',
+        display_question_no: Number(item.displayQuestionNo || item.questionNo || row.question_no || 0),
+        exam_title: row.exam_title || item.examTitle || ''
+      });
+    }
+
+    for (const group of grouped.values()) {
+      for (const packet of group.student_packets) {
+        const items = itemsByPacket.get(packet.packet_id) || [];
+        const seen = new Set();
+        let duplicateCount = 0;
+        for (const item of items) {
+          const key = `${item.archive_file}|${item.question_no}`;
+          if (seen.has(key)) duplicateCount += 1;
+          else seen.add(key);
+        }
+        packet.items = items;
+        packet.duplicate_item_count = duplicateCount;
+      }
   }
 
   return ok({ clinics: [...grouped.values()] });

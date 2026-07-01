@@ -83,6 +83,22 @@ export async function canAccessClass(teacher, classId, env) {
   return !!row;
 }
 
+// canAccessStudent를 대상 학생 수만큼 순차 호출하면 대량 배포(학년 전체 등)에서 D1 왕복이 N번 발생한다.
+// 허용된 학생 id 집합을 단일 IN() 쿼리로 한 번에 구해 호출부에서 멤버십만 확인하도록 한다.
+export async function canAccessStudentsBatch(teacher, studentIds, env) {
+  const uniqueIds = [...new Set((studentIds || []).map(id => String(id || '')).filter(Boolean))];
+  if (isAdminUser(teacher)) return new Set(uniqueIds);
+  if (!uniqueIds.length) return new Set();
+  const placeholders = uniqueIds.map(() => '?').join(', ');
+  const res = await env.DB.prepare(`
+    SELECT DISTINCT cs.student_id
+    FROM class_students cs
+    JOIN teacher_classes tc ON tc.class_id = cs.class_id
+    WHERE tc.teacher_id = ? AND cs.student_id IN (${placeholders})
+  `).bind(teacher.id, ...uniqueIds).all();
+  return new Set((res.results || []).map(row => String(row.student_id || '')));
+}
+
 export async function foundationSelect(env, table, where = [], params = [], order = 'created_at DESC') {
   assertFoundationTable(table);
   assertSqlOrderClause(order);
