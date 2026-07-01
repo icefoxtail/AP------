@@ -1540,30 +1540,15 @@ function scheduleClassroomWrongClinicStatusRefresh(classId) {
     }, 0);
 }
 
-function renderClassroomClinicPacketItems(items = []) {
-    const list = Array.isArray(items) ? items : [];
-    if (!list.length) return '문항 없음';
-    const labels = list.slice(0, 8).map(item => {
-        const title = getClassroomStatusArchiveDisplayTitle(item.display_archive_file || item.archive_file || '') ||
-            String(item.exam_title || '').trim() ||
-            '문항';
-        const no = Number(item.display_question_no || item.question_no || item.order_no || 0);
-        return `${title}${no ? ` ${no}번` : ''}`;
-    });
-    const extra = list.length > labels.length ? ` 외 ${list.length - labels.length}문항` : '';
-    return `${labels.join(', ')}${extra}`;
-}
-
+// 학생별 줄에는 문항 목록을 나열하지 않고 "학생이름 : 클리닉제목(N문항)" 형태로만 보여준다.
 function renderClassroomClinicStudentPackets(row = {}) {
     const packets = Array.isArray(row.student_packets) ? row.student_packets : [];
     if (!packets.length) return '';
+    const title = row.title || '오답 클리닉';
     return `
         <div class="ap-classroom-monthly-dates" style="margin-top:4px;padding-left:8px;display:grid;gap:2px;">
             ${packets.map(packet => {
-                const duplicateCount = Number(packet.duplicate_item_count || 0);
-                const warn = duplicateCount ? ` · 중복 ${duplicateCount}문항` : '';
-                const submitted = Number(packet.is_submitted || 0) ? '제출' : '미제출';
-                return `<div><b>${apEscapeHtml(packet.student_name || '학생')}</b>: ${apEscapeHtml(renderClassroomClinicPacketItems(packet.items || []))} <span style="color:${duplicateCount ? 'var(--error)' : 'var(--secondary)'};">(${submitted}${warn})</span></div>`;
+                return `<div>${apEscapeHtml(packet.student_name || '학생')} : ${apEscapeHtml(title)}(${Number(packet.item_count || 0)}문항)</div>`;
             }).join('')}
         </div>
     `;

@@ -2121,14 +2121,7 @@ function renderStudentWrongClinicTab(sid) {
     const scopeLabels = { class: '반 공통 오답', grade: '학년 공통 오답', type: '유형 공통 오답' };
     const rowsHtml = packets.map(packet => {
         const reviewWrongIds = Array.isArray(packet.review_wrong_ids) ? packet.review_wrong_ids : [];
-        const meta = [
-            packet.source_class_name ? `출처: ${packet.source_class_name}` : '',
-            packet.recipient_class_name ? `받은 반: ${packet.recipient_class_name}` : '',
-            packet.created_at ? String(packet.created_at).slice(0, 16) : ''
-        ].filter(Boolean).join(' · ');
         const scopeLabel = scopeLabels[packet.mode] || '개인 오답';
-        const status = Number(packet.is_submitted || 0) === 1 ? '제출 완료' : '미제출';
-        const wrongText = reviewWrongIds.length ? `저장 오답: ${reviewWrongIds.join(', ')}번` : '저장 오답 없음';
         const key = apmsStudentJsString(packet.packet_key || '');
         const reissueButton = reviewWrongIds.length
             ? `<button type="button" class="btn apms-button apms-button--primary" onclick="reissueStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">재출제</button>`
@@ -2138,8 +2131,6 @@ function renderStudentWrongClinicTab(sid) {
                 <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;">
                     <div>
                         <div style="font-weight:700;">${apmsStudentDetailEsc(packet.title || '오답 클리닉')} <span class="muted">· ${apmsStudentDetailEsc(scopeLabel)}</span></div>
-                        <div class="muted">${apmsStudentDetailEsc(meta)}</div>
-                        <div class="muted">${Number(packet.item_count || 0)}문항 · ${apmsStudentDetailEsc(status)} · ${apmsStudentDetailEsc(wrongText)}</div>
                     </div>
                     <div style="display:flex;gap:6px;flex-wrap:wrap;">
                         ${reissueButton}
