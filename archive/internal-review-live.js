@@ -1048,7 +1048,7 @@ function bindLiveEngineQuestionClicks(iframe) {
     if (!doc.getElementById('ir-live-click-style')) {
       const style = doc.createElement('style');
       style.id = 'ir-live-click-style';
-      style.textContent = '.q-box,.ans-cell{cursor:pointer}.q-box:hover,.ans-cell:hover{outline:2px solid rgba(37,99,235,.45);outline-offset:2px}.q-box.ir-live-selected,.ans-cell.ir-live-selected{outline:3px solid rgba(37,99,235,.72);outline-offset:2px;background:rgba(219,234,254,.35)}';
+      style.textContent = '.q-box,.ans-cell{cursor:pointer}.q-box:hover,.ans-cell:hover{outline:2px solid rgba(39,39,42,.45);outline-offset:2px}.q-box.ir-live-selected,.ans-cell.ir-live-selected{outline:3px solid rgba(39,39,42,.72);outline-offset:2px;background:rgba(228,228,231,.45)}';
       doc.head.appendChild(style);
     }
     nodes.forEach(function(node) {

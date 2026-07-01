@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS아카이브 | 믹서 출력 (Rulebook v1.9 + Image Field Final)</title>
     <script>
         window.MathJax = {
@@ -82,6 +83,18 @@
         }
 
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        body.screen-fit-mode { overflow-x: hidden; }
+        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
+        body.screen-fit-mode .page { flex: 0 0 auto; }
+        @media screen and (max-width: 640px) {
+            body.screen-fit-mode { padding-top: 44px; }
+            body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
+            body.screen-fit-mode #ctrl-title,
+            body.screen-fit-mode .ctrl-right,
+            body.screen-fit-mode .qr-output-wrap,
+            body.screen-fit-mode .print-header-editor-wrap { display: none; }
+            body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
+        }
 
         /* [PDF Mode] Container & Viewer */
         #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); background: #525659; overflow: hidden; }
@@ -306,7 +319,7 @@
             #mode-ctrl { display: none !important; }
             body { margin: 0 !important; padding: 0 !important; background: white; }
             
-            body:not(.mode-pdf) #print-area { display: block !important; gap: 0 !important; padding: 0 !important; }
+            body:not(.mode-pdf) #print-area { display: block !important; width: auto !important; gap: 0 !important; padding: 0 !important; transform: none !important; }
             body.mode-pdf #print-area { display: none !important; }
             body.mode-pdf #pdf-container { display: block !important; height: auto !important; }
             
@@ -366,7 +379,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
+            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
         </div>
     </div>
 
@@ -1305,9 +1318,10 @@ function autoImageSizeClassFor(img) {
     if (!width || !height) return 'image-medium';
     const ratio = width / height;
     if (ratio >= 2.2) return 'image-full';
-    if (ratio >= 1.25) return 'image-large';
-    if (ratio >= 0.8) return 'image-small';
-    return 'image-medium';
+    if (ratio >= 1.4) return 'image-large';
+    if (ratio >= 0.7) return 'image-medium';
+    if (ratio >= 0.4) return 'image-half';
+    return 'image-small';
 }
 
 function waitForQuestionImage(img) {
@@ -1766,8 +1780,28 @@ async function render() {
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
+    updateScreenFitScale();
     registerBlueprintToOS(); // [3B-MIXED] 믹서 원본 문항 매핑 등록 — 비동기
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
+}
+
+function shouldUseScreenFit(params) {
+    return params.get('fit') === 'screen' || window.matchMedia('(max-width: 900px)').matches;
+}
+
+function updateScreenFitScale() {
+    if (!document.body.classList.contains('screen-fit-mode')) return;
+    const area = document.getElementById('print-area');
+    const page = area?.querySelector('.page');
+    if (!area || !page) return;
+    const pageWidth = page.offsetWidth || 794;
+    const availableWidth = Math.max(280, window.innerWidth - 16);
+    const scale = Math.max(0.32, Math.min(1, availableWidth / pageWidth));
+    document.documentElement.style.setProperty('--screen-page-scale', String(scale));
+}
+
+if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('resize', () => requestAnimationFrame(updateScreenFitScale));
 }
 
 async function init() {
@@ -1851,6 +1885,8 @@ async function init() {
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
 window.onload = () => {
     restoreApmathSessionFromHash();
+    const params = new URLSearchParams(window.location.search);
+    if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
     init();
 };
 </script>

@@ -16,8 +16,8 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
         :root {
-            --navy: #07111f; --navy-2: #0c1a2e; --navy-3: #12233f;
-            --blue: #2563eb; --blue-dark: #1d4ed8; --blue-soft: #eff6ff;
+            --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
+            --blue: #27272a; --blue-dark: #18181b; --blue-soft: #f4f4f5;
             --green: #10b981; --green-soft: #ecfdf5;
             --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
             --gray-300: #cbd5e1; --gray-500: #64748b;
@@ -27,7 +27,7 @@
         body { font-family: 'Pretendard', sans-serif; background-color: var(--gray-50); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
         header { background: var(--navy); height: 58px; display: flex; align-items: center; padding: 0 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .logo { color: white; text-decoration: none; font-weight: 800; font-size: 18px; display: flex; align-items: center; gap: 10px; }
-        .logo em { color: #60a5fa; font-style: normal; }
+        .logo em { color: #a1a1aa; font-style: normal; }
 
         .mixer-container { display: flex; height: calc(100vh - 58px); }
         .panel { display: flex; flex-direction: column; background: white; border-right: 1px solid var(--gray-200); height: 100%; min-width: 0; }
@@ -82,7 +82,7 @@
         .status-summary-bar { padding: 10px 20px; background: var(--navy); color: white; display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; gap: 15px; }
         .stat-item { display: flex; align-items: center; gap: 6px; }
         .stat-label { color: rgba(255,255,255,0.5); font-weight: 400; }
-        .stat-value { font-weight: 800; color: #60a5fa; }
+        .stat-value { font-weight: 800; color: #a1a1aa; }
 
         .question-filter-bar { padding: 12px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 10px; background: white; position: sticky; top: 0; z-index: 10; flex-wrap: wrap; }
         .source-flow-grid { width: 100%; display: grid; grid-template-columns: 170px repeat(5, minmax(120px, 1fr)); gap: 8px; align-items: center; }
@@ -142,7 +142,7 @@
         .empty-placeholder i { font-size: 48px; margin-bottom: 15px; }
 
         /* [자동출제 패널] */
-        .autogen-panel { border-bottom: 1px solid var(--gray-100); background: #fcfdff; flex-shrink: 0; }
+        .autogen-panel { border-bottom: 1px solid var(--gray-100); background: #fcfcfd; flex-shrink: 0; }
         .autogen-head { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 13px; font-weight: 900; color: var(--text-main); user-select: none; }
         .autogen-head .ag-title { display: flex; align-items: center; gap: 8px; }
         .autogen-head .ag-title i { color: var(--blue); }
