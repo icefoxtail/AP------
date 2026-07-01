@@ -757,6 +757,85 @@ async function saveAssessmentResultItems(env, input) {
   return { saved: stmts.length };
 }
 
+async function performExcludeStudent(env, currentTeacher, { classId, studentId, examTitle, examDate, archiveFile, rawInput }) {
+  if (!classId || !studentId || !examTitle || !examDate) {
+    return { success: false, student_id: studentId, error: 'class_id, student_id, exam_title, exam_date required', status: 400 };
+  }
+  if (!(await canAccessClass(currentTeacher, classId, env))) {
+    return { success: false, student_id: studentId, error: 'Forbidden', status: 403 };
+  }
+  if (!(await canAccessStudent(currentTeacher, studentId, env))) {
+    return { success: false, student_id: studentId, error: 'Forbidden', status: 403 };
+  }
+  if (!(await hasClassExamAssignmentExclusions(env))) {
+    return { success: false, student_id: studentId, error: 'assignment exclusions table not available', status: 503 };
+  }
+
+  const assignment = await ensureClassExamAssignmentForExclusion(env, {
+    ...rawInput,
+    class_id: classId,
+    student_id: studentId,
+    exam_title: examTitle,
+    exam_date: examDate,
+    archive_file: archiveFile
+  });
+  if (!assignment?.id) {
+    return { success: false, student_id: studentId, error: 'assignment not found', status: 404 };
+  }
+  if (String(assignment.class_id || '') !== classId) {
+    return { success: false, student_id: studentId, error: 'assignment class mismatch', status: 400 };
+  }
+
+  const member = await env.DB.prepare(`
+    SELECT 1
+    FROM class_students
+    WHERE class_id = ? AND student_id = ?
+    LIMIT 1
+  `).bind(classId, studentId).first();
+  if (!member) {
+    return { success: false, student_id: studentId, error: 'student is not in class', status: 400 };
+  }
+
+  const targets = archiveFile
+    ? await env.DB.prepare(`
+      SELECT id
+      FROM exam_sessions
+      WHERE exam_date = ?
+        AND student_id = ?
+        AND (archive_file = ? OR (COALESCE(archive_file, '') = '' AND exam_title = ?))
+    `).bind(examDate, studentId, archiveFile, examTitle).all()
+    : await env.DB.prepare(`
+      SELECT id
+      FROM exam_sessions
+      WHERE exam_title = ?
+        AND exam_date = ?
+        AND student_id = ?
+    `).bind(examTitle, examDate, studentId).all();
+
+  const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
+  const stmts = [
+    env.DB.prepare(`
+      INSERT INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
+      VALUES (?, ?, 'manual')
+      ON CONFLICT(assignment_id, student_id) DO UPDATE SET reason = 'manual'
+    `).bind(assignment.id, studentId)
+  ];
+  for (const sessionId of sessionIds) {
+    stmts.push(env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId));
+    stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
+  }
+  await env.DB.batch(stmts);
+  const assignment_deleted = await cleanupAssignmentIfNoTargets(env, assignment);
+
+  return {
+    success: true,
+    student_id: studentId,
+    assignment_id: assignment.id,
+    deleted_session: sessionIds.length > 0,
+    assignment_deleted
+  };
+}
+
 export async function handleExams(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -834,88 +913,93 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
       const d = await request.json();
+      const result = await performExcludeStudent(env, currentTeacher, {
+        classId: normalizeOptionalText(d.class_id),
+        studentId: normalizeOptionalText(d.student_id),
+        examTitle: normalizeOptionalText(d.exam_title),
+        examDate: normalizeOptionalText(d.exam_date),
+        archiveFile: normalizeAssignmentArchiveFile(d.archive_file || ''),
+        rawInput: d
+      });
+      const { status, ...body } = result;
+      return jsonResponse(body, result.success ? 200 : (status || 400));
+    }
+
+    if (method === 'POST' && id === 'exclude-students') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+      const d = await request.json();
       const classId = normalizeOptionalText(d.class_id);
-      const studentId = normalizeOptionalText(d.student_id);
       const examTitle = normalizeOptionalText(d.exam_title);
       const examDate = normalizeOptionalText(d.exam_date);
       const archiveFile = normalizeAssignmentArchiveFile(d.archive_file || '');
+      const studentIds = Array.from(new Set(
+        (Array.isArray(d.student_ids) ? d.student_ids : [])
+          .map(v => normalizeOptionalText(v))
+          .filter(Boolean)
+      ));
 
-      if (!classId || !studentId || !examTitle || !examDate) {
-        return jsonResponse({ success: false, error: 'class_id, student_id, exam_title, exam_date required' }, 400);
+      if (!classId || !examTitle || !examDate || !studentIds.length) {
+        return jsonResponse({ success: false, error: 'class_id, student_ids, exam_title, exam_date required' }, 400);
       }
+      if (studentIds.length > 200) {
+        return jsonResponse({ success: false, error: 'too many students in one request (max 200)' }, 400);
+      }
+
+      const results = [];
+      for (const studentId of studentIds) {
+        results.push(await performExcludeStudent(env, currentTeacher, {
+          classId, studentId, examTitle, examDate, archiveFile, rawInput: d
+        }));
+      }
+
+      return jsonResponse({
+        success: results.every(r => r.success),
+        results: results.map(({ status, ...rest }) => rest)
+      });
+    }
+
+    if (method === 'GET' && id === 'roster') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+      const classId = normalizeOptionalText(url.searchParams.get('class_id'));
+      if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
       if (!(await canAccessClass(currentTeacher, classId, env))) {
         return jsonResponse({ error: 'Forbidden' }, 403);
       }
-      if (!(await canAccessStudent(currentTeacher, studentId, env))) {
-        return jsonResponse({ error: 'Forbidden' }, 403);
-      }
-      if (!(await hasClassExamAssignmentExclusions(env))) {
-        return jsonResponse({ success: false, error: 'assignment exclusions table not available' }, 503);
-      }
 
-      const assignment = await ensureClassExamAssignmentForExclusion(env, {
-        ...d,
-        class_id: classId,
-        student_id: studentId,
-        exam_title: examTitle,
-        exam_date: examDate,
-        archive_file: archiveFile
-      });
-      if (!assignment?.id) {
-        return jsonResponse({ success: false, error: 'assignment not found' }, 404);
-      }
-      if (String(assignment.class_id || '') !== classId) {
-        return jsonResponse({ success: false, error: 'assignment class mismatch' }, 400);
-      }
+      const examTitle = normalizeOptionalText(url.searchParams.get('exam_title')) || '';
+      const examDate = normalizeOptionalText(url.searchParams.get('exam_date')) || '';
+      const anchorDate = examDate || getBoardDateOffset('', 0);
+      const absentFrom = getBoardDateOffset(anchorDate, -7);
 
-      const member = await env.DB.prepare(`
-        SELECT 1
-        FROM class_students
-        WHERE class_id = ? AND student_id = ?
-        LIMIT 1
-      `).bind(classId, studentId).first();
-      if (!member) {
-        return jsonResponse({ success: false, error: 'student is not in class' }, 400);
-      }
+      const res = await env.DB.prepare(`
+        SELECT s.id, s.name, s.school_name,
+          EXISTS(
+            SELECT 1 FROM attendance a
+            WHERE a.student_id = s.id AND a.status = '결석' AND a.date BETWEEN ? AND ?
+          ) AS recently_absent,
+          EXISTS(
+            SELECT 1 FROM exam_sessions es
+            WHERE es.student_id = s.id AND es.exam_title = ? AND es.exam_date = ?
+          ) AS already_submitted
+        FROM students s
+        WHERE s.id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+          AND s.status = '재원'
+        ORDER BY s.name COLLATE NOCASE
+      `).bind(absentFrom, anchorDate, examTitle, examDate, classId).all();
 
-      const targets = archiveFile
-        ? await env.DB.prepare(`
-          SELECT id
-          FROM exam_sessions
-          WHERE exam_date = ?
-            AND student_id = ?
-            AND (archive_file = ? OR (COALESCE(archive_file, '') = '' AND exam_title = ?))
-        `).bind(examDate, studentId, archiveFile, examTitle).all()
-        : await env.DB.prepare(`
-          SELECT id
-          FROM exam_sessions
-          WHERE exam_title = ?
-            AND exam_date = ?
-            AND student_id = ?
-        `).bind(examTitle, examDate, studentId).all();
+      const students = (res.results || []).map(r => ({
+        id: r.id,
+        name: r.name,
+        school_name: r.school_name,
+        recently_absent: !!r.recently_absent,
+        already_submitted: !!r.already_submitted
+      }));
 
-      const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
-      const stmts = [
-        env.DB.prepare(`
-          INSERT INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
-          VALUES (?, ?, 'manual')
-          ON CONFLICT(assignment_id, student_id) DO UPDATE SET reason = 'manual'
-        `).bind(assignment.id, studentId)
-      ];
-      for (const sessionId of sessionIds) {
-        stmts.push(env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId));
-        stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
-      }
-      await env.DB.batch(stmts);
-      const assignment_deleted = await cleanupAssignmentIfNoTargets(env, assignment);
-
-      return jsonResponse({
-        success: true,
-        assignment_id: assignment.id,
-        student_id: studentId,
-        deleted_session: sessionIds.length > 0,
-        assignment_deleted
-      });
+      return jsonResponse({ success: true, class_id: classId, students });
     }
 
     if (method === 'GET' && id === 'board') {
