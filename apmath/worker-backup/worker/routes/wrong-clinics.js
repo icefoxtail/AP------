@@ -515,7 +515,7 @@ async function createWrongClinic(request, env, teacher) {
       sourceGrade,
       text((payload.exams || [])[0]?.examTitle || ''),
       safeJson(payload.exams || [], []),
-      text(payload.printTitle || title),
+      text(title || payload.printTitle),
       safeJson(payload.headerOptions || null, null),
       safeJson({
         typeMode: payload.typeMode || null,
@@ -769,7 +769,7 @@ async function listPacketsForTeacher(env, teacher, url) {
   if (!studentId) return fail('student_id required');
   if (!(await canAccessStudent(teacher, studentId, env))) return fail('Forbidden', 403);
   const res = await env.DB.prepare(`
-    SELECT p.*, s.title, s.mode, s.print_title
+    SELECT p.*, s.title, s.mode, s.print_title, s.header_options_json
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
     WHERE p.recipient_student_id = ?
@@ -924,10 +924,12 @@ async function listClassClinicStatusForTeacher(env, teacher, url) {
 
 function packetSummary(row) {
   const reviewWrongIds = parseJson(row.review_wrong_ids_json, []);
+  const headerOptions = parseJson(row.header_options_json, null);
   return {
     packet_id: row.id,
     packet_key: row.packet_key,
     title: row.print_title || row.title || '오답 클리닉',
+    subtitle: text(headerOptions?.subtitle),
     source_class_name: row.source_class_name || '',
     recipient_class_name: row.recipient_class_name || '',
     recipient_student_name: row.recipient_student_name || '',
@@ -964,7 +966,7 @@ async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
   if (!(await canAccessStudent(teacher, studentId, env))) return fail('Forbidden', 403);
 
   const packetRes = await env.DB.prepare(`
-    SELECT p.*, s.title, s.mode, s.print_title
+    SELECT p.*, s.title, s.mode, s.print_title, s.header_options_json
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
     WHERE p.recipient_student_id = ?
@@ -1047,7 +1049,7 @@ async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
 export async function submitWrongClinicPacketForStudent(env, studentId, packetKey) {
   await ensureWrongClinicTables(env);
   const packet = await env.DB.prepare(`
-    SELECT p.*, s.title, s.mode, s.print_title
+    SELECT p.*, s.title, s.mode, s.print_title, s.header_options_json
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
     WHERE p.packet_key = ?
@@ -1074,7 +1076,7 @@ export async function submitWrongClinicPacketForStudent(env, studentId, packetKe
 export async function saveWrongClinicReviewWrongsForStudent(env, studentId, packetKey, wrongIds) {
   await ensureWrongClinicTables(env);
   const packet = await env.DB.prepare(`
-    SELECT p.*, s.title, s.mode, s.print_title
+    SELECT p.*, s.title, s.mode, s.print_title, s.header_options_json
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
     WHERE p.packet_key = ?
@@ -1124,7 +1126,7 @@ async function deletePacketForTeacher(env, teacher, packetKey) {
 export async function listWrongClinicPacketsForStudent(env, studentId) {
   await ensureWrongClinicTables(env);
   const res = await env.DB.prepare(`
-    SELECT p.*, s.title, s.mode, s.print_title
+    SELECT p.*, s.title, s.mode, s.print_title, s.header_options_json
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
     WHERE p.recipient_student_id = ?
