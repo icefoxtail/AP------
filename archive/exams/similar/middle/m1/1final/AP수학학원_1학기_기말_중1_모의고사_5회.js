@@ -510,7 +510,7 @@ window.questionBank = [
     wide: false,
     content: "(서술형1) 어떤 다항식에 $-3x+4$를 더해야 할 것을 잘못하여 뺐더니 $2x-7$이 되었다. 이때 바르게 계산한 식을 구하고, 그 과정을 서술하시오.",
     choices: [],
-    answer: "$-4x+1",
+    answer: "-4x+1",
     solution: ""
   },
   {
@@ -530,7 +530,7 @@ window.questionBank = [
     wide: false,
     content: "(서술형2) 등식의 성질을 이용하여 방정식 $3x-9=5x+5$를 풀고, 그 과정을 서술하시오.",
     choices: [],
-    answer: "$x=-7",
+    answer: "x=-7",
     solution: ""
   },
   {
@@ -571,7 +571,7 @@ window.questionBank = [
     wide: false,
     content: "(서술형4) 좌표평면 위의 네 점 $A(2,\\,3)$, $B(-3,\\,4)$, $C(-3,\\,-3)$, $D(2,\\,1)$에 대하여 다음 물음에 답하고, 그 과정을 서술하시오.<br>(1) 좌표평면 위에 네 점 $A$, $B$, $C$, $D$를 꼭짓점으로 하는 사각형 $ABCD$를 나타내시오.<br>(2) 사각형 $ABCD$의 넓이를 구하시오.",
     choices: [],
-    answer: "(1) 사각형 $ABCD$를 좌표평면에 그림, (2) $\\dfrac{45}{2}$",
+    answer: "(2) $\\dfrac{45}{2}$",
     solution: "",
     image: "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q24.png",
     imageSize: "large"
@@ -594,7 +594,7 @@ window.questionBank = [
     wide: false,
     content: "(서술형5) 오른쪽 그림과 같은 그래프에서 $k$의 값을 구하고, 그 과정을 서술하시오.",
     choices: [],
-    answer: "$-4",
+    answer: "-4",
     solution: "",
     image: "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q25.png",
     imageSize: "large"
