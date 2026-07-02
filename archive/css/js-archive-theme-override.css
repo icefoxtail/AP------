@@ -564,6 +564,36 @@ button.primary {
     box-shadow: none;
   }
 
+  #qpp-display,
+  .qpp-selector {
+    color: var(--archive-text-muted) !important;
+  }
+
+  #btn-qr-output,
+  .print-header-editor-btn,
+  #qppSelect,
+  .ctrl-right .mode-tab {
+    background: var(--archive-surface) !important;
+    color: var(--archive-text) !important;
+    border: 1px solid var(--archive-border) !important;
+    box-shadow: none;
+  }
+
+  #btn-qr-output:hover,
+  .print-header-editor-btn:hover,
+  #qppSelect:hover,
+  .ctrl-right .mode-tab:hover {
+    background: var(--archive-surface-soft) !important;
+    border-color: var(--archive-accent-ring) !important;
+  }
+
+  #btn-qr-output:focus-visible,
+  .print-header-editor-btn:focus-visible,
+  #qppSelect:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--archive-accent-soft);
+  }
+
   #print-area {
     background: var(--archive-bg);
   }
