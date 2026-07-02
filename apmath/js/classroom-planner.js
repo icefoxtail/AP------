@@ -191,6 +191,24 @@ function normalizeClassroomArchiveFile(raw = '') {
     return `exams/${path}`;
 }
 
+function getClassroomExamArchiveDisplayTitle(raw = '') {
+    const s = String(raw || '').trim();
+    if (!s) return '';
+    const compact = s.replace(/^MIXED:/, '');
+    const leaf = compact.split(/[\\/]/).pop() || compact;
+    return leaf
+        .replace(/\.js(?:\?.*)?$/i, '')
+        .replace(/^exams\//, '')
+        .replace(/^archive\//, '')
+        .trim();
+}
+
+function getClassroomExamDisplayTitle(row = {}) {
+    return getClassroomExamArchiveDisplayTitle(row.archiveFile || row.archive_file || '') ||
+        String(row.exam_title || row.title || '').trim() ||
+        '원내평가';
+}
+
 function makeExamListKey(title, date, archiveFile = '') {
     const safeTitle = String(title || '');
     const safeDate = String(date || '');
@@ -264,11 +282,12 @@ async function openExamGradeView(classId) {
 
     assignments.forEach(a => {
         const key = makeExamListKey(a.exam_title, a.exam_date, a.archive_file || '');
-        if (!grouped[key]) grouped[key] = { title: a.exam_title, date: a.exam_date, archiveFile: a.archive_file || '', sessions: [], questionCount: a.question_count || 0, assignment: a };
+        if (!grouped[key]) grouped[key] = { title: a.exam_title, displayTitle: getClassroomExamDisplayTitle(a), date: a.exam_date, archiveFile: a.archive_file || '', sessions: [], questionCount: a.question_count || 0, assignment: a };
         else {
             grouped[key].assignment = a;
             if (!grouped[key].questionCount && a.question_count) grouped[key].questionCount = a.question_count;
             if (!grouped[key].archiveFile && a.archive_file) grouped[key].archiveFile = a.archive_file;
+            if (!grouped[key].displayTitle || grouped[key].displayTitle === grouped[key].title) grouped[key].displayTitle = getClassroomExamDisplayTitle(a);
         }
     });
 
@@ -276,15 +295,17 @@ async function openExamGradeView(classId) {
         const matchedAssignment = findMatchingAssignmentForSession(s);
         const resolvedArchiveFile = matchedAssignment?.archive_file || s.archive_file || '';
         const key = makeExamListKey(s.exam_title, s.exam_date, resolvedArchiveFile);
-        if (!grouped[key]) grouped[key] = { title: s.exam_title, date: s.exam_date, archiveFile: resolvedArchiveFile, sessions: [], questionCount: s.question_count || matchedAssignment?.question_count || 0, assignment: matchedAssignment || null };
+        if (!grouped[key]) grouped[key] = { title: s.exam_title, displayTitle: getClassroomExamDisplayTitle({ ...s, archiveFile: resolvedArchiveFile }), date: s.exam_date, archiveFile: resolvedArchiveFile, sessions: [], questionCount: s.question_count || matchedAssignment?.question_count || 0, assignment: matchedAssignment || null };
         grouped[key].sessions.push(s);
         if (!grouped[key].questionCount && s.question_count) grouped[key].questionCount = s.question_count;
         if (!grouped[key].archiveFile && resolvedArchiveFile) grouped[key].archiveFile = resolvedArchiveFile;
         if (!grouped[key].assignment && matchedAssignment) grouped[key].assignment = matchedAssignment;
+        if (!grouped[key].displayTitle || grouped[key].displayTitle === grouped[key].title) grouped[key].displayTitle = getClassroomExamDisplayTitle({ ...s, archiveFile: resolvedArchiveFile });
     });
 
     const exams = Object.values(grouped).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.title).localeCompare(String(a.title)));
     const rows = exams.map(exam => {
+        const displayTitle = getClassroomExamDisplayTitle(exam);
         const cnt = exam.sessions.length;
         const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
         const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
@@ -295,7 +316,7 @@ async function openExamGradeView(classId) {
         const assignmentArg = apJsArg(exam.assignment?.id || '');
         return `<div onclick="openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg})" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
             <div>
-                <div style="font-weight:500; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
+                <div style="font-weight:500; color: var(--text); font-size: 15px; line-height: 1.4;">${apEscapeHtml(displayTitle)}</div>
                 <div style="font-size: 11px; color: var(--secondary); margin-top: 4px; font-weight: 400; line-height: 1.5;">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${targetCount}명 (${pct}%)</div>
             </div>
             <div style="text-align: right; display: flex; align-items: center; gap: 10px;">
@@ -404,6 +425,10 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     const examArchiveFileObj = sessions.find(s => s.archive_file);
     const examArchiveFile = apJsArg(examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || '');
     const assignmentIdArg = apJsArg(matchedAssignment?.id || '');
+    const detailDisplayTitle = getClassroomExamDisplayTitle({
+        title: examTitle,
+        archiveFile: examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || archiveFile || ''
+    });
 
     const submittedHTML = submitted.map(s => {
         const sArchive = s.session?.archive_file ? apJsArg(s.session.archive_file) : examArchiveFile;
@@ -437,7 +462,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
 
     const weakUnitHtml = typeof renderWeakUnitSummary === 'function' ? renderWeakUnitSummary(classWeakUnits, '오답 데이터 없음', { clickable: true, mode: 'class', titlePrefix: '반 취약 단원', context: { targetType: 'class', targetId: classId, targetLabel: (state.db.classes || []).find(c => String(c.id) === String(classId))?.name || '반', examTitle, examDate } }) : '';
 
-    showModal(`${examTitle}`, `
+    showModal(`${detailDisplayTitle}`, `
         <div style="padding: 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; text-align: center;">
             <div style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">제출 완료: <span style="color: var(--success);; font-weight:500;">${submitted.length}명</span> / 전체 ${submitted.length + pending.length}명</div>
             <div style="font-size: 11px; font-weight: 400; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${examDate} · ${qCount}문항 기준</div>
