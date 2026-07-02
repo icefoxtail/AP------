@@ -3329,6 +3329,8 @@ async function handleApiRequest(request, env) {
                 timetable_students: normalizeApStudentRows(ttAllStudents.results),
                 timetable_class_textbooks: ttAllClassTextbooks.results,
                 report_exam_cohort_stats: [],
+                exam_question_reviews: [],
+                exam_analysis_meta: [],
                 ...foundationData
               }), { headers });
             }
@@ -3377,6 +3379,16 @@ async function handleApiRequest(request, env) {
             clss.results,
             map.results
           );
+          const analysisArchiveFiles = Array.from(new Set((exs.results || []).map(row => String(row.archive_file || '').trim()).filter(Boolean)));
+          let examQuestionReviews = { results: [] };
+          let examAnalysisMeta = { results: [] };
+          if (analysisArchiveFiles.length > 0) {
+            const archiveMarkers = analysisArchiveFiles.map(() => '?').join(',');
+            [examQuestionReviews, examAnalysisMeta] = await Promise.all([
+              env.DB.prepare(`SELECT * FROM exam_question_reviews WHERE archive_file IN (${archiveMarkers})`).bind(...analysisArchiveFiles).all(),
+              env.DB.prepare(`SELECT * FROM exam_analysis_meta WHERE archive_file IN (${archiveMarkers})`).bind(...analysisArchiveFiles).all()
+            ]);
+          }
 
           return new Response(JSON.stringify({
             students: normalizeApStudentRows(stds.results),
@@ -3403,6 +3415,8 @@ async function handleApiRequest(request, env) {
             timetable_students: normalizeApStudentRows(ttAllStudents.results),
             timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results,
             report_exam_cohort_stats: reportExamCohortStats,
+            exam_question_reviews: examQuestionReviews.results || [],
+            exam_analysis_meta: examAnalysisMeta.results || [],
             ...foundationData
           }), { headers });
         }
