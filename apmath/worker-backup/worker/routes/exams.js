@@ -907,6 +907,73 @@ export async function handleExams(request, env, teacher, path, url) {
     }
   }
 
+  if (resource === 'exam-analysis') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    if (method === 'GET') {
+      const archiveFile = normalizeAssignmentArchiveFile(url.searchParams.get('archive_file') || url.searchParams.get('file') || '');
+      if (!archiveFile) return jsonResponse({ error: 'archive_file required' }, 400);
+      const reviews = await env.DB.prepare(`
+        SELECT *
+        FROM exam_question_reviews
+        WHERE archive_file = ?
+        ORDER BY CAST(question_no AS INTEGER), question_no
+      `).bind(archiveFile).all();
+      const meta = await env.DB.prepare('SELECT * FROM exam_analysis_meta WHERE archive_file = ?').bind(archiveFile).first();
+      return jsonResponse({
+        success: true,
+        archive_file: archiveFile,
+        reviews: reviews.results || [],
+        meta: meta || null
+      });
+    }
+
+    if (method === 'POST') {
+      const d = await request.json();
+      const archiveFile = normalizeAssignmentArchiveFile(d.archive_file || d.file || '');
+      if (!archiveFile) return jsonResponse({ error: 'archive_file required' }, 400);
+      const updatedBy = currentTeacher.id || currentTeacher.name || 'teacher';
+      const stmts = [];
+
+      const metaPatch = d.meta && typeof d.meta === 'object' ? d.meta : d;
+      if (Object.prototype.hasOwnProperty.call(metaPatch, 'overview_text')) {
+        stmts.push(env.DB.prepare(`
+          INSERT INTO exam_analysis_meta (archive_file, overview_text, updated_at, updated_by)
+          VALUES (?, ?, datetime('now'), ?)
+          ON CONFLICT(archive_file) DO UPDATE SET
+            overview_text=excluded.overview_text,
+            updated_at=datetime('now'),
+            updated_by=excluded.updated_by
+        `).bind(archiveFile, normalizeOptionalText(metaPatch.overview_text), updatedBy));
+      }
+
+      const reviewItems = Array.isArray(d.reviews) ? d.reviews : (d.question_no || d.questionNo ? [d] : []);
+      for (const item of reviewItems) {
+        const questionNo = String(item.question_no ?? item.questionNo ?? '').trim();
+        if (!questionNo) continue;
+        stmts.push(env.DB.prepare(`
+          INSERT INTO exam_question_reviews (archive_file, question_no, review_text, answer, updated_at, updated_by)
+          VALUES (?, ?, ?, ?, datetime('now'), ?)
+          ON CONFLICT(archive_file, question_no) DO UPDATE SET
+            review_text=excluded.review_text,
+            answer=excluded.answer,
+            updated_at=datetime('now'),
+            updated_by=excluded.updated_by
+        `).bind(
+          archiveFile,
+          questionNo,
+          normalizeOptionalText(item.review_text ?? item.reviewText),
+          normalizeOptionalText(item.answer),
+          updatedBy
+        ));
+      }
+
+      if (stmts.length) await env.DB.batch(stmts);
+      return jsonResponse({ success: true, archive_file: archiveFile, count: stmts.length });
+    }
+  }
+
   if (resource === 'class-exam-assignments') {
     if (method === 'POST' && id === 'exclude-student') {
       const currentTeacher = await requireTeacher(request, env, teacher);

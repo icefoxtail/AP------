@@ -48,6 +48,112 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false, detailed =
     }).join('');
 }
 
+function reportCenterBuildQuestionReviewCard(review, opts = {}) {
+    const options = {
+        showAnswer: false,
+        showContent: true,
+        showSolution: true,
+        anonymized: false,
+        badge: true,
+        ...opts
+    };
+    const source = review && typeof review === 'object' ? review : {};
+    const questionNo = source.questionNo ?? source.question_no ?? '';
+    const unit = source.unit || source.standard_unit || source.unitKey || source.standard_unit_key || '단원 정보 없음';
+    const correctRate = Number(source.correctRate ?? source.correct_rate);
+    const classCorrectRate = Number(source.classCorrectRate ?? source.class_correct_rate);
+    const level = source.level || source.difficulty || reportCenterGetQuestionDifficultyLabel(
+        Number.isFinite(correctRate) ? correctRate : NaN
+    );
+    const title = questionNo ? `${questionNo}번 · ${unit}` : String(unit || '문항 분석');
+    const rateItems = [
+        Number.isFinite(correctRate) ? `<span>전체 정답률 <b>${Math.round(correctRate)}%</b></span>` : '',
+        Number.isFinite(classCorrectRate) ? `<span>반 정답률 <b>${Math.round(classCorrectRate)}%</b></span>` : ''
+    ].filter(Boolean).join('');
+    const contentHtml = options.showContent ? reportCenterArchiveTextToHtml(source.contentText || source.content || '') : '';
+    const choiceItems = options.showContent && Array.isArray(source.choices)
+        ? source.choices
+            .map(choice => reportCenterArchiveTextToHtml(choice))
+            .filter(Boolean)
+            .map(choice => `<li>${choice}</li>`)
+            .join('')
+        : '';
+    const answerHtml = options.showAnswer ? reportCenterArchiveTextToHtml(source.answer || '') : '';
+    const solutionHtml = options.showSolution ? reportCenterArchiveTextToHtml(source.solutionText || source.solution || '') : '';
+    const savedReviewHtml = reportCenterArchiveTextToHtml(source.reviewText || source.review_text || '');
+    const fallbackInsight = savedReviewHtml ? '' : reportCenterArchiveTextToHtml(
+        reportCenterBuildParentQuestionInsight(source, source, { mode: 'full' })
+    );
+    const reviewHtml = savedReviewHtml || fallbackInsight;
+
+    return `
+        <article class="aprc-qreview-card${options.anonymized ? ' is-anonymized' : ''}">
+            <header class="aprc-qreview-head">
+                <div class="aprc-qreview-title">${reportCenterEscape(title)}</div>
+                ${options.badge ? `<div class="aprc-qreview-badge">${reportCenterEscape(level || '자료 부족')}</div>` : ''}
+            </header>
+            ${rateItems ? `<div class="aprc-qreview-rates">${rateItems}</div>` : ''}
+            ${contentHtml || choiceItems ? `
+                <section class="aprc-qreview-block">
+                    <b>문항</b>
+                    ${contentHtml ? `<p>${contentHtml}</p>` : ''}
+                    ${choiceItems ? `<ol class="aprc-qreview-choices">${choiceItems}</ol>` : ''}
+                </section>
+            ` : ''}
+            ${answerHtml ? `
+                <section class="aprc-qreview-block aprc-qreview-answer">
+                    <b>정답</b>
+                    <p>${answerHtml}</p>
+                </section>
+            ` : ''}
+            ${reviewHtml ? `
+                <section class="aprc-qreview-block aprc-qreview-review">
+                    <b>${options.anonymized ? '문항 분석' : '저장된 분석'}</b>
+                    <p>${reviewHtml}</p>
+                </section>
+            ` : ''}
+            ${solutionHtml ? `
+                <section class="aprc-qreview-block aprc-qreview-solution">
+                    <b>해설 요약</b>
+                    <p>${solutionHtml}</p>
+                </section>
+            ` : ''}
+        </article>
+    `;
+}
+
+function reportCenterBuildQuestionReviewCardsForReport(data, opts = {}) {
+    const stats = data?.stats || {};
+    const session = data?.session || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    if (!wrongRows.length) return '';
+    const limit = Number.isFinite(Number(opts.limit)) ? Number(opts.limit) : 6;
+    const detailMap = reportCenterGetQuestionDetailMap(data);
+    const store = opts.store || reportCenterGetExamReviews(session.archive_file || '');
+    const rows = reportCenterSelectPriorityWrongRows(wrongRows, limit);
+    return rows.map(row => {
+        const qNo = String(row?.questionNo ?? row?.question_no ?? '').trim();
+        const detail = detailMap.get(qNo) || {};
+        const saved = store.byQuestion?.get?.(qNo) || null;
+        return reportCenterBuildQuestionReviewCard({
+            ...detail,
+            ...row,
+            questionNo: row.questionNo ?? detail.questionNo,
+            unit: row.unit || detail.unit,
+            level: row.level || detail.level || row.difficulty,
+            correctRate: row.correctRate ?? detail.correctRate,
+            classCorrectRate: row.classCorrectRate ?? detail.classCorrectRate,
+            answer: saved?.answer || detail.answer,
+            reviewText: saved?.review_text || saved?.reviewText || ''
+        }, {
+            showAnswer: !!opts.showAnswer,
+            showContent: opts.showContent !== false,
+            showSolution: opts.showSolution !== false,
+            anonymized: !!opts.anonymized
+        });
+    }).join('');
+}
+
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     const student = data.student;
@@ -238,18 +344,18 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <p>${reportCenterEscape(parentSummaryText)}</p>
             </section>
 
-            <section class="aprc-pdf-section aprc-pdf-point-grid">
-                <article class="aprc-pdf-panel">
+            ${(studioOptions.includeScoreTrend || wrongCount) ? `<section class="aprc-pdf-section aprc-pdf-point-grid">
+                ${studioOptions.includeScoreTrend ? `<article class="aprc-pdf-panel">
                     <div class="aprc-section-title">지금 어디쯤 있나요</div>
                     ${reportCenterBuildReportChartHtml(trendChart)}
                     <p class="aprc-trend-summary">${reportCenterEscape(trendSummaryText)}</p>
-                </article>
+                </article>` : ''}
                 ${wrongCount ? `<article class="aprc-pdf-panel">
                     <div class="aprc-section-title">다음에 꼭 짚어볼 부분</div>
                     <p>${reportCenterEscape(coreItems[1].text)}</p>
                     ${studioOptions.includeWeaknessTrend ? reportCenterBuildWeaknessTrendTable(trendData.weaknessTrend) : ''}
                 </article>` : ''}
-            </section>
+            </section>` : ''}
 
             ${studioOptions.includeDistributionGraph ? `<section class="aprc-pdf-section aprc-pdf-panel">
                 <div class="aprc-section-title">이번 시험 점수 분포</div>
@@ -293,6 +399,16 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <div class="aprc-source-note">${reportCenterEscape(archiveMessage || '')}</div>
             </section>` : ''}
 
+            ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
+                <div class="aprc-section-title">문제별 분석 카드</div>
+                <div class="aprc-qreview-list">${reportCenterBuildQuestionReviewCardsForReport(data, {
+                    limit: 6,
+                    showAnswer: !!studioOptions.includeQuestionReviewAnswer,
+                    showContent: true,
+                    showSolution: true
+                })}</div>
+            </section>` : ''}
+
             ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
                 <div class="aprc-section-title">문제별 코멘트</div>
                 <div class="aprc-qcomment-list">${reportCenterBuildQuestionCommentCards(data, 4)}</div>
@@ -312,7 +428,11 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         </main>
     `;
 
-    html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
+    // 성적 추이 분석이 켜진 경우에만 점수 카드를 최근 5회 추이 카드로 교체한다.
+    // 꺼져 있으면 위에서 만든 이번 시험 중심 카드(점수/정답률/비교평균/최근점수)를 그대로 둔다.
+    if (studioOptions.includeScoreTrend) {
+        html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
+    }
     return html;
 }
 
@@ -444,6 +564,23 @@ function reportCenterPremiumReportStyle() {
             .aprc-qcomment-no { flex:0 0 auto; min-width:14mm; font-size:11.5px; font-weight:850; color:#1d4ed8; line-height:1.3; }
             .aprc-qcomment-no span { display:block; margin-top:1px; font-size:9.5px; font-weight:700; color:#94a3b8; }
             .aprc-qcomment p { margin:0; flex:1 1 auto; color:#334155; font-size:11px; font-weight:650; line-height:1.55; word-break:keep-all; overflow-wrap:break-word; }
+            .aprc-qreview-card { break-inside:avoid; page-break-inside:avoid; border:1px solid #dbeafe; border-radius:12px; background:#ffffff; padding:3.5mm; color:#111827; }
+            .aprc-qreview-list { display:flex; flex-direction:column; gap:3mm; }
+            .aprc-qreview-card + .aprc-qreview-card { margin-top:3mm; }
+            .aprc-qreview-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:2mm; }
+            .aprc-qreview-title { min-width:0; color:#0f172a; font-size:12.5px; font-weight:900; line-height:1.35; word-break:keep-all; overflow-wrap:break-word; }
+            .aprc-qreview-badge { flex:0 0 auto; padding:3px 7px; border-radius:999px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; font-size:10px; font-weight:900; line-height:1.2; white-space:nowrap; }
+            .aprc-qreview-rates { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2.5mm; color:#64748b; font-size:10.5px; font-weight:800; }
+            .aprc-qreview-rates span { display:inline-flex; gap:3px; align-items:center; padding:3px 6px; border-radius:8px; background:#f8fafc; border:1px solid #e5e7eb; }
+            .aprc-qreview-rates b { color:#0f172a; font-weight:900; }
+            .aprc-qreview-block { margin-top:2.5mm; padding-top:2.2mm; border-top:1px solid #e5e7eb; }
+            .aprc-qreview-block:first-of-type { margin-top:0; }
+            .aprc-qreview-block > b { display:block; margin-bottom:4px; color:#1d4ed8; font-size:10.8px; font-weight:900; }
+            .aprc-qreview-block p { margin:0; color:#334155; font-size:11px; font-weight:650; line-height:1.55; word-break:keep-all; overflow-wrap:break-word; }
+            .aprc-qreview-choices { margin:5px 0 0; padding-left:16px; color:#334155; font-size:10.8px; font-weight:650; line-height:1.5; }
+            .aprc-qreview-choices li { margin:2px 0; }
+            .aprc-qreview-review { background:#f8fbff; border:1px solid #dbeafe; border-radius:10px; padding:2.6mm; }
+            .aprc-qreview-review > b { color:#1e40af; }
             .aprc-parent-message { margin:4mm 0 0; padding:4.5mm 5mm; border-radius:14px; background:#eff6ff; border:1px solid #bfdbfe; }
             .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:11.5px; font-weight:700; line-height:1.58; word-break:keep-all; white-space:normal; }
             .aprc-parent-bottom-note { margin-top:3.5mm; padding:3.5mm 4.5mm; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; color:#334155; font-size:10.8px; font-weight:750; line-height:1.45; }
@@ -502,7 +639,7 @@ function reportCenterPremiumReportStyle() {
                 .report-print-toolbar, .report-print-actions, .no-print { display:none !important; }
                 .report-print-stage { padding:0 !important; margin:0 !important; background:#fff !important; overflow:visible !important; }
                 .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
-                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary, .aprc-pdf-remediation, .aprc-pdf-wrong-care { break-inside:avoid !important; page-break-inside:avoid !important; }
+                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary, .aprc-pdf-remediation, .aprc-pdf-wrong-care, .aprc-pdf-review-panel, .aprc-qreview-card { break-inside:avoid !important; page-break-inside:avoid !important; }
                 .aprc-pdf-point-grid { display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:4mm !important; }
                 .aprc-pdf-table-panel { break-inside:auto !important; page-break-inside:auto !important; }
                 .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; margin-bottom:7px; }

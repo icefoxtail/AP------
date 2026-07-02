@@ -408,6 +408,168 @@ function reportCenterNormalizeArchiveFile(raw) {
     };
 }
 
+function reportCenterNormalizeExamAnalysisArchiveKey(raw) {
+    const info = reportCenterNormalizeArchiveFile(raw || '');
+    if (info.ok && info.path) return info.path;
+    return String(info.original || raw || '').trim();
+}
+
+function reportCenterArchiveKeyCandidates(raw) {
+    const key = reportCenterNormalizeExamAnalysisArchiveKey(raw);
+    const candidates = new Set([key, String(raw || '').trim()]);
+    if (key.startsWith('exams/')) candidates.add(key.replace(/^exams\//, ''));
+    const info = reportCenterNormalizeArchiveFile(raw || '');
+    if (info.path) candidates.add(info.path);
+    if (info.original) candidates.add(info.original);
+    return Array.from(candidates).filter(Boolean);
+}
+
+function reportCenterExamAnalysisUpdatedBy() {
+    return state?.auth?.id || state?.auth?.name || 'local';
+}
+
+function reportCenterGetExamReviews(archiveFile) {
+    const candidates = new Set(reportCenterArchiveKeyCandidates(archiveFile));
+    const reviews = Array.isArray(state?.db?.exam_question_reviews) ? state.db.exam_question_reviews : [];
+    const metas = Array.isArray(state?.db?.exam_analysis_meta) ? state.db.exam_analysis_meta : [];
+    const meta = metas.find(row => candidates.has(String(row?.archive_file || '').trim())) || null;
+    const byQuestion = new Map();
+    reviews.forEach(row => {
+        if (!candidates.has(String(row?.archive_file || '').trim())) return;
+        const questionNo = String(row?.question_no ?? row?.questionNo ?? '').trim();
+        if (!questionNo) return;
+        byQuestion.set(questionNo, row);
+    });
+    return { meta, byQuestion };
+}
+
+function reportCenterUpsertExamReview(archiveFile, questionNo, patch = {}) {
+    if (!state.db) state.db = {};
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const qNo = String(questionNo ?? '').trim();
+    if (!archiveKey || !qNo) return null;
+    const rows = Array.isArray(state.db.exam_question_reviews) ? state.db.exam_question_reviews : [];
+    const now = new Date().toISOString();
+    const next = {
+        archive_file: archiveKey,
+        question_no: qNo,
+        ...(rows.find(row => String(row?.archive_file || '') === archiveKey && String(row?.question_no ?? row?.questionNo ?? '') === qNo) || {}),
+        ...(patch && typeof patch === 'object' ? patch : {}),
+        archive_file: archiveKey,
+        question_no: qNo,
+        updated_at: now,
+        updated_by: patch?.updated_by || reportCenterExamAnalysisUpdatedBy()
+    };
+    const idx = rows.findIndex(row => String(row?.archive_file || '') === archiveKey && String(row?.question_no ?? row?.questionNo ?? '') === qNo);
+    state.db.exam_question_reviews = idx >= 0
+        ? rows.map((row, index) => index === idx ? next : row)
+        : [...rows, next];
+    return next;
+}
+
+function reportCenterUpsertExamMeta(archiveFile, patch = {}) {
+    if (!state.db) state.db = {};
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!archiveKey) return null;
+    const rows = Array.isArray(state.db.exam_analysis_meta) ? state.db.exam_analysis_meta : [];
+    const now = new Date().toISOString();
+    const next = {
+        archive_file: archiveKey,
+        ...(rows.find(row => String(row?.archive_file || '') === archiveKey) || {}),
+        ...(patch && typeof patch === 'object' ? patch : {}),
+        archive_file: archiveKey,
+        updated_at: now,
+        updated_by: patch?.updated_by || reportCenterExamAnalysisUpdatedBy()
+    };
+    const idx = rows.findIndex(row => String(row?.archive_file || '') === archiveKey);
+    state.db.exam_analysis_meta = idx >= 0
+        ? rows.map((row, index) => index === idx ? next : row)
+        : [...rows, next];
+    return next;
+}
+
+function reportCenterBuildExamAnalysisFallbackOverview(archiveFile, rows = []) {
+    const count = rows.length;
+    const rates = rows.map(row => row.correctRate).filter(Number.isFinite);
+    const avg = rates.length ? Math.round(rates.reduce((sum, rate) => sum + rate, 0) / rates.length) : null;
+    const hardCount = rates.filter(rate => rate < 60).length;
+    const unitNames = Array.from(new Set(rows.map(row => row.unit).filter(Boolean))).slice(0, 4);
+    if (!count) return '분석할 문항 정보가 아직 없습니다.';
+    const unitText = unitNames.length ? ` 주요 단원은 ${unitNames.join(', ')}입니다.` : '';
+    const rateText = avg === null ? '정답률 비교 자료는 아직 충분하지 않습니다.' : `평균 정답률은 ${avg}%입니다.`;
+    const hardText = hardCount ? ` 다시 확인할 문항은 ${hardCount}개입니다.` : ' 전반적으로 안정적으로 해결된 문항 구성입니다.';
+    return `${count}개 문항 기준으로 정리했습니다. ${rateText}${hardText}${unitText}`;
+}
+
+function reportCenterBuildExamAnalysisArticle(archiveFile, opts = {}) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const candidates = new Set(reportCenterArchiveKeyCandidates(archiveFile));
+    const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+        .filter(row => candidates.has(String(row?.archive_file || '').trim()) || candidates.has(reportCenterNormalizeExamAnalysisArchiveKey(row?.archive_file || '')))
+        .sort((a, b) => Number(a.question_no || a.questionNo || 0) - Number(b.question_no || b.questionNo || 0));
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => candidates.has(String(session?.archive_file || '').trim()) || candidates.has(reportCenterNormalizeExamAnalysisArchiveKey(session?.archive_file || '')));
+    const wrongs = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
+    const store = reportCenterGetExamReviews(archiveFile);
+    const total = sessions.length;
+    const rows = blueprints.map(bp => {
+        const qNo = String(bp.question_no ?? bp.questionNo ?? '').trim();
+        const wrongCount = wrongs.filter(w => sessions.some(s => String(s.id) === String(w.session_id)) && String(w.question_id ?? w.question_no ?? w.questionNo) === qNo).length;
+        const correctRate = total ? Math.round(((total - wrongCount) / total) * 100) : null;
+        const saved = store.byQuestion.get(qNo) || null;
+        return {
+            questionNo: qNo,
+            unit: bp.standard_unit || bp.unit || bp.unit_name || bp.standardUnit || '',
+            level: bp.level || bp.difficulty || '',
+            correctRate,
+            classCorrectRate: correctRate,
+            contentText: bp.content_text || bp.content || '',
+            choices: Array.isArray(bp.choices) ? bp.choices : [],
+            answer: saved?.answer || bp.answer || '',
+            solutionText: bp.solution_text || bp.solution || '',
+            reviewText: saved?.review_text || saved?.reviewText || ''
+        };
+    });
+    const overviewText = store.meta?.overview_text || reportCenterBuildExamAnalysisFallbackOverview(archiveKey, rows);
+    const unitCounts = new Map();
+    rows.forEach(row => {
+        const unit = row.unit || '단원 미지정';
+        unitCounts.set(unit, (unitCounts.get(unit) || 0) + 1);
+    });
+    const unitItems = Array.from(unitCounts.entries())
+        .map(([unit, count]) => `<li>${reportCenterEscape(unit)} <b>${count}</b></li>`)
+        .join('');
+    const cards = rows.map(row => reportCenterBuildQuestionReviewCard(row, {
+        anonymized: true,
+        showAnswer: opts.showAnswer !== false,
+        showContent: opts.showContent !== false,
+        showSolution: opts.showSolution !== false
+    })).join('');
+    return `
+        <article class="aprc-exam-article" data-archive-file="${reportCenterAttr(archiveKey)}">
+            <header class="aprc-exam-article-head">
+                <h1>${reportCenterEscape(opts.title || '시험지 분석')}</h1>
+                <p>${reportCenterArchiveTextToHtml(overviewText)}</p>
+            </header>
+            <section class="aprc-exam-article-stats">
+                <div>문항 <b>${rows.length}</b></div>
+                <div>응시 기록 <b>${total}</b></div>
+            </section>
+            ${unitItems ? `<section class="aprc-exam-article-units"><h2>단원 분포</h2><ul>${unitItems}</ul></section>` : ''}
+            <section class="aprc-exam-article-questions">
+                <h2>문항별 리뷰</h2>
+                <div class="aprc-qreview-list">${cards}</div>
+            </section>
+        </article>
+    `;
+}
+
+async function reportCenterCopyExamAnalysisArticle(archiveFile) {
+    const html = reportCenterBuildExamAnalysisArticle(archiveFile);
+    await reportCenterCopyText(html, '시험지 분석 HTML을 복사했습니다.');
+    return html;
+}
+
 function reportCenterStripHtml(value) {
     const html = String(value || '');
     if (!html) return '';
@@ -1605,25 +1767,61 @@ function reportCenterEasyScoreDeltaText(delta) {
 // [문구 톤] 아래 reportCenterBuildEasy* 계열은 함수명에 'Easy'가 남아 있으나,
 // 현재는 '쉬운말'이 아니라 전문적+따뜻한 담임 톤의 확정 문구를 생성한다(2026-06-27 방향 전환).
 // 이름은 호출처/스냅샷 영향이 커 유지하며, 톤 기준은 전문체임에 유의한다.
+// 오답이 몰린 단원명을 최대 limit개까지 반환한다(없으면 '').
+function reportCenterWrongUnitPhrase(data, limit = 2) {
+    const wrongRows = data?.stats?.wrongRows || [];
+    const units = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, limit);
+    return units.length ? units.join(', ') : '';
+}
+
+// 전체 정답률이 낮았던(어려운) 문항을 정확히 해결했는지 = 이번 시험의 강점 신호.
+function reportCenterHasStrengthSignal(data) {
+    const stats = data?.stats || {};
+    const rows = Array.isArray(stats.rows) ? stats.rows : [];
+    const wrongNos = new Set((stats.wrongRows || []).map(r => String(r.questionNo)));
+    return rows.some(r => !wrongNos.has(String(r.questionNo))
+        && Number.isFinite(r.correctRate) && r.correctRate < 55);
+}
+
+// 이번 시험 요약: 절대 점수·정답률 수치는 카드가 담당하므로 여기서는 평균 대비 위치,
+// 오답이 몰린 단원, 강점, 그리고 '학원이 책임지고 진행'하는 다음 계획을 문단으로 정리한다.
 function reportCenterBuildEasySummaryText(data, wrongCount, correctRate = null) {
-    const studentName = data?.student?.name || '학생';
-    const score = data?.session?.score;
     const stats = data?.stats || {};
     if (!Number(wrongCount || 0)) {
-        return '이번 시험은 전 문항을 정확히 풀었습니다. 다음 수업에서는 한 단계 높은 난도의 문제로 이어가겠습니다.';
+        const strength = reportCenterHasStrengthSignal(data)
+            ? ' 정답률이 낮았던 문항까지 정확히 해결한 만큼,'
+            : '';
+        return `이번 시험은 전 문항을 정확히 풀었습니다.${strength} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다. 지금의 수준을 안정적으로 유지하도록 저희가 책임지고 이어가겠습니다.`;
     }
+    const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
+    const whereSentence = unitPhrase
+        ? (Number(wrongCount) === 1
+            ? `틀린 문항은 ${unitPhrase} 단원에서 나왔습니다.`
+            : `틀린 ${wrongCount}문항은 주로 ${unitPhrase} 단원에 몰려 있습니다.`)
+        : '';
+    const strengthSentence = reportCenterHasStrengthSignal(data)
+        ? '정답률이 낮았던 문항까지 정확히 해결한 부분은 이번 시험에서 특히 잘한 점입니다.'
+        : '';
+    const planSentence = '틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 부족한 개념은 다시 정리해 같은 유형까지 책임지고 점검하겠습니다.';
     const hasClassAvg = stats.classAvg !== null && stats.classAvg !== undefined && stats.classAvg !== '';
     const classAvg = Number(stats.classAvg);
-    const rawScore = Number(score);
+    const rawScore = Number(data?.session?.score);
+    let leadSentence;
     if (Number.isFinite(rawScore) && hasClassAvg && Number.isFinite(classAvg)) {
         const diff = Math.abs(rawScore - classAvg);
-        const label = rawScore >= classAvg ? '높습니다' : '낮습니다';
-        return `이번 시험은 반 평균보다 ${diff}점 ${label}. 틀린 ${wrongCount}문항은 다음 수업에서 다시 점검하겠습니다.`;
+        const overallDiff = stats.overallAvg !== null && stats.overallAvg !== undefined
+            ? rawScore - Number(stats.overallAvg)
+            : null;
+        if (overallDiff !== null) {
+            const classLabel = rawScore >= classAvg ? '높고' : '낮고';
+            leadSentence = `이번 시험은 ${stats.className || '반'} 평균보다 ${diff}점 ${classLabel}, 전체 평균과 비교하면 ${Math.abs(overallDiff)}점 ${overallDiff >= 0 ? '높은' : '낮은'} 수준입니다.`;
+        } else {
+            leadSentence = `이번 시험은 ${stats.className || '반'} 평균보다 ${diff}점 ${rawScore >= classAvg ? '높습니다' : '낮습니다'}.`;
+        }
+    } else {
+        leadSentence = `이번 시험에서는 ${wrongCount}문항을 틀렸습니다.`;
     }
-    if (correctRate !== null && correctRate !== undefined) {
-        return `이번 시험 정답률은 ${correctRate}%입니다. 틀린 문항은 다음 수업에서 함께 다시 보겠습니다.`;
-    }
-    return `이번 시험에서는 ${wrongCount}문항을 틀렸습니다. 다음 수업에서 해당 문항을 다시 풀이하겠습니다.`;
+    return [leadSentence, whereSentence, strengthSentence, planSentence].filter(Boolean).join(' ');
 }
 
 function reportCenterBuildEasyTrendText(trendData) {
@@ -1647,20 +1845,39 @@ function reportCenterBuildEasyWeaknessText(trendData, data) {
     const wrongRows = data?.stats?.wrongRows || [];
     if (!wrongRows.length) return '';
     const recurring = (trendData?.weaknessTrend || []).filter(item => item.appearedInSessions > 1 && !item.resolved);
+    const recurringUnits = Array.from(new Set(recurring.map(item => item.unit).filter(Boolean))).slice(0, 2).join(', ');
     const priorityText = reportCenterEasyWrongNums(data, 3);
-    if (recurring.length) return '여러 차례 반복해서 틀린 문항부터 다시 점검하겠습니다.';
-    if (priorityText) return `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다.`;
-    return '다음 수업에서 틀린 문항을 한 번 더 짚고 넘어가겠습니다.';
+    if (recurring.length) {
+        const head = recurringUnits
+            ? `${recurringUnits} 단원은 최근에도 반복해서 어려워하는 부분입니다.`
+            : '여러 차례 반복해서 틀리는 문항이 이어지고 있습니다.';
+        return `${head} 반복 오답으로 따로 모아, 다음 수업과 보강에서 개념부터 다시 정리하고 같은 유형까지 책임지고 챙기겠습니다.`;
+    }
+    if (priorityText) {
+        return `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다. 틀린 원인을 문항마다 짚어, 다음 시험 전까지 확실히 넘어가도록 하겠습니다.`;
+    }
+    return '틀린 문항은 다음 수업에서 한 번 더 짚고, 부족한 개념은 보강에서 다시 정리해 확실히 넘어가도록 하겠습니다.';
 }
 
 function reportCenterBuildEasyPlanItems(data, trendData = null) {
     const wrongRows = data?.stats?.wrongRows || [];
     const wrongNums = reportCenterEasyWrongNums(data, 5);
+    const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
     if (!wrongRows.length) {
-        return ['잘 풀던 유형은 유지하면서, 한 단계 높은 난도의 문제로 이어가겠습니다.'];
+        return [
+            '잘 풀던 유형은 유지하면서, 한 단계 높은 난도의 문제로 이어가겠습니다.',
+            '자주 실수가 나오는 유형은 미리 점검해 다음 시험까지 안정적으로 준비하겠습니다.'
+        ];
     }
-    if (wrongNums) return [`${wrongNums}을 다시 풀이하고, 같은 유형의 문제까지 함께 확인하겠습니다.`];
-    return ['다음 수업에서 틀린 문항을 다시 풀이하고, 같은 유형의 문제로 한 번 더 연습하겠습니다.'];
+    const items = [];
+    items.push(wrongNums
+        ? `${wrongNums}을 다시 풀이하고, 같은 유형의 문제까지 함께 확인하겠습니다.`
+        : '틀린 문항을 다시 풀이하고, 같은 유형의 문제로 한 번 더 연습하겠습니다.');
+    items.push(unitPhrase
+        ? `${unitPhrase} 단원은 개념부터 다시 정리한 뒤, 응용 문제로 넘어가 마무리까지 잡겠습니다.`
+        : '틀린 원인을 문항별로 짚고, 부족한 개념은 다시 정리해 확실히 넘어가겠습니다.');
+    items.push('반복해서 틀리는 부분은 따로 모아 관리하고, 다음 시험 전에 다시 점검하겠습니다.');
+    return items;
 }
 
 function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
@@ -1670,13 +1887,17 @@ function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
     if (!wrongRows.length) {
         const excellentNums = reportCenterShortQuestionList(reportCenterSelectExcellentRows(stats, 3), 3);
         lines.push(excellentNums
-            ? `이번 시험은 전 문항을 정확히 풀었습니다. 특히 ${excellentNums}처럼 정답률이 낮았던 문항까지 정확히 해결했습니다.`
-            : '이번 시험은 전 문항을 정확히 풀었습니다. 다음 수업에서는 한 단계 높은 난도로 이어가겠습니다.');
+            ? `이번 시험은 전 문항을 정확히 풀었습니다. 특히 ${excellentNums}처럼 정답률이 낮았던 문항까지 정확히 해결한 점이 돋보였습니다.`
+            : '이번 시험은 전 문항을 정확히 풀었습니다.');
+        lines.push('다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀, 지금의 수준을 안정적으로 이어가겠습니다.');
     } else {
         const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
-        lines.push('이번에 틀린 문항을 기준으로, 다음 수업에서 다시 풀이하겠습니다.');
-        if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 다시 짚겠습니다.');
-        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어, 다음 수업에서 점검하겠습니다.');
+        const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
+        lines.push(unitPhrase
+            ? `이번 오답은 ${unitPhrase} 단원에 주로 나왔습니다. 해당 단원은 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.`
+            : '이번에 틀린 문항을 기준으로, 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.');
+        if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 처음부터 다시 짚어, 비슷한 문제까지 충분히 연습하겠습니다.');
+        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어 관리하고, 다음 시험 전까지 책임지고 점검하겠습니다.');
     }
     if (teacherMemo) lines.push(`담임 메모는 다음 수업에 반영하겠습니다: ${teacherMemo}`);
     return lines;
@@ -1686,9 +1907,9 @@ function reportCenterBuildEasyParentMessage(data) {
     const studentName = data?.student?.name || '학생';
     const wrongRows = data?.stats?.wrongRows || [];
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n다음 수업에서는 다음 단원과 함께 한 단계 높은 난도의 문제로 이어가겠습니다.\n가정에서는 지금처럼 지켜봐 주시면 됩니다.`;
+        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n정답률이 낮았던 문항까지 정확히 해결한 만큼, 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n지금의 강점을 이어가도록 저희가 책임지고 지도하겠습니다. 믿고 맡겨 주셔서 감사합니다.`;
     }
-    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도를 정리했습니다.\n다음 수업에서 틀린 문항을 다시 풀이하고, 같은 실수가 반복되지 않도록 유사 유형까지 함께 점검하겠습니다.\n가정에서는 문제를 푼 뒤 한 번 더 검토하는 습관만 살펴봐 주시면 큰 도움이 됩니다.`;
+    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다.\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 부족한 개념은 처음부터 다시 정리해 같은 실수가 반복되지 않도록 유사 유형까지 함께 점검하겠습니다.\n오답 관리와 개념 보강은 저희가 책임지고 수업에서 챙기겠습니다. 믿고 맡겨 주시면 다음 시험까지 차근차근 준비해 나가겠습니다.`;
 }
 
 function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {
@@ -1909,10 +2130,13 @@ function reportCenterCloneStudioValue(value) {
 
 function reportCenterStudioDefaultOptions() {
     return {
+        includeScoreTrend: false,
         includeTrendGraph: false,
         includeDistributionGraph: false,
         includeWeaknessTrend: false,
         includeQuestionAnalysis: true,
+        includeQuestionReview: true,
+        includeQuestionReviewAnswer: false,
         includeRemediation: true,
         includeWrongCare: true,
         includeTeacherOpinion: true,
@@ -2408,6 +2632,31 @@ function reportCenterCreateStudioStateForPrintView(studentId, sessionId, teacher
     return reportCenterGetActiveStudioState(studentId, sessionId, draft);
 }
 
+function reportCenterImportExamReviewsToStudio(studentId, sessionId) {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    const archiveFile = data?.session?.archive_file || '';
+    if (!archiveFile) {
+        toast('연결된 시험지가 없어 불러올 분석이 없습니다.', 'warn');
+        return;
+    }
+    const teacherMemo = reportCenterSyncPrintMemoToCenter();
+    const studioState = reportCenterCreateStudioStateForPrintView(studentId, sessionId, teacherMemo);
+    const store = reportCenterGetExamReviews(archiveFile);
+    studioState.examReviews = {
+        archiveFile: reportCenterNormalizeExamAnalysisArchiveKey(archiveFile),
+        meta: store.meta,
+        byQuestion: Object.fromEntries(store.byQuestion.entries())
+    };
+    studioState.options = {
+        ...reportCenterStudioDefaultOptions(),
+        ...(studioState.options || {}),
+        includeQuestionReview: true
+    };
+    window.AP_REPORT_STUDIO_STATE = studioState;
+    reportCenterRerenderPrintShell(studentId, sessionId);
+    toast(store.byQuestion.size ? '저장된 시험지 분석을 불러왔습니다.' : '저장된 문항 분석이 아직 없습니다.', store.byQuestion.size ? 'success' : 'info');
+}
+
 function reportCenterRenderStudioToolbar(studentId, sessionId, studioState) {
     const safeStudent = escapeReportJsString(studentId);
     const safeSession = escapeReportJsString(sessionId);
@@ -2511,10 +2760,13 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
     const isDetailed = textOptions.length === 'detailed';
     // scope 'detailed'인 항목은 상세형에서만 실제로 출력된다(표준형은 1장 서술 중심).
     const rows = [
-        ['includeTrendGraph', '성적 추이 그래프 포함'],
+        ['includeScoreTrend', '성적 추이 분석 포함 (최근 5회 카드·지금 어디쯤 있나요)'],
+        ['includeTrendGraph', '└ 성적 추이 그래프 포함', 'trendSub'],
         ['includeDistributionGraph', '점수 분포 그래프 포함'],
         ['includeWeaknessTrend', '계속 틀린 문제 표 포함'],
         ['includeQuestionAnalysis', '문항별 분석표 포함', 'detailed'],
+        ['includeQuestionReview', '문항 리뷰 카드 포함', 'detailed'],
+        ['includeQuestionReviewAnswer', '└ 문항 리뷰 정답 포함', 'detailed'],
         ['includeRemediation', '이번 시험 보완 방향 포함'],
         ['includeWrongCare', 'AP수학 오답관리 포함'],
         ['includeTeacherOpinion', '선생님 종합 의견 포함'],
@@ -2523,7 +2775,8 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
     ];
     const checks = rows.map(([key, label, scope]) => {
         const detailedOnly = scope === 'detailed';
-        const disabled = detailedOnly && !isDetailed;
+        const trendSub = scope === 'trendSub';
+        const disabled = (detailedOnly && !isDetailed) || (trendSub && !options.includeScoreTrend);
         const labelText = detailedOnly ? `${label} <em style="font-style:normal;color:#94a3b8;font-weight:700;">· 상세형 전용</em>` : label;
         return `
         <label class="report-studio-check"${disabled ? ' style="opacity:0.55;"' : ''}>
@@ -2535,7 +2788,12 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
     const note = isDetailed
         ? ''
         : `<p style="margin:8px 2px 0;font-size:12px;color:#64748b;font-weight:650;line-height:1.5;">문항별 분석표와 문제별 코멘트는 ‘문구 길이 → 상세형’에서만 출력됩니다. 표준형은 한 장 서술형으로 정리됩니다.</p>`;
-    return `${checks}${note}`;
+    const importButton = `
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #e5e7eb;">
+            <button type="button" class="btn" style="width:100%; min-height:38px; font-size:12px; font-weight:800;" onclick="reportCenterImportExamReviewsToStudio('${safeStudent}', '${safeSession}')">이 시험지 분석 불러오기</button>
+        </div>
+    `;
+    return `${checks}${note}${importButton}`;
 }
 
 function reportCenterRenderStudioChartTab(studentId, sessionId, studioState) {
