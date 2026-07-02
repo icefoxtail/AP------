@@ -3132,7 +3132,7 @@ function assignTargetGoReview() {
     if (!summary.totalStudents) return;
     AssignTarget.view = 'review';
     // 최종 확인은 "이 명단에게 이 시험지가 출제된다"를 한 화면에서 보도록 미리보기를 기본으로 연다.
-    AssignTarget.previewOpen = true;
+    AssignTarget.previewOpen = false;
     renderAssignTargetReviewView();
     syncAssignTargetPreviewPane();
 }
