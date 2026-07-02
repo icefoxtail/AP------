@@ -122,6 +122,38 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
     `;
 }
 
+function reportCenterBuildQuestionReviewCardsForReport(data, opts = {}) {
+    const stats = data?.stats || {};
+    const session = data?.session || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    if (!wrongRows.length) return '';
+    const limit = Number.isFinite(Number(opts.limit)) ? Number(opts.limit) : 6;
+    const detailMap = reportCenterGetQuestionDetailMap(data);
+    const store = opts.store || reportCenterGetExamReviews(session.archive_file || '');
+    const rows = reportCenterSelectPriorityWrongRows(wrongRows, limit);
+    return rows.map(row => {
+        const qNo = String(row?.questionNo ?? row?.question_no ?? '').trim();
+        const detail = detailMap.get(qNo) || {};
+        const saved = store.byQuestion?.get?.(qNo) || null;
+        return reportCenterBuildQuestionReviewCard({
+            ...detail,
+            ...row,
+            questionNo: row.questionNo ?? detail.questionNo,
+            unit: row.unit || detail.unit,
+            level: row.level || detail.level || row.difficulty,
+            correctRate: row.correctRate ?? detail.correctRate,
+            classCorrectRate: row.classCorrectRate ?? detail.classCorrectRate,
+            answer: saved?.answer || detail.answer,
+            reviewText: saved?.review_text || saved?.reviewText || ''
+        }, {
+            showAnswer: !!opts.showAnswer,
+            showContent: opts.showContent !== false,
+            showSolution: opts.showSolution !== false,
+            anonymized: !!opts.anonymized
+        });
+    }).join('');
+}
+
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     const student = data.student;
@@ -367,6 +399,15 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <div class="aprc-source-note">${reportCenterEscape(archiveMessage || '')}</div>
             </section>` : ''}
 
+            ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
+                <div class="aprc-section-title">문제별 분석 카드</div>
+                <div class="aprc-qreview-list">${reportCenterBuildQuestionReviewCardsForReport(data, {
+                    limit: 6,
+                    showAnswer: !!studioOptions.includeQuestionReviewAnswer,
+                    showContent: true,
+                    showSolution: true
+                })}</div>
+            </section>` : ''}
             ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
                 <div class="aprc-section-title">문제별 코멘트</div>
                 <div class="aprc-qcomment-list">${reportCenterBuildQuestionCommentCards(data, 4)}</div>
@@ -519,6 +560,7 @@ function reportCenterPremiumReportStyle() {
             .aprc-qcomment-no span { display:block; margin-top:1px; font-size:9.5px; font-weight:700; color:#94a3b8; }
             .aprc-qcomment p { margin:0; flex:1 1 auto; color:#334155; font-size:11px; font-weight:650; line-height:1.55; word-break:keep-all; overflow-wrap:break-word; }
             .aprc-qreview-card { break-inside:avoid; page-break-inside:avoid; border:1px solid #dbeafe; border-radius:12px; background:#ffffff; padding:3.5mm; color:#111827; }
+            .aprc-qreview-list { display:flex; flex-direction:column; gap:3mm; }
             .aprc-qreview-card + .aprc-qreview-card { margin-top:3mm; }
             .aprc-qreview-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:2mm; }
             .aprc-qreview-title { min-width:0; color:#0f172a; font-size:12.5px; font-weight:900; line-height:1.35; word-break:keep-all; overflow-wrap:break-word; }
@@ -592,7 +634,7 @@ function reportCenterPremiumReportStyle() {
                 .report-print-toolbar, .report-print-actions, .no-print { display:none !important; }
                 .report-print-stage { padding:0 !important; margin:0 !important; background:#fff !important; overflow:visible !important; }
                 .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
-                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary, .aprc-pdf-remediation, .aprc-pdf-wrong-care, .aprc-qreview-card { break-inside:avoid !important; page-break-inside:avoid !important; }
+                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary, .aprc-pdf-remediation, .aprc-pdf-wrong-care, .aprc-pdf-review-panel, .aprc-qreview-card { break-inside:avoid !important; page-break-inside:avoid !important; }
                 .aprc-pdf-point-grid { display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:4mm !important; }
                 .aprc-pdf-table-panel { break-inside:auto !important; page-break-inside:auto !important; }
                 .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; margin-bottom:7px; }
