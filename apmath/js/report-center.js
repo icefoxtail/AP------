@@ -408,6 +408,86 @@ function reportCenterNormalizeArchiveFile(raw) {
     };
 }
 
+function reportCenterNormalizeExamAnalysisArchiveKey(raw) {
+    const info = reportCenterNormalizeArchiveFile(raw || '');
+    if (info.ok && info.path) return info.path;
+    return String(info.original || raw || '').trim();
+}
+
+function reportCenterArchiveKeyCandidates(raw) {
+    const key = reportCenterNormalizeExamAnalysisArchiveKey(raw);
+    const candidates = new Set([key, String(raw || '').trim()]);
+    if (key.startsWith('exams/')) candidates.add(key.replace(/^exams\//, ''));
+    const info = reportCenterNormalizeArchiveFile(raw || '');
+    if (info.path) candidates.add(info.path);
+    if (info.original) candidates.add(info.original);
+    return Array.from(candidates).filter(Boolean);
+}
+
+function reportCenterExamAnalysisUpdatedBy() {
+    return state?.auth?.id || state?.auth?.name || 'local';
+}
+
+function reportCenterGetExamReviews(archiveFile) {
+    const candidates = new Set(reportCenterArchiveKeyCandidates(archiveFile));
+    const reviews = Array.isArray(state?.db?.exam_question_reviews) ? state.db.exam_question_reviews : [];
+    const metas = Array.isArray(state?.db?.exam_analysis_meta) ? state.db.exam_analysis_meta : [];
+    const meta = metas.find(row => candidates.has(String(row?.archive_file || '').trim())) || null;
+    const byQuestion = new Map();
+    reviews.forEach(row => {
+        if (!candidates.has(String(row?.archive_file || '').trim())) return;
+        const questionNo = String(row?.question_no ?? row?.questionNo ?? '').trim();
+        if (!questionNo) return;
+        byQuestion.set(questionNo, row);
+    });
+    return { meta, byQuestion };
+}
+
+function reportCenterUpsertExamReview(archiveFile, questionNo, patch = {}) {
+    if (!state.db) state.db = {};
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const qNo = String(questionNo ?? '').trim();
+    if (!archiveKey || !qNo) return null;
+    const rows = Array.isArray(state.db.exam_question_reviews) ? state.db.exam_question_reviews : [];
+    const now = new Date().toISOString();
+    const next = {
+        archive_file: archiveKey,
+        question_no: qNo,
+        ...(rows.find(row => String(row?.archive_file || '') === archiveKey && String(row?.question_no ?? row?.questionNo ?? '') === qNo) || {}),
+        ...(patch && typeof patch === 'object' ? patch : {}),
+        archive_file: archiveKey,
+        question_no: qNo,
+        updated_at: now,
+        updated_by: patch?.updated_by || reportCenterExamAnalysisUpdatedBy()
+    };
+    const idx = rows.findIndex(row => String(row?.archive_file || '') === archiveKey && String(row?.question_no ?? row?.questionNo ?? '') === qNo);
+    state.db.exam_question_reviews = idx >= 0
+        ? rows.map((row, index) => index === idx ? next : row)
+        : [...rows, next];
+    return next;
+}
+
+function reportCenterUpsertExamMeta(archiveFile, patch = {}) {
+    if (!state.db) state.db = {};
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!archiveKey) return null;
+    const rows = Array.isArray(state.db.exam_analysis_meta) ? state.db.exam_analysis_meta : [];
+    const now = new Date().toISOString();
+    const next = {
+        archive_file: archiveKey,
+        ...(rows.find(row => String(row?.archive_file || '') === archiveKey) || {}),
+        ...(patch && typeof patch === 'object' ? patch : {}),
+        archive_file: archiveKey,
+        updated_at: now,
+        updated_by: patch?.updated_by || reportCenterExamAnalysisUpdatedBy()
+    };
+    const idx = rows.findIndex(row => String(row?.archive_file || '') === archiveKey);
+    state.db.exam_analysis_meta = idx >= 0
+        ? rows.map((row, index) => index === idx ? next : row)
+        : [...rows, next];
+    return next;
+}
+
 function reportCenterStripHtml(value) {
     const html = String(value || '');
     if (!html) return '';
@@ -2408,6 +2488,31 @@ function reportCenterCreateStudioStateForPrintView(studentId, sessionId, teacher
     return reportCenterGetActiveStudioState(studentId, sessionId, draft);
 }
 
+function reportCenterImportExamReviewsToStudio(studentId, sessionId) {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    const archiveFile = data?.session?.archive_file || '';
+    if (!archiveFile) {
+        toast('연결된 시험지가 없어 불러올 분석이 없습니다.', 'warn');
+        return;
+    }
+    const teacherMemo = reportCenterSyncPrintMemoToCenter();
+    const studioState = reportCenterCreateStudioStateForPrintView(studentId, sessionId, teacherMemo);
+    const store = reportCenterGetExamReviews(archiveFile);
+    studioState.examReviews = {
+        archiveFile: reportCenterNormalizeExamAnalysisArchiveKey(archiveFile),
+        meta: store.meta,
+        byQuestion: Object.fromEntries(store.byQuestion.entries())
+    };
+    studioState.options = {
+        ...reportCenterStudioDefaultOptions(),
+        ...(studioState.options || {}),
+        includeQuestionReview: true
+    };
+    window.AP_REPORT_STUDIO_STATE = studioState;
+    reportCenterRerenderPrintShell(studentId, sessionId);
+    toast(store.byQuestion.size ? '저장된 시험지 분석을 불러왔습니다.' : '저장된 문항 분석이 아직 없습니다.', store.byQuestion.size ? 'success' : 'info');
+}
+
 function reportCenterRenderStudioToolbar(studentId, sessionId, studioState) {
     const safeStudent = escapeReportJsString(studentId);
     const safeSession = escapeReportJsString(sessionId);
@@ -2535,7 +2640,12 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
     const note = isDetailed
         ? ''
         : `<p style="margin:8px 2px 0;font-size:12px;color:#64748b;font-weight:650;line-height:1.5;">문항별 분석표와 문제별 코멘트는 ‘문구 길이 → 상세형’에서만 출력됩니다. 표준형은 한 장 서술형으로 정리됩니다.</p>`;
-    return `${checks}${note}`;
+    const importButton = `
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #e5e7eb;">
+            <button type="button" class="btn" style="width:100%; min-height:38px; font-size:12px; font-weight:800;" onclick="reportCenterImportExamReviewsToStudio('${safeStudent}', '${safeSession}')">이 시험지 분석 불러오기</button>
+        </div>
+    `;
+    return `${checks}${note}${importButton}`;
 }
 
 function reportCenterRenderStudioChartTab(studentId, sessionId, studioState) {
