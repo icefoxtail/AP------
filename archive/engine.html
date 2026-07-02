@@ -1455,18 +1455,45 @@ async function prepareArchivePrint() {
         btn.disabled = true;
         btn.textContent = '인쇄 준비 중...';
     }
+    const snapshotWindow = window.open('', '_blank');
     try {
         const area = document.getElementById('print-area') || document.body;
         if (document.fonts?.ready) await document.fonts.ready;
         await waitForPrintImages(area);
         await raf();
-        window.print();
+        printArchiveSnapshot(area, snapshotWindow);
     } finally {
         if (btn) {
             btn.disabled = false;
             btn.textContent = originalText || '인쇄';
         }
     }
+}
+
+function printArchiveSnapshot(area, snapshotWindow) {
+    const source = area || document.getElementById('print-area');
+    if (!source) {
+        window.print();
+        return;
+    }
+    const win = snapshotWindow;
+    if (!win) {
+        window.print();
+        return;
+    }
+    const headAssets = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+        .map(node => node.outerHTML)
+        .join('\n');
+    win.document.open();
+    win.document.write(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>시험지 출력</title>${headAssets}<style>
+        @media screen { body { margin:0 !important; padding:0 !important; background:#fff !important; } #print-area { padding:0 !important; gap:0 !important; } }
+        @media print { body { margin:0 !important; padding:0 !important; background:#fff !important; } }
+    </style></head><body><div id="print-area">${source.innerHTML}</div><script>
+        window.addEventListener('load', function () {
+            setTimeout(function () { window.focus(); window.print(); }, 80);
+        });
+    <\/script></body></html>`);
+    win.document.close();
 }
 
 async function renderExam(area, data) {
