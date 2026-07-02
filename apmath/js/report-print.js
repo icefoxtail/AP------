@@ -344,18 +344,18 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <p>${reportCenterEscape(parentSummaryText)}</p>
             </section>
 
-            <section class="aprc-pdf-section aprc-pdf-point-grid">
-                <article class="aprc-pdf-panel">
+            ${(studioOptions.includeScoreTrend || wrongCount) ? `<section class="aprc-pdf-section aprc-pdf-point-grid">
+                ${studioOptions.includeScoreTrend ? `<article class="aprc-pdf-panel">
                     <div class="aprc-section-title">지금 어디쯤 있나요</div>
                     ${reportCenterBuildReportChartHtml(trendChart)}
                     <p class="aprc-trend-summary">${reportCenterEscape(trendSummaryText)}</p>
-                </article>
+                </article>` : ''}
                 ${wrongCount ? `<article class="aprc-pdf-panel">
                     <div class="aprc-section-title">다음에 꼭 짚어볼 부분</div>
                     <p>${reportCenterEscape(coreItems[1].text)}</p>
                     ${studioOptions.includeWeaknessTrend ? reportCenterBuildWeaknessTrendTable(trendData.weaknessTrend) : ''}
                 </article>` : ''}
-            </section>
+            </section>` : ''}
 
             ${studioOptions.includeDistributionGraph ? `<section class="aprc-pdf-section aprc-pdf-panel">
                 <div class="aprc-section-title">이번 시험 점수 분포</div>
@@ -408,6 +408,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                     showSolution: true
                 })}</div>
             </section>` : ''}
+
             ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
                 <div class="aprc-section-title">문제별 코멘트</div>
                 <div class="aprc-qcomment-list">${reportCenterBuildQuestionCommentCards(data, 4)}</div>
@@ -427,7 +428,11 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         </main>
     `;
 
-    html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
+    // 성적 추이 분석이 켜진 경우에만 점수 카드를 최근 5회 추이 카드로 교체한다.
+    // 꺼져 있으면 위에서 만든 이번 시험 중심 카드(점수/정답률/비교평균/최근점수)를 그대로 둔다.
+    if (studioOptions.includeScoreTrend) {
+        html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
+    }
     return html;
 }
 
