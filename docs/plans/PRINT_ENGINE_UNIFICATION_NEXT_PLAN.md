@@ -92,11 +92,23 @@ QR 출제 경로에서 시험 내용을 확인하고 출제하도록 한다. 기
 - 로컬 프리뷰 한정 이슈: `npx serve`의 cleanUrls가 `engine.html?query` 리다이렉트 시 쿼리를 유실 → 루트에 `serve.json`(`cleanUrls: false`) 추가로 해결(운영 Pages는 영향 없음).
 - 검증 완료: preview 무부작용(등록 API 미호출), 일반 모드 회귀 없음(submitQr QR 삽입 정상), 재렌더 iframe 생존, review 2단, 모바일 폴백, 콘솔 에러 없음.
 
-### Phase 1 — print-core.js 추출 (전제 작업)
+### Phase 1 — print-core.js 추출 (전제 작업) ✅ 완료 (2026-07-02)
 
 - 페이지네이션·staging 측정·`printHeaderOptions`·QR 패치·모드 탭·screen-fit을 공용 모듈(`archive/js/print-core.js` 등 단일 파일)로 추출.
 - 세 엔진이 코어를 소비하도록 교체. **UX 변경 동결** — 출력물 무변화가 검증 기준.
 - 드리프트 정리: `showDate` 등 옵션 차이를 코어 옵션으로 승격.
+
+**구현 노트 (계획과 다른 점/판단 기록):**
+
+- 코어 구조와 API는 `docs/implemented/PRINT_CORE_MODULE_MAP.md`에 정리. `window.PrintCore` 단일 전역, 빌드 없음. 중복 코드 약 1,540줄 삭제(엔진 3종), 코어 690줄 신설.
+- 시험지 페이지네이션은 `renderMeasuredExamPages` 하나로 통합하되 `makePage(pageNumber)` / `onBeforePageMeasure`(오답 homework) / `onPageRendered`(오답 그룹별 QR) 훅으로 엔진 차이를 흡수. 해설 컬럼 플로우는 `createSolutionFlow`(+`prepareColumn` 훅), 정답표는 `renderAnswerPages`.
+- **믹서 "Rulebook v1.9" 자체 수정분 판단 — 흡수하지 않고 엔진 잔류로 확정**: 믹서만의 diff(측정 페이지 헤더 포함 `pNum===0||1` 조건, `extractChoice`의 `.answer` 키 부재, `protectRenderSegments`의 구식 보호 순서, PDF 모드, [성역] wrapLatex)는 전부 코어 추출 범위 밖 레이어(콘텐츠 파이프라인·makePage 훅)에 있어 코어에 넣을 필요가 없었다. 콘텐츠 정규화 파이프라인 전체는 Phase 1 범위에서 의도적으로 제외(1.2절 목록 그대로) — 오답엔진의 `normalizeViewBlocks` 마커 정규식도 엔진마다 달라 통일 시 출력이 변한다.
+- 이미지 자동 사이즈 비율표가 아카이브(2.2/1.4/0.7/0.4)와 오답엔진(2.2/1.25/0.8)이 서로 달라, 코어 `createImageSizer`에 비율 함수·인라인 이미지 대기 여부를 주입하는 방식으로 각자 유지(출력 보존).
+- `showDate`는 코어 `normalizePrintHeaderOptions`로 승격(엔진/믹서는 렌더에서 안 읽으므로 무해). screen-fit `updateScreenFitScale(maxScale)`에 상한 파라미터를 둠 — Phase 2 preview 축소(0.72)용.
+- 엔진/믹서 `renderSol`에 있던 도달 불가 사(死)코드(이른 `return` 뒤 구현) 제거 — 출력 무영향.
+- MathJax typeset은 코어에서 try/catch로 통일(오답엔진 방식) — 실패 시에도 렌더 계속. 정상 경로 무변화.
+- 검증: 로컬 프리뷰로 전/후 페이지 시그니처 완전 일치 확인 — 엔진(qpp4/qpp6/해설 분할/정답표/QR 2종), 믹서(qpp2/qpp8/고정시드 셔플/해설), 오답(exam/review, `wp=` 하위호환). 상세는 implemented 문서 4절. `packet=`/`set=`/`data=`/`key=` 로딩 코드는 미변경.
+- OS 등록 API·세션 복원 블록은 엔진/믹서에 아직 중복 — 렌더링 코어가 아니라 Phase 1 범위 밖. 이후 Phase에서 공용화 후보.
 
 ### Phase 2 — 미리보기 채널 표준화
 

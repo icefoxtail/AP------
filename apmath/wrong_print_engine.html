@@ -13,6 +13,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="../archive/js/print-core.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -150,10 +151,7 @@ const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam' };
 let previewRenderTimer = null;
-const SE_OVERHEAD_COL = 10;
-const SE_OVERHEAD_GRID = 20;
-const SE_PAGE_TOLERANCE = 5;
-const SE_BLOCK_GAP = 15;
+// 페이지네이션 상수·측정·조립은 ../archive/js/print-core.js(PrintCore)로 이동 (엔진 통합 Phase 1)
 const CLINIC_QPP = 4;
 const WRONG_QR_PATCH = {
     enabled: true,
@@ -163,10 +161,6 @@ const WRONG_QR_PATCH = {
 
 function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
-}
-
-function clampText(value, maxLength) {
-    return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
 }
 
 function getDefaultPrintHeaderOptions(payload = state.payload) {
@@ -183,18 +177,7 @@ function getDefaultPrintHeaderOptions(payload = state.payload) {
 }
 
 function normalizePrintHeaderOptions(raw, payload = state.payload) {
-    const base = getDefaultPrintHeaderOptions(payload);
-    const source = raw && typeof raw === 'object' ? raw : {};
-    return {
-        title: clampText(source.title ?? base.title, 80) || base.title,
-        metaRight: clampText(source.metaRight ?? base.metaRight, 60),
-        subtitle: clampText(source.subtitle ?? base.subtitle, 120),
-        showNameLine: source.showNameLine !== false,
-        showScoreLine: source.showScoreLine !== false,
-        showDate: source.showDate === true,
-        applyToSolution: source.applyToSolution !== false,
-        applyToAnswer: source.applyToAnswer !== false
-    };
+    return PrintCore.normalizePrintHeaderOptions(raw, getDefaultPrintHeaderOptions(payload));
 }
 
 function getPrintHeaderOptions(payload = state.payload) {
@@ -204,10 +187,7 @@ function getPrintHeaderOptions(payload = state.payload) {
 }
 
 function shouldApplyPrintHeader(type) {
-    const opts = getPrintHeaderOptions();
-    return type === 'exam'
-        || (type === 'sol' && opts.applyToSolution)
-        || (type === 'ans' && opts.applyToAnswer);
+    return PrintCore.shouldApplyPrintHeader(type, getPrintHeaderOptions());
 }
 
 function getRenderHeaderTitle(type, fallbackTitle) {
@@ -486,37 +466,15 @@ function evaluateQrUrlLength(qrUrl) {
 }
 
 function isQrSolutionMode() {
-    try {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('qr') === '1';
-    } catch (e) {
-        return false;
-    }
+    return PrintCore.isQrSolutionMode();
 }
 
 function applyQrSolutionLockUI() {
-    if (!isQrSolutionMode()) return;
-    const btnExam = document.getElementById('btn-exam');
-    const btnAns = document.getElementById('btn-ans');
-    const btnSol = document.getElementById('btn-sol');
-    const tabs = document.querySelector('.mode-tabs');
-    if (tabs) tabs.style.display = 'none';
-    if (btnExam) btnExam.style.display = 'none';
-    if (btnAns) btnAns.style.display = 'none';
-    if (btnSol) {
-        btnSol.classList.remove('active');
-        btnSol.style.pointerEvents = 'none';
-    }
-    const title = document.getElementById('ctrl-title');
-    if (title) title.textContent = 'AP Math 오답 확인';
+    PrintCore.applyQrSolutionLockUI({ title: 'AP Math 오답 확인', hideTabsBar: true, solActive: false });
 }
 
 function injectSolutionQrToPage(targetPage, qrPayload) {
     if (!WRONG_QR_PATCH.enabled || !targetPage || !qrPayload) return;
-    if (typeof QRious !== 'function') return;
-
-    const oldQr = targetPage.querySelector('.page-qr');
-    if (oldQr) oldQr.remove();
 
     const compactPayload = qrPayload && typeof qrPayload === 'object' && qrPayload.payload ? qrPayload.payload : qrPayload;
     const qrUrl = qrPayload && typeof qrPayload === 'object' && qrPayload.url
@@ -524,19 +482,11 @@ function injectSolutionQrToPage(targetPage, qrPayload) {
         : buildQrTargetUrl(compactPayload);
     const lengthInfo = evaluateQrUrlLength(qrUrl);
 
-    const qrWrap = document.createElement('div');
-    qrWrap.className = 'page-qr';
-    qrWrap.innerHTML = `<div class="page-qr-label">${WRONG_QR_PATCH.label}</div><canvas></canvas>`;
-    targetPage.appendChild(qrWrap);
-
-    new QRious({
-        element: qrWrap.querySelector('canvas'),
-        value: qrUrl,
-        size: WRONG_QR_PATCH.size,
-        level: 'M',
-        background: 'white',
-        foreground: 'black',
-        padding: 0
+    PrintCore.renderQrBadge(targetPage, {
+        className: 'page-qr',
+        html: `<div class="page-qr-label">${WRONG_QR_PATCH.label}</div><canvas></canvas>`,
+        url: qrUrl,
+        size: WRONG_QR_PATCH.size
     });
 
     if (lengthInfo.level !== 'safe') {
@@ -675,41 +625,10 @@ function wrapLatex(text) {
 }
 
 function raf() {
-    return new Promise(resolve => requestAnimationFrame(resolve));
+    return PrintCore.raf();
 }
 
-function autoCompress(container) {
-    let fontSize = 9.5;
-    let lineHeight = 1.58;
-    while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
-        fontSize = Math.max(fontSize - 0.3, 6.5);
-        lineHeight = Math.max(lineHeight - 0.08, 1.0);
-        container.style.fontSize = fontSize + 'pt';
-        container.style.lineHeight = String(lineHeight);
-    }
-}
-
-function fitQuestionBox(box) {
-    if (!box) return;
-    const textClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-    const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
-    const imgs = Array.from(box.querySelectorAll('.q-content img, .q-image-wrap img'));
-
-    for (const tCls of textClasses) {
-        box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
-        if (tCls) box.classList.add(tCls);
-        if (box.scrollHeight <= box.clientHeight + 1) return;
-    }
-
-    for (const iCls of imgClasses) {
-        imgs.forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
-        if (iCls) imgs.forEach(img => img.classList.add(iCls));
-        if (box.scrollHeight <= box.clientHeight + 1) return;
-    }
-}
-
-const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
-
+// 클리닉 전용 이미지 비율표(아카이브 엔진과 다름 — 출력 보존을 위해 코어 훅으로 주입)
 function autoImageSizeClassFor(img) {
     const width = Number(img && img.naturalWidth) || 0;
     const height = Number(img && img.naturalHeight) || 0;
@@ -721,40 +640,11 @@ function autoImageSizeClassFor(img) {
     return 'image-medium';
 }
 
-function waitForQuestionImage(img) {
-    if (!img || img.complete) return Promise.resolve();
-    return new Promise(resolve => {
-        let done = false;
-        const finish = () => {
-            if (done) return;
-            done = true;
-            resolve();
-        };
-        img.addEventListener('load', finish, { once: true });
-        img.addEventListener('error', finish, { once: true });
-        setTimeout(finish, 1200);
-    });
-}
-
-async function applyAutoImageSizeClasses(root) {
-    const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
-    const wrapTasks = wraps.map(async wrap => {
-        if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
-        const img = wrap.querySelector('img');
-        if (!img) {
-            wrap.classList.add('image-medium');
-            return;
-        }
-        await waitForQuestionImage(img);
-        wrap.classList.add(autoImageSizeClassFor(img));
-    });
-    // Inline content images (not inside a .q-image-wrap) must also finish loading
-    // before MathJax typeset / height measurement, or page heights are mis-computed.
-    const contentTasks = Array.from(root.querySelectorAll('.q-content img'))
-        .filter(img => !img.closest('.q-image-wrap'))
-        .map(img => waitForQuestionImage(img));
-    await Promise.all([...wrapTasks, ...contentTasks]);
-}
+// 본문 인라인 이미지(.q-image-wrap 밖)도 로드 완료 후 측정해야 페이지 높이가 안 어긋난다.
+const applyAutoImageSizeClasses = PrintCore.createImageSizer({
+    imageSizeClassFor: autoImageSizeClassFor,
+    includeInlineContentImages: true
+});
 
 function extractChoice(choice) {
     return String(choice || '');
@@ -1135,31 +1025,10 @@ function getGroupTitle(defaultTitle) {
 
 async function renderMeasuredExamPages(area, items, pageMeta = {}) {
     if (!items.length) return;
-    const staging = document.getElementById('staging');
-    staging.style.width = '83mm';
-    staging.innerHTML = '';
-
-    const stagedItems = items.map((q, idx) => {
-        const box = htmlToElement(buildQuestionBoxHTML(q, idx + 1, pageMeta.showWrongNote !== false));
-        staging.appendChild(box);
-        return { q, box };
-    });
-
-    await applyAutoImageSizeClasses(staging);
-    if (window.MathJax?.typesetPromise) {
-        try { await MathJax.typesetPromise([staging]); } catch (e) { console.warn(e); }
-    }
-    await raf();
-
-    for (const item of stagedItems) {
-        const profile = {};
-        profile.proxyHeight_raw = item.box.scrollHeight;
-        item.box.classList.add('fit-tight');
-        await raf();
-        profile.proxyHeight_tight = item.box.scrollHeight;
-        item.box.classList.remove('fit-tight');
-        item.profile = profile;
-    }
+    const stagedItems = items.map((q, idx) => ({
+        q,
+        box: htmlToElement(buildQuestionBoxHTML(q, idx + 1, pageMeta.showWrongNote !== false))
+    }));
 
     const headerExtra = {
         nameLabel: pageMeta.nameLabel || '이름',
@@ -1167,131 +1036,29 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
         dateText: pageMeta.dateText || '',
         subtitleFallback: pageMeta.subtitleFallback || ''
     };
-    // 첫 페이지 기준(전체 헤더)으로 본문 높이를 측정한다.
-    const tempPage = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', 0, { ...headerExtra, headerMode: 'full' });
-    const usablePageHeight = tempPage.body.clientHeight;
-    area.removeChild(tempPage.page);
+    const title = getGroupTitle(pageMeta.title);
 
-    const pages = [];
-    let currentPage = { blocks: [], usedHeight: 0 };
-    let activeChunk = [];
-    let currentType = null;
-
-    const flushBlock = () => {
-        if (!activeChunk.length) return;
-        const type = currentType || 'normal';
-        const chunk = [...activeChunk];
-        const hType = type === 'normal' ? 'proxyHeight_tight' : 'proxyHeight_raw';
-        let blockH;
-
-        if (type === 'wide') {
-            blockH = chunk[0].profile.proxyHeight_raw + SE_OVERHEAD_COL + SE_OVERHEAD_GRID;
-        } else {
-            const split = Math.ceil(chunk.length / 2);
-            const leftH = chunk.slice(0, split).reduce((sum, item) => sum + item.profile[hType], 0) + SE_OVERHEAD_COL;
-            const rightH = chunk.slice(split).reduce((sum, item) => sum + item.profile[hType], 0) + SE_OVERHEAD_COL;
-            blockH = Math.max(leftH, rightH) + SE_OVERHEAD_GRID;
-        }
-
-        const gap = currentPage.blocks.length ? SE_BLOCK_GAP : 0;
-        const normalForceBreak = type === 'normal' && currentPage.blocks.length > 0;
-        if ((normalForceBreak || currentPage.usedHeight + gap + blockH > usablePageHeight) && currentPage.blocks.length > 0) {
-            pages.push(currentPage);
-            currentPage = { blocks: [], usedHeight: 0 };
-        }
-
-        currentPage.usedHeight += (currentPage.blocks.length ? SE_BLOCK_GAP : 0) + blockH;
-        currentPage.blocks.push({ type, items: chunk, blockH });
-        activeChunk = [];
-    };
-
-    stagedItems.forEach(item => {
-        const layoutTag = item.q.layoutTag || '';
-        let qType = 'normal';
-        let limit = CLINIC_QPP;
-        if (item.q.wide === true || layoutTag === 'fullwidth') {
-            qType = 'wide';
-            limit = 1;
-        } else if (layoutTag === 'subjective-2up') {
-            qType = 'subj2';
-            limit = 2;
-        } else if (layoutTag === 'subjective-4up') {
-            qType = 'subj4';
-            limit = 4;
-        }
-
-        const isSpecialType = qType === 'subj2' || qType === 'subj4' || qType === 'wide';
-        const prevWasSpecial = currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide';
-        if ((currentType !== null && currentType !== qType) || activeChunk.length >= limit || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
-            flushBlock();
-            if (isSpecialType && currentPage.blocks.length > 0) {
-                pages.push(currentPage);
-                currentPage = { blocks: [], usedHeight: 0 };
+    await PrintCore.renderMeasuredExamPages({
+        staging: document.getElementById('staging'),
+        items: stagedItems,
+        qpp: CLINIC_QPP,
+        applyAutoImageSizeClasses,
+        // 측정 페이지(0)와 1페이지는 전체 헤더, 2페이지부터는 작은 러닝 이름표
+        makePage: (pageNumber) => makePage(
+            area, 'exam', title, pageMeta.metaLeft || '', pageMeta.metaRight || '', pageNumber,
+            { ...headerExtra, headerMode: pageNumber <= 1 ? 'full' : 'running' }
+        ),
+        onBeforePageMeasure: (handle, pageIdx, isLast) => {
+            if (isLast && pageMeta.homeworkCheckHTML) {
+                handle.body.insertAdjacentHTML('beforeend', pageMeta.homeworkCheckHTML);
             }
-            currentType = qType;
+        },
+        onPageRendered: (handle, pageIdx, isLast) => {
+            if (isLast && state.mode === 'exam' && !isQrSolutionMode() && pageMeta.solutionQrPayload) {
+                injectSolutionQrToPage(handle.page, pageMeta.solutionQrPayload);
+            }
         }
-        if (currentType === null) currentType = qType;
-        activeChunk.push(item);
     });
-    flushBlock();
-    if (currentPage.blocks.length > 0) pages.push(currentPage);
-
-    for (let pageIdx = 0; pageIdx < pages.length; pageIdx++) {
-        const pageData = pages[pageIdx];
-        // 첫 페이지만 전체 헤더, 2페이지부터는 작은 러닝 이름표
-        const page = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageIdx + 1, { ...headerExtra, headerMode: pageIdx === 0 ? 'full' : 'running' });
-
-        pageData.blocks.forEach((block, blockIdx) => {
-            if (block.type === 'wide') {
-                const wideCol = document.createElement('div');
-                wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                wideCol.appendChild(block.items[0].box.cloneNode(true));
-                page.body.appendChild(wideCol);
-                return;
-            }
-
-            const grid = document.createElement('div');
-            grid.className = 'grid-container';
-            grid.style.flex = block.type === 'normal' ? '1 1 0' : 'none';
-            if (blockIdx < pageData.blocks.length - 1) grid.style.marginBottom = `${SE_BLOCK_GAP}px`;
-
-            const left = document.createElement('div');
-            left.className = 'grid-col';
-            const right = document.createElement('div');
-            right.className = 'grid-col';
-            grid.appendChild(left);
-            grid.appendChild(right);
-            page.body.appendChild(grid);
-
-            const split = Math.ceil(block.items.length / 2);
-            block.items.slice(0, split).forEach(item => left.appendChild(item.box.cloneNode(true)));
-            block.items.slice(split).forEach(item => right.appendChild(item.box.cloneNode(true)));
-        });
-
-        if (pageIdx === pages.length - 1 && pageMeta.homeworkCheckHTML) {
-            page.body.insertAdjacentHTML('beforeend', pageMeta.homeworkCheckHTML);
-        }
-
-        if (window.MathJax?.typesetPromise) {
-            try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
-        }
-        await raf();
-
-        const boxes = page.page.querySelectorAll('.q-box');
-        boxes.forEach(box => fitQuestionBox(box));
-
-        if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
-            boxes.forEach(box => autoCompress(box));
-            await raf();
-            if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
-            }
-        }
-
-        if (pageIdx === pages.length - 1 && state.mode === 'exam' && !isQrSolutionMode() && pageMeta.solutionQrPayload) {
-            injectSolutionQrToPage(page.page, pageMeta.solutionQrPayload);
-        }
-    }
 }
 
 async function renderStudentPages(area, payload) {
@@ -1524,59 +1291,8 @@ async function renderTypePages(area, payload) {
     }
 }
 
-// 긴 해설 HTML을 컬럼/페이지 경계로 넘길 수 있도록 조각낸다(archive/engine.html 이식).
-function makeSolutionHtmlChunks(html) {
-    const host = document.createElement('div');
-    host.innerHTML = html || '';
-    const chunks = [];
-    const pushTextChunks = (text) => {
-        const parts = String(text || '').split(/(\s+)/);
-        let buf = '';
-        for (const part of parts) {
-            if ((buf + part).length > 260 && buf.trim()) {
-                const span = document.createElement('span');
-                span.textContent = buf;
-                chunks.push(span.outerHTML);
-                buf = part;
-            } else {
-                buf += part;
-            }
-        }
-        if (buf) {
-            const span = document.createElement('span');
-            span.textContent = buf;
-            chunks.push(span.outerHTML);
-        }
-    };
-    host.childNodes.forEach(node => {
-        if (node.nodeType === Node.TEXT_NODE) {
-            pushTextChunks(node.textContent || '');
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-            if (node.tagName === 'BR') chunks.push('<br>');
-            else chunks.push(node.outerHTML);
-        }
-    });
-    return chunks.length ? chunks : [''];
-}
-
-// 분할 출력용 해설 박스 쉘. 첫 조각은 원본 문항/정답을 유지하고 해설만 비우며,
-// 이어지는 조각은 해설만 담는 빈 쉘을 만든다.
-function makeLongSolutionShell(sourceBox, continuation) {
-    const shell = sourceBox.cloneNode(true);
-    shell.classList.add('sol-box-long');
-    if (!continuation) {
-        const exp = shell.querySelector('.sol-exp');
-        if (exp) exp.innerHTML = '';
-        return shell;
-    }
-    shell.innerHTML = `<div class="sol-meta"><div class="sol-exp"></div></div>`;
-    return shell;
-}
-
 async function placeSolutionItems(area, items, pageMeta = {}) {
     let pageNo = 1;
-    let cols = null;
-    let colIdx = 0;
 
     const makeGridPage = () => {
         const page = makePage(area, 'sol', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageNo++);
@@ -1590,15 +1306,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
         grid.appendChild(left);
         grid.appendChild(right);
         page.body.appendChild(grid);
-        cols = [left, right];
-        colIdx = 0;
-        return cols;
-    };
-
-    const advanceColumn = () => {
-        if (colIdx === 0) colIdx = 1;
-        else { makeGridPage(); }
-        return cols[colIdx];
+        return [left, right];
     };
 
     const makeBox = (q, idx) => {
@@ -1617,80 +1325,13 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
         return box;
     };
 
-    // 한 컬럼에 해설 박스 하나만 있는데도 안 들어가면 해설을 조각내 다음 컬럼/페이지로 이어붙인다.
-    async function renderSplitSolutionBox(sourceBox) {
-        const originalExp = sourceBox.querySelector('.sol-exp');
-        const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
-        let shell = makeLongSolutionShell(sourceBox, false);
-        let exp = shell.querySelector('.sol-exp');
-        let targetCol = cols[colIdx];
-        targetCol.appendChild(shell);
-        await applyAutoImageSizeClasses(targetCol);
-
-        for (const chunkHtml of chunks) {
-            const chunk = document.createElement('span');
-            chunk.className = 'sol-chunk';
-            chunk.innerHTML = chunkHtml;
-            exp.appendChild(chunk);
-            if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
-            }
-            await raf();
-            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
-
-            // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
-            if (exp.children.length > 1) {
-                exp.removeChild(chunk);
-                targetCol = advanceColumn();
-                shell = makeLongSolutionShell(sourceBox, true);
-                exp = shell.querySelector('.sol-exp');
-                targetCol.appendChild(shell);
-                exp.appendChild(chunk);
-                if (window.MathJax?.typesetPromise) {
-                    try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
-                }
-                await raf();
-            }
-            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
-                autoCompress(shell);
-                await raf();
-            }
-        }
-    }
-
-    async function placeBox(box) {
-        while (true) {
-            const targetCol = cols[colIdx];
-            targetCol.appendChild(box);
-            await applyAutoImageSizeClasses(targetCol);
-            if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
-            }
-            await raf();
-            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
-
-            autoCompress(box);
-            await raf();
-            if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([targetCol]); } catch (e) { console.warn(e); }
-            }
-            await raf();
-            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
-
-            // 이 컬럼에 이 해설 박스 하나뿐이면 쪼개서 출력한다(잘림 금지).
-            const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
-            targetCol.removeChild(box);
-            if (isOnlyBoxInColumn) {
-                await renderSplitSolutionBox(box);
-                return;
-            }
-            advanceColumn();
-        }
-    }
-
-    makeGridPage();
+    // 컬럼 플로우/해설 분할은 PrintCore. prepareColumn으로 클리닉 이미지 사이즈를 측정 전에 적용한다.
+    const flow = PrintCore.createSolutionFlow({
+        makeGridPage,
+        prepareColumn: (col) => applyAutoImageSizeClasses(col)
+    });
     for (let idx = 0; idx < items.length; idx++) {
-        await placeBox(makeBox(items[idx], idx));
+        await flow.placeBox(makeBox(items[idx], idx));
     }
 }
 
@@ -1767,34 +1408,12 @@ function collectAnswerRows(payload) {
 }
 
 function renderAnswerRows(area, rows, pageMeta = {}) {
-    const data = rows || [];
-    const PER_PAGE = 40; // 푸터와 겹치지 않도록 열당 20개(4문제 5세트)로 제한한다
-    let pageNo = 1;
-    for (let start = 0; start < data.length; start += PER_PAGE) {
-        const chunk = data.slice(start, start + PER_PAGE);
-        const page = makePage(area, 'ans', pageMeta.title || '정답표', pageMeta.metaLeft || '', pageMeta.metaRight || `p.${pageNo}`, pageNo);
-        pageNo += 1;
-        const grid = document.createElement('div');
-        grid.className = 'ans-grid';
-        // 열 분할점을 4의 배수로 올려, 한 세트(4문제)가 두 열에 걸치지 않게 한다
-        const splitIndex = Math.ceil(Math.ceil(chunk.length / 2) / 4) * 4;
-        for (let i = 0; i < splitIndex; i++) {
-            [i, splitIndex + i].forEach(idx => {
-                const cell = document.createElement('div');
-                cell.className = 'ans-cell';
-                if (!chunk[idx]) {
-                    cell.classList.add('ans-cell-empty');
-                    cell.setAttribute('aria-hidden', 'true');
-                    grid.appendChild(cell);
-                    return;
-                }
-                if (chunk[idx].no % 4 === 0) cell.classList.add('group-end'); // 4문제마다 채점 구분선
-                cell.innerHTML = `<div class="ans-n">${chunk[idx].no}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer)}</div>`;
-                grid.appendChild(cell);
-            });
-        }
-        page.body.appendChild(grid);
-    }
+    PrintCore.renderAnswerPages({
+        data: (rows || []).map(row => ({ no: row.no, answerHtml: wrapLatex(row.answer) })),
+        makePage: (pageNumber) => makePage(
+            area, 'ans', pageMeta.title || '정답표', pageMeta.metaLeft || '', pageMeta.metaRight || `p.${pageNumber}`, pageNumber
+        )
+    });
 }
 
 function renderAns(area, payload) {
@@ -2031,7 +1650,7 @@ function switchMode(mode) {
         mode = 'review';
     }
     state.mode = mode;
-    document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+    PrintCore.setActiveModeTab(mode);
     render();
 }
 
@@ -2067,9 +1686,7 @@ function installPreviewMessageChannel() {
         if (msg.type !== 'AP_CLINIC_PREVIEW') return;
         state.payload = msg.payload;
         if (msg.mode) state.mode = msg.mode;
-        document.querySelectorAll('.mode-tab').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.mode === state.mode);
-        });
+        PrintCore.setActiveModeTab(state.mode);
         requestPreviewRender();
     });
 }
@@ -2133,9 +1750,7 @@ async function boot() {
     }
 
     state.mode = qrMode ? 'review' : (params.get('mode') || state.mode || 'exam');
-    document.querySelectorAll('.mode-tab').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.mode === state.mode);
-    });
+    PrintCore.setActiveModeTab(state.mode);
     applyQrSolutionLockUI();
 
     document.querySelectorAll('.mode-tab').forEach(btn => {
