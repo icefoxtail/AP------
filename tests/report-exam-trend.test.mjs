@@ -122,10 +122,46 @@ const recentAverage = context.getRecentAverage('s1', 3);
 assert.equal(recentAverage, 80, 'getRecentAverage must preserve its numeric return contract');
 
 const pdfHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', { teacherMemo: '' });
-assert.match(pdfHtml, /지금 어디쯤 있나요/);
+// 기본값: 단일 시험 리포트. 성적 추이(최근 N회 카드·지금 어디쯤 있나요)는 켜야만 나온다.
+assert.doesNotMatch(pdfHtml, /지금 어디쯤 있나요/, 'default report should hide the trend section');
+assert.doesNotMatch(pdfHtml, /최근 \d+회 평균|첫 시험 → 최근|상승 · 하강 상태/, 'default report should hide trend score cards');
+assert.match(pdfHtml, /이번 시험 점수/, 'default report should keep the single-exam score card');
 assert.doesNotMatch(pdfHtml, /aprc-trend-svg/, 'default report should not include trend graph until enabled');
 assert.doesNotMatch(pdfHtml, /aprc-weakness-table/, 'default report should not include repeated weakness table until enabled');
-assert.match(pdfHtml, /상승/);
+
+// 성적 추이 분석을 켜면 추이 섹션과 최근 N회 카드가 다시 나온다.
+const trendOnHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
+  teacherMemo: '',
+  studioState: { options: { includeScoreTrend: true } }
+});
+assert.match(trendOnHtml, /지금 어디쯤 있나요/, 'enabling score trend should render the trend section');
+assert.match(trendOnHtml, /최근 \d+회 평균/, 'enabling score trend should render trend score cards');
+assert.match(trendOnHtml, /상승/, 'enabled trend report should show direction status');
+
+state.db.exam_question_reviews = [
+  { archive_file: 'exams/exam-3.js', question_no: '2', review_text: '저장된 2번 문항 분석입니다.', answer: '저장 정답' }
+];
+state.db.exam_analysis_meta = [];
+const detailedReviewHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
+  teacherMemo: '',
+  studioState: {
+    textOptions: { length: 'detailed' },
+    options: { includeQuestionAnalysis: true, includeQuestionReview: true }
+  }
+});
+assert.match(detailedReviewHtml, /aprc-pdf-review-panel/, 'detailed wrong report should render question review cards');
+assert.match(detailedReviewHtml, /저장된 2번 문항 분석입니다\./, 'stored question review text should win inside the card');
+assert.doesNotMatch(detailedReviewHtml, />정답</, 'question review answers should be hidden by default');
+const detailedAnswerHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
+  teacherMemo: '',
+  studioState: {
+    textOptions: { length: 'detailed' },
+    options: { includeQuestionAnalysis: true, includeQuestionReview: true, includeQuestionReviewAnswer: true }
+  }
+});
+assert.match(detailedAnswerHtml, />정답</, 'question review answers should render when explicitly enabled');
+assert.doesNotMatch(pdfHtml, /aprc-pdf-review-panel/, 'standard report should not render question review cards');
+
 const summarySection = pdfHtml.match(/aprc-pdf-parent-summary[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
 const weaknessSection = pdfHtml.match(/다음에 꼭 짚어볼 부분[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
 assert.doesNotMatch(summarySection, /90점|정답률\s*90%/, 'score facts should remain in cards');
@@ -147,6 +183,7 @@ const studioDraft = context.reportCenterBuildReportDraft('s1', 'e3', {
 });
 studioDraft.blocks.summary.userText = '선생님이 고친 요약입니다.';
 studioDraft.blocks.summary.isDirty = true;
+studioDraft.options.includeScoreTrend = true;
 studioDraft.options.includeTrendGraph = true;
 studioDraft.options.includeWeaknessTrend = true;
 studioDraft.charts.trendChart.displayData[2].score = 76;
@@ -409,11 +446,13 @@ const easySummaryWrong = context.reportCenterBuildEasySummaryText({
   stats: { classAvg: null }
 }, 3, null);
 assert.match(easySummaryWrong, /이번 시험에서는 3문항을 틀렸습니다/);
-assert.match(easySummaryWrong, /다음 수업에서 해당 문항을 다시 풀이하겠습니다/);
+assert.match(easySummaryWrong, /틀린 문항은 다음 수업과 보강에서 다시 풀이하고/);
+assert.match(easySummaryWrong, /책임지고 점검하겠습니다/);
 assert.doesNotMatch(easySummaryWrong, /확인되었습니다|유의미|시사점/);
 
 const perfectHtml = context.reportCenterBuildCleanPdfDocument('s3', 'p1', { teacherMemo: '' });
 assert.match(perfectHtml, /전 문항을 정확히 풀었습니다/);
+assert.doesNotMatch(perfectHtml, /aprc-pdf-review-panel/, 'perfect report should not render question review cards');
 assert.doesNotMatch(perfectHtml, /다음에 꼭 짚어볼 부분/, 'perfect report should hide weakness block');
 assert.doesNotMatch(perfectHtml, /반복 오답 단원은 확인되지 않았습니다|다시 볼 부분이 없습니다/);
 const perfectParentSection = perfectHtml.match(/aprc-pdf-parent-message[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';

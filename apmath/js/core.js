@@ -119,7 +119,7 @@ let state = {
     },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
-        exam_sessions: [], wrong_answers: [], class_exam_assignments: [], wrong_clinic_status: [], report_exam_cohort_stats: [], exam_blueprints: [], attendance_history: [], homework_history: [],
+        exam_sessions: [], wrong_answers: [], class_exam_assignments: [], wrong_clinic_status: [], report_exam_cohort_stats: [], exam_blueprints: [], exam_question_reviews: [], exam_analysis_meta: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
         timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
@@ -831,6 +831,8 @@ async function loadData(isInitial = false) {
         wrong_clinic_status: Array.isArray(data.wrong_clinic_status) ? data.wrong_clinic_status : [],
         report_exam_cohort_stats: Array.isArray(data.report_exam_cohort_stats) ? data.report_exam_cohort_stats : [],
         exam_blueprints: Array.isArray(data.exam_blueprints) ? data.exam_blueprints : [],
+        exam_question_reviews: Array.isArray(data.exam_question_reviews) ? data.exam_question_reviews : [],
+        exam_analysis_meta: Array.isArray(data.exam_analysis_meta) ? data.exam_analysis_meta : [],
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
