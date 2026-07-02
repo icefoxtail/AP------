@@ -1,63 +1,72 @@
-/* JS Archive Academy OS Design Alignment 0.5
-   JS아카이브를 Academy OS / APMS와 같은 제품군으로 보이게 하는 화면용 override layer.
-   시험지 본문, 보기, 해설, 출력물 CSS는 건드리지 않고 메인/엔진 껍데기 UI 톤만 정렬한다.
+/* JS Archive Airtable-inspired Design Alignment 1.0
+   Main archive chrome only. Exam bodies, explanations, and printable pages stay protected.
 */
 
 :root {
-  --archive-accent: #3F3F46;
-  --archive-accent-strong: #27272A;
-  --archive-accent-soft: rgba(39, 39, 42, 0.08);
-  --archive-accent-ring: rgba(39, 39, 42, 0.20);
+  --archive-accent: #181d26;
+  --archive-accent-strong: #0d1218;
+  --archive-accent-soft: rgba(24, 29, 38, 0.08);
+  --archive-accent-ring: rgba(24, 29, 38, 0.24);
+  --archive-link: #1b61c9;
 
-  --archive-bg: #F2F2F2;
-  --archive-surface: #FFFFFF;
-  --archive-surface-soft: #F9F9F9;
-  --archive-border: rgba(0, 0, 0, 0.10);
-  --archive-border-soft: rgba(0, 0, 0, 0.06);
-  --archive-text: #1C1C1E;
-  --archive-text-soft: #6C6C70;
+  --archive-bg: #ffffff;
+  --archive-surface: #ffffff;
+  --archive-surface-soft: #f8fafc;
+  --archive-surface-strong: #e0e2e6;
+  --archive-border: #dddddd;
+  --archive-border-soft: rgba(24, 29, 38, 0.10);
+  --archive-text: #181d26;
+  --archive-text-soft: #333840;
+  --archive-text-muted: #41454d;
 
-  --archive-navy: #FFFFFF;
-  --archive-navy-2: #F7F7F8;
-  --archive-navy-3: #F4F4F5;
+  --archive-signature-coral: #aa2d00;
+  --archive-signature-forest: #0a2e0e;
+  --archive-signature-cream: #f5e9d4;
+  --archive-on-dark: #ffffff;
+  --archive-on-dark-soft: rgba(255, 255, 255, 0.82);
+  --archive-on-dark-muted: rgba(255, 255, 255, 0.68);
 
-  --archive-radius-sm: 12px;
-  --archive-radius-md: 16px;
-  --archive-radius-lg: 22px;
-  --archive-radius-xl: 28px;
+  --archive-navy: #181d26;
+  --archive-navy-2: #1d1f25;
+  --archive-navy-3: #242935;
 
-  --archive-shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-  --archive-shadow-md: 0 10px 30px rgba(0,0,0,0.08);
-  --archive-shadow-lg: 0 24px 60px rgba(0,0,0,0.16);
+  --archive-radius-sm: 6px;
+  --archive-radius-md: 10px;
+  --archive-radius-lg: 12px;
+  --archive-radius-xl: 16px;
 
-  /* archive/index.html 기존 변수와 연결 */
-  --navy: var(--archive-navy);
-  --navy-2: var(--archive-navy-2);
-  --navy-3: var(--archive-navy-3);
-  --navy-4: #27272A;
+  --archive-shadow-sm: none;
+  --archive-shadow-md: 0 1px 3px rgba(0,0,0,0.08);
+  --archive-shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+
+  --navy: #ffffff;
+  --navy-2: var(--archive-surface-soft);
+  --navy-3: var(--archive-surface-strong);
+  --navy-4: var(--archive-border);
   --blue-main: var(--archive-accent);
   --blue-strong: var(--archive-accent-strong);
-  --blue-light: #A1A1AA;
-  --blue-pale: rgba(39, 39, 42, 0.14);
-  --blue-soft: rgba(39, 39, 42, 0.07);
+  --blue-light: #9297a0;
+  --blue-pale: var(--archive-surface-soft);
+  --blue-soft: var(--archive-surface-soft);
   --bg-soft: var(--archive-bg);
   --card-bg: var(--archive-surface);
-  --card-active: #F7F7F8;
+  --card-active: var(--archive-surface-soft);
   --card-border: var(--archive-border);
   --card-border-hover: var(--archive-accent-ring);
-  --card-border-active: rgba(39, 39, 42, 0.42);
+  --card-border-active: #9297a0;
   --text-main: var(--archive-text);
   --text-sub: var(--archive-text-soft);
-  --text-weak: #8E8E93;
-  --badge-bg: rgba(39, 39, 42, 0.08);
-  --badge-text: #27272A;
-  --badge-border: rgba(39, 39, 42, 0.16);
+  --text-weak: #737780;
+  --badge-bg: var(--archive-surface-soft);
+  --badge-text: var(--archive-text);
+  --badge-border: var(--archive-border);
   --shadow-card: var(--archive-shadow-sm);
-  --shadow-card-hover: 0 18px 44px rgba(0, 0, 0, 0.14);
+  --shadow-card-hover: var(--archive-shadow-md);
   --shadow-panel: var(--archive-shadow-lg);
 }
 
-html {
+html,
+body {
   background: var(--archive-bg);
 }
 
@@ -68,54 +77,123 @@ body {
 }
 
 header {
-  background: rgba(255,255,255,0.94);
-  border-bottom-color: rgba(0,0,0,0.08);
-}
-
-.hero {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F7F7F8 100%);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-.hero-title,
-.logo-name {
-  color: #1C1C1E;
-}
-
-.hero-title em,
-.logo-name em {
-  color: #6C6C70;
-}
-
-.hero-stat,
-.hero-panel-badge {
-  background: #FFFFFF;
-  border-color: rgba(0,0,0,0.10);
-  color: #3A3A3C;
-}
-
-.hero-stat i {
-  color: #6C6C70;
+  background: rgba(255,255,255,0.96);
+  border-bottom-color: var(--archive-border);
 }
 
 .gtab {
-  color: #6C6C70;
-  border-color: rgba(0,0,0,0.10);
-  background: rgba(255,255,255,0.72);
+  color: var(--archive-text-soft);
+  border-color: var(--archive-border);
+  background: var(--archive-surface);
+  box-shadow: none;
 }
 
 .gtab:hover,
 .gtab.active {
-  color: #1C1C1E;
-  background: #F2F2F2;
-  border-color: rgba(0,0,0,0.24);
+  color: var(--archive-on-dark);
+  background: var(--archive-accent);
+  border-color: var(--archive-accent);
+  box-shadow: none;
+}
+
+.hero {
+  background: var(--archive-bg);
+  border-bottom: 1px solid var(--archive-border);
+}
+
+.hero::before,
+.hero::after {
+  display: none;
+}
+
+.hero-brand-row {
+  border-bottom: 1px solid var(--archive-border-soft);
+  padding-bottom: 18px;
+}
+
+.hero-title,
+.logo-name {
+  color: var(--archive-text);
+}
+
+.hero-title {
+  word-break: keep-all;
+}
+
+.hero-title em,
+.logo-name em {
+  color: var(--archive-text-soft);
+}
+
+.hero-stat,
+.hero-panel-badge {
+  background: var(--archive-surface-soft);
+  border-color: var(--archive-border);
+  color: var(--archive-text-soft);
+}
+
+.hero-stat i {
+  color: var(--archive-text);
+}
+
+.assignment-board {
+  border-color: var(--archive-border);
+  border-radius: var(--archive-radius-lg);
+  background: var(--archive-surface);
+  color: var(--archive-text);
+  box-shadow: var(--archive-shadow-md);
+}
+
+.assignment-board-title,
+.assignment-board-paper {
+  color: var(--archive-text);
+}
+
+.assignment-board-date,
+.assignment-board-tab,
+.assignment-board-row {
+  border-color: var(--archive-border);
+  background: var(--archive-surface-soft);
+  color: var(--archive-text);
+}
+
+.assignment-board-tab.active {
+  border-color: var(--archive-accent);
+  background: var(--archive-accent);
+  color: var(--archive-on-dark);
+}
+
+.assignment-board-range,
+.assignment-board-teacher,
+.assignment-board-empty {
+  color: var(--archive-text-muted);
+}
+
+.assignment-board-classes {
+  color: var(--archive-text-soft);
+}
+
+.sec-block.dark {
+  background: var(--archive-surface-soft);
+  color: var(--archive-text);
+  border-top: 1px solid var(--archive-border);
+  border-bottom: 1px solid var(--archive-border);
+}
+
+.sec-block.dark .sec-title {
+  color: var(--archive-text);
+}
+
+.sec-block.dark .sec-line {
+  background: var(--archive-border);
 }
 
 .filter-band {
-  background: rgba(255,255,255,0.84);
-  border-bottom-color: var(--archive-border-soft);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.96);
+  border-top: 1px solid var(--archive-border);
+  border-bottom-color: var(--archive-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .fb-search input,
@@ -132,7 +210,7 @@ button {
 .fb-sel {
   border-color: var(--archive-border);
   border-radius: var(--archive-radius-sm);
-  background: rgba(255,255,255,0.92);
+  background: var(--archive-surface);
 }
 
 .fb-search input:focus,
@@ -143,21 +221,21 @@ button {
 
 .fb-mixer,
 .fb-original-toggle {
-  border-radius: var(--archive-radius-sm);
+  border-radius: var(--archive-radius-lg);
 }
 
 .fb-mixer {
   background: var(--archive-accent);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  box-shadow: none;
 }
 
 .fb-mixer:hover {
   background: var(--archive-accent-strong);
-  box-shadow: 0 16px 34px rgba(0,0,0,0.22);
+  box-shadow: none;
 }
 
 .exam-card {
-  border-radius: var(--archive-radius-lg);
+  border-radius: var(--archive-radius-md);
   border-color: var(--archive-border);
   box-shadow: var(--archive-shadow-sm);
 }
@@ -169,30 +247,36 @@ button {
 
 .exam-card.is-active {
   border-color: var(--card-border-active);
-  box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+  box-shadow: inset 0 0 0 1px var(--archive-accent);
 }
 
 .card-head,
 .card-body,
-.card-footer {
+.card-footer,
+.card-actions {
   border-color: var(--archive-border-soft);
 }
 
 .badge,
 .meta-badge,
-.card-badge {
+.card-badge,
+.card-type-chip {
   border-color: var(--badge-border);
 }
 
+.card-file-name {
+  color: var(--archive-text);
+}
+
 .modal-overlay {
-  background: rgba(2, 8, 23, 0.46);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(24, 29, 38, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .modal-box {
   border-radius: var(--archive-radius-xl);
-  border-color: rgba(255,255,255,0.80);
+  border-color: var(--archive-border);
   box-shadow: var(--archive-shadow-lg);
 }
 
@@ -200,6 +284,15 @@ button {
 .modal-btn,
 button.primary {
   border-radius: var(--archive-radius-sm);
+}
+
+.modal-btn-primary {
+  background: var(--archive-accent);
+  color: var(--archive-on-dark);
+}
+
+.modal-btn-primary:hover {
+  background: var(--archive-accent-strong);
 }
 
 .modal-box button:focus-visible,
@@ -211,48 +304,45 @@ button.primary {
   box-shadow: 0 0 0 4px var(--archive-accent-soft);
 }
 
-/* engine.html / mixed_engine.html: 화면 조작바만 Academy OS 톤으로 정렬한다.
-   .page 내부 시험지 본문, 보기, 해설, 인쇄 CSS는 보존한다. */
+/* engine.html / mixed_engine.html: only the screen control bar is restyled.
+   Printed question pages and page internals remain untouched. */
 @media screen {
   #mode-ctrl {
     height: 58px;
-    background:
-      linear-gradient(180deg, rgba(11,18,32,0.96) 0%, rgba(16,24,40,0.94) 100%);
-    border-bottom: 1px solid rgba(255,255,255,0.10);
-    box-shadow: 0 10px 28px rgba(2,8,23,0.22);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid var(--archive-border);
+    box-shadow: var(--archive-shadow-md);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   #ctrl-title {
+    color: var(--archive-text);
     letter-spacing: -0.02em;
   }
 
   .mode-tabs {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 999px;
+    background: var(--archive-surface-soft);
+    border: 1px solid var(--archive-border);
+    border-radius: var(--archive-radius-lg);
     padding: 4px;
   }
 
   .mode-tab {
-    border-radius: 999px;
+    border-radius: var(--archive-radius-sm);
+    color: var(--archive-text-soft);
     transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
   }
 
   .mode-tab:hover {
-    color: #fff;
-    background: rgba(255,255,255,0.10);
+    color: var(--archive-text);
+    background: var(--archive-surface);
   }
 
   .mode-tab.active {
-    background: #fff;
-    color: #111827;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-  }
-
-  body {
-    background: var(--archive-bg);
+    background: var(--archive-accent);
+    color: var(--archive-on-dark);
+    box-shadow: none;
   }
 
   #print-area {
@@ -260,12 +350,23 @@ button.primary {
   }
 
   .page {
-    box-shadow: 0 14px 42px rgba(2,8,23,0.12);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
 }
 
 @media print {
   #mode-ctrl {
     display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .grade-nav {
+    gap: 6px;
+  }
+
+  .gtab {
+    padding: 8px 11px;
+    font-size: 12px;
   }
 }
