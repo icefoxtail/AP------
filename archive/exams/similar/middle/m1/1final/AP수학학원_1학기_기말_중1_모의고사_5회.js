@@ -38,7 +38,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: "$a=4$, $b=-2$일 때, $-a-3\\dfrac{b}{2}$의 값은?",
+    content: "$a=4$, $b=-2$일 때, $-a-\\dfrac{3b}{2}$의 값은?",
     choices: [
     "$-7$",
     "$-1$",
