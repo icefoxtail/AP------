@@ -50,8 +50,13 @@
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
             body.screen-fit-mode #ctrl-title,
             body.screen-fit-mode #btn-print,
-            body.screen-fit-mode .qr-output-wrap,
-            body.screen-fit-mode .print-header-editor-wrap { display: none; }
+            body.screen-fit-mode .qr-output-wrap { display: none; }
+            body.screen-fit-mode .print-header-editor-panel {
+                position: fixed;
+                right: 8px;
+                top: 48px;
+                width: min(310px, calc(100vw - 16px));
+            }
             body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
         }
         /* preview=1: 아카이브 출제 패널 임베드용. 모드 탭만 남기고 조작 UI 숨김 */

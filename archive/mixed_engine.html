@@ -90,9 +90,16 @@
             body.screen-fit-mode { padding-top: 44px; }
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
             body.screen-fit-mode #ctrl-title,
-            body.screen-fit-mode .ctrl-right,
             body.screen-fit-mode .qr-output-wrap,
-            body.screen-fit-mode .print-header-editor-wrap { display: none; }
+            body.screen-fit-mode .ctrl-right > label,
+            body.screen-fit-mode .ctrl-right > #btn-print { display: none; }
+            body.screen-fit-mode .ctrl-right { display: flex; }
+            body.screen-fit-mode .print-header-editor-panel {
+                position: fixed;
+                right: 8px;
+                top: 48px;
+                width: min(310px, calc(100vw - 16px));
+            }
             body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
         }
 
