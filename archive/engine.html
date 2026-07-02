@@ -1564,11 +1564,10 @@ async function renderExam(area, data) {
                 block.items.slice(split).forEach(it => bRight.appendChild(it.box.cloneNode(true)));
             }
         });
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]); await raf();
+        await raf();
         const allPageBoxes = page.querySelectorAll('.q-box'); allPageBoxes.forEach(b => fitQuestionBox(b));
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
             allPageBoxes.forEach(b => autoCompress(b)); await raf();
-            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
         }
     }
 }
@@ -1748,7 +1747,7 @@ async function render() {
         await renderExam(area, AppState.data);
     }
 
-    if (window.MathJax?.typesetPromise) {
+    if (AppState.mode === 'ans' && window.MathJax?.typesetPromise) {
         await MathJax.typesetPromise([area]);
     }
 
