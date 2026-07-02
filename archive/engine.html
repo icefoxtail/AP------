@@ -54,6 +54,15 @@
             body.screen-fit-mode .print-header-editor-wrap { display: none; }
             body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
         }
+        /* preview=1: 아카이브 출제 패널 임베드용. 모드 탭만 남기고 조작 UI 숨김 */
+        body.preview-mode { padding-top: 44px; }
+        body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; gap: 8px; }
+        body.preview-mode #ctrl-title,
+        body.preview-mode #btn-print,
+        body.preview-mode #qpp-display,
+        body.preview-mode .qr-output-wrap,
+        body.preview-mode .print-header-editor-wrap { display: none; }
+        body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
 
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
@@ -492,8 +501,18 @@ function isQrSolutionMode() {
     }
 }
 
+// preview=1: 출제 전 내용 확인용 임베드 모드. 렌더만 하고 QR 삽입/OS 등록 등 부작용은 전부 차단한다.
+function isPreviewMode() {
+    try {
+        return new URLSearchParams(window.location.search).get('preview') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
 function shouldRenderSolutionQr() {
     if (AppState.mode !== 'exam') return false;
+    if (isPreviewMode()) return false;
     try {
         const params = new URLSearchParams(window.location.search);
         return params.get('solQr') === '1';
@@ -607,6 +626,8 @@ function injectQrToLastExamPage(area) {
 
 function shouldRenderSubmitQr() {
     if (AppState.mode !== 'exam') return false;
+    // preview에서는 제출 QR과 이를 전제로 한 OS 등록(블루프린트/출제이력)까지 전부 차단된다.
+    if (isPreviewMode()) return false;
     try {
         const params = new URLSearchParams(window.location.search);
         const submitQr = params.get('submitQr');
@@ -1737,7 +1758,8 @@ async function registerBlueprintToOS() {
 window.onload = () => {
     restoreApmathSessionFromHash();
     const params = new URLSearchParams(window.location.search);
-    if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
+    if (isPreviewMode()) document.body.classList.add('preview-mode', 'screen-fit-mode');
+    else if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
     init();
 };
 </script>

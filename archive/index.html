@@ -809,8 +809,69 @@
             text-align: left;
             padding: 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             overflow: hidden;
+        }
+
+        #assignTargetBody {
+            flex: 1 1 auto;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #assignTargetPreviewPane {
+            display: none;
+            flex: 0 0 460px;
+            min-width: 0;
+            flex-direction: column;
+            border-left: 1px solid rgba(226,232,240,0.9);
+            background: #e8edf3;
+        }
+
+        #assignTargetBox.assign-preview-open {
+            width: min(1400px, calc(100vw - 40px));
+        }
+
+        #assignTargetBox.assign-preview-open #assignTargetPreviewPane { display: flex; }
+
+        #assignTargetPreviewFrame {
+            border: 0;
+            width: 100%;
+            flex: 1;
+            min-height: 420px;
+        }
+
+        .assign-preview-toggle {
+            flex: none;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 7px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            border: 1px solid var(--card-border, #e2e8f0);
+            background: #f8fafc;
+            color: var(--text-main);
+            transition: 0.15s ease;
+        }
+
+        .assign-preview-toggle:hover { background: #eef2f7; }
+
+        .assign-target-head-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        @media (max-width: 1024px) {
+            #assignTargetBox.assign-preview-open { flex-direction: column; }
+            #assignTargetPreviewPane {
+                flex: 0 0 44vh;
+                border-left: none;
+                border-top: 1px solid rgba(226,232,240,0.9);
+            }
+            #assignTargetPreviewFrame { min-height: 0; }
         }
 
         .assign-target-panel {
@@ -1347,6 +1408,10 @@
 <div class="modal-overlay" id="assignTargetModalOverlay">
     <div class="modal-box modal-box--wide" id="assignTargetBox">
         <div id="assignTargetBody"></div>
+        <!-- 시험지 미리보기: assignTargetBody는 조작마다 재렌더되므로 iframe은 반드시 이 바깥(형제)에 둔다 -->
+        <div id="assignTargetPreviewPane" aria-label="시험지 미리보기">
+            <iframe id="assignTargetPreviewFrame" title="시험지 미리보기"></iframe>
+        </div>
     </div>
 </div>
 
@@ -2500,6 +2565,7 @@ function closeModal() {
     const assignModal = document.getElementById('assignTargetModalOverlay');
     if (assignModal) assignModal.classList.remove('open');
     AssignTarget = null;
+    resetAssignTargetPreviewPane();
 }
 
 /* ===== 출제 대상 선택: 학년 -> 반 -> 학생 통합 패널 ===== */
@@ -2508,6 +2574,53 @@ let AssignTarget = null;
 
 function assignTargetBodyEl() {
     return document.getElementById('assignTargetBody');
+}
+
+/* ----- 출제 전 시험지 미리보기 (engine.html preview=1 임베드) ----- */
+
+function buildAssignTargetPreviewUrl() {
+    const item = AssignTarget?.item;
+    if (!item) return '';
+    const url = new URL('engine.html', window.location.href);
+    url.searchParams.set('mode', 'exam');
+    url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
+    url.searchParams.set('data', 'exams/' + item.file);
+    url.searchParams.set('title', getIndexExamTitle(item));
+    if (item.subject) url.searchParams.set('subject', item.subject);
+    url.searchParams.set('preview', '1');
+    return url.toString();
+}
+
+function syncAssignTargetPreviewPane() {
+    const box = document.getElementById('assignTargetBox');
+    const frame = document.getElementById('assignTargetPreviewFrame');
+    if (!box || !frame) return;
+    const open = !!(AssignTarget && AssignTarget.previewOpen);
+    box.classList.toggle('assign-preview-open', open);
+    const btn = document.getElementById('assign-preview-toggle-btn');
+    if (btn) btn.textContent = open ? '미리보기 닫기' : '시험지 미리보기';
+    if (!open) return;
+    const url = buildAssignTargetPreviewUrl();
+    // 같은 시험이면 src를 유지한다(대상 선택 조작·화면 전환마다 MathJax 재렌더 방지)
+    if (url && frame.getAttribute('src') !== url) frame.setAttribute('src', url);
+}
+
+function resetAssignTargetPreviewPane() {
+    const box = document.getElementById('assignTargetBox');
+    const frame = document.getElementById('assignTargetPreviewFrame');
+    if (box) box.classList.remove('assign-preview-open');
+    if (frame && frame.getAttribute('src')) frame.setAttribute('src', 'about:blank');
+}
+
+function assignTargetTogglePreview() {
+    if (!AssignTarget) return;
+    AssignTarget.previewOpen = !AssignTarget.previewOpen;
+    syncAssignTargetPreviewPane();
+}
+
+function assignTargetPreviewToggleHtml() {
+    const open = !!(AssignTarget && AssignTarget.previewOpen);
+    return `<button class="assign-preview-toggle" id="assign-preview-toggle-btn" type="button" onclick="assignTargetTogglePreview()">${open ? '미리보기 닫기' : '시험지 미리보기'}</button>`;
 }
 
 async function openAssignTargetPanel(item, qpp) {
@@ -2520,9 +2633,11 @@ async function openAssignTargetPanel(item, qpp) {
         view: 'select',
         progress: null,
         assignmentBatchId: '',
-        scope: 'class'
+        scope: 'class',
+        previewOpen: false
     };
     document.getElementById('assignTargetModalOverlay').classList.add('open');
+    resetAssignTargetPreviewPane();
     assignTargetBodyEl().innerHTML = '<div style="padding:60px; text-align:center; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
 
     const authHeader = getIndexAssignmentAuthHeader();
@@ -2844,7 +2959,10 @@ function renderAssignTargetSelectView() {
     assignTargetBodyEl().innerHTML = `
         <div class="assign-target-panel">
             <div class="assign-target-head">
-                <div class="modal-title">출제 대상 선택</div>
+                <div class="assign-target-head-row">
+                    <div class="modal-title">출제 대상 선택</div>
+                    ${assignTargetPreviewToggleHtml()}
+                </div>
                 <div class="modal-sub">${escapeModalText(getIndexExamTitle(AssignTarget.item))} · 학년을 고르고, 반과 학생을 필요한 만큼 좁혀서 출제하세요.</div>
                 <div class="assign-grade-tabs">${tabsHtml}</div>
             </div>
@@ -2880,7 +2998,10 @@ function assignTargetGoReview() {
     const summary = computeAssignTargetSummary();
     if (!summary.totalStudents) return;
     AssignTarget.view = 'review';
+    // 최종 확인은 "이 명단에게 이 시험지가 출제된다"를 한 화면에서 보도록 미리보기를 기본으로 연다.
+    AssignTarget.previewOpen = true;
     renderAssignTargetReviewView();
+    syncAssignTargetPreviewPane();
 }
 
 function assignTargetBackToSelect() {
@@ -2909,7 +3030,10 @@ function renderAssignTargetReviewView() {
     assignTargetBodyEl().innerHTML = `
         <div class="assign-target-panel">
             <div class="assign-target-head">
-                <div class="modal-title">최종 확인 — 이 명단으로 출제됩니다</div>
+                <div class="assign-target-head-row">
+                    <div class="modal-title">최종 확인 — 이 명단으로 출제됩니다</div>
+                    ${assignTargetPreviewToggleHtml()}
+                </div>
                 <div class="modal-sub">${escapeModalText(getIndexExamTitle(AssignTarget.item))}</div>
             </div>
             <div class="assign-target-body" style="display:block; padding:16px 28px; overflow-y:auto;">
@@ -2936,6 +3060,8 @@ async function assignTargetSubmit() {
     AssignTarget.scope = classIds.length === 1 ? 'class' : 'grade';
     AssignTarget.assignmentBatchId = getIndexAssignmentBatchId(AssignTarget.item, AssignTarget.grade);
     AssignTarget.view = 'progress';
+    AssignTarget.previewOpen = false;
+    syncAssignTargetPreviewPane();
     AssignTarget.progress = {};
     classIds.forEach(id => { AssignTarget.progress[id] = { status: 'pending' }; });
     renderAssignTargetProgressView();
