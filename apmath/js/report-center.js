@@ -488,6 +488,88 @@ function reportCenterUpsertExamMeta(archiveFile, patch = {}) {
     return next;
 }
 
+function reportCenterBuildExamAnalysisFallbackOverview(archiveFile, rows = []) {
+    const count = rows.length;
+    const rates = rows.map(row => row.correctRate).filter(Number.isFinite);
+    const avg = rates.length ? Math.round(rates.reduce((sum, rate) => sum + rate, 0) / rates.length) : null;
+    const hardCount = rates.filter(rate => rate < 60).length;
+    const unitNames = Array.from(new Set(rows.map(row => row.unit).filter(Boolean))).slice(0, 4);
+    if (!count) return '분석할 문항 정보가 아직 없습니다.';
+    const unitText = unitNames.length ? ` 주요 단원은 ${unitNames.join(', ')}입니다.` : '';
+    const rateText = avg === null ? '정답률 비교 자료는 아직 충분하지 않습니다.' : `평균 정답률은 ${avg}%입니다.`;
+    const hardText = hardCount ? ` 다시 확인할 문항은 ${hardCount}개입니다.` : ' 전반적으로 안정적으로 해결된 문항 구성입니다.';
+    return `${count}개 문항 기준으로 정리했습니다. ${rateText}${hardText}${unitText}`;
+}
+
+function reportCenterBuildExamAnalysisArticle(archiveFile, opts = {}) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const candidates = new Set(reportCenterArchiveKeyCandidates(archiveFile));
+    const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+        .filter(row => candidates.has(String(row?.archive_file || '').trim()) || candidates.has(reportCenterNormalizeExamAnalysisArchiveKey(row?.archive_file || '')))
+        .sort((a, b) => Number(a.question_no || a.questionNo || 0) - Number(b.question_no || b.questionNo || 0));
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => candidates.has(String(session?.archive_file || '').trim()) || candidates.has(reportCenterNormalizeExamAnalysisArchiveKey(session?.archive_file || '')));
+    const wrongs = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
+    const store = reportCenterGetExamReviews(archiveFile);
+    const total = sessions.length;
+    const rows = blueprints.map(bp => {
+        const qNo = String(bp.question_no ?? bp.questionNo ?? '').trim();
+        const wrongCount = wrongs.filter(w => sessions.some(s => String(s.id) === String(w.session_id)) && String(w.question_id ?? w.question_no ?? w.questionNo) === qNo).length;
+        const correctRate = total ? Math.round(((total - wrongCount) / total) * 100) : null;
+        const saved = store.byQuestion.get(qNo) || null;
+        return {
+            questionNo: qNo,
+            unit: bp.standard_unit || bp.unit || bp.unit_name || bp.standardUnit || '',
+            level: bp.level || bp.difficulty || '',
+            correctRate,
+            classCorrectRate: correctRate,
+            contentText: bp.content_text || bp.content || '',
+            choices: Array.isArray(bp.choices) ? bp.choices : [],
+            answer: saved?.answer || bp.answer || '',
+            solutionText: bp.solution_text || bp.solution || '',
+            reviewText: saved?.review_text || saved?.reviewText || ''
+        };
+    });
+    const overviewText = store.meta?.overview_text || reportCenterBuildExamAnalysisFallbackOverview(archiveKey, rows);
+    const unitCounts = new Map();
+    rows.forEach(row => {
+        const unit = row.unit || '단원 미지정';
+        unitCounts.set(unit, (unitCounts.get(unit) || 0) + 1);
+    });
+    const unitItems = Array.from(unitCounts.entries())
+        .map(([unit, count]) => `<li>${reportCenterEscape(unit)} <b>${count}</b></li>`)
+        .join('');
+    const cards = rows.map(row => reportCenterBuildQuestionReviewCard(row, {
+        anonymized: true,
+        showAnswer: opts.showAnswer !== false,
+        showContent: opts.showContent !== false,
+        showSolution: opts.showSolution !== false
+    })).join('');
+    return `
+        <article class="aprc-exam-article" data-archive-file="${reportCenterAttr(archiveKey)}">
+            <header class="aprc-exam-article-head">
+                <h1>${reportCenterEscape(opts.title || '시험지 분석')}</h1>
+                <p>${reportCenterArchiveTextToHtml(overviewText)}</p>
+            </header>
+            <section class="aprc-exam-article-stats">
+                <div>문항 <b>${rows.length}</b></div>
+                <div>응시 기록 <b>${total}</b></div>
+            </section>
+            ${unitItems ? `<section class="aprc-exam-article-units"><h2>단원 분포</h2><ul>${unitItems}</ul></section>` : ''}
+            <section class="aprc-exam-article-questions">
+                <h2>문항별 리뷰</h2>
+                <div class="aprc-qreview-list">${cards}</div>
+            </section>
+        </article>
+    `;
+}
+
+async function reportCenterCopyExamAnalysisArticle(archiveFile) {
+    const html = reportCenterBuildExamAnalysisArticle(archiveFile);
+    await reportCenterCopyText(html, '시험지 분석 HTML을 복사했습니다.');
+    return html;
+}
+
 function reportCenterStripHtml(value) {
     const html = String(value || '');
     if (!html) return '';
