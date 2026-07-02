@@ -1243,6 +1243,7 @@
       const url = new URL('../wrong_print_engine.html', window.location.href);
       url.searchParams.set('packet', key);
       url.searchParams.set('mode', mode);
+      url.searchParams.set('fit', 'screen');
       if (sameTab) {
         window.location.href = url.toString();
         return;
@@ -1813,6 +1814,7 @@
       }
 
       url.searchParams.set('mode', isExam ? 'exam' : (isSolution ? 'sol' : 'ans'));
+      url.searchParams.set('fit', 'screen');
       if (isSolution) url.searchParams.set('solQr', '1');
       return url.toString();
     }

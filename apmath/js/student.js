@@ -2131,6 +2131,7 @@ function renderStudentWrongClinicTab(sid) {
                 <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;">
                     <div>
                         <div style="font-weight:700;">${apmsStudentDetailEsc(packet.title || '오답 클리닉')} <span class="muted">· ${apmsStudentDetailEsc(scopeLabel)}</span></div>
+                        ${packet.subtitle ? `<div class="muted">${apmsStudentDetailEsc(packet.subtitle)}</div>` : ''}
                     </div>
                     <div style="display:flex;gap:6px;flex-wrap:wrap;">
                         ${reissueButton}

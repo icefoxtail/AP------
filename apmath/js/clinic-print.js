@@ -899,7 +899,7 @@ async function clinicPrintSaveAndOpen(classId, payload, selectedStudentIds = [])
     const cls = clinicPrintGetClass(classId);
     const targets = clinicPrintBuildWrongClinicTargets(classId, payload, selectedStudentIds);
     const result = await api.post('wrong-clinics', {
-        title: payload.printTitle || clinicPrintGetHeaderDefaultTitle(classId),
+        title: payload.headerOptions?.title || payload.printTitle || clinicPrintGetHeaderDefaultTitle(classId),
         mode: payload.mode || 'student',
         source: {
             scope_type: payload.mode === 'grade' || payload.scope === 'grade' ? 'grade' : 'class',
