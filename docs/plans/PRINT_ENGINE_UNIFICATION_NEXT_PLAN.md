@@ -110,11 +110,19 @@ QR 출제 경로에서 시험 내용을 확인하고 출제하도록 한다. 기
 - 검증: 로컬 프리뷰로 전/후 페이지 시그니처 완전 일치 확인 — 엔진(qpp4/qpp6/해설 분할/정답표/QR 2종), 믹서(qpp2/qpp8/고정시드 셔플/해설), 오답(exam/review, `wp=` 하위호환). 상세는 implemented 문서 4절. `packet=`/`set=`/`data=`/`key=` 로딩 코드는 미변경.
 - OS 등록 API·세션 복원 블록은 엔진/믹서에 아직 중복 — 렌더링 코어가 아니라 Phase 1 범위 밖. 이후 Phase에서 공용화 후보.
 
-### Phase 2 — 미리보기 채널 표준화
+### Phase 2 — 미리보기 채널 표준화 ✅ 완료 (2026-07-02)
 
 - 오답엔진의 `preview=1` + postMessage(payload 수신/헤더 편집 역방향) + 인라인 헤더 편집 + 포커스 보존 재렌더 보류를 코어로 이동.
 - 메시지 타입을 `AP_CLINIC_*`에서 공용 이름(`AP_PRINT_PREVIEW`/`AP_PRINT_HEADER_EDIT`)으로 일반화, 기존 타입은 별칭 수신 유지.
 - engine.html/mixed_engine.html도 임베드 미리보기 가능해짐.
+
+**구현 노트 (계획과 다른 점/판단 기록):**
+
+- `PrintCore.createPreviewController({ render, onPreviewMessage })`로 코어화: 250ms 디바운스, 편집 중(포커스가 `.clinic-editable`) 재렌더 보류 + focusout flush, 메시지 수신(수신 payload 적용은 엔진 훅), 인라인 헤더 편집(`enableHeaderInlineEdit`), `postHeaderEdit`.
+- **수신은 신·구 타입 모두, 발신(헤더 편집)은 신·구 타입 동시 발신**: 덕분에 `apmath/js/clinic-print.js`는 한 줄도 수정하지 않았다(레거시 `AP_CLINIC_PREVIEW` 발신 → 별칭 수신, 레거시 `AP_CLINIC_HEADER_EDIT` 수신 → 동시 발신 중 하나 수신). 캐시로 신/구 버전이 섞여도 어느 조합이든 동작. 중복 수신은 양쪽 디바운스(재렌더 250ms/부모 push 150ms)가 흡수하며 핸들러가 멱등이라 안전.
+- engine.html(Phase 0 preview)과 mixed_engine.html(preview 신설: 전용 CSS + screen-fit + no-data 시 alert 대신 안내 박스)에 채널 배선 — `mode`/`headerOptions` 수신 시 재렌더. **인라인 헤더 편집은 두 엔진에서 비활성**: 부모가 편집값을 상태로 관리해 echo하지 않으면 재렌더 때 편집값이 되돌아가 오해를 유발하므로, 부모 상태 관리가 생기는 Phase 3(툴바/작업대)에서 활성화한다.
+- 믹서 `shouldRenderSolutionQr`/`shouldRenderSubmitQr`에 preview 가드 추가(엔진과 동일) — preview에서 QR 삽입·OS 등록(블루프린트/출제이력) 무부작용 보장.
+- 검증(로컬 프리뷰): 오답엔진 iframe 하니스로 레거시/공용 타입 수신 렌더, 헤더 편집 blur→부모 신·구 타입 수신, 편집 중 메시지 보류→focusout flush 재렌더 확인. 엔진/믹서 preview에서 mode·headerOptions 반영, QR 차단(submitQr=1&solQr=1에도 미출력), 비-preview 렌더 시그니처 무변화, 콘솔 에러 없음.
 
 ### Phase 3 — 툴바 통일
 

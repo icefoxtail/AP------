@@ -150,7 +150,6 @@ const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 // QR URL 길이별 스캔 안정성 기준(LOOP 4).
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam' };
-let previewRenderTimer = null;
 // 페이지네이션 상수·측정·조립은 ../archive/js/print-core.js(PrintCore)로 이동 (엔진 통합 Phase 1)
 const CLINIC_QPP = 4;
 const WRONG_QR_PATCH = {
@@ -1594,55 +1593,19 @@ async function render() {
     enableHeaderInlineEdit();
 }
 
-function schedulePreviewRender() {
-    clearTimeout(previewRenderTimer);
-    previewRenderTimer = setTimeout(() => {
-        render();
-    }, 250);
-}
-
-// 미리보기에서 헤더 텍스트를 직접 클릭해 수정한다. blur(확정) 시 부모(클리닉)로 값 전송.
-function bindHeaderEditable(el, field, placeholder) {
-    if (!el) return;
-    el.classList.add('clinic-editable');
-    el.setAttribute('contenteditable', 'true');
-    el.setAttribute('data-clinic-field', field);
-    el.setAttribute('data-placeholder', placeholder);
-    el.setAttribute('title', '클릭해서 수정');
-    el.spellcheck = false;
-    const normalize = () => (el.textContent || '').replace(/\s+/g, ' ').trim();
-    // 편집 시작값 기록 → 변경 없는 blur는 저장하지 않는다(자동 보조문구를 클릭만 한 경우 수동값으로 굳는 것 방지).
-    el.addEventListener('focus', () => { el._editStartValue = normalize(); });
-    el.addEventListener('keydown', e => {
-        if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
-        if (e.key === 'Escape') { e.preventDefault(); el.textContent = el._editStartValue ?? el.textContent; el.blur(); }
-    });
-    el.addEventListener('blur', () => {
-        const value = normalize();
-        if (value === (el._editStartValue ?? '')) return;
-        try {
-            window.parent?.postMessage({ type: 'AP_CLINIC_HEADER_EDIT', field, value }, window.location.origin);
-        } catch (e) { /* 부모 없거나 출처 불일치 시 무시 */ }
-    });
-}
-
-// 첫 페이지 헤더만 편집 대상으로 삼는다(blur→부모→재렌더로 전 페이지 동기화).
-function enableHeaderInlineEdit() {
-    if (!document.body.classList.contains('preview-mode')) return;
-    const header = document.querySelector('#print-area .page-header');
-    if (!header) return;
-
-    bindHeaderEditable(header.querySelector('.page-header-title'), 'title', '제목 입력');
-
-    // 제목/보조문구만 직접 편집(이름·점수·날짜는 자동). 보조문구가 비어 있으면 편집용 빈 줄 생성.
-    const col = header.querySelector('.page-header-titlecol') || header.querySelector('div');
-    let subEl = header.querySelector('.page-header-subtitle');
-    if (!subEl && col) {
-        subEl = document.createElement('div');
-        subEl.className = 'page-header-subtitle';
-        col.appendChild(subEl);
+// 미리보기 채널(postMessage 수신/헤더 편집 역방향/포커스 보존 재렌더)은 PrintCore로 이동.
+// 메시지 타입은 AP_PRINT_* 공용 이름 + AP_CLINIC_* 별칭을 코어가 함께 처리한다.
+const previewController = PrintCore.createPreviewController({
+    render: () => render(),
+    onPreviewMessage: (msg) => {
+        state.payload = msg.payload;
+        if (msg.mode) state.mode = msg.mode;
+        PrintCore.setActiveModeTab(state.mode);
     }
-    bindHeaderEditable(subEl, 'subtitle', '보조 문구 입력');
+});
+
+function enableHeaderInlineEdit() {
+    previewController.enableHeaderInlineEdit();
 }
 
 function switchMode(mode) {
@@ -1652,43 +1615,6 @@ function switchMode(mode) {
     state.mode = mode;
     PrintCore.setActiveModeTab(mode);
     render();
-}
-
-// 헤더를 편집(포커스가 .clinic-editable)하는 동안에는 재렌더를 미룬다.
-// 빠르게 제목→보조문구로 옮겨 칠 때 contenteditable이 재생성돼 포커스/입력이 날아가는 것 방지.
-let previewRenderPending = false;
-function requestPreviewRender() {
-    const active = document.activeElement;
-    if (active && active.classList && active.classList.contains('clinic-editable')) {
-        previewRenderPending = true;
-        return;
-    }
-    previewRenderPending = false;
-    schedulePreviewRender();
-}
-
-function installPreviewMessageChannel() {
-    document.addEventListener('focusout', () => {
-        if (!previewRenderPending) return;
-        // 다음 틱에 포커스가 편집영역을 완전히 벗어났는지 확인 후 flush
-        setTimeout(() => {
-            const a = document.activeElement;
-            if (!(a && a.classList && a.classList.contains('clinic-editable'))) {
-                previewRenderPending = false;
-                schedulePreviewRender();
-            }
-        }, 0);
-    });
-
-    window.addEventListener('message', event => {
-        if (event.origin !== window.location.origin) return;
-        const msg = event.data || {};
-        if (msg.type !== 'AP_CLINIC_PREVIEW') return;
-        state.payload = msg.payload;
-        if (msg.mode) state.mode = msg.mode;
-        PrintCore.setActiveModeTab(state.mode);
-        requestPreviewRender();
-    });
 }
 
 function loadPayloadFromUrl() {
@@ -1736,10 +1662,10 @@ async function loadPayloadFromUrlOrStorage() {
 async function boot() {
     const qrMode = isQrSolutionMode();
     const params = new URLSearchParams(window.location.search);
-    const previewMode = params.get('preview') === '1';
+    const previewMode = PrintCore.isPreviewMode();
     if (previewMode) {
         document.body.classList.add('preview-mode');
-        installPreviewMessageChannel();
+        previewController.install();
     }
     try {
         state.payload = await loadPayloadFromUrlOrStorage();

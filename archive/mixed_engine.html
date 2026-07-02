@@ -96,6 +96,12 @@
             body.screen-fit-mode .print-header-editor-wrap { display: none; }
             body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
         }
+        /* preview=1: 임베드 미리보기용(Phase 2). 모드 탭만 남기고 조작 UI 숨김 */
+        body.preview-mode { padding-top: 44px; }
+        body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; gap: 8px; }
+        body.preview-mode #ctrl-title,
+        body.preview-mode .ctrl-right { display: none; }
+        body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
 
         /* [PDF Mode] Container & Viewer */
         #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); background: #525659; overflow: hidden; }
@@ -486,6 +492,8 @@ function isQrSolutionMode() {
 
 function shouldRenderSolutionQr() {
     if (AppState.mode !== 'exam') return false;
+    // preview 임베드에서는 QR 삽입(및 이를 전제로 한 OS 등록) 부작용을 전부 차단한다.
+    if (PrintCore.isPreviewMode()) return false;
     try {
         const params = new URLSearchParams(window.location.search);
         return params.get('solQr') === '1';
@@ -526,6 +534,8 @@ function injectQrToLastExamPage(area) {
 
 function shouldRenderSubmitQr() {
     if (AppState.mode !== 'exam') return false;
+    // preview에서는 제출 QR과 이를 게이트로 쓰는 OS 등록(블루프린트/출제이력)까지 전부 차단된다.
+    if (PrintCore.isPreviewMode()) return false;
     try {
         const params = new URLSearchParams(window.location.search);
         const submitQr = params.get('submitQr');
@@ -889,6 +899,22 @@ async function registerBlueprintToOS() {
 }
 
 const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '', printHeaderOptions: {} };
+
+// 임베드 미리보기 채널(Phase 2): 부모가 postMessage(AP_PRINT_PREVIEW)로 모드/헤더를 바꾸면 재렌더.
+// 인라인 헤더 편집은 부모 측 상태 관리(echo)가 필요해 믹서에서는 아직 활성화하지 않는다(Phase 3).
+const previewController = PrintCore.createPreviewController({
+    render: () => render(),
+    onPreviewMessage: (msg) => {
+        if (msg.mode === 'exam' || msg.mode === 'sol' || msg.mode === 'ans') {
+            AppState.mode = msg.mode;
+            PrintCore.setActiveModeTab(AppState.mode);
+        }
+        if (msg.headerOptions && typeof msg.headerOptions === 'object') {
+            AppState.printHeaderOptions = normalizePrintHeaderOptions({ ...getPrintHeaderOptions(), ...msg.headerOptions });
+            renderPrintHeaderControls();
+        }
+    }
+});
 
 /** [성역] wrapLatex */
 function wrapLatexPreserveBlocks(text) {
@@ -1313,7 +1339,15 @@ async function init() {
         }
     }
 
-    if (!rawData) { alert('데이터가 없습니다.'); return; }
+    if (!rawData) {
+        // 임베드 미리보기에서는 alert로 부모 화면을 막지 않는다.
+        if (PrintCore.isPreviewMode()) {
+            document.getElementById('print-area').innerHTML = '<div style="margin:80px auto; max-width:520px; padding:24px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#0f172a; font-weight:700; line-height:1.6; text-align:center;">미리보기할 믹서 데이터가 없습니다.</div>';
+            return;
+        }
+        alert('데이터가 없습니다.');
+        return;
+    }
 
     try {
         const parsedData = JSON.parse(rawData);
@@ -1364,7 +1398,12 @@ async function init() {
 window.onload = () => {
     restoreApmathSessionFromHash();
     const params = new URLSearchParams(window.location.search);
-    if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
+    if (PrintCore.isPreviewMode()) {
+        document.body.classList.add('preview-mode', 'screen-fit-mode');
+        previewController.install();
+    } else if (shouldUseScreenFit(params)) {
+        document.body.classList.add('screen-fit-mode');
+    }
     init();
 };
 </script>

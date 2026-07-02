@@ -1,6 +1,6 @@
 # PRINT_CORE_MODULE_MAP
 
-시험지 출력 엔진 공용 렌더링 코어(`archive/js/print-core.js`)의 구조 문서. 엔진 통합 Phase 1(2026-07-02) 산출물.
+시험지 출력 엔진 공용 렌더링 코어(`archive/js/print-core.js`)의 구조 문서. 엔진 통합 Phase 1~2(2026-07-02) 산출물.
 계획·배경은 `docs/plans/PRINT_ENGINE_UNIFICATION_NEXT_PLAN.md` 참조.
 
 ## 1. 소비처
@@ -54,6 +54,14 @@
 - `applyQrSolutionLockUI({ title, hideTabsBar?, solActive? })` — 엔진/믹서: 기본값, 오답엔진: `hideTabsBar:true, solActive:false`.
 - `getQrOutputState` / `syncQrOutputControls` / `toggleQrOutputPopover` / `setQrOutputParam` — QR 출력 팝오버(엔진/믹서). `setQrOutputParam`은 URL만 갱신, 재렌더는 호출부 책임.
 - `installPopoverAutoClose([wrapIds])` — 바깥 클릭 닫기.
+
+### 미리보기 채널 (Phase 2)
+- `isPreviewMode()` — `?preview=1`.
+- `createPreviewController({ render, onPreviewMessage, editableClass? })` → `{ install, scheduleRender, requestRender, enableHeaderInlineEdit, postHeaderEdit }`
+  - `install()`: 같은 오리진 postMessage 수신(`AP_PRINT_PREVIEW` + 레거시 `AP_CLINIC_PREVIEW` 별칭) → `onPreviewMessage(msg)`(상태 적용은 엔진 책임) → 250ms 디바운스 재렌더. 편집 중(포커스가 editableClass) 재렌더 보류 + focusout flush.
+  - `enableHeaderInlineEdit()`: preview-mode에서 첫 페이지 헤더의 제목/보조문구를 contenteditable로. blur 시 `postHeaderEdit(field, value)` — **신·구 타입(`AP_PRINT_HEADER_EDIT`+`AP_CLINIC_HEADER_EDIT`) 동시 발신**으로 구버전 부모(clinic-print.js)와 캐시 불일치에도 동작. 수신부 디바운스가 중복 흡수.
+  - `.clinic-editable` CSS는 소비 엔진 책임(현재 오답엔진만 정의·활성). 아카이브 엔진/믹서는 채널(mode/headerOptions)만 배선 — 인라인 편집은 부모 상태 관리가 생기는 Phase 3에서 활성화.
+- 부모 예시: `apmath/js/clinic-print.js`(무변경 — 레거시 타입 발신/수신이 별칭·동시발신으로 커버됨).
 
 ### screen-fit
 - `shouldUseScreenFit(params)` / `updateScreenFitScale(maxScale=1)` / `installScreenFitAutoRescale(getMaxScale?)`

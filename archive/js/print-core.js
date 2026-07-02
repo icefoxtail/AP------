@@ -628,6 +628,126 @@
         });
     }
 
+    // ── 미리보기 채널 (Phase 2: preview=1 + postMessage + 인라인 헤더 편집) ──
+    function isPreviewMode() {
+        try {
+            return new URLSearchParams(window.location.search).get('preview') === '1';
+        } catch (e) {
+            return false;
+        }
+    }
+
+    // 공용 타입 + 레거시(AP_CLINIC_*) 별칭. 이미 배포된 부모/엔진과의 캐시 불일치에도
+    // 어느 조합이든 동작해야 하므로 수신은 둘 다 받고, 발신은 둘 다 보낸다.
+    // 중복 수신은 디바운스(재렌더 250ms / 부모 push 150ms)가 흡수한다.
+    const PREVIEW_MESSAGE_TYPES = ['AP_PRINT_PREVIEW', 'AP_CLINIC_PREVIEW'];
+    const HEADER_EDIT_MESSAGE_TYPES = ['AP_PRINT_HEADER_EDIT', 'AP_CLINIC_HEADER_EDIT'];
+
+    /**
+     * 임베드 미리보기 컨트롤러.
+     * @param {Object} opts
+     * @param {() => void} opts.render  재렌더 함수(디바운스 대상)
+     * @param {(msg: Object) => void} opts.onPreviewMessage  수신 payload 적용(상태 갱신은 엔진 책임)
+     * @param {string} [opts.editableClass='clinic-editable']  인라인 편집 요소 클래스(CSS는 엔진 책임)
+     */
+    function createPreviewController({ render, onPreviewMessage, editableClass = 'clinic-editable' }) {
+        let renderTimer = null;
+        let renderPending = false;
+
+        function scheduleRender() {
+            clearTimeout(renderTimer);
+            renderTimer = setTimeout(() => {
+                render();
+            }, 250);
+        }
+
+        // 헤더를 편집(포커스가 editableClass)하는 동안에는 재렌더를 미룬다.
+        // 빠르게 제목→보조문구로 옮겨 칠 때 contenteditable이 재생성돼 포커스/입력이 날아가는 것 방지.
+        function requestRender() {
+            const active = document.activeElement;
+            if (active && active.classList && active.classList.contains(editableClass)) {
+                renderPending = true;
+                return;
+            }
+            renderPending = false;
+            scheduleRender();
+        }
+
+        function install() {
+            document.addEventListener('focusout', () => {
+                if (!renderPending) return;
+                // 다음 틱에 포커스가 편집영역을 완전히 벗어났는지 확인 후 flush
+                setTimeout(() => {
+                    const a = document.activeElement;
+                    if (!(a && a.classList && a.classList.contains(editableClass))) {
+                        renderPending = false;
+                        scheduleRender();
+                    }
+                }, 0);
+            });
+
+            window.addEventListener('message', event => {
+                if (event.origin !== window.location.origin) return;
+                const msg = event.data || {};
+                if (!PREVIEW_MESSAGE_TYPES.includes(msg.type)) return;
+                onPreviewMessage(msg);
+                requestRender();
+            });
+        }
+
+        function postHeaderEdit(field, value) {
+            HEADER_EDIT_MESSAGE_TYPES.forEach(type => {
+                try {
+                    window.parent?.postMessage({ type, field, value }, window.location.origin);
+                } catch (e) { /* 부모 없거나 출처 불일치 시 무시 */ }
+            });
+        }
+
+        // 미리보기에서 헤더 텍스트를 직접 클릭해 수정한다. blur(확정) 시 부모로 값 전송.
+        function bindHeaderEditable(el, field, placeholder) {
+            if (!el) return;
+            el.classList.add(editableClass);
+            el.setAttribute('contenteditable', 'true');
+            el.setAttribute('data-clinic-field', field);
+            el.setAttribute('data-placeholder', placeholder);
+            el.setAttribute('title', '클릭해서 수정');
+            el.spellcheck = false;
+            const normalize = () => (el.textContent || '').replace(/\s+/g, ' ').trim();
+            // 편집 시작값 기록 → 변경 없는 blur는 저장하지 않는다(자동 보조문구를 클릭만 한 경우 수동값으로 굳는 것 방지).
+            el.addEventListener('focus', () => { el._editStartValue = normalize(); });
+            el.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+                if (e.key === 'Escape') { e.preventDefault(); el.textContent = el._editStartValue ?? el.textContent; el.blur(); }
+            });
+            el.addEventListener('blur', () => {
+                const value = normalize();
+                if (value === (el._editStartValue ?? '')) return;
+                postHeaderEdit(field, value);
+            });
+        }
+
+        // 첫 페이지 헤더만 편집 대상으로 삼는다(blur→부모→재렌더로 전 페이지 동기화).
+        // 제목/보조문구만 직접 편집(이름·점수·날짜는 자동). 보조문구가 비어 있으면 편집용 빈 줄 생성.
+        function enableHeaderInlineEdit() {
+            if (!document.body.classList.contains('preview-mode')) return;
+            const header = document.querySelector('#print-area .page-header');
+            if (!header) return;
+
+            bindHeaderEditable(header.querySelector('.page-header-title'), 'title', '제목 입력');
+
+            const col = header.querySelector('.page-header-titlecol') || header.querySelector('div');
+            let subEl = header.querySelector('.page-header-subtitle');
+            if (!subEl && col) {
+                subEl = document.createElement('div');
+                subEl.className = 'page-header-subtitle';
+                col.appendChild(subEl);
+            }
+            bindHeaderEditable(subEl, 'subtitle', '보조 문구 입력');
+        }
+
+        return { install, scheduleRender, requestRender, enableHeaderInlineEdit, postHeaderEdit };
+    }
+
     // ── screen-fit (A4 페이지를 화면 폭에 맞춰 축소) ──────────────────────
     function shouldUseScreenFit(params) {
         return params.get('fit') === 'screen' || window.matchMedia('(max-width: 900px)').matches;
@@ -686,6 +806,8 @@
         toggleQrOutputPopover,
         setQrOutputParam,
         installPopoverAutoClose,
+        isPreviewMode,
+        createPreviewController,
         shouldUseScreenFit,
         updateScreenFitScale,
         installScreenFitAutoRescale
