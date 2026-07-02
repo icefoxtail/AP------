@@ -1,5 +1,5 @@
 import { sha256hex } from '../helpers/admin-db.js';
-import { isAdminUser } from '../helpers/foundation-db.js';
+import { getAllowedClassIds } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 
 const columnCacheByEnv = new WeakMap();
@@ -105,9 +105,24 @@ async function handleQrClasses(request, env, teacher, url) {
   const currentTeacher = teacher || await verifyAuth(request, env);
   if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
-  const res = await env.DB.prepare(
-    'SELECT id, name, grade, teacher_name FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name'
-  ).all();
+  const allowedClassIds = await getAllowedClassIds(env, currentTeacher);
+  if (Array.isArray(allowedClassIds) && !allowedClassIds.length) {
+    return jsonResponse({ success: true, classes: [] });
+  }
+
+  const where = ['(is_active != 0 OR is_active IS NULL)'];
+  const binds = [];
+  if (Array.isArray(allowedClassIds)) {
+    where.push(`id IN (${allowedClassIds.map(() => '?').join(',')})`);
+    binds.push(...allowedClassIds);
+  }
+
+  const res = await env.DB.prepare(`
+    SELECT id, name, grade, teacher_name
+    FROM classes
+    WHERE ${where.join(' AND ')}
+    ORDER BY grade, name
+  `).bind(...binds).all();
   return jsonResponse({ success: true, classes: res.results });
 }
 

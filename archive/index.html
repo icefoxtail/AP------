@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --navy: #111113;
-            --navy-2: #18181b;
-            --navy-3: #202024;
-            --navy-4: #27272a;
-            --blue-main: #27272a;
-            --blue-strong: #18181b;
+            --navy: #ffffff;
+            --navy-2: #f8fafc;
+            --navy-3: #eef4fb;
+            --navy-4: #e5edf7;
+            --blue-main: #3f3f46;
+            --blue-strong: #27272a;
             --blue-light: #a1a1aa;
             --blue-pale: #e4e4e7;
             --blue-soft: #f4f4f5;
@@ -37,8 +37,8 @@
             --warn-border: #fed7aa;
             --warn-text: #9a3412;
             --shadow-card: 0 14px 32px rgba(15, 23, 42, 0.06);
-            --shadow-card-hover: 0 22px 44px rgba(0, 0, 0, 0.12);
-            --shadow-panel: 0 24px 48px rgba(2, 8, 23, 0.22);
+            --shadow-card-hover: 0 18px 34px rgba(15, 23, 42, 0.10);
+            --shadow-panel: 0 24px 48px rgba(2, 8, 23, 0.16);
             --radius-xl: 24px;
             --radius-lg: 20px;
             --radius-md: 14px;
@@ -49,19 +49,17 @@
 
         body {
             font-family: 'Pretendard', sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(0,0,0,0.04), transparent 26%),
-                linear-gradient(180deg, #f9f9fa 0%, var(--bg-soft) 100%);
+            background: linear-gradient(180deg, #fafafa 0%, var(--bg-soft) 100%);
             color: #1e293b;
             overflow-x: hidden;
         }
 
         header {
-            background: linear-gradient(180deg, rgba(7,17,31,0.98) 0%, rgba(10,24,48,0.96) 100%);
+            background: rgba(255, 255, 255, 0.92);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(228, 228, 231, 0.95);
             backdrop-filter: blur(12px);
         }
 
@@ -86,64 +84,42 @@
 
         .gtab {
             font-size: 13px;
-            color: rgba(255,255,255,0.56);
+            color: #64748b;
             font-weight: 700;
             padding: 9px 14px;
             border-radius: 999px;
             cursor: pointer;
             transition: 0.18s ease;
-            border: 1px solid rgba(255,255,255,0.06);
-            background: rgba(255,255,255,0.025);
+            border: 1px solid #e4e4e7;
+            background: #f8fafc;
             user-select: none;
             letter-spacing: -0.01em;
         }
 
         .gtab:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.09);
-            border-color: rgba(255,255,255,0.12);
+            color: #27272a;
+            background: #f4f4f5;
+            border-color: #d4d4d8;
             transform: translateY(-1px);
         }
 
         .gtab.active {
-            color: white;
-            background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.11) 100%);
-            border-color: rgba(255, 255, 255, 0.30);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 8px 16px rgba(0,0,0,0.12);
+            color: #fff;
+            background: linear-gradient(180deg, var(--blue-main) 0%, var(--blue-strong) 100%);
+            border-color: var(--blue-main);
+            box-shadow: 0 8px 16px rgba(39, 39, 42, 0.14);
         }
 
         .hero {
-            background:
-                radial-gradient(circle at 86% 14%, rgba(255,255,255,0.10), transparent 24%),
-                radial-gradient(circle at 16% 22%, rgba(255,255,255,0.07), transparent 28%),
-                radial-gradient(circle at 50% 110%, rgba(255,255,255,0.05), transparent 32%),
-                linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 52%, var(--navy-3) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f7f7f8 100%);
             padding: 38px 24px 56px;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid #e4e4e7;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: auto auto -180px -120px;
-            width: 420px;
-            height: 420px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 72%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: -140px -120px auto auto;
-            width: 460px;
-            height: 460px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 72%);
-            pointer-events: none;
-        }
+        .hero::before,
+        .hero::after { display: none; }
 
         .hero-inner {
             max-width: 1200px;
@@ -171,13 +147,13 @@
             top: 44px;
             width: 430px;
             min-height: 270px;
-            border: 1px solid rgba(255,255,255,0.16);
+            border: 1px solid #e4e4e7;
             border-radius: 12px;
-            background: rgba(15, 23, 42, 0.54);
-            box-shadow: 0 18px 42px rgba(2, 8, 23, 0.24);
-            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 42px rgba(15, 23, 42, 0.10);
+            backdrop-filter: blur(14px);
             padding: 14px;
-            color: #e4e4e7;
+            color: var(--text-main);
             display: none;
         }
 
@@ -194,28 +170,28 @@
         .assignment-board-title {
             font-size: 13px;
             font-weight: 800;
-            color: #fff;
+            color: var(--text-main);
             white-space: nowrap;
         }
 
         .assignment-board-date {
             width: 126px;
             height: 30px;
-            border: 1px solid rgba(255,255,255,0.14);
+            border: 1px solid #e4e4e7;
             border-radius: 8px;
-            background: rgba(255,255,255,0.08);
-            color: #e4e4e7;
+            background: #fafafa;
+            color: var(--text-main);
             font-size: 11px;
             font-weight: 700;
             padding: 0 8px;
         }
 
-        .assignment-board-date::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.72; }
+        .assignment-board-date::-webkit-calendar-picker-indicator { opacity: 0.72; }
 
         .assignment-board-range {
             font-size: 11px;
             font-weight: 700;
-            color: #a1a1aa;
+            color: var(--text-sub);
             margin-bottom: 8px;
         }
 
@@ -228,19 +204,19 @@
 
         .assignment-board-tab {
             height: 28px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid #e4e4e7;
             border-radius: 8px;
-            background: rgba(255,255,255,0.055);
-            color: #c4c4c9;
+            background: #fafafa;
+            color: #71717a;
             font-size: 11px;
             font-weight: 800;
             cursor: pointer;
         }
 
         .assignment-board-tab.active {
-            border-color: rgba(255,255,255,0.38);
-            background: rgba(255,255,255,0.16);
-            color: #f4f4f5;
+            border-color: #a1a1aa;
+            background: #f4f4f5;
+            color: #27272a;
         }
 
         .assignment-board-list {
@@ -258,9 +234,9 @@
             gap: 8px;
             align-items: center;
             min-height: 30px;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid #e4e4e7;
             border-radius: 8px;
-            background: rgba(255,255,255,0.055);
+            background: #ffffff;
             padding: 6px 8px;
             font-size: 11px;
             font-weight: 700;
@@ -274,19 +250,19 @@
         }
 
         .assignment-board-teacher {
-            color: #a1a1aa;
+            color: var(--text-sub);
         }
 
-        .assignment-board-paper { color: #f4f4f5; }
+        .assignment-board-paper { color: var(--text-main); }
 
-        .assignment-board-classes { color: #d4d4d8; }
+        .assignment-board-classes { color: #52525b; }
 
         .assignment-board-empty {
-            border: 1px dashed rgba(255,255,255,0.16);
+            border: 1px dashed #d4d4d8;
             border-radius: 10px;
             padding: 18px 10px;
             text-align: center;
-            color: #a1a1aa;
+            color: var(--text-sub);
             font-size: 12px;
             font-weight: 700;
         }
@@ -294,14 +270,14 @@
         .hero-title {
             font-size: clamp(32px, 5vw, 46px);
             font-weight: 800;
-            color: white;
+            color: #18181b;
             line-height: 1.14;
             letter-spacing: -0.05em;
             max-width: 760px;
         }
 
         .hero-title em {
-            color: #d4d4d8;
+            color: #52525b;
             font-style: normal;
         }
 
@@ -319,16 +295,16 @@
             min-height: 40px;
             padding: 0 14px;
             border-radius: 999px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: #e2e8f0;
+            background: #ffffff;
+            border: 1px solid #e4e4e7;
+            color: #52525b;
             font-size: 13px;
             font-weight: 700;
             backdrop-filter: blur(10px);
         }
 
         .hero-stat i {
-            color: #a1a1aa;
+            color: #71717a;
         }
 
         .hero-panel-badge {
@@ -338,11 +314,11 @@
             height: 30px;
             padding: 0 12px;
             border-radius: 999px;
-            background: rgba(255,255,255,0.14);
-            color: #e4e4e7;
+            background: #f4f4f5;
+            color: #3f3f46;
             font-size: 11px;
             font-weight: 800;
-            border: 1px solid rgba(255,255,255,0.16);
+            border: 1px solid #e4e4e7;
             flex-shrink: 0;
         }
 
@@ -373,12 +349,12 @@
         .logo-name {
             font-size: 20px;
             font-weight: 800;
-            color: white;
+            color: #18181b;
             letter-spacing: -0.5px;
         }
 
         .logo-name em {
-            color: var(--blue-light);
+            color: #71717a;
             font-style: normal;
         }
 
@@ -430,7 +406,7 @@
         .fb-search input:focus {
             border-color: var(--blue-main);
             background: #fff;
-            box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.08), 0 10px 20px rgba(29, 78, 216, 0.06);
+            box-shadow: 0 0 0 4px rgba(63, 63, 70, 0.08), 0 10px 20px rgba(63, 63, 70, 0.06);
             transform: translateY(-1px);
         }
 
@@ -476,13 +452,13 @@
             font-size: 13px;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 12px 24px rgba(29, 78, 216, 0.18);
+            box-shadow: 0 12px 24px rgba(39, 39, 42, 0.16);
             transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
         }
 
         .fb-mixer:hover {
             transform: translateY(-1px);
-            box-shadow: 0 16px 28px rgba(29, 78, 216, 0.22);
+            box-shadow: 0 16px 28px rgba(39, 39, 42, 0.20);
             filter: brightness(1.02);
         }
 
@@ -533,10 +509,10 @@
         }
 
         .sec-block.dark {
-            background:
-                radial-gradient(circle at right top, rgba(255,255,255,0.06), transparent 20%),
-                linear-gradient(180deg, var(--navy-2) 0%, var(--navy-4) 100%);
-            color: white;
+            background: linear-gradient(180deg, #fafafa 0%, #f4f4f5 100%);
+            color: var(--text-main);
+            border-top: 1px solid #e4e4e7;
+            border-bottom: 1px solid #e4e4e7;
         }
 
         .sec-header {
@@ -554,7 +530,7 @@
         }
 
         .sec-block.dark .sec-title {
-            color: white;
+            color: #18181b;
         }
 
         .sec-line {
@@ -564,7 +540,7 @@
         }
 
         .sec-block.dark .sec-line {
-            background: rgba(255,255,255,0.10);
+            background: #d4d4d8;
         }
 
         .card-grid {
@@ -595,16 +571,16 @@
         .exam-card.is-active {
             background: linear-gradient(180deg, #ffffff 0%, var(--card-active) 100%);
             border-color: var(--card-border-active);
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
+            box-shadow: 0 16px 30px rgba(39, 39, 42, 0.12);
         }
 
         .card-top {
             height: 4px;
-            background: linear-gradient(90deg, var(--blue-main) 0%, var(--blue-light) 100%);
+            background: linear-gradient(90deg, #3f3f46 0%, #a1a1aa 100%);
         }
 
         .exam-card.type-sheet .card-top {
-            background: linear-gradient(90deg, var(--blue-main) 0%, #a1a1aa 100%);
+            background: linear-gradient(90deg, #3f3f46 0%, #a1a1aa 100%);
         }
 
         .exam-card.type-study .card-top {
@@ -835,6 +811,28 @@
 
         #assignTargetBox.assign-preview-open #assignTargetPreviewPane { display: flex; }
 
+        #assignTargetBox.assign-review-preview {
+            width: min(100vw - 16px, 1600px);
+            height: min(100vh - 16px, 980px);
+            max-height: calc(100vh - 16px);
+            border-radius: 12px;
+        }
+
+        #assignTargetBox.assign-review-preview #assignTargetBody {
+            flex: 0 0 min(360px, 28vw);
+            max-width: 390px;
+        }
+
+        #assignTargetBox.assign-review-preview #assignTargetPreviewPane {
+            flex: 1 1 auto;
+            display: flex;
+            background: #f1f5f9;
+        }
+
+        #assignTargetBox.assign-review-preview #assignTargetPreviewFrame {
+            min-height: 0;
+        }
+
         #assignTargetPreviewFrame {
             border: 0;
             width: 100%;
@@ -872,6 +870,18 @@
                 border-top: 1px solid rgba(226,232,240,0.9);
             }
             #assignTargetPreviewFrame { min-height: 0; }
+            #assignTargetBox.assign-review-preview {
+                width: calc(100vw - 12px);
+                height: calc(100vh - 12px);
+            }
+            #assignTargetBox.assign-review-preview #assignTargetBody {
+                flex: 0 0 auto;
+                max-width: none;
+            }
+            #assignTargetBox.assign-review-preview #assignTargetPreviewPane {
+                flex: 1 1 auto;
+                min-height: 0;
+            }
         }
 
         .assign-target-panel {
@@ -893,6 +903,25 @@
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 14px;
+        }
+
+        .assign-filter-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .assign-teacher-filter {
+            min-width: 180px;
+            height: 36px;
+            padding: 0 12px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border, #e2e8f0);
+            background: #fff;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 700;
         }
 
         .assign-grade-tab {
@@ -964,6 +993,14 @@
         .assign-class-row:hover { background: #f1f5f9; }
 
         .assign-class-row .name { flex: 1; font-weight: 600; }
+
+        .assign-class-row .name small {
+            display: block;
+            margin-top: 2px;
+            color: var(--text-sub);
+            font-size: 11px;
+            font-weight: 600;
+        }
 
         .assign-class-row .count { font-size: 11px; color: var(--text-sub); }
 
@@ -1387,7 +1424,7 @@
         <div class="modal-sub">원하시는 출력 형태를 선택하세요.</div>
         <div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
             <button class="modal-btn-primary" onclick="selectExamMode(false)">일반 시험지 출력</button>
-            <button class="modal-btn-primary" style="background: var(--navy);" onclick="selectExamMode(true)">AP 제출 QR 시험지 출력</button>
+            <button class="modal-btn-primary" style="background: var(--blue-main);" onclick="selectExamMode(true)">AP 제출 QR 시험지 출력</button>
         </div>
         <button class="modal-close-btn" onclick="closeModal()">취소</button>
     </div>
@@ -1789,6 +1826,18 @@ function getArchiveBoardClassKey(cls, teacherKey) {
 function getArchiveCurrentTeacherName() {
     const session = getApmathSession() || {};
     return String(session.name || session.user?.name || session.auth?.name || '').trim();
+}
+
+function getArchiveCurrentTeacherId() {
+    const session = getApmathSession() || {};
+    return String(session.id || session.user?.id || session.auth?.id || '').trim();
+}
+
+function isArchiveAdminSession() {
+    const session = getApmathSession() || {};
+    const role = String(session.role || session.user?.role || session.auth?.role || '').trim().toLowerCase();
+    const loginId = String(session.login_id || session.loginId || session.user?.login_id || session.user?.loginId || '').trim().toLowerCase();
+    return role === 'admin' || role === 'owner' || loginId === 'admin';
 }
 
 function isArchiveBoardMine(row) {
@@ -2454,8 +2503,60 @@ function getIndexAvailableGrades(classes) {
     return ['중1', '중2', '중3', '고1', '고2'].filter(grade => grades.has(grade));
 }
 
+function getIndexClassTeacherId(row) {
+    return String(row?.teacher_id || row?.teacherId || row?.owner_id || row?.ownerId || '').trim();
+}
+
+function getIndexClassTeacherName(row) {
+    return String(row?.teacher_name || row?.teacherName || row?.teacher || row?.owner_name || row?.ownerName || row?.class_teacher_name || '').trim();
+}
+
+function getIndexClassTeacherFilterKey(row) {
+    const teacherId = getIndexClassTeacherId(row);
+    if (teacherId) return `id:${teacherId}`;
+    const teacherName = compactText(getIndexClassTeacherName(row));
+    return teacherName ? `name:${teacherName}` : '';
+}
+
+function getIndexTeacherFilterOptions(rows) {
+    const map = new Map();
+    (rows || []).forEach(row => {
+        const key = getIndexClassTeacherFilterKey(row);
+        if (!key || map.has(key)) return;
+        map.set(key, getIndexClassTeacherName(row) || '담당 미지정');
+    });
+    return Array.from(map.entries())
+        .map(([value, label]) => ({ value, label }))
+        .sort((a, b) => a.label.localeCompare(b.label, 'ko'));
+}
+
+function filterIndexClassesForCurrentTeacher(classes) {
+    const rows = Array.isArray(classes) ? classes : [];
+    if (isArchiveAdminSession()) return rows;
+
+    const currentId = getArchiveCurrentTeacherId();
+    const currentName = compactText(getArchiveCurrentTeacherName());
+    const filtered = rows.filter(row => {
+        const teacherId = getIndexClassTeacherId(row);
+        if (currentId && teacherId && String(teacherId) === String(currentId)) return true;
+        const teacherName = compactText(getIndexClassTeacherName(row));
+        return !!(currentName && teacherName && teacherName === currentName);
+    });
+
+    return filtered;
+}
+
 function getIndexClassesForGrade(grade) {
     return sortQrClassesForSelect((_indexQrClassRows || []).filter(row => getIndexClassGrade(row) === grade));
+}
+
+function getAssignTargetVisibleClassIds() {
+    if (!AssignTarget) return [];
+    const teacherFilter = String(AssignTarget.teacherFilter || '');
+    return Object.keys(AssignTarget.classState || {}).filter(id => {
+        const row = AssignTarget.classState[id]?.row;
+        return !teacherFilter || getIndexClassTeacherFilterKey(row) === teacherFilter;
+    });
 }
 
 function getArchiveExamQuestionCount(item) {
@@ -2596,7 +2697,9 @@ function syncAssignTargetPreviewPane() {
     const frame = document.getElementById('assignTargetPreviewFrame');
     if (!box || !frame) return;
     const open = !!(AssignTarget && AssignTarget.previewOpen);
+    const reviewOpen = !!(AssignTarget && AssignTarget.view === 'review' && AssignTarget.previewOpen);
     box.classList.toggle('assign-preview-open', open);
+    box.classList.toggle('assign-review-preview', reviewOpen);
     const btn = document.getElementById('assign-preview-toggle-btn');
     if (btn) btn.textContent = open ? '미리보기 닫기' : '시험지 미리보기';
     if (!open) return;
@@ -2609,6 +2712,7 @@ function resetAssignTargetPreviewPane() {
     const box = document.getElementById('assignTargetBox');
     const frame = document.getElementById('assignTargetPreviewFrame');
     if (box) box.classList.remove('assign-preview-open');
+    if (box) box.classList.remove('assign-review-preview');
     if (frame && frame.getAttribute('src')) frame.setAttribute('src', 'about:blank');
 }
 
@@ -2627,6 +2731,7 @@ async function openAssignTargetPanel(item, qpp) {
     AssignTarget = {
         item, qpp,
         grade: '',
+        teacherFilter: '',
         classRows: [],
         gradeStates: {},
         classState: {},
@@ -2656,10 +2761,11 @@ async function openAssignTargetPanel(item, qpp) {
         if (!data || !data.success || !Array.isArray(data.classes)) throw new Error('Invalid data format');
         if (!data.classes.length) { renderAssignTargetNotice('등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.'); return; }
 
-        _indexQrClassRows = data.classes;
-        AssignTarget.classRows = data.classes;
-        const grades = getIndexAvailableGrades(data.classes);
-        if (!grades.length) { renderAssignTargetNotice('해당 학년에 출제할 반이 없습니다.'); return; }
+        const visibleClasses = filterIndexClassesForCurrentTeacher(data.classes);
+        _indexQrClassRows = visibleClasses;
+        AssignTarget.classRows = visibleClasses;
+        const grades = getIndexAvailableGrades(visibleClasses);
+        if (!grades.length) { renderAssignTargetNotice('담당 반이 없습니다. AP Math OS에서 선생님별 반 배정을 확인하세요.'); return; }
         assignTargetSwitchGrade(grades[0]);
     } catch(e) {
         console.error(e);
@@ -2717,7 +2823,7 @@ function ensureAssignTargetGradeState(grade) {
         getIndexClassesForGrade(grade).forEach(row => {
             state[row.id] = {
                 row,
-                checked: true,
+                checked: false,
                 studentIds: null,
                 roster: null,
                 rosterLoading: false,
@@ -2735,8 +2841,21 @@ function assignTargetSwitchGrade(grade) {
     if (!AssignTarget) return;
     AssignTarget.grade = grade;
     AssignTarget.classState = ensureAssignTargetGradeState(grade);
+    const teacherOptions = getIndexTeacherFilterOptions(getIndexClassesForGrade(grade));
+    if (AssignTarget.teacherFilter && !teacherOptions.some(option => option.value === AssignTarget.teacherFilter)) {
+        AssignTarget.teacherFilter = '';
+    }
     renderAssignTargetSelectView();
-    Object.keys(AssignTarget.classState).forEach(id => {
+    getAssignTargetVisibleClassIds().forEach(id => {
+        if (AssignTarget.classState[id].checked) ensureAssignClassRoster(id);
+    });
+}
+
+function assignTargetSetTeacherFilter(value) {
+    if (!AssignTarget) return;
+    AssignTarget.teacherFilter = String(value || '');
+    renderAssignTargetSelectView();
+    getAssignTargetVisibleClassIds().forEach(id => {
         if (AssignTarget.classState[id].checked) ensureAssignClassRoster(id);
     });
 }
@@ -2776,13 +2895,14 @@ function assignRetryRoster(classId) {
 }
 
 function assignTargetToggleAll(checked) {
-    Object.keys(AssignTarget.classState).forEach(id => {
+    const classIds = getAssignTargetVisibleClassIds();
+    classIds.forEach(id => {
         AssignTarget.classState[id].checked = checked;
         AssignTarget.classState[id].studentIds = null;
     });
     renderAssignTargetSelectView();
     if (checked) {
-        Object.keys(AssignTarget.classState).forEach(id => ensureAssignClassRoster(id));
+        classIds.forEach(id => ensureAssignClassRoster(id));
     }
 }
 
@@ -2821,13 +2941,13 @@ function assignTargetApplyPreset(classId, kind) {
     const st = AssignTarget.classState[classId];
     if (!st || !st.roster) return;
     const before = st.studentIds ? new Set(st.studentIds) : new Set(st.roster.map(s => s.id));
-    const matches = st.roster.filter(s => kind === 'absent' ? s.recently_absent : s.already_submitted);
+    const matches = st.roster.filter(s => kind === 'submitted' && s.already_submitted);
     if (!matches.length) return;
     const next = new Set(before);
     matches.forEach(s => next.delete(s.id));
     st.toastUndo = before;
     st.studentIds = next.size === st.roster.length ? null : next;
-    st.toast = `${matches.length}명 자동 제외됨 (${kind === 'absent' ? '결석생' : '이미 응시한 학생'})`;
+    st.toast = `${matches.length}명 자동 제외됨(이미 응시한 학생)`;
     renderAssignTargetSelectView();
 }
 
@@ -2851,7 +2971,7 @@ function assignTargetSearchStudents(classId, value) {
 }
 
 function computeAssignTargetSummary() {
-    const classIds = Object.keys(AssignTarget.classState);
+    const classIds = getAssignTargetVisibleClassIds();
     const checkedIds = classIds.filter(id => AssignTarget.classState[id].checked);
     let fullCount = 0, partialCount = 0, totalStudents = 0;
     checkedIds.forEach(id => {
@@ -2875,13 +2995,15 @@ function computeAssignTargetSummary() {
 
 function renderAssignClassRowHtml(classId) {
     const st = AssignTarget.classState[classId];
+    const teacherName = getIndexClassTeacherName(st.row);
+    const teacherHtml = teacherName ? `<small>${escapeModalText(teacherName)}</small>` : '';
     const countLabel = st.studentIds
         ? `${st.studentIds.size}/${st.roster ? st.roster.length : '?'}명`
         : (st.roster ? `${st.roster.length}명` : (st.rosterLoading ? '...' : ''));
     return `
         <div class="assign-class-row ${st.studentIds ? 'partial' : ''}">
             <input type="checkbox" id="assign-class-check-${classId}" ${st.checked ? 'checked' : ''} onchange="assignTargetToggleClass('${classId}', this.checked)">
-            <span class="name">${escapeModalText(st.row.name || '이름 없는 반')}</span>
+            <span class="name">${escapeModalText(st.row.name || '이름 없는 반')}${teacherHtml}</span>
             <span class="count">${countLabel}</span>
         </div>`;
 }
@@ -2907,7 +3029,6 @@ function renderAssignClassSectionHtml(classId) {
     const gridHtml = st.roster.map(s => {
         const checked = !st.studentIds || st.studentIds.has(s.id);
         const classes = ['assign-student-check'];
-        if (s.recently_absent) classes.push('absent');
         if (s.already_submitted) classes.push('submitted');
         return `<label class="${classes.join(' ')}"><input type="checkbox" ${checked ? 'checked' : ''} onchange="assignTargetToggleStudent('${classId}','${s.id}', this.checked)"><span class="name">${escapeModalText(s.name)}</span></label>`;
     }).join('');
@@ -2920,7 +3041,6 @@ function renderAssignClassSectionHtml(classId) {
         ? `<div class="assign-toast"><span>${escapeModalText(st.toast)}</span><button onclick="assignTargetUndoLastPreset('${classId}')">되돌리기</button></div>`
         : '';
 
-    const hasAbsentCandidate = st.roster.some(s => s.recently_absent);
     const hasSubmittedCandidate = st.roster.some(s => s.already_submitted);
 
     return `
@@ -2929,7 +3049,6 @@ function renderAssignClassSectionHtml(classId) {
                 <div class="assign-class-section-title">${title}</div>
                 <div class="assign-preset-btns">
                     ${excludedSet.size ? `<button class="assign-preset-btn" onclick="assignTargetSelectAllStudents('${classId}')">전체 선택</button>` : ''}
-                    ${hasAbsentCandidate ? `<button class="assign-preset-btn" onclick="assignTargetApplyPreset('${classId}','absent')">결석생 제외</button>` : ''}
                     ${hasSubmittedCandidate ? `<button class="assign-preset-btn" onclick="assignTargetApplyPreset('${classId}','submitted')">이 시험 미응시자만</button>` : ''}
                 </div>
             </div>
@@ -2943,11 +3062,19 @@ function renderAssignClassSectionHtml(classId) {
 function renderAssignTargetSelectView() {
     if (!AssignTarget) return;
     const grades = getIndexAvailableGrades(AssignTarget.classRows);
-    const classIds = Object.keys(AssignTarget.classState);
+    const gradeClassRows = getIndexClassesForGrade(AssignTarget.grade);
+    const teacherOptions = getIndexTeacherFilterOptions(gradeClassRows);
+    const classIds = getAssignTargetVisibleClassIds();
     const allChecked = classIds.length > 0 && classIds.every(id => AssignTarget.classState[id].checked && !AssignTarget.classState[id].studentIds);
     const noneChecked = classIds.every(id => !AssignTarget.classState[id].checked);
 
     const tabsHtml = grades.map(g => `<div class="assign-grade-tab ${g === AssignTarget.grade ? 'active' : ''}" onclick="assignTargetSwitchGrade('${g}')">${g}</div>`).join('');
+    const teacherFilterHtml = teacherOptions.length > 1
+        ? `<div class="assign-filter-row"><select class="assign-teacher-filter" onchange="assignTargetSetTeacherFilter(this.value)">
+            <option value="">전체 선생님</option>
+            ${teacherOptions.map(option => `<option value="${escapeModalText(option.value)}" ${option.value === AssignTarget.teacherFilter ? 'selected' : ''}>${escapeModalText(option.label)}</option>`).join('')}
+        </select></div>`
+        : '';
     const classRowsHtml = classIds.map(id => renderAssignClassRowHtml(id)).join('') || '<div class="empty-hint">해당 학년에 반이 없습니다.</div>';
     const checkedIds = classIds.filter(id => AssignTarget.classState[id].checked);
     const studentColHtml = checkedIds.length
@@ -2963,8 +3090,9 @@ function renderAssignTargetSelectView() {
                     <div class="modal-title">출제 대상 선택</div>
                     ${assignTargetPreviewToggleHtml()}
                 </div>
-                <div class="modal-sub">${escapeModalText(getIndexExamTitle(AssignTarget.item))} · 학년을 고르고, 반과 학생을 필요한 만큼 좁혀서 출제하세요.</div>
+                <div class="modal-sub">${escapeModalText(getIndexExamTitle(AssignTarget.item))} · 학년을 고르고, 반과 학생을 선택해서 출제하세요.</div>
                 <div class="assign-grade-tabs">${tabsHtml}</div>
+                ${teacherFilterHtml}
             </div>
             <div class="assign-target-body">
                 <div class="assign-class-col">
@@ -3006,6 +3134,8 @@ function assignTargetGoReview() {
 
 function assignTargetBackToSelect() {
     AssignTarget.view = 'select';
+    AssignTarget.previewOpen = false;
+    syncAssignTargetPreviewPane();
     renderAssignTargetSelectView();
 }
 
