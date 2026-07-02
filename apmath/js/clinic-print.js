@@ -96,6 +96,24 @@ function clinicPrintNormalizeArchiveFile(file) {
     return path;
 }
 
+function clinicPrintGetArchiveDisplayTitle(file) {
+    const raw = String(file || '').trim();
+    if (!raw) return '';
+    const compact = raw.replace(/^MIXED:/i, '');
+    const leaf = compact.split(/[\\/]/).pop() || compact;
+    return leaf
+        .replace(/\.js(?:\?.*)?$/i, '')
+        .replace(/^exams\//i, '')
+        .replace(/^archive\//i, '')
+        .trim();
+}
+
+function clinicPrintGetExamGroupDisplayTitle(group = {}) {
+    const archiveTitle = clinicPrintGetArchiveDisplayTitle(group.archiveFile || group.archive_file || '');
+    if (archiveTitle) return archiveTitle;
+    return `${group.examDate || group.exam_date || ''} ${group.examTitle || group.exam_title || '시험명 없음'}`.trim();
+}
+
 function clinicPrintMakeExamKey(examDate, examTitle, archiveFile, questionCount) {
     return [
         String(examDate || ''),
@@ -307,7 +325,7 @@ async function clinicPrintDeleteExamGroup(classId, examKey) {
         return;
     }
 
-    const label = `${group.examDate || ''} ${group.examTitle || '시험명 없음'}`.trim();
+    const label = clinicPrintGetExamGroupDisplayTitle(group);
     const submittedCount = Number(group.sessions?.length || 0);
     const detail = submittedCount
         ? `제출 ${submittedCount}명, 오답 ${Number(group.wrongCount || 0)}문항 기록도 함께 삭제됩니다.`
@@ -1723,6 +1741,7 @@ function clinicPrintRenderExamListHtml(classId, scope = 'class') {
         const disabled = group.printable ? '' : 'disabled';
         const checked = initialKeys.has(group.examKey) ? 'checked' : '';
         const safeExamKey = clinicPrintEscapeJsString(group.examKey || '');
+        const displayTitle = clinicPrintGetExamGroupDisplayTitle(group);
         const currentClassAssignment = (group.assignments || [])
             .find(row => String(row.class_id || '') === String(classId || '') && row.can_manage !== false);
         const deleteDisplay = currentClassAssignment ? '' : ' style="--clinic-print-delete-display:none;"';
@@ -1734,7 +1753,7 @@ function clinicPrintRenderExamListHtml(classId, scope = 'class') {
             <label class="clinic-print-exam-row${group.printable ? '' : ' clinic-print-exam-row--disabled'}"${deleteDisplay}>
                 <input type="checkbox" class="clinic-print-exam-row__check" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintOnExamChange('${safeClassIdForJs}')">
                 <span class="clinic-print-exam-row__main">
-                    <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
+                    <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(displayTitle)}</span>
                     <span class="${metaCls}">${clinicPrintEscapeHtml(status)}</span>
                 </span>
                 <button type="button" class="btn apms-button apms-button--quiet btn-danger clinic-print-exam-row__delete" title="시험 삭제" onclick="event.preventDefault(); event.stopPropagation(); clinicPrintDeleteExamGroup('${safeClassIdForJs}','${safeExamKey}')">삭제</button>
@@ -1770,6 +1789,7 @@ async function openClinicPrintCenter(classId, options = {}) {
             const disabled = group.printable ? '' : 'disabled';
             const checked = initialKeys.includes(group.examKey) ? 'checked' : '';
             const safeExamKey = clinicPrintEscapeJsString(group.examKey || '');
+            const displayTitle = clinicPrintGetExamGroupDisplayTitle(group);
             const currentClassAssignment = (group.assignments || [])
                 .find(row => String(row.class_id || '') === String(classId || '') && row.can_manage !== false);
             const deleteDisplay = currentClassAssignment ? '' : ' style="--clinic-print-delete-display:none;"';
@@ -1781,7 +1801,7 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <label class="clinic-print-exam-row${group.printable ? '' : ' clinic-print-exam-row--disabled'}"${deleteDisplay}>
                     <input type="checkbox" class="clinic-print-exam-row__check" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintOnExamChange('${safeClassIdForJs}')">
                     <span class="clinic-print-exam-row__main">
-                        <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
+                        <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(displayTitle)}</span>
                         <span class="${metaCls}">${clinicPrintEscapeHtml(status)}</span>
                     </span>
                     <button type="button" class="btn apms-button apms-button--quiet btn-danger clinic-print-exam-row__delete" title="시험 삭제" onclick="event.preventDefault(); event.stopPropagation(); clinicPrintDeleteExamGroup('${safeClassIdForJs}','${safeExamKey}')">삭제</button>
