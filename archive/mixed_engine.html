@@ -585,6 +585,23 @@ function loadScriptOnce(src) {
     });
 }
 
+// 서버 저장 믹서 세트 조회(엔진 통합 Phase 4). 실패/404는 조용히 null을 반환해
+// init()이 기존 localStorage 핸드오프(구 링크 하위호환)로 자연스럽게 폴백하게 한다.
+async function fetchMixerSetFromServer(key) {
+    const safeKey = String(key || '').trim();
+    if (!safeKey) return null;
+    try {
+        const res = await fetch(`${ARCHIVE_AP_API_BASE}/mixer-sets/${encodeURIComponent(safeKey)}`);
+        if (!res.ok) return null;
+        const data = await res.json().catch(() => null);
+        if (!data || data.success === false || !Array.isArray(data.questions) || !data.questions.length) return null;
+        return { questions: data.questions, meta: (data.meta && typeof data.meta === 'object') ? data.meta : {} };
+    } catch (e) {
+        console.warn('[mixer] server set load failed:', e);
+        return null;
+    }
+}
+
 async function loadAssessmentPackFallback(packId) {
     const id = String(packId || '').trim();
     if (!id) return null;
@@ -1280,8 +1297,16 @@ PrintCore.installScreenFitAutoRescale();
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.key = p.get('key') || '';
-    const rawData = localStorage.getItem('mixedQuestions_' + AppState.key) || sessionStorage.getItem('mixedQuestions');
-    const rawMeta = localStorage.getItem('mixedMeta_' + AppState.key) || sessionStorage.getItem('mixedMeta');
+
+    // 로딩 우선순위(엔진 통합 Phase 4): 서버 키 > storage(구 링크 하위호환) > packId 폴백.
+    // rawData/rawMeta를 문자열로 맞춰두면 아래 기존 파싱·오류 처리 분기를 그대로 재사용할 수 있다.
+    const serverSet = AppState.key ? await fetchMixerSetFromServer(AppState.key) : null;
+    const rawData = serverSet
+        ? JSON.stringify(serverSet.questions)
+        : (localStorage.getItem('mixedQuestions_' + AppState.key) || sessionStorage.getItem('mixedQuestions'));
+    const rawMeta = serverSet
+        ? JSON.stringify(serverSet.meta)
+        : (localStorage.getItem('mixedMeta_' + AppState.key) || sessionStorage.getItem('mixedMeta'));
 
     if (!rawData && p.get('packId')) {
         try {

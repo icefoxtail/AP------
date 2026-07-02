@@ -2023,7 +2023,27 @@ function getLevelRank(level, mode = 'high-first') {
     return table[String(level || '').trim()] ?? 999;
 }
 
-function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
+// 서버 저장(엔진 통합 Phase 4): 성공하면 key가 어느 기기·시점에서든(학생 QR 스캔 포함)
+// 재출력 가능해진다. 실패해도(오프라인/미배포 등) 로컬 핸드오프로 즉시 폴백해
+// "일반 시험지 출력"은 항상 되게 한다 — 로그인 여부와 무관.
+async function saveMixerSetToServer(questions, meta) {
+    try {
+        const authHeader = getMixerAssignmentAuthHeader() || {};
+        const res = await fetch(`${ARCHIVE_AP_API_BASE}/mixer-sets`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', ...authHeader },
+            body: JSON.stringify({ questions, meta })
+        });
+        if (!res.ok) return null;
+        const data = await res.json().catch(() => null);
+        return (data && data.success && data.key) ? String(data.key) : null;
+    } catch (e) {
+        console.warn('[mixer] server set save failed, falling back to local handoff:', e);
+        return null;
+    }
+}
+
+async function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
     if(cart.length === 0) return alert('카트가 비어있습니다.');
     const orderMode = document.getElementById('cart-level-order').value;
     let exportCart = [...cart];
@@ -2033,10 +2053,12 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
     const customTitle = String(document.getElementById('mixed-title-input')?.value || '').trim();
     const autoTitle = currentViewingSource ? (currentViewingSource.school || currentViewingSource.topic || currentViewingSource.file || `믹서 출제 (${exportCart.length}문항)`) : `믹서 출제 (${exportCart.length}문항)`;
     const identityTitle = customTitle || autoTitle;
+    const qpp = parseInt(document.getElementById('print-qpp').value, 10) || 4;
     const meta = {
         title: identityTitle,
         identityTitle,
         count: exportCart.length,
+        qpp,
         generatedAt: new Date().toISOString(),
         printHeaderOptions: {
             title: identityTitle,
@@ -2048,17 +2070,18 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
             applyToAnswer: true
         }
     };
-    const sessionKey = 'mix_' + Date.now();
+    const sessionKey = (await saveMixerSetToServer(exportCart, meta)) || 'mix_' + Date.now();
     localStorage.setItem('mixedQuestions_' + sessionKey, JSON.stringify(exportCart));
     localStorage.setItem('mixedMeta_' + sessionKey, JSON.stringify(meta));
-    let url = `mixed_engine.html?qpp=${document.getElementById('print-qpp').value}&key=${sessionKey}`;
+    let url = `mixed_engine.html?qpp=${qpp}&key=${sessionKey}`;
     if (withSubmitQr) {
         url += '&submitQr=1';
         if (classId) url += '&class=' + encodeURIComponent(classId);
         if (options.teacherName) url += '&teacher=' + encodeURIComponent(options.teacherName);
         if (options.className) url += '&className=' + encodeURIComponent(options.className);
     }
-    window.open(appendCurrentArchiveSessionToHash(url), '_blank');
+    const win = window.open(appendCurrentArchiveSessionToHash(url), '_blank');
+    if (!win) alert('팝업이 차단되었습니다. 팝업 차단을 해제한 뒤 다시 시도하세요.');
 }
 
 /**

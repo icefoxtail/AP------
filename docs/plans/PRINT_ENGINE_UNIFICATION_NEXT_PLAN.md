@@ -138,10 +138,20 @@ QR 출제 경로에서 시험 내용을 확인하고 출제하도록 한다. 기
 - `archive/index.html`: `qppModal`(HTML+전용 CSS `.qpp-btns`/`.qpp-opt`) 완전 삭제. `selectExamMode(withSubmitQr)`가 모달을 여는 대신 `confirmQpp(DEFAULT_ARCHIVE_QPP=4)`를 바로 호출 — qpp는 이제 engine.html 툴바에서 라이브로 바꿀 수 있으므로 사전 선택이 불필요해졌다는 계획의 전제를 그대로 반영. `confirmQpp`/`closeModal`의 나머지 분기(제출 QR 대상 선택 패널 vs 일반 출력)는 무변경.
 - 검증(로컬 프리뷰): 엔진 qpp 4→6 라이브 전환, 믹서 qpp 4→8 라이브 전환 + 고정시드 셔플이 Phase 1 baseline과 페이지 시그니처 완전 일치. 헤더 편집(제목 입력→렌더 반영)·QR 팝오버(체크→URL 파라미터·버튼 텍스트 반영)가 코어 주입 마크업에서도 정상 동작. preview 모드에서 qpp 셀렉트도 기존 QR/헤더편집과 함께 숨김 확인. `index.html`에서 qppModal 없이 `selectExamMode(false)`/`selectExamMode(true)` 둘 다 기본 qpp=4로 `goEngine`/`openAssignTargetPanel`에 바로 진입 확인(스텁으로 재현). 콘솔 에러 없음.
 
-### Phase 4 — 데이터 계약 통일 + 믹서 서버 저장화 (유일한 워커 변경 Phase)
+### Phase 4 — 데이터 계약 통일 + 믹서 서버 저장화 (유일한 워커 변경 Phase) ✅ 프론트/워커 코드 완료, ⚠️ 워커 미배포 (2026-07-02)
 
 - 통합 payload 스키마 확정. 로딩 우선순위: 서버 키 > URL > storage > postMessage.
 - 믹서 localStorage 핸드오프를 오답 클리닉 packet API 패턴의 서버 저장으로 교체(공유·재출력 가능). 워커 라우트 추가/일반화.
+
+**구현 노트 (계획과 다른 점/판단 기록):**
+
+- **실제 버그 확인**: `apmath/student/index.html`의 `buildOmrReviewUrl`이 `archive_file='MIXED:<key>'`로부터 `mixed_engine.html?key=<key>`를 만들어 학생에게 "내 시험 다시 보기" 링크로 제공하는데, 이 `key`는 지금까지 **출제한 선생님 브라우저의 localStorage에만** 존재했다 — 학생이 자기 폰으로 열면 원천적으로 "데이터가 없습니다"가 뜨는 구조였다. Phase 4는 이 실사용 버그를 고치는 작업이기도 하다.
+- 새 워커 라우트 `apmath/worker-backup/worker/routes/mixer-sets.js` + `index.js` 등록. 오답 클리닉의 배포/권한 모델(반·학생 대상 지정)은 통째로 가져오지 않고 **"불투명 payload 저장/조회"만** 하는 훨씬 단순한 테이블(`mixer_sets` 1개, `CREATE TABLE IF NOT EXISTS` 런타임 마이그레이션 — `wrong_clinic_*`와 동일하게 `schema.sql`에는 반영하지 않음, 기존 관례 유지)로 설계 — 믹서는 애초에 배포 대상 개념이 없어 그 복잡도가 불필요.
+- **생성(POST)에 로그인을 요구하지 않기로 판단**: 기존 믹서 "일반 시험지 출력"(`openMixedEngine(false)`)이 로그인 없이도 동작했고, 로그인 요구를 추가하면 그 경로가 깨진다. `verifyAuth`가 헤더 없으면 `null`을 반환할 뿐 막지 않는 특성을 활용해 `teacher`가 있으면 `created_by`만 채우고, 없어도 생성은 통과시켰다. 남용 방지는 문항 수 상한(300)·payload 크기 상한(~600KB)만 적용 — 별도 rate limit은 이 Phase 범위 밖(기존 코드베이스에 그런 인프라 자체가 없음).
+- **`archive/mixed_engine.html`**: `fetchMixerSetFromServer(key)` 추가, `init()`에서 `rawData`/`rawMeta`를 "서버 우선, 실패 시 기존 localStorage" 문자열로만 교체 — 그 아래 파싱/에러 처리/packId 폴백 분기는 **한 글자도 건드리지 않았다**(기존 3가지 에러 메시지 분기를 정확히 보존하기 위해 데이터 구조가 아닌 문자열 레벨에서만 소스를 바꿔치기하는 최소 diff 선택).
+- **`archive/mixer.html`**: `openMixedEngine`을 `async`로 바꾸고 `saveMixerSetToServer`(POST, 실패 시 `null`)를 먼저 시도 → 성공하면 서버 키, 실패하면 기존 `mix_<timestamp>` 로컬 키로 즉시 폴백. `await` 뒤에 `window.open`을 호출하는 패턴은 `apmath/js/clinic-print.js`의 `clinicPrintSaveAndOpen`과 동일한 기존 선례(사용자 제스처 체인이 끊겨 팝업 차단 위험이 있음을 감수)를 따랐고, 그 파일처럼 `window.open`이 `null`을 반환하면 안내하도록 추가.
+- `MIXED:<key>` 마커를 소비하는 다른 지점(`classroom.js`/`qr-omr.js`/`dashboard-admin.js`/`report-center.js`/`student/index.html`)은 전부 `key` 문자열만 그대로 전달할 뿐 포맷을 가정하지 않아 **무수정** — `mixed_engine.html`이 서버 우선으로 알아서 해석하므로 하위 호환 자동 유지.
+- **검증 한계**: 워커가 아직 배포되지 않아(`ap-math-os-v2612`, [[apmath-deploy-topology]]) 실제 서버 저장/조회 왕복은 확인 못 했다. 로컬 프리뷰에서 확인한 것: (1) 실제 미배포 엔드포인트를 그대로 호출해 404/네트워크 실패 시 150ms 내로 조용히 `null` 반환 후 기존 localStorage로 정상 폴백(콘솔 에러 없음), (2) `fetchMixerSetFromServer`를 모킹해 서버 응답이 있을 때 localStorage보다 우선 사용됨을 확인, (3) `openMixedEngine` 전체 흐름이 서버 실패 상황에서도 기존과 동일하게 `window.open`까지 도달. **배포 후 실제 라운드트립(POST→키 발급→GET→학생 기기에서 재출력) 재확인 필요** — 사용자에게 배포 여부 확인 요청.
 
 ### Phase 5 — 아카이브 문항 편집 소스 패널 (단원별 문항수 / id별 제외 / 범위 밖 제외)
 

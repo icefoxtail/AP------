@@ -30,6 +30,7 @@ import { handlePlanner } from './routes/planner.js';
 import { handleAuth } from './routes/auth.js';
 import { handleStudyMaterialWrongs } from './routes/study-material-wrongs.js';
 import { handleWrongClinics } from './routes/wrong-clinics.js';
+import { handleMixerSets } from './routes/mixer-sets.js';
 import { handleOnboarding } from './routes/onboarding.js';
 import { handleEie } from './routes/eie.js';
 import { handleBackdoor } from './routes/backdoor.js';
@@ -3443,6 +3444,15 @@ async function handleApiRequest(request, env) {
           const isPublicWrongClinicRead = method === 'GET' && (path[2] === 'packet' || path[2] === 'set');
           const teacher = isPublicWrongClinicRead ? null : await verifyAuth(request, env);
           const routed = await handleWrongClinics(request, env, teacher, path, url);
+          if (routed) return routed;
+        }
+
+        if (resource === 'mixer-sets') {
+          // 생성(POST)은 기존 믹서 "일반 시험지 출력"과 동일하게 비로그인도 허용한다 —
+          // verifyAuth는 헤더가 없거나 유효하지 않으면 null을 반환할 뿐 막지 않으므로,
+          // 로그인돼 있으면 created_by만 채워지고 없으면 익명 생성으로 통과한다.
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleMixerSets(request, env, teacher, path, url);
           if (routed) return routed;
         }
 

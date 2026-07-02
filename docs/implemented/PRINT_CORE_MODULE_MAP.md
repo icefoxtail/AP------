@@ -3,6 +3,10 @@
 시험지 출력 엔진 공용 렌더링 코어(`archive/js/print-core.js`)의 구조 문서. 엔진 통합 Phase 1~3(2026-07-02) 산출물.
 계획·배경은 `docs/plans/PRINT_ENGINE_UNIFICATION_NEXT_PLAN.md` 참조.
 
+Phase 4(데이터 계약 통일 + 믹서 서버 저장화)는 `print-core.js`가 아니라 `archive/mixed_engine.html`/
+`archive/mixer.html`/신규 워커 라우트 `apmath/worker-backup/worker/routes/mixer-sets.js`를 건드리는
+별개 작업이라 이 문서 범위 밖 — 구현 노트·검증 한계(워커 미배포)는 계획 문서 Phase 4 섹션 참조.
+
 ## 1. 소비처
 
 | 엔진 | 로드 방식 |
