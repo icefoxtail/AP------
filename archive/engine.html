@@ -353,7 +353,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
+            <button id="btn-print" onclick="prepareArchivePrint()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -366,6 +366,10 @@ const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
+const ARCHIVE_ASSET_VERSION = '20260702';
+function withArchiveAssetVersion(src) {
+    return `${src}?v=${ARCHIVE_ASSET_VERSION}`;
+}
 
 const QR_PATCH = {
     enabled: true,
@@ -1165,7 +1169,7 @@ async function init() {
         return;
     }
     const s = document.createElement('script');
-    s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : safeDataUrl + '?v=' + Date.now();
+    s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : withArchiveAssetVersion(safeDataUrl);
     s.onload = async () => {
         const qb = window.questionBank;
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
@@ -1370,7 +1374,7 @@ function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}" loading="eager" decoding="async"></div>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -1414,6 +1418,55 @@ async function applyAutoImageSizeClasses(root) {
         await waitForQuestionImage(img);
         wrap.classList.add(autoImageSizeClassFor(img));
     }));
+}
+
+function waitForPrintImages(root, timeoutMs = 6000) {
+    const images = Array.from((root || document).querySelectorAll('img'));
+    const pending = images.filter(img => !img.complete);
+    if (!pending.length) return Promise.resolve();
+
+    return new Promise(resolve => {
+        let remaining = pending.length;
+        let done = false;
+        const finishOne = () => {
+            if (done) return;
+            remaining -= 1;
+            if (remaining <= 0) {
+                done = true;
+                clearTimeout(timer);
+                resolve();
+            }
+        };
+        const timer = setTimeout(() => {
+            done = true;
+            resolve();
+        }, timeoutMs);
+        pending.forEach(img => {
+            img.addEventListener('load', finishOne, { once: true });
+            img.addEventListener('error', finishOne, { once: true });
+        });
+    });
+}
+
+async function prepareArchivePrint() {
+    const btn = document.getElementById('btn-print');
+    const originalText = btn ? btn.textContent : '';
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = '인쇄 준비 중...';
+    }
+    try {
+        const area = document.getElementById('print-area') || document.body;
+        if (document.fonts?.ready) await document.fonts.ready;
+        await waitForPrintImages(area);
+        await raf();
+        window.print();
+    } finally {
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = originalText || '인쇄';
+        }
+    }
 }
 
 async function renderExam(area, data) {

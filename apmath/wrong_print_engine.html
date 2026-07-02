@@ -145,7 +145,7 @@
             <button class="mode-tab" id="btn-sol" type="button" data-mode="sol">해설지</button>
             <button class="mode-tab" id="btn-ans" type="button" data-mode="ans">정답표</button>
         </div>
-        <button id="btn-print" type="button" onclick="window.print()">인쇄 / PDF 저장</button>
+        <button id="btn-print" type="button" onclick="prepareWrongPrint()">인쇄 / PDF 저장</button>
     </div>
     <div id="print-area"></div>
     <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:83mm;"></div>
@@ -305,7 +305,13 @@ function rewriteImgSrcInHtml(html, archiveFile) {
         /(<img\b[^>]*?\bsrc\s*=\s*)(["'])([\s\S]*?)\2/gi,
         (match, pre, quote, src) => {
             const resolved = resolveArchiveAssetUrl(src, archiveFile);
-            return `${pre}${quote}${resolved || src}${quote}`;
+            const rewritten = `${pre}${quote}${resolved || src}${quote}`;
+            const withLoading = /\sloading\s*=/i.test(rewritten)
+                ? rewritten
+                : rewritten.replace(/<img\b/i, '<img loading="eager"');
+            return /\sdecoding\s*=/i.test(withLoading)
+                ? withLoading
+                : withLoading.replace(/<img\b/i, '<img decoding="async"');
         }
     );
 }
@@ -766,6 +772,34 @@ async function applyAutoImageSizeClasses(root) {
     await Promise.all([...wrapTasks, ...contentTasks]);
 }
 
+function waitForPrintImages(root, timeoutMs = 6000) {
+    const images = Array.from((root || document).querySelectorAll('img'));
+    const pending = images.filter(img => !img.complete);
+    if (!pending.length) return Promise.resolve();
+
+    return new Promise(resolve => {
+        let remaining = pending.length;
+        let done = false;
+        const finishOne = () => {
+            if (done) return;
+            remaining -= 1;
+            if (remaining <= 0) {
+                done = true;
+                clearTimeout(timer);
+                resolve();
+            }
+        };
+        const timer = setTimeout(() => {
+            done = true;
+            resolve();
+        }, timeoutMs);
+        pending.forEach(img => {
+            img.addEventListener('load', finishOne, { once: true });
+            img.addEventListener('error', finishOne, { once: true });
+        });
+    });
+}
+
 function extractChoice(choice) {
     return String(choice || '');
 }
@@ -948,7 +982,7 @@ function renderQuestionImageHTML(q) {
     if (!url) return '';
     const size = ['small', 'half', 'medium', 'large', 'full', 'tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(url)}" alt=""></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(url)}" alt="" loading="eager" decoding="async"></div>`;
 }
 
 function getQuestionAnswer(q) {
@@ -1984,6 +2018,27 @@ async function render() {
     await raf();
     enableHeaderInlineEdit();
     updateScreenFitScale();
+}
+
+async function prepareWrongPrint() {
+    const btn = document.getElementById('btn-print');
+    const originalText = btn ? btn.textContent : '';
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = '인쇄 준비 중...';
+    }
+    try {
+        const area = document.getElementById('print-area') || document.body;
+        if (document.fonts?.ready) await document.fonts.ready;
+        await waitForPrintImages(area);
+        await raf();
+        window.print();
+    } finally {
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = originalText || '인쇄 / PDF 저장';
+        }
+    }
 }
 
 function shouldUseScreenFit(params) {

@@ -640,6 +640,11 @@ function hasVisualAsset(q) {
     );
 }
 
+const ARCHIVE_ASSET_VERSION = '20260702';
+function withArchiveAssetVersion(src) {
+    return `${src}?v=${ARCHIVE_ASSET_VERSION}`;
+}
+
 let engineDB = { exams: [] }, cart = [], currentDisplayQuestions = [], selectedFiles = new Set(), currentViewingSource = null;
 let includeOriginalArchiveItems = false;
 let mixerDbLoadFailed = false;
@@ -1243,7 +1248,7 @@ function ensureQuestionIndexLoaded(opts = {}) {
     if (!silent) setQuestionIndexStatus('전문항 인덱스 불러오는 중...');
     questionIndexLoadingPromise = new Promise(resolve => {
         const s = document.createElement('script');
-        s.src = `question-index.js?v=${Date.now()}`;
+        s.src = withArchiveAssetVersion('question-index.js');
         s.onload = () => {
             questionIndexLoaded = getQuestionIndexRecords().length > 0;
             questionIndexLoadingPromise = null;
@@ -1685,7 +1690,7 @@ async function loadMultipleExams() {
 function fetchQuestionData(file) {
     return new Promise((res, rej) => {
         delete window.questions; delete window.questionBank;
-        const s = document.createElement('script'); s.src = `exams/${file}?v=${Date.now()}`;
+        const s = document.createElement('script'); s.src = withArchiveAssetVersion(`exams/${file}`);
         s.onload = () => { const data = window.questions || window.questionBank; if (Array.isArray(data)) res(data); else rej(); s.remove(); };
         s.onerror = () => { rej(); s.remove(); }; document.body.appendChild(s);
     });
@@ -2068,7 +2073,7 @@ window.onload = async () => {
     restoreApmathSessionFromHash();
     mixerDbLoadFailed = false;
     const s = document.createElement('script');
-    s.src = 'db.js?v=' + Date.now();
+    s.src = withArchiveAssetVersion('db.js');
     s.onload = () => {
         const exams = Array.isArray(window.mainDB?.exams) ? window.mainDB.exams : [];
         engineDB.exams = exams.map(normalizeExamMeta);
