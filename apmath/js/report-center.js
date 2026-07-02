@@ -1767,25 +1767,61 @@ function reportCenterEasyScoreDeltaText(delta) {
 // [문구 톤] 아래 reportCenterBuildEasy* 계열은 함수명에 'Easy'가 남아 있으나,
 // 현재는 '쉬운말'이 아니라 전문적+따뜻한 담임 톤의 확정 문구를 생성한다(2026-06-27 방향 전환).
 // 이름은 호출처/스냅샷 영향이 커 유지하며, 톤 기준은 전문체임에 유의한다.
+// 오답이 몰린 단원명을 최대 limit개까지 반환한다(없으면 '').
+function reportCenterWrongUnitPhrase(data, limit = 2) {
+    const wrongRows = data?.stats?.wrongRows || [];
+    const units = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, limit);
+    return units.length ? units.join(', ') : '';
+}
+
+// 전체 정답률이 낮았던(어려운) 문항을 정확히 해결했는지 = 이번 시험의 강점 신호.
+function reportCenterHasStrengthSignal(data) {
+    const stats = data?.stats || {};
+    const rows = Array.isArray(stats.rows) ? stats.rows : [];
+    const wrongNos = new Set((stats.wrongRows || []).map(r => String(r.questionNo)));
+    return rows.some(r => !wrongNos.has(String(r.questionNo))
+        && Number.isFinite(r.correctRate) && r.correctRate < 55);
+}
+
+// 이번 시험 요약: 절대 점수·정답률 수치는 카드가 담당하므로 여기서는 평균 대비 위치,
+// 오답이 몰린 단원, 강점, 그리고 '학원이 책임지고 진행'하는 다음 계획을 문단으로 정리한다.
 function reportCenterBuildEasySummaryText(data, wrongCount, correctRate = null) {
-    const studentName = data?.student?.name || '학생';
-    const score = data?.session?.score;
     const stats = data?.stats || {};
     if (!Number(wrongCount || 0)) {
-        return '이번 시험은 전 문항을 정확히 풀었습니다. 다음 수업에서는 한 단계 높은 난도의 문제로 이어가겠습니다.';
+        const strength = reportCenterHasStrengthSignal(data)
+            ? ' 정답률이 낮았던 문항까지 정확히 해결한 만큼,'
+            : '';
+        return `이번 시험은 전 문항을 정확히 풀었습니다.${strength} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다. 지금의 수준을 안정적으로 유지하도록 저희가 책임지고 이어가겠습니다.`;
     }
+    const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
+    const whereSentence = unitPhrase
+        ? (Number(wrongCount) === 1
+            ? `틀린 문항은 ${unitPhrase} 단원에서 나왔습니다.`
+            : `틀린 ${wrongCount}문항은 주로 ${unitPhrase} 단원에 몰려 있습니다.`)
+        : '';
+    const strengthSentence = reportCenterHasStrengthSignal(data)
+        ? '정답률이 낮았던 문항까지 정확히 해결한 부분은 이번 시험에서 특히 잘한 점입니다.'
+        : '';
+    const planSentence = '틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 부족한 개념은 다시 정리해 같은 유형까지 책임지고 점검하겠습니다.';
     const hasClassAvg = stats.classAvg !== null && stats.classAvg !== undefined && stats.classAvg !== '';
     const classAvg = Number(stats.classAvg);
-    const rawScore = Number(score);
+    const rawScore = Number(data?.session?.score);
+    let leadSentence;
     if (Number.isFinite(rawScore) && hasClassAvg && Number.isFinite(classAvg)) {
         const diff = Math.abs(rawScore - classAvg);
-        const label = rawScore >= classAvg ? '높습니다' : '낮습니다';
-        return `이번 시험은 반 평균보다 ${diff}점 ${label}. 틀린 ${wrongCount}문항은 다음 수업에서 다시 점검하겠습니다.`;
+        const overallDiff = stats.overallAvg !== null && stats.overallAvg !== undefined
+            ? rawScore - Number(stats.overallAvg)
+            : null;
+        if (overallDiff !== null) {
+            const classLabel = rawScore >= classAvg ? '높고' : '낮고';
+            leadSentence = `이번 시험은 ${stats.className || '반'} 평균보다 ${diff}점 ${classLabel}, 전체 평균과 비교하면 ${Math.abs(overallDiff)}점 ${overallDiff >= 0 ? '높은' : '낮은'} 수준입니다.`;
+        } else {
+            leadSentence = `이번 시험은 ${stats.className || '반'} 평균보다 ${diff}점 ${rawScore >= classAvg ? '높습니다' : '낮습니다'}.`;
+        }
+    } else {
+        leadSentence = `이번 시험에서는 ${wrongCount}문항을 틀렸습니다.`;
     }
-    if (correctRate !== null && correctRate !== undefined) {
-        return `이번 시험 정답률은 ${correctRate}%입니다. 틀린 문항은 다음 수업에서 함께 다시 보겠습니다.`;
-    }
-    return `이번 시험에서는 ${wrongCount}문항을 틀렸습니다. 다음 수업에서 해당 문항을 다시 풀이하겠습니다.`;
+    return [leadSentence, whereSentence, strengthSentence, planSentence].filter(Boolean).join(' ');
 }
 
 function reportCenterBuildEasyTrendText(trendData) {
@@ -1809,20 +1845,39 @@ function reportCenterBuildEasyWeaknessText(trendData, data) {
     const wrongRows = data?.stats?.wrongRows || [];
     if (!wrongRows.length) return '';
     const recurring = (trendData?.weaknessTrend || []).filter(item => item.appearedInSessions > 1 && !item.resolved);
+    const recurringUnits = Array.from(new Set(recurring.map(item => item.unit).filter(Boolean))).slice(0, 2).join(', ');
     const priorityText = reportCenterEasyWrongNums(data, 3);
-    if (recurring.length) return '여러 차례 반복해서 틀린 문항부터 다시 점검하겠습니다.';
-    if (priorityText) return `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다.`;
-    return '다음 수업에서 틀린 문항을 한 번 더 짚고 넘어가겠습니다.';
+    if (recurring.length) {
+        const head = recurringUnits
+            ? `${recurringUnits} 단원은 최근에도 반복해서 어려워하는 부분입니다.`
+            : '여러 차례 반복해서 틀리는 문항이 이어지고 있습니다.';
+        return `${head} 반복 오답으로 따로 모아, 다음 수업과 보강에서 개념부터 다시 정리하고 같은 유형까지 책임지고 챙기겠습니다.`;
+    }
+    if (priorityText) {
+        return `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다. 틀린 원인을 문항마다 짚어, 다음 시험 전까지 확실히 넘어가도록 하겠습니다.`;
+    }
+    return '틀린 문항은 다음 수업에서 한 번 더 짚고, 부족한 개념은 보강에서 다시 정리해 확실히 넘어가도록 하겠습니다.';
 }
 
 function reportCenterBuildEasyPlanItems(data, trendData = null) {
     const wrongRows = data?.stats?.wrongRows || [];
     const wrongNums = reportCenterEasyWrongNums(data, 5);
+    const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
     if (!wrongRows.length) {
-        return ['잘 풀던 유형은 유지하면서, 한 단계 높은 난도의 문제로 이어가겠습니다.'];
+        return [
+            '잘 풀던 유형은 유지하면서, 한 단계 높은 난도의 문제로 이어가겠습니다.',
+            '자주 실수가 나오는 유형은 미리 점검해 다음 시험까지 안정적으로 준비하겠습니다.'
+        ];
     }
-    if (wrongNums) return [`${wrongNums}을 다시 풀이하고, 같은 유형의 문제까지 함께 확인하겠습니다.`];
-    return ['다음 수업에서 틀린 문항을 다시 풀이하고, 같은 유형의 문제로 한 번 더 연습하겠습니다.'];
+    const items = [];
+    items.push(wrongNums
+        ? `${wrongNums}을 다시 풀이하고, 같은 유형의 문제까지 함께 확인하겠습니다.`
+        : '틀린 문항을 다시 풀이하고, 같은 유형의 문제로 한 번 더 연습하겠습니다.');
+    items.push(unitPhrase
+        ? `${unitPhrase} 단원은 개념부터 다시 정리한 뒤, 응용 문제로 넘어가 마무리까지 잡겠습니다.`
+        : '틀린 원인을 문항별로 짚고, 부족한 개념은 다시 정리해 확실히 넘어가겠습니다.');
+    items.push('반복해서 틀리는 부분은 따로 모아 관리하고, 다음 시험 전에 다시 점검하겠습니다.');
+    return items;
 }
 
 function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
@@ -1832,13 +1887,17 @@ function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
     if (!wrongRows.length) {
         const excellentNums = reportCenterShortQuestionList(reportCenterSelectExcellentRows(stats, 3), 3);
         lines.push(excellentNums
-            ? `이번 시험은 전 문항을 정확히 풀었습니다. 특히 ${excellentNums}처럼 정답률이 낮았던 문항까지 정확히 해결했습니다.`
-            : '이번 시험은 전 문항을 정확히 풀었습니다. 다음 수업에서는 한 단계 높은 난도로 이어가겠습니다.');
+            ? `이번 시험은 전 문항을 정확히 풀었습니다. 특히 ${excellentNums}처럼 정답률이 낮았던 문항까지 정확히 해결한 점이 돋보였습니다.`
+            : '이번 시험은 전 문항을 정확히 풀었습니다.');
+        lines.push('다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀, 지금의 수준을 안정적으로 이어가겠습니다.');
     } else {
         const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
-        lines.push('이번에 틀린 문항을 기준으로, 다음 수업에서 다시 풀이하겠습니다.');
-        if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 다시 짚겠습니다.');
-        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어, 다음 수업에서 점검하겠습니다.');
+        const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
+        lines.push(unitPhrase
+            ? `이번 오답은 ${unitPhrase} 단원에 주로 나왔습니다. 해당 단원은 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.`
+            : '이번에 틀린 문항을 기준으로, 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.');
+        if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 처음부터 다시 짚어, 비슷한 문제까지 충분히 연습하겠습니다.');
+        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어 관리하고, 다음 시험 전까지 책임지고 점검하겠습니다.');
     }
     if (teacherMemo) lines.push(`담임 메모는 다음 수업에 반영하겠습니다: ${teacherMemo}`);
     return lines;
@@ -1848,9 +1907,9 @@ function reportCenterBuildEasyParentMessage(data) {
     const studentName = data?.student?.name || '학생';
     const wrongRows = data?.stats?.wrongRows || [];
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n다음 수업에서는 다음 단원과 함께 한 단계 높은 난도의 문제로 이어가겠습니다.\n가정에서는 지금처럼 지켜봐 주시면 됩니다.`;
+        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n정답률이 낮았던 문항까지 정확히 해결한 만큼, 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n지금의 강점을 이어가도록 저희가 책임지고 지도하겠습니다. 믿고 맡겨 주셔서 감사합니다.`;
     }
-    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도를 정리했습니다.\n다음 수업에서 틀린 문항을 다시 풀이하고, 같은 실수가 반복되지 않도록 유사 유형까지 함께 점검하겠습니다.\n가정에서는 문제를 푼 뒤 한 번 더 검토하는 습관만 살펴봐 주시면 큰 도움이 됩니다.`;
+    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다.\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 부족한 개념은 처음부터 다시 정리해 같은 실수가 반복되지 않도록 유사 유형까지 함께 점검하겠습니다.\n오답 관리와 개념 보강은 저희가 책임지고 수업에서 챙기겠습니다. 믿고 맡겨 주시면 다음 시험까지 차근차근 준비해 나가겠습니다.`;
 }
 
 function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {
@@ -2071,6 +2130,7 @@ function reportCenterCloneStudioValue(value) {
 
 function reportCenterStudioDefaultOptions() {
     return {
+        includeScoreTrend: false,
         includeTrendGraph: false,
         includeDistributionGraph: false,
         includeWeaknessTrend: false,
@@ -2700,7 +2760,8 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
     const isDetailed = textOptions.length === 'detailed';
     // scope 'detailed'인 항목은 상세형에서만 실제로 출력된다(표준형은 1장 서술 중심).
     const rows = [
-        ['includeTrendGraph', '성적 추이 그래프 포함'],
+        ['includeScoreTrend', '성적 추이 분석 포함 (최근 5회 카드·지금 어디쯤 있나요)'],
+        ['includeTrendGraph', '└ 성적 추이 그래프 포함', 'trendSub'],
         ['includeDistributionGraph', '점수 분포 그래프 포함'],
         ['includeWeaknessTrend', '계속 틀린 문제 표 포함'],
         ['includeQuestionAnalysis', '문항별 분석표 포함', 'detailed'],
@@ -2714,7 +2775,8 @@ function reportCenterRenderStudioLayoutTab(studentId, sessionId, studioState) {
     ];
     const checks = rows.map(([key, label, scope]) => {
         const detailedOnly = scope === 'detailed';
-        const disabled = detailedOnly && !isDetailed;
+        const trendSub = scope === 'trendSub';
+        const disabled = (detailedOnly && !isDetailed) || (trendSub && !options.includeScoreTrend);
         const labelText = detailedOnly ? `${label} <em style="font-style:normal;color:#94a3b8;font-weight:700;">· 상세형 전용</em>` : label;
         return `
         <label class="report-studio-check"${disabled ? ' style="opacity:0.55;"' : ''}>
