@@ -4,8 +4,8 @@
 */
 
 :root {
-  --archive-accent: #27272A;
-  --archive-accent-strong: #18181B;
+  --archive-accent: #3F3F46;
+  --archive-accent-strong: #27272A;
   --archive-accent-soft: rgba(39, 39, 42, 0.08);
   --archive-accent-ring: rgba(39, 39, 42, 0.20);
 
@@ -17,9 +17,9 @@
   --archive-text: #1C1C1E;
   --archive-text-soft: #6C6C70;
 
-  --archive-navy: #111113;
-  --archive-navy-2: #18181B;
-  --archive-navy-3: #232326;
+  --archive-navy: #FFFFFF;
+  --archive-navy-2: #F7F7F8;
+  --archive-navy-3: #F4F4F5;
 
   --archive-radius-sm: 12px;
   --archive-radius-md: 16px;
@@ -68,28 +68,47 @@ body {
 }
 
 header {
-  background:
-    linear-gradient(180deg, rgba(11,18,32,0.96) 0%, rgba(16,24,40,0.94) 100%);
-  border-bottom-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.94);
+  border-bottom-color: rgba(0,0,0,0.08);
 }
 
 .hero {
-  background:
-    radial-gradient(circle at 86% 14%, rgba(255,255,255,0.10), transparent 24%),
-    radial-gradient(circle at 16% 22%, rgba(255,255,255,0.07), transparent 28%),
-    radial-gradient(circle at 50% 110%, rgba(255,255,255,0.05), transparent 32%),
-    linear-gradient(180deg, var(--archive-navy) 0%, var(--archive-navy-2) 54%, var(--archive-navy-3) 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F7F7F8 100%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.hero-title,
+.logo-name {
+  color: #1C1C1E;
+}
+
+.hero-title em,
+.logo-name em {
+  color: #6C6C70;
+}
+
+.hero-stat,
+.hero-panel-badge {
+  background: #FFFFFF;
+  border-color: rgba(0,0,0,0.10);
+  color: #3A3A3C;
+}
+
+.hero-stat i {
+  color: #6C6C70;
 }
 
 .gtab {
-  border-color: rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.035);
+  color: #6C6C70;
+  border-color: rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.72);
 }
 
 .gtab:hover,
 .gtab.active {
-  background: rgba(255,255,255,0.13);
-  border-color: rgba(255,255,255,0.30);
+  color: #1C1C1E;
+  background: #F2F2F2;
+  border-color: rgba(0,0,0,0.24);
 }
 
 .filter-band {
