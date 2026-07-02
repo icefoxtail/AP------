@@ -10,6 +10,7 @@
   --archive-link: #1b61c9;
 
   --archive-bg: #ffffff;
+  --archive-page-tint: #f7f8fa;
   --archive-surface: #ffffff;
   --archive-surface-soft: #f8fafc;
   --archive-surface-strong: #e0e2e6;
@@ -25,6 +26,19 @@
   --archive-signature-peach: #fcab79;
   --archive-signature-mint: #a8d8c4;
   --archive-signature-yellow: #f4d35e;
+  --archive-figma-lime: #dceeb1;
+  --archive-figma-lilac: #c5b0f4;
+  --archive-figma-pink: #efd4d4;
+  --archive-miro-yellow: #ffd02f;
+  --archive-miro-blue: #4262ff;
+  --archive-miro-teal: #0fbcb0;
+  --archive-miro-rose: #ffd8f4;
+  --archive-notion-peach: #ffe8d4;
+  --archive-notion-sky: #dcecfa;
+  --archive-notion-lavender: #e6e0f5;
+  --archive-notion-yellow: #fef7d6;
+  --archive-stripe-indigo: #533afd;
+  --archive-stripe-ruby: #ea2261;
   --archive-on-dark: #ffffff;
   --archive-on-dark-soft: rgba(255, 255, 255, 0.82);
   --archive-on-dark-muted: rgba(255, 255, 255, 0.68);
@@ -70,7 +84,11 @@
 
 html,
 body {
-  background: var(--archive-bg);
+  background:
+    radial-gradient(circle at 8% 18%, rgba(255, 208, 47, 0.18), transparent 22%),
+    radial-gradient(circle at 94% 12%, rgba(197, 176, 244, 0.28), transparent 24%),
+    radial-gradient(circle at 18% 72%, rgba(195, 250, 245, 0.22), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, var(--archive-page-tint) 42%, #f9fbff 100%);
 }
 
 body {
@@ -100,13 +118,41 @@ header {
 }
 
 .hero {
-  background: var(--archive-bg);
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 58%, rgba(255,255,255,0.34) 100%),
+    radial-gradient(circle at 84% 36%, rgba(255, 216, 244, 0.54), transparent 23%),
+    radial-gradient(circle at 76% 18%, rgba(220, 238, 177, 0.62), transparent 22%),
+    radial-gradient(circle at 92% 70%, rgba(220, 236, 250, 0.68), transparent 24%),
+    #ffffff;
   border-bottom: 1px solid var(--archive-border);
 }
 
 .hero::before,
 .hero::after {
-  display: none;
+  content: '';
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  border-radius: 18px;
+  opacity: 0.86;
+}
+
+.hero::before {
+  right: max(28px, calc((100vw - 1200px) / 2));
+  top: 96px;
+  width: 188px;
+  height: 92px;
+  background: var(--archive-figma-lime);
+  transform: rotate(4deg);
+}
+
+.hero::after {
+  right: max(96px, calc((100vw - 1080px) / 2));
+  top: 192px;
+  width: 132px;
+  height: 74px;
+  background: var(--archive-notion-lavender);
+  transform: rotate(-5deg);
 }
 
 .hero-brand-row {
@@ -177,7 +223,8 @@ header {
 }
 
 .sec-block.dark {
-  background: var(--archive-surface-soft);
+  background:
+    linear-gradient(135deg, rgba(255, 232, 212, 0.46) 0%, rgba(248, 250, 252, 0.96) 31%, rgba(220, 236, 250, 0.58) 64%, rgba(230, 224, 245, 0.56) 100%);
   color: var(--archive-text);
   border-top: 1px solid var(--archive-border);
   border-bottom: 1px solid var(--archive-border);
@@ -191,8 +238,14 @@ header {
   background: var(--archive-border);
 }
 
+.sec-block.dark:nth-of-type(2n) {
+  background:
+    linear-gradient(135deg, rgba(220, 238, 177, 0.48) 0%, rgba(248, 250, 252, 0.96) 34%, rgba(195, 250, 245, 0.50) 66%, rgba(255, 248, 220, 0.58) 100%);
+}
+
 .filter-band {
-  background: rgba(255,255,255,0.96);
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.94), rgba(255,248,224,0.80) 42%, rgba(246,243,255,0.84));
   border-top: 1px solid var(--archive-border);
   border-bottom-color: var(--archive-border);
   backdrop-filter: blur(10px);
@@ -273,12 +326,60 @@ button {
   --card-role-ink: #0a2e0e;
 }
 
+.exam-card:nth-child(6n + 1) {
+  --card-role: var(--archive-signature-forest);
+  --card-role-soft: #ecf8f1;
+  --card-role-border: rgba(10, 46, 14, 0.26);
+  --card-role-ink: #0a2e0e;
+  --card-role-end: var(--archive-signature-mint);
+}
+
+.exam-card:nth-child(6n + 2) {
+  --card-role: var(--archive-miro-blue);
+  --card-role-soft: var(--archive-notion-sky);
+  --card-role-border: rgba(66, 98, 255, 0.26);
+  --card-role-ink: #1a3866;
+  --card-role-end: #9fb0ff;
+}
+
+.exam-card:nth-child(6n + 3) {
+  --card-role: var(--archive-stripe-indigo);
+  --card-role-soft: var(--archive-notion-lavender);
+  --card-role-border: rgba(83, 58, 253, 0.24);
+  --card-role-ink: #391c57;
+  --card-role-end: var(--archive-figma-lilac);
+}
+
+.exam-card:nth-child(6n + 4) {
+  --card-role: var(--archive-signature-coral);
+  --card-role-soft: var(--archive-notion-peach);
+  --card-role-border: rgba(170, 45, 0, 0.24);
+  --card-role-ink: #7c2100;
+  --card-role-end: var(--archive-signature-peach);
+}
+
+.exam-card:nth-child(6n + 5) {
+  --card-role: var(--archive-miro-teal);
+  --card-role-soft: #c3faf5;
+  --card-role-border: rgba(15, 188, 176, 0.28);
+  --card-role-ink: #187574;
+  --card-role-end: #8ef0e8;
+}
+
+.exam-card:nth-child(6n) {
+  --card-role: var(--archive-stripe-ruby);
+  --card-role-soft: var(--archive-miro-rose);
+  --card-role-border: rgba(234, 34, 97, 0.24);
+  --card-role-ink: #a02e6d;
+  --card-role-end: var(--archive-figma-pink);
+}
+
 .exam-card.type-sheet .card-top {
-  background: linear-gradient(90deg, var(--archive-signature-coral) 0%, var(--archive-signature-peach) 100%);
+  background: linear-gradient(90deg, var(--card-role) 0%, var(--card-role-end, var(--archive-signature-peach)) 100%);
 }
 
 .exam-card.type-study .card-top {
-  background: linear-gradient(90deg, var(--archive-signature-forest) 0%, var(--archive-signature-mint) 100%);
+  background: linear-gradient(90deg, var(--card-role) 0%, var(--card-role-end, var(--archive-signature-mint)) 100%);
 }
 
 .exam-card.type-sheet:hover,
@@ -293,13 +394,13 @@ button {
 
 .exam-card.type-sheet .card-body {
   background:
-    linear-gradient(180deg, rgba(255, 241, 232, 0.72) 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(180deg, color-mix(in srgb, var(--card-role-soft) 76%, white) 0%, rgba(255, 255, 255, 0) 50%),
     var(--archive-surface);
 }
 
 .exam-card.type-study .card-body {
   background:
-    linear-gradient(180deg, rgba(236, 248, 241, 0.88) 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(180deg, color-mix(in srgb, var(--card-role-soft) 82%, white) 0%, rgba(255, 255, 255, 0) 50%),
     var(--archive-surface);
 }
 
@@ -326,6 +427,13 @@ button {
   background: var(--card-role-soft, var(--archive-surface-soft));
   color: var(--card-role-ink, var(--archive-text));
   border-color: var(--card-role-border, var(--archive-border));
+}
+
+.exam-card.type-sheet .card-type-chip,
+.exam-card.type-study .card-type-chip {
+  background: var(--card-role-soft);
+  color: var(--card-role-ink);
+  border-color: var(--card-role-border);
 }
 
 .meta-badge.primary {
@@ -469,6 +577,11 @@ button.primary {
 }
 
 @media (max-width: 480px) {
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
   .grade-nav {
     gap: 6px;
   }
