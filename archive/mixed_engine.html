@@ -1607,7 +1607,6 @@ async function renderExam(area, data) {
             }
         });
 
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
         await raf();
 
         const allPageBoxes = page.querySelectorAll('.q-box');
@@ -1616,7 +1615,6 @@ async function renderExam(area, data) {
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
             allPageBoxes.forEach(b => autoCompress(b));
             await raf();
-            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
         }
     }
 }
@@ -1833,7 +1831,7 @@ async function render() {
     if (AppState.mode === 'ans') renderAns(area, AppState.data);
     else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
     else await renderExam(area, AppState.data);
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
+    if (AppState.mode === 'ans' && window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
     updateScreenFitScale();

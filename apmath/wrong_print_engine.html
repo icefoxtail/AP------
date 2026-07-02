@@ -1316,9 +1316,6 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
             page.body.insertAdjacentHTML('beforeend', pageMeta.homeworkCheckHTML);
         }
 
-        if (window.MathJax?.typesetPromise) {
-            try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
-        }
         await raf();
 
         const boxes = page.page.querySelectorAll('.q-box');
@@ -1327,9 +1324,6 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
             boxes.forEach(box => autoCompress(box));
             await raf();
-            if (window.MathJax?.typesetPromise) {
-                try { await MathJax.typesetPromise([page.page]); } catch (e) { console.warn(e); }
-            }
         }
 
         if (pageIdx === pages.length - 1 && state.mode === 'exam' && !isQrSolutionMode() && pageMeta.solutionQrPayload) {
@@ -2012,7 +2006,7 @@ async function render() {
         return;
     }
 
-    if (window.MathJax?.typesetPromise) {
+    if (state.mode === 'ans' && window.MathJax?.typesetPromise) {
         try { await MathJax.typesetPromise([area]); } catch (e) { console.warn(e); }
     }
     await raf();
