@@ -381,9 +381,33 @@ function getIdentityTitle() {
     return AppState.identityTitle || AppState.title || window.examTitle || '수학 시험지';
 }
 
+function cleanExamTitleValue(value) {
+    return clampText(String(value || '').replace(/_content$/i, ''), 120);
+}
+
+function getArchiveDataFileTitle() {
+    try {
+        const p = new URLSearchParams(window.location.search);
+        const dataUrl = p.get('data');
+        if (!dataUrl) return '';
+        let filename = dataUrl.split('/').pop().split('?')[0];
+        filename = decodeURIComponent(filename).replace(/\.[^/.]+$/, '');
+        return cleanExamTitleValue(filename);
+    } catch (e) {
+        return '';
+    }
+}
+
+function getDefaultPrintableExamTitle() {
+    return getArchiveDataFileTitle()
+        || cleanExamTitleValue(window.examTitle)
+        || cleanExamTitleValue(getIdentityTitle())
+        || '수학 시험지';
+}
+
 function getDefaultPrintHeaderOptions() {
     return {
-        title: getIdentityTitle(),
+        title: getDefaultPrintableExamTitle(),
         metaRight: '',
         subtitle: '',
         showNameLine: true,
@@ -1018,18 +1042,7 @@ function normalizeExamTypeLabel(value) {
 }
 
 function getExamTitleFull() {
-    if (window.examTitle) return window.examTitle;
-    if (getIdentityTitle() && getIdentityTitle() !== '수학 시험지') return getIdentityTitle();
-    try {
-        const p = new URLSearchParams(window.location.search);
-        const dataUrl = p.get('data');
-        if (dataUrl) {
-            let filename = dataUrl.split('/').pop().split('?')[0];
-            filename = decodeURIComponent(filename).replace(/\.[^/.]+$/, "");
-            if (filename) return filename;
-        }
-    } catch(e) {}
-    return getIdentityTitle() || '수학 시험지';
+    return getDefaultPrintableExamTitle();
 }
 
 function makePage(area, type, pNum) {
@@ -1156,7 +1169,10 @@ async function init() {
     s.onload = async () => {
         const qb = window.questionBank;
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
-        AppState.title = window.examTitle || p.get('title') || '수학 시험지';
+        const urlTitle = cleanExamTitleValue(p.get('title'));
+        const fileTitle = getArchiveDataFileTitle();
+        const scriptTitle = cleanExamTitleValue(window.examTitle);
+        AppState.title = urlTitle || fileTitle || scriptTitle || '수학 시험지';
         AppState.identityTitle = AppState.title;
         AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
         document.getElementById('ctrl-title').innerText = AppState.title;
