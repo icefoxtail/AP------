@@ -119,11 +119,11 @@ header {
 
 .hero {
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 58%, rgba(255,255,255,0.34) 100%),
-    radial-gradient(circle at 84% 36%, rgba(255, 216, 244, 0.54), transparent 23%),
-    radial-gradient(circle at 76% 18%, rgba(220, 238, 177, 0.62), transparent 22%),
-    radial-gradient(circle at 92% 70%, rgba(220, 236, 250, 0.68), transparent 24%),
-    #ffffff;
+    linear-gradient(90deg, rgba(255,255,255,0.88) 0%, rgba(255,250,232,0.78) 45%, rgba(246,243,255,0.86) 100%),
+    radial-gradient(circle at 84% 34%, rgba(255, 216, 244, 0.78), transparent 24%),
+    radial-gradient(circle at 76% 18%, rgba(220, 238, 177, 0.82), transparent 23%),
+    radial-gradient(circle at 94% 72%, rgba(220, 236, 250, 0.86), transparent 25%),
+    linear-gradient(180deg, #fffdf4 0%, #f8f4ff 100%);
   border-bottom: 1px solid var(--archive-border);
 }
 
@@ -188,7 +188,9 @@ header {
 .assignment-board {
   border-color: var(--archive-border);
   border-radius: var(--archive-radius-lg);
-  background: var(--archive-surface);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,248,220,0.74) 100%),
+    var(--archive-surface);
   color: var(--archive-text);
   box-shadow: var(--archive-shadow-md);
 }
@@ -245,7 +247,8 @@ header {
 
 .filter-band {
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.94), rgba(255,248,224,0.80) 42%, rgba(246,243,255,0.84));
+    linear-gradient(90deg, rgba(255,244,196,0.72) 0%, rgba(255,255,255,0.94) 34%, rgba(220,236,250,0.70) 68%, rgba(230,224,245,0.76) 100%),
+    #fff8e0;
   border-top: 1px solid var(--archive-border);
   border-bottom-color: var(--archive-border);
   backdrop-filter: blur(10px);
