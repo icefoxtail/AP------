@@ -1,6 +1,6 @@
 # PRINT_CORE_MODULE_MAP
 
-시험지 출력 엔진 공용 렌더링 코어(`archive/js/print-core.js`)의 구조 문서. 엔진 통합 Phase 1~2(2026-07-02) 산출물.
+시험지 출력 엔진 공용 렌더링 코어(`archive/js/print-core.js`)의 구조 문서. 엔진 통합 Phase 1~3(2026-07-02) 산출물.
 계획·배경은 `docs/plans/PRINT_ENGINE_UNIFICATION_NEXT_PLAN.md` 참조.
 
 ## 1. 소비처
@@ -62,6 +62,13 @@
   - `enableHeaderInlineEdit()`: preview-mode에서 첫 페이지 헤더의 제목/보조문구를 contenteditable로. blur 시 `postHeaderEdit(field, value)` — **신·구 타입(`AP_PRINT_HEADER_EDIT`+`AP_CLINIC_HEADER_EDIT`) 동시 발신**으로 구버전 부모(clinic-print.js)와 캐시 불일치에도 동작. 수신부 디바운스가 중복 흡수.
   - `.clinic-editable` CSS는 소비 엔진 책임(현재 오답엔진만 정의·활성). 아카이브 엔진/믹서는 채널(mode/headerOptions)만 배선 — 인라인 편집은 부모 상태 관리가 생기는 Phase 3에서 활성화.
 - 부모 예시: `apmath/js/clinic-print.js`(무변경 — 레거시 타입 발신/수신이 별칭·동시발신으로 커버됨).
+
+### 툴바 마크업 (Phase 3)
+- `renderPrintHeaderEditorHTML()` / `renderQrOutputPopoverHTML()`: 헤더 편집 패널·QR 출력 팝오버의 정적 마크업 단일 소스. CSS는 옮기지 않고 각 엔진 `<style>`에 유지(클래스명이 이미 byte-identical했고, `.wrap.open .panel{display:block}` 방식 토글이라 인라인 스타일화하면 토글 함수까지 다시 손봐야 함 — 리스크만 커짐). 소비처는 `<span id="print-header-editor-slot">`/`<span id="qr-output-slot">` placeholder를 스크립트 최상단에서 `outerHTML` 교체.
+- `renderQppSelectorHTML(current)`: qpp 셀렉트(2/4/6/8) 마크업, `current`가 옵션 목록 밖이어도(레거시 URL 등) 값이 사라지지 않게 옵션을 동적 추가. `onchange="PrintCore.changeQppParam(this.value)"`를 마크업에 직접 바인딩.
+- `changeQppParam(qpp)`: URL의 `qpp` 파라미터만 바꿔 재로드(무상태 URL 로딩과 호환). 아카이브 엔진에 Phase 3에서 qpp 셀렉트가 신설되며 옵션을 믹서와 동일하게 2/4/6/8로 통일 — 이전엔 `archive/index.html`의 `qppModal`에서 4/6 중 선택 후 URL에 고정.
+- `archive/index.html`의 `qppModal`은 삭제. `selectExamMode`가 기본 qpp(`DEFAULT_ARCHIVE_QPP=4`)로 바로 `confirmQpp`를 호출 — 이후 필요하면 엔진 툴바에서 라이브로 변경.
+- 셔플 버튼은 코어화하지 않음: `shuffleData()`가 믹서 `mixed_engine.html`에만 존재하는 것 자체가 "믹서 소스 전용 노출"이라 별도 플래그가 필요 없었다.
 
 ### screen-fit
 - `shouldUseScreenFit(params)` / `updateScreenFitScale(maxScale=1)` / `installScreenFitAutoRescale(getMaxScale?)`

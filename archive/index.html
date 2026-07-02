@@ -1163,34 +1163,6 @@
             line-height: 1.6;
         }
 
-        .qpp-btns {
-            display: flex;
-            gap: 14px;
-            margin: 24px 0;
-        }
-
-        .qpp-opt {
-            flex: 1;
-            padding: 24px 0;
-            border: 2px solid #eef2f6;
-            border-radius: 18px;
-            cursor: pointer;
-            font-size: 32px;
-            font-weight: 800;
-            transition: all 0.2s ease;
-            background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
-            color: #cbd5e1;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
-        }
-
-        .qpp-opt:hover {
-            border-color: var(--blue-main);
-            color: var(--blue-main);
-            background: linear-gradient(180deg, #f4f4f5 0%, var(--blue-pale) 100%);
-            transform: scale(1.04);
-            box-shadow: 0 16px 26px rgba(0, 0, 0, 0.10);
-        }
-
         .modal-btn-primary {
             background: var(--blue-main);
             color: white;
@@ -1390,18 +1362,6 @@
             <button class="modal-btn-primary" style="background: var(--navy);" onclick="selectExamMode(true)">AP 제출 QR 시험지 출력</button>
         </div>
         <button class="modal-close-btn" onclick="closeModal()">취소</button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="qppModal">
-    <div class="modal-box">
-        <div class="modal-title">시험지 출력 형식</div>
-        <div class="modal-sub">한 페이지에 담을 문항 수를 선택하세요.</div>
-        <div class="qpp-btns">
-            <div class="qpp-opt" onclick="confirmQpp(4)">4</div>
-            <div class="qpp-opt" onclick="confirmQpp(6)">6</div>
-        </div>
-        <button class="modal-close-btn" onclick="closeModal()">다음에 하기</button>
     </div>
 </div>
 
@@ -2375,6 +2335,8 @@ function buildCard(ex) {
 
 /* 상태 변수 */
 let _pendingFile, _pendingAction, _pendingSubmitQr = false, _pendingQpp;
+// qpp는 engine.html 툴바에서 라이브로 변경 가능(엔진 통합 Phase 3) — 출제 흐름에서는 기본값만 넘긴다.
+const DEFAULT_ARCHIVE_QPP = 4;
 
 function openEngine(file, action) {
     if (action === 'exam') {
@@ -2393,8 +2355,8 @@ function openExamModeModal() {
 
 function selectExamMode(withSubmitQr) {
     _pendingSubmitQr = withSubmitQr;
-    document.getElementById('examModeModal').classList.remove('open');
-    document.getElementById('qppModal').classList.add('open');
+    // qppModal 단계 제거(엔진 통합 Phase 3): 기본 qpp로 바로 진행하고, 필요하면 engine.html 툴바에서 바꾼다.
+    confirmQpp(DEFAULT_ARCHIVE_QPP);
 }
 
 function confirmQpp(qpp) {
@@ -2560,7 +2522,6 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
 }
 
 function closeModal() {
-    document.getElementById('qppModal').classList.remove('open');
     document.getElementById('examModeModal').classList.remove('open');
     const assignModal = document.getElementById('assignTargetModalOverlay');
     if (assignModal) assignModal.classList.remove('open');

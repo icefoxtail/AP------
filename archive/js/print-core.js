@@ -628,6 +628,69 @@
         });
     }
 
+    // ── 툴바 마크업 (Phase 3: 헤더 편집·QR 팝오버·qpp 셀렉트 단일 구현) ────
+    // 아카이브 엔진/믹서에서 byte-identical하게 중복돼 있던 정적 마크업을 여기 하나로 모은다.
+    // CSS 클래스명(.print-header-editor-wrap 등)은 각 엔진 <style>에 그대로 둔다(시각 테마는 엔진 책임,
+    // 이 함수들은 구조·동작만 단일화). 소비 엔진은 placeholder 요소를 outerHTML로 교체해 주입한다.
+    function renderPrintHeaderEditorHTML() {
+        return `
+<div class="print-header-editor-wrap" id="print-header-editor-wrap">
+    <button class="print-header-editor-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
+    <div class="print-header-editor-panel" onclick="event.stopPropagation()">
+        <div class="print-header-editor-title">출력 헤더</div>
+        <label class="print-header-editor-field">제목
+            <input id="print-header-title-input" class="print-header-editor-input" type="text" maxlength="80" oninput="setPrintHeaderOptions({ title: this.value })">
+        </label>
+        <label class="print-header-editor-field">우측 메타
+            <input id="print-header-meta-input" class="print-header-editor-input" type="text" maxlength="60" oninput="setPrintHeaderOptions({ metaRight: this.value })">
+        </label>
+        <label class="print-header-editor-field">보조 문구
+            <input id="print-header-subtitle-input" class="print-header-editor-input" type="text" maxlength="120" oninput="setPrintHeaderOptions({ subtitle: this.value })">
+        </label>
+        <div class="print-header-editor-checks">
+            <label class="print-header-editor-check"><input id="print-header-name-check" type="checkbox" onchange="setPrintHeaderOptions({ showNameLine: this.checked })"> 이름칸</label>
+            <label class="print-header-editor-check"><input id="print-header-score-check" type="checkbox" onchange="setPrintHeaderOptions({ showScoreLine: this.checked })"> 점수칸</label>
+            <label class="print-header-editor-check"><input id="print-header-sol-check" type="checkbox" onchange="setPrintHeaderOptions({ applyToSolution: this.checked })"> 해설지 적용</label>
+            <label class="print-header-editor-check"><input id="print-header-ans-check" type="checkbox" onchange="setPrintHeaderOptions({ applyToAnswer: this.checked })"> 정답표 적용</label>
+        </div>
+    </div>
+</div>`.trim();
+    }
+
+    function renderQrOutputPopoverHTML() {
+        return `
+<div class="qr-output-wrap" id="qr-output-wrap">
+    <button id="btn-qr-output" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
+    <div class="qr-output-popover" id="qr-output-popover">
+        <div class="qr-output-title">QR 출력</div>
+        <label class="qr-output-option"><input type="checkbox" id="chk-submit-qr" onchange="setQrOutputParam('submit', this.checked)"> 정답지 제출 QR</label>
+        <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
+    </div>
+</div>`.trim();
+    }
+
+    const QPP_SELECTOR_OPTIONS = [2, 4, 6, 8];
+
+    // current가 QPP_SELECTOR_OPTIONS 밖의 값(레거시 URL 등)이어도 옵션 목록에 없으면
+    // 브라우저가 첫 옵션을 임의 표시하지 않도록 값 그대로의 <option>을 추가해 선택 상태를 보존한다.
+    function renderQppSelectorHTML(current) {
+        const value = parseInt(current, 10) || 4;
+        const options = QPP_SELECTOR_OPTIONS.includes(value) ? QPP_SELECTOR_OPTIONS : [...QPP_SELECTOR_OPTIONS, value].sort((a, b) => a - b);
+        const optionsHtml = options.map(n => `<option value="${n}"${n === value ? ' selected' : ''}>${n}문항</option>`).join('');
+        return `
+<div class="qpp-selector">
+    <span>문항/쪽:</span>
+    <select id="qppSelect" onchange="PrintCore.changeQppParam(this.value)">${optionsHtml}</select>
+</div>`.trim();
+    }
+
+    // qpp 라이브 변경: URL의 qpp 파라미터만 바꿔 재로드한다(엔진/믹서 공통 — 무상태 URL 로딩과 호환).
+    function changeQppParam(qpp) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('qpp', qpp);
+        window.location.href = url.toString();
+    }
+
     // ── 미리보기 채널 (Phase 2: preview=1 + postMessage + 인라인 헤더 편집) ──
     function isPreviewMode() {
         try {
@@ -806,6 +869,10 @@
         toggleQrOutputPopover,
         setQrOutputParam,
         installPopoverAutoClose,
+        renderPrintHeaderEditorHTML,
+        renderQrOutputPopoverHTML,
+        renderQppSelectorHTML,
+        changeQppParam,
         isPreviewMode,
         createPreviewController,
         shouldUseScreenFit,

@@ -124,10 +124,19 @@ QR 출제 경로에서 시험 내용을 확인하고 출제하도록 한다. 기
 - 믹서 `shouldRenderSolutionQr`/`shouldRenderSubmitQr`에 preview 가드 추가(엔진과 동일) — preview에서 QR 삽입·OS 등록(블루프린트/출제이력) 무부작용 보장.
 - 검증(로컬 프리뷰): 오답엔진 iframe 하니스로 레거시/공용 타입 수신 렌더, 헤더 편집 blur→부모 신·구 타입 수신, 편집 중 메시지 보류→focusout flush 재렌더 확인. 엔진/믹서 preview에서 mode·headerOptions 반영, QR 차단(submitQr=1&solQr=1에도 미출력), 비-preview 렌더 시그니처 무변화, 콘솔 에러 없음.
 
-### Phase 3 — 툴바 통일
+### Phase 3 — 툴바 통일 ✅ 완료 (2026-07-02)
 
 - qpp 라이브 셀렉트(2/4/6/8), 셔플(믹서 소스 전용 노출), QR 팝오버, 헤더 편집을 코어 툴바 단일 구현으로.
 - `archive/index.html`의 `qppModal` 단계 제거(출제 흐름 1단계 단축).
+
+**구현 노트 (계획과 다른 점/판단 기록):**
+
+- `print-core.js`에 `renderPrintHeaderEditorHTML()` / `renderQrOutputPopoverHTML()` / `renderQppSelectorHTML(current)` / `changeQppParam(qpp)` 추가. 엔진/믹서는 HTML에 `<span id="print-header-editor-slot">` 등 placeholder만 두고, 정적 마크업(헤더편집·QR팝오버)은 스크립트 최상단에서, qpp 셀렉트는 `AppState.qpp`가 확정되는 시점(`init()`)에서 `outerHTML` 교체로 주입 — 마크업의 단일 소스는 코어 하나.
+- **CSS는 의도적으로 각 엔진 `<style>`에 유지**(코어로 옮기지 않음): 클래스명(`.qr-output-wrap` 등)이 이미 두 엔진에서 byte-identical했고, 팝오버 열림 상태가 `.wrap.open .panel{display:block}` CSS 규칙에 의존해 인라인 스타일로 흡수하려면 토글 함수까지 다시 손대야 해 리스크만 커짐. "코어 툴바 단일 구현"은 마크업+동작(드리프트가 실제로 나던 지점)에 한정, 테마 CSS는 엔진 로컬 유지가 더 안전하다고 판단.
+- **qpp 셀렉트를 아카이브 엔진에 신설**(이전엔 URL 파라미터로만 고정, 툴바에 값 표시 텍스트만 있었음)하며 옵션을 믹서와 동일하게 2/4/6/8로 통일 — 계획 문구 그대로. 엔진에 `.ctrl-right`/`.qpp-selector`/`#qppSelect*` CSS를 믹서에서 그대로 복사해 시각적으로도 동일하게 맞춤.
+- 믹서의 로컬 `changeQpp(val)` 함수는 코어 `changeQppParam`과 완전히 동일해 삭제하고 셀렉트 마크업이 `PrintCore.changeQppParam(this.value)`를 직접 호출하도록 교체(죽은 코드 방지).
+- `archive/index.html`: `qppModal`(HTML+전용 CSS `.qpp-btns`/`.qpp-opt`) 완전 삭제. `selectExamMode(withSubmitQr)`가 모달을 여는 대신 `confirmQpp(DEFAULT_ARCHIVE_QPP=4)`를 바로 호출 — qpp는 이제 engine.html 툴바에서 라이브로 바꿀 수 있으므로 사전 선택이 불필요해졌다는 계획의 전제를 그대로 반영. `confirmQpp`/`closeModal`의 나머지 분기(제출 QR 대상 선택 패널 vs 일반 출력)는 무변경.
+- 검증(로컬 프리뷰): 엔진 qpp 4→6 라이브 전환, 믹서 qpp 4→8 라이브 전환 + 고정시드 셔플이 Phase 1 baseline과 페이지 시그니처 완전 일치. 헤더 편집(제목 입력→렌더 반영)·QR 팝오버(체크→URL 파라미터·버튼 텍스트 반영)가 코어 주입 마크업에서도 정상 동작. preview 모드에서 qpp 셀렉트도 기존 QR/헤더편집과 함께 숨김 확인. `index.html`에서 qppModal 없이 `selectExamMode(false)`/`selectExamMode(true)` 둘 다 기본 qpp=4로 `goEngine`/`openAssignTargetPanel`에 바로 진입 확인(스텁으로 재현). 콘솔 에러 없음.
 
 ### Phase 4 — 데이터 계약 통일 + 믹서 서버 저장화 (유일한 워커 변경 Phase)
 

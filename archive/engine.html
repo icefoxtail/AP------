@@ -24,6 +24,11 @@
         .mode-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.07); padding: 4px; border-radius: 10px; }
         .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
         .mode-tab.active { background: white; color: #0f172a; }
+        .ctrl-right { display: flex; align-items: center; gap: 10px; }
+        .qpp-selector { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 700; }
+        #qppSelect { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 4px 8px; font-family: inherit; font-size: 11px; cursor: pointer; }
+        #qppSelect option { background: #ffffff; color: #0f172a; }
+        #qppSelect:focus { outline: none; border-color: rgba(255,255,255,0.35); }
         .qr-output-wrap { position: relative; }
         #btn-qr-output { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
         .qr-output-popover { position: absolute; right: 0; top: calc(100% + 8px); width: 190px; padding: 12px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; }
@@ -51,6 +56,7 @@
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
             body.screen-fit-mode #ctrl-title,
             body.screen-fit-mode #btn-print,
+            body.screen-fit-mode .qpp-selector,
             body.screen-fit-mode .qr-output-wrap,
             body.screen-fit-mode .print-header-editor-wrap { display: none; }
             body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
@@ -60,7 +66,7 @@
         body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; gap: 8px; }
         body.preview-mode #ctrl-title,
         body.preview-mode #btn-print,
-        body.preview-mode #qpp-display,
+        body.preview-mode .qpp-selector,
         body.preview-mode .qr-output-wrap,
         body.preview-mode .print-header-editor-wrap { display: none; }
         body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
@@ -318,37 +324,10 @@
             <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-            <span id="qpp-display" style="color:rgba(255,255,255,0.7); font-size:11px; font-weight:bold;"></span>
-            <div class="print-header-editor-wrap" id="print-header-editor-wrap">
-                <button class="print-header-editor-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
-                <div class="print-header-editor-panel" onclick="event.stopPropagation()">
-                    <div class="print-header-editor-title">출력 헤더</div>
-                    <label class="print-header-editor-field">제목
-                        <input id="print-header-title-input" class="print-header-editor-input" type="text" maxlength="80" oninput="setPrintHeaderOptions({ title: this.value })">
-                    </label>
-                    <label class="print-header-editor-field">우측 메타
-                        <input id="print-header-meta-input" class="print-header-editor-input" type="text" maxlength="60" oninput="setPrintHeaderOptions({ metaRight: this.value })">
-                    </label>
-                    <label class="print-header-editor-field">보조 문구
-                        <input id="print-header-subtitle-input" class="print-header-editor-input" type="text" maxlength="120" oninput="setPrintHeaderOptions({ subtitle: this.value })">
-                    </label>
-                    <div class="print-header-editor-checks">
-                        <label class="print-header-editor-check"><input id="print-header-name-check" type="checkbox" onchange="setPrintHeaderOptions({ showNameLine: this.checked })"> 이름칸</label>
-                        <label class="print-header-editor-check"><input id="print-header-score-check" type="checkbox" onchange="setPrintHeaderOptions({ showScoreLine: this.checked })"> 점수칸</label>
-                        <label class="print-header-editor-check"><input id="print-header-sol-check" type="checkbox" onchange="setPrintHeaderOptions({ applyToSolution: this.checked })"> 해설지 적용</label>
-                        <label class="print-header-editor-check"><input id="print-header-ans-check" type="checkbox" onchange="setPrintHeaderOptions({ applyToAnswer: this.checked })"> 정답표 적용</label>
-                    </div>
-                </div>
-            </div>
-            <div class="qr-output-wrap" id="qr-output-wrap">
-                <button id="btn-qr-output" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
-                <div class="qr-output-popover" id="qr-output-popover">
-                    <div class="qr-output-title">QR 출력</div>
-                    <label class="qr-output-option"><input type="checkbox" id="chk-submit-qr" onchange="setQrOutputParam('submit', this.checked)"> 정답지 제출 QR</label>
-                    <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
-                </div>
-            </div>
+        <div class="ctrl-right">
+            <span id="qpp-selector-slot"></span>
+            <span id="print-header-editor-slot"></span>
+            <span id="qr-output-slot"></span>
             <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
@@ -365,6 +344,10 @@ const QR_PATCH = {
     label: '해설·정답 확인',
     size: 220
 };
+
+// 툴바 정적 마크업(헤더 편집/QR 팝오버)은 print-core.js 단일 구현에서 주입한다 (엔진 통합 Phase 3).
+document.getElementById('print-header-editor-slot').outerHTML = PrintCore.renderPrintHeaderEditorHTML();
+document.getElementById('qr-output-slot').outerHTML = PrintCore.renderQrOutputPopoverHTML();
 
 function getIdentityTitle() {
     return AppState.identityTitle || AppState.title || window.examTitle || '수학 시험지';
@@ -935,8 +918,8 @@ async function init() {
     PrintCore.setActiveModeTab(AppState.mode);
     applyQrSolutionLockUI();
 
-    const qppDisp = document.getElementById('qpp-display');
-    if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
+    const qppSlot = document.getElementById('qpp-selector-slot');
+    if (qppSlot) qppSlot.outerHTML = PrintCore.renderQppSelectorHTML(AppState.qpp);
 
     const dataUrl = p.get('data'); if (!dataUrl) return;
     const safeDataUrl = normalizeArchiveExamScriptPath(dataUrl);
