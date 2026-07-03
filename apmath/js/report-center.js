@@ -1489,17 +1489,127 @@ function reportCenterRenderExamHubList(studentId) {
     `;
 }
 
+function reportCenterBuildCohortRates(archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
+    const takers = sessions.length;
+    const sessionIds = new Set(sessions.map(session => String(session.id)));
+    const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+        .filter(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === archiveKey);
+    const questionNos = new Set();
+    blueprints.forEach(bp => {
+        const qNo = String(bp.question_no ?? bp.questionNo ?? bp.no ?? '').trim();
+        if (qNo) questionNos.add(qNo);
+    });
+    const wrongCounts = new Map();
+    (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : []).forEach(row => {
+        if (!sessionIds.has(String(row.session_id))) return;
+        const qNo = String(row.question_no ?? row.questionNo ?? row.question_id ?? row.questionId ?? '').trim();
+        if (!qNo) return;
+        questionNos.add(qNo);
+        wrongCounts.set(qNo, (wrongCounts.get(qNo) || 0) + 1);
+    });
+    const rows = Array.from(questionNos)
+        .sort((a, b) => Number(a) - Number(b) || String(a).localeCompare(String(b)))
+        .map(questionNo => {
+            const wrongCount = wrongCounts.get(questionNo) || 0;
+            const correctRate = takers ? Math.round(((takers - wrongCount) / takers) * 100) : null;
+            return { questionNo, takers, wrongCount, correctRate };
+        });
+    return { archiveFile: archiveKey, takers, rows };
+}
+
+function reportCenterBuildExamDashboard(studentId, archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const hub = reportCenterBuildExamHubList().find(row => row.archiveFile === archiveKey) || { archiveFile: archiveKey, title: archiveKey, takers: 0, reviewCount: 0, blueprintCount: 0 };
+    const reviews = reportCenterGetExamReviews(archiveKey);
+    const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+        .filter(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === archiveKey);
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
+    const wrongRows = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
+    const rates = reportCenterBuildCohortRates(archiveKey);
+    const students = Array.isArray(state?.db?.students) ? state.db.students : [];
+    const unitCounts = new Map();
+    const difficultyCounts = new Map();
+    blueprints.forEach(bp => {
+        const unit = String(bp.unit || bp.unit_name || bp.chapter || '단원 미지정').trim();
+        const difficulty = String(bp.difficulty || bp.level || '난도 미지정').trim();
+        unitCounts.set(unit, (unitCounts.get(unit) || 0) + 1);
+        difficultyCounts.set(difficulty, (difficultyCounts.get(difficulty) || 0) + 1);
+    });
+    const distributionHtml = (title, counts) => `
+        <div style="padding:12px; border-radius:12px; background:var(--bg); border:1px solid var(--border);">
+            <div style="font-size:12px; font-weight:900; color:var(--text); margin-bottom:8px;">${title}</div>
+            ${counts.size ? Array.from(counts.entries()).map(([label, count]) => `
+                <div style="display:flex; justify-content:space-between; gap:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.8;">
+                    <span>${reportCenterEscape(label)}</span><span>${count}</span>
+                </div>
+            `).join('') : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">블루프린트 없음</div>'}
+        </div>
+    `;
+    const reviewCards = Array.from(reviews.byQuestion.values())
+        .sort((a, b) => Number(a.question_no ?? a.questionNo) - Number(b.question_no ?? b.questionNo))
+        .map(row => reportCenterBuildQuestionReviewCard(row, { compact: true }))
+        .join('');
+    const studentRows = sessions
+        .sort((a, b) => Number(b.score ?? -1) - Number(a.score ?? -1))
+        .map(session => {
+            const student = students.find(s => String(s.id) === String(session.student_id));
+            const wrongCount = wrongRows.filter(row => String(row.session_id) === String(session.id)).length;
+            return `
+                <button class="btn" type="button" data-student-id="${reportCenterAttr(session.student_id)}"
+                        style="display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:10px; width:100%; min-height:44px; padding:10px 12px; border-radius:10px; background:var(--surface); border:1px solid var(--border); box-shadow:none; text-align:left;"
+                        onclick="reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(archiveKey)}', studentId: '${escapeReportJsString(session.student_id)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">
+                    <span style="font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || session.student_id || '학생')}</span>
+                    <span style="font-size:12px; font-weight:800; color:var(--secondary);">${session.score ?? '-'}점</span>
+                    <span style="font-size:12px; font-weight:800; color:var(--secondary);">오답 ${wrongCount}</span>
+                </button>
+            `;
+        }).join('');
+    return `
+        <div data-report-drilldown-level="exam" style="display:flex; flex-direction:column; gap:12px;">
+            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('list'); openReportCenterModal('${escapeReportJsString(studentId)}')">시험지 목록</button>
+            <div style="display:grid; grid-template-columns:minmax(0,1.4fr) minmax(180px,.6fr); gap:12px;">
+                <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                    <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(hub.title || '시험지')}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape([hub.school, hub.grade].filter(Boolean).join(' · ') || archiveKey)}</div>
+                    <div style="margin-top:12px; font-size:13px; font-weight:700; color:var(--text); line-height:1.7;">${reportCenterEscape(reviews.meta?.overview_text || reviews.meta?.overview || '저장된 시험지 총평이 없습니다.')}</div>
+                </section>
+                <section style="display:grid; gap:8px;">
+                    ${distributionHtml('단원 분포', unitCounts)}
+                    ${distributionHtml('난도 분포', difficultyCounts)}
+                </section>
+            </div>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:10px;">
+                    <div style="font-size:14px; font-weight:900; color:var(--text);">문항 분석 상태</div>
+                    <div style="font-size:12px; font-weight:800; color:var(--secondary);">${hub.reviewCount}/${hub.blueprintCount || '-'}</div>
+                </div>
+                ${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">아직 저장된 문항 분석이 없습니다.</div>'}
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">코호트 정답률</div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                    ${rates.rows.map(row => `<span style="padding:6px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">${reportCenterEscape(row.questionNo)}번 ${row.correctRate === null ? '-' : `${row.correctRate}%`}</span>`).join('') || '<span style="font-size:12px; font-weight:700; color:var(--secondary);">집계할 문항이 없습니다.</span>'}
+                </div>
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">학생 리스트</div>
+                <div style="display:flex; flex-direction:column; gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 학생이 없습니다.</div>'}</div>
+            </section>
+        </div>
+    `;
+}
+
 function reportCenterBuildDrilldownShell(studentId) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const name = student?.name || '학생';
     const nav = reportCenterNavState();
-    const bodyHtml = nav.level === 'list'
-        ? reportCenterRenderExamHubList(studentId)
-        : `
-            <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">
-                시험 대시보드는 다음 단계에서 연결됩니다.
-            </div>
-        `;
+    const bodyHtml = nav.level === 'exam'
+        ? reportCenterBuildExamDashboard(studentId, nav.archiveFile)
+        : reportCenterRenderExamHubList(studentId);
     return `
         <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
