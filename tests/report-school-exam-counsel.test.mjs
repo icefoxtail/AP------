@@ -102,13 +102,35 @@ assert.match(simple, /카톡\/짧은 상담용/);
 const detailedBefore = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
 assert.doesNotMatch(detailedBefore, /프리미엄 분석 적용/);
 context.AP_REPORT_AI_ANALYSIS_CACHE = {
-  e1: { source: 'ai', summary: 'AISUMMARYXYZ', parentMessage: 'AIPARENTXYZ', nextActions: ['AIPLAN1XYZ'] }
+  e1: {
+    source: 'ai',
+    summary: 'AISUMMARYXYZ',
+    parentMessage: 'AIPARENTXYZ',
+    nextActions: ['AIPLAN1XYZ'],
+    wrongAnalysis: 'AIWRONGXYZ',
+    diagnosis: 'AIDIAGXYZ',
+    kakaoSummary: 'AIKAKAOXYZ'
+  }
 };
 const premiumDetailed = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
 assert.match(premiumDetailed, /프리미엄 분석 적용/);
 assert.match(premiumDetailed, /AISUMMARYXYZ/);
 assert.match(premiumDetailed, /AIPARENTXYZ/);
 assert.match(premiumDetailed, /AIPLAN1XYZ/);
+
+// 상담 1장도 프리미엄 우선(저장 수정본은 없으니 AI가 뱅크를 대체).
+context.reportCenterSetCounselEditMode('s1', 'exam-a.js', false);
+const premiumCounsel = context.reportCenterBuildSchoolExamCounselReport('s1', 'exam-a.js');
+assert.match(premiumCounsel, /AISUMMARYXYZ/);
+assert.match(premiumCounsel, /AIWRONGXYZ/);
+assert.match(premiumCounsel, /AIDIAGXYZ/);
+assert.match(premiumCounsel, /AIPLAN1XYZ/);
+assert.match(premiumCounsel, /AIPARENTXYZ/);
+
+// 간단 리포트도 프리미엄 우선(카톡 요약/안내를 AI로).
+const premiumSimple = context.reportCenterBuildSchoolExamSimpleParentReport('s1', 'exam-a.js');
+assert.match(premiumSimple, /AIKAKAOXYZ/);
+assert.match(premiumSimple, /AIPARENTXYZ/);
 context.AP_REPORT_AI_ANALYSIS_CACHE = {};
 
 console.log('report school exam counsel test passed');
