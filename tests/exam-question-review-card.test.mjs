@@ -77,4 +77,32 @@ assert.doesNotMatch(noContentHtml, /다음 식을 계산하세요/);
 assert.doesNotMatch(noContentHtml, /양변을 정리합니다/);
 assert.doesNotMatch(noContentHtml, /aprc-qreview-badge/);
 
+// review_text가 구조화 JSON이면 필드별(묻는 것·함정·풀이 포인트·지도)로 렌더한다.
+const jsonReview = context.reportCenterBuildQuestionReviewCard({
+  questionNo: 8, unit: '이차방정식', correctRate: 5,
+  reviewText: JSON.stringify({
+    concept: '이차방정식+일차부등식', level: '중',
+    asks: '두 해 중 하나만 부등식을 만족하도록 k 범위.',
+    trap: 'x=3 불만족 조건을 놓쳐 범위가 반쪽.',
+    key: '두 해를 각각 대입해 만족+불만족 두 부등식.',
+    teach: '~만 만족 = 만족+불만족 동시.'
+  })
+});
+assert.match(jsonReview, /묻는 것/);
+assert.match(jsonReview, /함정/);
+assert.match(jsonReview, /풀이 포인트/);
+assert.match(jsonReview, /지도 포인트/);
+assert.match(jsonReview, /범위가 반쪽/);
+assert.match(jsonReview, /이차방정식\+일차부등식/);
+assert.doesNotMatch(jsonReview, /\{"concept"/, 'raw JSON must not leak into the card');
+
+// 익명(블로그) 모드에서는 교사용 '지도 포인트'를 숨긴다.
+const jsonAnon = context.reportCenterBuildQuestionReviewCard({
+  questionNo: 8, unit: '이차방정식',
+  reviewText: JSON.stringify({ asks: 'a', trap: 'b', key: 'c', teach: '비공개 지도 코멘트' })
+}, { anonymized: true });
+assert.doesNotMatch(jsonAnon, /지도 포인트/);
+assert.doesNotMatch(jsonAnon, /비공개 지도 코멘트/);
+assert.match(jsonAnon, /풀이 포인트/);
+
 console.log('exam question review card tests passed');

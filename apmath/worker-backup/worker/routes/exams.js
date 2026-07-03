@@ -921,10 +921,50 @@ export async function handleExams(request, env, teacher, path, url) {
         ORDER BY CAST(question_no AS INTEGER), question_no
       `).bind(archiveFile).all();
       const meta = await env.DB.prepare('SELECT * FROM exam_analysis_meta WHERE archive_file = ?').bind(archiveFile).first();
+
+      // 실시간 정답률: 저장된 정적 분석과 분리해, 응시 데이터(wrong_answers)에서 매 요청 집계한다.
+      // 정답률(문항) = (응시자 수 - 그 문항 오답 수) / 응시자 수.
+      const archiveCandidates = getAssignmentArchiveCandidates(archiveFile);
+      const markers = archiveCandidates.map(() => '?').join(',');
+      const takersRow = await env.DB.prepare(
+        `SELECT COUNT(*) AS takers FROM exam_sessions WHERE archive_file IN (${markers})`
+      ).bind(...archiveCandidates).first();
+      const takers = Number(takersRow?.takers || 0);
+      const wrongAgg = await env.DB.prepare(`
+        SELECT wa.question_id AS question_no, COUNT(*) AS wrong
+        FROM wrong_answers wa
+        JOIN exam_sessions es ON es.id = wa.session_id
+        WHERE es.archive_file IN (${markers})
+        GROUP BY wa.question_id
+      `).bind(...archiveCandidates).all();
+      const wrongMap = {};
+      (wrongAgg.results || []).forEach(r => { wrongMap[String(r.question_no)] = Number(r.wrong || 0); });
+
+      // 문항 모집단: 블루프린트 ∪ 리뷰 ∪ 오답맵 (오답 0인 문항도 100%로 포함되게)
+      const bp = await env.DB.prepare(
+        `SELECT DISTINCT question_no FROM exam_blueprints WHERE archive_file IN (${markers})`
+      ).bind(...archiveCandidates).all();
+      const qnos = new Set();
+      (bp.results || []).forEach(r => qnos.add(String(r.question_no)));
+      (reviews.results || []).forEach(r => qnos.add(String(r.question_no)));
+      Object.keys(wrongMap).forEach(q => qnos.add(String(q)));
+      const rate = (w) => (takers > 0 ? Math.round(((takers - w) / takers) * 100) : null);
+      const questionStats = [...qnos]
+        .sort((a, b) => (parseInt(a, 10) || 0) - (parseInt(b, 10) || 0))
+        .map(q => ({ question_no: q, wrong_count: wrongMap[q] || 0, correct_rate: rate(wrongMap[q] || 0) }));
+      const statsMap = {};
+      questionStats.forEach(s => { statsMap[s.question_no] = s; });
+      const reviewsWithStats = (reviews.results || []).map(r => {
+        const s = statsMap[String(r.question_no)] || {};
+        return { ...r, wrong_count: s.wrong_count ?? null, correct_rate: s.correct_rate ?? null };
+      });
+
       return jsonResponse({
         success: true,
         archive_file: archiveFile,
-        reviews: reviews.results || [],
+        takers,
+        reviews: reviewsWithStats,
+        question_stats: questionStats,
         meta: meta || null
       });
     }
