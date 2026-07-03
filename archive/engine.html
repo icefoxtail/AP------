@@ -353,7 +353,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="prepareArchivePrint()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
+            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -366,10 +366,6 @@ const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
-const ARCHIVE_ASSET_VERSION = '20260702';
-function withArchiveAssetVersion(src) {
-    return `${src}?v=${ARCHIVE_ASSET_VERSION}`;
-}
 
 const QR_PATCH = {
     enabled: true,
@@ -385,33 +381,9 @@ function getIdentityTitle() {
     return AppState.identityTitle || AppState.title || window.examTitle || '수학 시험지';
 }
 
-function cleanExamTitleValue(value) {
-    return clampText(String(value || '').replace(/_content$/i, ''), 120);
-}
-
-function getArchiveDataFileTitle() {
-    try {
-        const p = new URLSearchParams(window.location.search);
-        const dataUrl = p.get('data');
-        if (!dataUrl) return '';
-        let filename = dataUrl.split('/').pop().split('?')[0];
-        filename = decodeURIComponent(filename).replace(/\.[^/.]+$/, '');
-        return cleanExamTitleValue(filename);
-    } catch (e) {
-        return '';
-    }
-}
-
-function getDefaultPrintableExamTitle() {
-    return getArchiveDataFileTitle()
-        || cleanExamTitleValue(window.examTitle)
-        || cleanExamTitleValue(getIdentityTitle())
-        || '수학 시험지';
-}
-
 function getDefaultPrintHeaderOptions() {
     return {
-        title: getDefaultPrintableExamTitle(),
+        title: getIdentityTitle(),
         metaRight: '',
         subtitle: '',
         showNameLine: true,
@@ -1046,7 +1018,18 @@ function normalizeExamTypeLabel(value) {
 }
 
 function getExamTitleFull() {
-    return getDefaultPrintableExamTitle();
+    if (window.examTitle) return window.examTitle;
+    if (getIdentityTitle() && getIdentityTitle() !== '수학 시험지') return getIdentityTitle();
+    try {
+        const p = new URLSearchParams(window.location.search);
+        const dataUrl = p.get('data');
+        if (dataUrl) {
+            let filename = dataUrl.split('/').pop().split('?')[0];
+            filename = decodeURIComponent(filename).replace(/\.[^/.]+$/, "");
+            if (filename) return filename;
+        }
+    } catch(e) {}
+    return getIdentityTitle() || '수학 시험지';
 }
 
 function makePage(area, type, pNum) {
@@ -1169,14 +1152,11 @@ async function init() {
         return;
     }
     const s = document.createElement('script');
-    s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : withArchiveAssetVersion(safeDataUrl);
+    s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : safeDataUrl + '?v=' + Date.now();
     s.onload = async () => {
         const qb = window.questionBank;
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
-        const urlTitle = cleanExamTitleValue(p.get('title'));
-        const fileTitle = getArchiveDataFileTitle();
-        const scriptTitle = cleanExamTitleValue(window.examTitle);
-        AppState.title = urlTitle || fileTitle || scriptTitle || '수학 시험지';
+        AppState.title = window.examTitle || p.get('title') || '수학 시험지';
         AppState.identityTitle = AppState.title;
         AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
         document.getElementById('ctrl-title').innerText = AppState.title;
@@ -1374,7 +1354,7 @@ function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}" loading="eager" decoding="async"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -1418,82 +1398,6 @@ async function applyAutoImageSizeClasses(root) {
         await waitForQuestionImage(img);
         wrap.classList.add(autoImageSizeClassFor(img));
     }));
-}
-
-function waitForPrintImages(root, timeoutMs = 6000) {
-    const images = Array.from((root || document).querySelectorAll('img'));
-    const pending = images.filter(img => !img.complete);
-    if (!pending.length) return Promise.resolve();
-
-    return new Promise(resolve => {
-        let remaining = pending.length;
-        let done = false;
-        const finishOne = () => {
-            if (done) return;
-            remaining -= 1;
-            if (remaining <= 0) {
-                done = true;
-                clearTimeout(timer);
-                resolve();
-            }
-        };
-        const timer = setTimeout(() => {
-            done = true;
-            resolve();
-        }, timeoutMs);
-        pending.forEach(img => {
-            img.addEventListener('load', finishOne, { once: true });
-            img.addEventListener('error', finishOne, { once: true });
-        });
-    });
-}
-
-async function prepareArchivePrint() {
-    const btn = document.getElementById('btn-print');
-    const originalText = btn ? btn.textContent : '';
-    if (btn) {
-        btn.disabled = true;
-        btn.textContent = '인쇄 준비 중...';
-    }
-    const snapshotWindow = window.open('', '_blank');
-    try {
-        const area = document.getElementById('print-area') || document.body;
-        if (document.fonts?.ready) await document.fonts.ready;
-        await waitForPrintImages(area);
-        await raf();
-        printArchiveSnapshot(area, snapshotWindow);
-    } finally {
-        if (btn) {
-            btn.disabled = false;
-            btn.textContent = originalText || '인쇄';
-        }
-    }
-}
-
-function printArchiveSnapshot(area, snapshotWindow) {
-    const source = area || document.getElementById('print-area');
-    if (!source) {
-        window.print();
-        return;
-    }
-    const win = snapshotWindow;
-    if (!win) {
-        window.print();
-        return;
-    }
-    const headAssets = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
-        .map(node => node.outerHTML)
-        .join('\n');
-    win.document.open();
-    win.document.write(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>시험지 출력</title>${headAssets}<style>
-        @media screen { body { margin:0 !important; padding:0 !important; background:#fff !important; } #print-area { padding:0 !important; gap:0 !important; } }
-        @media print { body { margin:0 !important; padding:0 !important; background:#fff !important; } }
-    </style></head><body><div id="print-area">${source.innerHTML}</div><script>
-        window.addEventListener('load', function () {
-            setTimeout(function () { window.focus(); window.print(); }, 80);
-        });
-    \x3C/script></body></html>`);
-    win.document.close();
 }
 
 async function renderExam(area, data) {
@@ -1591,10 +1495,11 @@ async function renderExam(area, data) {
                 block.items.slice(split).forEach(it => bRight.appendChild(it.box.cloneNode(true)));
             }
         });
-        await raf();
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]); await raf();
         const allPageBoxes = page.querySelectorAll('.q-box'); allPageBoxes.forEach(b => fitQuestionBox(b));
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
             allPageBoxes.forEach(b => autoCompress(b)); await raf();
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
         }
     }
 }
@@ -1774,7 +1679,7 @@ async function render() {
         await renderExam(area, AppState.data);
     }
 
-    if (AppState.mode === 'ans' && window.MathJax?.typesetPromise) {
+    if (window.MathJax?.typesetPromise) {
         await MathJax.typesetPromise([area]);
     }
 
