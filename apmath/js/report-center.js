@@ -393,6 +393,19 @@ function reportCenterEncodeArchivePath(path) {
         .join('/');
 }
 
+// 문항 이미지는 시험 js 파일과 같은 디렉터리 기준의 상대경로(예: "images/xxx.png").
+// archiveInfo.url(전체 js URL)의 디렉터리에 상대경로를 이어붙여 절대 URL로 만든다.
+function reportCenterResolveArchiveImageUrl(archiveInfo, image) {
+    const src = String(image || '').trim();
+    if (!src) return '';
+    if (/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src;
+    const baseUrl = String(archiveInfo?.url || '').trim();
+    if (!baseUrl) return '';
+    const dir = baseUrl.replace(/[?#].*$/, '').replace(/[^/]*$/, '');
+    const rel = src.replace(/^\.\//, '').replace(/^\//, '');
+    return dir + reportCenterEncodeArchivePath(rel);
+}
+
 function reportCenterNormalizeArchiveFile(raw) {
     const original = String(raw || '').trim();
     if (!original) {
@@ -704,6 +717,8 @@ function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = nul
             answer: '',
             solution: '',
             solutionText: '',
+            image: '',
+            imageSize: null,
             level: statRow?.difficulty || '',
             unit: statRow?.unit || '',
             unitKey: statRow?.unitKey || '',
@@ -729,6 +744,8 @@ function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = nul
         answer: question.answer ?? question.correctAnswer ?? question.correct ?? question.ans ?? '',
         solution: question.solution || question.explanation || question.commentary || '',
         solutionText: reportCenterLimitText(question.solution || question.explanation || question.commentary || '', 260),
+        image: question.image || question.imageUrl || question.img || question.figure || '',
+        imageSize: question.imageSize || null,
         level: question.level || question.difficulty || statRow?.difficulty || '',
         unit: question.standardUnit || question.standard_unit || question.unit || statRow?.unit || '',
         unitKey: question.standardUnitKey || question.standard_unit_key || statRow?.unitKey || '',
@@ -2047,16 +2064,36 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
         showSolution: true
     });
     const archiveDetails = Array.isArray(data?.archiveDetails?.details) ? data.archiveDetails.details : [];
+    const archiveLoaded = !!data?.archiveDetails;
+    const archiveInfo = reportCenterNormalizeArchiveFile(session.archive_file || archiveFile);
     const originalQuestionHtml = archiveDetails.length
-        ? archiveDetails.map(detail => `
+        ? archiveDetails.map(detail => {
+            const contentHtml = reportCenterArchiveTextToHtml(detail.content || detail.contentText || '');
+            const choiceHtml = (Array.isArray(detail.choices) ? detail.choices : [])
+                .map(choice => reportCenterArchiveTextToHtml(choice))
+                .filter(Boolean)
+                .map(choice => `<li>${choice}</li>`)
+                .join('');
+            const imageUrl = reportCenterResolveArchiveImageUrl(archiveInfo, detail.image);
+            const answerHtml = reportCenterArchiveTextToHtml(detail.answer);
+            const solutionHtml = reportCenterArchiveTextToHtml(detail.solution || detail.solutionText || '');
+            return `
             <article class="aprc-qreview-card">
-                <header class="aprc-qreview-head"><div class="aprc-qreview-title">${reportCenterEscape(detail.questionNo)}번 원문</div></header>
-                ${reportCenterArchiveTextToHtml(detail.contentText || detail.content || '') || '<p>원문 없음</p>'}
-                ${detail.answer !== undefined && detail.answer !== null && detail.answer !== '' ? `<section class="aprc-qreview-block"><b>정답</b><p>${reportCenterArchiveTextToHtml(detail.answer)}</p></section>` : ''}
-                ${reportCenterArchiveTextToHtml(detail.solutionText || detail.solution || '') ? `<section class="aprc-qreview-block"><b>해설 요약</b><p>${reportCenterArchiveTextToHtml(detail.solutionText || detail.solution || '')}</p></section>` : ''}
+                <header class="aprc-qreview-head">
+                    <div class="aprc-qreview-title">${reportCenterEscape(detail.questionNo)}번 원문${detail.unit ? ` · ${reportCenterEscape(detail.unit)}` : ''}</div>
+                    <div class="aprc-qreview-badge">${detail.found ? '원문 확인' : '원문 없음'}</div>
+                </header>
+                ${contentHtml ? `<div class="aprc-qreview-block">${contentHtml}</div>` : (detail.found ? '' : '<p style="font-size:12px; color:var(--secondary); font-weight:700;">원문 없음</p>')}
+                ${imageUrl ? `<img src="${reportCenterAttr(imageUrl)}" alt="${reportCenterEscape(detail.questionNo)}번 문항 그림" loading="lazy" style="max-width:100%; border-radius:10px; border:1px solid var(--border); margin-top:8px;" onerror="this.style.display='none'">` : ''}
+                ${choiceHtml ? `<ol class="aprc-qreview-choices">${choiceHtml}</ol>` : ''}
+                ${answerHtml ? `<section class="aprc-qreview-block aprc-qreview-answer"><b>정답</b><p>${answerHtml}</p></section>` : ''}
+                ${solutionHtml ? `<section class="aprc-qreview-block aprc-qreview-solution"><b>해설</b><p>${solutionHtml}</p></section>` : ''}
             </article>
-        `).join('')
-        : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">원문 없음</div>';
+        `;
+        }).join('')
+        : archiveLoaded
+            ? '<div style="font-size:12px; font-weight:700; color:var(--secondary);">원문 없음</div>'
+            : '<div id="report-center-student-original-loading" style="font-size:12px; font-weight:700; color:var(--secondary);">문제 원문을 불러오는 중입니다...</div>';
     return `
         <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
             <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">시험 대시보드</button>
@@ -2167,11 +2204,32 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
     `;
 }
 
+// 드릴다운 학생 화면에서 아카이브 문항 원문을 지연 로드한다.
+// fetch가 성공/실패 모두 자기캐싱하므로, 재렌더 시 cache hit → 동기 렌더되고 재트리거되지 않는다.
+function reportCenterEnsureStudentOriginalQuestions(studentId) {
+    if (typeof reportCenterFetchArchiveQuestionDetails !== 'function') return;
+    const nav = reportCenterNavState();
+    if (nav.level !== 'student') return;
+    const sid = nav.studentId || studentId;
+    const session = reportCenterFindStudentSchoolExamSession(sid, nav.archiveFile);
+    if (!session) return;
+    if (reportCenterGetCachedArchiveDetails(session.id)) return; // 이미 로드됨 → 동기 렌더가 처리
+    reportCenterFetchArchiveQuestionDetails(session).then(() => {
+        const cur = reportCenterNavState();
+        if (cur.level === 'student' && String(cur.studentId || sid) === String(sid)) {
+            openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
+        }
+    }).catch(error => {
+        console.warn('[reportCenterEnsureStudentOriginalQuestions] failed:', error);
+    });
+}
+
 function openReportCenterModal(studentId, activeTab = 'daily', options = {}) {
     const forceDrilldown = !!options.forceDrilldown;
     const forceAdvanced = !!options.forceAdvanced;
     if (!forceAdvanced && (forceDrilldown || !reportCenterAdvancedMode())) {
         reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
+        reportCenterEnsureStudentOriginalQuestions(studentId);
         return;
     }
     if (activeTab === 'exam') return openReportCenterExam(studentId);

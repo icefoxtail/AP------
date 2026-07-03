@@ -280,6 +280,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-02",
+      "rangeStartUnit": "일차부등식",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "M2-03",
+      "rangeEndUnit": "연립일차방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-02",
+          "rangeStartUnit": "일차부등식",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "M2-03",
+          "rangeEndUnit": "연립일차방정식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계.js",
       "school": "강남여고",
       "topic": "",
