@@ -167,7 +167,8 @@ const standardReviewHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3',
   }
 });
 assert.match(standardReviewHtml, /aprc-pdf-review-panel/, 'standard wrong report should render question review cards');
-assert.match(standardReviewHtml, /aprc-pdf-table-panel/, 'standard wrong report should render question analysis table');
+assert.doesNotMatch(standardReviewHtml, /aprc-pdf-table-panel/, 'standard wrong report should not render duplicated question analysis table');
+assert.doesNotMatch(standardReviewHtml, /aprc-pdf-qcomment-panel/, 'standard wrong report should not render duplicated question comments');
 assert.doesNotMatch(standardReviewHtml, />정답</, 'standard question review answers should remain hidden by default');
 
 const summarySection = pdfHtml.match(/aprc-pdf-parent-summary[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
@@ -204,7 +205,7 @@ const studioHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
 });
 assert.match(studioHtml, /선생님이 고친 요약입니다/);
 assert.match(studioHtml, /aprc-trend-svg/);
-assert.match(studioHtml, /aprc-weakness-table/);
+assert.doesNotMatch(studioHtml, /aprc-weakness-table/, 'compact PDF should not reintroduce the repeated weakness table');
 const studioChartSvg = studioHtml.match(/<svg class="aprc-trend-svg"[\s\S]*?<\/svg>/)?.[0] || '';
 assert.match(studioChartSvg, />76</, 'studio chart should use displayData score');
 assert.doesNotMatch(studioChartSvg, />90</, 'edited chart display score should not fall back to DB score inside chart label');
@@ -464,7 +465,7 @@ assert.doesNotMatch(perfectHtml, /aprc-pdf-review-panel/, 'perfect report should
 assert.doesNotMatch(perfectHtml, /다음에 꼭 짚어볼 부분/, 'perfect report should hide weakness block');
 assert.doesNotMatch(perfectHtml, /반복 오답 단원은 확인되지 않았습니다|다시 볼 부분이 없습니다/);
 const perfectParentSection = perfectHtml.match(/aprc-pdf-parent-message[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
-assert.match(perfectParentSection, /전 문항을 정확히 풀었습니다/);
+assert.match(perfectParentSection, /책임 있게 이어가겠습니다/);
 assert.doesNotMatch(perfectParentSection, /틀린 문제|약점/);
 
 // 전문체 정책: 보완/오답/유사 유형은 의도된 용어이므로 금지 목록에서 제외. AI식 모호어만 금지.
