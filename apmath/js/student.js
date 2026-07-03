@@ -2550,7 +2550,7 @@ function openStudentReportOutputFromDetail(sid, sessionId = '') {
         toast('출력할 원내평가 기록이 없습니다.', 'warn');
         return;
     }
-    openReportCenterExam(key, sessionId || sessions[0].id || '');
+    reportCenterOpenStudentDrilldown(key, sessionId || sessions[0].id || '');
 }
 
 function renderStudentSchoolLatestCard(sid, records) {
