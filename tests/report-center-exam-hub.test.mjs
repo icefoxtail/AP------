@@ -71,7 +71,7 @@ assert.equal(final.blueprintCount, 1);
 assert.equal(list.some(row => row.archiveFile === 'exams/no-session.js'), false);
 
 const html = context.reportCenterBuildDrilldownShell('s1');
-assert.match(html, /aprc-exam-hub-card/);
+assert.match(html, /aprc-exam-card/);
 assert.match(html, /중간 A/);
 assert.match(html, /문항분석 2\/3/);
 assert.match(html, /응시 2/);

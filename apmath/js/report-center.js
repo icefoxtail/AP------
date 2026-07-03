@@ -1551,6 +1551,16 @@ function reportCenterEnsureWideOverlay() {
         .aprc-action-btn--primary { background:var(--primary); border-color:var(--primary); color:#fff; }
         .aprc-action-btn--primary:hover { background:var(--primary); border-color:var(--primary); filter:brightness(1.05); }
         .aprc-action-btn--accent { background:var(--primary-soft); border-color:rgba(var(--primary-rgb),0.18); color:var(--primary); }
+        /* L0 시험 카드 + 상태 칩 */
+        .aprc-exam-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; }
+        .aprc-exam-card { display:flex; flex-direction:column; align-items:stretch; gap:10px; min-height:148px; padding:14px; text-align:left; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); cursor:pointer; box-shadow:none; font-family:inherit; transition:transform 150ms ease, background 180ms ease, border-color 180ms ease; }
+        .aprc-exam-card:hover { background:var(--surface-2); border-color:rgba(var(--primary-rgb),0.22); }
+        .aprc-exam-card:active { transform:scale(0.98); }
+        .aprc-exam-card:focus-visible { outline:none; box-shadow:0 0 0 4px rgba(var(--primary-rgb),0.14); }
+        .aprc-exam-card__title { display:block; font-size:14px; font-weight:900; color:var(--text); line-height:1.35; }
+        .aprc-exam-card__sub { display:block; min-height:18px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
+        .aprc-exam-card__chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; }
+        .aprc-chip { padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800; white-space:nowrap; }
         @media (max-width:760px) {
             #report-center-wide-overlay { align-items:stretch; justify-content:stretch; padding:0; }
             .report-center-wide-content { width:100%; height:100%; max-height:none; border-radius:0; border:0; }
@@ -1761,19 +1771,18 @@ function reportCenterRenderExamHubList(studentId) {
         `;
     }
     return `
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px;">
+        <div class="aprc-exam-grid">
             ${exams.map(exam => `
-                <button class="btn aprc-exam-hub-card" type="button" data-archive-file="${reportCenterAttr(exam.archiveFile)}"
-                        style="display:flex; flex-direction:column; align-items:stretch; gap:10px; min-height:148px; padding:14px; text-align:left; border-radius:14px; background:var(--surface); border:1px solid var(--border); box-shadow:none;"
+                <button class="aprc-exam-card" type="button" data-archive-file="${reportCenterAttr(exam.archiveFile)}"
                         onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(exam.archiveFile)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">
-                    <span style="display:block; font-size:14px; font-weight:900; color:var(--text); line-height:1.35;">${reportCenterEscape(exam.title || '시험지')}</span>
-                    <span style="display:block; min-height:18px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">${reportCenterEscape([exam.school, exam.grade].filter(Boolean).join(' · ') || '학교/학년 미지정')}</span>
-                    <span style="display:flex; gap:6px; flex-wrap:wrap; margin-top:auto;">
-                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">${reportCenterEscape(exam.latestDate || '-')}</span>
-                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">문항분석 ${exam.reviewCount}/${exam.blueprintCount || '-'}</span>
-                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">응시 ${exam.takers}</span>
-                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">반 ${exam.classIds?.length || 0}</span>
-                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">오답입력 ${exam.wrongEntered}</span>
+                    <span class="aprc-exam-card__title">${reportCenterEscape(exam.title || '시험지')}</span>
+                    <span class="aprc-exam-card__sub">${reportCenterEscape([exam.school, exam.grade].filter(Boolean).join(' · ') || '학교/학년 미지정')}</span>
+                    <span class="aprc-exam-card__chips">
+                        <span class="aprc-chip">${reportCenterEscape(exam.latestDate || '-')}</span>
+                        <span class="aprc-chip">문항분석 ${exam.reviewCount}/${exam.blueprintCount || '-'}</span>
+                        <span class="aprc-chip">응시 ${exam.takers}</span>
+                        <span class="aprc-chip">반 ${exam.classIds?.length || 0}</span>
+                        <span class="aprc-chip">오답입력 ${exam.wrongEntered}</span>
                     </span>
                 </button>
             `).join('')}
@@ -1879,8 +1888,8 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape([hub.school, hub.grade].filter(Boolean).join(' · ') || archiveKey)}</div>
                     </div>
                     <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                        <span style="padding:6px 9px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:900;">응시 ${hub.takers || sessions.length}</span>
-                        <span style="padding:6px 9px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:900;">문항분석 ${hub.reviewCount}/${hub.blueprintCount || '-'}</span>
+                        <span class="aprc-chip">응시 ${hub.takers || sessions.length}</span>
+                        <span class="aprc-chip">문항분석 ${hub.reviewCount}/${hub.blueprintCount || '-'}</span>
                     </div>
                 </div>
                 <div style="margin-top:10px; font-size:13px; font-weight:700; color:var(--text); line-height:1.7;">${reportCenterEscape(reviews.meta?.overview_text || reviews.meta?.overview || '저장된 시험지 총평이 없습니다.')}</div>
@@ -1910,7 +1919,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
             <section class="aprc-section">
                 <div class="aprc-section-title">전체 응시 정답률</div>
                 <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                    ${rates.rows.map(row => `<span style="padding:6px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">${reportCenterEscape(row.questionNo)}번 ${row.correctRate === null ? '-' : `${row.correctRate}%`}</span>`).join('') || '<span style="font-size:12px; font-weight:700; color:var(--secondary);">집계할 문항이 없습니다.</span>'}
+                    ${rates.rows.map(row => `<span class="aprc-chip">${reportCenterEscape(row.questionNo)}번 ${row.correctRate === null ? '-' : `${row.correctRate}%`}</span>`).join('') || '<span style="font-size:12px; font-weight:700; color:var(--secondary);">집계할 문항이 없습니다.</span>'}
                 </div>
             </section>
                 </div>
