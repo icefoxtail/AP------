@@ -1031,6 +1031,7 @@ function reportCenterRenderArchiveDetails(detailsPayload) {
                     ${Number.isFinite(d.correctRate) ? `전체 정답률 ${d.correctRate}%` : '전체 정답률 -'}${Number.isFinite(d.classCorrectRate) ? ` · 반 정답률 ${d.classCorrectRate}%` : ''} · ${reportCenterEscape(d.meaning || '-')}
                 </div>
                 ${contentHtml ? `<div class="report-archive-question-text" style="font-size:12px; color:var(--text); line-height:1.65; margin-top:8px; background:var(--surface-2); border-radius:10px; padding:9px 10px; white-space:normal;">${contentHtml}</div>` : ''}
+                ${d.image && reportCenterResolveArchiveImageUrl(archiveInfo, d.image) ? `<img src="${reportCenterAttr(reportCenterResolveArchiveImageUrl(archiveInfo, d.image))}" alt="${reportCenterEscape(d.questionNo)}번 문항 그림" loading="lazy" style="max-width:100%; margin-top:8px; border-radius:10px; border:1px solid var(--border);" onerror="this.style.display='none'">` : ''}
                 ${answerRowHtml}
                 ${d.solutionText ? `<div style="font-size:12px; color:var(--secondary); line-height:1.6; margin-top:7px;">해설 요약: ${reportCenterEscape(d.solutionText)}</div>` : ''}
             </div>
@@ -2063,37 +2064,8 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
         showContent: true,
         showSolution: true
     });
-    const archiveDetails = Array.isArray(data?.archiveDetails?.details) ? data.archiveDetails.details : [];
-    const archiveLoaded = !!data?.archiveDetails;
-    const archiveInfo = reportCenterNormalizeArchiveFile(session.archive_file || archiveFile);
-    const originalQuestionHtml = archiveDetails.length
-        ? archiveDetails.map(detail => {
-            const contentHtml = reportCenterArchiveTextToHtml(detail.content || detail.contentText || '');
-            const choiceHtml = (Array.isArray(detail.choices) ? detail.choices : [])
-                .map(choice => reportCenterArchiveTextToHtml(choice))
-                .filter(Boolean)
-                .map(choice => `<li>${choice}</li>`)
-                .join('');
-            const imageUrl = reportCenterResolveArchiveImageUrl(archiveInfo, detail.image);
-            const answerHtml = reportCenterArchiveTextToHtml(detail.answer);
-            const solutionHtml = reportCenterArchiveTextToHtml(detail.solution || detail.solutionText || '');
-            return `
-            <article class="aprc-qreview-card">
-                <header class="aprc-qreview-head">
-                    <div class="aprc-qreview-title">${reportCenterEscape(detail.questionNo)}번 원문${detail.unit ? ` · ${reportCenterEscape(detail.unit)}` : ''}</div>
-                    <div class="aprc-qreview-badge">${detail.found ? '원문 확인' : '원문 없음'}</div>
-                </header>
-                ${contentHtml ? `<div class="aprc-qreview-block">${contentHtml}</div>` : (detail.found ? '' : '<p style="font-size:12px; color:var(--secondary); font-weight:700;">원문 없음</p>')}
-                ${imageUrl ? `<img src="${reportCenterAttr(imageUrl)}" alt="${reportCenterEscape(detail.questionNo)}번 문항 그림" loading="lazy" style="max-width:100%; border-radius:10px; border:1px solid var(--border); margin-top:8px;" onerror="this.style.display='none'">` : ''}
-                ${choiceHtml ? `<ol class="aprc-qreview-choices">${choiceHtml}</ol>` : ''}
-                ${answerHtml ? `<section class="aprc-qreview-block aprc-qreview-answer"><b>정답</b><p>${answerHtml}</p></section>` : ''}
-                ${solutionHtml ? `<section class="aprc-qreview-block aprc-qreview-solution"><b>해설</b><p>${solutionHtml}</p></section>` : ''}
-            </article>
-        `;
-        }).join('')
-        : archiveLoaded
-            ? '<div style="font-size:12px; font-weight:700; color:var(--secondary);">원문 없음</div>'
-            : '<div id="report-center-student-original-loading" style="font-size:12px; font-weight:700; color:var(--secondary);">문제 원문을 불러오는 중입니다...</div>';
+    // 문제 원문은 평가 리포트와 동일한 로더/렌더러를 재사용한다(펼칠 때 지연 로드).
+    const originalQuestionHtml = '<div id="report-center-archive-details"></div>';
     return `
         <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
             <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">시험 대시보드</button>
@@ -2110,7 +2082,7 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
                 <summary style="cursor:pointer; font-size:14px; font-weight:900; color:var(--text);">선생님용 상세 분석 보기</summary>
                 <div style="margin-top:10px;">${wrongRows.length ? `<div class="aprc-qreview-list">${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">저장된 문항 분석이 없습니다.</div>'}</div>` : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">오답 문항이 없습니다.</div>'}</div>
             </details>
-            <details style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+            <details style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);" ontoggle="if(this.open){reportCenterLoadArchiveQuestionDetails('${escapeReportJsString(studentId)}','${escapeReportJsString(session.id)}',{ silent: true });}">
                 <summary style="cursor:pointer; font-size:14px; font-weight:900; color:var(--text);">문제 원문 확인</summary>
                 <div class="aprc-qreview-list" style="margin-top:10px;">${originalQuestionHtml}</div>
             </details>
@@ -2229,7 +2201,6 @@ function openReportCenterModal(studentId, activeTab = 'daily', options = {}) {
     const forceAdvanced = !!options.forceAdvanced;
     if (!forceAdvanced && (forceDrilldown || !reportCenterAdvancedMode())) {
         reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
-        reportCenterEnsureStudentOriginalQuestions(studentId);
         return;
     }
     if (activeTab === 'exam') return openReportCenterExam(studentId);
