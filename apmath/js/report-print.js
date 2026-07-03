@@ -821,7 +821,7 @@ ${reportCenterPremiumReportStyle()}
         }
     };
 </script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" onerror="setTimeout(window.__AP_REPORT_TRIGGER_PRINT, 800)"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" onerror="setTimeout(window.__AP_REPORT_TRIGGER_PRINT, 2500)"></script>
 </head>
 <body>
 ${reportHtml}
@@ -829,7 +829,7 @@ ${reportHtml}
     window.addEventListener('load', function() {
         setTimeout(function() {
             if (!window.__AP_REPORT_PRINT_TRIGGERED) window.__AP_REPORT_TRIGGER_PRINT();
-        }, 1200);
+        }, 5000);
     });
 </script>
 </body>
