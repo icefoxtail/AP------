@@ -1845,27 +1845,6 @@ async function openClinicPrintCenter(classId, options = {}) {
                 </div>
             </section>
 
-            <section class="clinic-print-section clinic-print-header-card">
-                <input type="hidden" id="clinic-print-header-title-dirty" value="0">
-                <div class="clinic-print-section-title">인쇄 설정</div>
-                <label class="clinic-print-header-field">
-                    <span>제목</span>
-                    <input id="clinic-print-header-title" class="clinic-print-header-input" type="text" maxlength="80" value="${clinicPrintEscapeAttr(clinicPrintGetHeaderDefaultTitle(classId))}" oninput="clinicPrintSetHeaderTitleDirty(true)">
-                </label>
-                <label class="clinic-print-header-field">
-                    <span>부제목 <span class="clinic-print-section-title--soft">(비우면 반·시험 자동 입력)</span></span>
-                    <input id="clinic-print-header-subtitle" class="clinic-print-header-input" type="text" maxlength="120" placeholder="선택 입력">
-                </label>
-                <div class="clinic-print-note">제목·보조 문구는 우측 미리보기 헤더를 직접 클릭해서도 수정할 수 있어요. 이름·점수·날짜는 1페이지 헤더에 자동 입력되고, 2페이지부터는 작은 이름표가 붙습니다.</div>
-                <div class="clinic-print-header-checks">
-                    <label><input id="clinic-print-header-name" type="checkbox" checked> 이름칸</label>
-                    <label><input id="clinic-print-header-score" type="checkbox" checked> 점수칸</label>
-                    <label><input id="clinic-print-header-date" type="checkbox"> 날짜</label>
-                    <label><input id="clinic-print-header-sol" type="checkbox" checked> 해설지 적용</label>
-                    <label><input id="clinic-print-header-ans" type="checkbox" checked> 정답표 적용</label>
-                </div>
-            </section>
-
             <section class="clinic-print-section">
                 <div class="clinic-print-section-head">
                     <div class="clinic-print-section-title">시험 목록</div>
@@ -1916,6 +1895,27 @@ async function openClinicPrintCenter(classId, options = {}) {
                     </div>
                 </div>
                 <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
+            </section>
+
+            <section class="clinic-print-section clinic-print-header-card">
+                <input type="hidden" id="clinic-print-header-title-dirty" value="0">
+                <div class="clinic-print-section-title">인쇄 설정</div>
+                <label class="clinic-print-header-field">
+                    <span>제목</span>
+                    <input id="clinic-print-header-title" class="clinic-print-header-input" type="text" maxlength="80" value="${clinicPrintEscapeAttr(clinicPrintGetHeaderDefaultTitle(classId))}" oninput="clinicPrintSetHeaderTitleDirty(true)">
+                </label>
+                <label class="clinic-print-header-field">
+                    <span>부제목 <span class="clinic-print-section-title--soft">(비우면 반·시험 자동 입력)</span></span>
+                    <input id="clinic-print-header-subtitle" class="clinic-print-header-input" type="text" maxlength="120" placeholder="선택 입력">
+                </label>
+                <div class="clinic-print-note">제목·보조 문구는 우측 미리보기 헤더를 직접 클릭해서도 수정할 수 있어요. 이름·점수·날짜는 1페이지 헤더에 자동 입력되고, 2페이지부터는 작은 이름표가 붙습니다.</div>
+                <div class="clinic-print-header-checks">
+                    <label><input id="clinic-print-header-name" type="checkbox" checked> 이름칸</label>
+                    <label><input id="clinic-print-header-score" type="checkbox" checked> 점수칸</label>
+                    <label><input id="clinic-print-header-date" type="checkbox"> 날짜</label>
+                    <label><input id="clinic-print-header-sol" type="checkbox" checked> 해설지 적용</label>
+                    <label><input id="clinic-print-header-ans" type="checkbox" checked> 정답표 적용</label>
+                </div>
             </section>
 
             <div class="clinic-print-actions">
