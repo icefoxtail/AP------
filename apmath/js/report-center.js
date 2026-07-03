@@ -2442,10 +2442,22 @@ function reportCenterAssertParentSafe(text) {
     return value;
 }
 
+// 학부모 문장에 함정 원문을 얹어도 자연스러운지 판정한다.
+// 한글이 충분하고 수식/기호가 과하지 않은 서술문만 통과(코드/수식 축약은 제외).
+function reportCenterTrapReadsNatural(text) {
+    const value = String(text || '').trim();
+    if (!value) return false;
+    const hangul = (value.match(/[가-힣]/g) || []).length;
+    if (hangul < 6) return false;
+    const symbols = (value.match(/[=^/√{}\\()|<>]/g) || []).length;
+    return symbols <= 2 && (hangul / value.length) >= 0.4;
+}
+
 function reportCenterBuildParentSafeQuestionComment(row = {}, detail = null, opts = {}) {
     const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const concept = reviewData.concept || row.concept || detail?.concept || row.unit || row.unitKey || detail?.unit || '해당 단원';
-    const trap = reportCenterLooksLikeCodeText(reviewData.trap || '') ? '' : String(reviewData.trap || '').trim();
+    const rawTrap = reportCenterLooksLikeCodeText(reviewData.trap || '') ? '' : String(reviewData.trap || '').trim();
+    const trap = reportCenterTrapReadsNatural(rawTrap) ? rawTrap : '';
     const base = reportCenterBuildParentQuestionInsight({ ...row, ...reviewData, unit: concept }, detail, opts);
     const trapSentence = trap
         ? ` 특히 ${trap.replace(/[.。]+$/g, '')} 부분을 다음 수업에서 다시 정리하겠습니다.`
@@ -2610,6 +2622,34 @@ function reportCenterCounselEditMode(studentId, archiveFile) {
     return !!window.AP_REPORT_COUNSEL_EDIT?.[reportCenterCounselEditKey(studentId, archiveFile)];
 }
 
+// 상담 리포트 수정본은 시험(archive) 메타 안에서 학생 단위 맵으로 보관한다.
+function reportCenterFindExamMetaRow(archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    return (Array.isArray(state?.db?.exam_analysis_meta) ? state.db.exam_analysis_meta : [])
+        .find(row => reportCenterNormalizeExamAnalysisArchiveKey(row?.archive_file || row?.archiveFile || '') === archiveKey) || null;
+}
+
+function reportCenterParseCounselReports(metaRow) {
+    const raw = metaRow?.counsel_reports;
+    if (!raw) return {};
+    if (typeof raw === 'object') return { ...raw };
+    if (typeof raw === 'string') {
+        try {
+            const parsed = JSON.parse(raw);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (e) {
+            return {};
+        }
+    }
+    return {};
+}
+
+function reportCenterGetSavedCounselFields(studentId, archiveFile) {
+    const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
+    const saved = reports[String(studentId)];
+    return saved && typeof saved === 'object' ? saved : null;
+}
+
 function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, options = {}) {
     const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
     if (!session) return '<section class="aprc-counsel-report">상담 리포트를 만들 시험 기록이 없습니다.</section>';
@@ -2630,6 +2670,13 @@ function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, option
         action: actionItems.join('\n'),
         parent: parentReport || reportCenterBuildCompactParentMessage(data)
     };
+    // 저장된 학생별 수정본이 있으면 자동 생성분을 덮어쓴다(재렌더 시 수정 반영).
+    const savedFields = reportCenterGetSavedCounselFields(studentId, session.archive_file || archiveFile);
+    if (savedFields) {
+        Object.keys(sections).forEach(key => {
+            if (typeof savedFields[key] === 'string' && savedFields[key].trim()) sections[key] = savedFields[key];
+        });
+    }
     const editMode = options.editMode ?? reportCenterCounselEditMode(studentId, session.archive_file || archiveFile);
     const field = (key, title) => editMode
         ? `<label class="aprc-counsel-field"><b>${title}</b><textarea data-report-counsel-field="${key}">${reportCenterEscape(sections[key])}</textarea></label>`
@@ -2659,10 +2706,10 @@ function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
     document.querySelectorAll('[data-report-counsel-field]').forEach(el => {
         fields[el.getAttribute('data-report-counsel-field')] = String(el.value || '').trim();
     });
-    reportCenterUpsertExamMeta(archiveFile, {
-        overview_text: fields.meaning || fields.summary || '',
-        counsel_report: JSON.stringify(fields)
-    });
+    // 학생 단위로만 저장한다 — 시험 총평(overview_text)이나 다른 학생 상담본을 오염시키지 않는다.
+    const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
+    reports[String(studentId)] = fields;
+    reportCenterUpsertExamMeta(archiveFile, { counsel_reports: JSON.stringify(reports) });
     reportCenterSetCounselEditMode(studentId, archiveFile, false);
     if (typeof toast === 'function') toast('상담 리포트 수정 내용을 저장했습니다.', 'success');
     if (typeof openReportCenterModal === 'function' && typeof document?.getElementById === 'function') openReportCenterModal(studentId);

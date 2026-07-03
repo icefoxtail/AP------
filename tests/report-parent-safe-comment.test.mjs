@@ -44,4 +44,15 @@ const other = context.reportCenterBuildParentSafeQuestionComment({
 });
 assert.notEqual(comment, other);
 
+// F4: 수식/코드 축약 함정은 학부모 문장에 얹지 않는다(부자연 방지). 은행 문장만으로 자연스럽게.
+const shorthand = context.reportCenterBuildParentSafeQuestionComment({
+  questionNo: 7,
+  unit: '이차방정식',
+  correctRate: 12,
+  reviewText: JSON.stringify({ concept: '근의 공식', tag: '개념 재정리', trap: 'BC=x+b/2 세팅' })
+});
+assert.doesNotMatch(shorthand, /BC|세팅/, '수식 축약 함정은 학부모 문장에 얹히면 안 됨');
+assert.equal(context.reportCenterTrapReadsNatural('BC=x+b/2 세팅'), false);
+assert.equal(context.reportCenterTrapReadsNatural('복잡한 조건을 식으로 옮기는 첫 단계에서 방향을 잡기 어렵습니다'), true);
+
 console.log('report parent safe comment test passed');

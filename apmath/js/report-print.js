@@ -475,8 +475,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                             <th>문제</th>
                             <th>단원</th>
                             <th>난도</th>
-                            <th>전체 응시 난도</th>
-                            <th>우리 반 난도</th>
+                            <th>전체 응시 정답률</th>
+                            <th>우리 반 정답률</th>
                             <th>해석</th>
                         </tr>
                     </thead>
@@ -526,7 +526,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     if (studioOptions.includeScoreTrend) {
         html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
     }
-    return reportCenterAssertParentSafe(html);
+    // 학부모 표준 리포트에만 안전 필터를 적용한다. 고급(선생님용) PDF는 raw 용어를 보존한다.
+    return isAdvancedPdf ? html : reportCenterAssertParentSafe(html);
 }
 
 function reportCenterPolishCleanPdfDocumentHtml(html, context = {}) {
