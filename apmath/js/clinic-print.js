@@ -1907,8 +1907,6 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div id="clinic-print-type-result"></div>
             </section>
 
-            <button id="clinic-print-preview-btn" class="btn apms-button apms-button--quiet clinic-print-submit" onclick="clinicPrintPreview('${safeClassIdForJs}')">미리보기</button>
-
             <section id="clinic-print-student-section" class="clinic-print-section">
                 <div class="clinic-print-section-head">
                     <div class="clinic-print-section-title">출제할 학생 선택</div>
@@ -1920,7 +1918,10 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
             </section>
 
-            <button id="clinic-print-submit-btn" class="btn apms-button apms-button--primary btn-primary clinic-print-submit" onclick="clinicPrintSubmit('${safeClassIdForJs}')">출제하기</button>
+            <div class="clinic-print-actions">
+                <button id="clinic-print-preview-btn" type="button" class="btn apms-button apms-button--quiet clinic-print-submit" onclick="clinicPrintPreview('${safeClassIdForJs}')">미리보기</button>
+                <button id="clinic-print-submit-btn" type="button" class="btn apms-button apms-button--primary btn-primary clinic-print-submit" onclick="clinicPrintSubmit('${safeClassIdForJs}')">출제하기</button>
+            </div>
         </div>
         </div>
         <div class="clinic-print-layout__preview" aria-label="출력 미리보기">

@@ -793,6 +793,16 @@
     font-weight: 600;
 }
 
+/* 하단 액션 행: 미리보기 + 출제하기를 한 줄로 (내용 선택 뒤, 서식 아래) */
+.clinic-print-actions {
+    display: flex;
+    gap: 8px;
+}
+.clinic-print-actions > .clinic-print-submit {
+    flex: 1 1 0;
+    width: auto;
+}
+
 /* ---- 모달 진입 메뉴(오답/유사문항) ---- */
 .clinic-print-menu-grid {
     display: grid;
