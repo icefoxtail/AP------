@@ -1,5 +1,48 @@
 # CODEX_RESULT
 
+## 2026-07-03 Report Center Redesign Summary
+
+Branch: `feat/report-center-redesign`
+
+Completed all 6 directive steps as separate commits:
+
+1. `e669cc6e` - Added global `reportCenterAdvancedMode` / `reportCenterSetAdvancedMode`, the default drilldown shell, advanced toggle, and `AP_REPORT_NAV` navigation state.
+2. `27ea4085` - Added L0 exam hub cards from `state.db.exam_sessions`, grouped by `archive_file`, with review/blueprint/taker/wrong-entry counts.
+3. `15a832dd` - Added L1 exam dashboard with saved overview, blueprint distribution, live cohort correct rates, question-review read view, and student list drilldown.
+4. `b678bb8e` - Promoted question analysis/review sections into the standard PDF path while keeping trend/distribution graphs opt-in.
+5. `c32f1fba` - Added L2 student report/counsel view and changed student-detail report entry to jump directly into the student drilldown.
+6. `84eaeec5` - Gated legacy premium/studio toolbar controls behind advanced mode while preserving print/back actions in basic mode.
+
+Verification passed:
+
+```
+node tests/report-center-shell.test.mjs
+node tests/report-center-exam-hub.test.mjs
+node tests/report-center-exam-dashboard.test.mjs
+node tests/report-center-student-view.test.mjs
+node tests/report-center-advanced-policy.test.mjs
+node tests/report-exam-trend.test.mjs
+node tests/exam-question-review-card.test.mjs
+node tests/apmath-report-easy-language.test.js
+node tests/apmath-global-surface.test.js
+```
+
+Files intentionally changed for this directive:
+
+- `apmath/js/report-center.js`
+- `apmath/js/report-print.js`
+- `apmath/js/student.js`
+- `tests/report-center-shell.test.mjs`
+- `tests/report-center-exam-hub.test.mjs`
+- `tests/report-center-exam-dashboard.test.mjs`
+- `tests/report-center-student-view.test.mjs`
+- `tests/report-center-advanced-policy.test.mjs`
+- `tests/report-exam-trend.test.mjs`
+- `tests/apmath-student-grade-report-entry.test.js`
+- `tests/fixtures/apmath-surface-report.json`
+
+Existing unrelated working-tree items were left untouched: `tests/fixtures/apmath-surface-classroom.json`, `tests/fixtures/apmath-surface-dashboard.json`, and the untracked directive file under `docs/plans`.
+
 ## 1. 생성/수정 파일
 
 이번 세션(오답 클리닉 학생 타깃팅 개편 + 전수 조사 + 순차 수정)에서 실제로 만들거나 고친 파일:
