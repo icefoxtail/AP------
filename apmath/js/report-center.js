@@ -2730,12 +2730,21 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
     const stats = data.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
     const actionItems = reportCenterBuildAcademyActionPlan(data);
+    // 프리미엄 분석이 있으면 카톡/짧은 상담용 문구도 AI 요약·안내로 대체.
+    const simpleAi = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    const isSimplePremium = !!(simpleAi && reportCenterIsPremiumAiSource(simpleAi.source));
+    const simpleSummary = isSimplePremium
+        ? (simpleAi.kakaoSummary || simpleAi.summary || reportCenterBuildCompactExamSummary(data))
+        : reportCenterBuildCompactExamSummary(data);
+    const simpleParent = isSimplePremium && simpleAi.parentMessage
+        ? simpleAi.parentMessage
+        : reportCenterBuildCompactParentMessage(data);
     const lines = [
         `${student.name || '학생'} · ${session.exam_title || '시험'} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
-        reportCenterBuildCompactExamSummary(data),
+        simpleSummary,
         wrongRows.length ? `${reportCenterShortQuestionList(wrongRows, 5)} 문항을 우선 복습합니다.` : '이번 시험은 오답 문항이 없어 다음 단원 확장 학습으로 이어갑니다.',
         actionItems.slice(0, 2).join(' '),
-        reportCenterBuildCompactParentMessage(data)
+        simpleParent
     ].filter(Boolean);
     return `
         <article class="aprc-counsel-report" data-report-school-exam-simple="1">
@@ -2945,6 +2954,16 @@ function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, option
         action: actionItems.join('\n'),
         parent: parentReport || reportCenterBuildCompactParentMessage(data)
     };
+    // 우선순위: 저장된 수정본 > 프리미엄 AI > 기본 뱅크. 프리미엄이 있으면 뱅크 문구를 AI로 대체.
+    const counselAi = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    if (counselAi && reportCenterIsPremiumAiSource(counselAi.source)) {
+        if (counselAi.summary) sections.meaning = counselAi.summary;
+        if (counselAi.wrongAnalysis) sections.cause = counselAi.wrongAnalysis;
+        if (counselAi.diagnosis) sections.counsel = counselAi.diagnosis;
+        if (Array.isArray(counselAi.nextActions) && counselAi.nextActions.length) sections.action = counselAi.nextActions.join('\n');
+        else if (counselAi.nextPlan) sections.action = counselAi.nextPlan;
+        if (counselAi.parentMessage) sections.parent = counselAi.parentMessage;
+    }
     // 저장된 학생별 수정본이 있으면 자동 생성분을 덮어쓴다(재렌더 시 수정 반영).
     const savedFields = reportCenterGetSavedCounselFields(studentId, session.archive_file || archiveFile);
     if (savedFields) {
