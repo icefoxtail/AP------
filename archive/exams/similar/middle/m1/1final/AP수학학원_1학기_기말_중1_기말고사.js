@@ -38,7 +38,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: "빼빼로 $x$개를 5명이서 나누고 1개가 남았을 때 한 명이 가지는 사람의 개수를 식으로 나타낸 것으로 옳은 것을 고르시오. [4점]",
+    content: "빼빼로 $x$개를 5명이서 나누고 1개가 남았을 때 한 명이 가지는 빼빼로의 개수를 식으로 나타낸 것으로 옳은 것을 고르시오. [4점]",
     choices: [
     "$\\frac{x}{5} + 1$",
     "$\\frac{x+1}{5}$",
