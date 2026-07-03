@@ -1421,10 +1421,85 @@ function reportCenterAdvancedToggleHtml(studentId, activeTab = 'daily') {
     `;
 }
 
+function reportCenterBuildExamHubList() {
+    const sessions = Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [];
+    const wrongRows = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
+    const blueprints = Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [];
+    const groups = new Map();
+    sessions.forEach(session => {
+        const archiveFile = reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '');
+        if (!archiveFile) return;
+        if (!groups.has(archiveFile)) {
+            groups.set(archiveFile, {
+                archiveFile,
+                title: session.exam_title || session.title || archiveFile,
+                school: session.school || session.school_name || '',
+                grade: reportCenterGetSessionGrade(session) || session.grade || '',
+                takers: 0,
+                wrongEntered: 0,
+                reviewCount: 0,
+                blueprintCount: 0,
+                latestDate: session.exam_date || session.created_at || ''
+            });
+        }
+        const row = groups.get(archiveFile);
+        row.takers += 1;
+        if (session.exam_date && String(session.exam_date) > String(row.latestDate || '')) row.latestDate = session.exam_date;
+        if (!row.title && session.exam_title) row.title = session.exam_title;
+        if (!row.school && (session.school || session.school_name)) row.school = session.school || session.school_name;
+        if (!row.grade) row.grade = reportCenterGetSessionGrade(session) || session.grade || '';
+        const sessionWrong = wrongRows.some(w => String(w.session_id) === String(session.id));
+        if (sessionWrong) row.wrongEntered += 1;
+    });
+    groups.forEach(row => {
+        row.reviewCount = reportCenterGetExamReviews(row.archiveFile).byQuestion.size;
+        row.blueprintCount = blueprints.filter(bp =>
+            reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === row.archiveFile
+        ).length;
+    });
+    return Array.from(groups.values())
+        .sort((a, b) => String(b.latestDate || '').localeCompare(String(a.latestDate || '')) || String(a.title || '').localeCompare(String(b.title || '')));
+}
+
+function reportCenterRenderExamHubList(studentId) {
+    const exams = reportCenterBuildExamHubList();
+    if (!exams.length) {
+        return `
+            <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">
+                아직 응시 기록이 연결된 시험지가 없습니다.
+            </div>
+        `;
+    }
+    return `
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px;">
+            ${exams.map(exam => `
+                <button class="btn aprc-exam-hub-card" type="button" data-archive-file="${reportCenterAttr(exam.archiveFile)}"
+                        style="display:flex; flex-direction:column; align-items:stretch; gap:10px; min-height:148px; padding:14px; text-align:left; border-radius:14px; background:var(--surface); border:1px solid var(--border); box-shadow:none;"
+                        onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(exam.archiveFile)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">
+                    <span style="display:block; font-size:14px; font-weight:900; color:var(--text); line-height:1.35;">${reportCenterEscape(exam.title || '시험지')}</span>
+                    <span style="display:block; min-height:18px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">${reportCenterEscape([exam.school, exam.grade].filter(Boolean).join(' · ') || '학교/학년 미지정')}</span>
+                    <span style="display:flex; gap:6px; flex-wrap:wrap; margin-top:auto;">
+                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">문항분석 ${exam.reviewCount}/${exam.blueprintCount || '-'}</span>
+                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">응시 ${exam.takers}</span>
+                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">오답입력 ${exam.wrongEntered}</span>
+                    </span>
+                </button>
+            `).join('')}
+        </div>
+    `;
+}
+
 function reportCenterBuildDrilldownShell(studentId) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const name = student?.name || '학생';
-    reportCenterNavState();
+    const nav = reportCenterNavState();
+    const bodyHtml = nav.level === 'list'
+        ? reportCenterRenderExamHubList(studentId)
+        : `
+            <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">
+                시험 대시보드는 다음 단계에서 연결됩니다.
+            </div>
+        `;
     return `
         <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
@@ -1442,9 +1517,7 @@ function reportCenterBuildDrilldownShell(studentId) {
                     </div>
                     <button class="btn" type="button" style="min-height:38px; padding:8px 12px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="toast('시험지 찾기는 준비 중입니다.', 'info')">시험지 찾기</button>
                 </div>
-                <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">
-                    시험지 카드 목록은 다음 단계에서 연결됩니다.
-                </div>
+                ${bodyHtml}
             </section>
         </div>
     `;
