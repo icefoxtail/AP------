@@ -48,6 +48,17 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false, detailed =
     }).join('');
 }
 
+// 저장된 review_text가 구조화 JSON(묻는 것·함정·풀이 포인트·지도)이면 파싱한다. 아니면 null.
+function reportCenterParseReviewJson(text) {
+    const raw = String(text || '').trim();
+    if (!raw.startsWith('{')) return null;
+    try {
+        const obj = JSON.parse(raw);
+        if (obj && typeof obj === 'object' && (obj.asks || obj.trap || obj.key || obj.teach)) return obj;
+    } catch (e) {}
+    return null;
+}
+
 function reportCenterBuildQuestionReviewCard(review, opts = {}) {
     const options = {
         showAnswer: false,
@@ -58,14 +69,16 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
         ...opts
     };
     const source = review && typeof review === 'object' ? review : {};
+    const reviewData = reportCenterParseReviewJson(source.reviewText || source.review_text || '');
     const questionNo = source.questionNo ?? source.question_no ?? '';
-    const unit = source.unit || source.standard_unit || source.unitKey || source.standard_unit_key || '단원 정보 없음';
+    const unit = reviewData?.unit || source.unit || source.standard_unit || source.unitKey || source.standard_unit_key || '단원 정보 없음';
     const correctRate = Number(source.correctRate ?? source.correct_rate);
     const classCorrectRate = Number(source.classCorrectRate ?? source.class_correct_rate);
-    const level = source.level || source.difficulty || reportCenterGetQuestionDifficultyLabel(
+    const level = reviewData?.level || source.level || source.difficulty || reportCenterGetQuestionDifficultyLabel(
         Number.isFinite(correctRate) ? correctRate : NaN
     );
     const title = questionNo ? `${questionNo}번 · ${unit}` : String(unit || '문항 분석');
+    const conceptText = reviewData?.concept ? reportCenterEscape(reviewData.concept) : '';
     const rateItems = [
         Number.isFinite(correctRate) ? `<span>전체 정답률 <b>${Math.round(correctRate)}%</b></span>` : '',
         Number.isFinite(classCorrectRate) ? `<span>반 정답률 <b>${Math.round(classCorrectRate)}%</b></span>` : ''
@@ -78,13 +91,37 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
             .map(choice => `<li>${choice}</li>`)
             .join('')
         : '';
-    const answerHtml = options.showAnswer ? reportCenterArchiveTextToHtml(source.answer || '') : '';
+    const answerHtml = options.showAnswer ? reportCenterArchiveTextToHtml(source.answer || reviewData?.answer || '') : '';
     const solutionHtml = options.showSolution ? reportCenterArchiveTextToHtml(source.solutionText || source.solution || '') : '';
-    const savedReviewHtml = reportCenterArchiveTextToHtml(source.reviewText || source.review_text || '');
-    const fallbackInsight = savedReviewHtml ? '' : reportCenterArchiveTextToHtml(
-        reportCenterBuildParentQuestionInsight(source, source, { mode: 'full' })
-    );
-    const reviewHtml = savedReviewHtml || fallbackInsight;
+
+    // 저장된 분석: JSON이면 필드별로, 아니면 통짜 텍스트(또는 문구 뱅크 폴백)로 렌더.
+    let reviewSectionHtml = '';
+    if (reviewData) {
+        const line = (label, val) => val
+            ? `<div class="aprc-qreview-line"><b>${label}</b> ${reportCenterEscape(val)}</div>`
+            : '';
+        const body = [
+            line('묻는 것', reviewData.asks),
+            line('함정', reviewData.trap),
+            line('풀이 포인트', reviewData.key),
+            options.anonymized ? '' : line('지도 포인트', reviewData.teach)
+        ].filter(Boolean).join('');
+        if (body) reviewSectionHtml = `
+            <section class="aprc-qreview-block aprc-qreview-review">
+                <b>문항 분석</b>
+                ${body}
+            </section>`;
+    } else {
+        const savedReviewHtml = reportCenterArchiveTextToHtml(source.reviewText || source.review_text || '');
+        const reviewHtml = savedReviewHtml || reportCenterArchiveTextToHtml(
+            reportCenterBuildParentQuestionInsight(source, source, { mode: 'full' })
+        );
+        if (reviewHtml) reviewSectionHtml = `
+            <section class="aprc-qreview-block aprc-qreview-review">
+                <b>${options.anonymized ? '문항 분석' : '저장된 분석'}</b>
+                <p>${reviewHtml}</p>
+            </section>`;
+    }
 
     return `
         <article class="aprc-qreview-card${options.anonymized ? ' is-anonymized' : ''}">
@@ -92,6 +129,7 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
                 <div class="aprc-qreview-title">${reportCenterEscape(title)}</div>
                 ${options.badge ? `<div class="aprc-qreview-badge">${reportCenterEscape(level || '자료 부족')}</div>` : ''}
             </header>
+            ${conceptText ? `<div class="aprc-qreview-concept">${conceptText}</div>` : ''}
             ${rateItems ? `<div class="aprc-qreview-rates">${rateItems}</div>` : ''}
             ${contentHtml || choiceItems ? `
                 <section class="aprc-qreview-block">
@@ -106,12 +144,7 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
                     <p>${answerHtml}</p>
                 </section>
             ` : ''}
-            ${reviewHtml ? `
-                <section class="aprc-qreview-block aprc-qreview-review">
-                    <b>${options.anonymized ? '문항 분석' : '저장된 분석'}</b>
-                    <p>${reviewHtml}</p>
-                </section>
-            ` : ''}
+            ${reviewSectionHtml}
             ${solutionHtml ? `
                 <section class="aprc-qreview-block aprc-qreview-solution">
                     <b>해설 요약</b>
@@ -581,6 +614,9 @@ function reportCenterPremiumReportStyle() {
             .aprc-qreview-choices li { margin:2px 0; }
             .aprc-qreview-review { background:#f8fbff; border:1px solid #dbeafe; border-radius:10px; padding:2.6mm; }
             .aprc-qreview-review > b { color:#1e40af; }
+            .aprc-qreview-concept { margin:-0.5mm 0 2mm; color:#2563eb; font-size:10.6px; font-weight:850; word-break:keep-all; }
+            .aprc-qreview-line { margin:4px 0 0; color:#334155; font-size:11px; font-weight:650; line-height:1.55; word-break:keep-all; overflow-wrap:break-word; }
+            .aprc-qreview-line b { color:#1e40af; font-weight:900; margin-right:3px; }
             .aprc-parent-message { margin:4mm 0 0; padding:4.5mm 5mm; border-radius:14px; background:#eff6ff; border:1px solid #bfdbfe; }
             .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:11.5px; font-weight:700; line-height:1.58; word-break:keep-all; white-space:normal; }
             .aprc-parent-bottom-note { margin-top:3.5mm; padding:3.5mm 4.5mm; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; color:#334155; font-size:10.8px; font-weight:750; line-height:1.45; }
