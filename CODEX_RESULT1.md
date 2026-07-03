@@ -139,3 +139,66 @@ reportCenterTypesetMath(root)
 4. DB -> JSON export 스크립트를 만듭니다.
 5. 리포트센터에서 분석 저장 후 JSON export까지 이어지는 운영 흐름을 정합니다.
 6. 이번 왕운중 기말 JSON을 기준 샘플로 삼아 다음 시험지 분석 문체를 맞춥니다.
+
+---
+
+## 2026-07-03 학교시험 리포트 레이어 루프 결과
+
+`docs/plans/REPORT_CENTER_SCHOOL_EXAM_REPORT_LAYER_DIRECTIVE_20260703.md` 지시서를 기준으로 STEP 1~7을 Codex 단독 구현/검증했습니다. 리뷰봇은 사용하지 않았습니다.
+
+### 구현
+
+- `reportCenterNormalizeMathText`를 추가해 `x^2`, `√(...)`, `a/b` 형태를 렌더 직전 LaTeX로 정규화했습니다. 기존 `$...$`/`$$...$$`/`\(...\)` 구간은 보존합니다.
+- `review_text` JSON 파서가 `concept`/`tag`를 인식하도록 확장했습니다.
+- 오답 태그 4종을 추가했습니다: `계산·검산`, `풀이 순서`, `조건 해석`, `개념 재정리`.
+- `reportCenterBuildParentSafeQuestionComment`와 `reportCenterAssertParentSafe`를 추가해 학부모용 문항 코멘트에서 raw/internal 표현을 제거합니다.
+- L2 학생 화면을 `학생별 상담 리포트 1장` 우선 구조로 바꾸고, `선생님용 상세 분석 보기`와 `문제 원문 확인`은 접힘 블록으로 내렸습니다.
+- 상담 1장 빌더와 단일 `수정` 버튼 기반 편집/저장 흐름을 추가했습니다. 저장은 기존 `reportCenterUpsertExamMeta`를 재사용합니다.
+- 학부모 PDF의 raw 문항 분석 카드가 `문항별 쉬운 설명`으로 대체되도록 바꿨습니다. 정답/해설/raw review는 학부모 PDF에 넣지 않습니다.
+- L1/PDF 라벨의 `코호트` 계열 표현을 `전체 응시` 기준으로 정리했습니다.
+
+### 추가/수정 테스트
+
+추가:
+
+- `tests/report-math-normalize.test.mjs`
+- `tests/report-review-schema.test.mjs`
+- `tests/report-parent-safe-comment.test.mjs`
+- `tests/report-school-exam-counsel.test.mjs`
+- `tests/report-school-exam-edit.test.mjs`
+
+수정:
+
+- `tests/report-center-student-view.test.mjs`
+- `tests/report-exam-trend.test.mjs`
+- `tests/report-pdf-dedup.test.mjs`
+- `tests/fixtures/apmath-surface-report.json`
+
+### 검증
+
+통과:
+
+```text
+node tests/report-exam-trend.test.mjs
+node tests/exam-question-review-card.test.mjs
+node tests/apmath-report-easy-language.test.js
+node tests/apmath-global-surface.test.js
+node tests/report-center-shell.test.mjs
+node tests/report-center-exam-hub.test.mjs
+node tests/report-center-exam-dashboard.test.mjs
+node tests/report-center-student-view.test.mjs
+node tests/report-center-advanced-policy.test.mjs
+node tests/report-math-normalize.test.mjs
+node tests/report-review-schema.test.mjs
+node tests/report-parent-safe-comment.test.mjs
+node tests/report-school-exam-counsel.test.mjs
+node tests/report-school-exam-edit.test.mjs
+node tests/report-pdf-dedup.test.mjs
+node tests/report-center-mathjax-preview.test.mjs
+node tests/exam-analysis-store.test.mjs
+```
+
+### 주의
+
+- 학부모 PDF 정책이 바뀌면서 기존 테스트의 “저장된 문항 분석 원문이 PDF 카드에 노출” 기대값은 “안전 문항 코멘트만 노출”로 갱신했습니다.
+- `docs/plans/REPORT_CENTER_SCHOOL_EXAM_REPORT_LAYER_DIRECTIVE_20260703.md`는 작업 시작 전부터 untracked 상태였으므로 코드 커밋 범위에는 넣지 않았습니다.

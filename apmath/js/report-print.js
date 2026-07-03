@@ -54,7 +54,7 @@ function reportCenterParseReviewJson(text) {
     if (!raw.startsWith('{')) return null;
     try {
         const obj = JSON.parse(raw);
-        if (obj && typeof obj === 'object' && (obj.asks || obj.trap || obj.key || obj.teach)) return obj;
+        if (obj && typeof obj === 'object' && (obj.asks || obj.trap || obj.key || obj.teach || obj.concept || obj.tag)) return obj;
     } catch (e) {}
     return null;
 }
@@ -80,7 +80,8 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
         Number.isFinite(correctRate) ? correctRate : NaN
     );
     const title = questionNo ? `${questionNo}번 · ${unit}` : String(unit || '문항 분석');
-    const conceptText = reviewData?.concept ? reportCenterEscape(reviewData.concept) : '';
+    const conceptText = reviewData?.concept ? reportCenterEscape(reportCenterNormalizeMathText(reviewData.concept)) : '';
+    const tagText = reportCenterResolveErrorTag(reviewData || {}, Number.isFinite(correctRate) ? correctRate : null);
     const rateItems = [
         Number.isFinite(correctRate) ? `<span>전체 정답률 <b>${Math.round(correctRate)}%</b></span>` : '',
         Number.isFinite(classCorrectRate) ? `<span>반 정답률 <b>${Math.round(classCorrectRate)}%</b></span>` : ''
@@ -100,9 +101,11 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
     let reviewSectionHtml = '';
     if (reviewData) {
         const line = (label, val) => val
-            ? `<div class="aprc-qreview-line"><b>${label}</b> ${reportCenterEscape(val)}</div>`
+            ? `<div class="aprc-qreview-line"><b>${label}</b> ${reportCenterEscape(reportCenterNormalizeMathText(val))}</div>`
             : '';
         const body = [
+            line('개념', reviewData.concept),
+            line('오답 양상', reviewData.tag),
             line('묻는 것', reviewData.asks),
             line('함정', reviewData.trap),
             line('풀이 포인트', reviewData.key),
@@ -129,7 +132,7 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
         <article class="aprc-qreview-card${options.anonymized ? ' is-anonymized' : ''}">
             <header class="aprc-qreview-head">
                 <div class="aprc-qreview-title">${reportCenterEscape(title)}</div>
-                ${options.badge ? `<div class="aprc-qreview-badge">${reportCenterEscape(level || '자료 부족')}</div>` : ''}
+                ${options.badge ? `<div class="aprc-qreview-badge">${reportCenterEscape([level || '자료 부족', tagText].filter(Boolean).join(' · '))}</div>` : ''}
             </header>
             ${conceptText ? `<div class="aprc-qreview-concept">${conceptText}</div>` : ''}
             ${rateItems ? `<div class="aprc-qreview-rates">${rateItems}</div>` : ''}
@@ -426,7 +429,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <div class="aprc-pdf-score-card">
                     <div class="aprc-card-label">비교 평균</div>
                     <div class="aprc-metric-value">${stats.overallAvg === null ? '-' : `${stats.overallAvg}점`}</div>
-                    <div class="aprc-card-note">전체 ${stats.totalSessions || 0}명 · 반 ${stats.classSessions || 0}명</div>
+                    <div class="aprc-card-note">전체 응시 ${stats.totalSessions || 0}명 · 우리 반 ${stats.classSessions || 0}명</div>
                 </div>
                 <div class="aprc-pdf-score-card">
                     <div class="aprc-card-label">최근 점수</div>
@@ -472,8 +475,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                             <th>문제</th>
                             <th>단원</th>
                             <th>난도</th>
-                            <th>전체 정답률</th>
-                            <th>반 정답률</th>
+                            <th>전체 응시 난도</th>
+                            <th>우리 반 난도</th>
                             <th>해석</th>
                         </tr>
                     </thead>
@@ -483,14 +486,8 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             </section>` : ''}
 
             ${wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
-                <div class="aprc-section-title">오답 문항 분석</div>
-                <div class="aprc-qreview-list">${reportCenterBuildQuestionReviewCardsForReport(data, {
-                    limit: 6,
-                    showAnswer: !!studioOptions.includeQuestionReviewAnswer,
-                    showContent: true,
-                    showSolution: true,
-                    showTeach: false
-                })}</div>
+                <div class="aprc-section-title">문항별 쉬운 설명</div>
+                <div class="aprc-qcomment-list">${reportCenterBuildQuestionCommentCards(data, 6)}</div>
             </section>` : ''}
 
             ${isAdvancedPdf && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
@@ -529,7 +526,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     if (studioOptions.includeScoreTrend) {
         html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText, trendData });
     }
-    return html;
+    return reportCenterAssertParentSafe(html);
 }
 
 function reportCenterPolishCleanPdfDocumentHtml(html, context = {}) {

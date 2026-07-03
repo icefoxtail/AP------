@@ -83,7 +83,7 @@ assert.equal(countMatches(html, /다시 풀이/g), 1, 're-teaching plan copy sho
 const order = [
   '이번 시험 점수',
   '이번 시험, 이렇게 봤습니다',
-  '오답 문항 분석',
+  '문항별 쉬운 설명',
   '오답 원인 한눈에',
   '학원 조치',
   '학부모님께 드리는 말씀'

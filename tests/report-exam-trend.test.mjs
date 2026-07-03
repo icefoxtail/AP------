@@ -150,8 +150,9 @@ const detailedReviewHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3',
   }
 });
 assert.match(detailedReviewHtml, /aprc-pdf-review-panel/, 'detailed wrong report should render question review cards');
-assert.match(detailedReviewHtml, /저장된 2번 문항 분석입니다\./, 'stored question review text should win inside the card');
-assert.doesNotMatch(detailedReviewHtml, />정답</, 'question review answers should be hidden by default');
+assert.match(detailedReviewHtml, /문항별 쉬운 설명/, 'parent PDF should render safe question comments');
+assert.doesNotMatch(detailedReviewHtml, /저장된 2번 문항 분석입니다\./, 'stored raw question review text must not leak into parent PDF');
+assert.doesNotMatch(detailedReviewHtml, />정답</, 'question review answers should stay out of parent PDF');
 const detailedAnswerHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
   teacherMemo: '',
   studioState: {
@@ -159,7 +160,7 @@ const detailedAnswerHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3',
     options: { includeQuestionAnalysis: true, includeQuestionReview: true, includeQuestionReviewAnswer: true }
   }
 });
-assert.match(detailedAnswerHtml, />정답</, 'question review answers should render when explicitly enabled');
+assert.doesNotMatch(detailedAnswerHtml, />정답</, 'parent PDF should not render raw answers even when legacy option is set');
 const standardReviewHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
   teacherMemo: '',
   studioState: {
