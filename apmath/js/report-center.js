@@ -16,6 +16,32 @@ function reportCenterEscape(value) {
     return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 }
 
+function reportCenterNormalizeMathText(text) {
+    const raw = String(text ?? '');
+    if (!raw || reportCenterLooksLikeCodeText(raw)) return raw;
+    const masks = [];
+    const mask = segment => {
+        const key = `@@APMATH_MATH_${masks.length}@@`;
+        masks.push(segment);
+        return key;
+    };
+    let value = raw.replace(/\$\$[\s\S]*?\$\$|\$[^$\n]+\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, mask);
+    const wrap = expr => `$${expr}$`;
+    const normalizeExpr = expr => String(expr || '')
+        .replace(/([A-Za-z0-9])\^(?:\{([A-Za-z0-9+\-]+)\}|([A-Za-z0-9]+))/g, (_, base, braced, plain) => `${base}^{${braced || plain}}`)
+        .replace(/√\s*\(([^()]+)\)/g, '\\sqrt{$1}')
+        .replace(/sqrt\s*\(([^()]+)\)/gi, '\\sqrt{$1}');
+    value = value.replace(/(?:√|sqrt)\s*\(([^()]+)\)/gi, match => mask(wrap(normalizeExpr(match))));
+    value = value.replace(/\b([A-Za-z][A-Za-z0-9]*|\d+)\s*\/\s*([A-Za-z][A-Za-z0-9]*|\d+)\b/g, (match, left, right, offset, full) => {
+        const prev = full[offset - 1] || '';
+        const next = full[offset + match.length] || '';
+        if (prev === '/' || next === '/' || /https?:$/i.test(full.slice(Math.max(0, offset - 8), offset))) return match;
+        return wrap(`\\frac{${left}}{${right}}`);
+    });
+    value = value.replace(/(?<![@\w$\\])([A-Za-z][A-Za-z0-9]*(?:\^(?:\{[A-Za-z0-9+\-]+\}|[A-Za-z0-9]+))(?:\s*[+\-]\s*[A-Za-z0-9]+(?:\^(?:\{[A-Za-z0-9+\-]+\}|[A-Za-z0-9]+))?)*)/g, (match, expr) => wrap(normalizeExpr(expr).replace(/\s+/g, '')));
+    return value.replace(/@@APMATH_MATH_(\d+)@@/g, (_, index) => masks[Number(index)] || '');
+}
+
 function reportCenterAttr(value) {
     return reportCenterEscape(String(value ?? ''));
 }
@@ -904,7 +930,7 @@ function reportCenterPreserveArchiveText(value) {
 function reportCenterArchiveTextToHtml(value) {
     const text = reportCenterPreserveArchiveText(value);
     if (!text || reportCenterLooksLikeCodeText(text)) return '';
-    return reportCenterEscape(text).replace(/\n/g, '<br>');
+    return reportCenterEscape(reportCenterNormalizeMathText(text)).replace(/\n/g, '<br>');
 }
 
 function reportCenterEnsureMathJax() {
@@ -1788,7 +1814,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                 ${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">아직 저장된 문항 분석이 없습니다.</div>'}
             </section>
             <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">코호트 정답률</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">전체 응시 정답률</div>
                 <div style="display:flex; gap:6px; flex-wrap:wrap;">
                     ${rates.rows.map(row => `<span style="padding:6px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">${reportCenterEscape(row.questionNo)}번 ${row.correctRate === null ? '-' : `${row.correctRate}%`}</span>`).join('') || '<span style="font-size:12px; font-weight:700; color:var(--secondary);">집계할 문항이 없습니다.</span>'}
                 </div>
@@ -2013,28 +2039,44 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
     const wrongRows = (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [])
         .filter(row => String(row.session_id) === String(session.id));
     const data = reportCenterGetExamReportData(studentId, session.id);
+    const counselReport = reportCenterBuildSchoolExamCounselReport(studentId, session.archive_file || archiveFile);
     const reviewCards = reportCenterBuildQuestionReviewCardsForReport(data, {
         limit: 8,
         showAnswer: false,
         showContent: true,
         showSolution: true
     });
+    const archiveDetails = Array.isArray(data?.archiveDetails?.details) ? data.archiveDetails.details : [];
+    const originalQuestionHtml = archiveDetails.length
+        ? archiveDetails.map(detail => `
+            <article class="aprc-qreview-card">
+                <header class="aprc-qreview-head"><div class="aprc-qreview-title">${reportCenterEscape(detail.questionNo)}번 원문</div></header>
+                ${reportCenterArchiveTextToHtml(detail.contentText || detail.content || '') || '<p>원문 없음</p>'}
+                ${detail.answer !== undefined && detail.answer !== null && detail.answer !== '' ? `<section class="aprc-qreview-block"><b>정답</b><p>${reportCenterArchiveTextToHtml(detail.answer)}</p></section>` : ''}
+                ${reportCenterArchiveTextToHtml(detail.solutionText || detail.solution || '') ? `<section class="aprc-qreview-block"><b>해설 요약</b><p>${reportCenterArchiveTextToHtml(detail.solutionText || detail.solution || '')}</p></section>` : ''}
+            </article>
+        `).join('')
+        : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">원문 없음</div>';
     return `
         <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
             <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">시험 대시보드</button>
+            ${counselReport}
             <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
                 <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || '학생')} 리포트/상담</div>
                 <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(session.exam_title || '시험')} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}</div>
-                <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:12px;">
-                    <button type="button" class="btn btn-primary" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">PDF 보기</button>
+                <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px;">
+                    <button type="button" class="btn btn-primary" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">학부모용 리포트 보기</button>
                     <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}')">발송 문구 복사</button>
-                    <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="openReportCenterCounsel('${escapeReportJsString(studentId)}')">상담 초안</button>
                 </div>
             </section>
-            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">학생 오답 문항 분석</div>
-                ${wrongRows.length ? `<div class="aprc-qreview-list">${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">저장된 문항 분석이 없습니다.</div>'}</div>` : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">오답 문항이 없습니다.</div>'}
-            </section>
+            <details style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <summary style="cursor:pointer; font-size:14px; font-weight:900; color:var(--text);">선생님용 상세 분석 보기</summary>
+                <div style="margin-top:10px;">${wrongRows.length ? `<div class="aprc-qreview-list">${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">저장된 문항 분석이 없습니다.</div>'}</div>` : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">오답 문항이 없습니다.</div>'}</div>
+            </details>
+            <details style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <summary style="cursor:pointer; font-size:14px; font-weight:900; color:var(--text);">문제 원문 확인</summary>
+                <div class="aprc-qreview-list" style="margin-top:10px;">${originalQuestionHtml}</div>
+            </details>
         </div>
     `;
 }
@@ -2346,10 +2388,16 @@ function reportCenterSafeQuestionText(value, limit = 110) {
 
 function reportCenterBuildParentQuestionInsight(row, detail = null, opts = {}) {
     const qNo = row?.questionNo || detail?.questionNo || '';
-    const unit = row?.unit || detail?.unit || '해당 단원';
+    const reviewData = reportCenterParseReviewJson?.(row?.reviewText || row?.review_text || detail?.reviewText || detail?.review_text || '') || null;
+    const unit = reviewData?.concept || row?.concept || detail?.concept || row?.unit || detail?.unit || '해당 단원';
     const rate = Number.isFinite(row?.correctRate) ? row.correctRate : null;
     const bank = REPORT_COPY_BANK.questionInsight;
-    const key = rate === null ? 'unknown'
+    const tag = reportCenterResolveErrorTag({ ...(reviewData || {}), tag: row?.tag || reviewData?.tag }, rate);
+    const key = tag === '계산·검산' ? 'easy'
+        : tag === '풀이 순서' ? 'mid'
+        : tag === '조건 해석' ? 'hard'
+        : tag === '개념 재정리' ? 'veryHard'
+        : rate === null ? 'unknown'
         : rate >= 85 ? 'easy'
         : rate >= 65 ? 'mid'
         : rate >= 45 ? 'hard'
@@ -2359,6 +2407,65 @@ function reportCenterBuildParentQuestionInsight(row, detail = null, opts = {}) {
     const cards = entry.cards;
     const idx = Number.isInteger(opts.index) ? opts.index : 0;
     return reportCopyFillSlots(cards[idx % cards.length], { qNo, unit });
+}
+
+function reportCenterErrorTags() {
+    return ['계산·검산', '풀이 순서', '조건 해석', '개념 재정리'];
+}
+
+function reportCenterResolveErrorTag(reviewData = {}, correctRate = null) {
+    const explicit = String(reviewData?.tag || '').trim();
+    if (reportCenterErrorTags().includes(explicit)) return explicit;
+    if (correctRate === null || correctRate === undefined || correctRate === '') return null;
+    const rate = Number(correctRate);
+    if (!Number.isFinite(rate)) return null;
+    if (rate >= 85) return '계산·검산';
+    if (rate >= 65) return '풀이 순서';
+    if (rate >= 45) return '조건 해석';
+    return '개념 재정리';
+}
+
+function reportCenterAssertParentSafe(text) {
+    let value = String(text || '');
+    value = value
+        .replace(/코호트/g, '전체 응시')
+        .replace(/raw|archive|아카이브|review_text|blueprint/gi, '')
+        .replace(/묻는 것/g, '확인한 내용')
+        .replace(/함정/g, '실수하기 쉬운 부분')
+        .replace(/풀이 포인트/g, '다시 정리할 부분')
+        .replace(/전체\s*정답률\s*\d+(?:\.\d+)?%/g, '많은 학생이 어려워한 문항')
+        .replace(/반\s*정답률\s*\d+(?:\.\d+)?%/g, '우리 반에서도 쉽지 않았던 문항')
+        .replace(/데이터 없음|확인 불가/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/\s+([,.])/g, '$1')
+        .trim();
+    return value;
+}
+
+// 학부모 문장에 함정 원문을 얹어도 자연스러운지 판정한다.
+// 한글이 충분하고 수식/기호가 과하지 않은 서술문만 통과(코드/수식 축약은 제외).
+function reportCenterTrapReadsNatural(text) {
+    const value = String(text || '').trim();
+    if (!value) return false;
+    const hangul = (value.match(/[가-힣]/g) || []).length;
+    if (hangul < 6) return false;
+    const symbols = (value.match(/[=^/√{}\\()|<>]/g) || []).length;
+    return symbols <= 2 && (hangul / value.length) >= 0.4;
+}
+
+function reportCenterBuildParentSafeQuestionComment(row = {}, detail = null, opts = {}) {
+    const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
+    const concept = reviewData.concept || row.concept || detail?.concept || row.unit || row.unitKey || detail?.unit || '해당 단원';
+    const rawTrap = reportCenterLooksLikeCodeText(reviewData.trap || '') ? '' : String(reviewData.trap || '').trim();
+    const trap = reportCenterTrapReadsNatural(rawTrap) ? rawTrap : '';
+    const base = reportCenterBuildParentQuestionInsight({ ...row, ...reviewData, unit: concept }, detail, opts);
+    const trapSentence = trap
+        ? ` 특히 ${trap.replace(/[.。]+$/g, '')} 부분을 다음 수업에서 다시 정리하겠습니다.`
+        : '';
+    const toned = typeof reportHumanizeApplyApMathTone === 'function'
+        ? reportHumanizeApplyApMathTone(`${base}${trapSentence}`, 'parent')
+        : `${base}${trapSentence}`;
+    return reportCenterAssertParentSafe(reportCenterNormalizeMathText(toned));
 }
 
 function reportCenterSelectPriorityWrongRows(wrongRows = [], limit = 5) {
@@ -2417,8 +2524,8 @@ function reportCenterBuildQuestionCommentCards(data, limit = 5) {
     const detailMap = reportCenterGetQuestionDetailMap(data);
     const rows = reportCenterSelectPriorityWrongRows(wrongRows, limit);
     return rows.map((row, index) => {
-        // 카드 본문은 전문체 문장(정화기 미적용). row.meaning(실데이터)이 있으면 우선 사용.
-        const insight = row.meaning || reportCenterBuildParentQuestionInsight(row, detailMap.get(String(row.questionNo)), { mode: 'full', index });
+        const detail = detailMap.get(String(row.questionNo));
+        const insight = reportCenterBuildParentSafeQuestionComment(row, detail, { mode: 'full', index });
         return `
             <div class="aprc-qcomment">
                 <div class="aprc-qcomment-no">${reportCenterEscape(row.questionNo)}번<span>${reportCenterEscape(row.unit || row.unitKey || '')}</span></div>
@@ -2426,6 +2533,187 @@ function reportCenterBuildQuestionCommentCards(data, limit = 5) {
             </div>
         `;
     }).join('');
+}
+
+function reportCenterFindStudentSchoolExamSession(studentId, archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const sessions = Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [];
+    return sessions.find(row =>
+        String(row.student_id) === String(studentId) &&
+        reportCenterNormalizeExamAnalysisArchiveKey(row.archive_file || row.archiveFile || row.id || '') === archiveKey
+    ) || sessions.find(row => String(row.id) === String(archiveFile) && String(row.student_id) === String(studentId)) || null;
+}
+
+function reportCenterBuildScoreMeaning(data) {
+    const session = data?.session || {};
+    const stats = data?.stats || {};
+    const score = Number(session.score);
+    const recent = reportCenterGetExamTrendData?.(session.student_id || data?.student?.id, { limit: 5 })?.trend || {};
+    const recentDelta = Number(recent.scoreDelta);
+    const avg = Number(stats.overallAvg);
+    const comparedToAverage = Number.isFinite(score) && Number.isFinite(avg) ? score - avg : null;
+    const comparedToRecent = Number.isFinite(recentDelta)
+        ? (recentDelta > 0 ? '상승' : recentDelta < 0 ? '하락' : '유지')
+        : '첫 평가';
+    const level = Number.isFinite(score) && score >= 90 ? '우수'
+        : comparedToAverage !== null && comparedToAverage >= 20 ? '안정'
+        : Number.isFinite(score) && score >= 70 ? '관리'
+        : '점검';
+    const parentSentence = level === '우수'
+        ? '이번 시험은 정확도가 안정적으로 확인되었습니다.'
+        : level === '안정'
+        ? '전체 응시 평균보다 높은 위치에서 안정적으로 마무리했습니다.'
+        : level === '관리'
+        ? '맞힌 부분을 유지하면서 틀린 문항의 원인을 다음 수업에서 정리하겠습니다.'
+        : '기본 개념과 풀이 시작점을 다시 잡아 다음 시험을 준비하겠습니다.';
+    return { level, comparedToAverage, comparedToRecent, parentSentence };
+}
+
+function reportCenterBuildStudentWrongCauseSummary(studentId, archiveFile) {
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    if (!session) return '상담에 사용할 시험 기록을 찾지 못했습니다.';
+    const data = reportCenterGetExamReportData(studentId, session.id);
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    if (!wrongRows.length) return '이번 시험은 오답 문항이 없어 다음 단원 확장 학습에 집중하겠습니다.';
+    const tagCounts = new Map();
+    const store = reportCenterGetExamReviews(session.archive_file || archiveFile);
+    wrongRows.forEach(row => {
+        const saved = store.byQuestion?.get?.(String(row.questionNo)) || {};
+        const reviewData = reportCenterParseReviewJson?.(saved.review_text || saved.reviewText || '') || {};
+        const tag = reportCenterResolveErrorTag(reviewData, row.correctRate) || '재점검';
+        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+    });
+    const [topTag, count] = Array.from(tagCounts.entries()).sort((a, b) => b[1] - a[1])[0] || [];
+    if (count >= 2) return `${topTag} 유형이 여러 문항에서 반복되어, 다음 수업에서 같은 흐름으로 묶어 다시 정리하겠습니다.`;
+    return reportCenterBuildWrongCauseSummary(data);
+}
+
+function reportCenterBuildSchoolExamParentReport(studentId, archiveFile) {
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    if (!session) return '';
+    const data = reportCenterGetExamReportData(studentId, session.id);
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    const comments = wrongRows.slice(0, 4).map(row => reportCenterBuildParentSafeQuestionComment(row, row, { index: Number(row.questionNo) || 0 }));
+    const actionItems = reportCenterBuildAcademyActionPlan(data);
+    return reportCenterAssertParentSafe([
+        reportCenterBuildCompactExamSummary(data),
+        ...comments,
+        ...actionItems,
+        reportCenterBuildCompactParentMessage(data)
+    ].filter(Boolean).join('\n'));
+}
+
+function reportCenterCounselEditKey(studentId, archiveFile) {
+    return `${String(studentId || '')}::${reportCenterNormalizeExamAnalysisArchiveKey(archiveFile || '')}`;
+}
+
+function reportCenterSetCounselEditMode(studentId, archiveFile, enabled) {
+    if (typeof studentId === 'boolean') {
+        enabled = studentId;
+        studentId = '';
+        archiveFile = '';
+    }
+    window.AP_REPORT_COUNSEL_EDIT = window.AP_REPORT_COUNSEL_EDIT || {};
+    window.AP_REPORT_COUNSEL_EDIT[reportCenterCounselEditKey(studentId, archiveFile)] = !!enabled;
+    return !!enabled;
+}
+
+function reportCenterCounselEditMode(studentId, archiveFile) {
+    return !!window.AP_REPORT_COUNSEL_EDIT?.[reportCenterCounselEditKey(studentId, archiveFile)];
+}
+
+// 상담 리포트 수정본은 시험(archive) 메타 안에서 학생 단위 맵으로 보관한다.
+function reportCenterFindExamMetaRow(archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    return (Array.isArray(state?.db?.exam_analysis_meta) ? state.db.exam_analysis_meta : [])
+        .find(row => reportCenterNormalizeExamAnalysisArchiveKey(row?.archive_file || row?.archiveFile || '') === archiveKey) || null;
+}
+
+function reportCenterParseCounselReports(metaRow) {
+    const raw = metaRow?.counsel_reports;
+    if (!raw) return {};
+    if (typeof raw === 'object') return { ...raw };
+    if (typeof raw === 'string') {
+        try {
+            const parsed = JSON.parse(raw);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (e) {
+            return {};
+        }
+    }
+    return {};
+}
+
+function reportCenterGetSavedCounselFields(studentId, archiveFile) {
+    const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
+    const saved = reports[String(studentId)];
+    return saved && typeof saved === 'object' ? saved : null;
+}
+
+function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, options = {}) {
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    if (!session) return '<section class="aprc-counsel-report">상담 리포트를 만들 시험 기록이 없습니다.</section>';
+    const data = reportCenterGetExamReportData(studentId, session.id);
+    const student = data.student || {};
+    const stats = data.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const scoreMeaning = reportCenterBuildScoreMeaning(data);
+    const parentReport = reportCenterBuildSchoolExamParentReport(studentId, session.archive_file || archiveFile);
+    const wrongSummary = reportCenterBuildStudentWrongCauseSummary(studentId, session.archive_file || archiveFile);
+    const comments = wrongRows.slice(0, 4).map((row, index) => reportCenterBuildParentSafeQuestionComment(row, row, { index }));
+    const actionItems = reportCenterBuildAcademyActionPlan(data);
+    const sections = {
+        summary: `${student.name || '학생'} · ${session.exam_title || '시험'} · ${session.score ?? '-'}점 · 전체 응시 평균 ${stats.overallAvg ?? '-'}점 · 오답 ${wrongRows.length}문항`,
+        meaning: scoreMeaning.parentSentence,
+        cause: [wrongSummary, ...comments].filter(Boolean).join('\n'),
+        counsel: wrongRows.length ? '상담에서는 맞힌 부분을 먼저 확인한 뒤, 다시 볼 문항의 풀이 시작점을 짧게 설명하면 좋습니다.' : '상담에서는 정확도를 칭찬하고 다음 단원 확장 계획을 안내하면 좋습니다.',
+        action: actionItems.join('\n'),
+        parent: parentReport || reportCenterBuildCompactParentMessage(data)
+    };
+    // 저장된 학생별 수정본이 있으면 자동 생성분을 덮어쓴다(재렌더 시 수정 반영).
+    const savedFields = reportCenterGetSavedCounselFields(studentId, session.archive_file || archiveFile);
+    if (savedFields) {
+        Object.keys(sections).forEach(key => {
+            if (typeof savedFields[key] === 'string' && savedFields[key].trim()) sections[key] = savedFields[key];
+        });
+    }
+    const editMode = options.editMode ?? reportCenterCounselEditMode(studentId, session.archive_file || archiveFile);
+    const field = (key, title) => editMode
+        ? `<label class="aprc-counsel-field"><b>${title}</b><textarea data-report-counsel-field="${key}">${reportCenterEscape(sections[key])}</textarea></label>`
+        : `<section class="aprc-counsel-section" data-report-counsel-section="${key}"><div class="aprc-counsel-title">${reportCenterEscape(title)}</div><p>${reportCenterEscape(sections[key]).replace(/\n/g, '<br>')}</p></section>`;
+    return `
+        <article class="aprc-counsel-report" data-report-school-exam-counsel="1">
+            <header class="aprc-counsel-head">
+                <div>
+                    <div class="aprc-counsel-kicker">학생별 상담 리포트 1장</div>
+                    <h3>${reportCenterEscape(student.name || '학생')} 상담 리포트</h3>
+                </div>
+                <button type="button" class="btn" onclick="reportCenterSetCounselEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(session.archive_file || archiveFile)}', ${editMode ? 'false' : 'true'}); openReportCenterModal('${escapeReportJsString(studentId)}')">${editMode ? '취소' : '수정'}</button>
+            </header>
+            ${field('summary', '상단 요약')}
+            ${field('meaning', '이번 시험 총평')}
+            ${field('cause', '오답 원인 요약')}
+            ${field('counsel', '상담 포인트')}
+            ${field('action', '학원 조치')}
+            ${field('parent', '학부모 안내 문구')}
+            ${editMode ? `<div class="aprc-counsel-actions"><button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamCounselReport('${escapeReportJsString(studentId)}','${escapeReportJsString(session.archive_file || archiveFile)}')">저장</button><button type="button" class="btn" onclick="reportCenterSetCounselEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(session.archive_file || archiveFile)}', false); openReportCenterModal('${escapeReportJsString(studentId)}')">취소</button></div>` : ''}
+        </article>
+    `;
+}
+
+function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
+    const fields = {};
+    document.querySelectorAll('[data-report-counsel-field]').forEach(el => {
+        fields[el.getAttribute('data-report-counsel-field')] = String(el.value || '').trim();
+    });
+    // 학생 단위로만 저장한다 — 시험 총평(overview_text)이나 다른 학생 상담본을 오염시키지 않는다.
+    const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
+    reports[String(studentId)] = fields;
+    reportCenterUpsertExamMeta(archiveFile, { counsel_reports: JSON.stringify(reports) });
+    reportCenterSetCounselEditMode(studentId, archiveFile, false);
+    if (typeof toast === 'function') toast('상담 리포트 수정 내용을 저장했습니다.', 'success');
+    if (typeof openReportCenterModal === 'function' && typeof document?.getElementById === 'function') openReportCenterModal(studentId);
+    return fields;
 }
 
 function reportCenterBuildDifficultyBarsForPremium(stats) {
