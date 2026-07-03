@@ -33,6 +33,7 @@ Completed the report center redesign and the follow-up PDF compact directive.
 - `ade8a74e` - `docs(report): summarize report center redesign`
 - `6ce8dfa3` - `feat(report): compact PDF question analysis`
 - `ea9732ec` - `fix(report): preserve advanced preference on student entry`
+- `9843bd0f` - `fix(report): clean drilldown shell and result summary`
 
 ### Verification
 
