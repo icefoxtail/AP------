@@ -1660,8 +1660,7 @@ function reportCenterOpenStudentDrilldown(studentId, sessionId = '') {
     } else {
         reportCenterNavTo('list', { studentId });
     }
-    reportCenterSetAdvancedMode(false);
-    openReportCenterModal(studentId);
+    openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
 }
 
 function reportCenterBuildDrilldownShell(studentId) {
@@ -1726,8 +1725,9 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
     `;
 }
 
-function openReportCenterModal(studentId, activeTab = 'daily') {
-    if (!reportCenterAdvancedMode()) {
+function openReportCenterModal(studentId, activeTab = 'daily', options = {}) {
+    const forceDrilldown = !!options.forceDrilldown;
+    if (forceDrilldown || !reportCenterAdvancedMode()) {
         reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
         return;
     }
