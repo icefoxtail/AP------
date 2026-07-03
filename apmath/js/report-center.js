@@ -1378,6 +1378,78 @@ function reportCenterCloseWideOverlay() {
     window.AP_REPORT_CENTER_RENDER_TOKEN = (window.AP_REPORT_CENTER_RENDER_TOKEN || 0) + 1;
 }
 
+function reportCenterAdvancedMode() {
+    try {
+        return localStorage.getItem('apmath.reportCenter.advanced') === 'true';
+    } catch (error) {
+        return !!window.AP_REPORT_CENTER_ADVANCED_FALLBACK;
+    }
+}
+
+function reportCenterSetAdvancedMode(enabled) {
+    const next = !!enabled;
+    try {
+        localStorage.setItem('apmath.reportCenter.advanced', next ? 'true' : 'false');
+    } catch (error) {
+        window.AP_REPORT_CENTER_ADVANCED_FALLBACK = next;
+    }
+    return next;
+}
+
+function reportCenterNavState() {
+    window.AP_REPORT_NAV = window.AP_REPORT_NAV || { level: 'list', archiveFile: '', studentId: '' };
+    return window.AP_REPORT_NAV;
+}
+
+function reportCenterNavTo(level, params = {}) {
+    const current = reportCenterNavState();
+    window.AP_REPORT_NAV = {
+        level: level || current.level || 'list',
+        archiveFile: params.archiveFile !== undefined ? params.archiveFile : (current.archiveFile || ''),
+        studentId: params.studentId !== undefined ? params.studentId : (current.studentId || '')
+    };
+    return window.AP_REPORT_NAV;
+}
+
+function reportCenterAdvancedToggleHtml(studentId, activeTab = 'daily') {
+    const checked = reportCenterAdvancedMode() ? 'checked' : '';
+    return `
+        <label style="display:inline-flex; align-items:center; gap:8px; min-height:36px; padding:8px 10px; border-radius:999px; background:var(--surface); border:1px solid var(--border); font-size:12px; font-weight:800; color:var(--text); cursor:pointer;">
+            <input type="checkbox" ${checked} style="width:16px; height:16px; accent-color:var(--primary);" onchange="reportCenterSetAdvancedMode(this.checked); openReportCenterModal('${escapeReportJsString(studentId)}', '${escapeReportJsString(activeTab)}')">
+            <span>고급 보기</span>
+        </label>
+    `;
+}
+
+function reportCenterBuildDrilldownShell(studentId) {
+    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    const name = student?.name || '학생';
+    reportCenterNavState();
+    return `
+        <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
+                <div>
+                    <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.4;">${reportCenterEscape(name)} 리포트 센터</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">시험지별 분석과 학생별 오답 리포트를 한 흐름으로 정리합니다.</div>
+                </div>
+                ${reportCenterAdvancedToggleHtml(studentId, 'daily')}
+            </div>
+            <section data-report-drilldown-level="list" style="display:flex; flex-direction:column; gap:12px; padding:16px; border-radius:16px; background:var(--surface); border:1px solid var(--border);">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <div>
+                        <div style="font-size:16px; font-weight:900; color:var(--text); line-height:1.35;">시험지 목록</div>
+                        <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">응시한 학교 시험지를 기준으로 리포트를 탐색합니다.</div>
+                    </div>
+                    <button class="btn" type="button" style="min-height:38px; padding:8px 12px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="toast('시험지 찾기는 준비 중입니다.', 'info')">시험지 찾기</button>
+                </div>
+                <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">
+                    시험지 카드 목록은 다음 단계에서 연결됩니다.
+                </div>
+            </section>
+        </div>
+    `;
+}
+
 function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const name = student?.name || '학생';
@@ -1393,6 +1465,9 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
                 <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.4;">${reportCenterEscape(name)} 리포트 센터</div>
                 <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">카톡 문구와 출력용 리포트를 목적별로 나눠 생성합니다.</div>
             </div>
+            <div style="display:flex; justify-content:flex-end;">
+                ${reportCenterAdvancedToggleHtml(studentId, activeTab)}
+            </div>
             <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; background:var(--bg); padding:4px; border-radius:14px;">
                 ${tabs.map(t => `
                     <button class="btn ${activeTab === t.key ? 'btn-primary' : ''}"
@@ -1406,6 +1481,10 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
 }
 
 function openReportCenterModal(studentId, activeTab = 'daily') {
+    if (!reportCenterAdvancedMode()) {
+        reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
+        return;
+    }
     if (activeTab === 'exam') return openReportCenterExam(studentId);
     if (activeTab === 'counsel') return openReportCenterCounsel(studentId);
     return openReportCenterDaily(studentId);
