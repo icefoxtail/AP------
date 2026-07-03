@@ -98,4 +98,17 @@ const simple = context.reportCenterBuildSchoolExamSimpleParentReport('s1', 'exam
 assert.match(simple, /간단 리포트/);
 assert.match(simple, /카톡\/짧은 상담용/);
 
+// 프리미엄 분석(학생별·sessionId 기준 저장)이 있으면 상세 리포트가 그 문구를 우선 사용한다.
+const detailedBefore = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
+assert.doesNotMatch(detailedBefore, /프리미엄 분석 적용/);
+context.AP_REPORT_AI_ANALYSIS_CACHE = {
+  e1: { source: 'ai', summary: 'AISUMMARYXYZ', parentMessage: 'AIPARENTXYZ', nextActions: ['AIPLAN1XYZ'] }
+};
+const premiumDetailed = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
+assert.match(premiumDetailed, /프리미엄 분석 적용/);
+assert.match(premiumDetailed, /AISUMMARYXYZ/);
+assert.match(premiumDetailed, /AIPARENTXYZ/);
+assert.match(premiumDetailed, /AIPLAN1XYZ/);
+context.AP_REPORT_AI_ANALYSIS_CACHE = {};
+
 console.log('report school exam counsel test passed');

@@ -2112,6 +2112,8 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
     });
     // 문제 원문은 평가 리포트와 동일한 로더/렌더러를 재사용한다(펼칠 때 지연 로드).
     const originalQuestionHtml = '<div id="report-center-archive-details"></div>';
+    const premiumAi = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    const premiumActive = !!(premiumAi && reportCenterIsPremiumAiSource(premiumAi.source));
     return `
         <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
             <span data-report-preload-student="${reportCenterAttr(studentId)}" data-report-preload-archive-session="${reportCenterAttr(session.id)}" style="display:none;"></span>
@@ -2128,6 +2130,10 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
                 <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px;">
                     <button type="button" class="btn btn-primary" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px;" onclick="reportCenterOpenSchoolExamDetailedPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">상세 리포트 출력</button>
                     <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}')">발송 문구 복사</button>
+                </div>
+                <div style="display:grid; grid-template-columns:${premiumActive ? 'repeat(2,minmax(0,1fr))' : '1fr'}; gap:8px; margin-top:8px;">
+                    <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.18); color:var(--primary);" onclick="reportCenterRequestSchoolExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', this)">${premiumActive ? '프리미엄 분석 다시 실행' : '프리미엄 분석'}</button>
+                    ${premiumActive ? `<button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterResetSchoolExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}')">기본 문구로 복귀</button>` : ''}
                 </div>
             </section>
             <details style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
@@ -2767,6 +2773,17 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         anonymized: false
     });
     const actionItems = reportCenterBuildAcademyActionPlan(data);
+    // 프리미엄 분석(학생별 저장분)이 있으면 문구를 그것으로 대체해 퀄리티를 올린다.
+    const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    const isPremium = !!(ai && reportCenterIsPremiumAiSource(ai.source));
+    const summaryText = (isPremium && ai.summary) ? ai.summary : reportCenterBuildCompactExamSummary(data);
+    const planText = isPremium
+        ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
+        : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data));
+    const parentText = (isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildCompactParentMessage(data);
+    const premiumBadge = isPremium
+        ? ' <span style="padding:2px 8px; border-radius:999px; background:rgba(26,92,255,0.1); color:var(--primary); font-size:11px; font-weight:900;">프리미엄 분석 적용</span>'
+        : '';
     const archiveStatus = data.archiveDetails?.message
         ? `<div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:6px;">${reportCenterEscape(data.archiveDetails.message)}</div>`
         : '';
@@ -2774,17 +2791,17 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
             <header class="aprc-counsel-head">
                 <div>
-                    <div class="aprc-counsel-kicker">기본값 · 학부모 상담/출력용</div>
+                    <div class="aprc-counsel-kicker">기본값 · 학부모 상담/출력용${premiumBadge}</div>
                     <h3>${reportCenterEscape(student.name || '학생')} 상세 학부모 리포트</h3>
                 </div>
             </header>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">시험 요약</div>
-                <p>${reportCenterEscape(reportCenterBuildCompactExamSummary(data))}</p>
+                <p>${reportCenterEscape(summaryText).replace(/\n/g, '<br>')}</p>
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">다음 수업 계획</div>
-                <p>${reportCenterEscape(actionItems.join('\n') || reportCenterBuildCompactParentMessage(data)).replace(/\n/g, '<br>')}</p>
+                <p>${reportCenterEscape(planText).replace(/\n/g, '<br>')}</p>
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">실제 오답 문제</div>
@@ -2795,10 +2812,54 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">학부모 안내 문구</div>
-                <p>${reportCenterEscape(reportCenterBuildCompactParentMessage(data)).replace(/\n/g, '<br>')}</p>
+                <p>${reportCenterEscape(parentText).replace(/\n/g, '<br>')}</p>
             </section>
         </article>
     `;
+}
+
+// 학교시험 학생 화면 전용 프리미엄 분석: 평가리포트와 동일한 AI 엔드포인트·세션 저장을 재사용하되,
+// 결과를 드릴다운 학생 화면에 반영한다(sessionId 기준 저장 = 학생별 저장 = localStorage 영속).
+async function reportCenterRequestSchoolExamAiAnalysis(studentId, sessionId, buttonEl = null) {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session) {
+        toast('분석할 시험 기록이 없습니다.', 'warn');
+        return;
+    }
+    // 문항 원문 캐시를 먼저 확보하면 payload 품질이 올라간다(있을 때만).
+    if (typeof reportCenterPreloadArchiveQuestionDetails === 'function') {
+        try { await reportCenterPreloadArchiveQuestionDetails(studentId, sessionId); } catch (e) {}
+    }
+    const payload = reportCenterBuildExamAiPayload(studentId, sessionId);
+    payload.generatedFrom = 'AP_MATH_OS_SCHOOL_EXAM_REPORT';
+    if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, true, '분석 중');
+    else toast('프리미엄 분석 중입니다...', 'info');
+    try {
+        const r = await api.post('ai/report-analysis', payload);
+        if (!r || r.success === false) throw new Error(r?.message || r?.error || '프리미엄 분석 실패');
+        const source = String(r.source || '').toLowerCase();
+        if (source !== 'ai' && source !== 'gemini') {
+            reportCenterClearCachedAiAnalysis(sessionId);
+            toast('분석 결과가 기준에 맞지 않아 기본 리포트를 유지합니다.', 'warn');
+            return;
+        }
+        const analysis = reportCenterNormalizeAiAnalysis(r.analysis || r.data || r);
+        analysis.source = 'ai';
+        reportCenterSetCachedAiAnalysis(sessionId, analysis);
+        toast('프리미엄 분석을 학생별로 저장했습니다.', 'success');
+        if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
+    } catch (e) {
+        console.error('[reportCenterRequestSchoolExamAiAnalysis] failed:', e);
+        toast('프리미엄 분석에 실패했습니다. 기본 리포트를 유지합니다.', 'warn');
+    } finally {
+        if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, false);
+    }
+}
+
+function reportCenterResetSchoolExamAiAnalysis(studentId, sessionId) {
+    reportCenterClearCachedAiAnalysis(sessionId);
+    toast('기본 리포트 문구로 복귀했습니다.', 'success');
+    if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
 }
 
 function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, options = {}) {
