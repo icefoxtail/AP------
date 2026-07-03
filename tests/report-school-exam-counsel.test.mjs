@@ -59,4 +59,43 @@ assert.match(editHtml, /저장/);
 const parent = context.reportCenterBuildSchoolExamParentReport('s1', 'exam-a.js');
 assert.doesNotMatch(parent, /코호트|함정|blueprint|review_text|전체 정답률\s*\d+%/);
 
+const detailed = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
+assert.match(detailed, /상세 학부모 리포트/);
+assert.match(detailed, /실제 오답 문제/);
+assert.match(detailed, /2번/);
+assert.match(detailed, /정답/);
+
+const archiveDetails = {
+  ok: true,
+  status: 'loaded',
+  message: '아카이브 문항 원문을 불러왔습니다.',
+  details: [
+    context.reportCenterNormalizeQuestionDetail(
+      { content: '2번 원문입니다.', choices: ['① 1', '② 2'], answer: '②', solution: '2를 고릅니다.' },
+      2,
+      { questionNo: 2, unit: '식의 계산', correctRate: 40 }
+    ),
+    context.reportCenterNormalizeQuestionDetail(
+      { content: '3번 원문입니다.', choices: ['① x', '② y'], answer: '①', solution: 'x를 고릅니다.' },
+      3,
+      { questionNo: 3, unit: '방정식', correctRate: 45 }
+    )
+  ]
+};
+const detailedWithArchive = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js', { archiveDetails });
+assert.match(detailedWithArchive, /아카이브 문항 원문을 불러왔습니다/);
+assert.match(detailedWithArchive, /2번 원문입니다/);
+assert.match(detailedWithArchive, /① 1/);
+assert.match(detailedWithArchive, /②/);
+assert.match(detailedWithArchive, /2를 고릅니다/);
+
+const printDoc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1', { archiveDetails });
+assert.match(printDoc, /학교시험 상세 리포트/);
+assert.match(printDoc, /상세 학부모 리포트/);
+assert.match(printDoc, /2번 원문입니다/);
+
+const simple = context.reportCenterBuildSchoolExamSimpleParentReport('s1', 'exam-a.js');
+assert.match(simple, /간단 리포트/);
+assert.match(simple, /카톡\/짧은 상담용/);
+
 console.log('report school exam counsel test passed');
