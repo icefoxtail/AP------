@@ -2985,6 +2985,12 @@ function reportCenterImportExamReviewsToStudio(studentId, sessionId) {
 function reportCenterRenderStudioToolbar(studentId, sessionId, studioState) {
     const safeStudent = escapeReportJsString(studentId);
     const safeSession = escapeReportJsString(sessionId);
+    if (!reportCenterAdvancedMode()) {
+        return `
+            <button class="btn" onclick="reportCenterClosePrintView()">돌아가기</button>
+            <button class="btn report-print-action-print" onclick="reportCenterPrintCleanPdf('${safeStudent}', '${safeSession}')">인쇄하기</button>
+        `;
+    }
     if (studioState?.isEditMode) {
         return `
             <button class="btn btn-primary" onclick="reportCenterCompleteStudioEdit('${safeStudent}', '${safeSession}')">편집 완료</button>
@@ -3005,6 +3011,7 @@ function reportCenterRenderStudioToolbar(studentId, sessionId, studioState) {
 }
 
 function reportCenterRenderStudioPanel(studentId, sessionId, studioState) {
+    if (!reportCenterAdvancedMode()) return '';
     if (!studioState?.isEditMode) return '';
     const safeStudent = escapeReportJsString(studentId);
     const safeSession = escapeReportJsString(sessionId);
