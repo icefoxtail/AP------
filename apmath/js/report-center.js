@@ -1603,11 +1603,74 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
     `;
 }
 
+function reportCenterBuildStudentView(studentId, archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const sessions = Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [];
+    const session = sessions.find(row =>
+        String(row.student_id) === String(studentId) &&
+        reportCenterNormalizeExamAnalysisArchiveKey(row.archive_file || row.archiveFile || '') === archiveKey
+    );
+    if (!session) {
+        return `
+            <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
+                <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">시험 대시보드</button>
+                <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700;">학생 응시 기록을 찾을 수 없습니다.</div>
+            </div>
+        `;
+    }
+    const students = Array.isArray(state?.db?.students) ? state.db.students : [];
+    const student = students.find(row => String(row.id) === String(studentId));
+    const wrongRows = (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [])
+        .filter(row => String(row.session_id) === String(session.id));
+    const data = reportCenterGetExamReportData(studentId, session.id);
+    const reviewCards = reportCenterBuildQuestionReviewCardsForReport(data, {
+        limit: 8,
+        showAnswer: false,
+        showContent: true,
+        showSolution: true
+    });
+    return `
+        <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
+            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">시험 대시보드</button>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || '학생')} 리포트/상담</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(session.exam_title || '시험')} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}</div>
+                <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:12px;">
+                    <button type="button" class="btn btn-primary" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">PDF 보기</button>
+                    <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}')">발송 문구 복사</button>
+                    <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="openReportCenterCounsel('${escapeReportJsString(studentId)}')">상담 초안</button>
+                </div>
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">학생 오답 문항 분석</div>
+                ${wrongRows.length ? `<div class="aprc-qreview-list">${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">저장된 문항 분석이 없습니다.</div>'}</div>` : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">오답 문항이 없습니다.</div>'}
+            </section>
+        </div>
+    `;
+}
+
+function reportCenterOpenStudentDrilldown(studentId, sessionId = '') {
+    const session = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .find(row => String(row.student_id) === String(studentId) && (!sessionId || String(row.id) === String(sessionId)));
+    if (session) {
+        reportCenterNavTo('student', {
+            archiveFile: reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || ''),
+            studentId
+        });
+    } else {
+        reportCenterNavTo('list', { studentId });
+    }
+    reportCenterSetAdvancedMode(false);
+    openReportCenterModal(studentId);
+}
+
 function reportCenterBuildDrilldownShell(studentId) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const name = student?.name || '학생';
     const nav = reportCenterNavState();
-    const bodyHtml = nav.level === 'exam'
+    const bodyHtml = nav.level === 'student'
+        ? reportCenterBuildStudentView(nav.studentId || studentId, nav.archiveFile)
+        : nav.level === 'exam'
         ? reportCenterBuildExamDashboard(studentId, nav.archiveFile)
         : reportCenterRenderExamHubList(studentId);
     return `
