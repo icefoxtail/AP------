@@ -1572,10 +1572,19 @@ function reportCenterShowWideModal(title, html) {
         reportCenterTypesetMath(bodyEl);
         const preload = bodyEl.querySelector?.('[data-report-preload-archive-session]');
         if (preload && typeof reportCenterPreloadArchiveQuestionDetails === 'function') {
-            reportCenterPreloadArchiveQuestionDetails(
-                preload.getAttribute('data-report-preload-student') || '',
-                preload.getAttribute('data-report-preload-archive-session') || ''
-            );
+            const preloadStudent = preload.getAttribute('data-report-preload-student') || '';
+            const preloadSession = preload.getAttribute('data-report-preload-archive-session') || '';
+            // 선로딩이 캐시를 새로 채우면 학생 화면을 다시 그려 실제 오답 문제가 나오게 한다.
+            // 이미 캐시된 경우 preload가 null을 반환하므로 재렌더가 반복되지 않는다(루프 방지).
+            Promise.resolve(reportCenterPreloadArchiveQuestionDetails(preloadStudent, preloadSession))
+                .then(payload => {
+                    if (!payload) return;
+                    const nav = typeof reportCenterNavState === 'function' ? reportCenterNavState() : null;
+                    if (nav && nav.level === 'student' && typeof openReportCenterModal === 'function') {
+                        openReportCenterModal(preloadStudent, 'daily', { forceDrilldown: true });
+                    }
+                })
+                .catch(() => {});
         }
     }
     requestAnimationFrame(() => overlay.classList.add('show'));
