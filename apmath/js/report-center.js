@@ -1664,23 +1664,16 @@ function reportCenterOpenStudentDrilldown(studentId, sessionId = '') {
 }
 
 function reportCenterBuildDrilldownShell(studentId) {
-    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
-    const name = student?.name || '학생';
     const nav = reportCenterNavState();
+    const shellStudentId = nav.level === 'student' ? (nav.studentId || studentId) : studentId;
+    const student = (state.db.students || []).find(s => String(s.id) === String(shellStudentId));
+    const name = student?.name || '학생';
     const bodyHtml = nav.level === 'student'
         ? reportCenterBuildStudentView(nav.studentId || studentId, nav.archiveFile)
         : nav.level === 'exam'
         ? reportCenterBuildExamDashboard(studentId, nav.archiveFile)
         : reportCenterRenderExamHubList(studentId);
-    return `
-        <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
-                <div>
-                    <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.4;">${reportCenterEscape(name)} 리포트 센터</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">시험지별 분석과 학생별 오답 리포트를 한 흐름으로 정리합니다.</div>
-                </div>
-                ${reportCenterAdvancedToggleHtml(studentId, 'daily')}
-            </div>
+    const contentHtml = nav.level === 'list' ? `
             <section data-report-drilldown-level="list" style="display:flex; flex-direction:column; gap:12px; padding:16px; border-radius:16px; background:var(--surface); border:1px solid var(--border);">
                 <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
                     <div>
@@ -1691,6 +1684,17 @@ function reportCenterBuildDrilldownShell(studentId) {
                 </div>
                 ${bodyHtml}
             </section>
+        ` : bodyHtml;
+    return `
+        <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
+                <div>
+                    <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.4;">${reportCenterEscape(name)} 리포트 센터</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">시험지별 분석과 학생별 오답 리포트를 한 흐름으로 정리합니다.</div>
+                </div>
+                ${reportCenterAdvancedToggleHtml(studentId, 'daily')}
+            </div>
+            ${contentHtml}
         </div>
     `;
 }

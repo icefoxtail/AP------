@@ -69,5 +69,6 @@ assert.equal(context.reportCenterAdvancedMode(), true);
 assert.equal(JSON.stringify(context.AP_REPORT_NAV), JSON.stringify({ level: 'student', archiveFile: 'exams/exam-a.js', studentId: 's1' }));
 assert.ok(lastModal);
 assert.match(lastModal.html, /data-report-drilldown-level="student"/);
+assert.doesNotMatch(lastModal.html, /시험지 찾기/);
 
 console.log('report center student view test passed');

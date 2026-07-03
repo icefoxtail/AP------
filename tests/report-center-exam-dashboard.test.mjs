@@ -60,6 +60,7 @@ assert.equal(
 context.reportCenterNavTo('exam', { archiveFile: 'exams/exam-a.js' });
 const html = context.reportCenterBuildDrilldownShell('s1');
 assert.match(html, /data-report-drilldown-level="exam"/);
+assert.doesNotMatch(html, /시험지 찾기/);
 assert.match(html, /계산 정확도를 확인하는 시험입니다/);
 assert.match(html, /문항 분석 상태/);
 assert.match(html, /1\/3/);
