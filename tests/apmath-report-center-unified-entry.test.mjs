@@ -76,12 +76,18 @@ assert.equal(legacy[0].id, 'e3');
 const dashboard = context.reportCenterBuildExamDashboard('', groups[0].key);
 assert.match(dashboard, /중2A/);
 assert.match(dashboard, /학생 리포트/);
+assert.match(dashboard, /반 선택/);
+assert.match(dashboard, /학생 선택/);
+assert.match(dashboard, /시험 대시보드 보기/);
+assert.match(dashboard, /grid-template-columns:repeat\(auto-fit,minmax\(132px,1fr\)\)/);
 
 const picker = context.reportCenterBuildStudentPickerView(groups[0].key, 'c1');
 assert.match(picker, /선택 2명 \/ 응시 2명/);
 assert.match(picker, /민준/);
 assert.match(picker, /서연/);
 assert.doesNotMatch(picker, /출력 불가/);
+assert.doesNotMatch(picker, /1학기 기말 · 오답/);
+assert.match(picker, /grid-template-columns:repeat\(auto-fit,minmax\(128px,1fr\)\)/);
 
 assert.match(reportSource, /function reportCenterOpenBatchPrintView/);
 assert.match(reportSource, /report-center-batch-page/);

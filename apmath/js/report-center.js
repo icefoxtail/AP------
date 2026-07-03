@@ -1087,6 +1087,19 @@ async function reportCenterLoadArchiveQuestionDetails(studentId, sessionId, opti
     }
 }
 
+async function reportCenterPreloadArchiveQuestionDetails(studentId, sessionId) {
+    const session = (state.db.exam_sessions || []).find(e => String(e.id) === String(sessionId));
+    if (!session || reportCenterGetCachedArchiveDetails(session.id)) return null;
+    try {
+        const payload = await reportCenterFetchArchiveQuestionDetails(session);
+        payload.sessionId = session.id;
+        return reportCenterSetCachedArchiveDetails(session.id, payload);
+    } catch (e) {
+        console.warn('[reportCenterPreloadArchiveQuestionDetails] failed:', e);
+        return null;
+    }
+}
+
 function reportCenterAppendArchiveSummaryToExamText(sessionId) {
     const cached = reportCenterGetCachedArchiveDetails(sessionId);
     const summary = reportCenterBuildArchiveSummaryText(cached);
@@ -1557,6 +1570,13 @@ function reportCenterShowWideModal(title, html) {
         bodyEl.scrollTop = 0;
         bodyEl.innerHTML = html || '';
         reportCenterTypesetMath(bodyEl);
+        const preload = bodyEl.querySelector?.('[data-report-preload-archive-session]');
+        if (preload && typeof reportCenterPreloadArchiveQuestionDetails === 'function') {
+            reportCenterPreloadArchiveQuestionDetails(
+                preload.getAttribute('data-report-preload-student') || '',
+                preload.getAttribute('data-report-preload-archive-session') || ''
+            );
+        }
     }
     requestAnimationFrame(() => overlay.classList.add('show'));
 }
@@ -1795,11 +1815,11 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
             const wrongCount = wrongRows.filter(row => String(row.session_id) === String(session.id)).length;
             return `
                 <button class="btn" type="button" data-student-id="${reportCenterAttr(session.student_id)}"
-                        style="display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:10px; width:100%; min-height:44px; padding:10px 12px; border-radius:10px; background:var(--surface); border:1px solid var(--border); box-shadow:none; text-align:left;"
+                        style="display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:6px 8px; width:100%; min-height:42px; padding:8px 10px; border-radius:10px; background:var(--surface); border:1px solid var(--border); box-shadow:none; text-align:left;"
                         onclick="reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(archiveKey)}', studentId: '${escapeReportJsString(session.student_id)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">
-                    <span style="font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || session.student_id || '학생')}</span>
-                    <span style="font-size:12px; font-weight:800; color:var(--secondary);">${session.score ?? '-'}점</span>
-                    <span style="font-size:12px; font-weight:800; color:var(--secondary);">오답 ${wrongCount}</span>
+                    <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || session.student_id || '학생')}</span>
+                    <span style="font-size:11px; font-weight:900; color:var(--primary); white-space:nowrap;">보기</span>
+                    <span style="grid-column:1 / -1; font-size:11px; font-weight:800; color:var(--secondary);">${session.score ?? '-'}점 · 오답 ${wrongCount}</span>
                 </button>
             `;
         }).join('');
@@ -1817,18 +1837,35 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
     `).join('');
     return `
         <div data-report-drilldown-level="exam" style="display:flex; flex-direction:column; gap:12px;">
-            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('list'); openReportCenterModal('${escapeReportJsString(studentId)}')">시험지 목록</button>
-            <div style="display:grid; grid-template-columns:minmax(0,1.4fr) minmax(180px,.6fr); gap:12px;">
-                <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('list'); openReportCenterModal('${escapeReportJsString(studentId)}')">← 시험 목록</button>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap;">
+                    <div style="min-width:0;">
                     <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(hub.title || '시험지')}</div>
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape([hub.school, hub.grade].filter(Boolean).join(' · ') || archiveKey)}</div>
-                    <div style="margin-top:12px; font-size:13px; font-weight:700; color:var(--text); line-height:1.7;">${reportCenterEscape(reviews.meta?.overview_text || reviews.meta?.overview || '저장된 시험지 총평이 없습니다.')}</div>
-                </section>
-                <section style="display:grid; gap:8px;">
-                    ${distributionHtml('단원 분포', unitCounts)}
-                    ${distributionHtml('난도 분포', difficultyCounts)}
-                </section>
-            </div>
+                    </div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <span style="padding:6px 9px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:900;">응시 ${hub.takers || sessions.length}</span>
+                        <span style="padding:6px 9px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:900;">문항분석 ${hub.reviewCount}/${hub.blueprintCount || '-'}</span>
+                    </div>
+                </div>
+                <div style="margin-top:10px; font-size:13px; font-weight:700; color:var(--text); line-height:1.7;">${reportCenterEscape(reviews.meta?.overview_text || reviews.meta?.overview || '저장된 시험지 총평이 없습니다.')}</div>
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">반 선택</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">${classRowsHtml || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 반이 없습니다.</div>'}</div>
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">학생 선택</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(132px,1fr)); gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 학생이 없습니다.</div>'}</div>
+            </section>
+            <details class="school-exam-dashboard-collapse" style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <summary style="cursor:pointer; font-size:14px; font-weight:900; color:var(--text);">시험 대시보드 보기</summary>
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">
+                        ${distributionHtml('단원 분포', unitCounts)}
+                        ${distributionHtml('난도 분포', difficultyCounts)}
+                    </div>
             <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
                 <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:10px;">
                     <div style="font-size:14px; font-weight:900; color:var(--text);">문항 분석 상태</div>
@@ -1842,14 +1879,8 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                     ${rates.rows.map(row => `<span style="padding:6px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">${reportCenterEscape(row.questionNo)}번 ${row.correctRate === null ? '-' : `${row.correctRate}%`}</span>`).join('') || '<span style="font-size:12px; font-weight:700; color:var(--secondary);">집계할 문항이 없습니다.</span>'}
                 </div>
             </section>
-            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">반 선택</div>
-                <div style="display:flex; flex-direction:column; gap:6px;">${classRowsHtml || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 반이 없습니다.</div>'}</div>
-            </section>
-            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">전체 응시자</div>
-                <div style="display:flex; flex-direction:column; gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 학생이 없습니다.</div>'}</div>
-            </section>
+                </div>
+            </details>
         </div>
     `;
 }
@@ -1926,21 +1957,20 @@ function reportCenterBuildStudentPickerView(groupKey, classId = '') {
     const studentRows = students.map(row => {
         const checked = selectedIds.has(String(row.studentId));
         return `
-            <label style="display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:10px; min-height:50px; padding:10px 12px; border-radius:10px; background:var(--surface); border:1px solid var(--border);">
+            <label style="display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:6px 8px; min-height:42px; padding:8px 9px; border-radius:10px; background:var(--surface); border:1px solid var(--border);">
                 <input type="checkbox" ${checked ? 'checked' : ''} onchange="reportCenterToggleReportStudent('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}', '${escapeReportJsString(row.studentId)}', this.checked)">
-                <span style="min-width:0;">
-                    <span style="display:block; font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(row.name || row.studentName || '학생')}</span>
-                    <span style="display:block; font-size:12px; font-weight:700; color:var(--secondary); margin-top:2px;">${reportCenterEscape(row.examTitle || group.title || '학교시험')} · 오답 ${row.wrongCount}개</span>
+                <span style="min-width:0; overflow:hidden;">
+                    <span style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(row.name || row.studentName || '학생')}</span>
+                    <span style="display:block; font-size:11px; font-weight:800; color:var(--secondary); margin-top:2px;">${row.score ?? '-'}점 · 오답 ${row.wrongCount}개</span>
                 </span>
-                <span style="font-size:12px; font-weight:800; color:var(--secondary); white-space:nowrap;">${row.score ?? '-'}점</span>
-                <button class="btn" type="button" style="min-height:32px; padding:6px 9px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="event.preventDefault(); reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(group.archiveFile)}', studentId: '${escapeReportJsString(row.studentId)}' }); openReportCenterModal('${escapeReportJsString(row.studentId)}')">보기</button>
+                <button class="btn" type="button" title="상세 리포트 보기" style="min-height:28px; min-width:32px; padding:4px 7px; border-radius:8px; font-size:11px; font-weight:900; background:var(--surface-2); border:1px solid var(--border);" onclick="event.preventDefault(); reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(group.archiveFile)}', studentId: '${escapeReportJsString(row.studentId)}' }); openReportCenterModal('${escapeReportJsString(row.studentId)}')">보기</button>
             </label>
         `;
     }).join('');
 
     return `
         <div data-report-drilldown-level="student-picker" style="display:flex; flex-direction:column; gap:12px;">
-            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(group.archiveFile)}' }); openReportCenterModal('')">시험 대시보드</button>
+            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(group.archiveFile)}' }); openReportCenterModal('')">← 반/학생 선택</button>
             <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
                 <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(group.title || '학교시험')} 학생 선택</div>
                 <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">선택 ${selectedCount}명 / 응시 ${students.length}명</div>
@@ -1954,7 +1984,7 @@ function reportCenterBuildStudentPickerView(groupKey, classId = '') {
                         <button class="btn" type="button" style="min-height:34px; padding:7px 10px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterClearReportStudents('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">선택 해제</button>
                     </div>
                 </div>
-                <div style="display:flex; flex-direction:column; gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시한 학생이 없습니다.</div>'}</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시한 학생이 없습니다.</div>'}</div>
             </section>
             <button class="btn btn-primary" type="button" style="min-height:46px; border-radius:12px; font-size:13px; font-weight:900;" ${selectedCount ? '' : 'disabled'} onclick="reportCenterOpenBatchPrintView('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">
                 선택 학생 리포트 이어서 출력
@@ -2062,6 +2092,8 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
     const wrongRows = (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [])
         .filter(row => String(row.session_id) === String(session.id));
     const data = reportCenterGetExamReportData(studentId, session.id);
+    const detailedReport = reportCenterBuildSchoolExamDetailedParentReport(studentId, session.archive_file || archiveFile);
+    const simpleReport = reportCenterBuildSchoolExamSimpleParentReport(studentId, session.archive_file || archiveFile);
     const counselReport = reportCenterBuildSchoolExamCounselReport(studentId, session.archive_file || archiveFile);
     const reviewCards = reportCenterBuildQuestionReviewCardsForReport(data, {
         limit: 8,
@@ -2073,13 +2105,19 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
     const originalQuestionHtml = '<div id="report-center-archive-details"></div>';
     return `
         <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
-            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">시험 대시보드</button>
+            <span data-report-preload-student="${reportCenterAttr(studentId)}" data-report-preload-archive-session="${reportCenterAttr(session.id)}" style="display:none;"></span>
+            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">← 반/학생 선택</button>
+            ${detailedReport}
+            <details style="padding:0;">
+                <summary style="cursor:pointer; min-height:38px; padding:9px 12px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); font-size:14px; font-weight:900; color:var(--text);">간단 리포트 보기</summary>
+                <div style="margin-top:10px;">${simpleReport}</div>
+            </details>
             ${counselReport}
             <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
                 <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || '학생')} 리포트/상담</div>
                 <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(session.exam_title || '시험')} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}</div>
                 <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px;">
-                    <button type="button" class="btn btn-primary" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">학부모용 리포트 보기</button>
+                    <button type="button" class="btn btn-primary" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px;" onclick="reportCenterOpenSchoolExamDetailedPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">상세 리포트 출력</button>
                     <button type="button" class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}')">발송 문구 복사</button>
                 </div>
             </section>
@@ -2263,6 +2301,11 @@ function reportCenterGetExamReportData(studentId, sessionId = '') {
     const archiveDetails = reportCenterGetCachedArchiveDetails(session.id);
 
     return { student, session, sessions, stats, wrongSummary, classInfo, targetProgress, archiveDetails };
+}
+
+function reportCenterWithArchiveDetails(data, archiveDetails = null) {
+    if (!data || !archiveDetails) return data;
+    return { ...data, archiveDetails };
 }
 
 function reportCenterGetExamReportTeacherMemo() {
@@ -2662,6 +2705,154 @@ function reportCenterGetSavedCounselFields(studentId, archiveFile) {
     const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
     const saved = reports[String(studentId)];
     return saved && typeof saved === 'object' ? saved : null;
+}
+
+function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    if (!session) return '<section class="aprc-counsel-report">간단 리포트를 만들 시험 기록이 없습니다.</section>';
+    const data = reportCenterGetExamReportData(studentId, session.id);
+    const student = data.student || {};
+    const stats = data.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const actionItems = reportCenterBuildAcademyActionPlan(data);
+    const lines = [
+        `${student.name || '학생'} · ${session.exam_title || '시험'} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
+        reportCenterBuildCompactExamSummary(data),
+        wrongRows.length ? `${reportCenterShortQuestionList(wrongRows, 5)} 문항을 우선 복습합니다.` : '이번 시험은 오답 문항이 없어 다음 단원 확장 학습으로 이어갑니다.',
+        actionItems.slice(0, 2).join(' '),
+        reportCenterBuildCompactParentMessage(data)
+    ].filter(Boolean);
+    return `
+        <article class="aprc-counsel-report" data-report-school-exam-simple="1">
+            <header class="aprc-counsel-head">
+                <div>
+                    <div class="aprc-counsel-kicker">카톡/짧은 상담용</div>
+                    <h3>간단 리포트</h3>
+                </div>
+            </header>
+            ${lines.map((line, index) => `
+                <section class="aprc-counsel-section" data-report-simple-line="${index + 1}">
+                    <p>${reportCenterEscape(line).replace(/\n/g, '<br>')}</p>
+                </section>
+            `).join('')}
+        </article>
+    `;
+}
+
+function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, options = {}) {
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    if (!session) return '<section class="aprc-counsel-report">상세 리포트를 만들 시험 기록이 없습니다.</section>';
+    const data = reportCenterWithArchiveDetails(
+        reportCenterGetExamReportData(studentId, session.id),
+        options.archiveDetails || null
+    );
+    const student = data.student || {};
+    const stats = data.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const questionCards = reportCenterBuildQuestionReviewCardsForReport(data, {
+        limit: Math.max(1, wrongRows.length),
+        showAnswer: true,
+        showContent: true,
+        showSolution: true,
+        showTeach: false,
+        anonymized: false
+    });
+    const actionItems = reportCenterBuildAcademyActionPlan(data);
+    const archiveStatus = data.archiveDetails?.message
+        ? `<div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:6px;">${reportCenterEscape(data.archiveDetails.message)}</div>`
+        : '';
+    return `
+        <article class="aprc-counsel-report" data-report-school-exam-detail="1">
+            <header class="aprc-counsel-head">
+                <div>
+                    <div class="aprc-counsel-kicker">기본값 · 학부모 상담/출력용</div>
+                    <h3>${reportCenterEscape(student.name || '학생')} 상세 학부모 리포트</h3>
+                </div>
+            </header>
+            <section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">시험 요약</div>
+                <p>${reportCenterEscape(reportCenterBuildCompactExamSummary(data))}</p>
+            </section>
+            <section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">다음 수업 계획</div>
+                <p>${reportCenterEscape(actionItems.join('\n') || reportCenterBuildCompactParentMessage(data)).replace(/\n/g, '<br>')}</p>
+            </section>
+            <section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">실제 오답 문제</div>
+                ${archiveStatus}
+                ${wrongRows.length
+                    ? `<div class="aprc-qreview-list">${questionCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">문항 원문/분석 자료가 아직 없습니다.</div>'}</div>`
+                    : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
+            </section>
+            <section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">학부모 안내 문구</div>
+                <p>${reportCenterEscape(reportCenterBuildCompactParentMessage(data)).replace(/\n/g, '<br>')}</p>
+            </section>
+        </article>
+    `;
+}
+
+function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, options = {}) {
+    const data = reportCenterWithArchiveDetails(
+        reportCenterGetExamReportData(studentId, sessionId),
+        options.archiveDetails || null
+    );
+    const student = data?.student || null;
+    const session = data?.session || null;
+    if (!student || !session) {
+        return '<main class="aprc-pdf-document"><section class="aprc-pdf-panel aprc-empty-box">학교시험 상세 리포트를 만들 시험 기록이 없습니다.</section></main>';
+    }
+    const archiveFile = session.archive_file || session.archiveFile || '';
+    return `
+        <main class="aprc-pdf-document aprc-school-exam-detail-print" data-report-school-exam-print="detail">
+            <header class="aprc-pdf-header">
+                <div>
+                    <div class="aprc-brand">AP MATH REPORT</div>
+                    <div class="aprc-title">학교시험 상세 리포트</div>
+                    <div class="aprc-subtitle">틀린 문제와 다음 수업 계획을 함께 정리합니다.</div>
+                </div>
+            </header>
+            ${reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, {
+                archiveDetails: data.archiveDetails
+            })}
+        </main>
+    `;
+}
+
+function reportCenterBuildSchoolExamDetailedPrintShell(bodyHtml) {
+    reportCenterEnsurePremiumReportStyle();
+    return `
+        <div id="report-print-view" class="report-print-view report-center-school-exam-print-view">
+            <div class="report-print-toolbar no-print">
+                <button class="btn" type="button" onclick="openReportCenterHome()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">리포트 센터</button>
+                <button class="btn btn-primary" type="button" onclick="window.print()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
+            </div>
+            <div class="report-print-stage" id="report-print-document-root">${bodyHtml}</div>
+        </div>
+    `;
+}
+
+async function reportCenterOpenSchoolExamDetailedPrintView(studentId, sessionId = '', event = null) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session) {
+        toast('출력할 학교시험 기록이 없습니다.', 'warn');
+        return;
+    }
+    let archiveDetails = reportCenterGetCachedArchiveDetails(data.session.id);
+    if (!archiveDetails) {
+        archiveDetails = await reportCenterFetchArchiveQuestionDetails(data.session);
+    }
+    const root = document.getElementById('app-root') || document.body;
+    document.querySelectorAll('#report-center-wide-overlay, .report-center-wide-overlay, .wide-overlay').forEach(el => el.remove());
+    root.innerHTML = reportCenterBuildSchoolExamDetailedPrintShell(
+        reportCenterBuildSchoolExamDetailedPrintDocument(studentId, data.session.id, { archiveDetails })
+    );
+    reportCenterInjectPrintViewStyle();
+    reportCenterTypesetMath(document.getElementById('report-print-document-root'));
+    window.scrollTo(0, 0);
+    toast('학교시험 상세 리포트 출력 화면을 열었습니다.', 'success');
 }
 
 function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, options = {}) {
