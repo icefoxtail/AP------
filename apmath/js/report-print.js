@@ -64,10 +64,12 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
         showAnswer: false,
         showContent: true,
         showSolution: true,
+        showTeach: true,
         anonymized: false,
         badge: true,
         ...opts
     };
+    if (options.anonymized) options.showTeach = false;
     const source = review && typeof review === 'object' ? review : {};
     const reviewData = reportCenterParseReviewJson(source.reviewText || source.review_text || '');
     const questionNo = source.questionNo ?? source.question_no ?? '';
@@ -104,7 +106,7 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
             line('묻는 것', reviewData.asks),
             line('함정', reviewData.trap),
             line('풀이 포인트', reviewData.key),
-            options.anonymized ? '' : line('지도 포인트', reviewData.teach)
+            options.showTeach ? line('지도 포인트', reviewData.teach) : ''
         ].filter(Boolean).join('');
         if (body) reviewSectionHtml = `
             <section class="aprc-qreview-block aprc-qreview-review">
@@ -182,9 +184,64 @@ function reportCenterBuildQuestionReviewCardsForReport(data, opts = {}) {
             showAnswer: !!opts.showAnswer,
             showContent: opts.showContent !== false,
             showSolution: opts.showSolution !== false,
+            showTeach: opts.showTeach !== false,
             anonymized: !!opts.anonymized
         });
     }).join('');
+}
+
+function reportCenterPdfUniqueLines(lines = [], limit = 3) {
+    const result = [];
+    lines.map(line => String(line || '').trim()).filter(Boolean).forEach(line => {
+        if (result.some(prev => reportCenterIsDuplicateText(prev, line))) return;
+        result.push(line);
+    });
+    return result.slice(0, limit);
+}
+
+function reportCenterBuildWrongCauseSummary(data) {
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    if (!wrongRows.length) return '이번 시험은 오답 문항이 없어 별도 원인 분석보다 다음 단원 확장 학습에 집중하겠습니다.';
+    const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2).join(', ');
+    const hardCount = wrongRows.filter(row => Number(row.correctRate) < 60 || /상|심화|어려/.test(String(row.difficulty || row.level || ''))).length;
+    const base = units
+        ? `${units} 단원에서 조건을 식으로 옮기는 과정과 계산 마무리 확인이 함께 필요합니다.`
+        : '조건을 식으로 옮기는 과정과 계산 마무리 확인이 함께 필요합니다.';
+    return hardCount
+        ? `${base} 특히 정답률이 낮은 문항에서 풀이 시작점을 잡는 데 시간이 걸린 것으로 보입니다.`
+        : base;
+}
+
+function reportCenterBuildCompactExamSummary(data) {
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    const positionText = reportCenterApplyEasyFinalLanguage(reportCenterBuildScorePositionText(data));
+    if (!wrongRows.length) {
+        return `${positionText || '이번 시험은 안정적으로 마무리했습니다.'} 전 문항을 정확히 풀었습니다.`;
+    }
+    const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2).join(', ');
+    const cluster = units ? `${units} 단원에서 오답이 확인되었습니다.` : '특정 문항에서 오답이 확인되었습니다.';
+    return `${positionText || '이번 시험의 위치를 확인했습니다.'} ${cluster}`;
+}
+
+function reportCenterBuildAcademyActionPlan(data, trendData = null, aiAnalysis = null) {
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    if (!wrongRows.length) {
+        return ['다음 수업에서는 현재 정확도를 유지하면서 다음 단원과 한 단계 높은 난도 문제로 확장하겠습니다.'];
+    }
+    const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2);
+    const unitText = units.length ? `${units.join(', ')} 단원` : '오답 단원';
+    const generated = [
+        `${unitText}의 핵심 풀이를 다음 수업에서 다시 풀이하며 확인하겠습니다.`,
+        '같은 조건 해석 유형을 짧게 반복해 풀이 시작점을 안정적으로 잡겠습니다.',
+        '계산 과정과 답안 마무리는 수업 중 바로 점검해 같은 실수가 이어지지 않게 관리하겠습니다.'
+    ];
+    const aiItems = aiAnalysis ? reportCenterBuildNextPlanItems(data, aiAnalysis) : [];
+    return reportCenterPdfUniqueLines([...generated, ...aiItems], 3);
+}
+
+function reportCenterBuildCompactParentMessage(data) {
+    const studentName = data?.student?.name || '학생';
+    return `안녕하세요, AP수학입니다. ${studentName} 학생의 이번 시험 결과는 학원에서 다음 수업과 오답 관리에 반영해 책임 있게 이어가겠습니다.`;
 }
 
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
@@ -317,6 +374,12 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         ? (data.archiveDetails.status === 'loaded' ? '문제 원문 일부를 확인했습니다.' : reportCenterApplyEasyFinalLanguage(data.archiveDetails.message))
         : (tableMeta.note || '문제 번호·단원·정답률 기준으로 정리합니다.');
     const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석</div>` : '';
+    const isAdvancedPdf = typeof reportCenterAdvancedMode === 'function' && reportCenterAdvancedMode();
+    const compactSummaryText = reportCenterBuildCompactExamSummary(data);
+    const compactCauseText = reportCenterBuildWrongCauseSummary(data);
+    const compactActionItems = reportCenterBuildAcademyActionPlan(data, trendData, aiAnalysis);
+    parentSummaryText = dirtyBlocks.summary ? parentSummaryText : compactSummaryText;
+    parentMessageText = dirtyBlocks.parentMessage ? parentMessageText : reportCenterBuildCompactParentMessage(data);
 
     let html = `
         <main class="aprc-pdf-document">
@@ -377,16 +440,11 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <p>${reportCenterEscape(parentSummaryText)}</p>
             </section>
 
-            ${(studioOptions.includeScoreTrend || wrongCount) ? `<section class="aprc-pdf-section aprc-pdf-point-grid">
+            ${studioOptions.includeScoreTrend ? `<section class="aprc-pdf-section aprc-pdf-point-grid">
                 ${studioOptions.includeScoreTrend ? `<article class="aprc-pdf-panel">
                     <div class="aprc-section-title">지금 어디쯤 있나요</div>
                     ${reportCenterBuildReportChartHtml(trendChart)}
                     <p class="aprc-trend-summary">${reportCenterEscape(trendSummaryText)}</p>
-                </article>` : ''}
-                ${wrongCount ? `<article class="aprc-pdf-panel">
-                    <div class="aprc-section-title">다음에 꼭 짚어볼 부분</div>
-                    <p>${reportCenterEscape(coreItems[1].text)}</p>
-                    ${studioOptions.includeWeaknessTrend ? reportCenterBuildWeaknessTrendTable(trendData.weaknessTrend) : ''}
                 </article>` : ''}
             </section>` : ''}
 
@@ -395,26 +453,18 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 ${reportCenterBuildReportChartHtml(distributionChart)}
             </section>` : ''}
 
-            ${studioOptions.includeRemediation ? `<section class="aprc-pdf-section aprc-pdf-remediation aprc-pdf-panel">
+            ${isAdvancedPdf && studioOptions.includeRemediation ? `<section class="aprc-pdf-section aprc-pdf-remediation aprc-pdf-panel">
                 <div class="aprc-section-title">이번 시험 보완 방향</div>
                 <p>${reportCenterEscape(remediationText)}</p>
             </section>` : ''}
 
-            ${studioOptions.includeWrongCare ? `<section class="aprc-pdf-section aprc-pdf-wrong-care aprc-pdf-panel">
+            ${isAdvancedPdf && studioOptions.includeWrongCare ? `<section class="aprc-pdf-section aprc-pdf-wrong-care aprc-pdf-panel">
                 <div class="aprc-section-title">AP수학 오답관리</div>
                 ${String(wrongCareText || '').split(/\n+/).map(line => line.trim()).filter(Boolean).map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
                 ${wrongCount ? `<div class="aprc-wrongcare-flow">${reportCenterEscape(REPORT_WRONGCARE_FLOW.join(' → '))}</div>` : ''}
             </section>` : ''}
 
-            <section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">
-                <div class="aprc-section-title">다음 수업 복습 계획</div>
-                <ol class="aprc-plan-list">
-                    ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
-                </ol>
-                ${isDetailed ? `<p class="aprc-pdf-bridge-note">문제별 자세한 내용은 아래 분석 자료를 참고해 주시기 바랍니다.</p>` : ''}
-            </section>
-
-            ${isDetailed && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-table-panel">
+            ${isAdvancedPdf && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-table-panel">
                 <div class="aprc-section-title">문제별 분석</div>
                 <table class="aprc-pdf-table aprc-table">
                     <thead>
@@ -432,22 +482,35 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <div class="aprc-source-note">${reportCenterEscape(archiveMessage || '')}</div>
             </section>` : ''}
 
-            ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
-                <div class="aprc-section-title">문제별 분석 카드</div>
+            ${wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
+                <div class="aprc-section-title">오답 문항 분석</div>
                 <div class="aprc-qreview-list">${reportCenterBuildQuestionReviewCardsForReport(data, {
                     limit: 6,
                     showAnswer: !!studioOptions.includeQuestionReviewAnswer,
                     showContent: true,
-                    showSolution: true
+                    showSolution: true,
+                    showTeach: false
                 })}</div>
             </section>` : ''}
 
-            ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
+            ${isAdvancedPdf && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
                 <div class="aprc-section-title">문제별 코멘트</div>
                 <div class="aprc-qcomment-list">${reportCenterBuildQuestionCommentCards(data, 4)}</div>
             </section>` : ''}
 
-            ${studioOptions.includeTeacherOpinion ? `<section class="aprc-pdf-section aprc-pdf-diagnosis aprc-pdf-panel">
+            ${wrongCount ? `<section class="aprc-pdf-section aprc-pdf-cause-summary aprc-pdf-panel">
+                <div class="aprc-section-title">오답 원인 한눈에</div>
+                <p>${reportCenterEscape(compactCauseText)}</p>
+            </section>` : ''}
+
+            <section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">
+                <div class="aprc-section-title">학원 조치</div>
+                <ol class="aprc-plan-list">
+                    ${compactActionItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
+                </ol>
+            </section>
+
+            ${isAdvancedPdf && studioOptions.includeTeacherOpinion ? `<section class="aprc-pdf-section aprc-pdf-diagnosis aprc-pdf-panel">
                 <div class="aprc-section-title">선생님 종합 의견</div>
                 ${diagnosisLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
             </section>` : ''}

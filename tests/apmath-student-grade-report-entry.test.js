@@ -10,8 +10,8 @@ const report = ['report-text.js', 'report-center.js', 'report-print.js']
 
 assert(
   student.includes('function openStudentReportOutputFromDetail') &&
-    student.includes('openReportCenterExam(key, sessionId || sessions[0].id || \'\')'),
-  'student grade tab should route report output through the existing report center exam entry point'
+    student.includes('reportCenterOpenStudentDrilldown(key, sessionId || sessions[0].id || \'\')'),
+  'student grade tab should route report output directly into the report center student drilldown'
 );
 
 assert(
@@ -32,9 +32,10 @@ assert(
 
 assert(
   report.includes('function openReportCenterExam(studentId, selectedSessionId = \'\')') &&
+    report.includes('function reportCenterOpenStudentDrilldown(studentId, sessionId = \'\')') &&
     report.includes('리포트보기/프리미엄분석') &&
     report.includes('reportCenterOpenPrintView'),
-  'existing report center should keep the printable exam report flow'
+  'existing report center should keep the printable exam report flow and expose the student drilldown entry'
 );
 
 console.log('apmath student grade report entry test passed');
