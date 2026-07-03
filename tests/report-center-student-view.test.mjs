@@ -56,8 +56,12 @@ assert.match(html, /민준 리포트\/상담/);
 assert.match(html, /오답 2/);
 assert.match(html, /2번 저장 분석/);
 assert.match(html, /3번 저장 분석/);
-assert.match(html, /PDF 보기/);
+assert.match(html, /학생별 상담 리포트 1장/);
+assert.match(html, /학부모용 리포트 보기/);
 assert.match(html, /발송 문구 복사/);
+assert.match(html, /선생님용 상세 분석 보기/);
+assert.match(html, /문제 원문 확인/);
+assert.match(html, /<details/);
 
 let lastModal = null;
 context.reportCenterShowWideModal = (title, modalHtml) => {
