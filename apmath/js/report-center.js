@@ -1537,6 +1537,18 @@ function reportCenterEnsureWideOverlay() {
         .aprc-pick-card__name { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:800; color:var(--text); }
         .aprc-pick-card__go { font-size:11px; font-weight:800; color:var(--primary); white-space:nowrap; }
         .aprc-pick-card__meta { grid-column:1 / -1; font-size:11px; font-weight:700; color:var(--secondary); line-height:1.4; }
+        /* 학생 피커: 체크박스 선택 카드 */
+        .aprc-pick-grid--tight { grid-template-columns:repeat(auto-fit, minmax(128px, 1fr)); }
+        .aprc-pick-label { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:6px 8px; min-height:44px; padding:9px 10px; border:1px solid var(--border); border-radius:12px; background:var(--surface); cursor:pointer; transition:background 180ms ease, border-color 180ms ease; }
+        .aprc-pick-label:hover { background:var(--surface-2); border-color:rgba(var(--primary-rgb),0.22); }
+        .aprc-pick-label:focus-within { box-shadow:0 0 0 4px rgba(var(--primary-rgb),0.14); }
+        .aprc-pick-label:has(input:checked) { border-color:var(--primary); background:var(--primary-soft); }
+        .aprc-pick-label__name { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:800; color:var(--text); }
+        .aprc-pick-label__meta { display:block; font-size:11px; font-weight:700; color:var(--secondary); margin-top:2px; }
+        .aprc-pick-mini-btn { min-height:28px; min-width:34px; padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; background:var(--surface-2); border:1px solid var(--border); color:var(--text); cursor:pointer; font-family:inherit; transition:background 180ms ease, border-color 180ms ease, transform 150ms ease; }
+        .aprc-pick-mini-btn:hover { background:var(--surface); border-color:rgba(var(--primary-rgb),0.22); }
+        .aprc-pick-mini-btn:active { transform:scale(0.96); }
+        .aprc-pick-mini-btn:focus-visible { outline:none; box-shadow:0 0 0 4px rgba(var(--primary-rgb),0.14); }
         /* 섹션/버튼 규격 통일 (클리닉 section·apms-button 톤) */
         .aprc-section { padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border); }
         .aprc-section-title { font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px; }
@@ -2000,13 +2012,13 @@ function reportCenterBuildStudentPickerView(groupKey, classId = '') {
     const studentRows = students.map(row => {
         const checked = selectedIds.has(String(row.studentId));
         return `
-            <label style="display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:6px 8px; min-height:42px; padding:8px 9px; border-radius:10px; background:var(--surface); border:1px solid var(--border);">
+            <label class="aprc-pick-label">
                 <input type="checkbox" ${checked ? 'checked' : ''} onchange="reportCenterToggleReportStudent('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}', '${escapeReportJsString(row.studentId)}', this.checked)">
                 <span style="min-width:0; overflow:hidden;">
-                    <span style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(row.name || row.studentName || '학생')}</span>
-                    <span style="display:block; font-size:11px; font-weight:800; color:var(--secondary); margin-top:2px;">${row.score ?? '-'}점 · 오답 ${row.wrongCount}개</span>
+                    <span class="aprc-pick-label__name">${reportCenterEscape(row.name || row.studentName || '학생')}</span>
+                    <span class="aprc-pick-label__meta">${row.score ?? '-'}점 · 오답 ${row.wrongCount}개</span>
                 </span>
-                <button class="btn" type="button" title="상세 리포트 보기" style="min-height:28px; min-width:32px; padding:4px 7px; border-radius:8px; font-size:11px; font-weight:900; background:var(--surface-2); border:1px solid var(--border);" onclick="event.preventDefault(); reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(group.archiveFile)}', studentId: '${escapeReportJsString(row.studentId)}' }); openReportCenterModal('${escapeReportJsString(row.studentId)}')">보기</button>
+                <button class="aprc-pick-mini-btn" type="button" title="상세 리포트 보기" onclick="event.preventDefault(); reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(group.archiveFile)}', studentId: '${escapeReportJsString(row.studentId)}' }); openReportCenterModal('${escapeReportJsString(row.studentId)}')">보기</button>
             </label>
         `;
     }).join('');
@@ -2027,7 +2039,7 @@ function reportCenterBuildStudentPickerView(groupKey, classId = '') {
                         <button class="btn" type="button" style="min-height:34px; padding:7px 10px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterClearReportStudents('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">선택 해제</button>
                     </div>
                 </div>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시한 학생이 없습니다.</div>'}</div>
+                <div class="aprc-pick-grid aprc-pick-grid--tight">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시한 학생이 없습니다.</div>'}</div>
             </section>
             <button class="btn btn-primary" type="button" style="min-height:46px; border-radius:12px; font-size:13px; font-weight:900;" ${selectedCount ? '' : 'disabled'} onclick="reportCenterOpenBatchPrintView('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">
                 선택 학생 리포트 이어서 출력
