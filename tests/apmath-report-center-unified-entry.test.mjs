@@ -79,7 +79,10 @@ assert.match(dashboard, /학생 리포트/);
 assert.match(dashboard, /반 선택/);
 assert.match(dashboard, /학생 선택/);
 assert.match(dashboard, /시험 대시보드 보기/);
-assert.match(dashboard, /grid-template-columns:repeat\(auto-fit,minmax\(132px,1fr\)\)/);
+// 반/학생 선택 카드는 클리닉 디자인 언어(aprc-pick-*) 클래스로 렌더된다.
+assert.match(dashboard, /class="aprc-pick-grid"/);
+assert.match(dashboard, /class="aprc-pick-card"/);
+assert.match(dashboard, /aprc-pick-card__name/);
 
 const picker = context.reportCenterBuildStudentPickerView(groups[0].key, 'c1');
 assert.match(picker, /선택 2명 \/ 응시 2명/);
@@ -89,8 +92,18 @@ assert.doesNotMatch(picker, /출력 불가/);
 assert.doesNotMatch(picker, /1학기 기말 · 오답/);
 assert.match(picker, /grid-template-columns:repeat\(auto-fit,minmax\(128px,1fr\)\)/);
 
+const batchDoc = context.reportCenterBuildBatchPrintDocument([
+  { studentId: 's1', sessionId: 'e1' },
+  { studentId: 's2', sessionId: 'e2' }
+]);
+assert.match(batchDoc, /report-center-batch-page/);
+assert.match(batchDoc, /학교시험 상세 리포트/);
+assert.match(batchDoc, /상세 학부모 리포트/);
+assert.doesNotMatch(batchDoc, /평가 분석 리포트/);
+
 assert.match(reportSource, /function reportCenterOpenBatchPrintView/);
 assert.match(reportSource, /report-center-batch-page/);
+assert.match(reportSource, /reportKind: 'schoolExamDetail'/);
 assert.match(uiSource, /리포트 센터/);
 assert.match(uiSource, /openReportCenterHome/);
 assert.match(studentSource, /reportCenterOpenStudentDrilldown/);
