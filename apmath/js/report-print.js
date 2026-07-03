@@ -414,7 +414,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 ${isDetailed ? `<p class="aprc-pdf-bridge-note">문제별 자세한 내용은 아래 분석 자료를 참고해 주시기 바랍니다.</p>` : ''}
             </section>
 
-            ${isDetailed && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-table-panel">
+            ${studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-table-panel">
                 <div class="aprc-section-title">문제별 분석</div>
                 <table class="aprc-pdf-table aprc-table">
                     <thead>
@@ -432,7 +432,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 <div class="aprc-source-note">${reportCenterEscape(archiveMessage || '')}</div>
             </section>` : ''}
 
-            ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
+            ${wrongCount && studioOptions.includeQuestionAnalysis && studioOptions.includeQuestionReview ? `<section class="aprc-pdf-section aprc-pdf-review-panel aprc-pdf-panel">
                 <div class="aprc-section-title">문제별 분석 카드</div>
                 <div class="aprc-qreview-list">${reportCenterBuildQuestionReviewCardsForReport(data, {
                     limit: 6,
@@ -442,7 +442,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 })}</div>
             </section>` : ''}
 
-            ${isDetailed && wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
+            ${wrongCount && studioOptions.includeQuestionAnalysis ? `<section class="aprc-pdf-section aprc-pdf-qcomment-panel aprc-pdf-panel">
                 <div class="aprc-section-title">문제별 코멘트</div>
                 <div class="aprc-qcomment-list">${reportCenterBuildQuestionCommentCards(data, 4)}</div>
             </section>` : ''}
