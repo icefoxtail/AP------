@@ -63,8 +63,9 @@ let lastModal = null;
 context.reportCenterShowWideModal = (title, modalHtml) => {
   lastModal = { title, html: modalHtml };
 };
+context.reportCenterSetAdvancedMode(true);
 context.reportCenterOpenStudentDrilldown('s1', 'e1');
-assert.equal(context.reportCenterAdvancedMode(), false);
+assert.equal(context.reportCenterAdvancedMode(), true);
 assert.equal(JSON.stringify(context.AP_REPORT_NAV), JSON.stringify({ level: 'student', archiveFile: 'exams/exam-a.js', studentId: 's1' }));
 assert.ok(lastModal);
 assert.match(lastModal.html, /data-report-drilldown-level="student"/);
