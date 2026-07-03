@@ -90,7 +90,8 @@ assert.match(picker, /민준/);
 assert.match(picker, /서연/);
 assert.doesNotMatch(picker, /출력 불가/);
 assert.doesNotMatch(picker, /1학기 기말 · 오답/);
-assert.match(picker, /grid-template-columns:repeat\(auto-fit,minmax\(128px,1fr\)\)/);
+assert.match(picker, /class="aprc-pick-grid aprc-pick-grid--tight"/);
+assert.match(picker, /class="aprc-pick-label"/);
 
 const batchDoc = context.reportCenterBuildBatchPrintDocument([
   { studentId: 's1', sessionId: 'e1' },
