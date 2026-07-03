@@ -399,10 +399,15 @@ function reportCenterResolveArchiveImageUrl(archiveInfo, image) {
     const src = String(image || '').trim();
     if (!src) return '';
     if (/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src;
+    const rel = src.replace(/^\.\//, '').replace(/^\//, '').replace(/^archive\//i, '');
+    // 실제 데이터는 image를 아카이브 루트 기준으로 저장한다(예: "assets/images/<학교>/q16.png").
+    // assets/·data/·exams/ 로 시작하면 아카이브 루트 기준, 그 외(bare "images/…")만 시험 js 디렉터리 기준.
+    if (/^(assets|data|exams)\//i.test(rel)) {
+        return REPORT_CENTER_ARCHIVE_BASE_URL + reportCenterEncodeArchivePath(rel);
+    }
     const baseUrl = String(archiveInfo?.url || '').trim();
     if (!baseUrl) return '';
     const dir = baseUrl.replace(/[?#].*$/, '').replace(/[^/]*$/, '');
-    const rel = src.replace(/^\.\//, '').replace(/^\//, '');
     return dir + reportCenterEncodeArchivePath(rel);
 }
 
@@ -2174,26 +2179,6 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
             ${bodyHtml}
         </div>
     `;
-}
-
-// 드릴다운 학생 화면에서 아카이브 문항 원문을 지연 로드한다.
-// fetch가 성공/실패 모두 자기캐싱하므로, 재렌더 시 cache hit → 동기 렌더되고 재트리거되지 않는다.
-function reportCenterEnsureStudentOriginalQuestions(studentId) {
-    if (typeof reportCenterFetchArchiveQuestionDetails !== 'function') return;
-    const nav = reportCenterNavState();
-    if (nav.level !== 'student') return;
-    const sid = nav.studentId || studentId;
-    const session = reportCenterFindStudentSchoolExamSession(sid, nav.archiveFile);
-    if (!session) return;
-    if (reportCenterGetCachedArchiveDetails(session.id)) return; // 이미 로드됨 → 동기 렌더가 처리
-    reportCenterFetchArchiveQuestionDetails(session).then(() => {
-        const cur = reportCenterNavState();
-        if (cur.level === 'student' && String(cur.studentId || sid) === String(sid)) {
-            openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
-        }
-    }).catch(error => {
-        console.warn('[reportCenterEnsureStudentOriginalQuestions] failed:', error);
-    });
 }
 
 function openReportCenterModal(studentId, activeTab = 'daily', options = {}) {
