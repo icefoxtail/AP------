@@ -846,6 +846,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
 
         ${drawerSection('평가')}
+        ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') openReportCenterHome(); else toast('리포트 센터를 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('exam', '원내평가', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('원내평가 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('omr', 'OMR 입력', "closeAppDrawer(); if(typeof openOmrInput==='function') openOmrInput(); else toast('OMR 입력 기능을 불러오지 못했습니다.', 'warn');")}

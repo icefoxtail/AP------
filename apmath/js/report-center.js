@@ -915,8 +915,10 @@ function reportCenterEnsureMathJax() {
         }
 
         if (document.getElementById('report-center-mathjax-script')) {
+            let attempts = 0;
             const wait = () => {
                 if (window.MathJax?.typesetPromise) resolve(window.MathJax);
+                else if (attempts++ > 80) resolve(null);
                 else setTimeout(wait, 80);
             };
             wait();
@@ -941,17 +943,22 @@ function reportCenterEnsureMathJax() {
     });
 }
 
+async function reportCenterTypesetMath(root) {
+    const target = root || document.body;
+    if (!target) return;
+    const mj = await reportCenterEnsureMathJax();
+    if (!mj?.typesetPromise) return;
+    try {
+        await mj.typesetPromise([target]);
+    } catch (e) {
+        console.warn('[reportCenterTypesetMath] MathJax failed:', e);
+    }
+}
+
 async function reportCenterRenderMathInArchiveDetails() {
     const root = document.getElementById('report-center-archive-details');
     if (!root) return;
-    const mj = await reportCenterEnsureMathJax();
-    if (mj?.typesetPromise) {
-        try {
-            await mj.typesetPromise([root]);
-        } catch (e) {
-            console.warn('[reportCenterRenderMathInArchiveDetails] MathJax failed:', e);
-        }
-    }
+    await reportCenterTypesetMath(root);
 }
 
 function reportCenterRenderArchiveDetails(detailsPayload) {
@@ -1196,6 +1203,143 @@ function reportCenterBuildExamAiPayload(studentId, sessionId) {
     };
 }
 
+function reportCenterHasArchiveFile(session) {
+    return !!String(session?.archive_file || session?.archiveFile || '').trim();
+}
+
+function reportCenterGetSchoolExamSessions() {
+    return (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(reportCenterHasArchiveFile)
+        .sort((a, b) =>
+            String(b.exam_date || '').localeCompare(String(a.exam_date || '')) ||
+            String(b.id || '').localeCompare(String(a.id || '')));
+}
+
+function reportCenterGetLegacyExamReportSessions(studentId = '') {
+    return (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => !reportCenterHasArchiveFile(session))
+        .filter(session => !studentId || String(session.student_id) === String(studentId))
+        .sort((a, b) =>
+            String(b.exam_date || '').localeCompare(String(a.exam_date || '')) ||
+            String(b.id || '').localeCompare(String(a.id || '')));
+}
+
+function reportCenterMakeSchoolExamKey(session) {
+    return reportCenterNormalizeExamAnalysisArchiveKey(session?.archive_file || session?.archiveFile || '');
+}
+
+function reportCenterGetSchoolExamGroups() {
+    const byKey = new Map();
+    reportCenterGetSchoolExamSessions().forEach(session => {
+        const key = reportCenterMakeSchoolExamKey(session);
+        if (!key) return;
+        if (!byKey.has(key)) {
+            byKey.set(key, {
+                key,
+                archiveFile: key,
+                title: session.exam_title || session.title || key,
+                school: session.school || session.school_name || '',
+                grade: reportCenterGetSessionGrade(session) || session.grade || '',
+                examDate: session.exam_date || '',
+                sessions: [],
+                classIds: new Set(),
+                takerCount: 0,
+                wrongInputCount: 0,
+                questionCount: Number(session.question_count || 0) || 0,
+                analysisStatus: null
+            });
+        }
+        const group = byKey.get(key);
+        group.sessions.push(session);
+        group.takerCount += 1;
+        const classId = reportCenterGetClassIdForSession(session);
+        if (classId) group.classIds.add(String(classId));
+        if (session.exam_date && String(session.exam_date) > String(group.examDate || '')) group.examDate = session.exam_date;
+        if (!group.title && session.exam_title) group.title = session.exam_title;
+        if (!group.school && (session.school || session.school_name)) group.school = session.school || session.school_name;
+        if (!group.grade) group.grade = reportCenterGetSessionGrade(session) || session.grade || '';
+        if (!group.questionCount && Number(session.question_count || 0)) group.questionCount = Number(session.question_count || 0);
+        group.wrongInputCount += reportCenterGetWrongIds(session.id).length;
+    });
+    return Array.from(byKey.values()).map(group => {
+        const reviews = reportCenterGetExamReviews(group.archiveFile);
+        const blueprintCount = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+            .filter(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === group.archiveFile)
+            .length;
+        return {
+            ...group,
+            classIds: Array.from(group.classIds),
+            reviewCount: reviews.byQuestion.size,
+            blueprintCount,
+            analysisStatus: {
+                label: blueprintCount && reviews.byQuestion.size >= blueprintCount ? '문항 분석 완료' : reviews.byQuestion.size ? '문항 분석 일부' : '문항 분석 대기',
+                reviewed: reviews.byQuestion.size,
+                total: blueprintCount
+            }
+        };
+    }).sort((a, b) => String(b.examDate || '').localeCompare(String(a.examDate || '')) || String(a.title || '').localeCompare(String(b.title || ''), 'ko'));
+}
+
+function reportCenterGetSchoolExamGroupByKey(groupKey) {
+    const normalized = reportCenterNormalizeExamAnalysisArchiveKey(groupKey || '');
+    return reportCenterGetSchoolExamGroups().find(group =>
+        String(group.key) === String(groupKey) ||
+        String(group.archiveFile) === String(groupKey) ||
+        String(group.archiveFile) === normalized
+    ) || null;
+}
+
+function reportCenterGetClassName(classId) {
+    return (Array.isArray(state?.db?.classes) ? state.db.classes : [])
+        .find(cls => String(cls.id) === String(classId))?.name || '미배정';
+}
+
+function reportCenterGetClassIdForSession(session) {
+    const direct = String(session?.class_id || session?.classId || '').trim();
+    if (direct) return direct;
+    return String(reportCenterGetStudentClass(session?.student_id).classId || '').trim();
+}
+
+function reportCenterGetGroupClasses(group) {
+    const byClass = new Map();
+    (group?.sessions || []).forEach(session => {
+        const classId = reportCenterGetClassIdForSession(session);
+        if (!byClass.has(classId)) byClass.set(classId, []);
+        byClass.get(classId).push(session);
+    });
+    return Array.from(byClass.entries()).map(([classId, sessions]) => {
+        const scores = sessions.map(session => Number(session.score)).filter(Number.isFinite);
+        const avg = scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : null;
+        const wrongCount = sessions.reduce((sum, session) => sum + reportCenterGetWrongIds(session.id).length, 0);
+        return {
+            classId,
+            className: reportCenterGetClassName(classId),
+            sessions,
+            takerCount: sessions.length,
+            avg,
+            wrongCount
+        };
+    }).sort((a, b) => String(a.className).localeCompare(String(b.className), 'ko'));
+}
+
+function reportCenterGetGroupClassStudents(group, classId) {
+    const targetClassId = String(classId || '');
+    return (group?.sessions || [])
+        .filter(session => String(reportCenterGetClassIdForSession(session)) === targetClassId)
+        .map(session => {
+            const student = (Array.isArray(state?.db?.students) ? state.db.students : [])
+                .find(row => String(row.id) === String(session.student_id));
+            return {
+                studentId: String(session.student_id || ''),
+                sessionId: String(session.id || ''),
+                name: student?.name || session.student_name || '학생',
+                score: session.score,
+                wrongCount: reportCenterGetWrongIds(session.id).length
+            };
+        })
+        .sort((a, b) => String(a.name).localeCompare(String(b.name), 'ko'));
+}
+
 function reportCenterGetRecentConsultations(studentId, limit = 5) {
     return (state.db.consultations || [])
         .filter(c => String(c.student_id) === String(studentId))
@@ -1363,6 +1507,7 @@ function reportCenterShowWideModal(title, html) {
         bodyEl.innerHTML = '';
         bodyEl.scrollTop = 0;
         bodyEl.innerHTML = html || '';
+        reportCenterTypesetMath(bodyEl);
     }
     requestAnimationFrame(() => overlay.classList.add('show'));
 }
@@ -1421,8 +1566,41 @@ function reportCenterAdvancedToggleHtml(studentId, activeTab = 'daily') {
     `;
 }
 
+function reportCenterGetMenuItems() {
+    return [
+        { key: 'schoolExam', label: '학교시험 분석' },
+        { key: 'daily', label: '오늘 리포트' },
+        { key: 'exam', label: '평가 리포트' },
+        { key: 'counsel', label: '상담 리포트' }
+    ];
+}
+
+function reportCenterInternalMenuHtml(studentId, activeMenu = 'schoolExam') {
+    const safeStudentId = escapeReportJsString(studentId || '');
+    return `
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; background:var(--bg); padding:4px; border-radius:14px;">
+            ${reportCenterGetMenuItems().map(item => {
+                const active = activeMenu === item.key;
+                const onclick = item.key === 'schoolExam'
+                    ? `reportCenterNavTo('list', { archiveFile: '', studentId: '${safeStudentId}' }); openReportCenterModal('${safeStudentId}', 'daily', { forceDrilldown: true })`
+                    : `openReportCenterModal('${safeStudentId}', '${item.key}', { forceAdvanced: true })`;
+                return `
+                    <button class="btn ${active ? 'btn-primary' : ''}" type="button"
+                            style="min-height:42px; padding:8px 6px; font-size:12px; font-weight:800; border-radius:10px; box-shadow:none; ${active ? '' : 'background:var(--surface); border:1px solid var(--border);'}"
+                            onclick="${onclick}">${item.label}</button>`;
+            }).join('')}
+        </div>
+    `;
+}
+
+function openReportCenterHome(options = {}) {
+    const studentId = options.studentId || '';
+    reportCenterNavTo('list', { archiveFile: '', studentId });
+    reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
+}
+
 function reportCenterBuildExamHubList() {
-    const sessions = Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [];
+    const sessions = reportCenterGetSchoolExamSessions();
     const wrongRows = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
     const blueprints = Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [];
     const groups = new Map();
@@ -1431,11 +1609,13 @@ function reportCenterBuildExamHubList() {
         if (!archiveFile) return;
         if (!groups.has(archiveFile)) {
             groups.set(archiveFile, {
+                key: archiveFile,
                 archiveFile,
                 title: session.exam_title || session.title || archiveFile,
                 school: session.school || session.school_name || '',
                 grade: reportCenterGetSessionGrade(session) || session.grade || '',
                 takers: 0,
+                classIds: new Set(),
                 wrongEntered: 0,
                 reviewCount: 0,
                 blueprintCount: 0,
@@ -1444,6 +1624,8 @@ function reportCenterBuildExamHubList() {
         }
         const row = groups.get(archiveFile);
         row.takers += 1;
+        const classId = reportCenterGetClassIdForSession(session);
+        if (classId) row.classIds.add(classId);
         if (session.exam_date && String(session.exam_date) > String(row.latestDate || '')) row.latestDate = session.exam_date;
         if (!row.title && session.exam_title) row.title = session.exam_title;
         if (!row.school && (session.school || session.school_name)) row.school = session.school || session.school_name;
@@ -1457,7 +1639,7 @@ function reportCenterBuildExamHubList() {
             reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === row.archiveFile
         ).length;
     });
-    return Array.from(groups.values())
+    return Array.from(groups.values()).map(row => ({ ...row, classIds: Array.from(row.classIds || []) }))
         .sort((a, b) => String(b.latestDate || '').localeCompare(String(a.latestDate || '')) || String(a.title || '').localeCompare(String(b.title || '')));
 }
 
@@ -1466,7 +1648,8 @@ function reportCenterRenderExamHubList(studentId) {
     if (!exams.length) {
         return `
             <div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">
-                아직 응시 기록이 연결된 시험지가 없습니다.
+                <div style="color:var(--text); font-size:15px; margin-bottom:4px;">아카이브 시험지와 연결된 학교시험 기록이 없습니다.</div>
+                <div>QR/오답 입력 또는 시험지 연결 후 학교시험 분석을 사용할 수 있습니다.</div>
             </div>
         `;
     }
@@ -1479,8 +1662,10 @@ function reportCenterRenderExamHubList(studentId) {
                     <span style="display:block; font-size:14px; font-weight:900; color:var(--text); line-height:1.35;">${reportCenterEscape(exam.title || '시험지')}</span>
                     <span style="display:block; min-height:18px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">${reportCenterEscape([exam.school, exam.grade].filter(Boolean).join(' · ') || '학교/학년 미지정')}</span>
                     <span style="display:flex; gap:6px; flex-wrap:wrap; margin-top:auto;">
+                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">${reportCenterEscape(exam.latestDate || '-')}</span>
                         <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">문항분석 ${exam.reviewCount}/${exam.blueprintCount || '-'}</span>
                         <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">응시 ${exam.takers}</span>
+                        <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">반 ${exam.classIds?.length || 0}</span>
                         <span style="padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800;">오답입력 ${exam.wrongEntered}</span>
                     </span>
                 </button>
@@ -1522,11 +1707,12 @@ function reportCenterBuildCohortRates(archiveFile) {
 
 function reportCenterBuildExamDashboard(studentId, archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const group = reportCenterGetSchoolExamGroupByKey(archiveFile) || reportCenterGetSchoolExamGroupByKey(archiveKey);
     const hub = reportCenterBuildExamHubList().find(row => row.archiveFile === archiveKey) || { archiveFile: archiveKey, title: archiveKey, takers: 0, reviewCount: 0, blueprintCount: 0 };
     const reviews = reportCenterGetExamReviews(archiveKey);
     const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
         .filter(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === archiveKey);
-    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+    const sessions = group?.sessions || (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
         .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
     const wrongRows = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
     const rates = reportCenterBuildCohortRates(archiveKey);
@@ -1568,6 +1754,18 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                 </button>
             `;
         }).join('');
+    const classRows = reportCenterGetGroupClasses(group || { sessions });
+    const classRowsHtml = classRows.map(row => `
+        <button class="btn" type="button"
+                style="display:flex; justify-content:space-between; align-items:center; gap:12px; width:100%; min-height:52px; padding:11px 12px; border-radius:10px; background:var(--surface); border:1px solid var(--border); box-shadow:none; text-align:left;"
+                onclick="reportCenterOpenStudentPicker('${escapeReportJsString(group?.key || archiveKey)}', '${escapeReportJsString(row.classId)}')">
+            <span>
+                <span style="display:block; font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(row.className)}</span>
+                <span style="display:block; font-size:12px; font-weight:700; color:var(--secondary); margin-top:3px;">${row.takerCount}명 응시 · 평균 ${row.avg === null ? '-' : `${row.avg}점`} · 오답 ${row.wrongCount}개</span>
+            </span>
+            <span style="font-size:12px; font-weight:900; color:var(--primary); white-space:nowrap;">학생 리포트</span>
+        </button>
+    `).join('');
     return `
         <div data-report-drilldown-level="exam" style="display:flex; flex-direction:column; gap:12px;">
             <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('list'); openReportCenterModal('${escapeReportJsString(studentId)}')">시험지 목록</button>
@@ -1596,11 +1794,203 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                 </div>
             </section>
             <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">학생 리스트</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">반 선택</div>
+                <div style="display:flex; flex-direction:column; gap:6px;">${classRowsHtml || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 반이 없습니다.</div>'}</div>
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px;">전체 응시자</div>
                 <div style="display:flex; flex-direction:column; gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시 학생이 없습니다.</div>'}</div>
             </section>
         </div>
     `;
+}
+
+function reportCenterPickerKey(groupKey, classId = '') {
+    return `${String(groupKey || '')}::${String(classId || '')}`;
+}
+
+function reportCenterBatchSelectionStore() {
+    if (!window.AP_REPORT_BATCH_SELECTIONS || typeof window.AP_REPORT_BATCH_SELECTIONS !== 'object') {
+        window.AP_REPORT_BATCH_SELECTIONS = {};
+    }
+    return window.AP_REPORT_BATCH_SELECTIONS;
+}
+
+function reportCenterEnsureBatchSelection(groupKey, classId, students) {
+    const key = reportCenterPickerKey(groupKey, classId);
+    const store = reportCenterBatchSelectionStore();
+    const availableIds = students.map(row => String(row.studentId || '')).filter(Boolean);
+    if (!Array.isArray(store[key])) store[key] = availableIds;
+    store[key] = store[key].filter(id => availableIds.includes(String(id)));
+    return store[key];
+}
+
+function reportCenterSetBatchSelection(groupKey, classId, selectedIds) {
+    const key = reportCenterPickerKey(groupKey, classId);
+    reportCenterBatchSelectionStore()[key] = Array.from(new Set((selectedIds || []).map(id => String(id)).filter(Boolean)));
+}
+
+function reportCenterToggleReportStudent(groupKey, classId, studentId, checked) {
+    const group = reportCenterGetSchoolExamGroupByKey(groupKey);
+    const students = reportCenterGetGroupClassStudents(group, classId);
+    const selected = new Set(reportCenterEnsureBatchSelection(groupKey, classId, students));
+    if (checked) selected.add(String(studentId));
+    else selected.delete(String(studentId));
+    reportCenterSetBatchSelection(groupKey, classId, Array.from(selected));
+    reportCenterOpenStudentPicker(groupKey, classId);
+}
+
+function reportCenterSelectAllReportStudents(groupKey, classId) {
+    const group = reportCenterGetSchoolExamGroupByKey(groupKey);
+    const students = reportCenterGetGroupClassStudents(group, classId);
+    reportCenterSetBatchSelection(groupKey, classId, students.map(row => row.studentId));
+    reportCenterOpenStudentPicker(groupKey, classId);
+}
+
+function reportCenterClearReportStudents(groupKey, classId) {
+    reportCenterSetBatchSelection(groupKey, classId, []);
+    reportCenterOpenStudentPicker(groupKey, classId);
+}
+
+function reportCenterBuildStudentPickerView(groupKey, classId = '') {
+    const group = reportCenterGetSchoolExamGroupByKey(groupKey);
+    if (!group) {
+        return `
+            <div data-report-drilldown-level="student-picker" style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700;">
+                선택한 시험지를 찾을 수 없습니다.
+            </div>
+        `;
+    }
+
+    const classes = reportCenterGetGroupClasses(group);
+    const selectedClassId = classId || classes[0]?.classId || '';
+    const students = reportCenterGetGroupClassStudents(group, selectedClassId);
+    const selectedIds = new Set(reportCenterEnsureBatchSelection(group.key, selectedClassId, students));
+    const selectedCount = students.filter(row => selectedIds.has(String(row.studentId))).length;
+    const classTabs = classes.map(row => `
+        <button class="btn ${String(row.classId) === String(selectedClassId) ? 'btn-primary' : ''}" type="button"
+                style="min-height:36px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; box-shadow:none; ${String(row.classId) === String(selectedClassId) ? '' : 'background:var(--surface); border:1px solid var(--border);'}"
+                onclick="reportCenterOpenStudentPicker('${escapeReportJsString(group.key)}', '${escapeReportJsString(row.classId)}')">
+            ${reportCenterEscape(row.className)}
+        </button>
+    `).join('');
+    const studentRows = students.map(row => {
+        const checked = selectedIds.has(String(row.studentId));
+        return `
+            <label style="display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:10px; min-height:50px; padding:10px 12px; border-radius:10px; background:var(--surface); border:1px solid var(--border);">
+                <input type="checkbox" ${checked ? 'checked' : ''} onchange="reportCenterToggleReportStudent('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}', '${escapeReportJsString(row.studentId)}', this.checked)">
+                <span style="min-width:0;">
+                    <span style="display:block; font-size:13px; font-weight:900; color:var(--text);">${reportCenterEscape(row.name || row.studentName || '학생')}</span>
+                    <span style="display:block; font-size:12px; font-weight:700; color:var(--secondary); margin-top:2px;">${reportCenterEscape(row.examTitle || group.title || '학교시험')} · 오답 ${row.wrongCount}개</span>
+                </span>
+                <span style="font-size:12px; font-weight:800; color:var(--secondary); white-space:nowrap;">${row.score ?? '-'}점</span>
+                <button class="btn" type="button" style="min-height:32px; padding:6px 9px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="event.preventDefault(); reportCenterNavTo('student', { archiveFile: '${escapeReportJsString(group.archiveFile)}', studentId: '${escapeReportJsString(row.studentId)}' }); openReportCenterModal('${escapeReportJsString(row.studentId)}')">보기</button>
+            </label>
+        `;
+    }).join('');
+
+    return `
+        <div data-report-drilldown-level="student-picker" style="display:flex; flex-direction:column; gap:12px;">
+            <button class="btn" type="button" style="align-self:flex-start; min-height:34px; padding:7px 10px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(group.archiveFile)}' }); openReportCenterModal('')">시험 대시보드</button>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(group.title || '학교시험')} 학생 선택</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">선택 ${selectedCount}명 / 응시 ${students.length}명</div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:12px;">${classTabs}</div>
+            </section>
+            <section style="padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+                <div style="display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px;">
+                    <div style="font-size:14px; font-weight:900; color:var(--text);">학생 리포트</div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <button class="btn" type="button" style="min-height:34px; padding:7px 10px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterSelectAllReportStudents('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">전체 선택</button>
+                        <button class="btn" type="button" style="min-height:34px; padding:7px 10px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="reportCenterClearReportStudents('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">선택 해제</button>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:6px;">${studentRows || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">응시한 학생이 없습니다.</div>'}</div>
+            </section>
+            <button class="btn btn-primary" type="button" style="min-height:46px; border-radius:12px; font-size:13px; font-weight:900;" ${selectedCount ? '' : 'disabled'} onclick="reportCenterOpenBatchPrintView('${escapeReportJsString(group.key)}', '${escapeReportJsString(selectedClassId)}')">
+                선택 학생 리포트 이어서 출력
+            </button>
+        </div>
+    `;
+}
+
+function reportCenterBuildSchoolExamShell(studentId, bodyHtml) {
+    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    return `
+        <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
+                <div>
+                    <div style="font-size:20px; font-weight:900; color:var(--text); line-height:1.35;">리포트 센터</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">학교시험 분석, 학생 리포트, 상담/발송 문구를 한 곳에서 관리합니다.</div>
+                    ${student ? `<div style="font-size:12px; font-weight:800; color:var(--primary); margin-top:6px;">${reportCenterEscape(student.name || '학생')} 학생</div>` : ''}
+                </div>
+                ${reportCenterAdvancedToggleHtml(studentId, 'daily')}
+            </div>
+            ${reportCenterInternalMenuHtml(studentId, 'schoolExam')}
+            ${bodyHtml}
+        </div>
+    `;
+}
+
+function reportCenterOpenStudentPicker(groupKey, classId = '') {
+    const group = reportCenterGetSchoolExamGroupByKey(groupKey);
+    if (!group) {
+        toast('선택한 시험지를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+    reportCenterShowWideModal('리포트 센터', reportCenterBuildSchoolExamShell('', reportCenterBuildStudentPickerView(group.key, classId)));
+}
+
+function reportCenterBuildBatchPrintShell(bodyHtml) {
+    reportCenterEnsurePremiumReportStyle();
+    return `
+        <div id="report-print-view" class="report-print-view report-center-batch-print-view">
+            <div class="report-print-toolbar no-print">
+                <button class="btn" type="button" onclick="openReportCenterHome()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">리포트 센터</button>
+                <button class="btn btn-primary" type="button" onclick="window.print()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
+            </div>
+            <div class="report-print-stage" id="report-print-document-root">${bodyHtml}</div>
+        </div>
+    `;
+}
+
+function reportCenterBuildBatchPrintDocument(items, options = {}) {
+    const rows = Array.isArray(items) ? items : [];
+    return rows.map((item, index) => `
+        <section class="report-center-batch-page" data-report-center-batch-index="${index + 1}">
+            ${reportCenterBuildCleanPdfDocument(item.studentId, item.sessionId, {
+                teacherMemo: options.teacherMemo || '',
+                aiAnalysis: reportCenterGetCachedAiAnalysis(item.sessionId)
+            })}
+        </section>
+    `).join('');
+}
+
+function reportCenterOpenBatchPrintView(groupKey, classId = '', studentIds = null) {
+    const group = reportCenterGetSchoolExamGroupByKey(groupKey);
+    if (!group) {
+        toast('선택한 시험지를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+    const students = reportCenterGetGroupClassStudents(group, classId);
+    const selected = Array.isArray(studentIds) && studentIds.length
+        ? studentIds.map(id => String(id))
+        : reportCenterEnsureBatchSelection(group.key, classId, students);
+    const selectedSet = new Set(selected);
+    const items = students
+        .filter(row => selectedSet.has(String(row.studentId)))
+        .map(row => ({ studentId: row.studentId, sessionId: row.sessionId }));
+    if (!items.length) {
+        toast('출력할 학생을 선택해 주세요.', 'warn');
+        return;
+    }
+    const root = document.getElementById('app-root') || document.body;
+    document.querySelectorAll('#report-center-wide-overlay, .report-center-wide-overlay, .wide-overlay').forEach(el => el.remove());
+    root.innerHTML = reportCenterBuildBatchPrintShell(reportCenterBuildBatchPrintDocument(items));
+    reportCenterInjectPrintViewStyle();
+    reportCenterTypesetMath(document.getElementById('report-print-document-root'));
+    window.scrollTo(0, 0);
+    toast(`${items.length}명 리포트를 출력 화면으로 열었습니다.`, 'success');
 }
 
 function reportCenterBuildStudentView(studentId, archiveFile) {
@@ -1653,6 +2043,10 @@ function reportCenterOpenStudentDrilldown(studentId, sessionId = '') {
     const session = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
         .find(row => String(row.student_id) === String(studentId) && (!sessionId || String(row.id) === String(sessionId)));
     if (session) {
+        if (!reportCenterHasArchiveFile(session)) {
+            openReportCenterExam(studentId, session.id);
+            return;
+        }
         reportCenterNavTo('student', {
             archiveFile: reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || ''),
             studentId
@@ -1677,7 +2071,7 @@ function reportCenterBuildDrilldownShell(studentId) {
             <section data-report-drilldown-level="list" style="display:flex; flex-direction:column; gap:12px; padding:16px; border-radius:16px; background:var(--surface); border:1px solid var(--border);">
                 <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
                     <div>
-                        <div style="font-size:16px; font-weight:900; color:var(--text); line-height:1.35;">시험지 목록</div>
+                        <div style="font-size:16px; font-weight:900; color:var(--text); line-height:1.35;">학교시험 분석 · 시험지 목록</div>
                         <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">응시한 학교 시험지를 기준으로 리포트를 탐색합니다.</div>
                     </div>
                     <button class="btn" type="button" style="min-height:38px; padding:8px 12px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="toast('시험지 찾기는 준비 중입니다.', 'info')">시험지 찾기</button>
@@ -1689,11 +2083,13 @@ function reportCenterBuildDrilldownShell(studentId) {
         <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
                 <div>
-                    <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.4;">${reportCenterEscape(name)} 리포트 센터</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">시험지별 분석과 학생별 오답 리포트를 한 흐름으로 정리합니다.</div>
+                    <div style="font-size:20px; font-weight:900; color:var(--text); line-height:1.35;">리포트 센터</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">학교시험 분석, 학생 리포트, 상담/발송 문구를 한 곳에서 관리합니다.</div>
+                    ${student ? `<div style="font-size:12px; font-weight:800; color:var(--primary); margin-top:6px;">${reportCenterEscape(name)} 학생</div>` : ''}
                 </div>
                 ${reportCenterAdvancedToggleHtml(studentId, 'daily')}
             </div>
+            ${reportCenterInternalMenuHtml(studentId, 'schoolExam')}
             ${contentHtml}
         </div>
     `;
@@ -1731,7 +2127,8 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
 
 function openReportCenterModal(studentId, activeTab = 'daily', options = {}) {
     const forceDrilldown = !!options.forceDrilldown;
-    if (forceDrilldown || !reportCenterAdvancedMode()) {
+    const forceAdvanced = !!options.forceAdvanced;
+    if (!forceAdvanced && (forceDrilldown || !reportCenterAdvancedMode())) {
         reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
         return;
     }
@@ -3494,6 +3891,7 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     document.documentElement.style.overflow = '';
 
     reportCenterInjectPrintViewStyle();
+    reportCenterTypesetMath(document.getElementById('report-print-document-root'));
     window.scrollTo(0, 0);
 }
 
@@ -3519,6 +3917,7 @@ function reportCenterRefreshPrintViewReport(studentId, sessionId = '') {
         aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId),
         studioState: reportCenterGetMatchingStudioState(studentId, sessionId)
     });
+    reportCenterTypesetMath(root);
 }
 
 function reportCenterHandlePrintViewMemoInput(studentId, sessionId = '') {
@@ -3949,6 +4348,19 @@ function reportCenterInjectPrintViewStyle() {
             box-sizing:border-box;
         }
 
+        .report-center-batch-page {
+            display:block;
+            break-after:page;
+            page-break-after:always;
+            margin-bottom:18px;
+        }
+
+        .report-center-batch-page:last-child {
+            break-after:auto;
+            page-break-after:auto;
+            margin-bottom:0;
+        }
+
         .report-print-stage .aprc-pdf-header {
             display:grid;
             grid-template-columns:minmax(0,1fr) 40mm;
@@ -4041,6 +4453,10 @@ function reportCenterInjectPrintViewStyle() {
                 padding:0 !important;
             }
 
+            .report-center-batch-page {
+                margin-bottom:0 !important;
+            }
+
             @page {
                 size:A4;
                 margin:12mm;
@@ -4105,8 +4521,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
         return;
     }
 
-    const sessions = (state.db.exam_sessions || [])
-        .filter(e => String(e.student_id) === String(studentId))
+    const sessions = reportCenterGetLegacyExamReportSessions(studentId)
         .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
 
     const selected = selectedSessionId

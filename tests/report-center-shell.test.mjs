@@ -44,10 +44,12 @@ assert.equal(context.reportCenterAdvancedMode(), false);
 context.openReportCenterModal('s1');
 assert.ok(lastModal, 'default mode renders a modal');
 assert.match(lastModal.html, /data-report-center-mode="drilldown"/);
+assert.match(lastModal.html, /리포트 센터/);
+assert.match(lastModal.html, /학교시험 분석/);
 assert.match(lastModal.html, /시험지 목록/);
-assert.doesNotMatch(lastModal.html, /오늘 리포트/);
-assert.doesNotMatch(lastModal.html, /평가 리포트/);
-assert.doesNotMatch(lastModal.html, /상담 리포트/);
+assert.match(lastModal.html, /오늘 리포트/);
+assert.match(lastModal.html, /평가 리포트/);
+assert.match(lastModal.html, /상담 리포트/);
 
 const nav = context.reportCenterNavTo('exam', { archiveFile: 'exam-a.js' });
 assert.equal(JSON.stringify(nav), JSON.stringify({ level: 'exam', archiveFile: 'exam-a.js', studentId: '' }));
@@ -65,6 +67,7 @@ context.reportCenterSetAdvancedMode(false);
 assert.equal(context.reportCenterAdvancedMode(), false);
 context.openReportCenterModal('s1', 'exam');
 assert.match(lastModal.html, /data-report-center-mode="drilldown"/);
-assert.doesNotMatch(lastModal.html, /평가 리포트/);
+assert.match(lastModal.html, /학교시험 분석/);
+assert.match(lastModal.html, /평가 리포트/);
 
 console.log('report center shell test passed');

@@ -76,6 +76,34 @@ function normalizeApStudentRows(rows) {
   ));
 }
 
+function normalizeInitialDataArchiveFile(raw) {
+  let path = String(raw || '').trim();
+  if (!path) return '';
+  path = path.replace(/^\.\//, '').replace(/^\//, '');
+  if (!path.endsWith('.js')) path += '.js';
+  return path;
+}
+
+function getInitialDataArchiveCandidates(rows) {
+  const candidates = new Set();
+  (Array.isArray(rows) ? rows : []).forEach(row => {
+    const original = normalizeInitialDataArchiveFile(row?.archive_file || row?.archiveFile || '');
+    if (!original) return;
+    candidates.add(original);
+
+    const withoutArchive = normalizeInitialDataArchiveFile(original.replace(/^archive\//, ''));
+    if (withoutArchive) candidates.add(withoutArchive);
+
+    const withoutExams = normalizeInitialDataArchiveFile(withoutArchive.replace(/^exams\//, ''));
+    if (withoutExams) candidates.add(withoutExams);
+
+    if (withoutArchive && !withoutArchive.startsWith('exams/') && !withoutArchive.startsWith('assets/') && !withoutArchive.startsWith('data/')) {
+      candidates.add(`exams/${withoutArchive}`);
+    }
+  });
+  return Array.from(candidates).filter(Boolean);
+}
+
 const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
 const TEACHER_SESSION_TOKEN_BYTES = 32;
 
@@ -3379,7 +3407,7 @@ async function handleApiRequest(request, env) {
             clss.results,
             map.results
           );
-          const analysisArchiveFiles = Array.from(new Set((exs.results || []).map(row => String(row.archive_file || '').trim()).filter(Boolean)));
+          const analysisArchiveFiles = getInitialDataArchiveCandidates(exs.results);
           let examQuestionReviews = { results: [] };
           let examAnalysisMeta = { results: [] };
           if (analysisArchiveFiles.length > 0) {
