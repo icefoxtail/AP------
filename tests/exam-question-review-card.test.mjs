@@ -96,6 +96,20 @@ assert.match(jsonReview, /범위가 반쪽/);
 assert.match(jsonReview, /이차방정식\+일차부등식/);
 assert.doesNotMatch(jsonReview, /\{"concept"/, 'raw JSON must not leak into the card');
 
+const jsonNoTeach = context.reportCenterBuildQuestionReviewCard({
+  questionNo: 8, unit: '이차방정식',
+  reviewText: JSON.stringify({
+    asks: '두 해 중 하나만 부등식을 만족하도록 k 범위.',
+    trap: 'x=3 불만족 조건을 놓쳐 범위가 반쪽.',
+    key: '두 해를 각각 대입해 만족+불만족 두 부등식.',
+    teach: '다음 수업에서 조건 분리를 다시 풀이합니다.'
+  })
+}, { showTeach: false });
+assert.match(jsonNoTeach, /함정/);
+assert.match(jsonNoTeach, /풀이 포인트/);
+assert.doesNotMatch(jsonNoTeach, /지도 포인트/);
+assert.doesNotMatch(jsonNoTeach, /조건 분리를 다시 풀이/);
+
 // 익명(블로그) 모드에서는 교사용 '지도 포인트'를 숨긴다.
 const jsonAnon = context.reportCenterBuildQuestionReviewCard({
   questionNo: 8, unit: '이차방정식',
