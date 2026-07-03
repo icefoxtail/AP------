@@ -160,7 +160,15 @@ const detailedAnswerHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3',
   }
 });
 assert.match(detailedAnswerHtml, />정답</, 'question review answers should render when explicitly enabled');
-assert.doesNotMatch(pdfHtml, /aprc-pdf-review-panel/, 'standard report should not render question review cards');
+const standardReviewHtml = context.reportCenterBuildCleanPdfDocument('s1', 'e3', {
+  teacherMemo: '',
+  studioState: {
+    options: { includeQuestionAnalysis: true, includeQuestionReview: true }
+  }
+});
+assert.match(standardReviewHtml, /aprc-pdf-review-panel/, 'standard wrong report should render question review cards');
+assert.match(standardReviewHtml, /aprc-pdf-table-panel/, 'standard wrong report should render question analysis table');
+assert.doesNotMatch(standardReviewHtml, />정답</, 'standard question review answers should remain hidden by default');
 
 const summarySection = pdfHtml.match(/aprc-pdf-parent-summary[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
 const weaknessSection = pdfHtml.match(/다음에 꼭 짚어볼 부분[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
