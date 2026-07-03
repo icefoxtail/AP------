@@ -1913,8 +1913,8 @@ async function openClinicPrintCenter(classId, options = {}) {
                     <label><input id="clinic-print-header-name" type="checkbox" checked> 이름칸</label>
                     <label><input id="clinic-print-header-score" type="checkbox" checked> 점수칸</label>
                     <label><input id="clinic-print-header-date" type="checkbox"> 날짜</label>
-                    <label><input id="clinic-print-header-sol" type="checkbox" checked> 해설지 적용</label>
-                    <label><input id="clinic-print-header-ans" type="checkbox" checked> 정답표 적용</label>
+                    <label><input id="clinic-print-header-sol" type="checkbox" checked> 해설지 포함</label>
+                    <label><input id="clinic-print-header-ans" type="checkbox" checked> 정답표 포함</label>
                 </div>
             </section>
 
