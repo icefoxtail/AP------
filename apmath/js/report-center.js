@@ -1573,6 +1573,69 @@ function reportCenterEnsureWideOverlay() {
         .aprc-exam-card__sub { display:block; min-height:18px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
         .aprc-exam-card__chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; }
         .aprc-chip { padding:5px 8px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:800; white-space:nowrap; }
+        .aprc-qtable-wrap { width:100%; overflow:auto; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+        .aprc-qtable { width:100%; min-width:920px; border-collapse:separate; border-spacing:0; table-layout:fixed; font-size:12px; color:var(--text); }
+        .aprc-qtable th:nth-child(1) { width:44px; }
+        .aprc-qtable th:nth-child(2) { width:76px; }
+        .aprc-qtable th:nth-child(3) { width:78px; }
+        .aprc-qtable th:nth-child(4) { width:130px; }
+        .aprc-qtable th:nth-child(6) { width:62px; }
+        .aprc-qtable th:nth-child(7) { width:140px; }
+        .aprc-qtable th:nth-child(8) { width:58px; }
+        .aprc-qtable th:nth-child(9) { width:92px; }
+        .aprc-qtable th { position:sticky; top:0; z-index:1; padding:9px 8px; background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:900; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap; }
+        .aprc-qtable td { padding:8px; border-bottom:1px solid var(--border); vertical-align:middle; line-height:1.35; }
+        .aprc-qtable-row { cursor:pointer; transition:background 180ms ease, border-color 180ms ease; }
+        .aprc-qtable-row:hover { background:var(--surface-2); }
+        .aprc-qtable-row:focus-within { box-shadow:inset 0 0 0 3px rgba(var(--primary-rgb),0.14); }
+        .aprc-qtable-row--boost td:first-child { border-left:4px solid var(--primary); }
+        .aprc-qtable-toggle { width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--primary); font-size:12px; font-weight:900; cursor:pointer; font-family:inherit; }
+        .aprc-qtable-toggle:focus-visible { outline:none; box-shadow:0 0 0 4px rgba(var(--primary-rgb),0.14); }
+        .aprc-qtable-chip { display:inline-flex; align-items:center; justify-content:center; max-width:100%; padding:4px 7px; border-radius:999px; background:var(--bg); color:var(--secondary); font-size:11px; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .aprc-qtable-level--low { background:var(--bg); color:var(--secondary); }
+        .aprc-qtable-level--midlow { background:rgba(20,184,166,0.12); color:#0f766e; }
+        .aprc-qtable-level--mid { background:var(--primary-soft); color:var(--primary); }
+        .aprc-qtable-level--high { background:rgba(245,158,11,0.14); color:#b45309; }
+        .aprc-qtable-level--top { background:rgba(239,68,68,0.12); color:#dc2626; }
+        .aprc-qtable-concept { display:flex; align-items:center; gap:5px; min-width:0; }
+        .aprc-qtable-concept-text { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:800; }
+        .aprc-qtable-muted { color:var(--secondary); opacity:0.78; font-weight:800; }
+        .aprc-qtable-ai { padding:2px 5px; border-radius:999px; background:var(--primary-soft); color:var(--primary); font-size:10px; font-weight:900; }
+        .aprc-qtable-rate { display:grid; gap:3px; min-width:0; }
+        .aprc-qtable-rate-text { font-size:11px; font-weight:900; color:var(--text); white-space:nowrap; }
+        .aprc-qtable-rate-sub { font-size:10px; font-weight:800; color:var(--secondary); white-space:nowrap; }
+        .aprc-qtable-bar { height:5px; border-radius:999px; background:var(--bg); overflow:hidden; }
+        .aprc-qtable-bar > span { display:block; height:100%; width:0; background:var(--primary); border-radius:999px; }
+        .aprc-qtable-bar-fill--0 { width:0%; }
+        .aprc-qtable-bar-fill--5 { width:5%; }
+        .aprc-qtable-bar-fill--10 { width:10%; }
+        .aprc-qtable-bar-fill--15 { width:15%; }
+        .aprc-qtable-bar-fill--20 { width:20%; }
+        .aprc-qtable-bar-fill--25 { width:25%; }
+        .aprc-qtable-bar-fill--30 { width:30%; }
+        .aprc-qtable-bar-fill--35 { width:35%; }
+        .aprc-qtable-bar-fill--40 { width:40%; }
+        .aprc-qtable-bar-fill--45 { width:45%; }
+        .aprc-qtable-bar-fill--50 { width:50%; }
+        .aprc-qtable-bar-fill--55 { width:55%; }
+        .aprc-qtable-bar-fill--60 { width:60%; }
+        .aprc-qtable-bar-fill--65 { width:65%; }
+        .aprc-qtable-bar-fill--70 { width:70%; }
+        .aprc-qtable-bar-fill--75 { width:75%; }
+        .aprc-qtable-bar-fill--80 { width:80%; }
+        .aprc-qtable-bar-fill--85 { width:85%; }
+        .aprc-qtable-bar-fill--90 { width:90%; }
+        .aprc-qtable-bar-fill--95 { width:95%; }
+        .aprc-qtable-bar-fill--100 { width:100%; }
+        .aprc-qtable-detail[hidden] { display:none; }
+        .aprc-qtable-detail td { background:var(--bg); padding:12px 14px; border-bottom:1px solid var(--border); }
+        .aprc-qtable-detail-panel { display:grid; gap:10px; }
+        .aprc-qtable-detail-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+        .aprc-qtable-detail-item { min-width:0; padding:10px; border-radius:10px; background:var(--surface); border:1px solid var(--border); }
+        .aprc-qtable-detail-label { display:block; margin-bottom:4px; font-size:11px; font-weight:900; color:var(--secondary); }
+        .aprc-qtable-detail-body { font-size:12px; font-weight:750; color:var(--text); line-height:1.55; overflow-wrap:anywhere; }
+        .aprc-qtable-wrong-groups { display:flex; flex-wrap:wrap; gap:6px; }
+        .aprc-qtable-empty { padding:14px; font-size:12px; font-weight:800; color:var(--secondary); }
         @media (max-width:760px) {
             #report-center-wide-overlay { align-items:stretch; justify-content:stretch; padding:0; }
             .report-center-wide-content { width:100%; height:100%; max-height:none; border-radius:0; border:0; }
@@ -1602,6 +1665,7 @@ function reportCenterEnsureWideOverlay() {
         if (event.target === overlay) reportCenterCloseWideOverlay();
     };
     document.body.appendChild(overlay);
+    reportCenterEnsureExamAnalysisTableEvents();
     return overlay;
 }
 
@@ -1833,6 +1897,245 @@ function reportCenterBuildCohortRates(archiveFile) {
     return { archiveFile: archiveKey, takers, rows };
 }
 
+function reportCenterQuestionNoCompare(a, b) {
+    return Number(a) - Number(b) || String(a).localeCompare(String(b), 'ko');
+}
+
+function reportCenterReadCachedArchiveBank(archiveFile) {
+    const cache = typeof reportCenterArchiveBankCache === 'function' ? reportCenterArchiveBankCache() : {};
+    const candidates = new Set(reportCenterArchiveKeyCandidates(archiveFile));
+    const info = reportCenterNormalizeArchiveFile(archiveFile || '');
+    [info.url, info.path, info.original].filter(Boolean).forEach(value => candidates.add(value));
+    for (const key of candidates) {
+        const payload = cache[key];
+        if (payload && Array.isArray(payload.list)) return payload;
+    }
+    return null;
+}
+
+function reportCenterGetCachedArchiveQuestion(archiveFile, questionNo) {
+    const payload = reportCenterReadCachedArchiveBank(archiveFile);
+    const qNo = String(questionNo ?? '').trim();
+    return (payload?.list || []).find(row => String(row?.questionNo ?? row?.question_no ?? row?.no ?? '').trim() === qNo) || null;
+}
+
+function reportCenterExtractQuestionPoints(bp = {}, archiveQuestion = null) {
+    const direct = bp.score ?? bp.points ?? bp.point ?? bp.point_value;
+    if (direct !== undefined && direct !== null && String(direct).trim() !== '') return `${String(direct).trim().replace(/점$/, '')}점`;
+    const text = String(bp.content || bp.content_text || archiveQuestion?.content || archiveQuestion?.contentText || '');
+    const match = text.match(/\[(\d+(?:\.\d+)?)\s*점\]/);
+    return match ? `${match[1]}점` : '-';
+}
+
+function reportCenterLevelClass(level) {
+    const value = String(level || '').trim();
+    if (/최상|매우\s*어려|top/i.test(value)) return 'top';
+    if (/상|어려|high/i.test(value)) return 'high';
+    if (/중하|mid\s*low/i.test(value)) return 'midlow';
+    if (/중|보통|mid/i.test(value)) return 'mid';
+    return 'low';
+}
+
+function reportCenterBuildQuestionWrongGroups(archiveFile, questionNo) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
+    const sessionById = new Map(sessions.map(session => [String(session.id), session]));
+    const students = Array.isArray(state?.db?.students) ? state.db.students : [];
+    const groups = new Map();
+    (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : []).forEach(row => {
+        if (!sessionById.has(String(row.session_id))) return;
+        const qNo = String(row.question_no ?? row.questionNo ?? row.question_id ?? row.questionId ?? '').trim();
+        if (qNo !== String(questionNo)) return;
+        const session = sessionById.get(String(row.session_id));
+        const student = students.find(item => String(item.id) === String(session.student_id));
+        const classId = reportCenterGetClassIdForSession(session);
+        const className = reportCenterGetClassName(classId);
+        if (!groups.has(classId)) groups.set(classId, { classId, className, names: [] });
+        groups.get(classId).names.push(student?.name || session.student_name || session.student_id || '학생');
+    });
+    return Array.from(groups.values()).map(group => ({
+        ...group,
+        names: Array.from(new Set(group.names)).sort((a, b) => String(a).localeCompare(String(b), 'ko'))
+    })).filter(group => group.names.length);
+}
+
+function reportCenterBuildClassQuestionRates(archiveFile, classId) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!classId) return new Map();
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey)
+        .filter(session => String(reportCenterGetClassIdForSession(session)) === String(classId));
+    const sessionIds = new Set(sessions.map(session => String(session.id)));
+    const wrongCounts = new Map();
+    (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : []).forEach(row => {
+        if (!sessionIds.has(String(row.session_id))) return;
+        const qNo = String(row.question_no ?? row.questionNo ?? row.question_id ?? row.questionId ?? '').trim();
+        if (!qNo) return;
+        wrongCounts.set(qNo, (wrongCounts.get(qNo) || 0) + 1);
+    });
+    const result = new Map();
+    if (!sessions.length) return result;
+    wrongCounts.forEach((wrongCount, qNo) => {
+        result.set(qNo, { takers: sessions.length, wrongCount, correctRate: Math.round(((sessions.length - wrongCount) / sessions.length) * 100) });
+    });
+    return result;
+}
+
+function reportCenterBuildExamAnalysisTableRows(archiveFile, opts = {}) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const candidates = new Set(reportCenterArchiveKeyCandidates(archiveFile));
+    const reviews = reportCenterGetExamReviews(archiveKey);
+    const rates = reportCenterBuildCohortRates(archiveKey);
+    const ratesByQuestion = new Map((rates.rows || []).map(row => [String(row.questionNo), row]));
+    const classRates = reportCenterBuildClassQuestionRates(archiveKey, opts.classId || '');
+    const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+        .filter(bp => candidates.has(String(bp.archive_file || bp.archiveFile || '').trim()) || candidates.has(reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '')));
+    const questionNos = new Set();
+    blueprints.forEach(bp => {
+        const qNo = String(bp.question_no ?? bp.questionNo ?? bp.no ?? '').trim();
+        if (qNo) questionNos.add(qNo);
+    });
+    ratesByQuestion.forEach((_, qNo) => questionNos.add(qNo));
+    reviews.byQuestion.forEach((_, qNo) => questionNos.add(qNo));
+    return Array.from(questionNos).sort(reportCenterQuestionNoCompare).map(questionNo => {
+        const bp = blueprints.find(row => String(row.question_no ?? row.questionNo ?? row.no ?? '').trim() === questionNo) || {};
+        const review = reviews.byQuestion.get(questionNo) || null;
+        const reviewData = reportCenterParseReviewJson(review?.review_text || review?.reviewText || '') || {};
+        const rate = ratesByQuestion.get(questionNo) || { correctRate: null, wrongCount: 0, takers: rates.takers || 0 };
+        const archiveQuestion = reportCenterGetCachedArchiveQuestion(archiveKey, questionNo);
+        const hasReview = !!String(review?.review_text || review?.reviewText || '').trim();
+        const concept = reviewData.concept || reportCenterFirstSentence(reviewData.asks) || bp.concept || bp.concept_text || bp.standard_unit || bp.standardUnit || '';
+        const level = reviewData.level || reviewData.difficulty || bp.level || bp.difficulty || bp.question_level || reportCenterGetQuestionDifficultyLabel(Number(rate.correctRate));
+        const questionType = bp.questionType || bp.question_type || reviewData.type || reviewData.questionType || '객관식';
+        const classRate = classRates.get(questionNo) || null;
+        const correctRate = Number(rate.correctRate);
+        const classCorrectRate = Number(classRate?.correctRate);
+        return {
+            questionNo,
+            questionType,
+            level,
+            levelClass: reportCenterLevelClass(level),
+            unit: bp.standard_unit || bp.standardUnit || bp.unit || bp.unit_name || bp.chapter || '단원 미지정',
+            concept,
+            points: reportCenterExtractQuestionPoints(bp, archiveQuestion),
+            correctRate: Number.isFinite(correctRate) ? correctRate : null,
+            wrongCount: Number(rate.wrongCount) || 0,
+            classCorrectRate: Number.isFinite(classCorrectRate) ? classCorrectRate : null,
+            classWrongCount: Number(classRate?.wrongCount) || 0,
+            needsClassBoost: Number.isFinite(correctRate) && Number.isFinite(classCorrectRate) && correctRate - classCorrectRate >= 20,
+            tag: reportCenterResolveErrorTag(reviewData, Number.isFinite(correctRate) ? correctRate : null),
+            answer: review?.answer || bp.answer || archiveQuestion?.answer || '-',
+            reviewData,
+            hasReview,
+            isAi: reviewData.source === 'ai',
+            wrongGroups: reportCenterBuildQuestionWrongGroups(archiveKey, questionNo)
+        };
+    });
+}
+
+function reportCenterBuildWrongGroupChips(groups = []) {
+    if (!groups.length) return '<span class="aprc-qtable-muted">오답 학생 없음</span>';
+    return groups.map(group => {
+        const names = group.names.length > 8 ? `${group.names.slice(0, 6).join(' ')} (${group.names.length}명)` : group.names.join(' ');
+        return `<span class="aprc-qtable-chip">${reportCenterEscape(group.className)} · ${reportCenterEscape(names)}</span>`;
+    }).join('');
+}
+
+function reportCenterBuildExamAnalysisDetailHtml(row, opts = {}) {
+    const data = row.reviewData || {};
+    const teach = opts.showTeach === false ? '' : (data.teach || '');
+    const items = [
+        ['묻는 것', data.asks || row.concept || '분석 대기'],
+        ['함정', data.trap || '분석 대기'],
+        ['풀이 포인트', data.key || '분석 대기'],
+        ['지도 포인트', teach || '분석 대기'],
+        ['정답', row.answer || '-']
+    ];
+    return `
+        <div class="aprc-qtable-detail-panel">
+            <div class="aprc-qtable-detail-grid">
+                ${items.map(([label, body]) => `
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">${reportCenterEscape(label)}</span>
+                        <div class="aprc-qtable-detail-body">${reportCenterArchiveTextToHtml(reportCenterNormalizeMathText(body))}</div>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="aprc-qtable-detail-item">
+                <span class="aprc-qtable-detail-label">오답 학생 명단</span>
+                <div class="aprc-qtable-wrong-groups">${reportCenterBuildWrongGroupChips(row.wrongGroups)}</div>
+            </div>
+        </div>
+    `;
+}
+
+function reportCenterBuildExamAnalysisTableHtml(archiveFile, opts = {}) {
+    const rows = Array.isArray(opts.rows) ? opts.rows : reportCenterBuildExamAnalysisTableRows(archiveFile, opts);
+    if (!rows.length) return '<div class="aprc-qtable-empty">문항 분석표로 표시할 문항이 없습니다.</div>';
+    return `
+        <div class="aprc-qtable-wrap" data-aprc-qtable>
+            <table class="aprc-qtable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>유형</th>
+                        <th>난도</th>
+                        <th>단원</th>
+                        <th>출제의도·개념</th>
+                        <th>배점</th>
+                        <th>전체 응시 정답률</th>
+                        <th>오답</th>
+                        <th>태그</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${rows.map(row => {
+                        const rate = row.correctRate === null ? '-' : `${row.correctRate}%`;
+                        const barWidth = row.correctRate === null ? 0 : Math.round(Math.max(0, Math.min(100, row.correctRate)) / 5) * 5;
+                        const classLine = row.classCorrectRate === null ? '' : `<span class="aprc-qtable-rate-sub">우리 반 ${row.classCorrectRate}%</span>`;
+                        const concept = row.hasReview ? (row.concept || '분석 대기') : '분석 대기';
+                        return `
+                            <tr class="aprc-qtable-row ${row.needsClassBoost ? 'aprc-qtable-row--boost' : ''}" data-qtable-row="${reportCenterAttr(row.questionNo)}">
+                                <td><button type="button" class="aprc-qtable-toggle" data-qtable-toggle aria-expanded="${opts.expandAll ? 'true' : 'false'}" aria-label="${reportCenterAttr(row.questionNo)}번 분석 펼치기">▶</button> ${reportCenterEscape(row.questionNo)}</td>
+                                <td><span class="aprc-qtable-chip">${reportCenterEscape(row.questionType || '-')}</span></td>
+                                <td><span class="aprc-qtable-chip aprc-qtable-level--${reportCenterAttr(row.levelClass)}">${reportCenterEscape(row.level || '-')}</span></td>
+                                <td><span class="aprc-qtable-concept-text">${reportCenterEscape(row.unit || '-')}</span></td>
+                                <td><span class="aprc-qtable-concept"><span class="aprc-qtable-concept-text ${row.hasReview ? '' : 'aprc-qtable-muted'}">${reportCenterArchiveTextToHtml(reportCenterNormalizeMathText(concept))}</span>${row.isAi ? '<span class="aprc-qtable-ai">AI</span>' : ''}${row.needsClassBoost ? '<span class="aprc-qtable-ai">수업 보강</span>' : ''}</span></td>
+                                <td>${reportCenterEscape(row.points || '-')}</td>
+                                <td><span class="aprc-qtable-rate"><span class="aprc-qtable-rate-text">전체 ${reportCenterEscape(rate)}</span>${classLine}<span class="aprc-qtable-bar"><span class="aprc-qtable-bar-fill--${barWidth}"></span></span></span></td>
+                                <td>${reportCenterEscape(row.wrongCount)}</td>
+                                <td><span class="aprc-qtable-chip">${reportCenterEscape(row.tag || '-')}</span></td>
+                            </tr>
+                            <tr class="aprc-qtable-detail" data-qtable-detail="${reportCenterAttr(row.questionNo)}" ${opts.expandAll ? '' : 'hidden'}>
+                                <td colspan="9">${reportCenterBuildExamAnalysisDetailHtml(row, opts)}</td>
+                            </tr>
+                        `;
+                    }).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function reportCenterEnsureExamAnalysisTableEvents() {
+    if (typeof document === 'undefined' || document.__aprcQtableEvents) return;
+    document.__aprcQtableEvents = true;
+    document.addEventListener('click', event => {
+        const toggle = event.target?.closest?.('[data-qtable-toggle]');
+        const row = toggle ? toggle.closest('[data-qtable-row]') : event.target?.closest?.('[data-qtable-row]');
+        if (!row) return;
+        const qNo = row.getAttribute('data-qtable-row');
+        const detail = Array.from(row.parentElement?.querySelectorAll?.('[data-qtable-detail]') || [])
+            .find(item => item.getAttribute('data-qtable-detail') === qNo);
+        if (!detail) return;
+        const open = detail.hasAttribute('hidden');
+        detail.toggleAttribute('hidden', !open);
+        const btn = row.querySelector('[data-qtable-toggle]');
+        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+}
+
 function reportCenterBuildExamDashboard(studentId, archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
     const group = reportCenterGetSchoolExamGroupByKey(archiveFile) || reportCenterGetSchoolExamGroupByKey(archiveKey);
@@ -1863,10 +2166,10 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
             `).join('') : '<div style="font-size:12px; font-weight:700; color:var(--secondary);">블루프린트 없음</div>'}
         </div>
     `;
-    const reviewCards = Array.from(reviews.byQuestion.values())
-        .sort((a, b) => Number(a.question_no ?? a.questionNo) - Number(b.question_no ?? b.questionNo))
-        .map(row => reportCenterBuildQuestionReviewCard(row, { compact: true }))
-        .join('');
+    const analysisRows = reportCenterBuildExamAnalysisTableRows(archiveKey);
+    const reviewCount = analysisRows.filter(row => row.hasReview).length;
+    const analysisTotal = blueprints.length || Number(hub.blueprintCount) || Number(sessions[0]?.question_count) || analysisRows.length || '-';
+    const analysisTableHtml = reportCenterBuildExamAnalysisTableHtml(archiveKey, { rows: analysisRows });
     const studentRows = sessions
         .sort((a, b) => Number(b.score ?? -1) - Number(a.score ?? -1))
         .map(session => {
@@ -1922,11 +2225,14 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                         ${distributionHtml('난도 분포', difficultyCounts)}
                     </div>
             <section class="aprc-section">
-                <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:10px;">
+                <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:10px; align-items:center; flex-wrap:wrap;">
                     <div style="font-size:14px; font-weight:900; color:var(--text);">문항 분석 상태</div>
-                    <div style="font-size:12px; font-weight:800; color:var(--secondary);">${hub.reviewCount}/${hub.blueprintCount || '-'}</div>
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <button type="button" class="aprc-action-btn aprc-action-btn--accent" data-exam-analysis-print="${reportCenterAttr(archiveKey)}">분석표 인쇄/PDF</button>
+                        <div style="font-size:12px; font-weight:800; color:var(--secondary);">${reviewCount}/${analysisTotal}</div>
+                    </div>
                 </div>
-                ${reviewCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">아직 저장된 문항 분석이 없습니다.</div>'}
+                ${analysisTableHtml}
             </section>
             <section class="aprc-section">
                 <div class="aprc-section-title">전체 응시 정답률</div>
