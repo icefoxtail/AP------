@@ -3510,6 +3510,36 @@ function reportCenterSelectPriorityWrongRows(wrongRows = [], limit = 5) {
     }).slice(0, limit);
 }
 
+function reportCenterSelectParentReportWrongRows(wrongRows = [], limit = 5) {
+    const rows = Array.isArray(wrongRows) ? wrongRows : [];
+    const keyOf = row => String(row?.questionNo ?? row?.question_no ?? row?.questionId ?? row?.question_id ?? row?.id ?? '');
+    const byEasyMistake = [...rows].sort((a, b) => {
+        const ar = Number.isFinite(Number(a.correctRate)) ? Number(a.correctRate) : -1;
+        const br = Number.isFinite(Number(b.correctRate)) ? Number(b.correctRate) : -1;
+        if (br !== ar) return br - ar;
+        return Number(a.questionNo || a.question_id || 0) - Number(b.questionNo || b.question_id || 0);
+    }).slice(0, 3);
+    const byHardQuestion = [...rows].sort((a, b) => {
+        const ar = Number.isFinite(Number(a.correctRate)) ? Number(a.correctRate) : 101;
+        const br = Number.isFinite(Number(b.correctRate)) ? Number(b.correctRate) : 101;
+        if (ar !== br) return ar - br;
+        return Number(a.questionNo || a.question_id || 0) - Number(b.questionNo || b.question_id || 0);
+    }).slice(0, 2);
+    const merged = [];
+    const seen = new Set();
+    const pushUnique = row => {
+        if (!row || merged.length >= limit) return;
+        const key = keyOf(row);
+        if (key && seen.has(key)) return;
+        if (key) seen.add(key);
+        merged.push(row);
+    };
+    byEasyMistake.forEach(pushUnique);
+    byHardQuestion.forEach(pushUnique);
+    reportCenterSelectPriorityWrongRows(rows, rows.length).forEach(pushUnique);
+    return merged.slice(0, limit);
+}
+
 function reportCenterSelectExcellentRows(stats, limit = 3) {
     const rows = Array.isArray(stats?.rows) ? stats.rows : [];
     return [...rows]
@@ -3732,7 +3762,9 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const stats = data.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
     const detailMap = reportCenterGetQuestionDetailMap(data);
-    const questionCards = wrongRows
+    const parentWrongRows = reportCenterSelectParentReportWrongRows(wrongRows, 5);
+    const omittedWrongCount = Math.max(0, wrongRows.length - parentWrongRows.length);
+    const questionCards = parentWrongRows
         .map(row => reportCenterBuildParentWrongQuestionCard(row, detailMap.get(String(row.questionNo)), { showAnswer: false }))
         .join('');
     const actionItems = reportCenterBuildAcademyActionPlan(data);
@@ -3765,8 +3797,9 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">실제 오답 문제</div>
+                ${wrongRows.length ? '<p>먼저 볼 문항을 중심으로 정리했습니다.</p>' : ''}
                 ${wrongRows.length
-                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 다음 수업에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>`
+                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 다음 수업에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 클리닉/수업 시간에 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
             <section class="aprc-counsel-section">
