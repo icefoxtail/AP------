@@ -3354,41 +3354,68 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
     const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const concept = String(reviewData.concept || row.concept || detail?.concept || row.unit || row.unitKey || detail?.unit || '').trim();
     const rate = Number.isFinite(Number(row.correctRate ?? detail?.correctRate)) ? Math.round(Number(row.correctRate ?? detail?.correctRate)) : null;
-    const tag = reportCenterResolveErrorTag(reviewData, rate);
+    const rawTag = String(reviewData.tag || row.tag || '').trim();
+    const resolvedTag = reportCenterResolveErrorTag(reviewData, rate) || '';
+    const tagText = `${rawTag} ${resolvedTag}`;
+    const tag = /계산|검산|산술|부호/.test(tagText) ? 'calc'
+        : /순서|절차|단계|풀이/.test(tagText) ? 'order'
+        : /조건|해석|범위|경계/.test(tagText) ? 'condition'
+        : /개념|정리|공식/.test(tagText) ? 'concept'
+        : rate !== null && rate >= 85 ? 'calc'
+        : rate !== null && rate >= 65 ? 'order'
+        : rate !== null && rate >= 45 ? 'condition'
+        : 'concept';
     const rawTrap = reportCenterLooksLikeCodeText(reviewData.trap || '') ? '' : String(reviewData.trap || '').trim();
-    const trap = reportCenterTrapReadsNatural(rawTrap) ? rawTrap.replace(/[.。]+$/g, '') : '';
+    const trap = reportCenterTrapReadsNatural(rawTrap) ? rawTrap.replace(/[.!?。]+$/g, '') : '';
 
     const headline = rate === null
-        ? (concept ? `${concept}을(를) 확인하는 문항입니다.` : '핵심 개념 적용을 확인하는 문항입니다.')
-        : rate < 45 ? `전체 정답률 ${rate}%의 매우 어려운 최상위 문항입니다.`
-        : rate < 65 ? `전체 정답률 ${rate}%의 난도 있는 문항입니다.`
-        : rate < 85 ? `전체 정답률 ${rate}%로 기본과 응용의 경계에 있는 문항입니다.`
-        : `전체 정답률 ${rate}%로 대부분 맞힌 기본 문항입니다.`;
+        ? (concept ? `${concept} 적용 과정을 확인하는 문항입니다.` : '핵심 개념 적용을 확인하는 문항입니다.')
+        : rate >= 85 ? '대부분의 학생이 해결한 기본 문항입니다.'
+        : rate >= 65 ? '기본 개념은 잡혀 있어도 풀이 순서에서 실수가 나올 수 있는 문항입니다.'
+        : rate >= 45 ? '전체적으로도 쉽지 않았던 적용 문항입니다.'
+        : `전체 정답률 ${rate}%의 매우 어려운 최상위 문항입니다.`;
 
     const reason = trap
-        ? `${trap} 부분에서 판단이 갈리는 문항이었습니다.`
+        ? `${trap} 부분에서 판단이 흔들리기 쉬웠던 문항입니다.`
         : concept
-            ? `${concept} 개념을 문제 상황에 연결하는 과정이 핵심인 문항입니다.`
+            ? `${concept} 개념을 문제 상황에 연결하는 과정이 핵심이었습니다.`
             : '';
 
     const meaningByTag = {
-        '계산·검산': '개념을 몰라서라기보다 계산과 마무리 확인 과정에서 아쉬움이 있었던 것으로 보입니다.',
-        '풀이 순서': '접근 방향은 잡았지만 풀이 단계를 이어가는 과정에서 흔들린 것으로 보입니다.',
-        '조건 해석': '조건을 식으로 옮기고 범위를 끝까지 확인하는 과정에서 흔들린 것으로 보입니다.',
-        '개념 재정리': '이 개념을 문제에 적용하는 단계가 아직 낯선 것으로 보입니다.'
+        calc: '대부분의 학생이 해결한 문항이기 때문에 개념 부족보다는 계산, 부호, 마지막 검산 과정에서 실수가 있었을 가능성이 큽니다.',
+        order: '개념은 알고 있어도 어느 단계부터 정리할지 흔들리면 감점될 수 있는 문항입니다.',
+        condition: '조건을 식으로 옮기고 범위를 끝까지 확인하는 과정이 핵심이었습니다.',
+        concept: '해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.'
     };
     const actionByTag = {
-        '계산·검산': '풀이 후 검산 습관을 수업에서 바로 점검해 같은 실수가 반복되지 않게 하겠습니다.',
-        '풀이 순서': '같은 유형의 풀이 단계를 짧게 반복해 흐름을 안정적으로 잡겠습니다.',
-        '조건 해석': '조건을 정리하고 식을 세우는 첫 단계를 다음 수업에서 다시 다지겠습니다.',
-        '개념 재정리': '기본 개념부터 다시 정리한 뒤 비슷한 문제로 차근차근 적용해 보겠습니다.'
+        calc: '다음 수업에서는 풀이 마지막 확인 습관과 부호 검산을 바로 점검하겠습니다.',
+        order: '같은 유형을 짧게 반복해 풀이 순서를 안정적으로 잡겠습니다.',
+        condition: '조건을 먼저 정리하고 식을 세우는 첫 단계를 다시 연습하겠습니다.',
+        concept: '기본 개념을 다시 확인한 뒤 유사 문항에 적용하는 연습을 진행하겠습니다.'
     };
+    const keywordAction = /함수|그래프|활용/.test(concept)
+        ? ' 특히 상황 해석, 표 만들기, 식 확인 순서로 풀이를 정리하겠습니다.'
+        : /부등식|범위/.test(concept)
+        ? ' 특히 범위 표시와 경계값 확인을 함께 점검하겠습니다.'
+        : /이차방정식|방정식|식/.test(concept)
+        ? ' 특히 조건 정리와 식 변형 과정을 한 줄씩 확인하겠습니다.'
+        : /인수분해/.test(concept)
+        ? ' 특히 부호 확인과 전개 검산을 함께 진행하겠습니다.'
+        : /확률|경우/.test(concept)
+        ? ' 특히 조건 분류와 중복 확인을 표로 정리하겠습니다.'
+        : /도형/.test(concept)
+        ? ' 특히 그림에 조건을 표시하고 관계식을 세우는 연습을 하겠습니다.'
+        : '';
     const meaning = meaningByTag[tag] || '다음 수업에서 풀이 시작점을 함께 확인하겠습니다.';
     const action = (rate !== null && rate < 45)
-        ? '최상위 난도 문항 대비 훈련을 다음 시험 준비에 더해 진행하겠습니다.'
-        : (actionByTag[tag] || '같은 유형을 다음 수업에서 다시 풀이하며 확인하겠습니다.');
+        ? `최상위 난도 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다.${keywordAction}`
+        : `${actionByTag[tag] || '같은 유형을 다음 수업에서 다시 풀이하며 확인하겠습니다.'}${keywordAction}`;
 
-    const clean = value => reportCenterAssertParentSafe(reportCenterNormalizeMathText(String(value || '')));
+    const clean = value => reportCenterAssertParentSafe(reportCenterNormalizeMathText(String(value || '')))
+        .replace(/\b(raw|archive|blueprint|review_text)\b/gi, '')
+        .replace(/자료 없음|확인 불가|못함|부족함|위험|왜곡/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
     return {
         headline: clean(headline),
         reason: clean(reason),
