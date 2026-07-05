@@ -2245,6 +2245,164 @@ async function reportCenterOpenExamAnalysisPrintView(archiveFile, options = {}) 
     return html;
 }
 
+async function reportCenterBuildSchoolExamArchiveAiPayload(archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    try { await reportCenterFetchArchiveBankByFile(archiveKey); } catch (e) {}
+    const group = reportCenterGetSchoolExamGroupByKey(archiveKey);
+    const hub = reportCenterBuildExamHubList().find(row => row.archiveFile === archiveKey) || {};
+    const rows = reportCenterBuildExamAnalysisTableRows(archiveKey);
+    return {
+        reportType: 'exam_archive_analysis',
+        generatedFrom: 'AP_MATH_OS_SCHOOL_EXAM_ARCHIVE_ANALYSIS',
+        archive_file: archiveKey,
+        exam: {
+            title: hub.title || group?.title || archiveKey,
+            school: hub.school || group?.school || '',
+            grade: hub.grade || group?.grade || '',
+            takers: hub.takers || group?.takers || 0
+        },
+        instructions: [
+            '문항별 JSON을 생성한다.',
+            `tag는 ${reportCenterErrorTags().join('|')} 중 하나만 사용한다.`,
+            '사람이 검수하기 쉬운 자연스러운 한국어 문장으로 작성한다.',
+            '채점 메모 말투, 학부모 안내 말투, 책임 전가 표현을 쓰지 않는다.',
+            '응답은 questions 배열 또는 JSON 배열로만 구성하고 각 항목은 questionNo, concept, tag, asks, trap, key, teach를 포함한다.'
+        ].join('\n'),
+        questions: rows.map(row => ({
+            questionNo: row.questionNo,
+            unit: row.unit,
+            content: row.content || '',
+            choices: row.choices || [],
+            answer: row.answer || '',
+            correctRate: row.correctRate,
+            wrongCount: row.wrongCount,
+            hasReview: row.hasReview
+        }))
+    };
+}
+
+function reportCenterParseArchiveAiResponse(payload) {
+    let source = payload;
+    if (typeof source === 'string') {
+        const text = source.trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+        try { source = JSON.parse(text); } catch (e) { return { overview: '', questions: [] }; }
+    }
+    if (source?.analysis) source = source.analysis;
+    if (typeof source === 'string') return reportCenterParseArchiveAiResponse(source);
+    const questions = Array.isArray(source)
+        ? source
+        : Array.isArray(source?.questions) ? source.questions
+        : Array.isArray(source?.reviews) ? source.reviews
+        : Array.isArray(source?.items) ? source.items
+        : [];
+    const overview = source?.overview_text || source?.overview || source?.summary || '';
+    return { overview, questions };
+}
+
+function reportCenterNormalizeArchiveAiQuestion(item = {}) {
+    const questionNo = String(item.questionNo ?? item.question_no ?? item.no ?? '').trim();
+    if (!questionNo) return null;
+    const allowedTags = new Set(reportCenterErrorTags());
+    const tag = allowedTags.has(String(item.tag || '').trim()) ? String(item.tag).trim() : '개념 재정리';
+    const result = {
+        questionNo,
+        concept: String(item.concept || '').trim(),
+        tag,
+        asks: String(item.asks || item.ask || '').trim(),
+        trap: String(item.trap || '').trim(),
+        key: String(item.key || item.solutionKey || '').trim(),
+        teach: String(item.teach || item.teaching || '').trim(),
+        source: 'ai'
+    };
+    return result.concept || result.asks || result.trap || result.key || result.teach ? result : null;
+}
+
+async function reportCenterPersistExamAnalysisToServer(archiveFile, reviews = [], meta = null) {
+    if (typeof api === 'undefined' || !api || typeof api.post !== 'function') return null;
+    try {
+        return await api.post('exams/exam-analysis', {
+            archive_file: reportCenterNormalizeExamAnalysisArchiveKey(archiveFile),
+            ...(meta ? { meta } : {}),
+            reviews
+        });
+    } catch (e) {
+        console.warn('[reportCenterPersistExamAnalysisToServer] failed:', e);
+        return null;
+    }
+}
+
+async function reportCenterRequestSchoolExamArchiveAiAnalysis(archiveFile, buttonEl = null, options = {}) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!archiveKey) {
+        toast('분석할 시험지를 찾지 못했습니다.', 'warn');
+        return { saved: 0, skipped: 0 };
+    }
+    const rows = reportCenterBuildExamAnalysisTableRows(archiveKey);
+    const emptyRows = rows.filter(row => !row.hasReview);
+    if (!emptyRows.length && !options.overwrite) {
+        if (typeof confirm === 'function' && confirm('모든 문항에 분석이 있습니다. 기존 분석을 덮어쓰고 다시 생성할까요?')) {
+            options = { ...options, overwrite: true };
+        } else {
+            toast('모든 문항에 분석이 있습니다.', 'info');
+            return { saved: 0, skipped: rows.length };
+        }
+    }
+    if (typeof api === 'undefined' || !api || typeof api.post !== 'function') {
+        toast('AI 분석 API가 연결되어 있지 않습니다.', 'warn');
+        return { saved: 0, skipped: 0 };
+    }
+    if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, true, '분석 중');
+    try {
+        const payload = await reportCenterBuildSchoolExamArchiveAiPayload(archiveKey);
+        const response = await api.post('ai/report-analysis', payload);
+        if (!response || response.success === false) throw new Error(response?.message || response?.error || '시험지 분석 실패');
+        const parsed = reportCenterParseArchiveAiResponse(response.analysis || response.data || response);
+        const existing = reportCenterGetExamReviews(archiveKey);
+        const reviewPayloads = [];
+        let saved = 0;
+        let skipped = 0;
+        parsed.questions.map(reportCenterNormalizeArchiveAiQuestion).filter(Boolean).forEach(item => {
+            const current = existing.byQuestion.get(String(item.questionNo));
+            const hasHumanOrSaved = !!String(current?.review_text || current?.reviewText || '').trim();
+            if (hasHumanOrSaved && !options.overwrite) {
+                skipped += 1;
+                return;
+            }
+            const reviewText = JSON.stringify(item);
+            reportCenterUpsertExamReview(archiveKey, item.questionNo, {
+                review_text: reviewText,
+                answer: current?.answer || '',
+                concept: item.concept,
+                error_tag: item.tag,
+                updated_by: 'ai'
+            });
+            reviewPayloads.push({ question_no: item.questionNo, review_text: reviewText, answer: current?.answer || '' });
+            saved += 1;
+        });
+        const meta = reportCenterGetExamReviews(archiveKey).meta;
+        const overviewText = String(parsed.overview || '').trim();
+        const metaPatch = overviewText && !String(meta?.overview_text || '').trim() ? { overview_text: overviewText } : null;
+        if (metaPatch) reportCenterUpsertExamMeta(archiveKey, metaPatch);
+        if (reviewPayloads.length || metaPatch) reportCenterPersistExamAnalysisToServer(archiveKey, reviewPayloads, metaPatch);
+        toast(`시험지 문항분석 ${saved}건을 반영했습니다.`, 'success');
+        if (typeof openReportCenterModal === 'function') {
+            try {
+                const nav = typeof reportCenterNavState === 'function' ? reportCenterNavState() : null;
+                openReportCenterModal(nav?.studentId || '', 'daily', { forceDrilldown: true });
+            } catch (renderError) {
+                console.warn('[reportCenterRequestSchoolExamArchiveAiAnalysis] refresh failed:', renderError);
+            }
+        }
+        return { saved, skipped };
+    } catch (e) {
+        console.error('[reportCenterRequestSchoolExamArchiveAiAnalysis] failed:', e);
+        toast('시험지 프리미엄 문항분석에 실패했습니다.', 'warn');
+        return { saved: 0, skipped: 0, error: e };
+    } finally {
+        if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, false);
+    }
+}
+
 function reportCenterEnsureExamAnalysisTableEvents() {
     if (typeof document === 'undefined' || document.__aprcQtableEvents) return;
     document.__aprcQtableEvents = true;
@@ -2258,6 +2416,13 @@ function reportCenterEnsureExamAnalysisTableEvents() {
             const includeContent = !!root.querySelector?.('[data-exam-analysis-print-content]')?.checked;
             const showTeach = root.querySelector?.('[data-exam-analysis-print-teach]')?.checked !== false;
             reportCenterOpenExamAnalysisPrintView(archiveFile, { includeContent, showTeach });
+            return;
+        }
+        const archiveAiButton = event.target?.closest?.('[data-exam-archive-ai]');
+        if (archiveAiButton) {
+            event.preventDefault();
+            event.stopPropagation();
+            reportCenterRequestSchoolExamArchiveAiAnalysis(archiveAiButton.getAttribute('data-exam-archive-ai') || '', archiveAiButton);
             return;
         }
         const toggle = event.target?.closest?.('[data-qtable-toggle]');
@@ -2370,6 +2535,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                         <label style="display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:800; color:var(--secondary);"><input type="checkbox" data-exam-analysis-print-content>문항 원문 포함</label>
                         <label style="display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:800; color:var(--secondary);"><input type="checkbox" data-exam-analysis-print-teach checked>지도 포인트 포함</label>
                         <button type="button" class="aprc-action-btn aprc-action-btn--accent" data-exam-analysis-print="${reportCenterAttr(archiveKey)}">분석표 인쇄/PDF</button>
+                        <button type="button" class="aprc-action-btn aprc-action-btn--accent" data-exam-archive-ai="${reportCenterAttr(archiveKey)}">시험지 프리미엄 문항분석</button>
                         <div style="font-size:12px; font-weight:800; color:var(--secondary);">${reviewCount}/${analysisTotal}</div>
                     </div>
                 </div>
