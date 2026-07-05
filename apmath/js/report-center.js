@@ -3492,6 +3492,45 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
     );
 }
 
+function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
+    const studentName = data?.student?.name || '학생';
+    const session = data?.session || {};
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(selectedWrongRows) && selectedWrongRows.length
+        ? selectedWrongRows
+        : (Array.isArray(stats.wrongRows) ? stats.wrongRows : []);
+    const score = Number(session.score);
+    const scoreText = Number.isFinite(score) ? `${score}점` : '점수 확인이 필요한 결과';
+    const examTitle = session.exam_title || session.examTitle || '이번 시험';
+    const positionText = reportCenterBuildScorePositionText({ ...data, session, stats });
+    const priorityRow = wrongRows[0] || null;
+    const priorityNo = priorityRow?.questionNo ?? priorityRow?.question_no ?? '';
+    const priorityUnit = priorityRow?.unit || priorityRow?.unitKey || priorityRow?.concept || '확인할 단원';
+    const priorityRate = Number(priorityRow?.correctRate);
+    const rateText = Number.isFinite(priorityRate) ? `전체 정답률 ${Math.round(priorityRate)}%` : '정답률 확인 대상';
+    const wrongText = wrongRows.length
+        ? `${wrongRows.length}개 오답 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 먼저 확인하겠습니다`
+        : '오답 문항은 많지 않지만 풀이 과정 점검은 이어가겠습니다';
+    const actionItems = typeof reportCenterBuildAcademyActionPlan === 'function'
+        ? reportCenterBuildAcademyActionPlan(data)
+        : [];
+    const planText = actionItems[0] || '다음 수업에서는 틀린 문항을 다시 풀면서 조건 표시와 계산 마무리를 함께 확인하겠습니다.';
+    const wrongFocus = wrongRows.length
+        ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}로 확인된 문항은 문제의 조건을 정리하고 식으로 연결하는 과정을 다시 볼 필요가 있습니다.`
+        : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
+    const supportText = wrongRows.some(row => Number(row.correctRate) >= 85)
+        ? '정답률이 높은 문항에서의 실점은 개념 부족보다는 계산, 부호, 검산 과정의 실수 가능성이 커서 풀이 후 확인 습관을 함께 잡겠습니다.'
+        : wrongRows.some(row => Number(row.correctRate) < 45)
+            ? '정답률이 낮은 고난도 문항은 다음 시험 대비 과정에서 조건 정리와 활용 문제 훈련으로 따로 이어가겠습니다.'
+            : '이번 오답은 조건을 정리하고 풀이 순서를 끝까지 이어가는 연습으로 충분히 보완할 수 있는 지점입니다.';
+    return reportCenterAssertParentSafe([
+        `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했고, ${positionText}로 확인됩니다.`,
+        `${wrongFocus} ${wrongText}.`,
+        `다음 수업에서는 ${planText} ${supportText}`,
+        '학원에서는 이번 시험 결과를 다음 수업과 오답 관리에 바로 반영해, 같은 유형에서 다시 실점하지 않도록 유사 문항까지 이어서 확인하겠습니다.'
+    ].join('\n\n'));
+}
+
 function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = {}) {
     const reviewData = reportCenterParseReviewJson?.(row?.reviewText || row?.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const qNo = row?.questionNo ?? row?.question_no ?? detail?.questionNo ?? detail?.question_no ?? '';
@@ -3829,7 +3868,7 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const planText = isPremium
         ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
         : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data));
-    const parentText = (isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildCompactParentMessage(data);
+    const parentText = (isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildRichParentMessage(data, parentWrongRows);
     const premiumBadge = isPremium
         ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
         : '';
