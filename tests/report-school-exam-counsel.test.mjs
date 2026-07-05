@@ -63,7 +63,6 @@ const detailed = context.reportCenterBuildSchoolExamDetailedParentReport('s1', '
 assert.match(detailed, /상세 학부모 리포트/);
 assert.match(detailed, /실제 오답 문제/);
 assert.match(detailed, /2번/);
-assert.match(detailed, /정답/);
 
 const archiveDetails = {
   ok: true,
@@ -86,8 +85,8 @@ const detailedWithArchive = context.reportCenterBuildSchoolExamDetailedParentRep
 assert.match(detailedWithArchive, /아카이브 문항 원문을 불러왔습니다/);
 assert.match(detailedWithArchive, /2번 원문입니다/);
 assert.match(detailedWithArchive, /① 1/);
-assert.match(detailedWithArchive, /②/);
-assert.match(detailedWithArchive, /2를 고릅니다/);
+assert.doesNotMatch(detailedWithArchive, /<b>정답<\/b>/);
+assert.doesNotMatch(detailedWithArchive, /<b>해설 요약<\/b>/);
 
 const printDoc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1', { archiveDetails });
 assert.match(printDoc, /학교시험 상세 리포트/);
