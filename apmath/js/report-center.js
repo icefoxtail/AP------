@@ -3459,6 +3459,7 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
     const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const qNo = row?.questionNo ?? row?.question_no ?? detail?.questionNo ?? detail?.question_no ?? '';
     const concept = String(reviewData.concept || row?.unit || row?.unitKey || row?.concept || detail?.unit || detail?.concept || '해당 단원').trim();
+    const conceptTopic = `${concept} 기본 풀이`;
     const rate = Number(row?.correctRate ?? detail?.correctRate);
     const rateText = Number.isFinite(rate) ? `전체 정답률 ${Math.round(rate)}%의 ${reportCenterGetQuestionDifficultyLabel(rate)} 문항` : '난도를 함께 확인해야 하는 문항';
     const tagText = `${reviewData.tag || row?.tag || ''} ${reportCenterResolveErrorTag(reviewData, Number.isFinite(rate) ? rate : null) || ''}`;
@@ -3468,7 +3469,7 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
     const isCondition = isHard || /조건|해석|범위|경계|함수|그래프|활용|부등식|방정식/.test(`${concept} ${tagText}`);
 
     const core = isEasyMiss
-        ? `${concept}의 기본 풀이를 차분히 마무리해야 하는`
+        ? `${conceptTopic}를 차분히 마무리해야 하는`
         : isCondition
             ? `${concept}에서 조건을 먼저 표시하고 식으로 연결해야 하는`
             : `${concept} 개념을 문제 상황에 맞게 적용해야 하는`;
