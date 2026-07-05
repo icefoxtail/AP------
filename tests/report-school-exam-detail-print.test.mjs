@@ -53,7 +53,9 @@ const doc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1')
 assert.match(doc, /class="aprc-school-detail-document"/);
 assert.match(doc, /class="aprc-school-detail-head"/);
 assert.doesNotMatch(doc, /aprc-pdf-header/);
-assert.match(doc, /<h1>학교시험 상세 리포트<\/h1>/);
+assert.match(doc, /<h1>민서 상세 학부모 리포트<\/h1>/);
+assert.doesNotMatch(doc, /기본값 · 학부모 상담\/출력용/);
+assert.equal((doc.match(/aprc-counsel-head/g) || []).length, 0);
 
 const shell = context.reportCenterBuildSchoolExamDetailedPrintShell(doc);
 assert.match(shell, /report-center-school-exam-print-view/);
@@ -73,7 +75,8 @@ assert.equal(bodyClasses.has('aprc-school-print-mode'), false);
 
 context.AP_REPORT_AI_ANALYSIS_CACHE = { e1: { source: 'ai', summary: 'AI 요약' } };
 const premiumDoc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1');
-assert.match(premiumDoc, /aprc-school-detail-premium-badge/);
+assert.doesNotMatch(premiumDoc, /aprc-school-detail-premium-badge/);
+assert.doesNotMatch(premiumDoc, /프리미엄 분석 적용/);
 assert.doesNotMatch(premiumDoc, /style="padding:2px 8px/);
 
 console.log('report school exam detail print test passed');
