@@ -38,6 +38,7 @@ const data = {
 
 const parentMessage = context.reportCenterBuildRichParentMessage(data, data.stats.wrongRows);
 assert.ok(parentMessage.length >= 180);
+assert.ok(parentMessage.split('\n\n').length >= 4, 'rich parent message should preserve paragraph breaks');
 assert.match(parentMessage, /전체 평균 대비 -9점/);
 assert.match(parentMessage, /중3B 평균 대비 -2점/);
 assert.match(parentMessage, /19번/);
@@ -113,6 +114,7 @@ const middle3LowerData = {
 };
 const middle3LowerMessage = context.reportCenterBuildRichParentMessage(middle3LowerData, middle3LowerData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(middle3LowerData, middle3LowerData.stats.wrongRows), 'lower');
+assert.match(middle3LowerMessage, /이번 학교 기출시험 결과는 점수와 함께 실제 내신에서 먼저 보완해야 할 부분/);
 assert.match(middle3LowerMessage, /고등 선행을 빠르게 나가기보다 중등 핵심 단원의 빈틈/);
 
 const highData = {
