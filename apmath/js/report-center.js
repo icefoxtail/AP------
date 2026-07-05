@@ -3462,7 +3462,7 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
     const rate = Number(row?.correctRate ?? detail?.correctRate);
     const rateText = Number.isFinite(rate) ? `전체 정답률 ${Math.round(rate)}%의 ${reportCenterGetQuestionDifficultyLabel(rate)} 문항` : '난도를 함께 확인해야 하는 문항';
     const tagText = `${reviewData.tag || row?.tag || ''} ${reportCenterResolveErrorTag(reviewData, Number.isFinite(rate) ? rate : null) || ''}`;
-    const trap = reportCenterTrapReadsNatural(reviewData.trap || '') ? String(reviewData.trap).replace(/[.!?]+$/g, '') : '';
+    const trap = reportCenterTrapReadsNatural(reviewData.trap || '') ? String(reviewData.trap).trim() : '';
     const isEasyMiss = Number.isFinite(rate) && rate >= 85;
     const isHard = Number.isFinite(rate) && rate < 45;
     const isCondition = isHard || /조건|해석|범위|경계|함수|그래프|활용|부등식|방정식/.test(`${concept} ${tagText}`);
@@ -3479,7 +3479,8 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
             : isCondition
                 ? '문제의 조건을 식으로 옮기고 범위까지 확인하는 과정에서 흔들린 것'
                 : '개념을 알고 있어도 문제 상황에 적용하는 순서를 정리하는 과정에서 흔들린 것';
-    const trapText = trap ? ` 특히 ${trap} 부분을 다시 확인할 필요가 있습니다.` : '';
+    const trapSentence = trap ? (/[.!?。！？]$/.test(trap) ? trap : `${trap}.`) : '';
+    const trapText = trapSentence ? ` 특히 ${trapSentence} 이 부분은 다음 수업에서 다시 짚겠습니다.` : '';
     const plan = isEasyMiss
         ? '풀이가 끝난 뒤 부호, 계산, 답안 범위를 다시 확인하는 습관까지 함께 점검하겠습니다'
         : isHard
@@ -3488,7 +3489,7 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
                 ? '조건을 먼저 표시하고, 식을 세운 뒤 범위까지 확인하는 순서로 다시 풀어보겠습니다'
                 : '필요한 개념을 먼저 정리하고, 같은 유형의 문항으로 적용 순서를 반복하겠습니다';
     return reportCenterAssertParentSafe(
-        `${qNo || ''}번은 ${rateText}으로, ${core} 문제였습니다. 이번 오답은 ${meaning}으로 보입니다.${trapText} 다음 수업에서는 ${plan}.`
+        `${qNo || ''}번은 ${core} 문제입니다. ${rateText}이라 이번에는 ${meaning}으로 보입니다.${trapText} 다음 수업에서는 ${plan}.`
     );
 }
 
@@ -3507,17 +3508,18 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const priorityNo = priorityRow?.questionNo ?? priorityRow?.question_no ?? '';
     const priorityUnit = priorityRow?.unit || priorityRow?.unitKey || priorityRow?.concept || '확인할 단원';
     const priorityRate = Number(priorityRow?.correctRate);
-    const rateText = Number.isFinite(priorityRate) ? `전체 정답률 ${Math.round(priorityRate)}%` : '정답률 확인 대상';
+    const rateText = Number.isFinite(priorityRate) ? `정답률이 ${Math.round(priorityRate)}%` : '정답률 확인 대상';
     const wrongText = wrongRows.length
-        ? `${wrongRows.length}개 오답 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 먼저 확인하겠습니다`
-        : '오답 문항은 많지 않지만 풀이 과정 점검은 이어가겠습니다';
+        ? `이번 리포트에서는 ${wrongRows.length}개 오답 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 우선 문항으로 잡아 설명드리겠습니다`
+        : '오답 문항은 많지 않지만 풀이 과정과 답안 마무리는 한 번 더 살펴보겠습니다';
     const actionItems = typeof reportCenterBuildAcademyActionPlan === 'function'
         ? reportCenterBuildAcademyActionPlan(data)
         : [];
     const planText = (actionItems[0] || '틀린 문항을 다시 풀면서 조건 표시와 계산 마무리를 함께 확인하겠습니다.')
         .replace(/^다음 수업에서는\s*/, '');
+    const planSentence = planText.replace(/[.。]\s*$/, '');
     const wrongFocus = wrongRows.length
-        ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}로 확인된 문항은 문제의 조건을 정리하고 식으로 연결하는 과정을 다시 볼 필요가 있습니다.`
+        ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}였던 문항은 문제의 조건을 정리하고 식으로 연결하는 과정을 다시 볼 필요가 있습니다.`
         : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
     const supportText = wrongRows.some(row => Number(row.correctRate) >= 85)
         ? '정답률이 높은 문항에서의 실점은 개념 부족보다는 계산, 부호, 검산 과정의 실수 가능성이 커서 풀이 후 확인 습관을 함께 잡겠습니다.'
@@ -3525,10 +3527,10 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
             ? '정답률이 낮은 고난도 문항은 다음 시험 대비 과정에서 조건 정리와 활용 문제 훈련으로 따로 이어가겠습니다.'
             : '이번 오답은 조건을 정리하고 풀이 순서를 끝까지 이어가는 연습으로 충분히 보완할 수 있는 지점입니다.';
     return reportCenterAssertParentSafe([
-        `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했고, ${positionText}로 확인됩니다.`,
+        `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했습니다. 이번 시험 위치는 ${positionText}입니다.`,
         `${wrongFocus} ${wrongText}.`,
-        `다음 수업에서는 ${planText} ${supportText}`,
-        '학원에서는 이번 시험 결과를 다음 수업과 오답 관리에 바로 반영해, 같은 유형에서 다시 실점하지 않도록 유사 문항까지 이어서 확인하겠습니다.'
+        `다음 수업에서는 ${planSentence}. ${supportText}`,
+        '학원에서는 이번 시험 결과를 바탕으로 다시 풀 문항과 유사 문항을 묶어 수업 안에서 확인하겠습니다.'
     ].join('\n\n'));
 }
 
@@ -4192,14 +4194,14 @@ function reportCenterHasStrengthSignal(data) {
 }
 
 // 이번 시험 요약: 절대 점수·정답률 수치는 카드가 담당하므로 여기서는 평균 대비 위치,
-// 오답이 몰린 단원, 강점, 그리고 '학원이 책임지고 진행'하는 다음 계획을 문단으로 정리한다.
+// 오답이 몰린 단원, 강점, 그리고 다음 수업에서 실제로 확인할 문항/유형을 문단으로 정리한다.
 function reportCenterBuildEasySummaryText(data, wrongCount, correctRate = null) {
     const stats = data?.stats || {};
     if (!Number(wrongCount || 0)) {
         const strength = reportCenterHasStrengthSignal(data)
             ? ' 정답률이 낮았던 문항까지 정확히 해결한 만큼,'
             : '';
-        return `이번 시험은 전 문항을 정확히 풀었습니다.${strength} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다. 지금의 수준을 안정적으로 유지하도록 저희가 책임지고 이어가겠습니다.`;
+        return `이번 시험은 전 문항을 정확히 풀었습니다.${strength} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다. 지금의 강점이 이어지도록 수업 안에서 난도 조절과 풀이 점검을 함께 진행하겠습니다.`;
     }
     const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
     const whereSentence = unitPhrase
@@ -4210,7 +4212,7 @@ function reportCenterBuildEasySummaryText(data, wrongCount, correctRate = null) 
     const strengthSentence = reportCenterHasStrengthSignal(data)
         ? '정답률이 낮았던 문항까지 정확히 해결한 부분은 이번 시험에서 특히 잘한 점입니다.'
         : '';
-    const planSentence = '틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 부족한 개념은 다시 정리해 같은 유형까지 책임지고 점검하겠습니다.';
+    const planSentence = '틀린 문항은 다음 수업과 보강에서 다시 풀고, 필요한 개념은 같은 유형 2~3문항으로 한 번 더 확인하겠습니다.';
     const hasClassAvg = stats.classAvg !== null && stats.classAvg !== undefined && stats.classAvg !== '';
     const classAvg = Number(stats.classAvg);
     const rawScore = Number(data?.session?.score);
@@ -4259,12 +4261,12 @@ function reportCenterBuildEasyWeaknessText(trendData, data) {
         const head = recurringUnits
             ? `${recurringUnits} 단원은 최근에도 반복해서 어려워하는 부분입니다.`
             : '여러 차례 반복해서 틀리는 문항이 이어지고 있습니다.';
-        return `${head} 반복 오답으로 따로 모아, 다음 수업과 보강에서 개념부터 다시 정리하고 같은 유형까지 책임지고 챙기겠습니다.`;
+        return `${head} 반복 오답으로 따로 모아, 다음 수업과 보강에서 개념부터 다시 정리하고 같은 유형 2~3문항까지 이어서 확인하겠습니다.`;
     }
     if (priorityText) {
-        return `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다. 틀린 원인을 문항마다 짚어, 다음 시험 전까지 확실히 넘어가도록 하겠습니다.`;
+        return `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다. 틀린 원인을 문항마다 짚어, 다음 시험 전까지 다시 볼 문항 목록으로 관리하겠습니다.`;
     }
-    return '틀린 문항은 다음 수업에서 한 번 더 짚고, 부족한 개념은 보강에서 다시 정리해 확실히 넘어가도록 하겠습니다.';
+    return '틀린 문항은 다음 수업에서 한 번 더 짚고, 필요한 개념은 보강에서 다시 정리해 유사 문항으로 확인하겠습니다.';
 }
 
 function reportCenterBuildEasyPlanItems(data, trendData = null) {
@@ -4297,7 +4299,7 @@ function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
         lines.push(excellentNums
             ? `이번 시험은 전 문항을 정확히 풀었습니다. 특히 ${excellentNums}처럼 정답률이 낮았던 문항까지 정확히 해결한 점이 돋보였습니다.`
             : '이번 시험은 전 문항을 정확히 풀었습니다.');
-        lines.push('다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀, 지금의 수준을 안정적으로 이어가겠습니다.');
+        lines.push('다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀, 지금의 정확도를 유지하는지 함께 확인하겠습니다.');
     } else {
         const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
         const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
@@ -4305,7 +4307,7 @@ function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
             ? `이번 오답은 ${unitPhrase} 단원에 주로 나왔습니다. 해당 단원은 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.`
             : '이번에 틀린 문항을 기준으로, 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.');
         if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 처음부터 다시 짚어, 비슷한 문제까지 충분히 연습하겠습니다.');
-        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어 관리하고, 다음 시험 전까지 책임지고 점검하겠습니다.');
+        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어, 다음 시험 전까지 다시 풀 문항과 유사 문항으로 점검하겠습니다.');
     }
     if (teacherMemo) lines.push(`담임 메모는 다음 수업에 반영하겠습니다: ${teacherMemo}`);
     return lines;
@@ -4315,9 +4317,9 @@ function reportCenterBuildEasyParentMessage(data) {
     const studentName = data?.student?.name || '학생';
     const wrongRows = data?.stats?.wrongRows || [];
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n정답률이 낮았던 문항까지 정확히 해결한 만큼, 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n지금의 강점을 이어가도록 저희가 책임지고 지도하겠습니다. 믿고 맡겨 주셔서 감사합니다.`;
+        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n정답률이 낮았던 문항까지 정확히 해결한 만큼, 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n지금의 강점이 이어지도록 수업 안에서 난도 조절과 풀이 점검을 함께 진행하겠습니다. 믿고 맡겨 주셔서 감사합니다.`;
     }
-    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다.\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 부족한 개념은 처음부터 다시 정리해 같은 실수가 반복되지 않도록 유사 유형까지 함께 점검하겠습니다.\n오답 관리와 개념 보강은 저희가 책임지고 수업에서 챙기겠습니다. 믿고 맡겨 주시면 다음 시험까지 차근차근 준비해 나가겠습니다.`;
+    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다.\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 필요한 개념은 처음부터 다시 정리해 같은 유형 2~3문항으로 확인하겠습니다.\n수업에서는 이번 오답을 기준으로 다시 풀 문항과 유사 문항을 묶어 다음 시험까지 차근차근 준비해 나가겠습니다.`;
 }
 
 function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {

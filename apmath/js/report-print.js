@@ -266,7 +266,7 @@ function reportCenterBuildAcademyActionPlan(data, trendData = null, aiAnalysis =
 
 function reportCenterBuildCompactParentMessage(data) {
     const studentName = data?.student?.name || '학생';
-    return `안녕하세요, AP수학입니다. ${studentName} 학생의 이번 시험 결과는 학원에서 다음 수업과 오답 관리에 반영해 책임 있게 이어가겠습니다.`;
+    return `안녕하세요, AP수학입니다. ${studentName} 학생의 이번 시험 결과를 바탕으로 다음 수업에서 다시 풀 문항과 유사 문항을 함께 확인하겠습니다.`;
 }
 
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
@@ -901,11 +901,11 @@ function buildReportCardNextPoint(wrongAnswers, weakUnits) {
     const units = Array.isArray(weakUnits) ? weakUnits.filter(Boolean) : [];
 
     if (!wrongs.length && !units.length) {
-        return '이번 시험은 잘 봤습니다. 다음 단원으로 자신 있게 이어가겠습니다.';
+        return '이번 시험은 전반적으로 잘 마무리했습니다. 다음 단원으로 학습 범위를 넓혀가겠습니다.';
     }
 
     if (!wrongs.length && units.length > 0) {
-        return `이번 시험은 잘 봤습니다. 다음 시간에는 ${units[0]} 단원의 조금 더 어려운 내용까지 이어가겠습니다.`;
+        return `이번 시험은 전반적으로 잘 마무리했습니다. 다음 시간에는 ${units[0]} 단원의 조금 더 어려운 내용까지 이어가겠습니다.`;
     }
 
     const wrongStr = wrongs.length === 1
@@ -913,10 +913,10 @@ function buildReportCardNextPoint(wrongAnswers, weakUnits) {
         : `${wrongs.join('번 · ')}번 문제`;
 
     if (units.length > 0) {
-        return `${wrongStr}의 푸는 과정을 함께 확인하고, ${units[0]} 단원 관련 개념을 비슷한 문제로 한 번 더 정리하겠습니다.`;
+        return `${wrongStr}를 다시 풀면서 풀이 과정을 함께 확인하고, ${units[0]} 단원 관련 개념을 비슷한 문제로 한 번 더 정리하겠습니다.`;
     }
 
-    return `${wrongStr}의 푸는 과정을 함께 확인하고, 다음 단원으로 자신 있게 이어가겠습니다.`;
+    return `${wrongStr}를 다시 풀면서 풀이 과정을 함께 확인하고, 다음 단원 학습으로 이어가겠습니다.`;
 }
 
 function openParentReport(sid) {
@@ -1036,8 +1036,8 @@ function showParentReportModal(ctx) {
     const defaultComment = latest.score >= 90
         ? '꾸준한 노력이 결실을 맺고 있습니다. 이 흐름을 유지해 주세요.'
         : latest.score >= 75
-        ? '전반적으로 안정적인 실력을 보여주고 있습니다. 오답 단원 복습을 통해 더 좋은 결과를 기대합니다.'
-        : '기초 개념 정리에 집중하면 빠른 향상이 가능합니다. 함께 꾸준히 해봅시다.';
+        ? '전반적으로 안정적인 실력을 보여주고 있습니다. 오답 단원은 다음 수업에서 다시 풀 문항으로 묶어 확인하겠습니다.'
+        : '기초 개념 정리가 먼저 필요한 상태입니다. 다음 수업에서는 기본 예제부터 다시 확인하겠습니다.';
 
     const nextPoint = buildReportCardNextPoint(wrongAnswers, weakUnits);
 

@@ -456,8 +456,8 @@ const easySummaryWrong = context.reportCenterBuildEasySummaryText({
   stats: { classAvg: null }
 }, 3, null);
 assert.match(easySummaryWrong, /이번 시험에서는 3문항을 틀렸습니다/);
-assert.match(easySummaryWrong, /틀린 문항은 다음 수업과 보강에서 다시 풀이하고/);
-assert.match(easySummaryWrong, /책임지고 점검하겠습니다/);
+assert.match(easySummaryWrong, /틀린 문항은 다음 수업과 보강에서 다시 풀고/);
+assert.match(easySummaryWrong, /같은 유형 2~3문항으로 한 번 더 확인하겠습니다/);
 assert.doesNotMatch(easySummaryWrong, /확인되었습니다|유의미|시사점/);
 
 const perfectHtml = context.reportCenterBuildCleanPdfDocument('s3', 'p1', { teacherMemo: '' });
@@ -466,7 +466,7 @@ assert.doesNotMatch(perfectHtml, /aprc-pdf-review-panel/, 'perfect report should
 assert.doesNotMatch(perfectHtml, /다음에 꼭 짚어볼 부분/, 'perfect report should hide weakness block');
 assert.doesNotMatch(perfectHtml, /반복 오답 단원은 확인되지 않았습니다|다시 볼 부분이 없습니다/);
 const perfectParentSection = perfectHtml.match(/aprc-pdf-parent-message[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
-assert.match(perfectParentSection, /책임 있게 이어가겠습니다/);
+assert.match(perfectParentSection, /다시 풀 문항과 유사 문항을 함께 확인하겠습니다|난도 조절과 풀이 점검/);
 assert.doesNotMatch(perfectParentSection, /틀린 문제|약점/);
 
 // 전문체 정책: 보완/오답/유사 유형은 의도된 용어이므로 금지 목록에서 제외. AI식 모호어만 금지.
