@@ -3451,6 +3451,43 @@ function reportCenterFormatParentQuestionRate(value) {
     return Number.isFinite(rate) ? `${Math.round(rate)}%` : '-';
 }
 
+function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
+    const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
+    const qNo = row?.questionNo ?? row?.question_no ?? detail?.questionNo ?? detail?.question_no ?? '';
+    const concept = String(reviewData.concept || row?.unit || row?.unitKey || row?.concept || detail?.unit || detail?.concept || '해당 단원').trim();
+    const rate = Number(row?.correctRate ?? detail?.correctRate);
+    const rateText = Number.isFinite(rate) ? `전체 정답률 ${Math.round(rate)}%의 ${reportCenterGetQuestionDifficultyLabel(rate)} 문항` : '난도를 함께 확인해야 하는 문항';
+    const tagText = `${reviewData.tag || row?.tag || ''} ${reportCenterResolveErrorTag(reviewData, Number.isFinite(rate) ? rate : null) || ''}`;
+    const trap = reportCenterTrapReadsNatural(reviewData.trap || '') ? String(reviewData.trap).replace(/[.!?]+$/g, '') : '';
+    const isEasyMiss = Number.isFinite(rate) && rate >= 85;
+    const isHard = Number.isFinite(rate) && rate < 45;
+    const isCondition = isHard || /조건|해석|범위|경계|함수|그래프|활용|부등식|방정식/.test(`${concept} ${tagText}`);
+
+    const core = isEasyMiss
+        ? `${concept}의 기본 풀이를 차분히 마무리해야 하는`
+        : isCondition
+            ? `${concept}에서 조건을 먼저 표시하고 식으로 연결해야 하는`
+            : `${concept} 개념을 문제 상황에 맞게 적용해야 하는`;
+    const meaning = isEasyMiss
+        ? '개념 자체를 모른다기보다 계산 과정, 부호 확인, 답안 마무리 점검에서 흔들린 것'
+        : isHard
+            ? '정답률이 낮은 고난도 문항에서 조건 해석과 활용 흐름을 끝까지 이어가는 과정이 필요했던 것'
+            : isCondition
+                ? '문제의 조건을 식으로 옮기고 범위까지 확인하는 과정에서 흔들린 것'
+                : '개념을 알고 있어도 문제 상황에 적용하는 순서를 정리하는 과정에서 흔들린 것';
+    const trapText = trap ? ` 특히 ${trap} 부분을 다시 확인할 필요가 있습니다.` : '';
+    const plan = isEasyMiss
+        ? '풀이가 끝난 뒤 부호, 계산, 답안 범위를 다시 확인하는 습관까지 함께 점검하겠습니다'
+        : isHard
+            ? '조건을 먼저 표시하고 어떤 식을 세워야 하는지 확인한 뒤, 비슷한 고난도 활용 문항까지 이어서 풀어보겠습니다'
+            : isCondition
+                ? '조건을 먼저 표시하고, 식을 세운 뒤 범위까지 확인하는 순서로 다시 풀어보겠습니다'
+                : '필요한 개념을 먼저 정리하고, 같은 유형의 문항으로 적용 순서를 반복하겠습니다';
+    return reportCenterAssertParentSafe(
+        `${qNo || ''}번은 ${rateText}으로, ${core} 문제였습니다. 이번 오답은 ${meaning}으로 보입니다.${trapText} 다음 수업에서는 ${plan}.`
+    );
+}
+
 function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = {}) {
     const reviewData = reportCenterParseReviewJson?.(row?.reviewText || row?.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const qNo = row?.questionNo ?? row?.question_no ?? detail?.questionNo ?? detail?.question_no ?? '';
