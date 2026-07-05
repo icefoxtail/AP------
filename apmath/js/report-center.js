@@ -2780,6 +2780,26 @@ async function reportCenterOpenBatchPrintView(groupKey, classId = '', studentIds
     toast(`${items.length}명 리포트를 출력 화면으로 열었습니다.`, 'success');
 }
 
+function reportCenterBuildSchoolExamStudentStatusBadges(studentId, session = {}) {
+    const archiveFile = session.archive_file || session.archiveFile || '';
+    const archiveDetails = reportCenterGetCachedArchiveDetails?.(session.id);
+    const archiveText = archiveDetails?.ok
+        ? '문항 원문 로드 완료'
+        : archiveDetails && archiveDetails.ok === false
+        ? '문항 원문 일부 없음'
+        : '문항 원문 불러오는 중';
+    const serverReport = reportCenterGetServerStudentReport(studentId, archiveFile, 'counsel');
+    const savedFields = reportCenterGetSavedCounselFields(studentId, archiveFile);
+    const saveText = serverReport ? '서버 저장본 적용' : savedFields ? '로컬 임시 저장' : '로컬 기본 리포트';
+    const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    const aiText = ai && reportCenterIsPremiumAiSource(ai.source) ? '프리미엄 분석 적용' : '기본 문구 사용 중';
+    return `
+        <div class="aprc-student-status-badges" data-report-student-status-badges="1" style="display:flex; gap:6px; flex-wrap:wrap;">
+            ${[archiveText, saveText, aiText].map(text => `<span class="aprc-student-status-badge" style="display:inline-flex; align-items:center; min-height:26px; padding:4px 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary); font-size:11px; font-weight:900;">${reportCenterEscape(text)}</span>`).join('')}
+        </div>
+    `;
+}
+
 function reportCenterBuildStudentView(studentId, archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
     const sessions = Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [];
@@ -2813,10 +2833,12 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
     const originalQuestionHtml = '<div id="report-center-archive-details"></div>';
     const premiumAi = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
     const premiumActive = !!(premiumAi && reportCenterIsPremiumAiSource(premiumAi.source));
+    const statusBadges = reportCenterBuildSchoolExamStudentStatusBadges(studentId, session);
     return `
         <div data-report-drilldown-level="student" style="display:flex; flex-direction:column; gap:12px;">
             <span data-report-preload-student="${reportCenterAttr(studentId)}" data-report-preload-archive-session="${reportCenterAttr(session.id)}" style="display:none;"></span>
             <button class="aprc-back-btn" type="button" onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(archiveKey)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">← 반/학생 선택</button>
+            ${statusBadges}
             ${detailedReport}
             <details style="padding:0;">
                 <summary style="cursor:pointer; min-height:38px; padding:9px 12px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); font-size:14px; font-weight:900; color:var(--text);">간단 리포트 보기</summary>
@@ -3838,12 +3860,15 @@ async function reportCenterRequestSchoolExamAiAnalysis(studentId, sessionId, but
         const analysis = reportCenterNormalizeAiAnalysis(r.analysis || r.data || r);
         analysis.source = 'ai';
         reportCenterSetCachedAiAnalysis(sessionId, analysis);
-        reportCenterSyncStudentReportToServer(data.session.archive_file || data.session.archiveFile || '', data.student.id || studentId, {
+        const syncResult = await reportCenterSyncStudentReportToServer(data.session.archive_file || data.session.archiveFile || '', data.student.id || studentId, {
             report_type: 'counsel',
             session_id: data.session.id || sessionId,
             ai_json: analysis
         });
-        toast('프리미엄 분석을 학생별로 저장했습니다.', 'success');
+        toast(syncResult
+            ? '프리미엄 분석을 생성하고 서버에 저장했습니다.'
+            : '프리미엄 분석은 적용했습니다. 서버 저장은 실패해 로컬 캐시로 유지됩니다.',
+            syncResult ? 'success' : 'warn');
         if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
     } catch (e) {
         console.error('[reportCenterRequestSchoolExamAiAnalysis] failed:', e);
@@ -3984,7 +4009,7 @@ function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, option
     `;
 }
 
-function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
+async function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
     const fields = {};
     document.querySelectorAll('[data-report-counsel-field]').forEach(el => {
         fields[el.getAttribute('data-report-counsel-field')] = String(el.value || '').trim();
@@ -3994,13 +4019,18 @@ function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
     reports[String(studentId)] = fields;
     reportCenterUpsertExamMeta(archiveFile, { counsel_reports: JSON.stringify(reports) });
     const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
-    reportCenterSyncStudentReportToServer(archiveFile, studentId, {
+    const syncResult = await reportCenterSyncStudentReportToServer(archiveFile, studentId, {
         report_type: 'counsel',
         session_id: session?.id || '',
         fields_json: fields
     });
     reportCenterSetCounselEditMode(studentId, archiveFile, false);
-    if (typeof toast === 'function') toast('상담 리포트 수정 내용을 저장했습니다.', 'success');
+    if (typeof toast === 'function') {
+        toast(syncResult
+            ? '상담 리포트를 서버에 저장했습니다.'
+            : '서버 저장은 실패했습니다. 이 화면에는 로컬 임시 저장되었습니다.',
+            syncResult ? 'success' : 'warn');
+    }
     if (typeof openReportCenterModal === 'function' && typeof document?.getElementById === 'function') openReportCenterModal(studentId);
     return fields;
 }
