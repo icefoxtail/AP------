@@ -1802,9 +1802,16 @@ function reportCenterInternalMenuHtml(studentId, activeMenu = 'schoolExam') {
 }
 
 function openReportCenterHome(options = {}) {
+    reportCenterExitSchoolExamPrintMode();
     const studentId = options.studentId || '';
     reportCenterNavTo('list', { archiveFile: '', studentId });
     reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
+}
+
+function reportCenterExitSchoolExamPrintMode() {
+    if (typeof document !== 'undefined' && document.body?.classList) {
+        document.body.classList.remove('aprc-school-print-mode');
+    }
 }
 
 function reportCenterBuildExamHubList() {
@@ -3645,7 +3652,7 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data));
     const parentText = (isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildCompactParentMessage(data);
     const premiumBadge = isPremium
-        ? ' <span style="padding:2px 8px; border-radius:999px; background:rgba(26,92,255,0.1); color:var(--primary); font-size:11px; font-weight:900;">프리미엄 분석 적용</span>'
+        ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
         : '';
     return `
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
@@ -3738,12 +3745,12 @@ function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, 
     }
     const archiveFile = session.archive_file || session.archiveFile || '';
     return `
-        <main class="aprc-pdf-document aprc-school-exam-detail-print" data-report-school-exam-print="detail">
-            <header class="aprc-pdf-header">
+        <main class="aprc-school-detail-document" data-report-school-exam-print="detail">
+            <header class="aprc-school-detail-head">
                 <div>
-                    <div class="aprc-brand">AP MATH REPORT</div>
-                    <div class="aprc-title">학교시험 상세 리포트</div>
-                    <div class="aprc-subtitle">틀린 문제와 다음 수업 계획을 함께 정리합니다.</div>
+                    <div class="aprc-school-detail-brand">AP MATH REPORT</div>
+                    <h1>학교시험 상세 리포트</h1>
+                    <p>틀린 문제와 다음 수업 계획을 함께 정리합니다.</p>
                 </div>
             </header>
             ${reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, {
@@ -3758,7 +3765,7 @@ function reportCenterBuildSchoolExamDetailedPrintShell(bodyHtml) {
     return `
         <div id="report-print-view" class="report-print-view report-center-school-exam-print-view">
             <div class="report-print-toolbar no-print">
-                <button class="btn" type="button" onclick="openReportCenterHome()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">리포트 센터</button>
+                <button class="btn" type="button" onclick="reportCenterExitSchoolExamPrintMode(); openReportCenterHome()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">리포트 센터</button>
                 <button class="btn btn-primary" type="button" onclick="window.print()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
             </div>
             <div class="report-print-stage" id="report-print-document-root">${bodyHtml}</div>
@@ -3779,7 +3786,8 @@ async function reportCenterOpenSchoolExamDetailedPrintView(studentId, sessionId 
         archiveDetails = await reportCenterFetchArchiveQuestionDetails(data.session);
     }
     const root = document.getElementById('app-root') || document.body;
-    document.querySelectorAll('#report-center-wide-overlay, .report-center-wide-overlay, .wide-overlay').forEach(el => el.remove());
+    document.querySelectorAll('#report-center-wide-overlay, .report-center-wide-overlay, .wide-overlay, .modal-backdrop').forEach(el => el.remove());
+    if (document.body?.classList) document.body.classList.add('aprc-school-print-mode');
     root.innerHTML = reportCenterBuildSchoolExamDetailedPrintShell(
         reportCenterBuildSchoolExamDetailedPrintDocument(studentId, data.session.id, { archiveDetails })
     );
@@ -5569,6 +5577,78 @@ function reportCenterInjectPrintViewStyle() {
             padding-bottom:24px;
         }
 
+        .report-center-school-exam-print-view {
+            background:#eef2f7;
+            min-height:100vh;
+        }
+
+        .report-center-school-exam-print-view .report-print-toolbar {
+            position:sticky;
+            top:0;
+            z-index:20;
+        }
+
+        .report-center-school-exam-print-view .report-print-stage {
+            max-width:210mm;
+            margin:0 auto;
+            padding:16mm 0;
+            overflow:visible;
+        }
+
+        .aprc-school-detail-document {
+            width:186mm;
+            margin:0 auto;
+            background:#fff;
+            color:#111827;
+            padding:14mm;
+            box-sizing:border-box;
+        }
+
+        .aprc-school-detail-head {
+            position:relative;
+            display:block;
+            padding-bottom:6mm;
+            margin-bottom:8mm;
+            border-bottom:2px solid #111827;
+            break-inside:avoid;
+            page-break-inside:avoid;
+        }
+
+        .aprc-school-detail-head .aprc-school-detail-brand,
+        .aprc-school-detail-head .aprc-brand {
+            font-size:11px;
+            line-height:1.2;
+            font-weight:900;
+            color:#1d4ed8;
+            letter-spacing:0;
+        }
+
+        .aprc-school-detail-head h1,
+        .aprc-school-detail-head .aprc-title {
+            margin:2mm 0 1.5mm;
+            font-size:22px;
+            line-height:1.25;
+            font-weight:900;
+            color:#111827;
+        }
+
+        .aprc-school-detail-head p,
+        .aprc-school-detail-head .aprc-subtitle {
+            margin:0;
+            line-height:1.5;
+            color:#475569;
+            font-weight:700;
+        }
+
+        .aprc-school-detail-premium-badge {
+            padding:2px 8px;
+            border-radius:999px;
+            background:rgba(26,92,255,0.1);
+            color:var(--primary);
+            font-size:11px;
+            font-weight:900;
+        }
+
         .report-studio-shell {
             display:block;
             max-width:100%;
@@ -5876,7 +5956,11 @@ function reportCenterInjectPrintViewStyle() {
 
         @media print {
             .no-print,
-            .report-print-toolbar {
+            .report-print-toolbar,
+            .app-header,
+            .mobile-header,
+            .topbar,
+            #report-center-wide-overlay {
                 display:none !important;
             }
 
@@ -5899,11 +5983,33 @@ function reportCenterInjectPrintViewStyle() {
                 padding:0 !important;
             }
 
+            .report-center-school-exam-print-view,
+            .report-center-school-exam-print-view .report-print-stage {
+                background:#fff !important;
+                padding:0 !important;
+                margin:0 !important;
+            }
+
             .report-print-stage .aprc-pdf-document {
                 width:100% !important;
                 max-width:186mm !important;
                 margin:0 auto !important;
                 padding:0 !important;
+            }
+
+            .aprc-school-detail-document {
+                width:100% !important;
+                max-width:186mm !important;
+                padding:0 !important;
+                margin:0 auto !important;
+            }
+
+            .aprc-school-detail-head,
+            .aprc-counsel-section,
+            .aprc-qreview-card,
+            .aprc-parent-question-card {
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
             }
 
             .report-center-batch-page {
