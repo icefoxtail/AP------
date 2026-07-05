@@ -3392,7 +3392,7 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
 
     const headline = rate === null
         ? (concept ? `${concept} 적용 과정을 확인하는 문항입니다.` : '핵심 개념 적용을 확인하는 문항입니다.')
-        : rate >= 85 ? '대부분의 학생이 해결한 기본 문항입니다.'
+        : rate >= 85 ? `전체 정답률 ${rate}%로 대부분 맞힌 기본 문항입니다.`
         : rate >= 65 ? '기본 개념은 잡혀 있어도 풀이 순서에서 실수가 나올 수 있는 문항입니다.'
         : rate >= 45 ? '전체적으로도 쉽지 않았던 적용 문항입니다.'
         : `전체 정답률 ${rate}%의 매우 어려운 최상위 문항입니다.`;
@@ -3404,13 +3404,13 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
             : '';
 
     const meaningByTag = {
-        calc: '대부분의 학생이 해결한 문항이기 때문에 개념 부족보다는 계산, 부호, 마지막 검산 과정에서 실수가 있었을 가능성이 큽니다.',
+        calc: '대부분의 학생이 해결한 문항이기 때문에 개념 부족보다는 계산과 마무리 확인, 부호 검산 과정에서 실수가 있었을 가능성이 큽니다.',
         order: '개념은 알고 있어도 어느 단계부터 정리할지 흔들리면 감점될 수 있는 문항입니다.',
         condition: '조건을 식으로 옮기고 범위를 끝까지 확인하는 과정이 핵심이었습니다.',
         concept: '해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.'
     };
     const actionByTag = {
-        calc: '다음 수업에서는 풀이 마지막 확인 습관과 부호 검산을 바로 점검하겠습니다.',
+        calc: '다음 수업에서는 풀이 후 검산 습관과 부호 확인을 바로 점검하겠습니다.',
         order: '같은 유형을 짧게 반복해 풀이 순서를 안정적으로 잡겠습니다.',
         condition: '조건을 먼저 정리하고 식을 세우는 첫 단계를 다시 연습하겠습니다.',
         concept: '기본 개념을 다시 확인한 뒤 유사 문항에 적용하는 연습을 진행하겠습니다.'
@@ -3430,7 +3430,7 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
         : '';
     const meaning = meaningByTag[tag] || '다음 수업에서 풀이 시작점을 함께 확인하겠습니다.';
     const action = (rate !== null && rate < 45)
-        ? `최상위 난도 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다.${keywordAction}`
+        ? `최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다.${keywordAction}`
         : `${actionByTag[tag] || '같은 유형을 다음 수업에서 다시 풀이하며 확인하겠습니다.'}${keywordAction}`;
 
     const clean = value => reportCenterAssertParentSafe(reportCenterNormalizeMathText(String(value || '')))
