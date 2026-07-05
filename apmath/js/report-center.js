@@ -1848,8 +1848,8 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
     const unitCounts = new Map();
     const difficultyCounts = new Map();
     blueprints.forEach(bp => {
-        const unit = String(bp.unit || bp.unit_name || bp.chapter || '단원 미지정').trim();
-        const difficulty = String(bp.difficulty || bp.level || '난도 미지정').trim();
+        const unit = String(bp.standard_unit || bp.standardUnit || bp.unit || bp.unit_name || bp.chapter || '단원 미지정').trim();
+        const difficulty = String(bp.difficulty || bp.level || bp.question_level || '난도 미지정').trim();
         unitCounts.set(unit, (unitCounts.get(unit) || 0) + 1);
         difficultyCounts.set(difficulty, (difficultyCounts.get(difficulty) || 0) + 1);
     });
@@ -2591,6 +2591,12 @@ function reportCenterTrapReadsNatural(text) {
 function reportCenterBuildParentSafeQuestionComment(row = {}, detail = null, opts = {}) {
     const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const concept = reviewData.concept || row.concept || detail?.concept || row.unit || row.unitKey || detail?.unit || '해당 단원';
+    if (opts?.mode === 'short') {
+        const shortText = row.short || row.shortComment || row.diagnosisShort || detail?.short || detail?.shortComment || detail?.diagnosisShort || '';
+        const conceptText = concept && concept !== '해당 단원' ? String(concept).trim() : '';
+        const joined = [shortText, conceptText].filter(Boolean).join(' · ');
+        if (joined) return reportCenterAssertParentSafe(reportCenterNormalizeMathText(joined));
+    }
     const rawTrap = reportCenterLooksLikeCodeText(reviewData.trap || '') ? '' : String(reviewData.trap || '').trim();
     const trap = reportCenterTrapReadsNatural(rawTrap) ? rawTrap : '';
     const base = reportCenterBuildParentQuestionInsight({ ...row, ...reviewData, unit: concept }, detail, opts);

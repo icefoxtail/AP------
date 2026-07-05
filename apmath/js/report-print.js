@@ -33,7 +33,7 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false, detailed =
     return displayRows.map(row => {
         // 표 '해석' 칸은 짧은 진단(명사구). 정화기를 거치지 않아 전문체 그대로 출력된다.
         const insight = detailed
-            ? (row.meaning || reportCenterBuildParentQuestionInsight(row, detailMap?.get(String(row.questionNo)), { mode: 'short' }))
+            ? (reportCenterBuildParentSafeQuestionComment(row, detailMap?.get(String(row.questionNo)), { mode: 'short' }) || row.meaning || '-')
             : (row.meaning || '-');
         return `
             <tr>
