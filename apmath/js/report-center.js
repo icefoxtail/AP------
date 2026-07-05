@@ -3536,15 +3536,15 @@ function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
         lower: {
             positiveAnchor: '이번 평가는 점수 자체보다 앞으로 어떤 부분을 먼저 정리하면 좋을지 확인하는 자료로 보시면 좋겠습니다.',
             teacherCareMessage: '학원에서는 확인할 문항을 차근차근 다시 살펴보며 조건 확인과 계산 검산 습관을 잡아가겠습니다.',
-            parentReassurance: '가정에서는 문제를 많이 다시 풀리기보다 풀이 흔적을 가볍게 확인해 주시면 충분합니다.'
+            parentReassurance: '가정에서는 문제를 많이 다시 풀게 하기보다 풀이 흔적을 가볍게 확인해 주시면 충분합니다.'
         },
         middle: {
-            positiveAnchor: '지금의 학습 상태를 유지하면서 다시 확인할 부분을 줄이면 더 안정적인 결과로 이어질 수 있습니다.',
+            positiveAnchor: '지금의 학습 상태를 유지하면서 실수로 이어지는 부분을 줄이면 더 안정적인 결과로 이어질 수 있습니다.',
             teacherCareMessage: '학원에서는 확인할 문항을 다시 살펴보며 조건 해석과 식 정리를 함께 점검하겠습니다.',
             parentReassurance: '가정에서는 아이가 문제를 풀고 난 뒤 답을 한 번 더 확인하는 습관만 편하게 격려해 주시면 좋겠습니다.'
         },
         high: {
-            positiveAnchor: '현재 성취를 바탕으로 심화 확장까지 자연스럽게 이어갈 수 있습니다.',
+            positiveAnchor: '현재 성취를 바탕으로 심화 유형까지 자연스럽게 이어갈 수 있습니다.',
             teacherCareMessage: '학원에서는 현재의 좋은 결과를 유지하면서 심화 유형과 서술형 풀이까지 확장하겠습니다.',
             parentReassurance: '가정에서는 아이가 풀이 과정을 짧게 설명해보는 습관을 편하게 격려해 주시면 좋겠습니다.'
         },
@@ -3576,7 +3576,9 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const rateText = Number.isFinite(priorityRate) ? `정답률이 ${Math.round(priorityRate)}%` : '정답률 확인 대상';
     const wrongText = wrongRows.length
         ? `이번 리포트에서는 ${wrongRows.length}개 오답 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 우선 문항으로 잡아 설명드리겠습니다`
-        : '오답 문항은 많지 않지만 풀이 과정과 답안 마무리는 한 번 더 살펴보겠습니다';
+        : toneSeed.band === 'perfect'
+            ? '이번 리포트에서는 현재 강점과 다음 확장 방향을 중심으로 안내드리겠습니다'
+            : '오답 문항은 많지 않지만 풀이 과정과 답안 마무리는 한 번 더 살펴보겠습니다';
     const actionItems = typeof reportCenterBuildAcademyActionPlan === 'function'
         ? reportCenterBuildAcademyActionPlan(data)
         : [];
@@ -3585,8 +3587,12 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const planSentence = planText.replace(/[.。]\s*$/, '');
     const wrongFocus = wrongRows.length
         ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}였던 문항은 문제의 조건을 정리하고 식으로 연결하는 과정을 다시 볼 필요가 있습니다.`
-        : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
-    const supportText = wrongRows.some(row => Number(row.correctRate) >= 85)
+        : toneSeed.band === 'perfect'
+            ? '이번 결과는 다음 단원으로 넘어가기 전에 정확도와 풀이 완성도를 함께 확인하는 자료로 활용하겠습니다.'
+            : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
+    const supportText = !wrongRows.length
+        ? '현재 정확도를 유지하면서 난도를 높이는 방향으로 이어가겠습니다.'
+        : wrongRows.some(row => Number(row.correctRate) >= 85)
         ? '정답률이 높은 문항에서의 실점은 개념 부족보다는 계산, 부호, 검산 과정의 실수 가능성이 커서 풀이 후 확인 습관을 함께 잡겠습니다.'
         : wrongRows.some(row => Number(row.correctRate) < 45)
             ? '정답률이 낮은 고난도 문항은 다음 시험 대비 과정에서 조건 정리와 활용 문제 훈련으로 따로 이어가겠습니다.'
