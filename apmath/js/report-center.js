@@ -3532,9 +3532,17 @@ function reportCenterResolveAiParentToneBand(data = {}, selectedWrongRows = []) 
 
 function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
     const band = reportCenterResolveAiParentToneBand(data, selectedWrongRows);
+    const reportType = reportCenterResolveParentReportType(data);
+    const examTitle = String(data?.session?.exam_title || data?.session?.examTitle || '');
+    const resultLabel = /기출/.test(examTitle) ? '이번 학교 기출시험 결과' : '이번 시험 결과';
+    const lowerAnchor = reportType === 'schoolPastExamResult'
+        ? `${resultLabel}는 점수와 함께 실제 내신에서 먼저 보완해야 할 부분을 보여주는 자료로 보시면 좋겠습니다.`
+        : reportType === 'internalAssessment'
+            ? '이번 원내평가는 점수 자체보다 중학교 수학의 풀이 방식에 얼마나 적응하고 있는지 확인하는 자료로 보시면 좋겠습니다.'
+            : '이번 평가는 점수 자체보다 앞으로 어떤 부분을 먼저 정리하면 좋을지 확인하는 자료로 보시면 좋겠습니다.';
     const seeds = {
         lower: {
-            positiveAnchor: '이번 평가는 점수 자체보다 앞으로 어떤 부분을 먼저 정리하면 좋을지 확인하는 자료로 보시면 좋겠습니다.',
+            positiveAnchor: lowerAnchor,
             teacherCareMessage: '학원에서는 확인할 문항을 차근차근 다시 살펴보며 조건 확인과 계산 검산 습관을 잡아가겠습니다.',
             parentReassurance: '가정에서는 문제를 많이 다시 풀게 하기보다 풀이 흔적을 가볍게 확인해 주시면 충분합니다.'
         },
@@ -3605,6 +3613,8 @@ function reportCenterResolveGradeStage(data = {}) {
 function reportCenterBuildLongTermPlanMessage(data = {}, toneBand = 'middle', reportType = 'schoolPastExamResult') {
     const gradeStage = reportCenterResolveGradeStage(data);
     const isInternal = reportType === 'internalAssessment';
+    const examTitle = String(data?.session?.exam_title || data?.session?.examTitle || '');
+    const resultLabel = /기출/.test(examTitle) ? '이번 학교 기출시험 결과' : '이번 시험 결과';
     const bandPlans = {
         lower: {
             middle3: '고등 선행을 빠르게 나가기보다 중등 핵심 단원의 빈틈을 줄여 고등 수학을 버틸 수 있는 기본기를 만드는 것이 우선입니다.',
@@ -3638,7 +3648,7 @@ function reportCenterBuildLongTermPlanMessage(data = {}, toneBand = 'middle', re
     }
     if (gradeStage === 'middle3') {
         const bandText = band.middle3 || bandPlans.middle.middle3;
-        return `앞으로의 관리 방향도 함께 말씀드리면, 중3 과정은 고등 수학으로 넘어가기 전 마지막 정리 시기입니다. 이번 학교 기출시험 결과를 기준으로 현재의 정확도와 풀이 안정성을 확인하고, 고등 내신에서 필요한 조건 해석, 식 전개, 서술형 답안 완성도까지 이어질 수 있도록 관리하겠습니다. ${bandText}`;
+        return `앞으로의 관리 방향도 함께 말씀드리면, 중3 과정은 고등 수학으로 넘어가기 전 마지막 정리 시기입니다. ${resultLabel}를 기준으로 현재의 정확도와 풀이 안정성을 확인하고, 고등 내신에서 필요한 조건 해석, 식 전개, 서술형 답안 완성도까지 이어질 수 있도록 관리하겠습니다. ${bandText}`;
     }
     if (gradeStage === 'high1') {
         const bandText = band.high || bandPlans.middle.high;
@@ -3666,6 +3676,9 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const scoreText = Number.isFinite(score) ? `${score}점` : '점수 확인이 필요한 결과';
     const examTitle = session.exam_title || session.examTitle || '이번 시험';
     const positionText = reportCenterBuildScorePositionText({ ...data, session, stats });
+    const positionSentence = /부족/.test(positionText)
+        ? positionText
+        : `동일 평가 기준으로 보면 ${positionText}입니다.`;
     const toneSeed = reportCenterGetAiParentToneSeed(data, wrongRows);
     const reportType = reportCenterResolveParentReportType(data);
     const longTermPlan = reportCenterBuildLongTermPlanMessage(data, toneSeed.band, reportType);
@@ -3691,19 +3704,19 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
             ? '이번 결과는 다음 단원으로 넘어가기 전에 정확도와 풀이 완성도를 함께 확인하는 자료로 활용하겠습니다.'
             : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
     const supportText = !wrongRows.length
-        ? '현재 정확도를 유지하면서 난도를 높이는 방향으로 이어가겠습니다.'
+        ? '또한 낯선 유형에서 풀이 과정을 설명하는 연습도 함께 보겠습니다.'
         : wrongRows.some(row => Number(row.correctRate) >= 85)
         ? '정답률이 높은 문항에서의 실점은 개념 부족보다는 계산, 부호, 검산 과정의 실수 가능성이 커서 풀이 후 확인 습관을 함께 잡겠습니다.'
         : wrongRows.some(row => Number(row.correctRate) < 45)
             ? '정답률이 낮은 고난도 문항은 다음 시험 대비 과정에서 조건 정리와 활용 문제 훈련으로 따로 이어가겠습니다.'
             : '이번 오답은 조건을 정리하고 풀이 순서를 끝까지 이어가는 연습으로 충분히 보완할 수 있는 지점입니다.';
-    return reportCenterAssertParentSafe([
-        `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했습니다. 이번 시험 위치는 ${positionText}입니다.`,
+    return [
+        `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했습니다. ${positionSentence}`,
         `${toneSeed.positiveAnchor} ${wrongFocus} ${wrongText}.`,
         `다음 수업에서는 ${planSentence}. ${supportText} ${toneSeed.teacherCareMessage}`,
         toneSeed.parentReassurance,
         longTermPlan
-    ].filter(Boolean).join('\n\n'));
+    ].filter(Boolean).map(paragraph => reportCenterAssertParentSafe(paragraph)).join('\n\n');
 }
 
 function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = {}) {
