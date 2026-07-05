@@ -271,11 +271,11 @@ function reportCenterBuildCompactParentMessage(data) {
         ? reportCenterGetAiParentToneSeed(data, wrongRows)
         : null;
     const careText = toneSeed?.band === 'lower'
-        ? '조건 확인과 계산 검산 습관을 잡고'
+        ? '조건 확인과 계산 검산 습관을 잡으며'
         : toneSeed?.band === 'high' || toneSeed?.band === 'perfect'
-            ? '심화 유형과 서술형 풀이까지 확장하며'
-            : '조건 해석과 식 정리를 함께 점검하고';
-    return `안녕하세요, AP수학입니다. ${studentName} 학생의 이번 시험 결과를 바탕으로 ${careText} 난도 조절과 풀이 점검도 함께 진행하겠습니다.`;
+            ? '심화 유형과 서술형 풀이로 확장하며'
+            : '조건 해석과 식 정리를 점검하며';
+    return `안녕하세요, AP수학입니다. ${studentName} 학생의 이번 시험 결과를 바탕으로 ${careText} 수업 난도 조절과 풀이 점검을 함께 진행하겠습니다.`;
 }
 
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {

@@ -45,7 +45,7 @@ assert.match(parentMessage, /이차함수와 그래프/);
 assert.match(parentMessage, /정답률이 63%/);
 assert.match(parentMessage, /다음 수업에서는/);
 assert.match(parentMessage, /조건|계산|검산/);
-assert.match(parentMessage, /다시 확인할 부분을 줄이면 더 안정적인 결과/);
+assert.match(parentMessage, /실수로 이어지는 부분을 줄이면 더 안정적인 결과/);
 assert.match(parentMessage, /조건 해석과 식 정리/);
 assert.doesNotMatch(parentMessage, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이|로 확인됩니다|문항였던 문항|책임 있게 이어가겠습니다/);
 
@@ -64,7 +64,7 @@ const lowerData = {
 const lowerMessage = context.reportCenterBuildRichParentMessage(lowerData, lowerData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(lowerData, lowerData.stats.wrongRows), 'lower');
 assert.match(lowerMessage, /점수 자체보다 앞으로 어떤 부분을 먼저 정리/);
-assert.match(lowerMessage, /문제를 많이 다시 풀리기보다 풀이 흔적/);
+assert.match(lowerMessage, /문제를 많이 다시 풀게 하기보다 풀이 흔적/);
 
 const highData = {
   student: { id: 's3', name: '상위권' },
@@ -76,7 +76,7 @@ const highData = {
 };
 const highMessage = context.reportCenterBuildRichParentMessage(highData, highData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(highData, highData.stats.wrongRows), 'high');
-assert.match(highMessage, /심화 확장/);
+assert.match(highMessage, /심화 유형/);
 assert.match(highMessage, /풀이 과정을 짧게 설명/);
 
 const perfectData = {
@@ -88,5 +88,6 @@ const perfectMessage = context.reportCenterBuildRichParentMessage(perfectData, p
 assert.equal(context.reportCenterResolveAiParentToneBand(perfectData, perfectData.stats.wrongRows), 'perfect');
 assert.match(perfectMessage, /전 문항을 정확히 해결/);
 assert.match(perfectMessage, /충분히 칭찬/);
+assert.doesNotMatch(perfectMessage, /오답/);
 
 console.log('report parent message rich test passed');
