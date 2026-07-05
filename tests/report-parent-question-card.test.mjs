@@ -67,9 +67,13 @@ assert.match(card, /서술형/);
 assert.match(card, /4점/);
 assert.match(card, /전체 정답률 32%/);
 assert.match(card, /반 정답률 25%/);
-assert.match(card, /학부모 해석/);
-assert.match(card, /이번 오답 의미/);
-assert.match(card, /다음 수업 계획/);
+assert.match(card, /aprc-parent-question-comment/);
+assert.match(card, /8번은/);
+assert.match(card, /이번 오답은/);
+assert.match(card, /다음 수업에서는/);
+assert.doesNotMatch(card, /학부모 해석/);
+assert.doesNotMatch(card, /이번 오답 의미/);
+assert.doesNotMatch(card, /다음 수업 계획/);
 assert.match(card, /실제 문항/);
 assert.match(card, /x의 값을 구하시오/);
 assert.match(card, /x=1/);
@@ -97,9 +101,7 @@ assert.doesNotMatch(report, /aprc-qreview-card/);
 const firstCard = report.slice(report.indexOf('aprc-parent-question-card'));
 const order = [
   firstCard.indexOf('aprc-parent-question-head'),
-  firstCard.indexOf('학부모 해석'),
-  firstCard.indexOf('이번 오답 의미'),
-  firstCard.indexOf('다음 수업 계획'),
+  firstCard.indexOf('aprc-parent-question-comment'),
   firstCard.indexOf('실제 문항')
 ];
 assert.deepEqual([...order].sort((a, b) => a - b), order);
