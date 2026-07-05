@@ -99,7 +99,22 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
 
     // 저장된 분석: JSON이면 필드별로, 아니면 통짜 텍스트(또는 문구 뱅크 폴백)로 렌더.
     let reviewSectionHtml = '';
-    if (reviewData) {
+    if (options.parentNarrative && typeof reportCenterBuildParentQuestionNarrative === 'function') {
+        // 학부모 모드: 선생님용 raw(묻는것/함정/풀이) 대신 3블록 서술로 재구성
+        const narrative = reportCenterBuildParentQuestionNarrative(source, source);
+        const block = (label, text) => text
+            ? `<div class="aprc-qreview-line"><b>${label}</b> ${reportCenterEscape(text)}</div>`
+            : '';
+        const body = [
+            block('학부모 해석', [narrative.headline, narrative.reason].filter(Boolean).join(' ')),
+            block('이번 오답 의미', narrative.meaning),
+            block('다음 수업 계획', narrative.action)
+        ].filter(Boolean).join('');
+        if (body) reviewSectionHtml = `
+            <section class="aprc-qreview-block aprc-qreview-review">
+                ${body}
+            </section>`;
+    } else if (reviewData) {
         const line = (label, val) => val
             ? `<div class="aprc-qreview-line"><b>${label}</b> ${reportCenterEscape(reportCenterNormalizeMathText(val))}</div>`
             : '';
@@ -132,7 +147,13 @@ function reportCenterBuildQuestionReviewCard(review, opts = {}) {
         <article class="aprc-qreview-card${options.anonymized ? ' is-anonymized' : ''}">
             <header class="aprc-qreview-head">
                 <div class="aprc-qreview-title">${reportCenterEscape(title)}</div>
-                ${options.badge ? `<div class="aprc-qreview-badge">${reportCenterEscape([level || '자료 부족', tagText].filter(Boolean).join(' · '))}</div>` : ''}
+                ${options.badge ? (() => {
+                    // 학부모 모드: 값 없으면 뱃지 생략('자료 부족' 같은 내부 표기 노출 금지)
+                    const badgeText = options.parentNarrative
+                        ? [level, tagText].filter(Boolean).join(' · ')
+                        : [level || '자료 부족', tagText].filter(Boolean).join(' · ');
+                    return badgeText ? `<div class="aprc-qreview-badge">${reportCenterEscape(badgeText)}</div>` : '';
+                })() : ''}
             </header>
             ${conceptText ? `<div class="aprc-qreview-concept">${conceptText}</div>` : ''}
             ${rateItems ? `<div class="aprc-qreview-rates">${rateItems}</div>` : ''}
@@ -188,7 +209,8 @@ function reportCenterBuildQuestionReviewCardsForReport(data, opts = {}) {
             showContent: opts.showContent !== false,
             showSolution: opts.showSolution !== false,
             showTeach: opts.showTeach !== false,
-            anonymized: !!opts.anonymized
+            anonymized: !!opts.anonymized,
+            parentNarrative: !!opts.parentNarrative
         });
     }).join('');
 }
