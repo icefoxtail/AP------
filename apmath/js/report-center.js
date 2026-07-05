@@ -2276,6 +2276,7 @@ function reportCenterEnsureExamAnalysisTableEvents() {
 
 function reportCenterBuildExamDashboard(studentId, archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    reportCenterLoadStudentReportsFromServer(archiveKey);
     const group = reportCenterGetSchoolExamGroupByKey(archiveFile) || reportCenterGetSchoolExamGroupByKey(archiveKey);
     const hub = reportCenterBuildExamHubList().find(row => row.archiveFile === archiveKey) || { archiveFile: archiveKey, title: archiveKey, takers: 0, reviewCount: 0, blueprintCount: 0 };
     const reviews = reportCenterGetExamReviews(archiveKey);
@@ -2887,6 +2888,107 @@ function reportCenterSetCachedAiAnalysis(sessionId, payload) {
     return normalized;
 }
 
+function reportCenterStudentReportSyncStore() {
+    window.AP_REPORT_STUDENT_REPORT_SYNC = window.AP_REPORT_STUDENT_REPORT_SYNC || {};
+    return window.AP_REPORT_STUDENT_REPORT_SYNC;
+}
+
+function reportCenterNormalizeJsonPayload(value) {
+    if (value === undefined) return undefined;
+    if (value === null) return null;
+    return typeof value === 'string' ? value : JSON.stringify(value);
+}
+
+async function reportCenterSyncStudentReportToServer(archiveFile, studentId, patch = {}) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!archiveKey || !studentId) return null;
+    if (typeof api === 'undefined' || !api || typeof api.post !== 'function') return null;
+    const body = {
+        archive_file: archiveKey,
+        student_id: String(studentId),
+        report_type: patch.report_type || patch.reportType || 'counsel'
+    };
+    if (patch.session_id || patch.sessionId) body.session_id = patch.session_id || patch.sessionId;
+    if (Object.prototype.hasOwnProperty.call(patch, 'fields_json') || Object.prototype.hasOwnProperty.call(patch, 'fieldsJson')) {
+        body.fields_json = reportCenterNormalizeJsonPayload(patch.fields_json ?? patch.fieldsJson);
+    }
+    if (Object.prototype.hasOwnProperty.call(patch, 'ai_json') || Object.prototype.hasOwnProperty.call(patch, 'aiJson')) {
+        body.ai_json = reportCenterNormalizeJsonPayload(patch.ai_json ?? patch.aiJson);
+    }
+    try {
+        return await api.post('exams/student-reports', body);
+    } catch (e) {
+        console.warn('[reportCenterSyncStudentReportToServer] failed:', e);
+        return null;
+    }
+}
+
+function reportCenterUpsertStudentReportRows(rows = []) {
+    if (!state.db) state.db = {};
+    const existing = Array.isArray(state.db.exam_student_reports) ? state.db.exam_student_reports : [];
+    const byKey = new Map(existing.map(row => [`${reportCenterNormalizeExamAnalysisArchiveKey(row.archive_file || row.archiveFile || '')}::${row.student_id || row.studentId || ''}::${row.report_type || row.reportType || 'counsel'}`, row]));
+    rows.forEach(row => {
+        const key = `${reportCenterNormalizeExamAnalysisArchiveKey(row.archive_file || row.archiveFile || '')}::${row.student_id || row.studentId || ''}::${row.report_type || row.reportType || 'counsel'}`;
+        byKey.set(key, row);
+    });
+    state.db.exam_student_reports = Array.from(byKey.values());
+    return state.db.exam_student_reports;
+}
+
+function reportCenterParseStudentReportJson(raw) {
+    if (!raw) return null;
+    if (typeof raw === 'object') return raw;
+    try {
+        const parsed = JSON.parse(String(raw));
+        return parsed && typeof parsed === 'object' ? parsed : null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function reportCenterGetServerStudentReport(studentId, archiveFile, reportType = 'counsel') {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    return (Array.isArray(state?.db?.exam_student_reports) ? state.db.exam_student_reports : [])
+        .find(row =>
+            reportCenterNormalizeExamAnalysisArchiveKey(row.archive_file || row.archiveFile || '') === archiveKey &&
+            String(row.student_id ?? row.studentId ?? '') === String(studentId) &&
+            String(row.report_type ?? row.reportType ?? 'counsel') === String(reportType)
+        ) || null;
+}
+
+function reportCenterHydrateStudentReportAiCache(archiveFile, rows = []) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    rows.forEach(row => {
+        const ai = reportCenterParseStudentReportJson(row.ai_json ?? row.aiJson);
+        if (!ai) return;
+        const session = reportCenterFindStudentSchoolExamSession(row.student_id || row.studentId, archiveKey);
+        if (!session || reportCenterGetCachedAiAnalysis(session.id)) return;
+        reportCenterSetCachedAiAnalysis(session.id, ai);
+    });
+}
+
+async function reportCenterLoadStudentReportsFromServer(archiveFile) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!archiveKey) return null;
+    const store = reportCenterStudentReportSyncStore();
+    if (store[archiveKey] === 'loaded' || store[archiveKey] === 'loading') return null;
+    if (typeof api === 'undefined' || !api || typeof api.get !== 'function') return null;
+    store[archiveKey] = 'loading';
+    try {
+        const r = await api.get(`exams/student-reports?archive_file=${encodeURIComponent(archiveKey)}`);
+        if (!r || r.success === false) throw new Error(r?.message || r?.error || 'student report load failed');
+        const rows = Array.isArray(r.rows) ? r.rows : [];
+        reportCenterUpsertStudentReportRows(rows);
+        reportCenterHydrateStudentReportAiCache(archiveKey, rows);
+        store[archiveKey] = 'loaded';
+        return rows;
+    } catch (e) {
+        store[archiveKey] = 'failed';
+        console.warn('[reportCenterLoadStudentReportsFromServer] failed:', e);
+        return null;
+    }
+}
+
 function reportCenterClearCachedAiAnalysis(sessionId) {
     if (!sessionId) return;
     const key = String(sessionId);
@@ -3232,6 +3334,9 @@ function reportCenterParseCounselReports(metaRow) {
 }
 
 function reportCenterGetSavedCounselFields(studentId, archiveFile) {
+    const serverRow = reportCenterGetServerStudentReport(studentId, archiveFile, 'counsel');
+    const serverFields = reportCenterParseStudentReportJson(serverRow?.fields_json ?? serverRow?.fieldsJson);
+    if (serverFields) return serverFields;
     const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
     const saved = reports[String(studentId)];
     return saved && typeof saved === 'object' ? saved : null;
@@ -3370,6 +3475,11 @@ async function reportCenterRequestSchoolExamAiAnalysis(studentId, sessionId, but
         const analysis = reportCenterNormalizeAiAnalysis(r.analysis || r.data || r);
         analysis.source = 'ai';
         reportCenterSetCachedAiAnalysis(sessionId, analysis);
+        reportCenterSyncStudentReportToServer(data.session.archive_file || data.session.archiveFile || '', data.student.id || studentId, {
+            report_type: 'counsel',
+            session_id: data.session.id || sessionId,
+            ai_json: analysis
+        });
         toast('프리미엄 분석을 학생별로 저장했습니다.', 'success');
         if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
     } catch (e) {
@@ -3519,6 +3629,12 @@ function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
     const reports = reportCenterParseCounselReports(reportCenterFindExamMetaRow(archiveFile));
     reports[String(studentId)] = fields;
     reportCenterUpsertExamMeta(archiveFile, { counsel_reports: JSON.stringify(reports) });
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    reportCenterSyncStudentReportToServer(archiveFile, studentId, {
+        report_type: 'counsel',
+        session_id: session?.id || '',
+        fields_json: fields
+    });
     reportCenterSetCounselEditMode(studentId, archiveFile, false);
     if (typeof toast === 'function') toast('상담 리포트 수정 내용을 저장했습니다.', 'success');
     if (typeof openReportCenterModal === 'function' && typeof document?.getElementById === 'function') openReportCenterModal(studentId);
