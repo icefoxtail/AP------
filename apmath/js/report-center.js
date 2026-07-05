@@ -2026,6 +2026,8 @@ function reportCenterBuildExamAnalysisTableRows(archiveFile, opts = {}) {
             needsClassBoost: Number.isFinite(correctRate) && Number.isFinite(classCorrectRate) && correctRate - classCorrectRate >= 20,
             tag: reportCenterResolveErrorTag(reviewData, Number.isFinite(correctRate) ? correctRate : null),
             answer: review?.answer || bp.answer || archiveQuestion?.answer || '-',
+            content: archiveQuestion?.content || archiveQuestion?.contentText || bp.content || bp.content_text || '',
+            choices: Array.isArray(archiveQuestion?.choices) ? archiveQuestion.choices : (Array.isArray(bp.choices) ? bp.choices : []),
             reviewData,
             hasReview,
             isAi: reviewData.source === 'ai',
@@ -2046,6 +2048,7 @@ function reportCenterBuildExamAnalysisDetailHtml(row, opts = {}) {
     const data = row.reviewData || {};
     const teach = opts.showTeach === false ? '' : (data.teach || '');
     const items = [
+        ...(opts.includeContent ? [['문항 원문', [row.content, ...(row.choices || []).map((choice, index) => `${index + 1}. ${choice}`)].filter(Boolean).join('\n') || '-']] : []),
         ['묻는 것', data.asks || row.concept || '분석 대기'],
         ['함정', data.trap || '분석 대기'],
         ['풀이 포인트', data.key || '분석 대기'],
@@ -2118,10 +2121,145 @@ function reportCenterBuildExamAnalysisTableHtml(archiveFile, opts = {}) {
     `;
 }
 
+function reportCenterBuildExamAnalysisPrintDocument(archiveFile, opts = {}) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    const group = reportCenterGetSchoolExamGroupByKey(archiveKey);
+    const hub = reportCenterBuildExamHubList().find(row => row.archiveFile === archiveKey) || { title: archiveKey, school: '', grade: '' };
+    const sessions = group?.sessions || (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
+    const scores = sessions.map(session => Number(session.score)).filter(Number.isFinite);
+    const avg = scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : null;
+    const rows = reportCenterBuildExamAnalysisTableRows(archiveKey, opts);
+    const unitCounts = new Map();
+    const levelCounts = new Map();
+    rows.forEach(row => {
+        unitCounts.set(row.unit || '단원 미지정', (unitCounts.get(row.unit || '단원 미지정') || 0) + 1);
+        levelCounts.set(row.level || '난도 미지정', (levelCounts.get(row.level || '난도 미지정') || 0) + 1);
+    });
+    const summaryList = counts => Array.from(counts.entries())
+        .map(([label, count]) => `<span class="aprc-print-pill">${reportCenterEscape(label)} ${count}</span>`)
+        .join('');
+    return `
+        <main class="aprc-exam-analysis-print" data-report-exam-analysis-print="${reportCenterAttr(archiveKey)}">
+            <header class="aprc-print-head">
+                <div class="aprc-print-brand">AP MATH REPORT</div>
+                <h1>${reportCenterEscape(hub.title || archiveKey)} 분석표</h1>
+                <p>${reportCenterEscape([hub.school, hub.grade].filter(Boolean).join(' · ') || archiveKey)} · 응시 ${sessions.length}명 · 전체 평균 ${avg === null ? '-' : `${avg}점`} · 작성일 ${new Date().toISOString().slice(0, 10)}</p>
+            </header>
+            <section class="aprc-print-summary">
+                <div><strong>단원 분포</strong><div>${summaryList(unitCounts) || '<span class="aprc-print-muted">단원 정보 없음</span>'}</div></div>
+                <div><strong>난도 분포</strong><div>${summaryList(levelCounts) || '<span class="aprc-print-muted">난도 정보 없음</span>'}</div></div>
+            </section>
+            ${reportCenterBuildExamAnalysisTableHtml(archiveKey, { ...opts, rows, expandAll: true, showTeach: opts.showTeach !== false, includeContent: !!opts.includeContent })}
+        </main>
+    `;
+}
+
+function reportCenterBuildExamAnalysisPrintShell(bodyHtml) {
+    return `<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>학교시험 분석표 PDF</title>
+<style>
+    @page { size:A4; margin:12mm; }
+    * { box-sizing:border-box; }
+    html, body { margin:0; padding:0; background:#fff; color:#111827; }
+    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:11px; line-height:1.45; }
+    .aprc-exam-analysis-print { max-width:186mm; margin:0 auto; padding:0; }
+    .aprc-print-head { margin-bottom:8mm; border-bottom:2px solid #111827; padding-bottom:5mm; break-inside:avoid; page-break-inside:avoid; }
+    .aprc-print-brand { font-size:10px; font-weight:900; color:#2563eb; letter-spacing:0.08em; }
+    .aprc-print-head h1 { margin:2mm 0 1mm; font-size:20px; line-height:1.2; }
+    .aprc-print-head p { margin:0; color:#475569; font-weight:700; }
+    .aprc-print-summary { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:5mm; break-inside:avoid; page-break-inside:avoid; }
+    .aprc-print-summary > div { border:1px solid #dbe3ef; border-radius:8px; padding:3mm; }
+    .aprc-print-summary strong { display:block; margin-bottom:2mm; font-size:11px; }
+    .aprc-print-pill, .aprc-qtable-chip, .aprc-qtable-ai { display:inline-flex; align-items:center; margin:0 1.5mm 1.5mm 0; padding:1.2mm 2mm; border-radius:999px; background:#eef2ff; color:#1d4ed8; font-size:9px; font-weight:900; }
+    .aprc-print-muted, .aprc-qtable-muted { color:#64748b; }
+    .aprc-qtable-wrap { overflow:visible; border:0; }
+    .aprc-qtable { width:100%; border-collapse:collapse; table-layout:fixed; font-size:9.5px; }
+    .aprc-qtable th { padding:2mm 1.2mm; border:1px solid #cbd5e1; background:#f1f5f9; color:#334155; text-align:left; font-weight:900; }
+    .aprc-qtable td { padding:1.8mm 1.2mm; border:1px solid #dbe3ef; vertical-align:top; }
+    .aprc-qtable thead { display:table-header-group; }
+    .aprc-qtable tbody { display:table-row-group; }
+    .aprc-qtable tr, .aprc-qtable-detail, .aprc-qtable-detail-panel, .aprc-qtable-detail-item { break-inside:avoid; page-break-inside:avoid; }
+    .aprc-qtable-toggle { display:none; }
+    .aprc-qtable-concept { display:flex; gap:1.5mm; align-items:center; }
+    .aprc-qtable-concept-text { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:800; }
+    .aprc-qtable-rate-text, .aprc-qtable-rate-sub { display:block; font-weight:900; white-space:nowrap; }
+    .aprc-qtable-rate-sub { color:#64748b; font-size:9px; }
+    .aprc-qtable-bar { display:block; height:1.3mm; margin-top:1mm; border-radius:999px; background:#e2e8f0; overflow:hidden; }
+    .aprc-qtable-bar > span { display:block; height:100%; background:#2563eb; }
+    .aprc-qtable-bar-fill--0 { width:0%; } .aprc-qtable-bar-fill--5 { width:5%; } .aprc-qtable-bar-fill--10 { width:10%; } .aprc-qtable-bar-fill--15 { width:15%; } .aprc-qtable-bar-fill--20 { width:20%; } .aprc-qtable-bar-fill--25 { width:25%; } .aprc-qtable-bar-fill--30 { width:30%; } .aprc-qtable-bar-fill--35 { width:35%; } .aprc-qtable-bar-fill--40 { width:40%; } .aprc-qtable-bar-fill--45 { width:45%; } .aprc-qtable-bar-fill--50 { width:50%; } .aprc-qtable-bar-fill--55 { width:55%; } .aprc-qtable-bar-fill--60 { width:60%; } .aprc-qtable-bar-fill--65 { width:65%; } .aprc-qtable-bar-fill--70 { width:70%; } .aprc-qtable-bar-fill--75 { width:75%; } .aprc-qtable-bar-fill--80 { width:80%; } .aprc-qtable-bar-fill--85 { width:85%; } .aprc-qtable-bar-fill--90 { width:90%; } .aprc-qtable-bar-fill--95 { width:95%; } .aprc-qtable-bar-fill--100 { width:100%; }
+    .aprc-qtable-detail td { background:#f8fafc; }
+    .aprc-qtable-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:2mm; }
+    .aprc-qtable-detail-item { border:1px solid #e2e8f0; border-radius:6px; padding:2mm; background:#fff; }
+    .aprc-qtable-detail-label { display:block; margin-bottom:1mm; color:#64748b; font-size:9px; font-weight:900; }
+    .aprc-qtable-detail-body { font-size:10px; font-weight:700; overflow-wrap:anywhere; }
+    .aprc-qtable-wrong-groups { display:flex; flex-wrap:wrap; gap:1.5mm; }
+    @media print {
+        html, body { background:#fff !important; }
+        .aprc-exam-analysis-print { width:100% !important; max-width:186mm !important; }
+        thead { display:table-header-group !important; }
+        tr, .aprc-qtable-detail, .aprc-qtable-detail-panel, .aprc-qtable-detail-item { break-inside:avoid !important; page-break-inside:avoid !important; }
+    }
+</style>
+<script>
+    window.__AP_REPORT_PRINT_TRIGGERED = false;
+    window.__AP_REPORT_TRIGGER_PRINT = function() {
+        if (window.__AP_REPORT_PRINT_TRIGGERED) return;
+        window.__AP_REPORT_PRINT_TRIGGERED = true;
+        setTimeout(function() { try { window.focus(); } catch (e) {} window.print(); }, 200);
+    };
+    window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\\\(', '\\\\)']], displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']] },
+        svg: { fontCache: 'global' },
+        startup: { pageReady: function() { return MathJax.startup.defaultPageReady().then(window.__AP_REPORT_TRIGGER_PRINT).catch(window.__AP_REPORT_TRIGGER_PRINT); } }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" onerror="setTimeout(window.__AP_REPORT_TRIGGER_PRINT, 2500)"></script>
+</head>
+<body>
+${bodyHtml}
+<script>window.addEventListener('load', function(){ setTimeout(function(){ if (!window.__AP_REPORT_PRINT_TRIGGERED) window.__AP_REPORT_TRIGGER_PRINT(); }, 5000); });<\/script>
+</body>
+</html>`;
+}
+
+async function reportCenterOpenExamAnalysisPrintView(archiveFile, options = {}) {
+    const includeContent = !!options.includeContent;
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (includeContent) {
+        try { await reportCenterFetchArchiveBankByFile(archiveKey); } catch (e) { console.warn('[reportCenterOpenExamAnalysisPrintView] archive preload failed:', e); }
+    }
+    const win = window.open('', '_blank', 'noopener,noreferrer');
+    if (!win) {
+        toast('팝업 차단을 해제한 뒤 다시 시도하세요.', 'warn');
+        return null;
+    }
+    const html = reportCenterBuildExamAnalysisPrintShell(reportCenterBuildExamAnalysisPrintDocument(archiveKey, options));
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+    return html;
+}
+
 function reportCenterEnsureExamAnalysisTableEvents() {
     if (typeof document === 'undefined' || document.__aprcQtableEvents) return;
     document.__aprcQtableEvents = true;
     document.addEventListener('click', event => {
+        const printButton = event.target?.closest?.('[data-exam-analysis-print]');
+        if (printButton) {
+            event.preventDefault();
+            event.stopPropagation();
+            const archiveFile = printButton.getAttribute('data-exam-analysis-print') || '';
+            const root = printButton.closest('[data-report-drilldown-level="exam"]') || document;
+            const includeContent = !!root.querySelector?.('[data-exam-analysis-print-content]')?.checked;
+            const showTeach = root.querySelector?.('[data-exam-analysis-print-teach]')?.checked !== false;
+            reportCenterOpenExamAnalysisPrintView(archiveFile, { includeContent, showTeach });
+            return;
+        }
         const toggle = event.target?.closest?.('[data-qtable-toggle]');
         const row = toggle ? toggle.closest('[data-qtable-row]') : event.target?.closest?.('[data-qtable-row]');
         if (!row) return;
@@ -2228,6 +2366,8 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                 <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:10px; align-items:center; flex-wrap:wrap;">
                     <div style="font-size:14px; font-weight:900; color:var(--text);">문항 분석 상태</div>
                     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <label style="display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:800; color:var(--secondary);"><input type="checkbox" data-exam-analysis-print-content>문항 원문 포함</label>
+                        <label style="display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:800; color:var(--secondary);"><input type="checkbox" data-exam-analysis-print-teach checked>지도 포인트 포함</label>
                         <button type="button" class="aprc-action-btn aprc-action-btn--accent" data-exam-analysis-print="${reportCenterAttr(archiveKey)}">분석표 인쇄/PDF</button>
                         <div style="font-size:12px; font-weight:800; color:var(--secondary);">${reviewCount}/${analysisTotal}</div>
                     </div>
