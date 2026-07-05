@@ -67,6 +67,9 @@
 ```
 
 - **행 클릭(또는 ▶)** → 해당 행 아래로 풀 분석 펼침: `묻는 것 / 함정 / 풀이 포인트 / 지도 포인트` + 정답. 기본 전부 접힘.
+- **내부용 전용 무기 (외부 분석표에는 없는 것 — 반드시 포함):**
+  1. 펼침 블록에 **오답 학생 명단**: 그 문항을 틀린 학생 이름을 반별로 그룹핑해 칩으로 표기 (예: `중2A · 김가온 박도윤 | 중2B · 최서진`). 소스 = `wrong_answers`(question_id=행 번호) × 해당 archive 세션 × `class_students`/`classes`. 학생 수 많으면 반별 `이름들 (N명)`으로 접기.
+  2. **반별 정답률 비교**: 드릴다운 진입 반(컨텍스트 반)이 있으면 정답률 셀을 `전체 72% · 우리 반 40%` 2줄로. 전체 대비 우리 반이 20%p 이상 낮은 문항은 행에 `수업 보강` 강조 표시(왼쪽 보더 accent) — 선생님이 표만 훑어도 수업에서 다룰 문항이 보이게. 소스 = 기존 `reportCenterGetClassExamSessions` 집계 로직 재사용.
 - 난도칩 색: 하(회색)·중하(청록)·중(파랑)·상(주황)·최상(빨강) — 토큰 기반(`--secondary`, teal, `--primary`, orange, `--error` 계열), 인라인 hex 금지.
 - 데이터 소스: 유형=`bp.questionType || reviewData.type || '객관식'`, 난도=`reviewData.level || bp.level || bp.difficulty || 정답률 파생 라벨`, 단원=`bp.standard_unit`, 출제의도·개념=`reviewData.concept || reviewData.asks 첫 문장`, 배점=`bp.score || bp.points || 원문 content의 [N점]/[N.N점] 패턴 추출 || '-'`, 정답률/오답=`reportCenterBuildCohortRates`.
 - 정답률 셀은 숫자+미니 바(막대). 선생님용이므로 **내부 수치 그대로 노출 OK** (학부모 금지어 필터는 이 표에 적용하지 않는다 — 선생님 레이어).
@@ -116,7 +119,7 @@
 5. `.aprc-qtable-*` 스타일을 `report-center-wide-style`에 추가 — 기존 aprc 디자인 언어(토큰·hover·focus) 준수. 렌더 후 `reportCenterTypesetMath` 호출 유지.
 
 **검증** `node tests/report-exam-analysis-table.test.mjs` + 회귀.
-**assert**: mock(블루프린트 3문항·리뷰 2문항·오답 데이터)에서 행 3개, 리뷰 없는 행 '분석 대기', 정답률 정확, `tag` 명시 시 태그 표기, 배점 `[3.8점]` 추출.
+**assert**: mock(블루프린트 3문항·리뷰 2문항·오답 데이터)에서 행 3개, 리뷰 없는 행 '분석 대기', 정답률 정확, `tag` 명시 시 태그 표기, 배점 `[3.8점]` 추출, **펼침 블록에 오답 학생 이름·반 그룹핑 포함**, **반 컨텍스트 존재 시 우리 반 정답률 병기 + 20%p 격차 문항 강조 마커**.
 **DoD**: L1이 표로 렌더 + 행 펼침 동작(마크업 계약으로 검증) + 회귀 초록 + 커밋.
 
 ---
