@@ -27,9 +27,9 @@ const easy = context.reportCenterBuildParentQuestionNarrative({
   correctRate: 91,
   reviewText: JSON.stringify({ concept: '일차방정식', tag: '계산·검산' })
 });
-assert.match(easy.headline, /대부분의 학생이 해결한 기본 문항/);
-assert.match(easy.meaning, /계산, 부호, 마지막 검산/);
-assert.match(easy.action, /부호 검산/);
+assert.match(easy.headline, /전체 정답률 91%로 대부분 맞힌 기본 문항/);
+assert.match(easy.meaning, /계산과 마무리 확인/);
+assert.match(easy.action, /검산 습관/);
 assert.match(easy.action, /식 변형/);
 
 const hard = context.reportCenterBuildParentQuestionNarrative({
@@ -41,7 +41,7 @@ assert.match(hard.headline, /전체 정답률 32%/);
 assert.match(hard.headline, /최상위 문항/);
 assert.match(hard.reason, /경계값 포함 여부/);
 assert.match(hard.meaning, /조건을 식으로 옮기고 범위/);
-assert.match(hard.action, /최상위 난도 대비/);
+assert.match(hard.action, /최상위 난도 문항 대비/);
 assert.match(hard.action, /범위 표시와 경계값/);
 
 const functionCase = context.reportCenterBuildParentQuestionNarrative({

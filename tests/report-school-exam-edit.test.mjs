@@ -43,7 +43,7 @@ context.reportCenterSetCounselEditMode('s1', 'exam-a.js', true);
 assert.equal(context.reportCenterCounselEditMode('s1', 'exam-a.js'), true);
 
 // 2) 학생 s1 저장
-const savedS1 = context.reportCenterSaveSchoolExamCounselReport('s1', 'exam-a.js');
+const savedS1 = await context.reportCenterSaveSchoolExamCounselReport('s1', 'exam-a.js');
 assert.equal(savedS1.meaning, 's1 총평');
 assert.equal(context.reportCenterCounselEditMode('s1', 'exam-a.js'), false, '저장 후 편집 모드 해제');
 
@@ -70,7 +70,7 @@ currentFormFields = [
   ['action', 's2 조치'],
   ['parent', 's2 안내']
 ];
-context.reportCenterSaveSchoolExamCounselReport('s2', 'exam-a.js');
+await context.reportCenterSaveSchoolExamCounselReport('s2', 'exam-a.js');
 assert.equal(context.reportCenterGetSavedCounselFields('s2', 'exam-a.js').meaning, 's2 총평');
 assert.equal(context.reportCenterGetSavedCounselFields('s1', 'exam-a.js').meaning, 's1 총평', 's2 저장이 s1을 덮어쓰면 안 됨');
 
