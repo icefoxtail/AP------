@@ -87,6 +87,15 @@ assert.match(paragraph, /다음 수업에서는/);
 assert.match(paragraph, /조건/);
 assert.doesNotMatch(paragraph, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
 
+const easyMissParagraph = context.reportCenterBuildParentQuestionParagraph({
+  questionNo: 3,
+  unit: '다항식의 계산',
+  correctRate: 91,
+  reviewText: JSON.stringify({ concept: '다항식의 계산', tag: '계산·검산' })
+});
+assert.match(easyMissParagraph, /다항식의 계산 기본 풀이/);
+assert.doesNotMatch(easyMissParagraph, /다항식의 계산의 기본 풀이/);
+
 const withAnswer = context.reportCenterBuildParentWrongQuestionCard(row, detail, { showAnswer: true });
 assert.match(withAnswer, /<b>정답<\/b>/);
 
