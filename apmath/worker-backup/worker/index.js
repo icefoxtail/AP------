@@ -3491,7 +3491,9 @@ async function handleApiRequest(request, env) {
         if (
           resource === 'exam-blueprints' ||
           resource === 'class-exam-assignments' ||
-          resource === 'exam-sessions'
+          resource === 'exam-sessions' ||
+          resource === 'exam-analysis' ||
+          resource === 'student-reports'
         ) {
           const teacher = await verifyAuth(request, env);
           const routed = await handleExams(request, env, teacher, path, url);
