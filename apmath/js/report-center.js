@@ -3397,6 +3397,77 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
     };
 }
 
+function reportCenterFormatParentQuestionRate(value) {
+    const rate = Number(value);
+    return Number.isFinite(rate) ? `${Math.round(rate)}%` : '-';
+}
+
+function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = {}) {
+    const reviewData = reportCenterParseReviewJson?.(row?.reviewText || row?.review_text || detail?.reviewText || detail?.review_text || '') || {};
+    const qNo = row?.questionNo ?? row?.question_no ?? detail?.questionNo ?? detail?.question_no ?? '';
+    const unit = reviewData.concept || row?.unit || row?.unitKey || row?.concept || detail?.unit || detail?.concept || '단원 확인';
+    const type = row?.type || row?.questionType || row?.kind || detail?.type || detail?.questionType || '유형 확인';
+    const point = row?.point ?? row?.points ?? row?.score ?? detail?.point ?? detail?.points ?? '';
+    const level = row?.level || row?.difficulty || detail?.level || detail?.difficulty || reportCenterGetQuestionDifficultyLabel(Number(row?.correctRate));
+    const correctRate = reportCenterFormatParentQuestionRate(row?.correctRate ?? detail?.correctRate);
+    const classCorrectRate = reportCenterFormatParentQuestionRate(row?.classCorrectRate ?? detail?.classCorrectRate);
+    const narrative = reportCenterBuildParentQuestionNarrative(row || {}, detail);
+    const content = detail?.content || detail?.contentText || row?.content || row?.contentText || '';
+    const safeContent = reportCenterArchiveTextToHtml(content);
+    const choices = Array.isArray(detail?.choices) && detail.choices.length
+        ? detail.choices
+        : (Array.isArray(row?.choices) ? row.choices : []);
+    const answer = detail?.answer ?? row?.answer ?? row?.correctAnswer ?? '';
+    const showAnswer = options.showAnswer === true;
+    const badge = Number(row?.correctRate ?? detail?.correctRate) < 45 ? '최상위 문항' : '우선 확인 문항';
+    const meta = [
+        unit,
+        type,
+        point ? `${point}점` : '',
+        level,
+        `전체 정답률 ${correctRate}`,
+        `반 정답률 ${classCorrectRate}`
+    ].filter(Boolean).map(reportCenterEscape).join(' · ');
+    const choicesHtml = choices.length
+        ? `<ol class="aprc-parent-question-choices">${choices.map(choice => `<li>${reportCenterArchiveTextToHtml(choice)}</li>`).join('')}</ol>`
+        : '';
+    const answerHtml = showAnswer && answer !== ''
+        ? `<div class="aprc-parent-question-answer"><b>정답</b> ${reportCenterArchiveTextToHtml(answer)}</div>`
+        : '';
+    const originalHtml = safeContent || choicesHtml || answerHtml
+        ? `${safeContent ? `<div class="aprc-parent-question-content">${safeContent}</div>` : ''}${choicesHtml}${answerHtml}`
+        : '<p>문항 원문을 불러오지 못했습니다. 수업에서는 해당 문항을 직접 다시 확인합니다.</p>';
+
+    return `
+        <article class="aprc-parent-question-card">
+            <header class="aprc-parent-question-head">
+                <div>
+                    <div class="aprc-parent-question-no">${reportCenterEscape(qNo)}번 · ${reportCenterEscape(unit)}</div>
+                    <div class="aprc-parent-question-meta">${meta}</div>
+                </div>
+                <span class="aprc-parent-question-badge">${reportCenterEscape(badge)}</span>
+            </header>
+            <section class="aprc-parent-question-narrative">
+                <div class="aprc-parent-question-label">학부모 해석</div>
+                <p>${reportCenterEscape(narrative.headline)}</p>
+                ${narrative.reason ? `<p>${reportCenterEscape(narrative.reason)}</p>` : ''}
+            </section>
+            <section class="aprc-parent-question-meaning">
+                <div class="aprc-parent-question-label">이번 오답 의미</div>
+                <p>${reportCenterEscape(narrative.meaning)}</p>
+            </section>
+            <section class="aprc-parent-question-action">
+                <div class="aprc-parent-question-label">다음 수업 계획</div>
+                <p>${reportCenterEscape(narrative.action)}</p>
+            </section>
+            <section class="aprc-parent-question-original">
+                <div class="aprc-parent-question-label">실제 문항</div>
+                ${originalHtml}
+            </section>
+        </article>
+    `;
+}
+
 function reportCenterSelectPriorityWrongRows(wrongRows = [], limit = 5) {
     return [...(wrongRows || [])].sort((a, b) => {
         const ar = Number.isFinite(a.correctRate) ? a.correctRate : -1;
@@ -3633,15 +3704,10 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const student = data.student || {};
     const stats = data.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
-    const questionCards = reportCenterBuildQuestionReviewCardsForReport(data, {
-        limit: Math.max(1, wrongRows.length),
-        showAnswer: false,
-        showContent: true,
-        showSolution: false,
-        showTeach: false,
-        anonymized: false,
-        parentNarrative: true
-    });
+    const detailMap = reportCenterGetQuestionDetailMap(data);
+    const questionCards = wrongRows
+        .map(row => reportCenterBuildParentWrongQuestionCard(row, detailMap.get(String(row.questionNo)), { showAnswer: false }))
+        .join('');
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     // 프리미엄 분석(학생별 저장분)이 있으면 문구를 그것으로 대체해 퀄리티를 올린다.
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
@@ -5647,6 +5713,83 @@ function reportCenterInjectPrintViewStyle() {
             color:var(--primary);
             font-size:11px;
             font-weight:900;
+        }
+
+        .aprc-parent-question-card {
+            border:1px solid #dbeafe;
+            border-radius:14px;
+            padding:14px;
+            background:#fff;
+            break-inside:avoid;
+            page-break-inside:avoid;
+        }
+
+        .aprc-parent-question-card + .aprc-parent-question-card {
+            margin-top:10px;
+        }
+
+        .aprc-parent-question-head {
+            display:flex;
+            justify-content:space-between;
+            gap:12px;
+            align-items:flex-start;
+            padding-bottom:10px;
+            border-bottom:1px solid #e5e7eb;
+        }
+
+        .aprc-parent-question-no {
+            font-size:15px;
+            font-weight:900;
+            color:#111827;
+        }
+
+        .aprc-parent-question-meta {
+            margin-top:4px;
+            font-size:12px;
+            font-weight:800;
+            color:#64748b;
+            line-height:1.5;
+        }
+
+        .aprc-parent-question-badge {
+            border-radius:999px;
+            padding:4px 9px;
+            font-size:11px;
+            font-weight:900;
+            background:#eff6ff;
+            color:#1d4ed8;
+            white-space:nowrap;
+        }
+
+        .aprc-parent-question-card section {
+            margin-top:12px;
+        }
+
+        .aprc-parent-question-label {
+            margin-bottom:5px;
+            font-size:12px;
+            font-weight:900;
+            color:#1d4ed8;
+        }
+
+        .aprc-parent-question-card p {
+            margin:0;
+            line-height:1.65;
+            font-size:13px;
+            color:#111827;
+        }
+
+        .aprc-parent-question-content,
+        .aprc-parent-question-choices,
+        .aprc-parent-question-answer {
+            margin:0;
+            line-height:1.65;
+            font-size:12.5px;
+            color:#111827;
+        }
+
+        .aprc-parent-question-choices {
+            padding-left:18px;
         }
 
         .report-studio-shell {
