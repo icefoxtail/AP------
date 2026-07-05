@@ -223,9 +223,25 @@ CREATE TABLE IF NOT EXISTS exam_question_reviews (
   question_no TEXT NOT NULL,
   review_text TEXT,
   answer TEXT,
+  concept TEXT,
+  error_tag TEXT,
+  difficulty TEXT,
+  question_type TEXT,
   updated_at TEXT DEFAULT (datetime('now')),
   updated_by TEXT,
   PRIMARY KEY (archive_file, question_no)
+);
+
+CREATE TABLE IF NOT EXISTS exam_student_reports (
+  archive_file TEXT NOT NULL,
+  student_id TEXT NOT NULL,
+  session_id TEXT,
+  report_type TEXT NOT NULL DEFAULT 'counsel',
+  fields_json TEXT,
+  ai_json TEXT,
+  updated_at TEXT DEFAULT (datetime('now')),
+  updated_by TEXT,
+  PRIMARY KEY (archive_file, student_id, report_type)
 );
 
 CREATE TABLE IF NOT EXISTS exam_analysis_meta (

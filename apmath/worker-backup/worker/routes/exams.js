@@ -24,6 +24,7 @@ async function requireTeacher(request, env, teacher) {
 const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignment_batch_id', 'target_scope', 'subject'];
 const EXAM_SESSION_META_COLUMNS = ['assignment_id', 'pack_id', 'result_hash', 'analysis_status'];
 const BLUEPRINT_META_COLUMNS = ['assessment_pack_id', 'type_key', 'difficulty'];
+const QUESTION_REVIEW_META_COLUMNS = ['concept', 'error_tag', 'difficulty', 'question_type'];
 const RESULT_ITEM_COLUMNS = [
   'session_id', 'assignment_id', 'pack_id', 'student_id', 'class_id', 'order_no', 'question_no',
   'result_status', 'is_correct', 'student_answer', 'correct_answer', 'score', 'max_score',
@@ -37,6 +38,25 @@ const columnCacheByEnv = new WeakMap();
 function normalizeOptionalText(value) {
   const text = String(value ?? '').trim();
   return text || null;
+}
+
+function extractQuestionReviewMeta(reviewText) {
+  const raw = String(reviewText || '').trim();
+  if (!raw || !raw.startsWith('{')) {
+    return { concept: null, error_tag: null, difficulty: null, question_type: null };
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') throw new Error('review_text JSON is not an object');
+    return {
+      concept: normalizeOptionalText(parsed.concept),
+      error_tag: normalizeOptionalText(parsed.tag || parsed.error_tag || parsed.errorTag),
+      difficulty: normalizeOptionalText(parsed.level || parsed.difficulty),
+      question_type: normalizeOptionalText(parsed.type || parsed.question_type || parsed.questionType)
+    };
+  } catch (e) {
+    return { concept: null, error_tag: null, difficulty: null, question_type: null };
+  }
 }
 
 function normalizeAssignmentArchiveFile(value) {
@@ -907,6 +927,57 @@ export async function handleExams(request, env, teacher, path, url) {
     }
   }
 
+  if (resource === 'student-reports') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    if (method === 'GET') {
+      const archiveFile = normalizeAssignmentArchiveFile(url.searchParams.get('archive_file') || url.searchParams.get('file') || '');
+      if (!archiveFile) return jsonResponse({ error: 'archive_file required' }, 400);
+      const rows = await env.DB.prepare(`
+        SELECT *
+        FROM exam_student_reports
+        WHERE archive_file = ?
+        ORDER BY student_id, report_type
+      `).bind(archiveFile).all();
+      return jsonResponse({ success: true, archive_file: archiveFile, rows: rows.results || [] });
+    }
+
+    if (method === 'POST') {
+      const d = await request.json();
+      const archiveFile = normalizeAssignmentArchiveFile(d.archive_file || d.file || '');
+      const studentId = normalizeOptionalText(d.student_id || d.studentId);
+      const reportType = normalizeOptionalText(d.report_type || d.reportType) || 'counsel';
+      if (!archiveFile) return jsonResponse({ error: 'archive_file required' }, 400);
+      if (!studentId) return jsonResponse({ error: 'student_id required' }, 400);
+      const updatedBy = currentTeacher.id || currentTeacher.name || 'teacher';
+      const hasFields = Object.prototype.hasOwnProperty.call(d, 'fields_json') || Object.prototype.hasOwnProperty.call(d, 'fieldsJson');
+      const hasAi = Object.prototype.hasOwnProperty.call(d, 'ai_json') || Object.prototype.hasOwnProperty.call(d, 'aiJson');
+      const fieldsJson = hasFields ? normalizeOptionalText(d.fields_json ?? d.fieldsJson) : null;
+      const aiJson = hasAi ? normalizeOptionalText(d.ai_json ?? d.aiJson) : null;
+      await env.DB.prepare(`
+        INSERT INTO exam_student_reports (
+          archive_file, student_id, session_id, report_type, fields_json, ai_json, updated_at, updated_by
+        ) VALUES (?, ?, ?, ?, ?, ?, datetime('now'), ?)
+        ON CONFLICT(archive_file, student_id, report_type) DO UPDATE SET
+          session_id=COALESCE(excluded.session_id, exam_student_reports.session_id),
+          fields_json=COALESCE(excluded.fields_json, exam_student_reports.fields_json),
+          ai_json=COALESCE(excluded.ai_json, exam_student_reports.ai_json),
+          updated_at=datetime('now'),
+          updated_by=excluded.updated_by
+      `).bind(
+        archiveFile,
+        studentId,
+        normalizeOptionalText(d.session_id || d.sessionId),
+        reportType,
+        fieldsJson,
+        aiJson,
+        updatedBy
+      ).run();
+      return jsonResponse({ success: true, archive_file: archiveFile, student_id: studentId, report_type: reportType });
+    }
+  }
+
   if (resource === 'exam-analysis') {
     const currentTeacher = await requireTeacher(request, env, teacher);
     if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -988,25 +1059,36 @@ export async function handleExams(request, env, teacher, path, url) {
         `).bind(archiveFile, normalizeOptionalText(metaPatch.overview_text), updatedBy));
       }
 
+      const reviewColumns = await getTableColumnSet(env, 'exam_question_reviews');
+      const reviewMetaColumns = pickExistingColumns(reviewColumns, QUESTION_REVIEW_META_COLUMNS);
+      const reviewInsertColumns = ['archive_file', 'question_no', 'review_text', 'answer', ...reviewMetaColumns, 'updated_at', 'updated_by'];
+      const reviewUpdateSets = [
+        'review_text=excluded.review_text',
+        'answer=excluded.answer',
+        ...reviewMetaColumns.map(col => `${col}=excluded.${col}`),
+        "updated_at=datetime('now')",
+        'updated_by=excluded.updated_by'
+      ];
       const reviewItems = Array.isArray(d.reviews) ? d.reviews : (d.question_no || d.questionNo ? [d] : []);
       for (const item of reviewItems) {
         const questionNo = String(item.question_no ?? item.questionNo ?? '').trim();
         if (!questionNo) continue;
-        stmts.push(env.DB.prepare(`
-          INSERT INTO exam_question_reviews (archive_file, question_no, review_text, answer, updated_at, updated_by)
-          VALUES (?, ?, ?, ?, datetime('now'), ?)
-          ON CONFLICT(archive_file, question_no) DO UPDATE SET
-            review_text=excluded.review_text,
-            answer=excluded.answer,
-            updated_at=datetime('now'),
-            updated_by=excluded.updated_by
-        `).bind(
+        const reviewText = normalizeOptionalText(item.review_text ?? item.reviewText);
+        const reviewMeta = extractQuestionReviewMeta(reviewText);
+        const values = [
           archiveFile,
           questionNo,
-          normalizeOptionalText(item.review_text ?? item.reviewText),
+          reviewText,
           normalizeOptionalText(item.answer),
+          ...reviewMetaColumns.map(col => reviewMeta[col] ?? null),
           updatedBy
-        ));
+        ];
+        stmts.push(env.DB.prepare(`
+          INSERT INTO exam_question_reviews (${reviewInsertColumns.join(', ')})
+          VALUES (?, ?, ?, ?, ${reviewMetaColumns.map(() => '?').join(', ')}${reviewMetaColumns.length ? ', ' : ''}datetime('now'), ?)
+          ON CONFLICT(archive_file, question_no) DO UPDATE SET
+            ${reviewUpdateSets.join(',\n            ')}
+        `).bind(...values));
       }
 
       if (stmts.length) await env.DB.batch(stmts);
