@@ -60,4 +60,8 @@ const forbidden = /raw|archive|blueprint|review_text|자료 없음|확인 불가
   assert.notEqual(result.meaning, result.action);
 });
 
+const cleaned = context.reportCenterAssertParentSafe('오답 단원의 핵심 풀이를 다음 수업에서 다시 풀이하며 확인하고 풀이 시작점을 안정적으로 잡겠습니다.');
+assert.doesNotMatch(cleaned, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
+assert.match(cleaned, /조건과 식을 세우는 순서|틀린 문항의 풀이 과정/);
+
 console.log('report parent question narrative test passed');
