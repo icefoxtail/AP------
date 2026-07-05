@@ -28,8 +28,8 @@ const context = {
         { archive_file: 'exams/exam-a.js', overview_text: '계산 정확도를 확인하는 시험입니다.' }
       ],
       exam_blueprints: [
-        { archive_file: 'exam-a.js', question_no: 1, unit: '수와 식', difficulty: '하' },
-        { archive_file: 'exam-a.js', question_no: 2, unit: '식의 계산', difficulty: '중' },
+        { archive_file: 'exam-a.js', question_no: 1, standard_unit: '수와 식', question_level: '하' },
+        { archive_file: 'exam-a.js', question_no: 2, standard_unit: '식의 계산', difficulty: '중' },
         { archive_file: 'exam-a.js', question_no: 3, unit: '식의 계산', difficulty: '상' }
       ]
     }
