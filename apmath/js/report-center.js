@@ -3497,7 +3497,7 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
     const level = row?.level || row?.difficulty || detail?.level || detail?.difficulty || reportCenterGetQuestionDifficultyLabel(Number(row?.correctRate));
     const correctRate = reportCenterFormatParentQuestionRate(row?.correctRate ?? detail?.correctRate);
     const classCorrectRate = reportCenterFormatParentQuestionRate(row?.classCorrectRate ?? detail?.classCorrectRate);
-    const narrative = reportCenterBuildParentQuestionNarrative(row || {}, detail);
+    const comment = reportCenterBuildParentQuestionParagraph(row || {}, detail);
     const content = detail?.content || detail?.contentText || row?.content || row?.contentText || '';
     const safeContent = reportCenterArchiveTextToHtml(content);
     const choices = Array.isArray(detail?.choices) && detail.choices.length
@@ -3533,18 +3533,8 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
                 </div>
                 <span class="aprc-parent-question-badge">${reportCenterEscape(badge)}</span>
             </header>
-            <section class="aprc-parent-question-narrative">
-                <div class="aprc-parent-question-label">학부모 해석</div>
-                <p>${reportCenterEscape(narrative.headline)}</p>
-                ${narrative.reason ? `<p>${reportCenterEscape(narrative.reason)}</p>` : ''}
-            </section>
-            <section class="aprc-parent-question-meaning">
-                <div class="aprc-parent-question-label">이번 오답 의미</div>
-                <p>${reportCenterEscape(narrative.meaning)}</p>
-            </section>
-            <section class="aprc-parent-question-action">
-                <div class="aprc-parent-question-label">다음 수업 계획</div>
-                <p>${reportCenterEscape(narrative.action)}</p>
+            <section class="aprc-parent-question-comment">
+                <p>${reportCenterEscape(comment)}</p>
             </section>
             <section class="aprc-parent-question-original">
                 <div class="aprc-parent-question-label">실제 문항</div>
