@@ -233,7 +233,7 @@ function reportCenterBuildWrongCauseSummary(data) {
         ? `${units} 단원에서 조건을 식으로 옮기는 과정과 계산 마무리 확인이 함께 필요합니다.`
         : '조건을 식으로 옮기는 과정과 계산 마무리 확인이 함께 필요합니다.';
     return hardCount
-        ? `${base} 특히 정답률이 낮은 문항에서 풀이 시작점을 잡는 데 시간이 걸린 것으로 보입니다.`
+        ? `${base} 특히 정답률이 낮은 문항에서는 조건을 먼저 정리하고 어떤 식을 세워야 하는지 확인하는 과정이 필요합니다.`
         : base;
 }
 
@@ -256,9 +256,9 @@ function reportCenterBuildAcademyActionPlan(data, trendData = null, aiAnalysis =
     const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2);
     const unitText = units.length ? `${units.join(', ')} 단원` : '오답 단원';
     const generated = [
-        `${unitText}의 핵심 풀이를 다음 수업에서 다시 풀이하며 확인하겠습니다.`,
-        '같은 조건 해석 유형을 짧게 반복해 풀이 시작점을 안정적으로 잡겠습니다.',
-        '계산 과정과 답안 마무리는 수업 중 바로 점검해 같은 실수가 이어지지 않게 관리하겠습니다.'
+        `다음 수업에서는 ${unitText}의 틀린 문항을 다시 풀면서, 문제의 조건을 먼저 표시하고 어떤 식을 세워야 하는지부터 확인하겠습니다.`,
+        '비슷한 조건 해석 문항을 2~3개 더 풀어, 문장을 수식으로 옮기는 과정을 반복하겠습니다.',
+        '풀이가 끝난 뒤에는 부호, 계산, 답안 범위를 다시 확인하는 습관까지 함께 점검하겠습니다.'
     ];
     const aiItems = aiAnalysis ? reportCenterBuildNextPlanItems(data, aiAnalysis) : [];
     return reportCenterPdfUniqueLines([...generated, ...aiItems], 3);

@@ -3415,7 +3415,7 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
     };
     const actionByTag = {
         calc: '다음 수업에서는 풀이 후 검산 습관과 부호 확인을 바로 점검하겠습니다.',
-        order: '같은 유형을 짧게 반복해 풀이 순서를 안정적으로 잡겠습니다.',
+        order: '같은 유형을 짧게 반복해 조건 표시와 식 세우는 순서를 확인하겠습니다.',
         condition: '조건을 먼저 정리하고 식을 세우는 첫 단계를 다시 연습하겠습니다.',
         concept: '기본 개념을 다시 확인한 뒤 유사 문항에 적용하는 연습을 진행하겠습니다.'
     };
@@ -3432,7 +3432,7 @@ function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
         : /도형/.test(concept)
         ? ' 특히 그림에 조건을 표시하고 관계식을 세우는 연습을 하겠습니다.'
         : '';
-    const meaning = meaningByTag[tag] || '다음 수업에서 풀이 시작점을 함께 확인하겠습니다.';
+    const meaning = meaningByTag[tag] || '다음 수업에서 조건과 식을 세우는 순서를 함께 확인하겠습니다.';
     const action = (rate !== null && rate < 45)
         ? `최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다.${keywordAction}`
         : `${actionByTag[tag] || '같은 유형을 다음 수업에서 다시 풀이하며 확인하겠습니다.'}${keywordAction}`;
@@ -3714,7 +3714,7 @@ function reportCenterBuildScoreMeaning(data) {
         ? '전체 응시 평균보다 높은 위치에서 안정적으로 마무리했습니다.'
         : level === '관리'
         ? '맞힌 부분을 유지하면서 틀린 문항의 원인을 다음 수업에서 정리하겠습니다.'
-        : '기본 개념과 풀이 시작점을 다시 잡아 다음 시험을 준비하겠습니다.';
+        : '기본 개념과 조건을 식으로 옮기는 순서를 다시 정리해 다음 시험을 준비하겠습니다.';
     return { level, comparedToAverage, comparedToRecent, parentSentence };
 }
 
@@ -4038,7 +4038,7 @@ function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, option
         summary: `${student.name || '학생'} · ${session.exam_title || '시험'} · ${session.score ?? '-'}점 · 전체 응시 평균 ${stats.overallAvg ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         meaning: scoreMeaning.parentSentence,
         cause: [wrongSummary, ...comments].filter(Boolean).join('\n'),
-        counsel: wrongRows.length ? '상담에서는 맞힌 부분을 먼저 확인한 뒤, 다시 볼 문항의 풀이 시작점을 짧게 설명하면 좋습니다.' : '상담에서는 정확도를 칭찬하고 다음 단원 확장 계획을 안내하면 좋습니다.',
+        counsel: wrongRows.length ? '상담에서는 맞힌 부분을 먼저 확인한 뒤, 다시 볼 문항에서 조건을 식으로 옮기는 순서를 짧게 설명하면 좋습니다.' : '상담에서는 정확도를 칭찬하고 다음 단원 확장 계획을 안내하면 좋습니다.',
         action: actionItems.join('\n'),
         parent: parentReport || reportCenterBuildCompactParentMessage(data)
     };
