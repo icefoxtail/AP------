@@ -71,6 +71,13 @@ const html = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam
 assert.match(html, /먼저 볼 문항/);
 assert.equal((html.match(/aprc-parent-question-card/g) || []).length, 5);
 assert.match(html, /나머지 1개 문항/);
-assert.ok(html.indexOf('학부모 해석') < html.indexOf('실제 문항'));
+assert.doesNotMatch(html, /aprc-parent-question-label">(?:학부모 해석|이번 오답 의미|다음 수업 계획)</);
+assert.match(html, /aprc-parent-question-comment/);
+assert.ok(html.indexOf('시험 요약') < html.indexOf('다음 수업 계획'));
+assert.ok(html.indexOf('다음 수업 계획') < html.indexOf('실제 오답 문제'));
+assert.ok(html.indexOf('실제 오답 문제') < html.indexOf('학부모 안내 문구'));
+assert.ok(html.indexOf('aprc-parent-question-comment') < html.indexOf('실제 문항'));
+assert.match(html, /안녕하세요, AP수학입니다/);
+assert.doesNotMatch(html, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
 
 console.log('report school exam detail report test passed');

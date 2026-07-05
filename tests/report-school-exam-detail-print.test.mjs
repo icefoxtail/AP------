@@ -56,6 +56,8 @@ assert.doesNotMatch(doc, /aprc-pdf-header/);
 assert.match(doc, /<h1>민서 상세 학부모 리포트<\/h1>/);
 assert.doesNotMatch(doc, /기본값 · 학부모 상담\/출력용/);
 assert.equal((doc.match(/aprc-counsel-head/g) || []).length, 0);
+assert.doesNotMatch(doc, /서버 저장본|로컬 임시 저장|프리미엄 분석 적용/);
+assert.doesNotMatch(doc, /학부모 해석|이번 오답 의미/);
 
 const shell = context.reportCenterBuildSchoolExamDetailedPrintShell(doc);
 assert.match(shell, /report-center-school-exam-print-view/);

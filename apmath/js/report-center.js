@@ -3514,7 +3514,8 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const actionItems = typeof reportCenterBuildAcademyActionPlan === 'function'
         ? reportCenterBuildAcademyActionPlan(data)
         : [];
-    const planText = actionItems[0] || '다음 수업에서는 틀린 문항을 다시 풀면서 조건 표시와 계산 마무리를 함께 확인하겠습니다.';
+    const planText = (actionItems[0] || '틀린 문항을 다시 풀면서 조건 표시와 계산 마무리를 함께 확인하겠습니다.')
+        .replace(/^다음 수업에서는\s*/, '');
     const wrongFocus = wrongRows.length
         ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}로 확인된 문항은 문제의 조건을 정리하고 식으로 연결하는 과정을 다시 볼 필요가 있습니다.`
         : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
