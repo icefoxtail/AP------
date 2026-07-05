@@ -3493,6 +3493,70 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
     );
 }
 
+function reportCenterResolveAiParentToneBand(data = {}, selectedWrongRows = []) {
+    const session = data?.session || {};
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(selectedWrongRows) && selectedWrongRows.length
+        ? selectedWrongRows
+        : (Array.isArray(stats.wrongRows) ? stats.wrongRows : []);
+    const wrongCount = wrongRows.length;
+    const score = Number(session.score);
+    const overallAverage = Number(stats.overallAvg ?? stats.overallAverage ?? stats.averageScore);
+    const questionCount = Number(
+        session.question_count ?? session.questionCount ?? stats.questionCount ?? stats.totalQuestions ?? stats.totalCount
+    );
+    const correctRate = Number.isFinite(Number(stats.correctRate))
+        ? Number(stats.correctRate)
+        : (Number.isFinite(questionCount) && questionCount > 0 ? ((questionCount - wrongCount) / questionCount) * 100 : null);
+    const wrongRatio = Number.isFinite(questionCount) && questionCount > 0 ? wrongCount / questionCount : null;
+    const lowerScoreSupportMode = (
+        (Number.isFinite(score) && Number.isFinite(overallAverage) && score <= overallAverage - 10) ||
+        wrongCount >= 6 ||
+        (Number.isFinite(correctRate) && correctRate < 65) ||
+        (wrongRatio !== null && wrongRatio >= 0.35)
+    );
+    const perfect = !lowerScoreSupportMode && wrongCount === 0 && (
+        (Number.isFinite(score) && score >= 100) ||
+        (Number.isFinite(correctRate) && correctRate >= 100) ||
+        (Number.isFinite(questionCount) && questionCount > 0)
+    );
+    const high = !lowerScoreSupportMode && !perfect && (
+        (Number.isFinite(score) && score >= 90) ||
+        wrongCount <= 1
+    );
+    if (lowerScoreSupportMode) return 'lower';
+    if (perfect) return 'perfect';
+    if (high) return 'high';
+    return 'middle';
+}
+
+function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
+    const band = reportCenterResolveAiParentToneBand(data, selectedWrongRows);
+    const seeds = {
+        lower: {
+            positiveAnchor: '이번 평가는 점수 자체보다 앞으로 어떤 부분을 먼저 정리하면 좋을지 확인하는 자료로 보시면 좋겠습니다.',
+            teacherCareMessage: '학원에서는 확인할 문항을 차근차근 다시 살펴보며 조건 확인과 계산 검산 습관을 잡아가겠습니다.',
+            parentReassurance: '가정에서는 문제를 많이 다시 풀리기보다 풀이 흔적을 가볍게 확인해 주시면 충분합니다.'
+        },
+        middle: {
+            positiveAnchor: '지금의 학습 상태를 유지하면서 다시 확인할 부분을 줄이면 더 안정적인 결과로 이어질 수 있습니다.',
+            teacherCareMessage: '학원에서는 확인할 문항을 다시 살펴보며 조건 해석과 식 정리를 함께 점검하겠습니다.',
+            parentReassurance: '가정에서는 아이가 문제를 풀고 난 뒤 답을 한 번 더 확인하는 습관만 편하게 격려해 주시면 좋겠습니다.'
+        },
+        high: {
+            positiveAnchor: '현재 성취를 바탕으로 심화 확장까지 자연스럽게 이어갈 수 있습니다.',
+            teacherCareMessage: '학원에서는 현재의 좋은 결과를 유지하면서 심화 유형과 서술형 풀이까지 확장하겠습니다.',
+            parentReassurance: '가정에서는 아이가 풀이 과정을 짧게 설명해보는 습관을 편하게 격려해 주시면 좋겠습니다.'
+        },
+        perfect: {
+            positiveAnchor: '이번 평가는 전 문항을 정확히 해결하며 매우 안정적인 성취를 보여준 결과였습니다.',
+            teacherCareMessage: '학원에서는 현재의 정확도를 유지하면서 심화 응용과 서술형 풀이까지 확장하겠습니다.',
+            parentReassurance: '가정에서는 이번 성취를 충분히 칭찬해 주시면 좋겠습니다.'
+        }
+    };
+    return { band, ...seeds[band] };
+}
+
 function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const studentName = data?.student?.name || '학생';
     const session = data?.session || {};
@@ -3504,6 +3568,7 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const scoreText = Number.isFinite(score) ? `${score}점` : '점수 확인이 필요한 결과';
     const examTitle = session.exam_title || session.examTitle || '이번 시험';
     const positionText = reportCenterBuildScorePositionText({ ...data, session, stats });
+    const toneSeed = reportCenterGetAiParentToneSeed(data, wrongRows);
     const priorityRow = wrongRows[0] || null;
     const priorityNo = priorityRow?.questionNo ?? priorityRow?.question_no ?? '';
     const priorityUnit = priorityRow?.unit || priorityRow?.unitKey || priorityRow?.concept || '확인할 단원';
@@ -3528,9 +3593,9 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
             : '이번 오답은 조건을 정리하고 풀이 순서를 끝까지 이어가는 연습으로 충분히 보완할 수 있는 지점입니다.';
     return reportCenterAssertParentSafe([
         `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했습니다. 이번 시험 위치는 ${positionText}입니다.`,
-        `${wrongFocus} ${wrongText}.`,
-        `다음 수업에서는 ${planSentence}. ${supportText}`,
-        '학원에서는 이번 시험 결과를 바탕으로 다시 풀 문항과 유사 문항을 묶어 수업 안에서 확인하겠습니다.'
+        `${toneSeed.positiveAnchor} ${wrongFocus} ${wrongText}.`,
+        `다음 수업에서는 ${planSentence}. ${supportText} ${toneSeed.teacherCareMessage}`,
+        toneSeed.parentReassurance
     ].join('\n\n'));
 }
 
@@ -4316,10 +4381,11 @@ function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
 function reportCenterBuildEasyParentMessage(data) {
     const studentName = data?.student?.name || '학생';
     const wrongRows = data?.stats?.wrongRows || [];
+    const toneSeed = reportCenterGetAiParentToneSeed(data, wrongRows);
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n정답률이 낮았던 문항까지 정확히 해결한 만큼, 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n지금의 강점이 이어지도록 수업 안에서 난도 조절과 풀이 점검을 함께 진행하겠습니다. 믿고 맡겨 주셔서 감사합니다.`;
+        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n${toneSeed.positiveAnchor} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n${toneSeed.teacherCareMessage} ${toneSeed.parentReassurance}`;
     }
-    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다.\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 필요한 개념은 처음부터 다시 정리해 같은 유형 2~3문항으로 확인하겠습니다.\n수업에서는 이번 오답을 기준으로 다시 풀 문항과 유사 문항을 묶어 다음 시험까지 차근차근 준비해 나가겠습니다.`;
+    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다. ${toneSeed.positiveAnchor}\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 필요한 개념은 처음부터 다시 정리해 같은 유형 2~3문항으로 확인하겠습니다.\n${toneSeed.teacherCareMessage} ${toneSeed.parentReassurance}`;
 }
 
 function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {
