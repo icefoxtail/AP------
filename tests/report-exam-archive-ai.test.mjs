@@ -96,7 +96,7 @@ assert.equal(JSON.parse(q2.review_text).concept, '함수값 계산');
 assert.equal(JSON.parse(q2.review_text).source, 'ai');
 assert.equal(context.reportCenterGetExamReviews('archive-ai.js').meta.overview_text, '기존 총평');
 
-const serverSave = apiCalls.find(call => call.pathName === 'exams/exam-analysis');
+const serverSave = apiCalls.find(call => call.pathName === 'exam-analysis');
 assert.ok(serverSave, 'AI-created reviews should be sent through existing exam-analysis save route');
 assert.equal(serverSave.body.reviews.length, 1);
 assert.equal(serverSave.body.reviews[0].question_no, '2');

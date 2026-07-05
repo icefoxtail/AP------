@@ -74,7 +74,7 @@ vm.runInContext(source, context, { filename: 'apmath/js/report.js' });
 const saved = context.reportCenterSaveSchoolExamCounselReport('s1', 'sync-exam.js');
 assert.equal(saved.meaning, 'local meaning');
 assert.equal(calls[0].method, 'post');
-assert.equal(calls[0].pathName, 'exams/student-reports');
+assert.equal(calls[0].pathName, 'student-reports');
 assert.equal(calls[0].body.archive_file, 'exams/sync-exam.js');
 assert.equal(calls[0].body.student_id, 's1');
 assert.equal(calls[0].body.session_id, 'session-1');
@@ -83,7 +83,7 @@ assert.equal(context.reportCenterGetSavedCounselFields('s1', 'sync-exam.js').mea
 
 await context.reportCenterLoadStudentReportsFromServer('sync-exam.js');
 assert.equal(calls.at(-1).method, 'get');
-assert.match(calls.at(-1).pathName, /exams\/student-reports\?archive_file=exams%2Fsync-exam\.js/);
+assert.match(calls.at(-1).pathName, /^student-reports\?archive_file=exams%2Fsync-exam\.js/);
 assert.equal(context.reportCenterGetSavedCounselFields('s1', 'sync-exam.js').meaning, 'server meaning');
 assert.equal(context.reportCenterGetCachedAiAnalysis('session-1').summary, 'server ai summary');
 

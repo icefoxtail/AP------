@@ -2335,7 +2335,7 @@ function reportCenterNormalizeArchiveAiQuestion(item = {}) {
 async function reportCenterPersistExamAnalysisToServer(archiveFile, reviews = [], meta = null) {
     if (typeof api === 'undefined' || !api || typeof api.post !== 'function') return null;
     try {
-        return await api.post('exams/exam-analysis', {
+        return await api.post('exam-analysis', {
             archive_file: reportCenterNormalizeExamAnalysisArchiveKey(archiveFile),
             ...(meta ? { meta } : {}),
             reviews
@@ -3098,7 +3098,7 @@ async function reportCenterSyncStudentReportToServer(archiveFile, studentId, pat
         body.ai_json = reportCenterNormalizeJsonPayload(patch.ai_json ?? patch.aiJson);
     }
     try {
-        return await api.post('exams/student-reports', body);
+        return await api.post('student-reports', body);
     } catch (e) {
         console.warn('[reportCenterSyncStudentReportToServer] failed:', e);
         return null;
@@ -3157,7 +3157,7 @@ async function reportCenterLoadStudentReportsFromServer(archiveFile) {
     if (typeof api === 'undefined' || !api || typeof api.get !== 'function') return null;
     store[archiveKey] = 'loading';
     try {
-        const r = await api.get(`exams/student-reports?archive_file=${encodeURIComponent(archiveKey)}`);
+        const r = await api.get(`student-reports?archive_file=${encodeURIComponent(archiveKey)}`);
         if (!r || r.success === false) throw new Error(r?.message || r?.error || 'student report load failed');
         const rows = Array.isArray(r.rows) ? r.rows : [];
         reportCenterUpsertStudentReportRows(rows);
