@@ -3776,6 +3776,7 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
 function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, options = {}) {
     const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
     if (!session) return '<section class="aprc-counsel-report">상세 리포트를 만들 시험 기록이 없습니다.</section>';
+    const hideInnerHeader = options.hideInnerHeader === true;
     const data = reportCenterWithArchiveDetails(
         reportCenterGetExamReportData(studentId, session.id),
         options.archiveDetails || null
@@ -3803,12 +3804,12 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         : '';
     return `
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
-            <header class="aprc-counsel-head">
+            ${hideInnerHeader ? '' : `<header class="aprc-counsel-head">
                 <div>
                     <div class="aprc-counsel-kicker">기본값 · 학부모 상담/출력용${premiumBadge}</div>
                     <h3>${reportCenterEscape(student.name || '학생')} 상세 학부모 리포트</h3>
                 </div>
-            </header>
+            </header>`}
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">시험 요약</div>
                 <p>${reportCenterEscape(summaryText).replace(/\n/g, '<br>')}</p>
@@ -3895,17 +3896,20 @@ function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, 
         return '<main class="aprc-pdf-document"><section class="aprc-pdf-panel aprc-empty-box">학교시험 상세 리포트를 만들 시험 기록이 없습니다.</section></main>';
     }
     const archiveFile = session.archive_file || session.archiveFile || '';
+    const studentName = student.name || '학생';
     return `
         <main class="aprc-school-detail-document" data-report-school-exam-print="detail">
             <header class="aprc-school-detail-head">
                 <div>
                     <div class="aprc-school-detail-brand">AP MATH REPORT</div>
-                    <h1>학교시험 상세 리포트</h1>
-                    <p>틀린 문제와 다음 수업 계획을 함께 정리합니다.</p>
+                    <h1>${reportCenterEscape(studentName)} 상세 학부모 리포트</h1>
+                    <p>학교시험 오답과 다음 수업 관리 계획을 정리했습니다.</p>
                 </div>
             </header>
             ${reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, {
-                archiveDetails: data.archiveDetails
+                archiveDetails: data.archiveDetails,
+                printMode: true,
+                hideInnerHeader: true
             })}
         </main>
     `;
