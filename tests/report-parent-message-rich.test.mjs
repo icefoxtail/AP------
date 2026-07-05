@@ -47,7 +47,10 @@ assert.match(parentMessage, /다음 수업에서는/);
 assert.match(parentMessage, /조건|계산|검산/);
 assert.match(parentMessage, /실수로 이어지는 부분을 줄이면 더 안정적인 결과/);
 assert.match(parentMessage, /조건 해석과 식 정리/);
+assert.match(parentMessage, /중3 과정은 고등 수학으로 넘어가기 전 마지막 정리 시기/);
+assert.match(parentMessage, /고등 내신 상위권으로 가기 위해서는/);
 assert.doesNotMatch(parentMessage, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이|로 확인됩니다|문항였던 문항|책임 있게 이어가겠습니다/);
+assert.doesNotMatch(parentMessage, /예상됩니다|보장|무조건|반드시 1등급/);
 
 const lowerData = {
   student: { id: 's2', name: '하위권' },
@@ -66,6 +69,52 @@ assert.equal(context.reportCenterResolveAiParentToneBand(lowerData, lowerData.st
 assert.match(lowerMessage, /점수 자체보다 앞으로 어떤 부분을 먼저 정리/);
 assert.match(lowerMessage, /문제를 많이 다시 풀게 하기보다 풀이 흔적/);
 
+const middle1InternalData = {
+  student: { id: 's5', name: '중1', grade: '중1' },
+  session: { id: 'e5', student_id: 's5', exam_title: '1학기 원내평가', score: 76, question_count: 20 },
+  stats: {
+    overallAvg: 78,
+    wrongRows: [
+      { questionNo: 4, unit: '정수와 유리수', correctRate: 58 },
+      { questionNo: 9, unit: '문자와 식', correctRate: 62 }
+    ]
+  }
+};
+const middle1Message = context.reportCenterBuildRichParentMessage(middle1InternalData, middle1InternalData.stats.wrongRows);
+assert.equal(context.reportCenterResolveParentReportType(middle1InternalData), 'internalAssessment');
+assert.equal(context.reportCenterResolveGradeStage(middle1InternalData), 'middle1');
+assert.match(middle1Message, /학교 시험이 없더라도 중학교 수학의 풀이 방식에 적응/);
+assert.match(middle1Message, /첫 내신 시험에서 흔들리지 않도록 준비/);
+
+const middle2Data = {
+  student: { id: 's6', name: '중2', grade: '중2' },
+  session: { id: 'e6', student_id: 's6', exam_title: '학교 기출시험', score: 84, question_count: 20 },
+  stats: {
+    overallAvg: 80,
+    wrongRows: [{ questionNo: 11, unit: '연립방정식', correctRate: 66 }]
+  }
+};
+const middle2Message = context.reportCenterBuildRichParentMessage(middle2Data, middle2Data.stats.wrongRows);
+assert.equal(context.reportCenterResolveGradeStage(middle2Data), 'middle2');
+assert.match(middle2Message, /다음 학기와 중3 과정에서 반복되지 않도록 관리/);
+assert.doesNotMatch(middle2Message, /NaN점/);
+
+const middle3LowerData = {
+  student: { id: 's7', name: '중3하위', grade: '중3' },
+  session: { id: 'e7', student_id: 's7', exam_title: '학교 기출시험', score: 58, question_count: 20 },
+  stats: {
+    overallAvg: 76,
+    wrongRows: Array.from({ length: 8 }, (_, index) => ({
+      questionNo: index + 1,
+      unit: '이차함수',
+      correctRate: 35
+    }))
+  }
+};
+const middle3LowerMessage = context.reportCenterBuildRichParentMessage(middle3LowerData, middle3LowerData.stats.wrongRows);
+assert.equal(context.reportCenterResolveAiParentToneBand(middle3LowerData, middle3LowerData.stats.wrongRows), 'lower');
+assert.match(middle3LowerMessage, /고등 선행을 빠르게 나가기보다 중등 핵심 단원의 빈틈/);
+
 const highData = {
   student: { id: 's3', name: '상위권' },
   session: { id: 'e3', student_id: 's3', exam_title: '단원평가', score: 94, question_count: 20 },
@@ -79,8 +128,21 @@ assert.equal(context.reportCenterResolveAiParentToneBand(highData, highData.stat
 assert.match(highMessage, /심화 유형/);
 assert.match(highMessage, /풀이 과정을 짧게 설명/);
 
+const middle3HighData = {
+  student: { id: 's8', name: '중3상위', grade: '중3' },
+  session: { id: 'e8', student_id: 's8', exam_title: '학교 기출시험', score: 94, question_count: 20 },
+  stats: {
+    overallAvg: 82,
+    wrongRows: [{ questionNo: 18, unit: '도형', correctRate: 72 }]
+  }
+};
+const middle3HighMessage = context.reportCenterBuildRichParentMessage(middle3HighData, middle3HighData.stats.wrongRows);
+assert.equal(context.reportCenterResolveAiParentToneBand(middle3HighData, middle3HighData.stats.wrongRows), 'high');
+assert.match(middle3HighMessage, /1등급권을 목표로 관리해볼 수 있는 상태/);
+assert.doesNotMatch(middle3HighMessage, /예상됩니다|보장|무조건|반드시 1등급/);
+
 const perfectData = {
-  student: { id: 's4', name: '만점' },
+  student: { id: 's4', name: '만점', grade: '중3' },
   session: { id: 'e4', student_id: 's4', exam_title: '단원평가', score: 100, question_count: 20 },
   stats: { overallAvg: 84, wrongRows: [] }
 };
@@ -88,6 +150,8 @@ const perfectMessage = context.reportCenterBuildRichParentMessage(perfectData, p
 assert.equal(context.reportCenterResolveAiParentToneBand(perfectData, perfectData.stats.wrongRows), 'perfect');
 assert.match(perfectMessage, /전 문항을 정확히 해결/);
 assert.match(perfectMessage, /충분히 칭찬/);
+assert.match(perfectMessage, /1등급권을 목표로 관리해볼 수 있는 좋은 상태/);
 assert.doesNotMatch(perfectMessage, /오답/);
+assert.doesNotMatch(perfectMessage, /예상됩니다|보장|무조건|반드시 1등급/);
 
 console.log('report parent message rich test passed');

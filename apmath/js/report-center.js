@@ -3557,6 +3557,104 @@ function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
     return { band, ...seeds[band] };
 }
 
+function reportCenterResolveParentReportType(data = {}) {
+    const session = data?.session || {};
+    const raw = [
+        session.reportType,
+        session.report_type,
+        session.assessmentType,
+        data?.reportType,
+        data?.report_type,
+        session.exam_title,
+        session.examTitle
+    ].map(value => String(value || '')).join(' ');
+    if (/원내|내부|internal/i.test(raw)) return 'internalAssessment';
+    if (/단원|unit/i.test(raw)) return 'unitTest';
+    return 'schoolPastExamResult';
+}
+
+function reportCenterResolveGradeStage(data = {}) {
+    const session = data?.session || {};
+    const student = data?.student || {};
+    const stats = data?.stats || {};
+    const candidates = [
+        student.grade,
+        student.school_grade,
+        student.gradeName,
+        session.grade,
+        session.school_grade,
+        stats.grade,
+        stats.className,
+        stats.class_name,
+        stats.classTitle
+    ];
+    for (const value of candidates) {
+        const compact = String(value || '').replace(/\s+/g, '');
+        if (!compact) continue;
+        const normalized = normalizeReportGrade(compact);
+        const middle = normalized.match(/^중([123])$/) || compact.match(/중(?:학교)?([123])(?:학년)?/);
+        if (middle) return `middle${middle[1]}`;
+        const high = normalized.match(/^고([123])$/) || compact.match(/고(?:등|등학교)?([123])(?:학년)?/);
+        if (high) return `high${high[1]}`;
+        const elementary = compact.match(/초(?:등|등학교)?([456])(?:학년)?|예비중/);
+        if (elementary) return 'elementaryOrPrep';
+    }
+    return '';
+}
+
+function reportCenterBuildLongTermPlanMessage(data = {}, toneBand = 'middle', reportType = 'schoolPastExamResult') {
+    const gradeStage = reportCenterResolveGradeStage(data);
+    const isInternal = reportType === 'internalAssessment';
+    const bandPlans = {
+        lower: {
+            middle3: '고등 선행을 빠르게 나가기보다 중등 핵심 단원의 빈틈을 줄여 고등 수학을 버틸 수 있는 기본기를 만드는 것이 우선입니다.',
+            high: '지금 단계에서는 새 진도를 무리하게 늘리기보다, 반복 감점이 생기는 단원과 풀이 습관을 먼저 정리해 남은 내신에서 확보할 수 있는 점수를 늘리겠습니다.'
+        },
+        middle: {
+            middle3: '고등 내신 상위권으로 가기 위해서는 지금부터 풀이 순서와 조건 해석의 흔들림을 줄이는 것이 중요합니다.',
+            high: '앞으로는 문제 수를 늘리는 것보다 조건 해석, 시간 안배, 답안 마무리의 흔들림을 줄여 안정적인 등급 관리로 이어가겠습니다.'
+        },
+        high: {
+            middle3: '현재 결과가 유지된다면 고등 내신에서도 1등급권을 목표로 관리해볼 수 있는 상태입니다.',
+            high: '현재 정확도를 유지한다면 학교별 고난도 유형과 서술형 감점 관리를 통해 상위권 등급을 목표로 수업을 이어갈 수 있습니다.'
+        },
+        perfect: {
+            middle3: '이번처럼 정확도와 풀이 완성도가 유지된다면 고등 내신에서도 1등급권을 목표로 관리해볼 수 있는 좋은 상태입니다.',
+            high: '현재 성취를 유지하면서 학교별 고난도 변형과 서술형 답안 완성도를 더하면 상위권 등급을 안정적으로 목표로 할 수 있습니다.'
+        }
+    };
+    const band = bandPlans[toneBand] || bandPlans.middle;
+    if (gradeStage === 'elementaryOrPrep') {
+        return '앞으로의 관리 방향도 함께 말씀드리면, 지금 단계에서는 어려운 문제를 많이 푸는 것보다 조건을 정확히 읽고 식으로 옮기는 습관을 만드는 것이 중요합니다. 계산 정확도, 문장제 해석, 풀이 과정을 쓰는 습관을 함께 관리해 중학교 수학으로 자연스럽게 이어가겠습니다.';
+    }
+    if (gradeStage === 'middle1') {
+        const intro = isInternal
+            ? '중1 과정은 학교 시험이 없더라도 중학교 수학의 풀이 방식에 적응하는 중요한 시기입니다.'
+            : '중1 과정은 첫 내신을 준비하기 전에 중학교 수학의 풀이 방식과 평가 문항에 익숙해지는 시기입니다.';
+        return `앞으로의 관리 방향도 함께 말씀드리면, ${intro} 이번 결과를 바탕으로 조건 읽기, 식 세우기, 풀이 마무리 습관을 잡아가며 이후 첫 내신 시험에서 흔들리지 않도록 준비하겠습니다.`;
+    }
+    if (gradeStage === 'middle2') {
+        return '앞으로의 관리 방향도 함께 말씀드리면, 중2 과정은 함수, 도형, 연립방정식처럼 이후 학년과 고등 과정으로 이어지는 단원이 많습니다. 이번 결과에서 확인된 약한 유형은 이번 시험 범위로만 보지 않고, 다음 학기와 중3 과정에서 반복되지 않도록 관리하겠습니다.';
+    }
+    if (gradeStage === 'middle3') {
+        const bandText = band.middle3 || bandPlans.middle.middle3;
+        return `앞으로의 관리 방향도 함께 말씀드리면, 중3 과정은 고등 수학으로 넘어가기 전 마지막 정리 시기입니다. 이번 학교 기출시험 결과를 기준으로 현재의 정확도와 풀이 안정성을 확인하고, 고등 내신에서 필요한 조건 해석, 식 전개, 서술형 답안 완성도까지 이어질 수 있도록 관리하겠습니다. ${bandText}`;
+    }
+    if (gradeStage === 'high1') {
+        const bandText = band.high || bandPlans.middle.high;
+        return `앞으로의 관리 방향도 함께 말씀드리면, 고1은 고등 내신의 기준이 처음 정해지는 시기입니다. 이번 결과를 바탕으로 단순 정답 여부보다 풀이 과정의 정확성, 시간 안배, 서술형 감점 가능성을 함께 관리하겠습니다. ${bandText}`;
+    }
+    if (gradeStage === 'high2') {
+        const bandText = band.high || bandPlans.middle.high;
+        return `앞으로의 관리 방향도 함께 말씀드리면, 고2 과정은 내신과 수능형 사고가 함께 연결되는 시기입니다. 이번 결과에서 드러난 약점은 학교 시험 범위 안에서만 보지 않고, 이후 선택 과목과 수능형 문제 해결력까지 이어질 수 있도록 관리하겠습니다. ${bandText}`;
+    }
+    if (gradeStage === 'high3') {
+        const bandText = band.high || bandPlans.middle.high;
+        return `앞으로의 관리 방향도 함께 말씀드리면, 고3은 한 번의 시험 결과가 내신 마무리와 입시 전략에 직접 연결되는 시기입니다. 이번 결과를 기준으로 남은 시험에서 점수를 확보할 수 있는 단원과 반복 감점이 발생하는 유형을 분리해 관리하겠습니다. ${bandText}`;
+    }
+    return '';
+}
+
 function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const studentName = data?.student?.name || '학생';
     const session = data?.session || {};
@@ -3569,6 +3667,8 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const examTitle = session.exam_title || session.examTitle || '이번 시험';
     const positionText = reportCenterBuildScorePositionText({ ...data, session, stats });
     const toneSeed = reportCenterGetAiParentToneSeed(data, wrongRows);
+    const reportType = reportCenterResolveParentReportType(data);
+    const longTermPlan = reportCenterBuildLongTermPlanMessage(data, toneSeed.band, reportType);
     const priorityRow = wrongRows[0] || null;
     const priorityNo = priorityRow?.questionNo ?? priorityRow?.question_no ?? '';
     const priorityUnit = priorityRow?.unit || priorityRow?.unitKey || priorityRow?.concept || '확인할 단원';
@@ -3601,8 +3701,9 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
         `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했습니다. 이번 시험 위치는 ${positionText}입니다.`,
         `${toneSeed.positiveAnchor} ${wrongFocus} ${wrongText}.`,
         `다음 수업에서는 ${planSentence}. ${supportText} ${toneSeed.teacherCareMessage}`,
-        toneSeed.parentReassurance
-    ].join('\n\n'));
+        toneSeed.parentReassurance,
+        longTermPlan
+    ].filter(Boolean).join('\n\n'));
 }
 
 function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = {}) {
@@ -4205,13 +4306,15 @@ function reportCenterBuildScorePositionText(data) {
     const stats = data.stats;
     if (!session || !stats) return '비교 자료가 부족합니다.';
     const score = Number(session.score);
+    const overallAvg = Number(stats.overallAvg);
+    const classAvg = Number(stats.classAvg);
     const parts = [];
-    if (Number.isFinite(score) && stats.overallAvg !== null) {
-        const diff = score - stats.overallAvg;
+    if (Number.isFinite(score) && Number.isFinite(overallAvg)) {
+        const diff = score - overallAvg;
         parts.push(`전체 평균 대비 ${diff >= 0 ? '+' : ''}${diff}점`);
     }
-    if (Number.isFinite(score) && stats.classAvg !== null) {
-        const diff = score - stats.classAvg;
+    if (Number.isFinite(score) && Number.isFinite(classAvg)) {
+        const diff = score - classAvg;
         parts.push(`${stats.className || '소속 반'} 평균 대비 ${diff >= 0 ? '+' : ''}${diff}점`);
     }
     return parts.length ? parts.join(' · ') : '동일 평가 비교 자료가 부족합니다.';
