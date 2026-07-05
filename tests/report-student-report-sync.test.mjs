@@ -71,7 +71,7 @@ context.window = context;
 vm.createContext(context);
 vm.runInContext(source, context, { filename: 'apmath/js/report.js' });
 
-const saved = context.reportCenterSaveSchoolExamCounselReport('s1', 'sync-exam.js');
+const saved = await context.reportCenterSaveSchoolExamCounselReport('s1', 'sync-exam.js');
 assert.equal(saved.meaning, 'local meaning');
 assert.equal(calls[0].method, 'post');
 assert.equal(calls[0].pathName, 'student-reports');
@@ -97,7 +97,7 @@ assert.equal(JSON.parse(calls.at(-1).body.ai_json).summary, 'fresh ai');
 
 context.api.post = async () => { throw new Error('offline'); };
 currentFormFields = [['meaning', 'offline local']];
-const offline = context.reportCenterSaveSchoolExamCounselReport('s1', 'sync-exam.js');
+const offline = await context.reportCenterSaveSchoolExamCounselReport('s1', 'sync-exam.js');
 assert.equal(offline.meaning, 'offline local');
 assert.equal(
   JSON.parse(context.state.db.exam_analysis_meta[0].counsel_reports).s1.meaning,
