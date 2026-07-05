@@ -42,9 +42,9 @@ assert.match(parentMessage, /전체 평균 대비 -9점/);
 assert.match(parentMessage, /중3B 평균 대비 -2점/);
 assert.match(parentMessage, /19번/);
 assert.match(parentMessage, /이차함수와 그래프/);
-assert.match(parentMessage, /전체 정답률 63%/);
+assert.match(parentMessage, /정답률이 63%/);
 assert.match(parentMessage, /다음 수업에서는/);
 assert.match(parentMessage, /조건|계산|검산/);
-assert.doesNotMatch(parentMessage, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
+assert.doesNotMatch(parentMessage, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이|로 확인됩니다|문항였던 문항|책임 있게 이어가겠습니다/);
 
 console.log('report parent message rich test passed');
