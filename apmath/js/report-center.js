@@ -1549,6 +1549,21 @@ function reportCenterEnsureWideOverlay() {
         .aprc-pick-mini-btn:hover { background:var(--surface); border-color:rgba(var(--primary-rgb),0.22); }
         .aprc-pick-mini-btn:active { transform:scale(0.96); }
         .aprc-pick-mini-btn:focus-visible { outline:none; box-shadow:0 0 0 4px rgba(var(--primary-rgb),0.14); }
+        /* 상담/상세 리포트 카드 (aprc-counsel-*) — 마크업만 있고 정의가 없어 겹침/벽글로 렌더되던 것 */
+        .aprc-counsel-report { display:block; padding:16px; border:1px solid var(--border); border-radius:14px; background:var(--surface); }
+        .aprc-counsel-report + .aprc-counsel-report { margin-top:12px; }
+        .aprc-counsel-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin:0 0 12px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+        .aprc-counsel-head > div { min-width:0; }
+        .aprc-counsel-head h3 { margin:4px 0 0; font-size:16px; font-weight:900; color:var(--text); line-height:1.35; }
+        .aprc-counsel-kicker { font-size:11px; font-weight:800; color:var(--secondary); line-height:1.4; }
+        .aprc-counsel-section { margin:0 0 12px; }
+        .aprc-counsel-section:last-child { margin-bottom:0; }
+        .aprc-counsel-section p { margin:0; font-size:13px; font-weight:600; color:var(--text); line-height:1.7; word-break:keep-all; }
+        .aprc-counsel-title { margin-bottom:5px; font-size:12px; font-weight:900; color:var(--secondary); }
+        .aprc-counsel-field { display:block; margin:0 0 12px; }
+        .aprc-counsel-field b { display:block; margin-bottom:5px; font-size:12px; font-weight:900; color:var(--secondary); }
+        .aprc-counsel-field textarea { width:100%; min-height:84px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); font-family:inherit; font-size:13px; line-height:1.65; box-sizing:border-box; resize:vertical; }
+        .aprc-counsel-actions { display:flex; gap:8px; margin-top:4px; }
         /* 섹션/버튼 규격 통일 (클리닉 section·apms-button 톤) */
         .aprc-section { padding:14px; border-radius:14px; background:var(--surface); border:1px solid var(--border); }
         .aprc-section-title { font-size:14px; font-weight:900; color:var(--text); margin-bottom:10px; }
@@ -2404,7 +2419,7 @@ async function reportCenterRequestSchoolExamArchiveAiAnalysis(archiveFile, butto
 }
 
 function reportCenterEnsureExamAnalysisTableEvents() {
-    if (typeof document === 'undefined' || document.__aprcQtableEvents) return;
+    if (typeof document === 'undefined' || typeof document.addEventListener !== 'function' || document.__aprcQtableEvents) return;
     document.__aprcQtableEvents = true;
     document.addEventListener('click', event => {
         const printButton = event.target?.closest?.('[data-exam-analysis-print]');
@@ -2436,12 +2451,13 @@ function reportCenterEnsureExamAnalysisTableEvents() {
         detail.toggleAttribute('hidden', !open);
         const btn = row.querySelector('[data-qtable-toggle]');
         if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    }, true); // 캡처 단계: 모달 컨테이너의 onclick stopPropagation이 버블을 끊어도 동작해야 함
 }
 
 function reportCenterBuildExamDashboard(studentId, archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
     reportCenterLoadStudentReportsFromServer(archiveKey);
+    reportCenterEnsureExamAnalysisTableEvents(); // 행 펼침/인쇄/AI 버튼 위임 핸들러 (정의만 있고 미호출이던 버그)
     const group = reportCenterGetSchoolExamGroupByKey(archiveFile) || reportCenterGetSchoolExamGroupByKey(archiveKey);
     const hub = reportCenterBuildExamHubList().find(row => row.archiveFile === archiveKey) || { archiveFile: archiveKey, title: archiveKey, takers: 0, reviewCount: 0, blueprintCount: 0 };
     const reviews = reportCenterGetExamReviews(archiveKey);
@@ -3282,9 +3298,11 @@ function reportCenterAssertParentSafe(text) {
         .replace(/묻는 것/g, '확인한 내용')
         .replace(/함정/g, '실수하기 쉬운 부분')
         .replace(/풀이 포인트/g, '다시 정리할 부분')
-        .replace(/전체\s*정답률\s*\d+(?:\.\d+)?%/g, '많은 학생이 어려워한 문항')
-        .replace(/반\s*정답률\s*\d+(?:\.\d+)?%/g, '우리 반에서도 쉽지 않았던 문항')
-        .replace(/데이터 없음|확인 불가/g, '')
+        // "정답률 7%의 매우 어려운 문항" 같은 서술형(%의)은 학부모 허용 — 통계 나열만 치환
+        .replace(/전체\s*정답률\s*\d+(?:\.\d+)?%(?!의|로)/g, '많은 학생이 어려워한 문항')
+        .replace(/반\s*정답률\s*\d+(?:\.\d+)?%(?!의|로)/g, '우리 반에서도 쉽지 않았던 문항')
+        // 구문 전체 단위로 제거 (부분 삭제 시 "문항 원문 "처럼 덜렁 남는 것 방지)
+        .replace(/문항 원문 확인 불가|비교 자료 부족|전체 정답률 자료 부족|자료 부족|데이터 없음|확인 불가/g, '')
         .replace(/\s{2,}/g, ' ')
         .replace(/\s+([,.])/g, '$1')
         .trim();
@@ -3321,6 +3339,55 @@ function reportCenterBuildParentSafeQuestionComment(row = {}, detail = null, opt
         ? reportHumanizeApplyApMathTone(`${base}${trapSentence}`, 'parent')
         : `${base}${trapSentence}`;
     return reportCenterAssertParentSafe(reportCenterNormalizeMathText(toned));
+}
+
+// 학부모용 문항 3블록 서술: 해석(정답률+난도 헤드라인/이유) · 오답 의미 · 다음 수업 계획.
+// 정답률/태그/개념/함정(자연문일 때만)을 근거로 생성 — 근거 밖 내용 창작 금지.
+function reportCenterBuildParentQuestionNarrative(row = {}, detail = null) {
+    const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
+    const concept = String(reviewData.concept || row.concept || detail?.concept || row.unit || row.unitKey || detail?.unit || '').trim();
+    const rate = Number.isFinite(Number(row.correctRate ?? detail?.correctRate)) ? Math.round(Number(row.correctRate ?? detail?.correctRate)) : null;
+    const tag = reportCenterResolveErrorTag(reviewData, rate);
+    const rawTrap = reportCenterLooksLikeCodeText(reviewData.trap || '') ? '' : String(reviewData.trap || '').trim();
+    const trap = reportCenterTrapReadsNatural(rawTrap) ? rawTrap.replace(/[.。]+$/g, '') : '';
+
+    const headline = rate === null
+        ? (concept ? `${concept}을(를) 확인하는 문항입니다.` : '핵심 개념 적용을 확인하는 문항입니다.')
+        : rate < 45 ? `전체 정답률 ${rate}%의 매우 어려운 최상위 문항입니다.`
+        : rate < 65 ? `전체 정답률 ${rate}%의 난도 있는 문항입니다.`
+        : rate < 85 ? `전체 정답률 ${rate}%로 기본과 응용의 경계에 있는 문항입니다.`
+        : `전체 정답률 ${rate}%로 대부분 맞힌 기본 문항입니다.`;
+
+    const reason = trap
+        ? `${trap} 부분에서 판단이 갈리는 문항이었습니다.`
+        : concept
+            ? `${concept} 개념을 문제 상황에 연결하는 과정이 핵심인 문항입니다.`
+            : '';
+
+    const meaningByTag = {
+        '계산·검산': '개념을 몰라서라기보다 계산과 마무리 확인 과정에서 아쉬움이 있었던 것으로 보입니다.',
+        '풀이 순서': '접근 방향은 잡았지만 풀이 단계를 이어가는 과정에서 흔들린 것으로 보입니다.',
+        '조건 해석': '조건을 식으로 옮기고 범위를 끝까지 확인하는 과정에서 흔들린 것으로 보입니다.',
+        '개념 재정리': '이 개념을 문제에 적용하는 단계가 아직 낯선 것으로 보입니다.'
+    };
+    const actionByTag = {
+        '계산·검산': '풀이 후 검산 습관을 수업에서 바로 점검해 같은 실수가 반복되지 않게 하겠습니다.',
+        '풀이 순서': '같은 유형의 풀이 단계를 짧게 반복해 흐름을 안정적으로 잡겠습니다.',
+        '조건 해석': '조건을 정리하고 식을 세우는 첫 단계를 다음 수업에서 다시 다지겠습니다.',
+        '개념 재정리': '기본 개념부터 다시 정리한 뒤 비슷한 문제로 차근차근 적용해 보겠습니다.'
+    };
+    const meaning = meaningByTag[tag] || '다음 수업에서 풀이 시작점을 함께 확인하겠습니다.';
+    const action = (rate !== null && rate < 45)
+        ? '최상위 난도 문항 대비 훈련을 다음 시험 준비에 더해 진행하겠습니다.'
+        : (actionByTag[tag] || '같은 유형을 다음 수업에서 다시 풀이하며 확인하겠습니다.');
+
+    const clean = value => reportCenterAssertParentSafe(reportCenterNormalizeMathText(String(value || '')));
+    return {
+        headline: clean(headline),
+        reason: clean(reason),
+        meaning: clean(meaning),
+        action: clean(action)
+    };
 }
 
 function reportCenterSelectPriorityWrongRows(wrongRows = [], limit = 5) {
@@ -3565,7 +3632,8 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         showContent: true,
         showSolution: false,
         showTeach: false,
-        anonymized: false
+        anonymized: false,
+        parentNarrative: true
     });
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     // 프리미엄 분석(학생별 저장분)이 있으면 문구를 그것으로 대체해 퀄리티를 올린다.
@@ -3578,9 +3646,6 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const parentText = (isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildCompactParentMessage(data);
     const premiumBadge = isPremium
         ? ' <span style="padding:2px 8px; border-radius:999px; background:rgba(26,92,255,0.1); color:var(--primary); font-size:11px; font-weight:900;">프리미엄 분석 적용</span>'
-        : '';
-    const archiveStatus = data.archiveDetails?.message
-        ? `<div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:6px;">${reportCenterEscape(data.archiveDetails.message)}</div>`
         : '';
     return `
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
@@ -3600,9 +3665,8 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">실제 오답 문제</div>
-                ${archiveStatus}
                 ${wrongRows.length
-                    ? `<div class="aprc-qreview-list">${questionCards || '<div style="font-size:12px; font-weight:700; color:var(--secondary);">문항 원문/분석 자료가 아직 없습니다.</div>'}</div>`
+                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 다음 수업에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
             <section class="aprc-counsel-section">
@@ -5411,6 +5475,16 @@ function reportCenterInjectPrintViewStyle() {
             padding:18px;
             box-sizing:border-box;
         }
+
+        /* 학교시험 상세 출력: 상담/상세 카드 스타일 (인쇄용 — 흑백 안전) */
+        .report-print-view .aprc-counsel-report { display:block; padding:0; border:0; background:transparent; }
+        .report-print-view .aprc-counsel-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin:0 0 14px; padding-bottom:10px; border-bottom:1.5px solid #0f172a; }
+        .report-print-view .aprc-counsel-head h3 { margin:4px 0 0; font-size:17px; font-weight:900; color:#0f172a; line-height:1.35; }
+        .report-print-view .aprc-counsel-kicker { font-size:11px; font-weight:800; color:#64748b; }
+        .report-print-view .aprc-counsel-head button { display:none; }
+        .report-print-view .aprc-counsel-section { margin:0 0 14px; break-inside:avoid; page-break-inside:avoid; }
+        .report-print-view .aprc-counsel-section p { margin:0; font-size:12.5px; font-weight:600; color:#111827; line-height:1.75; word-break:keep-all; }
+        .report-print-view .aprc-counsel-title { margin-bottom:5px; font-size:11.5px; font-weight:900; color:#475569; }
 
         .report-print-toolbar {
             position:sticky;
