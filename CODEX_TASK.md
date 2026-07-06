@@ -1,1003 +1,434 @@
+맞습니다 형님.
+이번 수정은 **구조는 좋아졌는데, 학부모용 문장 설계가 아직 잘못됐습니다.**
+
+핵심 문제는 이겁니다.
+
+1. **출력 상단 겹침**
+   현재 출력 문서에 `학교시험 상세 리포트` 헤더가 있고, 그 바로 아래 상세 리포트 내부에 또 `기본값 · 학부모 상담/출력용 / 유예준 상세 학부모 리포트` 헤더가 들어갑니다. 즉 헤더가 2중입니다. 코드도 실제로 출력 header 다음에 `reportCenterBuildSchoolExamDetailedParentReport()`를 바로 붙이고 있고, 그 내부에도 별도 counsel header가 있습니다.
+   이건 **겹침/중복의 원인**입니다.
+
+2. **문항 카드가 너무 “시스템 분석표” 같음**
+   지금 카드는 `학부모 해석 / 이번 오답 의미 / 다음 수업 계획 / 실제 문항`으로 나뉘어 있습니다. 코드상 그렇게 렌더링합니다.
+   그런데 형님이 원하는 건 라벨 3개가 따로 보이는 게 아니라, **한 문단으로 자연스럽게 읽히는 학부모 코멘트**입니다.
+
+3. **학부모 안내 문구가 너무 짧고 소스를 못 씀**
+   지금은 점수, 평균 대비, 오답 문항, 단원, 정답률, 문항별 분석, 다음 수업 계획까지 재료가 있는데, 마지막 문구는 “학원에서 책임 있게 이어가겠습니다” 정도로 끝납니다. 이건 데이터 활용이 너무 적습니다.
+
+4. **표현이 추상적임**
+   “풀이 시작점을 안정적으로 잡겠습니다”는 학부모가 읽으면 무슨 말인지 애매합니다.
+   이건 이렇게 바꿔야 합니다.
+
+   * 나쁜 표현: 풀이 시작점을 안정적으로 잡겠습니다.
+   * 좋은 표현: 문제를 읽고 **처음에 세워야 할 식과 조건을 스스로 정리하는 연습**을 하겠습니다.
+   * 좋은 표현: 조건을 먼저 표시하고, 식을 세운 뒤 범위까지 확인하는 순서를 반복하겠습니다.
 
 ---
 
-# `/goal` 학교시험 분석 3차 — 학부모 리포트 출력 안정화 · 문항별 상담문 고도화
+# Codex 수정 태스크 — 학교시험 학부모 리포트 문장/출력 4차 패치
 
-작성일: 2026-07-05
-대상: AP MATH OS / 리포트 센터 / 학교시험 분석
+## GOAL
 
-## GOAL 한 줄
+학교시험 상세 학부모 리포트를 **분석표 느낌이 아니라 실제 학부모에게 보내는 상담 문서**처럼 바꾼다.
 
-학교시험 분석의 학생별 상세 학부모 리포트를 **깨지지 않는 출력물**로 만들고, 각 오답 문항이 **학부모가 이해할 수 있는 상담 문장**으로 설명되도록 고도화한다.
+이번 패치의 핵심은 다음 두 가지다.
 
-현재 2차 작업으로 문항 분석표, 학생별 서버 저장, 시험지 단위 AI 분석 기반은 들어갔다. 이번 3차에서는 이미 완료된 반/학생 선택 UI, 문항 분석표 테이블화, `student-reports` API, `exam-analysis` API, D1 migration은 반복하지 않는다.
-
----
-
-## 0. 현재 코드 기준점
-
-현재 확인된 상태:
-
-* 학생별 상세 리포트는 `reportCenterBuildSchoolExamDetailedParentReport()`에서 생성된다. 실제 오답 문제 카드를 `reportCenterBuildQuestionReviewCardsForReport()`로 만들고, `parentNarrative: true` 옵션을 넘긴다.
-* 학부모 문항 해석 함수 `reportCenterBuildParentQuestionNarrative()`가 이미 존재하며, 정답률 구간과 태그에 따라 `headline / reason / meaning / action`을 생성한다.
-* 학생별 상세 출력은 `reportCenterBuildSchoolExamDetailedPrintDocument()`와 `reportCenterOpenSchoolExamDetailedPrintView()`가 담당한다. 다만 기존 `.aprc-pdf-header`, `.aprc-title`, `.aprc-subtitle` 구조를 재사용한다.
-* 학생별 상담 수정본과 AI 결과는 `student-reports` API로 서버 동기화된다. `reportCenterSyncStudentReportToServer()`가 `api.post('student-reports', ...)`를 호출한다.
-* 시험지 단위 분석표 출력은 별도 print shell을 사용한다. 이 방식은 안정적이므로 학생별 상세 리포트 출력도 이 패턴을 참고한다.
+1. 출력 상단 겹침과 중복 헤더 제거
+2. 문항별 설명을 `학부모 해석 / 오답 의미 / 다음 계획` 라벨 분리형이 아니라 **하나의 자연스러운 코멘트 문단**으로 통합
 
 ---
 
-## 1. 작업 범위
+## STEP 1. 출력 상단 헤더 중복 제거
 
-이번 태스크는 아래 5개만 한다.
+### 문제
 
-1. 학생별 상세 학부모 리포트 출력 깨짐/덮임 수정
-2. 학부모용 문항 카드 구조 개선
-3. 문항별 상담 문장 품질 강화
-4. 저장/AI/원문 로딩 상태를 선생님이 알 수 있게 표시
-5. 테스트와 하니스로 회귀 방지
+현재 출력 문서에는 상단 헤더가 2개다.
 
----
+* 출력 문서 헤더: `학교시험 상세 리포트`
+* 상세 리포트 내부 헤더: `기본값 · 학부모 상담/출력용 / 유예준 상세 학부모 리포트`
 
-## 2. 작업 금지 범위
+그래서 화면에서 제목/선/본문이 겹쳐 보인다.
 
-이번 라운드에서 하지 않는다.
+### 수정 방향
 
-* 반 선택/학생 선택 위치 변경 재작업
-* 학생 카드 compact grid 재작업
-* 시험 대시보드 접힘 구조 재작업
-* `exam_student_reports` 테이블 재설계
-* `student-reports` API 경로 변경
-* `exam-analysis` API 경로 변경
-* 기존 평가 리포트 전체 리디자인
-* QR/OMR 입력 구조 변경
-* 아카이브 엔진 수정
-* Cloudflare Worker 배포
-* D1 migration 추가
+`reportCenterBuildSchoolExamDetailedPrintDocument()`에서 출력 전용일 때는 내부 리포트 헤더를 숨기거나, 내부 리포트가 헤더 없이 렌더되도록 옵션을 넘긴다.
 
-단, 기존 CSS 충돌을 막기 위한 **프론트 CSS/HTML 구조 수정**은 허용한다.
-
----
-
-# LOOP 실행 규약
-
-각 STEP은 반드시 아래 순서로 진행한다.
-
-```text
-STEP 시작
-→ 현재 코드 위치 확인
-→ 최소 수정
-→ 관련 테스트 작성/수정
-→ node 테스트 통과
-→ 회귀 테스트 통과
-→ git diff 자체 검토
-→ STEP 커밋
-→ 다음 STEP
-```
-
-Codex는 중간에 “완료”라고 하지 않는다.
-STEP 1~6 전체가 끝난 뒤 최종 보고서를 작성한다.
-
-브랜치 정책:
-
-```text
-현재 로컬 main에서 작업
-브랜치 생성 금지
-푸시 금지
-워커 배포 금지
-마이그레이션 실행 금지
-```
-
----
-
-# STEP 1 — 학생별 상세 리포트 출력 전용 CSS 분리
-
-## 목표
-
-형님이 캡처한 것처럼 제목, 선, 상단바, 본문이 겹치거나 덮이는 문제를 없앤다.
-
-현재 학생별 상세 리포트 출력은 기존 평가 리포트의 `.aprc-pdf-header` 스타일을 재사용해서 충돌 가능성이 있다. 이번 STEP에서는 **학교시험 학생 상세 리포트 전용 print shell/style**을 만든다.
-
-## 대상 파일
-
-```text
-apmath/js/report-center.js
-tests/report-school-exam-detail-print.test.mjs  신규 또는 기존 테스트 보강
-```
-
-## 작업 내용
-
-### 1. 전용 wrapper 강화
-
-현재:
+예시:
 
 ```js
-<main class="aprc-pdf-document aprc-school-exam-detail-print">
+reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, {
+  archiveDetails: data.archiveDetails,
+  printMode: true,
+  hideInnerHeader: true
+})
 ```
 
-이 구조를 유지하되, 출력 전용 root를 명확히 한다.
+그리고 `reportCenterBuildSchoolExamDetailedParentReport()` 내부에서:
 
-```html
-<div id="report-print-view" class="report-print-view report-center-school-exam-print-view">
-  <div class="report-print-toolbar no-print">...</div>
-  <div class="report-print-stage" id="report-print-document-root">
-    <main class="aprc-school-detail-document">
+```js
+const hideInnerHeader = options.hideInnerHeader === true;
 ```
 
-`aprc-school-detail-document`를 새 전용 루트로 사용한다.
-
-### 2. 기존 `.aprc-pdf-header` 의존 제거
-
-학생별 상세 리포트 출력 문서에서는 아래 기존 구조를 쓰지 않는다.
-
-```html
-<header class="aprc-pdf-header">
-  <div class="aprc-brand">AP MATH REPORT</div>
-  <div class="aprc-title">학교시험 상세 리포트</div>
-  <div class="aprc-subtitle">...</div>
-</header>
+```js
+${hideInnerHeader ? '' : `
+  <header class="aprc-counsel-head">
+    ...
+  </header>
+`}
 ```
 
-대신 전용 구조로 변경한다.
+### 출력 헤더에는 학생명을 포함
+
+출력 헤더를 이렇게 바꾼다.
 
 ```html
 <header class="aprc-school-detail-head">
   <div class="aprc-school-detail-brand">AP MATH REPORT</div>
-  <h1>학교시험 상세 리포트</h1>
-  <p>틀린 문제와 다음 수업 계획을 함께 정리합니다.</p>
+  <h1>유예준 상세 학부모 리포트</h1>
+  <p>학교시험 오답과 다음 수업 관리 계획을 정리했습니다.</p>
 </header>
 ```
 
-### 3. 전용 CSS 추가
-
-`reportCenterInjectPrintViewStyle()` 또는 학교시험 상세 전용 style injection에 아래 성격의 CSS를 추가한다.
-
-필수 기준:
-
-```css
-.report-center-school-exam-print-view {
-  background: #eef2f7;
-  min-height: 100vh;
-}
-
-.report-center-school-exam-print-view .report-print-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.report-center-school-exam-print-view .report-print-stage {
-  max-width: 210mm;
-  margin: 0 auto;
-  padding: 16mm 0;
-}
-
-.aprc-school-detail-document {
-  width: 186mm;
-  margin: 0 auto;
-  background: #fff;
-  color: #111827;
-  padding: 14mm;
-  box-sizing: border-box;
-}
-
-.aprc-school-detail-head {
-  position: relative;
-  display: block;
-  padding-bottom: 6mm;
-  margin-bottom: 8mm;
-  border-bottom: 2px solid #111827;
-  break-inside: avoid;
-}
-
-.aprc-school-detail-head h1 {
-  margin: 2mm 0 1.5mm;
-  font-size: 22px;
-  line-height: 1.25;
-  font-weight: 900;
-}
-
-.aprc-school-detail-head p {
-  margin: 0;
-  line-height: 1.5;
-  color: #475569;
-  font-weight: 700;
-}
-```
-
-인쇄 시:
-
-```css
-@media print {
-  .no-print,
-  .report-print-toolbar,
-  .app-header,
-  .mobile-header,
-  .topbar,
-  #report-center-wide-overlay {
-    display: none !important;
-  }
-
-  html,
-  body {
-    background: #fff !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .report-center-school-exam-print-view,
-  .report-print-stage {
-    background: #fff !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .aprc-school-detail-document {
-    width: 100% !important;
-    max-width: 186mm !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-  }
-
-  .aprc-school-detail-head,
-  .aprc-counsel-section,
-  .aprc-qreview-card,
-  .aprc-parent-question-card {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-}
-```
-
-### 4. 기존 앱 UI 덮임 방지
-
-`reportCenterOpenSchoolExamDetailedPrintView()`에서 root 교체 전 아래를 더 확실히 제거한다.
-
-```js
-document.querySelectorAll(
-  '#report-center-wide-overlay, .report-center-wide-overlay, .wide-overlay, .modal-backdrop'
-).forEach(el => el.remove());
-```
-
-그리고 `document.body`에 전용 class를 붙였다가 리포트 센터로 돌아갈 때 제거한다.
-
-```js
-document.body.classList.add('aprc-school-print-mode');
-```
-
-`openReportCenterHome()` 또는 리포트센터 복귀 버튼에서 제거.
-단, 복귀 경로가 여러 개이므로 작은 정리 함수로 묶어 재사용한다.
-
-```js
-function reportCenterExitSchoolExamPrintMode() {
-  document.body.classList.remove('aprc-school-print-mode');
-}
-```
-
-이 함수는 최소한 `openReportCenterHome()`, 출력 화면의 리포트 센터 버튼, 다른 리포트 출력 화면 진입 전에 호출한다.
-브라우저 뒤로가기까지 완전히 통제하지는 않되, 앱 내부 이동에서는 print mode class가 남지 않게 한다.
-
-### 5. 인라인 출력 배지 제거
-
-학생별 상세 학부모 리포트의 `프리미엄 분석 적용` 배지는 인라인 style로 두지 않는다.
-전용 class를 둔다.
-
-```html
-<span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>
-```
-
-print CSS 안에서 이 배지까지 함께 관리한다.
-
-## DoD
-
-* 제목과 가로선이 겹치지 않는다.
-* 앱 상단바가 출력 문서 위에 덮이지 않는다.
-* 툴바는 화면에서는 보이지만 인쇄에서는 사라진다.
-* 첫 페이지 상단에 여백이 과도하게 생기지 않는다.
-* `학교시험 상세 리포트` 제목이 한 줄 또는 자연스러운 두 줄로 표시된다.
-* 기존 평가 리포트 출력은 깨지지 않는다.
-
-## 테스트
-
-신규 테스트:
-
-```text
-tests/report-school-exam-detail-print.test.mjs
-```
-
-검증 내용:
-
-* `reportCenterBuildSchoolExamDetailedPrintDocument()` 결과에 `.aprc-school-detail-document` 존재
-* `.aprc-pdf-header`에 의존하지 않음
-* `reportCenterBuildSchoolExamDetailedPrintShell()` 결과에 `.report-center-school-exam-print-view` 존재
-* `no-print` toolbar 존재
-* print CSS 안에 `.app-header`, `.mobile-header`, `.topbar` 숨김 규칙 존재
-* `break-inside:avoid` 포함
-* `aprc-school-print-mode` class를 제거하는 복귀 함수 존재
-* 프리미엄 분석 배지가 인라인 style이 아니라 class 기반임
+즉, 출력물에서는 `학교시험 상세 리포트`보다 **학생명 중심**이 낫다.
 
 ---
 
-# STEP 2 — 학부모용 문항 카드 전용 구조 추가
+## STEP 2. 문항 카드의 3분할 라벨 제거
 
-## 목표
+### 현재 문제
 
-현재는 실제 오답 문제가 나오지만, 학부모 입장에서 “왜 틀렸고, 얼마나 어려웠고, 다음에 뭘 할 건지”가 한눈에 들어오지 않는다.
-
-이번 STEP에서는 기존 선생님용 `QuestionReviewCard`와 별도로 **학부모용 오답 문항 카드**를 만든다.
-
-## 대상 파일
+현재 문항 카드는 이런 구조다.
 
 ```text
-apmath/js/report-center.js
-tests/report-parent-question-card.test.mjs 신규
+학부모 해석
+전체 정답률 63%의 난도 있는 문항입니다...
+
+이번 오답 의미
+조건을 식으로 옮기고...
+
+다음 수업 계획
+조건을 정리하고...
 ```
 
-## 작업 내용
+이건 학부모용 문서라기보다 분석툴 출력처럼 보인다.
 
-### 1. 새 함수 추가
+### 목표 형태
+
+형님이 원하는 건 이런 형태다.
+
+```text
+19번은 전체 정답률 63%의 난도 있는 문항으로, 이차함수 그래프가 모든 사분면을 지나는 조건을 식으로 정리해야 하는 문제였습니다. 이번 오답은 개념 자체를 모른다기보다, 조건을 식으로 옮기고 범위를 끝까지 확인하는 과정에서 흔들린 것으로 보입니다. 다음 수업에서는 그래프 조건을 먼저 표시하고, 식을 세운 뒤 범위까지 확인하는 순서로 다시 풀어보겠습니다.
+```
+
+즉, 문항별로 **하나의 문단**을 만든다.
+
+### 새 함수 추가
 
 ```js
-function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = {}) {}
+function reportCenterBuildParentQuestionParagraph(row, detail = null) {}
 ```
 
-입력 row는 기존 `stats.wrongRows`를 사용한다. detail은 archive question detail이다.
+반환값은 문자열 하나.
 
-카드 구조는 STEP 4의 최종 순서와 처음부터 맞춘다.
-문항 meta에는 문항별 판단에 필요한 `전체 정답률`, `반 정답률`을 표시한다.
-이 숫자는 문항 카드의 근거 정보이므로 허용한다.
+구성:
+
+```text
+{문항번호}번은 {정답률/난도} 문항으로, {문항 핵심} 문제였습니다. 이번 오답은 {오답 의미}로 보입니다. 다음 수업에서는 {구체적 수업 계획}을 진행하겠습니다.
+```
+
+---
+
+## STEP 3. `reportCenterBuildParentWrongQuestionCard()` 구조 변경
+
+### 현재 구조
+
+현재는 카드 내부가 4개 섹션이다.
+
+* 학부모 해석
+* 이번 오답 의미
+* 다음 수업 계획
+* 실제 문항
+
+### 변경 구조
 
 ```html
 <article class="aprc-parent-question-card">
-  <header class="aprc-parent-question-head">
-    <div>
-      <div class="aprc-parent-question-no">8번 · 이차방정식</div>
-      <div class="aprc-parent-question-meta">
-        객관식 · 4점 · 매우 어려움 · 전체 정답률 7% · 반 정답률 25%
-      </div>
-    </div>
-    <span class="aprc-parent-question-badge">최상위 문항</span>
+  <header>
+    19번 · 이차함수와 그래프
+    객관식 · 5점 · 상 · 전체 정답률 63% · 반 정답률 33%
   </header>
 
-  <section class="aprc-parent-question-narrative">
-    <div class="aprc-parent-question-label">학부모 해석</div>
-    <p>...</p>
-  </section>
-
-  <section class="aprc-parent-question-meaning">
-    <div class="aprc-parent-question-label">이번 오답 의미</div>
-    <p>...</p>
-  </section>
-
-  <section class="aprc-parent-question-action">
-    <div class="aprc-parent-question-label">다음 수업 계획</div>
-    <p>...</p>
+  <section class="aprc-parent-question-comment">
+    <p>19번은 전체 정답률 63%의 난도 있는 문항으로...</p>
   </section>
 
   <section class="aprc-parent-question-original">
-    <div class="aprc-parent-question-label">실제 문항</div>
+    실제 문항
     ...
   </section>
 </article>
 ```
 
-### 2. 표시 정보
+라벨은 최대한 줄인다.
 
-각 카드에 반드시 표시한다.
+* `학부모 해석`
+* `이번 오답 의미`
+* `다음 수업 계획`
 
-* 문항 번호
-* 단원
-* 유형
-* 배점
-* 난도
-* 전체 정답률
-* 반 정답률
-* 문항 원문
-* 선택지
-* 학부모 해석
-* 이번 오답 의미
+이 세 라벨 삭제.
+
+대신:
+
+```text
+문항 코멘트
+```
+
+또는 라벨 자체를 없애도 됨.
+
+---
+
+## STEP 4. 문장 금지어/교체어 정리
+
+아래 표현은 학부모 리포트에서 금지한다.
+
+```text
+풀이 시작점
+안정적으로 잡겠습니다
+흔들림
+관리하겠습니다만 반복
+확인하겠습니다만 반복
+오답 단원
+핵심 풀이
+```
+
+### 교체 기준
+
+| 기존 표현       | 교체 표현                      |
+| ----------- | -------------------------- |
+| 풀이 시작점      | 문제를 읽고 처음 세워야 할 식과 조건      |
+| 안정적으로 잡겠습니다 | 스스로 정리할 수 있도록 반복하겠습니다      |
+| 조건 해석 유형    | 조건을 식으로 옮기는 문제             |
+| 핵심 풀이       | 필요한 개념과 풀이 순서              |
+| 오답 단원       | 틀린 문항과 관련된 단원              |
+| 관리하겠습니다     | 수업에서 다시 풀고 유사 문항으로 확인하겠습니다 |
+
+---
+
+## STEP 5. 학부모 안내 문구 강화
+
+### 현재 문제
+
+현재 학부모 안내 문구는 너무 짧다.
+
+```text
+안녕하세요, AP수학입니다. 유예준 학생의 이번 시험 결과는 학원에서 다음 수업과 오답 관리에 반영해 책임 있게 이어가겠습니다.
+```
+
+이건 너무 일반적이다. 실제로는 사용할 수 있는 소스가 많다.
+
+### 사용해야 할 소스
+
+학부모 안내 문구에는 최소한 아래 소스를 사용한다.
+
+* 학생명
+* 시험명
+* 점수
+* 전체 평균 대비
+* 반 평균 대비
+* 오답 문항 수
+* 가장 우선 볼 문항 번호
+* 가장 많이 나온 오답 태그
+* 주요 단원
+* 쉬운 문항 실수 여부
+* 고난도 문항 오답 여부
 * 다음 수업 계획
 
-정답은 기본 숨김으로 한다.
-선생님 옵션으로만 표시 가능하게 한다.
+### 새 함수 추가
 
 ```js
-showAnswer: false 기본
+function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {}
 ```
 
-### 3. 문항 원문 처리
-
-문항 원문이 있으면 표시한다.
-
-```js
-detail.content || row.content
-```
-
-선택지가 있으면 번호와 함께 표시한다.
-
-문항 원문이 없으면:
+### 목표 문구 예시
 
 ```text
-문항 원문을 불러오지 못했습니다. 수업에서는 해당 문항을 직접 다시 확인합니다.
+안녕하세요, AP수학입니다. 유예준 학생은 이번 학교시험에서 전체 평균보다 9점 낮고, 중3B 평균보다 2점 낮은 결과를 보였습니다. 특히 19번처럼 조건을 식으로 옮기고 범위까지 확인해야 하는 문항에서 오답이 확인되었습니다.
+
+이번 오답은 단순히 답을 몰랐다기보다, 문제의 조건을 정리하고 식으로 연결하는 과정에서 실점한 것으로 보입니다. 다음 수업에서는 19번 문항을 다시 풀면서 그래프 조건을 표시하고, 식을 세운 뒤 범위까지 확인하는 순서를 반복하겠습니다.
+
+학원에서는 이번 시험 결과를 다음 수업과 오답 관리에 바로 반영해, 같은 유형에서 다시 실점하지 않도록 유사 문항까지 이어서 확인하겠습니다.
 ```
 
-단, 학부모 출력에서는 “아카이브”, “원문 로드 실패” 같은 내부 표현 금지.
+### 오답 적은 학생용
 
-### 4. 카드 CSS
-
-전용 CSS:
-
-```css
-.aprc-parent-question-card {
-  border: 1px solid #dbeafe;
-  border-radius: 14px;
-  padding: 14px;
-  background: #fff;
-  break-inside: avoid;
-}
-
-.aprc-parent-question-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: flex-start;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.aprc-parent-question-no {
-  font-size: 15px;
-  font-weight: 900;
-  color: #111827;
-}
-
-.aprc-parent-question-meta {
-  margin-top: 4px;
-  font-size: 12px;
-  font-weight: 800;
-  color: #64748b;
-}
-
-.aprc-parent-question-badge {
-  border-radius: 999px;
-  padding: 4px 9px;
-  font-size: 11px;
-  font-weight: 900;
-  background: #eff6ff;
-  color: #1d4ed8;
-  white-space: nowrap;
-}
-
-.aprc-parent-question-label {
-  margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: 900;
-  color: #1d4ed8;
-}
-
-.aprc-parent-question-card p {
-  margin: 0;
-  line-height: 1.65;
-  font-size: 13px;
-  color: #111827;
-}
+```text
+오답 문항 수가 많지는 않지만, 정답률이 높았던 기본 문항에서 실점이 있어 계산 과정과 답안 마무리 점검이 필요합니다.
 ```
 
-## DoD
+### 고난도 문항 오답용
 
-* 학부모 상세 리포트의 실제 오답 문제 영역이 기존 raw 카드가 아니라 새 parent card로 렌더된다.
-* 각 카드에서 정답률과 난도와 단원이 한눈에 보인다.
-* 문항 원문보다 “학부모 해석/오답 의미/다음 계획”이 더 잘 보인다.
-* 카드 내부 순서가 `헤더 → 학부모 해석 → 이번 오답 의미 → 다음 수업 계획 → 실제 문항`이다.
-* 내부 용어 `archive`, `blueprint`, `review_text`, `코호트`가 학부모 카드에 나오지 않는다.
+```text
+정답률이 낮았던 고난도 문항은 상위권 변별 문항에 해당하므로, 다음 시험 대비 과정에서 조건 정리와 활용 문제 훈련을 따로 진행하겠습니다.
+```
+
+### 쉬운 문항 실수용
+
+```text
+전체 정답률이 높은 문항에서의 실점은 개념 부족보다는 계산, 부호, 검산 과정의 실수 가능성이 큽니다. 다음 수업에서 풀이 후 확인 습관을 다시 잡겠습니다.
+```
 
 ---
 
-# STEP 3 — 문항별 학부모 상담문 고도화
+## STEP 6. 다음 수업 계획 문구 재작성
 
-## 목표
-
-현재 `reportCenterBuildParentQuestionNarrative()`는 구조는 있으나, 문장이 아직 일반론에 머물 수 있다.
-정답률, 태그, 단원, 함정, 풀이 포인트를 조합해서 더 구체적인 학부모 문장으로 만든다.
-
-## 대상 파일
+### 현재 문제
 
 ```text
-apmath/js/report-center.js
-apmath/js/report-text.js 필요 시
-tests/report-parent-question-narrative.test.mjs 신규 또는 기존 보강
+오답 단원의 핵심 풀이를 다음 수업에서 다시 풀이하며 확인하겠습니다.
+같은 조건 해석 유형을 짧게 반복해 풀이 시작점을 안정적으로 잡겠습니다.
+계산 과정과 답안 마무리는 수업 중 바로 점검해 같은 실수가 이어지지 않게 관리하겠습니다.
 ```
 
-## 작업 내용
+이건 문장이 딱딱하고 의미가 애매하다.
 
-### 1. narrative 로직 확장
-
-현재 반환:
-
-```js
-{ headline, reason, meaning, action }
-```
-
-유지하되, 내부 생성 기준을 강화한다.
-
-### 2. 정답률 구간별 headline
-
-```js
-rate >= 85:
-  "전체 정답률 90% 안팎의 기본 문항입니다."
-
-65 <= rate < 85:
-  "기본 개념을 알고 있어도 풀이 순서에서 실수가 나올 수 있는 문항입니다."
-
-45 <= rate < 65:
-  "전체적으로도 쉽지 않았던 응용 문항입니다."
-
-rate < 45:
-  "전체 정답률 N%의 매우 어려운 최상위 문항입니다."
-```
-
-숫자는 문항 카드 meta에 이미 있으므로, 문장에서는 반복 횟수를 줄인다. 단, 최상위 문항은 숫자를 한 번 허용한다.
-
-### 3. 태그별 meaning/action 개선
-
-태그별 문장:
-
-#### 계산·검산
+### 목표 문구
 
 ```text
-대부분의 학생이 해결한 문항이기 때문에 개념 부족보다는 계산, 부호, 검산 과정에서 실수가 있었을 가능성이 큽니다.
-다음 수업에서는 풀이 후 마지막 확인 습관을 바로 점검하겠습니다.
+다음 수업에서는 틀린 문항을 다시 풀면서, 문제의 조건을 먼저 표시하고 어떤 식을 세워야 하는지부터 확인하겠습니다.
+비슷한 조건 해석 문항을 2~3개 더 풀어, 문장을 수식으로 옮기는 과정을 반복하겠습니다.
+풀이가 끝난 뒤에는 부호, 계산, 답안 범위를 다시 확인하는 습관까지 함께 점검하겠습니다.
 ```
 
-#### 풀이 순서
+### 수정 함수
+
+현재 action plan 계열 함수에서 “풀이 시작점” 표현을 제거한다.
+
+검색어:
 
 ```text
-개념은 알고 있어도 어느 단계부터 정리할지 흔들리면 실점할 수 있는 문항입니다.
-같은 유형을 짧게 반복해 풀이 순서를 안정적으로 잡겠습니다.
+풀이 시작점
+안정적으로
+오답 단원의 핵심 풀이
 ```
 
-#### 조건 해석
-
-```text
-조건을 식으로 옮기고 범위를 끝까지 확인하는 과정이 핵심이었습니다.
-활용 문제에서 문장을 수식으로 바꾸는 연습을 함께 보완하겠습니다.
-```
-
-#### 개념 재정리
-
-```text
-해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.
-기본 개념을 다시 확인한 뒤 유사 문제로 적용 연습을 진행하겠습니다.
-```
-
-### 4. 단원 키워드별 보정
-
-문항 unit/concept에 아래 키워드가 있으면 action을 더 구체화한다.
-
-* 함수 / 그래프 / 활용
-  → `상황 해석 → 식 세우기 → 값 확인` 순서 언급
-* 이차방정식 / 판별식 / 근
-  → `조건 정리와 식 변형` 언급
-* 인수분해
-  → `부호 확인과 전개 검산` 언급
-* 부등식 / 범위
-  → `범위 표시와 경계값 확인` 언급
-* 확률 / 경우의 수
-  → `조건 분류와 중복 확인` 언급
-* 도형
-  → `그림에서 조건을 표시하고 관계식을 세우기` 언급
-
-### 5. 함정/trap 반영
-
-`reviewData.trap`이 자연문이면 reason에 반영한다.
-단, 수식만 있거나 코드처럼 보이면 제외한다.
-
-이미 있는 `reportCenterTrapReadsNatural()`을 재사용한다.
-
-### 6. 학부모 금지 표현 필터
-
-다음 표현은 최종 문장에 나오면 안 된다.
-문항 카드 meta의 `전체 정답률 N%`, `반 정답률 N%`는 이번 3차 출력에서 허용한다.
-다만 본문 상담 문장에는 통계 숫자를 반복하지 말고, 필요하면 “기본 문항”, “난도 있는 문항”, “최상위 문항”처럼 해석형 문장으로 쓴다.
-
-```text
-코호트
-blueprint
-archive
-아카이브
-review_text
-raw
-데이터 없음
-확인 불가
-자료 부족
-못함
-부족함
-위험
-심각
-```
-
-단, 내부 선생님용 분석표에는 raw 표현 허용.
-
-## DoD
-
-* 쉬운 문항 오답은 “계산/검산 실수 가능성”으로 해석된다.
-* 정답률 낮은 문항은 “최상위/고난도 대비”로 해석된다.
-* 함수/활용/조건해석 문항은 “문해력/조건 정리/식 세우기” 계열 문장이 나온다.
-* 문항마다 `headline`, `reason`, `meaning`, `action`이 서로 중복되지 않는다.
-* 한 리포트 안에서 같은 문장 시작이 반복되지 않는다.
+전부 교체.
 
 ---
 
-# STEP 4 — 학부모 상세 리포트의 “문항 요약 → 실제 문제” 순서 조정
+## STEP 7. 학부모 상세 리포트 최종 레이아웃
 
-## 목표
-
-학부모가 받았을 때 문제 원문이 먼저 크게 보이면 부담스럽다.
-상담 리포트는 “진단 → 이유 → 실제 문제 근거” 순서가 더 좋다.
-
-## 대상 파일
+최종 리포트 순서:
 
 ```text
-apmath/js/report-center.js
-tests/report-school-exam-detail-report.test.mjs 신규 또는 보강
+AP MATH REPORT
+유예준 상세 학부모 리포트
+학교시험 오답과 다음 수업 관리 계획을 정리했습니다.
+
+1. 시험 요약
+이번 시험은 전체 평균 대비 -9점, 중3B 평균 대비 -2점입니다.
+특정 문항에서 조건 해석과 계산 마무리 실수가 확인되었습니다.
+
+2. 다음 수업 계획
+다음 수업에서는 틀린 문항을 다시 풀면서 조건을 식으로 옮기는 과정을 먼저 확인하겠습니다.
+비슷한 유형을 짧게 반복해 같은 실수가 반복되지 않도록 하겠습니다.
+
+3. 실제 오답 문제
+[19번 카드]
+19번은 전체 정답률 63%의 난도 있는 문항으로...
+실제 문항
+
+4. 학부모 안내 문구
+안녕하세요, AP수학입니다...
 ```
 
-## 작업 내용
+주의:
 
-`reportCenterBuildSchoolExamDetailedParentReport()`의 실제 오답 문제 섹션 구조를 바꾼다.
+* `기본값 · 학부모 상담/출력용` 출력물에서는 삭제
+* `학부모 해석 / 이번 오답 의미 / 다음 수업 계획` 라벨 삭제
+* 내부 상태 badge는 선생님 화면에만 표시
+* PDF에는 `서버 저장본`, `프리미엄 분석 적용`, `로컬 임시 저장` 표시 금지
 
-현재 느낌:
+---
 
-```text
-실제 오답 문제
-- 문제 원문
-- 문항 분석
+## 테스트 추가/수정
+
+### 신규/수정 테스트
+
+```bash
+node tests/report-parent-question-card.test.mjs
+node tests/report-parent-question-narrative.test.mjs
+node tests/report-school-exam-detail-report.test.mjs
+node tests/report-school-exam-detail-print.test.mjs
+node tests/report-parent-message-rich.test.mjs
 ```
 
-개선:
+### 테스트 조건
+
+1. 학부모 문항 카드에 아래 라벨이 나오면 실패
 
 ```text
-실제 오답 문제
-먼저 볼 문항 3~5개를 중심으로 정리했습니다.
-
-[문항 카드]
-1. 학부모 해석
-2. 이번 오답 의미
-3. 다음 수업 계획
-4. 실제 문항
-```
-
-즉 카드 내부 순서를:
-
-```text
-헤더
 학부모 해석
 이번 오답 의미
 다음 수업 계획
-실제 문항
 ```
 
-로 한다.
+2. 대신 하나의 문단이 있어야 함
 
-문항 원문은 접힘 처리하지 않는다. PDF에서 접힘은 의미가 없으므로 항상 표시하되, 아래쪽에 둔다.
+```text
+19번은
+이번 오답은
+다음 수업에서는
+```
 
-### 우선순위
+3. 금지어 나오면 실패
 
-오답 문항이 많으면 전부 보여주면 리포트가 너무 길어진다.
+```text
+풀이 시작점
+안정적으로 잡겠습니다
+오답 단원의 핵심 풀이
+```
+
+4. 출력물에 내부 헤더 나오면 실패
+
+```text
+기본값 · 학부모 상담/출력용
+```
+
+5. 학부모 안내 문구가 너무 짧으면 실패
 
 기준:
 
-* 오답 1~5개: 전부 표시
-* 오답 6개 이상: 우선 문항 5개 표시 + 나머지는 “다음 수업에서 순차 확인” 문구
-
-우선순위는 기존 `reportCenterSelectPriorityWrongRows()`를 그대로 바꾸지 말고, 학부모 상세 리포트 전용 선택 함수로 감싼다.
-기존 함수는 다른 화면에서 쓰일 수 있으므로 의미를 바꾸지 않는다.
-
 ```js
-function reportCenterSelectParentReportWrongRows(wrongRows = [], limit = 5) {}
+parentMessage.length >= 180
 ```
 
-이 전용 함수 안에서 정답률 높은데 틀린 문항을 우선 보여준다.
+6. 학부모 안내 문구에 최소 3개 이상 포함
 
-단, 최상위 문항도 1개는 포함한다.
-
-로직:
-
-```js
-priorityMistakes = 정답률 높은 오답 상위 3개
-hardQuestions = 정답률 낮은 오답 상위 2개
-merge unique up to 5
-```
-
-merge 기준은 `questionNo` 우선, 없으면 `questionId/id`를 사용한다.
-중복 제거 후 5개가 안 차면 기존 우선순위 정렬 결과에서 남은 문항을 채운다.
-
-## DoD
-
-* 학부모 상세 리포트는 문제보다 해석이 먼저 보인다.
-* 오답 6개 이상이어도 PDF가 지나치게 길어지지 않는다.
-* 쉬운 실수 문항과 고난도 문항이 모두 최소 1개 이상 반영된다.
-* 나머지 오답은 “클리닉/수업에서 순차 확인” 문장으로 안내된다.
-* `reportCenterSelectPriorityWrongRows()`의 기존 동작은 깨지지 않는다.
+* 평균 대비
+* 오답 문항 번호
+* 단원명
+* 정답률
+* 다음 수업에서 할 일
 
 ---
 
-# STEP 5 — 저장/AI/원문 로딩 상태 표시
+## 최종 DoD
 
-## 목표
+이번 수정은 아래가 모두 만족되어야 완료.
 
-선생님이 지금 데이터가 서버에 저장됐는지, AI 분석이 적용됐는지, 문항 원문이 로드됐는지 알 수 있어야 한다.
-
-## 대상 파일
-
-```text
-apmath/js/report-center.js
-tests/report-school-exam-status-badges.test.mjs 신규
-```
-
-## 작업 내용
-
-### 1. 학생별 화면 상단에 상태 badge 추가
-
-학생별 상세 화면 `reportCenterBuildStudentView()` 안에 상태 줄 추가.
-
-표시 예:
-
-```text
-원문 로드 완료 · 서버 저장본 적용 · 프리미엄 분석 적용
-```
-
-가능 상태:
-
-* `문항 원문 로드 완료`
-* `문항 원문 일부 없음`
-* `서버 저장본 적용`
-* `로컬 임시 저장`
-* `프리미엄 분석 적용`
-* `기본 문구 사용 중`
-
-### 2. 서버 저장 실패 toast 개선
-
-현재 `reportCenterSyncStudentReportToServer()`는 실패해도 console warn만 한다.
-이 함수 자체는 조용히 실패해도 되지만, 저장 버튼을 누른 직접 액션에서는 결과를 알려야 한다.
-
-API 경로는 현재 프론트가 쓰는 `student-reports`를 유지한다.
-이번 STEP에서 `exams/student-reports` 같은 새 경로로 바꾸지 않는다.
-
-`reportCenterSaveSchoolExamCounselReport()`에서:
-
-```js
-const syncResult = await reportCenterSyncStudentReportToServer(...)
-if (syncResult) toast('상담 리포트를 서버에 저장했습니다.', 'success')
-else toast('서버 저장은 실패했습니다. 이 화면에는 임시 저장되었습니다.', 'warn')
-```
-
-주의: 현재 함수는 sync를 await 하지 않는다.
-이번 STEP에서 `reportCenterSaveSchoolExamCounselReport`를 async로 바꾸고 onclick 호출이 문제없는지 확인한다.
-로컬 저장은 서버 저장보다 먼저 끝내며, 서버 저장 실패가 로컬 저장을 되돌리면 안 된다.
-저장 후 화면 재렌더는 toast 이후 한 번만 실행해 중복 모달 갱신을 피한다.
-
-### 3. AI 저장 결과 표시
-
-`reportCenterRequestSchoolExamAiAnalysis()`는 현재 AI 결과를 서버에 sync 요청한다.
-여기서 sync 결과를 await하고 성공/실패 메시지를 분리한다.
-
-* AI 생성 성공 + 서버 저장 성공
-* AI 생성 성공 + 서버 저장 실패, 로컬 캐시만 적용
-* AI 실패
-
-AI 결과 역시 서버 저장 실패 시 `reportCenterSetCachedAiAnalysis()`로 반영된 로컬 캐시는 유지한다.
-
-### 4. 원문 로딩 상태
-
-archive details 캐시가 있으면:
-
-```text
-문항 원문 로드 완료
-```
-
-없으면:
-
-```text
-문항 원문 불러오는 중
-```
-
-실패하면:
-
-```text
-문항 원문 일부 없음
-```
-
-학부모 리포트 본문에는 내부 상태를 노출하지 않는다.
-상태 badge는 선생님 화면에만 표시.
-
-## DoD
-
-* 저장 버튼 클릭 후 서버 저장 성공/실패가 구분된다.
-* AI 분석 후 서버 저장 성공/실패가 구분된다.
-* 학생별 화면에서 현재 리포트가 서버본인지 로컬본인지 알 수 있다.
-* 학부모 PDF에는 “서버 저장”, “로컬”, “AI 캐시” 같은 내부 표현이 나오지 않는다.
-* 테스트에서 `api.post` 호출 경로가 `student-reports`임을 확인한다.
-* `api.post` 실패 시에도 로컬 상담 수정본과 AI 캐시가 남는다.
+* 출력 상단 겹침 없음
+* 출력물에서 `기본값 · 학부모 상담/출력용` 제거
+* 문항 카드가 3분할 라벨이 아니라 하나의 자연스러운 문단으로 정리됨
+* 학부모 안내 문구가 3문단 이상 또는 180자 이상
+* 학부모 안내 문구가 점수/평균/오답/단원/다음 계획을 활용함
+* “풀이 시작점” 같은 애매한 표현 제거
+* 쉬운 문항 오답은 계산·검산 실수로 안내
+* 어려운 문항 오답은 조건 해석/활용/고난도 대비로 안내
+* PDF에는 선생님용 상태 badge가 나오지 않음
+* 기존 문항 분석표/학생 저장/AI 분석 기능은 깨지지 않음
 
 ---
 
-# STEP 6 — 테스트/하니스/최종 보고
+형님, 이번 건은 **기능 부족이 아니라 문서 설계 철학 문제**입니다.
+지금은 “분석 결과를 보여주는 리포트”이고, 형님이 원하는 건 **학부모가 읽고 바로 납득하는 상담 문서**입니다.
 
-## 목표
-
-이번 수정이 실제로 사용자 문제를 해결했는지 HTML 레벨로 확인 가능한 덤프를 만든다.
-
-## 대상 파일
-
-```text
-tests/report-school-exam-detail-print.test.mjs
-tests/report-parent-question-card.test.mjs
-tests/report-parent-question-narrative.test.mjs
-tests/report-school-exam-status-badges.test.mjs
-reports/loop-c-school-exam-parent-detail-dump.html
-reports/loop-c-school-exam-parent-print-dump.html
-CODEX_RESULT_SCHOOL_EXAM_PARENT_REPORT_20260705.md
-```
-
-## 필수 테스트 명령
-
-신규 테스트:
-
-```bash
-node tests/report-school-exam-detail-print.test.mjs
-node tests/report-parent-question-card.test.mjs
-node tests/report-parent-question-narrative.test.mjs
-node tests/report-school-exam-status-badges.test.mjs
-```
-
-기존 회귀:
-
-```bash
-node tests/report-exam-archive-ai.test.mjs
-node tests/report-student-report-sync.test.mjs
-node tests/report-exam-analysis-print.test.mjs
-node tests/report-exam-analysis-table.test.mjs
-node tests/report-center-exam-dashboard.test.mjs
-node tests/report-school-exam-counsel.test.mjs
-node tests/report-school-exam-edit.test.mjs
-node tests/report-parent-safe-comment.test.mjs
-node tests/report-math-normalize.test.mjs
-node tests/report-review-schema.test.mjs
-node tests/report-pdf-dedup.test.mjs
-node tests/apmath-global-surface.test.js
-```
-
-문법:
-
-```bash
-node --check apmath/js/report-center.js
-```
-
-전역 함수 추가 시:
-
-```bash
-node tests/apmath-global-surface.test.js --update
-```
-
-단, 변경 파일은 `tests/fixtures/apmath-surface-report.json`만 허용한다.
-classroom/dashboard fixture 변경 금지.
-
-## 하니스 생성
-
-실제 더미 데이터로 아래를 생성한다.
-생성 방식은 별도 하니스 스크립트 또는 `node -e` 덤프 중 하나를 사용하되, 최종 보고서에 사용한 명령을 그대로 적는다.
-권장 방식은 재실행 가능한 스크립트다.
-
-```text
-tests/build-school-exam-parent-report-harness.mjs 신규 또는 동등한 node 덤프 명령
-```
-
-```text
-reports/loop-c-school-exam-parent-detail-dump.html
-reports/loop-c-school-exam-parent-print-dump.html
-```
-
-하니스 조건:
-
-* 학생 1명
-* 오답 5개 이상
-* 쉬운 문항 오답 1개: 정답률 90% 이상
-* 중간 문항 오답 1개
-* 조건 해석 문항 1개
-* 최상위 문항 1개: 정답률 40% 미만
-* 함수/활용 키워드 포함 문항 1개
-* archive detail 포함
-* AI review JSON 포함
-
-하니스에서 확인할 것:
-
-* 제목 겹침 없음
-* 카드가 페이지 중간에서 심하게 잘리지 않음
-* 학부모 카드에 내부 단어 없음
-* 쉬운 문항은 계산/검산 실수로 안내
-* 최상위 문항은 고난도 대비로 안내
-* 함수 활용 문항은 문해력/조건 해석/식 세우기 안내
-* 실제 문제 원문이 나오되 해석보다 덜 튀지 않음
-
----
-
-# 최종 결과 보고서 형식
-
-Codex는 완료 후 아래 파일을 만든다.
-
-```text
-CODEX_RESULT_SCHOOL_EXAM_PARENT_REPORT_20260705.md
-```
-
-내용:
-
-```md
-# 학교시험 학부모 상세 리포트 고도화 결과
-
-## 1. 작업 요약
-- STEP 1 ...
-- STEP 2 ...
-
-## 2. 수정 파일
-- apmath/js/report-center.js
-- tests/...
-
-## 3. 개선된 사용자 경험
-- 출력 깨짐 해결
-- 문항별 학부모 해석 강화
-- 저장 상태 표시
-
-## 4. 검증 결과
-명령어와 결과 전체 기재
-
-## 5. 남은 리스크
-- 실제 브라우저 PDF 인쇄 최종 확인 필요
-- AI 문항 분석 문장 수학적 타당성은 실데이터로 사람 검수 필요
-- 긴 문항/이미지 포함 문항은 별도 출력 검수 필요
-
-## 6. 배포 전 확인
-- Git status
-- 최근 commit hash
-- main...origin/main 상태
-```
-
----
-
-# 커밋 계획
-
-STEP별 커밋한다.
-
-```text
-STEP 1: fix(report): isolate school exam detail print layout
-STEP 2: feat(report): add parent wrong question card
-STEP 3: improve(report): enrich parent question narrative
-STEP 4: improve(report): reorder detailed parent report for counseling
-STEP 5: feat(report): show report sync and source status
-STEP 6: test(report): add parent detail print harness and result report
-```
-
-커밋 메시지 끝:
-
-```text
-Co-Authored-By: Codex <noreply@anthropic.com>
-```
-
----
-
-# 최종 DoD
-
-이번 goal은 아래가 모두 만족되어야 완료다.
-
-* 학생별 상세 리포트 출력에서 제목/선/상단바 겹침이 재발하지 않는다.
-* 학부모 리포트의 오답 문항 카드가 `문항 정보 → 학부모 해석 → 오답 의미 → 다음 수업 계획 → 실제 문항` 구조로 나온다.
-* 정답률 85% 이상 문항 오답은 계산/검산 실수 가능성으로 안내된다.
-* 정답률 45% 미만 문항은 최상위/고난도 대비 문항으로 안내된다.
-* 함수/활용/조건 해석 문항은 문해력·조건 정리·식 세우기 계열 안내가 나온다.
-* 오답이 많아도 학부모 PDF가 무한정 길어지지 않는다.
-* 저장 성공/실패/서버본/로컬본/AI 적용 여부가 선생님 화면에서 구분된다.
-* 학부모 PDF에는 내부 개발 용어가 나오지 않는다.
-* 기존 학교시험 분석표, 학생별 저장, 시험지 단위 AI 분석 기능이 깨지지 않는다.
-* 신규 테스트와 기존 회귀 테스트가 모두 통과한다.
-
----
-
+다음 패치는 문장 구조를 확 바꿔야 합니다.
