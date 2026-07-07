@@ -388,8 +388,10 @@ function main() {
             if (/(?:"solution"|solution)\s*:\s*""/.test(block)) {
                 pushIssue(sections[6], 'WARN', `${rel} q${qid}: solution 빈 문자열`);
             } else {
-                if (!/\[키포인트\]/.test(block)) {
-                    pushIssue(sections[6], 'WARN', `${rel} q${qid}: solution에 [키포인트] 없음`);
+                const solutionMatch = block.match(/(?:["']solution["']|solution)\s*:\s*(["'`])([\s\S]*?)\1/);
+                const solutionText = solutionMatch ? solutionMatch[2] : '';
+                if (!/(따라서\s*(?:정답|구하는 값|구하려는 값)|정답은)/.test(solutionText)) {
+                    pushIssue(sections[6], 'WARN', `${rel} q${qid}: solution 결론 확인 필요`);
                 }
                 if (/(cite|PASS|FAIL|WARN|검수 완료|내부 메모)/.test(block)) {
                     pushIssue(sections[6], 'WARN', `${rel} q${qid}: solution에 운영 흔적 의심 문자열`);

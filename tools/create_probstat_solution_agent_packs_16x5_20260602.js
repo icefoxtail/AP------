@@ -121,8 +121,9 @@ function writeDocs(packRoot, packName, jsRels, copiedRules, missingRules) {
 - 그래도 answer가 "__EXCLUDED__" 또는 "EXCLUDED_CANDIDATE"인 문항을 발견하면 수정하지 말고 review 목록에 기록한다.
 
 ## solution 규칙
-- 모든 작성 대상 solution은 "[키포인트]"로 시작한다.
-- 조건 정리, 풀이 방향, 정석 풀이, 결론을 포함한다.
+- 모든 작성 대상 solution은 신규 해설 v2.1 기준으로 작성한다.
+- "[키포인트]", "조건 정리", "풀이 방향", "정석 풀이" 같은 고정 라벨은 강제하지 않는다.
+- 문제 조건을 자연스럽게 해석하고, 필요한 식 전개와 판단 근거, 결론을 포함한다.
 - answer와 solution 결론은 반드시 일치해야 한다.
 - 계산 과정 없이 "계산하면 된다", "정리하면 된다", "경우를 세면 된다"로 끝내지 않는다.
 - OCR, 검수 필요, PASS, FAIL, ChatGPT, Gemini, 내부 메모를 solution에 넣지 않는다.
@@ -147,8 +148,8 @@ function writeDocs(packRoot, packName, jsRels, copiedRules, missingRules) {
 2. content/choices/answer를 수정하지 않았는가?
 3. solution만 수정했는가?
 4. __EXCLUDED__ 문항을 발견하면 제외했는가?
-5. 모든 작성 대상 solution이 [키포인트]로 시작하는가?
-6. 조건 정리/풀이 방향/정석 풀이/결론이 있는가?
+5. 모든 작성 대상 solution이 v2.1 자연 풀이 흐름을 따르는가?
+6. 조건 해석/필요 계산/판단 근거/결론이 있는가?
 7. answer와 solution 결론이 일치하는가?
 8. 빈약한 해설 표현이 없는가?
 9. 운영 메모/OCR/검수 필요/PASS/FAIL 표현이 없는가?
