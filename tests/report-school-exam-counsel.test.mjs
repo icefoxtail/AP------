@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = ['report-text.js', 'report-center.js', 'report-print.js']
+const source = ['archive-render.js', 'report-text.js', 'report-center.js', 'report-print.js']
   .map(file => fs.readFileSync(path.join(root, 'apmath/js', file), 'utf8'))
   .join('\n');
 
@@ -60,8 +60,9 @@ const parent = context.reportCenterBuildSchoolExamParentReport('s1', 'exam-a.js'
 assert.doesNotMatch(parent, /코호트|함정|blueprint|review_text|전체 정답률\s*\d+%/);
 
 const detailed = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
-assert.match(detailed, /상세 학부모 리포트/);
-assert.match(detailed, /실제 오답 문제/);
+assert.match(detailed, /시험 분석/);
+assert.match(detailed, /오답 문항 분석/);
+assert.doesNotMatch(detailed, /상세 학부모 리포트|실제 문항|먼저 볼 문항|우선 확인 문항/);
 assert.match(detailed, /2번/);
 
 const archiveDetails = {
@@ -88,11 +89,8 @@ assert.match(detailedWithArchive, /2번 원문입니다/);
 assert.match(detailedWithArchive, /① 1/);
 assert.doesNotMatch(detailedWithArchive, /<b>정답<\/b>/);
 assert.doesNotMatch(detailedWithArchive, /<b>해설 요약<\/b>/);
-// 학부모 3블록 서술: raw(묻는것/함정/풀이) 대신 해석·의미·계획
-assert.match(detailedWithArchive, /학부모 해석/);
-assert.match(detailedWithArchive, /이번 오답 의미/);
-assert.match(detailedWithArchive, /다음 수업 계획/);
-assert.match(detailedWithArchive, /전체 정답률 \d+%(로|의)/);
+assert.match(detailedWithArchive, /오답 문항 분석/);
+assert.match(detailedWithArchive, /전체 정답률 \d+%/);
 assert.doesNotMatch(detailedWithArchive, /<b>묻는 것<\/b>|<b>함정<\/b>|<b>풀이 포인트<\/b>/);
 
 // 서술 빌더 단독 검증: 정답률 구간별 헤드라인 + 태그별 의미/계획
@@ -112,8 +110,10 @@ assert.match(easyNarrative.meaning, /계산과 마무리 확인/);
 assert.match(easyNarrative.action, /검산 습관/);
 
 const printDoc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1', { archiveDetails });
-assert.match(printDoc, /학교시험 상세 리포트/);
-assert.match(printDoc, /상세 학부모 리포트/);
+assert.match(printDoc, /AP MATH REPORT/);
+assert.match(printDoc, /기말 분석 리포트/);
+assert.match(printDoc, /학생\/시험 정보/);
+assert.doesNotMatch(printDoc, /학교시험 상세 리포트|상세 학부모 리포트|학교시험 오답과 다음 수업 관리 계획을 정리했습니다/);
 assert.match(printDoc, /2번 원문입니다/);
 
 const simple = context.reportCenterBuildSchoolExamSimpleParentReport('s1', 'exam-a.js');
