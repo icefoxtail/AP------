@@ -61,6 +61,7 @@ assert.match(doc, /핵심 진단/);
 assert.match(doc, /담임 총평/);
 assert.match(doc, /앞으로의 학습 방향/);
 assert.doesNotMatch(doc, /다음 수업 계획|다음 수업에서/);
+assert.doesNotMatch(doc, /학부모 발송용/);
 assert.doesNotMatch(doc, /상세 학부모 리포트/);
 assert.doesNotMatch(doc, /학교시험 오답과 다음 수업 관리 계획을 정리했습니다/);
 assert.doesNotMatch(doc, /기본값 · 학부모 상담\/출력용/);

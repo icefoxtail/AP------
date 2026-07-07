@@ -77,7 +77,9 @@ assert.match(card, /aprc-parent-question-comment/);
 assert.match(card, /8번은/);
 assert.match(card, /전체 정답률 32%/);
 assert.doesNotMatch(card, /다음 수업/);
-assert.match(card, /학원에서|보완하겠습니다|점검하겠습니다|잡겠습니다/);
+// 문항 코멘트는 진단만: 향후 조치("~하겠습니다") 문장이 없어야 한다
+assert.doesNotMatch(card, /겠습니다/);
+assert.match(card, /흔들린 것으로 보입니다|핵심이었습니다|필요했|쉬웠/);
 assert.doesNotMatch(card, /학부모 해석/);
 assert.doesNotMatch(card, /이번 오답 의미/);
 assert.doesNotMatch(card, /다음 수업 계획/);
@@ -96,7 +98,7 @@ const paragraph = context.reportCenterBuildParentQuestionParagraph(row, detail);
 assert.match(paragraph, /8번은/);
 assert.match(paragraph, /전체 정답률 32%/);
 assert.doesNotMatch(paragraph, /다음 수업/);
-assert.match(paragraph, /학원에서|보완하겠습니다|점검하겠습니다|잡겠습니다/);
+assert.doesNotMatch(paragraph, /겠습니다/);
 assert.match(paragraph, /조건/);
 assert.doesNotMatch(paragraph, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
 
