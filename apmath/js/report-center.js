@@ -3569,7 +3569,11 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
             : /도형|각|삼각|원|넓이|길이/.test(`${concept} ${tagText}`)
                 ? 'geometry'
                 : 'concept';
-    const trapSentence = trap ? ` 특히 ${trap.replace(/[.。]\s*$/, '')} 부분을 다시 확인하겠습니다.` : '';
+    const trapCore = trap.replace(/[.。]\s*$/, '');
+    // trap이 이미 완결된 절(~다/~요)이면 그대로, 명사구면 자연스러운 접미사를 붙인다.
+    const trapSentence = trap
+        ? (/[다요]$/.test(trapCore) ? ` 특히 ${trapCore}.` : ` 특히 ${trapCore} 부분을 유의해야 했습니다.`)
+        : '';
     const openers = {
         easyMiss: [
             `${qNo || ''}번은 ${concept} 기본 풀이를 알고 있어도 마무리 확인에서 실점하기 쉬운 문항입니다.`,
@@ -3588,13 +3592,13 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
             `${qNo || ''}번은 ${concept} 개념과 답안 정리를 함께 봐야 하는 문항입니다.`
         ],
         unknown: [
-            `${qNo || ''}번은 ${concept} 풀이 과정을 수업에서 다시 확인할 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 풀이 과정을 한 번 더 짚어볼 문항입니다.`,
             `${qNo || ''}번은 ${concept} 단원의 풀이 순서를 차분히 복기할 문항입니다.`
         ]
     };
     const meanings = {
         condition: [
-            `이번 오답은 조건을 식으로 옮기고 범위까지 확인하는 과정에서 흔들린 것으로 보입니다.${trapSentence}`,
+            `이번 오답은 조건을 식으로 옮기고 범위까지 확인하는 과정에서 정리가 더 필요했던 것으로 보입니다.${trapSentence}`,
             `문장 조건을 표시한 뒤 어떤 식으로 연결할지 정리하는 단계가 핵심이었습니다.${trapSentence}`
         ],
         calc: [
@@ -3606,30 +3610,13 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
             `도형 정보를 한 번에 보려 하기보다 조건을 나누어 정리하는 과정이 필요했습니다.${trapSentence}`
         ],
         concept: [
-            `알고 있는 개념을 낯선 형태의 문제에 적용하는 순서에서 흔들린 것으로 보입니다.${trapSentence}`,
+            `알고 있는 개념을 낯선 형태의 문제에 적용하는 순서에서 정리가 더 필요했던 것으로 보입니다.${trapSentence}`,
             `풀이 시작 후 어떤 개념을 먼저 써야 하는지 정리하는 과정이 핵심이었습니다.${trapSentence}`
         ]
     };
-    const plans = {
-        condition: [
-            '학원에서 조건 표시, 식 세우기, 범위 확인 순서를 반복해 보완하겠습니다.',
-            '비슷한 조건 해석 문항을 이어 풀며 놓친 조건을 표시하는 습관을 잡겠습니다.'
-        ],
-        calc: [
-            '학원에서 풀이 후 부호와 계산 결과를 검산하는 루틴까지 함께 점검하겠습니다.',
-            '같은 유형을 짧게 반복하면서 계산 정리와 답안 확인 속도를 같이 올리겠습니다.'
-        ],
-        geometry: [
-            '학원에서 그림에 조건을 직접 표시하고 관계식을 세우는 순서를 다시 잡아 보완하겠습니다.',
-            '도형 조건을 나누어 읽고 필요한 보조선이나 식을 찾는 연습으로 보완하겠습니다.'
-        ],
-        concept: [
-            '학원에서 필요한 개념을 먼저 정리한 뒤 같은 유형으로 적용 순서를 반복하겠습니다.',
-            '개념 확인 문항과 적용 문항을 이어 풀며 풀이 선택 과정을 안정화하겠습니다.'
-        ]
-    };
+    // 문항별 코멘트는 진단(무엇이·왜 흔들렸는지)만 담는다. 향후 조치/방향은 담임 총평·앞으로의 학습 방향에서 다룬다.
     const candidates = openers[rateBand].flatMap(opener => (
-        meanings[family].map((meaning, index) => `${opener} ${rateText} 기준으로 보면 ${meaning} ${plans[family][index % plans[family].length]}`)
+        meanings[family].map(meaning => `${opener} ${rateText} 기준으로 보면 ${meaning}`)
     ));
     return reportCenterAssertParentSafe(reportCenterPickNonDuplicateCommentText(candidates, options.usedComments || []));
 }
@@ -4105,7 +4092,7 @@ function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
 
     const focusMsg = wrongRows.length === 0
         ? '지금의 강점이 이어지도록 난도를 조절하며 학원에서 계속 관리하겠습니다.'
-        : `${focus}에서의 흔들림은 학원에서 집중적으로 잡아 보완하겠습니다.`;
+        : `${focus} 부분은 학원에서 집중적으로 다져 보완하겠습니다.`;
 
     return reportCenterAssertParentSafe(`${state} ${focusMsg}`);
 }
@@ -4283,13 +4270,12 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">오답 문항 분석</div>
-                ${wrongRows.length ? '<p>번호순으로 문항과 보완 포인트를 정리했습니다.</p>' : ''}
                 ${wrongRows.length
                     ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
             <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">학부모 안내 문구</div>
+                <div class="aprc-counsel-title">학부모님께</div>
                 <p>${reportCenterEscape(parentText).replace(/\n/g, '<br>')}</p>
             </section>
         </article>
@@ -4396,7 +4382,6 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
             <div class="aprc-school-title-block">
                 <div class="aprc-school-detail-brand">AP MATH REPORT</div>
                 <h1>${reportCenterEscape(reportTitle)}</h1>
-                <p>학부모 발송용 학교시험 결과 분석</p>
             </div>
             <div class="aprc-school-card-grid">
                 <section class="aprc-school-info-card">
