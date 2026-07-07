@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = ['report-text.js', 'report-center.js', 'report-print.js']
+const source = ['archive-render.js', 'report-text.js', 'report-center.js', 'report-print.js']
   .map(file => fs.readFileSync(path.join(root, 'apmath/js', file), 'utf8'))
   .join('\n');
 
@@ -51,9 +51,18 @@ vm.runInContext(source, context, { filename: 'apmath/js/report.js' });
 
 const doc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1');
 assert.match(doc, /class="aprc-school-detail-document"/);
-assert.match(doc, /class="aprc-school-detail-head"/);
+assert.match(doc, /class="aprc-school-summary-page"/);
 assert.doesNotMatch(doc, /aprc-pdf-header/);
-assert.match(doc, /<h1>민서 상세 학부모 리포트<\/h1>/);
+assert.match(doc, /AP MATH REPORT/);
+assert.match(doc, /중간고사 분석 리포트/);
+assert.match(doc, /학생\/시험 정보/);
+assert.match(doc, /점수 요약/);
+assert.match(doc, /핵심 진단/);
+assert.match(doc, /담임 총평/);
+assert.match(doc, /앞으로의 학습 방향/);
+assert.doesNotMatch(doc, /다음 수업 계획|다음 수업에서/);
+assert.doesNotMatch(doc, /상세 학부모 리포트/);
+assert.doesNotMatch(doc, /학교시험 오답과 다음 수업 관리 계획을 정리했습니다/);
 assert.doesNotMatch(doc, /기본값 · 학부모 상담\/출력용/);
 assert.equal((doc.match(/aprc-counsel-head/g) || []).length, 0);
 assert.doesNotMatch(doc, /서버 저장본|로컬 임시 저장|프리미엄 분석 적용/);
@@ -63,11 +72,13 @@ const shell = context.reportCenterBuildSchoolExamDetailedPrintShell(doc);
 assert.match(shell, /report-center-school-exam-print-view/);
 assert.match(shell, /report-print-toolbar no-print/);
 assert.match(shell, /reportCenterExitSchoolExamPrintMode\(\); openReportCenterHome\(\)/);
+assert.match(shell, /reportCenterPrintSchoolExamDetailedReport\(\)/);
 
 context.reportCenterInjectPrintViewStyle();
 assert.ok(injectedStyle?.textContent);
 assert.match(injectedStyle.textContent, /\.report-center-school-exam-print-view/);
-assert.match(injectedStyle.textContent, /\.app-header,\s*\n\s*\.mobile-header,\s*\n\s*\.topbar/);
+assert.match(injectedStyle.textContent, /body\.aprc-school-print-mode > \*:not\(#report-print-portal\)/);
+assert.match(injectedStyle.textContent, /border-collapse:collapse/);
 assert.match(injectedStyle.textContent, /break-inside:avoid/);
 assert.match(injectedStyle.textContent, /\.aprc-school-detail-document/);
 

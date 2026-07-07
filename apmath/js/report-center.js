@@ -365,6 +365,67 @@ const REPORT_CENTER_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/ar
 const REPORT_CENTER_ARCHIVE_INDEX_URL = 'https://icefoxtail.github.io/AP------/archive/index';
 const REPORT_CENTER_ARCHIVE_MIXER_URL = 'https://icefoxtail.github.io/AP------/archive/mixer.html';
 
+function reportCenterArchiveRender() {
+    if (typeof window !== 'undefined' && window.ApArchiveRender) return window.ApArchiveRender;
+    return {
+        ARCHIVE_BASE_URL: REPORT_CENTER_ARCHIVE_BASE_URL,
+        normalizeArchiveFile(file) {
+            const raw = String(file || '').trim();
+            if (!raw) return '';
+            if (/^https?:\/\//i.test(raw)) return raw;
+            let path = raw.replace(/^archive\//i, '').replace(/^\.\//, '').replace(/^\//, '');
+            if (!path.endsWith('.js')) path += '.js';
+            if (!/^(exams|assets|data)\//i.test(path)) path = `exams/${path}`;
+            return path;
+        },
+        resolveArchiveAssetUrl(src, archiveFile) {
+            const raw = String(src || '').trim();
+            if (!raw) return '';
+            if (/^(https?:|data:|blob:)/i.test(raw)) return raw;
+            let path = raw.replace(/^\.\//, '').replace(/^\//, '').replace(/^archive\//i, '');
+            if (!/^assets\//i.test(path) && archiveFile) {
+                const dir = this.normalizeArchiveFile(archiveFile).split('/').slice(0, -1).join('/');
+                path = (dir ? `${dir}/` : '') + path;
+            }
+            return REPORT_CENTER_ARCHIVE_BASE_URL + path.split('/').map(part => encodeURIComponent(part)).join('/');
+        },
+        rewriteImgSrcInHtml(html, archiveFile) {
+            return String(html || '').replace(/(<img\b[^>]*?\bsrc\s*=\s*)(["'])([\s\S]*?)\2/gi, (match, pre, quote, src) => {
+                const resolved = this.resolveArchiveAssetUrl(src, archiveFile);
+                const rewritten = `${pre}${quote}${resolved || src}${quote}`;
+                const eager = /\sloading\s*=/i.test(rewritten) ? rewritten : rewritten.replace(/<img\b/i, '<img loading="eager"');
+                return /\sdecoding\s*=/i.test(eager) ? eager : eager.replace(/<img\b/i, '<img decoding="async"');
+            });
+        },
+        getQuestionImageRaw(q) {
+            return q?.image || q?.imageUrl || q?.img || q?.imageTag || q?.imagePath || q?.image_path || q?.figure || '';
+        },
+        wrapLatex(text) {
+            return reportCenterArchiveTextToHtml(text);
+        }
+    };
+}
+
+function reportCenterResolveArchiveAssetUrl(src, archiveFile) {
+    return reportCenterArchiveRender().resolveArchiveAssetUrl(src, archiveFile);
+}
+
+function reportCenterRewriteImgSrcInHtml(html, archiveFile) {
+    return reportCenterArchiveRender().rewriteImgSrcInHtml(html, archiveFile);
+}
+
+function reportCenterWrapLatexRichHtml(html) {
+    const renderer = reportCenterArchiveRender();
+    if (renderer && typeof renderer.wrapLatex === 'function' && renderer.wrapLatex !== reportCenterWrapLatexRichHtml) {
+        return renderer.wrapLatex(html);
+    }
+    return reportCenterArchiveTextToHtml(html);
+}
+
+function reportCenterGetQuestionImageRaw(question) {
+    return reportCenterArchiveRender().getQuestionImageRaw(question);
+}
+
 function reportCenterArchiveCache() {
     window.AP_REPORT_ARCHIVE_CACHE = window.AP_REPORT_ARCHIVE_CACHE || {};
     return window.AP_REPORT_ARCHIVE_CACHE;
@@ -712,11 +773,13 @@ function reportCenterFindQuestionInBank(bank, questionNo) {
 }
 
 function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = null) {
+    const archiveFile = statRow?._archiveFile || statRow?.archiveFile || statRow?.sourceArchiveFile || statRow?.archive_file || '';
     if (!question) {
         return {
             questionNo,
             found: false,
             content: '',
+            contentRich: '',
             contentText: '',
             choices: [],
             answer: '',
@@ -730,7 +793,8 @@ function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = nul
             cluster: statRow?.cluster || '',
             correctRate: statRow?.correctRate ?? null,
             classCorrectRate: statRow?.classCorrectRate ?? null,
-            meaning: statRow?.meaning || '문항 원문 확인 불가'
+            meaning: statRow?.meaning || '문항 원문 확인 불가',
+            _archiveFile: archiveFile
         };
     }
 
@@ -739,17 +803,20 @@ function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = nul
         : Array.isArray(question.options)
             ? question.options
             : [];
+    const contentRich = question.content || question.question || question.text || question.prompt || '';
+    const solutionRich = question.solution || question.explanation || question.commentary || '';
 
     return {
         questionNo,
         found: true,
-        content: question.content || question.question || question.text || question.prompt || '',
-        contentText: reportCenterLimitText(question.content || question.question || question.text || question.prompt || '', 260),
-        choices: choices.map(v => reportCenterLimitText(v, 120)),
+        content: contentRich,
+        contentRich,
+        contentText: reportCenterLimitText(contentRich, 260),
+        choices,
         answer: question.answer ?? question.correctAnswer ?? question.correct ?? question.ans ?? '',
-        solution: question.solution || question.explanation || question.commentary || '',
-        solutionText: reportCenterLimitText(question.solution || question.explanation || question.commentary || '', 260),
-        image: question.image || question.imageUrl || question.img || question.figure || '',
+        solution: solutionRich,
+        solutionText: reportCenterLimitText(solutionRich, 260),
+        image: reportCenterGetQuestionImageRaw(question),
         imageSize: question.imageSize || null,
         level: question.level || question.difficulty || statRow?.difficulty || '',
         unit: question.standardUnit || question.standard_unit || question.unit || statRow?.unit || '',
@@ -757,7 +824,8 @@ function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = nul
         cluster: question.conceptClusterKey || question.concept_cluster_key || statRow?.cluster || '',
         correctRate: statRow?.correctRate ?? null,
         classCorrectRate: statRow?.classCorrectRate ?? null,
-        meaning: statRow?.meaning || ''
+        meaning: statRow?.meaning || '',
+        _archiveFile: archiveFile
     };
 }
 
@@ -834,7 +902,7 @@ async function reportCenterBuildMixedArchiveQuestionDetails(session, wrongRows, 
         }
 
         loadedCount += 1;
-        return reportCenterNormalizeQuestionDetail(question, row.questionNo, row);
+        return reportCenterNormalizeQuestionDetail(question, row.questionNo, { ...row, _archiveFile: source.sourceArchiveFile });
     }));
 
     return {
@@ -883,7 +951,7 @@ async function reportCenterFetchArchiveQuestionDetails(session) {
         const list = sourcePayload.list;
         const details = wrongRows.map(row => {
             const q = reportCenterFindQuestionInBank(list, row.questionNo);
-            return reportCenterNormalizeQuestionDetail(q, row.questionNo, row);
+            return reportCenterNormalizeQuestionDetail(q, row.questionNo, { ...row, _archiveFile: sourcePayload.archiveInfo?.path || session.archive_file || '' });
         });
 
         return reportCenterSetCachedArchiveDetails(session.id, {
@@ -993,14 +1061,23 @@ function reportCenterEnsureMathJax() {
 
 async function reportCenterTypesetMath(root) {
     const target = root || document.body;
-    if (!target) return;
+    if (!target) return true;
     const mj = await reportCenterEnsureMathJax();
-    if (!mj?.typesetPromise) return;
+    if (!mj?.typesetPromise) return true;
     try {
         await mj.typesetPromise([target]);
     } catch (e) {
         console.warn('[reportCenterTypesetMath] MathJax failed:', e);
+        if (typeof toast === 'function') toast('수식 렌더링 오류가 있어 인쇄를 중단했습니다. 문항 원문을 확인해 주세요.', 'warn');
+        return false;
     }
+    const mathErrors = target.querySelectorAll ? target.querySelectorAll('mjx-merror') : [];
+    if (mathErrors && mathErrors.length) {
+        console.warn('[reportCenterTypesetMath] MathJax merror found:', mathErrors.length);
+        if (typeof toast === 'function') toast('수식 렌더링 오류가 있어 인쇄를 중단했습니다. 문항 원문을 확인해 주세요.', 'warn');
+        return false;
+    }
+    return true;
 }
 
 async function reportCenterRenderMathInArchiveDetails() {
@@ -1811,6 +1888,11 @@ function openReportCenterHome(options = {}) {
 function reportCenterExitSchoolExamPrintMode() {
     if (typeof document !== 'undefined' && document.body?.classList) {
         document.body.classList.remove('aprc-school-print-mode');
+    }
+    if (typeof document !== 'undefined') {
+        const portal = document.getElementById('report-print-portal');
+        if (portal && typeof portal.remove === 'function') portal.remove();
+        else if (portal?.parentNode) portal.parentNode.removeChild(portal);
     }
 }
 
@@ -3455,43 +3537,101 @@ function reportCenterFormatParentQuestionRate(value) {
     return Number.isFinite(rate) ? `${Math.round(rate)}%` : '-';
 }
 
-function reportCenterBuildParentQuestionParagraph(row = {}, detail = null) {
+function reportCenterPickNonDuplicateCommentText(candidates = [], usedComments = []) {
+    const list = candidates.map(value => String(value || '').replace(/\s+/g, ' ').trim()).filter(Boolean);
+    if (!list.length) return '';
+    const used = Array.isArray(usedComments) ? usedComments : [];
+    const signature = text => String(text || '')
+        .replace(/^\d+\s*번은\s*/, '')
+        .replace(/전체 정답률\s*\d+%/g, '전체 정답률')
+        .replace(/\d+%/g, '%')
+        .replace(/\s+/g, ' ')
+        .trim();
+    const usedSignatures = new Set(used.map(signature));
+    const picked = list.find(text => !usedSignatures.has(signature(text))) || list[used.length % list.length] || list[0];
+    if (Array.isArray(usedComments)) usedComments.push(picked);
+    return picked;
+}
+
+function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, options = {}) {
     const reviewData = reportCenterParseReviewJson?.(row.reviewText || row.review_text || detail?.reviewText || detail?.review_text || '') || {};
     const qNo = row?.questionNo ?? row?.question_no ?? detail?.questionNo ?? detail?.question_no ?? '';
-    const concept = String(reviewData.concept || row?.unit || row?.unitKey || row?.concept || detail?.unit || detail?.concept || '해당 단원').trim();
-    const conceptTopic = `${concept} 기본 풀이`;
+    const concept = String(reviewData.concept || row?.unit || row?.unitKey || row?.concept || detail?.unit || detail?.concept || '해당 단원').trim() || '해당 단원';
     const rate = Number(row?.correctRate ?? detail?.correctRate);
-    const rateText = Number.isFinite(rate) ? `전체 정답률 ${Math.round(rate)}%의 ${reportCenterGetQuestionDifficultyLabel(rate)} 문항` : '난도를 함께 확인해야 하는 문항';
+    const rateBand = !Number.isFinite(rate) ? 'unknown' : rate >= 85 ? 'easyMiss' : rate < 45 ? 'hard' : rate < 70 ? 'midHard' : 'standard';
+    const rateText = Number.isFinite(rate) ? `전체 정답률 ${Math.round(rate)}%` : '정답률 확인 대상';
     const tagText = `${reviewData.tag || row?.tag || ''} ${reportCenterResolveErrorTag(reviewData, Number.isFinite(rate) ? rate : null) || ''}`;
     const trap = reportCenterTrapReadsNatural(reviewData.trap || '') ? String(reviewData.trap).trim() : '';
-    const isEasyMiss = Number.isFinite(rate) && rate >= 85;
-    const isHard = Number.isFinite(rate) && rate < 45;
-    const isCondition = isHard || /조건|해석|범위|경계|함수|그래프|활용|부등식|방정식/.test(`${concept} ${tagText}`);
-
-    const core = isEasyMiss
-        ? `${conceptTopic}를 차분히 마무리해야 하는`
-        : isCondition
-            ? `${concept}에서 조건을 먼저 표시하고 식으로 연결해야 하는`
-            : `${concept} 개념을 문제 상황에 맞게 적용해야 하는`;
-    const meaning = isEasyMiss
-        ? '개념 자체를 모른다기보다 계산 과정, 부호 확인, 답안 마무리 점검에서 흔들린 것'
-        : isHard
-            ? '정답률이 낮은 고난도 문항에서 조건 해석과 활용 흐름을 끝까지 이어가는 과정이 필요했던 것'
-            : isCondition
-                ? '문제의 조건을 식으로 옮기고 범위까지 확인하는 과정에서 흔들린 것'
-                : '개념을 알고 있어도 문제 상황에 적용하는 순서를 정리하는 과정에서 흔들린 것';
-    const trapSentence = trap ? (/[.!?。！？]$/.test(trap) ? trap : `${trap}.`) : '';
-    const trapText = trapSentence ? ` 특히 ${trapSentence} 이 부분은 다음 수업에서 다시 짚겠습니다.` : '';
-    const plan = isEasyMiss
-        ? '풀이가 끝난 뒤 부호, 계산, 답안 범위를 다시 확인하는 습관까지 함께 점검하겠습니다'
-        : isHard
-            ? '조건을 먼저 표시하고 어떤 식을 세워야 하는지 확인한 뒤, 비슷한 고난도 활용 문항까지 이어서 풀어보겠습니다'
-            : isCondition
-                ? '조건을 먼저 표시하고, 식을 세운 뒤 범위까지 확인하는 순서로 다시 풀어보겠습니다'
-                : '필요한 개념을 먼저 정리하고, 같은 유형의 문항으로 적용 순서를 반복하겠습니다';
-    return reportCenterAssertParentSafe(
-        `${qNo || ''}번은 ${core} 문제입니다. ${rateText}이라 이번에는 ${meaning}으로 보입니다.${trapText} 다음 수업에서는 ${plan}.`
-    );
+    const family = /조건|해석|범위|경계|부등식|방정식|함수|그래프|활용/.test(`${concept} ${tagText}`)
+        ? 'condition'
+        : /계산|검산|부호|정리|전개|인수분해/.test(`${concept} ${tagText}`)
+            ? 'calc'
+            : /도형|각|삼각|원|넓이|길이/.test(`${concept} ${tagText}`)
+                ? 'geometry'
+                : 'concept';
+    const trapSentence = trap ? ` 특히 ${trap.replace(/[.。]\s*$/, '')} 부분을 다시 확인하겠습니다.` : '';
+    const openers = {
+        easyMiss: [
+            `${qNo || ''}번은 ${concept} 기본 풀이를 알고 있어도 마무리 확인에서 실점하기 쉬운 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 단원의 기본형에 가깝지만 답을 확정하는 단계가 중요했던 문항입니다.`
+        ],
+        hard: [
+            `${qNo || ''}번은 ${rateText}의 고난도 문항으로, ${concept} 조건을 끝까지 연결해야 했습니다.`,
+            `${qNo || ''}번은 여러 단계를 차례로 정리해야 하는 ${concept} 문항입니다.`
+        ],
+        midHard: [
+            `${qNo || ''}번은 ${concept} 개념을 문제 상황에 맞게 적용해야 했던 문항입니다.`,
+            `${qNo || ''}번은 풀이 방향을 잡은 뒤 ${concept} 처리 순서를 유지하는 힘이 필요했습니다.`
+        ],
+        standard: [
+            `${qNo || ''}번은 ${concept}에서 작은 확인 습관이 점수로 이어지는 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 개념과 답안 정리를 함께 봐야 하는 문항입니다.`
+        ],
+        unknown: [
+            `${qNo || ''}번은 ${concept} 풀이 과정을 수업에서 다시 확인할 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 단원의 풀이 순서를 차분히 복기할 문항입니다.`
+        ]
+    };
+    const meanings = {
+        condition: [
+            `이번 오답은 조건을 식으로 옮기고 범위까지 확인하는 과정에서 흔들린 것으로 보입니다.${trapSentence}`,
+            `문장 조건을 표시한 뒤 어떤 식으로 연결할지 정리하는 단계가 핵심이었습니다.${trapSentence}`
+        ],
+        calc: [
+            `개념 부족만의 문제라기보다 계산, 부호, 검산 과정의 점검이 더 필요했던 실점으로 보입니다.${trapSentence}`,
+            `풀이 흐름은 접근했더라도 중간 정리와 답안 마무리에서 오차가 생기기 쉬웠습니다.${trapSentence}`
+        ],
+        geometry: [
+            `그림의 조건을 표시하고 필요한 관계식을 찾는 순서가 중요한 문항이었습니다.${trapSentence}`,
+            `도형 정보를 한 번에 보려 하기보다 조건을 나누어 정리하는 과정이 필요했습니다.${trapSentence}`
+        ],
+        concept: [
+            `알고 있는 개념을 낯선 형태의 문제에 적용하는 순서에서 흔들린 것으로 보입니다.${trapSentence}`,
+            `풀이 시작 후 어떤 개념을 먼저 써야 하는지 정리하는 과정이 핵심이었습니다.${trapSentence}`
+        ]
+    };
+    const plans = {
+        condition: [
+            '학원에서 조건 표시, 식 세우기, 범위 확인 순서를 반복해 보완하겠습니다.',
+            '비슷한 조건 해석 문항을 이어 풀며 놓친 조건을 표시하는 습관을 잡겠습니다.'
+        ],
+        calc: [
+            '학원에서 풀이 후 부호와 계산 결과를 검산하는 루틴까지 함께 점검하겠습니다.',
+            '같은 유형을 짧게 반복하면서 계산 정리와 답안 확인 속도를 같이 올리겠습니다.'
+        ],
+        geometry: [
+            '학원에서 그림에 조건을 직접 표시하고 관계식을 세우는 순서를 다시 잡아 보완하겠습니다.',
+            '도형 조건을 나누어 읽고 필요한 보조선이나 식을 찾는 연습으로 보완하겠습니다.'
+        ],
+        concept: [
+            '학원에서 필요한 개념을 먼저 정리한 뒤 같은 유형으로 적용 순서를 반복하겠습니다.',
+            '개념 확인 문항과 적용 문항을 이어 풀며 풀이 선택 과정을 안정화하겠습니다.'
+        ]
+    };
+    const candidates = openers[rateBand].flatMap(opener => (
+        meanings[family].map((meaning, index) => `${opener} ${rateText} 기준으로 보면 ${meaning} ${plans[family][index % plans[family].length]}`)
+    ));
+    return reportCenterAssertParentSafe(reportCenterPickNonDuplicateCommentText(candidates, options.usedComments || []));
 }
 
 function reportCenterResolveAiParentToneBand(data = {}, selectedWrongRows = []) {
@@ -3729,15 +3869,18 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
     const level = row?.level || row?.difficulty || detail?.level || detail?.difficulty || reportCenterGetQuestionDifficultyLabel(Number(row?.correctRate));
     const correctRate = reportCenterFormatParentQuestionRate(row?.correctRate ?? detail?.correctRate);
     const classCorrectRate = reportCenterFormatParentQuestionRate(row?.classCorrectRate ?? detail?.classCorrectRate);
-    const comment = reportCenterBuildParentQuestionParagraph(row || {}, detail);
-    const content = detail?.content || detail?.contentText || row?.content || row?.contentText || '';
-    const safeContent = reportCenterArchiveTextToHtml(content);
+    const usedComments = Array.isArray(options.usedComments) ? options.usedComments : null;
+    const comment = reportCenterBuildParentQuestionParagraph(row || {}, detail, { usedComments });
+    const archiveFile = detail?._archiveFile || row?._archiveFile || row?.archiveFile || row?.archive_file || '';
+    const content = detail?.contentRich || detail?.content || row?.contentRich || row?.content || '';
+    const richContent = content
+        ? reportCenterWrapLatexRichHtml(reportCenterRewriteImgSrcInHtml(content, archiveFile))
+        : '';
     const choices = Array.isArray(detail?.choices) && detail.choices.length
         ? detail.choices
         : (Array.isArray(row?.choices) ? row.choices : []);
     const answer = detail?.answer ?? row?.answer ?? row?.correctAnswer ?? '';
     const showAnswer = options.showAnswer === true;
-    const badge = Number(row?.correctRate ?? detail?.correctRate) < 45 ? '최상위 문항' : '우선 확인 문항';
     const meta = [
         unit,
         type,
@@ -3747,13 +3890,20 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
         `반 정답률 ${classCorrectRate}`
     ].filter(Boolean).map(reportCenterEscape).join(' · ');
     const choicesHtml = choices.length
-        ? `<ol class="aprc-parent-question-choices">${choices.map(choice => `<li>${reportCenterArchiveTextToHtml(choice)}</li>`).join('')}</ol>`
+        ? `<ol class="aprc-parent-question-choices">${choices.map(choice => `<li>${reportCenterWrapLatexRichHtml(reportCenterRewriteImgSrcInHtml(choice, archiveFile))}</li>`).join('')}</ol>`
         : '';
     const answerHtml = showAnswer && answer !== ''
-        ? `<div class="aprc-parent-question-answer"><b>정답</b> ${reportCenterArchiveTextToHtml(answer)}</div>`
+        ? `<div class="aprc-parent-question-answer"><b>정답</b> ${reportCenterWrapLatexRichHtml(reportCenterRewriteImgSrcInHtml(answer, archiveFile))}</div>`
         : '';
-    const originalHtml = safeContent || choicesHtml || answerHtml
-        ? `${safeContent ? `<div class="aprc-parent-question-content">${safeContent}</div>` : ''}${choicesHtml}${answerHtml}`
+    const imageRaw = detail?.image || row?.image || '';
+    const contentHasImg = /<img\b/i.test(String(content || ''));
+    const imageHtml = imageRaw && !contentHasImg
+        ? /^<img\b/i.test(String(imageRaw).trim())
+            ? `<div class="aprc-parent-question-image">${reportCenterRewriteImgSrcInHtml(imageRaw, archiveFile)}</div>`
+            : `<div class="aprc-parent-question-image"><img src="${reportCenterAttr(reportCenterResolveArchiveAssetUrl(imageRaw, archiveFile))}" alt="${reportCenterEscape(qNo)}번 문항 이미지" loading="eager" decoding="async" onerror="this.style.display='none'"></div>`
+        : '';
+    const originalHtml = richContent || choicesHtml || imageHtml || answerHtml
+        ? `${richContent ? `<div class="aprc-parent-question-content">${richContent}</div>` : ''}${imageHtml}${choicesHtml}${answerHtml}`
         : '<p>문항 원문을 불러오지 못했습니다. 수업에서는 해당 문항을 직접 다시 확인합니다.</p>';
 
     return `
@@ -3763,13 +3913,12 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
                     <div class="aprc-parent-question-no">${reportCenterEscape(qNo)}번 · ${reportCenterEscape(unit)}</div>
                     <div class="aprc-parent-question-meta">${meta}</div>
                 </div>
-                <span class="aprc-parent-question-badge">${reportCenterEscape(badge)}</span>
             </header>
             <section class="aprc-parent-question-comment">
                 <p>${reportCenterEscape(comment)}</p>
             </section>
             <section class="aprc-parent-question-original">
-                <div class="aprc-parent-question-label">실제 문항</div>
+                <div class="aprc-parent-question-label">문항 원문</div>
                 ${originalHtml}
             </section>
         </article>
@@ -3821,6 +3970,14 @@ function reportCenterSelectParentReportWrongRows(wrongRows = [], limit = 5) {
     return merged.slice(0, limit);
 }
 
+function reportCenterSortWrongRowsByQuestionNo(wrongRows = []) {
+    return [...(Array.isArray(wrongRows) ? wrongRows : [])].sort((a, b) => {
+        const aq = Number(a?.questionNo ?? a?.question_no ?? a?.questionId ?? a?.question_id ?? 0);
+        const bq = Number(b?.questionNo ?? b?.question_no ?? b?.questionId ?? b?.question_id ?? 0);
+        return aq - bq;
+    });
+}
+
 function reportCenterSelectExcellentRows(stats, limit = 3) {
     const rows = Array.isArray(stats?.rows) ? stats.rows : [];
     return [...rows]
@@ -3844,8 +4001,8 @@ function reportCenterGetPremiumTableMeta(data) {
     if (wrongRows.length > 5) {
         return {
             mode: 'priority',
-            title: '먼저 볼 문항 분석표',
-            note: `이번 리포트에서는 먼저 볼 문항 5개를 중심으로 정리했습니다. 그 외 ${wrongRows.length - 5}개 문항은 클리닉 시간에 차례로 확인하겠습니다.`
+            title: '핵심 보완 문항 분석표',
+            note: `이번 리포트에서는 보완 영향이 큰 5개 문항을 중심으로 정리했습니다. 그 외 ${wrongRows.length - 5}개 문항은 수업 시간에 차례로 확인하겠습니다.`
         };
     }
     return {
@@ -3905,6 +4062,52 @@ function reportCenterBuildScoreMeaning(data) {
         ? '맞힌 부분을 유지하면서 틀린 문항의 원인을 다음 수업에서 정리하겠습니다.'
         : '기본 개념과 조건을 식으로 옮기는 순서를 다시 정리해 다음 시험을 준비하겠습니다.';
     return { level, comparedToAverage, comparedToRecent, parentSentence };
+}
+
+// 시점에 묶인 "다음 수업에서(는)~" 표현을 학부모 발송용 시점 무관·학원 책임 톤으로 정규화한다.
+// (리포트가 시험 한참 뒤에 전달돼도 문장이 깨지지 않도록 함)
+function reportCenterReframeAcademyTone(text) {
+    return String(text ?? '')
+        .replace(/다음\s*수업과\s*보강에서\s*/g, '학원 수업과 보강에서 ')
+        .replace(/다음\s*수업에서는\s*/g, '학원에서 ')
+        .replace(/다음\s*수업에서\s*/g, '학원에서 ')
+        .replace(/다음\s*수업에\s*/g, '앞으로 ')
+        .replace(/다음\s*수업\s*/g, '학원 수업 ')
+        .replace(/[ \t]{2,}/g, ' ')
+        .trim();
+}
+
+// 담임 총평: 현재 상태(강점) + 핵심 보완 + 학원 책임을 2문장으로. 시점 무관.
+// 점수 밴드(우수/안정/관리/점검)와 오답 밴드(실수/고난도)·주요 오답 계열로 문형을 분기해 반복을 피한다.
+function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const meaning = reportCenterBuildScoreMeaning(data);
+    const level = meaning.level;
+    const rates = wrongRows.map(r => Number(r.correctRate)).filter(Number.isFinite);
+    const hasEasyMiss = rates.some(r => r >= 85);
+    const hasHard = rates.some(r => r < 45);
+    const famText = wrongRows.map(r => `${r.unit || ''} ${r.unitKey || ''} ${r.tag || ''} ${r.concept || ''}`).join(' ');
+    const focus = /조건|해석|범위|경계|부등식|방정식|함수|그래프|활용/.test(famText) ? '조건 해석'
+        : /계산|검산|부호|정리|전개|인수분해/.test(famText) ? '계산·검산'
+        : /도형|각|삼각|원|넓이|길이/.test(famText) ? '도형 조건 정리'
+        : '풀이 순서 정리';
+
+    const state = wrongRows.length === 0
+        ? '이번 시험은 전 문항을 정확히 풀어 개념과 풀이 안정도가 고르게 확인되었습니다.'
+        : (level === '우수' || level === '안정')
+            ? '전반적으로 개념 이해가 안정적이며, 맞힌 문항에서 정확도가 꾸준히 유지되고 있습니다.'
+            : (hasEasyMiss && !hasHard)
+                ? '개념 자체는 잡혀 있어, 실수로 이어진 부분만 다듬으면 더 좋은 결과로 이어질 수 있는 상태입니다.'
+                : hasHard
+                    ? '기본기는 갖춰져 있으며, 정답률이 낮은 고난도 문항에서 한 단계를 더 이어가는 힘을 키우는 단계입니다.'
+                    : '개념은 이해하고 있고, 문제 상황에 맞게 적용하는 순서를 다듬어 가는 단계입니다.';
+
+    const focusMsg = wrongRows.length === 0
+        ? '지금의 강점이 이어지도록 난도를 조절하며 학원에서 계속 관리하겠습니다.'
+        : `${focus}에서의 흔들림은 학원에서 집중적으로 잡아 보완하겠습니다.`;
+
+    return reportCenterAssertParentSafe(`${state} ${focusMsg}`);
 }
 
 function reportCenterBuildStudentWrongCauseSummary(studentId, archiveFile) {
@@ -4034,7 +4237,7 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
 
 function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, options = {}) {
     const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
-    if (!session) return '<section class="aprc-counsel-report">상세 리포트를 만들 시험 기록이 없습니다.</section>';
+    if (!session) return '<section class="aprc-counsel-report">리포트를 만들 시험 기록이 없습니다.</section>';
     const hideInnerHeader = options.hideInnerHeader === true;
     const data = reportCenterWithArchiveDetails(
         reportCenterGetExamReportData(studentId, session.id),
@@ -4044,20 +4247,21 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const stats = data.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
     const detailMap = reportCenterGetQuestionDetailMap(data);
-    const parentWrongRows = reportCenterSelectParentReportWrongRows(wrongRows, 5);
+    const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(reportCenterSelectParentReportWrongRows(wrongRows, 5));
     const omittedWrongCount = Math.max(0, wrongRows.length - parentWrongRows.length);
+    const usedComments = [];
     const questionCards = parentWrongRows
-        .map(row => reportCenterBuildParentWrongQuestionCard(row, detailMap.get(String(row.questionNo)), { showAnswer: false }))
+        .map(row => reportCenterBuildParentWrongQuestionCard(row, detailMap.get(String(row.questionNo)), { showAnswer: false, usedComments }))
         .join('');
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     // 프리미엄 분석(학생별 저장분)이 있으면 문구를 그것으로 대체해 퀄리티를 올린다.
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
     const isPremium = !!(ai && reportCenterIsPremiumAiSource(ai.source));
-    const summaryText = (isPremium && ai.summary) ? ai.summary : reportCenterBuildCompactExamSummary(data);
-    const planText = isPremium
+    const summaryText = reportCenterReframeAcademyTone((isPremium && ai.summary) ? ai.summary : reportCenterBuildCompactExamSummary(data));
+    const planText = reportCenterReframeAcademyTone(isPremium
         ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
-        : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data));
-    const parentText = (isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildRichParentMessage(data, parentWrongRows);
+        : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data)));
+    const parentText = reportCenterReframeAcademyTone((isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildRichParentMessage(data, parentWrongRows));
     const premiumBadge = isPremium
         ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
         : '';
@@ -4065,8 +4269,8 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
             ${hideInnerHeader ? '' : `<header class="aprc-counsel-head">
                 <div>
-                    <div class="aprc-counsel-kicker">기본값 · 학부모 상담/출력용${premiumBadge}</div>
-                    <h3>${reportCenterEscape(student.name || '학생')} 상세 학부모 리포트</h3>
+                    <div class="aprc-counsel-kicker">학부모 발송용${premiumBadge}</div>
+                    <h3>${reportCenterEscape(student.name || '학생')} 시험 분석</h3>
                 </div>
             </header>`}
             <section class="aprc-counsel-section">
@@ -4074,14 +4278,14 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
                 <p>${reportCenterEscape(summaryText).replace(/\n/g, '<br>')}</p>
             </section>
             <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">다음 수업 계획</div>
+                <div class="aprc-counsel-title">앞으로의 학습 방향</div>
                 <p>${reportCenterEscape(planText).replace(/\n/g, '<br>')}</p>
             </section>
             <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">실제 오답 문제</div>
-                ${wrongRows.length ? '<p>먼저 볼 문항을 중심으로 정리했습니다.</p>' : ''}
+                <div class="aprc-counsel-title">오답 문항 분석</div>
+                ${wrongRows.length ? '<p>번호순으로 문항과 보완 포인트를 정리했습니다.</p>' : ''}
                 ${wrongRows.length
-                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 다음 수업에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 클리닉/수업 시간에 차례로 확인하겠습니다.</p>` : ''}`
+                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
             <section class="aprc-counsel-section">
@@ -4144,6 +4348,89 @@ function reportCenterResetSchoolExamAiAnalysis(studentId, sessionId) {
     if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
 }
 
+function reportCenterFormatPrintMetric(value, suffix = '') {
+    const number = Number(value);
+    if (Number.isFinite(number)) return `${Math.round(number)}${suffix}`;
+    const text = String(value ?? '').trim();
+    return text ? `${reportCenterEscape(text)}${suffix}` : '-';
+}
+
+function reportCenterBuildScoreBar(label, value, compareValue) {
+    const score = Number(value);
+    const compare = Number(compareValue);
+    const width = Number.isFinite(score) ? Math.max(3, Math.min(100, Math.round(score))) : 0;
+    const compareLeft = Number.isFinite(compare) ? Math.max(0, Math.min(100, Math.round(compare))) : null;
+    return `
+        <div class="aprc-score-bar" data-score-bar="${reportCenterAttr(label)}">
+            <div class="aprc-score-bar-top"><span>${reportCenterEscape(label)}</span><b>${Number.isFinite(score) ? `${Math.round(score)}점` : '-'}</b></div>
+            <div class="aprc-score-track">
+                <div class="aprc-score-fill" style="width:${width}%"></div>
+                ${compareLeft !== null ? `<i class="aprc-score-marker" style="left:${compareLeft}%"></i>` : ''}
+            </div>
+            ${compareLeft !== null ? `<div class="aprc-score-caption">평균 ${Math.round(compare)}점 기준</div>` : ''}
+        </div>
+    `;
+}
+
+function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows = [], planText = '') {
+    const student = data.student || {};
+    const session = data.session || {};
+    const stats = data.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const questionCount = Number(session.question_count ?? session.questionCount ?? stats.questionCount ?? stats.totalQuestions ?? stats.rows?.length);
+    const correctRate = Number.isFinite(questionCount) && questionCount > 0
+        ? Math.round(((questionCount - wrongRows.length) / questionCount) * 100)
+        : null;
+    const overallAvg = Number(stats.overallAvg ?? stats.overallAverage ?? stats.gradeExamAverage);
+    const classAvg = Number(stats.classAvg ?? stats.classAverage);
+    const score = Number(session.score);
+    const diff = Number.isFinite(score) && Number.isFinite(overallAvg) ? Math.round(score - overallAvg) : null;
+    const diagnosis = wrongRows.length
+        ? `${reportCenterSortWrongRowsByQuestionNo(parentWrongRows).map(row => `${row.questionNo}번`).join(', ')} 문항을 중심으로 조건 해석과 답안 마무리를 확인합니다.`
+        : '오답 문항이 없어 현재 정확도를 유지하며 다음 단원 확장으로 이어갑니다.';
+    const reportTitle = session.exam_title || session.examTitle
+        ? `${session.exam_title || session.examTitle} 분석 리포트`
+        : '학교시험 분석 리포트';
+    return `
+        <section class="aprc-school-summary-page">
+            <div class="aprc-school-title-block">
+                <div class="aprc-school-detail-brand">AP MATH REPORT</div>
+                <h1>${reportCenterEscape(reportTitle)}</h1>
+                <p>학부모 발송용 학교시험 결과 분석</p>
+            </div>
+            <div class="aprc-school-card-grid">
+                <section class="aprc-school-info-card">
+                    <h2>학생/시험 정보</h2>
+                    <dl>
+                        <div><dt>학생</dt><dd>${reportCenterEscape(student.name || '학생')}</dd></div>
+                        <div><dt>시험</dt><dd>${reportCenterEscape(session.exam_title || session.examTitle || '-')}</dd></div>
+                        <div><dt>문항 수</dt><dd>${Number.isFinite(questionCount) ? `${questionCount}문항` : '-'}</dd></div>
+                        <div><dt>오답 수</dt><dd>${wrongRows.length}문항</dd></div>
+                    </dl>
+                </section>
+                <section class="aprc-school-score-card">
+                    <h2>점수 요약</h2>
+                    <div class="aprc-school-score-number">${reportCenterFormatPrintMetric(score, '점')}</div>
+                    ${reportCenterBuildScoreBar('전체 평균 대비', score, overallAvg)}
+                    ${Number.isFinite(classAvg) ? reportCenterBuildScoreBar('반 평균 대비', score, classAvg) : ''}
+                    <div class="aprc-school-score-mini">
+                        <span>정답률 <b>${Number.isFinite(correctRate) ? `${correctRate}%` : '-'}</b></span>
+                        <span>전체 평균 차이 <b>${diff === null ? '-' : `${diff > 0 ? '+' : ''}${diff}점`}</b></span>
+                    </div>
+                </section>
+                <section class="aprc-school-diagnosis-card">
+                    <h2>핵심 진단</h2>
+                    <p>${reportCenterEscape(diagnosis)}</p>
+                </section>
+                <section class="aprc-school-plan-card">
+                    <h2>담임 총평</h2>
+                    <p>${reportCenterEscape(reportCenterBuildSchoolExamTeacherSummary(data))}</p>
+                </section>
+            </div>
+        </section>
+    `;
+}
+
 function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, options = {}) {
     const data = reportCenterWithArchiveDetails(
         reportCenterGetExamReportData(studentId, sessionId),
@@ -4155,16 +4442,17 @@ function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, 
         return '<main class="aprc-pdf-document"><section class="aprc-pdf-panel aprc-empty-box">학교시험 상세 리포트를 만들 시험 기록이 없습니다.</section></main>';
     }
     const archiveFile = session.archive_file || session.archiveFile || '';
-    const studentName = student.name || '학생';
+    const stats = data.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(reportCenterSelectParentReportWrongRows(wrongRows, 5));
+    const actionItems = reportCenterBuildAcademyActionPlan(data);
+    const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    const planText = ai && reportCenterIsPremiumAiSource(ai.source)
+        ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
+        : actionItems.join('\n');
     return `
-        <main class="aprc-school-detail-document" data-report-school-exam-print="detail">
-            <header class="aprc-school-detail-head">
-                <div>
-                    <div class="aprc-school-detail-brand">AP MATH REPORT</div>
-                    <h1>${reportCenterEscape(studentName)} 상세 학부모 리포트</h1>
-                    <p>학교시험 오답과 다음 수업 관리 계획을 정리했습니다.</p>
-                </div>
-            </header>
+        <main class="aprc-school-detail-document" data-report-school-exam-print="detail" data-generated-date="${reportCenterAttr(new Date().toISOString().slice(0, 10))}">
+            ${reportCenterBuildSchoolExamPrintSummaryPage(data, parentWrongRows, planText)}
             ${reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile, {
                 archiveDetails: data.archiveDetails,
                 printMode: true,
@@ -4180,11 +4468,19 @@ function reportCenterBuildSchoolExamDetailedPrintShell(bodyHtml) {
         <div id="report-print-view" class="report-print-view report-center-school-exam-print-view">
             <div class="report-print-toolbar no-print">
                 <button class="btn" type="button" onclick="reportCenterExitSchoolExamPrintMode(); openReportCenterHome()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">리포트 센터</button>
-                <button class="btn btn-primary" type="button" onclick="window.print()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
+                <button class="btn btn-primary" type="button" onclick="reportCenterPrintSchoolExamDetailedReport()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
             </div>
             <div class="report-print-stage" id="report-print-document-root">${bodyHtml}</div>
         </div>
     `;
+}
+
+async function reportCenterPrintSchoolExamDetailedReport() {
+    const root = document.getElementById('report-print-document-root');
+    const ok = await reportCenterTypesetMath(root);
+    if (!ok) return false;
+    window.print();
+    return true;
 }
 
 async function reportCenterOpenSchoolExamDetailedPrintView(studentId, sessionId = '', event = null) {
@@ -4199,14 +4495,17 @@ async function reportCenterOpenSchoolExamDetailedPrintView(studentId, sessionId 
     if (!archiveDetails) {
         archiveDetails = await reportCenterFetchArchiveQuestionDetails(data.session);
     }
-    const root = document.getElementById('app-root') || document.body;
     document.querySelectorAll('#report-center-wide-overlay, .report-center-wide-overlay, .wide-overlay, .modal-backdrop').forEach(el => el.remove());
+    document.getElementById('report-print-portal')?.remove?.();
+    const portal = document.createElement('div');
+    portal.id = 'report-print-portal';
+    document.body.appendChild(portal);
     if (document.body?.classList) document.body.classList.add('aprc-school-print-mode');
-    root.innerHTML = reportCenterBuildSchoolExamDetailedPrintShell(
+    portal.innerHTML = reportCenterBuildSchoolExamDetailedPrintShell(
         reportCenterBuildSchoolExamDetailedPrintDocument(studentId, data.session.id, { archiveDetails })
     );
     reportCenterInjectPrintViewStyle();
-    reportCenterTypesetMath(document.getElementById('report-print-document-root'));
+    await reportCenterTypesetMath(document.getElementById('report-print-document-root'));
     window.scrollTo(0, 0);
     toast('학교시험 상세 리포트 출력 화면을 열었습니다.', 'success');
 }
@@ -4546,7 +4845,7 @@ function reportCenterBuildShortReportSummaryItems(data, aiAnalysis = null) {
 
     return [
         { title: '현재 위치', text: reportCenterTrimText(position, 170) },
-        { title: '우선 확인 문항', text: reportCenterTrimText(focus, 170) },
+        { title: '보완 문항', text: reportCenterTrimText(focus, 170) },
         { title: '다음 수업 방향', text: reportCenterTrimText(plan, 170) }
     ];
 }
@@ -4640,7 +4939,7 @@ function reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, 
     const priorityText = priorityRows.length ? priorityRows.map(r => `${r.questionNo}번`).join(', ') : '';
 
     if (wrongRows.length > 5) {
-        items.push(`틀린 문항이 여러 개여서, 리포트에는 ${priorityText} 등 먼저 볼 문항 5개를 중심으로 정리했습니다.`);
+        items.push(`틀린 문항이 여러 개여서, 리포트에는 ${priorityText} 등 보완 영향이 큰 5개 문항을 중심으로 정리했습니다.`);
     } else {
         items.push(priorityText ? `${priorityText}을 먼저 다시 풀이하고, 같은 유형의 문제로 한 번 더 확인하겠습니다.` : '틀린 문항은 다음 수업에서 다시 풀이하겠습니다.');
     }
@@ -5897,6 +6196,20 @@ function reportCenterInjectPrintViewStyle() {
     }
 
     style.textContent = `
+        /* 출력 모드: 화면에서도 앱 셸(헤더/탭/앱루트)을 숨기고 포털만 노출 */
+        body.aprc-school-print-mode > *:not(#report-print-portal) {
+            display:none !important;
+        }
+
+        body.aprc-school-print-mode {
+            background:#f1f5f9;
+        }
+
+        #report-print-portal {
+            position:relative;
+            z-index:4000;
+        }
+
         .report-print-view {
             position:relative;
             z-index:3000;
@@ -6026,6 +6339,162 @@ function reportCenterInjectPrintViewStyle() {
             box-sizing:border-box;
         }
 
+        .aprc-school-summary-page {
+            min-height:250mm;
+            display:flex;
+            flex-direction:column;
+            gap:8mm;
+            break-after:page;
+            page-break-after:always;
+        }
+
+        .aprc-school-title-block {
+            padding-bottom:6mm;
+            border-bottom:2px solid #111827;
+        }
+
+        .aprc-school-title-block .aprc-school-detail-brand {
+            font-size:11px;
+            font-weight:900;
+            letter-spacing:0.04em;
+            text-transform:uppercase;
+            color:#475569;
+        }
+
+        .aprc-school-title-block h1 {
+            margin:2mm 0 1mm;
+            font-size:25px;
+            line-height:1.2;
+            font-weight:900;
+            color:#111827;
+        }
+
+        .aprc-school-title-block p {
+            margin:0;
+            font-size:13px;
+            font-weight:800;
+            color:#475569;
+        }
+
+        .aprc-school-card-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:5mm;
+            align-content:start;
+        }
+
+        .aprc-school-card-grid > section {
+            border:1px solid #dbe3ef;
+            border-radius:8px;
+            padding:5mm;
+            background:#ffffff;
+            break-inside:avoid;
+            page-break-inside:avoid;
+        }
+
+        .aprc-school-card-grid h2 {
+            margin:0 0 4mm;
+            font-size:14px;
+            font-weight:900;
+            letter-spacing:-0.01em;
+            color:#111827;
+            padding-bottom:2mm;
+            border-bottom:1px solid #cbd5e1;
+        }
+
+        .aprc-school-info-card dl {
+            margin:0;
+            display:grid;
+            gap:3mm;
+        }
+
+        .aprc-school-info-card dl div {
+            display:grid;
+            grid-template-columns:22mm 1fr;
+            gap:3mm;
+        }
+
+        .aprc-school-info-card dt {
+            margin:0;
+            color:#64748b;
+            font-size:12px;
+            font-weight:900;
+        }
+
+        .aprc-school-info-card dd {
+            margin:0;
+            color:#111827;
+            font-size:13px;
+            font-weight:900;
+        }
+
+        .aprc-school-score-number {
+            margin-bottom:4mm;
+            font-size:34px;
+            line-height:1;
+            font-weight:900;
+            color:#111827;
+        }
+
+        .aprc-score-bar + .aprc-score-bar {
+            margin-top:4mm;
+        }
+
+        .aprc-score-bar-top,
+        .aprc-school-score-mini {
+            display:flex;
+            justify-content:space-between;
+            gap:8px;
+            font-size:12px;
+            font-weight:900;
+            color:#334155;
+        }
+
+        .aprc-score-track {
+            position:relative;
+            height:9px;
+            margin-top:2mm;
+            border-radius:99px;
+            border:1px solid #cbd5e1;
+            background:#eef2f7;
+        }
+
+        .aprc-score-fill {
+            height:100%;
+            border-radius:99px;
+            background:#334155;
+        }
+
+        .aprc-score-marker {
+            position:absolute;
+            top:-4px;
+            width:3px;
+            height:17px;
+            border-radius:2px;
+            background:#111827;
+            box-shadow:0 0 0 1.5px #ffffff;
+        }
+
+        .aprc-score-caption {
+            margin-top:1mm;
+            color:#64748b;
+            font-size:10.5px;
+            font-weight:800;
+        }
+
+        .aprc-school-score-mini {
+            margin-top:4mm;
+        }
+
+        .aprc-school-diagnosis-card p,
+        .aprc-school-plan-card p {
+            margin:0;
+            line-height:1.65;
+            color:#1f2937;
+            font-size:12.5px;
+            font-weight:500;
+        }
+
         .aprc-school-detail-head {
             position:relative;
             display:block;
@@ -6041,8 +6510,9 @@ function reportCenterInjectPrintViewStyle() {
             font-size:11px;
             line-height:1.2;
             font-weight:900;
-            color:#1d4ed8;
-            letter-spacing:0;
+            color:#475569;
+            letter-spacing:0.04em;
+            text-transform:uppercase;
         }
 
         .aprc-school-detail-head h1,
@@ -6107,25 +6577,17 @@ function reportCenterInjectPrintViewStyle() {
             line-height:1.5;
         }
 
-        .aprc-parent-question-badge {
-            border-radius:999px;
-            padding:4px 9px;
-            font-size:11px;
-            font-weight:900;
-            background:#eff6ff;
-            color:#1d4ed8;
-            white-space:nowrap;
-        }
-
         .aprc-parent-question-card section {
             margin-top:12px;
         }
 
         .aprc-parent-question-label {
             margin-bottom:5px;
-            font-size:12px;
+            font-size:11px;
             font-weight:900;
-            color:#1d4ed8;
+            letter-spacing:0.02em;
+            color:#475569;
+            text-transform:uppercase;
         }
 
         .aprc-parent-question-card p {
@@ -6142,6 +6604,34 @@ function reportCenterInjectPrintViewStyle() {
             line-height:1.65;
             font-size:12.5px;
             color:#111827;
+        }
+
+        .aprc-parent-question-content table,
+        .aprc-parent-question-card table {
+            width:100%;
+            border-collapse:collapse;
+            margin:8px 0;
+            font-size:12px;
+        }
+
+        .aprc-parent-question-content th,
+        .aprc-parent-question-content td,
+        .aprc-parent-question-card th,
+        .aprc-parent-question-card td {
+            border:1px solid #94a3b8;
+            padding:5px 7px;
+            vertical-align:middle;
+        }
+
+        .aprc-parent-question-content img,
+        .aprc-parent-question-image img,
+        .aprc-parent-question-card img {
+            display:block;
+            max-width:100%;
+            height:auto;
+            margin:8px auto;
+            break-inside:avoid;
+            page-break-inside:avoid;
         }
 
         .aprc-parent-question-choices {
@@ -6454,6 +6944,10 @@ function reportCenterInjectPrintViewStyle() {
         }
 
         @media print {
+            body.aprc-school-print-mode > *:not(#report-print-portal) {
+                display:none !important;
+            }
+
             .no-print,
             .report-print-toolbar,
             .app-header,
@@ -6501,6 +6995,8 @@ function reportCenterInjectPrintViewStyle() {
                 max-width:186mm !important;
                 padding:0 !important;
                 margin:0 auto !important;
+                print-color-adjust:exact;
+                -webkit-print-color-adjust:exact;
             }
 
             .aprc-school-detail-head,
@@ -6513,6 +7009,18 @@ function reportCenterInjectPrintViewStyle() {
 
             .report-center-batch-page {
                 margin-bottom:0 !important;
+            }
+
+            .aprc-school-detail-document::after {
+                content:"AP수학 · 생성일 " attr(data-generated-date) " · 페이지 " counter(page);
+                position:fixed;
+                bottom:-6mm;
+                left:0;
+                right:0;
+                text-align:center;
+                color:#64748b;
+                font-size:10px;
+                font-weight:800;
             }
 
             @page {

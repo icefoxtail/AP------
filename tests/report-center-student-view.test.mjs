@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = ['report-text.js', 'report-center.js', 'report-print.js']
+const source = ['archive-render.js', 'report-text.js', 'report-center.js', 'report-print.js']
   .map(file => fs.readFileSync(path.join(root, 'apmath/js', file), 'utf8'))
   .join('\n');
 
@@ -56,8 +56,9 @@ assert.match(html, /민준 리포트\/상담/);
 assert.match(html, /오답 2/);
 assert.match(html, /2번 저장 분석/);
 assert.match(html, /3번 저장 분석/);
-assert.match(html, /상세 학부모 리포트/);
-assert.match(html, /실제 오답 문제/);
+assert.match(html, /시험 분석/);
+assert.match(html, /오답 문항 분석/);
+assert.doesNotMatch(html, /상세 학부모 리포트|실제 문항|먼저 볼 문항|우선 확인 문항/);
 assert.match(html, /간단 리포트 보기/);
 assert.match(html, /학생별 상담 리포트 1장/);
 assert.match(html, /상세 리포트 출력/);

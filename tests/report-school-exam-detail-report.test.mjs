@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = ['report-text.js', 'report-center.js', 'report-print.js']
+const source = ['archive-render.js', 'report-text.js', 'report-center.js', 'report-print.js']
   .map(file => fs.readFileSync(path.join(root, 'apmath/js', file), 'utf8'))
   .join('\n');
 
@@ -68,15 +68,24 @@ const archiveDetails = {
   ))
 };
 const html = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js', { archiveDetails });
-assert.match(html, /먼저 볼 문항/);
+assert.match(html, /오답 문항 분석/);
+assert.doesNotMatch(html, /먼저 볼 문항|우선 확인 문항|실제 문항|상세 학부모 리포트/);
 assert.equal((html.match(/aprc-parent-question-card/g) || []).length, 5);
 assert.match(html, /나머지 1개 문항/);
 assert.doesNotMatch(html, /aprc-parent-question-label">(?:학부모 해석|이번 오답 의미|다음 수업 계획)</);
 assert.match(html, /aprc-parent-question-comment/);
-assert.ok(html.indexOf('시험 요약') < html.indexOf('다음 수업 계획'));
-assert.ok(html.indexOf('다음 수업 계획') < html.indexOf('실제 오답 문제'));
-assert.ok(html.indexOf('실제 오답 문제') < html.indexOf('학부모 안내 문구'));
-assert.ok(html.indexOf('aprc-parent-question-comment') < html.indexOf('실제 문항'));
+assert.ok(html.indexOf('시험 요약') < html.indexOf('앞으로의 학습 방향'));
+assert.ok(html.indexOf('앞으로의 학습 방향') < html.indexOf('오답 문항 분석'));
+assert.doesNotMatch(html, /다음 수업에서|다음 수업 계획/);
+assert.ok(html.indexOf('오답 문항 분석') < html.indexOf('학부모 안내 문구'));
+assert.ok(html.indexOf('aprc-parent-question-comment') < html.indexOf('문항 원문'));
+const questionOrder = [...html.matchAll(/aprc-parent-question-no">(\d+)번/g)].map(match => Number(match[1]));
+assert.deepEqual(questionOrder, [1, 2, 3, 4, 5]);
+const comments = [...html.matchAll(/<section class="aprc-parent-question-comment">\s*<p>([\s\S]*?)<\/p>/g)]
+  .map(match => match[1].replace(/^\d+번은\s*/, '').replace(/전체 정답률\s*\d+%/g, '전체 정답률'));
+const counts = new Map();
+comments.forEach(comment => counts.set(comment, (counts.get(comment) || 0) + 1));
+assert.ok([...counts.values()].every(count => count < 3));
 assert.match(html, /안녕하세요, AP수학입니다/);
 assert.doesNotMatch(html, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
 

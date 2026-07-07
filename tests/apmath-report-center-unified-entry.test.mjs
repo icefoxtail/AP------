@@ -98,8 +98,12 @@ const batchDoc = context.reportCenterBuildBatchPrintDocument([
   { studentId: 's2', sessionId: 'e2' }
 ]);
 assert.match(batchDoc, /report-center-batch-page/);
-assert.match(batchDoc, /학교시험 상세 리포트/);
-assert.match(batchDoc, /상세 학부모 리포트/);
+assert.match(batchDoc, /AP MATH REPORT/);
+assert.match(batchDoc, /1학기 기말 분석 리포트/);
+assert.match(batchDoc, /학생\/시험 정보/);
+assert.match(batchDoc, /점수 요약/);
+assert.match(batchDoc, /정답률/);
+assert.doesNotMatch(batchDoc, /학교시험 상세 리포트|상세 학부모 리포트|먼저 볼 문항|우선 확인 문항|실제 문항|Misplaced &/);
 assert.doesNotMatch(batchDoc, /평가 분석 리포트/);
 
 assert.match(reportSource, /function reportCenterOpenBatchPrintView/);
