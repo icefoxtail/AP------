@@ -136,9 +136,12 @@ context.AP_REPORT_AI_ANALYSIS_CACHE = {
 };
 const premiumDetailed = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js');
 assert.match(premiumDetailed, /프리미엄 분석 적용/);
-assert.match(premiumDetailed, /AISUMMARYXYZ/);
 assert.match(premiumDetailed, /AIPARENTXYZ/);
 assert.match(premiumDetailed, /AIPLAN1XYZ/);
+// AI 요약은 이제 요약 페이지의 '담임 총평'에 표시된다(상세 본문 '시험 요약' 제거됨).
+const premiumSummaryPage = context.reportCenterBuildSchoolExamPrintSummaryPage(context.reportCenterGetExamReportData('s1', 'e1'), [], '');
+assert.match(premiumSummaryPage, /담임 총평/);
+assert.match(premiumSummaryPage, /AISUMMARYXYZ/);
 
 // 상담 1장도 프리미엄 우선(저장 수정본은 없으니 AI가 뱅크를 대체).
 context.reportCenterSetCounselEditMode('s1', 'exam-a.js', false);

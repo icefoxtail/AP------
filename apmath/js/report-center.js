@@ -2902,6 +2902,13 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
     const wrongRows = (Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [])
         .filter(row => String(row.session_id) === String(session.id));
     const data = reportCenterGetExamReportData(studentId, session.id);
+    const resolvedScore = reportCenterResolveExamScore(student || {}, session, session.archive_file || archiveFile);
+    const manualScoreValue = reportCenterGetManualScoreOverride(studentId, session.archive_file || archiveFile);
+    const scoreSourceLabel = resolvedScore.source === 'manual'
+        ? '수동 입력'
+        : resolvedScore.source === 'ledger'
+            ? '성적표 연동'
+            : '정답률 기준 · 실제 점수 입력 권장';
     const detailedReport = reportCenterBuildSchoolExamDetailedParentReport(studentId, session.archive_file || archiveFile);
     const simpleReport = reportCenterBuildSchoolExamSimpleParentReport(studentId, session.archive_file || archiveFile);
     const counselReport = reportCenterBuildSchoolExamCounselReport(studentId, session.archive_file || archiveFile);
@@ -2929,7 +2936,14 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
             ${counselReport}
             <section class="aprc-section">
                 <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || '학생')} 리포트/상담</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(session.exam_title || '시험')} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(session.exam_title || '시험')} · 오답 ${wrongRows.length}문항</div>
+                <div style="margin-top:12px; padding:10px 12px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="font-size:12px; font-weight:900; color:var(--text);">점수</span>
+                    <input id="report-center-manual-score" type="number" inputmode="numeric" min="0" max="1000" value="${manualScoreValue ?? ''}" placeholder="${Number.isFinite(resolvedScore.score) ? resolvedScore.score : ''}" style="width:76px; min-height:36px; padding:6px 8px; border-radius:8px; border:1px solid var(--border); background:var(--surface); font-size:14px; font-weight:800; color:var(--text);">
+                    <span style="font-size:11px; font-weight:800; padding:3px 8px; border-radius:999px; background:${resolvedScore.source === 'omr' ? 'rgba(234,88,12,0.12)' : 'rgba(26,92,255,0.10)'}; color:${resolvedScore.source === 'omr' ? '#c2410c' : 'var(--primary)'};">${scoreSourceLabel}</span>
+                    <button type="button" class="aprc-action-btn" style="min-height:36px; padding:6px 12px;" onclick="reportCenterSaveManualExamScore('${escapeReportJsString(studentId)}','${escapeReportJsString(session.id)}')">점수 저장</button>
+                    <span style="flex-basis:100%; font-size:11px; font-weight:700; color:var(--secondary);">비우고 저장하면 자동값(성적표/정답률)으로 되돌립니다.</span>
+                </div>
                 <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px;">
                     <button type="button" class="aprc-action-btn aprc-action-btn--primary" onclick="reportCenterOpenSchoolExamDetailedPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}', event)">상세 리포트 출력</button>
                     <button type="button" class="aprc-action-btn" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(session.id)}')">발송 문구 복사</button>
@@ -3548,7 +3562,15 @@ function reportCenterPickNonDuplicateCommentText(candidates = [], usedComments =
         .replace(/\s+/g, ' ')
         .trim();
     const usedSignatures = new Set(used.map(signature));
-    const picked = list.find(text => !usedSignatures.has(signature(text))) || list[used.length % list.length] || list[0];
+    // 같은 난도·계열이면 후보 문장이 단원명만 다르고 구조가 같다. 시그니처만으론 걸러지지 않으므로,
+    // 호출 순서(usedComments 길이)에 따라 시작 인덱스를 회전시켜 문항마다 다른 opener/meaning 조합을 쓴다.
+    const offset = list.length ? used.length % list.length : 0;
+    let picked = null;
+    for (let i = 0; i < list.length; i++) {
+        const cand = list[(offset + i) % list.length];
+        if (!usedSignatures.has(signature(cand))) { picked = cand; break; }
+    }
+    if (!picked) picked = list[offset] || list[0];
     if (Array.isArray(usedComments)) usedComments.push(picked);
     return picked;
 }
@@ -3580,7 +3602,7 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
             `${qNo || ''}번은 ${concept} 단원의 기본형에 가깝지만 답을 확정하는 단계가 중요했던 문항입니다.`
         ],
         hard: [
-            `${qNo || ''}번은 ${rateText}의 고난도 문항으로, ${concept} 조건을 끝까지 연결해야 했습니다.`,
+            `${qNo || ''}번은 ${rateText}의 고난도 문항으로, ${concept}에서 여러 단계를 끝까지 연결해야 했습니다.`,
             `${qNo || ''}번은 여러 단계를 차례로 정리해야 하는 ${concept} 문항입니다.`
         ],
         midHard: [
@@ -3868,14 +3890,15 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
         : (Array.isArray(row?.choices) ? row.choices : []);
     const answer = detail?.answer ?? row?.answer ?? row?.correctAnswer ?? '';
     const showAnswer = options.showAnswer === true;
+    // 단원(unit)은 헤더에 이미 나오므로 meta에서는 제외. 내부 플레이스홀더('유형 확인' 등)는 학부모에게 노출하지 않는다.
+    const metaPlaceholders = new Set(['유형 확인', '단원 확인', '자료 부족', '유형 미상', '난도 미상', '확인']);
     const meta = [
-        unit,
         type,
         point ? `${point}점` : '',
         level,
-        `전체 정답률 ${correctRate}`,
-        `반 정답률 ${classCorrectRate}`
-    ].filter(Boolean).map(reportCenterEscape).join(' · ');
+        correctRate !== '-' ? `전체 정답률 ${correctRate}` : '',
+        classCorrectRate !== '-' ? `반 정답률 ${classCorrectRate}` : ''
+    ].filter(v => v && !metaPlaceholders.has(v)).map(reportCenterEscape).join(' · ');
     const choicesHtml = choices.length
         ? `<ol class="aprc-parent-question-choices">${choices.map(choice => `<li>${reportCenterWrapLatexRichHtml(reportCenterRewriteImgSrcInHtml(choice, archiveFile))}</li>`).join('')}</ol>`
         : '';
@@ -4067,6 +4090,12 @@ function reportCenterReframeAcademyTone(text) {
 // 담임 총평: 현재 상태(강점) + 핵심 보완 + 학원 책임을 2문장으로. 시점 무관.
 // 점수 밴드(우수/안정/관리/점검)와 오답 밴드(실수/고난도)·주요 오답 계열로 문형을 분기해 반복을 피한다.
 function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
+    // 프리미엄 AI 분석이 있으면 그 요약을 담임 총평으로 사용한다(홀리스틱 요약 = 총평 역할).
+    const session = data?.session || {};
+    const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
+    if (ai && reportCenterIsPremiumAiSource(ai.source) && ai.summary) {
+        return reportCenterAssertParentSafe(reportCenterReframeAcademyTone(String(ai.summary)));
+    }
     const stats = data?.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
     const meaning = reportCenterBuildScoreMeaning(data);
@@ -4244,7 +4273,6 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     // 프리미엄 분석(학생별 저장분)이 있으면 문구를 그것으로 대체해 퀄리티를 올린다.
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
     const isPremium = !!(ai && reportCenterIsPremiumAiSource(ai.source));
-    const summaryText = reportCenterReframeAcademyTone((isPremium && ai.summary) ? ai.summary : reportCenterBuildCompactExamSummary(data));
     const planText = reportCenterReframeAcademyTone(isPremium
         ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
         : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data)));
@@ -4261,18 +4289,14 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
                 </div>
             </header>`}
             <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">시험 요약</div>
-                <p>${reportCenterEscape(summaryText).replace(/\n/g, '<br>')}</p>
-            </section>
-            <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">앞으로의 학습 방향</div>
-                <p>${reportCenterEscape(planText).replace(/\n/g, '<br>')}</p>
-            </section>
-            <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">오답 문항 분석</div>
                 ${wrongRows.length
                     ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
+            </section>
+            <section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">앞으로의 학습 방향</div>
+                <p>${reportCenterEscape(planText).replace(/\n/g, '<br>')}</p>
             </section>
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">학부모님께</div>
@@ -4358,6 +4382,91 @@ function reportCenterBuildScoreBar(label, value, compareValue) {
     `;
 }
 
+// ── 실제 학교 점수(성적표) 연동 ───────────────────────────────────────────
+// 리포트 세션(OMR)에서 성적표(school_exam_records) 매칭 키를 파생한다.
+// "항상 해당 학기의 가장 최근 성적"이 대상이므로 연도·학기·시험유형·과목으로 매칭한다.
+function reportCenterDeriveSchoolExamKey(session) {
+    const dateStr = String(session?.exam_date || '').trim();
+    const year = Number((dateStr.match(/(\d{4})/) || [])[1]) || null;
+    const monthMatch = dateStr.match(/\d{4}\D+(\d{1,2})/) || dateStr.match(/^\d{4}(\d{2})/);
+    const month = monthMatch ? Number(monthMatch[1]) : null;
+    const semester = month ? ((month >= 3 && month <= 7) ? '1학기' : '2학기') : '';
+    const title = String(session?.exam_title || '');
+    const examType = /기말/.test(title) ? 'final' : /중간/.test(title) ? 'midterm' : '';
+    const grade = reportCenterGetSessionGrade(session);
+    const isHigh = /^고/.test(grade);
+    // 중등은 수학 단일이라 자동 매칭, 고등은 과목이 여러 개라 자동 특정 불가(수동 입력).
+    const subject = isHigh ? '' : '수학';
+    return { year, month, semester, examType, subject, isHigh, grade };
+}
+
+function reportCenterNormalizeSchoolSubject(subject) {
+    return String(subject || '').replace(/\s+/g, '');
+}
+
+function reportCenterFindSchoolExamRecord(studentId, key) {
+    if (!key || !key.year || !key.semester || !key.examType || !key.subject) return null;
+    const target = reportCenterNormalizeSchoolSubject(key.subject);
+    return (Array.isArray(state?.db?.school_exam_records) ? state.db.school_exam_records : []).find(r =>
+        String(r.student_id) === String(studentId) &&
+        Number(r.exam_year) === Number(key.year) &&
+        String(r.semester || '') === key.semester &&
+        String(r.exam_type || '') === key.examType &&
+        reportCenterNormalizeSchoolSubject(r.subject) === target &&
+        String(r.is_deleted || 0) !== '1' &&
+        r.score !== null && r.score !== undefined && r.score !== '' && Number.isFinite(Number(r.score))
+    ) || null;
+}
+
+// 선생님 수동 점수(override)는 exam_student_reports(report_type='school_exam_score') fields_json.manualScore에 보관한다.
+// (counsel 저장이 fields_json을 통째로 덮어쓰므로 전용 타입으로 분리해 충돌을 막는다.)
+function reportCenterGetManualScoreOverride(studentId, archiveFile) {
+    const row = typeof reportCenterGetServerStudentReport === 'function'
+        ? reportCenterGetServerStudentReport(studentId, archiveFile, 'school_exam_score')
+        : null;
+    const fields = reportCenterParseStudentReportJson?.(row?.fields_json ?? row?.fieldsJson) || null;
+    const v = fields?.manualScore;
+    return (v === null || v === undefined || v === '' || !Number.isFinite(Number(v))) ? null : Number(v);
+}
+
+// 표시할 점수를 우선순위(수동 > 성적표 > OMR 정답률%)로 해결한다.
+function reportCenterResolveExamScore(student, session, archiveFile) {
+    const percent = Number(session?.score);
+    const key = reportCenterDeriveSchoolExamKey(session);
+    const manual = reportCenterGetManualScoreOverride(student?.id, archiveFile);
+    if (Number.isFinite(manual)) return { score: manual, source: 'manual', percent, key };
+    const rec = reportCenterFindSchoolExamRecord(student?.id, key);
+    if (rec) return { score: Number(rec.score), source: 'ledger', percent, key, record: rec };
+    return { score: Number.isFinite(percent) ? percent : null, source: 'omr', percent, key };
+}
+
+// 성적표 기준 전체/반 평균(같은 연도·학기·유형·과목).
+function reportCenterGetLedgerAverages(studentId, key) {
+    if (!key || !key.year || !key.semester || !key.examType || !key.subject) return null;
+    const target = reportCenterNormalizeSchoolSubject(key.subject);
+    const records = (Array.isArray(state?.db?.school_exam_records) ? state.db.school_exam_records : []).filter(r =>
+        Number(r.exam_year) === Number(key.year) &&
+        String(r.semester || '') === key.semester &&
+        String(r.exam_type || '') === key.examType &&
+        reportCenterNormalizeSchoolSubject(r.subject) === target &&
+        String(r.is_deleted || 0) !== '1' &&
+        r.score !== null && r.score !== undefined && r.score !== '' && Number.isFinite(Number(r.score))
+    );
+    if (!records.length) return null;
+    const mean = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : null;
+    const overallAvg = mean(records.map(r => Number(r.score)));
+    const classInfo = reportCenterGetStudentClass(studentId);
+    const classId = classInfo?.classId || '';
+    let classAvg = null;
+    if (classId) {
+        const classStudentIds = new Set((state.db.class_students || [])
+            .filter(m => String(m.class_id) === String(classId))
+            .map(m => String(m.student_id)));
+        classAvg = mean(records.filter(r => classStudentIds.has(String(r.student_id))).map(r => Number(r.score)));
+    }
+    return { overallAvg, classAvg, count: records.length };
+}
+
 function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows = [], planText = '') {
     const student = data.student || {};
     const session = data.session || {};
@@ -4367,9 +4476,17 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
     const correctRate = Number.isFinite(questionCount) && questionCount > 0
         ? Math.round(((questionCount - wrongRows.length) / questionCount) * 100)
         : null;
-    const overallAvg = Number(stats.overallAvg ?? stats.overallAverage ?? stats.gradeExamAverage);
-    const classAvg = Number(stats.classAvg ?? stats.classAverage);
-    const score = Number(session.score);
+    const archiveFile = session.archive_file || session.archiveFile || '';
+    const resolved = reportCenterResolveExamScore(student, session, archiveFile);
+    const usingRealScore = resolved.source === 'manual' || resolved.source === 'ledger';
+    const ledgerAvg = usingRealScore ? reportCenterGetLedgerAverages(student.id, resolved.key) : null;
+    const score = Number.isFinite(resolved.score) ? resolved.score : Number(session.score);
+    const overallAvg = ledgerAvg && Number.isFinite(ledgerAvg.overallAvg)
+        ? ledgerAvg.overallAvg
+        : Number(stats.overallAvg ?? stats.overallAverage ?? stats.gradeExamAverage);
+    const classAvg = ledgerAvg && Number.isFinite(ledgerAvg.classAvg)
+        ? ledgerAvg.classAvg
+        : Number(stats.classAvg ?? stats.classAverage);
     const diff = Number.isFinite(score) && Number.isFinite(overallAvg) ? Math.round(score - overallAvg) : null;
     const diagnosis = wrongRows.length
         ? `${reportCenterSortWrongRowsByQuestionNo(parentWrongRows).map(row => `${row.questionNo}번`).join(', ')} 문항을 중심으로 조건 해석과 답안 마무리를 확인합니다.`
@@ -4580,6 +4697,40 @@ async function reportCenterSaveSchoolExamCounselReport(studentId, archiveFile) {
     }
     if (typeof openReportCenterModal === 'function' && typeof document?.getElementById === 'function') openReportCenterModal(studentId);
     return fields;
+}
+
+// 선생님이 실제 학교 점수를 직접 입력/수정한다(성적표 자동 매칭이 안 되거나 값이 다를 때).
+async function reportCenterSaveManualExamScore(studentId, sessionId) {
+    const input = typeof document?.getElementById === 'function' ? document.getElementById('report-center-manual-score') : null;
+    if (!input) return;
+    const raw = String(input.value ?? '').trim();
+    const session = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .find(s => String(s.id) === String(sessionId));
+    const archiveFile = session?.archive_file || session?.archiveFile || '';
+    let manualScore = null;
+    if (raw !== '') {
+        const n = Number(raw);
+        if (!Number.isFinite(n) || n < 0 || n > 1000) {
+            if (typeof toast === 'function') toast('0 이상 1000 이하 숫자로 입력해 주세요.', 'warn');
+            return;
+        }
+        manualScore = Math.round(n * 10) / 10;
+    }
+    const fields = { manualScore };
+    // 로컬 즉시 반영 + 서버 영속(전용 타입이라 counsel과 충돌 없음)
+    reportCenterUpsertStudentReportRows([{ archive_file: archiveFile, student_id: studentId, report_type: 'school_exam_score', fields_json: JSON.stringify(fields) }]);
+    const syncResult = await reportCenterSyncStudentReportToServer(archiveFile, studentId, {
+        report_type: 'school_exam_score',
+        session_id: sessionId,
+        fields_json: fields
+    });
+    if (typeof toast === 'function') {
+        toast(syncResult
+            ? (manualScore === null ? '점수 수정을 지웠습니다(자동값 사용).' : `점수를 ${manualScore}점으로 저장했습니다.`)
+            : '서버 저장은 실패했습니다. 이 화면에는 임시 저장되었습니다.',
+            syncResult ? 'success' : 'warn');
+    }
+    if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId);
 }
 
 function reportCenterBuildDifficultyBarsForPremium(stats) {

@@ -2,61 +2,84 @@
         <div id="report-print-view" class="report-print-view report-center-school-exam-print-view">
             <div class="report-print-toolbar no-print">
                 <button class="btn" type="button" onclick="reportCenterExitSchoolExamPrintMode(); openReportCenterHome()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">리포트 센터</button>
-                <button class="btn btn-primary" type="button" onclick="window.print()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
+                <button class="btn btn-primary" type="button" onclick="reportCenterPrintSchoolExamDetailedReport()" style="min-height:38px; padding:8px 12px; border-radius:10px; font-weight:800;">인쇄/PDF 저장</button>
             </div>
             <div class="report-print-stage" id="report-print-document-root">
-        <main class="aprc-school-detail-document" data-report-school-exam-print="detail">
-            <header class="aprc-school-detail-head">
-                <div>
-                    <div class="aprc-school-detail-brand">AP MATH REPORT</div>
-                    <h1>학교시험 상세 리포트</h1>
-                    <p>틀린 문제와 다음 수업 계획을 함께 정리합니다.</p>
-                </div>
-            </header>
+        <main class="aprc-school-detail-document" data-report-school-exam-print="detail" data-generated-date="2026-07-08">
+            
+        <section class="aprc-school-summary-page">
+            <div class="aprc-school-title-block">
+                <div class="aprc-school-detail-brand">AP MATH REPORT</div>
+                <h1>Loop C 학교시험 분석 리포트</h1>
+            </div>
+            <div class="aprc-school-card-grid">
+                <section class="aprc-school-info-card">
+                    <h2>학생/시험 정보</h2>
+                    <dl>
+                        <div><dt>학생</dt><dd>샘플 학생</dd></div>
+                        <div><dt>시험</dt><dd>Loop C 학교시험</dd></div>
+                        <div><dt>문항 수</dt><dd>8문항</dd></div>
+                        <div><dt>오답 수</dt><dd>6문항</dd></div>
+                    </dl>
+                </section>
+                <section class="aprc-school-score-card">
+                    <h2>점수 요약</h2>
+                    <div class="aprc-school-score-number">72점</div>
+                    
+        <div class="aprc-score-bar" data-score-bar="전체 평균 대비">
+            <div class="aprc-score-bar-top"><span>전체 평균 대비</span><b>72점</b></div>
+            <div class="aprc-score-track">
+                <div class="aprc-score-fill" style="width:72%"></div>
+                <i class="aprc-score-marker" style="left:72%"></i>
+            </div>
+            <div class="aprc-score-caption">평균 72점 기준</div>
+        </div>
+    
+                    
+        <div class="aprc-score-bar" data-score-bar="반 평균 대비">
+            <div class="aprc-score-bar-top"><span>반 평균 대비</span><b>72점</b></div>
+            <div class="aprc-score-track">
+                <div class="aprc-score-fill" style="width:72%"></div>
+                <i class="aprc-score-marker" style="left:72%"></i>
+            </div>
+            <div class="aprc-score-caption">평균 72점 기준</div>
+        </div>
+    
+                    <div class="aprc-school-score-mini">
+                        <span>정답률 <b>25%</b></span>
+                        <span>전체 평균 차이 <b>0점</b></span>
+                    </div>
+                </section>
+                <section class="aprc-school-diagnosis-card">
+                    <h2>핵심 진단</h2>
+                    <p>1번, 2번, 3번, 4번, 5번 문항을 중심으로 조건 해석과 답안 마무리를 확인합니다.</p>
+                </section>
+                <section class="aprc-school-plan-card">
+                    <h2>담임 총평</h2>
+                    <p>AI 요약: 조건 해석과 계산 검산을 함께 보완합니다.</p>
+                </section>
+            </div>
+        </section>
+    
             
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
-            <header class="aprc-counsel-head">
-                <div>
-                    <div class="aprc-counsel-kicker">기본값 · 학부모 상담/출력용 <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span></div>
-                    <h3>샘플 학생 상세 학부모 리포트</h3>
-                </div>
-            </header>
+            
             <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">시험 요약</div>
-                <p>AI 요약: 조건 해석과 계산 검산을 함께 보완합니다.</p>
-            </section>
-            <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">다음 수업 계획</div>
-                <p>조건 정리<br>검산 습관 점검</p>
-            </section>
-            <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">실제 오답 문제</div>
-                <p>먼저 볼 문항을 중심으로 정리했습니다.</p>
+                <div class="aprc-counsel-title">오답 문항 분석</div>
                 <div class="aprc-qreview-list">
         <article class="aprc-parent-question-card">
             <header class="aprc-parent-question-head">
                 <div>
                     <div class="aprc-parent-question-no">1번 · 일차방정식</div>
-                    <div class="aprc-parent-question-meta">일차방정식 · 유형 확인 · 매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
+                    <div class="aprc-parent-question-meta">매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
                 </div>
-                <span class="aprc-parent-question-badge">최상위 문항</span>
             </header>
-            <section class="aprc-parent-question-narrative">
-                <div class="aprc-parent-question-label">학부모 해석</div>
-                <p>전체 정답률 0%의 매우 어려운 최상위 문항입니다.</p>
-                <p>일차방정식 개념을 문제 상황에 연결하는 과정이 핵심이었습니다.</p>
-            </section>
-            <section class="aprc-parent-question-meaning">
-                <div class="aprc-parent-question-label">이번 오답 의미</div>
-                <p>해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.</p>
-            </section>
-            <section class="aprc-parent-question-action">
-                <div class="aprc-parent-question-label">다음 수업 계획</div>
-                <p>최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다. 특히 조건 정리와 식 변형 과정을 한 줄씩 확인하겠습니다.</p>
+            <section class="aprc-parent-question-comment">
+                <p>1번은 전체 정답률 0%의 고난도 문항으로, 일차방정식에서 여러 단계를 끝까지 연결해야 했습니다. 많은 학생이 어려워한 문항 기준으로 보면 이번 오답은 조건을 식으로 옮기고 범위까지 확인하는 과정에서 정리가 더 필요했던 것으로 보입니다.</p>
             </section>
             <section class="aprc-parent-question-original">
-                <div class="aprc-parent-question-label">실제 문항</div>
-                <div class="aprc-parent-question-content">1번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li></li><li></li><li></li></ol>
+                <div class="aprc-parent-question-label">문항 원문</div>
+                <div class="aprc-parent-question-content">1번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li>① 첫 번째 선택지</li><li>② 두 번째 선택지</li><li>③ 세 번째 선택지</li></ol>
             </section>
         </article>
     
@@ -64,26 +87,15 @@
             <header class="aprc-parent-question-head">
                 <div>
                     <div class="aprc-parent-question-no">2번 · 함수 활용</div>
-                    <div class="aprc-parent-question-meta">함수 활용 · 유형 확인 · 매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
+                    <div class="aprc-parent-question-meta">매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
                 </div>
-                <span class="aprc-parent-question-badge">최상위 문항</span>
             </header>
-            <section class="aprc-parent-question-narrative">
-                <div class="aprc-parent-question-label">학부모 해석</div>
-                <p>전체 정답률 0%의 매우 어려운 최상위 문항입니다.</p>
-                <p>함수 활용 개념을 문제 상황에 연결하는 과정이 핵심이었습니다.</p>
-            </section>
-            <section class="aprc-parent-question-meaning">
-                <div class="aprc-parent-question-label">이번 오답 의미</div>
-                <p>해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.</p>
-            </section>
-            <section class="aprc-parent-question-action">
-                <div class="aprc-parent-question-label">다음 수업 계획</div>
-                <p>최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다. 특히 상황 해석, 표 만들기, 식 확인 순서로 풀이를 정리하겠습니다.</p>
+            <section class="aprc-parent-question-comment">
+                <p>2번은 전체 정답률 0%의 고난도 문항으로, 함수 활용에서 여러 단계를 끝까지 연결해야 했습니다. 많은 학생이 어려워한 문항 기준으로 보면 문장 조건을 표시한 뒤 어떤 식으로 연결할지 정리하는 단계가 핵심이었습니다.</p>
             </section>
             <section class="aprc-parent-question-original">
-                <div class="aprc-parent-question-label">실제 문항</div>
-                <div class="aprc-parent-question-content">2번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li></li><li></li><li></li></ol>
+                <div class="aprc-parent-question-label">문항 원문</div>
+                <div class="aprc-parent-question-content">2번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li>① 첫 번째 선택지</li><li>② 두 번째 선택지</li><li>③ 세 번째 선택지</li></ol>
             </section>
         </article>
     
@@ -91,26 +103,15 @@
             <header class="aprc-parent-question-head">
                 <div>
                     <div class="aprc-parent-question-no">3번 · 조건 해석</div>
-                    <div class="aprc-parent-question-meta">조건 해석 · 유형 확인 · 매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
+                    <div class="aprc-parent-question-meta">매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
                 </div>
-                <span class="aprc-parent-question-badge">최상위 문항</span>
             </header>
-            <section class="aprc-parent-question-narrative">
-                <div class="aprc-parent-question-label">학부모 해석</div>
-                <p>전체 정답률 0%의 매우 어려운 최상위 문항입니다.</p>
-                <p>조건 해석 개념을 문제 상황에 연결하는 과정이 핵심이었습니다.</p>
-            </section>
-            <section class="aprc-parent-question-meaning">
-                <div class="aprc-parent-question-label">이번 오답 의미</div>
-                <p>해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.</p>
-            </section>
-            <section class="aprc-parent-question-action">
-                <div class="aprc-parent-question-label">다음 수업 계획</div>
-                <p>최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다.</p>
+            <section class="aprc-parent-question-comment">
+                <p>3번은 여러 단계를 차례로 정리해야 하는 조건 해석 문항입니다. 많은 학생이 어려워한 문항 기준으로 보면 이번 오답은 조건을 식으로 옮기고 범위까지 확인하는 과정에서 정리가 더 필요했던 것으로 보입니다.</p>
             </section>
             <section class="aprc-parent-question-original">
-                <div class="aprc-parent-question-label">실제 문항</div>
-                <div class="aprc-parent-question-content">3번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li></li><li></li><li></li></ol>
+                <div class="aprc-parent-question-label">문항 원문</div>
+                <div class="aprc-parent-question-content">3번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li>① 첫 번째 선택지</li><li>② 두 번째 선택지</li><li>③ 세 번째 선택지</li></ol>
             </section>
         </article>
     
@@ -118,26 +119,15 @@
             <header class="aprc-parent-question-head">
                 <div>
                     <div class="aprc-parent-question-no">4번 · 부등식과 범위</div>
-                    <div class="aprc-parent-question-meta">부등식과 범위 · 유형 확인 · 매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
+                    <div class="aprc-parent-question-meta">매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
                 </div>
-                <span class="aprc-parent-question-badge">최상위 문항</span>
             </header>
-            <section class="aprc-parent-question-narrative">
-                <div class="aprc-parent-question-label">학부모 해석</div>
-                <p>전체 정답률 0%의 매우 어려운 최상위 문항입니다.</p>
-                <p>부등식과 범위 개념을 문제 상황에 연결하는 과정이 핵심이었습니다.</p>
-            </section>
-            <section class="aprc-parent-question-meaning">
-                <div class="aprc-parent-question-label">이번 오답 의미</div>
-                <p>해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.</p>
-            </section>
-            <section class="aprc-parent-question-action">
-                <div class="aprc-parent-question-label">다음 수업 계획</div>
-                <p>최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다. 특히 범위 표시와 경계값 확인을 함께 점검하겠습니다.</p>
+            <section class="aprc-parent-question-comment">
+                <p>4번은 여러 단계를 차례로 정리해야 하는 부등식과 범위 문항입니다. 많은 학생이 어려워한 문항 기준으로 보면 문장 조건을 표시한 뒤 어떤 식으로 연결할지 정리하는 단계가 핵심이었습니다.</p>
             </section>
             <section class="aprc-parent-question-original">
-                <div class="aprc-parent-question-label">실제 문항</div>
-                <div class="aprc-parent-question-content">4번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li></li><li></li><li></li></ol>
+                <div class="aprc-parent-question-label">문항 원문</div>
+                <div class="aprc-parent-question-content">4번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li>① 첫 번째 선택지</li><li>② 두 번째 선택지</li><li>③ 세 번째 선택지</li></ol>
             </section>
         </article>
     
@@ -145,33 +135,26 @@
             <header class="aprc-parent-question-head">
                 <div>
                     <div class="aprc-parent-question-no">5번 · 인수분해</div>
-                    <div class="aprc-parent-question-meta">인수분해 · 유형 확인 · 매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
+                    <div class="aprc-parent-question-meta">매우 어려움 · 전체 정답률 0% · 반 정답률 0%</div>
                 </div>
-                <span class="aprc-parent-question-badge">최상위 문항</span>
             </header>
-            <section class="aprc-parent-question-narrative">
-                <div class="aprc-parent-question-label">학부모 해석</div>
-                <p>전체 정답률 0%의 매우 어려운 최상위 문항입니다.</p>
-                <p>인수분해 개념을 문제 상황에 연결하는 과정이 핵심이었습니다.</p>
-            </section>
-            <section class="aprc-parent-question-meaning">
-                <div class="aprc-parent-question-label">이번 오답 의미</div>
-                <p>해당 개념을 문제에 적용하는 과정이 아직 충분히 안정되지 않은 것으로 보입니다.</p>
-            </section>
-            <section class="aprc-parent-question-action">
-                <div class="aprc-parent-question-label">다음 수업 계획</div>
-                <p>최상위 난도 문항 대비 훈련으로 다음 시험 준비에 맞춰 진행하겠습니다. 특히 부호 확인과 전개 검산을 함께 진행하겠습니다.</p>
+            <section class="aprc-parent-question-comment">
+                <p>5번은 전체 정답률 0%의 고난도 문항으로, 인수분해에서 여러 단계를 끝까지 연결해야 했습니다. 많은 학생이 어려워한 문항 기준으로 보면 개념 부족만의 문제라기보다 계산, 부호, 검산 과정의 점검이 더 필요했던 실점으로 보입니다.</p>
             </section>
             <section class="aprc-parent-question-original">
-                <div class="aprc-parent-question-label">실제 문항</div>
-                <div class="aprc-parent-question-content">5번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li></li><li></li><li></li></ol>
+                <div class="aprc-parent-question-label">문항 원문</div>
+                <div class="aprc-parent-question-content">5번 샘플 문항입니다. 조건을 읽고 알맞은 값을 구하세요.</div><ol class="aprc-parent-question-choices"><li>① 첫 번째 선택지</li><li>② 두 번째 선택지</li><li>③ 세 번째 선택지</li></ol>
             </section>
         </article>
-    </div><p>나머지 1개 문항은 클리닉/수업 시간에 차례로 확인하겠습니다.</p>
+    </div><p>나머지 1개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>
             </section>
             <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">학부모 안내 문구</div>
-                <p>학부모 안내: 다음 수업에서 우선 문항을 다시 점검합니다.</p>
+                <div class="aprc-counsel-title">앞으로의 학습 방향</div>
+                <p>조건 정리<br>검산 습관 점검</p>
+            </section>
+            <section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">학부모님께</div>
+                <p>학부모 안내: 학원에서 우선 문항을 다시 점검합니다.</p>
             </section>
         </article>
     
