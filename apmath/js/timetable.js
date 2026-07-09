@@ -2835,18 +2835,20 @@ function _ttFormatMonthDay(value) {
     return String(Number(parts[1])) + '/' + String(Number(parts[2]));
 }
 
-function _ttIsStudentNewByJuneFirst(s) {
+function _ttIsStudentNewByRecentEnrollment(s, today) {
     var joinDate = _ttGetStudentJoinDate(s);
     if (!joinDate) return false;
-    var year = new Date().getFullYear();
-    return joinDate >= String(year) + '-06-01';
+    var current = getTimetableTodayDateString(today);
+    var cutoff = getTimetableTwoMonthsAgoDateString(today);
+    return !!(current && cutoff && joinDate <= current && joinDate >= cutoff);
 }
 
 function _ttIsStudentNew(s) {
     if (!s) return false;
+    if (_ttGetStudentJoinDate(s)) return _ttIsStudentNewByRecentEnrollment(s);
     if (typeof isStudentNewMember === 'function' && isStudentNewMember(s)) return true;
     if (String(s.memo || '').indexOf('#신입') !== -1) return true;
-    return _ttIsStudentNewByJuneFirst(s);
+    return false;
 }
 
 function _ttIsStudentLeave(s) {
