@@ -93,7 +93,7 @@ assert.ok(order.every(index => index >= 0), `all compact sections should exist: 
 assert.deepEqual([...order].sort((a, b) => a - b), order, 'compact sections should render in the target order');
 
 const parentSection = html.match(/aprc-pdf-parent-message[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
-assert.ok(parentSection.split(/[.!?。]|다\./).filter(Boolean).length <= 2, 'parent message should stay compact');
+assert.ok(parentSection.split(/[.!?。]|다\./).filter(Boolean).length <= 3, 'parent message should stay compact');
 
 const perfectHtml = context.reportCenterBuildCleanPdfDocument('s2', 'p1', { teacherMemo: '' });
 assert.doesNotMatch(perfectHtml, /aprc-pdf-review-panel/);

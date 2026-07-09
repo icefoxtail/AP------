@@ -4209,7 +4209,7 @@ function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
         },
         middle: {
             positiveAnchor: `${who}는 맞힌 문항에서 기본 개념 적용이 잘 됐습니다.`,
-            teacherCareMessage: '오답 문항은 수업에서 우선순위대로 다시 풀어 정리했고, 조건을 식으로 옮기는 과정과 계산 마무리를 집중적으로 봤습니다.',
+            teacherCareMessage: '오답 문항은 수업에서 우선순위대로 다시 풀어 정리했습니다.',
             parentReassurance: '이번에 확인된 계산 마무리 습관은 새 단원을 풀면서 제가 이어서 잡아가겠습니다.'
         },
         high: {
@@ -4302,7 +4302,10 @@ function reportCenterBuildLongTermPlanMessage(data = {}, toneBand = 'middle', re
         const intro = isInternal
             ? '중1 과정은 학교 시험이 없더라도 중학교 수학의 풀이 방식에 적응하는 중요한 시기입니다.'
             : '중1 과정은 첫 내신을 준비하기 전에 중학교 수학의 풀이 방식과 평가 문항에 익숙해지는 시기입니다.';
-        return `앞으로의 관리 방향도 함께 말씀드리면, ${intro} 이번 결과를 기준으로 조건 읽기, 식 세우기, 풀이 마무리 습관을 잡아가며 첫 내신 시험을 준비하겠습니다.`;
+        const middle1Close = (toneBand === 'perfect' || toneBand === 'high')
+            ? '이번 결과에서 조건 읽기, 식 세우기, 풀이 마무리가 잘 잡혀 있는 것이 확인된 만큼, 같은 방식으로 첫 내신 시험을 준비하겠습니다.'
+            : '이번 결과를 기준으로 조건 읽기, 식 세우기, 풀이 마무리 습관을 잡아가며 첫 내신 시험을 준비하겠습니다.';
+        return `앞으로의 관리 방향도 함께 말씀드리면, ${intro} ${middle1Close}`;
     }
     if (gradeStage === 'middle2') {
         return '앞으로의 관리 방향도 함께 말씀드리면, 중2 과정은 함수, 도형, 연립방정식처럼 이후 학년과 고등 과정으로 이어지는 단원이 많습니다. 이번 결과에서 확인된 약한 유형은 이번 시험 범위로만 보지 않고, 다음 학기와 중3 과정에서 반복되지 않도록 관리하겠습니다.';
@@ -4348,13 +4351,17 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const priorityUnit = priorityRow?.unit || priorityRow?.unitKey || priorityRow?.concept || '확인할 단원';
     const priorityRate = Number(priorityRow?.correctRate);
     const rateText = Number.isFinite(priorityRate) ? `정답률이 ${Math.round(priorityRate)}%` : '정답률 확인 대상';
+    // 소개(오답 몇 개, 무엇을 중심으로) → 세부(그 문항에서 무엇을 봤는지) 순서로 읽히게 한다.
+    // 오답이 1개면 "N개 중"·"특히 ~처럼" 표현이 어색하므로 단수형으로 쓴다.
     const wrongText = wrongRows.length
-        ? `오답 ${wrongRows.length}개 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 중심으로 수업에서 다시 짚었고, 이 리포트에도 정리해 두었습니다`
+        ? (wrongRows.length === 1
+            ? `오답은 ${priorityNo ? `${priorityNo}번` : '한'} 문항이었고, 수업에서 다시 짚어 이 리포트에도 정리해 두었습니다`
+            : `오답 ${wrongRows.length}개 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 중심으로 수업에서 다시 짚었고, 이 리포트에도 정리해 두었습니다`)
         : toneSeed.band === 'perfect'
             ? '이 리포트에는 강점이 드러난 문항과 다음 단계 계획을 정리해 두었습니다'
             : '오답 문항은 많지 않았지만 풀이 과정과 답안 마무리까지 수업에서 함께 확인했습니다';
     const wrongFocus = wrongRows.length
-        ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}였던 문항은 조건을 정리해 식으로 연결하는 과정을 수업에서 다시 확인했습니다.`
+        ? `${wrongRows.length === 1 ? `${priorityNo ? `${priorityNo}번은` : '이 문항은'}` : `특히 ${priorityNo ? `${priorityNo}번처럼` : '우선 문항처럼'}`} ${priorityUnit} 단원에서 ${rateText}였던 문항${wrongRows.length === 1 ? '이라' : '은'} 조건을 정리해 식으로 연결하는 과정을 수업에서 다시 확인했습니다.`
         : toneSeed.band === 'perfect'
             ? '이번 시험은 다음 단원으로 넘어가기 전에 정확도와 풀이 완성도를 확인해 준 결과였습니다.'
             : '이번 시험은 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 점검해 준 결과였습니다.';
@@ -4368,7 +4375,7 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const curriculumText = reportCenterBuildNextCurriculumMessage(data);
     return [
         `안녕하세요, AP수학입니다. ${reportCenterFamiliarName(studentName)}는 ${examTitle}에서 ${scoreText}을 기록했습니다. ${positionSentence}`,
-        `${toneSeed.positiveAnchor} ${wrongFocus} ${wrongText}.`,
+        `${toneSeed.positiveAnchor} ${wrongText}. ${wrongFocus}`,
         `${toneSeed.teacherCareMessage} ${supportText}`,
         `${curriculumText} ${toneSeed.parentReassurance}`.trim(),
         longTermPlan
