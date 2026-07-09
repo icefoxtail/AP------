@@ -3902,6 +3902,8 @@ function reportCenterAssertParentSafe(text) {
         .replace(/안정적으로 잡겠습니다/g, '스스로 정리하는 연습을 하겠습니다')
         .replace(/오답 단원의 핵심 풀이/g, '틀린 문항의 풀이 과정')
         .replace(/오답 환원|답습 대응/g, '필요한 개념과 풀이 순서')
+        // 가정 지도 제안 금지 정책: AI 산출물에 섞여 나와도 문장 단위로 제거한다.
+        .replace(/가정에서(?:는|도)?\s[^.!?\n]*[.!?]?\s*/g, '')
         .replace(/\s{2,}/g, ' ')
         .replace(/\s+([,.])/g, '$1')
         .trim();
@@ -4150,36 +4152,75 @@ function reportCenterResolveAiParentToneBand(data = {}, selectedWrongRows = []) 
     return 'middle';
 }
 
+// 이름 끝 글자의 받침 유무를 판별한다. (조사/호칭 어미 분기용)
+function reportCenterHasFinalConsonant(text) {
+    const value = String(text || '').trim();
+    if (!value) return false;
+    const code = value.charCodeAt(value.length - 1);
+    if (code < 0xAC00 || code > 0xD7A3) return false;
+    return (code - 0xAC00) % 28 > 0;
+}
+
+// 선생님이 부르는 호칭을 만든다: 3자 이름은 성을 떼고, 받침이 있으면 '이'를 붙인다.
+// 예: 유예준→예준이, 김지우→지우, 박솔→솔이. '이'가 붙으면 뒤 조사는 항상 는/가.
+function reportCenterFamiliarName(name) {
+    const value = String(name || '').trim() || '학생';
+    const given = /^[가-힣]{3}$/.test(value) ? value.slice(1) : value;
+    // 순수 한글 1~3자 이름에만 '이'를 붙인다. ('학생', 공백 포함, 영문 등은 그대로)
+    if (given === '학생' || !/^[가-힣]{1,3}$/.test(given)) return given;
+    return reportCenterHasFinalConsonant(given) ? `${given}이` : given;
+}
+
+// 시험 시기(중간/기말·학기)와 학년으로 다음 커리큘럼 안내 문장을 만든다.
+// 날짜/제목 파싱이 실패하면 일반형("새 단원 진도")으로 폴백한다.
+function reportCenterBuildNextCurriculumMessage(data = {}) {
+    const session = data?.session || {};
+    const key = typeof reportCenterDeriveSchoolExamKey === 'function' ? reportCenterDeriveSchoolExamKey(session) : {};
+    const gradeStage = reportCenterResolveGradeStage(data);
+    if (key?.examType === 'midterm') {
+        return '다음 수업부터는 기말고사 범위 단원으로 진도를 이어갑니다.';
+    }
+    if (key?.examType === 'final') {
+        if (key.semester === '1학기') {
+            return '이번 시험 범위 단원은 여기서 마무리하고, 여름방학부터 2학기 과정 진도로 넘어갑니다.';
+        }
+        if (key.semester === '2학기') {
+            if (gradeStage === 'middle3') return '이번 시험으로 중등 과정은 마무리하고, 겨울방학부터 고등 과정 선행 진도로 넘어갑니다.';
+            if (gradeStage === 'high3') return '이번 시험으로 고등 내신 과정은 마무리하고, 이후 학습 일정은 개별 상담으로 안내드리겠습니다.';
+            return '이번 학기 과정은 여기서 마무리하고, 겨울방학부터 다음 학년 과정 선행 진도로 넘어갑니다.';
+        }
+        return '이번 시험 범위 단원은 여기서 마무리하고, 다음 수업부터 새 단원 진도로 넘어갑니다.';
+    }
+    return '다음 수업부터는 새 단원 진도로 넘어갑니다.';
+}
+
+// 리포트는 오답 정리 수업이 끝난 뒤 발송되므로, 조치 문장은 완료 보고 시제로 쓴다.
+// 문체는 담당 선생님이 학부모에게 직접 보내는 안내(이름 주어, 구어형 존댓말)로 통일한다.
 function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
     const band = reportCenterResolveAiParentToneBand(data, selectedWrongRows);
-    const reportType = reportCenterResolveParentReportType(data);
     const examTitle = String(data?.session?.exam_title || data?.session?.examTitle || '');
-    const resultLabel = /기출/.test(examTitle) ? '이번 학교 기출시험 결과' : '이번 시험 결과';
-    const lowerAnchor = reportType === 'schoolPastExamResult'
-        ? `${resultLabel}는 점수와 함께 실제 내신에서 먼저 보완해야 할 부분을 보여주는 자료로 보시면 좋겠습니다.`
-        : reportType === 'internalAssessment'
-            ? '이번 원내평가는 점수 자체보다 중학교 수학의 풀이 방식에 얼마나 적응하고 있는지 확인하는 자료로 보시면 좋겠습니다.'
-            : '이번 평가는 점수 자체보다 앞으로 어떤 부분을 먼저 정리하면 좋을지 확인하는 자료로 보시면 좋겠습니다.';
+    const resultLabel = /기출/.test(examTitle) ? '이번 학교 기출시험' : '이번 시험';
+    const who = reportCenterFamiliarName(data?.student?.name);
     const seeds = {
         lower: {
-            positiveAnchor: lowerAnchor,
-            teacherCareMessage: '학원에서는 확인할 문항을 차근차근 다시 살펴보며 조건 확인과 계산 검산 습관을 잡아가겠습니다.',
-            parentReassurance: '가정에서는 문제를 많이 다시 풀게 하기보다 풀이 흔적을 가볍게 확인해 주시면 충분합니다.'
+            positiveAnchor: `${resultLabel}으로 ${who}가 먼저 다시 봐야 할 부분이 분명하게 확인됐습니다.`,
+            teacherCareMessage: '오답 문항은 수업에서 중요한 문항부터 이미 다시 풀어 정리했습니다.',
+            parentReassurance: '한꺼번에 많은 양을 풀리기보다 순서대로, 제가 수업에서 직접 챙기면서 관리하겠습니다.'
         },
         middle: {
-            positiveAnchor: '지금의 학습 상태를 유지하면서 실수로 이어지는 부분을 줄이면 더 안정적인 결과로 이어질 수 있습니다.',
-            teacherCareMessage: '학원에서는 확인할 문항을 다시 살펴보며 조건 해석과 식 정리를 함께 점검하겠습니다.',
-            parentReassurance: '가정에서는 아이가 문제를 풀고 난 뒤 답을 한 번 더 확인하는 습관만 편하게 격려해 주시면 좋겠습니다.'
+            positiveAnchor: `${who}는 맞힌 문항에서 기본 개념 적용이 잘 됐습니다.`,
+            teacherCareMessage: '오답 문항은 수업에서 우선순위대로 다시 풀어 정리했고, 조건을 식으로 옮기는 과정과 계산 마무리를 집중적으로 봤습니다.',
+            parentReassurance: '이번에 확인된 계산 마무리 습관은 새 단원을 풀면서 제가 이어서 잡아가겠습니다.'
         },
         high: {
-            positiveAnchor: '현재 성취를 바탕으로 심화 유형까지 자연스럽게 이어갈 수 있습니다.',
-            teacherCareMessage: '학원에서는 현재의 좋은 결과를 유지하면서 심화 유형과 서술형 풀이까지 확장하겠습니다.',
-            parentReassurance: '가정에서는 아이가 풀이 과정을 짧게 설명해보는 습관을 편하게 격려해 주시면 좋겠습니다.'
+            positiveAnchor: `${who}는 대부분의 문항을 정확하게 해결했습니다.`,
+            teacherCareMessage: '오답 문항은 수업 시간에 같이 다시 풀었고, 문제 조건을 식으로 옮기는 부분을 한 번 더 정리해 두었습니다.',
+            parentReassurance: '이번에 보인 조건 해석 습관은 새 단원 수업에서도 제가 계속 확인하겠습니다.'
         },
         perfect: {
-            positiveAnchor: '이번 평가는 전 문항을 정확히 해결하며 매우 안정적인 성취를 보여준 결과였습니다.',
-            teacherCareMessage: '학원에서는 현재의 정확도를 유지하면서 심화 응용과 서술형 풀이까지 확장하겠습니다.',
-            parentReassurance: '가정에서는 이번 성취를 충분히 칭찬해 주시면 좋겠습니다.'
+            positiveAnchor: `${who}는 이번 시험에서 전 문항을 정확히 해결했습니다. 시험 범위 개념 이해와 계산 모두 흔들림 없이 마무리했습니다.`,
+            teacherCareMessage: '수업에서는 이제 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어가려고 합니다.',
+            parentReassurance: ''
         }
     };
     return { band, ...seeds[band] };
@@ -4250,7 +4291,7 @@ function reportCenterBuildLongTermPlanMessage(data = {}, toneBand = 'middle', re
         },
         perfect: {
             middle3: '이번처럼 정확도와 풀이 완성도가 유지된다면 고등 내신에서도 1등급권을 목표로 관리해볼 수 있는 좋은 상태입니다.',
-            high: '현재 성취를 유지하면서 학교별 고난도 변형과 서술형 답안 완성도를 더하면 상위권 등급을 안정적으로 목표로 할 수 있습니다.'
+            high: '이번 수준의 정확도가 이어진다면 학교별 고난도 변형과 서술형 답안 완성도를 더해 상위권 등급을 목표로 할 수 있습니다.'
         }
     };
     const band = bandPlans[toneBand] || bandPlans.middle;
@@ -4261,7 +4302,7 @@ function reportCenterBuildLongTermPlanMessage(data = {}, toneBand = 'middle', re
         const intro = isInternal
             ? '중1 과정은 학교 시험이 없더라도 중학교 수학의 풀이 방식에 적응하는 중요한 시기입니다.'
             : '중1 과정은 첫 내신을 준비하기 전에 중학교 수학의 풀이 방식과 평가 문항에 익숙해지는 시기입니다.';
-        return `앞으로의 관리 방향도 함께 말씀드리면, ${intro} 이번 결과를 바탕으로 조건 읽기, 식 세우기, 풀이 마무리 습관을 잡아가며 이후 첫 내신 시험에서 흔들리지 않도록 준비하겠습니다.`;
+        return `앞으로의 관리 방향도 함께 말씀드리면, ${intro} 이번 결과를 기준으로 조건 읽기, 식 세우기, 풀이 마무리 습관을 잡아가며 첫 내신 시험을 준비하겠습니다.`;
     }
     if (gradeStage === 'middle2') {
         return '앞으로의 관리 방향도 함께 말씀드리면, 중2 과정은 함수, 도형, 연립방정식처럼 이후 학년과 고등 과정으로 이어지는 단원이 많습니다. 이번 결과에서 확인된 약한 유형은 이번 시험 범위로만 보지 않고, 다음 학기와 중3 과정에서 반복되지 않도록 관리하겠습니다.';
@@ -4308,33 +4349,28 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const priorityRate = Number(priorityRow?.correctRate);
     const rateText = Number.isFinite(priorityRate) ? `정답률이 ${Math.round(priorityRate)}%` : '정답률 확인 대상';
     const wrongText = wrongRows.length
-        ? `이번 리포트에서는 ${wrongRows.length}개 오답 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 우선 문항으로 잡아 설명드리겠습니다`
+        ? `오답 ${wrongRows.length}개 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 중심으로 수업에서 다시 짚었고, 이 리포트에도 정리해 두었습니다`
         : toneSeed.band === 'perfect'
-            ? '이번 리포트에서는 현재 강점과 다음 확장 방향을 중심으로 안내드리겠습니다'
-            : '오답 문항은 많지 않지만 풀이 과정과 답안 마무리는 한 번 더 살펴보겠습니다';
-    const actionItems = typeof reportCenterBuildAcademyActionPlan === 'function'
-        ? reportCenterBuildAcademyActionPlan(data)
-        : [];
-    const planText = (actionItems[0] || '틀린 문항을 다시 풀면서 조건 표시와 계산 마무리를 함께 확인하겠습니다.')
-        .replace(/^다음 수업에서는\s*/, '');
-    const planSentence = planText.replace(/[.。]\s*$/, '');
+            ? '이 리포트에는 강점이 드러난 문항과 다음 단계 계획을 정리해 두었습니다'
+            : '오답 문항은 많지 않았지만 풀이 과정과 답안 마무리까지 수업에서 함께 확인했습니다';
     const wrongFocus = wrongRows.length
-        ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}였던 문항은 문제의 조건을 정리하고 식으로 연결하는 과정을 다시 볼 필요가 있습니다.`
+        ? `특히 ${priorityNo ? `${priorityNo}번` : '우선 문항'}처럼 ${priorityUnit} 단원에서 ${rateText}였던 문항은 조건을 정리해 식으로 연결하는 과정을 수업에서 다시 확인했습니다.`
         : toneSeed.band === 'perfect'
-            ? '이번 결과는 다음 단원으로 넘어가기 전에 정확도와 풀이 완성도를 함께 확인하는 자료로 활용하겠습니다.'
-            : '이번 결과는 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 한 번 더 점검하는 자료로 활용하겠습니다.';
+            ? '이번 시험은 다음 단원으로 넘어가기 전에 정확도와 풀이 완성도를 확인해 준 결과였습니다.'
+            : '이번 시험은 다음 단원으로 넘어가기 전에 풀이 과정과 답안 마무리를 점검해 준 결과였습니다.';
     const supportText = !wrongRows.length
-        ? '또한 낯선 유형에서 풀이 과정을 설명하는 연습도 함께 보겠습니다.'
+        ? '새 단원에서도 낯선 유형에서 풀이 과정을 설명해 보는 연습을 함께 진행하겠습니다.'
         : wrongRows.some(row => Number(row.correctRate) >= 85)
-        ? '정답률이 높은 문항에서의 실점은 개념 부족보다는 계산, 부호, 검산 과정의 실수 가능성이 커서 풀이 후 확인 습관을 함께 잡겠습니다.'
+        ? '정답률이 높은 문항에서의 실점은 개념 부족보다 계산, 부호 쪽 실수여서, 풀이가 끝난 뒤 확인하는 순서까지 수업에서 같이 봤습니다.'
         : wrongRows.some(row => Number(row.correctRate) < 45)
-            ? '정답률이 낮은 고난도 문항은 다음 시험 대비 과정에서 조건 정리와 활용 문제 훈련으로 따로 이어가겠습니다.'
-            : '이번 오답은 조건을 정리하고 풀이 순서를 끝까지 이어가는 연습으로 충분히 보완할 수 있는 지점입니다.';
+            ? '정답률이 낮았던 고난도 문항은 관련 개념을 처음부터 다시 짚어 수업에서 정리했습니다.'
+            : '풀이가 끝난 뒤 부호와 계산, 답안 범위를 확인하는 순서까지 함께 봤습니다.';
+    const curriculumText = reportCenterBuildNextCurriculumMessage(data);
     return [
-        `안녕하세요, AP수학입니다. ${studentName} 학생은 ${examTitle}에서 ${scoreText}을 기록했습니다. ${positionSentence}`,
+        `안녕하세요, AP수학입니다. ${reportCenterFamiliarName(studentName)}는 ${examTitle}에서 ${scoreText}을 기록했습니다. ${positionSentence}`,
         `${toneSeed.positiveAnchor} ${wrongFocus} ${wrongText}.`,
-        `다음 수업에서는 ${planSentence}. ${supportText} ${toneSeed.teacherCareMessage}`,
-        toneSeed.parentReassurance,
+        `${toneSeed.teacherCareMessage} ${supportText}`,
+        `${curriculumText} ${toneSeed.parentReassurance}`.trim(),
         longTermPlan
     ].filter(Boolean).map(paragraph => reportCenterAssertParentSafe(paragraph)).join('\n\n');
 }
@@ -4596,8 +4632,8 @@ function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
                     : '개념은 이해하고 있고, 문제 상황에 맞게 적용하는 순서를 다듬어 가는 단계입니다.';
 
     const focusMsg = wrongRows.length === 0
-        ? '지금의 강점이 이어지도록 난도를 조절하며 학원에서 계속 관리하겠습니다.'
-        : `${focus} 부분은 학원에서 집중적으로 다져 보완하겠습니다.`;
+        ? '수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다.'
+        : `오답 문항은 수업에서 다시 풀어 정리했고, ${focus} 부분은 제가 이어서 확인하겠습니다.`;
 
     return reportCenterAssertParentSafe(`${state} ${focusMsg}`);
 }
@@ -4800,9 +4836,12 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
     const simpleSummary = isSimplePremium
         ? (simpleAi.kakaoSummary || simpleAi.summary || reportCenterBuildCompactExamSummary(data))
         : reportCenterBuildCompactExamSummary(data);
-    const simpleParent = isSimplePremium && simpleAi.parentMessage
-        ? simpleAi.parentMessage
-        : reportCenterBuildCompactParentMessage(data);
+    // 선생님이 상세 리포트에서 저장한 학부모 문구가 있으면 카톡용에도 동일하게 쓴다(E-6).
+    const simpleSaved = reportCenterGetSavedDetailFields(studentId, session.archive_file || session.archiveFile || archiveFile);
+    const simpleParent = String(simpleSaved?.parentText || '').trim()
+        || (isSimplePremium && simpleAi.parentMessage
+            ? simpleAi.parentMessage
+            : reportCenterBuildCompactParentMessage(data));
     const lines = [
         `${student.name || '학생'} · ${reportCenterResolveExamDisplayTitle(session)} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         simpleSummary,
@@ -4865,6 +4904,11 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const savedFields = reportCenterGetSavedDetailFields(studentId, archiveKey);
     if (savedFields?.planText) planText = String(savedFields.planText);
     if (savedFields?.parentText) parentText = String(savedFields.parentText);
+    // 요약 카드(핵심 진단/담임 총평)도 같은 편집·저장 흐름으로 다룬다(E-6).
+    const diagnosisText = String(savedFields?.diagnosisText || '').trim()
+        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
+    const teacherSummaryText = String(savedFields?.teacherSummaryText || '').trim()
+        || reportCenterBuildSchoolExamTeacherSummary(data);
     const editMode = options.editMode ?? reportCenterDetailEditMode(studentId, archiveKey);
     const premiumBadge = isPremium
         ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
@@ -4874,6 +4918,10 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
             <button type="button" class="btn" onclick="reportCenterSetDetailEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}', ${editMode ? 'false' : 'true'}); openReportCenterModal('${escapeReportJsString(studentId)}')">${editMode ? '취소' : '수정'}</button>
         </div>
     `;
+    const summaryEditSection = editMode
+        ? `<label class="aprc-counsel-field no-print"><b>핵심 진단 (출력 요약 카드)</b><textarea data-report-detail-field="diagnosisText">${reportCenterEscape(diagnosisText)}</textarea></label>
+           <label class="aprc-counsel-field no-print"><b>담임 총평 (출력 요약 카드)</b><textarea data-report-detail-field="teacherSummaryText">${reportCenterEscape(teacherSummaryText)}</textarea></label>`
+        : '';
     const planSection = editMode
         ? `<label class="aprc-counsel-field no-print"><b>앞으로의 학습 방향</b><textarea data-report-detail-field="planText">${reportCenterEscape(planText)}</textarea></label>`
         : `<section class="aprc-counsel-section">
@@ -4902,6 +4950,7 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
                     ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${selection.source === 'auto' && omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
+            ${summaryEditSection}
             ${planSection}
             ${parentSection}
             ${editMode ? `<div class="aprc-counsel-actions no-print"><button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}')">저장</button></div>` : ''}
@@ -5107,6 +5156,17 @@ function reportCenterGetLedgerAverages(studentId, key) {
     return { overallAvg, classAvg, count: records.length };
 }
 
+// 핵심 진단 문구: 요약 카드와 편집 기본값이 같은 문장을 쓰도록 헬퍼로 분리(E-6).
+function reportCenterBuildSchoolExamDiagnosisText(data = {}, parentWrongRows = []) {
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    if (!wrongRows.length) {
+        return '오답 문항이 없습니다. 수업은 고난도 변형 문제와 서술형 답안 정리로 이어갑니다.';
+    }
+    const rows = Array.isArray(parentWrongRows) && parentWrongRows.length ? parentWrongRows : wrongRows;
+    const nums = reportCenterSortWrongRowsByQuestionNo(rows).map(row => `${row.questionNo}번`).join(', ');
+    return `${nums} 문항을 중심으로 조건 해석과 답안 마무리를 수업에서 다시 확인했습니다.`;
+}
+
 function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows = [], planText = '') {
     const student = data.student || {};
     const session = data.session || {};
@@ -5128,9 +5188,12 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
         ? ledgerAvg.classAvg
         : Number(stats.classAvg ?? stats.classAverage);
     const diff = Number.isFinite(score) && Number.isFinite(overallAvg) ? Math.round(score - overallAvg) : null;
-    const diagnosis = wrongRows.length
-        ? `${reportCenterSortWrongRowsByQuestionNo(parentWrongRows).map(row => `${row.questionNo}번`).join(', ')} 문항을 중심으로 조건 해석과 답안 마무리를 확인합니다.`
-        : '오답 문항이 없어 현재 정확도를 유지하며 다음 단원 확장으로 이어갑니다.';
+    // 저장된 수정본(diagnosisText/teacherSummaryText)이 있으면 요약 카드도 그것으로 대체한다(E-6).
+    const summarySaved = reportCenterGetSavedDetailFields(student.id, archiveFile);
+    const diagnosis = String(summarySaved?.diagnosisText || '').trim()
+        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
+    const teacherSummary = String(summarySaved?.teacherSummaryText || '').trim()
+        || reportCenterBuildSchoolExamTeacherSummary(data);
     const examDisplayTitle = reportCenterResolveExamDisplayTitle(session);
     const reportTitle = `${examDisplayTitle} 분석 리포트`;
     return `
@@ -5165,7 +5228,7 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
                 </section>
                 <section class="aprc-school-plan-card">
                     <h2>담임 총평</h2>
-                    <p>${reportCenterEscape(reportCenterBuildSchoolExamTeacherSummary(data))}</p>
+                    <p>${reportCenterEscape(teacherSummary)}</p>
                 </section>
             </div>
         </section>
@@ -5190,9 +5253,12 @@ function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, 
     const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(selection.rows);
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
-    const planText = ai && reportCenterIsPremiumAiSource(ai.source)
-        ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
-        : actionItems.join('\n');
+    // 선생님이 저장한 수정본이 있으면 출력·일괄출력에서도 동일하게 반영한다(E-6).
+    const printSaved = reportCenterGetSavedDetailFields(studentId, archiveFile);
+    const planText = String(printSaved?.planText || '').trim()
+        || (ai && reportCenterIsPremiumAiSource(ai.source)
+            ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
+            : actionItems.join('\n'));
     return `
         <main class="aprc-school-detail-document" data-report-school-exam-print="detail" data-generated-date="${reportCenterAttr(new Date().toISOString().slice(0, 10))}">
             ${reportCenterBuildSchoolExamPrintSummaryPage(data, parentWrongRows, planText)}
@@ -5465,7 +5531,7 @@ function reportCenterBuildEasySummaryText(data, wrongCount, correctRate = null) 
         const strength = reportCenterHasStrengthSignal(data)
             ? ' 정답률이 낮았던 문항까지 정확히 해결한 만큼,'
             : '';
-        return `이번 시험은 전 문항을 정확히 풀었습니다.${strength} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다. 지금의 강점이 이어지도록 수업 안에서 난도 조절과 풀이 점검을 함께 진행하겠습니다.`;
+        return `이번 시험은 전 문항을 정확히 풀었습니다.${strength} 시험 범위 이해와 계산 과정을 실수 없이 마무리했습니다. 수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다.`;
     }
     const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
     const whereSentence = unitPhrase
@@ -5476,7 +5542,7 @@ function reportCenterBuildEasySummaryText(data, wrongCount, correctRate = null) 
     const strengthSentence = reportCenterHasStrengthSignal(data)
         ? '정답률이 낮았던 문항까지 정확히 해결한 부분은 이번 시험에서 특히 잘한 점입니다.'
         : '';
-    const planSentence = '틀린 문항은 다음 수업과 보강에서 다시 풀고, 필요한 개념은 같은 유형 2~3문항으로 한 번 더 확인하겠습니다.';
+    const planSentence = '오답 문항은 수업에서 이미 다시 풀어 정리했고, 필요한 개념은 같은 유형 문제로 한 번 더 확인했습니다.';
     const hasClassAvg = stats.classAvg !== null && stats.classAvg !== undefined && stats.classAvg !== '';
     const classAvg = Number(stats.classAvg);
     const rawScore = Number(data?.session?.score);
@@ -5539,18 +5605,18 @@ function reportCenterBuildEasyPlanItems(data, trendData = null) {
     const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
     if (!wrongRows.length) {
         return [
-            '잘 풀던 유형은 유지하면서, 한 단계 높은 난도의 문제로 이어가겠습니다.',
-            '자주 실수가 나오는 유형은 미리 점검해 다음 시험까지 안정적으로 준비하겠습니다.'
+            '수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다.',
+            reportCenterBuildNextCurriculumMessage(data)
         ];
     }
     const items = [];
     items.push(wrongNums
-        ? `${wrongNums}을 다시 풀이하고, 같은 유형의 문제까지 함께 확인하겠습니다.`
-        : '틀린 문항을 다시 풀이하고, 같은 유형의 문제로 한 번 더 연습하겠습니다.');
+        ? `${wrongNums}은 수업에서 이미 다시 풀어 정리했고, 같은 유형까지 함께 확인했습니다.`
+        : '오답 문항은 수업에서 이미 다시 풀어 정리했고, 같은 유형까지 함께 확인했습니다.');
     items.push(unitPhrase
-        ? `${unitPhrase} 단원은 개념부터 다시 정리한 뒤, 응용 문제로 넘어가 마무리까지 잡겠습니다.`
-        : '틀린 원인을 문항별로 짚고, 부족한 개념은 다시 정리해 확실히 넘어가겠습니다.');
-    items.push('반복해서 틀리는 부분은 따로 모아 관리하고, 다음 시험 전에 다시 점검하겠습니다.');
+        ? `${unitPhrase} 단원은 개념부터 다시 짚어 풀이 마무리까지 정리했습니다.`
+        : '틀린 원인을 문항별로 짚고, 부족한 개념은 수업에서 다시 정리했습니다.');
+    items.push(reportCenterBuildNextCurriculumMessage(data));
     return items;
 }
 
@@ -5563,15 +5629,15 @@ function reportCenterBuildEasyTeacherOpinionLines(data, teacherMemo = '') {
         lines.push(excellentNums
             ? `이번 시험은 전 문항을 정확히 풀었습니다. 특히 ${excellentNums}처럼 정답률이 낮았던 문항까지 정확히 해결한 점이 돋보였습니다.`
             : '이번 시험은 전 문항을 정확히 풀었습니다.');
-        lines.push('다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀, 지금의 정확도를 유지하는지 함께 확인하겠습니다.');
+        lines.push('수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다.');
     } else {
         const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
         const unitPhrase = reportCenterWrongUnitPhrase(data, 2);
         lines.push(unitPhrase
-            ? `이번 오답은 ${unitPhrase} 단원에 주로 나왔습니다. 해당 단원은 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.`
-            : '이번에 틀린 문항을 기준으로, 다음 수업과 보강에서 다시 풀이하며 개념부터 정리하겠습니다.');
-        if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 처음부터 다시 짚어, 비슷한 문제까지 충분히 연습하겠습니다.');
-        lines.push('반복해서 틀리는 부분과 이번에 새로 틀린 부분을 나누어, 다음 시험 전까지 다시 풀 문항과 유사 문항으로 점검하겠습니다.');
+            ? `이번 오답은 ${unitPhrase} 단원에 주로 나왔습니다. 오답 문항은 수업에서 이미 다시 풀어 개념부터 정리했습니다.`
+            : '오답 문항은 수업에서 이미 다시 풀어 개념부터 정리했습니다.');
+        if (hardWrongs.length) lines.push('난도가 높았던 문항은 관련 개념을 처음부터 다시 짚어 수업에서 정리했습니다.');
+        lines.push(reportCenterBuildNextCurriculumMessage(data));
     }
     if (teacherMemo) lines.push(`담임 메모는 다음 수업에 반영하겠습니다: ${teacherMemo}`);
     return lines;
@@ -5581,10 +5647,11 @@ function reportCenterBuildEasyParentMessage(data) {
     const studentName = data?.student?.name || '학생';
     const wrongRows = data?.stats?.wrongRows || [];
     const toneSeed = reportCenterGetAiParentToneSeed(data, wrongRows);
+    const curriculumText = reportCenterBuildNextCurriculumMessage(data);
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다.\n\n${studentName} 학생은 이번 시험에서 전 문항을 정확히 풀었습니다.\n${toneSeed.positiveAnchor} 다음 수업에서는 다음 단원과 한 단계 높은 난도의 문제로 학습 범위를 넓혀가겠습니다.\n${toneSeed.teacherCareMessage} ${toneSeed.parentReassurance}`;
+        return `안녕하세요, AP수학입니다.\n\n${toneSeed.positiveAnchor}\n${toneSeed.teacherCareMessage} ${curriculumText}\n${toneSeed.parentReassurance}`.trim();
     }
-    return `안녕하세요, AP수학입니다.\n\n이번 리포트에는 점수와 함께 다시 볼 문항, 문항별 난도와 단원을 정리했습니다. ${toneSeed.positiveAnchor}\n틀린 문항은 다음 수업과 보강에서 다시 풀이하고, 필요한 개념은 처음부터 다시 정리해 같은 유형 2~3문항으로 확인하겠습니다.\n${toneSeed.teacherCareMessage} ${toneSeed.parentReassurance}`;
+    return `안녕하세요, AP수학입니다.\n\n이 리포트에는 점수와 함께 다시 본 문항, 문항별 난도와 단원을 정리했습니다. ${toneSeed.positiveAnchor}\n${toneSeed.teacherCareMessage} ${curriculumText}\n${toneSeed.parentReassurance}`;
 }
 
 function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {
@@ -5596,11 +5663,11 @@ function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {
     const priorityText = reportCenterEasyWrongNums(data, 3);
     const examTitle = reportCenterResolveExamDisplayTitle(session);
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${examTitle}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점으로 전 문항을 정확히 풀었습니다.\n다음 수업에서는 한 단계 높은 난도의 문제로 이어가겠습니다. 자세한 내용은 PDF 리포트에 정리했습니다.`;
+        return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${examTitle}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점으로 전 문항을 정확히 해결했습니다.\n수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다. 자세한 내용은 PDF 리포트에 정리했습니다.`;
     }
     const target = priorityText
-        ? `틀린 문항은 ${priorityText}을 중심으로 다음 수업에서 다시 풀이하고, 유사 유형까지 함께 점검하겠습니다.`
-        : '틀린 문항은 다음 수업에서 다시 풀이하고, 유사 유형까지 함께 점검하겠습니다.';
+        ? `오답 문항은 ${priorityText}을 중심으로 수업에서 이미 다시 풀어 정리했고, 정리한 내용은 리포트에 담았습니다.`
+        : '오답 문항은 수업에서 이미 다시 풀어 정리했고, 정리한 내용은 리포트에 담았습니다.';
     return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${examTitle}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점입니다. 자세한 내용은 PDF 리포트에 정리했습니다.\n${target}`;
 }
 

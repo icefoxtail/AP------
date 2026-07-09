@@ -44,10 +44,12 @@ assert.match(parentMessage, /중3B 평균 대비 -2점/);
 assert.match(parentMessage, /19번/);
 assert.match(parentMessage, /이차함수와 그래프/);
 assert.match(parentMessage, /정답률이 63%/);
-assert.match(parentMessage, /다음 수업에서는/);
+assert.match(parentMessage, /다음 수업부터는/);
 assert.match(parentMessage, /조건|계산|검산/);
-assert.match(parentMessage, /실수로 이어지는 부분을 줄이면 더 안정적인 결과/);
-assert.match(parentMessage, /조건 해석과 식 정리/);
+assert.match(parentMessage, /맞힌 문항에서 기본 개념 적용/);
+assert.match(parentMessage, /조건을 식으로 옮기는 과정/);
+assert.match(parentMessage, /다시 풀어 정리했/);
+assert.doesNotMatch(parentMessage, /가정에서|유지하면서|안정적인 성취|바탕으로/);
 assert.match(parentMessage, /중3 과정은 고등 수학으로 넘어가기 전 마지막 정리 시기/);
 assert.match(parentMessage, /고등 내신 상위권으로 가기 위해서는/);
 assert.doesNotMatch(parentMessage, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이|로 확인됩니다|문항였던 문항|책임 있게 이어가겠습니다/);
@@ -67,8 +69,9 @@ const lowerData = {
 };
 const lowerMessage = context.reportCenterBuildRichParentMessage(lowerData, lowerData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(lowerData, lowerData.stats.wrongRows), 'lower');
-assert.match(lowerMessage, /점수 자체보다 앞으로 어떤 부분을 먼저 정리/);
-assert.match(lowerMessage, /문제를 많이 다시 풀게 하기보다 풀이 흔적/);
+assert.match(lowerMessage, /먼저 다시 봐야 할 부분이 분명하게 확인/);
+assert.match(lowerMessage, /제가 수업에서 직접 챙기면서 관리/);
+assert.doesNotMatch(lowerMessage, /가정에서/);
 
 const middle1InternalData = {
   student: { id: 's5', name: '중1', grade: '중1' },
@@ -85,7 +88,7 @@ const middle1Message = context.reportCenterBuildRichParentMessage(middle1Interna
 assert.equal(context.reportCenterResolveParentReportType(middle1InternalData), 'internalAssessment');
 assert.equal(context.reportCenterResolveGradeStage(middle1InternalData), 'middle1');
 assert.match(middle1Message, /학교 시험이 없더라도 중학교 수학의 풀이 방식에 적응/);
-assert.match(middle1Message, /첫 내신 시험에서 흔들리지 않도록 준비/);
+assert.match(middle1Message, /첫 내신 시험을 준비/);
 
 const middle2Data = {
   student: { id: 's6', name: '중2', grade: '중2' },
@@ -114,7 +117,8 @@ const middle3LowerData = {
 };
 const middle3LowerMessage = context.reportCenterBuildRichParentMessage(middle3LowerData, middle3LowerData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(middle3LowerData, middle3LowerData.stats.wrongRows), 'lower');
-assert.match(middle3LowerMessage, /이번 학교 기출시험 결과는 점수와 함께 실제 내신에서 먼저 보완해야 할 부분/);
+assert.match(middle3LowerMessage, /이번 학교 기출시험으로/);
+assert.match(middle3LowerMessage, /먼저 다시 봐야 할 부분/);
 assert.match(middle3LowerMessage, /고등 선행을 빠르게 나가기보다 중등 핵심 단원의 빈틈/);
 
 const highData = {
@@ -127,8 +131,8 @@ const highData = {
 };
 const highMessage = context.reportCenterBuildRichParentMessage(highData, highData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(highData, highData.stats.wrongRows), 'high');
-assert.match(highMessage, /심화 유형/);
-assert.match(highMessage, /풀이 과정을 짧게 설명/);
+assert.match(highMessage, /수업 시간에 같이 다시 풀었/);
+assert.match(highMessage, /새 단원 수업에서도 제가 계속 확인/);
 
 const middle3HighData = {
   student: { id: 's8', name: '중3상위', grade: '중3' },
@@ -151,7 +155,8 @@ const perfectData = {
 const perfectMessage = context.reportCenterBuildRichParentMessage(perfectData, perfectData.stats.wrongRows);
 assert.equal(context.reportCenterResolveAiParentToneBand(perfectData, perfectData.stats.wrongRows), 'perfect');
 assert.match(perfectMessage, /전 문항을 정확히 해결/);
-assert.match(perfectMessage, /충분히 칭찬/);
+assert.match(perfectMessage, /고난도 변형 문제와 서술형 답안/);
+assert.doesNotMatch(perfectMessage, /가정에서|칭찬/);
 assert.match(perfectMessage, /1등급권을 목표로 관리해볼 수 있는 좋은 상태/);
 assert.doesNotMatch(perfectMessage, /오답/);
 assert.doesNotMatch(perfectMessage, /예상됩니다|보장|무조건|반드시 1등급/);
