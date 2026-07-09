@@ -235,6 +235,57 @@ function buildReportCohortSummary(session, fallbackSessions = []) {
     };
 }
 
+function reportCenterGetCohortStatForSession(sessionId) {
+    const row = (Array.isArray(state?.db?.report_exam_cohort_stats) ? state.db.report_exam_cohort_stats : [])
+        .find(item => String(item.session_id ?? item.sessionId) === String(sessionId));
+    if (!row) return null;
+    const questionStats = Array.isArray(row.questionStats)
+        ? row.questionStats
+        : Array.isArray(row.question_stats)
+        ? row.question_stats
+        : [];
+    return {
+        source: 'cohort',
+        cohortScope: row.cohortScope || row.cohort_scope || 'grade_archive_exam',
+        gradeExamAverage: Number.isFinite(Number(row.gradeExamAverage ?? row.grade_exam_average)) ? Number(row.gradeExamAverage ?? row.grade_exam_average) : null,
+        gradeExamCount: Number(row.gradeExamCount ?? row.grade_exam_count ?? row.totalSubmitted ?? row.total_submitted ?? 0),
+        questionStats
+    };
+}
+
+function reportCenterGetGroupCohortSummary(group) {
+    const sessions = Array.isArray(group?.sessions) ? group.sessions : [];
+    const stats = sessions
+        .map(session => reportCenterGetCohortStatForSession(session.id))
+        .filter(Boolean);
+    if (!stats.length) return { source: 'local' };
+    const averageValues = stats.map(row => Number(row.gradeExamAverage)).filter(Number.isFinite);
+    const countValues = stats.map(row => Number(row.gradeExamCount)).filter(value => Number.isFinite(value) && value > 0);
+    const byQuestion = new Map();
+    stats.forEach(row => {
+        (row.questionStats || []).forEach(item => {
+            const qNo = String(item.questionNo ?? item.question_no ?? item.no ?? '').trim();
+            if (!qNo || byQuestion.has(qNo)) return;
+            const takers = Number(item.takers ?? item.total ?? row.gradeExamCount ?? 0);
+            const correctRate = Number(item.correctRate ?? item.correct_rate);
+            const wrongCount = Number(item.wrongCount ?? item.wrong_count);
+            byQuestion.set(qNo, {
+                questionNo: qNo,
+                takers: Number.isFinite(takers) ? takers : Number(row.gradeExamCount || 0),
+                wrongCount: Number.isFinite(wrongCount) ? wrongCount : null,
+                correctRate: Number.isFinite(correctRate) ? Math.round(correctRate) : null
+            });
+        });
+    });
+    return {
+        source: 'cohort',
+        label: '학원 전체',
+        gradeExamAverage: averageValues.length ? Math.round(averageValues.reduce((sum, value) => sum + value, 0) / averageValues.length) : null,
+        gradeExamCount: countValues.length ? Math.max(...countValues) : 0,
+        questionStats: Array.from(byQuestion.values()).sort((a, b) => reportCenterQuestionNoCompare(a.questionNo, b.questionNo))
+    };
+}
+
 function reportCenterGetQuestionDifficultyLabel(correctRate) {
     if (!Number.isFinite(correctRate)) return '자료 부족';
     if (correctRate >= 85) return '쉬움';
@@ -1346,6 +1397,15 @@ function reportCenterHasArchiveFile(session) {
     return !!String(session?.archive_file || session?.archiveFile || '').trim();
 }
 
+function reportCenterResolveExamDisplayTitle(session) {
+    const archiveFile = session?.archive_file || session?.archiveFile || '';
+    if (archiveFile && typeof getClassroomExamArchiveDisplayTitle === 'function') {
+        const title = getClassroomExamArchiveDisplayTitle(archiveFile);
+        if (String(title || '').trim()) return String(title).trim();
+    }
+    return String(session?.exam_title || session?.examTitle || session?.title || '').trim() || '학교시험';
+}
+
 function reportCenterGetSchoolExamSessions() {
     return (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
         .filter(reportCenterHasArchiveFile)
@@ -1376,7 +1436,7 @@ function reportCenterGetSchoolExamGroups() {
             byKey.set(key, {
                 key,
                 archiveFile: key,
-                title: session.exam_title || session.title || key,
+                title: reportCenterResolveExamDisplayTitle(session) || key,
                 school: session.school || session.school_name || '',
                 grade: reportCenterGetSessionGrade(session) || session.grade || '',
                 examDate: session.exam_date || '',
@@ -1394,7 +1454,7 @@ function reportCenterGetSchoolExamGroups() {
         const classId = reportCenterGetClassIdForSession(session);
         if (classId) group.classIds.add(String(classId));
         if (session.exam_date && String(session.exam_date) > String(group.examDate || '')) group.examDate = session.exam_date;
-        if (!group.title && session.exam_title) group.title = session.exam_title;
+        if (!group.title) group.title = reportCenterResolveExamDisplayTitle(session);
         if (!group.school && (session.school || session.school_name)) group.school = session.school || session.school_name;
         if (!group.grade) group.grade = reportCenterGetSessionGrade(session) || session.grade || '';
         if (!group.questionCount && Number(session.question_count || 0)) group.questionCount = Number(session.question_count || 0);
@@ -1827,7 +1887,8 @@ function reportCenterSetAdvancedMode(enabled) {
 }
 
 function reportCenterNavState() {
-    window.AP_REPORT_NAV = window.AP_REPORT_NAV || { level: 'list', archiveFile: '', studentId: '' };
+    window.AP_REPORT_NAV = window.AP_REPORT_NAV || { level: 'list', archiveFile: '', studentId: '', menu: 'schoolExam' };
+    if (!window.AP_REPORT_NAV.menu) window.AP_REPORT_NAV.menu = 'schoolExam';
     return window.AP_REPORT_NAV;
 }
 
@@ -1836,7 +1897,8 @@ function reportCenterNavTo(level, params = {}) {
     window.AP_REPORT_NAV = {
         level: level || current.level || 'list',
         archiveFile: params.archiveFile !== undefined ? params.archiveFile : (current.archiveFile || ''),
-        studentId: params.studentId !== undefined ? params.studentId : (current.studentId || '')
+        studentId: params.studentId !== undefined ? params.studentId : (current.studentId || ''),
+        menu: params.menu !== undefined ? params.menu : (current.menu || 'schoolExam')
     };
     return window.AP_REPORT_NAV;
 }
@@ -1844,9 +1906,9 @@ function reportCenterNavTo(level, params = {}) {
 function reportCenterAdvancedToggleHtml(studentId, activeTab = 'daily') {
     const checked = reportCenterAdvancedMode() ? 'checked' : '';
     return `
-        <label style="display:inline-flex; align-items:center; gap:8px; min-height:36px; padding:8px 10px; border-radius:999px; background:var(--surface); border:1px solid var(--border); font-size:12px; font-weight:800; color:var(--text); cursor:pointer;">
-            <input type="checkbox" ${checked} style="width:16px; height:16px; accent-color:var(--primary);" onchange="reportCenterSetAdvancedMode(this.checked); openReportCenterModal('${escapeReportJsString(studentId)}', '${escapeReportJsString(activeTab)}')">
-            <span>고급 보기</span>
+        <label title="리포트 문구를 직접 편집하고 프리미엄 분석을 켭니다." style="display:inline-flex; align-items:center; gap:8px; min-height:36px; padding:8px 10px; border-radius:999px; background:var(--surface); border:1px solid var(--border); font-size:12px; font-weight:800; color:var(--text); cursor:pointer;">
+            <input type="checkbox" ${checked} style="width:16px; height:16px; accent-color:var(--primary);" onchange="reportCenterSetAdvancedMode(this.checked); openReportCenterRefresh()">
+            <span>상세 편집 도구</span>
         </label>
     `;
 }
@@ -1867,8 +1929,8 @@ function reportCenterInternalMenuHtml(studentId, activeMenu = 'schoolExam') {
             ${reportCenterGetMenuItems().map(item => {
                 const active = activeMenu === item.key;
                 const onclick = item.key === 'schoolExam'
-                    ? `reportCenterNavTo('list', { archiveFile: '', studentId: '${safeStudentId}' }); openReportCenterModal('${safeStudentId}', 'daily', { forceDrilldown: true })`
-                    : `openReportCenterModal('${safeStudentId}', '${item.key}', { forceAdvanced: true })`;
+                    ? `reportCenterNavTo('list', { archiveFile: '', studentId: '${safeStudentId}', menu: 'schoolExam' }); openReportCenterModal('${safeStudentId}')`
+                    : `openReportCenterMenu('${escapeReportJsString(item.key)}', '${safeStudentId}')`;
                 return `
                     <button class="btn ${active ? 'btn-primary' : ''}" type="button"
                             style="min-height:42px; padding:8px 6px; font-size:12px; font-weight:800; border-radius:10px; box-shadow:none; ${active ? '' : 'background:var(--surface); border:1px solid var(--border);'}"
@@ -1908,7 +1970,7 @@ function reportCenterBuildExamHubList() {
             groups.set(archiveFile, {
                 key: archiveFile,
                 archiveFile,
-                title: session.exam_title || session.title || archiveFile,
+                title: reportCenterResolveExamDisplayTitle(session) || archiveFile,
                 school: session.school || session.school_name || '',
                 grade: reportCenterGetSessionGrade(session) || session.grade || '',
                 takers: 0,
@@ -1924,7 +1986,7 @@ function reportCenterBuildExamHubList() {
         const classId = reportCenterGetClassIdForSession(session);
         if (classId) row.classIds.add(classId);
         if (session.exam_date && String(session.exam_date) > String(row.latestDate || '')) row.latestDate = session.exam_date;
-        if (!row.title && session.exam_title) row.title = session.exam_title;
+        if (!row.title) row.title = reportCenterResolveExamDisplayTitle(session);
         if (!row.school && (session.school || session.school_name)) row.school = session.school || session.school_name;
         if (!row.grade) row.grade = reportCenterGetSessionGrade(session) || session.grade || '';
         const sessionWrong = wrongRows.some(w => String(w.session_id) === String(session.id));
@@ -1974,6 +2036,21 @@ function reportCenterBuildCohortRates(archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
     const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
         .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
+    const cohort = reportCenterGetGroupCohortSummary({ sessions });
+    if (cohort.source === 'cohort' && (cohort.questionStats || []).length) {
+        return {
+            archiveFile: archiveKey,
+            source: 'cohort',
+            label: '학원 전체',
+            takers: cohort.gradeExamCount || sessions.length,
+            rows: cohort.questionStats.map(row => ({
+                questionNo: row.questionNo,
+                takers: row.takers || cohort.gradeExamCount || sessions.length,
+                wrongCount: row.wrongCount,
+                correctRate: Number.isFinite(Number(row.correctRate)) ? Math.round(Number(row.correctRate)) : null
+            }))
+        };
+    }
     const takers = sessions.length;
     const sessionIds = new Set(sessions.map(session => String(session.id)));
     const blueprints = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
@@ -1998,7 +2075,7 @@ function reportCenterBuildCohortRates(archiveFile) {
             const correctRate = takers ? Math.round(((takers - wrongCount) / takers) * 100) : null;
             return { questionNo, takers, wrongCount, correctRate };
         });
-    return { archiveFile: archiveKey, takers, rows };
+    return { archiveFile: archiveKey, source: 'local', label: '담당 반 기준', takers, rows };
 }
 
 function reportCenterQuestionNoCompare(a, b) {
@@ -2556,6 +2633,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
         .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
     const wrongRows = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
     const rates = reportCenterBuildCohortRates(archiveKey);
+    const rateScopeLabel = rates.source === 'cohort' ? '학원 전체' : '담당 반 기준';
     const students = Array.isArray(state?.db?.students) ? state.db.students : [];
     const unitCounts = new Map();
     const difficultyCounts = new Map();
@@ -2599,7 +2677,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                 onclick="reportCenterOpenStudentPicker('${escapeReportJsString(group?.key || archiveKey)}', '${escapeReportJsString(row.classId)}')">
             <span class="aprc-pick-card__name">${reportCenterEscape(row.className)}</span>
             <span class="aprc-pick-card__go">학생 리포트</span>
-            <span class="aprc-pick-card__meta">${row.takerCount}명 응시 · 평균 ${row.avg === null ? '-' : `${row.avg}점`} · 오답 ${row.wrongCount}개</span>
+            <span class="aprc-pick-card__meta">${row.takerCount}명 응시 · 우리 반 평균 ${row.avg === null ? '-' : `${row.avg}점`} · 오답 ${row.wrongCount}개</span>
         </button>
     `).join('');
     return `
@@ -2612,7 +2690,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape([hub.school, hub.grade].filter(Boolean).join(' · ') || archiveKey)}</div>
                     </div>
                     <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                        <span class="aprc-chip">응시 ${hub.takers || sessions.length}</span>
+                        <span class="aprc-chip">${reportCenterEscape(rateScopeLabel)} 응시 ${rates.takers || hub.takers || sessions.length}</span>
                         <span class="aprc-chip">문항분석 ${hub.reviewCount}/${hub.blueprintCount || '-'}</span>
                     </div>
                 </div>
@@ -2647,7 +2725,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
                 ${analysisTableHtml}
             </section>
             <section class="aprc-section">
-                <div class="aprc-section-title">전체 응시 정답률</div>
+                <div class="aprc-section-title">전체 응시 정답률 <span class="aprc-chip">${reportCenterEscape(rateScopeLabel)}</span></div>
                 <div style="display:flex; gap:6px; flex-wrap:wrap;">
                     ${rates.rows.map(row => `<span class="aprc-chip">${reportCenterEscape(row.questionNo)}번 ${row.correctRate === null ? '-' : `${row.correctRate}%`}</span>`).join('') || '<span style="font-size:12px; font-weight:700; color:var(--secondary);">집계할 문항이 없습니다.</span>'}
                 </div>
@@ -2936,7 +3014,7 @@ function reportCenterBuildStudentView(studentId, archiveFile) {
             ${counselReport}
             <section class="aprc-section">
                 <div style="font-size:16px; font-weight:900; color:var(--text);">${reportCenterEscape(student?.name || session.student_name || '학생')} 리포트/상담</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(session.exam_title || '시험')} · 오답 ${wrongRows.length}문항</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:5px;">${reportCenterEscape(reportCenterResolveExamDisplayTitle(session))} · 오답 ${wrongRows.length}문항</div>
                 <div style="margin-top:12px; padding:10px 12px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                     <span style="font-size:12px; font-weight:900; color:var(--text);">점수</span>
                     <input id="report-center-manual-score" type="number" inputmode="numeric" min="0" max="1000" value="${manualScoreValue ?? ''}" placeholder="${Number.isFinite(resolvedScore.score) ? resolvedScore.score : ''}" style="width:76px; min-height:36px; padding:6px 8px; border-radius:8px; border:1px solid var(--border); background:var(--surface); font-size:14px; font-weight:800; color:var(--text);">
@@ -2970,21 +3048,254 @@ function reportCenterOpenStudentDrilldown(studentId, sessionId = '') {
         .find(row => String(row.student_id) === String(studentId) && (!sessionId || String(row.id) === String(sessionId)));
     if (session) {
         if (!reportCenterHasArchiveFile(session)) {
-            openReportCenterExam(studentId, session.id);
+            openReportCenterMenu('exam', studentId, { selectedSessionId: session.id });
             return;
         }
         reportCenterNavTo('student', {
             archiveFile: reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || ''),
-            studentId
+            studentId,
+            menu: 'schoolExam'
         });
     } else {
-        reportCenterNavTo('list', { studentId });
+        reportCenterNavTo('list', { studentId, menu: 'schoolExam' });
     }
-    openReportCenterModal(studentId, 'daily', { forceDrilldown: true });
+    openReportCenterModal(studentId);
+}
+
+function reportCenterGetStudentPrimaryClass(studentId) {
+    if (typeof reportCenterGetStudentClass === 'function') {
+        const info = reportCenterGetStudentClass(studentId);
+        if (info?.className || info?.name) return info;
+    }
+    const link = (Array.isArray(state?.db?.class_students) ? state.db.class_students : [])
+        .find(row => String(row.student_id ?? row.studentId) === String(studentId));
+    const classId = String(link?.class_id ?? link?.classId ?? '').trim();
+    return { classId, className: classId ? reportCenterGetClassName(classId) : '미배정' };
+}
+
+function reportCenterBuildStudentStatusChips(studentId) {
+    const sessions = (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
+        .filter(session => String(session.student_id) === String(studentId));
+    const latest = sessions.slice().sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))[0];
+    const chips = [];
+    if (latest && !reportCenterGetWrongIds(latest.id).length) chips.push('오답 미입력');
+    const saved = (Array.isArray(state?.db?.student_reports) ? state.db.student_reports : [])
+        .some(row => String(row.student_id ?? row.studentId) === String(studentId));
+    if (saved) chips.push('저장본 있음');
+    return chips.slice(0, 2).map(label => `<span class="aprc-chip">${reportCenterEscape(label)}</span>`).join('');
+}
+
+function reportCenterBuildReportStudentPicker(menu, options = {}) {
+    const selectedClassId = String(options.classId || '').trim();
+    const students = (Array.isArray(state?.db?.students) ? state.db.students : [])
+        .filter(student => {
+            const status = String(student.status || student.state || student.enrollment_status || '').toLowerCase();
+            return !/(퇴원|휴원|inactive|left|archived)/i.test(status);
+        })
+        .map(student => ({ ...student, classInfo: reportCenterGetStudentPrimaryClass(student.id) }))
+        .filter(student => !selectedClassId || String(student.classInfo?.classId || '') === selectedClassId)
+        .sort((a, b) => String(a.classInfo?.className || '').localeCompare(String(b.classInfo?.className || ''), 'ko') || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    const classOptions = (Array.isArray(state?.db?.classes) ? state.db.classes : [])
+        .slice()
+        .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'))
+        .map(cls => `<option value="${reportCenterAttr(cls.id)}" ${String(cls.id) === selectedClassId ? 'selected' : ''}>${reportCenterEscape(cls.name || '반')}</option>`)
+        .join('');
+    const safeMenu = escapeReportJsString(menu || 'daily');
+    const rows = students.map(student => {
+        const className = student.classInfo?.className || student.classInfo?.name || '미배정';
+        return `
+            <button class="aprc-pick-card" type="button" data-report-student-name="${reportCenterAttr(student.name || '')}"
+                    onclick="openReportCenterMenu('${safeMenu}', '${escapeReportJsString(student.id)}')">
+                <span class="aprc-pick-card__name">${reportCenterEscape(student.name || '학생')}</span>
+                <span class="aprc-pick-card__go">선택</span>
+                <span class="aprc-pick-card__meta">${reportCenterEscape(className)}</span>
+                <span class="aprc-pick-card__chips">${reportCenterBuildStudentStatusChips(student.id)}</span>
+            </button>
+        `;
+    }).join('');
+    return `
+        <section class="aprc-section" data-report-drilldown-level="report-student-picker">
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div>
+                    <div style="font-size:16px; font-weight:900; color:var(--text);">리포트를 만들 학생을 먼저 선택하세요.</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">학생을 고르면 같은 리포트 화면이 이 안에서 바로 열립니다.</div>
+                </div>
+                <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(140px,220px); gap:8px;">
+                    <input class="btn" type="search" placeholder="이름 검색" style="min-height:42px; text-align:left; background:var(--surface); border:1px solid var(--border);"
+                           oninput="const q=this.value.trim().toLowerCase(); this.closest('[data-report-drilldown-level]').querySelectorAll('[data-report-student-name]').forEach(card=>{card.style.display=card.getAttribute('data-report-student-name').toLowerCase().includes(q)?'':'none';});">
+                    <select class="btn" style="min-height:42px; background:var(--surface); border:1px solid var(--border); font-weight:800;"
+                            onchange="openReportCenterMenu('${safeMenu}', '', { classId: this.value })">
+                        <option value="">전체 반</option>
+                        ${classOptions}
+                    </select>
+                </div>
+                <div class="aprc-pick-grid">${rows || '<div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:800;">표시할 학생이 없습니다.</div>'}</div>
+            </div>
+        </section>
+    `;
+}
+
+function reportCenterBuildReportContextBar(menu, studentId) {
+    const student = (Array.isArray(state?.db?.students) ? state.db.students : []).find(row => String(row.id) === String(studentId));
+    if (!student) return '';
+    const classInfo = reportCenterGetStudentPrimaryClass(studentId);
+    const className = classInfo?.className || classInfo?.name || '미배정';
+    return `
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; padding:10px 12px; border-radius:12px; background:rgba(26,92,255,0.07); border:1px solid rgba(26,92,255,0.14);">
+            <div style="font-size:12px; font-weight:900; color:var(--primary);">선택: ${reportCenterEscape(student.name || '학생')} (${reportCenterEscape(className)})</div>
+            <button class="btn" type="button" style="min-height:32px; padding:6px 10px; border-radius:9px; font-size:12px; font-weight:900; background:var(--surface); border:1px solid var(--border);" onclick="openReportCenterMenu('${escapeReportJsString(menu)}', '')">변경</button>
+        </div>
+    `;
+}
+
+function reportCenterBuildDailyBody(studentId) {
+    const ctx = buildReportContext(studentId);
+    if (!ctx.student) return reportCenterBuildReportStudentPicker('daily');
+    const text = reportCenterBuildDailyPreview(ctx);
+    return `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">출결</div><div style="font-size:14px; font-weight:700; color:var(--text); margin-top:2px;">${reportCenterEscape(ctx.attendance)}</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">숙제</div><div style="font-size:14px; font-weight:700; color:var(--text); margin-top:2px;">${reportCenterEscape(ctx.homework)}</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">최근평균</div><div style="font-size:14px; font-weight:700; color:var(--text); margin-top:2px;">${ctx.avg === null ? '-' : `${ctx.avg}점`}</div></div>
+            </div>
+            <textarea id="report-center-daily-text" class="btn" style="width:100%; min-height:300px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; font-size:14px; line-height:1.7; resize:vertical; font-family:inherit; white-space:pre-wrap;">${escapeHtmlForTextarea(text)}</textarea>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterCopyText('report-center-daily-text')">카톡 문구 복사</button>
+                <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="reportCenterPrintText('report-center-daily-text', 'AP Math 데일리 리포트')">출력</button>
+            </div>
+            <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${escapeReportJsString(studentId)}', 'parent')">AI 데일리 문구 생성</button>
+        </div>
+    `;
+}
+
+function reportCenterBuildCounselBody(studentId) {
+    const ctx = buildReportContext(studentId);
+    if (!ctx.student) return reportCenterBuildReportStudentPicker('counsel');
+    const text = reportCenterBuildCounselPreview(studentId);
+    const consultations = reportCenterGetRecentConsultations(studentId, 5);
+    const consultHtml = consultations.length
+        ? consultations.map(c => `
+            <div style="padding:10px 0; border-bottom:1px solid var(--border);">
+                <div style="font-size:12px; font-weight:700; color:var(--secondary);">${reportCenterEscape(c.date || '-')} · ${reportCenterEscape(c.type || '상담')}</div>
+                <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.5; margin-top:4px;">${reportCenterEscape(c.content || '')}</div>
+            </div>
+        `).join('')
+        : `<div style="padding:18px; text-align:center; color:var(--secondary); font-size:12px; font-weight:700;">최근 상담 기록이 없습니다.</div>`;
+    return `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">출결</div><div style="font-size:14px; font-weight:700; color:var(--text); margin-top:2px;">${reportCenterEscape(ctx.attendance)}</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">숙제</div><div style="font-size:14px; font-weight:700; color:var(--text); margin-top:2px;">${reportCenterEscape(ctx.homework)}</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">최근평균</div><div style="font-size:14px; font-weight:700; color:var(--text); margin-top:2px;">${ctx.avg === null ? '-' : `${ctx.avg}점`}</div></div>
+            </div>
+            <div style="padding:12px 14px; border-radius:14px; background:var(--surface); border:1px solid var(--border); max-height:170px; overflow-y:auto;">
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-bottom:4px;">최근 상담 기록</div>
+                ${consultHtml}
+            </div>
+            <textarea id="report-center-counsel-text" class="btn" style="width:100%; min-height:320px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; font-size:14px; line-height:1.7; resize:vertical; font-family:inherit; white-space:pre-wrap;">${escapeHtmlForTextarea(text)}</textarea>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterCopyText('report-center-counsel-text')">상담 요약 복사</button>
+                <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="reportCenterPrintText('report-center-counsel-text', 'AP Math 상담 리포트')">출력</button>
+            </div>
+            <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="copyReport('${escapeReportJsString(studentId)}', 'counsel')">기존 상담용 문구 열기</button>
+        </div>
+    `;
+}
+
+function reportCenterBuildExamBody(studentId, selectedSessionId = '') {
+    const student = (Array.isArray(state?.db?.students) ? state.db.students : []).find(s => String(s.id) === String(studentId));
+    if (!student) return reportCenterBuildReportStudentPicker('exam');
+    const sessions = reportCenterGetLegacyExamReportSessions(studentId)
+        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
+    const selected = selectedSessionId ? sessions.find(e => String(e.id) === String(selectedSessionId)) : sessions[0];
+    const data = selected ? reportCenterGetExamReportData(studentId, selected.id) : null;
+    const stats = data?.stats || null;
+    const wrongSummary = selected ? reportCenterBuildWrongSummary(selected) : [];
+    const selectedId = selected?.id || '';
+    if (!sessions.length) {
+        return `<div style="padding:34px 16px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; background:var(--surface-2); border-radius:16px;">평가 기록이 없습니다.</div>`;
+    }
+    return `
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            <select class="btn" style="width:100%; min-height:46px; text-align:left; background:var(--surface); border:1px solid var(--border); font-weight:700;" onchange="event.stopPropagation(); openReportCenterMenu('exam', '${escapeReportJsString(studentId)}', { selectedSessionId: this.value })">
+                ${sessions.map(e => `<option value="${reportCenterAttr(e.id)}" ${String(e.id) === String(selected?.id) ? 'selected' : ''}>${reportCenterEscape(e.exam_date || '-')} · ${reportCenterEscape(e.exam_title || '평가')} · ${reportCenterEscape(e.score)}점</option>`).join('')}
+            </select>
+            <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;">
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">점수</div><div style="font-size:15px; font-weight:700; color:var(--primary); margin-top:2px;">${reportCenterEscape(selected?.score ?? '-')}점</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">전체 평균 <span class="aprc-chip">학원 전체</span></div><div style="font-size:15px; font-weight:700; color:var(--text); margin-top:2px;">${stats?.overallAvg === null ? '-' : `${stats?.overallAvg}점`}</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">제출</div><div style="font-size:15px; font-weight:700; color:var(--text); margin-top:2px;">${stats?.totalSessions || 0}명</div></div>
+                <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">오답</div><div style="font-size:15px; font-weight:700; color:var(--error); margin-top:2px;">${wrongSummary.length}개</div></div>
+            </div>
+            <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 가정 전달 포인트" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트보기/프리미엄분석</button>
+                <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
+            </div>
+            <div id="report-center-premium-preview"></div>
+        </div>
+    `;
+}
+
+function reportCenterBuildMenuBody(menu, studentId, options = {}) {
+    const key = ['daily', 'exam', 'counsel'].includes(menu) ? menu : 'daily';
+    if (!studentId) return reportCenterBuildReportStudentPicker(key, options);
+    const body = key === 'exam'
+        ? reportCenterBuildExamBody(studentId, options.selectedSessionId || '')
+        : key === 'counsel'
+        ? reportCenterBuildCounselBody(studentId)
+        : reportCenterBuildDailyBody(studentId);
+    return `${reportCenterBuildReportContextBar(key, studentId)}${body}`;
+}
+
+function openReportCenterMenu(menu, studentId = '', options = {}) {
+    const key = ['daily', 'exam', 'counsel'].includes(menu) ? menu : 'daily';
+    const current = reportCenterNavState();
+    window.AP_REPORT_NAV = {
+        ...current,
+        level: current.level || 'list',
+        archiveFile: current.archiveFile || '',
+        studentId: studentId || '',
+        menu: key,
+        reportClassId: options.classId || '',
+        selectedSessionId: options.selectedSessionId || ''
+    };
+    reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId || ''));
+    if (key === 'exam' && studentId) {
+        const selectedId = window.AP_REPORT_NAV.selectedSessionId || '';
+        setTimeout(() => {
+            if (selectedId) reportCenterLoadArchiveQuestionDetails(studentId, selectedId, { silent: true }).then(() => reportCenterRefreshPremiumExamPreview(studentId, selectedId)).catch(() => {});
+        }, 80);
+    }
+}
+
+function openReportCenterRefresh() {
+    const nav = reportCenterNavState();
+    reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(nav.studentId || ''));
 }
 
 function reportCenterBuildDrilldownShell(studentId) {
     const nav = reportCenterNavState();
+    const activeMenu = nav.menu || 'schoolExam';
+    if (activeMenu !== 'schoolExam') {
+        const targetStudentId = nav.studentId || studentId || '';
+        const student = (state.db.students || []).find(s => String(s.id) === String(targetStudentId));
+        const contentHtml = reportCenterBuildMenuBody(activeMenu, targetStudentId, { classId: nav.reportClassId || '', selectedSessionId: nav.selectedSessionId || '' });
+        return `
+            <div class="aprc-drilldown-shell" data-report-center-mode="drilldown" style="display:flex; flex-direction:column; gap:14px;">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
+                    <div>
+                        <div style="font-size:20px; font-weight:900; color:var(--text); line-height:1.35;">리포트 센터</div>
+                        <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">학교시험 분석, 학생 리포트, 상담/발송 문구를 한 곳에서 관리합니다.</div>
+                        ${student ? `<div style="font-size:12px; font-weight:800; color:var(--primary); margin-top:6px;">${reportCenterEscape(student.name || '학생')} 학생</div>` : ''}
+                    </div>
+                    ${reportCenterAdvancedToggleHtml(targetStudentId, activeMenu)}
+                </div>
+                ${reportCenterInternalMenuHtml(targetStudentId, activeMenu)}
+                ${contentHtml}
+            </div>
+        `;
+    }
     const shellStudentId = nav.level === 'student' ? (nav.studentId || studentId) : studentId;
     const student = (state.db.students || []).find(s => String(s.id) === String(shellStudentId));
     const name = student?.name || '학생';
@@ -3000,7 +3311,7 @@ function reportCenterBuildDrilldownShell(studentId) {
                         <div style="font-size:16px; font-weight:900; color:var(--text); line-height:1.35;">학교시험 분석 · 시험지 목록</div>
                         <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">응시한 학교 시험지를 기준으로 리포트를 탐색합니다.</div>
                     </div>
-                    <button class="btn" type="button" style="min-height:38px; padding:8px 12px; border-radius:10px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="toast('시험지 찾기는 준비 중입니다.', 'info')">시험지 찾기</button>
+                    <!-- 시험지 찾기 기능은 준비 중이라 이번 UX 정리에서는 노출하지 않는다. -->
                 </div>
                 ${bodyHtml}
             </section>
@@ -3015,7 +3326,7 @@ function reportCenterBuildDrilldownShell(studentId) {
                 </div>
                 ${reportCenterAdvancedToggleHtml(studentId, 'daily')}
             </div>
-            ${reportCenterInternalMenuHtml(studentId, 'schoolExam')}
+            ${reportCenterInternalMenuHtml(studentId, activeMenu)}
             ${contentHtml}
         </div>
     `;
@@ -3052,15 +3363,19 @@ function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
 }
 
 function openReportCenterModal(studentId, activeTab = 'daily', options = {}) {
-    const forceDrilldown = !!options.forceDrilldown;
-    const forceAdvanced = !!options.forceAdvanced;
-    if (!forceAdvanced && (forceDrilldown || !reportCenterAdvancedMode())) {
-        reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
+    if (arguments.length >= 2 && ['daily', 'exam', 'counsel'].includes(activeTab) && !options.forceDrilldown) {
+        openReportCenterMenu(activeTab, studentId || '', options);
         return;
     }
-    if (activeTab === 'exam') return openReportCenterExam(studentId);
-    if (activeTab === 'counsel') return openReportCenterCounsel(studentId);
-    return openReportCenterDaily(studentId);
+    const nav = reportCenterNavState();
+    if (!nav.menu || options.forceDrilldown) {
+        reportCenterNavTo(nav.level || 'list', {
+            archiveFile: nav.archiveFile || '',
+            studentId: studentId || nav.studentId || '',
+            menu: options.menu || nav.menu || 'schoolExam'
+        });
+    }
+    reportCenterShowWideModal('리포트 센터', reportCenterBuildDrilldownShell(studentId));
 }
 
 function openReportCenterDaily(studentId) {
@@ -3824,7 +4139,7 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
         : (Array.isArray(stats.wrongRows) ? stats.wrongRows : []);
     const score = Number(session.score);
     const scoreText = Number.isFinite(score) ? `${score}점` : '점수 확인이 필요한 결과';
-    const examTitle = session.exam_title || session.examTitle || '이번 시험';
+    const examTitle = reportCenterResolveExamDisplayTitle(session);
     const positionText = reportCenterBuildScorePositionText({ ...data, session, stats });
     const positionSentence = /부족/.test(positionText)
         ? positionText
@@ -3890,6 +4205,9 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
         : (Array.isArray(row?.choices) ? row.choices : []);
     const answer = detail?.answer ?? row?.answer ?? row?.correctAnswer ?? '';
     const showAnswer = options.showAnswer === true;
+    const showMeta = options.showMeta !== false;
+    const showComment = options.showComment !== false;
+    const showContent = options.showContent !== false;
     // 단원(unit)은 헤더에 이미 나오므로 meta에서는 제외. 내부 플레이스홀더('유형 확인' 등)는 학부모에게 노출하지 않는다.
     const metaPlaceholders = new Set(['유형 확인', '단원 확인', '자료 부족', '유형 미상', '난도 미상', '확인']);
     const meta = [
@@ -3912,8 +4230,11 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
             ? `<div class="aprc-parent-question-image">${reportCenterRewriteImgSrcInHtml(imageRaw, archiveFile)}</div>`
             : `<div class="aprc-parent-question-image"><img src="${reportCenterAttr(reportCenterResolveArchiveAssetUrl(imageRaw, archiveFile))}" alt="${reportCenterEscape(qNo)}번 문항 이미지" loading="eager" decoding="async" onerror="this.style.display='none'"></div>`
         : '';
-    const originalHtml = richContent || choicesHtml || imageHtml || answerHtml
-        ? `${richContent ? `<div class="aprc-parent-question-content">${richContent}</div>` : ''}${imageHtml}${choicesHtml}${answerHtml}`
+    const originalContentHtml = showContent
+        ? `${richContent ? `<div class="aprc-parent-question-content">${richContent}</div>` : ''}${imageHtml}${choicesHtml}`
+        : '';
+    const originalHtml = originalContentHtml || answerHtml
+        ? `${originalContentHtml}${answerHtml}`
         : '<p>문항 원문을 불러오지 못했습니다. 수업에서는 해당 문항을 직접 다시 확인합니다.</p>';
 
     return `
@@ -3921,16 +4242,16 @@ function reportCenterBuildParentWrongQuestionCard(row, detail = null, options = 
             <header class="aprc-parent-question-head">
                 <div>
                     <div class="aprc-parent-question-no">${reportCenterEscape(qNo)}번 · ${reportCenterEscape(unit)}</div>
-                    <div class="aprc-parent-question-meta">${meta}</div>
+                    ${showMeta && meta ? `<div class="aprc-parent-question-meta">${meta}</div>` : ''}
                 </div>
             </header>
-            <section class="aprc-parent-question-comment">
+            ${showComment ? `<section class="aprc-parent-question-comment">
                 <p>${reportCenterEscape(comment)}</p>
-            </section>
-            <section class="aprc-parent-question-original">
+            </section>` : ''}
+            ${showContent || showAnswer ? `<section class="aprc-parent-question-original">
                 <div class="aprc-parent-question-label">문항 원문</div>
                 ${originalHtml}
-            </section>
+            </section>` : ''}
         </article>
     `;
 }
@@ -4210,6 +4531,106 @@ function reportCenterGetSavedCounselFields(studentId, archiveFile) {
     return saved && typeof saved === 'object' ? saved : null;
 }
 
+function reportCenterDetailEditKey(studentId, archiveFile) {
+    return `${String(studentId || '')}::${reportCenterNormalizeExamAnalysisArchiveKey(archiveFile || '')}`;
+}
+
+function reportCenterSetDetailEditMode(studentId, archiveFile, enabled) {
+    window.AP_REPORT_DETAIL_EDIT = window.AP_REPORT_DETAIL_EDIT || {};
+    window.AP_REPORT_DETAIL_EDIT[reportCenterDetailEditKey(studentId, archiveFile)] = !!enabled;
+    return !!enabled;
+}
+
+function reportCenterDetailEditMode(studentId, archiveFile) {
+    return !!window.AP_REPORT_DETAIL_EDIT?.[reportCenterDetailEditKey(studentId, archiveFile)];
+}
+
+function reportCenterGetSavedDetailFields(studentId, archiveFile) {
+    const serverRow = reportCenterGetServerStudentReport(studentId, archiveFile, 'school_exam_detail');
+    const fields = reportCenterParseStudentReportJson(serverRow?.fields_json ?? serverRow?.fieldsJson);
+    return fields && typeof fields === 'object' ? fields : null;
+}
+
+function reportCenterGetSavedWrongSelection(studentId, archiveFile) {
+    const serverRow = reportCenterGetServerStudentReport(studentId, archiveFile, 'school_exam_wrong_selection');
+    const fields = reportCenterParseStudentReportJson(serverRow?.fields_json ?? serverRow?.fieldsJson);
+    return fields && typeof fields === 'object' ? fields : null;
+}
+
+function reportCenterQuestionKey(row = {}) {
+    return String(row.questionNo ?? row.question_no ?? row.questionId ?? row.question_id ?? row.id ?? '').trim();
+}
+
+function reportCenterResolveParentWrongSelection(studentId, archiveFile, wrongRows = [], defaultRows = []) {
+    const saved = reportCenterGetSavedWrongSelection(studentId, archiveFile);
+    const savedQuestions = saved?.questions && typeof saved.questions === 'object' ? saved.questions : null;
+    const autoKeys = new Set((defaultRows || []).map(reportCenterQuestionKey).filter(Boolean));
+    const rows = Array.isArray(wrongRows) ? wrongRows : [];
+    if (savedQuestions) {
+        const selectedRows = rows.filter(row => {
+            const key = reportCenterQuestionKey(row);
+            const item = savedQuestions[key];
+            return item && item.include !== false;
+        });
+        const optionMap = new Map(selectedRows.map(row => {
+            const key = reportCenterQuestionKey(row);
+            const item = savedQuestions[key] || {};
+            return [key, {
+                include: item.include !== false,
+                showContent: item.showContent !== false,
+                showAnswer: item.showAnswer === true,
+                showComment: item.showComment !== false,
+                showMeta: item.showMeta !== false
+            }];
+        }));
+        return { rows: selectedRows, optionMap, source: 'saved', savedQuestions };
+    }
+    const selectedRows = rows.filter(row => autoKeys.has(reportCenterQuestionKey(row)));
+    const optionMap = new Map(selectedRows.map(row => [reportCenterQuestionKey(row), {
+        include: true,
+        showContent: true,
+        showAnswer: false,
+        showComment: true,
+        showMeta: true
+    }]));
+    return { rows: selectedRows, optionMap, source: 'auto', savedQuestions: null };
+}
+
+function reportCenterBuildWrongSelectionEditor(studentId, archiveFile, wrongRows = [], selection = {}) {
+    const savedQuestions = selection.savedQuestions || {};
+    const selectedKeys = new Set((selection.rows || []).map(reportCenterQuestionKey).filter(Boolean));
+    const rows = (Array.isArray(wrongRows) ? wrongRows : []).map(row => {
+        const key = reportCenterQuestionKey(row);
+        const item = savedQuestions[key] || {};
+        const include = item.include !== undefined ? item.include !== false : selectedKeys.has(key);
+        const showContent = item.showContent !== false;
+        const showAnswer = item.showAnswer === true;
+        const showComment = item.showComment !== false;
+        const showMeta = item.showMeta !== false;
+        const unit = row.unit || row.unitKey || row.concept || '단원 확인';
+        return `
+            <div class="aprc-wrong-option-row" data-report-wrong-option="${reportCenterAttr(key)}">
+                <div class="aprc-wrong-option-title">${reportCenterEscape(key || '-')}번 · ${reportCenterEscape(unit)}</div>
+                <label><input type="checkbox" data-wrong-option-field="include" ${include ? 'checked' : ''}> 카드 포함</label>
+                <label><input type="checkbox" data-wrong-option-field="showContent" ${showContent ? 'checked' : ''}> 문항 원문</label>
+                <label><input type="checkbox" data-wrong-option-field="showAnswer" ${showAnswer ? 'checked' : ''}> 정답</label>
+                <label><input type="checkbox" data-wrong-option-field="showComment" ${showComment ? 'checked' : ''}> 해석/코멘트</label>
+                <label><input type="checkbox" data-wrong-option-field="showMeta" ${showMeta ? 'checked' : ''}> 정답률 메타</label>
+            </div>
+        `;
+    }).join('');
+    return `
+        <section class="aprc-detail-edit-panel no-print">
+            <div class="aprc-counsel-title">학부모 리포트 문항 선택</div>
+            <div class="aprc-wrong-option-grid">${rows || '<p>선택할 오답 문항이 없습니다.</p>'}</div>
+            <div class="aprc-counsel-actions">
+                <button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveFile)}')">상세 리포트 저장</button>
+                <button type="button" class="btn" onclick="reportCenterSetDetailEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveFile)}', false); openReportCenterModal('${escapeReportJsString(studentId)}')">취소</button>
+            </div>
+        </section>
+    `;
+}
+
 function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
     const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
     if (!session) return '<section class="aprc-counsel-report">간단 리포트를 만들 시험 기록이 없습니다.</section>';
@@ -4228,7 +4649,7 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
         ? simpleAi.parentMessage
         : reportCenterBuildCompactParentMessage(data);
     const lines = [
-        `${student.name || '학생'} · ${session.exam_title || '시험'} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
+        `${student.name || '학생'} · ${reportCenterResolveExamDisplayTitle(session)} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         simpleSummary,
         wrongRows.length ? `${reportCenterShortQuestionList(wrongRows, 5)} 문항을 우선 복습합니다.` : '이번 시험은 오답 문항이 없어 다음 단원 확장 학습으로 이어갑니다.',
         actionItems.slice(0, 2).join(' '),
@@ -4255,6 +4676,7 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
     if (!session) return '<section class="aprc-counsel-report">리포트를 만들 시험 기록이 없습니다.</section>';
     const hideInnerHeader = options.hideInnerHeader === true;
+    const archiveKey = session.archive_file || session.archiveFile || archiveFile;
     const data = reportCenterWithArchiveDetails(
         reportCenterGetExamReportData(studentId, session.id),
         options.archiveDetails || null
@@ -4263,23 +4685,52 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const stats = data.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
     const detailMap = reportCenterGetQuestionDetailMap(data);
-    const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(reportCenterSelectParentReportWrongRows(wrongRows, 5));
+    const autoParentWrongRows = reportCenterSelectParentReportWrongRows(wrongRows, 5);
+    const selection = reportCenterResolveParentWrongSelection(studentId, archiveKey, wrongRows, autoParentWrongRows);
+    const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(selection.rows);
     const omittedWrongCount = Math.max(0, wrongRows.length - parentWrongRows.length);
     const usedComments = [];
     const questionCards = parentWrongRows
-        .map(row => reportCenterBuildParentWrongQuestionCard(row, detailMap.get(String(row.questionNo)), { showAnswer: false, usedComments }))
+        .map(row => {
+            const key = reportCenterQuestionKey(row);
+            return reportCenterBuildParentWrongQuestionCard(row, detailMap.get(String(row.questionNo)), {
+                ...(selection.optionMap.get(key) || {}),
+                usedComments
+            });
+        })
         .join('');
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     // 프리미엄 분석(학생별 저장분)이 있으면 문구를 그것으로 대체해 퀄리티를 올린다.
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
     const isPremium = !!(ai && reportCenterIsPremiumAiSource(ai.source));
-    const planText = reportCenterReframeAcademyTone(isPremium
+    let planText = reportCenterReframeAcademyTone(isPremium
         ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
         : (actionItems.join('\n') || reportCenterBuildCompactParentMessage(data)));
-    const parentText = reportCenterReframeAcademyTone((isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildRichParentMessage(data, parentWrongRows));
+    let parentText = reportCenterReframeAcademyTone((isPremium && ai.parentMessage) ? ai.parentMessage : reportCenterBuildRichParentMessage(data, parentWrongRows));
+    const savedFields = reportCenterGetSavedDetailFields(studentId, archiveKey);
+    if (savedFields?.planText) planText = String(savedFields.planText);
+    if (savedFields?.parentText) parentText = String(savedFields.parentText);
+    const editMode = options.editMode ?? reportCenterDetailEditMode(studentId, archiveKey);
     const premiumBadge = isPremium
         ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
         : '';
+    const editControls = hideInnerHeader ? '' : `
+        <div class="no-print aprc-detail-edit-actions">
+            <button type="button" class="btn" onclick="reportCenterSetDetailEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}', ${editMode ? 'false' : 'true'}); openReportCenterModal('${escapeReportJsString(studentId)}')">${editMode ? '취소' : '수정'}</button>
+        </div>
+    `;
+    const planSection = editMode
+        ? `<label class="aprc-counsel-field no-print"><b>앞으로의 학습 방향</b><textarea data-report-detail-field="planText">${reportCenterEscape(planText)}</textarea></label>`
+        : `<section class="aprc-counsel-section">
+                <div class="aprc-counsel-title">앞으로의 학습 방향</div>
+                <p>${reportCenterEscape(planText).replace(/\n/g, '<br>')}</p>
+            </section>`;
+    const parentSection = editMode
+        ? `<label class="aprc-counsel-field no-print"><b>학부모님께</b><textarea data-report-detail-field="parentText">${reportCenterEscape(parentText)}</textarea></label>`
+        : `<section class="aprc-counsel-section aprc-counsel-section--parent">
+                <div class="aprc-counsel-title">학부모님께</div>
+                <p>${reportCenterEscape(parentText).replace(/\n/g, '<br>')}</p>
+            </section>`;
     return `
         <article class="aprc-counsel-report" data-report-school-exam-detail="1">
             ${hideInnerHeader ? '' : `<header class="aprc-counsel-head">
@@ -4288,22 +4739,56 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
                     <h3>${reportCenterEscape(student.name || '학생')} 시험 분석</h3>
                 </div>
             </header>`}
+            ${editControls}
+            ${editMode ? reportCenterBuildWrongSelectionEditor(studentId, archiveKey, wrongRows, selection) : ''}
             <section class="aprc-counsel-section">
                 <div class="aprc-counsel-title">오답 문항 분석</div>
                 ${wrongRows.length
-                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
+                    ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${selection.source === 'auto' && omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
-            <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">앞으로의 학습 방향</div>
-                <p>${reportCenterEscape(planText).replace(/\n/g, '<br>')}</p>
-            </section>
-            <section class="aprc-counsel-section">
-                <div class="aprc-counsel-title">학부모님께</div>
-                <p>${reportCenterEscape(parentText).replace(/\n/g, '<br>')}</p>
-            </section>
+            ${planSection}
+            ${parentSection}
+            ${editMode ? `<div class="aprc-counsel-actions no-print"><button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}')">저장</button></div>` : ''}
         </article>
     `;
+}
+
+async function reportCenterSaveSchoolExamDetailReport(studentId, archiveFile) {
+    const fields = {};
+    document.querySelectorAll('[data-report-detail-field]').forEach(el => {
+        fields[el.getAttribute('data-report-detail-field')] = String(el.value || '').trim();
+    });
+    const questions = {};
+    document.querySelectorAll('[data-report-wrong-option]').forEach(row => {
+        const key = row.getAttribute('data-report-wrong-option') || '';
+        if (!key) return;
+        questions[key] = {};
+        row.querySelectorAll('[data-wrong-option-field]').forEach(input => {
+            questions[key][input.getAttribute('data-wrong-option-field')] = !!input.checked;
+        });
+    });
+    const session = reportCenterFindStudentSchoolExamSession(studentId, archiveFile);
+    reportCenterUpsertStudentReportRows([
+        { archive_file: archiveFile, student_id: studentId, report_type: 'school_exam_detail', fields_json: JSON.stringify(fields), session_id: session?.id || '' },
+        { archive_file: archiveFile, student_id: studentId, report_type: 'school_exam_wrong_selection', fields_json: JSON.stringify({ questions }), session_id: session?.id || '' }
+    ]);
+    const detailSync = await reportCenterSyncStudentReportToServer(archiveFile, studentId, {
+        report_type: 'school_exam_detail',
+        session_id: session?.id || '',
+        fields_json: fields
+    });
+    const selectionSync = await reportCenterSyncStudentReportToServer(archiveFile, studentId, {
+        report_type: 'school_exam_wrong_selection',
+        session_id: session?.id || '',
+        fields_json: { questions }
+    });
+    reportCenterSetDetailEditMode(studentId, archiveFile, false);
+    if (typeof toast === 'function') {
+        toast(detailSync || selectionSync ? '상세 리포트 수정본을 저장했습니다.' : '서버 저장은 실패했습니다. 이 화면에는 임시 저장되었습니다.', detailSync || selectionSync ? 'success' : 'warn');
+    }
+    if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId);
+    return { fields, questions };
 }
 
 // 학교시험 학생 화면 전용 프리미엄 분석: 평가리포트와 동일한 AI 엔드포인트·세션 저장을 재사용하되,
@@ -4491,9 +4976,8 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
     const diagnosis = wrongRows.length
         ? `${reportCenterSortWrongRowsByQuestionNo(parentWrongRows).map(row => `${row.questionNo}번`).join(', ')} 문항을 중심으로 조건 해석과 답안 마무리를 확인합니다.`
         : '오답 문항이 없어 현재 정확도를 유지하며 다음 단원 확장으로 이어갑니다.';
-    const reportTitle = session.exam_title || session.examTitle
-        ? `${session.exam_title || session.examTitle} 분석 리포트`
-        : '학교시험 분석 리포트';
+    const examDisplayTitle = reportCenterResolveExamDisplayTitle(session);
+    const reportTitle = `${examDisplayTitle} 분석 리포트`;
     return `
         <section class="aprc-school-summary-page">
             <div class="aprc-school-title-block">
@@ -4505,7 +4989,7 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
                     <h2>학생/시험 정보</h2>
                     <dl>
                         <div><dt>학생</dt><dd>${reportCenterEscape(student.name || '학생')}</dd></div>
-                        <div><dt>시험</dt><dd>${reportCenterEscape(session.exam_title || session.examTitle || '-')}</dd></div>
+                        <div><dt>시험</dt><dd>${reportCenterEscape(examDisplayTitle || '-')}</dd></div>
                         <div><dt>문항 수</dt><dd>${Number.isFinite(questionCount) ? `${questionCount}문항` : '-'}</dd></div>
                         <div><dt>오답 수</dt><dd>${wrongRows.length}문항</dd></div>
                     </dl>
@@ -4513,8 +4997,8 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
                 <section class="aprc-school-score-card">
                     <h2>점수 요약</h2>
                     <div class="aprc-school-score-number">${reportCenterFormatPrintMetric(score, '점')}</div>
-                    ${reportCenterBuildScoreBar('전체 평균 대비', score, overallAvg)}
-                    ${Number.isFinite(classAvg) ? reportCenterBuildScoreBar('반 평균 대비', score, classAvg) : ''}
+                    ${reportCenterBuildScoreBar('학원 전체 평균 대비', score, overallAvg)}
+                    ${Number.isFinite(classAvg) ? reportCenterBuildScoreBar('우리 반 평균 대비', score, classAvg) : ''}
                     <div class="aprc-school-score-mini">
                         <span>정답률 <b>${Number.isFinite(correctRate) ? `${correctRate}%` : '-'}</b></span>
                         <span>전체 평균 차이 <b>${diff === null ? '-' : `${diff > 0 ? '+' : ''}${diff}점`}</b></span>
@@ -4546,7 +5030,9 @@ function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, 
     const archiveFile = session.archive_file || session.archiveFile || '';
     const stats = data.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
-    const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(reportCenterSelectParentReportWrongRows(wrongRows, 5));
+    const autoParentWrongRows = reportCenterSelectParentReportWrongRows(wrongRows, 5);
+    const selection = reportCenterResolveParentWrongSelection(studentId, archiveFile, wrongRows, autoParentWrongRows);
+    const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(selection.rows);
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
     const planText = ai && reportCenterIsPremiumAiSource(ai.source)
@@ -4625,7 +5111,7 @@ function reportCenterBuildSchoolExamCounselReport(studentId, archiveFile, option
     const comments = wrongRows.slice(0, 4).map((row, index) => reportCenterBuildParentSafeQuestionComment(row, row, { index }));
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     const sections = {
-        summary: `${student.name || '학생'} · ${session.exam_title || '시험'} · ${session.score ?? '-'}점 · 전체 응시 평균 ${stats.overallAvg ?? '-'}점 · 오답 ${wrongRows.length}문항`,
+        summary: `${student.name || '학생'} · ${reportCenterResolveExamDisplayTitle(session)} · ${session.score ?? '-'}점 · 전체 응시 평균 ${stats.overallAvg ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         meaning: scoreMeaning.parentSentence,
         cause: [wrongSummary, ...comments].filter(Boolean).join('\n'),
         counsel: wrongRows.length ? '상담에서는 맞힌 부분을 먼저 확인한 뒤, 다시 볼 문항에서 조건을 식으로 옮기는 순서를 짧게 설명하면 좋습니다.' : '상담에서는 정확도를 칭찬하고 다음 단원 확장 계획을 안내하면 좋습니다.',
@@ -4953,13 +5439,14 @@ function reportCenterBuildEasyKakaoSummary(studentId, sessionId = '') {
     if (!student || !session) return '';
     const wrongRows = data.stats?.wrongRows || [];
     const priorityText = reportCenterEasyWrongNums(data, 3);
+    const examTitle = reportCenterResolveExamDisplayTitle(session);
     if (!wrongRows.length) {
-        return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${session.exam_title || '시험'}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점으로 전 문항을 정확히 풀었습니다.\n다음 수업에서는 한 단계 높은 난도의 문제로 이어가겠습니다. 자세한 내용은 PDF 리포트에 정리했습니다.`;
+        return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${examTitle}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점으로 전 문항을 정확히 풀었습니다.\n다음 수업에서는 한 단계 높은 난도의 문제로 이어가겠습니다. 자세한 내용은 PDF 리포트에 정리했습니다.`;
     }
     const target = priorityText
         ? `틀린 문항은 ${priorityText}을 중심으로 다음 수업에서 다시 풀이하고, 유사 유형까지 함께 점검하겠습니다.`
         : '틀린 문항은 다음 수업에서 다시 풀이하고, 유사 유형까지 함께 점검하겠습니다.';
-    return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${session.exam_title || '시험'}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점입니다. 자세한 내용은 PDF 리포트에 정리했습니다.\n${target}`;
+    return `안녕하세요, AP수학입니다. ${student.name} 학생의 「${examTitle}」 결과를 안내드립니다.\n이번 시험은 ${session.score}점입니다. 자세한 내용은 PDF 리포트에 정리했습니다.\n${target}`;
 }
 
 function reportCenterBuildShortReportSummaryItems(data, aiAnalysis = null) {
@@ -6356,14 +6843,73 @@ function reportCenterInjectPrintViewStyle() {
         }
 
         /* 학교시험 상세 출력: 상담/상세 카드 스타일 (인쇄용 — 흑백 안전) */
-        .report-print-view .aprc-counsel-report { display:block; padding:0; border:0; background:transparent; }
+        .report-print-view .aprc-counsel-report {
+            display:block;
+            padding:0;
+            border:0;
+            background:transparent;
+        }
         .report-print-view .aprc-counsel-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin:0 0 14px; padding-bottom:10px; border-bottom:1.5px solid #0f172a; }
         .report-print-view .aprc-counsel-head h3 { margin:4px 0 0; font-size:17px; font-weight:900; color:#0f172a; line-height:1.35; }
         .report-print-view .aprc-counsel-kicker { font-size:11px; font-weight:800; color:#64748b; }
         .report-print-view .aprc-counsel-head button { display:none; }
-        .report-print-view .aprc-counsel-section { margin:0 0 14px; break-inside:avoid; page-break-inside:avoid; }
+        .report-print-view .aprc-counsel-section {
+            margin:0 0 12px;
+            padding:5mm;
+            border:1px solid #dbe3ef;
+            border-radius:8px;
+            background:#fff;
+            box-shadow:none;
+            break-inside:avoid;
+            page-break-inside:avoid;
+        }
         .report-print-view .aprc-counsel-section p { margin:0; font-size:12.5px; font-weight:600; color:#111827; line-height:1.75; word-break:keep-all; }
-        .report-print-view .aprc-counsel-title { margin-bottom:5px; font-size:11.5px; font-weight:900; color:#475569; }
+        .report-print-view .aprc-counsel-title {
+            margin:0 0 4mm;
+            padding-bottom:2.5mm;
+            border-bottom:1px solid #cbd5e1;
+            font-size:14px;
+            font-weight:900;
+            color:#111827;
+        }
+        .report-print-view .aprc-counsel-section--parent {
+            border-left:3px solid #111827;
+            background:#f8fafc;
+        }
+        .aprc-detail-edit-actions {
+            display:flex;
+            justify-content:flex-end;
+            margin:-6px 0 10px;
+        }
+        .aprc-detail-edit-panel {
+            padding:14px;
+            border:1px solid var(--border);
+            border-radius:14px;
+            background:var(--surface-2);
+            margin-bottom:12px;
+        }
+        .aprc-wrong-option-grid {
+            display:grid;
+            gap:8px;
+        }
+        .aprc-wrong-option-row {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            flex-wrap:wrap;
+            padding:10px;
+            border:1px solid var(--border);
+            border-radius:10px;
+            background:var(--surface);
+            font-size:12px;
+            font-weight:800;
+            color:var(--secondary);
+        }
+        .aprc-wrong-option-title {
+            min-width:130px;
+            color:var(--text);
+            font-weight:900;
+        }
 
         .report-print-toolbar {
             position:sticky;
@@ -6678,9 +7224,9 @@ function reportCenterInjectPrintViewStyle() {
         }
 
         .aprc-parent-question-card {
-            border:1px solid #dbeafe;
-            border-radius:14px;
-            padding:14px;
+            border:1px solid #dbe3ef;
+            border-radius:8px;
+            padding:5mm;
             background:#fff;
             break-inside:avoid;
             page-break-inside:avoid;
@@ -7145,18 +7691,6 @@ function reportCenterInjectPrintViewStyle() {
 
             .report-center-batch-page {
                 margin-bottom:0 !important;
-            }
-
-            .aprc-school-detail-document::after {
-                content:"AP수학 · 생성일 " attr(data-generated-date) " · 페이지 " counter(page);
-                position:fixed;
-                bottom:-6mm;
-                left:0;
-                right:0;
-                text-align:center;
-                color:#64748b;
-                font-size:10px;
-                font-weight:800;
             }
 
             @page {

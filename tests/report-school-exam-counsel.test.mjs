@@ -158,4 +158,43 @@ assert.match(premiumSimple, /AIKAKAOXYZ/);
 assert.match(premiumSimple, /AIPARENTXYZ/);
 context.AP_REPORT_AI_ANALYSIS_CACHE = {};
 
+context.reportCenterUpsertStudentReportRows([
+  {
+    archive_file: 'exam-a.js',
+    student_id: 's1',
+    report_type: 'school_exam_wrong_selection',
+    fields_json: JSON.stringify({
+      questions: {
+        2: { include: true, showContent: false, showAnswer: false, showComment: true, showMeta: true },
+        3: { include: false, showContent: true, showAnswer: false, showComment: true, showMeta: true }
+      }
+    })
+  }
+]);
+const manualWrongSelection = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js', { archiveDetails });
+assert.match(manualWrongSelection, /2번/);
+assert.doesNotMatch(manualWrongSelection, /3번 ·/);
+assert.doesNotMatch(manualWrongSelection, /2번 원문입니다/);
+assert.doesNotMatch(manualWrongSelection, /나머지 1개 문항/);
+
+// archive 제목이 있으면 학부모 본문/출력 제목 모두 raw exam_title(학원명 오염)을 쓰지 않는다.
+context.state.db.exam_sessions[0].exam_title = 'AP수학학원';
+context.getClassroomExamArchiveDisplayTitle = () => '동백중 2학기 기말고사';
+const resolvedParentMessage = context.reportCenterBuildRichParentMessage(context.reportCenterGetExamReportData('s1', 'e1'), []);
+assert.match(resolvedParentMessage, /동백중 2학기 기말고사에서/);
+assert.doesNotMatch(resolvedParentMessage, /AP수학학원에서/);
+const resolvedPrintDoc = context.reportCenterBuildSchoolExamDetailedPrintDocument('s1', 'e1', { archiveDetails });
+assert.match(resolvedPrintDoc, /동백중 2학기 기말고사 분석 리포트/);
+assert.doesNotMatch(resolvedPrintDoc, /AP수학학원 분석 리포트/);
+
+// 상담 리포트 상단 요약도 archive 제목을 사용해야 한다(학원명 오염 금지).
+const resolvedCounsel = context.reportCenterBuildSchoolExamCounselReport('s1', 'exam-a.js');
+assert.match(resolvedCounsel, /동백중 2학기 기말고사/);
+assert.doesNotMatch(resolvedCounsel, /AP수학학원/);
+
+// 카톡 발송 문구도 archive 제목을 사용해야 한다(학부모 카톡에 학원명 노출 금지).
+const resolvedKakao = context.reportCenterBuildEasyKakaoSummary('s1', 'e1');
+assert.match(resolvedKakao, /「동백중 2학기 기말고사」/);
+assert.doesNotMatch(resolvedKakao, /AP수학학원/);
+
 console.log('report school exam counsel test passed');
