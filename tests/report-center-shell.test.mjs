@@ -14,8 +14,17 @@ const context = {
   state: {
     db: {
       students: [{ id: 's1', name: '민준' }],
+      classes: [],
+      class_students: [],
+      attendance: [],
+      homework: [],
       exam_sessions: [],
-      wrong_answers: []
+      wrong_answers: [],
+      consultations: [],
+      class_daily_records: [],
+      class_daily_progress: [],
+      student_reports: [],
+      report_exam_cohort_stats: []
     }
   },
   window: {},
@@ -52,7 +61,7 @@ assert.match(lastModal.html, /평가 리포트/);
 assert.match(lastModal.html, /상담 리포트/);
 
 const nav = context.reportCenterNavTo('exam', { archiveFile: 'exam-a.js' });
-assert.equal(JSON.stringify(nav), JSON.stringify({ level: 'exam', archiveFile: 'exam-a.js', studentId: '' }));
+assert.equal(JSON.stringify(nav), JSON.stringify({ level: 'exam', archiveFile: 'exam-a.js', studentId: '', menu: 'schoolExam' }));
 assert.equal(JSON.stringify(context.AP_REPORT_NAV), JSON.stringify(nav));
 
 context.reportCenterSetAdvancedMode(true);
@@ -61,7 +70,7 @@ const advancedHtml = context.reportCenterBaseShell('s1', 'daily', '<main>body</m
 assert.match(advancedHtml, /오늘 리포트/);
 assert.match(advancedHtml, /평가 리포트/);
 assert.match(advancedHtml, /상담 리포트/);
-assert.match(advancedHtml, /고급 보기/);
+assert.match(advancedHtml, /상세 편집 도구/);
 
 context.reportCenterSetAdvancedMode(false);
 assert.equal(context.reportCenterAdvancedMode(), false);

@@ -39,6 +39,23 @@ function normalizeQrArchiveFile(raw = '') {
     return 'exams/' + path;
 }
 
+function getOmrArchiveDisplayTitle(raw = '') {
+    const s = String(raw || '').trim();
+    if (!s) return '';
+    const compact = s.replace(/^MIXED:/, '');
+    const leaf = compact.split(/[\\/]/).pop() || compact;
+    return leaf
+        .replace(/\.js(?:\?.*)?$/i, '')
+        .replace(/^exams\//, '')
+        .replace(/^archive\//, '')
+        .trim();
+}
+
+function getOmrExamDisplayTitle(item = {}) {
+    return getOmrArchiveDisplayTitle(item.archiveFile || item.archive_file || '') ||
+        String(item.examTitle || item.exam_title || item.title || '').trim();
+}
+
 function getQrClassStudentIds(classId) {
     return (state.db.class_students || [])
         .filter(m => String(m.class_id) === String(classId))
@@ -862,8 +879,9 @@ function getOmrHistoricalExamList() {
 
         const questionCount = Math.max(1, Math.min(80, parseInt(es.question_count, 10) || 25));
         const archiveFile = normalizeQrArchiveFile(es.archive_file || '');
-        const item = { examTitle, examDate, questionCount, archiveFile };
+        let item = { examTitle, originalExamTitle: examTitle, examDate, questionCount, archiveFile };
         const key = makeOmrHistoryKey(item);
+        item = { ...item, examTitle: getOmrExamDisplayTitle(item) };
 
         if (!map.has(key)) {
             map.set(key, { ...item, count: 0, updatedAt: '' });
@@ -878,10 +896,10 @@ function getOmrHistoricalExamList() {
     const rows = Array.from(map.values());
     const archivedBaseKeys = new Set(rows
         .filter(item => item.archiveFile)
-        .map(item => [item.examDate || '', item.examTitle || '', String(item.questionCount || '')].join('|')));
+        .map(item => [item.examDate || '', item.originalExamTitle || item.examTitle || '', String(item.questionCount || '')].join('|')));
     const visibleRows = rows.filter(item =>
         item.archiveFile ||
-        !archivedBaseKeys.has([item.examDate || '', item.examTitle || '', String(item.questionCount || '')].join('|'))
+        !archivedBaseKeys.has([item.examDate || '', item.originalExamTitle || item.examTitle || '', String(item.questionCount || '')].join('|'))
     );
 
     return visibleRows.sort((a, b) =>
@@ -894,6 +912,15 @@ function getOmrHistoricalExamList() {
 function getOmrSelectedHistoryKey() {
     const ui = state.ui.omrInput || {};
     if (!ui.examTitle || !ui.examDate) return '';
+    const archiveFile = normalizeQrArchiveFile(ui.archiveFile || '');
+    if (archiveFile) {
+        const matched = getOmrHistoricalExamList().find(item =>
+            normalizeQrArchiveFile(item.archiveFile || '') === archiveFile &&
+            String(item.examDate || '') === String(ui.examDate || '') &&
+            String(item.questionCount || '') === String(ui.questionCount || 25)
+        );
+        if (matched) return makeOmrHistoryKey(matched);
+    }
     return makeOmrHistoryKey({
         examTitle: ui.examTitle,
         examDate: ui.examDate,
@@ -928,7 +955,7 @@ function handleOmrHistoryChange() {
     }
 
     const ui = ensureOmrInputState();
-    ui.examTitle = item.examTitle || '';
+    ui.examTitle = getOmrExamDisplayTitle(item) || item.examTitle || '';
     ui.examDate = item.examDate || new Date().toLocaleDateString('sv-SE');
     ui.questionCount = item.questionCount || 25;
     ui.archiveFile = normalizeQrArchiveFile(item.archiveFile || '');

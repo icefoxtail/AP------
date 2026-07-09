@@ -11,7 +11,7 @@ const source = ['report-text.js', 'report-center.js', 'report-print.js']
 
 const storage = new Map();
 const context = {
-  state: { db: { students: [{ id: 's1', name: '민준' }], exam_sessions: [], wrong_answers: [] } },
+  state: { db: { students: [{ id: 's1', name: '민준' }], classes: [], class_students: [], exam_sessions: [], wrong_answers: [], report_exam_cohort_stats: [] } },
   window: {},
   document: { getElementById: () => null },
   localStorage: {
@@ -45,5 +45,6 @@ const advancedShell = context.reportCenterBaseShell('s1', 'exam', '<main>legacy<
 assert.match(advancedShell, /오늘 리포트/);
 assert.match(advancedShell, /평가 리포트/);
 assert.match(advancedShell, /상담 리포트/);
+assert.match(context.reportCenterAdvancedToggleHtml('s1', 'exam'), /상세 편집 도구/);
 
 console.log('report center advanced policy test passed');
