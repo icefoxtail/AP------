@@ -47,7 +47,7 @@ assert.match(parentMessage, /정답률이 63%/);
 assert.match(parentMessage, /다음 수업부터는/);
 assert.match(parentMessage, /조건|계산|검산/);
 assert.match(parentMessage, /맞힌 문항에서 기본 개념 적용/);
-assert.match(parentMessage, /조건을 식으로 옮기는 과정/);
+assert.match(parentMessage, /조건을 정리해 식으로 연결하는 과정/);
 assert.match(parentMessage, /다시 풀어 정리했/);
 assert.doesNotMatch(parentMessage, /가정에서|유지하면서|안정적인 성취|바탕으로/);
 assert.match(parentMessage, /중3 과정은 고등 수학으로 넘어가기 전 마지막 정리 시기/);

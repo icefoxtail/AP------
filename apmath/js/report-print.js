@@ -280,14 +280,15 @@ function reportCenterBuildCompactParentMessage(data) {
         ? reportCenterBuildNextCurriculumMessage(data)
         : '다음 수업부터는 새 단원 진도로 넘어갑니다.';
     const who = typeof reportCenterFamiliarName === 'function' ? reportCenterFamiliarName(studentName) : `${studentName} 학생`;
-    // 카톡용 압축 규격(2문장 이내): 인사 1문장 + [조치 완료 절, 커리큘럼 절] 1문장.
+    // 카톡용 압축 규격(3문장 이내): 인사 → 조치 완료 보고 → 커리큘럼.
+    // 커리큘럼 문장에 '~하고'가 이미 있어 절 결합 시 '~하고'가 겹치므로 문장으로 나눈다.
     if (toneSeed?.band === 'perfect') {
         return `안녕하세요, AP수학입니다. ${who}는 전 문항을 정확히 해결했습니다. ${curriculumText}`;
     }
-    const careClause = toneSeed?.band === 'lower'
-        ? `${who}의 오답 문항은 수업에서 중요한 문항부터 이미 다시 풀어 정리했고`
-        : `${who}의 오답 문항은 수업에서 이미 다시 풀어 정리했고`;
-    return `안녕하세요, AP수학입니다. ${careClause}, ${curriculumText}`;
+    const careSentence = toneSeed?.band === 'lower'
+        ? `${who}의 오답 문항은 수업에서 중요한 문항부터 이미 다시 풀어 정리했습니다.`
+        : `${who}의 오답 문항은 수업에서 이미 다시 풀어 정리했습니다.`;
+    return `안녕하세요, AP수학입니다. ${careSentence} ${curriculumText}`;
 }
 
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
