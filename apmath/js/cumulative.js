@@ -1482,6 +1482,42 @@ function getSebVisibleStudents() {
     return students;
 }
 
+function getSebGradeAverageScopeStudents() {
+    const section = state.ui.schoolExamSection || 'middle';
+    const gradeTab = state.ui.schoolExamGradeTab || '';
+
+    let students = getCumulativeVisibleStudents({ classId: '' });
+
+    students = students.filter(s => {
+        const cid = getCumulativeClassIdForStudent(s.id);
+        const cls = typeof apmsGetClassById === 'function' ? apmsGetClassById(cid) : (state.db.classes || []).find(c => String(c.id) === String(cid));
+        const text = [
+            s.grade,
+            s.school_name,
+            s.name,
+            cls?.grade,
+            cls?.name
+        ].join(' ');
+        const isHigh = /怨?|怨?|怨?|怨좊벑/.test(text);
+        return section === 'high' ? isHigh : !isHigh;
+    });
+
+    if (gradeTab) {
+        students = students.filter(s => {
+            const cid = getCumulativeClassIdForStudent(s.id);
+            const cls = typeof apmsGetClassById === 'function' ? apmsGetClassById(cid) : (state.db.classes || []).find(c => String(c.id) === String(cid));
+            const gradeText = [
+                s.grade,
+                cls?.grade,
+                cls?.name
+            ].join(' ');
+            return gradeText.includes(gradeTab);
+        });
+    }
+
+    return students;
+}
+
 function getPrevSebColKey(key) {
     const order = ['1H-mid', '1H-fin', '2H-mid', '2H-fin'];
     const idx = order.indexOf(key);
@@ -1718,6 +1754,7 @@ function renderSchoolExamBatchTable() {
     var classId = state.ui.schoolExamClassId || '';
     var section = state.ui.schoolExamSection || 'middle';
     var students = getSebVisibleStudents();
+    var gradeAverageStudents = getSebGradeAverageScopeStudents();
 
     if (!students.length) {
         root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">표시할 학생이 없습니다.</div>';
@@ -1745,11 +1782,18 @@ function renderSchoolExamBatchTable() {
     var bodyRows = '';
     var gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
     var byGrade = {};
+    var avgByGrade = {};
 
     students.forEach(function(s) {
         var g = getSebStudentDisplayGrade(s);
         if (!byGrade[g]) byGrade[g] = [];
         byGrade[g].push(s);
+    });
+
+    gradeAverageStudents.forEach(function(s) {
+        var g = getSebStudentDisplayGrade(s);
+        if (!avgByGrade[g]) avgByGrade[g] = [];
+        avgByGrade[g].push(s);
     });
 
     var activeGrades = gradeOrder.filter(function(g) {
@@ -1788,7 +1832,7 @@ function renderSchoolExamBatchTable() {
                 bodyRows += '<tr class="' + dividerClass + '"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">' + apEscapeHtml(gradeText) + '</td><td class="seb-sticky-c"></td><td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' + cols + '</tr>';
             });
 
-            bodyRows += buildSebAvgRow(classId ? '평균' : '학년평균', gradeStudents, year, true);
+            bodyRows += buildSebAvgRow(classId ? '평균' : '학년평균', classId ? gradeStudents : (avgByGrade[grade] || gradeStudents), year, true);
             return;
         }
 
@@ -1845,7 +1889,7 @@ function renderSchoolExamBatchTable() {
         });
 
         if (showGradeAverage) {
-            bodyRows += buildSebAvgRow('학년평균', gradeStudents, year, true);
+            bodyRows += buildSebAvgRow('학년평균', avgByGrade[grade] || gradeStudents, year, true);
         }
     });
 
