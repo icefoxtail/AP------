@@ -70,11 +70,17 @@ assert.equal(final.reviewCount, 0);
 assert.equal(final.blueprintCount, 1);
 assert.equal(list.some(row => row.archiveFile === 'exams/no-session.js'), false);
 
+// Task F(최근 1개월 그룹 + 심플 카드) 기준으로 렌더 계약 갱신.
+// 이 테스트의 세션 날짜(2026-05~06)는 항상 30일 밖이므로 기본 화면에는 뜨지 않고
+// "1개월 이전 시험지" 아카이브 안내로 빠진다. 최근/검색/코호트 카드 렌더는
+// tests/report-center-hub-grade-grouping.test.mjs 가 담당한다.
 const html = context.reportCenterBuildDrilldownShell('s1');
-assert.match(html, /aprc-exam-card/);
-assert.match(html, /중간 A/);
-assert.match(html, /문항분석 2\/3/);
-assert.match(html, /응시 2/);
-assert.match(html, /오답입력 1/);
+assert.match(html, /최근 1개월/);
+assert.match(html, /1개월 이전 시험지 2개는 위 검색으로/);
+assert.match(html, /최근 1개월 시험지가 없습니다/);
+// 상태 배지/구형 카드 클래스는 제거되었다.
+assert.doesNotMatch(html, /aprc-exam-card/);
+assert.doesNotMatch(html, /문항분석/);
+assert.doesNotMatch(html, /오답입력/);
 
 console.log('report center exam hub test passed');

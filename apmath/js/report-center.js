@@ -1966,6 +1966,7 @@ function reportCenterBuildExamHubList() {
     sessions.forEach(session => {
         const archiveFile = reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '');
         if (!archiveFile) return;
+        const sessionDate = session.exam_date || session.created_at || '';
         if (!groups.has(archiveFile)) {
             groups.set(archiveFile, {
                 key: archiveFile,
@@ -1974,18 +1975,20 @@ function reportCenterBuildExamHubList() {
                 school: session.school || session.school_name || '',
                 grade: reportCenterGetSessionGrade(session) || session.grade || '',
                 takers: 0,
+                sessions: [],
                 classIds: new Set(),
                 wrongEntered: 0,
                 reviewCount: 0,
                 blueprintCount: 0,
-                latestDate: session.exam_date || session.created_at || ''
+                latestDate: sessionDate
             });
         }
         const row = groups.get(archiveFile);
         row.takers += 1;
+        row.sessions.push(session);
         const classId = reportCenterGetClassIdForSession(session);
         if (classId) row.classIds.add(classId);
-        if (session.exam_date && String(session.exam_date) > String(row.latestDate || '')) row.latestDate = session.exam_date;
+        if (sessionDate && String(sessionDate) > String(row.latestDate || '')) row.latestDate = sessionDate;
         if (!row.title) row.title = reportCenterResolveExamDisplayTitle(session);
         if (!row.school && (session.school || session.school_name)) row.school = session.school || session.school_name;
         if (!row.grade) row.grade = reportCenterGetSessionGrade(session) || session.grade || '';
@@ -2002,6 +2005,71 @@ function reportCenterBuildExamHubList() {
         .sort((a, b) => String(b.latestDate || '').localeCompare(String(a.latestDate || '')) || String(a.title || '').localeCompare(String(b.title || '')));
 }
 
+// 학년 정렬 순위(중1<중2<중3<고1<고2<고3<기타/미지정). 미지정·비정규는 최하위.
+function reportCenterGradeRank(grade) {
+    const order = { '중1': 1, '중2': 2, '중3': 3, '고1': 4, '고2': 5, '고3': 6 };
+    return order[String(grade || '').trim()] || 99;
+}
+
+function reportCenterHubSearchState() {
+    if (!window.AP_REPORT_HUB_SEARCH || typeof window.AP_REPORT_HUB_SEARCH !== 'object') {
+        window.AP_REPORT_HUB_SEARCH = { keyword: '', year: '', month: '', grade: '' };
+    }
+    return window.AP_REPORT_HUB_SEARCH;
+}
+
+function reportCenterSetHubSearch(field, value) {
+    const s = reportCenterHubSearchState();
+    if (['keyword', 'year', 'month', 'grade'].includes(field)) s[field] = String(value ?? '');
+    if (typeof openReportCenterRefresh === 'function') openReportCenterRefresh();
+}
+
+function reportCenterClearHubSearch() {
+    window.AP_REPORT_HUB_SEARCH = { keyword: '', year: '', month: '', grade: '' };
+    if (typeof openReportCenterRefresh === 'function') openReportCenterRefresh();
+}
+
+// 카드 응시 인원: 코호트(학원 전체) 우선, 없으면 담당 학생 로컬 수로 fallback.
+function reportCenterGetHubTakerCount(row) {
+    const cohort = typeof reportCenterGetGroupCohortSummary === 'function'
+        ? reportCenterGetGroupCohortSummary({ sessions: row?.sessions || [] })
+        : { source: 'local' };
+    if (cohort.source === 'cohort' && Number(cohort.gradeExamCount) > 0) {
+        return { count: Number(cohort.gradeExamCount), scope: 'academy' };
+    }
+    return { count: Number(row?.takers || (Array.isArray(row?.sessions) ? row.sessions.length : 0)), scope: 'local' };
+}
+
+function reportCenterRenderExamHubCard(row, studentId) {
+    const taker = reportCenterGetHubTakerCount(row);
+    const meta = [row.school || '', row.latestDate || '', `응시 ${taker.count}`].filter(Boolean).join(' · ');
+    const scopeTitle = taker.scope === 'academy' ? '학원 전체 응시 인원' : '담당 학생 응시 인원';
+    return `
+        <button type="button" data-archive-file="${reportCenterAttr(row.archiveFile)}"
+                onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(row.archiveFile)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')"
+                style="display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; cursor:pointer;">
+            <span style="min-width:0;">
+                <span style="display:block; font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">${reportCenterEscape(row.title || '시험지')}</span>
+                <span style="display:block; font-size:12px; font-weight:700; color:var(--secondary); margin-top:3px;" title="${reportCenterAttr(scopeTitle)}">${reportCenterEscape(meta || '-')}</span>
+            </span>
+            <span style="flex-shrink:0; font-size:18px; font-weight:900; color:var(--secondary);" aria-hidden="true">›</span>
+        </button>
+    `;
+}
+
+function reportCenterRenderExamHubSection(label, rows, studentId) {
+    const gridStyle = 'display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:8px;';
+    return `
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:baseline; gap:8px;">
+                <span style="font-size:14px; font-weight:900; color:var(--text);">${reportCenterEscape(label)}</span>
+                <span style="font-size:12px; font-weight:700; color:var(--secondary);">${rows.length}개</span>
+            </div>
+            <div style="${gridStyle}">${rows.map(row => reportCenterRenderExamHubCard(row, studentId)).join('')}</div>
+        </div>
+    `;
+}
+
 function reportCenterRenderExamHubList(studentId) {
     const exams = reportCenterBuildExamHubList();
     if (!exams.length) {
@@ -2012,22 +2080,109 @@ function reportCenterRenderExamHubList(studentId) {
             </div>
         `;
     }
+    const search = reportCenterHubSearchState();
+    const searching = !!(String(search.keyword || '').trim() || search.year || search.month);
+    const byDateDescTitle = (a, b) =>
+        String(b.latestDate || '').localeCompare(String(a.latestDate || '')) ||
+        String(a.title || '').localeCompare(String(b.title || ''), 'ko');
+
+    const years = Array.from(new Set(exams.map(e => String(e.latestDate || '').slice(0, 4)).filter(y => /^\d{4}$/.test(y))))
+        .sort((a, b) => b.localeCompare(a));
+    const yearOpts = ['<option value="">전체 연도</option>']
+        .concat(years.map(y => `<option value="${y}" ${String(search.year) === y ? 'selected' : ''}>${y}년</option>`)).join('');
+    const monthOpts = ['<option value="">전체 월</option>']
+        .concat(Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'))
+            .map(m => `<option value="${m}" ${String(search.month) === m ? 'selected' : ''}>${Number(m)}월</option>`)).join('');
+    const controlStyle = 'min-height:36px; padding:6px 10px; background:var(--surface); border:1px solid var(--border); border-radius:10px; font-size:13px; font-weight:700; color:var(--text);';
+    const searchBar = `
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+            <input type="search" value="${reportCenterAttr(search.keyword || '')}" placeholder="학교·시험명으로 과거 시험지 찾기"
+                   onchange="reportCenterSetHubSearch('keyword', this.value)"
+                   style="flex:1; min-width:180px; ${controlStyle} text-align:left; font-weight:600;">
+            <select onchange="reportCenterSetHubSearch('year', this.value)" style="${controlStyle}">${yearOpts}</select>
+            <select onchange="reportCenterSetHubSearch('month', this.value)" style="${controlStyle}">${monthOpts}</select>
+        </div>
+    `;
+
+    if (searching) {
+        const kw = String(search.keyword || '').trim().toLowerCase();
+        const results = exams.filter(e => {
+            if (kw && !`${e.title || ''} ${e.school || ''}`.toLowerCase().includes(kw)) return false;
+            const d = String(e.latestDate || '');
+            if (search.year && d.slice(0, 4) !== String(search.year)) return false;
+            if (search.month && d.slice(5, 7) !== String(search.month).padStart(2, '0')) return false;
+            return true;
+        });
+        const byYm = new Map();
+        results.forEach(e => {
+            const d = String(e.latestDate || '');
+            const ym = /^\d{4}-\d{2}/.test(d) ? d.slice(0, 7) : '날짜 미상';
+            if (!byYm.has(ym)) byYm.set(ym, []);
+            byYm.get(ym).push(e);
+        });
+        const ymKeys = Array.from(byYm.keys())
+            .sort((a, b) => (a === '날짜 미상' ? 1 : b === '날짜 미상' ? -1 : b.localeCompare(a)));
+        const sectionsHtml = ymKeys.map(ym => {
+            const label = ym === '날짜 미상' ? '날짜 미상' : `${ym.slice(0, 4)}년 ${Number(ym.slice(5, 7))}월`;
+            return reportCenterRenderExamHubSection(label, byYm.get(ym).sort(byDateDescTitle), studentId);
+        }).join('');
+        return `
+            <div style="display:flex; flex-direction:column; gap:14px;">
+                ${searchBar}
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <span style="font-size:13px; font-weight:800; color:var(--text);">검색 결과 ${results.length}개</span>
+                    <button type="button" onclick="reportCenterClearHubSearch()" style="min-height:32px; padding:6px 12px; border-radius:9px; font-size:12px; font-weight:800; background:var(--surface); border:1px solid var(--border); color:var(--secondary); cursor:pointer;">검색 초기화</button>
+                </div>
+                ${sectionsHtml || '<div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700;">조건에 맞는 시험지가 없습니다.</div>'}
+            </div>
+        `;
+    }
+
+    const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const recent = exams.filter(e => String(e.latestDate || '') >= cutoff);
+    const olderCount = exams.length - recent.length;
+    const gradeCounts = new Map();
+    recent.forEach(e => {
+        const g = e.grade || '미지정';
+        gradeCounts.set(g, (gradeCounts.get(g) || 0) + 1);
+    });
+    const gradeKeys = Array.from(gradeCounts.keys())
+        .sort((a, b) => reportCenterGradeRank(a) - reportCenterGradeRank(b) || String(a).localeCompare(String(b), 'ko'));
+    const activeGrade = search.grade || '';
+    const chip = (label, val, count, active) => `
+        <button type="button" onclick="reportCenterSetHubSearch('grade', '${escapeReportJsString(val)}')"
+                style="font-size:12px; font-weight:800; padding:6px 12px; border-radius:999px; cursor:pointer; ${active ? 'background:var(--primary); color:#fff; border:1px solid var(--primary);' : 'background:var(--surface); border:1px solid var(--border); color:var(--secondary);'}">${reportCenterEscape(label)} ${count}</button>
+    `;
+    const chipsHtml = `
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            ${chip('전체', '', recent.length, !activeGrade)}
+            ${gradeKeys.map(g => chip(g === '미지정' ? '미지정' : g, g, gradeCounts.get(g), activeGrade === g)).join('')}
+        </div>
+    `;
+    const shown = activeGrade ? recent.filter(e => (e.grade || '미지정') === activeGrade) : recent;
+    const shownByGrade = new Map();
+    shown.forEach(e => {
+        const g = e.grade || '미지정';
+        if (!shownByGrade.has(g)) shownByGrade.set(g, []);
+        shownByGrade.get(g).push(e);
+    });
+    const shownGradeKeys = Array.from(shownByGrade.keys())
+        .sort((a, b) => reportCenterGradeRank(a) - reportCenterGradeRank(b) || String(a).localeCompare(String(b), 'ko'));
+    const recentSectionsHtml = shownGradeKeys.length
+        ? shownGradeKeys.map(g => reportCenterRenderExamHubSection(g === '미지정' ? '학년 미지정' : g, shownByGrade.get(g).sort(byDateDescTitle), studentId)).join('')
+        : '<div style="padding:18px; border-radius:12px; background:var(--bg); border:1px dashed var(--border); color:var(--secondary); font-size:13px; font-weight:700;">최근 1개월 시험지가 없습니다. 위 검색으로 과거 시험지를 찾으세요.</div>';
+    const archiveNote = olderCount > 0
+        ? `<div style="display:flex; align-items:center; gap:8px; padding:12px 14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:700;">1개월 이전 시험지 ${olderCount}개는 위 검색으로 찾을 수 있습니다.</div>`
+        : '';
     return `
-        <div class="aprc-exam-grid">
-            ${exams.map(exam => `
-                <button class="aprc-exam-card" type="button" data-archive-file="${reportCenterAttr(exam.archiveFile)}"
-                        onclick="reportCenterNavTo('exam', { archiveFile: '${escapeReportJsString(exam.archiveFile)}' }); openReportCenterModal('${escapeReportJsString(studentId)}')">
-                    <span class="aprc-exam-card__title">${reportCenterEscape(exam.title || '시험지')}</span>
-                    <span class="aprc-exam-card__sub">${reportCenterEscape([exam.school, exam.grade].filter(Boolean).join(' · ') || '학교/학년 미지정')}</span>
-                    <span class="aprc-exam-card__chips">
-                        <span class="aprc-chip">${reportCenterEscape(exam.latestDate || '-')}</span>
-                        <span class="aprc-chip">문항분석 ${exam.reviewCount}/${exam.blueprintCount || '-'}</span>
-                        <span class="aprc-chip">응시 ${exam.takers}</span>
-                        <span class="aprc-chip">반 ${exam.classIds?.length || 0}</span>
-                        <span class="aprc-chip">오답입력 ${exam.wrongEntered}</span>
-                    </span>
-                </button>
-            `).join('')}
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            ${searchBar}
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <span style="font-size:11px; font-weight:800; padding:3px 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary);">최근 1개월</span>
+            </div>
+            ${chipsHtml}
+            ${recentSectionsHtml}
+            ${archiveNote}
         </div>
     `;
 }

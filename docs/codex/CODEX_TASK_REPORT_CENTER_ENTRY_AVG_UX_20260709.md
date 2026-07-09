@@ -408,54 +408,69 @@ node tests/report-center-student-view.test.mjs
 
 ---
 
-## Task F — 학교시험 분석 시험지 목록 학년별 그룹핑
+## Task F — 학교시험 분석 시험지 목록: 최근 1개월 학년 그룹 + 과거 검색 + 심플 카드
 
-> 니즈(원장): 시험지 목록이 지금은 날짜순 평면 그리드라 학년이 섞여 보인다. **학년별로 묶어서** 표시하고 싶다.
+> 니즈(원장, 목업 v2로 확정): 시험지가 너무 많이 쌓여 보기 나쁘다. **기본은 최근 1개월만 학년별로**, 과거는 검색으로 찾는다. 상태 배지(문항분석/오답입력완료)는 빼고 카드도 심플하게. 응시 수는 학원 전체 기준으로.
 
 ### F-0 현재 상태 (실측)
 
-- 데이터: `reportCenterBuildExamHubList()`(`report-center.js:1961`)가 시험지별 그룹 배열을 만들고 각 항목에 `grade`(`reportCenterGetSessionGrade` → `normalizeReportGrade`로 `중1/중2/중3/고1/고2/고3` 정규화, `report-center.js:128`)를 담는다.
-- 렌더: `reportCenterRenderExamHubList(studentId)`(`report-center.js:2005`)가 `.aprc-exam-grid` 하나에 전 시험지를 `latestDate desc → title` 순으로 평면 렌더한다. **호출부는 이 한 곳(list 레벨)뿐**이라 변경 범위가 좁다.
+- 데이터: `reportCenterBuildExamHubList()`(`report-center.js:1961`)가 시험지(archive)별 그룹 배열 생성. 각 항목에 `grade`(`reportCenterGetSessionGrade`→`normalizeReportGrade`, `report-center.js:128`), `takers`, `latestDate`, `school`, `reviewCount/blueprintCount`, `wrongEntered` 포함.
+- 렌더: `reportCenterRenderExamHubList(studentId)`(`report-center.js:2005`)가 `.aprc-exam-grid` 하나에 전 시험지를 `latestDate desc → title` 평면 렌더 + 카드에 `문항분석/응시/반/오답입력` 칩. 호출부는 list 레벨 한 곳.
+- `takers`는 `state.db.exam_sessions` 집계 = **담당 선생님 학생만**(비-admin). 학원 전체 수는 Task C의 `reportCenterGetGroupCohortSummary(group).gradeExamCount`로 얻을 수 있음.
+- 지금 "시험지 찾기" 버튼은 주석 처리(Task D, `report-center.js:3314`)됨 → 이번에 **검색 기능으로 부활**시킨다.
 
-### F-1 구현
+### F-1 기본 화면 = 최근 1개월 학년 그룹
 
-- Modify: `apmath/js/report-center.js`의 `reportCenterRenderExamHubList` (+ 작은 학년 순위 helper).
-- 학년 정렬 순위 helper `reportCenterGradeRank(grade)`:
-  - 순서: `중1 < 중2 < 중3 < 고1 < 고2 < 고3 < 기타/미지정(맨 뒤)`.
-  - 미지정(빈 문자열)·비정규 값은 최하위로, 그 안에서는 라벨 가나다순.
-- 렌더 변경:
-  - `reportCenterBuildExamHubList()` 결과를 `grade`로 그룹핑한다(Map).
-  - 그룹을 `reportCenterGradeRank` 순으로 정렬.
-  - 각 그룹마다 **학년 섹션 헤더** + 그 학년의 `.aprc-exam-grid`를 렌더한다.
-    - 헤더 예: `중1 · 4개` (학년 라벨 + 시험지 수). 미지정 그룹은 `학년 미지정`.
-  - 그룹 내부 정렬은 기존과 동일(`latestDate desc → title`).
-  - 카드 자체(마크업/onclick/칩)는 그대로 재사용한다.
-- 빈 상태 문구는 기존 유지.
-- 카드 sub에 이미 학년이 들어가는데(`[school, grade]`), 그룹 헤더에서 학년을 보이므로 **중복이 거슬리면 카드 sub의 grade는 두되 헤더로 맥락 제공**만 한다(제거는 선택, 최소 변경 우선).
+- 기간 필터: `exam_date`(없으면 `created_at`) 기준 **오늘로부터 30일 이내** 시험지만 기본 노출.
+- 학년 그룹핑:
+  - 신규 helper `reportCenterGradeRank(grade)` — 순서 `중1<중2<중3<고1<고2<고3<기타/미지정(맨 뒤)`. 미지정/비정규는 최하위, 그 안에서 라벨 가나다순.
+  - 최근 목록을 `grade`로 그룹핑, `reportCenterGradeRank` 순 섹션. 각 섹션 헤더 `중1 · N개`(라벨+시험지 수), 미지정은 `학년 미지정`.
+  - 그룹 내부 정렬 `latestDate desc → title`.
+- 학년 필터 칩(헤더 상단): `전체 N · 중1 n · 중3 n · 고2 n`(최근 1개월 기준 개수). 칩 클릭 시 해당 학년만 노출(클라이언트 필터, 재조회 없음). 기본 `전체` 활성.
+- 상단 표시 `최근 1개월` 배지 + 하단 안내: `1개월 이전 시험지 N개는 검색으로 찾을 수 있습니다.`(과거 개수 노출).
 
-### F-2 (선택) 접기/펼치기
+### F-2 카드 심플화 (상태 배지 제거)
 
-- 학년이 많고 시험지가 길면 학년 섹션을 `<details>`로 접을 수 있게 한다. 기본은 펼침. 이번 루프에서는 **미적용 기본(항상 펼침)**으로 두고, 필요 시 후속.
+- 카드에서 **`문항분석`, `오답입력`, `반` 칩과 모든 상태 배지를 제거**한다. (문항분석은 선택적 작업이라 "대기"로 압박 신호를 주지 않는다.)
+- 카드 = `시험명`(굵게) + 한 줄 메타 `학교 · 날짜 · 응시 N` + 우측 `›`. 학년은 섹션 헤더에 있으므로 카드에서 제외.
+- **응시 N = 학원 전체**: `reportCenterGetGroupCohortSummary(group).gradeExamCount`(코호트) 우선, 없으면 로컬 `takers`로 fallback. 라벨/툴팁으로 `학원 전체` 맥락 제공. (드릴다운은 여전히 담당 학생만 열리는 점은 정상 — 카드 수와 다를 수 있음.)
+- onclick(시험 대시보드 진입)·`data-archive-file`은 그대로 유지.
 
-### F 스타일
+### F-3 과거 검색 (죽은 "시험지 찾기" 부활)
 
-- 헤더는 기존 `.aprc-section-title`/`.aprc-chip` 톤 재사용. 새 전역 CSS 남발 금지. 다크모드 토큰(`var(--text)`, `var(--secondary)`, `var(--border)`) 사용.
+- 검색 UI(목록 상단): `학교·시험명` 키워드 입력 + `연도` 셀렉트 + `월` 셀렉트.
+- 검색 활성(키워드/연도/월 중 하나라도 지정) 시:
+  - **30일 제한 해제**, 전체 이력 대상으로 검색.
+  - 결과는 **학년이 아니라 연/월로 그룹핑**(최신 연·월 우선). 이유: 2027 학년 롤오버로 옛 세션의 `reportCenterGetSessionGrade`(현재 학생 학년 기반)가 어긋날 수 있어, 과거는 날짜 기준이 안전.
+  - 헤더 `검색 결과 N개` + `검색 초기화` 버튼(누르면 최근 1개월 기본 화면 복귀).
+  - 결과 없음: `조건에 맞는 시험지가 없습니다.`
+- 연도/월 옵션은 실제 세션의 `exam_date`에서 동적으로 생성.
+
+### F-4 구현 메모
+
+- 주 변경: `reportCenterRenderExamHubList`를 (a) 최근-그룹 렌더 (b) 검색-결과 렌더로 분기. 검색 상태는 `window.AP_REPORT_HUB_SEARCH = { keyword, year, month }` 같은 경량 상태로 보관하고, 입력/칩 변경 시 `reportCenterRenderExamHubList` 재호출(현재 드릴다운 셸 재렌더 방식과 동일).
+- `reportCenterBuildExamHubList()`에 `group.sessions`(또는 각 그룹의 세션 배열)를 노출해 코호트 응시수·검색 필터가 세션 단위로 동작하게 한다(현재는 집계값만 반환).
+- 새 전역 CSS 남발 금지, 기존 `.aprc-*`·다크모드 토큰(`var(--text)`, `var(--secondary)`, `var(--border)`) 재사용. 카드 단순화는 기존 `.aprc-exam-card` 변형 또는 신규 경량 클래스.
+- 접기(아코디언)는 이번 스코프 제외(최근 1개월이라 길지 않음).
 
 ### F 검증
 
-- 신규/확장 테스트(`tests/report-center-shell.test.mjs` 또는 hub 전용):
-  - 서로 다른 학년(예: 중1, 중3, 고2) 시험지를 넣고 `reportCenterRenderExamHubList('')` 결과에서 **학년 헤더가 중1→중3→고2 순서**로 나오고, 각 헤더 아래에 해당 학년 시험지만 포함되는지 확인.
-  - 미지정 학년이 맨 뒤에 오는지 확인.
-- `node --check apmath/js/report-center.js`, 관련 리포트센터 테스트, surface/onclick guard 유지.
+- 신규 테스트(hub 전용 `.mjs` 권장):
+  - 최근(오늘±) 세션과 40일 전 세션을 섞어 넣고 기본 렌더에 **최근 것만** 나오고 과거 안내문에 이전 개수가 표기되는지.
+  - 최근분이 학년 헤더 `중1→중3→고2` 순으로, 각 헤더 아래 해당 학년만.
+  - 카드에 `문항분석/오답입력/반` 칩이 **없고** `응시 N`이 코호트(`gradeExamCount`) 기반인지(코호트 스텁 주입 시 그 값이 나오는지).
+  - 검색 상태(연도/월/키워드) 설정 시 30일 밖 과거가 나오고 연/월 그룹으로 묶이는지.
+- `node --check apmath/js/report-center.js`, 리포트센터 지정 테스트·surface/onclick guard 유지.
 
 ### F PASS/FAIL
 
-- PASS: 시험지 목록이 학년 헤더로 구분되어 중1→고3→미지정 순으로 표시되고, 각 학년 안에서 기존 정렬 유지. 카드 동작(진입/칩) 회귀 없음.
-- FAIL: 여전히 학년이 섞인 평면 그리드다. 학년 순서가 뒤섞이거나 미지정이 중간에 낀다. 카드 진입이 깨진다.
+- PASS: 기본 화면이 최근 1개월 시험지를 학년 헤더로 구분(중1→고3→미지정), 카드는 `제목·학교·날짜·응시(학원 전체)`만의 심플형, 상태 배지 없음. 과거는 연/월·키워드 검색으로 조회. 카드 진입 회귀 없음.
+- FAIL: 과거 시험지가 기본 화면에 계속 쌓여 보인다. 문항분석/오답입력완료 배지가 남아 있다. 응시 수가 담당 학생 기준이다. 검색이 학년으로만 묶여 롤오버 오표기가 노출된다. 카드 진입이 깨진다.
 
 ### F Out of scope
 
-- 학교별 2차 그룹핑, 정렬 옵션 UI, 검색/필터 — 이번은 학년 그룹핑만.
+- 학교별 2차 그룹핑, 접기 아코디언, 기간(1개월) 사용자 설정 UI, 서버측 검색/페이지네이션 — 이번은 클라이언트 필터/검색까지만.
+- 응시수 학원 전체화가 코호트 데이터에 의존하는 부분은 Task C의 데이터 검증(코호트 충전 여부)에 종속. 코호트 미존재 시 로컬 fallback으로 안전 동작.
 
 ---
 

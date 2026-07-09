@@ -63,7 +63,9 @@ const context = {
         { id: 's_missing', name: '최미상', status: 'withdrawn' },
         { id: 's_jejeok_recent', name: '제적최근', status: '제적', updated_at: '2026-06-02 10:00:00' },
         { id: 's_jejeok_old', name: '제적과거', status: '제적', updated_at: '2026-05-31 10:00:00' },
-        { id: 's_new', name: '신규', status: '재원', enrollment_date: '2026-06-12' }
+        { id: 's_new', name: '신규', status: '재원', enrollment_date: '2026-06-12' },
+        { id: 's_new_expired', name: 'ExpiredNew', status: '재원', enrollment_date: '2026-06-05' },
+        { id: 's_new_memo_expired', name: 'ExpiredMemoNew', status: '재원', enrollment_date: '2026-06-05', memo: '#신입' }
       ],
       class_students: [
         { class_id: 'c1', student_id: 's_active' },
@@ -74,7 +76,9 @@ const context = {
         { class_id: 'c1', student_id: 's_missing' },
         { class_id: 'c1', student_id: 's_jejeok_recent' },
         { class_id: 'c1', student_id: 's_jejeok_old' },
-        { class_id: 'c1', student_id: 's_new' }
+        { class_id: 'c1', student_id: 's_new' },
+        { class_id: 'c1', student_id: 's_new_expired' },
+        { class_id: 'c1', student_id: 's_new_memo_expired' }
       ],
       student_status_history: [
         { student_id: 's_recent', new_status: '퇴원', changed_at: '2026-06-02T09:00:00+09:00' },
@@ -137,7 +141,7 @@ function hasTimetableStudentChipSelector(css) {
   );
 }
 context.window = context;
-context.TIMETABLE_WITHDRAWN_TODAY = '2026-06-14';
+context.TIMETABLE_WITHDRAWN_TODAY = '2026-08-06';
 
 vm.createContext(context);
 vm.runInContext(source, context, { filename: 'apmath/js/timetable.js' });
@@ -195,6 +199,17 @@ assert(/\(6\/12\)$/.test(newChip.text), 'new AP status chip text should show enr
 assert(newHtml.includes('tt-new'), 'new AP student should keep new-student color');
 assert(newHtml.includes('(6/12)'), 'new AP student should show enrollment month/day');
 assert(!newHtml.includes('(신)'), 'new AP student should not show the old new-student marker');
+
+const expiredNewHtml = context.buildTimetableStudentSlot(students.find(student => student.id === 's_new_expired'), 'c1');
+const expiredNewChip = elementsByClass(expiredNewHtml, 'tt-status-student-chip')[0];
+assert(expiredNewChip, 'expired AP new student should still render as a timetable status chip');
+assert(!expiredNewChip.classes.includes('tt-new'), 'AP student should stop using new-student color after two months from enrollment date');
+assert(!expiredNewHtml.includes('(6/5)'), 'expired AP new student should not show enrollment month/day after the two-month window');
+
+const expiredMemoNewHtml = context.buildTimetableStudentSlot(students.find(student => student.id === 's_new_memo_expired'), 'c1');
+const expiredMemoNewChip = elementsByClass(expiredMemoNewHtml, 'tt-status-student-chip')[0];
+assert(expiredMemoNewChip, 'expired AP memo-new student should still render as a timetable status chip');
+assert(!expiredMemoNewChip.classes.includes('tt-new'), 'AP student with an enrollment date should not stay blue from #신입 after two months');
 
 const manyHtml = context.buildTimetableStudentSlots(students.concat([
   { id: 'extra1', name: '추가1' },
