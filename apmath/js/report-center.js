@@ -4681,9 +4681,12 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
     const simpleSummary = isSimplePremium
         ? (simpleAi.kakaoSummary || simpleAi.summary || reportCenterBuildCompactExamSummary(data))
         : reportCenterBuildCompactExamSummary(data);
-    const simpleParent = isSimplePremium && simpleAi.parentMessage
-        ? simpleAi.parentMessage
-        : reportCenterBuildCompactParentMessage(data);
+    // 선생님이 상세 리포트에서 저장한 학부모 문구가 있으면 카톡용에도 동일하게 쓴다(E-6).
+    const simpleSaved = reportCenterGetSavedDetailFields(studentId, session.archive_file || session.archiveFile || archiveFile);
+    const simpleParent = String(simpleSaved?.parentText || '').trim()
+        || (isSimplePremium && simpleAi.parentMessage
+            ? simpleAi.parentMessage
+            : reportCenterBuildCompactParentMessage(data));
     const lines = [
         `${student.name || '학생'} · ${reportCenterResolveExamDisplayTitle(session)} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         simpleSummary,
@@ -4746,6 +4749,11 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     const savedFields = reportCenterGetSavedDetailFields(studentId, archiveKey);
     if (savedFields?.planText) planText = String(savedFields.planText);
     if (savedFields?.parentText) parentText = String(savedFields.parentText);
+    // 요약 카드(핵심 진단/담임 총평)도 같은 편집·저장 흐름으로 다룬다(E-6).
+    const diagnosisText = String(savedFields?.diagnosisText || '').trim()
+        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
+    const teacherSummaryText = String(savedFields?.teacherSummaryText || '').trim()
+        || reportCenterBuildSchoolExamTeacherSummary(data);
     const editMode = options.editMode ?? reportCenterDetailEditMode(studentId, archiveKey);
     const premiumBadge = isPremium
         ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
@@ -4755,6 +4763,10 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
             <button type="button" class="btn" onclick="reportCenterSetDetailEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}', ${editMode ? 'false' : 'true'}); openReportCenterModal('${escapeReportJsString(studentId)}')">${editMode ? '취소' : '수정'}</button>
         </div>
     `;
+    const summaryEditSection = editMode
+        ? `<label class="aprc-counsel-field no-print"><b>핵심 진단 (출력 요약 카드)</b><textarea data-report-detail-field="diagnosisText">${reportCenterEscape(diagnosisText)}</textarea></label>
+           <label class="aprc-counsel-field no-print"><b>담임 총평 (출력 요약 카드)</b><textarea data-report-detail-field="teacherSummaryText">${reportCenterEscape(teacherSummaryText)}</textarea></label>`
+        : '';
     const planSection = editMode
         ? `<label class="aprc-counsel-field no-print"><b>앞으로의 학습 방향</b><textarea data-report-detail-field="planText">${reportCenterEscape(planText)}</textarea></label>`
         : `<section class="aprc-counsel-section">
@@ -4783,6 +4795,7 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
                     ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${selection.source === 'auto' && omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
                     : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
             </section>
+            ${summaryEditSection}
             ${planSection}
             ${parentSection}
             ${editMode ? `<div class="aprc-counsel-actions no-print"><button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}')">저장</button></div>` : ''}
@@ -4988,6 +5001,17 @@ function reportCenterGetLedgerAverages(studentId, key) {
     return { overallAvg, classAvg, count: records.length };
 }
 
+// 핵심 진단 문구: 요약 카드와 편집 기본값이 같은 문장을 쓰도록 헬퍼로 분리(E-6).
+function reportCenterBuildSchoolExamDiagnosisText(data = {}, parentWrongRows = []) {
+    const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    if (!wrongRows.length) {
+        return '오답 문항이 없습니다. 수업은 고난도 변형 문제와 서술형 답안 정리로 이어갑니다.';
+    }
+    const rows = Array.isArray(parentWrongRows) && parentWrongRows.length ? parentWrongRows : wrongRows;
+    const nums = reportCenterSortWrongRowsByQuestionNo(rows).map(row => `${row.questionNo}번`).join(', ');
+    return `${nums} 문항을 중심으로 조건 해석과 답안 마무리를 수업에서 다시 확인했습니다.`;
+}
+
 function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows = [], planText = '') {
     const student = data.student || {};
     const session = data.session || {};
@@ -5009,9 +5033,12 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
         ? ledgerAvg.classAvg
         : Number(stats.classAvg ?? stats.classAverage);
     const diff = Number.isFinite(score) && Number.isFinite(overallAvg) ? Math.round(score - overallAvg) : null;
-    const diagnosis = wrongRows.length
-        ? `${reportCenterSortWrongRowsByQuestionNo(parentWrongRows).map(row => `${row.questionNo}번`).join(', ')} 문항을 중심으로 조건 해석과 답안 마무리를 확인합니다.`
-        : '오답 문항이 없어 현재 정확도를 유지하며 다음 단원 확장으로 이어갑니다.';
+    // 저장된 수정본(diagnosisText/teacherSummaryText)이 있으면 요약 카드도 그것으로 대체한다(E-6).
+    const summarySaved = reportCenterGetSavedDetailFields(student.id, archiveFile);
+    const diagnosis = String(summarySaved?.diagnosisText || '').trim()
+        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
+    const teacherSummary = String(summarySaved?.teacherSummaryText || '').trim()
+        || reportCenterBuildSchoolExamTeacherSummary(data);
     const examDisplayTitle = reportCenterResolveExamDisplayTitle(session);
     const reportTitle = `${examDisplayTitle} 분석 리포트`;
     return `
@@ -5046,7 +5073,7 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
                 </section>
                 <section class="aprc-school-plan-card">
                     <h2>담임 총평</h2>
-                    <p>${reportCenterEscape(reportCenterBuildSchoolExamTeacherSummary(data))}</p>
+                    <p>${reportCenterEscape(teacherSummary)}</p>
                 </section>
             </div>
         </section>
@@ -5071,9 +5098,12 @@ function reportCenterBuildSchoolExamDetailedPrintDocument(studentId, sessionId, 
     const parentWrongRows = reportCenterSortWrongRowsByQuestionNo(selection.rows);
     const actionItems = reportCenterBuildAcademyActionPlan(data);
     const ai = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
-    const planText = ai && reportCenterIsPremiumAiSource(ai.source)
-        ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
-        : actionItems.join('\n');
+    // 선생님이 저장한 수정본이 있으면 출력·일괄출력에서도 동일하게 반영한다(E-6).
+    const printSaved = reportCenterGetSavedDetailFields(studentId, archiveFile);
+    const planText = String(printSaved?.planText || '').trim()
+        || (ai && reportCenterIsPremiumAiSource(ai.source)
+            ? ((Array.isArray(ai.nextActions) && ai.nextActions.length) ? ai.nextActions.join('\n') : (ai.nextPlan || actionItems.join('\n')))
+            : actionItems.join('\n'));
     return `
         <main class="aprc-school-detail-document" data-report-school-exam-print="detail" data-generated-date="${reportCenterAttr(new Date().toISOString().slice(0, 10))}">
             ${reportCenterBuildSchoolExamPrintSummaryPage(data, parentWrongRows, planText)}
