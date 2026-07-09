@@ -241,7 +241,7 @@ function reportCenterBuildCompactExamSummary(data) {
     const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
     const positionText = reportCenterApplyEasyFinalLanguage(reportCenterBuildScorePositionText(data));
     if (!wrongRows.length) {
-        return `${positionText || '이번 시험은 안정적으로 마무리했습니다.'} 전 문항을 정확히 풀었습니다.`;
+        return `${positionText || '전 문항을 정확히 해결했습니다.'} 시험 범위 이해와 계산 과정을 실수 없이 마무리했습니다.`;
     }
     const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2).join(', ');
     const cluster = units ? `${units} 단원에서 오답이 확인되었습니다.` : '특정 문항에서 오답이 확인되었습니다.';
@@ -250,15 +250,21 @@ function reportCenterBuildCompactExamSummary(data) {
 
 function reportCenterBuildAcademyActionPlan(data, trendData = null, aiAnalysis = null) {
     const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
+    const curriculumText = typeof reportCenterBuildNextCurriculumMessage === 'function'
+        ? reportCenterBuildNextCurriculumMessage(data)
+        : '다음 수업부터는 새 단원 진도로 넘어갑니다.';
     if (!wrongRows.length) {
-        return ['다음 수업에서는 현재 정확도를 유지하면서 다음 단원과 한 단계 높은 난도 문제로 확장하겠습니다.'];
+        return [
+            '수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다.',
+            curriculumText
+        ];
     }
     const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2);
     const unitText = units.length ? `${units.join(', ')} 단원` : '오답 단원';
     const generated = [
-        `다음 수업에서는 ${unitText}의 틀린 문항을 다시 풀면서, 문제의 조건을 먼저 표시하고 어떤 식을 세워야 하는지부터 확인하겠습니다.`,
-        '비슷한 조건 해석 문항을 2~3개 더 풀어, 문장을 수식으로 옮기는 과정을 반복하겠습니다.',
-        '풀이가 끝난 뒤에는 부호, 계산, 답안 범위를 다시 확인하는 습관까지 함께 점검하겠습니다.'
+        `${unitText}의 오답 문항은 수업에서 이미 다시 풀어 정리했고, 조건을 표시하고 식을 세우는 과정부터 확인했습니다.`,
+        '풀이가 끝난 뒤 부호, 계산, 답안 범위를 다시 확인하는 순서까지 수업에서 같이 점검했습니다.',
+        curriculumText
     ];
     const aiItems = aiAnalysis ? reportCenterBuildNextPlanItems(data, aiAnalysis) : [];
     return reportCenterPdfUniqueLines([...generated, ...aiItems], 3);
@@ -270,12 +276,18 @@ function reportCenterBuildCompactParentMessage(data) {
     const toneSeed = typeof reportCenterGetAiParentToneSeed === 'function'
         ? reportCenterGetAiParentToneSeed(data, wrongRows)
         : null;
-    const careText = toneSeed?.band === 'lower'
-        ? '조건 확인과 계산 검산 습관을 잡으며'
-        : toneSeed?.band === 'high' || toneSeed?.band === 'perfect'
-            ? '심화 유형과 서술형 풀이로 확장하며'
-            : '조건 해석과 식 정리를 점검하며';
-    return `안녕하세요, AP수학입니다. ${studentName} 학생의 이번 시험 결과를 바탕으로 ${careText} 수업 난도 조절과 풀이 점검을 함께 진행하겠습니다.`;
+    const curriculumText = typeof reportCenterBuildNextCurriculumMessage === 'function'
+        ? reportCenterBuildNextCurriculumMessage(data)
+        : '다음 수업부터는 새 단원 진도로 넘어갑니다.';
+    const who = typeof reportCenterFamiliarName === 'function' ? reportCenterFamiliarName(studentName) : `${studentName} 학생`;
+    // 카톡용 압축 규격(2문장 이내): 인사 1문장 + [조치 완료 절, 커리큘럼 절] 1문장.
+    if (toneSeed?.band === 'perfect') {
+        return `안녕하세요, AP수학입니다. ${who}는 전 문항을 정확히 해결했습니다. ${curriculumText}`;
+    }
+    const careClause = toneSeed?.band === 'lower'
+        ? `${who}의 오답 문항은 수업에서 중요한 문항부터 이미 다시 풀어 정리했고`
+        : `${who}의 오답 문항은 수업에서 이미 다시 풀어 정리했고`;
+    return `안녕하세요, AP수학입니다. ${careClause}, ${curriculumText}`;
 }
 
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
