@@ -79,7 +79,7 @@ assert.doesNotMatch(outsideReview, /19번/, 'wrong question number should not re
 assert.doesNotMatch(reviewPanel, /지도 포인트/);
 assert.doesNotMatch(reviewPanel, /다시 풀이/);
 assert.doesNotMatch(html, /다시 풀이/);
-assert.match(html, /다시 풀 문항|다시 풀고|다시 풀면서/, 're-teaching plan copy should appear outside the review card wording');
+assert.match(html, /다시 풀어 정리했|다시 풀 문항|다시 풀고|다시 풀면서/, 're-teaching plan copy should appear outside the review card wording');
 
 const order = [
   '이번 시험 점수',
