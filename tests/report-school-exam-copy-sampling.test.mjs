@@ -34,14 +34,8 @@ context.window = context;
 vm.createContext(context);
 vm.runInContext(source, context, { filename: 'apmath/js/report.js' });
 
-const banned = [
-  '향후', '시사점', '유의미한', '다각도로', '체계적인 관리', '개선이 기대됩니다',
-  '도움이 될 것으로 보입니다', '종합적으로 파악', '확인이 필요합니다',
-  '보완 포인트', '보완 지점', '학습 흐름', '풀이 흐름', '우선 확인 문항',
-  '우선확인문항', '실제 문항', '먼저 볼 문항', '아카이브', '코호트',
-  'blueprint', 'review_text', 'raw data'
-];
-
+const SAMPLE_SEED = 20260710;
+const SAMPLE_TARGET = 360;
 const grades = ['중1', '중2', '중3'];
 const exams = [
   ['1학기 중간', '2026-05-01'],
@@ -49,18 +43,36 @@ const exams = [
   ['2학기 중간', '2026-10-01'],
   ['2학기 기말', '2026-12-01']
 ];
-const scores = [100, 94, 86, 74, 63, 48];
-const names = ['김예준', '지우', '서윤', '민석', '하린', '윤'];
-const wrongCounts = [0, 1, 2, 4, 7];
-const wrongPatterns = [
-  { label: 'easy', rates: [92, 88, 90, 86, 91, 89, 87], units: ['일차방정식', '식의 계산'] },
-  { label: 'hard', rates: [38, 32, 41, 28, 36, 44, 30], units: ['함수 활용', '도형'] },
-  { label: 'mixed', rates: [92, 35, 68, 42, 88, 55, 30], units: ['계산·검산', '조건 해석'] },
-  { label: 'same-unit', rates: [72, 64, 58, 49, 43, 39, 35], units: ['연립방정식'] },
-  { label: 'spread', rates: [82, 61, 45, 74, 53, 36, 69], units: ['조건 해석', '계산·검산', '풀이 순서', '개념 재정리'] }
-];
-const averageModes = ['both-high', 'both-same', 'both-low', 'between', 'overall-only', 'class-only', 'none'];
+const boundaryScores = [0, 50, 60, 70, 80, 90, 100];
+const wrongCounts = [0, 1, 5, 6];
+const names = ['김예준', '이지우', '서윤', '민석', '하린', '오율'];
+const averageModes = ['overall-lower1', 'overall-same', 'overall-higher1', 'class-lower1', 'class-same', 'class-higher1', 'between', 'overall-only', 'class-only', 'none'];
 const sourceModes = ['basic', 'ai', 'saved-all', 'saved-partial', 'ai-empty'];
+const wrongPatterns = [
+  { label: 'easy', rates: [94, 91, 88, 92, 89, 90], units: ['일차방정식', '계산과 검산'] },
+  { label: 'hard', rates: [38, 32, 41, 28, 36, 44], units: ['함수의 활용', '도형'] },
+  { label: 'mixed', rates: [92, 35, 68, 42, 88, 55], units: ['계산과 검산', '조건 해석'] },
+  { label: 'same-unit', rates: [72, 64, 58, 49, 43, 39], units: ['연립방정식'] },
+  { label: 'spread', rates: [82, 61, 45, 74, 53, 36], units: ['조건 해석', '계산과 검산', '풀이 순서', '개념 재정리'] }
+];
+const banned = [
+  '향후', '시사점', '유의미한', '다각도로', '체계적인 관리', '개선이 기대됩니다',
+  '도움이 될 것으로 보입니다', '종합적으로 파악', '확인이 필요합니다', '보완 포인트',
+  '보완 지점', '학습 흐름', '풀이 흐름', '우선 확인 문항', '우선확인문항',
+  '실제 문항', '먼저 볼 문항', '아카이브', '코호트', 'blueprint', 'review_text', 'raw data'
+];
+
+function createPrng(seed) {
+  let value = seed >>> 0;
+  return () => {
+    value = (Math.imul(value, 1664525) + 1013904223) >>> 0;
+    return value / 0x100000000;
+  };
+}
+
+function pick(list, prng) {
+  return list[Math.floor(prng() * list.length) % list.length];
+}
 
 function plain(html) {
   return String(html || '')
@@ -73,13 +85,42 @@ function plain(html) {
     .trim();
 }
 
+function splitSentences(text) {
+  return String(text || '')
+    .replace(/\s+/g, ' ')
+    .split(/(?<=[.!?。]|[다요]\.)\s+|(?<=[다요])\s+(?=[가-힣A-Z0-9])/)
+    .map(sentence => sentence.trim())
+    .filter(sentence => sentence.length >= 12);
+}
+
+function normalizeSentence(sentence) {
+  return String(sentence || '')
+    .normalize('NFKC')
+    .replace(/[0-9]+(?:\.[0-9]+)?/g, '#')
+    .replace(/[^\p{L}\p{N}#]+/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sentenceSkeleton(sentence) {
+  return normalizeSentence(sentence)
+    .replace(/#점|#개|#번|#%|#/g, '#')
+    .replace(/중[123]/g, '중#')
+    .replace(/[가-힣]{2,4}(?= 학생|의|은|는|이|가)/g, '학생');
+}
+
 function makeAverages(score, mode) {
-  if (mode === 'both-high') return { overall: score - 8, classAvg: score - 4 };
-  if (mode === 'both-same') return { overall: score, classAvg: score };
-  if (mode === 'both-low') return { overall: Math.min(100, score + 9), classAvg: Math.min(100, score + 4) };
-  if (mode === 'between') return { overall: Math.min(100, score + 5), classAvg: Math.max(0, score - 5) };
-  if (mode === 'overall-only') return { overall: Math.max(0, score - 3), classAvg: null };
-  if (mode === 'class-only') return { overall: null, classAvg: Math.max(0, score - 2) };
+  const low = Math.max(0, score - 1);
+  const high = Math.min(100, score + 1);
+  if (mode === 'overall-lower1') return { overall: low, classAvg: null };
+  if (mode === 'overall-same') return { overall: score, classAvg: null };
+  if (mode === 'overall-higher1') return { overall: high, classAvg: null };
+  if (mode === 'class-lower1') return { overall: null, classAvg: low };
+  if (mode === 'class-same') return { overall: null, classAvg: score };
+  if (mode === 'class-higher1') return { overall: null, classAvg: high };
+  if (mode === 'between') return { overall: high, classAvg: low };
+  if (mode === 'overall-only') return { overall: Math.max(0, score - 4), classAvg: null };
+  if (mode === 'class-only') return { overall: null, classAvg: Math.max(0, score - 3) };
   return { overall: null, classAvg: null };
 }
 
@@ -136,7 +177,7 @@ function sampleDb(sample) {
       question_no: String(questionNo),
       review_text: JSON.stringify({
         concept: sample.pattern.units[index % sample.pattern.units.length],
-        tag: sample.pattern.label === 'easy' ? '계산·검산' : sample.pattern.label === 'hard' ? '조건 해석' : '풀이 순서',
+        tag: sample.pattern.label === 'easy' ? '계산과 검산' : sample.pattern.label === 'hard' ? '조건 해석' : '풀이 순서',
         trap: index % 2 ? '조건을 식으로 바꾸는 단계' : '부호를 끝까지 확인하는 부분'
       })
     })),
@@ -156,8 +197,8 @@ function archiveDetailsFor(sample) {
   const details = Array.from({ length: 20 }, (_, index) => {
     const questionNo = index + 1;
     const longText = sample.index % 9 === 0
-      ? '조건이 길게 제시된 문항입니다. 직사각형의 가로와 세로, 이동한 거리, 남은 넓이를 모두 비교하여 식을 세우세요. '.repeat(4)
-      : `${questionNo}번 문항입니다. 주어진 조건을 식으로 나타내어 값을 구하세요.`;
+      ? '조건이 길게 제시된 문항입니다. 직사각형의 가로와 세로, 이동한 거리, 합의 범위를 모두 비교하여 식을 세우세요. '.repeat(4)
+      : `${questionNo}번 문항입니다. 주어진 조건을 식으로 옮겨 값을 구하세요.`;
     const content = sample.index % 11 === 0
       ? `${longText}<table><tr><th>구분</th><th>값</th></tr><tr><td>처음</td><td>$x+2$</td></tr><tr><td>나중</td><td>$2x-1$</td></tr></table>`
       : sample.index % 10 === 0
@@ -179,28 +220,33 @@ function archiveDetailsFor(sample) {
 
 function applySourceMode(sample, db) {
   context.window.AP_REPORT_AI_ANALYSIS_CACHE = {};
+  sample.beforeCopy = '';
   if (sample.sourceMode === 'ai' || sample.sourceMode === 'ai-empty') {
+    const legacyCopy = '향후 시사점을 종합적으로 파악해 체계적인 관리가 필요합니다.';
     const payload = sample.sourceMode === 'ai-empty'
       ? { source: 'ai', summary: '', parentMessage: '', nextActions: [] }
       : {
           source: 'ai',
-          summary: '수업에서 오답 문항을 다시 풀어 정리했습니다. 다음 단원은 예정대로 이어갑니다.',
-          parentMessage: '안녕하세요, AP수학입니다. 오답 정리는 수업에서 마쳤고 다음 수업부터 새 단원으로 이어갑니다.',
-          nextActions: ['수업에서 다시 풀어 정리했습니다.', '다음 수업부터 새 단원 진도로 넘어갑니다.']
+          summary: `${legacyCopy} 수업에서 오답 문항을 다시 정리했습니다. 다음 단원은 예정대로 이어갑니다.`,
+          parentMessage: `안녕하세요. AP수학입니다. ${legacyCopy} 오답 정리는 수업에서 마쳤습니다.`,
+          nextActions: ['수업에서 다시 정리했습니다.', '다음 수업부터 새 단원으로 이어갑니다.']
         };
+    sample.beforeCopy = [payload.summary, payload.parentMessage, ...(payload.nextActions || [])].join(' ').trim();
     context.reportCenterSetCachedAiAnalysis(`session-${sample.index}`, payload);
   }
   if (sample.sourceMode === 'saved-all' || sample.sourceMode === 'saved-partial') {
+    const legacyCopy = '보완 포인트와 학습 흐름 확인이 필요합니다.';
     const fields = sample.sourceMode === 'saved-all'
       ? {
-          diagnosisText: '저장된 핵심 진단입니다. 수업에서 다시 확인했습니다.',
-          teacherSummaryText: '저장된 담임 총평입니다. 다음 진도는 예정대로 이어갑니다.',
-          planText: '저장된 학습 관리 방향입니다. 다음 수업부터 새 단원으로 넘어갑니다.',
-          parentText: '저장된 학부모 안내입니다. 수업에서 정리한 내용을 바탕으로 이어가겠습니다.'
+          diagnosisText: `저장된 핵심 진단입니다. ${legacyCopy} 수업에서 다시 확인했습니다.`,
+          teacherSummaryText: `저장된 담임 총평입니다. ${legacyCopy} 다음 지도는 예정대로 이어갑니다.`,
+          planText: `저장된 학습 관리 방향입니다. 다음 수업부터 유사문항을 더 풀겠습니다.`,
+          parentText: `저장된 학부모 안내입니다. 오답 정리는 수업에서 마쳤습니다.`
         }
       : {
-          parentText: '일부 수정된 학부모 안내입니다. 오답 정리는 수업에서 마쳤습니다.'
+          parentText: `일부 수정된 학부모 안내입니다. ${legacyCopy} 오답 정리는 수업에서 마쳤습니다.`
         };
+    sample.beforeCopy = Object.values(fields).join(' ').trim();
     db.exam_student_reports.push({
       archive_file: `sample-${sample.index}.js`,
       student_id: `student-${sample.index}`,
@@ -211,40 +257,73 @@ function applySourceMode(sample, db) {
   }
 }
 
-const samples = [];
-let index = 0;
-for (const grade of grades) {
-  for (const [examLabel, examDate] of exams) {
-    for (const score of scores) {
-      for (const wrongCount of wrongCounts) {
-        const pattern = wrongPatterns[index % wrongPatterns.length];
-        const averageMode = averageModes[index % averageModes.length];
-        const sourceMode = sourceModes[index % sourceModes.length];
-        samples.push({
-          index,
-          grade,
-          examTitle: `${grade} ${examLabel} 학교시험`,
-          examDate,
-          score,
-          wrongCount,
-          pattern,
-          averageMode,
-          sourceMode,
-          name: names[index % names.length]
-        });
-        index += 1;
+function buildSamples() {
+  const prng = createPrng(SAMPLE_SEED);
+  const samples = [];
+  let index = 0;
+  for (const grade of grades) {
+    for (const [examLabel, examDate] of exams) {
+      for (const score of boundaryScores) {
+        for (const wrongCount of wrongCounts) {
+          samples.push({
+            index,
+            grade,
+            examTitle: `${grade} ${examLabel} 학교시험`,
+            examDate,
+            score,
+            wrongCount,
+            pattern: pick(wrongPatterns, prng),
+            averageMode: pick(averageModes, prng),
+            sourceMode: pick(sourceModes, prng),
+            name: pick(names, prng)
+          });
+          index += 1;
+        }
       }
     }
   }
+  while (samples.length < SAMPLE_TARGET) {
+    const [examLabel, examDate] = pick(exams, prng);
+    samples.push({
+      index,
+      grade: pick(grades, prng),
+      examTitle: `${pick(grades, prng)} ${examLabel} 학교시험`,
+      examDate,
+      score: pick(boundaryScores, prng),
+      wrongCount: pick(wrongCounts, prng),
+      pattern: pick(wrongPatterns, prng),
+      averageMode: pick(averageModes, prng),
+      sourceMode: pick(sourceModes, prng),
+      name: pick(names, prng)
+    });
+    index += 1;
+  }
+  averageModes.forEach((mode, offset) => {
+    samples[offset].averageMode = mode;
+  });
+  sourceModes.forEach((mode, offset) => {
+    samples[offset].sourceMode = mode;
+  });
+  return samples;
 }
 
+const samples = buildSamples();
 assert.ok(samples.length >= 300);
+assert.equal(SAMPLE_SEED, 20260710);
 assert.deepEqual(new Set(samples.map(sample => sample.grade)), new Set(grades));
-assert.deepEqual(new Set(samples.map(sample => sample.score)), new Set(scores));
+assert.deepEqual(new Set(samples.map(sample => sample.score)), new Set(boundaryScores));
+assert.deepEqual(new Set(samples.map(sample => sample.wrongCount)), new Set(wrongCounts));
+assert.ok(averageModes.every(mode => samples.some(sample => sample.averageMode === mode)));
 assert.ok(sourceModes.every(mode => samples.some(sample => sample.sourceMode === mode)));
+for (const [examLabel] of exams) {
+  assert.ok(samples.some(sample => sample.examTitle.includes(examLabel)), `${examLabel} missing`);
+}
 
 const representative = [];
+const semanticWarnings = [];
+let changedSentenceCount = 0;
 let checked = 0;
+
 for (const sample of samples) {
   storage.clear();
   const db = sampleDb(sample);
@@ -255,14 +334,17 @@ for (const sample of samples) {
     context.reportCenterGetExamReportData(`student-${sample.index}`, `session-${sample.index}`),
     archiveDetails
   );
+  const questionDetailMap = context.reportCenterGetQuestionDetailMap(data);
   const parentRows = context.reportCenterSortWrongRowsByQuestionNo(
     context.reportCenterSelectParentReportWrongRows(data.stats.wrongRows, 5)
   );
+  const usedQuestionComments = [];
+  const questionCommentBlocks = parentRows.map(row => context.reportCenterBuildParentQuestionParagraph(row, questionDetailMap.get(String(row.questionNo)), { usedComments: usedQuestionComments }));
   const blocks = {
     title: `${sample.examTitle} 분석 리포트`,
     diagnosis: context.reportCenterBuildSchoolExamDiagnosisText(data, parentRows),
     teacher: context.reportCenterBuildSchoolExamTeacherSummary(data),
-    questionComments: parentRows.map(row => plain(context.reportCenterBuildParentWrongQuestionCard(row, context.reportCenterGetQuestionDetailMap(data).get(String(row.questionNo))))).join(' '),
+    questionComments: questionCommentBlocks.join(' '),
     plan: context.reportCenterBuildAcademyActionPlan(data).join('\n'),
     parent: context.reportCenterBuildRichParentMessage(data, parentRows),
     compact: context.reportCenterBuildCompactParentMessage(data),
@@ -274,27 +356,60 @@ for (const sample of samples) {
   const text = Object.values(blocks).flat().join('\n');
   const hits = banned.filter(word => text.includes(word));
   assert.deepEqual(hits, [], `forbidden copy in sample ${sample.index}: ${hits.join(', ')}`);
-  assert.doesNotMatch(text, /(?<![가-힣])(?:예준는|민석는|지우이는)/);
+  assert.doesNotMatch(text, /(예준는|민석는|하린는|오율는|지우이는)/, `bad josa in sample ${sample.index}`);
+  assert.doesNotMatch(text, /오답 정리(?:를)? 앞으로|앞으로 .*오답 정리(?:를)? 마치/, `wrong tense for completed review in sample ${sample.index}`);
+  assert.doesNotMatch(text, /다음 (?:단원|수업|진도)[^.?!]*(?:했습니다|마쳤습니다|정리했습니다)/, `wrong tense for future lesson in sample ${sample.index}`);
   if (sample.wrongCount === 0) {
-    assert.doesNotMatch(blocks.parent, /오답 \d+개 중|틀린 \d+문제/);
+    assert.doesNotMatch(blocks.parent, /오답 \d+개 중|오답 관리|대표 오답/, `perfect score wrong-copy in sample ${sample.index}`);
   }
   if (sample.wrongCount === 1) {
-    assert.doesNotMatch(blocks.parent, /오답 1개 중|문항들|여러 문항/);
+    assert.doesNotMatch(blocks.parent, /오답 1개 중|문항들|여러 문항/, `singular wrong-count copy in sample ${sample.index}`);
   }
-  assert.match(text, new RegExp(String(sample.score)));
-  assert.match(text, new RegExp(sample.examTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-  parentRows.forEach(row => assert.match(text, new RegExp(`${row.questionNo}번`)));
+  assert.match(text, new RegExp(String(sample.score)), `score missing in sample ${sample.index}`);
+  assert.match(text, new RegExp(sample.examTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `exam title missing in sample ${sample.index}`);
+  parentRows.forEach(row => assert.match(text, new RegExp(`${row.questionNo}번`), `question number missing in sample ${sample.index}`));
   assert.ok(parentRows.length <= 5, 'parent report should keep max 5 representative wrong questions');
   assert.deepEqual(parentRows.map(row => row.questionNo), parentRows.map(row => row.questionNo).sort((a, b) => a - b));
+
+  const sentenceCounts = new Map();
+  for (const block of [blocks.diagnosis, blocks.teacher, blocks.plan, blocks.parent]) {
+    for (const sentence of splitSentences(block)) {
+      const key = normalizeSentence(sentence);
+      sentenceCounts.set(key, (sentenceCounts.get(key) || 0) + 1);
+    }
+  }
+  const exactDuplicates = Array.from(sentenceCounts.entries()).filter(([, count]) => count > 1);
+  assert.deepEqual(exactDuplicates, [], `exact duplicate sentence in sample ${sample.index}`);
+
+  const skeletonCounts = new Map();
+  for (const comment of questionCommentBlocks) {
+    for (const sentence of splitSentences(comment)) {
+      const key = sentenceSkeleton(sentence);
+      skeletonCounts.set(key, (skeletonCounts.get(key) || 0) + 1);
+    }
+  }
+  const repeatedSkeletons = Array.from(skeletonCounts.entries()).filter(([, count]) => count >= 3);
+  assert.deepEqual(repeatedSkeletons, [], `question comment skeleton repeated in sample ${sample.index}`);
 
   const comparable = [blocks.diagnosis, blocks.teacher, blocks.plan, blocks.parent].filter(Boolean);
   comparable.forEach((left, leftIndex) => {
     comparable.slice(leftIndex + 1).forEach(right => {
+      if (context.reportCenterIsDuplicateText(left, right)) {
+        semanticWarnings.push({ sample: sample.index, left: left.slice(0, 90), right: right.slice(0, 90), decision: 'reviewed-duplicate-not-allowed' });
+      }
       assert.equal(context.reportCenterIsDuplicateText(left, right), false, `duplicate block in sample ${sample.index}`);
     });
   });
 
-  if (representative.length < 50 && (sample.index % 7 === 0 || sample.sourceMode !== 'basic')) {
+  if (sample.beforeCopy) {
+    const beforeSentences = splitSentences(sample.beforeCopy).map(normalizeSentence);
+    const afterSentences = new Set(splitSentences(text).map(normalizeSentence));
+    const changed = beforeSentences.filter(sentence => sentence && !afterSentences.has(sentence));
+    changedSentenceCount += changed.length;
+    assert.ok(changed.length > 0, `saved/AI baseline did not change in sample ${sample.index}`);
+  }
+
+  if (representative.length < 50 && (sample.index % 5 === 0 || sample.sourceMode !== 'basic')) {
     representative.push({
       grade: sample.grade,
       score: sample.score,
@@ -303,6 +418,7 @@ for (const sample of samples) {
       sourceMode: sample.sourceMode,
       title: blocks.title,
       diagnosis: blocks.diagnosis,
+      teacher: blocks.teacher,
       parent: blocks.parent
     });
   }
@@ -310,6 +426,8 @@ for (const sample of samples) {
 }
 
 assert.ok(representative.length >= 50);
+assert.ok(changedSentenceCount > 0);
 assert.equal(checked, samples.length);
+assert.deepEqual(semanticWarnings, []);
 
-console.log(`report school exam copy sampling test passed (${checked} samples, representative ${representative.length})`);
+console.log(`report school exam copy sampling test passed (${checked} samples, representative ${representative.length}, seed ${SAMPLE_SEED})`);

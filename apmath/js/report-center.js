@@ -4084,47 +4084,76 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
     const openers = {
         easyMiss: [
             `${qNo || ''}번은 ${concept} 기본 풀이를 알고 있어도 마무리 확인에서 실점하기 쉬운 문항입니다.`,
-            `${qNo || ''}번은 ${concept} 단원의 기본형에 가깝지만 답을 확정하는 단계가 중요했던 문항입니다.`
+            `${qNo || ''}번은 ${concept} 단원의 기본형에 가깝지만 답을 확정하는 단계가 중요했던 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 계산을 끝까지 검산해야 점수를 지킬 수 있었던 문항입니다.`,
+            `${qNo || ''}번은 풀이 방향보다 마지막 확인 습관이 더 크게 작용한 ${concept} 문항입니다.`,
+            `${qNo || ''}번은 익숙한 ${concept} 유형 안에서 작은 실수가 나오기 쉬웠던 문항입니다.`
         ],
         hard: [
             `${qNo || ''}번은 ${rateText}의 고난도 문항으로, ${concept}에서 여러 단계를 끝까지 연결해야 했습니다.`,
-            `${qNo || ''}번은 여러 단계를 차례로 정리해야 하는 ${concept} 문항입니다.`
+            `${qNo || ''}번은 여러 단계를 차례로 정리해야 하는 ${concept} 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 조건을 한 번에 처리하기보다 단계별로 나눠야 했던 문항입니다.`,
+            `${qNo || ''}번은 정답률이 낮았던 만큼 ${concept} 적용 순서가 까다로웠던 문항입니다.`,
+            `${qNo || ''}번은 앞 단계 판단이 뒤 계산까지 이어지는 ${concept} 고난도 문항입니다.`
         ],
         midHard: [
             `${qNo || ''}번은 ${concept} 개념을 문제 상황에 맞게 적용해야 했던 문항입니다.`,
-            `${qNo || ''}번은 풀이 방향을 잡은 뒤 ${concept} 처리 순서를 유지하는 힘이 필요했습니다.`
+            `${qNo || ''}번은 풀이 방향을 잡은 뒤 ${concept} 처리 순서를 유지하는 힘이 필요했습니다.`,
+            `${qNo || ''}번은 ${concept} 조건을 읽은 뒤 알맞은 식으로 옮기는 판단이 필요했습니다.`,
+            `${qNo || ''}번은 중간 난도 이상으로 ${concept} 적용 과정을 차분히 이어가야 했습니다.`,
+            `${qNo || ''}번은 ${concept} 풀이 기준을 세운 뒤 답까지 밀고 가야 했던 문항입니다.`
         ],
         standard: [
             `${qNo || ''}번은 ${concept}에서 작은 확인 습관이 점수로 이어지는 문항입니다.`,
-            `${qNo || ''}번은 ${concept} 개념과 답안 정리를 함께 봐야 하는 문항입니다.`
+            `${qNo || ''}번은 ${concept} 개념과 답안 정리를 함께 봐야 하는 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 풀이를 시작한 뒤 마무리 기준을 확인해야 했던 문항입니다.`,
+            `${qNo || ''}번은 기본 개념을 적용하면서 답안 범위까지 점검해야 했던 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 유형 안에서 풀이 순서를 안정적으로 유지해야 했습니다.`
         ],
         unknown: [
             `${qNo || ''}번은 ${concept} 풀이 과정을 한 번 더 짚어볼 문항입니다.`,
-            `${qNo || ''}번은 ${concept} 단원의 풀이 순서를 차분히 복기할 문항입니다.`
+            `${qNo || ''}번은 ${concept} 단원의 풀이 순서를 차분히 복기할 문항입니다.`,
+            `${qNo || ''}번은 ${concept} 조건을 다시 읽고 식으로 옮기는 과정을 볼 문항입니다.`,
+            `${qNo || ''}번은 답을 구하기 전 필요한 개념을 먼저 정리해야 했던 문항입니다.`,
+            `${qNo || ''}번은 풀이 출발점을 다시 확인하면 정리가 쉬워지는 문항입니다.`
         ]
     };
     const meanings = {
         condition: [
             `이번 오답은 조건을 식으로 옮기고 범위까지 확인하는 과정에서 정리가 더 필요했던 것으로 보입니다.${trapSentence}`,
-            `문장 조건을 표시한 뒤 어떤 식으로 연결할지 정리하는 단계가 핵심이었습니다.${trapSentence}`
+            `문장 조건을 표시한 뒤 어떤 식으로 연결할지 정리하는 단계가 핵심이었습니다.${trapSentence}`,
+            `주어진 조건의 순서를 먼저 나누어 봐야 계산식이 흔들리지 않는 문항이었습니다.${trapSentence}`,
+            `조건 사이의 관계를 한 줄씩 확인한 뒤 식으로 옮기는 과정이 중요했습니다.${trapSentence}`,
+            `문제에서 요구한 값을 끝까지 붙잡고 조건을 연결해야 하는 문항이었습니다.${trapSentence}`
         ],
         calc: [
             `개념 부족만의 문제라기보다 계산, 부호, 검산 과정의 점검이 더 필요했던 실점으로 보입니다.${trapSentence}`,
-            `풀이 과정은 접근했더라도 중간 정리와 답안 마무리에서 오차가 생기기 쉬웠습니다.${trapSentence}`
+            `풀이 과정은 접근했더라도 중간 정리와 답안 마무리에서 오차가 생기기 쉬웠습니다.${trapSentence}`,
+            `계산을 이어가는 과정에서 부호와 항 정리를 끝까지 맞추는 것이 관건이었습니다.${trapSentence}`,
+            `처음 세운 식은 맞더라도 마지막 검산 단계에서 한 번 더 확인해야 했던 문항입니다.${trapSentence}`,
+            `계산 순서가 길어질수록 중간값을 따로 점검하는 습관이 필요한 문항이었습니다.${trapSentence}`
         ],
         geometry: [
             `그림의 조건을 표시하고 필요한 관계식을 찾는 순서가 중요한 문항이었습니다.${trapSentence}`,
-            `도형 정보를 한 번에 보려 하기보다 조건을 나누어 정리하는 과정이 필요했습니다.${trapSentence}`
+            `도형 정보를 한 번에 보려 하기보다 조건을 나누어 정리하는 과정이 필요했습니다.${trapSentence}`,
+            `각도, 길이, 넓이 중 어떤 정보를 먼저 써야 하는지 구분하는 힘이 필요했습니다.${trapSentence}`,
+            `그림에 표시된 단서를 식과 연결하는 단계에서 한 번 더 정리가 필요했습니다.${trapSentence}`,
+            `보이는 모양보다 숨어 있는 관계를 먼저 찾는 것이 핵심이었습니다.${trapSentence}`
         ],
         concept: [
             `알고 있는 개념을 낯선 형태의 문제에 적용하는 순서에서 정리가 더 필요했던 것으로 보입니다.${trapSentence}`,
-            `풀이 시작 후 어떤 개념을 먼저 써야 하는지 정리하는 과정이 핵심이었습니다.${trapSentence}`
+            `풀이 시작 후 어떤 개념을 먼저 써야 하는지 정리하는 과정이 핵심이었습니다.${trapSentence}`,
+            `문제 조건에 맞는 개념을 골라 적용하는 판단이 중요했습니다.${trapSentence}`,
+            `기본 개념을 알고 있어도 문항 형태가 바뀌면 적용 순서를 다시 잡아야 했습니다.${trapSentence}`,
+            `풀이 방향을 정한 뒤 끝까지 같은 기준으로 정리하는 힘이 필요했습니다.${trapSentence}`
         ]
     };
     // 문항별 코멘트는 진단(무엇이·왜 흔들렸는지)만 담는다. 향후 조치/방향은 담임 총평·앞으로의 학습 방향에서 다룬다.
-    const candidates = openers[rateBand].flatMap(opener => (
-        meanings[family].map(meaning => `${opener} ${rateText} 기준으로 보면 ${meaning}`)
-    ));
+    const openerList = openers[rateBand];
+    const meaningList = meanings[family];
+    const candidates = Array.from({ length: Math.max(openerList.length, meaningList.length) }, (_, index) =>
+        `${openerList[index % openerList.length]} ${rateText} 기준으로 보면 ${meaningList[index % meaningList.length]}`
+    );
     return reportCenterAssertParentSafe(reportCenterPickNonDuplicateCommentText(candidates, options.usedComments || []));
 }
 
@@ -4232,7 +4261,7 @@ function reportCenterGetAiParentToneSeed(data = {}, selectedWrongRows = []) {
         },
         perfect: {
             positiveAnchor: `${who}는 이번 시험에서 전 문항을 정확히 해결했습니다. 시험 범위 개념 이해와 계산 모두 흔들림 없이 마무리했습니다.`,
-            teacherCareMessage: '수업에서는 이제 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어가려고 합니다.',
+            teacherCareMessage: '수업에서는 이제 고난도 변형 문제와 서술형 답안 완성도를 함께 보겠습니다.',
             parentReassurance: ''
         }
     };
@@ -4386,11 +4415,17 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
             ? '정답률이 낮았던 고난도 문항은 관련 개념을 처음부터 다시 짚어 수업에서 정리했습니다.'
             : '풀이가 끝난 뒤 부호와 계산, 답안 범위를 확인하는 순서까지 함께 봤습니다.';
     const curriculumText = reportCenterBuildNextCurriculumMessage(data);
+    const parentCurriculumText = curriculumText
+        .replace('다음 수업부터는 기말고사 범위 단원으로 진도를 이어갑니다.', '다음 수업부터는 기말고사 범위 단원 진도를 이어가겠습니다.')
+        .replace('다음 수업부터는 새 단원 진도로 넘어갑니다.', '다음 수업부터는 새 단원 진도를 이어가겠습니다.')
+        .replace('이번 시험 범위 단원은 여기서 마무리하고, 여름방학부터 2학기 과정 진도로 넘어갑니다.', '이번 범위는 마무리하고 여름방학에는 2학기 과정으로 이어가겠습니다.')
+        .replace('이번 학기 과정은 여기서 마무리하고, 겨울방학부터 다음 학년 과정 선행 진도로 넘어갑니다.', '이번 학기 과정은 마무리하고 겨울방학에는 다음 학년 선행으로 이어가겠습니다.')
+        .replace('이번 시험으로 중등 과정은 마무리하고, 겨울방학부터 고등 과정 선행 진도로 넘어갑니다.', '이번 시험으로 중등 과정은 마무리하고 겨울방학에는 고등 선행으로 이어가겠습니다.');
     return [
         `안녕하세요, AP수학입니다. ${reportCenterFamiliarName(studentName)}는 ${examTitle}에서 ${scoreText}을 기록했습니다. ${positionSentence}`,
         `${toneSeed.positiveAnchor} ${wrongText}. ${wrongFocus}`,
         `${toneSeed.teacherCareMessage} ${supportText}`,
-        `${curriculumText} ${toneSeed.parentReassurance}`.trim(),
+        `${parentCurriculumText} ${toneSeed.parentReassurance}`.trim(),
         longTermPlan
     ].filter(Boolean).map(paragraph => reportCenterAssertParentSafe(paragraph)).join('\n\n');
 }
@@ -4652,7 +4687,7 @@ function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
                     : '개념은 이해하고 있고, 문제 상황에 맞게 적용하는 순서를 다듬어 가는 단계입니다.';
 
     const focusMsg = wrongRows.length === 0
-        ? '수업에서는 고난도 변형 문제와 서술형 답안 쓰는 연습으로 이어갑니다.'
+        ? '수업에서는 응용 난도와 서술형 답안 완성도를 함께 높이겠습니다.'
         : `오답 문항은 수업에서 다시 풀어 정리했고, ${focus} 부분은 제가 이어서 확인하겠습니다.`;
 
     return reportCenterAssertParentSafe(`${state} ${focusMsg}`);
@@ -4853,15 +4888,15 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
     // 프리미엄 분석이 있으면 카톡/짧은 상담용 문구도 AI 요약·안내로 대체.
     const simpleAi = typeof reportCenterGetCachedAiAnalysis === 'function' ? reportCenterGetCachedAiAnalysis(session.id) : null;
     const isSimplePremium = !!(simpleAi && reportCenterIsPremiumAiSource(simpleAi.source));
-    const simpleSummary = isSimplePremium
+    const simpleSummary = reportCenterAssertParentSafe(isSimplePremium
         ? (simpleAi.kakaoSummary || simpleAi.summary || reportCenterBuildCompactExamSummary(data))
-        : reportCenterBuildCompactExamSummary(data);
+        : reportCenterBuildCompactExamSummary(data));
     // 선생님이 상세 리포트에서 저장한 학부모 문구가 있으면 카톡용에도 동일하게 쓴다(E-6).
     const simpleSaved = reportCenterGetSavedDetailFields(studentId, session.archive_file || session.archiveFile || archiveFile);
-    const simpleParent = String(simpleSaved?.parentText || '').trim()
+    const simpleParent = reportCenterAssertParentSafe(String(simpleSaved?.parentText || '').trim()
         || (isSimplePremium && simpleAi.parentMessage
             ? simpleAi.parentMessage
-            : reportCenterBuildCompactParentMessage(data));
+            : reportCenterBuildCompactParentMessage(data)));
     const lines = [
         `${student.name || '학생'} · ${reportCenterResolveExamDisplayTitle(session)} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         simpleSummary,
@@ -4925,10 +4960,10 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
     if (savedFields?.planText) planText = String(savedFields.planText);
     if (savedFields?.parentText) parentText = String(savedFields.parentText);
     // 요약 카드(핵심 진단/담임 총평)도 같은 편집·저장 흐름으로 다룬다(E-6).
-    const diagnosisText = String(savedFields?.diagnosisText || '').trim()
-        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
-    const teacherSummaryText = String(savedFields?.teacherSummaryText || '').trim()
-        || reportCenterBuildSchoolExamTeacherSummary(data);
+    const diagnosisText = reportCenterAssertParentSafe(String(savedFields?.diagnosisText || '').trim()
+        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows));
+    const teacherSummaryText = reportCenterAssertParentSafe(String(savedFields?.teacherSummaryText || '').trim()
+        || reportCenterBuildSchoolExamTeacherSummary(data));
     const planDedupeRefs = [diagnosisText, teacherSummaryText]
         .flatMap(value => String(value || '').split(/\n+|(?<=[.!?。])\s+/))
         .map(value => value.trim())
@@ -5344,6 +5379,51 @@ async function reportCenterPrintSchoolExamDetailedReport() {
     const root = document.getElementById('report-print-document-root');
     const ok = await reportCenterTypesetMath(root);
     if (!ok) return false;
+    const state = { fonts: 'skipped', images: 'skipped', timeout: false, oversizeCards: 0 };
+    if (document.fonts?.ready) {
+        const fontsReady = await Promise.race([
+            document.fonts.ready.then(() => 'ready').catch(() => 'error'),
+            new Promise(resolve => setTimeout(() => resolve('timeout'), 3500))
+        ]);
+        state.fonts = fontsReady;
+        state.timeout = state.timeout || fontsReady === 'timeout';
+    }
+    const images = Array.from(root?.querySelectorAll?.('img') || []);
+    if (images.length) {
+        const imageReady = Promise.all(images.map(img => new Promise(resolve => {
+            if (img.complete) {
+                if (typeof img.decode === 'function') {
+                    img.decode().then(() => resolve('decoded')).catch(() => resolve('decode-error'));
+                } else {
+                    resolve('loaded');
+                }
+                return;
+            }
+            img.addEventListener('load', () => {
+                if (typeof img.decode === 'function') {
+                    img.decode().then(() => resolve('decoded')).catch(() => resolve('decode-error'));
+                } else {
+                    resolve('loaded');
+                }
+            }, { once: true });
+            img.addEventListener('error', () => resolve('error'), { once: true });
+        }))).then(() => 'ready').catch(() => 'error');
+        const imagesReady = await Promise.race([
+            imageReady,
+            new Promise(resolve => setTimeout(() => resolve('timeout'), 4500))
+        ]);
+        state.images = imagesReady;
+        state.timeout = state.timeout || imagesReady === 'timeout';
+    }
+    const printableHeight = Math.round((297 - 24) / 25.4 * 96);
+    Array.from(root?.querySelectorAll?.('.aprc-parent-question-card') || []).forEach(card => {
+        card.classList.remove('is-oversize');
+        if (card.getBoundingClientRect().height > printableHeight) {
+            card.classList.add('is-oversize');
+            state.oversizeCards += 1;
+        }
+    });
+    if (root?.dataset) root.dataset.printReadyState = JSON.stringify(state);
     window.print();
     return true;
 }
@@ -7513,6 +7593,11 @@ function reportCenterInjectPrintViewStyle() {
             page-break-inside:avoid;
         }
 
+        .aprc-parent-question-card.is-oversize {
+            break-inside:auto;
+            page-break-inside:auto;
+        }
+
         .aprc-parent-question-card + .aprc-parent-question-card {
             margin-top:10px;
         }
@@ -7999,6 +8084,11 @@ function reportCenterInjectPrintViewStyle() {
             .aprc-parent-question-card {
                 break-inside:avoid !important;
                 page-break-inside:avoid !important;
+            }
+
+            .aprc-parent-question-card.is-oversize {
+                break-inside:auto !important;
+                page-break-inside:auto !important;
             }
 
             .aprc-parent-question-head,
