@@ -3890,6 +3890,19 @@ function reportCenterAssertParentSafe(text) {
     value = value
         .replace(/코호트/g, '전체 응시')
         .replace(/raw|archive|아카이브|review_text|blueprint/gi, '')
+        .replace(/향후/g, '다음 수업에서는')
+        .replace(/시사점/g, '확인할 점')
+        .replace(/유의미한/g, '의미 있는')
+        .replace(/다각도로/g, '함께')
+        .replace(/체계적인 관리/g, '차근차근 관리')
+        .replace(/개선이 기대됩니다/g, '차근차근 나아질 수 있습니다')
+        .replace(/도움이 될 것으로 보입니다/g, '도움이 됩니다')
+        .replace(/종합적으로 파악/g, '함께 확인')
+        .replace(/확인이 필요합니다/g, '다시 점검하겠습니다')
+        .replace(/보완 포인트|보완 지점/g, '다시 볼 부분')
+        .replace(/학습 흐름/g, '학습 상태')
+        .replace(/풀이 흐름/g, '풀이 과정')
+        .replace(/우선\s*확인\s*문항|우선확인문항|실제\s*문항|먼저\s*볼\s*문항/g, '대표 문항')
         .replace(/묻는 것/g, '확인한 내용')
         .replace(/함정/g, '실수하기 쉬운 부분')
         .replace(/풀이 포인트/g, '다시 정리할 부분')
@@ -4097,7 +4110,7 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
         ],
         calc: [
             `개념 부족만의 문제라기보다 계산, 부호, 검산 과정의 점검이 더 필요했던 실점으로 보입니다.${trapSentence}`,
-            `풀이 흐름은 접근했더라도 중간 정리와 답안 마무리에서 오차가 생기기 쉬웠습니다.${trapSentence}`
+            `풀이 과정은 접근했더라도 중간 정리와 답안 마무리에서 오차가 생기기 쉬웠습니다.${trapSentence}`
         ],
         geometry: [
             `그림의 조건을 표시하고 필요한 관계식을 찾는 순서가 중요한 문항이었습니다.${trapSentence}`,
@@ -4916,6 +4929,42 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
     const teacherSummaryText = String(savedFields?.teacherSummaryText || '').trim()
         || reportCenterBuildSchoolExamTeacherSummary(data);
+    const planDedupeRefs = [diagnosisText, teacherSummaryText]
+        .flatMap(value => String(value || '').split(/\n+|(?<=[.!?。])\s+/))
+        .map(value => value.trim())
+        .filter(Boolean);
+    planText = String(planText || '')
+        .split(/(\n{2,})/)
+        .map(part => {
+            if (/^\n+$/.test(part)) return part;
+            return part
+                .split(/(?<=[.!?。])\s+/)
+                .map(sentence => sentence.trim())
+                .filter(sentence => sentence && !planDedupeRefs.some(ref => reportCenterIsDuplicateText(sentence, ref)))
+                .join(' ');
+        })
+        .join('')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+    const parentDedupeRefs = [diagnosisText, teacherSummaryText, planText]
+        .flatMap(value => String(value || '').split(/\n+|(?<=[.!?。])\s+/))
+        .map(value => value.trim())
+        .filter(Boolean);
+    parentText = String(parentText || '')
+        .split(/(\n{2,})/)
+        .map(part => {
+            if (/^\n+$/.test(part)) return part;
+            return part
+                .split(/(?<=[.!?。])\s+/)
+                .map(sentence => sentence.trim())
+                .filter(sentence => sentence && !parentDedupeRefs.some(ref => reportCenterIsDuplicateText(sentence, ref)))
+                .join(' ');
+        })
+        .join('')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+    planText = reportCenterAssertParentSafe(planText);
+    parentText = reportCenterAssertParentSafe(parentText);
     const editMode = options.editMode ?? reportCenterDetailEditMode(studentId, archiveKey);
     const premiumBadge = isPremium
         ? ' <span class="aprc-school-detail-premium-badge">프리미엄 분석 적용</span>'
@@ -5197,10 +5246,10 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
     const diff = Number.isFinite(score) && Number.isFinite(overallAvg) ? Math.round(score - overallAvg) : null;
     // 저장된 수정본(diagnosisText/teacherSummaryText)이 있으면 요약 카드도 그것으로 대체한다(E-6).
     const summarySaved = reportCenterGetSavedDetailFields(student.id, archiveFile);
-    const diagnosis = String(summarySaved?.diagnosisText || '').trim()
-        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows);
-    const teacherSummary = String(summarySaved?.teacherSummaryText || '').trim()
-        || reportCenterBuildSchoolExamTeacherSummary(data);
+    const diagnosis = reportCenterAssertParentSafe(String(summarySaved?.diagnosisText || '').trim()
+        || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows));
+    const teacherSummary = reportCenterAssertParentSafe(String(summarySaved?.teacherSummaryText || '').trim()
+        || reportCenterBuildSchoolExamTeacherSummary(data));
     const examDisplayTitle = reportCenterResolveExamDisplayTitle(session);
     const reportTitle = `${examDisplayTitle} 분석 리포트`;
     return `
@@ -7255,6 +7304,7 @@ function reportCenterInjectPrintViewStyle() {
             display:flex;
             flex-direction:column;
             gap:8mm;
+            justify-content:space-between;
             break-after:page;
             page-break-after:always;
         }
@@ -7290,7 +7340,9 @@ function reportCenterInjectPrintViewStyle() {
         .aprc-school-card-grid {
             display:grid;
             grid-template-columns:1fr 1fr;
+            grid-template-rows:minmax(54mm, auto) minmax(76mm, auto);
             gap:5mm;
+            flex:1;
             align-content:start;
         }
 
@@ -7539,10 +7591,12 @@ function reportCenterInjectPrintViewStyle() {
         .aprc-parent-question-card img {
             display:block;
             max-width:100%;
+            max-height:40mm;
             height:auto;
             margin:8px auto;
             break-inside:avoid;
             page-break-inside:avoid;
+            object-fit:contain;
         }
 
         .aprc-parent-question-choices {
@@ -7912,8 +7966,88 @@ function reportCenterInjectPrintViewStyle() {
 
             .aprc-school-detail-head,
             .aprc-counsel-section,
-            .aprc-qreview-card,
+            .aprc-qreview-card {
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
+            }
+
+            .aprc-school-summary-page {
+                min-height:273mm !important;
+                break-after:page !important;
+                page-break-after:always !important;
+            }
+
+            .aprc-school-card-grid {
+                grid-template-rows:minmax(54mm, auto) minmax(76mm, auto) !important;
+                align-content:stretch !important;
+            }
+
+            .aprc-school-card-grid > section,
+            .aprc-school-diagnosis-card,
+            .aprc-school-plan-card,
+            .aprc-counsel-section:not(:has(.aprc-qreview-list)) {
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
+            }
+
+            .aprc-counsel-section:has(.aprc-qreview-list),
+            .aprc-qreview-list {
+                break-inside:auto !important;
+                page-break-inside:auto !important;
+            }
+
             .aprc-parent-question-card {
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
+            }
+
+            .aprc-parent-question-head,
+            .aprc-parent-question-comment,
+            .aprc-parent-question-label,
+            .aprc-parent-question-answer,
+            .aprc-parent-question-choices li {
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
+            }
+
+            .aprc-parent-question-original {
+                break-inside:auto !important;
+                page-break-inside:auto !important;
+            }
+
+            .aprc-parent-question-content,
+            .aprc-parent-question-choices,
+            .aprc-parent-question-answer,
+            .aprc-parent-question-card p,
+            .aprc-school-detail-document p,
+            .aprc-school-detail-document li {
+                overflow-wrap:anywhere !important;
+                word-break:keep-all !important;
+                orphans:3 !important;
+                widows:3 !important;
+            }
+
+            .aprc-parent-question-content table,
+            .aprc-parent-question-card table {
+                width:100% !important;
+                max-width:100% !important;
+                table-layout:fixed !important;
+                break-inside:auto !important;
+                page-break-inside:auto !important;
+            }
+
+            .aprc-parent-question-content tr,
+            .aprc-parent-question-card tr {
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
+            }
+
+            .aprc-parent-question-content img,
+            .aprc-parent-question-image img,
+            .aprc-parent-question-card img {
+                max-width:100% !important;
+                max-height:40mm !important;
+                object-fit:contain !important;
                 break-inside:avoid !important;
                 page-break-inside:avoid !important;
             }
