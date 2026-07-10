@@ -3890,7 +3890,8 @@ function reportCenterAssertParentSafe(text) {
     value = value
         .replace(/코호트/g, '전체 응시')
         .replace(/raw|archive|아카이브|review_text|blueprint/gi, '')
-        .replace(/향후/g, '다음 수업에서는')
+        .replace(/향후에는/g, '앞으로는')
+        .replace(/향후/g, '앞으로')
         .replace(/시사점/g, '확인할 점')
         .replace(/유의미한/g, '의미 있는')
         .replace(/다각도로/g, '함께')
@@ -3900,7 +3901,7 @@ function reportCenterAssertParentSafe(text) {
         .replace(/종합적으로 파악/g, '함께 확인')
         .replace(/확인이 필요합니다/g, '다시 점검하겠습니다')
         .replace(/보완 포인트|보완 지점/g, '다시 볼 부분')
-        .replace(/학습 흐름/g, '학습 상태')
+        .replace(/학습 흐름/g, '풀이 과정')
         .replace(/풀이 흐름/g, '풀이 과정')
         .replace(/우선\s*확인\s*문항|우선확인문항|실제\s*문항|먼저\s*볼\s*문항/g, '대표 문항')
         .replace(/묻는 것/g, '확인한 내용')
@@ -4964,40 +4965,31 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
         || reportCenterBuildSchoolExamDiagnosisText(data, parentWrongRows));
     const teacherSummaryText = reportCenterAssertParentSafe(String(savedFields?.teacherSummaryText || '').trim()
         || reportCenterBuildSchoolExamTeacherSummary(data));
-    const planDedupeRefs = [diagnosisText, teacherSummaryText]
-        .flatMap(value => String(value || '').split(/\n+|(?<=[.!?。])\s+/))
-        .map(value => value.trim())
-        .filter(Boolean);
-    planText = String(planText || '')
+    // 블록 간 문장 중복 제거는 자동 생성 문구에만 적용한다.
+    // 선생님이 직접 저장한 문구(savedFields)는 의도된 반복일 수 있으므로 그대로 노출한다.
+    const dedupeSentences = (text, refs) => String(text || '')
         .split(/(\n{2,})/)
         .map(part => {
             if (/^\n+$/.test(part)) return part;
             return part
                 .split(/(?<=[.!?。])\s+/)
                 .map(sentence => sentence.trim())
-                .filter(sentence => sentence && !planDedupeRefs.some(ref => reportCenterIsDuplicateText(sentence, ref)))
+                .filter(sentence => sentence && !refs.some(ref => reportCenterIsDuplicateText(sentence, ref)))
                 .join(' ');
         })
         .join('')
         .replace(/\n{3,}/g, '\n\n')
         .trim();
-    const parentDedupeRefs = [diagnosisText, teacherSummaryText, planText]
+    const splitRefs = values => values
         .flatMap(value => String(value || '').split(/\n+|(?<=[.!?。])\s+/))
         .map(value => value.trim())
         .filter(Boolean);
-    parentText = String(parentText || '')
-        .split(/(\n{2,})/)
-        .map(part => {
-            if (/^\n+$/.test(part)) return part;
-            return part
-                .split(/(?<=[.!?。])\s+/)
-                .map(sentence => sentence.trim())
-                .filter(sentence => sentence && !parentDedupeRefs.some(ref => reportCenterIsDuplicateText(sentence, ref)))
-                .join(' ');
-        })
-        .join('')
-        .replace(/\n{3,}/g, '\n\n')
-        .trim();
+    if (!savedFields?.planText) {
+        planText = dedupeSentences(planText, splitRefs([diagnosisText, teacherSummaryText]));
+    }
+    if (!savedFields?.parentText) {
+        parentText = dedupeSentences(parentText, splitRefs([diagnosisText, teacherSummaryText, planText]));
+    }
     planText = reportCenterAssertParentSafe(planText);
     parentText = reportCenterAssertParentSafe(parentText);
     const editMode = options.editMode ?? reportCenterDetailEditMode(studentId, archiveKey);
