@@ -92,4 +92,26 @@ assert.match(editAfterSave, /수정된 담임 총평 문구입니다\./);
 const simpleHtml = context.reportCenterBuildSchoolExamSimpleParentReport('s1', 'exam-a.js');
 assert.match(simpleHtml, /수정된 학부모 안내 문구입니다\./, '카톡 간단 리포트에도 학부모 저장본 반영');
 
+// 4) 선생님 저장본은 블록 간 중복 제거(dedupe) 대상에서 제외 — 총평과 같은 문장을
+//    학부모 문구에 의도적으로 반복해도 화면·출력에서 삭제되면 안 된다.
+context.state.db.exam_student_reports = [{
+  archive_file: 'exam-a.js',
+  student_id: 's1',
+  report_type: 'school_exam_detail',
+  fields_json: JSON.stringify({
+    teacherSummaryText: '오답 문항은 수업에서 다시 풀어 정리했습니다.',
+    parentText: '어머님 안녕하세요. 오답 문항은 수업에서 다시 풀어 정리했습니다. 다음 주 보강 일정은 목요일입니다.'
+  })
+}];
+const dedupeHtml = context.reportCenterBuildSchoolExamDetailedParentReport('s1', 'exam-a.js', { editMode: false });
+const dedupeParent = dedupeHtml.match(/aprc-counsel-section--parent[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || '';
+assert.match(dedupeParent, /다시 풀어 정리했습니다/, '저장본 문장은 총평과 겹쳐도 유지');
+assert.match(dedupeParent, /다음 주 보강 일정/, '저장본 나머지 문장도 유지');
+
+// 5) assertParentSafe 치환이 문법을 깨지 않아야 한다 (향후/학습 흐름 조사 호환)
+assert.equal(context.reportCenterAssertParentSafe('향후에는 서술형 답안도 다루겠습니다.'), '앞으로는 서술형 답안도 다루겠습니다.');
+assert.equal(context.reportCenterAssertParentSafe('향후 계획을 함께 안내드립니다.'), '앞으로 계획을 함께 안내드립니다.');
+assert.equal(context.reportCenterAssertParentSafe('아이의 학습 흐름이 안정적입니다.'), '아이의 풀이 과정이 안정적입니다.');
+assert.doesNotMatch(context.reportCenterAssertParentSafe('학습 흐름 점검'), /학습 상태/, '금지어(학습 상태)로 치환되면 안 됨');
+
 console.log('report school exam summary edit test passed');
