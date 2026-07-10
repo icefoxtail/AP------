@@ -4189,26 +4189,15 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
             `이 문항은 풀이에 필요한 개념을 먼저 정리해 적용해야 하는 문제입니다.${trapSentence}`,
             `이 문항은 문제 조건에 맞는 개념을 골라 적용해야 하는 문제입니다.${trapSentence}`,
             `이 문항은 기본 개념과 문항 조건을 연결해 풀어야 하는 문제입니다.${trapSentence}`,
-            `이 문항은 풀이 기준을 정한 뒤 같은 흐름으로 답까지 정리해야 하는 문제입니다.${trapSentence}`
+            `이 문항은 풀이 기준을 정한 뒤 같은 기준으로 답까지 정리해야 하는 문제입니다.${trapSentence}`
         ]
     };
     // 문항별 코멘트는 진단(무엇이·왜 흔들렸는지)만 담는다. 향후 조치/방향은 담임 총평·앞으로의 학습 방향에서 다룬다.
     const openerList = openers[rateBand];
     const meaningList = hasExplicitTag ? meanings[family] : factualMeanings[family];
-    const rateStatements = Number.isFinite(rate)
-        ? [
-            `전체 정답률은 ${Math.round(rate)}%입니다.`,
-            `이번 문항의 전체 정답률은 ${Math.round(rate)}%입니다.`,
-            `전체 응시 기준 정답률은 ${Math.round(rate)}%입니다.`,
-            `전체 정답률은 ${Math.round(rate)}%로 집계됐습니다.`,
-            `응시 학생의 정답률은 ${Math.round(rate)}%입니다.`
-        ]
-        : [];
     const candidates = Array.from({ length: Math.max(openerList.length, meaningList.length) }, (_, index) => {
         const opener = openerList[index % openerList.length];
-        // 정답률을 모르면 문장을 생략한다. "정답률 확인 대상" 같은 내부 표현을 학부모에게 내보내지 않는다.
-        const rateStatement = (!rateStatements.length || opener.includes(rateText)) ? '' : ` ${rateStatements[index % rateStatements.length]}`;
-        return `${opener}${rateStatement} ${meaningList[index % meaningList.length]}`;
+        return `${opener} ${meaningList[index % meaningList.length]}`;
     });
     return reportCenterAssertParentSafe(reportCenterPickNonDuplicateCommentText(candidates, options.usedComments || []));
 }
@@ -4744,7 +4733,7 @@ function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
             : (hasEasyMiss && !hasHard)
                 ? '개념 자체는 잡혀 있어, 실수로 이어진 부분만 다듬으면 더 좋은 결과로 이어질 수 있는 상태입니다.'
                 : hasHard
-                    ? '맞힌 문항에서는 기본 개념을 적용한 것이 확인됐습니다. 정답률이 낮은 고난도 문항은 수업에서 개념부터 다시 짚었습니다.'
+                    ? '맞힌 문항에서는 기본 개념을 적용했습니다. 정답률이 낮은 고난도 문항은 수업에서 개념부터 다시 짚었습니다.'
                     : '개념은 이해하고 있고, 문제 상황에 맞게 적용하는 순서를 다듬어 가는 단계입니다.';
 
     const focusMsg = wrongRows.length === 0
@@ -4769,7 +4758,7 @@ function reportCenterBuildStudentWrongCauseSummary(studentId, archiveFile) {
         tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
     });
     const [topTag, count] = Array.from(tagCounts.entries()).sort((a, b) => b[1] - a[1])[0] || [];
-    if (count >= 2) return `${topTag} 유형이 여러 문항에서 반복되어, 다음 수업에서 같은 흐름으로 묶어 다시 정리하겠습니다.`;
+    if (count >= 2) return `${topTag} 유형이 여러 문항에서 반복되어, 다음 수업에서 같은 유형으로 묶어 다시 정리하겠습니다.`;
     return reportCenterBuildWrongCauseSummary(data);
 }
 
