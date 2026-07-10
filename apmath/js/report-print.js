@@ -226,7 +226,7 @@ function reportCenterPdfUniqueLines(lines = [], limit = 3) {
 
 function reportCenterBuildWrongCauseSummary(data) {
     const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
-    if (!wrongRows.length) return '이번 시험은 오답 문항이 없어 별도 원인 분석보다 다음 단원 확장 학습에 집중하겠습니다.';
+    if (!wrongRows.length) return '이번 시험은 오답 문항 없이 마무리해 별도의 원인 분석이 필요하지 않습니다.';
     const units = reportCenterPdfUniqueLines(wrongRows.map(row => row.unit || row.unitKey), 2).join(', ');
     const hardCount = wrongRows.filter(row => Number(row.correctRate) < 60 || /상|심화|어려/.test(String(row.difficulty || row.level || ''))).length;
     const base = units
