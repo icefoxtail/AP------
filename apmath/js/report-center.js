@@ -3382,9 +3382,9 @@ function reportCenterBuildExamBody(studentId, selectedSessionId = '') {
                 <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">제출</div><div style="font-size:15px; font-weight:700; color:var(--text); margin-top:2px;">${stats?.totalSessions || 0}명</div></div>
                 <div style="padding:11px; border-radius:12px; background:var(--surface); border:1px solid var(--border);"><div style="font-size:11px; font-weight:700; color:var(--secondary);">오답</div><div style="font-size:15px; font-weight:700; color:var(--error); margin-top:2px;">${wrongSummary.length}개</div></div>
             </div>
-            <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 가정 전달 포인트" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
+            <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 학부모 안내사항" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트보기/프리미엄분석</button>
+                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">시험결과 리포트 보기</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
             <div id="report-center-premium-preview"></div>
@@ -4422,11 +4422,16 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
         .replace('이번 시험 범위 단원은 여기서 마무리하고, 여름방학부터 2학기 과정 진도로 넘어갑니다.', '이번 범위는 마무리하고 여름방학에는 2학기 과정으로 이어가겠습니다.')
         .replace('이번 학기 과정은 여기서 마무리하고, 겨울방학부터 다음 학년 과정 선행 진도로 넘어갑니다.', '이번 학기 과정은 마무리하고 겨울방학에는 다음 학년 선행으로 이어가겠습니다.')
         .replace('이번 시험으로 중등 과정은 마무리하고, 겨울방학부터 고등 과정 선행 진도로 넘어갑니다.', '이번 시험으로 중등 과정은 마무리하고 겨울방학에는 고등 선행으로 이어가겠습니다.');
+    // 고3 2학기 기말처럼 "이후 일정은 개별 상담" 안내가 나가는 경우,
+    // "새 단원에서도 계속 확인" 류의 마무리는 사실과 모순되므로 붙이지 않는다.
+    const closingParagraph = /개별 상담/.test(parentCurriculumText)
+        ? parentCurriculumText
+        : `${parentCurriculumText} ${toneSeed.parentReassurance}`.trim();
     return [
         `안녕하세요, AP수학입니다. ${reportCenterFamiliarName(studentName)}는 ${examTitle}에서 ${scoreText}을 기록했습니다. ${positionSentence}`,
         `${toneSeed.positiveAnchor} ${wrongText}. ${wrongFocus}`,
         `${toneSeed.teacherCareMessage} ${supportText}`,
-        `${parentCurriculumText} ${toneSeed.parentReassurance}`.trim(),
+        closingParagraph,
         longTermPlan
     ].filter(Boolean).map(paragraph => reportCenterAssertParentSafe(paragraph)).join('\n\n');
 }
@@ -4699,7 +4704,7 @@ function reportCenterBuildStudentWrongCauseSummary(studentId, archiveFile) {
     if (!session) return '상담에 사용할 시험 기록을 찾지 못했습니다.';
     const data = reportCenterGetExamReportData(studentId, session.id);
     const wrongRows = Array.isArray(data?.stats?.wrongRows) ? data.stats.wrongRows : [];
-    if (!wrongRows.length) return '이번 시험은 오답 문항이 없어 다음 단원 확장 학습에 집중하겠습니다.';
+    if (!wrongRows.length) return `이번 시험은 오답 문항이 없습니다. ${reportCenterBuildNextCurriculumMessage(data)}`;
     const tagCounts = new Map();
     const store = reportCenterGetExamReviews(session.archive_file || archiveFile);
     wrongRows.forEach(row => {
@@ -4870,10 +4875,6 @@ function reportCenterBuildWrongSelectionEditor(studentId, archiveFile, wrongRows
         <section class="aprc-detail-edit-panel no-print">
             <div class="aprc-counsel-title">학부모 리포트 문항 선택</div>
             <div class="aprc-wrong-option-grid">${rows || '<p>선택할 오답 문항이 없습니다.</p>'}</div>
-            <div class="aprc-counsel-actions">
-                <button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveFile)}')">상세 리포트 저장</button>
-                <button type="button" class="btn" onclick="reportCenterSetDetailEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveFile)}', false); openReportCenterModal('${escapeReportJsString(studentId)}')">취소</button>
-            </div>
         </section>
     `;
 }
@@ -4901,7 +4902,7 @@ function reportCenterBuildSchoolExamSimpleParentReport(studentId, archiveFile) {
     const lines = [
         `${student.name || '학생'} · ${reportCenterResolveExamDisplayTitle(session)} · ${session.score ?? '-'}점 · 오답 ${wrongRows.length}문항`,
         simpleSummary,
-        wrongRows.length ? `${reportCenterShortQuestionList(wrongRows, 5)} 문항을 우선 복습합니다.` : '이번 시험은 오답 문항이 없어 다음 단원 확장 학습으로 이어갑니다.',
+        wrongRows.length ? `${reportCenterShortQuestionList(wrongRows, 5)} 문항을 우선 복습합니다.` : `이번 시험은 오답 문항이 없습니다. ${reportCenterBuildNextCurriculumMessage(data)}`,
         actionItems.slice(0, 2).join(' '),
         simpleParent
     ].filter(Boolean);
@@ -5031,12 +5032,12 @@ function reportCenterBuildSchoolExamDetailedParentReport(studentId, archiveFile,
                 <div class="aprc-counsel-title">오답 문항 분석</div>
                 ${wrongRows.length
                     ? `<div class="aprc-qreview-list">${questionCards || '<p>오답 문항은 학원에서 직접 풀이하며 정리해 안내드리겠습니다.</p>'}</div>${selection.source === 'auto' && omittedWrongCount ? `<p>나머지 ${omittedWrongCount}개 문항은 학원 수업에서 차례로 확인하겠습니다.</p>` : ''}`
-                    : '<p>이번 시험은 오답 문항이 없습니다. 다음 단원 확장 학습으로 이어가겠습니다.</p>'}
+                    : `<p>이번 시험은 오답 문항이 없습니다. ${reportCenterEscape(reportCenterBuildNextCurriculumMessage(data))}</p>`}
             </section>
             ${summaryEditSection}
             ${planSection}
             ${parentSection}
-            ${editMode ? `<div class="aprc-counsel-actions no-print"><button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}')">저장</button></div>` : ''}
+            ${editMode ? `<div class="aprc-counsel-actions no-print"><button type="button" class="btn btn-primary" onclick="reportCenterSaveSchoolExamDetailReport('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}')">변경사항 저장</button><button type="button" class="btn" onclick="reportCenterSetDetailEditMode('${escapeReportJsString(studentId)}','${escapeReportJsString(archiveKey)}', false); openReportCenterModal('${escapeReportJsString(studentId)}')">취소</button></div>` : ''}
         </article>
     `;
 }
@@ -5072,7 +5073,10 @@ async function reportCenterSaveSchoolExamDetailReport(studentId, archiveFile) {
     });
     reportCenterSetDetailEditMode(studentId, archiveFile, false);
     if (typeof toast === 'function') {
-        toast(detailSync || selectionSync ? '상세 리포트 수정본을 저장했습니다.' : '서버 저장은 실패했습니다. 이 화면에는 임시 저장되었습니다.', detailSync || selectionSync ? 'success' : 'warn');
+        // 문구(detail)와 문항 선택(selection)은 별도 저장이라, 둘 다 성공해야 성공으로 알린다.
+        if (detailSync && selectionSync) toast('변경사항을 저장했습니다.', 'success');
+        else if (detailSync || selectionSync) toast('일부 항목만 저장되었습니다. 다시 저장해 주세요.', 'warn');
+        else toast('서버 저장에 실패했습니다. 이 화면에만 임시 반영되었습니다.', 'warn');
     }
     if (typeof openReportCenterModal === 'function') openReportCenterModal(studentId);
     return { fields, questions };
@@ -5271,6 +5275,10 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
         ? ledgerAvg.classAvg
         : Number(stats.classAvg ?? stats.classAverage);
     const diff = Number.isFinite(score) && Number.isFinite(overallAvg) ? Math.round(score - overallAvg) : null;
+    // 응시 인원이 본인뿐이면 "평균 = 본인 점수"가 되어 비교가 무의미하므로 평균 바를 숨긴다.
+    // 인원 정보가 없으면(0/NaN) 기존처럼 표시한다.
+    const rawCohortCount = Number(stats.gradeExamCount ?? stats.totalSubmitted ?? NaN);
+    const cohortCount = Number.isFinite(rawCohortCount) && rawCohortCount > 0 ? rawCohortCount : Infinity;
     // 저장된 수정본(diagnosisText/teacherSummaryText)이 있으면 요약 카드도 그것으로 대체한다(E-6).
     const summarySaved = reportCenterGetSavedDetailFields(student.id, archiveFile);
     const diagnosis = reportCenterAssertParentSafe(String(summarySaved?.diagnosisText || '').trim()
@@ -5298,11 +5306,14 @@ function reportCenterBuildSchoolExamPrintSummaryPage(data = {}, parentWrongRows 
                 <section class="aprc-school-score-card">
                     <h2>점수 요약</h2>
                     <div class="aprc-school-score-number">${reportCenterFormatPrintMetric(score, '점')}</div>
+                    ${cohortCount > 1 ? `
                     ${reportCenterBuildScoreBar('학원 전체 평균 대비', score, overallAvg)}
-                    ${Number.isFinite(classAvg) ? reportCenterBuildScoreBar('우리 반 평균 대비', score, classAvg) : ''}
+                    ${Number.isFinite(classAvg) ? reportCenterBuildScoreBar('우리 반 평균 대비', score, classAvg) : ''}` : ''}
                     <div class="aprc-school-score-mini">
                         <span>정답률 <b>${Number.isFinite(correctRate) ? `${correctRate}%` : '-'}</b></span>
-                        <span>전체 평균 차이 <b>${diff === null ? '-' : `${diff > 0 ? '+' : ''}${diff}점`}</b></span>
+                        ${cohortCount > 1
+                            ? `<span>전체 평균 차이 <b>${diff === null ? '-' : `${diff > 0 ? '+' : ''}${diff}점`}</b></span>`
+                            : '<span>비교 인원이 적어 평균 비교는 표시하지 않습니다</span>'}
                     </div>
                 </section>
                 <section class="aprc-school-diagnosis-card">
@@ -5595,11 +5606,11 @@ function reportCenterBuildScorePositionText(data) {
     const parts = [];
     if (Number.isFinite(score) && Number.isFinite(overallAvg)) {
         const diff = score - overallAvg;
-        parts.push(`전체 평균 대비 ${diff >= 0 ? '+' : ''}${diff}점`);
+        parts.push(diff === 0 ? '전체 평균과 같은 점수' : `전체 평균 대비 ${diff >= 0 ? '+' : ''}${diff}점`);
     }
     if (Number.isFinite(score) && Number.isFinite(classAvg)) {
         const diff = score - classAvg;
-        parts.push(`${stats.className || '소속 반'} 평균 대비 ${diff >= 0 ? '+' : ''}${diff}점`);
+        parts.push(diff === 0 ? `${stats.className || '소속 반'} 평균과 같은 점수` : `${stats.className || '소속 반'} 평균 대비 ${diff >= 0 ? '+' : ''}${diff}점`);
     }
     return parts.length ? parts.join(' · ') : '동일 평가 비교 자료가 부족합니다.';
 }
@@ -8255,10 +8266,10 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
                 </table>
             </div>
 
-            <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 가정 전달 포인트" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
+            <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 학부모 안내사항" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트보기/프리미엄분석</button>
+                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">시험결과 리포트 보기</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
         </div>

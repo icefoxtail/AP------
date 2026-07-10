@@ -33,7 +33,7 @@ assert(
 assert(
   report.includes('function openReportCenterExam(studentId, selectedSessionId = \'\')') &&
     report.includes('function reportCenterOpenStudentDrilldown(studentId, sessionId = \'\')') &&
-    report.includes('리포트보기/프리미엄분석') &&
+    report.includes('시험결과 리포트 보기') &&
     report.includes('reportCenterOpenPrintView'),
   'existing report center should keep the printable exam report flow and expose the student drilldown entry'
 );
