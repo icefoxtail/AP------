@@ -60,6 +60,23 @@ const forbidden = /raw|archive|blueprint|review_text|자료 없음|확인 불가
   assert.notEqual(result.meaning, result.action);
 });
 
+const explicitQuestionComment = context.reportCenterBuildParentQuestionParagraph({
+  questionNo: 14,
+  unit: '연립방정식',
+  correctRate: 88,
+  reviewText: JSON.stringify({ tag: '계산·검산' })
+});
+const inferredQuestionComment = context.reportCenterBuildParentQuestionParagraph({
+  questionNo: 15,
+  unit: '연립방정식',
+  correctRate: 88,
+  reviewText: JSON.stringify({})
+});
+assert.match(explicitQuestionComment, /개념 부족만의 문제라기보다|계산, 부호, 검산 과정/);
+assert.match(inferredQuestionComment, /이 문항은 .* 중요한 문제입니다/);
+assert.doesNotMatch(inferredQuestionComment, /것으로 보입니다|개념 부족만의 문제|정리가 더 필요/);
+assert.doesNotMatch(inferredQuestionComment, /기준으로 보면/);
+
 const cleaned = context.reportCenterAssertParentSafe('오답 단원의 핵심 풀이를 다음 수업에서 다시 풀이하며 확인하고 풀이 시작점을 안정적으로 잡겠습니다.');
 assert.doesNotMatch(cleaned, /풀이 시작점|안정적으로 잡겠습니다|오답 단원의 핵심 풀이/);
 assert.match(cleaned, /조건과 식을 세우는 순서|틀린 문항의 풀이 과정/);
