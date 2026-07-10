@@ -4068,9 +4068,20 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
     const rate = Number(row?.correctRate ?? detail?.correctRate);
     const rateBand = !Number.isFinite(rate) ? 'unknown' : rate >= 85 ? 'easyMiss' : rate < 45 ? 'hard' : rate < 70 ? 'midHard' : 'standard';
     const rateText = Number.isFinite(rate) ? `전체 정답률 ${Math.round(rate)}%` : '정답률 확인 대상';
-    const tagText = `${reviewData.tag || row?.tag || ''} ${reportCenterResolveErrorTag(reviewData, Number.isFinite(rate) ? rate : null) || ''}`;
+    const explicitTag = String(reviewData.tag || '').trim();
+    const hasExplicitTag = reportCenterErrorTags().includes(explicitTag);
+    const resolvedTag = reportCenterResolveErrorTag(reviewData, Number.isFinite(rate) ? rate : null) || '';
+    const tagText = `${explicitTag} ${resolvedTag}`;
     const trap = reportCenterTrapReadsNatural(reviewData.trap || '') ? String(reviewData.trap).trim() : '';
-    const family = /조건|해석|범위|경계|부등식|방정식|함수|그래프|활용/.test(`${concept} ${tagText}`)
+    const family = hasExplicitTag && /계산|검산/.test(explicitTag)
+        ? 'calc'
+        : hasExplicitTag && /풀이 순서/.test(explicitTag)
+            ? 'concept'
+            : hasExplicitTag && /조건|해석/.test(explicitTag)
+                ? 'condition'
+                : hasExplicitTag && /개념/.test(explicitTag)
+                    ? 'concept'
+                    : /조건|해석|범위|경계|부등식|방정식|함수|그래프|활용/.test(`${concept} ${tagText}`)
         ? 'condition'
         : /계산|검산|부호|정리|전개|인수분해/.test(`${concept} ${tagText}`)
             ? 'calc'
@@ -4149,12 +4160,56 @@ function reportCenterBuildParentQuestionParagraph(row = {}, detail = null, optio
             `풀이 방향을 정한 뒤 끝까지 같은 기준으로 정리하는 힘이 필요했습니다.${trapSentence}`
         ]
     };
+    // 태그가 직접 입력되지 않은 경우 정답률로 추정한 계열은 문항의 성격을 고르는 데만 쓴다.
+    // 학생의 오답 원인이나 학습 상태를 단정하는 문장에는 쓰지 않는다.
+    const factualMeanings = {
+        condition: [
+            `이 문항은 주어진 조건을 식으로 정확히 옮기는 과정이 중요한 문제입니다.${trapSentence}`,
+            `이 문항은 조건의 관계와 범위까지 확인해야 답을 정할 수 있는 문제입니다.${trapSentence}`,
+            `이 문항은 조건을 순서대로 정리해 식으로 연결해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 문장에 제시된 조건을 빠짐없이 확인하는 과정이 중요한 문제입니다.${trapSentence}`,
+            `이 문항은 요구한 값과 조건을 끝까지 연결해 확인해야 하는 문제입니다.${trapSentence}`
+        ],
+        calc: [
+            `이 문항은 계산과 부호를 끝까지 확인해야 답을 정할 수 있는 문제입니다.${trapSentence}`,
+            `이 문항은 중간 계산과 답안 마무리를 함께 확인해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 계산 과정의 항 정리와 부호 확인이 중요한 문제입니다.${trapSentence}`,
+            `이 문항은 식을 세운 뒤 마지막 검산까지 필요한 문제입니다.${trapSentence}`,
+            `이 문항은 계산 순서와 중간값을 차례로 확인해야 하는 문제입니다.${trapSentence}`
+        ],
+        geometry: [
+            `이 문항은 그림의 조건과 필요한 관계식을 연결하는 과정이 중요한 문제입니다.${trapSentence}`,
+            `이 문항은 도형 정보를 조건별로 나누어 정리해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 각도, 길이, 넓이 중 필요한 정보를 구분해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 그림의 단서를 식과 연결해 확인해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 보이는 모양과 조건의 관계를 함께 확인해야 하는 문제입니다.${trapSentence}`
+        ],
+        concept: [
+            `이 문항은 기본 개념을 문항 형태에 맞게 적용해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 풀이에 필요한 개념을 먼저 정리해 적용해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 문제 조건에 맞는 개념을 골라 적용해야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 기본 개념과 문항 조건을 연결해 풀어야 하는 문제입니다.${trapSentence}`,
+            `이 문항은 풀이 기준을 정한 뒤 같은 흐름으로 답까지 정리해야 하는 문제입니다.${trapSentence}`
+        ]
+    };
     // 문항별 코멘트는 진단(무엇이·왜 흔들렸는지)만 담는다. 향후 조치/방향은 담임 총평·앞으로의 학습 방향에서 다룬다.
     const openerList = openers[rateBand];
-    const meaningList = meanings[family];
-    const candidates = Array.from({ length: Math.max(openerList.length, meaningList.length) }, (_, index) =>
-        `${openerList[index % openerList.length]} ${rateText} 기준으로 보면 ${meaningList[index % meaningList.length]}`
-    );
+    const meaningList = hasExplicitTag ? meanings[family] : factualMeanings[family];
+    const rateStatements = Number.isFinite(rate)
+        ? [
+            `전체 정답률은 ${Math.round(rate)}%입니다.`,
+            `이번 문항의 전체 정답률은 ${Math.round(rate)}%입니다.`,
+            `전체 응시 기준 정답률은 ${Math.round(rate)}%입니다.`,
+            `전체 정답률은 ${Math.round(rate)}%로 집계됐습니다.`,
+            `응시 학생의 정답률은 ${Math.round(rate)}%입니다.`
+        ]
+        : [];
+    const candidates = Array.from({ length: Math.max(openerList.length, meaningList.length) }, (_, index) => {
+        const opener = openerList[index % openerList.length];
+        // 정답률을 모르면 문장을 생략한다. "정답률 확인 대상" 같은 내부 표현을 학부모에게 내보내지 않는다.
+        const rateStatement = (!rateStatements.length || opener.includes(rateText)) ? '' : ` ${rateStatements[index % rateStatements.length]}`;
+        return `${opener}${rateStatement} ${meaningList[index % meaningList.length]}`;
+    });
     return reportCenterAssertParentSafe(reportCenterPickNonDuplicateCommentText(candidates, options.usedComments || []));
 }
 
@@ -4385,7 +4440,7 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     const positionText = reportCenterBuildScorePositionText({ ...data, session, stats });
     const positionSentence = /부족/.test(positionText)
         ? positionText
-        : `동일 평가 기준으로 보면 ${positionText}입니다.`;
+        : `동일 평가 기준에서 ${positionText}입니다.`;
     const toneSeed = reportCenterGetAiParentToneSeed(data, wrongRows);
     const reportType = reportCenterResolveParentReportType(data);
     const longTermPlan = reportCenterBuildLongTermPlanMessage(data, toneSeed.band, reportType);
@@ -4398,10 +4453,10 @@ function reportCenterBuildRichParentMessage(data, selectedWrongRows = []) {
     // 오답이 1개면 "N개 중"·"특히 ~처럼" 표현이 어색하므로 단수형으로 쓴다.
     const wrongText = wrongRows.length
         ? (wrongRows.length === 1
-            ? `오답은 ${priorityNo ? `${priorityNo}번` : '한'} 문항이었고, 수업에서 다시 짚어 이 리포트에도 정리해 두었습니다`
-            : `오답 ${wrongRows.length}개 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 중심으로 수업에서 다시 짚었고, 이 리포트에도 정리해 두었습니다`)
+            ? `오답은 ${priorityNo ? `${priorityNo}번` : '한'} 문항이었고, 수업에서 다시 짚었습니다`
+            : `오답 ${wrongRows.length}개 중 ${priorityNo ? `${priorityNo}번` : '우선 문항'}을 중심으로 수업에서 다시 짚었습니다`)
         : toneSeed.band === 'perfect'
-            ? '이 리포트에는 강점이 드러난 문항과 다음 단계 계획을 정리해 두었습니다'
+            ? '기본 문항부터 난도 있는 문항까지 빈틈없이 해결했습니다'
             : '오답 문항은 많지 않았지만 풀이 과정과 답안 마무리까지 수업에서 함께 확인했습니다';
     const wrongFocus = wrongRows.length
         ? `${wrongRows.length === 1 ? `${priorityNo ? `${priorityNo}번은` : '이 문항은'}` : `특히 ${priorityNo ? `${priorityNo}번처럼` : '우선 문항처럼'}`} ${priorityUnit} 단원에서 ${rateText}였던 문항${wrongRows.length === 1 ? '이라' : '은'} 조건을 정리해 식으로 연결하는 과정을 수업에서 다시 확인했습니다.`
@@ -4689,7 +4744,7 @@ function reportCenterBuildSchoolExamTeacherSummary(data = {}) {
             : (hasEasyMiss && !hasHard)
                 ? '개념 자체는 잡혀 있어, 실수로 이어진 부분만 다듬으면 더 좋은 결과로 이어질 수 있는 상태입니다.'
                 : hasHard
-                    ? '기본기는 갖춰져 있으며, 정답률이 낮은 고난도 문항에서 한 단계를 더 이어가는 힘을 키우는 단계입니다.'
+                    ? '맞힌 문항에서는 기본 개념을 적용한 것이 확인됐습니다. 정답률이 낮은 고난도 문항은 수업에서 개념부터 다시 짚었습니다.'
                     : '개념은 이해하고 있고, 문제 상황에 맞게 적용하는 순서를 다듬어 가는 단계입니다.';
 
     const focusMsg = wrongRows.length === 0
