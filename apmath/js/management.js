@@ -518,12 +518,12 @@ function billingAccountingMethodKeyOptions(selected = 'card') {
 }
 
 function billingAccountingTransactionTypeOptions(selected = 'payment') {
-    const options = ['payment', 'partial_payment', 'refund', 'cancel', 'correction', 'carryover_in', 'carryover_out'];
+    const options = ['payment', 'partial_payment'];
     return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
 }
 
 function billingAccountingTransactionStatusOptions(selected = 'completed') {
-    const options = ['pending', 'completed', 'cancelled', 'failed', 'corrected'];
+    const options = ['completed'];
     return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
 }
 
@@ -763,7 +763,9 @@ async function toggleBillingAccountingPolicyActive(id, nextActive) {
 }
 
 async function cancelBillingAccountingTransaction(id) {
-    const result = await api.patch(`billing-accounting-foundation/payment-transactions/${encodeURIComponent(id)}/cancel`, {});
+    const reason = (window.prompt('수납 취소 사유를 입력하세요.') || '').trim();
+    if (!reason) return toast('취소 사유가 필요합니다.', 'warn');
+    const result = await api.patch(`billing-accounting-foundation/payment-transactions/${encodeURIComponent(id)}/cancel`, { reason });
     if (result?.success) {
         toast('취소되었습니다.', 'success');
         await billingAccountingFetchAll();
@@ -773,7 +775,9 @@ async function cancelBillingAccountingTransaction(id) {
 }
 
 async function cancelBillingAccountingRefund(id) {
-    const result = await api.patch(`billing-accounting-foundation/refund-records/${encodeURIComponent(id)}/cancel`, {});
+    const reason = (window.prompt('환불 취소 사유를 입력하세요.') || '').trim();
+    if (!reason) return toast('취소 사유가 필요합니다.', 'warn');
+    const result = await api.patch(`billing-accounting-foundation/refund-records/${encodeURIComponent(id)}/cancel`, { reason });
     if (result?.success) {
         toast('취소되었습니다.', 'success');
         await billingAccountingFetchAll();

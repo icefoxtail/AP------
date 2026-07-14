@@ -83,8 +83,8 @@ function isWithdrawnStatus(value) {
   return ['퇴원', '제적', 'inactive', 'archived', 'withdrawn', 'left'].includes(status);
 }
 
-function withdrawalDate(student = {}) {
-  return normalizeDate(
+function withdrawalDate(student = {}, historyDate = '') {
+  const direct = normalizeDate(
     student.withdrawn_at ||
     student.withdrawal_date ||
     student.left_at ||
@@ -94,10 +94,12 @@ function withdrawalDate(student = {}) {
     student.status_changed_at ||
     student.student_status_changed_at ||
     student.end_date ||
-    student.updated_at ||
-    student.updatedAt ||
     ''
   );
+  if (direct) return direct;
+  if (historyDate) return normalizeDate(historyDate);
+  // 퇴원 전환 이력이 없을 때만 updated_at 근사치 사용
+  return normalizeDate(student.updated_at || student.updatedAt || '');
 }
 
 function withdrawalCutoff(date = new Date()) {
@@ -105,11 +107,11 @@ function withdrawalCutoff(date = new Date()) {
   return `${parts.year}-06-01`;
 }
 
-function shouldIncludeSnapshotStudent(student = {}, date = new Date()) {
+function shouldIncludeSnapshotStudent(student = {}, date = new Date(), historyDate = '') {
   const status = student.status || student.student_status || '';
   if (isActiveStatus(status) || isLeaveStatus(status)) return true;
   if (!isWithdrawnStatus(status)) return false;
-  const dateText = withdrawalDate(student);
+  const dateText = withdrawalDate(student, historyDate);
   return Boolean(dateText && dateText >= withdrawalCutoff(date));
 }
 
@@ -256,7 +258,7 @@ async function loadSnapshot(env, monthKey) {
 }
 
 async function buildCurrentSnapshotRows(env) {
-  const [classRes, slotRes, mapRes, studentRes] = await Promise.all([
+  const [classRes, slotRes, mapRes, studentRes, statusHistoryRes] = await Promise.all([
     env.DB.prepare(`
       SELECT id, name, grade, subject, teacher_name, schedule_days, day_group, time_label, textbook, is_active
       FROM classes
@@ -269,13 +271,20 @@ async function buildCurrentSnapshotRows(env) {
       ORDER BY day_of_week ASC, start_time ASC, class_id ASC
     `).all().catch(() => ({ results: [] })),
     env.DB.prepare('SELECT * FROM class_students ORDER BY class_id ASC, student_id ASC').all(),
-    env.DB.prepare('SELECT * FROM students').all()
+    env.DB.prepare('SELECT * FROM students').all(),
+    env.DB.prepare('SELECT student_id, new_status, changed_at FROM student_status_history ORDER BY changed_at ASC').all().catch(() => ({ results: [] }))
   ]);
   const classes = classRes.results || [];
   const slots = slotRes.results || [];
   const mappings = mapRes.results || [];
   const students = studentRes.results || [];
   const studentsById = new Map(students.map(row => [String(row.id), row]));
+  // 학생별 마지막 퇴원 전환 시각 (changed_at ASC 순회라 마지막 값이 최신)
+  const withdrawalDateByStudent = new Map();
+  for (const row of (statusHistoryRes.results || [])) {
+    if (!isWithdrawnStatus(row.new_status)) continue;
+    withdrawalDateByStudent.set(String(row.student_id), row.changed_at || '');
+  }
   const mapsByClass = new Map();
   for (const row of mappings) {
     const list = mapsByClass.get(String(row.class_id)) || [];
@@ -307,7 +316,7 @@ async function buildCurrentSnapshotRows(env) {
       const order = classIndex * 100 + slotIndex;
       const assigned = (mapsByClass.get(String(cls.id)) || []).filter(map => {
         const student = studentsById.get(String(map.student_id)) || {};
-        return shouldIncludeSnapshotStudent(student);
+        return shouldIncludeSnapshotStudent(student, new Date(), withdrawalDateByStudent.get(String(map.student_id)) || '');
       });
       cells.push({
         id: cellId,
@@ -341,7 +350,7 @@ async function buildCurrentSnapshotRows(env) {
           school_name: student.school_name || student.school || '',
           student_status: student.status || '',
           enrollment_date: student.onboarding_started_at || '',
-          discharged_at: withdrawalDate(student),
+          discharged_at: withdrawalDate(student, withdrawalDateByStudent.get(String(map.student_id)) || ''),
           raw_meta_json: jsonText({ class_student: map, student }),
           sort_order: order * 1000 + studentIndex
         });

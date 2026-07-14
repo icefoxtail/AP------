@@ -81,8 +81,112 @@ assert.match(html, /Test Student/);
 assert.match(html, /Class A/);
 assert.match(html, /grade/);
 assert.match(html, /Needs algebra follow-up before finals\./);
-assert.match(html, /Call parent this week\./);
+assert.doesNotMatch(html, /Call parent this week\.|후속 없음|다음 조치/, 'recent consultation rows should not emphasize follow-up actions');
 assert.match(html, /openAdminStudentConsultationHistory/);
+
+function consultationTestDateDaysAgo(days) {
+  const value = new Date();
+  value.setDate(value.getDate() - days);
+  return value.toLocaleDateString('sv-SE');
+}
+
+context.state.db.consultations = [
+  { id: 'recent-day-14', student_id: 's-test', date: consultationTestDateDaysAgo(14), content: 'day 14' },
+  { id: 'recent-day-15', student_id: 's-test', date: consultationTestDateDaysAgo(15), content: 'day 15' }
+];
+assert.deepStrictEqual(
+  Array.from(context.adminGetRecentConsultationRows(14), row => row.id),
+  ['recent-day-14'],
+  'recent consultation helper should include day 14 and exclude day 15'
+);
+
+const consultationCenterRows = Array.from({ length: 55 }, (_, index) => ({
+  id: `c-center-${String(index).padStart(2, '0')}`,
+  student_id: 's-test',
+  date: index === 0 ? today : (index === 54 ? '2019-01-02' : `2026-01-${String((index % 28) + 1).padStart(2, '0')}`),
+  type: index % 2 === 0 ? '학습' : '진로',
+  content: index === 54 ? 'Very old consultation remains in the full history.' : `Consultation center row ${index}`,
+  next_action: index === 0 ? 'FOLLOWUP_ONLY_SECRET' : '',
+  created_at: `2026-01-${String((index % 28) + 1).padStart(2, '0')} 09:00:00`
+}));
+context.state.db.consultations = consultationCenterRows;
+context.openAdminConsultationCenter();
+
+assert.strictEqual(
+  context.adminConsultationCenterFilteredRows().length,
+  55,
+  'full consultation center should use the entire loaded consultation history by default'
+);
+assert(
+  context.adminConsultationCenterFilteredRows().some(row => row.content.includes('Very old consultation')),
+  'full consultation center should retain consultations older than 14 days'
+);
+
+let consultationCenterHtml = context.renderAdminConsultationCenterBody();
+assert.strictEqual(
+  (consultationCenterHtml.match(/<article class="ap-admin-consultation-center__item/g) || []).length,
+  50,
+  'consultation center should render the first 50 rows initially'
+);
+assert.match(consultationCenterHtml, /50건 더 보기/);
+assert.match(consultationCenterHtml, /전체 기간/);
+assert.match(consultationCenterHtml, /전체 유형/);
+
+context.handleAdminConsultationCenterShowMore();
+consultationCenterHtml = context.renderAdminConsultationCenterBody();
+assert.strictEqual(
+  (consultationCenterHtml.match(/<article class="ap-admin-consultation-center__item/g) || []).length,
+  55,
+  'show more should make the remaining consultation rows accessible'
+);
+assert.doesNotMatch(consultationCenterHtml, /50건 더 보기/);
+
+context.state.ui.adminConsultationCenter.keyword = 'FOLLOWUP_ONLY_SECRET';
+assert.strictEqual(
+  context.adminConsultationCenterFilteredRows().length,
+  0,
+  'follow-up action should not be part of consultation center search'
+);
+context.state.ui.adminConsultationCenter.keyword = 'Very old consultation';
+assert.strictEqual(context.adminConsultationCenterFilteredRows().length, 1, 'consultation content should remain searchable');
+context.state.ui.adminConsultationCenter.keyword = '';
+context.state.ui.adminConsultationCenter.type = '진로';
+assert.strictEqual(context.adminConsultationCenterFilteredRows().length, 27, 'consultation type filter should narrow the full history');
+context.state.ui.adminConsultationCenter.type = 'all';
+context.state.ui.adminConsultationCenter.period = '30';
+assert.strictEqual(context.adminConsultationCenterFilteredRows().length, 1, 'recent period filter should exclude older consultation rows');
+context.state.ui.adminConsultationCenter.period = 'all';
+
+context.state.ui.adminConsultationCenter.expandedId = 'c-center-00';
+consultationCenterHtml = context.renderAdminConsultationCenterBody();
+assert.match(consultationCenterHtml, /후속 조치/);
+assert.match(consultationCenterHtml, /FOLLOWUP_ONLY_SECRET/);
+assert.match(consultationCenterHtml, /학생 상세 보기/);
+context.state.ui.adminConsultationCenter.expandedId = '';
+context.handleAdminConsultationCenterRowClick('c-center-00', 'admin-consultation-center-row-0');
+assert.strictEqual(context.state.ui.adminConsultationCenter.expandedId, 'c-center-00', 'row click should expand a consultation');
+context.handleAdminConsultationCenterRowClick('c-center-00', 'admin-consultation-center-row-0');
+assert.strictEqual(context.state.ui.adminConsultationCenter.expandedId, '', 'clicking an expanded consultation should collapse it');
+
+context.state.db.consultations = [
+  { id: 'period-today', student_id: 's-test', date: consultationTestDateDaysAgo(0), type: '학습', content: 'today' },
+  { id: 'period-day-30', student_id: 's-test', date: consultationTestDateDaysAgo(30), type: '학습', content: 'day 30' },
+  { id: 'period-day-31', student_id: 's-test', date: consultationTestDateDaysAgo(31), type: '학습', content: 'day 31' },
+  { id: 'period-future', student_id: 's-test', date: consultationTestDateDaysAgo(-1), type: '학습', content: 'future' },
+  { id: 'period-invalid', student_id: 's-test', date: 'not-a-date', type: '학습', content: 'invalid' }
+];
+context.state.ui.adminConsultationCenter.period = '30';
+assert.deepStrictEqual(
+  Array.from(context.adminConsultationCenterFilteredRows(), row => row.id).sort(),
+  ['period-day-30', 'period-today'],
+  '30-day filter should include its boundary and exclude day 31, future, and invalid dates'
+);
+context.state.ui.adminConsultationCenter.period = 'all';
+
+const consultationCenterCss = fs.readFileSync(path.join(root, 'apmath', 'css', 'dashboard-foundation.css'), 'utf8');
+assert.match(consultationCenterCss, /#modal-content:has\(\.ap-admin-consultation-center\)/, 'consultation center should get a scoped wide modal');
+assert.match(consultationCenterCss, /#admin-consultation-center-body/, 'consultation center wrapper should inherit the modal body height for internal scrolling');
+assert.match(consultationCenterCss, /@media \(max-width: 700px\)/, 'consultation center should define a mobile layout');
 
 const recentStudents = Array.from({ length: 12 }, (_, index) => ({
   id: `recent-${index}`,

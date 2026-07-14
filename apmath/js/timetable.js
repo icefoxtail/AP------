@@ -1872,7 +1872,12 @@ function getTimetableClassSlotRows(classId) {
         var db = _getAllDb();
         var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
         var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
-        rows = _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
+        // 월별 이력 화면은 저장 당시의 슬롯만 사용해야 한다. 현재 운영 슬롯을 먼저 읽으면
+        // 과거 반의 교시/요일이 현재 시간표와 섞여 보관 화면이 달라질 수 있다.
+        var slotSource = isTimetableMonthArchiveMode()
+            ? _ttFirstNonEmptyArray(db.class_time_slots, mainDb.class_time_slots, allDb.class_time_slots)
+            : _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots);
+        rows = slotSource
             .filter(function(slot) { return String(slot.class_id) === String(classId); })
             .map(function(slot) {
                 return {
@@ -1881,6 +1886,8 @@ function getTimetableClassSlotRows(classId) {
                     day_of_week: normalizeTimetableSlotDay(slot.day_of_week || slot.day || ''),
                     start_time: normalizeTimetableTime(slot.start_time || ''),
                     end_time: normalizeTimetableTime(slot.end_time || ''),
+                    period_key: slot.period_key || '',
+                    period_label: slot.period_label || '',
                     room_name: slot.room_name || null,
                     memo: slot.memo || null
                 };
@@ -1916,9 +1923,18 @@ function normalizeTimetableTime(value) {
 function getTimetableMiddlePeriodFromSlot(slot) {
     var start = normalizeTimetableTime(slot && slot.start_time);
     var end = normalizeTimetableTime(slot && slot.end_time);
+    var archiveMode = isTimetableMonthArchiveMode();
+    var label = String(slot && (slot.period_key || slot.period_label) || '').trim();
+    if (archiveMode && label.indexOf('1교시') !== -1) return '1교시';
+    if (archiveMode && label.indexOf('2교시') !== -1) return '2교시';
+    if (archiveMode && label.indexOf('3교시') !== -1) return '3교시';
     if ((start === '16:50' || start === '04:50') && (end === '18:20' || end === '06:20')) return '1교시';
     if ((start === '18:30' || start === '06:30') && (end === '20:00' || end === '08:00')) return '2교시';
     if ((start === '20:00' || start === '08:00') && (end === '21:30' || end === '09:30')) return '3교시';
+    // 월별 이력에서는 선생님별 실제 시간이 달라도 같은 1·2·3교시 행에 표시한다.
+    if (archiveMode && start === '16:40' && end === '18:10') return '1교시';
+    if (archiveMode && start === '18:20' && end === '19:50') return '2교시';
+    if (archiveMode && start === '19:50' && end === '21:20') return '3교시';
     if (start === '16:50' || start === '04:50') return '1교시';
     if (start === '18:30' || start === '06:30') return '2교시';
     if (start === '20:00' || start === '08:00') return '3교시';
@@ -2922,15 +2938,16 @@ function getTimetableStudentWithdrawalDate(student, mapping) {
         student.status_changed_at ||
         student.student_status_changed_at ||
         student.end_date ||
-        student.updated_at ||
-        student.updatedAt ||
         ''
     );
     if (directDate) return directDate;
     var historyRows = Array.isArray(mapping && mapping.statusHistoryRows)
         ? mapping.statusHistoryRows
         : getTimetableStudentStatusHistoryRows(student);
-    return _ttNormalizeDateString((historyRows[0] && historyRows[0].changed_at) || '');
+    var historyDate = _ttNormalizeDateString((historyRows[0] && historyRows[0].changed_at) || '');
+    if (historyDate) return historyDate;
+    // 퇴원 전환 이력이 없는 학생만 updated_at 근사치 사용 (이후 정보 수정 시 날짜가 밀리므로 최후 수단)
+    return _ttNormalizeDateString(student.updated_at || student.updatedAt || '');
 }
 
 function isTimetableWithdrawnStudent(student, mapping) {
@@ -3634,6 +3651,7 @@ function apBuildArchiveVirtualDb(detail) {
             day_of_week: cell.day_label || '',
             start_time: cell.start_time || '',
             end_time: cell.end_time || '',
+            period_label: cell.period_label || '',
             room_name: cell.room || '',
             memo: cell.memo || cell.period_label || ''
         });

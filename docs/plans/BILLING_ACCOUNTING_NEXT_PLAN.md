@@ -1,5 +1,7 @@
 # BILLING_ACCOUNTING_NEXT_PLAN
 
+> 2026-07-14 이후 실행 기준은 `docs/plans/APMATH_BILLING_COMPLETION_LOOP_DIRECTIVE_20260714.md`이다. 이 문서는 초기 개요로만 보존한다.
+
 ## 1. 현재 상태
 
 DB와 route에는 billing/accounting foundation이 존재한다. `management.js`에 foundation modal 계열 함수가 확인된다.
@@ -34,4 +36,3 @@ DB와 route에는 billing/accounting foundation이 존재한다. `management.js`
 ## 6. 작업 후 업데이트 문서
 
 `BILLING_ACCOUNTING_DOMAIN.md`, `CURRENT_DB_MAP.md`, `CURRENT_HIDDEN_FOUNDATION_MAP.md`, `CURRENT_API_FLOW_MAP.md`
-

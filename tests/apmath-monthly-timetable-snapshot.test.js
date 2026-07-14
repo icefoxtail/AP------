@@ -25,7 +25,9 @@ const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
   assert(route.includes('shouldIncludeSnapshotStudent'), 'AP monthly snapshot must filter students with the timetable visibility rule');
   assert(route.includes("'제적'"), 'AP monthly snapshot must treat legacy Jejeok as withdrawn status');
   assert(route.includes('student.updated_at'), 'AP monthly snapshot must use updated_at as legacy withdrawal date fallback');
-  assert(route.includes('discharged_at: withdrawalDate(student)'), 'AP monthly snapshot must persist the withdrawal date used for visibility');
+  assert(route.includes('student_status_history'), 'AP monthly snapshot must read status history for the real withdrawal date');
+  assert(route.includes('withdrawalDateByStudent'), 'AP monthly snapshot must prefer the status-history withdrawal date over updated_at');
+  assert(route.includes('discharged_at: withdrawalDate(student, withdrawalDateByStudent'), 'AP monthly snapshot must persist the withdrawal date used for visibility');
 
   ['getTimetableMonths', 'getTimetableMonth', 'getTimetableMonthChanges'].forEach(name => {
     assert(core.includes(name), `AP core api missing ${name}`);
