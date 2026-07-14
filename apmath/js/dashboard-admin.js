@@ -249,7 +249,7 @@ async function purgeHiddenStudent(sid) {
     toast(r?.message || r?.error || '완전 삭제에 실패했습니다.', 'error');
 }
 
-function openAdminStudentList(type) {
+async function openAdminStudentList(type) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
     let list = [], title = "";
@@ -265,9 +265,12 @@ function openAdminStudentList(type) {
             return (todayTime - createdTime) / (1000*3600*24) <= 60;
         });
         title = "최근 등록 원생"; 
-    } else if (type === 'discharged') { 
-        list = state.db.students.filter(s => isWithdrawnStudentStatus(s.status));
-        title = "퇴원생 목록"; 
+    } else if (type === 'discharged') {
+        await adminEnsureStatusHistoryLoaded();
+        list = state.db.students.filter(s => isWithdrawnStudentStatus(s.status))
+            .map(s => ({ ...s, statusChangedDate: adminGetStatusChangeDate(s.id, '퇴원') }))
+            .sort((a, b) => String(b.statusChangedDate || '').localeCompare(String(a.statusChangedDate || '')));
+        title = "퇴원생 목록";
     } else if (type === 'hidden') {
         list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '숨김');
         title = "숨김 학생";
@@ -301,7 +304,7 @@ function openAdminStudentList(type) {
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
                     <div style="font-weight:500; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:400; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
-                    <div style="font-size:12px; color:var(--text); font-weight:500; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
+                    <div style="font-size:12px; color:var(--text); font-weight:500; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.statusChangedDate ? `| 퇴원: ${s.statusChangedDate}` : (s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : '')}</span></div>
                     ${riskDetails}
                 </div>
                 ${actionButtons}
@@ -437,6 +440,39 @@ function getAdminClassGradeRank(cls) {
 
 function adminNormalizeStatus(value) {
     return normalizeStudentStatus(value);
+}
+
+let adminStatusHistoryInFlight = null;
+
+async function adminEnsureStatusHistoryLoaded(force = false) {
+    if (!state.ui) state.ui = {};
+    const loadedAt = state.ui.adminStatusHistoryLoadedAt || 0;
+    if (!force && loadedAt && (Date.now() - loadedAt) < 5 * 60 * 1000) return;
+    if (adminStatusHistoryInFlight) return adminStatusHistoryInFlight;
+    adminStatusHistoryInFlight = api.get('foundation-logs/status-history?limit=1000')
+        .then(res => {
+            const rows = Array.isArray(res?.data) ? res.data : (Array.isArray(res?.student_status_history) ? res.student_status_history : null);
+            if (rows) {
+                state.db.student_status_history = rows;
+                state.ui.adminStatusHistoryLoadedAt = Date.now();
+            }
+        })
+        .catch(() => {})
+        .finally(() => { adminStatusHistoryInFlight = null; });
+    return adminStatusHistoryInFlight;
+}
+
+function adminGetStatusChangeDate(studentId, statusName) {
+    const sid = String(studentId || '');
+    if (!sid) return '';
+    let latest = '';
+    (state.db.student_status_history || []).forEach(row => {
+        if (String(row?.student_id || '') !== sid) return;
+        if (normalizeStudentStatus(row?.new_status) !== statusName) return;
+        const at = String(row?.changed_at || '');
+        if (at > latest) latest = at;
+    });
+    return latest ? latest.slice(0, 10) : '';
 }
 
 function adminGetStudentClassMap(studentId) {
@@ -1084,7 +1120,6 @@ function renderAdminRecentConsultationPanel() {
         const student = adminGetStudentById(sid);
         const cls = student ? adminGetStudentClass(student.id) : null;
         const type = String(row?.type || '상담').trim() || '상담';
-        const nextAction = String(row?.next_action || row?.nextAction || '').trim();
         const preview = adminRecentConsultationPreviewText(row);
         const meta = [adminGetConsultationDate(row), cls && cls.name].filter(Boolean).join(' · ');
         return `
@@ -1096,9 +1131,8 @@ function renderAdminRecentConsultationPanel() {
                     </span>
                     <span style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.45; overflow:hidden; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical;">${apEscapeHtml(preview)}</span>
                 </span>
-                <span style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:5px; max-width:210px;">
+                <span style="flex-shrink:0; display:flex; align-items:center; max-width:210px;">
                     <span style="font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap;">${apEscapeHtml(meta)}</span>
-                    ${nextAction ? `<span style="max-width:100%; font-size:11px; font-weight:500; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">다음 조치 · ${apEscapeHtml(nextAction)}</span>` : '<span style="font-size:11px; font-weight:500; color:var(--secondary);">후속 없음</span>'}
                 </span>
             </button>
         `;
@@ -1119,21 +1153,97 @@ function renderAdminRecentConsultationPanel() {
 
 function openAdminConsultationCenter() {
     if (!state.ui) state.ui = {};
-    state.ui.adminConsultationSearchKeyword = '';
-    showModal('상담 전체 보기', `<div id="admin-consultation-center-body">${renderAdminConsultationCenterBody('')}</div>`);
+    state.ui.adminConsultationCenter = {
+        keyword: '',
+        period: 'all',
+        type: 'all',
+        visibleCount: 50,
+        expandedId: ''
+    };
+    showModal('상담 전체 보기', `<div id="admin-consultation-center-body">${renderAdminConsultationCenterBody()}</div>`);
+}
+
+function adminEnsureConsultationCenterState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.adminConsultationCenter || typeof state.ui.adminConsultationCenter !== 'object') {
+        state.ui.adminConsultationCenter = {
+            keyword: '',
+            period: 'all',
+            type: 'all',
+            visibleCount: 50,
+            expandedId: ''
+        };
+    }
+    return state.ui.adminConsultationCenter;
+}
+
+function adminRefreshConsultationCenter(focusTargetId = '') {
+    const body = document.getElementById('admin-consultation-center-body');
+    if (!body) return;
+    body.innerHTML = renderAdminConsultationCenterBody();
+    if (focusTargetId) {
+        const target = document.getElementById(focusTargetId) || document.getElementById('admin-consultation-center-summary');
+        if (target && typeof target.focus === 'function') {
+            target.focus();
+            if (focusTargetId === 'admin-consultation-center-search') {
+                const end = String(target.value || '').length;
+                if (typeof target.setSelectionRange === 'function') target.setSelectionRange(end, end);
+            }
+        }
+    }
 }
 
 function handleAdminConsultationSearchInput(value) {
-    if (!state.ui) state.ui = {};
-    state.ui.adminConsultationSearchKeyword = String(value || '').trim();
-    const body = document.getElementById('admin-consultation-center-body');
-    if (body) body.innerHTML = renderAdminConsultationCenterBody(state.ui.adminConsultationSearchKeyword);
+    const center = adminEnsureConsultationCenterState();
+    center.keyword = String(value || '').trim();
+    center.visibleCount = 50;
+    center.expandedId = '';
+    adminRefreshConsultationCenter('admin-consultation-center-search');
 }
 
-function renderAdminConsultationCenterBody(keyword) {
-    const key = String(keyword || '').trim();
-    const baseRows = key ? adminGetConsultationRows() : adminGetRecentConsultationRows(14);
-    const filtered = baseRows.filter(row => {
+function handleAdminConsultationPeriodChange(value) {
+    const center = adminEnsureConsultationCenterState();
+    center.period = ['all', '30', '90'].includes(String(value)) ? String(value) : 'all';
+    center.visibleCount = 50;
+    center.expandedId = '';
+    adminRefreshConsultationCenter('admin-consultation-center-period');
+}
+
+function handleAdminConsultationTypeChange(value) {
+    const center = adminEnsureConsultationCenterState();
+    center.type = String(value || 'all');
+    center.visibleCount = 50;
+    center.expandedId = '';
+    adminRefreshConsultationCenter('admin-consultation-center-type');
+}
+
+function handleAdminConsultationCenterShowMore() {
+    const center = adminEnsureConsultationCenterState();
+    center.visibleCount = Number(center.visibleCount || 50) + 50;
+    adminRefreshConsultationCenter('admin-consultation-center-more');
+}
+
+function handleAdminConsultationCenterRowClick(consultationId, focusTargetId) {
+    const center = adminEnsureConsultationCenterState();
+    const cid = String(consultationId || '');
+    center.expandedId = center.expandedId === cid ? '' : cid;
+    adminRefreshConsultationCenter(String(focusTargetId || ''));
+}
+
+function adminConsultationCenterFilteredRows() {
+    const center = adminEnsureConsultationCenterState();
+    const key = String(center.keyword || '').trim();
+    const periodDays = Number(center.period || 0);
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    return adminGetConsultationRows().filter(row => {
+        if (periodDays > 0) {
+            const rowTime = apParseLocalDateTime(adminGetConsultationDate(row));
+            if (rowTime === null) return false;
+            const diff = (todayTime - rowTime) / (1000 * 60 * 60 * 24);
+            if (diff < 0 || diff > periodDays) return false;
+        }
+        if (center.type !== 'all' && String(row?.type || '상담').trim() !== center.type) return false;
         if (!key) return true;
         const student = adminGetStudentById(row.student_id);
         const cls = student ? adminGetStudentClass(student.id) : null;
@@ -1143,38 +1253,90 @@ function renderAdminConsultationCenterBody(keyword) {
             student && student.grade,
             cls && cls.name,
             row.type,
-            row.content,
-            row.next_action
+            row.content
         ], key);
-    }).slice(0, 30);
-    const rows = filtered.map(row => {
+    });
+}
+
+function adminConsultationCenterTypeOptions(selectedType) {
+    const types = Array.from(new Set(adminGetConsultationRows()
+        .map(row => String(row?.type || '상담').trim() || '상담')))
+        .sort((a, b) => a.localeCompare(b, 'ko'));
+    return ['<option value="all">전체 유형</option>'].concat(types.map(type => (
+        `<option value="${apEscapeHtml(type)}" ${selectedType === type ? 'selected' : ''}>${apEscapeHtml(type)}</option>`
+    ))).join('');
+}
+
+function renderAdminConsultationCenterBody() {
+    const center = adminEnsureConsultationCenterState();
+    const filtered = adminConsultationCenterFilteredRows();
+    const visibleCount = Math.max(50, Number(center.visibleCount || 50));
+    const visibleRows = filtered.slice(0, visibleCount);
+    const rows = visibleRows.map((row, index) => {
         const sid = String(row.student_id || '').trim();
         const student = adminGetStudentById(sid);
         const cls = student ? adminGetStudentClass(student.id) : null;
-        const meta = [adminGetConsultationDate(row), cls && cls.name, row.type].filter(Boolean).join(' · ');
+        const cid = String(row.id || '');
+        const expanded = center.expandedId === cid;
+        const type = String(row?.type || '상담').trim() || '상담';
+        const content = String(row?.content || '').trim();
+        const nextAction = String(row?.next_action || row?.nextAction || '').trim();
+        const safeCid = cid.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/[\r\n]/g, ' ');
+        const rowId = `admin-consultation-center-row-${index}`;
+        const detailId = `admin-consultation-center-detail-${index}`;
         return `
-            <button class="btn" style="min-height:52px; padding:10px 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
-                <span style="min-width:0; text-align:left;">
-                    <span style="display:block; font-size:13px; font-weight:500; color:var(--text); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
-                    <span style="display:block; font-size:11px; font-weight:500; color:var(--secondary); margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(meta)}</span>
-                </span>
-                <span style="flex-shrink:0; font-size:11px; font-weight:500; color:var(--text); background:var(--surface-2); border:1px solid var(--border); padding:4px 8px; border-radius:999px;">보기</span>
-            </button>
+            <article class="ap-admin-consultation-center__item ${expanded ? 'is-expanded' : ''}">
+                <button id="${rowId}" type="button" class="ap-admin-consultation-center__row" aria-expanded="${expanded ? 'true' : 'false'}" aria-controls="${detailId}" onclick="handleAdminConsultationCenterRowClick('${safeCid}', '${rowId}')">
+                    <span class="ap-admin-consultation-center__cell ap-admin-consultation-center__date" data-label="날짜">${apEscapeHtml(adminGetConsultationDate(row) || '-')}</span>
+                    <span class="ap-admin-consultation-center__cell ap-admin-consultation-center__student" data-label="학생">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
+                    <span class="ap-admin-consultation-center__cell ap-admin-consultation-center__class" data-label="반">${apEscapeHtml((cls && cls.name) || '-')}</span>
+                    <span class="ap-admin-consultation-center__cell ap-admin-consultation-center__type" data-label="유형"><span>${apEscapeHtml(type)}</span></span>
+                    <span class="ap-admin-consultation-center__cell ap-admin-consultation-center__preview" data-label="상담 내용">${apEscapeHtml(adminRecentConsultationPreviewText(row))}</span>
+                    <span class="ap-admin-consultation-center__chevron" aria-hidden="true">⌄</span>
+                </button>
+                ${expanded ? `
+                    <div id="${detailId}" class="ap-admin-consultation-center__detail">
+                        <div class="ap-admin-consultation-center__detail-content">${apEscapeHtml(content || '상담 내용 없음')}</div>
+                        ${nextAction ? `<div class="ap-admin-consultation-center__next-action"><strong>후속 조치</strong><span>${apEscapeHtml(nextAction)}</span></div>` : ''}
+                        ${student ? `<button type="button" class="btn ap-admin-consultation-center__student-button" onclick="adminOpenStudentEditOrDetail('${apEscapeHtml(sid)}')">학생 상세 보기</button>` : ''}
+                    </div>
+                ` : ''}
+            </article>
         `;
     }).join('');
+    const hasMore = visibleRows.length < filtered.length;
     return `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <input type="search" autocomplete="off" value="${apEscapeHtml(key)}" placeholder="학생 이름 검색" oninput="handleAdminConsultationSearchInput(this.value)" style="width:100%; height:42px; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); padding:0 13px; font-size:13px; font-weight:500; box-sizing:border-box;">
-            <div style="font-size:12px; font-weight:400; color:var(--secondary); padding:0 2px;">${key ? '검색 결과' : '최근 2주'} ${filtered.length}건</div>
-            <div style="max-height:56vh; overflow-y:auto; border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
-                ${rows || `<div style="height:72px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">상담 기록이 없습니다.</div>`}
+        <div class="ap-admin-consultation-center">
+            <div class="ap-admin-consultation-center__toolbar">
+                <label class="ap-admin-consultation-center__search">
+                    <input id="admin-consultation-center-search" type="search" autocomplete="off" aria-label="상담 검색" value="${apEscapeHtml(center.keyword || '')}" placeholder="학생, 학교, 반, 상담 내용 검색" oninput="handleAdminConsultationSearchInput(this.value)">
+                </label>
+                <select id="admin-consultation-center-period" aria-label="상담 기간" onchange="handleAdminConsultationPeriodChange(this.value)">
+                    <option value="all" ${center.period === 'all' ? 'selected' : ''}>전체 기간</option>
+                    <option value="30" ${center.period === '30' ? 'selected' : ''}>최근 1개월</option>
+                    <option value="90" ${center.period === '90' ? 'selected' : ''}>최근 3개월</option>
+                </select>
+                <select id="admin-consultation-center-type" aria-label="상담 유형" onchange="handleAdminConsultationTypeChange(this.value)">
+                    ${adminConsultationCenterTypeOptions(center.type)}
+                </select>
             </div>
+            <div id="admin-consultation-center-summary" class="ap-admin-consultation-center__summary" tabindex="-1">전체 상담 ${filtered.length}건 · ${visibleRows.length}건 표시</div>
+            <div class="ap-admin-consultation-center__list">
+                <div class="ap-admin-consultation-center__head" aria-hidden="true">
+                    <span>날짜</span><span>학생</span><span>반</span><span>유형</span><span>상담 내용</span><span></span>
+                </div>
+                ${rows || `<div class="ap-admin-consultation-center__empty">조건에 맞는 상담 기록이 없습니다.</div>`}
+            </div>
+            ${hasMore ? `<button id="admin-consultation-center-more" type="button" class="btn ap-admin-consultation-center__more" onclick="handleAdminConsultationCenterShowMore()">50건 더 보기</button>` : ''}
         </div>
     `;
 }
 
-function openAdminLeaveStudentList() {
-    const list = (state.db.students || []).filter(s => adminNormalizeStatus(s.status) === '휴원');
+async function openAdminLeaveStudentList() {
+    await adminEnsureStatusHistoryLoaded();
+    const list = (state.db.students || []).filter(s => adminNormalizeStatus(s.status) === '휴원')
+        .map(s => ({ ...s, statusChangedDate: adminGetStatusChangeDate(s.id, '휴원') }))
+        .sort((a, b) => String(b.statusChangedDate || '').localeCompare(String(a.statusChangedDate || '')));
     renderAdminSimpleStudentList('휴원생 목록', list, false, true);
 }
 
@@ -1231,7 +1393,7 @@ function renderAdminSimpleStudentList(title, list, editable = false, showGradeSu
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--surface);">
                 <div style="min-width:0; flex:1;">
                     <div style="font-weight:500; font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(s.name || '')} <span style="font-size:12px; color:var(--secondary); font-weight:500; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
-                    <div style="font-size:12px; color:var(--text); font-weight:500; margin-top:4px;">${apEscapeHtml(classText)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(status)}</span></div>
+                    <div style="font-size:12px; color:var(--text); font-weight:500; margin-top:4px;">${apEscapeHtml(classText)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(status)}${s.statusChangedDate ? `: ${s.statusChangedDate}` : ''}</span></div>
                 </div>
                 ${action}
             </div>

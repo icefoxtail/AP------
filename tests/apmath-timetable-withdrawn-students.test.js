@@ -57,9 +57,10 @@ const context = {
       students: [
         { id: 's_active', name: '강재원', status: '재원' },
         { id: 's_paused', name: '김휴원', status: '휴원' },
-        { id: 's_recent', name: '박최근', status: '퇴원' },
-        { id: 's_boundary', name: '오경계', status: 'inactive' },
-        { id: 's_old', name: '이오래', status: '퇴원' },
+        // updated_at은 이후 정보 수정으로 언제든 갱신되므로, 이력이 있으면 이력이 이겨야 한다.
+        { id: 's_recent', name: '박최근', status: '퇴원', updated_at: '2026-08-01 10:00:00' },
+        { id: 's_boundary', name: '오경계', status: 'inactive', updated_at: '2026-08-01 10:00:00' },
+        { id: 's_old', name: '이오래', status: '퇴원', updated_at: '2026-07-01 10:00:00' },
         { id: 's_missing', name: '최미상', status: 'withdrawn' },
         { id: 's_jejeok_recent', name: '제적최근', status: '제적', updated_at: '2026-06-02 10:00:00' },
         { id: 's_jejeok_old', name: '제적과거', status: '제적', updated_at: '2026-05-31 10:00:00' },

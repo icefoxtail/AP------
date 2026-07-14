@@ -1,7 +1,21 @@
 {
 	"name": "ap-math-os-v2612",
 	"main": "index.js",
-	"compatibility_date": "2026-04-18",
+	"compatibility_date": "2026-07-11",
+	"compatibility_flags": ["nodejs_compat"],
+	"vars": {
+		"CLOUDFLARE_ACCOUNT_ID": "0dbb64db1ea0968cbaa4f5a479b665e7",
+		"D1_DATABASE_ID": "146096e8-01f7-49c4-8add-9cb5a5258cde",
+		"D1_DATABASE_NAME": "ap-math-os"
+	},
+	"workflows": [
+		{
+			"binding": "D1_BACKUP_WORKFLOW",
+			"name": "ap-math-os-d1-backup",
+			"class_name": "D1BackupWorkflow",
+			"schedules": ["0 18 * * *"]
+		}
+	],
 	"triggers": {
 		"crons": [
 			"0 0 28-31 * *"
@@ -15,6 +29,10 @@
 		}
 	],
 	"r2_buckets": [
+		{
+			"bucket_name": "apmath-d1-backups",
+			"binding": "D1_BACKUP_BUCKET"
+		},
 		{
 			"bucket_name": "apmath-homework-photo",
 			"binding": "HOMEWORK_PHOTO_BUCKET",

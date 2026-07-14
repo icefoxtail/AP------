@@ -1,5 +1,12 @@
 import { jsonResponse, readJsonBody } from '../helpers/response.js';
 import { isAdminUser, makeId, safeAll } from '../helpers/foundation-db.js';
+import {
+  computeRefundableAmount,
+  findImmutableFieldViolation,
+  isDirectPaymentTransactionType,
+  SETTLEMENT_CREDIT_TYPES,
+  toSettlementAmount
+} from '../helpers/billing-settlement.js';
 
 const ALLOWED_BRANCHES = new Set(['all', 'apmath', 'cmath', 'eie']);
 const PAYMENT_METHOD_KEYS = new Set(['card', 'cash', 'bank_transfer', 'kakaopay', 'local_voucher', 'mixed', 'other']);
@@ -82,6 +89,7 @@ function normalizeFoundationSub(value) {
   if (raw === 'refund-records') return 'refunds';
   if (raw === 'carryover-records') return 'carryovers';
   if (raw === 'accounting-summary') return 'summary';
+  if (raw === 'billing-audit-logs') return 'audit-logs';
   if (raw === 'accounting-daily-summaries') return 'daily-summaries';
   if (raw === 'accounting-monthly-summaries') return 'monthly-summaries';
   return raw;
@@ -208,6 +216,113 @@ async function insertRow(env, table, row) {
     .bind(...keys.map(k => row[k]))
     .run();
   return row;
+}
+
+function insertStatement(env, table, row) {
+  const keys = Object.keys(row);
+  assertSqlIdentifiers([table, ...keys]);
+  return env.DB.prepare(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${keys.map(() => '?').join(', ')})`)
+    .bind(...keys.map(k => row[k]));
+}
+
+function conditionalInsertStatement(env, table, row, conditionSql, conditionBindings = []) {
+  const keys = Object.keys(row);
+  assertSqlIdentifiers([table, ...keys]);
+  return env.DB.prepare(`
+    INSERT INTO ${table} (${keys.join(', ')})
+    SELECT ${keys.map(() => '?').join(', ')}
+    WHERE ${conditionSql}
+  `).bind(...keys.map(k => row[k]), ...conditionBindings);
+}
+
+function auditLogStatement(env, teacher, { entity_type, entity_id, action, before = null, after = null, reason = null }) {
+  return insertStatement(env, 'billing_audit_logs', {
+    id: makeId('bal'),
+    entity_type,
+    entity_id,
+    action,
+    before_json: before === null ? null : JSON.stringify(before),
+    after_json: after === null ? null : JSON.stringify(after),
+    reason: reason || null,
+    actor_id: getActorId(teacher),
+    created_at: new Date().toISOString()
+  });
+}
+
+function conditionalAuditLogStatement(env, teacher, entry, sourceTable, sourceId) {
+  const row = {
+    id: makeId('bal'),
+    entity_type: entry.entity_type,
+    entity_id: entry.entity_id,
+    action: entry.action,
+    before_json: entry.before === null || entry.before === undefined ? null : JSON.stringify(entry.before),
+    after_json: entry.after === null || entry.after === undefined ? null : JSON.stringify(entry.after),
+    reason: entry.reason || null,
+    actor_id: getActorId(teacher),
+    created_at: new Date().toISOString()
+  };
+  assertSqlIdentifiers([sourceTable]);
+  return conditionalInsertStatement(env, 'billing_audit_logs', row, `EXISTS (SELECT 1 FROM ${sourceTable} WHERE id = ?)`, [sourceId]);
+}
+
+async function writeAuditLog(env, teacher, entry) {
+  await env.DB.batch([auditLogStatement(env, teacher, entry)]);
+}
+
+export function buildPaymentSettlementUpdateQuery(paymentId, at = new Date().toISOString()) {
+  const creditMarkers = SETTLEMENT_CREDIT_TYPES.map(() => '?').join(', ');
+  const creditSum = `COALESCE((
+    SELECT SUM(pt.amount) FROM payment_transactions pt
+    WHERE pt.payment_id = payments.id AND pt.status = 'completed'
+      AND pt.transaction_type IN (${creditMarkers})
+  ), 0)`;
+  const refundSum = `COALESCE((
+    SELECT SUM(rr.refund_amount) FROM refund_records rr
+    WHERE rr.payment_id = payments.id AND rr.status = 'completed'
+  ), 0)`;
+  const effective = `MAX((${creditSum}) - (${refundSum}), 0)`;
+  const lastCreditDate = `(
+    SELECT MAX(pt.transaction_date) FROM payment_transactions pt
+    WHERE pt.payment_id = payments.id AND pt.status = 'completed'
+      AND pt.transaction_type IN (${creditMarkers})
+  )`;
+  const sql = `
+    UPDATE payments
+    SET paid_amount = MIN(total_amount, ${effective}),
+        status = CASE
+          WHEN total_amount > 0 AND ${effective} >= total_amount THEN 'paid'
+          WHEN ${effective} > 0 THEN 'partial'
+          ELSE 'unpaid'
+        END,
+        paid_date = CASE
+          WHEN total_amount > 0 AND ${effective} >= total_amount THEN ${lastCreditDate}
+          ELSE NULL
+        END,
+        updated_at = ?
+    WHERE id = ?
+  `;
+  const bindings = [
+    ...SETTLEMENT_CREDIT_TYPES,
+    ...SETTLEMENT_CREDIT_TYPES,
+    ...SETTLEMENT_CREDIT_TYPES,
+    ...SETTLEMENT_CREDIT_TYPES,
+    ...SETTLEMENT_CREDIT_TYPES,
+    at,
+    paymentId
+  ];
+  return { sql, bindings };
+}
+
+function paymentSettlementUpdateStatement(env, paymentId, at = new Date().toISOString()) {
+  const query = buildPaymentSettlementUpdateQuery(paymentId, at);
+  return env.DB.prepare(query.sql).bind(...query.bindings);
+}
+
+// 자동 생성 장부 판정: 신규 자동 경로만 source_type을 기록하므로 이 값으로만 판정한다.
+// (기존 수기 행이 payment_transaction_id를 참조해도 수동 항목으로 유지)
+function isAutoCashbookEntry(entry) {
+  if (!entry) return false;
+  return ['payment_transaction', 'refund_record'].includes(String(entry.source_type || ''));
 }
 
 async function getBillingPreview(env, year, month) {
@@ -767,36 +882,171 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       if (!studentId || !methodKey || !amount || !transactionDate) {
         return jsonResponse({ success: false, error: 'student_id, method_key, amount and transaction_date required' }, 400);
       }
+      const idempotencyKey = validateRequiredText(data.idempotency_key) || validateRequiredText(data.clientRequestId) || null;
+      if (idempotencyKey) {
+        const existingTx = await findExistingRow(env, 'SELECT * FROM payment_transactions WHERE idempotency_key = ? LIMIT 1', [idempotencyKey]);
+        if (existingTx) {
+          return jsonResponse({ success: true, id: existingTx.id, transaction: existingTx, code: 'PAYMENT_DUPLICATE_IDEMPOTENCY_KEY' });
+        }
+      }
+      const requestedTransactionType = String(data.transaction_type || 'payment').trim().toLowerCase();
+      const requestedStatus = String(data.status || 'completed').trim().toLowerCase();
+      const transactionType = normalizeTransactionType(requestedTransactionType);
+      const status = normalizeTransactionStatus(requestedStatus);
+      // 정규화 함수의 기본값으로 잘못된 입력이 payment/completed로 우회되지 않게 원문도 검사한다.
+      if (!isDirectPaymentTransactionType(requestedTransactionType)) {
+        return jsonResponse({
+          success: false,
+          error: '일반 수납에는 납부 또는 부분 납부 유형만 사용할 수 있습니다.',
+          code: 'TRANSACTION_TYPE_USE_DEDICATED_FLOW'
+        }, 400);
+      }
+      if (requestedStatus !== 'completed' || status !== 'completed') {
+        return jsonResponse({
+          success: false,
+          error: '완료된 수납만 등록할 수 있습니다.',
+          code: 'PAYMENT_STATUS_COMPLETED_REQUIRED'
+        }, 400);
+      }
+      const paymentId = validateRequiredText(data.payment_id) || null;
+      // 청구 연결 수납은 남은 금액을 초과할 수 없다 (초과분은 이월로 처리).
+      if (paymentId && status === 'completed' && SETTLEMENT_CREDIT_TYPES.includes(transactionType)) {
+        const payment = await getRowById(env, 'payments', paymentId);
+        if (!payment) return jsonResponse({ success: false, error: 'payment not found', code: 'PAYMENT_NOT_FOUND' }, 404);
+        if (String(payment.student_id || '') !== studentId) {
+          return jsonResponse({ success: false, error: '청구와 수납 학생이 일치하지 않습니다.', code: 'PAYMENT_STUDENT_MISMATCH' }, 400);
+        }
+        const remaining = Math.max(toSettlementAmount(payment.total_amount) - toSettlementAmount(payment.paid_amount), 0);
+        if (amount > remaining) {
+          return jsonResponse({
+            success: false,
+            error: `청구 남은 금액(${remaining}원)보다 큰 금액은 수납할 수 없습니다. 초과분은 이월로 등록하세요.`,
+            code: 'PAYMENT_OVER_ALLOCATED',
+            remaining_amount: remaining
+          }, 400);
+        }
+      }
       const row = {
         id: data.id || makeId('ptx'),
-        payment_id: validateRequiredText(data.payment_id) || null,
+        payment_id: paymentId,
         student_id: studentId,
         branch: normalizeBranchForAccounting(data.branch, 'apmath'),
-        transaction_type: normalizeTransactionType(data.transaction_type),
+        transaction_type: transactionType,
         method_key: methodKey,
         amount,
         transaction_date: transactionDate,
-        status: normalizeTransactionStatus(data.status),
+        status,
+        idempotency_key: idempotencyKey,
         receipt_no: validateRequiredText(data.receipt_no) || null,
         external_provider: validateRequiredText(data.external_provider) || null,
         external_transaction_id: validateRequiredText(data.external_transaction_id) || null,
         note: validateRequiredText(data.note) || null,
         created_by: getActorId(teacher)
       };
-      return jsonResponse({ success: true, id: row.id, transaction: await insertRow(env, 'payment_transactions', row) });
+      // 수납 거래 + 장부 자동 기록 + 감사 로그를 한 배치(원자적)로 저장한다.
+      const linkedPaymentCondition = 'EXISTS (SELECT 1 FROM payments p WHERE p.id = ? AND p.student_id = ? AND COALESCE(p.paid_amount, 0) + ? <= p.total_amount)';
+      const statements = [paymentId
+        ? conditionalInsertStatement(env, 'payment_transactions', row, linkedPaymentCondition, [paymentId, studentId, amount])
+        : insertStatement(env, 'payment_transactions', row)];
+      if (status === 'completed') {
+        const cashbookRow = {
+          id: makeId('cbe'),
+          entry_date: transactionDate,
+          entry_type: 'income',
+          category: '수납',
+          branch: row.branch,
+          amount,
+          status: 'active',
+          is_active: 1,
+          source_type: 'payment_transaction',
+          payment_transaction_id: row.id,
+          student_id: studentId,
+          title: `수납 (${methodKey})`,
+          description: row.note,
+          method_key: methodKey,
+          created_by: getActorId(teacher)
+        };
+        statements.push(paymentId
+          ? conditionalInsertStatement(env, 'cashbook_entries', cashbookRow, 'EXISTS (SELECT 1 FROM payment_transactions WHERE id = ?)', [row.id])
+          : insertStatement(env, 'cashbook_entries', cashbookRow));
+      }
+      const createAudit = { entity_type: 'payment_transaction', entity_id: row.id, action: 'create', after: row };
+      statements.push(paymentId
+        ? conditionalAuditLogStatement(env, teacher, createAudit, 'payment_transactions', row.id)
+        : auditLogStatement(env, teacher, createAudit));
+      if (paymentId) statements.push(paymentSettlementUpdateStatement(env, paymentId));
+      let results;
+      try {
+        results = await env.DB.batch(statements);
+      } catch (error) {
+        if (idempotencyKey) {
+          const duplicate = await findExistingRow(env, 'SELECT * FROM payment_transactions WHERE idempotency_key = ? LIMIT 1', [idempotencyKey]);
+          if (duplicate) return jsonResponse({ success: true, id: duplicate.id, transaction: duplicate, code: 'PAYMENT_DUPLICATE_IDEMPOTENCY_KEY' });
+        }
+        throw error;
+      }
+      if (paymentId && Number(results?.[0]?.meta?.changes || 0) === 0) {
+        return jsonResponse({
+          success: false,
+          error: '다른 수납이 먼저 반영되어 청구 잔액이 변경되었습니다. 새로고침 후 다시 시도해 주세요.',
+          code: 'PAYMENT_CONCURRENT_CONFLICT'
+        }, 409);
+      }
+      return jsonResponse({ success: true, id: row.id, transaction: row });
     }
 
     if (method === 'PATCH' && id) {
       if (action === 'cancel') {
-        const result = await patchExistingRow(env, 'payment_transactions', id, { status: 'cancelled' }, ['status']);
-        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'transaction not found' }, 404);
-        return jsonResponse({ success: true, id, status: 'cancelled', transaction: result.updated });
+        const reason = validateRequiredText(data.reason || data.cancel_reason);
+        if (!reason) return jsonResponse({ success: false, error: '수납 취소 사유를 입력해 주세요.', code: 'CANCEL_REASON_REQUIRED' }, 400);
+        const existing = await getRowById(env, 'payment_transactions', id);
+        if (!existing) return jsonResponse({ success: false, error: 'transaction not found' }, 404);
+        if (existing.status === 'cancelled') return jsonResponse({ success: false, error: '이미 취소된 수납입니다.', code: 'ALREADY_CANCELLED' }, 400);
+        const at = new Date().toISOString();
+        // 취소는 거래·연결 장부·감사 로그를 한 배치로 처리한다.
+        const cancelStatements = [
+          env.DB.prepare('UPDATE payment_transactions SET status = ?, cancelled_at = ?, cancel_reason = ?, updated_at = ? WHERE id = ?')
+            .bind('cancelled', at, reason, at, id),
+          env.DB.prepare("UPDATE cashbook_entries SET status = 'cancelled', is_active = 0, updated_at = ? WHERE payment_transaction_id = ? AND COALESCE(status, 'active') != 'cancelled'")
+            .bind(at, id),
+          auditLogStatement(env, teacher, { entity_type: 'payment_transaction', entity_id: id, action: 'cancel', before: existing, reason })
+        ];
+        if (existing.payment_id) cancelStatements.push(paymentSettlementUpdateStatement(env, existing.payment_id, at));
+        await env.DB.batch(cancelStatements);
+        const updated = await getRowById(env, 'payment_transactions', id);
+        return jsonResponse({ success: true, id, status: 'cancelled', transaction: updated });
       }
+      const existing = await getRowById(env, 'payment_transactions', id);
+      if (!existing) return jsonResponse({ success: false, error: 'transaction not found' }, 404);
       const patch = { ...data };
+      delete patch.clientRequestId;
+      delete patch.idempotency_key;
+      // 프론트는 전체 폼을 보내므로, 기존 값과 같은(no-op) 필드는 변경으로 취급하지 않는다.
+      const sameAsExisting = (key) => String(patch[key] ?? '').trim() === String(existing[key] ?? '').trim();
+      for (const key of Object.keys(patch)) {
+        if (sameAsExisting(key)) delete patch[key];
+      }
+      // 완료된 수납의 금액·수단·일자·대상·유형·상태는 수정 불가. 취소 후 재입력한다.
+      if (existing.status === 'completed') {
+        const violation = findImmutableFieldViolation(patch);
+        if (violation) {
+          return jsonResponse({
+            success: false,
+            error: `완료된 수납의 ${violation} 값은 수정할 수 없습니다. 취소 후 다시 입력해 주세요.`,
+            code: 'TRANSACTION_COMPLETED_READONLY'
+          }, 400);
+        }
+      }
       if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'apmath');
       if (Object.prototype.hasOwnProperty.call(patch, 'transaction_type')) patch.transaction_type = normalizeTransactionType(patch.transaction_type);
       if (Object.prototype.hasOwnProperty.call(patch, 'method_key')) patch.method_key = normalizeMethodKey(patch.method_key);
-      if (Object.prototype.hasOwnProperty.call(patch, 'status')) patch.status = normalizeTransactionStatus(patch.status);
+      if (Object.prototype.hasOwnProperty.call(patch, 'status')) {
+        patch.status = normalizeTransactionStatus(patch.status);
+        if (patch.status === 'cancelled') return jsonResponse({ success: false, error: '취소는 취소 액션으로만 가능합니다.', code: 'USE_CANCEL_ACTION' }, 400);
+        if (patch.status === 'completed' && existing.status !== 'completed') {
+          return jsonResponse({ success: false, error: '대기 수납은 취소 후 완료 수납으로 다시 입력해 주세요.', code: 'USE_COMPLETED_CREATE_FLOW' }, 400);
+        }
+      }
       if (Object.prototype.hasOwnProperty.call(patch, 'amount')) {
         patch.amount = positiveAmountOrNull(patch.amount);
         if (!patch.amount) return jsonResponse({ success: false, error: 'amount must be positive number' }, 400);
@@ -810,6 +1060,7 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       }
       const result = await patchExistingRow(env, 'payment_transactions', id, patch, ['payment_id', 'student_id', 'branch', 'transaction_type', 'method_key', 'amount', 'transaction_date', 'status', 'receipt_no', 'external_provider', 'external_transaction_id', 'note']);
       if (result.error === 'not_found') return jsonResponse({ success: false, error: 'transaction not found' }, 404);
+      await writeAuditLog(env, teacher, { entity_type: 'payment_transaction', entity_id: id, action: 'update', before: existing, after: result.updated });
       return jsonResponse({ success: true, transaction: result.updated });
     }
 
@@ -858,6 +1109,7 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         amount,
         status: normalizeCashbookStatus(data.status),
         is_active: data.is_active === undefined ? 1 : toInt(data.is_active, 1) ? 1 : 0,
+        source_type: 'manual',
         payment_transaction_id: validateRequiredText(data.payment_transaction_id) || null,
         student_id: validateRequiredText(data.student_id) || null,
         title,
@@ -865,13 +1117,29 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         method_key: validateRequiredText(data.method_key) ? normalizeMethodKey(data.method_key) : null,
         created_by: getActorId(teacher)
       };
-      return jsonResponse({ success: true, id: row.id, cashbook_entry: await insertRow(env, 'cashbook_entries', row) });
+      await env.DB.batch([
+        insertStatement(env, 'cashbook_entries', row),
+        auditLogStatement(env, teacher, { entity_type: 'cashbook_entry', entity_id: row.id, action: 'create', after: row })
+      ]);
+      return jsonResponse({ success: true, id: row.id, cashbook_entry: row });
     }
 
     if (method === 'PATCH' && id) {
+      const existingEntry = await getRowById(env, 'cashbook_entries', id);
+      if (!existingEntry) return jsonResponse({ success: false, error: 'cashbook entry not found' }, 404);
+      // 수납·환불에서 자동 생성된 장부는 장부 화면에서 직접 수정·취소할 수 없다.
+      // 원본(수납 거래/환불)을 취소하면 함께 취소된다.
+      if (isAutoCashbookEntry(existingEntry)) {
+        return jsonResponse({
+          success: false,
+          error: '자동 생성 장부는 직접 수정할 수 없습니다. 원본 수납/환불을 취소하면 함께 반영됩니다.',
+          code: 'CASHBOOK_AUTO_ENTRY_READONLY'
+        }, 400);
+      }
       if (action === 'cancel') {
         const result = await patchExistingRow(env, 'cashbook_entries', id, { status: 'cancelled', is_active: 0 }, ['status', 'is_active']);
         if (result.error === 'not_found') return jsonResponse({ success: false, error: 'cashbook entry not found' }, 404);
+        await writeAuditLog(env, teacher, { entity_type: 'cashbook_entry', entity_id: id, action: 'cancel', before: existingEntry, reason: validateRequiredText(data.reason) || null });
         return jsonResponse({ success: true, id, status: 'cancelled', is_active: 0, cashbook_entry: result.updated });
       }
       const patch = { ...data };
@@ -894,8 +1162,9 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         return jsonResponse({ success: false, error: 'category required' }, 400);
       }
       if (Object.prototype.hasOwnProperty.call(patch, 'method_key') && patch.method_key) patch.method_key = normalizeMethodKey(patch.method_key);
-      const result = await patchExistingRow(env, 'cashbook_entries', id, patch, ['entry_date', 'entry_type', 'category', 'branch', 'amount', 'status', 'is_active', 'payment_transaction_id', 'student_id', 'title', 'description', 'method_key']);
+      const result = await patchExistingRow(env, 'cashbook_entries', id, patch, ['entry_date', 'entry_type', 'category', 'branch', 'amount', 'status', 'is_active', 'student_id', 'title', 'description', 'method_key']);
       if (result.error === 'not_found') return jsonResponse({ success: false, error: 'cashbook entry not found' }, 404);
+      await writeAuditLog(env, teacher, { entity_type: 'cashbook_entry', entity_id: id, action: 'update', before: existingEntry, after: result.updated });
       return jsonResponse({ success: true, cashbook_entry: result.updated });
     }
 
@@ -949,27 +1218,189 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       if (!studentId || !refundAmount || !refundDate) {
         return jsonResponse({ success: false, error: 'student_id, refund_amount and refund_date required' }, 400);
       }
+      const paymentTransactionId = validateRequiredText(data.payment_transaction_id) || null;
+      let paymentId = validateRequiredText(data.payment_id) || null;
+      let sourceTransaction = null;
+      if (paymentTransactionId) {
+        sourceTransaction = await getRowById(env, 'payment_transactions', paymentTransactionId);
+        if (!sourceTransaction || sourceTransaction.status !== 'completed' || !SETTLEMENT_CREDIT_TYPES.includes(sourceTransaction.transaction_type)) {
+          return jsonResponse({ success: false, error: '환불할 완료 수납 거래를 찾을 수 없습니다.', code: 'REFUND_TRANSACTION_NOT_FOUND' }, 404);
+        }
+        if (String(sourceTransaction.student_id || '') !== studentId) {
+          return jsonResponse({ success: false, error: '수납 거래와 환불 학생이 일치하지 않습니다.', code: 'REFUND_STUDENT_MISMATCH' }, 400);
+        }
+        const sourcePaymentId = validateRequiredText(sourceTransaction.payment_id) || null;
+        if (!sourcePaymentId) {
+          return jsonResponse({ success: false, error: '선택한 수납 거래가 청구에 연결되어 있지 않습니다.', code: 'REFUND_PAYMENT_REQUIRED' }, 400);
+        }
+        if (paymentId && paymentId !== sourcePaymentId) {
+          return jsonResponse({ success: false, error: '수납 거래와 청구가 일치하지 않습니다.', code: 'REFUND_PAYMENT_MISMATCH' }, 400);
+        }
+        paymentId = sourcePaymentId;
+      }
+      if (!paymentId) {
+        return jsonResponse({ success: false, error: '환불할 청구 또는 수납 거래를 선택해 주세요.', code: 'REFUND_PAYMENT_REQUIRED' }, 400);
+      }
+      const payment = await getRowById(env, 'payments', paymentId);
+      if (!payment) return jsonResponse({ success: false, error: 'payment not found', code: 'PAYMENT_NOT_FOUND' }, 404);
+      if (String(payment.student_id || '') !== studentId) {
+        return jsonResponse({ success: false, error: '청구와 환불 학생이 일치하지 않습니다.', code: 'REFUND_STUDENT_MISMATCH' }, 400);
+      }
+      const requestedStatus = String(data.status || 'completed').trim().toLowerCase();
+      const status = normalizeTransactionStatus(requestedStatus);
+      if (requestedStatus !== 'completed' || status !== 'completed') {
+        return jsonResponse({ success: false, error: '완료된 환불만 등록할 수 있습니다.', code: 'REFUND_STATUS_COMPLETED_REQUIRED' }, 400);
+      }
+      const refundBalanceRows = await safeAll(env, `
+        SELECT
+          COALESCE((SELECT SUM(pt.amount) FROM payment_transactions pt
+            WHERE pt.payment_id = ? AND pt.status = 'completed'
+              AND pt.transaction_type IN (${SETTLEMENT_CREDIT_TYPES.map(() => '?').join(', ')})), 0) AS credited_amount,
+          COALESCE((SELECT SUM(rr.refund_amount) FROM refund_records rr
+            WHERE rr.payment_id = ? AND rr.status = 'completed'), 0) AS refunded_amount
+      `, [paymentId, ...SETTLEMENT_CREDIT_TYPES, paymentId]);
+      let refundableAmount = computeRefundableAmount(refundBalanceRows[0] || {});
+      if (sourceTransaction) {
+        const transactionRefundRows = await safeAll(env, `
+          SELECT COALESCE(SUM(refund_amount), 0) AS refunded_amount
+          FROM refund_records
+          WHERE payment_transaction_id = ? AND status = 'completed'
+        `, [paymentTransactionId]);
+        refundableAmount = Math.min(
+          refundableAmount,
+          computeRefundableAmount({
+            credited_amount: sourceTransaction.amount,
+            refunded_amount: transactionRefundRows[0]?.refunded_amount
+          })
+        );
+      }
+      if (refundAmount > refundableAmount) {
+        return jsonResponse({
+          success: false,
+          error: `환불 가능 금액(${refundableAmount}원)을 초과했습니다.`,
+          code: 'REFUND_AMOUNT_EXCEEDS_AVAILABLE',
+          refundable_amount: refundableAmount
+        }, 400);
+      }
       const row = {
         id: data.id || makeId('rr'),
-        payment_id: validateRequiredText(data.payment_id) || null,
-        payment_transaction_id: validateRequiredText(data.payment_transaction_id) || null,
+        payment_id: paymentId,
+        payment_transaction_id: paymentTransactionId,
         student_id: studentId,
-        branch: normalizeBranchForAccounting(data.branch, 'apmath'),
+        branch: sourceTransaction
+          ? normalizeBranchForAccounting(sourceTransaction.branch, 'apmath')
+          : normalizeBranchForAccounting(data.branch, 'apmath'),
         refund_amount: refundAmount,
         refund_method_key: validateRequiredText(data.refund_method_key) ? normalizeMethodKey(data.refund_method_key) : null,
         refund_date: refundDate,
         reason: validateRequiredText(data.reason) || null,
-        status: normalizeTransactionStatus(data.status === 'refund' ? 'completed' : data.status),
+        status,
         created_by: getActorId(teacher)
       };
-      return jsonResponse({ success: true, id: row.id, refund: await insertRow(env, 'refund_records', row) });
+      // 환불 + 장부(환불 지출) + 감사 로그를 한 배치로 저장한다.
+      const transactionRefundGuard = paymentTransactionId ? `
+          AND ? <= MAX(
+            COALESCE((SELECT pt.amount FROM payment_transactions pt
+              WHERE pt.id = ? AND pt.payment_id = p.id AND pt.status = 'completed'), 0)
+            - COALESCE((SELECT SUM(rr2.refund_amount) FROM refund_records rr2
+              WHERE rr2.payment_transaction_id = ? AND rr2.status = 'completed'), 0),
+            0
+          )` : '';
+      const refundGuardSql = `EXISTS (
+        SELECT 1 FROM payments p
+        WHERE p.id = ? AND p.student_id = ?
+          AND ? <= MAX(
+            COALESCE((SELECT SUM(pt.amount) FROM payment_transactions pt
+              WHERE pt.payment_id = p.id AND pt.status = 'completed'
+                AND pt.transaction_type IN (${SETTLEMENT_CREDIT_TYPES.map(() => '?').join(', ')})), 0)
+            - COALESCE((SELECT SUM(rr.refund_amount) FROM refund_records rr
+              WHERE rr.payment_id = p.id AND rr.status = 'completed'), 0),
+            0
+          )${transactionRefundGuard}
+      )`;
+      const refundGuardBindings = [paymentId, studentId, refundAmount, ...SETTLEMENT_CREDIT_TYPES];
+      if (paymentTransactionId) refundGuardBindings.push(refundAmount, paymentTransactionId, paymentTransactionId);
+      const refundStatements = [conditionalInsertStatement(
+        env,
+        'refund_records',
+        row,
+        refundGuardSql,
+        refundGuardBindings
+      )];
+      if (row.status === 'completed') {
+        refundStatements.push(conditionalInsertStatement(env, 'cashbook_entries', {
+          id: makeId('cbe'),
+          entry_date: refundDate,
+          entry_type: 'refund',
+          category: '환불',
+          branch: row.branch,
+          amount: refundAmount,
+          status: 'active',
+          is_active: 1,
+          source_type: 'refund_record',
+          refund_record_id: row.id,
+          payment_transaction_id: row.payment_transaction_id,
+          student_id: studentId,
+          title: `환불 (${row.refund_method_key || 'other'})`,
+          description: row.reason,
+          method_key: row.refund_method_key,
+          created_by: getActorId(teacher)
+        }, 'EXISTS (SELECT 1 FROM refund_records WHERE id = ?)', [row.id]));
+      }
+      refundStatements.push(conditionalAuditLogStatement(
+        env,
+        teacher,
+        { entity_type: 'refund_record', entity_id: row.id, action: 'create', after: row },
+        'refund_records',
+        row.id
+      ));
+      refundStatements.push(paymentSettlementUpdateStatement(env, paymentId));
+      const refundResults = await env.DB.batch(refundStatements);
+      if (Number(refundResults?.[0]?.meta?.changes || 0) === 0) {
+        return jsonResponse({
+          success: false,
+          error: '다른 환불이 먼저 반영되어 환불 가능 금액이 변경되었습니다. 새로고침 후 다시 시도해 주세요.',
+          code: 'REFUND_CONCURRENT_CONFLICT'
+        }, 409);
+      }
+      return jsonResponse({ success: true, id: row.id, refund: row });
     }
 
     if (method === 'PATCH' && id) {
       if (action === 'cancel') {
-        const result = await patchExistingRow(env, 'refund_records', id, { status: 'cancelled' }, ['status']);
-        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'refund not found' }, 404);
-        return jsonResponse({ success: true, id, status: 'cancelled', refund: result.updated });
+        const reason = validateRequiredText(data.reason || data.cancel_reason);
+        if (!reason) return jsonResponse({ success: false, error: '환불 취소 사유를 입력해 주세요.', code: 'CANCEL_REASON_REQUIRED' }, 400);
+        const existing = await getRowById(env, 'refund_records', id);
+        if (!existing) return jsonResponse({ success: false, error: 'refund not found' }, 404);
+        if (existing.status === 'cancelled') return jsonResponse({ success: false, error: '이미 취소된 환불입니다.', code: 'ALREADY_CANCELLED' }, 400);
+        const at = new Date().toISOString();
+        const cancelRefundStatements = [
+          env.DB.prepare('UPDATE refund_records SET status = ?, cancelled_at = ?, cancel_reason = ?, updated_at = ? WHERE id = ?')
+            .bind('cancelled', at, reason, at, id),
+          env.DB.prepare("UPDATE cashbook_entries SET status = 'cancelled', is_active = 0, updated_at = ? WHERE refund_record_id = ? AND COALESCE(status, 'active') != 'cancelled'")
+            .bind(at, id),
+          auditLogStatement(env, teacher, { entity_type: 'refund_record', entity_id: id, action: 'cancel', before: existing, reason })
+        ];
+        if (existing.payment_id) cancelRefundStatements.push(paymentSettlementUpdateStatement(env, existing.payment_id, at));
+        await env.DB.batch(cancelRefundStatements);
+        return jsonResponse({ success: true, id, status: 'cancelled', refund: await getRowById(env, 'refund_records', id) });
+      }
+      const existingRefund = await getRowById(env, 'refund_records', id);
+      if (!existingRefund) return jsonResponse({ success: false, error: 'refund not found' }, 404);
+      // 프론트는 전체 폼을 보내므로, 기존 값과 같은(no-op) 필드는 변경으로 취급하지 않는다.
+      for (const key of Object.keys(data)) {
+        if (String(data[key] ?? '').trim() === String(existingRefund[key] ?? '').trim()) delete data[key];
+      }
+      // 완료된 환불은 사유 메모만 수정 가능. 금액·일자·대상 정정은 취소 후 재입력.
+      if (existingRefund.status === 'completed') {
+        const disallowed = Object.keys(data).find((key) => !['reason'].includes(key));
+        if (disallowed) {
+          return jsonResponse({
+            success: false,
+            error: `완료된 환불의 ${disallowed} 값은 수정할 수 없습니다. 취소 후 다시 입력해 주세요.`,
+            code: 'REFUND_COMPLETED_READONLY'
+          }, 400);
+        }
       }
       const patch = { ...data };
       if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'apmath');
@@ -983,11 +1414,15 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       }
       if (Object.prototype.hasOwnProperty.call(patch, 'refund_method_key') && patch.refund_method_key) patch.refund_method_key = normalizeMethodKey(patch.refund_method_key);
       if (Object.prototype.hasOwnProperty.call(patch, 'status')) patch.status = normalizeTransactionStatus(patch.status);
+      if (patch.status === 'completed' && existingRefund.status !== 'completed') {
+        return jsonResponse({ success: false, error: '대기 환불은 취소 후 완료 환불로 다시 입력해 주세요.', code: 'USE_COMPLETED_REFUND_CREATE_FLOW' }, 400);
+      }
       if (Object.prototype.hasOwnProperty.call(patch, 'student_id') && !validateRequiredText(patch.student_id)) {
         return jsonResponse({ success: false, error: 'student_id required' }, 400);
       }
       const result = await patchExistingRow(env, 'refund_records', id, patch, ['payment_id', 'payment_transaction_id', 'student_id', 'branch', 'refund_amount', 'refund_method_key', 'refund_date', 'reason', 'status']);
       if (result.error === 'not_found') return jsonResponse({ success: false, error: 'refund not found' }, 404);
+      await writeAuditLog(env, teacher, { entity_type: 'refund_record', entity_id: id, action: 'update', before: existingRefund, after: result.updated });
       return jsonResponse({ success: true, refund: result.updated });
     }
 
@@ -1037,13 +1472,20 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         status: validateRequiredText(data.status) || 'active',
         created_by: getActorId(teacher)
       };
-      return jsonResponse({ success: true, id: row.id, carryover: await insertRow(env, 'carryover_records', row) });
+      await env.DB.batch([
+        insertStatement(env, 'carryover_records', row),
+        auditLogStatement(env, teacher, { entity_type: 'carryover_record', entity_id: row.id, action: 'create', after: row })
+      ]);
+      return jsonResponse({ success: true, id: row.id, carryover: row });
     }
 
     if (method === 'PATCH' && id) {
       if (action === 'cancel') {
+        const existingCarryover = await getRowById(env, 'carryover_records', id);
+        if (!existingCarryover) return jsonResponse({ success: false, error: 'carryover not found' }, 404);
         const result = await patchExistingRow(env, 'carryover_records', id, { status: 'cancelled' }, ['status']);
         if (result.error === 'not_found') return jsonResponse({ success: false, error: 'carryover not found' }, 404);
+        await writeAuditLog(env, teacher, { entity_type: 'carryover_record', entity_id: id, action: 'cancel', before: existingCarryover, reason: validateRequiredText(data.reason) || null });
         return jsonResponse({ success: true, id, status: 'cancelled', carryover: result.updated });
       }
       const patch = { ...data };
@@ -1087,6 +1529,29 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       return jsonResponse({ success: true, carryovers });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
+
+  if (sub === 'audit-logs') {
+    if (method !== 'GET') return jsonResponse({ error: 'Method Not Allowed' }, 405);
+    const whereParts = [];
+    const bindings = [];
+    const entityType = String(url.searchParams.get('entity_type') || '').trim();
+    const entityId = String(url.searchParams.get('entity_id') || '').trim();
+    if (entityType) {
+      whereParts.push('entity_type = ?');
+      bindings.push(entityType);
+    }
+    if (entityId) {
+      whereParts.push('entity_id = ?');
+      bindings.push(entityId);
+    }
+    pushDateRangeFilter(whereParts, bindings, 'DATE(created_at)', url);
+    const auditLogs = await safeAll(
+      env,
+      `SELECT * FROM billing_audit_logs${buildWhereClause(whereParts)} ORDER BY created_at DESC LIMIT ?`,
+      [...bindings, parseLimit(url)]
+    );
+    return jsonResponse({ success: true, audit_logs: auditLogs });
   }
 
   if (sub === 'daily-summaries') {

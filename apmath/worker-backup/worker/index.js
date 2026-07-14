@@ -636,12 +636,14 @@ async function loadFoundationInitialData(env, teacher) {
   if (isAdminUser(teacher)) {
     const rows = await Promise.all([
       safeAll(env, 'SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC'),
-      safeAll(env, 'SELECT * FROM staff_permissions ORDER BY teacher_id ASC, permission_key ASC')
+      safeAll(env, 'SELECT * FROM staff_permissions ORDER BY teacher_id ASC, permission_key ASC'),
+      safeAll(env, 'SELECT * FROM student_status_history ORDER BY changed_at DESC LIMIT 2000')
     ]);
     return {
       ...empty,
       class_time_slots: rows[0],
-      staff_permissions: rows[1]
+      staff_permissions: rows[1],
+      student_status_history: rows[2]
     };
   }
 
@@ -652,7 +654,8 @@ async function loadFoundationInitialData(env, teacher) {
   return {
     ...empty,
     class_time_slots: await safeAll(env, `SELECT * FROM class_time_slots WHERE class_id IN (${cMarkers}) ORDER BY day_of_week ASC, start_time ASC`, classIds),
-    staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id])
+    staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id]),
+    student_status_history: await safeAll(env, `SELECT * FROM student_status_history WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})) ORDER BY changed_at DESC LIMIT 2000`, classIds)
   };
 }
 
@@ -3559,3 +3562,4 @@ async function handleApiRequest(request, env) {
       return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500, headers });
     }
 }
+export { D1BackupWorkflow } from './backup-workflow.js';
