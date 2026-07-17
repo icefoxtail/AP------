@@ -28,8 +28,8 @@ window.questionBank = [
     "id": 2,
     "content": "<div class=\"box\">$3^{\\frac{10}{3}} \\times 3^{-\\frac{1}{3}}$의 값은? [3.8]</div>",
     "choices": [
-      "\\frac{1}{9}",
-      "\\frac{1}{3}",
+      "$\\frac{1}{9}$",
+      "$\\frac{1}{3}$",
       "3",
       "9",
       "27"
@@ -53,9 +53,9 @@ window.questionBank = [
     "content": "<div class=\"box\">$\\log_a b \\times \\log_b c \\times \\log_c a$의 값은? [3.8]</div>",
     "choices": [
       "0",
-      "\\log_a a",
-      "\\log_c c",
-      "\\log_b b",
+      "$\\log_a a$",
+      "$\\log_c c$",
+      "$\\log_b b$",
       "1"
     ],
     "answer": "⑤",
@@ -124,11 +124,11 @@ window.questionBank = [
     "id": 6,
     "content": "<div class=\"box\">각 $\\theta$가 제3사분면의 각이고 $\\sin\\theta = -\\frac{1}{3}$일 때, $\\cos\\theta$의 값은? [4.0]</div>",
     "choices": [
-      "-\\frac{2\\sqrt{2}}{3}",
-      "-\\frac{\\sqrt{2}}{3}",
+      "$-\\frac{2\\sqrt{2}}{3}$",
+      "$-\\frac{\\sqrt{2}}{3}$",
       "0",
-      "\\frac{\\sqrt{2}}{3}",
-      "\\frac{2\\sqrt{2}}{3}"
+      "$\\frac{\\sqrt{2}}{3}$",
+      "$\\frac{2\\sqrt{2}}{3}$"
     ],
     "answer": "①",
     "category": "삼각함수",
@@ -172,11 +172,11 @@ window.questionBank = [
     "id": 8,
     "content": "<div class=\"box\">호의 길이가 $2\\pi$, 넓이가 $3\\pi$인 부채꼴의 반지름의 길이를 $r$, 중심각의 크기를 $\\theta$라 할 때, $\\frac{\\theta}{r}$의 값은? [4.2]</div>",
     "choices": [
-      "\\frac{\\pi}{18}",
-      "\\frac{\\pi}{9}",
-      "\\frac{2\\pi}{9}",
-      "\\frac{4\\pi}{9}",
-      "\\frac{8\\pi}{9}"
+      "$\\frac{\\pi}{18}$",
+      "$\\frac{\\pi}{9}$",
+      "$\\frac{2\\pi}{9}$",
+      "$\\frac{4\\pi}{9}$",
+      "$\\frac{8\\pi}{9}$"
     ],
     "answer": "③",
     "category": "부채꼴",
@@ -197,10 +197,10 @@ window.questionBank = [
     "content": "<div class=\"box\">$0 \\le x < 2\\pi$에서 방정식 $2\\sin^2 x + 3\\sin x - 2 = 0$의 모든 해의 합은? [4.2]</div>",
     "choices": [
       "0",
-      "\\frac{\\pi}{2}",
-      "\\pi",
-      "\\frac{3\\pi}{2}",
-      "2\\pi"
+      "$\\frac{\\pi}{2}$",
+      "$\\pi$",
+      "$\\frac{3\\pi}{2}$",
+      "$2\\pi$"
     ],
     "answer": "③",
     "category": "삼각방정식",
@@ -221,10 +221,10 @@ window.questionBank = [
     "content": "<div class=\"box\">$0 \\le x \\le \\frac{\\pi}{2}$에서 부등식 $\\tan\\left(x+\\frac{\\pi}{6}\\right) \\ge \\sqrt{3}$의 해가 $\\alpha \\le x < \\beta$일 때, $\\tan(\\beta-\\alpha)$의 값은? [4.2]</div>",
     "choices": [
       "0",
-      "\\frac{\\sqrt{3}}{3}",
-      "\\frac{\\sqrt{2}}{2}",
-      "\\frac{\\sqrt{3}}{2}",
-      "\\sqrt{3}"
+      "$\\frac{\\sqrt{3}}{3}$",
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$\\frac{\\sqrt{3}}{2}$",
+      "$\\sqrt{3}$"
     ],
     "answer": "②",
     "category": "삼각부등식",
@@ -316,11 +316,11 @@ window.questionBank = [
     "id": 14,
     "content": "두 양수 $a, b$에 대하여 곡선 $y=a \\sin\\frac{\\pi}{b}x \\; (0 \\le x \\le 3b)$이 직선 $y=a$와 만나는 서로 다른 두 점을 A, B라 하자.<br><div style='text-align:center; margin: 10px 0;'><svg viewBox='0 0 300 280' preserveAspectRatio='xMidYMid meet'><line x1='20' y1='160' x2='280' y2='160' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><line x1='40' y1='260' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><defs><marker id='arrow' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='4' markerHeight='4' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='30' y1='80' x2='260' y2='80' stroke='black' stroke-width='1'/><text x='15' y='75' font-size='12' font-style='italic'>y=a</text><path d='M 40,160 Q 55,80 70,80 T 100,160 Q 115,240 130,240 T 160,160 Q 175,80 190,80 T 220,160' fill='none' stroke='black' stroke-width='1.5'/><text x='25' y='175' font-size='12'>O</text><text x='275' y='150' font-size='12' font-style='italic'>x</text><text x='25' y='25' font-size='12' font-style='italic'>y</text><circle cx='70' cy='80' r='2' fill='black'/><circle cx='190' cy='80' r='2' fill='black'/><text x='65' y='70' font-size='12'>A</text><text x='185' y='70' font-size='12'>B</text><line x1='40' y1='160' x2='70' y2='80' stroke='black' stroke-dasharray='4 4' stroke-width='1'/><line x1='40' y1='160' x2='190' y2='80' stroke='black' stroke-dasharray='4 4' stroke-width='1'/><text x='170' y='45' font-size='12' font-style='italic'>y=a sin(πx/b)</text></svg></div><br>삼각형 OAB의 넓이가 $4$이고 직선 OA의 기울기와 직선 OB의 기울기의 곱이 $\\frac{16}{5}$일 때, $a+b$의 값은? (단, O는 원점이다.)",
     "choices": [
-      "\\sqrt{2}",
-      "\\frac{3\\sqrt{2}}{2}",
-      "2\\sqrt{2}",
-      "\\frac{5\\sqrt{2}}{2}",
-      "3\\sqrt{2}"
+      "$\\sqrt{2}$",
+      "$\\frac{3\\sqrt{2}}{2}$",
+      "$2\\sqrt{2}$",
+      "$\\frac{5\\sqrt{2}}{2}$",
+      "$3\\sqrt{2}$"
     ],
     "answer": "⑤",
     "category": "삼각함수의 그래프",
@@ -410,7 +410,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "<div class=\"box\">함수 $y=\\log_2 x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 후 $x$축에 대하여 대칭이동한 그래프가 함수 $y=\\log_a bx$의 그래프와 일치할 때, $a+b$의 값을 구하시오. (단, $a \\n e 1$, $a>0$, $b>0$이고, $a, b$는 상수이다.) [4.0]</div>",
+    "content": "<div class=\"box\">함수 $y=\\log_2 x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 후 $x$축에 대하여 대칭이동한 그래프가 함수 $y=\\log_a bx$의 그래프와 일치할 때, $a+b$의 값을 구하시오. (단, $a \\ne 1$, $a>0$, $b>0$이고, $a, b$는 상수이다.) [4.0]</div>",
     "choices": [],
     "answer": "\\frac{5}{8}",
     "category": "로그함수",
@@ -448,7 +448,7 @@ window.questionBank = [
     "id": 20,
     "content": "<div class=\"box\">두 실수 $a, b$에 대하여 $7^{a+b}=16$, $7^{a-b}=4$일 때, $\\log_7 8^{\\frac{a+b}{ab}}$의 값을 구하시오. [10]</div>",
     "choices": [],
-    "answer": "④",
+    "answer": "4",
     "category": "지수와 로그",
     "originalCategory": "지수와 로그",
     "standardCourse": "대수",
