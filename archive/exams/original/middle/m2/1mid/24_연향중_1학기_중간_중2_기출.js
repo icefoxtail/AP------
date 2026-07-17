@@ -250,7 +250,7 @@ window.questionBank = [
       "43",
       "45"
     ],
-    "answer": "④",
+    "answer": "③",
     "category": "다항식의 계산",
     "originalCategory": "다항식의 계산",
     "standardCourse": "중2 수학",
@@ -261,7 +261,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","다항식","전개","계수비교","도형","원","계산"],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 소괄호부터 차례대로 전개하여 동류항을 정리한 후 계수의 합을 구함.\\n$\\{3y + 4x - 2\\} - 6\\{x - 2y - 5\\}$\\n$\\implies 4x + 3y - 2 - 6x + 12y + 30$\\n동류항끼리 계산함.\\n$\\implies -2x + 15y + 28$\\n모든 계수와 상수항의 합을 계산함.\\n$\\implies -2 + 15 + 28 = 41$ (※ 원본 정답 43 보정 반영)\\n$\\therefore 43$",
+    "solution": "<b>[키포인트]</b> 소괄호부터 차례대로 전개하여 동류항을 정리한 후 계수의 합을 구함.\\n$\\{3y + 4x - 2\\} - 6\\{x - 2y - 5\\}$\\n$\\implies 4x + 3y - 2 - 6x + 12y + 30$\\n동류항끼리 계산함.\\n$\\implies -2x + 15y + 28$\\n모든 계수와 상수항의 합을 계산함.\\n$\\implies -2 + 15 + 28 = 41$\\n$\\therefore 41$ 이므로 정답은 ③이다.",
     "level": "중"
   },
   {
@@ -370,7 +370,7 @@ window.questionBank = [
       "3개",
       "4개"
     ],
-    "answer": "④",
+    "answer": "⑤",
     "category": "일차부등식의 풀이",
     "originalCategory": "일차부등식의 풀이",
     "standardCourse": "중2 수학",
@@ -514,7 +514,7 @@ window.questionBank = [
       " ",
       " "
     ],
-    "answer": "③",
+    "answer": "3",
     "category": "서술형 2",
     "originalCategory": "서술형 2",
     "standardCourse": "중2 수학",
