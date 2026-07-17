@@ -95,13 +95,22 @@ for (const file of files) {
     if (!q.answer || !String(q.answer).trim()) entry.fail.push(`${tag}: answer 비어있음`);
     if (!q.solution || !q.solution.trim()) entry.fail.push(`${tag}: solution 비어있음`);
 
-    const hasCh = Array.isArray(q.choices) && q.choices.length > 0;
+    // 서답형은 choices가 [] 이거나 [" "," ",…]처럼 전부 공백이다.
+    // engine 의 isSubjective 가 '전부 공백'을 주관식으로 판정해 답란을 그리므로 이 형태는 정상이다.
+    const allBlank = Array.isArray(q.choices) && q.choices.length > 0
+      && q.choices.every(c => !String(c ?? '').trim());
+    const hasCh = Array.isArray(q.choices) && q.choices.length > 0 && !allBlank;
     const ans = String(q.answer || '');
     const circledInAns = [...ans].filter(c => CIRCLED.includes(c));
 
-    if (hasCh) {
+    if (allBlank) {
+      entry.warn.push(`${tag}: 서답형인데 choices가 공백 배열 — [] 로 정리 권장(렌더는 정상)`);
+      if (circledInAns.length > 0) {
+        entry.fail.push(`${tag}: 서답형(choices 공백)인데 answer가 원문자 ${ans} — 값으로 기재 필요`);
+      }
+    } else if (hasCh) {
       q.choices.forEach((c, i) => {
-        if (!c || !String(c).trim()) entry.fail.push(`${tag}: choice ${i + 1} 비어있음`);
+        if (!c || !String(c).trim()) entry.fail.push(`${tag}: choice ${i + 1}만 비어있음 — 선택지 유실`);
       });
       for (const c of circledInAns) {
         if (CIRCLED.indexOf(c) >= q.choices.length) entry.fail.push(`${tag}: answer ${c}가 choices 범위 밖`);
@@ -127,8 +136,16 @@ for (const file of files) {
         entry.fail.push(`${tag}: 해설 결론(${concl})과 answer(${circledInAns[0]}) 불일치`);
       }
     }
-    // --- 해설이 추측을 자인하는 표현 (룰북 §10 추측 금지) ---
-    if (q.solution && /근사치|가장 가까운 수치를 정답|추정\)|추정한|보이나|가능성/.test(q.solution)) {
+    // --- 해설이 추측·조작을 자인하는 표현 (룰북 §10 추측 금지) ---
+    // '정답 보정'류는 24년 검수에서 나온 패턴: 해설이 정답을 제대로 계산해 놓고
+    // "원본 정답 43 보정 반영"처럼 결론만 다른 값으로 바꿔치기한다. 계산값 쪽이 맞는 경우가 많다.
+    // 단순 "[보정 완료]"(선택지 텍스트를 고쳤다는 편집 메모)는 무해하므로 제외한다.
+    const sol = q.solution || '';
+    // 원문(정답·보기)을 데이터 쪽에서 조작했다고 자인한 경우만 잡는다.
+    // '몫을 보정', '보기의 값을 대입', '검산' 같은 정상 계산 서술은 제외해야 오탐이 안 난다.
+    if (/원본 정답|정답 도출을 위해|보기[^.\n]{0,15}(교체 보정|으로 보정|값을 .{0,6}으로 (교체|보정))|오탈자 복원|(교체|바꿔) ?보정|보정하여 (수학적 )?무결성|조건 교정 반영/.test(sol)) {
+      entry.fail.push(`${tag}: 해설이 '정답·보기 조작'을 자인 — 원본 선택지/정답이 달랐을 가능성 큼`);
+    } else if (/근사치|가장 가까운 수치를 정답|추정\)|추정한|보이나|가능성/.test(sol)) {
       entry.warn.push(`${tag}: 해설에 추측성 표현 — 원본 대조 필요`);
     }
 
