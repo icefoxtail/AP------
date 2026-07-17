@@ -397,7 +397,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","확률","경우의수","순열","중복순열","여사건","도형","원"],
     "wide": false,
-    "content": "전체집합 $U=\\{0, 1, 2, 3, 4\\}$의 두 부분집합 $A, B$에 대하여 다음의 조건을 만족하도록 하는 $A, B$의 순서쌍 $(A, B)$의 개수를 구하면? [4.4점]<br><조 건><br>(가) $A \\cup B = U$<br>(나) $A \\cap B \\n eq \\varnothing$",
+    "content": "전체집합 $U=\\{0, 1, 2, 3, 4\\}$의 두 부분집합 $A, B$에 대하여 다음의 조건을 만족하도록 하는 $A, B$의 순서쌍 $(A, B)$의 개수를 구하면? [4.4점]<br><조 건><br>(가) $A \\cup B = U$<br>(나) $A \\cap B \\neq \\varnothing$",
     "choices": [
       "128",
       "179",

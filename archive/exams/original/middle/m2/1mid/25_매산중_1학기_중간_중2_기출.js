@@ -1,3 +1,4 @@
+window.examTitle = "25_매산중_1학기_중간_중2_기출";
 window.questionBank = [
   {
     "id": 1,
