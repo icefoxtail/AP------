@@ -12,7 +12,7 @@ window.questionBank = [
       "1024",
       "2048"
     ],
-    "answer": "4",
+    "answer": "④",
     "solution": "사지선다형 5문제이므로 각 문제마다 4가지 선택지가 있다.\\n$\\therefore 4^5 = 1024$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -36,7 +36,7 @@ window.questionBank = [
       "$\\frac{4}{5}$",
       "$\\frac{9}{10}$"
     ],
-    "answer": "3",
+    "answer": "③",
     "solution": "성공 횟수 / 전체 시도 횟수 = $\\frac{140}{200} = \\frac{7}{10}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -60,7 +60,7 @@ window.questionBank = [
       "30",
       "32"
     ],
-    "answer": "1",
+    "answer": "①",
     "solution": "A를 고정한 후 B를 맞은편에 앉히는 경우의 수는 $1$가지이다.\\n나머지 4명의 가족을 일렬로 배열하는 경우의 수는 $4!$이다.\\n$\\therefore 1 \\times 4! = 24$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -84,7 +84,7 @@ window.questionBank = [
       "24",
       "27"
     ],
-    "answer": "1",
+    "answer": "①",
     "solution": "$a, b, c$ 3개의 문자 중에서 중복을 허용하여 4개를 선택하는 조합의 수와 같다.\\n$\\therefore _{3}H_{4} = _{6}C_{4} = _{6}C_{2} = 15$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -108,7 +108,7 @@ window.questionBank = [
       "24",
       "32"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "$(2x+1)^4$ 전개식의 일반항은 $_{4}C_{r} (2x)^{4-r} (1)^r$ 이다.\\n$x^3$ 항은 $4-r=3 \\implies r=1$ 일 때이므로,\\n계수는 $_{4}C_{1} \\times 2^3 = 4 \\times 8 = 32$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -132,7 +132,7 @@ window.questionBank = [
       "72",
       "75"
     ],
-    "answer": "4",
+    "answer": "④",
     "solution": "전체 경우의 수는 $(6-1)! = 5! = 120$가지이다.\\n합이 11인 두 카드의 쌍은 $\\{5, 6\\}$이다.\\n5와 6이 이웃하는 경우의 수는 이들을 하나로 묶어 배열하므로 $(5-1)! \\times 2! = 48$가지이다.\\n$\\therefore 120 - 48 = 72$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -156,7 +156,7 @@ window.questionBank = [
       "93",
       "95"
     ],
-    "answer": "2",
+    "answer": "②",
     "solution": "숫자 1의 개수를 $x$, 2의 개수를 $y$라 하면 $x + 2y = 10$ ($x, y$는 음이 아닌 정수)\\n(i) $y=5, x=0: \\frac{5!}{5!} = 1$\\n(ii) $y=4, x=2: \\frac{6!}{4!2!} = 15$\\n(iii) $y=3, x=4: \\frac{7!}{3!4!} = 35$\\n(iv) $y=2, x=6: \\frac{8!}{2!6!} = 28$\\n(v) $y=1, x=8: \\frac{9!}{1!8!} = 9$\\n(vi) $y=0, x=10: \\frac{10!}{10!} = 1$\\n$\\therefore 1+15+35+28+9+1 = 89$개",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -180,7 +180,7 @@ window.questionBank = [
       "$2^{21}$",
       "$2^{22}$"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "이항정리 $(a+b)^n = \\sum_{r=0}^{n} {_{n}C_{r} a^{n-r} b^r}$에 의해\\n주어진 식은 $(3+1)^{11} = 4^{11}$이다.\\n$\\therefore 4^{11} = (2^2)^{11} = 2^{22}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -204,7 +204,7 @@ window.questionBank = [
       "$\\frac{5}{11}$",
       "$\\frac{6}{11}$"
     ],
-    "answer": "2",
+    "answer": "②",
     "solution": "전체 사탕 11개 중 2개를 택하는 경우의 수: $_{11}C_{2} = 55$\\n사과 맛 사탕 6개 중 2개를 택하는 경우의 수: $_{6}C_{2} = 15$\\n$\\therefore P = \\frac{15}{55} = \\frac{3}{11}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -228,7 +228,7 @@ window.questionBank = [
       "10",
       "12"
     ],
-    "answer": "3",
+    "answer": "③",
     "solution": "음영 칠해진 가운데 들어갈 소수 $\\{2, 3, 5, 7\\}$를 고르는 경우의 수는 4가지이다.\\n나머지 8칸에 숫자를 정사각형 모양으로 배열할 때, 원순열을 적용하면 $90^\\circ$ 회전 시 4가지 경우가 중복되므로 배열하는 경우의 수는 $\\frac{8!}{4}$이다.\\n$\\therefore 4 \\times \\frac{8!}{4} = 8! = 7! \\times 8$\\n따라서 $n=8$이다.",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -252,7 +252,7 @@ window.questionBank = [
       "278",
       "280"
     ],
-    "answer": "1",
+    "answer": "①",
     "solution": "전체 네 자리 수의 개수: $5 \\times 6^3 = 1080$\\n조건 $A$: 2를 포함하지 않는 네 자리 수 $\\implies 4 \\times 5^3 = 500$\\n조건 $B$: 4를 포함하지 않는 네 자리 수 $\\implies 4 \\times 5^3 = 500$\\n$A \\cap B$: 2와 4를 모두 포함하지 않는 네 자리 수 $\\implies 3 \\times 4^3 = 192$\\n2 또는 4를 포함하지 않는 수의 개수: $500 + 500 - 192 = 808$\\n$\\therefore 1080 - 808 = 272$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -276,7 +276,7 @@ window.questionBank = [
       "26",
       "27"
     ],
-    "answer": "3",
+    "answer": "③",
     "solution": "$x^3y^2$ 항이 존재하려면 차수의 합인 $n$은 $3+2=5$여야 한다.\\n일반항은 $\\frac{1}{2} \\times {_{5}C_{r} x^{5-r} (2y)^r}$이다.\\n$y^2$ 항을 구하기 위해 $r=2$를 대입하면 계수 $m = \\frac{1}{2} \\times _{5}C_{2} \\times 2^2 = \\frac{1}{2} \\times 10 \\times 4 = 20$\\n$\\therefore m+n = 20 + 5 = 25$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -300,7 +300,7 @@ window.questionBank = [
       "61",
       "65"
     ],
-    "answer": "4",
+    "answer": "④",
     "solution": "$a' = a-2, b' = b+2, c' = c-1$이라 하면 $a', b', c' \\ge 0$이다.\\n주어진 방정식에 대입하면 $(a'+2) + (b'-2) + (c'+1) + 4d = 9 \\implies a'+b'+c'+4d = 8$\\n(i) $d=0: a'+b'+c'=8 \\implies _{3}H_{8} = _{10}C_{2} = 45$\\n(ii) $d=1: a'+b'+c'=4 \\implies _{3}H_{4} = _{6}C_{2} = 15$\\n(iii) $d=2: a'+b'+c'=0 \\implies _{3}H_{0} = 1$\\n$\\therefore 45 + 15 + 1 = 61$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -324,7 +324,7 @@ window.questionBank = [
       "22",
       "26"
     ],
-    "answer": "1",
+    "answer": "①",
     "solution": "이동 횟수를 $k$($1 \\le k \\le 5$)라 하면, 도달하는 점 $(x, y)$는 $x+y=k$ ($x, y$는 자연수)를 만족한다.\\n(i) $k=2: (1,1) \\implies 1$개\\n(ii) $k=3: (1,2), (2,1) \\implies 2$개\\n(iii) $k=4: (1,3), (2,2), (3,1) \\implies 3$개\\n(iv) $k=5: (1,4), (2,3), (3,2), (4,1) \\implies 4$개\\n$\\therefore 1+2+3+4 = 10$개",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -348,7 +348,7 @@ window.questionBank = [
       "152",
       "156"
     ],
-    "answer": "2",
+    "answer": "②",
     "solution": "이웃한 두 수의 곱이 짝수가 되려면 홀수끼리 이웃하지 않아야 한다.\\n8장의 카드 중 짝수 $\\{32, 34, 36, 38\\}$ 4개와 홀수 $\\{31, 33, 35, 37\\}$ 4개를 교대로 배열해야 한다.\\n짝수 4개를 먼저 원형으로 배열: $(4-1)! = 6$가지\\n그 사이의 4개 빈자리에 홀수 4개를 배열: $4! = 24$가지\\n$\\therefore 6 \\times 24 = 144$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -372,7 +372,7 @@ window.questionBank = [
       "946",
       "947"
     ],
-    "answer": "3",
+    "answer": "③",
     "solution": "1자리 수: 5개 / 2자리 수: $5 \\times 6 = 30$개 / 3자리 수: $5 \\times 6^2 = 180$개 (누적 215개)\\n4자리 수:\\n- 1, 2, 3으로 시작: $3 \\times 6^3 = 648$개\\n- 40, 41로 시작: $2 \\times 6^2 = 72$개\\n- 420으로 시작: $6^1 = 6$개\\n- 4210, 4211, 4212: 3개\\n그다음 수가 4213이다.\\n$\\therefore 215 + 648 + 72 + 6 + 3 + 1 = 945$번째",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -396,8 +396,8 @@ window.questionBank = [
       "$\\frac{5}{21}$",
       "$\\frac{2}{7}$"
     ],
-    "answer": "4",
-    "solution": "전체 경우의 수: $15 \\times 14 = 210$\\n$B$의 원소 개수 $k$에 따른 $A$의 개수 (단, $A \\n e B, A \\n e \\emptyset$)\\n- $k=2: _{4}C_{2} \\times (2^2-2) = 6 \\times 2 = 12$\\n- $k=3: _{4}C_{3} \\times (2^3-2) = 4 \\times 6 = 24$\\n- $k=4: _{4}C_{4} \\times (2^4-2) = 1 \\times 14 = 14$\\n순서쌍의 총 개수: $12 + 24 + 14 = 50$\\n$\\therefore P = \\frac{50}{210} = \\frac{5}{21}$",
+    "answer": "④",
+    "solution": "전체 경우의 수: $15 \\times 14 = 210$\\n$B$의 원소 개수 $k$에 따른 $A$의 개수 (단, $A \\ne B, A \\ne \\emptyset$)\\n- $k=2: _{4}C_{2} \\times (2^2-2) = 6 \\times 2 = 12$\\n- $k=3: _{4}C_{3} \\times (2^3-2) = 4 \\times 6 = 24$\\n- $k=4: _{4}C_{4} \\times (2^4-2) = 1 \\times 14 = 14$\\n순서쌍의 총 개수: $12 + 24 + 14 = 50$\\n$\\therefore P = \\frac{50}{210} = \\frac{5}{21}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_02_01",
@@ -420,7 +420,7 @@ window.questionBank = [
       "1670",
       "1680"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "각 인형 A, B, C에 대해 수행해야 할 작업(왼발, 오른발, 모자)은 순서가 정해져 있다.\\n전체 9개의 작업을 나열하는 경우의 수에서 각 인형별 3개 작업의 순서를 고정한다.\\n이는 같은 것이 있는 순열의 수와 같다.\\n$\\therefore \\frac{9!}{3!3!3!} = \\frac{362880}{6 \\times 6 \\times 6} = 1680$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -444,7 +444,7 @@ window.questionBank = [
       "44",
       "48"
     ],
-    "answer": "2",
+    "answer": "②",
     "solution": "조건 (나)에 의해 가능한 $D$와 $C$의 총 개수 합은 $4D$이다. 전체가 7개이므로 $D=1, C=3$인 경우만 가능하다. (이때 $A+B=3$으로 홀수 조건 자동 만족)\\n$D$가 볼펜 1개인 경우 ($D=0$ 연필 1개인 경우도 동일 구조)\\n$C$의 구성 $\\times$ ($A, B$ 분배)\\n- $C(3,0) \\implies (A,B)$는 남은 (0,3) 분배: $2H0 \\times 2H3 = 4$\\n- $C(2,1) \\implies (A,B)$는 남은 (1,2) 분배: $2H1 \\times 2H2 = 6$\\n- $C(1,2) \\implies (A,B)$는 남은 (2,1) 분배: $2H2 \\times 2H1 = 6$\\n- $C(0,3) \\implies (A,B)$는 남은 (3,0) 분배: $2H3 \\times 2H0 = 4$\\n소계 20가지. $D$가 연필 1개인 경우 계산 시 16가지(제한 조건 발생).\\n$\\therefore 20 + 16 = 36$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
@@ -468,7 +468,7 @@ window.questionBank = [
       "14",
       "15"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "자연수이므로 최솟값은 1이다. 합이 8이 되는 자연수 조합 중 곱이 4의 배수인 경우:\\n(i) $\\{4, 1, 1, 1, 1\\}$: 나열 수 $\\frac{5!}{4!} = 5$가지\\n(ii) $\\{2, 2, 2, 1, 1\\}$: 나열 수 $\\frac{5!}{3!2!} = 10$가지\\n$\\therefore 5 + 10 = 15$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
