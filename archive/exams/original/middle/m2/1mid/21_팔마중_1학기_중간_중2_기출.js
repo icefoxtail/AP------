@@ -311,7 +311,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "$x^2 - \\{3y + 2y^2 + x\\} + 3 = x^2 - x - 2y^2 - 3y + 3$\\n$x, y$를 대입하여 연산 시 정수 부분으로 보정됨.\\n$\\therefore 2$"
+    "solution": "$(8y^3+4xy) \\div 4y = 2y^2 + x$ 이므로\\n$x^2 - \\{3y + 2y^2 + x\\} + 3 = x^2 - x - 2y^2 - 3y + 3$ 이다.\\n$x=\\frac{4}{7}, y=\\frac{1}{5}$ 를 대입하여 계산한다."
   },
   {
     "id": 14,
