@@ -311,7 +311,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "$(x+a)(x-b) = x^2+(a-b)x-ab$이므로 $a-b=1, ab=2$임[cite: 740, 742]. $a-b+ab = 1+2=3$[cite: 742]. \\\\ \\therefore 2"
+    "solution": "$(x+a)(x-b) = x^2+(a-b)x-ab$이므로 $a-b=1, ab=2$임. $a-b+ab = 1+2=3$. \\\\ \\therefore 2"
   },
   {
     "id": 14,
@@ -335,7 +335,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "5",
-    "solution": "첫째 항: $xy$ 계수 $14+9=23$[cite: 751]. 둘째 항: $(-2x+3y)^2$에서 $xy$ 계수 $-12$[cite: 753]. 합: $23-12=11$[cite: 754]. \\\\ \\therefore 5"
+    "solution": "첫째 항: $xy$ 계수 $14+9=23$. 둘째 항: $(-2x+3y)^2$에서 $xy$ 계수 $-12$. 합: $23-12=11$. \\\\ \\therefore 5"
   },
   {
     "id": 15,
@@ -359,7 +359,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "1",
-    "solution": "분자: $1002(1001-1)$[cite: 756]. 분모: $(1001-1)(1001+1)$[cite: 756]. 약분하면 $1$[cite: 761]. \\\\ \\therefore 1"
+    "solution": "분자: $1002(1001-1)$. 분모: $(1001-1)(1001+1)$. 약분하면 $1$. \\\\ \\therefore 1"
   },
   {
     "id": 16,
@@ -383,7 +383,7 @@ window.questionBank = [
       "$3x+1$"
     ],
     "answer": "5",
-    "solution": "$6x^2-13x-5 = (2x-5)(3x+1)$[cite: 779]. 인수는 $3x+1$[cite: 772]. \\\\ \\therefore 5"
+    "solution": "$6x^2-13x-5 = (2x-5)(3x+1)$. 인수는 $3x+1$. \\\\ \\therefore 5"
   },
   {
     "id": 17,
@@ -407,7 +407,7 @@ window.questionBank = [
       "$2x^{2}+5x-3=(2x+1)(x-3)$"
     ],
     "answer": "5",
-    "solution": "⑤ $2x^2+5x-3 = (2x-1)(x+3)$이 되어야 하므로 틀림[cite: 783]. \\\\ \\therefore 5"
+    "solution": "⑤ $2x^2+5x-3 = (2x-1)(x+3)$이 되어야 하므로 틀림. \\\\ \\therefore 5"
   },
   {
     "id": 18,
@@ -431,7 +431,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "$9a^2 \\pm 6ab + b^2 = (3a \\pm b)^2$이므로 $\\pm 6$이 적절함[cite: 786, 788]. \\\\ \\therefore 2"
+    "solution": "$9a^2 \\pm 6ab + b^2 = (3a \\pm b)^2$이므로 $\\pm 6$이 적절함. \\\\ \\therefore 2"
   },
   {
     "id": 19,
@@ -455,7 +455,7 @@ window.questionBank = [
       "$(x+4)(x+1)$"
     ],
     "answer": "2",
-    "solution": "$x^2-2x+1-2x+3 = x^2-4x+4$[cite: 802, 804]. $(x-2)^2$으로 인수분해됨[cite: 806]. \\\\ \\therefore 2"
+    "solution": "$x^2-2x+1-2x+3 = x^2-4x+4$. $(x-2)^2$으로 인수분해됨. \\\\ \\therefore 2"
   },
   {
     "id": 20,
@@ -479,7 +479,7 @@ window.questionBank = [
       "$(x+3)(x-6)$"
     ],
     "answer": "1",
-    "solution": "한승: $x^2+3x-18 \\implies$ 상수항 $-18$ 채택[cite: 807, 812]. 수정: $x^2-7x+12 \\implies x$ 계수 $-7$ 채택[cite: 807, 814]. 처음 식: $x^2-7x-18 = (x-9)(x+2)$[cite: 815]. \\\\ \\therefore 1"
+    "solution": "한승: $x^2+3x-18 \\implies$ 상수항 $-18$ 채택. 수정: $x^2-7x+12 \\implies x$ 계수 $-7$ 채택. 처음 식: $x^2-7x-18 = (x-9)(x+2)$. \\\\ \\therefore 1"
   },
   {
     "id": 21,
@@ -496,7 +496,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^{2}+\\sqrt{(-5)^{2}}$을 계산하시오. (4점)",
     "answer": "6",
-    "solution": "$13 - 12 + 5 = 6$[cite: 795, 797, 798].",
+    "solution": "$13 - 12 + 5 = 6$.",
     "choices": []
   },
   {
@@ -514,7 +514,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
     "answer": "$-\\frac{5}{2}a$",
-    "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$[cite: 817, 818, 819, 822].",
+    "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$.",
     "choices": []
   },
   {
@@ -532,7 +532,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
     "answer": "$-40\\sqrt{6}$",
-    "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$[cite: 832, 833]. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$[cite: 834, 835].",
+    "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$.",
     "choices": []
   },
   {
@@ -550,7 +550,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
     "answer": "0",
-    "solution": "$a=1, -1, 5, -5$ 가능[cite: 878, 881, 890, 894]. 모든 $a$의 합은 $0$임[cite: 868, 897].",
+    "solution": "$a=1, -1, 5, -5$ 가능. 모든 $a$의 합은 $0$임.",
     "choices": []
   }
 ];

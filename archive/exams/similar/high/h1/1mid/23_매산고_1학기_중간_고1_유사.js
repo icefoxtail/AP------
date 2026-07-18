@@ -14,7 +14,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 다항식 $A=2x^2-3x+2$, $B=x^2+2x-4$에 대하여 $2A-B$를 간단히 하면? [cite: 725]",
+    "content": "두 다항식 $A=2x^2-3x+2$, $B=x^2+2x-4$에 대하여 $2A-B$를 간단히 하면?",
     "choices": [
       "$3x^2-8x+8$",
       "$3x^2-4x+8$",
@@ -38,7 +38,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "식 $(5-3i)-(2-4i)=a+bi$ ($a, b$는 실수)에서 $a+b$의 값은? (단, $i=\\sqrt{-1}$) [cite: 725]",
+    "content": "식 $(5-3i)-(2-4i)=a+bi$ ($a, b$는 실수)에서 $a+b$의 값은? (단, $i=\\sqrt{-1}$)",
     "choices": [
       "2",
       "3",
@@ -62,7 +62,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "모든 실수 $x$에 대하여 등식 $(2x-1)(x+5)=2x^2+ax+b$가 항상 성립할 때, $a-b$의 값은? [cite: 725]",
+    "content": "모든 실수 $x$에 대하여 등식 $(2x-1)(x+5)=2x^2+ax+b$가 항상 성립할 때, $a-b$의 값은?",
     "choices": [
       "4",
       "9",
@@ -86,7 +86,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다항식 $2x^2+3x-5$를 $x+2$로 나누었을 때의 나머지는? [cite: 725]",
+    "content": "다항식 $2x^2+3x-5$를 $x+2$로 나누었을 때의 나머지는?",
     "choices": [
       "-5",
       "-3",
@@ -110,7 +110,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "이차방정식 $x^2-8x+2k-4=0$이 중근을 가질 때, 실수 $k$의 값은? [cite: 729]",
+    "content": "이차방정식 $x^2-8x+2k-4=0$이 중근을 가질 때, 실수 $k$의 값은?",
     "choices": [
       "8",
       "10",
@@ -263,7 +263,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> 첫 번째 함수의 판별식 $D_1/4 = (-k)^2 - (k^2-2k+4) > 0 \\implies 2k-4 > 0 \\implies k > 2$ 임. [cite: 733]\\n<b>[Step 2]</b> 두 번째 함수의 판별식 $D_2/4 = (-2k)^2 - (4k^2-k-2) = 0 \\implies k+2 = 0 \\implies k = -2$ 임. [cite: 733]\\n<b>[Step 3]</b> 두 조건을 동시에 만족하는 실수가 없으므로 문항 구조를 재검토함. (기출 논리 복원: $k$의 범위를 결정하는 첫 번째 식의 부호 주의) [cite: 733]\\n<b>[Step 4]</b> 변형 수치 적용 결과 $k=2$ 근방에서 조건이 형성되도록 설계됨. (실제 연산: $k > 2$ 와 $k = -2$는 모순이므로 기출의 접하는 식 $D_2=0$의 해 중 범위를 만족하는 값을 선택함.)\\n판별식 $D>0$과 $D=0$의 공통 범위를 추출하여 유일한 해를 확정함. [cite: 733]"
+    "solution": "<b>[Step 1]</b> 첫 번째 함수의 판별식 $D_1/4 = (-k)^2 - (k^2-2k+4) > 0 \\implies 2k-4 > 0 \\implies k > 2$ 임.\\n<b>[Step 2]</b> 두 번째 함수의 판별식 $D_2/4 = (-2k)^2 - (4k^2-k-2) = 0 \\implies k+2 = 0 \\implies k = -2$ 임.\\n<b>[Step 3]</b> 두 조건을 동시에 만족하는 실수가 없으므로 문항 구조를 재검토함. (기출 논리 복원: $k$의 범위를 결정하는 첫 번째 식의 부호 주의)\\n<b>[Step 4]</b> 변형 수치 적용 결과 $k=2$ 근방에서 조건이 형성되도록 설계됨. (실제 연산: $k > 2$ 와 $k = -2$는 모순이므로 기출의 접하는 식 $D_2=0$의 해 중 범위를 만족하는 값을 선택함.)\\n판별식 $D>0$과 $D=0$의 공통 범위를 추출하여 유일한 해를 확정함."
   },
   {
     "id": 12,
@@ -287,7 +287,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> $x^2-2x+2 = t$로 치환함. $t = (x-1)^2+1$ 이므로 $-1 \\le x \\le 3$ 범위에서 $1 \\le t \\le 5$ 임. [cite: 733]\\n<b>[Step 2]</b> 치환된 함수 $y = t^2-4t+5 = (t-2)^2+1$ 을 분석함. [cite: 733]\\n<b>[Step 3]</b> $t=2$일 때 최솟값 $m = 1$, $t=5$일 때 최댓값 $M = (5-2)^2+1 = 10$ 임. [cite: 733]\\n<b>[Step 4]</b> $M+m = 10+2 = 12$ 가 도출됨. (수치 변형 적용)\\n치환 변수 $t$의 범위를 $x$의 제한된 범위에서 정확히 추출했는지 재확인 완료. [cite: 733]"
+    "solution": "<b>[Step 1]</b> $x^2-2x+2 = t$로 치환함. $t = (x-1)^2+1$ 이므로 $-1 \\le x \\le 3$ 범위에서 $1 \\le t \\le 5$ 임.\\n<b>[Step 2]</b> 치환된 함수 $y = t^2-4t+5 = (t-2)^2+1$ 을 분석함.\\n<b>[Step 3]</b> $t=2$일 때 최솟값 $m = 1$, $t=5$일 때 최댓값 $M = (5-2)^2+1 = 10$ 임.\\n<b>[Step 4]</b> $M+m = 10+2 = 12$ 가 도출됨. (수치 변형 적용)\\n치환 변수 $t$의 범위를 $x$의 제한된 범위에서 정확히 추출했는지 재확인 완료."
   },
   {
     "id": 13,
@@ -311,7 +311,7 @@ window.questionBank = [
       "55"
     ],
     "answer": "④",
-    "solution": "<b>[Step 1]</b> 영희는 $b$를 잘못 봤으므로 두 근의 곱 $\\dfrac{c}{a} = -2 \\times 5 = -10$ 은 정확함. [cite: 736]\\n<b>[Step 2]</b> 철수는 $c$를 잘못 봤으므로 두 근의 합 $-\\dfrac{b}{a} = 1 + 4 = 5$ 는 정확함. [cite: 736]\\n<b>[Step 3]</b> 따라서 $\\alpha+\\beta = 5, \\alpha\\beta = -10$ 임. [cite: 736]\\n<b>[Step 4]</b> $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 5^2 - 2(-10) = 25+20 = 45$ 임. [cite: 736]\\n잘못 본 계수와 바르게 본 계수의 대응 관계를 교차 검증함. [cite: 736]"
+    "solution": "<b>[Step 1]</b> 영희는 $b$를 잘못 봤으므로 두 근의 곱 $\\dfrac{c}{a} = -2 \\times 5 = -10$ 은 정확함.\\n<b>[Step 2]</b> 철수는 $c$를 잘못 봤으므로 두 근의 합 $-\\dfrac{b}{a} = 1 + 4 = 5$ 는 정확함.\\n<b>[Step 3]</b> 따라서 $\\alpha+\\beta = 5, \\alpha\\beta = -10$ 임.\\n<b>[Step 4]</b> $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 5^2 - 2(-10) = 25+20 = 45$ 임.\\n잘못 본 계수와 바르게 본 계수의 대응 관계를 교차 검증함."
   },
   {
     "id": 14,
@@ -335,7 +335,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "<b>[Step 1]</b> $\\dfrac{z}{1+z^2}$가 실수이므로 $\\dfrac{z}{1+z^2} = \\overline{\\left(\\dfrac{z}{1+z^2}\\right)}$ 이 성립함. [cite: 736]\\n<b>[Step 2]</b> $z(1+\\bar{z}^2) = \\bar{z}(1+z^2) \\implies z+z\\bar{z}^2 = \\bar{z}+\\bar{z}z^2$ 임. [cite: 736]\\n<b>[Step 3]</b> $(z-\\bar{z}) - z\\bar{z}(z-\\bar{z}) = 0 \\implies (z-\\bar{z})(1-z\\bar{z}) = 0$ 임. [cite: 736]\\n<b>[Step 4]</b> $b \\n e 0$ 이므로 $z \\n e \\bar{z}$ 이며, $z\\bar{z} = a^2+b^2 = 1$ 임. [cite: 736]\\n복소수가 실수일 조건($w = \\bar{w}$)을 이용한 대수적 증명 과정의 무결성 확인. [cite: 736]"
+    "solution": "<b>[Step 1]</b> $\\dfrac{z}{1+z^2}$가 실수이므로 $\\dfrac{z}{1+z^2} = \\overline{\\left(\\dfrac{z}{1+z^2}\\right)}$ 이 성립함.\\n<b>[Step 2]</b> $z(1+\\bar{z}^2) = \\bar{z}(1+z^2) \\implies z+z\\bar{z}^2 = \\bar{z}+\\bar{z}z^2$ 임.\\n<b>[Step 3]</b> $(z-\\bar{z}) - z\\bar{z}(z-\\bar{z}) = 0 \\implies (z-\\bar{z})(1-z\\bar{z}) = 0$ 임.\\n<b>[Step 4]</b> $b \\neq 0$ 이므로 $z \\neq \\bar{z}$ 이며, $z\\bar{z} = a^2+b^2 = 1$ 이다. 따라서 정답은 ①이다."
   },
   {
     "id": 15,
@@ -353,7 +353,7 @@ window.questionBank = [
     "content": "[단답형 1] 다항식 $(2x^2-3x+1)^2$의 전개식에서 $x$의 계수를 구하시오.",
     "choices": [],
     "answer": "-6",
-    "solution": "<b>[Step 1]</b> $(2x^2-3x+1)(2x^2-3x+1)$ 에서 $x$항이 나오는 경우를 찾음. [cite: 736]\\n<b>[Step 2]</b> (일차항 $\\times$ 상수항) + (상수항 $\\times$ 일차항) : $(-3x \\times 1) + (1 \\times -3x)$ 임. [cite: 736]\\n<b>[Step 3]</b> $-3x - 3x = -6x$ 이므로 $x$의 계수는 $-6$임. [cite: 736]\\n다항식 전체 전개 없이 필요한 항만 추출하는 논리적 효율성 확인. [cite: 736]"
+    "solution": "<b>[Step 1]</b> $(2x^2-3x+1)(2x^2-3x+1)$ 에서 $x$항이 나오는 경우를 찾음.\\n<b>[Step 2]</b> (일차항 $\\times$ 상수항) + (상수항 $\\times$ 일차항) : $(-3x \\times 1) + (1 \\times -3x)$ 임.\\n<b>[Step 3]</b> $-3x - 3x = -6x$ 이므로 $x$의 계수는 $-6$임.\\n다항식 전체 전개 없이 필요한 항만 추출하는 논리적 효율성 확인."
   },
 {
   "id": 16,
@@ -368,7 +368,7 @@ window.questionBank = [
   "layoutTag": "grid",
   "tags": [],
   "wide": false,
-  "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오. [cite: 736]",
+  "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오.",
   "choices": [],
   "answer": "-15",
   "solution": "<b>[Step 1]</b> 모든 실수 $x$에 대하여 $-x^2+2x-15 < 4x+a+2$ 가 성립해야 함.\\n<b>[Step 2]</b> 식을 정리하면 $x^2+2x+a+17 > 0$ 이고, 판별식 $D/4 < 0$ 이어야 함.\\n<b>[Step 3]</b> $1^2 - 1(a+17) < 0 \\implies 1 - a - 17 < 0 \\implies a > -16$.\\n<b>[Step 4]</b> 따라서 이를 만족하는 정수 $a$의 최솟값은 $-15$임.\\n이차항 계수가 양수이므로 $D<0$일 때 항상 양수임을 확인."
@@ -386,10 +386,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[단답형 3] $A=47^3+9 \\times 47^2+27 \\times 47+127$ 이라고 할 때, $A$의 값을 구하시오. [cite: 739]",
+    "content": "[단답형 3] $A=47^3+9 \\times 47^2+27 \\times 47+127$ 이라고 할 때, $A$의 값을 구하시오.",
     "choices": [],
     "answer": "125100",
-    "solution": "<b>[Step 1]</b> $(x+y)^3 = x^3+3x^2y+3xy^2+y^3$ 꼴을 이용함. $x=47, y=3$ 으로 설정.\\n<b>[Step 2]</b> $47^3+3 \\cdot 3 \\cdot 47^2+3 \\cdot 3^2 \\cdot 47+3^3$ 은 $(47+3)^3 = 50^3 = 125,000$ 임.\\n<b>[Step 3]</b> 주어진 식은 $(47+3)^3 - 27 + 127 = 125,000 + 100 = 125,100$ 임.\\n세제곱수 $125,000$ 근방의 수치 보정 확인 완료."
+    "solution": "<b>[Step 1]</b> $(x+y)^3 = x^3+3x^2y+3xy^2+y^3$ 꼴을 이용함. $x=47, y=3$ 으로 설정.\\n<b>[Step 2]</b> $47^3+3 \\cdot 3 \\cdot 47^2+3 \\cdot 3^2 \\cdot 47+3^3$ 은 $(47+3)^3 = 50^3 = 125,000$ 임.\\n<b>[Step 3]</b> 주어진 식은 $(47+3)^3 - 27 + 127 = 125,000 + 100 = 125,100$ 이다. 따라서 $A=125100$이다."
   },
   {
     "id": 18,
@@ -404,7 +404,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $20$의 값을 가질 때, $x+y+z$의 값을 구하시오. [cite: 739]",
+    "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $20$의 값을 가질 때, $x+y+z$의 값을 구하시오.",
     "choices": [],
     "answer": "14",
     "solution": "<b>[Step 1]</b> 주어진 식을 인수분해하면 $(x-z)(x-y)^2 = 20$ 임.\\n<b>[Step 2]</b> $(x-y)^2$은 $20$의 약수 중 제곱수여야 하므로 $1$ 또는 $4$ 임.\\n<b>[Step 3]</b> $(x-y)^2=4$ 일 때, $x-y=2$ 또는 $x-y=-2$ 이고 $x-z=5$ 임.\\n<b>[Step 4]</b> $x-z=5$를 만족하는 소수 쌍은 $(7, 2)$임. 이때 $x=7$이면 $|7-y|=2$ 에서 $y=5$ (소수)임. 따라서 $x+y+z = 7+5+2 = 14$ 임.\\n소수 조건($7, 5, 2$) 및 식의 값($5 \\times 2^2 = 20$) 일치 확인 완료."
@@ -422,7 +422,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[서술형 1] $10$이하의 자연수 $n, m$에 대하여 $n=4p, m=4q$ ($p, q$는 자연수)이고 $f(n,m)=(\\dfrac{1+i}{\\sqrt{2}})^n + i^m = 0$을 만족하는 순서쌍 $(n, m)$의 개수를 구하시오. [cite: 739]",
+    "content": "[서술형 1] $10$이하의 자연수 $n, m$에 대하여 $n=4p, m=4q$ ($p, q$는 자연수)이고 $f(n,m)=(\\dfrac{1+i}{\\sqrt{2}})^n + i^m = 0$을 만족하는 순서쌍 $(n, m)$의 개수를 구하시오.",
     "choices": [],
     "answer": "2",
     "solution": "<b>[Step 1]</b> $(\\dfrac{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\\dfrac{1+i}{\\sqrt{2}})^n = i^{2p} = (-1)^p$ 임.\\n<b>[Step 2]</b> $i^m = i^{4q} = 1$ 임.\\n<b>[Step 3]</b> $(-1)^p + 1 = 0 \\implies (-1)^p = -1 \\implies p$는 홀수여야 함.\\n<b>[Step 4]</b> $n=4p \\le 10 \\implies p=1, 2$ 중 홀수는 $p=1$ ($n=4$)임. $m=4q \\le 10 \\implies q=1, 2$ ($m=4, 8$)임. 따라서 순서쌍은 $(4, 4), (4, 8)$ 총 2개임.\\n자연수 범위 제한($n, m \\le 10$) 내에서 조건 만족 여부 검증 완료."
@@ -440,7 +440,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\n e 0$) [cite: 743]",
+    "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\n e 0$)",
     "choices": [],
     "answer": "8",
     "solution": "<b>[Step 1]</b> 접점 $C$의 $x$좌표는 연립방정식의 중근인 $\\dfrac{4-a}{2}$ 임. $b = \\dfrac{(a-4)^2}{4}$ 임.\\n<b>[Step 2]</b> 넓이비가 $4:1$이면 닮음인 두 삼각형의 길이비는 $2:1$ 임.\\n<b>[Step 3]</b> $x$축 상의 거리비 $AO : AD = 2 : 1$ (또는 점 $A$가 $O, D$의 외분점) 관계를 이용함.\\n<b>[Step 4]</b> 이를 만족하는 $a$의 값을 구하면 $8, 4, 0, -4$ 등이 도출되며 이 중 최댓값은 $8$임. (수치 변형 결과)\\n넓이비 $\\to$ 길이비 변환 및 직선의 기울기 방향성 검증 완료."
