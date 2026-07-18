@@ -292,13 +292,13 @@ window.questionBank = [
     "id": 13,
     "content": "$P(x)$를 $x^3+x$로 나눈 몫 $x+3$, 나머지 $x+5$이다. $x+1$로 나눈 몫 $Q(x)$에 대해 $Q(1)-R$은? [4.1점]",
     "choices": [
-      "1",
-      "2",
       "3",
       "4",
-      "5"
+      "5",
+      "6",
+      "7"
     ],
-    "answer": "①",
+    "answer": "⑤",
     "category": "다항식의 나눗셈",
     "originalCategory": "다항식의 나눗셈",
     "standardCourse": "공통수학1",

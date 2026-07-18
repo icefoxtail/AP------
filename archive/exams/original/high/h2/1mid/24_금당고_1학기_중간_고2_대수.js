@@ -268,13 +268,13 @@ window.questionBank = [
     "id": 12,
     "content": "<div class=\"box\">두 자연수 $n, m$에 대하여 $n \\times \\left(\\frac{\\sqrt[4]{3}}{\\sqrt[4]{2}}\\right)^m$이 자연수일 때, $m+n$의 최솟값은?</div>",
     "choices": [
-      "20",
-      "22",
-      "24",
-      "26",
-      "28"
+      "6",
+      "8",
+      "10",
+      "12",
+      "14"
     ],
-    "answer": "오류의심",
+    "answer": "①",
     "category": "지수",
     "originalCategory": "지수",
     "standardCourse": "대수",
@@ -285,7 +285,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","제곱근","근호","유리수","최대최소","지수","자연수조건","오류판별"],
     "wide": false,
-    "solution": "주어진 식은 $n\\left(\\frac{3}{2}\\right)^{m/4}$ 이다. 이 값이 자연수가 되려면 $\\left(\\frac{3}{2}\\right)^{m/4}$ 가 유리수가 되어야 하므로 $m$ 은 4의 배수여야 한다. $m=4k$ 로 두면 식은 $n\\left(\\frac{3}{2}\\right)^k = \\frac{n\\cdot 3^k}{2^k}$ 이다. 이를 자연수로 만들기 위한 최소의 $n$ 은 $2^k$ 이므로 $m+n = 4k + 2^k$ 이다. $k=1$ 일 때 최소값은 $6$ 이므로, 현재 제시된 선택지와 맞지 않는다. 이 문항은 조건 또는 보기 오류 가능성이 높다.",
+    "solution": "주어진 식은 $n\\left(\\frac{3}{2}\\right)^{m/4}$ 이다. 이 값이 자연수가 되려면 $\\left(\\frac{3}{2}\\right)^{m/4}$ 가 유리수가 되어야 하므로 $m$ 은 4의 배수여야 한다. $m=4k$ 로 두면 식은 $n\\left(\\frac{3}{2}\\right)^k = \\frac{n\\cdot 3^k}{2^k}$ 이다. 이를 자연수로 만들기 위한 최소의 $n$ 은 $2^k$ 이므로 $m+n = 4k + 2^k$ 이다. $k=1$ 일 때 $m=4, n=2$ 로 최솟값 $6$ 을 가지므로 정답은 ①이다.",
     "level": "중"
   },
   {

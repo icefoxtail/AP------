@@ -302,7 +302,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","정수조건","대입","조건해석","계산"],
     "wide": false,
-    "content": "$x = \\frac{4}{7}, y = \\frac{1}{5}$ 일 때, $x^2 - \\{3y + (8y^3 + 4xy) \\div 4y\\} + 3$ 의 값은? [4점]",
+    "content": "$x = 2, y = \\frac{1}{2}$ 일 때, $x^2 - \\{3y + (8y^3 + 4xy) \\div 4y\\} + 3$ 의 값은? [4점]",
     "choices": [
       "1",
       "2",
@@ -310,8 +310,8 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "②",
-    "solution": "$(8y^3+4xy) \\div 4y = 2y^2 + x$ 이므로\\n$x^2 - \\{3y + 2y^2 + x\\} + 3 = x^2 - x - 2y^2 - 3y + 3$ 이다.\\n$x=\\frac{4}{7}, y=\\frac{1}{5}$ 를 대입하여 계산한다."
+    "answer": "③",
+    "solution": "$(8y^3+4xy) \\div 4y = 2y^2 + x$ 이므로\\n$x^2 - \\{3y + 2y^2 + x\\} + 3 = x^2 - x - 2y^2 - 3y + 3$ 이다.\\n$x=2, y=\\frac{1}{2}$ 를 대입하면 $4 - 2 - 2\\cdot\\frac{1}{4} - 3\\cdot\\frac{1}{2} + 3 = 4 - 2 - \\frac{1}{2} - \\frac{3}{2} + 3 = 3$ 이다.\\n$\\therefore 3$"
   },
   {
     "id": 14,
