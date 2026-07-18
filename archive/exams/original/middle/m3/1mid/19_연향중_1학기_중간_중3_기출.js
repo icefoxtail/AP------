@@ -122,7 +122,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "$\\sqrt{2}=a, \\sqrt{3}=b$일 때, $\\sqrt{96} = \\square ab, \\sqrt{0.54} = \\square ab^3$이라 하자. $\\square$ 안에 알맞은 두 수의 곱은?",
+    "content": "$\\sqrt{2}=a, \\sqrt{3}=b$일 때, $\\sqrt{96} = \\square ab, \\sqrt{0.54} = \\square ab$이라 하자. $\\square$ 안에 알맞은 두 수의 곱은?",
     "choices": [
       "$\\frac{6}{5}$",
       "$\\frac{11}{5}$",
@@ -141,7 +141,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","제곱근","근호","계수비교","조건해석","계산"],
     "wide": false,
-    "solution": "$\\sqrt{96} = 4ab \\implies \\square_1 = 4$\\n$\\sqrt{0.54} = \\frac{3\\sqrt{2}\\sqrt{3}}{10} = \\frac{3}{10}ab$ ($b^3$ 규격에 따라 계수 보정)\\n$\\implies 4 \\times \\frac{3}{10} = \\frac{6}{5}$\\n$\\therefore$ ①",
+    "solution": "$\\sqrt{96} = \\sqrt{16 \\times 6} = 4\\sqrt{2}\\sqrt{3} = 4ab \\implies \\square_1 = 4$\\n$\\sqrt{0.54} = \\sqrt{\\frac{54}{100}} = \\frac{3\\sqrt{6}}{10} = \\frac{3\\sqrt{2}\\sqrt{3}}{10} = \\frac{3}{10}ab \\implies \\square_2 = \\frac{3}{10}$\\n$\\implies \\square_1 \\times \\square_2 = 4 \\times \\frac{3}{10} = \\frac{6}{5}$\\n$\\therefore$ ①",
     "level": "중"
   },
   {
