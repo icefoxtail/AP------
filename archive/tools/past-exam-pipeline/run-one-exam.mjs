@@ -90,7 +90,7 @@ export async function runOneExam(cfg, manifest) {
     ]
   };
   await writeJson(path.join(reportsDir, "validation_summary.json"), validationSummary);
-  if (manifest.pdfPath) {
+  if (manifest.pdfPath || (Array.isArray(manifest.sourcePageImagePaths) && manifest.sourcePageImagePaths.length > 0)) {
     const helperPath = path.join(thisDir, "helpers", "scanned_exam_pipeline.py");
     try {
       const helperArgs = [
@@ -133,7 +133,7 @@ async function main() {
   console.log(JSON.stringify(result, null, 2));
 }
 
-if (import.meta.url === `file://${process.argv[1].replaceAll("\\", "/")}`) {
+if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) {
   main().catch((error) => {
     console.error(error);
     process.exitCode = 1;

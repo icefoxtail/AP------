@@ -216,20 +216,20 @@ function renderAdminDashboardView() {
 }
 
 function openDischargedStudents() {
-    openAdminStudentList('discharged');
+    openWithdrawalReport();
 }
 
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
-    if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
+    if (r?.success) { await loadData(); openWithdrawalReport(); }
     else toast(r?.message || r?.error || '복구에 실패했습니다.', 'error');
 }
 
 async function hideDischargedStudent(sid) {
     if (!confirm('퇴원생 목록에서 숨길까요?')) return;
     const r = await api.patch(`students/${sid}/hide`, {});
-    if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
+    if (r?.success) { await loadData(); openWithdrawalReport(); }
     else toast(r?.message || r?.error || '목록숨김 처리에 실패했습니다.', 'error');
 }
 
@@ -449,7 +449,7 @@ async function adminEnsureStatusHistoryLoaded(force = false) {
     const loadedAt = state.ui.adminStatusHistoryLoadedAt || 0;
     if (!force && loadedAt && (Date.now() - loadedAt) < 5 * 60 * 1000) return;
     if (adminStatusHistoryInFlight) return adminStatusHistoryInFlight;
-    adminStatusHistoryInFlight = api.get('foundation-logs/status-history?limit=1000')
+    adminStatusHistoryInFlight = api.get('foundation-logs/status-history?limit=10000')
         .then(res => {
             const rows = Array.isArray(res?.data) ? res.data : (Array.isArray(res?.student_status_history) ? res.student_status_history : null);
             if (rows) {
@@ -473,6 +473,150 @@ function adminGetStatusChangeDate(studentId, statusName) {
         if (at > latest) latest = at;
     });
     return latest ? latest.slice(0, 10) : '';
+}
+
+function apWithdrawalSemester(month) {
+    const value = Number(month);
+    return value >= 3 && value <= 7 ? '1학기' : '2학기';
+}
+
+function apGetWithdrawalReportFilters() {
+    if (!state.ui) state.ui = {};
+    const currentYear = String(new Date().getFullYear());
+    if (!state.ui.withdrawalReportFilters) {
+        state.ui.withdrawalReportFilters = { year: currentYear, semester: '', month: '', grade: '' };
+    }
+    return state.ui.withdrawalReportFilters;
+}
+
+function apSetWithdrawalReportFilter(key, value) {
+    const filters = apGetWithdrawalReportFilters();
+    if (!['year', 'semester', 'month', 'grade'].includes(key)) return;
+    filters[key] = String(value || '');
+    if (key === 'month' && filters.month) filters.semester = apWithdrawalSemester(filters.month);
+    renderWithdrawalReportModal();
+    if (typeof requestAnimationFrame === 'function') {
+        requestAnimationFrame(() => document.querySelector(`[data-withdrawal-filter="${key}"]`)?.focus());
+    }
+}
+
+function apResetWithdrawalReportFilters() {
+    state.ui.withdrawalReportFilters = { year: String(new Date().getFullYear()), semester: '', month: '', grade: '' };
+    renderWithdrawalReportModal();
+    if (typeof requestAnimationFrame === 'function') {
+        requestAnimationFrame(() => document.querySelector('[data-withdrawal-reset]')?.focus());
+    }
+}
+
+function apAnnounceWithdrawalReportResults(count) {
+    if (typeof document === 'undefined' || !document.body) return;
+    let live = document.getElementById('ap-withdrawal-live');
+    if (!live) {
+        live = document.createElement('div');
+        live.id = 'ap-withdrawal-live';
+        live.className = 'ap-withdrawal-live';
+        live.setAttribute('aria-live', 'polite');
+        live.setAttribute('aria-atomic', 'true');
+        document.body.appendChild(live);
+    }
+    live.textContent = '';
+    const announce = () => { live.textContent = `퇴원생 조회 결과 ${count}명`; };
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(announce);
+    else announce();
+}
+
+function apBuildWithdrawalReportRows() {
+    return (state.db.students || [])
+        .filter(student => isWithdrawnStudentStatus(student.status))
+        .map(student => {
+            const historyDate = adminGetStatusChangeDate(student.id, '퇴원');
+            const fallbackDate = String(student.withdrawn_at || student.updated_at || student.created_at || '').slice(0, 10);
+            const withdrawnDate = historyDate || fallbackDate;
+            const classMap = adminGetStudentClassMap(student.id);
+            const cls = classMap ? adminGetClassById(classMap.class_id) : null;
+            const month = withdrawnDate ? Number(withdrawnDate.slice(5, 7)) : 0;
+            return {
+                student,
+                withdrawnDate,
+                year: withdrawnDate ? withdrawnDate.slice(0, 4) : '',
+                month: month ? String(month) : '',
+                semester: month ? apWithdrawalSemester(month) : '',
+                grade: String(student.grade || cls?.grade || '').trim(),
+                className: String(cls?.name || '').trim(),
+                teacherName: String(cls?.teacher_name || '').trim()
+            };
+        })
+        .filter(row => row.withdrawnDate)
+        .sort((a, b) => String(b.withdrawnDate).localeCompare(String(a.withdrawnDate)) || String(a.student.name || '').localeCompare(String(b.student.name || ''), 'ko'));
+}
+
+function apWithdrawalReportOption(value, label, selected) {
+    const safeValue = apEscapeHtml(value);
+    return `<option value="${safeValue}"${String(value) === String(selected) ? ' selected' : ''}>${apEscapeHtml(label)}</option>`;
+}
+
+function renderWithdrawalReportModal() {
+    const filters = apGetWithdrawalReportFilters();
+    const allRows = apBuildWithdrawalReportRows();
+    const years = [...new Set(allRows.map(row => row.year).filter(Boolean))].sort((a, b) => b.localeCompare(a));
+    const grades = [...new Set(allRows.map(row => row.grade).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko', { numeric: true }));
+    if (filters.year && !years.includes(filters.year)) years.unshift(filters.year);
+
+    const rows = allRows.filter(row => {
+        if (filters.year && row.year !== filters.year) return false;
+        if (filters.semester && row.semester !== filters.semester) return false;
+        if (filters.month && row.month !== filters.month) return false;
+        if (filters.grade && row.grade !== filters.grade) return false;
+        return true;
+    });
+    const isAdmin = apAdminDashboardRole() === 'admin';
+    const yearOptions = apWithdrawalReportOption('', '전체 연도', filters.year) + years.map(year => apWithdrawalReportOption(year, `${year}년`, filters.year)).join('');
+    const semesterOptions = apWithdrawalReportOption('', '전체 학기', filters.semester)
+        + apWithdrawalReportOption('1학기', '1학기', filters.semester)
+        + apWithdrawalReportOption('2학기', '2학기', filters.semester);
+    const monthOptions = apWithdrawalReportOption('', '전체 월', filters.month)
+        + Array.from({ length: 12 }, (_, index) => apWithdrawalReportOption(String(index + 1), `${index + 1}월`, filters.month)).join('');
+    const gradeOptions = apWithdrawalReportOption('', '전체 학년', filters.grade) + grades.map(grade => apWithdrawalReportOption(grade, grade, filters.grade)).join('');
+
+    const listHtml = rows.map(row => {
+        const student = row.student;
+        const meta = [student.school_name, row.grade, row.className, row.teacherName].filter(Boolean).map(apEscapeHtml).join(' · ');
+        const actions = isAdmin ? `
+            <div class="ap-withdrawal-row__actions">
+                <button class="btn" type="button" onclick="openStudentDetail('${apEscapeHtml(student.id)}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세보기</button>
+                <button class="btn btn-primary" type="button" onclick="restoreDischargedStudent('${apEscapeHtml(student.id)}')">복구</button>
+                <button class="btn" type="button" onclick="hideDischargedStudent('${apEscapeHtml(student.id)}')">숨김</button>
+            </div>` : '';
+        return `
+            <article class="ap-withdrawal-row">
+                <div class="ap-withdrawal-row__date">${apEscapeHtml(row.withdrawnDate)}</div>
+                <div class="ap-withdrawal-row__body">
+                    <div class="ap-withdrawal-row__name">${apEscapeHtml(student.name || '')}</div>
+                    <div class="ap-withdrawal-row__meta">${meta}</div>
+                </div>
+                ${actions}
+            </article>`;
+    }).join('');
+
+    showModal(`퇴원생 현황 (${rows.length}명)`, `
+        <div class="ap-withdrawal-report">
+            <div class="ap-withdrawal-filters" role="group" aria-label="퇴원생 조회 조건">
+                <label><span>연도</span><select data-withdrawal-filter="year" onchange="apSetWithdrawalReportFilter('year', this.value)">${yearOptions}</select></label>
+                <label><span>학기</span><select data-withdrawal-filter="semester" onchange="apSetWithdrawalReportFilter('semester', this.value)">${semesterOptions}</select></label>
+                <label><span>월</span><select data-withdrawal-filter="month" onchange="apSetWithdrawalReportFilter('month', this.value)">${monthOptions}</select></label>
+                <label><span>학년</span><select data-withdrawal-filter="grade" onchange="apSetWithdrawalReportFilter('grade', this.value)">${gradeOptions}</select></label>
+                <button class="btn ap-withdrawal-filters__reset" data-withdrawal-reset type="button" onclick="apResetWithdrawalReportFilters()">초기화</button>
+            </div>
+            <div class="ap-withdrawal-report__summary" aria-live="polite">선택 조건 · ${rows.length}명</div>
+            <div class="ap-withdrawal-list">${listHtml || '<div class="ap-withdrawal-empty">선택한 조건의 퇴원생이 없습니다.</div>'}</div>
+        </div>
+    `);
+    apAnnounceWithdrawalReportResults(rows.length);
+}
+
+async function openWithdrawalReport() {
+    await adminEnsureStatusHistoryLoaded();
+    renderWithdrawalReportModal();
 }
 
 function adminGetStudentClassMap(studentId) {
@@ -700,7 +844,7 @@ function renderAdminStudentOverviewPanel(data) {
             <div class="ap-owner-stat-grid">
                 ${renderAdminOverviewStatCard('재원생', data.activeStudents.length, 'blue', icoActive, "openAdminStudentGradeModal('active')", adminBuildGradeHoverRows(data.activeStudents))}
                 ${renderAdminOverviewStatCard('최근 등록', data.recentStudents.length, 'green', icoRecent, "openAdminStudentGradeModal('new')", adminBuildGradeHoverRows(data.recentStudents))}
-                ${renderAdminOverviewStatCard('휴원·퇴원', leaveCount + dischargedCount, 'amber', icoLeave, "openAdminStudentList('discharged')", [{ label: '휴원', value: leaveCount }, { label: '퇴원', value: dischargedCount }])}
+                ${renderAdminOverviewStatCard('휴원·퇴원', leaveCount + dischargedCount, 'amber', icoLeave, "openWithdrawalReport()", [{ label: '휴원', value: leaveCount }, { label: '퇴원', value: dischargedCount }])}
             </div>
         </div>
     `;

@@ -6,11 +6,16 @@ import { scanJsBank, writeJsBankInventory, parseArgs } from "./scan-js-bank.mjs"
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "../../../..");
 const REPORT_DIR = path.join(ROOT_DIR, "archive", "_generated", "js-bank-cleanup", "reports");
-const MASTER_PATH = path.join(ROOT_DIR, "rules", "# JS아카이브 표준단원키 마스터 테이블.md");
+const MASTER_PATH_CANDIDATES = [
+  path.join(ROOT_DIR, "rules", "# JS아카이브 표준단원키 마스터 테이블.md"),
+  path.join(ROOT_DIR, "docs", "rules", "# JS아카이브 표준단원키 마스터 테이블.md"),
+];
+const MASTER_PATH = MASTER_PATH_CANDIDATES.find((candidate) => fs.existsSync(candidate));
 const ALLOWED_QUESTION_TYPE = new Set(["", "객관식", "단답형", "주관식", "서술형"]);
 const ALLOWED_LAYOUT_TAG = new Set(["", "grid", "subjective-2up", "subjective-4up", "fullwidth"]);
 
 function parseMasterUnits() {
+  if (!MASTER_PATH) throw new Error(`standard-unit master table not found: ${MASTER_PATH_CANDIDATES.join(", ")}`);
   const text = fs.readFileSync(MASTER_PATH, "utf8");
   const units = new Map();
   const rowRegex = /^\|\s*([^|\s][^|]*?)\s*\|\s*([^|]+?)\s*\|\s*(\d+)\s*\|$/gm;

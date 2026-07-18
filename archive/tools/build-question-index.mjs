@@ -203,10 +203,25 @@ function getTrackedExamFiles() {
     return out.toString('utf8').split('\0').map(s => s.trim()).filter(Boolean).map(rel => path.join(repoRoot, rel));
 }
 
+function getDbExamFiles() {
+    if (!fs.existsSync(dbPath)) return [];
+    const context = runArchiveScript(dbPath, fs.readFileSync(dbPath, 'utf8'));
+    const exams = context.window.mainDB?.exams;
+    if (!Array.isArray(exams)) return [];
+    return exams
+        .map(exam => normalizePath(exam?.file))
+        .filter(Boolean)
+        .map(rel => path.join(examsDir, rel))
+        .filter(file => fs.existsSync(file));
+}
+
 function collectExamFiles() {
     try {
         const tracked = getTrackedExamFiles();
-        if (tracked.length) return { files: tracked.sort(), scope: 'git-tracked' };
+        if (tracked.length) {
+            const official = [...new Set([...tracked, ...getDbExamFiles()])];
+            return { files: official.sort(), scope: 'git-tracked + db-listed' };
+        }
     } catch (error) {
         // fall through to directory walk
     }

@@ -837,6 +837,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('memo', '메모', "closeAppDrawer(); openTodoMemoModal();")}
         ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
         ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
+        ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openWithdrawalReport==='function') openWithdrawalReport(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
 
         ${drawerSection('수업 자료')}

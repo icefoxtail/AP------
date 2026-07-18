@@ -1976,6 +1976,31 @@ const existingProgress = existingRecord
         <button class="btn apms-button apms-button--primary btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:500; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>`);
 }
 
+function syncClassDailyRecordToState(classId, dateStr, record, progressRows) {
+    const cid = String(classId);
+    const d = normalizeClassroomDate(dateStr) || String(dateStr || '');
+    if (!record || !cid || !d) return false;
+
+    if (!Array.isArray(state.db.class_daily_records)) state.db.class_daily_records = [];
+    if (!Array.isArray(state.db.class_daily_progress)) state.db.class_daily_progress = [];
+
+    // 서버는 반·날짜당 기록 1건을 유지하고 진도는 지웠다가 새 id로 다시 넣으므로, 옛 진도는 record_id로 걷어내야 남지 않는다.
+    const staleIds = new Set(state.db.class_daily_records
+        .filter(r => String(r.class_id) === cid && String(r.date || '') === d)
+        .map(r => String(r.id || '')));
+    staleIds.add(String(record.id || ''));
+
+    state.db.class_daily_records = state.db.class_daily_records
+        .filter(r => !(String(r.class_id) === cid && String(r.date || '') === d))
+        .concat([record]);
+    state.db.class_daily_progress = state.db.class_daily_progress
+        .filter(p => !staleIds.has(String(p.record_id || '')))
+        .concat(Array.isArray(progressRows) ? progressRows : []);
+
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+    return true;
+}
+
 async function saveClassRecord(cid, dateStr) {
     const checks = document.querySelectorAll('.record-tb-check:checked');
     const progresses = [];
@@ -1991,7 +2016,16 @@ async function saveClassRecord(cid, dateStr) {
 
     try {
         const r = await api.post('class-daily-records', payload);
-        if (r?.success) { toast('저장 완료', 'success'); closeModal(true); await loadData(); renderClass(cid); return; }
+        if (r?.success) {
+            toast('저장 완료', 'success');
+            closeModal(true);
+            // 저장 응답이 곧 확정된 행이라 전체 재조회 없이 반영한다. 행을 돌려주지 않는 구버전 워커에서만 재조회로 되돌린다.
+            if (!syncClassDailyRecordToState(cid, dateStr, r.record, r.progress)) {
+                await loadData();
+                renderClass(cid);
+            }
+            return;
+        }
         toast(r?.message || r?.error || '저장 실패', 'error');
     } catch (e) {
         console.error('[saveClassRecord] failed:', e);

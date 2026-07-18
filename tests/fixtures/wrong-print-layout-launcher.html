@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Wrong print layout QA launcher</title></head>
+<body>
+<script>
+  const overflow = new URLSearchParams(location.search).get('overflow') === '1';
+  const archiveFile = overflow
+    ? `${location.origin}/tests/fixtures/wrong-print-overflow-bank.js?v=${Date.now()}`
+    : 'original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js';
+  const order = overflow ? [1, 2, 3] : [22, 21, 20, 21, 20, 22];
+  const payload = {
+    mode: 'student',
+    printTitle: '2up 교차 검수',
+    className: 'QA',
+    createdDate: '2026-07-17',
+    options: { pageBreakByStudent: false, includeHomeworkCheckBox: false },
+    students: [{
+      studentName: '검수 학생',
+      wrongItems: order.map(questionNo => ({
+        sourceArchiveFile: archiveFile,
+        archiveFile,
+        questionNo,
+        sourceQuestionNo: questionNo,
+        examTitle: '2up 배치 검수'
+      }))
+    }]
+  };
+  sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify(payload));
+  const mode = new URLSearchParams(location.search).get('mode') || 'exam';
+  location.replace('/apmath/wrong_print_engine.html?fit=screen&mode=' + encodeURIComponent(mode) + '&qa=' + Date.now());
+</script>
+</body>
+</html>

@@ -88,7 +88,8 @@ export async function handleFoundationLogs(request, env, teacher, path, url, bod
       params.push(...classIds);
     }
 
-    const limit = parseLimit(url, isAdminUser(teacher) ? 1000 : 500, 1000);
+    const historyLimitMax = sub === 'status-history' ? 10000 : 1000;
+    const limit = parseLimit(url, isAdminUser(teacher) ? 1000 : 500, historyLimitMax);
     const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY changed_at DESC LIMIT ${limit}`, params);
     return jsonResponse({ success: true, data });
   }

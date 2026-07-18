@@ -4,8 +4,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-import fitz
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 
 
 VISUAL_ASSET_MAX_PAGE_AREA_RATIO = 0.40
@@ -39,6 +38,8 @@ def safe_rel(path, root):
 
 
 def render_pdf(pdf_path, out_dir, prefix, dpi):
+    import fitz
+
     out_dir.mkdir(parents=True, exist_ok=True)
     doc = fitz.open(pdf_path)
     matrix = fitz.Matrix(dpi / 72, dpi / 72)
@@ -56,6 +57,46 @@ def render_pdf(pdf_path, out_dir, prefix, dpi):
             "height": pix.height,
         })
     return items
+
+
+def render_page_images(image_paths, out_dir, prefix, dpi):
+    out_dir.mkdir(parents=True, exist_ok=True)
+    items = []
+    max_long_edge = max(1800, round(2800 * dpi / 220))
+    for index, source in enumerate(image_paths):
+        source_path = Path(source)
+        if not source_path.exists():
+            raise FileNotFoundError(f"source page image not found: {source_path}")
+        page_no = index + 1
+        out_file = out_dir / f"{prefix}_p{page_no:03d}.png"
+        with Image.open(source_path) as image:
+            image = ImageOps.exif_transpose(image).convert("RGB")
+            source_width, source_height = image.size
+            if max(image.size) > max_long_edge:
+                scale = max_long_edge / max(image.size)
+                image = image.resize(
+                    (round(image.width * scale), round(image.height * scale)),
+                    Image.Resampling.LANCZOS,
+                )
+            image.save(out_file, format="PNG", optimize=False)
+            width, height = image.size
+        items.append({
+            "pageNo": page_no,
+            "imagePath": str(out_file),
+            "relativeImagePath": str(out_file.relative_to(out_dir.parent)).replace("\\", "/"),
+            "sourceImagePath": str(source_path),
+            "sourceWidth": source_width,
+            "sourceHeight": source_height,
+            "width": width,
+            "height": height,
+        })
+    return items
+
+
+def source_reference(manifest):
+    if manifest.get("pdfPath"):
+        return manifest["pdfPath"]
+    return manifest.get("sourceGroup") or "scanned_page_images"
 
 
 def fixed_4page_20_plus_4_boxes():
@@ -286,7 +327,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root):
                 "visualAssetBBoxOnPage": bbox,
                 "visualAssetStatus": "bbox_pending_crop" if has_visual and bbox_ok else ("bbox_manual_review" if has_visual else "no_visual_asset_required"),
                 "examId": manifest["examId"],
-                "sourceFile": manifest["pdfPath"],
+                "sourceFile": source_reference(manifest),
                 "sourceQuestionNo": display_no,
                 "displayNo": display_no,
                 "pageNo": page_no,
@@ -353,7 +394,7 @@ def build_skeleton_questions(manifest, page_items):
             "visualAssetBBoxOnPage": None,
             "visualAssetStatus": "vision_extract_required",
             "examId": manifest["examId"],
-            "sourceFile": manifest["pdfPath"],
+            "sourceFile": source_reference(manifest),
             "sourceQuestionNo": str(qid),
             "displayNo": str(qid),
             "pageNo": page_meta.get("pageNo", 0),
@@ -668,12 +709,21 @@ def main():
     root.mkdir(parents=True, exist_ok=True)
     reports.mkdir(parents=True, exist_ok=True)
 
-    page_items = render_pdf(Path(manifest["pdfPath"]), root / "pages", "page", args.dpi)
+    source_page_images = manifest.get("sourcePageImagePaths") or []
+    if manifest.get("pdfPath"):
+        page_items = render_pdf(Path(manifest["pdfPath"]), root / "pages", "page", args.dpi)
+        source_mode = "pdf"
+    elif source_page_images:
+        page_items = render_page_images(source_page_images, root / "pages", "page", args.dpi)
+        source_mode = "page_images"
+    else:
+        raise ValueError("manifest must provide pdfPath or non-empty sourcePageImagePaths")
     write_json(reports / "page_render_report.json", {
         "examId": manifest["examId"],
         "generatedAt": now_iso(),
         "status": "ok",
         "dpi": args.dpi,
+        "sourceMode": source_mode,
         "pageCount": len(page_items),
         "items": page_items,
     })
