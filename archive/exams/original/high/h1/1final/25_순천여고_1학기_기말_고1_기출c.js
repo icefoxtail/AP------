@@ -500,7 +500,7 @@ window.questionBank = [
     "$34$"
   ],
     answer: "④",
-    solution: "[키포인트] 케일리-해밀턴 정리를 통해 $A^2+A+E=O$임을 확인한다.\\n\\n$A^2+A+E=O$이므로 $A^3=E$이고 주기는 $3$이다.\\n$E+A+A^2=O$이므로 $n=2, 5, 8, \\dots$ 즉 $n=3k-1$ 꼴이다.\\n$3k-1 \\le 100 \\implies 3k \\le 101 \\implies k \\le 33$이므로 $33$개이다.\\n\\n따라서 정답은 ④이다."
+    solution: "[키포인트] $A^2$을 직접 계산하여 $A^2+A+E=O$임을 확인한다.\\n\\n$A^2 = \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix}\\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix} = \\begin{pmatrix} -2 & -3 \\\\ 1 & 1 \\end{pmatrix}$이다.\\n$A^2+A+E = \\begin{pmatrix} -2 & -3 \\\\ 1 & 1 \\end{pmatrix} + \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix} + \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = O$이다.\\n따라서 $A^3 = A \\cdot A^2 = A(-A-E) = -A^2-A = E$이므로 $A$의 거듭제곱은 주기가 $3$이다.\\n또한 $E+A+A^2=O$이므로, $E+A+A^2+\\dots+A^n=O$이려면 항의 개수 $(n+1)$이 $3$의 배수, 즉 $n=2, 5, 8, \\dots$ 인 $n=3k-1$ 꼴이어야 한다.\\n$3k-1 \\le 100 \\implies 3k \\le 101 \\implies k \\le 33$이므로 $33$개이다.\\n\\n따라서 정답은 ④이다."
   },
   {
     id: 17,

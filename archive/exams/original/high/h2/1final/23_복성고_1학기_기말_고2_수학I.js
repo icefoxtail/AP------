@@ -265,7 +265,7 @@ window.questionBank = [
       "$\\dfrac{8\\sqrt7}{7}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 헤론의 공식으로 넓이를 구한 뒤 $R=\\dfrac{abc}{4S}$를 사용한다.\n조건 정리: 세 변의 길이는 $4,5,6$이다.\n풀이 방향: 반둘레와 넓이를 구하고 외접원의 반지름 공식에 대입한다.\n정석 풀이: 반둘레는 $s=\\dfrac{4+5+6}{2}=\\dfrac{15}{2}$이다.\n넓이 $S$는 $S=\\sqrt{\\dfrac{15}{2}\\cdot\\dfrac{7}{2}\\cdot\\dfrac{5}{2}\\cdot\\dfrac{3}{2}}=\\dfrac{15\\sqrt7}{4}$이다.\n따라서 $R=\\dfrac{4\\cdot5\\cdot6}{4S}=\\dfrac{120}{15\\sqrt7}=\\dfrac{8}{\\sqrt7}=\\dfrac{8\\sqrt7}{7}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 코사인법칙으로 한 각의 크기를 구한 뒤 사인법칙으로 외접원의 반지름을 구한다.\n조건 정리: 세 변의 길이는 $a=4, b=5, c=6$이다.\n정석 풀이: 코사인법칙에 의해 $\\cos A = \\dfrac{b^2+c^2-a^2}{2bc} = \\dfrac{25+36-16}{60} = \\dfrac{3}{4}$이다.\n$0 < A < \\pi$에서 $\\sin A > 0$이므로 $\\sin A = \\sqrt{1-\\left(\\dfrac{3}{4}\\right)^2} = \\dfrac{\\sqrt{7}}{4}$이다.\n사인법칙 $\\dfrac{a}{\\sin A} = 2R$에서 $R = \\dfrac{a}{2\\sin A} = \\dfrac{4}{2\\cdot\\frac{\\sqrt{7}}{4}} = \\dfrac{8}{\\sqrt{7}} = \\dfrac{8\\sqrt{7}}{7}$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 12,

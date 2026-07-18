@@ -71,7 +71,7 @@ window.questionBank = [
     content: "세 변의 길이가 $a=5$, $b=6$, $c=7$인 $\\triangle \\mathrm{ABC}$의 넓이를 구하시오.",
     choices: [],
     answer: "$6\\sqrt{6}$",
-    solution: "[키포인트] 세 변의 길이가 주어졌을 때 코사인법칙으로 코사인 값을 구한 뒤 사인 값으로 변환하여 넓이를 구하거나 헤론의 공식을 이용한다.\\n조건 정리: $a=5, b=6, c=7$\\n풀이 방향: 코사인법칙을 이용해 $\\cos C$를 구하고 $\\sin C$를 찾아 넓이 공식에 대입한다.\\n정석 풀이: \\n1) 코사인법칙 변형:\\n$\\cos C = \\dfrac{5^2 + 6^2 - 7^2}{2 \\cdot 5 \\cdot 6} = \\dfrac{25 + 36 - 49}{60} = \\dfrac{12}{60} = \\dfrac{1}{5}$\\n2) $\\sin C$ 구하기:\\n$\\sin C = \\sqrt{1 - \\cos^2 C} = \\sqrt{1 - \\dfrac{1}{25}} = \\sqrt{\\dfrac{24}{25}} = \\dfrac{2\\sqrt{6}}{5}$\\n3) 삼각형의 넓이 $S$:\\n$S = \\dfrac{1}{2}ab \\sin C = \\dfrac{1}{2} \\cdot 5 \\cdot 6 \\cdot \\dfrac{2\\sqrt{6}}{5} = 6\\sqrt{6}$\\n(또는 헤론의 공식: $s = \\dfrac{5+6+7}{2} = 9$, $S = \\sqrt{9(9-5)(9-6)(9-7)} = \\sqrt{9 \\cdot 4 \\cdot 3 \\cdot 2} = 6\\sqrt{6}$)\\n따라서 구하는 넓이는 $6\\sqrt{6}$이다."
+    solution: "[키포인트] 세 변의 길이가 주어졌을 때 코사인법칙으로 코사인 값을 구한 뒤 사인 값으로 변환하여 넓이를 구한다.\\n조건 정리: $a=5, b=6, c=7$\\n풀이 방향: 코사인법칙을 이용해 $\\cos C$를 구하고 $\\sin C$를 찾아 넓이 공식에 대입한다.\\n정석 풀이: \\n1) 코사인법칙 변형:\\n$\\cos C = \\dfrac{5^2 + 6^2 - 7^2}{2 \\cdot 5 \\cdot 6} = \\dfrac{25 + 36 - 49}{60} = \\dfrac{12}{60} = \\dfrac{1}{5}$\\n2) $\\sin C$ 구하기:\\n$\\sin C = \\sqrt{1 - \\cos^2 C} = \\sqrt{1 - \\dfrac{1}{25}} = \\sqrt{\\dfrac{24}{25}} = \\dfrac{2\\sqrt{6}}{5}$\\n3) 삼각형의 넓이 $S$:\\n$S = \\dfrac{1}{2}ab \\sin C = \\dfrac{1}{2} \\cdot 5 \\cdot 6 \\cdot \\dfrac{2\\sqrt{6}}{5} = 6\\sqrt{6}$\\n따라서 구하는 넓이는 $6\\sqrt{6}$이다."
   },
   {
     id: 1,

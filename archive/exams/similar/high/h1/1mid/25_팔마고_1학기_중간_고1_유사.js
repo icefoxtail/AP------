@@ -254,7 +254,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "방정식 $x^{2}+x+1=0$의 한 허근을 $\\omega$라 하자. 자연수 $n$에 대하여 $f(n)=\\frac{\\omega^{n}}{1+\\omega^{2n}}$이라 할 때, $\\sum_{k=1}^{30} f(k)$의 값은? [4.3점]",
+    "content": "방정식 $x^{2}+x+1=0$의 한 허근을 $\\omega$라 하자. 자연수 $n$에 대하여 $f(n)=\\frac{\\omega^{n}}{1+\\omega^{2n}}$이라 할 때, $f(1)+f(2)+\\cdots+f(30)$의 값은? [4.3점]",
     "choices": [
       "$-15$",
       "$-10$",
@@ -263,7 +263,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "①",
-    "solution": "$\\omega^2+\\omega+1=0$이므로 $\\omega^3=1$이고, $1+\\omega^2=-\\omega$, $1+\\omega=-\\omega^2$이다.\n또한 $\\omega^{2n}$은 $1,\\omega,\\omega^2$ 중 하나이므로 $1+\\omega^{2n}=0$이 되는 경우는 없다.\n\n이제 $n$을 $3$으로 나눈 나머지에 따라 $f(n)$을 구하면,\n\n(1) $n\\equiv 1 \\pmod 3$일 때\n$f(n)=\\frac{\\omega}{1+\\omega^2}=\\frac{\\omega}{-\\omega}=-1$\n\n(2) $n\\equiv 2 \\pmod 3$일 때\n$f(n)=\\frac{\\omega^2}{1+\\omega}=\\frac{\\omega^2}{-\\omega^2}=-1$\n\n(3) $n\\equiv 0 \\pmod 3$일 때\n$f(n)=\\frac{1}{1+1}=\\frac{1}{2}$\n\n따라서 수열 $\\{f(n)\\}$은 주기 $3$을 가지며,\n$f(1)+f(2)+f(3)=-1-1+\\frac{1}{2}=-\\frac{3}{2}$\n\n$1$부터 $30$까지는 $10$주기이므로\n$\\sum_{k=1}^{30} f(k)=10\\cdot\\left(-\\frac{3}{2}\\right)=-15$\n\n따라서 정답은 ①이다."
+    "solution": "$\\omega^2+\\omega+1=0$이므로 $\\omega^3=1$이고, $1+\\omega^2=-\\omega$, $1+\\omega=-\\omega^2$이다.\n또한 $\\omega^{2n}$은 $1,\\omega,\\omega^2$ 중 하나이므로 $1+\\omega^{2n}=0$이 되는 경우는 없다.\n\n이제 $n$을 $3$으로 나눈 나머지에 따라 $f(n)$을 구하면,\n\n(1) $n\\equiv 1 \\pmod 3$일 때\n$f(n)=\\frac{\\omega}{1+\\omega^2}=\\frac{\\omega}{-\\omega}=-1$\n\n(2) $n\\equiv 2 \\pmod 3$일 때\n$f(n)=\\frac{\\omega^2}{1+\\omega}=\\frac{\\omega^2}{-\\omega^2}=-1$\n\n(3) $n\\equiv 0 \\pmod 3$일 때\n$f(n)=\\frac{1}{1+1}=\\frac{1}{2}$\n\n따라서 수열 $\\{f(n)\\}$은 주기 $3$을 가지며,\n$f(1)+f(2)+f(3)=-1-1+\\frac{1}{2}=-\\frac{3}{2}$\n\n$1$부터 $30$까지는 $10$주기이므로\n$f(1)+f(2)+\\cdots+f(30)=10\\cdot\\left(-\\frac{3}{2}\\right)=-15$\n\n따라서 정답은 ①이다."
   },
   {
     "id": 12,

@@ -464,9 +464,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["서술형"],
     "wide": false,
-    "content": "[서술형 4] $f(n) = \\sqrt{n+1} + \\sqrt{n}$일 때, $3 < \\sum_{k=1}^{n} \\frac{1}{f(k)} < 10$을 만족하는 자연수 $n$의 개수를 구하시오. [6점]",
+    "content": "[서술형 4] $f(n) = \\sqrt{n+1} + \\sqrt{n}$일 때, $3 < \\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} < 10$을 만족하는 자연수 $n$의 개수를 구하시오. [6점]",
     "choices": [],
     "answer": "104개",
-    "solution": "[키포인트] 유리화를 통해 연쇄 소거를 이용한다.\\n1단계: $\\sum = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1} < 11$에서 $15 < n < 120$이므로 104개이다."
+    "solution": "[키포인트] 유리화를 통해 연쇄 소거를 이용한다.\\n1단계: $\\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1} < 11$에서 $15 < n < 120$이므로 104개이다."
   }
 ];
