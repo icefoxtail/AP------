@@ -8,12 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         window.MathJax = {
+            loader: { paths: { mathjax: '/archive/vendor/mathjax', 'mathjax-tex': '/archive/vendor/mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
+            output: {
+                font: 'mathjax-tex',
+                displayOverflow: 'linebreak',
+                linebreaks: { inline: true, width: '100%', lineleading: 0.2 }
+            },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <style>
         :root {
             --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
@@ -640,7 +647,7 @@ function hasVisualAsset(q) {
     );
 }
 
-const ARCHIVE_ASSET_VERSION = '20260702';
+const ARCHIVE_ASSET_VERSION = '20260714';
 function withArchiveAssetVersion(src) {
     return `${src}?v=${ARCHIVE_ASSET_VERSION}`;
 }
@@ -2071,6 +2078,8 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
  */
 window.onload = async () => {
     restoreApmathSessionFromHash();
+    await window.__AP_MATHJAX_READY__;
+    if (window.MathJax?.startup?.promise) await window.MathJax.startup.promise;
     mixerDbLoadFailed = false;
     const s = document.createElement('script');
     s.src = withArchiveAssetVersion('db.js');

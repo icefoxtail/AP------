@@ -426,6 +426,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
   if (method === 'PATCH' && id) {
     if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     if (path[3] === 'restore') {
+      if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
       const current = await env.DB.prepare('SELECT status FROM students WHERE id = ? LIMIT 1').bind(id).first();
       await env.DB.batch([
         env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id),
@@ -439,6 +440,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
       return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
     }
     if (path[3] === 'hide') {
+      if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
       await env.DB.prepare("UPDATE students SET status = '숨김', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
       const bundle = await getStudentMutationBundle(env, id);
       return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });

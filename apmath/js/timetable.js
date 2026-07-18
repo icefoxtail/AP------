@@ -3713,11 +3713,25 @@ function apTimetableMonthControlsHtml() {
 
 function apTimetableSavedMonthKeys() {
     var archive = getTimetableMonthArchiveState();
-    return (archive.months || []).map(function(row) { return String(row.month_key || ''); }).filter(Boolean).sort();
+    var seen = {};
+    return (archive.months || []).map(function(row) {
+        return String(row && row.month_key || '');
+    }).filter(function(monthKey) {
+        if (!monthKey || seen[monthKey]) return false;
+        seen[monthKey] = true;
+        return true;
+    }).sort();
+}
+
+function apTimetableNavigableMonthKeys() {
+    var keys = apTimetableSavedMonthKeys();
+    var current = apTimetableCurrentMonthKey();
+    if (keys.indexOf(current) === -1) keys.push(current);
+    return keys.sort();
 }
 
 function apFindAdjacentMonth(direction) {
-    var keys = apTimetableSavedMonthKeys();
+    var keys = apTimetableNavigableMonthKeys();
     if (!keys.length) return '';
     var archive = getTimetableMonthArchiveState();
     var current = archive.active ? archive.monthKey : apTimetableCurrentMonthKey();

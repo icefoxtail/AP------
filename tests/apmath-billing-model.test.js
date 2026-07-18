@@ -104,22 +104,27 @@ const AUDIT_QUERIES = {
     WHERE external_provider IS NOT NULL AND external_transaction_id IS NOT NULL AND status = 'completed'
     GROUP BY external_provider, external_transaction_id
     HAVING COUNT(*) > 1`,
-  // 정산 drift — 현재 구현 산식(완료 유입 - 완료 환불) 기준으로 paid_amount 불일치 행 탐지.
-  // 주의: carryover_out 미반영은 현행 구현의 알려진 격차(LOOP 4)이며 이 쿼리도 동일 산식을 사용한다.
+  // 정산 drift — 계약 산식(완료 유입 - 완료 환불 - carryover_out) 기준 paid_amount 불일치 행 탐지.
   settlement_drift: `
     SELECT p.id, p.paid_amount AS stored, MIN(p.total_amount, MAX(
       COALESCE((SELECT SUM(pt.amount) FROM payment_transactions pt
         WHERE pt.payment_id = p.id AND pt.status = 'completed'
           AND pt.transaction_type IN ('payment', 'partial_payment', 'carryover_in')), 0)
       - COALESCE((SELECT SUM(rr.refund_amount) FROM refund_records rr
-        WHERE rr.payment_id = p.id AND rr.status = 'completed'), 0), 0)) AS expected
+        WHERE rr.payment_id = p.id AND rr.status = 'completed'), 0)
+      - COALESCE((SELECT SUM(pt.amount) FROM payment_transactions pt
+        WHERE pt.payment_id = p.id AND pt.status = 'completed'
+          AND pt.transaction_type IN ('carryover_out')), 0), 0)) AS expected
     FROM payments p
     WHERE p.paid_amount <> MIN(p.total_amount, MAX(
       COALESCE((SELECT SUM(pt.amount) FROM payment_transactions pt
         WHERE pt.payment_id = p.id AND pt.status = 'completed'
           AND pt.transaction_type IN ('payment', 'partial_payment', 'carryover_in')), 0)
       - COALESCE((SELECT SUM(rr.refund_amount) FROM refund_records rr
-        WHERE rr.payment_id = p.id AND rr.status = 'completed'), 0), 0))`
+        WHERE rr.payment_id = p.id AND rr.status = 'completed'), 0)
+      - COALESCE((SELECT SUM(pt.amount) FROM payment_transactions pt
+        WHERE pt.payment_id = p.id AND pt.status = 'completed'
+          AND pt.transaction_type IN ('carryover_out')), 0), 0))`
 };
 
 async function run() {
@@ -261,11 +266,10 @@ async function run() {
     row = runSettlement(db, routeModule, 'pay_2');
     assert.deepStrictEqual(row, { paid_amount: 200000, status: 'paid', paid_date: '2026-07-03' });
 
-    // B-7. [KNOWN GAP — LOOP 4에서 해소] carryover_out이 아직 유출로 차감되지 않는다.
-    // 불변식 계약(§A-6)은 차감을 요구한다. LOOP 4 구현 시 이 기대값을 'partial/100000'으로 교체해야 한다.
+    // B-7. carryover_out은 완료 유출로 차감된다 (LOOP 4에서 계약대로 구현 — KNOWN GAP 해소).
     insertTransaction(db, { id: 'tx_5', payment_id: 'pay_2', student_id: 'stu_2', transaction_type: 'carryover_out', amount: 100000, transaction_date: '2026-07-11' });
     row = runSettlement(db, routeModule, 'pay_2');
-    assert.strictEqual(row.status, 'paid', 'carryover_out 반영이 구현되면 이 KNOWN GAP 테스트를 계약 기대값으로 교체할 것');
+    assert.deepStrictEqual(row, { paid_amount: 100000, status: 'partial', paid_date: null });
 
     // ════ C. 감사 SQL — 깨끗한 DB에서는 전부 0행 ════
     // (pay_2는 KNOWN GAP과 무관: drift 감사도 현행 산식을 사용하므로 0행이어야 함)

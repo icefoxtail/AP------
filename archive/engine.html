@@ -6,12 +6,20 @@
     <title>JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)</title>
     <script>
         window.MathJax = {
+            loader: { paths: { mathjax: '/archive/vendor/mathjax', 'mathjax-tex': '/archive/vendor/mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
+            output: {
+                font: 'mathjax-tex',
+                displayOverflow: 'linebreak',
+                linebreaks: { inline: true, width: '100%', lineleading: 0.2 }
+            },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
+    <script src="print_guard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
@@ -158,12 +166,25 @@
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
 
+        .subjective-2up-layout { flex: 1 1 0; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; overflow: hidden; }
+        .subjective-2up-col { display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; padding: 0 12px; }
+        .subjective-2up-col + .subjective-2up-col { border-left: 1px solid #000; }
+        .subjective-2up-side .q-box { flex: 1 1 0; }
+        .subjective-2up-side .q-box + .q-box { border-top: 1px solid #000; }
+        .subjective-2up-wide-layout { flex: 1 1 0; display: flex; flex-direction: column; min-height: 0; overflow: hidden; padding: 0 12px; }
+        .subjective-2up-wide-main { flex: 0 0 auto !important; min-height: 0; }
+        .subjective-2up-wide-side { flex: 1 1 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 0; border-top: 1px solid #000; }
+        .subjective-2up-wide-before { border-top: 0; border-bottom: 1px solid #000; }
+        .subjective-2up-wide-side .q-box { min-width: 0; padding-left: 10px; padding-right: 10px; }
+        .subjective-2up-wide-side .q-box + .q-box { border-left: 1px solid #000; }
+
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
         .q-box.sol-box.sol-box-long { overflow: visible; padding-bottom: 1em; margin-bottom: 0; }
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
 
@@ -232,9 +253,9 @@
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
-        .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
-        .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
-        .fit-micro { font-size: 8.1pt !important; line-height: 1.25 !important; }
+        .fit-tight { line-height: 1.45 !important; }
+        .fit-tighter { line-height: 1.35 !important; }
+        .fit-micro { line-height: 1.25 !important; }
 
         /* 기존 해설/정답 QR 스타일 */
         .page-qr {
@@ -353,7 +374,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
+            <button id="btn-print" onclick="prepareArchivePrint()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -926,11 +947,31 @@ function wrapLatex(text) {
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
+function normalizeSolutionLineBreaks(text) {
+    return String(text || '').replace(/\\n(?![a-zA-Z])/g, '\n');
+}
+
+function decorateSolutionSections(html) {
+    let s = String(html || '');
+    const sectionLead = lead => lead ? '<br>' : '';
+    s = s.replace(/(^|(?:<br\s*\/?>\s*)+)\s*\[키포인트\]\s*(?:(?:<br\s*\/?>\s*)+)?/g,
+        (_, lead) => `${sectionLead(lead)}<span class="sol-sec-label">[키포인트]</span> `);
+    s = s.replace(/(^|(?:<br\s*\/?>\s*)+)\s*(조건 정리|풀이 방향|풀이 과정|정석 풀이|결론)\s*:?\s*(?:(?:<br\s*\/?>\s*)+)?/g,
+        (_, lead, label) => `${sectionLead(lead)}<span class="sol-sec-label">${label}:</span> `);
+    return s;
+}
+
+function formatSolutionHtml(text) {
+    const raw = String(text || '');
+    const hasSectionLabels = /(^|\\n|\r?\n|<br\s*\/?>)\s*(?:\[키포인트\]|조건 정리|풀이 방향|풀이 과정|정석 풀이|결론)(?=\s|:|$)/.test(raw);
+    if (!hasSectionLabels) return wrapLatex(raw);
+    return decorateSolutionSections(wrapLatex(normalizeSolutionLineBreaks(raw)));
+}
+
 function autoCompress(container) {
-    let fontSize = 9.5; let lineHeight = 1.58;
-    while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
-        fontSize = Math.max(fontSize - 0.3, 6.5); lineHeight = Math.max(lineHeight - 0.08, 1.0);
-        container.style.fontSize = fontSize + 'pt'; container.style.lineHeight = String(lineHeight);
+    for (const lineHeight of [1.45, 1.35, 1.25]) {
+        if (container.scrollHeight <= container.clientHeight + 1) return;
+        container.style.lineHeight = String(lineHeight);
     }
 }
 
@@ -1154,14 +1195,21 @@ async function init() {
     const s = document.createElement('script');
     s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : safeDataUrl + '?v=' + Date.now();
     s.onload = async () => {
-        const qb = window.questionBank;
-        AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
-        AppState.title = window.examTitle || p.get('title') || '수학 시험지';
-        AppState.identityTitle = AppState.title;
-        AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
-        document.getElementById('ctrl-title').innerText = AppState.title;
-        renderPrintHeaderControls();
-        await render();
+        try {
+            if (window.MathJax?.startup?.promise) await window.MathJax.startup.promise;
+            const qb = window.questionBank;
+            AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
+            AppState.title = window.examTitle || p.get('title') || '수학 시험지';
+            AppState.identityTitle = AppState.title;
+            AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
+            document.getElementById('ctrl-title').innerText = AppState.title;
+            renderPrintHeaderControls();
+            await render();
+        } catch (error) {
+            document.documentElement.dataset.apRenderError = String(error?.stack || error?.message || error);
+            console.error('[archive-engine] initial render failed:', error);
+            showArchiveDataLoadError('시험지 렌더링 중 오류가 발생했습니다. 개발자 도구의 apRenderError 값을 확인해 주세요.');
+        }
     };
     s.onerror = () => {
         console.warn('[archive-engine] failed to load exam data script:', safeDataUrl);
@@ -1400,6 +1448,186 @@ async function applyAutoImageSizeClasses(root) {
     }));
 }
 
+function getExamLayoutType(item) {
+    if (item.effectiveLayout) return item.effectiveLayout;
+    const lt = item.q.layoutTag || '';
+    if (item.q.wide === true || lt === 'fullwidth') return 'wide';
+    if (lt === 'subjective-2up') return 'subj2';
+    if (lt === 'subjective-4up') return 'subj4';
+    return 'normal';
+}
+
+async function prepareArchivePrint() {
+    const btn = document.getElementById('btn-print');
+    const originalText = btn?.textContent || '인쇄';
+    if (btn) { btn.disabled = true; btn.textContent = '인쇄 검수 중...'; }
+    try {
+        const area = document.getElementById('print-area') || document.body;
+        const approved = await window.APPrintGuard.prepare({ scope: area });
+        if (approved) window.print();
+    } finally {
+        if (btn) { btn.disabled = false; btn.textContent = originalText; }
+    }
+}
+
+function buildExamPagePlan(items, qpp) {
+    const pages = [];
+    const normalLimit = Math.max(1, Number(qpp) || 4);
+    let segment = [];
+
+    const makeSegmentPage = chunk => {
+        const subj2Items = chunk.filter(item => getExamLayoutType(item) === 'subj2');
+        if (subj2Items.length === 0) {
+            return { layout: 'standard', sourceItems: chunk, blocks: [{ type: 'normal', items: chunk }] };
+        }
+        if (subj2Items.length === 2) {
+            return { layout: 'subj2-pair', sourceItems: chunk, leftItem: subj2Items[0], rightItem: subj2Items[1] };
+        }
+        const mainItem = subj2Items[0];
+        const mainIndex = chunk.indexOf(mainItem);
+        const sideItems = chunk.filter(item => item !== mainItem);
+        return {
+            layout: mainIndex === 0 ? 'subj2-left' : 'subj2-right',
+            sourceItems: chunk,
+            mainItem,
+            sideItems
+        };
+    };
+
+    const planSegment = source => {
+        const segmentPages = [];
+        let current = [];
+        const flushCurrent = () => {
+            if (!current.length) return;
+            segmentPages.push(makeSegmentPage(current));
+            current = [];
+        };
+
+        for (const item of source) {
+            const type = getExamLayoutType(item);
+            if (type === 'subj2') {
+                const subj2Count = current.filter(value => getExamLayoutType(value) === 'subj2').length;
+                const normalCount = current.length - subj2Count;
+                const usedSlots = normalCount + subj2Count * 2;
+                const canJoin = current.length === 0 ||
+                    (usedSlots + 2 <= 4 && ((subj2Count === 0 && normalCount <= 2) || (subj2Count === 1 && normalCount === 0)));
+                if (!canJoin) flushCurrent();
+                current.push(item);
+            } else {
+                const subj2Count = current.filter(value => getExamLayoutType(value) === 'subj2').length;
+                const normalCount = current.length - subj2Count;
+                if (subj2Count > 0 && normalCount >= 2) flushCurrent();
+                current.push(item);
+            }
+
+            const subj2Count = current.filter(value => getExamLayoutType(value) === 'subj2').length;
+            const normalCount = current.length - subj2Count;
+            const capacity = subj2Count > 0 ? 4 : normalLimit;
+            if (normalCount + subj2Count * 2 >= capacity) flushCurrent();
+        }
+
+        flushCurrent();
+        return segmentPages;
+    };
+
+    const flushSegment = () => {
+        pages.push(...planSegment(segment));
+        segment = [];
+    };
+    const canSharePromoted = (main, companions) => {
+        if (!companions.length) return true;
+        const wideHeight = main.profile?.proxyHeight_wide ?? main.profile?.proxyHeight_raw ?? Infinity;
+        const sideHeight = Math.max(...companions.map(value => value.profile?.proxyHeight_raw ?? Infinity));
+        return wideHeight + sideHeight + 18 <= (main.profile?.usablePageHeight ?? 0);
+    };
+
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const type = getExamLayoutType(item);
+
+        if (type === 'normal' || type === 'subj2') {
+            segment.push(item);
+            continue;
+        }
+
+        if (type === 'subj2-wide') {
+            let companions = segment.slice(-2).filter(value => getExamLayoutType(value) === 'normal');
+            while (companions.length && !canSharePromoted(item, companions)) companions.shift();
+            if (companions.length) segment.splice(segment.length - companions.length, companions.length);
+            flushSegment();
+            let companionsBefore = companions.length > 0;
+            if (!companionsBefore) {
+                while (companions.length < 2 && i + 1 < items.length && getExamLayoutType(items[i + 1]) === 'normal') {
+                    const candidate = [...companions, items[i + 1]];
+                    if (!canSharePromoted(item, candidate)) break;
+                    companions.push(items[++i]);
+                }
+            }
+            pages.push({
+                layout: 'subj2-wide',
+                sourceItems: companionsBefore ? [...companions, item] : [item, ...companions],
+                mainItem: item,
+                sideItems: companions,
+                companionsBefore
+            });
+            continue;
+        }
+
+        flushSegment();
+        if (type === 'wide') {
+            pages.push({ layout: 'standard', sourceItems: [item], blocks: [{ type: 'wide', items: [item] }] });
+            continue;
+        }
+
+        const chunk = [item];
+        while (chunk.length < 4 && i + 1 < items.length && getExamLayoutType(items[i + 1]) === 'subj4') {
+            chunk.push(items[++i]);
+        }
+        pages.push({ layout: 'standard', sourceItems: chunk, blocks: [{ type: 'subj4', items: chunk }] });
+    }
+
+    flushSegment();
+    return pages;
+}
+
+function promoteOverflowingNormals(items, usablePageHeight, qpp) {
+    const rowsPerColumn = Math.max(1, Math.ceil((Number(qpp) || 4) / 2));
+    const normalCellHeight = usablePageHeight / rowsPerColumn;
+    items.forEach(item => {
+        if (getExamLayoutType(item) !== 'normal') return;
+        if (item.profile.proxyHeight_raw > normalCellHeight + 1) {
+            item.effectiveLayout = 'subj2';
+            item.profile.normalCellHeight = normalCellHeight;
+        }
+    });
+}
+
+async function promoteOverflowing2up(items, usablePageHeight) {
+    const candidates = items.filter(item =>
+        getExamLayoutType(item) === 'subj2' &&
+        item.profile.proxyHeight_raw > usablePageHeight + 1
+    );
+    if (!candidates.length) return;
+    const host = document.createElement('div');
+    host.style.cssText = 'position:absolute;left:-99999px;top:0;visibility:hidden;width:174mm;';
+    document.body.appendChild(host);
+    const measured = candidates.map(item => {
+        const box = item.rawBox.cloneNode(true);
+        host.appendChild(box);
+        return { item, box };
+    });
+    await applyAutoImageSizeClasses(host);
+    if (window.MathJax?.typesetPromise) await window.MathJax.typesetPromise([host]);
+    await raf();
+    measured.forEach(({ item, box }) => {
+        item.effectiveLayout = 'subj2-wide';
+        item.profile.proxyHeight_wide = box.scrollHeight;
+        item.profile.usablePageHeight = usablePageHeight;
+        item.promotedBox = box.cloneNode(true);
+    });
+    host.remove();
+}
+
 async function renderExam(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
@@ -1422,64 +1650,66 @@ async function renderExam(area, data) {
                          <div class="q-content">${formattedContent}</div>
                          ${imageHTML}
                          ${choicesHTML}`;
-        staging.appendChild(box); return { q, box, originalIndex: i };
+        const rawBox = box.cloneNode(true);
+        staging.appendChild(box); return { q, box, rawBox, originalIndex: i };
     });
     await applyAutoImageSizeClasses(staging);
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]); await raf();
     for (const item of items) {
-        const p = {}; p.proxyHeight_raw = item.box.scrollHeight; item.box.classList.add('fit-tight'); await raf();
+        const p = {};
+        p.proxyHeight_raw = item.box.scrollHeight;
+        p.proxyWidthOverflow = item.box.scrollWidth > item.box.clientWidth + 1;
+        item.box.classList.add('fit-tight'); await raf();
         p.proxyHeight_tight = item.box.scrollHeight; item.box.classList.remove('fit-tight');
         item.profile = p;
     }
     const tempPage = makePage(area, 'exam', 0);
     const usablePageHeight = tempPage.body.clientHeight;
     area.removeChild(tempPage);
+    promoteOverflowingNormals(items, usablePageHeight, AppState.qpp);
+    await promoteOverflowing2up(items, usablePageHeight);
     let firstPage = null; let pages = [];
-    let currentPage = { blocks: [], usedHeight: 0 };
-    let activeChunk = []; let currentType = null;
-    const flushBlock = () => {
-        if (activeChunk.length === 0) return;
-        const type = currentType; const chunk = [...activeChunk];
-        let hType = (type === 'normal') ? 'proxyHeight_tight' : 'proxyHeight_raw';
-        let blockH;
-        if (type === 'wide') {
-            blockH = chunk[0].profile.proxyHeight_raw + SE_OVERHEAD_COL + SE_OVERHEAD_GRID;
-        } else {
-            const split = Math.ceil(chunk.length / 2);
-            const leftH = chunk.slice(0, split).reduce((s, it) => s + it.profile[hType], 0) + SE_OVERHEAD_COL;
-            const rightH = chunk.slice(split).reduce((s, it) => s + it.profile[hType], 0) + SE_OVERHEAD_COL;
-            blockH = Math.max(leftH, rightH) + SE_OVERHEAD_GRID;
-        }
-        const isNormalForceBreak = (type === 'normal' && currentPage.blocks.length > 0);
-        const gap = (currentPage.blocks.length > 0) ? SE_BLOCK_GAP : 0;
-        if ((isNormalForceBreak || (currentPage.usedHeight + gap + blockH > usablePageHeight)) && currentPage.blocks.length > 0) {
-            pages.push(currentPage); currentPage = { blocks: [], usedHeight: 0 };
-        }
-        currentPage.usedHeight += (currentPage.blocks.length > 0 ? SE_BLOCK_GAP : 0) + blockH;
-        currentPage.blocks.push({ type, items: chunk, blockH });
-        activeChunk = [];
-    };
-    items.forEach(item => {
-        const lt = item.q.layoutTag || '';
-        let qType = 'normal'; let limit = AppState.qpp;
-        if (item.q.wide === true || lt === 'fullwidth') { qType = 'wide'; limit = 1; }
-        else if (lt === 'subjective-2up') { qType = 'subj2'; limit = 2; }
-        else if (lt === 'subjective-4up') { qType = 'subj4'; limit = 4; }
-        const isSpecialType = (qType === 'subj2' || qType === 'subj4' || qType === 'wide');
-        const prevWasSpecial = (currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide');
-        if ((currentType !== null && currentType !== qType) || (activeChunk.length >= limit) || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
-            flushBlock();
-            if (isSpecialType && currentPage.blocks.length > 0) { pages.push(currentPage); currentPage = { blocks: [], usedHeight: 0 }; }
-            currentType = qType;
-        }
-        if (currentType === null) currentType = qType;
-        activeChunk.push(item);
-    });
-    flushBlock(); if (currentPage.blocks.length > 0) pages.push(currentPage);
+    pages = buildExamPagePlan(items, AppState.qpp);
     for (let pIdx = 0; pIdx < pages.length; pIdx++) {
         const pageData = pages[pIdx];
         const page = (!firstPage) ? (firstPage = makePage(area, 'exam', pNum)) : makePage(area, 'exam', ++pNum);
-        pageData.blocks.forEach((block, bIdx) => {
+        if (pageData.layout === 'subj2-wide') {
+            const layout = document.createElement('div'); layout.className = 'subjective-2up-wide-layout';
+            const mainBox = (pageData.mainItem.promotedBox || pageData.mainItem.box).cloneNode(true);
+            mainBox.classList.add('subjective-2up-wide-main');
+            const side = document.createElement('div'); side.className = 'subjective-2up-wide-side';
+            side.style.gridTemplateColumns = `repeat(${Math.max(1, pageData.sideItems.length)}, minmax(0, 1fr))`;
+            pageData.sideItems.forEach(it => side.appendChild(it.box.cloneNode(true)));
+            if (pageData.companionsBefore && pageData.sideItems.length) {
+                side.classList.add('subjective-2up-wide-before');
+                layout.appendChild(side); layout.appendChild(mainBox);
+            } else {
+                layout.appendChild(mainBox);
+                if (pageData.sideItems.length) layout.appendChild(side);
+            }
+            page.body.appendChild(layout);
+        } else if (pageData.layout === 'subj2-pair') {
+            const layout = document.createElement('div'); layout.className = 'subjective-2up-layout';
+            const leftCol = document.createElement('div'); leftCol.className = 'subjective-2up-col subjective-2up-main';
+            const rightCol = document.createElement('div'); rightCol.className = 'subjective-2up-col subjective-2up-main';
+            leftCol.appendChild(pageData.leftItem.box.cloneNode(true));
+            rightCol.appendChild(pageData.rightItem.box.cloneNode(true));
+            layout.appendChild(leftCol); layout.appendChild(rightCol);
+            page.body.appendChild(layout);
+        } else if (pageData.layout === 'subj2-left' || pageData.layout === 'subj2-right') {
+            const layout = document.createElement('div'); layout.className = 'subjective-2up-layout';
+            const mainCol = document.createElement('div'); mainCol.className = 'subjective-2up-col subjective-2up-main';
+            const sideCol = document.createElement('div'); sideCol.className = 'subjective-2up-col subjective-2up-side';
+            mainCol.appendChild(pageData.mainItem.box.cloneNode(true));
+            pageData.sideItems.forEach(it => sideCol.appendChild(it.box.cloneNode(true)));
+            if (pageData.layout === 'subj2-left') {
+                layout.appendChild(mainCol); layout.appendChild(sideCol);
+            } else {
+                layout.appendChild(sideCol); layout.appendChild(mainCol);
+            }
+            page.body.appendChild(layout);
+        }
+        (pageData.blocks || []).forEach((block, bIdx) => {
             if (block.type === 'wide') {
                 const wideCol = document.createElement('div'); wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
                 wideCol.appendChild(block.items[0].box.cloneNode(true)); page.body.appendChild(wideCol);
@@ -1593,7 +1823,7 @@ async function renderSol(area, data) {
                     )
                 )
             );
-            const solutionHtml = wrapLatex(solutionText);
+            const solutionHtml = formatSolutionHtml(solutionText);
             const box = document.createElement('div'); box.className = 'q-box sol-box';
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
@@ -1624,7 +1854,7 @@ async function renderSol(area, data) {
             )
         );
         const box = document.createElement('div'); box.className = 'q-box sol-box';
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${wrapLatex(solutionText)}</div></div>`;
+        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${formatSolutionHtml(solutionText)}</div></div>`;
         cols[colIdx].appendChild(box);
         if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
         if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
@@ -1667,6 +1897,8 @@ function renderAns(area, data) {
 }
 
 async function render() {
+    await window.__AP_MATHJAX_READY__;
+    if (window.MathJax?.startup?.promise) await window.MathJax.startup.promise;
     const area = document.getElementById('print-area');
     area.innerHTML = '';
     syncQrOutputControls();
