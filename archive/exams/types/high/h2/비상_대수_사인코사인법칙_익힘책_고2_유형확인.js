@@ -215,7 +215,7 @@ window.questionBank = [
     content: "세 변의 길이가 $5, 6, 7$인 삼각형 $ABC$의 넓이를 구하시오.",
     choices: [],
     answer: "$6\\sqrt{6}$",
-    solution: "[키포인트] 코사인법칙을 이용하여 한 각의 코사인값을 구하고, 이를 사인값으로 변환하여 넓이를 구한다.\\n풀이 방향: 세 변의 길이가 주어졌으므로 코사인법칙으로 $\\cos C$를 구한다.\\n정석 풀이: $\\triangle ABC$에서 코사인법칙에 의해 $\\cos C = \\dfrac{5^2 + 6^2 - 7^2}{2 \\times 5 \\times 6} = \\dfrac{25 + 36 - 49}{60} = \\dfrac{12}{60} = \\dfrac{1}{5}$이다.\\n$\\sin C > 0$이므로 $\\sin C = \\sqrt{1 - \\cos^2 C} = \\sqrt{1 - \\dfrac{1}{25}} = \\dfrac{2\\sqrt{6}}{5}$이다.\\n따라서 삼각형 $ABC$의 넓이 $S$는 $S = \\dfrac{1}{2}ab\\sin C = \\dfrac{1}{2} \\times 5 \\times 6 \\times \\dfrac{2\\sqrt{6}}{5} = 6\\sqrt{6}$이다.\\n빠른 풀이 포인트: 헤론의 공식을 이용하면 $s = \\dfrac{5+6+7}{2} = 9$이므로 $S = \\sqrt{9(9-5)(9-6)(9-7)} = \\sqrt{9 \\times 4 \\times 3 \\times 2} = 6\\sqrt{6}$이다.\\n따라서 구하는 값은 $6\\sqrt{6}$이다."
+    solution: "[키포인트] 코사인법칙을 이용하여 한 각의 코사인값을 구하고, 이를 사인값으로 변환하여 넓이를 구한다.\\n풀이 방향: 세 변의 길이가 주어졌으므로 코사인법칙으로 $\\cos C$를 구한다.\\n정석 풀이: $\\triangle ABC$에서 코사인법칙에 의해 $\\cos C = \\dfrac{5^2 + 6^2 - 7^2}{2 \\times 5 \\times 6} = \\dfrac{25 + 36 - 49}{60} = \\dfrac{12}{60} = \\dfrac{1}{5}$이다.\\n$\\sin C > 0$이므로 $\\sin C = \\sqrt{1 - \\cos^2 C} = \\sqrt{1 - \\dfrac{1}{25}} = \\dfrac{2\\sqrt{6}}{5}$이다.\\n따라서 삼각형 $ABC$의 넓이 $S$는 $S = \\dfrac{1}{2}ab\\sin C = \\dfrac{1}{2} \\times 5 \\times 6 \\times \\dfrac{2\\sqrt{6}}{5} = 6\\sqrt{6}$이다.\\n따라서 구하는 값은 $6\\sqrt{6}$이다."
   },
   {
     id: 12,

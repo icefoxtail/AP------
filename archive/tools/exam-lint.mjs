@@ -152,6 +152,22 @@ for (const file of files) {
       entry.warn.push(`${tag}: 해설에 추측성 표현 — 원본 대조 필요`);
     }
 
+    // --- 교육과정 외 풀이 (해당 학년 시험 범위 밖 기법) ---
+    // 케일리-해밀턴/헤론/로피탈은 현행 고교 교육과정에 없어 학년 무관 FAIL.
+    // 시그마(∑)·극형식/복소평면·미적분은 중·고1 범위 밖(고2 대수/미적분).
+    // "…는 사용하지 않는다"류 안내문은 오탐이므로 제외.
+    const solc = sol + ' ' + (q.content || '');
+    const isMid = /\/middle\//.test(rel), isG1 = /\/h1\//.test(rel);
+    const guard = /사용하지 ?않|쓰지 ?않|범위(를)? ?벗어/.test(solc);
+    const oc = [];
+    if (/케일리|해밀턴|Cayley|Hamilton/i.test(solc)) oc.push('케일리-해밀턴');
+    if (/헤론|Heron/i.test(solc)) oc.push('헤론의 공식');
+    if (/로피탈|l['’]?H[oôö]pital/i.test(solc)) oc.push('로피탈 정리');
+    if ((isMid || isG1) && /극형식|복소평면|드무아브르|de ?Moivre/i.test(solc)) oc.push('극형식/복소평면');
+    if ((isMid || isG1) && /\\sum|\\Sigma|∑/.test(solc) && !guard) oc.push('시그마(∑)');
+    if ((isMid || isG1) && /도함수|미분계수|정적분|부정적분|\\int[^a-z]/.test(solc) && !guard) oc.push('미적분');
+    if (oc.length) entry.fail.push(`${tag}: 교육과정 외 풀이 — ${oc.join(', ')} (${isG1 ? '고1' : isMid ? '중' : '상위학년'})`);
+
     // --- 표기 오염 / 렌더 블로커 ---
     const texts = [['content', q.content], ['solution', q.solution],
       ...(hasCh ? q.choices.map((c, i) => [`choice${i + 1}`, c]) : [])];
