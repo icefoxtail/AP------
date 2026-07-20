@@ -244,6 +244,7 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
 
         /* [Answer Grid] Styles */
@@ -1076,6 +1077,27 @@ function wrapLatexPreserveBlocks(text) {
 function wrapLatex(text) { return wrapLatexPreserveBlocks(text); }
 
 /** [성역] autoCompress & fitQuestionBox */
+function normalizeSolutionLineBreaks(text) {
+    return String(text || '').replace(/\\n(?![a-zA-Z])/g, '\n');
+}
+
+function decorateSolutionSections(html) {
+    let s = String(html || '');
+    const sectionLead = lead => lead ? '<br>' : '';
+    s = s.replace(/(^|(?:<br\s*\/?>\s*)+)\s*\[키포인트\]\s*(?:(?:<br\s*\/?>\s*)+)?/g,
+        (_, lead) => `${sectionLead(lead)}<span class="sol-sec-label">[키포인트]</span> `);
+    s = s.replace(/(^|(?:<br\s*\/?>\s*)+)\s*(조건 정리|풀이 방향|풀이 과정|정석 풀이|결론)\s*:?\s*(?:(?:<br\s*\/?>\s*)+)?/g,
+        (_, lead, label) => `${sectionLead(lead)}<span class="sol-sec-label">${label}:</span> `);
+    return s;
+}
+
+function formatSolutionHtml(text) {
+    const raw = String(text || '');
+    const hasSectionLabels = /(^|\\n|\r?\n|<br\s*\/?>)\s*(?:\[키포인트\]|조건 정리|풀이 방향|풀이 과정|정석 풀이|결론)(?=\s|:|$)/.test(raw);
+    if (!hasSectionLabels) return wrapLatex(raw);
+    return decorateSolutionSections(wrapLatex(normalizeSolutionLineBreaks(raw)));
+}
+
 function autoCompress(container) {
     let fontSize = 9.5; let lineHeight = 1.58;
     while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
@@ -1662,7 +1684,7 @@ async function renderSol(area, data) {
                     )
                 )
             );
-            const solutionHtml = wrapLatex(solText);
+            const solutionHtml = formatSolutionHtml(solText);
             const box = document.createElement('div'); box.className = 'q-box sol-box';
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
@@ -1738,7 +1760,7 @@ async function renderSol(area, data) {
 
         box.innerHTML = `<div class="q-num">${i+1}.</div>
                          <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
-                         <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${wrapLatex(solText)}</div></div>`;
+                         <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${formatSolutionHtml(solText)}</div></div>`;
 
         await placeSolutionBox(box);
     }

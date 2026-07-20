@@ -115,6 +115,7 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
         .ans-cell-empty { visibility: hidden; }
@@ -696,6 +697,27 @@ function raf() {
     });
 }
 
+function normalizeSolutionLineBreaks(text) {
+    return String(text || '').replace(/\\n(?![a-zA-Z])/g, '\n');
+}
+
+function decorateSolutionSections(html) {
+    let s = String(html || '');
+    const sectionLead = lead => lead ? '<br>' : '';
+    s = s.replace(/(^|(?:<br\s*\/?>\s*)+)\s*\[키포인트\]\s*(?:(?:<br\s*\/?>\s*)+)?/g,
+        (_, lead) => `${sectionLead(lead)}<span class="sol-sec-label">[키포인트]</span> `);
+    s = s.replace(/(^|(?:<br\s*\/?>\s*)+)\s*(조건 정리|풀이 방향|풀이 과정|정석 풀이|결론)\s*:?\s*(?:(?:<br\s*\/?>\s*)+)?/g,
+        (_, lead, label) => `${sectionLead(lead)}<span class="sol-sec-label">${label}:</span> `);
+    return s;
+}
+
+function formatSolutionHtml(text) {
+    const raw = String(text || '');
+    const hasSectionLabels = /(^|\\n|\r?\n|<br\s*\/?>)\s*(?:\[키포인트\]|조건 정리|풀이 방향|풀이 과정|정석 풀이|결론)(?=\s|:|$)/.test(raw);
+    if (!hasSectionLabels) return wrapLatex(raw);
+    return decorateSolutionSections(wrapLatex(normalizeSolutionLineBreaks(raw)));
+}
+
 function autoCompress(container) {
     let fontSize = 9.5;
     let lineHeight = 1.58;
@@ -1107,7 +1129,7 @@ function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
     const choicesHTML = state.mode === 'exam' ? renderChoicesHTML(q) : '';
     const wrongNote = showWrongNote && q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : '';
     const answer = state.mode === 'ans' || state.mode === 'sol' ? `<div style="margin-top:8px;font-weight:bold;color:red;">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div>` : '';
-    const solution = state.mode === 'sol' ? `<div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;margin-top:8px;font-size:8.5pt;line-height:1.55;">${wrapLatex(getQuestionSolution(q) || '해설이 없습니다.')}</div>` : '';
+    const solution = state.mode === 'sol' ? `<div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;margin-top:8px;font-size:8.5pt;line-height:1.55;">${formatSolutionHtml(getQuestionSolution(q) || '해설이 없습니다.')}</div>` : '';
     return `<div class="q-box${state.mode === 'sol' ? ' sol-box' : ''}">
         <div class="q-num">${displayNo}.</div>
         ${wrongNote}
@@ -1623,7 +1645,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
         const hasImageField = !!getQuestionImageRaw(q);
         const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
         const formattedContent = rewriteImgSrcInHtml(formatQuestionForRender(rawContent, q), getQuestionArchiveFile(q));
-        const solutionHtml = wrapLatex(getQuestionSolution(q) || '해설이 없습니다.');
+        const solutionHtml = formatSolutionHtml(getQuestionSolution(q) || '해설이 없습니다.');
         const box = document.createElement('div');
         box.className = 'q-box sol-box';
         box.dataset.solutionHtml = solutionHtml;
