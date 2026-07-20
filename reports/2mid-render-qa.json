@@ -1,0 +1,30 @@
+{
+  "exam": {
+    "tested": 85,
+    "failures": [],
+    "note": "18건 최초 이미지 로드 지연 후 1.5초 재검 모두 통과"
+  },
+  "sol": {
+    "tested": 85,
+    "failures": []
+  },
+  "ans": {
+    "tested": 85,
+    "failures": []
+  },
+  "generatedAt": "2026-07-19T04:21:09.511Z",
+  "method": {
+    "engine": "archive/engine.html",
+    "exam": "qpp=4; initial image-load delays retried at 1.5s",
+    "sol": "all 85; qpp=100 screening plus qpp=4 deep retries for delayed pagination",
+    "ans": "all 85; ans-n count",
+    "checks": [
+      "expected item count",
+      "image complete/naturalWidth",
+      "horizontal overflow",
+      "render error selectors",
+      "console errors on final tabs"
+    ]
+  },
+  "consoleErrors": 0
+}

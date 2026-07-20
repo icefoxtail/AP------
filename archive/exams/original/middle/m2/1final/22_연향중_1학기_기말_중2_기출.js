@@ -280,6 +280,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래의 그림과 같은 일차함수의 그래프의 $x$절편을 구하면? [4점]",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q12.png",
     
     "choices": [
       "$-3$",
@@ -379,6 +380,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "두 일차방정식 $2x-y-a=0,\\ bx+y-5=0$의 그래프가 아래의 그림과 같을 때, $a,b$의 값은? (단, $a,b$는 수) [4점]",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q16.png",
     
     "choices": [
       "$a=4,\\ b=-1$",
@@ -431,6 +433,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래의 그림과 같이 좌표평면 위에 두 점 $A(4,6),\\ B(8,2)$가 있다. 다음 중 일차방정식 $ax-y-2=0$의 그래프가 선분 $\\overline{AB}$와 만나도록 하는 수 $a$의 값이 될 수 없는 것은? [5점]",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q18.png",
     
     "choices": [
       "$\\dfrac52$",
@@ -458,6 +461,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, 다음 보기의 일차함수 중에서 그 그래프가 제 2사분면을 지나지 않는 것을 모두 찾으면? [5점]",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
     
     "choices": [
       "㉠, ㉡",
@@ -485,6 +489,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "집에서 $1200\\mathrm{m}$ 떨어진 도서관까지 가는데 동생이 먼저 출발하고, 형은 동생이 출발한 지 10분 후에 자전거를 타고 출발했다. 동생이 출발한 지 $x$분 후에 집으로부터 떨어진 거리를 $y\\mathrm{m}$라 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 형과 동생이 서로 만나는 것은 형이 출발한 지 몇 분 후인가? [5점]",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q20.png",
     
     "choices": [
       "20분 후",
@@ -548,6 +553,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "서술형3. 다음 그림은 일차방정식 $3x-ay-b-5=0$의 그래프이다. 이때, 두 수 $a,b$의 값을 각각 구하시오. [5점]",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q23.png",
     
     "choices": [],
     "answer": "$a=0,\\ b=4$",
@@ -569,6 +575,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "서술형4. 그림과 같은 직사각형 $ABCD$에서 점 $P$가 점 $C$를 출발하여 점 $D$까지 초속 $2\\mathrm{cm}$로 움직일 때, 점 $P$가 점 $C$를 출발한 지 $x$초 후에 사각형 $ABCP$의 넓이를 $y\\mathrm{cm}^2$라 하자. 이때, 다음 물음에 답하시오. (단, $0<x\\le6$)\n(1) $x$와 $y$ 사이의 관계식을 구하시오. (반드시 $\\overline{CP}$의 길이를 언급할 것)\n(2) 사각형 $ABCP$의 넓이가 $160\\mathrm{cm}^2$이 되는 것은 점 $P$가 점 $C$를 출발한 지 몇 초 후인지 구하시오.",
+    "image": "assets/images/22_연향중_1학기_기말_중2_기출/q24.png",
     
     "choices": [],
     "answer": "(1) $y=20x+120$  (2) 2초 후",

@@ -1854,7 +1854,7 @@ window.questionBank = [
     "content": "$$A = (-3)^2 - \\{1 - 12 \\times (-2) \\div (-3)\\}$$ $$B = \\frac{3}{2} \\div \\left\\{ -2 - \\left(\\frac{1}{2} - \\frac{4}{3}\\right) \\times 4 - \\left(-\\frac{1}{2}\\right)^3 \\right\\}$$일 때, 수직선에서 $A \\div B$에 가장 가까운 정수를 구하여라.",
     "choices": [],
     "answer": "$16$",
-    "solution": "[솔포인트] $A=(-3)^2-\\{1-12\\times(-2)\\div(-3)\\}=9-\\{1-8\\}=16$입니다. $B$의 중괄호 안은 $-2-\\left(\\frac12-\\frac43\\right)\\times4-\\left(-\\frac12\\right)^3=-2+\\frac{10}{3}+\\frac18=\\frac{35}{24}$이므로 $B=\\frac32\\div\\frac{35}{24}=\\frac{36}{35}$입니다. 따라서 $A\\div B=16\\times\\frac{35}{36}=\\frac{140}{9}\u0007pprox15.56$이므로 가장 가까운 정수는 $16$입니다."
+    "solution": "[솔포인트] $A=(-3)^2-\\{1-12\\times(-2)\\div(-3)\\}=9-\\{1-8\\}=16$입니다. $B$의 중괄호 안은 $-2-\\left(\\frac12-\\frac43\\right)\\times4-\\left(-\\frac12\\right)^3=-2+\\frac{10}{3}+\\frac18=\\frac{35}{24}$이므로 $B=\\frac32\\div\\frac{35}{24}=\\frac{36}{35}$입니다. 따라서 $A\\div B=16\\times\\frac{35}{36}=\\frac{140}{9}\\\\approx15.56$이므로 가장 가까운 정수는 $16$입니다."
   },
   {
     "id": 57,
