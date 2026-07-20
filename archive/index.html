@@ -3318,6 +3318,23 @@ function assignTargetFinishAndOpenEngine() {
 }
 
 /* engine.html 연동 */
+const ARCHIVE_ENGINE_LAUNCH_STORAGE_KEY = 'APMATH_ARCHIVE_ENGINE_LAUNCH';
+
+function rememberArchiveEngineLaunch(url) {
+    try {
+        sessionStorage.setItem(ARCHIVE_ENGINE_LAUNCH_STORAGE_KEY, JSON.stringify({
+            createdAt: Date.now(),
+            data: url.searchParams.get('data') || '',
+            title: url.searchParams.get('title') || '',
+            subject: url.searchParams.get('subject') || '',
+            mode: url.searchParams.get('mode') || 'exam',
+            qpp: url.searchParams.get('qpp') || '4'
+        }));
+    } catch (e) {
+        console.warn('[archive] 시험지 실행 정보 저장 실패:', e);
+    }
+}
+
 function goEngine(item, action, qpp, options = {}) {
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
     const title = `${baseTitle} ${item.subject || ''}`.trim();
@@ -3339,6 +3356,8 @@ function goEngine(item, action, qpp, options = {}) {
     const questionCount = getArchiveExamQuestionCount(item);
     if (questionCount) url.searchParams.set('q', String(questionCount));
 
+    // 새 탭 생성 과정에서 일부 검색 파라미터가 유실되어도 엔진이 직전 클릭을 복구할 수 있게 한다.
+    rememberArchiveEngineLaunch(url);
     window.open(appendCurrentArchiveSessionToHash(url.toString()), '_blank');
 }
 

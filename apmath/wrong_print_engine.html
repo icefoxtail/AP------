@@ -684,8 +684,16 @@ function wrapLatex(text) {
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
+// 백그라운드 탭에서는 브라우저가 rAF를 아예 멈춘다. 배열 로직이 전부 await raf()로
+// 이어져 있어, 새 탭이 뒤에서 열리면 헤더만 그려진 채 영구히 멈춘다(빈 화면).
+// setTimeout은 스로틀만 될 뿐 계속 발화하므로 둘 중 먼저 오는 쪽으로 진행한다.
 function raf() {
-    return new Promise(resolve => requestAnimationFrame(resolve));
+    return new Promise(resolve => {
+        let done = false;
+        const finish = () => { if (done) return; done = true; resolve(); };
+        requestAnimationFrame(finish);
+        setTimeout(finish, 32);
+    });
 }
 
 function autoCompress(container) {

@@ -1,13 +1,13 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-07-16T13:23:31.054Z
+- 생성 시각: 2026-07-19T03:44:19.636Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(265파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(347파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
 - 공식 마스터 키 수: 142 (중등 23 + H22 56 + H15 63)
-- 원본 문항 수: 6704
-- 최종 인덱스 문항 수: 6679
+- 원본 문항 수: 8578
+- 최종 인덱스 문항 수: 8553
 - 중복 qKey 그룹: 25 / 제외 레코드(duplicate_skipped): 25
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -195,9 +195,9 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 40종 / 249건
+> distinct 39종 / 250건
 
-- `H15-SA-13` — 49건 (예: original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#10, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#11, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#12, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#16, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#20)
+- `H15-SA-13` — 50건 (예: original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#10, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#11, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#12, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#16, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#20)
 - `STAT-02` — 40건 (예: original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#1, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#2, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#3, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#4, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#5)
 - `H15-PS` — 24건 (예: original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#1, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#2, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#3, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#4, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#5)
 - `H22-A-03-03` — 14건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#4, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#8, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#9, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#10, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#11)
@@ -208,7 +208,7 @@
 - `H22-A-03-02` — 10건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#2, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#3, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#6, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#7, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#12)
 - `H_ST_01_02` — 9건 (예: original/high/h2/1mid/25_제일고_1학기_중간_고2_확률과통계.js#4, original/high/h2/1mid/25_제일고_1학기_중간_고2_확률과통계.js#5, original/high/h2/1mid/25_제일고_1학기_중간_고2_확률과통계.js#7, original/high/h2/1mid/25_제일고_1학기_중간_고2_확률과통계.js#8, original/high/h2/1mid/25_제일고_1학기_중간_고2_확률과통계.js#12)
 - `H22-C-10` — 6건 (예: original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#12, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#13, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#19, original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js#14, original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js#9)
-- `STAT-01` — 5건 (예: original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#15, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#17, original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#15, original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#16, original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#23)
+- `STAT-01` — 6건 (예: original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#15, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#17, original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#3, original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#15, original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#16)
 - `HH15-SA-03` — 4건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#11, types/high/h1/항등식과나머지정리_고1_유형.js#16, types/high/h1/항등식과나머지정리_고1_유형.js#21, types/high/h1/항등식과나머지정리_고1_유형.js#31)
 - `H22-A-03-01` — 4건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#1, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#5, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형확인.js#1, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형확인.js#5)
 - `M1-2-STAT-05` — 4건 (예: types/middle/m1/중1_2_기말대비1_입체도형_통계.js#22, types/middle/m1/중1_2_기말대비1_입체도형_통계.js#23, types/middle/m1/중1_2_기말대비1_입체도형_통계.js#24, types/middle/m1/중1_2_기말대비1_입체도형_통계.js#25)
@@ -224,7 +224,6 @@
 - `함수` — 1건 (예: original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js#5)
 - `H21-M1-01` — 1건 (예: original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js#19)
 - `H21-M1-02` — 1건 (예: original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js#22)
-- `M2-10` — 1건 (예: original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js#3)
 - `UNCLASSIFIED-MIDDLE2` — 1건 (예: original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js#20)
 - `RRAW-다항식전개응용` — 1건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#5)
 - `RRAW-서술형(나눗셈의관계)` — 1건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#7)
@@ -243,9 +242,12 @@
 ## 4. RAW- 키 (임시 규약, 허용)
 
 > 마스터 테이블이 허용하는 임시 미분류 규약(standardUnitOrder 999). 비공식 오류와 구분한다.
-> distinct 86종 / 215건
+> distinct 89종 / 526건
 
+- `RAW-삼각비` — 196건
+- `RAW-원의성질` — 81건
 - `RAW-대표문제다시풀기` — 74건
+- `RAW-이차함수` — 34건
 - `RAW-삼각함수` — 9건
 - `RAW-지수법칙` — 9건
 - `RAW-지수법칙응용` — 7건
@@ -334,7 +336,7 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 6679건 기준)
+## 5. 필드 누락 (최종 인덱스 8553건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
@@ -352,10 +354,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 465 |
+| q.image 보유 | 1075 |
 | content <img> | 2 |
 | content <svg> | 77 |
 | content <table> | 109 |
-| 시각요소 보유(hasImage=true) | 647 |
+| 시각요소 보유(hasImage=true) | 1261 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

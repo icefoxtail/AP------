@@ -682,6 +682,626 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h2/2mid/23_복성고_2학기_중간_고2_확률과통계.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-05",
+      "rangeEndUnit": "확률분포",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-05",
+          "rangeEndUnit": "확률분포",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_효산고_2학기_중간_고2_수학I.js",
+      "school": "효산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-M1-05",
+      "rangeStartUnit": "삼각함수의 뜻과 값",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-M1-06",
+      "rangeEndUnit": "삼각함수의 그래프",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-05",
+          "rangeStartUnit": "삼각함수의 뜻과 값",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M1-06",
+          "rangeEndUnit": "삼각함수의 그래프",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
+      "file": "original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2024,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/24_매산여고_2학기_중간_고2_확률과통계.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2024,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-PS-03",
+      "rangeStartUnit": "확률의 뜻과 활용",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-PS-05",
+      "rangeEndUnit": "확률분포",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-03",
+          "rangeStartUnit": "확률의 뜻과 활용",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-PS-05",
+          "rangeEndUnit": "확률분포",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-PS-05",
+      "rangeStartUnit": "확률분포",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-PS-06",
+      "rangeEndUnit": "통계적 추정",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-05",
+          "rangeStartUnit": "확률분포",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-PS-06",
+          "rangeEndUnit": "통계적 추정",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_순천고_2학기_중간_고2_확률과통계.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-04",
+      "rangeStartUnit": "조건부확률",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-PS-06",
+      "rangeEndUnit": "통계적 추정",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-04",
+          "rangeStartUnit": "조건부확률",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-PS-06",
+          "rangeEndUnit": "통계적 추정",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-05",
+      "rangeStartUnit": "확률분포",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-PS-05",
+      "rangeEndUnit": "확률분포",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-05",
+          "rangeStartUnit": "확률분포",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-PS-05",
+          "rangeEndUnit": "확률분포",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "기하",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "original/high/h2/2mid/23_금당고_2학기_중간_고2_확률과통계.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 18,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-03",
+      "rangeEndUnit": "확률의 뜻과 활용",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-03",
+          "rangeEndUnit": "확률의 뜻과 활용",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_강남여고_2학기_중간_고2_확률과통계.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "확률과 통계",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2mid/23_강남여고_2학기_중간_고2_수학II.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-CALC-01",
+      "rangeStartUnit": "수열의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-CALC-04",
+      "rangeEndUnit": "삼각함수의 미분",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분",
+          "courseCode": "H15-CALC",
+          "rangeStartUnitKey": "H15-CALC-01",
+          "rangeStartUnit": "수열의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-CALC-04",
+          "rangeEndUnit": "삼각함수의 미분",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "미적분"
+    },
+    {
+      "file": "original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-CALC-01",
+      "rangeStartUnit": "수열의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-CALC-05",
+      "rangeEndUnit": "여러 가지 미분법",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분",
+          "courseCode": "H15-CALC",
+          "rangeStartUnitKey": "H15-CALC-01",
+          "rangeStartUnit": "수열의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-CALC-05",
+          "rangeEndUnit": "여러 가지 미분법",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분"
+    },
+    {
       "file": "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
       "school": "금당고",
       "topic": "",
@@ -1887,6 +2507,325 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "original/high/h1/2mid/24_순천공고_2학기_중간_고1_기출.js",
+      "school": "순천공고", "topic": "", "grade": "고1", "year": 2024, "semester": "2", "examType": "mid", "subject": "수학(상)", "contentType": "기출", "qCount": 20,
+      "rangeStartUnitKey": "H15-SA-04", "rangeStartUnit": "복소수", "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-06", "rangeEndUnit": "이차방정식의 근과 계수", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-04", "rangeStartUnit": "복소수", "rangeStartUnitOrder": 4, "rangeEndUnitKey": "H15-SA-06", "rangeEndUnit": "이차방정식의 근과 계수", "rangeEndUnitOrder": 6}],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/2mid/24_청암고_2학기_중간_고1_기출.js",
+      "school": "청암고", "topic": "", "grade": "고1", "year": 2024, "semester": "2", "examType": "mid", "subject": "수학(상)", "contentType": "기출", "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-08", "rangeStartUnit": "여러 가지 부등식", "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H15-SA-10", "rangeEndUnit": "직선의 방정식", "rangeEndUnitOrder": 10,
+      "courseRanges": [{"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-08", "rangeStartUnit": "여러 가지 부등식", "rangeStartUnitOrder": 8, "rangeEndUnitKey": "H15-SA-10", "rangeEndUnit": "직선의 방정식", "rangeEndUnitOrder": 10}],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+      "school": "금당고", "topic": "", "grade": "고1", "year": 2024, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-08", "rangeStartUnit": "여러 가지 부등식", "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-08", "rangeStartUnit": "여러 가지 부등식", "rangeStartUnitOrder": 8, "rangeEndUnitKey": "H15-SA-12", "rangeEndUnit": "도형의 이동", "rangeEndUnitOrder": 12},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js",
+      "school": "제일고", "topic": "", "grade": "고1", "year": 2024, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-08", "rangeStartUnit": "여러 가지 부등식", "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-08", "rangeStartUnit": "여러 가지 부등식", "rangeStartUnitOrder": 8, "rangeEndUnitKey": "H15-SA-08", "rangeEndUnit": "여러 가지 부등식", "rangeEndUnitOrder": 8},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/23_강남여고_2학기_중간_고1_기출.js",
+      "school": "강남여고", "topic": "", "grade": "고1", "year": 2023, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 24,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "school": "강남여고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 26,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "school": "금당고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+      "school": "매산고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 20,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "school": "복성고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H15-SB-02", "rangeEndUnit": "명제", "rangeEndUnitOrder": 2,
+      "courseRanges": [{"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-09","rangeStartUnit":"평면좌표","rangeStartUnitOrder":9,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-02","rangeEndUnit":"명제","rangeEndUnitOrder":2}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "school": "순천고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-09","rangeStartUnit":"평면좌표","rangeStartUnitOrder":9,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "school": "제일고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-11", "rangeStartUnit": "원의 방정식", "rangeStartUnitOrder": 11,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-11","rangeStartUnit":"원의 방정식","rangeStartUnitOrder":11,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "school": "팔마고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 21,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_효산고_2학기_중간_고1_기출.js",
+      "school": "효산고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 26,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-02", "rangeEndUnit": "명제", "rangeEndUnitOrder": 2,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-02","rangeEndUnit":"명제","rangeEndUnitOrder":2}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+      "school": "효천고", "topic": "", "grade": "고1", "year": 2021, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-09","rangeStartUnit":"평면좌표","rangeStartUnitOrder":9,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js",
+      "school": "강남여고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 24,
+      "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9, "rangeEndUnitKey": "H15-SA-12", "rangeEndUnit": "도형의 이동", "rangeEndUnitOrder": 12},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js",
+      "school": "금당고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9, "rangeEndUnitKey": "H15-SA-09", "rangeEndUnit": "평면좌표", "rangeEndUnitOrder": 9},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
+      "school": "매산고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 20,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+      "school": "복성고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-04", "rangeEndUnit": "유리함수", "rangeEndUnitOrder": 4,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-04","rangeEndUnit":"유리함수","rangeEndUnitOrder":4}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js",
+      "school": "순천여고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 23,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
+      "school": "제일고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-09", "rangeStartUnit": "평면좌표", "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-09","rangeStartUnit":"평면좌표","rangeStartUnitOrder":9,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},
+        {"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js",
+      "school": "팔마고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_효산고_2학기_중간_고1_기출.js",
+      "school": "효산고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 26,
+      "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-02", "rangeEndUnit": "명제", "rangeEndUnitOrder": 2,
+      "courseRanges": [{"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-02","rangeEndUnit":"명제","rangeEndUnitOrder":2}],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+      "school": "효천고", "topic": "", "grade": "고1", "year": 2022, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-12", "rangeStartUnit": "도형의 이동", "rangeStartUnitOrder": 12,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-12","rangeStartUnit":"도형의 이동","rangeStartUnitOrder":12,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},
+        {"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/23_금당고_2학기_중간_고1_기출.js",
+      "school": "금당고", "topic": "", "grade": "고1", "year": 2023, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-11", "rangeStartUnit": "원의 방정식", "rangeStartUnitOrder": 11,
+      "rangeEndUnitKey": "H15-SB-02", "rangeEndUnit": "명제", "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-11", "rangeStartUnit": "원의 방정식", "rangeStartUnitOrder": 11, "rangeEndUnitKey": "H15-SA-13", "rangeEndUnit": "이차함수", "rangeEndUnitOrder": 13},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-02", "rangeEndUnit": "명제", "rangeEndUnitOrder": 2}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js",
+      "school": "매산여고", "topic": "", "grade": "고1", "year": 2023, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 23,
+      "rangeStartUnitKey": "H15-SA-12", "rangeStartUnit": "도형의 이동", "rangeStartUnitOrder": 12,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-12", "rangeStartUnit": "도형의 이동", "rangeStartUnitOrder": 12, "rangeEndUnitKey": "H15-SA-12", "rangeEndUnit": "도형의 이동", "rangeEndUnitOrder": 12},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js",
+      "school": "순천여고", "topic": "", "grade": "고1", "year": 2023, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 23,
+      "rangeStartUnitKey": "H15-SA-05", "rangeStartUnit": "이차방정식", "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-05", "rangeStartUnit": "이차방정식", "rangeStartUnitOrder": 5, "rangeEndUnitKey": "H15-SA-11", "rangeEndUnit": "원의 방정식", "rangeEndUnitOrder": 11},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+      "school": "팔마고", "topic": "", "grade": "고1", "year": 2023, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-11", "rangeStartUnit": "원의 방정식", "rangeStartUnitOrder": 11,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-11", "rangeStartUnit": "원의 방정식", "rangeStartUnitOrder": 11, "rangeEndUnitKey": "H15-SA-12", "rangeEndUnit": "도형의 이동", "rangeEndUnitOrder": 12},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/23_효산고_2학기_중간_고1_기출.js",
+      "school": "효산고", "topic": "", "grade": "고1", "year": 2023, "semester": "2", "examType": "mid", "subject": "수학(하)", "contentType": "기출", "qCount": 28,
+      "rangeStartUnitKey": "H15-SA-12", "rangeStartUnit": "도형의 이동", "rangeStartUnitOrder": 12,
+      "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {"standardCourse": "수학(상)", "courseCode": "H15-SA", "rangeStartUnitKey": "H15-SA-12", "rangeStartUnit": "도형의 이동", "rangeStartUnitOrder": 12, "rangeEndUnitKey": "H15-SA-12", "rangeEndUnit": "도형의 이동", "rangeEndUnitOrder": 12},
+        {"standardCourse": "수학(하)", "courseCode": "H15-SB", "rangeStartUnitKey": "H15-SB-01", "rangeStartUnit": "집합", "rangeStartUnitOrder": 1, "rangeEndUnitKey": "H15-SB-03", "rangeEndUnit": "함수", "rangeEndUnitOrder": 3}
+      ],
+      "primaryStandardCourse": "수학(하)"
     },
     {
       "file": "similar/high/h1/1final/25_강남여고_1학기_기말_고1_유사1.js",
@@ -8081,6 +9020,218 @@ window.mainDB = {
       "school": "효천고", "topic": "", "grade": "고1", "year": 2026,
       "semester": "1", "examType": "final", "subject": "공통수학1", "contentType": "기출", "qCount": 26,
       "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h2/2mid/25_청암고_2학기_중간_고2_수학I.js",
+      "school": "청암고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-02",
+      "rangeEndUnit": "로그의 뜻과 성질",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-02",
+          "rangeEndUnit": "로그의 뜻과 성질",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
+      "file": "original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "school": "매산여고", "topic": "", "grade": "고2", "year": 2025,
+      "semester": "2", "examType": "mid", "subject": "수학II", "contentType": "기출", "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-01", "rangeStartUnit": "함수의 극한", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06", "rangeEndUnit": "도함수의 활용", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse":"수학II","courseCode":"H15-M2","rangeStartUnitKey":"H15-M2-01","rangeStartUnit":"함수의 극한","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-M2-06","rangeEndUnit":"도함수의 활용","rangeEndUnitOrder":6}],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "school": "제일고", "topic": "", "grade": "고2", "year": 2025,
+      "semester": "2", "examType": "mid", "subject": "수학II", "contentType": "기출", "qCount": 22,
+      "rangeStartUnitKey": "H15-M2-01", "rangeStartUnit": "함수의 극한", "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06", "rangeEndUnit": "도함수의 활용", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse":"수학II","courseCode":"H15-M2","rangeStartUnitKey":"H15-M2-01","rangeStartUnit":"함수의 극한","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-M2-06","rangeEndUnit":"도함수의 활용","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"수학II"
+    },
+    {"file":"original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js","school":"삼산중","topic":"","grade":"중2","year":2025,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-08","rangeEndUnit":"확률","rangeEndUnitOrder":8,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-08","rangeEndUnit":"확률","rangeEndUnitOrder":8}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js","school":"연향중","topic":"","grade":"중2","year":2025,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":23,"rangeStartUnitKey":"M2-04","rangeStartUnit":"일차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-04","rangeStartUnit":"일차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js","school":"왕운중","topic":"","grade":"중2","year":2025,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":25,"rangeStartUnitKey":"M2-04","rangeStartUnit":"일차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-04","rangeStartUnit":"일차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js","school":"금당중","topic":"","grade":"중2","year":2024,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":25,"rangeStartUnitKey":"M2-02","rangeStartUnit":"함수","rangeStartUnitOrder":2,"rangeEndUnitKey":"M2-07","rangeEndUnit":"삼각형의 무게중심","rangeEndUnitOrder":7,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-02","rangeStartUnit":"함수","rangeStartUnitOrder":2,"rangeEndUnitKey":"M2-07","rangeEndUnit":"삼각형의 무게중심","rangeEndUnitOrder":7}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js","school":"매산중","topic":"","grade":"중2","year":2024,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js","school":"신흥중","topic":"","grade":"중2","year":2024,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":21,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js","school":"연향중","topic":"","grade":"중2","year":2024,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":23,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js","school":"왕운중","topic":"","grade":"중2","year":2024,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js","school":"향림중","topic":"","grade":"중2","year":2024,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-03","rangeStartUnit":"연립방정식","rangeStartUnitOrder":3,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-03","rangeStartUnit":"연립방정식","rangeStartUnitOrder":3,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js","school":"금당중","topic":"","grade":"중2","year":2023,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":25,"rangeStartUnitKey":"M2-03","rangeStartUnit":"연립방정식","rangeStartUnitOrder":3,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-03","rangeStartUnit":"연립방정식","rangeStartUnitOrder":3,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js","school":"신흥중","topic":"","grade":"중2","year":2023,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-04","rangeStartUnit":"일차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-04","rangeStartUnit":"일차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js","school":"연향중","topic":"","grade":"중2","year":2023,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js","school":"왕운중","topic":"","grade":"중2","year":2023,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js","school":"이수중","topic":"","grade":"중2","year":2023,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-05","rangeStartUnit":"도형의 성질","rangeStartUnitOrder":5,"rangeEndUnitKey":"M2-06","rangeEndUnit":"도형의 닮음","rangeEndUnitOrder":6}],"primaryStandardCourse":"중2 수학"},
+    {"file":"original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js","school":"향림중","topic":"","grade":"중2","year":2023,"semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,"rangeStartUnitKey":"M2-03","rangeStartUnit":"연립방정식","rangeStartUnitOrder":3,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5,"courseRanges":[{"standardCourse":"중2 수학","courseCode":"M2","rangeStartUnitKey":"M2-03","rangeStartUnit":"연립방정식","rangeStartUnitOrder":3,"rangeEndUnitKey":"M2-05","rangeEndUnit":"도형의 성질","rangeEndUnitOrder":5}],"primaryStandardCourse":"중2 수학"},
+    {
+      "file": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+      "school": "금당중", "topic": "", "grade": "중3", "year": 2025,
+      "semester": "2", "examType": "mid", "subject": "수학", "contentType": "기출", "qCount": 24,
+      "rangeStartUnitKey": "RAW-삼각비", "rangeStartUnit": "삼각비", "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "RAW-원의성질", "rangeEndUnit": "원의 성질", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "school": "신흥중", "topic": "", "grade": "중3", "year": 2025,
+      "semester": "2", "examType": "mid", "subject": "수학", "contentType": "기출", "qCount": 24,
+      "rangeStartUnitKey": "RAW-삼각비", "rangeStartUnit": "삼각비", "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "RAW-원의성질", "rangeEndUnit": "원의 성질", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "school": "연향중", "topic": "", "grade": "중3", "year": 2025,
+      "semester": "2", "examType": "mid", "subject": "수학", "contentType": "기출", "qCount": 23,
+      "rangeStartUnitKey": "RAW-삼각비", "rangeStartUnit": "삼각비", "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "RAW-원의성질", "rangeEndUnit": "원의 성질", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "school": "왕운중", "topic": "", "grade": "중3", "year": 2025,
+      "semester": "2", "examType": "mid", "subject": "수학", "contentType": "기출", "qCount": 24,
+      "rangeStartUnitKey": "RAW-삼각비", "rangeStartUnit": "삼각비", "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "RAW-원의성질", "rangeEndUnit": "원의 성질", "rangeEndUnitOrder": 6,
+      "courseRanges": [{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+      "school":"풍덕중","topic":"","grade":"중3","year":2025,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":25,
+      "rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+      "school":"금당중","topic":"","grade":"중3","year":2024,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,
+      "rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+      "school":"신흥중","topic":"","grade":"중3","year":2024,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,
+      "rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "school":"연향중","topic":"","grade":"중3","year":2024,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":23,
+      "rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+      "school":"왕운중","topic":"","grade":"중3","year":2024,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":23,
+      "rangeStartUnitKey":"RAW-이차함수","rangeStartUnit":"이차함수","rangeStartUnitOrder":4,
+      "rangeEndUnitKey":"RAW-삼각비","rangeEndUnit":"삼각비","rangeEndUnitOrder":5,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-이차함수","rangeStartUnit":"이차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"RAW-삼각비","rangeEndUnit":"삼각비","rangeEndUnitOrder":5}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "school":"동산중","topic":"","grade":"중3","year":2023,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":25,
+      "rangeStartUnitKey":"RAW-이차함수","rangeStartUnit":"이차함수","rangeStartUnitOrder":4,
+      "rangeEndUnitKey":"RAW-삼각비","rangeEndUnit":"삼각비","rangeEndUnitOrder":5,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-이차함수","rangeStartUnit":"이차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"RAW-삼각비","rangeEndUnit":"삼각비","rangeEndUnitOrder":5}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "school":"연향중","topic":"","grade":"중3","year":2023,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,
+      "rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+      "school":"왕운중","topic":"","grade":"중3","year":2023,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,
+      "rangeStartUnitKey":"RAW-이차함수","rangeStartUnit":"이차함수","rangeStartUnitOrder":4,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-이차함수","rangeStartUnit":"이차함수","rangeStartUnitOrder":4,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
+    },
+    {
+      "file":"original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "school":"풍덕중","topic":"","grade":"중3","year":2023,
+      "semester":"2","examType":"mid","subject":"수학","contentType":"기출","qCount":24,
+      "rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,
+      "rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6,
+      "courseRanges":[{"standardCourse":"중3 수학","courseCode":"M3","rangeStartUnitKey":"RAW-삼각비","rangeStartUnit":"삼각비","rangeStartUnitOrder":5,"rangeEndUnitKey":"RAW-원의성질","rangeEndUnit":"원의 성질","rangeEndUnitOrder":6}],
+      "primaryStandardCourse":"중3 수학"
     }
   ]
 };

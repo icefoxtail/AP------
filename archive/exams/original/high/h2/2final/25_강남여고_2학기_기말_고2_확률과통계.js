@@ -10,8 +10,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 4,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p001.png",
-    "imageKind": "full_page",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q01_distribution_table.png",
+    "imageKind": "crop",
     "content": "1. 확률변수 X의 확률분포를 표로 나타내면 다음과 같다. P(X≥2)의 값은? (3점)",
     "choices": [
       "4/5",
@@ -54,7 +54,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 5,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "2. 확률변수 X가 이항분포 B(54, 1/9)을 따를 때, X의 평균은? (3.5점)",
     "choices": [
       "4",
@@ -96,7 +96,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q3.png",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
     "imageKind": "crop",
     "content": "3. 확률변수 Z가 표준정규분포를 따를 때, 오른쪽 표준정규분포표를 이용하여 P(-1≤Z≤1)의 값은? (3.5점)",
     "choices": [
@@ -140,8 +140,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p001.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "4. 확률변수 X가 정규분포 N(10, 2^2)을 따를 때, P(X≤14)=P(Z≤a)의 과정에서 상수 a의 값은? (단, Z가 표준정규분포를 따르는 확률변수이다.) (3.8점)",
     "choices": [
       "0.5",
@@ -183,7 +183,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q5.png",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
     "imageKind": "crop",
     "content": "5. 확률변수 X가 정규분포 N(64, 2^2)를 따를 때, 오른쪽 표준정규분포표를 이용하여 P(62≤X≤68)의 값은? (3.8점)",
     "choices": [
@@ -227,7 +227,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "6. 확률변수 X에 대하여 E(X)=10, V(X)=4이고, 확률변수 Y에 대하여 Y=2X+5일 때, E(Y)-V(Y)의 값은? (3.8점)",
     "choices": [
       "11",
@@ -271,7 +271,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "7. 확률변수 X가 정규분포 N(m, σ^2)를 따르고 P(X≥48)=P(X≤52)일 때, 상수 m의 값은? (3.8점)",
     "choices": [
       "55",
@@ -315,7 +315,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "8. 확률변수 X의 확률밀도함수가 f(x)=a(x-2) (2≤x≤5)일 때, 상수 a의 값은? (3.8점)",
     "choices": [
       "5/9",
@@ -357,8 +357,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p002.png",
-    "imageKind": "full_page",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q09_graph_and_statements.png",
+    "imageKind": "crop",
     "content": "9. 학생 수가 서로 같은 세 고등학교 A, B, C의 수학점수를 확률변수 X_A, X_B, X_C라고 할 때, X_A, X_B, X_C는 각각 정규분포 N(m_A, σ_A^2), N(m_B, σ_B^2), N(m_C, σ_C^2)을 따른다. 각각의 확률밀도함수의 그래프가 그림과 같다고 할 때, 옳은 것의 개수는? (4점)",
     "choices": [
       "5",
@@ -401,7 +401,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "10. 어느 고등학교 전체 학생의 자율 학습 참여율은 50%라고 한다. 이 학교 학생 중에서 100명을 임의로 뽑을 때, 자율 학습을 하는 학생의 수를 확률변수 X라고 하면 P(a≤X≤55)=0.8185일 때, 상수 a의 값은? (4점)",
     "choices": [
       "40",
@@ -443,8 +443,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p002.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "11. 정규분포 N(150, 6^2)을 따르는 모집단에서 크기가 36인 표본을 임의추출할 때, 표본평균 X̄에 대하여 P(X̄≥149)의 값은? (4점)",
     "choices": [
       "0.6915",
@@ -486,8 +486,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p002.png",
-    "imageKind": "full_page",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q12_density_graph.png",
+    "imageKind": "crop",
     "content": "12. 0≤x≤4에서 정의된 연속확률변수 X가 확률밀도함수 f(x)의 그래프가 그림과 같을 때, P(X≥1)의 값은? (단, a는 상수이다.) (4점)",
     "choices": [
       "1/3",
@@ -529,8 +529,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "13. 정규분포 N(m, σ^2)을 따르는 모집단에서 크기가 100, n인 표본을 임의추출하여 신뢰도 α%로 추정한 모평균 m의 신뢰구간의 길이가 각각 12, 6이라고 한다. 이때 n의 값은? (4점)",
     "choices": [
       "256",
@@ -574,7 +574,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "14. 1부터 6까지의 자연수가 하나씩 적혀 있는 6장의 카드 중에서 임의로 4장의 카드를 동시에 뽑는 시행을 14번 반복한다. n번째 시행에서 뽑은 4장의 카드에 적힌 수 중에서 두 번째로 큰 수를 x_n이라 하자. 14개의 수 x_1, x_2, ..., x_14의 평균을 X̄라 할 때, E(5X̄-15)+V(5X̄+10)의 값은? (4점)",
     "choices": [
       "5",
@@ -617,7 +617,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "15. 확률변수 X는 이항분포 B(3, p)를 따르고 확률변수 Y는 이항분포 B(4, 2p)를 따른다고 한다. 이때, 10P(X=3)=P(Y≥3)을 만족시키는 양수 p의 값은? (4점)",
     "choices": [
       "11/24",
@@ -659,8 +659,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "16. 표준편차가 σ인 정규분포를 따르는 모집단에서 크기가 n인 표본을 임의추출하여 얻은 모평균 m에 대한 신뢰도 99%의 신뢰구간이 9.42≤m≤14.58이다. 같은 표본을 이용하여 얻은 모평균 m에 대한 신뢰도 95%의 신뢰구간에 속하는 모든 자연수 m의 개수는? (단, Z가 표준정규분포를 따르는 확률변수일 때, P(0≤Z≤1.96)=0.475, P(0≤Z≤2.58)=0.495) (4.5점)",
     "choices": [
       "6",
@@ -703,7 +703,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
     "image": "",
-    "imageKind": "full_page",
+    "imageKind": "none",
     "content": "17. 확률변수 X가 이항분포 B(180, 1/6)을 따를 때, t에 대한 이차방정식 t^2-2Xt+55X-700=0이 실근을 가질 확률은? (4.5점)",
     "choices": [
       "0.1815",
@@ -745,8 +745,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q18_distribution_tables.png",
+    "imageKind": "crop",
     "content": "18. 두 이산확률변수 X, Y의 확률분포를 표로 나타내면 각각 다음과 같다. V(X)=31/5일 때, 5×V(Y)의 값은? (4.5점)",
     "choices": [
       "38",
@@ -788,8 +788,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 4,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p004.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "19. 어느 음료 회사에서 생산되는 음료수 한 병의 용량은 평균이 240mL, 표준편차가 12mL인 정규분포를 따른다고 한다. 이 회사에서는 생산된 음료수 9병을 한 상자에 담아 판매하는데 음료수 한 상자에 들어 있는 음료수 9병의 용량에 대한 표본평균 X̄가 234.4mL보다 작거나 249.6mL보다 크면 불량품으로 판정한다고 한다. 이 음료수 공장에서 출하한 음료수 상자 400개 중에서 불량품인 상자가 43개 이하일 확률은? (4.5점)",
     "choices": [
       "0.98",
@@ -831,8 +831,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 4,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/page_p004.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "20. 평균이 m, 표준편차가 4인 정규분포를 따르는 모집단에서 크기가 n인 표본을 임의추출할 때, 표본평균 X̄에 대하여 f(m)=P(X̄≤1.96×4/√n)라고 하자. 이때, f(0)+f(1.8)≤1.025를 만족시키는 n의 최솟값은? (단, Z가 표준정규분포를 따르는 확률변수일 때, P(0≤Z≤1.64)=0.450, P(0≤Z≤1.96)=0.475로 계산한다.) (5점)",
     "choices": [
       "25",
@@ -986,7 +986,7 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q24.png",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
     "imageKind": "crop",
     "content": "[서술형 4] 정규분포 $N(80,5^2)$를 따르는 확률변수 $X$와 정규분포를 따르는 확률변수 $Y$가 $Y=-3X+a$를 만족시킨다. $P(b\\le X\\le75)=0.1359$, $P(a-240\\le Y\\le b)=0.3413$일 때, 오른쪽 표준정규분포표를 이용하여 상수 $a,b$의 값을 구하시오. (5점)",
     "choices": [],
