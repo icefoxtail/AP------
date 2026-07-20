@@ -6,12 +6,19 @@
     <title>JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)</title>
     <script>
         window.MathJax = {
+            loader: { paths: { mathjax: '/archive/vendor/mathjax', 'mathjax-tex': '/archive/vendor/mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
+            output: {
+                font: 'mathjax-tex',
+                displayOverflow: 'linebreak',
+                linebreaks: { inline: true, width: '100%', lineleading: 0.2 }
+            },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
@@ -1208,6 +1215,7 @@ async function init() {
     s.src = /^blob:/i.test(safeDataUrl) ? safeDataUrl : safeDataUrl + '?v=' + Date.now();
     s.onload = async () => {
         try {
+            await waitForMathJaxOrContinue();
             const qb = window.questionBank;
             AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
             AppState.title = window.examTitle || p.get('title') || recentLaunch?.title || '수학 시험지';
@@ -1468,6 +1476,7 @@ async function applyAutoImageSizeClasses(root) {
         wrap.classList.add(autoImageSizeClassFor(img));
     }));
 }
+
 
 async function renderExam(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
@@ -1735,7 +1744,27 @@ function renderAns(area, data) {
     }
 }
 
+// MathJax 로딩을 기다리되, 실패하거나 지연돼도 렌더를 막지 않는다.
+// (여기서 예외를 흘리면 화면이 통째로 비어버리므로 반드시 삼킨다)
+const AP_MATHJAX_WAIT_MS = 5000;
+async function waitForMathJaxOrContinue(timeoutMs = AP_MATHJAX_WAIT_MS) {
+    const deadline = ms => new Promise(resolve => setTimeout(() => resolve('timeout'), ms));
+    try {
+        if (window.__AP_MATHJAX_READY__) {
+            const r = await Promise.race([window.__AP_MATHJAX_READY__, deadline(timeoutMs)]);
+            if (r === 'timeout') console.warn('[engine] MathJax 로딩 지연 — 수식 없이 렌더를 계속합니다.');
+        }
+        if (window.MathJax?.startup?.promise) {
+            const r = await Promise.race([window.MathJax.startup.promise, deadline(timeoutMs)]);
+            if (r === 'timeout') console.warn('[engine] MathJax startup 지연 — 수식 없이 렌더를 계속합니다.');
+        }
+    } catch (error) {
+        console.warn('[engine] MathJax 초기화 실패 — 수식 없이 렌더를 계속합니다.', error);
+    }
+}
+
 async function render() {
+    await waitForMathJaxOrContinue();
     const area = document.getElementById('print-area');
     area.innerHTML = '';
     syncQrOutputControls();
