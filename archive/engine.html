@@ -361,7 +361,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
+            <button id="btn-print" onclick="safePrint()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -1763,7 +1763,21 @@ async function waitForMathJaxOrContinue(timeoutMs = AP_MATHJAX_WAIT_MS) {
     }
 }
 
+// 렌더가 끝나기 전에 인쇄를 걸면 브라우저가 미완성 미리보기로 인쇄 잡을 만들어
+// EMF 변환 단계에서 물릴 수 있다. 렌더 완료 시점을 safePrint가 기다릴 수 있게 노출한다.
+window.__AP_RENDER_READY__ = Promise.resolve();
+
 async function render() {
+    let markRendered;
+    window.__AP_RENDER_READY__ = new Promise(resolve => { markRendered = resolve; });
+    try {
+        await renderBody();
+    } finally {
+        markRendered();
+    }
+}
+
+async function renderBody() {
     await waitForMathJaxOrContinue();
     const area = document.getElementById('print-area');
     area.innerHTML = '';
@@ -1788,6 +1802,40 @@ async function render() {
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
 }
+
+// 인쇄 전 준비: 렌더·폰트·이미지·수식이 모두 확정된 뒤에만 window.print()를 부른다.
+// 준비 안 된 상태에서 인쇄하면 미리보기가 미완성인 채 잡이 생성돼 스풀이 멈춘다.
+let printPending = false;
+async function safePrint() {
+    if (printPending) return;
+    printPending = true;
+    const btn = document.getElementById('btn-print');
+    const label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = '인쇄 준비 중…'; }
+    try {
+        const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
+        await Promise.race([window.__AP_RENDER_READY__, limit(20000)]);
+        if (document.fonts?.ready) await Promise.race([document.fonts.ready, limit(5000)]);
+        const pending = Array.from(document.querySelectorAll('#print-area img')).filter(img => !img.complete);
+        if (pending.length) {
+            await Promise.race([
+                Promise.all(pending.map(img => new Promise(resolve => {
+                    img.addEventListener('load', resolve, { once: true });
+                    img.addEventListener('error', resolve, { once: true });
+                }))),
+                limit(5000)
+            ]);
+        }
+        if (window.MathJax?.typesetPromise) await Promise.race([MathJax.typesetPromise(), limit(5000)]);
+        await raf(); await raf();
+    } catch (error) {
+        console.warn('[engine] 인쇄 준비 중 경고 — 그대로 인쇄를 진행합니다.', error);
+    }
+    if (btn) { btn.disabled = false; btn.textContent = label; }
+    printPending = false;
+    window.print();
+}
+window.safePrint = safePrint;
 
 function shouldUseScreenFit(params) {
     return params.get('fit') === 'screen' || window.matchMedia('(max-width: 900px)').matches;
