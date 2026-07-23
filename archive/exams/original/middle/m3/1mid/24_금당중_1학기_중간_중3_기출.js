@@ -519,7 +519,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "[서술형2] 두 수 A, B가 다음과 같을 때, A+B의 값을 구하여라. [6점]\\n\\nA = $\\sqrt{3}(\\sqrt{5}+4) - \\sqrt{5}(\\sqrt{15}-2\\sqrt{3})$\\nB = $\\sqrt{18} \\div \\sqrt{6} - 3\\sqrt{3}$",
+    "content": "[서술형2] 두 수 A, B가 다음과 같을 때, A+B의 값을 구하여라. [6점]\\n\\nA = $\\sqrt{3}(\\sqrt{5}+4) - \\sqrt{5}(\\sqrt{15}-2\\sqrt{3})$\nB = $\\sqrt{18} \\div \\sqrt{6} - 3\\sqrt{3}$",
     "choices": [],
     "answer": "$3\\sqrt{15} - 3\\sqrt{3}$",
     "category": "제곱근과 실수",

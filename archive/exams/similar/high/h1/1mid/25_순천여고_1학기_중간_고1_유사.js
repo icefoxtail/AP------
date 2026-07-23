@@ -608,7 +608,7 @@ window.questionBank = [
       "⑤ 12"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(\\i)  a < 3 \\implies f(3)=5 \\implies (3-a)^{2}=4 \\implies a=1\\\\\\)<br>\\\\\\(\\ii)  3 \\le a \\le 7 \\implies f(a)=1 \\\\n eq 5\\\\\\)<br>\\\\\\(\\iii)  a > 7 \\implies f(7)=5 \\implies (7-a)^{2}=4 \\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(i)  a < 3 \\implies f(3)=5 \\implies (3-a)^{2}=4 \\implies a=1\\\\\\)<br>\\\\\\(ii)  3 \\le a \\le 7 \\implies f(a)=1 \\neq 5\\\\\\)<br>\\\\\\(iii)  a > 7 \\implies f(7)=5 \\implies (7-a)^{2}=4 \\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
   },
   {
     "id": 22,

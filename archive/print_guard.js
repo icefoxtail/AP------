@@ -36,7 +36,7 @@
                     new Promise((_, reject) => setTimeout(() => reject(new Error('MathJax bootstrap timeout')), timeoutMs))
                 ]);
             } catch (error) {
-                return { ready: false, reason: `MathJax 濡쒕뵫 ?ㅽ뙣: ${error?.message || error}` };
+                return { ready: false, reason: `MathJax 로딩 실패: ${error?.message || error}` };
             }
         }
         const started = Date.now();
