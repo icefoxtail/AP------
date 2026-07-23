@@ -1,25 +1,651 @@
-window.examTitle="21_금당고_2학기_중간_고1_기출";
-window.questionBank=[
-{id:1,level:"하",category:"집합의 뜻",originalCategory:"집합",standardCourse:"수학(하)",standardUnitKey:"H15-SB-01",standardUnit:"집합",standardUnitOrder:1,questionType:"객관식",layoutTag:"grid",tags:["객관식","집합","집합의뜻","대상의명확성"],wide:false,content:"다음 중 집합이 아닌 것은? [3.5점]",choices:["가장 작은 자연수의 모임","84의 소인수의 모임","이차방정식 $x^2-4=0$의 해의 모임","일주일을 나타내는 요일의 모임","순천금당고 학생 중 키가 작은 학생의 모임"],answer:"⑤",solution:"'키가 작다'는 기준이 명확하지 않다. 결론: ⑤."},
-{id:2,level:"하",category:"교집합",originalCategory:"집합",standardCourse:"수학(하)",standardUnitKey:"H15-SB-01",standardUnit:"집합",standardUnitOrder:1,questionType:"객관식",layoutTag:"grid",tags:["객관식","집합","교집합","소수","원소의개수"],wide:false,content:"$A=\\{x\\mid x\\text{는 10 이하의 소수}\\}$, $B=\\{2,4,6,7\\}$일 때 $n(A\\cap B)$는? [3.5점]",choices:["0","1","2","3","4"],answer:"③",solution:"교집합은 $\\{2,7\\}$이므로 2이다."},
-{id:3,level:"하",category:"부분집합의 개수",originalCategory:"집합",standardCourse:"수학(하)",standardUnitKey:"H15-SB-01",standardUnit:"집합",standardUnitOrder:1,questionType:"객관식",layoutTag:"grid",tags:["객관식","집합","부분집합","포함관계","개수"],wide:false,content:"$A=\\{1,3,5,7,9\\}$, $B=\\{3,5,7\\}$에 대하여 $B\\subset X\\subset A$를 만족시키는 $X$의 개수는? [3.8점]",choices:["2","4","8","16","32"],answer:"②",solution:"원소 1과 9의 포함 여부만 자유이므로 $2^2=4$개이다."},
-{id:4,level:"하",category:"산술기하평균",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","절대부등식","산술기하평균","최솟값"],wide:false,content:"양수 $x$에 대하여 $f(x)=2x+\\frac2x$의 최솟값은? [3.8점]",choices:["4","3","2","1","0"],answer:"①",solution:"$2x+\\frac2x\\ge2\\sqrt4=4$이다."},
-{id:5,level:"하",category:"명제의 역",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","역","대우"],wide:false,content:"두 조건 $p,q$에 대하여 $\\sim p\\to q$의 역이 참일 때 항상 참인 명제는? [3.8점]",choices:["$\\sim p\\to\\sim q$","$p\\to\\sim q$","$\\sim p\\to q$","$\\sim q\\to p$","$q\\to\\sim p$"],answer:"⑤",solution:"주어진 명제의 역은 $q\\to\\sim p$이다."},
-{id:6,level:"하",category:"절댓값함수",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","절댓값함수","함숫값"],wide:false,content:"$f(x)=\\begin{cases}x&(x\\ge0)\\\\-x&(x<0)\\end{cases}$일 때 $f(1)+f(-1)$은? [3.8점]",choices:["0","2","4","6","8"],answer:"②",solution:"두 값 모두 1이므로 합은 2이다."},
-{id:7,level:"하",category:"합성함수",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","합성함수","일차함수"],wide:false,content:"$f(x)=x+3$, $g(x)=\\frac x3$일 때 $(f\\circ g)(3)$은? [3.8점]",choices:["3","4","5","6","7"],answer:"②",solution:"$g(3)=1$, $f(1)=4$이다."},
-{id:8,level:"중",category:"진리집합",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","진리집합","부분집합","서로소"],wide:false,content:"전체집합 $U$에서 조건 $p,q,r$의 진리집합 $P,Q,R$가 $Q^c\\subset P^c$, $Q\\cap R=\\varnothing$이고 모두 공집합이 아닐 때 항상 참인 명제는? [4점]",choices:["$p\\to r$","$\\sim p\\to\\sim q$","$q\\to p$","$\\sim q\\to\\sim r$","$r\\to\\sim p$"],answer:"⑤",solution:"여집합을 취하면 $P\\subset Q$이다. 또 $Q\\cap R=\\varnothing$이므로 $R\\subset Q^c\\subset P^c$이고, 따라서 $r\\to\\sim p$가 항상 참이다. 결론: 정답은 ⑤이다."},
-{id:9,level:"중",category:"전칭명제",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","부정","이차부등식","판별식"],wide:false,content:"명제 '어떤 실수 $x$에 대하여 $x^2-2kx-2k+3<0$이다.'의 부정이 참일 때 $k$의 범위는? [4점]",choices:["$-1\\le k\\le1$","$-2\\le k\\le2$","$-2\\le k\\le1$","$-3\\le k\\le1$","$-3\\le k\\le2$"],answer:"④",solution:"모든 실수에서 이차식이 0 이상이어야 한다. 판별식 조건 $4(k^2+2k-3)\\le0$에서 $-3\\le k\\le1$이다."},
-{id:10,level:"중",category:"부분집합의 최솟값",originalCategory:"집합",standardCourse:"수학(하)",standardUnitKey:"H15-SB-01",standardUnit:"집합",standardUnitOrder:1,questionType:"객관식",layoutTag:"grid",tags:["객관식","집합","부분집합","최소원소","합"],wide:false,content:"$A=\\{1,2,4,8\\}$의 공집합이 아닌 모든 부분집합의 최소원소들의 합은? [4.1점]",choices:["20","24","28","32","36"],answer:"④",solution:"최소원소 1,2,4,8인 부분집합 수는 각각 8,4,2,1개이므로 합은 $8+8+8+8=32$이다."},
-{id:11,level:"중",category:"대칭차집합",originalCategory:"집합",standardCourse:"수학(하)",standardUnitKey:"H15-SB-01",standardUnit:"집합",standardUnitOrder:1,questionType:"객관식",layoutTag:"grid",tags:["객관식","집합","대칭차집합","합집합","원소의개수"],wide:false,content:"$n(A)=20$, $n(B)=30$, $n((A-B)\\cup(B-A))=20$일 때 $n(A\\cup B)$는? [4.1점]",choices:["25","30","35","40","45"],answer:"③",solution:"$50-2n(A\\cap B)=20$에서 교집합은 15개, 합집합은 35개이다."},
-{id:12,level:"중",category:"필요충분조건",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","충분조건","필요조건","구간"],wide:false,content:"$p:-5\\le x\\le3$, $q:a-1\\le x\\le7$, $r:b-1\\le x\\le2$일 때 $p$가 $q$의 충분조건, $p$가 $r$의 필요조건이 되게 하는 $a$의 최댓값과 $b$의 최솟값의 곱은? [4.1점]",choices:["16","14","12","10","8"],answer:"①",solution:"$P\\subset Q$에서 $a\\le-4$, $R\\subset P$에서 $b\\ge-4$이다. 곱은 $(-4)(-4)=16$이다."},
-{id:13,level:"중",category:"유한집합의 함수",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","항등함수","상수함수","일대일대응"],wide:false,content:"$X=\\{2,4,6,8\\}$에서 $f$는 항등함수, $g$는 상수함수, $h$는 일대일대응이고 $f(2)=g(2)=h(2)$, $\\{f(4)\\}^2=g(4)h(4)$, $h(6)=f(6)-g(6)$일 때 $f(8)+g(8)+h(8)$은? [4.1점]",choices:["10","12","14","16","18"],answer:"④",solution:"$g(x)=2$, $h(2)=2$, $h(4)=8$, $h(6)=4$이므로 일대일대응에서 $h(8)=6$. 합은 $8+2+6=16$이다."},
-{id:14,level:"상",category:"합성함수의 그래프",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","합성함수","그래프","교점"],wide:false,content:"그림의 두 함수 $f,g:X\\to X$, $X=[0,2]$에 대하여 $y=(f\\circ g)(x)$와 $y=x$의 교점 개수는? [4.1점]",image:"assets/images/21_금당고_2학기_중간_고1_기출/q14.png",choices:["1","2","3","4","5"],answer:"③",solution:"합성함수는 구간별로 $2-2x$, $4x-4$, $2$가 되며 각각 $y=x$와 한 번씩 만나 총 3개이다."},
-{id:15,level:"상",category:"서로소인 구간",originalCategory:"집합",standardCourse:"수학(하)",standardUnitKey:"H15-SB-01",standardUnit:"집합",standardUnitOrder:1,questionType:"객관식",layoutTag:"grid",tags:["객관식","집합","서로소","이차부등식","부분집합개수"],wide:false,content:"$A=\\{x\\mid|2x-3|<3\\}$, $B=\\{x\\mid x^2-16x+63<0\\}$, $C=\\{x\\mid x^2-2(a+1)x+a^2+2a-3\\le0\\}$이고 $A,C$ 및 $B,C$가 각각 서로소이다. 이를 만족하는 11 이하 자연수 $a$의 집합의 공집합이 아닌 부분집합 개수는? [4.2점]",choices:["7","8","15","16","32"],answer:"①",solution:"$A=(0,3)$, $B=(7,9)$, $C=[a-1,a+3]$이다. 가능한 $a$는 $4,10,11$ 세 개이므로 비어 있지 않은 부분집합은 $2^3-1=7$개이다."},
-{id:16,level:"상",category:"함숫값과 소수",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","다항식","소수","교집합"],wide:false,content:"$f(x)=(x^2-10x+22)(x^2+2x+2)$, $A=\\{f(n)\\mid n\\text{은 20 이하 자연수}\\}$, $B=\\{m\\mid m\\text{은 80 이하 소수}\\}$일 때 $n(A\\cap B)$는? [4.2점]",choices:["1","2","3","4","5"],answer:"①",solution:"직접 대입하거나 인수의 곱이 소수가 되는 조건을 조사하면 $n=3$에서 $f(3)=17$만 가능하다. 따라서 교집합 원소는 하나이다."},
-{id:17,level:"상",category:"명제의 역과 대우",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","역","대우","이차부등식"],wide:false,content:"'$(x^2-8x+12)(x^2-12x+32)=0$이면 $x^2-2(a+1)x+a^2+2a=0$이다.'의 역이 참이고, '$x^2-ax-2a^2<0$이면 $x^2-4x-45<0$이다.'의 대우가 참이 되게 하는 모든 정수 $a$의 곱은? [4.2점]",choices:["4","8","12","16","24"],answer:"②",solution:"첫 조건에서 $a,a+2$가 $2,4,6,8$ 중이어야 하므로 $a=2,4,6$. 둘째 구간 포함 조건을 만족하는 것은 $a=2,4$이고 곱은 8이다."},
-{id:18,level:"상",category:"코시부등식",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"객관식",layoutTag:"grid",tags:["객관식","명제","절대부등식","코시부등식","최솟값"],wide:false,content:"양수 $x,y,z$에 대하여 $(x+y+z)\\left(\\frac4{4x+3y+z}+\\frac{36}{y+3z}\\right)$의 최솟값은? [4.3점]",choices:["8","10","12","14","16"],answer:"⑤",solution:"코시 부등식으로 괄호는 $\\frac{(2+6)^2}{4x+4y+4z}=\\frac{16}{x+y+z}$ 이상이므로 곱의 최솟값은 16이다."},
-{id:19,level:"상",category:"가우스기호 방정식",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","가우스기호","절댓값","방정식"],wide:false,content:"방정식 $\\left|x-[x]-\\frac12\\right|=\\frac18x^2$의 실근 개수는? 단, $[x]$는 $x$보다 크지 않은 최대 정수이다. [4.3점]",choices:["2","4","6","8","10"],answer:"③",solution:"각 정수 구간에서 $x-[x]$를 선형식으로 두고 두 부호의 이차방정식을 조사하면 조건에 맞는 근이 모두 6개이다."},
-{id:20,level:"상",category:"역함수와 합성함수",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"객관식",layoutTag:"grid",tags:["객관식","함수","역함수","합성함수","유한집합"],wide:false,content:"그림의 조건을 만족하는 $f:A\\to B$, $g:B\\to A$에 대하여 $f^{-1}(g(3))$의 값을 구하시오. [4.3점]",image:"assets/images/21_금당고_2학기_중간_고1_기출/q20.png",choices:["4","6","8","10","12"],answer:"①",solution:"주어진 대응 조건을 순서대로 적용해 $g(3)$과 그 원상을 구하면 $f^{-1}(g(3))=4$이다."},
-{id:21,level:"중",category:"귀류법",originalCategory:"명제",standardCourse:"수학(하)",standardUnitKey:"H15-SB-02",standardUnit:"명제",standardUnitOrder:2,questionType:"서술형",layoutTag:"grid",tags:["서술형","명제","귀류법","무리수","증명"],wide:false,content:"[서답형 1] '$\\sqrt2$는 무리수이다.'가 참임을 귀류법으로 증명하시오. [10점]",choices:[],answer:"$\\sqrt2$는 무리수이다.",solution:"$\\sqrt2=\\frac mn$인 서로소 자연수 $m,n$이 있다고 가정하면 $m^2=2n^2$에서 $m$이 짝수이고, 다시 $n$도 짝수임을 얻어 서로소에 모순이다."},
-{id:22,level:"상",category:"절댓값 반복합성",originalCategory:"함수",standardCourse:"수학(하)",standardUnitKey:"H15-SB-03",standardUnit:"함수",standardUnitOrder:3,questionType:"서술형",layoutTag:"grid",tags:["서술형","함수","절댓값함수","반복합성","그래프길이"],wide:false,content:"[서답형 2] $f(x)=|x-1|$이고 $D=\\{x\\mid0\\le(f\\circ f\\circ f)(x)\\le1\\}$이다. 집합 $\\{(x,(f\\circ f\\circ f)(x))\\mid x\\in D\\}$가 나타내는 도형의 길이를 $a$라 할 때, 그래프와 함수식을 제시하고 $a^2$을 구하시오. [10점]",image:"assets/images/21_금당고_2학기_중간_고1_기출/q22.png",choices:[],answer:"72",solution:"$D=[-2,4]$이고 반복합성함수의 그래프는 기울기가 $\\pm1$인 여섯 선분으로 이루어진다. 각 선분의 가로 길이가 1이므로 전체 길이는 $6\\sqrt2$, 따라서 $a^2=72$이다."}
+window.examTitle = "21_금당고_2학기_중간_고1_기출";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "하",
+    "category": "집합의 뜻",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합",
+      "집합의뜻",
+      "대상의명확성"
+    ],
+    "wide": false,
+    "content": "다음 중 집합이 아닌 것은? [3.5점]",
+    "choices": [
+      "가장 작은 자연수의 모임",
+      "84의 소인수의 모임",
+      "이차방정식 $x^2-4=0$의 해의 모임",
+      "일주일을 나타내는 요일의 모임",
+      "순천금당고 학생 중 키가 작은 학생의 모임"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 집합은 그 대상이 들어가는지 여부를 누구나 같은 기준으로 분명하게 판단할 수 있어야 한다.\n조건 정리: 각 보기의 모임이 객관적이고 명확한 기준으로 정해지는지 확인한다.\n풀이 방향: 자연수, 소인수, 방정식의 해, 요일처럼 기준이 분명한 모임과 사람마다 판단이 달라질 수 있는 모임을 구별한다.\n정석 풀이: ① 가장 작은 자연수는 정해져 있으므로 집합이다. ② $84$의 소인수도 정확히 정할 수 있으므로 집합이다. ③ 방정식 $x^2-4=0$의 해는 $-2,2$로 분명하므로 집합이다. ④ 일주일의 요일도 월요일부터 일요일까지 명확하게 정해져 있으므로 집합이다. 그러나 ⑤에서 '키가 작다'는 판단 기준이 제시되지 않아 사람마다 다르게 판단할 수 있다. 따라서 ⑤의 모임은 집합이 아니다.\n따라서 정답은 ⑤이다."
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "교집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합",
+      "교집합",
+      "소수",
+      "원소의개수"
+    ],
+    "wide": false,
+    "content": "$A=\\{x\\mid x$는 $10$ 이하의 소수$\\}$, $B=\\{2,4,6,7\\}$일 때 $n(A\\cap B)$는? [3.5점]",
+    "choices": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 교집합은 두 집합에 공통으로 들어 있는 원소만 모은 집합이다.\n조건 정리: $10$ 이하의 소수는 $2,3,5,7$이고, $B=\\{2,4,6,7\\}$이다.\n풀이 방향: 집합 $A$와 $B$에 동시에 들어 있는 원소를 찾은 뒤 그 개수를 센다.\n정석 풀이: $A=\\{2,3,5,7\\}$이다. 이 중 $B$에도 들어 있는 원소는 $2$와 $7$이므로 $A\\cap B=\\{2,7\\}$이다. 따라서 교집합의 원소의 개수는 $n(A\\cap B)=2$이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 3,
+    "level": "하",
+    "category": "부분집합의 개수",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합",
+      "부분집합",
+      "포함관계",
+      "개수"
+    ],
+    "wide": false,
+    "content": "$A=\\{1,3,5,7,9\\}$, $B=\\{3,5,7\\}$에 대하여 $B\\subset X\\subset A$를 만족시키는 $X$의 개수는? [3.8점]",
+    "choices": [
+      "2",
+      "4",
+      "8",
+      "16",
+      "32"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] $B\\subset X\\subset A$이면 $B$의 원소는 반드시 포함하고, $A-B$의 원소만 선택할 수 있다.\n조건 정리: $A=\\{1,3,5,7,9\\}$, $B=\\{3,5,7\\}$이므로 $A-B=\\{1,9\\}$이다.\n풀이 방향: 반드시 들어가야 하는 원소와 자유롭게 선택할 수 있는 원소를 구분한다.\n정석 풀이: 집합 $X$에는 $B$의 원소 $3,5,7$이 반드시 들어간다. 나머지 원소 $1,9$는 각각 포함하거나 포함하지 않을 수 있다. 두 원소마다 선택이 $2$가지씩이므로 가능한 $X$의 개수는 $2^2=4$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 4,
+    "level": "하",
+    "category": "산술기하평균",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "절대부등식",
+      "산술기하평균",
+      "최솟값"
+    ],
+    "wide": false,
+    "content": "양수 $x$에 대하여 $f(x)=2x+\\frac2x$의 최솟값은? [3.8점]",
+    "choices": [
+      "4",
+      "3",
+      "2",
+      "1",
+      "0"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 양수인 두 항의 곱이 일정할 때 산술평균과 기하평균의 관계로 합의 최솟값을 구할 수 있다.\n조건 정리: $x\\gt0$이므로 $2x\\gt0$, $\\dfrac2x\\gt0$이고 두 항의 곱은 $2x\\cdot\\dfrac2x=4$이다.\n풀이 방향: $u+v\\ge2\\sqrt{uv}$를 두 항 $2x$, $\\dfrac2x$에 적용한다.\n정석 풀이: 산술평균과 기하평균의 관계에 따라 $2x+\\dfrac2x\\ge2\\sqrt{2x\\cdot\\dfrac2x}=2\\sqrt4=4$이다. 등호는 $2x=\\dfrac2x$, 즉 $x=1$일 때 성립한다. 따라서 실제로 최솟값 $4$를 가질 수 있다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 5,
+    "level": "하",
+    "category": "명제의 역",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "역",
+      "대우"
+    ],
+    "wide": false,
+    "content": "두 조건 $p,q$에 대하여 $\\sim p\\to q$의 역이 참일 때 항상 참인 명제는? [3.8점]",
+    "choices": [
+      "$\\sim p\\to\\sim q$",
+      "$p\\to\\sim q$",
+      "$\\sim p\\to q$",
+      "$\\sim q\\to p$",
+      "$q\\to\\sim p$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 명제 $P\\to Q$의 역은 앞뒤를 바꾼 $Q\\to P$이다.\n조건 정리: 주어진 명제는 $\\sim p\\to q$이다.\n풀이 방향: 명제의 앞 조건과 뒤 조건을 그대로 서로 바꾸어 역을 만든다.\n정석 풀이: $\\sim p\\to q$에서 앞 조건은 $\\sim p$, 뒤 조건은 $q$이다. 이 명제의 역은 두 조건의 위치를 바꾼 $q\\to\\sim p$이다. 보기 중 이에 해당하는 것은 ⑤이다.\n따라서 정답은 ⑤이다."
+  },
+  {
+    "id": 6,
+    "level": "하",
+    "category": "절댓값함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "절댓값함수",
+      "함숫값"
+    ],
+    "wide": false,
+    "content": "$f(x)=\\begin{cases}x&(x\\ge0)\\\\-x&(x<0)\\end{cases}$일 때 $f(1)+f(-1)$은? [3.8점]",
+    "choices": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 주어진 조각함수는 입력값의 부호에 따라 식을 선택한다.\n조건 정리: $1\\ge0$이므로 $f(1)=1$이고, $-1\\lt0$이므로 $f(-1)=-(-1)$이다.\n풀이 방향: 각 입력값이 어느 구간에 속하는지 확인한 뒤 함수값을 계산한다.\n정석 풀이: $x=1$에서는 첫째 식을 사용하여 $f(1)=1$이다. $x=-1$에서는 둘째 식을 사용하여 $f(-1)=-(-1)=1$이다. 따라서 $f(1)+f(-1)=1+1=2$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 7,
+    "level": "하",
+    "category": "합성함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "합성함수",
+      "일차함수"
+    ],
+    "wide": false,
+    "content": "$f(x)=x+3$, $g(x)=\\frac x3$일 때 $(f\\circ g)(3)$은? [3.8점]",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 합성함수 $(f\\circ g)(3)$은 안쪽 함수 $g$를 먼저 계산한 뒤 그 결과를 $f$에 넣는다.\n조건 정리: $f(x)=x+3$, $g(x)=\\dfrac{x}{3}$이다.\n풀이 방향: $g(3)$을 구하고 이어서 $f(g(3))$을 계산한다.\n정석 풀이: $g(3)=\\dfrac33=1$이다. 따라서 $(f\\circ g)(3)=f(g(3))=f(1)=1+3=4$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 8,
+    "level": "중",
+    "category": "진리집합",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "진리집합",
+      "부분집합",
+      "서로소"
+    ],
+    "wide": false,
+    "content": "전체집합 $U$에서 조건 $p,q,r$의 진리집합 $P,Q,R$가 $Q^c\\subset P^c$, $Q\\cap R=\\varnothing$이고 모두 공집합이 아닐 때 항상 참인 명제는? [4점]",
+    "choices": [
+      "$p\\to r$",
+      "$\\sim p\\to\\sim q$",
+      "$q\\to p$",
+      "$\\sim q\\to\\sim r$",
+      "$r\\to\\sim p$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 명제 사이의 포함 관계는 진리집합 사이의 포함 관계로 바꾸어 판단한다.\n조건 정리: $Q^c\\subset P^c$이고 $Q\\cap R=\\varnothing$이다.\n풀이 방향: 첫 번째 포함 관계의 양변에 여집합을 취하고, 두 번째 조건에서 $R$이 어느 집합에 포함되는지 연결한다.\n정석 풀이: $Q^c\\subset P^c$의 양변에 여집합을 취하면 포함 방향이 바뀌어 $P\\subset Q$이다. 또 $Q\\cap R=\\varnothing$이므로 $R$의 원소는 $Q$에 들어갈 수 없어 $R\\subset Q^c$이다. $P\\subset Q$이므로 $Q^c\\subset P^c$이고, 따라서 $R\\subset Q^c\\subset P^c$이다. 이는 조건 $r$이 참이면 $p$는 거짓이라는 뜻이므로 $r\\to\\sim p$가 항상 참이다.\n따라서 정답은 ⑤이다."
+  },
+  {
+    "id": 9,
+    "level": "중",
+    "category": "전칭명제",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "부정",
+      "이차부등식",
+      "판별식"
+    ],
+    "wide": false,
+    "content": "명제 '어떤 실수 $x$에 대하여 $x^2-2kx-2k+3<0$이다.'의 부정이 참일 때 $k$의 범위는? [4점]",
+    "choices": [
+      "$-1\\le k\\le1$",
+      "$-2\\le k\\le2$",
+      "$-2\\le k\\le1$",
+      "$-3\\le k\\le1$",
+      "$-3\\le k\\le2$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] '어떤 실수에서 식이 음수이다'의 부정은 '모든 실수에서 식이 $0$ 이상이다'이다.\n조건 정리: 이차식 $x^2-2kx-2k+3$의 최고차항 계수는 양수이다.\n풀이 방향: 이차식이 모든 실수 $x$에서 $0$ 이상이 되기 위한 판별식 조건을 사용한다.\n정석 풀이: 주어진 명제의 부정은 모든 실수 $x$에 대하여 $x^2-2kx-2k+3\\ge0$이라는 명제이다. 최고차항 계수가 $1\\gt0$이므로 이 조건이 성립하려면 판별식이 $0$ 이하여야 한다. 판별식은 $D=(-2k)^2-4(-2k+3)=4(k^2+2k-3)=4(k+3)(k-1)$이다. 따라서 $(k+3)(k-1)\\le0$이고, $-3\\le k\\le1$이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "부분집합의 최솟값",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합",
+      "부분집합",
+      "최소원소",
+      "합"
+    ],
+    "wide": false,
+    "content": "$A=\\{1,2,4,8\\}$의 공집합이 아닌 모든 부분집합의 최소원소들의 합은? [4.1점]",
+    "choices": [
+      "20",
+      "24",
+      "28",
+      "32",
+      "36"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 각 원소가 부분집합의 최소원소가 되려면 그보다 작은 원소는 제외되고 큰 원소는 자유롭게 선택된다.\n조건 정리: $A=\\{1,2,4,8\\}$의 공집합이 아닌 모든 부분집합을 최소원소에 따라 나눈다.\n풀이 방향: 최소원소가 $1,2,4,8$인 부분집합의 개수를 각각 구해 최소원소들의 합에 반영한다.\n정석 풀이: 최소원소가 $1$이면 나머지 $2,4,8$의 포함 여부가 자유로워 $2^3=8$개이다. 최소원소가 $2$이면 $1$은 제외되고 $4,8$이 자유로워 $2^2=4$개이다. 최소원소가 $4$이면 $1,2$는 제외되고 $8$만 자유로워 $2$개이다. 최소원소가 $8$인 부분집합은 $\\{8\\}$ 하나이다. 따라서 구하는 합은 $1\\cdot8+2\\cdot4+4\\cdot2+8\\cdot1=8+8+8+8=32$이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 11,
+    "level": "중",
+    "category": "대칭차집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합",
+      "대칭차집합",
+      "합집합",
+      "원소의개수"
+    ],
+    "wide": false,
+    "content": "$n(A)=20$, $n(B)=30$, $n((A-B)\\cup(B-A))=20$일 때 $n(A\\cup B)$는? [4.1점]",
+    "choices": [
+      "25",
+      "30",
+      "35",
+      "40",
+      "45"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 대칭차집합은 두 집합 중 한쪽에만 속하는 원소의 집합이다.\n조건 정리: $n((A-B)\\cup(B-A))=n(A)+n(B)-2n(A\\cap B)$이다.\n풀이 방향: 먼저 교집합의 원소 수를 구한 뒤 포함배제 원리로 합집합의 원소 수를 계산한다.\n정석 풀이: 교집합의 원소 수를 $t$라 하면 대칭차집합의 원소 수는 $(20-t)+(30-t)=50-2t$이다. 이것이 $20$이므로 $50-2t=20$, 따라서 $t=15$이다. 그러므로 $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)=20+30-15=35$이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 12,
+    "level": "중",
+    "category": "필요충분조건",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "충분조건",
+      "필요조건",
+      "구간"
+    ],
+    "wide": false,
+    "content": "$p:-5\\le x\\le3$, $q:a-1\\le x\\le7$, $r:b-1\\le x\\le2$일 때 $p$가 $q$의 충분조건, $p$가 $r$의 필요조건이 되게 하는 $a$의 최댓값과 $b$의 최솟값의 곱은? [4.1점]",
+    "choices": [
+      "16",
+      "14",
+      "12",
+      "10",
+      "8"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 충분조건과 필요조건은 진리집합의 포함 관계로 바꾸면 끝점 조건을 정확히 판단할 수 있다.\n조건 정리: $P=[-5,3]$, $Q=[a-1,7]$, $R=[b-1,2]$이다.\n풀이 방향: $p$가 $q$의 충분조건이면 $P\\subset Q$, $p$가 $r$의 필요조건이면 $R\\subset P$를 이용한다.\n정석 풀이: $P\\subset Q$이려면 $Q$의 왼쪽 끝점이 $P$의 왼쪽 끝점보다 크지 않아야 하므로 $a-1\\le-5$, 즉 $a\\le-4$이다. 따라서 $a$의 최댓값은 $-4$이다. 또 $R\\subset P$이려면 $R$의 왼쪽 끝점이 $P$의 왼쪽 끝점보다 작지 않아야 하므로 $b-1\\ge-5$, 즉 $b\\ge-4$이다. 따라서 $b$의 최솟값도 $-4$이다. 두 값의 곱은 $(-4)(-4)=16$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 13,
+    "level": "중",
+    "category": "유한집합의 함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "항등함수",
+      "상수함수",
+      "일대일대응"
+    ],
+    "wide": false,
+    "content": "$X=\\{2,4,6,8\\}$에서 $f$는 항등함수, $g$는 상수함수, $h$는 일대일대응이고 $f(2)=g(2)=h(2)$, $[f(4)]^2=g(4)h(4)$, $h(6)=f(6)-g(6)$일 때 $f(8)+g(8)+h(8)$은? [4.1점]",
+    "choices": [
+      "10",
+      "12",
+      "14",
+      "16",
+      "18"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 항등함수, 상수함수, 일대일대응의 성질을 순서대로 사용해 함수값을 확정한다.\n조건 정리: $X=\\{2,4,6,8\\}$이고 $f$는 항등함수이므로 $f(x)=x$이다. $g$는 상수함수이며 $f(2)=g(2)=h(2)$이다.\n풀이 방향: 먼저 $g$의 상숫값을 구하고, 두 번째와 세 번째 조건으로 $h(4),h(6)$을 정한 뒤 일대일대응에서 남은 값을 찾는다.\n정석 풀이: $f(2)=2$이므로 $g(2)=2$, $h(2)=2$이다. $g$는 상수함수이므로 모든 $x\\in X$에 대하여 $g(x)=2$이다. 또 $[f(4)]^2=g(4)h(4)$에서 $4^2=2h(4)$이므로 $h(4)=8$이다. $h(6)=f(6)-g(6)=6-2=4$이다. $h$는 $X$에서 $X$로의 일대일대응이므로 함수값 $2,8,4$와 겹치지 않는 남은 값 $6$이 $h(8)$이다. 따라서 $f(8)+g(8)+h(8)=8+2+6=16$이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 14,
+    "level": "상",
+    "category": "합성함수의 그래프",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "합성함수",
+      "그래프",
+      "교점"
+    ],
+    "wide": false,
+    "content": "그림의 두 함수 $f,g:X\\to X$, $X=[0,2]$에 대하여 $y=(f\\circ g)(x)$와 $y=x$의 교점 개수는? [4.1점]",
+    "image": "assets/images/21_금당고_2학기_중간_고1_기출/q14.png",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 먼저 그래프에서 $f$와 $g$를 구간별 식으로 나타낸 뒤 $f(g(x))=x$를 각 구간에서 푼다.\n조건 정리: 그래프에서 $f(x)=2x$ ($0\\le x\\le1$), $f(x)=2$ ($1\\le x\\le2$)이고, $g(x)=1-x$ ($0\\le x\\le1$), $g(x)=2x-2$ ($1\\le x\\le2$)이다.\n풀이 방향: $g(x)$의 값이 $f$의 어느 구간에 들어가는지에 따라 합성함수의 식을 나눈다.\n정석 풀이: $0\\le x\\le1$에서는 $0\\le g(x)=1-x\\le1$이므로 $(f\\circ g)(x)=2(1-x)=2-2x$이다. $1\\le x\\le\\dfrac32$에서는 $0\\le g(x)=2x-2\\le1$이므로 $(f\\circ g)(x)=2(2x-2)=4x-4$이다. $\\dfrac32\\le x\\le2$에서는 $1\\le g(x)\\le2$이므로 $(f\\circ g)(x)=2$이다. 이제 $2-2x=x$에서 $x=\\dfrac23$, $4x-4=x$에서 $x=\\dfrac43$, $2=x$에서 $x=2$를 얻으며 모두 해당 구간에 속한다. 따라서 교점은 모두 $3$개이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 15,
+    "level": "상",
+    "category": "서로소인 구간",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합",
+      "서로소",
+      "이차부등식",
+      "부분집합개수"
+    ],
+    "wide": false,
+    "content": "$A=\\{x\\mid|2x-3|<3\\}$, $B=\\{x\\mid x^2-16x+63<0\\}$, $C=\\{x\\mid x^2-2(a+1)x+a^2+2a-3\\le0\\}$이고 $A,C$ 및 $B,C$가 각각 서로소이다. 이를 만족하는 11 이하 자연수 $a$의 집합의 공집합이 아닌 부분집합 개수는? [4.2점]",
+    "choices": [
+      "7",
+      "8",
+      "15",
+      "16",
+      "32"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 세 집합을 구간으로 나타낸 뒤 집합 $C$가 $A$와도, $B$와도 겹치지 않도록 매개변수 $a$의 범위를 찾는다.\n조건 정리: $A=(0,3)$, $B=(7,9)$이고 $C=[a-1,a+3]$이다.\n풀이 방향: $A\\cap C=\\varnothing$과 $B\\cap C=\\varnothing$을 각각 구간의 위치 관계로 해석한다.\n정석 풀이: 자연수 $a$에 대하여 $C$가 $A=(0,3)$과 서로소가 되려면 $C$가 $A$의 오른쪽에 있어야 하므로 $a-1\\ge3$, 즉 $a\\ge4$이다. 또 $C$가 $B=(7,9)$와 서로소가 되려면 $a+3\\le7$ 또는 $a-1\\ge9$이어야 하므로 $a\\le4$ 또는 $a\\ge10$이다. 두 조건과 $a\\le11$을 함께 만족하는 자연수는 $4,10,11$이다. 이들을 원소로 하는 집합은 원소가 $3$개이므로 공집합이 아닌 부분집합의 개수는 $2^3-1=7$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 16,
+    "level": "상",
+    "category": "함숫값과 소수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "다항식",
+      "소수",
+      "교집합"
+    ],
+    "wide": false,
+    "content": "$f(x)=(x^2-10x+22)(x^2+2x+2)$, $A=\\{f(n)\\mid n$은 $20$ 이하 자연수$\\}$, $B=\\{m\\mid m$은 $80$ 이하 소수$\\}$일 때 $n(A\\cap B)$는? [4.2점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 두 정수의 곱이 소수가 되려면 한 인수의 절댓값이 $1$이어야 한다는 점을 이용한다.\n조건 정리: $f(n)=(n^2-10n+22)(n^2+2n+2)$이고 둘째 인수는 $(n+1)^2+1\\gt1$이다.\n풀이 방향: $1\\le n\\le20$에서 첫째 인수가 $1$이 되는 경우를 찾고, 그때의 함수값이 $80$ 이하의 소수인지 확인한다.\n정석 풀이: $f(n)$이 양의 소수이면 두 정수 인수 중 하나가 $1$이어야 한다. 둘째 인수 $n^2+2n+2=(n+1)^2+1$은 자연수 $n$에 대해 항상 $1$보다 크므로 첫째 인수 $n^2-10n+22$가 $1$이어야 한다. $n^2-10n+22=1$에서 $n^2-10n+21=0$, 즉 $(n-3)(n-7)=0$이므로 $n=3,7$이다. $f(3)=1\\cdot17=17$은 $80$ 이하의 소수이고, $f(7)=1\\cdot65=65$는 소수가 아니다. 따라서 $A\\cap B=\\{17\\}$이고 원소의 개수는 $1$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 17,
+    "level": "상",
+    "category": "명제의 역과 대우",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "역",
+      "대우",
+      "이차부등식"
+    ],
+    "wide": false,
+    "content": "'$(x^2-8x+12)(x^2-12x+32)=0$이면 $x^2-2(a+1)x+a^2+2a=0$이다.'의 역이 참이고, '$x^2-ax-2a^2<0$이면 $x^2-4x-45<0$이다.'의 대우가 참이 되게 하는 모든 정수 $a$의 곱은? [4.2점]",
+    "choices": [
+      "4",
+      "8",
+      "12",
+      "16",
+      "24"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 첫 번째 명제의 역이 참이라는 조건은 한 이차방정식의 모든 근이 다른 방정식의 근이어야 한다는 뜻이고, 두 번째 명제의 대우는 원래 명제와 참·거짓이 같다.\n조건 정리: 첫 방정식의 근은 $2,4,6,8$이고, $x^2-2(a+1)x+a^2+2a=0$의 두 근은 $a,a+2$이다.\n풀이 방향: 첫 조건으로 가능한 정수 $a$를 좁힌 뒤, 두 번째 부등식의 해집합 포함 관계를 확인한다.\n정석 풀이: 첫 번째 명제의 역이 참이려면 $a$와 $a+2$가 모두 $\\{2,4,6,8\\}$에 들어가야 하므로 $a=2,4,6$이다. 두 번째 명제에서 $x^2-ax-2a^2=(x+a)(x-2a)$이고, 후보 $a$는 양수이므로 그 해집합은 $(-a,2a)$이다. 또한 $x^2-4x-45=(x+5)(x-9)$이므로 해집합은 $(-5,9)$이다. 명제와 그 대우의 참·거짓은 같으므로 $(-a,2a)\\subset(-5,9)$이어야 한다. $a=2,4$는 이 조건을 만족하지만 $a=6$은 오른쪽 끝점 $12$가 $9$보다 커서 만족하지 않는다. 따라서 가능한 정수는 $2,4$이고 그 곱은 $8$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 18,
+    "level": "상",
+    "category": "코시부등식",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제",
+      "절대부등식",
+      "코시부등식",
+      "최댓값"
+    ],
+    "wide": false,
+    "content": "양수 $x,y,z$에 대하여 $(x+y+z)\\left(\\dfrac4{4x+3y+z}+\\dfrac{36}{y+3z}\\right)\\ge k$가 항상 성립하도록 하는 실수 $k$의 최댓값은? [4.3점]",
+    "choices": [
+      "8",
+      "10",
+      "12",
+      "14",
+      "16"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 코시 부등식으로 모든 양수 $x,y,z$에 공통으로 성립하는 하한을 구하고, 그 하한에 실제로 한없이 가까워질 수 있는지 확인한다.\n조건 정리: 구하는 $k$는 주어진 식이 항상 $k$ 이상이 되게 하는 가장 큰 실수이다.\n풀이 방향: 두 분수에 코시 부등식을 적용해 $16$이라는 하한을 얻은 뒤, 적절한 양수 값을 선택해 식이 $16$에 가까워짐을 보인다.\n정석 풀이: 코시 부등식에 따라 $\\dfrac4{4x+3y+z}+\\dfrac{36}{y+3z}\\ge\\dfrac{(2+6)^2}{(4x+3y+z)+(y+3z)}=\\dfrac{64}{4x+4y+4z}=\\dfrac{16}{x+y+z}$이다. 따라서 전체 식은 항상 $16$ 이상이다. 한편 $x=y=t$, $z=1$로 놓으면 식은 $(1+2t)\\left(\\dfrac4{1+7t}+\\dfrac{36}{3+t}\\right)$가 된다. 양수 $t$를 $0$에 한없이 가깝게 하면 이 값은 $16$에 한없이 가까워진다. 그러므로 $16$보다 큰 수는 모든 양수 $x,y,z$에 공통으로 성립하는 하한이 될 수 없다.\n따라서 $k$의 최댓값은 $16$이고 정답은 ⑤이다."
+  },
+  {
+    "id": 19,
+    "level": "상",
+    "category": "가우스기호 방정식",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "가우스기호",
+      "절댓값",
+      "방정식"
+    ],
+    "wide": false,
+    "content": "방정식 $\\left|x-[x]-\\dfrac12\\right|=\\dfrac18x^2$의 실근 개수는? 단, $[x]$는 $x$보다 크지 않은 최대 정수이다. [4.3점]",
+    "choices": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 왼쪽은 $x$의 소수 부분에만 의존하므로 먼저 해의 범위를 제한하고 각 정수 구간에서 방정식을 푼다.\n조건 정리: $0\\le x-[x]\\lt1$이므로 $\\left|x-[x]-\\dfrac12\\right|\\le\\dfrac12$이다. 따라서 $\\dfrac18x^2\\le\\dfrac12$에서 $|x|\\le2$이다.\n풀이 방향: 식은 $x$와 $-x$에서 같은 값을 가지므로 $0\\le x\\le2$의 해를 구한 뒤 음수 쪽의 대칭인 해를 센다.\n정석 풀이: $0\\le x\\lt\\dfrac12$에서는 $\\dfrac12-x=\\dfrac18x^2$이므로 $x=-4+2\\sqrt5$이다. $\\dfrac12\\le x\\lt1$에서는 $x-\\dfrac12=\\dfrac18x^2$이므로 $x=4-2\\sqrt3$이다. $1\\le x\\lt\\dfrac32$에서는 $\\dfrac32-x=\\dfrac18x^2$이므로 $x=-4+2\\sqrt7$이다. $\\dfrac32\\le x\\le2$에서는 $x-\\dfrac32=\\dfrac18x^2$이므로 해당 구간의 해는 $x=2$이다. 따라서 양수 쪽에 네 해가 있다. $0$은 해가 아니고 각 양의 해에 대응하는 음의 해가 하나씩 있으므로 전체 실근은 $4+4=8$개이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 20,
+    "level": "상",
+    "category": "역함수와 합성함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "함수",
+      "합성함수",
+      "유한집합",
+      "표"
+    ],
+    "wide": false,
+    "content": "집합 $A=\\{1,2,3,4\\}$, $B=\\{2,3,4,5\\}$에 대하여 함수 $f:A\\to B$, $g:B\\to A$가 다음 조건을 만족시킨다. $f(1)g(3)$의 값을 구하시오. [4.3점]",
+    "image": "assets/images/21_금당고_2학기_중간_고1_기출/q20.png",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 합성 조건이 모든 원소에서 성립하므로 먼저 $f$와 $g$가 일대일대응임을 확인하고, 두 가능한 대응 중 고정점 조건을 만족하는 것을 선택한다.\n조건 정리: $f(3)=5$, $g(2)=3$, 어떤 $x\\in B$에 대하여 $g(x)=x$이고 모든 $x\\in A$에 대하여 $f(g(f(x)))=x+1$이다.\n풀이 방향: 합성함수의 값이 $2,3,4,5$를 모두 한 번씩 가지는 점을 이용해 $f,g$가 일대일대응임을 보인 뒤 대응을 차례로 결정한다.\n정석 풀이: $f(g(f(x)))=x+1$의 오른쪽은 $x=1,2,3,4$에서 서로 다른 네 값 $2,3,4,5$를 가지므로 $f$는 일대일이고, 원소 수가 같은 두 집합 사이의 함수이므로 일대일대응이다. 같은 이유로 $g$도 일대일대응이다. $x=4$를 대입하면 $f(g(f(4)))=5=f(3)$이므로 $g(f(4))=3$이다. 그런데 $g(2)=3$이고 $g$가 일대일이므로 $f(4)=2$이다. 이제 $f(3)=5$이므로 남은 $f(1),f(2)$는 $3,4$이다. $f(1)=4,f(2)=3$으로 두면 $x=1$의 조건에서 $g(4)=4$, $x=2$의 조건에서 $g(3)=2$, 그리고 남은 값은 $g(5)=1$이 되어 $g(4)=4$라는 고정점이 존재한다. 반대로 $f(1)=3,f(2)=4$로 두면 $g$의 고정점이 생기지 않아 조건을 만족하지 못한다. 따라서 $f(1)=4$, $g(3)=2$이고 $f(1)g(3)=4\\cdot2=8$이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 21,
+    "level": "중",
+    "category": "귀류법",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "명제",
+      "귀류법",
+      "무리수",
+      "증명"
+    ],
+    "wide": false,
+    "content": "[서답형 1] '$\\sqrt2$는 무리수이다.'가 참임을 귀류법으로 증명하시오. [10점]",
+    "choices": [],
+    "answer": "$\\sqrt2$는 무리수이다.",
+    "solution": "[키포인트] 결론을 부정해 $\\sqrt2$가 유리수라고 가정하고, 분자와 분모가 모두 짝수라는 모순을 만든다.\n조건 정리: 유리수는 서로소인 두 자연수 $m,n$을 이용해 $\\dfrac mn$으로 나타낼 수 있다.\n풀이 방향: $\\sqrt2=\\dfrac mn$이라 가정하고 양변을 제곱하여 $m$과 $n$이 차례로 짝수임을 보인다.\n정석 풀이: $\\sqrt2$가 유리수라고 가정하자. 그러면 서로소인 자연수 $m,n$에 대하여 $\\sqrt2=\\dfrac mn$으로 나타낼 수 있다. 양변을 제곱하면 $m^2=2n^2$이다. 따라서 $m^2$은 짝수이고, 정수의 제곱이 짝수이면 그 정수도 짝수이므로 $m$은 짝수이다. $m=2k$로 놓으면 $4k^2=2n^2$, 즉 $n^2=2k^2$이므로 $n$도 짝수이다. 결국 $m,n$이 모두 $2$의 배수가 되어 서로소라는 가정과 모순이다.\n따라서 처음 가정이 거짓이므로 $\\sqrt2$는 무리수이다."
+  },
+  {
+    "id": 22,
+    "level": "상",
+    "category": "절댓값 반복합성",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "함수",
+      "절댓값함수",
+      "반복합성",
+      "그래프",
+      "그래프길이"
+    ],
+    "wide": false,
+    "content": "[서답형 2] $f(x)=|x-1|$이고 $D=\\{x\\mid0\\le(f\\circ f\\circ f)(x)\\le1\\}$이다. 집합 $\\{(x,(f\\circ f\\circ f)(x))\\mid x\\in D\\}$가 나타내는 도형의 길이를 $a$라 할 때, 그래프와 함수식을 제시하고 $a^2$을 구하시오. [10점]",
+    "choices": [],
+    "answer": "72",
+    "solution": "[키포인트] 절댓값함수를 세 번 합성하면 꺾이는 점이 일정한 간격으로 생기며, 각 구간의 그래프는 기울기가 $1$ 또는 $-1$인 선분이 된다.\n조건 정리: $F(x)=(f\\circ f\\circ f)(x)$라 두고 $0\\le F(x)\\le1$을 만족하는 정의역 $D$와 구간별 식을 구한다.\n풀이 방향: 절댓값을 한 단계씩 합성하여 $F(x)=\\left|\\left||x-1|-1\\right|-1\\right|$로 나타내고, 꺾이는 점을 기준으로 식을 나눈다.\n정석 풀이: $F(x)=\\left|\\left||x-1|-1\\right|-1\\right|$이다. $0\\le F(x)\\le1$을 만족하는 범위는 $D=[-2,4]$이다. 이 구간에서 $F(x)=\\begin{cases}-x-1&(-2\\le x\\le-1)\\\\x+1&(-1\\le x\\le0)\\\\1-x&(0\\le x\\le1)\\\\x-1&(1\\le x\\le2)\\\\3-x&(2\\le x\\le3)\\\\x-3&(3\\le x\\le4)\\end{cases}$이다. 따라서 그래프는 $(-2,1)$에서 $(-1,0)$, 다시 $(0,1)$, $(1,0)$, $(2,1)$, $(3,0)$, $(4,1)$을 차례로 잇는 여섯 선분이다. 각 선분은 가로 길이와 세로 길이가 각각 $1$이므로 길이가 $\\sqrt{1^2+1^2}=\\sqrt2$이다. 전체 길이는 $a=6\\sqrt2$이고 $a^2=72$이다.\n따라서 구하는 값은 $72$이다."
+  }
 ];

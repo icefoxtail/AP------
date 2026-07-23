@@ -1916,7 +1916,9 @@ async function safePrint() {
         }
         if (window.MathJax?.typesetPromise) await Promise.race([MathJax.typesetPromise(), limit(5000)]);
         flattenPrintImagesForOpaquePrint();
-        await raf(); await raf();
+        // requestAnimationFrame은 탭이 백그라운드/스로틀 상태면 안 풀려 "준비 중"에서 멈출 수 있다.
+        // setTimeout은 항상 발화하므로 rAF 대신 짧게 한 틱만 양보한다.
+        await limit(60);
     } catch (error) {
         console.warn('[engine] 인쇄 준비 중 경고 — 그대로 인쇄를 진행합니다.', error);
     }
