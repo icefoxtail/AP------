@@ -896,9 +896,13 @@ def find_matching_bracket(text, start_idx, open_char="[", close_char="]"):
 
 
 def count_top_level_objects_in_array(array_text):
+    # 최상위 배열 요소 개수를 센다. 요소는 객체 리터럴 `{...}`일 수도,
+    # `q(...)` 같은 헬퍼 함수 호출일 수도 있으므로 콤마 구분자로 계수한다.
     depth_brace = 0
     depth_bracket = 0
-    count = 0
+    depth_paren = 0
+    commas = 0
+    has_content = False
 
     in_single = in_double = in_backtick = False
     in_line_comment = in_block_comment = False
@@ -948,12 +952,18 @@ def count_top_level_objects_in_array(array_text):
             continue
         if ch == "'":
             in_single = True
+            if depth_bracket >= 1:
+                has_content = True
             continue
         if ch == '"':
             in_double = True
+            if depth_bracket >= 1:
+                has_content = True
             continue
         if ch == "`":
             in_backtick = True
+            if depth_bracket >= 1:
+                has_content = True
             continue
 
         if ch == "[":
@@ -962,17 +972,33 @@ def count_top_level_objects_in_array(array_text):
         if ch == "]":
             depth_bracket -= 1
             continue
-
         if ch == "{":
-            if depth_bracket == 1 and depth_brace == 0:
-                count += 1
             depth_brace += 1
+            if depth_bracket >= 1:
+                has_content = True
             continue
         if ch == "}":
             depth_brace -= 1
             continue
+        if ch == "(":
+            depth_paren += 1
+            if depth_bracket >= 1:
+                has_content = True
+            continue
+        if ch == ")":
+            depth_paren -= 1
+            continue
 
-    return count
+        if ch == "," and depth_bracket == 1 and depth_brace == 0 and depth_paren == 0:
+            commas += 1
+            continue
+
+        if depth_bracket >= 1 and not ch.isspace():
+            has_content = True
+
+    if not has_content:
+        return 0
+    return commas + 1
 
 
 def extract_question_array_text(text):
@@ -1029,6 +1055,20 @@ def extract_standard_unit_keys(text):
                 seen.add(key)
                 keys.append(key)
 
+    return keys
+
+
+def extract_literal_unit_keys(text):
+    # q(...)/u[...] 같은 헬퍼 포맷은 단원키를 `standardUnitKey:"..."` 형태가 아니라
+    # 위치 인자 리터럴("H15-M2-01" 등)로 담는다. 텍스트에 등장하는 리터럴 중
+    # UNIT_BY_KEY에 존재하는 키만 추출한다.
+    keys = []
+    seen = set()
+    for raw in re.findall(r"[\"']([A-Za-z0-9]+(?:-[A-Za-z0-9]+)+)[\"']", text):
+        key = raw.strip()
+        if key in UNIT_BY_KEY and key not in seen:
+            seen.add(key)
+            keys.append(key)
     return keys
 
 
@@ -1300,6 +1340,12 @@ def extract_range_meta_from_js(filepath, meta, origin_range_map=None):
 
     if units_by_key:
         return build_range_payload(units_by_key, "question_keys", meta)
+
+    literal_keys = extract_literal_unit_keys(text)
+    units_by_literal_key = dedupe_units([UNIT_BY_KEY.get(k) for k in literal_keys])
+
+    if units_by_literal_key:
+        return build_range_payload(units_by_literal_key, "literal_question_keys", meta)
 
     units_by_course_code = extract_course_units_from_course_codes(text)
     if units_by_course_code:
