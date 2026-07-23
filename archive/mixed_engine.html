@@ -1856,6 +1856,36 @@ async function renderBody() {
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
 }
 
+// 문항 그림(PNG)이 알파 채널을 가지면(대부분 알파=255로 실제 투명 영역은 없음) 브라우저가
+// 투명도 그룹을 만들고, 프린터(PCL) 드라이버가 이를 장치 DPI로 플래트닝하다 메모리가
+// 폭발해 스풀이 멈추는 경우가 있다. 인쇄 직전 그림을 흰 배경 위 불투명 캔버스로 바꿔
+// 알파 채널을 없앤다. 원본 픽셀을 자연 해상도로 1:1로 그리므로 화질 손실은 없다.
+function flattenPrintImagesForOpaquePrint() {
+    const imgs = Array.from(document.querySelectorAll('#print-area img'));
+    for (const img of imgs) {
+        if (!img.naturalWidth || !img.complete) continue;
+        try {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext('2d', { alpha: false });
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            const cs = getComputedStyle(img);
+            canvas.style.width = cs.width;
+            canvas.style.height = cs.height;
+            canvas.style.display = cs.display === 'inline' ? 'inline-block' : cs.display;
+            canvas.style.verticalAlign = cs.verticalAlign;
+            canvas.className = img.className;
+            img.replaceWith(canvas);
+        } catch (error) {
+            // cross-origin 등으로 실패하면 원본 그대로 두고 인쇄를 계속한다.
+            console.warn('[engine] 그림 불투명화 실패 — 원본으로 인쇄합니다.', error);
+        }
+    }
+}
+
 // 인쇄 전 준비: 렌더·폰트·이미지·수식이 모두 확정된 뒤에만 window.print()를 부른다.
 // 준비 안 된 상태에서 인쇄하면 미리보기가 미완성인 채 잡이 생성돼 스풀이 멈춘다.
 let printPending = false;
@@ -1880,6 +1910,7 @@ async function safePrint() {
             ]);
         }
         if (window.MathJax?.typesetPromise) await Promise.race([MathJax.typesetPromise(), limit(5000)]);
+        flattenPrintImagesForOpaquePrint();
         await raf(); await raf();
     } catch (error) {
         console.warn('[engine] 인쇄 준비 중 경고 — 그대로 인쇄를 진행합니다.', error);
