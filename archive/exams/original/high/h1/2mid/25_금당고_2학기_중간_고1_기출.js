@@ -1,0 +1,617 @@
+window.examTitle = "25_금당고_2학기_중간_고1_기출";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "하",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-01",
+    "standardUnit": "평면좌표",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평면좌표",
+      "내분점"
+    ],
+    "wide": false,
+    "content": "두 점 $A(-2,5)$, $B(4,8)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점 $P$를 $(a,b)$라 할 때, $a+b$의 값은? [3.5점]",
+    "choices": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 내분점의 좌표는 두 끝점의 좌표에 내분비의 반대쪽 수를 곱하여 구한다.\n점 $P$가 선분 $AB$를 $2:1$로 내분하므로\n$P\\left(\\dfrac{1\\cdot(-2)+2\\cdot4}{2+1},\\dfrac{1\\cdot5+2\\cdot8}{2+1}\\right)=(2,7)$이다.\n따라서 $a+b=2+7=9$이므로 정답은 ⑤이다."
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "평행"
+    ],
+    "wide": false,
+    "content": "직선 $y=2x-3$과 평행하고 점 $(1,7)$을 지나는 직선의 방정식을 $y=ax+b$라 할 때, $a+b$의 값은? [3.5점]",
+    "choices": [
+      "8",
+      "$\\dfrac{15}{2}$",
+      "7",
+      "$\\dfrac{13}{2}$",
+      "6"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 평행한 두 직선의 기울기는 같다.\n주어진 직선의 기울기가 $2$이므로 $a=2$이다.\n점 $(1,7)$을 지나므로 $7=2\\cdot1+b$에서 $b=5$이다.\n따라서 $a+b=2+5=7$이므로 정답은 ③이다."
+  },
+  {
+    "id": 3,
+    "level": "하",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "중심"
+    ],
+    "wide": false,
+    "content": "원 $x^2+y^2-4x-2=0$의 중심의 좌표는? [3.5점]",
+    "choices": [
+      "$(2,0)$",
+      "$(1,0)$",
+      "$(0,1)$",
+      "$(0,2)$",
+      "$(3,0)$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] $x$에 관한 식을 완전제곱식으로 고쳐 원의 중심을 찾는다.\n$x^2-4x+y^2-2=0$에서\n$(x-2)^2+y^2=6$이다.\n따라서 원의 중심은 $(2,0)$이므로 정답은 ①이다."
+  },
+  {
+    "id": 4,
+    "level": "하",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "접선"
+    ],
+    "wide": false,
+    "content": "원 $x^2+y^2=10$과 직선 $y=3x+k$가 접하도록 하는 실수 $k$값들의 합은? [3.5점]",
+    "choices": [
+      "$-20$",
+      "$-10$",
+      "0",
+      "10",
+      "20"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 원의 중심에서 접선까지의 거리는 원의 반지름과 같다.\n직선을 $3x-y+k=0$으로 나타내면 원점에서 이 직선까지의 거리는 $\\dfrac{|k|}{\\sqrt{10}}$이다.\n원의 반지름은 $\\sqrt{10}$이므로\n$\\dfrac{|k|}{\\sqrt{10}}=\\sqrt{10}$에서 $|k|=10$이다.\n따라서 $k=-10,10$이고 그 합은 $0$이므로 정답은 ③이다."
+  },
+  {
+    "id": 5,
+    "level": "하",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동",
+      "평행이동"
+    ],
+    "wide": false,
+    "content": "방정식 $(x+5)^2+(y-5)^2=1$이 나타내는 도형을 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $-2$만큼 평행이동한 도형의 중심좌표를 $(a,b)$, 반지름을 $r$이라 할 때, $a+b+r$의 값은? [3.7점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 평행이동하면 원의 중심만 이동하고 반지름은 변하지 않는다.\n원래 원의 중심은 $(-5,5)$이고 반지름은 $1$이다.\n이를 $(3,-2)$만큼 평행이동하면 중심은 $(-2,3)$이 된다.\n따라서 $a+b+r=-2+3+1=2$이므로 정답은 ②이다."
+  },
+  {
+    "id": 6,
+    "level": "중",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동",
+      "평행이동",
+      "대칭이동"
+    ],
+    "wide": false,
+    "content": "좌표평면 위의 점 $(5,1)$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $-3$만큼 평행이동한 후 $y=x$에 대하여 대칭이동한 점의 좌표가 $(b,7)$일 때, $a+b$의 값은? [3.7점]",
+    "choices": [
+      "$-2$",
+      "$-1$",
+      "0",
+      "1",
+      "2"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] $y=x$에 대한 대칭이동에서는 두 좌표가 서로 바뀐다.\n점 $(5,1)$을 $(a,-3)$만큼 평행이동하면 $(5+a,-2)$이다.\n이를 $y=x$에 대하여 대칭이동하면 $(-2,5+a)$이다.\n$(-2,5+a)=(b,7)$이므로 $b=-2$, $a=2$이다.\n따라서 $a+b=0$이므로 정답은 ③이다."
+  },
+  {
+    "id": 7,
+    "level": "중",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-01",
+    "standardUnit": "평면좌표",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평면좌표",
+      "두 점 사이의 거리"
+    ],
+    "wide": false,
+    "content": "두 점 $A(-1,2)$, $B(2,0)$과 직선 $y=2x+1$ 위의 점 $P(a,b)$에 대하여 $\\overline{AP}=\\overline{BP}$일 때, $a+b$의 값은? [3.8점]",
+    "choices": [
+      "$-\\dfrac{7}{2}$",
+      "$-3$",
+      "$-\\dfrac{5}{2}$",
+      "$-2$",
+      "$-\\dfrac{3}{2}$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 두 점까지의 거리가 같다는 조건을 거리의 제곱으로 나타낸다.\n$\\overline{AP}=\\overline{BP}$이므로\n$(a+1)^2+(b-2)^2=(a-2)^2+b^2$이다.\n정리하면 $6a-4b+1=0$이다.\n또 점 $P$는 $y=2x+1$ 위에 있으므로 $b=2a+1$이다.\n이를 대입하면 $6a-4(2a+1)+1=0$에서 $a=-\\dfrac32$, $b=-2$이다.\n따라서 $a+b=-\\dfrac72$이므로 정답은 ①이다."
+  },
+  {
+    "id": 8,
+    "level": "중",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "반지름"
+    ],
+    "wide": false,
+    "content": "방정식 $x^2+y^2-4kx-6y+k^2+5=0$이 나타내는 도형이 원이 되며, 그 반지름의 길이가 $5$ 이하일 때, 자연수 $k$의 개수는? [3.8점]",
+    "choices": [
+      "10",
+      "8",
+      "6",
+      "4",
+      "2"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 원의 방정식을 표준형으로 고쳐 반지름을 $k$에 대한 식으로 나타낸다.\n주어진 식을 정리하면\n$(x-2k)^2+(y-3)^2=3k^2+4$이다.\n반지름의 길이가 $5$ 이하이므로 $3k^2+4\\le25$이다.\n따라서 $k^2\\le7$이고 자연수 $k$는 $1,2$의 두 개이다.\n그러므로 정답은 ⑤이다."
+  },
+  {
+    "id": 9,
+    "level": "중",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-01",
+    "standardUnit": "평면좌표",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평면좌표",
+      "무게중심",
+      "각의 이등분선"
+    ],
+    "wide": false,
+    "content": "세 점 $O(0,0)$, $A(4,0)$, $B(0,3)$을 꼭짓점으로 하는 삼각형 $OAB$의 무게중심을 $G$라 하고, 삼각형 $OAB$의 내각인 $\\angle A$의 이등분선이 선분 $OB$와 만나는 점을 $C$라 하자. 삼각형 $GBC$의 무게중심의 좌표가 $(a,b)$일 때, $\\dfrac{b}{a}$의 값은? [4점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 먼저 삼각형 $OAB$의 무게중심과 각의 이등분선이 만드는 내분점을 구한다.\n삼각형 $OAB$의 무게중심은 $G\\left(\\dfrac43,1\\right)$이다.\n$\\overline{AO}=4$, $\\overline{AB}=5$이므로 각의 이등분선 정리에 따라 $OC:CB=4:5$이다.\n$\\overline{OB}=3$이므로 $C\\left(0,\\dfrac43\\right)$이다.\n삼각형 $GBC$의 무게중심은\n$(a,b)=\\left(\\dfrac{\\frac43+0+0}{3},\\dfrac{1+3+\\frac43}{3}\\right)=\\left(\\dfrac49,\\dfrac{16}{9}\\right)$이다.\n따라서 $\\dfrac ba=4$이므로 정답은 ④이다."
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-01",
+    "standardUnit": "평면좌표",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평면좌표",
+      "정사각형"
+    ],
+    "wide": false,
+    "content": "두 점 $A(4,0)$, $B(0,3)$과 제1사분면 위의 두 점 $C$, $D$를 꼭짓점으로 하는 사각형 $ABCD$가 정사각형일 때, 직선 $CD$의 $y$절편은? [4점]",
+    "choices": [
+      "8",
+      "$\\dfrac{17}{2}$",
+      "$\\dfrac{35}{4}$",
+      "9",
+      "$\\dfrac{37}{4}$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 선분 $AB$와 수직이고 길이가 같은 방향으로 두 점을 이동하여 나머지 꼭짓점을 구한다.\n$A(4,0)$에서 $B(0,3)$으로의 좌표 변화는 $(-4,3)$이다.\n제1사분면에 정사각형이 놓이려면 이에 수직이고 길이가 같은 좌표 변화 $(3,4)$를 이용하므로\n$C=(0,3)+(3,4)=(3,7)$, $D=(4,0)+(3,4)=(7,4)$이다.\n직선 $CD$의 기울기는 $\\dfrac{4-7}{7-3}=-\\dfrac34$이다.\n$y-7=-\\dfrac34(x-3)$에서 $x=0$을 대입하면 $y=\\dfrac{37}{4}$이다.\n따라서 정답은 ⑤이다."
+  },
+  {
+    "id": 11,
+    "level": "중",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "직선과 원"
+    ],
+    "wide": false,
+    "content": "중심이 $(2,-1)$이고 반지름의 길이가 $\\sqrt{10}$인 원과 직선 $y=3x+k$가 만나지 않을 때, 자연수 $k$의 최소값은? [4점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 원과 직선이 만나지 않으려면 중심에서 직선까지의 거리가 반지름보다 커야 한다.\n직선을 $3x-y+k=0$으로 나타내면 중심 $(2,-1)$에서 직선까지의 거리는\n$\\dfrac{|3\\cdot2-(-1)+k|}{\\sqrt{10}}=\\dfrac{|k+7|}{\\sqrt{10}}$이다.\n따라서 $\\dfrac{|k+7|}{\\sqrt{10}}>\\sqrt{10}$, 즉 $|k+7|>10$이다.\n자연수 $k$에 대하여 $k>3$이므로 최소값은 $4$이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 12,
+    "level": "중",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "접선",
+      "무게중심"
+    ],
+    "wide": false,
+    "content": "원 $x^2+y^2=13$ 위의 두 점 $A(2,-3)$, $B(3,2)$에서 그은 접선을 각각 $l$, $m$이라 한다. 두 접선 $l$, $m$의 교점을 $P$라 할 때, 삼각형 $ABP$의 무게중심의 좌표는? [4점]",
+    "choices": [
+      "$\\left(\\dfrac83,-\\dfrac23\\right)$",
+      "$\\left(3,-\\dfrac23\\right)$",
+      "$\\left(\\dfrac{10}{3},-\\dfrac23\\right)$",
+      "$\\left(\\dfrac{11}{3},-1\\right)$",
+      "$(4,1)$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.\n점 $A(2,-3)$에서의 접선은 $2x-3y=13$이고, 점 $B(3,2)$에서의 접선은 $3x+2y=13$이다.\n두 식을 연립하면 $P=(5,-1)$이다.\n따라서 삼각형 $ABP$의 무게중심은\n$\\left(\\dfrac{2+3+5}{3},\\dfrac{-3+2-1}{3}\\right)=\\left(\\dfrac{10}{3},-\\dfrac23\\right)$이다.\n그러므로 정답은 ③이다."
+  },
+  {
+    "id": 13,
+    "level": "중",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동",
+      "대칭이동",
+      "평행이동",
+      "넓이"
+    ],
+    "wide": false,
+    "content": "양수 $a$에 대하여 직선 $l:y=x+a$를 $x$축에 대하여 대칭이동한 후 $y$축의 방향으로 $3$만큼 평행이동한 직선을 $l'$라 하자. 두 직선 $l$, $l'$과 $x=1$이 둘러싸인 부분의 넓이가 $4$일 때, $a$의 값은? [4.2점]",
+    "choices": [
+      "$\\dfrac52$",
+      "2",
+      "$\\dfrac32$",
+      "1",
+      "$\\dfrac12$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 세 직선이 만드는 삼각형의 밑변과 높이를 $a$에 대한 식으로 나타낸다.\n직선 $l$을 $x$축에 대하여 대칭이동한 뒤 위로 $3$만큼 평행이동하면\n$l':y=-x-a+3$이다.\n두 직선의 교점은 $x=\\dfrac32-a$ 위에 있다.\n$x=1$에서 두 직선의 $y$좌표 차는 $|2a-1|$이고, 교점에서 $x=1$까지의 거리는 $\\left|a-\\dfrac12\\right|=\\dfrac{|2a-1|}{2}$이다.\n따라서 넓이는 $\\dfrac12\\cdot|2a-1|\\cdot\\dfrac{|2a-1|}{2}=\\dfrac{(2a-1)^2}{4}$이다.\n$\\dfrac{(2a-1)^2}{4}=4$에서 $a=\\dfrac52$ 또는 $a=-\\dfrac32$이다.\n$a$는 양수이므로 $a=\\dfrac52$이고 정답은 ①이다."
+  },
+  {
+    "id": 14,
+    "level": "중",
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "수선",
+      "넓이",
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 세 점 $A(1,2)$, $B(7,5)$, $C(4,8)$을 꼭짓점으로 하는 삼각형 $ABC$에 대하여 두 점 $A$, $C$에서 각각 변 $BC$, 변 $AB$에 내린 수선의 교점을 $H$라 하자. 이때 삼각형 $HBC$의 넓이는? [4.2점]",
+    "image": "assets/images/25_금당고_2학기_중간_고1_기출/q14.png",
+    "choices": [
+      "1",
+      "$\\dfrac32$",
+      "2",
+      "$\\dfrac52$",
+      "3"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 두 수선의 방정식을 구하여 교점 $H$의 좌표를 찾는다.\n직선 $BC$의 기울기는 $-1$이므로 점 $A$를 지나는 수선은 $y=x+1$이다.\n직선 $AB$의 기울기는 $\\dfrac12$이므로 점 $C$를 지나는 수선은 $y=-2x+16$이다.\n두 직선의 교점은 $H=(5,6)$이다.\n따라서 삼각형 $HBC$의 넓이는\n$\\dfrac12\\left|7(8-6)+4(6-5)+5(5-8)\\right|=\\dfrac32$이다.\n그러므로 정답은 ②이다."
+  },
+  {
+    "id": 15,
+    "level": "중",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동",
+      "대칭이동",
+      "접선"
+    ],
+    "wide": false,
+    "content": "원 $x^2+y^2-6x+4y+5=0$을 $x$축에 대하여 대칭이동한 원을 $C$라 하자. 원 $C$ 위의 점 $(a,b)$에 대하여 $\\dfrac{b-2}{a}$의 최댓값은? [4.3점]",
+    "choices": [
+      "2",
+      "$2\\sqrt2$",
+      "3",
+      "$\\sqrt{10}$",
+      "4"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] $\\dfrac{b-2}{a}$를 점 $(0,2)$와 원 위의 점 $(a,b)$를 잇는 직선의 기울기로 해석한다.\n원래 원은 $(x-3)^2+(y+2)^2=8$이고, 이를 $x$축에 대하여 대칭이동한 원 $C$는\n$(x-3)^2+(y-2)^2=8$이다.\n$m=\\dfrac{b-2}{a}$라 하면 직선 $y=mx+2$가 원 $C$와 만난다.\n$m$의 최댓값은 이 직선이 원에 접할 때 얻어진다.\n원의 중심 $(3,2)$에서 직선 $mx-y+2=0$까지의 거리를 반지름 $2\\sqrt2$와 같게 두면\n$\\dfrac{|3m|}{\\sqrt{m^2+1}}=2\\sqrt2$이다.\n이를 제곱하여 정리하면 $m^2=8$이므로 최댓값은 $2\\sqrt2$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 16,
+    "level": "상",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "접선",
+      "넓이"
+    ],
+    "wide": false,
+    "content": "점 $P(2,5)$에서 원 $x^2+y^2-4x+6y-12=0$에 그은 두 접선의 접점을 각각 $A$, $B$라 한다. 원의 중심을 $C$라 할 때, 네 점 $P$, $C$, $A$, $B$를 꼭짓점으로 하는 사각형의 넓이는? [4.3점]",
+    "choices": [
+      "30",
+      "32",
+      "$5\\sqrt{38}$",
+      "$5\\sqrt{39}$",
+      "40"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 접점들을 이은 현 $AB$는 중심과 외부의 점을 잇는 선분 $PC$에 수직이다.\n원의 방정식은 $(x-2)^2+(y+3)^2=25$이므로 $C=(2,-3)$, 반지름은 $5$이다.\n$PC=8$이고 접선의 길이는 $PA=\\sqrt{PC^2-CA^2}=\\sqrt{39}$이다.\n$M$을 $AB$와 $PC$의 교점이라 하면 직각삼각형 $PCA$에서\n$CM=\\dfrac{CA^2}{CP}=\\dfrac{25}{8}$, $PM=8-\\dfrac{25}{8}=\\dfrac{39}{8}$이다.\n또 $AM^2=CM\\cdot PM$이므로 $AM=\\dfrac{5\\sqrt{39}}{8}$이고 $AB=\\dfrac{5\\sqrt{39}}{4}$이다.\n사각형의 두 대각선 $PC$, $AB$는 서로 수직이므로 넓이는\n$\\dfrac12\\cdot8\\cdot\\dfrac{5\\sqrt{39}}{4}=5\\sqrt{39}$이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 17,
+    "level": "상",
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "평행"
+    ],
+    "wide": false,
+    "content": "두 양수 $a$, $b$에 대하여 두 직선 $x+y+a=0$, $x-y+b=0$의 교점을 지나고 직선 $x-2y+5=0$과 평행한 직선이 점 $(5,1)$을 지난다. $a^2+b^2=82$일 때, $a+b$의 값은? [4.5점]",
+    "choices": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 두 직선의 교점 좌표를 $a$, $b$로 나타내고 평행 조건을 이용한다.\n두 직선의 교점을 $Q$라 하면\n$Q\\left(-\\dfrac{a+b}{2},\\dfrac{b-a}{2}\\right)$이다.\n직선 $x-2y+5=0$과 평행하고 점 $(5,1)$을 지나는 직선은 $x-2y-3=0$이다.\n점 $Q$가 이 직선 위에 있으므로\n$-\\dfrac{a+b}{2}-2\\cdot\\dfrac{b-a}{2}=3$에서 $a-3b=6$이다.\n따라서 $a=3b+6$이고, 이를 $a^2+b^2=82$에 대입하면\n$5b^2+18b-23=0$, 즉 $(5b+23)(b-1)=0$이다.\n$b$는 양수이므로 $b=1$, $a=9$이다.\n따라서 $a+b=10$이므로 정답은 ④이다."
+  },
+  {
+    "id": 18,
+    "level": "상",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "단답형",
+    "layoutTag": "grid",
+    "tags": [
+      "단답형",
+      "원의 방정식",
+      "두 원",
+      "넓이"
+    ],
+    "wide": false,
+    "content": "두 원 $C_1:(x+1)^2+(y-2)^2=10$, $C_2:(x-2)^2+(y+1)^2=k$ $(k>0)$가 두 점 $A$, $B$에서 만날 때, 점 $A$, $B$와 원 $C_1$의 중심 $C(-1,2)$로 이루어진 삼각형 $CAB$의 넓이가 $4$가 되도록 하는 모든 $k$값의 합을 구하시오. [4.5점]",
+    "choices": [],
+    "answer": "$112$",
+    "solution": "[키포인트] 공통현 $AB$와 원 $C_1$의 중심 사이의 거리를 이용한다.\n$M$을 공통현 $AB$의 중점, $CM=d$라 하면 $AM=\\sqrt{10-d^2}$이다.\n삼각형 $CAB$의 넓이가 $4$이므로 $d\\sqrt{10-d^2}=4$이다.\n$t=d^2$로 놓고 제곱하면 $t(10-t)=16$이므로 $t=2$ 또는 $t=8$이다.\n따라서 $d=\\sqrt2$ 또는 $d=2\\sqrt2$이다.\n두 원의 방정식을 전개하여 빼면 공통현의 직선은 $-6x+6y+10-k=0$이다.\n중심 $C(-1,2)$에서 이 직선까지의 거리는 $\\dfrac{|28-k|}{6\\sqrt2}$이므로\n$\\dfrac{|28-k|}{6\\sqrt2}=\\sqrt2$에서 $k=16,40$,\n$\\dfrac{|28-k|}{6\\sqrt2}=2\\sqrt2$에서 $k=4,52$이다.\n따라서 모든 $k$의 합은 $16+40+4+52=112$이다.\n따라서 답은 $112$이다."
+  },
+  {
+    "id": 19,
+    "level": "상",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "직각삼각형",
+      "최대최소"
+    ],
+    "wide": false,
+    "content": "두 점 $O(0,0)$, $A(6,0)$과 원 $x^2+y^2-14x+8y=0$ 위의 점 $P(a,b)$에 대하여 삼각형 $OAP$가 직각삼각형일 때, 그 넓이의 최댓값과 최솟값을 각각 $M$, $m$이라 하자. $M+m$의 값은? [4.5점]",
+    "choices": [
+      "57",
+      "45",
+      "33",
+      "21",
+      "9"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 직각이 되는 꼭짓점이 $O$, $A$, $P$인 경우를 각각 조사한다.\n직각이 $O$에 있으면 $a=0$이고, 원의 방정식에서 $b=0,-8$이다. $P=O$는 제외하므로 넓이는 $24$이다.\n직각이 $A$에 있으면 $a=6$이고, 원의 방정식에서 $b=4,-12$이다. 넓이는 각각 $12$, $36$이다.\n직각이 $P$에 있으면 점 $P$는 선분 $OA$를 지름으로 하는 원 $x^2+y^2=6x$ 위에 있다.\n이를 주어진 원과 연립하면 $a=b$이고, $2a^2=6a$에서 $a=0$ 또는 $a=3$이다. $a=0$이면 $P=O$가 되어 삼각형이 성립하지 않으므로 제외한다. 따라서 $P=(3,3)$이고, 이때 넓이는 $9$이다.\n가능한 넓이는 $9,12,24,36$이므로 $M=36$, $m=9$이다.\n따라서 $M+m=45$이므로 정답은 ②이다."
+  },
+  {
+    "id": 20,
+    "level": "상",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동",
+      "대칭이동",
+      "공통접선"
+    ],
+    "wide": false,
+    "content": "중심이 점 $(-2,-1)$이고 반지름의 길이가 $1$인 원 $C$를 원점에 대하여 대칭이동한 원을 $C'$이라 하자. 두 원 $C$, $C'$에 동시에 접하는 직선의 기울기의 최댓값은? [4.5점]",
+    "choices": [
+      "$\\dfrac43$",
+      "$\\dfrac32$",
+      "$\\dfrac53$",
+      "$\\dfrac{11}{6}$",
+      "2"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 공통접선을 $y=mx+n$으로 놓고 두 중심에서 직선까지의 거리를 각각 $1$로 둔다.\n원 $C'$의 중심은 $(2,1)$이다.\n외공통접선에서는 두 중심이 직선의 같은 쪽에 있으므로 두 중심까지의 부호 있는 거리가 같아 $m=\\dfrac12$이다.\n내공통접선에서는 두 중심이 직선의 반대쪽에 있고 두 원이 원점에 대하여 대칭이므로 $n=0$이다.\n따라서 직선은 $y=mx$이고, 중심 $(-2,-1)$에서 이 직선까지의 거리가 $1$이므로\n$\\dfrac{|1-2m|}{\\sqrt{m^2+1}}=1$이다.\n이를 제곱하면 $3m^2-4m=0$이므로 $m=0$ 또는 $m=\\dfrac43$이다.\n가능한 기울기 중 최댓값은 $\\dfrac43$이므로 정답은 ①이다."
+  },
+  {
+    "id": 21,
+    "level": "상",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "원의 방정식",
+      "접선",
+      "넓이"
+    ],
+    "wide": false,
+    "content": "〈서·논술형 1〉<br>점 $P(-4,2)$에서 원 $(x-2)^2+(y+1)^2=9$에 그은 두 접선의 접점을 각각 $A$, $B$라 할 때, 삼각형 $PAB$의 넓이를 풀이과정과 함께 구하시오. [8점]",
+    "choices": [],
+    "answer": "$\\dfrac{72}{5}$",
+    "solution": "[키포인트] 중심과 외부의 점을 이은 직선은 두 접점을 이은 현의 수직이등분선이다.\n원의 중심을 $C(2,-1)$이라 하면 $CP=\\sqrt{6^2+(-3)^2}=3\\sqrt5$이고 반지름은 $3$이다.\n접선의 길이는 $PA=\\sqrt{CP^2-CA^2}=\\sqrt{45-9}=6$이다.\n$M$을 $CP$와 $AB$의 교점이라 하자. $PA=PB$, $CA=CB$이므로 $CP$는 선분 $AB$의 수직이등분선이다.\n$CM=x$라 하면 $AM^2=9-x^2$, $PM=3\\sqrt5-x$이다.\n직각삼각형 $PMA$에서\n$36=(3\\sqrt5-x)^2+(9-x^2)=54-6\\sqrt5x$이므로 $x=\\dfrac3{\\sqrt5}$이다.\n따라서 $AM=\\sqrt{9-\\dfrac95}=\\dfrac6{\\sqrt5}$, $PM=3\\sqrt5-\\dfrac3{\\sqrt5}=\\dfrac{12}{\\sqrt5}$이다.\n삼각형 $PAB$의 넓이는 $\\dfrac12\\cdot2AM\\cdot PM=AM\\cdot PM=\\dfrac{72}{5}$이다.\n따라서 답은 $\\dfrac{72}{5}$이다."
+  },
+  {
+    "id": 22,
+    "level": "상",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "도형의 이동",
+      "포물선",
+      "교점"
+    ],
+    "wide": false,
+    "content": "〈서·논술형 2〉<br>곡선 $C:y=x^2-2x$를 $x$축에 대하여 대칭이동한 후, $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 곡선을 $C'$이라 하면 두 곡선 $C$, $C'$이 오직 한 점 $A(3,3)$에서만 만난다. 직선 $y=k$가 곡선 $C$ 또는 $C'$과 만나는 서로 다른 점의 개수가 $3$이 되도록 하는 모든 실수 $k$의 값과 $a$, $b$값을 풀이과정과 함께 구하시오. (단, $a$, $b$는 상수이다.) [12점]",
+    "choices": [],
+    "answer": "$k=-1,3,7,\\ a=4,\\ b=6$",
+    "solution": "[키포인트] 이동한 포물선의 식을 구한 뒤 두 곡선이 한 점에서만 만난다는 조건을 중근 조건으로 이용한다.\n곡선 $C$를 $x$축에 대하여 대칭이동한 뒤 $(a,b)$만큼 평행이동하면\n$C':y=-(x-a)^2+2(x-a)+b$이다.\n두 곡선의 교점의 $x$좌표는\n$x^2-2x=-(x-a)^2+2(x-a)+b$를 만족한다.\n정리하면 $2x^2-(2a+4)x+a^2+2a-b=0$이다.\n두 곡선이 오직 $x=3$에서만 만나므로 이 식은 $2(x-3)^2=0$과 같다.\n계수를 비교하면 $2a+4=12$에서 $a=4$, $a^2+2a-b=18$에서 $b=6$이다.\n따라서 $C:y=(x-1)^2-1$, $C':y=-(x-5)^2+7$이다.\n직선 $y=k$는 $C$와 $k>-1$일 때 두 점, $k=-1$일 때 한 점에서 만나고, $C'$과 $k<7$일 때 두 점, $k=7$일 때 한 점에서 만난다.\n$k=-1$일 때는 $1+2=3$개, $k=7$일 때는 $2+1=3$개이다.\n또 $k=3$일 때 각 곡선과 두 점씩 만나지만 공통점 $A(3,3)$이 중복되므로 서로 다른 점은 $3$개이다.\n그 밖의 $k$에서는 서로 다른 교점의 개수가 $3$이 되지 않는다.\n따라서 $k=-1,3,7$이고, $a=4$, $b=6$이다."
+  }
+];

@@ -1,129 +1,577 @@
 window.examTitle = "24_금당고_2학기_중간_고1_기출";
+
 window.questionBank = [
   {
-    id: 1, level: "하", category: "도형의 이동", originalCategory: "도형의 이동", standardCourse: "수학(하)", standardUnitKey: "H15-SA-12", standardUnit: "도형의 이동", standardUnitOrder: 12,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "평행이동", "점의 이동"], wide: false,
-    content: "점 $(1,2)$를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 점의 좌표는? [3.8점]", choices: ["$(1,2)$", "$(1,5)$", "$(2,1)$", "$(3,2)$", "$(3,5)$"], answer: "⑤",
-    solution: "각 좌표에 이동량을 더하면 $(1+2,2+3)=(3,5)$이다.\n결론: 정답은 ⑤이다."
+    id: 1,
+    level: "하",
+    category: "도형의 이동",
+    originalCategory: "도형의 이동",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-12",
+    standardUnit: "도형의 이동",
+    standardUnitOrder: 12,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "평행이동",
+    "점의 이동"
+  ],
+    wide: false,
+    content: "점 $(1,2)$를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 점의 좌표는? [3.8점]",
+    choices: [
+    "$(1,2)$",
+    "$(1,5)$",
+    "$(2,1)$",
+    "$(3,2)$",
+    "$(3,5)$"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 평행이동에서는 각 좌표에 이동한 방향과 크기를 그대로 더한다.\n조건 정리: $x$축의 양의 방향으로 $2$, $y$축의 양의 방향으로 $3$만큼 이동한다.\n풀이 방향: 점 $(1,2)$의 $x$좌표와 $y$좌표에 각각 이동량을 더한다.\n정석 풀이: 이동한 점의 좌표는 $(1+2,\\,2+3)=(3,5)$이다.\n따라서 정답은 ⑤이다."
   },
   {
-    id: 2, level: "하", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "교집합", "원소의 개수"], wide: false,
-    content: "두 집합 $A=\\{2,3,4,5\\}$, $B=\\{1,2,3,6\\}$일 때, $n(A\\cap B)$의 값은? [3.8점]", choices: ["$1$", "$2$", "$3$", "$4$", "$5$"], answer: "②",
-    solution: "$A\\cap B=\\{2,3\\}$이므로 원소의 개수는 $2$이다.\n결론: 정답은 ②이다."
+    id: 2,
+    level: "하",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "교집합",
+    "원소의 개수"
+  ],
+    wide: false,
+    content: "두 집합 $A=\\{2,3,4,5\\}$, $B=\\{1,2,3,6\\}$일 때, $n(A\\cap B)$의 값은? [3.8점]",
+    choices: [
+    "$1$",
+    "$2$",
+    "$3$",
+    "$4$",
+    "$5$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 교집합은 두 집합에 공통으로 들어 있는 원소만 모은 집합이다.\n조건 정리: $A=\\{2,3,4,5\\}$, $B=\\{1,2,3,6\\}$이다.\n풀이 방향: 두 집합에 동시에 들어 있는 원소를 찾은 뒤 그 개수를 센다.\n정석 풀이: 공통 원소는 $2,3$이므로 $A\\cap B=\\{2,3\\}$이다. 따라서 $n(A\\cap B)=2$이다.\n따라서 정답은 ②이다."
   },
   {
-    id: 3, level: "하", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "부분집합", "벤다이어그램", "도형"], wide: false,
-    content: "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 집합 사이의 포함관계가 오른쪽 벤다이어그램과 같을 때, 다음 중 항상 옳은 것은? [3.8점]", image: "assets/images/24_금당고_2학기_중간_고1_기출/q03.png", choices: ["$A\\subset B$", "$B\\subset A$", "$A=B$", "$A\\subset B^C$", "$A\\cap B=\\varnothing$"], answer: "①",
-    solution: "그림에서 집합 $A$가 집합 $B$의 내부에 있으므로 $A\\subset B$이다.\n결론: 정답은 ①이다."
+    id: 3,
+    level: "하",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "부분집합",
+    "벤다이어그램",
+    "도형"
+  ],
+    wide: false,
+    content: "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 집합 사이의 포함관계가 오른쪽 벤다이어그램과 같을 때, 다음 중 항상 옳은 것은? [3.8점]",
+    choices: [
+    "$A\\subset B$",
+    "$B\\subset A$",
+    "$A=B$",
+    "$A\\subset B^C$",
+    "$A\\cap B=\\varnothing$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 벤다이어그램에서 한 집합이 다른 집합의 안쪽에 놓이면 부분집합 관계이다.\n조건 정리: 그림에서 집합 $A$를 나타내는 곡선 전체가 집합 $B$를 나타내는 곡선의 안쪽에 있다.\n풀이 방향: 그림의 안쪽 집합과 바깥쪽 집합을 확인한다.\n정석 풀이: $A$의 모든 원소는 $B$에도 속하므로 $A\\subset B$이다. 나머지 보기들은 그림에서 항상 성립하지 않는다.\n따라서 정답은 ①이다.",
+    image: "assets/images/24_금당고_2학기_중간_고1_기출/q03.png"
   },
   {
-    id: 4, level: "하", category: "함수", originalCategory: "함수", standardCourse: "수학(하)", standardUnitKey: "H15-SB-03", standardUnit: "함수", standardUnitOrder: 3,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "함숫값"], wide: false,
-    content: "함수 $f(x+1)=x+2$일 때, $f(2)$의 값은? [3.8점]", choices: ["$2$", "$3$", "$4$", "$5$", "$6$"], answer: "②",
-    solution: "$x+1=2$에서 $x=1$이므로 $f(2)=1+2=3$이다.\n결론: 정답은 ②이다."
+    id: 4,
+    level: "하",
+    category: "함수",
+    originalCategory: "함수",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-03",
+    standardUnit: "함수",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "함숫값"
+  ],
+    wide: false,
+    content: "함수 $f(x+1)=x+2$일 때, $f(2)$의 값은? [3.8점]",
+    choices: [
+    "$2$",
+    "$3$",
+    "$4$",
+    "$5$",
+    "$6$"
+  ],
+    answer: "②",
+    solution: "[키포인트] $f(2)$를 구하려면 입력 부분 $x+1$이 $2$가 되도록 $x$를 정한다.\n조건 정리: 모든 $x$에 대하여 $f(x+1)=x+2$이다.\n풀이 방향: $x+1=2$를 먼저 풀고 그 값을 오른쪽 식에 대입한다.\n정석 풀이: $x+1=2$에서 $x=1$이다. 따라서 $f(2)=1+2=3$이다.\n따라서 정답은 ②이다."
   },
   {
-    id: 5, level: "하", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "집합의 뜻"], wide: false,
-    content: "다음 중 집합이 아닌 것은? [3.8점]", choices: ["영어 알파벳 소문자의 모임", "$3$보다 작은 자연수의 모임", "$0$에 가까운 수의 모임", "우리나라에 나타나는 사계절의 모임", "$10$의 양의 약수의 모임"], answer: "③",
-    solution: "‘$0$에 가까운 수’는 기준이 명확하지 않아 원소인지 아닌지를 분명히 판정할 수 없으므로 집합이 아니다.\n결론: 정답은 ③이다."
+    id: 5,
+    level: "하",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "집합의 뜻"
+  ],
+    wide: false,
+    content: "다음 중 집합이 아닌 것은? [3.8점]",
+    choices: [
+    "영어 알파벳 소문자의 모임",
+    "$3$보다 작은 자연수의 모임",
+    "$0$에 가까운 수의 모임",
+    "우리나라에 나타나는 사계절의 모임",
+    "$10$의 양의 약수의 모임"
+  ],
+    answer: "③",
+    solution: "[키포인트] 집합은 어떤 대상이 원소인지 아닌지를 분명하게 판정할 수 있어야 한다.\n조건 정리: 보기의 모임마다 소속 기준이 객관적으로 정해지는지 확인한다.\n풀이 방향: 기준이 사람마다 달라질 수 있는 표현을 찾는다.\n정석 풀이: 영어 알파벳 소문자, $3$보다 작은 자연수, 사계절, $10$의 양의 약수는 원소가 명확하다. 그러나 ‘$0$에 가까운 수’는 어느 범위까지를 가깝다고 할지 정해져 있지 않아 원소를 분명히 판정할 수 없다.\n따라서 정답은 ③이다."
   },
   {
-    id: 6, level: "하", category: "함수", originalCategory: "함수", standardCourse: "수학(하)", standardUnitKey: "H15-SB-03", standardUnit: "함수", standardUnitOrder: 3,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "일대일함수"], wide: false,
-    content: "다음 중 일대일함수는? [3.8점]", choices: ["$y=x+2$", "$y=x^2$", "$x^2+y^2=4$", "$y=4$", "$y=|x|$"], answer: "①",
-    solution: "$y=x+2$는 서로 다른 $x$에 서로 다른 함숫값이 대응하는 일대일함수이다.\n결론: 정답은 ①이다."
+    id: 6,
+    level: "하",
+    category: "함수",
+    originalCategory: "함수",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-03",
+    standardUnit: "함수",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "일대일함수"
+  ],
+    wide: false,
+    content: "다음 중 일대일함수는? [3.8점]",
+    choices: [
+    "$y=x+2$",
+    "$y=x^2$",
+    "$x^2+y^2=4$",
+    "$y=4$",
+    "$y=|x|$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 일대일함수는 서로 다른 두 입력에 서로 다른 함숫값이 대응해야 한다.\n조건 정리: 각 보기를 실수 전체에서 정의된 관계로 본다.\n풀이 방향: 함수 여부를 먼저 확인하고, 함수인 경우 같은 함숫값을 갖는 서로 다른 입력이 있는지 본다.\n정석 풀이: ① $y=x+2$는 $x_1\\ne x_2$이면 $x_1+2\\ne x_2+2$이므로 일대일함수이다. ② $y=x^2$와 ⑤ $y=|x|$는 $x$와 $-x$의 함숫값이 같다. ③ $x^2+y^2=4$는 하나의 $x$에 두 $y$가 대응할 수 있어 함수가 아니다. ④ $y=4$는 모든 입력의 함숫값이 같아 일대일함수가 아니다.\n따라서 정답은 ①이다."
   },
   {
-    id: 7, level: "중", category: "명제", originalCategory: "명제", standardCourse: "수학(하)", standardUnitKey: "H15-SB-02", standardUnit: "명제", standardUnitOrder: 2,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "명제", "대우"], wide: false,
-    content: "명제 $\\sim p\\Rightarrow q$가 참일 때, 항상 참인 명제는? [4점]", choices: ["$\\sim p\\Rightarrow\\sim q$", "$p\\Rightarrow q$", "$q\\Rightarrow\\sim p$", "$\\sim q\\Rightarrow\\sim p$", "$\\sim q\\Rightarrow p$"], answer: "⑤",
-    solution: "주어진 명제의 대우는 $\\sim q\\Rightarrow p$이고, 원래 명제와 대우의 참·거짓은 같다.\n결론: 정답은 ⑤이다."
+    id: 7,
+    level: "중",
+    category: "명제",
+    originalCategory: "명제",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-02",
+    standardUnit: "명제",
+    standardUnitOrder: 2,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "명제",
+    "대우"
+  ],
+    wide: false,
+    content: "명제 $\\sim p\\Rightarrow q$가 참일 때, 항상 참인 명제는? [4점]",
+    choices: [
+    "$\\sim p\\Rightarrow\\sim q$",
+    "$p\\Rightarrow q$",
+    "$q\\Rightarrow\\sim p$",
+    "$\\sim q\\Rightarrow\\sim p$",
+    "$\\sim q\\Rightarrow p$"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 참인 명제는 그 대우도 항상 참이다.\n조건 정리: 주어진 명제는 $\\sim p\\Rightarrow q$이다.\n풀이 방향: 가정과 결론을 서로 바꾸고 각각 부정하여 대우를 만든다.\n정석 풀이: $\\sim p\\Rightarrow q$의 대우는 $\\sim q\\Rightarrow\\sim(\\sim p)$이다. 이중 부정을 없애면 $\\sim q\\Rightarrow p$가 된다. 원래 명제와 대우는 항상 같은 참·거짓을 가지므로 이 명제는 참이다.\n따라서 정답은 ⑤이다."
   },
   {
-    id: 8, level: "중", category: "여러 가지 부등식", originalCategory: "여러 가지 부등식", standardCourse: "수학(하)", standardUnitKey: "H15-SA-08", standardUnit: "여러 가지 부등식", standardUnitOrder: 8,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "산술기하평균", "최솟값"], wide: false,
-    content: "실수 $a$, $b$에 대하여 $a>0$, $b>0$일 때, $(a+b)\\left(\\dfrac2a+\\dfrac2b\\right)$의 최솟값은? [4점]", choices: ["$5$", "$6$", "$7$", "$8$", "$9$"], answer: "④",
-    solution: "식은 $4+2\\left(\\dfrac ab+\\dfrac ba\\right)$이고 $\\dfrac ab+\\dfrac ba\\ge2$이므로 최솟값은 $8$이다.\n결론: 정답은 ④이다."
+    id: 8,
+    level: "중",
+    category: "여러 가지 부등식",
+    originalCategory: "여러 가지 부등식",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-08",
+    standardUnit: "여러 가지 부등식",
+    standardUnitOrder: 8,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "산술기하평균",
+    "최솟값"
+  ],
+    wide: false,
+    content: "실수 $a$, $b$에 대하여 $a>0$, $b>0$일 때, $(a+b)\\left(\\dfrac2a+\\dfrac2b\\right)$의 최솟값은? [4점]",
+    choices: [
+    "$5$",
+    "$6$",
+    "$7$",
+    "$8$",
+    "$9$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 식을 전개한 뒤 $\\dfrac{a}{b}+\\dfrac{b}{a}\\ge2$를 이용한다.\n조건 정리: $a>0$, $b>0$이므로 $\\dfrac{a}{b}$와 $\\dfrac{b}{a}$는 모두 양수이다.\n풀이 방향: 곱을 전개하여 두 비의 합이 나타나게 한다.\n정석 풀이: $(a+b)\\left(\\dfrac2a+\\dfrac2b\\right)=2+\\dfrac{2a}{b}+\\dfrac{2b}{a}+2=4+2\\left(\\dfrac{a}{b}+\\dfrac{b}{a}\\right)$이다. $(a-b)^2\\ge0$에서 $a^2+b^2\\ge2ab$이므로 $\\dfrac{a}{b}+\\dfrac{b}{a}\\ge2$이다. 따라서 주어진 식은 $4+2\\cdot2=8$ 이상이고, $a=b$일 때 $8$이 된다.\n따라서 정답은 ④이다."
   },
   {
-    id: 9, level: "중", category: "도형의 이동", originalCategory: "도형의 이동", standardCourse: "수학(하)", standardUnitKey: "H15-SA-12", standardUnit: "도형의 이동", standardUnitOrder: 12,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "직선의 평행이동", "매개변수"], wide: false,
-    content: "$y=2x+k$를 $x$축의 방향으로 $1$만큼, $y$축의 방향으로 $-2$만큼 평행이동한 직선이 점 $(3,1)$을 지날 때, 상수 $k$의 값은? [4.2점]", choices: ["$-9$", "$-5$", "$-1$", "$3$", "$7$"], answer: "③",
-    solution: "평행이동한 직선은 $y+2=2(x-1)+k$이다. 점 $(3,1)$을 대입하면 $3=4+k$이므로 $k=-1$이다.\n결론: 정답은 ③이다."
+    id: 9,
+    level: "중",
+    category: "도형의 이동",
+    originalCategory: "도형의 이동",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-12",
+    standardUnit: "도형의 이동",
+    standardUnitOrder: 12,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "직선의 평행이동",
+    "매개변수"
+  ],
+    wide: false,
+    content: "$y=2x+k$를 $x$축의 방향으로 $1$만큼, $y$축의 방향으로 $-2$만큼 평행이동한 직선이 점 $(3,1)$을 지날 때, 상수 $k$의 값은? [4.2점]",
+    choices: [
+    "$-9$",
+    "$-5$",
+    "$-1$",
+    "$3$",
+    "$7$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 그래프를 오른쪽으로 $1$, 아래로 $2$만큼 옮기면 식의 $x$에는 $x-1$을 넣고 전체에서 $2$를 뺀다.\n조건 정리: 원래 직선은 $y=2x+k$이다.\n풀이 방향: 평행이동한 직선의 방정식을 만든 뒤 점 $(3,1)$을 대입한다.\n정석 풀이: 평행이동한 직선은 $y=2(x-1)+k-2=2x+k-4$이다. 이 직선이 $(3,1)$을 지나므로 $1=2\\cdot3+k-4$이다. 따라서 $1=2+k$이고 $k=-1$이다.\n따라서 정답은 ③이다."
   },
   {
-    id: 10, level: "중", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "조건의 진리집합", "포함관계"], wide: false,
-    content: "전체집합 $U$에 대하여 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라고 하자. $\\sim p\\Rightarrow\\sim q$일 때, 다음 중 항상 옳은 것은? [4.2점]", choices: ["$P\\subset Q$", "$P-Q=P$", "$Q-P=Q$", "$P\\cap Q=Q$", "$Q^C\\subset P^C$"], answer: "④",
-    solution: "$P^C\\subset Q^C$이므로 $Q\\subset P$이다. 따라서 $P\\cap Q=Q$이다.\n결론: 정답은 ④이다."
+    id: 10,
+    level: "중",
+    category: "명제",
+    originalCategory: "명제",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-02",
+    standardUnit: "명제",
+    standardUnitOrder: 2,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "조건의 진리집합",
+    "포함관계"
+  ],
+    wide: false,
+    content: "전체집합 $U$에 대하여 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라고 하자. $\\sim p\\Rightarrow\\sim q$일 때, 다음 중 항상 옳은 것은? [4.2점]",
+    choices: [
+    "$P\\subset Q$",
+    "$P-Q=P$",
+    "$Q-P=Q$",
+    "$P\\cap Q=Q$",
+    "$Q^C\\subset P^C$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 조건의 명제가 참이면 두 진리집합 사이에 포함관계가 생긴다.\n조건 정리: $\\sim p$의 진리집합은 $P^C$, $\\sim q$의 진리집합은 $Q^C$이다.\n풀이 방향: 명제 $\\sim p\\Rightarrow\\sim q$를 진리집합의 포함관계로 바꾼다.\n정석 풀이: 명제가 참이므로 $P^C\\subset Q^C$이다. 여집합을 취하면 포함관계의 방향이 바뀌어 $Q\\subset P$이다. 따라서 $P\\cap Q=Q$가 항상 성립한다.\n따라서 정답은 ④이다."
   },
   {
-    id: 11, level: "중", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "집합의 연산", "포함관계"], wide: false,
-    content: "전체집합 $U$의 공집합이 아닌 두 부분집합 $A$, $B$에 대하여 $A\\cup(A^C\\cap B)=A$일 때, 다음 중 항상 성립하는 것은? [4.2점]", choices: ["$A=B$", "$A\\cup B=U$", "$A\\cap B=A$", "$B-A=\\varnothing$", "$A\\cap B=\\varnothing$"], answer: "④",
-    solution: "$A\\cup(A^C\\cap B)=A\\cup B$이므로 $A\\cup B=A$, 즉 $B\\subset A$이다. 따라서 $B-A=\\varnothing$이다.\n결론: 정답은 ④이다."
+    id: 11,
+    level: "중",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "집합의 연산",
+    "포함관계"
+  ],
+    wide: false,
+    content: "전체집합 $U$의 공집합이 아닌 두 부분집합 $A$, $B$에 대하여 $A\\cup(A^C\\cap B)=A$일 때, 다음 중 항상 성립하는 것은? [4.2점]",
+    choices: [
+    "$A=B$",
+    "$A\\cup B=U$",
+    "$A\\cap B=A$",
+    "$B-A=\\varnothing$",
+    "$A\\cap B=\\varnothing$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 분배법칙으로 왼쪽 집합을 간단히 정리한다.\n조건 정리: $A\\cup(A^C\\cap B)=A$이다.\n풀이 방향: $X\\cup(Y\\cap Z)=(X\\cup Y)\\cap(X\\cup Z)$를 적용한다.\n정석 풀이: $A\\cup(A^C\\cap B)=(A\\cup A^C)\\cap(A\\cup B)=U\\cap(A\\cup B)=A\\cup B$이다. 따라서 조건은 $A\\cup B=A$가 되고, 이는 $B\\subset A$를 뜻한다. 그러므로 $B-A=\\varnothing$이다.\n따라서 정답은 ④이다."
   },
   {
-    id: 12, level: "중", category: "함수", originalCategory: "함수", standardCourse: "수학(하)", standardUnitKey: "H15-SB-03", standardUnit: "함수", standardUnitOrder: 3,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "합성함수", "함숫값"], wide: false,
-    content: "세 함수 $f$, $g$, $h$가 $f(x)=-x+1$, $g(x)=3x-2$, $(h\\circ g)(x)=f(x)$를 만족시킬 때, $h(2)$의 값은? [4.2점]", choices: ["$-\\dfrac13$", "$-\\dfrac12$", "$-1$", "$0$", "$1$"], answer: "①",
-    solution: "$g(x)=2$가 되려면 $x=\\dfrac43$이다. 따라서 $h(2)=f\\left(\\dfrac43\\right)=-\\dfrac13$이다.\n결론: 정답은 ①이다."
+    id: 12,
+    level: "중",
+    category: "함수",
+    originalCategory: "함수",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-03",
+    standardUnit: "함수",
+    standardUnitOrder: 3,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "합성함수",
+    "함숫값"
+  ],
+    wide: false,
+    content: "세 함수 $f$, $g$, $h$가 $f(x)=-x+1$, $g(x)=3x-2$, $(h\\circ g)(x)=f(x)$를 만족시킬 때, $h(2)$의 값은? [4.2점]",
+    choices: [
+    "$-\\dfrac13$",
+    "$-\\dfrac12$",
+    "$-1$",
+    "$0$",
+    "$1$"
+  ],
+    answer: "①",
+    solution: "[키포인트] $h(2)$를 구하려면 먼저 $g(x)=2$가 되는 입력을 찾는다.\n조건 정리: $(h\\circ g)(x)=h(g(x))=f(x)$이고, $f(x)=-x+1$, $g(x)=3x-2$이다.\n풀이 방향: $g(x)=2$를 만족하는 $x$에서 $h(g(x))=f(x)$를 이용한다.\n정석 풀이: $3x-2=2$에서 $x=\\dfrac43$이다. 따라서 $h(2)=h\\left(g\\left(\\dfrac43\\right)\\right)=f\\left(\\dfrac43\\right)=-\\dfrac43+1=-\\dfrac13$이다.\n따라서 정답은 ①이다."
   },
   {
-    id: 13, level: "중", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "충분조건", "필요조건", "진리집합"], wide: false,
-    content: "세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 할 때, $P=\\{1,a\\}$, $Q=\\{2,b,b+1\\}$, $R=\\{0,c,2c,3c\\}$이다. $p$는 $q$이기 위한 충분조건이고, $r$은 $q$이기 위한 필요조건이라 할 때, 서로 다른 실수 $a$, $b$, $c$에 대하여 $a+b+c$의 값은? [4.4점]", choices: ["$1$", "$2$", "$3$", "$4$", "$5$"], answer: "③",
-    solution: "$P\\subset Q\\subset R$이다. $1,2\\in Q$가 되어야 하므로 $a=2$, $b=0$이고 $Q=\\{0,1,2\\}$이다. 이를 포함하는 $R$에서 $c=1$이므로 $a+b+c=3$이다.\n결론: 정답은 ③이다."
+    id: 13,
+    level: "상",
+    category: "명제",
+    originalCategory: "명제",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-02",
+    standardUnit: "명제",
+    standardUnitOrder: 2,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "충분조건",
+    "필요조건",
+    "진리집합"
+  ],
+    wide: false,
+    content: "세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 할 때, $P=\\{1,a\\}$, $Q=\\{2,b,b+1\\}$, $R=\\{0,c,2c,3c\\}$이다. $p$는 $q$이기 위한 충분조건이고, $r$은 $q$이기 위한 필요조건이라 할 때, 서로 다른 실수 $a$, $b$, $c$에 대하여 $a+b+c$의 값은? [4.4점]",
+    choices: [
+    "$1$",
+    "$2$",
+    "$3$",
+    "$4$",
+    "$5$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 충분조건과 필요조건을 진리집합의 포함관계로 바꾸고 가능한 경우를 빠짐없이 확인한다.\n조건 정리: $p$가 $q$이기 위한 충분조건이므로 $P\\subset Q$이고, $r$이 $q$이기 위한 필요조건이므로 $Q\\subset R$이다. 따라서 $P\\subset Q\\subset R$이다.\n풀이 방향: $1\\in P$이므로 $1\\in Q$가 되게 하는 $b$를 나누어 조사한다.\n정석 풀이: $Q=\\{2,b,b+1\\}$에 $1$이 들어가려면 $b=0$ 또는 $b=1$이다. $b=1$이면 $Q=\\{1,2\\}$이고, 서로 다른 조건 때문에 $a=2$이다. 이때 $R$이 $1,2$를 모두 포함하려면 $c=1$이어야 하지만 $b=c$가 되어 조건에 어긋난다. 따라서 $b=0$이다. 그러면 $Q=\\{0,1,2\\}$이다. $P=\\{1,a\\}\\subset Q$이고 $a,b,c$가 서로 달라야 하므로 최종적으로 $a=2$가 되어야 한다. 또한 $Q\\subset R=\\{0,c,2c,3c\\}$에서 $0,1,2$를 모두 포함하려면 $c=1$이다. 실제로 $(a,b,c)=(2,0,1)$은 모든 조건을 만족한다. 따라서 $a+b+c=2+0+1=3$이다.\n따라서 정답은 ③이다."
   },
   {
-    id: 14, level: "중", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "집합의 원소의 개수", "최댓값", "활용"], wide: false,
-    content: "우리 학교 학생 228명을 대상으로 지난 토요일과 일요일에 야구 경기를 시청한 학생 수를 조사하였다. 토요일에 경기를 시청한 학생은 일요일에 경기를 시청한 학생보다 20명 많았고, 어느 날에도 경기를 시청하지 않은 학생은 적어도 하나 이상의 경기를 시청한 학생보다 172명이 적었다. 토요일에만 경기를 시청한 학생 수의 최댓값은? [4.4점]", choices: ["$90$", "$100$", "$110$", "$120$", "$130$"], answer: "③",
-    solution: "적어도 하루 시청한 학생 수를 $u$, 어느 날도 시청하지 않은 학생 수를 $n$이라 하면 $u+n=228$, $u-n=172$이므로 $u=200$, $n=28$이다. 토요일 시청자를 $x$명이라 하면 일요일 시청자는 $x-20$명이고 교집합은 $2x-220$명이다. 토요일만 시청한 수는 $220-x$이며 교집합이 음수가 아니려면 $x\\ge110$이므로 최댓값은 $110$이다.\n결론: 정답은 ③이다."
+    id: 14,
+    level: "상",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "집합의 원소의 개수",
+    "최댓값",
+    "활용"
+  ],
+    wide: false,
+    content: "우리 학교 학생 228명을 대상으로 지난 토요일과 일요일에 야구 경기를 시청한 학생 수를 조사하였다. 토요일에 경기를 시청한 학생은 일요일에 경기를 시청한 학생보다 20명 많았고, 어느 날에도 경기를 시청하지 않은 학생은 적어도 하나 이상의 경기를 시청한 학생보다 172명이 적었다. 토요일에만 경기를 시청한 학생 수의 최댓값은? [4.4점]",
+    choices: [
+    "$90$",
+    "$100$",
+    "$110$",
+    "$120$",
+    "$130$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 적어도 하루 시청한 학생 수를 먼저 구한 뒤 교집합이 음수가 될 수 없다는 조건을 이용한다.\n조건 정리: 전체는 $228$명이고, 적어도 하루 시청한 학생 수와 어느 날도 시청하지 않은 학생 수의 차는 $172$명이다.\n풀이 방향: 합과 차로 합집합의 크기를 구하고, 토요일과 일요일 시청자 수를 문자로 둔다.\n정석 풀이: 적어도 하루 시청한 학생 수를 $u$, 어느 날도 시청하지 않은 학생 수를 $v$라 하면 $u+v=228$, $u-v=172$이다. 두 식을 더하면 $2u=400$이므로 $u=200$이다. 일요일 시청자 수를 $t$라 하면 토요일 시청자 수는 $t+20$이다. 두 날 모두 시청한 학생 수를 $i$라 하면 $(t+20)+t-i=200$이므로 $i=2t-180$이다. $i\\ge0$이므로 $t\\ge90$이다. 토요일에만 시청한 학생 수는 $(t+20)-i=200-t$이므로 $t$가 가장 작은 $90$일 때 최대가 되고, 그 값은 $110$이다.\n따라서 정답은 ③이다."
   },
   {
-    id: 15, level: "중", category: "함수", originalCategory: "함수", standardCourse: "수학(하)", standardUnitKey: "H15-SB-03", standardUnit: "함수", standardUnitOrder: 3,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "도형의 이동", "좌표변환", "도형"], wide: false,
-    content: "좌표평면에서 방정식 $f(x,y)=0$이 나타내는 도형이 그림과 같을 때, 방정식 $f(y+1,-x-3)=0$이 나타내는 도형은? [4.4점]", image: "assets/images/24_금당고_2학기_중간_고1_기출/q15.png", choices: ["①", "②", "③", "④", "⑤"], answer: "⑤",
-    solution: "$(u,v)=(y+1,-x-3)$로 놓으면 $(x,y)=(-v-3,u-1)$이다. 원래 꼭짓점 $(1,-3)$, $(4,-3)$, $(4,0)$은 각각 $(0,0)$, $(0,3)$, $(-3,3)$으로 옮겨지므로 ⑤이다.\n결론: 정답은 ⑤이다."
+    id: 15,
+    level: "상",
+    category: "도형의 이동",
+    originalCategory: "도형의 이동",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-12",
+    standardUnit: "도형의 이동",
+    standardUnitOrder: 12,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형의 이동",
+    "좌표변환",
+    "도형"
+  ],
+    wide: false,
+    content: "좌표평면에서 방정식 $f(x,y)=0$이 나타내는 도형이 그림과 같을 때, 방정식 $f(y+1,-x-3)=0$이 나타내는 도형은? [4.4점]",
+    choices: [],
+    answer: "⑤",
+    solution: "[키포인트] 새 식의 두 입력을 원래 좌표로 놓고, 원래 도형의 꼭짓점이 어디로 이동하는지 계산한다.\n조건 정리: 원래 도형의 꼭짓점은 $(1,-3)$, $(4,-3)$, $(4,0)$이다.\n풀이 방향: $u=y+1$, $v=-x-3$으로 놓아 원래 좌표 $(u,v)$와 새 좌표 $(x,y)$의 관계를 구한다.\n정석 풀이: $u=y+1$, $v=-x-3$에서 $x=-v-3$, $y=u-1$이다. 따라서 원래 점 $(u,v)$는 새 좌표 $(-v-3,\\,u-1)$로 옮겨진다. $(1,-3)$은 $(0,0)$으로, $(4,-3)$은 $(0,3)$으로, $(4,0)$은 $(-3,3)$으로 옮겨진다. 그러므로 새 도형은 제2사분면에 있고 꼭짓점이 $(0,0)$, $(0,3)$, $(-3,3)$인 삼각형이다.\n따라서 정답은 ⑤이다.",
+    image: "assets/images/24_금당고_2학기_중간_고1_기출/q15.png",
+    imageSize: "tall"
   },
   {
-    id: 16, level: "상", category: "평면좌표", originalCategory: "평면좌표", standardCourse: "수학(하)", standardUnitKey: "H15-SA-09", standardUnit: "평면좌표", standardUnitOrder: 9,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "삼각형의 넓이", "사각형", "최솟값", "도형"], wide: false,
-    content: "그림과 같은 사각형 $ABCD$에서 사각형 $OAB$, 삼각형 $OCD$의 넓이를 각각 $16$, $9$라 할 때, 사각형 $ABCD$의 넓이의 최솟값은? [4.6점]", image: "assets/images/24_금당고_2학기_중간_고1_기출/q16.png", choices: ["$36$", "$40$", "$45$", "$49$", "$50$"], answer: "④",
-    solution: "$AO:OC=1:a$라 하면 $[OBC]=16a$, $[OAD]=\\dfrac9a$이다. 따라서 전체 넓이는 $25+16a+\\dfrac9a\\ge25+2\\sqrt{144}=49$이다.\n결론: 정답은 ④이다."
+    id: 16,
+    level: "상",
+    category: "평면좌표",
+    originalCategory: "평면좌표",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-09",
+    standardUnit: "평면좌표",
+    standardUnitOrder: 9,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "삼각형의 넓이",
+    "사각형",
+    "최솟값",
+    "도형"
+  ],
+    wide: false,
+    content: "그림과 같은 사각형 $ABCD$에서 삼각형 $OAB$, 삼각형 $OCD$의 넓이를 각각 $16$, $9$라 할 때, 사각형 $ABCD$의 넓이의 최솟값은? [4.6점]",
+    choices: [
+    "$36$",
+    "$40$",
+    "$45$",
+    "$49$",
+    "$50$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 대각선의 교점 주위 네 삼각형에서는 서로 마주 보는 두 넓이의 곱이 같다.\n조건 정리: $[OAB]=16$, $[OCD]=9$이고, 나머지 두 삼각형의 넓이를 $[OBC]=x$, $[ODA]=y$라 하자.\n풀이 방향: 같은 높이를 갖는 삼각형의 넓이비로 $xy$를 구한 뒤 $x+y$의 최솟값을 구한다.\n정석 풀이: 삼각형 $OAB$와 $OBC$는 꼭짓점 $B$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{x}{16}=\\dfrac{OC}{OA}$이다. 삼각형 $ODA$와 $OCD$는 꼭짓점 $D$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{9}{y}=\\dfrac{OC}{OA}$이다. 따라서 $\\dfrac{x}{16}=\\dfrac9y$이고 $xy=144$이다. 사각형의 넓이는 $16+9+x+y=25+x+y$이다. $(x-y)^2\\ge0$에서 $x+y\\ge2\\sqrt{xy}=24$이므로 전체 넓이는 $49$ 이상이다. $x=y=12$일 때 등호가 성립할 수 있으므로 최솟값은 $49$이다.\n따라서 정답은 ④이다.",
+    image: "assets/images/24_금당고_2학기_중간_고1_기출/q16.png"
   },
   {
-    id: 17, level: "상", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "객관식", layoutTag: "grid", tags: ["객관식", "집합의 원소의 개수", "약수", "홀수"], wide: false,
-    content: "$1$보다 큰 자연수 $k$에 대하여 전체집합 $U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{x\\mid x$는 $k$ 이하의 홀수$\\}$, $B=\\{x\\mid x$는 $k$의 약수$\\}$가 $n(A)\\times n((A\\cup B)^C)=15$를 만족시킨다. 집합 $(A\\cup B)^C$의 모든 원소의 합은? [4.6점]", choices: ["$18$", "$16$", "$14$", "$12$", "$10$"], answer: "①",
-    solution: "조건을 만족하는 값은 $k=10$이다. 이때 $A=\\{1,3,5,7,9\\}$, $B=\\{1,2,5,10\\}$이므로 $(A\\cup B)^C=\\{4,6,8\\}$이고 합은 $18$이다.\n결론: 정답은 ①이다."
+    id: 17,
+    level: "상",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "집합의 원소의 개수",
+    "약수",
+    "홀수"
+  ],
+    wide: false,
+    content: "$1$보다 큰 자연수 $k$에 대하여 전체집합 $U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{x\\mid x$는 $k$ 이하의 홀수$\\}$, $B=\\{x\\mid x$는 $k$의 약수$\\}$가 $n(A)\\times n((A\\cup B)^C)=15$를 만족시킨다. 집합 $(A\\cup B)^C$의 모든 원소의 합은? [4.6점]",
+    choices: [
+    "$18$",
+    "$16$",
+    "$14$",
+    "$12$",
+    "$10$"
+  ],
+    answer: "①",
+    solution: "[키포인트] $A$의 원소 수가 $15$의 약수여야 한다는 점을 이용해 가능한 $k$를 좁힌다.\n조건 정리: $A$는 $k$ 이하의 홀수의 집합이고, $(A\\cup B)^C$는 $k$ 이하의 자연수 중 홀수도 아니고 $k$의 약수도 아닌 수의 집합이다.\n풀이 방향: $n(A)\\times n((A\\cup B)^C)=15$에서 가능한 $n(A)$를 조사한다.\n정석 풀이: $n(A)$는 $15$의 양의 약수인 $1,3,5,15$ 중 하나이다. $n(A)=1$이면 $k=2$이고 여집합의 원소가 없어 곱이 $15$가 아니다. $n(A)=3$이면 $k=5$ 또는 $6$인데 여집합의 원소 수는 각각 $2$, $1$이므로 곱은 $6$ 또는 $3$이다. $n(A)=5$이면 $k=9$ 또는 $10$이다. $k=9$에서는 여집합이 $\\{2,4,6,8\\}$로 $4$개여서 곱이 $20$이다. $k=10$에서는 $A=\\{1,3,5,7,9\\}$, $B=\\{1,2,5,10\\}$이고 $(A\\cup B)^C=\\{4,6,8\\}$로 $3$개이므로 곱이 $15$이다. $n(A)=15$이면 $k=29$ 또는 $30$이고 여집합의 원소가 하나보다 많아 곱이 $15$가 될 수 없다. 따라서 $k=10$이고 여집합 원소의 합은 $4+6+8=18$이다.\n따라서 정답은 ①이다."
   },
   {
-    id: 18, level: "중", category: "집합", originalCategory: "집합", standardCourse: "수학(하)", standardUnitKey: "H15-SB-01", standardUnit: "집합", standardUnitOrder: 1,
-    questionType: "단답형", layoutTag: "grid", tags: ["단답형", "집합의 연산", "원소 구하기"], wide: false,
-    content: "단답형 1. 전체집합 $U=\\{x\\mid x$는 $8$ 이하인 자연수$\\}$의 두 부분집합 $A$, $B$가 $A\\cap B=\\{1,2\\}$, $B-A=\\{4,5\\}$, $(A\\cup B)^C=\\{7,8\\}$을 만족시킬 때, 집합 $A$를 구하시오. [4점]", choices: [], answer: "$\\{1,2,3,6\\}$", 
-    solution: "$B=(A\\cap B)\\cup(B-A)=\\{1,2,4,5\\}$이다. 또 $A\\cup B=\\{1,2,3,4,5,6\\}$이므로 $3,6$은 $A$에 속한다. 따라서 $A=\\{1,2,3,6\\}$이다."
+    id: 18,
+    level: "중",
+    category: "집합",
+    originalCategory: "집합",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-01",
+    standardUnit: "집합",
+    standardUnitOrder: 1,
+    questionType: "단답형",
+    layoutTag: "grid",
+    tags: [
+    "단답형",
+    "집합의 연산",
+    "원소 구하기"
+  ],
+    wide: false,
+    content: "단답형 1. 전체집합 $U=\\{x\\mid x$는 $8$ 이하인 자연수$\\}$의 두 부분집합 $A$, $B$가 $A\\cap B=\\{1,2\\}$, $B-A=\\{4,5\\}$, $(A\\cup B)^C=\\{7,8\\}$을 만족시킬 때, 집합 $A$를 구하시오. [4점]",
+    choices: [],
+    answer: "$\\{1,2,3,6\\}$",
+    solution: "[키포인트] 전체집합을 교집합, 두 차집합, 합집합의 여집합으로 나누어 각 원소의 위치를 정한다.\n조건 정리: $U=\\{1,2,3,4,5,6,7,8\\}$이고, $A\\cap B=\\{1,2\\}$, $B-A=\\{4,5\\}$, $(A\\cup B)^C=\\{7,8\\}$이다.\n풀이 방향: 먼저 $B$와 $A\\cup B$를 구한 뒤 $A$에만 속하는 원소를 찾는다.\n정석 풀이: $B=(A\\cap B)\\cup(B-A)=\\{1,2,4,5\\}$이다. 또 $(A\\cup B)^C=\\{7,8\\}$이므로 $A\\cup B=\\{1,2,3,4,5,6\\}$이다. 이 가운데 $B$에 없는 $3,6$은 $A-B$에 속한다. 따라서 $A=(A\\cap B)\\cup(A-B)=\\{1,2,3,6\\}$이다.\n따라서 구하는 집합은 $A=\\{1,2,3,6\\}$이다."
   },
   {
-    id: 19, level: "중", category: "함수", originalCategory: "함수", standardCourse: "수학(하)", standardUnitKey: "H15-SB-03", standardUnit: "함수", standardUnitOrder: 3,
-    questionType: "단답형", layoutTag: "grid", tags: ["단답형", "최댓값", "제곱근", "코시슈바르츠"], wide: false,
-    content: "단답형 2. 양수 $x$, $y$가 $x+y=5$를 만족할 때, $\\sqrt{13-3x}+\\sqrt{10-3y}$의 최댓값을 구하시오. [6점]", choices: [], answer: "$4$", 
-    solution: "$y=5-x$를 대입하면 두 제곱근 안의 수는 각각 $13-3x$, $3x-5$이고 그 합은 $8$이다. $\\sqrt A+\\sqrt B\\le\\sqrt{2(A+B)}=4$이며 $A=B=4$일 때 등호가 성립하므로 최댓값은 $4$이다."
+    id: 19,
+    level: "중",
+    category: "여러 가지 부등식",
+    originalCategory: "여러 가지 부등식",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-08",
+    standardUnit: "여러 가지 부등식",
+    standardUnitOrder: 8,
+    questionType: "단답형",
+    layoutTag: "grid",
+    tags: [
+    "단답형",
+    "여러 가지 부등식",
+    "절대부등식",
+    "최댓값",
+    "제곱근"
+  ],
+    wide: false,
+    content: "단답형 2. 양수 $x$, $y$가 $x+y=5$를 만족할 때, $\\sqrt{13-3x}+\\sqrt{10-3y}$의 최댓값을 구하시오. [6점]",
+    choices: [],
+    answer: "$4$",
+    solution: "[키포인트] 두 제곱근 안의 수의 합이 일정함을 이용해 두 수가 같을 때 합이 최대가 됨을 보인다.\n조건 정리: $x+y=5$이고 $x,y>0$이다.\n풀이 방향: $y=5-x$를 대입하고, 제곱근 안의 두 수를 $A,B$로 둔다.\n정석 풀이: $A=13-3x$, $B=10-3y$라 하면 $A+B=23-3(x+y)=8$이다. 구하는 식을 제곱하면 $(\\sqrt A+\\sqrt B)^2=A+B+2\\sqrt{AB}=8+2\\sqrt{AB}$이다. $(A-B)^2\\ge0$에서 $(A+B)^2\\ge4AB$이므로 $AB\\le16$이다. 따라서 $(\\sqrt A+\\sqrt B)^2\\le8+2\\cdot4=16$이고, 주어진 식은 $4$ 이하이다. $A=B=4$일 때 $x=3$, $y=2$가 되어 조건을 만족하므로 최댓값은 실제로 $4$이다.\n따라서 구하는 최댓값은 $4$이다."
   },
   {
-    id: 20, level: "상", category: "평면좌표", originalCategory: "평면좌표", standardCourse: "수학(하)", standardUnitKey: "H15-SA-09", standardUnit: "평면좌표", standardUnitOrder: 9,
-    questionType: "서술형", layoutTag: "grid", tags: ["서술형", "대칭이동", "최단거리", "점과 직선 사이의 거리"], wide: false,
-    content: "서·논술형 1. 좌표평면 위에 세 점 $A(4,8)$, $B(8,5)$, $C(5,4)$가 있다. 선분 $AB$ 위를 움직이는 점 $P$와 $y$축 위를 움직이는 점 $Q$, $x$축 위를 움직이는 점 $R$에 대하여 $PQ+QR+RC$의 최솟값을 풀이과정과 함께 상세하게 서술하시오. (단, 두 점 $Q$, $R$은 서로 다른 점이다.) [10점]", choices: [], answer: "$15$", 
-    solution: "$P$를 $y$축에 대하여 대칭이동한 점을 $P'$, $C$를 $x$축에 대하여 대칭이동한 점을 $C'(5,-4)$라 하면 $PQ+QR+RC=P'Q+QR+RC'$이다. 다시 대칭을 이용하면 이는 점 $P$와 점 $D(-5,-4)$ 사이의 거리로 줄어든다. 직선 $AB$의 방정식은 $3x+4y-44=0$이고, $D$에서 이 직선까지의 거리는 $\\dfrac{|3(-5)+4(-4)-44|}{5}=15$이다. 수선의 발이 $A$이므로 선분 위에서 최솟값 $15$가 성립한다."
+    id: 20,
+    level: "상",
+    category: "평면좌표",
+    originalCategory: "평면좌표",
+    standardCourse: "수학(상)",
+    standardUnitKey: "H15-SA-09",
+    standardUnit: "평면좌표",
+    standardUnitOrder: 9,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "서술형",
+    "대칭이동",
+    "최단거리",
+    "점과 직선 사이의 거리",
+    "도형"
+  ],
+    wide: false,
+    content: "서·논술형 1. 좌표평면 위에 세 점 $A(4,8)$, $B(8,5)$, $C(5,4)$가 있다. 선분 $AB$ 위를 움직이는 점 $P$와 $y$축 위를 움직이는 점 $Q$, $x$축 위를 움직이는 점 $R$에 대하여 $PQ+QR+RC$의 최솟값을 풀이과정과 함께 상세하게 서술하시오. (단, 두 점 $Q$, $R$은 서로 다른 점이다.) [10점]",
+    choices: [],
+    answer: "$15$",
+    solution: "[키포인트] 대칭이동으로 각 선분의 길이를 보존한 뒤, 먼저 삼각부등식으로 모든 경우의 하한을 구하고 실제로 그 하한이 만들어지는 점을 확인한다.\n조건 정리: $P$는 선분 $AB$ 위, $Q$는 $y$축 위, $R$은 $x$축 위에 있고 $Q\\ne R$이다.\n풀이 방향: $P$를 $y$축에 대하여 대칭이동한 점을 $P'$, $C(5,4)$를 $x$축에 대하여 대칭이동한 점을 $C'(5,-4)$라 하여 삼각부등식을 적용한다.\n정석 풀이: 대칭이동에 의해 $PQ=P'Q$, $RC=RC'$이므로 $PQ+QR+RC=P'Q+QR+RC'$이다. 세 점을 잇는 꺾은선의 길이는 양 끝점 사이의 거리보다 작을 수 없으므로 $P'Q+QR+RC'\\ge P'C'$이다. $C'$를 다시 $y$축에 대하여 대칭이동한 점을 $D(-5,-4)$라 하면 $P'C'=PD$이므로 모든 $P,Q,R$에 대하여 $PQ+QR+RC\\ge PD$이다. 따라서 전체 길이는 점 $D$와 선분 $AB$ 사이의 거리 이상이다. $A(4,8)$, $B(8,5)$를 지나는 직선의 방정식은 $3x+4y-44=0$이다. 점 $D(-5,-4)$에서 이 직선까지의 거리는 $\\dfrac{|3(-5)+4(-4)-44|}{\\sqrt{3^2+4^2}}=\\dfrac{75}{5}=15$이다. 또 직선 $DA$의 기울기는 $\\dfrac{8-(-4)}{4-(-5)}=\\dfrac43$이고, 직선 $AB$의 기울기는 $\\dfrac{5-8}{8-4}=-\\dfrac34$이다. 두 직선의 기울기의 곱이 $-1$이므로 $DA\\perp AB$이다. 따라서 점 $D$에서 직선 $AB$에 내린 수선의 발은 선분 위의 점 $A$이다. 따라서 모든 경우에 $PQ+QR+RC\\ge15$이다. 이제 $P=A$로 잡으면 $P'=(-4,8)$이다. 선분 $P'C'$는 $y$축과 $Q=\\left(0,\\dfrac83\\right)$에서 만나고, 그 다음 $x$축과 $R=(2,0)$에서 만난다. 두 점은 서로 다르고 $P',Q,R,C'$가 한 직선 위에 이 순서로 놓이므로 $P'Q+QR+RC'=P'C'=15$이다. 따라서 하한 $15$가 실제로 성립한다.\n따라서 구하는 최솟값은 $15$이다.",
+    image: "assets/images/24_금당고_2학기_중간_고1_기출/q20.png",
+    imageSize: "full"
   },
   {
-    id: 21, level: "상", category: "함수", originalCategory: "함수", standardCourse: "수학(하)", standardUnitKey: "H15-SB-03", standardUnit: "함수", standardUnitOrder: 3,
-    questionType: "서술형", layoutTag: "grid", tags: ["서술형", "함수의 정의", "재귀함수", "수열의 합"], wide: false,
-    content: "서·논술형 2. 자연수 전체집합에서 정의된 함수 $f(n)=\\begin{cases}n-2&(n\\ge100)\\\\f(f(n+5))&(n<100)\\end{cases}$에 대하여 $f(70)+f(71)+f(72)+\\cdots+f(98)+f(99)$의 값을 풀이과정과 함께 상세하게 서술하시오. [10점]", choices: [], answer: "$2970$", 
-    solution: "$f(100)=98$, $f(99)=f(f(104))=f(102)=100$, $f(98)=f(f(103))=f(101)=99$이다. 같은 관계를 반복하면 $f(70)$부터 $f(99)$까지 $98,99,100$이 10번 반복된다. 따라서 합은 $10(98+99+100)=2970$이다."
+    id: 21,
+    level: "상",
+    category: "함수",
+    originalCategory: "함수",
+    standardCourse: "수학(하)",
+    standardUnitKey: "H15-SB-03",
+    standardUnit: "함수",
+    standardUnitOrder: 3,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "서술형",
+    "함수의 정의",
+    "재귀함수",
+    "수열의 합"
+  ],
+    wide: false,
+    content: "서·논술형 2. 자연수 전체집합에서 정의된 함수 $f(n)=\\begin{cases}n-2&(n\\ge100)\\\\f(f(n+5))&(n<100)\\end{cases}$에 대하여 $f(70)+f(71)+f(72)+\\cdots+f(98)+f(99)$의 값을 풀이과정과 함께 상세하게 서술하시오. [10점]",
+    choices: [],
+    answer: "$2970$",
+    solution: "[키포인트] $100$ 이상에서의 값을 먼저 구한 뒤 정의식을 거꾸로 적용하면 $98,99,100$의 세 값이 반복된다.\n조건 정리: $n\\ge100$이면 $f(n)=n-2$이고, $n<100$이면 $f(n)=f(f(n+5))$이다.\n풀이 방향: $f(100)$과 $f(99),f(98)$을 구한 뒤 아래쪽 자연수의 값을 차례로 확인한다.\n정석 풀이: $f(100)=98$이다. $f(99)=f(f(104))=f(102)=100$이고, $f(98)=f(f(103))=f(101)=99$이다. 이어서 $f(97)=f(f(102))=f(100)=98$, $f(96)=f(f(101))=f(99)=100$, $f(95)=f(f(100))=f(98)=99$이다. 이와 같이 입력이 $3$만큼 작아질 때 같은 값이 반복되므로 $f(70),f(71),f(72),\\ldots,f(99)$는 $98,99,100$이 차례로 $10$번 반복된다. 따라서 합은 $10(98+99+100)=10\\cdot297=2970$이다.\n따라서 구하는 값은 $2970$이다."
   }
 ];

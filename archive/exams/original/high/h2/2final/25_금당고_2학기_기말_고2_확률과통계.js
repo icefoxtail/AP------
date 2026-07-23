@@ -513,7 +513,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 두 상자의 가격 합이 40000원이 되려면 A, B 모두 정가(20000원) 판매되어야 한다.\\n조건 정리: A상자 크림빵 무게 $\\\\sim N(22, 4^2)$, B상자 $\\\\sim N(21, 2^2)$. 표본 크기 $n=4$. 표본평균 $\\ge 20$이면 정가 판매.\\n풀이 방향: 각 상자의 표본평균 분포를 구하고, 두 상자 모두 정가 판매될 확률을 독립사건의 곱으로 계산한다.\\n정석 풀이:\\nA상자: 표본평균 $\\bar{X}_A \\\\sim N\\left(22, \\dfrac{4^2}{4}\\right) = N(22, 4)$, $\\\\sigma_{\\bar{X}_A} = 2$.\\n$P(\\bar{X}_A \\ge 20) = P\\left(Z \\ge \\dfrac{20-22}{2}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\\nB상자: 표본평균 $\\bar{X}_B \\\\sim N\\left(21, \\dfrac{2^2}{4}\\right) = N(21, 1)$, $\\\\sigma_{\\bar{X}_B} = 1$.\\n$P(\\bar{X}_B \\ge 20) = P\\left(Z \\ge \\dfrac{20-21}{1}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\\n두 상자의 판매 가격이 독립이므로, 합이 40000원일 확률은\\n$0.84 \\times 0.84 = 0.7056$\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 두 상자의 가격 합이 40000원이 되려면 A, B 모두 정가(20000원) 판매되어야 한다.\\n조건 정리: A상자 크림빵 무게 $\\\\sim N(22, 4^2)$, B상자 $\\\\sim N(21, 2^2)$. 표본 크기 $n=4$. 표본평균 $\\ge 20$이면 정가 판매.\\n풀이 방향: 각 상자의 표본평균 분포를 구하고, 두 상자 모두 정가 판매될 확률을 독립사건의 곱으로 계산한다.\\n정석 풀이:\\nA상자: 표본평균 $\\bar{X}_A \\\\sim N\\left(22, \\dfrac{4^2}{4}\\right) = N(22, 4)$, $\\\\sigma_{\\bar{X}_A} = 2$.\\n$P(\\bar{X}_A \\ge 20) = P\\left(Z \\ge \\dfrac{20-22}{2}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\nB상자: 표본평균 $\\bar{X}_B \\\\sim N\\left(21, \\dfrac{2^2}{4}\\right) = N(21, 1)$, $\\\\sigma_{\\bar{X}_B} = 1$.\\n$P(\\bar{X}_B \\ge 20) = P\\left(Z \\ge \\dfrac{20-21}{1}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\\n두 상자의 판매 가격이 독립이므로, 합이 40000원일 확률은\\n$0.84 \\times 0.84 = 0.7056$\\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
