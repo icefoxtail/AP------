@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS아카이브 | 믹서 출력 (Rulebook v1.9 + Image Field Final)</title>
     <script>
+        // vendor 경로는 배포 위치(사이트 루트, /archive/, file:// 등)에 상관없이 동작해야 한다.
+        // 절대경로 '/archive/vendor/...'는 아카이브가 루트로 배포되면 404가 나 MathJax가
+        // boldsymbol/폰트를 못 불러 startup이 멈추고, 수식이 날것으로 인쇄된다.
+        // 현재 문서 위치 기준 상대 경로로 해석해 어디에 올려도 vendor를 찾게 한다.
+        var AP_VENDOR_BASE = new URL('vendor/', document.baseURI).href;
         window.MathJax = {
-            loader: { paths: { mathjax: '/archive/vendor/mathjax', 'mathjax-tex': '/archive/vendor/mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
+            loader: { paths: { mathjax: AP_VENDOR_BASE + 'mathjax', 'mathjax-tex': AP_VENDOR_BASE + 'mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
             tex: {
                 inlineMath: [['$', '$']],
                 displayMath: [['$$', '$$']],
