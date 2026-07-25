@@ -1,28 +1,656 @@
-function q(id,level,category,key,content,choices,answer,solution,image){return{id,level,category,originalCategory:category,standardCourse:"중2 수학",standardUnitKey:key,standardUnit:category,standardUnitOrder:Number(key.slice(-2)),questionType:choices.length?"객관식":"서술형",layoutTag:"grid",tags:[choices.length?"객관식":"서술형",category].concat(image?["도형"]:[]),wide:false,content,choices,answer,solution,...(image?{image:"assets/images/24_향림중_2학기_중간_중2_수학/"+image}:{})};}
 window.examTitle="24_향림중_2학기_중간_중2_수학";
+
 window.questionBank=[
-q(1,"하","일차함수","M2-04","일차함수 $y=-3x+6$의 $x$절편을 $a$, $y$절편을 $b$라 할 때, $a,b$는? [3점]",["$a=2,b=-6$","$a=2,b=6$","$a=-2,b=-6$","$a=-3,b=-6$","$a=-3,b=6$"],"②","$y=0$에서 $x=2$이고 $x=0$에서 $y=6$이다.\n따라서 정답은 ②이다."),
-q(2,"하","일차함수","M2-04","그림과 같은 일차함수 그래프의 기울기는? [3점]",["$-3$","$-2$","$-1$","1","2"],"⑤","그래프가 $(0,-3)$, $(2,1)$을 지나므로 기울기는 $(1+3)/(2-0)=2$이다.\n따라서 정답은 ⑤이다.","q02.png"),
-q(3,"중","일차함수","M2-04","0이 아닌 $a,b$에 대하여 $y=ax+b$의 그래프가 제2사분면을 지나지 않을 때, $y=-bx+a$의 그래프가 지나지 않는 사분면은? [4점]",["제1사분면","제2사분면","제3사분면","제4사분면","제1,2사분면"],"④","첫 그래프가 제2사분면을 지나지 않으려면 $a>0$, $b<0$이다. 따라서 둘째 그래프는 기울기 $-b>0$, 절편 $a>0$이므로 제4사분면을 지나지 않는다.\n따라서 정답은 ④이다."),
-q(4,"하","일차함수","M2-04","두 직선 $y=\\dfrac3a x+6$, $y=9x-2$가 평행할 때, $a$는? [3점]",["$\\dfrac19$","$\\dfrac13$","1","3","9"],"②","평행하므로 기울기가 같아 $3/a=9$이다. 따라서 $a=1/3$이다.\n따라서 정답은 ②이다."),
-q(5,"중","일차함수","M2-04","두 점 $(-2,-7)$, $(1,2)$를 지나는 직선의 식은? [4점]",["$y=3x-1$","$y=3x$","$y=3x+1$","$y=-3x-1$","$y=-3x+1$"],"①","기울기는 3이고 $(1,2)$를 대입하면 절편은 -1이다. 따라서 $y=3x-1$이다.\n따라서 정답은 ①이다."),
-q(6,"중","일차함수","M2-04","$y=x$, $y=2x$, $x=4$로 둘러싸인 도형의 넓이는? [5점]",["4","6","8","10","12"],"③","$x=4$에서 두 함수값은 4와 8이다. 밑변 4, 높이 4인 삼각형이므로 넓이는 $4\\times4/2=8$이다.\n따라서 정답은 ③이다."),
-q(7,"상","일차함수","M2-04","세 점 $(-3,-3a)$, $(1,1)$, $(4,2a+3)$이 한 직선 위에 있을 때, $a$는? [5점]",["2","3","4","5","6"],"④","두 구간의 기울기를 같게 두면 $(-3a-1)/(-4)=(-2a-2)/(-3)$이다. 이를 풀면 $a=5$이다.\n따라서 정답은 ④이다."),
-q(8,"중","일차함수","M2-04","두 점 $(3,2a)$, $(a-1,4)$를 지나는 직선이 $y$축에 평행할 때, $a$는? [4점]",["0","1","2","3","4"],"⑤","$y$축에 평행하려면 두 점의 $x$좌표가 같아야 하므로 $3=a-1$, $a=4$이다.\n따라서 정답은 ⑤이다."),
-q(9,"중","연립방정식","M2-03","연립방정식 $\\begin{cases}-x+2y=2\\\\5x+2y=a\\end{cases}$의 두 그래프의 교점이 $x$축 위에 있을 때, $a$는? [4점]",["$-10$","$-8$","$-6$","$-4$","$-2$"],"①","$y=0$을 첫 식에 대입하면 $x=-2$이다. 둘째 식에 대입하면 $a=5(-2)=-10$이다.\n따라서 정답은 ①이다."),
-q(10,"중","연립방정식","M2-03","다음 연립방정식 중 해가 없는 것은? [4점]",["$\\begin{cases}x-y=1\\\\x-2y=1\\end{cases}$","$\\begin{cases}2x+y=3\\\\6x+3y=9\\end{cases}$","$\\begin{cases}x-y=2\\\\2x-2y=-4\\end{cases}$","$\\begin{cases}2x-y=1\\\\-x+y=3\\end{cases}$","$\\begin{cases}3x-2y=4\\\\6x-4y=8\\end{cases}$"],"③","③의 두 식은 좌변의 계수비는 같지만 상수항의 비가 달라 서로 평행한 두 직선이다.\n따라서 정답은 ③이다."),
-q(11,"하","도형의 성질","M2-05","$AB=AC=10$, $BC=8$인 이등변삼각형에서 꼭짓점에서 밑변에 내린 높이의 발이 $D$일 때, $BD=x$이다. $x$는? [3점]",["1","2","3","4","5"],"④","이등변삼각형의 꼭짓점에서 내린 높이는 밑변을 이등분하므로 $BD=4$이다.\n따라서 정답은 ④이다.","q11.png"),
-q(12,"중","도형의 성질","M2-05","$AB=AC$인 이등변삼각형에서 $B,C$의 이등분선이 반대편 변과 만나는 점을 $D,E$, 두 선의 교점을 $F$라 한다. $\\angle ADB=60^\\circ$일 때, $\\angle BFE$는? [5점]",["$30^\\circ$","$35^\\circ$","$40^\\circ$","$45^\\circ$","$50^\\circ$"],"③","대칭성과 각의 이등분선 성질로 $\\angle FBC=\\angle FCB=20^\\circ$이다. $B,F,D$가 한 직선이므로 $\\angle BFE=2\\angle FBC=40^\\circ$이다.\n따라서 정답은 ③이다.","q12.png"),
-q(13,"중","도형의 성질","M2-05","그림의 두 직각삼각형이 합동이 되는 경우가 아닌 것은? [3점]",["두 예각이 각각 같다.","빗변과 다른 한 변이 각각 같다.","두 직각변이 각각 같다.","한 직각변과 한 예각이 각각 같다.","빗변과 한 예각이 각각 같다."],"①","두 각만 같으면 크기가 다른 닮은 삼각형일 수 있으므로 합동을 보장하지 않는다.\n따라서 정답은 ①이다.","q13.png"),
-q(14,"중","도형의 성질","M2-05","점 $O$가 $\\triangle ABC$의 외심이고 그림의 각이 $15^\\circ$, $40^\\circ$일 때, $x$는? [4점]",["95","100","105","110","115"],"④","$OA=OC$이므로 $\\angle OAC=40^\\circ$이다. 따라서 $\\angle A=15^\\circ+40^\\circ=55^\\circ$이고 중심각 $x=2\\angle A=110^\\circ$이다.\n따라서 정답은 ④이다.","q14.png"),
-q(15,"상","도형의 성질","M2-05","$\\angle C=90^\\circ$인 직각삼각형 $ABC$의 외심 $O$에 대하여 $AB=8$일 때, $\\triangle ABC$의 넓이는? [5점]",["14","16","18","20","22"],"②","직각삼각형의 외심은 빗변의 중점이므로 $OA=OB=OC=4$이다. 그림의 조건에서 밑변과 높이는 각각 8,4이므로 넓이는 $8\\times4/2=16$이다.\n따라서 정답은 ②이다.","q15.png"),
-q(16,"중","도형의 성질","M2-05","점 $I$가 $\\triangle ABC$의 내심이고 $\\angle BIC=120^\\circ$일 때, $\\angle A$는? [4점]",["$40^\\circ$","$50^\\circ$","$60^\\circ$","$70^\\circ$","$80^\\circ$"],"③","$\\angle BIC=90^\\circ+\\angle A/2$이므로 $120=90+A/2$, $A=60^\\circ$이다.\n따라서 정답은 ③이다.","q16.png"),
-q(17,"상","도형의 성질","M2-05","내심 $I$에서 세 변에 내린 수선의 발이 $D,E,F$이고 $AB=15$, $BC=14$, $AC=13$, 삼각형의 넓이가 84일 때, $\\triangle IBE$의 넓이는? [5점]",["$13\\mathrm{cm}^2$","$14\\mathrm{cm}^2$","$15\\mathrm{cm}^2$","$16\\mathrm{cm}^2$","$17\\mathrm{cm}^2$"],"④","반둘레는 21이므로 내접원의 반지름은 $84/21=4$이다. 접선 길이를 $BE=BD=t$라 하면 $t=8$이고, 넓이는 $8\\times4/2=16$이다.\n따라서 정답은 ④이다.","q17.png"),
-q(18,"중","도형의 성질","M2-05","평행사변형에서 $DE$가 $\\angle D$의 이등분선이고 $AD=4$, $CD=6$일 때, $BE$는? [4점]",["$1\\mathrm{cm}$","$1.5\\mathrm{cm}$","$2\\mathrm{cm}$","$2.5\\mathrm{cm}$","$3\\mathrm{cm}$"],"③","평행선과 각의 이등분선 성질로 $EC=CD=6$이고 $BC=AD=4$이므로 연장선에서 $BE=EC-BC=2$이다.\n따라서 정답은 ③이다.","q18.png"),
-q(19,"상","도형의 성질","M2-05","평행사변형에서 $A$에서 $BC,CD$에 내린 수선의 발을 $E,F$라 한다. $\\angle BAE=20^\\circ$일 때, $\\angle EAF$는? [4점]",["$50^\\circ$","$55^\\circ$","$60^\\circ$","$65^\\circ$","$70^\\circ$"],"⑤","$AE\\perp BC$, $AF\\perp CD$이고 평행사변형의 평행관계를 이용하면 $\\angle EAF=70^\\circ$이다.\n따라서 정답은 ⑤이다.","q19.png"),
-q(20,"중","도형의 성질","M2-05","다음 중 사각형 $ABCD$가 평행사변형이 되는 조건이 아닌 것은? [4점]",["두 쌍의 대변이 각각 평행","두 쌍의 대변 길이가 각각 같음","두 쌍의 대각 크기가 각각 같음","두 대각선이 서로 이등분","$AD\\parallel BC$, $AB=CD$"],"⑤","한 쌍의 대변이 평행하고 다른 한 쌍의 대변 길이가 같다는 조건만으로는 평행사변형을 보장하지 않는다.\n따라서 정답은 ⑤이다.","q20.png"),
-q(21,"중","일차함수","M2-04","[서술형 1] $y=ax+1$의 $y$절편과 $y=ax+b$의 $x$절편이 같고 $y=ax+1$이 $(1,3)$을 지날 때, $a,b$를 구하여라. [5점]",[],"$a=2$, $b=-2$","$y=ax+1$의 $y$절편은 1이다. $y=ax+b$의 $x$절편이 1이므로 $-b/a=1$, 즉 $a=-b$이다. 또 $(1,3)$을 대입하면 $3=a+1$이므로 $a=2$, $b=-2$이다."),
-q(22,"상","일차함수","M2-04","[서술형 2] 가로 18, 세로 8인 직사각형에서 $P$는 $B$에서 $C$로 초속 1, $Q$는 $D$에서 $A$로 초속 3으로 움직인다. $x$초 후 사다리꼴 $PCDQ$의 넓이가 $96$일 때 $x$를 구하여라. [5점]",[],"3초","$PC=18-x$, $DQ=3x$이다. 사다리꼴 넓이를 $y$라 하면 $y=(3x+18-x)\\times8/2=8x+72$이다. $96=8x+72$에서 $x=3$이다.","q22.png"),
-q(23,"상","도형의 성질","M2-05","[서술형 3] $AB=AC$, $\\angle A=90^\\circ$인 이등변삼각형에서 그림의 삼등분선이 만날 때, $\\angle BDC$, $\\angle BEC$를 구하여라. [6점]",[],"$\\angle BDC=60^\\circ$, $\\angle BEC=30^\\circ$","밑각은 각각 $45^\\circ$이고 삼등분한 각은 $15^\\circ$이다. 직각 관계를 이용해 $\\triangle DBC$에서 $\\angle BDC=60^\\circ$, $\\triangle EBC$에서 $\\angle BEC=30^\\circ$이다.","q23.png"),
-q(24,"중","도형의 성질","M2-05","[서술형 4] 평행사변형에서 대각선의 교점이 $O$이고 그림의 길이가 $AD=3x-4$, $BC=x+2$, $OD=4y+3$, $OB=\\dfrac12y+3$일 때, $x,y$를 구하여라. [4점]",[],"$x=3$, $y=1$","마주 보는 변의 길이가 같아 $3x-4=x+2$이므로 $x=3$이다. 대각선은 서로를 이등분하므로 $4y+3=2(\\dfrac12y+3)$이고 이를 풀면 $y=1$이다.","q24.png")
+  {
+    "id": 1,
+    "level": "하",
+    "category": "일차함수의 그래프",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 그래프"
+    ],
+    "wide": false,
+    "content": "일차함수 $y=-3x+6$의 그래프의 $x$절편을 $a$, $y$절편을 $b$라고 할 때, $a$, $b$의 값은? [3점]",
+    "choices": [
+      "$a=2,\\ b=-6$",
+      "$a=2,\\ b=6$",
+      "$a=-2,\\ b=-6$",
+      "$a=-3,\\ b=-6$",
+      "$a=-3,\\ b=6$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] $x$절편은 $y=0$일 때의 $x$값이고, $y$절편은 $x=0$일 때의 $y$값이다.\n조건 정리: 일차함수의 식은 $y=-3x+6$이다.\n풀이 방향: $y=0$과 $x=0$을 각각 대입하여 두 절편을 구한다.\n정석 풀이: $x$절편을 구하려면 $y=0$을 대입한다. $0=-3x+6$이므로 $3x=6$, 따라서 $x=2$이다. 그러므로 $a=2$이다. $y$절편을 구하려면 $x=0$을 대입한다. $y=-3\\cdot0+6=6$이므로 $b=6$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "일차함수의 그래프",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 그래프",
+      "그래프"
+    ],
+    "wide": false,
+    "content": "그림과 같은 일차함수의 그래프의 기울기는? [3점]",
+    "choices": [
+      "$-3$",
+      "$-2$",
+      "$-1$",
+      "$1$",
+      "$2$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 기울기는 그래프 위의 두 점에서 $x$의 증가량에 대한 $y$의 증가량의 비이다.\n조건 정리: 그래프는 격자점 $(0,-3)$과 $(2,1)$을 지난다.\n풀이 방향: 두 점의 좌표를 기울기 공식에 대입한다.\n정석 풀이: $x$가 $0$에서 $2$로 $2$만큼 증가할 때, $y$는 $-3$에서 $1$로 $4$만큼 증가한다. 따라서 기울기는 $\\dfrac{1-(-3)}{2-0}=\\dfrac{4}{2}=2$이다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q02.png"
+  },
+  {
+    "id": 3,
+    "level": "중",
+    "category": "일차함수의 그래프",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 그래프"
+    ],
+    "wide": false,
+    "content": "$0$이 아닌 두 상수 $a$, $b$에 대하여 일차함수 $y=ax+b$의 그래프는 제2사분면을 지나지 않는다. 이때 일차함수 $y=-bx+a$의 그래프가 지나지 않는 사분면은? [4점]",
+    "choices": [
+      "제1사분면",
+      "제2사분면",
+      "제3사분면",
+      "제4사분면",
+      "제1, 2사분면"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 직선이 특정 사분면을 지나지 않는 조건은 기울기와 두 절편의 부호로 판단한다.\n조건 정리: $a$, $b$는 모두 $0$이 아니며, $y=ax+b$는 제2사분면을 지나지 않는다.\n풀이 방향: 먼저 $a$, $b$의 부호를 정한 뒤 $y=-bx+a$의 기울기와 절편을 조사한다.\n정석 풀이: $a\\lt0$이면 $x$가 매우 작은 음수일 때 $ax$가 큰 양수가 되어 제2사분면을 지나므로 $a\\gt0$이어야 한다. 또한 $b\\gt0$이면 $x=0$의 왼쪽 가까운 곳에서 $y\\gt0$이 되어 제2사분면을 지나므로, $b\\ne0$인 조건까지 고려하면 $b\\lt0$이다. 따라서 $y=-bx+a$는 기울기 $-b\\gt0$, $y$절편 $a\\gt0$인 직선이다. 이 직선의 $x$절편은 음수이므로 제1, 제2, 제3사분면을 지나고 제4사분면은 지나지 않는다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 4,
+    "level": "하",
+    "category": "일차함수의 그래프",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 그래프"
+    ],
+    "wide": false,
+    "content": "두 일차함수 $y=\\dfrac{3}{a}x+6$과 $y=9x-2$의 그래프가 서로 평행할 때, 상수 $a$의 값은? [3점]",
+    "choices": [
+      "$\\dfrac{1}{9}$",
+      "$\\dfrac{1}{3}$",
+      "$1$",
+      "$3$",
+      "$9$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 서로 다른 두 직선이 평행하면 기울기가 같다.\n조건 정리: 두 직선의 기울기는 각각 $\\dfrac{3}{a}$와 $9$이고, $y$절편은 $6$과 $-2$로 서로 다르다.\n풀이 방향: 두 기울기를 같게 놓고 $a$를 구한다.\n정석 풀이: 평행 조건에서 $\\dfrac{3}{a}=9$이다. 양변에 $a$를 곱하면 $3=9a$이고, 양변을 $9$로 나누면 $a=\\dfrac{1}{3}$이다. 두 직선의 절편은 서로 다르므로 같은 직선이 아니라 실제로 평행한 두 직선이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 5,
+    "level": "중",
+    "category": "일차함수의 식",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 식"
+    ],
+    "wide": false,
+    "content": "두 점 $(-2,-7)$, $(1,2)$를 지나는 직선을 그래프로 하는 일차함수의 식은? [4점]",
+    "choices": [
+      "$y=3x-1$",
+      "$y=3x$",
+      "$y=3x+1$",
+      "$y=-3x-1$",
+      "$y=-3x+1$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 두 점을 지나는 직선은 먼저 기울기를 구한 뒤 한 점을 대입하여 절편을 정한다.\n조건 정리: 직선은 $(-2,-7)$과 $(1,2)$를 지난다.\n풀이 방향: 두 점으로 기울기 $m$을 구하고 $y=mx+n$에 한 점을 대입한다.\n정석 풀이: 기울기는 $m=\\dfrac{2-(-7)}{1-(-2)}=\\dfrac{9}{3}=3$이다. 따라서 직선의 식을 $y=3x+n$이라 둘 수 있다. 점 $(1,2)$를 대입하면 $2=3+n$이므로 $n=-1$이다. 따라서 일차함수의 식은 $y=3x-1$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 6,
+    "level": "중",
+    "category": "일차함수의 활용",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 활용"
+    ],
+    "wide": false,
+    "content": "두 일차함수 $y=x$, $y=2x$의 그래프와 $x=4$의 그래프로 둘러싸인 도형의 넓이는? [5점]",
+    "choices": [
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 세 직선의 교점을 구하면 둘러싸인 삼각형의 밑변과 높이를 알 수 있다.\n조건 정리: 두 일차함수의 그래프는 원점에서 만나고, 직선 $x=4$에서 각각 $(4,4)$와 $(4,8)$을 지난다.\n풀이 방향: 세 교점을 꼭짓점으로 하는 삼각형의 넓이를 구한다.\n정석 풀이: $y=x$와 $y=2x$의 교점은 $(0,0)$이다. $x=4$를 두 식에 대입하면 나머지 두 꼭짓점은 $(4,4)$와 $(4,8)$이다. $x=4$ 위의 세로 선분 길이는 $8-4=4$이고, 원점에서 직선 $x=4$까지의 가로 거리는 $4$이다. 따라서 넓이는 $\\dfrac{1}{2}\\times4\\times4=8$이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 7,
+    "level": "상",
+    "category": "일차함수의 식",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 식"
+    ],
+    "wide": false,
+    "content": "상수 $a$에 대하여 좌표평면 위의 세 점 $(-3,-3a)$, $(1,1)$, $(4,2a+3)$이 한 직선 위에 있을 때, $a$의 값은? [5점]",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 세 점이 한 직선 위에 있으면 앞의 두 점과 뒤의 두 점을 이은 직선의 기울기가 같다.\n조건 정리: 세 점을 차례로 $P(-3,-3a)$, $Q(1,1)$, $R(4,2a+3)$이라 한다.\n풀이 방향: $PQ$의 기울기와 $QR$의 기울기를 같게 놓는다.\n정석 풀이: $PQ$의 기울기는 $\\dfrac{1-(-3a)}{1-(-3)}=\\dfrac{1+3a}{4}$이다. $QR$의 기울기는 $\\dfrac{(2a+3)-1}{4-1}=\\dfrac{2a+2}{3}$이다. 따라서 $\\dfrac{1+3a}{4}=\\dfrac{2a+2}{3}$이고, 양변을 교차하여 곱하면 $3+9a=8a+8$이다. 그러므로 $a=5$이다.\n따라서 정답은 ④이다."
+  },
+  {
+    "id": 8,
+    "level": "중",
+    "category": "일차함수의 그래프",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수의 그래프"
+    ],
+    "wide": false,
+    "content": "상수 $a$에 대하여 두 점 $(3,2a)$, $(a-1,4)$를 지나는 직선이 $y$축에 평행할 때, $a$의 값은? [4점]",
+    "choices": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] $y$축에 평행한 직선 위의 모든 점은 $x$좌표가 같다.\n조건 정리: 두 점의 $x$좌표는 각각 $3$과 $a-1$이다.\n풀이 방향: 두 $x$좌표를 같게 놓고 $a$를 구한다.\n정석 풀이: 두 점을 지나는 직선이 세로 방향이 되려면 $3=a-1$이어야 한다. 양변에 $1$을 더하면 $a=4$이다. 이때 두 점은 $(3,8)$과 $(3,4)$로 서로 다른 점이므로 실제로 $y$축에 평행한 직선을 정한다.\n따라서 정답은 ⑤이다."
+  },
+  {
+    "id": 9,
+    "level": "중",
+    "category": "일차함수와 연립방정식",
+    "originalCategory": "연립방정식",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수와 연립방정식"
+    ],
+    "wide": false,
+    "content": "상수 $a$에 대하여 연립방정식 $\\begin{cases}-x+2y=2\\\\5x+2y=a\\end{cases}$에서 각 방정식의 그래프의 교점이 $x$축 위에 있을 때, $a$의 값은? [4점]",
+    "choices": [
+      "$-10$",
+      "$-8$",
+      "$-6$",
+      "$-4$",
+      "$-2$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 교점이 $x$축 위에 있다는 것은 교점의 $y$좌표가 $0$이라는 뜻이다.\n조건 정리: 두 직선의 공통점 $(x,y)$에서 $y=0$이다.\n풀이 방향: 첫째 식으로 $x$를 구한 뒤 둘째 식에 대입하여 $a$를 구한다.\n정석 풀이: 첫째 식에 $y=0$을 대입하면 $-x=2$이므로 $x=-2$이다. 이 값을 둘째 식에 대입하면 $5(-2)+2\\cdot0=a$이다. 따라서 $a=-10$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "일차함수와 연립방정식",
+    "originalCategory": "연립방정식",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "일차함수와 연립방정식"
+    ],
+    "wide": false,
+    "content": "다음 연립방정식 중 해가 없는 것은? [4점]",
+    "choices": [
+      "$\\begin{cases}x-y=1\\\\x-2y=1\\end{cases}$",
+      "$\\begin{cases}2x+y=3\\\\6x+3y=9\\end{cases}$",
+      "$\\begin{cases}x-y=2\\\\2x-2y=-4\\end{cases}$",
+      "$\\begin{cases}2x-y=1\\\\-x+y=3\\end{cases}$",
+      "$\\begin{cases}3x-2y=4\\\\6x-4y=8\\end{cases}$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 두 일차방정식의 좌변 계수비는 같고 상수항의 비가 다르면 서로 평행한 두 직선이 되어 해가 없다.\n조건 정리: 각 보기의 두 식이 한 점에서 만나는지, 같은 직선인지, 평행한지 판단한다.\n풀이 방향: 한 식의 좌변을 일정한 수만큼 곱하여 다른 식과 비교한다.\n정석 풀이: ③의 첫째 식 $x-y=2$의 좌변을 $2$배하면 $2x-2y$이고, 우변은 $4$가 되어야 한다. 그러나 둘째 식의 우변은 $-4$이므로 두 직선은 기울기는 같고 절편은 다른 평행선이다. 따라서 해가 없다. ②와 ⑤는 한 식이 다른 식의 배수인 같은 직선이므로 해가 무수히 많고, ①과 ④는 한 점에서 만나므로 해가 하나이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 11,
+    "level": "하",
+    "category": "이등변삼각형의 성질",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이등변삼각형의 성질",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 $x$의 값은? [3점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 이등변삼각형의 꼭짓점에서 밑변에 내린 수선은 밑변을 이등분한다.\n조건 정리: $AB=AC=10\\,\\mathrm{cm}$이고 $BC=8\\,\\mathrm{cm}$이며 $AD\\perp BC$이다.\n풀이 방향: $BD=DC$를 이용하여 $BD$를 구한다.\n정석 풀이: $AB=AC$인 이등변삼각형에서 꼭짓점 $A$에서 밑변 $BC$에 내린 수선의 발이 $D$이므로 $BD=DC$이다. 따라서 $BD=\\dfrac{BC}{2}=\\dfrac{8}{2}=4\\,\\mathrm{cm}$이다. 그림에서 $BD=x\\,\\mathrm{cm}$이므로 $x=4$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q11.png"
+  },
+  {
+    "id": 12,
+    "level": "상",
+    "category": "삼각형의 내심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각형의 내심",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $AB=AC$인 $\\triangle ABC$에서 $\\angle B$의 이등분선과 $AC$의 교점을 $D$, $\\angle C$의 이등분선과 $AB$의 교점을 $E$, $BD$와 $CE$의 교점을 $F$라고 하자. $\\angle ADB=60^\\circ$일 때, $\\angle BFE$의 크기는? [5점]",
+    "choices": [
+      "$30^\\circ$",
+      "$35^\\circ$",
+      "$40^\\circ$",
+      "$45^\\circ$",
+      "$50^\\circ$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 이등변삼각형의 두 밑각을 같은 문자로 두고, 각의 이등분선과 일직선 관계를 차례로 이용한다.\n조건 정리: $AB=AC$이므로 $\\angle B=\\angle C$이고, $BD$와 $CE$는 각각 두 밑각의 이등분선이다.\n풀이 방향: 먼저 $\\angle B$를 구한 뒤 삼각형 $BFC$의 각과 그 외각을 이용한다.\n정석 풀이: $\\angle B=\\angle C=\\theta$라 하면 $\\angle A=180^\\circ-2\\theta$이고 $\\angle ABD=\\dfrac{\\theta}{2}$이다. 삼각형 $ABD$에서 $(180^\\circ-2\\theta)+\\dfrac{\\theta}{2}+60^\\circ=180^\\circ$이므로 $60^\\circ-\\dfrac{3\\theta}{2}=0$이고, 따라서 $\\theta=40^\\circ$이다. 그러므로 $\\angle FBC=\\angle BCF=20^\\circ$이고 삼각형 $BFC$에서 $\\angle BFC=140^\\circ$이다. 점 $C,F,E$가 한 직선 위에 있으므로 $\\angle BFE=180^\\circ-140^\\circ=40^\\circ$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q12.png"
+  },
+  {
+    "id": 13,
+    "level": "중",
+    "category": "직각삼각형의 합동",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직각삼각형의 합동",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같은 두 직각삼각형이 합동이 되는 경우가 아닌 것은? [3점]",
+    "choices": [
+      "$\\angle A=\\angle D$, $\\angle B=\\angle E$",
+      "$\\overline{AB}=\\overline{DE}$, $\\overline{AC}=\\overline{DF}$",
+      "$\\overline{AC}=\\overline{DF}$, $\\overline{BC}=\\overline{EF}$",
+      "$\\overline{AC}=\\overline{DF}$, $\\angle B=\\angle E$",
+      "$\\overline{AB}=\\overline{DE}$, $\\angle B=\\angle E$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 직각삼각형도 각의 크기만 같아서는 크기까지 같다고 할 수 없다.\n조건 정리: 두 삼각형은 모두 직각삼각형이며, 각 보기에서 주어진 변과 각의 조건을 비교한다.\n풀이 방향: 합동을 보장하는 조건과 닮음만 보장하는 조건을 구분한다.\n정석 풀이: ①은 두 예각이 각각 같다는 조건이다. 직각까지 포함하면 세 각의 크기는 모두 같지만, 변의 길이에 대한 조건이 없으므로 크기가 다른 닮은 직각삼각형도 가능하다. ②는 빗변과 한 직각변, ③은 두 직각변, ④는 한 직각변과 한 예각, ⑤는 빗변과 한 예각이 각각 같으므로 직각삼각형의 합동이 결정된다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q13.png"
+  },
+  {
+    "id": 14,
+    "level": "중",
+    "category": "삼각형의 외심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각형의 외심",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $x$의 값은? [4점]",
+    "choices": [
+      "$95$",
+      "$100$",
+      "$105$",
+      "$110$",
+      "$115$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 외심에서 세 꼭짓점까지의 거리는 같고, 같은 호에 대한 중심각은 원주각의 두 배이다.\n조건 정리: $OA=OC$이고 그림에서 $\\angle BAO=15^\\circ$, $\\angle ACO=40^\\circ$이다. $x=\\angle BOC$이다.\n풀이 방향: 이등변삼각형 $AOC$에서 $\\angle OAC$를 구해 $\\angle BAC$을 찾은 뒤 중심각을 구한다.\n정석 풀이: $OA=OC$이므로 삼각형 $AOC$는 이등변삼각형이다. 따라서 $\\angle OAC=\\angle ACO=40^\\circ$이다. 그러므로 $\\angle BAC=\\angle BAO+\\angle OAC=15^\\circ+40^\\circ=55^\\circ$이다. 같은 호 $BC$에 대한 중심각 $\\angle BOC$는 원주각 $\\angle BAC$의 두 배이므로 $x=2\\times55^\\circ=110^\\circ$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q14.png"
+  },
+  {
+    "id": 15,
+    "level": "상",
+    "category": "삼각형의 외심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각형의 외심",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 $\\triangle ABC$는 $\\angle C=90^\\circ$인 직각삼각형이다. 점 $O$는 $\\triangle ABC$의 외심이고 외접원 $O$의 넓이는 $16\\pi$이다. 이때 $\\triangle ABC$의 넓이는? [5점]",
+    "choices": [
+      "$14$",
+      "$16$",
+      "$18$",
+      "$20$",
+      "$22$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 그림의 $45^\\circ$를 이용하면 두 직각변의 길이가 같다.\n조건 정리: 외접원의 넓이는 $16\\pi$이고 $\\angle C=90^\\circ$, $\\angle A=45^\\circ$이다.\n풀이 방향: 외접원의 반지름과 빗변 $AB$를 구한 뒤 이등변직각삼각형의 성질로 넓이를 구한다.\n정석 풀이: 외접원의 반지름을 $R$이라 하면 $\\pi R^2=16\\pi$이므로 $R=4$이다. 직각삼각형의 외심은 빗변 $AB$의 중점이므로 $AB=2R=8$이다. $\\angle A=45^\\circ$이고 $\\angle C=90^\\circ$이므로 $\\angle B=45^\\circ$이며 $AC=BC$이다. $AC=BC=t$라 하면 피타고라스 정리에 의해 $t^2+t^2=8^2$, 즉 $2t^2=64$이므로 $t^2=32$이다. 따라서 삼각형의 넓이는 $\\dfrac{1}{2}AC\\cdot BC=\\dfrac{1}{2}t^2=16$이다.\n따라서 정답은 ②이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q15.png"
+  },
+  {
+    "id": 16,
+    "level": "중",
+    "category": "삼각형의 내심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각형의 내심",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 점 $I$가 $\\triangle ABC$의 내심일 때, $x$의 크기는? [4점]",
+    "choices": [
+      "$40^\\circ$",
+      "$50^\\circ$",
+      "$60^\\circ$",
+      "$70^\\circ$",
+      "$80^\\circ$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 내심에서 두 꼭짓점으로 이은 각은 나머지 꼭짓각의 절반을 이용해 구할 수 있다.\n조건 정리: $I$는 내심이고 $\\angle BIC=120^\\circ$, $x=\\angle A$이다.\n풀이 방향: 삼각형 $BIC$의 두 각을 $\\angle B$와 $\\angle C$의 절반으로 나타낸다.\n정석 풀이: $BI$와 $CI$는 각각 $\\angle B$, $\\angle C$의 이등분선이므로 $\\angle IBC=\\dfrac{\\angle B}{2}$, $\\angle ICB=\\dfrac{\\angle C}{2}$이다. 삼각형 $BIC$에서 $120^\\circ+\\dfrac{\\angle B+\\angle C}{2}=180^\\circ$이다. $\\angle B+\\angle C=180^\\circ-x$이므로 $120^\\circ+\\dfrac{180^\\circ-x}{2}=180^\\circ$이고, 이를 풀면 $x=60^\\circ$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q16.png"
+  },
+  {
+    "id": 17,
+    "level": "상",
+    "category": "삼각형의 내심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "삼각형의 내심",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 점 $I$가 $\\triangle ABC$의 내심이고, 점 $I$에서 $\\triangle ABC$의 각 변에 내린 수선의 발을 각각 $D$, $E$, $F$라고 하자. $AB=15\\,\\mathrm{cm}$, $BC=14\\,\\mathrm{cm}$, $AC=13\\,\\mathrm{cm}$이고 $\\triangle ABC$의 넓이가 $84\\,\\mathrm{cm}^2$일 때, $\\triangle IBE$의 넓이는? [5점]",
+    "choices": [
+      "$13\\,\\mathrm{cm}^2$",
+      "$14\\,\\mathrm{cm}^2$",
+      "$15\\,\\mathrm{cm}^2$",
+      "$16\\,\\mathrm{cm}^2$",
+      "$17\\,\\mathrm{cm}^2$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 삼각형의 넓이는 내접원의 반지름과 반둘레의 곱이고, 한 점에서 내접원에 그은 두 접선의 길이는 같다.\n조건 정리: 세 변의 길이는 $15$, $14$, $13$이고 전체 넓이는 $84\\,\\mathrm{cm}^2$이다. $IE$는 내접원의 반지름이다.\n풀이 방향: 반둘레로 내접원의 반지름을 구하고, 접선 길이로 $BE$를 구해 삼각형 $IBE$의 넓이를 계산한다.\n정석 풀이: 반둘레는 $s=\\dfrac{15+14+13}{2}=21$이다. 삼각형의 넓이가 $rs$이므로 내접원의 반지름은 $r=\\dfrac{84}{21}=4\\,\\mathrm{cm}$이고 $IE=4\\,\\mathrm{cm}$이다. $AD=AF=u$, $BD=BE=v$, $CE=CF=w$라 하면 $u+v=15$, $v+w=14$, $u+w=13$이다. 앞의 두 식을 더하고 셋째 식을 빼면 $2v=16$이므로 $BE=v=8\\,\\mathrm{cm}$이다. 따라서 $\\triangle IBE$의 넓이는 $\\dfrac{1}{2}\\times8\\times4=16\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q17.png"
+  },
+  {
+    "id": 18,
+    "level": "중",
+    "category": "평행사변형의 성질",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평행사변형의 성질",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같은 평행사변형 $ABCD$에서 $\\angle D$의 이등분선과 $BC$의 연장선의 교점을 점 $E$라고 하자. $AD=4\\,\\mathrm{cm}$, $CD=6\\,\\mathrm{cm}$일 때, $BE$의 길이는? [4점]",
+    "choices": [
+      "$1\\,\\mathrm{cm}$",
+      "$1.5\\,\\mathrm{cm}$",
+      "$2\\,\\mathrm{cm}$",
+      "$2.5\\,\\mathrm{cm}$",
+      "$3\\,\\mathrm{cm}$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 평행선에서 생기는 엇각과 각의 이등분 조건을 이용하면 이등변삼각형을 찾을 수 있다.\n조건 정리: $AD\\parallel BC$, $AD=BC=4\\,\\mathrm{cm}$이고 $DE$는 $\\angle ADC$의 이등분선이다.\n풀이 방향: 삼각형 $CDE$에서 두 각이 같음을 보여 $CE$를 구한 뒤 $BE$를 계산한다.\n정석 풀이: $CE$는 $BC$의 연장선이므로 $CE\\parallel AD$이다. 따라서 $\\angle CED=\\angle ADE$이다. 또 $DE$가 $\\angle ADC$의 이등분선이므로 $\\angle ADE=\\angle EDC$이다. 그러므로 $\\angle CED=\\angle EDC$이고 삼각형 $CDE$는 이등변삼각형이어서 $CE=CD=6\\,\\mathrm{cm}$이다. 한편 $BC=AD=4\\,\\mathrm{cm}$이고 $E,B,C$가 차례로 한 직선 위에 있으므로 $BE=CE-BC=6-4=2\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q18.png"
+  },
+  {
+    "id": 19,
+    "level": "중",
+    "category": "평행사변형의 성질",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평행사변형의 성질",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 사각형 $ABCD$는 평행사변형이다. 점 $A$에서 두 변 $BC$, $CD$에 내린 수선의 발을 각각 $E$, $F$라고 하자. $\\angle BAE=20^\\circ$일 때, $\\angle EAF$의 크기는? [4점]",
+    "choices": [
+      "$50^\\circ$",
+      "$55^\\circ$",
+      "$60^\\circ$",
+      "$65^\\circ$",
+      "$70^\\circ$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 평행사변형의 평행 관계와 수선 조건을 이용하면 $AF$가 $AB$에 수직임을 알 수 있다.\n조건 정리: $AE\\perp BC$, $AF\\perp CD$, $AB\\parallel CD$이고 $\\angle BAE=20^\\circ$이다.\n풀이 방향: $AF\\perp AB$에서 $\\angle BAF$를 구하고 그 안에서 $\\angle BAE$를 뺀다.\n정석 풀이: $AB\\parallel CD$이고 $AF\\perp CD$이므로 $AF\\perp AB$이다. 따라서 $\\angle BAF=90^\\circ$이다. 그림에서 반직선 $AE$는 $\\angle BAF$의 내부에 있고 $\\angle BAE=20^\\circ$이므로 $\\angle EAF=\\angle BAF-\\angle BAE=90^\\circ-20^\\circ=70^\\circ$이다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q19.png"
+  },
+  {
+    "id": 20,
+    "level": "중",
+    "category": "평행사변형이 되는 조건",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평행사변형이 되는 조건",
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 중 사각형 $ABCD$가 평행사변형이 되는 조건이 아닌 것은? (단, 점 $O$는 두 대각선의 교점이다.) [4점]",
+    "choices": [
+      "$\\overline{AB}\\parallel\\overline{CD}$, $\\overline{AD}\\parallel\\overline{BC}$",
+      "$\\overline{AB}=\\overline{CD}$, $\\overline{AD}=\\overline{BC}$",
+      "$\\angle ABC=\\angle ADC$, $\\angle BAD=\\angle BCD$",
+      "$\\overline{AO}=\\overline{CO}$, $\\overline{BO}=\\overline{DO}$",
+      "$\\overline{AD}\\parallel\\overline{BC}$, $\\overline{AB}=\\overline{CD}$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 평행사변형이 되는 대표 조건과, 조건이 부족한 경우를 구분한다.\n조건 정리: ①은 두 쌍의 대변 평행, ②는 두 쌍의 대변 길이 같음, ③은 두 쌍의 대각 같음, ④는 두 대각선이 서로 이등분하는 조건이다.\n풀이 방향: 각 보기가 평행사변형을 반드시 보장하는지 확인한다.\n정석 풀이: ①, ②, ③, ④는 모두 평행사변형이 되는 충분한 조건이다. ⑤는 $AD\\parallel BC$이지만 평행한 두 변이 아닌 다른 두 변 $AB$, $CD$의 길이만 같다는 조건이다. 이 조건을 만족하는 등변사다리꼴도 만들 수 있으므로 반드시 평행사변형이 되지는 않는다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q20.png"
+  },
+  {
+    "id": 21,
+    "level": "중",
+    "category": "일차함수의 그래프",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "일차함수의 그래프"
+    ],
+    "wide": false,
+    "content": "[서·논술형 1] 두 상수 $a$, $b$에 대하여 일차함수 $y=ax+1$의 그래프의 $y$절편과 일차함수 $y=ax+b$의 그래프의 $x$절편이 서로 같다. 또한 일차함수 $y=ax+1$의 그래프는 점 $(1,3)$을 지난다. 이때 $a$, $b$의 값을 구하시오. [5점]",
+    "choices": [],
+    "answer": "$a=2$, $b=-2$",
+    "solution": "[키포인트] 한 함수의 점 통과 조건으로 $a$를 먼저 구하고, 두 절편이 같다는 조건으로 $b$를 구한다.\n조건 정리: $y=ax+1$은 $(1,3)$을 지나며, 이 함수의 $y$절편과 $y=ax+b$의 $x$절편이 같다.\n풀이 방향: $(1,3)$을 대입하고, 두 번째 함수의 $x$절편을 식으로 나타낸다.\n정석 풀이: $y=ax+1$에 $(1,3)$을 대입하면 $3=a+1$이므로 $a=2$이다. 이 함수의 $y$절편은 $1$이다. 따라서 $y=2x+b$의 $x$절편도 $1$이어야 한다. $x=1$, $y=0$을 대입하면 $0=2+b$이므로 $b=-2$이다.\n따라서 $a=2$, $b=-2$이다."
+  },
+  {
+    "id": 22,
+    "level": "상",
+    "category": "일차함수의 활용",
+    "originalCategory": "일차함수",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "standardUnitOrder": 4,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "일차함수의 활용",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서·논술형 2] 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 $BC$를 따라 $1$초에 $1\\,\\mathrm{cm}$씩, 점 $Q$는 점 $D$를 출발하여 점 $A$까지 $AD$를 따라 $1$초에 $3\\,\\mathrm{cm}$씩 움직인다. 점 $P$, $Q$가 각각 점 $B$, $D$에서 동시에 출발한 지 $x$초 후의 사다리꼴 $PCDQ$의 넓이를 $y\\,\\mathrm{cm}^2$라고 할 때, 다음 물음에 답하시오. [5점]<br>\n(1) $\\overline{PC}$, $\\overline{DQ}$의 길이를 $x$를 이용하여 나타내시오. [2점]<br>\n(2) $x$와 $y$ 사이의 관계를 식으로 나타내시오. [1점]<br>\n(3) 사다리꼴 $PCDQ$의 넓이가 $96\\,\\mathrm{cm}^2$가 되는 것은 점 $P$, $Q$가 각각 점 $B$, $D$를 출발한 지 몇 초 후인지 구하시오. [2점]",
+    "choices": [],
+    "answer": "(1) $PC=18-x\\,\\mathrm{cm}$, $DQ=3x\\,\\mathrm{cm}$ (2) $y=8x+72$ (3) $3$초",
+    "solution": "[키포인트] 움직인 거리로 평행한 두 변의 길이를 나타낸 뒤 사다리꼴 넓이 공식을 사용한다.\n조건 정리: $AD=BC=18\\,\\mathrm{cm}$, $AB=8\\,\\mathrm{cm}$이며 $P$의 속력은 $1\\,\\mathrm{cm/s}$, $Q$의 속력은 $3\\,\\mathrm{cm/s}$이다.\n풀이 방향: $x$초 동안 이동한 거리를 이용하여 $PC$, $DQ$를 구하고 넓이 $y$를 식으로 나타낸다.\n정석 풀이: (1) $P$가 이동한 거리는 $BP=x\\,\\mathrm{cm}$이므로 $PC=18-x\\,\\mathrm{cm}$이다. $Q$가 이동한 거리는 $DQ=3x\\,\\mathrm{cm}$이다. (2) $PC$와 $DQ$는 서로 평행하고 두 변 사이의 거리는 $8\\,\\mathrm{cm}$이므로 $y=\\dfrac{1}{2}\\{(18-x)+3x\\}\\times8=8x+72$이다. (3) $8x+72=96$에서 $8x=24$, 따라서 $x=3$이다. $3$초는 두 점이 각 변 위를 움직이는 시간 범위 안에 있다.\n따라서 (1) $PC=18-x\\,\\mathrm{cm}$, $DQ=3x\\,\\mathrm{cm}$, (2) $y=8x+72$, (3) $3$초이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q22.png"
+  },
+  {
+    "id": 23,
+    "level": "상",
+    "category": "삼각형의 성질",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "삼각형의 성질",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서·논술형 3] 그림과 같이 $AB=AC$, $\\angle A=90^\\circ$인 이등변삼각형 $ABC$에서 $\\angle B$의 삼등분선과 $\\angle ACF$의 삼등분선의 교점을 각각 점 $D$, $E$라고 하자. 이때 $\\angle BDC$, $\\angle BEC$의 크기를 구하시오. (단, 점 $B$, $C$, $F$는 한 직선 위에 있다.) [6점]",
+    "choices": [],
+    "answer": "$\\angle BDC=60^\\circ$, $\\angle BEC=30^\\circ$",
+    "solution": "[키포인트] 이등변직각삼각형의 밑각과 내각·외각의 삼등분 각을 각각 구한 뒤 두 삼각형의 내각의 합을 이용한다.\n조건 정리: $AB=AC$, $\\angle A=90^\\circ$이므로 $\\angle B=\\angle C=45^\\circ$이다. 외각 $\\angle ACF=135^\\circ$이다.\n풀이 방향: 그림에서 $BD$, $BE$가 만드는 각과 $CD$, $CE$가 만드는 각을 구하여 삼각형 $BCD$, $BCE$를 살펴본다.\n정석 풀이: $\\angle B=45^\\circ$를 삼등분하므로 한 각은 $15^\\circ$이다. 따라서 그림에서 $\\angle CBD=30^\\circ$, $\\angle CBE=15^\\circ$이다. 또 $\\angle ACF=180^\\circ-45^\\circ=135^\\circ$이고 이를 삼등분하면 한 각은 $45^\\circ$이다. 그러므로 $\\angle BCD=90^\\circ$, $\\angle BCE=135^\\circ$이다. 삼각형 $BCD$에서 $\\angle BDC=180^\\circ-30^\\circ-90^\\circ=60^\\circ$이다. 삼각형 $BCE$에서 $\\angle BEC=180^\\circ-15^\\circ-135^\\circ=30^\\circ$이다.\n따라서 $\\angle BDC=60^\\circ$, $\\angle BEC=30^\\circ$이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q23.png"
+  },
+  {
+    "id": 24,
+    "level": "중",
+    "category": "평행사변형의 성질",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "평행사변형의 성질",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서·논술형 4] 그림과 같은 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라고 할 때, $x$, $y$의 값을 구하시오. [4점]",
+    "choices": [],
+    "answer": "$x=3$, $y=1$",
+    "solution": "[키포인트] 평행사변형은 두 쌍의 대변 길이가 같고, 두 대각선은 서로를 이등분한다.\n조건 정리: 그림에서 $AD=3x-4$, $BC=x+2$, $BD=4y+3$, $OD=\\dfrac{1}{2}y+3$이다.\n풀이 방향: $AD=BC$와 $BD=2OD$를 각각 식으로 세운다.\n정석 풀이: 마주 보는 두 변의 길이가 같으므로 $3x-4=x+2$이다. 따라서 $2x=6$이고 $x=3$이다. 또한 점 $O$는 대각선 $BD$의 중점이므로 $BD=2OD$이다. 따라서 $4y+3=2\\left(\\dfrac{1}{2}y+3\\right)=y+6$이다. 그러므로 $3y=3$이고 $y=1$이다.\n따라서 $x=3$, $y=1$이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중2_수학/q24.png"
+  }
 ];
