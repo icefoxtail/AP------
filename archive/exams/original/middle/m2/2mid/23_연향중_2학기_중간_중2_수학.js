@@ -24,3 +24,5 @@ q(21,"상","도형의 성질","M2-05","[서술형 1] $\\angle A=90^\\circ$, $AB=
 q(22,"상","도형의 성질","M2-05","[서술형 2] 변의 길이가 5 cm, 12 cm, 13 cm인 직각삼각형의 외접원과 내접원의 넓이의 합을 구하여라. [6점]",[],"$\\dfrac{185}{4}\\pi$ cm$^2$","외접원의 반지름은 $13/2=6.5$ cm이고 내접원의 반지름은 $(5+12-13)/2=2$ cm이다. 넓이의 합은 $(6.5)^2\\pi+2^2\\pi=46.25\\pi=\\dfrac{185}{4}\\pi$ cm$^2$이다.","q22.png"),
 q(23,"중","도형의 성질","M2-05","[서술형 3] 평행사변형 $ABCD$에서 $\\angle EBC=\\angle EBA$, $\\angle AEB=50^\\circ$일 때, $\\angle BCD$의 크기를 구하여라. [4점]",[],"$80^\\circ$","$AD\\parallel BC$이므로 $\\angle EBC=\\angle BEA=50^\\circ$이다. $\\angle EBC=\\angle EBA$이므로 $\\angle ABC=100^\\circ$이고, 평행사변형의 이웃한 각의 합이 $180^\\circ$이므로 $\\angle BCD=80^\\circ$이다.","q23.png"),
 q(24,"상","도형의 성질","M2-05","[서술형 4] 직사각형 $ABCD$의 대각선 $AC$의 중점을 $O$라 하고, $O$에서 $AC$에 수직인 직선이 $AD,BC$와 만나는 점을 $E,F$라 하자. $DE=2$ cm, $BC=8$ cm일 때, 사각형 $AFCE$의 둘레를 구하여라. [5점]",[],"24 cm","$\\triangle AOE\\cong\\triangle COF$이고 같은 방법으로 네 직각삼각형이 합동이므로 $AFCE$는 마름모이다. 한 변의 길이는 $AD-DE=8-2=6$ cm이므로 둘레는 $4\\times6=24$ cm이다.","q24.png")];
+
+window.questionBank.forEach(q=>{if([20,21,22,23,24].includes(q.id))q.imageSize="tall";});

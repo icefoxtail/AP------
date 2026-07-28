@@ -718,6 +718,6 @@ window.questionBank=[
     "choices": [],
     "answer": "14경기",
     "solution": "",
-    "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q25.png"
+    "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q25_clean.png"
   }
 ];

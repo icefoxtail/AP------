@@ -1,26 +1,26 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-07-19T03:44:19.636Z
+- 생성 시각: 2026-07-27T11:10:52.769Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 347
-- 시험지 파일 수: 347
-- 원본 문항 수(중복 제거 전): 8578
-- 최종 인덱스 문항 수(중복 제거 후): 8553
+- 시험지 수(db.js): 346
+- 시험지 파일 수: 348
+- 원본 문항 수(중복 제거 전): 8572
+- 최종 인덱스 문항 수(중복 제거 후): 8547
 - 중복 qKey로 제외된 레코드: 25 (그룹 25)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 332114 bytes
-- 시험지 JS 총 크기: 10111291 bytes
-- 인덱스 크기: 5377567 bytes
-- 로드 실패 파일: 0
+- db.js 크기: 355323 bytes
+- 시험지 JS 총 크기: 11179032 bytes
+- 인덱스 크기: 5422796 bytes
+- 로드 실패 파일: 1
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(8553)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(8547)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 142개 기준)
 
-- 공식(official): 7763
-- RAW-(임시 규약, 허용): 526 (distinct 89)
-- 비공식(invalid): 250 (distinct 39)
+- 공식(official): 7807
+- RAW-(임시 규약, 허용): 477 (distinct 89)
+- 비공식(invalid): 249 (distinct 39)
 - 빈 키(empty): 14
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
@@ -38,11 +38,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 1075
-- content 내부 <img>: 2
+- q.image 보유: 1121
+- content 내부 <img>: 4
 - content 내부 <svg>: 77
 - content 내부 <table>: 109
-- 시각요소 보유(hasImage=true, OR 합산): 1261
+- 시각요소 보유(hasImage=true, OR 합산): 1309
 
 ## 누락 예시
 
@@ -115,4 +115,4 @@
 
 ## 실패 파일
 
-- 없음
+- original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js: ENOENT: no such file or directory, open 'C:\Users\USER\Desktop\AP------\archive\exams\original\middle\m2\2mid\24_매산중_2학기_중간_중2_수학.js'

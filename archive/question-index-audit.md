@@ -1,13 +1,13 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-07-19T03:44:19.636Z
+- 생성 시각: 2026-07-27T11:10:52.769Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(347파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(348파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
 - 공식 마스터 키 수: 142 (중등 23 + H22 56 + H15 63)
-- 원본 문항 수: 8578
-- 최종 인덱스 문항 수: 8553
+- 원본 문항 수: 8572
+- 최종 인덱스 문항 수: 8547
 - 중복 qKey 그룹: 25 / 제외 레코드(duplicate_skipped): 25
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -195,9 +195,9 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 39종 / 250건
+> distinct 39종 / 249건
 
-- `H15-SA-13` — 50건 (예: original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#10, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#11, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#12, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#16, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#20)
+- `H15-SA-13` — 49건 (예: original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#10, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#11, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#12, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#16, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#20)
 - `STAT-02` — 40건 (예: original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#1, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#2, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#3, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#4, original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js#5)
 - `H15-PS` — 24건 (예: original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#1, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#2, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#3, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#4, original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js#5)
 - `H22-A-03-03` — 14건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#4, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#8, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#9, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#10, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#11)
@@ -242,11 +242,11 @@
 ## 4. RAW- 키 (임시 규약, 허용)
 
 > 마스터 테이블이 허용하는 임시 미분류 규약(standardUnitOrder 999). 비공식 오류와 구분한다.
-> distinct 89종 / 526건
+> distinct 89종 / 477건
 
-- `RAW-삼각비` — 196건
-- `RAW-원의성질` — 81건
+- `RAW-삼각비` — 164건
 - `RAW-대표문제다시풀기` — 74건
+- `RAW-원의성질` — 64건
 - `RAW-이차함수` — 34건
 - `RAW-삼각함수` — 9건
 - `RAW-지수법칙` — 9건
@@ -336,7 +336,7 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 8553건 기준)
+## 5. 필드 누락 (최종 인덱스 8547건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
@@ -354,10 +354,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 1075 |
-| content <img> | 2 |
+| q.image 보유 | 1121 |
+| content <img> | 4 |
 | content <svg> | 77 |
 | content <table> | 109 |
-| 시각요소 보유(hasImage=true) | 1261 |
+| 시각요소 보유(hasImage=true) | 1309 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

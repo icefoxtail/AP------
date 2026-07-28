@@ -1,36 +1,647 @@
-function q(id,level,category,key,content,choices,answer,solution,image){
-  return {
-    id,level,category,originalCategory:category,standardCourse:"중3 수학",
-    standardUnitKey:key,standardUnit:category,standardUnitOrder:key==="RAW-삼각비"?5:6,
-    questionType:choices.length?"객관식":"서술형",layoutTag:"grid",
-    tags:[choices.length?"객관식":"서술형",category],wide:false,
-    content,choices,answer,solution,...(image?{image:`assets/images/25_신흥중_2학기_중간_중3_수학/${image}`}:{})
-  };
-}
-window.examTitle="25_신흥중_2학기_중간_중3_수학";
-window.questionBank=[
-q(1,"하","삼각비","RAW-삼각비","다음 직각삼각형 $ABC$에서 옳지 않은 것은? [3점]",["$\\sin A=\\dfrac ac$","$\\cos A=\\dfrac bc$","$\\cos B=\\dfrac ca$","$\\tan A=\\dfrac ab$","$\\tan B=\\dfrac ba$"],"③","각 $B$에 대하여 빗변은 $c$, 인접한 변은 $a$이므로 $\\cos B=\\dfrac ac$이다.","q01.png"),
-q(2,"하","삼각비","RAW-삼각비","다음 중 계산 결과가 가장 큰 것은? [4점]",["$\\sin45^\\circ\\div\\sin30^\\circ$","$\\tan60^\\circ\\div\\tan30^\\circ$","$\\tan45^\\circ\\times\\cos60^\\circ$","$\\sin60^\\circ\\times\\sin90^\\circ$","$\\cos90^\\circ-\\tan0^\\circ+\\sin90^\\circ\\times\\cos0^\\circ$"],"②","각 식의 값은 차례로 $\\sqrt2,3,\\dfrac12,\\dfrac{\\sqrt3}{2},1$이다. 따라서 가장 큰 것은 ②이다."),
-q(3,"하","삼각비","RAW-삼각비","$0^\\circ&lt;x&lt;45^\\circ$일 때, $\\sqrt{(\\tan x-1)^2}+\\sqrt{(\\tan x+1)^2}$을 간단히 하면? [4점]",["$-2\\tan x$","$-2$","$0$","$2\\tan x$","$2$"],"⑤","$0&lt;\\tan x&lt;1$이므로 $|\\tan x-1|=1-\\tan x$, $|\\tan x+1|=\\tan x+1$이다. 두 값을 더하면 $2$이다."),
-q(4,"중","삼각비","RAW-삼각비","반지름이 $1$인 사분원과 두 직각삼각형이 그림과 같다. $\\overline{DE}=1.5399$일 때, 표를 이용하여 $\\cos y^\\circ$의 값을 구하면? [4점]",["$0.5446$","$0.5592$","$0.6494$","$0.8290$","$0.8387$"],"⑤","$AD=1$이므로 $\\tan x^\\circ=DE/AD=1.5399$이다. 표에서 $x=57$이고 $y=90-57=33$이므로 $\\cos y^\\circ=\\cos33^\\circ=0.8387$이다.","q04.png"),
-q(5,"중","삼각비","RAW-삼각비","한 모서리의 길이가 $4\\,\\mathrm{cm}$인 정사면체의 꼭짓점 $A$에서 밑면에 내린 수선의 발 $H$는 $\\triangle BCD$의 무게중심이다. $\\angle ADH=x^\\circ$일 때, $\\sin x^\\circ$의 값은? [4점]",["$\\dfrac{\\sqrt6}{3}$","$\\sqrt2$","$\\dfrac{\\sqrt2}{2}$","$\\dfrac{\\sqrt3}{2}$","$\\dfrac{\\sqrt3}{3}$"],"①","정삼각형 $BCD$의 중선 길이는 $2\\sqrt3$이므로 $DH=\\dfrac{4\\sqrt3}{3}$이다. $AH=\\sqrt{AD^2-DH^2}=\\dfrac{4\\sqrt6}{3}$이므로 $\\sin x=AH/AD=\\dfrac{\\sqrt6}{3}$이다.","q05.png"),
-q(6,"중","삼각비","RAW-삼각비","그림의 직각삼각형 $ABC$에서 $AB\\perp CD$, $BC\\perp DE$, $AB=8\\,\\mathrm{cm}$, $\\angle ABC=30^\\circ$일 때, $BE$의 길이는? [4점]",["$2\\sqrt3\\,\\mathrm{cm}$","$3\\sqrt2\\,\\mathrm{cm}$","$2\\sqrt5\\,\\mathrm{cm}$","$3\\sqrt3\\,\\mathrm{cm}$","$4\\sqrt2\\,\\mathrm{cm}$"],"④","$BC=8\\cos30^\\circ=4\\sqrt3$이다. $D$는 $C$에서 $AB$에 내린 수선의 발이므로 $BD=BC\\cos30^\\circ=6$이다. 따라서 $BE=BD\\cos30^\\circ=3\\sqrt3$이다.","q06.png"),
-q(7,"하","삼각비","RAW-삼각비","일차방정식 $x-2y+8=0$의 그래프가 $x$축과 이루는 예각의 크기를 $a^\\circ$라 할 때, $\\sin a^\\circ+\\cos a^\\circ$의 값은? [4점]",["$\\dfrac{3\\sqrt5}{5}$","$\\dfrac{4\\sqrt5}{5}$","$\\dfrac{3\\sqrt5}{4}$","$\\dfrac{5\\sqrt5}{4}$","$\\dfrac{3\\sqrt5}{2}$"],"①","직선의 기울기가 $\\dfrac12$이므로 $\\tan a=\\dfrac12$이다. 직각삼각형의 두 직각변을 $1,2$로 두면 $\\sin a+\\cos a=\\dfrac1{\\sqrt5}+\\dfrac2{\\sqrt5}=\\dfrac{3\\sqrt5}{5}$이다."),
-q(8,"중","삼각비","RAW-삼각비","$\\triangle ABC$에서 $AB=4\\,\\mathrm{cm}$, $AC=6\\,\\mathrm{cm}$, $\\angle B=60^\\circ$일 때, $BC$의 길이는? [4점]",["$(2+2\\sqrt6)\\,\\mathrm{cm}$","$(3+3\\sqrt6)\\,\\mathrm{cm}$","$(4+2\\sqrt6)\\,\\mathrm{cm}$","$(2+2\\sqrt3)\\,\\mathrm{cm}$","$(2+4\\sqrt3)\\,\\mathrm{cm}$"],"①","$BC=x$라 하면 코사인법칙에 의해 $6^2=4^2+x^2-2\\cdot4\\cdot x\\cos60^\\circ$이다. 즉 $x^2-4x-20=0$이므로 양수인 해는 $x=2+2\\sqrt6$이다.","q08.png"),
-q(9,"하","삼각비","RAW-삼각비","$\\triangle ABC$에서 $AB=3\\sqrt2$, $BC=7$, $\\angle B=45^\\circ$일 때, 삼각형의 넓이는? [4점]",["$\\dfrac{21\\sqrt6}{6}$","$\\dfrac{21\\sqrt6}{4}$","$\\dfrac{21\\sqrt2}{4}$","$\\dfrac{21\\sqrt2}{2}$","$\\dfrac{21}{2}$"],"⑤","넓이는 $\\dfrac12\\cdot3\\sqrt2\\cdot7\\cdot\\sin45^\\circ=\\dfrac{21}{2}$이다.","q09.png"),
-q(10,"상","삼각비","RAW-삼각비","정사각형 $ABCD$에서 $E,F$는 각각 $AD,CD$의 중점이다. $\\angle EBF=x^\\circ$일 때, $\\tan x$의 값은? [5점]",["$\\dfrac25$","$\\dfrac35$","$\\dfrac23$","$\\dfrac34$","$\\dfrac53$"],"④","한 변의 길이를 $2$로 두면 $\\overrightarrow{BE}=(1,2)$, $\\overrightarrow{BF}=(2,1)$이다. 두 벡터가 이루는 각에 대하여 $\\tan x=\\dfrac{|1\\cdot1-2\\cdot2|}{1\\cdot2+2\\cdot1}=\\dfrac34$이다.","q10.png"),
-q(11,"상","삼각비","RAW-삼각비","밑변의 길이가 $5\\sqrt2$이고 한 밑각이 $75^\\circ$인 이등변삼각형 $ABC$에서 $AB$의 길이는? [5점]",["$5+3\\sqrt3$","$5+5\\sqrt2$","$10\\sqrt2$","$5+5\\sqrt3$","$10+2\\sqrt2$"],"④","꼭지각은 $30^\\circ$이다. 밑변을 이등분하면 $\\dfrac{5\\sqrt2}{2}=AB\\sin15^\\circ$이므로 $AB=\\dfrac{5\\sqrt2}{2\\sin15^\\circ}=5+5\\sqrt3$이다.","q11.png"),
-q(12,"중","삼각비","RAW-삼각비","$AB=6\\,\\mathrm{m}$, $\\angle B=60^\\circ$, $\\angle A=90^\\circ$인 $\\triangle ABC$에서 $A$에서 $BC$에 내린 수선의 발을 $D$라 할 때, 옳지 않은 것은? [4점]",["$BD=AB\\cos60^\\circ$","$CD=AD\\tan30^\\circ$","$AD=AB\\sin60^\\circ$","$AC=6\\sqrt3\\,\\mathrm{m}$","$BC=12\\,\\mathrm{m}$"],"②","$\\triangle ADC$에서 $\\tan30^\\circ=AD/CD$이므로 $CD=AD\\div\\tan30^\\circ$이다. 따라서 ②가 옳지 않다.","q12.png"),
-q(13,"하","원의 성질","RAW-원의성질","원의 중심에서 길이가 $8\\,\\mathrm{cm}$인 현에 내린 수선의 길이가 $3\\,\\mathrm{cm}$일 때, 반지름의 길이는? [3점]",["$4\\,\\mathrm{cm}$","$5\\,\\mathrm{cm}$","$6\\,\\mathrm{cm}$","$7\\,\\mathrm{cm}$","$8\\,\\mathrm{cm}$"],"②","중심에서 현에 내린 수선은 현을 이등분하므로 반쪽 길이는 $4$이다. 따라서 반지름은 $\\sqrt{3^2+4^2}=5\\,\\mathrm{cm}$이다.","q13.png"),
-q(14,"중","원의 성질","RAW-원의성질","원 $O$에서 $OD\\perp AB$, $OE\\perp BC$, $OF\\perp AC$이고 $OD=OE=OF$이다. $AB=4\\sqrt3\\,\\mathrm{cm}$일 때, 원 $O$의 넓이는? [4점]",["$12\\pi\\,\\mathrm{cm}^2$","$14\\pi\\,\\mathrm{cm}^2$","$16\\pi\\,\\mathrm{cm}^2$","$18\\pi\\,\\mathrm{cm}^2$","$20\\pi\\,\\mathrm{cm}^2$"],"③","중심에서 세 현까지의 거리가 같으므로 세 현의 길이가 같고 $\\triangle ABC$는 정삼각형이다. 한 변이 $4\\sqrt3$인 정삼각형의 외접원 반지름은 $4$이므로 넓이는 $16\\pi$이다.","q14.png"),
-q(15,"중","원의 성질","RAW-원의성질","그림에서 $AB\\perp OC$, $BM=6\\,\\mathrm{cm}$, $CM=2\\,\\mathrm{cm}$일 때, $OA$의 길이는? [4점]",["$7\\,\\mathrm{cm}$","$8\\,\\mathrm{cm}$","$9\\,\\mathrm{cm}$","$10\\,\\mathrm{cm}$","$11\\,\\mathrm{cm}$"],"④","반지름을 $r$라 하면 $OM=r-2$이고, 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=BM=6$이다. $r^2=(r-2)^2+6^2$에서 $r=10$이다.","q15.png"),
-q(16,"하","원의 성질","RAW-원의성질","점 $I$는 $\\triangle ABC$의 내심이면서 그림의 원의 중심이다. $DE=6\\,\\mathrm{cm}$일 때, $FG+HJ$의 값은? [4점]",["$12\\,\\mathrm{cm}$","$\\dfrac{25}{2}\\,\\mathrm{cm}$","$13\\,\\mathrm{cm}$","$\\dfrac{27}{2}\\,\\mathrm{cm}$","$14\\,\\mathrm{cm}$"],"①","내심 $I$에서 세 변까지의 거리는 같다. 중심에서 같은 거리에 있는 현의 길이는 같으므로 $DE=FG=HJ=6$이다. 따라서 $FG+HJ=12\\,\\mathrm{cm}$이다.","q16.png"),
-q(17,"중","원의 성질","RAW-원의성질","그림에서 $PA,PB$가 원 $O$의 접선이고 $\\angle APB=50^\\circ$일 때, $\\angle PAB$의 크기는? [4점]",["$60^\\circ$","$65^\\circ$","$70^\\circ$","$75^\\circ$","$80^\\circ$"],"②","한 점에서 그은 두 접선의 길이는 같으므로 $PA=PB$이다. 따라서 이등변삼각형 $PAB$의 두 밑각은 각각 $(180^\\circ-50^\\circ)/2=65^\\circ$이다.","q17.png"),
-q(18,"상","원의 성질","RAW-원의성질","원 $O$가 직사각형 $ABCD$의 세 변과 접하고 $AB=8$, $AD=10$이다. $DE$가 원 $O$의 접선일 때, $\\triangle DEC$의 넓이는? [4점]",["$\\dfrac{32}{3}$","$13$","$\\dfrac{120}{13}$","$14$","$\\dfrac{46}{3}$"],"③","좌표를 $B(0,0)$, $C(10,0)$, $D(10,8)$로 두면 원의 중심은 $O(4,4)$, 반지름은 $4$이다. $D$에서 그은 접선의 접점을 계산하면 $E\\left(\\dfrac{100}{13},\\dfrac{32}{13}\\right)$이다. 따라서 $DC$를 밑변으로 한 높이는 $10-\\dfrac{100}{13}=\\dfrac{30}{13}$이므로 넓이는 $\\dfrac12\\cdot8\\cdot\\dfrac{30}{13}=\\dfrac{120}{13}$이다.","q18.png"),
-q(19,"하","원의 성질","RAW-원의성질","두 직각변의 길이가 각각 $9\\,\\mathrm{cm}$, $12\\,\\mathrm{cm}$인 직각삼각형의 내접원의 반지름은? [4점]",["$2\\,\\mathrm{cm}$","$\\dfrac52\\,\\mathrm{cm}$","$3\\,\\mathrm{cm}$","$\\dfrac72\\,\\mathrm{cm}$","$4\\,\\mathrm{cm}$"],"③","빗변의 길이는 $15$이다. 직각삼각형의 내접원 반지름은 $(9+12-15)/2=3\\,\\mathrm{cm}$이다.","q19.png"),
-q(20,"상","원의 성질","RAW-원의성질","$DA,EB,DE$는 반원 $O$의 접선이고 $A,B,C$는 접점이다. $C$에서 $AB$에 내린 수선의 발을 $F$라 하자. $DA=3\\,\\mathrm{cm}$, $EB=9\\,\\mathrm{cm}$일 때, $CF$의 길이는? [4점]",["$\\dfrac72\\,\\mathrm{cm}$","$4\\,\\mathrm{cm}$","$\\dfrac92\\,\\mathrm{cm}$","$5\\,\\mathrm{cm}$","$\\dfrac{11}{2}\\,\\mathrm{cm}$"],"③","반원의 반지름을 $r$로 두면 접선 $DE$는 $(0,3)$과 $(2r,9)$를 지난다. 중심 $(r,0)$에서 이 직선까지의 거리가 $r$이므로 $r^2=27$이다. 중심에서 접선에 내린 수선의 발이 $C$이므로 좌표 관계에서 $CF=\\dfrac{r^2}{6}=\\dfrac92\\,\\mathrm{cm}$이다.","q20.png"),
-q(21,"중","삼각비","RAW-삼각비","[서술형] 직각삼각형 $ABC$에서 $AC=3\\,\\mathrm{cm}$, $\\tan A=\\sqrt2$일 때, $\\cos A$의 값을 구하는 과정과 답을 쓰시오. [5점]",[],"$\\dfrac{\\sqrt3}{3}$","$\\tan A=BC/AC=\\sqrt2$이므로 $BC=3\\sqrt2$이다. 피타고라스 정리에 의해 $AB=\\sqrt{3^2+(3\\sqrt2)^2}=3\\sqrt3$이다. 따라서 $\\cos A=AC/AB=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다.","q21.png"),
-q(22,"상","삼각비","RAW-삼각비","[서술형] 두 지점 $A,B$에서 하늘에 떠 있는 열기구 $C$를 올려본 각의 크기가 각각 $45^\\circ$, $60^\\circ$이다. $AB=50\\,\\mathrm{m}$일 때, 지면에서 열기구까지의 높이를 구하는 과정과 답을 쓰시오. [6점]",[],"$(75-25\\sqrt3)\\,\\mathrm{m}$","$C$에서 $AB$에 내린 수선의 발을 $H$, 높이를 $h$라 하자. $AH=h$, $BH=50-h/\\sqrt3$이고 $\\tan60^\\circ=h/BH$이다. $\\sqrt3=h/(50-h)$를 정리하면 $h=75-25\\sqrt3$이다.","q22.png"),
-q(23,"중","원의 성질","RAW-원의성질","[서술형] 원형 접시가 세 조각으로 깨졌다. 지성은 ‘조각 ①이 작아서 중심을 찾을 수 없다’, 강희는 ‘중심이 조각 ②에 있으므로 ②가 없으면 찾을 수 없다’, 준하는 ‘어느 조각을 이용해도 중심을 찾을 수 있다’고 말했다. 옳게 말한 학생을 찾고, 한 조각으로 원의 중심을 찾는 방법을 설명하시오. [4점]",[],"준하","원 위의 서로 다른 세 점을 잡아 두 현을 만든다. 각 현의 수직이등분선을 그으면 두 수직이등분선의 교점이 원의 중심이다. 이 방법은 원호가 남은 어느 조각에도 적용할 수 있으므로 준하가 옳다.","q23.png"),
-q(24,"상","원의 성질","RAW-원의성질","[서술형] 반직선 $PA,PB$는 원 $O$의 접선이고 $PA=6\\sqrt3$, $\\angle APB=60^\\circ$이다. 두 접선과 작은 호 $AB$로 둘러싸인 어두운 부분의 넓이를 구하는 과정과 답을 쓰시오. [5점]",[],"$36\\sqrt3-12\\pi$","$OP$는 $\\angle APB$를 이등분하므로 $\\angle APO=30^\\circ$이다. $OA\\perp PA$에서 $OA=PA\\tan30^\\circ=6$이고 $\\angle AOB=120^\\circ$이다. 사각형 $PAOB$의 넓이는 $2\\cdot\\dfrac12\\cdot6\\sqrt3\\cdot6=36\\sqrt3$이고 부채꼴 $AOB$의 넓이는 $36\\pi\\cdot\\dfrac{120}{360}=12\\pi$이다. 따라서 넓이는 $36\\sqrt3-12\\pi$이다.","q24.png")
+window.examTitle = "25_신흥중_2학기_중간_중3_수학";
+
+window.questionBank = [
+  {
+    id: 1,
+    level: "하",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 직각삼각형 $ABC$에서 다음 중 옳지 않은 것은? [3점]",
+    choices: [
+    "$\\sin A=\\dfrac{a}{c}$",
+    "$\\cos A=\\dfrac{b}{c}$",
+    "$\\cos B=\\dfrac{c}{a}$",
+    "$\\tan A=\\dfrac{a}{b}$",
+    "$\\tan B=\\dfrac{b}{a}$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 각을 기준으로 빗변, 높이, 밑변을 정확히 구분한다.\n조건 정리: 직각은 $C$에 있고, 빗변은 $AB=c$, $A$의 맞은편 변은 $BC=a$, $A$에 이웃한 변은 $AC=b$이다.\n풀이 방향: 각 $A$와 각 $B$에 대한 삼각비를 각각 정의에 따라 확인한다.\n정석 풀이: $\\sin A=\\dfrac{a}{c}$, $\\cos A=\\dfrac{b}{c}$, $\\tan A=\\dfrac{a}{b}$이다. 각 $B$에 대해서는 맞은편 변이 $AC=b$, 이웃한 변이 $BC=a$이므로 $\\tan B=\\dfrac{b}{a}$이다. 또한 $\\cos B$는 빗변에 대한 이웃한 변의 비이므로 $\\cos B=\\dfrac{a}{c}$이다. 따라서 $\\cos B=\\dfrac{c}{a}$라고 한 ③은 옳지 않다.\n따라서 정답은 ③이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q1.png"
+  },
+  {
+    id: 2,
+    level: "하",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식"
+  ],
+    wide: false,
+    content: "다음 중 계산 결과가 가장 큰 것은? [4점]",
+    choices: [
+    "$\\sin45^\\circ\\div\\sin30^\\circ$",
+    "$\\tan60^\\circ\\div\\tan30^\\circ$",
+    "$\\tan45^\\circ\\times\\cos60^\\circ$",
+    "$\\sin60^\\circ\\times\\sin90^\\circ$",
+    "$\\cos90^\\circ-\\tan0^\\circ+\\sin90^\\circ\\times\\cos0^\\circ$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 특수각의 삼각비 값을 정확히 대입하여 다섯 식을 모두 비교한다.\n조건 정리: $\\sin30^\\circ=\\dfrac{1}{2}$, $\\sin45^\\circ=\\dfrac{\\sqrt2}{2}$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$이다.\n풀이 방향: 각 보기의 값을 하나씩 계산한 뒤 가장 큰 값을 찾는다.\n정석 풀이: ①은 $\\dfrac{\\sqrt2/2}{1/2}=\\sqrt2$이다. ②는 $\\dfrac{\\sqrt3}{\\sqrt3/3}=3$이다. ③은 $1\\times\\dfrac{1}{2}=\\dfrac{1}{2}$이다. ④는 $\\dfrac{\\sqrt3}{2}\\times1=\\dfrac{\\sqrt3}{2}$이다. ⑤는 $0-0+1\\times1=1$이다. 이 중 가장 큰 값은 $3$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    id: 3,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식"
+  ],
+    wide: false,
+    content: "$0^\\circ\\lt x\\lt45^\\circ$일 때, 다음 식을 간단히 하면? [4점]<br>$\\sqrt{(\\tan x-1)^2}+\\sqrt{(\\tan x+1)^2}$",
+    choices: [
+    "$-2\\tan x$",
+    "$-2$",
+    "$0$",
+    "$2\\tan x$",
+    "$2$"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] $\\sqrt{A^2}=|A|$이고, 각 식의 부호에 따라 절댓값을 푼다.\n조건 정리: $0^\\circ\\lt x\\lt45^\\circ$이므로 $0\\lt\\tan x\\lt1$이다.\n풀이 방향: 두 제곱근을 절댓값으로 바꾼 뒤 부호를 판단한다.\n정석 풀이: $\\sqrt{(\\tan x-1)^2}=|\\tan x-1|$이다. $\\tan x-1\\lt0$이므로 $|\\tan x-1|=1-\\tan x$이다. 또한 $\\tan x+1\\gt0$이므로 $\\sqrt{(\\tan x+1)^2}=|\\tan x+1|=\\tan x+1$이다. 따라서 전체 식은 $(1-\\tan x)+(\\tan x+1)=2$이다.\n따라서 정답은 ⑤이다."
+  },
+  {
+    id: 4,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형",
+    "표"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 반지름의 길이가 $1$인 사분원과 $\\triangle ABC$, $\\triangle ADE$를 그렸다. $DE=1.5399$일 때, 다음의 삼각비의 표를 이용하여 $\\cos y^\\circ$를 구하면? [4점]",
+    choices: [
+    "$0.5446$",
+    "$0.5592$",
+    "$0.6494$",
+    "$0.8290$",
+    "$0.8387$"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 큰 직각삼각형에서 $x$를 먼저 찾고, 평행한 두 수직선으로 $y$를 연결한다.\n조건 정리: 사분원의 반지름이 $1$이므로 $AD=1$이고, $AD\\perp DE$이다. 또한 $BC\\parallel DE$이다.\n풀이 방향: $\\triangle ADE$에서 $\\tan x^\\circ$를 구해 표로 $x$를 정한 뒤, $y$의 크기를 구한다.\n정석 풀이: $\\triangle ADE$에서 $\\tan x^\\circ=\\dfrac{DE}{AD}=\\dfrac{1.5399}{1}=1.5399$이다. 표에서 $\\tan57^\\circ=1.5399$이므로 $x=57$이다. $AD\\perp DE$이므로 직각삼각형 $ADE$에서 나머지 예각은 $90^\\circ-57^\\circ=33^\\circ$이다. $BC\\parallel DE$이므로 선분 $AE$와 두 평행선이 이루는 예각은 같아 $y=33$이다. 따라서 $\\cos y^\\circ=\\cos33^\\circ=0.8387$이다.\n따라서 정답은 ⑤이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q4.png"
+  },
+  {
+    id: 5,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 한 모서리의 길이가 $4\\,\\mathrm{cm}$인 정사면체의 꼭짓점 $A$에서 밑면에 내린 수선의 발 $H$는 $\\triangle BCD$의 무게중심이다. $\\angle ADH=x^\\circ$라 할 때, $\\sin x^\\circ$의 값은? [4점]",
+    choices: [
+    "$\\dfrac{\\sqrt6}{3}$",
+    "$\\sqrt2$",
+    "$\\dfrac{\\sqrt2}{3}$",
+    "$\\dfrac{\\sqrt2}{2}$",
+    "$\\dfrac{\\sqrt3}{3}$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 밑면의 무게중심 성질로 $DH$를 구한 뒤 직각삼각형 $ADH$에서 삼각비를 사용한다.\n조건 정리: $\\triangle BCD$는 한 변이 $4\\,\\mathrm{cm}$인 정삼각형이고, $H$는 그 무게중심이다. 또한 $AH\\perp$ 밑면이므로 $AH\\perp DH$이다.\n풀이 방향: 정삼각형의 중선 $DM$과 무게중심의 분할비를 이용해 $DH$를 구하고, 피타고라스 정리로 $AH$를 구한다.\n정석 풀이: 정삼각형 $BCD$에서 $CM=2\\,\\mathrm{cm}$이므로 $DM=\\sqrt{4^2-2^2}=2\\sqrt3\\,\\mathrm{cm}$이다. 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나누므로 $DH=\\dfrac{2}{3}DM=\\dfrac{4\\sqrt3}{3}\\,\\mathrm{cm}$이다. 직각삼각형 $ADH$에서 $AD=4\\,\\mathrm{cm}$이므로 $AH=\\sqrt{AD^2-DH^2}=\\sqrt{16-\\dfrac{16}{3}}=\\dfrac{4\\sqrt6}{3}\\,\\mathrm{cm}$이다. 따라서 $\\sin x^\\circ=\\dfrac{AH}{AD}=\\dfrac{\\sqrt6}{3}$이다.\n따라서 정답은 ①이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q5.png"
+  },
+  {
+    id: 6,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같은 직각삼각형 $ABC$에서 $AB\\perp CD$, $BC\\perp DE$이고, $AB=8\\,\\mathrm{cm}$, $\\angle ABC=30^\\circ$일 때, $BE$의 길이는? [4점]",
+    choices: [
+    "$2\\sqrt3\\,\\mathrm{cm}$",
+    "$3\\sqrt2\\,\\mathrm{cm}$",
+    "$2\\sqrt5\\,\\mathrm{cm}$",
+    "$3\\sqrt3\\,\\mathrm{cm}$",
+    "$4\\sqrt2\\,\\mathrm{cm}$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 같은 $30^\\circ$를 가진 두 직각삼각형에서 코사인을 차례로 적용한다.\n조건 정리: $\\triangle ABC$는 $C$에서 직각이고 $AB=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$이다. $CD\\perp AB$, $DE\\perp BC$이다.\n풀이 방향: 먼저 $BC$를 구하고, $\\triangle BCD$에서 $BD$, $\\triangle BDE$에서 $BE$를 차례로 구한다.\n정석 풀이: $\\triangle ABC$에서 $BC=AB\\cos30^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다. $\\triangle BCD$는 $D$에서 직각이고 $\\angle CBD=30^\\circ$이므로 $BD=BC\\cos30^\\circ=4\\sqrt3\\times\\dfrac{\\sqrt3}{2}=6$이다. $\\triangle BDE$는 $E$에서 직각이고 $\\angle DBE=30^\\circ$이므로 $BE=BD\\cos30^\\circ=6\\times\\dfrac{\\sqrt3}{2}=3\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q6.png"
+  },
+  {
+    id: 7,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식"
+  ],
+    wide: false,
+    content: "일차방정식 $x-2y+8=0$의 그래프가 $x$축과 이루는 예각의 크기를 $a^\\circ$라 할 때, $\\sin a^\\circ+\\cos a^\\circ$의 값은? [4점]",
+    choices: [
+    "$\\dfrac{3\\sqrt5}{5}$",
+    "$\\dfrac{4\\sqrt5}{5}$",
+    "$\\dfrac{3\\sqrt5}{4}$",
+    "$\\dfrac{5\\sqrt5}{4}$",
+    "$\\dfrac{3\\sqrt5}{2}$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 직선의 기울기를 $\\tan a^\\circ$로 해석한다.\n조건 정리: $x-2y+8=0$을 정리하면 $y=\\dfrac{1}{2}x+4$이므로 기울기는 $\\dfrac{1}{2}$이다.\n풀이 방향: $\\tan a^\\circ=\\dfrac{1}{2}$가 되도록 직각삼각형의 두 직각변의 길이를 정한다.\n정석 풀이: 높이를 $1$, 밑변을 $2$로 두면 빗변은 $\\sqrt{1^2+2^2}=\\sqrt5$이다. 따라서 $\\sin a^\\circ=\\dfrac{1}{\\sqrt5}=\\dfrac{\\sqrt5}{5}$이고 $\\cos a^\\circ=\\dfrac{2}{\\sqrt5}=\\dfrac{2\\sqrt5}{5}$이다. 두 값을 더하면 $\\dfrac{3\\sqrt5}{5}$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    id: 8,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 $\\triangle ABC$에서 $AB=4\\,\\mathrm{cm}$, $AC=6\\,\\mathrm{cm}$, $\\angle B=60^\\circ$일 때, $BC$의 길이는? [4점]",
+    choices: [
+    "$(2+2\\sqrt6)\\,\\mathrm{cm}$",
+    "$(3+3\\sqrt6)\\,\\mathrm{cm}$",
+    "$(4+2\\sqrt6)\\,\\mathrm{cm}$",
+    "$(2+2\\sqrt3)\\,\\mathrm{cm}$",
+    "$(2+4\\sqrt3)\\,\\mathrm{cm}$"
+  ],
+    answer: "①",
+    solution: "[키포인트] $A$에서 $BC$에 수선을 내려 두 직각삼각형으로 나눈다.\n조건 정리: $AB=4\\,\\mathrm{cm}$, $AC=6\\,\\mathrm{cm}$, $\\angle B=60^\\circ$이다.\n풀이 방향: $A$에서 $BC$에 내린 수선의 발을 $H$라 하고 $BH$, $AH$, $HC$를 차례로 구한다.\n정석 풀이: $\\triangle ABH$에서 $BH=AB\\cos60^\\circ=4\\times\\dfrac{1}{2}=2\\,\\mathrm{cm}$이고, $AH=AB\\sin60^\\circ=4\\times\\dfrac{\\sqrt3}{2}=2\\sqrt3\\,\\mathrm{cm}$이다. $\\triangle AHC$에서 $HC=\\sqrt{AC^2-AH^2}=\\sqrt{36-12}=2\\sqrt6\\,\\mathrm{cm}$이다. 따라서 $BC=BH+HC=2+2\\sqrt6\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q8.png"
+  },
+  {
+    id: 9,
+    level: "하",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 $\\triangle ABC$에서 $AB=3\\sqrt2$, $BC=7$, $\\angle B=45^\\circ$일 때, $\\triangle ABC$의 넓이는? [4점]",
+    choices: [
+    "$\\dfrac{21\\sqrt6}{6}$",
+    "$\\dfrac{21\\sqrt6}{4}$",
+    "$\\dfrac{21\\sqrt2}{4}$",
+    "$\\dfrac{21\\sqrt2}{2}$",
+    "$\\dfrac{21}{2}$"
+  ],
+    answer: "⑤",
+    solution: "[키포인트] 두 변의 길이와 그 끼인각을 이용하는 삼각형의 넓이 공식을 적용한다.\n조건 정리: $AB=3\\sqrt2$, $BC=7$, 두 변의 끼인각은 $\\angle B=45^\\circ$이다.\n풀이 방향: $\\dfrac{1}{2}\\times AB\\times BC\\times\\sin B$를 계산한다.\n정석 풀이: 넓이는 $\\dfrac{1}{2}\\times3\\sqrt2\\times7\\times\\sin45^\\circ$이다. $\\sin45^\\circ=\\dfrac{\\sqrt2}{2}$이므로 넓이는 $\\dfrac{1}{2}\\times3\\sqrt2\\times7\\times\\dfrac{\\sqrt2}{2}=\\dfrac{21}{2}$이다.\n따라서 정답은 ⑤이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q9.png"
+  },
+  {
+    id: 10,
+    level: "상",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 정사각형 $ABCD$에서 점 $E$, $F$는 각각 $AD$, $CD$의 중점이다. $\\angle EBF=x^\\circ$라 할 때, $\\tan x$의 값은? [5점]",
+    choices: [
+    "$\\dfrac{2}{5}$",
+    "$\\dfrac{3}{5}$",
+    "$\\dfrac{2}{3}$",
+    "$\\dfrac{3}{4}$",
+    "$\\dfrac{5}{3}$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 정사각형을 세 삼각형과 $\\triangle BEF$로 나누어 넓이를 구한 뒤, 수선의 길이로 $\\tan x$를 계산한다.\n조건 정리: 정사각형의 한 변을 $2$로 두면 $AE=ED=CF=FD=1$이다.\n풀이 방향: $BE$, $BF$와 $\\triangle BEF$의 넓이를 구하고, $E$에서 $BF$에 내린 수선의 발을 $H$라 하여 $EH$와 $BH$를 구한다.\n정석 풀이: 피타고라스 정리에 의해 $BE=BF=\\sqrt{2^2+1^2}=\\sqrt5$이다. 정사각형의 넓이는 $4$이고, $\\triangle ABE$, $\\triangle EDF$, $\\triangle BCF$의 넓이는 각각 $1$, $\\dfrac{1}{2}$, $1$이다. 따라서 $\\triangle BEF$의 넓이는 $4-1-\\dfrac{1}{2}-1=\\dfrac{3}{2}$이다. 한편 $\\dfrac{1}{2}\\times BF\\times EH=\\dfrac{3}{2}$이므로 $EH=\\dfrac{3}{\\sqrt5}$이다. 직각삼각형 $BEH$에서 $BH=\\sqrt{BE^2-EH^2}=\\sqrt{5-\\dfrac{9}{5}}=\\dfrac{4}{\\sqrt5}$이다. 따라서 $\\tan x=\\dfrac{EH}{BH}=\\dfrac{3}{4}$이다.\n따라서 정답은 ④이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q10.png"
+  },
+  {
+    id: 11,
+    level: "상",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 $\\angle B=75^\\circ$이고, 밑변의 길이가 $5\\sqrt2$인 이등변삼각형 $ABC$에서 $AB$의 길이는? [5점]",
+    choices: [
+    "$5+3\\sqrt3$",
+    "$5+5\\sqrt2$",
+    "$10\\sqrt2$",
+    "$5+5\\sqrt3$",
+    "$10+2\\sqrt2$"
+  ],
+    answer: "④",
+    solution: "[키포인트] $75^\\circ$를 $45^\\circ+30^\\circ$로 나누는 보조선을 만들어 두 종류의 특수 직각삼각형을 이용한다.\n조건 정리: $AB=AC$이므로 $\\angle C=75^\\circ$, $\\angle A=30^\\circ$이다. $A$에서 $BC$에 내린 수선의 발을 $D$라 하면 $D$는 $BC$의 중점이고 $BD=\\dfrac{5\\sqrt2}{2}$, $\\angle BAD=15^\\circ$이다.\n풀이 방향: $AD$ 위에 $DE=BD$가 되도록 점 $E$를 잡고, $A$에서 $BE$의 연장선에 수선을 내려 $30^\\circ$와 $45^\\circ$ 직각삼각형을 만든다.\n정석 풀이: $DE=BD=\\dfrac{5\\sqrt2}{2}$로 두면 $\\triangle BDE$는 직각이등변삼각형이므로 $\\angle DBE=45^\\circ$이고 $BE=BD\\sqrt2=5$이다. 따라서 $\\angle ABE=75^\\circ-45^\\circ=30^\\circ$이다. $A$에서 $BE$의 연장선에 내린 수선의 발을 $F$라 하자. $\\triangle ABF$는 $30^\\circ$-$60^\\circ$-$90^\\circ$ 직각삼각형이므로 $AF=\\dfrac{AB}{2}$, $BF=\\dfrac{\\sqrt3}{2}AB$이다. 또한 $\\angle AEF=45^\\circ$이므로 $\\triangle AEF$는 직각이등변삼각형이고 $EF=AF=\\dfrac{AB}{2}$이다. $BF=BE+EF$이므로 $\\dfrac{\\sqrt3}{2}AB=5+\\dfrac{1}{2}AB$이다. 따라서 $(\\sqrt3-1)AB=10$이고, $AB=\\dfrac{10}{\\sqrt3-1}=5+5\\sqrt3$이다.\n따라서 정답은 ④이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q11.png"
+  },
+  {
+    id: 12,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 $AB=6\\,\\mathrm{m}$, $\\angle B=60^\\circ$이고 $\\triangle ABC$의 꼭짓점 $A$에서 $BC$에 내린 수선의 발을 $D$라 할 때, 옳지 않은 것은? [4점]",
+    choices: [
+    "$BD=AB\\cos60^\\circ$",
+    "$CD=AD\\tan30^\\circ$",
+    "$AD=AB\\sin60^\\circ$",
+    "$AC=6\\sqrt3\\,\\mathrm{m}$",
+    "$BC=12\\,\\mathrm{m}$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 두 직각삼각형 $ABD$, $ACD$에서 각 변의 관계를 각각 확인한다.\n조건 정리: 그림에서 $\\angle A=90^\\circ$, $\\angle B=60^\\circ$이므로 $\\angle C=30^\\circ$이다. 또한 $AD\\perp BC$이다.\n풀이 방향: 먼저 큰 직각삼각형 $ABC$의 변을 구한 뒤 각 보기를 검토한다.\n정석 풀이: $\\triangle ABC$에서 $AC=AB\\tan60^\\circ=6\\sqrt3\\,\\mathrm{m}$이고 $BC=\\dfrac{AB}{\\cos60^\\circ}=12\\,\\mathrm{m}$이다. $\\triangle ABD$에서 $BD=AB\\cos60^\\circ$, $AD=AB\\sin60^\\circ$이므로 ①, ③은 옳다. $\\triangle ACD$에서 $\\angle C=30^\\circ$이므로 $\\tan30^\\circ=\\dfrac{AD}{CD}$, 즉 $CD=\\dfrac{AD}{\\tan30^\\circ}$이다. 따라서 $CD=AD\\tan30^\\circ$라고 한 ②는 옳지 않다.\n따라서 정답은 ②이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q12.png"
+  },
+  {
+    id: 13,
+    level: "하",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림에서 $x$의 값은? [3점]",
+    choices: [
+    "$4$",
+    "$5$",
+    "$6$",
+    "$7$",
+    "$8$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: 현의 길이는 $8\\,\\mathrm{cm}$이고, 중심 $O$에서 현까지의 거리는 $3\\,\\mathrm{cm}$이다.\n풀이 방향: 현의 절반과 중심에서 현까지의 거리를 두 직각변으로 하는 직각삼각형을 이용한다.\n정석 풀이: 현의 절반은 $4\\,\\mathrm{cm}$이다. 반지름 $x$는 이 직각삼각형의 빗변이므로 $x^2=3^2+4^2=25$이다. 길이는 양수이므로 $x=5$이다.\n따라서 정답은 ②이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q13.png"
+  },
+  {
+    id: 14,
+    level: "중",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림의 원 $O$에서 $OD\\perp AB$, $OE\\perp BC$, $OF\\perp AC$이고 $OD=OE=OF$이다. $AB=4\\sqrt3\\,\\mathrm{cm}$일 때, 원 $O$의 넓이는? [4점]",
+    choices: [
+    "$12\\pi\\,\\mathrm{cm}^2$",
+    "$14\\pi\\,\\mathrm{cm}^2$",
+    "$16\\pi\\,\\mathrm{cm}^2$",
+    "$18\\pi\\,\\mathrm{cm}^2$",
+    "$20\\pi\\,\\mathrm{cm}^2$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 원의 중심에서 같은 거리에 있는 현의 길이는 같다는 성질을 사용한다.\n조건 정리: $OD=OE=OF$이고 각각 현 $AB$, $BC$, $AC$에 수직이다.\n풀이 방향: 세 현의 길이가 같음을 보인 뒤, 정삼각형의 외접원 반지름을 구한다.\n정석 풀이: 원의 중심에서 같은 거리에 있는 현의 길이는 같으므로 $AB=BC=CA$이다. 따라서 $\\triangle ABC$는 한 변이 $4\\sqrt3\\,\\mathrm{cm}$인 정삼각형이다. 정삼각형의 높이는 $4\\sqrt3\\times\\dfrac{\\sqrt3}{2}=6\\,\\mathrm{cm}$이다. 원의 중심 $O$는 정삼각형의 무게중심과 같고, 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나누므로 $OA=\\dfrac{2}{3}\\times6=4\\,\\mathrm{cm}$이다. 따라서 원의 넓이는 $\\pi\\times4^2=16\\pi\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q14.png"
+  },
+  {
+    id: 15,
+    level: "중",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림에서 $AB\\perp OC$이고 $BM=6\\,\\mathrm{cm}$, $CM=2\\,\\mathrm{cm}$일 때, $OA$의 길이는? [4점]",
+    choices: [
+    "$7\\,\\mathrm{cm}$",
+    "$8\\,\\mathrm{cm}$",
+    "$9\\,\\mathrm{cm}$",
+    "$10\\,\\mathrm{cm}$",
+    "$11\\,\\mathrm{cm}$"
+  ],
+    answer: "④",
+    solution: "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 반지름을 미지수로 두어 피타고라스 정리를 적용한다.\n조건 정리: $OC\\perp AB$이고 교점이 $M$이므로 $AM=BM=6\\,\\mathrm{cm}$이다. $C$는 원 위에 있고 $CM=2\\,\\mathrm{cm}$이다.\n풀이 방향: 반지름을 $r$이라 두고 $OM=r-2$로 나타낸다.\n정석 풀이: $OA=OC=r$이라 하면 $OM=OC-CM=r-2$이다. 직각삼각형 $OMA$에서 $OA^2=OM^2+AM^2$이므로 $r^2=(r-2)^2+6^2$이다. 전개하면 $r^2=r^2-4r+4+36$이므로 $4r=40$, $r=10$이다. 따라서 $OA=10\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q15.png"
+  },
+  {
+    id: 16,
+    level: "중",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이며 원의 중심이다. $DE=6\\,\\mathrm{cm}$일 때, $FG+HJ$의 값은? [4점]",
+    choices: [
+    "$12\\,\\mathrm{cm}$",
+    "$\\dfrac{25}{2}\\,\\mathrm{cm}$",
+    "$13\\,\\mathrm{cm}$",
+    "$\\dfrac{27}{2}\\,\\mathrm{cm}$",
+    "$14\\,\\mathrm{cm}$"
+  ],
+    answer: "①",
+    solution: "[키포인트] 내심에서 세 변까지의 거리가 같고, 중심에서 같은 거리에 있는 현의 길이는 같다.\n조건 정리: $I$는 $\\triangle ABC$의 내심이므로 $I$에서 $AB$, $BC$, $CA$까지의 수선거리는 모두 같다.\n풀이 방향: 세 변이 원에서 만드는 현 $DE$, $FG$, $HJ$의 길이를 비교한다.\n정석 풀이: 현 $DE$, $FG$, $HJ$는 원의 중심 $I$에서 각각 같은 거리에 있다. 중심에서 같은 거리에 있는 현의 길이는 같으므로 $DE=FG=HJ$이다. $DE=6\\,\\mathrm{cm}$이므로 $FG=6\\,\\mathrm{cm}$, $HJ=6\\,\\mathrm{cm}$이다. 따라서 $FG+HJ=12\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q16.png"
+  },
+  {
+    id: 17,
+    level: "하",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림에서 $\\angle PAB$의 크기는? [4점]",
+    choices: [
+    "$60^\\circ$",
+    "$65^\\circ$",
+    "$70^\\circ$",
+    "$75^\\circ$",
+    "$80^\\circ$"
+  ],
+    answer: "②",
+    solution: "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n조건 정리: $PA$, $PB$는 점 $P$에서 원에 그은 접선이고 $\\angle APB=50^\\circ$이다.\n풀이 방향: $PA=PB$를 이용하여 $\\triangle PAB$의 두 밑각을 구한다.\n정석 풀이: 한 점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $PA=PB$이다. 따라서 $\\triangle PAB$는 이등변삼각형이고 $\\angle PAB=\\angle PBA$이다. 두 밑각의 합은 $180^\\circ-50^\\circ=130^\\circ$이므로 각각 $65^\\circ$이다.\n따라서 정답은 ②이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q17.png"
+  },
+  {
+    id: 18,
+    level: "상",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림에서 원 $O$는 직사각형 $ABCD$의 세 변과 접하고, $AB=8$, $AD=10$이다. $DE$는 원 $O$의 접선일 때, $\\triangle DEC$의 넓이는? [4점]",
+    choices: [
+    "$\\dfrac{32}{3}$",
+    "$13$",
+    "$\\dfrac{40}{3}$",
+    "$14$",
+    "$\\dfrac{46}{3}$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 한 점에서 그은 두 접선의 길이가 같다는 성질과 피타고라스 정리를 함께 사용한다.\n조건 정리: 원은 직사각형의 위아래 두 변과 접하므로 지름은 $AB=8$, 반지름은 $4$이다. 위쪽과 아래쪽 접점을 각각 $U$, $V$, 선분 $DE$의 접점을 $T$라 하자.\n풀이 방향: 접선의 길이로 $DE$를 $EC$에 대한 식으로 나타낸 뒤 직각삼각형 $DEC$에 피타고라스 정리를 적용한다.\n정석 풀이: $AU=BV=4$이므로 $DU=AD-AU=10-4=6$이다. 점 $D$에서 그은 접선이므로 $DT=DU=6$이다. $EC=x$라 하면 $BE=10-x$이고 $EV=BE-BV=(10-x)-4=6-x$이다. 점 $E$에서 그은 접선이므로 $ET=EV=6-x$이다. 따라서 $DE=DT+TE=12-x$이다. $\\triangle DEC$는 $C$에서 직각이므로 $(12-x)^2=8^2+x^2$이다. 전개하면 $144-24x=64$이므로 $x=\\dfrac{10}{3}$이다. 따라서 넓이는 $\\dfrac{1}{2}\\times DC\\times EC=\\dfrac{1}{2}\\times8\\times\\dfrac{10}{3}=\\dfrac{40}{3}$이다.\n따라서 정답은 ③이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q18.png"
+  },
+  {
+    id: 19,
+    level: "하",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림에서 $\\triangle ABC$는 $\\angle C=90^\\circ$, $BC=12\\,\\mathrm{cm}$, $AC=9\\,\\mathrm{cm}$인 직각삼각형이고 원 $O$는 $\\triangle ABC$의 내접원이다. 접점을 각각 $D$, $E$, $F$라고 할 때, 원 $O$의 반지름의 길이는? [4점]",
+    choices: [
+    "$2\\,\\mathrm{cm}$",
+    "$\\dfrac{5}{2}\\,\\mathrm{cm}$",
+    "$3\\,\\mathrm{cm}$",
+    "$\\dfrac{7}{2}\\,\\mathrm{cm}$",
+    "$4\\,\\mathrm{cm}$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 직각삼각형의 넓이를 두 방법으로 나타내어 내접원의 반지름을 구한다.\n조건 정리: 두 직각변은 $9\\,\\mathrm{cm}$, $12\\,\\mathrm{cm}$이다.\n풀이 방향: 먼저 빗변과 반둘레를 구한 뒤, 삼각형의 넓이 $=$ 반지름 $\\times$ 반둘레를 이용한다.\n정석 풀이: 피타고라스 정리에 의해 $AB=\\sqrt{9^2+12^2}=15\\,\\mathrm{cm}$이다. 삼각형의 반둘레는 $\\dfrac{9+12+15}{2}=18\\,\\mathrm{cm}$이고, 넓이는 $\\dfrac{1}{2}\\times9\\times12=54\\,\\mathrm{cm}^2$이다. 내접원의 반지름을 $r$이라 하면 삼각형의 넓이는 세 작은 삼각형의 넓이의 합이므로 $54=18r$이다. 따라서 $r=3\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q19.png"
+  },
+  {
+    id: 20,
+    level: "상",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [
+    "객관식",
+    "도형"
+  ],
+    wide: false,
+    content: "다음 그림과 같이 $DA$, $EB$, $DE$는 반원 $O$의 접선이고, $A$, $B$, $C$는 접점이다. 점 $C$에서 $AB$에 내린 수선의 발을 $F$라고 하자. $DA=3\\,\\mathrm{cm}$, $EB=9\\,\\mathrm{cm}$일 때, $CF$의 길이는? [4점]",
+    choices: [
+    "$\\dfrac{7}{2}\\,\\mathrm{cm}$",
+    "$4\\,\\mathrm{cm}$",
+    "$\\dfrac{9}{2}\\,\\mathrm{cm}$",
+    "$5\\,\\mathrm{cm}$",
+    "$\\dfrac{11}{2}\\,\\mathrm{cm}$"
+  ],
+    answer: "③",
+    solution: "[키포인트] 한 점에서 그은 두 접선의 길이와 평행선 사이의 선분의 길이의 비를 함께 이용한다.\n조건 정리: $DA$, $DC$는 점 $D$에서 원에 그은 두 접선이고, $EB$, $EC$는 점 $E$에서 원에 그은 두 접선이다. 또한 $DA\\perp AB$, $CF\\perp AB$, $EB\\perp AB$이므로 $DA\\parallel CF\\parallel EB$이다.\n풀이 방향: 먼저 $DC:CE$를 구한 뒤, 세 평행선 $DA$, $CF$, $EB$가 두 직선 $AB$, $DE$를 자를 때 생기는 선분의 길이의 비를 이용하여 $CF$를 구한다.\n정석 풀이: 한 점에서 원에 그은 두 접선의 길이는 같으므로 $DC=DA=3\\,\\mathrm{cm}$이고 $CE=EB=9\\,\\mathrm{cm}$이다. 따라서 $DC:CE=1:3$이다. $CF=x\\,\\mathrm{cm}$라 하자. $DA\\parallel CF\\parallel EB$이므로 평행선 사이의 선분의 길이의 비에 의해 $DC:CE=(CF-DA):(EB-CF)$이다. 따라서 $1:3=(x-3):(9-x)$이고, $3(x-3)=9-x$이다. 이를 풀면 $3x-9=9-x$, $4x=18$이므로 $x=\\dfrac{9}{2}$이다. 따라서 $CF=\\dfrac{9}{2}\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q20.png"
+  },
+  {
+    id: 21,
+    level: "중",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "서술형",
+    "도형"
+  ],
+    wide: false,
+    content: "[서술형 1] 다음 직각삼각형 $ABC$에서 $AC=3\\,\\mathrm{cm}$, $\\tan A=\\sqrt2$일 때, $\\cos A$의 값을 구하는 과정과 답을 쓰시오. [5점]",
+    choices: [],
+    answer: "$\\dfrac{\\sqrt3}{3}$",
+    solution: "[키포인트] 탄젠트로 다른 직각변을 구한 뒤 피타고라스 정리로 빗변을 구한다.\n조건 정리: $\\angle C=90^\\circ$, $AC=3\\,\\mathrm{cm}$이고 $\\tan A=\\dfrac{BC}{AC}=\\sqrt2$이다.\n풀이 방향: $BC$, $AB$를 차례로 구한 뒤 $\\cos A=\\dfrac{AC}{AB}$를 계산한다.\n정석 풀이: $\\dfrac{BC}{3}=\\sqrt2$이므로 $BC=3\\sqrt2\\,\\mathrm{cm}$이다. 피타고라스 정리에 의해 $AB=\\sqrt{AC^2+BC^2}=\\sqrt{3^2+(3\\sqrt2)^2}=\\sqrt{27}=3\\sqrt3\\,\\mathrm{cm}$이다. 따라서 $\\cos A=\\dfrac{AC}{AB}=\\dfrac{3}{3\\sqrt3}=\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}$이다.\n따라서 구하는 값은 $\\dfrac{\\sqrt3}{3}$이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q21.png"
+  },
+  {
+    id: 22,
+    level: "상",
+    category: "삼각비",
+    originalCategory: "삼각비",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-05",
+    standardUnit: "삼각비",
+    standardUnitOrder: 5,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "서술형",
+    "도형"
+  ],
+    wide: false,
+    content: "[서술형 2] 다음 그림과 같이 두 지점 $A$와 $B$에서 하늘에 떠 있는 열기구를 올려본 각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 두 지점 $A$와 $B$ 사이의 거리가 $50\\,\\mathrm{m}$일 때, 지면에서 열기구까지의 높이를 구하는 과정과 답을 쓰시오. [6점]",
+    choices: [],
+    answer: "$(75-25\\sqrt3)\\,\\mathrm{m}$",
+    solution: "[키포인트] 열기구에서 지면에 수선을 내려 두 직각삼각형의 밑변을 높이로 나타낸다.\n조건 정리: 열기구의 위치를 $C$, $C$에서 $AB$에 내린 수선의 발을 $H$, 높이 $CH$를 $h\\,\\mathrm{m}$라 하자. 그림에서 $H$는 $A$와 $B$ 사이에 있다.\n풀이 방향: $\\tan45^\\circ$와 $\\tan60^\\circ$를 이용하여 $AH$, $BH$를 $h$로 나타내고 $AH+BH=50$을 사용한다.\n정석 풀이: $\\tan45^\\circ=\\dfrac{CH}{AH}=1$이므로 $AH=h$이다. 또한 $\\tan60^\\circ=\\dfrac{CH}{BH}=\\sqrt3$이므로 $BH=\\dfrac{h}{\\sqrt3}$이다. 따라서 $h+\\dfrac{h}{\\sqrt3}=50$이다. 양변에 $\\sqrt3$을 곱하면 $(\\sqrt3+1)h=50\\sqrt3$이므로 $h=\\dfrac{50\\sqrt3}{\\sqrt3+1}=\\dfrac{50\\sqrt3(\\sqrt3-1)}{2}=75-25\\sqrt3$이다.\n따라서 구하는 높이는 $(75-25\\sqrt3)\\,\\mathrm{m}$이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q22.png"
+  },
+  {
+    id: 23,
+    level: "중",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "서술형",
+    "도형"
+  ],
+    wide: false,
+    content: "[서술형 3] 다음은 원형 접시가 세 조각으로 깨진 것이다. 세 학생이 원의 중심을 찾아 깨지기 전의 접시 모양을 그리려고 한다. 아래의 세 학생 중에서 옳게 말한 사람을 찾고, 원의 중심을 찾는 방법을 설명하시오. [4점]<br>지성: 조각 ①은 너무 작아서 중심을 찾을 수 없네.<br>강희: 중심은 ②번 조각에 있으니 조각 ②가 없으면 중심을 찾을 수 없어.<br>준해: 어느 조각을 이용하더라도 중심을 찾을 수 있어.",
+    choices: [],
+    answer: "준해",
+    solution: "[키포인트] 원의 현의 수직이등분선은 항상 원의 중심을 지난다.\n조건 정리: 어느 조각이든 원래 원의 둘레였던 원호가 남아 있으므로 그 원호 위에서 서로 다른 점을 잡을 수 있다.\n풀이 방향: 한 조각의 원호 위에 세 점을 잡아 두 현을 만들고, 두 현의 수직이등분선을 그린다.\n정석 풀이: 원호 위의 서로 다른 세 점 $A$, $B$, $C$를 잡아 현 $AB$, $BC$를 긋는다. 현 $AB$의 수직이등분선과 현 $BC$의 수직이등분선은 모두 원의 중심을 지나므로, 두 수직이등분선의 교점이 깨지기 전 원의 중심이다. 중심이 실제 조각의 안쪽에 있지 않아도 수직이등분선을 조각 밖까지 연장하면 찾을 수 있다. 따라서 어느 조각을 이용해도 중심을 찾을 수 있다고 말한 준해가 옳다.\n따라서 옳게 말한 학생은 준해이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q23.png"
+  },
+  {
+    id: 24,
+    level: "상",
+    category: "원의 성질",
+    originalCategory: "원의 성질",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-06",
+    standardUnit: "원의 성질",
+    standardUnitOrder: 6,
+    questionType: "서술형",
+    layoutTag: "grid",
+    tags: [
+    "서술형",
+    "도형"
+  ],
+    wide: false,
+    content: "[서술형 4] 다음 그림에서 반직선 $PA$, $PB$는 원 $O$의 접선이고 두 점 $A$, $B$는 각각 그 접점일 때, 어두운 부분의 넓이를 구하는 과정과 답을 쓰시오. [5점]",
+    choices: [],
+    answer: "$36\\sqrt3-12\\pi$",
+    solution: "[키포인트] 두 접선과 작은 호로 둘러싸인 넓이는 사각형 $PAOB$의 넓이에서 부채꼴 $AOB$의 넓이를 뺀 값이다.\n조건 정리: $PA=PB=6\\sqrt3$, $\\angle APB=60^\\circ$, $OA\\perp PA$, $OB\\perp PB$이다.\n풀이 방향: $OP$가 $\\angle APB$를 이등분한다는 성질로 반지름과 중심각을 구한 뒤 두 넓이를 계산한다.\n정석 풀이: 두 직각삼각형 $\\triangle OAP$, $\\triangle OBP$는 빗변 $OP$가 같고 반지름 $OA=OB$이므로 합동이다. 따라서 $OP$는 $\\angle APB$를 이등분하여 $\\angle APO=30^\\circ$이다. 직각삼각형 $OAP$에서 $\\tan30^\\circ=\\dfrac{OA}{PA}$이므로 $OA=6\\sqrt3\\times\\dfrac{\\sqrt3}{3}=6$이다. $\\angle AOP=60^\\circ$이고 대칭으로 $\\angle POB=60^\\circ$이므로 $\\angle AOB=120^\\circ$이다. 사각형 $PAOB$의 넓이는 합동인 두 직각삼각형의 넓이의 합이므로 $2\\times\\dfrac{1}{2}\\times6\\sqrt3\\times6=36\\sqrt3$이다. 부채꼴 $AOB$의 넓이는 $\\pi\\times6^2\\times\\dfrac{120}{360}=12\\pi$이다. 따라서 어두운 부분의 넓이는 $36\\sqrt3-12\\pi$이다.\n따라서 구하는 넓이는 $36\\sqrt3-12\\pi$이다.",
+    image: "assets/images/25_신흥중_2학기_중간_중3_수학/q24.png"
+  }
 ];

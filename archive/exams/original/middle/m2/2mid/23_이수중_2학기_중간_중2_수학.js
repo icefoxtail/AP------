@@ -24,3 +24,5 @@ q(21,"중","도형의 성질","M2-05","[서술형 1] $O,I$가 각각 $\\triangle
 q(22,"상","도형의 성질","M2-05","[서술형 2] 정사각형 $ABCD$의 대각선 $BD$ 위의 점 $E$에 대하여 $\\angle DAE=20^\\circ$일 때, $\\angle BEC$의 크기를 구하여라. [6점]",[],"$45^\\circ$","$\\triangle EBA$와 $\\triangle EBC$에서 $EB$는 공통이고 $\\angle EBA=\\angle EBC=45^\\circ$, $AB=CB$이므로 SAS 합동이다. 따라서 $\\angle BEA=\\angle BEC$이고 외각 관계를 이용하면 $\\angle BEC=45^\\circ$이다.","q22.png"),
 q(23,"상","도형의 성질","M2-05","[서술형 3] 평행사변형 $ABCD$에서 $\\angle B,\\angle D$의 이등분선이 $AD,BC$와 만나는 점을 $E,F$라 하자. $AB=10$ cm, $BC=13$ cm, $[ABCD]=78$ cm$^2$일 때, $[EBFD]$를 구하여라. [6점]",[],"18 cm$^2$","\uD3C9행사변형의 높이를 $h$라 하면 $13h=78$에서 $h=6$ cm이다. 평행선과 각의 이등분선 성질로 $BE=BF=10$ cm이고 $EF=3$ cm이다. $EBFD$는 평행사변형이므로 넓이는 $3\\times6=18$ cm$^2$이다.","q23.png"),
 q(24,"상","도형의 닮음","M2-06","[서술형 4] $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AD\\perp BC$, $AB=10$, $BD=8$일 때, $CD$의 길이를 구하여라. [6점]",[],"$\\dfrac92$","$\\triangle BAD\\sim\\triangle BCA$이므로 $AB:BC=BD:AB$이다. 따라서 $10^2=8BC$에서 $BC=25/2$이고, $CD=BC-BD=25/2-8=9/2$이다.","q24.png")];
+
+window.questionBank.forEach(q=>{if([4,21,22,23,24].includes(q.id))q.imageSize="tall";});
