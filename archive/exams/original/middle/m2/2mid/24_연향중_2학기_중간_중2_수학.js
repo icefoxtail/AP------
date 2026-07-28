@@ -604,7 +604,7 @@ window.questionBank = [
       "$12\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 접는 선 위의 점은 접기 전후의 대응점에서 같은 거리에 있고, 두 삼각형의 닮음을 이용한다.\n점 $D$, $F$는 접는 선 위에 있으므로 $DA=DE=7\\mathrm{cm}$, $FA=FE$이다.\n$BD=8\\mathrm{cm}$이므로 정삼각형의 한 변은 $AB=AD+DB=7+8=15\\mathrm{cm}$이다. 따라서 $BC=AC=15\\mathrm{cm}$이고 $CE=15-3=12\\mathrm{cm}$이다.\n$\\triangle ADE$는 $AD=DE$인 이등변삼각형이고 $\\triangle AEF$는 $AF=EF$인 이등변삼각형이다. $\\angle DAF=60^\\circ$이므로 두 이등변삼각형의 밑각을 합하면 $\\angle DEF=60^\\circ$이다.\n$B,E,C$가 한 직선 위에 있으므로 $\\angle BDE=\\angle CEF$가 되고, 또 $\\angle DBE=\\angle ECF=60^\\circ$이다. 따라서 $\\triangle BDE\\sim\\triangle CEF$이다.\n그러므로 $BD:CE=DE:EF$, 즉 $8:12=7:AF$이다. 따라서 $AF=7\\times\\dfrac{12}{8}=\\dfrac{21}{2}\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 접는 선 위의 점은 접기 전후의 대응점에서 같은 거리에 있고, 각의 관계를 확인한 뒤 닮음을 이용한다.\n점 $D$, $F$는 접는 선 위에 있으므로 $DA=DE=7\\mathrm{cm}$, $FA=FE$이다.\n$BD=8\\mathrm{cm}$이므로 정삼각형의 한 변은 $AB=AD+DB=7+8=15\\mathrm{cm}$이다. 따라서 $BC=AC=15\\mathrm{cm}$이고 $CE=15-3=12\\mathrm{cm}$이다.\n$\\alpha=\\angle DAE=\\angle AED$, $\\beta=\\angle EAF=\\angle AEF$라고 하자. $\\angle DAF=60^\\circ$이므로 $\\alpha+\\beta=60^\\circ$이다.\n$A,D,B$가 한 직선 위에 있으므로 $\\angle BDE=180^\\circ-\\angle ADE=180^\\circ-(180^\\circ-2\\alpha)=2\\alpha$이다.\n또 $\\angle DEF=\\angle DEA+\\angle AEF=\\alpha+\\beta=60^\\circ$이다. $B,E,C$가 한 직선 위에 있으므로 $\\angle BED+\\angle DEF+\\angle CEF=180^\\circ$이다. 그런데 $\\angle BED=180^\\circ-60^\\circ-2\\alpha=120^\\circ-2\\alpha$이므로 $\\angle CEF=2\\alpha=\\angle BDE$이다.\n그리고 $\\angle DBE=\\angle ECF=60^\\circ$이므로 $\\triangle BDE\\sim\\triangle CEF$이다.\n따라서 $BD:CE=DE:EF$, 즉 $8:12=7:AF$이다. 그러므로 $AF=7\\times\\dfrac{12}{8}=\\dfrac{21}{2}\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중2_수학/q20.png"
   },
   {

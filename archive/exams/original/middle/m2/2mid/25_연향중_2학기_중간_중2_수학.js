@@ -180,7 +180,7 @@ window.questionBank=[
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림은 각의 이등분선 위의 점에서 각의 두 변에 이르는 거리가 같음을 증명하는 과정이다. 빈칸 (가)~(마)에 들어갈 내용으로 옳지 않은 것은? [4점]",
+    "content": "오른쪽 그림은 각의 이등분선 위의 점에서 각의 두 변에 이르는 거리가 같음을 증명하는 과정이다. 빈칸 (가)~(마)에 들어갈 내용으로 옳지 않은 것은? [4점]<br><div class=\"note-box\">$\\angle XOY$의 이등분선 위의 한 점 $P$에서 $\\overrightarrow{OX}$, $\\overrightarrow{OY}$에 내린 수선의 발을 각각 $A$, $B$라 하면<br>$\\triangle POA$와 $\\triangle POB$에서<br>$\\angle POA=\\boxed{\\text{(가)}}$ …… ㉠<br>$\\boxed{\\text{(나)}}$는 공통 …… ㉡<br>$\\boxed{\\text{(다)}}=\\angle OBP=90^\\circ$ …… ㉢<br>㉠, ㉡, ㉢에 의해<br>$\\triangle POA\\equiv\\triangle POB$ ($\\boxed{\\text{(라)}}$ 합동)<br>따라서 $\\boxed{\\text{(마)}}=\\overline{PB}$이다.</div>",
     "choices": [
       "(가) $\\angle POB$",
       "(나) $OP$",
@@ -190,7 +190,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 두 직각삼각형의 합동 조건을 정확히 판별한다.\\n조건 정리: $P$는 $\\angle XOY$의 이등분선 위에 있고 $PA\\perp OX$, $PB\\perp OY$이다.\\n풀이 방향: $\\triangle POA$와 $\\triangle POB$에서 같은 각, 공통인 변, 직각을 확인한다.\\n정석 풀이: 이등분선의 성질로 $\\angle POA=\\angle POB$이고, $OP$는 공통인 빗변이다. 또한 $\\angle OAP=\\angle OBP=90^\\circ$이다. 따라서 두 직각삼각형은 빗변과 한 예각이 각각 같은 RHA 합동이며, SAS 합동이 아니다. 합동으로부터 $PA=PB$가 성립한다.\\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_연향중_2학기_중간_중2_수학/q07.png"
+    "image": "assets/images/25_연향중_2학기_중간_중2_수학/q07_diagram.png"
   },
   {
     "id": 8,

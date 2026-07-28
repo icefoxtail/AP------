@@ -26,3 +26,5 @@ q(22,"상","도형의 성질","M2-05","[서술형 2] $\\angle B=\\angle C$, $AB=
 q(23,"상","도형의 성질","M2-05","[서술형 3] 평행사변형 $ABCD$에서 $\\angle DAC$의 이등분선이 $BC$의 연장선과 만나는 점을 $E$라 하자. $\\angle B=70^\\circ$, $\\angle ACD=56^\\circ$일 때, $\\angle E$의 크기를 구하여라. [5점]",[],"$27^\\circ$","$\\angle D=70^\\circ$이므로 $\\triangle ACD$에서 $\\angle DAC=54^\\circ$이다. $AE$가 이등분선이므로 $\\angle CAE=27^\\circ$이다. 또 $\\angle ACB=54^\\circ$이므로 $\\angle ACE=126^\\circ$이어서 $\\angle E=27^\\circ$이다.","q23.png"),
 q(24,"중","도형의 성질","M2-05","[서술형 4] 변의 길이가 $6$ cm, $8$ cm, $10$ cm인 직각삼각형의 외접원과 내접원 사이의 넓이를 구하여라. [6점]",[],"$21\\pi$ cm$^2$","외접원의 반지름은 빗변의 절반인 5 cm이고, 내접원의 반지름은 $(6+8-10)\\div2=2$ cm이다. 따라서 넓이는 $25\\pi-4\\pi=21\\pi$ cm$^2$이다.","q24.png")
 ];
+
+window.questionBank.forEach(q=>{if([21,22,23,24].includes(q.id))q.imageSize="tall";});

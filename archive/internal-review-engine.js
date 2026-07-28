@@ -679,6 +679,29 @@ function loadBank(source, fileName) {
 /* ================================================================
    archive 폴더 열기
 ================================================================ */
+async function autoloadFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const dataPath = params.get('data') || params.get('autoload');
+  if (!dataPath) return false;
+  if (/^[a-z]+:/i.test(dataPath) || dataPath.includes('..')) {
+    showError('자동 로드 경로가 올바르지 않습니다: ' + dataPath);
+    return true;
+  }
+  try {
+    const normalized = dataPath.replace(/^\/+/, '');
+    const archiveRelative = normalized.startsWith('archive/') ? normalized : 'archive/' + normalized;
+    const response = await fetch('../' + archiveRelative);
+    if (!response.ok) throw new Error(response.status + ' ' + response.statusText);
+    const source = await response.text();
+    const fileName = normalized.split(/[\\/]/).pop() || 'autoload.js';
+    loadBank(source, fileName);
+    return true;
+  } catch (e) {
+    showError('자동 로드 실패: ' + e.message + '\n경로: ' + dataPath);
+    return true;
+  }
+}
+
 async function openArchiveDir() {
   revokeLiveDataUrl();
   if (!window.showDirectoryPicker) {
@@ -2153,6 +2176,8 @@ function initFilterToggle() {
   initFilterToggle();
   initLiveEditHandlers();
   renderGradeExamBtns();
+  const didAutoload = await autoloadFromQuery();
+  if (didAutoload) return;
 
   // 이전 세션 복원 시도
   await restoreSessionState();

@@ -260,8 +260,8 @@ window.questionBank = [
       "도형",
       "표"
     ],
-    "wide": false,
-    "content": "그림과 같이 두 직각삼각형 $ABC$와 $DEF$가 있다. 두 직각삼각형의 합동 조건을 설명하는 과정에서 괄호 안에 들어갈 것으로 옳은 것은? [4점]",
+    "wide": true,
+    "content": "그림과 같이 두 직각삼각형 $ABC$와 $DEF$가 있다. 두 직각삼각형의 합동 조건을 설명하는 과정에서 괄호 안에 들어갈 것으로 옳은 것은? [4점]<br><div class=\"note-box\">아래 그림과 같이 $\\triangle DEF$를 뒤집어 길이가 같은 두 변 $AC$와 $DF$가 서로 겹치도록 놓으면 $\\angle ACB+\\angle DFE=90^\\circ+90^\\circ=180^\\circ$이다. 따라서 세 점 $B$, $C(F)$, $E$는 한 직선 위에 있으므로 $\\triangle ABE$가 만들어진다.<br>이때 $\\triangle ABE$는 $\\overline{AB}=\\overline{AE}$이므로 이등변삼각형이다.<br>$\\triangle ABC$와 $\\triangle DEF$에서<br>$\\angle C=\\angle F=90^\\circ$ …… ㉠, $\\overline{AB}=\\overline{DE}$ …… ㉡<br>또, $\\triangle ABE$는 이등변삼각형이므로 $\\angle B=\\angle E$ …… ㉢<br>㉠, ㉡, ㉢에서 (　　　　　　) $\\triangle ABC\\equiv\\triangle DEF$이다.<br>즉, 빗변의 길이와 한 예각의 크기가 각각 같은 두 직각삼각형은 서로 합동이다.</div>",
     "choices": [
       "두 직각삼각형의 세 변의 길이가 같으므로",
       "두 직각삼각형의 두 변의 길이와 끼인각의 크기가 같으므로",
@@ -271,7 +271,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 증명 과정에서 확인된 조건이 직각삼각형의 어떤 합동 조건인지 판단한다.\n두 삼각형은 모두 직각삼각형이므로 $\\angle C=\\angle F=90^\\circ$이다. 또 그림의 조건에서 빗변 $AB=DE$이고, 겹쳐 만든 이등변삼각형에서 $\\angle B=\\angle E$이다.\n즉 두 직각삼각형의 빗변의 길이와 한 예각의 크기가 각각 같다. 이는 RHA 합동 조건이다.\n따라서 괄호에 들어갈 내용은 ③이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q09.png"
+    "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q09_diagrams.png"
   },
   {
     "id": 10,
@@ -480,8 +480,8 @@ window.questionBank = [
       "도형",
       "표"
     ],
-    "wide": false,
-    "content": "다음은 평행사변형의 두 쌍의 대변의 길이는 각각 같고, 두 쌍의 대각의 크기는 각각 같음을 설명하는 과정이다. 괄호 안에 들어갈 기호로 적절하지 않은 것을 고르면? [4점]",
+    "wide": true,
+    "content": "다음은 평행사변형의 두 쌍의 대변의 길이는 각각 같고, 두 쌍의 대각의 크기는 각각 같음을 설명하는 과정이다. 괄호 안에 들어갈 기호로 적절하지 않은 것을 고르면? [4점]<br><div class=\"note-box\">오른쪽 그림과 같이 평행사변형 $ABCD$에 대각선 $AC$를 긋자.<br>$\\triangle ABC$와 $\\triangle CDA$에서<br>($\\boxed{\\text{①}}$)이므로 $\\angle BAC=\\angle DCA$ (엇각) …… ㉠<br>$AD\\parallel BC$이므로 ($\\boxed{\\text{②}}$) (엇각) …… ㉡<br>$\\overline{AC}$는 공통 …… ㉢<br>㉠, ㉡, ㉢에 의하여 대응하는 한 변의 길이가 같고, 그 양 끝각의 크기가 각각 같으므로 ($\\boxed{\\text{③}}$)이다.<br>따라서 $\\overline{AB}=\\overline{DC}$, $\\overline{AD}=\\overline{BC}$, $\\angle B=\\angle D$이다.<br>또, ㉠, ㉡에 의하여 $\\angle A=($ $\\boxed{\\text{④}}$ $)=\\angle DCA+\\angle ACB=($ $\\boxed{\\text{⑤}}$ $)$이다.</div>",
     "choices": [
       "$AB\\parallel DC$",
       "$\\angle B=\\angle C$",
@@ -491,7 +491,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 각 빈칸이 증명 흐름에서 어떤 내용을 나타내는지 확인한다.\n$AB\\parallel DC$이므로 $\\angle BAC=\\angle DCA$이고, $AD\\parallel BC$이므로 $\\angle BCA=\\angle DAC$이다. 또한 $AC$는 공통이므로 $\\triangle ABC\\equiv\\triangle CDA$이다.\n따라서 ①에는 $AB\\parallel DC$, ③에는 $\\triangle ABC\\equiv\\triangle CDA$가 들어간다. 또 $\\angle A=\\angle BAC+\\angle CAD=\\angle DCA+\\angle ACB=\\angle C$이므로 ④와 ⑤도 알맞다.\n②의 자리에는 $\\angle BCA=\\angle DAC$이 들어가야 하므로 '$\\angle B=\\angle C$'는 적절하지 않다. 정답은 ②이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q16.png"
+    "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q16_diagram.png"
   },
   {
     "id": 17,
