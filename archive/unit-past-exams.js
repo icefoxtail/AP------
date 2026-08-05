@@ -85,7 +85,7 @@
     return paper.records.map(record => restoredByIdentity.get(`${record.sourceFile}#${record.sourceQuestionNo}`));
   }
 
-  function getQpp() { return document.getElementById('unit-qpp')?.value || '2'; }
+  function getQpp() { return document.getElementById('unit-qpp')?.value || '4'; }
 
   function getUnit(unitKey) { return state.catalog?.units.find(unit => unit.key === unitKey); }
 
@@ -102,14 +102,14 @@
       category: '단원별 기출',
       grade: '고1',
       gradeLabel: '고1',
-      scopeLabel: '2학기 중간까지',
+      scopeLabel: '2학기 기말까지',
       unitKey: unit.key,
       unitName: unit.name,
       sourceType: 'mixed',
       printHeaderOptions: {
         title,
         metaRight: '고1 단원별 기출',
-        subtitle: '2학기 중간까지',
+        subtitle: '',
         showNameLine: true,
         showScoreLine: true,
         applyToSolution: true,
@@ -249,13 +249,7 @@
             <div class="unit-card-meta"><span>${unit.count}문항</span><span>${unit.papers.length ? `${unit.papers.length}개 문제지` : '자료 없음'}</span></div>
           </button>`).join('')}</div>
       </section>`;
-    }).join('') + '<div id="unit-detail-root"></div>' + renderReview();
-  }
-
-  function renderReview() {
-    const rows = [...state.catalog.review, ...state.catalog.invalid];
-    if (!rows.length) return '';
-    return `<section class="unit-review"><h2>검토 필요 · ${rows.length}문항</h2><p>단원 문제지에는 포함하지 않았습니다. 원본 데이터를 교정하면 다음 인덱스 갱신 때 자동 반영됩니다.</p><ul>${rows.map(row => `<li>${escapeHtml(row.sourceFile || '원본 없음')} #${escapeHtml(core.getQuestionNo(row) || '-')} · ${escapeHtml(row.classificationReason || '')}</li>`).join('')}</ul></section>`;
+    }).join('') + '<div id="unit-detail-root"></div>';
   }
 
   async function init() {
@@ -264,7 +258,7 @@
     if (!isTeacherSession()) { app.innerHTML = '<div class="unit-error">단원별 기출은 AP Math OS 선생님 로그인 후 사용할 수 있습니다.<br><a href="index.html">아카이브로 돌아가기</a></div>'; return; }
     if (!Array.isArray(window.questionIndex)) { app.innerHTML = '<div class="unit-error">question-index.js를 불러오지 못했습니다.</div>'; return; }
     state.catalog = core.buildCatalog(window.questionIndex);
-    document.getElementById('unit-summary').innerHTML = `<span>분류 ${state.catalog.classifiedCount.toLocaleString()}문항</span><span>18개 표시 단원</span><span>문제지당 최대 80문항</span><span>2학기 중간까지</span>`;
+    document.getElementById('unit-summary').innerHTML = `<span>분류 ${state.catalog.classifiedCount.toLocaleString()}문항</span><span>18개 표시 단원</span><span>문제지당 최대 80문항</span><span>2학기 기말까지</span>`;
     setStatus(`유효 후보 ${state.catalog.candidateCount.toLocaleString()}문항을 집계했습니다.`);
     renderCatalog();
   }

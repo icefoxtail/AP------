@@ -91,6 +91,23 @@ const scheduledClasses = [
   const memos = ctx.buildDashboardAssistantMemos({
     todayStr: '2026-06-19',
     dayKey: 'fri',
+    db: baseDb,
+    scheduledClasses: [
+      { id: 30, name: '고2A', grade: '고2' },
+      { id: 20, name: '중1A', grade: '중1' }
+    ],
+    isHoliday: false,
+    previousClassDateById: { 30: '2026-06-12', 20: '2026-06-12' }
+  });
+  assert(!memos.some(m => m.id === 'record-gap:30:2026-06-12'), 'high-school classes must not show progress-gap memos');
+  assert(memos.some(m => m.id === 'record-gap:20:2026-06-12'), 'middle-school classes must retain progress-gap memos');
+}
+
+{
+  const ctx = loadHelper();
+  const memos = ctx.buildDashboardAssistantMemos({
+    todayStr: '2026-06-19',
+    dayKey: 'fri',
     teacherName: '박준성',
     db: baseDb,
     scheduledClasses,

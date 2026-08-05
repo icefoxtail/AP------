@@ -3,7 +3,7 @@
 - 작성일: 2026-08-05
 - 상태: 1차 구현 완료 (로컬 데이터·화면·출력 검증 완료, 실계정 배정 E2E 확인만 남음)
 - 대상: `archive/`의 교사용 JS 아카이브
-- 1차 데이터 범위: 고1 학교 기출 `1학기 중간`, `1학기 기말`, `2학기 중간`
+- 데이터 범위: 고1 학교 기출 `1학기 중간`, `1학기 기말`, `2학기 중간`, `2학기 기말`
 - 출력 방식: 기존 `mixed_engine.html` 재사용
 - 학습 결과: 학생 직접 채점 후 틀린 번호 제출, 기존 OMR·오답 클리닉에 연결
 
@@ -28,9 +28,9 @@
 5. 한 단원의 전체 문항은 보여 주되 한 시험지로 출력하지 않고 자동 분할한다.
 6. 권장 분할 크기는 약 40~50문항, 시스템상 절대 상한은 80문항으로 한다.
 7. 가능한 한 같은 원본 시험지의 문항은 서로 다른 문제지로 갈라놓지 않는다.
-8. 현재 공개 범위는 `2학기 중간까지`로 고정한다.
+8. 공개 범위는 `2학기 기말까지`로 미리 열어 두며, 현재 0건인 `2final`은 자료가 인덱스에 등록되는 즉시 자동 반영한다.
 9. 이후 범위 확대는 설정값 변경으로 처리하며 엔진 수정이나 문제지 재생성은 요구하지 않는다.
-10. `engine.html`, `mixed_engine.html`, `wrong_print_engine.html`은 기존 결함이 발견되지 않는 한 수정하지 않는다.
+10. 출력 엔진은 원칙적으로 재사용한다. 구현 후 발견된 `2up` 강제 페이지 분리 결함은 `engine.html`과 `mixed_engine.html`의 배치부만 동일하게 교정한다.
 
 ## 3. 현재 데이터 기준선
 
@@ -71,14 +71,14 @@
 
 - `question-index.js`에 등록된 문항
 - `sourceFile`이 `original/high/h1/` 아래인 학교 기출
-- 시험 구간이 `1mid`, `1final`, `2mid` 중 하나인 문항
+- 시험 구간이 `1mid`, `1final`, `2mid`, `2final` 중 하나인 문항
 - 원본 파일과 문항 번호를 확인할 수 있는 문항
 - 2022 개정 표시 단원으로 직접 또는 별칭 매핑되는 문항
 
 ### 4.2 제외
 
 - `types`, `similar`, `assessment`, 교재 문항
-- `2final` 이후 시험 구간
+- 위 허용 목록에 없는 시험 구간
 - 빈 문항 레코드
 - 원본 파일 또는 원본 문항 번호가 없는 문항
 - 분류가 확정되지 않은 문항
@@ -91,16 +91,16 @@
 
 ```js
 const HIGH1_UNIT_ARCHIVE_SCOPE = {
-  id: 'h1-through-2mid-v1',
+  id: 'h1-through-2final-v1',
   grade: '고1',
   sourcePrefix: 'original/high/h1/',
-  periods: ['1mid', '1final', '2mid'],
+  periods: ['1mid', '1final', '2mid', '2final'],
   targetQuestionsPerPaper: 50,
   hardMaxQuestionsPerPaper: 80
 };
 ```
 
-나중에 `2final`을 포함할 때는 `periods`와 범위 버전만 변경한다.
+현재 `2final` 인덱스 문항은 0건이므로 기존 집계에는 변화가 없고, 이후 등록분부터 자동 포함된다.
 
 ## 5. 단원 매핑 규칙
 
@@ -161,7 +161,7 @@ flowchart LR
 
 문항은 다음 순서로 안정 정렬한다.
 
-1. 시험 구간: `1mid` → `1final` → `2mid`
+1. 시험 구간: `1mid` → `1final` → `2mid` → `2final`
 2. 연도
 3. 학교명 또는 원본 파일 경로
 4. 원본 문항 번호
@@ -197,7 +197,7 @@ flowchart LR
 예시:
 
 ```text
-unitpast:h1-through-2mid-v1:H22-C-06:8f31c92a7d
+unitpast:h1-through-2final-v1:H22-C-06:8f31c92a7d
 ```
 
 `mixed_engine.html`에는 이 키가 전달되고 서버에는 기존 규약대로 `MIXED:{key}`가 등록된다. 새 시험지가 추가되어 현재 분할이 바뀌어도 과거 문제지의 출제·오답 기록과 블루프린트가 덮어써지지 않아야 한다.
@@ -218,7 +218,7 @@ unitpast:h1-through-2mid-v1:H22-C-06:8f31c92a7d
 - 2022 개정 단원 순서와 단원명
 - 현재 문항 수
 - 자동 분할된 문제지 수
-- 범위 배지: `2학기 중간까지`
+- 범위 배지: `2학기 기말까지`
 
 0문항인 단원은 숨기지 않고 비활성 상태로 표시한다. 향후 데이터가 들어오면 자동 활성화된다.
 
@@ -329,13 +329,13 @@ unitpast:h1-through-2mid-v1:H22-C-06:8f31c92a7d
 - `archive/index.html`
   - 분류 옵션 `단원별 기출` 추가
   - 기존 출제 대상 선택 흐름에 혼합 출력 콜백 어댑터 추가
+- `archive/engine.html`, `archive/mixed_engine.html`
+  - `4문항/쪽`에서 `2up 1개 + 일반 2개`를 한 페이지의 3문항으로 배치하는 슬롯 규칙 적용
 - 필요 시 `archive/tools/build-question-index.mjs`
   - 현재 인덱스 필드만으로 기간·원본 번호를 안정적으로 식별할 수 없는 경우에만 최소 필드 추가
 
 ### 11.3 변경하지 않는 파일
 
-- `archive/engine.html`
-- `archive/mixed_engine.html`
 - `archive/wrong_print_engine.html`
 - `apmath/student/index.html`
 - `apmath/worker-backup/worker/routes/student-portal.js`
@@ -415,7 +415,7 @@ unitpast:h1-through-2mid-v1:H22-C-06:8f31c92a7d
 ### Phase 7. 문서와 인수인계
 
 - 실제 변경 파일과 테스트 결과 기록
-- 향후 `2final` 범위 확대 방법 기록
+- 이후 새 시험 구간을 추가하는 방법 기록
 - 미분류 문항 처리 절차 기록
 - 데이터 추가 후 자동 반영 조건 기록
 
@@ -461,8 +461,8 @@ unitpast:h1-through-2mid-v1:H22-C-06:8f31c92a7d
 
 ### 회귀
 
-- [x] 기존 학교 시험지 `engine.html` 파일에 변화가 없다.
-- [x] 기존 믹서 출력 파일에 변화가 없고 단원 문제지 렌더가 정상이다.
+- [x] 기존 학교 시험지의 일반 문항 순서를 유지하면서 `2up` 혼합 페이지가 정상이다.
+- [x] 믹서 출력도 같은 `2up` 슬롯 규칙으로 렌더된다.
 - [x] 기존 오답 출력 파일에 변화가 없다.
 - [ ] 아카이브의 검색·학년·연도·시험·분류 필터가 유지된다.
 - [ ] 기존 카드의 시험·해설·정답 열기가 유지된다.
