@@ -22,6 +22,11 @@
     return str(value);
   }
 
+  function isHighSchoolClass(cls) {
+    const label = `${str(cls && cls.grade)} ${str(cls && cls.name)}`;
+    return /고\s*[1-3]|고등/.test(label);
+  }
+
   function formatStudent(student) {
     const name = str(student && student.name) || '학생';
     const grade = str(student && student.grade);
@@ -127,6 +132,9 @@
     const previousByClass = input.previousClassDateById || {};
 
     return (input.scheduledClasses || []).map(cls => {
+      // 고등부는 수업 진도를 이 일지 방식으로 관리하지 않으므로 미기록 알림에서 제외한다.
+      if (isHighSchoolClass(cls)) return null;
+
       const classId = normalizeId(cls.id);
       const previousDate = str(previousByClass[classId]).slice(0, 10);
       if (!classId || !previousDate) return null;

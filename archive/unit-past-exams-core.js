@@ -6,9 +6,9 @@
   'use strict';
 
   const SCOPE = Object.freeze({
-    id: 'h1-through-2mid-v1',
+    id: 'h1-through-2final-v1',
     sourcePrefix: 'original/high/h1/',
-    periods: Object.freeze(['1mid', '1final', '2mid']),
+    periods: Object.freeze(['1mid', '1final', '2mid', '2final']),
     targetQuestionsPerPaper: 50,
     hardMaxQuestionsPerPaper: 80
   });
@@ -137,7 +137,7 @@
   }
 
   function compareRecords(a, b) {
-    const periodOrder = { '1mid': 1, '1final': 2, '2mid': 3 };
+    const periodOrder = { '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 };
     const periodDiff = (periodOrder[getPeriod(a.sourceFile)] || 99) - (periodOrder[getPeriod(b.sourceFile)] || 99);
     if (periodDiff) return periodDiff;
     const yearDiff = getYear(a) - getYear(b);

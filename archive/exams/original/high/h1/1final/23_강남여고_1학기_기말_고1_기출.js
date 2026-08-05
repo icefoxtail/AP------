@@ -469,7 +469,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
-    "wide": true,
+    "wide": false,
     "content": "다음 정사각형 $ABCD$에 대하여 $\overline{AD}$의 중점을 $M$이라고 했을 때, $\overline{MB}$를 $3:2$로 내분한 점, $\overline{BC}$를 $2:1$로 내분한 점과 점 $D$를 세 꼭짓점으로 하는 삼각형의 넓이를 $S$, 정사각형 $ABCD$의 넓이를 $T$라고 했을 때, $S=kT$를 만족하는 실수 $k$의 값은?",
     "choices": [
       "$\\dfrac7{30}$",
@@ -572,7 +572,7 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [],
-    "wide": true,
+    "wide": false,
     "content": "$AB=AC$인 이등변삼각형 $ABC$의 한 꼭짓점 $A$를 삼각형 $ABC$의 무게중심 $G$와 일치하도록 접었을 때, 삼각형 $EDG$의 넓이를 $S$라 하자. 그림과 같이 $B(0,0)$, $C(9,3)$, $G(k+1,k)$일 때, $k-S$의 값을 구하는 풀이 과정을 쓰시오.",
     "choices": [],
     "answer": "$\dfrac12$",
