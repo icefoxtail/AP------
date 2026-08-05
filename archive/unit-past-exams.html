@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>고1 단원별 기출 · JS 아카이브</title>
+  <link rel="stylesheet" href="unit-past-exams.css?v=20260805">
+</head>
+<body>
+  <main class="unit-shell">
+    <div class="unit-top">
+      <button class="unit-back" type="button" onclick="location.href='index.html'">← JS 아카이브</button>
+      <label class="unit-qpp">한 페이지 문항 수
+        <select id="unit-qpp"><option value="2" selected>2문항</option><option value="4">4문항</option></select>
+      </label>
+    </div>
+    <section class="unit-hero">
+      <div class="unit-kicker">2022 개정 교육과정 · 고1</div>
+      <h1>단원별 기출</h1>
+      <p>학교 기출을 2022 개정 단원 순서로 모았습니다. 단원을 선택하면 인쇄와 학생 오답관리에 맞게 나뉜 문제지를 바로 출력할 수 있습니다.</p>
+      <div class="unit-summary" id="unit-summary"></div>
+    </section>
+    <div class="unit-status" id="unit-status">문항 인덱스를 불러오는 중입니다.</div>
+    <div id="unit-content"><div class="unit-loading">단원별 문항을 집계하는 중입니다.</div></div>
+  </main>
+  <script src="unit-past-exams-core.js?v=20260805"></script>
+  <script src="question-index.js?v=20260805"></script>
+  <script src="unit-past-exams.js?v=20260805"></script>
+  <script>window.High1UnitPastExams.init();</script>
+</body>
+</html>

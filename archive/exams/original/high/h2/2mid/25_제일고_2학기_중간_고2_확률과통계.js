@@ -288,11 +288,11 @@ window.questionBank = [
     "content": "그림에서 세 곡선 $A,B,C$는 각각 정규분포를 따르는 세 확률변수 $X_A,X_B,X_C$의 확률밀도함수의 그래프이다. $X_A,X_B,X_C$의 평균을 각각 $m_A,m_B,m_C$, 표준편차를 $\\sigma_A,\\sigma_B,\\sigma_C$라 할 때, 대소를 올바르게 비교한 것은?",
     "image": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q11.png",
     "choices": [
-      "평균 $m_A>m_B>m_C$, 표준편차 $\\sigma_A>\\sigma_B>\\sigma_C$",
-      "평균 $m_B>m_A>m_C$, 표준편차 $\\sigma_B<\\sigma_A<\\sigma_C$",
-      "평균 $m_B>m_A>m_C$, 표준편차 $\\sigma_B>\\sigma_A>\\sigma_C$",
-      "평균 $m_A<m_B<m_C$, 표준편차 $\\sigma_B<\\sigma_A<\\sigma_C$",
-      "평균 $m_A<m_B<m_C$, 표준편차 $\\sigma_B>\\sigma_A>\\sigma_C$"
+      "평균 $m_A\\gt m_B\\gt m_C$, 표준편차 $\\sigma_A\\gt\\sigma_B\\gt\\sigma_C$",
+      "평균 $m_B\\gt m_A\\gt m_C$, 표준편차 $\\sigma_B\\lt\\sigma_A\\lt\\sigma_C$",
+      "평균 $m_B\\gt m_A\\gt m_C$, 표준편차 $\\sigma_B\\gt\\sigma_A\\gt\\sigma_C$",
+      "평균 $m_A\\lt m_B\\lt m_C$, 표준편차 $\\sigma_B\\lt\\sigma_A\\lt\\sigma_C$",
+      "평균 $m_A\\lt m_B\\lt m_C$, 표준편차 $\\sigma_B\\gt\\sigma_A\\gt\\sigma_C$"
     ],
     "answer": "④",
     "solution": "[키포인트] 정규분포 그래프의 중심은 평균이고, 그래프가 좁고 높을수록 표준편차가 작다.\n조건 정리: 그래프 $A$는 왼쪽, $B$는 가운데, $C$는 오른쪽에 중심이 있다. 또 $B$가 가장 좁고 높으며, $C$가 가장 넓고 낮다.\n풀이 방향: 중심의 좌우 위치로 평균의 대소를 정하고, 퍼진 정도로 표준편차의 대소를 정한다.\n정석 풀이: 정규분포의 평균은 그래프의 중심 위치이다. 따라서 왼쪽부터 $A,B,C$이므로 $m_A<m_B<m_C$이다. 표준편차는 그래프가 퍼진 정도를 나타내므로 가장 좁은 $B$의 표준편차가 가장 작고, 가장 넓은 $C$의 표준편차가 가장 크다. 따라서 $\\sigma_B<\\sigma_A<\\sigma_C$이다.\n따라서 정답은 ④이다."
@@ -527,8 +527,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "기출",
-      "표"
+      "기출"
     ],
     "wide": false,
     "content": "$500$원짜리 동전 $2$개와 $100$원짜리 동전 $2$개를 사용하여 다음 시행을 한다.<br><div class=\"note-box\">동전 $4$개를 동시에 한 번 던졌을 때 앞면이 나온 $500$원짜리 동전의 개수와 앞면이 나온 $100$원짜리 동전의 개수가 서로 같으면 $2$점을 얻고, 서로 다르면 $1$점을 잃는다.</div><br>이 시행을 $40$회 반복한 후 얻는 점수의 합을 확률변수 $X$라 할 때, $E(X)$의 값은?",
