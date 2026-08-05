@@ -1524,6 +1524,7 @@
         <select class="fb-sel" id="contentTypeFilter">
             <option value="">전체 분류</option>
             <option value="기출" id="contentTypeOriginalOption">기출</option>
+            <option value="단원별 기출" id="contentTypeUnitPastOption">단원별 기출</option>
             <option value="유형">유형</option>
             <option value="단원평가">단원평가</option>
             <option value="쪽지">쪽지</option>
@@ -1739,6 +1740,7 @@ function updateOriginalArchiveToggleUI() {
     const canUse = isTeacherArchiveSession();
     const btn = document.getElementById('originalArchiveToggle');
     const originalOption = document.getElementById('contentTypeOriginalOption');
+    const unitPastOption = document.getElementById('contentTypeUnitPastOption');
 
     if (btn) {
         btn.style.display = canUse ? 'inline-flex' : 'none';
@@ -1752,9 +1754,13 @@ function updateOriginalArchiveToggleUI() {
         originalOption.hidden = !canUse;
         originalOption.disabled = !canUse;
     }
+    if (unitPastOption) {
+        unitPastOption.hidden = !canUse;
+        unitPastOption.disabled = !canUse;
+    }
 
     const typeSelect = document.getElementById('contentTypeFilter');
-    if (!canUse && typeSelect && typeSelect.value === '기출') typeSelect.value = '';
+    if (!canUse && typeSelect && ['기출', '단원별 기출'].includes(typeSelect.value)) typeSelect.value = '';
 }
 
 function toggleOriginalArchiveVisibility() {
@@ -2056,6 +2062,7 @@ async function init() {
     document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
     renderFeatured();
+    await openPendingUnitPastAssignmentFromUrl();
 }
 
 function populateYearFilter() {
@@ -2197,6 +2204,11 @@ function onFilterChange() {
     const year = document.getElementById('yearFilter').value;
     const type = document.getElementById('contentTypeFilter').value;
     const examPeriod = document.getElementById('examPeriodFilter').value;
+
+    if (type === '단원별 기출') {
+        window.location.href = buildArchiveInternalUrl('unit-past-exams.html');
+        return;
+    }
 
     if (keyword || year || type || examPeriod || selectedGrade) {
         document.getElementById('featured-section').style.display = 'none';
@@ -2615,19 +2627,33 @@ function getIndexAssignmentAuthHeader() {
 }
 
 function printIndexPendingGeneralExam() {
-    const item = normalizedExams().find(e => e.file === _pendingFile);
+    const item = AssignTarget?.item || normalizedExams().find(e => e.file === _pendingFile);
     if (!item) return;
+    const qpp = AssignTarget?.qpp || _pendingQpp || 4;
     closeModal();
-    goEngine(item, _pendingAction || 'exam', _pendingQpp || 4);
+    launchIndexExamOutput(item, _pendingAction || 'exam', qpp);
 }
 
 function getIndexExamTitle(item) {
+    if (isUnitPastExamItem(item) && (item?.identityTitle || item?.title)) return String(item.identityTitle || item.title).trim();
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
     return `${baseTitle} ${item.subject || ''}`.trim();
 }
 
+function isUnitPastExamItem(item) {
+    return !!(item && item.unitPastSnapshotKey);
+}
+
+function getIndexAssignmentArchiveFile(item) {
+    return isUnitPastExamItem(item) ? `MIXED:${item.unitPastSnapshotKey}` : `exams/${item.file}`;
+}
+
+function getIndexAssignmentSourceType(item) {
+    return isUnitPastExamItem(item) ? 'mixed' : 'archive';
+}
+
 function getIndexAssignmentBatchId(item, gradeLabel) {
-    const fileKey = String(item?.file || 'archive').replace(/[^a-zA-Z0-9_-]+/g, '_');
+    const fileKey = String(item?.unitPastSnapshotKey || item?.file || 'archive').replace(/[^a-zA-Z0-9_-]+/g, '_');
     const gradeKey = String(gradeLabel || 'class').replace(/[^a-zA-Z0-9가-힣_-]+/g, '_');
     return `batch_archive_${fileKey}_${gradeKey}_${Date.now()}`;
 }
@@ -2646,8 +2672,8 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         exam_title: getIndexExamTitle(item),
         exam_date: new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0],
         question_count: questionCount,
-        archive_file: `exams/${item.file}`,
-        source_type: 'archive',
+        archive_file: getIndexAssignmentArchiveFile(item),
+        source_type: getIndexAssignmentSourceType(item),
         subject: item.subject || '',
         grade_label: gradeLabel,
         assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, gradeLabel),
@@ -2687,6 +2713,14 @@ function assignTargetBodyEl() {
 function buildAssignTargetPreviewUrl() {
     const item = AssignTarget?.item;
     if (!item) return '';
+    if (isUnitPastExamItem(item)) {
+        const url = new URL('mixed_engine.html', window.location.href);
+        url.searchParams.set('key', item.unitPastSnapshotKey);
+        url.searchParams.set('mode', 'exam');
+        url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
+        url.searchParams.set('q', String(resolveExamQuestionCountForAssignment(item) || 0));
+        return url.toString();
+    }
     const url = new URL('engine.html', window.location.href);
     url.searchParams.set('mode', 'exam');
     url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
@@ -2771,7 +2805,8 @@ async function openAssignTargetPanel(item, qpp) {
         AssignTarget.classRows = visibleClasses;
         const grades = getIndexAvailableGrades(visibleClasses);
         if (!grades.length) { renderAssignTargetNotice('담당 반이 없습니다. AP Math OS에서 선생님별 반 배정을 확인하세요.'); return; }
-        assignTargetSwitchGrade(grades[0]);
+        const preferredGrade = grades.includes(item?.grade) ? item.grade : grades[0];
+        assignTargetSwitchGrade(preferredGrade);
     } catch(e) {
         console.error(e);
         renderAssignTargetNotice(ARCHIVE_QR_NETWORK_HTML);
@@ -3231,7 +3266,7 @@ async function assignTargetProcessOneClass(classId) {
                         student_ids: excludedIds,
                         exam_title: getIndexExamTitle(AssignTarget.item),
                         exam_date: examDate,
-                        archive_file: `exams/${AssignTarget.item.file}`
+                        archive_file: getIndexAssignmentArchiveFile(AssignTarget.item)
                     })
                 });
                 const data = await res.json().catch(() => ({}));
@@ -3305,7 +3340,7 @@ function assignTargetFinishAndOpenEngine() {
     const scope = AssignTarget.scope;
     closeModal();
     if (representative) {
-        goEngine(item, "exam", qpp, {
+        launchIndexExamOutput(item, "exam", qpp, {
             submitQr: true,
             classId: representative.id,
             teacherName: getQrTeacherName(representative),
@@ -3359,6 +3394,63 @@ function goEngine(item, action, qpp, options = {}) {
     // 새 탭 생성 과정에서 일부 검색 파라미터가 유실되어도 엔진이 직전 클릭을 복구할 수 있게 한다.
     rememberArchiveEngineLaunch(url);
     window.open(appendCurrentArchiveSessionToHash(url.toString()), '_blank');
+}
+
+function goUnitPastMixedEngine(item, action, qpp, options = {}) {
+    const snapshotKey = item?.unitPastSnapshotKey || '';
+    if (!snapshotKey || !localStorage.getItem(`mixedQuestions_${snapshotKey}`)) {
+        alert('단원별 기출 데이터가 만료되었습니다. 단원별 기출 화면에서 다시 준비해 주세요.');
+        return;
+    }
+    const url = new URL('mixed_engine.html', window.location.href);
+    url.searchParams.set('key', snapshotKey);
+    url.searchParams.set('mode', action || 'exam');
+    url.searchParams.set('qpp', String(qpp || 4));
+    const questionCount = resolveExamQuestionCountForAssignment(item);
+    if (questionCount) url.searchParams.set('q', String(questionCount));
+    if (options.submitQr) {
+        url.searchParams.set('submitQr', '1');
+        url.searchParams.set('assignmentRegistered', '1');
+        url.searchParams.set('preRegistered', '1');
+    }
+    if (options.classId) url.searchParams.set('class', options.classId);
+    if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
+    if (options.className) url.searchParams.set('className', options.className);
+    if (options.target_scope) url.searchParams.set('target_scope', options.target_scope);
+    if (options.gradeLabel) url.searchParams.set('grade_label', options.gradeLabel);
+    if (options.assignmentBatchId) url.searchParams.set('assignment_batch_id', options.assignmentBatchId);
+    window.open(appendCurrentArchiveSessionToHash(url.toString()), '_blank');
+}
+
+function launchIndexExamOutput(item, action, qpp, options = {}) {
+    if (isUnitPastExamItem(item)) return goUnitPastMixedEngine(item, action, qpp, options);
+    return goEngine(item, action, qpp, options);
+}
+
+async function openPendingUnitPastAssignmentFromUrl() {
+    const url = new URL(window.location.href);
+    const snapshotKey = url.searchParams.get('unitPastAssign') || '';
+    if (!snapshotKey || !/^[a-zA-Z0-9_-]+$/.test(snapshotKey)) return;
+    const pendingKey = `APMATH_UNIT_PAST_ASSIGN_${snapshotKey}`;
+    let item = null;
+    try { item = JSON.parse(localStorage.getItem(pendingKey) || 'null'); } catch (e) {}
+    const rawQuestions = localStorage.getItem(`mixedQuestions_${snapshotKey}`);
+    if (!item || !rawQuestions) {
+        alert('출제할 단원별 기출 데이터가 없습니다. 단원별 기출 화면에서 다시 선택해 주세요.');
+        return;
+    }
+    let questions = [];
+    try { questions = JSON.parse(rawQuestions) || []; } catch (e) {}
+    item.unitPastSnapshotKey = snapshotKey;
+    item.qCount = Number(item.qCount || questions.length || 0);
+    item.count = item.qCount;
+    _pendingAction = 'exam';
+    _pendingQpp = Math.max(1, Number(url.searchParams.get('qpp')) || 4);
+    url.searchParams.delete('unitPastAssign');
+    url.searchParams.delete('qpp');
+    history.replaceState(null, '', url.toString());
+    localStorage.removeItem(pendingKey);
+    await openAssignTargetPanel(item, _pendingQpp);
 }
 
 function resetView() {

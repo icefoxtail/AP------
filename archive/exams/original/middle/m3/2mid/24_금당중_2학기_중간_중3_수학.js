@@ -27,7 +27,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 세 직각삼각형은 모두 $\\angle A$가 같으므로 같은 각에 대한 삼각비가 서로 같다.\n조건 정리: $\\triangle ABC$, $\\triangle ADE$, $\\triangle AFG$에서 $\\angle A$의 맞은편 변, 이웃한 변, 빗변을 각각 확인한다.\n풀이 방향: 각 보기의 비를 $\\sin A$, $\\cos A$, $\\tan A$ 중 하나로 나타내어 옳고 그름을 판단한다.\n정석 풀이: ① $\\dfrac{ED}{AE}$와 $\\dfrac{GF}{AG}$는 모두 맞은편 변을 빗변으로 나눈 값이므로 $\\sin A$와 같다. ② $\\dfrac{AB}{CA}$와 $\\dfrac{AD}{EA}$는 모두 이웃한 변을 빗변으로 나눈 값이므로 $\\cos A$와 같다. ③ $\\dfrac{ED}{AE}=\\sin A$이다. ④ $\\triangle ABC$에서 $\\cos A=\\dfrac{AB}{AC}$이므로 $\\dfrac{AC}{BA}$는 $\\cos A$의 역수이다. ⑤ $\\dfrac{FG}{AF}=\\tan A$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q1.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q01.png"
   },
   {
     "id": 2,
@@ -55,7 +55,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 피타고라스 정리로 나머지 한 변을 구한 뒤 삼각비를 곱한다.\n조건 정리: $\\angle C=90^\\circ$, $AB=4$, $BC=\\sqrt7$이므로 $AB$는 빗변이다.\n풀이 방향: 먼저 $AC$를 구하고, $\\cos B$와 $\\tan B$를 각각 변의 길이의 비로 나타낸다.\n정석 풀이: 피타고라스 정리에 의하여 $AC^2=AB^2-BC^2=4^2-(\\sqrt7)^2=16-7=9$이므로 $AC=3$이다. 따라서 $\\cos B=\\dfrac{BC}{AB}=\\dfrac{\\sqrt7}{4}$이고 $\\tan B=\\dfrac{AC}{BC}=\\dfrac{3}{\\sqrt7}$이다. 그러므로 $\\cos B\\times\\tan B=\\dfrac{\\sqrt7}{4}\\times\\dfrac{3}{\\sqrt7}=\\dfrac34$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q2.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q02.png"
   },
   {
     "id": 3,
@@ -110,7 +110,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 그림에서 $OB$를 코사인 값으로 해석하고, 여각 관계 $\\cos46^\\circ=\\sin44^\\circ$를 이용한다.\n조건 정리: $OA$는 사분원의 반지름이므로 $OA=1$이고, $\\triangle OAB$는 $B$에서 직각이다.\n풀이 방향: 먼저 $OB=0.72$에 해당하는 각을 표에서 찾은 뒤, 구하려는 각의 코사인을 표에 있는 사인 값으로 바꾼다.\n정석 풀이: $\\cos x=\\dfrac{OB}{OA}=\\dfrac{0.72}{1}=0.72$이다. 표에서 코사인 값이 $0.72$인 각은 $44^\\circ$이므로 $x=44^\\circ$이다. 또한 $46^\\circ+44^\\circ=90^\\circ$이므로 $\\cos46^\\circ=\\sin44^\\circ$이다. 표에서 $\\sin44^\\circ=0.69$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q4.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q04.png"
   },
   {
     "id": 5,
@@ -164,7 +164,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 직각삼각형의 특수각을 차례로 이용하여 $BC$와 $BD$를 구한다.\n조건 정리: $\\triangle ABC$는 $B$에서 직각이고 $\\angle A=60^\\circ$이며, $\\triangle BCD$는 $C$에서 직각이고 $\\angle D=45^\\circ$이다.\n풀이 방향: 먼저 $\\triangle ABC$에서 $BC$를 구한 뒤, 직각이등변삼각형 $BCD$의 빗변을 구한다.\n정석 풀이: $\\tan60^\\circ=\\dfrac{BC}{AB}$이므로 $\\sqrt3=\\dfrac{BC}{\\sqrt2}$이다. 따라서 $BC=\\sqrt6$이다. $\\triangle BCD$는 두 예각이 모두 $45^\\circ$인 직각이등변삼각형이므로 $BC=CD=\\sqrt6$이다. 피타고라스 정리에 의하여 $BD=\\sqrt{(\\sqrt6)^2+(\\sqrt6)^2}=\\sqrt{12}=2\\sqrt3$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q6.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q06.png"
   },
   {
     "id": 7,
@@ -192,7 +192,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 정삼각형의 중선과 무게중심의 성질을 이용하여 $DH$를 구한 뒤, 직각삼각형 $ADH$에 피타고라스 정리를 적용한다.\n조건 정리: 밑면 $\\triangle BCD$는 한 변의 길이가 $6$인 정삼각형이고, $M$은 $BC$의 중점이다. 무게중심 $H$는 중선 $DM$을 꼭짓점 쪽에서 $2:1$로 나눈다.\n풀이 방향: $DM$, $DH$, $MH$를 순서대로 구하고, $AH\\perp$ 밑면이므로 직각삼각형 $ADH$에서 $AH$를 구한다.\n정석 풀이: $BM=CM=3$이므로 $DM=\\sqrt{6^2-3^2}=3\\sqrt3$이다. 무게중심의 성질에 의하여 $DH=\\dfrac23DM=2\\sqrt3$, $MH=\\dfrac13DM=\\sqrt3$이다. 또한 $AD=6$이고 $AH\\perp DH$이므로 $AH=\\sqrt{AD^2-DH^2}=\\sqrt{36-12}=2\\sqrt6$이다. 따라서 ④는 옳다. 한편 $MC=3$, $MD=3\\sqrt3$, $MH=\\sqrt3$이고 $\\tan x^\\circ=\\dfrac{AH}{DH}=\\sqrt2$이므로 나머지 보기는 옳지 않다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q7.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q07.png"
   },
   {
     "id": 8,
@@ -220,7 +220,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $B$에서 $AC$에 수선을 내려 두 개의 특수한 직각삼각형으로 나눈다.\n조건 정리: $\\angle A=180^\\circ-75^\\circ-60^\\circ=45^\\circ$이다.\n풀이 방향: $B$에서 $AC$에 내린 수선의 발을 $D$라 하고, 먼저 $\\triangle BCD$에서 $BD$를 구한 뒤 $45^\\circ$ 직각삼각형 $ABD$를 이용한다.\n정석 풀이: $BD\\perp AC$라 하면 $\\triangle BCD$에서 $BC=8$은 빗변이고 $\\angle C=60^\\circ$이다. 따라서 $BD=BC\\sin60^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다. $\\triangle ABD$에서 $\\angle A=45^\\circ$, $\\angle D=90^\\circ$이므로 $\\angle ABD=45^\\circ$이다. 따라서 $\\triangle ABD$는 직각이등변삼각형이고 $AB=BD\\sqrt2=4\\sqrt3\\times\\sqrt2=4\\sqrt6\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q8.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q08.png"
   },
   {
     "id": 9,
@@ -248,7 +248,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 내심은 각의 이등분선의 교점이므로 $\\triangle BIC$의 두 각을 원래 삼각형의 각으로 나타낸다.\n조건 정리: $\\angle C=90^\\circ$이고 $BI$, $CI$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.\n풀이 방향: $\\triangle BIC$의 내각의 합을 이용하여 $\\angle B$와 $\\angle A$를 구한 뒤 특수각의 삼각비를 비교한다.\n정석 풀이: $\\angle IBC=\\dfrac{B}{2}$, $\\angle ICB=45^\\circ$이다. 따라서 $\\dfrac{B}{2}+45^\\circ+105^\\circ=180^\\circ$이므로 $\\dfrac{B}{2}=30^\\circ$, 즉 $B=60^\\circ$이다. 그러므로 $A=30^\\circ$이다. $\\sin30^\\circ=\\dfrac12$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이므로 이 비에 $2\\sqrt3$을 곱하면 $\\sqrt3:3:2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q9.png"
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q09.png"
   },
   {
     "id": 10,
