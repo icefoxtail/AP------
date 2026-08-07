@@ -785,19 +785,25 @@ function openAddStudentToClass(classId) {
 // 유틸리티
 // ────────────────────────────────────────────
 
-function isTimetableAdminMode() {
-    if (isTimetableMonthArchiveMode()) return false;
+function isTimetableDirectorView() {
     if (typeof state === 'undefined') return false;
     var role = String(state.auth && state.auth.role || '').trim().toLowerCase();
     var scope = String(state.ui && state.ui.viewScope || '').trim().toLowerCase();
     var name = String(state.auth && state.auth.name || state.ui && state.ui.userName || '').trim();
-    return role === 'admin' ||
-        role === 'owner' ||
-        role === 'director' ||
-        role === 'master' ||
-        scope === 'admin' ||
+    if (role) {
+        return role === 'admin' ||
+            role === 'owner' ||
+            role === 'director' ||
+            role === 'master';
+    }
+    return scope === 'admin' ||
         name === '원장' ||
         /원장/.test(name);
+}
+
+function isTimetableAdminMode() {
+    if (isTimetableMonthArchiveMode()) return false;
+    return isTimetableDirectorView();
 }
 
 function ensureTimetableVersionUiState() {
@@ -2952,7 +2958,6 @@ function getTimetableStudentWithdrawalDate(student, mapping) {
 
 function isTimetableWithdrawnStudent(student, mapping) {
     if (!student) return false;
-    if (_ttIsStudentLeave(student)) return false;
     return isTimetableWithdrawnStatus(student.status || student.student_status || (mapping && mapping.status));
 }
 
@@ -2961,6 +2966,10 @@ function isRecentTimetableWithdrawnStudent(student, mapping, today) {
     var withdrawalDate = getTimetableStudentWithdrawalDate(student, mapping);
     var cutoff = getTimetableWithdrawalCutoffDateString(today);
     return !!(withdrawalDate && cutoff && withdrawalDate >= cutoff);
+}
+
+function shouldShowTimetableWithdrawnStudent(student, mapping, today) {
+    return isTimetableDirectorView() && isRecentTimetableWithdrawnStudent(student, mapping, today);
 }
 
 function getTimetableStudentChipClass(student, mapping) {
@@ -3057,19 +3066,19 @@ function getTimetableClassStudentsWithInfo(classId) {
             if (sIds.indexOf(String(s.id)) === -1) return false;
             if (isActiveStudentStatus(s.status)) return true;
             if (normalizeStudentStatus(s.status) === '휴원') return true;
-            if (isRecentTimetableWithdrawnStudent(s)) return true;
+            if (shouldShowTimetableWithdrawnStudent(s)) return true;
             if (isTimetableDraftMode() && s.status === '입학예정') return true;
-            if (String(s.memo || '').indexOf('#휴원') !== -1) return true;
+            if (!isTimetableWithdrawnStudent(s) && String(s.memo || '').indexOf('#휴원') !== -1) return true;
             if (isTimetableDraftMode() && String(s.memo || '').indexOf('#새학기') !== -1) return true;
             return false;
         })
         .map(function(s) {
-            var isWithdrawn = isRecentTimetableWithdrawnStudent(s);
+            var isWithdrawn = shouldShowTimetableWithdrawnStudent(s);
             return {
                 id: s.id,
                 name: s.name,
                 isNew: _ttIsStudentNew(s) || (isTimetableDraftMode() && s.status === '입학예정'),
-                isLeave: _ttIsStudentLeave(s),
+                isLeave: !isWithdrawn && _ttIsStudentLeave(s),
                 isWithdrawn: isWithdrawn,
                 withdrawalDate: isWithdrawn ? getTimetableStudentWithdrawalDate(s) : '',
                 enrollmentDate: _ttGetStudentJoinDate(s)

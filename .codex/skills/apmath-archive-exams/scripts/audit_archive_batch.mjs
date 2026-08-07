@@ -76,6 +76,12 @@ for (const relativeInput of args.exams) {
       const image = path.join(archive, ...String(q.image).replaceAll("\\", "/").split("/"));
       if (!fs.existsSync(image) || fs.statSync(image).size === 0) errors.push(`q${q.id}: missing image ${q.image}`);
     }
+    if (q.solutionImage) {
+      const solutionImage = path.join(archive, ...String(q.solutionImage).replaceAll("\\", "/").split("/"));
+      if (!fs.existsSync(solutionImage) || fs.statSync(solutionImage).size === 0) {
+        errors.push(`q${q.id}: missing solution image ${q.solutionImage}`);
+      }
+    }
   }
 
   const records = db.filter((entry) => entry.file === relative);
