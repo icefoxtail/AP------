@@ -258,6 +258,13 @@
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
         .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
+        .sol-image-wrap { display: block; margin: 10px auto 2px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+        .sol-image-wrap img { display: block; width: auto; max-width: 100%; max-height: 180px; height: auto; margin: 0 auto; object-fit: contain; }
+        .sol-image-wrap.image-small img { max-width: 48%; max-height: 105px; }
+        .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
+        .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
+        .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
 
         /* [Answer Grid] Styles */
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
@@ -1351,6 +1358,25 @@ function renderQuestionImageHTML(q) {
     return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
 }
 
+function escapeArchiveHtmlAttribute(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function renderSolutionImageHTML(q) {
+    if (!q || !q.solutionImage) return '';
+    const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
+    const alt = q.solutionImageAlt || `문항 ${q.id ?? ''} 해설 그래프`;
+    const caption = q.solutionImageCaption
+        ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
+        : '';
+    return `<span class="sol-image-wrap image-${size}"><img src="${escapeArchiveHtmlAttribute(q.solutionImage)}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+}
+
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
 
 function autoImageSizeClassFor(img) {
@@ -1815,7 +1841,7 @@ async function renderSol(area, data) {
                     )
                 )
             );
-            const solutionHtml = formatSolutionHtml(solText);
+            const solutionHtml = formatSolutionHtml(solText) + renderSolutionImageHTML(q);
             const box = document.createElement('div'); box.className = 'q-box sol-box';
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
@@ -1891,7 +1917,7 @@ async function renderSol(area, data) {
 
         box.innerHTML = `<div class="q-num">${i+1}.</div>
                          <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
-                         <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${formatSolutionHtml(solText)}</div></div>`;
+                         <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${formatSolutionHtml(solText)}${renderSolutionImageHTML(q)}</div></div>`;
 
         await placeSolutionBox(box);
     }

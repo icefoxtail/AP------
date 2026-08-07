@@ -20,7 +20,7 @@ Convert scanned exams into the repository's native archive format and do not dec
 2. Transcribe every question, choice, condition, score, answer, and diagram-dependent fact verbatim from the printed source. Do not summarize, paraphrase, normalize away instructions, or replace a displayed proof/condition block with a description of it. Preserve question labels, subparts, domains, qualifiers, and scores.
 3. Independently solve each question. Do not trust handwriting, OCR answers, or an existing candidate. Record source defects explicitly instead of inventing an answer.
 4. Create the candidate JS in the generated import directory and the production JS in `archive/exams/original/...` using the established local schema.
-5. Supply every indispensable graph, table, seating layout, photo, or geometry diagram. Save canonical images below `archive/assets/images/<exam-title>/` and set each question's `image` path. Crop generously enough that no printed line, label, axis, arrow, or boundary is clipped. When the user will clean contaminated source images manually, preserve the handwriting/marks and label the asset `cropped_for_manual_cleanup`; do not reconstruct it. Otherwise the final asset must contain only the necessary visual. A `hasVisualAsset` marker without a usable image, SVG, table, or faithful textual reconstruction is incomplete.
+5. Supply every indispensable graph, table, seating layout, photo, or geometry diagram. Save canonical images below `archive/assets/images/<exam-title>/` and set each question's `image` path. Crop generously enough that no printed line, label, axis, arrow, or boundary is clipped. When the user will clean contaminated source images manually, preserve the handwriting/marks and label the asset `cropped_for_manual_cleanup`; do not reconstruct it. Otherwise the final asset must contain only the necessary visual. A `hasVisualAsset` marker without a usable image, SVG, table, or faithful textual reconstruction is incomplete. When a graph or diagram is needed to understand the worked solution, create a separate instructional asset and register it with `solutionImage`; do not draw solution annotations onto the source problem image.
 6. Add or update the `archive/db.js` record. Require correct file, school, grade, year, semester, exam type, subject, content type, and question count.
 7. Rebuild `archive/question-index.js` with the repository tool.
 8. Run the bundled audit script, then perform browser QA for `exam`, `sol`, and `ans` modes.
@@ -34,6 +34,7 @@ Serve the repository locally and open `archive/engine.html` with the production 
 - In `exam` mode, confirm `.q-box` count equals the source count and every image has positive `naturalWidth`.
 - In `ans` mode, confirm `.ans-n` count equals the source count.
 - In `sol` mode, confirm the solution view loads and every question has a non-empty solution in the JS audit.
+- In `sol` mode, confirm every declared `solutionImage` loads, fits inside its solution column, and keeps labels legible in print layout.
 - In all modes, reject load-error text, broken images, console errors, and horizontal overflow.
 - Visually inspect all newly cropped assets in context.
 

@@ -365,6 +365,7 @@ for (const file of examFiles) {
             const level = String(q.level || '').trim();
             const tags = normalizeTags(q.tags);
             const vis = visualFlags(q);
+            const hasSolutionImage = Boolean(q.solutionImage);
 
             report.sourceQuestionCount += 1;
             rawRecords.push({
@@ -380,6 +381,7 @@ for (const file of examFiles) {
                 level,
                 tags,
                 hasImage: vis.hasVisual,
+                hasSolutionImage,
                 contentText,
                 choicesText,
                 // 내부 감사용(인덱스 출력에는 포함하지 않음)
@@ -472,6 +474,7 @@ const index = finalRecords.map(r => ({
     level: r.level,
     tags: r.tags,
     hasImage: r.hasImage,
+    hasSolutionImage: r.hasSolutionImage,
     contentText: r.contentText,
     choicesText: r.choicesText
 }));

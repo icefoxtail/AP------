@@ -53,6 +53,8 @@ const context = {
   },
   window: {},
   state: {
+    auth: { id: 'admin1', name: '원장', role: 'admin' },
+    ui: { viewScope: 'admin' },
     db: {
       students: [
         { id: 's_active', name: '강재원', status: '재원' },
@@ -64,6 +66,7 @@ const context = {
         { id: 's_missing', name: '최미상', status: 'withdrawn' },
         { id: 's_jejeok_recent', name: '제적최근', status: '제적', updated_at: '2026-06-02 10:00:00' },
         { id: 's_jejeok_old', name: '제적과거', status: '제적', updated_at: '2026-05-31 10:00:00' },
+        { id: 's_leave_then_withdrawn', name: '휴원후퇴원', status: '퇴원', memo: '#휴원', updated_at: '2026-06-03 10:00:00' },
         { id: 's_new', name: '신규', status: '재원', enrollment_date: '2026-06-12' },
         { id: 's_new_expired', name: 'ExpiredNew', status: '재원', enrollment_date: '2026-06-05' },
         { id: 's_new_memo_expired', name: 'ExpiredMemoNew', status: '재원', enrollment_date: '2026-06-05', memo: '#신입' }
@@ -77,6 +80,7 @@ const context = {
         { class_id: 'c1', student_id: 's_missing' },
         { class_id: 'c1', student_id: 's_jejeok_recent' },
         { class_id: 'c1', student_id: 's_jejeok_old' },
+        { class_id: 'c1', student_id: 's_leave_then_withdrawn' },
         { class_id: 'c1', student_id: 's_new' },
         { class_id: 'c1', student_id: 's_new_expired' },
         { class_id: 'c1', student_id: 's_new_memo_expired' }
@@ -155,9 +159,23 @@ assert(names.includes('김휴원'), 'paused student should remain visible');
 assert(names.includes('박최근'), 'recent withdrawn student should be visible');
 assert(names.includes('오경계'), 'withdrawal boundary date should be included');
 assert(names.includes('제적최근'), 'recent Jejeok student should be treated as withdrawn and visible');
+assert(names.includes('휴원후퇴원'), 'director timetable should show a recent withdrawn student even if a stale leave memo remains');
 assert(!names.includes('이오래'), 'withdrawn student older than two months should be hidden');
 assert(!names.includes('최미상'), 'withdrawn student without a withdrawal date should be hidden');
 assert(!names.includes('제적과거'), 'Jejeok student before June 1 should stay hidden');
+
+context.state.auth = { id: 'teacher1', name: '원장 대행', role: 'teacher' };
+context.state.ui.viewScope = 'admin';
+const teacherStudents = context.getTimetableClassStudentsWithInfo('c1');
+const teacherNames = teacherStudents.map(student => student.name);
+assert(teacherNames.includes('강재원'), 'teacher timetable should keep active students visible');
+assert(teacherNames.includes('김휴원'), 'teacher timetable should keep paused students visible');
+assert(!teacherNames.includes('박최근'), 'teacher timetable should hide a withdrawn student immediately');
+assert(!teacherNames.includes('제적최근'), 'teacher timetable should hide a recent Jejeok student immediately');
+assert(!teacherNames.includes('휴원후퇴원'), 'teacher timetable should hide a withdrawn student even if a stale leave memo remains');
+
+context.state.auth = { id: 'admin1', name: '원장', role: 'admin' };
+context.state.ui.viewScope = 'admin';
 
 const recent = students.find(student => student.id === 's_recent');
 assert.strictEqual(recent.isWithdrawn, true, 'recent withdrawn student should be marked');
@@ -166,6 +184,10 @@ assert.strictEqual(recent.withdrawalDate, '2026-06-02', 'recent withdrawn date s
 const recentJejeok = students.find(student => student.id === 's_jejeok_recent');
 assert.strictEqual(recentJejeok.isWithdrawn, true, 'recent Jejeok student should be marked as withdrawn');
 assert.strictEqual(recentJejeok.withdrawalDate, '2026-06-02', 'recent Jejeok date should fall back to updated_at');
+
+const leaveThenWithdrawn = students.find(student => student.id === 's_leave_then_withdrawn');
+assert.strictEqual(leaveThenWithdrawn.isWithdrawn, true, 'withdrawn status should take precedence over a stale leave memo');
+assert.strictEqual(leaveThenWithdrawn.isLeave, false, 'a withdrawn student should not keep the leave marker');
 
 const paused = students.find(student => student.id === 's_paused');
 assert.strictEqual(paused.isLeave, true, 'paused student should keep leave marker');
