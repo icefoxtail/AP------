@@ -25,7 +25,8 @@
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <script src="print_image_optimizer.js"></script>
+    <script src="print_image_optimizer.js?v=20260811.3"></script>
+    <script src="mathjax_render_loop.js?v=20260811.2"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -388,6 +389,21 @@ const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
+
+function rendererMode() {
+    return window.APRenderLoop?.rendererMode?.() || 'batch';
+}
+
+async function typesetMath(label, elements) {
+    if (window.APRenderLoop?.typeset) return window.APRenderLoop.typeset(label, elements);
+    if (window.MathJax?.typesetPromise) return window.MathJax.typesetPromise(elements);
+    return false;
+}
+
+async function measureRenderPhase(label, work) {
+    if (window.APRenderLoop?.measure) return window.APRenderLoop.measure(label, work);
+    return work();
+}
 
 const QR_PATCH = {
     enabled: true,
@@ -1251,14 +1267,29 @@ async function init() {
     document.body.appendChild(s);
 }
 
-function switchMode(mode) {
+let modeSwitchPending = false;
+async function switchMode(mode) {
     if (isQrSolutionMode() && mode !== 'sol') {
         mode = 'sol';
     }
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
     if (isQrSolutionMode()) url.searchParams.set('qr', '1');
-    window.location.href = url.toString();
+    if (rendererMode() === 'legacy') {
+        window.location.href = url.toString();
+        return;
+    }
+    if (modeSwitchPending || mode === AppState.mode) return;
+    modeSwitchPending = true;
+    try {
+        AppState.mode = mode;
+        history.pushState(null, '', url.toString());
+        document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${mode}`));
+        applyQrSolutionLockUI();
+        await render();
+    } finally {
+        modeSwitchPending = false;
+    }
 }
 
 // 백그라운드 탭에서는 브라우저가 rAF를 아예 멈춘다. 배열 로직이 전부 await raf()로
@@ -1539,7 +1570,7 @@ async function renderExam(area, data) {
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
     await applyAutoImageSizeClasses(staging);
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]); await raf();
+    await typesetMath('exam-staging', [staging]); await raf();
     for (const item of items) {
         const p = {}; p.proxyHeight_raw = item.box.scrollHeight; item.box.classList.add('fit-tight'); await raf();
         p.proxyHeight_tight = item.box.scrollHeight; item.box.classList.remove('fit-tight');
@@ -1649,14 +1680,14 @@ async function renderExam(area, data) {
                     }
                 }
             }
-            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
+            if (rendererMode() === 'legacy') await typesetMath('exam-slot-page', [page]);
             await raf();
             const allPageBoxes = page.querySelectorAll('.q-box');
             allPageBoxes.forEach(box => fitQuestionBox(box));
             if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
                 allPageBoxes.forEach(box => autoCompress(box));
                 await raf();
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
+                if (rendererMode() === 'legacy') await typesetMath('exam-slot-overflow', [page]);
             }
         }
         return;
@@ -1723,17 +1754,20 @@ async function renderExam(area, data) {
                 block.items.slice(split).forEach(it => bRight.appendChild(it.box.cloneNode(true)));
             }
         });
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]); await raf();
+        if (rendererMode() === 'legacy') await typesetMath('exam-page', [page]); await raf();
         const allPageBoxes = page.querySelectorAll('.q-box'); allPageBoxes.forEach(b => fitQuestionBox(b));
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
             allPageBoxes.forEach(b => autoCompress(b)); await raf();
-            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
+            if (rendererMode() === 'legacy') await typesetMath('exam-page-overflow', [page]);
         }
     }
 }
 
 async function renderSol(area, data) {
     {
+        const staging = document.getElementById('staging');
+        staging.style.width = '83mm';
+        staging.innerHTML = '';
         let pNum = 1;
         let cols;
         let colIdx = 0;
@@ -1753,18 +1787,30 @@ async function renderSol(area, data) {
         const renderSplitSolutionBox = async (sourceBox, qNo) => {
             const originalExp = sourceBox.querySelector('.sol-exp');
             const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
+            const preparedChunks = chunks.map(chunkHtml => {
+                const chunk = document.createElement('span');
+                chunk.className = 'sol-chunk';
+                chunk.innerHTML = chunkHtml;
+                return chunk;
+            });
+            if (rendererMode() === 'batch') {
+                const chunkStaging = document.createElement('div');
+                chunkStaging.style.width = '83mm';
+                preparedChunks.forEach(chunk => chunkStaging.appendChild(chunk));
+                staging.appendChild(chunkStaging);
+                await typesetMath('solution-split-staging', [chunkStaging]);
+            }
             let shell = makeLongSolutionShell(sourceBox, qNo, false);
             let exp = shell.querySelector('.sol-exp');
             let targetCol = cols[colIdx];
             targetCol.appendChild(shell);
 
-            for (const chunkHtml of chunks) {
-                const chunk = document.createElement('span');
-                chunk.className = 'sol-chunk';
-                chunk.innerHTML = chunkHtml;
+            for (const chunk of preparedChunks) {
                 exp.appendChild(chunk);
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
-                await raf();
+                if (rendererMode() === 'legacy') {
+                    await typesetMath('solution-split-chunk', [chunk]);
+                    await raf();
+                }
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
 
                 if (exp.children.length > 1) {
@@ -1774,8 +1820,7 @@ async function renderSol(area, data) {
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     exp.appendChild(chunk);
-                    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
-                    await raf();
+                    if (rendererMode() === 'legacy') await raf();
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     autoCompress(shell);
@@ -1787,13 +1832,12 @@ async function renderSol(area, data) {
             while (true) {
                 const targetCol = cols[colIdx];
                 targetCol.appendChild(box);
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+                if (rendererMode() === 'legacy') await typesetMath('solution-box', [box]);
                 await raf();
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
                 autoCompress(box);
                 await raf();
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
                 await raf();
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
@@ -1807,9 +1851,7 @@ async function renderSol(area, data) {
             }
         };
 
-        ({ cols } = makeGridPage());
-        for (let i = 0; i < data.length; i++) {
-            const q = data[i];
+        const solutionBoxes = data.map((q, i) => {
             const solutionText = q.solution || q.explanation || q.sol || '';
             const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
             const reminderContent = sanitizeProtectedSegments(
@@ -1825,7 +1867,15 @@ async function renderSol(area, data) {
             const box = document.createElement('div'); box.className = 'q-box sol-box';
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
-            await placeSolutionBox(box, i + 1);
+            staging.appendChild(box);
+            return box;
+        });
+        await Promise.all(Array.from(staging.querySelectorAll('img')).map(waitForQuestionImage));
+        if (rendererMode() === 'batch') await typesetMath('solution-staging', [staging]);
+
+        ({ cols } = makeGridPage());
+        for (let i = 0; i < solutionBoxes.length; i++) {
+            await placeSolutionBox(solutionBoxes[i], i + 1);
         }
         return;
     }
@@ -1854,14 +1904,14 @@ async function renderSol(area, data) {
         const box = document.createElement('div'); box.className = 'q-box sol-box';
         box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${formatSolutionHtml(solutionText)}${renderSolutionImageHTML(q)}</div></div>`;
         cols[colIdx].appendChild(box);
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
+        await typesetMath('solution-reminder-box', [box]); await raf();
         if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
             autoCompress(box); await raf();
             if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
                 cols[colIdx].removeChild(box);
                 if (colIdx === 0) { colIdx = 1; cols[colIdx].appendChild(box); }
                 else { ({ cols } = makeGridPage()); colIdx = 0; cols[colIdx].appendChild(box); }
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
+                await raf();
             }
         }
     }
@@ -1910,7 +1960,7 @@ async function fitAnswerPages(area, data) {
     for (const perPage of [32, 24, 16]) {
         area.innerHTML = '';
         renderAns(area, data, perPage);
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
+        await typesetMath('answer-refit', [area]);
         if (!answerPagesOverflow(area)) return;
     }
 }
@@ -1941,9 +1991,11 @@ window.__AP_RENDER_READY__ = Promise.resolve();
 async function render() {
     let markRendered;
     window.__AP_RENDER_READY__ = new Promise(resolve => { markRendered = resolve; });
+    window.APRenderLoop?.start({ mode: AppState.mode, questions: AppState.data.length });
     try {
         await renderBody();
     } finally {
+        window.APRenderLoop?.finish(document.getElementById('print-area'));
         markRendered();
     }
 }
@@ -1951,19 +2003,23 @@ async function render() {
 async function renderBody() {
     await waitForMathJaxOrContinue();
     const area = document.getElementById('print-area');
+    const staging = document.getElementById('staging');
+    if (rendererMode() === 'batch' && window.MathJax?.typesetClear) {
+        try { window.MathJax.typesetClear([area, staging]); } catch (error) { console.warn('[engine] 이전 수식 정리 실패', error); }
+    }
     area.innerHTML = '';
     syncQrOutputControls();
 
     if (AppState.mode === 'ans') {
-        renderAns(area, AppState.data);
+        await measureRenderPhase('answer-layout', async () => renderAns(area, AppState.data));
     } else if (AppState.mode === 'sol') {
-        await renderSol(area, AppState.data);
+        await measureRenderPhase('solution-layout', () => renderSol(area, AppState.data));
     } else {
-        await renderExam(area, AppState.data);
+        await measureRenderPhase('exam-layout', () => renderExam(area, AppState.data));
     }
 
-    if (window.MathJax?.typesetPromise) {
-        await MathJax.typesetPromise([area]);
+    if (AppState.mode === 'ans' || rendererMode() === 'legacy') {
+        await typesetMath('render-final', [area]);
     }
 
     if (AppState.mode === 'ans') {
@@ -1979,9 +2035,13 @@ async function renderBody() {
 }
 
 // PNG/WebP의 투명도는 제거하되 원본 해상도 전체를 복제하지 않는다. 화면의 실제 인쇄 크기를
-// 300dpi로 환산한 만큼만 캔버스를 만들어 Chrome/PCL 스풀의 메모리 사용을 제한한다.
-function flattenPrintImagesForOpaquePrint() {
-    return window.APPrintImageOptimizer?.prepare(document.getElementById('print-area')) || { restore() {} };
+// 300dpi로 환산한 공유 JPEG를 만들어 반복 이미지와 Chrome/PCL 스풀의 메모리 사용을 제한한다.
+async function flattenPrintImagesForOpaquePrint() {
+    const printParams = new URLSearchParams(window.location.search);
+    if (printParams.get('printopt') === 'off') {
+        return { summary: { mode: 'original', skipped: true }, restore() {} };
+    }
+    return await window.APPrintImageOptimizer?.prepare(document.getElementById('print-area')) || { summary: { mode: 'unavailable' }, restore() {} };
 }
 
 // 인쇄 전 준비: 렌더·폰트·이미지·수식이 모두 확정된 뒤에만 window.print()를 부른다.
@@ -1993,7 +2053,8 @@ async function safePrint() {
     const btn = document.getElementById('btn-print');
     const label = btn ? btn.textContent : '';
     if (btn) { btn.disabled = true; btn.textContent = '인쇄 준비 중…'; }
-    let optimizedImages = { restore() {} };
+    const printStartedAt = performance.now();
+    let optimizedImages = { summary: {}, restore() {} };
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
         await Promise.race([window.__AP_RENDER_READY__, limit(20000)]);
@@ -2008,8 +2069,12 @@ async function safePrint() {
                 limit(5000)
             ]);
         }
-        if (window.MathJax?.typesetPromise) await Promise.race([MathJax.typesetPromise(), limit(5000)]);
-        optimizedImages = flattenPrintImagesForOpaquePrint();
+        if (rendererMode() === 'legacy' && window.MathJax?.typesetPromise) {
+            await Promise.race([typesetMath('print-preflight', undefined), limit(5000)]);
+        } else if (window.APRenderLoop?.unrenderedMathCount(document.getElementById('print-area')) > 0) {
+            await Promise.race([typesetMath('print-recovery', [document.getElementById('print-area')]), limit(5000)]);
+        }
+        optimizedImages = await flattenPrintImagesForOpaquePrint();
         // requestAnimationFrame은 탭이 백그라운드/스로틀 상태면 안 풀려 "준비 중"에서 멈출 수 있다.
         // setTimeout은 항상 발화하므로 rAF 대신 짧게 한 틱만 양보한다.
         await limit(60);
@@ -2018,6 +2083,17 @@ async function safePrint() {
     }
     if (btn) { btn.disabled = false; btn.textContent = label; }
     printPending = false;
+    const printParams = new URLSearchParams(window.location.search);
+    const printMetrics = {
+        readyToPrintMs: Number((performance.now() - printStartedAt).toFixed(1)),
+        imageOptimization: optimizedImages.summary || {},
+        dryRun: printParams.get('printDryRun') === '1'
+    };
+    document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
+    if (printMetrics.dryRun) {
+        optimizedImages.restore();
+        return;
+    }
     try {
         window.print();
     } finally {

@@ -21,11 +21,22 @@ test('print image optimizer never upscales a small source', () => {
 test('archive engines use the shared restorable print optimizer', () => {
   for (const filename of ['engine.html', 'mixed_engine.html']) {
     const html = fs.readFileSync(path.join(root, 'archive', filename), 'utf8');
-    assert.match(html, /<script src="print_image_optimizer\.js"><\/script>/);
+    assert.match(html, /<script src="print_image_optimizer\.js\?v=\d+\.\d+"><\/script>/);
     assert.match(html, /APPrintImageOptimizer\?\.prepare/);
+    assert.match(html, /await flattenPrintImagesForOpaquePrint\(\)/);
+    assert.match(html, /printDryRun/);
+    assert.match(html, /printopt/);
     assert.match(html, /optimizedImages\.restore\(\)/);
     assert.doesNotMatch(html, /canvas\.width = img\.naturalWidth/);
   }
+});
+
+test('print optimizer reuses one opaque JPEG raster for repeated source images', () => {
+  const source = fs.readFileSync(path.join(root, 'archive', 'print_image_optimizer.js'), 'utf8');
+  assert.match(source, /const rasterCache = new Map\(\)/);
+  assert.match(source, /summary\.cacheHits \+= 1/);
+  assert.match(source, /canvasToBlob\(canvas, 'image\/jpeg'/);
+  assert.match(source, /global\.URL\.revokeObjectURL\(url\)/);
 });
 
 test('vector and already opaque JPEG assets are not rasterized again', () => {
