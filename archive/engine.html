@@ -25,6 +25,7 @@
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="print_image_optimizer.js"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -1977,34 +1978,10 @@ async function renderBody() {
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
 }
 
-// 문항 그림(PNG)이 알파 채널을 가지면(대부분 알파=255로 실제 투명 영역은 없음) 브라우저가
-// 투명도 그룹을 만들고, 프린터(PCL) 드라이버가 이를 장치 DPI로 플래트닝하다 메모리가
-// 폭발해 스풀이 멈추는 경우가 있다. 인쇄 직전 그림을 흰 배경 위 불투명 캔버스로 바꿔
-// 알파 채널을 없앤다. 원본 픽셀을 자연 해상도로 1:1로 그리므로 화질 손실은 없다.
+// PNG/WebP의 투명도는 제거하되 원본 해상도 전체를 복제하지 않는다. 화면의 실제 인쇄 크기를
+// 300dpi로 환산한 만큼만 캔버스를 만들어 Chrome/PCL 스풀의 메모리 사용을 제한한다.
 function flattenPrintImagesForOpaquePrint() {
-    const imgs = Array.from(document.querySelectorAll('#print-area img'));
-    for (const img of imgs) {
-        if (!img.naturalWidth || !img.complete) continue;
-        try {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            const ctx = canvas.getContext('2d', { alpha: false });
-            ctx.fillStyle = '#fff';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0);
-            const cs = getComputedStyle(img);
-            canvas.style.width = cs.width;
-            canvas.style.height = cs.height;
-            canvas.style.display = cs.display === 'inline' ? 'inline-block' : cs.display;
-            canvas.style.verticalAlign = cs.verticalAlign;
-            canvas.className = img.className;
-            img.replaceWith(canvas);
-        } catch (error) {
-            // cross-origin 등으로 실패하면 원본 그대로 두고 인쇄를 계속한다.
-            console.warn('[engine] 그림 불투명화 실패 — 원본으로 인쇄합니다.', error);
-        }
-    }
+    return window.APPrintImageOptimizer?.prepare(document.getElementById('print-area')) || { restore() {} };
 }
 
 // 인쇄 전 준비: 렌더·폰트·이미지·수식이 모두 확정된 뒤에만 window.print()를 부른다.
@@ -2016,6 +1993,7 @@ async function safePrint() {
     const btn = document.getElementById('btn-print');
     const label = btn ? btn.textContent : '';
     if (btn) { btn.disabled = true; btn.textContent = '인쇄 준비 중…'; }
+    let optimizedImages = { restore() {} };
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
         await Promise.race([window.__AP_RENDER_READY__, limit(20000)]);
@@ -2031,7 +2009,7 @@ async function safePrint() {
             ]);
         }
         if (window.MathJax?.typesetPromise) await Promise.race([MathJax.typesetPromise(), limit(5000)]);
-        flattenPrintImagesForOpaquePrint();
+        optimizedImages = flattenPrintImagesForOpaquePrint();
         // requestAnimationFrame은 탭이 백그라운드/스로틀 상태면 안 풀려 "준비 중"에서 멈출 수 있다.
         // setTimeout은 항상 발화하므로 rAF 대신 짧게 한 틱만 양보한다.
         await limit(60);
@@ -2040,7 +2018,11 @@ async function safePrint() {
     }
     if (btn) { btn.disabled = false; btn.textContent = label; }
     printPending = false;
-    window.print();
+    try {
+        window.print();
+    } finally {
+        optimizedImages.restore();
+    }
 }
 window.safePrint = safePrint;
 
