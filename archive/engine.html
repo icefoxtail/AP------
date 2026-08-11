@@ -247,11 +247,11 @@
         }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
-        .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
+        .ans-cell { border-bottom: 1px solid #eee; display: flex; min-height: 40px; height: auto; align-items: center; padding: 6px 10px; box-sizing: border-box; break-inside: avoid; }
         .ans-cell-empty { visibility: hidden; }
         .ans-cell.group-end { border-bottom: 2px solid #6b7280; } /* 4문제(한 장)마다 채점 구분선 */
-        .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
-        .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
+        .ans-n { width: 40px; flex: 0 0 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
+        .ans-v { flex: 1; min-width: 0; font-weight: bold; font-size: 10.5pt; line-height: 1.5; overflow-wrap: anywhere; }
 
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
         .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
@@ -1124,7 +1124,7 @@ function makePage(area, type, pNum) {
 
         page.appendChild(header);
     }
-    const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
+    const body = document.createElement('div'); body.className = 'page-body'; body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body); page.body = body;
     const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
     pageNum.textContent = `- ${pNum} -`; page.appendChild(pageNum);
@@ -1866,8 +1866,13 @@ async function renderSol(area, data) {
     }
 }
 
-function renderAns(area, data) {
-    const PER_PAGE = 40; let pCount = 1; // 푸터와 겹치지 않도록 열당 20개(4문제 5세트)로 제한한다
+function formatGridAnswer(answer) {
+    const value = String(answer ?? '–').replace(/\s+\/\s+(?=\(\d+\))/g, '<br>');
+    return wrapLatex(value);
+}
+
+function renderAns(area, data, perPage = 40) {
+    const PER_PAGE = perPage; let pCount = 1; // 기본 열당 20개, 실제 높이가 넘치면 renderBody에서 자동 축소한다
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
         const p = makePage(area, 'ans', pCount++);
@@ -1885,11 +1890,27 @@ function renderAns(area, data) {
                 }
                 const num = start + idx + 1;
                 if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
-                u.innerHTML = `<div class="ans-n">${num}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
+                u.innerHTML = `<div class="ans-n">${num}.</div><div class="ans-v">${formatGridAnswer(chunk[idx].answer)}</div>`;
                 grid.appendChild(u);
             });
         }
         p.body.appendChild(grid);
+    }
+}
+
+function answerPagesOverflow(area) {
+    return Array.from(area.querySelectorAll('.page')).some(page =>
+        page.querySelector('.page-body')?.scrollHeight > page.querySelector('.page-body')?.clientHeight + 2
+    );
+}
+
+async function fitAnswerPages(area, data) {
+    if (!answerPagesOverflow(area)) return;
+    for (const perPage of [32, 24, 16]) {
+        area.innerHTML = '';
+        renderAns(area, data, perPage);
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
+        if (!answerPagesOverflow(area)) return;
     }
 }
 
@@ -1942,6 +1963,10 @@ async function renderBody() {
 
     if (window.MathJax?.typesetPromise) {
         await MathJax.typesetPromise([area]);
+    }
+
+    if (AppState.mode === 'ans') {
+        await fitAnswerPages(area, AppState.data);
     }
 
     injectQrToLastExamPage(area);

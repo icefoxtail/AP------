@@ -1997,6 +1997,25 @@ function syncClassDailyRecordToState(classId, dateStr, record, progressRows) {
         .filter(p => !staleIds.has(String(p.record_id || '')))
         .concat(Array.isArray(progressRows) ? progressRows : []);
 
+    if (!Array.isArray(state.db.timetable_class_daily_records)) state.db.timetable_class_daily_records = [];
+    if (!Array.isArray(state.db.timetable_class_daily_progress)) state.db.timetable_class_daily_progress = [];
+    const timetableCandidates = state.db.timetable_class_daily_records
+        .filter(r => String(r.class_id) === cid)
+        .concat([record])
+        .sort((a, b) =>
+            String(b.date || '').localeCompare(String(a.date || '')) ||
+            String(b.id || '').localeCompare(String(a.id || ''))
+        );
+    const timetableLatest = timetableCandidates[0] || record;
+    state.db.timetable_class_daily_records = state.db.timetable_class_daily_records
+        .filter(r => String(r.class_id) !== cid)
+        .concat([timetableLatest]);
+    if (String(timetableLatest.id || '') === String(record.id || '')) {
+        state.db.timetable_class_daily_progress = state.db.timetable_class_daily_progress
+            .filter(p => !staleIds.has(String(p.record_id || '')))
+            .concat(Array.isArray(progressRows) ? progressRows : []);
+    }
+
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
     return true;
 }

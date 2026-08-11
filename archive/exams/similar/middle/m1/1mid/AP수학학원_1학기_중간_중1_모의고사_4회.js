@@ -586,7 +586,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "다음을 계산하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$3-\\dfrac{1}{2}\\left[2x-6-\\{4+2(-5x-4)\\}\right]$</div>",
+    "content": "다음을 계산하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$3-\\dfrac{1}{2}\\left[2x-6-\\{4+2(-5x-4)\\}\\right]$</div>",
     "choices": [],
     "answer": "$-6x+4$",
     "solution": ""

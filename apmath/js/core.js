@@ -123,6 +123,7 @@ let state = {
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
         timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
+        timetable_class_daily_records: [], timetable_class_daily_progress: [],
         parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: [],
         timetable_conflict_logs: [], timetable_conflict_overrides: []
     }
@@ -821,6 +822,8 @@ async function loadData(isInitial = false) {
         timetable_class_students: Array.isArray(data.timetable_class_students) ? data.timetable_class_students : [],
         timetable_students: Array.isArray(data.timetable_students) ? data.timetable_students : [],
         timetable_class_textbooks: Array.isArray(data.timetable_class_textbooks) ? data.timetable_class_textbooks : [],
+        timetable_class_daily_records: Array.isArray(data.timetable_class_daily_records) ? data.timetable_class_daily_records : [],
+        timetable_class_daily_progress: Array.isArray(data.timetable_class_daily_progress) ? data.timetable_class_daily_progress : [],
         students: normalizeStudentRows(data.students),
         class_students: Array.isArray(data.class_students) ? data.class_students : [],
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
@@ -877,6 +880,8 @@ async function refreshDataOnly() {
         timetable_class_students: Array.isArray(data.timetable_class_students) ? data.timetable_class_students : (state.db.timetable_class_students || []),
         timetable_students: Array.isArray(data.timetable_students) ? data.timetable_students : (state.db.timetable_students || []),
         timetable_class_textbooks: Array.isArray(data.timetable_class_textbooks) ? data.timetable_class_textbooks : (state.db.timetable_class_textbooks || []),
+        timetable_class_daily_records: Array.isArray(data.timetable_class_daily_records) ? data.timetable_class_daily_records : (state.db.timetable_class_daily_records || []),
+        timetable_class_daily_progress: Array.isArray(data.timetable_class_daily_progress) ? data.timetable_class_daily_progress : (state.db.timetable_class_daily_progress || []),
         attendance: Array.isArray(data.attendance) ? data.attendance : [], 
         homework: Array.isArray(data.homework) ? data.homework : [], 
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 

@@ -2807,14 +2807,24 @@ function getTimetableActiveTextbooks(classId) {
 
 function getTimetableRecentProgress(classId) {
     var db = _getAllDb();
-    var records = (db.class_daily_records || [])
+    var recordById = {};
+    var progressById = {};
+    (db.timetable_class_daily_records || []).concat(db.class_daily_records || []).forEach(function(row) {
+        if (row && row.id) recordById[String(row.id)] = row;
+    });
+    (db.timetable_class_daily_progress || []).concat(db.class_daily_progress || []).forEach(function(row) {
+        if (row && row.id) progressById[String(row.id)] = row;
+    });
+    var recordSource = Object.keys(recordById).map(function(id) { return recordById[id]; });
+    var progressSource = Object.keys(progressById).map(function(id) { return progressById[id]; });
+    var records = recordSource
         .filter(function(r) { return String(r.class_id) === String(classId); })
         .sort(function(a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
 
     if (records.length === 0) return null;
 
     var latest = records[0];
-    var progresses = (db.class_daily_progress || [])
+    var progresses = progressSource
         .filter(function(p) { return String(p.record_id) === String(latest.id); });
 
     if (progresses.length === 0) return null;
