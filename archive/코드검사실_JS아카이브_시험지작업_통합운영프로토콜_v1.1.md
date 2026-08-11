@@ -1,7 +1,7 @@
 # 코드검사실 / JS아카이브 시험지 작업 통합 운영 프로토콜
 ## PDF·페이지 이미지 기반 신규 제작 / 기존 JS 검수·수정 / 이미지 에셋 / 1·2·3차 검수 / 최종 ZIP 봉인 전 단계
 ### Integrated Clean Edition — 2026-08-10
-### Revision: 풍덕중·순천여중·향림중 실전 작업 피드백 반영 — 기존 연향중·금당중 보강 유지 + PRE-RECHECK LINT / 수정 에셋 STRUCTURE TYPE LOCK / POST-ASSET-WRITE VISUAL GATE / NO DESTRUCTIVE MASKING / ADJACENT SMALL-PRINT OWNERSHIP LOCK / ALL-ASSET LABEL INVENTORY SWEEP / SOURCE REPAIR CANDIDATE IMPACT MATRIX / SOURCE REPAIR CONSISTENCY LOCK / DELIVERY SCOPE LOCK / LEVEL BORDERLINE STABILITY LOCK / 단일 REVIEW LEDGER / HARD FAIL·MINOR WARN 분리 / MASTER_ACCEPTED_PASS
+### Revision: 풍덕중·순천여중·향림중 실전 작업 피드백 반영 — 기존 연향중·금당중 보강 유지 + PRE-RECHECK LINT / 수정 에셋 STRUCTURE TYPE LOCK / POST-ASSET-WRITE VISUAL GATE / NO DESTRUCTIVE MASKING / ADJACENT SMALL-PRINT OWNERSHIP LOCK / ALL-ASSET LABEL INVENTORY SWEEP / SOURCE REPAIR CANDIDATE IMPACT MATRIX / SOURCE REPAIR CONSISTENCY LOCK / DELIVERY SCOPE LOCK / LEVEL BORDERLINE STABILITY LOCK / 단일 REVIEW LEDGER / HARD FAIL·MINOR WARN 분리 / MASTER_ACCEPTED_PASS / ZIP UTF-8 ENTRY FLAG LOCK / ZIP PATH ROUND-TRIP LOCK
 
 ---
 
@@ -1771,21 +1771,85 @@ reports/sha256_manifest.txt
 - Unix UID/GID extra metadata 제거
 - 심볼릭 링크 금지
 - 한글 내부 파일명은 UTF-8 ZIP 표준 방식으로 기록
+- **한글 등 비ASCII 문자가 포함된 모든 ZIP entry는 General Purpose Bit Flag의 UTF-8 플래그(bit 11, `0x800`)가 실제로 설정되어 있어야 한다.**
 - JS 파일은 ZIP 루트에 실제 파일로 존재
 - 중첩 최상위 폴더 없음
 - 모든 JS/PNG 파일 크기 0 byte 금지
 
+### 19-1-1. ZIP UTF-8 ENTRY FLAG LOCK — 한글 내부경로 인코딩 강제 검사
+
+한글 파일명·폴더명이 ZIP 내부에서 깨지면 `testzip()`과 파일 SHA가 정상이어도 Windows 사용자에게는 파일이 보이지 않거나 깨진 이름으로 표시될 수 있다.
+따라서 **ZIP 내용 무결성 검사와 파일명 인코딩 검사를 별개 게이트로 수행**한다.
+
+강제 규칙:
+1. ZIP 중앙 디렉터리의 모든 entry를 열거한다.
+2. entry 이름에 ASCII 이외 문자가 1자라도 있으면 `flag_bits & 0x800 != 0`인지 실제 검사한다.
+3. 비ASCII entry의 UTF-8 플래그가 하나라도 꺼져 있으면 `WINDOWS_ZIP_UTF8_FLAG_FAIL`로 기록하고 G7 PACKAGE FAIL 처리한다.
+4. 깨진 이름을 CP437/CP949 등으로 추정 복구하여 PASS시키지 않는다. **최종 ZIP 자체가 올바른 UTF-8 이름을 보유해야 한다.**
+5. 외부 ZIP 파일명만 영문이라고 내부 한글 경로 검사를 생략하지 않는다.
+6. ASCII-only entry는 `0x800` 미설정 자체를 오류로 보지 않는다.
+
+필수 기록값:
+```text
+non_ascii_entry_count
+utf8_flag_pass_count
+utf8_flag_fail_count
+```
+
+PASS 조건:
+```text
+utf8_flag_fail_count = 0
+```
+
+### 19-1-2. ZIP PATH ROUND-TRIP LOCK — 압축 전·중앙디렉터리·재해제 경로 3자 일치
+
+파일 내용 SHA만 같아도 **경로명 자체가 변형되면 패키지 FAIL**이다.
+최종 ZIP은 아래 세 경로 집합을 별도로 수집하여 정렬 후 완전 일치 비교한다.
+
+```text
+A. 압축 전 payload 상대경로 목록
+B. ZIP 중앙 디렉터리에서 UTF-8로 해석된 entry 상대경로 목록
+C. 새 폴더 extractall() 후 실제 생성된 상대경로 목록
+```
+
+강제 규칙:
+1. `A == B == C`가 바이트/문자열 의미 기준으로 모두 일치해야 한다.
+2. 한글 파일명·폴더명, 공백, 괄호, 밑줄, 숫자, 확장자를 모두 비교한다.
+3. 파일 수가 같아도 경로 문자열이 하나라도 다르면 FAIL이다.
+4. 동일 내용이 깨진 다른 이름으로 추출된 경우 SHA가 같아도 PASS 금지다.
+5. 루트 JS 파일명과 `assets/images/{시험지명}/` 폴더명은 별도 핵심 경로로 한 번 더 확인한다.
+6. 경로 비교는 디렉터리 엔트리 수가 아니라 **payload 파일 상대경로**를 기준으로 한다.
+
+필수 기록값:
+```text
+prepack_path_count
+central_directory_payload_path_count
+extracted_payload_path_count
+path_roundtrip_mismatch_count
+root_js_name_match
+asset_exam_folder_name_match
+```
+
+PASS 조건:
+```text
+path_roundtrip_mismatch_count = 0
+root_js_name_match = true
+asset_exam_folder_name_match = true
+```
+
 필수 검증:
 1. ZIP 중앙 디렉터리 파일 목록을 실제 출력하여 확인
-2. ZIP 루트 `{시험지명}.js` 존재 확인
-3. `zipfile.testzip()` PASS
-4. 새 폴더에 실제 `extractall()`
-5. 압축 전후 payload file 수 동일
-6. 압축 전후 상대 경로/파일명 동일
-7. 압축 전후 전 파일 SHA-256 동일
-8. 압축 해제본 JS `node --check`
-9. PNG 실파일 열기 가능 여부
-10. 최종 ZIP 안에 숨김·임시·Unix 전용 링크 항목 없음
+2. **19-1-1 `ZIP UTF-8 ENTRY FLAG LOCK` PASS**
+3. **19-1-2 `ZIP PATH ROUND-TRIP LOCK`에서 압축 전 ↔ 중앙 디렉터리 ↔ 실제 재해제 경로 3자 완전 일치**
+4. ZIP 루트 `{시험지명}.js` 존재 확인
+5. `zipfile.testzip()` PASS
+6. 새 폴더에 실제 `extractall()`
+7. 압축 전후 payload file 수 동일
+8. 압축 전후 상대 경로/파일명 동일
+9. 압축 전후 전 파일 SHA-256 동일
+10. 압축 해제본 JS `node --check`
+11. PNG 실파일 열기 가능 여부
+12. 최종 ZIP 안에 숨김·임시·Unix 전용 링크 항목 없음
 
 ZIP 카운트는 다음 3개를 분리 기록한다.
 ```text
@@ -1801,7 +1865,9 @@ total_zip_entry_count     # 파일 + 디렉터리 전체 엔트리 수
 - 기존 ZIP을 정상으로 가정하지 않는다.
 - 기준 JS와 에셋을 다시 찾는다.
 - Windows 호환 조건으로 새 ZIP을 생성한다.
-- 새 ZIP을 다시 압축 해제하여 파일 가시성·파일 수·SHA를 검증한다.
+- 새 ZIP 중앙 디렉터리에서 비ASCII entry의 `0x800` UTF-8 플래그를 다시 검사한다.
+- 새 ZIP을 다시 압축 해제하여 **압축 전 ↔ ZIP 중앙 디렉터리 ↔ 재해제 상대경로 3자 일치**를 다시 검증한다.
+- 파일 가시성·파일 수·전 파일 SHA를 다시 검증한다.
 - 필요하면 **내용이 동일한 영문 외부 ZIP 파일명 사본**을 추가 제공할 수 있다.
 
 외부 ZIP 파일명을 영문으로 바꾸더라도 내부 JS명·`examTitle`·에셋 경로는 승인 없이 변경하지 않는다.
@@ -2119,6 +2185,9 @@ MINOR WARN으로 낮출 수 없는 예:
 - ZIP payload_file_count
 - ZIP directory_entry_count
 - ZIP total_zip_entry_count
+- ZIP non_ascii_entry_count / utf8_flag_fail_count
+- ZIP path_roundtrip_mismatch_count
+- ZIP root_js_name_match / asset_exam_folder_name_match
 - 실제 압축 해제 검사
 - delivery_scope: ZIP_ONLY / ZIP_PLUS_STANDALONE
 - 단독 JS 제공 시 standalone_js_sha256 / zip_internal_js_sha256 / byte_equal
@@ -2215,4 +2284,4 @@ reports/ASSET_CONTACT_SHEET.jpg
 
 # 28. 운영 한 줄 요약
 
-> **원본은 문자·기호·자료 주변 단위·출처까지 잠그고, 정답은 독립적으로 다시 풀며, 수정 에셋은 구조타입부터 잠근다. 수정 PNG는 저장 직후와 ZIP 추출 후 다시 열고, 에셋 작업이 1건이라도 있었으면 최종에는 모든 PNG의 EXPECTED LABEL INVENTORY를 전수 대조한다. 핵심 도형에는 파괴적 마스킹을 하지 않는다. SOURCE REPAIR는 후보별 영향도를 비교한 뒤 승인안을 content·image·choices·answer·solution 전 계층에 동기화한다. 난이도 경계 문항은 근거 없는 반복 변경을 막고, 수정 직후 PRE-RECHECK LINT로 기계 오류를 먼저 제거한다. 최종 전달은 DELIVERY SCOPE를 먼저 잠그며, 현재상태 보고서는 단일 REVIEW LEDGER와 동기화한다. HARD FAIL과 MINOR WARN을 분리하되 HARD FAIL은 타협하지 않고, 경미사항만 마스터 승인으로 종료하며, 최종 PASS는 새로 푼 ZIP 추출본의 증거로만 선언한다.**
+> **원본은 문자·기호·자료 주변 단위·출처까지 잠그고, 정답은 독립적으로 다시 풀며, 수정 에셋은 구조타입부터 잠근다. 수정 PNG는 저장 직후와 ZIP 추출 후 다시 열고, 에셋 작업이 1건이라도 있었으면 최종에는 모든 PNG의 EXPECTED LABEL INVENTORY를 전수 대조한다. 핵심 도형에는 파괴적 마스킹을 하지 않는다. SOURCE REPAIR는 후보별 영향도를 비교한 뒤 승인안을 content·image·choices·answer·solution 전 계층에 동기화한다. 난이도 경계 문항은 근거 없는 반복 변경을 막고, 수정 직후 PRE-RECHECK LINT로 기계 오류를 먼저 제거한다. 최종 ZIP은 비ASCII entry의 UTF-8 `0x800` 플래그와 압축 전·중앙디렉터리·재해제 상대경로 3자 round-trip을 강제로 검증한다. 최종 전달은 DELIVERY SCOPE를 먼저 잠그며, 현재상태 보고서는 단일 REVIEW LEDGER와 동기화한다. HARD FAIL과 MINOR WARN을 분리하되 HARD FAIL은 타협하지 않고, 경미사항만 마스터 승인으로 종료하며, 최종 PASS는 새로 푼 ZIP 추출본의 증거로만 선언한다.**
