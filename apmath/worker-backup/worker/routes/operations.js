@@ -21,8 +21,29 @@ async function requireTeacher(request, env, teacher) {
   return teacher || await verifyAuth(request, env);
 }
 
-function todaySeoul() {
-  return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+function todaySeoul(now = new Date()) {
+  return now.toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+}
+
+export async function autoCompleteExpiredOperationMemos(env, now = new Date(), teacherName = null) {
+  const today = todaySeoul(now);
+  const teacherFilter = teacherName === null
+    ? ''
+    : " AND (teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL)";
+  const statement = env.DB.prepare(`
+    UPDATE operation_memos
+    SET is_done = 1
+    WHERE COALESCE(is_done, 0) = 0
+      AND DATE(memo_date) < DATE(?)
+      ${teacherFilter}
+  `);
+  const result = teacherName === null
+    ? await statement.bind(today).run()
+    : await statement.bind(today, teacherName).run();
+  return {
+    date: today,
+    completed: Number(result?.meta?.changes || result?.changes || 0)
+  };
 }
 
 function pickText(value, fallback = '') {
@@ -253,6 +274,11 @@ export async function handleOperations(request, env, teacher, path, url) {
     if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
     if (method === 'GET') {
+      await autoCompleteExpiredOperationMemos(
+        env,
+        new Date(),
+        isAdminUser(currentTeacher) ? null : currentTeacher.name
+      );
       const res = isAdminUser(currentTeacher)
         ? await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all()
         : await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(currentTeacher.name).all();

@@ -20,7 +20,7 @@ import { handleClasses } from './routes/classes.js';
 import { handleTeachers } from './routes/teachers.js';
 import { handleAttendanceHomework } from './routes/attendance-homework.js';
 import { handleExams } from './routes/exams.js';
-import { handleOperations } from './routes/operations.js';
+import { autoCompleteExpiredOperationMemos, handleOperations } from './routes/operations.js';
 import { handleClassDaily } from './routes/class-daily.js';
 import { handleStudentPortal } from './routes/student-portal.js';
 import { handleReportsAi } from './routes/reports-ai.js';
@@ -3126,9 +3126,21 @@ async function buildTeacherHomeFastData(request, env, currentUser, url) {
 
 export default {
   async scheduled(event, env, ctx) {
-    const task = saveCurrentMonthTimetableArchive(env, new Date(event?.scheduledTime || Date.now()))
-      .then(result => console.log('[timetable-months] scheduled archive', result))
-      .catch(error => console.error('[timetable-months] scheduled archive failed', error));
+    const scheduledAt = new Date(event?.scheduledTime || Date.now());
+    const tasks = [
+      autoCompleteExpiredOperationMemos(env, scheduledAt)
+        .then(result => console.log('[operation-memos] scheduled auto-complete', result))
+    ];
+    if (event?.cron !== '5 15 * * *') {
+      tasks.push(saveCurrentMonthTimetableArchive(env, scheduledAt)
+        .then(result => console.log('[timetable-months] scheduled archive', result))
+      );
+    }
+    const task = Promise.allSettled(tasks).then(results => {
+      for (const result of results) {
+        if (result.status === 'rejected') console.error('[scheduled] task failed', result.reason);
+      }
+    });
     if (ctx?.waitUntil) ctx.waitUntil(task);
     else await task;
   },
@@ -3260,7 +3272,12 @@ async function handleApiRequest(request, env) {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          // Teacher-class repair is intentionally not run from read-only initial-data.
+          // Teacher-class repair remains disabled here; only idempotent memo status reconciliation is allowed.
+          await autoCompleteExpiredOperationMemos(
+            env,
+            new Date(),
+            isAdminUser(teacher) ? null : teacher.name
+          );
 
           let stds, clss, map, att, hw, exs, wrs, cea, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
           cea = { results: [] };

@@ -1042,8 +1042,8 @@ def extract_standard_unit_keys(text):
     keys = []
     seen = set()
     patterns = [
-        r"standardUnitKey\s*:\s*[\"']([^\"']+)[\"']",
-        r"\"standardUnitKey\"\s*:\s*\"([^\"]+)\"",
+        r"standardUnitKey\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
+        r"[\"'`]standardUnitKey[\"'`]\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
     ]
 
     for pattern in patterns:
@@ -1064,7 +1064,7 @@ def extract_literal_unit_keys(text):
     # UNIT_BY_KEY에 존재하는 키만 추출한다.
     keys = []
     seen = set()
-    for raw in re.findall(r"[\"']([A-Za-z0-9]+(?:-[A-Za-z0-9]+)+)[\"']", text):
+    for raw in re.findall(r"[\"'`]([A-Za-z0-9]+(?:-[A-Za-z0-9]+)+)[\"'`]", text):
         key = raw.strip()
         if key in UNIT_BY_KEY and key not in seen:
             seen.add(key)
@@ -1076,8 +1076,8 @@ def extract_course_units_from_course_codes(text):
     units = []
     seen = set()
     patterns = [
-        r"standardUnitKey\s*:\s*[\"']([^\"']+)[\"']",
-        r"\"standardUnitKey\"\s*:\s*\"([^\"]+)\"",
+        r"standardUnitKey\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
+        r"[\"'`]standardUnitKey[\"'`]\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
     ]
 
     for pattern in patterns:
@@ -1097,8 +1097,8 @@ def extract_standard_course_names(text):
     names = []
     seen = set()
     patterns = [
-        r"standardCourse\s*:\s*[\"']([^\"']+)[\"']",
-        r"\"standardCourse\"\s*:\s*\"([^\"]+)\"",
+        r"standardCourse\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
+        r"[\"'`]standardCourse[\"'`]\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
     ]
 
     for pattern in patterns:
@@ -1116,8 +1116,8 @@ def extract_standard_unit_names(text):
     names = []
     seen = set()
     patterns = [
-        r"standardUnit\s*:\s*[\"']([^\"']+)[\"']",
-        r"\"standardUnit\"\s*:\s*\"([^\"]+)\"",
+        r"standardUnit\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
+        r"[\"'`]standardUnit[\"'`]\s*:\s*[\"'`]([^\"'`]+)[\"'`]",
     ]
 
     for pattern in patterns:
