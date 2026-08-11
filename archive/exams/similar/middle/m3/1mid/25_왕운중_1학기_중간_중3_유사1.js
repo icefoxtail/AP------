@@ -18,9 +18,9 @@ window.questionBank = [
     choices: [
       String.raw`25의 제곱근은 5이다.`,
       String.raw`0의 제곱근은 없다.`,
-      String.raw`$\sqrt{16}$의 값은 $\pm 4$이다.`,
+      String.raw`$\\sqrt{16}$의 값은 $\\pm 4$이다.`,
       String.raw`-9는 81의 음의 제곱근이다.`,
-      String.raw`$x^2=7$일 때 $x$는 $\sqrt{7}$이다.`
+      String.raw`$x^2=7$일 때 $x$는 $\\sqrt{7}$이다.`
     ],
     answer: "④",
     solution: ""
@@ -38,7 +38,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$\sqrt{(-25)^2}$의 양의 제곱근을 $a$, 제곱근 16의 음의 제곱근을 $b$라고 할 때, $a-b$의 값은?`,
+    content: String.raw`$\\sqrt{(-25)^2}$의 양의 제곱근을 $a$, 제곱근 16의 음의 제곱근을 $b$라고 할 때, $a-b$의 값은?`,
     choices: ["3", "5", "7", "9", "11"],
     answer: "③",
     solution: ""
@@ -56,13 +56,13 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$\frac{\sqrt{14}}{2} \times \frac{5}{\sqrt{7}} \div \frac{5}{\sqrt{8}}$ 을 간단히 하면?`,
+    content: String.raw`$\\frac{\\sqrt{14}}{2} \\times \\frac{5}{\\sqrt{7}} \\div \\frac{5}{\\sqrt{8}}$ 을 간단히 하면?`,
     choices: [
       "1",
       "2",
       "3",
-      String.raw`$\sqrt{2}$`,
-      String.raw`$2\sqrt{2}$`
+      String.raw`$\\sqrt{2}$`,
+      String.raw`$2\\sqrt{2}$`
     ],
     answer: "②",
     solution: ""
@@ -80,7 +80,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`다음 수 중에서 순환소수가 아닌 무한소수로 나타나는 수의 개수는?<br>$\sqrt{36},\ \pi,\ 3\sqrt{25}-1,\ \sqrt{2.5},\ -4+\sqrt{16},\ \sqrt{\frac{4}{9}},\ \sqrt{1.6}$`,
+    content: String.raw`다음 수 중에서 순환소수가 아닌 무한소수로 나타나는 수의 개수는?<br>$\\sqrt{36},\ \\pi,\ 3\\sqrt{25}-1,\ \\sqrt{2.5},\ -4+\\sqrt{16},\ \\sqrt{\\frac{4}{9}},\ \\sqrt{1.6}$`,
     choices: ["1개", "2개", "3개", "4개", "5개"],
     answer: "③",
     solution: ""
@@ -98,7 +98,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`주어진 제곱근표를 이용하여 $\sqrt{32.6}$의 값을 구하면?
+    content: String.raw`주어진 제곱근표를 이용하여 $\\sqrt{32.6}$의 값을 구하면?
 <div class="question-table-wrap">
 <table class="question-table">
 <thead>
@@ -131,7 +131,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`주어진 제곱근표를 이용하여 $\sqrt{3250}$의 어림한 값을 구하면?
+    content: String.raw`주어진 제곱근표를 이용하여 $\\sqrt{3250}$의 어림한 값을 구하면?
 <div class="question-table-wrap">
 <table class="question-table">
 <thead>
@@ -164,7 +164,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$a=\sqrt{5}-2,\ b=\sqrt{5}+2$ 일 때, $a^6b^4 + 4a + 1$ 의 값은?`,
+    content: String.raw`$a=\\sqrt{5}-2,\ b=\\sqrt{5}+2$ 일 때, $a^6b^4 + 4a + 1$ 의 값은?`,
     choices: ["0", "1", "2", "3", "4"],
     answer: "③",
     solution: ""
@@ -182,7 +182,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$2+\sqrt{3} < x < 4+\sqrt{10}$ 을 만족시키는 정수 $x$의 개수는?`,
+    content: String.raw`$2+\\sqrt{3} < x < 4+\\sqrt{10}$ 을 만족시키는 정수 $x$의 개수는?`,
     choices: ["2개", "3개", "4개", "5개", "6개"],
     answer: "③",
     solution: ""
@@ -211,11 +211,11 @@ window.questionBank = [
   <text x="210" y="105" font-size="10px" text-anchor="middle">B</text>
 </svg>`,
     choices: [
-      String.raw`$P: -1+\sqrt{5},\ Q: 4-\sqrt{2}$`,
-      String.raw`$P: -1+\sqrt{5},\ Q: 4+\sqrt{2}$`,
-      String.raw`$P: -1-\sqrt{5},\ Q: 4-\sqrt{2}$`,
-      String.raw`$P: 1+\sqrt{5},\ Q: -4-\sqrt{2}$`,
-      String.raw`$P: 1-\sqrt{5},\ Q: -4+\sqrt{2}$`
+      String.raw`$P: -1+\\sqrt{5},\ Q: 4-\\sqrt{2}$`,
+      String.raw`$P: -1+\\sqrt{5},\ Q: 4+\\sqrt{2}$`,
+      String.raw`$P: -1-\\sqrt{5},\ Q: 4-\\sqrt{2}$`,
+      String.raw`$P: 1+\\sqrt{5},\ Q: -4-\\sqrt{2}$`,
+      String.raw`$P: 1-\\sqrt{5},\ Q: -4+\\sqrt{2}$`
     ],
     answer: "①",
     solution: ""
@@ -233,7 +233,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`자연수 $x$에 대하여 $\sqrt{x}$ 이하의 자연수 개수를 $g(x)$라 할 때, $g(10)+g(11)+g(12)+\dots+g(20)$ 의 값은?`,
+    content: String.raw`자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수 개수를 $g(x)$라 할 때, $g(10)+g(11)+g(12)+\dots+g(20)$ 의 값은?`,
     choices: ["36", "37", "38", "39", "40"],
     answer: "③",
     solution: ""
@@ -251,7 +251,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$ab^2<0,\ a^2b>0$ 일 때, $\sqrt{(2a)^2} - \sqrt{(-3b)^2}$ 의 값을 간단히 하면? (단, $a, b \neq 0$)`,
+    content: String.raw`$ab^2<0,\ a^2b>0$ 일 때, $\\sqrt{(2a)^2} - \\sqrt{(-3b)^2}$ 의 값을 간단히 하면? (단, $a, b \\neq 0$)`,
     choices: [
       String.raw`$2a-3b$`,
       String.raw`$-2a-3b$`,
@@ -317,13 +317,13 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$\left(1-\frac{1}{2^2}\right)\left(1-\frac{1}{3^2}\right)\left(1-\frac{1}{4^2}\right)\dots\left(1-\frac{1}{10^2}\right)$ 을 간단히 하면?`,
+    content: String.raw`$\\left(1-\\frac{1}{2^2}\\right)\\left(1-\\frac{1}{3^2}\\right)\\left(1-\\frac{1}{4^2}\\right)\dots\\left(1-\\frac{1}{10^2}\\right)$ 을 간단히 하면?`,
     choices: [
-      String.raw`$\frac{9}{20}$`,
-      String.raw`$\frac{1}{2}$`,
-      String.raw`$\frac{11}{20}$`,
-      String.raw`$\frac{3}{5}$`,
-      String.raw`$\frac{13}{20}$`
+      String.raw`$\\frac{9}{20}$`,
+      String.raw`$\\frac{1}{2}$`,
+      String.raw`$\\frac{11}{20}$`,
+      String.raw`$\\frac{3}{5}$`,
+      String.raw`$\\frac{13}{20}$`
     ],
     answer: "③",
     solution: ""
@@ -401,7 +401,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$1 < x < 4$ 일 때, $\sqrt{x^2-2x+1} + \sqrt{x^2-8x+16}$ 을 간단히 하면?`,
+    content: String.raw`$1 < x < 4$ 일 때, $\\sqrt{x^2-2x+1} + \\sqrt{x^2-8x+16}$ 을 간단히 하면?`,
     choices: [
       "3",
       "5",
@@ -476,9 +476,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$(-4)^2$의 양의 제곱근을 $A$, 5의 양의 제곱근을 $B$라 할 때, 다음 물음에 답하시오.<br>(1) $A, B$를 각각 구하시오.<br>(2) $\frac{1}{A-B}$ 의 값을 유리화하시오.`,
+    content: String.raw`$(-4)^2$의 양의 제곱근을 $A$, 5의 양의 제곱근을 $B$라 할 때, 다음 물음에 답하시오.<br>(1) $A, B$를 각각 구하시오.<br>(2) $\\frac{1}{A-B}$ 의 값을 유리화하시오.`,
     choices: [],
-    answer: String.raw`(1) $A=4,\ B=\sqrt{5}$ (2) $\frac{4+\sqrt{5}}{11}$`,
+    answer: String.raw`(1) $A=4,\ B=\\sqrt{5}$ (2) $\\frac{4+\\sqrt{5}}{11}$`,
     solution: ""
   },
   {
@@ -494,9 +494,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$x=5-\sqrt{2}$ 일 때, 인수분해를 이용하여 $x^2-6x+5$ 의 값을 구하시오.`,
+    content: String.raw`$x=5-\\sqrt{2}$ 일 때, 인수분해를 이용하여 $x^2-6x+5$ 의 값을 구하시오.`,
     choices: [],
-    answer: String.raw`$2-4\sqrt{2}$`,
+    answer: String.raw`$2-4\\sqrt{2}$`,
     solution: ""
   },
   {
@@ -539,7 +539,7 @@ window.questionBank = [
   <text x="280" y="135" font-size="10px" text-anchor="middle">5</text>
 </svg>`,
     choices: [],
-    answer: String.raw`$A: 1-\sqrt{5},\ B: 1+\sqrt{5},\ C: 5-\sqrt{10},\ D: 5+\sqrt{10}$`,
+    answer: String.raw`$A: 1-\\sqrt{5},\ B: 1+\\sqrt{5},\ C: 5-\\sqrt{10},\ D: 5+\\sqrt{10}$`,
     solution: ""
   }
 ];

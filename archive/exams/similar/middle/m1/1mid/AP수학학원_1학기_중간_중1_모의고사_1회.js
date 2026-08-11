@@ -38,7 +38,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": " $2\times2\times2\times2\times3\times3\times3\times7=2^a\times3^b\times7$일 때, 자연수 $a$, $b$에 대하여 $a-b$의 값은?",
+    "content": " $2\\times2\\times2\\times2\\times3\\times3\\times3\\times7=2^a\\times3^b\\times7$일 때, 자연수 $a$, $b$에 대하여 $a-b$의 값은?",
     "choices": [
       "$-2$",
       "$-1$",
@@ -86,7 +86,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "$2^4\times5$와 $27\times a$의 약수의 개수가 같을 때, 다음 중 자연수 $a$의 값이 될 수 있는 수는?",
+    "content": "$2^4\\times5$와 $27\\times a$의 약수의 개수가 같을 때, 다음 중 자연수 $a$의 값이 될 수 있는 수는?",
     "choices": [
       "4",
       "10",
@@ -110,13 +110,13 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 수 $2^2\times3^2\times5^2$, $2\times3^3\times5\times7$의 최대공약수는?",
+    "content": "두 수 $2^2\\times3^2\\times5^2$, $2\\times3^3\\times5\\times7$의 최대공약수는?",
     "choices": [
-      "$2\times3^2\times5$",
-      "$2^2\times3^3\times5^2$",
-      "$3^3\times5\times7$",
-      "$2\times3^3\times5^2\times7$",
-      "$2^2\times3\times5^2\times7$"
+      "$2\\times3^2\\times5$",
+      "$2^2\\times3^3\\times5^2$",
+      "$3^3\\times5\\times7$",
+      "$2\\times3^3\\times5^2\\times7$",
+      "$2^2\\times3\\times5^2\\times7$"
     ],
     "answer": "①",
     "solution": ""
@@ -134,7 +134,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 <보기>에서 두 수 $2\times3^2\times5$, $2^2\times3$의 공배수인 것을 모두 고른 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8; text-align:left;'><div style='text-align:center; font-weight:700;'>보기</div>ㄱ. $2\times3^3$<br>ㄴ. $2^3\times3^2\times5$<br>ㄷ. $2^3\times3^2\times7$<br>ㄹ. $2^2\times3\times5\times7$<br>ㅁ. $2^3\times3^2\times5\times7$</div>",
+    "content": "다음 <보기>에서 두 수 $2\\times3^2\\times5$, $2^2\\times3$의 공배수인 것을 모두 고른 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8; text-align:left;'><div style='text-align:center; font-weight:700;'>보기</div>ㄱ. $2\\times3^3$<br>ㄴ. $2^3\\times3^2\\times5$<br>ㄷ. $2^3\\times3^2\\times7$<br>ㄹ. $2^2\\times3\\times5\\times7$<br>ㅁ. $2^3\\times3^2\\times5\\times7$</div>",
     "choices": [
       "ㄱ, ㄷ",
       "ㄴ, ㅁ",
@@ -158,7 +158,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "세 자연수 $4\times x$, $9\times x$, $12\times x$의 최소공배수가 $108$일 때, 자연수 $x$의 값은?",
+    "content": "세 자연수 $4\\times x$, $9\\times x$, $12\\times x$의 최소공배수가 $108$일 때, 자연수 $x$의 값은?",
     "choices": [
       "2",
       "3",
@@ -307,8 +307,8 @@ window.questionBank = [
       "$(-3)+(+6)$",
       "$(+2)-(-1)$",
       "$(-1)+(-3)-(-7)$",
-      "$\\dfrac{1}{3}-\\dfrac{1}{4}-\\left(-\\dfrac{35}{12}\right)$",
-      "$-\\dfrac{7}{2}-\\left(-\\dfrac{1}{3}\right)+\\dfrac{1}{6}$"
+      "$\\dfrac{1}{3}-\\dfrac{1}{4}-\\left(-\\dfrac{35}{12}\\right)$",
+      "$-\\dfrac{7}{2}-\\left(-\\dfrac{1}{3}\\right)+\\dfrac{1}{6}$"
     ],
     "answer": "⑤",
     "solution": ""
@@ -328,11 +328,11 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 계산 결과가 옳은 것은?",
     "choices": [
-      "$(-3)\times0=-3$",
-      "$(+2)\times(-3)=-5$",
-      "$\\left(-\\dfrac{8}{3}\right)\times\\dfrac{1}{4}=-\\dfrac{2}{3}$",
-      "$\\left(-\\dfrac{2}{3}\right)\times\\left(-\\dfrac{2}{3}\right)=+1$",
-      "$\\left(+\\dfrac{3}{4}\right)\times\\left(-\\dfrac{2}{9}\right)=+\\dfrac{1}{6}$"
+      "$(-3)\\times0=-3$",
+      "$(+2)\\times(-3)=-5$",
+      "$\\left(-\\dfrac{8}{3}\\right)\\times\\dfrac{1}{4}=-\\dfrac{2}{3}$",
+      "$\\left(-\\dfrac{2}{3}\\right)\\times\\left(-\\dfrac{2}{3}\\right)=+1$",
+      "$\\left(+\\dfrac{3}{4}\\right)\\times\\left(-\\dfrac{2}{9}\\right)=+\\dfrac{1}{6}$"
     ],
     "answer": "③",
     "solution": ""
@@ -404,7 +404,7 @@ window.questionBank = [
       "$b$",
       "$a-b$",
       "$b-a$",
-      "$a\times b$"
+      "$a\\times b$"
     ],
     "answer": "③",
     "solution": ""
@@ -518,7 +518,7 @@ window.questionBank = [
     "wide": false,
     "content": "세 수 $50$, $72$, $132$의 최대공약수와 최소공배수를 각각 소인수의 곱으로 나타내고, 그 과정을 서술하시오.",
     "choices": [],
-    "answer": "최대공약수: $2$, 최소공배수: $2^3\times3^2\times5^2\times11$",
+    "answer": "최대공약수: $2$, 최소공배수: $2^3\\times3^2\\times5^2\\times11$",
     "solution": ""
   },
   {

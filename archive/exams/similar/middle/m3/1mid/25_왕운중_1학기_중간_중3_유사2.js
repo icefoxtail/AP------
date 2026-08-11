@@ -14,7 +14,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`다음 <보기> 중 옳지 않은 것을 모두 고른 개수는?<br><보기><br>(가) 0의 제곱근은 1개다.<br>(나) $\sqrt{49}$는 $\pm 7$이다.<br>(다) 음수의 제곱근은 존재하지 않는다.<br>(라) -5는 25의 음의 제곱근이다.<br>(마) $\sqrt{100}$은 10이다.`,
+    content: String.raw`다음 <보기> 중 옳지 않은 것을 모두 고른 개수는?<br><보기><br>(가) 0의 제곱근은 1개다.<br>(나) $\\sqrt{49}$는 $\\pm 7$이다.<br>(다) 음수의 제곱근은 존재하지 않는다.<br>(라) -5는 25의 음의 제곱근이다.<br>(마) $\\sqrt{100}$은 10이다.`,
     choices: ["1개", "2개", "3개", "4개", "5개"],
     answer: "①",
     solution: ""
@@ -32,7 +32,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$\sqrt{(-81)^2}$의 양의 제곱근을 $a$, $\sqrt{256}$의 음의 제곱근을 $b$라고 할 때, $2a+b$의 값은?`,
+    content: String.raw`$\\sqrt{(-81)^2}$의 양의 제곱근을 $a$, $\\sqrt{256}$의 음의 제곱근을 $b$라고 할 때, $2a+b$의 값은?`,
     choices: ["10", "12", "14", "16", "18"],
     answer: "③",
     solution: ""
@@ -50,13 +50,13 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$A \times \frac{\sqrt{6}}{3} \div \frac{2}{\sqrt{3}} = \sqrt{2}$ 를 만족시키는 $A$의 값은?`,
+    content: String.raw`$A \\times \\frac{\\sqrt{6}}{3} \\div \\frac{2}{\\sqrt{3}} = \\sqrt{2}$ 를 만족시키는 $A$의 값은?`,
     choices: [
-      String.raw`$\sqrt{2}$`,
+      String.raw`$\\sqrt{2}$`,
       "2",
-      String.raw`$2\sqrt{2}$`,
+      String.raw`$2\\sqrt{2}$`,
       "4",
-      String.raw`$4\sqrt{2}$`
+      String.raw`$4\\sqrt{2}$`
     ],
     answer: "②",
     solution: ""
@@ -74,7 +74,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`다섯 개의 수 $a=\sqrt{1.21}$, $b=3-\sqrt{9}$, $c=2\pi$, $d=\sqrt{12}$, $e=\sqrt{\frac{1}{16}}$ 에 대하여 무리수의 개수를 $x$, 유리수의 개수를 $y$라 할 때, $x-y$의 값은?`,
+    content: String.raw`다섯 개의 수 $a=\\sqrt{1.21}$, $b=3-\\sqrt{9}$, $c=2\\pi$, $d=\\sqrt{12}$, $e=\\sqrt{\\frac{1}{16}}$ 에 대하여 무리수의 개수를 $x$, 유리수의 개수를 $y$라 할 때, $x-y$의 값은?`,
     choices: ["-3", "-2", "-1", "0", "1"],
     answer: "③",
     solution: ""
@@ -92,7 +92,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`주어진 제곱근표를 이용하여 $\sqrt{x} = 5.788$ 을 만족시키는 $x$의 값을 구하면?
+    content: String.raw`주어진 제곱근표를 이용하여 $\\sqrt{x} = 5.788$ 을 만족시키는 $x$의 값을 구하면?
 <div class="question-table-wrap">
 <table class="question-table">
 <thead>
@@ -125,7 +125,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`주어진 제곱근표를 이용하여 $\sqrt{0.0336} + \sqrt{3260}$ 의 어림한 값을 구하면?
+    content: String.raw`주어진 제곱근표를 이용하여 $\\sqrt{0.0336} + \\sqrt{3260}$ 의 어림한 값을 구하면?
 <div class="question-table-wrap">
 <table class="question-table">
 <thead>
@@ -158,13 +158,13 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$a=\sqrt{2}-1,\ b=\sqrt{2}+1$ 일 때, $\frac{a^5b^4 + b^5a^4}{a+b}$ 의 값은?`,
+    content: String.raw`$a=\\sqrt{2}-1,\ b=\\sqrt{2}+1$ 일 때, $\\frac{a^5b^4 + b^5a^4}{a+b}$ 의 값은?`,
     choices: [
       "1",
       "2",
-      String.raw`$2\sqrt{2}$`,
+      String.raw`$2\\sqrt{2}$`,
       "3",
-      String.raw`$4\sqrt{2}$`
+      String.raw`$4\\sqrt{2}$`
     ],
     answer: "①",
     solution: ""
@@ -182,7 +182,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$1+\sqrt{5} < x < 6+\sqrt{2}$ 를 만족시키는 모든 정수 $x$의 합은?`,
+    content: String.raw`$1+\\sqrt{5} < x < 6+\\sqrt{2}$ 를 만족시키는 모든 정수 $x$의 합은?`,
     choices: ["18", "22", "26", "30", "33"],
     answer: "②",
     solution: ""
@@ -227,7 +227,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`자연수 $x$에 대하여 $\sqrt{x}$ 미만의 홀수 개수를 $h(x)$라 할 때, $h(15)+h(16)+h(17)+\dots+h(30)$ 의 값은?`,
+    content: String.raw`자연수 $x$에 대하여 $\\sqrt{x}$ 미만의 홀수 개수를 $h(x)$라 할 때, $h(15)+h(16)+h(17)+\dots+h(30)$ 의 값은?`,
     choices: ["33", "35", "37", "39", "41"],
     answer: "③",
     solution: ""
@@ -245,7 +245,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$x<0,\ y>0$ 일 때, $\sqrt{(x-y)^2} + \sqrt{(-2x)^2} - \sqrt{(y-x)^2}$ 의 값을 간단히 하면?`,
+    content: String.raw`$x<0,\ y>0$ 일 때, $\\sqrt{(x-y)^2} + \\sqrt{(-2x)^2} - \\sqrt{(y-x)^2}$ 의 값을 간단히 하면?`,
     choices: [
       String.raw`$-3x$`,
       String.raw`$-2x$`,
@@ -305,7 +305,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$\left(1-\frac{1}{2^2}\right)\left(1-\frac{1}{3^2}\right)\dots\left(1-\frac{1}{x^2}\right) = \frac{13}{24}$ 일 때, 자연수 $x$의 값은?`,
+    content: String.raw`$\\left(1-\\frac{1}{2^2}\\right)\\left(1-\\frac{1}{3^2}\\right)\dots\\left(1-\\frac{1}{x^2}\\right) = \\frac{13}{24}$ 일 때, 자연수 $x$의 값은?`,
     choices: ["10", "11", "12", "13", "14"],
     answer: "③",
     solution: ""
@@ -377,7 +377,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$x < -2$ 일 때, $\sqrt{4x^2-12x+9} - \sqrt{x^2+4x+4} - \sqrt{9x^2}$ 을 간단히 하면?`,
+    content: String.raw`$x < -2$ 일 때, $\\sqrt{4x^2-12x+9} - \\sqrt{x^2+4x+4} - \\sqrt{9x^2}$ 을 간단히 하면?`,
     choices: [
       String.raw`$2x+5$`,
       String.raw`$2x-1$`,
@@ -437,9 +437,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`36의 음의 제곱근을 $A$, $\sqrt{16}$의 양의 제곱근을 $B$라 할 때, 다음 물음에 답하시오.<br>(1) $A, B$를 각각 구하시오.<br>(2) $\frac{\sqrt{B}}{A+\sqrt{B}}$ 의 값을 유리화하시오.`,
+    content: String.raw`36의 음의 제곱근을 $A$, $\\sqrt{16}$의 양의 제곱근을 $B$라 할 때, 다음 물음에 답하시오.<br>(1) $A, B$를 각각 구하시오.<br>(2) $\\frac{\\sqrt{B}}{A+\\sqrt{B}}$ 의 값을 유리화하시오.`,
     choices: [],
-    answer: String.raw`(1) $A=-6,\ B=2$ (2) $\frac{-1-3\sqrt{2}}{17}$`,
+    answer: String.raw`(1) $A=-6,\ B=2$ (2) $\\frac{-1-3\\sqrt{2}}{17}$`,
     solution: ""
   },
   {
@@ -455,9 +455,9 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`$x=3+\sqrt{5},\ y=3-\sqrt{5}$ 일 때, $x^3y - xy^3$ 의 값을 구하시오.`,
+    content: String.raw`$x=3+\\sqrt{5},\ y=3-\\sqrt{5}$ 일 때, $x^3y - xy^3$ 의 값을 구하시오.`,
     choices: [],
-    answer: String.raw`$48\sqrt{5}$`,
+    answer: String.raw`$48\\sqrt{5}$`,
     solution: ""
   },
   {
@@ -491,7 +491,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`수직선 위의 점 1을 기준으로 밑변 1, 높이 2인 직각삼각형 빗변을 반지름으로 하여 왼쪽으로 내린 점을 $A$, 오른쪽으로 내린 점을 $B$라 하자. 점 5를 기준으로 밑변 3, 높이 1인 직각삼각형 빗변을 반지름으로 하여 왼쪽으로 내린 점을 $C$, 오른쪽으로 내린 점을 $D$라 할 때, 선분 $\overline{AC}$ 의 중점을 $M$, 선분 $\overline{BD}$ 의 중점을 $N$이라 하자. 이때 선분 $\overline{MN}$ 의 길이를 구하시오.
+    content: String.raw`수직선 위의 점 1을 기준으로 밑변 1, 높이 2인 직각삼각형 빗변을 반지름으로 하여 왼쪽으로 내린 점을 $A$, 오른쪽으로 내린 점을 $B$라 하자. 점 5를 기준으로 밑변 3, 높이 1인 직각삼각형 빗변을 반지름으로 하여 왼쪽으로 내린 점을 $C$, 오른쪽으로 내린 점을 $D$라 할 때, 선분 $\\overline{AC}$ 의 중점을 $M$, 선분 $\\overline{BD}$ 의 중점을 $N$이라 하자. 이때 선분 $\\overline{MN}$ 의 길이를 구하시오.
 <br><svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
   <line x1="20" y1="120" x2="380" y2="120" stroke="black" stroke-width="1.2" />
   <polygon points="120,120 120,80 100,80" fill="#eee" stroke="black" stroke-width="1.2"/>
@@ -500,7 +500,7 @@ window.questionBank = [
   <text x="280" y="135" font-size="10px" text-anchor="middle">5</text>
 </svg>`,
     choices: [],
-    answer: String.raw`$\sqrt{5}+\sqrt{10}$`,
+    answer: String.raw`$\\sqrt{5}+\\sqrt{10}$`,
     solution: ""
   }
 ];

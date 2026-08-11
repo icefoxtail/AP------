@@ -251,7 +251,7 @@ window.questionBank = [
     content: "$0 \\le x \\le 2$일 때, 방정식 $\\sin \\pi x = \\frac{2}{3}$의 두 실근을 $\\alpha, \\beta$라 하고, $\\sin \\pi x = -\\frac{2}{3}$의 두 실근을 $\\gamma, \\delta$라 하자. $\\alpha + \\beta + \\gamma + \\delta$의 값을 구하시오.",
     choices: [],
     answer: "$4$",
-    solution: "[키포인트] 한 주기 안에서 $\\sin\\pi x$의 그래프 대칭성을 이용한다.\\n조건 정리: $0\\le x\\le2$에서 $y=\\sin\\pi x$의 주기는 $2$이다.\\n풀이 방향: 양수 구간의 두 해와 음수 구간의 두 해를 각각 대칭으로 묶는다.\\n정석 풀이: $0\\le x\\le1$에서 $\\sin\\pi x>0$이고, $\\sin\\pi x=\\dfrac23$의 두 실근 $\\alpha,\\beta$는 $x=\\dfrac12$에 대하여 대칭이다. 따라서 $\\alpha+\\beta=1$이다.\\n$1\\le x\\le2$에서 $\\sin\\pi x<0$이고, $\\sin\\pi x=-\\dfrac23$의 두 실근 $\\gamma,\\delta$는 $x=\\dfrac32$에 대하여 대칭이다. 따라서 $\\gamma+\\delta=3$이다.\\n그러므로 $\\alpha+\\beta+\\gamma+\delta=1+3=4$이다.\\n따라서 구하는 값은 $4$이다."
+    solution: "[키포인트] 한 주기 안에서 $\\sin\\pi x$의 그래프 대칭성을 이용한다.\\n조건 정리: $0\\le x\\le2$에서 $y=\\sin\\pi x$의 주기는 $2$이다.\\n풀이 방향: 양수 구간의 두 해와 음수 구간의 두 해를 각각 대칭으로 묶는다.\\n정석 풀이: $0\\le x\\le1$에서 $\\sin\\pi x>0$이고, $\\sin\\pi x=\\dfrac23$의 두 실근 $\\alpha,\\beta$는 $x=\\dfrac12$에 대하여 대칭이다. 따라서 $\\alpha+\\beta=1$이다.\\n$1\\le x\\le2$에서 $\\sin\\pi x<0$이고, $\\sin\\pi x=-\\dfrac23$의 두 실근 $\\gamma,\\delta$는 $x=\\dfrac32$에 대하여 대칭이다. 따라서 $\\gamma+\\delta=3$이다.\\n그러므로 $\\alpha+\\beta+\\gamma+\\delta=1+3=4$이다.\\n따라서 구하는 값은 $4$이다."
   },
   {
     id: 15,

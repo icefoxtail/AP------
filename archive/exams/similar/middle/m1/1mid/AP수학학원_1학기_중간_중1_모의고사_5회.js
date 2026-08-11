@@ -354,7 +354,7 @@ window.questionBank = [
       "계산식"
     ],
     "wide": false,
-    "content": "다음을 계산하면?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$4+\\left[\\dfrac{1}{2}+(-1)^3-(-3)\\div6+4\right]\times2$</div>",
+    "content": "다음을 계산하면?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$4+\\left[\\dfrac{1}{2}+(-1)^3-(-3)\\div6+4\\right]\\times2$</div>",
     "choices": [
       "12",
       "14",
@@ -402,7 +402,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 중 곱셈 기호 $\times$와 나눗셈 기호 $\\div$를 생략하여 나타낸 것이 나머지 넷과 다른 하나는?",
+    "content": "다음 중 곱셈 기호 $\\times$와 나눗셈 기호 $\\div$를 생략하여 나타낸 것이 나머지 넷과 다른 하나는?",
     "choices": [
       "$a\\times\\dfrac{1}{b}\\times c$",
       "$a\\div b\\times c$",

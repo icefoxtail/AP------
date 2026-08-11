@@ -470,7 +470,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 정사각형 $ABCD$에 대하여 $\overline{AD}$의 중점을 $M$이라고 했을 때, $\overline{MB}$를 $3:2$로 내분한 점, $\overline{BC}$를 $2:1$로 내분한 점과 점 $D$를 세 꼭짓점으로 하는 삼각형의 넓이를 $S$, 정사각형 $ABCD$의 넓이를 $T$라고 했을 때, $S=kT$를 만족하는 실수 $k$의 값은?",
+    "content": "다음 정사각형 $ABCD$에 대하여 $\\overline{AD}$의 중점을 $M$이라고 했을 때, $\\overline{MB}$를 $3:2$로 내분한 점, $\\overline{BC}$를 $2:1$로 내분한 점과 점 $D$를 세 꼭짓점으로 하는 삼각형의 넓이를 $S$, 정사각형 $ABCD$의 넓이를 $T$라고 했을 때, $S=kT$를 만족하는 실수 $k$의 값은?",
     "choices": [
       "$\\dfrac7{30}$",
       "$\\dfrac3{10}$",
@@ -575,7 +575,7 @@ window.questionBank = [
     "wide": false,
     "content": "$AB=AC$인 이등변삼각형 $ABC$의 한 꼭짓점 $A$를 삼각형 $ABC$의 무게중심 $G$와 일치하도록 접었을 때, 삼각형 $EDG$의 넓이를 $S$라 하자. 그림과 같이 $B(0,0)$, $C(9,3)$, $G(k+1,k)$일 때, $k-S$의 값을 구하는 풀이 과정을 쓰시오.",
     "choices": [],
-    "answer": "$\dfrac12$",
+    "answer": "$\\dfrac{1}{2}$",
     "solution": "[키포인트] 먼저 무게중심의 좌표로 $A$와 $k$를 구하고, 접는 선이 $\\overline{AG}$의 수직이등분선이라는 점을 이용한다.\n\n점 $B(0,0)$, $C(9,3)$이므로 선분 $BC$의 중점은 $\\left(\\dfrac92,\\dfrac32\\right)$이다.\n직선 $BC$의 기울기는 $\\dfrac{3-0}{9-0}=\\dfrac13$이므로, 선분 $BC$의 수직이등분선의 기울기는 $-3$이다.\n따라서 선분 $BC$의 수직이등분선의 방정식은\n$y-\\dfrac32=-3\\left(x-\\dfrac92\\right)$,\n즉 $y=-3x+15$이다.\n\n$AB=AC$이므로 점 $A$는 선분 $BC$의 수직이등분선 위에 있다.\n따라서 $A(a,-3a+15)$로 둘 수 있다.\n삼각형의 무게중심은 세 꼭짓점의 좌표 평균이므로\n$G\\left(\\dfrac{a+0+9}{3},\\dfrac{-3a+15+0+3}{3}\\right)=\\left(\\dfrac{a+9}{3},-a+6\\right)$이다.\n문제에서 $G=(k+1,k)$이므로\n$\\dfrac{a+9}{3}=k+1$, $-a+6=k$이다.\n두 식을 연립하면 $a=3$, $k=3$이고, 따라서 $A(3,6)$, $G(4,3)$이다.\n\n점 $A$가 점 $G$에 포개지도록 접었으므로 접는 선은 선분 $AG$의 수직이등분선이다.\n선분 $AG$의 중점은 $\\left(\\dfrac72,\\dfrac92\\right)$이고, 직선 $AG$의 기울기는 $\\dfrac{3-6}{4-3}=-3$이다.\n따라서 접는 선의 기울기는 $\\dfrac13$이고, 접는 선의 방정식은\n$y-\\dfrac92=\\dfrac13\\left(x-\\dfrac72\\right)$,\n즉 $y=\\dfrac13x+\\dfrac{10}{3}$이다.\n\n이 접는 선이 $AB$와 만나는 점을 $D$, $AC$와 만나는 점을 $E$라 하자.\n직선 $AB$는 $B(0,0)$, $A(3,6)$을 지나므로 $y=2x$이다.\n$2x=\\dfrac13x+\\dfrac{10}{3}$에서 $x=2$, $y=4$이므로 $D(2,4)$이다.\n\n직선 $AC$는 $A(3,6)$, $C(9,3)$을 지나므로 기울기가 $-\\dfrac12$이고, 방정식은 $y=-\\dfrac12x+\\dfrac{15}{2}$이다.\n$-\\dfrac12x+\\dfrac{15}{2}=\\dfrac13x+\\dfrac{10}{3}$에서 $x=5$, $y=5$이므로 $E(5,5)$이다.\n\n따라서 삼각형 $EDG$의 세 꼭짓점은 $E(5,5)$, $D(2,4)$, $G(4,3)$이다.\n좌표를 이용하여 넓이를 구하면\n$S=\\dfrac12\\left|5(4-3)+2(3-5)+4(5-4)\\right|$\n$=\\dfrac12|5-4+4|=\\dfrac52$이다.\n그러므로 $k-S=3-\\dfrac52=\\dfrac12$이다.",
     "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q25.png"
   }

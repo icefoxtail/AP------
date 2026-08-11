@@ -1,13 +1,13 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-08-11T07:11:48.410Z
+- 생성 시각: 2026-08-11T11:21:43.431Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
   - git 버전관리에 등재된 시험지 JS만 인덱싱(432파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
 - 공식 마스터 키 수: 142 (중등 23 + H22 56 + H15 63)
-- 원본 문항 수: 10553
-- 최종 인덱스 문항 수: 10528
+- 원본 문항 수: 10552
+- 최종 인덱스 문항 수: 10527
 - 중복 qKey 그룹: 25 / 제외 레코드(duplicate_skipped): 25
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -242,7 +242,7 @@
 ## 4. RAW- 키 (임시 규약, 허용)
 
 > 마스터 테이블이 허용하는 임시 미분류 규약(standardUnitOrder 999). 비공식 오류와 구분한다.
-> distinct 86종 / 215건
+> distinct 87종 / 216건
 
 - `RAW-대표문제다시풀기` — 74건
 - `RAW-삼각함수` — 9건
@@ -280,6 +280,7 @@
 - `RAW-삼각함수의사분면` — 1건
 - `RAW-로그의실생활응용` — 1건
 - `RAW-로그와이차방정식` — 1건
+- `RAW-경우의 수` — 1건
 - `RAW-지수법칙미지수구하기` — 1건
 - `RAW-피타고라스정리` — 1건
 - `RAW-피타고라스정리활용` — 1건
@@ -333,13 +334,13 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 10528건 기준)
+## 5. 필드 누락 (최종 인덱스 10527건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
 | id | 1 |
 | content | 2 |
-| choices(배열) | 181 |
+| choices(배열) | 176 |
 | level | 345 |
 | standardUnit | 15 |
 | standardUnitKey | 14 |
@@ -351,10 +352,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 1504 |
+| q.image 보유 | 1608 |
 | content <img> | 5 |
 | content <svg> | 77 |
-| content <table> | 130 |
-| 시각요소 보유(hasImage=true) | 1713 |
+| content <table> | 132 |
+| 시각요소 보유(hasImage=true) | 1819 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

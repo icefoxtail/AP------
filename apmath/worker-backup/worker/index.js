@@ -3284,7 +3284,35 @@ async function handleApiRequest(request, env) {
           let ttAllClassStudents = { results: [] };
           let ttAllStudents = { results: [] };
           let ttAllClassTextbooks = { results: [] };
+          let ttAllDailyRecords = { results: [] };
+          let ttAllDailyProgress = { results: [] };
           const foundationData = await loadFoundationInitialData(env, teacher);
+          [ttAllDailyRecords, ttAllDailyProgress] = await Promise.all([
+            env.DB.prepare(`
+              SELECT id, class_id, date
+              FROM (
+                SELECT id, class_id, date,
+                       ROW_NUMBER() OVER (PARTITION BY class_id ORDER BY date DESC, created_at DESC, id DESC) AS row_num
+                FROM class_daily_records
+              )
+              WHERE row_num = 1
+              ORDER BY class_id ASC
+            `).all(),
+            env.DB.prepare(`
+              SELECT id, record_id, class_id, textbook_title_snapshot, progress_text
+              FROM class_daily_progress
+              WHERE record_id IN (
+                SELECT id
+                FROM (
+                  SELECT id, class_id,
+                         ROW_NUMBER() OVER (PARTITION BY class_id ORDER BY date DESC, created_at DESC, id DESC) AS row_num
+                  FROM class_daily_records
+                )
+                WHERE row_num = 1
+              )
+              ORDER BY class_id ASC, record_id ASC, created_at ASC
+            `).all()
+          ]);
 
           if (isAdminUser(teacher)) {
             [stds, clss, map, att, hw, exs, wrs, cea, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses] = await Promise.all([
@@ -3376,6 +3404,8 @@ async function handleApiRequest(request, env) {
                 timetable_class_students: ttAllClassStudents.results,
                 timetable_students: normalizeApStudentRows(ttAllStudents.results),
                 timetable_class_textbooks: ttAllClassTextbooks.results,
+                timetable_class_daily_records: ttAllDailyRecords.results,
+                timetable_class_daily_progress: ttAllDailyProgress.results,
                 report_exam_cohort_stats: [],
                 exam_question_reviews: [],
                 exam_analysis_meta: [],
@@ -3462,6 +3492,8 @@ async function handleApiRequest(request, env) {
             timetable_class_students: ttAllClassStudents.results,
             timetable_students: normalizeApStudentRows(ttAllStudents.results),
             timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results,
+            timetable_class_daily_records: ttAllDailyRecords.results,
+            timetable_class_daily_progress: ttAllDailyProgress.results,
             report_exam_cohort_stats: reportExamCohortStats,
             exam_question_reviews: examQuestionReviews.results || [],
             exam_analysis_meta: examAnalysisMeta.results || [],

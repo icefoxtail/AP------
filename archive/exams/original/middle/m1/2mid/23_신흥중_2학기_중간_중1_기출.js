@@ -103,7 +103,7 @@ window.questionBank = [
     { visualAssetStatus: "not_processed", tags: ["작도"] }),
 
   q(13, "M1-05", "기본 도형", "객관식",
-    "길이가 다음과 같은 $5$개의 막대가 있다. 이 중 $3$개를 선택하여 만들 수 있는 삼각형의 개수는? [3점]<div class=\"note-box\">$3\\,\\mathrm{cm}\qquad4\\,\\mathrm{cm}\qquad5\\,\\mathrm{cm}\qquad8\\,\\mathrm{cm}\qquad10\\,\\mathrm{cm}$</div>",
+    "길이가 다음과 같은 $5$개의 막대가 있다. 이 중 $3$개를 선택하여 만들 수 있는 삼각형의 개수는? [3점]<div class=\"note-box\">$3\\,\\mathrm{cm}\\qquad4\\,\\mathrm{cm}\\qquad5\\,\\mathrm{cm}\\qquad8\\,\\mathrm{cm}\\qquad10\\,\\mathrm{cm}$</div>",
     ["$2$개", "$3$개", "$4$개", "$5$개", "$6$개"], "④", { tags: ["삼각형의 성립 조건"] }),
 
   q(14, "M1-05", "기본 도형", "객관식",

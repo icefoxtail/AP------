@@ -17,24 +17,24 @@ window.questionBank = [
     content: String.raw`다음 중 옳은 것은?`,
     choices: [
       String.raw`$64$의 제곱근은 $8$이다.`,
-      String.raw`$\sqrt{(-3)^2} = -3$`,
-      String.raw`제곱근 $6$은 $\sqrt{6}$이다.`,
-      String.raw`$\sqrt{25}$의 제곱근은 $\pm 5$이다.`,
-      String.raw`$(-6)^2$의 제곱근은 $\pm \sqrt{6}$이다.`
+      String.raw`$\\sqrt{(-3)^2} = -3$`,
+      String.raw`제곱근 $6$은 $\\sqrt{6}$이다.`,
+      String.raw`$\\sqrt{25}$의 제곱근은 $\\pm 5$이다.`,
+      String.raw`$(-6)^2$의 제곱근은 $\\pm \\sqrt{6}$이다.`
     ],
     answer: "③",
     solution: String.raw`[키포인트] 제곱근의 정의와 표현 방식을 정확히 구분한다.
 
 [조건 정리]
-- $a$의 제곱근: 제곱하여 $a$가 되는 수, 즉 $x^2=a$를 만족하는 $x$ ($\pm\sqrt{a}$)
-- 제곱근 $a$: 기호 $\sqrt{a}$를 읽는 법
+- $a$의 제곱근: 제곱하여 $a$가 되는 수, 즉 $x^2=a$를 만족하는 $x$ ($\\pm\\sqrt{a}$)
+- 제곱근 $a$: 기호 $\\sqrt{a}$를 읽는 법
 
 [풀이 과정]
-① $64$의 제곱근은 $\pm 8$이다.
-② $\sqrt{(-3)^2} = \sqrt{9} = 3$이다.
-③ 제곱근 $6$은 $\sqrt{6}$을 의미하므로 옳은 설명이다.
-④ $\sqrt{25}=5$이므로, $\sqrt{25}$의 제곱근은 $5$의 제곱근인 $\pm \sqrt{5}$이다.
-⑤ $(-6)^2 = 36$이므로, $(-6)^2$의 제곱근은 $\pm 6$이다.
+① $64$의 제곱근은 $\\pm 8$이다.
+② $\\sqrt{(-3)^2} = \\sqrt{9} = 3$이다.
+③ 제곱근 $6$은 $\\sqrt{6}$을 의미하므로 옳은 설명이다.
+④ $\\sqrt{25}=5$이므로, $\\sqrt{25}$의 제곱근은 $5$의 제곱근인 $\\pm \\sqrt{5}$이다.
+⑤ $(-6)^2 = 36$이므로, $(-6)^2$의 제곱근은 $\\pm 6$이다.
 
 [결론] 따라서 옳은 것은 ③이다.`
   },
@@ -53,28 +53,28 @@ window.questionBank = [
     wide: false,
     content: String.raw`다음 중 옳지 않은 것은?`,
     choices: [
-      String.raw`$\sqrt{5^2} = 5$`,
-      String.raw`$-(\sqrt{11})^2 = -11$`,
-      String.raw`$\sqrt{(-7)^2} = 7$`,
-      String.raw`$(-\sqrt{6})^2 = -6$`,
-      String.raw`$\sqrt{16} = 4$`
+      String.raw`$\\sqrt{5^2} = 5$`,
+      String.raw`$-(\\sqrt{11})^2 = -11$`,
+      String.raw`$\\sqrt{(-7)^2} = 7$`,
+      String.raw`$(-\\sqrt{6})^2 = -6$`,
+      String.raw`$\\sqrt{16} = 4$`
     ],
     answer: "④",
-    solution: String.raw`[키포인트] 제곱근의 기본 성질 $(\sqrt{a})^2 = a$, $(-\sqrt{a})^2 = a$ (단, $a \gt 0$)를 이용한다.
+    solution: String.raw`[키포인트] 제곱근의 기본 성질 $(\\sqrt{a})^2 = a$, $(-\\sqrt{a})^2 = a$ (단, $a \\gt 0$)를 이용한다.
 
 [조건 정리]
 양수 $a$에 대하여
-- $(\sqrt{a})^2 = a$
-- $(-\sqrt{a})^2 = a$
-- $\sqrt{a^2} = a$
-- $\sqrt{(-a)^2} = a$
+- $(\\sqrt{a})^2 = a$
+- $(-\\sqrt{a})^2 = a$
+- $\\sqrt{a^2} = a$
+- $\\sqrt{(-a)^2} = a$
 
 [풀이 과정]
-① $\sqrt{5^2} = 5$ (옳음)
-② $-(\sqrt{11})^2 = -(11) = -11$ (옳음)
-③ $\sqrt{(-7)^2} = 7$ (옳음)
-④ $(-\sqrt{6})^2$은 $-\sqrt{6}$을 제곱한 것이므로 양수인 $6$이 되어야 한다. $-6$이라 하였으므로 옳지 않다.
-⑤ $\sqrt{16} = \sqrt{4^2} = 4$ (옳음)
+① $\\sqrt{5^2} = 5$ (옳음)
+② $-(\\sqrt{11})^2 = -(11) = -11$ (옳음)
+③ $\\sqrt{(-7)^2} = 7$ (옳음)
+④ $(-\\sqrt{6})^2$은 $-\\sqrt{6}$을 제곱한 것이므로 양수인 $6$이 되어야 한다. $-6$이라 하였으므로 옳지 않다.
+⑤ $\\sqrt{16} = \\sqrt{4^2} = 4$ (옳음)
 
 [결론] 따라서 옳지 않은 것은 ④이다.`
   },
@@ -93,24 +93,24 @@ window.questionBank = [
     wide: false,
     content: String.raw`다음 보기 중에서 무리수로 나타내어지는 것의 개수는?
 <보기>
-$\sqrt{\frac{4}{25}}, \pi, \sqrt{9}, 0.11\dot{5}, \sqrt{11}, 2+\sqrt{3}, \sqrt{1000}$`,
+$\\sqrt{\\frac{4}{25}}, \\pi, \\sqrt{9}, 0.11\dot{5}, \\sqrt{11}, 2+\\sqrt{3}, \\sqrt{1000}$`,
     choices: ["2", "3", "4", "5", "6"],
     answer: "③",
     solution: String.raw`[키포인트] 유리수는 분수 꼴로 나타낼 수 있는 수이고, 무리수는 순환하지 않는 무한소수이다.
 
 [조건 정리]
-- 유리수: $\sqrt{\text{제곱수}}$, 순환소수, 유한소수 등
-- 무리수: $\pi$, $\sqrt{\text{비제곱수}}$ 등
+- 유리수: $\\sqrt{\\text{제곱수}}$, 순환소수, 유한소수 등
+- 무리수: $\\pi$, $\\sqrt{\\text{비제곱수}}$ 등
 
 [풀이 과정]
-- $\sqrt{\frac{4}{25}} = \frac{2}{5}$ (유리수)
-- $\pi$ (무리수)
-- $\sqrt{9} = 3$ (유리수)
+- $\\sqrt{\\frac{4}{25}} = \\frac{2}{5}$ (유리수)
+- $\\pi$ (무리수)
+- $\\sqrt{9} = 3$ (유리수)
 - $0.11\dot{5}$ (순환소수이므로 유리수)
-- $\sqrt{11}$ (무리수)
-- $2+\sqrt{3}$ (유리수+무리수이므로 무리수)
-- $\sqrt{1000} = 10\sqrt{10}$ (무리수)
-무리수는 $\pi, \sqrt{11}, 2+\sqrt{3}, \sqrt{1000}$으로 총 4개이다.
+- $\\sqrt{11}$ (무리수)
+- $2+\\sqrt{3}$ (유리수+무리수이므로 무리수)
+- $\\sqrt{1000} = 10\\sqrt{10}$ (무리수)
+무리수는 $\\pi, \\sqrt{11}, 2+\\sqrt{3}, \\sqrt{1000}$으로 총 4개이다.
 
 [결론] 따라서 정답은 ③이다.`
   },
@@ -127,20 +127,20 @@ $\sqrt{\frac{4}{25}}, \pi, \sqrt{9}, 0.11\dot{5}, \sqrt{11}, 2+\sqrt{3}, \sqrt{1
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","자연수조건","조건해석","계산"],
     wide: false,
-    content: String.raw`$\sqrt{20-n}$이 자연수가 되도록 하는 자연수 $n$값 중 가장 작은 자연수를 $A$, 가장 큰 자연수를 $B$라 할 때, $A+B$의 값은?`,
+    content: String.raw`$\\sqrt{20-n}$이 자연수가 되도록 하는 자연수 $n$값 중 가장 작은 자연수를 $A$, 가장 큰 자연수를 $B$라 할 때, $A+B$의 값은?`,
     choices: ["23", "24", "25", "26", "27"],
     answer: "①",
-    solution: String.raw`[키포인트] $\sqrt{k}$가 자연수가 되려면 $k$가 $0$보다 큰 제곱수여야 한다.
+    solution: String.raw`[키포인트] $\\sqrt{k}$가 자연수가 되려면 $k$가 $0$보다 큰 제곱수여야 한다.
 
 [조건 정리]
-$20-n$은 $20$보다 작은 양의 제곱수여야 한다. ($n$은 자연수이므로 $20-n \lt 20$)
+$20-n$은 $20$보다 작은 양의 제곱수여야 한다. ($n$은 자연수이므로 $20-n \\lt 20$)
 
 [풀이 과정]
-$20-n \in \{1, 4, 9, 16\}$인 경우를 찾는다.
-- $20-n=1 \implies n=19$
-- $20-n=4 \implies n=16$
-- $20-n=9 \implies n=11$
-- $20-n=16 \implies n=4$
+$20-n \\in \{1, 4, 9, 16\}$인 경우를 찾는다.
+- $20-n=1 \\implies n=19$
+- $20-n=4 \\implies n=16$
+- $20-n=9 \\implies n=11$
+- $20-n=16 \\implies n=4$
 가능한 자연수 $n$은 $4, 11, 16, 19$이다.
 따라서 가장 작은 자연수 $A=4$, 가장 큰 자연수 $B=19$이다.
 $A+B = 4+19 = 23$
@@ -160,7 +160,7 @@ $A+B = 4+19 = 23$
     layoutTag: "grid",
     tags: ["도형"],
     wide: false,
-    content: String.raw`다음 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 수직선과 직각삼각형 $ABC$를 그리고, 점 $A$를 중심으로 하고 $\overline{AC}$를 반지름으로 하는 원을 그린 것이다. 원이 수직선과 만나는 두 점을 각각 $P, Q$라 할 때, $P-Q$의 값은? [4점]
+    content: String.raw`다음 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 수직선과 직각삼각형 $ABC$를 그리고, 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원을 그린 것이다. 원이 수직선과 만나는 두 점을 각각 $P, Q$라 할 때, $P-Q$의 값은? [4점]
 <svg width="280" height="150" viewBox="0 0 280 150" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="arrow_r" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="black"/></marker>
@@ -185,23 +185,23 @@ $A+B = 4+19 = 23$
 <text x="200" y="135" font-size="10px" text-anchor="middle" font-family="serif">5</text>
 </svg>`,
     choices: [
-      String.raw`$-4\sqrt{2}$`,
+      String.raw`$-4\\sqrt{2}$`,
       String.raw`$0$`,
-      String.raw`$2\sqrt{2}$`,
+      String.raw`$2\\sqrt{2}$`,
       String.raw`$4$`,
-      String.raw`$4\sqrt{2}$`
+      String.raw`$4\\sqrt{2}$`
     ],
     answer: "⑤",
     solution: String.raw`[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 수직선 위 점의 좌표에 적용한다.
 
-1단계: 직각삼각형 $ABC$에서 밑변 $\overline{AB}$의 길이는 $4-2=2$이고, 높이 $\overline{BC}$의 길이는 $2$이다.
-피타고라스 정리에 의해 빗변 $\overline{AC}$의 길이는 $\sqrt{2^2 + 2^2} = \sqrt{8} = 2\sqrt{2}$이다.
+1단계: 직각삼각형 $ABC$에서 밑변 $\\overline{AB}$의 길이는 $4-2=2$이고, 높이 $\\overline{BC}$의 길이는 $2$이다.
+피타고라스 정리에 의해 빗변 $\\overline{AC}$의 길이는 $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$이다.
 
-2단계: 점 $A$를 중심으로 하고 $\overline{AC}$를 반지름으로 하는 원이 수직선과 만나는 점 $P$, $Q$의 좌표는 중심인 점 $A$의 좌표 $2$를 기준으로 반지름만큼 더하거나 뺀 값이다.
-$P = 2 + 2\sqrt{2}$, $Q = 2 - 2\sqrt{2}$이다.
+2단계: 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원이 수직선과 만나는 점 $P$, $Q$의 좌표는 중심인 점 $A$의 좌표 $2$를 기준으로 반지름만큼 더하거나 뺀 값이다.
+$P = 2 + 2\\sqrt{2}$, $Q = 2 - 2\\sqrt{2}$이다.
 
 3단계: 구하고자 하는 값 $P-Q$를 계산하면
-$(2 + 2\sqrt{2}) - (2 - 2\sqrt{2}) = 4\sqrt{2}$이다.
+$(2 + 2\\sqrt{2}) - (2 - 2\\sqrt{2}) = 4\\sqrt{2}$이다.
 
 [결론] 따라서 정답은 ⑤이다.`
   },
@@ -220,21 +220,21 @@ $(2 + 2\sqrt{2}) - (2 - 2\sqrt{2}) = 4\sqrt{2}$이다.
     wide: false,
     content: String.raw`다음 중 두 실수의 대소 관계가 옳지 않은 것은?`,
     choices: [
-      String.raw`$\sqrt{2}+1 \lt \sqrt{3}+1$`,
-      String.raw`$5-\sqrt{6} \lt 2-\sqrt{6}$`,
-      String.raw`$\sqrt{11}-1 \gt 2$`,
-      String.raw`$\sqrt{7}-3 \lt \sqrt{8}-3$`,
-      String.raw`$\sqrt{2}+\sqrt{3} \lt \sqrt{3}+\sqrt{5}$`
+      String.raw`$\\sqrt{2}+1 \\lt \\sqrt{3}+1$`,
+      String.raw`$5-\\sqrt{6} \\lt 2-\\sqrt{6}$`,
+      String.raw`$\\sqrt{11}-1 \\gt 2$`,
+      String.raw`$\\sqrt{7}-3 \\lt \\sqrt{8}-3$`,
+      String.raw`$\\sqrt{2}+\\sqrt{3} \\lt \\sqrt{3}+\\sqrt{5}$`
     ],
     answer: "②",
     solution: String.raw`[키포인트] 양변에 같은 수를 더하거나 빼도 부등호의 방향은 바뀌지 않음을 이용한다.
 
 [풀이 과정]
-① 양변에서 $1$을 빼면 $\sqrt{2} \lt \sqrt{3}$ (참)
-② 양변에 $\sqrt{6}$을 더하면 $5 \lt 2$가 되어 거짓이다.
-③ 양변에 $1$을 더하면 $\sqrt{11} \gt 3$. 즉, $\sqrt{11} \gt \sqrt{9}$이므로 참이다.
-④ 양변에 $3$을 더하면 $\sqrt{7} \lt \sqrt{8}$ (참)
-⑤ 양변에서 $\sqrt{3}$을 빼면 $\sqrt{2} \lt \sqrt{5}$ (참)
+① 양변에서 $1$을 빼면 $\\sqrt{2} \\lt \\sqrt{3}$ (참)
+② 양변에 $\\sqrt{6}$을 더하면 $5 \\lt 2$가 되어 거짓이다.
+③ 양변에 $1$을 더하면 $\\sqrt{11} \\gt 3$. 즉, $\\sqrt{11} \\gt \\sqrt{9}$이므로 참이다.
+④ 양변에 $3$을 더하면 $\\sqrt{7} \\lt \\sqrt{8}$ (참)
+⑤ 양변에서 $\\sqrt{3}$을 빼면 $\\sqrt{2} \\lt \\sqrt{5}$ (참)
 
 [결론] 따라서 옳지 않은 것은 ②이다.`
   },
@@ -253,21 +253,21 @@ $(2 + 2\sqrt{2}) - (2 - 2\sqrt{2}) = 4\sqrt{2}$이다.
     wide: false,
     content: String.raw`다음 중 분모를 유리화한 것으로 옳지 않은 것은?`,
     choices: [
-      String.raw`$\frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}$`,
-      String.raw`$\frac{3}{\sqrt{8}} = \frac{3\sqrt{2}}{4}$`,
-      String.raw`$\frac{\sqrt{2}}{5\sqrt{3}} = \frac{\sqrt{6}}{15}$`,
-      String.raw`$\frac{6}{\sqrt{24}} = \frac{1}{2}$`,
-      String.raw`$\frac{4}{\sqrt{2}} = 2\sqrt{2}$`
+      String.raw`$\\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$`,
+      String.raw`$\\frac{3}{\\sqrt{8}} = \\frac{3\\sqrt{2}}{4}$`,
+      String.raw`$\\frac{\\sqrt{2}}{5\\sqrt{3}} = \\frac{\\sqrt{6}}{15}$`,
+      String.raw`$\\frac{6}{\\sqrt{24}} = \\frac{1}{2}$`,
+      String.raw`$\\frac{4}{\\sqrt{2}} = 2\\sqrt{2}$`
     ],
     answer: "④",
     solution: String.raw`[키포인트] 분모와 분자에 같은 무리수를 곱하여 분모를 유리수로 변형한다.
 
 [풀이 과정]
-① $\frac{1 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} = \frac{\sqrt{3}}{3}$ (옳음)
-② $\frac{3}{2\sqrt{2}} = \frac{3 \times \sqrt{2}}{2\sqrt{2} \times \sqrt{2}} = \frac{3\sqrt{2}}{4}$ (옳음)
-③ $\frac{\sqrt{2} \times \sqrt{3}}{5\sqrt{3} \times \sqrt{3}} = \frac{\sqrt{6}}{15}$ (옳음)
-④ $\frac{6}{\sqrt{24}} = \frac{6}{2\sqrt{6}} = \frac{3}{\sqrt{6}} = \frac{3\sqrt{6}}{6} = \frac{\sqrt{6}}{2}$이다. $\frac{1}{2}$은 옳지 않은 결과이다.
-⑤ $\frac{4 \times \sqrt{2}}{\sqrt{2} \times \sqrt{2}} = \frac{4\sqrt{2}}{2} = 2\sqrt{2}$ (옳음)
+① $\\frac{1 \\times \\sqrt{3}}{\\sqrt{3} \\times \\sqrt{3}} = \\frac{\\sqrt{3}}{3}$ (옳음)
+② $\\frac{3}{2\\sqrt{2}} = \\frac{3 \\times \\sqrt{2}}{2\\sqrt{2} \\times \\sqrt{2}} = \\frac{3\\sqrt{2}}{4}$ (옳음)
+③ $\\frac{\\sqrt{2} \\times \\sqrt{3}}{5\\sqrt{3} \\times \\sqrt{3}} = \\frac{\\sqrt{6}}{15}$ (옳음)
+④ $\\frac{6}{\\sqrt{24}} = \\frac{6}{2\\sqrt{6}} = \\frac{3}{\\sqrt{6}} = \\frac{3\\sqrt{6}}{6} = \\frac{\\sqrt{6}}{2}$이다. $\\frac{1}{2}$은 옳지 않은 결과이다.
+⑤ $\\frac{4 \\times \\sqrt{2}}{\\sqrt{2} \\times \\sqrt{2}} = \\frac{4\\sqrt{2}}{2} = 2\\sqrt{2}$ (옳음)
 
 [결론] 따라서 옳지 않은 것은 ④이다.`
   },
@@ -286,22 +286,22 @@ $(2 + 2\sqrt{2}) - (2 - 2\sqrt{2}) = 4\sqrt{2}$이다.
     wide: false,
     content: String.raw`다음 중 계산 결과가 가장 큰 것은?`,
     choices: [
-      String.raw`$\sqrt{2} \times \sqrt{5}$`,
-      String.raw`$\sqrt{42} \div \sqrt{7}$`,
-      String.raw`$4\sqrt{5} \div \sqrt{10}$`,
-      String.raw`$\sqrt{3} \div \sqrt{6} \times \sqrt{12}$`,
-      String.raw`$\sqrt{3} \times \frac{3}{\sqrt{3}}$`
+      String.raw`$\\sqrt{2} \\times \\sqrt{5}$`,
+      String.raw`$\\sqrt{42} \\div \\sqrt{7}$`,
+      String.raw`$4\\sqrt{5} \\div \\sqrt{10}$`,
+      String.raw`$\\sqrt{3} \\div \\sqrt{6} \\times \\sqrt{12}$`,
+      String.raw`$\\sqrt{3} \\times \\frac{3}{\\sqrt{3}}$`
     ],
     answer: "①",
-    solution: String.raw`[키포인트] 각 식을 간단히 하여 $\sqrt{k}$ 형태로 비교한다.
+    solution: String.raw`[키포인트] 각 식을 간단히 하여 $\\sqrt{k}$ 형태로 비교한다.
 
 [풀이 과정]
-① $\sqrt{2} \times \sqrt{5} = \sqrt{10}$
-② $\sqrt{42} \div \sqrt{7} = \sqrt{6}$
-③ $4\sqrt{5} \div \sqrt{10} = \frac{4}{\sqrt{2}} = 2\sqrt{2} = \sqrt{8}$
-④ $\sqrt{3} \div \sqrt{6} \times \sqrt{12} = \frac{1}{\sqrt{2}} \times \sqrt{12} = \sqrt{6}$
-⑤ $\sqrt{3} \times \frac{3}{\sqrt{3}} = 3 = \sqrt{9}$
-$\sqrt{10}, \sqrt{6}, \sqrt{8}, \sqrt{6}, \sqrt{9}$ 중에서 가장 큰 값은 $\sqrt{10}$이다.
+① $\\sqrt{2} \\times \\sqrt{5} = \\sqrt{10}$
+② $\\sqrt{42} \\div \\sqrt{7} = \\sqrt{6}$
+③ $4\\sqrt{5} \\div \\sqrt{10} = \\frac{4}{\\sqrt{2}} = 2\\sqrt{2} = \\sqrt{8}$
+④ $\\sqrt{3} \\div \\sqrt{6} \\times \\sqrt{12} = \\frac{1}{\\sqrt{2}} \\times \\sqrt{12} = \\sqrt{6}$
+⑤ $\\sqrt{3} \\times \\frac{3}{\\sqrt{3}} = 3 = \\sqrt{9}$
+$\\sqrt{10}, \\sqrt{6}, \\sqrt{8}, \\sqrt{6}, \\sqrt{9}$ 중에서 가장 큰 값은 $\\sqrt{10}$이다.
 
 [결론] 따라서 계산 결과가 가장 큰 것은 ①이다.`
   },
@@ -318,23 +318,23 @@ $\sqrt{10}, \sqrt{6}, \sqrt{8}, \sqrt{6}, \sqrt{9}$ 중에서 가장 큰 값은 
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","조건해석","계산"],
     wide: false,
-    content: String.raw`$\sqrt{32}=a\sqrt{2}, 4\sqrt{3}=\sqrt{b}$일 때, $\sqrt{\frac{b}{a}}$의 값은?`,
+    content: String.raw`$\\sqrt{32}=a\\sqrt{2}, 4\\sqrt{3}=\\sqrt{b}$일 때, $\\sqrt{\\frac{b}{a}}$의 값은?`,
     choices: [
-      String.raw`$\sqrt{2}$`,
-      String.raw`$\sqrt{5}$`,
-      String.raw`$2\sqrt{2}$`,
-      String.raw`$2\sqrt{3}$`,
-      String.raw`$3\sqrt{3}$`
+      String.raw`$\\sqrt{2}$`,
+      String.raw`$\\sqrt{5}$`,
+      String.raw`$2\\sqrt{2}$`,
+      String.raw`$2\\sqrt{3}$`,
+      String.raw`$3\\sqrt{3}$`
     ],
     answer: "④",
-    solution: String.raw`[키포인트] $k\sqrt{m} = \sqrt{k^2 m}$임을 이용하여 식을 변형한다.
+    solution: String.raw`[키포인트] $k\\sqrt{m} = \\sqrt{k^2 m}$임을 이용하여 식을 변형한다.
 
 [조건 정리]
-- $\sqrt{32} = \sqrt{16 \times 2} = 4\sqrt{2}$ 이므로 $a = 4$이다.
-- $4\sqrt{3} = \sqrt{16 \times 3} = \sqrt{48}$ 이므로 $b = 48$이다.
+- $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$ 이므로 $a = 4$이다.
+- $4\\sqrt{3} = \\sqrt{16 \\times 3} = \\sqrt{48}$ 이므로 $b = 48$이다.
 
 [풀이 과정]
-$\sqrt{\frac{b}{a}} = \sqrt{\frac{48}{4}} = \sqrt{12} = 2\sqrt{3}$이다.
+$\\sqrt{\\frac{b}{a}} = \\sqrt{\\frac{48}{4}} = \\sqrt{12} = 2\\sqrt{3}$이다.
 
 [결론] 따라서 구하는 값은 ④이다.`
   },
@@ -351,16 +351,16 @@ $\sqrt{\frac{b}{a}} = \sqrt{\frac{48}{4}} = \sqrt{12} = 2\sqrt{3}$이다.
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","자연수조건","범위","개수세기","계산"],
     wide: false,
-    content: String.raw`자연수 $x$에 대하여 $\sqrt{x}$ 이하의 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+ \cdots + f(16)+f(17)$의 값은?`,
+    content: String.raw`자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+ \cdots + f(16)+f(17)$의 값은?`,
     choices: ["38", "39", "40", "41", "42"],
     answer: "⑤",
-    solution: String.raw`[키포인트] $f(x)$는 $\sqrt{x}$의 정수 부분과 같다.
+    solution: String.raw`[키포인트] $f(x)$는 $\\sqrt{x}$의 정수 부분과 같다.
 
 [풀이 과정]
-- $1 \le x \lt 4$ 인 경우: $\sqrt{x}$는 $1$ 이상 $2$ 미만이므로 $f(x)=1$. ($x=1, 2, 3$의 $3$개) $\implies 1 \times 3 = 3$
-- $4 \le x \lt 9$ 인 경우: $\sqrt{x}$는 $2$ 이상 $3$ 미만이므로 $f(x)=2$. ($x=4, 5, 6, 7, 8$의 $5$개) $\implies 2 \times 5 = 10$
-- $9 \le x \lt 16$ 인 경우: $\sqrt{x}$는 $3$ 이상 $4$ 미만이므로 $f(x)=3$. ($x=9, 10, 11, 12, 13, 14, 15$의 $7$개) $\implies 3 \times 7 = 21$
-- $16 \le x \le 17$ 인 경우: $\sqrt{x}$는 $4$ 이상 $5$ 미만이므로 $f(x)=4$. ($x=16, 17$의 $2$개) $\implies 4 \times 2 = 8$
+- $1 \le x \\lt 4$ 인 경우: $\\sqrt{x}$는 $1$ 이상 $2$ 미만이므로 $f(x)=1$. ($x=1, 2, 3$의 $3$개) $\\implies 1 \\times 3 = 3$
+- $4 \le x \\lt 9$ 인 경우: $\\sqrt{x}$는 $2$ 이상 $3$ 미만이므로 $f(x)=2$. ($x=4, 5, 6, 7, 8$의 $5$개) $\\implies 2 \\times 5 = 10$
+- $9 \le x \\lt 16$ 인 경우: $\\sqrt{x}$는 $3$ 이상 $4$ 미만이므로 $f(x)=3$. ($x=9, 10, 11, 12, 13, 14, 15$의 $7$개) $\\implies 3 \\times 7 = 21$
+- $16 \le x \le 17$ 인 경우: $\\sqrt{x}$는 $4$ 이상 $5$ 미만이므로 $f(x)=4$. ($x=16, 17$의 $2$개) $\\implies 4 \\times 2 = 8$
 전체 합 $= 3 + 10 + 21 + 8 = 42$
 
 [결론] 따라서 정답은 ⑤이다.`
@@ -378,22 +378,22 @@ $\sqrt{\frac{b}{a}} = \sqrt{\frac{48}{4}} = \sqrt{12} = 2\sqrt{3}$이다.
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","분모유리화","계산"],
     wide: false,
-    content: String.raw`$\sqrt{24}+\frac{2}{\sqrt{2}}+\sqrt{2} \times \sqrt{3}$을 계산하면?`,
+    content: String.raw`$\\sqrt{24}+\\frac{2}{\\sqrt{2}}+\\sqrt{2} \\times \\sqrt{3}$을 계산하면?`,
     choices: [
-      String.raw`$\sqrt{2}+3\sqrt{6}$`,
-      String.raw`$2\sqrt{3}$`,
-      String.raw`$2\sqrt{6}$`,
-      String.raw`$3\sqrt{3}+\sqrt{6}$`,
-      String.raw`$2\sqrt{2}+5\sqrt{3}$`
+      String.raw`$\\sqrt{2}+3\\sqrt{6}$`,
+      String.raw`$2\\sqrt{3}$`,
+      String.raw`$2\\sqrt{6}$`,
+      String.raw`$3\\sqrt{3}+\\sqrt{6}$`,
+      String.raw`$2\\sqrt{2}+5\\sqrt{3}$`
     ],
     answer: "①",
     solution: String.raw`[키포인트] 근호 안의 수를 꺼내고 유리화하여 간단히 한 후 동류항끼리 더한다.
 
 [풀이 과정]
-- $\sqrt{24} = 2\sqrt{6}$
-- $\frac{2}{\sqrt{2}} = \frac{2\sqrt{2}}{2} = \sqrt{2}$
-- $\sqrt{2} \times \sqrt{3} = \sqrt{6}$
-따라서 $2\sqrt{6} + \sqrt{2} + \sqrt{6} = \sqrt{2} + 3\sqrt{6}$이다.
+- $\\sqrt{24} = 2\\sqrt{6}$
+- $\\frac{2}{\\sqrt{2}} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2}$
+- $\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}$
+따라서 $2\\sqrt{6} + \\sqrt{2} + \\sqrt{6} = \\sqrt{2} + 3\\sqrt{6}$이다.
 
 [결론] 따라서 정답은 ①이다.`
   },
@@ -410,21 +410,21 @@ $\sqrt{\frac{b}{a}} = \sqrt{\frac{48}{4}} = \sqrt{12} = 2\sqrt{3}$이다.
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","전개","계산"],
     wide: false,
-    content: String.raw`$\sqrt{3}(\sqrt{5}+4) - \sqrt{5}(2\sqrt{3}-\sqrt{15})$을 계산하면?`,
+    content: String.raw`$\\sqrt{3}(\\sqrt{5}+4) - \\sqrt{5}(2\\sqrt{3}-\\sqrt{15})$을 계산하면?`,
     choices: [
-      String.raw`$\sqrt{15}-3\sqrt{3}$`,
-      String.raw`$-\sqrt{15}+9\sqrt{3}$`,
-      String.raw`$-3\sqrt{15}-\sqrt{3}$`,
-      String.raw`$-3\sqrt{15}+\sqrt{3}$`,
-      String.raw`$-\sqrt{15}-9\sqrt{3}$`
+      String.raw`$\\sqrt{15}-3\\sqrt{3}$`,
+      String.raw`$-\\sqrt{15}+9\\sqrt{3}$`,
+      String.raw`$-3\\sqrt{15}-\\sqrt{3}$`,
+      String.raw`$-3\\sqrt{15}+\\sqrt{3}$`,
+      String.raw`$-\\sqrt{15}-9\\sqrt{3}$`
     ],
     answer: "②",
     solution: String.raw`[키포인트] 분배법칙을 사용하여 괄호를 전개한 후 계산한다.
 
 [풀이 과정]
-- 앞 항: $\sqrt{3}(\sqrt{5}+4) = \sqrt{15} + 4\sqrt{3}$
-- 뒤 항: $-\sqrt{5}(2\sqrt{3}-\sqrt{15}) = -2\sqrt{15} + \sqrt{75} = -2\sqrt{15} + 5\sqrt{3}$
-식을 합치면 $(\sqrt{15} + 4\sqrt{3}) + (-2\sqrt{15} + 5\sqrt{3}) = -\sqrt{15} + 9\sqrt{3}$이다.
+- 앞 항: $\\sqrt{3}(\\sqrt{5}+4) = \\sqrt{15} + 4\\sqrt{3}$
+- 뒤 항: $-\\sqrt{5}(2\\sqrt{3}-\\sqrt{15}) = -2\\sqrt{15} + \\sqrt{75} = -2\\sqrt{15} + 5\\sqrt{3}$
+식을 합치면 $(\\sqrt{15} + 4\\sqrt{3}) + (-2\\sqrt{15} + 5\\sqrt{3}) = -\\sqrt{15} + 9\\sqrt{3}$이다.
 
 [결론] 따라서 정답은 ②이다.`
   },
@@ -441,16 +441,16 @@ $\sqrt{\frac{b}{a}} = \sqrt{\frac{48}{4}} = \sqrt{12} = 2\sqrt{3}$이다.
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","유리수","조건해석","계산"],
     wide: false,
-    content: String.raw`$\sqrt{32}+2\sqrt{24}-\sqrt{2}\left(2+\frac{6}{\sqrt{12}}\right)=a\sqrt{2}+b\sqrt{6}$이 성립할 때, $a-b$의 값을 구하면? (단, $a, b$는 유리수이다.)`,
+    content: String.raw`$\\sqrt{32}+2\\sqrt{24}-\\sqrt{2}\\left(2+\\frac{6}{\\sqrt{12}}\\right)=a\\sqrt{2}+b\\sqrt{6}$이 성립할 때, $a-b$의 값을 구하면? (단, $a, b$는 유리수이다.)`,
     choices: ["-2", "-1", "0", "1", "2"],
     answer: "②",
-    solution: String.raw`[키포인트] 좌변을 정리하여 $a\sqrt{2}+b\sqrt{6}$ 꼴로 만든다.
+    solution: String.raw`[키포인트] 좌변을 정리하여 $a\\sqrt{2}+b\\sqrt{6}$ 꼴로 만든다.
 
 [풀이 과정]
-$\sqrt{32} = 4\sqrt{2}$
-$2\sqrt{24} = 4\sqrt{6}$
-$\sqrt{2}\left(2+\frac{6}{\sqrt{12}}\right) = 2\sqrt{2} + \frac{6\sqrt{2}}{2\sqrt{3}} = 2\sqrt{2} + \frac{3\sqrt{2}}{\sqrt{3}} = 2\sqrt{2} + \sqrt{6}$
-전체 식 $= 4\sqrt{2} + 4\sqrt{6} - (2\sqrt{2} + \sqrt{6}) = 2\sqrt{2} + 3\sqrt{6}$
+$\\sqrt{32} = 4\\sqrt{2}$
+$2\\sqrt{24} = 4\\sqrt{6}$
+$\\sqrt{2}\\left(2+\\frac{6}{\\sqrt{12}}\\right) = 2\\sqrt{2} + \\frac{6\\sqrt{2}}{2\\sqrt{3}} = 2\\sqrt{2} + \\frac{3\\sqrt{2}}{\\sqrt{3}} = 2\\sqrt{2} + \\sqrt{6}$
+전체 식 $= 4\\sqrt{2} + 4\\sqrt{6} - (2\\sqrt{2} + \\sqrt{6}) = 2\\sqrt{2} + 3\\sqrt{6}$
 따라서 $a=2, b=3$이므로, $a-b = 2-3 = -1$이다.
 
 [결론] 따라서 정답은 ②이다.`
@@ -529,20 +529,20 @@ $x$의 계수를 비교하면 $b = 10+3a = 10+3(2) = 16$이다.
     wide: false,
     content: String.raw`$x^2+(2p+1)x+9$가 완전제곱식이 될 때, 상수 $p$의 값을 모두 곱하면?`,
     choices: [
-      String.raw`$-\frac{35}{4}$`,
+      String.raw`$-\\frac{35}{4}$`,
       "-8",
-      String.raw`$-\frac{13}{2}$`,
-      String.raw`$-\frac{9}{2}$`,
-      String.raw`$-\frac{15}{4}$`
+      String.raw`$-\\frac{13}{2}$`,
+      String.raw`$-\\frac{9}{2}$`,
+      String.raw`$-\\frac{15}{4}$`
     ],
     answer: "①",
-    solution: String.raw`[키포인트] 이차식 $x^2+Ax+B$가 완전제곱식이 되려면 $A = \pm 2\sqrt{B}$여야 한다.
+    solution: String.raw`[키포인트] 이차식 $x^2+Ax+B$가 완전제곱식이 되려면 $A = \\pm 2\\sqrt{B}$여야 한다.
 
 [풀이 과정]
-상수항이 $9 = 3^2$이므로, 일차항의 계수 $2p+1$은 $\pm 2 \times 3 = \pm 6$이어야 한다.
-1) $2p+1 = 6 \implies 2p = 5 \implies p = \frac{5}{2}$
-2) $2p+1 = -6 \implies 2p = -7 \implies p = -\frac{7}{2}$
-모든 $p$값의 곱은 $\frac{5}{2} \times \left(-\frac{7}{2}\right) = -\frac{35}{4}$이다.
+상수항이 $9 = 3^2$이므로, 일차항의 계수 $2p+1$은 $\\pm 2 \\times 3 = \\pm 6$이어야 한다.
+1) $2p+1 = 6 \\implies 2p = 5 \\implies p = \\frac{5}{2}$
+2) $2p+1 = -6 \\implies 2p = -7 \\implies p = -\\frac{7}{2}$
+모든 $p$값의 곱은 $\\frac{5}{2} \\times \\left(-\\frac{7}{2}\\right) = -\\frac{35}{4}$이다.
 
 [결론] 따라서 정답은 ①이다.`
   },
@@ -619,7 +619,7 @@ $x^2$의 계수 $a = 5$, $y^2$의 계수 $b = 2$이다.
     layoutTag: "grid",
     "tags": ["객관식","제곱근","근호","절댓값","다항식","인수분해","완전제곱식","범위"],
     wide: false,
-    content: String.raw`$-2 \lt x \lt \frac{1}{3}$일 때, $\sqrt{x^2+4x+4}+\sqrt{9x^2-6x+1}$을 간단히 하면?`,
+    content: String.raw`$-2 \\lt x \\lt \\frac{1}{3}$일 때, $\\sqrt{x^2+4x+4}+\\sqrt{9x^2-6x+1}$을 간단히 하면?`,
     choices: [
       String.raw`$-2x-3$`,
       String.raw`$-2x+3$`,
@@ -628,14 +628,14 @@ $x^2$의 계수 $a = 5$, $y^2$의 계수 $b = 2$이다.
       String.raw`$5x+1$`
     ],
     answer: "②",
-    solution: String.raw`[키포인트] $\sqrt{a^2} = |a|$ 성질을 이용하고 범위에 따른 부호를 판단한다.
+    solution: String.raw`[키포인트] $\\sqrt{a^2} = |a|$ 성질을 이용하고 범위에 따른 부호를 판단한다.
 
 [조건 정리]
-$-2 \lt x \lt \frac{1}{3}$ 일 때, $x+2 \gt 0$ 이고 $3x-1 \lt 0$ 이다.
+$-2 \\lt x \\lt \\frac{1}{3}$ 일 때, $x+2 \\gt 0$ 이고 $3x-1 \\lt 0$ 이다.
 
 [풀이 과정]
-$\sqrt{x^2+4x+4} = \sqrt{(x+2)^2} = |x+2| = x+2$
-$\sqrt{9x^2-6x+1} = \sqrt{(3x-1)^2} = |3x-1| = -(3x-1) = -3x+1$
+$\\sqrt{x^2+4x+4} = \\sqrt{(x+2)^2} = |x+2| = x+2$
+$\\sqrt{9x^2-6x+1} = \\sqrt{(3x-1)^2} = |3x-1| = -(3x-1) = -3x+1$
 두 식의 합은 $(x+2) + (-3x+1) = -2x+3$ 이다.
 
 [결론] 따라서 정답은 ②이다.`
@@ -680,16 +680,16 @@ $x^2+y^2 = (x+y)^2 - 2xy = 4^2 - 2(5) = 16-10 = 6$이다.
     wide: false,
     content: String.raw`[서술형1] 다음 수의 제곱근을 풀이 과정을 쓰고 구하시오.
 (1) $36$의 제곱근을 구하면?
-(2) $\sqrt{81}$의 제곱근을 구하면?`,
+(2) $\\sqrt{81}$의 제곱근을 구하면?`,
     choices: [],
-    answer: String.raw`(1) $\pm 6$, (2) $\pm 3$`,
-    solution: String.raw`[키포인트] 제곱하여 $a$가 되는 수(양수 기준 $\pm\sqrt{a}$)를 찾는다.
+    answer: String.raw`(1) $\\pm 6$, (2) $\\pm 3$`,
+    solution: String.raw`[키포인트] 제곱하여 $a$가 되는 수(양수 기준 $\\pm\\sqrt{a}$)를 찾는다.
 
 [풀이 과정]
-(1) $6^2 = 36$, $(-6)^2 = 36$ 이므로 $36$의 제곱근은 $\pm 6$이다.
-(2) $\sqrt{81} = 9$이다. $9$의 제곱근은 $3^2=9, (-3)^2=9$ 이므로 $\pm 3$이다.
+(1) $6^2 = 36$, $(-6)^2 = 36$ 이므로 $36$의 제곱근은 $\\pm 6$이다.
+(2) $\\sqrt{81} = 9$이다. $9$의 제곱근은 $3^2=9, (-3)^2=9$ 이므로 $\\pm 3$이다.
 
-[결론] 따라서 정답은 (1) $\pm 6$, (2) $\pm 3$이다.`
+[결론] 따라서 정답은 (1) $\\pm 6$, (2) $\\pm 3$이다.`
   },
   {
     id: 22,
@@ -704,19 +704,19 @@ $x^2+y^2 = (x+y)^2 - 2xy = 4^2 - 2(5) = 16-10 = 6$이다.
     layoutTag: "grid",
     tags: ["서술형"],
     wide: false,
-    content: String.raw`[서술형2] $6-\sqrt{5}$의 소수 부분을 $x$라고 하면 $\frac{3+x}{3-x}=A+B\sqrt{5}$이다. 이때, 유리수 $A+B$의 값을 풀이 과정을 쓰고 구하시오. (단, $A, B$는 유리수)`,
+    content: String.raw`[서술형2] $6-\\sqrt{5}$의 소수 부분을 $x$라고 하면 $\\frac{3+x}{3-x}=A+B\\sqrt{5}$이다. 이때, 유리수 $A+B$의 값을 풀이 과정을 쓰고 구하시오. (단, $A, B$는 유리수)`,
     choices: [],
-    answer: String.raw`$\frac{1}{5}$`,
-    solution: String.raw`[키포인트] 소수 부분 $x = (\text{전체 수}) - (\text{정수 부분})$임을 이용한다.
+    answer: String.raw`$\\frac{1}{5}$`,
+    solution: String.raw`[키포인트] 소수 부분 $x = (\\text{전체 수}) - (\\text{정수 부분})$임을 이용한다.
 
 [풀이 과정]
-$2 \lt \sqrt{5} \lt 3$ 이므로 $-3 \lt -\sqrt{5} \lt -2$이다.
-$6$을 더하면 $3 \lt 6-\sqrt{5} \lt 4$ 이므로 정수 부분은 $3$이다.
-따라서 소수 부분 $x = (6-\sqrt{5}) - 3 = 3-\sqrt{5}$이다.
-$\frac{3+x}{3-x} = \frac{3+(3-\sqrt{5})}{3-(3-\sqrt{5})} = \frac{6-\sqrt{5}}{\sqrt{5}} = \frac{6\sqrt{5}-5}{5} = -1 + \frac{6}{5}\sqrt{5}$ 이다.
-$A = -1$, $B = \frac{6}{5}$ 이므로 $A+B = -1 + \frac{6}{5} = \frac{1}{5}$이다.
+$2 \\lt \\sqrt{5} \\lt 3$ 이므로 $-3 \\lt -\\sqrt{5} \\lt -2$이다.
+$6$을 더하면 $3 \\lt 6-\\sqrt{5} \\lt 4$ 이므로 정수 부분은 $3$이다.
+따라서 소수 부분 $x = (6-\\sqrt{5}) - 3 = 3-\\sqrt{5}$이다.
+$\\frac{3+x}{3-x} = \\frac{3+(3-\\sqrt{5})}{3-(3-\\sqrt{5})} = \\frac{6-\\sqrt{5}}{\\sqrt{5}} = \\frac{6\\sqrt{5}-5}{5} = -1 + \\frac{6}{5}\\sqrt{5}$ 이다.
+$A = -1$, $B = \\frac{6}{5}$ 이므로 $A+B = -1 + \\frac{6}{5} = \\frac{1}{5}$이다.
 
-[결론] 따라서 $A+B$의 값은 $\frac{1}{5}$이다.`
+[결론] 따라서 $A+B$의 값은 $\\frac{1}{5}$이다.`
   },
   {
     id: 23,
@@ -742,9 +742,9 @@ $A = -1$, $B = \frac{6}{5}$ 이므로 $A+B = -1 + \frac{6}{5} = \frac{1}{5}$이�
 [풀이 과정]
 (1) 둘레의 합: $4x+4y = 44$ (또는 $x+y=11$)
 (2) 넓이의 합: $x^2+y^2 = 65$
-(3) 둘레의 길이의 곱 $4x \times 4y = 16xy$를 구해야 한다.
-$(x+y)^2 = x^2+y^2+2xy$ 에 (1), (2)의 결과를 대입하면 $11^2 = 65 + 2xy \implies 121 - 65 = 2xy \implies 56 = 2xy \implies xy = 28$ 이다.
-따라서 둘레의 곱은 $16 \times 28 = 448$이다.
+(3) 둘레의 길이의 곱 $4x \\times 4y = 16xy$를 구해야 한다.
+$(x+y)^2 = x^2+y^2+2xy$ 에 (1), (2)의 결과를 대입하면 $11^2 = 65 + 2xy \\implies 121 - 65 = 2xy \\implies 56 = 2xy \\implies xy = 28$ 이다.
+따라서 둘레의 곱은 $16 \\times 28 = 448$이다.
 
 [결론] 따라서 구하는 값은 $448$이다.`
   },
