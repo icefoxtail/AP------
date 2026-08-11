@@ -66,11 +66,11 @@ function removeTodoMemoFromState(id) {
     state.db.operation_memos = (state.db.operation_memos || []).filter(item => String(item.id) !== String(id));
 }
 
-function openTodoMemoModal() {
-    const todayStr = new Date().toLocaleDateString('sv-SE');
-    const memos = state.db.operation_memos || [];
-    
-    const memoRows = memos.map(m => {
+function renderTodoMemoRows(memos = state.db.operation_memos || []) {
+    if (!memos.length) {
+        return `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:400; padding:20px;">표시할 메모가 없습니다.</div>`;
+    }
+    return memos.map(m => {
         const isDone = m.is_done == 1 || m.is_done === true;
         const isPinned = m.is_pinned == 1 || m.is_pinned === true;
         return `
@@ -84,7 +84,13 @@ function openTodoMemoModal() {
                 <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; background:var(--surface-2); border:none;" onclick="openEditTodoMemoModal('${m.id}')">수정</button>
             </div>
         </div>
-    `}).join('');
+    `;
+    }).join('');
+}
+
+function openTodoMemoModal() {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const memos = state.db.operation_memos || [];
 
     showModal('메모', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
@@ -95,10 +101,43 @@ function openTodoMemoModal() {
             <input type="text" id="new-memo-content" class="btn" placeholder="메모 입력 (예: 고2 직전보강)" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px; font-size:13px; font-weight:500; margin-top:4px;" onclick="addTodoMemo()">저장</button>
         </div>
-        <div style="max-height:45vh; overflow-y:auto; padding-right:4px;">
-            ${memos.length ? memoRows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:400; padding:20px;">표시할 메모가 없습니다.</div>`}
+        <div id="todo-memo-list" style="max-height:45vh; overflow-y:auto; padding-right:4px;">
+            ${renderTodoMemoRows(memos)}
         </div>
     `);
+}
+
+let todoMemoLastKstDate = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+let todoMemoDateSyncInFlight = null;
+
+async function syncTodoMemosAfterKstDateChange() {
+    const currentKstDate = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+    if (currentKstDate === todoMemoLastKstDate || todoMemoDateSyncInFlight) return todoMemoDateSyncInFlight;
+    if (typeof getSession === 'function' && !getSession()) return null;
+
+    todoMemoDateSyncInFlight = Promise.resolve()
+        .then(() => api.get('initial-data'))
+        .then(data => {
+            if (!Array.isArray(data?.operation_memos)) throw new Error('operation_memos refresh failed');
+            if (!state.db) state.db = {};
+            state.db.operation_memos = data.operation_memos;
+            todoMemoLastKstDate = currentKstDate;
+            const memoList = document.getElementById('todo-memo-list');
+            if (memoList) memoList.innerHTML = renderTodoMemoRows();
+            const viewType = typeof appHistoryState !== 'undefined' ? appHistoryState.currentView?.type : '';
+            if (viewType === 'adminDashboard' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
+            else if (viewType === 'dashboard' && typeof renderDashboard === 'function') renderDashboard();
+        })
+        .catch(error => console.error('[operation-memos] date-change sync failed', error))
+        .finally(() => { todoMemoDateSyncInFlight = null; });
+    return todoMemoDateSyncInFlight;
+}
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    window.setInterval(syncTodoMemosAfterKstDateChange, 60 * 1000);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') syncTodoMemosAfterKstDateChange();
+    });
 }
 
 async function addTodoMemo() {
