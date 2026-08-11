@@ -1,25 +1,25 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-07-27T11:10:52.769Z
+- 생성 시각: 2026-08-11T07:11:48.410Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 346
-- 시험지 파일 수: 348
-- 원본 문항 수(중복 제거 전): 8572
-- 최종 인덱스 문항 수(중복 제거 후): 8547
+- 시험지 수(db.js): 422
+- 시험지 파일 수: 432
+- 원본 문항 수(중복 제거 전): 10553
+- 최종 인덱스 문항 수(중복 제거 후): 10528
 - 중복 qKey로 제외된 레코드: 25 (그룹 25)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 355323 bytes
-- 시험지 JS 총 크기: 11179032 bytes
-- 인덱스 크기: 5422796 bytes
-- 로드 실패 파일: 1
+- db.js 크기: 429081 bytes
+- 시험지 JS 총 크기: 12958330 bytes
+- 인덱스 크기: 7003944 bytes
+- 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(8547)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(10528)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 142개 기준)
 
-- 공식(official): 7807
-- RAW-(임시 규약, 허용): 477 (distinct 89)
+- 공식(official): 10050
+- RAW-(임시 규약, 허용): 215 (distinct 86)
 - 비공식(invalid): 249 (distinct 39)
 - 빈 키(empty): 14
 
@@ -29,7 +29,7 @@
 
 - 누락 id: 1
 - 누락 content: 2
-- 누락 choices: 5
+- 누락 choices: 181
 - 누락 level: 345
 - 누락 standardUnit: 15
 - 누락 standardUnitKey: 14
@@ -38,11 +38,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 1121
-- content 내부 <img>: 4
+- q.image 보유: 1504
+- content 내부 <img>: 5
 - content 내부 <svg>: 77
-- content 내부 <table>: 109
-- 시각요소 보유(hasImage=true, OR 합산): 1309
+- content 내부 <table>: 130
+- 시각요소 보유(hasImage=true, OR 합산): 1713
 
 ## 누락 예시
 
@@ -55,10 +55,13 @@
 
 ### choices
   - original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#(빈 id)
-  - original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js#21
-  - original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js#22
-  - original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js#23
-  - original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js#24
+  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#26
+  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#27
+  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#28
+  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#29
+  - original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#21
+  - original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#22
+  - original/high/h1/2final/21_복성고_2학기_기말_고1_기출.js#22
 
 ### level
   - original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#(빈 id)
@@ -115,4 +118,4 @@
 
 ## 실패 파일
 
-- original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js: ENOENT: no such file or directory, open 'C:\Users\USER\Desktop\AP------\archive\exams\original\middle\m2\2mid\24_매산중_2학기_중간_중2_수학.js'
+- 없음

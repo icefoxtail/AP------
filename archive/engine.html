@@ -205,6 +205,7 @@
         .choice-text { flex: 1; word-break: keep-all; overflow-wrap: anywhere; }
         .choices-compact { display: flex; flex-wrap: wrap; gap: 4px 15px; }
         .choices-compact .choice-item { min-width: 15%; }
+        .choices-grid { display: grid; gap: 4px 12px; }
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
         .choices-block .choice-item { padding: 0; background: transparent; border: none; border-radius: 0; }
 
@@ -1308,12 +1309,15 @@ function renderChoicesHTML(q) {
     const circled = ['①', '②', '③', '④', '⑤'];
     const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
     if (isSubjective) return '<div class="answer-box"></div>';
-    const mode = detectChoiceRenderMode(q.choices);
+    const requestedColumns = Number.parseInt(q.choiceColumns, 10);
+    const hasCustomGrid = requestedColumns >= 1 && requestedColumns <= 5;
+    const mode = hasCustomGrid ? 'grid' : detectChoiceRenderMode(q.choices);
     const itemsHTML = q.choices.map((c, ci) => {
         const text = wrapLatex(stripChoicePrefix(extractChoice(c)));
         return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
     }).join('');
-    return `<div class="choices choices-${mode}">${itemsHTML}</div>`;
+    const gridStyle = hasCustomGrid ? ` style="grid-template-columns:repeat(${requestedColumns}, minmax(0, 1fr))"` : '';
+    return `<div class="choices choices-${mode}"${gridStyle}>${itemsHTML}</div>`;
 }
 
 function formatQuestionContent(html, q) {
