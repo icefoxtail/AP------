@@ -152,7 +152,7 @@ window.questionBank = [
       "무리함수의 그래프"
     ],
     "wide": false,
-    "content": "함수 $f(x)=-\\sqrt{2x-4}+3$에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은?<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. 정의역은 $\\{x\\mid x\\ge2\\}$이고, 치역은 $\\{y\\mid y\\le3\\}$이다.<br>ㄴ. 함수 $y=f(x)$의 그래프는 함수 $y=-\\sqrt{2x}$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 것이다.<br>ㄷ. 함수 $y=f(x)$의 그래프는 제1사분면과 제4사분면을 지난다.</div>",
+    "content": "함수 $f(x)=-\\sqrt{2x-4}+3$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은?<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. 정의역은 $\\{x\\mid x\\ge2\\}$이고, 치역은 $\\{y\\mid y\\le3\\}$이다.<br>ㄴ. 함수 $y=f(x)$의 그래프는 함수 $y=-\\sqrt{2x}$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 것이다.<br>ㄷ. 함수 $y=f(x)$의 그래프는 제1사분면과 제4사분면을 지난다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",

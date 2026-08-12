@@ -14,7 +14,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 &lt;보기&gt;에서 일차부등식을 모두 고른 것은?<div style='display:block; margin:8px 0 4px 0; padding:7px 12px; border:1px solid #333; border-radius:4px; line-height:1.75;'><div style='text-align:center; font-weight:700;'>&lt;보기&gt;</div>ㄱ. $x\\gt1$<br>ㄴ. $5+2x\\leq2(x-2)$<br>ㄷ. $x-4=0$<br>ㄹ. $x^2+5\\leq x(x+5)$<br>ㅁ. $x^2+4x-1\\lt x^2+x-1$<br>ㅂ. $x+1\\gt x-4$</div>",
+    "content": "다음 보기에서 일차부등식을 모두 고른 것은?<div style='display:block; margin:8px 0 4px 0; padding:7px 12px; border:1px solid #333; border-radius:4px; line-height:1.75;'><div style='text-align:center; font-weight:700;'>&lt;보기&gt;</div>ㄱ. $x\\gt1$<br>ㄴ. $5+2x\\leq2(x-2)$<br>ㄷ. $x-4=0$<br>ㄹ. $x^2+5\\leq x(x+5)$<br>ㅁ. $x^2+4x-1\\lt x^2+x-1$<br>ㅂ. $x+1\\gt x-4$</div>",
     "choices": [
       "ㄱ, ㄴ, ㅁ",
       "ㄱ, ㄹ, ㅁ",
@@ -66,6 +66,7 @@ window.questionBank = [
     "wide": false,
     "content": "일차부등식 $\\dfrac16x-\\dfrac{x-8}{2}\\leq\\dfrac{x+2}{3}$의 해를 수직선 위에 바르게 나타낸 것은?",
     "image": "assets/images/23_향림중_1학기_기말_중2_기출/q3.png",
+    "imageSize": "tall",
     "choices": [],
     "answer": "③",
     "solution": "$6\\times\\left(\\dfrac16x-\\dfrac{x-8}{2}\\leq\\dfrac{x+2}{3}\\right)$<br>$x-3(x-8)\\leq2(x+2)$<br>$-2x+24\\leq2x+4$<br>$20\\leq4x$<br>$x\\geq5$"

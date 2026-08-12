@@ -370,7 +370,7 @@ window.questionBank = [
       "집합의 연산"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 세 부분집합 $A$, $B$, $C$에 대하여 <보기>에서 항상 옳은 것만을 있는 대로 고른 것은? [4.2점]<br><br>ㄱ. $A-B=A\\cap B^c$<br>ㄴ. $(A-B)\\cap(A-C)=A-(B\\cap C)$<br>ㄷ. $(A\\cap B)-(A\\cap C)=A\\cap B\\cap C^c$",
+    "content": "전체집합 $U$의 세 부분집합 $A$, $B$, $C$에 대하여 보기에서 항상 옳은 것만을 있는 대로 고른 것은? [4.2점]<br><br>ㄱ. $A-B=A\\cap B^c$<br>ㄴ. $(A-B)\\cap(A-C)=A-(B\\cap C)$<br>ㄷ. $(A\\cap B)-(A\\cap C)=A\\cap B\\cap C^c$",
     "choices": [
       "ㄱ",
       "ㄴ",

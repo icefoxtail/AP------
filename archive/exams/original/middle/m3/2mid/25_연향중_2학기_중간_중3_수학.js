@@ -185,7 +185,7 @@ window.questionBank = [
       "삼각비"
     ],
     "wide": false,
-    "content": "다음 <보기>의 삼각비의 값을 작은 것부터 차례로 나열한 것은? [4점]<br><div class=\"note-box\"><b>&lt;보기&gt;</b><br>ㄱ. $\\cos0^\\circ$　ㄴ. $\\sin25^\\circ$　ㄷ. $\\cos45^\\circ$<br>ㄹ. $\\tan50^\\circ$　ㅁ. $\\tan65^\\circ$</div>",
+    "content": "다음 보기의 삼각비의 값을 작은 것부터 차례로 나열한 것은? [4점]<br><div class=\"note-box\"><b>&lt;보기&gt;</b><br>ㄱ. $\\cos0^\\circ$　ㄴ. $\\sin25^\\circ$　ㄷ. $\\cos45^\\circ$<br>ㄹ. $\\tan50^\\circ$　ㅁ. $\\tan65^\\circ$</div>",
     "choices": [
       "ㄱ-ㄴ-ㄷ-ㄹ-ㅁ",
       "ㄱ-ㄷ-ㄴ-ㄹ-ㅁ",

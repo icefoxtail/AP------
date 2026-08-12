@@ -50,7 +50,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식", "집합", "집합의뜻", "대상의명확성"],
     wide: false,
-    content: "집합인 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? [3.3점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. 8의 배수의 모임<br>ㄴ. 100의 약수 중 소수의 모임<br>ㄷ. 달리기를 잘하는 사람들의 모임<br>ㄹ. 키가 매우 큰 순천고 학생의 모임</div>",
+    content: "집합인 것만을 보기에서 있는 대로 고른 것은? [3.3점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. 8의 배수의 모임<br>ㄴ. 100의 약수 중 소수의 모임<br>ㄷ. 달리기를 잘하는 사람들의 모임<br>ㄹ. 키가 매우 큰 순천고 학생의 모임</div>",
     choices: ["ㄱ, ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄴ, ㄹ", "ㄷ, ㄹ"],
     answer: "①",
     solution: "[키포인트] 집합은 어떤 대상이 그 모임에 속하는지 아닌지를 명확하게 판단할 수 있어야 한다.\n조건 정리: 배수, 약수, 소수는 수학적으로 기준이 정해져 있지만, 달리기를 잘한다거나 키가 매우 크다는 표현은 기준이 정해져 있지 않다.\n풀이 방향: 각 보기의 소속 여부를 누구나 같은 기준으로 판단할 수 있는지 확인한다.\n정석 풀이: ㄱ은 8로 나누어떨어지는 수인지 확인할 수 있으므로 집합이다. ㄴ은 100의 약수이면서 소수인지 확인할 수 있으므로 집합이다. ㄷ과 ㄹ은 잘한다, 매우 크다의 기준이 명확하지 않으므로 집합이 아니다. 따라서 집합인 것은 ㄱ, ㄴ이다.\n따라서 정답은 ①이다."
@@ -212,7 +212,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식", "명제", "진리집합", "대우", "부분집합"],
     wide: false,
-    content: "전체집합 $U$에 대하여 세 조건 $p,q,r$의 진리집합을 각각 $P,Q,R$라고 하자. 두 명제 $\\sim q\\to\\sim p$와 $q\\to r$가 모두 참일 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.2점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. $P\\subset R$<br>ㄴ. $(P\\cup Q)\\subset R^c$<br>ㄷ. $(P^c\\cap R^c)\\subset Q^c$</div>",
+    content: "전체집합 $U$에 대하여 세 조건 $p,q,r$의 진리집합을 각각 $P,Q,R$라고 하자. 두 명제 $\\sim q\\to\\sim p$와 $q\\to r$가 모두 참일 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [4.2점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. $P\\subset R$<br>ㄴ. $(P\\cup Q)\\subset R^c$<br>ㄷ. $(P^c\\cap R^c)\\subset Q^c$</div>",
     choices: ["ㄱ", "ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     answer: "③",
     solution: "[키포인트] 명제가 참이라는 조건을 진리집합의 포함 관계로 바꾼다.\n조건 정리: $\\sim q\\to\\sim p$의 대우는 $p\\to q$이므로 $P\\subset Q$이고, $q\\to r$가 참이므로 $Q\\subset R$이다.\n풀이 방향: $P\\subset Q\\subset R$을 이용해 보기별 포함 관계를 판단한다.\n정석 풀이: ㄱ은 $P\\subset Q\\subset R$이므로 참이다. ㄴ은 $P\\cup Q=Q$이고 $Q\\subset R$이므로 일반적으로 $Q\\subset R^c$가 성립하지 않아 거짓이다. ㄷ은 $Q\\subset R$에서 $R^c\\subset Q^c$이므로 $P^c\\cap R^c\\subset R^c\\subset Q^c$가 되어 참이다. 따라서 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ③이다."
@@ -230,7 +230,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식", "명제", "충분조건", "필요조건", "반례"],
     wide: false,
-    content: "두 실수 $x,y$에 대하여 조건 $p$가 조건 $q$이기 위한 충분조건이지만 필요조건이 아닌 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? [4.4점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. $p:x^2+y^2=0$, $q:|x|+|y|=0$<br>ㄴ. $p:xy\\lt0$, $q:x\\lt0$ 또는 $y\\lt0$<br>ㄷ. $p:x^3-y^3=0$, $q:x^2-y^2=0$</div>",
+    content: "두 실수 $x,y$에 대하여 조건 $p$가 조건 $q$이기 위한 충분조건이지만 필요조건이 아닌 것만을 보기에서 있는 대로 고른 것은? [4.4점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. $p:x^2+y^2=0$, $q:|x|+|y|=0$<br>ㄴ. $p:xy\\lt0$, $q:x\\lt0$ 또는 $y\\lt0$<br>ㄷ. $p:x^3-y^3=0$, $q:x^2-y^2=0$</div>",
     choices: ["ㄱ", "ㄷ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     answer: "④",
     solution: "[키포인트] 충분조건이지만 필요조건이 아니려면 $p\\to q$는 참이고 $q\\to p$는 거짓이어야 한다.\n조건 정리: 각 보기에서 정방향 명제를 확인한 뒤 역이 성립하지 않는 반례를 찾는다.\n풀이 방향: 두 조건이 동치인지, 한쪽 방향만 성립하는지를 구분한다.\n정석 풀이: ㄱ에서 $x^2+y^2=0$과 $|x|+|y|=0$은 모두 $x=y=0$과 같으므로 서로 동치이다. ㄴ에서 $xy\\lt0$이면 두 수의 부호가 반대이므로 $x\\lt0$ 또는 $y\\lt0$이다. 그러나 $x=y=-1$이면 $q$는 참이지만 $xy=1$이므로 $p$는 거짓이다. ㄷ에서 $x^3-y^3=0$이면 실수 범위에서 $x=y$이므로 $x^2-y^2=0$이다. 그러나 $x=1$, $y=-1$이면 $q$는 참이지만 $p$는 거짓이다. 따라서 ㄴ, ㄷ이 조건을 만족한다.\n따라서 정답은 ④이다."
@@ -338,7 +338,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: ["객관식", "집합", "부분집합", "원소의합", "경우의수"],
     wide: false,
-    content: "집합 $S=\\{1,2,3,\\cdots,8\\}$, $A=\\{1,2,3,4\\}$, $B=\\{2,4,6,8\\}$이다. $X$가 $S$의 부분집합일 때, $X-A$의 모든 원소의 합을 $f_A(X)$, $X-B$의 모든 원소의 합을 $f_B(X)$라 하자. 집합 $T=\\{X\\mid f_A(X)\\gt f_B(X)\\}$로 정의할 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? (단, 공집합의 모든 원소의 합은 $0$으로 계산한다.) [5.2점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. $S\\in T$<br>ㄴ. $n(T)=64$<br>ㄷ. $E\\in T$이면 $\\{2,4\\}\\subset E$</div>",
+    content: "집합 $S=\\{1,2,3,\\cdots,8\\}$, $A=\\{1,2,3,4\\}$, $B=\\{2,4,6,8\\}$이다. $X$가 $S$의 부분집합일 때, $X-A$의 모든 원소의 합을 $f_A(X)$, $X-B$의 모든 원소의 합을 $f_B(X)$라 하자. 집합 $T=\\{X\\mid f_A(X)\\gt f_B(X)\\}$로 정의할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (단, 공집합의 모든 원소의 합은 $0$으로 계산한다.) [5.2점]\n<div class=\"note-box\"><div style=\"text-align:center;font-weight:700;\">&lt;보기&gt;</div>ㄱ. $S\\in T$<br>ㄴ. $n(T)=64$<br>ㄷ. $E\\in T$이면 $\\{2,4\\}\\subset E$</div>",
     choices: ["ㄱ", "ㄷ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     answer: "①",
     solution: "[키포인트] 두 합에 공통으로 들어가는 원소를 없애면 $T$의 조건은 $X$가 $6$ 또는 $8$을 포함하는지로 단순해진다.\n조건 정리: $f_A(X)$에는 $X$에 들어 있는 $5,6,7,8$이 더해지고, $f_B(X)$에는 $X$에 들어 있는 $1,3,5,7$이 더해진다.\n풀이 방향: 양쪽에 공통으로 들어가는 $5,7$을 제외하고, 남은 원소가 두 합의 대소에 미치는 영향을 비교한다.\n정석 풀이: $6,8$이 모두 $X$에 없으면 $f_A(X)-f_B(X)$는 $X$에 들어 있는 $1,3$의 합에 음수를 붙인 값이므로 $0$ 이하이다. 따라서 이 경우 $X\\notin T$이다. 반대로 $6$ 또는 $8$ 중 하나라도 $X$에 있으면 $f_A(X)$ 쪽에서 늘어나는 값은 최소 $6$이고, $f_B(X)$ 쪽에서 $1,3$ 때문에 늘어나는 값은 최대 $4$이므로 항상 $f_A(X)\\gt f_B(X)$이다. 따라서 $T$는 $6$ 또는 $8$을 포함하는 부분집합들의 모임이다. ㄱ에서 $S$는 $6,8$을 포함하므로 참이다. ㄴ에서 이런 부분집합의 개수는 $2^8-2^6=192$이므로 거짓이다. ㄷ은 $E=\\{6\\}$이 반례이므로 거짓이다. 따라서 옳은 것은 ㄱ뿐이다.\n따라서 정답은 ①이다."

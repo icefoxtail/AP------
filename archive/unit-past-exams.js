@@ -89,6 +89,33 @@
   function getUnit(unitKey) { return state.catalog?.units.find(unit => unit.key === unitKey); }
   function getPaper(unitKey, paperIndex) { return getUnit(unitKey)?.papers.find(paper => paper.index === Number(paperIndex)); }
 
+  function getSourceExamLabel(sourceFile) {
+    const filename = String(sourceFile || '').split('/').pop().replace(/\.js$/i, '');
+    const parts = filename.split('_');
+    const year = parts[0] || '';
+    const school = parts[1] || filename;
+    const period = core.getPeriod(sourceFile);
+    const periodLabel = {
+      '1mid': '1학기 중간', '1final': '1학기 기말',
+      '2mid': '2학기 중간', '2final': '2학기 기말'
+    }[period] || period;
+    return [year, school, periodLabel].filter(Boolean).join(' · ');
+  }
+
+  function getPaperSources(paper) {
+    const sources = new Map();
+    paper.records.forEach(record => {
+      const sourceFile = record.sourceFile;
+      const current = sources.get(sourceFile) || { sourceFile, count: 0 };
+      current.count += 1;
+      sources.set(sourceFile, current);
+    });
+    return [...sources.values()].map(source => ({
+      ...source,
+      label: getSourceExamLabel(source.sourceFile)
+    }));
+  }
+
   function storeMixedPayload(unit, paper, questions) {
     const profile = getProfile();
     const title = paper.title;
@@ -224,11 +251,21 @@
         <div class="unit-paper-list">
           ${unit.papers.map(paper => `
             <article class="unit-paper">
-              <div><div class="unit-paper-title">${escapeHtml(paper.title)}</div><div class="unit-paper-meta">${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</div></div>
+              <div class="unit-paper-main"><div class="unit-paper-title">${escapeHtml(paper.title)}</div><div class="unit-paper-meta">${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</div></div>
               <div class="unit-paper-actions">
                 <button class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', ${paper.index}, this)">일반 출력</button>
                 <button class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', ${paper.index}, this)">반 학생에게 출제</button>
               </div>
+              <details class="unit-paper-sources">
+                <summary>포함 시험지 보기 <span>${paper.sourceCount}개</span></summary>
+                <div class="unit-source-list">
+                  ${getPaperSources(paper).map(source => `
+                    <div class="unit-source-row">
+                      <span>${escapeHtml(source.label)}</span>
+                      <strong>${source.count}문항</strong>
+                    </div>`).join('')}
+                </div>
+              </details>
             </article>`).join('')}
         </div>
       </section>`;

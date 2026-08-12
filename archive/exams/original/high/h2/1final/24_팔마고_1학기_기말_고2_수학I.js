@@ -304,7 +304,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "$0\\le\\alpha<\\beta\\le2\\pi$인 두 실수 $\\alpha$, $\\beta$에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은? [4.7점]\n\n<보기>\nㄱ. $\\alpha<x<\\beta<\\dfrac{\\pi}{2}$에서 $\\sin x<\\tan x<\\cos x$이면 $\\beta<\\dfrac{\\pi}{4}$이다.\nㄴ. $\\alpha<x<\\beta$에서 $\\sin x>\\cos x$이면 $\\beta-\\alpha\\le\\pi$이다.\nㄷ. $|\\sin\\alpha|>|\\cos\\alpha|=\\dfrac{1}{3}$을 만족하는 모든 $\\alpha$의 합은 $2\\pi$이다.",
+    "content": "$0\\le\\alpha<\\beta\\le2\\pi$인 두 실수 $\\alpha$, $\\beta$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은? [4.7점]\n\n<보기>\nㄱ. $\\alpha<x<\\beta<\\dfrac{\\pi}{2}$에서 $\\sin x<\\tan x<\\cos x$이면 $\\beta<\\dfrac{\\pi}{4}$이다.\nㄴ. $\\alpha<x<\\beta$에서 $\\sin x>\\cos x$이면 $\\beta-\\alpha\\le\\pi$이다.\nㄷ. $|\\sin\\alpha|>|\\cos\\alpha|=\\dfrac{1}{3}$을 만족하는 모든 $\\alpha$의 합은 $2\\pi$이다.",
     "choices": [
       "ㄱ",
       "ㄷ",

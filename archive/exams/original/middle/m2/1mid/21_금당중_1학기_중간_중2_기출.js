@@ -74,7 +74,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "content": "다음 <보기> 중 옳은 문장을 모두 고른 것은? [3점]<br><div style='border:1px solid #000; padding:5px; margin-top:5px;'>ㄱ. 유한소수는 분수로 나타낼 수 있다.<br>ㄴ. 순환소수 중에는 유리수가 아닌 것도 있다.<br>ㄷ. 정수가 아닌 유리수는 유한소수나 순환소수로 나타낼 수 있다.<br>ㄹ. 무한소수는 유리수가 아니다.</div>",
+    "content": "다음 보기 중 옳은 문장을 모두 고른 것은? [3점]<br><div style='border:1px solid #000; padding:5px; margin-top:5px;'>ㄱ. 유한소수는 분수로 나타낼 수 있다.<br>ㄴ. 순환소수 중에는 유리수가 아닌 것도 있다.<br>ㄷ. 정수가 아닌 유리수는 유한소수나 순환소수로 나타낼 수 있다.<br>ㄹ. 무한소수는 유리수가 아니다.</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",

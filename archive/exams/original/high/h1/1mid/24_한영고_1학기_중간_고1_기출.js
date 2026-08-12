@@ -325,7 +325,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","분모유리화","계수비교","복소수","켤레복소수","판별식","자연수조건","범위"],
     "wide": false,
-    "content": "방정식 $x+\\frac{1}{x}=-1$의 한 허근을 $\\omega$라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [5.0점]<br><div class='box'><보기><br>ㄱ. $\\bar{\\omega}+\\bar{\\omega}^2 = \\omega+\\omega^2$<br>ㄴ. $(\\bar{\\omega}+1)(\\bar{\\omega}^2+1)(\\bar{\\omega}^4+1)(\\bar{\\omega}^8+1)=1$<br>ㄷ. $(\\bar{\\omega}+1)^{2n}=(\\frac{\\bar{\\omega}}{\\bar{\\omega}+\\omega})^{3n}$을 만족시키는 60이하의 자연수 $n$의 개수는 10이다.</div>",
+    "content": "방정식 $x+\\frac{1}{x}=-1$의 한 허근을 $\\omega$라 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [5.0점]<br><div class='box'><보기><br>ㄱ. $\\bar{\\omega}+\\bar{\\omega}^2 = \\omega+\\omega^2$<br>ㄴ. $(\\bar{\\omega}+1)(\\bar{\\omega}^2+1)(\\bar{\\omega}^4+1)(\\bar{\\omega}^8+1)=1$<br>ㄷ. $(\\bar{\\omega}+1)^{2n}=(\\frac{\\bar{\\omega}}{\\bar{\\omega}+\\omega})^{3n}$을 만족시키는 60이하의 자연수 $n$의 개수는 10이다.</div>",
     "choices": [
       "ㄱ",
       "ㄷ",

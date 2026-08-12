@@ -338,7 +338,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: "다음 <보기>를 이용하여 물음에 답하시오.<br><br><보기><br>행렬 $M=\\begin{pmatrix} a & -b \\\\ b & a \\end{pmatrix}$, $N=\\begin{pmatrix} c & -d \\\\ d & c \\end{pmatrix}$ 에 대하여 $MN=\\begin{pmatrix} ac-bd & -(ad+bc) \\\\ ad+bc & ac-bd \\end{pmatrix}$ 를 만족한다. 또한 복소수 곱셈 $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ 임을 참고한다. (단, $a,b,c,d$는 실수이다.)<br><br>두 행렬 $P=\\begin{pmatrix} \\frac{\\sqrt{2}}{2} & -\\frac{\\sqrt{2}}{2} \\\\ \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{2}}{2} \\end{pmatrix}$, $Q=\\begin{pmatrix} \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\ -\\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{pmatrix}$ 에 대하여 $(PQ)^n=E$ 가 성립하도록 하는 최소의 자연수 $n$의 값은? (단, $E$는 단위행렬이다.)",
+    content: "다음 보기를 이용하여 물음에 답하시오.<br><br><보기><br>행렬 $M=\\begin{pmatrix} a & -b \\\\ b & a \\end{pmatrix}$, $N=\\begin{pmatrix} c & -d \\\\ d & c \\end{pmatrix}$ 에 대하여 $MN=\\begin{pmatrix} ac-bd & -(ad+bc) \\\\ ad+bc & ac-bd \\end{pmatrix}$ 를 만족한다. 또한 복소수 곱셈 $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ 임을 참고한다. (단, $a,b,c,d$는 실수이다.)<br><br>두 행렬 $P=\\begin{pmatrix} \\frac{\\sqrt{2}}{2} & -\\frac{\\sqrt{2}}{2} \\\\ \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{2}}{2} \\end{pmatrix}$, $Q=\\begin{pmatrix} \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\ -\\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{pmatrix}$ 에 대하여 $(PQ)^n=E$ 가 성립하도록 하는 최소의 자연수 $n$의 값은? (단, $E$는 단위행렬이다.)",
     choices: ["12", "18", "24", "30", "36"],
     answer: "③",
     solution: ""

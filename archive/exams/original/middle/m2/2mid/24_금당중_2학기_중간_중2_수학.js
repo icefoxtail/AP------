@@ -578,7 +578,7 @@ window.questionBank=[
       "함수의 뜻"
     ],
     "wide": false,
-    "content": "&lt;보기&gt;의 함수 중 $f(3)=7$을 만족시키는 것은? [4점]\nㄱ. $f(x)=-3x+1$  ㄴ. $f(x)=\\dfrac{x+7}{2}$\nㄷ. $f(x)=2x+1$  ㄹ. $f(x)=\\dfrac{21}{x}$",
+    "content": "보기의 함수 중 $f(3)=7$을 만족시키는 것은? [4점]\nㄱ. $f(x)=-3x+1$  ㄴ. $f(x)=\\dfrac{x+7}{2}$\nㄷ. $f(x)=2x+1$  ㄹ. $f(x)=\\dfrac{21}{x}$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄷ",

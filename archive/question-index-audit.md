@@ -1,6 +1,6 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-08-12T06:29:03.502Z
+- 생성 시각: 2026-08-12T07:14:09.252Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
   - git 버전관리에 등재된 시험지 JS만 인덱싱(432파일).
@@ -52,13 +52,13 @@
 
 ### types/high/h1/항등식과나머지정리_고1_유형1.js_5
 - sourceFile: types/high/h1/항등식과나머지정리_고1_유형1.js
-  - KEPT   id=5 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=225자
+  - KEPT   id=5 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=227자
   - SKIP   id=5 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=111자
 
 ### types/high/h1/항등식과나머지정리_고1_유형1.js_6
 - sourceFile: types/high/h1/항등식과나머지정리_고1_유형1.js
-  - KEPT   id=6 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=242자
-  - SKIP   id=6 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=110자
+  - KEPT   id=6 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=244자
+  - SKIP   id=6 key="H22-C-02" unit="나머지 정리" course="공통수학1" class=official content=112자
 
 ### types/high/h1/항등식과나머지정리_고1_유형1.js_7
 - sourceFile: types/high/h1/항등식과나머지정리_고1_유형1.js
@@ -242,7 +242,7 @@
 ## 4. RAW- 키 (임시 규약, 허용)
 
 > 마스터 테이블이 허용하는 임시 미분류 규약(standardUnitOrder 999). 비공식 오류와 구분한다.
-> distinct 87종 / 216건
+> distinct 87종 / 217건
 
 - `RAW-대표문제다시풀기` — 74건
 - `RAW-삼각함수` — 9건
@@ -260,6 +260,7 @@
 - `RAW-다항식의성질` — 2건
 - `RAW-로그` — 2건
 - `RAW-삼각함수사이의관계` — 2건
+- `RAW-경우의 수` — 2건
 - `RAW-삼각형의분류` — 2건
 - `RAW-부등식의해` — 2건
 - `RAW-부등식의정의` — 2건
@@ -280,7 +281,6 @@
 - `RAW-삼각함수의사분면` — 1건
 - `RAW-로그의실생활응용` — 1건
 - `RAW-로그와이차방정식` — 1건
-- `RAW-경우의 수` — 1건
 - `RAW-지수법칙미지수구하기` — 1건
 - `RAW-피타고라스정리` — 1건
 - `RAW-피타고라스정리활용` — 1건
@@ -352,10 +352,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 1661 |
+| q.image 보유 | 1691 |
 | content <img> | 5 |
 | content <svg> | 77 |
 | content <table> | 132 |
-| 시각요소 보유(hasImage=true) | 1872 |
+| 시각요소 보유(hasImage=true) | 1902 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

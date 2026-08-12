@@ -1426,14 +1426,17 @@ function normalizeViewBlocks(html) {
     const protectedState = protectRenderSegments(html);
     let out = protectedState.html;
 
+    // 보기/조건/자료 라벨은 문자열 시작 또는 명시적 줄바꿈 뒤에서만 블록으로 승격한다.
+    // 발문 안의 "보기에서", "보기의", "보기 중" 같은 인라인 단어를 별도 박스로
+    // 오인하면 문장이 강제로 줄바꿈되고 뒤 내용 전체가 박스에 들어갈 수 있다.
     out = out.replace(
-        /((?:<br\s*\/?>\s*)*)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
-        (match, breaks, body) => {
+        /(^|(?:<br\s*\/?>\s*)+)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
+        (match, boundary, body) => {
             const plain = body.replace(/<[^>]+>/g, '').trim();
             const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤|①|②|③|④|⑤/g) || []).length;
             if (plain.length < 60 && markerCount < 2) return match;
             const label = /조건\s*:/.test(match) ? '조건' : (/자료\s*:/.test(match) ? '자료' : '보기');
-            return `${breaks}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
+            return `${boundary}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
         }
     );
 

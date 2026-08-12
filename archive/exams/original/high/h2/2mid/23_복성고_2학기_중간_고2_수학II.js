@@ -246,7 +246,7 @@ window.questionBank = [
       "명제"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt; 중 두 함수 $f(x)$, $g(x)$에 대한 설명으로 옳은 것만을 있는 대로 고른 것은? [4.1점]\n<div style=\"border:1px solid #000;padding:8px 10px;margin-top:8px\"><strong>&lt;보기&gt;</strong><br>ㄱ. $\\displaystyle\\lim_{x\\to0}\\dfrac{x}{f(x)}=0$이면 $\\displaystyle\\lim_{x\\to0}f(x)=0$이다.<br>ㄴ. 모든 실수 $x$에 대하여 $f(x)\\lt g(x)$이면 $\\displaystyle\\lim_{x\\to a}f(x)\\lt\\lim_{x\\to a}g(x)$이다.<br>ㄷ. 극한값 $\\displaystyle\\lim_{x\\to a}f(x)$, $\\displaystyle\\lim_{x\\to a}\\{f(x)+g(x)\\}$가 존재하면 $\\displaystyle\\lim_{x\\to a}g(x)$가 존재한다.</div>",
+    "content": "다음 보기 중 두 함수 $f(x)$, $g(x)$에 대한 설명으로 옳은 것만을 있는 대로 고른 것은? [4.1점]\n<div style=\"border:1px solid #000;padding:8px 10px;margin-top:8px\"><strong>&lt;보기&gt;</strong><br>ㄱ. $\\displaystyle\\lim_{x\\to0}\\dfrac{x}{f(x)}=0$이면 $\\displaystyle\\lim_{x\\to0}f(x)=0$이다.<br>ㄴ. 모든 실수 $x$에 대하여 $f(x)\\lt g(x)$이면 $\\displaystyle\\lim_{x\\to a}f(x)\\lt\\lim_{x\\to a}g(x)$이다.<br>ㄷ. 극한값 $\\displaystyle\\lim_{x\\to a}f(x)$, $\\displaystyle\\lim_{x\\to a}\\{f(x)+g(x)\\}$가 존재하면 $\\displaystyle\\lim_{x\\to a}g(x)$가 존재한다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

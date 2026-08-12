@@ -122,7 +122,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "[보기]에 주어진 수에서 무리수는 모두 몇 개인가? [4점]<div class='box'>[보기]<br>$\\sqrt{49}$, $0.4\\dot{1}$, $-\\sqrt{21}$, $\\sqrt{(-3.14)^2}$, $\\sqrt{2}+3$, $\\pi$</div>",
+    "content": "보기에 주어진 수에서 무리수는 모두 몇 개인가? [4점]<div class='box'>[보기]<br>$\\sqrt{49}$, $0.4\\dot{1}$, $-\\sqrt{21}$, $\\sqrt{(-3.14)^2}$, $\\sqrt{2}+3$, $\\pi$</div>",
     "choices": [
       "$1$개",
       "$2$개",

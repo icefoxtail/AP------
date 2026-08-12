@@ -14,7 +14,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: String.raw`다음 <보기> 중 옳지 않은 것을 모두 고른 개수는?<br><보기><br>(가) 0의 제곱근은 1개다.<br>(나) $\\sqrt{49}$는 $\\pm 7$이다.<br>(다) 음수의 제곱근은 존재하지 않는다.<br>(라) -5는 25의 음의 제곱근이다.<br>(마) $\\sqrt{100}$은 10이다.`,
+    content: String.raw`다음 보기 중 옳지 않은 것을 모두 고른 개수는?<br><보기><br>(가) 0의 제곱근은 1개다.<br>(나) $\\sqrt{49}$는 $\\pm 7$이다.<br>(다) 음수의 제곱근은 존재하지 않는다.<br>(라) -5는 25의 음의 제곱근이다.<br>(마) $\\sqrt{100}$은 10이다.`,
     choices: ["1개", "2개", "3개", "4개", "5개"],
     answer: "①",
     solution: ""

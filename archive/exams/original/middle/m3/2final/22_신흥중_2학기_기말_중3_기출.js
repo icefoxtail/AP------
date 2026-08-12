@@ -48,7 +48,8 @@ window.questionBank = [
     "choices": [],
     "answer": "③, ④",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.\\n① $\\overline{AM}=\\dfrac12\\overline{AB}$, ② $\\overline{CN}=\\dfrac12\\overline{CD}$는 모두 옳다.\\n$\\overline{AB}=\\overline{CD}$에서 바로 얻는 것은 $\\overline{AM}=\\overline{CN}$이므로 ③의 $\\overline{OM}=\\overline{ON}$은 이 단계에서 사용할 수 없어 옳지 않다.\\n또 $\\overline{OA}$와 같은 것은 반지름 $\\overline{OC}$이므로 ④의 $\\overline{OA}=\\overline{CN}$도 옳지 않다.\\n올바른 조건 $\\overline{AM}=\\overline{CN}$, $\\overline{OA}=\\overline{OC}$와 두 직각을 이용하면 두 직각삼각형은 RHS 합동이므로 ⑤는 옳다.\\n따라서 정답은 ③, ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q2.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q2.png",
+    "imageSize": "tall",
   },
   {
     "id": 3,

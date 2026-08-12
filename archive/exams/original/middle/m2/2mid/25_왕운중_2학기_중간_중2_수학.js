@@ -387,7 +387,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "그림을 보고 다음 <보기> 중 옳은 것만을 있는 대로 고르면? [4점]<br>① 종이를 오려서 만든 $\\triangle ABC$에서 $\\angle A$의 두 변이 서로 포개어지도록 접었다 펼쳐서 $\\angle A$의 이등분선을 만든다.<br>② 같은 방법으로 $\\angle B$의 이등분선을 만든다.<br>③ ①과 ②에서 생긴 두 선분의 교점을 $I$라고 하자.<br><보기><br>ㄱ. $AI=BI$<br>ㄴ. $\\angle ABI=\\angle CBI$<br>ㄷ. $AI=4$이면 $\\triangle ABC$의 외접원의 넓이는 $16\\pi$이다.<br>ㄹ. $ID=2$이면 $\\triangle ABC$의 내접원의 넓이는 $4\\pi$이다.",
+    "content": "그림을 보고 다음 보기 중 옳은 것만을 있는 대로 고르면? [4점]<br>① 종이를 오려서 만든 $\\triangle ABC$에서 $\\angle A$의 두 변이 서로 포개어지도록 접었다 펼쳐서 $\\angle A$의 이등분선을 만든다.<br>② 같은 방법으로 $\\angle B$의 이등분선을 만든다.<br>③ ①과 ②에서 생긴 두 선분의 교점을 $I$라고 하자.<br><보기><br>ㄱ. $AI=BI$<br>ㄴ. $\\angle ABI=\\angle CBI$<br>ㄷ. $AI=4$이면 $\\triangle ABC$의 외접원의 넓이는 $16\\pi$이다.<br>ㄹ. $ID=2$이면 $\\triangle ABC$의 내접원의 넓이는 $4\\pi$이다.",
     "choices": [
       "ㄴ",
       "ㄱ, ㄴ",
@@ -576,7 +576,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직사각형 $ABCD$의 두 대각선의 교점을 $O$라고 할 때, 다음 <보기> 중 옳은 것만을 있는 대로 고르면? [4점]<br>ㄱ. $\\angle AOB=90^\\circ$<br>ㄴ. $AO=BO$<br>ㄷ. $BO=DO$<br>ㄹ. $AC=BD$<br>ㅁ. $\\triangle AOB\\equiv\\triangle COB$<br>ㅂ. $AB=AD$",
+    "content": "직사각형 $ABCD$의 두 대각선의 교점을 $O$라고 할 때, 다음 보기 중 옳은 것만을 있는 대로 고르면? [4점]<br>ㄱ. $\\angle AOB=90^\\circ$<br>ㄴ. $AO=BO$<br>ㄷ. $BO=DO$<br>ㄹ. $AC=BD$<br>ㅁ. $\\triangle AOB\\equiv\\triangle COB$<br>ㅂ. $AB=AD$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄴ, ㄹ",

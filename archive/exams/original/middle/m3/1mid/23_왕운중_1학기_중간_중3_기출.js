@@ -260,7 +260,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["표"],
     "wide": false,
-    "content": "다음 <보기> 중에서 옳은 것을 모두 고른 것은? [4점]\\n\\n<table class='question-table'><tr><td>ㄱ. 제곱근 5는 $\\pm\\sqrt{5}$이다.<br>ㄴ. $\\sqrt{9}$의 제곱근은 무리수이다.<br>ㄷ. 실수에서 무리수가 아닌 수는 모두 유리수이다.</td></tr></table>",
+    "content": "다음 보기 중에서 옳은 것을 모두 고른 것은? [4점]\\n\\n<table class='question-table'><tr><td>ㄱ. 제곱근 5는 $\\pm\\sqrt{5}$이다.<br>ㄴ. $\\sqrt{9}$의 제곱근은 무리수이다.<br>ㄷ. 실수에서 무리수가 아닌 수는 모두 유리수이다.</td></tr></table>",
     "choices": ["① ㄱ", "② ㄴ", "③ ㄷ", "④ ㄱ, ㄷ", "⑤ ㄴ, ㄷ"],
     "answer": "⑤",
     "solution": "[키포인트] 실수의 체계를 정확히 이해한다.\\n1단계: ㄱ은 $\\sqrt{5}$이므로 틀리다.\\n2단계: ㄴ은 3의 제곱근 $\\pm\\sqrt{3}$이므로 맞다.\\n3단계: ㄷ은 실수의 정의상 맞다.\\n∴ 정답: ⑤"

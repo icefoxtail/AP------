@@ -91,7 +91,8 @@ window.questionBank = [
     "choices": [],
     "answer": "①",
     "solution": "[키포인트] 그릇의 단면이 넓어질수록 같은 양의 물을 부어도 높이는 천천히 올라간다.\n물컵은 위로 갈수록 넓어지는 모양이다.\n따라서 물을 일정한 양으로 계속 넣으면 처음에는 물의 높이가 빠르게 올라가지만, 위로 갈수록 단면이 넓어지므로 높이가 올라가는 속도는 점점 느려진다.\n즉 그래프는 계속 올라가되 기울기가 점점 완만해지는 곡선이어야 한다.\n②는 점점 가팔라지는 곡선, ③은 일정한 기울기의 직선이므로 알맞지 않고, ④와 ⑤는 중간에 기울기가 꺾이는 그래프이므로 알맞지 않다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q05.png"
+    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q05.png",
+    "imageSize": "tall",
   },
   {
     "id": 6,
@@ -110,7 +111,8 @@ window.questionBank = [
     "choices": [],
     "answer": "③",
     "solution": "[키포인트] 정비례 관계 $y=ax$의 그래프는 $a>0$이면 오른쪽 위로 향하고, $a$가 클수록 $y$축에 가까워진다.\n$y=\\dfrac{3}{2}x$에서 비례상수가 $\\dfrac{3}{2}>0$이므로 그래프는 제1사분면과 제3사분면을 지나는 오른쪽 위로 향하는 직선이다.\n또 $\\dfrac{3}{2}>1$이므로 $y=x$의 그래프보다 $y$축에 더 가깝다.\n그림에서 제1사분면을 지나면서 $y=x$보다 $y$축에 가까운 직선은 ③이다.\n①과 ②는 $y=x$보다 $x$축에 가까우므로 비례상수가 $1$보다 작고, ④와 ⑤는 왼쪽 위로 향하므로 비례상수가 음수이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q06.png"
+    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q06.png",
+    "imageSize": "tall",
   },
   {
     "id": 7,
@@ -237,7 +239,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식", "기본도형", "수선의 발", "점과 직선 사이의 거리", "도형"],
     "wide": false,
-    "content": "그림에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? [4점]<br><div class=\"note-box\">ㄱ. $\\overline{BC}$와 직교하는 선분은 $\\overline{AB}$이다.<br>ㄴ. 점 $C$에서 $\\overleftrightarrow{AD}$에 내린 수선의 발은 점 $D$이다.<br>ㄷ. 점 $D$와 $\\overleftrightarrow{AB}$ 사이의 거리는 $5\\,\\mathrm{cm}$이다.</div>",
+    "content": "그림에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4점]<br><div class=\"note-box\">ㄱ. $\\overline{BC}$와 직교하는 선분은 $\\overline{AB}$이다.<br>ㄴ. 점 $C$에서 $\\overleftrightarrow{AD}$에 내린 수선의 발은 점 $D$이다.<br>ㄷ. 점 $D$와 $\\overleftrightarrow{AB}$ 사이의 거리는 $5\\,\\mathrm{cm}$이다.</div>",
     "choices": ["ㄱ", "ㄴ", "ㄷ", "ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     "answer": "④",
     "solution": "[키포인트] 점과 직선 사이의 거리는 그 점에서 직선에 내린 수선의 발까지의 거리이다.\n그림에서 $\\overline{AB} \\perp \\overline{AD}$, $\\overline{AB} \\perp \\overline{BC}$이고 $\\overline{AD}=5\\,\\mathrm{cm}$, $\\overline{AB}=4\\,\\mathrm{cm}$, $\\overline{BC}=8\\,\\mathrm{cm}$이다.\nㄱ. 그림에서 점 $B$에 직각 표시가 있으므로 $\\overline{BC} \\perp \\overline{AB}$이다. 옳다.\nㄴ. $\\overleftrightarrow{AD}$는 $\\overline{AB}$와 수직이므로 $\\overline{BC}$와 평행하다. 점 $C$에서 $\\overleftrightarrow{AD}$에 내린 수선의 발은 $\\overline{BC}$의 길이만큼 떨어진 점, 즉 $\\overline{AD}$를 연장한 곳에 있는 점이므로 점 $D$가 아니다. 옳지 않다.\nㄷ. $\\overline{AD} \\perp \\overleftrightarrow{AB}$이므로 점 $D$에서 $\\overleftrightarrow{AB}$에 내린 수선의 발은 점 $A$이고, 그 거리는 $\\overline{AD}=5\\,\\mathrm{cm}$이다. 옳다.\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ④이다.",
@@ -332,7 +334,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식", "기본도형", "삼각형의 결정조건", "이등변삼각형"],
     "wide": false,
-    "content": "다음 &lt;보기&gt;의 세 조건을 모두 만족시키는 삼각형은 총 몇 개인가? [5점]<br><div class=\"note-box\">(가) 세 변의 길이는 모두 자연수이다.<br>(나) 삼각형의 둘레의 길이는 $21\\,\\mathrm{cm}$이다.<br>(다) 두 변의 길이는 같고 나머지 한 변의 길이는 다르다.</div>",
+    "content": "다음 보기의 세 조건을 모두 만족시키는 삼각형은 총 몇 개인가? [5점]<br><div class=\"note-box\">(가) 세 변의 길이는 모두 자연수이다.<br>(나) 삼각형의 둘레의 길이는 $21\\,\\mathrm{cm}$이다.<br>(다) 두 변의 길이는 같고 나머지 한 변의 길이는 다르다.</div>",
     "choices": ["$1$개", "$2$개", "$3$개", "$4$개", "$5$개"],
     "answer": "④",
     "solution": "[키포인트] 이등변삼각형에서도 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다.\n길이가 같은 두 변의 길이를 $a$, 나머지 한 변의 길이를 $b$라 하면 조건 (나)에서 $2a+b=21$이다.\n삼각형이 만들어지려면 $b<a+a$이어야 하므로 $21-2a<2a$에서 $21<4a$, 즉 $a \\ge 6$이다.\n또 $b=21-2a \\ge 1$이므로 $a \\le 10$이다.\n$a=6,7,8,9,10$일 때 $b$는 차례로 $9,7,5,3,1$이다.\n조건 (다)에서 나머지 한 변의 길이는 달라야 하므로 $a=b=7$인 경우는 제외한다.\n따라서 조건을 모두 만족시키는 삼각형은 세 변의 길이가 $(6,6,9)$, $(8,8,5)$, $(9,9,3)$, $(10,10,1)$인 $4$개이므로 정답은 ④이다."
@@ -368,7 +370,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식", "기본도형", "합동조건", "도형"],
     "wide": false,
-    "content": "다음 &lt;보기&gt; 중 서로 합동인 삼각형끼리 짝지은 것은? [4점]",
+    "content": "다음 보기 중 서로 합동인 삼각형끼리 짝지은 것은? [4점]",
     "choices": ["ㄱ, ㄴ", "ㄱ, ㄹ", "ㄷ, ㅁ", "ㄴ, ㅂ", "ㄴ, ㄹ"],
     "answer": "③",
     "solution": "[키포인트] 한 변의 길이와 그 양 끝 각의 크기가 각각 같으면 두 삼각형은 ASA 합동이다.\nㄷ은 길이가 $7\\,\\mathrm{cm}$인 변과 그 한 끝 각인 $80^\\circ$, 그리고 다른 한 각인 $65^\\circ$가 주어져 있다.\n삼각형의 세 각의 크기의 합은 $180^\\circ$이므로 나머지 한 각은 $180^\\circ-80^\\circ-65^\\circ=35^\\circ$이고, 이 각은 $7\\,\\mathrm{cm}$인 변의 다른 한 끝 각이다.\n즉 ㄷ은 $7\\,\\mathrm{cm}$인 변과 그 양 끝 각 $80^\\circ$, $35^\\circ$가 주어진 삼각형이다.\nㅁ도 $7\\,\\mathrm{cm}$인 변과 그 양 끝 각이 $80^\\circ$, $35^\\circ$로 주어져 있으므로 ㄷ과 ASA 합동이다.\nㄱ은 세 변이 $6\\,\\mathrm{cm}$, $4\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$인 삼각형이고, ㄴ은 $6\\,\\mathrm{cm}$, $4\\,\\mathrm{cm}$와 그 끼인각 $80^\\circ$가 주어진 삼각형이어서 나머지 한 변의 길이가 $7\\,\\mathrm{cm}$라는 보장이 없으므로 합동이라 할 수 없다.\nㄹ은 $6\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$와 그 끼인각 $35^\\circ$가 주어진 삼각형이고, ㅂ은 세 각만 주어져 크기가 정해지지 않는다.\n따라서 서로 합동인 것은 ㄷ과 ㅁ이므로 정답은 ③이다.",
@@ -425,7 +427,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["서술형", "기본도형", "합동", "대응변"],
     "wide": false,
-    "content": "$\\triangle ABC$와 $\\triangle DEF$가 다음 &lt;보기&gt;의 네 조건을 만족시킬 때, $\\overline{DE}$의 길이를 구하는 과정을 자세히 서술하시오. [4점]<br><div class=\"note-box\">(가) $\\triangle ABC \\equiv \\triangle DEF$<br>(나) $\\angle B=90^\\circ$<br>(다) $\\overline{BC}=6\\,\\mathrm{cm}$<br>(라) $\\triangle ABC$의 넓이는 $21\\,\\mathrm{cm}^2$이다.</div>",
+    "content": "$\\triangle ABC$와 $\\triangle DEF$가 다음 보기의 네 조건을 만족시킬 때, $\\overline{DE}$의 길이를 구하는 과정을 자세히 서술하시오. [4점]<br><div class=\"note-box\">(가) $\\triangle ABC \\equiv \\triangle DEF$<br>(나) $\\angle B=90^\\circ$<br>(다) $\\overline{BC}=6\\,\\mathrm{cm}$<br>(라) $\\triangle ABC$의 넓이는 $21\\,\\mathrm{cm}^2$이다.</div>",
     "choices": [],
     "answer": "$7\\,\\mathrm{cm}$",
     "solution": "[키포인트] 합동인 두 삼각형에서 대응변의 길이는 서로 같다.\n$\\angle B=90^\\circ$이므로 $\\triangle ABC$는 $\\overline{AB}$와 $\\overline{BC}$를 밑변과 높이로 하는 직각삼각형이다.\n$\\triangle ABC$의 넓이가 $21\\,\\mathrm{cm}^2$이므로 $\\dfrac{1}{2} \\times \\overline{AB} \\times \\overline{BC}=21$이다.\n$\\overline{BC}=6\\,\\mathrm{cm}$이므로 $\\dfrac{1}{2} \\times \\overline{AB} \\times 6=21$에서 $3\\overline{AB}=21$, 즉 $\\overline{AB}=7\\,\\mathrm{cm}$이다.\n$\\triangle ABC \\equiv \\triangle DEF$이므로 $\\overline{AB}$의 대응변은 $\\overline{DE}$이다.\n따라서 $\\overline{DE}=\\overline{AB}=7\\,\\mathrm{cm}$이다."

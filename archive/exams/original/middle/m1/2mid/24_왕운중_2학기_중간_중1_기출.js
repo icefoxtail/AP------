@@ -149,7 +149,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "서로 다른 세 직선 $l$, $m$, $n$과 서로 다른 세 평면 $P$, $Q$, $R$에 대한 다음 &lt;보기&gt; 중 옳은 것만 모두 고른 것은? (5점)<div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $l\\parallel m$이고 $l\\parallel n$이면 $m\\parallel n$이다.<br>ㄴ. $P\\perp Q$이고 $Q\\perp R$이면 $P\\parallel R$이다.<br>ㄷ. $P\\parallel Q$이고 $l\\perp P$이면 $l\\perp Q$이다.</div>",
+    "content": "서로 다른 세 직선 $l$, $m$, $n$과 서로 다른 세 평면 $P$, $Q$, $R$에 대한 다음 보기 중 옳은 것만 모두 고른 것은? (5점)<div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $l\\parallel m$이고 $l\\parallel n$이면 $m\\parallel n$이다.<br>ㄴ. $P\\perp Q$이고 $Q\\perp R$이면 $P\\parallel R$이다.<br>ㄷ. $P\\parallel Q$이고 $l\\perp P$이면 $l\\perp Q$이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -203,6 +203,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/24_왕운중_2학기_중간_중1_기출/q8.png",
+    "imageSize": "tall",
     "content": "다음 중 두 직선 $l$, $m$에 대해 $l\\parallel m$인 것은? (4점)",
     "choices": [],
     "answer": "③",
@@ -325,7 +326,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/24_왕운중_2학기_중간_중1_기출/q13.png",
-    "content": "다음 &lt;보기&gt;에서 서로 합동인 것을 짝지어 삼각형의 합동 조건과 함께 올바르게 제시한 것은? (4점)",
+    "content": "다음 보기에서 서로 합동인 것을 짝지어 삼각형의 합동 조건과 함께 올바르게 제시한 것은? (4점)",
     "choices": [
       "ㄴ과 ㅂ, ASA합동",
       "ㄱ과 ㅁ, SSA합동",

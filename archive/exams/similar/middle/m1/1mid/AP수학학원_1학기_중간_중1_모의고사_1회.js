@@ -134,7 +134,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 <보기>에서 두 수 $2\\times3^2\\times5$, $2^2\\times3$의 공배수인 것을 모두 고른 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8; text-align:left;'><div style='text-align:center; font-weight:700;'>보기</div>ㄱ. $2\\times3^3$<br>ㄴ. $2^3\\times3^2\\times5$<br>ㄷ. $2^3\\times3^2\\times7$<br>ㄹ. $2^2\\times3\\times5\\times7$<br>ㅁ. $2^3\\times3^2\\times5\\times7$</div>",
+    "content": "다음 보기에서 두 수 $2\\times3^2\\times5$, $2^2\\times3$의 공배수인 것을 모두 고른 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8; text-align:left;'><div style='text-align:center; font-weight:700;'>보기</div>ㄱ. $2\\times3^3$<br>ㄴ. $2^3\\times3^2\\times5$<br>ㄷ. $2^3\\times3^2\\times7$<br>ㄹ. $2^2\\times3\\times5\\times7$<br>ㅁ. $2^3\\times3^2\\times5\\times7$</div>",
     "choices": [
       "ㄱ, ㄷ",
       "ㄴ, ㅁ",

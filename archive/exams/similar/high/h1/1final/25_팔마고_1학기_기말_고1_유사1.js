@@ -338,7 +338,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: "다음 <보기>를 이용하여 물음에 답하시오.<br><br><보기><br>행렬 $M=\\begin{pmatrix} a & -b \\\\ b & a \\end{pmatrix}$, $N=\\begin{pmatrix} c & -d \\\\ d & c \\end{pmatrix}$ 에 대하여 $MN=\\begin{pmatrix} ac-bd & -(ad+bc) \\\\ ad+bc & ac-bd \\end{pmatrix}$ 를 만족한다. 또한 복소수 곱셈 $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ 임을 참고한다. (단, $a,b,c,d$는 실수이다.)<br><br>위 사실을 이용하여, 행렬 $A=\\begin{pmatrix} \\frac{1}{2} & -\\frac{\\sqrt{3}}{2} \\\\ \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\end{pmatrix}$ 일 때, 행렬 $A^{60}$의 모든 성분의 합을 구하면?",
+    content: "다음 보기를 이용하여 물음에 답하시오.<br><br><보기><br>행렬 $M=\\begin{pmatrix} a & -b \\\\ b & a \\end{pmatrix}$, $N=\\begin{pmatrix} c & -d \\\\ d & c \\end{pmatrix}$ 에 대하여 $MN=\\begin{pmatrix} ac-bd & -(ad+bc) \\\\ ad+bc & ac-bd \\end{pmatrix}$ 를 만족한다. 또한 복소수 곱셈 $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ 임을 참고한다. (단, $a,b,c,d$는 실수이다.)<br><br>위 사실을 이용하여, 행렬 $A=\\begin{pmatrix} \\frac{1}{2} & -\\frac{\\sqrt{3}}{2} \\\\ \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\end{pmatrix}$ 일 때, 행렬 $A^{60}$의 모든 성분의 합을 구하면?",
     choices: ["0", "1", "2", "3", "4"],
     answer: "③",
     solution: ""

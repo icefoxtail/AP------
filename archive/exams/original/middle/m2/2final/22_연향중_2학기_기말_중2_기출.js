@@ -3,7 +3,7 @@ q(1,"도형의 닮음","객관식",String.raw`아래 그림에서 $l\\parallel m
 q(2,"도형의 닮음","객관식",String.raw`아래 그림에서 $DE\\parallel BC$일 때, $y-x$의 값은? [3점]`,["$2$","$3$","$4$","$5$","$6$"]),
 q(3,"도형의 닮음","객관식",String.raw`아래 그림과 같이 $AD\\parallel BC$인 사다리꼴 $ABCD$에서 $AB$, $DC$의 중점을 각각 $M$, $N$이라 할 때, $PQ$의 길이는? [4점] (그림에서 $AD=8\rm\,cm$, $BC=14\rm\,cm$)`,["$\\dfrac64$","$\\dfrac53$","$4$","$\\dfrac52$","$3$"]),
 q(4,"도형의 닮음","객관식",String.raw`아래 그림에서 $AB$, $EF$, $CD$가 모두 $BD$에 수직일 때, $\\triangle EBD$의 넓이를 구하시오. [5점] (그림에서 $AB=10\rm\,cm$, $BD=12\rm\,cm$, $CD=15\rm\,cm$)`,["$40\rm\,cm^2$","$50\rm\,cm^2$","$60\rm\,cm^2$","$70\rm\,cm^2$","$80\rm\,cm^2$"]),
-q(5,"도형의 닮음","객관식",String.raw`아래 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. <보기> 중 옳은 것을 모두 고르시오. [4점]\nㄱ. $AG=2GQ$\nㄴ. $\\triangle GAP=\\triangle GBP$\nㄷ. $\\triangle GBQ=\\dfrac12\\triangle GCA$\nㄹ. $\\triangle ABQ=2\\triangle GQC$`,["ㄱ","ㄴ","ㄱ, ㄴ","ㄱ, ㄷ","ㄱ, ㄴ, ㄷ, ㄹ"]),
+q(5,"도형의 닮음","객관식",String.raw`아래 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. 보기 중 옳은 것을 모두 고르시오. [4점]\nㄱ. $AG=2GQ$\nㄴ. $\\triangle GAP=\\triangle GBP$\nㄷ. $\\triangle GBQ=\\dfrac12\\triangle GCA$\nㄹ. $\\triangle ABQ=2\\triangle GQC$`,["ㄱ","ㄴ","ㄱ, ㄴ","ㄱ, ㄷ","ㄱ, ㄴ, ㄷ, ㄹ"]),
 q(6,"도형의 닮음","객관식",String.raw`아래 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, $EF=FC$일 때, $x+y$의 값은? [4점]`,["$\\dfrac{15}2$","$8$","$\\dfrac{17}2$","$9$","$\\dfrac{19}2$"]),
 q(7,"도형의 닮음","객관식",String.raw`아래 그림과 같은 직사각형 $ABCD$에서 두 점 $E$, $F$는 각각 $AD$, $DC$의 중점이다. 또 대각선 $AC$와 $BE$, $BF$의 교점을 각각 $G$, $H$라 할 때, $\\triangle BHG$의 넓이를 구하면? [5점] (그림에서 $AB=6\rm\,cm$, $BC=8\rm\,cm$)`,["$18\rm\,cm^2$","$16\rm\,cm^2$","$12\rm\,cm^2$","$8\rm\,cm^2$","$4\rm\,cm^2$"]),
 q(8,"피타고라스 정리","객관식",String.raw`아래 그림에서 $x+y$의 값은? [3점]`,["$15\rm\,cm$","$18\rm\,cm$","$20\rm\,cm$","$23\rm\,cm$","$25\rm\,cm$"]),

@@ -110,7 +110,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 <보기>에서 두 수가 서로소인 것을 모두 고른 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'><div style='font-weight:700; text-align:center;'>보기</div>ㄱ. $5$, $7$ &emsp;&emsp; ㄴ. $8$, $12$ &emsp;&emsp; ㄷ. $10$, $21$<br>ㄹ. $11$, $44$ &emsp; ㅁ. $17$, $34$ &emsp; ㅂ. $28$, $91$</div>",
+    "content": "다음 보기에서 두 수가 서로소인 것을 모두 고른 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'><div style='font-weight:700; text-align:center;'>보기</div>ㄱ. $5$, $7$ &emsp;&emsp; ㄴ. $8$, $12$ &emsp;&emsp; ㄷ. $10$, $21$<br>ㄹ. $11$, $44$ &emsp; ㅁ. $17$, $34$ &emsp; ㅂ. $28$, $91$</div>",
     "choices": [
       "ㄱ, ㄷ",
       "ㄱ, ㅂ",

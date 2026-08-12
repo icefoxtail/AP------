@@ -302,7 +302,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","분모유리화","나머지정리","복소수","지수","수열","자연수조건","참거짓"],
     "wide": false,
-    "content": "임의의 자연수 $n$에 대하여 $a_n = \\left(\\frac{1+i}{1-i}\\right)^n + \\left(\\frac{1-i}{1+i}\\right)^n$일 때, <보기> 중 옳은 것만을 있는 대로 고른 것은? [4.8점]\n<div class=\"question-table-wrap\">\n<table>\n  <tr>\n    <td>\n      ㄱ. $a_{10} = -2$\n      ㄴ. $a_{2n} = a_{6n}$\n      ㄷ. $a_1 - a_2 + a_3 - a_4 + a_5 - \\dots + a_{49} - a_{50} = -2$\n      ㄹ. $a_1 + a_2 + a_3 + a_4 + \\dots + a_{50} = -2$\n    </td>\n  </tr>\n</table>\n</div>",
+    "content": "임의의 자연수 $n$에 대하여 $a_n = \\left(\\frac{1+i}{1-i}\\right)^n + \\left(\\frac{1-i}{1+i}\\right)^n$일 때, 보기 중 옳은 것만을 있는 대로 고른 것은? [4.8점]\n<div class=\"question-table-wrap\">\n<table>\n  <tr>\n    <td>\n      ㄱ. $a_{10} = -2$\n      ㄴ. $a_{2n} = a_{6n}$\n      ㄷ. $a_1 - a_2 + a_3 - a_4 + a_5 - \\dots + a_{49} - a_{50} = -2$\n      ㄹ. $a_1 + a_2 + a_3 + a_4 + \\dots + a_{50} = -2$\n    </td>\n  </tr>\n</table>\n</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄷ, ㄹ",

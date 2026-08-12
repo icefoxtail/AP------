@@ -44,7 +44,7 @@ window.questionBank = [
       "연립일차방정식"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt;의 연립방정식 중, $x, y$의 순서쌍 $(2,-1)$을 해로 갖는 것을 있는 대로 고른 것은? [4점]<br><div class=\"note-box\"><b>&lt; 보 기 &gt;</b><br>ㄱ. $\\begin{cases}x+y=1\\\\2x+y=3\\end{cases}$<br>ㄴ. $\\begin{cases}2x+y=3\\\\x+3y=1\\end{cases}$<br>ㄷ. $\\begin{cases}3x+2y=4\\\\x-3y=5\\end{cases}$<br>ㄹ. $\\begin{cases}3x+y=4\\\\x-y=5\\end{cases}$</div>",
+    "content": "다음 보기의 연립방정식 중, $x, y$의 순서쌍 $(2,-1)$을 해로 갖는 것을 있는 대로 고른 것은? [4점]<br><div class=\"note-box\"><b>&lt; 보 기 &gt;</b><br>ㄱ. $\\begin{cases}x+y=1\\\\2x+y=3\\end{cases}$<br>ㄴ. $\\begin{cases}2x+y=3\\\\x+3y=1\\end{cases}$<br>ㄷ. $\\begin{cases}3x+2y=4\\\\x-3y=5\\end{cases}$<br>ㄹ. $\\begin{cases}3x+y=4\\\\x-y=5\\end{cases}$</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",
@@ -179,7 +179,7 @@ window.questionBank = [
       "일차함수와 그래프"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt;에서 $y$가 $x$의 함수인 것을 있는 대로 고른 것은? [3점]<br><div class=\"note-box\"><b>&lt; 보 기 &gt;</b><br>ㄱ. 절댓값이 $x$인 수 $y$<br>ㄴ. 키가 $x$ cm인 사람의 몸무게 $y$ kg<br>ㄷ. 자연수 $x$보다 작은 자연수의 개수 $y$<br>ㄹ. 한 개에 $x$원인 물건 5개의 가격 $y$원</div>",
+    "content": "다음 보기에서 $y$가 $x$의 함수인 것을 있는 대로 고른 것은? [3점]<br><div class=\"note-box\"><b>&lt; 보 기 &gt;</b><br>ㄱ. 절댓값이 $x$인 수 $y$<br>ㄴ. 키가 $x$ cm인 사람의 몸무게 $y$ kg<br>ㄷ. 자연수 $x$보다 작은 자연수의 개수 $y$<br>ㄹ. 한 개에 $x$원인 물건 5개의 가격 $y$원</div>",
     "choices": [
       "ㄱ, ㄷ",
       "ㄱ, ㄹ",

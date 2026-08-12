@@ -8,6 +8,7 @@ function q(id, key, unit, type, content, choices, answer, options = {}) {
     standardUnitOrder: order, questionType: type, layoutTag: "grid",
     tags: [type, unit, ...(options.tags || [])], wide: false, content,
     ...(options.image ? { image: options.image } : {}),
+    ...(options.imageSize ? { imageSize: options.imageSize } : {}),
     choices, answer, solution: "" };
 }
 
@@ -23,7 +24,7 @@ window.questionBank = [
   q(8,"M1-05","기본도형","객관식","다음 그림에서 $\\angle AOB$는 평각이고 $\\angle AOC=4\\angle COD$, $\\angle BOE=4\\angle DOE$일 때, $\\angle COE$의 크기를 구하시오. [4점]",["$30^\\circ$","$36^\\circ$","$45^\\circ$","$60^\\circ$","$72^\\circ$"],"②",{image:"assets/images/23_연향중_2학기_중간_중1_기출/q8.png",tags:["도형","각"]}),
   q(9,"M1-07","입체도형의 성질","객관식","다음 보기 중에서 공간에 있는 두 직선이 서로 평행한 것을 모두 고른 것은? (단, 일치하는 경우는 제외한다.) [4점]<div class=\"note-box\">ㄱ. 한 평면에 수직인 두 직선　ㄴ. 한 직선에 평행한 두 직선<br>ㄷ. 한 평면에 평행한 두 직선　ㄹ. 한 직선에 수직인 두 직선</div>",["ㄱ, ㄴ","ㄱ, ㄷ","ㄱ, ㄹ","ㄴ, ㄹ","ㄷ, ㄹ"],"①"),
   q(10,"M1-05","기본도형","객관식","아래 그림에서 $l\\parallel m$일 때, $\\angle x-\\angle y$의 값을 구하시오. [5점]",["$50^\\circ$","$55^\\circ$","$60^\\circ$","$65^\\circ$","$70^\\circ$"],"④",{image:"assets/images/23_연향중_2학기_중간_중1_기출/q10.png",tags:["도형","평행선","각"]}),
-  q(11,"M1-05","기본도형","객관식","아래 그림은 $\\angle AOB$와 크기가 같은 각을 $\\overrightarrow{O'X}$를 한 변으로 하여 작도한 것이다. 다음 중 작도 가능한 순서를 올바르게 나타낸 것을 고르면? [3점]",[],"①",{image:"assets/images/23_연향중_2학기_중간_중1_기출/q11.png",tags:["도형","작도","통이미지보기"]}),
+  q(11,"M1-05","기본도형","객관식","아래 그림은 $\\angle AOB$와 크기가 같은 각을 $\\overrightarrow{O'X}$를 한 변으로 하여 작도한 것이다. 다음 중 작도 가능한 순서를 올바르게 나타낸 것을 고르면? [3점]",[],"①",{image:"assets/images/23_연향중_2학기_중간_중1_기출/q11.png",imageSize:"tall",tags:["도형","작도","통이미지보기"]}),
   q(12,"M1-05","기본도형","객관식","다음 중 $\\triangle ABC$가 하나로 정해지는 것을 고르면? [3점]",["$\\angle A=35^\\circ$, $\\angle B=70^\\circ$, $\\angle C=75^\\circ$","$\\overline{AB}=3\\,\\mathrm{cm}$, $\\overline{BC}=4\\,\\mathrm{cm}$, $\\angle C=80^\\circ$","$\\overline{AB}=3\\,\\mathrm{cm}$, $\\overline{BC}=9\\,\\mathrm{cm}$, $\\overline{CA}=5\\,\\mathrm{cm}$","$\\overline{AB}=2\\,\\mathrm{cm}$, $\\overline{CA}=7\\,\\mathrm{cm}$, $\\angle C=130^\\circ$","$\\overline{AB}=5\\,\\mathrm{cm}$, $\\angle A=20^\\circ$, $\\angle C=110^\\circ$"],"⑤"),
   q(13,"M1-05","기본도형","객관식","아래 그림에서 $\\overline{OA}=\\overline{OC}$, $\\overline{AB}=\\overline{CD}$일 때, $\\triangle AOD$와 $\\triangle COB$는 서로 합동이다. 두 삼각형이 합동임을 설명하기 위해 이용할 수 있는 삼각형의 합동 조건으로 가장 적절한 것을 고르면? [4점]",["SSS","RHS","ASA","RHA","SAS"],"⑤",{image:"assets/images/23_연향중_2학기_중간_중1_기출/q13.png",tags:["도형","삼각형의 합동"]}),
   q(14,"M1-05","기본도형","객관식","아래 그림과 같이 정사각형 $ABCD$의 변 $BC$를 한 변으로 하는 정삼각형 $BCE$가 있다. $\\overline{BC}=8\\,\\mathrm{cm}$이라고 할 때, $\\triangle ABE$의 넓이를 구하면? [4점]",["$16\\,\\mathrm{cm}^2$","$18\\,\\mathrm{cm}^2$","$20\\,\\mathrm{cm}^2$","$22\\,\\mathrm{cm}^2$","$24\\,\\mathrm{cm}^2$"],"①",{image:"assets/images/23_연향중_2학기_중간_중1_기출/q14.png",tags:["도형","정사각형","정삼각형","넓이"]}),

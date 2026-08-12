@@ -53,6 +53,7 @@ FAIL이 하나라도 있으면 종료 코드 1.
 ## 그 외
 
 - `build-question-index.mjs` — 문항 인덱스 생성
+- `view-label-lint.mjs` — 발문 안의 `<보기>에서`, `[보기]의` 같은 인라인 보기 라벨 오용 전수 검사
 - `js-bank-cleanup/` — JS 뱅크 스키마 검증
 - `past-exam-pipeline/` — PDF → JS 변환 파이프라인
 - `tag-enrichment/` — 태그 보강

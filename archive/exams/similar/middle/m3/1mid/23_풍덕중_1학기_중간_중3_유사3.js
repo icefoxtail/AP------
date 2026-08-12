@@ -41,7 +41,7 @@ window.questionBank = [
       "보기"
     ],
     "wide": false,
-    "content": "두 집합 $A = \\{x \\mid x$는 무리수$\\}$, $B = \\{x \\mid x$는 유리수$\\}$에 대하여, 다음 <보기>의 원소 중 집합 $A$에 속하는 것의 개수는?<br><div class=\"note-box\" style=\"margin: 10px 0;\">ㄱ. $\\pi - 3.14$<br>ㄴ. $\\sqrt{0.\\dot{4}}$<br>ㄷ. $(2-\\sqrt{3}) + (2+\\sqrt{3})$<br>ㄹ. $\\sqrt{2} \\times \\sqrt{8}$<br>ㅁ. $\\sqrt{(-4)^2} \\div \\sqrt{3}$<br>ㅂ. $3.141592$</div>",
+    "content": "두 집합 $A = \\{x \\mid x$는 무리수$\\}$, $B = \\{x \\mid x$는 유리수$\\}$에 대하여, 다음 보기의 원소 중 집합 $A$에 속하는 것의 개수는?<br><div class=\"note-box\" style=\"margin: 10px 0;\">ㄱ. $\\pi - 3.14$<br>ㄴ. $\\sqrt{0.\\dot{4}}$<br>ㄷ. $(2-\\sqrt{3}) + (2+\\sqrt{3})$<br>ㄹ. $\\sqrt{2} \\times \\sqrt{8}$<br>ㅁ. $\\sqrt{(-4)^2} \\div \\sqrt{3}$<br>ㅂ. $3.141592$</div>",
     "choices": [
       "1개",
       "2개",

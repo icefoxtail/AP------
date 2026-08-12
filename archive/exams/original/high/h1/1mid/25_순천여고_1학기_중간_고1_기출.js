@@ -206,7 +206,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": ["객관식","복소수","참거짓","조건해석","계산","개념"],
     "wide": false,
-    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
+    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, 보기 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

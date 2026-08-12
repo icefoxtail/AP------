@@ -20,7 +20,7 @@ window.questionBank = [
       "포함관계"
     ],
     "wide": false,
-    "content": "다음 <보기>에서 옳은 설명을 한 학생을 모두 고르면? [3.7점]<br><div class=\"note-box\">희준: $\\{0\\}$일 때, $n(\\{0\\})=0$이야.<br>범수: $A=\\{\\varnothing,a,\\{b\\},b\\}$일 때, $\\varnothing\\subset A$이야.<br>영나: $n(\\varnothing)=1$이야.</div>",
+    "content": "다음 보기에서 옳은 설명을 한 학생을 모두 고르면? [3.7점]<br><div class=\"note-box\">희준: $\\{0\\}$일 때, $n(\\{0\\})=0$이야.<br>범수: $A=\\{\\varnothing,a,\\{b\\},b\\}$일 때, $\\varnothing\\subset A$이야.<br>영나: $n(\\varnothing)=1$이야.</div>",
     "choices": [
       "범수",
       "영나",
@@ -50,7 +50,7 @@ window.questionBank = [
       "조건의명확성"
     ],
     "wide": false,
-    "content": "다음 <보기>에서 집합인 것을 모두 고르면? [3.7점]<br><div class=\"note-box\">ㄱ. 맛있는 음식의 모임<br>ㄴ. $x^2=-2$를 만족시키는 실수의 모임<br>ㄷ. $25$의 양의 약수의 모임<br>ㄹ. $10$ 이하의 자연수의 모임</div>",
+    "content": "다음 보기에서 집합인 것을 모두 고르면? [3.7점]<br><div class=\"note-box\">ㄱ. 맛있는 음식의 모임<br>ㄴ. $x^2=-2$를 만족시키는 실수의 모임<br>ㄷ. $25$의 양의 약수의 모임<br>ㄹ. $10$ 이하의 자연수의 모임</div>",
     "choices": [
       "ㄷ, ㄹ",
       "ㄴ, ㄹ",
@@ -112,6 +112,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 벤다이어그램 중 $(A\\cup B)-(A-C)$를 바르게 색칠한 부분을 나타낸 것을 고르면? [3.7점]",
     "image": "assets/images/23_매산여고_2학기_중간_고1_기출/q04.png",
+    "imageSize": "tall",
     "choices": [],
     "answer": "⑤",
     "solution": "[키포인트] 차집합을 교집합과 여집합으로 바꾸어 색칠 영역을 정리한다.\n\n$A-C=A\\cap C^c$이므로\n$(A\\cup B)-(A-C)=(A\\cup B)\\cap(A\\cap C^c)^c$이다.\n\n드모르간의 법칙을 적용하면\n$(A\\cap C^c)^c=A^c\\cup C$이므로\n$(A\\cup B)\\cap(A^c\\cup C)$이다.\n\n이는 $A\\cup B$에서 $A$에만 속하고 $C$에는 속하지 않는 부분을 제외한 영역이다.\n그림에서 이 영역을 나타낸 것은 ⑤이다.\n\n따라서 정답은 ⑤이다."
