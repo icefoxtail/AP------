@@ -20,6 +20,9 @@ button, select { font: inherit; }
 .unit-kicker { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #ffc4a8; }
 .unit-hero h1 { margin: 8px 0 10px; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.04em; }
 .unit-hero p { margin: 0; max-width: 780px; color: rgba(255,255,255,.76); line-height: 1.7; }
+.unit-grade-tabs { display: flex; flex-wrap: wrap; width: fit-content; max-width: 100%; gap: 6px; margin-top: 20px; padding: 5px; border-radius: 14px; background: rgba(255,255,255,.09); }
+.unit-grade-tab { min-width: 74px; border: 0; border-radius: 10px; padding: 9px 15px; background: transparent; color: rgba(255,255,255,.7); cursor: pointer; font-size: 13px; font-weight: 850; }
+.unit-grade-tab.is-active { background: #fff; color: var(--unit-ink); box-shadow: 0 5px 14px rgba(0,0,0,.12); }
 .unit-summary { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .unit-summary span { padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.1); font-size: 12px; font-weight: 700; }
 .unit-status { margin: 22px 0; min-height: 20px; color: var(--unit-muted); font-size: 13px; }

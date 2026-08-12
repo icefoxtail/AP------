@@ -1,8 +1,8 @@
 (function () {
   'use strict';
 
-  const core = window.High1UnitPastExamsCore;
-  const state = { catalog: null, selectedUnitKey: '', fileCache: new Map(), busyKey: '' };
+  const core = window.UnitPastExamsCore || window.High1UnitPastExamsCore;
+  const state = { catalog: null, profileId: 'h1', selectedUnitKey: '', fileCache: new Map(), busyKey: '' };
 
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>'"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[ch]));
@@ -45,7 +45,7 @@
     const promise = (async () => {
       delete window.questions;
       delete window.questionBank;
-      await loadScript(`exams/${sourceFile}?v=20260805`);
+      await loadScript(`exams/${sourceFile}?v=20260812b`);
       const data = window.questions || window.questionBank;
       if (!Array.isArray(data)) throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.`);
       return data.map(question => ({ ...question }));
@@ -81,17 +81,16 @@
         });
       }
     }
-
     return paper.records.map(record => restoredByIdentity.get(`${record.sourceFile}#${record.sourceQuestionNo}`));
   }
 
   function getQpp() { return document.getElementById('unit-qpp')?.value || '4'; }
-
+  function getProfile() { return core.getProfile(state.profileId); }
   function getUnit(unitKey) { return state.catalog?.units.find(unit => unit.key === unitKey); }
-
   function getPaper(unitKey, paperIndex) { return getUnit(unitKey)?.papers.find(paper => paper.index === Number(paperIndex)); }
 
   function storeMixedPayload(unit, paper, questions) {
+    const profile = getProfile();
     const title = paper.title;
     const meta = {
       title,
@@ -100,15 +99,16 @@
       count: questions.length,
       generatedAt: new Date().toISOString(),
       category: '단원별 기출',
-      grade: '고1',
-      gradeLabel: '고1',
+      grade: profile.grade,
+      gradeLabel: profile.gradeLabel,
       scopeLabel: '2학기 기말까지',
       unitKey: unit.key,
       unitName: unit.name,
+      subject: unit.course,
       sourceType: 'mixed',
       printHeaderOptions: {
         title,
-        metaRight: '고1 단원별 기출',
+        metaRight: `${profile.gradeLabel} ${unit.course} 단원별 기출`,
         subtitle: '',
         showNameLine: true,
         showScoreLine: true,
@@ -154,12 +154,12 @@
     const unit = getUnit(unitKey);
     const paper = getPaper(unitKey, paperIndex);
     if (!unit || !paper) throw new Error('문제지를 찾지 못했습니다.');
-    const busyKey = `${unitKey}:${paperIndex}`;
+    const busyKey = `${state.profileId}:${unitKey}:${paperIndex}`;
     if (state.busyKey) throw new Error('다른 문제지를 준비하고 있습니다.');
     state.busyKey = busyKey;
     const oldText = button?.textContent;
     if (button) { button.disabled = true; button.textContent = '준비 중…'; }
-    setStatus(`${paper.title} 문항을 불러오는 중입니다.`);
+    setStatus(`${paper.title} 문항과 이미지 에셋을 불러오는 중입니다.`);
     try {
       const questions = await restorePaperQuestions(paper);
       storeMixedPayload(unit, paper, questions);
@@ -185,6 +185,7 @@
   async function assignPaper(unitKey, paperIndex, button) {
     try {
       const { unit, paper } = await preparePaper(unitKey, paperIndex, button);
+      const profile = getProfile();
       const pending = {
         unitPast: true,
         unitPastSnapshotKey: paper.snapshotKey,
@@ -192,7 +193,7 @@
         title: paper.title,
         topic: paper.title,
         subject: unit.course,
-        grade: '고1',
+        grade: profile.grade,
         qCount: paper.count,
         count: paper.count,
         source_type: 'mixed'
@@ -225,8 +226,8 @@
             <article class="unit-paper">
               <div><div class="unit-paper-title">${escapeHtml(paper.title)}</div><div class="unit-paper-meta">${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</div></div>
               <div class="unit-paper-actions">
-                <button class="unit-btn" onclick="High1UnitPastExams.printPaper('${unit.key}', ${paper.index}, this)">일반 출력</button>
-                <button class="unit-btn primary" onclick="High1UnitPastExams.assignPaper('${unit.key}', ${paper.index}, this)">반·학생에게 출제</button>
+                <button class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', ${paper.index}, this)">일반 출력</button>
+                <button class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', ${paper.index}, this)">반 학생에게 출제</button>
               </div>
             </article>`).join('')}
         </div>
@@ -236,20 +237,57 @@
 
   function renderCatalog() {
     const root = document.getElementById('unit-content');
-    const courses = ['공통수학1', '공통수학2'];
-    root.innerHTML = courses.map(course => {
+    const profile = getProfile();
+    root.innerHTML = profile.courses.map(course => {
       const units = state.catalog.units.filter(unit => unit.course === course);
       const count = units.reduce((sum, unit) => sum + unit.count, 0);
       return `<section class="unit-course">
-        <div class="unit-course-head"><h2>${course}</h2><span>${count}문항</span></div>
+        <div class="unit-course-head"><h2>${escapeHtml(course)}</h2><span>${count.toLocaleString()}문항</span></div>
         <div class="unit-grid">${units.map(unit => `
-          <button class="unit-card ${unit.count ? '' : 'is-empty'}" data-unit-key="${unit.key}" ${unit.count ? `onclick="High1UnitPastExams.renderDetail('${unit.key}')"` : 'disabled'}>
+          <button class="unit-card ${unit.count ? '' : 'is-empty'}" data-unit-key="${unit.key}" ${unit.count ? `onclick="UnitPastExams.renderDetail('${unit.key}')"` : 'disabled'}>
             <div class="unit-card-no">${String(unit.order).padStart(2, '0')}</div>
             <h3>${escapeHtml(unit.name)}</h3>
-            <div class="unit-card-meta"><span>${unit.count}문항</span><span>${unit.papers.length ? `${unit.papers.length}개 문제지` : '자료 없음'}</span></div>
+            <div class="unit-card-meta"><span>${unit.count.toLocaleString()}문항</span><span>${unit.papers.length ? `${unit.papers.length}개 문제지` : '자료 없음'}</span></div>
           </button>`).join('')}</div>
       </section>`;
     }).join('') + '<div id="unit-detail-root"></div>';
+  }
+
+  function updateProfileChrome() {
+    const profile = getProfile();
+    document.title = `${profile.title} · JS 아카이브`;
+    document.getElementById('unit-kicker').textContent = `2022 개정 교육과정 · ${profile.gradeLabel}`;
+    document.getElementById('unit-title').textContent = profile.title;
+    document.querySelectorAll('.unit-grade-tab').forEach(button => {
+      button.classList.toggle('is-active', button.dataset.profile === state.profileId);
+      button.setAttribute('aria-selected', button.dataset.profile === state.profileId ? 'true' : 'false');
+    });
+    const url = new URL(window.location.href);
+    url.searchParams.set('grade', state.profileId);
+    history.replaceState(null, '', url.toString());
+  }
+
+  function renderSummary() {
+    const catalog = state.catalog;
+    document.getElementById('unit-summary').innerHTML = [
+      `분류 ${catalog.classifiedCount.toLocaleString()}문항`,
+      `${catalog.units.length}개 표시 단원`,
+      '문제지당 최대 80문항',
+      '2학기 기말까지'
+    ].map(text => `<span>${text}</span>`).join('');
+    const reviewText = catalog.review.length ? ` · 검토 필요 ${catalog.review.length}문항` : '';
+    setStatus(`원본 ${catalog.scannedCount.toLocaleString()}문항 중 요청 과목 ${catalog.classifiedCount.toLocaleString()}문항을 집계했습니다${reviewText}.`);
+  }
+
+  function selectProfile(profileId) {
+    if (!core.PROFILES[profileId] || state.busyKey) return;
+    state.profileId = profileId;
+    state.selectedUnitKey = '';
+    state.catalog = core.buildCatalog(window.questionIndex, { profileId });
+    updateProfileChrome();
+    renderSummary();
+    renderCatalog();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   async function init() {
@@ -257,11 +295,10 @@
     if (!core) { app.innerHTML = '<div class="unit-error">단원 집계 모듈을 불러오지 못했습니다.</div>'; return; }
     if (!isTeacherSession()) { app.innerHTML = '<div class="unit-error">단원별 기출은 AP Math OS 선생님 로그인 후 사용할 수 있습니다.<br><a href="index.html">아카이브로 돌아가기</a></div>'; return; }
     if (!Array.isArray(window.questionIndex)) { app.innerHTML = '<div class="unit-error">question-index.js를 불러오지 못했습니다.</div>'; return; }
-    state.catalog = core.buildCatalog(window.questionIndex);
-    document.getElementById('unit-summary').innerHTML = `<span>분류 ${state.catalog.classifiedCount.toLocaleString()}문항</span><span>18개 표시 단원</span><span>문제지당 최대 80문항</span><span>2학기 기말까지</span>`;
-    setStatus(`유효 후보 ${state.catalog.candidateCount.toLocaleString()}문항을 집계했습니다.`);
-    renderCatalog();
+    const requested = new URLSearchParams(window.location.search).get('grade');
+    selectProfile(core.PROFILES[requested] ? requested : 'h1');
   }
 
-  window.High1UnitPastExams = { init, renderDetail, printPaper, assignPaper };
+  window.UnitPastExams = { init, selectProfile, renderDetail, printPaper, assignPaper };
+  window.High1UnitPastExams = window.UnitPastExams;
 })();
