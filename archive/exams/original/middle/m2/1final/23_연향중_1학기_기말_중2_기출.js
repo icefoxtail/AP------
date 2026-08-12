@@ -267,7 +267,7 @@ window.questionBank = [
     answer: "⑤",
     solution: "[키포인트] 주어진 그래프를 보고 $a,b,c$의 부호 관계를 판단한 뒤 새 직선의 기울기와 절편을 구한다.\n$ax+by+c=0$의 그래프는 기울기가 음수이고, $x$절편과 $y$절편이 모두 양수이다.\n따라서 $a$와 $b$는 같은 부호이고, $c$는 그들과 반대 부호이다.\n$abx+bcy-ca=0$을 정리하면 $y=-\\dfrac{a}{c}x+\\dfrac{a}{b}$이다.\n$a$와 $c$는 부호가 반대이므로 $-\\dfrac{a}{c}>0$이고, $a$와 $b$는 부호가 같으므로 $\\dfrac{a}{b}>0$이다.\n즉 기울기는 양수이고 $y$절편도 양수인 그래프이므로 정답은 ⑤이다.",
     image: "assets/images/23_연향중_1학기_기말_중2_기출/q11.png",
-    imageSize: "full"
+    imageSize: "tall"
   },
   {
     id: 12,

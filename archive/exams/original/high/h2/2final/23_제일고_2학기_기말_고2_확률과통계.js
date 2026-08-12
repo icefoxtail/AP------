@@ -263,7 +263,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "두 사건 $A$, $B$가 서로 독립일 때, 다음 <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $A\\ne\\varnothing$, $B\\ne\\varnothing$) (4.1점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $P(A\\cup B)=P(A)+P(B)$</td></tr><tr><td>ㄴ. $P(A\\cap B^c)=P(A)P(B^c)$</td></tr><tr><td>ㄷ. $P(A^c\\mid B)=1-P(A)$</td></tr><tr><td>ㄹ. $P(A\\mid B)=P(B\\mid A)$</td></tr></tbody></table></div>",
+    "content": "두 사건 $A$, $B$가 서로 독립일 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $A\\ne\\varnothing$, $B\\ne\\varnothing$) (4.1점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $P(A\\cup B)=P(A)+P(B)$</td></tr><tr><td>ㄴ. $P(A\\cap B^c)=P(A)P(B^c)$</td></tr><tr><td>ㄷ. $P(A^c\\mid B)=1-P(A)$</td></tr><tr><td>ㄹ. $P(A\\mid B)=P(B\\mid A)$</td></tr></tbody></table></div>",
     "choices": [
       "ㄱ, ㄹ",
       "ㄴ, ㄹ",
@@ -469,7 +469,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 구한 모평균 $m$에 대한 신뢰도 $\\alpha\\%$의 신뢰구간은 $a\\le m\\le b$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은? (4.3점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $n$의 값이 일정하고 $\\alpha$의 값이 커지면, $b-a$의 값은 커진다.</td></tr><tr><td>ㄴ. $n$의 값이 작아지고 $\\alpha$의 값이 커지면, $b-a$의 값은 작아진다.</td></tr><tr><td>ㄷ. $n$의 값이 작아지고 $\\alpha$의 값이 작아지면, $b-a$의 값은 작아진다.</td></tr></tbody></table></div>",
+    "content": "표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 구한 모평균 $m$에 대한 신뢰도 $\\alpha\\%$의 신뢰구간은 $a\\le m\\le b$이다. 보기에서 옳은 것만을 있는 대로 고른 것은? (4.3점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>ㄱ. $n$의 값이 일정하고 $\\alpha$의 값이 커지면, $b-a$의 값은 커진다.</td></tr><tr><td>ㄴ. $n$의 값이 작아지고 $\\alpha$의 값이 커지면, $b-a$의 값은 작아진다.</td></tr><tr><td>ㄷ. $n$의 값이 작아지고 $\\alpha$의 값이 작아지면, $b-a$의 값은 작아진다.</td></tr></tbody></table></div>",
     "choices": [
       "ㄱ",
       "ㄴ",

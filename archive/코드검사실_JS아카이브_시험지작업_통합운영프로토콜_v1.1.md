@@ -1,7 +1,7 @@
 # 코드검사실 / JS아카이브 시험지 작업 통합 운영 프로토콜
 ## PDF·페이지 이미지 기반 신규 제작 / 기존 JS 검수·수정 / 이미지 에셋 / 1·2·3차 검수 / 최종 ZIP 봉인 전 단계
 ### Integrated Clean Edition — 2026-08-10
-### Revision: 풍덕중·순천여중·향림중 실전 작업 피드백 반영 — 기존 연향중·금당중 보강 유지 + PRE-RECHECK LINT / 수정 에셋 STRUCTURE TYPE LOCK / POST-ASSET-WRITE VISUAL GATE / NO DESTRUCTIVE MASKING / ADJACENT SMALL-PRINT OWNERSHIP LOCK / ALL-ASSET LABEL INVENTORY SWEEP / SOURCE REPAIR CANDIDATE IMPACT MATRIX / SOURCE REPAIR CONSISTENCY LOCK / DELIVERY SCOPE LOCK / LEVEL BORDERLINE STABILITY LOCK / 단일 REVIEW LEDGER / HARD FAIL·MINOR WARN 분리 / MASTER_ACCEPTED_PASS / ZIP UTF-8 ENTRY FLAG LOCK / ZIP PATH ROUND-TRIP LOCK
+### Revision: 풍덕중·순천여중·향림중 실전 작업 피드백 반영 — 기존 연향중·금당중 보강 유지 + INLINE VIEW LABEL LOCK / PRE-RECHECK LINT / 수정 에셋 STRUCTURE TYPE LOCK / POST-ASSET-WRITE VISUAL GATE / NO DESTRUCTIVE MASKING / ADJACENT SMALL-PRINT OWNERSHIP LOCK / ALL-ASSET LABEL INVENTORY SWEEP / SOURCE REPAIR CANDIDATE IMPACT MATRIX / SOURCE REPAIR CONSISTENCY LOCK / DELIVERY SCOPE LOCK / LEVEL BORDERLINE STABILITY LOCK / 단일 REVIEW LEDGER / HARD FAIL·MINOR WARN 분리 / MASTER_ACCEPTED_PASS / ZIP UTF-8 ENTRY FLAG LOCK / ZIP PATH ROUND-TRIP LOCK
 
 ---
 
@@ -111,9 +111,19 @@ baseline_reason:
 단, 엔진 안전성을 위한 **표현 방식 변환**은 허용한다.
 
 예:
-- 화면에 `<보기>`를 표시하기 위한 `&lt;보기&gt;`
+- 독립된 보기 제목을 화면에 `<보기>`로 표시해야 할 때만, 줄 시작 또는 `<br>` 뒤의 `&lt;보기&gt;` 사용
 - 원본 줄바꿈을 엔진 구조에 맞는 `<br>` 또는 안전한 문자열 줄바꿈으로 표현
 - 인쇄된 수식을 동일하게 보이도록 LaTeX로 변환
+
+### INLINE VIEW LABEL LOCK — 발문 속 보기 단어와 독립 보기 제목 분리
+
+- `보기에서`, `보기의`, `보기 중`, `보기를`, `보기와`처럼 **조사가 붙어 문장 성분으로 쓰인 경우**에는 반드시 평문 `보기`를 사용한다.
+- `다음 &lt;보기&gt;에서`, `[보기]의 조건`, `<보기> 중`처럼 발문 안에 꺾쇠·대괄호 라벨을 넣지 않는다.
+- `&lt;보기&gt;`, `<보기>`, `[보기]`는 실제 인쇄물의 독립된 보기 제목을 재현할 때만 사용하며, 문자열 시작 또는 명시적 `<br>` 뒤에서 보기 본문과 분리한다.
+- 이미 `.note-box`, `.question-note-box`, `.box`로 구조화한 조건·보기 박스의 발문에는 평문 `보기`를 사용한다.
+- 수정 후 `node archive/tools/view-label-lint.mjs`를 실행하여 인라인 보기 라벨 오류가 0건인지 확인한다.
+
+이 규칙을 어기면 엔진이 발문 중간의 라벨을 독립 보기 블록으로 오인하여 자동 줄바꿈하거나 뒤 문장 전체를 박스 안에 넣을 수 있으므로 `HARD_FAIL`이다.
 
 판정 기준은 소스 코드 철자 자체가 아니라 **최종 표시 의미·기호·문자 보존**이다.
 
@@ -1470,6 +1480,7 @@ id,field,before,after,approved,status
 13. 비승인 `layoutTag` 특수값 / `wide:true`
 14. 수정 에셋의 12-2-1 `structure_type` / 박스 4면 / 안전여백 상태
 15. allowlist 밖 신규 diff 0건
+16. `view-label-lint.mjs`의 인라인 보기 라벨 오류 0건
 
 판정:
 - 실제 정답 번호·값이 틀리거나 누락된 solution 결론은 `HARD_FAIL`.
@@ -2025,6 +2036,7 @@ JS와 보고서가 다르면 패키지 FAIL.
 - 수식 미렌더
 - 복수정답 표시
 - 서술형 소문항 줄바꿈
+- 발문 속 평문 `보기`가 독립 보기 라벨로 오인되어 자동 줄바꿈·과대 박스를 만들지 않는지
 - 빈 마지막 페이지
 
 렌더를 실행하지 못했으면:

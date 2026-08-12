@@ -26,7 +26,7 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "content": "다음 <보기> 중 유한소수로 나타낼 수 있는 것을 모두 고른 것은? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $\\frac{1}{2^3 \\times 5}$ &nbsp; ㄴ. $\\frac{33}{2 \\times 3 \\times 5^2}$ <br> ㄷ. $\\frac{1}{2 \\times 7}$ &nbsp; ㄹ. $\\frac{21}{140}$</div>",
+    "content": "다음 보기 중 유한소수로 나타낼 수 있는 것을 모두 고른 것은? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $\\frac{1}{2^3 \\times 5}$ &nbsp; ㄴ. $\\frac{33}{2 \\times 3 \\times 5^2}$ <br> ㄷ. $\\frac{1}{2 \\times 7}$ &nbsp; ㄹ. $\\frac{21}{140}$</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄹ",
@@ -122,7 +122,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "다음 <보기> 중 식을 간단히 한 결과가 옳은 것은 모두 몇 개인가? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $a^3 \\times a = a^4$ <br> ㄴ. $(a^3)^2 = a^6$ <br> ㄷ. $a^3 \\div a^5 = a^2$ <br> ㄹ. $(-\\frac{a^2}{b^3})^2 = \\frac{a^4}{b^6}$ <br> ㅁ. $(a^4)^2 \\times (b^2)^3 = a^{14}$</div>",
+    "content": "다음 보기 중 식을 간단히 한 결과가 옳은 것은 모두 몇 개인가? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $a^3 \\times a = a^4$ <br> ㄴ. $(a^3)^2 = a^6$ <br> ㄷ. $a^3 \\div a^5 = a^2$ <br> ㄹ. $(-\\frac{a^2}{b^3})^2 = \\frac{a^4}{b^6}$ <br> ㅁ. $(a^4)^2 \\times (b^2)^3 = a^{14}$</div>",
     "choices": [
       "1개",
       "2개",

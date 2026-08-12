@@ -290,7 +290,7 @@ window.questionBank = [
       "포함관계"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $A\\cap B=B$일 때, 다음 <보기> 중 항상 옳은 것만을 있는 대로 고른 것은? [3.9점]<br><br>ㄱ. $B\\subset A$<br>ㄴ. $B^c\\subset A^c$<br>ㄷ. $A\\cup B=A$<br>ㄹ. $A\\cap B^c\\ne\\varnothing$",
+    "content": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $A\\cap B=B$일 때, 다음 보기 중 항상 옳은 것만을 있는 대로 고른 것은? [3.9점]<br><br>ㄱ. $B\\subset A$<br>ㄴ. $B^c\\subset A^c$<br>ㄷ. $A\\cup B=A$<br>ㄹ. $A\\cap B^c\\ne\\varnothing$",
     "choices": [
       "ㄱ",
       "ㄴ, ㄹ",

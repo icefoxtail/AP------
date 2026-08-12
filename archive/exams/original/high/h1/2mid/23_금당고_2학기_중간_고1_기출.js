@@ -405,7 +405,7 @@ window.questionBank = [
       "차집합"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $P,Q,R$가 각각 세 조건 $p,q,r$의 진리집합이라 하자. $P^C\\cup Q=U$, $Q-R=Q$가 성립할 때, <보기> 중 옳은 것의 개수는? [4.4점]\nㄱ. 명제 $p\\to q$는 참이다.\nㄴ. 명제 $r\\to\\sim q$는 참이다.\nㄷ. 명제 $q\\to p$가 거짓임을 보이려면 $P\\cap Q^C$의 원소가 존재함을 보이면 된다.\nㄹ. $P\\cap R=\\varnothing$\nㅁ. 명제 $r\\to\\sim p$는 참이다.",
+    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $P,Q,R$가 각각 세 조건 $p,q,r$의 진리집합이라 하자. $P^C\\cup Q=U$, $Q-R=Q$가 성립할 때, 보기 중 옳은 것의 개수는? [4.4점]\nㄱ. 명제 $p\\to q$는 참이다.\nㄴ. 명제 $r\\to\\sim q$는 참이다.\nㄷ. 명제 $q\\to p$가 거짓임을 보이려면 $P\\cap Q^C$의 원소가 존재함을 보이면 된다.\nㄹ. $P\\cap R=\\varnothing$\nㅁ. 명제 $r\\to\\sim p$는 참이다.",
     "choices": [
       "$1$",
       "$2$",

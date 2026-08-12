@@ -232,7 +232,7 @@ window.questionBank = [
     "표"
   ],
     wide: false,
-    content: "&lt;보기&gt;에서 그래프가 아래로 볼록한 이차함수의 개수를 $m$, $y=-2x^2$의 그래프보다 폭이 좁은 이차함수의 개수를 $n$이라 할 때, $m+n$의 값은? [4점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>&lt;보기&gt;</div><div class='question-table-wrap'><table><tr><td>$y=\\dfrac{1}{5}x^2$</td><td>$y=5x^2$</td><td>$y=2x^2$</td></tr><tr><td>$y=-\\dfrac{3}{2}x^2$</td><td>$y=6x^2$</td><td>$y=-\\dfrac{1}{5}x^2$</td></tr></table></div></div>",
+    content: "보기에서 그래프가 아래로 볼록한 이차함수의 개수를 $m$, $y=-2x^2$의 그래프보다 폭이 좁은 이차함수의 개수를 $n$이라 할 때, $m+n$의 값은? [4점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>&lt;보기&gt;</div><div class='question-table-wrap'><table><tr><td>$y=\\dfrac{1}{5}x^2$</td><td>$y=5x^2$</td><td>$y=2x^2$</td></tr><tr><td>$y=-\\dfrac{3}{2}x^2$</td><td>$y=6x^2$</td><td>$y=-\\dfrac{1}{5}x^2$</td></tr></table></div></div>",
     choices: [
     "6",
     "7",

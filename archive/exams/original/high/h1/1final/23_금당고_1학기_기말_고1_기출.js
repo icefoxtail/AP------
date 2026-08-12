@@ -281,7 +281,7 @@ window.questionBank = [
       "기말"
     ],
     "wide": false,
-    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, 다음 <보기> 중 옳은 것을 있는 대로 고른 것은? (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수이다.) [4.2점]\n<div class='note-box'><b>&lt;보기&gt;</b><br>ㄱ. $\\omega+\\dfrac1{\\omega}=1$<br>ㄴ. $\\dfrac1{1-\\omega}+\\dfrac1{1-\\overline{\\omega}}=1$<br>ㄷ. $1+\\omega+\\omega^2+\\cdots+\\omega^{10}=-\\omega^2$</div>",
+    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, 다음 보기 중 옳은 것을 있는 대로 고른 것은? (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수이다.) [4.2점]\n<div class='note-box'><b>&lt;보기&gt;</b><br>ㄱ. $\\omega+\\dfrac1{\\omega}=1$<br>ㄴ. $\\dfrac1{1-\\omega}+\\dfrac1{1-\\overline{\\omega}}=1$<br>ㄷ. $1+\\omega+\\omega^2+\\cdots+\\omega^{10}=-\\omega^2$</div>",
     "choices": [
       "ㄴ",
       "ㄷ",

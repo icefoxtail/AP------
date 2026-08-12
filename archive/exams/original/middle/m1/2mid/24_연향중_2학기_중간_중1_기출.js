@@ -254,7 +254,8 @@ window.questionBank = [
     "choices": [],
     "answer": "②",
     "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png"
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png",
+    "imageSize": "tall",
   },
   {
     "id": 11,

@@ -122,7 +122,7 @@ window.questionBank = [
     { visualAssetStatus: "not_processed", tags: ["평행선", "동위각", "엇각"] }),
 
   q(14, "M1-05", "기본도형", "상", "객관식",
-    "공간에 있는 서로 다른 세 직선 $l$, $m$, $n$과 평면 $P$에 대하여 다음 <보기> 중에서 옳은 것을 모두 고른 것은? (5점)<div class=\"note-box\">ㄱ. $l\\parallel m$, $m\\perp n$이면 $l\\perp n$이다.<br>ㄴ. $l\\parallel m$, $m\\perp P$이면 $l\\perp P$이다.<br>ㄷ. $l\\parallel P$, $m\\parallel P$이면 $l\\parallel m$이다.<br>ㄹ. $l\\perp P$, $m\\perp P$이면 $l\\parallel m$이다.</div>",
+    "공간에 있는 서로 다른 세 직선 $l$, $m$, $n$과 평면 $P$에 대하여 다음 보기 중에서 옳은 것을 모두 고른 것은? (5점)<div class=\"note-box\">ㄱ. $l\\parallel m$, $m\\perp n$이면 $l\\perp n$이다.<br>ㄴ. $l\\parallel m$, $m\\perp P$이면 $l\\perp P$이다.<br>ㄷ. $l\\parallel P$, $m\\parallel P$이면 $l\\parallel m$이다.<br>ㄹ. $l\\perp P$, $m\\perp P$이면 $l\\parallel m$이다.</div>",
     ["ㄱ, ㄴ", "ㄴ, ㄷ", "ㄷ, ㄹ", "ㄴ, ㄹ", "ㄱ, ㄴ, ㄹ"],
     "④",
     "ㄴ: 평면에 수직인 직선과 평행한 직선도 그 평면에 수직이므로 옳다. ㄹ: 한 평면에 수직인 두 직선은 서로 평행하므로 옳다. ㄱ은 두 직선이 만나지 않을 수 있고, ㄷ은 같은 평면과 평행한 두 직선의 방향이 서로 다를 수 있으므로 항상 성립하지 않는다. 따라서 정답은 ④이다.",

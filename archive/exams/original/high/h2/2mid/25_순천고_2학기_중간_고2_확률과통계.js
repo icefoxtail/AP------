@@ -155,7 +155,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "확률변수 $X$가 정규분포 $N(m,\\sigma^2)$을 따를 때, 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? [3.6점]<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">ㄱ. $P(m-\\sigma\\le X\\le m+\\sigma)=2P(m-\\sigma\\le X\\le m)$<br>ㄴ. 확률변수 $X$의 정규분포 곡선은 직선 $x=m$에 대하여 대칭이다.<br>ㄷ. 확률변수 $\\dfrac{X-m}{\\sigma}$은 표준정규분포 $N(0,1)$을 따른다.</div>",
+    "content": "확률변수 $X$가 정규분포 $N(m,\\sigma^2)$을 따를 때, 옳은 것만을 보기에서 있는 대로 고른 것은? [3.6점]<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">ㄱ. $P(m-\\sigma\\le X\\le m+\\sigma)=2P(m-\\sigma\\le X\\le m)$<br>ㄴ. 확률변수 $X$의 정규분포 곡선은 직선 $x=m$에 대하여 대칭이다.<br>ㄷ. 확률변수 $\\dfrac{X-m}{\\sigma}$은 표준정규분포 $N(0,1)$을 따른다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

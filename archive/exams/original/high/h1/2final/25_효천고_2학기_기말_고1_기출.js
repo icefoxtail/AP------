@@ -179,7 +179,7 @@ window.questionBank = [
       "필요조건과 충분조건"
     ],
     "wide": false,
-    "content": "두 조건 $p$, $q$에 대하여 <보기>에서 $p$는 $q$이기 위한 필요조건이지만 충분조건이 아닌 것만을 있는 대로 고른 것은? (단, $a$, $b$, $c$는 실수이다.) [3.7점]<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. $p:a\\gt3$ &nbsp;&nbsp;&nbsp; $q:a\\gt7$<br>ㄴ. $p:x^2+y^2=0$인 실수 $x$, $y$ &nbsp;&nbsp;&nbsp; $q:x=0$, $y=0$<br>ㄷ. $p:ac=bc$ &nbsp;&nbsp;&nbsp; $q:a=b$</div>",
+    "content": "두 조건 $p$, $q$에 대하여 보기에서 $p$는 $q$이기 위한 필요조건이지만 충분조건이 아닌 것만을 있는 대로 고른 것은? (단, $a$, $b$, $c$는 실수이다.) [3.7점]<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. $p:a\\gt3$ &nbsp;&nbsp;&nbsp; $q:a\\gt7$<br>ㄴ. $p:x^2+y^2=0$인 실수 $x$, $y$ &nbsp;&nbsp;&nbsp; $q:x=0$, $y=0$<br>ㄷ. $p:ac=bc$ &nbsp;&nbsp;&nbsp; $q:a=b$</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

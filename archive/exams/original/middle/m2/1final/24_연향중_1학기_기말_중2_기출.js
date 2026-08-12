@@ -491,7 +491,7 @@ window.questionBank = [
     answer: "⑤",
     solution: "[키포인트] 원래 그래프가 지나는 사분면으로 $a,b$의 부호를 먼저 판단한다.\n$y=ax-b$의 그래프가 제1, 2, 3사분면을 지나려면 기울기 $a$는 양수이고, $y$절편 $-b$는 양수이어야 한다. 따라서 $a>0$, $b<0$이다.\n새 함수 $y=\\dfrac{b}{a}x-ab$에서 기울기 $\\dfrac{b}{a}$는 음수이고, $y$절편 $-ab$는 양수이다.\n즉 오른쪽 아래로 내려가는 직선이고 $y$축의 양의 부분과 $x$축의 양의 부분을 지난다.\n따라서 정답은 ⑤이다.",
     image: "assets/images/24_연향중_1학기_기말_중2_기출/q20.png",
-    imageSize: "full"
+    imageSize: "tall"
   },
   {
     id: 21,

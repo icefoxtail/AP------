@@ -176,7 +176,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "<보기>는 순환소수 $0.\\dot{1}3\\dot{2}=0.132132\\dots$에 $1$ 또는 $10$의 거듭제곱을 곱한 순환소수들이다. <보기>의 두 순환소수를 골라 뺀 결과가 정수가 나오는 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>㉠ $0.132132\\dots$<br>㉡ $13.213213\\dots$<br>㉢ $1.321321\\dots$<br>㉣ $13213.213213\\dots$<br>㉤ $1321.321321\\dots$<br>㉥ $132.132132\\dots$</div>",
+    "content": "보기는 순환소수 $0.\\dot{1}3\\dot{2}=0.132132\\dots$에 $1$ 또는 $10$의 거듭제곱을 곱한 순환소수들이다. 보기의 두 순환소수를 골라 뺀 결과가 정수가 나오는 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>㉠ $0.132132\\dots$<br>㉡ $13.213213\\dots$<br>㉢ $1.321321\\dots$<br>㉣ $13213.213213\\dots$<br>㉤ $1321.321321\\dots$<br>㉥ $132.132132\\dots$</div>",
     "choices": [
       "㉢ - ㉠",
       "㉡ - ㉠",
@@ -511,7 +511,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "<보기> 중에서 $x=2$가 해가 되는 부등식을 모두 고른 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>ㄱ. $x>5$<br>ㄴ. $1+x \\ge 3$<br>ㄷ. $-x+3>1$<br>ㄹ. $2x \\ge x+1$</div>",
+    "content": "보기 중에서 $x=2$가 해가 되는 부등식을 모두 고른 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>ㄱ. $x>5$<br>ㄴ. $1+x \\ge 3$<br>ㄷ. $-x+3>1$<br>ㄹ. $2x \\ge x+1$</div>",
     "choices": [
       "ㄱ, ㄷ",
       "ㄱ, ㄴ, ㄷ",

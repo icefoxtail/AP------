@@ -443,7 +443,7 @@ window.questionBank = [
       "진리집합"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 공집합이 아닌 세 부분집합 $P,Q,R$가 각각 조건 $p,q,r$의 진리집합이다. $p$는 $q$이기 위한 필요조건, $r$은 $\\sim p$이기 위한 충분조건일 때, <보기> 중 옳은 것만을 있는 대로 고른 것은? [4.1점]\nㄱ. $P\\cap Q=Q$\nㄴ. $R\\subset Q^C$\nㄷ. $P-R=\\varnothing$\nㄹ. $P\\cup Q^C=U$",
+    "content": "전체집합 $U$의 공집합이 아닌 세 부분집합 $P,Q,R$가 각각 조건 $p,q,r$의 진리집합이다. $p$는 $q$이기 위한 필요조건, $r$은 $\\sim p$이기 위한 충분조건일 때, 보기 중 옳은 것만을 있는 대로 고른 것은? [4.1점]\nㄱ. $P\\cap Q=Q$\nㄴ. $R\\subset Q^C$\nㄷ. $P-R=\\varnothing$\nㄹ. $P\\cup Q^C=U$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄷ",

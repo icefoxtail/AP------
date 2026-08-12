@@ -170,7 +170,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "content": "다음 <보기> 중에서 무리수인 것을 모두 고르면? (4점)\\n<div class='box'>ㄱ. $\\sqrt{0.4}$ &nbsp;&nbsp; ㄴ. $\\sqrt{3.6}$ &nbsp;&nbsp; ㄷ. $\\sqrt{9}$ <br> ㄹ. $2\\sqrt{3}$ &nbsp;&nbsp; ㅁ. $\\sqrt{12}-2\\sqrt{3}$ &nbsp;&nbsp; ㅂ. $\\sqrt{5}-1$</div>",
+    "content": "다음 보기 중에서 무리수인 것을 모두 고르면? (4점)\\n<div class='box'>ㄱ. $\\sqrt{0.4}$ &nbsp;&nbsp; ㄴ. $\\sqrt{3.6}$ &nbsp;&nbsp; ㄷ. $\\sqrt{9}$ <br> ㄹ. $2\\sqrt{3}$ &nbsp;&nbsp; ㅁ. $\\sqrt{12}-2\\sqrt{3}$ &nbsp;&nbsp; ㅂ. $\\sqrt{5}-1$</div>",
     "choices": [
       "ㄱ, ㄴ, ㄹ",
       "ㄱ, ㄴ, ㅂ",

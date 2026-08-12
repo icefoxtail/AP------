@@ -218,7 +218,7 @@ window.questionBank = [
     layoutTag: "grid",
     "tags": ["객관식","분모유리화","절댓값","복소수","켤레복소수","참거짓","대입","개념"],
     wide: false,
-    content: "임의의 두 복소수 $\\alpha, \\beta$에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은?\n<div class=\"box\"><b><보기></b>\nㄱ. $\\alpha\\beta=0$이면 $\\alpha=0$ 또는 $\\beta=0$이다.\nㄴ. $\\alpha\\bar{\\alpha}+\\beta\\bar{\\beta}=0$이면 $\\alpha=\\beta=0$이다.\nㄷ. $\\alpha\\bar{\\alpha}+\\alpha\\beta-\\beta\\bar{\\alpha}+\\beta\\bar{\\beta}=0$이면 $\\alpha=\\beta$이다.</div>",
+    content: "임의의 두 복소수 $\\alpha, \\beta$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은?\n<div class=\"box\"><b><보기></b>\nㄱ. $\\alpha\\beta=0$이면 $\\alpha=0$ 또는 $\\beta=0$이다.\nㄴ. $\\alpha\\bar{\\alpha}+\\beta\\bar{\\beta}=0$이면 $\\alpha=\\beta=0$이다.\nㄷ. $\\alpha\\bar{\\alpha}+\\alpha\\beta-\\beta\\bar{\\alpha}+\\beta\\bar{\\beta}=0$이면 $\\alpha=\\beta$이다.</div>",
     choices: ["① ㄱ", "② ㄴ", "③ ㄱ, ㄴ", "④ ㄱ, ㄷ", "⑤ ㄱ, ㄴ, ㄷ"],
     answer: "⑤",
     solution: "[키포인트]\n복소수 연산과 켤레복소수의 성질을 분석한다.\n\n풀이 과정\nㄱ. 복소수 체계에서 $ab=0 \\iff a=0 \\lor b=0$이다. (참)\nㄴ. $|\\alpha|^2 + |\\beta|^2 = 0 \\implies \\alpha = \\beta = 0$이다. (참)\nㄷ. 실수부와 허수부로 나누어 대입 시 $\\alpha=\\beta$가 유도된다. (참)\n\n결론\n따라서 정답은 ⑤이다."

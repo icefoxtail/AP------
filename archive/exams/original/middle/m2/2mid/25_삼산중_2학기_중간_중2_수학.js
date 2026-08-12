@@ -164,7 +164,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 원 $I$는 $\\triangle ABC$의 내접원이고 원 위의 점 $D,E,F$는 접점일 때, 다음 <보기> 중 옳은 것을 모두 고르면? [5점]\\nㄱ. $AI=BI$\\nㄴ. $AD=AF$\\nㄷ. 점 $I$는 $\\triangle ABC$의 내심이다.\\nㄹ. 점 $I$는 $\\triangle DEF$의 외심이다.",
+    "content": "다음 그림에서 원 $I$는 $\\triangle ABC$의 내접원이고 원 위의 점 $D,E,F$는 접점일 때, 다음 보기 중 옳은 것을 모두 고르면? [5점]\\nㄱ. $AI=BI$\\nㄴ. $AD=AF$\\nㄷ. 점 $I$는 $\\triangle ABC$의 내심이다.\\nㄹ. 점 $I$는 $\\triangle DEF$의 외심이다.",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄷ",
@@ -193,7 +193,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 $BC$의 교점을 $D$라고 하자. $AD$ 위의 한 점 $P$를 잡을 때, 다음 <보기> 중 옳은 것을 모두 고르면? [4점]\\nㄱ. $\\angle PDB=90^\\circ$\\nㄴ. $\\triangle BPC$는 이등변삼각형이다.\\nㄷ. $AD$ 위의 한 점 $P$에 대해 $\\angle ABP=\\angle PBD$이면 점 $P$는 내심이다.",
+    "content": "오른쪽 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 $BC$의 교점을 $D$라고 하자. $AD$ 위의 한 점 $P$를 잡을 때, 다음 보기 중 옳은 것을 모두 고르면? [4점]\\nㄱ. $\\angle PDB=90^\\circ$\\nㄴ. $\\triangle BPC$는 이등변삼각형이다.\\nㄷ. $AD$ 위의 한 점 $P$에 대해 $\\angle ABP=\\angle PBD$이면 점 $P$는 내심이다.",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -222,7 +222,7 @@ window.questionBank = [
       "평행사변형"
     ],
     "wide": false,
-    "content": "다음 <보기> 중에서 사각형 $ABCD$가 평행사변형인 것을 고르면? [4점]<br>ㄱ. $AB=BC=5\\mathrm{cm}$, $CD=DA=7\\mathrm{cm}$<br>ㄴ. $\\angle ABD=\\angle BDC$, $\\angle ACB=\\angle DAC$<br>ㄷ. $AD=BC$, $\\angle ABC+\\angle BAD=180^\\circ$<br>ㄹ. $AD\\parallel BC$, $\\angle OAD=\\angle ODA$<br>(단, 점 $O$는 두 대각선의 교점이다.)",
+    "content": "다음 보기 중에서 사각형 $ABCD$가 평행사변형인 것을 고르면? [4점]<br>ㄱ. $AB=BC=5\\mathrm{cm}$, $CD=DA=7\\mathrm{cm}$<br>ㄴ. $\\angle ABD=\\angle BDC$, $\\angle ACB=\\angle DAC$<br>ㄷ. $AD=BC$, $\\angle ABC+\\angle BAD=180^\\circ$<br>ㄹ. $AD\\parallel BC$, $\\angle OAD=\\angle ODA$<br>(단, 점 $O$는 두 대각선의 교점이다.)",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",
@@ -337,7 +337,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 사각형 분류표의 (가)~(다)에 들어갈 알맞은 조건을 <보기>에서 고르면? [4점]\\nㄱ. 두 대각선의 길이가 같은가?\\nㄴ. 두 대각선이 서로를 이등분하는가?\\nㄷ. 한 쌍의 대변이 평행한가?",
+    "content": "다음 사각형 분류표의 (가)~(다)에 들어갈 알맞은 조건을 보기에서 고르면? [4점]\\nㄱ. 두 대각선의 길이가 같은가?\\nㄴ. 두 대각선이 서로를 이등분하는가?\\nㄷ. 한 쌍의 대변이 평행한가?",
     "choices": [
       "(가) ㄱ, (나) ㄴ, (다) ㄷ",
       "(가) ㄱ, (나) ㄷ, (다) ㄴ",

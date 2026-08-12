@@ -37,7 +37,8 @@ window.questionBank = [
     choices: [],
     answer: "①, ③",
     solution: "[키포인트] 사각형이 원에 내접할 조건은 한 쌍의 대각의 크기의 합이 $180^\\circ$이거나, 같은 현을 보는 원주각이 서로 같은 것이다.\n①에서 $\\angle A=180^\\circ-80^\\circ=100^\\circ$, $\\angle C=180^\\circ-100^\\circ=80^\\circ$이므로 $\\angle A+\\angle C=180^\\circ$이다.\n③에서는 교점의 각을 이용하면 $\\angle DAC=60^\\circ$이고 그림에서 $\\angle DBC=60^\\circ$이므로 두 각이 같은 현 $DC$를 본다. 따라서 ③도 원에 내접한다.\n②, ④, ⑤는 원에 내접하는 조건을 만족하지 않는다.\n따라서 정답은 ①, ③이다.",
-    image: "assets/images/24_신흥중_2학기_기말_중3_기출/q2.png"
+    image: "assets/images/24_신흥중_2학기_기말_중3_기출/q2.png",
+    imageSize: "tall",
   },
   {
     id: 3,
@@ -335,7 +336,8 @@ window.questionBank = [
     choices: [],
     answer: "⑤",
     solution: "[키포인트] 음의 상관관계는 점들이 오른쪽 아래 방향의 직선에 가깝게 모일수록 강하다.\n③과 ⑤는 모두 음의 상관관계를 보이지만, ⑤의 점들이 오른쪽 아래로 내려가는 직선 주변에 더 좁게 모여 있다.\n따라서 음의 상관관계가 가장 강한 것은 ⑤이다.\n따라서 정답은 ⑤이다.",
-    image: "assets/images/24_신흥중_2학기_기말_중3_기출/q18.png"
+    image: "assets/images/24_신흥중_2학기_기말_중3_기출/q18.png",
+    imageSize: "tall",
   },
   {
     id: 19,

@@ -241,7 +241,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "복소수",
     "standardUnitOrder": 3,
-    "content": "복소수 $z$와 그 켤레복소수 $\\bar{z}$에 대하여 옳은 것만을 <보기>에서 있는 대로 고른 것은? (단, 복소수 $z$의 실수부분, 허수부분은 모두 0이 아니다.) [4.3점]\n<div class=\"question-table-wrap\">\n<table>\n  <tr>\n    <td>\n      ㄱ. $z\\bar{z}$는 실수이다.\n      ㄴ. $\\frac{z+\\bar{z}}{z\\bar{z}}$는 실수이다.\n      ㄷ. $\\omega = \\frac{1-\\sqrt{3}i}{2}$일 때, $\\omega^3+2\\omega^6 = 1$이다.\n    </td>\n  </tr>\n</table>\n</div>",
+    "content": "복소수 $z$와 그 켤레복소수 $\\bar{z}$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? (단, 복소수 $z$의 실수부분, 허수부분은 모두 0이 아니다.) [4.3점]\n<div class=\"question-table-wrap\">\n<table>\n  <tr>\n    <td>\n      ㄱ. $z\\bar{z}$는 실수이다.\n      ㄴ. $\\frac{z+\\bar{z}}{z\\bar{z}}$는 실수이다.\n      ㄷ. $\\omega = \\frac{1-\\sqrt{3}i}{2}$일 때, $\\omega^3+2\\omega^6 = 1$이다.\n    </td>\n  </tr>\n</table>\n</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",

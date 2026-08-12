@@ -267,7 +267,7 @@ window.questionBank = [
   {
     "id": 12,
     "level": "상",
-    "content": "$0$이 아닌 두 실수 $a, b$에 대하여 $\\frac{\\sqrt{a}}{\\sqrt{b}} = -\\sqrt{\\frac{a}{b}}$가 성립할 때, 항상 실근이 존재하는 방정식을 <보기>에서 있는 대로 고른 것은?<br><br><보기><br>ㄱ. $x^2 + ax + b = 0$<br>ㄴ. $ax^2 + x + b = 0$<br>ㄷ. $ax^2 + ax - b = 0$",
+    "content": "$0$이 아닌 두 실수 $a, b$에 대하여 $\\frac{\\sqrt{a}}{\\sqrt{b}} = -\\sqrt{\\frac{a}{b}}$가 성립할 때, 항상 실근이 존재하는 방정식을 보기에서 있는 대로 고른 것은?<br><br><보기><br>ㄱ. $x^2 + ax + b = 0$<br>ㄴ. $ax^2 + x + b = 0$<br>ㄷ. $ax^2 + ax - b = 0$",
     "choices": [
       "ㄱ",
       "ㄴ",

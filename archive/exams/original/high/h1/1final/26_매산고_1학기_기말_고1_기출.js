@@ -313,7 +313,7 @@ window.questionBank = [
       "복소수와 이차방정식"
     ],
     "wide": false,
-    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 하고, $\\overline{\\omega}$는 $\\omega$의 켤레복소수라 하자. <보기>에서 옳은 것만을 있는 대로 고른 것은? [4.7점]<div class=\"note-box\">ㄱ. $\\omega^{20}+\\omega^{25}+\\omega^{30}=0$<br>ㄴ. $\\dfrac{1}{\\omega^2+2\\omega+2}+\\dfrac{1}{(\\overline{\\omega})^2+2\\overline{\\omega}+2}=1$<br>ㄷ. $2\\omega^2$은 $x^2-2x+4=0$의 한 근이다.</div>",
+    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 하고, $\\overline{\\omega}$는 $\\omega$의 켤레복소수라 하자. 보기에서 옳은 것만을 있는 대로 고른 것은? [4.7점]<div class=\"note-box\">ㄱ. $\\omega^{20}+\\omega^{25}+\\omega^{30}=0$<br>ㄴ. $\\dfrac{1}{\\omega^2+2\\omega+2}+\\dfrac{1}{(\\overline{\\omega})^2+2\\overline{\\omega}+2}=1$<br>ㄷ. $2\\omega^2$은 $x^2-2x+4=0$의 한 근이다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",

@@ -20,7 +20,8 @@ window.questionBank = [
     choices: [],
     answer: "③",
     solution: "[키포인트] 음수로 나누거나 곱할 때는 부등호의 방향이 바뀐다.\n$1-0.4x<-0.2$에서 $-0.4x<-1.2$이다.\n양변을 $-0.4$로 나누면 부등호 방향이 바뀌어 $x>3$이다.\n따라서 수직선 위에서 $3$을 포함하지 않고 오른쪽을 나타낸 그림은 ③이다.",
-    image: "assets/images/23_신흥중_1학기_기말_중2_기출/q1.png"
+    image: "assets/images/23_신흥중_1학기_기말_중2_기출/q1.png",
+    imageSize: "tall",
   },
   {
     id: 2,

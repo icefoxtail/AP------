@@ -286,7 +286,7 @@ window.questionBank = [
       "순열과 조합"
     ],
     "wide": false,
-    "content": "다음은 순열과 조합에 관한 내용이다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? [4.6점]<br><div class=\"note-box\">ㄱ. ${}_{10}C_{3}={}_{10}C_{7}$<br>ㄴ. ${}_{n}C_{r}={}_{n}P_{r}\\times r!$<br>ㄷ. $1\\le r\\le n$일 때, 등식 $n\\times{}_{n-1}P_{r}={}_{n}P_{r}$</div>",
+    "content": "다음은 순열과 조합에 관한 내용이다. 이에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.6점]<br><div class=\"note-box\">ㄱ. ${}_{10}C_{3}={}_{10}C_{7}$<br>ㄴ. ${}_{n}C_{r}={}_{n}P_{r}\\times r!$<br>ㄷ. $1\\le r\\le n$일 때, 등식 $n\\times{}_{n-1}P_{r}={}_{n}P_{r}$</div>",
     "choices": [
       "ㄱ",
       "ㄷ",
@@ -479,7 +479,7 @@ window.questionBank = [
       "이차방정식과 이차함수"
     ],
     "wide": false,
-    "content": "$0\\le x\\le1$에서 이차함수 $f(x)=(x-p)^2+q$의 최솟값이 $3$일 때, 두 실수 $p$, $q$에 대하여 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? [5점]<br><div class=\"note-box\">ㄱ. $p=\\dfrac12$일 때, $q=3$이다.<br>ㄴ. $p\\le0$일 때, $q=-p^2+3$이다.<br>ㄷ. $p+q$의 최댓값은 $\\dfrac{25}{4}$이다.</div>",
+    "content": "$0\\le x\\le1$에서 이차함수 $f(x)=(x-p)^2+q$의 최솟값이 $3$일 때, 두 실수 $p$, $q$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? [5점]<br><div class=\"note-box\">ㄱ. $p=\\dfrac12$일 때, $q=3$이다.<br>ㄴ. $p\\le0$일 때, $q=-p^2+3$이다.<br>ㄷ. $p+q$의 최댓값은 $\\dfrac{25}{4}$이다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",

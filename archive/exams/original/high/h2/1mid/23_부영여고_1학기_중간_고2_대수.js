@@ -147,7 +147,7 @@ window.questionBank = [
   {
     "id": 7,
     "level": "상",
-    "content": "$n$ 이 2 이상의 자연수일 때, <보기> 중 옳은 것만을 있는 대로 고른 것은? <div style='border:1px solid #000; padding:10px;'>ㄱ. $n$이 홀수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}, -\\sqrt[n]{a}$이다.<br>ㄴ. $n$이 홀수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}$이다.<br>ㄷ. $n$이 짝수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\pm\\sqrt[n]{a}$이다.<br>ㄹ. $n$이 짝수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수는 존재하지 않는다.</div>",
+    "content": "$n$ 이 2 이상의 자연수일 때, 보기 중 옳은 것만을 있는 대로 고른 것은? <div style='border:1px solid #000; padding:10px;'>ㄱ. $n$이 홀수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}, -\\sqrt[n]{a}$이다.<br>ㄴ. $n$이 홀수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}$이다.<br>ㄷ. $n$이 짝수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\pm\\sqrt[n]{a}$이다.<br>ㄹ. $n$이 짝수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수는 존재하지 않는다.</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",
@@ -171,7 +171,7 @@ window.questionBank = [
   {
     "id": 8,
     "level": "상",
-    "content": "<보기> 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\n eq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
+    "content": "보기 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\n eq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

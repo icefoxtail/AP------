@@ -16,7 +16,8 @@ function q(id, key, unit, type, content, choices, answer, options = {}) {
     choices,
     answer,
     solution: "",
-    ...(options.image ? { image: options.image } : {})
+    ...(options.image ? { image: options.image } : {}),
+    ...(options.imageSize ? { imageSize: options.imageSize } : {})
   };
 }
 
@@ -125,7 +126,7 @@ window.questionBank = [
 
   q(17, "M1-05", "기본도형", "객관식",
     "다음 중에서 보기의 삼각형과 합동인 것은? [3점]",
-    [], "⑤", { image: "assets/images/23_신흥중_2학기_중간_중1_기출/q17.png", tags: ["도형", "삼각형의 합동"] }),
+    [], "⑤", { image: "assets/images/23_신흥중_2학기_중간_중1_기출/q17.png", imageSize: "tall", tags: ["도형", "삼각형의 합동"] }),
 
   q(18, "M1-05", "기본도형", "객관식",
     "다음 그림에서 $\\overline{AB}=\\overline{AC}=\\overline{CD}=\\overline{DE}$이고, $\\angle FDE=80^\\circ$일 때, $\\angle ADC$의 크기는? [4점]",

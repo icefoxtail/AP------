@@ -350,6 +350,7 @@ window.questionBank = [
   tags: ["그래프", "표"],
   wide: false,
   image: "assets/images/25_신흥중_2학기_기말_중3_기출/q18.png",
+  imageSize: "tall",
   content: "다음 중 두 변량 $x,y$에 대한 산점도를 그렸을 때, 대체로 다음 그림과 같은 모양이 되는 것은? (4점)",
   choices: [],
   answer: "⑤",

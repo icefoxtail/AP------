@@ -334,7 +334,7 @@ window.questionBank = [
     layoutTag: "grid",
     "tags": ["확률","확률의성질","합사건","부분집합","보기판단","개념","객관식"],
     wide: false,
-    content: "표본공간을 $S$, 절대로 일어나지 않을 사건을 $\\emptyset$이라고 할 때, 임의의 두 사건 $A, B$에 대하여 다음 <보기>에서 옳은 것만으로 짝지어진 것을 고르면? [3.9점]\\n\\n<보기>\\n(ㄱ) $P(S) - P(\\emptyset) = 1$\\n(ㄴ) $0 \\le P(A \\cup B) \\le 1$\\n(ㄷ) $P(A) \\le P(B)$ 이면 $A \\subset B$이다.",
+    content: "표본공간을 $S$, 절대로 일어나지 않을 사건을 $\\emptyset$이라고 할 때, 임의의 두 사건 $A, B$에 대하여 다음 보기에서 옳은 것만으로 짝지어진 것을 고르면? [3.9점]\\n\\n<보기>\\n(ㄱ) $P(S) - P(\\emptyset) = 1$\\n(ㄴ) $0 \\le P(A \\cup B) \\le 1$\\n(ㄷ) $P(A) \\le P(B)$ 이면 $A \\subset B$이다.",
     choices: [
       "(ㄱ)",
       "(ㄱ), (ㄴ)",
