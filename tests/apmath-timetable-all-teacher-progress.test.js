@@ -32,6 +32,12 @@ assert.ok(
   (worker.match(/timetable_class_daily_progress:/g) || []).length >= 2,
   'normal and no-assigned-class responses should both expose timetable progress data'
 );
+const noAssignedStart = worker.indexOf('if (!classIds.length) {');
+const assignedClassesStart = worker.indexOf("const cMarkers = classIds.map(() => '?').join(',');", noAssignedStart);
+assert.ok(noAssignedStart >= 0 && assignedClassesStart > noAssignedStart, 'no-assigned-class response branch should remain available');
+const noAssignedBranch = worker.slice(noAssignedStart, assignedClassesStart);
+assert.match(noAssignedBranch, /timetable_class_daily_records:\s*ttAllDailyRecords\.results/);
+assert.match(noAssignedBranch, /timetable_class_daily_progress:\s*ttAllDailyProgress\.results/);
 assert.match(core, /timetable_class_daily_records: Array\.isArray\(data\.timetable_class_daily_records\)/);
 assert.match(core, /timetable_class_daily_progress: Array\.isArray\(data\.timetable_class_daily_progress\)/);
 assert.match(
@@ -64,6 +70,22 @@ const context = {
 vm.runInNewContext(`${progressFunction[0]}; result = getTimetableRecentProgress('other-class');`, context);
 assert.equal(context.result.date, '2026-08-11');
 assert.equal(context.result.text, '수학책 최신 진도');
+
+const fallbackContext = {
+  _getAllDb: () => ({
+    class_daily_records: [{ id: 'scoped-record', class_id: 'scoped-class', date: '2026-08-12' }],
+    class_daily_progress: [{
+      id: 'scoped-progress',
+      record_id: 'scoped-record',
+      class_id: 'scoped-class',
+      textbook_title_snapshot: '담당 교재',
+      progress_text: '담당 반 진도'
+    }]
+  })
+};
+vm.runInNewContext(`${progressFunction[0]}; result = getTimetableRecentProgress('scoped-class');`, fallbackContext);
+assert.equal(fallbackContext.result.date, '2026-08-12');
+assert.equal(fallbackContext.result.text, '담당 교재 담당 반 진도');
 
 const syncFunction = classroom.match(/function syncClassDailyRecordToState\(classId, dateStr, record, progressRows\) \{[\s\S]*?\n\}/);
 assert.ok(syncFunction, 'syncClassDailyRecordToState should remain available');

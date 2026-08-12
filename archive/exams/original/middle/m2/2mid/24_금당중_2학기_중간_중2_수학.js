@@ -28,7 +28,7 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 닮음비는 대응하는 변의 길이의 비와 같다.\n조건 정리: $\\triangle ABC\\sim\\triangle DEF$이고 $ABC:DEF=3:1$이다. 대응변은 $BC\\leftrightarrow EF$, $AC\\leftrightarrow DF$, $AB\\leftrightarrow DE$이다.\n풀이 방향: 큰 삼각형의 대응변을 닮음비 $3$으로 나누어 작은 삼각형의 두 변을 구한다.\n정석 풀이: $EF=24\\div3=8$, $DF=18\\div3=6$이다. 또한 $DE=7$이므로 $\\triangle DEF$의 둘레는 $7+8+6=21$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q01.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q1.png"
   },
   {
     "id": 2,
@@ -84,7 +84,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 삼각형의 두 변의 중점을 이은 선분은 나머지 한 변과 평행하고 길이는 그 변의 절반이다.\n조건 정리: $M$은 $AB$의 중점이고 $MN\\parallel BC$이다. 그림에서 $x=AM$, $y=MN$이다.\n풀이 방향: 중점 조건으로 $AM$을 구하고, 중점연결정리로 $MN$을 구한다.\n정석 풀이: $AB=7$이므로 $AM=\\dfrac{7}{2}$. 또 $M$을 지나 $BC$에 평행한 직선이 $AC$와 만나는 점이 $N$이므로 $N$도 $AC$의 중점이고 $MN=\\dfrac{BC}{2}=\\dfrac{11}{2}$이다. 따라서 $x+y=\\dfrac72+\\dfrac{11}{2}=9$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q03.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q3.svg"
   },
   {
     "id": 4,
@@ -113,7 +113,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n조건 정리: 대응 모서리의 길이의 비는 $2:4=1:2$이고 작은 삼각기둥의 부피는 $12\\,\\mathrm{cm}^3$이다.\n풀이 방향: 부피의 비를 $1^3:2^3$으로 바꾼 뒤 큰 삼각기둥의 부피를 구한다.\n정석 풀이: 부피의 비는 $1:8$이다. 따라서 큰 삼각기둥의 부피는 $12\\times8=96\\,\\mathrm{cm}^3$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q04.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q4.png"
   },
   {
     "id": 5,
@@ -142,7 +142,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] $BC\\parallel DE$이므로 $\\triangle ABC$와 $\\triangle ADE$가 닮는다.\n조건 정리: 점의 순서는 $D-B-A$, $A-C-E$이고 $AD=12$, $DB=4$, $DE=9$, $CE=3$이다.\n풀이 방향: 먼저 $AB$를 구하고 닮음비로 $BC$와 $AC$를 각각 구한다.\n정석 풀이: $AB=AD-DB=12-4=8$이다. 따라서 닮음비는 $AB:AD=8:12=2:3$이다. $BC:DE=2:3$이므로 $BC=9\\times\\dfrac23=6$이다. 또한 $AC:AE=2:3$이고 $AE=AC+3$이므로 $\\dfrac{AC}{AC+3}=\\dfrac23$이다. $3AC=2AC+6$에서 $AC=6$이다. 둘레는 $8+6+6=20$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q05.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q5.svg"
   },
   {
     "id": 6,
@@ -171,7 +171,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 두 평행선 조건을 차례로 사용하면 같은 선분비를 연결할 수 있다.\n조건 정리: $AF=9$, $FE=6$이므로 $AE=15$이고, $DF\\parallel BE$, $DE\\parallel BC$이다.\n풀이 방향: $\\triangle ADF\\sim\\triangle ABE$에서 $AD:AB$를 구한 뒤, $\\triangle ADE\\sim\\triangle ABC$에 적용한다.\n정석 풀이: $DF\\parallel BE$이므로 $\\dfrac{AD}{AB}=\\dfrac{AF}{AE}=\\dfrac9{15}=\\dfrac35$이다. 또 $DE\\parallel BC$이므로 $\\dfrac{AE}{AC}=\\dfrac{AD}{AB}=\\dfrac35$이다. 따라서 $AE:EC=3:2$이고 $15:EC=3:2$이므로 $EC=10$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q06.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q6.png"
   },
   {
     "id": 7,
@@ -201,7 +201,7 @@ window.questionBank=[
     ],
     "answer": "①, ⑤",
     "solution": "[키포인트] 무게중심은 세 중선의 교점이며 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n조건 정리: $D,E,F$는 각 변의 중점이고 세 중선이 $G$에서 만난다.\n풀이 방향: 무게중심의 길이비와 여섯 작은 삼각형의 넓이 관계를 각 보기마다 확인한다.\n정석 풀이: $GB$와 $GC$는 서로 다른 중선 위의 선분이므로 일반적으로 같지 않아 ①은 옳지 않다. $AG:GD=2:1$이므로 ②는 옳다. 세 중선은 삼각형을 넓이가 같은 여섯 작은 삼각형으로 나누므로 사각형 $AFGE$와 $\\triangle GBC$의 넓이는 모두 전체의 $\\dfrac13$이고, $\\triangle ABC$의 넓이는 $\\triangle GBD$의 $6$배이다. 한편 중선 $CF$에서 $CG:GF=2:1$이므로 $GF=\\dfrac12CG$이며 $\\dfrac13CG$가 아니다. 따라서 옳지 않은 것은 ①, ⑤이다.\n따라서 정답은 ①, ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q07.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q7.png"
   },
   {
     "id": 8,
@@ -230,7 +230,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 무게중심의 $2:1$ 성질과 삼각형의 중점연결정리를 함께 사용한다.\n조건 정리: $AG=12$, $G$는 무게중심, $D$는 $BC$의 중점이고 $DE=EC$, $EF\\parallel DA$이다.\n풀이 방향: 중선 $AD$의 전체 길이를 구한 뒤 $\\triangle DCA$에서 중점연결정리를 적용한다.\n정석 풀이: $AG:GD=2:1$이므로 $GD=6$이고 $AD=18$이다. $DE=EC$이므로 $E$는 $DC$의 중점이다. $E$를 지나 $DA$에 평행한 직선이 $AC$와 만나는 점이 $F$이므로 $F$는 $AC$의 중점이고 $EF=\\dfrac12AD=9\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q08.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q8.png"
   },
   {
     "id": 9,
@@ -259,7 +259,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 중점연결선 $DE$와 무게중심의 위치를 이용해 같은 밑변을 가진 두 삼각형의 높이비를 구한다.\n조건 정리: $D,E$는 각각 $AB,AC$의 중점이고, 중선 $CD$, $BE$가 $G$에서 만난다. $[ADE]=30$이다.\n풀이 방향: $DE\\parallel BC$에서 $A$와 $G$가 $DE$까지 가지는 높이의 비를 구한다.\n정석 풀이: 좌표 또는 닮음 관계로 보면 $DE$는 $BC$와 평행하며 $A$에서 $DE$까지의 높이는 전체 높이의 $\\dfrac12$이다. 무게중심 $G$는 꼭짓점에서 밑변까지 높이의 $\\dfrac23$ 지점에 있으므로 $G$에서 $DE$까지의 높이는 전체 높이의 $\\dfrac16$이다. 따라서 높이의 비는 $\\dfrac16:\\dfrac12=1:3$이다. 두 삼각형은 밑변 $DE$가 같으므로 $[GDE]=30\\div3=10\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q09.png"
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q9.png"
   },
   {
     "id": 10,

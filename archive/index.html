@@ -2206,7 +2206,8 @@ function onFilterChange() {
     const examPeriod = document.getElementById('examPeriodFilter').value;
 
     if (type === '단원별 기출') {
-        window.location.href = buildArchiveInternalUrl('unit-past-exams.html');
+        const unitPastGrade = ({ '고2': 'h2', '고1': 'h1', '중3': 'm3', '중2': 'm2', '중1': 'm1' })[selectedGrade] || 'h1';
+        window.location.href = buildArchiveInternalUrl(`unit-past-exams.html?grade=${unitPastGrade}`);
         return;
     }
 

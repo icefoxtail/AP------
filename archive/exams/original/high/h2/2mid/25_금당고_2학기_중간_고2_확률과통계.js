@@ -19,7 +19,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "6명의 친구가 원탁에 둘러앉는 모든 경우의 수는? [4점]",
-    "image": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q1.png",
+    "image": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q01_round_table.png",
     "choices": [
       "2",
       "6",
@@ -48,7 +48,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 표는 2024년 월별 국내 산불 건수를 나타낸 자료이다. 전체 산불 사건에서 임의로 한 산불 사건을 택하였을 때, 그 산불 사건이 4월에 발생했을 확률은? [4점]",
-    "image": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q2.png",
+    "image": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q02_fire_table.png",
     "choices": [
       "$\\dfrac{2}{279}$",
       "$\\dfrac{7}{279}$",
@@ -247,7 +247,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림과 같이 정사각형 모양으로 이루어진 도로망이 있다. 형은 지점 A에서 지점 B까지, 동생은 지점 B에서 지점 A까지 최단 거리로 간다고 할 때, 두 사람이 중간에 서로 만나서 각각 B, A에 도착하는 모든 경우의 수는? (단, 두 사람은 동시에 출발하여 같은 속력으로 간다.) [4.8점]",
-    "image": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q9.png",
+    "image": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q09_road_grid.png",
     "choices": [
       "148",
       "152",
