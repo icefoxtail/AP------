@@ -110,11 +110,11 @@ window.questionBank = [
     "id": 5,
     "level": "중",
     "category": "공간에서의 위치 관계",
-    "originalCategory": "입체도형의 성질",
+    "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
@@ -161,11 +161,11 @@ window.questionBank = [
     "id": 7,
     "level": "상",
     "category": "정육면체의 위치 관계",
-    "originalCategory": "입체도형의 성질",
+    "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -254,8 +254,7 @@ window.questionBank = [
     "choices": [],
     "answer": "②",
     "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png",
-    "imageSize": "tall",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png"
   },
   {
     "id": 11,
@@ -296,12 +295,12 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "아래 그림에서 $\\triangle ABC\\equiv\\triangle DEF$일 때, 변 $\\overline{BC}$의 대응변을 고르면? [3점]",
+    "content": "아래 그림에서 $\\triangle ABC\\equiv\\triangle DEF$일 때, 그림에 직접 표시된 수치와 합동 관계만으로 추가 계산 없이 알 수 없는 것을 고르면? [3점]",
     "choices": [
       "$\\overline{DE}$",
       "$\\overline{EF}$",
       "$\\overline{DF}$",
-      "$\\angle D$",
+      "$\\angle F$",
       "$\\angle E$"
     ],
     "answer": "②",
@@ -374,7 +373,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "※ (15~17) 오른쪽은 수현이네 학교 선생님의 나이를 조사한 것이다. 이 자료를 다음과 같이 줄기와 잎 그림으로 나타낼 때, 물음에 답하시오. $a\\times b-c$의 값은? [4점]",
+    "content": "※ (15~17) 오른쪽은 수현이네 학교 선생님의 나이를 조사한 것이다. 이 자료를 다음과 같이 줄기와 잎 그림으로 나타낼 때, 물음에 답하시오.",
     "choices": [
       "$4$",
       "$21$",
@@ -453,7 +452,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "※ (18~19) 오른쪽 도수분포표는 명수네 반 학생 $30$명의 키를 조사하여 나타낸 것이다. 키가 $160\\,\\mathrm{cm}$ 이상인 학생이 전체의 $20\\%$일 때, 물음에 답하시오. 키가 $160\\,\\mathrm{cm}$ 이상 $170\\,\\mathrm{cm}$ 미만인 학생 수는? [5점]",
+    "content": "※ (18~19) 오른쪽 도수분포표는 명수네 반 학생 $30$명의 키를 조사하여 나타낸 것이다. 키가 $160\\,\\mathrm{cm}$ 이상인 학생이 전체의 $20\\%$일 때, 물음에 답하시오.",
     "choices": [
       "$3$",
       "$5$",
