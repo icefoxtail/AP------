@@ -308,7 +308,47 @@
     .portal-mark svg { width:22px; height:22px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .portal-mark.green { background:rgba(0,184,148,0.10); color:var(--success); }
     .portal-mark.orange { background:rgba(255,165,2,0.12); color:var(--warning); }
-    .omr-list { display:flex; flex-direction:column; gap:10px; }
+    .omr-list-header { padding:4px 2px 0; }
+    .omr-list-header .card-title { font-size:24px; }
+    .omr-browser { margin-top:22px; }
+    .omr-filter-tabs {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border:1px solid #D1D5DB;
+      border-radius:14px;
+      overflow:hidden;
+      background:#FFFFFF;
+    }
+    .omr-filter-tab {
+      min-width:0;
+      min-height:46px;
+      border:0;
+      border-right:1px solid #E5E7EB;
+      background:#FFFFFF;
+      color:#6B7280;
+      font-size:13px;
+      font-weight:600;
+      line-height:1.2;
+      cursor:pointer;
+    }
+    .omr-filter-tab:last-child { border-right:0; }
+    .omr-filter-tab:hover { background:#F9FAFB; color:#111827; }
+    .omr-filter-tab:focus-visible { position:relative; z-index:1; outline:3px solid rgba(17,24,39,0.18); outline-offset:-3px; }
+    .omr-filter-tab.active { background:#F3F4F6; color:#111827; }
+    .omr-filter-count { margin-left:4px; color:inherit; font-variant-numeric:tabular-nums; }
+    .omr-filter-note { margin:11px 2px 0; font-size:11px; line-height:1.5; color:var(--secondary); }
+    .omr-list {
+      display:flex;
+      flex-direction:column;
+      margin-top:16px;
+      overflow:hidden;
+      border:1px solid #E5E7EB;
+      border-radius:18px;
+      background:#FFFFFF;
+    }
+    .omr-list .omr-card { border:0; border-bottom:1px solid #E5E7EB; border-radius:0; box-shadow:none; }
+    .omr-list .omr-card:last-child { border-bottom:0; }
+    .omr-list > .empty { border:0; border-radius:0; background:#FFFFFF; }
     .omr-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
     .omr-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
     .omr-title { font-size:15px; font-weight:500; color:var(--text); line-height:1.35; }
@@ -363,6 +403,7 @@
     .omr-actions.review-hidden {
       grid-template-columns:1fr;
     }
+    .omr-actions.is-review-only { grid-template-columns:repeat(3,minmax(0,1fr)); }
     .back-btn {
       width:auto;
       min-height:40px;
@@ -545,6 +586,7 @@
       .visual-check { width:40px; height:40px; border-radius:15px; font-size:23px; }
       .card { border-radius:28px; padding:22px 16px 18px; }
       .student-shell { max-width:520px; }
+      .omr-list-header .card-title { font-size:22px; }
       .student-profile-card { grid-template-columns:1fr; }
       .summary-grid { min-width:0; width:100%; }
       .portal-grid { grid-template-columns:1fr; gap:12px; }
@@ -567,6 +609,7 @@
       .top { padding-left:14px; padding-right:14px; }
       .omr-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
       .omr-actions .btn { height:42px; min-height:42px; padding:0 4px; font-size:12px; }
+      .omr-filter-tab { font-size:12px; }
     }
   </style>
   <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.06.19.1">
@@ -630,6 +673,11 @@
       background:rgba(0,184,148,0.10) !important;
       color:#008F72 !important;
     }
+    body.student-portal-theme .omr-filter-tab:focus-visible {
+      outline:3px solid #111827 !important;
+      outline-offset:-4px !important;
+      box-shadow:inset 0 0 0 1px #FFFFFF !important;
+    }
     body.student-portal-theme .omr-card .omr-actions {
       display:grid !important;
       visibility:visible !important;
@@ -662,6 +710,9 @@
         font-size:12px !important;
         white-space:nowrap !important;
       }
+      body.student-portal-theme .omr-list .omr-card .omr-actions:not(.is-review-only):not(.review-hidden) {
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      }
     }
   </style>
 </head>
@@ -690,7 +741,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.13.1';
+    const STUDENT_APP_VERSION = '2026.08.13.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -706,6 +757,7 @@
     let omrData = null;
     let omrIndex = null;
     let omrDraft = null;
+    let omrListFilter = 'recent';
     let materialWrongData = null;
     let wrongClinicData = null;
     let materialWrongDraft = null;
@@ -1874,6 +1926,86 @@
     function getOmrExams() {
       return Array.isArray(omrData?.exams) ? omrData.exams : [];
     }
+    const STUDENT_PORTAL_RECENT_EXAM_DAYS = 30;
+    function getStudentPortalExamAgeDays(exam, today = new Date()) {
+      const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      const candidates = [exam?.exam_date, exam?.created_at];
+      for (const value of candidates) {
+        const match = String(value || '').slice(0, 10).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (!match) continue;
+        const year = Number(match[1]);
+        const month = Number(match[2]) - 1;
+        const day = Number(match[3]);
+        const examDay = Date.UTC(year, month, day);
+        const parsed = new Date(examDay);
+        if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month || parsed.getUTCDate() !== day) continue;
+        return Math.floor((todayDay - examDay) / 86400000);
+      }
+      return null;
+    }
+    function getStudentPortalExamBucket(exam, today = new Date()) {
+      if (Number(exam?.is_submitted || 0) === 1) return 'complete';
+      const ageDays = getStudentPortalExamAgeDays(exam, today);
+      return ageDays !== null && ageDays > STUDENT_PORTAL_RECENT_EXAM_DAYS ? 'previous' : 'recent';
+    }
+    function groupStudentPortalExams(exams, today = new Date()) {
+      const groups = { recent: [], previous: [], complete: [] };
+      (Array.isArray(exams) ? exams : []).forEach(exam => groups[getStudentPortalExamBucket(exam, today)].push(exam));
+      return groups;
+    }
+    function setOmrListFilter(next) {
+      if (!['recent', 'previous', 'complete'].includes(next)) return;
+      omrListFilter = next;
+      const root = document.querySelector('.omr-browser');
+      if (root) root.innerHTML = renderOmrExamBrowser(getOmrExams());
+    }
+    function handleOmrListTabKey(event, current) {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      const keys = ['recent', 'previous', 'complete'];
+      const index = keys.indexOf(current);
+      if (index < 0) return;
+      event.preventDefault();
+      const nextIndex = event.key === 'Home'
+        ? 0
+        : event.key === 'End'
+          ? keys.length - 1
+          : (index + (event.key === 'ArrowRight' ? 1 : -1) + keys.length) % keys.length;
+      setOmrListFilter(keys[nextIndex]);
+      document.getElementById(`omr-tab-${keys[nextIndex]}`)?.focus();
+    }
+    function renderOmrExamBrowser(exams) {
+      const groups = groupStudentPortalExams(exams);
+      const tabs = [
+        { key: 'recent', label: '최근' },
+        { key: 'previous', label: '이전' },
+        { key: 'complete', label: '완료' }
+      ];
+      const active = tabs.some(tab => tab.key === omrListFilter) ? omrListFilter : 'recent';
+      const rows = groups[active];
+      const emptyCopy = active === 'recent'
+        ? '최근에 나온 시험지가 없습니다.'
+        : active === 'previous'
+          ? '이전 시험지가 없습니다.'
+          : '완료한 시험지가 없습니다.';
+      const note = active === 'recent'
+        ? `최근 ${STUDENT_PORTAL_RECENT_EXAM_DAYS}일 기준`
+        : active === 'previous'
+          ? '30일이 지난 시험지도 OMR을 계속 작성할 수 있습니다.'
+          : '제출한 시험지를 모아봅니다.';
+      return `
+        <div class="omr-filter-tabs" role="tablist" aria-label="시험지 분류">
+          ${tabs.map(tab => `
+            <button type="button" id="omr-tab-${tab.key}" class="omr-filter-tab ${active === tab.key ? 'active' : ''}" role="tab" aria-selected="${active === tab.key ? 'true' : 'false'}" ${active === tab.key ? `aria-controls="omr-panel-${tab.key}"` : ''} tabindex="${active === tab.key ? '0' : '-1'}" onclick="setOmrListFilter('${tab.key}')" onkeydown="handleOmrListTabKey(event, '${tab.key}')">
+              ${tab.label}<span class="omr-filter-count">${groups[tab.key].length}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="omr-filter-note">${escapeHtml(note)}</div>
+        <div id="omr-panel-${active}" class="omr-list" role="tabpanel" aria-labelledby="omr-tab-${active}">
+          ${rows.length ? rows.map(renderOmrExamCard).join('') : `<div class="empty">${emptyCopy}</div>`}
+        </div>
+      `;
+    }
     function buildOmrReviewUrl(exam, mode = 'sol') {
       const archiveFile = String(exam?.archive_file || '').trim();
       if (!archiveFile) return '';
@@ -1918,33 +2050,34 @@
       $('app').innerHTML = `
         <div class="student-shell">
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
-          <section class="card">
-            <h1 class="card-title">${isTeacherPreview ? '시험지 목록' : 'OMR 입력'}</h1>
-            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 문항 수를 확인합니다.' : '선생님이 출제한 시험지를 선택하고, 틀린 번호만 체크해서 제출하세요.'}</p>
+          <section class="omr-list-header">
+            <h1 class="card-title">시험지 목록</h1>
+            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 문항 수를 확인합니다.' : '시험지를 확인하고 필요한 OMR을 작성하세요.'}</p>
           </section>
-          <div class="omr-list"><div class="empty">시험지를 불러오는 중입니다.</div></div>
+          <div class="omr-browser"><div class="empty">시험지를 불러오는 중입니다.</div></div>
         </div>
       `;
       try {
         await loadOmrExams(true);
         const exams = getOmrExams();
-        const root = document.querySelector('.omr-list');
+        const root = document.querySelector('.omr-browser');
         if (!root) return;
         root.innerHTML = exams.length
-          ? exams.map(renderOmrExamCard).join('')
-          : `<div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '아직 입력할 시험지가 없습니다.'}</div>`;
+          ? renderOmrExamBrowser(exams)
+          : `<div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '아직 나온 시험지가 없습니다.'}</div>`;
       } catch (e) {
         toast(e.message || '시험지를 불러오지 못했습니다.');
-        const root = document.querySelector('.omr-list');
+        const root = document.querySelector('.omr-browser');
         if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다.</div>';
       }
     }
     function renderOmrExamCard(exam) {
       const submitted = Number(exam.is_submitted || 0) === 1;
       const showReview = isOmrReviewAvailable(exam);
+      const showActionArea = showReview || isTeacherPreview || !submitted;
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
-      const status = submitted ? `제출 완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '입력 전';
+      const status = submitted ? `완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '';
       return `
         <article class="omr-card">
           <div class="omr-top">
@@ -1952,13 +2085,15 @@
               <div class="omr-title">${escapeHtml(exam.exam_title || '시험지')}</div>
               <div class="omr-meta">${escapeHtml(meta || 'AP수학 시험')}</div>
             </div>
-            <span class="omr-status ${submitted ? 'done' : 'pending'}">${escapeHtml(status)}</span>
+            ${status ? `<span class="omr-status done">${escapeHtml(status)}</span>` : ''}
           </div>
-          <div class="omr-actions ${showReview ? '' : 'review-hidden'}">
-            ${showReview ? renderOmrReviewActions(exam) : ''}
-            ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
-            ${isTeacherPreview ? '' : (submitted ? `<button type="button" class="btn" disabled>제출 완료</button>` : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">입력하기</button>`)}
-          </div>
+          ${showActionArea ? `
+            <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''}">
+              ${showReview ? renderOmrReviewActions(exam) : ''}
+              ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
+              ${isTeacherPreview || submitted ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
+            </div>
+          ` : ''}
         </article>
       `;
     }

@@ -53,10 +53,12 @@ assert(
 );
 
 assert(
-  studentPortal.includes('<div class="omr-actions ${showReview ?') &&
+  studentPortal.includes('const showActionArea = showReview || isTeacherPreview || !submitted') &&
+    studentPortal.includes('<div class="omr-actions ${showReview ?') &&
     studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
-    studentPortal.includes('입력하기') &&
-    studentPortal.includes('제출 완료'),
+    studentPortal.includes("(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''") &&
+    studentPortal.includes('OMR 작성') &&
+    studentPortal.includes('완료'),
   'OMR cards should render review actions and input status before and after submission'
 );
 
