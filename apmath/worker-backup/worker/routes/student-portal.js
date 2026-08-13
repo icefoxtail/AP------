@@ -1,5 +1,6 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { canAccessStudent, isStaffUser } from '../helpers/foundation-db.js';
 import {
   listWrongClinicPacketsForStudent,
   saveWrongClinicReviewWrongsForStudent,
@@ -24,7 +25,7 @@ async function buildStudentPortalToken(studentId, studentPin) {
   return sha256hex(`${studentId}:${studentPin || ''}:student-portal:v1`);
 }
 
-async function verifyStudentPortalSession(env, studentId, studentToken) {
+async function verifyStudentPortalSession(env, studentId, studentToken, options = {}) {
   if (!studentId || !studentToken) {
     return { error: jsonResponse({ success: false, message: '학생 로그인이 필요합니다.' }, 401) };
   }
@@ -38,6 +39,9 @@ async function verifyStudentPortalSession(env, studentId, studentToken) {
   if (!student || !['?ъ썝', '재원', 'active'].includes(String(student.status || ''))) {
     return { error: jsonResponse({ success: false, message: '학생 정보를 확인할 수 없습니다.' }, 404) };
   }
+  if (options.requireRewonStudent && student.status !== '재원') {
+    return { error: jsonResponse({ success: false, message: '학생 정보를 확인할 수 없습니다.' }, 404) };
+  }
 
   const expectedToken = await buildStudentPortalToken(student.id, student.student_pin);
   if (studentToken !== expectedToken) {
@@ -46,6 +50,28 @@ async function verifyStudentPortalSession(env, studentId, studentToken) {
   }
 
   return { student };
+}
+
+async function verifyStudentPortalReadAccess(env, teacher, studentId, studentToken, options = {}) {
+  if (teacher) {
+    if (!isStaffUser(teacher) || !(await canAccessStudent(teacher, studentId, env))) {
+      return { error: jsonResponse({ success: false, message: '이 학생을 확인할 권한이 없습니다.' }, 403) };
+    }
+
+    const student = await env.DB.prepare(`
+      SELECT id, name, grade, school_name, student_pin, status
+      FROM students
+      WHERE id = ?
+    `).bind(studentId).first();
+    if (!student || !['재원', 'active'].includes(String(student.status || ''))) {
+      return { error: jsonResponse({ success: false, message: '학생 정보를 확인할 수 없습니다.' }, 404) };
+    }
+    return { student, accessMode: 'teacher_preview', readOnly: true };
+  }
+
+  const verified = await verifyStudentPortalSession(env, studentId, studentToken, options);
+  if (verified.error) return verified;
+  return { ...verified, accessMode: 'student', readOnly: false };
 }
 
 async function getTableColumnSet(env, tableName) {
@@ -248,35 +274,9 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
   if (method === 'GET' && id === 'home') {
     const studentId = String(url.searchParams.get('student_id') || '').trim();
     const studentToken = pickStudentPortalToken(url, request);
-
-    if (!studentId || !studentToken) {
-      return jsonResponse({
-        success: false,
-        message: '학생 로그인이 필요합니다.'
-      }, 401);
-    }
-
-    const student = await env.DB.prepare(`
-      SELECT id, name, grade, school_name, student_pin, status
-      FROM students
-      WHERE id = ?
-    `).bind(studentId).first();
-
-    if (!student || student.status !== '재원') {
-      return jsonResponse({
-        success: false,
-        message: '학생 정보를 확인할 수 없습니다.'
-      }, 404);
-    }
-
-    const expectedToken = await buildStudentPortalToken(student.id, student.student_pin);
-    if (studentToken !== expectedToken) {
-      await sleep(800);
-      return jsonResponse({
-        success: false,
-        message: '학생 로그인이 만료되었습니다.'
-      }, 401);
-    }
+    const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken, { requireRewonStudent: true });
+    if (verified.error) return verified.error;
+    const student = verified.student;
 
     const [assignments, classExamAssignments] = await Promise.all([
       env.DB.prepare(`
@@ -307,6 +307,8 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
 
     return jsonResponse({
       success: true,
+      access_mode: verified.accessMode,
+      read_only: verified.readOnly,
       student: {
         id: student.id,
         name: student.name,
@@ -340,11 +342,11 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
   if (method === 'GET' && id === 'exams') {
     const studentId = String(url.searchParams.get('student_id') || '').trim();
     const studentToken = pickStudentPortalToken(url, request);
-    const verified = await verifyStudentPortalSession(env, studentId, studentToken);
+    const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken);
     if (verified.error) return verified.error;
 
     const exams = await loadStudentClassExamAssignments(env, verified.student.id, 150);
-    return jsonResponse({ success: true, exams });
+    return jsonResponse({ success: true, access_mode: verified.accessMode, read_only: verified.readOnly, exams });
   }
 
   if (method === 'GET' && id === 'wrong-clinics') {
