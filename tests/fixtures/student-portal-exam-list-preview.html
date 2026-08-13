@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>학생 시험지 목록 시각 검증</title>
+  <style>
+    html, body, iframe { width:100%; height:100%; margin:0; border:0; }
+    body { overflow:hidden; background:#F3F4F6; }
+  </style>
+</head>
+<body>
+  <iframe id="preview" title="학생 시험지 목록 시각 검증"></iframe>
+  <script>
+    async function bootPreview() {
+      const response = await fetch('/apmath/student/index.html', { cache: 'no-store' });
+      let source = await response.text();
+      source = source.replace('<head>', '<head><base href="/apmath/student/">');
+      source = source.replace(
+        /\r?\n\s*boot\(\);\r?\n\s*window\.addEventListener\('beforeinstallprompt'/,
+        `
+        session = { student_id: 'preview-student', student_token: 'preview-token', name: '신여정' };
+        homeData = { student: { name: '신여정' } };
+        omrData = { exams: [
+          { assignment_id:'recent-1', class_name:'고1A', exam_title:'평면좌표 · 문제지 1', exam_date:'2026-08-11', question_count:49, archive_file:'MIXED:recent-1.js', is_submitted:0 },
+          { assignment_id:'previous-1', class_name:'고1A', exam_title:'25_강남여고_1학기_기말_고1_기출', exam_date:'2026-06-04', question_count:24, archive_file:'exam-1.js', is_submitted:0 },
+          { assignment_id:'previous-2', class_name:'고1A', exam_title:'25_금당고_1학기_기말_고1_기출', exam_date:'2026-05-20', question_count:22, archive_file:'exam-2.js', is_submitted:0 },
+          { assignment_id:'complete-1', class_name:'고1A', exam_title:'25_매산고_1학기_기말_고1_기출', exam_date:'2026-06-04', question_count:20, archive_file:'exam-3.js', is_submitted:1, score:75 },
+          { assignment_id:'complete-2', class_name:'고1A', exam_title:'25_매안여고_1학기_기말_고1_기출', exam_date:'2026-06-04', question_count:23, archive_file:'exam-4.js', is_submitted:1, score:65 }
+        ] };
+        loadOmrExams = async function() { return omrData; };
+        buildOmrReviewUrl = function() { return '#'; };
+        setTopStudent('신여정');
+        renderOmrExams();
+        window.addEventListener('beforeinstallprompt'`
+      );
+      document.getElementById('preview').srcdoc = source;
+    }
+    bootPreview();
+  </script>
+</body>
+</html>

@@ -1374,8 +1374,8 @@ function getClassroomStatusArchiveDisplayTitle(raw = '') {
 }
 
 function getClassroomStatusExamDisplayTitle(row = {}) {
-    return getClassroomStatusArchiveDisplayTitle(row.archiveFile || row.archive_file || '') ||
-        String(row.exam_title || row.title || '').trim() ||
+    return String(row.exam_title || row.title || '').trim() ||
+        getClassroomStatusArchiveDisplayTitle(row.archiveFile || row.archive_file || '') ||
         '출제 시험';
 }
 
