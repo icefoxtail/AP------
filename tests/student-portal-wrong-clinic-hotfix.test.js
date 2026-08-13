@@ -18,7 +18,10 @@ const manifestVersion = JSON.parse(manifest).version;
 const versionFileVersion = JSON.parse(versionJson).version;
 
 assert(appVersion, 'student portal should define STUDENT_APP_VERSION');
-assert.strictEqual(appVersion, '2026.06.29.2', 'student portal cache-bust version should include wrong clinic hotfix');
+assert(
+  appVersion.localeCompare('2026.06.29.2') >= 0,
+  'student portal cache-bust version should include the wrong clinic hotfix or a later release'
+);
 assert.strictEqual(swVersion, appVersion, 'student service worker version should match app version');
 assert.strictEqual(manifestVersion, appVersion, 'student manifest version should match app version');
 assert.strictEqual(versionFileVersion, appVersion, 'student version file should match app version');
@@ -79,7 +82,7 @@ assert(
     studentIndex.includes('function openHomeOmrInput(assignmentId)') &&
     studentIndex.includes('function renderStudentQuickActions()') &&
     studentIndex.includes('${renderOmrHomeSection()}') &&
-    studentIndex.includes('${renderWrongClinicPackets()}') &&
+    studentIndex.includes("isTeacherPreview ? '' : renderWrongClinicPackets()") &&
     studentIndex.includes('${renderStudentQuickActions()}') &&
     studentIndex.includes('portal-support-grid') &&
     studentIndex.includes('const visible = list.slice(0, 2);'),

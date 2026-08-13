@@ -3514,7 +3514,8 @@ async function handleApiRequest(request, env) {
         }
 
         if (resource === 'student-portal') {
-          const routed = await handleStudentPortal(request, env, null, path, url);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleStudentPortal(request, env, teacher, path, url);
           if (routed) return routed;
         }
 

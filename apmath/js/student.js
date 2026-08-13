@@ -177,6 +177,14 @@ function injectStudentStyles() {
         .ap-student-field strong { display:block; margin-top:4px; color:var(--text); font-size:13px; font-weight:600; line-height:1.4; overflow-wrap:anywhere; white-space:pre-wrap; }
         .ap-student-field.is-wide { grid-column:1 / -1; }
         .ap-student-history-row { border:1px solid var(--border); border-radius:8px; background:var(--surface-2); padding:12px; }
+        .ap-student-management { display:flex; flex-direction:column; gap:12px; }
+        .ap-student-management-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+        .ap-student-management-title { margin:0; color:var(--text); font-size:16px; font-weight:600; line-height:1.3; }
+        .ap-student-management-desc { margin-top:3px; color:var(--secondary); font-size:11px; font-weight:500; line-height:1.5; }
+        .ap-student-management-counts { color:var(--secondary); font-size:11px; font-weight:500; line-height:1.5; white-space:nowrap; }
+        .ap-student-management-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+        .ap-student-management-actions .ap-student-preview-btn { grid-column:1 / -1; min-height:40px; justify-content:center; }
+        .ap-student-management-actions .ap-student-history-btn { min-height:36px; justify-content:center; }
         .ap-student-tab-body { display:flex; flex-direction:column; gap:10px; }
         .ap-student-detail-shell { gap:10px !important; }
         .ap-student-card-purple { border-left:3px solid #6E66C9; }
@@ -215,6 +223,10 @@ function injectStudentStyles() {
             .ap-student-consult-date-btn { flex:0 0 auto; }
             .ap-student-field-grid { grid-template-columns:1fr; }
             .ap-student-field.is-wide { grid-column:auto; }
+            .ap-student-management-head { flex-direction:column; gap:4px; }
+            .ap-student-management-counts { white-space:normal; }
+            .ap-student-management-actions .ap-student-preview-btn { min-height:44px; }
+            .ap-student-management-actions .ap-student-history-btn { min-height:42px; }
         }
         @media (min-width:760px) {
             .apms-eie-form-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -529,21 +541,38 @@ function renderStudentOperationHistorySection(sid) {
     const statusRows = getStudentStatusHistoryRows(sid);
     const transferRows = getStudentClassTransferHistoryRows(sid);
     return `
-        <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+        <div class="ap-student-management">
+            <div class="ap-student-management-head">
                 <div>
-                    <div style="font-size:16px; font-weight:500; color:var(--text); line-height:1.3;">학생 이력</div>
-                    <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5; margin-top:3px;">상태 변경 ${statusRows.length}건 · 반 이동 ${transferRows.length}건</div>
+                    <h3 class="ap-student-management-title">학생 관리</h3>
+                    <div class="ap-student-management-desc">학생 화면과 재원 이력을 확인합니다.</div>
                 </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                    <button class="btn apms-button apms-button--quiet" style="min-height:34px; padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openStudentStatusHistoryModal('${sid}')">상태 변경 이력</button>
-                    <button class="btn apms-button apms-button--quiet" style="min-height:34px; padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openStudentClassTransferHistoryModal('${sid}')">반 이동 이력</button>
-                </div>
+                <div class="ap-student-management-counts">상태 변경 ${statusRows.length}건 · 반 이동 ${transferRows.length}건</div>
+            </div>
+            <div class="ap-student-management-actions">
+                <button type="button" class="btn apms-button apms-button--primary ap-student-preview-btn" onclick="openStudentPortalPreview(${apmsStudentJsString(sid)})">학생 화면 확인 ↗</button>
+                <button type="button" class="btn apms-button apms-button--quiet ap-student-history-btn" onclick="openStudentStatusHistoryModal(${apmsStudentJsString(sid)})">상태 변경 이력</button>
+                <button type="button" class="btn apms-button apms-button--quiet ap-student-history-btn" onclick="openStudentClassTransferHistoryModal(${apmsStudentJsString(sid)})">반 이동 이력</button>
             </div>
             ${lazy.loading ? '<div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">학생 이력 데이터를 불러오는 중입니다.</div>' : ''}
             ${lazy.error ? '<div style="font-size:12px; color:var(--warning); font-weight:500; line-height:1.5;">학생 이력 데이터를 다시 확인해 주세요.</div>' : ''}
         </div>
     `;
+}
+
+function openStudentPortalPreview(sid) {
+    const studentId = String(sid || '').trim();
+    const student = (state.db.students || []).find(row => String(row?.id || '') === studentId);
+    if (!studentId || !student) {
+        toast('학생 정보를 확인할 수 없습니다.', 'warn');
+        return false;
+    }
+
+    const url = new URL('./student/', window.location.href);
+    url.searchParams.set('teacher_preview', '1');
+    url.searchParams.set('student_id', studentId);
+    window.open(url.toString(), '_blank', 'noopener,noreferrer');
+    return false;
 }
 
 function renderStudentStatusHistoryModalHtml(sid) {

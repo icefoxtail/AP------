@@ -690,9 +690,15 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.07.01.1';
+    const STUDENT_APP_VERSION = '2026.08.13.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
+    const TEACHER_SESSION_KEY = 'APMATH_SESSION';
+    const previewParams = new URLSearchParams(window.location.search || '');
+    const teacherPreviewStudentId = previewParams.get('teacher_preview') === '1'
+      ? String(previewParams.get('student_id') || '').trim()
+      : '';
+    const isTeacherPreview = !!teacherPreviewStudentId;
 
     let session = null;
     let homeData = null;
@@ -761,7 +767,7 @@
     }
     function setTopStudent(name) {
       $('student-chip').textContent = name || '';
-      $('logout-btn').classList.toggle('hidden', !name);
+      $('logout-btn').classList.toggle('hidden', !name || isTeacherPreview);
     }
     function isStandalonePwa() {
       return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
@@ -777,6 +783,7 @@
       return !!deferredInstallPrompt || isIosSafari();
     }
     function renderInstallCard(compact = false) {
+      if (isTeacherPreview) return '';
       const visible = shouldShowInstallCard();
       const ios = isIosSafari() && !deferredInstallPrompt;
       const desc = ios
@@ -847,6 +854,18 @@
     function readSession() {
       try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch (e) { return null; }
     }
+    function readTeacherPreviewToken() {
+      if (!isTeacherPreview) return '';
+      try {
+        const teacherSession = JSON.parse(localStorage.getItem(TEACHER_SESSION_KEY)) || null;
+        return String(teacherSession?.session_token || '').trim();
+      } catch (e) {
+        return '';
+      }
+    }
+    function hasPortalReadAccess() {
+      return !!session?.student_id && (isTeacherPreview ? !!readTeacherPreviewToken() : !!session?.student_token);
+    }
     function shouldOpenOmrFromUrl() {
       try {
         const params = new URLSearchParams(window.location.search || '');
@@ -884,6 +903,7 @@
       wrongClinicData = null;
     }
     async function apiPost(path, body) {
+      if (isTeacherPreview) throw new Error('학생 화면 확인에서는 저장할 수 없습니다.');
       const r = await fetch(`${API_BASE}/${path}`, {
         method:'POST',
         headers:{ 'Content-Type':'application/json' },
@@ -895,11 +915,28 @@
     }
     async function apiGet(path, token) {
       const headers = { 'Content-Type':'application/json' };
-      if (token) headers['X-Student-Token'] = token;
+      if (isTeacherPreview) {
+        const teacherToken = readTeacherPreviewToken();
+        if (teacherToken) headers.Authorization = `Bearer ${teacherToken}`;
+      } else if (token) {
+        headers['X-Student-Token'] = token;
+      }
       const r = await fetch(`${API_BASE}/${path}`, { headers });
       const data = await r.json().catch(() => ({}));
       if (!r.ok || data.success === false) throw new Error(data.message || data.error || '요청 실패');
       return data;
+    }
+    function renderPreviewError(message) {
+      setTopStudent('');
+      $('app').innerHTML = `
+        <section class="card login-card">
+          <div class="stack">
+            <h1 class="card-title">학생 화면을 열 수 없습니다.</h1>
+            <p class="card-desc">${escapeHtml(message || '선생님 페이지에서 다시 열어주세요.')}</p>
+            <button type="button" class="btn" onclick="window.close()">창 닫기</button>
+          </div>
+        </section>
+      `;
     }
     function renderHero() {
       return `
@@ -980,20 +1017,31 @@
       }
     }
     async function loadHome() {
-      if (!session?.student_id || !session?.student_token) {
+      if (!hasPortalReadAccess()) {
+        if (isTeacherPreview) {
+          renderPreviewError('선생님 로그인이 만료되었습니다. 선생님 페이지에서 다시 로그인해 주세요.');
+          return;
+        }
         clearSession();
         renderLogin();
         return;
       }
       try {
         setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
+        if (isTeacherPreview && homeData?.read_only !== true) throw new Error('읽기 전용 권한을 확인할 수 없습니다.');
         renderHome();
-        await refreshWrongClinicPackets();
-        tryOpenPendingWrongClinicFromUrl();
+        if (!isTeacherPreview) {
+          await refreshWrongClinicPackets();
+          tryOpenPendingWrongClinicFromUrl();
+        }
         if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
           await renderOmrExams();
         }
       } catch (e) {
+        if (isTeacherPreview) {
+          renderPreviewError(e.message || '학생 정보를 확인할 수 없습니다.');
+          return;
+        }
         clearSession();
         renderLogin(e.message || '학생 로그인이 만료되었습니다. 다시 로그인하세요.');
       }
@@ -1129,7 +1177,7 @@
     function renderStudentPortalAssignments() {
       const list = getStudentPortalAssignments();
       const visible = list.slice(0, 2);
-      const canClick = typeof toast === 'function';
+      const canClick = !isTeacherPreview && typeof toast === 'function';
       if (!visible.length) {
         return `
           <section id="student-portal-assignments-section" class="card portal-assignments-card">
@@ -1148,7 +1196,7 @@
         const status = getStudentPortalAssignmentOmrStatus(exam);
         const assignmentId = exam?.assignment_id ? String(exam.assignment_id) : '';
         const isSubmitted = Number(exam?.is_submitted || 0) === 1;
-        const showOmrButton = !!assignmentId && !isSubmitted && typeof renderOmrInput === 'function';
+        const showOmrButton = !isTeacherPreview && !!assignmentId && !isSubmitted && typeof renderOmrInput === 'function';
         const examDate = escapeHtml(String(row?.exam_date || ''));
         const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험명 없음');
         const questionCount = Number(row?.question_count || 0);
@@ -1616,12 +1664,14 @@
       const pending = getStudentPortalAssignments()
         .filter(row => Number(row?.is_submitted || 0) !== 1)
         .slice(0, 3);
-      const rows = pending.length ? pending.map(row => {
+      const visible = isTeacherPreview ? getStudentPortalAssignments().slice(0, 3) : pending;
+      const rows = visible.length ? visible.map(row => {
         const assignmentId = escapeHtml(String(row?.assignment_id || ''));
         const examDate = escapeHtml(String(row?.exam_date || ''));
         const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험지');
         const questionCount = Number(row?.question_count || 0);
         const meta = [examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
+        const submitted = Number(row?.is_submitted || 0) === 1;
         return `
           <div class="omr-card">
             <div class="omr-top">
@@ -1629,33 +1679,51 @@
                 <div class="omr-title">${examTitle}</div>
                 <div class="omr-meta">${escapeHtml(meta || 'OMR 입력 필요')}</div>
               </div>
-              <span class="omr-status pending">입력 필요</span>
+              <span class="omr-status ${submitted ? 'done' : 'pending'}">${submitted ? '제출 완료' : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
             </div>
             <div class="row-actions">
-              <button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>
+              ${isTeacherPreview
+                ? (isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>')
+                : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
             </div>
           </div>
         `;
       }).join('') : `
-        <div class="empty">바로 입력할 OMR이 없습니다.</div>
+        <div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '바로 입력할 OMR이 없습니다.'}</div>
       `;
       return `
         <section id="student-portal-omr-home-section" class="card portal-assignments-card">
           <div class="portal-assignments-head">
             <div>
-              <h2 class="card-title">OMR 입력</h2>
-              <p class="card-desc">미제출 시험지를 먼저 입력합니다.</p>
+              <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : 'OMR 입력'}</h2>
+              <p class="card-desc">${isTeacherPreview ? '학생에게 출제된 시험지를 확인합니다.' : '미제출 시험지를 먼저 입력합니다.'}</p>
             </div>
             <div class="portal-mark orange">${renderIcon('omr')}</div>
           </div>
           <div class="portal-omr-home-list">${rows}</div>
           <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderOmrExams()">전체 OMR 보기</button>
+            <button class="btn btn-primary" onclick="renderOmrExams()">${isTeacherPreview ? '전체 시험지 보기' : '전체 OMR 보기'}</button>
           </div>
         </section>
       `;
     }
     function renderStudentQuickActions() {
+      if (isTeacherPreview) {
+        return `
+          <section class="card portal-assignments-card">
+            <div class="portal-assignments-head">
+              <div>
+                <h2 class="card-title">과제 · 시험지</h2>
+                <p class="card-desc">학생에게 보이는 출제 내용을 확인합니다.</p>
+              </div>
+            </div>
+            <div class="portal-quick-actions">
+              <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
+              <button class="btn" onclick="renderOmrExams()">시험지 보기</button>
+            </div>
+          </section>
+        `;
+      }
       return `
         <section class="card portal-assignments-card">
           <div class="portal-assignments-head">
@@ -1676,6 +1744,7 @@
       const { missing, done } = splitAssignments();
       const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
       setTopStudent(student.name || session?.name || '');
+      if (isTeacherPreview && student.name) document.title = `${student.name} 학생 화면`;
       $('app').innerHTML = `
         <div class="student-shell">
           <section class="card student-profile-card">
@@ -1695,19 +1764,21 @@
               </div>
             </div>
           </section>
-          ${renderInstallCard(true)}
+          ${isTeacherPreview ? '' : renderInstallCard(true)}
           ${renderOmrHomeSection()}
-          ${renderWrongClinicPackets()}
+          ${isTeacherPreview ? '' : renderWrongClinicPackets()}
           ${renderStudentQuickActions()}
-          <div class="portal-support-grid">
-            ${renderStudentPortalAssignments()}
-            ${renderMaterialWrongAssignments()}
-          </div>
+          ${isTeacherPreview ? '' : `
+            <div class="portal-support-grid">
+              ${renderStudentPortalAssignments()}
+              ${renderMaterialWrongAssignments()}
+            </div>
+          `}
           ${renderStudentAppVersion()}
         </div>
       `;
       if (typeof refreshStudentPortalAssignmentOmrStatus === 'function') refreshStudentPortalAssignmentOmrStatus();
-      if (typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
+      if (!isTeacherPreview && typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
     }
     function renderAssignments() {
       const { missing, done } = splitAssignments();
@@ -1717,7 +1788,7 @@
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="card">
             <h1 class="card-title">과제 목록</h1>
-            <p class="card-desc">미제출 과제를 먼저 확인하세요.</p>
+            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 과제 내용과 마감일을 확인합니다.' : '미제출 과제를 먼저 확인하세요.'}</p>
           </section>
           <div class="section-title">미제출 과제</div>
           <div class="assignment-list">
@@ -1750,14 +1821,17 @@
             <span class="status-pill ${done ? 'done' : 'missing'}">${statusText}</span>
           </div>
           ${description ? `<div class="assignment-desc">${escapeHtml(description)}</div>` : '<div class="assignment-desc">선생님이 등록한 과제 상세가 없습니다. 과제 제목과 마감일을 확인하세요.</div>'}
-          <div class="row-actions">
-            <button class="btn ${done ? '' : 'btn-primary'}" onclick="location.href='${url}'">${buttonText}</button>
-            ${done ? `<button class="btn" style="color:var(--error); background:rgba(232,65,79,0.08); border-color:rgba(232,65,79,0.16);" onclick="cancelHomeworkSubmission('${safeAssignmentId}')">제출취소</button>` : ''}
-          </div>
+          ${isTeacherPreview ? '' : `
+            <div class="row-actions">
+              <button class="btn ${done ? '' : 'btn-primary'}" onclick="location.href='${url}'">${buttonText}</button>
+              ${done ? `<button class="btn" style="color:var(--error); background:rgba(232,65,79,0.08); border-color:rgba(232,65,79,0.16);" onclick="cancelHomeworkSubmission('${safeAssignmentId}')">제출취소</button>` : ''}
+            </div>
+          `}
         </article>
       `;
     }
     async function cancelHomeworkSubmission(assignmentId) {
+      if (isTeacherPreview) return toast('학생 화면 확인에서는 제출 상태를 변경할 수 없습니다.');
       if (!session?.student_id || !session?.student_token) return toast('로그인이 필요합니다.');
       if (!assignmentId) return toast('과제 정보를 찾을 수 없습니다.');
       if (!confirm('제출을 취소하고 미제출 상태로 되돌릴까요?')) return;
@@ -1774,6 +1848,7 @@
       }
     }
     function openPlanner() {
+      if (isTeacherPreview) return toast('학생 화면 확인에서는 플래너를 열 수 없습니다.');
       if (!session?.student_id) return toast('로그인이 필요합니다.');
 
       if (session?.pin) {
@@ -1790,7 +1865,7 @@
       location.href = `../planner/?${params.toString()}`;
     }
     async function loadOmrExams(force = false) {
-      if (!session?.student_id || !session?.student_token) throw new Error('로그인이 필요합니다.');
+      if (!hasPortalReadAccess()) throw new Error('로그인이 필요합니다.');
       if (!force && omrData?.exams) return omrData;
       omrData = await apiGet(`student-portal/exams?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
       omrIndex = null;
@@ -1844,8 +1919,8 @@
         <div class="student-shell">
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="card">
-            <h1 class="card-title">OMR 입력</h1>
-            <p class="card-desc">선생님이 출제한 시험지를 선택하고, 틀린 번호만 체크해서 제출하세요.</p>
+            <h1 class="card-title">${isTeacherPreview ? '시험지 목록' : 'OMR 입력'}</h1>
+            <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 문항 수를 확인합니다.' : '선생님이 출제한 시험지를 선택하고, 틀린 번호만 체크해서 제출하세요.'}</p>
           </section>
           <div class="omr-list"><div class="empty">시험지를 불러오는 중입니다.</div></div>
         </div>
@@ -1857,7 +1932,7 @@
         if (!root) return;
         root.innerHTML = exams.length
           ? exams.map(renderOmrExamCard).join('')
-          : '<div class="empty">아직 입력할 시험지가 없습니다.</div>';
+          : `<div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '아직 입력할 시험지가 없습니다.'}</div>`;
       } catch (e) {
         toast(e.message || '시험지를 불러오지 못했습니다.');
         const root = document.querySelector('.omr-list');
@@ -1881,7 +1956,8 @@
           </div>
           <div class="omr-actions ${showReview ? '' : 'review-hidden'}">
             ${showReview ? renderOmrReviewActions(exam) : ''}
-            ${submitted ? `<button type="button" class="btn" disabled>제출 완료</button>` : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">입력하기</button>`}
+            ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
+            ${isTeacherPreview ? '' : (submitted ? `<button type="button" class="btn" disabled>제출 완료</button>` : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">입력하기</button>`)}
           </div>
         </article>
       `;
@@ -1896,6 +1972,10 @@
         .sort((a, b) => a - b);
     }
     function renderOmrInput(assignmentId) {
+      if (isTeacherPreview) {
+        toast('학생 화면 확인에서는 OMR을 입력할 수 없습니다.');
+        return;
+      }
       const exam = findOmrExam(assignmentId);
       if (!exam) {
         toast('시험지를 찾을 수 없습니다.');
@@ -1993,6 +2073,16 @@
     async function boot() {
       console.info('[student portal] version:', STUDENT_APP_VERSION);
       checkStudentPortalVersion();
+      if (isTeacherPreview) {
+        session = { student_id: teacherPreviewStudentId, teacher_preview: true };
+        if (!readTeacherPreviewToken()) {
+          renderPreviewError('선생님 로그인이 만료되었습니다. 선생님 페이지에서 다시 로그인해 주세요.');
+          return;
+        }
+        $('app').innerHTML = `<section class="card login-card"><div class="notice"><span style="font-weight:500;">불러오는 중</span><br>학생 정보를 확인하고 있습니다.</div></section>`;
+        await loadHome();
+        return;
+      }
       session = readSession();
       if (session?.student_id && session?.student_token) {
         setTopStudent(session.name || '');
