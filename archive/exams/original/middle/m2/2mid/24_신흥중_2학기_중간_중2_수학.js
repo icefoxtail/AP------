@@ -13,12 +13,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "이등변삼각형",
       "도형"
     ],
     "wide": false,
-    "content": "$AB=AC$인 이등변삼각형 $ABC$에서 그림의 $x$의 크기를 구하면? [4점]",
+    "content": "오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle x$의 크기를 구하면? (4점)",
     "choices": [
       "$50^\\circ$",
       "$60^\\circ$",
@@ -42,19 +41,18 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "이등변삼각형",
       "도형",
       "복수정답"
     ],
     "wide": false,
-    "content": "다음은 두 내각의 크기가 같은 삼각형은 이등변삼각형임을 설명하는 과정이다. 빈칸 ㉠~㉤에 들어갈 것으로 알맞지 않은 것은? (정답 2개) [4점]",
+    "content": "다음은 두 내각의 크기가 같은 삼각형은 이등변삼각형임을 설명하는 과정이다. ㉠ ~ ㉤에 들어갈 것으로 알맞지 않은 것은?(정답2개) (4점)",
     "choices": [
-      "ㄱ: $\\angle CAD$",
-      "ㄴ: $\\angle ADC$",
-      "ㄷ: $BC$",
-      "ㄹ: SAS",
-      "ㅁ: $AC$"
+      "㉠ : $\\angle CAD$",
+      "㉡ : $\\angle ADC$",
+      "㉢ : $\\overline{BC}$",
+      "㉣ : SAS",
+      "㉤ : $\\overline{AC}$"
     ],
     "answer": "③, ④",
     "solution": "[키포인트] 빈칸에 들어갈 각과 변을 실제 두 삼각형의 대응 관계에 맞추어 확인한다.\n조건 정리: $\\angle B=\\angle C$이고 $AD$는 $\\angle A$의 이등분선이므로 $\\angle BAD=\\angle CAD$이다.\n풀이 방향: $\\triangle ABD$와 $\\triangle ACD$에서 두 각과 그 사이의 변을 비교한다.\n정석 풀이: ㉠은 $\\angle CAD$가 맞다. 또 $\\angle ADB=180^\\circ-\\angle B-\\angle BAD$이고 $\\angle ADC=180^\\circ-\\angle C-\\angle CAD$이므로 ㉡은 $\\angle ADC$가 맞다. 두 삼각형에서 공통인 변은 $AD$이므로 ㉢에 $BC$가 들어가는 것은 틀리다. 두 각과 그 사이의 변 $AD$가 각각 같으므로 합동 조건은 ASA이고, ㉣에 SAS가 들어가는 것도 틀리다. 합동 후 대응변은 $AB=AC$이므로 ㉤은 맞다.\n따라서 정답은 ③, ④이다.",
@@ -72,16 +70,15 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "이등변삼각형",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 $BC$의 교점을 $D$라 하자. $AD$ 위의 한 점 $P$를 잡을 때, 다음 중 옳지 않은 것은? [4점]",
+    "content": "오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 $\\overline{BC}$의 교점을 $D$라고 하자. $\\overline{AD}$ 위의 한 점 $P$를 잡을 때, 다음 중에서 옳지 않은 것은? (4점)",
     "choices": [
-      "$AP=BP$",
+      "$\\overline{AP}=\\overline{BP}$",
       "$\\angle ABD=\\angle ACD$",
-      "$BD=CD$",
+      "$\\overline{BD}=\\overline{CD}$",
       "$\\angle PBD=\\angle PCD$",
       "$\\angle PDB=\\angle PDC$"
     ],
@@ -101,12 +98,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "이등변삼각형",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle C$의 이등분선과 $AB$의 교점을 $D$라 하자. $\\angle A=56^\\circ$일 때, $\\angle BDC$의 크기를 구하면? [4점]",
+    "content": "오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 이등분선과 $\\overline{AB}$의 교점을 $D$라고 하자. $\\angle A=56^\\circ$일 때, $\\angle BDC$의 크기를 구하면?(4점)",
     "choices": [
       "$85^\\circ$",
       "$87^\\circ$",
@@ -130,12 +126,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "이등변삼각형",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림에서 $BD=DE=EA=AC$이고 $\\angle B=20^\\circ$일 때, $\\angle EAC$의 크기를 구하면? [4점]",
+    "content": "오른쪽 그림에서 $\\overline{BD}=\\overline{DE}=\\overline{EA}=\\overline{AC}$이고, $\\angle B=20^\\circ$일 때, $\\angle EAC$의 크기를 구하면? (4점)",
     "choices": [
       "$40^\\circ$",
       "$50^\\circ$",
@@ -159,18 +154,17 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "직각삼각형의 합동",
       "도형"
     ],
     "wide": false,
-    "content": "다음 직각삼각형 중에서 서로 합동인 것과 각각의 합동 조건이 맞게 연결된 것은? [4점]",
+    "content": "다음 직각삼각형 중에서 서로 합동인 것과 각각의 합동 조건이 맞게 연결된 것은? (4점)",
     "choices": [
-      "(1),(3): RHS",
-      "(2),(5): RHA",
-      "(3),(5): ASA",
-      "(4),(7): RHS",
-      "(6),(8): SAS"
+      "(1)과 (3) : RHS합동",
+      "(2)와 (5) : RHA합동",
+      "(3)과 (5) : ASA합동",
+      "(4)와 (7) : RHS합동",
+      "(6)과 (8) : SAS합동"
     ],
     "answer": "④",
     "solution": "[키포인트] 직각삼각형은 빗변과 다른 한 변이 각각 같으면 RHS 합동이다.\n조건 정리: 그림의 여덟 직각삼각형에서 표시된 빗변, 직각변, 예각을 비교한다.\n풀이 방향: 각 선택지의 두 삼각형에 같은 합동 조건이 실제로 적용되는지 확인한다.\n정석 풀이: (4)는 빗변의 길이가 $5\\,\\mathrm{cm}$이고 한 직각변의 길이가 $4\\,\\mathrm{cm}$이다. (7)도 빗변이 $5\\,\\mathrm{cm}$이고 한 직각변이 $4\\,\\mathrm{cm}$이다. 따라서 (4)와 (7)은 빗변과 다른 한 변이 각각 같은 직각삼각형이므로 RHS 합동이다. 다른 선택지의 쌍은 표시된 길이나 예각이 서로 일치하지 않거나 제시된 합동 조건이 맞지 않는다.\n따라서 정답은 ④이다.",
@@ -188,18 +182,17 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "직각삼각형의 합동",
       "도형"
     ],
     "wide": false,
-    "content": "$\\triangle ABC$에서 변 $BC$의 중점을 $M$이라 하고, 점 $M$에서 두 변 $AB$, $AC$에 내린 수선의 발을 각각 $D$, $E$라 하자. $MD=ME$이고 $\\angle B=30^\\circ$일 때, 보기에서 $\\triangle BMD$와 합동인 삼각형과 그 이유로 옳은 것은? [5점]",
+    "content": "$\\triangle ABC$에서 변 $\\overline{BC}$의 중점을 $M$이라 하고, 점 $M$에서 두 변 $\\overline{AB}$와 $\\overline{AC}$에 내린 수선의 발을 각각 $D$와 $E$라고 하자. 이때 $\\overline{MD}=\\overline{ME}$이고 $\\angle B=30^\\circ$이다. 다음 삼각형 $ABC$에 상황에 맞는 조건을 표시해 보고, $\\triangle BMD$와 합동인 삼각형과 그 이유로 옳은 것은? (5점)",
     "choices": [
-      "$\\triangle CME$, RHA",
-      "$\\triangle AME$, ASA",
-      "$\\triangle MDE$, RHS",
-      "$\\triangle CME$, RHS",
-      "$\\triangle AME$, RHA"
+      "$\\triangle CME$, RHA합동",
+      "$\\triangle AME$, ASA합동",
+      "$\\triangle MDE$, RHS합동",
+      "$\\triangle CME$, RHS합동",
+      "$\\triangle AME$, RHA합동"
     ],
     "answer": "④",
     "solution": "[키포인트] 두 직각삼각형에서 빗변과 한 직각변이 각각 같음을 찾는다.\n조건 정리: $M$은 $BC$의 중점이므로 $MB=MC$이고, $D,E$는 수선의 발이므로 $\\angle BDM=\\angle CEM=90^\\circ$이다. 또 $MD=ME$이다.\n풀이 방향: $\\triangle BMD$와 $\\triangle CME$의 빗변과 한 변을 비교한다.\n정석 풀이: $\\triangle BMD$와 $\\triangle CME$는 모두 직각삼각형이다. 두 삼각형의 빗변은 각각 $MB$, $MC$이고 $M$이 중점이므로 $MB=MC$이다. 또한 직각변 $MD=ME$가 주어졌다. 따라서 빗변과 다른 한 변이 각각 같으므로 $\\triangle BMD\\cong\\triangle CME$이고 합동 조건은 RHS이다.\n따라서 정답은 ④이다.",
@@ -217,21 +210,20 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "삼각형의 외심과 내심",
       "복수정답"
     ],
     "wide": false,
-    "content": "다음 설명 중 옳지 않은 것을 모두 고르면? (정답 2개) [4점]",
+    "content": "다음 설명 중 옳지 않은 것은?(정답2개) (4점)",
     "choices": [
       "이등변삼각형의 외심과 내심은 세 각의 이등분선 위에 모두 있다.",
       "정삼각형의 외심과 내심은 일치한다.",
-      "원의 일부로 원을 완성할 때 삼각형의 외심을 이용할 수 있다.",
-      "삼각형의 세 변의 수직이등분선의 교점에서 세 꼭짓점까지의 거리는 같다.",
-      "세 지점에서 같은 거리에 있는 위치를 찾을 때 내심을 이용한다."
+      "원의 일부분 남아 있는 원을 완성할 때 삼각형의 외심을 이용하여 원의 중심을 찾을 수 있다.",
+      "삼각형의 세 내각의 이등분선의 교점에서 각 변에 이르는 거리는 같다.",
+      "세 지점에서 같은 거리에 있는 곳의 위치를 찾을 때 삼각형의 내심을 이용한다."
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 외심은 세 변의 수직이등분선의 교점이고, 내심은 세 각의 이등분선의 교점이다.\n조건 정리: 각 설명이 외심과 내심의 정의와 활용에 맞는지 하나씩 판단한다.\n풀이 방향: ①부터 ⑤까지 외심·내심이 놓이는 선과 같은 거리에 있는 대상을 구분한다.\n정석 풀이: ① 이등변삼각형의 외심과 내심은 꼭지각의 이등분선인 대칭축 위에는 함께 놓인다. 그러나 일반적인 이등변삼각형에서 외심은 나머지 두 각의 이등분선 위에는 놓이지 않으므로, 두 점이 세 각의 이등분선 위에 모두 있다는 설명은 옳지 않다. ② 정삼각형에서는 외심과 내심이 일치하므로 옳다. ③ 남아 있는 원호 위의 세 점으로 삼각형을 만들고 그 삼각형의 외심을 구하면 원의 중심을 찾을 수 있으므로 옳다. ④ 세 변의 수직이등분선의 교점인 외심에서 세 꼭짓점까지의 거리는 같으므로 옳다. ⑤ 세 지점에서 같은 거리에 있는 위치는 내심이 아니라 외심을 이용하므로 옳지 않다.\n따라서 정답은 ①, ⑤이다."
+    "solution": "[키포인트] 외심은 세 변의 수직이등분선의 교점이고, 내심은 세 내각의 이등분선의 교점이다.\n조건 정리: 각 설명이 외심과 내심의 정의와 활용에 맞는지 하나씩 판단한다.\n풀이 방향: 외심과 내심이 놓이는 선과 같은 거리에 있는 대상을 구분한다.\n정석 풀이: ① 내심은 세 내각의 이등분선 위에 있지만 외심은 일반적으로 세 내각의 이등분선 위에 모두 있지 않으므로 옳지 않다. ② 정삼각형의 외심과 내심은 일치하므로 옳다. ③ 남아 있는 원호 위의 세 점으로 삼각형을 만들고 그 삼각형의 외심을 구하면 원의 중심을 찾을 수 있으므로 옳다. ④ 세 내각의 이등분선의 교점은 내심이고, 내심에서 세 변까지의 거리는 같으므로 옳다. ⑤ 세 지점에서 같은 거리에 있는 위치는 세 꼭짓점까지의 거리가 같은 외심을 이용해야 하므로 옳지 않다.\n따라서 정답은 ①, ⑤이다."
   },
   {
     "id": 9,
@@ -245,17 +237,16 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "삼각형의 외심",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, 다음 중 옳지 않은 것은? [4점]",
+    "content": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, 다음 중에서 옳지 않은 것은? (4점)",
     "choices": [
-      "$AM=BM$",
-      "$OL=ON$",
+      "$\\overline{AM}=\\overline{BM}$",
+      "$\\overline{OL}=\\overline{ON}$",
       "$\\angle OCL=\\angle OAL$",
-      "$OB=OC$",
+      "$\\overline{OB}=\\overline{OC}$",
       "$\\triangle OBN\\equiv\\triangle OCN$"
     ],
     "answer": "②",
@@ -274,12 +265,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "삼각형의 외심",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 점 $O$는 $\\triangle ABC$의 외심이다. $\\angle ABC=20^\\circ$이고 $\\angle OBC=15^\\circ$일 때, $\\angle A$의 크기를 구하면? [5점]",
+    "content": "다음 그림에서 점 $O$는 $\\triangle ABC$의 외심이다. $\\angle ABC=20^\\circ$이고 $\\angle OBC=15^\\circ$일 때, $\\angle A$의 크기를 구하면? (5점)",
     "choices": [
       "$100^\\circ$",
       "$105^\\circ$",
@@ -303,12 +293,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "삼각형의 외심과 내심",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 $AC=BC$인 이등변삼각형 $ABC$에서 $\\angle C=40^\\circ$이고, $\\triangle ABC$의 외심과 내심을 각각 $O$, $I$라 할 때, 각의 크기가 바르게 구해진 것은? [5점]",
+    "content": "다음 그림과 같이 $\\overline{AC}=\\overline{BC}$인 이등변삼각형 $ABC$에서 $\\angle C=40^\\circ$이고, $\\triangle ABC$의 외심과 내심을 각각 $O$와 $I$라고 할 때, 각의 크기가 바르게 구해진 것은? (5점)",
     "choices": [
       "$\\angle OCB=10^\\circ$",
       "$\\angle OBC=35^\\circ$",
@@ -332,18 +321,17 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "사각형의 뜻",
       "복수정답"
     ],
     "wide": false,
-    "content": "다음 각 사각형의 뜻으로 옳지 않은 것을 모두 고르면? (정답 2개) [4점]",
+    "content": "다음 각 사각형의 뜻으로 옳지 않은 것은? (4점)\n(정답2개)",
     "choices": [
-      "사다리꼴: 한 쌍의 대변이 평행한 사각형",
-      "평행사변형: 두 쌍의 대변의 길이가 각각 같은 사각형",
-      "마름모: 네 변의 길이가 같은 사각형",
-      "직사각형: 네 각의 크기가 같은 사각형",
-      "등변사다리꼴: 밑변의 양 끝각의 크기가 같은 사각형"
+      "사다리꼴 : 한 쌍의 대변이 평행한 사각형",
+      "평행사변형 : 두 쌍의 대변의 길이가 각각 같은 사각형",
+      "마름모 : 네 변의 길이가 같은 사각형",
+      "직사각형 : 네 각의 크기가 같은 사각형",
+      "등변사다리꼴 : 밑변의 양 끝각의 크기가 같은 사각형"
     ],
     "answer": "②, ⑤",
     "solution": "[키포인트] 사각형의 '뜻'에는 그 도형을 결정하는 필수 조건이 모두 들어 있어야 한다.\n조건 정리: 각 보기의 설명이 해당 사각형의 정의인지, 단지 성질만 적은 것인지 구분한다.\n풀이 방향: 평행 조건과 변·각 조건의 누락 여부를 확인한다.\n정석 풀이: ① 사다리꼴은 한 쌍의 대변이 평행한 사각형이므로 옳다. ② 두 쌍의 대변의 길이가 각각 같다는 것은 평행사변형이 되는 조건이지만 평행사변형의 뜻은 두 쌍의 대변이 각각 평행한 사각형이므로 옳지 않다. ③ 마름모와 ④ 직사각형의 설명은 옳다. ⑤ 등변사다리꼴은 먼저 한 쌍의 대변이 평행한 사다리꼴이어야 하는데 이 조건이 빠졌으므로 옳지 않다.\n따라서 정답은 ②, ⑤이다."
@@ -360,16 +348,15 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "평행사변형의 성질",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 하자. $\\angle OAB=\\angle OBA$일 때, 다음 중 옳은 것은? [4점]",
+    "content": "오른쪽 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라고 하자. $\\angle OAB=\\angle OBA$일 때, 다음 중에서 옳은 것은? (4점)",
     "choices": [
-      "$AC=BD$",
-      "$AB=AD$",
-      "$BC=AC$",
+      "$\\overline{AC}=\\overline{BD}$",
+      "$\\overline{AB}=\\overline{AD}$",
+      "$\\overline{BC}=\\overline{AC}$",
       "$\\angle BDC+\\angle ABD=90^\\circ$",
       "$\\angle ABD=\\angle BCA$"
     ],
@@ -389,18 +376,17 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "평행사변형의 성질",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림의 평행사변형 $ABCD$에서 점 $O$가 두 대각선의 교점일 때, $\\triangle ABO$의 둘레의 길이는? [4점]",
+    "content": "다음 그림의 평행사변형 $ABCD$에서 점 $O$가 두 대각선의 교점일 때, $\\triangle ABO$의 둘레의 길이는? (4점)",
     "choices": [
-      "12",
-      "14",
-      "16",
-      "18",
-      "20"
+      "$12\\,\\mathrm{cm}$",
+      "$14\\,\\mathrm{cm}$",
+      "$16\\,\\mathrm{cm}$",
+      "$18\\,\\mathrm{cm}$",
+      "$20\\,\\mathrm{cm}$"
     ],
     "answer": "③",
     "solution": "[키포인트] 평행사변형의 대각선 교점은 각 대각선의 중점이다.\n조건 정리: $AB=6\\,\\mathrm{cm}$, $AC=8\\,\\mathrm{cm}$, $BD=12\\,\\mathrm{cm}$이고 $O$는 대각선의 교점이다.\n풀이 방향: $AO$, $BO$의 길이를 각각 대각선의 절반으로 구해 삼각형의 세 변을 더한다.\n정석 풀이: $AO=\\dfrac{AC}{2}=4\\,\\mathrm{cm}$이고 $BO=\\dfrac{BD}{2}=6\\,\\mathrm{cm}$이다. 따라서 $\\triangle ABO$의 둘레는 $AB+AO+BO=6+4+6=16\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
@@ -418,12 +404,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "평행사변형의 성질",
       "도형"
     ],
     "wide": false,
-    "content": "아래 그림과 같이 $AB=8$, $AD=11$인 평행사변형 $ABCD$에서 $\\angle A$의 이등분선과 $BC$의 교점을 $F$, $\\angle D$의 이등분선과 $BC$의 교점을 $E$라 할 때, $BF+CF+EF$의 길이를 구하면? [4점]",
+    "content": "아래 그림과 같이 $\\overline{AB}=8$, $\\overline{AD}=11$인 평행사변형 $ABCD$에서 $\\angle A$의 이등분선과 $\\overline{BC}$의 교점을 $F$라 하고, $\\angle D$의 이등분선과 $\\overline{BC}$의 교점을 $E$라 할 때, $\\overline{BF}+\\overline{CF}+\\overline{EF}$의 길이를 구하면? (4점)",
     "choices": [
       "16",
       "17",
@@ -447,18 +432,17 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "평행사변형이 되는 조건",
       "도형"
     ],
     "wide": false,
-    "content": "다음은 사각형 $ABCD$에서 $AD\\parallel BC$이고 $AD=BC$일 때, $ABCD$가 평행사변형임을 설명하는 과정이다. 빈칸에 들어갈 것으로 알맞지 않은 것은? [4점]",
+    "content": "다음은 $\\square ABCD$에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AD}=\\overline{BC}$일 때, $\\square ABCD$가 평행사변형임을 설명하는 과정이다. 다음 □ 안에 들어갈 것으로 알맞지 않은 것은? (4점)",
     "choices": [
-      "ㄱ: $AD$",
-      "ㄴ: $\\angle DAC$",
-      "ㄷ: $AC$",
-      "ㄹ: $\\angle CAD$",
-      "ㅁ: $CD$"
+      "㉠ : $\\overline{AD}$",
+      "㉡ : $\\angle DAC$",
+      "㉢ : $\\overline{AC}$",
+      "㉣ : $\\angle CAD$",
+      "㉤ : $\\overline{CD}$"
     ],
     "answer": "④",
     "solution": "[키포인트] 증명 과정의 빈칸을 두 삼각형의 대응 순서에 맞추어 확인한다.\n조건 정리: $AD\\parallel BC$, $AD=BC$이고 대각선 $AC$를 그어 $\\triangle ABC$와 $\\triangle CDA$를 비교한다.\n풀이 방향: SAS 합동에 필요한 두 변과 끼인각을 찾은 뒤 대응각으로 평행 관계를 얻는다.\n정석 풀이: 주어진 조건에서 $BC=AD$이므로 ㉠은 $AD$이다. $AD\\parallel BC$이므로 엇각 $\\angle BCA=\\angle DAC$여서 ㉡은 $\\angle DAC$이다. $AC$는 공통이므로 ㉢은 $AC$이다. 따라서 두 삼각형은 SAS 합동이다. 합동의 대응 순서에서 $\\angle BAC$와 같은 각은 $\\angle DCA$이며, 이를 이용해 $AB\\parallel CD$를 얻는다. 그러므로 ㉣에 $\\angle CAD$가 들어가는 것은 알맞지 않다.\n따라서 정답은 ④이다.",
@@ -476,17 +460,16 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "평행사변형이 되는 조건",
       "복수정답"
     ],
     "wide": false,
-    "content": "다음 중 사각형 $ABCD$가 평행사변형인 것을 모두 고르면? (정답 2개) [5점]",
+    "content": "다음 중 $\\square ABCD$가 평행사변형인 것은?\n(정답2개) (5점)",
     "choices": [
-      "$AB=CD=6$, $AB\\parallel CD$",
-      "$AB=BC=4$, $CD=DA=6$",
+      "$\\overline{AB}=\\overline{CD}=6\\,\\mathrm{cm}$, $\\overline{AB}\\parallel\\overline{CD}$",
+      "$\\overline{AB}=\\overline{BC}=4\\,\\mathrm{cm}$, $\\overline{CD}=\\overline{DA}=6\\,\\mathrm{cm}$",
       "$\\angle A=\\angle B=110^\\circ$, $\\angle C=70^\\circ$",
-      "$OA=OB$, $OC=OD$",
+      "$\\overline{OA}=\\overline{OB}$, $\\overline{OC}=\\overline{OD}$\n(단, 점 $O$는 두 대각선의 교점이다.)",
       "$\\angle A+\\angle B=180^\\circ$, $\\angle B+\\angle C=180^\\circ$"
     ],
     "answer": "①, ⑤",
@@ -505,10 +488,11 @@ window.questionBank=[
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "이등변삼각형"
+      "이등변삼각형",
+      "도형"
     ],
     "wide": false,
-    "content": "[서술형 1] 이등변삼각형의 두 밑각의 크기는 같다. 그 이유를 다음 순서에 따라 설명하시오. [8점]\n(1) 조건에 맞는 이등변삼각형 $ABC$를 그리고, 꼭지각의 이등분선을 그어 밑변과 만나는 점을 $D$라 하시오. [2점]\n(2) 삼각형의 합동을 이용하여 두 밑각의 크기가 같은 이유를 설명하시오. [6점]",
+    "content": "[서술형1] 이등변삼각형은 두 밑각의 크기는 같다. 그 이유를 설명하시오.(8점)\n(풀이) (1) 조건에 맞는 이등변삼각형 $ABC$를 그리고, 꼭지각의 이등분선을 그어 밑변과 만나는 점을 $D$라 하자.(2점)\n(2) 그 이유를 설명하시오.(6점)",
     "choices": [],
     "answer": "$\\angle B=\\angle C$",
     "solution": "[키포인트] 꼭지각의 이등분선으로 두 삼각형을 만들고 SAS 합동을 증명한다.\n조건 정리: $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선이 $BC$와 만나는 점을 $D$라 한다.\n풀이 방향: $\\triangle ABD$와 $\\triangle ACD$의 두 변과 그 끼인각을 비교한다.\n정석 풀이: (1) $AB=AC$인 삼각형 $ABC$를 그리고, $\\angle A$의 이등분선 $AD$를 그어 $BC$와 만나게 한다. (2) $AB=AC$이고, $AD$는 공통인 변이다. 또한 $AD$가 $\\angle A$의 이등분선이므로 $\\angle BAD=\\angle CAD$이다. 따라서 두 변과 그 끼인각이 각각 같으므로 $\\triangle ABD\\cong\\triangle ACD$이다. 합동인 두 삼각형의 대응각은 같으므로 $\\angle ABD=\\angle ACD$, 즉 $\\angle B=\\angle C$이다.\n따라서 두 밑각의 크기는 같다."
@@ -530,7 +514,7 @@ window.questionBank=[
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 2] 다음 그림에서 점 $O$가 $\\triangle ABC$의 외심이다. $\\angle B=50^\\circ$일 때, $\\angle AOC$의 크기를 구하시오. [5점]",
+    "content": "[서술형2] 다음 그림에서 점 $O$가 $\\triangle ABC$의 외심이다. $\\angle B=50^\\circ$일 때, $\\angle AOC$의 크기를 구하시오.(5점)",
     "choices": [],
     "answer": "$100^\\circ$",
     "solution": "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같아 생기는 두 이등변삼각형을 이용한다.\n조건 정리: $OA=OB=OC$이고 $\\angle ABC=50^\\circ$이다.\n풀이 방향: $\\angle ABO$를 미지수로 두어 $\\angle AOB$, $\\angle BOC$를 나타내고 점 $O$ 둘레의 각의 합을 사용한다.\n정석 풀이: $\\angle ABO=x$라 두면 $OA=OB$이므로 $\\angle OAB=x$이고 $\\angle AOB=180^\\circ-2x$이다. 한편 $\\angle OBC=50^\\circ-x$이고 $OB=OC$이므로 $\\angle BCO=50^\\circ-x$이다. 따라서 $\\angle BOC=180^\\circ-2(50^\\circ-x)=80^\\circ+2x$이다. 점 $O$ 둘레의 각의 합은 $360^\\circ$이므로 $\\angle AOC=360^\\circ-(180^\\circ-2x)-(80^\\circ+2x)=100^\\circ$이다.\n따라서 구하는 각의 크기는 $100^\\circ$이다.",
@@ -553,7 +537,7 @@ window.questionBank=[
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 3] 그림에서 점 $I$가 $\\triangle ABC$의 내심일 때, $\\angle C$의 크기를 구하시오. [8점]",
+    "content": "[서술형3] 그림에서 점 $I$가 $\\triangle ABC$의 내심일 때, $\\angle C$의 크기를 구하시오.(8점)",
     "choices": [],
     "answer": "$40^\\circ$",
     "solution": "[키포인트] 내심에서 각의 이등분선으로 나뉜 반각을 문자로 두고 두 삼각형의 내각의 합을 이용한다.\n조건 정리: $AI$, $BI$는 각각 $\\angle A$, $\\angle B$의 이등분선이고, 그림에서 $\\angle ADB=70^\\circ$, $\\angle AEB=80^\\circ$이다.\n풀이 방향: $\\angle ABI=\\angle IBC=a$, $\\angle BAI=\\angle IAC=b$로 두어 두 식을 세운다.\n정석 풀이: 삼각형 $ABD$에서 $\\angle ABD=2a$, $\\angle BAD=b$이므로 $2a+b+70^\\circ=180^\\circ$, 즉 $2a+b=110^\\circ$이다. 삼각형 $ABE$에서 $\\angle ABE=a$, $\\angle BAE=2b$이므로 $a+2b+80^\\circ=180^\\circ$, 즉 $a+2b=100^\\circ$이다. 두 식을 풀면 $a=40^\\circ$, $b=30^\\circ$이다. 따라서 $\\angle A=60^\\circ$, $\\angle B=80^\\circ$이고 $\\angle C=180^\\circ-60^\\circ-80^\\circ=40^\\circ$이다.\n따라서 구하는 각의 크기는 $40^\\circ$이다.",
@@ -576,7 +560,7 @@ window.questionBank=[
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 4] 평행사변형은 두 쌍의 대변의 길이가 각각 같다. 그 이유를 삼각형의 합동을 이용하여 설명하시오. [7점]",
+    "content": "[서술형4] 평행사변형은 두 쌍의 대변의 길이가 각각 같다. 그 이유를 설명하시오.(7점)",
     "choices": [],
     "answer": "$AB=CD$, $BC=AD$",
     "solution": "[키포인트] 평행사변형에 대각선을 그어 두 삼각형의 ASA 합동을 증명한다.\n조건 정리: 평행사변형 $ABCD$에서 $AB\\parallel CD$, $BC\\parallel AD$이다.\n풀이 방향: 대각선 $AC$를 그어 $\\triangle ABC$와 $\\triangle CDA$의 두 각과 공통변을 비교한다.\n정석 풀이: $AB\\parallel CD$이므로 엇각 $\\angle BAC=\\angle DCA$이다. 또한 $BC\\parallel AD$이므로 엇각 $\\angle BCA=\\angle DAC$이다. 두 삼각형에서 $AC$는 공통인 변이므로 두 각과 그 사이의 변이 각각 같아 $\\triangle ABC\\cong\\triangle CDA$이다. 따라서 대응변의 길이가 같아 $AB=CD$, $BC=AD$이다.\n따라서 평행사변형의 두 쌍의 대변의 길이는 각각 같다.",

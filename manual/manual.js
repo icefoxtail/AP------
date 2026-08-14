@@ -123,6 +123,10 @@
     const JUMP_LINKS = [
         { id: 'manual-search-direct', title: '설명서 검색', desc: '원하는 설명 바로 찾기' },
         { id: 'drawer-current-menu-map', title: '사이드바 메뉴', desc: '최신 메뉴 위치' },
+        { id: 'student-management-current', title: '학생관리', desc: '추가·검색·수정·퇴원' },
+        { id: 'class-management-current', title: '학급관리', desc: '반 추가·수정·보관' },
+        { id: 'student-portal-teacher-preview-current', title: '학생 화면 확인', desc: '포털 읽기 전용 미리보기' },
+        { id: 'student-portal-exam-list-current', title: '학생 시험 목록', desc: '최근·이전·완료 시험' },
         { id: 'classroom-operation-date-current', title: '운영 날짜', desc: '선택일/오늘 전환' },
         { id: 'qr-omr-basic', title: 'QR/OMR', desc: 'QR 생성과 오답 제출' },
         { id: 'omr-bulk-input-current', title: 'OMR 입력', desc: '반 전체 O/X 저장' },
@@ -137,6 +141,8 @@
         { id: 'report-cohort-source-current', title: '학년 평균 기준', desc: '동일 시험 비교' },
         { id: 'report-print-pdf', title: 'PDF 출력', desc: '리포트 크게 보기/출력' },
         { id: 'report-archive-detail', title: '문항 원문 확인', desc: '아카이브 원문 분석' },
+        { id: 'clinic-print-center-current', title: '클리닉', desc: '대상·유형별 오답지' },
+        { id: 'system-sync-current', title: '시스템 동기화', desc: '미전송 데이터 확인' },
         { id: 'trouble-duplicate-exam', title: '시험 중복', desc: '카드가 두 개 보일 때' }
     ];
 

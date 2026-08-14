@@ -1,25 +1,582 @@
-window.examTitle="23_신흥중_2학기_기말_중2_기출";window.archiveStatus="metadata_and_prompt_transcription_only";const U={"도형의 닮음":["M2-06",6],"피타고라스 정리":["M2-07",7],"확률":["M2-08",8]};function q(id,u,t,c,ch=[]){const[k,o]=U[u];return{id,level:"중2",category:u,originalCategory:u,standardCourse:"중2 수학",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags:[t,u],wide:t==="서술형",content:c,...(ch.length?{choices:ch}:{}),answer:"",solution:""}}window.questionBank=[
-q(1,"도형의 닮음","객관식",String.raw`다음 그림에서 두 삼각기둥은 서로 닮음이고, $AB$에 대응하는 모서리가 $A'B'$일 때, 다음 중 옳지 않은 것은? [4점]`,["$AB:A'B'=2:3$","$AC=3\rm\,cm$","$D'E'=3\rm\,cm$","$\\angle BAC=\\angle B'A'C'$","$\square ADEB\sim\square A'D'E'B'$"]),
-q(2,"도형의 닮음","객관식",String.raw`직사각형 모양의 아파트 평면도를 $1:80$의 비율로 축소하여 그리려고 한다. 안방의 실제 가로와 세로의 길이가 각각 $4.8\rm\,m$, $3.6\rm\,m$일 때, 축소했을 때의 가로와 세로의 길이를 차례대로 구하면? [4점]`,["$4.8\rm\,cm,\ 3.6\rm\,cm$","$5\rm\,cm,\ 4\rm\,cm$","$6\rm\,cm,\ 5\rm\,cm$","$6\rm\,cm,\ 4.5\rm\,cm$","$3.5\rm\,cm,\ 4.5\rm\,cm$"]),
-q(3,"도형의 닮음","객관식",String.raw`오른쪽 그림에서 $\square ABCD\sim\square DAEF$이고, $AB=25\rm\,cm$, $AD=20\rm\,cm$일 때, $DF$의 길이를 구하면? [4점]`,["$13\rm\,cm$","$14\rm\,cm$","$15\rm\,cm$","$16\rm\,cm$","$17\rm\,cm$"]),
-q(4,"도형의 닮음","객관식",String.raw`다음 $\\triangle ABC$에서 $\\angle A=\\angle DEC$이고 $AD=2\rm\,cm$, $DC=6\rm\,cm$, $EC=4\rm\,cm$일 때, $BE$의 길이를 구하면? [4점]`,["$4\rm\,cm$","$5\rm\,cm$","$6\rm\,cm$","$7\rm\,cm$","$8\rm\,cm$"]),
-q(5,"피타고라스 정리","객관식",String.raw`오른쪽 직사각형 $ABCD$에서 대각선 $BD$의 중점을 $O$라 하고, 점 $O$에서 $BD$에 수직인 직선과 $AD$, $BC$의 교점을 각각 $E$, $F$라고 하자. $BO=5\rm\,cm$, $BC=8\rm\,cm$, $DC=6\rm\,cm$일 때, $EO$의 길이를 구하면? [4점]`,["$\\dfrac94\rm\,cm$","$\\dfrac{11}4\rm\,cm$","$\\dfrac{13}4\rm\,cm$","$\\dfrac{15}4\rm\,cm$","$\\dfrac{17}4\rm\,cm$"]),
-q(6,"피타고라스 정리","객관식",String.raw`오른쪽 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $D$라고 하자. 이때 $CD$의 길이를 구하면? [4점]`,["$\\dfrac{21}2\rm\,cm$","$12\rm\,cm$","$\\dfrac{23}2\rm\,cm$","$13\rm\,cm$","$\\dfrac{27}2\rm\,cm$"]),
-q(7,"도형의 닮음","객관식",String.raw`그림에서 $AB\\parallel EF\\parallel DC$일 때, $EF$의 길이를 구하면? [4점]`,["$16\rm\,cm$","$18\rm\,cm$","$20\rm\,cm$","$21\rm\,cm$","$25\rm\,cm$"]),
-q(8,"도형의 닮음","객관식",String.raw`다음 $\\triangle ABC$에서 세 변 $AB$, $BC$, $CA$의 중점을 각각 $D$, $E$, $F$라고 하자. $AB=8\rm\,cm$, $BC=12\rm\,cm$, $CA=10\rm\,cm$일 때, $\\triangle DEF$의 둘레의 길이를 구하면? [4점]`,["$15\rm\,cm$","$16\rm\,cm$","$17\rm\,cm$","$18\rm\,cm$","$19\rm\,cm$"]),
-q(9,"도형의 닮음","객관식",String.raw`다음 그림에서 $l\\parallel m\\parallel n$일 때, $x$의 값을 구하면? [4점]`,["$20$","$21$","$22$","$23$","$24$"]),
-q(10,"도형의 닮음","객관식",String.raw`다음 그림과 같은 사다리꼴 $ABCD$에서 $AD\\parallel MN\\parallel BC$일 때, $MN$의 길이는? [4점]`,["$9\rm\,cm$","$10\rm\,cm$","$11\rm\,cm$","$12\rm\,cm$","$13\rm\,cm$"]),
-q(11,"도형의 닮음","객관식",String.raw`다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. 다음 중 옳지 않은 것은? (정답 2개) [4점]`,["$BG=2GE$","$GE=GF$","$\\triangle GBD=\\dfrac16\\triangle ABC$","$\\triangle AGE=\\dfrac13\\triangle ADC$","$\\triangle ABC=3\square FBDG$"]),
-q(12,"도형의 닮음","객관식",String.raw`오른쪽 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $G'$은 $\\triangle GBC$의 무게중심이다. $\\triangle G'BD$의 넓이가 $5\rm\,cm^2$일 때, $\\triangle ABC$의 넓이를 구하면? [4점]`,["$80\rm\,cm^2$","$85\rm\,cm^2$","$90\rm\,cm^2$","$95\rm\,cm^2$","$100\rm\,cm^2$"]),
-q(13,"도형의 닮음","객관식",String.raw`다음 평행사변형 $ABCD$에서 점 $M$은 $BC$의 중점이고, 점 $P$는 $BD$와 $AM$의 교점이다. $\square ABCD$의 넓이가 $48\rm\,cm^2$일 때, $\\triangle ABP$의 넓이를 구하면? [4점]`,["$8\rm\,cm^2$","$9\rm\,cm^2$","$10\rm\,cm^2$","$11\rm\,cm^2$","$12\rm\,cm^2$"]),
-q(14,"도형의 닮음","객관식",String.raw`오른쪽 사다리꼴 $ABCD$에서 $DC$의 길이를 구하면? [4점]`,["$12\rm\,cm$","$13\rm\,cm$","$14\rm\,cm$","$15\rm\,cm$","$16\rm\,cm$"]),
-q(15,"피타고라스 정리","객관식",String.raw`다음 그림과 같이 $\\angle A=90^\\circ$이고 $BC=16\rm\,cm$인 직각삼각형 $ABC$의 각 변을 지름으로 하는 세 반원 $P$, $Q$, $R$의 넓이의 합을 구하면? [5점]`,["$16\\pi\rm\,cm^2$","$32\\pi\rm\,cm^2$","$64\\pi\rm\,cm^2$","$96\\pi\rm\,cm^2$","$128\\pi\rm\,cm^2$"]),
-q(16,"확률","객관식",String.raw`서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 차가 $3$ 또는 $4$가 되는 경우의 수를 구하면? [4점]`,["$9$","$10$","$11$","$12$","$13$"]),
-q(17,"확률","객관식",String.raw`다음 그림과 같이 점 $P$는 정오각형의 한 꼭짓점 $A$를 출발하여 서로 다른 $2$개의 주사위를 던져 나오는 눈의 수의 합만큼 시계 반대 방향으로 움직이는 점이다. 서로 다른 주사위 $2$개를 동시에 던질 때, 점 $P$가 점 $C$의 위치에 오게 되는 경우의 수를 구하면? [5점]`,["5가지","6가지","7가지","8가지","9가지"]),
-q(18,"도형의 닮음","서술형",String.raw`[서술형 1] 항상 닮음인 도형의 예를 두 가지 이상 들고, 항상 닮음이 되는 이유를 닮음의 의미를 이용하여 설명하시오. [4점]`),
-q(19,"도형의 닮음","서술형",String.raw`[서술형 2] 다음 그림과 같이 가로와 세로의 길이가 각각 $30\rm\,cm$, $24\rm\,cm$인 직사각형 모양의 액자가 있다. 이 액자의 테두리의 폭이 $3\rm\,cm$로 일정할 때, $\square ABCD$와 $\square EFGH$는 서로 닮은 도형인지 판단하고 그 이유를 설명하여 보시오. [5점]\n(1) 닮은 도형이다 / 아니다. [1점]\n(2) 그 이유 [4점]`),
-q(20,"도형의 닮음","서술형",String.raw`[서술형 3] 다음 그림에서 $BC\\parallel DE$일 때, $x$의 값을 구하시오. [4점] (비례식을 세워 $x$의 값 구하기)`),
-q(21,"도형의 닮음","서술형",String.raw`[서술형 4] 다음 그림에서 $AD:DB=AE:EC$이다. 그 이유를 다음 단계에 따라 설명하여 보시오. [6점]\n(1) 점 $E$를 지나고 변 $AB$에 평행한 직선을 그리고, 변 $BC$와의 교점을 $F$라고 하자. [2점]\n(2) 이때 $\\triangle ADE$와 $\\triangle EFC$는 닮은 삼각형이다. 닮음 조건을 말하시오. [1점]\n(3) 빈칸을 채워 비례식을 완성하시오. [3점]`),
-q(22,"피타고라스 정리","서술형",String.raw`[서술형 5] 다음 직사각형 $ABCD$의 꼭짓점 $A$에서 대각선 $BD$에 내린 수선의 발을 $E$라고 할 때, $AE$의 길이를 구하시오. (그림에서 두 변의 길이는 $8\rm\,cm$, $6\rm\,cm$이다.) [6점]`),
-q(23,"확률","서술형",String.raw`[서술형 6] 진수는 $50$원, $100$원, $500$원짜리 동전을 각각 $4$개씩 갖고 있다. 가게에서 $800$원짜리 과자를 한 개 살 때, 이 돈으로 거스름돈 없이 그 값을 지불하는 모든 방법의 수를 구하시오. [5점]`)
+window.examTitle = "23_신흥중_2학기_기말_중2_기출";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림에서 두 삼각기둥은 서로 닮음이고, $\\overline{AB}$에 대응하는 모서리가 $\\overline{A'B'}$일 때, 다음 중에서 옳지 않은 것은? (4점)",
+    "choices": [
+      "$\\overline{AB}:\\overline{A'B'}=2:3$",
+      "$\\overline{D'E'}=3\\rm\\,cm$",
+      "$\\overline{AC}=3\\rm\\,cm$",
+      "$\\angle BAC=30^\\circ$",
+      "$\\square ADEB\\sim\\square A'D'E'B'$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 닮은 입체도형에서는 대응하는 모서리의 길이의 비가 모두 같다.\n$\\overline{AD}=4\\rm\\,cm$, $\\overline{A'D'}=6\\rm\\,cm$이므로 닮음비는 $2:3$이다.\n따라서 $\\overline{AC}:\\overline{A'C'}=2:3$이고 $\\overline{A'C'}=5\\rm\\,cm$이므로 $\\overline{AC}=\\dfrac{10}{3}\\rm\\,cm$이다.\n그러므로 $\\overline{AC}=3\\rm\\,cm$이라는 ③은 옳지 않다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q1.png"
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "직사각형 모양의 아파트 평면도를 $1:80$의 비율로 축소하여 그리려고 한다. 안방의 실제 가로와 세로의 길이가 각각 $4.8\\rm\\,m$, $3.6\\rm\\,m$일 때, 축소했을 때의 가로와 세로의 길이를 차례대로 구하면? (4점)",
+    "choices": [
+      "$4.8\\rm\\,cm,\\ 3.6\\rm\\,cm$",
+      "$6\\rm\\,cm,\\ 4.5\\rm\\,cm$",
+      "$5\\rm\\,cm,\\ 4\\rm\\,cm$",
+      "$3.5\\rm\\,cm,\\ 4.5\\rm\\,cm$",
+      "$6\\rm\\,cm,\\ 5\\rm\\,cm$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 축척 $1:80$은 실제 길이를 $80$으로 나눈 길이로 그린다는 뜻이다.\n$4.8\\rm\\,m=480\\rm\\,cm$이므로 가로는 $480\\div80=6\\rm\\,cm$이다.\n$3.6\\rm\\,m=360\\rm\\,cm$이므로 세로는 $360\\div80=4.5\\rm\\,cm$이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 3,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림에서 $\\square ABCD\\sim\\square DAEF$이고, $\\overline{AB}=25\\rm\\,cm$, $\\overline{AD}=20\\rm\\,cm$일 때, $\\overline{DF}$의 길이를 구하면? (4점)",
+    "choices": [
+      "$13\\rm\\,cm$",
+      "$14\\rm\\,cm$",
+      "$15\\rm\\,cm$",
+      "$16\\rm\\,cm$",
+      "$17\\rm\\,cm$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 닮음 기호에 적힌 꼭짓점의 순서로 대응변을 찾는다.\n$\\square ABCD\\sim\\square DAEF$에서 $\\overline{AB}$와 $\\overline{DA}$가 대응하므로 닮음비는 $25:20=5:4$이다.\n또 $\\overline{AD}$와 $\\overline{DF}$가 대응하므로 $20:DF=5:4$이다.\n따라서 $DF=16\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q3.png"
+  },
+  {
+    "id": 4,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 $\\triangle ABC$에서 $\\angle A=\\angle DEC$이고 $\\overline{AD}=2\\rm\\,cm$, $\\overline{DC}=6\\rm\\,cm$, $\\overline{EC}=4\\rm\\,cm$일 때, $\\overline{BE}$의 길이를 구하면? (4점)",
+    "choices": [
+      "$4\\rm\\,cm$",
+      "$5\\rm\\,cm$",
+      "$6\\rm\\,cm$",
+      "$7\\rm\\,cm$",
+      "$8\\rm\\,cm$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 두 각이 각각 같으므로 두 삼각형의 닮음을 이용한다.\n$AC=AD+DC=2+6=8\\rm\\,cm$이고, $\\angle A=\\angle DEC$, $\\angle ACB=\\angle DCE$이다.\n따라서 $\\triangle ABC\\sim\\triangle EDC$이고 $AC:EC=8:4=2:1$이다.\n이에 따라 $BC:DC=2:1$이므로 $BC=12\\rm\\,cm$이다.\n$BE=BC-EC=12-4=8\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q4.png"
+  },
+  {
+    "id": 5,
+    "level": "상",
+    "category": "피타고라스 정리",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "오른쪽 직사각형 $ABCD$에서 대각선 $\\overline{BD}$의 중점을 $O$라 하고, 점 $O$에서 $\\overline{BD}$에 수직인 직선과 $\\overline{AD}$, $\\overline{BC}$의 교점을 각각 $E$, $F$라고 하자. $\\overline{BO}=5\\rm\\,cm$, $\\overline{BC}=8\\rm\\,cm$, $\\overline{DC}=6\\rm\\,cm$일 때, $\\overline{EO}$의 길이를 구하면? (4점)",
+    "choices": [
+      "$\\dfrac{7}{4}\\rm\\,cm$",
+      "$\\dfrac{9}{4}\\rm\\,cm$",
+      "$\\dfrac{11}{4}\\rm\\,cm$",
+      "$\\dfrac{13}{4}\\rm\\,cm$",
+      "$\\dfrac{15}{4}\\rm\\,cm$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 직사각형의 중심과 평행·수직 관계를 이용해 닮은 직각삼각형을 만든다.\n$BD=2BO=10\\rm\\,cm$이고, 직사각형의 세로 길이는 $6\\rm\\,cm$이므로 점 $O$에서 $AD$까지의 수직거리는 $3\\rm\\,cm$이다.\n점 $O$에서 $AD$에 수직선을 내려 그 발을 $H$라 하면 $OH=3\\rm\\,cm$이다.\n$EO\\perp BD$, $EH\\parallel BC$, $OH\\parallel DC$이므로 $\\triangle EOH\\sim\\triangle BCD$이다.\n따라서 $EO:BD=OH:BC=3:8$이므로 $EO=10\\times\\dfrac{3}{8}=\\dfrac{15}{4}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q5.png"
+  },
+  {
+    "id": 6,
+    "level": "중",
+    "category": "피타고라스 정리",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 변 $\\overline{BC}$에 내린 수선의 발을 $D$라고 하자. 이때, $\\overline{CD}$의 길이를 구하면? (4점)",
+    "choices": [
+      "$\\dfrac{21}{2}\\rm\\,cm$",
+      "$\\dfrac{23}{2}\\rm\\,cm$",
+      "$\\dfrac{25}{2}\\rm\\,cm$",
+      "$\\dfrac{27}{2}\\rm\\,cm$",
+      "$\\dfrac{29}{2}\\rm\\,cm$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이는 두 빗변 조각의 비례중항이다.\n그림에서 $AD=9\\rm\\,cm$, $BD=6\\rm\\,cm$이다.\n$AD^2=BD\\cdot CD$이므로 $9^2=6\\cdot CD$이다.\n따라서 $CD=\\dfrac{81}{6}=\\dfrac{27}{2}\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q6.png"
+  },
+  {
+    "id": 7,
+    "level": "상",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 $\\overline{AB}//\\overline{EF}//\\overline{DC}$일 때, $\\overline{EF}$의 길이를 구하면? (4점)",
+    "choices": [
+      "$\\dfrac{16}{5}\\rm\\,cm$",
+      "$\\dfrac{18}{5}\\rm\\,cm$",
+      "$\\dfrac{21}{5}\\rm\\,cm$",
+      "$\\dfrac{22}{5}\\rm\\,cm$",
+      "$\\dfrac{24}{5}\\rm\\,cm$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 평행선 때문에 생기는 두 번의 닮음을 차례로 이용한다.\n$AB\\parallel DC$이므로 $\\triangle AEB\\sim\\triangle CED$이다.\n따라서 $AE:EC=AB:DC=12:8=3:2$이므로 $CE:CA=2:5$이다.\n또 $EF\\parallel AB$이므로 $\\triangle CEF\\sim\\triangle CAB$이다.\n따라서 $EF:AB=CE:CA=2:5$이므로 $EF=12\\times\\dfrac25=\\dfrac{24}{5}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q7.png"
+  },
+  {
+    "id": 8,
+    "level": "하",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 $\\triangle ABC$에서 세 변 $\\overline{AB}$, $\\overline{BC}$, $\\overline{CA}$의 중점을 각각 $D$, $E$, $F$라고 하자. $\\overline{AB}=8\\rm\\,cm$, $\\overline{BC}=12\\rm\\,cm$, $\\overline{CA}=10\\rm\\,cm$일 때, $\\triangle DEF$의 둘레의 길이를 구하면? (4점)",
+    "choices": [
+      "$15\\rm\\,cm$",
+      "$16\\rm\\,cm$",
+      "$17\\rm\\,cm$",
+      "$18\\rm\\,cm$",
+      "$19\\rm\\,cm$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 삼각형의 두 변의 중점을 이은 선분의 길이는 나머지 한 변의 절반이다.\n$DE=\\dfrac12 AC=5\\rm\\,cm$, $EF=\\dfrac12 AB=4\\rm\\,cm$, $FD=\\dfrac12 BC=6\\rm\\,cm$이다.\n따라서 $\\triangle DEF$의 둘레는 $5+4+6=15\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q8.png"
+  },
+  {
+    "id": 9,
+    "level": "상",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림에서 $l//m//n$일 때, $x$의 값을 구하면? (4점)",
+    "choices": [
+      "$20$",
+      "$21$",
+      "$22$",
+      "$23$",
+      "$24$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 세 평행선이 두 직선을 자를 때 생기는 대응 선분의 길이의 비는 같다.\n그림에서 한 직선의 $l$과 $m$ 사이 길이는 $18\\rm\\,cm$, $m$과 $n$ 사이 길이는 $12\\rm\\,cm$이다.\n다른 직선에서는 $l$부터 $n$까지의 길이가 $x\\rm\\,cm$이고, $m$과 $n$ 사이 길이가 $8\\rm\\,cm$이므로 $l$과 $m$ 사이 길이는 $(x-8)\\rm\\,cm$이다.\n따라서 $(x-8):8=18:12=3:2$이다.\n$2(x-8)=24$에서 $x=20$이다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q9.png"
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같은 사다리꼴 $ABCD$에서 $\\overline{AD}//\\overline{MN}//\\overline{BC}$일 때, $\\overline{MN}$의 길이는? (4점)",
+    "choices": [
+      "$9\\rm\\,cm$",
+      "$10\\rm\\,cm$",
+      "$11\\rm\\,cm$",
+      "$12\\rm\\,cm$",
+      "$13\\rm\\,cm$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 사다리꼴의 두 옆변을 연장하여 닮은 삼각형으로 바꾼다.\n$AB=AM+MB=10+4=14\\rm\\,cm$이다.\n두 옆변 $AB$, $DC$를 위쪽으로 연장하여 만나는 점을 $P$라 하면 $\\triangle PAD\\sim\\triangle PBC$이다.\n$AD:BC=7:14=1:2$이므로 $PA:PB=1:2$이다. 또한 $PB-PA=AB=14$이므로 $PA=14$, $PB=28$이다.\n$PM=PA+AM=24$이고 $\\triangle PMN\\sim\\triangle PBC$이므로 $MN:14=24:28=6:7$이다.\n따라서 $MN=12\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q10.png"
+  },
+  {
+    "id": 11,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형",
+      "복수정답"
+    ],
+    "wide": false,
+    "content": "다음 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. 다음 중 옳지 않은 것은? (정답2개) (4점)",
+    "choices": [
+      "$\\overline{BG}=2\\overline{GE}$",
+      "$\\overline{GE}=\\overline{GF}$",
+      "$\\triangle GBD=\\dfrac{1}{6}\\triangle ABC$",
+      "$\\triangle ABC=3\\square FBDG$",
+      "$\\triangle AGE=\\dfrac{1}{2}\\triangle ADC$"
+    ],
+    "answer": "②, ⑤",
+    "solution": "[키포인트] 무게중심은 각 중선을 꼭짓점 쪽부터 $2:1$로 나누고, 세 중선은 삼각형을 넓이가 같은 6개의 작은 삼각형으로 나눈다.\n①에서 $BG:GE=2:1$이므로 옳다.\n②의 $GE$와 $GF$는 서로 다른 중선 위의 길이이므로 일반적으로 같지 않아 옳지 않다.\n③에서 $\\triangle GBD$는 6개의 같은 넓이의 작은 삼각형 중 하나이므로 $\\dfrac16\\triangle ABC$가 맞다.\n④에서 $\\square FBDG$는 같은 넓이의 작은 삼각형 2개로 이루어져 전체의 $\\dfrac13$이므로 옳다.\n⑤에서 $\\triangle AGE$는 전체의 $\\dfrac16$이고 $\\triangle ADC$는 전체의 $\\dfrac12$이므로 $\\triangle AGE=\\dfrac13\\triangle ADC$이다. 따라서 제시된 $\\dfrac12$는 옳지 않다.\n따라서 정답은 ②, ⑤이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q11.png"
+  },
+  {
+    "id": 12,
+    "level": "상",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $G'$은 $\\triangle GBC$의 무게중심이다. $\\triangle G'BD$의 넓이가 $5\\rm\\,cm^2$일 때, $\\triangle ABC$의 넓이를 구하면? (4점)",
+    "choices": [
+      "$80\\rm\\,cm^2$",
+      "$85\\rm\\,cm^2$",
+      "$90\\rm\\,cm^2$",
+      "$95\\rm\\,cm^2$",
+      "$100\\rm\\,cm^2$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 무게중심이 밑변에서 차지하는 높이의 비를 차례로 적용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 밑변 $BC$에서 $G$까지의 높이는 $A$에서 $BC$까지 높이의 $\\dfrac13$이다.\n또 $G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지 높이의 $\\dfrac13$, 즉 원래 높이의 $\\dfrac19$이다.\n$D$는 $BC$의 중점이므로 $BD=\\dfrac12 BC$이다.\n따라서 $[\\triangle G'BD]=\\dfrac12\\times\\dfrac12 BC\\times\\dfrac19 h=\\dfrac1{18}[\\triangle ABC]$이다.\n$5=\\dfrac1{18}[\\triangle ABC]$이므로 $[\\triangle ABC]=90\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q12.png"
+  },
+  {
+    "id": 13,
+    "level": "상",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 평행사변형 $ABCD$에서 점 $M$은 $\\overline{BC}$의 중점이고, 점 $P$는 $\\overline{BD}$와 $\\overline{AM}$의 교점이다. $\\square ABCD$의 넓이가 $48\\rm\\,cm^2$일 때, $\\triangle ABP$의 넓이를 구하면? (4점)",
+    "choices": [
+      "$8\\rm\\,cm^2$",
+      "$9\\rm\\,cm^2$",
+      "$10\\rm\\,cm^2$",
+      "$11\\rm\\,cm^2$",
+      "$12\\rm\\,cm^2$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 평행선으로 생기는 닮음에서 $AP:PM$을 구한 뒤 넓이비를 사용한다.\n평행사변형이므로 $AD=BC$이고, $M$은 $BC$의 중점이므로 $AD:BM=2:1$이다.\n$AD\\parallel BM$이므로 $\\triangle APD\\sim\\triangle MPB$이고 따라서 $AP:PM=2:1$이다.\n$BM=\\dfrac12 BC$이므로 $[\\triangle ABM]=\\dfrac12\\times\\dfrac12\\times48=12\\rm\\,cm^2$이다.\n$\\triangle ABP$와 $\\triangle BPM$은 밑변을 각각 $AP$, $PM$으로 보면 높이가 같아 넓이비가 $2:1$이다.\n따라서 $[\\triangle ABP]=12\\times\\dfrac23=8\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q13.png"
+  },
+  {
+    "id": 14,
+    "level": "중",
+    "category": "피타고라스 정리",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "오른쪽 사다리꼴 $ABCD$에서 $\\overline{DC}$의 길이를 구하면? (4점)",
+    "choices": [
+      "$12\\rm\\,cm$",
+      "$13\\rm\\,cm$",
+      "$14\\rm\\,cm$",
+      "$15\\rm\\,cm$",
+      "$16\\rm\\,cm$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 두 밑변의 길이의 차와 높이로 직각삼각형을 만든다.\n$AD=4\\rm\\,cm$, $BC=13\\rm\\,cm$이므로 두 밑변의 길이의 차는 $13-4=9\\rm\\,cm$이다.\n높이는 $AB=12\\rm\\,cm$이므로 $DC$를 빗변으로 하는 직각삼각형의 두 직각변은 $9\\rm\\,cm$, $12\\rm\\,cm$이다.\n$DC^2=9^2+12^2=225$이므로 $DC=15\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q14.png"
+  },
+  {
+    "id": 15,
+    "level": "중",
+    "category": "피타고라스 정리",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{BC}=16\\rm\\,cm$인 직각삼각형 $ABC$의 각 변을 지름으로 하는 세 반원 $P$, $Q$, $R$의 넓이의 합을 구하면? (5점)",
+    "choices": [
+      "$16\\pi\\rm\\,cm^2$",
+      "$32\\pi\\rm\\,cm^2$",
+      "$64\\pi\\rm\\,cm^2$",
+      "$96\\pi\\rm\\,cm^2$",
+      "$128\\pi\\rm\\,cm^2$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 지름이 $d$인 반원의 넓이는 $\\dfrac{\\pi d^2}{8}$이고, 피타고라스 정리로 세 변의 제곱을 연결한다.\n세 반원의 넓이의 합은 $\\dfrac\\pi8(AB^2+AC^2+BC^2)$이다.\n$\\angle A=90^\\circ$이므로 $AB^2+AC^2=BC^2$이다.\n따라서 넓이의 합은 $\\dfrac\\pi8(2BC^2)=\\dfrac\\pi4\\times16^2=64\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q15.png"
+  },
+  {
+    "id": 16,
+    "level": "하",
+    "category": "확률",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 차가 $3$ 또는 $4$가 되는 경우의 수를 구하면? (4점)",
+    "choices": [
+      "$9$",
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 서로 다른 두 주사위이므로 순서가 다른 두 눈은 서로 다른 경우로 센다.\n눈의 차가 $3$인 경우는 $(1,4),(2,5),(3,6)$과 순서를 바꾼 경우까지 $6$가지이다.\n눈의 차가 $4$인 경우는 $(1,5),(2,6)$과 순서를 바꾼 경우까지 $4$가지이다.\n따라서 모두 $6+4=10$가지이다.\n따라서 정답은 ②이다."
+  },
+  {
+    "id": 17,
+    "level": "중",
+    "category": "확률",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 점 $P$는 정오각형의 한 꼭짓점 $A$를 출발하여 서로 다른 $2$개의 주사위를 던져 나오는 눈의 수의 합만큼 시계 반대 방향으로 움직이는 점이다. 서로 다른 주사위 $2$개를 동시에 던질 때, 점 $P$가 점 $C$의 위치에 오게 되는 경우의 수를 모두 구하면? (5점)",
+    "choices": [
+      "5가지",
+      "6가지",
+      "7가지",
+      "8가지",
+      "9가지"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 정오각형에서는 $5$칸을 움직이면 원래 꼭짓점으로 돌아오므로 이동 칸 수를 $5$로 나눈 나머지를 본다.\n$A$에서 시계 반대 방향으로 $C$까지는 $2$칸이므로 두 주사위 눈의 합이 $5$로 나누어 나머지가 $2$여야 한다.\n가능한 합은 $2$, $7$, $12$이다.\n합이 $2$인 경우는 $(1,1)$ 한 가지, 합이 $7$인 경우는 $6$가지, 합이 $12$인 경우는 $(6,6)$ 한 가지이다.\n따라서 경우의 수는 $1+6+1=8$가지이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q17.png"
+  },
+  {
+    "id": 18,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형1]\n항상 닮음인 도형의 예를 두가지 이상 들고, 항상 닮음이 되는 이유를 닮음의 의미를 이용하여 설명하시오. (4점)",
+    "choices": [],
+    "answer": "예: 정사각형끼리, 정삼각형끼리. 대응하는 각의 크기가 각각 같고 대응하는 변의 길이의 비가 일정하므로 항상 닮음이다.",
+    "solution": "[키포인트] 항상 닮음인 도형은 크기가 달라도 모양이 같아 대응각이 같고 대응변의 길이의 비가 일정하다.\n예를 들어 임의의 두 정사각형은 네 각이 모두 $90^\\circ$이고 대응하는 변의 길이의 비가 모두 일정하므로 서로 닮음이다.\n또 임의의 두 정삼각형은 세 각이 모두 $60^\\circ$이고 세 변의 비가 모두 같으므로 서로 닮음이다.\n따라서 예로 정사각형끼리와 정삼각형끼리를 들 수 있고, 한 도형을 일정한 비율로 확대하거나 축소하면 다른 도형과 합동이 되는 관계이므로 항상 닮음이다."
+  },
+  {
+    "id": 19,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형2]\n다음 그림과 같이 가로와 세로의 길이가 각각 $30\\rm\\,cm$, $24\\rm\\,cm$인 직사각형 모양의 액자가 있다. 이 액자의 테두리의 폭이 $3\\rm\\,cm$로 일정할 때, $\\square ABCD$와 $\\square EFGH$는 서로 닮은 도형인지 판단하고, 그 이유를 설명하여 보시오. (5점)<br><img src=\"assets/images/23_신흥중_2학기_기말_중2_기출/q19.png\"><br>(1) 닮은 도형(이다. 아니다) (1점)\n(2) 그 이유 (4점)",
+    "choices": [],
+    "answer": "아니다. $ABCD$의 가로와 세로의 비는 $30:24=5:4$이고, $EFGH$의 가로와 세로는 각각 $24\\rm\\,cm$, $18\\rm\\,cm$이므로 그 비는 $24:18=4:3$이다. 대응하는 변의 길이의 비가 일정하지 않으므로 닮은 도형이 아니다.",
+    "solution": "[키포인트] 두 직사각형이 닮으려면 가로와 세로의 비가 같아야 한다.\n바깥 직사각형 $ABCD$의 가로와 세로의 비는 $30:24=5:4$이다.\n테두리의 폭이 $3\\rm\\,cm$이므로 안쪽 직사각형의 가로는 $30-6=24\\rm\\,cm$, 세로는 $24-6=18\\rm\\,cm$이다.\n따라서 $EFGH$의 가로와 세로의 비는 $24:18=4:3$이다.\n$5:4\\ne4:3$이므로 대응하는 변의 길이의 비가 일정하지 않다.\n따라서 (1) 아니다, (2) 두 직사각형은 서로 닮은 도형이 아니다."
+  },
+  {
+    "id": 20,
+    "level": "중",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형3]\n다음 그림에서 $\\overline{BC}//\\overline{DE}$일 때, $x$의 값을 구하시오. (4점)<br><img src=\"assets/images/23_신흥중_2학기_기말_중2_기출/q20.png\"><br>(풀이) 비례식을 세워 $x$의 값 구하기",
+    "choices": [],
+    "answer": "$\\dfrac{16}{5}\\rm\\,cm$",
+    "solution": "[키포인트] $BC\\parallel DE$이므로 작은 삼각형과 큰 삼각형이 닮음이다.\n$AB=4\\rm\\,cm$, $BD=6\\rm\\,cm$이므로 $AD=10\\rm\\,cm$이다.\n$BC\\parallel DE$이므로 $\\triangle ABC\\sim\\triangle ADE$이다.\n따라서 $AB:AD=BC:DE$이므로 $4:10=x:8$이다.\n$10x=32$이므로 $x=\\dfrac{16}{5}$이다.\n따라서 구하는 값은 $\\dfrac{16}{5}\\rm\\,cm$이다."
+  },
+  {
+    "id": 21,
+    "level": "상",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형4]\n다음 그림에서 $\\overline{AD}:\\overline{DB}=\\overline{AE}:\\overline{EC}$이다. 그 이유를 다음 단계에 따라 설명하여 보시오. (6점)<br><img src=\"assets/images/23_신흥중_2학기_기말_중2_기출/q21.png\"><br>(1) 점 $E$를 지나고 변 $AB$에 평행한 직선을 그리고, 변 $BC$와의 교점을 $F$라고 하자. (2점)\n(2) 이때 $\\triangle ADE$와 $\\triangle EFC$는 닮은 삼각형이다. 닮음 조건을 말하시오. (1점)\n(3) (3점)\n$\\triangle ADE\\sim\\triangle EFC$이므로 $\\overline{AD}:(\\qquad)=\\overline{AE}:(\\qquad)$\n또, $\\square DBFE$는 $(\\qquad)$이므로 $\\overline{EF}=(\\qquad)$\n따라서 $\\overline{AD}:(\\qquad)=\\overline{AE}:(\\qquad)$",
+    "choices": [],
+    "answer": "(1) $EF\\parallel AB$가 되도록 긋는다. (2) AA 닮음. (3) $EF$, $EC$, 평행사변형, $DB$, $DB$, $EC$.",
+    "solution": "[키포인트] 보조선을 그어 닮은 삼각형과 평행사변형을 함께 만든다.\n(1) 점 $E$를 지나 $AB$에 평행한 직선을 그어 $BC$와 만나는 점을 $F$라 한다.\n(2) $AD$와 $EF$가 평행이고 $DE$와 $FC$가 평행이므로 대응하는 두 각의 크기가 각각 같다. 따라서 $\\triangle ADE\\sim\\triangle EFC$이며 닮음 조건은 AA 닮음이다.\n(3) 닮음에서 $AD:EF=AE:EC$이다.\n또 $DB\\parallel EF$, $DE\\parallel BF$이므로 $\\square DBFE$는 평행사변형이고 $EF=DB$이다.\n따라서 $AD:DB=AE:EC$이다.\n따라서 빈칸은 차례로 $EF$, $EC$, 평행사변형, $DB$, $DB$, $EC$이다."
+  },
+  {
+    "id": 22,
+    "level": "중",
+    "category": "피타고라스 정리",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형5]\n다음 직사각형 $ABCD$의 꼭짓점 $A$에서 대각선 $\\overline{BD}$에 내린 수선의 발을 $E$라고 할 때, $\\overline{AE}$의 길이를 구하시오. (6점)<br><img src=\"assets/images/23_신흥중_2학기_기말_중2_기출/q22.png\"><br>(풀이)",
+    "choices": [],
+    "answer": "$\\dfrac{24}{5}\\rm\\,cm$",
+    "solution": "[키포인트] 직각삼각형 $ABD$의 넓이를 두 가지 방법으로 나타낸다.\n$AB=6\\rm\\,cm$, $AD=8\\rm\\,cm$이므로 피타고라스 정리에 의해 $BD=\\sqrt{6^2+8^2}=10\\rm\\,cm$이다.\n$\\triangle ABD$의 넓이는 $\\dfrac12\\times6\\times8=24\\rm\\,cm^2$이다.\n한편 $AE\\perp BD$이므로 같은 넓이는 $\\dfrac12\\times10\\times AE=5AE$이다.\n$5AE=24$이므로 $AE=\\dfrac{24}{5}\\rm\\,cm$이다.\n따라서 구하는 값은 $\\dfrac{24}{5}\\rm\\,cm$이다."
+  },
+  {
+    "id": 23,
+    "level": "중",
+    "category": "확률",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형6]\n진수는 $50$원, $100$원, $500$원짜리 동전을 각각 $4$개씩 갖고 있다. 가게에서 $800$원짜리 과자를 한 개 살 때, 이 돈으로 거스름돈 없이 그 값을 지불하는 모든 방법의 수를 구하시오. (5점)\n(풀이)",
+    "choices": [],
+    "answer": "3가지",
+    "solution": "[키포인트] 각 동전의 개수를 미지수로 두고 가능한 범위 안에서 정수해를 센다.\n$50$원, $100$원, $500$원짜리 동전의 개수를 각각 $x,y,z$라 하면 $0\\le x,y,z\\le4$이고 $50x+100y+500z=800$이다.\n$50$으로 나누면 $x+2y+10z=16$이다.\n$z=0$이면 왼쪽의 최댓값은 $4+2\\times4=12$이므로 불가능하다.\n$z=1$이면 $x+2y=6$이고 가능한 $(x,y)$는 $(4,1),(2,2),(0,3)$의 $3$가지이다.\n$z\\ge2$이면 $10z\\ge20$이므로 불가능하다.\n따라서 구하는 방법의 수는 3가지이다."
+  }
 ];

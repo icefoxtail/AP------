@@ -7546,15 +7546,15 @@ window.mainDB = {
       "year": 2023,
       "semester": "1",
       "examType": "mid",
-      "subject": "",
+      "subject": "수학",
       "contentType": "기출",
       "qCount": 21,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": 999,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": 999,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-05",
+      "rangeEndUnit": "이차함수",
+      "rangeEndUnitOrder": 5,
       "courseRanges": [
         {
           "standardCourse": "수학(상)",
@@ -7563,21 +7563,11 @@ window.mainDB = {
           "rangeStartUnit": "다항식의 연산",
           "rangeStartUnitOrder": 1,
           "rangeEndUnitKey": "H15-SA-05",
-          "rangeEndUnit": "이차방정식",
+          "rangeEndUnit": "이차함수",
           "rangeEndUnitOrder": 5
-        },
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-04",
-          "rangeStartUnit": "이차함수와 그래프",
-          "rangeStartUnitOrder": 4,
-          "rangeEndUnitKey": "M3-04",
-          "rangeEndUnit": "이차함수와 그래프",
-          "rangeEndUnitOrder": 4
         }
       ],
-      "primaryStandardCourse": ""
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js",

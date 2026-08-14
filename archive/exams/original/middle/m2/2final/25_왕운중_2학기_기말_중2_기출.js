@@ -1,26 +1,588 @@
-window.examTitle="25_왕운중_2학기_기말_중2_기출";window.archiveStatus="metadata_and_prompt_transcription_only";const U={"도형의 닮음":["M2-06",6],"피타고라스 정리":["M2-07",7],"확률":["M2-08",8]};function q(id,u,t,c,ch=[]){const[k,o]=U[u];return{id,level:"중",category:u,originalCategory:u,standardCourse:"중2 수학",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags:[t,u],wide:t==="서술형",content:c,...(ch.length?{choices:ch}:{}),answer:"",solution:""}}
-window.questionBank=[
-q(1,"도형의 닮음","객관식","다음 그림에서 $\\triangle ABC\sim\\triangle DEF$일 때, $\\overline{AB}$의 길이를 구하면? (4점)",["$7\rm\,cm$","$8\rm\,cm$","$9\rm\,cm$","$10\rm\,cm$","$11\rm\,cm$"]),
-q(2,"도형의 닮음","객관식","일상생활에서 쓰는 복사 용지의 규격은 닮음을 이용한 것이다. A1 용지는 A0 용지를 반으로 자른 것이고, A2 용지는 A1 용지를, A3 용지는 A2 용지를, A4 용지는 A3 용지를 각각 반으로 자른 것이다. A4 용지와 A0 용지의 닮음비를 구하면? (4점)",["$2:1$","$4:1$","$1:2$","$1:4$","$1:8$"]),
-q(3,"도형의 닮음","객관식","그림에서 $\\angle A=\\angle BCD$일 때, $\\overline{AB}$의 길이를 구하면? (4점)",["$16\rm\,cm$","$17\rm\,cm$","$18\rm\,cm$","$19\rm\,cm$","$20\rm\,cm$"]),
-q(4,"도형의 닮음","객관식","그리스의 수학자 탈레스는 삼각형의 닮음을 이용하여 피라미드의 높이를 구하였다. 그는 피라미드의 옆에 길이를 알고 있는 지팡이를 수직으로 세워 다음과 같이 피라미드의 높이를 계산하였다고 한다. 길이가 $49\rm\,cm$인 지팡이의 그림자의 길이를 $60\rm\,cm$라 할 때, 정사각형인 밑면의 한 모서리의 길이가 $220\rm\,m$인 피라미드의 그림자의 길이를 $70\rm\,m$라고 하자. 피라미드의 높이의 값은? (4점)",["$145\rm\,m$","$146\rm\,m$","$147\rm\,m$","$148\rm\,m$","$149\rm\,m$"]),
-q(5,"도형의 닮음","객관식","그림에서 $l\\parallel m\\parallel n$일 때, $x$의 값을 구하면? (3점)",["$9$","$12$","$15$","$18$","$21$"]),
-q(6,"도형의 닮음","객관식","그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. $\\overline{AB}=10\rm\,cm$, $\\overline{CG}=10\rm\,cm$일 때, $x+y$의 값은? (4점)",["$12$","$14$","$16$","$18$","$20$"]),
-q(7,"피타고라스 정리","객관식","그림과 같은 직각삼각형 $ABC$에서 $\\overline{AC}$의 길이를 구하면? (3점)",["$8\rm\,cm$","$9\rm\,cm$","$10\rm\,cm$","$11\rm\,cm$","$12\rm\,cm$"]),
-q(8,"피타고라스 정리","객관식","$\\triangle AED\\equiv\\triangle BCE$이고 세 점 $A$, $E$, $B$가 한 직선 위에 있을 때, $\\overline{CD}$를 지름으로 하는 반원의 넓이의 값은? (4점)",["$\\dfrac{289}{8}\\pi$","$\\dfrac{289}{16}\\pi$","$\\dfrac{89}{4}\\pi$","$\\dfrac{89}{8}\\pi$","$\\dfrac{289}{4}\\pi$"]),
-q(9,"도형의 닮음","객관식","그림의 $\\triangle ABC$에서 점 $D$, $E$, $F$는 각각 $\\overline{AB}$, $\\overline{BC}$, $\\overline{CA}$의 중점일 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (4점)\n<보기>\nㄱ. $AB\\parallel EF$\nㄴ. $\\triangle ADF\\equiv\\triangle EFD$\nㄷ. $\\triangle DBE\\equiv\\triangle FEC$",["ㄱ","ㄴ","ㄷ","ㄱ, ㄴ","ㄱ, ㄴ, ㄷ"]),
-q(10,"도형의 닮음","객관식","다음 보기에서 빈칸 ㉠, ㉡에 각각 알맞은 말을 써 넣은 것을 고르면? (4점)\n홍민: 평행한 세 개의 직선이 다른 두 직선과 만나서 생기는 선분의 길이의 비는 같습니다.\n선생님: 그럼 거꾸로 생각해서 서로 다른 세 개의 직선이 다른 두 직선과 만나서 생기는 선분의 길이의 비가 같으면 세 개의 직선은 평행할까요?\n홍민: 세 개의 직선이 ㉠.\n선생님: 맞아요.\n위 그림은 가로와 세로의 길이가 각각 $15\rm\,cm$와 $12\rm\,cm$인 직사각형 모양의 액자가 있다. 이 액자의 테두리의 폭은 $2\rm\,cm$로 일정하다. 이때, 사각형 $ABCD$와 사각형 $EFGH$는 ㉡.",["항상 평행합니다 / 닮은 도형이다.","항상 평행합니다 / 닮은 도형이 아니다.","일치합니다 / 닮은 도형이다.","평행한 것은 아닙니다 / 닮은 도형이다.","평행한 것은 아닙니다 / 닮은 도형이 아니다."]),
-q(11,"도형의 닮음","객관식","다음 그림의 $\\triangle ABC$에서 세 점 $D$, $E$, $F$는 각각 $\\overline{BC}$, $\\overline{CA}$, $\\overline{AB}$의 중점이고, 세 선분 $AD$, $BE$, $CF$의 교점을 $G$, $AD$와 $FE$의 교점을 $H$, $G$를 지나고 $BC$에 평행한 직선이 $AB$, $AC$와 만나는 점을 각각 $I$, $J$라고 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (5점)",["㉠","㉠, ㉡","㉠, ㉢","㉡, ㉢","㉠, ㉡, ㉢"]),
-q(12,"도형의 닮음","객관식","한 도형을 일정한 비율로 확대 또는 축소하여 그리는 도구를 팬터그래프(pantagraph)라고 한다. 아래 그림처럼 폭이 일정한 두꺼운 종이로 직사각형 모양의 막대를 만들어 구멍을 뚫고, A, B, C의 3곳에 누름 못을 이용하여 4개의 막대를 연결한다. 점 O를 고정하고 점 D와 점 E에 연필을 끼워 점 D를 움직여 도형을 그리면 점 E도 따라 움직이면서 도형이 그려진다. 이때 점 D와 점 E가 그리는 도형의 닮음비의 값은? (5점)",["$2:3$","$2:5$","$2:7$","$3:5$","$3:7$"]),
-q(13,"확률","객관식","정육면체 주사위 한 개를 던질 때, 5보다 작은 수의 눈이 나오는 경우의 수를 구하면? (3점)",["$2$","$3$","$4$","$5$","$6$"]),
-q(14,"확률","객관식","하윤이는 오늘 주말 데이트에 상의 3벌과 하의 2벌 중에서 옷을 입으려 한다. 이때 상의와 하의를 한 벌씩 짝지어 입을 수 있는 경우의 수를 구하면? (4점)",["$3$","$4$","$5$","$6$","$7$"]),
-q(15,"확률","객관식","1부터 5까지의 자연수가 하나씩 적힌 공 5개가 들어 있는 항아리에서 한꺼번에 두 개를 꺼내어 만들 수 있는 두 자리 자연수는 몇 개인지 구하면? (4점)",["12개","18개","20개","25개","30개"]),
-q(16,"확률","객관식","사건 $A$가 일어날 확률을 $p$라고 할 때, 다음 중에서 옳지 않은 것을 모두 고르면? (정답 2개) (4점)",["$p=\\dfrac{\\text{사건 A가 일어나는 경우의 수}}{\\text{모든 경우의 수}}$이다.","사건 $A$가 일어나지 않을 확률은 $p-1$이다.","절대로 일어나지 않는 사건의 확률은 0이다.","반드시 일어나는 사건의 확률은 1이다.","$0<p<1$"]),
-q(17,"도형의 닮음","객관식","다음 그림과 같이 $\\overline{BC}=12\rm\,cm$, $\\overline{EF}=6\rm\,cm$, $\\overline{ED}=7\rm\,cm$, $\\angle B=\\angle E$인 두 삼각형 $DEF$와 $ABC$가 있다. 카드 4장 중에서 한 장을 뽑아서 카드에 적힌 조건을 추가할 때, $\\triangle DEF\sim\\triangle ABC$가 될 확률을 구하면? (4점)",["$0$","$\\dfrac14$","$\\dfrac12$","$\\dfrac34$","$1$"]),
-q(18,"확률","객관식","1부터 100까지의 자연수가 하나씩 적힌 100장의 카드 중에서 한 장의 카드를 임의로 뽑을 때, 4의 배수 또는 7의 배수가 나올 확률을 구하면? (4점)",["$\\dfrac9{100}$","$\\dfrac9{25}$","$\\dfrac{19}{50}$","$\\dfrac{37}{100}$","$\\dfrac25$"]),
-q(19,"확률","객관식","현성이와 진표가 승부차기를 성공할 확률이 각각 $\\dfrac23$, $\\dfrac x5$이다. 현성이와 진표가 각각 승부차기를 한 번씩 하였을 때, 적어도 한 명이 성공할 확률이 $\\dfrac45$일 때, $x$를 구하면? (4점)",["$\\dfrac12$","$\\dfrac23$","$\\dfrac34$","$1$","$2$"]),
-q(20,"확률","객관식","다음과 같은 규칙에 따라 성준, 서윤, 윤태 세 명의 학생이 말판 게임을 하고 있다. 세 학생의 말의 위치가 <그림 1>과 같고 성준이가 주사위를 던질 차례라고 할 때, 윤태의 말이 '시작'이라고 적혀 있는 지점으로 갈 확률을 구하면? (5점)",["$\\dfrac1{36}$","$\\dfrac5{36}$","$\\dfrac16$","$\\dfrac5{18}$","$\\dfrac12$"]),
-q(21,"피타고라스 정리","서술형","[서술형 1] 일차방정식 $12x+5y-60=0$의 그래프가 그림과 같을 때 $\\overline{OC}$의 길이를 구하시오. (7점) ($\\triangle OAB$의 세 변의 길이 구하는 과정 5점, $\\overline{OC}$의 길이 구하는 과정 2점)"),
-q(22,"확률","서술형","[서술형 2] 다음 그림과 같이 한 변의 길이가 10인 정육각형 $ABCDEF$의 꼭짓점 $A$에서 출발하여 변을 따라 다른 꼭짓점으로 이동하는 점 $P$가 있다. 정육면체 주사위 한 개를 두 번 던져서 나온 눈의 수의 합만큼 점 $P$를 시계 반대 방향으로 이동시킬 때, 점 $P$가 꼭짓점 $E$까지 이동하게 될 확률을 구하시오. (7점) (점 $P$가 꼭짓점 $E$까지 이동하게 되는 모든 경우를 순서쌍으로 나타내는 과정 6점, 확률 구하는 과정 1점)"),
-q(23,"확률","서술형","[서술형 3] 주머니 A에는 파란 공 2개, 빨간 공 3개가 들어 있고, 주머니 B에는 파란 공 3개, 빨간 공 2개가 들어 있다. 주머니 A와 주머니 B에서 공을 각각 한 개씩 임의로 꺼낼 때, 두 공이 모두 빨간 공일 확률을 구하시오. (6점) (주머니 A에서 빨간 공을 뽑을 확률 2점, 주머니 B에서 빨간 공을 뽑을 확률 2점, 두 공이 모두 빨간 공일 확률 2점)")
+window.examTitle = "25_왕운중_2학기_기말_중2_기출";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "하",
+    "category": "삼각형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림에서 $\\triangle ABC\\sim\\triangle DEF$일 때, $\\overline{AB}$의 길이를 구하면?",
+    "choices": [
+      "$7\\mathrm{cm}$",
+      "$8\\mathrm{cm}$",
+      "$9\\mathrm{cm}$",
+      "$10\\mathrm{cm}$",
+      "$11\\mathrm{cm}$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 닮은 삼각형의 대응변의 길이의 비는 모두 같다.\n$BC:EF=15:9=5:3$이므로 $AB:DE=5:3$이다.\n$DE=6\\mathrm{cm}$이므로 $AB=6\\times\\dfrac53=10\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q1.png"
+  },
+  {
+    "id": 2,
+    "level": "중",
+    "category": "닮은 도형의 닮음비",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "일상생활에서 쓰는 복사 용지의 규격은 닮음을 이용한 것이다. A1 용지는 A0용지를 반으로 자른 것이고, A2 용지는 A1 용지를, A3 용지는 A2 용지를, A4 용지는 A3 용지를 각각 반으로 자른 것이다. A4용지와 A0용지의 닮음비를 구하면?",
+    "choices": [
+      "$2:1$",
+      "$4:1$",
+      "$1:2$",
+      "$1:4$",
+      "$1:8$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 닮은 도형에서 넓이의 비는 닮음비의 제곱이다.\nA0에서 A4까지 네 번 반으로 자르므로 넓이는 $\\left(\\dfrac12\\right)^4=\\dfrac1{16}$배가 된다.\n따라서 닮음비는 $\\sqrt{1:16}=1:4$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q2.png"
+  },
+  {
+    "id": 3,
+    "level": "중",
+    "category": "삼각형의 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 $\\angle A=\\angle BCD$일 때, $\\overline{AB}$의 길이를 구하면?",
+    "choices": [
+      "$16\\mathrm{cm}$",
+      "$17\\mathrm{cm}$",
+      "$18\\mathrm{cm}$",
+      "$19\\mathrm{cm}$",
+      "$20\\mathrm{cm}$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 두 각이 각각 같음을 이용하여 두 삼각형의 닮음을 찾는다.\n점 $B,D,A$가 한 직선 위에 있으므로 $\\angle ABC=\\angle CBD$이고, 조건에서 $\\angle A=\\angle BCD$이다. 따라서 $\\triangle ABC\\sim\\triangle CBD$이다.\n대응변 $AC:CD=12:6=2:1$이므로 $AB:CB=2:1$이다. $CB=8\\mathrm{cm}$이므로 $AB=16\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q3.png"
+  },
+  {
+    "id": 4,
+    "level": "상",
+    "category": "닮음의 활용",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그리스의 수학자 탈레스는 삼각형의 닮음을 이용하여 피라미드의 높이를 구하였다. 그는 피라미드의 옆에 길이를 알고 있는 지팡이를 수직으로 세워 다음과 같이 피라미드의 높이를 계산하였다고 한다. 길이가 $49\\mathrm{cm}$인 지팡이의 그림자의 길이를 $60\\mathrm{cm}$라 할 때, 정사각형인 밑면의 한 모서리의 길이가 $220\\mathrm{m}$인 피라미드의 그림자의 길이를 $70\\mathrm{m}$라고 하자. 피라미드의 높이의 값은?",
+    "choices": [
+      "$145\\mathrm{m}$",
+      "$146\\mathrm{m}$",
+      "$147\\mathrm{m}$",
+      "$148\\mathrm{m}$",
+      "$149\\mathrm{m}$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 태양광선이 평행하므로 높이와 그림자가 만드는 직각삼각형들은 서로 닮는다.\n피라미드의 꼭짓점은 정사각형 밑면의 중심 위에 있으므로 중심에서 그림자 방향의 밑면 끝까지는 $220\\div2=110\\mathrm{m}$이다. 밑면 밖 그림자 $70\\mathrm{m}$를 더하면 대응하는 수평 길이는 $180\\mathrm{m}$이다.\n따라서 $49:60=h:180$이고, $h=180\\times\\dfrac{49}{60}=147$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q4.png"
+  },
+  {
+    "id": 5,
+    "level": "중",
+    "category": "평행선 사이의 선분의 길이의 비",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 $l\\parallel m\\parallel n$일 때, $x$의 값을 구하면? (3점)",
+    "choices": [
+      "$9$",
+      "$12$",
+      "$15$",
+      "$18$",
+      "$21$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 세 평행선이 두 직선과 만나서 생기는 대응 선분의 길이의 비는 같다.\n왼쪽 직선에서 $l$과 $m$ 사이, $m$과 $n$ 사이의 길이의 비는 $4:12=1:3$이다.\n따라서 오른쪽 직선에서도 $6:x=1:3$이므로 $x=18$이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q5.png"
+  },
+  {
+    "id": 6,
+    "level": "중",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. $\\overline{AB}=10\\mathrm{cm}$, $\\overline{CG}=10\\mathrm{cm}$일 때, $x+y$의 값은?",
+    "choices": [
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$",
+      "$20$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n$D$는 $AB$의 중점이므로 $BD=\\dfrac{AB}{2}=5\\mathrm{cm}$이다. 따라서 $y=5$이다.\n또 $CG:GD=2:1$이고 $CG=10\\mathrm{cm}$이므로 $GD=5\\mathrm{cm}$, 따라서 $CD=15\\mathrm{cm}$이다. 그림에서 $x=CD$이므로 $x=15$이다.\n따라서 $x+y=15+5=20$이고 정답은 ⑤이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q6.png"
+  },
+  {
+    "id": 7,
+    "level": "하",
+    "category": "피타고라스 정리",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같은 직각삼각형 $ABC$에서 $\\overline{AC}$의 길이를 구하면? (3점)",
+    "choices": [
+      "$8\\mathrm{cm}$",
+      "$9\\mathrm{cm}$",
+      "$10\\mathrm{cm}$",
+      "$11\\mathrm{cm}$",
+      "$12\\mathrm{cm}$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 직각삼각형에서 빗변의 제곱은 두 직각변의 제곱의 합과 같다.\n$BC=17\\mathrm{cm}$가 빗변이고 $AB=15\\mathrm{cm}$이므로 $AC^2=17^2-15^2=289-225=64$이다.\n따라서 $AC=8\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q7.png"
+  },
+  {
+    "id": 8,
+    "level": "상",
+    "category": "피타고라스 정리의 활용",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "$\\triangle AED\\equiv\\triangle BCE$이고, 세 점 $A$, $E$, $B$가 한 직선 위에 있을 때, $\\overline{CD}$를 지름으로 하는 반원의 넓이의 값은?",
+    "choices": [
+      "$289\\pi$",
+      "$\\dfrac{289}{2}\\pi$",
+      "$\\dfrac{289}{4}\\pi$",
+      "$\\dfrac{289}{8}\\pi$",
+      "$\\dfrac{289}{16}\\pi$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 합동에서 대응변의 길이를 구한 뒤, 직각좌표 관계로 $CD$의 제곱을 구한다.\n$\\triangle AED\\equiv\\triangle BCE$이므로 $AE=BC=15$, $BE=AD=8$이다. 따라서 $AB=AE+EB=23$이다.\n$D$와 $C$의 가로 방향 거리는 $23$, 세로 방향 높이의 차는 $15-8=7$이므로 $CD^2=23^2+7^2=578$이다.\n$CD$를 지름으로 하는 반원의 넓이는 $\\dfrac12\\pi\\left(\\dfrac{CD}{2}\\right)^2=\\dfrac{CD^2}{8}\\pi=\\dfrac{578}{8}\\pi=\\dfrac{289}{4}\\pi$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q8.png"
+  },
+  {
+    "id": 9,
+    "level": "중",
+    "category": "삼각형의 중점연결정리",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림의 $\\triangle ABC$에서 점 $D$, $E$, $F$는 각각 $\\overline{AB}$, $\\overline{BC}$, $\\overline{CA}$의 중점 일 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은?",
+    "choices": [
+      "㉠",
+      "㉠, ㉡",
+      "㉠, ㉢",
+      "㉡, ㉢",
+      "㉠, ㉡, ㉢"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 세 변의 중점을 이은 선분의 평행 관계와 길이를 이용한다.\n$E,F$는 각각 $BC,CA$의 중점이므로 $EF\\parallel AB$이어서 ㉠은 옳다.\n중점연결정리에 의해 $AD=EF=\\dfrac12AB$, $AF=DE=\\dfrac12AC$, $DF=\\dfrac12BC$이므로 $\\triangle ADF$와 $\\triangle EFD$는 SSS 합동이다.\n또 $DB=FE=\\dfrac12AB$, $BE=EC=\\dfrac12BC$, $DE=FC=\\dfrac12AC$이므로 $\\triangle DBE\\equiv\\triangle FEC$이다.\n따라서 ㉠, ㉡, ㉢이 모두 옳으므로 정답은 ⑤이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q9.png"
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "평행선과 닮음",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형",
+      "표"
+    ],
+    "wide": false,
+    "content": "다음 &lt;보기&gt;에서 빈 칸 <u>&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;</u>에 각각 알맞은 말을 써 넣은 것을 고르면?",
+    "choices": [],
+    "answer": "⑤",
+    "solution": "[키포인트] 평행선에서 얻는 선분비의 성질의 역은 항상 성립하지 않으며, 직사각형은 가로와 세로의 비를 비교하여 닮음을 판단한다.\n선분의 길이의 비가 같다는 사실만으로 세 직선이 반드시 평행하다고 할 수 없으므로 A는 “평행한 것은 아닙니다.”이다.\n바깥 직사각형은 $15:12=5:4$이고, 테두리 폭이 사방에서 $2\\mathrm{cm}$이므로 안쪽 직사각형은 $11\\mathrm{cm}\\times8\\mathrm{cm}$이다. $11:8\\ne5:4$이므로 두 직사각형은 닮지 않는다.\n따라서 정답은 ⑤이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q10.png"
+  },
+  {
+    "id": 11,
+    "level": "상",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "다음 그림의 $\\triangle ABC$에서 세 점 $D$, $E$, $F$는 각각 $\\overline{BC}$, $\\overline{CA}$, $\\overline{AB}$의 중점이고, 세 선분 $\\overline{AD}$, $\\overline{BE}$, $\\overline{CF}$의 교점을 $G$, $\\overline{AD}$와 $\\overline{FE}$의 교점을 $H$, $G$를 지나고 $\\overline{BC}$에 평행한 직선이 $\\overline{AB}$, $\\overline{AC}$와 만나는 점을 각각 $I$, $J$라고 할 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? (5점)",
+    "choices": [
+      "㉠",
+      "㉠, ㉡",
+      "㉠, ㉢",
+      "㉡, ㉢",
+      "㉠, ㉡, ㉢"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 중점연결선과 무게중심이 중선을 나누는 위치를 넓이비와 함께 이용한다.\n$H$는 중점연결선 $FE$와 중선 $AD$의 교점이므로 $AH=\\dfrac12AD$이다. 무게중심은 $AG=\\dfrac23AD$이므로 $HG=\\left(\\dfrac23-\\dfrac12\\right)AD=\\dfrac16AD$이다. 따라서 $AH:HG=3:1$이어서 ㄱ은 옳다.\n$AIJ\\sim ABC$의 닮음비는 $AG:AD=2:3$이므로 $[AIJ]:[ABC]=4:9$이다. 따라서 $[IBCJ]=\\dfrac59[ABC]$이고, $[AFE]=\\dfrac14[ABC]$이므로 $[IBCJ]:[AFE]=\\dfrac59:\\dfrac14=\\dfrac{20}{9}$이다. ㉡도 옳다.\n$FE=\\dfrac12BC$이고 $G$와 $FE$ 사이의 높이는 전체 높이의 $\\dfrac16$이므로 $[FGE]=\\dfrac1{12}[ABC]$. 전체 넓이가 $35$이면 $[FGE]=\\dfrac{35}{12}$이므로 ㉢은 옳지 않다.\n따라서 정답은 ②이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q11.png"
+  },
+  {
+    "id": 12,
+    "level": "상",
+    "category": "닮은 도형의 활용",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "content": "한 도형을 일정한 비율로 확대 또는 축소하여 그리는 도구를 팬터그래프(pantagraph)라고 한다. 아래 그림처럼 폭이 일정한 두꺼운 종이로 직사각형 모양의 막대를 만들어 다음과 같이 구멍을 뚫는다.",
+    "choices": [
+      "$2:3$",
+      "$2:5$",
+      "$2:7$",
+      "$3:5$",
+      "$3:7$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 막대의 길이로부터 두 닮은 삼각형의 대응변의 비를 구한다.\n그림의 막대에서 $OA=20$, $AB=50$이므로 $OB=70$이다. 또 $BC=20$, $CE=50$이므로 $BE=70$이다. 연결 구조에서 $AD=20$이고 $AD\\parallel BE$이다.\n따라서 $\\triangle OAD\\sim\\triangle OBE$이고 닮음비는 $OA:OB=20:70=2:7$이다. 이에 따라 점 $D$와 점 $E$가 그리는 도형의 닮음비도 $2:7$이다.\n따라서 정답은 ③이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q12.png"
+  },
+  {
+    "id": 13,
+    "level": "하",
+    "category": "경우의 수",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "정육면체 주사위 한 개를 던질 때, 5보다 작은 수의 눈이 나오는 경우의 수를 구하면? (3점)",
+    "choices": [
+      "5",
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 주사위의 눈 중 조건을 만족하는 값을 직접 센다.\n5보다 작은 눈은 $1,2,3,4$의 네 가지이다.\n따라서 경우의 수는 $4$이고 정답은 ②이다."
+  },
+  {
+    "id": 14,
+    "level": "하",
+    "category": "경우의 수",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "하윤이는 오늘 주말 데이트에 다음 그림과 같이 상의 3벌과 하의 2벌 중에서 옷을 입으려 한다. 이 때, 상의와 하의를 한 벌씩 짝 지어 입을 수 있는 경우의 수를 구하면?",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 상의 한 벌을 고르는 방법과 하의 한 벌을 고르는 방법을 곱한다.\n상의는 $3$가지, 하의는 $2$가지이므로 곱의 법칙에 따라 $3\\times2=6$가지이다.\n따라서 정답은 ④이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q14.png"
+  },
+  {
+    "id": 15,
+    "level": "중",
+    "category": "경우의 수",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "1부터 5까지의 자연수가 하나씩 적힌 공 5개가 들어있는 항아리에서 한꺼번에 두 개를 꺼내어 만들 수 있는 두 자리 자연수는 몇 개인지 구하면?",
+    "choices": [
+      "12개",
+      "18개",
+      "20개",
+      "25개",
+      "30개"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 십의 자리와 일의 자리에 서로 다른 두 숫자를 순서 있게 배치한다.\n십의 자리는 $5$가지 중 하나를 고르고, 일의 자리는 남은 $4$가지 중 하나를 고른다.\n따라서 만들 수 있는 두 자리 자연수는 $5\\times4=20$개이다.\n따라서 정답은 ③이다."
+  },
+  {
+    "id": 16,
+    "level": "중",
+    "category": "확률의 뜻과 성질",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "복수정답"
+    ],
+    "wide": false,
+    "content": "사건 $A$가 일어날 확률을 $p$라고 할 때, 다음 중에서 옳지 않은 것을 모두 고르면? (정답2개)",
+    "choices": [
+      "$p=\\dfrac{\\mbox{사건 A가 일어나는 경우의 수}}{\\mbox{모든 경우의 수}}$이다.",
+      "사건 $A$가 일어나지 않을 확률은 $p-1$이다.",
+      "절대로 일어나지 않는 사건의 확률은 $0$이다.",
+      "반드시 일어나는 사건의 확률은 $1$이다.",
+      "$0\\lt p\\lt1$"
+    ],
+    "answer": "②, ⑤",
+    "solution": "[키포인트] 확률의 범위와 여사건의 확률을 확인한다.\n사건 $A$가 일어나지 않을 확률은 $1-p$이므로 ②의 $p-1$은 옳지 않다. 절대로 일어나지 않는 사건의 확률은 $0$, 반드시 일어나는 사건의 확률은 $1$이므로 ③, ④는 옳다.\n확률은 $0\\le p\\le1$이므로 항상 $0\\lt p\\lt1$인 것은 아니다. 따라서 ⑤도 옳지 않다.\n따라서 정답은 ②, ⑤이다."
+  },
+  {
+    "id": 17,
+    "level": "상",
+    "category": "삼각형의 닮음과 확률",
+    "originalCategory": "도형의 닮음",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "도형",
+      "확률"
+    ],
+    "wide": false,
+    "content": "다음 그림과 같이 $\\overline{BC}=12\\mathrm{cm}$이고 $\\overline{EF}=6\\mathrm{cm}$, $\\overline{ED}=7\\mathrm{cm}$, $\\angle B=\\angle E$인 두 삼각형 $DEF$와 $ABC$가 있다. 이 때, 카드 4장 중에서 한 장을 뽑아서 카드에 적힌 조건을 추가할 때, $\\triangle DEF\\sim\\triangle ABC$가 될 확률을 구하면?",
+    "choices": [
+      "$0$",
+      "$\\dfrac14$",
+      "$\\dfrac12$",
+      "$\\dfrac34$",
+      "$1$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 네 카드 각각을 추가했을 때 닮음조건이 완성되는지 확인한다.\n기본 조건은 $EF:BC=6:12=1:2$이고 $\\angle E=\\angle B$이다.\n$\\angle A=\\angle D$ 카드를 뽑으면 두 각이 각각 같으므로 AA 닮음이 성립한다. $AB=14\\mathrm{cm}$ 카드를 뽑으면 $DE:AB=7:14=1:2$, $EF:BC=1:2$이고 그 사이의 각 $E,B$가 같으므로 SAS 닮음이 성립한다.\n반면 $AC=14\\mathrm{cm}$ 또는 $DF=7\\mathrm{cm}$만 추가해서는 닮음조건이 완성되지 않는다. 따라서 유리한 카드는 $2$장이다.\n확률은 $\\dfrac24=\\dfrac12$이므로 정답은 ③이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q17.png"
+  },
+  {
+    "id": 18,
+    "level": "중",
+    "category": "확률의 계산",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "1부터 100까지의 자연수가 하나씩 적힌 100장의 카드 중에서 한 장의 카드를 임의로 뽑을 때, 4의 배수 또는 7의 배수가 나올 확률을 구하면?",
+    "choices": [
+      "$\\dfrac9{25}$",
+      "$\\dfrac{37}{100}$",
+      "$\\dfrac{19}{50}$",
+      "$\\dfrac{39}{100}$",
+      "$\\dfrac25$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 4의 배수와 7의 배수를 더하고, 두 집합에 중복되는 28의 배수를 한 번 뺀다.\n1부터 100까지 4의 배수는 $25$개, 7의 배수는 $14$개이다. 두 조건을 모두 만족하는 28의 배수는 $3$개이다.\n따라서 유리한 경우는 $25+14-3=36$개이고 확률은 $\\dfrac{36}{100}=\\dfrac9{25}$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 19,
+    "level": "중",
+    "category": "확률의 계산",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "현성이와 진표가 승부차기를 성공할 확률이 각각 $\\dfrac25$, $x$이다. 현성이와 진표가 각각 승부차기를 한 번씩 하였을 때, 적어도 한 명이 성공할 확률이 $\\dfrac45$일 때, $x$를 구하면?",
+    "choices": [
+      "$\\dfrac23$",
+      "$\\dfrac35$",
+      "$\\dfrac12$",
+      "$\\dfrac25$",
+      "$\\dfrac13$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] “적어도 한 명 성공”의 여사건은 “두 명 모두 실패”이다.\n현성이가 실패할 확률은 $\\dfrac35$, 진표가 실패할 확률은 $1-x$이다.\n$1-\\dfrac35(1-x)=\\dfrac45$이므로 $\\dfrac35(1-x)=\\dfrac15$이다. 따라서 $1-x=\\dfrac13$, $x=\\dfrac23$이다.\n따라서 정답은 ①이다."
+  },
+  {
+    "id": 20,
+    "level": "상",
+    "category": "확률의 계산",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "다음과 같은 규칙에 따라 성준, 서윤, 윤태 세 명의 학생이 말판 게임을 하고 있다. 세 학생의 말의 위치가 &lt;그림 1&gt;과 같고 성준이가 주사위를 던질 차례라고 할 때, 윤태의 말이 ‘시작’이라고 적혀 있는 지점으로 갈 확률을 구하면? (5점)",
+    "choices": [
+      "$\\dfrac{17}{18}$",
+      "$\\dfrac56$",
+      "$\\dfrac1{36}$",
+      "$\\dfrac1{18}$",
+      "$\\dfrac5{36}$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 윤태의 말이 시작으로 가려면 성준의 말이 윤태의 말이 있는 칸에 도착하여 잡아야 한다.\n그림에서 성준의 말에서 윤태의 말까지는 왼쪽으로 $1$칸, 위로 $1$칸 이동해야 한다. 한 번의 주사위에서 왼쪽 1칸은 눈 $3$, 위쪽 1칸은 눈 $1$일 때이다.\n두 번 던지는 순서를 고려하면 가능한 경우는 $(1,3)$, $(3,1)$의 두 가지이고 전체 경우는 $6\\times6=36$가지이다.\n따라서 확률은 $\\dfrac2{36}=\\dfrac1{18}$이므로 정답은 ④이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q20.png"
+  },
+  {
+    "id": 21,
+    "level": "상",
+    "category": "피타고라스 정리의 활용",
+    "originalCategory": "피타고라스 정리",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "그래프",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형1] 일차방정식 $12x+5y-60=0$의 그래프가 그림과 같을 때 $\\overline{OC}$의 길이를 구하시오. (7점)\n($\\triangle OAB$의 세 변의 길이 구하는 과정 5점, $\\overline{OC}$의 길이 구하는 과정 2점)",
+    "choices": [],
+    "answer": "$\\dfrac{60}{13}$",
+    "solution": "[키포인트] 좌표축과의 절편으로 직각삼각형의 두 변을 구하고, 넓이를 두 방법으로 나타내어 높이 $OC$를 구한다.\n$x$축 위에서는 $y=0$이므로 $12x-60=0$에서 $x=5$이다. 따라서 $OA=5$이다. $y$축 위에서는 $x=0$이므로 $5y-60=0$에서 $y=12$이다. 따라서 $OB=12$이다.\n피타고라스 정리에 의해 $AB=\\sqrt{5^2+12^2}=13$이다.\n$OC\\perp AB$이므로 $\\triangle OAB$의 넓이를 두 방법으로 나타내면 $\\dfrac12\\cdot5\\cdot12=\\dfrac12\\cdot13\\cdot OC$이다. 따라서 $OC=\\dfrac{60}{13}$이다.\n따라서 구하는 길이는 $\\dfrac{60}{13}$이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q21.png"
+  },
+  {
+    "id": 22,
+    "level": "상",
+    "category": "확률의 계산",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형2] 다음 그림과 같이 한 변의 길이가 $1$인 정육각형 $ABCDEF$의 꼭짓점 $A$에서 출발하여 변을 따라 다른 꼭짓점으로 이동하는 점 $P$가 있다. 정육면체 주사위 한 개를 두 번 던져서 나온 눈의 수의 합만큼 점 $P$를 시계 반대방향으로 이동시킬 때, 점 $P$가 꼭짓점 $E$까지 이동하게 될 확률을 구하시오.(7점)\n( 점 $P$가 꼭짓점 $E$까지 이동하게 되는 모든 경우를 순서쌍으로 나타내는 과정 6점, 확률 구하는 과정 1점)",
+    "choices": [],
+    "answer": "$\\dfrac16$",
+    "solution": "[키포인트] 정육각형에서는 $6$칸 이동하면 같은 꼭짓점으로 돌아오므로, $A$에서 $E$에 도착하는 이동 칸 수를 주사위 눈의 합으로 찾는다.\n$A$에서 시계 반대 방향으로 $E$까지는 $4$칸이므로 두 눈의 합이 $4$이면 된다. 또한 $6$칸을 한 바퀴 더 이동한 합 $10$도 같은 꼭짓점 $E$에 도착한다.\n합이 $4$인 순서쌍은 $(1,3),(2,2),(3,1)$이고, 합이 $10$인 순서쌍은 $(4,6),(5,5),(6,4)$이다. 따라서 유리한 경우는 $6$가지이다.\n전체 경우는 $36$가지이므로 확률은 $\\dfrac6{36}=\\dfrac16$이다.\n따라서 구하는 확률은 $\\dfrac16$이다.",
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q22.png"
+  },
+  {
+    "id": 23,
+    "level": "중",
+    "category": "확률의 계산",
+    "originalCategory": "확률",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형3] 주머니 A에는 파란 공 2개, 빨간 공 3개가 들어 있고, 주머니 B에는 파란 공 3개, 빨간 공 2개가 들어 있다. 주머니 A와 주머니 B에서 공을 각각 한 개씩 임의로 꺼낼 때, 두 공이 모두 빨강 공일 확률을 구하시오.(6점)\n(주머니 A에서 빨강 공을 뽑을 확률 2점, 주머니 B에서 빨강 공을 뽑을 확률 2점, 두 공이 모두 빨강 공일 확률 2점)",
+    "choices": [],
+    "answer": "$\\dfrac6{25}$",
+    "solution": "[키포인트] 두 주머니에서 각각 공을 한 개씩 뽑을 때 전체 경우의 수와 두 공이 모두 빨간 공인 경우의 수를 센다.\n주머니 A의 공은 모두 $5$개이고 주머니 B의 공도 모두 $5$개이므로, 두 주머니에서 공을 하나씩 뽑는 전체 경우의 수는 $5\\times5=25$가지이다.\n주머니 A의 빨간 공은 $3$개, 주머니 B의 빨간 공은 $2$개이므로 두 공이 모두 빨간 공인 경우는 $3\\times2=6$가지이다.\n따라서 구하는 확률은 $\\dfrac6{25}$이다."
+  }
 ];
