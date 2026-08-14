@@ -10,6 +10,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "questionType": "객관식",
     "content": "두 다항식 $A=x^{2}+5xy-4y^{2}$, $B=2x^{2}-xy+y^{2}$에 대하여 $2A-3B$를 구하면? [3.3점]",
     "choices": [
       "$-4x^{2}-13xy-11y^{2}$",
@@ -31,6 +32,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "questionType": "객관식",
     "content": "$x-y=1$, $x^{2}+y^{2}=4$일 때, $x^{3}-y^{3}$의 값을 구하면? [3.5점]",
     "choices": [
       "$\\frac{11}{2}$",
@@ -52,6 +54,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "questionType": "객관식",
     "content": "$(2x-1)(2x^{2}+x+1)$을 전개하면 $ax^{3}+bx^{2}+cx-1$이다. $a-b+c$의 값은? (단, $a, b, c$는 상수이다.) [3.7점]",
     "choices": [
       "1",
@@ -73,6 +76,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "questionType": "객관식",
     "content": "다항식 $A=2x^{4}+3x^{3}+4x+5$, $B=x^{2}+1$에 대하여 $A$를 $B$로 나누었을 때의 나머지는? [4점]",
     "choices": [
       "$x+6$",
@@ -94,6 +98,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "객관식",
     "content": "다항식 $P(x)$를 $x-a$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $R$이라 하자. $x^{2}P(x)$를 $x(x-a)$로 나누었을 때의 나머지를 $T(x)$라 할 때, $T(a)$의 값은? (단, $a, R$은 상수이다.) [4.3점]",
     "choices": [
       "$-aR$",
@@ -115,6 +120,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "객관식",
     "content": "다음 중 $x$에 대한 항등식인 것을 모두 고르면? [3.7점]",
     "choices": [
       "$x^{2}=2x-3$",
@@ -136,6 +142,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "객관식",
     "content": "다음은 $x$의 값에 관계없이 등식 $(x+2)^{3}=a(x-1)^{3}+b(x-1)^{2}+c(x-1)+d$가 항상 성립할 때, 상수 $a, b, c, d$에 대하여 $a-b+c-d$의 값을 구하는 과정이다. 다음 (가), (나), (다)에 들어갈 말로 알맞게 짝지은 것을 고르면? [4.3점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n  <tr>\n    <td>\n      $(x+2)^{3}=a(x-1)^{3}+b(x-1)^{2}+c(x-1)+d$를 다시 정리하면<br>\n      $(x+2)^{3}=(x-1)$ <b>(가)</b> $+d$이므로 나머지 정리를 이용하면 $d=$ <b>(나)</b> $^{3}$이다.<br>\n      상수 $c$를 구하기 위하여 <b>(가)</b> $=(x-1)Q(x)+c$이므로 $c=27$이다.<br>\n      이 나눗셈 과정을 반복하여 $a, b, c, d$의 값을 구할 수 있고 $a-b+c-d$의 값은 <b>(다)</b> 이다.\n    </td>\n  </tr>\n</table>\n</div>",
     "choices": [
       "(가) $a(x-1)^2+b(x-1)+c$, (나) 3, (다) 27",
@@ -157,6 +164,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "객관식",
     "content": "최고차항의 계수가 1인 삼차식 $P(x)$에 대하여 $P(2-x)$를 $(x-2)$로 나누었을 때 나머지가 2이다. $P(x)-x^{2}$은 $(x-1)(x+2)$로 나누어떨어진다고 할 때, $P(2)$의 값은? [4.5점]",
     "choices": [
       "6",
@@ -178,6 +186,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "객관식",
     "content": "다항식 $x^{2}+3xy-2x+2y^{2}-y-3$을 인수분해하면 $(x+ay+b)(x+cy+d)$가 된다. 이때, $ac+bd$의 값은? (단, $a, b, c, d$는 실수인 상수이다.) [4점]",
     "choices": [
       "$-1$",
@@ -199,6 +208,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "객관식",
     "content": "삼차식 $2x^{3}+ax^{2}+bx-4$가 두 일차식 $2x-1$과 $x-2$를 인수로 갖도록 상수 $a, b$를 정하고 이 식을 인수분해 했을 때의 나머지 인수를 구하면? [4점]",
     "choices": [
       "$x-1$",
@@ -220,6 +230,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "복소수",
     "standardUnitOrder": 3,
+    "questionType": "객관식",
     "content": "$\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$를 만족시키는 실수 $a, b$에 대하여 $ab$의 값은? [3.6점]",
     "choices": [
       "$-4\\sqrt{6}$",
@@ -241,6 +252,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "복소수",
     "standardUnitOrder": 3,
+    "questionType": "객관식",
     "content": "복소수 $z$와 그 켤레복소수 $\\bar{z}$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? (단, 복소수 $z$의 실수부분, 허수부분은 모두 0이 아니다.) [4.3점]\n<div class=\"question-table-wrap\">\n<table>\n  <tr>\n    <td>\n      ㄱ. $z\\bar{z}$는 실수이다.\n      ㄴ. $\\frac{z+\\bar{z}}{z\\bar{z}}$는 실수이다.\n      ㄷ. $\\omega = \\frac{1-\\sqrt{3}i}{2}$일 때, $\\omega^3+2\\omega^6 = 1$이다.\n    </td>\n  </tr>\n</table>\n</div>",
     "choices": [
       "ㄱ",
@@ -262,6 +274,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 4,
+    "questionType": "객관식",
     "content": "$x$에 대한 이차방정식 $2x^{2}-2(a+3)x+2a+4=0$이 중근을 가질 때, $a$의 값은? [3.5점]",
     "choices": [
       "$-1$",
@@ -283,6 +296,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 4,
+    "questionType": "객관식",
     "content": "$x$에 대한 이차방정식 $x^{2}-(4a+b)x+2ab=0$의 두 실근의 절댓값이 같고 부호가 다를 때, 나올 수 있는 실수 $ab$값들의 합은? (단, $a$는 자연수이고, 두 근의 곱은 -100 미만이 되지 않는다.) [5점]",
     "choices": [
       "$-120$",
@@ -304,6 +318,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차함수",
     "standardUnitOrder": 5,
+    "questionType": "객관식",
     "content": "$x$에 대한 이차함수 $y=x^{2}+2(2k-a)x+4k^{2}-5a+a^{2}$의 그래프가 $a$의 값에 관계없이 $x$축에 접할 때, 상수 $k$의 값은? [3.8점]",
     "choices": [
       "$-\\frac{5}{2}$",
@@ -316,16 +331,16 @@ window.questionBank = [
     "tags": ["객관식","항등식","전개","이차방정식","판별식","이차함수","함수","그래프"],
     "solution": "[키포인트]\n이차함수가 $x$축에 접할 조건인 $D=0$을 적용한 후, $a$에 대한 항등식으로 식을 푼다.\n\n조건 정리\n- $y=x^2+2(2k-a)x+4k^2-5a+a^2$ 그래프가 $x$축에 접함\n- $a$의 값에 관계없이 성립\n\n풀이 과정\n1. 이차함수가 $x$축에 접하므로 $x$절편을 구하는 이차방정식의 판별식이 $0$이어야 한다. 짝수 판별식 $D/4$를 사용한다.\n$D/4 = (2k-a)^2 - (4k^2-5a+a^2) = 0$\n2. 식을 전개한다.\n$4k^2 - 4ak + a^2 - 4k^2 + 5a - a^2 = 0$\n$-4ak + 5a = 0$\n$a(5-4k) = 0$\n3. 이 등식이 '$a$의 값에 관계없이' 항상 성립해야 하므로, $a$에 대한 항등식이다.\n따라서 괄호 안의 값이 $0$이어야 한다.\n$5-4k = 0 \\implies k = \\frac{5}{4}$\n\n결론\n따라서 정답은 ④이다."
   },
-[
   {
     "id": 16,
     "level": "중",
     "category": "이차함수",
     "originalCategory": "이차함수와 직선의 위치 관계",
-    "standardCourse": "고1 수학",
-    "standardUnitKey": "H1-02-02",
+    "standardCourse": "고등 수학(상)",
+    "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
     "content": "다음은 $x \\lt -\\frac{1}{2}$ 또는 $x \\gt 3$일 때 $f(x)=2x^{2}-5x-3$이고, $-\\frac{1}{2} \\le x \\le 3$일 때 $f(x)=-2x^{2}+5x+3$인 함수 $f(x)$의 그래프이다.\n<svg width=\"240\" height=\"140\" viewBox=\"0 0 240 140\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"20\" y1=\"110\" x2=\"220\" y2=\"110\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <line x1=\"100\" y1=\"130\" x2=\"100\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <path d=\"M 61.0,27.44 L 62.26,32.55 L 63.53,37.58 L 64.79,42.52 L 66.05,47.37 L 67.32,52.14 L 68.58,56.83 L 69.84,61.43 L 71.11,65.95 L 72.37,70.38 L 73.63,74.72 L 74.89,78.98 L 76.16,83.16 L 77.42,87.25 L 78.68,91.25 L 79.95,95.17 L 81.21,99.01 L 82.47,102.76 L 83.74,106.42 L 85.0,110.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 85.0,110.0 L 87.69,102.65 L 90.38,95.7 L 93.08,89.12 L 95.77,82.94 L 98.46,77.14 L 101.15,71.73 L 103.85,66.7 L 106.54,62.06 L 109.23,57.81 L 111.92,53.94 L 114.62,50.47 L 117.31,47.37 L 120.0,44.67 L 122.69,42.35 L 125.38,40.41 L 128.08,38.87 L 130.77,37.71 L 133.46,36.93 L 136.15,36.55 L 138.85,36.55 L 141.54,36.93 L 144.23,37.71 L 146.92,38.87 L 149.62,40.41 L 152.31,42.35 L 155.0,44.67 L 157.69,47.37 L 160.38,50.47 L 163.08,53.94 L 165.77,57.81 L 168.46,62.06 L 171.15,66.7 L 173.85,71.73 L 176.54,77.14 L 179.23,82.94 L 181.92,89.12 L 184.62,95.7 L 187.31,102.65 L 190.0,110.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 190.0,110.0 L 191.58,105.51 L 193.16,100.89 L 194.74,96.14 L 196.32,91.25 L 197.89,86.23 L 199.47,81.08 L 201.05,75.8 L 202.63,70.38 L 204.21,64.83 L 205.79,59.14 L 207.37,53.32 L 208.95,47.37 L 210.53,41.29 L 212.11,35.07 L 213.68,28.73 L 215.26,22.24 L 216.84,15.63 L 218.42,8.88 L 220.0,2.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <text x=\"215\" y=\"125\" font-size=\"10px\" font-family=\"serif\">x</text>\n  <text x=\"90\" y=\"25\" font-size=\"10px\" font-family=\"serif\">y</text>\n  <text x=\"105\" y=\"125\" font-size=\"10px\" font-family=\"serif\">O</text>\n  <text x=\"85\" y=\"125\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">$-\\frac{1}{2}$</text>\n  <text x=\"190\" y=\"125\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">3</text>\n  <text x=\"145\" y=\"30\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n  <defs><marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n직선 $y=3x+k$가 위의 함수와 서로 다른 네 점에서 만나도록 하는 정수 $k$의 개수는? [4.7점]",
     "choices": [
       "1",
@@ -335,7 +350,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "tags": ["서술형","계산","조건해석","기출","문제유형"],
+    "tags": ["객관식","이차함수","그래프","직선과의교점","교점개수"],
     "solution": "[키포인트]\n구간별로 정의된 이차함수의 그래프와 직선의 위치 관계를 파악하여 교점의 개수를 구한다.\n\n조건 정리\n- 함수 $f(x)$의 그래프와 직선 $y = 3x + k$가 서로 다른 네 점에서 만남\n\n풀이 과정\n직선 $y=3x+k$가 함수 $f(x)$의 그래프와 서로 다른 네 점에서 만나려면, 직선이 다음 두 경계 상태 사이에 있어야 한다.\n1. 직선이 점 $(-\\frac{1}{2}, 0)$을 지날 때:\n$0 = 3(-\\frac{1}{2}) + k \\implies k = \\frac{3}{2} = 1.5$\n이때 교점은 $3$개이다.\n2. 직선이 위로 볼록한 부분 $y = -2x^{2}+5x+3$과 접할 때:\n$-2x^{2}+5x+3 = 3x+k \\implies 2x^{2}-2x+k-3 = 0$\n이 이차방정식의 판별식이 $0$이어야 하므로,\n$D/4 = (-1)^{2}-2(k-3) = 1-2k+6 = 7-2k=0 \\implies k = \\frac{7}{2} = 3.5$\n이때 교점은 $3$개(접점 포함)이다.\n따라서 서로 다른 네 점에서 만나기 위한 $k$의 범위는 $1.5 \\lt k \\lt 3.5$이다.\n이를 만족하는 정수 $k$는 $2, 3$의 $2$개이다.\n\n결론\n따라서 정답은 ②이다."
   },
   {
@@ -343,10 +358,11 @@ window.questionBank = [
     "level": "상",
     "category": "이차함수의 활용",
     "originalCategory": "이차함수의 활용",
-    "standardCourse": "고1 수학",
-    "standardUnitKey": "H1-02-02",
+    "standardCourse": "고등 수학(상)",
+    "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차함수",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
     "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는?\n<svg width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"20\" y1=\"150\" x2=\"220\" y2=\"150\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 34.0,175.2 L 37.38,160.69 L 40.77,146.94 L 44.15,133.96 L 47.54,121.74 L 50.92,110.28 L 54.31,99.59 L 57.69,89.66 L 61.08,80.5 L 64.46,72.1 L 67.85,64.46 L 71.23,57.59 L 74.62,51.48 L 78.0,46.13 L 81.38,41.55 L 84.77,37.73 L 88.15,34.68 L 91.54,32.39 L 94.92,30.86 L 98.31,30.1 L 101.69,30.1 L 105.08,30.86 L 108.46,32.39 L 111.85,34.68 L 115.23,37.73 L 118.62,41.55 L 122.0,46.13 L 125.38,51.48 L 128.77,57.59 L 132.15,64.46 L 135.54,72.1 L 138.92,80.5 L 142.31,89.66 L 145.69,99.59 L 149.08,110.28 L 152.46,121.74 L 155.85,133.96 L 159.23,146.94 L 162.62,160.69 L 166.0,175.2\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 115.0,30.0 L 175.0,150.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"130\" y1=\"150\" x2=\"130\" y2=\"60\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"140\" y1=\"150\" x2=\"140\" y2=\"30\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"100\" y1=\"30\" x2=\"140\" y2=\"30\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <path d=\"M 140,30 Q 160,70 140,150\" fill=\"none\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,2\"/>\n  <text x=\"40\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">A</text>\n  <text x=\"160\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">B</text>\n  <text x=\"175\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">C</text>\n  <text x=\"100\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4m</text>\n  <text x=\"130\" y=\"100\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">h</text>\n  <text x=\"152\" y=\"80\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4m</text>\n  <text x=\"167\" y=\"145\" font-size=\"8px\" text-anchor=\"middle\" font-family=\"serif\"><tspan x=\"167\" dy=\"0\">1</tspan><tspan x=\"167\" dy=\"8\">2</tspan>m</text>\n  <line x1=\"163\" y1=\"149\" x2=\"171\" y2=\"149\" stroke=\"black\" stroke-width=\"0.4\"/>\n</svg>",
     "choices": [
       "$\\frac{7}{3}$",
@@ -358,8 +374,7 @@ window.questionBank = [
     "answer": "③",
     "tags": ["객관식","계수비교","이차방정식","판별식","근과계수","이차함수","최대최소","함수"],
     "solution": "[키포인트]\n포물선을 좌표평면 위에 나타내어 이차함수 식을 세우고, 직선과 접할 조건(판별식 $D=0$)을 이용한다.\n\n조건 정리\n- 포물선의 폭: $4$m, 높이: $4$m\n- 조형물이 지면과 만나는 점: $A, B$\n- $B$로부터 $0.5$m 떨어진 지점 $C$에서 쏜 레이저가 조형물(포물선)에 접함\n\n풀이 과정\n1. 조형물의 단면을 좌표평면 위에 나타낸다. 지면 $AB$의 중점을 원점 $(0, 0)$이라 하면, 높이가 $4$m이므로 꼭짓점은 $(0, 4)$이다.\n2. 폭이 $4$m이므로 포물선의 $x$절편은 $-2$와 $2$이다. 즉, 점 $A$는 $(-2, 0)$, 점 $B$는 $(2, 0)$이다. 포물선의 방정식은 $y = -x^2 + 4$가 된다.\n3. 점 $B(2, 0)$로부터 바깥쪽으로 $0.5$m 떨어진 점 $C$의 좌표는 $(2.5, 0)$이다.\n4. 점 $C(2.5, 0)$을 지나고 포물선에 접하는 레이저(직선)의 방정식을 $y = m(x - 2.5)$라 하자.\n5. 포물선과 직선이 접하므로 $-x^2 + 4 = m(x - 2.5)$에서 $x^2 + mx - (2.5m + 4) = 0$이다.\n6. 이 이차방정식의 판별식 $D=0$이어야 하므로,\n$D = m^2 - 4(1)(-2.5m - 4) = m^2 + 10m + 16 = 0$\n$(m+2)(m+8) = 0 \\implies m = -2$ 또는 $m = -8$이다.\n7. 기울기가 $m = -2$일 때 중근 $x = -\\frac{m}{2} = 1$을 가지며, 이때 접점의 $x$좌표가 조형물 범위 안에 존재한다. ($m = -8$일 때는 $x = 4$가 되어 조형물 범위 밖이므로 제외한다.)\n8. $x = 1$일 때의 높이 $h$는 $y = -(1)^2 + 4 = 3$이다.\n\n결론\n따라서 구하는 높이 $h$는 $3$이다."
-  }
-],
+  },
   {
     "id": 18,
     "level": "상",
@@ -369,6 +384,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 4,
+    "questionType": "객관식",
     "content": "$x$에 대한 이차방정식 $x^{2}-4kx+4k^{2}-k+2=0$이 두 실근 $\\alpha, \\beta$를 가질 때, $\\alpha^{3}+\\beta^{3}-16k^{3}$의 최솟값은? (단, $k$는 실수이다.) [5.5점]",
     "choices": [
       "$-12$",
@@ -378,7 +394,7 @@ window.questionBank = [
       "96"
     ],
     "answer": "②",
-    "tags": ["서술형","다항식","인수분해","조건해석","개념","응용"],
+    "tags": ["객관식","이차방정식","근과계수","판별식","정수조건"],
     "solution": "[키포인트]\n실근 조건(판별식 $D \\ge 0$)으로 $k$의 범위를 제한한 후, 곱셈 공식의 변형으로 주어진 식을 $k$에 대한 함수로 나타내어 최솟값을 구한다.\n\n조건 정리\n- $x^2-4kx+4k^2-k+2=0$이 두 실근 $\\alpha, \\beta$를 가짐\n\n풀이 과정\n1. 실근 조건: $D/4 = (2k)^2 - (4k^2-k+2) \\ge 0 \\implies k-2 \\ge 0 \\implies k \\ge 2$\n2. 근과 계수의 관계: $\\alpha+\\beta=4k$, $\\alpha\\beta=4k^2-k+2$\n3. 식 변형:\n$\\alpha^3+\\beta^3 = (\\alpha+\\beta)^3 - 3\\alpha\\beta(\\alpha+\\beta)$\n$= (4k)^3 - 3(4k^2-k+2)(4k) = 64k^3 - 48k^3 + 12k^2 - 24k = 16k^3 + 12k^2 - 24k$\n주어진 식은 $\\alpha^3+\\beta^3 - 16k^3 = 12k^2 - 24k$가 된다.\n4. $f(k) = 12k^2 - 24k = 12(k-1)^2 - 12$ 로 두면 대칭축이 $k=1$인 이차함수이다.\n5. 조건에서 $k \\ge 2$이므로, 구간 내 최솟값은 꼭짓점이 아닌 경계값 $k=2$에서 발생한다.\n$f(2) = 12(2-1)^2 - 12 = 0$\n\n결론\n따라서 정답은 ②이다."
   },
   {
@@ -390,6 +406,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "questionType": "서술형",
     "content": "[서술형 1번] 다음 인수분해 공식의 빈칸을 완성하고, 이를 이용하여 (6)~(8)의 다항식을 인수분해하시오. [각 0.5점, 4점]\n(1) $x^{3}+3x^{2}y+3xy^{2}+y^{3} = $\n(2) $x^{3}-3x^{2}y+3xy^{2}-y^{3} = $\n(3) $x^{2}+y^{2}+z^{2}+2xy+2yz+2zx = $\n(4) $x^{3}+y^{3} = $\n(5) $x^{3}-y^{3} = $\n(6) $x^{2}+4y^{2}+9z^{2}+4xy-12yz-6zx$\n(7) $8x^{3}-12x^{2}+6x-1$\n(8) $x^{3}-27$",
     "choices": [],
     "answer": "(1) $(x+y)^{3}$ (2) $(x-y)^{3}$ (3) $(x+y+z)^{2}$ (4) $(x+y)(x^{2}-xy+y^{2})$ (5) $(x-y)(x^{2}+xy+y^{2})$ (6) $(x+2y-3z)^{2}$ (7) $(2x-1)^{3}$ (8) $(x-3)(x^{2}+3x+9)$",
@@ -405,6 +422,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "나머지정리와 인수분해",
     "standardUnitOrder": 2,
+    "questionType": "서술형",
     "content": "[서술형 2번] 최고차항의 계수가 1인 삼차식 $P(x)$에 대하여 $P(1)=1$, $P(2)=4$, $P(3)=9$일 때, $P(x)$를 $(x-1)(2x-4)$로 나눈 몫과 나머지를 구하시오. [6점]",
     "choices": [],
     "answer": "몫: $\\frac{1}{2}x-1$, 나머지: $3x-2$",
@@ -420,33 +438,11 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 4,
+    "questionType": "서술형",
     "content": "[서술형 3번] 봄이와 가을이가 이차방정식 $x^{2}+ax+b=0$ ($a, b$는 실수)의 근을 구하려고 한다. 그런데 봄이는 $x$의 계수를 잘못 보고 풀어 두 근 $1+3i, 1-3i$를 얻었고, 가을이는 상수항을 잘못 보고 풀어 두 근 $2+2i, 2-2i$를 얻었다. 이차방정식 $x^{2}+ax+b=0$의 올바른 두 근을 구하시오. [5점]",
     "choices": [],
     "answer": "$2 \\pm \\sqrt{6}i$",
-    "tags": ["서술형","완전제곱식","이차함수","최대최소","함수","도형","사각형","넓이"],
+    "tags": ["서술형","이차방정식","근과계수","복소수","계수오류"],
     "solution": "[키포인트]\n잘못 본 계수 외의 올바른 계수들은 두 근의 합과 곱을 통해 각각 추출하여 온전한 이차방정식을 세운다.\n\n조건 정리\n- 봄이는 상수항을 바르게 봄 (근: $1+3i, 1-3i$)\n- 가을이는 $x$의 계수를 바르게 봄 (근: $2+2i, 2-2i$)\n\n풀이 과정\n1. 봄이는 $x$의 계수 $a$를 잘못 보았으므로, 상수항 $b$는 올바르게 보았다.\n두 근의 곱: $b = (1+3i)(1-3i) = 1 - 9i^2 = 10$\n2. 가을이는 상수항 $b$를 잘못 보았으므로, $x$의 계수 $a$는 올바르게 보았다.\n두 근의 합: $-a = (2+2i) + (2-2i) = 4 \\implies a = -4$\n3. 올바른 이차방정식은 $x^2 - 4x + 10 = 0$이다.\n4. 근의 공식을 이용하여 올바른 근을 구한다.\n$x = \\frac{-(-2) \\pm \\sqrt{(-2)^2 - 1(10)}}{1} = 2 \\pm \\sqrt{4-10} = 2 \\pm \\sqrt{-6} = 2 \\pm \\sqrt{6}i$\n\n결론\n따라서 올바른 두 근은 $2 \\pm \\sqrt{6}i$이다."
-  },
-  {
-    "id": 1,
-    "level": "중",
-    "category": "이차함수",
-    "originalCategory": "이차함수의 활용",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-04",
-    "standardUnit": "이차함수",
-    "standardUnitOrder": 4,
-    "content": "[도형필요]\n세 개의 다른 크기의 정사각형을 다음 그림과 같이 이어 붙여 길이가 $14$m인 한쪽 벽에 딱 맞게 배치하려고 한다. 세 정사각형의 넓이의 합의 최솟값을 구하시오.\n(단, 가장 작은 정사각형의 한 변의 길이는 가장 큰 정사각형의 한 변의 길이의 절반이다.)\n<svg width=\"280\" height=\"160\" viewBox=\"0 0 280 160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"30\" y=\"40\" width=\"90\" height=\"90\" fill=\"#d3d3d3\" stroke=\"black\" stroke-width=\"1\"/>\n  <rect x=\"120\" y=\"40\" width=\"75\" height=\"75\" fill=\"#d3d3d3\" stroke=\"black\" stroke-width=\"1\"/>\n  <rect x=\"195\" y=\"40\" width=\"45\" height=\"45\" fill=\"#d3d3d3\" stroke=\"black\" stroke-width=\"1\"/>\n  <path d=\"M 30,35 L 240,35\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"3,3\" marker-start=\"url(#arrow_l)\" marker-end=\"url(#arrow_r)\"/>\n  <text x=\"135\" y=\"30\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">14 m</text>\n  <defs>\n    <marker id=\"arrow_r\" markerWidth=\"6\" markerHeight=\"6\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker>\n    <marker id=\"arrow_l\" markerWidth=\"6\" markerHeight=\"6\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M6,0 L6,6 L0,3 z\" fill=\"black\"/></marker>\n  </defs>\n</svg>",
-    "choices": [],
-    "answer": "$70$m$^2$",
-    "solution": "[키포인트]\n주어진 조건을 한 문자에 대한 이차식으로 나타낸 후 완전제곱식을 이용하여 최솟값을 구한다.\n\n조건 정리\n- 세 정사각형이 $14$m인 벽에 맞게 배치됨\n- 가장 작은 정사각형의 한 변 = 가장 큰 정사각형 한 변의 $\\frac{1}{2}$\n\n풀이 과정\n1. 세 정사각형의 한 변의 길이를 각각 $a, b, c$라고 하자.\n가장 큰 정사각형의 한 변의 길이를 $a$, 가장 작은 정사각형의 한 변의 길이를 $c$라고 하면 문제의 조건에 의해 $c = \\frac{1}{2}a$이다.\n2. 세 정사각형이 $14$m인 벽에 딱 맞게 배치되므로\n$a + b + c = 14$\n$a + b + \\frac{1}{2}a = 14$\n$\\frac{3}{2}a + b = 14 \\implies b = 14 - \\frac{3}{2}a$\n3. 세 정사각형의 넓이의 합을 $S$라고 하면\n$S = a^2 + b^2 + c^2 = a^2 + (14 - \\frac{3}{2}a)^2 + (\\frac{1}{2}a)^2$\n$S = a^2 + (196 - 42a + \\frac{9}{4}a^2) + \\frac{1}{4}a^2$\n$S = a^2 + \\frac{10}{4}a^2 - 42a + 196$\n$S = \\frac{7}{2}a^2 - 42a + 196$\n$S = \\frac{7}{2}(a^2 - 12a) + 196$\n$S = \\frac{7}{2}(a - 6)^2 - 126 + 196$\n$S = \\frac{7}{2}(a - 6)^2 + 70$\n4. 따라서 $a=6$일 때, 넓이의 합의 최솟값은 $70$이다.\n이때 변의 길이는 $a=6, b=5, c=3$으로 모두 다른 크기라는 조건을 만족한다.\n\n결론\n최종 정답은 $70$m$^2$이다."
   }
 ];
-
-if (Array.isArray(window.questionBank)) {
-  if (window.questionBank[15]) {
-    window.questionBank[15].tags = ["중첩문항", "구조검토", "기출", "문제유형", "검토필요"];
-  }
-  if (window.questionBank[20]) {
-    window.questionBank[20].tags = ["서술형", "이차함수", "도형", "정사각형", "넓이", "최대최소", "식세우기", "응용"];
-  }
-}

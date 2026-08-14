@@ -1,14 +1,14 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-08-12T07:14:09.252Z
+- 생성 시각: 2026-08-14T06:59:37.782Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
   - git 버전관리에 등재된 시험지 JS만 인덱싱(432파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
 - 공식 마스터 키 수: 142 (중등 23 + H22 56 + H15 63)
 - 원본 문항 수: 10552
-- 최종 인덱스 문항 수: 10527
-- 중복 qKey 그룹: 25 / 제외 레코드(duplicate_skipped): 25
+- 최종 인덱스 문항 수: 10528
+- 중복 qKey 그룹: 24 / 제외 레코드(duplicate_skipped): 24
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
 ---
@@ -19,11 +19,6 @@
 > 유지 우선순위: ①공식 키 ②unit+course 존재 ③content 길이 ④choices 길이 ⑤원본 순서.
 > qKey 규칙(sourceFile_id)은 유지하며 새 키로 치환하지 않는다.
 > ※ 아래 그룹의 SKIP 레코드는 대부분 "내용이 다른 별개 문항"이 동일 id를 가져 qKey가 충돌한 경우다(2번 항목 참조).
-
-### original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js_1
-- sourceFile: original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js
-  - KEPT   id=1 key="M3-04" unit="이차함수" course="중3 수학" class=official content=155자
-  - SKIP   id=1 key="H15-SA-01" unit="다항식의 연산" course="고등 수학(상)" class=official content=73자
 
 ### original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js_1
 - sourceFile: original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js
@@ -152,10 +147,6 @@
 > qKey 충돌의 근본 원인. 원본 시험지 JS는 이 단계에서 수정하지 않으며 여기에만 기록한다.
 > 동일 파일 내 같은 id가 2회 이상 쓰이면(내용이 다르더라도) 동일 qKey가 생성되어 1건만 인덱스에 남는다.
 > 후속 단계에서 원본 JS의 id 재부여가 필요하다.
-
-### original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js (총 21문항)
-  - 중복 id "1" ×2 (slots 0,20)
-  - 빈 id 문항: 1건
 
 ### original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js (총 24문항)
   - 중복 id "1" ×2 (slots 0,23)
@@ -334,17 +325,17 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 10527건 기준)
+## 5. 필드 누락 (최종 인덱스 10528건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
-| id | 1 |
-| content | 2 |
-| choices(배열) | 176 |
-| level | 345 |
-| standardUnit | 15 |
-| standardUnitKey | 14 |
-| standardCourse | 13 |
+| id | 0 |
+| content | 1 |
+| choices(배열) | 149 |
+| level | 344 |
+| standardUnit | 14 |
+| standardUnitKey | 13 |
+| standardCourse | 12 |
 | tags | 15 |
 | undefined/비객체(skip) | 0 |
 
@@ -352,10 +343,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 1691 |
+| q.image 보유 | 1814 |
 | content <img> | 5 |
-| content <svg> | 77 |
+| content <svg> | 78 |
 | content <table> | 132 |
-| 시각요소 보유(hasImage=true) | 1902 |
+| 시각요소 보유(hasImage=true) | 2026 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
