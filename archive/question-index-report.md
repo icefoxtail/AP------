@@ -1,6 +1,6 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-08-14T06:59:37.782Z
+- 생성 시각: 2026-08-18T05:26:03.349Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
 - 시험지 수(db.js): 422
 - 시험지 파일 수: 432
@@ -9,9 +9,9 @@
 - 중복 qKey로 제외된 레코드: 24 (그룹 24)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 428746 bytes
-- 시험지 JS 총 크기: 13228340 bytes
-- 인덱스 크기: 7000026 bytes
+- db.js 크기: 428869 bytes
+- 시험지 JS 총 크기: 13411017 bytes
+- 인덱스 크기: 7003087 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(10528)" 기준이다.
@@ -29,7 +29,7 @@
 
 - 누락 id: 0
 - 누락 content: 1
-- 누락 choices: 149
+- 누락 choices: 132
 - 누락 level: 344
 - 누락 standardUnit: 14
 - 누락 standardUnitKey: 13
@@ -38,11 +38,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 1814
-- content 내부 <img>: 5
+- q.image 보유: 1893
+- content 내부 <img>: 13
 - content 내부 <svg>: 78
-- content 내부 <table>: 132
-- 시각요소 보유(hasImage=true, OR 합산): 2026
+- content 내부 <table>: 133
+- 시각요소 보유(hasImage=true, OR 합산): 2113
 
 ## 누락 예시
 
