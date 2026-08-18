@@ -43,13 +43,16 @@ assert(
 );
 
 assert(
-  studentPortal.includes("return !!String(exam?.archive_file || '').trim();") &&
+  studentPortal.includes("if (!archiveFile.startsWith('MIXED:')) return true;") &&
+    studentPortal.includes('mixed_payload_json') &&
+    studentPortal.includes('function restoreMixedOmrPayload') &&
+    studentPortal.includes('function openOmrReview') &&
     studentPortal.includes('if (!isOmrReviewAvailable(exam)) return') &&
     studentPortal.includes('const showReview = isOmrReviewAvailable(exam)') &&
     studentPortal.includes("showReview ? '' : 'review-hidden'") &&
     !studentPortal.includes('const showReview = isHighSchoolOmrExam(exam)') &&
     !studentPortal.includes('/(중등|중학교|중[1-3])/i.test(source)'),
-  'OMR answer/solution review buttons should show for archive-backed middle and high school exams'
+  'OMR answer/solution review buttons should show for archive-backed middle and high school exams and restore mixed snapshots'
 );
 
 assert(
