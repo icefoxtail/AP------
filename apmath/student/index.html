@@ -741,7 +741,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.13.2';
+    const STUDENT_APP_VERSION = '2026.08.18.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -779,21 +779,28 @@
     function renderStudentAppVersion() {
       return `<div class="student-app-version">v${escapeHtml(STUDENT_APP_VERSION)}</div>`;
     }
+    let studentVersionCheckPromise = null;
     async function checkStudentPortalVersion() {
-      try {
-        const res = await fetch('./student-version.json?ts=' + Date.now(), {
-          cache: 'no-store'
-        });
-        if (!res.ok) return;
+      if (studentVersionCheckPromise) return studentVersionCheckPromise;
+      studentVersionCheckPromise = (async () => {
+        try {
+          const res = await fetch('./student-version.json?ts=' + Date.now(), {
+            cache: 'no-store'
+          });
+          if (!res.ok) return;
 
-        const data = await res.json().catch(() => null);
-        const latest = String(data?.version || '').trim();
-        if (!latest || latest === STUDENT_APP_VERSION) return;
+          const data = await res.json().catch(() => null);
+          const latest = String(data?.version || '').trim();
+          if (!latest || latest === STUDENT_APP_VERSION) return;
 
-        showStudentUpdateNotice(latest, data?.message || '');
-      } catch (e) {
-        console.warn('[student portal] version check failed:', e);
-      }
+          showStudentUpdateNotice(latest, data?.message || '');
+        } catch (e) {
+          console.warn('[student portal] version check failed:', e);
+        } finally {
+          studentVersionCheckPromise = null;
+        }
+      })();
+      return studentVersionCheckPromise;
     }
     function showStudentUpdateNotice(version, message) {
       const el = $('student-update-notice');
@@ -2239,13 +2246,41 @@
       toast('AP 학생 앱이 설치되었습니다.');
     });
     if ('serviceWorker' in navigator) {
+      let studentWorkerReloading = false;
+      const hadStudentWorkerController = !!navigator.serviceWorker.controller;
+
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!hadStudentWorkerController || studentWorkerReloading) return;
+        studentWorkerReloading = true;
+        window.location.reload();
+      });
+
+      async function refreshStudentPortalUpdate() {
+        checkStudentPortalVersion();
+        try {
+          const reg = await navigator.serviceWorker.getRegistration('./');
+          if (reg) await reg.update();
+        } catch (e) {
+          console.warn('[student portal] service worker update failed:', e);
+        }
+      }
+
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=' + encodeURIComponent(STUDENT_APP_VERSION))
+        navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
           .then(reg => {
-            try { reg.update(); } catch (e) {}
+            reg.update().catch(() => {});
           })
           .catch(() => {});
       });
+
+      window.addEventListener('pageshow', refreshStudentPortalUpdate);
+      window.addEventListener('focus', refreshStudentPortalUpdate);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') refreshStudentPortalUpdate();
+      });
+      window.setInterval(() => {
+        if (document.visibilityState === 'visible') refreshStudentPortalUpdate();
+      }, 5 * 60 * 1000);
     }
   </script>
 </body>
