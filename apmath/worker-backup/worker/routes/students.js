@@ -1,5 +1,5 @@
 import { jsonResponse } from '../helpers/response.js';
-import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, makeId } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser, makeId } from '../helpers/foundation-db.js';
 import { normalizeBranch } from '../helpers/branch.js';
 import {
   buildStudentIdentityKey,
@@ -421,6 +421,79 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
       ORDER BY grade, name
     `).bind(...classIds).all();
     return jsonResponse({ success: true, students: (res.results || []).map(normalizeStudentRowForResponse) });
+  }
+
+  if (method === 'GET' && id && path[3] === 'timetable-detail') {
+    if (!isStaffUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+    const studentId = String(id || '').trim();
+    const [student, classStudent] = await Promise.all([
+      env.DB.prepare('SELECT * FROM students WHERE id = ? LIMIT 1').bind(studentId).first(),
+      env.DB.prepare('SELECT class_id, student_id FROM class_students WHERE student_id = ? ORDER BY class_id ASC LIMIT 1').bind(studentId).first()
+    ]);
+    if (!student) return jsonResponse({ error: 'Not found' }, 404);
+    if (!classStudent) return jsonResponse({ error: 'student_not_on_timetable', message: '현재 시간표에 배정된 학생이 아닙니다.' }, 404);
+    const [
+      examSessionsRes,
+      consultationsRes,
+      classRecordsRes,
+      attendanceRes,
+      homeworkRes,
+      wrongAnswersRes,
+      schoolExamRecordsRes,
+      enrollmentsRes,
+      parentContactsRes,
+      parentConsentsRes,
+      messageLogsRes,
+      statusHistoryRes,
+      transferHistoryRes,
+      canEdit
+    ] = await Promise.all([
+      env.DB.prepare('SELECT * FROM exam_sessions WHERE student_id = ? ORDER BY exam_date DESC, created_at DESC LIMIT 50').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 50').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM class_daily_records WHERE class_id = ? ORDER BY date DESC, created_at DESC LIMIT 30').bind(classStudent.class_id).all(),
+      env.DB.prepare('SELECT * FROM attendance WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM homework WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM wrong_answers WHERE student_id = ? ORDER BY id DESC LIMIT 1000').bind(studentId).all(),
+      env.DB.prepare("SELECT * FROM school_exam_records WHERE student_id = ? AND COALESCE(is_deleted, 0) = 0 ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 200").bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC LIMIT 200').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM parent_contacts WHERE student_id = ? ORDER BY is_primary DESC, created_at DESC, id DESC LIMIT 200').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM parent_contact_consents WHERE student_id = ? ORDER BY updated_at DESC, id DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM message_logs WHERE student_id = ? ORDER BY created_at DESC, id DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM student_status_history WHERE student_id = ? ORDER BY changed_at DESC, id DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare(`
+        SELECT cth.*, from_cls.name AS from_class_name, to_cls.name AS to_class_name
+        FROM class_transfer_history cth
+        LEFT JOIN classes from_cls ON from_cls.id = cth.from_class_id
+        LEFT JOIN classes to_cls ON to_cls.id = cth.to_class_id
+        WHERE cth.student_id = ?
+        ORDER BY cth.changed_at DESC, cth.id DESC
+        LIMIT 500
+      `).bind(studentId).all(),
+      canAccessStudent(teacher, studentId, env)
+    ]);
+    await env.DB.prepare(`
+      INSERT INTO privacy_access_logs (id, actor_id, student_id, access_type)
+      VALUES (?, ?, ?, 'timetable_student_detail')
+    `).bind(makeId('pal'), teacher?.id || '', studentId).run();
+    return jsonResponse({
+      success: true,
+      student: { ...normalizeStudentRowForResponse(student), timetable_can_edit: !!canEdit },
+      class_student: classStudent,
+      exam_sessions: examSessionsRes.results || [],
+      consultations: consultationsRes.results || [],
+      class_daily_records: classRecordsRes.results || [],
+      attendance: attendanceRes.results || [],
+      homework: homeworkRes.results || [],
+      wrong_answers: wrongAnswersRes.results || [],
+      school_exam_records: schoolExamRecordsRes.results || [],
+      student_enrollments: enrollmentsRes.results || [],
+      parent_contacts: parentContactsRes.results || [],
+      parent_contact_consents: parentConsentsRes.results || [],
+      message_logs: messageLogsRes.results || [],
+      student_status_history: statusHistoryRes.results || [],
+      class_transfer_history: transferHistoryRes.results || [],
+      can_edit: !!canEdit
+    });
   }
 
   if (method === 'GET' && id && path[3] === 'detail-data') {

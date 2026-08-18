@@ -3838,6 +3838,31 @@ function bindApTimetableMonthNavigation() {
     });
 }
 
+let timetableLiveOpenInFlight = null;
+
+async function openLiveTimetable() {
+    if (timetableLiveOpenInFlight) return timetableLiveOpenInFlight;
+    timetableLiveOpenInFlight = (async function() {
+        if (typeof refreshDataOnly === 'function') {
+            try {
+                const refreshed = await refreshDataOnly();
+                if (refreshed === false) throw new Error('initial-data refresh failed');
+            } catch (error) {
+                console.error('[openLiveTimetable] live refresh failed:', error);
+                if (typeof toast === 'function') toast('최신 시간표를 불러오지 못해 저장된 화면을 표시합니다.', 'warn');
+            }
+        }
+        return renderTimetable();
+    })();
+    try {
+        return await timetableLiveOpenInFlight;
+    } finally {
+        timetableLiveOpenInFlight = null;
+    }
+}
+
+if (typeof window !== 'undefined') window.openLiveTimetable = openLiveTimetable;
+
 function renderTimetable() {
     var root = document.getElementById('app-root');
     if (!root) return;

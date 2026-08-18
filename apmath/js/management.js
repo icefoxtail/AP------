@@ -36,7 +36,7 @@ function renderAddressBookList() {
     if (!listRoot) return;
 
     let stds = (state.db.students || []).filter(s => {
-        return isActiveStudentStatus(s.status);
+        return isActiveStudentStatus(s.status) && s.timetable_can_edit !== false;
     });
 
     if (cid) {

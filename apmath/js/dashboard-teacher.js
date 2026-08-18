@@ -38,7 +38,7 @@ function renderTeacherDashboardView() {
                     <span class="ap-dash-quick-title">출석부</span>
                 </button>
                 <button class="ap-dash-quick-card" type="button"
-                        onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패','warn');">
+                        onclick="if(typeof openLiveTimetable === 'function') openLiveTimetable(); else if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패','warn');">
                     <span class="ap-dash-quick-title">시간표</span>
                 </button>
                 <button class="ap-dash-quick-card" type="button" onclick="openDashboardArchiveWindow(event);">
