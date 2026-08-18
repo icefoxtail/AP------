@@ -1,6 +1,6 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-08-14T06:59:37.782Z
+- 생성 시각: 2026-08-18T05:26:03.349Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
   - git 버전관리에 등재된 시험지 JS만 인덱싱(432파일).
@@ -331,7 +331,7 @@
 |------|--------:|
 | id | 0 |
 | content | 1 |
-| choices(배열) | 149 |
+| choices(배열) | 132 |
 | level | 344 |
 | standardUnit | 14 |
 | standardUnitKey | 13 |
@@ -343,10 +343,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 1814 |
-| content <img> | 5 |
+| q.image 보유 | 1893 |
+| content <img> | 13 |
 | content <svg> | 78 |
-| content <table> | 132 |
-| 시각요소 보유(hasImage=true) | 2026 |
+| content <table> | 133 |
+| 시각요소 보유(hasImage=true) | 2113 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

@@ -200,7 +200,12 @@ function normalizePath(value) {
  */
 function getTrackedExamFiles() {
     const out = execFileSync('git', ['-C', repoRoot, 'ls-files', '-z', '--', 'archive/exams/*.js'], { maxBuffer: 64 * 1024 * 1024 });
-    return out.toString('utf8').split('\0').map(s => s.trim()).filter(Boolean).map(rel => path.join(repoRoot, rel));
+    return out.toString('utf8')
+        .split('\0')
+        .map(s => s.trim())
+        .filter(Boolean)
+        .map(rel => path.join(repoRoot, rel))
+        .filter(file => fs.existsSync(file));
 }
 
 function getDbExamFiles() {
