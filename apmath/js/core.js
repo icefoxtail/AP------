@@ -873,12 +873,16 @@ async function loadData(isInitial = false) {
 
 async function refreshDataOnly() {
     const session = getSession();
-    if (!session) return;
+    if (!session) return false;
     const data = await api.get('initial-data');
-    if (data.error) return;
+    if (!data || data.error || data.success === false
+        || (!Array.isArray(data.students) && !Array.isArray(data.timetable_students))) return false;
 
     state.db = { 
         ...state.db, 
+        students: Array.isArray(data.students) ? normalizeStudentRows(data.students) : (state.db.students || []),
+        classes: Array.isArray(data.classes) ? data.classes : (state.db.classes || []),
+        class_students: Array.isArray(data.class_students) ? data.class_students : (state.db.class_students || []),
         timetable_classes: Array.isArray(data.timetable_classes) ? data.timetable_classes : (state.db.timetable_classes || []),
         timetable_class_students: Array.isArray(data.timetable_class_students) ? data.timetable_class_students : (state.db.timetable_class_students || []),
         timetable_students: Array.isArray(data.timetable_students) ? data.timetable_students : (state.db.timetable_students || []),
@@ -913,6 +917,7 @@ async function refreshDataOnly() {
     };
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();
+    return true;
 }
 
 

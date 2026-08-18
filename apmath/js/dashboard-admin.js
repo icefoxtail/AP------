@@ -1795,7 +1795,7 @@ function renderAdminControlCenter() {
                 출석부
             </button>
             <button class="btn ap-admin-action-card ap-surface-action"
-                    onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
+                    onclick="if(typeof openLiveTimetable === 'function') openLiveTimetable(); else if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M3.5 9.5h17"/><path d="M8 3.2v3.4M16 3.2v3.4"/><path d="M7.5 13h3M13.5 13h3M7.5 16.6h3"/></svg></span>
                 시간표
             </button>

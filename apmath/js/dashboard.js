@@ -1894,7 +1894,7 @@ function renderDashboard() {
     const shortcutRow = `
         <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick ap-surface-toolbar ap-surface-toolbar--three">
             <button class="btn ap-dashboard-action-button ap-surface-action"
-                    onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
+                    onclick="if(typeof openLiveTimetable === 'function') openLiveTimetable(); else if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
             <button class="btn ap-dashboard-action-button ap-surface-action"

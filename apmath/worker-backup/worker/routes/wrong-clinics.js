@@ -767,7 +767,17 @@ async function listPacketsForTeacher(env, teacher, url) {
   if (!isStaffUser(teacher)) return fail('Forbidden', 403);
   const studentId = text(url.searchParams.get('student_id'));
   if (!studentId) return fail('student_id required');
-  if (!(await canAccessStudent(teacher, studentId, env))) return fail('Forbidden', 403);
+  const canEditStudent = await canAccessStudent(teacher, studentId, env);
+  if (!canEditStudent) {
+    const timetableStudent = await env.DB.prepare(`
+      SELECT student_id FROM class_students WHERE student_id = ? LIMIT 1
+    `).bind(studentId).first();
+    if (!timetableStudent) return fail('Forbidden', 403);
+    await env.DB.prepare(`
+      INSERT INTO privacy_access_logs (id, actor_id, student_id, access_type)
+      VALUES (?, ?, ?, 'timetable_student_wrong_clinic')
+    `).bind(makeId('pal'), teacher?.id || '', studentId).run();
+  }
   const res = await env.DB.prepare(`
     SELECT p.*, s.title, s.mode, s.print_title, s.header_options_json
     FROM wrong_clinic_packets p

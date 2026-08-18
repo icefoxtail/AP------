@@ -56,7 +56,7 @@ function injectStudentStyles() {
         .apms-eie-note { margin-top:8px; }
         .apms-eie-note p { margin:5px 0 0; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6; white-space:pre-wrap; }
         .apms-eie-tabs { padding:0; border-radius:0; background:transparent; gap:4px; border-bottom:1px solid var(--border); flex-wrap:nowrap; }
-        .apms-eie-tab { flex:1 1 0; min-height:37px; border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent; color:#94A3B8; font-size:12.5px; font-weight:600; cursor:pointer; margin-bottom:-1px; }
+        .apms-eie-tab { flex:1 1 0; min-height:44px; border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent; color:#94A3B8; font-size:12.5px; font-weight:600; cursor:pointer; margin-bottom:-1px; }
         .apms-eie-tab.is-active { background:transparent; color:#1F2937; border-bottom-color:#334155; box-shadow:none; }
         body.dark .apms-eie-tab { color:var(--secondary); }
         body.dark .apms-eie-tab.is-active { color:var(--text); border-bottom-color:var(--text); box-shadow:none; }
@@ -109,7 +109,7 @@ function injectStudentStyles() {
         .ap-student-status-text.is-archived { color:#E8414F; }
         .ap-student-meta-line { font-size:12.5px; font-weight:500; color:#64748B; line-height:1.4; overflow-wrap:anywhere; }
         .ap-student-head-actions { display:flex; flex-wrap:wrap; gap:7px; justify-content:flex-end; align-items:flex-start; }
-        .ap-student-edit-btn { height:28px; padding:0 10px; border:1px solid #CBD5E1; background:#F8FAFC; color:#334155; border-radius:7px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; }
+        .ap-student-edit-btn { min-height:44px; padding:0 12px; border:1px solid #CBD5E1; background:#F8FAFC; color:#334155; border-radius:7px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; }
         body.dark .ap-student-edit-btn { background:var(--surface-2); border-color:var(--border); color:var(--text); }
         .ap-student-consult-pinned,
         .ap-student-card { border:1px solid var(--border); border-radius:10px; background:var(--surface); padding:12px; box-shadow:none; }
@@ -119,7 +119,7 @@ function injectStudentStyles() {
         .ap-student-section-head h3 { margin:0; color:var(--text); font-size:13.5px; font-weight:600; line-height:1.25; }
         .ap-student-section-head span { color:var(--secondary); font-size:11px; font-weight:600; }
         .ap-student-consult-date-row { display:flex; gap:6px; overflow-x:auto; padding-bottom:2px; margin-bottom:10px; }
-        .ap-student-consult-date-btn { flex:0 0 auto; height:28px; min-height:28px; padding:0 10px; border:1px solid var(--ap-border); border-radius:var(--ap-radius-sm); background:var(--ap-surface-2); color:var(--ap-text-soft); font-size:12px; font-weight:650; line-height:1.2; cursor:pointer; display:inline-flex; align-items:center; white-space:nowrap; }
+        .ap-student-consult-date-btn { flex:0 0 auto; min-height:44px; padding:0 12px; border:1px solid var(--ap-border); border-radius:var(--ap-radius-sm); background:var(--ap-surface-2); color:var(--ap-text-soft); font-size:12px; font-weight:650; line-height:1.2; cursor:pointer; display:inline-flex; align-items:center; white-space:nowrap; }
         .ap-student-consult-date-btn.is-active { border-color:rgba(110,102,201,.38); background:rgba(110,102,201,.10); color:var(--ap-purple); }
         .ap-profile-info-list { display:flex; flex-direction:column; }
         .ap-profile-info-row { display:flex; align-items:flex-start; gap:10px; min-height:32px; padding:6px 0; border-bottom:1px solid var(--ap-border); min-width:0; }
@@ -164,7 +164,7 @@ function injectStudentStyles() {
         .ap-student-consult-text { margin:0; color:var(--text); font-size:13.5px; font-weight:500; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
         .ap-student-consult-next { border:1px solid rgba(217,119,6,.18); border-radius:10px; background:rgba(217,119,6,.07); color:#92400E; padding:9px 10px; font-size:12px; font-weight:600; line-height:1.55; }
         .ap-student-consult-actions { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; margin-top:10px; }
-        .ap-student-mini-btn { height:28px; min-height:28px; max-width:100%; padding:0 10px; border-radius:var(--ap-radius-sm); border:1px solid var(--ap-btn-ghost-border); background:var(--ap-btn-ghost-bg); color:var(--ap-btn-ghost-text); font-size:12px; font-weight:650; line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; }
+        .ap-student-mini-btn { min-height:44px; max-width:100%; padding:0 12px; border-radius:var(--ap-radius-sm); border:1px solid var(--ap-btn-ghost-border); background:var(--ap-btn-ghost-bg); color:var(--ap-btn-ghost-text); font-size:12px; font-weight:650; line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; }
         .ap-student-mini-btn.is-primary { border-color:var(--ap-purple); background:var(--ap-purple); color:#fff; }
         .ap-student-consult-all { border:1px solid var(--ap-border); border-radius:var(--ap-radius-card); background:var(--ap-card); overflow:hidden; }
         .ap-student-consult-all summary { min-height:42px; display:flex; align-items:center; justify-content:space-between; padding:0 12px; cursor:pointer; color:var(--ap-text); font-size:13px; font-weight:700; list-style:none; }
@@ -264,6 +264,8 @@ function sortConsultationsByLatest(rows = []) {
 }
 
 function getStudentConsultationsFromState(sid) {
+    const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.consultations;
+    if (Array.isArray(timetableRows)) return sortConsultationsByLatest(timetableRows);
     return sortConsultationsByLatest((state.db.consultations || []).filter(c => String(c.student_id) === String(sid)));
 }
 
@@ -471,7 +473,11 @@ function getStudentParentContactsFromState(sid) {
 }
 
 function getStudentMessageLogsFromState(sid) {
-    return [...(state.db.message_logs || []).filter(row => String(row?.student_id || '') === String(sid))]
+    const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.message_logs;
+    const rows = Array.isArray(timetableRows)
+        ? timetableRows
+        : (state.db.message_logs || []).filter(row => String(row?.student_id || '') === String(sid));
+    return [...rows]
         .sort((a, b) => {
             const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
             if (createdDiff !== 0) return createdDiff;
@@ -540,6 +546,9 @@ function formatStudentFoundationHistoryDate(row) {
 }
 
 function renderStudentOperationHistorySection(sid) {
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])]
+        .find(row => String(row.id) === String(sid));
+    const canEdit = student?.timetable_can_edit !== false;
     const lazy = getStudentDetailLazyState(sid);
     const statusRows = getStudentStatusHistoryRows(sid);
     const transferRows = getStudentClassTransferHistoryRows(sid);
@@ -553,7 +562,7 @@ function renderStudentOperationHistorySection(sid) {
                 <div class="ap-student-management-counts">상태 변경 ${statusRows.length}건 · 반 이동 ${transferRows.length}건</div>
             </div>
             <div class="ap-student-management-actions">
-                <button type="button" class="btn apms-button apms-button--primary ap-student-preview-btn" onclick="openStudentPortalPreview(${apmsStudentJsString(sid)})">학생 화면 확인 ↗</button>
+                ${canEdit ? `<button type="button" class="btn apms-button apms-button--primary ap-student-preview-btn" onclick="openStudentPortalPreview(${apmsStudentJsString(sid)})">학생 화면 확인 ↗</button>` : ''}
                 <button type="button" class="btn apms-button apms-button--quiet ap-student-history-btn" onclick="openStudentStatusHistoryModal(${apmsStudentJsString(sid)})">상태 변경 이력</button>
                 <button type="button" class="btn apms-button apms-button--quiet ap-student-history-btn" onclick="openStudentClassTransferHistoryModal(${apmsStudentJsString(sid)})">반 이동 이력</button>
             </div>
@@ -897,7 +906,8 @@ async function openParentMessageHistoryModal(sid, contactId = '') {
 }
 
 function renderParentContactSection(sid) {
-    const student = state.db.students.find(st => String(st.id) === String(sid));
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
+    const canEdit = student?.timetable_can_edit !== false;
     const bundle = getStudentParentContactBundle(sid);
     const fallbackPhone = String(student?.parent_phone || '').trim();
     const fallbackRelation = String(student?.guardian_relation || '').trim();
@@ -925,14 +935,14 @@ function renderParentContactSection(sid) {
                         </div>
                         <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}</div>
                     </div>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    ${canEdit ? `<div style="display:flex; gap:10px; flex-wrap:wrap;">
                         <span style="cursor:pointer; color:var(--primary); font-size:12px; font-weight:500;" onclick="openEditParentContactModal('${sid}','${contact.id}')">수정</span>
                         <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:500;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
-                    </div>
+                    </div>` : ''}
                 </div>
                 <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(contact.phone || '')})">${apEscapeHtml(contact.phone || '미등록')}</div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px;">
-                    <button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentConsentModal('${sid}','${contact.id}')">연락 설정</button>
+                    ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentConsentModal('${sid}','${contact.id}')">연락 설정</button>` : ''}
                     ${historyButtonHtml}
                 </div>
             </div>
@@ -948,7 +958,7 @@ function renderParentContactSection(sid) {
             <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
                     <div style="font-size:16px; font-weight:500; color:var(--text); line-height:1.3;">보호자 연락처</div>
-                    <button class="btn apms-button apms-button--quiet" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAddParentContactModal('${sid}')">보호자 연락처 추가</button>
+                    ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAddParentContactModal('${sid}')">보호자 연락처 추가</button>` : ''}
                 </div>
                 ${bundle.loading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:500;">보호자 연락처 데이터를 불러오는 중입니다.</div>' : ''}
                 ${bundle.error ? '<div style="margin-bottom:10px; font-size:12px; color:var(--warning); font-weight:500;">일부 보호자 연락 데이터를 다시 확인해 주세요.</div>' : ''}
@@ -1275,6 +1285,85 @@ function returnStudentEditToView(sid, options = {}) {
 
 async function openStudentDetail(sid, options = {}) {
     const studentId = String(sid || '');
+    if (!state.ui) state.ui = {};
+    const requestToken = `${studentId}:${Date.now()}:${Math.random()}`;
+    state.ui.studentTimetableDetailRequestToken = requestToken;
+    const scopedStudent = (Array.isArray(state?.db?.students) ? state.db.students : [])
+        .find(st => String(st.id) === studentId);
+    const timetableStudent = (Array.isArray(state?.db?.timetable_students) ? state.db.timetable_students : [])
+        .find(st => String(st.id) === studentId);
+    const needsTimetableDetail = !!timetableStudent && (!scopedStudent || scopedStudent.timetable_can_edit === false);
+    if (needsTimetableDetail) {
+        toast('학생 정보를 불러오는 중입니다.', 'info');
+        try {
+            const detail = await api.get(`students/${encodeURIComponent(studentId)}/timetable-detail`);
+            if (state.ui.studentTimetableDetailRequestToken !== requestToken) return;
+            if (!detail?.success || !detail.student) throw new Error(detail?.message || detail?.error || '학생 상세 조회 실패');
+            if (detail?.success && detail.student) {
+                const timetableOnly = detail.can_edit === false;
+                mergeStudentIntoState(detail.student, { timetableOnly });
+                if (!state.ui.timetableStudentDetails) state.ui.timetableStudentDetails = {};
+                if (timetableOnly) state.ui.timetableStudentDetails[studentId] = detail;
+                else delete state.ui.timetableStudentDetails[studentId];
+                if (detail.can_edit !== false) {
+                    mergeClassStudentIntoState(detail.class_student);
+                } else if (detail.class_student?.student_id) {
+                    const row = detail.class_student;
+                    const sidKey = String(row.student_id);
+                    if (!Array.isArray(state.db.timetable_class_students)) state.db.timetable_class_students = [];
+                    state.db.timetable_class_students = state.db.timetable_class_students
+                        .filter(mapping => String(mapping.student_id) !== sidKey)
+                        .concat(row);
+                }
+                if (!timetableOnly) {
+                    mergeStudentRows('exam_sessions', studentId, detail.exam_sessions);
+                    mergeStudentRows('consultations', studentId, detail.consultations);
+                    mergeStudentRows('attendance', studentId, detail.attendance);
+                    mergeStudentRows('homework', studentId, detail.homework);
+                    mergeStudentRows('wrong_answers', studentId, detail.wrong_answers);
+                    mergeStudentRows('school_exam_records', studentId, detail.school_exam_records);
+                    mergeStudentRows('parent_contacts', studentId, detail.parent_contacts);
+                    mergeStudentRows('message_logs', studentId, detail.message_logs);
+                    mergeStudentRows('student_status_history', studentId, detail.student_status_history);
+                    mergeStudentRows('class_transfer_history', studentId, detail.class_transfer_history);
+                }
+                const classId = String(detail.class_student?.class_id || '');
+                if (!timetableOnly && classId && Array.isArray(detail.class_daily_records)) {
+                    const otherRecords = (state.db.class_daily_records || []).filter(row => String(row.class_id) !== classId);
+                    state.db.class_daily_records = otherRecords.concat(detail.class_daily_records);
+                }
+                const lazy = getStudentDetailLazyState(studentId);
+                lazy.parent_contacts = Array.isArray(detail.parent_contacts) ? sortParentContacts(detail.parent_contacts) : [];
+                lazy.student_status_history = Array.isArray(detail.student_status_history) ? detail.student_status_history : [];
+                lazy.class_transfer_history = Array.isArray(detail.class_transfer_history) ? detail.class_transfer_history : [];
+                lazy.loadedAt = new Date().toISOString();
+                lazy.error = '';
+                const parentState = getStudentParentMessageState(studentId);
+                parentState.consents = Array.isArray(detail.parent_contact_consents) ? detail.parent_contact_consents : [];
+                parentState.loadedAt = Date.now();
+                parentState.messagesLoadedAt = Date.now();
+                parentState.error = '';
+                parentState.messageError = '';
+                if (typeof ensureEnrollmentFoundationState === 'function') {
+                    const enrollmentStore = ensureEnrollmentFoundationState();
+                    enrollmentStore.byScope[`student:${studentId}`] = {
+                        scopeKey: `student:${studentId}`,
+                        scopeType: 'student',
+                        rows: Array.isArray(detail.student_enrollments) ? detail.student_enrollments : [],
+                        loading: false,
+                        loadedAt: Date.now(),
+                        error: ''
+                    };
+                }
+            }
+        } catch (error) {
+            console.error('[openStudentDetail] timetable detail load failed:', error);
+            if (state.ui.studentTimetableDetailRequestToken === requestToken) {
+                toast('학생 전체 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.', 'error');
+            }
+            return;
+        }
+    }
     const sources = [
         state?.db?.students,
         state?.allDb?.students,
@@ -1286,9 +1375,9 @@ async function openStudentDetail(sid, options = {}) {
         sourceStudent = (Array.isArray(source) ? source : []).find(st => String(st.id) === studentId);
         if (sourceStudent) break;
     }
-    const s = mergeStudentIntoState(sourceStudent);
+    const s = mergeStudentIntoState(sourceStudent, { timetableOnly: sourceStudent?.timetable_can_edit === false });
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
-    const mode = options.mode === 'edit' ? 'edit' : 'view';
+    const mode = options.mode === 'edit' && s.timetable_can_edit !== false ? 'edit' : 'view';
     if (!state.ui) state.ui = {};
 
     // 상태를 덮어쓰기 전에 이전 학생/탭을 먼저 저장해야 성적 하위 탭 리셋 판단이 정확하다.
@@ -1311,24 +1400,29 @@ async function openStudentDetail(sid, options = {}) {
     const returnCtx = resolveStudentDetailReturnContext(sid, options);
     applyStudentDetailModalReturnContext(returnCtx);
 
-    const exs = (typeof apmsGetExamSessionsForStudent === 'function'
-        ? apmsGetExamSessionsForStudent(sid)
+    const exs = (typeof getStudentAcademyExamSessionsForDetail === 'function'
+        ? getStudentAcademyExamSessionsForDetail(sid)
         : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
     ).slice().sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
     const foundationLoads = [];
-    if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
-    if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
-    foundationLoads.push(loadStudentOnboardingDetails(sid, { refresh: false }));
+    if (s.timetable_can_edit !== false) {
+        if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
+        if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
+        foundationLoads.push(loadStudentOnboardingDetails(sid, { refresh: false }));
+    }
     if (foundationLoads.length) await Promise.all(foundationLoads);
+    if (state.ui.studentTimetableDetailRequestToken !== requestToken) return;
 
     renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx, skipLazyKick: true });
 
     void ensureBlueprintsForSessions(exs).catch(() => {});
-    void ensureStudentDetailLazyData(sid, { refresh: false });
-    void ensureStudentConsultationsLoaded(sid, { refresh: false });
-    void ensureStudentParentContactDataLoaded(sid, { refresh: false });
-    void ensureStudentParentMessageLogsLoaded(sid, { refresh: false });
-    void loadStudentOnboardingDetails(sid, { refresh: false });
+    if (s.timetable_can_edit !== false) {
+        void ensureStudentDetailLazyData(sid, { refresh: false });
+        void ensureStudentConsultationsLoaded(sid, { refresh: false });
+        void ensureStudentParentContactDataLoaded(sid, { refresh: false });
+        void ensureStudentParentMessageLogsLoaded(sid, { refresh: false });
+        void loadStudentOnboardingDetails(sid, { refresh: false });
+    }
 }
 
 // 기존 호출 호환용 wrapper (삭제 금지)
@@ -1348,14 +1442,16 @@ function returnFromStudentFlow(ctx = null) {
     if (typeof renderDashboard === 'function') return renderDashboard();
 }
 
-function mergeStudentIntoState(student) {
+function mergeStudentIntoState(student, options = {}) {
     if (!student || !student.id) return null;
     student = typeof normalizeStudentRow === 'function' ? normalizeStudentRow(student) : { ...student, status: normalizeStudentStatus(student.status) };
-    if (!state.db.students) state.db.students = [];
     const sid = String(student.id);
-    const idx = state.db.students.findIndex(s => String(s.id) === sid);
-    if (idx > -1) state.db.students[idx] = { ...state.db.students[idx], ...student };
-    else state.db.students.push(student);
+    if (!state.db.students) state.db.students = [];
+    if (!options.timetableOnly) {
+        const idx = state.db.students.findIndex(s => String(s.id) === sid);
+        if (idx > -1) state.db.students[idx] = { ...state.db.students[idx], ...student };
+        else state.db.students.push(student);
+    }
     ['db', 'allDb'].forEach(key => {
         if (!state[key]) return;
         if (!Array.isArray(state[key].timetable_students)) state[key].timetable_students = [];
@@ -1443,12 +1539,16 @@ function renderApmsStudentField(label, value) {
 }
 
 function getApmsStudentClassRows(sid) {
-    const ids = (state.db.class_students || [])
-        .filter(m => String(m.student_id) === String(sid))
+    const primaryRows = (state.db.class_students || []).filter(m => String(m.student_id) === String(sid));
+    const mappingRows = primaryRows.length
+        ? primaryRows
+        : (state.db.timetable_class_students || []).filter(m => String(m.student_id) === String(sid));
+    const ids = mappingRows
         .map(m => String(m.class_id || ''))
         .filter(Boolean);
+    const classes = [...(state.db.classes || []), ...(state.db.timetable_classes || [])];
     return ids
-        .map(id => (state.db.classes || []).find(c => String(c.id) === id))
+        .map(id => classes.find(c => String(c.id) === id))
         .filter(Boolean);
 }
 
@@ -1503,8 +1603,10 @@ function renderApmsStudentProfileDeck(student, cls) {
 }
 
 function getApStudentCurrentClass(sid) {
-    const mapping = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
-    return (state.db.classes || []).find(c => String(c.id) === String(mapping?.class_id || '')) || null;
+    const mapping = (state.db.class_students || []).find(m => String(m.student_id) === String(sid))
+        || (state.db.timetable_class_students || []).find(m => String(m.student_id) === String(sid));
+    return [...(state.db.classes || []), ...(state.db.timetable_classes || [])]
+        .find(c => String(c.id) === String(mapping?.class_id || '')) || null;
 }
 
 // 담임명 안전 탐색 (API 호출/DB 수정 없이 state.db 안에서만). 없으면 빈 문자열.
@@ -1557,7 +1659,7 @@ function normalizeOnboardingDate(value) {
 }
 
 function getStudentOnboardingStartedAtFromStudentRow(sid) {
-    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     return normalizeOnboardingDate(
         student?.onboarding_started_at ||
         student?.onboardingStartedAt ||
@@ -1670,10 +1772,13 @@ function apStudentEditRow(label, controlHtml, options = {}) {
 
 function getStudentRecentActivityValues(sid) {
     const cls = getApStudentCurrentClass(sid);
-    const recentExam = (state.db.exam_sessions || [])
+    const timetableDetail = state.ui?.timetableStudentDetails?.[String(sid)] || null;
+    const examRows = Array.isArray(timetableDetail?.exam_sessions) ? timetableDetail.exam_sessions : (state.db.exam_sessions || []);
+    const classRows = Array.isArray(timetableDetail?.class_daily_records) ? timetableDetail.class_daily_records : (state.db.class_daily_records || []);
+    const recentExam = examRows
         .filter(e => String(e.student_id) === String(sid))
         .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
-    const classRecord = cls ? (state.db.class_daily_records || [])
+    const classRecord = cls ? classRows
         .filter(row => String(row.class_id) === String(cls.id))
         .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] : null;
     const recentExamText = recentExam ? `${recentExam.exam_title || '시험'} · ${recentExam.exam_date || ''} · ${recentExam.score ?? '-'}점` : '';
@@ -1703,12 +1808,13 @@ function renderStudentHistorySection(sid) {
 
 
 function renderStudentDetailHeader(sid, mode = 'view') {
-    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const s = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     if (!s) return '';
     const cls = getApStudentCurrentClass(sid);
     const status = apmsStudentStatusMeta(s);
     const isEdit = mode === 'edit';
-    const actionBtn = isEdit
+    const canEdit = s.timetable_can_edit !== false;
+    const actionBtn = isEdit || !canEdit
         ? ''
         : `<button type="button" class="ap-student-edit-btn" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">수정</button>`;
     const dotClass = status.className || '';
@@ -1736,6 +1842,8 @@ function renderStudentDetailHeader(sid, mode = 'view') {
 }
 
 function renderStudentPinnedConsultationPreviewHtml(sid, consultationId) {
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === String(sid));
+    const canEdit = student?.timetable_can_edit !== false;
     const rows = getStudentConsultationsFromState(sid);
     const selected = rows.find(row => String(row.id) === String(consultationId)) || rows[0] || null;
     if (!selected) {
@@ -1743,9 +1851,9 @@ function renderStudentPinnedConsultationPreviewHtml(sid, consultationId) {
             <div class="ap-student-consult-empty">
                 <div style="font-size:14px;font-weight:750;color:var(--text);line-height:1.35;">상담 기록 없음</div>
                 <div style="margin-top:5px;font-size:12px;font-weight:600;line-height:1.5;">아직 등록된 상담이 없습니다.</div>
-                <div class="ap-student-consult-actions" style="justify-content:center;">
+                ${canEdit ? `<div class="ap-student-consult-actions" style="justify-content:center;">
                     <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(sid)})">+ 첫 상담 기록하기</button>
-                </div>
+                </div>` : ''}
             </div>
         `;
     }
@@ -1757,10 +1865,10 @@ function renderStudentPinnedConsultationPreviewHtml(sid, consultationId) {
                     <strong style="color:var(--text);font-size:13px;line-height:1.35;">${apmsStudentDetailEsc(selected.date || '날짜 없음')}</strong>
                     <span class="ap-student-consult-type">${apmsStudentDetailEsc(selected.type || '상담')}</span>
                 </div>
-                <div style="display:flex;align-items:center;gap:10px;">
+                ${canEdit ? `<div style="display:flex;align-items:center;gap:10px;">
                     <span style="cursor:pointer;color:#334155;font-size:12px;font-weight:600;" onclick="openEditConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">수정</span>
                     <span style="cursor:pointer;color:var(--error);font-size:12px;font-weight:600;" onclick="handleDeleteConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">삭제</span>
-                </div>
+                </div>` : ''}
             </div>
             <p class="ap-student-consult-text">${apmsStudentDetailEsc(selected.content || '상담 내용이 없습니다.')}</p>
             ${selected.next_action ? `<div class="ap-student-consult-next"><strong>다음 조치</strong><br>${apmsStudentDetailEsc(selected.next_action)}</div>` : ''}
@@ -1826,6 +1934,8 @@ if (typeof window !== 'undefined') {
 
 function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
     const key = String(sid || '');
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === key);
+    const canEdit = student?.timetable_can_edit !== false;
     if (!state.ui) state.ui = {};
     if (!state.ui.studentPinnedConsultationId) state.ui.studentPinnedConsultationId = {};
     const rows = getStudentConsultationsFromState(key);
@@ -1853,7 +1963,7 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
         <section class="ap-student-consult-pinned" id="ap-student-consult-pinned-${apmsStudentDetailEsc(key)}">
             <div class="ap-student-section-head">
                 <h3>최근 상담</h3>
-                <button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(key)})">+ 상담</button>
+                ${canEdit ? `<button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(key)})">+ 상담</button>` : ''}
             </div>
             ${cnsState.loading ? '<div style="margin-bottom:8px;font-size:11px;color:var(--secondary);font-weight:600;">불러오는 중</div>' : ''}
             ${rows.length >= 2 && dateButtons ? `<div class="ap-student-consult-date-row">${dateButtons}</div>` : ''}
@@ -1866,7 +1976,7 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
 }
 
 function renderStudentBasicTab(sid) {
-    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const s = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
     const memo = '';
     const parentPhoneRaw = String(s.parent_phone || '').trim();
@@ -1890,7 +2000,7 @@ function renderStudentBasicTab(sid) {
                     <div class="ap-profile-info-row">
                         <span class="ap-profile-info-label">PIN 번호</span>
                         <span class="ap-profile-info-value${s.student_pin ? '' : ' is-muted'}">${apmsStudentDetailEsc(s.student_pin || '')}</span>
-                        <button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button>
+                        ${s.timetable_can_edit !== false ? `<button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button>` : ''}
                     </div>
                 </div>
             </section>
@@ -2126,6 +2236,8 @@ async function reissueStudentWrongClinicPacket(sid, packetKey) {
 
 
 function renderStudentWrongClinicTab(sid) {
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === String(sid));
+    const canEdit = student?.timetable_can_edit !== false;
     const store = getStudentWrongClinicState(sid);
     if (!store.loaded && !store.loading) {
         setTimeout(() => ensureStudentWrongClinicPacketsLoaded(sid), 0);
@@ -2158,7 +2270,7 @@ function renderStudentWrongClinicTab(sid) {
         const reviewWrongIds = Array.isArray(packet.review_wrong_ids) ? packet.review_wrong_ids : [];
         const scopeLabel = scopeLabels[packet.mode] || '개인 오답';
         const key = apmsStudentJsString(packet.packet_key || '');
-        const reissueButton = reviewWrongIds.length
+        const reissueButton = canEdit && reviewWrongIds.length
             ? `<button type="button" class="btn apms-button apms-button--primary" onclick="reissueStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">재출제</button>`
             : '';
         return `
@@ -2173,7 +2285,7 @@ function renderStudentWrongClinicTab(sid) {
                         <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'exam')">문제</button>
                         <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'ans')">정답</button>
                         <button type="button" class="btn apms-button apms-button--quiet" onclick="openStudentWrongClinicPacket(${key}, 'sol')">해설</button>
-                        <button type="button" class="btn apms-button apms-button--quiet" style="color:var(--error);" onclick="deleteStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">삭제</button>
+                        ${canEdit ? `<button type="button" class="btn apms-button apms-button--quiet" style="color:var(--error);" onclick="deleteStudentWrongClinicPacket(${apmsStudentJsString(sid)}, ${key})">삭제</button>` : ''}
                     </div>
                 </div>
             </div>
@@ -2241,7 +2353,7 @@ function renderStudentDetailShell(sid, options = {}) {
     injectStudentStyles();
     if (!state.ui) state.ui = {};
     const mode = options.mode === 'edit' ? 'edit' : 'view';
-    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const s = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
 
     const previousTab = state.ui.currentStudentDetailTab || 'basic';
@@ -2465,7 +2577,9 @@ function isStudentDetailHighSchool(student) {
 }
 
 function getStudentSchoolExamRecords(sid) {
-    return (state.db.school_exam_records || []).filter(r =>
+    const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.school_exam_records;
+    const rows = Array.isArray(timetableRows) ? timetableRows : (state.db.school_exam_records || []);
+    return rows.filter(r =>
         String(r.student_id) === String(sid) &&
         String(r.is_deleted || 0) !== '1');
 }
@@ -2509,7 +2623,7 @@ function getStudentLatestSchoolExamRecord(sid) {
 }
 
 function getStudentSchoolExamSubjects(sid, records) {
-    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     if (!isStudentDetailHighSchool(student)) return ['수학'];
 
     const seen = {};
@@ -2566,7 +2680,10 @@ function openStudentSchoolLedgerFromDetail() {
 }
 
 function getStudentAcademyExamSessionsForDetail(sid) {
-    return (typeof apmsGetExamSessionsForStudent === 'function'
+    const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.exam_sessions;
+    return (Array.isArray(timetableRows)
+        ? timetableRows
+        : typeof apmsGetExamSessionsForStudent === 'function'
         ? apmsGetExamSessionsForStudent(sid)
         : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
     ).slice().sort((a, b) =>
@@ -2591,7 +2708,7 @@ function openStudentReportOutputFromDetail(sid, sessionId = '') {
 function renderStudentSchoolLatestCard(sid, records) {
     const latest = (records || [])[0];
     if (!latest) return '';
-    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     const hasScore = !(latest.score === null || latest.score === undefined || latest.score === '');
     const scoreNum = Number(latest.score);
     const scoreText = hasScore && Number.isFinite(scoreNum) ? `${scoreNum}점` : '미응시';
@@ -2615,7 +2732,7 @@ function renderStudentSchoolExamMatrix(sid, records) {
     if (!subjects.length) {
         return '<div class="ap-student-score-empty">표시할 과목 정보가 없습니다.</div>';
     }
-    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
     const headLabel = isStudentDetailHighSchool(student) ? '과목' : '구분';
     const headCols = AP_STUDENT_SCHOOL_EXAM_COLS.map(col => `<th>${apmsStudentDetailEsc(col.label)}</th>`).join('');
     const rows = subjects.map(subject => {
@@ -2682,6 +2799,8 @@ function renderGradeTab(sid) {
  */
 function renderStudentAcademyGradeTab(sid) {
     const exs = getStudentAcademyExamSessionsForDetail(sid);
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === String(sid));
+    const canEdit = student?.timetable_can_edit !== false;
     
     const chartArea = exs.length > 0
         ? `<div style="padding: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;">
@@ -2692,7 +2811,10 @@ function renderStudentAcademyGradeTab(sid) {
     const recentExam = [...exs].sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')))[0];
 
     const historyRows = exs.map(e => {
-        const wrs = (typeof apmsGetWrongAnswersForSession === 'function'
+        const timetableWrongRows = state.ui?.timetableStudentDetails?.[String(sid)]?.wrong_answers;
+        const wrs = (Array.isArray(timetableWrongRows)
+            ? timetableWrongRows.filter(w => String(w.session_id) === String(e.id))
+            : typeof apmsGetWrongAnswersForSession === 'function'
             ? apmsGetWrongAnswersForSession(e.id)
             : (state.db.wrong_answers || []).filter(w => String(w.session_id) === String(e.id))
         )
@@ -2711,9 +2833,9 @@ function renderStudentAcademyGradeTab(sid) {
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 500;">오답 없음</span>'}</div>
                 <div style="display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
-                    <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: var(--primary); border: 1px solid rgba(26,92,255,0.18); background: rgba(26,92,255,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="openStudentReportOutputFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(e.id)})">리포트 출력</button>
-                    <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: #D97706; border: 1px solid rgba(217,118,6,0.25); background: rgba(217,118,6,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
-                    <button class="btn apms-button apms-button--quiet" style="height: 28px; padding: 0 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(232,65,79,0.22); background: rgba(232,65,79,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
+                    ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: var(--primary); border: 1px solid rgba(26,92,255,0.18); background: rgba(26,92,255,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="openStudentReportOutputFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(e.id)})">리포트 출력</button>` : ''}
+                    ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: #D97706; border: 1px solid rgba(217,118,6,0.25); background: rgba(217,118,6,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
+                    <button class="btn apms-button apms-button--quiet" style="min-height: 44px; padding: 0 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(232,65,79,0.22); background: rgba(232,65,79,0.06); border-radius: 7px; font-weight:600; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>` : ''}
                 </div>
             </div>
         `;
@@ -2727,8 +2849,25 @@ function renderStudentAcademyGradeTab(sid) {
            </div>`
         : `<div style="padding: 20px; text-align: center; color: var(--secondary); font-size: 13px; font-weight:500; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; margin-bottom:10px;">최근 시험 기록이 없습니다.</div>`;
 
-    const s = state.db.students.find(st => String(st.id) === String(sid));
-    const weakUnits = typeof computeStudentWeakUnits === 'function' ? computeStudentWeakUnits(sid) : [];
+    const s = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
+    const timetableDetail = state.ui?.timetableStudentDetails?.[String(sid)] || null;
+    const weakUnits = timetableDetail && typeof getWrongConceptFromSession === 'function'
+        ? (() => {
+            const sessionMap = new Map(exs.map(session => [String(session.id), session]));
+            const bucket = {};
+            (timetableDetail.wrong_answers || []).forEach(wrong => {
+                const session = sessionMap.get(String(wrong.session_id));
+                if (!session?.archive_file) return;
+                const concept = getWrongConceptFromSession(session, wrong.question_id);
+                if (!concept) return;
+                const key = concept.unitKey || concept.label;
+                if (!bucket[key]) bucket[key] = { key, label: concept.label, unitKey: concept.unitKey, course: concept.course, cluster: concept.cluster, count: 0, questions: [] };
+                bucket[key].count += 1;
+                bucket[key].questions.push({ sessionId: session.id, examTitle: session.exam_title, examDate: session.exam_date, score: session.score, questionCount: session.question_count, archiveFile: session.archive_file || '', questionId: wrong.question_id });
+            });
+            return typeof sortWeakUnitEntries === 'function' ? sortWeakUnitEntries(bucket) : Object.values(bucket);
+        })()
+        : typeof computeStudentWeakUnits === 'function' ? computeStudentWeakUnits(sid) : [];
     const weakHtml = typeof renderWeakUnitSummary === 'function'
         ? renderWeakUnitSummary(weakUnits, '누적 오답 데이터가 없습니다.', { clickable: true, mode: 'student', titlePrefix: `${s?.name || ''} 약한 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s?.name || '' } })
         : '<div style="padding: 16px; text-align: center; color: var(--secondary); font-size: 13px; font-weight:500;">데이터를 불러올 수 없습니다.</div>';
@@ -2744,7 +2883,7 @@ function renderStudentAcademyGradeTab(sid) {
         <section class="ap-student-card">
             <div class="ap-student-section-head">
                 <h3>최근 원내평가</h3>
-                ${recentExam
+                ${recentExam && canEdit
                     ? `<button class="btn ap-student-mini-btn is-primary" onclick="openStudentReportOutputFromDetail(${apmsStudentJsString(sid)}, ${apmsStudentJsString(recentExam.id)})">리포트 출력</button>`
                     : '<span>점수 · 날짜 · 시험명</span>'}
             </div>
@@ -2771,7 +2910,7 @@ function renderStudentAcademyGradeTab(sid) {
  */
 function renderWeakTab(sid) {
     const weakUnits = typeof computeStudentWeakUnits === 'function' ? computeStudentWeakUnits(sid) : [];
-    const s = state.db.students.find(st => st.id === sid);
+    const s = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => st.id === sid);
 
     return `
         <div style="padding: 0 4px;">
@@ -2789,6 +2928,8 @@ function renderWeakTab(sid) {
  */
 // 단일 상담 카드 마크업
 function apStudentConsultationCardHtml(c, sid) {
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === String(sid));
+    const canEdit = student?.timetable_can_edit !== false;
     return `
         <div class="card apms-card" style="padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; box-shadow: none; background: var(--surface);">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 9px;">
@@ -2796,10 +2937,10 @@ function apStudentConsultationCardHtml(c, sid) {
                     <span style="font-size: 12px; font-weight:600; color: var(--secondary); line-height: 1.5;">${c.date}</span>
                     <span class="std-badge" style="background: rgba(110,102,201,0.10); color: #6E66C9; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight:600; border: 1px solid rgba(110,102,201,0.18);">${c.type}</span>
                 </div>
-                <div style="display: flex; gap: 10px;">
+                ${canEdit ? `<div style="display: flex; gap: 10px;">
                     <span style="cursor: pointer; color: #334155; font-size: 12px; font-weight:600;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
                     <span style="cursor: pointer; color: var(--error); font-size: 12px; font-weight:600;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
-                </div>
+                </div>` : ''}
             </div>
             <div style="font-size: 13.5px; font-weight:500; line-height: 1.6; color: var(--text); white-space: pre-wrap;">${apEscapeHtml(c.content)}</div>
             ${c.next_action ? `
@@ -2831,6 +2972,9 @@ function refreshStudentConsultationOthersList(sid, selectedId) {
 
 function renderCnsTab(sid) {
     const key = String(sid || '');
+    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])]
+        .find(row => String(row.id) === key);
+    const canEdit = student?.timetable_can_edit !== false;
     const cnsState = ensureStudentConsultationUiState().byStudent[key] || {};
     const cnsList = getStudentConsultationsFromState(key);
     // 상단 preview에 표시 중인 상담을 하단 목록에서 제외(중복 방지). 선택이 없으면 최신 1건.
@@ -2842,7 +2986,7 @@ function renderCnsTab(sid) {
     return `
         <div class="ap-student-tab-body">
             <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-                <button class="btn ap-student-mini-btn" onclick="openConsultationThreadSummaryModal('${key}')">흐름 요약</button>
+                ${canEdit ? `<button class="btn ap-student-mini-btn" onclick="openConsultationThreadSummaryModal('${key}')">흐름 요약</button>` : ''}
             </div>
             ${cnsState.loading ? '<div style="font-size: 12px; color: var(--secondary); font-weight:600;">상담 기록을 불러오는 중입니다.</div>' : ''}
             <details class="ap-student-consult-all">
@@ -2872,8 +3016,8 @@ function drawGradeChart(sid) {
         return;
     }
 
-    const exs = (typeof apmsGetExamSessionsForStudent === 'function'
-        ? apmsGetExamSessionsForStudent(sid)
+    const exs = (typeof getStudentAcademyExamSessionsForDetail === 'function'
+        ? getStudentAcademyExamSessionsForDetail(sid)
         : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
     ).slice().sort((a,b)=>String(a.exam_date||'').localeCompare(String(b.exam_date||''))).slice(-7);
     if (!exs.length) return;
