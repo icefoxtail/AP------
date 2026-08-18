@@ -22,6 +22,7 @@ async function requireTeacher(request, env, teacher) {
 }
 
 const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignment_batch_id', 'target_scope', 'subject'];
+const ASSIGNMENT_MIXED_PAYLOAD_COLUMN = 'mixed_payload_json';
 const EXAM_SESSION_META_COLUMNS = ['assignment_id', 'pack_id', 'result_hash', 'analysis_status'];
 const BLUEPRINT_META_COLUMNS = ['assessment_pack_id', 'type_key', 'difficulty'];
 const QUESTION_REVIEW_META_COLUMNS = ['concept', 'error_tag', 'difficulty', 'question_type'];
@@ -38,6 +39,21 @@ const columnCacheByEnv = new WeakMap();
 function normalizeOptionalText(value) {
   const text = String(value ?? '').trim();
   return text || null;
+}
+
+function normalizeMixedAssignmentPayload(value, archiveFile) {
+  if (!String(archiveFile || '').startsWith('MIXED:')) return null;
+  if (typeof value !== 'string' || !value.trim() || value.length > 900000) return null;
+  try {
+    const parsed = JSON.parse(value);
+    if (!parsed || !Array.isArray(parsed.questions) || !parsed.questions.length) return null;
+    return JSON.stringify({
+      questions: parsed.questions,
+      meta: parsed.meta && typeof parsed.meta === 'object' ? parsed.meta : {}
+    });
+  } catch (e) {
+    return null;
+  }
 }
 
 function extractQuestionReviewMeta(reviewText) {
@@ -1248,6 +1264,8 @@ export async function handleExams(request, env, teacher, path, url) {
       const aid = crypto.randomUUID();
       const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
       const assignmentMetaColumns = pickExistingColumns(assignmentColumns, ASSIGNMENT_META_COLUMNS);
+      const hasMixedPayloadColumn = assignmentColumns.has(ASSIGNMENT_MIXED_PAYLOAD_COLUMN);
+      const mixedPayload = normalizeMixedAssignmentPayload(d.mixed_payload_json, archive_file);
       const assignmentMeta = {
         pack_id: normalizeOptionalText(d.pack_id),
         grade_label: normalizeOptionalText(d.grade_label),
@@ -1262,6 +1280,7 @@ export async function handleExams(request, env, teacher, path, url) {
         'question_count = ?',
         'archive_file = ?',
         'source_type = ?',
+        ...(hasMixedPayloadColumn ? ['mixed_payload_json = COALESCE(?, mixed_payload_json)'] : []),
         ...assignmentMetaColumns.map(col => `${col} = COALESCE(?, ${col})`),
         "updated_at = DATETIME('now')"
       ];
@@ -1323,6 +1342,7 @@ export async function handleExams(request, env, teacher, path, url) {
           d.question_count || 0,
           archive_file,
           source_type,
+          ...(hasMixedPayloadColumn ? [mixedPayload] : []),
           ...assignmentMetaColumns.map(col => assignmentMeta[col]),
           existing.id
         ).run();
@@ -1336,14 +1356,17 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const insertColumns = [
         'id', 'class_id', 'exam_title', 'exam_date', 'question_count', 'archive_file', 'source_type',
+        ...(hasMixedPayloadColumn ? [ASSIGNMENT_MIXED_PAYLOAD_COLUMN] : []),
         ...assignmentMetaColumns,
         'created_at', 'updated_at'
       ];
       const insertValues = [aid, d.class_id, d.exam_title, d.exam_date, d.question_count || 0, archive_file, source_type];
+      if (hasMixedPayloadColumn) insertValues.push(mixedPayload);
       for (const col of assignmentMetaColumns) insertValues.push(assignmentMeta[col]);
       const conflictUpdateSets = [
         'question_count = excluded.question_count',
         'source_type = excluded.source_type',
+        ...(hasMixedPayloadColumn ? ['mixed_payload_json = COALESCE(excluded.mixed_payload_json, class_exam_assignments.mixed_payload_json)'] : []),
         ...assignmentMetaColumns.map(col => `${col} = COALESCE(excluded.${col}, class_exam_assignments.${col})`),
         "updated_at = DATETIME('now')"
       ];

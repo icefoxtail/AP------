@@ -1805,9 +1805,11 @@ function getArchiveBoardTeacherName(row) {
 }
 
 function getArchiveBoardAssignmentTitle(row) {
+    const explicitTitle = String(row?.exam_title || row?.title || row?.archive_title || '').trim();
+    if (explicitTitle) return explicitTitle;
     const fileTitle = formatArchiveDisplayName(row?.archive_file || row?.file_name || row?.source_file || '');
     if (fileTitle) return fileTitle;
-    return String(row?.exam_title || row?.title || row?.archive_title || '시험지').trim();
+    return '시험지';
 }
 
 function getArchiveBoardPaperKey(row) {
@@ -2649,6 +2651,21 @@ function getIndexAssignmentArchiveFile(item) {
     return isUnitPastExamItem(item) ? `MIXED:${item.unitPastSnapshotKey}` : `exams/${item.file}`;
 }
 
+function getIndexAssignmentMixedPayload(item) {
+    if (!isUnitPastExamItem(item)) return '';
+    const key = String(item?.unitPastSnapshotKey || '').trim();
+    if (!key) return '';
+    try {
+        const questions = JSON.parse(localStorage.getItem(`mixedQuestions_${key}`) || '[]');
+        const meta = JSON.parse(localStorage.getItem(`mixedMeta_${key}`) || '{}');
+        return Array.isArray(questions) && questions.length
+            ? JSON.stringify({ questions, meta: meta && typeof meta === 'object' ? meta : {} })
+            : '';
+    } catch (e) {
+        return '';
+    }
+}
+
 function getIndexAssignmentSourceType(item) {
     return isUnitPastExamItem(item) ? 'mixed' : 'archive';
 }
@@ -2675,6 +2692,7 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         question_count: questionCount,
         archive_file: getIndexAssignmentArchiveFile(item),
         source_type: getIndexAssignmentSourceType(item),
+        mixed_payload_json: getIndexAssignmentMixedPayload(item),
         subject: item.subject || '',
         grade_label: gradeLabel,
         assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, gradeLabel),

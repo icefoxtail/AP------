@@ -404,6 +404,7 @@
       grid-template-columns:1fr;
     }
     .omr-actions.is-review-only { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .omr-review-unavailable { margin:12px 0 0; padding:10px 12px; border-radius:12px; background:#F9FAFB; color:#6B7280; font-size:12px; line-height:1.55; }
     .back-btn {
       width:auto;
       min-height:40px;
@@ -741,7 +742,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.18.1';
+    const STUDENT_APP_VERSION = '2026.08.18.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -2039,7 +2040,39 @@
       return url.toString();
     }
     function isOmrReviewAvailable(exam) {
-      return !!String(exam?.archive_file || '').trim();
+      const archiveFile = String(exam?.archive_file || '').trim();
+      if (!archiveFile) return false;
+      if (!archiveFile.startsWith('MIXED:')) return true;
+      return !!String(exam?.mixed_payload_json || '').trim() || !!String(exam?.pack_id || '').trim();
+    }
+    function isLegacyMixedOmrReview(exam) {
+      const archiveFile = String(exam?.archive_file || '').trim();
+      return archiveFile.startsWith('MIXED:') && !isOmrReviewAvailable(exam);
+    }
+    function restoreMixedOmrPayload(exam) {
+      const archiveFile = String(exam?.archive_file || '').trim();
+      const key = archiveFile.startsWith('MIXED:') ? archiveFile.slice('MIXED:'.length).trim() : '';
+      const rawPayload = String(exam?.mixed_payload_json || '').trim();
+      if (!key || !rawPayload) return true;
+      try {
+        const payload = JSON.parse(rawPayload);
+        if (!Array.isArray(payload?.questions) || !payload.questions.length) return false;
+        localStorage.setItem(`mixedQuestions_${key}`, JSON.stringify(payload.questions));
+        localStorage.setItem(`mixedMeta_${key}`, JSON.stringify(payload.meta && typeof payload.meta === 'object' ? payload.meta : {}));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function openOmrReview(assignmentId, mode) {
+      const exam = findOmrExam(assignmentId);
+      if (!exam || !isOmrReviewAvailable(exam) || !restoreMixedOmrPayload(exam)) {
+        toast('이 시험지는 원본 문항을 준비하지 못했습니다. 선생님께 다시 출제를 요청해 주세요.');
+        return;
+      }
+      const url = buildOmrReviewUrl(exam, mode);
+      if (!url) return toast('시험지 링크를 만들지 못했습니다.');
+      window.open(url, '_blank', 'noopener');
     }
     function renderOmrReviewActions(exam) {
       if (!isOmrReviewAvailable(exam)) return '';
@@ -2047,9 +2080,9 @@
       const answerUrl = buildOmrReviewUrl(exam, 'ans');
       const solutionUrl = buildOmrReviewUrl(exam, 'sol');
       return `
-        ${examUrl ? `<button type="button" class="btn review-btn" onclick="window.open('${escapeHtml(examUrl)}', '_blank')">시험지 보기</button>` : '<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
-        ${answerUrl ? `<button type="button" class="btn review-btn" onclick="window.open('${escapeHtml(answerUrl)}', '_blank')">정답 보기</button>` : '<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
-        ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="window.open('${escapeHtml(solutionUrl)}', '_blank')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
+        ${examUrl ? `<button type="button" class="btn review-btn" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'exam')">시험지 보기</button>` : '<button type="button" class="btn review-btn" disabled>시험지 보기</button>'}
+        ${answerUrl ? `<button type="button" class="btn review-btn" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'ans')">정답 보기</button>` : '<button type="button" class="btn review-btn" disabled>정답 보기</button>'}
+        ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'sol')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
       `;
     }
     async function renderOmrExams() {
@@ -2081,6 +2114,7 @@
     function renderOmrExamCard(exam) {
       const submitted = Number(exam.is_submitted || 0) === 1;
       const showReview = isOmrReviewAvailable(exam);
+      const isLegacyMixedReview = isLegacyMixedOmrReview(exam);
       const showActionArea = showReview || isTeacherPreview || !submitted;
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
@@ -2094,6 +2128,7 @@
             </div>
             ${status ? `<span class="omr-status done">${escapeHtml(status)}</span>` : ''}
           </div>
+          ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
           ${showActionArea ? `
             <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''}">
               ${showReview ? renderOmrReviewActions(exam) : ''}
