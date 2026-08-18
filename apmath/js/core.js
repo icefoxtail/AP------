@@ -338,7 +338,10 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
         };
     }
 
-    if (store.inFlight[sid]) return store.inFlight[sid];
+    if (store.inFlight[sid]) {
+        if (!force) return store.inFlight[sid];
+        try { await store.inFlight[sid]; } catch (e) {}
+    }
 
     store.byStudent[sid] = {
         ...(cached || {}),

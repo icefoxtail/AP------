@@ -427,7 +427,10 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
     const entry = getStudentDetailLazyState(key);
     const force = !!options.force;
     if (!force && entry.loadedAt) return entry;
-    if (entry.inFlight) return entry.inFlight;
+    if (entry.inFlight) {
+        if (!force) return entry.inFlight;
+        try { await entry.inFlight; } catch (e) {}
+    }
 
     entry.loading = true;
     entry.error = '';
@@ -1366,13 +1369,13 @@ function mergeStudentIntoState(student) {
 
 function mergeClassStudentIntoState(classStudent) {
     if (!classStudent || !classStudent.student_id) return null;
-    if (!state.db.class_students) state.db.class_students = [];
     const sid = String(classStudent.student_id);
     const cid = String(classStudent.class_id || '');
-    state.db.class_students = state.db.class_students.filter(m => String(m.student_id) !== sid);
-    if (cid) state.db.class_students.push({ ...classStudent, class_id: cid, student_id: sid });
     ['db', 'allDb'].forEach(key => {
         if (!state[key]) return;
+        if (!Array.isArray(state[key].class_students)) state[key].class_students = [];
+        state[key].class_students = state[key].class_students.filter(m => String(m.student_id) !== sid);
+        if (cid) state[key].class_students.push({ ...classStudent, class_id: cid, student_id: sid });
         if (!Array.isArray(state[key].timetable_class_students)) state[key].timetable_class_students = [];
         state[key].timetable_class_students = state[key].timetable_class_students.filter(m => String(m.student_id) !== sid);
         if (cid) state[key].timetable_class_students.push({ ...classStudent, class_id: cid, student_id: sid });
@@ -1384,7 +1387,10 @@ function mergeClassStudentIntoState(classStudent) {
 function mergeStudentCreateResponseIntoState(response = {}) {
     if (response.student) mergeStudentIntoState(response.student);
     if (Object.prototype.hasOwnProperty.call(response, 'class_student')) {
-        mergeClassStudentIntoState(response.class_student);
+        const classStudent = response.class_student || (response.student?.id
+            ? { student_id: response.student.id, class_id: '' }
+            : null);
+        mergeClassStudentIntoState(classStudent);
     }
     return response.student || null;
 }
