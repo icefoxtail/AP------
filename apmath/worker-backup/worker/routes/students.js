@@ -281,11 +281,16 @@ async function handleCreateStudent(env, teacher, body) {
 }
 
 async function handleUpdateStudent(env, teacher, id, body) {
-  if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+  if (!isStaffUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
   const current = await env.DB.prepare('SELECT * FROM students WHERE id = ?').bind(id).first();
   if (!current) return jsonResponse({ error: 'Not found' }, 404);
   const d = normalizeStudentPayload(body, current);
-  if (d.classId !== undefined && d.classId && !(await canAccessClass(teacher, d.classId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+  const canManageRecords = await canAccessStudent(teacher, id, env);
+  if (d.classId !== undefined && d.classId) {
+    const targetClass = await env.DB.prepare('SELECT id, is_active FROM classes WHERE id = ? LIMIT 1').bind(d.classId).first();
+    if (!targetClass) return jsonResponse({ error: 'class not found', message: '선택한 반을 찾을 수 없습니다.' }, 404);
+    if (Number(targetClass.is_active) === 0) return jsonResponse({ error: 'class inactive', message: '활성 반을 선택해 주세요.' }, 409);
+  }
   if (d.studentPin) {
     const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ? AND id != ?').bind(d.studentPin, id).first();
     if (exist) return jsonResponse({ message: PIN_CONFLICT_MESSAGE }, 409);
@@ -304,7 +309,16 @@ async function handleUpdateStudent(env, teacher, id, body) {
   const targetEnrollment = activeEnrollments.find(row => String(row.class_id || '') === String(nextClassId || '')) || null;
   const studentIdentityKey = await buildStudentIdentityKey({ ...d, class_id: nextClassId });
   const targetScore = normalizeTargetScore(d.targetScore);
-  const nextStatus = d.status !== undefined ? d.status : normalizeStudentStatus(current.status, '재원');
+  const currentStatus = normalizeStudentStatus(current.status, '재원');
+  const nextStatus = d.status !== undefined ? d.status : currentStatus;
+  if (!canManageRecords && String(nextStatus || '') !== currentStatus) {
+    return jsonResponse({ error: 'Forbidden', message: '학생 상태 변경은 담당 교사 또는 관리자만 가능합니다.' }, 403);
+  }
+  const currentLegacyLeave = String(current.memo || '').includes('#휴원');
+  const nextLegacyLeave = String(d.memo || '').includes('#휴원');
+  if (!canManageRecords && currentLegacyLeave !== nextLegacyLeave) {
+    return jsonResponse({ error: 'Forbidden', message: '학생 휴원 상태 변경은 담당 교사 또는 관리자만 가능합니다.' }, 403);
+  }
   const stmts = [
     env.DB.prepare(`
       UPDATE students
@@ -332,7 +346,7 @@ async function handleUpdateStudent(env, teacher, id, body) {
       id
     )
   ];
-  if (String(nextStatus || '') !== String(current.status || '')) {
+  if (String(nextStatus || '') !== currentStatus) {
     stmts.push(env.DB.prepare(`
       INSERT INTO student_status_history
         (id, student_id, old_status, new_status, reason, changed_by, changed_at)
@@ -374,6 +388,7 @@ async function handleUpdateStudent(env, teacher, id, body) {
   try {
     await env.DB.batch(stmts);
     const bundle = await getStudentMutationBundle(env, id);
+    const canManageRecordsAfterUpdate = await canAccessStudent(teacher, id, env);
     const [enrollmentsRes, transferHistoryRes] = classChanged
       ? await Promise.all([
           env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC').bind(id).all(),
@@ -389,8 +404,16 @@ async function handleUpdateStudent(env, teacher, id, body) {
       : [{ results: [] }, { results: [] }];
     return jsonResponse({
       success: true,
-      student: bundle.student,
+      student: {
+        ...bundle.student,
+        timetable_can_edit: !!canManageRecordsAfterUpdate,
+        timetable_can_edit_profile: true,
+        timetable_scope_only: !canManageRecordsAfterUpdate
+      },
       class_student: bundle.class_student,
+      can_edit: !!canManageRecordsAfterUpdate,
+      can_edit_profile: true,
+      scope_only: !canManageRecordsAfterUpdate,
       class_changed: classChanged,
       student_enrollments: classChanged ? (enrollmentsRes.results || []) : undefined,
       class_transfer_history: classChanged ? (transferHistoryRes.results || []) : undefined
@@ -432,32 +455,40 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     ]);
     if (!student) return jsonResponse({ error: 'Not found' }, 404);
     if (!classStudent) return jsonResponse({ error: 'student_not_on_timetable', message: '현재 시간표에 배정된 학생이 아닙니다.' }, 404);
+    // D1은 한 Worker 호출에서 동시에 실행할 수 있는 쿼리 수가 제한된다.
+    // 학생 상세의 큰 번들은 작은 묶음으로 순차 조회해 운영 환경의 500 오류를 막는다.
     const [
       examSessionsRes,
       consultationsRes,
       classRecordsRes,
       attendanceRes,
-      homeworkRes,
-      wrongAnswersRes,
-      schoolExamRecordsRes,
-      enrollmentsRes,
-      parentContactsRes,
-      parentConsentsRes,
-      messageLogsRes,
-      statusHistoryRes,
-      transferHistoryRes,
-      canEdit
+      homeworkRes
     ] = await Promise.all([
       env.DB.prepare('SELECT * FROM exam_sessions WHERE student_id = ? ORDER BY exam_date DESC, created_at DESC LIMIT 50').bind(studentId).all(),
       env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 50').bind(studentId).all(),
       env.DB.prepare('SELECT * FROM class_daily_records WHERE class_id = ? ORDER BY date DESC, created_at DESC LIMIT 30').bind(classStudent.class_id).all(),
       env.DB.prepare('SELECT * FROM attendance WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 500').bind(studentId).all(),
-      env.DB.prepare('SELECT * FROM homework WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM homework WHERE student_id = ? ORDER BY date DESC, created_at DESC LIMIT 500').bind(studentId).all()
+    ]);
+    const [
+      wrongAnswersRes,
+      schoolExamRecordsRes,
+      enrollmentsRes,
+      parentContactsRes,
+      parentConsentsRes
+    ] = await Promise.all([
       env.DB.prepare('SELECT * FROM wrong_answers WHERE student_id = ? ORDER BY id DESC LIMIT 1000').bind(studentId).all(),
       env.DB.prepare("SELECT * FROM school_exam_records WHERE student_id = ? AND COALESCE(is_deleted, 0) = 0 ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 200").bind(studentId).all(),
       env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC LIMIT 200').bind(studentId).all(),
       env.DB.prepare('SELECT * FROM parent_contacts WHERE student_id = ? ORDER BY is_primary DESC, created_at DESC, id DESC LIMIT 200').bind(studentId).all(),
-      env.DB.prepare('SELECT * FROM parent_contact_consents WHERE student_id = ? ORDER BY updated_at DESC, id DESC LIMIT 500').bind(studentId).all(),
+      env.DB.prepare('SELECT * FROM parent_contact_consents WHERE student_id = ? ORDER BY updated_at DESC, id DESC LIMIT 500').bind(studentId).all()
+    ]);
+    const [
+      messageLogsRes,
+      statusHistoryRes,
+      transferHistoryRes,
+      canManageRecords
+    ] = await Promise.all([
       env.DB.prepare('SELECT * FROM message_logs WHERE student_id = ? ORDER BY created_at DESC, id DESC LIMIT 500').bind(studentId).all(),
       env.DB.prepare('SELECT * FROM student_status_history WHERE student_id = ? ORDER BY changed_at DESC, id DESC LIMIT 500').bind(studentId).all(),
       env.DB.prepare(`
@@ -477,7 +508,12 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     `).bind(makeId('pal'), teacher?.id || '', studentId).run();
     return jsonResponse({
       success: true,
-      student: { ...normalizeStudentRowForResponse(student), timetable_can_edit: !!canEdit },
+      student: {
+        ...normalizeStudentRowForResponse(student),
+        timetable_can_edit: !!canManageRecords,
+        timetable_can_edit_profile: true,
+        timetable_scope_only: !canManageRecords
+      },
       class_student: classStudent,
       exam_sessions: examSessionsRes.results || [],
       consultations: consultationsRes.results || [],
@@ -492,7 +528,9 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
       message_logs: messageLogsRes.results || [],
       student_status_history: statusHistoryRes.results || [],
       class_transfer_history: transferHistoryRes.results || [],
-      can_edit: !!canEdit
+      can_edit: !!canManageRecords,
+      can_edit_profile: true,
+      scope_only: !canManageRecords
     });
   }
 
@@ -548,7 +586,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
   }
 
   if (method === 'POST' && path[3] === 'auto-pin') {
-    if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+    if (!isStaffUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
     const student = await env.DB.prepare('SELECT grade, student_pin FROM students WHERE id = ?').bind(id).first();
     if (!student) return jsonResponse({ error: 'Not found' }, 404);
     const reset = body.reset === true || body.reset === 1 || body.reset === '1' || body.reset === 'true';
@@ -564,7 +602,6 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
   if (method === 'POST' && !id) return handleCreateStudent(env, teacher, body);
 
   if (method === 'PATCH' && id) {
-    if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     if (path[3] === 'restore') {
       if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
       const [current, currentClassMap, todayRow, activeEnrollmentsRes, lastWithdrawal] = await Promise.all([

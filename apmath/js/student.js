@@ -1300,12 +1300,12 @@ async function openStudentDetail(sid, options = {}) {
             if (state.ui.studentTimetableDetailRequestToken !== requestToken) return;
             if (!detail?.success || !detail.student) throw new Error(detail?.message || detail?.error || '학생 상세 조회 실패');
             if (detail?.success && detail.student) {
-                const timetableOnly = detail.can_edit === false;
+                const timetableOnly = detail.scope_only === true || detail.student?.timetable_scope_only === true;
                 mergeStudentIntoState(detail.student, { timetableOnly });
                 if (!state.ui.timetableStudentDetails) state.ui.timetableStudentDetails = {};
                 if (timetableOnly) state.ui.timetableStudentDetails[studentId] = detail;
                 else delete state.ui.timetableStudentDetails[studentId];
-                if (detail.can_edit !== false) {
+                if (!timetableOnly) {
                     mergeClassStudentIntoState(detail.class_student);
                 } else if (detail.class_student?.student_id) {
                     const row = detail.class_student;
@@ -1375,9 +1375,9 @@ async function openStudentDetail(sid, options = {}) {
         sourceStudent = (Array.isArray(source) ? source : []).find(st => String(st.id) === studentId);
         if (sourceStudent) break;
     }
-    const s = mergeStudentIntoState(sourceStudent, { timetableOnly: sourceStudent?.timetable_can_edit === false });
+    const s = mergeStudentIntoState(sourceStudent, { timetableOnly: sourceStudent?.timetable_scope_only === true });
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
-    const mode = options.mode === 'edit' && s.timetable_can_edit !== false ? 'edit' : 'view';
+    const mode = options.mode === 'edit' && s.timetable_can_edit_profile !== false ? 'edit' : 'view';
     if (!state.ui) state.ui = {};
 
     // 상태를 덮어쓰기 전에 이전 학생/탭을 먼저 저장해야 성적 하위 탭 리셋 판단이 정확하다.
@@ -1405,7 +1405,7 @@ async function openStudentDetail(sid, options = {}) {
         : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
     ).slice().sort((a,b)=>String(b.exam_date||'').localeCompare(String(a.exam_date||'')));
     const foundationLoads = [];
-    if (s.timetable_can_edit !== false) {
+    if (s.timetable_scope_only !== true) {
         if (typeof loadEnrollmentFoundation === 'function') foundationLoads.push(loadEnrollmentFoundation({ student_id: sid }, { silent: true }));
         if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
         foundationLoads.push(loadStudentOnboardingDetails(sid, { refresh: false }));
@@ -1416,7 +1416,7 @@ async function openStudentDetail(sid, options = {}) {
     renderStudentDetailShell(sid, { mode, tab, returnTo: returnCtx, skipLazyKick: true });
 
     void ensureBlueprintsForSessions(exs).catch(() => {});
-    if (s.timetable_can_edit !== false) {
+    if (s.timetable_scope_only !== true) {
         void ensureStudentDetailLazyData(sid, { refresh: false });
         void ensureStudentConsultationsLoaded(sid, { refresh: false });
         void ensureStudentParentContactDataLoaded(sid, { refresh: false });
@@ -1447,7 +1447,11 @@ function mergeStudentIntoState(student, options = {}) {
     student = typeof normalizeStudentRow === 'function' ? normalizeStudentRow(student) : { ...student, status: normalizeStudentStatus(student.status) };
     const sid = String(student.id);
     if (!state.db.students) state.db.students = [];
-    if (!options.timetableOnly) {
+    const existingScoped = state.db.students.find(s => String(s.id) === sid) || null;
+    const existingTimetable = (state.db.timetable_students || []).find(s => String(s.id) === sid) || null;
+    const timetableOnly = options.timetableOnly === true
+        || (options.timetableOnly === undefined && !existingScoped && existingTimetable?.timetable_scope_only === true);
+    if (!timetableOnly) {
         const idx = state.db.students.findIndex(s => String(s.id) === sid);
         if (idx > -1) state.db.students[idx] = { ...state.db.students[idx], ...student };
         else state.db.students.push(student);
@@ -1460,7 +1464,24 @@ function mergeStudentIntoState(student, options = {}) {
         else if (state[key].timetable_students.length > 0 || key === 'db') state[key].timetable_students.push(student);
     });
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
-    return student;
+    return (state.db.timetable_students || []).find(s => String(s.id) === sid)
+        || state.db.students.find(s => String(s.id) === sid)
+        || student;
+}
+
+function mergeTimetableClassStudentIntoState(classStudent) {
+    if (!classStudent || !classStudent.student_id) return null;
+    const sid = String(classStudent.student_id);
+    const cid = String(classStudent.class_id || '');
+    ['db', 'allDb'].forEach(key => {
+        if (!state[key]) return;
+        if (!Array.isArray(state[key].timetable_class_students)) state[key].timetable_class_students = [];
+        state[key].timetable_class_students = state[key].timetable_class_students
+            .filter(mapping => String(mapping.student_id) !== sid);
+        if (cid) state[key].timetable_class_students.push({ ...classStudent, class_id: cid, student_id: sid });
+    });
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+    return cid ? classStudent : null;
 }
 
 function mergeClassStudentIntoState(classStudent) {
@@ -1481,14 +1502,31 @@ function mergeClassStudentIntoState(classStudent) {
 }
 
 function mergeStudentCreateResponseIntoState(response = {}) {
-    if (response.student) mergeStudentIntoState(response.student);
+    const hasExplicitScope = typeof response.student?.timetable_scope_only === 'boolean';
+    const scopeOnly = response.student?.timetable_scope_only === true;
+    if (hasExplicitScope && scopeOnly && response.student?.id) {
+        const sid = String(response.student.id);
+        ['db', 'allDb'].forEach(key => {
+            if (!state[key]) return;
+            if (Array.isArray(state[key].students)) {
+                state[key].students = state[key].students.filter(student => String(student.id) !== sid);
+            }
+            if (Array.isArray(state[key].class_students)) {
+                state[key].class_students = state[key].class_students.filter(mapping => String(mapping.student_id) !== sid);
+            }
+        });
+    }
+    const mergedStudent = response.student
+        ? mergeStudentIntoState(response.student, hasExplicitScope ? { timetableOnly: scopeOnly } : {})
+        : null;
     if (Object.prototype.hasOwnProperty.call(response, 'class_student')) {
         const classStudent = response.class_student || (response.student?.id
             ? { student_id: response.student.id, class_id: '' }
             : null);
-        mergeClassStudentIntoState(classStudent);
+        if (mergedStudent?.timetable_scope_only === true) mergeTimetableClassStudentIntoState(classStudent);
+        else mergeClassStudentIntoState(classStudent);
     }
-    return response.student || null;
+    return mergedStudent || response.student || null;
 }
 
 function refreshCurrentStudentListViewAfterMutation(returnCtx = null) {
@@ -1672,8 +1710,10 @@ function getStudentOnboardingStartedAtFromStudentRow(sid) {
 function setStudentOnboardingStartedAtInState(sid, value) {
     const date = normalizeOnboardingDate(value);
     if (!sid || !date) return;
-    const student = (state.db.students || []).find(st => String(st.id) === String(sid));
-    if (student) student.onboarding_started_at = date;
+    ['students', 'timetable_students'].forEach(collection => {
+        const student = (state.db[collection] || []).find(st => String(st.id) === String(sid));
+        if (student) student.onboarding_started_at = date;
+    });
 }
 
 function getStudentOnboardingStartedAt(sid) {
@@ -1813,7 +1853,7 @@ function renderStudentDetailHeader(sid, mode = 'view') {
     const cls = getApStudentCurrentClass(sid);
     const status = apmsStudentStatusMeta(s);
     const isEdit = mode === 'edit';
-    const canEdit = s.timetable_can_edit !== false;
+    const canEdit = s.timetable_can_edit_profile !== false;
     const actionBtn = isEdit || !canEdit
         ? ''
         : `<button type="button" class="ap-student-edit-btn" onclick="openStudentDetail(${apmsStudentJsString(sid)}, { mode: 'edit' })">수정</button>`;
@@ -2000,7 +2040,7 @@ function renderStudentBasicTab(sid) {
                     <div class="ap-profile-info-row">
                         <span class="ap-profile-info-label">PIN 번호</span>
                         <span class="ap-profile-info-value${s.student_pin ? '' : ' is-muted'}">${apmsStudentDetailEsc(s.student_pin || '')}</span>
-                        ${s.timetable_can_edit !== false ? `<button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button>` : ''}
+                        ${s.timetable_can_edit_profile !== false ? `<button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button>` : ''}
                     </div>
                 </div>
             </section>
@@ -2010,12 +2050,16 @@ function renderStudentBasicTab(sid) {
     `;
 }
 
+const autoPinSubmittingStudents = new Set();
 async function autoGenerateStudentPin(sid) {
     const studentId = String(sid || '').trim();
     if (!studentId) return toast('학생 정보가 없습니다.', 'warn');
-    const currentStudent = (state.db.students || []).find(st => String(st.id) === studentId);
+    if (autoPinSubmittingStudents.has(studentId)) return toast('PIN을 생성하고 있습니다.', 'info');
+    const currentStudent = [...(state.db.students || []), ...(state.db.timetable_students || [])]
+        .find(st => String(st.id) === studentId);
     const hasPin = !!String(currentStudent?.student_pin || '').trim();
     if (hasPin && typeof confirm === 'function' && !confirm('기존 PIN을 새 번호로 초기화할까요?')) return;
+    autoPinSubmittingStudents.add(studentId);
     try {
         const result = await api.post(`students/${studentId}/auto-pin`, hasPin ? { reset: true } : {});
         if (!result?.success) {
@@ -2023,22 +2067,32 @@ async function autoGenerateStudentPin(sid) {
             return;
         }
         const pin = String(result.pin || result.student_pin || '').trim();
-        const student = currentStudent || (state.db.students || []).find(st => String(st.id) === studentId);
-        if (student && pin) student.student_pin = pin;
-        const input = document.getElementById('edit-student-pin');
-        if (input && pin) input.value = pin;
-        toast('PIN이 생성되었습니다.', 'success');
-        if (typeof renderStudentDetailShell === 'function') {
-            renderStudentDetailShell(studentId, {
-                mode: 'view',
-                tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'),
-                returnTo: state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null
+        if (pin) {
+            ['students', 'timetable_students'].forEach(collection => {
+                const student = (state.db[collection] || []).find(st => String(st.id) === studentId);
+                if (student) student.student_pin = pin;
             });
-        } else if (typeof renderStudentDetail === 'function') {
-            renderStudentDetail(studentId);
+        }
+        const input = document.getElementById('edit-student-pin');
+        const sameStudentOpen = String(state.ui?.currentStudentDetailId || '') === studentId;
+        const editModeOpen = sameStudentOpen && state.ui?.currentStudentDetailMode === 'edit';
+        if (editModeOpen && input && pin) input.value = pin;
+        toast('PIN이 생성되었습니다.', 'success');
+        if (sameStudentOpen && !editModeOpen) {
+            if (typeof renderStudentDetailShell === 'function') {
+                renderStudentDetailShell(studentId, {
+                    mode: 'view',
+                    tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'),
+                    returnTo: state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null
+                });
+            } else if (typeof renderStudentDetail === 'function') {
+                renderStudentDetail(studentId);
+            }
         }
     } catch (error) {
         toast(error?.message || 'PIN 자동생성 중 오류가 발생했습니다.', 'error');
+    } finally {
+        autoPinSubmittingStudents.delete(studentId);
     }
 }
 
