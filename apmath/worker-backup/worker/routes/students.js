@@ -1,5 +1,6 @@
 import { jsonResponse } from '../helpers/response.js';
 import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, makeId } from '../helpers/foundation-db.js';
+import { normalizeBranch } from '../helpers/branch.js';
 import {
   buildStudentIdentityKey,
   generateUniqueStudentPin,
@@ -281,7 +282,15 @@ async function handleUpdateStudent(env, teacher, id, body) {
   if (!d.name) return jsonResponse({ error: 'name required' }, 400);
 
   const currentBundle = await getStudentMutationBundle(env, id);
+  const currentClassId = String(currentBundle.class_student?.class_id || '').trim();
   const nextClassId = d.classId !== undefined ? d.classId : currentBundle.class_student?.class_id || '';
+  const classChanged = d.classId !== undefined && String(nextClassId || '') !== currentClassId;
+  const activeEnrollmentsRes = classChanged
+    ? await env.DB.prepare("SELECT * FROM student_enrollments WHERE student_id = ? AND status = 'active' ORDER BY created_at DESC").bind(id).all()
+    : { results: [] };
+  const activeEnrollments = activeEnrollmentsRes.results || [];
+  const sourceEnrollment = activeEnrollments.find(row => String(row.class_id || '') === currentClassId) || activeEnrollments[0] || null;
+  const targetEnrollment = activeEnrollments.find(row => String(row.class_id || '') === String(nextClassId || '')) || null;
   const studentIdentityKey = await buildStudentIdentityKey({ ...d, class_id: nextClassId });
   const targetScore = normalizeTargetScore(d.targetScore);
   const nextStatus = d.status !== undefined ? d.status : normalizeStudentStatus(current.status, '재원');
@@ -323,11 +332,58 @@ async function handleUpdateStudent(env, teacher, id, body) {
     stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id));
     if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, id));
   }
+  if (classChanged) {
+    if (nextClassId) {
+      stmts.push(env.DB.prepare(`
+        UPDATE student_enrollments
+        SET status = 'ended', end_date = COALESCE(end_date, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP
+        WHERE student_id = ? AND status = 'active' AND class_id != ?
+      `).bind(id, nextClassId));
+      if (!targetEnrollment) {
+        stmts.push(env.DB.prepare(`
+          INSERT INTO student_enrollments
+            (id, student_id, branch, class_id, status, start_date, end_date, tuition_amount, memo)
+          VALUES (?, ?, ?, ?, 'active', DATE('now', '+9 hours'), NULL, ?, 'student detail class transfer')
+        `).bind(makeId('enr'), id, normalizeBranch(sourceEnrollment?.branch || 'apmath'), nextClassId, sourceEnrollment?.tuition_amount ?? null));
+      }
+    } else {
+      stmts.push(env.DB.prepare(`
+        UPDATE student_enrollments
+        SET status = 'ended', end_date = COALESCE(end_date, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP
+        WHERE student_id = ? AND status = 'active'
+      `).bind(id));
+    }
+    stmts.push(env.DB.prepare(`
+      INSERT INTO class_transfer_history
+        (id, student_id, from_class_id, to_class_id, reason, changed_by, changed_at)
+      VALUES (?, ?, ?, ?, 'student detail class edit', ?, DATETIME('now', '+9 hours'))
+    `).bind(makeId('ctr'), id, currentClassId || null, nextClassId || null, teacher?.id || teacher?.login_id || teacher?.name || ''));
+  }
 
   try {
     await env.DB.batch(stmts);
     const bundle = await getStudentMutationBundle(env, id);
-    return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
+    const [enrollmentsRes, transferHistoryRes] = classChanged
+      ? await Promise.all([
+          env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC').bind(id).all(),
+          env.DB.prepare(`
+            SELECT cth.*, from_cls.name AS from_class_name, to_cls.name AS to_class_name
+            FROM class_transfer_history cth
+            LEFT JOIN classes from_cls ON from_cls.id = cth.from_class_id
+            LEFT JOIN classes to_cls ON to_cls.id = cth.to_class_id
+            WHERE cth.student_id = ?
+            ORDER BY cth.changed_at DESC, cth.id DESC
+          `).bind(id).all()
+        ])
+      : [{ results: [] }, { results: [] }];
+    return jsonResponse({
+      success: true,
+      student: bundle.student,
+      class_student: bundle.class_student,
+      class_changed: classChanged,
+      student_enrollments: classChanged ? (enrollmentsRes.results || []) : undefined,
+      class_transfer_history: classChanged ? (transferHistoryRes.results || []) : undefined
+    });
   } catch (err) {
     if (isStudentPinUniqueError(err)) return jsonResponse({ message: PIN_CONFLICT_MESSAGE }, 409);
     if (isStudentIdentityUniqueError(err)) return jsonResponse({ message: DUPLICATE_MESSAGE }, 409);

@@ -56,8 +56,12 @@ function switchStudentDetailEditTab(sid, tab) {
     if (current === tab) return;
     if (current === 'basic') {
         const nameInput = document.getElementById('edit-name');
+        const classInput = document.getElementById('edit-class');
         const s = state.db.students.find(st => String(st.id) === String(sid));
-        if (nameInput && s && nameInput.value.trim() !== String(s.name || '').trim()) {
+        const currentClassId = state.db.class_students.find(row => String(row.student_id) === String(sid))?.class_id || '';
+        const nameChanged = !!nameInput && !!s && nameInput.value.trim() !== String(s.name || '').trim();
+        const classChanged = !!classInput && String(classInput.value || '') !== String(currentClassId || '');
+        if (nameChanged || classChanged) {
             if (!confirm('기본정보 수정 내용이 저장되지 않습니다. 탭을 이동하시겠습니까?')) return;
         }
     }
@@ -337,6 +341,18 @@ function openEditStudent(sid, options = {}) {
     return openStudentDetail(sid, { ...options, mode: 'edit' });
 }
 
+function mergeStudentEnrollmentRowsAfterEdit(sid, rows) {
+    if (!Array.isArray(rows)) return;
+    const studentId = String(sid || '');
+    ['db', 'allDb'].forEach(key => {
+        if (!state[key]) return;
+        const current = Array.isArray(state[key].student_enrollments) ? state[key].student_enrollments : [];
+        state[key].student_enrollments = current
+            .filter(row => String(row.student_id || '') !== studentId)
+            .concat(rows);
+    });
+}
+
 /**
  * edit mode 본문. 최근 상담 카드는 셸에서 공통 렌더하므로 여기서 다시 넣지 않는다.
  * 기존 input id는 handleEditStudent가 읽으므로 변경 금지.
@@ -399,7 +415,21 @@ function renderStudentEditBody(sid) {
     `;
 }
 
+let editStudentSubmitting = false;
+function isSameStudentEditModalOpen(sid) {
+    const overlay = document.getElementById('modal-overlay');
+    return String(state.ui?.currentStudentDetailId || '') === String(sid)
+        && state.ui?.currentStudentDetailMode === 'edit'
+        && !!overlay
+        && overlay.classList.contains('show')
+        && !overlay.classList.contains('hidden');
+}
+
 async function handleEditStudent(sid) {
+    if (editStudentSubmitting) {
+        toast('학생 정보를 저장하고 있습니다.', 'info');
+        return;
+    }
     const returnCtx = state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null;
     const currentStudent = state.db.students.find(st => String(st.id) === String(sid));
     const currentClassId = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id || '';
@@ -454,6 +484,16 @@ async function handleEditStudent(sid) {
         ...(onboardingDateChanged ? { onboarding_started_at: onboardingInputRaw, onboardingStartedAt: onboardingInputRaw } : {})
     };
 
+    const actionBtn = document.getElementById('modal-action-btn');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    const previousActionText = actionBtn?.textContent || '저장';
+    editStudentSubmitting = true;
+    if (actionBtn) {
+        actionBtn.disabled = true;
+        actionBtn.textContent = '저장 중…';
+    }
+    if (cancelBtn) cancelBtn.disabled = true;
+
     try {
         const r = await api.patch(`students/${sid}`, payload);
         if (r?.success) {
@@ -467,18 +507,42 @@ async function handleEditStudent(sid) {
                     already_attending: alreadyAttending ? 1 : 0
                 });
             }
-            toast('학생 정보가 수정되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
+            mergeStudentEnrollmentRowsAfterEdit(sid, r.student_enrollments);
             if (onboardingDateChanged) setStudentOnboardingStartedAtInState(sid, onboardingInputRaw);
-            // 수정 저장은 모달을 닫지 않고 같은 학생상세 보기 모드로 복귀한다.
-            await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
-            renderStudentDetailShell(sid, { mode: 'view', tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'), returnTo: returnCtx });
+            if (classChanged) {
+                const refreshes = [];
+                if (typeof loadStudentFoundationDetails === 'function') {
+                    refreshes.push(loadStudentFoundationDetails(sid, { force: true }));
+                }
+                if (typeof ensureStudentDetailLazyData === 'function') {
+                    refreshes.push(ensureStudentDetailLazyData(sid, { force: true, refresh: false }));
+                }
+                if (refreshes.length) await Promise.all(refreshes);
+            }
+            toast('학생 정보가 수정되었습니다.', 'success');
+            const stillEditingSameStudent = isSameStudentEditModalOpen(sid);
+            if (stillEditingSameStudent) {
+                // 수정 저장은 모달을 닫지 않고 같은 학생상세 보기 모드로 복귀한다.
+                await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
+                if (isSameStudentEditModalOpen(sid)) {
+                    renderStudentDetailShell(sid, { mode: 'view', tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'), returnTo: returnCtx });
+                }
+            }
             return;
         }
         toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');
     } catch (e) {
         console.error('[handleEditStudent] failed:', e);
         toast('학생 정보 수정 중 오류가 발생했습니다.', 'error');
+    } finally {
+        editStudentSubmitting = false;
+        const stillEditingSameStudent = isSameStudentEditModalOpen(sid);
+        if (actionBtn && stillEditingSameStudent) {
+            actionBtn.disabled = false;
+            actionBtn.textContent = previousActionText;
+        }
+        if (cancelBtn && stillEditingSameStudent) cancelBtn.disabled = false;
     }
 }
 
