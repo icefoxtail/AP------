@@ -96,6 +96,6 @@ assert(!context.modal.body.includes('>복구</button>'), 'teacher report should 
 
 context.state.auth.role = 'admin';
 context.renderWithdrawalReportModal();
-assert(context.modal.body.includes('>복구</button>') && context.modal.body.includes('>숨김</button>'), 'admin report should expose management actions');
+assert(context.modal.body.includes('>재등원</button>') && context.modal.body.includes('>숨김</button>'), 'admin report should expose management actions');
 
 console.log('apmath withdrawal report test passed');

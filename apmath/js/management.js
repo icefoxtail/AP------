@@ -93,7 +93,7 @@ function renderAddressBookList() {
                     <button class="btn apms-button apms-button--quiet apms-student-primary-soft" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(var(--primary-rgb),0.08); border:none;" onclick="openStudentDetail('${s.id}', { mode: 'edit', returnTo: { type: 'addressBook' } })">수정</button>
                     ${isActive
                         ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
-                        : `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="handleRestore('${s.id}')">복구</button>`
+                        : `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="handleRestore('${s.id}')">재등원</button>`
                     }
                 </div>
             </div>

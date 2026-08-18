@@ -193,7 +193,12 @@ export function calculateBillingPreview({ year, month, enrollments, templates, p
   };
 
   for (const enrollment of sortedEnrollments) {
-    if (String(enrollment.status || 'active').trim().toLowerCase() !== 'active') {
+    const enrollmentStatus = String(enrollment.status || 'active').trim().toLowerCase();
+    if (!['active', 'ended'].includes(enrollmentStatus)) {
+      exclude(enrollment, PREVIEW_EXCLUSION_REASONS.ENROLLMENT_NOT_ACTIVE);
+      continue;
+    }
+    if (enrollmentStatus === 'ended' && !parseIsoDate(enrollment.end_date)) {
       exclude(enrollment, PREVIEW_EXCLUSION_REASONS.ENROLLMENT_NOT_ACTIVE);
       continue;
     }
@@ -207,7 +212,7 @@ export function calculateBillingPreview({ year, month, enrollments, templates, p
       continue;
     }
     const endDate = parseIsoDate(enrollment.end_date) ? String(enrollment.end_date).trim() : '';
-    if (endDate && endDate < billingDate) {
+    if (endDate && endDate <= billingDate) {
       exclude(enrollment, PREVIEW_EXCLUSION_REASONS.ENDED_BEFORE_BILLING_DATE);
       continue;
     }
