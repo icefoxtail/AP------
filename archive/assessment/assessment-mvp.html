@@ -1287,6 +1287,7 @@
         question_count: (pack.questions || []).length,
         archive_file: `MIXED:${key}`,
         source_type: 'mixed',
+        mixed_payload_json: JSON.stringify({ questions: pack.questions || [], meta: { customTitle: pack.title || '', packId: pack.id || '' } }),
         pack_id: pack.id,
         grade_label: gradeLabel,
         pack_hash: buildAssessmentPackHash(pack),

@@ -262,6 +262,7 @@ CREATE TABLE IF NOT EXISTS class_exam_assignments (
   question_count INTEGER DEFAULT 0,
   archive_file TEXT DEFAULT '',
   source_type TEXT DEFAULT 'archive',
+  mixed_payload_json TEXT DEFAULT '',
   subject TEXT DEFAULT '',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
