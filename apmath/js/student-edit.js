@@ -82,6 +82,7 @@ async function handleDelete(sid) {
         if (r?.success) {
             toast('퇴원 처리되었습니다.', 'info');
             mergeStudentCreateResponseIntoState(r);
+            mergeStudentEnrollmentRowsAfterEdit(sid, r.student_enrollments);
             closeModal();
             refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
@@ -93,25 +94,116 @@ async function handleDelete(sid) {
     }
 }
 
+let restoreStudentSubmitting = false;
+
+handleRestore.isReenrollmentModalOpen = function(sid) {
+    const overlay = document.getElementById('modal-overlay');
+    const marker = document.querySelector('[data-student-reenrollment]');
+    return !!overlay
+        && overlay.classList.contains('show')
+        && !overlay.classList.contains('hidden')
+        && String(marker?.dataset?.studentReenrollment || '') === String(sid || '');
+};
+
 async function handleRestore(sid) {
-    if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
+    if (restoreStudentSubmitting) {
+        toast('다른 학생의 재등원 처리가 진행 중입니다.', 'info');
+        return;
+    }
+    const student = state.db.students.find(row => String(row.id) === String(sid));
+    if (!student) {
+        toast('학생 정보를 찾을 수 없습니다.', 'error');
+        return;
+    }
+    const currentClassId = state.db.class_students.find(row => String(row.student_id) === String(sid))?.class_id || '';
+    const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    if (!selectableClasses.length) {
+        toast('재등원할 활성 반이 없습니다.', 'warn');
+        return;
+    }
+    const options = selectableClasses.map(cls => `
+        <option value="${studentAttr(cls.id)}" ${String(cls.id) === String(currentClassId) ? 'selected' : ''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(cls, selectableClasses))}</option>
+    `).join('');
+    showModal('재등원 처리', `
+        <div data-student-reenrollment="${studentAttr(sid)}" style="display:grid; gap:16px;">
+            <div style="padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
+                <div style="font-size:16px; font-weight:700; color:var(--text);">${apEscapeHtml(student.name || '학생')}</div>
+                <div style="margin-top:5px; font-size:12px; line-height:1.55; color:var(--secondary);">기존 PIN, 상담·수업·시험·결제 이력은 유지되고 새 수강 기간이 시작됩니다.</div>
+            </div>
+            <label style="display:grid; gap:7px; font-size:13px; font-weight:600; color:var(--text);">
+                재등원 반
+                <select id="restore-class" class="std-input-base" style="width:100%; min-height:44px; box-sizing:border-box;">
+                    <option value="">반 선택</option>${options}
+                </select>
+            </label>
+            <label style="display:grid; gap:7px; font-size:13px; font-weight:600; color:var(--text);">
+                재등원일
+                <input id="restore-date" type="date" class="std-input-base" value="${studentAttr(getTodayKstDateText())}" max="${studentAttr(getTodayKstDateText())}" style="width:100%; min-height:44px; box-sizing:border-box;">
+            </label>
+        </div>
+    `, '재등원', () => handleRestore.confirm(sid));
+    requestAnimationFrame(() => document.getElementById('restore-class')?.focus());
+}
+
+handleRestore.confirm = async function(sid) {
+    if (restoreStudentSubmitting || !handleRestore.isReenrollmentModalOpen(sid)) return;
+    const classId = String(document.getElementById('restore-class')?.value || '').trim();
+    const reenrollmentDate = String(document.getElementById('restore-date')?.value || '').trim();
+    if (!classId) { toast('재등원할 반을 선택해 주세요.', 'warn'); return; }
+    if (!reenrollmentDate) { toast('재등원일을 선택해 주세요.', 'warn'); return; }
     const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
+    const actionBtn = document.getElementById('modal-action-btn');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    restoreStudentSubmitting = true;
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) overlay.dataset.mutationPending = 'reenrollment';
+    if (actionBtn) {
+        actionBtn.disabled = true;
+        actionBtn.textContent = '처리 중…';
+    }
+    if (cancelBtn) cancelBtn.disabled = true;
 
     try {
-        const r = await api.patch(`students/${sid}/restore`, {});
+        const r = await api.patch(`students/${sid}/restore`, {
+            class_id: classId,
+            reenrollment_date: reenrollmentDate
+        });
         if (r?.success) {
-            toast('재원으로 복구되었습니다.', 'info');
+            toast('재등원 처리되었습니다.', 'success');
             mergeStudentCreateResponseIntoState(r);
-            closeModal();
-            refreshCurrentStudentListViewAfterMutation(returnCtx);
+            mergeStudentEnrollmentRowsAfterEdit(sid, r.student_enrollments);
+            const refreshes = [];
+            if (typeof loadStudentFoundationDetails === 'function') refreshes.push(loadStudentFoundationDetails(sid, { force: true }));
+            if (typeof ensureStudentDetailLazyData === 'function') refreshes.push(ensureStudentDetailLazyData(sid, { force: true, refresh: false }));
+            if (refreshes.length) await Promise.allSettled(refreshes);
+            if (handleRestore.isReenrollmentModalOpen(sid)) {
+                if (overlay) delete overlay.dataset.mutationPending;
+                closeModal();
+                if (typeof openWithdrawalReport === 'function') openWithdrawalReport();
+                else refreshCurrentStudentListViewAfterMutation(returnCtx);
+            } else {
+                refreshCurrentStudentListViewAfterMutation(returnCtx);
+            }
             return;
         }
-        toast(r?.message || r?.error || '재원 복구에 실패했습니다.', 'error');
+        toast(r?.message || r?.error || '재등원 처리에 실패했습니다.', 'error');
     } catch (e) {
         console.error('[handleRestore] failed:', e);
-        toast('재원 복구 중 오류가 발생했습니다.', 'error');
+        toast('재등원 처리 중 오류가 발생했습니다.', 'error');
+    } finally {
+        restoreStudentSubmitting = false;
+        if (overlay?.dataset?.mutationPending === 'reenrollment') delete overlay.dataset.mutationPending;
+        if (handleRestore.isReenrollmentModalOpen(sid)) {
+            const currentActionBtn = document.getElementById('modal-action-btn');
+            const currentCancelBtn = document.getElementById('modal-cancel-btn');
+            if (currentActionBtn) {
+                currentActionBtn.disabled = false;
+                currentActionBtn.textContent = '재등원';
+            }
+            if (currentCancelBtn) currentCancelBtn.disabled = false;
+        }
     }
-}
+};
 
 function sortClassesForStudentModal(classes = []) {
     const gradeRank = (cls) => {
@@ -647,7 +739,7 @@ function openDischargedStudents() {
     const rows = discharged.map(s => `
         <div class="apms-discharged-student-row" style="padding: 14px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface);">
             <div><span style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">${apEscapeHtml(s.name)}</span> <span style="font-size: 12px; color: var(--secondary); font-weight: 400; line-height: 1.5; margin-left: 4px;">${apEscapeHtml(s.school_name || '')}</span></div>
-            <button class="btn apms-button apms-button--primary btn-primary" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:500; border-radius: 12px; box-shadow: none;" onclick="handleRestore('${s.id}')">재원 복구</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:500; border-radius: 12px; box-shadow: none;" onclick="handleRestore('${s.id}')">재등원</button>
         </div>
     `).join('');
     showModal('퇴원생 관리', `<div class="apms-student-contrast apms-student-discharged-view" style="max-height: 60vh; overflow-y: auto; margin: -20px 0;">${rows || '<div class="apms-student-empty-state" style="padding: 40px; text-align: center; color: var(--secondary); font-weight:500; font-size: 13px; line-height: 1.5;">퇴원생이 없습니다.</div>'}</div>`);

@@ -219,11 +219,8 @@ function openDischargedStudents() {
     openWithdrawalReport();
 }
 
-async function restoreDischargedStudent(sid) {
-    if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
-    const r = await api.patch(`students/${sid}/restore`, {});
-    if (r?.success) { await loadData(); openWithdrawalReport(); }
-    else toast(r?.message || r?.error || '복구에 실패했습니다.', 'error');
+function restoreDischargedStudent(sid) {
+    return handleRestore(sid);
 }
 
 async function hideDischargedStudent(sid) {
@@ -287,7 +284,7 @@ async function openAdminStudentList(type) {
         const actionButtons = type === 'hidden'
             ? `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">재등원</button>
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); cursor:pointer;" onclick="purgeHiddenStudent('${s.id}')">완전 삭제</button>
                 </div>
             `
@@ -295,7 +292,7 @@ async function openAdminStudentList(type) {
             ? `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세 보기</button>
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">재등원</button>
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">목록숨김</button>
                 </div>
             `
@@ -342,7 +339,7 @@ function openAdminOperationMenu() {
             </button>
             <button class="btn" style="${cardStyle}" onclick="openAdminStudentList('discharged')">
                 <div style="${titleStyle}">퇴원생 관리</div>
-                <div style="${descStyle}">퇴원/숨김 학생 조회, 복구, 중복 생성 정리</div>
+                <div style="${descStyle}">퇴원/숨김 학생 조회, 재등원, 중복 생성 정리</div>
             </button>
             ${isAdmin && showBillingAccountingFoundationEntry ? `
             <button class="btn" style="${cardStyle}" onclick="if(typeof openBillingAccountingFoundationModal==='function') openBillingAccountingFoundationModal(); else toast('수납·출납 foundation 화면을 불러오지 못했습니다.', 'warn');">
@@ -584,7 +581,7 @@ function renderWithdrawalReportModal() {
         const actions = isAdmin ? `
             <div class="ap-withdrawal-row__actions">
                 <button class="btn" type="button" onclick="openStudentDetail('${apEscapeHtml(student.id)}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세보기</button>
-                <button class="btn btn-primary" type="button" onclick="restoreDischargedStudent('${apEscapeHtml(student.id)}')">복구</button>
+                <button class="btn btn-primary" type="button" onclick="restoreDischargedStudent('${apEscapeHtml(student.id)}')">재등원</button>
                 <button class="btn" type="button" onclick="hideDischargedStudent('${apEscapeHtml(student.id)}')">숨김</button>
             </div>` : '';
         return `

@@ -515,16 +515,33 @@ async function computeServerBillingPreview(env, year, month) {
       se.student_id,
       se.branch,
       se.class_id,
-      se.status,
+      CASE
+        WHEN se.status = 'active' AND s.status IN ('퇴원', '제적', 'withdrawn', 'withdraw', '숨김', 'hidden') THEN 'ended'
+        ELSE se.status
+      END AS status,
       se.start_date,
-      se.end_date,
+      CASE
+        WHEN se.status = 'active' AND s.status IN ('퇴원', '제적', 'withdrawn', 'withdraw', '숨김', 'hidden') THEN
+          CASE
+            WHEN se.end_date IS NULL OR se.end_date > COALESCE(SUBSTR(withdrawals.withdrawn_at, 1, 10), SUBSTR(s.updated_at, 1, 10))
+              THEN COALESCE(SUBSTR(withdrawals.withdrawn_at, 1, 10), SUBSTR(s.updated_at, 1, 10))
+            ELSE se.end_date
+          END
+        ELSE se.end_date
+      END AS end_date,
       se.tuition_amount,
       s.name AS student_name,
       c.name AS class_name
     FROM student_enrollments se
     LEFT JOIN students s ON s.id = se.student_id
     LEFT JOIN classes c ON c.id = se.class_id
-    WHERE se.status = 'active'
+    LEFT JOIN (
+      SELECT student_id, MAX(changed_at) AS withdrawn_at
+      FROM student_status_history
+      WHERE new_status IN ('퇴원', '제적', 'withdrawn', 'withdraw')
+      GROUP BY student_id
+    ) withdrawals ON withdrawals.student_id = se.student_id
+    WHERE se.status IN ('active', 'ended')
     ORDER BY se.student_id ASC, se.class_id ASC, se.id ASC
   `);
 

@@ -31,6 +31,17 @@ function isHiddenStudentStatus(value) {
   return normalizeStudentStatus(value, '') === '숨김';
 }
 
+function isValidIsoDate(value) {
+  const text = String(value || '').trim();
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return false;
+  const date = new Date(`${text}T00:00:00.000Z`);
+  return !Number.isNaN(date.getTime())
+    && date.getUTCFullYear() === Number(match[1])
+    && date.getUTCMonth() + 1 === Number(match[2])
+    && date.getUTCDate() === Number(match[3]);
+}
+
 function normalizeStudentRowForResponse(row) {
   if (!row || typeof row !== 'object') return row;
   return { ...row, status: normalizeStudentStatus(row.status, '재원') };
@@ -483,20 +494,111 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     if (path[3] === 'restore') {
       if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
-      const current = await env.DB.prepare('SELECT status FROM students WHERE id = ? LIMIT 1').bind(id).first();
-      await env.DB.batch([
-        env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id),
+      const [current, currentClassMap, todayRow, activeEnrollmentsRes, lastWithdrawal] = await Promise.all([
+        env.DB.prepare('SELECT * FROM students WHERE id = ? LIMIT 1').bind(id).first(),
+        env.DB.prepare('SELECT class_id, student_id FROM class_students WHERE student_id = ? ORDER BY class_id ASC LIMIT 1').bind(id).first(),
+        env.DB.prepare("SELECT DATE('now', '+9 hours') AS today").first(),
+        env.DB.prepare("SELECT * FROM student_enrollments WHERE student_id = ? AND status = 'active' ORDER BY created_at DESC").bind(id).all(),
+        env.DB.prepare("SELECT id, changed_at FROM student_status_history WHERE student_id = ? AND new_status IN ('퇴원', '제적', 'withdrawn', 'withdraw') ORDER BY changed_at DESC, id DESC LIMIT 1").bind(id).first()
+      ]);
+      if (!current) return jsonResponse({ error: 'Not found' }, 404);
+      if (!['퇴원', '숨김'].includes(normalizeStudentStatus(current.status, ''))) {
+        return jsonResponse({ success: false, error: 'student_not_withdrawn', message: '퇴원 또는 숨김 학생만 재등원할 수 있습니다.' }, 409);
+      }
+
+      const requestedClassId = String(body.class_id ?? body.classId ?? currentClassMap?.class_id ?? '').trim();
+      if (!requestedClassId) return jsonResponse({ success: false, error: 'class_id required', message: '재등원할 반을 선택해 주세요.' }, 400);
+      const targetClass = await env.DB.prepare('SELECT id, is_active FROM classes WHERE id = ? LIMIT 1').bind(requestedClassId).first();
+      if (!targetClass) return jsonResponse({ success: false, error: 'class not found', message: '선택한 반을 찾을 수 없습니다.' }, 404);
+      if (Number(targetClass.is_active) === 0) return jsonResponse({ success: false, error: 'class inactive', message: '활성 반을 선택해 주세요.' }, 409);
+
+      const requestedDate = String(body.reenrollment_date ?? body.reenrollmentDate ?? '').trim();
+      if (requestedDate && !isValidIsoDate(requestedDate)) {
+        return jsonResponse({ success: false, error: 'invalid reenrollment_date', message: '재등원일 형식이 올바르지 않습니다.' }, 400);
+      }
+      const reenrollmentDate = requestedDate || String(todayRow?.today || '').trim();
+      const currentClassId = String(currentClassMap?.class_id || '').trim();
+      const activeEnrollments = activeEnrollmentsRes.results || [];
+      const sourceEnrollment = activeEnrollments.find(row => String(row.class_id || '') === currentClassId)
+        || activeEnrollments[0]
+        || await env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC LIMIT 1').bind(id).first();
+      const withdrawalDate = /^\d{4}-\d{2}-\d{2}/.test(String(lastWithdrawal?.changed_at || ''))
+        ? String(lastWithdrawal.changed_at).slice(0, 10)
+        : reenrollmentDate;
+      if (!isValidIsoDate(reenrollmentDate) || reenrollmentDate > String(todayRow?.today || '')) {
+        return jsonResponse({ success: false, error: 'reenrollment_date_in_future', message: '재등원일은 오늘 또는 이전 날짜로 선택해 주세요.' }, 400);
+      }
+      if (isValidIsoDate(withdrawalDate) && reenrollmentDate < withdrawalDate) {
+        return jsonResponse({ success: false, error: 'reenrollment_date_before_withdrawal', message: '재등원일은 마지막 퇴원일보다 빠를 수 없습니다.' }, 400);
+      }
+      const studentIdentityKey = await buildStudentIdentityKey(identityFromStudentRow(current, requestedClassId));
+      const restoreTransitionToken = String(lastWithdrawal?.id || `${id}_${current.updated_at || current.created_at || 'legacy'}`)
+        .replace(/[^a-zA-Z0-9_-]/g, '_');
+      const reenrollmentId = `enr_re_${restoreTransitionToken}`;
+      const stmts = [
+        env.DB.prepare(`
+          UPDATE student_enrollments
+          SET status = 'ended',
+              end_date = CASE WHEN end_date IS NULL OR end_date > ? THEN ? ELSE end_date END,
+              updated_at = CURRENT_TIMESTAMP
+          WHERE student_id = ? AND status = 'active'
+            AND EXISTS (
+              SELECT 1 FROM students
+              WHERE id = ? AND status IN ('퇴원', '제적', 'withdrawn', 'withdraw', '숨김', 'hidden')
+            )
+        `).bind(withdrawalDate, withdrawalDate, id, id),
+        env.DB.prepare(`
+          UPDATE students
+          SET status = '재원', student_identity_key = ?, updated_at = DATETIME('now')
+          WHERE id = ? AND status IN ('퇴원', '제적', 'withdrawn', 'withdraw', '숨김', 'hidden')
+        `).bind(studentIdentityKey, id),
+        env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id),
+        env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(requestedClassId, id),
+        env.DB.prepare(`
+          INSERT INTO student_enrollments
+            (id, student_id, branch, class_id, status, start_date, end_date, tuition_amount, memo)
+          VALUES (?, ?, ?, ?, 'active', ?, NULL, ?, 'student reenrollment')
+        `).bind(reenrollmentId, id, normalizeBranch(sourceEnrollment?.branch || 'apmath'), requestedClassId, reenrollmentDate, sourceEnrollment?.tuition_amount ?? null),
         env.DB.prepare(`
           INSERT INTO student_status_history
             (id, student_id, old_status, new_status, reason, changed_by, changed_at)
-          VALUES (?, ?, ?, '재원', 'student restore', ?, DATETIME('now', '+9 hours'))
-        `).bind(makeId('ssh'), id, current?.status || '', teacher?.id || teacher?.name || '')
-      ]);
+          VALUES (?, ?, ?, '재원', 'student reenrollment', ?, DATETIME('now', '+9 hours'))
+        `).bind(makeId('ssh'), id, current.status || '', teacher?.id || teacher?.login_id || teacher?.name || '')
+      ];
+      if (currentClassId && currentClassId !== requestedClassId) {
+        stmts.push(env.DB.prepare(`
+          INSERT INTO class_transfer_history
+            (id, student_id, from_class_id, to_class_id, reason, changed_by, changed_at)
+          VALUES (?, ?, ?, ?, 'student reenrollment class change', ?, DATETIME('now', '+9 hours'))
+        `).bind(makeId('ctr'), id, currentClassId, requestedClassId, teacher?.id || teacher?.login_id || teacher?.name || ''));
+      }
+      try {
+        await env.DB.batch(stmts);
+      } catch (err) {
+        if (isStudentIdentityUniqueError(err)) return jsonResponse({ message: DUPLICATE_MESSAGE }, 409);
+        const errorText = String(err?.message || err || '').toLowerCase();
+        if (errorText.includes('unique') && errorText.includes('student_enrollments')) {
+          return jsonResponse({ success: false, error: 'student_already_reenrolled', message: '이미 재등원 처리된 학생입니다.' }, 409);
+        }
+        throw err;
+      }
       const bundle = await getStudentMutationBundle(env, id);
-      return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
+      const enrollmentsRes = await env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC').bind(id).all();
+      return jsonResponse({
+        success: true,
+        student: bundle.student,
+        class_student: bundle.class_student,
+        student_enrollments: enrollmentsRes.results || [],
+        reenrollment_date: reenrollmentDate
+      });
     }
     if (path[3] === 'hide') {
       if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+      const current = await env.DB.prepare('SELECT status FROM students WHERE id = ? LIMIT 1').bind(id).first();
+      if (!current) return jsonResponse({ error: 'Not found' }, 404);
+      if (normalizeStudentStatus(current.status, '') !== '퇴원') {
+        return jsonResponse({ success: false, error: 'only_withdrawn_students_can_be_hidden', message: '퇴원 학생만 숨김 처리할 수 있습니다.' }, 409);
+      }
       await env.DB.prepare("UPDATE students SET status = '숨김', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
       const bundle = await getStudentMutationBundle(env, id);
       return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
@@ -549,8 +651,22 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
   if (method === 'DELETE' && id) {
     if (!(await canAccessStudent(teacher, id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     const current = await env.DB.prepare('SELECT status FROM students WHERE id = ? LIMIT 1').bind(id).first();
+    if (!current) return jsonResponse({ error: 'Not found' }, 404);
+    if (normalizeStudentStatus(current.status, '') === '퇴원') {
+      return jsonResponse({ success: false, error: 'student_already_withdrawn', message: '이미 퇴원 처리된 학생입니다.' }, 409);
+    }
     await env.DB.batch([
       env.DB.prepare("UPDATE students SET status = '퇴원', updated_at = DATETIME('now') WHERE id = ?").bind(id),
+      env.DB.prepare(`
+        UPDATE student_enrollments
+        SET status = 'ended',
+            end_date = CASE
+              WHEN end_date IS NULL OR end_date > DATE('now', '+9 hours') THEN DATE('now', '+9 hours')
+              ELSE end_date
+            END,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE student_id = ? AND status = 'active'
+      `).bind(id),
       env.DB.prepare(`
         INSERT INTO student_status_history
           (id, student_id, old_status, new_status, reason, changed_by, changed_at)
@@ -558,7 +674,8 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
       `).bind(makeId('ssh'), id, current?.status || '', teacher?.id || teacher?.name || '')
     ]);
     const bundle = await getStudentMutationBundle(env, id);
-    return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student });
+    const enrollmentsRes = await env.DB.prepare('SELECT * FROM student_enrollments WHERE student_id = ? ORDER BY created_at DESC').bind(id).all();
+    return jsonResponse({ success: true, student: bundle.student, class_student: bundle.class_student, student_enrollments: enrollmentsRes.results || [] });
   }
 
   return null;

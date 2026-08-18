@@ -77,7 +77,7 @@ const FIXTURE = {
     ['en02', 's02', 'apmath', 'cA', 'active', '2026-01-31', null, 380000],      // 학생별 금액 380000 + 교재 30000 → 410000, 기준일 7/31(말일 당김 경계)
     ['en03', 's03', 'apmath', 'cB', 'active', '2026-07-01', null, null],        // 350000
     ['en04', 's04', 'apmath', 'cB', 'active', '2026-08-05', null, null],        // 중도등록 예정 → 제외
-    ['en05', 's05', 'apmath', 'cA', 'active', '2026-02-10', '2026-06-30', null],// 기준일(7/10) 전에 종료 → 제외
+    ['en05', 's05', 'apmath', 'cA', 'ended', '2026-02-10', '2026-06-30', null], // 종료된 과거 수강: 6월 청구, 7월 제외
     ['en06', 's06', 'apmath', 'cC', 'active', '2026-05-20', null, null],        // 반 템플릿 없음 → 지점 정책 300000
     ['en07', 's07', 'apmath', 'cC', 'active', null, null, null],                // 등원 시작일 없음 → 제외 (D-01)
     ['en08', 's08', 'eie', 'cE', 'active', '2026-04-15', null, null],           // eie 규칙 없음 → 제외 (apmath 규칙 누출 금지)
@@ -202,6 +202,23 @@ async function run() {
   const second = calculateBillingPreview(input());
   assert.deepStrictEqual(first, second, '같은 입력이 다른 미리보기를 생성함(결정론 위반)');
 
+  const invalidEnded = calculateBillingPreview({
+    year: 2030,
+    month: 12,
+    enrollments: [{ enrollment_id: 'ended-null', student_id: 's01', branch: 'apmath', class_id: 'cA', status: 'ended', start_date: '2026-03-12', end_date: null }],
+    templates: fixtureTemplates(),
+    policyRules: fixturePolicyRules()
+  });
+  assert.strictEqual(invalidEnded.invoices.length, 0, '종료일 없는 ended 수강을 영구 청구하면 안 됨');
+  const sameDayEnded = calculateBillingPreview({
+    year: 2026,
+    month: 8,
+    enrollments: [{ enrollment_id: 'ended-same-day', student_id: 's01', branch: 'apmath', class_id: 'cA', status: 'ended', start_date: '2026-03-18', end_date: '2026-08-18' }],
+    templates: fixtureTemplates(),
+    policyRules: fixturePolicyRules()
+  });
+  assert.strictEqual(sameDayEnded.invoices.length, 0, '퇴원일과 청구 기준일이 같은 기존 수강은 재등원 수강과 중복 청구하면 안 됨');
+
   assert.strictEqual(first.rule_version, BILLING_RULE_VERSION);
   assert.strictEqual(first.totals.invoices_count, Object.keys(EXPECTED_BILLED).length); // 청구서 7건
   assert.strictEqual(first.totals.students_count, 6); // 학생 6명 (s10은 2건)
@@ -294,6 +311,8 @@ async function run() {
   for (const invoice of preview1.body.invoices) {
     assert.strictEqual(invoice.billed_amount, EXPECTED_BILLED[invoice.enrollment_id]);
   }
+  const junePreview = await callRoute(routeModule, env, { sub: 'billing-preview', query: '?year=2026&month=6' });
+  assert.ok(junePreview.body.invoices.some((invoice) => invoice.enrollment_id === 'en05'), '종료된 수강도 종료 전 청구월에는 포함되어야 함');
   // 구 응답 표면 유지
   assert.ok(Array.isArray(preview1.body.preview_items));
   assert.strictEqual(preview1.body.preview_items.length, 10);
@@ -343,11 +362,20 @@ async function run() {
   const preview4 = await callRoute(routeModule, env, { sub: 'billing-preview', query: '?year=2026&month=7' });
   assert.strictEqual(preview4.body.total_amount, EXPECTED_TOTAL);
 
-  // B-7. DELETE 미지원 (과거 규칙 삭제 금지)
+  // B-7. legacy 퇴원생의 active 수강도 마지막 퇴원일을 종료일로 해석한다.
+  db.prepare("INSERT INTO students (id, name, status, updated_at) VALUES ('s11', '과거퇴원', '퇴원', '2026-06-30 18:00:00')").run();
+  db.prepare("INSERT INTO student_status_history (id, student_id, old_status, new_status, changed_at) VALUES ('ssh11', 's11', '재원', '퇴원', '2026-06-30 18:00:00')").run();
+  db.prepare("INSERT INTO student_enrollments (id, student_id, branch, class_id, status, start_date) VALUES ('en11', 's11', 'apmath', 'cA', 'active', '2026-03-12')").run();
+  const legacyJune = await callRoute(routeModule, env, { sub: 'billing-preview', query: '?year=2026&month=6' });
+  const legacyJuly = await callRoute(routeModule, env, { sub: 'billing-preview', query: '?year=2026&month=7' });
+  assert.ok(legacyJune.body.invoices.some(invoice => invoice.enrollment_id === 'en11'), 'legacy 퇴원 수강은 퇴원 전 청구월에 포함되어야 함');
+  assert.ok(!legacyJuly.body.invoices.some(invoice => invoice.enrollment_id === 'en11'), 'legacy 퇴원 수강은 퇴원 후 청구월에 제외되어야 함');
+
+  // B-8. DELETE 미지원 (과거 규칙 삭제 금지)
   const deleted = await callRoute(routeModule, env, { method: 'DELETE', sub: 'billing-templates', id: templateId });
   assert.strictEqual(deleted.status, 405);
 
-  // B-8. 쓰기 API를 거쳐도 금액 테이블(payments 계열)은 여전히 무변화
+  // B-9. 쓰기 API를 거쳐도 금액 테이블(payments 계열)은 여전히 무변화
   const finalSnapshot = amountTableSnapshot(db);
   assert.deepStrictEqual(finalSnapshot, before, '템플릿 API가 금액 테이블을 변경함');
 

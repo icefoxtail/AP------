@@ -346,7 +346,7 @@ function resetModalActionStyle(actionBtn) {
     actionBtn.style.fontWeight = '700';
     actionBtn.style.fontSize = '15px';
     actionBtn.style.padding = '8px 0';
-    actionBtn.style.minHeight = 'auto';
+    actionBtn.style.minHeight = '44px';
 }
 
 function applyModalContent(t, b, at = null, af = null, options = {}) {
@@ -356,6 +356,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     const footer = document.getElementById('modal-footer');
     const overlay = document.getElementById('modal-overlay');
     const contentEl = document.getElementById('modal-content');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
 
     if (!titleEl || !bodyEl || !overlay) return;
 
@@ -382,6 +383,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     }
     bodyEl.style.maxHeight = '';
     bodyEl.style.overflow = '';
+    if (cancelBtn) cancelBtn.disabled = false;
 
     if (actionBtn) {
         if (at && af) {
@@ -415,6 +417,25 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
 function showModal(t, b, at=null, af=null) {
     applyModalContent(t, b, at, af);
     updateAppBackButtons();
+}
+
+function handleModalKeyboard(event) {
+    if (!event || event.key !== 'Tab') return;
+    const overlay = document.getElementById('modal-overlay');
+    if (!overlay || overlay.classList.contains('hidden')) return;
+    const focusable = Array.from(overlay.querySelectorAll(
+        'button:not([disabled]):not(.hidden), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+    )).filter(element => element.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+    }
 }
 
 function showModalStep(t, b, at=null, af=null) {
@@ -508,6 +529,7 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
 function closeModal(suppressReturn = false) {
     const overlay = document.getElementById('modal-overlay');
     if (!overlay) return;
+    if (overlay.dataset.mutationPending) return;
     if (!state.ui) state.ui = {};
 
     if (!suppressReturn && modalStepStack.length) {

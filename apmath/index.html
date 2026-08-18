@@ -718,6 +718,8 @@
             text-align: left;
             font-size: 15px;
             font-family: inherit;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         #modal-action-btn,
@@ -730,6 +732,8 @@
             text-align: right;
             font-size: 15px;
             font-family: inherit;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         #modal-body {
@@ -978,7 +982,7 @@
 
     <main id="app-root"></main>
 
-    <div id="modal-overlay" class="hidden" onclick="if(event.target===this) closeModal()">
+    <div id="modal-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="if(event.target===this) closeModal()" onkeydown="handleModalKeyboard(event)">
         <div id="modal-content" onclick="event.stopPropagation()">
             <div id="modal-header">
                 <button id="modal-cancel-btn" onclick="closeModal()">취소</button>
