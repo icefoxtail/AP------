@@ -199,6 +199,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
       exam_date: row.exam_date || '',
       question_count: Number(row.question_count || 0),
       archive_file: row.archive_file || '',
+      mixed_payload_json: row.mixed_payload_json || '',
       source_type: row.source_type || '',
       pack_id: row.pack_id || null,
       grade_label: row.grade_label || null,
