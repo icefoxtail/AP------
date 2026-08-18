@@ -20,11 +20,12 @@ function renderOnboardingStartedAtEditControl(options = {}) {
 }
 
 function renderStudentDetailEditTabs(sid, activeEditTab = 'basic') {
+    const student = getStudentProfileEditStudent(sid);
     const tabs = [
         { key: 'basic', label: '기본' },
         { key: 'cns', label: '상담' },
         { key: 'grade', label: '성적' }
-    ];
+    ].filter(item => item.key === 'basic' || student?.timetable_can_edit !== false);
     return `
         <div class="apms-eie-tabs ap-student-tabs">
             ${tabs.map(item => `
@@ -52,13 +53,15 @@ function renderStudentEditBodyForTab(sid, editTab = 'basic') {
 
 function switchStudentDetailEditTab(sid, tab) {
     if (!state.ui) state.ui = {};
+    const student = getStudentProfileEditStudent(sid);
+    if (tab !== 'basic' && student?.timetable_can_edit === false) return;
     const current = state.ui.currentStudentDetailEditTab || 'basic';
     if (current === tab) return;
     if (current === 'basic') {
         const nameInput = document.getElementById('edit-name');
         const classInput = document.getElementById('edit-class');
-        const s = state.db.students.find(st => String(st.id) === String(sid));
-        const currentClassId = state.db.class_students.find(row => String(row.student_id) === String(sid))?.class_id || '';
+        const s = getStudentProfileEditStudent(sid);
+        const currentClassId = getStudentProfileEditClassMapping(sid)?.class_id || '';
         const nameChanged = !!nameInput && !!s && nameInput.value.trim() !== String(s.name || '').trim();
         const classChanged = !!classInput && String(classInput.value || '') !== String(currentClassId || '');
         if (nameChanged || classChanged) {
@@ -421,7 +424,7 @@ function collectHighSubjects(prefix, grade) {
 
 function syncEditStudentGrade() {
     const classId = document.getElementById('edit-class')?.value || '';
-    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    const cls = getStudentProfileEditableClasses().find(c => String(c.id) === String(classId));
     if (cls?.grade) {
         document.getElementById('edit-grade').value = cls.grade;
     }
@@ -445,19 +448,44 @@ function mergeStudentEnrollmentRowsAfterEdit(sid, rows) {
     });
 }
 
+function getStudentProfileEditStudent(sid) {
+    const key = String(sid || '');
+    return [...(state.db.students || []), ...(state.db.timetable_students || [])]
+        .find(student => String(student.id) === key) || null;
+}
+
+function getStudentProfileEditClassMapping(sid) {
+    const key = String(sid || '');
+    return (state.db.class_students || []).find(row => String(row.student_id) === key)
+        || (state.db.timetable_class_students || []).find(row => String(row.student_id) === key)
+        || null;
+}
+
+function getStudentProfileEditableClasses() {
+    const rows = [...(state.db.classes || []), ...(state.db.timetable_classes || [])];
+    const byId = new Map();
+    rows.forEach(row => {
+        const key = String(row?.id || '');
+        if (key && !byId.has(key)) byId.set(key, row);
+    });
+    return Array.from(byId.values()).filter(row => Number(row.is_active) !== 0);
+}
+
 /**
  * edit mode 본문. 최근 상담 카드는 셸에서 공통 렌더하므로 여기서 다시 넣지 않는다.
  * 기존 input id는 handleEditStudent가 읽으므로 변경 금지.
  */
 function renderStudentEditBody(sid) {
-    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const s = getStudentProfileEditStudent(sid);
     if (!s) return '<div class="ap-student-card">학생 정보를 찾을 수 없습니다.</div>';
-    const current = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    const current = getStudentProfileEditClassMapping(sid);
     // grade가 비어 있거나 반과 불일치하는 기존 데이터에서도 고2/고3 반 학생이면 내신 과목을 노출한다.
-    const currentClass = current ? state.db.classes.find(c => String(c.id) === String(current.class_id)) : null;
+    const allEditableClasses = getStudentProfileEditableClasses();
+    const currentClass = current ? allEditableClasses.find(c => String(c.id) === String(current.class_id)) : null;
     const effectiveGrade = s.grade || inferGradeFromClass(currentClass);
-    const selectableClasses = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    const selectableClasses = sortClassesForStudentModal(allEditableClasses);
     const opts = selectableClasses.map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id) === String(current?.class_id) ? 'selected' : ''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, selectableClasses))}</option>`).join('');
+    const canManageRecords = s.timetable_can_edit !== false;
     const isNew = isStudentNewMember(s);
     const isLeave = isStudentOnLeave(s);
     const onboardingEntry = getStudentOnboardingEntry(sid);
@@ -491,18 +519,20 @@ function renderStudentEditBody(sid) {
                     ${apStudentEditRow('PIN 번호', `<div class="ap-student-edit-inline"><input id="edit-student-pin" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4" inputmode="numeric"><button type="button" class="btn ap-student-mini-btn" onclick="autoGenerateStudentPin(${apmsStudentJsString(sid)})">PIN 자동생성</button></div>`)}
                     ${apStudentEditRow('상태', `<div class="ap-student-edit-flags">
                         <label class="ap-student-edit-flag"><input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''}><span>신입생</span></label>
-                        <label class="ap-student-edit-flag is-warn"><input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}><span>휴원</span></label>
+                        ${canManageRecords
+                            ? `<label class="ap-student-edit-flag is-warn"><input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''}><span>휴원</span></label>`
+                            : `<span class="apms-student-muted">${isLeave ? '휴원 · ' : ''}상태 변경은 담당 교사만 가능</span>`}
                     </div>`)}
                 </div>
             </section>
             ${renderStudentRecentActivitySection(sid)}
             ${renderStudentHistorySection(sid)}
-            <details class="apms-eie-form-drawer">
+            ${s.timetable_can_edit !== false ? `<details class="apms-eie-form-drawer">
                 <summary>퇴원 처리</summary>
                 <div class="apms-eie-form-drawer-body">
                     <button type="button" class="btn apms-eie-form-danger" onclick="handleDelete('${sid}')">퇴원 처리</button>
                 </div>
-            </details>
+            </details>` : ''}
         </div>
     `;
 }
@@ -523,8 +553,9 @@ async function handleEditStudent(sid) {
         return;
     }
     const returnCtx = state.ui?.currentStudentDetailReturnTo || state.ui?.modalReturnView || null;
-    const currentStudent = state.db.students.find(st => String(st.id) === String(sid));
-    const currentClassId = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id || '';
+    const currentStudent = getStudentProfileEditStudent(sid);
+    const currentClassId = getStudentProfileEditClassMapping(sid)?.class_id || '';
+    const canManageRecords = currentStudent?.timetable_can_edit !== false;
     const wasNewChecked = isStudentNewMember(currentStudent);
     const pin = document.getElementById('edit-student-pin')?.value.trim() || '';
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
@@ -534,10 +565,11 @@ async function handleEditStudent(sid) {
     const grade = editGrade;
 
     const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
-    const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
+    const requestedLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
     const currentStatus = normalizeStudentStatus(currentStudent?.status);
     const hasLegacyLeaveMemo = currentStatus === '재원' && String(currentStudent?.memo || '').indexOf('#휴원') !== -1;
     const currentWasLeave = currentStatus === '휴원' || hasLegacyLeaveMemo;
+    const isLeaveChecked = canManageRecords ? requestedLeaveChecked : currentWasLeave;
     const nextStudentStatus = isLeaveChecked ? '휴원' : (currentWasLeave ? '재원' : currentStatus);
     const alreadyAttending = document.getElementById('edit-already-attending')?.checked || false;
     const currentOnboardingStartedAt = getStudentOnboardingStartedAt(sid);
@@ -568,7 +600,7 @@ async function handleEditStudent(sid) {
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
         student_address: document.getElementById('edit-student-address')?.value || '',
         vehicle_info: document.getElementById('edit-vehicle-info')?.value || '',
-        status: nextStudentStatus,
+        ...(canManageRecords ? { status: nextStudentStatus } : {}),
         memo: finalMemo,
         student_pin: pin,
         high_subjects: JSON.stringify(highSubjects),
@@ -599,24 +631,55 @@ async function handleEditStudent(sid) {
                     already_attending: alreadyAttending ? 1 : 0
                 });
             }
-            mergeStudentCreateResponseIntoState(r);
-            mergeStudentEnrollmentRowsAfterEdit(sid, r.student_enrollments);
+            const mergedStudent = mergeStudentCreateResponseIntoState(r);
+            const nextScopeOnly = mergedStudent?.timetable_scope_only === true;
+            if (nextScopeOnly) {
+                if (!state.ui.timetableStudentDetails) state.ui.timetableStudentDetails = {};
+                const detail = state.ui.timetableStudentDetails[String(sid)] || {};
+                state.ui.timetableStudentDetails[String(sid)] = {
+                    ...detail,
+                    student: mergedStudent || detail.student,
+                    class_student: Object.prototype.hasOwnProperty.call(r, 'class_student') ? r.class_student : detail.class_student,
+                    student_enrollments: Array.isArray(r.student_enrollments) ? r.student_enrollments : (detail.student_enrollments || []),
+                    class_transfer_history: Array.isArray(r.class_transfer_history) ? r.class_transfer_history : (detail.class_transfer_history || [])
+                };
+            } else {
+                if (state.ui.timetableStudentDetails) delete state.ui.timetableStudentDetails[String(sid)];
+                mergeStudentEnrollmentRowsAfterEdit(sid, r.student_enrollments);
+            }
             if (onboardingDateChanged) setStudentOnboardingStartedAtInState(sid, onboardingInputRaw);
             if (classChanged) {
                 const refreshes = [];
-                if (typeof loadStudentFoundationDetails === 'function') {
+                if (!nextScopeOnly && typeof loadStudentFoundationDetails === 'function') {
                     refreshes.push(loadStudentFoundationDetails(sid, { force: true }));
                 }
-                if (typeof ensureStudentDetailLazyData === 'function') {
+                if (!nextScopeOnly && typeof ensureStudentDetailLazyData === 'function') {
                     refreshes.push(ensureStudentDetailLazyData(sid, { force: true, refresh: false }));
                 }
                 if (refreshes.length) await Promise.all(refreshes);
             }
             toast('학생 정보가 수정되었습니다.', 'success');
+            let reopenedAfterClassChange = false;
+            try {
+                if (classChanged && typeof refreshDataOnly === 'function') await refreshDataOnly();
+                if (returnCtx?.type === 'timetable' && typeof renderTimetable === 'function') renderTimetable();
+                if (classChanged && isSameStudentEditModalOpen(sid)) {
+                    await openStudentDetail(sid, {
+                        mode: 'view',
+                        tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'),
+                        returnTo: returnCtx
+                    });
+                    reopenedAfterClassChange = state.ui?.currentStudentDetailMode === 'view';
+                }
+            } catch (syncError) {
+                console.warn('[handleEditStudent] post-save refresh failed:', syncError);
+                toast('저장은 완료되었습니다. 최신 화면이 보이지 않으면 시간표를 다시 열어 주세요.', 'warn');
+            }
+            if (reopenedAfterClassChange) return;
             const stillEditingSameStudent = isSameStudentEditModalOpen(sid);
             if (stillEditingSameStudent) {
                 // 수정 저장은 모달을 닫지 않고 같은 학생상세 보기 모드로 복귀한다.
-                await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
+                if (!nextScopeOnly) await loadStudentOnboardingDetails(sid, { force: true, classId, refresh: false });
                 if (isSameStudentEditModalOpen(sid)) {
                     renderStudentDetailShell(sid, { mode: 'view', tab: normalizeStudentDetailTab(state.ui?.currentStudentDetailTab || 'basic'), returnTo: returnCtx });
                 }
