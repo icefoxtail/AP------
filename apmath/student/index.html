@@ -742,7 +742,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.18.2';
+    const STUDENT_APP_VERSION = '2026.08.19.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1138,8 +1138,10 @@
         classId = '';
       }
 
+      // 서버가 이미 로그인한 학생의 반 소속·제외 여부로 걸러서 내려준다.
+      // student 객체에는 class_id가 없을 수 있으므로 여기서 다시 반을 추정해
+      // 필터링하면 정상 출제본까지 전부 숨겨질 수 있다.
       const classExamAssignments = (Array.isArray(homeData?.class_exam_assignments) ? homeData.class_exam_assignments : [])
-        .filter(row => String(row?.class_id || '') === String(classId))
         .sort((a, b) =>
           String(b?.exam_date || '').localeCompare(String(a?.exam_date || '')) ||
           String(b?.created_at || '').localeCompare(String(a?.created_at || '')) ||
