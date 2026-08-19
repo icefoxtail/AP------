@@ -49,4 +49,10 @@ assert(
   'student portal frontend should call the historical OMR list and submit endpoints'
 );
 
+assert(
+  studentPortal.includes('// 서버가 이미 로그인한 학생의 반 소속·제외 여부로 걸러서 내려준다.') &&
+    !studentPortal.includes(".filter(row => String(row?.class_id || '') === String(classId))"),
+  'student home should trust the server-filtered class exam assignments instead of hiding them when class_id is absent'
+);
+
 console.log('student portal OMR history route checks passed');
