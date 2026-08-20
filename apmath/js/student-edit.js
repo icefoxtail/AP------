@@ -375,17 +375,19 @@ function isHighSubjectGrade(grade) {
     return String(grade || '').includes('고2') || String(grade || '').includes('고3');
 }
 
-function renderHighSubjectChecks(prefix, grade, selectedSubjects, options = {}) {
-    const selected = new Set(parseHighSubjects(selectedSubjects));
+function renderHighSubjectChecks(prefix, grade, excludedSubjects, options = {}) {
+    const excluded = new Set(parseHighSubjects(excludedSubjects));
     const visible = isHighSubjectGrade(grade);
     const showTitle = options.showTitle !== false;
+    const showDescription = options.showDescription !== false;
     return `
         <div id="${prefix}-high-subjects-wrap" style="display:${visible ? 'inline-block' : 'none'}; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:10px 12px;">
-            ${showTitle ? '<div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:9px; line-height:1.4;">내신 과목</div>' : ''}
-            <div style="display:grid; grid-template-columns:repeat(3, max-content); gap:6px 14px;">
+            ${showTitle ? '<div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:5px; line-height:1.4;">수강하지 않는 과목</div>' : ''}
+            ${showDescription ? '<div style="font-size:11px; color:var(--muted); margin-bottom:9px; line-height:1.45;">기본적으로 모든 고등 선택과목이 출제됩니다. 실제로 수강하지 않는 과목만 체크하세요.</div>' : ''}
+            <div style="display:grid; width:100%; grid-template-columns:repeat(auto-fit, minmax(96px, 1fr)); gap:6px 10px;">
                 ${AP_HIGH_SUBJECTS.map((subject, idx) => `
                     <label style="display:flex; align-items:center; gap:6px; min-height:24px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer; white-space:nowrap;">
-                        <input type="checkbox" class="${prefix}-high-subject" value="${apEscapeHtml(subject)}" ${selected.has(subject) ? 'checked' : ''} style="width:15px; height:15px; accent-color:#6E66C9; cursor:pointer;">
+                        <input type="checkbox" class="${prefix}-high-subject" value="${apEscapeHtml(subject)}" ${excluded.has(subject) ? 'checked' : ''} style="width:15px; height:15px; accent-color:#6E66C9; cursor:pointer;">
                         <span>${apEscapeHtml(subject)}</span>
                     </label>
                 `).join('')}
@@ -415,7 +417,7 @@ function syncAddStudentHighSubjects() {
     syncHighSubjectWrap('add', grade);
 }
 
-function collectHighSubjects(prefix, grade) {
+function collectHighSubjectExclusions(prefix, grade) {
     if (!isHighSubjectGrade(grade)) return [];
     return Array.from(document.querySelectorAll(`.${prefix}-high-subject:checked`))
         .map(el => String(el.value || '').trim())
@@ -504,7 +506,7 @@ function renderStudentEditBody(sid) {
                         <option value="고1" ${effectiveGrade==='고1'?'selected':''}>고1</option><option value="고2" ${effectiveGrade==='고2'?'selected':''}>고2</option><option value="고3" ${effectiveGrade==='고3'?'selected':''}>고3</option>
                     </select>`)}
                     ${apStudentEditRow('배정 반', `<select id="edit-class" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>`)}
-                    ${apStudentEditRow('내신 과목', renderHighSubjectChecks('edit', effectiveGrade, s.high_subjects, { showTitle: false }), { wide: true, id: 'edit-high-subjects-row', style: isHighSubjectGrade(effectiveGrade) ? '' : 'display:none;' })}
+                    ${apStudentEditRow('수강하지 않는 과목', renderHighSubjectChecks('edit', effectiveGrade, s.high_subject_exclusions, { showTitle: false }), { wide: true, id: 'edit-high-subjects-row', style: isHighSubjectGrade(effectiveGrade) ? '' : 'display:none;' })}
                 </div>
             </section>
             <section class="ap-student-card">
@@ -581,7 +583,8 @@ async function handleEditStudent(sid) {
     if (isLeaveChecked) memoParts.push('#휴원');
     if (cleanMemo) memoParts.push(cleanMemo);
     const finalMemo = memoParts.join(' ').trim();
-    const highSubjects = collectHighSubjects('edit', grade);
+    const highSubjectExclusions = collectHighSubjectExclusions('edit', grade);
+    const highSubjects = isHighSubjectGrade(grade) ? AP_HIGH_SUBJECTS : [];
 
     const studentPhoneInput = (document.getElementById('edit-student-phone')?.value || '').trim();
     const parentPhoneInput = (document.getElementById('edit-parent-phone')?.value || '').trim();
@@ -605,6 +608,8 @@ async function handleEditStudent(sid) {
         student_pin: pin,
         high_subjects: JSON.stringify(highSubjects),
         highSubjects: highSubjects,
+        high_subject_exclusions: JSON.stringify(highSubjectExclusions),
+        highSubjectExclusions: highSubjectExclusions,
         ...(onboardingDateChanged ? { onboarding_started_at: onboardingInputRaw, onboardingStartedAt: onboardingInputRaw } : {})
     };
 
@@ -746,7 +751,8 @@ async function handleAddStudent() {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) { toast('반 정보를 찾을 수 없습니다.', 'warn'); return; }
     const grade = inferGradeFromClass(cls);
-    const highSubjects = collectHighSubjects('add', grade);
+    const highSubjectExclusions = collectHighSubjectExclusions('add', grade);
+    const highSubjects = isHighSubjectGrade(grade) ? AP_HIGH_SUBJECTS : [];
     const payload = {
         name: n, school_name: sc, schoolName: sc, grade: grade || '',
         class_id: classId, classId: classId,
@@ -756,6 +762,7 @@ async function handleAddStudent() {
         student_address: studentAddress, studentAddress: studentAddress,
         vehicle_info: vehicleInfo, vehicleInfo: vehicleInfo,
         high_subjects: JSON.stringify(highSubjects), highSubjects: highSubjects,
+        high_subject_exclusions: JSON.stringify(highSubjectExclusions), highSubjectExclusions: highSubjectExclusions,
         onboarding_started_at: addOnboardingStartedAt, onboardingStartedAt: addOnboardingStartedAt,
         memo: ''
     };

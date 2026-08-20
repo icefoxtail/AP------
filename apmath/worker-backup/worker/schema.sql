@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS students (
   vehicle_info TEXT,
   onboarding_started_at TEXT,
   high_subjects TEXT DEFAULT '[]',
+  high_subject_exclusions TEXT DEFAULT '[]',
   student_identity_key TEXT,
   student_pin TEXT UNIQUE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -285,6 +286,22 @@ ON class_exam_assignment_exclusions(assignment_id);
 
 CREATE INDEX IF NOT EXISTS idx_assignment_exclusions_student
 ON class_exam_assignment_exclusions(student_id);
+
+-- A class roster can change after an exam is issued.  Keep the original
+-- recipients separately so a previously assigned paper never disappears
+-- from a student's portal merely because the roster was edited later.
+CREATE TABLE IF NOT EXISTS class_exam_assignment_recipients (
+  assignment_id TEXT NOT NULL,
+  student_id TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (assignment_id, student_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_assignment_recipients_student
+ON class_exam_assignment_recipients(student_id);
+
+CREATE INDEX IF NOT EXISTS idx_assignment_recipients_assignment
+ON class_exam_assignment_recipients(assignment_id);
 
 CREATE TABLE IF NOT EXISTS daily_journals (
   id TEXT PRIMARY KEY,

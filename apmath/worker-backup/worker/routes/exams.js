@@ -123,7 +123,7 @@ function normalizeAssignmentSubject(raw) {
   return null;
 }
 
-function parseStudentHighSubjects(value) {
+function parseStudentHighSubjectExclusions(value) {
   let raw = value;
   if (typeof raw === 'string') {
     try {
@@ -218,6 +218,8 @@ function normalizeExamTitleKey(value) {
 }
 
 function buildAssignmentIdentityKey(row = {}) {
+  const assignmentId = String(row.id || '').trim();
+  if (assignmentId) return `ASSIGNMENT||${assignmentId}`;
   const classId = String(row.class_id || '').trim();
   const examDate = String(row.exam_date || '').trim();
   const packId = String(row.pack_id || '').trim();
@@ -346,6 +348,24 @@ async function hasClassExamAssignmentExclusions(env) {
   return columns.has('assignment_id') && columns.has('student_id');
 }
 
+async function hasClassExamAssignmentRecipients(env) {
+  const columns = await getTableColumnSet(env, 'class_exam_assignment_recipients');
+  return columns.has('assignment_id') && columns.has('student_id');
+}
+
+async function snapshotClassExamAssignmentRecipients(env, assignment) {
+  if (!assignment?.id || !assignment?.class_id) return;
+  if (!(await hasClassExamAssignmentRecipients(env))) {
+    throw new Error('class exam assignment recipients table is unavailable');
+  }
+  await env.DB.prepare(`
+    INSERT OR IGNORE INTO class_exam_assignment_recipients (assignment_id, student_id)
+    SELECT ?, cs.student_id
+    FROM class_students cs
+    WHERE cs.class_id = ?
+  `).bind(assignment.id, assignment.class_id).run();
+}
+
 async function isStudentExcludedFromAssignment(env, assignmentId, studentId) {
   if (!assignmentId || !studentId) return false;
   if (!(await hasClassExamAssignmentExclusions(env))) return false;
@@ -417,12 +437,14 @@ async function ensureClassExamAssignmentForExclusion(env, input) {
       updated_at = DATETIME('now')
   `).bind(...insertValues).run();
 
-  return (await loadClassExamAssignmentById(env, assignmentId)) || (await resolveAssignmentRow(env, {
+  const assignment = (await loadClassExamAssignmentById(env, assignmentId)) || (await resolveAssignmentRow(env, {
     class_id: classId,
     exam_title: examTitle,
     exam_date: examDate,
     archive_file: archiveFile
   }));
+  await snapshotClassExamAssignmentRecipients(env, assignment);
+  return assignment;
 }
 
 async function resolveAssignmentRow(env, input) {
@@ -460,19 +482,20 @@ async function refreshSubjectMismatchExclusions(env, assignment) {
     const subject = normalizeAssignmentSubject(assignment.subject);
     if (!subject) return;
 
+    const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
     const students = await env.DB.prepare(`
-      SELECT s.id, s.high_subjects
+      SELECT s.id, s.high_subject_exclusions
       FROM students s
-      JOIN class_students cs ON cs.student_id = s.id
-      WHERE cs.class_id = ?
+      ${recipientSnapshotExists
+        ? 'JOIN class_exam_assignment_recipients ar ON ar.student_id = s.id\n      WHERE ar.assignment_id = ?'
+        : 'JOIN class_students cs ON cs.student_id = s.id\n      WHERE cs.class_id = ?'}
         AND s.status = '재원'
-    `).bind(assignment.class_id).all();
+    `).bind(recipientSnapshotExists ? assignment.id : assignment.class_id).all();
 
     const stmts = [];
     for (const student of students.results || []) {
-      const highSubjects = parseStudentHighSubjects(student.high_subjects);
-      if (!highSubjects.length) continue;
-      if (highSubjects.includes(subject)) continue;
+      const excludedSubjects = parseStudentHighSubjectExclusions(student.high_subject_exclusions);
+      if (!excludedSubjects.includes(subject)) continue;
       stmts.push(env.DB.prepare(`
         INSERT OR IGNORE INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
         VALUES (?, ?, 'subject_mismatch')
@@ -489,16 +512,17 @@ async function cleanupAssignmentIfNoTargets(env, assignment) {
   if (!(await hasClassExamAssignmentExclusions(env))) return false;
 
   try {
+    const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
     const remainingTargets = await env.DB.prepare(`
       SELECT COUNT(*) AS count
-      FROM class_students cs
-      WHERE cs.class_id = ?
+      FROM ${recipientSnapshotExists ? 'class_exam_assignment_recipients ar' : 'class_students cs'}
+      WHERE ${recipientSnapshotExists ? 'ar.assignment_id = ?' : 'cs.class_id = ?'}
         AND NOT EXISTS (
           SELECT 1
           FROM class_exam_assignment_exclusions ex
-          WHERE ex.assignment_id = ? AND ex.student_id = cs.student_id
+          WHERE ex.assignment_id = ? AND ex.student_id = ${recipientSnapshotExists ? 'ar.student_id' : 'cs.student_id'}
         )
-    `).bind(assignment.class_id, assignment.id).first();
+    `).bind(recipientSnapshotExists ? assignment.id : assignment.class_id, assignment.id).first();
     if (Number(remainingTargets?.count || 0) > 0) return false;
 
     const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
@@ -508,8 +532,12 @@ async function cleanupAssignmentIfNoTargets(env, assignment) {
         SELECT COUNT(*) AS count
         FROM exam_sessions
         WHERE assignment_id = ?
-          AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
-      `).bind(assignment.id, assignment.class_id).first();
+          AND student_id IN (
+            SELECT student_id
+            FROM ${recipientSnapshotExists ? 'class_exam_assignment_recipients' : 'class_students'}
+            WHERE ${recipientSnapshotExists ? 'assignment_id = ?' : 'class_id = ?'}
+          )
+      `).bind(assignment.id, recipientSnapshotExists ? assignment.id : assignment.class_id).first();
     }
 
     if (!remainingSessions) {
@@ -534,6 +562,7 @@ async function cleanupAssignmentIfNoTargets(env, assignment) {
 
     await env.DB.batch([
       env.DB.prepare('DELETE FROM class_exam_assignment_exclusions WHERE assignment_id = ?').bind(assignment.id),
+      ...(recipientSnapshotExists ? [env.DB.prepare('DELETE FROM class_exam_assignment_recipients WHERE assignment_id = ?').bind(assignment.id)] : []),
       env.DB.prepare('DELETE FROM class_exam_assignments WHERE id = ?').bind(assignment.id)
     ]);
     return true;
@@ -822,12 +851,18 @@ async function performExcludeStudent(env, currentTeacher, { classId, studentId, 
     return { success: false, student_id: studentId, error: 'assignment class mismatch', status: 400 };
   }
 
-  const member = await env.DB.prepare(`
+  const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
+  const member = await env.DB.prepare(recipientSnapshotExists ? `
+    SELECT 1
+    FROM class_exam_assignment_recipients
+    WHERE assignment_id = ? AND student_id = ?
+    LIMIT 1
+  ` : `
     SELECT 1
     FROM class_students
     WHERE class_id = ? AND student_id = ?
     LIMIT 1
-  `).bind(classId, studentId).first();
+  `).bind(recipientSnapshotExists ? assignment.id : classId, studentId).first();
   if (!member) {
     return { success: false, student_id: studentId, error: 'student is not in class', status: 400 };
   }
@@ -1266,6 +1301,12 @@ export async function handleExams(request, env, teacher, path, url) {
       const assignmentMetaColumns = pickExistingColumns(assignmentColumns, ASSIGNMENT_META_COLUMNS);
       const hasMixedPayloadColumn = assignmentColumns.has(ASSIGNMENT_MIXED_PAYLOAD_COLUMN);
       const mixedPayload = normalizeMixedAssignmentPayload(d.mixed_payload_json, archive_file);
+      if (archive_file.startsWith('MIXED:') && (!hasMixedPayloadColumn || !mixedPayload)) {
+        return jsonResponse({
+          success: false,
+          error: 'mixed_payload_json with questions is required for a MIXED assignment'
+        }, 400);
+      }
       const assignmentMeta = {
         pack_id: normalizeOptionalText(d.pack_id),
         grade_label: normalizeOptionalText(d.grade_label),
@@ -1349,6 +1390,7 @@ export async function handleExams(request, env, teacher, path, url) {
 
         const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
           .bind(existing.id).first();
+        await snapshotClassExamAssignmentRecipients(env, assignment);
         if (subjectInputProvided) await refreshSubjectMismatchExclusions(env, assignment);
         if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
         return jsonResponse({ success: true, assignment });
@@ -1425,6 +1467,7 @@ export async function handleExams(request, env, teacher, path, url) {
         `).bind(d.class_id, d.exam_title, d.exam_date, archive_file).first();
       }
 
+      await snapshotClassExamAssignmentRecipients(env, assignment);
       if (assignment && assignmentMeta.subject) await refreshSubjectMismatchExclusions(env, assignment);
       if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
       return jsonResponse({ success: true, assignment });
@@ -1535,6 +1578,14 @@ export async function handleExams(request, env, teacher, path, url) {
         const assignmentMarkers = assignmentIds.map(() => '?').join(',');
         stmts.push(env.DB.prepare(`
           DELETE FROM class_exam_assignment_exclusions
+          WHERE assignment_id IN (${assignmentMarkers})
+        `).bind(...assignmentIds));
+      }
+
+      if (assignmentIds.length && await hasClassExamAssignmentRecipients(env)) {
+        const assignmentMarkers = assignmentIds.map(() => '?').join(',');
+        stmts.push(env.DB.prepare(`
+          DELETE FROM class_exam_assignment_recipients
           WHERE assignment_id IN (${assignmentMarkers})
         `).bind(...assignmentIds));
       }
