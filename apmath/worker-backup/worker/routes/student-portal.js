@@ -98,6 +98,11 @@ async function hasClassExamAssignmentExclusions(env) {
   return columns.has('assignment_id') && columns.has('student_id');
 }
 
+async function hasClassExamAssignmentRecipients(env) {
+  const columns = await getTableColumnSet(env, 'class_exam_assignment_recipients');
+  return columns.has('assignment_id') && columns.has('student_id');
+}
+
 function normalizeWrongIds(values, questionCount) {
   const source = Array.isArray(values)
     ? values
@@ -120,6 +125,8 @@ function buildOmrSessionKey(row = {}) {
 }
 
 function buildAssignmentDedupeKey(row = {}) {
+  const assignmentId = String(row.id || row.assignment_id || '').trim();
+  if (assignmentId) return `ASSIGNMENT|${assignmentId}`;
   const classId = String(row.class_id || '').trim();
   const examDate = String(row.exam_date || '').trim();
   const archiveFile = String(row.archive_file || '').trim();
@@ -151,6 +158,7 @@ function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) 
 
 async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
+  const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
   const exclusionFilter = await hasClassExamAssignmentExclusions(env)
     ? `AND NOT EXISTS (
         SELECT 1
@@ -165,9 +173,11 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
         cea.*,
         c.name AS class_name
       FROM class_exam_assignments cea
-      JOIN class_students cs ON cs.class_id = cea.class_id
+      ${recipientSnapshotExists
+        ? 'JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id'
+        : 'JOIN class_students cs ON cs.class_id = cea.class_id'}
       LEFT JOIN classes c ON c.id = cea.class_id
-      WHERE cs.student_id = ?
+      WHERE ${recipientSnapshotExists ? 'ar.student_id' : 'cs.student_id'} = ?
         ${exclusionFilter}
       ORDER BY cea.exam_date DESC, cea.updated_at DESC, cea.created_at DESC
       LIMIT ?
@@ -400,6 +410,7 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     }
 
     const hasExclusions = await hasClassExamAssignmentExclusions(env);
+    const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
     const exclusionFilter = hasExclusions
       ? `AND NOT EXISTS (
           SELECT 1
@@ -411,7 +422,9 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     const assignment = await env.DB.prepare(`
       SELECT cea.*, c.name AS class_name
       FROM class_exam_assignments cea
-      JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?
+      ${recipientSnapshotExists
+        ? 'JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id AND ar.student_id = ?'
+        : 'JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?'}
       LEFT JOIN classes c ON c.id = cea.class_id
       WHERE cea.id = ?
         ${exclusionFilter}

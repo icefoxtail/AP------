@@ -1,6 +1,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const studentPortal = fs.readFileSync(path.join(root, 'apmath/student/index.html'), 'utf8');
@@ -44,6 +45,7 @@ assert(
 
 assert(
   studentPortal.includes("if (!archiveFile.startsWith('MIXED:')) return true;") &&
+    studentPortal.includes("if (!archiveFile.startsWith('MIXED:')) return !!archiveFile;") &&
     studentPortal.includes('mixed_payload_json') &&
     studentPortal.includes('function restoreMixedOmrPayload') &&
     studentPortal.includes('function openOmrReview') &&
@@ -53,6 +55,37 @@ assert(
     !studentPortal.includes('const showReview = isHighSchoolOmrExam(exam)') &&
     !studentPortal.includes('/(중등|중학교|중[1-3])/i.test(source)'),
   'OMR answer/solution review buttons should show for archive-backed middle and high school exams and restore mixed snapshots'
+);
+
+const restoreHelper = studentPortal.match(/function restoreMixedOmrPayload\(exam\) \{[\s\S]*?\n    \}/);
+assert(restoreHelper, 'mixed restore helper should exist');
+const stored = new Map();
+const context = {
+  String,
+  JSON,
+  Array,
+  localStorage: { setItem: (key, value) => stored.set(key, value) }
+};
+vm.createContext(context);
+vm.runInContext(restoreHelper[0], context, { filename: 'student-portal-review-restore.js' });
+assert.strictEqual(
+  context.restoreMixedOmrPayload({ archive_file: 'exams/sample.js' }),
+  true,
+  'regular archive exams must bypass MIXED payload restoration'
+);
+assert.strictEqual(
+  context.restoreMixedOmrPayload({
+    archive_file: 'MIXED:sample-key',
+    mixed_payload_json: JSON.stringify({ questions: [{ id: 1 }], meta: { title: 'sample' } })
+  }),
+  true,
+  'mixed exams with a saved question snapshot must restore successfully'
+);
+assert.strictEqual(stored.has('mixedQuestions_sample-key'), true, 'mixed questions should be stored before opening the engine');
+assert.strictEqual(
+  context.restoreMixedOmrPayload({ archive_file: 'MIXED:empty', mixed_payload_json: '' }),
+  false,
+  'mixed exams without a snapshot must fail closed'
 );
 
 assert(

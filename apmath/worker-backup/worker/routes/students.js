@@ -48,10 +48,15 @@ function normalizeStudentRowForResponse(row) {
 }
 
 function normalizeStudentPayload(d = {}, current = {}) {
+  const grade = String(d.grade ?? current.grade ?? '').trim();
+  const normalizedGrade = grade.replace(/\s+/g, '').replace(/고등학교/g, '고').replace(/학년/g, '');
+  const isUpperHighGrade = normalizedGrade === '고2' || normalizedGrade === '고3';
+  const defaultHighSubjects = isUpperHighGrade ? ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'] : [];
+  const requestIncludesHighSubjects = d.high_subjects !== undefined || d.highSubjects !== undefined;
   return {
     name: String(d.name ?? current.name ?? '').trim(),
     schoolName: String(d.school_name ?? d.schoolName ?? current.school_name ?? '').trim(),
-    grade: String(d.grade ?? current.grade ?? '').trim(),
+    grade,
     targetScore: d.target_score ?? d.targetScore ?? current.target_score ?? null,
     memo: String(d.memo ?? current.memo ?? '').trim(),
     guardianRelation: String(d.guardian_relation ?? d.guardianRelation ?? current.guardian_relation ?? '').trim(),
@@ -61,7 +66,10 @@ function normalizeStudentPayload(d = {}, current = {}) {
     vehicleInfo: String(d.vehicle_info ?? d.vehicleInfo ?? current.vehicle_info ?? '').trim(),
     onboardingStartedAt: String(d.onboarding_started_at ?? d.onboardingStartedAt ?? current.onboarding_started_at ?? '').trim(),
     studentPin: String(d.student_pin ?? d.studentPin ?? current.student_pin ?? '').trim(),
-    highSubjects: normalizeHighSubjects(d.high_subjects ?? d.highSubjects ?? current.high_subjects ?? '[]'),
+    highSubjects: normalizeHighSubjects(requestIncludesHighSubjects
+      ? (d.high_subjects ?? d.highSubjects)
+      : (isUpperHighGrade ? defaultHighSubjects : (current.high_subjects ?? defaultHighSubjects))),
+    highSubjectExclusions: normalizeHighSubjects(d.high_subject_exclusions ?? d.highSubjectExclusions ?? current.high_subject_exclusions ?? '[]'),
     status: d.status !== undefined || d.student_status !== undefined || d.studentStatus !== undefined
       ? normalizeStudentStatus(d.status ?? d.student_status ?? d.studentStatus, current.status || '재원')
       : undefined,
@@ -178,9 +186,9 @@ async function insertStudentWithAutoPin(env, d, sid, identityKey, targetScore) {
         INSERT INTO students (
           id, name, school_name, grade, target_score, status, memo, guardian_relation,
           student_phone, parent_phone, student_address, vehicle_info, onboarding_started_at, student_pin,
-          high_subjects, student_identity_key, created_at, updated_at
+          high_subjects, high_subject_exclusions, student_identity_key, created_at, updated_at
         )
-        VALUES (?, ?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+        VALUES (?, ?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
       `).bind(
         sid,
         d.name,
@@ -196,6 +204,7 @@ async function insertStudentWithAutoPin(env, d, sid, identityKey, targetScore) {
         d.onboardingStartedAt,
         pin,
         d.highSubjects,
+        d.highSubjectExclusions,
         identityKey
       )
     ];
@@ -324,7 +333,7 @@ async function handleUpdateStudent(env, teacher, id, body) {
       UPDATE students
       SET name = ?, school_name = ?, grade = ?, target_score = ?, memo = ?,
           guardian_relation = ?, student_phone = ?, parent_phone = ?,
-          student_address = ?, vehicle_info = ?, onboarding_started_at = ?, student_pin = ?, high_subjects = ?,
+          student_address = ?, vehicle_info = ?, onboarding_started_at = ?, student_pin = ?, high_subjects = ?, high_subject_exclusions = ?,
           status = ?, student_identity_key = ?, updated_at = DATETIME('now')
       WHERE id = ?
     `).bind(
@@ -341,6 +350,7 @@ async function handleUpdateStudent(env, teacher, id, body) {
       d.onboardingStartedAt,
       d.studentPin,
       d.highSubjects,
+      d.highSubjectExclusions,
       nextStatus,
       studentIdentityKey,
       id

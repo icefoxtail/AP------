@@ -742,7 +742,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.19.1';
+    const STUDENT_APP_VERSION = '2026.08.20.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -758,7 +758,7 @@
     let omrData = null;
     let omrIndex = null;
     let omrDraft = null;
-    let omrListFilter = 'recent';
+    let omrListFilter = 'all';
     let materialWrongData = null;
     let wrongClinicData = null;
     let materialWrongDraft = null;
@@ -1089,6 +1089,13 @@
       try {
         setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
         if (isTeacherPreview && homeData?.read_only !== true) throw new Error('읽기 전용 권한을 확인할 수 없습니다.');
+        // 홈과 전체 시험지 목록은 동일한 학생별 시험 API를 기준으로 렌더링한다.
+        // 홈 응답은 연결 직후의 빠른 표시용 fallback으로만 남긴다.
+        try {
+          await loadOmrExams(true);
+        } catch (e) {
+          console.warn('[student portal] canonical exam list load failed:', e);
+        }
         renderHome();
         if (!isTeacherPreview) {
           await refreshWrongClinicPackets();
@@ -1123,24 +1130,6 @@
         else missing.push(item);
       });
 
-      let classId = '';
-      try {
-        const student = homeData?.student || session || {};
-        if (student?.class_id) {
-          classId = String(student.class_id);
-        } else {
-          const rows = Array.isArray(homeData?.class_students) ? homeData.class_students : [];
-          const sid = String(student?.student_id || session?.student_id || '');
-          const match = rows.find(row => String(row?.student_id || '') === sid);
-          classId = match?.class_id ? String(match.class_id) : '';
-        }
-      } catch (e) {
-        classId = '';
-      }
-
-      // 서버가 이미 로그인한 학생의 반 소속·제외 여부로 걸러서 내려준다.
-      // student 객체에는 class_id가 없을 수 있으므로 여기서 다시 반을 추정해
-      // 필터링하면 정상 출제본까지 전부 숨겨질 수 있다.
       const classExamAssignments = (Array.isArray(homeData?.class_exam_assignments) ? homeData.class_exam_assignments : [])
         .sort((a, b) =>
           String(b?.exam_date || '').localeCompare(String(a?.exam_date || '')) ||
@@ -1148,156 +1137,18 @@
           String(b?.id || '').localeCompare(String(a?.id || ''))
         );
 
-      homeIndex = { missing, done, classId, classExamAssignments };
+      homeIndex = { missing, done, classExamAssignments };
       return homeIndex;
     }
     function splitAssignments() {
       const idx = getStudentPortalHomeIndex();
       return { missing: idx.missing.slice(), done: idx.done.slice() };
     }
-    function getStudentPortalClassId() {
-      return getStudentPortalHomeIndex().classId;
-    }
     function getStudentPortalAssignments() {
+      // `/student-portal/exams` is the single source of truth: it joins the
+      // authenticated student to every assigned class and applies exclusions.
+      if (Array.isArray(omrData?.exams)) return omrData.exams.slice();
       return getStudentPortalHomeIndex().classExamAssignments.slice();
-    }
-    function formatStudentPortalAssignmentType(row) {
-      const sourceType = String(row?.source_type || '').trim().toLowerCase();
-      const archiveFile = String(row?.archive_file || '').trim();
-      if (sourceType === 'clinic') return '클리닉';
-      if (sourceType === 'mixed' || archiveFile.startsWith('MIXED:')) return '믹서';
-      if (archiveFile) return '아카이브';
-      return '자료';
-    }
-    function getStudentPortalAssignmentTypeClassName(row) {
-      const type = formatStudentPortalAssignmentType(row);
-      if (type === '믹서') return 'type-mixed';
-      if (type === '클리닉') return 'type-clinic';
-      return '';
-    }
-    function getStudentPortalOmrIndex() {
-      if (omrIndex) return omrIndex;
-      const byTitleDate = new Map();
-      const byExact = new Map();
-      (Array.isArray(omrData?.exams) ? omrData.exams : []).forEach(exam => {
-        const title = String(exam?.exam_title || '');
-        const date = String(exam?.exam_date || '');
-        const q = String(Number(exam?.question_count || 0) || '');
-        const archiveFile = String(exam?.archive_file || '').trim();
-        const baseKey = [title, date].join('|');
-        if (!byTitleDate.has(baseKey)) byTitleDate.set(baseKey, []);
-        byTitleDate.get(baseKey).push(exam);
-        if (archiveFile || q) byExact.set([title, date, q, archiveFile].join('|'), exam);
-      });
-      omrIndex = { byTitleDate, byExact };
-      return omrIndex;
-    }
-    function findStudentPortalOmrExamForAssignment(row) {
-      const title = String(row?.exam_title || '');
-      const date = String(row?.exam_date || '');
-      const archiveFile = String(row?.archive_file || '').trim();
-      const questionCount = Number(row?.question_count || 0);
-      const idx = getStudentPortalOmrIndex();
-
-      const exact = idx.byExact.get([title, date, String(questionCount || ''), archiveFile].join('|'));
-      if (exact) return exact;
-
-      const candidates = idx.byTitleDate.get([title, date].join('|')) || [];
-      return candidates.find(exam => {
-        const examQuestionCount = Number(exam?.question_count || 0);
-        if (questionCount && examQuestionCount && questionCount !== examQuestionCount) return false;
-        const examArchiveFile = String(exam?.archive_file || '').trim();
-        if (archiveFile && examArchiveFile) return examArchiveFile === archiveFile;
-        return true;
-      }) || null;
-    }
-    function getStudentPortalAssignmentOmrStatus(exam) {
-      if (!exam) return { label: 'OMR 미연결', className: 'status-muted' };
-      if (Number(exam?.is_submitted || 0) === 1) return { label: '제출 완료', className: 'status-done' };
-      return { label: '입력 필요', className: 'status-pending' };
-    }
-    function openStudentPortalAssignmentOmr(assignmentId) {
-      if (!assignmentId || typeof renderOmrInput !== 'function') return;
-      renderOmrInput(assignmentId);
-    }
-    function notifyStudentPortalAssignment() {
-      if (typeof toast === 'function') toast('선생님이 안내한 방식으로 제출하세요.');
-    }
-    async function refreshStudentPortalAssignmentOmrStatus() {
-      if (!session?.student_id || !session?.student_token) return;
-      const root = $('student-portal-assignments-section');
-      if (!root) return;
-      try {
-        await loadOmrExams(false);
-      } catch (e) {
-        return;
-      }
-      const nextRoot = $('student-portal-assignments-section');
-      if (!nextRoot) return;
-      nextRoot.outerHTML = renderStudentPortalAssignments();
-    }
-    function renderStudentPortalAssignments() {
-      const list = getStudentPortalAssignments();
-      const visible = list.slice(0, 2);
-      const canClick = !isTeacherPreview && typeof toast === 'function';
-      if (!visible.length) {
-        return `
-          <section id="student-portal-assignments-section" class="card portal-assignments-card">
-            <div class="portal-assignments-head">
-              <div>
-                <h2 class="card-title">배정 자료</h2>
-                <p class="card-desc">선생님이 최근 배정한 자료를 확인합니다.</p>
-              </div>
-            </div>
-            <div class="empty" style="margin-top:14px;">아직 배정된 자료가 없습니다.</div>
-          </section>
-        `;
-      }
-      const rows = visible.map(row => {
-        const exam = findStudentPortalOmrExamForAssignment(row);
-        const status = getStudentPortalAssignmentOmrStatus(exam);
-        const assignmentId = exam?.assignment_id ? String(exam.assignment_id) : '';
-        const isSubmitted = Number(exam?.is_submitted || 0) === 1;
-        const showOmrButton = !isTeacherPreview && !!assignmentId && !isSubmitted && typeof renderOmrInput === 'function';
-        const examDate = escapeHtml(String(row?.exam_date || ''));
-        const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험명 없음');
-        const questionCount = Number(row?.question_count || 0);
-        const questionLabel = questionCount ? `${questionCount}문항` : '-문항';
-        const typeLabel = formatStudentPortalAssignmentType(row);
-        const typeClass = getStudentPortalAssignmentTypeClassName(row);
-        const clickAttrs = canClick
-          ? ` role="button" tabindex="0" onclick="notifyStudentPortalAssignment()" onkeydown="if(event.key==='Enter'||event.key===' '){ event.preventDefault(); notifyStudentPortalAssignment(); }"`
-          : '';
-        return `
-          <div class="portal-assignment-row ${canClick ? 'is-clickable' : ''}"${clickAttrs}>
-            <div class="portal-assignment-line">
-              <span>${examDate || '-'}</span>
-              <span class="muted"> · </span>
-              <span>${examTitle}</span>
-            </div>
-            <div class="portal-assignment-meta">
-              <span class="portal-assignment-pill">${escapeHtml(questionLabel)}</span>
-              <span class="portal-assignment-pill ${typeClass}">${escapeHtml(typeLabel)}</span>
-              <span class="portal-assignment-pill ${status.className}">${status.label}</span>
-            </div>
-            ${showOmrButton ? `<div class="portal-assignment-actions"><button type="button" class="btn btn-primary" onclick="event.stopPropagation(); openStudentPortalAssignmentOmr('${escapeHtml(assignmentId)}')">OMR 입력</button></div>` : ''}
-          </div>
-        `;
-      }).join('');
-      const hiddenCount = list.length - visible.length;
-      return `
-        <section id="student-portal-assignments-section" class="card portal-assignments-card">
-          <div class="portal-assignments-head">
-            <div>
-              <h2 class="card-title">배정 자료</h2>
-              <p class="card-desc">선생님이 최근 배정한 자료를 확인합니다.</p>
-            </div>
-          </div>
-          <div class="portal-assignments-list">${rows}</div>
-          ${canClick ? '<div class="portal-assignments-note">자료를 눌러도 시험지는 바로 열리지 않습니다.</div>' : ''}
-          ${hiddenCount > 0 ? `<div class="portal-assignments-more">외 ${hiddenCount}개 자료</div>` : ''}
-        </section>
-      `;
     }
     async function loadMaterialWrongAssignments(force = false) {
       if (!session?.student_id || !session?.student_token) return { items: [] };
@@ -1723,16 +1574,14 @@
       }
     }
     function renderOmrHomeSection() {
-      const pending = getStudentPortalAssignments()
-        .filter(row => Number(row?.is_submitted || 0) !== 1)
-        .slice(0, 3);
-      const visible = isTeacherPreview ? getStudentPortalAssignments().slice(0, 3) : pending;
+      const visible = getStudentPortalAssignments();
       const rows = visible.length ? visible.map(row => {
         const assignmentId = escapeHtml(String(row?.assignment_id || ''));
         const examDate = escapeHtml(String(row?.exam_date || ''));
         const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험지');
         const questionCount = Number(row?.question_count || 0);
-        const meta = [examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
+        const className = escapeHtml(String(row?.class_name || '').trim());
+        const meta = [className, examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
         const submitted = Number(row?.is_submitted || 0) === 1;
         return `
           <div class="omr-card">
@@ -1744,9 +1593,8 @@
               <span class="omr-status ${submitted ? 'done' : 'pending'}">${submitted ? '제출 완료' : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
             </div>
             <div class="row-actions">
-              ${isTeacherPreview
-                ? (isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>')
-                : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
+              ${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>'}
+              ${isTeacherPreview || submitted ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
             </div>
           </div>
         `;
@@ -1757,14 +1605,14 @@
         <section id="student-portal-omr-home-section" class="card portal-assignments-card">
           <div class="portal-assignments-head">
             <div>
-              <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : 'OMR 입력'}</h2>
-              <p class="card-desc">${isTeacherPreview ? '학생에게 출제된 시험지를 확인합니다.' : '미제출 시험지를 먼저 입력합니다.'}</p>
+              <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
+              <p class="card-desc">${isTeacherPreview ? '학생에게 출제된 모든 시험지를 확인합니다.' : '출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다.'}</p>
             </div>
             <div class="portal-mark orange">${renderIcon('omr')}</div>
           </div>
           <div class="portal-omr-home-list">${rows}</div>
           <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderOmrExams()">${isTeacherPreview ? '전체 시험지 보기' : '전체 OMR 보기'}</button>
+            <button class="btn btn-primary" onclick="renderOmrExams()">전체 시험지 보기 (${visible.length})</button>
           </div>
         </section>
       `;
@@ -1832,14 +1680,12 @@
           ${renderStudentQuickActions()}
           ${isTeacherPreview ? '' : `
             <div class="portal-support-grid">
-              ${renderStudentPortalAssignments()}
               ${renderMaterialWrongAssignments()}
             </div>
           `}
           ${renderStudentAppVersion()}
         </div>
       `;
-      if (typeof refreshStudentPortalAssignmentOmrStatus === 'function') refreshStudentPortalAssignmentOmrStatus();
       if (!isTeacherPreview && typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
     }
     function renderAssignments() {
@@ -1959,19 +1805,22 @@
       return ageDays !== null && ageDays > STUDENT_PORTAL_RECENT_EXAM_DAYS ? 'previous' : 'recent';
     }
     function groupStudentPortalExams(exams, today = new Date()) {
-      const groups = { recent: [], previous: [], complete: [] };
-      (Array.isArray(exams) ? exams : []).forEach(exam => groups[getStudentPortalExamBucket(exam, today)].push(exam));
+      const groups = { all: [], pending: [], complete: [] };
+      (Array.isArray(exams) ? exams : []).forEach(exam => {
+        groups.all.push(exam);
+        groups[Number(exam?.is_submitted || 0) === 1 ? 'complete' : 'pending'].push(exam);
+      });
       return groups;
     }
     function setOmrListFilter(next) {
-      if (!['recent', 'previous', 'complete'].includes(next)) return;
+      if (!['all', 'pending', 'complete'].includes(next)) return;
       omrListFilter = next;
       const root = document.querySelector('.omr-browser');
       if (root) root.innerHTML = renderOmrExamBrowser(getOmrExams());
     }
     function handleOmrListTabKey(event, current) {
       if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-      const keys = ['recent', 'previous', 'complete'];
+      const keys = ['all', 'pending', 'complete'];
       const index = keys.indexOf(current);
       if (index < 0) return;
       event.preventDefault();
@@ -1986,22 +1835,22 @@
     function renderOmrExamBrowser(exams) {
       const groups = groupStudentPortalExams(exams);
       const tabs = [
-        { key: 'recent', label: '최근' },
-        { key: 'previous', label: '이전' },
-        { key: 'complete', label: '완료' }
+        { key: 'all', label: '전체' },
+        { key: 'pending', label: '진행 중' },
+        { key: 'complete', label: '제출 완료' }
       ];
-      const active = tabs.some(tab => tab.key === omrListFilter) ? omrListFilter : 'recent';
+      const active = tabs.some(tab => tab.key === omrListFilter) ? omrListFilter : 'all';
       const rows = groups[active];
-      const emptyCopy = active === 'recent'
-        ? '최근에 나온 시험지가 없습니다.'
-        : active === 'previous'
-          ? '이전 시험지가 없습니다.'
-          : '완료한 시험지가 없습니다.';
-      const note = active === 'recent'
-        ? `최근 ${STUDENT_PORTAL_RECENT_EXAM_DAYS}일 기준`
-        : active === 'previous'
-          ? '30일이 지난 시험지도 OMR을 계속 작성할 수 있습니다.'
-          : '제출한 시험지를 모아봅니다.';
+      const emptyCopy = active === 'all'
+        ? '출제된 시험지가 없습니다.'
+        : active === 'pending'
+          ? '진행 중인 시험지가 없습니다.'
+          : '제출한 시험지가 없습니다.';
+      const note = active === 'all'
+        ? '출제된 시험지는 날짜와 제출 여부와 관계없이 모두 표시됩니다.'
+        : active === 'pending'
+          ? '아직 제출하지 않은 시험지입니다.'
+          : '제출한 시험지도 문제·정답·해설을 다시 볼 수 있습니다.';
       return `
         <div class="omr-filter-tabs" role="tablist" aria-label="시험지 분류">
           ${tabs.map(tab => `
@@ -2045,7 +1894,12 @@
       const archiveFile = String(exam?.archive_file || '').trim();
       if (!archiveFile) return false;
       if (!archiveFile.startsWith('MIXED:')) return true;
-      return !!String(exam?.mixed_payload_json || '').trim() || !!String(exam?.pack_id || '').trim();
+      try {
+        const payload = JSON.parse(String(exam?.mixed_payload_json || '').trim());
+        return Array.isArray(payload?.questions) && payload.questions.length > 0;
+      } catch (e) {
+        return false;
+      }
     }
     function isLegacyMixedOmrReview(exam) {
       const archiveFile = String(exam?.archive_file || '').trim();
@@ -2053,9 +1907,12 @@
     }
     function restoreMixedOmrPayload(exam) {
       const archiveFile = String(exam?.archive_file || '').trim();
+      // 일반 아카이브 시험은 URL의 data 파라미터만으로 원본을 열 수 있다.
+      // MIXED: 출제본만 학생 화면에서 저장한 문항 스냅샷을 복원한다.
+      if (!archiveFile.startsWith('MIXED:')) return !!archiveFile;
       const key = archiveFile.startsWith('MIXED:') ? archiveFile.slice('MIXED:'.length).trim() : '';
       const rawPayload = String(exam?.mixed_payload_json || '').trim();
-      if (!key || !rawPayload) return true;
+      if (!key || !rawPayload) return false;
       try {
         const payload = JSON.parse(rawPayload);
         if (!Array.isArray(payload?.questions) || !payload.questions.length) return false;
@@ -2142,7 +1999,10 @@
       `;
     }
     function findOmrExam(assignmentId) {
-      return getOmrExams().find(exam => String(exam.assignment_id) === String(assignmentId));
+      const key = String(assignmentId || '');
+      return getOmrExams().find(exam => String(exam.assignment_id) === key)
+        || getStudentPortalAssignments().find(exam => String(exam.assignment_id) === key)
+        || null;
     }
     function normalizeOmrWrongIds(values) {
       return Array.from(new Set((Array.isArray(values) ? values : [])
@@ -2249,6 +2109,28 @@
       toast('로그아웃 되었습니다.');
       renderLogin();
     }
+    let studentHomeRefreshBusy = false;
+    async function refreshStudentHomeAssignments() {
+      if (
+        isTeacherPreview || studentHomeRefreshBusy || !session?.student_id || !session?.student_token ||
+        !document.getElementById('student-portal-omr-home-section')
+      ) return;
+      studentHomeRefreshBusy = true;
+      try {
+        const next = await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+        const before = JSON.stringify(getStudentPortalAssignments());
+        setStudentPortalHomeData(next);
+        try { await loadOmrExams(true); } catch (e) {}
+        const after = JSON.stringify(getStudentPortalAssignments());
+        if (before !== after) {
+          renderHome();
+        }
+      } catch (e) {
+        console.warn('[student portal] home assignment refresh failed:', e);
+      } finally {
+        studentHomeRefreshBusy = false;
+      }
+    }
     async function boot() {
       console.info('[student portal] version:', STUDENT_APP_VERSION);
       checkStudentPortalVersion();
@@ -2311,13 +2193,22 @@
       });
 
       window.addEventListener('pageshow', refreshStudentPortalUpdate);
-      window.addEventListener('focus', refreshStudentPortalUpdate);
+      window.addEventListener('focus', () => {
+        refreshStudentPortalUpdate();
+        refreshStudentHomeAssignments();
+      });
       document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') refreshStudentPortalUpdate();
+        if (document.visibilityState === 'visible') {
+          refreshStudentPortalUpdate();
+          refreshStudentHomeAssignments();
+        }
       });
       window.setInterval(() => {
-        if (document.visibilityState === 'visible') refreshStudentPortalUpdate();
-      }, 5 * 60 * 1000);
+        if (document.visibilityState === 'visible') {
+          refreshStudentPortalUpdate();
+          refreshStudentHomeAssignments();
+        }
+      }, 30 * 1000);
     }
   </script>
 </body>

@@ -18,7 +18,7 @@ assert(
 assert(
   html.includes("window.addEventListener('pageshow', refreshStudentPortalUpdate)") &&
     html.includes("document.addEventListener('visibilitychange'") &&
-    html.includes('5 * 60 * 1000'),
+    html.includes('30 * 1000'),
   'installed student portal should recheck for updates when resumed and while open'
 );
 assert(

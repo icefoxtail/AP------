@@ -9,18 +9,17 @@ const studentPortal = fs.readFileSync(path.join(root, 'apmath/student/index.html
 assert(
   source.includes('async function loadStudentClassExamAssignments') &&
     source.includes('FROM class_exam_assignments cea') &&
-    source.includes('JOIN class_students cs ON cs.class_id = cea.class_id') &&
+    source.includes('JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id') &&
     source.includes('ORDER BY cea.exam_date DESC'),
-  'student portal should load historical class exam assignments for the logged-in student'
+  'student portal should load every issued assignment from the frozen recipient roster'
 );
 
 assert(
     source.includes('function buildAssignmentDedupeKey') &&
     source.includes('function dedupeClassExamAssignments') &&
-    source.includes('return [classId, examDate, archiveFile].join') &&
-    source.includes('sessionByAssignment.has') &&
+    source.includes('return `ASSIGNMENT|${assignmentId}`') &&
     source.includes('dedupeClassExamAssignments(assignments.results || [], sessionByAssignment).map'),
-  'student portal should collapse duplicate class exam assignment rows by class/date/archive file while preserving submitted rows'
+  'student portal should preserve each issued assignment by assignment_id without collapsing same-day reissues'
 );
 
 assert(
@@ -50,9 +49,25 @@ assert(
 );
 
 assert(
-  studentPortal.includes('// 서버가 이미 로그인한 학생의 반 소속·제외 여부로 걸러서 내려준다.') &&
+  studentPortal.includes('if (Array.isArray(omrData?.exams)) return omrData.exams.slice();') &&
+    studentPortal.includes('await loadOmrExams(true);') &&
     !studentPortal.includes(".filter(row => String(row?.class_id || '') === String(classId))"),
-  'student home should trust the server-filtered class exam assignments instead of hiding them when class_id is absent'
+  'student home should use the same server-filtered exam list as the full OMR page'
+);
+
+assert(
+  studentPortal.includes('async function refreshStudentHomeAssignments()') &&
+    studentPortal.includes("document.getElementById('student-portal-omr-home-section')") &&
+    studentPortal.includes('}, 30 * 1000);'),
+  'student home should refresh newly issued exams while the portal stays open'
+);
+
+assert(
+  studentPortal.includes('const visible = getStudentPortalAssignments();') &&
+    studentPortal.includes('출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다.') &&
+    studentPortal.includes("${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type=\"button\" class=\"btn\" disabled>시험지 파일 없음</button>'}") &&
+    studentPortal.includes("|| getStudentPortalAssignments().find(exam => String(exam.assignment_id) === key)"),
+  'home should render every canonical assignment with direct review actions'
 );
 
 console.log('student portal OMR history route checks passed');
