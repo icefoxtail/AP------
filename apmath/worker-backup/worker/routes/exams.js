@@ -123,19 +123,6 @@ function normalizeAssignmentSubject(raw) {
   return null;
 }
 
-function parseStudentHighSubjectExclusions(value) {
-  let raw = value;
-  if (typeof raw === 'string') {
-    try {
-      raw = JSON.parse(raw);
-    } catch (e) {
-      raw = raw.split(/[,\s/]+/);
-    }
-  }
-  if (!Array.isArray(raw)) return [];
-  return Array.from(new Set(raw.map(normalizeAssignmentSubject).filter(Boolean)));
-}
-
 function getAssignmentArchiveCandidates(value) {
   const raw = String(value || '').trim();
   const normalized = normalizeAssignmentArchiveFile(raw);
@@ -466,44 +453,6 @@ async function loadClassAssignmentExclusions(env, assignmentIds) {
   } catch (e) {
     console.warn('[assignment-exclusions] list failed:', e);
     return [];
-  }
-}
-
-async function refreshSubjectMismatchExclusions(env, assignment) {
-  if (!assignment?.id || !assignment?.class_id) return;
-  if (!(await hasClassExamAssignmentExclusions(env))) return;
-
-  try {
-    await env.DB.prepare(`
-      DELETE FROM class_exam_assignment_exclusions
-      WHERE assignment_id = ? AND reason = 'subject_mismatch'
-    `).bind(assignment.id).run();
-
-    const subject = normalizeAssignmentSubject(assignment.subject);
-    if (!subject) return;
-
-    const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
-    const students = await env.DB.prepare(`
-      SELECT s.id, s.high_subject_exclusions
-      FROM students s
-      ${recipientSnapshotExists
-        ? 'JOIN class_exam_assignment_recipients ar ON ar.student_id = s.id\n      WHERE ar.assignment_id = ?'
-        : 'JOIN class_students cs ON cs.student_id = s.id\n      WHERE cs.class_id = ?'}
-        AND s.status = '재원'
-    `).bind(recipientSnapshotExists ? assignment.id : assignment.class_id).all();
-
-    const stmts = [];
-    for (const student of students.results || []) {
-      const excludedSubjects = parseStudentHighSubjectExclusions(student.high_subject_exclusions);
-      if (!excludedSubjects.includes(subject)) continue;
-      stmts.push(env.DB.prepare(`
-        INSERT OR IGNORE INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
-        VALUES (?, ?, 'subject_mismatch')
-      `).bind(assignment.id, student.id));
-    }
-    if (stmts.length) await env.DB.batch(stmts);
-  } catch (e) {
-    console.warn('[assignment-exclusions] refresh failed:', e);
   }
 }
 
@@ -1315,7 +1264,6 @@ export async function handleExams(request, env, teacher, path, url) {
         target_scope: normalizeTargetScope(d.target_scope),
         subject: normalizeOptionalText(d.subject)
       };
-      const subjectInputProvided = Object.prototype.hasOwnProperty.call(d, 'subject') && String(d.subject ?? '').trim();
       const updateSets = [
         'exam_title = ?',
         'question_count = ?',
@@ -1391,7 +1339,6 @@ export async function handleExams(request, env, teacher, path, url) {
         const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
           .bind(existing.id).first();
         await snapshotClassExamAssignmentRecipients(env, assignment);
-        if (subjectInputProvided) await refreshSubjectMismatchExclusions(env, assignment);
         if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
         return jsonResponse({ success: true, assignment });
       }
@@ -1468,7 +1415,6 @@ export async function handleExams(request, env, teacher, path, url) {
       }
 
       await snapshotClassExamAssignmentRecipients(env, assignment);
-      if (assignment && assignmentMeta.subject) await refreshSubjectMismatchExclusions(env, assignment);
       if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
       return jsonResponse({ success: true, assignment });
     }
