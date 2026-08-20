@@ -34,6 +34,12 @@ test('archive engines use hybrid fast print and preserve vector and compatibilit
     assert.match(html, /safePrint\(\{ mode: 'hybrid' \}\)/);
     assert.match(html, /safePrint\(\{ mode: 'raster' \}\)/);
     assert.match(html, /safePrint\(\{ mode: 'vector' \}\)/);
+    assert.match(html, /id="btn-print-more"[^>]+aria-label="추가 출력 옵션"/);
+    assert.match(html, /class="print-options-popover"/);
+    assert.match(html, /고품질 벡터 PDF/);
+    assert.match(html, /프린터 호환 인쇄/);
+    assert.match(html, /function togglePrintOptionsPopover/);
+    assert.match(html, /function closePrintOptionsPopover/);
     assert.match(html, /APPrintPageFlattener\.prepare/);
     assert.match(html, /APPrintMathOptimizer\.prepare/);
     assert.match(html, /mathOptimization/);
