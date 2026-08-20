@@ -383,7 +383,7 @@ function renderHighSubjectChecks(prefix, grade, excludedSubjects, options = {}) 
     return `
         <div id="${prefix}-high-subjects-wrap" style="display:${visible ? 'inline-block' : 'none'}; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:10px 12px;">
             ${showTitle ? '<div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:5px; line-height:1.4;">수강하지 않는 과목</div>' : ''}
-            ${showDescription ? '<div style="font-size:11px; color:var(--muted); margin-bottom:9px; line-height:1.45;">기본적으로 모든 고등 선택과목이 출제됩니다. 실제로 수강하지 않는 과목만 체크하세요.</div>' : ''}
+            ${showDescription ? '<div style="font-size:11px; color:var(--muted); margin-bottom:9px; line-height:1.45;">수강 정보만 기록합니다. 체크 여부와 무관하게 반에 출제된 시험지는 모두 학생 포털에 표시됩니다.</div>' : ''}
             <div style="display:grid; width:100%; grid-template-columns:repeat(auto-fit, minmax(96px, 1fr)); gap:6px 10px;">
                 ${AP_HIGH_SUBJECTS.map((subject, idx) => `
                     <label style="display:flex; align-items:center; gap:6px; min-height:24px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer; white-space:nowrap;">
