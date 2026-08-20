@@ -26,9 +26,6 @@
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="print_image_optimizer.js?v=20260811.3"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script defer src="print_page_flattener.js?v=20260819.1"></script>
-    <script defer src="print_math_optimizer.js?v=20260819.1"></script>
     <script src="mathjax_render_loop.js?v=20260811.2"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
@@ -47,16 +44,6 @@
         .qr-output-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
         .qr-output-option { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.4; padding: 5px 0; cursor: pointer; }
         .qr-output-option input { width: 14px; height: 14px; margin: 0; }
-        .print-actions { position: relative; display: flex; align-items: center; gap: 4px; }
-        #btn-print { padding: 8px 16px; border-radius: 6px; border: none; background: #2563eb; color: white; font-weight: 800; cursor: pointer; }
-        #btn-print-more { width: 34px; height: 34px; padding: 0; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); color: white; font-size: 18px; font-weight: 800; line-height: 1; cursor: pointer; }
-        .print-options-popover { position: absolute; right: 0; top: calc(100% + 8px); width: 250px; padding: 8px; border-radius: 9px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; box-sizing: border-box; }
-        .print-actions.open .print-options-popover { display: block; }
-        .print-options-title { padding: 5px 7px 7px; font-size: 12px; font-weight: 800; color: #475569; }
-        .print-option-btn { display: block; width: 100%; padding: 9px 10px; border: 0; border-radius: 7px; background: transparent; color: #0f172a; text-align: left; cursor: pointer; }
-        .print-option-btn:hover, .print-option-btn:focus-visible { background: #f1f5f9; outline: none; }
-        .print-option-name { display: block; font-size: 12px; font-weight: 800; }
-        .print-option-help { display: block; margin-top: 3px; font-size: 10px; line-height: 1.35; color: #64748b; }
         .print-header-editor-wrap { position: relative; }
         .print-header-editor-btn { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
         .print-header-editor-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 310px; padding: 14px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; box-sizing: border-box; }
@@ -76,7 +63,7 @@
             body.screen-fit-mode { padding-top: 44px; }
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
             body.screen-fit-mode #ctrl-title,
-            body.screen-fit-mode .print-actions,
+            body.screen-fit-mode #btn-print,
             body.screen-fit-mode .qr-output-wrap { display: none; }
             body.screen-fit-mode .print-header-editor-panel {
                 position: fixed;
@@ -90,7 +77,7 @@
         body.preview-mode { padding-top: 44px; }
         body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; gap: 8px; }
         body.preview-mode #ctrl-title,
-        body.preview-mode .print-actions,
+        body.preview-mode #btn-print,
         body.preview-mode #qpp-display,
         body.preview-mode .qr-output-wrap,
         body.preview-mode .print-header-editor-wrap { display: none; }
@@ -402,21 +389,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <div class="print-actions" id="print-actions">
-                <button id="btn-print" type="button" onclick="safePrint({ mode: 'hybrid' })">빠른 인쇄</button>
-                <button id="btn-print-more" type="button" aria-label="추가 출력 옵션" aria-expanded="false" onclick="togglePrintOptionsPopover(event)">⋯</button>
-                <div class="print-options-popover" id="print-options-popover" role="menu">
-                    <div class="print-options-title">추가 출력 옵션</div>
-                    <button id="btn-print-vector" class="print-option-btn" type="button" role="menuitem" onclick="closePrintOptionsPopover(); safePrint({ mode: 'vector' })">
-                        <span class="print-option-name">고품질 벡터 PDF</span>
-                        <span class="print-option-help">인쇄소 제출이나 크게 확대할 때 사용</span>
-                    </button>
-                    <button id="btn-print-compat" class="print-option-btn" type="button" role="menuitem" onclick="closePrintOptionsPopover(); safePrint({ mode: 'raster' })">
-                        <span class="print-option-name">프린터 호환 인쇄</span>
-                        <span class="print-option-help">빠른 인쇄가 정상 작동하지 않을 때만 사용</span>
-                    </button>
-                </div>
-            </div>
+            <button id="btn-print" onclick="safePrint()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -628,29 +601,8 @@ function syncQrOutputControls() {
 
 function toggleQrOutputPopover(event) {
     if (event) event.stopPropagation();
-    closePrintOptionsPopover();
     const wrap = document.getElementById('qr-output-wrap');
     if (wrap) wrap.classList.toggle('open');
-}
-
-function closePrintOptionsPopover() {
-    document.getElementById('print-actions')?.classList.remove('open');
-    document.getElementById('btn-print-more')?.setAttribute('aria-expanded', 'false');
-}
-
-function togglePrintOptionsPopover(event) {
-    if (event) event.stopPropagation();
-    const wrap = document.getElementById('print-actions');
-    const button = document.getElementById('btn-print-more');
-    if (!wrap) return;
-    const willOpen = !wrap.classList.contains('open');
-    closePrintOptionsPopover();
-    if (willOpen) {
-        document.getElementById('qr-output-wrap')?.classList.remove('open');
-        document.getElementById('print-header-editor-wrap')?.classList.remove('open');
-        wrap.classList.add('open');
-        button?.setAttribute('aria-expanded', 'true');
-    }
 }
 
 function setQrOutputParam(type, checked) {
@@ -671,12 +623,6 @@ document.addEventListener('click', (event) => {
     if (wrap && !wrap.contains(event.target)) wrap.classList.remove('open');
     const headerWrap = document.getElementById('print-header-editor-wrap');
     if (headerWrap && !headerWrap.contains(event.target)) headerWrap.classList.remove('open');
-    const printWrap = document.getElementById('print-actions');
-    if (printWrap && !printWrap.contains(event.target)) closePrintOptionsPopover();
-});
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closePrintOptionsPopover();
 });
 
 function applyQrSolutionLockUI() {
@@ -2100,7 +2046,6 @@ async function renderBody() {
     injectSubmitQrToLastExamPage(area);
     applyQrSolutionLockUI();
     updateScreenFitScale();
-    scheduleFastPrintPrewarm();
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
 }
@@ -2117,61 +2062,15 @@ async function flattenPrintImagesForOpaquePrint() {
 
 // 인쇄 전 준비: 렌더·폰트·이미지·수식이 모두 확정된 뒤에만 window.print()를 부른다.
 // 준비 안 된 상태에서 인쇄하면 미리보기가 미완성인 채 잡이 생성돼 스풀이 멈춘다.
-const FAST_MATH_PRINT_DPI = 192;
-const COMPAT_PRINT_DPI = 200;
-const FAST_MATH_JPEG_QUALITY = 0.94;
-const FAST_PRINT_JPEG_QUALITY = 0.9;
 let printPending = false;
-function setPrintButtonsPending(pending, progressLabel = '') {
-    const fastButton = document.getElementById('btn-print');
-    const vectorButton = document.getElementById('btn-print-vector');
-    const compatButton = document.getElementById('btn-print-compat');
-    const moreButton = document.getElementById('btn-print-more');
-    if (fastButton) {
-        if (!fastButton.dataset.idleLabel) fastButton.dataset.idleLabel = fastButton.textContent;
-        fastButton.disabled = pending;
-        fastButton.textContent = pending && progressLabel ? progressLabel : fastButton.dataset.idleLabel;
-    }
-    if (vectorButton) {
-        if (!vectorButton.dataset.idleLabel) vectorButton.dataset.idleLabel = vectorButton.textContent;
-        vectorButton.disabled = pending;
-        vectorButton.textContent = vectorButton.dataset.idleLabel;
-    }
-    if (compatButton) {
-        if (!compatButton.dataset.idleLabel) compatButton.dataset.idleLabel = compatButton.textContent;
-        compatButton.disabled = pending;
-        compatButton.textContent = compatButton.dataset.idleLabel;
-    }
-    if (moreButton) moreButton.disabled = pending;
-}
-
-function scheduleFastPrintPrewarm() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('fastprintprewarm') === 'off') return;
-    const root = document.getElementById('print-area');
-    if (!root?.querySelector('.page')) return;
-    const start = () => {
-        const optimizer = window.APPrintMathOptimizer;
-        if (!optimizer) return;
-        optimizer.prewarm(root, {
-            printDpi: FAST_MATH_PRINT_DPI,
-            jpegQuality: FAST_MATH_JPEG_QUALITY
-        }).catch(error => console.warn('[fast-print] 백그라운드 수식 준비 실패 — 인쇄할 때 다시 시도합니다.', error));
-    };
-    if (typeof requestIdleCallback === 'function') requestIdleCallback(start, { timeout: 3000 });
-    else setTimeout(start, 1200);
-}
-
-async function safePrint(options = {}) {
+async function safePrint() {
     if (printPending) return;
     printPending = true;
-    setPrintButtonsPending(true, '인쇄 준비 중…');
+    const btn = document.getElementById('btn-print');
+    const label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = '인쇄 준비 중…'; }
     const printStartedAt = performance.now();
-    const printParams = new URLSearchParams(window.location.search);
-    let printMode = options.mode || printParams.get('printmode') || 'hybrid';
     let optimizedImages = { summary: {}, restore() {} };
-    let optimizedMath = { summary: {}, restore() {} };
-    let rasterPages = { summary: {}, restore() {} };
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
         await Promise.race([window.__AP_RENDER_READY__, limit(20000)]);
@@ -2191,71 +2090,30 @@ async function safePrint(options = {}) {
         } else if (window.APRenderLoop?.unrenderedMathCount(document.getElementById('print-area')) > 0) {
             await Promise.race([typesetMath('print-recovery', [document.getElementById('print-area')]), limit(5000)]);
         }
-        if (printMode === 'hybrid') {
-            optimizedImages = await flattenPrintImagesForOpaquePrint();
-            try {
-                optimizedMath = await window.APPrintMathOptimizer.prepare(document.getElementById('print-area'), {
-                    printDpi: FAST_MATH_PRINT_DPI,
-                    jpegQuality: FAST_MATH_JPEG_QUALITY,
-                    onProgress({ current, total }) {
-                        setPrintButtonsPending(true, `수식 준비 ${current}/${total}`);
-                    }
-                });
-            } catch (error) {
-                printMode = 'vector-fallback';
-                console.warn('[fast-print] 수식 평탄화 실패 — 최적화된 벡터 출력으로 전환합니다.', error);
-            }
-        } else if (printMode === 'raster') {
-            try {
-                rasterPages = await window.APPrintPageFlattener.prepare(document.getElementById('print-area'), {
-                    printDpi: COMPAT_PRINT_DPI,
-                    jpegQuality: FAST_PRINT_JPEG_QUALITY,
-                    onProgress({ current, total }) {
-                        setPrintButtonsPending(true, `빠른 출력 준비 ${current}/${total}`);
-                    }
-                });
-            } catch (error) {
-                printMode = 'vector-fallback';
-                console.warn('[fast-print] 페이지 평탄화 실패 — 기존 벡터 출력으로 전환합니다.', error);
-                optimizedImages = await flattenPrintImagesForOpaquePrint();
-            }
-        } else {
-            optimizedImages = await flattenPrintImagesForOpaquePrint();
-        }
+        optimizedImages = await flattenPrintImagesForOpaquePrint();
         // requestAnimationFrame은 탭이 백그라운드/스로틀 상태면 안 풀려 "준비 중"에서 멈출 수 있다.
         // setTimeout은 항상 발화하므로 rAF 대신 짧게 한 틱만 양보한다.
         await limit(60);
     } catch (error) {
         console.warn('[engine] 인쇄 준비 중 경고 — 그대로 인쇄를 진행합니다.', error);
     }
+    if (btn) { btn.disabled = false; btn.textContent = label; }
+    printPending = false;
+    const printParams = new URLSearchParams(window.location.search);
     const printMetrics = {
         readyToPrintMs: Number((performance.now() - printStartedAt).toFixed(1)),
-        printMode,
         imageOptimization: optimizedImages.summary || {},
-        mathOptimization: optimizedMath.summary || {},
-        pageRasterization: rasterPages.summary || {},
         dryRun: printParams.get('printDryRun') === '1'
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
     if (printMetrics.dryRun) {
-        if (printParams.get('printDryRunKeep') !== '1') {
-            optimizedMath.restore();
-            rasterPages.restore();
-            optimizedImages.restore();
-        }
-        setPrintButtonsPending(false);
-        printPending = false;
+        optimizedImages.restore();
         return;
     }
     try {
-        setPrintButtonsPending(false);
         window.print();
     } finally {
-        optimizedMath.restore();
-        rasterPages.restore();
         optimizedImages.restore();
-        setPrintButtonsPending(false);
-        printPending = false;
     }
 }
 window.safePrint = safePrint;
