@@ -288,7 +288,7 @@ internal static class GdiPrinter
                     using (var stream = new MemoryStream(pages[pageIndex], false))
                     using (var image = Image.FromStream(stream, true, true))
                     {
-                        DrawToImageableArea(e, image);
+                        DrawToImageableArea(e, image, pageIndex == 0);
                     }
                     pageIndex += 1;
                     e.HasMorePages = pageIndex < pages.Count;
@@ -310,25 +310,22 @@ internal static class GdiPrinter
         }
     }
 
-    private static void DrawToImageableArea(PrintPageEventArgs e, Image image)
+    private static void DrawToImageableArea(PrintPageEventArgs e, Image image, bool logBounds)
     {
-        // PageBounds is in hundredths of an inch. HardMarginX/Y are supplied by
-        // the driver and keep the bitmap away from the non-printable edge, which
-        // is the part the RAW PCL path cannot know.
-        var page = e.PageBounds;
-        var left = Math.Max(page.Left, (int)Math.Ceiling(e.PageSettings.HardMarginX));
-        var top = Math.Max(page.Top, (int)Math.Ceiling(e.PageSettings.HardMarginY));
-        var right = Math.Min(page.Right, page.Width - left);
-        var bottom = Math.Min(page.Bottom, page.Height - top);
-        if (right <= left || bottom <= top)
+        // PrintableArea is the driver's actual imageable rectangle in hundredths
+        // of an inch. Unlike HardMarginX/Y, it includes the real right/bottom
+        // bounds instead of assuming the printer's margins are symmetric.
+        var target = e.PageSettings.PrintableArea;
+        if (target.Width <= 0 || target.Height <= 0)
         {
-            left = page.Left;
-            top = page.Top;
-            right = page.Right;
-            bottom = page.Bottom;
+            var page = e.PageBounds;
+            target = new RectangleF(page.Left, page.Top, page.Width, page.Height);
         }
-
-        var target = new Rectangle(left, top, Math.Max(1, right - left), Math.Max(1, bottom - top));
+        if (logBounds)
+        {
+            var clip = e.Graphics.VisibleClipBounds;
+            Console.WriteLine("GDI bounds: page=" + e.PageBounds + ", printable=" + target + ", clip=" + clip);
+        }
         var graphics = e.Graphics;
         graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
         graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
