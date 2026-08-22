@@ -29,6 +29,8 @@
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
+    <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="print_image_optimizer.js?v=20260811.3"></script>
     <script src="mathjax_render_loop.js?v=20260811.2"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -106,7 +108,9 @@
             body.screen-fit-mode #ctrl-title,
             body.screen-fit-mode .qr-output-wrap,
             body.screen-fit-mode .ctrl-right > label,
-            body.screen-fit-mode .ctrl-right > #btn-print { display: none; }
+            body.screen-fit-mode .ctrl-right > #btn-print,
+            body.screen-fit-mode .ctrl-right > #btn-print-raster,
+            body.screen-fit-mode .ctrl-right > #print-output-hint { display: none; }
             body.screen-fit-mode .ctrl-right { display: flex; }
             body.screen-fit-mode .print-header-editor-panel {
                 position: fixed;
@@ -421,12 +425,15 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="safePrint()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
+            <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
+            <button id="btn-print-raster" onclick="safePrint('raster')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">프린터 최적화 인쇄</button>
+            <span id="print-output-hint" style="font-size:11px; color:#a1a1aa; white-space:nowrap;" aria-live="polite"></span>
         </div>
     </div>
 
     <div id="pdf-container"><iframe id="pdf-viewer" src=""></iframe></div>
     <div id="print-area"></div>
+    <div id="print-raster-area" aria-hidden="true"></div>
     <div id="staging" style="position:absolute; top:-9999px; left:0; visibility:hidden; width:83mm;"></div>
 
 <script>
@@ -2096,8 +2103,134 @@ async function renderBody() {
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
     updateScreenFitScale();
+    updatePrintOutputHint();
     registerBlueprintToOS(); // [3B-MIXED] 믹서 원본 문항 매핑 등록 — 비동기
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
+}
+
+const AP_PRINT_RASTER_DPI = 300;
+const AP_PRINT_CSS_DPI = 96;
+
+function updatePrintOutputHint() {
+    const hint = document.getElementById('print-output-hint');
+    const area = document.getElementById('print-area');
+    if (!hint || !area) return;
+    const pages = area.querySelectorAll('.page').length;
+    const math = area.querySelectorAll('.mjx-container').length;
+    const recommend = pages >= 8 || math >= 250;
+    hint.textContent = recommend
+        ? `프린터 최적화 권장 · ${pages}쪽 / 수식 ${math}개`
+        : `${pages}쪽 · 일반 인쇄 가능`;
+    hint.title = recommend
+        ? '페이지 전체를 300dpi 이미지로 평탄화해 PS 드라이버 해석량을 줄입니다.'
+        : '일반 벡터 인쇄는 화면 열람과 동일한 PDF 구조를 사용합니다.';
+}
+
+function waitForPrintImages(root, timeoutMs = 5000) {
+    const images = Array.from(root?.querySelectorAll('img') || []);
+    if (!images.length) return Promise.resolve();
+    const waitOne = async image => {
+        if (!image.complete) {
+            await Promise.race([
+                new Promise(resolve => {
+                    image.addEventListener('load', resolve, { once: true });
+                    image.addEventListener('error', resolve, { once: true });
+                }),
+                new Promise(resolve => setTimeout(resolve, timeoutMs))
+            ]);
+        }
+        if (typeof image.decode === 'function') {
+            await Promise.race([image.decode().catch(() => {}), new Promise(resolve => setTimeout(resolve, timeoutMs))]);
+        }
+    };
+    return Promise.all(images.map(waitOne));
+}
+
+function canvasToPngBlob(canvas) {
+    return new Promise((resolve, reject) => {
+        canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('페이지 이미지 변환에 실패했습니다.')), 'image/png');
+    });
+}
+
+// PS/PCL 드라이버가 페이지 안의 Type3 폰트·개별 텍스트 명령을 해석하지 않도록,
+// 실제 A4 페이지 한 장을 300dpi PNG 한 장으로 바꾼다. 원래 #print-area는 건드리지
+// 않으므로 화면 열람과 일반 벡터 PDF 경로는 그대로 보존된다.
+async function prepareRasterPrint() {
+    const source = document.getElementById('print-area');
+    const target = document.getElementById('print-raster-area');
+    if (!source || !target) throw new Error('평탄화 인쇄 영역을 찾을 수 없습니다.');
+    if (typeof window.html2canvas !== 'function') throw new Error('html2canvas 로컬 번들이 로드되지 않았습니다.');
+
+    const pages = Array.from(source.querySelectorAll('.page'));
+    if (!pages.length) throw new Error('평탄화할 페이지가 없습니다.');
+
+    target.replaceChildren();
+    await waitForPrintImages(source);
+    if (document.fonts?.ready) await document.fonts.ready;
+
+    const urls = [];
+    const startedAt = performance.now();
+    const scale = AP_PRINT_RASTER_DPI / AP_PRINT_CSS_DPI;
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, ...pages.map(page => Math.ceil(page.getBoundingClientRect().width)));
+
+    try {
+        for (let index = 0; index < pages.length; index += 1) {
+            const page = pages[index];
+            const canvas = await window.html2canvas(page, {
+                backgroundColor: '#ffffff',
+                scale,
+                width: Math.ceil(page.offsetWidth),
+                height: Math.ceil(page.offsetHeight),
+                windowWidth: viewportWidth,
+                windowHeight: Math.max(window.innerHeight || 0, Math.ceil(page.offsetHeight)),
+                useCORS: true,
+                allowTaint: false,
+                imageTimeout: 10000,
+                logging: false
+            });
+            const blob = await canvasToPngBlob(canvas);
+            const url = URL.createObjectURL(blob);
+            urls.push(url);
+
+            const image = document.createElement('img');
+            image.className = 'ap-print-raster-page';
+            image.alt = `시험지 ${index + 1}쪽`;
+            image.decoding = 'sync';
+            image.src = url;
+            target.appendChild(image);
+            if (typeof image.decode === 'function') await image.decode().catch(() => {});
+
+            // 다음 페이지로 넘어가기 전에 큰 캔버스의 backing store를 해제한다.
+            canvas.width = 1;
+            canvas.height = 1;
+        }
+    } catch (error) {
+        urls.forEach(url => URL.revokeObjectURL(url));
+        target.replaceChildren();
+        throw error;
+    }
+
+    const summary = {
+        mode: 'page-raster',
+        dpi: AP_PRINT_RASTER_DPI,
+        pageCount: pages.length,
+        elapsedMs: Number((performance.now() - startedAt).toFixed(1))
+    };
+    target.dataset.apPrintRasterMetrics = JSON.stringify(summary);
+    document.documentElement.classList.add('ap-print-raster-active');
+
+    let restored = false;
+    return {
+        summary,
+        restore() {
+            if (restored) return;
+            restored = true;
+            document.documentElement.classList.remove('ap-print-raster-active');
+            target.replaceChildren();
+            urls.forEach(url => URL.revokeObjectURL(url));
+            delete target.dataset.apPrintRasterMetrics;
+        }
+    };
 }
 
 // PNG/WebP의 투명도는 제거하되 원본 해상도 전체를 복제하지 않는다. 화면의 실제 인쇄 크기를
@@ -2114,57 +2247,99 @@ async function flattenPrintImagesForOpaquePrint() {
 // 준비 안 된 상태에서 인쇄하면 미리보기가 미완성인 채 잡이 생성돼 스풀이 멈춘다.
 let printPending = false;
 
-async function safePrint() {
+function setPrintButtonsBusy(busy, mode) {
+    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster')].filter(Boolean);
+    buttons.forEach(button => {
+        if (!button.dataset.apPrintLabel) button.dataset.apPrintLabel = button.textContent;
+        button.disabled = busy;
+        button.style.opacity = busy ? '0.65' : '';
+        button.style.cursor = busy ? 'wait' : 'pointer';
+    });
+    if (busy) {
+        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : document.getElementById('btn-print');
+        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : '인쇄 준비 중…';
+    } else {
+        buttons.forEach(button => { button.textContent = button.dataset.apPrintLabel || button.textContent; });
+    }
+}
+
+async function safePrint(mode = 'vector') {
+    mode = mode === 'raster' ? 'raster' : 'vector';
     if (printPending) return;
     printPending = true;
-    const btn = document.getElementById('btn-print');
-    const label = btn ? btn.textContent : '';
-    if (btn) { btn.disabled = true; btn.textContent = '인쇄 준비 중…'; }
+    setPrintButtonsBusy(true, mode);
     const printStartedAt = performance.now();
     let optimizedImages = { summary: {}, restore() {} };
+    let rasterPrint = { summary: {}, restore() {} };
+    let preparationError = null;
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
         await Promise.race([window.__AP_RENDER_READY__, limit(20000)]);
         if (document.fonts?.ready) await Promise.race([document.fonts.ready, limit(5000)]);
-        const pending = Array.from(document.querySelectorAll('#print-area img')).filter(img => !img.complete);
-        if (pending.length) {
-            await Promise.race([
-                Promise.all(pending.map(img => new Promise(resolve => {
-                    img.addEventListener('load', resolve, { once: true });
-                    img.addEventListener('error', resolve, { once: true });
-                }))),
-                limit(5000)
-            ]);
-        }
+        await Promise.race([waitForPrintImages(document.getElementById('print-area')), limit(5000)]);
         if (rendererMode() === 'legacy' && window.MathJax?.typesetPromise) {
             await Promise.race([typesetMath('print-preflight', undefined), limit(5000)]);
         } else if (window.APRenderLoop?.unrenderedMathCount(document.getElementById('print-area')) > 0) {
             await Promise.race([typesetMath('print-recovery', [document.getElementById('print-area')]), limit(5000)]);
         }
-        optimizedImages = await flattenPrintImagesForOpaquePrint();
+        if (mode === 'raster') rasterPrint = await prepareRasterPrint();
+        else optimizedImages = await flattenPrintImagesForOpaquePrint();
         // requestAnimationFrame은 탭이 백그라운드/스로틀 상태면 안 풀려 "준비 중"에서 멈출 수 있다.
         // setTimeout은 항상 발화하므로 rAF 대신 짧게 한 틱만 양보한다.
         await limit(60);
     } catch (error) {
-        console.warn('[engine] 인쇄 준비 중 경고 — 그대로 인쇄를 진행합니다.', error);
+        preparationError = error;
+        console.warn('[engine] 인쇄 준비 중 경고', error);
     }
-    if (btn) { btn.disabled = false; btn.textContent = label; }
-    printPending = false;
+
     const printParams = new URLSearchParams(window.location.search);
     const printMetrics = {
         readyToPrintMs: Number((performance.now() - printStartedAt).toFixed(1)),
+        mode,
         imageOptimization: optimizedImages.summary || {},
+        pageRasterization: rasterPrint.summary || {},
         dryRun: printParams.get('printDryRun') === '1'
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
-    if (printMetrics.dryRun) {
+
+    if (preparationError && mode === 'raster') {
+        rasterPrint.restore();
         optimizedImages.restore();
+        printPending = false;
+        setPrintButtonsBusy(false, mode);
+        window.alert('프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.\n\n' + (preparationError.message || preparationError));
         return;
     }
+
+    if (printMetrics.dryRun) {
+        rasterPrint.restore();
+        optimizedImages.restore();
+        printPending = false;
+        setPrintButtonsBusy(false, mode);
+        return;
+    }
+
+    let cleaned = false;
+    let fallbackTimer = null;
+    const cleanup = () => {
+        if (cleaned) return;
+        cleaned = true;
+        if (fallbackTimer) clearTimeout(fallbackTimer);
+        window.removeEventListener('afterprint', cleanup);
+        rasterPrint.restore();
+        optimizedImages.restore();
+        printPending = false;
+        setPrintButtonsBusy(false, mode);
+    };
+    window.addEventListener('afterprint', cleanup, { once: true });
     try {
         window.print();
-    } finally {
-        optimizedImages.restore();
+        // 일부 구형 브라우저는 afterprint을 누락하므로, 대화상자가 닫힌 뒤 최대 2분 내에
+        // 임시 이미지와 object URL을 정리한다. 정상 브라우저에서는 afterprint이 먼저 정리한다.
+        fallbackTimer = setTimeout(cleanup, 120000);
+    } catch (error) {
+        cleanup();
+        throw error;
     }
 }
 window.safePrint = safePrint;
