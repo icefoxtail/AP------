@@ -148,6 +148,12 @@
 
         const viewportWidth = Math.max(global.document.documentElement.clientWidth || 0, ...pages.map(page => Math.ceil(page.getBoundingClientRect().width)));
         const writer = createWriter();
+        // 일부 복합기 PCL 에뮬레이션은 ESC&l1S보다 PJL 작업 설정을 우선한다.
+        // 양면을 PJL과 PCL 양쪽에 지정해 Windows RAW 경로에서도 장치 설정을 명시한다.
+        writer.ascii('\x1b%-12345X');
+        writer.ascii('@PJL JOB NAME="AP-MATH-NATIVE"\r\n');
+        writer.ascii(duplex ? '@PJL SET DUPLEX=ON\r\n@PJL SET BINDING=LONGEDGE\r\n' : '@PJL SET DUPLEX=OFF\r\n');
+        writer.ascii('@PJL ENTER LANGUAGE=PCL\r\n');
         writer.ascii('\x1bE');
         // PCL duplex: 1 = vertical/long-edge binding, 2 = horizontal/short-edge binding.
         writer.ascii(duplex ? '\x1b&l1S' : '\x1b&l0S');
@@ -176,6 +182,8 @@
             options.onProgress?.({ index: index + 1, total: pages.length, elapsedMs: performance.now() - startedAt });
         }
 
+        writer.ascii('\x1b%-12345X');
+        writer.ascii('@PJL EOJ\r\n');
         const payload = writer.finish();
         // Fetch 표준 헤더는 ISO-8859-1 범위만 허용하므로 한국어 제목을 그대로 넣지 않는다.
         const documentName = asciiHeader(options.documentName || global.document.title, 'AP-Math-Native-PCL-Print');
