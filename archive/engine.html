@@ -400,7 +400,7 @@
             </div>
             <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
             <button id="btn-print-raster" onclick="safePrint('raster')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">프린터 최적화 인쇄</button>
-            <button id="btn-print-native" onclick="safePrint('native')" style="padding:8px 16px; border-radius:6px; border:none; background:#b45309; color:white; font-weight:bold; cursor:pointer;">네이티브 PCL 시험 인쇄</button>
+            <button id="btn-print-native" onclick="safePrint('native')" style="padding:8px 16px; border-radius:6px; border:none; background:#b45309; color:white; font-weight:bold; cursor:pointer;">네이티브 PCL 양면 시험 인쇄</button>
             <span id="print-output-hint" style="font-size:11px; color:#a1a1aa; white-space:nowrap;" aria-live="polite"></span>
         </div>
     </div>
@@ -2275,6 +2275,7 @@ async function safePrint(mode = 'vector') {
                 printer: window.APNativePrint.DEFAULT_PRINTER,
                 dpi: 300,
                 threshold: 220,
+                duplex: true,
                 documentName: document.title,
                 onProgress: progress => {
                     const button = document.getElementById('btn-print-native');
