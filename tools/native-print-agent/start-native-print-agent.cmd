@@ -7,7 +7,7 @@ if not exist "%CSC%" (
   echo .NET Framework C# compiler was not found.
   exit /b 1
 )
-"%CSC%" /nologo /target:exe /out:"%AGENT_DIR%native-print-agent.exe" "%AGENT_DIR%Program.cs"
+"%CSC%" /nologo /target:exe /reference:System.Drawing.dll /out:"%AGENT_DIR%native-print-agent.exe" "%AGENT_DIR%Program.cs"
 if errorlevel 1 exit /b 1
 "%AGENT_DIR%native-print-agent.exe" --printer "SINDOH N500 Series PCL"
 endlocal

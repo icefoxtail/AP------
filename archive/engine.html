@@ -69,6 +69,7 @@
             body.screen-fit-mode #btn-print,
             body.screen-fit-mode #btn-print-raster,
             body.screen-fit-mode #btn-print-native,
+            body.screen-fit-mode #btn-print-gdi,
             body.screen-fit-mode #print-output-hint,
             body.screen-fit-mode .qr-output-wrap { display: none; }
             body.screen-fit-mode .print-header-editor-panel {
@@ -86,6 +87,7 @@
         body.preview-mode #btn-print,
         body.preview-mode #btn-print-raster,
         body.preview-mode #btn-print-native,
+        body.preview-mode #btn-print-gdi,
         body.preview-mode #print-output-hint,
         body.preview-mode #qpp-display,
         body.preview-mode .qr-output-wrap,
@@ -401,6 +403,7 @@
             <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
             <button id="btn-print-raster" onclick="safePrint('raster')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">프린터 최적화 인쇄</button>
             <button id="btn-print-native" onclick="safePrint('native')" style="padding:8px 16px; border-radius:6px; border:none; background:#b45309; color:white; font-weight:bold; cursor:pointer;">네이티브 PCL 양면 시험 인쇄</button>
+            <button id="btn-print-gdi" onclick="safePrint('gdi')" style="padding:8px 16px; border-radius:6px; border:none; background:#2563eb; color:white; font-weight:bold; cursor:pointer;">Windows 드라이버 양면 테스트</button>
             <span id="print-output-hint" style="font-size:11px; color:#a1a1aa; white-space:nowrap;" aria-live="polite"></span>
         </div>
     </div>
@@ -2234,7 +2237,7 @@ async function flattenPrintImagesForOpaquePrint() {
 let printPending = false;
 
 function setPrintButtonsBusy(busy, mode) {
-    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster'), document.getElementById('btn-print-native')].filter(Boolean);
+    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster'), document.getElementById('btn-print-native'), document.getElementById('btn-print-gdi')].filter(Boolean);
     buttons.forEach(button => {
         if (!button.dataset.apPrintLabel) button.dataset.apPrintLabel = button.textContent;
         button.disabled = busy;
@@ -2242,15 +2245,15 @@ function setPrintButtonsBusy(busy, mode) {
         button.style.cursor = busy ? 'wait' : 'pointer';
     });
     if (busy) {
-        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : document.getElementById('btn-print');
-        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : '인쇄 준비 중…';
+        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : mode === 'gdi' ? document.getElementById('btn-print-gdi') : document.getElementById('btn-print');
+        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : mode === 'gdi' ? 'Windows 드라이버 준비 중…' : '인쇄 준비 중…';
     } else {
         buttons.forEach(button => { button.textContent = button.dataset.apPrintLabel || button.textContent; });
     }
 }
 
 async function safePrint(mode = 'vector') {
-    mode = mode === 'raster' || mode === 'native' ? mode : 'vector';
+    mode = mode === 'raster' || mode === 'native' || mode === 'gdi' ? mode : 'vector';
     if (printPending) return;
     printPending = true;
     setPrintButtonsBusy(true, mode);
@@ -2258,6 +2261,7 @@ async function safePrint(mode = 'vector') {
     let optimizedImages = { summary: {}, restore() {} };
     let rasterPrint = { summary: {}, restore() {} };
     let nativePrint = { summary: {}, restore() {} };
+    let gdiPrint = { summary: {}, restore() {} };
     let preparationError = null;
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -2282,6 +2286,17 @@ async function safePrint(mode = 'vector') {
                     if (button) button.textContent = `PCL 페이지 변환 중… ${progress.index}/${progress.total}`;
                 }
             }) };
+        } else if (mode === 'gdi') {
+            gdiPrint = { summary: await window.APNativePrint.printGdi(document.getElementById('print-area'), {
+                printer: window.APNativePrint.DEFAULT_PRINTER,
+                dpi: 300,
+                duplex: true,
+                documentName: document.title,
+                onProgress: progress => {
+                    const button = document.getElementById('btn-print-gdi');
+                    if (button) button.textContent = `GDI 페이지 변환 중… ${progress.index}/${progress.total}`;
+                }
+            }) };
         } else optimizedImages = await flattenPrintImagesForOpaquePrint();
         await limit(60);
     } catch (error) {
@@ -2296,17 +2311,20 @@ async function safePrint(mode = 'vector') {
         imageOptimization: optimizedImages.summary || {},
         pageRasterization: rasterPrint.summary || {},
         nativePrint: nativePrint.summary || {},
+        gdiPrint: gdiPrint.summary || {},
         dryRun: printParams.get('printDryRun') === '1'
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
 
-    if (preparationError && (mode === 'raster' || mode === 'native')) {
+    if (preparationError && (mode === 'raster' || mode === 'native' || mode === 'gdi')) {
         rasterPrint.restore();
         optimizedImages.restore();
         printPending = false;
         setPrintButtonsBusy(false, mode);
         const message = mode === 'native'
             ? '네이티브 PCL 인쇄에 실패했습니다. 보조 프로그램이 실행 중이고 SINDOH N500 Series PCL 큐가 있는지 확인해 주세요.'
+            : mode === 'gdi'
+            ? 'Windows 드라이버 양면 인쇄에 실패했습니다. 보조 프로그램과 SINDOH N500 Series PCL 드라이버를 확인해 주세요.'
             : '프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.';
         window.alert(message + '\n\n' + (preparationError.message || preparationError));
         return;
@@ -2324,6 +2342,15 @@ async function safePrint(mode = 'vector') {
         const hint = document.getElementById('print-output-hint');
         if (hint && nativePrint.summary) {
             hint.textContent = `네이티브 PCL 전송 완료 · ${nativePrint.summary.pageCount}쪽 / ${Math.round(nativePrint.summary.elapsedMs)}ms`;
+        }
+        printPending = false;
+        setPrintButtonsBusy(false, mode);
+        return;
+    }
+    if (mode === 'gdi') {
+        const hint = document.getElementById('print-output-hint');
+        if (hint && gdiPrint.summary) {
+            hint.textContent = `Windows 드라이버 양면 전송 완료 · ${gdiPrint.summary.pageCount}쪽 / ${Math.round(gdiPrint.summary.elapsedMs)}ms`;
         }
         printPending = false;
         setPrintButtonsBusy(false, mode);

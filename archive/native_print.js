@@ -45,6 +45,19 @@
         };
     }
 
+    function writeUint32(target, offset, value) {
+        target[offset] = value & 0xff;
+        target[offset + 1] = (value >>> 8) & 0xff;
+        target[offset + 2] = (value >>> 16) & 0xff;
+        target[offset + 3] = (value >>> 24) & 0xff;
+    }
+
+    function canvasToBlob(canvas, type, quality) {
+        return new Promise((resolve, reject) => {
+            canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('페이지 이미지 변환에 실패했습니다.')), type, quality);
+        });
+    }
+
     function pixelLuma(data, offset) {
         const alpha = data[offset + 3] / 255;
         if (alpha >= 0.999) {
@@ -213,5 +226,99 @@
         };
     }
 
-    global.APNativePrint = { DEFAULT_ENDPOINT, DEFAULT_PRINTER, health, print, createWriter, writeRasterPage };
+    async function printGdi(root, options = {}) {
+        const endpoint = String(options.endpoint || DEFAULT_ENDPOINT).replace(/\/$/, '');
+        const printer = String(options.printer || DEFAULT_PRINTER);
+        const dpi = finitePositive(options.dpi, DEFAULT_DPI);
+        const duplex = options.duplex !== false;
+        const pageRoot = root || global.document?.getElementById('print-area');
+        if (!pageRoot) throw new Error('Windows 드라이버 인쇄 영역을 찾을 수 없습니다.');
+        if (typeof global.html2canvas !== 'function') throw new Error('html2canvas 로컬 번들이 로드되지 않았습니다.');
+
+        const agent = await health(endpoint);
+        if (agent.printer && agent.printer.toLowerCase() !== printer.toLowerCase()) {
+            throw new Error('네이티브 보조 프로그램의 프린터가 일치하지 않습니다.');
+        }
+
+        const pages = Array.from(pageRoot.querySelectorAll('.page'));
+        if (!pages.length) throw new Error('Windows 드라이버 인쇄할 페이지가 없습니다.');
+        await waitForImages(pageRoot);
+        if (global.document.fonts?.ready) await global.document.fonts.ready;
+
+        const viewportWidth = Math.max(global.document.documentElement.clientWidth || 0, ...pages.map(page => Math.ceil(page.getBoundingClientRect().width)));
+        const pageImages = [];
+        const startedAt = performance.now();
+        const pageTimes = [];
+
+        for (let index = 0; index < pages.length; index += 1) {
+            const pageStartedAt = performance.now();
+            const page = pages[index];
+            const canvas = await global.html2canvas(page, {
+                backgroundColor: '#ffffff',
+                scale: dpi / 96,
+                width: Math.ceil(page.offsetWidth),
+                height: Math.ceil(page.offsetHeight),
+                windowWidth: viewportWidth,
+                windowHeight: Math.max(global.innerHeight || 0, Math.ceil(page.offsetHeight)),
+                useCORS: true,
+                allowTaint: false,
+                imageTimeout: 10000,
+                logging: false
+            });
+            // PNG keeps the same stable, lossless output that was already tested
+            // successfully, while the Windows driver handles page placement.
+            const blob = await canvasToBlob(canvas, 'image/png');
+            pageImages.push(new Uint8Array(await blob.arrayBuffer()));
+            pageTimes.push(Number((performance.now() - pageStartedAt).toFixed(1)));
+            canvas.width = 1;
+            canvas.height = 1;
+            options.onProgress?.({ index: index + 1, total: pages.length, elapsedMs: performance.now() - startedAt });
+        }
+
+        const header = new Uint8Array(16);
+        header.set(encoder.encode('APGDI001'), 0);
+        writeUint32(header, 8, Math.round(dpi));
+        writeUint32(header, 12, (pageImages.length | (duplex ? 0x80000000 : 0)) >>> 0);
+        const chunks = [header];
+        let totalBytes = header.length;
+        pageImages.forEach(image => {
+            const length = new Uint8Array(4);
+            writeUint32(length, 0, image.length);
+            chunks.push(length, image);
+            totalBytes += length.length + image.length;
+        });
+        const payload = new Uint8Array(totalBytes);
+        let offset = 0;
+        chunks.forEach(chunk => {
+            payload.set(chunk, offset);
+            offset += chunk.length;
+        });
+
+        const documentName = asciiHeader(options.documentName || global.document.title, 'AP-Math-GDI-Print');
+        const response = await fetchWithTimeout(endpoint + '/print-gdi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/octet-stream',
+                'X-AP-Printer': printer,
+                'X-AP-Document-Name': documentName
+            },
+            body: payload
+        }, 120000);
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) throw new Error(result.error || `Windows 드라이버 인쇄 전송 실패 (${response.status})`);
+
+        return {
+            mode: 'native-gdi-devmode-png',
+            printer,
+            dpi,
+            duplex,
+            pageCount: pages.length,
+            bytes: payload.length,
+            elapsedMs: Number((performance.now() - startedAt).toFixed(1)),
+            pageTimes,
+            sendElapsedMs: result.sendElapsedMs
+        };
+    }
+
+    global.APNativePrint = { DEFAULT_ENDPOINT, DEFAULT_PRINTER, health, print, printGdi, createWriter, writeRasterPage };
 })(typeof window !== 'undefined' ? window : globalThis);
