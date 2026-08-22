@@ -27,6 +27,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
+    <script src="native_print.js?v=20260822.1"></script>
     <script src="print_image_optimizer.js?v=20260811.3"></script>
     <script src="mathjax_render_loop.js?v=20260811.2"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -67,6 +68,7 @@
             body.screen-fit-mode #ctrl-title,
             body.screen-fit-mode #btn-print,
             body.screen-fit-mode #btn-print-raster,
+            body.screen-fit-mode #btn-print-native,
             body.screen-fit-mode #print-output-hint,
             body.screen-fit-mode .qr-output-wrap { display: none; }
             body.screen-fit-mode .print-header-editor-panel {
@@ -83,6 +85,7 @@
         body.preview-mode #ctrl-title,
         body.preview-mode #btn-print,
         body.preview-mode #btn-print-raster,
+        body.preview-mode #btn-print-native,
         body.preview-mode #print-output-hint,
         body.preview-mode #qpp-display,
         body.preview-mode .qr-output-wrap,
@@ -397,6 +400,7 @@
             </div>
             <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
             <button id="btn-print-raster" onclick="safePrint('raster')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">프린터 최적화 인쇄</button>
+            <button id="btn-print-native" onclick="safePrint('native')" style="padding:8px 16px; border-radius:6px; border:none; background:#b45309; color:white; font-weight:bold; cursor:pointer;">네이티브 PCL 시험 인쇄</button>
             <span id="print-output-hint" style="font-size:11px; color:#a1a1aa; white-space:nowrap;" aria-live="polite"></span>
         </div>
     </div>
@@ -2230,7 +2234,7 @@ async function flattenPrintImagesForOpaquePrint() {
 let printPending = false;
 
 function setPrintButtonsBusy(busy, mode) {
-    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster')].filter(Boolean);
+    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster'), document.getElementById('btn-print-native')].filter(Boolean);
     buttons.forEach(button => {
         if (!button.dataset.apPrintLabel) button.dataset.apPrintLabel = button.textContent;
         button.disabled = busy;
@@ -2238,21 +2242,22 @@ function setPrintButtonsBusy(busy, mode) {
         button.style.cursor = busy ? 'wait' : 'pointer';
     });
     if (busy) {
-        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : document.getElementById('btn-print');
-        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : '인쇄 준비 중…';
+        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : document.getElementById('btn-print');
+        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : '인쇄 준비 중…';
     } else {
         buttons.forEach(button => { button.textContent = button.dataset.apPrintLabel || button.textContent; });
     }
 }
 
 async function safePrint(mode = 'vector') {
-    mode = mode === 'raster' ? 'raster' : 'vector';
+    mode = mode === 'raster' || mode === 'native' ? mode : 'vector';
     if (printPending) return;
     printPending = true;
     setPrintButtonsBusy(true, mode);
     const printStartedAt = performance.now();
     let optimizedImages = { summary: {}, restore() {} };
     let rasterPrint = { summary: {}, restore() {} };
+    let nativePrint = { summary: {}, restore() {} };
     let preparationError = null;
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -2265,7 +2270,18 @@ async function safePrint(mode = 'vector') {
             await Promise.race([typesetMath('print-recovery', [document.getElementById('print-area')]), limit(5000)]);
         }
         if (mode === 'raster') rasterPrint = await prepareRasterPrint();
-        else optimizedImages = await flattenPrintImagesForOpaquePrint();
+        else if (mode === 'native') {
+            nativePrint = { summary: await window.APNativePrint.print(document.getElementById('print-area'), {
+                printer: window.APNativePrint.DEFAULT_PRINTER,
+                dpi: 300,
+                threshold: 220,
+                documentName: document.title,
+                onProgress: progress => {
+                    const button = document.getElementById('btn-print-native');
+                    if (button) button.textContent = `PCL 페이지 변환 중… ${progress.index}/${progress.total}`;
+                }
+            }) };
+        } else optimizedImages = await flattenPrintImagesForOpaquePrint();
         await limit(60);
     } catch (error) {
         preparationError = error;
@@ -2278,22 +2294,36 @@ async function safePrint(mode = 'vector') {
         mode,
         imageOptimization: optimizedImages.summary || {},
         pageRasterization: rasterPrint.summary || {},
+        nativePrint: nativePrint.summary || {},
         dryRun: printParams.get('printDryRun') === '1'
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
 
-    if (preparationError && mode === 'raster') {
+    if (preparationError && (mode === 'raster' || mode === 'native')) {
         rasterPrint.restore();
         optimizedImages.restore();
         printPending = false;
         setPrintButtonsBusy(false, mode);
-        window.alert('프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.\n\n' + (preparationError.message || preparationError));
+        const message = mode === 'native'
+            ? '네이티브 PCL 인쇄에 실패했습니다. 보조 프로그램이 실행 중이고 SINDOH N500 Series PCL 큐가 있는지 확인해 주세요.'
+            : '프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.';
+        window.alert(message + '\n\n' + (preparationError.message || preparationError));
         return;
     }
 
     if (printMetrics.dryRun) {
         rasterPrint.restore();
         optimizedImages.restore();
+        printPending = false;
+        setPrintButtonsBusy(false, mode);
+        return;
+    }
+
+    if (mode === 'native') {
+        const hint = document.getElementById('print-output-hint');
+        if (hint && nativePrint.summary) {
+            hint.textContent = `네이티브 PCL 전송 완료 · ${nativePrint.summary.pageCount}쪽 / ${Math.round(nativePrint.summary.elapsedMs)}ms`;
+        }
         printPending = false;
         setPrintButtonsBusy(false, mode);
         return;
