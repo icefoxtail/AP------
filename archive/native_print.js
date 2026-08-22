@@ -12,6 +12,14 @@
         return Number.isFinite(number) && number > 0 ? number : fallback;
     }
 
+    function asciiHeader(value, fallback) {
+        const sanitized = String(value || '')
+            .replace(/[^\x20-\x7E]/g, '_')
+            .slice(0, 120)
+            .trim();
+        return sanitized || fallback;
+    }
+
     function createWriter() {
         const chunks = [];
         let total = 0;
@@ -166,7 +174,8 @@
         }
 
         const payload = writer.finish();
-        const documentName = String(options.documentName || global.document.title || 'AP Math Native PCL Print');
+        // Fetch 표준 헤더는 ISO-8859-1 범위만 허용하므로 한국어 제목을 그대로 넣지 않는다.
+        const documentName = asciiHeader(options.documentName || global.document.title, 'AP-Math-Native-PCL-Print');
         const response = await fetchWithTimeout(endpoint + '/print', {
             method: 'POST',
             headers: {
