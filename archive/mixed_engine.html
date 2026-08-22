@@ -2152,8 +2152,33 @@ function canvasToPngBlob(canvas) {
     });
 }
 
+function grayscaleCanvasInPlace(canvas) {
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) throw new Error('그레이스케일 변환용 캔버스를 만들 수 없습니다.');
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+    for (let index = 0; index < pixels.data.length; index += 4) {
+        const gray = Math.round(
+            pixels.data[index] * 0.299
+            + pixels.data[index + 1] * 0.587
+            + pixels.data[index + 2] * 0.114
+        );
+        pixels.data[index] = gray;
+        pixels.data[index + 1] = gray;
+        pixels.data[index + 2] = gray;
+        pixels.data[index + 3] = 255;
+    }
+    context.putImageData(pixels, 0, 0);
+}
+
+function canvasToGrayscaleJpegBlob(canvas, quality = 0.92) {
+    grayscaleCanvasInPlace(canvas);
+    return new Promise((resolve, reject) => {
+        canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('그레이스케일 JPEG 변환에 실패했습니다.')), 'image/jpeg', quality);
+    });
+}
+
 // PS/PCL 드라이버가 페이지 안의 Type3 폰트·개별 텍스트 명령을 해석하지 않도록,
-// 실제 A4 페이지 한 장을 300dpi PNG 한 장으로 바꾼다. 원래 #print-area는 건드리지
+// 실제 A4 페이지 한 장을 300dpi 이미지 한 장으로 바꾼다. 원래 #print-area는 건드리지
 // 않으므로 화면 열람과 일반 벡터 PDF 경로는 그대로 보존된다.
 async function prepareRasterPrint() {
     const source = document.getElementById('print-area');
@@ -2172,6 +2197,8 @@ async function prepareRasterPrint() {
     const startedAt = performance.now();
     const scale = AP_PRINT_RASTER_DPI / AP_PRINT_CSS_DPI;
     const viewportWidth = Math.max(document.documentElement.clientWidth || 0, ...pages.map(page => Math.ceil(page.getBoundingClientRect().width)));
+    const printParams = new URLSearchParams(window.location.search);
+    const usePngFallback = printParams.get('rasterFormat') === 'png';
 
     try {
         for (let index = 0; index < pages.length; index += 1) {
@@ -2188,7 +2215,9 @@ async function prepareRasterPrint() {
                 imageTimeout: 10000,
                 logging: false
             });
-            const blob = await canvasToPngBlob(canvas);
+            const blob = usePngFallback
+                ? await canvasToPngBlob(canvas)
+                : await canvasToGrayscaleJpegBlob(canvas, 0.92);
             const url = URL.createObjectURL(blob);
             urls.push(url);
 
@@ -2211,7 +2240,9 @@ async function prepareRasterPrint() {
     }
 
     const summary = {
-        mode: 'page-raster',
+        mode: usePngFallback ? 'page-raster-png' : 'page-grayscale-jpeg',
+        format: usePngFallback ? 'png' : 'jpeg',
+        quality: usePngFallback ? null : 0.92,
         dpi: AP_PRINT_RASTER_DPI,
         pageCount: pages.length,
         elapsedMs: Number((performance.now() - startedAt).toFixed(1))
