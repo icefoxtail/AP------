@@ -131,6 +131,7 @@
         const printer = String(options.printer || DEFAULT_PRINTER);
         const dpi = finitePositive(options.dpi, DEFAULT_DPI);
         const threshold = Math.max(1, Math.min(254, Number(options.threshold) || DEFAULT_THRESHOLD));
+        const duplex = options.duplex !== false;
         const pageRoot = root || global.document?.getElementById('print-area');
         if (!pageRoot) throw new Error('네이티브 인쇄 영역을 찾을 수 없습니다.');
         if (typeof global.html2canvas !== 'function') throw new Error('html2canvas 로컬 번들이 로드되지 않았습니다.');
@@ -148,6 +149,8 @@
         const viewportWidth = Math.max(global.document.documentElement.clientWidth || 0, ...pages.map(page => Math.ceil(page.getBoundingClientRect().width)));
         const writer = createWriter();
         writer.ascii('\x1bE');
+        // PCL duplex: 1 = vertical/long-edge binding, 2 = horizontal/short-edge binding.
+        writer.ascii(duplex ? '\x1b&l1S' : '\x1b&l0S');
         const startedAt = performance.now();
         const pageTimes = [];
 
@@ -193,6 +196,7 @@
             printer,
             dpi,
             threshold,
+            duplex,
             pageCount: pages.length,
             bytes: payload.length,
             elapsedMs: Number((performance.now() - startedAt).toFixed(1)),

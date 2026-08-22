@@ -2,7 +2,8 @@
 
 This is a local test bridge for the archive's native print button. It listens only on
 `127.0.0.1:43191`, accepts a PCL 5 monochrome raster stream, and submits it to the
-configured Windows printer queue as a RAW job.
+configured Windows printer queue as a RAW job. The archive's native test button
+requests PCL duplex printing with vertical/long-edge binding.
 
 ## Run
 
