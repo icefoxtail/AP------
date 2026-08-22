@@ -35,6 +35,7 @@
     <script src="print_image_optimizer.js?v=20260811.3"></script>
     <script src="mathjax_render_loop.js?v=20260811.2"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
+    <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -112,6 +113,7 @@
             body.screen-fit-mode .ctrl-right > #btn-print,
             body.screen-fit-mode .ctrl-right > #btn-print-raster,
             body.screen-fit-mode .ctrl-right > #btn-print-native,
+            body.screen-fit-mode .ctrl-right > #btn-print-gdi,
             body.screen-fit-mode .ctrl-right > #print-output-hint { display: none; }
             body.screen-fit-mode .ctrl-right { display: flex; }
             body.screen-fit-mode .print-header-editor-panel {
@@ -430,6 +432,7 @@
             <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
             <button id="btn-print-raster" onclick="safePrint('raster')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">프린터 최적화 인쇄</button>
             <button id="btn-print-native" onclick="safePrint('native')" style="padding:8px 16px; border-radius:6px; border:none; background:#b45309; color:white; font-weight:bold; cursor:pointer;">네이티브 PCL 양면 시험 인쇄</button>
+            <button id="btn-print-gdi" onclick="safePrint('gdi')" style="padding:8px 16px; border-radius:6px; border:none; background:#2563eb; color:white; font-weight:bold; cursor:pointer;">Windows 드라이버 양면 테스트</button>
             <span id="print-output-hint" style="font-size:11px; color:#a1a1aa; white-space:nowrap;" aria-live="polite"></span>
         </div>
     </div>
@@ -1012,7 +1015,39 @@ function getMixedQuestionSourceFile(q) {
     return q?._sourceFile || q?.source_archive_file || q?.sourceArchiveFile || '';
 }
 
+function getMixedQuestionIdentity(q) {
+    const direct = q?._sourceQuestionUid || q?.source_question_uid || q?.sourceQuestionUid || q?.questionUid || '';
+    if (direct) return direct;
+    const resolver = window.resolveQuestionIdentityReference;
+    if (typeof resolver !== 'function') return '';
+    const result = resolver({
+        sourceArchiveFile: getMixedQuestionSourceFile(q),
+        sourceOrdinal: q?._sourceQuestionOrdinal || q?.source_question_ordinal || q?.sourceQuestionOrdinal || q?.sourceOrdinal,
+        sourceQuestionNo: q?._sourceQuestionNo || q?.source_question_no || q?.sourceQuestionNo || q?.id
+    });
+    return String(result?.status || '').startsWith('RESOLVED_') ? result.questionUid : '';
+}
+
+function getMixedQuestionSourceOrdinal(q) {
+    const raw = q?._sourceQuestionOrdinal || q?.source_question_ordinal || q?.sourceQuestionOrdinal || q?.sourceOrdinal;
+    const ordinal = Number(raw);
+    if (Number.isInteger(ordinal) && ordinal > 0) return ordinal;
+    const resolver = window.resolveQuestionIdentityReference;
+    if (typeof resolver !== 'function') return null;
+    const result = resolver({
+        questionUid: getMixedQuestionIdentity(q),
+        sourceArchiveFile: getMixedQuestionSourceFile(q),
+        sourceQuestionNo: q?._sourceQuestionNo || q?.source_question_no || q?.sourceQuestionNo || q?.id
+    });
+    return String(result?.status || '').startsWith('RESOLVED_') ? result.sourceOrdinal : null;
+}
+
 function getMixedQuestionSourceNo(q, fallbackNo) {
+    const resolver = window.resolveQuestionIdentityReference;
+    if (typeof resolver === 'function') {
+        const result = resolver({ questionUid: getMixedQuestionIdentity(q) });
+        if (String(result?.status || '').startsWith('RESOLVED_')) return Number(result.sourceQuestionNo) || fallbackNo;
+    }
     const raw = q?._sourceQuestionNo || q?.source_question_no || q?.sourceQuestionNo || q?._originalIndex || q?.originalIndex || q?.id || fallbackNo;
     const n = parseInt(raw, 10);
     return Number.isFinite(n) && n > 0 ? n : fallbackNo;
@@ -1028,6 +1063,8 @@ async function registerBlueprintToOS() {
     const sig = archiveFile + '|' + AppState.data.map((q, i) => [
         i + 1,
         getMixedQuestionSourceFile(q),
+        getMixedQuestionIdentity(q),
+        getMixedQuestionSourceOrdinal(q) || '',
         getMixedQuestionSourceNo(q, i + 1),
         q?.standardUnitKey || ''
     ].join(':')).join(',');
@@ -1048,11 +1085,15 @@ async function registerBlueprintToOS() {
             return null;
         }
         const sourceNo = getMixedQuestionSourceNo(q, fallbackNo);
+        const sourceUid = getMixedQuestionIdentity(q);
+        const sourceOrdinal = getMixedQuestionSourceOrdinal(q);
         const unitKey = q?.standardUnitKey || '';
         return {
             question_no: fallbackNo,
             source_archive_file: sourceFile,
             source_question_no: sourceNo,
+            source_question_uid: sourceUid || null,
+            source_question_ordinal: sourceOrdinal || null,
             standard_unit_key: unitKey,
             standard_unit: q?.standardUnit || '',
             standard_course: q?.standardCourse || '',
@@ -2282,7 +2323,7 @@ async function flattenPrintImagesForOpaquePrint() {
 let printPending = false;
 
 function setPrintButtonsBusy(busy, mode) {
-    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster'), document.getElementById('btn-print-native')].filter(Boolean);
+    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster'), document.getElementById('btn-print-native'), document.getElementById('btn-print-gdi')].filter(Boolean);
     buttons.forEach(button => {
         if (!button.dataset.apPrintLabel) button.dataset.apPrintLabel = button.textContent;
         button.disabled = busy;
@@ -2290,15 +2331,15 @@ function setPrintButtonsBusy(busy, mode) {
         button.style.cursor = busy ? 'wait' : 'pointer';
     });
     if (busy) {
-        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : document.getElementById('btn-print');
-        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : '인쇄 준비 중…';
+        const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : mode === 'gdi' ? document.getElementById('btn-print-gdi') : document.getElementById('btn-print');
+        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : mode === 'gdi' ? 'Windows 드라이버 준비 중…' : '인쇄 준비 중…';
     } else {
         buttons.forEach(button => { button.textContent = button.dataset.apPrintLabel || button.textContent; });
     }
 }
 
 async function safePrint(mode = 'vector') {
-    mode = mode === 'raster' || mode === 'native' ? mode : 'vector';
+    mode = mode === 'raster' || mode === 'native' || mode === 'gdi' ? mode : 'vector';
     if (printPending) return;
     printPending = true;
     setPrintButtonsBusy(true, mode);
@@ -2306,6 +2347,7 @@ async function safePrint(mode = 'vector') {
     let optimizedImages = { summary: {}, restore() {} };
     let rasterPrint = { summary: {}, restore() {} };
     let nativePrint = { summary: {}, restore() {} };
+    let gdiPrint = { summary: {}, restore() {} };
     let preparationError = null;
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -2330,6 +2372,17 @@ async function safePrint(mode = 'vector') {
                     if (button) button.textContent = `PCL 페이지 변환 중… ${progress.index}/${progress.total}`;
                 }
             }) };
+        } else if (mode === 'gdi') {
+            gdiPrint = { summary: await window.APNativePrint.printGdi(document.getElementById('print-area'), {
+                printer: window.APNativePrint.DEFAULT_PRINTER,
+                dpi: 300,
+                duplex: true,
+                documentName: document.title,
+                onProgress: progress => {
+                    const button = document.getElementById('btn-print-gdi');
+                    if (button) button.textContent = `GDI 페이지 변환 중… ${progress.index}/${progress.total}`;
+                }
+            }) };
         } else optimizedImages = await flattenPrintImagesForOpaquePrint();
         // requestAnimationFrame은 탭이 백그라운드/스로틀 상태면 안 풀려 "준비 중"에서 멈출 수 있다.
         // setTimeout은 항상 발화하므로 rAF 대신 짧게 한 틱만 양보한다.
@@ -2346,17 +2399,20 @@ async function safePrint(mode = 'vector') {
         imageOptimization: optimizedImages.summary || {},
         pageRasterization: rasterPrint.summary || {},
         nativePrint: nativePrint.summary || {},
+        gdiPrint: gdiPrint.summary || {},
         dryRun: printParams.get('printDryRun') === '1'
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
 
-    if (preparationError && (mode === 'raster' || mode === 'native')) {
+    if (preparationError && (mode === 'raster' || mode === 'native' || mode === 'gdi')) {
         rasterPrint.restore();
         optimizedImages.restore();
         printPending = false;
         setPrintButtonsBusy(false, mode);
         const message = mode === 'native'
             ? '네이티브 PCL 인쇄에 실패했습니다. 보조 프로그램이 실행 중이고 SINDOH N500 Series PCL 큐가 있는지 확인해 주세요.'
+            : mode === 'gdi'
+            ? 'Windows 드라이버 양면 인쇄에 실패했습니다. 보조 프로그램과 SINDOH N500 Series PCL 드라이버를 확인해 주세요.'
             : '프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.';
         window.alert(message + '\n\n' + (preparationError.message || preparationError));
         return;
@@ -2374,6 +2430,15 @@ async function safePrint(mode = 'vector') {
         const hint = document.getElementById('print-output-hint');
         if (hint && nativePrint.summary) {
             hint.textContent = `네이티브 PCL 전송 완료 · ${nativePrint.summary.pageCount}쪽 / ${Math.round(nativePrint.summary.elapsedMs)}ms`;
+        }
+        printPending = false;
+        setPrintButtonsBusy(false, mode);
+        return;
+    }
+    if (mode === 'gdi') {
+        const hint = document.getElementById('print-output-hint');
+        if (hint && gdiPrint.summary) {
+            hint.textContent = `Windows 드라이버 양면 전송 완료 · ${gdiPrint.summary.pageCount}쪽 / ${Math.round(gdiPrint.summary.elapsedMs)}ms`;
         }
         printPending = false;
         setPrintButtonsBusy(false, mode);
