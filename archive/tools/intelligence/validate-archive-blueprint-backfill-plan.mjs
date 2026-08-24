@@ -90,11 +90,11 @@ if (dryRun.status === 'BLOCKED_SCHEMA_MISSING') {
   const sql = fs.readFileSync(sqlPlanPath, 'utf8');
   const statements = sql.split(/;\s*(?=INSERT INTO exam_blueprints)/g)
     .map(statement => statement.trim())
-    .filter(statement => /^--[\s\S]*INSERT INTO exam_blueprints/m.test(statement));
+    .filter(statement => /\bINSERT INTO exam_blueprints\b/.test(statement));
   validation.statementCount = statements.length;
   validation.checks.destructiveStatementFree = !/\b(DROP|DELETE|ALTER|TRUNCATE|REPLACE)\b/i.test(sql);
   validation.checks.deterministicUpsertOnly = statements.length > 0 && statements.every(statement =>
-    /^--[\s\S]*INSERT INTO exam_blueprints/m.test(statement) &&
+    /\bINSERT INTO exam_blueprints\b/.test(statement) &&
     /ON CONFLICT\(archive_file, question_no\) DO UPDATE SET/.test(statement)
   );
   validation.checks.statementCountMatches = validation.expectedStatementCount === statements.length;
