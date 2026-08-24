@@ -312,19 +312,21 @@ internal static class GdiPrinter
 
     private static void DrawToImageableArea(PrintPageEventArgs e, Image image, bool logBounds)
     {
-        // PrintableArea is the driver's actual imageable rectangle in hundredths
-        // of an inch. Unlike HardMarginX/Y, it includes the real right/bottom
-        // bounds instead of assuming the printer's margins are symmetric.
-        var target = e.PageSettings.PrintableArea;
+        // PrintDocument's Graphics is already translated to the driver's
+        // imageable origin. Its clip bounds therefore start at (0, 0), while
+        // PageSettings.PrintableArea is expressed in full-page coordinates.
+        // Drawing PrintableArea directly would add the left/top hard margin a
+        // second time and clip the right/bottom edge.
+        var printable = e.PageSettings.PrintableArea;
+        var clip = e.Graphics.VisibleClipBounds;
+        var target = clip;
         if (target.Width <= 0 || target.Height <= 0)
         {
-            var page = e.PageBounds;
-            target = new RectangleF(page.Left, page.Top, page.Width, page.Height);
+            target = new RectangleF(0, 0, printable.Width, printable.Height);
         }
         if (logBounds)
         {
-            var clip = e.Graphics.VisibleClipBounds;
-            Console.WriteLine("GDI bounds: page=" + e.PageBounds + ", printable=" + target + ", clip=" + clip);
+            Console.WriteLine("GDI bounds: page=" + e.PageBounds + ", printable=" + printable + ", clip=" + clip + ", target=" + target);
         }
         var graphics = e.Graphics;
         graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
