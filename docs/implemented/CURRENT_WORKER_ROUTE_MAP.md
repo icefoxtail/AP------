@@ -25,7 +25,7 @@ index.js에 API 본문을 직접 추가하는 방식은 금지한다. 새 API는
 | `routes/classes.js` | `handleClasses` | `classes`, `class-students` | teacher | `classes`, `class_students`, `teacher_classes` | 반/담당반 |
 | `routes/teachers.js` | `handleTeachers` | `teachers`, `teacher-classes` | teacher/admin | `teachers`, `teacher_classes` | 권한 |
 | `routes/attendance-homework.js` | `handleAttendanceHomework` | attendance/homework batch/history/month | teacher | `attendance`, `homework` | 출결/숙제 |
-| `routes/exams.js` | `handleExams` | `exam-blueprints`, `class-exam-assignments`, `exam-sessions` | teacher | exam tables | OMR/리포트 |
+| `routes/exams.js` | `handleExams` | `exam-blueprints`, `class-exam-assignments`, `class-exam-assignments/roster`, `class-exam-assignments/exclude-students`, `class-exam-assignments/board`, `exam-sessions` | teacher | exam tables + assignment exclusions | 아카이브 출제/OMR/리포트 |
 | `routes/check-omr.js` | `handleCheckOmr` | `check-pin`, `check-init`, `qr-classes` | 학생 PIN/QR | students/exams | 제출 완료 수정 금지 |
 | `routes/student-portal.js` | `handleStudentPortal` | `student-portal/*` | student token/PIN | students, exams, assignments | 시험지 직접 열기 금지 |
 | `routes/planner.js` | `handlePlanner` | `planner`, `planner-auth`, `planner-auth-by-name` | student/teacher helper | planner schema | SSO |
@@ -43,6 +43,10 @@ index.js에 API 본문을 직접 추가하는 방식은 금지한다. 새 API는
 | `routes/billing-accounting-foundation.js` | `handleBillingAccountingFoundation` | billing/accounting subresources | teacher | payment/cashbook/refund/carryover | 금액 무결성 |
 | `routes/parent-foundation.js` | `handleParentFoundation` | contacts/consents/messages/preview | teacher | parent/contact/message | 실제 발송 금지 |
 | `routes/foundation-logs.js` | `handleFoundationLogs` | audit/privacy logs | teacher | audit/privacy logs | 개인정보 |
+| `routes/timetable-months.js` | `handleTimetableMonths` | `timetable-months`, 월별 snapshot/changes | teacher; 월말 자동 snapshot은 Worker scheduled handler | `ap_timetable_month_*` snapshot tables | 운영 snapshot/시점 기준 |
+| `routes/wrong-clinics.js` | `handleWrongClinics` | `wrong-clinics`, packet/set, review-wrongs | teacher; packet/set GET은 public read 예외 | `wrong_clinic_*`, `privacy_access_logs` | 오답 clinic·학생 제출 |
+| `routes/eie.js` | `handleEie` | `eie/import`, confirm-candidate, timetable-cells, students | EIE owner only | EIE import/timetable/student tables | AP와 EIE 데이터 분리 |
+| `routes/backdoor.js` | `handleBackdoor` | admin read-only overview/students/classes/today/timetable/billing-summary/search | admin only | 운영 core/foundation tables | hidden internal endpoint |
 
 ## 3. helpers
 
@@ -55,4 +59,6 @@ index.js에 API 본문을 직접 추가하는 방식은 금지한다. 새 API는
 ## 4. initial-data
 
 `index.js` 내부에서 `/api/initial-data`가 핵심 데이터를 직접 조합한다. admin은 전체 데이터, teacher는 `teacher_classes`와 학생 목록으로 scope를 줄인다. foundation data는 `loadFoundationInitialData`로 합쳐진다. 이 응답 구조 변경은 frontend 전체 회귀 위험이 매우 크다.
+
+2026-08-24 실제 import/dispatch 대조에서 위 네 route가 `index.js`에 실제 import·위임되고 있음을 확인했다. route map의 누락을 보정했으며, route 파일·Worker·DB 동작 자체는 변경하지 않았다.
 

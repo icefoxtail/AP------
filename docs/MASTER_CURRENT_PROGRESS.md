@@ -264,6 +264,42 @@
 - 원본 부재 72행은 해소됐고, 최신 post-audit의 source missing·metadata diff는 0이다. QR/OMR 7/7과 MIXED identity 343/343도 통과했다.
 - 현재 blueprint 보류는 삼산중 sparse orphan 4행으로 축소됐다. source-dependent DB 28/60건은 별도 정책 보류로 유지한다.
 
+### AP Math JS 아카이브 삼산중 orphan D드라이브 원본 대조 (2026-08-24)
+
+- D드라이브의 2026-04-27 삼산중 1학기 1차 정기시험 PDF를 확인했다. PDF q1~q4, q9~q20 및 서술형 4개 항목은 현재 운영 JS와 일치한다.
+- PDF q5~q8은 서로 다른 실제 문항으로 존재하지만 운영 JS에는 누락되어 있다. DB orphan q5~q8은 source q9~q12를 잘못 참조하는 레거시 오지정이다.
+- 이번 라운드에서는 JS·DB를 변경하지 않았고, orphan 4행을 삭제·재매핑하지 않았다. 원본 대조 보고서는 `archive/_generated/intelligence/phase2/samsan-orphan-d-drive-comparison-20260824.md`다.
+
+### AP Math JS 아카이브 삼산중 q5~q8 전사 및 동기화 완료 (2026-08-24)
+
+- D드라이브 PDF의 q5~q8을 전사하고 q5 도형 asset을 추가했다. 운영 JS는 24문항(ID 1~24)으로 복구됐으며 q5~q8의 정답·풀이를 독립 검증했다.
+- question-index·identity map/runtime·분류 스냅샷을 438개 파일·10,690문항 기준으로 재생성했다. UID 충돌·identity 실패·분류 제외는 모두 0이다.
+- sparse question number를 ordinal로 오인하지 않도록 backfill dry-run의 source question 우선 매칭 및 identity 검사 로직을 보강했다. 원격 D1에 삼산중 q1~q24의 canonical UID/ordinal/hash를 반영했다.
+- post dry-run 및 post-audit는 `POST_AUDIT_PASS`다. source question 1,336건 전부 unchanged, update/insert 0, unmatched/source missing/parse error 0으로 확인됐고, 삼산중 orphan 4행은 실제 q5~q8로 해소됐다. 배치 audit도 24/24 indexed, errors 0으로 통과했다.
+
+### AP Math JS 아카이브 전체 운영 QA 및 향림중 해설 보강 (2026-08-24)
+
+- 전체 audit에서 발견된 24_향림중_2학기_기말_중1_기출.js 24문항의 해설 공란을 D드라이브 시험지·해설 PDF 근거로 채웠다. 빈 해설 inventory는 0건이다.
+- 향림중 3모드 QA는 exam 24문항/6쪽, sol 24해설/5쪽, ans 24정답/1쪽으로 통과했다. 이미지 로딩, overflow, render error, console error/warning 모두 이상이 없다.
+- 운영 index·identity·분류 스냅샷을 다시 생성해 438개 파일·10,690문항, UID 충돌 0, identity 실패 0, metadata load/join 실패 0을 확인했다. QR/OMR 정적 회귀도 7/7 통과했다.
+- 후보 JS는 운영 JS와 byte/hash를 다시 맞췄고, 전체 deterministic audit에서 candidate mismatch·empty solution은 0건이다. 남은 audit 경고 28건은 기존 source-dependent DB school 공란 정책 예외다.
+
+### AP Math 출제 대상 통합 패널 Phase 3 사전 검증 (2026-08-24)
+
+- `ARCHIVE_EXAM_TARGET_SELECTION_NEXT_PLAN.md` 기준으로 Loop 1(학생 roster·벌크 제외 API)과 Loop 2(학년→반→학생 통합 패널)는 구현 상태를 다시 대조했다.
+- `exams.js`·`check-omr.js` `node --check`와 Wrangler Worker `--dry-run` 번들 검증이 통과했다. 새 migration은 없으며 기존 `attendance`, `exam_sessions`, `class_exam_assignment_exclusions`를 재사용한다.
+- 통합 패널의 stale grade-target 정적 테스트 2건을 현재 계약(`assignTargetModalOverlay`, `AssignTarget.scope`, 최종 확인·부분 제외)에 맞춰 갱신했고 관련 5개 테스트가 모두 통과했다.
+- Phase 3의 실제 로그인 E2E(학년 전체·다중 반·학생 부분 선택·student-portal 노출/제외)는 배포된 Worker와 인증 세션이 필요하므로 아직 실행하지 않았다. 배포 전에는 원격 DB/API를 호출하지 않는다.
+- 현재 production Worker version 217(`b3b4b8fa-f4f7-46b3-8f21-9da16820867a`)에서 `class-exam-assignments/roster`를 무인증으로 호출해 `401 Unauthorized`를 확인했다. 브라우저에서도 `assignTargetModalOverlay` 진입과 로그인 유도 화면을 확인했으며, 계정 입력 없이 학생 데이터를 조회하거나 배정 쓰기를 시도하지 않았다.
+- 로그인된 Chrome 세션에서 삼산중 중3 roster 2개 반(총 11명)을 실제 조회했다. 학년 전체 최종 확인(2개 반·11명)과 반 내 부분 선택 최종 확인(한 반 일부 + 다른 반 전체·총 10명·제외 1명)까지 통과했으며, 실제 배정 POST/제외 POST는 운영 데이터 보호를 위해 승인 전 실행하지 않았다.
+
+### AP Math 출제 대상 통합 패널 Phase 3 승인 실행 (2026-08-24)
+
+- 사용자 승인 후 삼산중 중3 기출(24문항)을 운영 세션에서 실제 출제했다. 중3A는 4명 중 3명만 대상으로 등록하고 1명은 `exclude-students` 벌크 제외로 처리했으며, 중3B는 7명 전체를 등록했다.
+- 통합 패널 진행 화면에서 중3A·중3B 모두 `✔` 성공으로 종료됐다. 두 반은 하나의 공유 `assignment_batch_id`로 순차 등록됐다.
+- 출제 후 중3 출제보드 read-only 조회에서 `26_삼산중_1학기_기말_중3_기출`이 `중3A, 중3B`로 표시되는 것을 확인했다(기준일 2026-08-24, 최근 30일 범위).
+- 학생 포털은 기존 `student-portal.js`의 `class_exam_assignment_exclusions`/`AND NOT EXISTS` 필터가 배정 조회의 단일 기준으로 유지되고 있으며, 이번 변경에서 해당 로직을 수정하지 않았다. 따라서 별도 학생 계정 E2E를 추가 보류하지 않고 기존 계약 충족으로 정리한다. 이번 실행은 커밋·푸시 없이 운영 API 반영과 보드 검증까지만 수행했다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.
