@@ -72,7 +72,7 @@ internal static class Program
             var path = context.Request.Url == null ? string.Empty : context.Request.Url.AbsolutePath.TrimEnd('/');
             if (context.Request.HttpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase) && path == "/health")
             {
-                WriteJson(response, "{\"ok\":true,\"printer\":\"" + JsonEscape(configuredPrinter) + "\",\"protocol\":\"pcl5-raster-1bpp,gdi-devmode\"}", 200);
+                WriteJson(response, "{\"ok\":true,\"printer\":\"" + JsonEscape(configuredPrinter) + "\",\"protocol\":\"pcl5-raster-1bpp,gdi-devmode,gdi-devmode-copies\"}", 200);
                 return;
             }
 
@@ -103,7 +103,7 @@ internal static class Program
             if (path == "/print-gdi")
             {
                 var gdiPayload = GdiPrintPayload.Parse(payload);
-                GdiPrinter.Print(configuredPrinter, documentName, gdiPayload.Pages, gdiPayload.Dpi, gdiPayload.Duplex);
+                GdiPrinter.Print(configuredPrinter, documentName, gdiPayload.Pages, gdiPayload.Dpi, gdiPayload.Duplex, ReadCopies(context.Request.Headers["X-AP-Copies"]));
             }
             else
             {
@@ -152,7 +152,7 @@ internal static class Program
     {
         response.Headers["Access-Control-Allow-Origin"] = request.Headers["Origin"] ?? "*";
         response.Headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS";
-        response.Headers["Access-Control-Allow-Headers"] = "Content-Type, X-AP-Printer, X-AP-Document-Name";
+        response.Headers["Access-Control-Allow-Headers"] = "Content-Type, X-AP-Printer, X-AP-Document-Name, X-AP-Copies";
         response.Headers["Access-Control-Max-Age"] = "60";
     }
 
@@ -175,6 +175,12 @@ internal static class Program
             builder.Append(Array.IndexOf(invalid, character) >= 0 ? '_' : character);
         }
         return builder.ToString().Substring(0, Math.Min(builder.Length, 120));
+    }
+
+    private static int ReadCopies(string value)
+    {
+        int copies;
+        return int.TryParse(value, out copies) ? Math.Max(1, Math.Min(99, copies)) : 1;
     }
 
     private static string JsonEscape(string value)
@@ -263,7 +269,7 @@ internal sealed class GdiPrintPayload
 
 internal static class GdiPrinter
 {
-    public static void Print(string printerName, string documentName, List<byte[]> pages, int sourceDpi, bool duplex)
+    public static void Print(string printerName, string documentName, List<byte[]> pages, int sourceDpi, bool duplex, int copies)
     {
         if (pages == null || pages.Count == 0) throw new InvalidOperationException("GDI 인쇄할 페이지가 없습니다.");
 
@@ -279,10 +285,17 @@ internal static class GdiPrinter
             // prevents the queue's OneSided default from silently winning.
             document.PrinterSettings.Duplex = duplex ? Duplex.Vertical : Duplex.Simplex;
             SetA4(document.PrinterSettings);
+            var maximumCopies = Math.Max(1, document.PrinterSettings.MaximumCopies);
+            var driverCopies = maximumCopies > 1
+                ? Math.Min(copies, maximumCopies)
+                : 1;
+            document.PrinterSettings.Copies = (short)driverCopies;
             using (var devMode = DriverDevMode.Apply(document.PrinterSettings, duplex))
             {
-                Console.WriteLine("GDI/DEVMODE: source " + sourceDpi + "dpi, duplex=" + document.PrinterSettings.Duplex + ", paper=" + document.DefaultPageSettings.PaperSize.Kind);
+                Console.WriteLine("GDI/DEVMODE: source " + sourceDpi + "dpi, duplex=" + document.PrinterSettings.Duplex + ", copies=" + driverCopies + ", paper=" + document.DefaultPageSettings.PaperSize.Kind);
                 var pageIndex = 0;
+                var softwareCopyIndex = 0;
+                var softwareCopyCount = driverCopies == copies ? 1 : copies;
                 document.PrintPage += delegate(object sender, PrintPageEventArgs e)
                 {
                     using (var stream = new MemoryStream(pages[pageIndex], false))
@@ -291,7 +304,12 @@ internal static class GdiPrinter
                         DrawToImageableArea(e, image, pageIndex == 0);
                     }
                     pageIndex += 1;
-                    e.HasMorePages = pageIndex < pages.Count;
+                    if (pageIndex >= pages.Count)
+                    {
+                        pageIndex = 0;
+                        softwareCopyIndex += 1;
+                    }
+                    e.HasMorePages = softwareCopyIndex < softwareCopyCount;
                 };
                 document.Print();
             }

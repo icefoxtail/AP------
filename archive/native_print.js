@@ -239,6 +239,7 @@
         const printer = String(options.printer || DEFAULT_PRINTER);
         const dpi = finitePositive(options.dpi, DEFAULT_DPI);
         const duplex = options.duplex !== false;
+        const copies = Math.max(1, Math.min(99, Math.trunc(Number(options.copies) || 1)));
         const pageRoot = root || global.document?.getElementById('print-area');
         if (!pageRoot) throw new Error('Windows 드라이버 인쇄 영역을 찾을 수 없습니다.');
         if (typeof global.html2canvas !== 'function') throw new Error('html2canvas 로컬 번들이 로드되지 않았습니다.');
@@ -246,6 +247,11 @@
         const agent = await health(endpoint);
         if (agent.printer && agent.printer.toLowerCase() !== printer.toLowerCase()) {
             throw new Error('네이티브 보조 프로그램의 프린터가 일치하지 않습니다.');
+        }
+        if (agent.protocol && !agent.protocol.includes('gdi-devmode-copies')) {
+            const updateRequired = new Error('빠른 인쇄 도우미 업데이트가 필요합니다.');
+            updateRequired.code = 'AP_NATIVE_AGENT_UPDATE_REQUIRED';
+            throw updateRequired;
         }
 
         const pages = Array.from(pageRoot.querySelectorAll('.page'));
@@ -308,7 +314,8 @@
             headers: {
                 'Content-Type': 'application/octet-stream',
                 'X-AP-Printer': printer,
-                'X-AP-Document-Name': documentName
+                'X-AP-Document-Name': documentName,
+                'X-AP-Copies': String(copies)
             },
             body: payload
         }, 120000);
@@ -320,6 +327,7 @@
             printer,
             dpi,
             duplex,
+            copies,
             pageCount: pages.length,
             bytes: payload.length,
             elapsedMs: Number((performance.now() - startedAt).toFixed(1)),
