@@ -6,6 +6,7 @@
     const DEFAULT_DPI = 300;
     const DEFAULT_THRESHOLD = 220;
     const DEFAULT_INSTALLER_URL = 'https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/APMath-Print-Agent-Installer.zip';
+    const REQUIRED_AGENT_VERSION = '20260824.3';
     const encoder = new TextEncoder();
 
     function finitePositive(value, fallback) {
@@ -134,9 +135,9 @@
         }
     }
 
-    async function health(endpoint = DEFAULT_ENDPOINT) {
+    async function health(endpoint = DEFAULT_ENDPOINT, timeoutMs = 3000) {
         try {
-            const response = await fetchWithTimeout(endpoint.replace(/\/$/, '') + '/health');
+            const response = await fetchWithTimeout(endpoint.replace(/\/$/, '') + '/health', {}, timeoutMs);
             if (!response.ok) throw new Error(`health ${response.status}`);
             return await response.json();
         } catch (error) {
@@ -145,6 +146,81 @@
             unavailable.cause = error;
             throw unavailable;
         }
+    }
+
+    function compareAgentVersions(actual, required) {
+        const parse = value => String(value || '0').split('.').map(part => Number.parseInt(part, 10) || 0);
+        const left = parse(actual);
+        const right = parse(required);
+        const length = Math.max(left.length, right.length);
+        for (let index = 0; index < length; index += 1) {
+            const leftPart = left[index] || 0;
+            const rightPart = right[index] || 0;
+            if (leftPart !== rightPart) return leftPart > rightPart ? 1 : -1;
+        }
+        return 0;
+    }
+
+    function supportsFastPrint(agent) {
+        return Boolean(
+            agent &&
+            compareAgentVersions(agent.version, REQUIRED_AGENT_VERSION) >= 0 &&
+            agent.protocol &&
+            agent.protocol.includes('gdi-devmode-copies')
+        );
+    }
+
+    function createUpdateRequiredError(cause) {
+        const error = new Error('빠른 인쇄 도우미 업데이트가 필요합니다.');
+        error.code = 'AP_NATIVE_AGENT_UPDATE_REQUIRED';
+        error.cause = cause;
+        return error;
+    }
+
+    async function requestAgentUpdate(endpoint, printer) {
+        let response;
+        try {
+            response = await fetchWithTimeout(endpoint + '/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-AP-Printer': printer,
+                    'X-AP-Agent-Version': REQUIRED_AGENT_VERSION
+                },
+                body: '{}'
+            }, 120000);
+        } catch (error) {
+            throw createUpdateRequiredError(error);
+        }
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) {
+            throw createUpdateRequiredError(new Error(result.error || `에이전트 업데이트 요청 실패 (${response.status})`));
+        }
+        return result;
+    }
+
+    async function waitForUpdatedAgent(endpoint, printer) {
+        let lastError = null;
+        for (let attempt = 0; attempt < 30; attempt += 1) {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            try {
+                const agent = await health(endpoint, 1000);
+                if (agent.printer && agent.printer.toLowerCase() !== printer.toLowerCase()) {
+                    throw new Error('네이티브 보조 프로그램의 프린터가 일치하지 않습니다.');
+                }
+                if (supportsFastPrint(agent)) return agent;
+                lastError = new Error(`에이전트 버전이 ${REQUIRED_AGENT_VERSION}보다 낮습니다.`);
+            } catch (error) {
+                lastError = error;
+            }
+        }
+        throw createUpdateRequiredError(lastError);
+    }
+
+    async function ensureFastPrintAgent(endpoint, printer, agent) {
+        if (supportsFastPrint(agent)) return agent;
+        await requestAgentUpdate(endpoint, printer);
+        return waitForUpdatedAgent(endpoint, printer);
     }
 
     async function print(root, options = {}) {
@@ -248,11 +324,7 @@
         if (agent.printer && agent.printer.toLowerCase() !== printer.toLowerCase()) {
             throw new Error('네이티브 보조 프로그램의 프린터가 일치하지 않습니다.');
         }
-        if (agent.protocol && !agent.protocol.includes('gdi-devmode-copies')) {
-            const updateRequired = new Error('빠른 인쇄 도우미 업데이트가 필요합니다.');
-            updateRequired.code = 'AP_NATIVE_AGENT_UPDATE_REQUIRED';
-            throw updateRequired;
-        }
+        await ensureFastPrintAgent(endpoint, printer, agent);
 
         const pages = Array.from(pageRoot.querySelectorAll('.page'));
         if (!pages.length) throw new Error('Windows 드라이버 인쇄할 페이지가 없습니다.');
@@ -336,5 +408,5 @@
         };
     }
 
-    global.APNativePrint = { DEFAULT_ENDPOINT, DEFAULT_PRINTER, DEFAULT_INSTALLER_URL, health, print, printGdi, createWriter, writeRasterPage };
+    global.APNativePrint = { DEFAULT_ENDPOINT, DEFAULT_PRINTER, DEFAULT_INSTALLER_URL, REQUIRED_AGENT_VERSION, health, print, printGdi, createWriter, writeRasterPage };
 })(typeof window !== 'undefined' ? window : globalThis);
