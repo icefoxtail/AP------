@@ -24,9 +24,18 @@ bridge with the .NET Framework compiler already present on Windows, then starts 
 The web page's native button reports an error instead of falling back silently if the
 agent is not running.
 
-The blue `Windows 드라이버 양면 테스트` button uses the GDI/DEVMODE path. It is
+The `빠른 인쇄` button uses the GDI/DEVMODE path. The older RAW PCL path remains
 intentionally separate from the older orange RAW PCL test until physical duplex and
 page-edge results are confirmed.
+
+## One-time setup on another computer
+
+The archive can download `install-native-print-agent.cmd` when `빠른 인쇄` is
+clicked without a running agent. Run that file once on the Windows computer. It
+downloads the current agent source, builds the local `winexe` agent under the
+user's `%LOCALAPPDATA%`, registers it in the current user's Windows startup, and
+starts it. No administrator permission is required unless the printer driver or
+printer queue itself is missing.
 
 This is deliberately a local test bridge. It binds to loopback and accepts only the
 configured printer name. A production version should add a per-install token and a
