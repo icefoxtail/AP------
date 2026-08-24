@@ -5,6 +5,9 @@
     const DEFAULT_PRINTER = 'SINDOH N500 Series PCL';
     const DEFAULT_DPI = 300;
     const DEFAULT_THRESHOLD = 220;
+    const DEFAULT_INSTALLER_URL = global.document?.baseURI
+        ? new URL('../tools/native-print-agent/install-native-print-agent.cmd', global.document.baseURI).href
+        : '';
     const encoder = new TextEncoder();
 
     function finitePositive(value, fallback) {
@@ -134,9 +137,16 @@
     }
 
     async function health(endpoint = DEFAULT_ENDPOINT) {
-        const response = await fetchWithTimeout(endpoint.replace(/\/$/, '') + '/health');
-        if (!response.ok) throw new Error('네이티브 인쇄 보조 프로그램이 응답하지 않습니다.');
-        return await response.json();
+        try {
+            const response = await fetchWithTimeout(endpoint.replace(/\/$/, '') + '/health');
+            if (!response.ok) throw new Error(`health ${response.status}`);
+            return await response.json();
+        } catch (error) {
+            const unavailable = new Error('네이티브 인쇄 보조 프로그램이 응답하지 않습니다.');
+            unavailable.code = 'AP_NATIVE_AGENT_UNAVAILABLE';
+            unavailable.cause = error;
+            throw unavailable;
+        }
     }
 
     async function print(root, options = {}) {
@@ -320,5 +330,5 @@
         };
     }
 
-    global.APNativePrint = { DEFAULT_ENDPOINT, DEFAULT_PRINTER, health, print, printGdi, createWriter, writeRasterPage };
+    global.APNativePrint = { DEFAULT_ENDPOINT, DEFAULT_PRINTER, DEFAULT_INSTALLER_URL, health, print, printGdi, createWriter, writeRasterPage };
 })(typeof window !== 'undefined' ? window : globalThis);
