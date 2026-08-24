@@ -111,7 +111,8 @@
             body.screen-fit-mode .qr-output-wrap,
             body.screen-fit-mode .ctrl-right > label,
             body.screen-fit-mode .ctrl-right > #btn-print,
-            body.screen-fit-mode .ctrl-right > #btn-print-gdi { display: none; }
+            body.screen-fit-mode .ctrl-right > #btn-print-gdi,
+            body.screen-fit-mode .ctrl-right > #print-copies-wrap { display: none; }
             body.screen-fit-mode .ctrl-right { display: flex; }
             body.screen-fit-mode .print-header-editor-panel {
                 position: fixed;
@@ -426,6 +427,9 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
+            <label id="print-copies-wrap" style="display:inline-flex; align-items:center; gap:5px; padding:0 4px; color:#52525b; font-size:12px; font-weight:600; white-space:nowrap;" title="빠른 인쇄 부수">
+                부수 <input id="print-copies" type="number" min="1" max="99" step="1" value="1" inputmode="numeric" style="width:46px; height:30px; box-sizing:border-box; border:1px solid #d4d4d8; border-radius:6px; padding:0 6px; text-align:center; font-weight:700; color:#18181b;">
+            </label>
             <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
             <button id="btn-print-gdi" onclick="safePrint('gdi')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">빠른 인쇄</button>
         </div>
@@ -2331,12 +2335,20 @@ function downloadNativePrintAgentInstaller() {
     link.remove();
 }
 
+function getFastPrintCopies() {
+    const input = document.getElementById('print-copies');
+    const copies = Math.max(1, Math.min(99, Math.trunc(Number(input?.value) || 1)));
+    if (input) input.value = copies;
+    return copies;
+}
+
 async function safePrint(mode = 'vector') {
     mode = mode === 'raster' || mode === 'native' || mode === 'gdi' ? mode : 'vector';
     if (printPending) return;
     printPending = true;
     setPrintButtonsBusy(true, mode);
     const printStartedAt = performance.now();
+    const printCopies = mode === 'gdi' ? getFastPrintCopies() : 1;
     let optimizedImages = { summary: {}, restore() {} };
     let rasterPrint = { summary: {}, restore() {} };
     let nativePrint = { summary: {}, restore() {} };
@@ -2370,6 +2382,7 @@ async function safePrint(mode = 'vector') {
                 printer: window.APNativePrint.DEFAULT_PRINTER,
                 dpi: 300,
                 duplex: true,
+                copies: printCopies,
                 documentName: document.title,
                 onProgress: progress => {
                     const button = document.getElementById('btn-print-gdi');
@@ -2389,6 +2402,7 @@ async function safePrint(mode = 'vector') {
     const printMetrics = {
         readyToPrintMs: Number((performance.now() - printStartedAt).toFixed(1)),
         mode,
+        copies: printCopies,
         imageOptimization: optimizedImages.summary || {},
         pageRasterization: rasterPrint.summary || {},
         nativePrint: nativePrint.summary || {},
@@ -2402,7 +2416,7 @@ async function safePrint(mode = 'vector') {
         optimizedImages.restore();
         printPending = false;
         setPrintButtonsBusy(false, mode);
-        if (mode === 'gdi' && preparationError?.code === 'AP_NATIVE_AGENT_UNAVAILABLE') {
+        if (mode === 'gdi' && (preparationError?.code === 'AP_NATIVE_AGENT_UNAVAILABLE' || preparationError?.code === 'AP_NATIVE_AGENT_UPDATE_REQUIRED')) {
             if (window.confirm('빠른 인쇄 도우미가 설치되어 있지 않습니다. 설치 파일을 다운로드할까요?')) {
                 downloadNativePrintAgentInstaller();
             }
@@ -2410,7 +2424,9 @@ async function safePrint(mode = 'vector') {
         const message = mode === 'native'
             ? '네이티브 PCL 인쇄에 실패했습니다. 보조 프로그램이 실행 중이고 SINDOH N500 Series PCL 큐가 있는지 확인해 주세요.'
             : mode === 'gdi'
-            ? '빠른 인쇄 도우미가 실행 중인지 확인해 주세요. 처음 사용하는 컴퓨터라면 다운로드된 ZIP을 압축 해제하고 설치 파일을 한 번 실행한 뒤 다시 눌러주세요.'
+            ? preparationError?.code === 'AP_NATIVE_AGENT_UPDATE_REQUIRED'
+                ? '빠른 인쇄 도우미 업데이트가 필요합니다. 다운로드된 ZIP을 압축 해제하고 설치 파일을 한 번 실행한 뒤 다시 눌러주세요.'
+                : '빠른 인쇄 도우미가 실행 중인지 확인해 주세요. 처음 사용하는 컴퓨터라면 다운로드된 ZIP을 압축 해제하고 설치 파일을 한 번 실행한 뒤 다시 눌러주세요.'
             : '프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.';
         window.alert(message + '\n\n' + (preparationError.message || preparationError));
         return;
