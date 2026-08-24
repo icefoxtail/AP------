@@ -75,6 +75,48 @@ const scheduledClasses = [
 {
   const ctx = loadHelper();
   const memos = ctx.buildDashboardAssistantMemos({
+    todayStr: '2026-06-17',
+    dayKey: 'wed',
+    db: {
+      class_daily_records: [
+        { id: 'record-20', class_id: 20, date: '2026-06-10', special_note: '' }
+      ],
+      class_daily_progress: [
+        { id: 'progress-20', record_id: 'record-20', class_id: 20, progress_text: 'p.10~25' }
+      ]
+    },
+    scheduledClasses: [{ id: 20, name: '중1A', grade: '중1' }],
+    isHoliday: false,
+    previousClassDateById: { 20: '2026-06-10' }
+  });
+  assert(!memos.some(m => m.id === 'record-gap:20:2026-06-10'), 'textbook progress rows must count as a completed class record');
+}
+
+{
+  const ctx = loadHelper();
+  const memos = ctx.buildDashboardAssistantMemos({
+    todayStr: '2026-06-17',
+    dayKey: 'wed',
+    db: {
+      class_daily_records: [],
+      class_daily_progress: [],
+      timetable_class_daily_records: [
+        { id: 'timetable-record-20', class_id: 20, date: '2026-06-10' }
+      ],
+      timetable_class_daily_progress: [
+        { id: 'timetable-progress-20', record_id: 'timetable-record-20', class_id: 20, progress_text: '도형의 성질' }
+      ]
+    },
+    scheduledClasses: [{ id: 20, name: '중1A', grade: '중1' }],
+    isHoliday: false,
+    previousClassDateById: { 20: '2026-06-10' }
+  });
+  assert(!memos.some(m => m.id === 'record-gap:20:2026-06-10'), 'timetable progress cache rows must count as a completed class record');
+}
+
+{
+  const ctx = loadHelper();
+  const memos = ctx.buildDashboardAssistantMemos({
     todayStr: '2026-06-18',
     dayKey: 'thu',
     teacherName: '박준성',
