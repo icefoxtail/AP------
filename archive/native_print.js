@@ -5,9 +5,7 @@
     const DEFAULT_PRINTER = 'SINDOH N500 Series PCL';
     const DEFAULT_DPI = 300;
     const DEFAULT_THRESHOLD = 220;
-    const DEFAULT_INSTALLER_URL = global.document?.baseURI
-        ? new URL('../tools/native-print-agent/APMath-Print-Agent-Installer.zip', global.document.baseURI).href
-        : '';
+    const DEFAULT_INSTALLER_URL = 'https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/APMath-Print-Agent-Installer.zip';
     const encoder = new TextEncoder();
 
     function finitePositive(value, fallback) {
