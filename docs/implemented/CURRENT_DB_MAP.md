@@ -171,3 +171,8 @@
 
 - MIXED 7개 파일·343행은 원본 JS 대조 결과를 바탕으로 `source_question_uid`, `source_question_ordinal`, metadata revision/hash를 원격 D1에 반영했다. post-export에서 343/343행이 재감사에 통과했다.
 - 최신 post-audit의 metadata diff와 MIXED identity 검토는 0건이다. 남은 것은 sparse source orphan 4행과 source JS 부재 3파일·72행뿐이며, 이들은 별도 disposition 없이는 Phase 3 question-index/runtime 승격 대상에 포함하지 않는다.
+
+## 21. 2026-08-24 잔여 blueprint blocker disposition
+
+- `archive/tools/intelligence/build-archive-blueprint-blocker-disposition.mjs`가 최신 export audit를 읽어 source-unavailable 72행과 sparse orphan 4행을 별도 보류 목록으로 만든다.
+- 이 76행에는 추정 metadata나 삭제가 적용되지 않았으며, `phase3Gate.allowed=false`인 동안 question-index/runtime 승격을 수행하지 않는다.

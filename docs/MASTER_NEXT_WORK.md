@@ -310,6 +310,12 @@
 - 현재 남은 blocker는 (1) sparse source에 매칭되지 않는 legacy orphan blueprint 4행, (2) 원본 JS가 없는 3개 파일 72행이다. 두 범위는 삭제·추정 보강하지 않고 disposition 보류로 유지한다.
 - 다음 단계는 이 4+72행의 보류 사유와 운영 영향 보고서를 확정한 뒤, 승인 가능한 범위만 question-index/runtime 승격 전 검토하는 것이다. Phase 3 승격은 잔여 blocker 처리 전 시작하지 않는다.
 
+## 2-36. 2026-08-24 잔여 blueprint blocker disposition 확정
+
+- `build-archive-blueprint-blocker-disposition.mjs`와 최신 dry-run/post-audit를 기준으로 source-unavailable 3개 파일·72행과 sparse legacy orphan 4행을 `DISPOSITION_REQUIRED`로 고정했다.
+- source-unavailable 범위는 원본이 없으므로 metadata 쓰기·삭제·추정 대체를 하지 않고 보류한다. orphan 범위는 `question_no`를 source ordinal로 재해석하지 않고 현재 행을 그대로 보류한다.
+- 현재 총 보류는 76행이며, 이 보고서의 `phase3Gate.allowed=false` 상태에서는 question-index/runtime 승격을 실행하지 않는다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.

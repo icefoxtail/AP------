@@ -242,6 +242,11 @@
 - 변경 전 원격 D1 export를 보존하고 검토 전용 UPDATE 343건을 적용했다. 적용 후 재수출·재감사에서 343/343행의 identity와 metadata hash가 안정적으로 일치했으며, QR/OMR 정적 회귀도 7/7 통과했다.
 - post-audit의 MIXED identity blocker와 source-backed metadata diff는 해소됐다. 다만 sparse source orphan 4행과 원본 부재 3파일·72행은 여전히 보류 중이며, 삭제·추정 보강 없이 별도 disposition을 확정해야 한다.
 
+### AP Math JS 아카이브 잔여 blueprint blocker disposition (2026-08-24)
+
+- 최신 disposition 보고서에서 source-unavailable 3개 파일·72행과 sparse legacy orphan 4행, 총 76행을 `DISPOSITION_REQUIRED`로 고정했다.
+- 원본 부재 행은 보강·삭제하지 않고, orphan은 question number를 ordinal로 추정하지 않고 그대로 보류한다. 따라서 question-index/runtime 승격 게이트는 아직 닫혀 있다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.

@@ -232,3 +232,8 @@
 - `tests/archive-blueprint-mixed-identity.test.mjs`: 343행 plan의 후보 수, key 수, destructive keyword 부재를 검증한다.
 - `archive/_generated/intelligence/phase2/archive-blueprint-mixed-identity-post-audit-v1.json`: MIXED 343/343 identity 승격 후 재감사 결과.
 - `archive/_generated/intelligence/phase2/archive-blueprint-post-audit-after-mixed-identity-v3.json`: MIXED blocker와 metadata diff는 해소됐고, orphan 4행·source missing 3파일/72행만 잔여 blocker로 남은 최신 post-audit.
+
+## 34. 2026-08-24 잔여 blueprint blocker disposition
+
+- `archive/tools/intelligence/build-archive-blueprint-blocker-disposition.mjs`: source-unavailable 3개 파일·72행과 sparse legacy orphan 4행을 삭제·추정 없이 보류 목록으로 고정하는 read-only report tool.
+- `archive/_generated/intelligence/phase2/archive-blueprint-blocker-disposition-v1.json`: 총 76행 `DISPOSITION_REQUIRED`, `phase3Gate.allowed=false` 결과.
