@@ -222,6 +222,13 @@
 - 실제 D1 batch 결과 확보 후 이 도구를 재실행해 Phase 2 최종 판정을 내린다.
 - 상세 결과는 `docs/review-packs/archive-blueprint-post-audit-20260824/CODEX_RESULT.md`다.
 
+### AP Math JS 아카이브 blueprint migration·Worker 배포 (2026-08-24)
+
+- `20260820_exam_blueprint_canonical_question_identity.sql` → `20260824_archive_blueprint_metadata_bridge.sql` 순서로 원격 D1 migration을 적용했다. 원격 baseline에 이미 있던 `type_key`·`difficulty`는 보존하고, 누락된 bridge 컬럼·인덱스만 두 번째 migration에서 추가했다.
+- 원격 `exam_blueprints`의 8개 identity/metadata 컬럼과 3개 신규 인덱스, `d1_migrations` 순서 기록을 read-only query로 확인했다.
+- Worker `ap-math-os-v2612`의 syntax check·dry-run·production deploy가 통과했다. version ID는 `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`다.
+- backfill은 실행하지 않았다. 최신 D1 export → hash dry-run → sample review → SQL safety gate → batch update → post-audit → QR/OMR 재검증 후에만 Phase 3로 넘어간다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.

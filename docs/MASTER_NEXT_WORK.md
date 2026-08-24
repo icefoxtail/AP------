@@ -287,6 +287,13 @@
 - schema-ready zero-diff fixture는 `POST_AUDIT_PASS`를 확인했다. 실제 batch 결과가 생기면 같은 도구로 post-audit를 실행한다.
 - 상세 결과: `docs/review-packs/archive-blueprint-post-audit-20260824/CODEX_RESULT.md`.
 
+## 2-33. 2026-08-24 Archive blueprint migration·Worker 배포 정리
+
+- 선행 `20260820_exam_blueprint_canonical_question_identity.sql`을 원격 D1에 먼저 적용했고, `20260824_archive_blueprint_metadata_bridge.sql`은 배포 baseline에 이미 있던 `type_key`·`difficulty`를 중복 추가하지 않도록 보정한 뒤 두 번째로 적용했다.
+- 원격 `exam_blueprints`에서 `source_question_uid`, `source_question_ordinal`, `sub_unit_key`, `type_key`, `template_key`, `difficulty`, `metadata_revision`, `metadata_hash`와 신규 인덱스를 확인했다. migration ledger에는 두 파일이 각각 순서대로 기록됐다.
+- `ap-math-os-v2612` Worker dry-run 및 production deploy를 완료했다. 배포 version ID는 `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`이며, D1/R2/backup workflow binding이 확인됐다.
+- 이번 단계는 schema·runtime bridge 배포까지다. 기존 920 blueprint의 metadata backfill, 최신 export 재생성, post-audit 및 Phase 3 진입은 별도 게이트로 남아 있다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.
