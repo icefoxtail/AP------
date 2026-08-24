@@ -242,3 +242,8 @@
 
 - `archive/question-index.js`, `archive/data/question_identity_map.json`, `archive/question-identity.js`를 현재 운영 JS 기준으로 재생성했다. 10,686문항·UID 충돌 0건이다.
 - 최신 운영 QA는 production/index subunit fields, master gap, candidate sync, qCount/index consistency를 모두 통과했다. source-dependent DB 28/60건과 blueprint 76행 보류는 유지한다.
+
+## 36. 2026-08-24 Phase 2 최종 게이트
+
+- 최신 blueprint post-audit·MIXED identity·QR/OMR·identity map·DB consistency·운영 subunit QA가 모두 통과했다.
+- source-unavailable/orphan blueprint 76행과 source-dependent DB 28/60건은 자동 승격하지 않는 보류 범위다. Phase 3는 이 disposition 전까지 잠긴다.
