@@ -67,10 +67,7 @@
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
             body.screen-fit-mode #ctrl-title,
             body.screen-fit-mode #btn-print,
-            body.screen-fit-mode #btn-print-raster,
-            body.screen-fit-mode #btn-print-native,
             body.screen-fit-mode #btn-print-gdi,
-            body.screen-fit-mode #print-output-hint,
             body.screen-fit-mode .qr-output-wrap { display: none; }
             body.screen-fit-mode .print-header-editor-panel {
                 position: fixed;
@@ -85,10 +82,7 @@
         body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; gap: 8px; }
         body.preview-mode #ctrl-title,
         body.preview-mode #btn-print,
-        body.preview-mode #btn-print-raster,
-        body.preview-mode #btn-print-native,
         body.preview-mode #btn-print-gdi,
-        body.preview-mode #print-output-hint,
         body.preview-mode #qpp-display,
         body.preview-mode .qr-output-wrap,
         body.preview-mode .print-header-editor-wrap { display: none; }
@@ -401,10 +395,7 @@
                 </div>
             </div>
             <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
-            <button id="btn-print-raster" onclick="safePrint('raster')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">프린터 최적화 인쇄</button>
-            <button id="btn-print-native" onclick="safePrint('native')" style="padding:8px 16px; border-radius:6px; border:none; background:#b45309; color:white; font-weight:bold; cursor:pointer;">네이티브 PCL 양면 시험 인쇄</button>
-            <button id="btn-print-gdi" onclick="safePrint('gdi')" style="padding:8px 16px; border-radius:6px; border:none; background:#2563eb; color:white; font-weight:bold; cursor:pointer;">Windows 드라이버 양면 테스트</button>
-            <span id="print-output-hint" style="font-size:11px; color:#a1a1aa; white-space:nowrap;" aria-live="polite"></span>
+            <button id="btn-print-gdi" onclick="safePrint('gdi')" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">빠른 인쇄</button>
         </div>
     </div>
     <div id="print-area"></div>
@@ -2062,28 +2053,12 @@ async function renderBody() {
     injectSubmitQrToLastExamPage(area);
     applyQrSolutionLockUI();
     updateScreenFitScale();
-    updatePrintOutputHint();
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
 }
 
 const AP_PRINT_RASTER_DPI = 300;
 const AP_PRINT_CSS_DPI = 96;
-
-function updatePrintOutputHint() {
-    const hint = document.getElementById('print-output-hint');
-    const area = document.getElementById('print-area');
-    if (!hint || !area) return;
-    const pages = area.querySelectorAll('.page').length;
-    const math = area.querySelectorAll('.mjx-container').length;
-    const recommend = pages >= 8 || math >= 250;
-    hint.textContent = recommend
-        ? `프린터 최적화 권장 · ${pages}쪽 / 수식 ${math}개`
-        : `${pages}쪽 · 일반 인쇄 가능`;
-    hint.title = recommend
-        ? '페이지 전체를 300dpi 이미지로 평탄화해 PS 프린터 드라이버 해석량을 줄입니다.'
-        : '일반 벡터 인쇄는 화면 열람과 동일한 PDF 구조를 사용합니다.';
-}
 
 function waitForPrintImages(root, timeoutMs = 5000) {
     const images = Array.from(root?.querySelectorAll('img') || []);
@@ -2237,7 +2212,7 @@ async function flattenPrintImagesForOpaquePrint() {
 let printPending = false;
 
 function setPrintButtonsBusy(busy, mode) {
-    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-raster'), document.getElementById('btn-print-native'), document.getElementById('btn-print-gdi')].filter(Boolean);
+    const buttons = [document.getElementById('btn-print'), document.getElementById('btn-print-gdi')].filter(Boolean);
     buttons.forEach(button => {
         if (!button.dataset.apPrintLabel) button.dataset.apPrintLabel = button.textContent;
         button.disabled = busy;
