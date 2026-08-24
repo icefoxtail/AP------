@@ -302,6 +302,14 @@
 - 추가로 legacy sparse-question-number 매칭에서 archive source와 맞지 않는 고아 blueprint 4행이 발견됐다. 해당 행은 삭제·추정 보강하지 않고 별도 검토 목록으로 보류한다.
 - 따라서 Phase 3는 아직 시작하지 않는다. MIXED identity audit, 3개 source-unavailable 처리, 4개 orphan 행 처리가 끝난 뒤 post-audit와 QR/OMR 게이트를 최종 재실행한다.
 
+## 2-35. 2026-08-24 MIXED identity 승격 및 잔여 blocker 재판정
+
+- `audit-archive-blueprint-mixed-identity.mjs`로 MIXED 7개 파일·343행을 현재 archive JS의 `source_archive_file + source_question_no`와 대조했다. source file missing, source question missing, parse error, UID/ordinal mismatch는 모두 0건이며 canonical UID·source ordinal·metadata hash 후보가 343/343건 준비됐다.
+- 검토 전용 UPDATE plan 343건을 생성·정적 안전검사 후, 변경 전 원격 D1 export를 보존하고 원격 `exam_blueprints`에 적용했다. 적용 후 export에서 343/343행의 UID·ordinal·metadata hash가 채워지고 재감사도 통과했다.
+- 최신 post-audit는 MIXED identity blocker를 해소했고, source-backed metadata diff도 0이다. QR/OMR 정적 회귀는 7/7 통과했다.
+- 현재 남은 blocker는 (1) sparse source에 매칭되지 않는 legacy orphan blueprint 4행, (2) 원본 JS가 없는 3개 파일 72행이다. 두 범위는 삭제·추정 보강하지 않고 disposition 보류로 유지한다.
+- 다음 단계는 이 4+72행의 보류 사유와 운영 영향 보고서를 확정한 뒤, 승인 가능한 범위만 question-index/runtime 승격 전 검토하는 것이다. Phase 3 승격은 잔여 blocker 처리 전 시작하지 않는다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.
