@@ -122,9 +122,29 @@
         record.summary ||
         record.lesson_content ||
         record.homework ||
-        record.next_plan
+        record.next_plan ||
+        record.special_note
       )
     );
+  }
+
+  function progressRowsForRecord(db, recordId) {
+    const id = normalizeId(recordId);
+    if (!id) return [];
+
+    return [
+      ...(Array.isArray(db.class_daily_progress) ? db.class_daily_progress : []),
+      ...(Array.isArray(db.timetable_class_daily_progress) ? db.timetable_class_daily_progress : [])
+    ].filter(row => normalizeId(row && row.record_id) === id);
+  }
+
+  function classDailyRecordHasContent(db, record) {
+    if (recordHasContent(record)) return true;
+
+    // 교재별 진도는 본체(class_daily_records)가 아니라 하위 progress 행에 저장된다.
+    // 두 캐시가 모두 존재할 수 있으므로 어느 쪽에 연결된 행이 있어도 기록 완료로 본다.
+    return progressRowsForRecord(db, record && record.id)
+      .some(row => str(row && (row.progress_text || row.progress || row.content)));
   }
 
   function buildRecordGapMemos(input) {
@@ -139,10 +159,13 @@
       const previousDate = str(previousByClass[classId]).slice(0, 10);
       if (!classId || !previousDate) return null;
 
-      const record = (db.class_daily_records || []).find(row =>
+      const record = [
+        ...(Array.isArray(db.class_daily_records) ? db.class_daily_records : []),
+        ...(Array.isArray(db.timetable_class_daily_records) ? db.timetable_class_daily_records : [])
+      ].find(row =>
         normalizeId(row.class_id) === classId &&
         str(row.date).slice(0, 10) === previousDate &&
-        recordHasContent(row)
+        classDailyRecordHasContent(db, row)
       );
 
       if (record) return null;
