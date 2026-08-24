@@ -286,8 +286,8 @@ internal static class GdiPrinter
             document.PrinterSettings.Duplex = duplex ? Duplex.Vertical : Duplex.Simplex;
             SetA4(document.PrinterSettings);
             var maximumCopies = Math.Max(1, document.PrinterSettings.MaximumCopies);
-            var driverCopies = maximumCopies > 1
-                ? Math.Min(copies, maximumCopies)
+            var driverCopies = maximumCopies >= copies
+                ? copies
                 : 1;
             document.PrinterSettings.Copies = (short)driverCopies;
             using (var devMode = DriverDevMode.Apply(document.PrinterSettings, duplex))
