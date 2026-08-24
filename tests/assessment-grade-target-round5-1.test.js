@@ -25,11 +25,12 @@ assert(
   'archive/index.html: 문항 수 확인 실패 시 "문항 수 확인이 필요합니다." 문구가 있어야 한다'
 );
 
-// 4. archive/index.html: 문항 수 확인 실패 시 경고 노출 + early return으로 잘못된 배정/인쇄를 막는지 확인
+// 4. archive/index.html: 통합 패널 제출 단계에서 문항 수 확인 실패 시
+//    경고 노출 + early return으로 잘못된 배정/인쇄를 막는지 확인
 //    (throw 대신 경고 UI + early return 방어를 정상 동작으로 수용 — Round 3 product decision #5)
 assert(
-  /if \(!resolveExamQuestionCountForAssignment\(item\)\)\s*\{[\s\S]*?문항 수 확인이 필요합니다\.[\s\S]*?return;[\s\S]*?\}/.test(archiveIndex),
-  'archive/index.html: 문항 수 확인 실패 시 경고 노출 후 early return으로 배정을 중단해야 한다'
+  /if \(!resolveExamQuestionCountForAssignment\(AssignTarget\.item\)\)\s*\{[\s\S]*?문항 수 확인이 필요합니다\.[\s\S]*?return;[\s\S]*?\}/.test(archiveIndex),
+  'archive/index.html: 통합 패널 문항 수 확인 실패 시 경고 노출 후 early return으로 배정을 중단해야 한다'
 );
 
 // 5. assessment-mvp.html: 평가팩 question count 확인 실패 방어 확인
@@ -60,8 +61,10 @@ assert(!assessmentMvp.includes('created_by'), 'assessment-mvp.html: created_by�
 assert(!archiveIndex.includes('ASSESSMENT:'), 'archive/index.html: ASSESSMENT:<packId>를 archive_file에 넣지 않아야 한다');
 assert(!assessmentMvp.includes('ASSESSMENT:'), 'assessment-mvp.html: ASSESSMENT:<packId>를 archive_file에 넣지 않아야 한다');
 
-// 9. target_scope grade 흐름 확인
-assert(archiveIndex.includes("target_scope: 'grade'"), 'archive/index.html: 학년별 출제 시 target_scope: grade가 있어야 한다');
+// 9. target_scope grade 흐름 확인. 통합 패널은 선택된 반 수에 따라
+// AssignTarget.scope를 계산해 registerIndexClassExamAssignment 옵션으로 전달한다.
+assert(archiveIndex.includes('AssignTarget.scope = classIds.length === 1 ? \'class\' : \'grade\''), 'archive/index.html: 통합 패널이 학년/반 scope를 계산해야 한다');
+assert(archiveIndex.includes('target_scope: options.target_scope || \'class\''), 'archive/index.html: 계산한 target_scope를 배정 payload에 전달해야 한다');
 assert(assessmentMvp.includes("target_scope: 'grade'"), 'assessment-mvp.html: 학년별 출제 시 target_scope: grade가 있어야 한다');
 
 // 10. assignment_batch_id 흐름 확인
@@ -75,12 +78,12 @@ assert(assessmentMvp.includes('pack_hash'), 'assessment-mvp.html: pack_hash가 �
 assert(!archiveIndex.includes('assessment-analysis.html'), 'archive/index.html: 분석표 화면 링크가 없어야 한다');
 assert(!assessmentMvp.includes('assessment-analysis.html'), 'assessment-mvp.html: 분석표 화면 링크가 없어야 한다');
 
-// 12. 기존 출제 대상 문구 유지 확인
-for (const [label, html] of [['archive/index.html', archiveIndex], ['assessment-mvp.html', assessmentMvp]]) {
-  assert(html.includes('출제 대상'), `${label}: "출제 대상" 문구가 유지되어야 한다`);
-  assert(html.includes('반별'), `${label}: "반별" 문구가 유지되어야 한다`);
-  assert(html.includes('학년별'), `${label}: "학년별" 문구가 유지되어야 한다`);
-  assert(html.includes('해당 학년에 출제할 반이 없습니다.'), `${label}: "해당 학년에 출제할 반이 없습니다." 문구가 유지되어야 한다`);
+// 12. 기존 assessment 모달 문구는 유지하고, archive는 통합 패널 계약을 확인한다.
+for (const requiredText of ['출제 대상', '반별', '학년별', '해당 학년에 출제할 반이 없습니다.']) {
+  assert(assessmentMvp.includes(requiredText), `assessment-mvp.html: "${requiredText}" 문구가 유지되어야 한다`);
+}
+for (const requiredText of ['출제 대상 선택', 'assignTargetModalOverlay', 'assignTargetGoReview', 'assignTargetSubmit']) {
+  assert(archiveIndex.includes(requiredText), `archive/index.html: 통합 패널 표식 "${requiredText}"가 있어야 한다`);
 }
 
 console.log('assessment grade target round5-1 checks passed');

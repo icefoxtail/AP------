@@ -335,6 +335,46 @@
 - 후보 JS를 중복 복제하지 않고 blueprint의 `source_archive_file`을 기존 `original/...기출c.js`로 연결해 원격 D1 72행을 갱신했다. post-audit에서 source missing 0, metadata diff 0, source questions 1,332건으로 확인됐다.
 - QR/OMR 정적 회귀 7/7과 MIXED identity 343/343 재감사를 통과했다. 현재 남은 blueprint blocker는 삼산중 sparse orphan 4행뿐이다.
 
+## 2-40. 2026-08-24 삼산중 orphan 4행 D드라이브 원본 대조
+
+- D드라이브의 `D:\2026년 기출\1학기중간_\중3\삼산중\23_삼산중_1학기_기말_중3_기출.pdf`를 확인했다. 파일명과 달리 내부 표지는 `2026학년도 1학기 1차 정기시험`, 2026-04-27이며 현재 삼산중 운영 JS의 원본 후보와 일치한다.
+- 실제 PDF에는 q5~q8이 각각 존재한다. 현재 운영 JS는 questionBank 20개(ID `1,2,3,4,9~24`)로 q5~q8이 누락되어 있다.
+- DB orphan q5~q8은 각각 source_question_no 9~12를 가리키며, 실제 q5~q8의 metadata가 아니다. 기존 q9~q12와 중복·오지정된 레거시 행으로 판정한다.
+- 비교만 수행했으며 JS·DB 삭제/재매핑은 하지 않았다. 비교 근거는 `archive/_generated/intelligence/phase2/samsan-orphan-d-drive-comparison-20260824.md`에 기록했다.
+- 다음 단계는 PDF q5~q8을 전사·독립 검증하여 JS에 추가할지 승인한 뒤 question-index/identity/runtime과 blueprint 4행을 함께 재생성하는 것이다. 그 전까지 orphan 4행은 `DISPOSITION_REQUIRED`로 유지한다.
+
+## 2-41. 2026-08-24 삼산중 q5~q8 전사·identity·DB 동기화 완료
+
+- D드라이브 원본 PDF의 실제 q5~q8을 운영 JS에 전사하고 독립 풀이·정답을 작성했다. q5 도형은 `archive/assets/images/26_삼산중_1학기_중간_중3_기출/q05.png`로 보존했다.
+- 삼산중 운영 JS는 ID 1~24의 24문항으로 복구됐고, q5~q8은 q9~q12와 중복되지 않는다. `archive/db.js`의 해당 파일 qCount도 24로 맞췄다.
+- question-index·identity map/runtime·현재 분류 스냅샷을 438개 파일·10,690문항 기준으로 재생성했다. UID 충돌 0, identity 실패 0, 분류 제외 0이다.
+- sparse orphan 매칭을 question_no 우선·ordinal 보조로 고정하고 identity 일치 여부까지 검사하도록 dry-run 도구를 보강했다. 원격 D1에는 삼산중 q1~q24의 source ordinal/UID/hash를 반영했다.
+- post dry-run 및 post-audit는 `POST_AUDIT_PASS`다. 1,336/1,336 source question이 `unchanged`, `updateRequired=0`, `insertRequired=0`, `unmatchedDbRows=0`이며 source missing/parse error도 0이다. 삼산중 orphan 4행은 실제 q5~q8로 해소됐고, 7개 MIXED 파일 표시는 blocker가 아닌 정상적인 `MIXED_NO_ARCHIVE_SOURCE` 분류다.
+- 운영 배치 audit는 24/24 indexed, candidates 0, errors 0으로 통과했다. 다음은 전체 운영 QA/렌더 확인 후 이 상태를 기준점으로 고정하는 것이다.
+
+## 2-42. 2026-08-24 전체 운영 QA 및 향림중 해설 보강
+
+- 전체 운영 audit에서 확인된 24_향림중_2학기_기말_중1_기출.js 24문항을 D드라이브 시험지·해설 PDF와 대조해 독립 풀이를 작성했다. 해당 파일의 빈 해설은 24→0건이 됐다.
+- 향림중 exam/sol/ans 브라우저 QA는 각각 24문항·24해설·24정답, 이미지 naturalWidth 양수, 수평 overflow·render error·console error/warning 0건으로 통과했다.
+- 전체 운영 재생성 후 438개 파일·10,690문항, question-index/index count 일치, identity UID 10,690개·충돌 0, metadata load/join 실패 0, QR/OMR 7/7을 확인했다.
+- 생성 후보본은 운영 JS 기준으로 동기화해 후보 hash mismatch를 0건으로 만들었다. 전체 deterministic audit의 남은 28건은 기존 정책상 source-dependent DB school 공란뿐이며 문항·해설·이미지 결함은 0건이다.
+- 현재 기준점은 운영 문항·후보·index·identity·렌더 QA가 모두 통과한 상태다.
+
+## 2-43. 2026-08-24 출제 대상 통합 패널 Phase 3 사전 검증
+
+- `docs/plans/ARCHIVE_EXAM_TARGET_SELECTION_NEXT_PLAN.md`의 다음 단계인 Phase 3(배정/제외 로직 통합 검증) 진입 전 정적 사전 검증을 완료했다.
+- Worker route syntax와 Wrangler `--dry-run` 번들(1,067.07 KiB, gzip 189.28 KiB)이 통과했고, migration 추가 없이 기존 테이블 계약을 유지한다.
+- 현재 unified panel 계약에 맞게 stale static assertions를 분리·갱신했으며 `assessment-grade-target-assignment`, `assessment-grade-target-round5-1`, `assessment-assignment-metadata-flow`, `archive-assignment-board-shared-teachers`, `assessment-archive-print-flow` 5개가 PASS다.
+- 다음 실행 단계는 사용자 승인 후 backend/프론트 배포를 기준으로 한 인증 세션 E2E다. 배포 전에는 Phase 3를 완료로 표시하지 않는다.
+- production Worker version 217에서 roster 무인증 요청이 `401 Unauthorized`로 차단되는 것을 확인했고, 브라우저 unified panel도 로그인 유도 상태까지 검증했다. 남은 것은 유효한 교사 세션으로 실제 roster 조회·부분 제외·학생 포털 노출을 확인하는 단계다.
+- 로그인된 Chrome 세션으로 삼산중 중3의 2개 반 roster(11명)를 조회했고, 학년 전체·부분 학생 선택의 최종 확인 명단을 검증했다. 다음 실제 쓰기 단계는 `class_exam_assignments` 등록과 부분 선택 exclusion 생성이며, 운영 데이터 변경 전 사용자 확인이 필요하다.
+
+## 2-44. 2026-08-24 출제 대상 통합 패널 Phase 3 승인 실행 및 Phase 4 정리
+
+- 사용자 승인 후 삼산중 중3 기출을 실제 운영에 등록했다. 중3A 3명 대상·1명 제외, 중3B 7명 전체로 총 10명이며 두 반 진행 상태가 모두 성공했다.
+- 출제보드 read-only 조회에서 시험지가 `중3A, 중3B`로 표시됐다. 학생 포털은 기존 exclusion filter 계약을 정적 회귀 테스트로 확인해 별도 학생 계정 스모크를 차단 조건으로 두지 않는다.
+- 계획서의 API flow·worker route·regression risk 문서를 갱신했고, Phase 4 정적 QA를 통과했다. 커밋·푸시·추가 배포는 수행하지 않았다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.
@@ -374,3 +414,9 @@
 4. `docs/MASTER_CURRENT_PROGRESS.md`
 5. `docs/MASTER_NEXT_WORK.md`
 6. 작업별 domain / implemented / plan 문서
+
+## 7. Phase 3 승인 실행 결과 (2026-08-24)
+
+- 삼산중 중3 기출을 운영 통합 패널에서 승인 실행했다: 중3A 3명 대상 + 1명 제외, 중3B 7명 전체로 총 10명이다.
+- 두 반의 배정 등록과 부분 반 제외 처리가 모두 성공했고, 중3 출제보드에서 해당 시험지가 `중3A, 중3B`로 표시되는 것을 read-only로 확인했다.
+- 학생 포털 비노출은 기존 `student-portal.js`의 exclusion filter가 담당하며, 해당 SQL 계약을 정적 회귀 테스트로 확인했다. 별도 학생 계정 검증은 추가 보류하지 않는다. 커밋·푸시·추가 배포는 아직 하지 않는다.
