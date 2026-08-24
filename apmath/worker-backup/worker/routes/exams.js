@@ -25,6 +25,9 @@ const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignm
 const ASSIGNMENT_MIXED_PAYLOAD_COLUMN = 'mixed_payload_json';
 const EXAM_SESSION_META_COLUMNS = ['assignment_id', 'pack_id', 'result_hash', 'analysis_status'];
 const BLUEPRINT_META_COLUMNS = ['assessment_pack_id', 'type_key', 'difficulty'];
+const BLUEPRINT_ARCHIVE_METADATA_COLUMNS = ['sub_unit_key', 'template_key', 'metadata_revision', 'metadata_hash'];
+const BLUEPRINT_IDENTITY_COLUMNS = ['source_question_uid', 'source_question_ordinal'];
+const ARCHIVE_METADATA_REVISION = 'archive-metadata-v1';
 const QUESTION_REVIEW_META_COLUMNS = ['concept', 'error_tag', 'difficulty', 'question_type'];
 const RESULT_ITEM_COLUMNS = [
   'session_id', 'assignment_id', 'pack_id', 'student_id', 'class_id', 'order_no', 'question_no',
@@ -39,6 +42,11 @@ const columnCacheByEnv = new WeakMap();
 function normalizeOptionalText(value) {
   const text = String(value ?? '').trim();
   return text || null;
+}
+
+function normalizeOptionalPositiveInteger(value) {
+  const number = Number(value);
+  return Number.isInteger(number) && number > 0 ? number : null;
 }
 
 function normalizeMixedAssignmentPayload(value, archiveFile) {
@@ -90,6 +98,66 @@ function normalizeAssignmentArchiveFile(value) {
   if (/^(exams|assets|data)\//.test(path)) return path;
   if (!path.endsWith('.js')) path += '.js';
   return `exams/${path}`;
+}
+
+function normalizeSourceFileForQuestionUid(value) {
+  return normalizeAssignmentArchiveFile(value)
+    .replace(/^exams\//, '')
+    .normalize('NFC')
+    .replace(/\\/g, '/')
+    .replace(/^\.\//, '')
+    .trim();
+}
+
+async function makeCanonicalQuestionUid(sourceArchiveFile, sourceOrdinal) {
+  const ordinal = normalizeOptionalPositiveInteger(sourceOrdinal);
+  const sourceFile = normalizeSourceFileForQuestionUid(sourceArchiveFile);
+  if (!sourceFile || !ordinal) return null;
+  return `qid_v1_${await sha256hex(`${sourceFile}#${ordinal}`)}`;
+}
+
+function firstArchiveMetadataValue(question, names) {
+  for (const name of names) {
+    const value = question?.[name];
+    if (value !== undefined && value !== null && String(value).trim() !== '') return value;
+  }
+  return null;
+}
+
+function normalizeArchiveMetadataTags(value) {
+  if (!Array.isArray(value)) return [];
+  return value.map(item => String(item || '').trim()).filter(Boolean);
+}
+
+function buildArchiveQuestionMetadata(question) {
+  return {
+    standardUnitKey: firstArchiveMetadataValue(question, ['standardUnitKey', 'standard_unit_key']),
+    standardUnit: firstArchiveMetadataValue(question, ['standardUnit', 'standard_unit']),
+    standardCourse: firstArchiveMetadataValue(question, ['standardCourse', 'standard_course']),
+    subUnitKey: firstArchiveMetadataValue(question, ['subUnitKey', 'sub_unit_key']),
+    conceptClusterKey: firstArchiveMetadataValue(question, ['conceptClusterKey', 'concept_cluster_key', 'conceptCluster', 'conceptKey', 'concept_key']),
+    typeKey: firstArchiveMetadataValue(question, ['problemTypeKey', 'problem_type_key', 'typeKey', 'type_key']),
+    templateKey: firstArchiveMetadataValue(question, ['templateKey', 'template_key']),
+    difficulty: firstArchiveMetadataValue(question, ['difficultyBucket', 'difficulty_bucket', 'difficulty', 'level']),
+    tags: normalizeArchiveMetadataTags(question?.tags),
+    metadataRevision: String(firstArchiveMetadataValue(question, ['metadataRevision', 'metadata_revision']) || ARCHIVE_METADATA_REVISION).trim()
+  };
+}
+
+async function buildArchiveMetadataHash(metadata) {
+  const payload = JSON.stringify({
+    standardUnitKey: metadata.standardUnitKey || null,
+    standardUnit: metadata.standardUnit || null,
+    standardCourse: metadata.standardCourse || null,
+    subUnitKey: metadata.subUnitKey || null,
+    conceptClusterKey: metadata.conceptClusterKey || null,
+    typeKey: metadata.typeKey || null,
+    templateKey: metadata.templateKey || null,
+    difficulty: metadata.difficulty || null,
+    tags: metadata.tags || [],
+    metadataRevision: metadata.metadataRevision || ARCHIVE_METADATA_REVISION
+  });
+  return sha256hex(payload);
 }
 
 function normalizeAssignmentSubject(raw) {
@@ -153,14 +221,12 @@ function extractQuestionBankFromArchiveText(jsText) {
   }
 }
 
-// archiveFile 하나당 한 번만 동기화한다(이미 blueprint 행이 있으면 건너뜀). 실패해도 시험 배정 자체는 막지 않는다.
+// Archive metadata revision/hash가 같을 때만 기존 blueprint 동기화를 건너뛴다.
+// Phase 2A migration 전 원격 DB도 계속 읽을 수 있도록 신규 컬럼은 동적으로 감지한다.
 async function syncExamBlueprintsFromArchive(env, archiveFile) {
   const file = normalizeAssignmentArchiveFile(archiveFile);
   if (!file || file.startsWith('MIXED:') || /^https?:\/\//i.test(file)) return;
   try {
-    const already = await env.DB.prepare('SELECT 1 FROM exam_blueprints WHERE archive_file = ? LIMIT 1').bind(file).first();
-    if (already) return;
-
     const url = EXAM_ARCHIVE_BASE_URL + file.split('/').map(encodeURIComponent).join('/');
     const res = await fetch(url);
     if (!res.ok) return;
@@ -168,31 +234,103 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
     const bank = extractQuestionBankFromArchiveText(jsText);
     if (!bank.length) return;
 
-    const stmts = bank.map(q => {
+    const blueprintColumns = await getTableColumnSet(env, 'exam_blueprints');
+    const blueprintIdentityColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_IDENTITY_COLUMNS);
+    const blueprintMetaColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_META_COLUMNS);
+    const blueprintArchiveMetadataColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_ARCHIVE_METADATA_COLUMNS);
+    const canCompareMetadata = blueprintColumns.has('metadata_revision') && blueprintColumns.has('metadata_hash');
+    const existingSelect = ['question_no'];
+    if (blueprintIdentityColumns.includes('source_question_ordinal')) existingSelect.push('source_question_ordinal');
+    if (canCompareMetadata) existingSelect.push('metadata_revision', 'metadata_hash');
+    const existingResult = await env.DB.prepare(
+      `SELECT ${existingSelect.join(', ')} FROM exam_blueprints WHERE archive_file = ?`
+    ).bind(file).all();
+    const existingRows = existingResult.results || [];
+
+    const metadataRows = await Promise.all(bank.map(async (q, index) => {
+      const metadata = buildArchiveQuestionMetadata(q);
+      return {
+        sourceOrdinal: index + 1,
+        questionNo: Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0),
+        metadata,
+        metadataHash: await buildArchiveMetadataHash(metadata)
+      };
+    }));
+
+    if (canCompareMetadata && existingRows.length === metadataRows.length) {
+      const existingByOrdinal = new Map(
+        existingRows
+          .filter(row => Number(row.source_question_ordinal) > 0)
+          .map(row => [Number(row.source_question_ordinal), row])
+      );
+      const existingByQuestionNo = new Map(existingRows.map(row => [Number(row.question_no), row]));
+      const unchanged = metadataRows.every(row => {
+        const existing = existingByOrdinal.get(row.sourceOrdinal) || existingByQuestionNo.get(row.questionNo);
+        return existing &&
+          String(existing.metadata_revision || '') === String(row.metadata.metadataRevision || '') &&
+          String(existing.metadata_hash || '') === String(row.metadataHash || '');
+      });
+      if (unchanged) return;
+    } else if (!canCompareMetadata && existingRows.length > 0) {
+      // Before Phase 2A is applied remotely, preserve the legacy one-time sync behavior.
+      return;
+    }
+
+    const stmts = (await Promise.all(bank.map(async (q, index) => {
       const questionNo = Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0);
       if (!questionNo) return null;
+      const sourceOrdinal = index + 1;
+      const sourceQuestionUid = blueprintIdentityColumns.includes('source_question_uid')
+        ? await makeCanonicalQuestionUid(file, sourceOrdinal)
+        : null;
+      const metadataRow = metadataRows[index];
+      const metadata = metadataRow.metadata;
+      const columns = [
+        'archive_file', 'question_no', 'source_archive_file', 'source_question_no',
+        'standard_unit_key', 'standard_unit', 'standard_course', 'concept_cluster_key',
+        ...blueprintIdentityColumns,
+        ...blueprintMetaColumns,
+        ...blueprintArchiveMetadataColumns,
+        'updated_at'
+      ];
+      const values = [
+        file, questionNo, file, questionNo,
+        metadata.standardUnitKey || null, metadata.standardUnit || null, metadata.standardCourse || null, metadata.conceptClusterKey || null
+      ];
+      for (const column of blueprintIdentityColumns) {
+        values.push(column === 'source_question_uid' ? sourceQuestionUid : sourceOrdinal);
+      }
+      for (const column of blueprintMetaColumns) {
+        if (column === 'assessment_pack_id') values.push(null);
+        else if (column === 'type_key') values.push(metadata.typeKey || null);
+        else if (column === 'difficulty') values.push(metadata.difficulty || null);
+      }
+      for (const column of blueprintArchiveMetadataColumns) {
+        if (column === 'sub_unit_key') values.push(metadata.subUnitKey || null);
+        else if (column === 'template_key') values.push(metadata.templateKey || null);
+        else if (column === 'metadata_revision') values.push(metadata.metadataRevision || ARCHIVE_METADATA_REVISION);
+        else if (column === 'metadata_hash') values.push(metadataRow.metadataHash || null);
+      }
+      const updateSets = [
+        'source_archive_file = excluded.source_archive_file',
+        'source_question_no = excluded.source_question_no',
+        'standard_unit_key = excluded.standard_unit_key',
+        'standard_unit = excluded.standard_unit',
+        'standard_course = excluded.standard_course',
+        'concept_cluster_key = excluded.concept_cluster_key',
+        ...blueprintIdentityColumns.map(column => `${column} = excluded.${column}`),
+        ...blueprintMetaColumns.map(column => `${column} = excluded.${column}`),
+        ...blueprintArchiveMetadataColumns.map(column => `${column} = excluded.${column}`),
+        "updated_at = DATETIME('now')"
+      ];
       return env.DB.prepare(`
         INSERT INTO exam_blueprints (
-          archive_file, question_no, source_archive_file, source_question_no,
-          standard_unit_key, standard_unit, standard_course, concept_cluster_key, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+          ${columns.join(', ')}
+        ) VALUES (${values.map(() => '?').join(', ')}, DATETIME('now'))
         ON CONFLICT(archive_file, question_no) DO UPDATE SET
-          standard_unit_key = excluded.standard_unit_key,
-          standard_unit = excluded.standard_unit,
-          standard_course = excluded.standard_course,
-          concept_cluster_key = excluded.concept_cluster_key,
-          updated_at = DATETIME('now')
-      `).bind(
-        file,
-        questionNo,
-        file,
-        questionNo,
-        q?.standardUnitKey || null,
-        q?.standardUnit || null,
-        q?.standardCourse || null,
-        q?.conceptClusterKey || null
-      );
-    }).filter(Boolean);
+          ${updateSets.join(',\n          ')}
+      `).bind(...values);
+    }))).filter(Boolean);
 
     if (stmts.length) await env.DB.batch(stmts);
   } catch (e) {
@@ -872,25 +1010,57 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const blueprintColumns = await getTableColumnSet(env, 'exam_blueprints');
       const blueprintMetaColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_META_COLUMNS);
+      const blueprintArchiveMetadataColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_ARCHIVE_METADATA_COLUMNS);
+      const blueprintIdentityColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_IDENTITY_COLUMNS);
       const stmts = [];
       for (const item of d.items) {
         if (!item.question_no) continue;
 
         const src_archive_file = item.source_archive_file || d.archive_file;
         const src_question_no = item.source_question_no || item.question_no;
+        const src_question_uid = normalizeOptionalText(item.source_question_uid || item.sourceQuestionUid);
+        const src_question_ordinal = normalizeOptionalPositiveInteger(item.source_question_ordinal || item.sourceQuestionOrdinal);
+        const archiveMetadata = {
+          standardUnitKey: item.standard_unit_key || item.standardUnitKey,
+          standardUnit: item.standard_unit || item.standardUnit,
+          standardCourse: item.standard_course || item.standardCourse,
+          subUnitKey: item.sub_unit_key || item.subUnitKey,
+          conceptClusterKey: item.concept_cluster_key || item.conceptClusterKey || item.concept_key || item.conceptKey,
+          typeKey: item.type_key || item.problem_type_key || item.typeKey || item.problemTypeKey,
+          templateKey: item.template_key || item.templateKey,
+          difficulty: item.difficulty || item.difficulty_bucket || item.difficultyBucket || item.level,
+          tags: item.tags,
+          metadataRevision: item.metadata_revision || item.metadataRevision || ARCHIVE_METADATA_REVISION
+        };
+        const archiveMetadataHash = blueprintArchiveMetadataColumns.includes('metadata_hash')
+          ? normalizeOptionalText(item.metadata_hash || item.metadataHash) || await buildArchiveMetadataHash(archiveMetadata)
+          : null;
         const columns = [
           'archive_file', 'question_no', 'source_archive_file', 'source_question_no',
           'standard_unit_key', 'standard_unit', 'standard_course', 'concept_cluster_key',
+          ...blueprintIdentityColumns,
           ...blueprintMetaColumns,
+          ...blueprintArchiveMetadataColumns,
           'created_at', 'updated_at'
         ];
         const values = [
           d.archive_file, item.question_no, src_archive_file, src_question_no,
           item.standard_unit_key || null, item.standard_unit || null, item.standard_course || null, item.concept_cluster_key || null
         ];
+        for (const col of blueprintIdentityColumns) {
+          values.push(col === 'source_question_uid' ? src_question_uid : src_question_ordinal);
+        }
         for (const col of blueprintMetaColumns) {
           if (col === 'assessment_pack_id') values.push(normalizeOptionalText(item.assessment_pack_id || d.assessment_pack_id));
+          else if (col === 'type_key') values.push(normalizeOptionalText(archiveMetadata.typeKey));
+          else if (col === 'difficulty') values.push(normalizeOptionalText(archiveMetadata.difficulty));
           else values.push(normalizeOptionalText(item[col]));
+        }
+        for (const col of blueprintArchiveMetadataColumns) {
+          if (col === 'sub_unit_key') values.push(normalizeOptionalText(archiveMetadata.subUnitKey));
+          else if (col === 'template_key') values.push(normalizeOptionalText(archiveMetadata.templateKey));
+          else if (col === 'metadata_revision') values.push(normalizeOptionalText(archiveMetadata.metadataRevision));
+          else if (col === 'metadata_hash') values.push(archiveMetadataHash);
         }
         const updateSets = [
           'source_archive_file=excluded.source_archive_file',
@@ -899,7 +1069,9 @@ export async function handleExams(request, env, teacher, path, url) {
           'standard_unit=excluded.standard_unit',
           'standard_course=excluded.standard_course',
           'concept_cluster_key=excluded.concept_cluster_key',
+          ...blueprintIdentityColumns.map(col => `${col}=excluded.${col}`),
           ...blueprintMetaColumns.map(col => `${col}=excluded.${col}`),
+          ...blueprintArchiveMetadataColumns.map(col => `${col}=excluded.${col}`),
           "updated_at=DATETIME('now')"
         ];
 
@@ -1435,8 +1607,8 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const assignments = dedupeClassExamAssignments(res.results || []);
       const exclusions = await loadClassAssignmentExclusions(env, assignments.map(a => a.id));
-      // 이 시험이 배정된 시점에 blueprint 동기화가 안 됐던 옛 데이터를 여기서 한 번만 소급 채운다
-      // (이미 동기화된 archive_file은 syncExamBlueprintsFromArchive 내부에서 즉시 스킵되므로 이후 요청은 거의 비용이 없다).
+      // 이 시험이 배정된 시점에 blueprint 동기화가 안 됐던 옛 데이터를 소급 채운다.
+      // 이후 요청은 archive metadata revision/hash가 같을 때만 빠르게 스킵된다.
       const archiveFilesToSync = [...new Set(assignments.map(a => a.archive_file).filter(Boolean))];
       await Promise.all(archiveFilesToSync.map(file => syncExamBlueprintsFromArchive(env, file)));
       return jsonResponse({ success: true, assignments, exclusions });
@@ -1688,7 +1860,7 @@ export async function handleExams(request, env, teacher, path, url) {
         ...(assignmentsRes.results || []).map(row => row.archive_file)
       ].map(value => normalizeAssignmentArchiveFile(value || '')).filter(Boolean))];
 
-      // 옛 데이터 소급 동기화(이미 동기화된 archive_file은 즉시 스킵됨).
+      // 옛 데이터 소급 동기화(archive metadata revision/hash가 같을 때만 스킵됨).
       await Promise.all(archiveFiles.map(file => syncExamBlueprintsFromArchive(env, file)));
 
       let blueprints = { results: [] };

@@ -210,10 +210,18 @@ CREATE TABLE IF NOT EXISTS exam_blueprints (
   question_no INTEGER NOT NULL,
   source_archive_file TEXT,
   source_question_no INTEGER,
+  source_question_uid TEXT,
+  source_question_ordinal INTEGER,
   standard_unit_key TEXT,
   standard_unit TEXT,
   standard_course TEXT,
   concept_cluster_key TEXT,
+  sub_unit_key TEXT,
+  type_key TEXT,
+  template_key TEXT,
+  difficulty TEXT,
+  metadata_revision TEXT,
+  metadata_hash TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (archive_file, question_no)
@@ -397,6 +405,8 @@ CREATE INDEX IF NOT EXISTS idx_school_exam_records_deleted ON school_exam_record
 CREATE INDEX IF NOT EXISTS idx_exam_blueprints_archive ON exam_blueprints(archive_file);
 CREATE INDEX IF NOT EXISTS idx_exam_blueprints_unit ON exam_blueprints(standard_unit_key);
 CREATE INDEX IF NOT EXISTS idx_exam_blueprints_cluster ON exam_blueprints(concept_cluster_key);
+CREATE INDEX IF NOT EXISTS idx_exam_blueprints_sub_unit ON exam_blueprints(sub_unit_key);
+CREATE INDEX IF NOT EXISTS idx_exam_blueprints_metadata_hash ON exam_blueprints(metadata_hash);
 
 CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_class ON class_exam_assignments(class_id);
 CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_date ON class_exam_assignments(exam_date);
