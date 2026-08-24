@@ -258,6 +258,12 @@
 - blueprint post-audit·MIXED identity·QR/OMR 회귀·identity map·DB consistency·운영 세부단원 QA를 최종 재실행해 통과했다.
 - 남은 범위는 원본 부재/legacy orphan blueprint 76행과 source-dependent DB 28/60건이며, 자동 추정·삭제 없이 보류한다. Phase 3 신규 승격은 이 보류 범위 처리 전에는 진행하지 않는다.
 
+### AP Math JS 아카이브 후보 기출 승격 후 재검증 (2026-08-24)
+
+- 효천고 26행·매산여고 23행·순천고 23행의 `기출c.js` 후보를 blueprint source로 승격했다. 후보 파일을 복제해 중복 등록하지 않고 기존 `original/...` 경로를 정식 source로 연결했다.
+- 원본 부재 72행은 해소됐고, 최신 post-audit의 source missing·metadata diff는 0이다. QR/OMR 7/7과 MIXED identity 343/343도 통과했다.
+- 현재 blueprint 보류는 삼산중 sparse orphan 4행으로 축소됐다. source-dependent DB 28/60건은 별도 정책 보류로 유지한다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.
