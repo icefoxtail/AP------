@@ -159,3 +159,10 @@
 - 원격 D1 migration ledger에 `20260820_exam_blueprint_canonical_question_identity.sql`(id 2) → `20260824_archive_blueprint_metadata_bridge.sql`(id 3) 순서가 기록됐다.
 - deployed baseline에 이미 있던 `type_key`·`difficulty`는 중복 추가하지 않고, 두 번째 migration은 `sub_unit_key`, `template_key`, `metadata_revision`, `metadata_hash`와 조회 인덱스만 추가했다. identity 2개와 metadata 6개 호환 컬럼이 모두 원격에 존재한다.
 - `ap-math-os-v2612` Worker는 dry-run 후 production에 배포됐고 version ID는 `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`다. 데이터 backfill은 아직 수행하지 않았다.
+
+## 19. 2026-08-24 Archive blueprint backfill·post-audit
+
+- 원격 `exam_blueprints` 최신 export를 기준으로 source-backed 1,260행을 metadata-aware UPSERT했다. post-backfill export는 1,679행, source-backed hash diff 0이다.
+- MIXED 7개 파일/343행은 `source_question_uid`, `source_question_ordinal`, metadata가 모두 비어 있어 별도 identity audit 대상이다. source JS가 없는 3개 파일/72행도 별도 보류한다.
+- dry-run은 legacy 행의 `source_question_ordinal`이 없을 때 `question_no`를 ordinal로 간주하지 않고 실제 source question number로 보조 매칭하도록 보강했다. 그 결과 source와 맞지 않는 orphan blueprint 4행을 탐지했고, post-audit blocker로 유지한다.
+- 따라서 현재 D1 schema·runtime·backfill은 적용됐지만 Phase 3 승격 조건은 아직 충족하지 않았다.

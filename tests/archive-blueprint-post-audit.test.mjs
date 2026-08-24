@@ -25,12 +25,13 @@ try {
   fs.writeFileSync(readyDryRun, `${JSON.stringify({
     status: 'READY_FOR_SAMPLE_REVIEW',
     source: { schemaReady: true },
-    summary: { dbRows: 1, files: 1, sourceQuestions: 1, updateRequired: 0, insertRequired: 0, sourceQuestionMissing: 0 },
+    summary: { dbRows: 1, files: 1, sourceQuestions: 1, updateRequired: 0, insertRequired: 0, sourceQuestionMissing: 0, unmatchedDbRows: 0 },
     fileSummaries: [{ status: 'UNCHANGED' }]
   })}\n`, 'utf8');
   execFileSync(process.execPath, [tool, '--dry-run-report', readyDryRun, '--out', out], { cwd: root, encoding: 'utf8' });
   const pass = JSON.parse(fs.readFileSync(out, 'utf8'));
   assert.equal(pass.status, 'POST_AUDIT_PASS', 'zero-diff schema-ready report must pass post-audit');
+  assert.equal(pass.checks.unmatchedDbRowsZero, true, 'zero-diff schema-ready report must have no unmatched blueprint rows');
   console.log('archive blueprint post-audit checks passed');
 } finally {
   fs.rmSync(tempRoot, { recursive: true, force: true });

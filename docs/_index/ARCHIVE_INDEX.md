@@ -219,3 +219,9 @@
 - 원격 D1에 선행 identity migration 후 metadata bridge migration을 순서대로 적용했다. deployed baseline의 기존 `type_key`·`difficulty`는 보존하고 누락 컬럼·인덱스만 추가했다.
 - `ap-math-os-v2612` Worker production deploy 완료. version ID `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`.
 - 기존 blueprint metadata backfill은 아직 별도 게이트로 남아 있다.
+
+## 32. 2026-08-24 Archive blueprint backfill·post-audit
+
+- 원격 D1 source-backed 1,260행 metadata backfill 완료. 최신 export 기준 hash diff 0, QR/OMR 정적 회귀 7/7 통과.
+- post-audit 보류: MIXED 7개 파일/343행, source JS 부재 3개 파일/72행, legacy orphan blueprint 4행.
+- dry-run/audit가 sparse question number를 안전하게 처리하고 orphan을 blocker로 기록하도록 보강됐다. Phase 3 승격 전 별도 identity/source 검토가 필요하다.

@@ -294,6 +294,14 @@
 - `ap-math-os-v2612` Worker dry-run 및 production deploy를 완료했다. 배포 version ID는 `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`이며, D1/R2/backup workflow binding이 확인됐다.
 - 이번 단계는 schema·runtime bridge 배포까지다. 기존 920 blueprint의 metadata backfill, 최신 export 재생성, post-audit 및 Phase 3 진입은 별도 게이트로 남아 있다.
 
+## 2-34. 2026-08-24 Archive blueprint backfill·post-audit
+
+- 원격 D1 최신 export(1,675행)를 기준으로 1,260개 deterministic UPSERT 계획을 생성·검증하고 실제 backfill을 적용했다. Wrangler 결과는 1,260 queries processed, 7,572 rows written이다.
+- backfill 후 export는 1,679행이며 source-backed 1,260문항은 `updateRequired=0`, `unchanged=1260`으로 hash diff가 0이다. QR/OMR 정적 회귀 7/7도 다시 통과했다.
+- post-audit는 아직 `POST_AUDIT_REVIEW_REQUIRED`다. MIXED 7개 파일(총 343행)은 source UID/ordinal·metadata가 없고, source JS가 없는 3개 파일(총 72행)이 남았다.
+- 추가로 legacy sparse-question-number 매칭에서 archive source와 맞지 않는 고아 blueprint 4행이 발견됐다. 해당 행은 삭제·추정 보강하지 않고 별도 검토 목록으로 보류한다.
+- 따라서 Phase 3는 아직 시작하지 않는다. MIXED identity audit, 3개 source-unavailable 처리, 4개 orphan 행 처리가 끝난 뒤 post-audit와 QR/OMR 게이트를 최종 재실행한다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.
