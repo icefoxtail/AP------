@@ -237,3 +237,8 @@
 
 - `archive/tools/intelligence/build-archive-blueprint-blocker-disposition.mjs`: source-unavailable 3개 파일·72행과 sparse legacy orphan 4행을 삭제·추정 없이 보류 목록으로 고정하는 read-only report tool.
 - `archive/_generated/intelligence/phase2/archive-blueprint-blocker-disposition-v1.json`: 총 76행 `DISPOSITION_REQUIRED`, `phase3Gate.allowed=false` 결과.
+
+## 35. 2026-08-24 운영 index·identity 재생성 및 QA
+
+- `archive/question-index.js`, `archive/data/question_identity_map.json`, `archive/question-identity.js`를 현재 운영 JS 기준으로 재생성했다. 10,686문항·UID 충돌 0건이다.
+- 최신 운영 QA는 production/index subunit fields, master gap, candidate sync, qCount/index consistency를 모두 통과했다. source-dependent DB 28/60건과 blueprint 76행 보류는 유지한다.

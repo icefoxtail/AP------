@@ -247,6 +247,12 @@
 - 최신 disposition 보고서에서 source-unavailable 3개 파일·72행과 sparse legacy orphan 4행, 총 76행을 `DISPOSITION_REQUIRED`로 고정했다.
 - 원본 부재 행은 보강·삭제하지 않고, orphan은 question number를 ordinal로 추정하지 않고 그대로 보류한다. 따라서 question-index/runtime 승격 게이트는 아직 닫혀 있다.
 
+### AP Math JS 아카이브 운영 index·identity 재생성 및 QA (2026-08-24)
+
+- 현재 운영 JS 기준으로 Phase 0 inventory/collision과 세부단원 classification snapshot을 재생성했다. 438개 파일·10,686문항, UID 충돌 0건이다.
+- question-index·identity map/runtime을 재생성해 identity digest `aec6a7d1d9eb05dfb2f6b1e36014094b0971da5e6b480825638682862b4b7523`, runtime digest `3c51696802ebf67c3b34eead165640d5f8883e16a4436196cd570205e2064deb`로 고정했다.
+- 운영 세부단원 QA와 DB consistency에서 index/production 필드·문항 수·파일 매핑 게이트가 모두 통과했다. source-dependent DB 28/60건과 blueprint 보류 76행은 변경하지 않았다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.

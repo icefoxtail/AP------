@@ -316,6 +316,13 @@
 - source-unavailable 범위는 원본이 없으므로 metadata 쓰기·삭제·추정 대체를 하지 않고 보류한다. orphan 범위는 `question_no`를 source ordinal로 재해석하지 않고 현재 행을 그대로 보류한다.
 - 현재 총 보류는 76행이며, 이 보고서의 `phase3Gate.allowed=false` 상태에서는 question-index/runtime 승격을 실행하지 않는다.
 
+## 2-37. 2026-08-24 운영 JS 기준 index·identity 재생성 및 QA
+
+- 현재 운영 JS 기준으로 Phase 0 inventory·collision review와 세부단원 classification snapshot을 재생성했다. 438개 파일·10,686문항, qKey/UID 충돌 0건이다.
+- `question-index.js`, `question_identity_map.json`, `question-identity.js`를 같은 기준으로 재생성·커밋했다. identity digest는 `aec6a7d1d9eb05dfb2f6b1e36014094b0971da5e6b480825638682862b4b7523`, runtime digest는 `3c51696802ebf67c3b34eead165640d5f8883e16a4436196cd570205e2064deb`다.
+- 운영 세부단원 QA는 production/index 필드 일치, master gap, candidate sync, index count 게이트를 모두 통과했다. DB consistency도 파일 누락·중복·qCount/index mismatch 0건이다.
+- 기존 source-dependent DB 예외는 emptySchool 28건·필수 메타 gap 60건으로 유지되며, blueprint disposition 76행과 함께 Phase 3 승격 전 보류 범위다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.
