@@ -323,6 +323,12 @@
 - 운영 세부단원 QA는 production/index 필드 일치, master gap, candidate sync, index count 게이트를 모두 통과했다. DB consistency도 파일 누락·중복·qCount/index mismatch 0건이다.
 - 기존 source-dependent DB 예외는 emptySchool 28건·필수 메타 gap 60건으로 유지되며, blueprint disposition 76행과 함께 Phase 3 승격 전 보류 범위다.
 
+## 2-38. 2026-08-24 Phase 2 최종 게이트
+
+- 최종 post-audit는 source-backed metadata diff 0, MIXED identity review 0, QR/OMR 정적 회귀 7/7을 확인했다.
+- 운영 identity map은 10,686/10,686 UID·충돌 0, DB consistency는 파일 누락·중복·qCount/index mismatch 0, 운영 세부단원 QA의 classification/index/master 게이트가 모두 통과했다.
+- blueprint disposition 76행(원본 부재 72 + sparse orphan 4)과 DB source-dependent emptySchool 28·필수 gap 60은 자동 승격하지 않고 보류한다. Phase 3 신규 승격은 이 범위를 명시적으로 처리하기 전까지 시작하지 않는다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.

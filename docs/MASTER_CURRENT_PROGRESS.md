@@ -253,6 +253,11 @@
 - question-index·identity map/runtime을 재생성해 identity digest `aec6a7d1d9eb05dfb2f6b1e36014094b0971da5e6b480825638682862b4b7523`, runtime digest `3c51696802ebf67c3b34eead165640d5f8883e16a4436196cd570205e2064deb`로 고정했다.
 - 운영 세부단원 QA와 DB consistency에서 index/production 필드·문항 수·파일 매핑 게이트가 모두 통과했다. source-dependent DB 28/60건과 blueprint 보류 76행은 변경하지 않았다.
 
+### AP Math JS 아카이브 Phase 2 최종 게이트 (2026-08-24)
+
+- blueprint post-audit·MIXED identity·QR/OMR 회귀·identity map·DB consistency·운영 세부단원 QA를 최종 재실행해 통과했다.
+- 남은 범위는 원본 부재/legacy orphan blueprint 76행과 source-dependent DB 28/60건이며, 자동 추정·삭제 없이 보류한다. Phase 3 신규 승격은 이 보류 범위 처리 전에는 진행하지 않는다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.
