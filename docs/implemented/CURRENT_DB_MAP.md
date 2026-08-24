@@ -186,3 +186,8 @@
 
 - 원격 blueprint metadata/identity post-audit, MIXED audit, QR/OMR 7/7, identity map 10,686 UID, DB/index consistency, 운영 subunit QA를 최종 통과했다.
 - 근거 없는 source-dependent DB 28/60건과 blueprint 보류 76행 때문에 Phase 3 승격은 명시적 disposition 전까지 잠근다.
+
+## 24. 2026-08-24 후보 기출 source 승격
+
+- 효천고·매산여고·순천고 후보 3개 파일(총 72문항)을 기존 `original/...기출c.js` source로 승인하고 blueprint source/identity/metadata를 원격 D1에 반영했다.
+- 최신 post-audit에서 source missing 0, metadata diff 0, MIXED identity 343/343, QR/OMR 7/7이다. 남은 blueprint blocker는 삼산중 orphan 4행이다.

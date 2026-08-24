@@ -329,6 +329,12 @@
 - 운영 identity map은 10,686/10,686 UID·충돌 0, DB consistency는 파일 누락·중복·qCount/index mismatch 0, 운영 세부단원 QA의 classification/index/master 게이트가 모두 통과했다.
 - blueprint disposition 76행(원본 부재 72 + sparse orphan 4)과 DB source-dependent emptySchool 28·필수 gap 60은 자동 승격하지 않고 보류한다. Phase 3 신규 승격은 이 범위를 명시적으로 처리하기 전까지 시작하지 않는다.
 
+## 2-39. 2026-08-24 후보 기출 승격 후 최종 재판정
+
+- `26_효천고_1학기_중간_고1_기출c.js` 26문항, `25_매산여고_1학기_기말_고1_기출c.js` 23문항, `25_순천고_1학기_기말_고1_기출c.js` 23문항을 실제 source로 승인했다.
+- 후보 JS를 중복 복제하지 않고 blueprint의 `source_archive_file`을 기존 `original/...기출c.js`로 연결해 원격 D1 72행을 갱신했다. post-audit에서 source missing 0, metadata diff 0, source questions 1,332건으로 확인됐다.
+- QR/OMR 정적 회귀 7/7과 MIXED identity 343/343 재감사를 통과했다. 현재 남은 blueprint blocker는 삼산중 sparse orphan 4행뿐이다.
+
 ## 3. 문서 구조 후속 관리
 
 - 새 문서는 루트에 직접 만들지 말고 `docs/_index/DOCS_STRUCTURE.md` 기준으로 배치한다.

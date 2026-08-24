@@ -247,3 +247,9 @@
 
 - 최신 blueprint post-audit·MIXED identity·QR/OMR·identity map·DB consistency·운영 subunit QA가 모두 통과했다.
 - source-unavailable/orphan blueprint 76행과 source-dependent DB 28/60건은 자동 승격하지 않는 보류 범위다. Phase 3는 이 disposition 전까지 잠긴다.
+
+## 37. 2026-08-24 후보 기출 source 승격 후 재감사
+
+- `archive/tools/intelligence/promote-archive-blueprint-candidate-sources.mjs`: 효천고·매산여고·순천고 `기출c.js` 후보 3개를 기존 original source로 연결하는 72건 review-only UPDATE 계획 도구.
+- `archive/_generated/intelligence/phase2/archive-blueprint-post-audit-after-candidate-promotion-v1.json`: source missing 0·metadata diff 0·orphan 4행 최신 결과.
+- 후보 JS 중복 복제는 하지 않았으며, MIXED identity 343/343과 QR/OMR 7/7을 재검증했다.
