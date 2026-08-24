@@ -24,6 +24,7 @@ try {
   assert.equal(report.source.schemaReady, false, 'pre-Phase 2A export must be marked schema-incomplete');
   assert(report.summary.dbRows > 0, 'dry-run must parse existing blueprint rows');
   assert(report.summary.files > 0, 'dry-run must group blueprint rows by archive file');
+  assert.equal(typeof report.summary.unmatchedDbRows, 'number', 'dry-run must expose unmatched legacy blueprint rows');
   assert.equal(result.status, report.status, 'CLI summary must match report status');
   assert(report.fileSummaries.some(file => file.status === 'MIXED_NO_ARCHIVE_SOURCE'), 'MIXED rows must be kept outside archive-source comparison');
   assert(report.questionDiffs.length <= 10, 'question diff limit must be enforced');

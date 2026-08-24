@@ -294,6 +294,7 @@ function compareFile(rows, archiveFile, options) {
     updateRequired: 0,
     insertRequired: 0,
     sourceQuestionMissing: 0,
+    unmatchedDbRows: 0,
     sourceFileMissing: false,
     parseError: null
   };
@@ -316,13 +317,23 @@ function compareFile(rows, archiveFile, options) {
   }
   result.sourceQuestions = extracted.length;
 
-  const byOrdinal = new Map(rows.map(row => [sourceOrdinal(row), row]).filter(([ordinal]) => ordinal));
+  // A legacy row without source_question_ordinal must be matched by the
+  // archive question number, not by treating question_no as an ordinal.
+  // Several archives use sparse IDs (for example 1-4, 9-24).
+  const byOrdinal = new Map(rows
+    .map(row => [Number(row?.source_question_ordinal), row])
+    .filter(([ordinal]) => Number.isInteger(ordinal) && ordinal > 0));
+  const byQuestionNo = new Map(rows
+    .map(row => [Number(row?.question_no), row])
+    .filter(([questionNo]) => Number.isInteger(questionNo) && questionNo > 0));
+  const matchedRows = new Set();
   const diffs = [];
   const sqlStatements = [];
   for (let index = 0; index < extracted.length; index += 1) {
     const question = extracted[index];
     const ordinal = index + 1;
-    const existing = byOrdinal.get(ordinal);
+    const existing = byOrdinal.get(ordinal) || byQuestionNo.get(questionNumber(question));
+    if (existing) matchedRows.add(existing);
     const metadata = buildMetadata(question);
     const expectedHash = metadataHash(metadata);
     const base = {
@@ -357,12 +368,21 @@ function compareFile(rows, archiveFile, options) {
   }
 
   for (const row of rows) {
-    const ordinal = sourceOrdinal(row);
-    if (!ordinal || ordinal > extracted.length) result.sourceQuestionMissing += 1;
+    if (matchedRows.has(row)) continue;
+    result.unmatchedDbRows += 1;
+    diffs.push({
+      archiveFile,
+      questionNo: Number(row?.question_no) || null,
+      sourceOrdinal: Number(row?.source_question_ordinal) || null,
+      expectedHash: null,
+      existingHash: row?.metadata_hash || null,
+      existingRevision: row?.metadata_revision || null,
+      status: 'DB_ROW_UNMATCHED'
+    });
   }
 
   result.status = options.schemaReady
-    ? (result.updateRequired || result.insertRequired || result.sourceQuestionMissing ? 'DIFF' : 'UNCHANGED')
+    ? (result.updateRequired || result.insertRequired || result.sourceQuestionMissing || result.unmatchedDbRows ? 'DIFF' : 'UNCHANGED')
     : 'SCHEMA_MISSING';
   return { result, diffs, sqlStatements: sqlStatements.filter(Boolean) };
 }
@@ -424,6 +444,7 @@ const summary = fileSummaries.reduce((acc, file) => {
   acc.updateRequired += file.updateRequired;
   acc.insertRequired += file.insertRequired;
   acc.sourceQuestionMissing += file.sourceQuestionMissing;
+  acc.unmatchedDbRows += file.unmatchedDbRows;
   return acc;
 }, {
   files: fileSummaries.length,
@@ -432,7 +453,8 @@ const summary = fileSummaries.reduce((acc, file) => {
   unchanged: 0,
   updateRequired: 0,
   insertRequired: 0,
-  sourceQuestionMissing: 0
+  sourceQuestionMissing: 0,
+  unmatchedDbRows: 0
 });
 
 const report = {

@@ -67,7 +67,7 @@ try {
   const mixedFiles = fileSummaries.filter(file => file.status === 'MIXED_NO_ARCHIVE_SOURCE');
   const sourceMissingFiles = fileSummaries.filter(file => file.status === 'SOURCE_FILE_MISSING');
   const parseErrorFiles = fileSummaries.filter(file => file.status === 'SOURCE_PARSE_ERROR');
-  const diffCount = Number(summary.updateRequired || 0) + Number(summary.insertRequired || 0) + Number(summary.sourceQuestionMissing || 0);
+  const diffCount = Number(summary.updateRequired || 0) + Number(summary.insertRequired || 0) + Number(summary.sourceQuestionMissing || 0) + Number(summary.unmatchedDbRows || 0);
   const report = {
     schemaVersion: 'archive-blueprint-post-audit-v1',
     generatedAt: new Date().toISOString(),
@@ -82,6 +82,7 @@ try {
     checks: {
       schemaReady: dryRun.source?.schemaReady === true,
       metadataDiffZero: diffCount === 0,
+      unmatchedDbRowsZero: Number(summary.unmatchedDbRows || 0) === 0,
       sourceMissingZero: sourceMissingFiles.length === 0,
       sourceParseErrorZero: parseErrorFiles.length === 0,
       mixedIdentityReviewRequired: mixedFiles.length > 0
@@ -93,6 +94,7 @@ try {
       updateRequired: summary.updateRequired || 0,
       insertRequired: summary.insertRequired || 0,
       sourceQuestionMissing: summary.sourceQuestionMissing || 0,
+      unmatchedDbRows: summary.unmatchedDbRows || 0,
       sourceMissingFiles: sourceMissingFiles.length,
       parseErrorFiles: parseErrorFiles.length,
       mixedFiles: mixedFiles.length
@@ -102,6 +104,7 @@ try {
 
   if (!report.checks.schemaReady) report.blockers.push('Phase 2A metadata columns are missing from the export.');
   if (!report.checks.metadataDiffZero) report.blockers.push('Metadata diff remains; batch backfill is not complete.');
+  if (!report.checks.unmatchedDbRowsZero) report.blockers.push(`${report.summary.unmatchedDbRows} blueprint row(s) do not match an archive source question.`);
   if (!report.checks.sourceMissingZero) report.blockers.push(`${sourceMissingFiles.length} source file(s) are unavailable.`);
   if (!report.checks.sourceParseErrorZero) report.blockers.push(`${parseErrorFiles.length} source file(s) failed to parse.`);
   if (report.checks.mixedIdentityReviewRequired) report.blockers.push('MIXED blueprint source UID/ordinal requires a separate identity audit.');

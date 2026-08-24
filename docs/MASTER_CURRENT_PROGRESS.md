@@ -229,6 +229,13 @@
 - Worker `ap-math-os-v2612`의 syntax check·dry-run·production deploy가 통과했다. version ID는 `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`다.
 - backfill은 실행하지 않았다. 최신 D1 export → hash dry-run → sample review → SQL safety gate → batch update → post-audit → QR/OMR 재검증 후에만 Phase 3로 넘어간다.
 
+### AP Math JS 아카이브 blueprint backfill·post-audit (2026-08-24)
+
+- Phase 2A schema-ready 원격 export에서 1,260개 review-only UPSERT를 safety gate 통과 후 적용했다. 실행 결과는 1,260 queries, 7,572 rows written이다.
+- backfill 후 source-backed 1,260문항의 `metadata_revision`·`metadata_hash` diff는 0이며, QR/OMR 정적 회귀 7/7을 재실행해 통과했다.
+- post-audit는 `POST_AUDIT_REVIEW_REQUIRED`다. MIXED 7개 파일/343행은 source identity가 없고, source JS 부재 3개 파일/72행과 legacy orphan blueprint 4행이 남아 있다.
+- orphan 4행은 sparse question number를 잘못 ordinal로 해석하지 않도록 dry-run/audit에 `unmatchedDbRows` blocker를 추가해 보류했다. 이 상태에서 Phase 3로 승격하지 않는다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.
