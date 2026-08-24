@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
@@ -7,13 +8,17 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Collections.Generic;
 
 internal static class Program
 {
     private const int DefaultPort = 43191;
     private const string DefaultPrinter = "SINDOH N500 Series PCL";
+    private const string AgentVersion = "20260824.3";
+    private const string UpdateSourceUrl = "https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/Program.cs";
     private const long MaxBodyBytes = 256L * 1024L * 1024L;
+    private static int updateStarted;
 
     private static void Main(string[] args)
     {
@@ -39,7 +44,7 @@ internal static class Program
             {
                 try
                 {
-                    HandleRequest(listener.GetContext(), printer);
+                    HandleRequest(listener.GetContext(), printer, port);
                 }
                 catch (HttpListenerException)
                 {
@@ -57,7 +62,7 @@ internal static class Program
         }
     }
 
-    private static void HandleRequest(HttpListenerContext context, string configuredPrinter)
+    private static void HandleRequest(HttpListenerContext context, string configuredPrinter, int port)
     {
         var response = context.Response;
         AddCorsHeaders(context.Request, response);
@@ -72,7 +77,27 @@ internal static class Program
             var path = context.Request.Url == null ? string.Empty : context.Request.Url.AbsolutePath.TrimEnd('/');
             if (context.Request.HttpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase) && path == "/health")
             {
-                WriteJson(response, "{\"ok\":true,\"printer\":\"" + JsonEscape(configuredPrinter) + "\",\"protocol\":\"pcl5-raster-1bpp,gdi-devmode,gdi-devmode-copies\"}", 200);
+                WriteJson(response, "{\"ok\":true,\"printer\":\"" + JsonEscape(configuredPrinter) + "\",\"version\":\"" + AgentVersion + "\",\"protocol\":\"pcl5-raster-1bpp,gdi-devmode,gdi-devmode-copies\"}", 200);
+                return;
+            }
+
+            if (context.Request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase) && path == "/update")
+            {
+                var updatePrinter = context.Request.Headers["X-AP-Printer"];
+                if (!string.IsNullOrWhiteSpace(updatePrinter) &&
+                    !updatePrinter.Equals(configuredPrinter, StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteJson(response, "{\"ok\":false,\"error\":\"Printer is not allowed by this agent.\"}", 403);
+                    return;
+                }
+
+                string updateError;
+                if (!TryStartUpdate(configuredPrinter, port, out updateError))
+                {
+                    WriteJson(response, "{\"ok\":false,\"error\":\"" + JsonEscape(updateError) + "\"}", 409);
+                    return;
+                }
+                WriteJson(response, "{\"ok\":true,\"updating\":true,\"version\":\"" + AgentVersion + "\"}", 202);
                 return;
             }
 
@@ -129,6 +154,148 @@ internal static class Program
         {
             response.Close();
         }
+    }
+
+    private static bool TryStartUpdate(string configuredPrinter, int port, out string error)
+    {
+        error = string.Empty;
+        if (Interlocked.Exchange(ref updateStarted, 1) != 0)
+        {
+            error = "네이티브 인쇄 보조 프로그램이 이미 업데이트 중입니다.";
+            return false;
+        }
+
+        var installDirectory = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "APMath",
+            "NativePrintAgent");
+        var sourcePath = Path.Combine(installDirectory, "Program.update.cs");
+        var nextPath = Path.Combine(installDirectory, "native-print-agent.next.exe");
+        var targetPath = Process.GetCurrentProcess().MainModule.FileName;
+        var updatePrepared = false;
+        try
+        {
+            if (string.IsNullOrWhiteSpace(targetPath) || !File.Exists(targetPath))
+            {
+                error = "현재 인쇄 보조 프로그램 경로를 확인하지 못했습니다.";
+                return false;
+            }
+
+            Directory.CreateDirectory(installDirectory);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            using (var client = new WebClient())
+            {
+                client.DownloadFile(UpdateSourceUrl, sourcePath);
+            }
+
+            var compilerPath = FindCompilerPath();
+            if (string.IsNullOrWhiteSpace(compilerPath))
+            {
+                error = "이 컴퓨터에서 .NET Framework 컴파일러를 찾지 못했습니다.";
+                return false;
+            }
+
+            if (File.Exists(nextPath)) File.Delete(nextPath);
+            var compiler = Process.Start(new ProcessStartInfo
+            {
+                FileName = compilerPath,
+                Arguments = "/nologo /target:winexe /reference:System.Drawing.dll /out:" + QuoteCommandLineArgument(nextPath) + " " + QuoteCommandLineArgument(sourcePath),
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WorkingDirectory = installDirectory
+            });
+            if (compiler == null)
+            {
+                error = "업데이트 컴파일러를 실행하지 못했습니다.";
+                return false;
+            }
+            if (!compiler.WaitForExit(120000))
+            {
+                try { compiler.Kill(); } catch { }
+                error = "인쇄 보조 프로그램 업데이트 컴파일 시간이 초과되었습니다.";
+                return false;
+            }
+            if (compiler.ExitCode != 0 || !File.Exists(nextPath))
+            {
+                error = "최신 인쇄 보조 프로그램을 컴파일하지 못했습니다.";
+                return false;
+            }
+
+            var updater = Process.Start(new ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments = "-NoProfile -NonInteractive -WindowStyle Hidden -EncodedCommand " +
+                    Convert.ToBase64String(Encoding.Unicode.GetBytes(BuildUpdateScript(sourcePath, nextPath, targetPath, configuredPrinter, port, Process.GetCurrentProcess().Id))),
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WorkingDirectory = installDirectory
+            });
+            if (updater == null)
+            {
+                error = "인쇄 보조 프로그램 업데이트 도우미를 실행하지 못했습니다.";
+                return false;
+            }
+
+            updatePrepared = true;
+            var exitThread = new Thread(delegate()
+            {
+                Thread.Sleep(750);
+                Environment.Exit(0);
+            });
+            exitThread.IsBackground = true;
+            exitThread.Start();
+            return true;
+        }
+        catch (Exception updateException)
+        {
+            error = updateException.Message;
+            return false;
+        }
+        finally
+        {
+            if (!updatePrepared)
+            {
+                Interlocked.Exchange(ref updateStarted, 0);
+                try { if (File.Exists(sourcePath)) File.Delete(sourcePath); } catch { }
+                try { if (File.Exists(nextPath)) File.Delete(nextPath); } catch { }
+            }
+        }
+    }
+
+    private static string BuildUpdateScript(string sourcePath, string nextPath, string targetPath, string printer, int port, int parentPid)
+    {
+        var source = PowerShellQuote(sourcePath);
+        var next = PowerShellQuote(nextPath);
+        var target = PowerShellQuote(targetPath);
+        var printerArgument = PowerShellQuote("\"" + printer + "\"");
+        return "$ErrorActionPreference='SilentlyContinue';" +
+            "$parent=Get-Process -Id " + parentPid + " -ErrorAction SilentlyContinue;" +
+            "if($parent){$parent.WaitForExit(120000)};" +
+            "$replaced=$false;" +
+            "for($i=0;$i -lt 30;$i++){try{Copy-Item -LiteralPath " + next + " -Destination " + target + " -Force;if((Get-Item -LiteralPath " + target + ").Length -gt 0){$replaced=$true;break}}catch{};Start-Sleep -Milliseconds 500};" +
+            "if($replaced){Start-Process -FilePath " + target + " -ArgumentList @('--port','" + port + "','--printer'," + printerArgument + ")};" +
+            "Remove-Item -LiteralPath " + source + " -Force -ErrorAction SilentlyContinue;" +
+            "Remove-Item -LiteralPath " + next + " -Force -ErrorAction SilentlyContinue;";
+    }
+
+    private static string FindCompilerPath()
+    {
+        var windowsDirectory = Environment.GetEnvironmentVariable("WINDIR");
+        if (string.IsNullOrWhiteSpace(windowsDirectory)) windowsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows));
+        var framework64 = Path.Combine(windowsDirectory, "Microsoft.NET", "Framework64", "v4.0.30319", "csc.exe");
+        if (File.Exists(framework64)) return framework64;
+        var framework = Path.Combine(windowsDirectory, "Microsoft.NET", "Framework", "v4.0.30319", "csc.exe");
+        return File.Exists(framework) ? framework : string.Empty;
+    }
+
+    private static string QuoteCommandLineArgument(string value)
+    {
+        return "\"" + value.Replace("\"", "\\\"") + "\"";
+    }
+
+    private static string PowerShellQuote(string value)
+    {
+        return "'" + value.Replace("'", "''") + "'";
     }
 
     private static byte[] ReadBody(Stream stream)
