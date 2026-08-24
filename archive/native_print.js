@@ -6,7 +6,7 @@
     const DEFAULT_DPI = 300;
     const DEFAULT_THRESHOLD = 220;
     const DEFAULT_INSTALLER_URL = global.document?.baseURI
-        ? new URL('../tools/native-print-agent/install-native-print-agent.cmd', global.document.baseURI).href
+        ? new URL('../tools/native-print-agent/APMath-Print-Agent-Installer.zip', global.document.baseURI).href
         : '';
     const encoder = new TextEncoder();
 

@@ -2235,7 +2235,7 @@ function downloadNativePrintAgentInstaller() {
     }
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'install-native-print-agent.cmd';
+    link.download = 'APMath-Print-Agent-Installer.zip';
     link.rel = 'noopener';
     document.body.appendChild(link);
     link.click();
@@ -2319,7 +2319,7 @@ async function safePrint(mode = 'vector') {
         const message = mode === 'native'
             ? '네이티브 PCL 인쇄에 실패했습니다. 보조 프로그램이 실행 중이고 SINDOH N500 Series PCL 큐가 있는지 확인해 주세요.'
             : mode === 'gdi'
-            ? '빠른 인쇄 도우미가 실행 중인지 확인해 주세요. 처음 사용하는 컴퓨터라면 다운로드된 설치 파일을 실행한 뒤 다시 눌러주세요.'
+            ? '빠른 인쇄 도우미가 실행 중인지 확인해 주세요. 처음 사용하는 컴퓨터라면 다운로드된 ZIP을 압축 해제하고 설치 파일을 한 번 실행한 뒤 다시 눌러주세요.'
             : '프린터 최적화 페이지 생성에 실패했습니다. 일반 인쇄를 다시 시도해 주세요.';
         window.alert(message + '\n\n' + (preparationError.message || preparationError));
         return;

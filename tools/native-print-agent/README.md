@@ -30,8 +30,9 @@ page-edge results are confirmed.
 
 ## One-time setup on another computer
 
-The archive can download `install-native-print-agent.cmd` when `빠른 인쇄` is
-clicked without a running agent. Run that file once on the Windows computer. It
+The archive can download `APMath-Print-Agent-Installer.zip` when `빠른 인쇄` is
+clicked without a running agent. Extract the ZIP and run
+`install-native-print-agent.cmd` once on the Windows computer. It
 downloads the current agent source, builds the local `winexe` agent under the
 user's `%LOCALAPPDATA%`, registers it in the current user's Windows startup, and
 starts it. No administrator permission is required unless the printer driver or
