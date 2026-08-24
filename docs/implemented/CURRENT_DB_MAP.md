@@ -153,3 +153,9 @@
 
 - `audit-archive-blueprint-backfill.mjs`는 batch 이후 export를 읽기만 하며 schema readiness, metadata diff zero, source missing/parse error, MIXED identity 검토 상태를 판정한다.
 - 현재 export에서는 `BLOCKED_SCHEMA_MISSING`을 반환한다. zero-diff schema-ready fixture만 `POST_AUDIT_PASS`로 확인했다.
+
+## 18. 2026-08-24 Archive blueprint migration·Worker 배포
+
+- 원격 D1 migration ledger에 `20260820_exam_blueprint_canonical_question_identity.sql`(id 2) → `20260824_archive_blueprint_metadata_bridge.sql`(id 3) 순서가 기록됐다.
+- deployed baseline에 이미 있던 `type_key`·`difficulty`는 중복 추가하지 않고, 두 번째 migration은 `sub_unit_key`, `template_key`, `metadata_revision`, `metadata_hash`와 조회 인덱스만 추가했다. identity 2개와 metadata 6개 호환 컬럼이 모두 원격에 존재한다.
+- `ap-math-os-v2612` Worker는 dry-run 후 production에 배포됐고 version ID는 `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`다. 데이터 backfill은 아직 수행하지 않았다.

@@ -213,3 +213,9 @@
 - `docs/review-packs/archive-blueprint-post-audit-20260824/CODEX_RESULT.md`: batch 이후 post-audit 판정 도구와 stale/schema-ready fixture 결과.
 - `archive/tools/intelligence/audit-archive-blueprint-backfill.mjs`: D1 변경 없이 schema/diff/source/MIXED 상태를 post-audit한다.
 - `archive/_generated/intelligence/phase2/archive-blueprint-post-audit-v1.json`: 현재 stale export는 `BLOCKED_SCHEMA_MISSING`.
+
+## 31. 2026-08-24 Archive blueprint migration·Worker 배포
+
+- 원격 D1에 선행 identity migration 후 metadata bridge migration을 순서대로 적용했다. deployed baseline의 기존 `type_key`·`difficulty`는 보존하고 누락 컬럼·인덱스만 추가했다.
+- `ap-math-os-v2612` Worker production deploy 완료. version ID `b3b4b8fa-f4f7-46b3-8f21-9da16820867a`.
+- 기존 blueprint metadata backfill은 아직 별도 게이트로 남아 있다.
