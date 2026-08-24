@@ -176,3 +176,8 @@
 
 - `archive/tools/intelligence/build-archive-blueprint-blocker-disposition.mjs`가 최신 export audit를 읽어 source-unavailable 72행과 sparse orphan 4행을 별도 보류 목록으로 만든다.
 - 이 76행에는 추정 metadata나 삭제가 적용되지 않았으며, `phase3Gate.allowed=false`인 동안 question-index/runtime 승격을 수행하지 않는다.
+
+## 22. 2026-08-24 운영 index·identity 재생성
+
+- 운영 JS 기준 Phase 0/classification snapshot과 question-index·identity map/runtime을 재생성했다. 438개 파일·10,686문항, qCount/index mismatch 0, UID collision 0이다.
+- 운영 세부단원 QA의 production/index 필드 일치와 master gap 게이트가 true다. source-dependent DB 28/60건 및 blueprint 보류 76행은 별도 상태로 유지한다.
