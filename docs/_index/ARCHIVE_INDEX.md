@@ -225,3 +225,10 @@
 - 원격 D1 source-backed 1,260행 metadata backfill 완료. 최신 export 기준 hash diff 0, QR/OMR 정적 회귀 7/7 통과.
 - post-audit 보류: MIXED 7개 파일/343행, source JS 부재 3개 파일/72행, legacy orphan blueprint 4행.
 - dry-run/audit가 sparse question number를 안전하게 처리하고 orphan을 blocker로 기록하도록 보강됐다. Phase 3 승격 전 별도 identity/source 검토가 필요하다.
+
+## 33. 2026-08-24 MIXED identity 승격 및 잔여 blocker
+
+- `archive/tools/intelligence/audit-archive-blueprint-mixed-identity.mjs`: MIXED 7개 파일·343행을 원본 JS와 대조하고 canonical UID/ordinal/metadata hash를 생성·검증하는 read-only audit 및 review-only UPDATE plan 도구.
+- `tests/archive-blueprint-mixed-identity.test.mjs`: 343행 plan의 후보 수, key 수, destructive keyword 부재를 검증한다.
+- `archive/_generated/intelligence/phase2/archive-blueprint-mixed-identity-post-audit-v1.json`: MIXED 343/343 identity 승격 후 재감사 결과.
+- `archive/_generated/intelligence/phase2/archive-blueprint-post-audit-after-mixed-identity-v3.json`: MIXED blocker와 metadata diff는 해소됐고, orphan 4행·source missing 3파일/72행만 잔여 blocker로 남은 최신 post-audit.

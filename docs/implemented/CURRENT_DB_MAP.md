@@ -166,3 +166,8 @@
 - MIXED 7개 파일/343행은 `source_question_uid`, `source_question_ordinal`, metadata가 모두 비어 있어 별도 identity audit 대상이다. source JS가 없는 3개 파일/72행도 별도 보류한다.
 - dry-run은 legacy 행의 `source_question_ordinal`이 없을 때 `question_no`를 ordinal로 간주하지 않고 실제 source question number로 보조 매칭하도록 보강했다. 그 결과 source와 맞지 않는 orphan blueprint 4행을 탐지했고, post-audit blocker로 유지한다.
 - 따라서 현재 D1 schema·runtime·backfill은 적용됐지만 Phase 3 승격 조건은 아직 충족하지 않았다.
+
+## 20. 2026-08-24 MIXED blueprint identity 승격 후 잔여 범위
+
+- MIXED 7개 파일·343행은 원본 JS 대조 결과를 바탕으로 `source_question_uid`, `source_question_ordinal`, metadata revision/hash를 원격 D1에 반영했다. post-export에서 343/343행이 재감사에 통과했다.
+- 최신 post-audit의 metadata diff와 MIXED identity 검토는 0건이다. 남은 것은 sparse source orphan 4행과 source JS 부재 3파일·72행뿐이며, 이들은 별도 disposition 없이는 Phase 3 question-index/runtime 승격 대상에 포함하지 않는다.

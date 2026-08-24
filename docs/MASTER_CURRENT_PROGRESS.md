@@ -236,6 +236,12 @@
 - post-audit는 `POST_AUDIT_REVIEW_REQUIRED`다. MIXED 7개 파일/343행은 source identity가 없고, source JS 부재 3개 파일/72행과 legacy orphan blueprint 4행이 남아 있다.
 - orphan 4행은 sparse question number를 잘못 ordinal로 해석하지 않도록 dry-run/audit에 `unmatchedDbRows` blocker를 추가해 보류했다. 이 상태에서 Phase 3로 승격하지 않는다.
 
+### AP Math JS 아카이브 MIXED identity 승격 및 잔여 blocker 재판정 (2026-08-24)
+
+- MIXED 7개 파일·343행을 원본 JS의 출처 파일/문항번호와 전수 대조했다. 누락·파싱 오류·UID/ordinal 불일치 없이 343/343행을 canonical UID·source ordinal·metadata hash로 확정했다.
+- 변경 전 원격 D1 export를 보존하고 검토 전용 UPDATE 343건을 적용했다. 적용 후 재수출·재감사에서 343/343행의 identity와 metadata hash가 안정적으로 일치했으며, QR/OMR 정적 회귀도 7/7 통과했다.
+- post-audit의 MIXED identity blocker와 source-backed metadata diff는 해소됐다. 다만 sparse source orphan 4행과 원본 부재 3파일·72행은 여전히 보류 중이며, 삭제·추정 보강 없이 별도 disposition을 확정해야 한다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.
