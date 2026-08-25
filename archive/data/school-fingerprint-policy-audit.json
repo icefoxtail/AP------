@@ -1,0 +1,404 @@
+{
+  "schemaVersion": "school-fingerprint-policy-audit.v1",
+  "policyStatus": "candidate_v1_not_operational",
+  "exposure": "not_operational",
+  "aliasPolicy": {
+    "master": "archive/data/master_tables/school_alias_master.json",
+    "normalization": {
+      "unicode": "NFC",
+      "trimWhitespace": true,
+      "preserveSourceName": true,
+      "unmappedPolicy": "use_source_name_as_canonical_until_explicit_alias_approval"
+    },
+    "sourceNameCount": 37,
+    "canonicalNameCount": 37,
+    "explicitAliasCount": 0,
+    "collisionCount": 0,
+    "allSourceNamesCanonicalized": true
+  },
+  "samplePolicy": {
+    "operator": "OR",
+    "minExamCount": 3,
+    "minQuestionCount": 60,
+    "candidateCount": 23,
+    "hiddenCount": 14,
+    "candidateKeys": [
+      "강남여고",
+      "금당고",
+      "금당중",
+      "동산중",
+      "매산고",
+      "매산여고",
+      "매산중",
+      "복성고",
+      "삼산중",
+      "순천고",
+      "순천여고",
+      "신흥중",
+      "연향중",
+      "왕운중",
+      "왕의중",
+      "이수중",
+      "제일고",
+      "팔마고",
+      "팔마중",
+      "풍덕중",
+      "한영고",
+      "향림중",
+      "효천고"
+    ],
+    "hidden": [
+      {
+        "schoolKey": "광양제철고",
+        "examCount": 1,
+        "questionCount": 19,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "문성중",
+        "examCount": 1,
+        "questionCount": 23,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "부영여고",
+        "examCount": 2,
+        "questionCount": 43,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "수피아여고",
+        "examCount": 2,
+        "questionCount": 48,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "순여중",
+        "examCount": 1,
+        "questionCount": 24,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "순천여중",
+        "examCount": 1,
+        "questionCount": 24,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "승평중",
+        "examCount": 1,
+        "questionCount": 24,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "여수고",
+        "examCount": 1,
+        "questionCount": 23,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "여수여고",
+        "examCount": 1,
+        "questionCount": 21,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "여천고",
+        "examCount": 1,
+        "questionCount": 23,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "율촌중",
+        "examCount": 1,
+        "questionCount": 22,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "중앙여고",
+        "examCount": 1,
+        "questionCount": 5,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "진남중",
+        "examCount": 1,
+        "questionCount": 23,
+        "reason": "examCount < 3 AND questionCount < 60"
+      },
+      {
+        "schoolKey": "충무고",
+        "examCount": 1,
+        "questionCount": 21,
+        "reason": "examCount < 3 AND questionCount < 60"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "schoolKey": "강남여고",
+      "examCount": 15,
+      "questionCount": 372,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "광양제철고",
+      "examCount": 1,
+      "questionCount": 19,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "금당고",
+      "examCount": 25,
+      "questionCount": 522,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "금당중",
+      "examCount": 14,
+      "questionCount": 342,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "동산중",
+      "examCount": 8,
+      "questionCount": 195,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "매산고",
+      "examCount": 18,
+      "questionCount": 364,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "매산여고",
+      "examCount": 13,
+      "questionCount": 298,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "매산중",
+      "examCount": 8,
+      "questionCount": 196,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "문성중",
+      "examCount": 1,
+      "questionCount": 23,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "복성고",
+      "examCount": 11,
+      "questionCount": 240,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "부영여고",
+      "examCount": 2,
+      "questionCount": 43,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "삼산중",
+      "examCount": 5,
+      "questionCount": 120,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "수피아여고",
+      "examCount": 2,
+      "questionCount": 48,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "순여중",
+      "examCount": 1,
+      "questionCount": 24,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "순천고",
+      "examCount": 14,
+      "questionCount": 324,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "순천여고",
+      "examCount": 13,
+      "questionCount": 294,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "순천여중",
+      "examCount": 1,
+      "questionCount": 24,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "승평중",
+      "examCount": 1,
+      "questionCount": 24,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "신흥중",
+      "examCount": 17,
+      "questionCount": 401,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "여수고",
+      "examCount": 1,
+      "questionCount": 23,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "여수여고",
+      "examCount": 1,
+      "questionCount": 21,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "여천고",
+      "examCount": 1,
+      "questionCount": 23,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "연향중",
+      "examCount": 33,
+      "questionCount": 762,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "왕운중",
+      "examCount": 28,
+      "questionCount": 665,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "왕의중",
+      "examCount": 4,
+      "questionCount": 96,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "율촌중",
+      "examCount": 1,
+      "questionCount": 22,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "이수중",
+      "examCount": 3,
+      "questionCount": 72,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "제일고",
+      "examCount": 28,
+      "questionCount": 629,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "중앙여고",
+      "examCount": 1,
+      "questionCount": 5,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "진남중",
+      "examCount": 1,
+      "questionCount": 23,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "충무고",
+      "examCount": 1,
+      "questionCount": 21,
+      "eligible": false,
+      "decision": "hidden_below_threshold"
+    },
+    {
+      "schoolKey": "팔마고",
+      "examCount": 19,
+      "questionCount": 420,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "팔마중",
+      "examCount": 11,
+      "questionCount": 267,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "풍덕중",
+      "examCount": 14,
+      "questionCount": 336,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "한영고",
+      "examCount": 3,
+      "questionCount": 63,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "향림중",
+      "examCount": 10,
+      "questionCount": 241,
+      "eligible": true,
+      "decision": "candidate"
+    },
+    {
+      "schoolKey": "효천고",
+      "examCount": 18,
+      "questionCount": 419,
+      "eligible": true,
+      "decision": "candidate"
+    }
+  ],
+  "audit": {
+    "aliasAuditPass": true,
+    "thresholdAuditPass": true,
+    "deterministicInput": true
+  },
+  "collisions": []
+}

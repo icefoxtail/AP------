@@ -191,3 +191,22 @@
 
 - 효천고·매산여고·순천고 후보 3개 파일(총 72문항)을 기존 `original/...기출c.js` source로 승인하고 blueprint source/identity/metadata를 원격 D1에 반영했다.
 - 최신 post-audit에서 source missing 0, metadata diff 0, MIXED identity 343/343, QR/OMR 7/7이다. 남은 blueprint blocker는 삼산중 orphan 4행이다.
+
+## 25. 2026-08-24 삼산중 orphan 원본 대조
+
+- D드라이브의 2026-04-27 삼산중 PDF는 현재 운영 JS의 시험 원본 후보이며, 실제 q5~q8을 포함한다.
+- 운영 JS에는 q5~q8이 없고 q9~q12가 존재한다. DB orphan q5~q8은 source q9~q12를 가리키므로 실제 q5~q8의 metadata가 아닌 중복·오지정 행이다.
+- 비교 보고서: `archive/_generated/intelligence/phase2/samsan-orphan-d-drive-comparison-20260824.md`. 전사·검증 및 JS/DB 승격 전까지 4행은 `DISPOSITION_REQUIRED`로 유지한다.
+
+## 26. 2026-08-24 삼산중 q5~q8 source 승격 및 원격 정합성
+
+- D드라이브 2026학년도 1학기 1차 정기시험 PDF의 실제 q5~q8을 운영 JS에 추가했다. q5 도형은 `archive/assets/images/26_삼산중_1학기_중간_중3_기출/q05.png`이며 파일 qCount는 24다.
+- question-index·identity map/runtime을 재생성해 현재 운영 기준을 10,690문항으로 맞췄다. canonical UID 충돌·identity 누락은 0건이다.
+- backfill 도구는 `question_no` 우선, `source_question_ordinal` 보조 매칭과 source identity 3종(no/ordinal/uid) 일치 검사를 수행한다. 이 기준으로 원격 `exam_blueprints`의 삼산중 q1~q24를 canonical source ordinal/UID/hash로 갱신했다.
+- 최신 export post dry-run/post-audit: `POST_AUDIT_PASS`, `sourceQuestions=1,336`, `unchanged=1,336`, `updateRequired=0`, `insertRequired=0`, `sourceQuestionMissing=0`, `unmatchedDbRows=0`, parse error 0. 삼산중 orphan 4행은 실제 q5~q8로 해소됐으며 삭제·추정 재매핑은 하지 않았다.
+
+## 27. 2026-08-24 향림중 해설 보강 및 전체 audit 기준점
+
+- 24_향림중_2학기_기말_중1_기출.js의 24문항 해설을 D드라이브 원본 시험지·해설 PDF와 대조해 채웠다. DB qCount 24, question-index 24, 이미지 로딩 및 3모드 렌더가 일치한다.
+- 전체 운영 재생성 결과 question-index 10,690문항, identity map/runtime 10,690 UID·충돌 0, metadata inventory load/identity join 실패 0, DB qCount/index mismatch 0이다.
+- 생성 후보본은 운영 JS와 SHA-256을 맞춰 candidate mismatch 0건으로 정리했다. 전체 audit에서 남은 28건은 types/similar source-dependent school 공란이며, 룰북의 영구 보류 예외로 유지한다.

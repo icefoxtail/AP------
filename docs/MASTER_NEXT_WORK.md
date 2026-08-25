@@ -420,3 +420,22 @@
 - 삼산중 중3 기출을 운영 통합 패널에서 승인 실행했다: 중3A 3명 대상 + 1명 제외, 중3B 7명 전체로 총 10명이다.
 - 두 반의 배정 등록과 부분 반 제외 처리가 모두 성공했고, 중3 출제보드에서 해당 시험지가 `중3A, 중3B`로 표시되는 것을 read-only로 확인했다.
 - 학생 포털 비노출은 기존 `student-portal.js`의 exclusion filter가 담당하며, 해당 SQL 계약을 정적 회귀 테스트로 확인했다. 별도 학생 계정 검증은 추가 보류하지 않는다. 커밋·푸시·추가 배포는 아직 하지 않는다.
+
+## 8. Archive Intelligence 기준선 재고정 및 다음 활성 단계 (2026-08-25)
+
+- 이 항목은 위 `출제 대상 통합 패널` 작업과 별도다. 통합 패널의 Phase 3/4 결과를 Archive Intelligence Phase 3 완료로 계산하지 않는다.
+- 현재 운영 archive 기준선은 438개 파일·10,690문항이다. inventory/index/identity/classification/operational QA를 이 수량으로 재생성했고, classification·production/index field mismatch 0, identity join 실패 0, 세부단원 공란 0, taxonomy gap 0으로 확인했다.
+- 기존 운영 JS의 `subUnit` 표시명이 taxonomy label로 바뀌던 분류기 결함을 수정했다. 보호 필드와 source JS 문항 내용은 변경하지 않았다.
+- 관련 identity/classification/master/baseline/blueprint dry-run/selector 회귀 테스트 15개와 QR/OMR 정적 회귀 7개가 모두 PASS했다.
+- source-dependent `emptySchool` 28건·필수 메타 gap 60건은 추정·재개하지 않는다. physical 438개와 Git tracked 432개의 차이는 release 기준 승인 전까지 보류한다.
+
+### Archive Intelligence의 다음 작업
+
+1. **완료(3A~3E)** — pure selector/score/diversity/seed, Blueprint UI 확장, 행별 수량·분포·UID/source/template 중복·template/서술형 제한의 출력 전 검증을 archive 경로에 연결했고 legacy `slice(0, want)`도 제거했다.
+2. **완료(3F / Gate 3)** — 브라우저 기본 자동출제 15/15, 고급 blueprint 8/8, pin 1건 유지 rebuild 후 최종 15문항·UID 중복 0, 기존 engine exam/sol/ans 21문항 DOM QA, QR 모달, similar 41개 JS loader isolation, 전역 선언 충돌 패치 후 신규 충돌 0을 확인했다. MIXED fixture의 시험지·해설지·정답표 실제 렌더(6/6/6)와 error/warning 0도 확인했다. 카트 footer가 pin 영역을 덮던 레이아웃도 수정했다.
+3. **Phase 4 bridge 진행** — `archive/data/master_tables/school_alias_master.json`, 결정론적 `archive/tools/build-school-fingerprints.mjs`, `archive/mixer-school-fingerprint.js`, `archive/mixer-school-fingerprint-runtime.js`, 생성 산출물 `archive/data/school-fingerprints.json`, 정책 감사 산출물과 계약 테스트를 추가했다. original 348개 파일·7,981문항·37개 학교를 집계했고 23개 학교가 candidate sample threshold를 충족한다. fingerprint→Selector 요청, canonical UID/source identity, 전체 재생·15문항 sample 분포, alias/threshold audit은 PASS지만 `candidate_v1_not_operational` 상태다.
+4. **완료(Phase 4 기술 게이트)** — 원본 7,981문항과 question-index 원본 범위의 `questionType` 보존 audit은 완료했다(명시값 6,705건, 공란 1,276건, 속성 누락·불일치 0건). 학교 alias·sample threshold 감사도 완료했다(alias 37→37·충돌 0, 후보 23·미달 숨김 14). eligible 학교 전체 preset을 `mixer-school-fingerprint-runtime.js` 비노출 계약에 연결했고, runtime preset 주입·hard constraint·distribution gate를 포함한 기술 게이트 7/7 PASS를 고정했다. 정책은 `candidate_v1_not_operational`, `operationalExposure=HOLD`다. 다음은 Gate 4 운영 노출 승인 여부를 결정하는 것이며, 승인 전 UI는 노출하지 않는다.
+5. **Phase 5 5A·5B·5C·5D·5E 계약 진행** — `weakness-metadata-join.js`가 `assessment_result_items` 우선·`wrong_answers + exam_sessions + exam_blueprints` fallback으로 canonical UID와 세부 메타데이터를 연결하고, `weakness-aggregator.js`가 concept/type/template/unit별 score·recency·난도·반복 실패·recovery를 계산한다. `weakness-student-view.js`는 이를 읽기 전용 학생 조회 모델로 변환하고 기존 Wrong Clinic packet을 보존한다. `weakness-supplement-preset.js`는 상위 취약도 대상을 selector 요청별 수량·seed로 변환하며 canonical UID dedupe·운영 잠금 조건을 고정한다. `weakness-closed-loop.js`는 MIXED payload→blueprint→fixture OMR result→canonical UID join→weakness 재집계를 검증한다. canonical coverage 7,981/7,981, sample join 3/3, 집계 차원 4개, student view/보존·supplement allocation·closed-loop 검사는 PASS지만 `operationalExposure=HOLD`다.
+6. **Gate 5 readiness 완료 / 다음은 운영 승인** — Phase 5 기술 계약과 `wrong_ids_only` 입력 정책, Phase 4 기술 게이트, 기존 Wrong Clinic 경로를 읽기 전용으로 재확인했다. 결과는 `GATE5_TECHNICAL_PASS_OPERATIONAL_HOLD`(`archive/data/phase5-gate5-readiness.json`)다. 운영 승인 전에는 학생 UI·DB write·실제 보충시험 생성·원격 QR/OMR roundtrip을 실행하지 않으며, 승인 시에도 현재 입력 방식을 유지한 인증된 fixture/테스트 학생 범위·rollback checkpoint·post-audit 기준을 먼저 확정한다.
+
+상세 기준 문서: `docs/plans/ARCHIVE_INTELLIGENCE_CURRENT_STATUS_20260824.md`.

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://apmath.local/schema/js-archive-tag-master.schema.json",
+  "title": "APMath JS archive tag master",
+  "description": "Compiled master records used by archive classification and validation. The Markdown master remains the human-maintained source of truth.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "key",
+      "keyType",
+      "labelKo",
+      "evidencePolicy",
+      "autoApplyAllowed",
+      "reviewRequiredWhen",
+      "sourceKind",
+      "sourceTitle",
+      "sourceUrlOrPath",
+      "status"
+    ],
+    "properties": {
+      "key": { "type": "string", "minLength": 1 },
+      "keyType": {
+        "type": "string",
+        "enum": ["standardUnitKey", "subUnitKey", "conceptClusterKey", "problemTypeKey", "templateKey"]
+      },
+      "labelKo": { "type": "string", "minLength": 1 },
+      "parentKey": { "type": "string" },
+      "standardUnitKey": { "type": "string" },
+      "subUnitKey": { "type": "string" },
+      "conceptClusterKey": { "type": "string" },
+      "problemTypeKey": { "type": "string" },
+      "templateKey": { "type": "string" },
+      "evidencePolicy": { "type": "string", "minLength": 1 },
+      "autoApplyAllowed": { "type": "boolean" },
+      "reviewRequiredWhen": { "type": "array", "items": { "type": "string" } },
+      "sourceKind": { "type": "string", "minLength": 1 },
+      "sourceTitle": { "type": "string", "minLength": 1 },
+      "sourceUrlOrPath": { "type": "string", "minLength": 1 },
+      "status": { "type": "string", "enum": ["active", "draft", "reviewed", "deprecated"] }
+    },
+    "additionalProperties": true
+  }
+}

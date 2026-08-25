@@ -28,7 +28,7 @@ OUTPUT PROFILE은 노출 필드만 결정한다. Validator 실행범위를 줄�
 ### STRICT_VARIANT
 원문 골격·유형·난도·풀이구조를 유지한 숫자/상수/변수 변형. 이 MODE에서만 의도된 숫자변형을 허용한다.
 
-MODE가 결정되지 않으면 `BLOCKED: MODE_UNRESOLVED`.
+MODE가 결정되지 않으면 `finalStatus=BLOCKED`, code=`MODE_UNRESOLVED`.
 
 ## 3. OUTPUT PROFILE
 
@@ -41,7 +41,7 @@ JS_ARCHIVE는 가능하면 `Structured Question JSON → Schema Validator → De
 ## 4. Input Level
 
 ### L0
-대상/요청이 불명확. 생성 금지. `BLOCKED: INPUT_REQUIRED`.
+대상/요청이 불명확. 생성 금지. `finalStatus=BLOCKED`, code=`INPUT_REQUIRED`.
 
 ### L1
 부분 정보만 있음.
@@ -76,8 +76,9 @@ sourceUid, target JS, Archive metadata, 근접문항 후보 등 운영 데이터
 Final Status 결정:
 1. 필수 입력/자산 없음 → BLOCKED
 2. 필수 Validator FAIL → FAIL
-3. 핵심 Validator PASS + 외부 검증 UNVERIFIED → HOLD
-4. 모든 required Validator PASS/N/A → PASS
+3. 필수 핵심 Validator가 UNVERIFIED이거나 사람의 필수 결정 대기 → BLOCKED
+4. 핵심 Validator PASS + 비필수 외부 검증 UNVERIFIED → HOLD
+5. 모든 required Validator PASS/N/A → PASS
 
 CLARIFY는 상태가 아니라 BLOCKED를 해소하기 위한 action이다.
 
@@ -94,7 +95,7 @@ CLARIFY는 상태가 아니라 BLOCKED를 해소하기 위한 action이다.
 
 사고확장 개념 혼합은 기본적으로 `핵심개념 + 이미 학습한 선수개념 1개` 이내.
 
-경계 확인 불가 → `BLOCKED: CURRICULUM_BOUNDARY_UNRESOLVED`.
+경계 확인 불가 → `finalStatus=BLOCKED`, code=`CURRICULUM_BOUNDARY_UNRESOLVED`.
 
 ## 7. Source Fingerprint
 
@@ -147,6 +148,15 @@ A~F 인지 상승 유형을 최소 1개 적용하고 QUALITY A만 허용.
 - 숫자갈이에만 그치면 FAIL
 - 독립 문항
 
+확인문제의 난도 동치는 §8의 Difficulty Vector를 기준으로 다음처럼 판정한다.
+
+- `conceptDepth`, `decisionCount`, `branchingLoad`, `interpretationLoad`, `abstractionLoad`는 원문과 같은 값을 유지한다.
+- `solutionGraph`의 핵심 깊이와 풀이 진입점은 유지한다.
+- `visualDependency=ESSENTIAL`이면 `visualReasoningLoad`도 같은 값을 유지한다.
+- `algebraLoad`, `answerComplexity`는 각각 `|delta| <= 1`까지 허용할 수 있으나, 이것만으로 심화 판정을 하지 않는다.
+- 인지 핵심 축 중 하나라도 `delta > 0`이면 확인문제가 아니라 심화 검토로 재분류한다. `delta < 0`이면 난도 동치가 아니므로 재설계한다.
+- 핵심 축 또는 `solutionGraph`를 비교할 원문 기준이 없으면 동치 PASS를 주지 않고 `HOLD` 또는 사람 검토로 보낸다.
+
 ### 심화문제
 필수:
 1. 새로운 중간 판단 지점 +1
@@ -185,8 +195,10 @@ QUALITY B/C는 폐기 후 재생성.
 
 `cognitiveGain = max(ΔdecisionCount, ΔbranchingLoad, ΔinterpretationLoad, ΔabstractionLoad)`
 
-- `cognitiveGain <= 0 AND ΔalgebraLoad > 0` → G09 FAKE_ADVANCEMENT
-- `ΔalgebraLoad >= 2 AND cognitiveGain <= 0` → HARD FAIL G09
+- `cognitiveGain <= 0 AND ΔalgebraLoad > 0` → FAIL, code=`FAKE_ADVANCEMENT_G09`
+- `ΔalgebraLoad >= 2 AND cognitiveGain <= 0` → HARD FAIL, code=`FAKE_ADVANCEMENT_G09`
+
+상태와 code 문자열의 전체 목록 및 blocking 여부는 Validation Sidecar Schema §9를 따른다.
 
 계산량 증가와 함께 실제 판단도 증가한 경우에는 자동 FAIL하지 않고 V3에서 평가한다.
 
@@ -239,7 +251,7 @@ V1-A와 완전 exact 계산 결과 충돌 → FAIL `COMPUTATIONAL_CONFLICT`.
 NONE / OPTIONAL / ESSENTIAL.
 
 ESSENTIAL 시각자료를 편의상 텍스트 문제로 바꾸지 않는다.
-Asset 없음 → `BLOCKED: VISUAL_ASSET_REQUIRED`, Visual Spec에 따라 하위 엔진으로 라우팅.
+Asset 없음 → `finalStatus=BLOCKED`, code=`VISUAL_ASSET_REQUIRED`; Visual Spec에 따라 하위 엔진으로 라우팅.
 
 ## 19. Duplicate / Family
 
@@ -248,7 +260,7 @@ STRICT_VARIANT는 같은 원문 계열을 `familyId`로 묶을 수 있다.
 
 다른 family 또는 TYPE_BANK/EXAM_FOLLOWUP에서 solutionEntry/solutionGraph/조건구조/질문대상/핵심함정이 사실상 같고 표면만 다르면 재생성 또는 FAIL.
 
-Archive 조회 불가 → `HOLD: ARCHIVE_DUPLICATE_UNVERIFIED`.
+Archive 조회 불가 → `finalStatus=HOLD`, code=`ARCHIVE_DUPLICATE_UNVERIFIED`.
 
 ## 20. Question Payload와 Sidecar 분리
 

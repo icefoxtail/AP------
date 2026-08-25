@@ -5,6 +5,10 @@
 이번 작업은 단순 해설 보강이 아니다.
 각 문항의 원문 이미지와 JS를 함께 보고, content / choices / answer / solution이 서로 맞는지 확인한 뒤, 필요한 경우 최소 보정하고, 모든 일반 문항의 solution을 RULES 기준으로 새로 작성한다.
 
+> 2026-08-22 운영 부록: 신규 archive JS의 세부단원 4개 필드는
+> `_rules/JS아카이브_세부단원_운영규칙_v1.md`와 compiled master를 기준으로 검사한다.
+> 이 품질 작업은 세부단원 메타데이터를 근거 없이 재분류하지 않으며, 상세 근거는 sidecar report로 남긴다.
+
 ---
 
 ## 0. 작업 대상
@@ -17,7 +21,7 @@
 2. 해당 시험지의 crop / page / fullpage / 정답표 이미지 에셋
 3. `_rules/해설프로토콜.md`
 4. `_rules/문제해설추출.md`
-5. `_rules/JS아카이브룰북.txt`
+5. `_rules/JS아카이브룰북_v2.5.md` 및 `_rules/JS아카이브_세부단원_운영규칙_v1.md`
 6. `_rules/무결성검수.md`
 7. 작업 지시서와 체크리스트
 
@@ -29,7 +33,7 @@
 
 1. `_rules/문제해설추출.md`
 2. `_rules/해설프로토콜.md`
-3. `_rules/JS아카이브룰북.txt`
+3. `_rules/JS아카이브룰북_v2.5.md` 및 `_rules/JS아카이브_세부단원_운영규칙_v1.md`
 4. `_rules/무결성검수.md`
 
 특히 이번 작업의 기본 프로토콜은 `_rules/문제해설추출.md`이다.
@@ -88,6 +92,15 @@
 - `standardUnitKey`
 - `standardUnit`
 - `standardUnitOrder`
+
+신규 candidate·production은 다음 세부단원 필드도 품질 검수 대상이다.
+
+- `subUnitKey`
+- `subUnit`
+- `subUnitConfidence`
+- `subUnitClassificationDepth`
+
+세부단원 근거의 상세 점수·cue는 sidecar report에 두고 JS에는 최종값만 저장한다.
 - `questionType`
 - `layoutTag`
 - `wide`

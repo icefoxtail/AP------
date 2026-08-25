@@ -1,0 +1,24 @@
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+const archiveDir = path.resolve(scriptDir, '../..');
+const reviewDir = path.join(archiveDir, '_generated/intelligence/phase3/sequential-review');
+const candidatePath = path.join(reviewDir, 'archive-sequential-subunit-candidate-classification-batch-011-v1.json');
+const outputPath = path.join(reviewDir, 'archive-sequential-batch-011-adjudication-progress-v1.json');
+const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
+export function summarizeSequentialBatch011AdjudicationV1() {
+  const candidates = JSON.parse(fs.readFileSync(candidatePath, 'utf8'));
+  const names = fs.readdirSync(reviewDir).filter(name => /^archive-sequential-batch-011-\d+-\d+-adjudication-v1\.json$/.test(name)).sort((a, b) => Number(a.match(/011-(\d+)-/)[1]) - Number(b.match(/011-(\d+)-/)[1]));
+  const reports = names.map(name => JSON.parse(fs.readFileSync(path.join(reviewDir, name), 'utf8')));
+  const records = reports.flatMap(report => report.records).sort((a, b) => a.sequenceOrder - b.sequenceOrder);
+  const stable = { schemaVersion: 'archive-sequential-batch-011-adjudication-progress-v1', candidateDigest: candidates.digest, sourceAdjudicationDigests: reports.map(report => report.digest), sourceAdjudicationFiles: names, productionWriteAllowed: false, totals: { batchRecords: candidates.totals.records, adjudicatedRecords: records.length, pendingRecords: candidates.totals.records - records.length, answerRecheckConfirmed: records.filter(record => record.answerVerification === 'INDEPENDENT_RECHECK_CONFIRMED').length, wordingReviewRequired: records.filter(record => record.answerVerification !== 'INDEPENDENT_RECHECK_CONFIRMED').length, status: { DRAFT_TAXONOMY_HOLD: records.length } }, records };
+  return { generatedAt: new Date().toISOString(), digest: sha256(JSON.stringify(stable)), ...stable };
+}
+if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  const report = summarizeSequentialBatch011AdjudicationV1();
+  fs.mkdirSync(reviewDir, { recursive: true });
+  fs.writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+  console.log(JSON.stringify({ output: path.relative(archiveDir, outputPath).replaceAll('\\', '/'), digest: report.digest, totals: report.totals }, null, 2));
+}
