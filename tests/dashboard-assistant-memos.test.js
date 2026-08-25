@@ -68,7 +68,7 @@ const scheduledClasses = [
   });
   assert.strictEqual(memos[0].text, '김민준(중2) 지난 시간에 결석했어요. 보강 확인하세요.');
   assert(memos.some(m => m.text === '오늘은 일지를 제출하는 날이에요.'));
-  assert(memos.some(m => m.text === '중2A 지난 수업 진도 기록이 비어 있어요.'));
+  assert(!memos.some(m => m.type === 'record-gap'), 'progress-gap memos are disabled');
   assert(memos.length <= 3);
 }
 
@@ -142,7 +142,7 @@ const scheduledClasses = [
     previousClassDateById: { 30: '2026-06-12', 20: '2026-06-12' }
   });
   assert(!memos.some(m => m.id === 'record-gap:30:2026-06-12'), 'high-school classes must not show progress-gap memos');
-  assert(memos.some(m => m.id === 'record-gap:20:2026-06-12'), 'middle-school classes must retain progress-gap memos');
+  assert(!memos.some(m => m.type === 'record-gap'), 'middle-school classes must also omit progress-gap memos');
 }
 
 {
