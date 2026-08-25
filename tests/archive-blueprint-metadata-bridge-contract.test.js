@@ -14,11 +14,20 @@ for (const column of columns) {
     schema.includes(`${column} TEXT`),
     `schema must declare additive exam_blueprints column: ${column}`
   );
+}
+
+// type_key and difficulty already exist in the deployed baseline.  The
+// Phase 2A migration must add only the missing archive bridge columns and
+// must not attempt a duplicate ALTER for those legacy columns.
+const migrationColumns = ['sub_unit_key', 'template_key', 'metadata_revision', 'metadata_hash'];
+for (const column of migrationColumns) {
   assert(
     migration.includes(`ALTER TABLE exam_blueprints ADD COLUMN ${column} TEXT`),
     `migration must add exam_blueprints column: ${column}`
   );
 }
+assert(!migration.includes('ALTER TABLE exam_blueprints ADD COLUMN type_key TEXT'), 'migration must preserve baseline type_key');
+assert(!migration.includes('ALTER TABLE exam_blueprints ADD COLUMN difficulty TEXT'), 'migration must preserve baseline difficulty');
 
 assert(!/\bDROP\s+(TABLE|COLUMN)\b/i.test(migration), 'Phase 2A migration must not drop tables or columns');
 assert(!/PRIMARY\s+KEY\s*\(/i.test(migration), 'Phase 2A migration must not redefine the blueprint primary key');

@@ -50,7 +50,9 @@ try {
   const expectedHash = (await import('node:crypto')).createHash('sha256').update(JSON.stringify(metadata)).digest('hex');
   const sqlValue = value => value === null || value === undefined ? 'NULL' : `'${String(value).replace(/'/g, "''")}'`;
   const fixtureColumns = ['archive_file', 'question_no', 'source_archive_file', 'source_question_no', 'source_question_uid', 'source_question_ordinal', 'standard_unit_key', 'standard_unit', 'standard_course', 'concept_cluster_key', 'sub_unit_key', 'type_key', 'template_key', 'difficulty', 'metadata_revision', 'metadata_hash'];
-  const fixtureValues = [sourceArchive, 1, sourceArchive, 1, 'qid_v1_fixture', 1, metadata.standardUnitKey, metadata.standardUnit, metadata.standardCourse, metadata.conceptClusterKey, metadata.subUnitKey, metadata.typeKey, metadata.templateKey, metadata.difficulty, metadata.metadataRevision, expectedHash];
+  const fixtureSourceFile = sourceArchive.replace(/^exams\//, '');
+  const fixtureUid = `qid_v1_${(await import('node:crypto')).createHash('sha256').update(`${fixtureSourceFile}#1`).digest('hex')}`;
+  const fixtureValues = [sourceArchive, 1, sourceArchive, 1, fixtureUid, 1, metadata.standardUnitKey, metadata.standardUnit, metadata.standardCourse, metadata.conceptClusterKey, metadata.subUnitKey, metadata.typeKey, metadata.templateKey, metadata.difficulty, metadata.metadataRevision, expectedHash];
   const fixtureSql = `INSERT INTO "exam_blueprints" (${fixtureColumns.map(column => `"${column}"`).join(',')}) VALUES(${fixtureValues.map(sqlValue).join(',')});\n`;
   const fixtureDb = path.join(tempRoot, 'ready.sql');
   const fixtureOut = path.join(tempRoot, 'ready-report.json');
