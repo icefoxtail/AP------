@@ -23,7 +23,11 @@ window.questionBank = [
       "5의 제곱근"
     ],
     "answer": "②",
-    "solution": "[키포인트] '5의 제곱근'과 '제곱근 5'의 의미를 구분한다.\\n① $x^2=5$를 만족시키는 $x$의 값은 $\\pm\\sqrt{5}$이다.\\n② 제곱근 5는 $\\sqrt{5}$를 뜻한다.\\n③ 제곱하여 5가 되는 수는 $\\pm\\sqrt{5}$이다.\\n④ $\\pm\\sqrt{5}$이다.\\n⑤ 5의 제곱근은 $\\pm\\sqrt{5}$이다.\\n따라서 나머지 넷과 값이 다른 하나는 ②이다."
+    "solution": "[키포인트] '5의 제곱근'과 '제곱근 5'의 의미를 구분한다.\\n① $x^2=5$를 만족시키는 $x$의 값은 $\\pm\\sqrt{5}$이다.\\n② 제곱근 5는 $\\sqrt{5}$를 뜻한다.\\n③ 제곱하여 5가 되는 수는 $\\pm\\sqrt{5}$이다.\\n④ $\\pm\\sqrt{5}$이다.\\n⑤ 5의 제곱근은 $\\pm\\sqrt{5}$이다.\\n따라서 나머지 넷과 값이 다른 하나는 ②이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "5개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 근호 안의 수가 유리수의 제곱이면 근호를 사용하지 않고 나타낼 수 있다.\\n$\\sqrt{144}=12$\\n$\\sqrt{\\frac{1}{9}}=\\frac{1}{3}$\\n$\\sqrt{0.9}=\\sqrt{\\frac{9}{10}}=\\frac{3}{\\sqrt{10}}$이므로 근호 없이 나타낼 수 없다.\\n$\\sqrt{\\frac{3}{16}}=\\frac{\\sqrt{3}}{4}$이므로 근호 없이 나타낼 수 없다.\\n$-\\sqrt{0.49}=-0.7$\\n따라서 근호 없이 나타낼 수 있는 수는 3개이므로 정답은 ③이다."
+    "solution": "[키포인트] 근호 안의 수가 유리수의 제곱이면 근호를 사용하지 않고 나타낼 수 있다.\\n$\\sqrt{144}=12$\\n$\\sqrt{\\frac{1}{9}}=\\frac{1}{3}$\\n$\\sqrt{0.9}=\\sqrt{\\frac{9}{10}}=\\frac{3}{\\sqrt{10}}$이므로 근호 없이 나타낼 수 없다.\\n$\\sqrt{\\frac{3}{16}}=\\frac{\\sqrt{3}}{4}$이므로 근호 없이 나타낼 수 없다.\\n$-\\sqrt{0.49}=-0.7$\\n따라서 근호 없이 나타낼 수 있는 수는 3개이므로 정답은 ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "가, 나, 다, 라"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\sqrt{x^2}=|x|$임을 이용하여 부호를 판단한다.\\n가. $x>0$일 때 $(\\sqrt{x})^2=x$이므로 참이다.\\n나. $x>0$일 때 $\\sqrt{x^2}=x$이므로 $-\\sqrt{x^2}=-x$이다. 참이다.\\n다. $x>0$일 때 $\\sqrt{(-x)^2}=|-x|=x$이므로 참이다.\\n라. $x<0$일 때 $\\sqrt{x^2}=|x|=-x$이므로 참이다.\\n따라서 옳은 것은 가, 나, 다, 라이고 정답은 ⑤이다."
+    "solution": "[키포인트] $\\sqrt{x^2}=|x|$임을 이용하여 부호를 판단한다.\\n가. $x>0$일 때 $(\\sqrt{x})^2=x$이므로 참이다.\\n나. $x>0$일 때 $\\sqrt{x^2}=x$이므로 $-\\sqrt{x^2}=-x$이다. 참이다.\\n다. $x>0$일 때 $\\sqrt{(-x)^2}=|-x|=x$이므로 참이다.\\n라. $x<0$일 때 $\\sqrt{x^2}=|x|=-x$이므로 참이다.\\n따라서 옳은 것은 가, 나, 다, 라이고 정답은 ⑤이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{a^2}=|a|$와 제곱의 성질을 이용한다.\\n$\\sqrt{7^2}=7$이고 $(-\\sqrt{5})^2=5$이다.\\n따라서 $\\sqrt{7^{2}} + (-\\sqrt{5})^{2}=7+5=12$이므로 정답은 ①이다."
+    "solution": "[키포인트] $\\sqrt{a^2}=|a|$와 제곱의 성질을 이용한다.\\n$\\sqrt{7^2}=7$이고 $(-\\sqrt{5})^2=5$이다.\\n따라서 $\\sqrt{7^{2}} + (-\\sqrt{5})^{2}=7+5=12$이므로 정답은 ①이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "6개"
     ],
     "answer": "②",
-    "solution": "[키포인트] $v=\\sqrt{19.6h}$가 자연수가 되도록 $h$의 형태를 정한다.\\n$v=\\sqrt{2\\times 9.8\\times h}=\\sqrt{19.6h}=\\sqrt{\\frac{98}{5}h}$이다.\\n$h=10k^2$이면 $19.6h=196k^2=(14k)^2$가 되어 $v$는 자연수이다.\\n$h$가 두 자리 자연수이므로 $10 \\le 10k^2 \\le 99$이다.\\n$1 \\le k^2 \\le 9.9$이므로 $k=1,2,3$이다.\\n가능한 $h$는 $10,40,90$으로 3개이므로 정답은 ②이다."
+    "solution": "[키포인트] $v=\\sqrt{19.6h}$가 자연수가 되도록 $h$의 형태를 정한다.\\n$v=\\sqrt{2\\times 9.8\\times h}=\\sqrt{19.6h}=\\sqrt{\\frac{98}{5}h}$이다.\\n$h=10k^2$이면 $19.6h=196k^2=(14k)^2$가 되어 $v$는 자연수이다.\\n$h$가 두 자리 자연수이므로 $10 \\le 10k^2 \\le 99$이다.\\n$1 \\le k^2 \\le 9.9$이므로 $k=1,2,3$이다.\\n가능한 $h$는 $10,40,90$으로 3개이므로 정답은 ②이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "(유리수)+(무리수)는 모두 무리수이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 유리수와 무리수의 성질을 구분한다.\\n① $\\sqrt{9}=3$이므로 유리수이다.\\n② 유리수와 무리수는 서로 겹치지 않는다.\\n③ 무한소수 중 순환소수는 유리수이다.\\n④ 수직선은 유리수와 무리수를 모두 포함한 실수에 대응하는 점들로 완전히 메울 수 있다.\\n⑤ 유리수에 무리수를 더하면 항상 무리수이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 유리수와 무리수의 성질을 구분한다.\\n① $\\sqrt{9}=3$이므로 유리수이다.\\n② 유리수와 무리수는 서로 겹치지 않는다.\\n③ 무한소수 중 순환소수는 유리수이다.\\n④ 수직선은 유리수와 무리수를 모두 포함한 실수에 대응하는 점들로 완전히 메울 수 있다.\\n⑤ 유리수에 무리수를 더하면 항상 무리수이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "반지름의 길이가 3인 바퀴가 두 바퀴 굴러간 거리"
     ],
     "answer": "③, ⑤",
-    "solution": "[키포인트] 무리수는 유리수로 나타낼 수 없는 수이다.\\n① 넓이가 36인 정사각형의 한 변의 길이는 $6$이므로 유리수이다.\\n② 순환소수 $2.5\\dot{4}$는 유리수이다.\\n③ 한 변의 길이가 6인 정삼각형의 높이는 $3\\sqrt{3}$이므로 무리수이다.\\n④ 한 변의 길이가 $\\sqrt{3}$인 정사각형의 한 대각선의 길이는 $\\sqrt{3}\\times\\sqrt{2}=\\sqrt{6}$이므로 무리수이다.\\n⑤ 반지름의 길이가 3인 바퀴가 두 바퀴 굴러간 거리는 $2\\times2\\pi\\times3=12\\pi$이므로 무리수이다.\\n따라서 무리수는 ③, ④, ⑤이다."
+    "solution": "[키포인트] 무리수는 유리수로 나타낼 수 없는 수이다.\\n① 넓이가 36인 정사각형의 한 변의 길이는 $6$이므로 유리수이다.\\n② 순환소수 $2.5\\dot{4}$는 유리수이다.\\n③ 한 변의 길이가 6인 정삼각형의 높이는 $3\\sqrt{3}$이므로 무리수이다.\\n④ 한 변의 길이가 $\\sqrt{3}$인 정사각형의 한 대각선의 길이는 $\\sqrt{3}\\times\\sqrt{2}=\\sqrt{6}$이므로 무리수이다.\\n⑤ 반지름의 길이가 3인 바퀴가 두 바퀴 굴러간 거리는 $2\\times2\\pi\\times3=12\\pi$이므로 무리수이다.\\n따라서 무리수는 ③, ④, ⑤이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -180,7 +208,9 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "content": "아래 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 직각삼각형 $ABC$와 수직선을 그린 것이다. 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P, Q$라고 할 때, 다음 중 옳지 않은 것을 모두 고르면? (정답 2개)\\n<div style=\"text-align:center;\">\\n<svg width=\"250\" height=\"170\" viewBox=\"0 0 250 170\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <g stroke=\"#E5E5E5\" stroke-width=\"1\">\\n    <line x1=\"12\" y1=\"18\" x2=\"236\" y2=\"18\" />\\n    <line x1=\"12\" y1=\"46\" x2=\"236\" y2=\"46\" />\\n    <line x1=\"12\" y1=\"74\" x2=\"236\" y2=\"74\" />\\n    <line x1=\"12\" y1=\"102\" x2=\"236\" y2=\"102\" />\\n    <line x1=\"12\" y1=\"130\" x2=\"236\" y2=\"130\" stroke=\"#333\" />\\n    <line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"135\" />\\n    <line x1=\"40\" y1=\"18\" x2=\"40\" y2=\"135\" />\\n    <line x1=\"68\" y1=\"18\" x2=\"68\" y2=\"135\" />\\n    <line x1=\"96\" y1=\"18\" x2=\"96\" y2=\"135\" />\\n    <line x1=\"124\" y1=\"18\" x2=\"124\" y2=\"135\" stroke=\"#888\" />\\n    <line x1=\"152\" y1=\"18\" x2=\"152\" y2=\"135\" />\\n    <line x1=\"180\" y1=\"18\" x2=\"180\" y2=\"135\" stroke=\"#888\" />\\n    <line x1=\"208\" y1=\"18\" x2=\"208\" y2=\"135\" />\\n    <line x1=\"236\" y1=\"18\" x2=\"236\" y2=\"135\" />\\n  </g>\\n  <path d=\"M236 130 l-5 -3.5 v7 z\" fill=\"#333\" />\\n  <path d=\"M 23.05 130 A 100.95 100.95 0 0 1 180 46 A 100.95 100.95 0 0 1 224.95 130\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.2\" stroke-dasharray=\"3,3\" />\\n  <path d=\"M 124 130 L 180 130 L 180 46 Z\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.8\" stroke-linejoin=\"round\" />\\n  <path d=\"M 172 130 L 172 122 L 180 122\" fill=\"none\" stroke=\"#000\" stroke-width=\"1\" />\\n  <circle cx=\"124\" cy=\"130\" r=\"2.5\" fill=\"#000\" />\\n  <circle cx=\"180\" cy=\"130\" r=\"2.5\" fill=\"#000\" />\\n  <circle cx=\"180\" cy=\"46\" r=\"2.5\" fill=\"#000\" />\\n  <circle cx=\"23.05\" cy=\"130\" r=\"2.5\" fill=\"#000\" />\\n  <circle cx=\"224.95\" cy=\"130\" r=\"2.5\" fill=\"#000\" />\\n  <text x=\"119\" y=\"146\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">A</text>\\n  <text x=\"183\" y=\"146\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">B</text>\\n  <text x=\"183\" y=\"42\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">C</text>\\n  <text x=\"18\" y=\"146\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">Q</text>\\n  <text x=\"221\" y=\"146\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">P</text>\\n  <text x=\"7\" y=\"158\" font-family=\"serif\" font-size=\"9\">-6</text>\\n  <text x=\"35\" y=\"158\" font-family=\"serif\" font-size=\"9\">-5</text>\\n  <text x=\"63\" y=\"158\" font-family=\"serif\" font-size=\"9\">-4</text>\\n  <text x=\"91\" y=\"158\" font-family=\"serif\" font-size=\"9\">-3</text>\\n  <text x=\"119\" y=\"158\" font-family=\"serif\" font-size=\"9\">-2</text>\\n  <text x=\"147\" y=\"158\" font-family=\"serif\" font-size=\"9\">-1</text>\\n  <text x=\"177\" y=\"158\" font-family=\"serif\" font-size=\"9\">0</text>\\n  <text x=\"206\" y=\"158\" font-family=\"serif\" font-size=\"9\">1</text>\\n  <text x=\"234\" y=\"158\" font-family=\"serif\" font-size=\"9\">2</text>\\n</svg>\\n</div>",
     "choices": [
@@ -191,7 +221,11 @@ window.questionBank = [
       "$\\sqrt{5}$는 두 점 $P, Q$ 사이에 있는 무리수이다."
     ],
     "answer": "②, ⑤",
-    "solution": "[키포인트] 직각삼각형의 빗변을 반지름으로 하는 원을 이용하여 수직선 위의 점의 좌표를 정확히 결정한다.\\n1단계: 모눈종이 위 직각삼각형 $ABC$에서 밑변 $\\overline{AB}=2$, 높이 $\\overline{BC}=3$이므로 피타고라스 정리에 의해 빗변의 길이는 다음과 같다.\\n$$\\overline{AC} = \\sqrt{2^2 + 3^2} = \\sqrt{13}$$\\n2단계: 점 $A(-2)$가 원의 중심이므로 원 위의 모든 점은 $A$로부터 $\\sqrt{13}$만큼 떨어져 있다. 즉, $\\overline{AP} = \\overline{QA} = \\sqrt{13}$이다. (①, ③ 참)\\n3단계: 점 $P$의 좌표는 기준점 $-2$에서 오른쪽으로 $\\sqrt{13}$만큼 이동한 것이므로 $-2 + \\sqrt{13}$이다. (② 거짓)\\n4단계: 점 $Q$의 좌표는 기준점 $-2$에서 왼쪽으로 $\\sqrt{13}$만큼 이동한 것이므로 $-2 - \\sqrt{13}$이다. (④ 참)\\n5단계: $\\sqrt{13} \\approx 3.6$이므로 $P \\approx 1.6$, $Q \\approx -5.6$이다. $\\sqrt{5} \\approx 2.23$이므로 $1.6$보다 큰 쪽에 위치한다. 따라서 두 점 $P, Q$ 사이에 있지 않다. (⑤ 거짓)\\n∴ 정답: ②, ⑤"
+    "solution": "[키포인트] 직각삼각형의 빗변을 반지름으로 하는 원을 이용하여 수직선 위의 점의 좌표를 정확히 결정한다.\\n1단계: 모눈종이 위 직각삼각형 $ABC$에서 밑변 $\\overline{AB}=2$, 높이 $\\overline{BC}=3$이므로 피타고라스 정리에 의해 빗변의 길이는 다음과 같다.\\n$$\\overline{AC} = \\sqrt{2^2 + 3^2} = \\sqrt{13}$$\\n2단계: 점 $A(-2)$가 원의 중심이므로 원 위의 모든 점은 $A$로부터 $\\sqrt{13}$만큼 떨어져 있다. 즉, $\\overline{AP} = \\overline{QA} = \\sqrt{13}$이다. (①, ③ 참)\\n3단계: 점 $P$의 좌표는 기준점 $-2$에서 오른쪽으로 $\\sqrt{13}$만큼 이동한 것이므로 $-2 + \\sqrt{13}$이다. (② 거짓)\\n4단계: 점 $Q$의 좌표는 기준점 $-2$에서 왼쪽으로 $\\sqrt{13}$만큼 이동한 것이므로 $-2 - \\sqrt{13}$이다. (④ 참)\\n5단계: $\\sqrt{13} \\approx 3.6$이므로 $P \\approx 1.6$, $Q \\approx -5.6$이다. $\\sqrt{5} \\approx 2.23$이므로 $1.6$보다 큰 쪽에 위치한다. 따라서 두 점 $P, Q$ 사이에 있지 않다. (⑤ 거짓)\\n∴ 정답: ②, ⑤",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +249,11 @@ window.questionBank = [
       "$-\\sqrt{3} < -\\sqrt{4}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 양변에 같은 수를 더하거나 빼서 근호 안의 수를 비교한다.\\n① $7-\\sqrt{3}<4$이면 $3<\\sqrt{3}$이어야 하므로 거짓이다.\\n② 양변에 $2$를 더하면 $\\sqrt{7}<\\sqrt{5}$가 되어 거짓이다.\\n③ $4+\\sqrt{2}$는 양수이므로 $-4$보다 크다.\\n④ $6<4+\\sqrt{5}$는 $2<\\sqrt{5}$와 같고 참이다.\\n⑤ $-\\sqrt{3}< -\\sqrt{4}$는 $\\sqrt{3}>\\sqrt{4}$와 같아 거짓이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 양변에 같은 수를 더하거나 빼서 근호 안의 수를 비교한다.\\n① $7-\\sqrt{3}<4$이면 $3<\\sqrt{3}$이어야 하므로 거짓이다.\\n② 양변에 $2$를 더하면 $\\sqrt{7}<\\sqrt{5}$가 되어 거짓이다.\\n③ $4+\\sqrt{2}$는 양수이므로 $-4$보다 크다.\\n④ $6<4+\\sqrt{5}$는 $2<\\sqrt{5}$와 같고 참이다.\\n⑤ $-\\sqrt{3}< -\\sqrt{4}$는 $\\sqrt{3}>\\sqrt{4}$와 같아 거짓이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -239,7 +277,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] $\\sqrt{2}$의 범위를 이용하여 값의 범위를 구한다.\\n$1.4<\\sqrt{2}<1.5$이므로 $4.2<3\\sqrt{2}<4.5$이다.\\n따라서 $2.5<7-3\\sqrt{2}<2.8$이므로 정수 부분은 $2$이다.\\n정답은 ②이다."
+    "solution": "[키포인트] $\\sqrt{2}$의 범위를 이용하여 값의 범위를 구한다.\\n$1.4<\\sqrt{2}<1.5$이므로 $4.2<3\\sqrt{2}<4.5$이다.\\n따라서 $2.5<7-3\\sqrt{2}<2.8$이므로 정수 부분은 $2$이다.\\n정답은 ②이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -263,7 +305,11 @@ window.questionBank = [
       "32개"
     ],
     "answer": "③",
-    "solution": "[키포인트] $30<\\sqrt{2k}<31$을 만족하는 자연수 $k$의 개수를 센다.\\n$30<\\sqrt{2k}<31$의 각 변을 제곱하면\\n$900<2k<961$이다.\\n따라서 $450<k<480.5$이다.\\n가능한 자연수 $k$는 $451,452,\\dots,480$이다.\\n개수는 $480-451+1=30$개이므로 정답은 ③이다."
+    "solution": "[키포인트] $30<\\sqrt{2k}<31$을 만족하는 자연수 $k$의 개수를 센다.\\n$30<\\sqrt{2k}<31$의 각 변을 제곱하면\\n$900<2k<961$이다.\\n따라서 $450<k<480.5$이다.\\n가능한 자연수 $k$는 $451,452,\\dots,480$이다.\\n개수는 $480-451+1=30$개이므로 정답은 ③이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -287,7 +333,11 @@ window.questionBank = [
       "가: 교환, 나: $(\\sqrt{2} \\times \\sqrt{7})^{2}$, 다: 양의 제곱근, 라: $\\sqrt{2 \\times 7}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 양수의 제곱근 중 양의 값을 뜻하는 표현을 찾아야 한다.\\n실수의 곱셈에서는 교환법칙과 결합법칙이 성립하므로 (가)는 교환이다.\\n제곱하는 대상은 $(\\sqrt{2}\\times\\sqrt{7})^2$이므로 (나)는 $(\\sqrt{2} \\times \\sqrt{7})^{2}$이다.\\n$\\sqrt{2}\\times\\sqrt{7}$는 양수이므로 $2\\times7$의 양의 제곱근이다. 따라서 (다)는 양의 제곱근이다.\\n그러므로 $\\sqrt{2}\\times\\sqrt{7}=\\sqrt{2\\times7}$이므로 (라)는 $\\sqrt{2 \\times 7}$이다.\\n정답은 ⑤이다."
+    "solution": "[키포인트] 양수의 제곱근 중 양의 값을 뜻하는 표현을 찾아야 한다.\\n실수의 곱셈에서는 교환법칙과 결합법칙이 성립하므로 (가)는 교환이다.\\n제곱하는 대상은 $(\\sqrt{2}\\times\\sqrt{7})^2$이므로 (나)는 $(\\sqrt{2} \\times \\sqrt{7})^{2}$이다.\\n$\\sqrt{2}\\times\\sqrt{7}$는 양수이므로 $2\\times7$의 양의 제곱근이다. 따라서 (다)는 양의 제곱근이다.\\n그러므로 $\\sqrt{2}\\times\\sqrt{7}=\\sqrt{2\\times7}$이므로 (라)는 $\\sqrt{2 \\times 7}$이다.\\n정답은 ⑤이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -311,7 +361,11 @@ window.questionBank = [
       "13"
     ],
     "answer": "③",
-    "solution": "[키포인트] 근호 안의 수를 간단히 하고, $b^2$의 값을 이용한다.\\n$\\sqrt{240}=\\sqrt{16\\times15}=4\\sqrt{15}$이므로 $a=4$이다.\\n$\\frac{\\sqrt{14}}{\\sqrt{2}}=\\sqrt{\\frac{14}{2}}=\\sqrt{7}$이므로 $b=\\sqrt{7}$이다.\\n따라서 $a+b^2=4+(\\sqrt{7})^2=4+7=11$이다.\\n정답은 ③이다."
+    "solution": "[키포인트] 근호 안의 수를 간단히 하고, $b^2$의 값을 이용한다.\\n$\\sqrt{240}=\\sqrt{16\\times15}=4\\sqrt{15}$이므로 $a=4$이다.\\n$\\frac{\\sqrt{14}}{\\sqrt{2}}=\\sqrt{\\frac{14}{2}}=\\sqrt{7}$이므로 $b=\\sqrt{7}$이다.\\n따라서 $a+b^2=4+(\\sqrt{7})^2=4+7=11$이다.\\n정답은 ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -335,7 +389,11 @@ window.questionBank = [
       "228.0"
     ],
     "answer": "②",
-    "solution": "[키포인트] 소수의 위치를 $10$의 거듭제곱으로 바꾸어 제곱근을 계산한다.\\n$0.00052=5.2\\times10^{-4}$이다.\\n따라서 $\\sqrt{0.00052}=\\sqrt{5.2\\times10^{-4}}=\\sqrt{5.2}\\times10^{-2}$이다.\\n$\\sqrt{5.2}=2.280$이므로 $\\sqrt{0.00052}\\approx2.280\\times0.01=0.02280$이다.\\n정답은 ②이다."
+    "solution": "[키포인트] 소수의 위치를 $10$의 거듭제곱으로 바꾸어 제곱근을 계산한다.\\n$0.00052=5.2\\times10^{-4}$이다.\\n따라서 $\\sqrt{0.00052}=\\sqrt{5.2\\times10^{-4}}=\\sqrt{5.2}\\times10^{-2}$이다.\\n$\\sqrt{5.2}=2.280$이므로 $\\sqrt{0.00052}\\approx2.280\\times0.01=0.02280$이다.\\n정답은 ②이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -359,7 +417,11 @@ window.questionBank = [
       "$\\sqrt{3}(\\sqrt{2} + 5) = \\sqrt{6} + 5\\sqrt{3}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 근호가 있는 식을 간단히 하여 등식이 성립하는지 확인한다.\\n① $\\frac{\\sqrt{3}}{2\\sqrt{5}}=\\frac{\\sqrt{15}}{10}$이므로 옳다.\\n② $3\\sqrt{2}\\times\\sqrt{5}\\div 2\\sqrt{10}=\\frac{3\\sqrt{10}}{2\\sqrt{10}}=\\frac{3}{2}$이므로 옳다.\\n③ $\\sqrt{18}+\\sqrt{2}=3\\sqrt{2}+\\sqrt{2}=4\\sqrt{2}$이므로 $2\\sqrt{6}$과 같지 않다.\\n④ $3\\sqrt{2}-\\sqrt{8}=3\\sqrt{2}-2\\sqrt{2}=\\sqrt{2}$이므로 옳다.\\n⑤ $\\sqrt{3}(\\sqrt{2}+5)=\\sqrt{6}+5\\sqrt{3}$이므로 옳다.\\n따라서 옳지 않은 것은 ③이다."
+    "solution": "[키포인트] 근호가 있는 식을 간단히 하여 등식이 성립하는지 확인한다.\\n① $\\frac{\\sqrt{3}}{2\\sqrt{5}}=\\frac{\\sqrt{15}}{10}$이므로 옳다.\\n② $3\\sqrt{2}\\times\\sqrt{5}\\div 2\\sqrt{10}=\\frac{3\\sqrt{10}}{2\\sqrt{10}}=\\frac{3}{2}$이므로 옳다.\\n③ $\\sqrt{18}+\\sqrt{2}=3\\sqrt{2}+\\sqrt{2}=4\\sqrt{2}$이므로 $2\\sqrt{6}$과 같지 않다.\\n④ $3\\sqrt{2}-\\sqrt{8}=3\\sqrt{2}-2\\sqrt{2}=\\sqrt{2}$이므로 옳다.\\n⑤ $\\sqrt{3}(\\sqrt{2}+5)=\\sqrt{6}+5\\sqrt{3}$이므로 옳다.\\n따라서 옳지 않은 것은 ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -383,7 +445,11 @@ window.questionBank = [
       "$\\frac{\\sqrt{2}}{2}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 곱셈과 나눗셈을 각각 간단히 한 뒤 동류항을 계산한다.\\n앞항은 $\\sqrt{12}\\times\\frac{2}{\\sqrt{6}}=\\sqrt{2}\\times2=2\\sqrt{2}$이다.\\n뒤항은 $\\sqrt{54}\\div\\frac{\\sqrt{3}}{2}=\\sqrt{54}\\times\\frac{2}{\\sqrt{3}}=2\\sqrt{18}=6\\sqrt{2}$이다.\\n따라서 전체 식은 $2\\sqrt{2}-6\\sqrt{2}=-4\\sqrt{2}$이다.\\n정답은 ③이다."
+    "solution": "[키포인트] 곱셈과 나눗셈을 각각 간단히 한 뒤 동류항을 계산한다.\\n앞항은 $\\sqrt{12}\\times\\frac{2}{\\sqrt{6}}=\\sqrt{2}\\times2=2\\sqrt{2}$이다.\\n뒤항은 $\\sqrt{54}\\div\\frac{\\sqrt{3}}{2}=\\sqrt{54}\\times\\frac{2}{\\sqrt{3}}=2\\sqrt{18}=6\\sqrt{2}$이다.\\n따라서 전체 식은 $2\\sqrt{2}-6\\sqrt{2}=-4\\sqrt{2}$이다.\\n정답은 ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -407,7 +473,11 @@ window.questionBank = [
       "$-9a^{2} + 12ab + 4b^{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 제곱 공식 $(x+y)^2=x^2+2xy+y^2$을 이용한다.\\n$(-3a-2b)^2=\\{-(3a+2b)\\}^2=(3a+2b)^2$이다.\\n$(3a+2b)^2=9a^2+12ab+4b^2$이므로 정답은 ①이다."
+    "solution": "[키포인트] 제곱 공식 $(x+y)^2=x^2+2xy+y^2$을 이용한다.\\n$(-3a-2b)^2=\\{-(3a+2b)\\}^2=(3a+2b)^2$이다.\\n$(3a+2b)^2=9a^2+12ab+4b^2$이므로 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 18,
@@ -431,7 +501,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "④",
-    "solution": "[키포인트] 좌변을 전개한 뒤 계수를 비교한다.\\n$(Ax-3)^2=A^2x^2-6Ax+9$이다.\\n이 식이 $16x^2+24x+B$와 같으므로 $A^2=16$, $-6A=24$, $B=9$이다.\\n$-6A=24$에서 $A=-4$이고, $B=9$이다.\\n따라서 $A+B=-4+9=5$이므로 정답은 ④이다."
+    "solution": "[키포인트] 좌변을 전개한 뒤 계수를 비교한다.\\n$(Ax-3)^2=A^2x^2-6Ax+9$이다.\\n이 식이 $16x^2+24x+B$와 같으므로 $A^2=16$, $-6A=24$, $B=9$이다.\\n$-6A=24$에서 $A=-4$이고, $B=9$이다.\\n따라서 $A+B=-4+9=5$이므로 정답은 ④이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 19,
@@ -444,7 +518,9 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "content": "한 변의 길이가 $a$인 정사각형의 가로의 길이를 $2$만큼 늘이고, 세로의 길이를 $2$만큼 줄인 &lt;그림1&gt;에서 Ⓐ 직사각형을 이동하여 &lt;그림2&gt;와 같이 만들었을 때, 다음의 그림이 설명하고 있는 식을 고르면?\\n<div style=\"text-align:center; margin:15px 0;\">\\n<svg width=\"360\" height=\"140\" viewBox=\"0 0 360 140\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <defs>\\n    <marker id=\"curveArrow\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"5\" markerHeight=\"5\" orient=\"auto\">\\n      <path d=\"M 0 1 L 8 5 L 0 9 z\" fill=\"#555\" />\\n    </marker>\\n  </defs>\\n  <rect x=\"20\" y=\"30\" width=\"60\" height=\"60\" fill=\"#E8E8E8\" stroke=\"#333\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" />\\n  <path d=\"M 20 25 Q 50 15 80 25\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n  <path d=\"M 15 30 Q 5 60 15 90\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n  <text x=\"50\" y=\"18\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\" text-anchor=\"middle\">a</text>\\n  <text x=\"8\" y=\"64\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\" text-anchor=\"middle\">a</text>\\n  <path d=\"M 95 56 v6 h8 v4 l6 -7 l-6 -7 v4 z\" fill=\"#bbb\" />\\n  <g transform=\"translate(130, 0)\">\\n    <rect x=\"0\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#333\" stroke-width=\"1\" stroke-dasharray=\"3,2\" />\\n    <rect x=\"0\" y=\"30\" width=\"60\" height=\"40\" fill=\"#C8C8C8\" stroke=\"#000\" stroke-width=\"1.2\" />\\n    <rect x=\"60\" y=\"30\" width=\"20\" height=\"40\" fill=\"#A0A0A0\" stroke=\"#000\" stroke-width=\"1.2\" />\\n    <circle cx=\"70\" cy=\"50\" r=\"6\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"0.8\" />\\n    <text x=\"70\" y=\"53\" font-family=\"serif\" font-size=\"9\" text-anchor=\"middle\">A</text>\\n    <rect x=\"0\" y=\"70\" width=\"60\" height=\"20\" fill=\"none\" stroke=\"#333\" stroke-width=\"1\" stroke-dasharray=\"3,2\" />\\n    <path d=\"M 0 25 Q 30 15 60 25\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"30\" y=\"18\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\" text-anchor=\"middle\">a</text>\\n    <path d=\"M 60 25 Q 70 18 80 25\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"70\" y=\"18\" font-family=\"serif\" font-size=\"10\" text-anchor=\"middle\">2</text>\\n    <path d=\"M -5 30 Q -15 60 -5 90\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"-12\" y=\"64\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\" text-anchor=\"middle\">a</text>\\n    <path d=\"M 0 95 Q 30 105 60 95\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"30\" y=\"110\" font-family=\"serif\" font-size=\"10\" text-anchor=\"middle\">a</text>\\n    <path d=\"M -5 70 Q -15 80 -5 90\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"-10\" y=\"84\" font-family=\"serif\" font-size=\"10\" text-anchor=\"middle\">2</text>\\n    <text x=\"30\" y=\"130\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">&lt;그림1&gt;</text>\\n  </g>\\n  <path d=\"M 235 56 v6 h8 v4 l6 -7 l-6 -7 v4 z\" fill=\"#bbb\" />\\n  <g transform=\"translate(270, 0)\">\\n    <rect x=\"0\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#333\" stroke-width=\"1\" stroke-dasharray=\"3,2\" />\\n    <rect x=\"0\" y=\"30\" width=\"60\" height=\"40\" fill=\"#C8C8C8\" stroke=\"#000\" stroke-width=\"1.2\" />\\n    <rect x=\"0\" y=\"70\" width=\"40\" height=\"20\" fill=\"#A0A0A0\" stroke=\"#000\" stroke-width=\"1.2\" />\\n    <circle cx=\"20\" cy=\"80\" r=\"6\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"0.8\" />\\n    <text x=\"20\" y=\"83\" font-family=\"serif\" font-size=\"9\" text-anchor=\"middle\">A</text>\\n    <rect x=\"40\" y=\"70\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"#333\" stroke-width=\"1\" stroke-dasharray=\"3,2\" />\\n    <text x=\"50\" y=\"84\" font-family=\"serif\" font-size=\"10\" text-anchor=\"middle\">2</text>\\n    <text x=\"66\" y=\"84\" font-family=\"serif\" font-size=\"10\" text-anchor=\"middle\">2</text>\\n    <rect x=\"60\" y=\"30\" width=\"20\" height=\"40\" fill=\"none\" stroke=\"#888\" stroke-width=\"1\" stroke-dasharray=\"2,2\" />\\n    <path d=\"M 70 50 Q 90 95 30 85\" fill=\"none\" stroke=\"#555\" stroke-width=\"1.5\" marker-end=\"url(#curveArrow)\" />\\n    <path d=\"M 0 25 Q 30 15 60 25\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"30\" y=\"18\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\" text-anchor=\"middle\">a</text>\\n    <path d=\"M -5 30 Q -15 60 -5 90\" fill=\"none\" stroke=\"#888\" stroke-dasharray=\"2,2\" />\\n    <text x=\"-12\" y=\"64\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\" text-anchor=\"middle\">a</text>\\n    <text x=\"30\" y=\"130\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">&lt;그림2&gt;</text>\\n  </g>\\n</svg>\\n</div>",
     "choices": [
@@ -455,7 +531,11 @@ window.questionBank = [
       "$(a+2)(a+3) = a^2 + 5a + 6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 직사각형의 일부분을 잘라내어 이동시킨 후 넓이를 비교함으로써, 다항식의 곱셈 공식 $(a+b)(a-b) = a^2 - b^2$을 기하학적으로 유도할 수 있다.\\n1단계: &lt;그림1&gt;에서 색칠된 전체 직사각형의 가로 길이는 $(a+2)$, 세로 길이는 $(a-2)$이다. 따라서 이 도형의 넓이는 $(a+2)(a-2)$이다.\\n2단계: &lt;그림1&gt;의 색칠된 직사각형 Ⓐ를 떼어내어 회전시킨 후, 원본 정사각형 하단의 빈 공간으로 이동시킨 것이 &lt;그림2&gt;이다.\\n3단계: &lt;그림2&gt;에서 색칠된 부분의 넓이는, 한 변의 길이가 $a$인 원래 정사각형의 넓이($a^2$)에서 우측 하단에 남은 한 변의 길이가 $2$인 작은 정사각형의 넓이($2^2 = 4$)를 뺀 것과 같다. 즉, 넓이는 $a^2 - 4$가 된다.\\n4단계: &lt;그림1&gt;의 Ⓐ를 이동만 시켰으므로 두 색칠된 도형의 넓이는 동일하다. 따라서 $(a+2)(a-2) = a^2 - 4$가 성립한다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 직사각형의 일부분을 잘라내어 이동시킨 후 넓이를 비교함으로써, 다항식의 곱셈 공식 $(a+b)(a-b) = a^2 - b^2$을 기하학적으로 유도할 수 있다.\\n1단계: &lt;그림1&gt;에서 색칠된 전체 직사각형의 가로 길이는 $(a+2)$, 세로 길이는 $(a-2)$이다. 따라서 이 도형의 넓이는 $(a+2)(a-2)$이다.\\n2단계: &lt;그림1&gt;의 색칠된 직사각형 Ⓐ를 떼어내어 회전시킨 후, 원본 정사각형 하단의 빈 공간으로 이동시킨 것이 &lt;그림2&gt;이다.\\n3단계: &lt;그림2&gt;에서 색칠된 부분의 넓이는, 한 변의 길이가 $a$인 원래 정사각형의 넓이($a^2$)에서 우측 하단에 남은 한 변의 길이가 $2$인 작은 정사각형의 넓이($2^2 = 4$)를 뺀 것과 같다. 즉, 넓이는 $a^2 - 4$가 된다.\\n4단계: &lt;그림1&gt;의 Ⓐ를 이동만 시켰으므로 두 색칠된 도형의 넓이는 동일하다. 따라서 $(a+2)(a-2) = a^2 - 4$가 성립한다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -479,7 +559,11 @@ window.questionBank = [
       "8개"
     ],
     "answer": "③",
-    "solution": "[키포인트] $ab=-4$를 만족하는 정수쌍을 모두 조사한다.\\n$(2x+a)(3x+b)=6x^2+(2b+3a)x+ab$이다.\\n따라서 $ab=-4$, $A=2b+3a$이다.\\n$ab=-4$를 만족하는 정수쌍 $(a,b)$에 대해 $A$를 구하면\\n$(1,-4)\\Rightarrow A=-5$\\n$(-1,4)\\Rightarrow A=5$\\n$(2,-2)\\Rightarrow A=2$\\n$(-2,2)\\Rightarrow A=-2$\\n$(4,-1)\\Rightarrow A=10$\\n$(-4,1)\\Rightarrow A=-10$\\n가능한 서로 다른 값은 $-10,-5,-2,2,5,10$으로 6개이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $ab=-4$를 만족하는 정수쌍을 모두 조사한다.\\n$(2x+a)(3x+b)=6x^2+(2b+3a)x+ab$이다.\\n따라서 $ab=-4$, $A=2b+3a$이다.\\n$ab=-4$를 만족하는 정수쌍 $(a,b)$에 대해 $A$를 구하면\\n$(1,-4)\\Rightarrow A=-5$\\n$(-1,4)\\Rightarrow A=5$\\n$(2,-2)\\Rightarrow A=2$\\n$(-2,2)\\Rightarrow A=-2$\\n$(4,-1)\\Rightarrow A=10$\\n$(-4,1)\\Rightarrow A=-10$\\n가능한 서로 다른 값은 $-10,-5,-2,2,5,10$으로 6개이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -492,12 +576,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "<div class='box'>&lt;서술형1&gt; $3\\sqrt{10+a} = 6\\sqrt{2}$, $\\sqrt{20-b} = 2\\sqrt{5}$을 만족시키는 두 수 $a, b$에 대하여 $a-b$의 값을 구하시오.(7점)</div>",
     "choices": [],
     "answer": "-2",
-    "solution": "[키포인트] 양변을 비교하여 근호 안의 값을 구한다.\\n$3\\sqrt{10+a}=6\\sqrt{2}$의 양변을 3으로 나누면 $\\sqrt{10+a}=2\\sqrt{2}$이다.\\n양변을 제곱하면 $10+a=8$이므로 $a=-2$이다.\\n$\\sqrt{20-b}=2\\sqrt{5}$의 양변을 제곱하면 $20-b=20$이므로 $b=0$이다.\\n따라서 $a-b=-2-0=-2$이다."
+    "solution": "[키포인트] 양변을 비교하여 근호 안의 값을 구한다.\\n$3\\sqrt{10+a}=6\\sqrt{2}$의 양변을 3으로 나누면 $\\sqrt{10+a}=2\\sqrt{2}$이다.\\n양변을 제곱하면 $10+a=8$이므로 $a=-2$이다.\\n$\\sqrt{20-b}=2\\sqrt{5}$의 양변을 제곱하면 $20-b=20$이므로 $b=0$이다.\\n따라서 $a-b=-2-0=-2$이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -510,12 +600,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "<div class='box'>&lt;서술형2&gt; $x = \\frac{1}{\\sqrt{5}-2}, y = \\frac{1}{2-\\sqrt{3}}$ 일 때, $x-y$의 값을 구하여라.(6점)</div>",
     "choices": [],
     "answer": "$\\sqrt{5}-\\sqrt{3}$",
-    "solution": "[키포인트] 분모를 유리화하여 $x$와 $y$를 각각 간단히 한다.\\n$x=\\frac{1}{\\sqrt{5}-2}=\\frac{\\sqrt{5}+2}{(\\sqrt{5}-2)(\\sqrt{5}+2)}=\\sqrt{5}+2$이다.\\n$y=\\frac{1}{2-\\sqrt{3}}=\\frac{2+\\sqrt{3}}{(2-\\sqrt{3})(2+\\sqrt{3})}=2+\\sqrt{3}$이다.\\n따라서 $x-y=(\\sqrt{5}+2)-(2+\\sqrt{3})=\\sqrt{5}-\\sqrt{3}$이다."
+    "solution": "[키포인트] 분모를 유리화하여 $x$와 $y$를 각각 간단히 한다.\\n$x=\\frac{1}{\\sqrt{5}-2}=\\frac{\\sqrt{5}+2}{(\\sqrt{5}-2)(\\sqrt{5}+2)}=\\sqrt{5}+2$이다.\\n$y=\\frac{1}{2-\\sqrt{3}}=\\frac{2+\\sqrt{3}}{(2-\\sqrt{3})(2+\\sqrt{3})}=2+\\sqrt{3}$이다.\\n따라서 $x-y=(\\sqrt{5}+2)-(2+\\sqrt{3})=\\sqrt{5}-\\sqrt{3}$이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -528,11 +624,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형", "도형"],
+    "tags": [
+      "서술형",
+      "도형"
+    ],
     "wide": false,
     "content": "&lt;서술형3&gt; $(x+a)(x-2)$을 전개하면 $x^{2} + bx - 8$일 때, 다음 그림과 같이 빗변과 밑변의 길이가 각각 $a+b$, $a-b$인 직각삼각형의 넓이를 구하시오.(7점)<br><div style='text-align:center; margin: 10px 0;'><svg width='160' height='120' viewBox='0 0 100 80' xmlns='http://www.w3.org/2000/svg'><polygon points='10,70 90,70 10,10' fill='none' stroke='black' stroke-width='1'/><polyline points='10,60 20,60 20,70' fill='none' stroke='black' stroke-width='1'/><text x='50' y='80' font-size='10' text-anchor='middle'>a-b</text><text x='60' y='35' font-size='10' text-anchor='middle'>a+b</text></svg></div>",
     "choices": [],
     "answer": "$4\\sqrt{2}$",
-    "solution": "[키포인트] 전개식에서 $a,b$를 구한 뒤 피타고라스 정리로 높이를 구한다.\\n$(x+a)(x-2)=x^2+(a-2)x-2a$이다.\\n이 식이 $x^2+bx-8$과 같으므로 $-2a=-8$에서 $a=4$이고, $b=a-2=2$이다.\\n따라서 빗변의 길이는 $a+b=6$, 밑변의 길이는 $a-b=2$이다.\\n높이를 $h$라 하면 직각삼각형에서 $h^2+2^2=6^2$이므로 $h^2=32$, $h=4\\sqrt{2}$이다.\\n넓이는 $\\frac{1}{2}\\times2\\times4\\sqrt{2}=4\\sqrt{2}$이다.\\n따라서 정답은 $4\\sqrt{2}$이다."
+    "solution": "[키포인트] 전개식에서 $a,b$를 구한 뒤 피타고라스 정리로 높이를 구한다.\\n$(x+a)(x-2)=x^2+(a-2)x-2a$이다.\\n이 식이 $x^2+bx-8$과 같으므로 $-2a=-8$에서 $a=4$이고, $b=a-2=2$이다.\\n따라서 빗변의 길이는 $a+b=6$, 밑변의 길이는 $a-b=2$이다.\\n높이를 $h$라 하면 직각삼각형에서 $h^2+2^2=6^2$이므로 $h^2=32$, $h=4\\sqrt{2}$이다.\\n넓이는 $\\frac{1}{2}\\times2\\times4\\sqrt{2}=4\\sqrt{2}$이다.\\n따라서 정답은 $4\\sqrt{2}$이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   }
 ];

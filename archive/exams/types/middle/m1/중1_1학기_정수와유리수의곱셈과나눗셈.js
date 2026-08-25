@@ -27,7 +27,9 @@ window.questionBank = [
     "content": "다음을 계산하여라. $$\\left(-\\frac{2}{5}\\right) \\times \\left(-\\frac{5}{4}\\right) \\times \\left(-\\frac{6}{2}\\right)$$",
     "choices": [],
     "answer": "$-\\frac{3}{2}$",
-    "solution": "[솔포인트] 음수가 3개 곱해졌으므로 최종 부호는 $-$입니다. 분모와 분자를 약분하면 다음과 같습니다.$$-\\left(\\frac{2}{5} \\times \\frac{5}{4} \\times \\frac{6}{2}\\right) = -\\frac{3}{2}$$"
+    "solution": "[솔포인트] 음수가 3개 곱해졌으므로 최종 부호는 $-$입니다. 분모와 분자를 약분하면 다음과 같습니다.$$-\\left(\\frac{2}{5} \\times \\frac{5}{4} \\times \\frac{6}{2}\\right) = -\\frac{3}{2}$$",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -62,7 +64,9 @@ window.questionBank = [
       "$\\frac{5}{3}$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] $-3$의 역수는 $-\\frac{1}{3}$이고, $\\frac{1}{2}$의 역수는 $2$입니다.따라서 두 역수의 곱은 $\\left(-\\frac{1}{3}\\right) \\times 2 = -\\frac{2}{3}$입니다."
+    "solution": "[솔포인트] $-3$의 역수는 $-\\frac{1}{3}$이고, $\\frac{1}{2}$의 역수는 $2$입니다.따라서 두 역수의 곱은 $\\left(-\\frac{1}{3}\\right) \\times 2 = -\\frac{2}{3}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -90,7 +94,9 @@ window.questionBank = [
     "content": "다음을 계산하여라. ⑴ $\\left(-\\frac{4}{5}\\right) \\times \\left(+\\frac{5}{8}\\right)$ ⑵ $\\left(-\\frac{3}{4}\\right) \\times (-1)$",
     "choices": [],
     "answer": "⑴ $-\\frac{1}{2}$ ⑵ $\\frac{3}{4}$",
-    "solution": "[솔포인트] ⑴ 부호가 다르므로 $-$, 약분하면 $-\\frac{1}{2}$입니다.⑵ 음수와 음수의 곱이므로 부호는 $+$가 되어 $\\frac{3}{4}$입니다."
+    "solution": "[솔포인트] ⑴ 부호가 다르므로 $-$, 약분하면 $-\\frac{1}{2}$입니다.⑵ 음수와 음수의 곱이므로 부호는 $+$가 되어 $\\frac{3}{4}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -125,7 +131,9 @@ window.questionBank = [
       "㉠ $-\\frac{2}{3}$ , ㉡ $-\\frac{4}{3}$"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 나눗셈은 나누는 수의 역수의 곱셈으로 고칩니다. $-\\frac{2}{3}$의 역수는 $-\\frac{3}{2}$이므로 ㉠은 $-\\frac{3}{2}$입니다.이를 계산하면 $(+2) \\times \\left(-\\frac{3}{2}\\right) = -3$이 되므로 ㉡은 $-3$입니다."
+    "solution": "[솔포인트] 나눗셈은 나누는 수의 역수의 곱셈으로 고칩니다. $-\\frac{2}{3}$의 역수는 $-\\frac{3}{2}$이므로 ㉠은 $-\\frac{3}{2}$입니다.이를 계산하면 $(+2) \\times \\left(-\\frac{3}{2}\\right) = -3$이 되므로 ㉡은 $-3$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -160,7 +168,9 @@ window.questionBank = [
       "$0.75$"
     ],
     "answer": "④",
-    "solution": "[솔포인트] $0.75 = \\frac{75}{100} = \\frac{3}{4}$이므로, 이 수의 역수는 분모와 분자를 바꾼 $\\frac{4}{3}$입니다."
+    "solution": "[솔포인트] $0.75 = \\frac{75}{100} = \\frac{3}{4}$이므로, 이 수의 역수는 분모와 분자를 바꾼 $\\frac{4}{3}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -188,7 +198,9 @@ window.questionBank = [
     "content": "다음을 계산하여라. ⑴ $\\left(+\\frac{5}{4}\\right) \\times \\left(+\\frac{1}{10}\\right)$ ⑵ $\\left(-\\frac{5}{3}\\right) \\times \\left(-\\frac{3}{4}\\right)$ ⑶ $\\left(-\\frac{3}{4}\\right) \\times \\left(+\\frac{11}{6}\\right)$",
     "choices": [],
     "answer": "⑴ $\\frac{1}{8}$ ⑵ $\\frac{5}{4}$ ⑶ $-\\frac{11}{8}$",
-    "solution": "[솔포인트] 각 분수의 부호를 먼저 결정한 후 분모는 분모끼리, 분자는 분자끼리 약분하여 계산합니다."
+    "solution": "[솔포인트] 각 분수의 부호를 먼저 결정한 후 분모는 분모끼리, 분자는 분자끼리 약분하여 계산합니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -223,7 +235,9 @@ window.questionBank = [
       "$-\\frac{4}{7}$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] $4$의 역수 $A = \\frac{1}{4}$ 이고, $-\\frac{7}{8}$의 역수 $B = -\\frac{8}{7}$ 입니다.따라서 $A \\times B = \\frac{1}{4} \\times \\left(-\\frac{8}{7}\\right) = -\\frac{2}{7}$입니다."
+    "solution": "[솔포인트] $4$의 역수 $A = \\frac{1}{4}$ 이고, $-\\frac{7}{8}$의 역수 $B = -\\frac{8}{7}$ 입니다.따라서 $A \\times B = \\frac{1}{4} \\times \\left(-\\frac{8}{7}\\right) = -\\frac{2}{7}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -251,7 +265,9 @@ window.questionBank = [
     "content": "$(-2) \\times \\left\\{ \\left(-\\frac{2}{3}\\right) \\div \\frac{2}{3} + \\frac{7}{2} \\right\\} - \\frac{3}{2}$ 을 계산하면?",
     "choices": [],
     "answer": "$-\\frac{13}{2}$",
-    "solution": "[솔포인트] 중괄호 안의 나눗셈은 $\\left(-\\frac{2}{3}\\right) \\div \\frac{2}{3}=\\left(-\\frac{2}{3}\\right)\\times\\frac{3}{2}=-1$입니다. 따라서 중괄호 안은 $-1+\\frac{7}{2}=\\frac{5}{2}$이고, 전체 식은 $(-2)\\times\\frac{5}{2}-\\frac{3}{2}=-5-\\frac{3}{2}=-\\frac{13}{2}$입니다."
+    "solution": "[솔포인트] 중괄호 안의 나눗셈은 $\\left(-\\frac{2}{3}\\right) \\div \\frac{2}{3}=\\left(-\\frac{2}{3}\\right)\\times\\frac{3}{2}=-1$입니다. 따라서 중괄호 안은 $-1+\\frac{7}{2}=\\frac{5}{2}$이고, 전체 식은 $(-2)\\times\\frac{5}{2}-\\frac{3}{2}=-5-\\frac{3}{2}=-\\frac{13}{2}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -285,7 +301,9 @@ window.questionBank = [
       "15"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 곱셈과 나눗셈을 먼저 계산합니다.$6 \\times 2 = 12$$15 \\div (-3) = -5$전체 식: $3 - 12 + (-5) = -9 - 5 = -14$입니다."
+    "solution": "[솔포인트] 곱셈과 나눗셈을 먼저 계산합니다.$6 \\times 2 = 12$$15 \\div (-3) = -5$전체 식: $3 - 12 + (-5) = -9 - 5 = -14$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -319,7 +337,9 @@ window.questionBank = [
       "12"
     ],
     "answer": "②",
-    "solution": "[솔포인트] 소괄호 안을 먼저 풀면 $3 - 7 = -4$입니다.중괄호 안의 곱셈을 계산하면 $(-4) \\times \\frac{1}{4} = -1$이 됩니다.중괄호 식을 정리하면 $2 - (-1) = 3$이 되며, 최종 값은 $3 + (-1) = 2$입니다."
+    "solution": "[솔포인트] 소괄호 안을 먼저 풀면 $3 - 7 = -4$입니다.중괄호 안의 곱셈을 계산하면 $(-4) \\times \\frac{1}{4} = -1$이 됩니다.중괄호 식을 정리하면 $2 - (-1) = 3$이 되며, 최종 값은 $3 + (-1) = 2$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -355,7 +375,9 @@ window.questionBank = [
       "$-(-3)^2$"
     ],
     "answer": "④",
-    "solution": "[솔포인트] 각 거듭제곱을 계산하여 값을 비교합니다.① $(-2)^3 = -8$② $-3^2 = -9$③ $-2^3 = -8$④ $(-3)^2 = 9$ (가장 큰 수)⑤ $-(-3)^2 = -9$"
+    "solution": "[솔포인트] 각 거듭제곱을 계산하여 값을 비교합니다.① $(-2)^3 = -8$② $-3^2 = -9$③ $-2^3 = -8$④ $(-3)^2 = 9$ (가장 큰 수)⑤ $-(-3)^2 = -9$",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -382,7 +404,9 @@ window.questionBank = [
     "content": "$(-6) \\times (-2) \\times (+6)$을 계산하여라.",
     "choices": [],
     "answer": "$72$",
-    "solution": "[솔포인트] 음수가 2개 곱해졌으므로 부호는 $+$입니다. $6 \\times 2 \\times 6 = 72$입니다."
+    "solution": "[솔포인트] 음수가 2개 곱해졌으므로 부호는 $+$입니다. $6 \\times 2 \\times 6 = 72$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -416,7 +440,9 @@ window.questionBank = [
       "$-\\frac{1}{3}$"
     ],
     "answer": "③",
-    "solution": "[솔포인트] 나눗셈을 역수의 곱셈으로 고쳐 한 번에 계산합니다.$$\\left(-\\frac{4}{5}\\right) \\times \\left(-\\frac{2}{3}\\right) \\times \\left(-\\frac{5}{8}\\right) = -\\left(\\frac{4 \\times 2 \\times 5}{5 \\times 3 \\times 8}\\right) = -\\frac{1}{6}$$"
+    "solution": "[솔포인트] 나눗셈을 역수의 곱셈으로 고쳐 한 번에 계산합니다.$$\\left(-\\frac{4}{5}\\right) \\times \\left(-\\frac{2}{3}\\right) \\times \\left(-\\frac{5}{8}\\right) = -\\left(\\frac{4 \\times 2 \\times 5}{5 \\times 3 \\times 8}\\right) = -\\frac{1}{6}$$",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -452,7 +478,9 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "[솔포인트] $A = 3 - 8 = -5$$\\frac{1}{5}$의 역수 $B = 5$따라서 $A + B = -5 + 5 = 0$입니다."
+    "solution": "[솔포인트] $A = 3 - 8 = -5$$\\frac{1}{5}$의 역수 $B = 5$따라서 $A + B = -5 + 5 = 0$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -487,7 +515,9 @@ window.questionBank = [
       "자연수"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 두 수의 곱이 $1$이 될 때, 한 수를 다른 수의 역수라고 정의합니다."
+    "solution": "[솔포인트] 두 수의 곱이 $1$이 될 때, 한 수를 다른 수의 역수라고 정의합니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -522,7 +552,9 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "④",
-    "solution": "[솔포인트] 앞부분은 $(-30)\\times\\left(\\frac{1}{6}-\\frac{2}{5}\\right)=(-30)\\times\\left(-\\frac{7}{30}\\right)=7$입니다. 뒷부분은 $\\left(-\\frac{1}{2}\\right)^2\\times(-1)^{2013}\\times(-6)^2=\\frac14\\times(-1)\\times36=-9$입니다. 따라서 전체 값은 $7+(-9)=-2$이므로 정답은 ④입니다."
+    "solution": "[솔포인트] 앞부분은 $(-30)\\times\\left(\\frac{1}{6}-\\frac{2}{5}\\right)=(-30)\\times\\left(-\\frac{7}{30}\\right)=7$입니다. 뒷부분은 $\\left(-\\frac{1}{2}\\right)^2\\times(-1)^{2013}\\times(-6)^2=\\frac14\\times(-1)\\times36=-9$입니다. 따라서 전체 값은 $7+(-9)=-2$이므로 정답은 ④입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -557,7 +589,9 @@ window.questionBank = [
       "$\\frac{5}{6}$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] 대괄호 안의 소괄호 뺄셈을 통분하면 $\\frac{5}{6} - \\frac{8}{6} = -\\frac{3}{6} = -\\frac{1}{2}$입니다.거듭제곱과 나눗셈을 풀면 $\\frac{1}{4} \\div \\left(-\\frac{1}{2}\\right) = \\frac{1}{4} \\times (-2) = -\\frac{1}{2}$입니다.대괄호 안을 마무리하면 $-\\frac{1}{2} - 1 = -\\frac{3}{2}$이므로, 최종 식은 $\\frac{1}{2} \\div \\left(-\\frac{3}{2}\\right) = \\frac{1}{2} \\times \\left(-\\frac{2}{3}\\right) = -\\frac{1}{3}$입니다."
+    "solution": "[솔포인트] 대괄호 안의 소괄호 뺄셈을 통분하면 $\\frac{5}{6} - \\frac{8}{6} = -\\frac{3}{6} = -\\frac{1}{2}$입니다.거듭제곱과 나눗셈을 풀면 $\\frac{1}{4} \\div \\left(-\\frac{1}{2}\\right) = \\frac{1}{4} \\times (-2) = -\\frac{1}{2}$입니다.대괄호 안을 마무리하면 $-\\frac{1}{2} - 1 = -\\frac{3}{2}$이므로, 최종 식은 $\\frac{1}{2} \\div \\left(-\\frac{3}{2}\\right) = \\frac{1}{2} \\times \\left(-\\frac{2}{3}\\right) = -\\frac{1}{3}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -585,7 +619,9 @@ window.questionBank = [
     "content": "다음을 계산하여라. $$(-2)^3 \\times (-3)^2$$",
     "choices": [],
     "answer": "$-72$",
-    "solution": "[솔포인트] 거듭제곱을 먼저 계산합니다. $(-2)^3 = -8$, $(-3)^2 = 9$이므로, $-8 \\times 9 = -72$입니다."
+    "solution": "[솔포인트] 거듭제곱을 먼저 계산합니다. $(-2)^3 = -8$, $(-3)^2 = 9$이므로, $-8 \\times 9 = -72$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -615,7 +651,9 @@ window.questionBank = [
     "content": "$n$이 짝수일 때, $(-1)^n - (-1)^{n+1} + (-1)^n$의 값은?",
     "choices": [],
     "answer": "$3$",
-    "solution": "[솔포인트] $n$이 짝수이면 $(-1)^n=1$이고, $n+1$은 홀수이므로 $(-1)^{n+1}=-1$입니다. 식에 대입하면 $1-(-1)+1=3$입니다."
+    "solution": "[솔포인트] $n$이 짝수이면 $(-1)^n=1$이고, $n+1$은 홀수이므로 $(-1)^{n+1}=-1$입니다. 식에 대입하면 $1-(-1)+1=3$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -644,7 +682,9 @@ window.questionBank = [
     "content": "다음을 계산하여라.$$(-2)^2 \\div \\left(\\frac{3}{7}\\right) \\times \\left(-\\frac{4}{7}\\right)$$",
     "choices": [],
     "answer": "$-\\frac{16}{3}$",
-    "solution": "[솔포인트] 나눗셈을 역수의 곱으로 바꿉니다.$$4 \\times \\frac{7}{3} \\times \\left(-\\frac{4}{7}\\right) = -\\frac{16}{3}$$"
+    "solution": "[솔포인트] 나눗셈을 역수의 곱으로 바꿉니다.$$4 \\times \\frac{7}{3} \\times \\left(-\\frac{4}{7}\\right) = -\\frac{16}{3}$$",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -678,7 +718,9 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 중괄호 안의 나눗셈을 계산하면 $\\frac{4}{5} \\times \\left(-\\frac{15}{2}\\right) = -6$입니다.대괄호 안은 $\\frac{1}{2} - (-6) + 1 = \\frac{1}{2} + 6 + 1 = \\frac{15}{2}$가 됩니다.최종 식은 $2 \\times \\frac{15}{2} = 15$입니다."
+    "solution": "[솔포인트] 중괄호 안의 나눗셈을 계산하면 $\\frac{4}{5} \\times \\left(-\\frac{15}{2}\\right) = -6$입니다.대괄호 안은 $\\frac{1}{2} - (-6) + 1 = \\frac{1}{2} + 6 + 1 = \\frac{15}{2}$가 됩니다.최종 식은 $2 \\times \\frac{15}{2} = 15$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -714,7 +756,9 @@ window.questionBank = [
       "$(-32) \\times \\left(-\\frac{3}{4} + \\frac{1}{2}\\right) = 8$"
     ],
     "answer": "①, ④",
-    "solution": "[솔포인트] ①은 $\\frac{2}{3}\\times9\\times\\left(-\\frac{15}{2}\\right)=-45$이므로 옳지 않습니다. ④는 $(-7)-(-3)-(+2)=-7+3-2=-6$이므로 옳지 않습니다. ②, ③, ⑤는 계산 결과가 맞으므로 옳지 않은 것은 ①, ④입니다."
+    "solution": "[솔포인트] ①은 $\\frac{2}{3}\\times9\\times\\left(-\\frac{15}{2}\\right)=-45$이므로 옳지 않습니다. ④는 $(-7)-(-3)-(+2)=-7+3-2=-6$이므로 옳지 않습니다. ②, ③, ⑤는 계산 결과가 맞으므로 옳지 않은 것은 ①, ④입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -748,7 +792,9 @@ window.questionBank = [
       "30"
     ],
     "answer": "②",
-    "solution": "[솔포인트] 21번 문제의 계산 결과인 $15$에서 $1$을 빼는 구조이므로 $15 - 1 = 14$가 됩니다."
+    "solution": "[솔포인트] 21번 문제의 계산 결과인 $15$에서 $1$을 빼는 구조이므로 $15 - 1 = 14$가 됩니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -784,7 +830,9 @@ window.questionBank = [
       "$-\\frac{17}{9}$"
     ],
     "answer": "④",
-    "solution": "[솔포인트] $-1.5 = -\\frac{3}{2}$이므로 역수 $A = -\\frac{2}{3}$입니다.$1\\frac{5}{3}$는 가분수로 고치면 $\\frac{8}{3}$이므로 역수 $B = \\frac{3}{8}$입니다.따라서 $A \\div B = \\left(-\\frac{2}{3}\\right) \\times \\frac{8}{3} = -\\frac{16}{9}$입니다."
+    "solution": "[솔포인트] $-1.5 = -\\frac{3}{2}$이므로 역수 $A = -\\frac{2}{3}$입니다.$1\\frac{5}{3}$는 가분수로 고치면 $\\frac{8}{3}$이므로 역수 $B = \\frac{3}{8}$입니다.따라서 $A \\div B = \\left(-\\frac{2}{3}\\right) \\times \\frac{8}{3} = -\\frac{16}{9}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -820,7 +868,9 @@ window.questionBank = [
       "2012"
     ],
     "answer": "④",
-    "solution": "[솔포인트] $(-1)$의 홀수 제곱은 $-1$, 짝수 제곱은 $1$이 됩니다. 지수들을 쭉 곱해 나가는 과정에서 지수 법칙의 합 연산 지수 성질에 의해 지수의 최종 홀짝성을 판별하면 결과는 $1$이 됩니다."
+    "solution": "[솔포인트] $(-1)$의 홀수 제곱은 $-1$, 짝수 제곱은 $1$이 됩니다. 지수들을 쭉 곱해 나가는 과정에서 지수 법칙의 합 연산 지수 성질에 의해 지수의 최종 홀짝성을 판별하면 결과는 $1$이 됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 26,
@@ -854,7 +904,9 @@ window.questionBank = [
       "$-\\frac{3}{2}$"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 중괄호 안을 계산하면 $-2 - \\frac{2}{5} = -\\frac{12}{5}$입니다.전체 식을 곱셈으로 고치면 $\\frac{3}{4} \\times \\left(-\\frac{12}{5}\\right) \\times \\left(-\\frac{5}{6}\\right) = \\frac{3}{2}$입니다."
+    "solution": "[솔포인트] 중괄호 안을 계산하면 $-2 - \\frac{2}{5} = -\\frac{12}{5}$입니다.전체 식을 곱셈으로 고치면 $\\frac{3}{4} \\times \\left(-\\frac{12}{5}\\right) \\times \\left(-\\frac{5}{6}\\right) = \\frac{3}{2}$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 27,
@@ -888,7 +940,9 @@ window.questionBank = [
       "㉡-㉢-㉠"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] 각 식의 결과를 구하면 ㉠ $= \\frac{1}{36}$, ㉡ $= -24$, ㉢ $= 6.5$ 입니다.절댓값의 크기는 $|-24| > |6.5| > |\\frac{1}{36}|$ 이므로 큰 순서대로 나열하면 ㉡-㉢-㉠입니다."
+    "solution": "[솔포인트] 각 식의 결과를 구하면 ㉠ $= \\frac{1}{36}$, ㉡ $= -24$, ㉢ $= 6.5$ 입니다.절댓값의 크기는 $|-24| > |6.5| > |\\frac{1}{36}|$ 이므로 큰 순서대로 나열하면 ㉡-㉢-㉠입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -918,7 +972,9 @@ window.questionBank = [
     "content": "다음 식의 계산에서 두 번째로 계산해야 하는 곳을 말하여라. $$2 + \\underset{\\uparrow}{ \\; } \\frac{3}{4} \\underset{\\uparrow}{ \\times } \\left[ \\underset{\\uparrow}{\\{} \\frac{1}{5} - \\underset{\\uparrow}{(-2)^2} \\underset{\\uparrow}{\\}} - \\frac{2}{3} \\right] - 4$$ $$\\quad \\; ㉠ \\qquad ㉡ \\qquad\\quad ㉢ \\quad ㉣ \\qquad\\quad ㉤ \\qquad ㉥$$",
     "choices": [],
     "answer": "㉢",
-    "solution": "[솔포인트] 혼합 계산 순서는 거듭제곱(㉣) $\\rightarrow$ 소괄호/중괄호 안의 뺄셈(㉢) $\\rightarrow$ 중괄호 바깥의 뺄셈 $\\rightarrow$ 곱셈(㉡) $\\rightarrow$ 덧셈/뺄셈 순입니다. 따라서 두 번째로 계산하는 곳은 중괄호 안의 연산인 ㉢입니다."
+    "solution": "[솔포인트] 혼합 계산 순서는 거듭제곱(㉣) $\\rightarrow$ 소괄호/중괄호 안의 뺄셈(㉢) $\\rightarrow$ 중괄호 바깥의 뺄셈 $\\rightarrow$ 곱셈(㉡) $\\rightarrow$ 덧셈/뺄셈 순입니다. 따라서 두 번째로 계산하는 곳은 중괄호 안의 연산인 ㉢입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 29,
@@ -954,7 +1010,9 @@ window.questionBank = [
       "$-(-1^{10})=-1$"
     ],
     "answer": "③",
-    "solution": "[솔포인트] ① $(-1)^3=-1$이므로 틀립니다. ② $-2^4=-(2^4)=-16$이므로 틀립니다. ③ $-(-3^2)=-(-9)=9$이므로 옳습니다. ④ $-(-1)=1$이고, ⑤ $-(-1^{10})=1$이므로 틀립니다. 따라서 정답은 ③입니다."
+    "solution": "[솔포인트] ① $(-1)^3=-1$이므로 틀립니다. ② $-2^4=-(2^4)=-16$이므로 틀립니다. ③ $-(-3^2)=-(-9)=9$이므로 옳습니다. ④ $-(-1)=1$이고, ⑤ $-(-1^{10})=1$이므로 틀립니다. 따라서 정답은 ③입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -989,7 +1047,9 @@ window.questionBank = [
       "-3"
     ],
     "answer": "③",
-    "solution": "[솔포인트] 거듭제곱을 풀면 $1 - (-1) + (-1) = 1 + 1 - 1 = 1$입니다."
+    "solution": "[솔포인트] 거듭제곱을 풀면 $1 - (-1) + (-1) = 1 + 1 - 1 = 1$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -1025,7 +1085,9 @@ window.questionBank = [
       "$a \\times b \\times c < 0$"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ⑤ 부호가 $a(-), b(+), c(+)$이므로 세 수를 곱한 $a \\times b \\times c$는 음수와 양수의 곱이 되어 항상 $0$보다 작습니다."
+    "solution": "[솔포인트] ⑤ 부호가 $a(-), b(+), c(+)$이므로 세 수를 곱한 $a \\times b \\times c$는 음수와 양수의 곱이 되어 항상 $0$보다 작습니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -1059,7 +1121,9 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 중괄호 안은 $5\\times(-2)+6=-10+6=-4$입니다. 대괄호 안은 $\\frac12+(-1)\\div(-4)=\\frac12+\\frac14=\\frac34$입니다. 따라서 전체 식은 $2-\\left(\\frac34\\times4\\right)=2-3=-1$이므로 정답은 ①입니다."
+    "solution": "[솔포인트] 중괄호 안은 $5\\times(-2)+6=-10+6=-4$입니다. 대괄호 안은 $\\frac12+(-1)\\div(-4)=\\frac12+\\frac14=\\frac34$입니다. 따라서 전체 식은 $2-\\left(\\frac34\\times4\\right)=2-3=-1$이므로 정답은 ①입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -1094,7 +1158,9 @@ window.questionBank = [
       "1998"
     ],
     "answer": "③",
-    "solution": "[솔포인트] $-1 + 1 - 1 + 1 \\dots$ 과 같이 두 개씩 짝을 지으면 합이 $0$이 됩니다. 항의 개수가 $1998$개로 짝수 개이므로 딱 맞아떨어져 총합은 $0$이 됩니다."
+    "solution": "[솔포인트] $-1 + 1 - 1 + 1 \\dots$ 과 같이 두 개씩 짝을 지으면 합이 $0$이 됩니다. 항의 개수가 $1998$개로 짝수 개이므로 딱 맞아떨어져 총합은 $0$이 됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -1130,7 +1196,9 @@ window.questionBank = [
       "$\\frac{1}{16} \\times (-2)^4$"
     ],
     "answer": "③",
-    "solution": "[솔포인트] ③ $-4^3 \\div 4^3 = -64 \\div 64 = -1$입니다. 나머지 보기들의 계산 결과는 모두 $+1$입니다."
+    "solution": "[솔포인트] ③ $-4^3 \\div 4^3 = -64 \\div 64 = -1$입니다. 나머지 보기들의 계산 결과는 모두 $+1$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 35,
@@ -1166,7 +1234,9 @@ window.questionBank = [
       "$\\frac{c}{b} > 0$"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] $a \\times b > 0$이므로 두 수의 부호는 같고, $a \\times c < 0$이므로 두 수의 부호는 반대입니다. $a < c$이므로 $a$가 음수, $c$가 양수입니다. $a$가 음수이므로 $b$도 음수입니다.따라서 ⑤ $\\frac{c}{b}$는 (양수)$\\div$(음수)이므로 음수가 되어야 하므로 옳지 않습니다."
+    "solution": "[솔포인트] $a \\times b > 0$이므로 두 수의 부호는 같고, $a \\times c < 0$이므로 두 수의 부호는 반대입니다. $a < c$이므로 $a$가 음수, $c$가 양수입니다. $a$가 음수이므로 $b$도 음수입니다.따라서 ⑤ $\\frac{c}{b}$는 (양수)$\\div$(음수)이므로 음수가 되어야 하므로 옳지 않습니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1201,7 +1271,9 @@ window.questionBank = [
       "마"
     ],
     "answer": "③",
-    "solution": "[솔포인트] (나)에서 (다)로 넘어갈 때 중괄호 앞의 $-4$를 괄호 안의 두 항에 각각 분배하여 곱해주었으므로 분배법칙이 사용된 곳은 (다)입니다."
+    "solution": "[솔포인트] (나)에서 (다)로 넘어갈 때 중괄호 앞의 $-4$를 괄호 안의 두 항에 각각 분배하여 곱해주었으므로 분배법칙이 사용된 곳은 (다)입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1237,7 +1309,9 @@ window.questionBank = [
       "$(-2)^2$"
     ],
     "answer": "③",
-    "solution": "[솔포인트] 각 보기의 값을 구하면 ① $-16$, ② $-8$, ③ $8$, ④ $-2$, ⑤ $4$ 입니다. 이 중 가장 큰 수는 ③번입니다."
+    "solution": "[솔포인트] 각 보기의 값을 구하면 ① $-16$, ② $-8$, ③ $8$, ④ $-2$, ⑤ $4$ 입니다. 이 중 가장 큰 수는 ③번입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1272,7 +1346,9 @@ window.questionBank = [
       "0"
     ],
     "answer": "②",
-    "solution": "[솔포인트] 중괄호 안은 $5\\times(-3)+7=-15+7=-8$입니다. 대괄호 안은 $\\frac13+4\\div(-8)=\\frac13-\\frac12=-\\frac16$입니다. 따라서 전체 식은 $1-\\left(-\\frac16\\times6\\right)=1-(-1)=2$이므로 정답은 ②입니다."
+    "solution": "[솔포인트] 중괄호 안은 $5\\times(-3)+7=-15+7=-8$입니다. 대괄호 안은 $\\frac13+4\\div(-8)=\\frac13-\\frac12=-\\frac16$입니다. 따라서 전체 식은 $1-\\left(-\\frac16\\times6\\right)=1-(-1)=2$이므로 정답은 ②입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1307,7 +1383,9 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "[솔포인트] 식을 전개하면 $-1 + 2 - 3 + 4 - 5 + 6 - 7 + 8 - 9 + 10$이 됩니다. 두 개씩 묶으면 $(-1+2) = 1$이 총 5쌍이 나오므로 합은 $5$가 됩니다."
+    "solution": "[솔포인트] 식을 전개하면 $-1 + 2 - 3 + 4 - 5 + 6 - 7 + 8 - 9 + 10$이 됩니다. 두 개씩 묶으면 $(-1+2) = 1$이 총 5쌍이 나오므로 합은 $5$가 됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1342,7 +1420,9 @@ window.questionBank = [
       "425"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] 약속에 따라 $2\\bigstar4=2\\times5+4\\times10=50$이고, $4\\blacktriangle5=4\\times10-5\\times5=15$입니다. 따라서 $(2\\bigstar4)\\blacktriangle(4\\blacktriangle5)=50\\blacktriangle15=50\\times10-15\\times5=425$이므로 정답은 ⑤입니다."
+    "solution": "[솔포인트] 약속에 따라 $2\\bigstar4=2\\times5+4\\times10=50$이고, $4\\blacktriangle5=4\\times10-5\\times5=15$입니다. 따라서 $(2\\bigstar4)\\blacktriangle(4\\blacktriangle5)=50\\blacktriangle15=50\\times10-15\\times5=425$이므로 정답은 ⑤입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1372,7 +1452,9 @@ window.questionBank = [
     "content": "세 수 $-\\frac{2}{3}, \\frac{1}{2}, \\frac{3}{5}$에서 두 수 $a, b$를 선택할 때, $a \\div b$의 최댓값을 구하여라.",
     "choices": [],
     "answer": "$\\frac{6}{5}$",
-    "solution": "[솔포인트] 양수 결과 중 가장 큰 값을 만들려면 큰 양수인 $\\frac35$를 작은 양수인 $\\frac12$로 나눕니다. $\\frac35\\div\\frac12=\\frac35\\times2=\\frac65$입니다. 음수와 양수를 나누면 음수가 되므로 최댓값은 $\\frac65$입니다."
+    "solution": "[솔포인트] 양수 결과 중 가장 큰 값을 만들려면 큰 양수인 $\\frac35$를 작은 양수인 $\\frac12$로 나눕니다. $\\frac35\\div\\frac12=\\frac35\\times2=\\frac65$입니다. 음수와 양수를 나누면 음수가 되므로 최댓값은 $\\frac65$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1408,7 +1490,9 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "[솔포인트] $15-4^2=15-16=-1$입니다. 중괄호 안은 $(-1)\\times12\\div(-3)=4$이고, 전체 식은 $13-4\\times2=13-8=5$입니다. $5$보다 작은 자연수는 $1,2,3,4$로 4개이므로 정답은 ①입니다."
+    "solution": "[솔포인트] $15-4^2=15-16=-1$입니다. 중괄호 안은 $(-1)\\times12\\div(-3)=4$이고, 전체 식은 $13-4\\times2=13-8=5$입니다. $5$보다 작은 자연수는 $1,2,3,4$로 4개이므로 정답은 ①입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1438,7 +1522,9 @@ window.questionBank = [
     "content": "세 정수 $a, b, c$의 곱이 $-30$이고 세 수의 합이 $0$일 때, 세 수 $a, b, c$를 차례로 구하여라. (단, $a < 1 < b < c$)",
     "choices": [],
     "answer": "$a = -5, b = 2, c = 3$",
-    "solution": "[솔포인트] 곱이 $-30$이고 합이 $0$이 되려면 음수 하나와 양수 두 개를 고릅니다. $-5\\times2\\times3=-30$이고 $-5+2+3=0$이므로 세 수는 $-5,2,3$입니다. 조건 $a<1<b<c$에 맞게 배치하면 $a=-5, b=2, c=3$입니다."
+    "solution": "[솔포인트] 곱이 $-30$이고 합이 $0$이 되려면 음수 하나와 양수 두 개를 고릅니다. $-5\\times2\\times3=-30$이고 $-5+2+3=0$이므로 세 수는 $-5,2,3$입니다. 조건 $a<1<b<c$에 맞게 배치하면 $a=-5, b=2, c=3$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1467,7 +1553,9 @@ window.questionBank = [
     "content": "다음을 계산하여라.$$\\frac{1}{3} \\div \\left\\{ \\left(\\frac{3}{2} - \\frac{4}{3}\\right)^2 \\div \\left(-\\frac{1}{3}\\right)^3 \\div \\left(\\frac{5}{2}\\right)^2 \\right\\}$$",
     "choices": [],
     "answer": "$-\\frac{25}{9}$",
-    "solution": "[솔포인트] $\\frac32-\\frac43=\\frac16$이므로 제곱하면 $\\frac1{36}$입니다. 또 $\\left(-\\frac13\\right)^3=-\\frac1{27}$이므로 $\\frac1{36}\\div\\left(-\\frac1{27}\\right)=-\\frac34$입니다. 여기에 $\\left(\\frac52\\right)^2=\\frac{25}{4}$로 한 번 더 나누면 중괄호 안은 $-\\frac3{25}$입니다. 따라서 $\\frac13\\div\\left(-\\frac3{25}\\right)=-\\frac{25}{9}$입니다."
+    "solution": "[솔포인트] $\\frac32-\\frac43=\\frac16$이므로 제곱하면 $\\frac1{36}$입니다. 또 $\\left(-\\frac13\\right)^3=-\\frac1{27}$이므로 $\\frac1{36}\\div\\left(-\\frac1{27}\\right)=-\\frac34$입니다. 여기에 $\\left(\\frac52\\right)^2=\\frac{25}{4}$로 한 번 더 나누면 중괄호 안은 $-\\frac3{25}$입니다. 따라서 $\\frac13\\div\\left(-\\frac3{25}\\right)=-\\frac{25}{9}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1496,7 +1584,9 @@ window.questionBank = [
     "content": "수직선 위의 두 점 $A, B$에 대하여 $|A|=|B|$이고 $A < B$이다. $A, B$ 두 점 사이의 거리가 $2\\frac{1}{4}$일 때, $\\frac{24}{7} \\times A - \\left(-\\frac{20}{21} \\times B\\right)$의 값을 구하여라.",
     "choices": [],
     "answer": "$-\\frac{39}{14}$",
-    "solution": "[솔포인트] $|A|=|B|$이고 $A<B$이므로 $A$는 음수, $B$는 양수입니다. 두 점 사이의 거리가 $2\\frac14=\\frac94$이므로 $A=-\\frac98$, $B=\\frac98$입니다. 따라서 $\\frac{24}{7}A-\\left(-\\frac{20}{21}B\\right)=\\frac{24}{7}\\left(-\\frac98\\right)+\\frac{20}{21}\\left(\\frac98\\right)=-\\frac{27}{7}+\\frac{15}{14}=-\\frac{39}{14}$입니다."
+    "solution": "[솔포인트] $|A|=|B|$이고 $A<B$이므로 $A$는 음수, $B$는 양수입니다. 두 점 사이의 거리가 $2\\frac14=\\frac94$이므로 $A=-\\frac98$, $B=\\frac98$입니다. 따라서 $\\frac{24}{7}A-\\left(-\\frac{20}{21}B\\right)=\\frac{24}{7}\\left(-\\frac98\\right)+\\frac{20}{21}\\left(\\frac98\\right)=-\\frac{27}{7}+\\frac{15}{14}=-\\frac{39}{14}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1524,7 +1614,9 @@ window.questionBank = [
     "content": "다음을 계산하여라. $$\\frac{13}{3} \\div \\left(-\\frac{11}{6}\\right) \\div \\left(1 - \\frac{1}{2}\\right) + \\frac{39}{11}$$",
     "choices": [],
     "answer": "$-\\frac{13}{11}$",
-    "solution": "[솔포인트] $1-\\frac12=\\frac12$입니다. 먼저 $\\frac{13}{3}\\div\\left(-\\frac{11}{6}\\right)=\\frac{13}{3}\\times\\left(-\\frac6{11}\\right)=-\\frac{26}{11}$입니다. 이것을 $\\frac12$로 나누면 $-\\frac{52}{11}$이고, $\\frac{39}{11}$를 더하면 $-\\frac{13}{11}$입니다."
+    "solution": "[솔포인트] $1-\\frac12=\\frac12$입니다. 먼저 $\\frac{13}{3}\\div\\left(-\\frac{11}{6}\\right)=\\frac{13}{3}\\times\\left(-\\frac6{11}\\right)=-\\frac{26}{11}$입니다. 이것을 $\\frac12$로 나누면 $-\\frac{52}{11}$이고, $\\frac{39}{11}$를 더하면 $-\\frac{13}{11}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1560,7 +1652,9 @@ window.questionBank = [
       "$a+b < 0$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] ② (음수) $-$ (양수)는 언제나 항이 더 작아지므로 항상 $0$보다 작습니다 ($a-b < 0$은 항상 참)."
+    "solution": "[솔포인트] ② (음수) $-$ (양수)는 언제나 항이 더 작아지므로 항상 $0$보다 작습니다 ($a-b < 0$은 항상 참).",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1590,7 +1684,9 @@ window.questionBank = [
     "content": "어느 $31$층 빌딩에서는 로비 바닥을 아래 그림과 같이 $1$을 중심으로 숫자가 커지는 타일을 붙이려고 한다. $31$층 건물임을 상징하기 위해 가장자리가 $31$로 둘러싸인 정사각형 모양의 바닥을 만들려고 할 때, 가장자리에 $31$의 숫자가 적힌 타일은 몇 개 필요한지 구하여라. 4 4 3 4 4 3 2 3 4 4 3 2 1 2 3 4 4 3 2 3 4 4 3 4 4 (예시 규칙 배열)",
     "choices": [],
     "answer": "$120$개",
-    "solution": "[솔포인트] 가운데 $1$을 기준으로 숫자가 한 단계 커질 때마다 바깥 테두리가 한 겹씩 늘어납니다. 숫자 $31$이 적힌 가장자리의 타일 수는 네 변의 타일 수를 더하되 네 꼭짓점을 한 번씩만 세어 $4\\times31-4=120$개입니다."
+    "solution": "[솔포인트] 가운데 $1$을 기준으로 숫자가 한 단계 커질 때마다 바깥 테두리가 한 겹씩 늘어납니다. 숫자 $31$이 적힌 가장자리의 타일 수는 네 변의 타일 수를 더하되 네 꼭짓점을 한 번씩만 세어 $4\\times31-4=120$개입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1626,7 +1722,9 @@ window.questionBank = [
       "$3-6 \\div 3 - 4 \\times (-2) = 9$"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ⑤ $3 - 6 \\div 3 - 4 \\times (-2) = 3 - 2 - (-8) = 1 + 8 = 9$ 이므로 계산 결과가 아주 정확합니다."
+    "solution": "[솔포인트] ⑤ $3 - 6 \\div 3 - 4 \\times (-2) = 3 - 2 - (-8) = 1 + 8 = 9$ 이므로 계산 결과가 아주 정확합니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 50,
@@ -1662,7 +1760,9 @@ window.questionBank = [
       "$7 \\times \\left(\\frac{3}{2} - \\frac{4}{3}\\right) = 7 \\times \\frac{3}{2} \\; \\square \\; 7 \\times \\frac{4}{3}$"
     ],
     "answer": "③",
-    "solution": "[솔포인트] ③번 식은 분배법칙 부호 관계상 다른 보기들과 달리 결합 및 전개 부호의 방향성이 다른 하나로 매칭됩니다."
+    "solution": "[솔포인트] ③번 식은 분배법칙 부호 관계상 다른 보기들과 달리 결합 및 전개 부호의 방향성이 다른 하나로 매칭됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1698,7 +1798,9 @@ window.questionBank = [
       "$a > 0$"
     ],
     "answer": "①",
-    "solution": "[솔포인트] $(-3)\\times a>0$이려면 $a<0$이고, $4\\times b<0$이려면 $b<0$입니다. 따라서 $a$와 $b$는 둘 다 음수이므로 $a\\times b>0$은 항상 옳습니다. 나머지는 $a,b$의 크기에 따라 달라지거나 조건과 맞지 않습니다."
+    "solution": "[솔포인트] $(-3)\\times a>0$이려면 $a<0$이고, $4\\times b<0$이려면 $b<0$입니다. 따라서 $a$와 $b$는 둘 다 음수이므로 $a\\times b>0$은 항상 옳습니다. 나머지는 $a,b$의 크기에 따라 달라지거나 조건과 맞지 않습니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 52,
@@ -1728,7 +1830,9 @@ window.questionBank = [
     "content": "여섯 개의 유리수 $+2, +\\frac{3}{2}, -3, -\\frac{1}{2}, +\\frac{4}{3}, -1.2$ 중에서 두 수를 뽑아 각각 $a, b$라고 할 때, 다음 물음에 답하여라. ⑴ $a-b$의 최댓값을 구하여라. ⑵ $a \\div b$의 최솟값을 구하여라.",
     "choices": [],
     "answer": "⑴ $5$ ⑵ $-4$",
-    "solution": "[솔포인트] ⑴ $a-b$가 최대가 되려면 가장 큰 수 $2$에서 가장 작은 수 $-3$을 빼면 되므로 $2-(-3)=5$입니다. ⑵ $a\\div b$가 최소가 되려면 음수 중 절댓값이 가장 큰 값을 만들어야 합니다. 가능한 조합 중 $2\\div\\left(-\\frac12\\right)=-4$가 가장 작으므로 최솟값은 $-4$입니다."
+    "solution": "[솔포인트] ⑴ $a-b$가 최대가 되려면 가장 큰 수 $2$에서 가장 작은 수 $-3$을 빼면 되므로 $2-(-3)=5$입니다. ⑵ $a\\div b$가 최소가 되려면 음수 중 절댓값이 가장 큰 값을 만들어야 합니다. 가능한 조합 중 $2\\div\\left(-\\frac12\\right)=-4$가 가장 작으므로 최솟값은 $-4$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1758,7 +1862,9 @@ window.questionBank = [
     "content": "두 정수 $a, b$가 $a \\times |a-b| = 7$을 만족할 때, $a \\times b$의 최대의 값을 구하여라.",
     "choices": [],
     "answer": "$8$",
-    "solution": "[솔포인트] $a$와 절댓값 식은 정수여야 하므로 곱해서 $7$이 되는 조합은 $(1, 7), (7, 1), (-1, -7), (-7, -1)$ 등이 있습니다. 각 경우의 $b$를 구해 곱 $a \\times b$의 최댓값을 찾으면 $8$이 됩니다."
+    "solution": "[솔포인트] $a$와 절댓값 식은 정수여야 하므로 곱해서 $7$이 되는 조합은 $(1, 7), (7, 1), (-1, -7), (-7, -1)$ 등이 있습니다. 각 경우의 $b$를 구해 곱 $a \\times b$의 최댓값을 찾으면 $8$이 됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1794,7 +1900,9 @@ window.questionBank = [
       "$a < 0, b > 0, c < 0$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] $b \\times c < 0$이고 $b > c$이므로 $b$는 양수, $c$는 음수입니다. $a \\times b > 0$인데 $b$가 양수이므로 $a$도 양수입니다. 따라서 $a > 0, b > 0, c < 0$입니다."
+    "solution": "[솔포인트] $b \\times c < 0$이고 $b > c$이므로 $b$는 양수, $c$는 음수입니다. $a \\times b > 0$인데 $b$가 양수이므로 $a$도 양수입니다. 따라서 $a > 0, b > 0, c < 0$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1824,7 +1932,9 @@ window.questionBank = [
     "content": "자연수 $n$에 대하여 $A(n) = (\\text{n의 각 자리 숫자의 곱})$으로 정의하자. 예를 들어, $A(45)=4 \\times 5=20, A(237)=2 \\times 3 \\times 7=42$이다. 이때 $A(x) \\times A(y) \\times A(z) = 9$를 만족하는 두 자리의 자연수 $x, y, z$에 대하여 $x+y+z$의 최대의 값을 구하여라.",
     "choices": [],
     "answer": "$113$",
-    "solution": "[솔포인트] $A(x)A(y)A(z)=9$가 되려면 각 자리 숫자의 곱은 $1,3,9$의 조합이어야 합니다. 합을 최대로 하려면 $A(n)=9$인 두 자리 수 중 가장 큰 $91$을 하나 고르고, $A(n)=1$인 가장 큰 두 자리 수 $11$을 두 개 고릅니다. 따라서 최대 합은 $91+11+11=113$입니다."
+    "solution": "[솔포인트] $A(x)A(y)A(z)=9$가 되려면 각 자리 숫자의 곱은 $1,3,9$의 조합이어야 합니다. 합을 최대로 하려면 $A(n)=9$인 두 자리 수 중 가장 큰 $91$을 하나 고르고, $A(n)=1$인 가장 큰 두 자리 수 $11$을 두 개 고릅니다. 따라서 최대 합은 $91+11+11=113$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 56,
@@ -1854,7 +1964,9 @@ window.questionBank = [
     "content": "$$A = (-3)^2 - \\{1 - 12 \\times (-2) \\div (-3)\\}$$ $$B = \\frac{3}{2} \\div \\left\\{ -2 - \\left(\\frac{1}{2} - \\frac{4}{3}\\right) \\times 4 - \\left(-\\frac{1}{2}\\right)^3 \\right\\}$$일 때, 수직선에서 $A \\div B$에 가장 가까운 정수를 구하여라.",
     "choices": [],
     "answer": "$16$",
-    "solution": "[솔포인트] $A=(-3)^2-\\{1-12\\times(-2)\\div(-3)\\}=9-\\{1-8\\}=16$입니다. $B$의 중괄호 안은 $-2-\\left(\\frac12-\\frac43\\right)\\times4-\\left(-\\frac12\\right)^3=-2+\\frac{10}{3}+\\frac18=\\frac{35}{24}$이므로 $B=\\frac32\\div\\frac{35}{24}=\\frac{36}{35}$입니다. 따라서 $A\\div B=16\\times\\frac{35}{36}=\\frac{140}{9}\\\\approx15.56$이므로 가장 가까운 정수는 $16$입니다."
+    "solution": "[솔포인트] $A=(-3)^2-\\{1-12\\times(-2)\\div(-3)\\}=9-\\{1-8\\}=16$입니다. $B$의 중괄호 안은 $-2-\\left(\\frac12-\\frac43\\right)\\times4-\\left(-\\frac12\\right)^3=-2+\\frac{10}{3}+\\frac18=\\frac{35}{24}$이므로 $B=\\frac32\\div\\frac{35}{24}=\\frac{36}{35}$입니다. 따라서 $A\\div B=16\\times\\frac{35}{36}=\\frac{140}{9}\\\\approx15.56$이므로 가장 가까운 정수는 $16$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 57,
@@ -1885,7 +1997,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$B: -\\frac{7}{3}, C: \\frac{1}{3}, E: \\frac{17}{3}$",
     "solution": "[솔포인트] 점 $A$부터 점 $D$까지는 세 칸이고, 두 수의 차는 $3-(-5)=8$입니다. 따라서 한 칸의 간격은 $\\frac83$입니다. $B=-5+\\frac83=-\\frac73$, $C=-5+2\\times\\frac83=\\frac13$, $E=3+\\frac83=\\frac{17}{3}$입니다.",
-    "image": "assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/q57.jpg"
+    "image": "assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/q57.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 58,
@@ -1914,7 +2028,9 @@ window.questionBank = [
     "content": "$$A = \\left(-\\frac{5}{6}\\right) \\div \\left(-\\frac{1}{2}\\right)^2 \\times \\left(\\frac{3}{5}\\right)$$ $$B = \\left(-\\frac{10}{3}\\right) \\div \\left(-\\frac{1}{3}\\right)^3 \\times \\frac{6}{5} \\div 4$$일 때, $A \\times B$의 값을 구하여라.",
     "choices": [],
     "answer": "$-54$",
-    "solution": "[솔포인트] $A=\\left(-\\frac56\\right)\\div\\left(\\frac14\\right)\\times\\frac35=-\\frac{10}{3}\\times\\frac35=-2$입니다. $B=\\left(-\\frac{10}{3}\\right)\\div\\left(-\\frac1{27}\\right)\\times\\frac65\\div4=90\\times\\frac65\\div4=27$입니다. 따라서 $A\\times B=-2\\times27=-54$입니다."
+    "solution": "[솔포인트] $A=\\left(-\\frac56\\right)\\div\\left(\\frac14\\right)\\times\\frac35=-\\frac{10}{3}\\times\\frac35=-2$입니다. $B=\\left(-\\frac{10}{3}\\right)\\div\\left(-\\frac1{27}\\right)\\times\\frac65\\div4=90\\times\\frac65\\div4=27$입니다. 따라서 $A\\times B=-2\\times27=-54$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 59,
@@ -1950,7 +2066,9 @@ window.questionBank = [
       "$(-a)^5$"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] $a = -1$일 때, $-a = 1$입니다.⑤ $(-a)^5 = 1^5 = 1$이 되며, 나머지 보기들은 거듭제곱과 부호 규칙에 의해 모두 $-1$의 값을 가지므로 혼자 다릅니다."
+    "solution": "[솔포인트] $a = -1$일 때, $-a = 1$입니다.⑤ $(-a)^5 = 1^5 = 1$이 되며, 나머지 보기들은 거듭제곱과 부호 규칙에 의해 모두 $-1$의 값을 가지므로 혼자 다릅니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 60,
@@ -1979,6 +2097,8 @@ window.questionBank = [
     "content": "$A, B, C$는 정수이고 $A \\times B \\times C = -24, A < 0 < B < C$이다. $A$의 절댓값이 $2$일 때, 가능한 $A, B, C$를 모두 구하여 $(A, B, C)$로 나타내어라.",
     "choices": [],
     "answer": "$(-2, 1, 12), (-2, 2, 6), (-2, 3, 4)$",
-    "solution": "[솔포인트] $A = -2$이므로 $B \\times C = 12$가 되어야 합니다. $0 < B < C$인 정수 조건을 만족하는 두 자연수의 곱 조합을 찾으면 $(1, 12), (2, 6), (3, 4)$의 총 3가지 쌍이 가능합니다."
+    "solution": "[솔포인트] $A = -2$이므로 $B \\times C = 12$가 되어야 합니다. $0 < B < C$인 정수 조건을 만족하는 두 자연수의 곱 조합을 찾으면 $(1, 12), (2, 6), (3, 4)$의 총 3가지 쌍이 가능합니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -33,7 +33,9 @@ window.questionBank = [
       "$3 \\div x \\div 2 \\times y = \\dfrac{3y}{2x}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① $\\dfrac{1}{a}$ ② $0.1a$ ③ $\\dfrac{x}{yz}$ ④ $-a$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ① $\\dfrac{1}{a}$ ② $0.1a$ ③ $\\dfrac{x}{yz}$ ④ $-a$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -45,7 +47,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -66,7 +68,9 @@ window.questionBank = [
       "$\\left(-\\dfrac{1}{2}\\right) \\times (6a-2) = -3a-1$"
     ],
     "answer": "③",
-    "solution": "[키포인트] ① $-a+2$ ② $2x-6$ ④ $-2x+1$ ⑤ $-3a+1$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] ① $-a+2$ ② $2x-6$ ④ $-2x+1$ ⑤ $-3a+1$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -78,7 +82,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -100,7 +104,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $10 \\times 10 - x \\times x = (100 - x^2)\\,\\text{m}^2$\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q3.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q3.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -112,7 +118,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -126,7 +132,9 @@ window.questionBank = [
     "content": "백의 자리 숫자가 $a$, 십의 자리 숫자가 $b$, 일의 자리 숫자가 1인 수는?",
     "choices": [],
     "answer": "$100a + 10b + 1$",
-    "solution": "[키포인트] 각 자리수가 문자인 경우는 십진법의 전개식으로 나타낸다.\n따라서 구하는 값은 $100a + 10b + 1$이다."
+    "solution": "[키포인트] 각 자리수가 문자인 경우는 십진법의 전개식으로 나타낸다.\n따라서 구하는 값은 $100a + 10b + 1$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -138,7 +146,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -154,7 +162,9 @@ window.questionBank = [
     "content": "한 권에 $a$원 하는 공책 4권의 값",
     "choices": [],
     "answer": "$4a$원",
-    "solution": "[키포인트] $4 \\times a = 4a$ (원)\n따라서 구하는 값은 $4a$원이다."
+    "solution": "[키포인트] $4 \\times a = 4a$ (원)\n따라서 구하는 값은 $4a$원이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -166,7 +176,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -187,7 +197,9 @@ window.questionBank = [
       "$2 \\div b \\times a = \\dfrac{2a}{b}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $a+a+a = 3a$ (더하기이므로 $a^3$이 아닌 $3a$)\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $a+a+a = 3a$ (더하기이므로 $a^3$이 아닌 $3a$)\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -199,7 +211,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -214,7 +226,9 @@ window.questionBank = [
     "content": "$a \\times 4 \\times b$를 기호 $\\times$, $\\div$를 생략하여 나타내어라.",
     "choices": [],
     "answer": "$4ab$",
-    "solution": "[키포인트] 숫자와 문자, 문자와 문자 사이의 곱셈 기호는 생략할 수 있다.\n따라서 구하는 값은 $4ab$이다."
+    "solution": "[키포인트] 숫자와 문자, 문자와 문자 사이의 곱셈 기호는 생략할 수 있다.\n따라서 구하는 값은 $4ab$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -225,8 +239,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -250,7 +264,9 @@ window.questionBank = [
       "㉡은 $3x$"
     ],
     "answer": "①",
-    "solution": "[키포인트] ㉠ (거리) = $30x$ / ㉡ (속력) = $\\dfrac{x}{3}$ / ㉢ (자연수) = $10x+y$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] ㉠ (거리) = $30x$ / ㉡ (속력) = $\\dfrac{x}{3}$ / ㉢ (자연수) = $10x+y$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -262,7 +278,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -277,7 +293,9 @@ window.questionBank = [
     "content": "십의 자리의 숫자가 $x$, 일의 자리의 숫자가 7인 두 자리의 수를 식으로 나타내어라.",
     "choices": [],
     "answer": "$10x + 7$",
-    "solution": "[키포인트] 구하는 값은 $10x + 7$이다."
+    "solution": "[키포인트] 구하는 값은 $10x + 7$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -289,7 +307,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -310,7 +328,9 @@ window.questionBank = [
       "$a \\times 3 \\div b = \\dfrac{3a}{b}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① $0.1x$ / ② $\\dfrac{4}{a}+b$ / ③ $\\dfrac{x}{yz}$ (→ $\\dfrac{xz}{y}$ 가 맞음) / ④ $2b + \\dfrac{c}{3}$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ① $0.1x$ / ② $\\dfrac{4}{a}+b$ / ③ $\\dfrac{x}{yz}$ (→ $\\dfrac{xz}{y}$ 가 맞음) / ④ $2b + \\dfrac{c}{3}$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -322,7 +342,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -342,7 +362,9 @@ window.questionBank = [
       "$a \\div b \\div c$"
     ],
     "answer": "③, ⑤",
-    "solution": "[키포인트] ① $\\dfrac{ab}{c}$ / ② $\\dfrac{ac}{b}$ / ③ $\\dfrac{a}{bc}$ / ④ $\\dfrac{ac}{b}$ / ⑤ $\\dfrac{a}{bc}$\n따라서 정답은 ③, ⑤이다."
+    "solution": "[키포인트] ① $\\dfrac{ab}{c}$ / ② $\\dfrac{ac}{b}$ / ③ $\\dfrac{a}{bc}$ / ④ $\\dfrac{ac}{b}$ / ⑤ $\\dfrac{a}{bc}$\n따라서 정답은 ③, ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -354,7 +376,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -375,7 +397,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] (색칠한 부분의 넓이) = (전체 사각형의 넓이) − (색칠하지 않은 부분의 넓이)\n$= (3x \\times 3x) - \\left(4 \\times \\dfrac{x}{2}\\right) \\times ... $\n$= 9x^2 - 4x^2 = 5x^2$ (수식은 PDF 그림 참조)\n따라서 정답은 ④이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q12.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q12.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -387,7 +411,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -411,7 +435,9 @@ window.questionBank = [
       "100km 떨어진 지점을 시속 80km로 $x$시간 동안 갔을 때, 남은 거리는 $100-80x$(km)이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] $1000 + 1000 \\times \\dfrac{x}{100} = 1000 + 10x$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $1000 + 1000 \\times \\dfrac{x}{100} = 1000 + 10x$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -423,7 +449,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -438,7 +464,9 @@ window.questionBank = [
     "content": "**(1)** $(a-2) \\div b \\div c$\n\n**(2)** $z \\times z - (x+y) \\div 4$",
     "choices": [],
     "answer": "(1) $\\dfrac{a-2}{bc}$\n(2) $z^2 - \\dfrac{x+y}{4}$",
-    "solution": "[키포인트] 구하는 값은 (1) $\\dfrac{a-2}{bc}$\n(2) $z^2 - \\dfrac{x+y}{4}$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $\\dfrac{a-2}{bc}$\n(2) $z^2 - \\dfrac{x+y}{4}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -450,7 +478,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -468,7 +496,9 @@ window.questionBank = [
     "content": "**(1)** 십의 자리 숫자가 $a$, 일의 자리 숫자가 3인 두 자리의 자연수\n\n**(2)** 국어 성적이 $x$점, 수학 성적이 $y$점일 때, 두 과목의 평균",
     "choices": [],
     "answer": "(1) $10a + 3$\n(2) $\\dfrac{x+y}{2}$",
-    "solution": "[키포인트] 구하는 값은 (1) $10a + 3$\n(2) $\\dfrac{x+y}{2}$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $10a + 3$\n(2) $\\dfrac{x+y}{2}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -480,7 +510,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -496,7 +526,9 @@ window.questionBank = [
     "content": "두 자리의 자연수가 있다. 십의 자리의 숫자를 $x$, 일의 자리의 숫자를 $y$라고 할 때, 이 자연수를 식으로 나타내면?",
     "choices": [],
     "answer": "$10x + y$",
-    "solution": "[키포인트] 구하는 값은 $10x + y$이다."
+    "solution": "[키포인트] 구하는 값은 $10x + y$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -508,7 +540,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -528,7 +560,9 @@ window.questionBank = [
       "$2 \\div (x-y) = \\dfrac{2}{x} - y$"
     ],
     "answer": "③",
-    "solution": "[키포인트] ① $\\dfrac{x}{2y}$ / ② $\\dfrac{xy}{3}$ / ④ $-\\dfrac{0.1x}{y}$ / ⑤ $\\dfrac{2}{x-y}$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] ① $\\dfrac{x}{2y}$ / ② $\\dfrac{xy}{3}$ / ④ $-\\dfrac{0.1x}{y}$ / ⑤ $\\dfrac{2}{x-y}$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -540,7 +574,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -562,7 +596,9 @@ window.questionBank = [
       "십의 자리의 숫자가 $a$, 일의 자리의 숫자가 $b$인 자연수 → $ab$"
     ],
     "answer": "④",
-    "solution": "[키포인트] ① $\\dfrac{a}{100}x$g / ② $\\dfrac{a}{5}$원 / ③ $\\dfrac{x}{2}$ m/초 / ⑤ $10a+b$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] ① $\\dfrac{a}{100}x$g / ② $\\dfrac{a}{5}$원 / ③ $\\dfrac{x}{2}$ m/초 / ⑤ $10a+b$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -574,7 +610,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -596,7 +632,9 @@ window.questionBank = [
       "$x \\times y \\div (x+y) = \\dfrac{xy}{x+y}$"
     ],
     "answer": "③, ⑤",
-    "solution": "[키포인트] ① $-2abc - \\dfrac{c}{2}$ / ② $\\dfrac{6a}{b}$ / ④ $\\dfrac{x-y}{2} + \\dfrac{6}{z}$\n따라서 정답은 ③, ⑤이다."
+    "solution": "[키포인트] ① $-2abc - \\dfrac{c}{2}$ / ② $\\dfrac{6a}{b}$ / ④ $\\dfrac{x-y}{2} + \\dfrac{6}{z}$\n따라서 정답은 ③, ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -608,7 +646,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -625,7 +663,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$2ab + 2bc + 2ca$",
     "solution": "[키포인트] $2 \\times (ab + b \\times c + c \\times a) = 2ab + 2bc + 2ca$\n따라서 구하는 값은 $2ab + 2bc + 2ca$이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q20.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q20.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -637,7 +677,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -659,7 +699,9 @@ window.questionBank = [
       "농구 선수가 3점짜리 슛 $x$골과 2점짜리 슛 $y$골을 성공시켰을 때의 점수: $(2x+3y)$점"
     ],
     "answer": "②, ④",
-    "solution": "[키포인트] ① $0.5a$원 / ③ $1000+10x$원 / ⑤ $(3x+2y)$점\n따라서 정답은 ②, ④이다."
+    "solution": "[키포인트] ① $0.5a$원 / ③ $1000+10x$원 / ⑤ $(3x+2y)$점\n따라서 정답은 ②, ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -671,7 +713,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -686,7 +728,9 @@ window.questionBank = [
     "content": "$x$kg의 30%",
     "choices": [],
     "answer": "$\\dfrac{3}{10}x$ kg",
-    "solution": "[키포인트] $x$kg의 30%는 $x \\times \\dfrac{30}{100} = \\dfrac{3}{10}x$ kg이다.\\n따라서 구하는 값은 $\\dfrac{3}{10}x$ kg이다."
+    "solution": "[키포인트] $x$kg의 30%는 $x \\times \\dfrac{30}{100} = \\dfrac{3}{10}x$ kg이다.\\n따라서 구하는 값은 $\\dfrac{3}{10}x$ kg이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -697,8 +741,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -715,7 +759,9 @@ window.questionBank = [
     "content": "$x$%의 소금물 300g과 $y$%의 소금물 400g에 물 400g을 섞어서 만든 소금물의 농도를 $x$, $y$를 사용하여 나타내어라.",
     "choices": [],
     "answer": "$\\dfrac{3x+4y}{11}$ %",
-    "solution": "[키포인트] - 첫 번째 소금의 양: $\\dfrac{x}{100} \\times 300 = 3x$(g)\n- 두 번째 소금의 양: $\\dfrac{y}{100} \\times 400 = 4y$(g)\n- 섞은 소금물의 농도: $\\dfrac{3x+4y}{300+400+400} \\times 100 = \\dfrac{3x+4y}{11}$ (%)\n따라서 구하는 값은 $\\dfrac{3x+4y}{11}$ %이다."
+    "solution": "[키포인트] - 첫 번째 소금의 양: $\\dfrac{x}{100} \\times 300 = 3x$(g)\n- 두 번째 소금의 양: $\\dfrac{y}{100} \\times 400 = 4y$(g)\n- 섞은 소금물의 농도: $\\dfrac{3x+4y}{300+400+400} \\times 100 = \\dfrac{3x+4y}{11}$ (%)\n따라서 구하는 값은 $\\dfrac{3x+4y}{11}$ %이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -726,8 +772,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -748,7 +794,9 @@ window.questionBank = [
       "정가가 $x$원인 물건을 20% 할인하여 살 때의 금액 ⇒ $\\dfrac{4}{5}x$원"
     ],
     "answer": "④",
-    "solution": "[키포인트] 시속 60km로 $x$시간 달린 거리 ⇒ $60x$ km\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 시속 60km로 $x$시간 달린 거리 ⇒ $60x$ km\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -760,7 +808,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -778,7 +826,9 @@ window.questionBank = [
     "content": "다음 중 $4x$와 같은 것을 모두 골라라.\n\n**보기**\n㉠ $4 \\times x$\n㉡ $x+x+x+x$\n㉢ $x \\times x \\times x \\times x$\n㉣ 한 변의 길이가 $x$인 정사각형의 넓이\n㉤ 한 변의 길이가 $x$인 정사각형의 둘레의 길이\n㉥ 한 개에 $x$원인 사과 4개의 값",
     "choices": [],
     "answer": "㉠, ㉡, ㉤, ㉥",
-    "solution": "[키포인트] ㉢ $x \\times x \\times x \\times x = x^4$ / ㉣ $x^2$\n따라서 구하는 값은 ㉠, ㉡, ㉤, ㉥이다."
+    "solution": "[키포인트] ㉢ $x \\times x \\times x \\times x = x^4$ / ㉣ $x^2$\n따라서 구하는 값은 ㉠, ㉡, ㉤, ㉥이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 26,
@@ -790,7 +840,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -806,7 +856,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$2(ab+bc+ca)$ cm²",
     "solution": "[키포인트] 겉넓이 = $2ab + 2bc + 2ca = 2(ab+bc+ca)$ (cm²)\n따라서 구하는 값은 $2(ab+bc+ca)$ cm²이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q26.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q26.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -818,7 +870,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -838,7 +890,9 @@ window.questionBank = [
       "$(a+b) \\times h \\div 2 = \\dfrac{(a+b)h}{2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① $-x^2y$ / ② $x - \\dfrac{y}{4}$ / ③ $\\dfrac{xy}{2}$ / ④ $\\dfrac{xz}{y}$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ① $-x^2y$ / ② $x - \\dfrac{y}{4}$ / ③ $\\dfrac{xy}{2}$ / ④ $\\dfrac{xz}{y}$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -850,7 +904,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -871,7 +925,9 @@ window.questionBank = [
       "$a \\times 5 \\times a = 5a^2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $(a+b) \\times (-1) = -a - b$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $(a+b) \\times (-1) = -a - b$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -883,7 +939,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -905,7 +961,9 @@ window.questionBank = [
       "설탕 100g의 $x$%: $x$g"
     ],
     "answer": "④",
-    "solution": "[키포인트] $x(1-0.1) = 0.9x$(원)\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $x(1-0.1) = 0.9x$(원)\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -917,7 +975,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -942,7 +1000,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] - ㉠ 부분의 넓이: $\\dfrac{1}{2} \\times 6 \\times 3 = 9$\n- ㉡ 부분의 넓이: $6 \\times x - 4 \\times (x-2) = 6x-4x+8 = 2x+8$\n- ㉠+㉡의 넓이: $9 + 2x + 8 = 2x+17$\n따라서 정답은 ①이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q30.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q30.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -954,7 +1014,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -975,7 +1035,9 @@ window.questionBank = [
       "$\\dfrac{3}{5}x \\div \\dfrac{6}{7}y = \\dfrac{7x}{10y}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $4x \\div y \\times (x+1) = \\dfrac{4x(x+1)}{y}$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $4x \\div y \\times (x+1) = \\dfrac{4x(x+1)}{y}$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -987,7 +1049,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1003,7 +1065,9 @@ window.questionBank = [
     "content": "**(1)** 3개에 $a$원 하는 지우개 1개의 값\n\n**(2)** 한 다스에 $y$원인 연필 1자루의 값",
     "choices": [],
     "answer": "(1) $a \\div 3$ (원)\n(2) $y \\div 12$ (원)",
-    "solution": "[키포인트] 구하는 값은 (1) $a \\div 3$ (원)\n(2) $y \\div 12$ (원)이다."
+    "solution": "[키포인트] 구하는 값은 (1) $a \\div 3$ (원)\n(2) $y \\div 12$ (원)이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -1015,7 +1079,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1037,7 +1101,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] (꽃밭의 넓이) = $(10-x) \\times (10-4) = 6(10-x) = 60-6x$ (m²)\n따라서 정답은 ②이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q33.png"
+    "image": "assets/images/중1_1학기_문자의사용/q33.png",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -1049,7 +1115,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1071,7 +1137,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] (산책로의 넓이) = $2\\{2(a-4)+2b\\} = 2\\{2a+2b-8\\} = 4a+4b-16$\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q34.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q34.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1083,7 +1151,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1099,7 +1167,9 @@ window.questionBank = [
     "content": "**(1)** 원가가 $x$원인 물건에 10%의 이윤을 붙였을 때의 정가\n\n**(2)** 정가가 20000원인 옷을 $a$% 할인해서 샀을 때, 지불할 금액\n\n**(3)** 한 개에 $a$원인 아이스크림을 3개 사고 2000원을 냈을 때의 거스름돈",
     "choices": [],
     "answer": "(1) $\\dfrac{11}{10}x$원\n(2) $(20000 - 200 \\times a)$원\n(3) $(2000 - 3 \\times a)$원",
-    "solution": "[키포인트] (1) 10%의 이윤: 원가의 110% → $x \\times \\dfrac{110}{100} = \\dfrac{11}{10}x$(원)\n(2) 할인가 = 정가 − 할인 금액 = $20000 - \\dfrac{a}{100} \\times 20000 = (20000-200a)$(원)\n(3) 거스름돈 = 지불 금액 − 물건값 = $(2000 - 3a)$(원)\n따라서 구하는 값은 (1) $\\dfrac{11}{10}x$원\n(2) $(20000 - 200 \\times a)$원\n(3) $(2000 - 3 \\times a)$원이다."
+    "solution": "[키포인트] (1) 10%의 이윤: 원가의 110% → $x \\times \\dfrac{110}{100} = \\dfrac{11}{10}x$(원)\n(2) 할인가 = 정가 − 할인 금액 = $20000 - \\dfrac{a}{100} \\times 20000 = (20000-200a)$(원)\n(3) 거스름돈 = 지불 금액 − 물건값 = $(2000 - 3a)$(원)\n따라서 구하는 값은 (1) $\\dfrac{11}{10}x$원\n(2) $(20000 - 200 \\times a)$원\n(3) $(2000 - 3 \\times a)$원이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1111,7 +1181,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1133,7 +1203,9 @@ window.questionBank = [
       "$a$시간 20분을 시간으로 고치면 $\\left(60a+\\dfrac{1}{5}\\right)$시간"
     ],
     "answer": "②, ⑤",
-    "solution": "[키포인트] ② $60t$초 / ⑤ $\\left(a+\\dfrac{1}{3}\\right)$시간\n따라서 정답은 ②, ⑤이다."
+    "solution": "[키포인트] ② $60t$초 / ⑤ $\\left(a+\\dfrac{1}{3}\\right)$시간\n따라서 정답은 ②, ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1145,7 +1217,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1165,7 +1237,9 @@ window.questionBank = [
       "$\\left(\\dfrac{a}{x+50000}\\right)$원"
     ],
     "answer": "①",
-    "solution": "[키포인트] 우승상금에서 필요경비를 뺀 다음에 참가인원 수로 나눈다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 우승상금에서 필요경비를 뺀 다음에 참가인원 수로 나눈다.\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1177,7 +1251,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1198,7 +1272,9 @@ window.questionBank = [
       "$\\left(\\dfrac{3}{2}a + \\dfrac{1}{5}b\\right)$원"
     ],
     "answer": "④",
-    "solution": "[키포인트] 볼펜 1자루의 값은 $\\dfrac{a}{3}$원, 공책 1권의 값은 $\\dfrac{b}{2}$원\n→ $\\dfrac{a}{3} \\times 2 + \\dfrac{b}{2} \\times 5 = \\dfrac{2}{3}a + \\dfrac{5}{2}b$ (원)\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 볼펜 1자루의 값은 $\\dfrac{a}{3}$원, 공책 1권의 값은 $\\dfrac{b}{2}$원\n→ $\\dfrac{a}{3} \\times 2 + \\dfrac{b}{2} \\times 5 = \\dfrac{2}{3}a + \\dfrac{5}{2}b$ (원)\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1210,7 +1286,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1224,7 +1300,9 @@ window.questionBank = [
     "content": "$\\dfrac{y}{x} - \\dfrac{y^3}{x^2z}$을 기호 $\\times$, $\\div$를 사용한 식으로 나타내어라.",
     "choices": [],
     "answer": "$y \\div x - y \\times y \\times y \\div (x \\times x \\times z)$",
-    "solution": "[키포인트] $\\dfrac{y}{x}$는 $y \\div x$로 나타내고, $\\dfrac{y^3}{x^2z}$는 $y \\times y \\times y \\div (x \\times x \\times z)$로 나타낼 수 있습니다. 따라서 전체 식은 $y \\div x - y \\times y \\times y \\div (x \\times x \\times z)$입니다."
+    "solution": "[키포인트] $\\dfrac{y}{x}$는 $y \\div x$로 나타내고, $\\dfrac{y^3}{x^2z}$는 $y \\times y \\times y \\div (x \\times x \\times z)$로 나타낼 수 있습니다. 따라서 전체 식은 $y \\div x - y \\times y \\times y \\div (x \\times x \\times z)$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1236,7 +1314,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1252,7 +1330,9 @@ window.questionBank = [
     "content": "아랫변의 길이가 윗변의 길이의 2배보다 4cm만큼 길고, 높이는 9cm인 사다리꼴이 있다. 윗변의 길이를 $x$cm라고 할 때, 사다리꼴의 넓이를 구하여라.",
     "choices": [],
     "answer": "$\\left(\\dfrac{27}{2}x + 18\\right)$ cm²",
-    "solution": "[키포인트] - 아랫변의 길이: $2x+4$\n- 사다리꼴의 넓이: $\\{(2x+4)+x\\} \\times 9 \\times \\dfrac{1}{2} = (3x+4) \\times \\dfrac{9}{2} = \\dfrac{27}{2}x + 18$ (cm²)\n따라서 구하는 값은 $\\left(\\dfrac{27}{2}x + 18\\right)$ cm²이다."
+    "solution": "[키포인트] - 아랫변의 길이: $2x+4$\n- 사다리꼴의 넓이: $\\{(2x+4)+x\\} \\times 9 \\times \\dfrac{1}{2} = (3x+4) \\times \\dfrac{9}{2} = \\dfrac{27}{2}x + 18$ (cm²)\n따라서 구하는 값은 $\\left(\\dfrac{27}{2}x + 18\\right)$ cm²이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1264,7 +1344,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1285,7 +1365,9 @@ window.questionBank = [
       "$-(a-b) \\div \\dfrac{1}{3} = 3(b-a)$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① $\\dfrac{3x}{y}$ / ② $\\dfrac{x}{3y}$ / ③ $-\\dfrac{1}{ab}$ / ④ $\\dfrac{ac}{b} - \\dfrac{c}{b}$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ① $\\dfrac{3x}{y}$ / ② $\\dfrac{x}{3y}$ / ③ $-\\dfrac{1}{ab}$ / ④ $\\dfrac{ac}{b} - \\dfrac{c}{b}$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1297,7 +1379,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1315,7 +1397,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$2x$ 바퀴",
     "solution": "[키포인트] $x$일 동안 시침은 $x \\times 2 = 2x$ (바퀴) 돈다.\n따라서 구하는 값은 $2x$ 바퀴이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q42.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q42.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1327,7 +1411,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1350,7 +1434,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 색칠한 부분의 넓이 = 큰 사각형 − 작은 사각형\n$6x - 4(x-2) = 6x - 4x + 8 = 2x + 8$\n따라서 정답은 ②이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q43.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q43.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1362,7 +1448,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1377,7 +1463,9 @@ window.questionBank = [
     "content": "커피전문점을 운영하는 용규는 카페모카의 정가를 원가 $x$원의 5할의 이익을 붙여 정했는데 그 정가에서 20%를 할인하여 팔았다. 카페모카의 판매가를 $x$에 대한 식으로 나타내어라.",
     "choices": [],
     "answer": "$\\dfrac{6}{5}x$원",
-    "solution": "[키포인트] - 정가 = 원가 + 이익 = $x + x \\times \\dfrac{5}{10} = \\dfrac{15}{10}x$\n- 할인가 = 정가 × 할인율 = $\\dfrac{15}{10}x \\times \\dfrac{20}{100} = \\dfrac{3}{10}x$\n- 판매가 = 정가 − 할인가 = $\\dfrac{15}{10}x - \\dfrac{3}{10}x = \\dfrac{12}{10}x = \\dfrac{6}{5}x$ (원)\n따라서 구하는 값은 $\\dfrac{6}{5}x$원이다."
+    "solution": "[키포인트] - 정가 = 원가 + 이익 = $x + x \\times \\dfrac{5}{10} = \\dfrac{15}{10}x$\n- 할인가 = 정가 × 할인율 = $\\dfrac{15}{10}x \\times \\dfrac{20}{100} = \\dfrac{3}{10}x$\n- 판매가 = 정가 − 할인가 = $\\dfrac{15}{10}x - \\dfrac{3}{10}x = \\dfrac{12}{10}x = \\dfrac{6}{5}x$ (원)\n따라서 구하는 값은 $\\dfrac{6}{5}x$원이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1389,7 +1477,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1406,7 +1494,9 @@ window.questionBank = [
     "content": "작년에는 감자와 고구마의 수확량은 각각 $x$만 톤, $(x-20)$만 톤이었고, 올해에는 작년에 비해 감자의 수확량은 10% 증가하였고, 고구마는 5% 감소하였다. 감자와 고구마의 올해 수확량의 합계는 작년보다 몇 % 증가하였는지 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{5x+100}{2x-20}$ %",
-    "solution": "[키포인트] 올해 합계 = $x \\times \\dfrac{110}{100} + (x-20) \\times \\dfrac{95}{100} = 1.1x + 0.95x - 19 = 2.05x - 19$ (만 톤)\n\n증가율 = $\\dfrac{(2.05x-19) - (2x-20)}{2x-20} \\times 100 = \\dfrac{0.05x+1}{2x-20} \\times 100 = \\dfrac{5x+100}{2x-20}$ (%)\n따라서 구하는 값은 $\\dfrac{5x+100}{2x-20}$ %이다."
+    "solution": "[키포인트] 올해 합계 = $x \\times \\dfrac{110}{100} + (x-20) \\times \\dfrac{95}{100} = 1.1x + 0.95x - 19 = 2.05x - 19$ (만 톤)\n\n증가율 = $\\dfrac{(2.05x-19) - (2x-20)}{2x-20} \\times 100 = \\dfrac{0.05x+1}{2x-20} \\times 100 = \\dfrac{5x+100}{2x-20}$ (%)\n따라서 구하는 값은 $\\dfrac{5x+100}{2x-20}$ %이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1418,7 +1508,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1434,7 +1524,9 @@ window.questionBank = [
     "choices": [],
     "answer": "1등: 4번 차, 5등: 1번 차",
     "solution": "[키포인트] 각 차량의 이동 시간 계산 (속도를 $V$라 하면):\n- 1번 차: $\\dfrac{280}{V}$ / 2번 차: $\\dfrac{270}{V}$ / 3번 차: $\\dfrac{250}{V}$ / 4번 차: $\\dfrac{220}{V}$ / 5번 차: $\\dfrac{275}{V}$\n→ 가장 적은 시간: 4번 차 (1등), 가장 많은 시간: 1번 차 (5등)\n따라서 구하는 값은 1등: 4번 차, 5등: 1번 차이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q46.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q46.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1446,7 +1538,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1466,7 +1558,9 @@ window.questionBank = [
       "$\\dfrac{3}{4}x \\div \\dfrac{2}{5}y = \\dfrac{15}{8}xy$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\dfrac{3}{4}x \\div \\dfrac{2}{5}y = \\dfrac{3}{4}x \\times \\dfrac{5}{2y} = \\dfrac{15x}{8y}$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $\\dfrac{3}{4}x \\div \\dfrac{2}{5}y = \\dfrac{3}{4}x \\times \\dfrac{5}{2y} = \\dfrac{15x}{8y}$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1478,7 +1572,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1493,7 +1587,9 @@ window.questionBank = [
     "content": "$$a \\times (-3) \\times a \\div b \\times a \\times b \\times b$$",
     "choices": [],
     "answer": "$-3a^3b$",
-    "solution": "[키포인트] $= a \\times (-3) \\times a \\times \\dfrac{1}{b} \\times a \\times b \\times b$\n$= (-3) \\times a \\times a \\times a \\times b = (-3)a^3b = -3a^3b$\n따라서 구하는 값은 $-3a^3b$이다."
+    "solution": "[키포인트] $= a \\times (-3) \\times a \\times \\dfrac{1}{b} \\times a \\times b \\times b$\n$= (-3) \\times a \\times a \\times a \\times b = (-3)a^3b = -3a^3b$\n따라서 구하는 값은 $-3a^3b$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1505,7 +1601,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1522,7 +1618,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$8n - 4$",
     "solution": "[키포인트] 각 단계에서 왼쪽 변의 길이:\n- [1단계]: 1 / [2단계]: $1+2\\times1=3$ / [3단계]: $1+2\\times2=5$\n- $[n단계]$: $1+2(n-1) = 2n-1$\n→ 둘레 = $4(2n-1) = 8n-4$\n따라서 구하는 값은 $8n - 4$이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q49.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q49.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1534,7 +1632,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1549,7 +1647,9 @@ window.questionBank = [
     "content": "$300x$L의 $y$할 (dL)",
     "choices": [],
     "answer": "$300xy$ dL",
-    "solution": "[키포인트] $1$ dL $= \\dfrac{1}{10}$L, $y$할 $= \\dfrac{y}{10}$\n→ $300x \\times 10 \\times \\dfrac{y}{10} = 300xy$ (dL)\n따라서 구하는 값은 $300xy$ dL이다."
+    "solution": "[키포인트] $1$ dL $= \\dfrac{1}{10}$L, $y$할 $= \\dfrac{y}{10}$\n→ $300x \\times 10 \\times \\dfrac{y}{10} = 300xy$ (dL)\n따라서 구하는 값은 $300xy$ dL이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1561,7 +1661,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1578,7 +1678,9 @@ window.questionBank = [
     "content": "$x$%의 소금물이 400g이 있다. 이 소금물을 $a$g을 증발시켜 $y$%의 소금물을 만들 때, $a$를 $x$, $y$를 사용하여 나타내어라.",
     "choices": [],
     "answer": "$a = \\dfrac{400(y-x)}{y}$",
-    "solution": "[키포인트] 소금물을 증발시켜도 소금의 양은 변하지 않으므로:\n$\\dfrac{x}{100} \\times 400 = \\dfrac{y}{100} \\times (400-a)$\n$400x = 400y - ay$\n$ay = 400y - 400x$\n$\\therefore a = \\dfrac{400(y-x)}{y}$\n따라서 구하는 값은 $a = \\dfrac{400(y-x)}{y}$이다."
+    "solution": "[키포인트] 소금물을 증발시켜도 소금의 양은 변하지 않으므로:\n$\\dfrac{x}{100} \\times 400 = \\dfrac{y}{100} \\times (400-a)$\n$400x = 400y - ay$\n$ay = 400y - 400x$\n$\\therefore a = \\dfrac{400(y-x)}{y}$\n따라서 구하는 값은 $a = \\dfrac{400(y-x)}{y}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 52,
@@ -1590,7 +1692,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1614,7 +1716,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 관계식에서 $b = 2c$, $3c = 2d$, $e = 2d$, $a = e + d$를 이용하면 $4a = 9b$\n따라서 정답은 ④이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q52.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q52.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1626,7 +1730,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1642,7 +1746,9 @@ window.questionBank = [
     "content": "수연이네 병원에서는 하루에 $x$명씩 환자를 진료하고 있었는데 내일부터 5일 동안은 하루에 10%씩 환자를 더 진료하기로 하였다. 내일부터 이틀 동안 수연이네 병원에서 진료할 환자 수는 몇 명인지 $x$를 사용한 식으로 나타내어라.",
     "choices": [],
     "answer": "$2.31x$명",
-    "solution": "[키포인트] - 내일 진료할 환자 수: $1.1x$명\n- 이틀 동안: $1.1x + 1.1 \\times 1.1x = (2.1) \\times 1.1x = 2.31x$(명)\n따라서 구하는 값은 $2.31x$명이다."
+    "solution": "[키포인트] - 내일 진료할 환자 수: $1.1x$명\n- 이틀 동안: $1.1x + 1.1 \\times 1.1x = (2.1) \\times 1.1x = 2.31x$(명)\n따라서 구하는 값은 $2.31x$명이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1654,7 +1760,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1671,7 +1777,9 @@ window.questionBank = [
     "content": "작년 우리 학교 입학생 수는 $a$명이었고, 작년 남자 입학생 수는 $x$명이었다. 올해는 남학생은 작년보다 6% 증가하고 여학생은 4% 감소하였다고 할 때, 올해 전체 학생 수를 $a$와 $x$를 사용한 식으로 나타내어라.",
     "choices": [],
     "answer": "$\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명",
-    "solution": "[키포인트] - 올해 남학생 수: $\\dfrac{106}{100}x$\n- 올해 여학생 수: $\\dfrac{96}{100}(a-x)$\n- 올해 전체: $\\dfrac{106}{100}x + \\dfrac{96}{100}(a-x) = \\dfrac{10}{100}x + \\dfrac{96}{100}a = \\dfrac{1}{10}x + \\dfrac{24}{25}a$\n따라서 구하는 값은 $\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명이다."
+    "solution": "[키포인트] - 올해 남학생 수: $\\dfrac{106}{100}x$\n- 올해 여학생 수: $\\dfrac{96}{100}(a-x)$\n- 올해 전체: $\\dfrac{106}{100}x + \\dfrac{96}{100}(a-x) = \\dfrac{10}{100}x + \\dfrac{96}{100}a = \\dfrac{1}{10}x + \\dfrac{24}{25}a$\n따라서 구하는 값은 $\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1683,7 +1791,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1701,7 +1809,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$130a + 60b - 4ab$",
     "solution": "[키포인트] $(30-2a) \\times b \\times 2 + (65-2b) \\times a \\times 2 + 4 \\times ab$\n$= 60b - 4ab + 130a - 4ab + 4ab = 130a + 60b - 4ab$\n따라서 구하는 값은 $130a + 60b - 4ab$이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q55.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q55.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 56,
@@ -1713,7 +1823,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1728,7 +1838,9 @@ window.questionBank = [
     "content": "삼각형의 내각 중 한 각은 $p$이고 다른 한 각은 $p$보다 10° 더 크다. 이때, 나머지 한 각을 $p$를 이용하여 나타내어라.",
     "choices": [],
     "answer": "$170° - 2p$",
-    "solution": "[키포인트] $180° - (p + p + 10°) = 170° - 2p$\n따라서 구하는 값은 $170° - 2p$이다."
+    "solution": "[키포인트] $180° - (p + p + 10°) = 170° - 2p$\n따라서 구하는 값은 $170° - 2p$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 57,
@@ -1740,7 +1852,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1757,7 +1869,9 @@ window.questionBank = [
     "content": "남학생의 수가 18명, 여학생의 수가 22명인 학급에서 수학 성적의 남학생 평균이 $x$점, 여학생 평균이 $y$점일 때, 이 학급의 수학 성적의 평균을 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{9x+11y}{20}$ (점)",
-    "solution": "[키포인트] $\\dfrac{18 \\times x + 22 \\times y}{40} = \\dfrac{18x+22y}{40} = \\dfrac{9x+11y}{20}$ (점)\n따라서 구하는 값은 $\\dfrac{9x+11y}{20}$ (점)이다."
+    "solution": "[키포인트] $\\dfrac{18 \\times x + 22 \\times y}{40} = \\dfrac{18x+22y}{40} = \\dfrac{9x+11y}{20}$ (점)\n따라서 구하는 값은 $\\dfrac{9x+11y}{20}$ (점)이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 58,
@@ -1769,7 +1883,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1786,7 +1900,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$6a^2 + 4b^2 + 2c^2$",
     "solution": "[키포인트] 세 정육면체의 겉넓이의 합 = $6a^2 + 6b^2 + 6c^2$\n- A와 B가 겹쳐지면서 줄어든 넓이: $2b^2$\n- A와 C가 겹쳐지면서 줄어든 넓이: $2c^2$\n- B와 C가 겹쳐지면서 줄어든 넓이: $2c^2$\n\n$\\therefore 6a^2 + 6b^2 + 6c^2 - 2b^2 - 2c^2 - 2c^2 = 6a^2 + 4b^2 + 2c^2$\n따라서 구하는 값은 $6a^2 + 4b^2 + 2c^2$이다.",
-    "image": "assets/images/중1_1학기_문자의사용/q58.jpg"
+    "image": "assets/images/중1_1학기_문자의사용/q58.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 59,
@@ -1797,8 +1913,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1815,7 +1931,9 @@ window.questionBank = [
     "content": "경환이와 세원이네 집은 $a$km 떨어져 있다. 서로 만나기 위해 경환이는 시속 $x$km, 세원이는 시속 $y$km로 동시에 출발했을 때, 둘은 출발 후 $b$시간 후에 만났다. $a$, $b$ 사이의 관계식으로 나타내어라.",
     "choices": [],
     "answer": "$a = xb + yb$",
-    "solution": "[키포인트] (거리) = (속력) × (시간)이므로 $xb + yb = a$\n따라서 구하는 값은 $a = xb + yb$이다."
+    "solution": "[키포인트] (거리) = (속력) × (시간)이므로 $xb + yb = a$\n따라서 구하는 값은 $a = xb + yb$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 60,
@@ -1827,7 +1945,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "문자의 사용",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1843,6 +1961,8 @@ window.questionBank = [
     "content": "강일이네 반 40명의 수학 성적은 90점이 $a$명, 80점이 $b$명, 70점이 $c$명이고 나머지 학생은 모두 60점이다. 이때, 40명의 수학 성적의 평균을 $a$, $b$, $c$를 사용하여 나타내어라.",
     "choices": [],
     "answer": "$\\dfrac{3a+2b+c+240}{4}$ (점)",
-    "solution": "[키포인트] $\\dfrac{90a + 80b + 70c + 60(40-a-b-c)}{40} = \\dfrac{30a+20b+10c+2400}{40} = \\dfrac{3a+2b+c+240}{4}$ (점)\n따라서 구하는 값은 $\\dfrac{3a+2b+c+240}{4}$ (점)이다."
+    "solution": "[키포인트] $\\dfrac{90a + 80b + 70c + 60(40-a-b-c)}{40} = \\dfrac{30a+20b+10c+2400}{40} = \\dfrac{3a+2b+c+240}{4}$ (점)\n따라서 구하는 값은 $\\dfrac{3a+2b+c+240}{4}$ (점)이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

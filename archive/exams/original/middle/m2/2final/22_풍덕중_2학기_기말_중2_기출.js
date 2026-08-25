@@ -26,7 +26,11 @@ window.questionBank = [
       "$x=5,y=1$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 식의 표에서 동시에 나타나는 자연수 순서쌍을 찾는다.\n조건 정리: 표의 $x=1,2,3,4,5$에 대해 각 식을 만족하는 $y$를 확인한다.\n정석 풀이: ① $x+2y=8$에서 $y=\\dfrac{8-x}{2}$이므로 자연수 순서쌍은 표의 범위에서 $(2,3)$, $(4,2)$이다. ② $-2x+5y=2$에서 $y=\\dfrac{2+2x}{5}$이므로 표의 범위에서 자연수 순서쌍은 $(4,2)$이다. 두 표에 공통으로 나타나는 순서쌍은 $(4,2)$이므로 연립방정식의 해는 $x=4$, $y=2$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 식의 표에서 동시에 나타나는 자연수 순서쌍을 찾는다.\n조건 정리: 표의 $x=1,2,3,4,5$에 대해 각 식을 만족하는 $y$를 확인한다.\n정석 풀이: ① $x+2y=8$에서 $y=\\dfrac{8-x}{2}$이므로 자연수 순서쌍은 표의 범위에서 $(2,3)$, $(4,2)$이다. ② $-2x+5y=2$에서 $y=\\dfrac{2+2x}{5}$이므로 표의 범위에서 자연수 순서쌍은 $(4,2)$이다. 두 표에 공통으로 나타나는 순서쌍은 $(4,2)$이므로 연립방정식의 해는 $x=4$, $y=2$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -52,7 +56,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 한 식을 다른 식에 대입해 $x$, $y$를 차례로 구한다.\n정석 풀이: $y=x-2$를 $-x+2y=4$에 대입하면 $-x+2(x-2)=4$이다. 따라서 $x=8$, $y=6$이므로 $a-b=8-6=2$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 한 식을 다른 식에 대입해 $x$, $y$를 차례로 구한다.\n정석 풀이: $y=x-2$를 $-x+2y=4$에 대입하면 $-x+2(x-2)=4$이다. 따라서 $x=8$, $y=6$이므로 $a-b=8-6=2$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -78,7 +86,11 @@ window.questionBank = [
       "(마) $-1$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 빈칸을 실제 계산으로 모두 확인한다.\n정석 풀이: ①과 ②를 더하면 $4y=8$이므로 (가)는 덧셈, (나)는 $4y$, (다)는 $2$이다. $y=2$를 ①에 대입하면 $2x+6=5$이므로 (라)는 $6$이고 $x=-\\dfrac12$이다. 따라서 (마)는 $-1$이 아니라 $-\\dfrac12$이어야 한다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 빈칸을 실제 계산으로 모두 확인한다.\n정석 풀이: ①과 ②를 더하면 $4y=8$이므로 (가)는 덧셈, (나)는 $4y$, (다)는 $2$이다. $y=2$를 ①에 대입하면 $2x+6=5$이므로 (라)는 $6$이고 $x=-\\dfrac12$이다. 따라서 (마)는 $-1$이 아니라 $-\\dfrac12$이어야 한다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -104,7 +116,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 소수와 분수를 정수 계수의 식으로 바꾸면 계산이 간단해진다.\n정석 풀이: 첫째 식에 $10$을 곱하면 $x-6y=10$, 둘째 식에 $4$를 곱하면 $-x+2y=8$이다. 두 식을 더하면 $-4y=18$이므로 $y=-\\dfrac92$이다. $-x+2y=8$에 대입하면 $-x-9=8$이므로 $x=-17$이다. 따라서 $a-4b=-17-4(-\\dfrac92)=1$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 소수와 분수를 정수 계수의 식으로 바꾸면 계산이 간단해진다.\n정석 풀이: 첫째 식에 $10$을 곱하면 $x-6y=10$, 둘째 식에 $4$를 곱하면 $-x+2y=8$이다. 두 식을 더하면 $-4y=18$이므로 $y=-\\dfrac92$이다. $-x+2y=8$에 대입하면 $-x-9=8$이므로 $x=-17$이다. 따라서 $a-4b=-17-4(-\\dfrac92)=1$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -130,7 +146,11 @@ window.questionBank = [
       "아버지: 38세, 아들: 16세"
     ],
     "answer": "③",
-    "solution": "[키포인트] 현재 나이를 미지수로 두고 합과 12년 뒤의 관계를 식으로 만든다.\n정석 풀이: 아버지와 아들의 현재 나이를 각각 $F$, $S$라 하면 $F+S=54$이다. 12년 뒤에는 $F+12=2(S+12)$이므로 $F=2S+12$이다. 따라서 $3S+12=54$, $S=14$, $F=40$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 현재 나이를 미지수로 두고 합과 12년 뒤의 관계를 식으로 만든다.\n정석 풀이: 아버지와 아들의 현재 나이를 각각 $F$, $S$라 하면 $F+S=54$이다. 12년 뒤에는 $F+12=2(S+12)$이므로 $F=2S+12$이다. 따라서 $3S+12=54$, $S=14$, $F=40$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -156,7 +176,11 @@ window.questionBank = [
       "일차함수 $y=4x$의 그래프와 평행하다."
     ],
     "answer": "①",
-    "solution": "[키포인트] 일차방정식을 $y=ax+b$ 꼴로 고쳐 기울기와 절편을 확인한다.\n정석 풀이: $-4x+y-1=0$은 $y=4x+1$이다. 기울기가 $4>0$이므로 $x$가 증가할 때 $y$도 증가한다. 따라서 “$y$의 값은 감소한다.”는 설명이 옳지 않다. 또한 $(1,5)$를 지나고, $x$절편은 $-\\dfrac14$이며, $y=4x$와 평행하다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 일차방정식을 $y=ax+b$ 꼴로 고쳐 기울기와 절편을 확인한다.\n정석 풀이: $-4x+y-1=0$은 $y=4x+1$이다. 기울기가 $4>0$이므로 $x$가 증가할 때 $y$도 증가한다. 따라서 “$y$의 값은 감소한다.”는 설명이 옳지 않다. 또한 $(1,5)$를 지나고, $x$절편은 $-\\dfrac14$이며, $y=4x$와 평행하다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -178,7 +202,12 @@ window.questionBank = [
     "choices": [],
     "answer": "②",
     "solution": "[키포인트] 각 방정식을 $y=ax+b$ 꼴로 바꾸어 기울기와 두 절편을 그림과 비교한다.\n정석 풀이: ②의 식 $x+2y+1=0$을 정리하면 $y=-\\dfrac12x-\\dfrac12$이다. 따라서 $x$절편은 $-1$, $y$절편은 $-\\dfrac12$이어야 한다. 그런데 제시된 ②의 그래프는 이 절편 관계와 일치하지 않는다. 나머지 그래프는 각 식의 기울기와 절편에 맞는다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q7.png"
+    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q7.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -206,7 +235,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $x=2$는 $x$좌표가 항상 $2$인 수직선이다.\n정석 풀이: $A(-1,3)$와 $B(2,3)$를 지나는 직선은 $y=3$, $B(2,3)$와 $C(2,-2)$를 지나는 직선은 $x=2$이다. 따라서 $y=3$은 $(-3,3)$을 지나고, $C$를 지나며 $y$축과 평행한 직선도 $x=2$이다. 그러나 점 $(3,2)$는 $x$좌표가 $3$이므로 $x=2$ 위에 있지 않다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q8.png"
+    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q8.png",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -232,7 +265,11 @@ window.questionBank = [
       "$-7$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 해가 없으려면 두 직선의 기울기는 같고 절편은 달라야 한다.\n정석 풀이: 첫째 식 $2x-3y=1$의 양변에 $-2$를 곱하면 $-4x+6y=-2$이다. 둘째 식은 $-4x+ay=7$이므로 두 직선이 평행하려면 $a=6$이어야 한다. 이때 상수항은 $-2$와 $7$로 달라 두 직선은 일치하지 않으므로 해가 없다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 해가 없으려면 두 직선의 기울기는 같고 절편은 달라야 한다.\n정석 풀이: 첫째 식 $2x-3y=1$의 양변에 $-2$를 곱하면 $-4x+6y=-2$이다. 둘째 식은 $-4x+ay=7$이므로 두 직선이 평행하려면 $a=6$이어야 한다. 이때 상수항은 $-2$와 $7$로 달라 두 직선은 일치하지 않으므로 해가 없다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -258,7 +295,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 해가 무수히 많으려면 두 방정식의 모든 계수가 같은 비율이어야 한다.\n정석 풀이: $ax+3y=2$가 $5x-2y=b$의 $k$배라 하면 $3=-2k$에서 $k=-\\dfrac32$이다. 따라서 $a=5k=-\\dfrac{15}{2}$이고 $2=bk$에서 $b=-\\dfrac43$이다. 그러므로 $2a-15b=-15+20=5$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 해가 무수히 많으려면 두 방정식의 모든 계수가 같은 비율이어야 한다.\n정석 풀이: $ax+3y=2$가 $5x-2y=b$의 $k$배라 하면 $3=-2k$에서 $k=-\\dfrac32$이다. 따라서 $a=5k=-\\dfrac{15}{2}$이고 $2=bk$에서 $b=-\\dfrac43$이다. 그러므로 $2a-15b=-15+20=5$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -284,7 +325,11 @@ window.questionBank = [
       "10가지"
     ],
     "answer": "②",
-    "solution": "[키포인트] 윷가락 4개의 앞뒤 결과를 서로 구별하여 조합으로 센다.\n정석 풀이: ‘개’는 한쪽 면이 나오는 윷가락이 2개인 경우이므로 $\\binom42=6$가지이고, ‘윷’은 4개가 모두 같은 해당 면인 경우로 $1$가지이다. 합하면 $6+1=7$가지이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 윷가락 4개의 앞뒤 결과를 서로 구별하여 조합으로 센다.\n정석 풀이: ‘개’는 한쪽 면이 나오는 윷가락이 2개인 경우이므로 $\\binom42=6$가지이고, ‘윷’은 4개가 모두 같은 해당 면인 경우로 $1$가지이다. 합하면 $6+1=7$가지이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -310,7 +355,11 @@ window.questionBank = [
       "9가지"
     ],
     "answer": "①",
-    "solution": "[키포인트] 들어가는 출입구를 정한 뒤 나오는 출입구를 다르게 고른다.\n정석 풀이: 들어가는 출입구는 $5$가지이고, 그 출입구를 제외한 나오는 출입구는 $4$가지이다. 따라서 $5\\times4=20$가지이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 들어가는 출입구를 정한 뒤 나오는 출입구를 다르게 고른다.\n정석 풀이: 들어가는 출입구는 $5$가지이고, 그 출입구를 제외한 나오는 출입구는 $4$가지이다. 따라서 $5\\times4=20$가지이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -336,7 +385,11 @@ window.questionBank = [
       "96가지"
     ],
     "answer": "③",
-    "solution": "[키포인트] 학생 2명을 하나의 묶음으로 생각한다.\n정석 풀이: 학생 2명을 한 묶음으로 보면 학생 묶음 1개와 선생님 3명, 모두 4개를 배열하는 방법은 $4!$가지이다. 학생 2명의 자리 순서는 $2!$가지이므로 전체는 $4!\\times2!=48$가지이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 학생 2명을 하나의 묶음으로 생각한다.\n정석 풀이: 학생 2명을 한 묶음으로 보면 학생 묶음 1개와 선생님 3명, 모두 4개를 배열하는 방법은 $4!$가지이다. 학생 2명의 자리 순서는 $2!$가지이므로 전체는 $4!\\times2!=48$가지이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -364,7 +417,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $A\\to P$와 $P\\to B$의 최단 경로 수를 각각 구해 곱한다.\n정석 풀이: $A$에서 $P$까지는 오른쪽으로 2번, 위로 1번 움직이므로 $\\dfrac{3!}{2!1!}=3$가지이다. $P$에서 $B$까지는 오른쪽으로 1번, 위로 2번 움직여야 한다. 그런데 $P$에서 바로 위로 가는 길은 연못 때문에 막혀 있으므로, 오른쪽으로 먼저 이동한 뒤 오른쪽 가장자리에서 위로 2번 가는 경로만 가능하다. 따라서 $P$에서 $B$까지의 최단 경로는 1가지이다. 전체 방법은 $3\\times1=3$가지이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q14.png"
+    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q14.png",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -390,7 +447,11 @@ window.questionBank = [
       "11가지"
     ],
     "answer": "②",
-    "solution": "[키포인트] 2의 배수와 3의 배수의 합에서 공통인 6의 배수를 한 번 뺀다.\n정석 풀이: $1$부터 $12$까지 2의 배수는 $6$개, 3의 배수는 $4$개, 6의 배수는 $2$개이다. 따라서 $6+4-2=8$가지이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 2의 배수와 3의 배수의 합에서 공통인 6의 배수를 한 번 뺀다.\n정석 풀이: $1$부터 $12$까지 2의 배수는 $6$개, 3의 배수는 $4$개, 6의 배수는 $2$개이다. 따라서 $6+4-2=8$가지이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -416,7 +477,11 @@ window.questionBank = [
       "15가지"
     ],
     "answer": "④",
-    "solution": "[키포인트] 전체에서 남자만 뽑는 경우를 빼면 ‘적어도 한 명은 여자’인 경우를 쉽게 센다.\n정석 풀이: 6명 중 2명을 뽑는 전체 경우는 $\\binom62=15$가지이다. 남자 3명 중 2명만 뽑는 경우는 $\\binom32=3$가지이므로 $15-3=12$가지이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 전체에서 남자만 뽑는 경우를 빼면 ‘적어도 한 명은 여자’인 경우를 쉽게 센다.\n정석 풀이: 6명 중 2명을 뽑는 전체 경우는 $\\binom62=15$가지이다. 남자 3명 중 2명만 뽑는 경우는 $\\binom32=3$가지이므로 $15-3=12$가지이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -442,7 +507,11 @@ window.questionBank = [
       "$\\dfrac35$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 합격품 수를 전체 제품 수로 나눈다.\n정석 풀이: 불량품이 $9$개이므로 합격품은 $50-9=41$개이다. 따라서 합격품일 확률은 $\\dfrac{41}{50}$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 합격품 수를 전체 제품 수로 나눈다.\n정석 풀이: 불량품이 $9$개이므로 합격품은 $50-9=41$개이다. 따라서 합격품일 확률은 $\\dfrac{41}{50}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -468,7 +537,11 @@ window.questionBank = [
       "두 눈의 합이 5의 배수일 확률은 $\\dfrac1{18}$이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 선택지의 사건을 36개의 주사위 순서쌍으로 직접 확인한다.\n정석 풀이: ① 두 눈의 합은 최대 $12$이므로 확률은 $1$이다. ② 눈의 차가 $6$인 경우는 없어 확률은 $0$이다. ③ 곱이 $9$인 경우는 $(3,3)$ 하나이므로 $\\dfrac1{36}$이다. ④ 적어도 하나가 짝수일 확률은 $1-\\dfrac{3\\times3}{36}=\\dfrac34$이다. ⑤ 합이 $5$인 경우는 $4$가지, 합이 $10$인 경우는 $3$가지이므로 실제 확률은 $\\dfrac7{36}$이다. 따라서 $\\dfrac1{18}$이라는 설명이 옳지 않다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 선택지의 사건을 36개의 주사위 순서쌍으로 직접 확인한다.\n정석 풀이: ① 두 눈의 합은 최대 $12$이므로 확률은 $1$이다. ② 눈의 차가 $6$인 경우는 없어 확률은 $0$이다. ③ 곱이 $9$인 경우는 $(3,3)$ 하나이므로 $\\dfrac1{36}$이다. ④ 적어도 하나가 짝수일 확률은 $1-\\dfrac{3\\times3}{36}=\\dfrac34$이다. ⑤ 합이 $5$인 경우는 $4$가지, 합이 $10$인 경우는 $3$가지이므로 실제 확률은 $\\dfrac7{36}$이다. 따라서 $\\dfrac1{18}$이라는 설명이 옳지 않다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -494,7 +567,11 @@ window.questionBank = [
       "$\\dfrac19$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 번의 가위바위보 결과는 독립이므로 각 확률을 곱한다.\n정석 풀이: 한 번의 가위바위보에서 비길 확률은 $\\dfrac39=\\dfrac13$이고 승부가 결정될 확률은 $\\dfrac69=\\dfrac23$이다. 따라서 첫 번째는 비기고 두 번째는 승부가 결정될 확률은 $\\dfrac13\\times\\dfrac23=\\dfrac29$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 번의 가위바위보 결과는 독립이므로 각 확률을 곱한다.\n정석 풀이: 한 번의 가위바위보에서 비길 확률은 $\\dfrac39=\\dfrac13$이고 승부가 결정될 확률은 $\\dfrac69=\\dfrac23$이다. 따라서 첫 번째는 비기고 두 번째는 승부가 결정될 확률은 $\\dfrac13\\times\\dfrac23=\\dfrac29$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -520,7 +597,11 @@ window.questionBank = [
       "$\\dfrac4{15}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 같은 색 두 개를 순서 있게 뽑는 경우를 색별로 더한다.\n정석 풀이: 전체 순서쌍은 $10\\times9=90$가지이다. 노란색은 $4\\times3=12$, 빨간색은 $3\\times2=6$, 검은색은 $3\\times2=6$가지이므로 같은 색은 $24$가지이다. 따라서 확률은 $\\dfrac{24}{90}=\\dfrac4{15}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 같은 색 두 개를 순서 있게 뽑는 경우를 색별로 더한다.\n정석 풀이: 전체 순서쌍은 $10\\times9=90$가지이다. 노란색은 $4\\times3=12$, 빨간색은 $3\\times2=6$, 검은색은 $3\\times2=6$가지이므로 같은 색은 $24$가지이다. 따라서 확률은 $\\dfrac{24}{90}=\\dfrac4{15}$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -540,7 +621,11 @@ window.questionBank = [
     "content": "[서술형 1] 실력이 같은 두 사람 $A$, $B$가 각각 $32$피스톨(화폐 단위)씩을 걸고 내기를 하였는데, 비기는 경우가 없는 주사위 던지기 게임을 승부가 날 때까지 해서 먼저 $3$번 이긴 사람이 상금 $64$피스톨을 모두 갖기로 하였다. 그런데 $A$가 $2$번, $B$가 $1$번 이긴 상황에서 부득이한 사정으로 게임을 중단하게 되었다. 이때 상금 $64$피스톨을 어떻게 나누어 가지는 것이 공평한가? (두 사람 $A$, $B$가 각각 이길 수 있는 가능성을 고려하여 상금을 나누어 가져야 한다)\n(1) $A$가 내기에서 이길 확률을 구하시오 (풀이과정 서술) [2점]\n(2) $B$가 내기에서 이길 확률을 구하시오 (풀이과정 서술) [1점]\n(3) $A$,$B$가 받는 상금을 각각 구하시오 (단답형) [2점]",
     "choices": [],
     "answer": "(1) $\\dfrac34$, (2) $\\dfrac14$, (3) $A$: $48$피스톨, $B$: $16$피스톨",
-    "solution": "[키포인트] 중단 시점 이후에 실제 승부가 끝나는 모든 경우를 확률로 나눈다.\n조건 정리: 현재 $A$는 2승, $B$는 1승이므로 $A$는 1승만 더 하면 되고 $B$는 2승을 더 해야 한다. 두 사람의 실력이 같으므로 매 판 이길 확률은 각각 $\\dfrac12$이다.\n정석 풀이: $A$가 이기는 경우는 다음 판에 바로 이기는 경우 $\\dfrac12$와, 다음 판을 $B$가 이긴 뒤 그 다음 판을 $A$가 이기는 경우 $\\dfrac12\\times\\dfrac12=\\dfrac14$이다. 따라서 $P(A)=\\dfrac12+\\dfrac14=\\dfrac34$이다. 그러므로 $P(B)=1-\\dfrac34=\\dfrac14$이다. 상금 $64$피스톨을 이 확률에 비례해 나누면 $A$는 $64\\times\\dfrac34=48$피스톨, $B$는 $64\\times\\dfrac14=16$피스톨을 받는다.\n따라서 구하는 값은 (1) $\\dfrac34$, (2) $\\dfrac14$, (3) $A$는 $48$피스톨, $B$는 $16$피스톨이다."
+    "solution": "[키포인트] 중단 시점 이후에 실제 승부가 끝나는 모든 경우를 확률로 나눈다.\n조건 정리: 현재 $A$는 2승, $B$는 1승이므로 $A$는 1승만 더 하면 되고 $B$는 2승을 더 해야 한다. 두 사람의 실력이 같으므로 매 판 이길 확률은 각각 $\\dfrac12$이다.\n정석 풀이: $A$가 이기는 경우는 다음 판에 바로 이기는 경우 $\\dfrac12$와, 다음 판을 $B$가 이긴 뒤 그 다음 판을 $A$가 이기는 경우 $\\dfrac12\\times\\dfrac12=\\dfrac14$이다. 따라서 $P(A)=\\dfrac12+\\dfrac14=\\dfrac34$이다. 그러므로 $P(B)=1-\\dfrac34=\\dfrac14$이다. 상금 $64$피스톨을 이 확률에 비례해 나누면 $A$는 $64\\times\\dfrac34=48$피스톨, $B$는 $64\\times\\dfrac14=16$피스톨을 받는다.\n따라서 구하는 값은 (1) $\\dfrac34$, (2) $\\dfrac14$, (3) $A$는 $48$피스톨, $B$는 $16$피스톨이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -560,7 +645,11 @@ window.questionBank = [
     "content": "[서술형 2] 상자 안에 $0$,$1$,$2$,$3$,$4$,$5$가 적힌 $6$장의 카드가 있다. 다음 물음에 답하시오\n(1) 서로 다른 두 장 뽑아 두자리 자연수를 만들 수 있는 경우의 수를 구하시오. (단답형) [2점]\n(2) 세 장을 뽑아 세 자리 자연수를 만들 때 짝수가 되는 경우의 수를 구하시오. (풀이과정 서술) [3점]",
     "choices": [],
     "answer": "(1) $25$, (2) $52$",
-    "solution": "[키포인트] 맨 앞자리에 $0$이 올 수 없다는 점과 짝수의 일의 자리를 나누어 센다.\n정석 풀이: (1) 십의 자리는 $1,2,3,4,5$ 중 $5$가지이고, 일의 자리는 남은 카드 $5$가지이므로 $5\\times5=25$가지이다. (2) 일의 자리가 $0$이면 백의 자리는 $5$가지, 십의 자리는 $4$가지이므로 $20$가지이다. 일의 자리가 $2$ 또는 $4$이면 일의 자리 $2$가지, 백의 자리 $4$가지, 십의 자리 $4$가지이므로 $2\\times4\\times4=32$가지이다. 따라서 $20+32=52$가지이다.\n따라서 구하는 값은 (1) $25$, (2) $52$이다."
+    "solution": "[키포인트] 맨 앞자리에 $0$이 올 수 없다는 점과 짝수의 일의 자리를 나누어 센다.\n정석 풀이: (1) 십의 자리는 $1,2,3,4,5$ 중 $5$가지이고, 일의 자리는 남은 카드 $5$가지이므로 $5\\times5=25$가지이다. (2) 일의 자리가 $0$이면 백의 자리는 $5$가지, 십의 자리는 $4$가지이므로 $20$가지이다. 일의 자리가 $2$ 또는 $4$이면 일의 자리 $2$가지, 백의 자리 $4$가지, 십의 자리 $4$가지이므로 $2\\times4\\times4=32$가지이다. 따라서 $20+32=52$가지이다.\n따라서 구하는 값은 (1) $25$, (2) $52$이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -581,7 +670,12 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $(2,0)$, (2) $(0,-1)$, (3) $(2,2)$, (4) $(4,-1)$",
     "solution": "[키포인트] 연립방정식의 해는 두 일차방정식의 그래프가 만나는 교점의 좌표이다.\n풀이 방향: 제시된 그래프에서 각 소문항에 해당하는 두 직선을 찾아 교점의 좌표를 읽는다.\n정석 풀이: (1) $x-2y=2$와 $x+2y=2$의 교점은 $(2,0)$이다. (2) $x-2y=2$와 $3x-2y=2$의 교점은 $(0,-1)$이다. (3) $3x-2y=2$와 $3x+2y=10$의 교점은 $(2,2)$이다. (4) $3x+2y=10$과 $x+2y=2$의 교점은 $(4,-1)$이다.\n따라서 구하는 순서쌍은 (1) $(2,0)$, (2) $(0,-1)$, (3) $(2,2)$, (4) $(4,-1)$이다.",
-    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q23.png"
+    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q23.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -603,6 +697,10 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $x+y=2.2$, $\\dfrac{x}{3}+\\dfrac{y}{2}=\\dfrac56$, (2) $x=1.6$, $y=0.6$",
     "solution": "[키포인트] 전체 거리와 전체 시간을 각각 하나의 식으로 만든다.\n조건 정리: 풍덕중학교에서 순천역까지의 거리를 $x\\rm\\,km$, 순천역에서 아랫장까지의 거리를 $y\\rm\\,km$라 한다.\n풀이 방향: 거리의 합은 $2.2\\rm\\,km$이고, 시간은 거리÷속력이므로 전체 시간 $50$분을 시간 단위로 바꾸어 식을 세운다.\n정석 풀이: 거리 조건에서 $x+y=2.2$이다. 시간 조건에서 $50$분은 $\\dfrac56$시간이므로 $\\dfrac{x}{3}+\\dfrac{y}{2}=\\dfrac56$이다. 둘째 식에 $6$을 곱하면 $2x+3y=5$이다. 첫째 식 $x+y=2.2$에서 $x=2.2-y$이고 이를 대입하면 $2(2.2-y)+3y=5$, 따라서 $y=0.6$이다. 그러므로 $x=2.2-0.6=1.6$이다.\n따라서 구하는 값은 풍덕중학교에서 순천역까지 $1.6\\rm\\,km$, 순천역에서 아랫장까지 $0.6\\rm\\,km$이다.",
-    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q24.png"
+    "image": "assets/images/22_풍덕중_2학기_기말_중2_기출/q24.png",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "subUnit": "연립일차방정식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

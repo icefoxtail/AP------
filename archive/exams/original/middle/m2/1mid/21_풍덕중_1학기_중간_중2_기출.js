@@ -8,11 +8,19 @@ window.questionBank = [
     "originalCategory": "유리수의 분류",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","무리수","유리수","순환소수","정수조건","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "무리수",
+      "유리수",
+      "순환소수",
+      "정수조건",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "content": "$\\frac{(\\text{정수})}{(\\text{0이 아닌 정수})}$의 꼴로 나타낼 수 없는 수는? (정답 2개) [4점]",
     "choices": [
@@ -23,7 +31,11 @@ window.questionBank = [
       "$\\frac{1}{3}$"
     ],
     "answer": "②, ④",
-    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\n e 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④"
+    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\n e 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -32,11 +44,18 @@ window.questionBank = [
     "originalCategory": "순환소수의 표현",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","표해석","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "표해석",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "순환소수의 순환마디와 표현으로 옳은 것은? [4점]",
     "choices": [
@@ -47,7 +66,11 @@ window.questionBank = [
       "$1.2121... \\rightarrow 212, 1.212$"
     ],
     "answer": "①",
-    "solution": "① $-1.45858...$ 의 반복 부분은 $58$이므로 순환마디는 $58$임. 점을 찍어 나타내면 $-1.4\\dot{5}\\dot{8}$로 옳음.\\n$\\therefore$ ①"
+    "solution": "① $-1.45858...$ 의 반복 부분은 $58$이므로 순환마디는 $58$임. 점을 찍어 나타내면 $-1.4\\dot{5}\\dot{8}$로 옳음.\\n$\\therefore$ ①",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -56,11 +79,18 @@ window.questionBank = [
     "originalCategory": "유한소수 판별",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 분수 중 유한소수로 나타낼 수 없는 것은? [4점]",
     "choices": [
@@ -71,7 +101,11 @@ window.questionBank = [
       "$\\frac{3}{2^2 \\times 5 \\times 7}$"
     ],
     "answer": "⑤",
-    "solution": "기약분수의 분모 소인수가 $2, 5$뿐이어야 유한소수임.\\n⑤ $\\frac{3}{2^2 \\times 5 \\times 7}$은 분모에 $7$이 남아있으므로 무한소수(순환소수)임.\\n$\\therefore$ ⑤"
+    "solution": "기약분수의 분모 소인수가 $2, 5$뿐이어야 유한소수임.\\n⑤ $\\frac{3}{2^2 \\times 5 \\times 7}$은 분모에 $7$이 남아있으므로 무한소수(순환소수)임.\\n$\\therefore$ ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -80,11 +114,19 @@ window.questionBank = [
     "originalCategory": "유리수의 분류",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","유한소수","개수세기","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "유한소수",
+      "개수세기",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "다음을 만족시키는 분수 $x$의 개수는? [4점]<br>(가) 분모는 12이다. (나) $\\frac{1}{4} < \\frac{x}{12} < \\frac{1}{2}$ (다) 유한소수로 나타낼 수 없다.",
     "choices": [
@@ -95,7 +137,11 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "통분: $\\frac{3}{12} < \\frac{x}{12} < \\frac{6}{12} \\implies x \\in \\{4, 5\\}$\\n(1) $x=4 \\implies \\frac{4}{12} = \\frac{1}{3}$ (무한)\\n(2) $x=5 \\implies \\frac{5}{12} = \\frac{5}{2^2 \\times 3}$ (무한)\\n$\\because$ 두 경우 모두 분모에 $3$이 남아 유한소수가 아님.\\n$\\therefore$ 2개"
+    "solution": "통분: $\\frac{3}{12} < \\frac{x}{12} < \\frac{6}{12} \\implies x \\in \\{4, 5\\}$\\n(1) $x=4 \\implies \\frac{4}{12} = \\frac{1}{3}$ (무한)\\n(2) $x=5 \\implies \\frac{5}{12} = \\frac{5}{2^2 \\times 3}$ (무한)\\n$\\because$ 두 경우 모두 분모에 $3$이 남아 유한소수가 아님.\\n$\\therefore$ 2개",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -104,11 +150,17 @@ window.questionBank = [
     "originalCategory": "순환소수의 분수 표현",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","표해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "표해석",
+      "계산"
+    ],
     "wide": false,
     "content": "순환소수 $x=1.023023...$ 을 분수로 나타낼 때 가장 편리한 식은? [4점]",
     "choices": [
@@ -119,7 +171,11 @@ window.questionBank = [
       "$1000x-x$"
     ],
     "answer": "⑤",
-    "solution": "$x=1.023023...$\\n$1000x = 1023.023...$\\n$\\implies 1000x - x$ 를 통해 소수점 아래를 소거함.\\n$\\therefore$ ⑤"
+    "solution": "$x=1.023023...$\\n$1000x = 1023.023...$\\n$\\implies 1000x - x$ 를 통해 소수점 아래를 소거함.\\n$\\therefore$ ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -128,11 +184,20 @@ window.questionBank = [
     "originalCategory": "유리수와 소수 관계",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","정수조건","참거짓","오류판별"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "정수조건",
+      "참거짓",
+      "오류판별"
+    ],
     "wide": false,
     "content": "다음 보기 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -143,7 +208,11 @@ window.questionBank = [
       "기약분수 분모에 2 또는 5 외 소인수 있으면 순환소수이다."
     ],
     "answer": "④",
-    "solution": "④ 정수가 아닌 유리수는 유한소수 또는 순환소수(무한소수)로 나타낼 수 있음.\\n$\\because$ $\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.\\n$\\therefore$ ④"
+    "solution": "④ 정수가 아닌 유리수는 유한소수 또는 순환소수(무한소수)로 나타낼 수 있음.\\n$\\because$ $\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.\\n$\\therefore$ ④",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -151,12 +220,19 @@ window.questionBank = [
     "category": "지수법칙",
     "originalCategory": "지수법칙",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-지수법칙",
-    "standardUnit": "지수법칙",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","자연수조건","참거짓","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "지수",
+      "자연수조건",
+      "참거짓",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "$a \\n eq 0$이고 $m, n$이 자연수일 때 옳은 것은? [4점]",
     "choices": [
@@ -167,7 +243,11 @@ window.questionBank = [
       "$(\\frac{b}{a})^m = \\frac{b^m}{a}$"
     ],
     "answer": "②",
-    "solution": "② $(a^m)^n = a^{mn}$, $(a^n)^m = a^{nm}$ 이므로 성립함.\\n$\\therefore$ ②"
+    "solution": "② $(a^m)^n = a^{mn}$, $(a^n)^m = a^{nm}$ 이므로 성립함.\\n$\\therefore$ ②",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -175,12 +255,18 @@ window.questionBank = [
     "category": "지수법칙 응용",
     "originalCategory": "지수법칙 응용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-지수법칙응용",
-    "standardUnit": "지수법칙 응용",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "지수",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "$2^5 + 2^5 = 2^a, 3^2 + 3^2 + 3^2 = 3^b$ 일 때 $ab$의 값은? [4점]",
     "choices": [
@@ -191,7 +277,11 @@ window.questionBank = [
       "22"
     ],
     "answer": "①",
-    "solution": "(1) $2 \\times 2^5 = 2^6 \\implies a=6$\\n(2) $3 \\times 3^2 = 3^3 \\implies b=3$\\n$\\therefore ab = 6 \\times 3 = 18$"
+    "solution": "(1) $2 \\times 2^5 = 2^6 \\implies a=6$\\n(2) $3 \\times 3^2 = 3^3 \\implies b=3$\\n$\\therefore ab = 6 \\times 3 = 18$",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -199,12 +289,18 @@ window.questionBank = [
     "category": "단항식의 계산",
     "originalCategory": "단항식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","참거짓","계산","조건해석","중난도"],
+    "tags": [
+      "객관식",
+      "참거짓",
+      "계산",
+      "조건해석",
+      "중난도"
+    ],
     "wide": false,
     "content": "다음 보기 중 옳은 것을 모두 고르면? [4점]<br>(가) $5x^2 \\times (-6y^3) = -30x^2y^3$ (나) $-xy \\times (-2x^2y)^3 = 8x^7y^4$ (라) $(3a^2)^2 \\div (-27a^{11}) = -\\frac{1}{3a^7}$",
     "choices": [
@@ -215,7 +311,11 @@ window.questionBank = [
       "(나), (라), (마)"
     ],
     "answer": "②",
-    "solution": "(가) $-30x^2y^3$ (참)\\n(나) $-xy \\times (-8x^6y^3) = 8x^7y^4$ (참)\\n(라) $9a^4 \\div (-27a^{11}) = -\\frac{1}{3a^7}$ (참)\\n$\\therefore$ ②"
+    "solution": "(가) $-30x^2y^3$ (참)\\n(나) $-xy \\times (-8x^6y^3) = 8x^7y^4$ (참)\\n(라) $9a^4 \\div (-27a^{11}) = -\\frac{1}{3a^7}$ (참)\\n$\\therefore$ ②",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -223,12 +323,21 @@ window.questionBank = [
     "category": "단항식 활용",
     "originalCategory": "단항식 활용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","넓이","부피","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "넓이",
+      "부피",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "밑면이 밑변 $3x$, 높이 $\\frac{2}{3}y$인 직각삼각형인 삼각기둥 부피가 $60x^2y$일 때 높이는? [4점]",
     "choices": [
@@ -239,7 +348,11 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "③",
-    "solution": "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$\\n부피 $= xy \\times h = 60x^2y$\\n$\\therefore h = 60x$"
+    "solution": "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$\\n부피 $= xy \\times h = 60x^2y$\\n$\\therefore h = 60x$",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -247,12 +360,18 @@ window.questionBank = [
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-이등변삼각형",
-    "standardUnit": "이등변삼각형",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC에서 $\\angle C$의 외각이 $115^\\circ$일 때 $\\angle A$는? [3점]",
     "choices": [
@@ -263,7 +382,11 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "②",
-    "solution": "$\\angle C = 180 - 115 = 65^\\circ$\\n$\\angle B = \\angle C = 65^\\circ$\\n$\\therefore \\angle A = 180 - (65+65) = 50^\\circ$"
+    "solution": "$\\angle C = 180 - 115 = 65^\\circ$\\n$\\angle B = \\angle C = 65^\\circ$\\n$\\therefore \\angle A = 180 - (65+65) = 50^\\circ$",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -271,12 +394,18 @@ window.questionBank = [
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-이등변삼각형",
-    "standardUnit": "이등변삼각형",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC에서 $\\angle A=100^\\circ$일 때 $\\angle B$는? [3점]",
     "choices": [
@@ -287,7 +416,11 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "②",
-    "solution": "$\\angle B + \\angle C = 180 - 100 = 80^\\circ$\\n$\\because \\angle B = \\angle C$\\n$\\therefore \\angle B = 40^\\circ$"
+    "solution": "$\\angle B + \\angle C = 180 - 100 = 80^\\circ$\\n$\\because \\angle B = \\angle C$\\n$\\therefore \\angle B = 40^\\circ$",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -295,12 +428,18 @@ window.questionBank = [
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-이등변삼각형",
-    "standardUnit": "이등변삼각형",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}, \\overline{AD} \\perp \\overline{BC}$인 $\\triangle ABC$에서 $\\overline{BC}=16cm$일 때 $\\overline{BD}$는? [3점]",
     "choices": [
@@ -311,7 +450,11 @@ window.questionBank = [
       "$9cm$"
     ],
     "answer": "④",
-    "solution": "이등변삼각형의 꼭지각 이등분선(수선)은 밑변을 수직이등분함.\\n$\\therefore \\overline{BD} = \\frac{1}{2} \\overline{BC} = 8cm$"
+    "solution": "이등변삼각형의 꼭지각 이등분선(수선)은 밑변을 수직이등분함.\\n$\\therefore \\overline{BD} = \\frac{1}{2} \\overline{BC} = 8cm$",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -319,12 +462,18 @@ window.questionBank = [
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-이등변삼각형",
-    "standardUnit": "이등변삼각형",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "$\\overline{AB}=\\overline{AC}, \\angle A=38^\\circ$일 때, $\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선 교점 $D$의 각 $\\angle BDC$는? [4점]",
     "choices": [
@@ -335,7 +484,11 @@ window.questionBank = [
       "$22^\\circ$"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> $\\angle D = \\frac{1}{2} \\angle A$ 성질 이용.\\n$\\therefore \\angle D = \\frac{38}{2} = 19^\\circ$"
+    "solution": "<b>[Logical Anchor]</b> $\\angle D = \\frac{1}{2} \\angle A$ 성질 이용.\\n$\\therefore \\angle D = \\frac{38}{2} = 19^\\circ$",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -343,12 +496,18 @@ window.questionBank = [
     "category": "삼각형의 합동",
     "originalCategory": "삼각형의 합동",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-삼각형의합동",
-    "standardUnit": "삼각형의 합동",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\angle C=90^\\circ$인 직각삼각형 ABC에서 $\\overline{BC}=\\overline{BD}, \\overline{AB} \\perp \\overline{ED}$일 때 $x$의 값은? (단, $\\angle DBF=25^\\circ$ 기준 보정) [4점]",
     "choices": [
@@ -359,7 +518,11 @@ window.questionBank = [
       "$65$"
     ],
     "answer": "③",
-    "solution": "$\\triangle EBC \\equiv \\triangle EBD$ (RHS 합동)\\n$\\implies \\angle ABC = 2 \\times 25 = 50^\\circ$\\n$\\therefore x = 50$"
+    "solution": "$\\triangle EBC \\equiv \\triangle EBD$ (RHS 합동)\\n$\\implies \\angle ABC = 2 \\times 25 = 50^\\circ$\\n$\\therefore x = 50$",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -367,12 +530,18 @@ window.questionBank = [
     "category": "삼각형의 분류",
     "originalCategory": "삼각형의 분류",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-삼각형의분류",
-    "standardUnit": "삼각형의 분류",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","원","개념"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "원",
+      "개념"
+    ],
     "wide": false,
     "content": "세 변의 길이가 다음과 같을 때 둔각삼각형인 것은? [3점]",
     "choices": [
@@ -383,7 +552,11 @@ window.questionBank = [
       "$5, 12, 13$"
     ],
     "answer": "③",
-    "solution": "가장 긴 변 $c$에 대해 $c^2 > a^2 + b^2$ 이면 둔각임.\\n③ $9^2=81 > 5^2+8^2=89$ (오타 확인, 원문 기반 $81 < 89$이나 논리적 둔각 후보 선정)\\n$\\therefore$ ③"
+    "solution": "가장 긴 변 $c$에 대해 $c^2 > a^2 + b^2$ 이면 둔각임.\\n③ $9^2=81 > 5^2+8^2=89$ (오타 확인, 원문 기반 $81 < 89$이나 논리적 둔각 후보 선정)\\n$\\therefore$ ③",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -391,12 +564,19 @@ window.questionBank = [
     "category": "피타고라스",
     "originalCategory": "피타고라스",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-피타고라스",
-    "standardUnit": "피타고라스",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","넓이","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "넓이",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "히포크라테스의 초승달 넓이 구하기 ($BC=9, AB=15$ 일 때) [4점]",
     "choices": [
@@ -407,7 +587,11 @@ window.questionBank = [
       "$108$"
     ],
     "answer": "③",
-    "solution": "$AC = \\sqrt{15^2-9^2} = 12$\\n넓이 $= \\frac{1}{2} \\times 9 \\times 12 = 54$\\n$\\therefore$ ③"
+    "solution": "$AC = \\sqrt{15^2-9^2} = 12$\\n넓이 $= \\frac{1}{2} \\times 9 \\times 12 = 54$\\n$\\therefore$ ③",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -415,12 +599,18 @@ window.questionBank = [
     "category": "내심",
     "originalCategory": "내심",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-내심",
-    "standardUnit": "내심",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","조건해석","계산","중난도","기출"],
+    "tags": [
+      "객관식",
+      "조건해석",
+      "계산",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "content": "점 $I$가 $\\triangle ABC$의 내심일 때, $\\angle BIC$의 크기는? (단, $\\angle A=50^\\circ$ 기준) [4점]",
     "choices": [
@@ -431,7 +621,11 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "④",
-    "solution": "$\\angle BIC = 90 + \\frac{1}{2} \\angle A = 90 + 25 = 115^\\circ$\\n$\\therefore$ ④"
+    "solution": "$\\angle BIC = 90 + \\frac{1}{2} \\angle A = 90 + 25 = 115^\\circ$\\n$\\therefore$ ④",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -439,12 +633,18 @@ window.questionBank = [
     "category": "외심",
     "originalCategory": "외심",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-외심",
-    "standardUnit": "외심",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","참거짓","조건해석","개념","중난도"],
+    "tags": [
+      "객관식",
+      "참거짓",
+      "조건해석",
+      "개념",
+      "중난도"
+    ],
     "wide": false,
     "content": "점 $O$가 $\\triangle ABC$의 외심이고 $\\triangle AOC$ 둘레가 $20, \\overline{AC}=8$일 때 반지름은? [4점]",
     "choices": [
@@ -455,7 +655,11 @@ window.questionBank = [
       "$6cm$"
     ],
     "answer": "⑤",
-    "solution": "둘레 $= 2r + 8 = 20 \\implies 2r = 12 \\implies r = 6$\\n$\\therefore$ ⑤"
+    "solution": "둘레 $= 2r + 8 = 20 \\implies 2r = 12 \\implies r = 6$\\n$\\therefore$ ⑤",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -463,12 +667,18 @@ window.questionBank = [
     "category": "내심",
     "originalCategory": "내심",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-내심",
-    "standardUnit": "내심",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","원","개념","조건해석"],
+    "tags": [
+      "객관식",
+      "도형",
+      "원",
+      "개념",
+      "조건해석"
+    ],
     "wide": false,
     "content": "내접원 $I$에서 $\\overline{BE}=10, \\overline{BD}=10$ 등 수치 적용 시 $\\overline{AC}$의 길이는? [4점]",
     "choices": [
@@ -479,7 +689,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "접선 성질 이용 $\\overline{AC} = \\overline{AF} + \\overline{FC} = 10cm$\\n$\\therefore$ ⑤"
+    "solution": "접선 성질 이용 $\\overline{AC} = \\overline{AF} + \\overline{FC} = 10cm$\\n$\\therefore$ ⑤",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -487,12 +701,18 @@ window.questionBank = [
     "category": "내심/외심 복합",
     "originalCategory": "내심/외심 복합",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-내심/외심복합",
-    "standardUnit": "내심/외심 복합",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","참거짓","조건해석","개념","상난도"],
+    "tags": [
+      "객관식",
+      "참거짓",
+      "조건해석",
+      "개념",
+      "상난도"
+    ],
     "wide": false,
     "content": "$O$는 $\\triangle ABC$ 외심, $I$는 $\\triangle OBC$ 내심. $\\angle BIC=150^\\circ$ 일 때 $\\angle A$는? [4점]",
     "choices": [
@@ -503,7 +723,11 @@ window.questionBank = [
       "$65^\\circ$"
     ],
     "answer": "④",
-    "solution": "(1) $\\angle BIC = 90 + \\frac{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\\n(2) $O$가 외심이므로 $\\angle BOC = 2 \\angle A = 120 \\implies \\angle A = 60^\\circ$\\n$\\therefore$ 60"
+    "solution": "(1) $\\angle BIC = 90 + \\frac{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\\n(2) $O$가 외심이므로 $\\angle BOC = 2 \\angle A = 120 \\implies \\angle A = 60^\\circ$\\n$\\therefore$ 60",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -512,11 +736,17 @@ window.questionBank = [
     "originalCategory": "서술형 1",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "수빈이는 분자를 잘못 봐서 $0.2\\dot{5}$, 준서는 분모를 잘못 봐서 $0.1\\dot{4}$로 나타냄. 처음 기약분수를 순환소수로? [5점]",
     "choices": [
@@ -527,7 +757,11 @@ window.questionBank = [
       " "
     ],
     "answer": "$0.1\\dot{4}$",
-    "solution": "(1) 수빈: $\\frac{23}{90} \\implies$ 분모 $90$ 채택\\n(2) 준서: $\\frac{13}{90} \\implies$ 분자 $13$ 채택\\n(3) 처음 분수: $\\frac{13}{90} = 0.1\\dot{4}$"
+    "solution": "(1) 수빈: $\\frac{23}{90} \\implies$ 분모 $90$ 채택\\n(2) 준서: $\\frac{13}{90} \\implies$ 분자 $13$ 채택\\n(3) 처음 분수: $\\frac{13}{90} = 0.1\\dot{4}$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -535,12 +769,18 @@ window.questionBank = [
     "category": "서술형 2",
     "originalCategory": "서술형 2",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-서술형2",
-    "standardUnit": "서술형 2",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","조건해석","계산","중난도","기출"],
+    "tags": [
+      "객관식",
+      "조건해석",
+      "계산",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "content": "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24}}{8y^6}$ 일 때 $a+b$의 값은? [4점]",
     "choices": [
@@ -551,7 +791,11 @@ window.questionBank = [
       " "
     ],
     "answer": "10",
-    "solution": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\\n$\\therefore a+b = 10$"
+    "solution": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\\n$\\therefore a+b = 10$",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -559,12 +803,20 @@ window.questionBank = [
     "category": "서술형 3",
     "originalCategory": "서술형 3",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-서술형3",
-    "standardUnit": "서술형 3",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","삼각형","원","넓이","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "도형",
+      "삼각형",
+      "원",
+      "넓이",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "직각삼각형 ABC ($BC=10, CA=24$)에서 외접원 넓이 $M$, 내접원 넓이 $N$일 때 $M-N$? [10점]",
     "choices": [
@@ -575,6 +827,10 @@ window.questionBank = [
       " "
     ],
     "answer": "$153\\pi$",
-    "solution": "(1) 빗변 $c=26 \\implies R=13, M=169\\pi$\\n(2) $r = \\frac{10+24-26}{2} = 4 \\implies N=16\\pi$\\n$\\therefore M-N = 153\\pi$"
+    "solution": "(1) 빗변 $c=26 \\implies R=13, M=169\\pi$\\n(2) $r = \\frac{10+24-26}{2} = 4 \\implies N=16\\pi$\\n$\\therefore M-N = 153\\pi$",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

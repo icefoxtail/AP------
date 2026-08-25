@@ -15,14 +15,24 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "solution": "ㄱ. $0$의 제곱근은 $0$으로 $1$개이다. (O)\\nㄴ. 제곱근 $7 = \\sqrt{7}$이다. (O)\\nㄷ. 음수의 제곱근은 존재하지 않으며, $0$의 제곱근은 $1$개이다. (X)\\nㄹ. $(-2)^2 = 4$이므로 $-2$는 $4$의 음의 제곱근이다. (O)\\nㅁ. $16$의 제곱근은 $\\pm4$이다. (X)\\n$\\implies$ ㄱ, ㄴ, ㄹ\\n$\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -39,14 +49,24 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "solution": "$4 = \\sqrt{16}$이므로 $4 < \\sqrt{17}$\\n1) $4+\\sqrt{17} > 0 \\implies \\sqrt{(4+\\sqrt{17})^2} = 4+\\sqrt{17}$\\n2) $4-\\sqrt{17} < 0 \\implies \\sqrt{(4-\\sqrt{17})^2} = -(4-\\sqrt{17}) = -4+\\sqrt{17}$\\n$\\implies (4+\\sqrt{17}) - (-4+\\sqrt{17}) = 8$\\n$\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -63,14 +83,27 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","도형","사각형","원","표해석","수직선"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "도형",
+      "사각형",
+      "원",
+      "표해석",
+      "수직선"
+    ],
     "wide": false,
     "solution": "정사각형 한 변의 길이가 $2$이므로 대각선 $AC = \\sqrt{2^2+2^2} = 2\\sqrt{2}$\\n점 $C$의 좌표는 $2$이므로 $P(x) = 2 - 2\\sqrt{2}$\\n점 $B$의 좌표는 $0$이고 $BQ = AC = 2\\sqrt{2}$이므로 $Q(y) = 2\\sqrt{2}$\\n거리는 $y-x = 2\\sqrt{2} - (2-2\\sqrt{2}) = 4\\sqrt{2}-2$\\n(※ 원문 보기 데이터와 계산 결과의 차이가 있으나 논리적 최선안 선택)\\n$\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -87,14 +120,27 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","순환소수","수직선","참거짓"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "순환소수",
+      "수직선",
+      "참거짓"
+    ],
     "wide": false,
     "solution": "① 수직선은 실수로 완전히 채울 수 있다.\\n② 순환소수는 분수로 나타낼 수 있으므로 유리수이다.\\n③ 무리수의 정의이다.\\n④ 두 실수 사이에는 무수히 많은 무리수가 존재한다.\\n⑤ 무한소수 중 순환소수는 유리수이다.\\n$\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -111,14 +157,25 @@ window.questionBank = [
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","분모유리화","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "분모유리화",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "유리화: $(2-\\sqrt{2}) - (3\\sqrt{2}+3) = -1-4\\sqrt{2}$\\n$a=-1, b=-4 \\implies a+b=-5$\\n$\\therefore$ ①",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -135,14 +192,25 @@ window.questionBank = [
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계수비교","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계수비교",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$\\sqrt{96} = \\sqrt{16 \\times 6} = 4\\sqrt{2}\\sqrt{3} = 4ab \\implies \\square_1 = 4$\\n$\\sqrt{0.54} = \\sqrt{\\frac{54}{100}} = \\frac{3\\sqrt{6}}{10} = \\frac{3\\sqrt{2}\\sqrt{3}}{10} = \\frac{3}{10}ab \\implies \\square_2 = \\frac{3}{10}$\\n$\\implies \\square_1 \\times \\square_2 = 4 \\times \\frac{3}{10} = \\frac{6}{5}$\\n$\\therefore$ ①",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -159,14 +227,24 @@ window.questionBank = [
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$7\\sqrt{2} + 4\\sqrt{5} + 3\\sqrt{5} - 3\\sqrt{2} = 4\\sqrt{2} + 7\\sqrt{5}$\\n$a=4, b=7 \\implies a-b = -3$\\n$\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -183,14 +261,24 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "solution": "③ $0.6 = \\sqrt{0.36} < \\sqrt{0.6}$ (O)\\n⑤ $\\frac{\\sqrt{3}}{3} \\approx 0.577 < 0.666$ (O)\\n$\\therefore$ ③, ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -207,14 +295,25 @@ window.questionBank = [
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "② $\\sqrt{300} = 10\\sqrt{3} = 17.32$ (O)\\n$\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -231,14 +330,26 @@ window.questionBank = [
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "합 조건: $a-3=0 \\implies a=3$\\n곱 조건: $(2+3\\sqrt{3})(b-3\\sqrt{3})$에서 무리수 부분 $3b-6=0 \\implies b=2$\\n$a-b = 1$\\n$\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -255,14 +366,26 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","정수부분","소수부분","정수조건","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "정수부분",
+      "소수부분",
+      "정수조건",
+      "계산"
+    ],
     "wide": false,
     "solution": "$[\\sqrt{20}] = 4$\\n$\\langle\\sqrt{8}\\rangle = 2\\sqrt{2}-2$\\n$\\implies 4 - (2\\sqrt{2}-2)\\sqrt{2} = 4 - (4-2\\sqrt{2}) = 2\\sqrt{2}$\\n$\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -279,14 +402,24 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$\\sqrt{112} = 4\\sqrt{7} \\implies 4\\sqrt{7} : x = \\sqrt{7} : 1 \\implies x=4$\\n$\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -302,15 +435,25 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","계산","조건해석","중난도"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "계산",
+      "조건해석",
+      "중난도"
+    ],
     "wide": false,
     "solution": "$ab(x-y) - b(x-y) = b(x-y)(a-1)$\\n$\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -326,15 +469,25 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","계산","조건해석","중난도"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "계산",
+      "조건해석",
+      "중난도"
+    ],
     "wide": false,
     "solution": "$(4x^2+y^2)(4x^2-y^2) = (4x^2+y^2)(2x+y)(2x-y)$\\n$\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -350,15 +503,26 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","인수분해","완전제곱식","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "인수분해",
+      "완전제곱식",
+      "계산"
+    ],
     "wide": false,
     "solution": "$a = \\pm 2 \\sqrt{16 \\cdot 9} = \\pm 24$\\n$\\therefore$ ①, ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -374,15 +538,27 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","도형","원","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "도형",
+      "원",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "solution": "② $(x+1)(3x-1) = 3x^2+2x-1$ (옳음)\\n(※ 원문 상의 오류 점검 필요)\\n$\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -398,15 +574,25 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","조건해석","계산","중난도"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "조건해석",
+      "계산",
+      "중난도"
+    ],
     "wide": false,
     "solution": "$A = (27+3)^2 = 900$\\n$B = 9(8.5+1.5)(8.5-1.5) = 630$\\n$900-630=270$\\n$\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -422,15 +608,25 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","오류판별","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "오류판별",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "solution": "$(x^2-3x-4)(x^2-3x+2) = (x-4)(x+1)(x-2)(x-1)$\\n$\\therefore$ ④ ($x+2$)",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -447,14 +643,27 @@ window.questionBank = [
     "originalCategory": "다항식의 곱셈과 인수분해",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈",
+    "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","연립방정식","도형","원","넓이","조건해석"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "연립방정식",
+      "도형",
+      "원",
+      "넓이",
+      "조건해석"
+    ],
     "wide": false,
     "solution": "$D$가 $\\overline{BC}$ 중점이므로 연립방정식 수립 결과 $a=6$\\n$\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -470,15 +679,25 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","대입","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$x=1$ 대입: $8-13+a=0 \\implies a=5$\\n$\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -489,14 +708,24 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "서술형",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "solution": "(1) $a=-\\sqrt{7}, b=3$\\n(2) $\\sqrt{63} = 3\\sqrt{7} = b \\times (-a) = -ab$",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -507,14 +736,24 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","제곱근","근호","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$3(2-\\sqrt{10}) + (10+\\sqrt{10}) = 16-2\\sqrt{10}$",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -524,14 +763,26 @@ window.questionBank = [
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","인수분해","도형","사각형","넓이","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "인수분해",
+      "도형",
+      "사각형",
+      "넓이",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "(1) $x^2+5x+6 = (x+2)(x+3)$\\n(2) 둘레 $= 2(x+2+x+3) = 4x+10$",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

@@ -31,7 +31,11 @@ window.questionBank = [
       "$0.\\dot{3}$은 유한소수이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 보기의 성질을 분석하여 옳은 것을 찾는다.\\n① $0.\\dot{3} = 0.333...$ 이므로 $0.3$보다 크다. 따라서 틀림.\\n② $\\frac{1}{6} = 0.1666...$ 이므로 유한소수로 나타낼 수 없고 순환소수로 나타낼 수 있다. 따라서 옳음.\\n③ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. 따라서 틀림.\\n④ 기약분수의 분모 소인수에 $2$나 $5$ 이외의 수가 있으면 순환소수가 된다. 따라서 틀림.\\n⑤ 순환소수는 소수점 아래의 숫자가 무한히 반복되는 무한소수이다. 따라서 틀림.\\n$\\therefore$ 정답은 ②이다."
+    "solution": "[키포인트] 각 보기의 성질을 분석하여 옳은 것을 찾는다.\\n① $0.\\dot{3} = 0.333...$ 이므로 $0.3$보다 크다. 따라서 틀림.\\n② $\\frac{1}{6} = 0.1666...$ 이므로 유한소수로 나타낼 수 없고 순환소수로 나타낼 수 있다. 따라서 옳음.\\n③ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. 따라서 틀림.\\n④ 기약분수의 분모 소인수에 $2$나 $5$ 이외의 수가 있으면 순환소수가 된다. 따라서 틀림.\\n⑤ 순환소수는 소수점 아래의 숫자가 무한히 반복되는 무한소수이다. 따라서 틀림.\\n$\\therefore$ 정답은 ②이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -64,7 +68,11 @@ window.questionBank = [
       "(마) $0.75$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 분모를 $10$의 거듭제곱으로 만들기 위해 분모와 분자에 적절한 수를 곱한다.\\n$\\frac{3}{40} = \\frac{3}{2^3 \\times 5} = \\frac{3 \\times 5^2}{2^3 \\times 5 \\times 5^2} = \\frac{75}{2^3 \\times 5^3} = \\frac{75}{10^3} = 0.075$\\n따라서 (마)는 $0.075$여야 하므로 ⑤번이 옳지 않다."
+    "solution": "[키포인트] 분모를 $10$의 거듭제곱으로 만들기 위해 분모와 분자에 적절한 수를 곱한다.\\n$\\frac{3}{40} = \\frac{3}{2^3 \\times 5} = \\frac{3 \\times 5^2}{2^3 \\times 5 \\times 5^2} = \\frac{75}{2^3 \\times 5^3} = \\frac{75}{10^3} = 0.075$\\n따라서 (마)는 $0.075$여야 하므로 ⑤번이 옳지 않다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -94,7 +102,11 @@ window.questionBank = [
       "$\\frac{33}{3^2 \\times 5 \\times 11}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 유한소수이다.\\n① $\\frac{1}{15} = \\frac{1}{3 \\times 5}$ (순환소수)\\n② $\\frac{15}{54} = \\frac{5}{18} = \\frac{5}{2 \\times 3^2}$ (순환소수)\\n③ $\\frac{5}{2^3 \\times 7}$ (순환소수)\\n④ $\\frac{14}{2^3 \\times 5 \\times 7} = \\frac{2}{2^3 \\times 5} = \\frac{1}{2^2 \\times 5}$ (유한소수)\\n⑤ $\\frac{33}{3^2 \\times 5 \\times 11} = \\frac{3}{3^2 \\times 5} = \\frac{1}{3 \\times 5}$ (순환소수)\\n$\\therefore$ 정답은 ④이다."
+    "solution": "[키포인트] 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 유한소수이다.\\n① $\\frac{1}{15} = \\frac{1}{3 \\times 5}$ (순환소수)\\n② $\\frac{15}{54} = \\frac{5}{18} = \\frac{5}{2 \\times 3^2}$ (순환소수)\\n③ $\\frac{5}{2^3 \\times 7}$ (순환소수)\\n④ $\\frac{14}{2^3 \\times 5 \\times 7} = \\frac{2}{2^3 \\times 5} = \\frac{1}{2^2 \\times 5}$ (유한소수)\\n⑤ $\\frac{33}{3^2 \\times 5 \\times 11} = \\frac{3}{3^2 \\times 5} = \\frac{1}{3 \\times 5}$ (순환소수)\\n$\\therefore$ 정답은 ④이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -124,7 +136,11 @@ window.questionBank = [
       "$3.123123... = 3.\\dot{1}2\\dot{3}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 순환마디의 시작과 끝점 위에만 순환점을 찍는다.\\n① $0.01616...$의 순환마디는 $16$이므로 $0.0\\dot{1}\\dot{6}$으로 나타내야 한다.\\n② $24.734734...$의 순환마디는 $734$이므로 $24.\\dot{7}3\\dot{4}$로 나타내야 한다.\\n③ $8.4747...$의 순환마디는 $47$이므로 $8.\\dot{4}\\dot{7}$로 나타내야 한다.\\n④ $8.0808...$의 순환마디는 $08$이므로 $8.\\dot{0}\\dot{8}$로 나타내야 한다.\\n⑤ $3.123123...$의 순환마디는 $123$이므로 $3.\\dot{1}2\\dot{3}$으로 나타낸 것은 옳다.\\n$\\therefore$ 정답은 ⑤이다."
+    "solution": "[키포인트] 순환마디의 시작과 끝점 위에만 순환점을 찍는다.\\n① $0.01616...$의 순환마디는 $16$이므로 $0.0\\dot{1}\\dot{6}$으로 나타내야 한다.\\n② $24.734734...$의 순환마디는 $734$이므로 $24.\\dot{7}3\\dot{4}$로 나타내야 한다.\\n③ $8.4747...$의 순환마디는 $47$이므로 $8.\\dot{4}\\dot{7}$로 나타내야 한다.\\n④ $8.0808...$의 순환마디는 $08$이므로 $8.\\dot{0}\\dot{8}$로 나타내야 한다.\\n⑤ $3.123123...$의 순환마디는 $123$이므로 $3.\\dot{1}2\\dot{3}$으로 나타낸 것은 옳다.\\n$\\therefore$ 정답은 ⑤이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -155,7 +171,11 @@ window.questionBank = [
       "(마) $\\frac{131}{99}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소수점 아래 순환마디의 위치를 일치시켜 소수 부분을 제거한다.\\n$x = 1.32323...$\\n$1000x = 1323.2323...$\\n$10x = 13.2323...$\\n두 식을 빼면 $1000x - 10x = 1323.2323... - 13.2323...$\\n$990x = 1310$\\n$x=\\frac{1310}{990}=\\frac{131}{99}$\\n따라서 (다)는 $990$이어야 하므로 ③번이 옳지 않다."
+    "solution": "[키포인트] 소수점 아래 순환마디의 위치를 일치시켜 소수 부분을 제거한다.\\n$x = 1.32323...$\\n$1000x = 1323.2323...$\\n$10x = 13.2323...$\\n두 식을 빼면 $1000x - 10x = 1323.2323... - 13.2323...$\\n$990x = 1310$\\n$x=\\frac{1310}{990}=\\frac{131}{99}$\\n따라서 (다)는 $990$이어야 하므로 ③번이 옳지 않다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -186,7 +206,11 @@ window.questionBank = [
       "$42$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 기약분수로 정리한 후 분모의 소인수에 $2$나 $5$ 이외의 수가 존재해야 한다.\\n$\\frac{63}{9 \\times 2 \\times x} = \\frac{7}{2 \\times x}$\\n순환소수가 되기 위해서는 분모에 $2, 5$ 이외의 소인수가 남아야 한다.\\n- $x=3$: $\\frac{7}{2 \\times 3}$ (순환소수)\\n- $x=6$: $\\frac{7}{2^2 \\times 3}$ (순환소수)\\n- $x=7$: $\\frac{7}{2 \\times 7} = \\frac{1}{2}$ (유한소수)\\n- $x=9$: $\\frac{7}{2 \\times 3^2}$ (순환소수)\\n그 외 $x=1, 2, 4, 5, 8$은 유한소수가 된다.\\n가능한 $x$의 합은 $3 + 6 + 9 = 18$이다.\\n$\\therefore$ 정답은 ①이다."
+    "solution": "[키포인트] 기약분수로 정리한 후 분모의 소인수에 $2$나 $5$ 이외의 수가 존재해야 한다.\\n$\\frac{63}{9 \\times 2 \\times x} = \\frac{7}{2 \\times x}$\\n순환소수가 되기 위해서는 분모에 $2, 5$ 이외의 소인수가 남아야 한다.\\n- $x=3$: $\\frac{7}{2 \\times 3}$ (순환소수)\\n- $x=6$: $\\frac{7}{2^2 \\times 3}$ (순환소수)\\n- $x=7$: $\\frac{7}{2 \\times 7} = \\frac{1}{2}$ (유한소수)\\n- $x=9$: $\\frac{7}{2 \\times 3^2}$ (순환소수)\\n그 외 $x=1, 2, 4, 5, 8$은 유한소수가 된다.\\n가능한 $x$의 합은 $3 + 6 + 9 = 18$이다.\\n$\\therefore$ 정답은 ①이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -216,7 +240,11 @@ window.questionBank = [
       "$\\frac{16}{99}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 잘못 보지 않은 나머지 부분을 이용하여 처음의 기약분수를 구한다.\\n민주는 분자를 잘못 보았으므로 분모는 정확하다.\\n$1.0\\dot{8}=1.0888...=\\frac{98}{90}=\\frac{49}{45}$이므로 처음 분수의 분모는 $45$이다.\\n현주는 분모를 잘못 보았으므로 분자는 정확하다.\\n$0.1\\dot{7}=0.1777...=\\frac{16}{90}=\\frac{8}{45}$이므로 처음 분수의 분자는 $8$이다.\\n따라서 처음의 기약분수는 $\\frac{8}{45}$이다.\\n$\\therefore$ 정답은 ②이다."
+    "solution": "[키포인트] 잘못 보지 않은 나머지 부분을 이용하여 처음의 기약분수를 구한다.\\n민주는 분자를 잘못 보았으므로 분모는 정확하다.\\n$1.0\\dot{8}=1.0888...=\\frac{98}{90}=\\frac{49}{45}$이므로 처음 분수의 분모는 $45$이다.\\n현주는 분모를 잘못 보았으므로 분자는 정확하다.\\n$0.1\\dot{7}=0.1777...=\\frac{16}{90}=\\frac{8}{45}$이므로 처음 분수의 분자는 $8$이다.\\n따라서 처음의 기약분수는 $\\frac{8}{45}$이다.\\n$\\therefore$ 정답은 ②이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -246,7 +274,11 @@ window.questionBank = [
       "$(-\\frac{a^2}{b})^2 = \\frac{a^4}{b^2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 지수법칙의 합, 차, 곱, 분배 법칙을 정확히 적용한다.\\n① $a^7 \\times a^2 = a^{7+2} = a^9$\\n② $a^9 \\div a^3 = a^{9-3} = a^6$\\n③ $(a^4)^3 = a^{4 \\times 3} = a^{12}$\\n④ $(2a^2b)^3 = 2^3 a^6 b^3 = 8a^6b^3$\\n⑤ $(-\\frac{a^2}{b})^2 = \\frac{(-1)^2 (a^2)^2}{b^2} = \\frac{a^4}{b^2}$ (옳음)\\n$\\therefore$ 정답은 ⑤이다."
+    "solution": "[키포인트] 지수법칙의 합, 차, 곱, 분배 법칙을 정확히 적용한다.\\n① $a^7 \\times a^2 = a^{7+2} = a^9$\\n② $a^9 \\div a^3 = a^{9-3} = a^6$\\n③ $(a^4)^3 = a^{4 \\times 3} = a^{12}$\\n④ $(2a^2b)^3 = 2^3 a^6 b^3 = 8a^6b^3$\\n⑤ $(-\\frac{a^2}{b})^2 = \\frac{(-1)^2 (a^2)^2}{b^2} = \\frac{a^4}{b^2}$ (옳음)\\n$\\therefore$ 정답은 ⑤이다.",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -277,7 +309,11 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 지수법칙의 분배를 사용하여 식을 정리한 뒤 각 항을 비교한다.\\n$(\\frac{x^{2a}}{2y^6})^3 = \\frac{x^{6a}}{2^3 y^{18}} = \\frac{x^{6a}}{8y^{18}}$\\n우변의 $\\frac{x^{12}}{8y^{2b}}$와 비교하면:\\n$6a = 12 \\implies a = 2$\\n$2b = 18 \\implies b = 9$\\n$\\therefore a + b = 2 + 9 = 11$"
+    "solution": "[키포인트] 지수법칙의 분배를 사용하여 식을 정리한 뒤 각 항을 비교한다.\\n$(\\frac{x^{2a}}{2y^6})^3 = \\frac{x^{6a}}{2^3 y^{18}} = \\frac{x^{6a}}{8y^{18}}$\\n우변의 $\\frac{x^{12}}{8y^{2b}}$와 비교하면:\\n$6a = 12 \\implies a = 2$\\n$2b = 18 \\implies b = 9$\\n$\\therefore a + b = 2 + 9 = 11$",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -307,7 +343,11 @@ window.questionBank = [
       "$23$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $2^n \\times 5^n = 10^n$임을 이용하여 자릿수를 구한다.\\n$2^7 \\times 5^{10} = 2^7 \\times 5^7 \\times 5^3 = (2 \\times 5)^7 \\times 125 = 125 \\times 10^7$\\n이는 $125$ 뒤에 $0$이 $7$개 붙는 수이므로 $3 + 7 = 10$자리 자연수이다. ($n=10$)\\n각 자리 숫자의 합 $a = 1 + 2 + 5 + 0 \\times 7 = 8$이다.\\n$\\therefore a + n = 8 + 10 = 18$"
+    "solution": "[키포인트] $2^n \\times 5^n = 10^n$임을 이용하여 자릿수를 구한다.\\n$2^7 \\times 5^{10} = 2^7 \\times 5^7 \\times 5^3 = (2 \\times 5)^7 \\times 125 = 125 \\times 10^7$\\n이는 $125$ 뒤에 $0$이 $7$개 붙는 수이므로 $3 + 7 = 10$자리 자연수이다. ($n=10$)\\n각 자리 숫자의 합 $a = 1 + 2 + 5 + 0 \\times 7 = 8$이다.\\n$\\therefore a + n = 8 + 10 = 18$",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -337,7 +377,11 @@ window.questionBank = [
       "$(-x^2y^3)^2 \\div \\frac{x^3y^3}{2} = -2xy^3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 단항식의 곱셈과 나눗셈 법칙을 사용하여 하나씩 검증한다.\\n① $(-2x^2) \\times 3x^5 = -6x^7$\\n② $(-6ab) \\div \\frac{1}{2}a = -6ab \\times \\frac{2}{a} = -12b$\\n③ $(-2xy^2)^3 \\times (3x^2y)^2 = (-8x^3y^6) \\times (9x^4y^2) = -72x^7y^8$\\n④ $12x^5 \\div (-3x^6) = \\frac{12x^5}{-3x^6} = -\\frac{4}{x}$ (옳음)\\n⑤ $(-x^2y^3)^2 \\div \\frac{x^3y^3}{2} = x^4y^6 \\times \\frac{2}{x^3y^3} = 2xy^3$\\n$\\therefore$ 정답은 ④이다."
+    "solution": "[키포인트] 단항식의 곱셈과 나눗셈 법칙을 사용하여 하나씩 검증한다.\\n① $(-2x^2) \\times 3x^5 = -6x^7$\\n② $(-6ab) \\div \\frac{1}{2}a = -6ab \\times \\frac{2}{a} = -12b$\\n③ $(-2xy^2)^3 \\times (3x^2y)^2 = (-8x^3y^6) \\times (9x^4y^2) = -72x^7y^8$\\n④ $12x^5 \\div (-3x^6) = \\frac{12x^5}{-3x^6} = -\\frac{4}{x}$ (옳음)\\n⑤ $(-x^2y^3)^2 \\div \\frac{x^3y^3}{2} = x^4y^6 \\times \\frac{2}{x^3y^3} = 2xy^3$\\n$\\therefore$ 정답은 ④이다.",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -367,7 +411,11 @@ window.questionBank = [
       "$-6$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 괄호를 먼저 풀고 동류항끼리 정리한다.\\n$(2x^2-x+3)-(3x^2-5x+8)$\\n$=2x^2-x+3-3x^2+5x-8$\\n$=-x^2+4x-5$\\n$x$의 계수는 $4$, 상수항은 $-5$이다.\\n따라서 두 수의 합은 $4 + (-5) = -1$이다.\\n$\\therefore$ 정답은 ③이다."
+    "solution": "[키포인트] 괄호를 먼저 풀고 동류항끼리 정리한다.\\n$(2x^2-x+3)-(3x^2-5x+8)$\\n$=2x^2-x+3-3x^2+5x-8$\\n$=-x^2+4x-5$\\n$x$의 계수는 $4$, 상수항은 $-5$이다.\\n따라서 두 수의 합은 $4 + (-5) = -1$이다.\\n$\\therefore$ 정답은 ③이다.",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -397,7 +445,11 @@ window.questionBank = [
       "판단 불가"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분배법칙을 사용하여 나눗셈을 정확히 수행한다.\\n(가) $(12x^2-9x) \\div (-3x) = \\frac{12x^2}{-3x} - \\frac{9x}{-3x} = -4x + 3$ 이어야 하므로 틀림.\\n(나) $(10x^2y-8xy^2) \\times \\frac{3}{2xy} = \\frac{30x^2y}{2xy} - \\frac{24xy^2}{2xy} = 15x - 12y$ 이므로 옳음.\\n따라서 틀린 식은 (가)이다.\\n$\\therefore$ 정답은 ①이다."
+    "solution": "[키포인트] 분배법칙을 사용하여 나눗셈을 정확히 수행한다.\\n(가) $(12x^2-9x) \\div (-3x) = \\frac{12x^2}{-3x} - \\frac{9x}{-3x} = -4x + 3$ 이어야 하므로 틀림.\\n(나) $(10x^2y-8xy^2) \\times \\frac{3}{2xy} = \\frac{30x^2y}{2xy} - \\frac{24xy^2}{2xy} = 15x - 12y$ 이므로 옳음.\\n따라서 틀린 식은 (가)이다.\\n$\\therefore$ 정답은 ①이다.",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -427,16 +479,20 @@ window.questionBank = [
       "$3x^2y-2xy$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 나눗셈을 곱셈으로 역연산하여 다항식을 구한다.\\n$(x^2y - \\square + 2y^2) = (9x^2 - 6x + 6y) \\times \\frac{1}{9}y$\\n$x^2y - \\square + 2y^2 = x^2y - \\frac{2}{3}xy + \\frac{2}{3}y^2$\\n양변에서 $x^2y$를 없애면\\n$-\\square + 2y^2 = -\\frac{2}{3}xy + \\frac{2}{3}y^2$\\n따라서\\n$\\square = \\frac{2}{3}xy + \\frac{4}{3}y^2$\\n$\\therefore$ 정답은 ④이다."
+    "solution": "[키포인트] 나눗셈을 곱셈으로 역연산하여 다항식을 구한다.\\n$(x^2y - \\square + 2y^2) = (9x^2 - 6x + 6y) \\times \\frac{1}{9}y$\\n$x^2y - \\square + 2y^2 = x^2y - \\frac{2}{3}xy + \\frac{2}{3}y^2$\\n양변에서 $x^2y$를 없애면\\n$-\\square + 2y^2 = -\\frac{2}{3}xy + \\frac{2}{3}y^2$\\n따라서\\n$\\square = \\frac{2}{3}xy + \\frac{4}{3}y^2$\\n$\\therefore$ 정답은 ④이다.",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
     "category": "부등식의 표현",
     "originalCategory": "부등식의 표현",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -460,7 +516,11 @@ window.questionBank = [
       "삼각형 넓이는 8 미만이다. $\\rightarrow 3x \\le 8$"
     ],
     "answer": "④",
-    "solution": "[키포인트] '작지 않다'($\\ge$), '많다'($>$), '적다'($<$) 등의 부등호 표현을 확인한다.\\n① $3x-5 \\ge 6$이어야 한다.\\n② 형과 나이의 합이라면 $a+b \\ge 20$처럼 나타내야 한다.\\n③ 남은 쪽수가 $40$쪽보다 많으므로 $200-x > 40$이어야 한다.\\n④ $a+10 < 2a$는 문장을 옳게 나타낸 부등식이다.\\n⑤ 삼각형의 넓이는 보통 $\\frac{1}{2} \\times 밑변 \\times 높이$로 나타내야 하므로 제시식은 옳지 않다.\\n$\\therefore$ 정답은 ④이다."
+    "solution": "[키포인트] '작지 않다'($\\ge$), '많다'($>$), '적다'($<$) 등의 부등호 표현을 확인한다.\\n① $3x-5 \\ge 6$이어야 한다.\\n② 형과 나이의 합이라면 $a+b \\ge 20$처럼 나타내야 한다.\\n③ 남은 쪽수가 $40$쪽보다 많으므로 $200-x > 40$이어야 한다.\\n④ $a+10 < 2a$는 문장을 옳게 나타낸 부등식이다.\\n⑤ 삼각형의 넓이는 보통 $\\frac{1}{2} \\times 밑변 \\times 높이$로 나타내야 하므로 제시식은 옳지 않다.\\n$\\therefore$ 정답은 ④이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -492,7 +552,11 @@ window.questionBank = [
       "$-\\frac{a}{5}+3 < -\\frac{b}{5}+3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 부등식의 양변에 음수를 곱하거나 나눌 때만 부등호 방향이 바뀐다.\\n① $a>b$의 양변에서 $2$를 빼도 부등호 방향은 그대로이므로 $a-2>b-2$이다.\\n② $a>b$의 양변에 $-2$를 곱하면 $-2a<-2b$이고, $3$을 더하면 $-2a+3<-2b+3$이다.\\n③ $a>b$의 양변에 $-1$을 곱하면 $-a < -b$이고, $1$을 더하면 $1-a < 1-b$가 된다. 따라서 제시식은 옳지 않다.\\n④ $a>b$의 양변을 $3$으로 나누고 $2$를 빼도 부등호 방향은 그대로이므로 옳다.\\n⑤ $a>b$의 양변에 $-\\frac{1}{5}$를 곱하면 부등호 방향이 바뀌므로 옳다.\\n$\\therefore$ 정답은 ③이다."
+    "solution": "[키포인트] 부등식의 양변에 음수를 곱하거나 나눌 때만 부등호 방향이 바뀐다.\\n① $a>b$의 양변에서 $2$를 빼도 부등호 방향은 그대로이므로 $a-2>b-2$이다.\\n② $a>b$의 양변에 $-2$를 곱하면 $-2a<-2b$이고, $3$을 더하면 $-2a+3<-2b+3$이다.\\n③ $a>b$의 양변에 $-1$을 곱하면 $-a < -b$이고, $1$을 더하면 $1-a < 1-b$가 된다. 따라서 제시식은 옳지 않다.\\n④ $a>b$의 양변을 $3$으로 나누고 $2$를 빼도 부등호 방향은 그대로이므로 옳다.\\n⑤ $a>b$의 양변에 $-\\frac{1}{5}$를 곱하면 부등호 방향이 바뀌므로 옳다.\\n$\\therefore$ 정답은 ③이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -523,7 +587,11 @@ window.questionBank = [
       "$x \\ge -2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 괄호를 풀고 이항하여 $x$의 범위를 구한다.\\n$2(x-3) \\le 4x+2$\\n$2x - 6 \\le 4x + 2$\\n$-2x \\le 8$\\n음수 $-2$로 나누면 부등호 방향이 바뀌므로\\n$x \\ge -4$\\n$\\therefore$ 정답은 ②이다."
+    "solution": "[키포인트] 괄호를 풀고 이항하여 $x$의 범위를 구한다.\\n$2(x-3) \\le 4x+2$\\n$2x - 6 \\le 4x + 2$\\n$-2x \\le 8$\\n음수 $-2$로 나누면 부등호 방향이 바뀌므로\\n$x \\ge -4$\\n$\\therefore$ 정답은 ②이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -555,7 +623,11 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 계수를 정수로 바꾸기 위해 양변에 $10$을 곱한다.\\n$0.4x+1 > 0.7x - \\frac{1}{2}$\\n$4x + 10 > 7x - 5$\\n$-3x > -15$\\n$x < 5$\\n자연수 $x$는 $1, 2, 3, 4$이므로 합은 $1+2+3+4 = 10$이다.\\n$\\therefore$ 정답은 ④이다."
+    "solution": "[키포인트] 계수를 정수로 바꾸기 위해 양변에 $10$을 곱한다.\\n$0.4x+1 > 0.7x - \\frac{1}{2}$\\n$4x + 10 > 7x - 5$\\n$-3x > -15$\\n$x < 5$\\n자연수 $x$는 $1, 2, 3, 4$이므로 합은 $1+2+3+4 = 10$이다.\\n$\\therefore$ 정답은 ④이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -586,7 +658,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $a$를 포함한 식의 해를 구한 뒤 주어진 해와 비교한다.\\n$3x-4 \\ge a-x$\\n$4x \\ge a + 4$\\n$x \\ge \\frac{a+4}{4}$\\n주어진 해가 $x \\ge -1$이므로 $\\frac{a+4}{4} = -1$이다.\\n$a + 4 = -4 \\implies a = -8$\\n$\\therefore$ 정답은 ①이다."
+    "solution": "[키포인트] $a$를 포함한 식의 해를 구한 뒤 주어진 해와 비교한다.\\n$3x-4 \\ge a-x$\\n$4x \\ge a + 4$\\n$x \\ge \\frac{a+4}{4}$\\n주어진 해가 $x \\ge -1$이므로 $\\frac{a+4}{4} = -1$이다.\\n$a + 4 = -4 \\implies a = -8$\\n$\\therefore$ 정답은 ①이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -619,7 +695,11 @@ window.questionBank = [
       "$1300m$"
     ],
     "answer": "①",
-    "solution": "[키포인트] (시간) = (거리)/(속력) 공식을 사용하여 식을 세운다.\\n거리를 $x$라 하면, $\\frac{x}{45} + 10 + \\frac{x}{30} \\le 60$\\n$\\frac{x}{45}+\\frac{x}{30} \\le 50$\\n$\\frac{2x + 3x}{90} \\le 50$\\n$5x \\le 4500$\\n$x \\le 900$\\n따라서 최대 거리는 $900m$이다.\\n$\\therefore$ 정답은 ①이다."
+    "solution": "[키포인트] (시간) = (거리)/(속력) 공식을 사용하여 식을 세운다.\\n거리를 $x$라 하면, $\\frac{x}{45} + 10 + \\frac{x}{30} \\le 60$\\n$\\frac{x}{45}+\\frac{x}{30} \\le 50$\\n$\\frac{2x + 3x}{90} \\le 50$\\n$5x \\le 4500$\\n$x \\le 900$\\n따라서 최대 거리는 $900m$이다.\\n$\\therefore$ 정답은 ①이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -639,7 +719,11 @@ window.questionBank = [
     "content": "$\\frac{5}{7}$를 소수로 나타낼 때, 소수점 아래 $100$번째 자리까지의 숫자 중 $4$가 나오는 횟수를 구하시오. [6점]",
     "choices": [],
     "answer": "17회",
-    "solution": "[키포인트] 순환마디를 먼저 찾고 마디가 몇 번 반복되는지 확인한다.\\n$\\frac{5}{7} = 0.\\dot{7}1428\\dot{5}$ 이므로 순환마디는 $7, 1, 4, 2, 8, 5$로 총 $6$개이다.\\n$100 \\div 6 = 16$ 나머지는 $4$이다.\\n$16$번의 순환마디 반복 동안 $4$는 마디당 한 번씩 나오므로 $16$번 나타난다.\\n남은 $4$자리 숫자($7, 1, 4, 2$) 중 세 번째 숫자가 $4$이므로 한 번 더 추가된다.\\n$\\therefore 16 + 1 = 17$회"
+    "solution": "[키포인트] 순환마디를 먼저 찾고 마디가 몇 번 반복되는지 확인한다.\\n$\\frac{5}{7} = 0.\\dot{7}1428\\dot{5}$ 이므로 순환마디는 $7, 1, 4, 2, 8, 5$로 총 $6$개이다.\\n$100 \\div 6 = 16$ 나머지는 $4$이다.\\n$16$번의 순환마디 반복 동안 $4$는 마디당 한 번씩 나오므로 $16$번 나타난다.\\n남은 $4$자리 숫자($7, 1, 4, 2$) 중 세 번째 숫자가 $4$이므로 한 번 더 추가된다.\\n$\\therefore 16 + 1 = 17$회",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -659,7 +743,11 @@ window.questionBank = [
     "content": "밑면 가로 $24$, 세로 $36$인 직사각형이고 부피가 $360a^3b^2$인 사각뿔의 높이를 구하시오. [5점]",
     "choices": [],
     "answer": "$\\frac{5a^3b^2}{4}$",
-    "solution": "[키포인트] 사각뿔의 부피 $V = \\frac{1}{3} \\times (밑넓이) \\times h$ 임을 이용한다.\\n$360a^3b^2 = \\frac{1}{3} \\times (24 \\times 36) \\times h$\\n$360a^3b^2 = 288h$\\n$h = \\frac{360a^3b^2}{288} = \\frac{5}{4}a^3b^2$\\n$\\therefore$ 높이는 $\\frac{5a^3b^2}{4}$이다."
+    "solution": "[키포인트] 사각뿔의 부피 $V = \\frac{1}{3} \\times (밑넓이) \\times h$ 임을 이용한다.\\n$360a^3b^2 = \\frac{1}{3} \\times (24 \\times 36) \\times h$\\n$360a^3b^2 = 288h$\\n$h = \\frac{360a^3b^2}{288} = \\frac{5}{4}a^3b^2$\\n$\\therefore$ 높이는 $\\frac{5a^3b^2}{4}$이다.",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
@@ -679,7 +767,11 @@ window.questionBank = [
     "content": "어떤 식에서 $3x^2+5x-6$을 빼야 할 것을 더했더니 $7x^2+10x-4$가 되었다. 바르게 계산한 식을 구하시오. [4점]",
     "choices": [],
     "answer": "$x^2+8$",
-    "solution": "[키포인트] 거꾸로 계산하여 어떤 식을 먼저 구한 뒤 원래의 식을 계산한다.\\n(어떤 식) $+ (3x^2+5x-6) = 7x^2+10x-4$\\n(어떤 식) $= (7x^2+10x-4) - (3x^2+5x-6) = 4x^2+5x+2$\\n바르게 계산한 식: $(4x^2+5x+2) - (3x^2+5x-6) = x^2+8$\\n$\\therefore$ 정답은 $x^2+8$이다."
+    "solution": "[키포인트] 거꾸로 계산하여 어떤 식을 먼저 구한 뒤 원래의 식을 계산한다.\\n(어떤 식) $+ (3x^2+5x-6) = 7x^2+10x-4$\\n(어떤 식) $= (7x^2+10x-4) - (3x^2+5x-6) = 4x^2+5x+2$\\n바르게 계산한 식: $(4x^2+5x+2) - (3x^2+5x-6) = x^2+8$\\n$\\therefore$ 정답은 $x^2+8$이다.",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -699,6 +791,10 @@ window.questionBank = [
     "content": "$40000$원 중 포장비 $4000$원을 제외하고 한 송이 $1600$원인 장미를 최대 몇 송이까지 살 수 있는지 구하시오. [5점]",
     "choices": [],
     "answer": "22송이",
-    "solution": "[키포인트] 살 수 있는 장미의 수를 $x$라 두고 부등식을 세운다.\\n$1600x + 4000 \\le 40000$\\n$1600x \\le 36000$\\n$x \\le 22.5$\\n장미의 송이수는 자연수이므로 최대 $22$송이까지 살 수 있다.\\n$\\therefore$ 정답은 22송이이다."
+    "solution": "[키포인트] 살 수 있는 장미의 수를 $x$라 두고 부등식을 세운다.\\n$1600x + 4000 \\le 40000$\\n$1600x \\le 36000$\\n$x \\le 22.5$\\n장미의 송이수는 자연수이므로 최대 $22$송이까지 살 수 있다.\\n$\\therefore$ 정답은 22송이이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

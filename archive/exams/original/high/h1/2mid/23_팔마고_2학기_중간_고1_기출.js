@@ -29,7 +29,11 @@ window.questionBank = [
       "$\\{1,2\\}\\subset A$"
     ],
     "answer": "④",
-    "solution": "집합 $A$의 원소는 $\\varnothing$, $1$, $2$, $\\{1,2\\}$이다. 공집합은 $A$의 원소이므로 ①은 옳고, 공집합은 모든 집합의 부분집합이므로 ②도 옳다. 또한 $1,2\\in A$이므로 $\\{1,2\\}\\subset A$이고, $\\{1,2\\}$ 자체도 $A$의 원소이다. 따라서 옳지 않은 것은 $\\{1,2\\}\\notin A$인 ④이다."
+    "solution": "집합 $A$의 원소는 $\\varnothing$, $1$, $2$, $\\{1,2\\}$이다. 공집합은 $A$의 원소이므로 ①은 옳고, 공집합은 모든 집합의 부분집합이므로 ②도 옳다. 또한 $1,2\\in A$이므로 $\\{1,2\\}\\subset A$이고, $\\{1,2\\}$ 자체도 $A$의 원소이다. 따라서 옳지 않은 것은 $\\{1,2\\}\\notin A$인 ④이다.",
+    "subUnitKey": "H15-SB-01-SET_BASIC",
+    "subUnit": "집합의 뜻과 표현",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -58,7 +62,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "$f=g$이므로 정의역 $X=\\{0,1\\}$의 각 원소에서 두 함숫값이 같아야 한다. $x=0$을 대입하면 $b=1$이고, $x=1$을 대입하면 $a+b=2$이므로 $a=1$이다. 따라서 $ab=1$이므로 정답은 ①이다."
+    "solution": "$f=g$이므로 정의역 $X=\\{0,1\\}$의 각 원소에서 두 함숫값이 같아야 한다. $x=0$을 대입하면 $b=1$이고, $x=1$을 대입하면 $a+b=2$이므로 $a=1$이다. 따라서 $ab=1$이므로 정답은 ①이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -87,7 +95,11 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "②",
-    "solution": "평행이동 후의 $x$좌표에서 $3+a=2$이므로 $a=-1$이다. 또 $y$좌표는 $5+2=b$이므로 $b=7$이다. 따라서 $a+b=-1+7=6$이므로 정답은 ②이다."
+    "solution": "평행이동 후의 $x$좌표에서 $3+a=2$이므로 $a=-1$이다. 또 $y$좌표는 $5+2=b$이므로 $b=7$이다. 따라서 $a+b=-1+7=6$이므로 정답은 ②이다.",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -117,7 +129,11 @@ window.questionBank = [
       "$45$"
     ],
     "answer": "④",
-    "solution": "집합 $X$의 원소가 $3$개이므로 $X$에서 $X$로의 함수는 각 원소의 함숫값을 $3$가지씩 정하여 $p=3^3=27$개이다. 일대일대응은 세 원소를 서로 다르게 대응시키는 순열이므로 $q=3!=6$개이고, 상수함수는 공통 함숫값을 정하는 방법이 $3$가지이므로 $r=3$이다. 따라서 $p+q+r=27+6+3=36$이므로 정답은 ④이다."
+    "solution": "집합 $X$의 원소가 $3$개이므로 $X$에서 $X$로의 함수는 각 원소의 함숫값을 $3$가지씩 정하여 $p=3^3=27$개이다. 일대일대응은 세 원소를 서로 다르게 대응시키는 순열이므로 $q=3!=6$개이고, 상수함수는 공통 함숫값을 정하는 방법이 $3$가지이므로 $r=3$이다. 따라서 $p+q+r=27+6+3=36$이므로 정답은 ④이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -146,7 +162,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "교집합에 $3$이 들어가려면 $3$이 두 집합에 모두 속해야 한다. $3\\in A$에서 $a^2-2a=3$이므로 $(a-3)(a+1)=0$이고, 보기의 값 중에서는 $a=3$이 가능하다. 실제로 $a=3$이면 $A=\\{1,2,3\\}$, $B=\\{1,3,4\\}$이므로 $A\\cap B=\\{1,3\\}$이다. 따라서 정답은 ③이다."
+    "solution": "교집합에 $3$이 들어가려면 $3$이 두 집합에 모두 속해야 한다. $3\\in A$에서 $a^2-2a=3$이므로 $(a-3)(a+1)=0$이고, 보기의 값 중에서는 $a=3$이 가능하다. 실제로 $a=3$이면 $A=\\{1,2,3\\}$, $B=\\{1,3,4\\}$이므로 $A\\cap B=\\{1,3\\}$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SB-01-SET_OPERATION",
+    "subUnit": "집합의 연산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -176,7 +196,11 @@ window.questionBank = [
       "서로소, 짝수, 짝수"
     ],
     "answer": "⑤",
-    "solution": "$\\sqrt2$가 유리수라고 가정하면 서로소인 양의 정수 $p,q$를 이용하여 $\\sqrt2=\\dfrac{q}{p}$로 나타낼 수 있다. $2p^2=q^2$이므로 $q^2$이 짝수이고, 따라서 $q$도 짝수이다. $q=2m$으로 놓으면 $2p^2=4m^2$에서 $p^2=2m^2$이므로 $p$도 짝수이다. 이는 $p,q$가 서로소라는 가정과 모순이므로 (가), (나), (다)는 각각 서로소, 짝수, 짝수이다. 따라서 정답은 ⑤이다."
+    "solution": "$\\sqrt2$가 유리수라고 가정하면 서로소인 양의 정수 $p,q$를 이용하여 $\\sqrt2=\\dfrac{q}{p}$로 나타낼 수 있다. $2p^2=q^2$이므로 $q^2$이 짝수이고, 따라서 $q$도 짝수이다. $q=2m$으로 놓으면 $2p^2=4m^2$에서 $p^2=2m^2$이므로 $p$도 짝수이다. 이는 $p,q$가 서로소라는 가정과 모순이므로 (가), (나), (다)는 각각 서로소, 짝수, 짝수이다. 따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -206,7 +230,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "④",
-    "solution": "직선 $y=2x-1$을 $x$축 방향으로 $2$, $y$축 방향으로 $a$만큼 평행이동하면 $y-a=2(x-2)-1$, 즉 $y=2x+a-5$가 된다. 이 직선과 포물선 $y=-x^2+2x+3$을 연립하면 $x^2+a-8=0$이다. 두 그래프가 접하려면 이 방정식이 중근을 가져야 하므로 $a-8=0$이다. 따라서 $a=8$이므로 정답은 ④이다."
+    "solution": "직선 $y=2x-1$을 $x$축 방향으로 $2$, $y$축 방향으로 $a$만큼 평행이동하면 $y-a=2(x-2)-1$, 즉 $y=2x+a-5$가 된다. 이 직선과 포물선 $y=-x^2+2x+3$을 연립하면 $x^2+a-8=0$이다. 두 그래프가 접하려면 이 방정식이 중근을 가져야 하므로 $a-8=0$이다. 따라서 $a=8$이므로 정답은 ④이다.",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -236,7 +264,11 @@ window.questionBank = [
       "$3k+1$, $3k+2$, $3(3k^2+4k+1)+1$"
     ],
     "answer": "②",
-    "solution": "$n$이 $3$의 배수가 아니면 어떤 자연수 $k$에 대하여 $n=3k-1$ 또는 $n=3k-2$로 나타낼 수 있다. 첫째 경우에는 $(3k-1)^2=3(3k^2-2k)+1$이고, 둘째 경우에는 $(3k-2)^2=3(3k^2-4k+1)+1$이다. 두 경우 모두 $n^2$을 $3$으로 나눈 나머지가 $1$이므로 $3$의 배수가 아니다. 따라서 (가), (나), (다)는 $3k-1$, $3k-2$, $3(3k^2-4k+1)+1$이므로 정답은 ②이다."
+    "solution": "$n$이 $3$의 배수가 아니면 어떤 자연수 $k$에 대하여 $n=3k-1$ 또는 $n=3k-2$로 나타낼 수 있다. 첫째 경우에는 $(3k-1)^2=3(3k^2-2k)+1$이고, 둘째 경우에는 $(3k-2)^2=3(3k^2-4k+1)+1$이다. 두 경우 모두 $n^2$을 $3$으로 나눈 나머지가 $1$이므로 $3$의 배수가 아니다. 따라서 (가), (나), (다)는 $3k-1$, $3k-2$, $3(3k^2-4k+1)+1$이므로 정답은 ②이다.",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -266,7 +298,11 @@ window.questionBank = [
       "$35$"
     ],
     "answer": "⑤",
-    "solution": "$x^2-8x+15=(x-3)(x-5)$이므로 $A=\\{3,5\\}$이다. 또 $B=\\{x\\mid-\\sqrt a<x<\\sqrt a\\}$이다. $A$와 $B$가 서로소이려면 $3$이 $B$에 들어가지 않아야 하므로 $a\\le9$이고, 자연수 $a$의 최댓값은 $m=9$이다. $A\\subset B$이려면 $5<\\sqrt a$, 즉 $a>25$여야 하므로 자연수 $a$의 최솟값은 $n=26$이다. 따라서 $m+n=35$이므로 정답은 ⑤이다."
+    "solution": "$x^2-8x+15=(x-3)(x-5)$이므로 $A=\\{3,5\\}$이다. 또 $B=\\{x\\mid-\\sqrt a<x<\\sqrt a\\}$이다. $A$와 $B$가 서로소이려면 $3$이 $B$에 들어가지 않아야 하므로 $a\\le9$이고, 자연수 $a$의 최댓값은 $m=9$이다. $A\\subset B$이려면 $5<\\sqrt a$, 즉 $a>25$여야 하므로 자연수 $a$의 최솟값은 $n=26$이다. 따라서 $m+n=35$이므로 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-01-SET_BASIC",
+    "subUnit": "집합의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -296,7 +332,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "②",
-    "solution": "$f(2)=4$, $f(4)=8$, $f(8)=6$, $f(6)=2$이므로 $2\\to4\\to8\\to6\\to2$가 반복되고 주기는 $4$이다. $100=4\\times25$이므로 $100$번 합성한 뒤에는 처음 값 $2$로 돌아온다. 따라서 $f^{100}(2)=2$이므로 정답은 ②이다."
+    "solution": "$f(2)=4$, $f(4)=8$, $f(8)=6$, $f(6)=2$이므로 $2\\to4\\to8\\to6\\to2$가 반복되고 주기는 $4$이다. $100=4\\times25$이므로 $100$번 합성한 뒤에는 처음 값 $2$로 돌아온다. 따라서 $f^{100}(2)=2$이므로 정답은 ②이다.",
+    "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+    "subUnit": "합성함수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -327,7 +367,11 @@ window.questionBank = [
       "$22$"
     ],
     "answer": "②",
-    "solution": "$n(B-A)=n(B)-n(A\\cap B)=19-n(A\\cap B)$이다. $n(A\\cap B)$의 최솟값은 $15+19-30=4$이고 최댓값은 $15$이다. 따라서 $n(B-A)$의 최댓값은 $19-4=15$, 최솟값은 $19-15=4$이다. 그러므로 $M+m=15+4=19$이므로 정답은 ②이다."
+    "solution": "$n(B-A)=n(B)-n(A\\cap B)=19-n(A\\cap B)$이다. $n(A\\cap B)$의 최솟값은 $15+19-30=4$이고 최댓값은 $15$이다. 따라서 $n(B-A)$의 최댓값은 $19-4=15$, 최솟값은 $19-15=4$이다. 그러므로 $M+m=15+4=19$이므로 정답은 ②이다.",
+    "subUnitKey": "H15-SB-01-SET_BASIC",
+    "subUnit": "집합의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -357,7 +401,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "④",
-    "solution": "충분조건과 필요조건을 화살표로 나타내면 $p\\Rightarrow q$, $q\\Rightarrow r$, $s\\Rightarrow r$이다. 또 $\\sim r$이 $\\sim t$의 필요조건이므로 $\\sim t\\Rightarrow\\sim r$이고, 그 대우는 $r\\Rightarrow t$이다. 마지막으로 $t\\Rightarrow p$이므로 $r\\Rightarrow t\\Rightarrow p\\Rightarrow q\\Rightarrow r$가 되어 $r,p,q,t$는 서로 필요충분조건이다. $s$에서는 $r$로 가는 방향만 주어졌으므로 제외된다. 따라서 $p,q,s,t$ 중 해당하는 것은 $p,q,t$의 $3$개이므로 정답은 ④이다."
+    "solution": "충분조건과 필요조건을 화살표로 나타내면 $p\\Rightarrow q$, $q\\Rightarrow r$, $s\\Rightarrow r$이다. 또 $\\sim r$이 $\\sim t$의 필요조건이므로 $\\sim t\\Rightarrow\\sim r$이고, 그 대우는 $r\\Rightarrow t$이다. 마지막으로 $t\\Rightarrow p$이므로 $r\\Rightarrow t\\Rightarrow p\\Rightarrow q\\Rightarrow r$가 되어 $r,p,q,t$는 서로 필요충분조건이다. $s$에서는 $r$로 가는 방향만 주어졌으므로 제외된다. 따라서 $p,q,s,t$ 중 해당하는 것은 $p,q,t$의 $3$개이므로 정답은 ④이다.",
+    "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+    "subUnit": "필요조건과 충분조건",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -387,7 +435,11 @@ window.questionBank = [
       "$2\\sqrt{10}$"
     ],
     "answer": "⑤",
-    "solution": "점 $A(0,4)$를 직선 $y=-2x-1$에 대하여 대칭이동한 점을 $A'$라 하자. 직선에 수직이고 $A$를 지나는 직선은 기울기가 $\\dfrac12$이므로 $y=\\dfrac12x+4$이다. 이 직선과 $y=-2x-1$의 교점은 $H(-2,3)$이고, $H$는 $AA'$의 중점이므로 $A'=(-4,2)$이다. $P$가 대칭축 위에 있으므로 $AP=A'P$이고, 삼각부등식에 의해 $A'P+PB\\ge A'B$이다. 선분 $A'B$가 주어진 직선과 만나는 점에서 등호가 성립하므로 최솟값은 $A'B=\\sqrt{(2+4)^2+(0-2)^2}=2\\sqrt{10}$이다. 따라서 정답은 ⑤이다."
+    "solution": "점 $A(0,4)$를 직선 $y=-2x-1$에 대하여 대칭이동한 점을 $A'$라 하자. 직선에 수직이고 $A$를 지나는 직선은 기울기가 $\\dfrac12$이므로 $y=\\dfrac12x+4$이다. 이 직선과 $y=-2x-1$의 교점은 $H(-2,3)$이고, $H$는 $AA'$의 중점이므로 $A'=(-4,2)$이다. $P$가 대칭축 위에 있으므로 $AP=A'P$이고, 삼각부등식에 의해 $A'P+PB\\ge A'B$이다. 선분 $A'B$가 주어진 직선과 만나는 점에서 등호가 성립하므로 최솟값은 $A'B=\\sqrt{(2+4)^2+(0-2)^2}=2\\sqrt{10}$이다. 따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -417,7 +469,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "ㄱ. $P=U$이면 전체집합의 모든 원소가 조건 $p$를 만족하므로 참이다. ㄴ. $P\\ne\\varnothing$이어도 $P=U$일 수 있으므로 '모든 $x$에 대하여 $p$이다'가 반드시 거짓인 것은 아니다. ㄷ. $P=U$이면 $p$를 만족하지 않는 원소가 없으므로 '어떤 $x$에 대하여 $\\sim p$이다'는 거짓이다. 따라서 항상 옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다."
+    "solution": "ㄱ. $P=U$이면 전체집합의 모든 원소가 조건 $p$를 만족하므로 참이다. ㄴ. $P\\ne\\varnothing$이어도 $P=U$일 수 있으므로 '모든 $x$에 대하여 $p$이다'가 반드시 거짓인 것은 아니다. ㄷ. $P=U$이면 $p$를 만족하지 않는 원소가 없으므로 '어떤 $x$에 대하여 $\\sim p$이다'는 거짓이다. 따라서 항상 옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
+    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+    "subUnit": "명제와 진리집합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -450,7 +506,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "직선 $l$을 $y=2x+k$라 하자. 원의 중심 $O$에서 직선 $2x-y+k=0$까지의 거리를 $d$라 하면, 반지름이 $\\sqrt{10}$이고 현 $AB$의 길이가 $2\\sqrt5$이므로 $d^2+\\left(\\dfrac{AB}{2}\\right)^2=10$이다. 따라서 $d^2+5=10$에서 $d=\\sqrt5$이다. 한편 $d=\\dfrac{|k|}{\\sqrt5}$이므로 $|k|=5$이고, 두 교점이 제2·제3사분면에 있으므로 $k=5$이다. $x^2+(2x+5)^2=10$을 풀면 $x=-1,-3$이므로 $A=(-1,3)$, $B=(-3,-1)$이다. $C$는 $A$와 원점을 사이에 둔 반대쪽 점이므로 $C=(1,-3)$이다. $C$를 지나는 수평선 $y=-3$과 $l:y=2x+5$의 교점은 $D=(-4,-3)$이다. 따라서 $OD=\\sqrt{(-4)^2+(-3)^2}=5$이므로 정답은 ①이다.",
-    "image": "assets/images/23_팔마고_2학기_중간_고1_기출/q15.png"
+    "image": "assets/images/23_팔마고_2학기_중간_고1_기출/q15.png",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -480,7 +540,11 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "①",
-    "solution": "점 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A'$, 점 $B$를 $y$축에 대하여 대칭이동한 점을 $B'$라 하자. 그러면 $AP=A'P$, $QB=QB'$이므로 $AP+PQ+QB=A'P+PQ+QB'\\ge A'B'$이다. $A'$가 움직이는 원의 중심은 $(8,2)$이고 반지름은 $2$이며, $B'$가 움직이는 원의 중심은 $(-4,2)$이고 반지름은 $1$이다. 두 중심 사이의 거리는 $12$이므로 두 원 위의 점 사이의 최소 거리는 $12-2-1=9$이다. 실제로 $A'=(6,2)$, $B'=(-3,2)$를 잡으면 선분 $A'B'$는 $y=x$와 $(2,2)$에서, $y$축과 $(0,2)$에서 차례로 만나므로 조건을 만족하며 등호가 성립한다. 따라서 최솟값은 $9$이므로 정답은 ①이다."
+    "solution": "점 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A'$, 점 $B$를 $y$축에 대하여 대칭이동한 점을 $B'$라 하자. 그러면 $AP=A'P$, $QB=QB'$이므로 $AP+PQ+QB=A'P+PQ+QB'\\ge A'B'$이다. $A'$가 움직이는 원의 중심은 $(8,2)$이고 반지름은 $2$이며, $B'$가 움직이는 원의 중심은 $(-4,2)$이고 반지름은 $1$이다. 두 중심 사이의 거리는 $12$이므로 두 원 위의 점 사이의 최소 거리는 $12-2-1=9$이다. 실제로 $A'=(6,2)$, $B'=(-3,2)$를 잡으면 선분 $A'B'$는 $y=x$와 $(2,2)$에서, $y$축과 $(0,2)$에서 차례로 만나므로 조건을 만족하며 등호가 성립한다. 따라서 최솟값은 $9$이므로 정답은 ①이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -511,7 +575,11 @@ window.questionBank = [
       "$27$"
     ],
     "answer": "①",
-    "solution": "$A\\cap B=\\{4,5\\}$이므로 $4,5$는 $A$와 $B$에 모두 속한다. $4,5\\in B$이므로 $B$의 정의에 따라 $4+k,5+k\\in A$이다.\n먼저 $k=0$이면 $B=A$가 되어 $A\\cap B=A$이므로, 원소가 $4$개인 $A$가 $\\{4,5\\}$와 같아야 하는 모순이 생긴다. 또 $k>0$이면 $4,5,4+k,5+k$가 $A$에 속한다. $k>1$이면 이 네 수가 서로 다르므로 그 합 $18+2k$가 $20$이어야 하는데, 여기서 $k=1$이 되어 모순이다. $k=1$일 때에는 $4,5,6$이 $A$에 속하고 네 번째 원소를 $t$라 하면 $4+5+6+t=20$에서 $t=5$가 되어 원소가 중복되므로 역시 불가능하다. 따라서 $k<0$이다.\n$k<0$이면 $A$의 각 원소 $a$에 대하여 $a-k$는 자연수이고, $(a-k)+k=a\\in A$이므로 $a-k\\in B$이다. 따라서 $A$의 네 원소가 각각 서로 다른 $B$의 네 원소에 대응하므로 $n(B)=4$이다. 집합 $B$의 모든 원소의 합을 $m$이라 하면 각 원소가 $A$의 원소보다 $-k$만큼 크므로 $m=20-4k$이다.\n또 $A\\cap B=\\{4,5\\}$이므로 합집합의 원소의 합은 $20+m-(4+5)$이다. 따라서 $35=20+m-9$에서 $m=24$이다. $24=20-4k$에서 $k=-1$이고, 실제로 $A=\\{3,4,5,8\\}$이면 $B=\\{4,5,6,9\\}$가 되어 모든 조건을 만족한다. 그러므로 $k+m=-1+24=23$이므로 정답은 ①이다."
+    "solution": "$A\\cap B=\\{4,5\\}$이므로 $4,5$는 $A$와 $B$에 모두 속한다. $4,5\\in B$이므로 $B$의 정의에 따라 $4+k,5+k\\in A$이다.\n먼저 $k=0$이면 $B=A$가 되어 $A\\cap B=A$이므로, 원소가 $4$개인 $A$가 $\\{4,5\\}$와 같아야 하는 모순이 생긴다. 또 $k>0$이면 $4,5,4+k,5+k$가 $A$에 속한다. $k>1$이면 이 네 수가 서로 다르므로 그 합 $18+2k$가 $20$이어야 하는데, 여기서 $k=1$이 되어 모순이다. $k=1$일 때에는 $4,5,6$이 $A$에 속하고 네 번째 원소를 $t$라 하면 $4+5+6+t=20$에서 $t=5$가 되어 원소가 중복되므로 역시 불가능하다. 따라서 $k<0$이다.\n$k<0$이면 $A$의 각 원소 $a$에 대하여 $a-k$는 자연수이고, $(a-k)+k=a\\in A$이므로 $a-k\\in B$이다. 따라서 $A$의 네 원소가 각각 서로 다른 $B$의 네 원소에 대응하므로 $n(B)=4$이다. 집합 $B$의 모든 원소의 합을 $m$이라 하면 각 원소가 $A$의 원소보다 $-k$만큼 크므로 $m=20-4k$이다.\n또 $A\\cap B=\\{4,5\\}$이므로 합집합의 원소의 합은 $20+m-(4+5)$이다. 따라서 $35=20+m-9$에서 $m=24$이다. $24=20-4k$에서 $k=-1$이고, 실제로 $A=\\{3,4,5,8\\}$이면 $B=\\{4,5,6,9\\}$가 되어 모든 조건을 만족한다. 그러므로 $k+m=-1+24=23$이므로 정답은 ①이다.",
+    "subUnitKey": "H15-SB-01-SET_OPERATION",
+    "subUnit": "집합의 연산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -541,7 +609,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "반지름이 $1$인 원의 중심을 $(x,y)$라 하자. 이 원을 $(m,m)$만큼 평행이동한 뒤 두 좌표축에 동시에 접하려면 이동한 중심의 두 좌표가 각각 $1$ 또는 $-1$이어야 하므로 $|x+m|=|y+m|=1$이다. 따라서 $(x+m)-(y+m)=x-y$는 $0$, $2$, $-2$ 중 하나이고, 가능한 중심은 세 직선 $y=x$, $y=x-2$, $y=x+2$ 위에 놓인다. 원 $C$의 중심은 $y=x$ 위에 있으므로 원 $C$와 $y=x$는 항상 서로 다른 두 점에서 만난다. 또 원 $C$의 중심에서 두 직선 $y=x-2$, $y=x+2$까지의 거리는 각각 $\\sqrt2$이다. 조건을 만족하는 중심이 모두 $4$개가 되려면 가운데 직선에서 $2$개, 바깥의 두 직선에서 접점이 각각 $1$개씩 생겨야 한다. 따라서 $r=\\sqrt2$이고 $r^2=2$이므로 정답은 ②이다."
+    "solution": "반지름이 $1$인 원의 중심을 $(x,y)$라 하자. 이 원을 $(m,m)$만큼 평행이동한 뒤 두 좌표축에 동시에 접하려면 이동한 중심의 두 좌표가 각각 $1$ 또는 $-1$이어야 하므로 $|x+m|=|y+m|=1$이다. 따라서 $(x+m)-(y+m)=x-y$는 $0$, $2$, $-2$ 중 하나이고, 가능한 중심은 세 직선 $y=x$, $y=x-2$, $y=x+2$ 위에 놓인다. 원 $C$의 중심은 $y=x$ 위에 있으므로 원 $C$와 $y=x$는 항상 서로 다른 두 점에서 만난다. 또 원 $C$의 중심에서 두 직선 $y=x-2$, $y=x+2$까지의 거리는 각각 $\\sqrt2$이다. 조건을 만족하는 중심이 모두 $4$개가 되려면 가운데 직선에서 $2$개, 바깥의 두 직선에서 접점이 각각 $1$개씩 생겨야 한다. 따라서 $r=\\sqrt2$이고 $r^2=2$이므로 정답은 ②이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -565,7 +637,11 @@ window.questionBank = [
     "content": "[서술형 1] 집합 $A=\\{x\\mid x$는 $24$의 양의 약수$\\}$를 원소나열법으로 나타내고, 집합 $A$의 진부분집합의 개수를 구하는 과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "$A=\\{1,2,3,4,6,8,12,24\\}$, $255$개",
-    "solution": "$24$의 양의 약수는 $1,2,3,4,6,8,12,24$이므로 $A=\\{1,2,3,4,6,8,12,24\\}$이다. 집합 $A$의 원소가 $8$개이므로 부분집합의 개수는 $2^8=256$개이다. 진부분집합은 전체 부분집합에서 집합 $A$ 자신을 제외한 것이므로 $256-1=255$개이다. 따라서 $A=\\{1,2,3,4,6,8,12,24\\}$이고 진부분집합은 $255$개이다."
+    "solution": "$24$의 양의 약수는 $1,2,3,4,6,8,12,24$이므로 $A=\\{1,2,3,4,6,8,12,24\\}$이다. 집합 $A$의 원소가 $8$개이므로 부분집합의 개수는 $2^8=256$개이다. 진부분집합은 전체 부분집합에서 집합 $A$ 자신을 제외한 것이므로 $256-1=255$개이다. 따라서 $A=\\{1,2,3,4,6,8,12,24\\}$이고 진부분집합은 $255$개이다.",
+    "subUnitKey": "H15-SB-01-SET_BASIC",
+    "subUnit": "집합의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -589,7 +665,11 @@ window.questionBank = [
     "content": "[서술형 2] 원 $x^2+y^2-2x-6y+6=0$을 직선 $ax+by-6=0$에 대하여 대칭이동한 원의 방정식이 $x^2+y^2-10x+6y+c=0$일 때, 상수 $a,b,c$의 값을 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$a=2$, $b=-3$, $c=30$",
-    "solution": "첫 번째 원을 완전제곱식으로 정리하면 $(x-1)^2+(y-3)^2=4$이므로 중심은 $(1,3)$이고 반지름은 $2$이다. 대칭이동한 원의 중심은 $(5,-3)$이다. 대칭축은 두 중심을 이은 선분의 수직이등분선이다. 두 중심을 이은 직선의 기울기는 $\\dfrac{-3-3}{5-1}=-\\dfrac32$이므로 대칭축의 기울기는 $\\dfrac23$이고, 두 중심의 중점 $(3,0)$을 지난다. 따라서 대칭축은 $y=\\dfrac23(x-3)$, 즉 $2x-3y-6=0$이므로 $a=2$, $b=-3$이다. 두 번째 원을 정리하면 $(x-5)^2+(y+3)^2=34-c$이고 반지름이 $2$로 같아야 하므로 $34-c=4$에서 $c=30$이다. 따라서 $a=2$, $b=-3$, $c=30$이다."
+    "solution": "첫 번째 원을 완전제곱식으로 정리하면 $(x-1)^2+(y-3)^2=4$이므로 중심은 $(1,3)$이고 반지름은 $2$이다. 대칭이동한 원의 중심은 $(5,-3)$이다. 대칭축은 두 중심을 이은 선분의 수직이등분선이다. 두 중심을 이은 직선의 기울기는 $\\dfrac{-3-3}{5-1}=-\\dfrac32$이므로 대칭축의 기울기는 $\\dfrac23$이고, 두 중심의 중점 $(3,0)$을 지난다. 따라서 대칭축은 $y=\\dfrac23(x-3)$, 즉 $2x-3y-6=0$이므로 $a=2$, $b=-3$이다. 두 번째 원을 정리하면 $(x-5)^2+(y+3)^2=34-c$이고 반지름이 $2$로 같아야 하므로 $34-c=4$에서 $c=30$이다. 따라서 $a=2$, $b=-3$, $c=30$이다.",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -613,7 +693,11 @@ window.questionBank = [
     "content": "[서술형 3] $a>0$, $b>0$일 때, 부등식 $\\sqrt{ab}\\ge\\dfrac{2ab}{a+b}$가 성립함을 증명하시오. [4점]",
     "choices": [],
     "answer": "증명",
-    "solution": "$a>0$, $b>0$이므로 $a+b>0$이고 $\\sqrt{ab}>0$이다. 주어진 부등식의 양변에 $a+b$를 곱하고 $\\sqrt{ab}$로 나누면 $a+b\\ge2\\sqrt{ab}$와 같은 부등식이 된다. 그런데 $(\\sqrt a-\\sqrt b)^2\\ge0$을 전개하면 $a+b-2\\sqrt{ab}\\ge0$, 즉 $a+b\\ge2\\sqrt{ab}$이다. 따라서 $\\sqrt{ab}\\ge\\dfrac{2ab}{a+b}$가 성립하며, 등호는 $a=b$일 때 성립한다."
+    "solution": "$a>0$, $b>0$이므로 $a+b>0$이고 $\\sqrt{ab}>0$이다. 주어진 부등식의 양변에 $a+b$를 곱하고 $\\sqrt{ab}$로 나누면 $a+b\\ge2\\sqrt{ab}$와 같은 부등식이 된다. 그런데 $(\\sqrt a-\\sqrt b)^2\\ge0$을 전개하면 $a+b-2\\sqrt{ab}\\ge0$, 즉 $a+b\\ge2\\sqrt{ab}$이다. 따라서 $\\sqrt{ab}\\ge\\dfrac{2ab}{a+b}$가 성립하며, 등호는 $a=b$일 때 성립한다.",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -638,6 +722,10 @@ window.questionBank = [
     "content": "[서술형 4] 원 $x^2+y^2=5$ 위의 임의의 점 $P(x,y)$에 대하여 $x+2y$의 값을 $k$라고 하자.\n(1) 부등식 $(a^2+b^2)(x^2+y^2)\\ge(ax+by)^2$을 사용하여 $k$의 최댓값과 최솟값을 구하시오. [3점]\n(2) $x>0$, $y>0$일 때, $\\dfrac{x+y}{2}\\ge\\sqrt{xy}$를 사용하여 $k$의 최댓값과 최솟값을 구하시오. [3점]",
     "choices": [],
     "answer": "(1) 최댓값 $5$, 최솟값 $-5$ (2) 최댓값 $5$, 최솟값은 존재하지 않음",
-    "solution": "(1) 주어진 부등식에서 $a=1$, $b=2$로 놓으면 $(1^2+2^2)(x^2+y^2)\\ge(x+2y)^2$이다. $x^2+y^2=5$이므로 $25\\ge k^2$, 즉 $-5\\le k\\le5$이다. $(x,y)=(1,2)$일 때 $k=5$, $(x,y)=(-1,-2)$일 때 $k=-5$이므로 최댓값은 $5$, 최솟값은 $-5$이다.\n(2) $x,y>0$에서 산술평균과 기하평균의 관계를 $4x^2$과 $y^2$에 적용하면 $4x^2+y^2\\ge4xy$이다. 따라서 $25-k^2=5(x^2+y^2)-(x+2y)^2=4x^2+y^2-4xy\\ge0$이므로 $k\\le5$이고, $y=2x$일 때 등호가 성립한다. $x^2+y^2=5$와 함께 풀면 $(x,y)=(1,2)$이므로 최댓값은 $5$이다. 한편 $k^2-5=(x+2y)^2-(x^2+y^2)=4xy+3y^2>0$이므로 항상 $k>\\sqrt5$이다. $y$를 $0$보다 큰 값으로 점점 작게 잡으면 원 위에서 $x$는 $\\sqrt5$에 가까워지고 $k$도 $\\sqrt5$에 한없이 가까워지지만, $y=0$은 허용되지 않는다. 따라서 최솟값은 존재하지 않는다."
+    "solution": "(1) 주어진 부등식에서 $a=1$, $b=2$로 놓으면 $(1^2+2^2)(x^2+y^2)\\ge(x+2y)^2$이다. $x^2+y^2=5$이므로 $25\\ge k^2$, 즉 $-5\\le k\\le5$이다. $(x,y)=(1,2)$일 때 $k=5$, $(x,y)=(-1,-2)$일 때 $k=-5$이므로 최댓값은 $5$, 최솟값은 $-5$이다.\n(2) $x,y>0$에서 산술평균과 기하평균의 관계를 $4x^2$과 $y^2$에 적용하면 $4x^2+y^2\\ge4xy$이다. 따라서 $25-k^2=5(x^2+y^2)-(x+2y)^2=4x^2+y^2-4xy\\ge0$이므로 $k\\le5$이고, $y=2x$일 때 등호가 성립한다. $x^2+y^2=5$와 함께 풀면 $(x,y)=(1,2)$이므로 최댓값은 $5$이다. 한편 $k^2-5=(x+2y)^2-(x^2+y^2)=4xy+3y^2>0$이므로 항상 $k>\\sqrt5$이다. $y$를 $0$보다 큰 값으로 점점 작게 잡으면 원 위에서 $x$는 $\\sqrt5$에 가까워지고 $k$도 $\\sqrt5$에 한없이 가까워지지만, $y=0$은 허용되지 않는다. 따라서 최솟값은 존재하지 않는다.",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

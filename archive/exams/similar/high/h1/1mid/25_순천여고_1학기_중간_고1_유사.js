@@ -28,7 +28,11 @@ window.questionBank = [
       "⑤ 10"
     ],
     "answer": "④",
-    "solution": "$x$ 에 대한 항등식이므로 계수비교법을 적용하면 $3=b, a=5$ 이다. 따라서 $a+b = 5+3 = 8$ 이다."
+    "solution": "$x$ 에 대한 항등식이므로 계수비교법을 적용하면 $3=b, a=5$ 이다. 따라서 $a+b = 5+3 = 8$ 이다.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -57,7 +61,11 @@ window.questionBank = [
       "⑤ 7"
     ],
     "answer": "④",
-    "solution": "세제곱 합의 공식 $(A+B)^3$ 의 역산을 이용한다. $27x^3 = (3x)^3$ 이고 $8 = 2^3$ 이므로 $(3x+2)^3 = (3x)^3 + 3(3x)^2(2) + 3(3x)(2^2) + 2^3$ 이다. 따라서 $a=3, b=2$ 이며 $ab = 3 \\times 2 = 6$ 이다."
+    "solution": "세제곱 합의 공식 $(A+B)^3$ 의 역산을 이용한다. $27x^3 = (3x)^3$ 이고 $8 = 2^3$ 이므로 $(3x+2)^3 = (3x)^3 + 3(3x)^2(2) + 3(3x)(2^2) + 2^3$ 이다. 따라서 $a=3, b=2$ 이며 $ab = 3 \\times 2 = 6$ 이다.",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -86,7 +94,11 @@ window.questionBank = [
       "⑤ 1"
     ],
     "answer": "③",
-    "solution": "주어진 조건에 따라 조립제법 연산 결과 $a=-2, b=1$ 이 도출되었다. 따라서 최종 합산 값은 $a+b = -2+1 = -1$ 이다."
+    "solution": "주어진 조건에 따라 조립제법 연산 결과 $a=-2, b=1$ 이 도출되었다. 따라서 최종 합산 값은 $a+b = -2+1 = -1$ 이다.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -115,7 +127,11 @@ window.questionBank = [
       "⑤ 16"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 나머지 정리 $P(\\alpha)=R$ 적용<br>$\\because P(x) = x^{5}+15x^{4}-2x+k$<br>$\\implies P(-1) = (-1)^{5}+15(-1)^{4}-2(-1)+k = 10$<br>$\\implies -1+15+2+k = 10$<br>$\\implies 16+k = 10$<br>$\\therefore k = -6$"
+    "solution": "<b>[Logical Anchor]</b> 나머지 정리 $P(\\alpha)=R$ 적용<br>$\\because P(x) = x^{5}+15x^{4}-2x+k$<br>$\\implies P(-1) = (-1)^{5}+15(-1)^{4}-2(-1)+k = 10$<br>$\\implies -1+15+2+k = 10$<br>$\\implies 16+k = 10$<br>$\\therefore k = -6$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -144,7 +160,11 @@ window.questionBank = [
       "⑤ 17"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 표준형 변환 및 제한된 범위 내 단조성 확인<br>$\\because y = -(x-2)^{2}+9$<br>$\\implies 축  x=2  가 범위  [-1, 1]  우측에 존재$<br>$\\implies x=1  에서 최댓값  M = 8$<br>$\\implies x=-1  에서 최솟값  m = 0$<br>$\\therefore M+m = 8+0 = 8$"
+    "solution": "<b>[Logical Anchor]</b> 표준형 변환 및 제한된 범위 내 단조성 확인<br>$\\because y = -(x-2)^{2}+9$<br>$\\implies 축  x=2  가 범위  [-1, 1]  우측에 존재$<br>$\\implies x=1  에서 최댓값  M = 8$<br>$\\implies x=-1  에서 최솟값  m = 0$<br>$\\therefore M+m = 8+0 = 8$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -173,7 +193,11 @@ window.questionBank = [
       "⑤ 6"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 나눗셈의 관계식 $A=BQ+R$ 수립<br>$\\implies 2x^{2}-7x+9 = (x-2)(ax+c)+b$<br>$\\implies 2x^{2}-7x+9 = (x-2)(2x-3)+3$<br>$\\implies a=2, b=3$<br>$\\therefore a+b = 5$"
+    "solution": "<b>[Logical Anchor]</b> 나눗셈의 관계식 $A=BQ+R$ 수립<br>$\\implies 2x^{2}-7x+9 = (x-2)(ax+c)+b$<br>$\\implies 2x^{2}-7x+9 = (x-2)(2x-3)+3$<br>$\\implies a=2, b=3$<br>$\\therefore a+b = 5$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+    "subUnit": "다항식의 나눗셈",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -202,7 +226,11 @@ window.questionBank = [
       "⑤ 24"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 2차식 나눗셈의 나머지 $R(x)=ax+b$ 설정<br>$\\because P(2)=3, P(4)=11$<br>$\\implies R(2)=2a+b=3, R(4)=4a+b=11$<br>$\\implies 2a=8 \\implies a=4, b=-5$<br>$\\implies R(x) = 4x-5$<br>$\\therefore R(6) = 24-5 = 19$"
+    "solution": "<b>[Logical Anchor]</b> 2차식 나눗셈의 나머지 $R(x)=ax+b$ 설정<br>$\\because P(2)=3, P(4)=11$<br>$\\implies R(2)=2a+b=3, R(4)=4a+b=11$<br>$\\implies 2a=8 \\implies a=4, b=-5$<br>$\\implies R(x) = 4x-5$<br>$\\therefore R(6) = 24-5 = 19$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -231,7 +259,11 @@ window.questionBank = [
       "⑤ 26"
     ],
     "answer": "⑤",
-    "solution": "<b>[Logical Anchor]</b> 곱셈 공식의 변형 $(x-y)^{2}$ 및 $x^{3}-y^{3}$ 활용<br>$\\because x^{2}+y^{2} = (x-y)^{2}+2xy$<br>$\\implies 10 = 2^{2}+2xy \\implies 10 = 4+2xy \\implies 2xy = 6 \\implies xy = 3$<br>$\\implies x^{3}-y^{3} = (x-y)^{3}+3xy(x-y)$<br>$\\implies 2^{3}+3(3)(2) = 8+18 = 26$<br>$\\therefore x^{3}-y^{3} = 26$"
+    "solution": "<b>[Logical Anchor]</b> 곱셈 공식의 변형 $(x-y)^{2}$ 및 $x^{3}-y^{3}$ 활용<br>$\\because x^{2}+y^{2} = (x-y)^{2}+2xy$<br>$\\implies 10 = 2^{2}+2xy \\implies 10 = 4+2xy \\implies 2xy = 6 \\implies xy = 3$<br>$\\implies x^{3}-y^{3} = (x-y)^{3}+3xy(x-y)$<br>$\\implies 2^{3}+3(3)(2) = 8+18 = 26$<br>$\\therefore x^{3}-y^{3} = 26$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -260,7 +292,11 @@ window.questionBank = [
       "⑤ ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies ㄱ.  -3+4=1  (참)$<br>$\\implies ㄴ.  (2, -3)  (참)$<br>$\\implies ㄷ.  -3-2(2)=-7 \\n eq 1  (거짓)$<br>$\\therefore ㄱ, ㄴ$"
+    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies ㄱ.  -3+4=1  (참)$<br>$\\implies ㄴ.  (2, -3)  (참)$<br>$\\implies ㄷ.  -3-2(2)=-7 \\n eq 1  (거짓)$<br>$\\therefore ㄱ, ㄴ$",
+    "subUnitKey": "H22-A-09-MATRIX_BASIC",
+    "subUnit": "행렬의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -289,7 +325,11 @@ window.questionBank = [
       "⑤ 8"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D \\ge 0$ 조건 활용<br>$\\because \\frac{D}{4} = (k-3)^{2}-(k^{2}-24) \\ge 0$<br>$\\implies k^{2}-6k+9-k^{2}+24 \\ge 0$<br>$\\implies -6k+33 \\ge 0 \\implies 6k \\le 33 \\implies k \\le 5.5$<br>$\\therefore k \\in \\{1, 2, 3, 4, 5\\} \\implies 5개$"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D \\ge 0$ 조건 활용<br>$\\because \\frac{D}{4} = (k-3)^{2}-(k^{2}-24) \\ge 0$<br>$\\implies k^{2}-6k+9-k^{2}+24 \\ge 0$<br>$\\implies -6k+33 \\ge 0 \\implies 6k \\le 33 \\implies k \\le 5.5$<br>$\\therefore k \\in \\{1, 2, 3, 4, 5\\} \\implies 5개$",
+    "subUnitKey": "H15-SA-05-DISCRIMINANT",
+    "subUnit": "판별식과 근의 조건",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -318,7 +358,11 @@ window.questionBank = [
       "⑤ 8"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> $i$ 의 주기성 및 실수화<br>$\\because \\frac{2}{i}=-2i, \\frac{4}{i^{2}}=-4, \\frac{6}{i^{3}}=6i, \\frac{8}{i^{4}}=8$<br>$\\implies (-2i-4+6i+8) = 4+4i$<br>$\\implies a=4, b=4$<br>$\\therefore a-b = 4-4 = 0$"
+    "solution": "<b>[Logical Anchor]</b> $i$ 의 주기성 및 실수화<br>$\\because \\frac{2}{i}=-2i, \\frac{4}{i^{2}}=-4, \\frac{6}{i^{3}}=6i, \\frac{8}{i^{4}}=8$<br>$\\implies (-2i-4+6i+8) = 4+4i$<br>$\\implies a=4, b=4$<br>$\\therefore a-b = 4-4 = 0$",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -347,7 +391,11 @@ window.questionBank = [
       "⑤ 4"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 복소수의 나눗셈(유리화) 및 켤레복소수의 성질 $z+\\bar{z}=2\\operatorname{Re}(z)$<br>$\\because z = \\frac{(3+i)(1+i)}{(1-i)(1+i)} = \\frac{3+3i+i-1}{1^{2}+1^{2}} = \\frac{2+4i}{2} = 1+2i$<br>$\\implies \\bar{z} = 1-2i$<br>$\\therefore z+\\bar{z} = (1+2i) + (1-2i) = 2$"
+    "solution": "<b>[Logical Anchor]</b> 복소수의 나눗셈(유리화) 및 켤레복소수의 성질 $z+\\bar{z}=2\\operatorname{Re}(z)$<br>$\\because z = \\frac{(3+i)(1+i)}{(1-i)(1+i)} = \\frac{3+3i+i-1}{1^{2}+1^{2}} = \\frac{2+4i}{2} = 1+2i$<br>$\\implies \\bar{z} = 1-2i$<br>$\\therefore z+\\bar{z} = (1+2i) + (1-2i) = 2$",
+    "subUnitKey": "H15-SA-04-COMPLEX_NUMBER_OPERATION",
+    "subUnit": "복소수의 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -376,7 +424,11 @@ window.questionBank = [
       "⑤ 11"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 치환을 위한 항 재배치 및 전개<br>$\\implies \\{(x-3)(x+4)\\}\\{(x-1)(x+2)\\}$<br>$\\implies (x^{2}+x-12)(x^{2}+x-2)$<br>$\\implies (x^{2}+x)^{2}-14(x^{2}+x)+24$<br>$\\implies x^{4}+2x^{3}+x^{2}-14x^{2}-14x+24$<br>$\\implies x^{4}+2x^{3}-13x^{2}-14x+24$<br>$\\implies a=2, b=-13 \\implies a+b=-11$"
+    "solution": "<b>[Logical Anchor]</b> 치환을 위한 항 재배치 및 전개<br>$\\implies \\{(x-3)(x+4)\\}\\{(x-1)(x+2)\\}$<br>$\\implies (x^{2}+x-12)(x^{2}+x-2)$<br>$\\implies (x^{2}+x)^{2}-14(x^{2}+x)+24$<br>$\\implies x^{4}+2x^{3}+x^{2}-14x^{2}-14x+24$<br>$\\implies x^{4}+2x^{3}-13x^{2}-14x+24$<br>$\\implies a=2, b=-13 \\implies a+b=-11$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -405,7 +457,11 @@ window.questionBank = [
       "⑤ 8"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 새로운 근의 합과 곱 계산<br>$\\because \\alpha+\\beta=4, \\alpha\\beta=-3$<br>$\\implies 합:  \\frac{\\alpha^{2}-\\alpha+\\beta^{2}-\\beta}{\\alpha\\beta} = \\frac{(\\alpha+\\beta)^{2}-2\\alpha\\beta-(\\alpha+\\beta)}{\\alpha\\beta} = \\frac{16-2(-3)-4}{-3} = \\frac{18}{-3} = -6 = -a \\implies a=6$<br>$\\implies 곱:  \\frac{(\\alpha-1)(\\beta-1)}{\\alpha\\beta} = \\frac{\\alpha\\beta-(\\alpha+\\beta)+1}{\\alpha\\beta} = \\frac{-3-4+1}{-3} = \\frac{-6}{-3} = 2 = b$<br>$\\therefore a-b = 6-2 = 4$"
+    "solution": "<b>[Logical Anchor]</b> 새로운 근의 합과 곱 계산<br>$\\because \\alpha+\\beta=4, \\alpha\\beta=-3$<br>$\\implies 합:  \\frac{\\alpha^{2}-\\alpha+\\beta^{2}-\\beta}{\\alpha\\beta} = \\frac{(\\alpha+\\beta)^{2}-2\\alpha\\beta-(\\alpha+\\beta)}{\\alpha\\beta} = \\frac{16-2(-3)-4}{-3} = \\frac{18}{-3} = -6 = -a \\implies a=6$<br>$\\implies 곱:  \\frac{(\\alpha-1)(\\beta-1)}{\\alpha\\beta} = \\frac{\\alpha\\beta-(\\alpha+\\beta)+1}{\\alpha\\beta} = \\frac{-3-4+1}{-3} = \\frac{-6}{-3} = 2 = b$<br>$\\therefore a-b = 6-2 = 4$",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -434,7 +490,11 @@ window.questionBank = [
       "⑤ 15"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 주어진 식을 이용한 고차식의 차수 낮추기<br>$\\because x^{2}-4x=2$<br>$\\implies x^{4}-4x^{3}-8x+7 = x^{2}(x^{2}-4x)-8x+7$<br>$\\implies x^{2}(2)-8x+7 = 2x^{2}-8x+7 = 2(x^{2}-4x)+7$<br>$\\therefore 2(2)+7 = 11$"
+    "solution": "<b>[Logical Anchor]</b> 주어진 식을 이용한 고차식의 차수 낮추기<br>$\\because x^{2}-4x=2$<br>$\\implies x^{4}-4x^{3}-8x+7 = x^{2}(x^{2}-4x)-8x+7$<br>$\\implies x^{2}(2)-8x+7 = 2x^{2}-8x+7 = 2(x^{2}-4x)+7$<br>$\\therefore 2(2)+7 = 11$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -463,7 +523,11 @@ window.questionBank = [
       "⑤ 40"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 겉넓이 함수 $S(x)$ 구성 및 정의역 내 최솟값 추적<br>$\\because S(x) = 2\\{(x-2)(x+1) + (x+1)(x+3) + (x-2)(x+3)\\}$<br>$\\implies S(x) = 2\\{(x^{2}-x-2) + (x^{2}+4x+3) + (x^{2}+x-6)\\}$<br>$\\implies S(x) = 2(3x^{2}+4x-5) = 6x^{2}+8x-10$<br>$\\because x \\ge 2$ 에서 $S(x)$ 는 증가함수<br>$\\therefore S(2) = 6(4)+8(2)-10 = 24+16-10 = 30$"
+    "solution": "<b>[Logical Anchor]</b> 겉넓이 함수 $S(x)$ 구성 및 정의역 내 최솟값 추적<br>$\\because S(x) = 2\\{(x-2)(x+1) + (x+1)(x+3) + (x-2)(x+3)\\}$<br>$\\implies S(x) = 2\\{(x^{2}-x-2) + (x^{2}+4x+3) + (x^{2}+x-6)\\}$<br>$\\implies S(x) = 2(3x^{2}+4x-5) = 6x^{2}+8x-10$<br>$\\because x \\ge 2$ 에서 $S(x)$ 는 증가함수<br>$\\therefore S(2) = 6(4)+8(2)-10 = 24+16-10 = 30$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -492,7 +556,11 @@ window.questionBank = [
       "⑤ 101"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 행렬 상등 조건 및 소수 성질 활용<br>$\\because xy-p = x+y-1 \\implies xy-x-y+1 = p \\implies (x-1)(y-1) = p$<br>$\\because x-y = p-1$<br>$\\implies p$ 가 소수이므로 $x-1=p, y-1=1 \\implies x=p+1, y=2$<br>$\\because x \\le 100 \\implies p+1 \\le 100 \\implies p \\le 99$<br>$\\therefore 99  이하의 최대 소수는  97$"
+    "solution": "<b>[Logical Anchor]</b> 행렬 상등 조건 및 소수 성질 활용<br>$\\because xy-p = x+y-1 \\implies xy-x-y+1 = p \\implies (x-1)(y-1) = p$<br>$\\because x-y = p-1$<br>$\\implies p$ 가 소수이므로 $x-1=p, y-1=1 \\implies x=p+1, y=2$<br>$\\because x \\le 100 \\implies p+1 \\le 100 \\implies p \\le 99$<br>$\\therefore 99  이하의 최대 소수는  97$",
+    "subUnitKey": "H22-A-09-MATRIX_BASIC",
+    "subUnit": "행렬의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -521,7 +589,11 @@ window.questionBank = [
       "⑤ 5"
     ],
     "answer": "⑤",
-    "solution": "<b>[Logical Anchor]</b> 완전제곱식 구성을 위한 미정계수 결정<br>\\\\\\(\\\\because P(x)-Q(x)=2, \\근이 연속하는 네 자연수  n, n+1, n+2, n+3\\\\\\)<br>\\\\\\(\\implies Q(x)=(x-n)(x-n-3), P(x)=(x-n-1)(x-n-2)\\\\\\\\\\)<br>\\\\\\(\\\\because Q(-1)=18 \\implies (n+1)(n+4)=18 \\implies n=2\\\\\\)<br>\\\\\\(\\implies Q(x)=x^2-7x+10, P(x)=x^2-7x+12\\\\\\)<br>\\\\\\(\\implies (x^2-7x+11)^2 = (x^2-7x)^2+22(x^2-7x)+121\\\\\\)<br>\\\\\\(\\implies P(x)Q(x)+k = (x^2-7x+12)(x^2-7x+10)+k = (x^2-7x)^2+22(x^2-7x)+120+k\\\\\\)<br>\\\\\\(\\implies 120+k=121 \\implies k=1\\\\\\)<br>\\\\\\(\\\\therefore k+a+b = 1-7+11 = 5\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 완전제곱식 구성을 위한 미정계수 결정<br>\\\\\\(\\\\because P(x)-Q(x)=2, \\근이 연속하는 네 자연수  n, n+1, n+2, n+3\\\\\\)<br>\\\\\\(\\implies Q(x)=(x-n)(x-n-3), P(x)=(x-n-1)(x-n-2)\\\\\\\\\\)<br>\\\\\\(\\\\because Q(-1)=18 \\implies (n+1)(n+4)=18 \\implies n=2\\\\\\)<br>\\\\\\(\\implies Q(x)=x^2-7x+10, P(x)=x^2-7x+12\\\\\\)<br>\\\\\\(\\implies (x^2-7x+11)^2 = (x^2-7x)^2+22(x^2-7x)+121\\\\\\)<br>\\\\\\(\\implies P(x)Q(x)+k = (x^2-7x+12)(x^2-7x+10)+k = (x^2-7x)^2+22(x^2-7x)+120+k\\\\\\)<br>\\\\\\(\\implies 120+k=121 \\implies k=1\\\\\\)<br>\\\\\\(\\\\therefore k+a+b = 1-7+11 = 5\\\\\\)",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -550,7 +622,11 @@ window.questionBank = [
       "⑤ $(x+2)(x-\\frac{5+\\sqrt{11}i}{2})(x-\\frac{5-\\sqrt{11}i}{2})$"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D=0$ 및 항등식 성질 활용<br>$\\\\because \\frac{D}{4}=(k-2)^{2}-(k^{2}-4k+b-5)=0$<br>$\\implies 9-b=0 \\implies b=9$<br>$\\\\because a=4$ 이므로 $x^{3}-4x^{2}+4x+9=(x+1)(x^{2}-5x+9)$<br>$\\therefore (x+1)\\left(x-\\frac{5+\\sqrt{11}i}{2}\\right)\\left(x-\\frac{5-\\sqrt{11}i}{2}\\right)$"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D=0$ 및 항등식 성질 활용<br>$\\\\because \\frac{D}{4}=(k-2)^{2}-(k^{2}-4k+b-5)=0$<br>$\\implies 9-b=0 \\implies b=9$<br>$\\\\because a=4$ 이므로 $x^{3}-4x^{2}+4x+9=(x+1)(x^{2}-5x+9)$<br>$\\therefore (x+1)\\left(x-\\frac{5+\\sqrt{11}i}{2}\\right)\\left(x-\\frac{5-\\sqrt{11}i}{2}\\right)$",
+    "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+    "subUnit": "이차방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -579,7 +655,11 @@ window.questionBank = [
       "⑤ $x^{2}-26x+54=0$"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 방멱의 정리 및 지름 조건 활용<br>\\\\\\(\\\\because AP \\cdot PB = CP \\cdot DP = 10 \\times 8 = 80\\\\\\)<br>\\\\\\(\\\\because AP+PB = 2R = 26\\\\\\)<br>\\\\\\(\\implies \\두 근의 합  26, \\ 곱  80\\\\\\)<br>\\\\\\(\\\\therefore x^{2}-26x+80=0\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 방멱의 정리 및 지름 조건 활용<br>\\\\\\(\\\\because AP \\cdot PB = CP \\cdot DP = 10 \\times 8 = 80\\\\\\)<br>\\\\\\(\\\\because AP+PB = 2R = 26\\\\\\)<br>\\\\\\(\\implies \\두 근의 합  26, \\ 곱  80\\\\\\)<br>\\\\\\(\\\\therefore x^{2}-26x+80=0\\\\\\)",
+    "subUnitKey": "H15-SA-05-EQUATION_APPLICATION",
+    "subUnit": "방정식과 부등식의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -608,7 +688,11 @@ window.questionBank = [
       "⑤ 12"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(i)  a < 3 \\implies f(3)=5 \\implies (3-a)^{2}=4 \\implies a=1\\\\\\)<br>\\\\\\(ii)  3 \\le a \\le 7 \\implies f(a)=1 \\neq 5\\\\\\)<br>\\\\\\(iii)  a > 7 \\implies f(7)=5 \\implies (7-a)^{2}=4 \\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(i)  a < 3 \\implies f(3)=5 \\implies (3-a)^{2}=4 \\implies a=1\\\\\\)<br>\\\\\\(ii)  3 \\le a \\le 7 \\implies f(a)=1 \\neq 5\\\\\\)<br>\\\\\\(iii)  a > 7 \\implies f(7)=5 \\implies (7-a)^{2}=4 \\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -637,6 +721,10 @@ window.questionBank = [
       "⑤ 7"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D>0$ 을 이용한 자연수 $k$ 의 개수 도출<br>\\\\\\(\\\\because x^{2}-(2a+1)x+a^{2}+2+k = 0\\\\\\)<br>\\\\\\(\\implies D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0\\\\\\)<br>\\\\\\(\\implies 4k < 4a-7 \\implies k < a-1.75\\\\\\)<br>\\\\\\(\\implies 《1》: k < -0.75 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《2》: k < 0.25 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《3》: k < 1.25 \\implies k=1 \\implies 1\\\\\\)<br>\\\\\\(\\\\therefore 0+0+1 = 1\\\\\\) (단, 문제 의도상 $《1》=0, 《2》=1, 《3》=3$ 으로 가정하여 합은 4)"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D>0$ 을 이용한 자연수 $k$ 의 개수 도출<br>\\\\\\(\\\\because x^{2}-(2a+1)x+a^{2}+2+k = 0\\\\\\)<br>\\\\\\(\\implies D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0\\\\\\)<br>\\\\\\(\\implies 4k < 4a-7 \\implies k < a-1.75\\\\\\)<br>\\\\\\(\\implies 《1》: k < -0.75 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《2》: k < 0.25 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《3》: k < 1.25 \\implies k=1 \\implies 1\\\\\\)<br>\\\\\\(\\\\therefore 0+0+1 = 1\\\\\\) (단, 문제 의도상 $《1》=0, 《2》=1, 《3》=3$ 으로 가정하여 합은 4)",
+    "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

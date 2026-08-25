@@ -23,7 +23,11 @@ window.questionBank = [
       "$x=2,\\ y=2$"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n자연수 조건을 만족하는 순서쌍인지 각 보기를 식에 대입하여 확인한다.\n\n$①$ $(x,y)=(1,1)$이면 $x+3y=1+3=4$이다.\n$②$ $(x,y)=(2,1)$이면 $x+3y=2+3=5$이다.\n$③$ $(x,y)=(3,1)$이면 $x+3y=3+3=6$이다.\n$④$ $(x,y)=(1,2)$이면 $x+3y=1+6=7$이다.\n$⑤$ $(x,y)=(2,2)$이면 $x+3y=2+6=8$이다.\n\n따라서 정답은 ②이다."
+    "solution": "[키포인트]\n자연수 조건을 만족하는 순서쌍인지 각 보기를 식에 대입하여 확인한다.\n\n$①$ $(x,y)=(1,1)$이면 $x+3y=1+3=4$이다.\n$②$ $(x,y)=(2,1)$이면 $x+3y=2+3=5$이다.\n$③$ $(x,y)=(3,1)$이면 $x+3y=3+3=6$이다.\n$④$ $(x,y)=(1,2)$이면 $x+3y=1+6=7$이다.\n$⑤$ $(x,y)=(2,2)$이면 $x+3y=2+6=8$이다.\n\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n함숫값 $f(2)=3$을 식에 그대로 대입한다.\n\n$f(x)=ax+7$에서 $x=2$이면\n$2a+7=3$이다.\n따라서 $2a=-4$이므로 $a=-2$이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트]\n함숫값 $f(2)=3$을 식에 그대로 대입한다.\n\n$f(x)=ax+7$에서 $x=2$이면\n$2a+7=3$이다.\n따라서 $2a=-4$이므로 $a=-2$이다.\n\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "$y=3x+6$"
     ],
     "answer": "③",
-    "solution": "[키포인트]\n일차함수에서 $x$의 증가량에 대한 $y$의 증가량의 비는 기울기이다.\n\n$x$가 3만큼 증가할 때 $y$가 6만큼 감소하므로 기울기는\n$\\dfrac{-6}{3}=-2$이다.\n보기 중 기울기가 $-2$인 함수는 $y=-2x+8$이다.\n\n따라서 정답은 ③이다."
+    "solution": "[키포인트]\n일차함수에서 $x$의 증가량에 대한 $y$의 증가량의 비는 기울기이다.\n\n$x$가 3만큼 증가할 때 $y$가 6만큼 감소하므로 기울기는\n$\\dfrac{-6}{3}=-2$이다.\n보기 중 기울기가 $-2$인 함수는 $y=-2x+8$이다.\n\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -98,7 +110,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트]\n$x$축에 수직인 직선은 $x$의 값이 일정한 직선이다.\n\n그림의 직선은 $x$축의 $1$을 지나고 $y$축과 평행하다.\n따라서 이 직선 위의 모든 점의 $x$좌표는 1이므로 방정식은 $x=1$이다.\n\n따라서 정답은 ①이다.",
-    "image": "assets/images/26_신흥중_1학기_기말_중2_기출/q04.png"
+    "image": "assets/images/26_신흥중_1학기_기말_중2_기출/q04.png",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -122,7 +138,11 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n일차함수 $y=ax+b$의 그래프는 기울기 $a$가 음수일 때 오른쪽 아래를 향한다.\n\nㄱ의 기울기는 $4$이므로 오른쪽 위를 향한다.\nㄴ의 기울기는 $-7$이므로 오른쪽 아래를 향한다.\nㄷ의 기울기는 $\\dfrac35$이므로 오른쪽 위를 향한다.\nㄹ의 기울기는 $3$이므로 오른쪽 위를 향한다.\n\n해당하는 것은 ㄴ뿐이다.\n\n따라서 정답은 ②이다."
+    "solution": "[키포인트]\n일차함수 $y=ax+b$의 그래프는 기울기 $a$가 음수일 때 오른쪽 아래를 향한다.\n\nㄱ의 기울기는 $4$이므로 오른쪽 위를 향한다.\nㄴ의 기울기는 $-7$이므로 오른쪽 아래를 향한다.\nㄷ의 기울기는 $\\dfrac35$이므로 오른쪽 위를 향한다.\nㄹ의 기울기는 $3$이므로 오른쪽 위를 향한다.\n\n해당하는 것은 ㄴ뿐이다.\n\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -146,7 +166,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "④",
-    "solution": "[키포인트]\n두 식의 $x$항 계수가 같으므로 두 식을 빼서 $y$를 먼저 구한다.\n\n첫째 식에서 둘째 식을 빼면\n$(2x+3y)-(2x-y)=19-7$이므로 $4y=12$, $y=3$이다.\n이를 $2x-y=7$에 대입하면 $2x-3=7$이므로 $x=5$이다.\n따라서 $a=5$, $b=3$이고 $a+b=8$이다.\n\n따라서 정답은 ④이다."
+    "solution": "[키포인트]\n두 식의 $x$항 계수가 같으므로 두 식을 빼서 $y$를 먼저 구한다.\n\n첫째 식에서 둘째 식을 빼면\n$(2x+3y)-(2x-y)=19-7$이므로 $4y=12$, $y=3$이다.\n이를 $2x-y=7$에 대입하면 $2x-3=7$이므로 $x=5$이다.\n따라서 $a=5$, $b=3$이고 $a+b=8$이다.\n\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -170,7 +194,11 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "③",
-    "solution": "[키포인트]\n$x$의 값 하나를 정했을 때 $y$의 값이 오직 하나로 정해져야 함수이다.\n\nㄱ은 $x$보다 큰 자연수가 여러 개이므로 $y$가 하나로 정해지지 않는다.\nㄴ은 반지름이 $x$이면 원의 넓이는 $y=\\pi x^2$으로 하나로 정해진다.\nㄷ은 자연수 $x$가 정해지면 약수의 개수도 하나로 정해진다.\nㄹ은 $x$의 배수가 여러 개이므로 $y$가 하나로 정해지지 않는다.\n\n함수인 것은 ㄴ, ㄷ이다.\n\n따라서 정답은 ③이다."
+    "solution": "[키포인트]\n$x$의 값 하나를 정했을 때 $y$의 값이 오직 하나로 정해져야 함수이다.\n\nㄱ은 $x$보다 큰 자연수가 여러 개이므로 $y$가 하나로 정해지지 않는다.\nㄴ은 반지름이 $x$이면 원의 넓이는 $y=\\pi x^2$으로 하나로 정해진다.\nㄷ은 자연수 $x$가 정해지면 약수의 개수도 하나로 정해진다.\nㄹ은 $x$의 배수가 여러 개이므로 $y$가 하나로 정해지지 않는다.\n\n함수인 것은 ㄴ, ㄷ이다.\n\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -194,7 +222,11 @@ window.questionBank = [
       "32"
     ],
     "answer": "③",
-    "solution": "[키포인트]\n두 직선의 교점이 존재하지 않으려면 서로 평행하고 일치하지 않아야 한다.\n\n$ax-2y=4$를 $y$에 대하여 정리하면 $y=\\dfrac a2x-2$이다.\n$-4x+y=1$을 정리하면 $y=4x+1$이다.\n두 직선이 평행하려면 기울기가 같아야 하므로\n$\\dfrac a2=4$에서 $a=8$이다.\n두 직선의 $y$절편은 각각 $-2$, $1$로 다르므로 일치하지 않는다.\n\n따라서 정답은 ③이다."
+    "solution": "[키포인트]\n두 직선의 교점이 존재하지 않으려면 서로 평행하고 일치하지 않아야 한다.\n\n$ax-2y=4$를 $y$에 대하여 정리하면 $y=\\dfrac a2x-2$이다.\n$-4x+y=1$을 정리하면 $y=4x+1$이다.\n두 직선이 평행하려면 기울기가 같아야 하므로\n$\\dfrac a2=4$에서 $a=8$이다.\n두 직선의 $y$절편은 각각 $-2$, $1$로 다르므로 일치하지 않는다.\n\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -218,7 +250,11 @@ window.questionBank = [
       "11"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n평행한 두 직선의 기울기는 같다.\n\n두 점 $(-2,1)$, $(6,k)$를 지나는 직선의 기울기는\n$\\dfrac{k-1}{6-(-2)}=\\dfrac{k-1}{8}$이다.\n이 값이 $\\dfrac54$와 같으므로\n$\\dfrac{k-1}{8}=\\dfrac54$이다.\n따라서 $k-1=10$이고 $k=11$이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트]\n평행한 두 직선의 기울기는 같다.\n\n두 점 $(-2,1)$, $(6,k)$를 지나는 직선의 기울기는\n$\\dfrac{k-1}{6-(-2)}=\\dfrac{k-1}{8}$이다.\n이 값이 $\\dfrac54$와 같으므로\n$\\dfrac{k-1}{8}=\\dfrac54$이다.\n따라서 $k-1=10$이고 $k=11$이다.\n\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -242,7 +278,11 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": "[키포인트]\n교점에서는 두 함수의 $y$값이 같으므로 두 식을 같게 놓는다.\n\n$x-5=-2x+4$에서 $3x=9$이므로 $x=3$이다.\n이를 $y=x-5$에 대입하면 $y=3-5=-2$이다.\n따라서 $(a,b)=(3,-2)$이고 $a+b=1$이다.\n\n따라서 정답은 ④이다."
+    "solution": "[키포인트]\n교점에서는 두 함수의 $y$값이 같으므로 두 식을 같게 놓는다.\n\n$x-5=-2x+4$에서 $3x=9$이므로 $x=3$이다.\n이를 $y=x-5$에 대입하면 $y=3-5=-2$이다.\n따라서 $(a,b)=(3,-2)$이고 $a+b=1$이다.\n\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -266,7 +306,11 @@ window.questionBank = [
       "0"
     ],
     "answer": "③",
-    "solution": "[키포인트]\n두 연립방정식에 공통으로 포함된, $a,b$가 없는 두 식을 먼저 풀어 공통해를 구한다.\n\n$3x+y=-6$, $x-2y=5$에서 $y=-6-3x$이다.\n이를 $x-2y=5$에 대입하면\n$x-2(-6-3x)=5$이므로 $7x=-7$, $x=-1$이다.\n따라서 $y=-6-3(-1)=-3$이다.\n\n이 공통해를 $ax+2y=2$에 대입하면\n$-a-6=2$이므로 $a=-8$이다.\n또 $4x-by=14$에 대입하면\n$-4+3b=14$이므로 $b=6$이다.\n따라서 $a+b=-8+6=-2$이다.\n\n따라서 정답은 ③이다."
+    "solution": "[키포인트]\n두 연립방정식에 공통으로 포함된, $a,b$가 없는 두 식을 먼저 풀어 공통해를 구한다.\n\n$3x+y=-6$, $x-2y=5$에서 $y=-6-3x$이다.\n이를 $x-2y=5$에 대입하면\n$x-2(-6-3x)=5$이므로 $7x=-7$, $x=-1$이다.\n따라서 $y=-6-3(-1)=-3$이다.\n\n이 공통해를 $ax+2y=2$에 대입하면\n$-a-6=2$이므로 $a=-8$이다.\n또 $4x-by=14$에 대입하면\n$-4+3b=14$이므로 $b=6$이다.\n따라서 $a+b=-8+6=-2$이다.\n\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -290,7 +334,11 @@ window.questionBank = [
       "$\\dfrac32$"
     ],
     "answer": "④",
-    "solution": "[키포인트]\n각 그래프와 만나는 점의 좌표를 먼저 구한 뒤 두 점 사이의 기울기를 계산한다.\n\n$y=\\dfrac13x-2$가 $x$축과 만날 때 $y=0$이므로\n$0=\\dfrac13x-2$에서 $x=6$이다. 따라서 한 점은 $(6,0)$이다.\n$y=5x-4$가 $y$축과 만날 때 $x=0$이므로 다른 점은 $(0,-4)$이다.\n두 점을 지나는 직선의 기울기는\n$\\dfrac{-4-0}{0-6}=\\dfrac{-4}{-6}=\\dfrac23$이다.\n\n따라서 정답은 ④이다."
+    "solution": "[키포인트]\n각 그래프와 만나는 점의 좌표를 먼저 구한 뒤 두 점 사이의 기울기를 계산한다.\n\n$y=\\dfrac13x-2$가 $x$축과 만날 때 $y=0$이므로\n$0=\\dfrac13x-2$에서 $x=6$이다. 따라서 한 점은 $(6,0)$이다.\n$y=5x-4$가 $y$축과 만날 때 $x=0$이므로 다른 점은 $(0,-4)$이다.\n두 점을 지나는 직선의 기울기는\n$\\dfrac{-4-0}{0-6}=\\dfrac{-4}{-6}=\\dfrac23$이다.\n\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -314,7 +362,11 @@ window.questionBank = [
       "$-4$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n그래프를 $y$축의 양의 방향으로 8만큼 이동하면 식의 상수항에 8을 더한다.\n\n이동한 그래프의 식은\n$y=\\dfrac32x-1+8=\\dfrac32x+7$이다.\n점 $(k,1)$을 지나므로\n$1=\\dfrac32k+7$이다.\n따라서 $\\dfrac32k=-6$이므로 $k=-4$이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트]\n그래프를 $y$축의 양의 방향으로 8만큼 이동하면 식의 상수항에 8을 더한다.\n\n이동한 그래프의 식은\n$y=\\dfrac32x-1+8=\\dfrac32x+7$이다.\n점 $(k,1)$을 지나므로\n$1=\\dfrac32k+7$이다.\n따라서 $\\dfrac32k=-6$이므로 $k=-4$이다.\n\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -338,7 +390,11 @@ window.questionBank = [
       "$\\dfrac{23}{3}$"
     ],
     "answer": "①",
-    "solution": "[키포인트]\n두 점으로 기울기를 구한 뒤 일차함수의 식을 정한다.\n\n기울기는\n$\\dfrac{8-7}{6-3}=\\dfrac13$이다.\n따라서 $f(x)=\\dfrac13x+b$로 놓을 수 있다.\n점 $(3,7)$을 대입하면 $7=1+b$이므로 $b=6$이다.\n그러므로 $f(x)=\\dfrac13x+6$이고\n$f(1)=\\dfrac13+6=\\dfrac{19}{3}$이다.\n\n따라서 정답은 ①이다."
+    "solution": "[키포인트]\n두 점으로 기울기를 구한 뒤 일차함수의 식을 정한다.\n\n기울기는\n$\\dfrac{8-7}{6-3}=\\dfrac13$이다.\n따라서 $f(x)=\\dfrac13x+b$로 놓을 수 있다.\n점 $(3,7)$을 대입하면 $7=1+b$이므로 $b=6$이다.\n그러므로 $f(x)=\\dfrac13x+6$이고\n$f(1)=\\dfrac13+6=\\dfrac{19}{3}$이다.\n\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -362,7 +418,11 @@ window.questionBank = [
       "$7.8^\\circ\\mathrm{C}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n높이가 1 km 높아질 때마다 $6^\\circ\\mathrm{C}$씩 낮아지므로 높이와 기온은 일차적인 관계이다.\n\n높이 1.7 km에서 낮아지는 기온은\n$6\\times1.7=10.2(^\\circ\\mathrm{C})$이다.\n따라서 정상의 기온은\n$18-10.2=7.8(^\\circ\\mathrm{C})$이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트]\n높이가 1 km 높아질 때마다 $6^\\circ\\mathrm{C}$씩 낮아지므로 높이와 기온은 일차적인 관계이다.\n\n높이 1.7 km에서 낮아지는 기온은\n$6\\times1.7=10.2(^\\circ\\mathrm{C})$이다.\n따라서 정상의 기온은\n$18-10.2=7.8(^\\circ\\mathrm{C})$이다.\n\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -386,7 +446,11 @@ window.questionBank = [
       "25"
     ],
     "answer": "①",
-    "solution": "[키포인트]\n$x:y=3:1$이므로 $x=3t$, $y=t$로 놓고 연립방정식에 대입한다.\n\n첫째 식에 대입하면\n$3(3t)-5t=12$이므로 $4t=12$, $t=3$이다.\n따라서 $x=9$, $y=3$이다.\n둘째 식에서\n$a=x+4y=9+12=21$이다.\n\n따라서 정답은 ①이다."
+    "solution": "[키포인트]\n$x:y=3:1$이므로 $x=3t$, $y=t$로 놓고 연립방정식에 대입한다.\n\n첫째 식에 대입하면\n$3(3t)-5t=12$이므로 $4t=12$, $t=3$이다.\n따라서 $x=9$, $y=3$이다.\n둘째 식에서\n$a=x+4y=9+12=21$이다.\n\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -410,7 +474,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n교통 카드로 낸 학생 수와 현금으로 낸 학생 수를 미지수로 두어 인원수와 총요금에 관한 연립방정식을 세운다.\n\n교통 카드로 낸 학생 수를 $x$, 현금으로 낸 학생 수를 $y$라 하면\n$\\begin{cases}x+y=27\\\\720x+1000y=23920\\end{cases}$이다.\n첫째 식에 720을 곱하면 $720x+720y=19440$이다.\n이를 둘째 식에서 빼면 $280y=4480$이므로 $y=16$이다.\n따라서 $x=27-16=11$이고 두 학생 수의 차는 $16-11=5$이다.\n\n따라서 정답은 ②이다."
+    "solution": "[키포인트]\n교통 카드로 낸 학생 수와 현금으로 낸 학생 수를 미지수로 두어 인원수와 총요금에 관한 연립방정식을 세운다.\n\n교통 카드로 낸 학생 수를 $x$, 현금으로 낸 학생 수를 $y$라 하면\n$\\begin{cases}x+y=27\\\\720x+1000y=23920\\end{cases}$이다.\n첫째 식에 720을 곱하면 $720x+720y=19440$이다.\n이를 둘째 식에서 빼면 $280y=4480$이므로 $y=16$이다.\n따라서 $x=27-16=11$이고 두 학생 수의 차는 $16-11=5$이다.\n\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -434,7 +502,11 @@ window.questionBank = [
       "22"
     ],
     "answer": "④",
-    "solution": "[키포인트]\n세 직선이 만드는 삼각형의 세 꼭짓점을 구하고, 수직선 $x=1$ 위의 변을 밑변으로 잡는다.\n\n$x=1$일 때 두 함수의 값은 각각\n$-2(1)+13=11$, $\\dfrac12(1)+\\dfrac12=1$이다.\n따라서 수직인 밑변의 길이는 $11-1=10$이다.\n두 사선의 교점은\n$-2x+13=\\dfrac12x+\\dfrac12$에서\n$\\dfrac52x=\\dfrac{25}{2}$이므로 $x=5$이다.\n교점과 직선 $x=1$ 사이의 수평거리는 $5-1=4$이다.\n그러므로 삼각형의 넓이는\n$\\dfrac12\\times10\\times4=20$이다.\n\n따라서 정답은 ④이다."
+    "solution": "[키포인트]\n세 직선이 만드는 삼각형의 세 꼭짓점을 구하고, 수직선 $x=1$ 위의 변을 밑변으로 잡는다.\n\n$x=1$일 때 두 함수의 값은 각각\n$-2(1)+13=11$, $\\dfrac12(1)+\\dfrac12=1$이다.\n따라서 수직인 밑변의 길이는 $11-1=10$이다.\n두 사선의 교점은\n$-2x+13=\\dfrac12x+\\dfrac12$에서\n$\\dfrac52x=\\dfrac{25}{2}$이므로 $x=5$이다.\n교점과 직선 $x=1$ 사이의 수평거리는 $5-1=4$이다.\n그러므로 삼각형의 넓이는\n$\\dfrac12\\times10\\times4=20$이다.\n\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -458,7 +530,11 @@ window.questionBank = [
       "11"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n선분 $AB$를 포함하는 직선의 식을 구한 뒤, 두 직선의 교점의 $x$좌표가 $2$ 이상 3 이하가 되도록 한다.\n\n직선 $AB$의 기울기는\n$\\dfrac{8-21}{3-2}=-13$이므로 그 식은 $y=-13x+47$이다.\n$y=ax+1$과의 교점에서는\n$ax+1=-13x+47$이므로\n$x=\\dfrac{46}{a+13}$이다.\n교점이 선분 $AB$ 위에 있으려면 $2\\le x\\le3$이어야 한다. 자연수 $a$에 대하여 $a+13>0$이므로\n$2\\le\\dfrac{46}{a+13}\\le3$이다.\n왼쪽 부등식에서 $2(a+13)\\le46$이므로 $a\\le10$이다.\n오른쪽 부등식에서 $46\\le3(a+13)$이므로 $a\\ge\\dfrac73$이다.\n따라서 자연수 $a$는 $3,4,5,6,7,8,9,10$의 8개이다.\n\n따라서 정답은 ②이다."
+    "solution": "[키포인트]\n선분 $AB$를 포함하는 직선의 식을 구한 뒤, 두 직선의 교점의 $x$좌표가 $2$ 이상 3 이하가 되도록 한다.\n\n직선 $AB$의 기울기는\n$\\dfrac{8-21}{3-2}=-13$이므로 그 식은 $y=-13x+47$이다.\n$y=ax+1$과의 교점에서는\n$ax+1=-13x+47$이므로\n$x=\\dfrac{46}{a+13}$이다.\n교점이 선분 $AB$ 위에 있으려면 $2\\le x\\le3$이어야 한다. 자연수 $a$에 대하여 $a+13>0$이므로\n$2\\le\\dfrac{46}{a+13}\\le3$이다.\n왼쪽 부등식에서 $2(a+13)\\le46$이므로 $a\\le10$이다.\n오른쪽 부등식에서 $46\\le3(a+13)$이므로 $a\\ge\\dfrac73$이다.\n따라서 자연수 $a$는 $3,4,5,6,7,8,9,10$의 8개이다.\n\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -482,7 +558,11 @@ window.questionBank = [
       "22"
     ],
     "answer": "①",
-    "solution": "[키포인트]\n두 일차방정식의 그래프가 일치해야 하므로 한 식이 다른 식의 일정한 배가 되어야 한다.\n\n첫째 식의 $y$계수는 $-1$, 둘째 식의 $y$계수는 $2$이므로 둘째 식은 첫째 식의 $-2$배이다.\n따라서 계수와 상수항을 비교하면\n$12-2b=-4a$, $b=-2+4a$이다.\n둘째 식을 첫째 관계에 대입하면\n$12-2(-2+4a)=-4a$이다.\n$16-8a=-4a$이므로 $a=4$이다.\n따라서 $b=-2+4\\times4=14$이고 $a+b=18$이다.\n\n따라서 정답은 ①이다."
+    "solution": "[키포인트]\n두 일차방정식의 그래프가 일치해야 하므로 한 식이 다른 식의 일정한 배가 되어야 한다.\n\n첫째 식의 $y$계수는 $-1$, 둘째 식의 $y$계수는 $2$이므로 둘째 식은 첫째 식의 $-2$배이다.\n따라서 계수와 상수항을 비교하면\n$12-2b=-4a$, $b=-2+4a$이다.\n둘째 식을 첫째 관계에 대입하면\n$12-2(-2+4a)=-4a$이다.\n$16-8a=-4a$이므로 $a=4$이다.\n따라서 $b=-2+4\\times4=14$이고 $a+b=18$이다.\n\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -502,7 +582,11 @@ window.questionBank = [
     "content": "[서술형 1] 연립방정식 $\\begin{cases}3x-2y=7\\\\5x-3y=11\\end{cases}$의 해를 구하고, 그 풀이 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "$x=1,\\ y=-2$",
-    "solution": "[키포인트]\n한 미지수의 계수를 같게 만든 뒤 가감법으로 푼다.\n\n첫째 식에 3을 곱하면\n$9x-6y=21$이다.\n둘째 식에 2를 곱하면\n$10x-6y=22$이다.\n두 식을 빼면 $x=1$이다.\n이를 첫째 식 $3x-2y=7$에 대입하면\n$3-2y=7$이므로 $-2y=4$, $y=-2$이다.\n\n따라서 연립방정식의 해는 $x=1,\\ y=-2$이다."
+    "solution": "[키포인트]\n한 미지수의 계수를 같게 만든 뒤 가감법으로 푼다.\n\n첫째 식에 3을 곱하면\n$9x-6y=21$이다.\n둘째 식에 2를 곱하면\n$10x-6y=22$이다.\n두 식을 빼면 $x=1$이다.\n이를 첫째 식 $3x-2y=7$에 대입하면\n$3-2y=7$이므로 $-2y=4$, $y=-2$이다.\n\n따라서 연립방정식의 해는 $x=1,\\ y=-2$이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -522,7 +606,11 @@ window.questionBank = [
     "content": "[서술형 2] 총 7점<br>방향제의 양이 일정한 속력으로 줄어들어 개봉한 지 20일 후에는 380 mL, 개봉한 지 30일 후에는 365 mL가 된다고 한다.<br>(1) 이 방향제를 개봉한 지 $x$일 후의 방향제의 양을 $y$ mL라고 할 때, $y$를 $x$에 대한 식으로 나타내고 그 풀이 과정을 서술하시오. [5점]<br>(2) 방향제의 양이 140 mL가 되는 것은 개봉한 지 며칠 후인지 구하고, 그 풀이 과정을 일차함수의 식을 활용하여 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $y=-\\dfrac32x+410$ (2) 180일 후",
-    "solution": "[키포인트]\n두 시점의 자료를 좌표 $(20,380)$, $(30,365)$로 보고 일차함수의 식을 구한다.\n\n(1) 기울기는\n$\\dfrac{365-380}{30-20}=\\dfrac{-15}{10}=-\\dfrac32$이다.\n따라서 $y=-\\dfrac32x+b$로 놓는다.\n점 $(20,380)$을 대입하면\n$380=-\\dfrac32\\times20+b=-30+b$이므로 $b=410$이다.\n따라서 $y=-\\dfrac32x+410$이다.\n\n(2) $y=140$을 대입하면\n$140=-\\dfrac32x+410$이다.\n$-\\dfrac32x=-270$이므로 $x=180$이다.\n\n따라서 (1) $y=-\\dfrac32x+410$, (2) 개봉한 지 180일 후이다."
+    "solution": "[키포인트]\n두 시점의 자료를 좌표 $(20,380)$, $(30,365)$로 보고 일차함수의 식을 구한다.\n\n(1) 기울기는\n$\\dfrac{365-380}{30-20}=\\dfrac{-15}{10}=-\\dfrac32$이다.\n따라서 $y=-\\dfrac32x+b$로 놓는다.\n점 $(20,380)$을 대입하면\n$380=-\\dfrac32\\times20+b=-30+b$이므로 $b=410$이다.\n따라서 $y=-\\dfrac32x+410$이다.\n\n(2) $y=140$을 대입하면\n$140=-\\dfrac32x+410$이다.\n$-\\dfrac32x=-270$이므로 $x=180$이다.\n\n따라서 (1) $y=-\\dfrac32x+410$, (2) 개봉한 지 180일 후이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
@@ -543,6 +631,10 @@ window.questionBank = [
     "content": "[서술형 3] 총 8점<br>수 $a, b$ (단, $a>0$)에 대하여 일차방정식 $(a+4)x+7y-b=0$의 그래프가 점 $(a,2a)$를 지난다고 한다. 세 일차방정식 $(a+4)x+7y-b=0$, $x=a$, $y=-8$의 그래프로 둘러싸인 도형의 넓이가 140일 때, $a,b$의 값을 각각 구하고자 한다.<br>(1) 일차방정식 $y=-8$의 그래프가 두 일차방정식 $(a+4)x+7y-b=0$, $x=a$의 그래프와 만나는 교점을 각각 $A,B$라고 하자. 이때, 선분 $AB$의 길이를 구하고, 그 풀이 과정을 기울기를 이용하여 서술하시오. [4점]<br>(2) (1)의 결과를 이용하여 $a,b$의 값을 구하고, 그 풀이 과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "$\\overline{AB}=14,\\ a=6,\\ b=144$",
-    "solution": "[키포인트]\n직선의 기울기로 밑변 $\\overline{AB}$의 길이를 먼저 구한 뒤 삼각형의 넓이를 이용한다.\n\n(1) 직선 $(a+4)x+7y-b=0$을 $y$에 대하여 정리하면\n$y=-\\dfrac{a+4}{7}x+\\dfrac b7$이므로 기울기는 $-\\dfrac{a+4}{7}$이다.\n점 $(a,2a)$는 이 직선과 $x=a$의 교점이고, 점 $B$는 $(a,-8)$이다.\n점 $(a,2a)$에서 $y=-8$까지의 세로 길이는\n$2a-(-8)=2a+8=2(a+4)$이다.\n기울기의 절댓값은 $\\dfrac{2(a+4)}{\\overline{AB}}$이므로\n$\\dfrac{2(a+4)}{\\overline{AB}}=\\dfrac{a+4}{7}$이다.\n$a>0$이므로 $a+4\\ne0$이고, 따라서 $\\overline{AB}=14$이다.\n\n(2) 삼각형의 밑변은 14, 높이는 $2a+8$이므로\n$\\dfrac12\\times14\\times(2a+8)=140$이다.\n$14(a+4)=140$이므로 $a=6$이다.\n점 $(a,2a)$를 $(a+4)x+7y-b=0$에 대입하면\n$(a+4)a+14a-b=0$이므로 $b=a^2+18a$이다.\n$a=6$을 대입하면 $b=36+108=144$이다.\n\n따라서 $\\overline{AB}=14,\\ a=6,\\ b=144$이다."
+    "solution": "[키포인트]\n직선의 기울기로 밑변 $\\overline{AB}$의 길이를 먼저 구한 뒤 삼각형의 넓이를 이용한다.\n\n(1) 직선 $(a+4)x+7y-b=0$을 $y$에 대하여 정리하면\n$y=-\\dfrac{a+4}{7}x+\\dfrac b7$이므로 기울기는 $-\\dfrac{a+4}{7}$이다.\n점 $(a,2a)$는 이 직선과 $x=a$의 교점이고, 점 $B$는 $(a,-8)$이다.\n점 $(a,2a)$에서 $y=-8$까지의 세로 길이는\n$2a-(-8)=2a+8=2(a+4)$이다.\n기울기의 절댓값은 $\\dfrac{2(a+4)}{\\overline{AB}}$이므로\n$\\dfrac{2(a+4)}{\\overline{AB}}=\\dfrac{a+4}{7}$이다.\n$a>0$이므로 $a+4\\ne0$이고, 따라서 $\\overline{AB}=14$이다.\n\n(2) 삼각형의 밑변은 14, 높이는 $2a+8$이므로\n$\\dfrac12\\times14\\times(2a+8)=140$이다.\n$14(a+4)=140$이므로 $a=6$이다.\n점 $(a,2a)$를 $(a+4)x+7y-b=0$에 대입하면\n$(a+4)a+14a-b=0$이므로 $b=a^2+18a$이다.\n$a=6$을 대입하면 $b=36+108=144$이다.\n\n따라서 $\\overline{AB}=14,\\ a=6,\\ b=144$이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

@@ -11,7 +11,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","나머지정리","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "나머지정리",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중에서 나머지 넷과 값이 다른 하나는?(3점)",
     "choices": [
@@ -23,7 +30,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] '3의 제곱근'과 '제곱근 3'의 의미를 구분한다.\\n① $x^2=3$을 만족시키는 $x$의 값은 $\\pm\\sqrt{3}$이다.\\n② 제곱근 3은 $\\sqrt{3}$을 뜻한다.\\n③ 제곱하여 3이 되는 수는 $\\pm\\sqrt{3}$이다.\\n④ $\\pm\\sqrt{3}$이다.\\n⑤ 3의 제곱근은 $\\pm\\sqrt{3}$이다.\\n따라서 나머지 넷과 값이 다른 하나는 ②이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -35,7 +46,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","유리수","개수세기","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "유리수",
+      "개수세기",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 수 중에서 근호를 사용하지 않고 나타낼 수 있는 것을 모두 찾으면 몇 개인가?(4점)<div class='box'>$\\sqrt{121}$, $\\sqrt{\\frac{1}{4}}$, $\\sqrt{0.4}$, $\\sqrt{\\frac{2}{9}}$, $-\\sqrt{0.36}$</div>",
     "choices": [
@@ -47,7 +65,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 근호 안의 수가 유리수의 제곱이면 근호를 사용하지 않고 나타낼 수 있다.\\n$\\sqrt{121}=11$\\n$\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$\\n$\\sqrt{0.4}=\\sqrt{\\frac{2}{5}}$이므로 근호 없이 나타낼 수 없다.\\n$\\sqrt{\\frac{2}{9}}=\\frac{\\sqrt{2}}{3}$이므로 근호 없이 나타낼 수 없다.\\n$-\\sqrt{0.36}=-0.6$\\n따라서 근호 없이 나타낼 수 있는 수는 3개이므로 정답은 ③이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -59,7 +81,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","절댓값","참거짓","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "참거짓",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중 옳은 것을 모두 고른 것을 고르면?(4점)<div class='box'>가. $a > 0$일 때, $(\\sqrt{a})^{2} = a$<br>나. $a > 0$일 때, $-\\sqrt{a^{2}} = -a$<br>다. $a > 0$일 때, $\\sqrt{(-a)^{2}} = a$<br>라. $a < 0$일 때, $\\sqrt{a^{2}} = -a$</div>",
     "choices": [
@@ -71,7 +101,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $\\sqrt{x^2}=|x|$임을 이용하여 부호를 판단한다.\\n가. $a>0$일 때 $(\\sqrt{a})^2=a$이므로 참이다.\\n나. $a>0$일 때 $\\sqrt{a^2}=a$이므로 $-\\sqrt{a^2}=-a$이다. 참이다.\\n다. $a>0$일 때 $\\sqrt{(-a)^2}=|-a|=a$이므로 참이다.\\n라. $a<0$일 때 $\\sqrt{a^2}=|a|=-a$이므로 참이다.\\n따라서 옳은 것은 가, 나, 다, 라이고 정답은 ⑤이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -83,7 +117,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "$\\sqrt{10^{2}} + (-\\sqrt{2})^{2}$의 값을 구하면?(3점)",
     "choices": [
@@ -95,7 +137,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $\\sqrt{a^2}=|a|$와 제곱의 성질을 이용한다.\\n$\\sqrt{10^2}=10$이고 $(-\\sqrt{2})^2=2$이다.\\n따라서 $\\sqrt{10^{2}} + (-\\sqrt{2})^{2}=10+2=12$이므로 정답은 ①이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -107,7 +153,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","실생활","자연수조건","개수세기","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "실생활",
+      "자연수조건",
+      "개수세기",
+      "계산"
+    ],
     "wide": false,
     "content": "진공 상태에서 물체를 가만히 놓아 낙하시킬 때, 처음 높이를 $h\\,m$라고 하면 지면에 떨어지기 직전의 속력 $v\\,m/s$는 $v = \\sqrt{2 \\times 9.8 \\times h}$라고 한다. $v$가 자연수가 되도록 하는 세 자리 자연수 $h$의 값은 모두 몇 개인가?(5점)",
     "choices": [
@@ -119,7 +173,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $v=\\sqrt{19.6h}$가 자연수가 되도록 $h$의 형태를 정한다.\\n$v=\\sqrt{2\\times 9.8\\times h}=\\sqrt{19.6h}=\\sqrt{\\frac{98}{5}h}$이다.\\n$h=10k^2$이면 $19.6h=196k^2=(14k)^2$가 되어 $v$는 자연수이다.\\n$h$가 세 자리 자연수이므로 $100 \\le 10k^2 \\le 999$이다.\\n$10 \\le k^2 \\le 99$이므로 $k=4,5,6,7,8,9$이다.\\n가능한 값은 6개이므로 정답은 ④이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -131,7 +189,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","순환소수","수직선","참거짓"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "순환소수",
+      "수직선",
+      "참거짓"
+    ],
     "wide": false,
     "content": "다음 설명 중 옳은 것을 고르면?(4점)",
     "choices": [
@@ -143,7 +210,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리수와 무리수의 성질을 구분한다.\\n① $\\sqrt{4}=2$이므로 유리수이다.\\n② 유리수와 무리수는 서로 겹치지 않는다.\\n③ 무한소수 중 순환소수는 유리수이다.\\n④ 수직선은 유리수와 무리수를 모두 포함한 실수에 대응하는 점들로 완전히 메울 수 있다.\\n⑤ 유리수에 무리수를 더하면 항상 무리수이다.\\n따라서 정답은 ⑤이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -155,7 +226,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","복소수","순환소수","도형"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "복소수",
+      "순환소수",
+      "도형"
+    ],
     "wide": false,
     "content": "다음 중 무리수를 모두 고르면?(정답 2개)(4점)",
     "choices": [
@@ -167,7 +247,11 @@ window.questionBank = [
     ],
     "answer": "③, ⑤",
     "solution": "[키포인트] 무리수는 유리수로 나타낼 수 없는 수이다.\\n① 넓이가 25인 정사각형의 한 변의 길이는 $5$이므로 유리수이다.\\n② 순환소수 $1.7\\dot{8}$은 유리수이다.\\n③ 한 변의 길이가 4인 정삼각형의 높이는 $2\\sqrt{3}$이므로 무리수이다.\\n④ 한 변의 길이가 $\\sqrt{2}$인 정사각형의 한 대각선의 길이는 $\\sqrt{2}\\times\\sqrt{2}=2$이므로 유리수이다.\\n⑤ 반지름의 길이가 2인 바퀴가 두 바퀴 굴러간 거리는 $2\\times 2\\pi \\times 2=8\\pi$이므로 무리수이다.\\n따라서 정답은 ③, ⑤이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -180,7 +264,9 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "content": "아래 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 직각삼각형 $ABC$와 수직선을 그린 것이다. 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P, Q$라고 할 때, 다음 중 옳지 않은 것을 모두 고르면? (정답 2개)(4점)\\n<svg width=\"300\" height=\"180\" viewBox=\"0 0 300 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <line x1=\"15\" y1=\"140\" x2=\"275\" y2=\"140\" stroke=\"black\" stroke-width=\"1.2\" marker-end=\"url(#arr_r)\" marker-start=\"url(#arr_l)\"/>\\n  <path d=\"M 31.8,140 A 108.2,108.2 0 0 1 248.2,140\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n  <polygon points=\"140,140 200,140 200,50\" fill=\"#bbb\" opacity=\"0.5\" stroke=\"black\" stroke-width=\"1.2\"/>\\n  <circle cx=\"140\" cy=\"140\" r=\"2\" fill=\"black\"/><text x=\"130\" y=\"135\" font-size=\"10px\" font-family=\"serif\">A</text>\\n  <circle cx=\"200\" cy=\"140\" r=\"2\" fill=\"black\"/><text x=\"205\" y=\"135\" font-size=\"10px\" font-family=\"serif\">B</text>\\n  <circle cx=\"200\" cy=\"50\" r=\"2\" fill=\"black\"/><text x=\"205\" y=\"45\" font-size=\"10px\" font-family=\"serif\">C</text>\\n  <circle cx=\"248.2\" cy=\"140\" r=\"2\" fill=\"black\"/><text x=\"248\" y=\"135\" font-size=\"10px\" font-family=\"serif\">P</text>\\n  <circle cx=\"31.8\" cy=\"140\" r=\"2\" fill=\"black\"/><text x=\"25\" y=\"135\" font-size=\"10px\" font-family=\"serif\">Q</text>\\n  <g font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">\\n    <text x=\"20\" y=\"155\">-6</text><text x=\"50\" y=\"155\">-5</text><text x=\"80\" y=\"155\">-4</text><text x=\"110\" y=\"155\">-3</text><text x=\"140\" y=\"155\">-2</text><text x=\"170\" y=\"155\">-1</text><text x=\"200\" y=\"155\">0</text><text x=\"230\" y=\"155\">1</text><text x=\"260\" y=\"155\">2</text>\\n  </g>\\n  <defs>\\n    <marker id=\"arr_r\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker>\\n    <marker id=\"arr_l\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M6,0 L6,6 L0,3 z\" fill=\"black\"/></marker>\\n  </defs>\\n</svg>",
     "choices": [
@@ -191,7 +277,11 @@ window.questionBank = [
       "$\\sqrt{5}$는 두 점 P, Q 사이에 있는 무리수이다."
     ],
     "answer": "②, ⑤",
-    "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 수직선 위의 점의 좌표를 결정한다.\\n\\n[조건 정리]\\n- 점 $A$의 좌표: $-2$\\n- 직각삼각형 $ABC$의 밑변 $\\overline{AB}$의 길이: $0 - (-2) = 2$\\n- 직각삼각형 $ABC$의 높이 $\\overline{BC}$의 길이: $3$\\n- 빗변 $\\overline{AC}$의 길이: $\\sqrt{2^2 + 3^2} = \\sqrt{13}$\\n\\n[풀이 과정]\\n- 반지름의 길이가 $\\overline{AC} = \\sqrt{13}$이므로 $\\overline{AP} = \\overline{AQ} = \\sqrt{13}$이다. 따라서 ①, ③은 옳다.\\n- 점 $P$는 점 $A(-2)$에서 오른쪽으로 $\\sqrt{13}$만큼 떨어진 점이므로 대응하는 수는 $-2 + \\sqrt{13}$이다. 따라서 ②는 옳지 않다.\\n- 점 $Q$는 점 $A(-2)$에서 왼쪽으로 $\\sqrt{13}$만큼 떨어진 점이므로 대응하는 수는 $-2 - \\sqrt{13}$이다. 따라서 ④는 옳다.\\n- $3 < \\sqrt{13} < 4$이므로 $Q \\approx -5.6$, $P \\approx 1.6$이다. $\\sqrt{5} \\approx 2.23$이므로 $\\sqrt{5}$는 $P$보다 오른쪽에 있다. 따라서 ⑤는 옳지 않다.\\n\\n[결론] 따라서 옳지 않은 것은 ②, ⑤이다."
+    "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 수직선 위의 점의 좌표를 결정한다.\\n\\n[조건 정리]\\n- 점 $A$의 좌표: $-2$\\n- 직각삼각형 $ABC$의 밑변 $\\overline{AB}$의 길이: $0 - (-2) = 2$\\n- 직각삼각형 $ABC$의 높이 $\\overline{BC}$의 길이: $3$\\n- 빗변 $\\overline{AC}$의 길이: $\\sqrt{2^2 + 3^2} = \\sqrt{13}$\\n\\n[풀이 과정]\\n- 반지름의 길이가 $\\overline{AC} = \\sqrt{13}$이므로 $\\overline{AP} = \\overline{AQ} = \\sqrt{13}$이다. 따라서 ①, ③은 옳다.\\n- 점 $P$는 점 $A(-2)$에서 오른쪽으로 $\\sqrt{13}$만큼 떨어진 점이므로 대응하는 수는 $-2 + \\sqrt{13}$이다. 따라서 ②는 옳지 않다.\\n- 점 $Q$는 점 $A(-2)$에서 왼쪽으로 $\\sqrt{13}$만큼 떨어진 점이므로 대응하는 수는 $-2 - \\sqrt{13}$이다. 따라서 ④는 옳다.\\n- $3 < \\sqrt{13} < 4$이므로 $Q \\approx -5.6$, $P \\approx 1.6$이다. $\\sqrt{5} \\approx 2.23$이므로 $\\sqrt{5}$는 $P$보다 오른쪽에 있다. 따라서 ⑤는 옳지 않다.\\n\\n[결론] 따라서 옳지 않은 것은 ②, ⑤이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -203,7 +293,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중에서 두 실수의 대소 관계가 옳은 것은?(4점)",
     "choices": [
@@ -215,7 +311,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 양변에 같은 수를 더하거나 빼서 근호 안의 수를 비교한다.\\n① $6-\\sqrt{3}<3$이면 $3<\\sqrt{3}$이어야 하는데 거짓이다.\\n② 양변에 3을 더하면 $\\sqrt{7}<\\sqrt{5}$가 되어 거짓이다.\\n③ $3+\\sqrt{2}$는 양수이므로 $-5$보다 크다.\\n④ $5<3+\\sqrt{5}$는 $2<\\sqrt{5}$와 같고 참이다.\\n⑤ $-\\sqrt{2}<-\\sqrt{3}$은 $\\sqrt{2}>\\sqrt{3}$과 같아 거짓이다.\\n따라서 정답은 ④이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -227,7 +327,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","정수조건","범위","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "정수조건",
+      "범위",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$6 - 3\\sqrt{2}$의 정수 부분을 구하면?(4점)",
     "choices": [
@@ -239,7 +347,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $\\sqrt{2}$의 범위를 이용하여 값의 범위를 구한다.\\n$1.4<\\sqrt{2}<1.5$이므로 $4.2<3\\sqrt{2}<4.5$이다.\\n따라서 $1.5<6-3\\sqrt{2}<1.8$이므로 정수 부분은 $1$이다.\\n정답은 ①이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -251,7 +363,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","수직선","자연수조건","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "수직선",
+      "자연수조건",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "3의 배수의 양의 제곱근 $\\sqrt{3}, \\sqrt{6}, 3, \\sqrt{12}, \\sqrt{15}, \\sqrt{18}, \\dots$ 에 대응하는 점을 수직선 위에 나타내면 두 정수 2, 3 사이의 점의 개수는 1개, 4와 5사이의 점의 개수는 3개이다. 이때, 40과 41사이의 점의 개수를 구하면?(5점)",
     "choices": [
@@ -263,7 +384,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $40<\\sqrt{3k}<41$을 만족하는 자연수 $k$의 개수를 센다.\\n$40<\\sqrt{3k}<41$의 각 변을 제곱하면\\n$1600<3k<1681$이다.\\n따라서 $\\frac{1600}{3}<k<\\frac{1681}{3}$이다.\\n$533.\\overline{3}<k<560.\\overline{3}$이므로 가능한 자연수 $k$는 $534,535,\\dots,560$이다.\\n개수는 $560-534+1=27$개이다.\\n따라서 정답은 ②이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -275,7 +400,9 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표현"],
+    "tags": [
+      "표현"
+    ],
     "wide": false,
     "content": "다음은 $a > 0, b > 0$일 때, $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$임을 설명하는 과정이다. 각 빈칸에 알맞은 말을 적은 것을 고르면?(4점)<div class='box'>실수의 곱셈에서도 (가) 법칙과 결합법칙이 성립한다. 이 사실을 이용하여 $\\sqrt{3} \\times \\sqrt{5}$를 계산하여 보자.<br>$\\sqrt{3} \\times \\sqrt{5}$는 양수이고, 이를 제곱하면<br>(나) $= (\\sqrt{3} \\times \\sqrt{5}) \\times (\\sqrt{3} \\times \\sqrt{5})$<br>$\\quad = (\\sqrt{3} \\times \\sqrt{3}) \\times (\\sqrt{5} \\times \\sqrt{5})$<br>$\\quad = (\\sqrt{3})^{2} \\times (\\sqrt{5})^{2}$<br>$\\quad = 3 \\times 5$<br>이므로 $\\sqrt{3} \\times \\sqrt{5}$는 $3 \\times 5$의 (다)이다.<br>즉, $\\sqrt{3} \\times \\sqrt{5} = $ (라) 이다.<br>따라서 일반적으로 다음이 성립한다.<br>$a > 0, b > 0$일 때, $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$ 이다.</div>",
     "choices": [
@@ -287,7 +414,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 양수의 제곱근 중 양의 값을 뜻하는 표현을 찾아야 한다.\\n실수의 곱셈에서는 교환법칙과 결합법칙이 성립하므로 (가)는 교환이다.\\n제곱하는 대상은 $(\\sqrt{3}\\times\\sqrt{5})^2$이므로 (나)는 $(\\sqrt{3} \\times \\sqrt{5})^{2}$이다.\\n$\\sqrt{3}\\times\\sqrt{5}$는 양수이므로 $3\\times5$의 양의 제곱근이다. 따라서 (다)는 양의 제곱근이다.\\n그러므로 $\\sqrt{3}\\times\\sqrt{5}=\\sqrt{3\\times5}$이므로 (라)는 $\\sqrt{3 \\times 5}$이다.\\n정답은 ⑤이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -299,7 +430,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\sqrt{360} = a\\sqrt{10}, \\frac{\\sqrt{10}}{\\sqrt{2}} = b$를 만족시키는 두 수 $a, b$에 대하여 $a + b^2$의 값을 구하면?(3점)",
     "choices": [
@@ -311,7 +448,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 근호 안의 수를 간단히 하고, $b^2$의 값을 이용한다.\\n$\\sqrt{360}=\\sqrt{36\\times10}=6\\sqrt{10}$이므로 $a=6$이다.\\n$\\frac{\\sqrt{10}}{\\sqrt{2}}=\\sqrt{\\frac{10}{2}}=\\sqrt{5}$이므로 $b=\\sqrt{5}$이다.\\n따라서 $a+b^2=6+(\\sqrt{5})^2=6+5=11$이다.\\n정답은 ①이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -323,7 +464,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","지수","표해석","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "지수",
+      "표해석",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "제곱근표에서 $\\sqrt{4.1} = 2.025, \\sqrt{41} = 6.403$일 때, 제곱근의 성질을 이용하여 $\\sqrt{0.00041}$을 어림한 값을 구하면?(4점)",
     "choices": [
@@ -335,7 +485,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 소수의 위치를 $10$의 거듭제곱으로 바꾸어 제곱근을 계산한다.\\n$0.00041=4.1\\times10^{-4}$이다.\\n따라서 $\\sqrt{0.00041}=\\sqrt{4.1\\times10^{-4}}=\\sqrt{4.1}\\times10^{-2}$이다.\\n$\\sqrt{4.1}=2.025$이므로 $\\sqrt{0.00041}\\approx2.025\\times0.01=0.02025$이다.\\n정답은 ②이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -347,7 +501,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중에서 옳지 않은 것은?(4점)",
     "choices": [
@@ -359,7 +520,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 근호가 있는 식을 간단히 하여 등식이 성립하는지 확인한다.\\n① $\\frac{\\sqrt{3}}{2\\sqrt{5}}=\\frac{\\sqrt{15}}{10}$이므로 옳다.\\n② $3\\sqrt{2}\\times\\sqrt{5}\\div 2\\sqrt{10}=\\frac{3\\sqrt{10}}{2\\sqrt{10}}=\\frac{3}{2}$이므로 옳다.\\n③ $\\sqrt{32}+\\sqrt{8}=4\\sqrt{2}+2\\sqrt{2}=6\\sqrt{2}$이므로 $2\\sqrt{10}$과 같지 않다.\\n④ $3\\sqrt{2}-\\sqrt{8}=3\\sqrt{2}-2\\sqrt{2}=\\sqrt{2}$이므로 옳다.\\n⑤ $\\sqrt{3}(\\sqrt{2}+5)=\\sqrt{6}+5\\sqrt{3}$이므로 옳다.\\n따라서 옳지 않은 것은 ③이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -371,7 +536,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$\\sqrt{27} \\times \\frac{3}{\\sqrt{6}} - \\sqrt{24} \\div \\frac{\\sqrt{3}}{2}$를 간단히 하면?(4점)",
     "choices": [
@@ -383,7 +554,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 곱셈과 나눗셈을 각각 간단히 한 뒤 동류항을 계산한다.\\n첫째항은\\n$\\sqrt{27}\\times\\frac{3}{\\sqrt{6}}=3\\sqrt{3}\\times\\frac{3}{\\sqrt{6}}=\\frac{9\\sqrt{3}}{\\sqrt{6}}=\\frac{9}{\\sqrt{2}}=\\frac{9\\sqrt{2}}{2}$이다.\\n둘째항은\\n$\\sqrt{24}\\div\\frac{\\sqrt{3}}{2}=\\sqrt{24}\\times\\frac{2}{\\sqrt{3}}=2\\sqrt{8}=4\\sqrt{2}$이다.\\n따라서 전체 식은\\n$\\frac{9\\sqrt{2}}{2}-4\\sqrt{2}=\\frac{9\\sqrt{2}}{2}-\\frac{8\\sqrt{2}}{2}=\\frac{\\sqrt{2}}{2}$이다.\\n정답은 ⑤이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -395,7 +570,13 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "계산"
+    ],
     "wide": false,
     "content": "식 $(-2a-b)^{2}$을 전개하면?(4점)",
     "choices": [
@@ -407,7 +588,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 제곱 공식 $(x+y)^2=x^2+2xy+y^2$을 이용한다.\\n$(-2a-b)^2=\\{-(2a+b)\\}^2=(2a+b)^2$이다.\\n$(2a+b)^2=4a^2+4ab+b^2$이므로 정답은 ①이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 18,
@@ -419,7 +604,15 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","계수비교","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "계수비교",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$(Ax-2)^{2} = 9x^{2} + 12x + B$ (단, $A, B$는 상수) 이 성립할 때, $A+B$의 값을 구하면?(4점)",
     "choices": [
@@ -431,7 +624,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 좌변을 전개한 뒤 계수를 비교한다.\\n$(Ax-2)^2=A^2x^2-4Ax+4$이다.\\n이 식이 $9x^2+12x+B$와 같으므로 $A^2=9$, $-4A=12$, $B=4$이다.\\n$-4A=12$에서 $A=-3$이고, $B=4$이다.\\n따라서 $A+B=-3+4=1$이므로 정답은 ④이다.",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 19,
@@ -444,7 +641,9 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "content": "한 변의 길이가 $a$인 정사각형의 가로의 길이를 $2$만큼 늘이고, 세로의 길이를 $2$만큼 줄인 <그림1>에서 $\\text{Ⓐ}$ 직사각형을 이동하여 <그림2>와 같이 만들었을 때, 다음의 그림이 설명하고 있는 식을 고르면? (4점)\\n",
     "image": "assets/images/24_왕운중_1학기_중간_중3_기출/q19.png",
@@ -456,7 +655,11 @@ window.questionBank = [
       "$(a + 2)(a + 3) = a^2 + 5a + 6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 직사각형의 넓이 변화를 통해 합차 공식 $(a+b)(a-b) = a^2 - b^2$을 이해한다.\\n\\n[조건 정리]\\n- 처음 정사각형의 넓이: $a^2$\\n- 가로를 $2$ 늘이고 세로를 $2$ 줄인 직사각형의 넓이: $(a+2)(a-2)$\\n\\n[풀이 과정]\\n1. <그림1>에서 색칠된 부분의 가로는 $a+2$, 세로는 $a-2$인 직사각형이다. 이 넓이는 $(a+2)(a-2)$이다.\\n2. <그림1>의 $\\text{Ⓐ}$ 부분을 떼어 <그림2>와 같이 아래에 붙이면, 전체 넓이는 한 변의 길이가 $a$인 정사각형($a^2$)에서 한 변의 길이가 $2$인 작은 정사각형($2^2=4$)이 빠진 모양과 같아진다.\\n3. 따라서 도형의 넓이 관계를 식으로 나타내면 $(a+2)(a-2) = a^2 - 4$가 된다.\\n\\n[결론] 따라서 이 그림이 설명하고 있는 식은 ①이다."
+    "solution": "[키포인트] 직사각형의 넓이 변화를 통해 합차 공식 $(a+b)(a-b) = a^2 - b^2$을 이해한다.\\n\\n[조건 정리]\\n- 처음 정사각형의 넓이: $a^2$\\n- 가로를 $2$ 늘이고 세로를 $2$ 줄인 직사각형의 넓이: $(a+2)(a-2)$\\n\\n[풀이 과정]\\n1. <그림1>에서 색칠된 부분의 가로는 $a+2$, 세로는 $a-2$인 직사각형이다. 이 넓이는 $(a+2)(a-2)$이다.\\n2. <그림1>의 $\\text{Ⓐ}$ 부분을 떼어 <그림2>와 같이 아래에 붙이면, 전체 넓이는 한 변의 길이가 $a$인 정사각형($a^2$)에서 한 변의 길이가 $2$인 작은 정사각형($2^2=4$)이 빠진 모양과 같아진다.\\n3. 따라서 도형의 넓이 관계를 식으로 나타내면 $(a+2)(a-2) = a^2 - 4$가 된다.\\n\\n[결론] 따라서 이 그림이 설명하고 있는 식은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -468,7 +671,15 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","정수조건","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "정수조건",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$(3x+a)(2x+b) = 6x^{2} + Ax - 6$일 때, $A$가 될 수 있는 값은 모두 몇 개인가?(단, $a, b$는 정수)(5점)",
     "choices": [
@@ -480,7 +691,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $ab=-6$을 만족하는 정수쌍을 모두 조사한다.\\n$(3x+a)(2x+b)=6x^2+(3b+2a)x+ab$이다.\\n따라서 $ab=-6$, $A=3b+2a$이다.\\n$ab=-6$을 만족하는 정수쌍 $(a,b)$에 대해 $A$를 구하면\\n$(1,-6)\\Rightarrow A=-16$\\n$(-1,6)\\Rightarrow A=16$\\n$(2,-3)\\Rightarrow A=-5$\\n$(-2,3)\\Rightarrow A=5$\\n$(3,-2)\\Rightarrow A=0$\\n$(-3,2)\\Rightarrow A=-5+? $",
-    "level": "상"
+    "level": "상",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -492,13 +707,19 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "<div class='box'>&lt;서술형1&gt; $2\\sqrt{25+a} = 4\\sqrt{5}, \\sqrt{30-b} = 2\\sqrt{3}$을 만족시키는 두 수 $a, b$에 대하여 $a-b$의 값을 구하시오.(7점)</div>",
     "choices": [],
     "answer": "-23",
     "solution": "[키포인트] 양변을 비교하여 근호 안의 값을 구한다.\\n$2\\sqrt{25+a}=4\\sqrt{5}$의 양변을 2로 나누면 $\\sqrt{25+a}=2\\sqrt{5}$이다.\\n양변을 제곱하면 $25+a=20$이므로 $a=-5$이다.\\n$\\sqrt{30-b}=2\\sqrt{3}$의 양변을 제곱하면 $30-b=12$이므로 $b=18$이다.\\n따라서 $a-b=-5-18=-23$이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -510,13 +731,19 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "<div class='box'>&lt;서술형2&gt; $x = \\frac{1}{\\sqrt{3}-\\sqrt{2}}, y = \\frac{1}{3-2\\sqrt{2}}$ 일 때, $x-y$의 값을 구하여라.(6점)</div>",
     "choices": [],
     "answer": "$\\sqrt{3}-\\sqrt{2}-3$",
     "solution": "[키포인트] 분모를 유리화하여 $x$와 $y$를 각각 간단히 한다.\\n$x=\\frac{1}{\\sqrt{3}-\\sqrt{2}}=\\frac{\\sqrt{3}+\\sqrt{2}}{3-2}=\\sqrt{3}+\\sqrt{2}$이다.\\n$y=\\frac{1}{3-2\\sqrt{2}}=\\frac{3+2\\sqrt{2}}{9-8}=3+2\\sqrt{2}$이다.\\n따라서 $x-y=(\\sqrt{3}+\\sqrt{2})-(3+2\\sqrt{2})=\\sqrt{3}-\\sqrt{2}-3$이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -528,12 +755,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형", "도형"],
+    "tags": [
+      "서술형",
+      "도형"
+    ],
     "wide": false,
     "content": "&lt;서술형3&gt; $(x+a)(x-1)$을 전개하면 $x^{2} + bx - 3$일 때, 다음 그림과 같이 빗변과 밑변의 길이가 각각 $a+b$, $a-b$인 직각삼각형의 넓이를 구하시오.(7점)<br><div style='text-align:center; margin: 10px 0;'><svg width='150' height='100' viewBox='0 0 100 80' xmlns='http://www.w3.org/2000/svg'><polygon points='10,70 90,70 10,10' fill='none' stroke='black' stroke-width='1'/><polyline points='10,60 20,60 20,70' fill='none' stroke='black' stroke-width='1'/><text x='50' y='80' font-size='10' text-anchor='middle'>a-b</text><text x='60' y='35' font-size='10' text-anchor='middle'>a+b</text></svg></div>",
     "choices": [],
     "answer": "$\\sqrt{6}$",
     "solution": "[키포인트] 전개식에서 $a,b$를 구한 뒤 피타고라스 정리로 높이를 구한다.\\n$(x+a)(x-1)=x^2+(a-1)x-a$이다.\\n이 식이 $x^2+bx-3$과 같으므로 $-a=-3$에서 $a=3$이고, $b=a-1=2$이다.\\n따라서 빗변의 길이는 $a+b=5$, 밑변의 길이는 $a-b=1$이다.\\n높이를 $h$라 하면 직각삼각형에서 $h^2+1^2=5^2$이므로 $h^2=24$, $h=2\\sqrt{6}$이다.\\n넓이는 $\\frac{1}{2}\\times1\\times2\\sqrt{6}=\\sqrt{6}$이다.\\n따라서 정답은 $\\sqrt{6}$이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   }
 ];

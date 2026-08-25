@@ -26,7 +26,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 분자와 분모의 차수가 같으면 극한값은 최고차항의 계수의 비이다.\n조건 정리: 분자 $2x^2-1$과 분모 $x^2-1$은 모두 이차식이다.\n풀이 방향: 분자와 분모를 $x^2$으로 나눈다.\n정석 풀이: $\\dfrac{2x^2-1}{x^2-1}=\\dfrac{2-\\dfrac1{x^2}}{1-\\dfrac1{x^2}}$이고 $x\\to\\infty$에서 극한값은 $\\dfrac21=2$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 분자와 분모의 차수가 같으면 극한값은 최고차항의 계수의 비이다.\n조건 정리: 분자 $2x^2-1$과 분모 $x^2-1$은 모두 이차식이다.\n풀이 방향: 분자와 분모를 $x^2$으로 나눈다.\n정석 풀이: $\\dfrac{2x^2-1}{x^2-1}=\\dfrac{2-\\dfrac1{x^2}}{1-\\dfrac1{x^2}}$이고 $x\\to\\infty$에서 극한값은 $\\dfrac21=2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -54,7 +58,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 함수 사이에 낀 함수의 극한은 양쪽이 같은 값에 수렴하면 그 값과 같다.\n조건 정리: 모든 양수 $x$에서 $1-\\dfrac4x\\lt f(x)\\lt1+\\dfrac5x$이다.\n풀이 방향: 양 끝 함수의 $x\\to\\infty$에서의 극한을 구한다.\n정석 풀이: $\\displaystyle\\lim_{x\\to\\infty}\\left(1-\\dfrac4x\\right)=1$이고 $\\displaystyle\\lim_{x\\to\\infty}\\left(1+\\dfrac5x\\right)=1$이다. 두 극한이 모두 $1$이므로 $\\displaystyle\\lim_{x\\to\\infty}f(x)=1$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 두 함수 사이에 낀 함수의 극한은 양쪽이 같은 값에 수렴하면 그 값과 같다.\n조건 정리: 모든 양수 $x$에서 $1-\\dfrac4x\\lt f(x)\\lt1+\\dfrac5x$이다.\n풀이 방향: 양 끝 함수의 $x\\to\\infty$에서의 극한을 구한다.\n정석 풀이: $\\displaystyle\\lim_{x\\to\\infty}\\left(1-\\dfrac4x\\right)=1$이고 $\\displaystyle\\lim_{x\\to\\infty}\\left(1+\\dfrac5x\\right)=1$이다. 두 극한이 모두 $1$이므로 $\\displaystyle\\lim_{x\\to\\infty}f(x)=1$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -82,7 +90,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "④",
-    "solution": "[키포인트] 다항함수의 도함수를 구해 값을 대입한다.\n조건 정리: $f(x)=4x^2-3x+2$이다.\n풀이 방향: $f'(x)$를 구한 뒤 $x=2$를 대입한다.\n정석 풀이: $f'(x)=8x-3$이므로 $f'(2)=16-3=13$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 다항함수의 도함수를 구해 값을 대입한다.\n조건 정리: $f(x)=4x^2-3x+2$이다.\n풀이 방향: $f'(x)$를 구한 뒤 $x=2$를 대입한다.\n정석 풀이: $f'(x)=8x-3$이므로 $f'(2)=16-3=13$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-04-DERIVATIVE",
+    "subUnit": "도함수",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -110,7 +122,11 @@ window.questionBank = [
       "$\\dfrac53$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 평균변화율은 함숫값의 변화량을 구간의 길이로 나눈 값이다.\n조건 정리: $x$가 $1$에서 $2$까지 변할 때 변화량은 $3$, $2$에서 $4$까지 변할 때 변화량은 $1\\times2=2$이다.\n풀이 방향: $1$에서 $4$까지의 전체 변화량을 구간 길이로 나눈다.\n정석 풀이: $f(2)-f(1)=3\\times(2-1)=3$이고 $f(4)-f(2)=1\\times(4-2)=2$이므로 $f(4)-f(1)=3+2=5$이다. 구간의 길이는 $4-1=3$이므로 평균변화율은 $\\dfrac53$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 평균변화율은 함숫값의 변화량을 구간의 길이로 나눈 값이다.\n조건 정리: $x$가 $1$에서 $2$까지 변할 때 변화량은 $3$, $2$에서 $4$까지 변할 때 변화량은 $1\\times2=2$이다.\n풀이 방향: $1$에서 $4$까지의 전체 변화량을 구간 길이로 나눈다.\n정석 풀이: $f(2)-f(1)=3\\times(2-1)=3$이고 $f(4)-f(2)=1\\times(4-2)=2$이므로 $f(4)-f(1)=3+2=5$이다. 구간의 길이는 $4-1=3$이므로 평균변화율은 $\\dfrac53$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+    "subUnit": "미분계수",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -140,7 +156,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 극한값이 존재하지 않는 점은 좌극한과 우극한이 다른 점이고, 불연속점은 극한과 함숫값이 다르거나 극한이 없는 점이다.\n조건 정리: 그래프에서 $x=0$의 왼쪽과 오른쪽에서 함수가 다른 값에 다가간다.\n풀이 방향: 극한이 없는 점과 불연속인 점을 각각 세어 $a$, $b$를 구한다.\n정석 풀이: 열린구간 $(-2,2)$에서 좌극한과 우극한이 다른 점은 $x=0$뿐이므로 극한값이 존재하지 않는 점은 $x=0$, 즉 $a=0$이다. 불연속인 점은 $x=-1$, $x=0$, $x=1$의 세 점이므로 $b=3$이다. 따라서 $a+b=0+3=3$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 극한값이 존재하지 않는 점은 좌극한과 우극한이 다른 점이고, 불연속점은 극한과 함숫값이 다르거나 극한이 없는 점이다.\n조건 정리: 그래프에서 $x=0$의 왼쪽과 오른쪽에서 함수가 다른 값에 다가간다.\n풀이 방향: 극한이 없는 점과 불연속인 점을 각각 세어 $a$, $b$를 구한다.\n정석 풀이: 열린구간 $(-2,2)$에서 좌극한과 우극한이 다른 점은 $x=0$뿐이므로 극한값이 존재하지 않는 점은 $x=0$, 즉 $a=0$이다. 불연속인 점은 $x=-1$, $x=0$, $x=1$의 세 점이므로 $b=3$이다. 따라서 $a+b=0+3=3$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -168,7 +188,11 @@ window.questionBank = [
       "$\\lim_{x\\to\\infty}f(x)$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 조각함수의 경계에서 좌극한과 우극한이 같은지 확인한다.\n조건 정리: $x=-1$을 경계로 왼쪽은 $\\dfrac1{x+1}+2$, 오른쪽은 $2x^2-1$이다.\n풀이 방향: 각 보기의 극한을 확인하여 좌·우극한이 다른 것을 찾는다.\n정석 풀이: $x\\to-1-$일 때 $\\dfrac1{x+1}+2$에서 $x+1\\to0-$이므로 $\\dfrac1{x+1}\\to-\\infty$, 즉 발산한다. 반면 $x\\to-1+$일 때 $2x^2-1\\to1$이다. 좌극한이 발산하고 우극한은 $1$이므로 $\\displaystyle\\lim_{x\\to-1}f(x)$는 존재하지 않는다. 나머지 보기는 $\\displaystyle\\lim_{x\\to-\\infty}f(x)=2$, $\\displaystyle\\lim_{x\\to0}f(x)=-1$, $\\displaystyle\\lim_{x\\to1}f(x)=1$, $\\displaystyle\\lim_{x\\to\\infty}f(x)=0$으로 모두 존재한다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 조각함수의 경계에서 좌극한과 우극한이 같은지 확인한다.\n조건 정리: $x=-1$을 경계로 왼쪽은 $\\dfrac1{x+1}+2$, 오른쪽은 $2x^2-1$이다.\n풀이 방향: 각 보기의 극한을 확인하여 좌·우극한이 다른 것을 찾는다.\n정석 풀이: $x\\to-1-$일 때 $\\dfrac1{x+1}+2$에서 $x+1\\to0-$이므로 $\\dfrac1{x+1}\\to-\\infty$, 즉 발산한다. 반면 $x\\to-1+$일 때 $2x^2-1\\to1$이다. 좌극한이 발산하고 우극한은 $1$이므로 $\\displaystyle\\lim_{x\\to-1}f(x)$는 존재하지 않는다. 나머지 보기는 $\\displaystyle\\lim_{x\\to-\\infty}f(x)=2$, $\\displaystyle\\lim_{x\\to0}f(x)=-1$, $\\displaystyle\\lim_{x\\to1}f(x)=1$, $\\displaystyle\\lim_{x\\to\\infty}f(x)=0$으로 모두 존재한다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -197,7 +221,11 @@ window.questionBank = [
       "12"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 항등식에 $x=1$을 대입해 관계식을 얻고, 인수분해로 약분하여 함수의 꼴을 구한다.\n조건 정리: $(x-1)f(x)=a\\sqrt x+b$이고 $f(1)=3$이다.\n풀이 방향: $x=1$에서 $a+b=0$을 얻어 우변을 약분한 뒤 연속성과 $f(1)$을 이용한다.\n정석 풀이: $x=1$을 대입하면 좌변이 $0$이므로 $a+b=0$, 즉 $b=-a$이다. 이때 $a\\sqrt x+b=a(\\sqrt x-1)$이고 $x-1=(\\sqrt x-1)(\\sqrt x+1)$이므로 $x\\ne1$에서 $f(x)=\\dfrac{a(\\sqrt x-1)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac a{\\sqrt x+1}$이다. $f$가 $x=1$에서 연속이므로 $f(1)=\\dfrac a{\\sqrt1+1}=\\dfrac a2=3$에서 $a=6$이고 $b=-6$이다. 따라서 $a-b=6-(-6)=12$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 항등식에 $x=1$을 대입해 관계식을 얻고, 인수분해로 약분하여 함수의 꼴을 구한다.\n조건 정리: $(x-1)f(x)=a\\sqrt x+b$이고 $f(1)=3$이다.\n풀이 방향: $x=1$에서 $a+b=0$을 얻어 우변을 약분한 뒤 연속성과 $f(1)$을 이용한다.\n정석 풀이: $x=1$을 대입하면 좌변이 $0$이므로 $a+b=0$, 즉 $b=-a$이다. 이때 $a\\sqrt x+b=a(\\sqrt x-1)$이고 $x-1=(\\sqrt x-1)(\\sqrt x+1)$이므로 $x\\ne1$에서 $f(x)=\\dfrac{a(\\sqrt x-1)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac a{\\sqrt x+1}$이다. $f$가 $x=1$에서 연속이므로 $f(1)=\\dfrac a{\\sqrt1+1}=\\dfrac a2=3$에서 $a=6$이고 $b=-6$이다. 따라서 $a-b=6-(-6)=12$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -227,7 +255,11 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "[키포인트] 절댓값 함수의 최솟값은 꼭짓점에서, 최댓값은 끝점에서 나타난다.\n조건 정리: $f(x)=|x+1|+2$의 꼭짓점은 $x=-1$이고 구간은 $[-3,2]$이다.\n풀이 방향: 꼭짓점과 두 끝점에서의 함숫값을 비교한다.\n정석 풀이: 최솟값은 $x=-1$에서 $f(-1)=0+2=2$이므로 $m=2$이다. 끝점에서 $f(-3)=|-2|+2=4$, $f(2)=|3|+2=5$이므로 최댓값은 $M=5$이다. 따라서 $M+m=5+2=7$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 절댓값 함수의 최솟값은 꼭짓점에서, 최댓값은 끝점에서 나타난다.\n조건 정리: $f(x)=|x+1|+2$의 꼭짓점은 $x=-1$이고 구간은 $[-3,2]$이다.\n풀이 방향: 꼭짓점과 두 끝점에서의 함숫값을 비교한다.\n정석 풀이: 최솟값은 $x=-1$에서 $f(-1)=0+2=2$이므로 $m=2$이다. 끝점에서 $f(-3)=|-2|+2=4$, $f(2)=|3|+2=5$이므로 최댓값은 $M=5$이다. 따라서 $M+m=5+2=7$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-02-APPLICATION_OF_CALCULUS",
+    "subUnit": "application of calculus",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -255,7 +287,11 @@ window.questionBank = [
       "ㄱ, ㄷ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 극한의 성질에 대한 명제는 반례를 찾아 거짓을 보이는 것이 확실하다.\n조건 정리: 세 명제 ㄱ, ㄴ, ㄷ의 참거짓을 확인한다.\n풀이 방향: ㄱ, ㄴ은 반례를, ㄷ은 극한의 차 성질을 이용한다.\n정석 풀이: ㄱ. $f(x)=1$이면 $\\displaystyle\\lim_{x\\to0}\\dfrac x{f(x)}=\\lim_{x\\to0}x=0$이지만 $\\displaystyle\\lim_{x\\to0}f(x)=1\\ne0$이다. 거짓이다.\nㄴ. 모든 $x$에서 $f(x)\\lt g(x)$라도 극한에서는 등호가 될 수 있다. 예를 들어 $a=0$에서 $g(x)=1$, $f(x)=1-|x|\\ (x\\ne0)$, $f(0)=0$으로 정하면 모든 $x$에서 $f(x)\\lt g(x)$이지만 $\\displaystyle\\lim_{x\\to0}f(x)=\\lim_{x\\to0}g(x)=1$이다. 거짓이다.\nㄷ. $\\displaystyle\\lim_{x\\to a}f(x)$와 $\\displaystyle\\lim_{x\\to a}\\{f(x)+g(x)\\}$가 존재하면, $g(x)=\\{f(x)+g(x)\\}-f(x)$이고 두 극한의 차도 존재하므로 $\\displaystyle\\lim_{x\\to a}g(x)$가 존재한다. 참이다.\n그러므로 옳은 것은 ㄷ뿐이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 극한의 성질에 대한 명제는 반례를 찾아 거짓을 보이는 것이 확실하다.\n조건 정리: 세 명제 ㄱ, ㄴ, ㄷ의 참거짓을 확인한다.\n풀이 방향: ㄱ, ㄴ은 반례를, ㄷ은 극한의 차 성질을 이용한다.\n정석 풀이: ㄱ. $f(x)=1$이면 $\\displaystyle\\lim_{x\\to0}\\dfrac x{f(x)}=\\lim_{x\\to0}x=0$이지만 $\\displaystyle\\lim_{x\\to0}f(x)=1\\ne0$이다. 거짓이다.\nㄴ. 모든 $x$에서 $f(x)\\lt g(x)$라도 극한에서는 등호가 될 수 있다. 예를 들어 $a=0$에서 $g(x)=1$, $f(x)=1-|x|\\ (x\\ne0)$, $f(0)=0$으로 정하면 모든 $x$에서 $f(x)\\lt g(x)$이지만 $\\displaystyle\\lim_{x\\to0}f(x)=\\lim_{x\\to0}g(x)=1$이다. 거짓이다.\nㄷ. $\\displaystyle\\lim_{x\\to a}f(x)$와 $\\displaystyle\\lim_{x\\to a}\\{f(x)+g(x)\\}$가 존재하면, $g(x)=\\{f(x)+g(x)\\}-f(x)$이고 두 극한의 차도 존재하므로 $\\displaystyle\\lim_{x\\to a}g(x)$가 존재한다. 참이다.\n그러므로 옳은 것은 ㄷ뿐이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -283,7 +319,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 미분가능하면 연속이므로 연속 조건과 좌·우 미분계수가 같다는 조건을 함께 쓴다.\n조건 정리: $x\\ge1$에서 $f(x)=x^3+bx^2+1$, $x\\lt1$에서 $f(x)=ax-3$이다.\n풀이 방향: $x=1$에서 연속 조건과 미분계수 조건으로 $a$, $b$를 구한다.\n정석 풀이: 연속이려면 $f(1)=1+b+1=b+2$가 좌극한 $a-3$과 같아야 하므로 $a-3=b+2$, 즉 $a-b=5$이다. 우미분계수는 $(3x^2+2bx)\\big|_{x=1}=3+2b$, 좌미분계수는 $a$이므로 $a=3+2b$이다. 두 식을 연립하면 $3+2b-b=5$에서 $b=2$, $a=7$이다. 따라서 $a+b=9$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 미분가능하면 연속이므로 연속 조건과 좌·우 미분계수가 같다는 조건을 함께 쓴다.\n조건 정리: $x\\ge1$에서 $f(x)=x^3+bx^2+1$, $x\\lt1$에서 $f(x)=ax-3$이다.\n풀이 방향: $x=1$에서 연속 조건과 미분계수 조건으로 $a$, $b$를 구한다.\n정석 풀이: 연속이려면 $f(1)=1+b+1=b+2$가 좌극한 $a-3$과 같아야 하므로 $a-3=b+2$, 즉 $a-b=5$이다. 우미분계수는 $(3x^2+2bx)\\big|_{x=1}=3+2b$, 좌미분계수는 $a$이므로 $a=3+2b$이다. 두 식을 연립하면 $3+2b-b=5$에서 $b=2$, $a=7$이다. 따라서 $a+b=9$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-03-DERIVATIVE",
+    "subUnit": "derivative",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -311,7 +351,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 항을 미분계수의 정의 꼴로 분리하여 계수를 맞춘다.\n조건 정리: 분자 $f(1-2h)-f(1+h)$는 $x=1$을 기준으로 하는 증분으로 이루어져 있다.\n풀이 방향: 두 항으로 나누어 각각 미분계수로 바꾼다.\n정석 풀이: 주어진 식을 $\\dfrac{f(1-2h)-f(1)}{3h}-\\dfrac{f(1+h)-f(1)}{3h}$로 쓰면\n$\\dfrac{f(1-2h)-f(1)}{3h}=-\\dfrac23\\cdot\\dfrac{f(1-2h)-f(1)}{-2h}\\to-\\dfrac23f'(1)$,\n$\\dfrac{f(1+h)-f(1)}{3h}=\\dfrac13\\cdot\\dfrac{f(1+h)-f(1)}h\\to\\dfrac13f'(1)$이다.\n따라서 주어진 극한은 $-\\dfrac23f'(1)-\\dfrac13f'(1)=-f'(1)=2$이므로 $f'(1)=-2$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 각 항을 미분계수의 정의 꼴로 분리하여 계수를 맞춘다.\n조건 정리: 분자 $f(1-2h)-f(1+h)$는 $x=1$을 기준으로 하는 증분으로 이루어져 있다.\n풀이 방향: 두 항으로 나누어 각각 미분계수로 바꾼다.\n정석 풀이: 주어진 식을 $\\dfrac{f(1-2h)-f(1)}{3h}-\\dfrac{f(1+h)-f(1)}{3h}$로 쓰면\n$\\dfrac{f(1-2h)-f(1)}{3h}=-\\dfrac23\\cdot\\dfrac{f(1-2h)-f(1)}{-2h}\\to-\\dfrac23f'(1)$,\n$\\dfrac{f(1+h)-f(1)}{3h}=\\dfrac13\\cdot\\dfrac{f(1+h)-f(1)}h\\to\\dfrac13f'(1)$이다.\n따라서 주어진 극한은 $-\\dfrac23f'(1)-\\dfrac13f'(1)=-f'(1)=2$이므로 $f'(1)=-2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-03-DERIVATIVE",
+    "subUnit": "derivative",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -340,7 +384,11 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 분모가 $0$에 수렴하는데 극한이 존재하면 분자도 $0$이 되고, 그 극한값이 미분계수와 연결된다.\n조건 정리: $x\\to2$에서 $x^2-4\\to0$이므로 $f(2)=3$이다.\n풀이 방향: $f(2)$와 $f'(2)$를 구해 접선을 세운 뒤 $y$절편을 구한다.\n정석 풀이: 분모가 $0$에 수렴하므로 분자도 $0$에 수렴해야 하고 $f(2)-3=0$, 즉 $f(2)=3$이다. 이때\n$\\displaystyle\\lim_{x\\to2}\\dfrac{f(x)-3}{x^2-4}=\\lim_{x\\to2}\\dfrac{f(x)-f(2)}{x-2}\\cdot\\dfrac1{x+2}=\\dfrac{f'(2)}4=1$에서 $f'(2)=4$이다. 접선은 $y-3=4(x-2)$, 즉 $y=4x-5$이므로 $y$절편은 $-5$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 분모가 $0$에 수렴하는데 극한이 존재하면 분자도 $0$이 되고, 그 극한값이 미분계수와 연결된다.\n조건 정리: $x\\to2$에서 $x^2-4\\to0$이므로 $f(2)=3$이다.\n풀이 방향: $f(2)$와 $f'(2)$를 구해 접선을 세운 뒤 $y$절편을 구한다.\n정석 풀이: 분모가 $0$에 수렴하므로 분자도 $0$에 수렴해야 하고 $f(2)-3=0$, 즉 $f(2)=3$이다. 이때\n$\\displaystyle\\lim_{x\\to2}\\dfrac{f(x)-3}{x^2-4}=\\lim_{x\\to2}\\dfrac{f(x)-f(2)}{x-2}\\cdot\\dfrac1{x+2}=\\dfrac{f'(2)}4=1$에서 $f'(2)=4$이다. 접선은 $y-3=4(x-2)$, 즉 $y=4x-5$이므로 $y$절편은 $-5$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-05-DERIVATIVE",
+    "subUnit": "derivative",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -369,7 +417,11 @@ window.questionBank = [
       "16"
     ],
     "answer": "①",
-    "solution": "[키포인트] 접선이 곡선과 다시 만나는 점은 접점에서 이중근을 갖는 삼차방정식으로 찾는다.\n조건 정리: 곡선은 $y=x^3-4x$이고 접점은 $A(1,-3)$이다.\n풀이 방향: $A$에서의 접선을 구해 곡선과의 교점 방정식을 세우고 $B$의 $x$좌표를 구한다.\n정석 풀이: $y'=3x^2-4$이므로 $A(1,-3)$에서의 접선의 기울기는 $3-4=-1$이고 접선은 $y+3=-(x-1)$, 즉 $y=-x-2$이다. 곡선과의 교점은 $x^3-4x=-x-2$, 즉 $x^3-3x+2=0$이므로 $(x-1)^2(x+2)=0$이다. 접점 $x=1$ 외의 교점은 $x=-2$이므로 $B$의 $x$좌표는 $-2$이다. $B$에서의 접선의 기울기는 $y'\\big|_{x=-2}=3\\times4-4=8$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 접선이 곡선과 다시 만나는 점은 접점에서 이중근을 갖는 삼차방정식으로 찾는다.\n조건 정리: 곡선은 $y=x^3-4x$이고 접점은 $A(1,-3)$이다.\n풀이 방향: $A$에서의 접선을 구해 곡선과의 교점 방정식을 세우고 $B$의 $x$좌표를 구한다.\n정석 풀이: $y'=3x^2-4$이므로 $A(1,-3)$에서의 접선의 기울기는 $3-4=-1$이고 접선은 $y+3=-(x-1)$, 즉 $y=-x-2$이다. 곡선과의 교점은 $x^3-4x=-x-2$, 즉 $x^3-3x+2=0$이므로 $(x-1)^2(x+2)=0$이다. 접점 $x=1$ 외의 교점은 $x=-2$이므로 $B$의 $x$좌표는 $-2$이다. $B$에서의 접선의 기울기는 $y'\\big|_{x=-2}=3\\times4-4=8$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -398,7 +450,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] $h(x)=x^2f(x)-2x-1$로 놓고 주어진 점에서의 부호로 사잇값 정리를 적용한다.\n조건 정리: 그래프에서 $f(-2)=-1$, $f(-1)=1$, $f(0)=2$, $f(1)=3$, $f(2)=2$, $f(3)=0$이다.\n풀이 방향: 각 점에서 $h$의 값을 구해 부호가 바뀌는 구간과 $h=0$인 점을 센다.\n정석 풀이: $h(x)=x^2f(x)-2x-1$이라 하면 $h$는 연속이다.\n$h(-2)=4(-1)+4-1=-1$, $h(-1)=1(1)+2-1=2$, $h(0)=-1$, $h(1)=3-2-1=0$, $h(2)=4(2)-4-1=3$, $h(3)=0-6-1=-7$이다.\n$h(-2)\\lt0$, $h(-1)\\gt0$이므로 $(-2,-1)$에 한 근이, $h(-1)\\gt0$, $h(0)\\lt0$이므로 $(-1,0)$에 한 근이, $h(2)\\gt0$, $h(3)\\lt0$이므로 $(2,3)$에 한 근이 있다. 또 $h(1)=0$이므로 $x=1$도 실근이다. 따라서 열린구간 $(-2,3)$에서 실근은 적어도 $4$개이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $h(x)=x^2f(x)-2x-1$로 놓고 주어진 점에서의 부호로 사잇값 정리를 적용한다.\n조건 정리: 그래프에서 $f(-2)=-1$, $f(-1)=1$, $f(0)=2$, $f(1)=3$, $f(2)=2$, $f(3)=0$이다.\n풀이 방향: 각 점에서 $h$의 값을 구해 부호가 바뀌는 구간과 $h=0$인 점을 센다.\n정석 풀이: $h(x)=x^2f(x)-2x-1$이라 하면 $h$는 연속이다.\n$h(-2)=4(-1)+4-1=-1$, $h(-1)=1(1)+2-1=2$, $h(0)=-1$, $h(1)=3-2-1=0$, $h(2)=4(2)-4-1=3$, $h(3)=0-6-1=-7$이다.\n$h(-2)\\lt0$, $h(-1)\\gt0$이므로 $(-2,-1)$에 한 근이, $h(-1)\\gt0$, $h(0)\\lt0$이므로 $(-1,0)$에 한 근이, $h(2)\\gt0$, $h(3)\\lt0$이므로 $(2,3)$에 한 근이 있다. 또 $h(1)=0$이므로 $x=1$도 실근이다. 따라서 열린구간 $(-2,3)$에서 실근은 적어도 $4$개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -426,7 +482,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 함수방정식을 한 변수에 대해 미분한 뒤 적당한 값을 대입한다.\n조건 정리: 모든 실수 $x$, $y$에 대하여 $f(x+y)=f(x)+f(y)+2xy-f(0)$이다.\n풀이 방향: 양변을 $x$에 대하여 미분하고 $x=0$을 대입한다.\n정석 풀이: 양변을 $x$에 대하여 미분하면 $f'(x+y)=f'(x)+2y$이다. 여기에 $x=0$, $y=2$를 대입하면 $f'(2)=f'(0)+4$이므로 $f'(2)-f'(0)=4$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 함수방정식을 한 변수에 대해 미분한 뒤 적당한 값을 대입한다.\n조건 정리: 모든 실수 $x$, $y$에 대하여 $f(x+y)=f(x)+f(y)+2xy-f(0)$이다.\n풀이 방향: 양변을 $x$에 대하여 미분하고 $x=0$을 대입한다.\n정석 풀이: 양변을 $x$에 대하여 미분하면 $f'(x+y)=f'(x)+2y$이다. 여기에 $x=0$, $y=2$를 대입하면 $f'(2)=f'(0)+4$이므로 $f'(2)-f'(0)=4$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-04-DERIVATIVE",
+    "subUnit": "도함수",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -455,7 +515,11 @@ window.questionBank = [
       "0"
     ],
     "answer": "①",
-    "solution": "[키포인트] 무한대의 극한으로 $f$의 꼴을, 분수식 극한의 유한 조건으로 남은 계수를 정한다.\n조건 정리: 첫 극한에서 $f(x)-x^3$은 최고차항의 계수가 $-4$인 이차식이다.\n풀이 방향: $f(x)=x^3-4x^2+ax+b$로 놓고 둘째 극한을 이용한다.\n정석 풀이: 첫 극한에서 $f(x)=x^3-4x^2+ax+b$로 놓을 수 있다. 둘째 극한에서 분모 $x^2+x-6=(x-2)(x+3)$이 $x\\to2$에서 $0$에 수렴하므로 분자도 $0$이 되어 $f(2)=0$이다. 이때\n$\\displaystyle\\lim_{x\\to2}\\dfrac{f(x)}{(x-2)(x+3)}=\\dfrac{f'(2)}{5}=1$에서 $f'(2)=5$이다.\n$f(2)=8-16+2a+b=2a+b-8=0$에서 $2a+b=8$이고, $f'(x)=3x^2-8x+a$에서 $f'(2)=12-16+a=a-4=5$이므로 $a=9$, $b=-10$이다. 따라서 $f(1)=1-4+9-10=-4$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 무한대의 극한으로 $f$의 꼴을, 분수식 극한의 유한 조건으로 남은 계수를 정한다.\n조건 정리: 첫 극한에서 $f(x)-x^3$은 최고차항의 계수가 $-4$인 이차식이다.\n풀이 방향: $f(x)=x^3-4x^2+ax+b$로 놓고 둘째 극한을 이용한다.\n정석 풀이: 첫 극한에서 $f(x)=x^3-4x^2+ax+b$로 놓을 수 있다. 둘째 극한에서 분모 $x^2+x-6=(x-2)(x+3)$이 $x\\to2$에서 $0$에 수렴하므로 분자도 $0$이 되어 $f(2)=0$이다. 이때\n$\\displaystyle\\lim_{x\\to2}\\dfrac{f(x)}{(x-2)(x+3)}=\\dfrac{f'(2)}{5}=1$에서 $f'(2)=5$이다.\n$f(2)=8-16+2a+b=2a+b-8=0$에서 $2a+b=8$이고, $f'(x)=3x^2-8x+a$에서 $f'(2)=12-16+a=a-4=5$이므로 $a=9$, $b=-10$이다. 따라서 $f(1)=1-4+9-10=-4$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -483,7 +547,11 @@ window.questionBank = [
       "25"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $xf(x)$와 $\\dfrac{g(x)}x$의 극한을 먼저 구한 뒤 곱과 합으로 정리한다.\n조건 정리: 첫 조건에서 $xf(x)\\to5$, 둘째 조건에서 $\\dfrac{g(x)}x\\to4$이다.\n풀이 방향: $f(x)g(x)=\\bigl(xf(x)\\bigr)\\cdot\\dfrac{g(x)}x$, $xf(x)$의 극한을 이용해 계산한다.\n정석 풀이: 첫 조건에서 $\\displaystyle\\lim_{x\\to0}\\{xf(x)-(x^2+3)\\}=2$이고 $x^2+3\\to3$이므로 $\\displaystyle\\lim_{x\\to0}xf(x)=5$이다. 둘째 조건에서 $\\dfrac1{x^2+1}\\to1$이므로 $\\displaystyle\\lim_{x\\to0}\\dfrac{g(x)}x=4$이다.\n따라서 $\\displaystyle\\lim_{x\\to0}f(x)g(x)=\\lim_{x\\to0}\\Bigl(xf(x)\\cdot\\dfrac{g(x)}x\\Bigr)=5\\times4=20$이고,\n$\\displaystyle\\lim_{x\\to0}\\{2f(x)g(x)-3xf(x)\\}=2\\times20-3\\times5=40-15=25$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $xf(x)$와 $\\dfrac{g(x)}x$의 극한을 먼저 구한 뒤 곱과 합으로 정리한다.\n조건 정리: 첫 조건에서 $xf(x)\\to5$, 둘째 조건에서 $\\dfrac{g(x)}x\\to4$이다.\n풀이 방향: $f(x)g(x)=\\bigl(xf(x)\\bigr)\\cdot\\dfrac{g(x)}x$, $xf(x)$의 극한을 이용해 계산한다.\n정석 풀이: 첫 조건에서 $\\displaystyle\\lim_{x\\to0}\\{xf(x)-(x^2+3)\\}=2$이고 $x^2+3\\to3$이므로 $\\displaystyle\\lim_{x\\to0}xf(x)=5$이다. 둘째 조건에서 $\\dfrac1{x^2+1}\\to1$이므로 $\\displaystyle\\lim_{x\\to0}\\dfrac{g(x)}x=4$이다.\n따라서 $\\displaystyle\\lim_{x\\to0}f(x)g(x)=\\lim_{x\\to0}\\Bigl(xf(x)\\cdot\\dfrac{g(x)}x\\Bigr)=5\\times4=20$이고,\n$\\displaystyle\\lim_{x\\to0}\\{2f(x)g(x)-3xf(x)\\}=2\\times20-3\\times5=40-15=25$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -512,7 +580,11 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "[키포인트] 양변의 차수와 최고차항을 비교하여 $f$의 차수를 먼저 정한다.\n조건 정리: $f(x)=9x^4-2x^3+1-\\{f'(x)\\}^2$이고 $f$의 최고차항의 계수는 $1$이다.\n풀이 방향: $f$를 삼차함수로 놓고 계수를 하나씩 비교한다.\n정석 풀이: $f$가 $n$차이면 $\\{f'(x)\\}^2$은 $2(n-1)$차이다. 우변의 $9x^4$ 항과 상쇄되려면 $2(n-1)=4$, 즉 $n=3$이어야 한다. $f(x)=x^3+px^2+qx+r$로 놓으면 $f'(x)=3x^2+2px+q$이고 $\\{f'(x)\\}^2=9x^4+12px^3+(4p^2+6q)x^2+4pqx+q^2$이다.\n우변은 $9x^4-2x^3+1-\\{f'(x)\\}^2=(-2-12p)x^3-(4p^2+6q)x^2-4pqx+(1-q^2)$이다. 이를 $f(x)=x^3+px^2+qx+r$과 비교하면\n$x^3$: $1=-2-12p$에서 $p=-\\dfrac14$, $x^2$: $p=-(4p^2+6q)$에서 $-\\dfrac14=-\\dfrac14-6q$이므로 $q=0$, 상수항: $r=1-q^2=1$이다. 즉 $f(x)=x^3-\\dfrac14x^2+1$이므로 $f(2)=8-1+1=8$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 양변의 차수와 최고차항을 비교하여 $f$의 차수를 먼저 정한다.\n조건 정리: $f(x)=9x^4-2x^3+1-\\{f'(x)\\}^2$이고 $f$의 최고차항의 계수는 $1$이다.\n풀이 방향: $f$를 삼차함수로 놓고 계수를 하나씩 비교한다.\n정석 풀이: $f$가 $n$차이면 $\\{f'(x)\\}^2$은 $2(n-1)$차이다. 우변의 $9x^4$ 항과 상쇄되려면 $2(n-1)=4$, 즉 $n=3$이어야 한다. $f(x)=x^3+px^2+qx+r$로 놓으면 $f'(x)=3x^2+2px+q$이고 $\\{f'(x)\\}^2=9x^4+12px^3+(4p^2+6q)x^2+4pqx+q^2$이다.\n우변은 $9x^4-2x^3+1-\\{f'(x)\\}^2=(-2-12p)x^3-(4p^2+6q)x^2-4pqx+(1-q^2)$이다. 이를 $f(x)=x^3+px^2+qx+r$과 비교하면\n$x^3$: $1=-2-12p$에서 $p=-\\dfrac14$, $x^2$: $p=-(4p^2+6q)$에서 $-\\dfrac14=-\\dfrac14-6q$이므로 $q=0$, 상수항: $r=1-q^2=1$이다. 즉 $f(x)=x^3-\\dfrac14x^2+1$이므로 $f(2)=8-1+1=8$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-04-DERIVATIVE",
+    "subUnit": "도함수",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -543,7 +615,11 @@ window.questionBank = [
       "$(2,\\dfrac23)$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $\\overline{AP}=\\overline{BQ}=t$로 두고 두 직선의 교점을 $t$의 식으로 구한 뒤 극한을 취한다.\n조건 정리: $A(3,0)$, $B(0,2)$이고 $P(3-t,\\ 0)$, $Q(0,\\ 2+t)$이다.\n풀이 방향: 직선 $PQ$와 직선 $AB$의 교점 $R$의 좌표를 구하고 $t\\to0$의 극한을 구한다.\n정석 풀이: 직선 $AB$는 $\\dfrac x3+\\dfrac y2=1$, 즉 $2x+3y=6$이다. 직선 $PQ$는 $\\dfrac x{3-t}+\\dfrac y{2+t}=1$, 즉 $(2+t)x+(3-t)y=(3-t)(2+t)$이다.\n$AB$에서 $x=\\dfrac{6-3y}2$를 $PQ$에 대입하여 정리하면 $-5t\\,y=-4t-2t^2$이므로 $y=\\dfrac{4+2t}5$이고, $x=\\dfrac{6-3y}2$이다. $t\\to0$에서 $y\\to\\dfrac45$이고 $x\\to\\dfrac{6-\\dfrac{12}5}2=\\dfrac95$이다. 따라서 $R$는 점 $\\left(\\dfrac95,\\ \\dfrac45\\right)$에 가까워진다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $\\overline{AP}=\\overline{BQ}=t$로 두고 두 직선의 교점을 $t$의 식으로 구한 뒤 극한을 취한다.\n조건 정리: $A(3,0)$, $B(0,2)$이고 $P(3-t,\\ 0)$, $Q(0,\\ 2+t)$이다.\n풀이 방향: 직선 $PQ$와 직선 $AB$의 교점 $R$의 좌표를 구하고 $t\\to0$의 극한을 구한다.\n정석 풀이: 직선 $AB$는 $\\dfrac x3+\\dfrac y2=1$, 즉 $2x+3y=6$이다. 직선 $PQ$는 $\\dfrac x{3-t}+\\dfrac y{2+t}=1$, 즉 $(2+t)x+(3-t)y=(3-t)(2+t)$이다.\n$AB$에서 $x=\\dfrac{6-3y}2$를 $PQ$에 대입하여 정리하면 $-5t\\,y=-4t-2t^2$이므로 $y=\\dfrac{4+2t}5$이고, $x=\\dfrac{6-3y}2$이다. $t\\to0$에서 $y\\to\\dfrac45$이고 $x\\to\\dfrac{6-\\dfrac{12}5}2=\\dfrac95$이다. 따라서 $R$는 점 $\\left(\\dfrac95,\\ \\dfrac45\\right)$에 가까워진다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -566,7 +642,11 @@ window.questionBank = [
     "content": "[서술형 1] 다항식 $f(x)=x^3+ax^2+b$가 $(x-1)^2$으로 나누어떨어질 때, 상수 $a$, $b$의 값을 구하고 그 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$a=-\\dfrac32,\\ b=\\dfrac12$",
-    "solution": "[키포인트] $(x-1)^2$으로 나누어떨어지면 $x=1$에서 함숫값과 미분계수가 모두 $0$이다.\n조건 정리: $f(x)=x^3+ax^2+b$이다.\n풀이 방향: $f(1)=0$과 $f'(1)=0$을 연립한다.\n정석 풀이: $f(x)$가 $(x-1)^2$으로 나누어떨어지므로 $f(1)=0$, $f'(1)=0$이다. $f(1)=1+a+b=0$이고 $f'(x)=3x^2+2ax$에서 $f'(1)=3+2a=0$이므로 $a=-\\dfrac32$이다. 이를 첫 식에 대입하면 $b=-1-a=-1+\\dfrac32=\\dfrac12$이다.\n따라서 구하는 값은 $a=-\\dfrac32$, $b=\\dfrac12$이다."
+    "solution": "[키포인트] $(x-1)^2$으로 나누어떨어지면 $x=1$에서 함숫값과 미분계수가 모두 $0$이다.\n조건 정리: $f(x)=x^3+ax^2+b$이다.\n풀이 방향: $f(1)=0$과 $f'(1)=0$을 연립한다.\n정석 풀이: $f(x)$가 $(x-1)^2$으로 나누어떨어지므로 $f(1)=0$, $f'(1)=0$이다. $f(1)=1+a+b=0$이고 $f'(x)=3x^2+2ax$에서 $f'(1)=3+2a=0$이므로 $a=-\\dfrac32$이다. 이를 첫 식에 대입하면 $b=-1-a=-1+\\dfrac32=\\dfrac12$이다.\n따라서 구하는 값은 $a=-\\dfrac32$, $b=\\dfrac12$이다.",
+    "subUnitKey": "H15-M2-04-DERIVATIVE",
+    "subUnit": "도함수",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -591,7 +671,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=-6,\\ b=11$",
     "solution": "[키포인트] 합성함수가 연속이려면 안쪽 함수가 불연속인 점에서 바깥쪽 함수가 좌·우 극한값에서 같은 값을 가져야 한다.\n조건 정리: $f$는 $x=0$에서 좌·우 극한이 $1$과 $2$, $x=1$에서 $2$와 $3$으로 불연속이다.\n풀이 방향: $g$가 $f$의 극한값들에서 같은 값을 갖도록 조건을 세운다.\n정석 풀이: $f(x)$는 $x=0$에서 왼쪽 값 $1$, 오른쪽 값 $2$이고, $x=1$에서 왼쪽 값 $2$, 오른쪽 값 $3$이다. $(g\\circ f)(x)$가 이 두 점에서 연속이려면 $g(1)=g(2)$이고 $g(2)=g(3)$이어야 한다.\n$g(x)=x^3+ax^2+bx$에서 $g(1)=1+a+b$, $g(2)=8+4a+2b$, $g(3)=27+9a+3b$이다. $g(1)=g(2)$에서 $3a+b=-7$, $g(2)=g(3)$에서 $5a+b=-19$이고, 두 식을 빼면 $2a=-12$이므로 $a=-6$, $b=-7-3(-6)=11$이다.\n따라서 구하는 값은 $a=-6$, $b=11$이다.",
-    "image": "assets/images/23_복성고_2학기_중간_고2_수학II/q21.png"
+    "image": "assets/images/23_복성고_2학기_중간_고2_수학II/q21.png",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -614,6 +698,10 @@ window.questionBank = [
     "content": "[서술형 3] 삼차함수 $f(x)$가 다음 등식을 만족시킬 때, $f(0)$의 값을 구하고 그 과정을 서술하시오. [8점]\n$\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)}{x-1}+\\lim_{x\\to1}\\dfrac{f(2x)}{x-1}+\\lim_{x\\to1}\\dfrac{f(3x)}{x-1}=12$",
     "choices": [],
     "answer": "$-12$",
-    "solution": "[키포인트] 각 극한이 유한하므로 분자가 $0$이 되어야 하고, 그로부터 $f$의 인수를 알 수 있다.\n조건 정리: 세 극한이 모두 유한하므로 $f(1)=0$, $f(2)=0$, $f(3)=0$이다.\n풀이 방향: $f(x)=a(x-1)(x-2)(x-3)$으로 놓고 세 극한의 합을 계산한다.\n정석 풀이: 첫 극한 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)}{x-1}$이 유한하므로 $f(1)=0$이고 그 값은 $f'(1)$이다. 둘째 극한 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(2x)}{x-1}$이 유한하려면 $f(2)=0$이고 그 값은 $2f'(2)$이며, 셋째 극한은 $f(3)=0$일 때 $3f'(3)$이다. 따라서 $f(x)=a(x-1)(x-2)(x-3)$이다.\n$f'(1)=a(1-2)(1-3)=2a$, $f'(2)=a(2-1)(2-3)=-a$, $f'(3)=a(3-1)(3-2)=2a$이므로 세 극한의 합은 $2a+2(-a)+3(2a)=6a=12$에서 $a=2$이다. 그러므로 $f(0)=2(-1)(-2)(-3)=-12$이다.\n따라서 구하는 값은 $-12$이다."
+    "solution": "[키포인트] 각 극한이 유한하므로 분자가 $0$이 되어야 하고, 그로부터 $f$의 인수를 알 수 있다.\n조건 정리: 세 극한이 모두 유한하므로 $f(1)=0$, $f(2)=0$, $f(3)=0$이다.\n풀이 방향: $f(x)=a(x-1)(x-2)(x-3)$으로 놓고 세 극한의 합을 계산한다.\n정석 풀이: 첫 극한 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)}{x-1}$이 유한하므로 $f(1)=0$이고 그 값은 $f'(1)$이다. 둘째 극한 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(2x)}{x-1}$이 유한하려면 $f(2)=0$이고 그 값은 $2f'(2)$이며, 셋째 극한은 $f(3)=0$일 때 $3f'(3)$이다. 따라서 $f(x)=a(x-1)(x-2)(x-3)$이다.\n$f'(1)=a(1-2)(1-3)=2a$, $f'(2)=a(2-1)(2-3)=-a$, $f'(3)=a(3-1)(3-2)=2a$이므로 세 극한의 합은 $2a+2(-a)+3(2a)=6a=12$에서 $a=2$이다. 그러므로 $f(0)=2(-1)(-2)(-3)=-12$이다.\n따라서 구하는 값은 $-12$이다.",
+    "subUnitKey": "H15-M2-03-DERIVATIVE",
+    "subUnit": "derivative",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   }
 ];

@@ -7,11 +7,17 @@ window.questionBank = [
     "originalCategory": "1. 순환소수를 분수로 나타내는 식",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "순환소수 $0.\\dot{2}\\dot{7}$을 분수로 나타낼 때 다음 중 가장 편리한 식을 고르면? (단, $x=0.\\dot{2}\\dot{7}$) [3점]",
     "choices": [
@@ -22,7 +28,11 @@ window.questionBank = [
       "$1000x-10x$"
     ],
     "answer": "②",
-    "solution": "* $x = 0.272727\\dots$ 이므로, 양변에 $100$을 곱하면 $100x = 27.272727\\dots$ 입니다.\n* 두 식을 빼면 순환하는 부분이 지워지므로, 가장 편리한 식은 $100x - x$ 입니다.\n* 정답: ②"
+    "solution": "* $x = 0.272727\\dots$ 이므로, 양변에 $100$을 곱하면 $100x = 27.272727\\dots$ 입니다.\n* 두 식을 빼면 순환하는 부분이 지워지므로, 가장 편리한 식은 $100x - x$ 입니다.\n* 정답: ②",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -31,11 +41,19 @@ window.questionBank = [
     "originalCategory": "2. 순환소수의 성질과 표현",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","표해석","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "표해석",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "content": "순환소수 $x=1.23444\\dots$에 대한 다음 설명으로 옳지 않은 것은? [4점]",
     "choices": [
@@ -46,7 +64,11 @@ window.questionBank = [
       "$1000x-100x$를 이용하면 분수로 나타낼 수 있다."
     ],
     "answer": "③",
-    "solution": "* 순환소수는 소수점 아래 0이 아닌 숫자가 무한히 반복되므로 무한소수입니다.\n* 따라서 ③ \"$x$는 무한소수가 아니다\"라는 설명은 옳지 않습니다.\n* 정답: ③"
+    "solution": "* 순환소수는 소수점 아래 0이 아닌 숫자가 무한히 반복되므로 무한소수입니다.\n* 따라서 ③ \"$x$는 무한소수가 아니다\"라는 설명은 옳지 않습니다.\n* 정답: ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -55,11 +77,18 @@ window.questionBank = [
     "originalCategory": "3. 순환마디 개수 구하기",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "분수 $\\frac{1}{3}$와 $\\frac{8}{11}$을 소수로 나타내었을 때의 순환마디의 숫자의 개수를 각각 $x, y$라 할 때, $x+y$의 값을 구하면? [4점]",
     "choices": [
@@ -70,7 +99,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "* $\\frac{1}{3} = 0.333\\dots = 0.\\dot{3}$ 이므로 순환마디의 숫자는 1개 ($x=1$)\n* $\\frac{8}{11} = 0.7272\\dots = 0.\\dot{7}\\dot{2}$ 이므로 순환마디의 숫자는 2개 ($y=2$)\n* $x+y = 1+2 = 3$\n* 정답: ②"
+    "solution": "* $\\frac{1}{3} = 0.333\\dots = 0.\\dot{3}$ 이므로 순환마디의 숫자는 1개 ($x=1$)\n* $\\frac{8}{11} = 0.7272\\dots = 0.\\dot{7}\\dot{2}$ 이므로 순환마디의 숫자는 2개 ($y=2$)\n* $x+y = 1+2 = 3$\n* 정답: ②",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -79,11 +112,17 @@ window.questionBank = [
     "originalCategory": "4. 순환소수의 특정 자리 숫자 찾기",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "분수 $\\frac{6}{13}$을 소수로 나타낼 때 소수점 아래 123번째 자리의 숫자를 구하면? [4점]",
     "choices": [
@@ -94,7 +133,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "①",
-    "solution": "* $\\frac{6}{13} = 0.\\dot{4}6153\\dot{8}$ 이므로 순환마디를 이루는 숫자는 6개입니다.\n* $123 \\div 6 = 20 \\dots 3$ 이므로, 소수점 아래 123번째 자리 숫자는 순환마디의 3번째 숫자와 같습니다.\n* 순환마디 `461538`의 3번째 숫자는 1입니다.\n* 정답: ①"
+    "solution": "* $\\frac{6}{13} = 0.\\dot{4}6153\\dot{8}$ 이므로 순환마디를 이루는 숫자는 6개입니다.\n* $123 \\div 6 = 20 \\dots 3$ 이므로, 소수점 아래 123번째 자리 숫자는 순환마디의 3번째 숫자와 같습니다.\n* 순환마디 `461538`의 3번째 숫자는 1입니다.\n* 정답: ①",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -103,11 +146,20 @@ window.questionBank = [
     "originalCategory": "5. 유한소수가 되는 조건",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","자연수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "분수 $\\frac{14}{40 \\times x}$를 소수로 나타내면 유한소수가 될 때, $x$의 값이 될 수 있는 모든 한 자리 자연수의 합을 구하면? [5점]",
     "choices": [
@@ -118,7 +170,11 @@ window.questionBank = [
       "37"
     ],
     "answer": "④",
-    "solution": "* 식을 소인수분해하여 나타내면 $\\frac{14}{40x} = \\frac{7}{2^2 \\times 5 \\times x}$ 입니다.\n* 분자의 7과 약분되는 경우를 포함하여, 유한소수가 되기 위한 한 자리 자연수 $x$는 $1, 2, 4, 5, 7, 8$입니다.\n* 합계는 $1+2+4+5+7+8 = 27$입니다.\n* 정답: ④"
+    "solution": "* 식을 소인수분해하여 나타내면 $\\frac{14}{40x} = \\frac{7}{2^2 \\times 5 \\times x}$ 입니다.\n* 분자의 7과 약분되는 경우를 포함하여, 유한소수가 되기 위한 한 자리 자연수 $x$는 $1, 2, 4, 5, 7, 8$입니다.\n* 합계는 $1+2+4+5+7+8 = 27$입니다.\n* 정답: ④",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -126,12 +182,18 @@ window.questionBank = [
     "category": "6. 지수법칙 기초",
     "originalCategory": "6. 지수법칙 기초",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-6.지수법칙기초",
-    "standardUnit": "6. 지수법칙 기초",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","나머지정리","지수","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "나머지정리",
+      "지수",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 중 계산 결과가 나머지 넷과 다른 하나를 고르면? [4점]",
     "choices": [
@@ -142,7 +204,11 @@ window.questionBank = [
       "$a \\times a^2 \\times a^3$"
     ],
     "answer": "②",
-    "solution": "* ① $a^{4+2} = a^6$\n* ② $a^{12-2} = a^{10}$\n* ③ $a^{2 \\times 3} = a^6$\n* ④ $(ab)^3 \\div \\left(\\frac{b}{a}\\right)^3 = a^3b^3 \\times \\left(\\frac{a}{b}\\right)^3 = a^6$\n* ⑤ $a^{1+2+3} = a^6$\n* 따라서 결과가 다른 하나는 ②입니다.\n* 정답: ②"
+    "solution": "* ① $a^{4+2} = a^6$\n* ② $a^{12-2} = a^{10}$\n* ③ $a^{2 \\times 3} = a^6$\n* ④ $(ab)^3 \\div \\left(\\frac{b}{a}\\right)^3 = a^3b^3 \\times \\left(\\frac{a}{b}\\right)^3 = a^6$\n* ⑤ $a^{1+2+3} = a^6$\n* 따라서 결과가 다른 하나는 ②입니다.\n* 정답: ②",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -150,12 +216,19 @@ window.questionBank = [
     "category": "7. 지수법칙의 활용 (단위 환산)",
     "originalCategory": "7. 지수법칙의 활용 (단위 환산)",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-7.지수법칙의활용(단위환산)",
-    "standardUnit": "7. 지수법칙의 활용 (단위 환산)",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","절댓값","지수","표해석","응용","계산"],
+    "tags": [
+      "객관식",
+      "절댓값",
+      "지수",
+      "표해석",
+      "응용",
+      "계산"
+    ],
     "wide": false,
     "content": "컴퓨터에서 데이터의 양을 나타내는 가장 작은 단위를 1bit(비트)라고 한다. 다음 표는 데이터의 양의 단위 사이의 관계를 나타낸 것이다. 이때 16MB는 몇 bit인가? [4점]<br><br>|1B(바이트)|1KB(킬로바이트)|1MB(메가바이트)|<br>|:---:|:---:|:---:|<br>|$2^3$ bit|$2^{10}$ B|$2^{10}$ KB|",
     "choices": [
@@ -166,7 +239,11 @@ window.questionBank = [
       "$2^{27}$ bit"
     ],
     "answer": "⑤",
-    "solution": "* $1\\text{MB} = 2^{10}\\text{KB} = 2^{10} \\times 2^{10}\\text{B} = 2^{20}\\text{B}$\n* $1\\text{MB} = 2^{20} \\times 2^3\\text{bit} = 2^{23}\\text{bit}$\n* $16\\text{MB} = 16 \\times 2^{23}\\text{bit} = 2^4 \\times 2^{23}\\text{bit} = 2^{27}\\text{bit}$\n* 정답: ⑤"
+    "solution": "* $1\\text{MB} = 2^{10}\\text{KB} = 2^{10} \\times 2^{10}\\text{B} = 2^{20}\\text{B}$\n* $1\\text{MB} = 2^{20} \\times 2^3\\text{bit} = 2^{23}\\text{bit}$\n* $16\\text{MB} = 16 \\times 2^{23}\\text{bit} = 2^4 \\times 2^{23}\\text{bit} = 2^{27}\\text{bit}$\n* 정답: ⑤",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -174,12 +251,18 @@ window.questionBank = [
     "category": "8. 지수법칙의 응용",
     "originalCategory": "8. 지수법칙의 응용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-8.지수법칙의응용",
-    "standardUnit": "8. 지수법칙의 응용",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","조건해석","응용","계산"],
+    "tags": [
+      "객관식",
+      "지수",
+      "조건해석",
+      "응용",
+      "계산"
+    ],
     "wide": false,
     "content": "$3^4 = A$일 때, $\\frac{1}{27^8}$을 $A$를 사용하여 나타내면? [4점]",
     "choices": [
@@ -190,7 +273,11 @@ window.questionBank = [
       "$A^6$"
     ],
     "answer": "②",
-    "solution": "* $27^8 = (3^3)^8 = 3^{24}$\n* $3^{24} = (3^4)^6 = A^6$\n* 따라서 $\\frac{1}{27^8} = \\frac{1}{A^6}$ 입니다.\n* 정답: ②"
+    "solution": "* $27^8 = (3^3)^8 = 3^{24}$\n* $3^{24} = (3^4)^6 = A^6$\n* 따라서 $\\frac{1}{27^8} = \\frac{1}{A^6}$ 입니다.\n* 정답: ②",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -198,12 +285,18 @@ window.questionBank = [
     "category": "9. 단항식의 곱셈과 나눗셈",
     "originalCategory": "9. 단항식의 곱셈과 나눗셈",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","전개","조건해석","계산","기출"],
+    "tags": [
+      "객관식",
+      "전개",
+      "조건해석",
+      "계산",
+      "기출"
+    ],
     "wide": false,
     "content": "$(-4x^A y^3)^2 \\times x^3 y^2 \\div (\\frac{x}{y^2})^B = C x^6 y^{18}$일 때, 세 상수 $A, B, C$에 대하여 $A+B+C$의 값을 구하면? [4점]",
     "choices": [
@@ -214,7 +307,11 @@ window.questionBank = [
       "25"
     ],
     "answer": "⑤",
-    "solution": "* 식을 전개하면 $16x^{2A}y^6 \\times x^3y^2 \\div \\left(\\frac{x}{y^2}\\right)^B$ 입니다.\n* $= 16x^{2A+3}y^8 \\times \\frac{y^{2B}}{x^B} = 16x^{2A+3-B}y^{8+2B}$ 입니다.\n* $16x^{2A+3-B}y^{8+2B} = Cx^6y^{18}$ 이므로, $8+2B=18$, $2A+3-B=6$입니다.\n* 따라서 $B=5$, $A=4$, $C=16$이고 $A+B+C=25$입니다.\n* 정답: ⑤"
+    "solution": "* 식을 전개하면 $16x^{2A}y^6 \\times x^3y^2 \\div \\left(\\frac{x}{y^2}\\right)^B$ 입니다.\n* $= 16x^{2A+3}y^8 \\times \\frac{y^{2B}}{x^B} = 16x^{2A+3-B}y^{8+2B}$ 입니다.\n* $16x^{2A+3-B}y^{8+2B} = Cx^6y^{18}$ 이므로, $8+2B=18$, $2A+3-B=6$입니다.\n* 따라서 $B=5$, $A=4$, $C=16$이고 $A+B+C=25$입니다.\n* 정답: ⑤",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -222,12 +319,19 @@ window.questionBank = [
     "category": "10. 다항식의 전개와 동류항 계산",
     "originalCategory": "10. 다항식의 전개와 동류항 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-10.다항식의전개와동류항계산",
-    "standardUnit": "10. 다항식의 전개와 동류항 계산",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M1-03",
+    "standardUnit": "문자와 식",
+    "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","전개","계수비교","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "전개",
+      "계수비교",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 식 $a(8a-6b) - a(9a-12b)$을 전개하여 간단히 했을 때, $a^2$의 계수를 $A$, $ab$의 계수를 $B$라 하자. 이때 $A+B$의 값을 구하면? [4점]",
     "choices": [
@@ -238,7 +342,11 @@ window.questionBank = [
       "35"
     ],
     "answer": "③",
-    "solution": "* $a(8a-6b) - a(9a-12b) = 8a^2 - 6ab - 9a^2 + 12ab$\n* 동류항끼리 계산하면 $-a^2 + 6ab$입니다.\n* $A=-1$, $B=6$ 이므로 $A+B=5$입니다.\n* 정답: ③"
+    "solution": "* $a(8a-6b) - a(9a-12b) = 8a^2 - 6ab - 9a^2 + 12ab$\n* 동류항끼리 계산하면 $-a^2 + 6ab$입니다.\n* $A=-1$, $B=6$ 이므로 $A+B=5$입니다.\n* 정답: ③",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -246,12 +354,18 @@ window.questionBank = [
     "category": "11. 등식의 성질을 이용한 다항식 구하기",
     "originalCategory": "11. 등식의 성질을 이용한 다항식 구하기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-11.등식의성질을이용한다항식구하기",
-    "standardUnit": "11. 등식의 성질을 이용한 다항식 구하기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 $\\square$ 안에 알맞은 식을 구하면? [4점]<br>$\\frac{5}{3}xy \\times ( \\square ) \\div x^2y = 15x^2y - 25xy^2$",
     "choices": [
@@ -262,7 +376,11 @@ window.questionBank = [
       "$25x^3y - \\frac{125}{3}x^2y^2$"
     ],
     "answer": "③",
-    "solution": "* $(\\square) = (15x^2y - 25xy^2) \\times x^2y \\div \\frac{5}{3}xy$ 입니다.\n* $= (15x^2y - 25xy^2) \\times x^2y \\times \\frac{3}{5xy}$\n* $= (15x^2y - 25xy^2) \\times \\frac{3x}{5}$\n* $= 9x^3y - 15x^2y^2$\n* 정답: ③"
+    "solution": "* $(\\square) = (15x^2y - 25xy^2) \\times x^2y \\div \\frac{5}{3}xy$ 입니다.\n* $= (15x^2y - 25xy^2) \\times x^2y \\times \\frac{3}{5xy}$\n* $= (15x^2y - 25xy^2) \\times \\frac{3x}{5}$\n* $= 9x^3y - 15x^2y^2$\n* 정답: ③",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -270,12 +388,18 @@ window.questionBank = [
     "category": "12. 바르게 계산한 식 구하기",
     "originalCategory": "12. 바르게 계산한 식 구하기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-12.바르게계산한식구하기",
-    "standardUnit": "12. 바르게 계산한 식 구하기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","참거짓","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "참거짓",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "어떤 다항식을 $-\\frac{1}{3}ab$로 나누어야 할 것을 잘못하여 곱했더니 $3a^2b - 9ab^2$이 되었다. 이때 바르게 계산한 식을 구하면? [4점]",
     "choices": [
@@ -286,7 +410,11 @@ window.questionBank = [
       "$\\frac{1}{3}a^4b^3 - a^3b^4$"
     ],
     "answer": "④",
-    "solution": "* 어떤 다항식을 $A$라 하면, 잘못 계산한 식은 $A \\times (-\\frac{1}{3}ab) = 3a^2b - 9ab^2$입니다.\n* 따라서 $A = (3a^2b - 9ab^2) \\div (-\\frac{1}{3}ab) = -9a + 27b$입니다.\n* 바르게 계산하면 $A \\div (-\\frac{1}{3}ab) = (-9a + 27b) \\times (-\\frac{3}{ab}) = \\frac{27}{b} - \\frac{81}{a}$입니다.\n* 정답: ④"
+    "solution": "* 어떤 다항식을 $A$라 하면, 잘못 계산한 식은 $A \\times (-\\frac{1}{3}ab) = 3a^2b - 9ab^2$입니다.\n* 따라서 $A = (3a^2b - 9ab^2) \\div (-\\frac{1}{3}ab) = -9a + 27b$입니다.\n* 바르게 계산하면 $A \\div (-\\frac{1}{3}ab) = (-9a + 27b) \\times (-\\frac{3}{ab}) = \\frac{27}{b} - \\frac{81}{a}$입니다.\n* 정답: ④",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -294,12 +422,18 @@ window.questionBank = [
     "category": "13. 다항식과 단항식의 나눗셈",
     "originalCategory": "13. 다항식과 단항식의 나눗셈",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","참거짓","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "참거짓",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 식 $\\frac{3x-x^3}{x} - \\frac{6x^3-5x^5}{x^3}$을 바르게 계산하면? [4점]",
     "choices": [
@@ -310,7 +444,11 @@ window.questionBank = [
       "$4x^2-6x-3$"
     ],
     "answer": "①",
-    "solution": "* $\\frac{3x-x^3}{x} = 3-x^2$ 입니다.\n* $\\frac{6x^3-5x^5}{x^3} = 6-5x^2$ 입니다.\n* 따라서 $(3-x^2) - (6-5x^2) = 4x^2-3$입니다.\n* 정답: ①"
+    "solution": "* $\\frac{3x-x^3}{x} = 3-x^2$ 입니다.\n* $\\frac{6x^3-5x^5}{x^3} = 6-5x^2$ 입니다.\n* 따라서 $(3-x^2) - (6-5x^2) = 4x^2-3$입니다.\n* 정답: ①",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -318,12 +456,20 @@ window.questionBank = [
     "category": "14. 입체도형의 부피와 식의 계산",
     "originalCategory": "14. 입체도형의 부피와 식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","복소수","도형","원","부피","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "복소수",
+      "도형",
+      "원",
+      "부피",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 그림과 같은 두 원기둥 A, B가 있다. 원기둥 B의 높이는 원기둥 A의 높이의 $\\frac{1}{2}$배이고, 원기둥 B의 밑면의 반지름의 길이는 원기둥 A의 밑면의 반지름의 길이의 3배이다. 이때 원기둥 A의 부피는 원기둥 B의 부피의 몇 배인지 구하면? [4점]",
     "choices": [
@@ -334,7 +480,11 @@ window.questionBank = [
       "$\\frac{9}{2}$배"
     ],
     "answer": "④",
-    "solution": "* A의 밑면 반지름을 $r$, 높이를 $h$라 하면 $V_A=\\pi r^2h$입니다.\n* B의 밑면 반지름은 $3r$, 높이는 $\\frac{1}{2}h$이므로 $V_B=\\pi(3r)^2(\\frac{1}{2}h)=\\frac{9}{2}\\pi r^2h$입니다.\n* 따라서 $V_A=\\frac{2}{9}V_B$이므로 $\\frac{2}{9}$배입니다.\n* 정답: ④"
+    "solution": "* A의 밑면 반지름을 $r$, 높이를 $h$라 하면 $V_A=\\pi r^2h$입니다.\n* B의 밑면 반지름은 $3r$, 높이는 $\\frac{1}{2}h$이므로 $V_B=\\pi(3r)^2(\\frac{1}{2}h)=\\frac{9}{2}\\pi r^2h$입니다.\n* 따라서 $V_A=\\frac{2}{9}V_B$이므로 $\\frac{2}{9}$배입니다.\n* 정답: ④",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -342,12 +492,19 @@ window.questionBank = [
     "category": "15. 일차부등식의 뜻",
     "originalCategory": "15. 일차부등식의 뜻",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","부등식","일차부등식","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "지수",
+      "부등식",
+      "일차부등식",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중에서 일차부등식이 아닌 것을 모두 고르면? (정답 2개) [3점]",
     "choices": [
@@ -358,7 +515,11 @@ window.questionBank = [
       "$-\\frac{1}{3x} - \\frac{5}{2} \\ge \\frac{1}{6x}$"
     ],
     "answer": "①, ⑤",
-    "solution": "* ① 등호($=$)가 있으므로 방정식입니다.\n* ④ 양변을 정리하면 $-2x+1\\ge 0$이므로 일차부등식입니다.\n* ⑤ 분모에 미지수 $x$가 있으므로 일차부등식이 아닙니다.\n* 따라서 일차부등식이 아닌 것은 ①, ⑤입니다.\n* 정답: ①, ⑤"
+    "solution": "* ① 등호($=$)가 있으므로 방정식입니다.\n* ④ 양변을 정리하면 $-2x+1\\ge 0$이므로 일차부등식입니다.\n* ⑤ 분모에 미지수 $x$가 있으므로 일차부등식이 아닙니다.\n* 따라서 일차부등식이 아닌 것은 ①, ⑤입니다.\n* 정답: ①, ⑤",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -366,12 +527,21 @@ window.questionBank = [
     "category": "16. 문장을 부등식으로 나타내기",
     "originalCategory": "16. 문장을 부등식으로 나타내기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-16.문장을부등식으로나타내기",
-    "standardUnit": "16. 문장을 부등식으로 나타내기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","도형","원","범위","참거짓","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "도형",
+      "원",
+      "범위",
+      "참거짓",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 문장을 부등식으로 나타낸 것 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -382,7 +552,11 @@ window.questionBank = [
       "한 권에 8000원인 책 6권의 값과 배송비 2500원을 합한 금액이 20000원보다 적다. $\\rightarrow 8000 + 6 + 2500 < 20000$"
     ],
     "answer": "⑤",
-    "solution": "* ⑤ 책 6권의 값은 $8000 \\times 6$이므로, 올바른 식은 $8000 \\times 6 + 2500 < 20000$입니다.\n* 주어진 보기의 식에는 곱셈이 누락되었으므로 옳지 않습니다.\n* 정답: ⑤"
+    "solution": "* ⑤ 책 6권의 값은 $8000 \\times 6$이므로, 올바른 식은 $8000 \\times 6 + 2500 < 20000$입니다.\n* 주어진 보기의 식에는 곱셈이 누락되었으므로 옳지 않습니다.\n* 정답: ⑤",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -390,12 +564,19 @@ window.questionBank = [
     "category": "17. 일차부등식의 풀이",
     "originalCategory": "17. 일차부등식의 풀이",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","정수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "정수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "일차부등식 $1-0.4x \\le 0.2$를 만족시키는 $x$의 값 중에서 가장 작은 정수는? [4점]",
     "choices": [
@@ -406,7 +587,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "* 양변에 10을 곱하면 $10-4x \\le 2$입니다.\n* 정리하면 $-4x \\le -8$입니다.\n* 양변을 $-4$로 나누면 부등호 방향이 바뀌므로 $x \\ge 2$입니다.\n* 가장 작은 정수는 2입니다.\n* 정답: ②"
+    "solution": "* 양변에 10을 곱하면 $10-4x \\le 2$입니다.\n* 정리하면 $-4x \\le -8$입니다.\n* 양변을 $-4$로 나누면 부등호 방향이 바뀌므로 $x \\ge 2$입니다.\n* 가장 작은 정수는 2입니다.\n* 정답: ②",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -414,12 +599,19 @@ window.questionBank = [
     "category": "18. 부등식의 성질",
     "originalCategory": "18. 부등식의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-18.부등식의성질",
-    "standardUnit": "18. 부등식의 성질",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","참거짓","오류판별","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "참거짓",
+      "오류판별",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "$a < b$일 때, 다음 중 옳지 않은 것은? [4점]",
     "choices": [
@@ -430,7 +622,11 @@ window.questionBank = [
       "$-\\frac{a+2}{3} > -\\frac{b+2}{3}$"
     ],
     "answer": "④",
-    "solution": "* 부등식의 양변에 음수를 곱하거나 나누면 부등호의 방향이 바뀝니다.\n* ④ 양변에 $-1$을 곱하면 $-a > -b$가 되며, 여기에 $5$를 더하면 $5-a > 5-b$가 되어야 합니다.\n* 정답: ④"
+    "solution": "* 부등식의 양변에 음수를 곱하거나 나누면 부등호의 방향이 바뀝니다.\n* ④ 양변에 $-1$을 곱하면 $-a > -b$가 되며, 여기에 $5$를 더하면 $5-a > 5-b$가 되어야 합니다.\n* 정답: ④",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -438,12 +634,18 @@ window.questionBank = [
     "category": "19. 해가 같은 두 일차부등식",
     "originalCategory": "19. 해가 같은 두 일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 두 일차부등식의 해가 같을 때, 상수 $a$의 값은? [4점]<br>$\\frac{1}{3}x < \\frac{2}{5} + \\frac{2}{15}x, \\quad 2(a-0.3x) > x$",
     "choices": [
@@ -454,7 +656,11 @@ window.questionBank = [
       "$\\frac{12}{5}$"
     ],
     "answer": "①",
-    "solution": "* 첫 번째 부등식은 $x<2$입니다.\n* 두 번째 부등식은 $2a-0.6x>x \\rightarrow 2a>1.6x \\rightarrow x<\\frac{5a}{4}$입니다.\n* 두 해가 같으므로 $\\frac{5a}{4}=2$이고, 따라서 $a=\\frac{8}{5}$입니다.\n* 정답: ①"
+    "solution": "* 첫 번째 부등식은 $x<2$입니다.\n* 두 번째 부등식은 $2a-0.6x>x \\rightarrow 2a>1.6x \\rightarrow x<\\frac{5a}{4}$입니다.\n* 두 해가 같으므로 $\\frac{5a}{4}=2$이고, 따라서 $a=\\frac{8}{5}$입니다.\n* 정답: ①",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -462,12 +668,21 @@ window.questionBank = [
     "category": "20. 일차부등식의 활용 (거리, 속력, 시간)",
     "originalCategory": "20. 일차부등식의 활용 (거리, 속력, 시간)",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","부등식","일차부등식","실생활","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "부등식",
+      "일차부등식",
+      "실생활",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "혜인이가 조계산을 등산하는 데, 올라갈 때는 시속 2km로 걷고, 30분 동안 앉아 쉬다가, 내려올 때는 같은 길을 시속 3km로 걸어서 2시간 이내에 갔다 오려고 한다. 혜인이가 최대 몇 km까지 올라갔다 올 수 있는지 구하면? [5점]",
     "choices": [
@@ -478,7 +693,11 @@ window.questionBank = [
       "$\\frac{11}{5}$km"
     ],
     "answer": "③",
-    "solution": "* 올라간 거리를 $x$km라 하면 $\\frac{x}{2}+\\frac{1}{2}+\\frac{x}{3}\\le 2$입니다.\n* 양변에 6을 곱하면 $3x+3+2x\\le 12$입니다.\n* 따라서 $5x\\le 9$, 즉 $x\\le \\frac{9}{5}$입니다.\n* 정답: ③"
+    "solution": "* 올라간 거리를 $x$km라 하면 $\\frac{x}{2}+\\frac{1}{2}+\\frac{x}{3}\\le 2$입니다.\n* 양변에 6을 곱하면 $3x+3+2x\\le 12$입니다.\n* 따라서 $5x\\le 9$, 즉 $x\\le \\frac{9}{5}$입니다.\n* 정답: ③",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -486,17 +705,27 @@ window.questionBank = [
     "category": "서술형 1. 거듭제곱의 덧셈과 나눗셈",
     "originalCategory": "서술형 1. 거듭제곱의 덧셈과 나눗셈",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-서술형1.거듭제곱의덧셈과나눗셈",
-    "standardUnit": "서술형 1. 거듭제곱의 덧셈과 나눗셈",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","지수","조건해석","계산","기출"],
+    "tags": [
+      "서술형",
+      "지수",
+      "조건해석",
+      "계산",
+      "기출"
+    ],
     "wide": false,
     "content": "$A=2^3+2^3$, $B=4^5+4^5+4^5+4^5$일 때, 다음 물음에 답하시오. [6점]<br>(단, 풀이과정에 지수법칙을 적용한 과정을 나타낼 것)<br><br>(1) $A, B$를 각각 2의 거듭제곱을 사용하여 나타내시오. [4점]<br>(2) $B \\div A$의 값을 구하시오. [2점]",
     "choices": [],
     "answer": "(1) $A=2^4, B=2^{12}$  (2) $2^8$",
-    "solution": "* (1) $A = 2^3+2^3 = 2^3 \\times 2 = 2^4$입니다.\n* $B = 4^5+4^5+4^5+4^5 = 4^5 \\times 4 = 4^6 = (2^2)^6 = 2^{12}$입니다.\n* (2) $B \\div A = 2^{12} \\div 2^4 = 2^8$입니다.\n* 정답: (1) $A=2^4, B=2^{12}$  (2) $2^8$"
+    "solution": "* (1) $A = 2^3+2^3 = 2^3 \\times 2 = 2^4$입니다.\n* $B = 4^5+4^5+4^5+4^5 = 4^5 \\times 4 = 4^6 = (2^2)^6 = 2^{12}$입니다.\n* (2) $B \\div A = 2^{12} \\div 2^4 = 2^8$입니다.\n* 정답: (1) $A=2^4, B=2^{12}$  (2) $2^8$",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -504,17 +733,27 @@ window.questionBank = [
     "category": "서술형 2. 다항식의 계산과 식의 값",
     "originalCategory": "서술형 2. 다항식의 계산과 식의 값",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","다항식","대입","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "다항식",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$x=\\frac{4}{5}, y=3$일 때, 식 $(6x^2-15xy) \\div (-3x) - (5x^2y-5xy+10xy^2) \\div \\frac{5}{2}xy$의 값을 구하려고 한다. 다음 물음에 답하시오. [7점]<br>(단, 다항식의 사칙계산을 이용한 풀이과정을 나타낼 것)<br><br>(1) 주어진 식을 계산하시오. [4점]<br>(2) (1)의 결과에 $x=\\frac{4}{5}, y=3$을 대입하여 주어진 식의 값을 구하시오. [3점]",
     "choices": [],
     "answer": "(1) $-4x+y+2$  (2) $\\frac{9}{5}$",
-    "solution": "* (1) 첫 번째 나눗셈: $\\frac{6x^2-15xy}{-3x} = -2x + 5y$입니다.\n* 두 번째 나눗셈: $(5x^2y-5xy+10xy^2) \\times \\frac{2}{5xy} = 2x - 2 + 4y$입니다.\n* 전체 식: $(-2x + 5y) - (2x - 2 + 4y) = -4x + y + 2$입니다.\n* (2) $-4(\\frac{4}{5}) + 3 + 2 = \\frac{9}{5}$입니다.\n* 정답: (1) $-4x+y+2$  (2) $\\frac{9}{5}$"
+    "solution": "* (1) 첫 번째 나눗셈: $\\frac{6x^2-15xy}{-3x} = -2x + 5y$입니다.\n* 두 번째 나눗셈: $(5x^2y-5xy+10xy^2) \\times \\frac{2}{5xy} = 2x - 2 + 4y$입니다.\n* 전체 식: $(-2x + 5y) - (2x - 2 + 4y) = -4x + y + 2$입니다.\n* (2) $-4(\\frac{4}{5}) + 3 + 2 = \\frac{9}{5}$입니다.\n* 정답: (1) $-4x+y+2$  (2) $\\frac{9}{5}$",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
@@ -522,16 +761,28 @@ window.questionBank = [
     "category": "서술형 3. 수직선과 부등식의 해",
     "originalCategory": "서술형 3. 수직선과 부등식의 해",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","부등식","일차부등식","표해석","수직선","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "부등식",
+      "일차부등식",
+      "표해석",
+      "수직선",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 그림은 일차부등식 $4x-2 \\le -ax+b$의 해를 수직선 위에 나타낸 것이다. 이때, $a+b$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수이고 $a < -4$이다.) [7점]",
     "choices": [],
     "answer": "-6",
-    "solution": "* 수직선에 표시된 해는 $x \\ge -1$입니다.\n* 부등식을 풀면 $4x+ax \\le b+2 \\rightarrow (4+a)x \\le b+2$입니다.\n* 조건에서 $a < -4$이므로 $4+a$는 음수입니다. 따라서 나누면 부등호 방향이 바뀝니다.\n* 해가 $x \\ge -1$과 같아야 하므로 $\\frac{b+2}{4+a}=-1$입니다.\n* 따라서 $a+b=-6$입니다.\n* 정답: -6"
+    "solution": "* 수직선에 표시된 해는 $x \\ge -1$입니다.\n* 부등식을 풀면 $4x+ax \\le b+2 \\rightarrow (4+a)x \\le b+2$입니다.\n* 조건에서 $a < -4$이므로 $4+a$는 음수입니다. 따라서 나누면 부등호 방향이 바뀝니다.\n* 해가 $x \\ge -1$과 같아야 하므로 $\\frac{b+2}{4+a}=-1$입니다.\n* 따라서 $a+b=-6$입니다.\n* 정답: -6",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

@@ -11,7 +11,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","정수조건","범위","개수세기","참거짓","오류판별"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "정수조건",
+      "범위",
+      "개수세기",
+      "참거짓",
+      "오류판별"
+    ],
     "wide": false,
     "content": "다음 중 옳은 것을 고르시오. [3점]",
     "choices": [
@@ -22,7 +31,11 @@ window.questionBank = [
       "음수의 제곱근은 음의 제곱근이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 제곱근의 정의와 성질을 이해한다.\\n조건 정리: 실수의 제곱근 존재 여부와 개수\\n풀이 과정:\\n① 음의 정수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\\n② $0$의 제곱근은 $0$이므로 합은 $0$이다. 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$이므로 합은 $0$이다. (참)\\n③ 음수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\\n④ $0$의 제곱근은 $0$으로 $1$개뿐이다. (거짓)\\n⑤ 음수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\\n결론: 따라서 정답은 ②이다."
+    "solution": "[키포인트] 제곱근의 정의와 성질을 이해한다.\\n조건 정리: 실수의 제곱근 존재 여부와 개수\\n풀이 과정:\\n① 음의 정수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\\n② $0$의 제곱근은 $0$이므로 합은 $0$이다. 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$이므로 합은 $0$이다. (참)\\n③ 음수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\\n④ $0$의 제곱근은 $0$으로 $1$개뿐이다. (거짓)\\n⑤ 음수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\\n결론: 따라서 정답은 ②이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -35,7 +48,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","참거짓","오류판별","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "참거짓",
+      "오류판별",
+      "조건해석"
+    ],
     "wide": false,
     "content": "수에 대한 설명으로 틀린 것은? [3점]",
     "choices": [
@@ -46,7 +68,11 @@ window.questionBank = [
       "$\\sqrt{0.\\dot{9}}$는 유리수이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 유리수와 무리수의 정의를 구분한다.\\n조건 정리: 각 보기의 수의 성질을 파악한다.\\n풀이 과정:\\n① $\\pi$는 순환하지 않는 무한소수이므로 무한소수가 맞다. (참)\\n② $0.\\dot{3} = \\frac{1}{3}$이므로 유리수이다. (참)\\n③ $\\sqrt{0.9} = \\sqrt{\\frac{9}{10}} = \\frac{3}{\\sqrt{10}}$이므로 무리수이다. (참)\\n④ $-\\sqrt{(-3)^2} = -\\sqrt{9} = -3$이다. $3$의 음의 제곱근은 $-\\sqrt{3}$이므로 서로 다르다. (거짓)\\n⑤ $\\sqrt{0.\\dot{9}} = \\sqrt{\\frac{9}{9}} = \\sqrt{1} = 1$이므로 유리수이다. (참)\\n결론: 따라서 정답은 ④이다."
+    "solution": "[키포인트] 유리수와 무리수의 정의를 구분한다.\\n조건 정리: 각 보기의 수의 성질을 파악한다.\\n풀이 과정:\\n① $\\pi$는 순환하지 않는 무한소수이므로 무한소수가 맞다. (참)\\n② $0.\\dot{3} = \\frac{1}{3}$이므로 유리수이다. (참)\\n③ $\\sqrt{0.9} = \\sqrt{\\frac{9}{10}} = \\frac{3}{\\sqrt{10}}$이므로 무리수이다. (참)\\n④ $-\\sqrt{(-3)^2} = -\\sqrt{9} = -3$이다. $3$의 음의 제곱근은 $-\\sqrt{3}$이므로 서로 다르다. (거짓)\\n⑤ $\\sqrt{0.\\dot{9}} = \\sqrt{\\frac{9}{9}} = \\sqrt{1} = 1$이므로 유리수이다. (참)\\n결론: 따라서 정답은 ④이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -59,7 +85,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","분모유리화","참거짓","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "분모유리화",
+      "참거짓",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "식을 잘못 정리한 것은? [3점]",
     "choices": [
@@ -70,7 +104,11 @@ window.questionBank = [
       "$\\sqrt{3} \\div \\frac{3}{\\sqrt{5}} = \\frac{3\\sqrt{3}}{\\sqrt{5}}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈, 유리화를 정확히 수행한다.\\n조건 정리: 각 식의 좌변을 계산하여 우변과 비교한다.\\n풀이 과정:\\n① $\\sqrt{6} \\times \\sqrt{12} = \\sqrt{72} = 6\\sqrt{2}$ (참)\\n② $\\sqrt{9} \\times \\sqrt{6} = 3\\sqrt{6}$ (참)\\n③ $\\frac{3}{\\sqrt{3}} = \\sqrt{3}$ (참)\\n④ $\\frac{\\sqrt{5}}{4} \\times \\frac{2}{\\sqrt{15}} = \\frac{1}{2\\sqrt{3}} = \\frac{\\sqrt{3}}{6}$ (참)\\n⑤ $\\sqrt{3} \\div \\frac{3}{\\sqrt{5}} = \\sqrt{3} \\times \\frac{\\sqrt{5}}{3} = \\frac{\\sqrt{15}}{3}$ 이다. (거짓)\\n결론: 따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈, 유리화를 정확히 수행한다.\\n조건 정리: 각 식의 좌변을 계산하여 우변과 비교한다.\\n풀이 과정:\\n① $\\sqrt{6} \\times \\sqrt{12} = \\sqrt{72} = 6\\sqrt{2}$ (참)\\n② $\\sqrt{9} \\times \\sqrt{6} = 3\\sqrt{6}$ (참)\\n③ $\\frac{3}{\\sqrt{3}} = \\sqrt{3}$ (참)\\n④ $\\frac{\\sqrt{5}}{4} \\times \\frac{2}{\\sqrt{15}} = \\frac{1}{2\\sqrt{3}} = \\frac{\\sqrt{3}}{6}$ (참)\\n⑤ $\\sqrt{3} \\div \\frac{3}{\\sqrt{5}} = \\sqrt{3} \\times \\frac{\\sqrt{5}}{3} = \\frac{\\sqrt{15}}{3}$ 이다. (거짓)\\n결론: 따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -83,7 +121,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","오류판별","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "오류판별",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "계산이 틀린 것은? [3점]",
     "choices": [
@@ -94,7 +140,11 @@ window.questionBank = [
       "$\\frac{3-\\sqrt{12}}{\\sqrt{3}}-6\\div\\sqrt{3} = -2-\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 제곱근의 사칙연산을 순서대로 수행한다.\\n조건 정리: 혼합 계산의 결과 확인\\n풀이 과정:\\n① $4 \\div \\sqrt{2} \\times \\sqrt{2} = 4 \\times \\frac{1}{\\sqrt{2}} \\times \\sqrt{2} = 4$ 이다. (거짓)\\n② $\\sqrt{14} - \\sqrt{196} = \\sqrt{14} - 14$ (참)\\n③ $\\frac{(\\sqrt{5}-1)\\sqrt{2}}{2} = \\frac{\\sqrt{10}-\\sqrt{2}}{2}$ (참)\\n④ $3\\sqrt{3} - 2\\sqrt{3} = \\sqrt{3}$ (참)\\n⑤ $\\frac{3-2\\sqrt{3}}{\\sqrt{3}} - \\frac{6}{\\sqrt{3}} = \\sqrt{3}-2-2\\sqrt{3} = -2-\\sqrt{3}$ (참)\\n결론: 따라서 정답은 ①이다."
+    "solution": "[키포인트] 제곱근의 사칙연산을 순서대로 수행한다.\\n조건 정리: 혼합 계산의 결과 확인\\n풀이 과정:\\n① $4 \\div \\sqrt{2} \\times \\sqrt{2} = 4 \\times \\frac{1}{\\sqrt{2}} \\times \\sqrt{2} = 4$ 이다. (거짓)\\n② $\\sqrt{14} - \\sqrt{196} = \\sqrt{14} - 14$ (참)\\n③ $\\frac{(\\sqrt{5}-1)\\sqrt{2}}{2} = \\frac{\\sqrt{10}-\\sqrt{2}}{2}$ (참)\\n④ $3\\sqrt{3} - 2\\sqrt{3} = \\sqrt{3}$ (참)\\n⑤ $\\frac{3-2\\sqrt{3}}{\\sqrt{3}} - \\frac{6}{\\sqrt{3}} = \\sqrt{3}-2-2\\sqrt{3} = -2-\\sqrt{3}$ (참)\\n결론: 따라서 정답은 ①이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -107,7 +157,14 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$(y+\\frac{1}{2})(2y-4)$ 를 전개한 결과로 적절한 것은? [3점]",
     "choices": [
@@ -118,7 +175,11 @@ window.questionBank = [
       "$2y^{2}-3y+2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 다항식의 곱셈(분배법칙)을 이용한다.\\n조건 정리: $(y+\\frac{1}{2})(2y-4)$ 전개\\n풀이 과정:\\n$(y+\\frac{1}{2})(2y-4) = 2y^2 - 4y + y - 2 = 2y^2 - 3y - 2$\\n결론: 따라서 정답은 ③이다."
+    "solution": "[키포인트] 다항식의 곱셈(분배법칙)을 이용한다.\\n조건 정리: $(y+\\frac{1}{2})(2y-4)$ 전개\\n풀이 과정:\\n$(y+\\frac{1}{2})(2y-4) = 2y^2 - 4y + y - 2 = 2y^2 - 3y - 2$\\n결론: 따라서 정답은 ③이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 6,
@@ -131,7 +192,13 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "$x^{2}-3x-4$의 인수로 적절하지 않은 것은? [3점]",
     "choices": [
@@ -142,7 +209,11 @@ window.questionBank = [
       "$x^{2}-3x-4$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 다항식을 인수분해하여 인수의 정의를 확인한다.\\n조건 정리: $x^2-3x-4 = (x-4)(x+1)$\\n풀이 과정:\\n인수는 $1, x+1, x-4, (x-4)(x+1)$ 이다.\\n$0$은 어떤 다항식의 인수가 될 수 없다.\\n결론: 따라서 정답은 ①이다."
+    "solution": "[키포인트] 다항식을 인수분해하여 인수의 정의를 확인한다.\\n조건 정리: $x^2-3x-4 = (x-4)(x+1)$\\n풀이 과정:\\n인수는 $1, x+1, x-4, (x-4)(x+1)$ 이다.\\n$0$은 어떤 다항식의 인수가 될 수 없다.\\n결론: 따라서 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 7,
@@ -155,7 +226,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","자연수조건","범위","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "자연수조건",
+      "범위",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\sqrt{26-x}$가 정수가 되도록 하는 자연수 $x$의 개수는? [4점]",
     "choices": [
@@ -166,7 +246,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "④",
-    "solution": "[키포인트] 근호 안의 수가 $0$ 또는 제곱수여야 정수가 된다.\\n조건 정리: $26-x = k^2$ ($k$는 $0$ 이상의 정수, $x$는 자연수)\\n풀이 과정:\\n$x \\ge 1$이므로 $26-x < 26$이다.\\n$26$보다 작은 제곱수는 $25, 16, 9, 4, 1, 0$이다.\\n- $26-x = 25 \\implies x=1$\\n- $26-x = 16 \\implies x=10$\\n- $26-x = 9 \\implies x=17$\\n- $26-x = 4 \\implies x=22$\\n- $26-x = 1 \\implies x=25$\\n- $26-x = 0 \\implies x=26$\\n만족하는 자연수 $x$는 총 $6$개이다.\\n결론: 따라서 정답은 ④이다."
+    "solution": "[키포인트] 근호 안의 수가 $0$ 또는 제곱수여야 정수가 된다.\\n조건 정리: $26-x = k^2$ ($k$는 $0$ 이상의 정수, $x$는 자연수)\\n풀이 과정:\\n$x \\ge 1$이므로 $26-x < 26$이다.\\n$26$보다 작은 제곱수는 $25, 16, 9, 4, 1, 0$이다.\\n- $26-x = 25 \\implies x=1$\\n- $26-x = 16 \\implies x=10$\\n- $26-x = 9 \\implies x=17$\\n- $26-x = 4 \\implies x=22$\\n- $26-x = 1 \\implies x=25$\\n- $26-x = 0 \\implies x=26$\\n만족하는 자연수 $x$는 총 $6$개이다.\\n결론: 따라서 정답은 ④이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -179,7 +263,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$A=\\sqrt{3}-2, B=1-\\sqrt{3}, C=\\sqrt{2}, D=3-\\sqrt{2}$ 중 가장 작은 수와 큰 수를 차례로 짝지은 것은? [4점]",
     "choices": [
@@ -190,7 +280,11 @@ window.questionBank = [
       "B, D"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 실수의 대소 관계를 비교한다. ($\\sqrt{2} \\approx 1.41, \\sqrt{3} \\approx 1.73$)\\n조건 정리: 각 수의 근삿값을 파악한다.\\n풀이 과정:\\n- $A = 1.73 - 2 = -0.27$\\n- $B = 1 - 1.73 = -0.73$\\n- $C = 1.41$\\n- $D = 3 - 1.41 = 1.59$\\n대소 비교: $B < A < C < D$\\n가장 작은 수 $B$, 가장 큰 수 $D$이다.\\n결론: 따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 실수의 대소 관계를 비교한다. ($\\sqrt{2} \\approx 1.41, \\sqrt{3} \\approx 1.73$)\\n조건 정리: 각 수의 근삿값을 파악한다.\\n풀이 과정:\\n- $A = 1.73 - 2 = -0.27$\\n- $B = 1 - 1.73 = -0.73$\\n- $C = 1.41$\\n- $D = 3 - 1.41 = 1.59$\\n대소 비교: $B < A < C < D$\\n가장 작은 수 $B$, 가장 큰 수 $D$이다.\\n결론: 따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -203,7 +297,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\sqrt{48} \\div \\sqrt{108} \\times \\sqrt{2} = \\sqrt{a}$ 일 때, $a$의 값으로 적절한 것은? [4점]",
     "choices": [
@@ -214,7 +314,11 @@ window.questionBank = [
       "$2\\sqrt{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 제곱근의 나눗셈과 곱셈을 이용해 $\\sqrt{a}$ 형태로 정리한다.\\n조건 정리: 좌변을 계산한다.\\n풀이 과정:\\n$\\sqrt{48} = 4\\sqrt{3}$, $\\sqrt{108} = 6\\sqrt{3}$ 이다.\\n$\\frac{4\\sqrt{3}}{6\\sqrt{3}} \\times \\sqrt{2} = \\frac{2}{3} \\times \\sqrt{2} = \\frac{2\\sqrt{2}}{3}$ 이다.\\n이를 $\\sqrt{a}$ 꼴로 바꾸면 $\\sqrt{\\frac{4 \\times 2}{9}} = \\sqrt{\\frac{8}{9}}$ 이다.\\n따라서 $a = \\frac{8}{9}$ 이다.\\n결론: 따라서 정답은 ②이다."
+    "solution": "[키포인트] 제곱근의 나눗셈과 곱셈을 이용해 $\\sqrt{a}$ 형태로 정리한다.\\n조건 정리: 좌변을 계산한다.\\n풀이 과정:\\n$\\sqrt{48} = 4\\sqrt{3}$, $\\sqrt{108} = 6\\sqrt{3}$ 이다.\\n$\\frac{4\\sqrt{3}}{6\\sqrt{3}} \\times \\sqrt{2} = \\frac{2}{3} \\times \\sqrt{2} = \\frac{2\\sqrt{2}}{3}$ 이다.\\n이를 $\\sqrt{a}$ 꼴로 바꾸면 $\\sqrt{\\frac{4 \\times 2}{9}} = \\sqrt{\\frac{8}{9}}$ 이다.\\n따라서 $a = \\frac{8}{9}$ 이다.\\n결론: 따라서 정답은 ②이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -227,7 +331,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","유리수","분모유리화","전개","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "유리수",
+      "분모유리화",
+      "전개",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\frac{2+\\sqrt{6}}{2-\\sqrt{6}} - \\frac{2-\\sqrt{6}}{2+\\sqrt{6}} = a+b\\sqrt{6}$일 때, 유리수 $a-b$의 값은? [4점]",
     "choices": [
@@ -238,7 +351,11 @@ window.questionBank = [
       "$0$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 분모를 유리화하거나 통분하여 식을 정리한다.\\n조건 정리: 주어진 식을 전개하여 유리수 $a, b$를 찾는다.\\n풀이 과정:\\n$\\frac{(2+\\sqrt{6})^2 - (2-\\sqrt{6})^2}{(2-\\sqrt{6})(2+\\sqrt{6})} = \\frac{(4+6+4\\sqrt{6}) - (4+6-4\\sqrt{6})}{4-6}$\\n$= \\frac{8\\sqrt{6}}{-2} = -4\\sqrt{6}$\\n따라서 $a=0, b=-4$이다.\\n$a-b = 0 - (-4) = 4$이다.\\n결론: 따라서 정답은 ③이다."
+    "solution": "[키포인트] 분모를 유리화하거나 통분하여 식을 정리한다.\\n조건 정리: 주어진 식을 전개하여 유리수 $a, b$를 찾는다.\\n풀이 과정:\\n$\\frac{(2+\\sqrt{6})^2 - (2-\\sqrt{6})^2}{(2-\\sqrt{6})(2+\\sqrt{6})} = \\frac{(4+6+4\\sqrt{6}) - (4+6-4\\sqrt{6})}{4-6}$\\n$= \\frac{8\\sqrt{6}}{-2} = -4\\sqrt{6}$\\n따라서 $a=0, b=-4$이다.\\n$a-b = 0 - (-4) = 4$이다.\\n결론: 따라서 정답은 ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -251,7 +368,14 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","공통인수","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "공통인수",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 두 다항식의 공통인수로 적절한 것은? [4점]<br>$(x+1)(x^{2}+2x-8)$ 와 $(x+4)(2x^{2}-4x-6)$",
     "choices": [
@@ -262,7 +386,11 @@ window.questionBank = [
       "$x-4$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각각의 다항식을 완전히 인수분해하여 겹치는 인수를 찾는다.\\n조건 정리: 두 다항식 인수분해\\n풀이 과정:\\n- $(x+1)(x^2+2x-8) = (x+1)(x+4)(x-2)$\\n- $(x+4)(2x^2-4x-6) = 2(x+4)(x-3)(x+1)$\\n공통인수는 $1, (x+1), (x+4), (x+1)(x+4)$ 이다.\\n보기에 있는 공통인수는 $x+1$이다.\\n결론: 따라서 정답은 ①이다."
+    "solution": "[키포인트] 각각의 다항식을 완전히 인수분해하여 겹치는 인수를 찾는다.\\n조건 정리: 두 다항식 인수분해\\n풀이 과정:\\n- $(x+1)(x^2+2x-8) = (x+1)(x+4)(x-2)$\\n- $(x+4)(2x^2-4x-6) = 2(x+4)(x-3)(x+1)$\\n공통인수는 $1, (x+1), (x+4), (x+1)(x+4)$ 이다.\\n보기에 있는 공통인수는 $x+1$이다.\\n결론: 따라서 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 12,
@@ -275,7 +403,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","다항식","인수분해","지수","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "다항식",
+      "인수분해",
+      "지수",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$(\\sqrt{7}-3)^{5}(\\sqrt{7}+3)^{5}$ 의 값으로 적절한 것은? [4점]",
     "choices": [
@@ -286,55 +423,82 @@ window.questionBank = [
       "-32"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 지수법칙과 합차 공식을 이용한다.\\n조건 정리: $(A^n)(B^n) = (AB)^n$\\n풀이 과정:\\n$\\{(\\sqrt{7}-3)(\\sqrt{7}+3)\\}^5 = (7-9)^5 = (-2)^5 = -32$\\n결론: 따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 지수법칙과 합차 공식을 이용한다.\\n조건 정리: $(A^n)(B^n) = (AB)^n$\\n풀이 과정:\\n$\\{(\\sqrt{7}-3)(\\sqrt{7}+3)\\}^5 = (7-9)^5 = (-2)^5 = -32$\\n결론: 따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
- {
-    id: 13,
-    category: "인수분해",
-    originalCategory: "인수분해",
-    standardCourse: "중3 수학",
-    standardUnitKey: "M3-02",
-    standardUnit: "다항식의 곱셈과 인수분해",
-    standardUnitOrder: 2,
-    level: "중",
-    questionType: "객관식",
-    layoutTag: "grid",
-    "tags": ["객관식","다항식","인수분해","곱셈공식","전개","계수비교","계산"],
-    wide: false,
-    content: "다음 중 $\\Box$ 안의 수가 가장 큰 것은? (4점)",
-    choices: [
+  {
+    "id": 13,
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
+    "level": "중",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "곱셈공식",
+      "전개",
+      "계수비교",
+      "계산"
+    ],
+    "wide": false,
+    "content": "다음 중 $\\Box$ 안의 수가 가장 큰 것은? (4점)",
+    "choices": [
       "$(3x+2)^{2}=\\Box x^{2}+12x+4",
       "$(x-3)^{2}=x^{2}+\\Box x+9",
       "$(x+4)(x-4)=x^{2}+\\Box",
       "$(3x+2)(x+1)=3x^{2}+\\Box x+2",
       "$(2x-3)(4x+5)=8x^{2}-2x-\\Box"
     ],
-    answer: "⑤",
-    solution: "[키포인트] 곱셈공식을 이용하여 각 식을 전개하고 계수를 비교한다.\\n① $(3x+2)^2 = 9x^2+12x+4 \\rightarrow \\Box = 9$\\n② $(x-3)^2 = x^2-6x+9 \\rightarrow \\Box = -6$\\n③ $(x+4)(x-4) = x^2-16 \\rightarrow \\Box = -16$\\n④ $(3x+2)(x+1) = 3x^2+5x+2 \\rightarrow \\Box = 5$\\n⑤ $(2x-3)(4x+5) = 8x^2-2x-15 \\rightarrow \\Box = 15$이다.\\n따라서 $\\Box$ 안의 수가 가장 큰 것은 $15$인 ⑤이다.\\n따라서 정답은 ⑤이다."
+    "answer": "⑤",
+    "solution": "[키포인트] 곱셈공식을 이용하여 각 식을 전개하고 계수를 비교한다.\\n① $(3x+2)^2 = 9x^2+12x+4 \\rightarrow \\Box = 9$\\n② $(x-3)^2 = x^2-6x+9 \\rightarrow \\Box = -6$\\n③ $(x+4)(x-4) = x^2-16 \\rightarrow \\Box = -16$\\n④ $(3x+2)(x+1) = 3x^2+5x+2 \\rightarrow \\Box = 5$\\n⑤ $(2x-3)(4x+5) = 8x^2-2x-15 \\rightarrow \\Box = 15$이다.\\n따라서 $\\Box$ 안의 수가 가장 큰 것은 $15$인 ⑤이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
-    id: 14,
-    category: "인수분해",
-    originalCategory: "인수분해",
-    standardCourse: "중3 수학",
-    standardUnitKey: "M3-02",
-    standardUnit: "다항식의 곱셈과 인수분해",
-    standardUnitOrder: 2,
-    level: "중",
-    questionType: "객관식",
-    layoutTag: "grid",
-    "tags": ["객관식","다항식","인수분해","완전제곱식","오류판별","계산"],
-    wide: false,
-    content: "완전제곱식이 아닌 것은? (4점)",
-    choices: [
+    "id": 14,
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
+    "level": "중",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "완전제곱식",
+      "오류판별",
+      "계산"
+    ],
+    "wide": false,
+    "content": "완전제곱식이 아닌 것은? (4점)",
+    "choices": [
       "$16a^{2}-24ax+9x^{2}$",
       "$x^{2}-10x+25$",
       "$4x^{2}-12x+16$",
       "$4a^{2}+16a+16$",
       "$x^{2}-6x+9$"
     ],
-    answer: "③",
-    solution: "[키포인트] $(A \\pm B)^2$ 꼴로 인수분해되는지 확인한다.\\n① $16a^2-24ax+9x^2 = (4a-3x)^2$이므로 완전제곱식이다.\\n② $x^2-10x+25 = (x-5)^2$이므로 완전제곱식이다.\\n③ $4x^2-12x+16$은 $4x^2=(2x)^2$, $16=4^2$이지만 가운데 항은 $\\pm 2\\cdot 2x\\cdot 4=\\pm16x$이어야 한다. 실제 가운데 항은 $-12x$이므로 완전제곱식이 아니다.\\n④ $4a^2+16a+16=(2a+4)^2$이므로 완전제곱식이다.\\n⑤ $x^2-6x+9=(x-3)^2$이므로 완전제곱식이다.\\n따라서 정답은 ③이다."
+    "answer": "③",
+    "solution": "[키포인트] $(A \\pm B)^2$ 꼴로 인수분해되는지 확인한다.\\n① $16a^2-24ax+9x^2 = (4a-3x)^2$이므로 완전제곱식이다.\\n② $x^2-10x+25 = (x-5)^2$이므로 완전제곱식이다.\\n③ $4x^2-12x+16$은 $4x^2=(2x)^2$, $16=4^2$이지만 가운데 항은 $\\pm 2\\cdot 2x\\cdot 4=\\pm16x$이어야 한다. 실제 가운데 항은 $-12x$이므로 완전제곱식이 아니다.\\n④ $4a^2+16a+16=(2a+4)^2$이므로 완전제곱식이다.\\n⑤ $x^2-6x+9=(x-3)^2$이므로 완전제곱식이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 15,
@@ -347,7 +511,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","다항식","인수분해","곱셈공식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "다항식",
+      "인수분해",
+      "곱셈공식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$a+b=3, a^{2}+b^{2}=5$ 일 때, $a-b$의 값으로 적절한 것은? [5점]",
     "choices": [
@@ -358,7 +531,11 @@ window.questionBank = [
       "$0$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 곱셈공식의 변형을 이용한다.\\n조건 정리: $(a-b)^2 = (a+b)^2 - 4ab$ 또는 $a^2+b^2 - 2ab$\\n풀이 과정:\\n$a^2+b^2 = (a+b)^2 - 2ab \\implies 5 = 9 - 2ab \\implies ab = 2$\\n$(a-b)^2 = a^2+b^2 - 2ab = 5 - 4 = 1$\\n따라서 $a-b = 1$ 또는 $-1$ 이다.\\n결론: 따라서 정답은 ①이다."
+    "solution": "[키포인트] 곱셈공식의 변형을 이용한다.\\n조건 정리: $(a-b)^2 = (a+b)^2 - 4ab$ 또는 $a^2+b^2 - 2ab$\\n풀이 과정:\\n$a^2+b^2 = (a+b)^2 - 2ab \\implies 5 = 9 - 2ab \\implies ab = 2$\\n$(a-b)^2 = a^2+b^2 - 2ab = 5 - 4 = 1$\\n따라서 $a-b = 1$ 또는 $-1$ 이다.\\n결론: 따라서 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 16,
@@ -371,7 +548,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","다항식","인수분해","곱셈공식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "다항식",
+      "인수분해",
+      "곱셈공식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$x+\\frac{1}{x}=4$ 이고 $0<x<1$일 때, $x-\\frac{1}{x}$의 값은? [5점]",
     "choices": [
@@ -382,7 +568,11 @@ window.questionBank = [
       "$-12$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 곱셈공식의 변형과 조건에 따른 부호 결정을 수행한다.\\n조건 정리: $(x-1/x)^2 = (x+1/x)^2 - 4$\\n풀이 과정:\\n$(x-1/x)^2 = 4^2 - 4 = 12$\\n따라서 $x-1/x = \\pm 2\\sqrt{3}$ 이다.\\n조건 $0<x<1$ 이면 $x < 1/x$ 이므로 $x-1/x < 0$ 이다.\\n따라서 $-2\\sqrt{3}$ 이다.\\n결론: 따라서 정답은 ②이다."
+    "solution": "[키포인트] 곱셈공식의 변형과 조건에 따른 부호 결정을 수행한다.\\n조건 정리: $(x-1/x)^2 = (x+1/x)^2 - 4$\\n풀이 과정:\\n$(x-1/x)^2 = 4^2 - 4 = 12$\\n따라서 $x-1/x = \\pm 2\\sqrt{3}$ 이다.\\n조건 $0<x<1$ 이면 $x < 1/x$ 이므로 $x-1/x < 0$ 이다.\\n따라서 $-2\\sqrt{3}$ 이다.\\n결론: 따라서 정답은 ②이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 17,
@@ -395,7 +585,13 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$(2+1)(2^{2}+1)(2^{4}+1)(2^{8}+1)=a$ 일 때, $\\frac{a}{257}$ 의 값으로 적절한 것은? (단, $2^{8}=256$) [5점]",
     "choices": [
@@ -406,7 +602,11 @@ window.questionBank = [
       "$255$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $(2-1)$을 곱하여 합차 공식을 연속적으로 적용한다.\\n조건 정리: $a$ 구하기 및 $\\frac{a}{257}$ 계산\\n풀이 과정:\\n$(2-1)(2+1)(2^2+1)(2^4+1)(2^8+1) = a$\\n$(2^2-1)(2^2+1)(2^4+1)(2^8+1) = a$\\n$(2^4-1)(2^4+1)(2^8+1) = a$\\n$(2^8-1)(2^8+1) = a \\implies a = 2^{16}-1$\\n구하는 값: $\\frac{2^{16}-1}{2^8+1} = \\frac{(2^8-1)(2^8+1)}{2^8+1} = 2^8-1 = 256-1 = 255$\\n결론: 따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $(2-1)$을 곱하여 합차 공식을 연속적으로 적용한다.\\n조건 정리: $a$ 구하기 및 $\\frac{a}{257}$ 계산\\n풀이 과정:\\n$(2-1)(2+1)(2^2+1)(2^4+1)(2^8+1) = a$\\n$(2^2-1)(2^2+1)(2^4+1)(2^8+1) = a$\\n$(2^4-1)(2^4+1)(2^8+1) = a$\\n$(2^8-1)(2^8+1) = a \\implies a = 2^{16}-1$\\n구하는 값: $\\frac{2^{16}-1}{2^8+1} = \\frac{(2^8-1)(2^8+1)}{2^8+1} = 2^8-1 = 256-1 = 255$\\n결론: 따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 18,
@@ -419,7 +619,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","절댓값","범위","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "범위",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$2 < x < 3$일 때, $\\sqrt{x^{2}}-\\sqrt{(x-1)^{2}}+\\sqrt{(x-2)^{2}}-\\sqrt{(x-3)^{2}}$ 을 간단히 나타내면? [5점]",
     "choices": [
@@ -430,7 +638,11 @@ window.questionBank = [
       "$2x$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{A^2} = |A|$ 임을 이용하여 절댓값 안의 부호를 판별한다.\\n조건 정리: $2 < x < 3$ 범위 확인\\n풀이 과정:\\n- $x > 0 \\implies |x| = x$\\n- $x-1 > 0 \\implies |x-1| = x-1$\\n- $x-2 > 0 \\implies |x-2| = x-2$\\n- $x-3 < 0 \\implies |x-3| = -(x-3)$\\n식: $x - (x-1) + (x-2) - \\{-(x-3)\\} = x-x+1+x-2+x-3 = 2x-4$\\n결론: 따라서 정답은 ①이다."
+    "solution": "[키포인트] $\\sqrt{A^2} = |A|$ 임을 이용하여 절댓값 안의 부호를 판별한다.\\n조건 정리: $2 < x < 3$ 범위 확인\\n풀이 과정:\\n- $x > 0 \\implies |x| = x$\\n- $x-1 > 0 \\implies |x-1| = x-1$\\n- $x-2 > 0 \\implies |x-2| = x-2$\\n- $x-3 < 0 \\implies |x-3| = -(x-3)$\\n식: $x - (x-1) + (x-2) - \\{-(x-3)\\} = x-x+1+x-2+x-3 = 2x-4$\\n결론: 따라서 정답은 ①이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -443,7 +655,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","분모유리화","다항식","인수분해","곱셈공식","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "분모유리화",
+      "다항식",
+      "인수분해",
+      "곱셈공식",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$a=\\frac{2}{\\sqrt{8}+2}, b=\\frac{2}{\\sqrt{8}-2}$ 일 때, $a^{2}-6ab+b^{2}$ 의 값은? [5점]",
     "choices": [
@@ -454,7 +675,11 @@ window.questionBank = [
       "$-4$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분모를 유리화한 후 곱셈공식의 변형을 이용한다.\\n조건 정리: $a, b$ 유리화 및 식 변형\\n풀이 과정:\\n- $a = \\frac{2(2\\sqrt{2}-2)}{8-4} = \\sqrt{2}-1$\\n- $b = \\frac{2(2\\sqrt{2}+2)}{8-4} = \\sqrt{2}+1$\\n$a+b = 2\\sqrt{2}, ab = 1$\\n$a^2-6ab+b^2 = (a+b)^2 - 8ab = (2\\sqrt{2})^2 - 8(1) = 8-8=0$\\n결론: 따라서 정답은 ①이다."
+    "solution": "[키포인트] 분모를 유리화한 후 곱셈공식의 변형을 이용한다.\\n조건 정리: $a, b$ 유리화 및 식 변형\\n풀이 과정:\\n- $a = \\frac{2(2\\sqrt{2}-2)}{8-4} = \\sqrt{2}-1$\\n- $b = \\frac{2(2\\sqrt{2}+2)}{8-4} = \\sqrt{2}+1$\\n$a+b = 2\\sqrt{2}, ab = 1$\\n$a^2-6ab+b^2 = (a+b)^2 - 8ab = (2\\sqrt{2})^2 - 8(1) = 8-8=0$\\n결론: 따라서 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -467,7 +692,14 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$A=(a-1)(a+1)(a+3)(a+5)-9$일 때, 다항식 $A$의 인수로 적절하지 않은 것은? [5점]",
     "choices": [
@@ -478,7 +710,11 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 공통부분이 생기도록 짝을 지어 전개한 후 치환하여 인수분해한다.\\n조건 정리: $A$ 인수분해\\n풀이 과정:\\n$A = \\{(a-1)(a+5)\\}\\{(a+1)(a+3)\\} - 9 = (a^2+4a-5)(a^2+4a+3)-9$\\n$a^2+4a = t$ 로 치환하면 $(t-5)(t+3)-9 = t^2-2t-24 = (t-6)(t+4)$\\n$(a^2+4a-6)(a^2+4a+4) = (a^2+4a-6)(a+2)^2$\\n인수는 $1, a+2, (a+2)^2, a^2+4a-6$ 등이다. $a-3$은 인수가 아니다.\\n결론: 따라서 정답은 ④이다."
+    "solution": "[키포인트] 공통부분이 생기도록 짝을 지어 전개한 후 치환하여 인수분해한다.\\n조건 정리: $A$ 인수분해\\n풀이 과정:\\n$A = \\{(a-1)(a+5)\\}\\{(a+1)(a+3)\\} - 9 = (a^2+4a-5)(a^2+4a+3)-9$\\n$a^2+4a = t$ 로 치환하면 $(t-5)(t+3)-9 = t^2-2t-24 = (t-6)(t+4)$\\n$(a^2+4a-6)(a^2+4a+4) = (a^2+4a-6)(a+2)^2$\\n인수는 $1, a+2, (a+2)^2, a^2+4a-6$ 등이다. $a-3$은 인수가 아니다.\\n결론: 따라서 정답은 ④이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -490,13 +726,19 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "tags": ["서술형1"],
+    "tags": [
+      "서술형1"
+    ],
     "layoutTag": "grid",
     "wide": false,
     "content": "[서술형1] 다음 수 $a, b, c$의 크기를 비교하는 과정을 서술하여라. [5점]<br>$a=-\\frac{5}{2}\\sqrt{2}, b=-3, c=-6+\\sqrt{8}$",
     "choices": [],
     "answer": "$a < c < b$",
-    "solution": "[키포인트] 각 수의 근사값을 계산하거나 근호 안에 넣어 비교한다.\\n조건 정리: $a, b, c$의 값 비교\\n풀이 과정:\\n- $a = -\\sqrt{\\frac{25}{4} \\times 2} = -\\sqrt{12.5} \\approx -3.53$\\n- $b = -\\sqrt{9} = -3$\\n- $c = -6+2\\sqrt{2} \\approx -6+2.82 = -3.18$\\n음수이므로 절대값이 클수록 작다. $3.53 > 3.18 > 3$ 이므로 $a < c < b$ 이다.\\n결론: 따라서 크기 관계는 $a < c < b$ 이다."
+    "solution": "[키포인트] 각 수의 근사값을 계산하거나 근호 안에 넣어 비교한다.\\n조건 정리: $a, b, c$의 값 비교\\n풀이 과정:\\n- $a = -\\sqrt{\\frac{25}{4} \\times 2} = -\\sqrt{12.5} \\approx -3.53$\\n- $b = -\\sqrt{9} = -3$\\n- $c = -6+2\\sqrt{2} \\approx -6+2.82 = -3.18$\\n음수이므로 절대값이 클수록 작다. $3.53 > 3.18 > 3$ 이므로 $a < c < b$ 이다.\\n결론: 따라서 크기 관계는 $a < c < b$ 이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -508,13 +750,19 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "tags": ["서술형2"],
+    "tags": [
+      "서술형2"
+    ],
     "layoutTag": "grid",
     "wide": false,
     "content": "[서술형2] $x^{2}+xy-6y^{2}+x+13y-6$을 두 일차식의 곱으로 인수분해하는 과정을 서술하여라. [5점]",
     "choices": [],
     "answer": "$(x+3y-2)(x-2y+3)$",
-    "solution": "[키포인트] 한 문자에 대해 내림차순으로 정리한 후 인수분해한다.\\n조건 정리: $x$에 대한 내림차순 정리\\n풀이 과정:\\n$x^2 + (y+1)x - (6y^2-13y+6) = x^2 + (y+1)x - (2y-3)(3y-2)$\\n대각선 항 결합을 통해 $(3y-2) - (2y-3) = y+1$ 임을 확인한다.\\n$(x+3y-2)(x-(2y-3)) = (x+3y-2)(x-2y+3)$\\n결론: 따라서 정답은 $(x+3y-2)(x-2y+3)$이다."
+    "solution": "[키포인트] 한 문자에 대해 내림차순으로 정리한 후 인수분해한다.\\n조건 정리: $x$에 대한 내림차순 정리\\n풀이 과정:\\n$x^2 + (y+1)x - (6y^2-13y+6) = x^2 + (y+1)x - (2y-3)(3y-2)$\\n대각선 항 결합을 통해 $(3y-2) - (2y-3) = y+1$ 임을 확인한다.\\n$(x+3y-2)(x-(2y-3)) = (x+3y-2)(x-2y+3)$\\n결론: 따라서 정답은 $(x+3y-2)(x-2y+3)$이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 23,
@@ -526,13 +774,19 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "tags": ["서술형3"],
+    "tags": [
+      "서술형3"
+    ],
     "layoutTag": "grid",
     "wide": false,
     "content": "[서술형3] $a=-3, b=\\sqrt{2}$ 일 때, $\\sqrt{a^{2}+4ab+4b^{2}}-\\sqrt{a^{2}}$ 을 계산하는 과정을 서술하여라. [5점]",
     "choices": [],
     "answer": "$-2\\sqrt{2}$",
-    "solution": "[키포인트] 완전제곱식 인수분해 후 절대값을 이용하여 계산한다.\\n조건 정리: $a, b$ 대입 전 식 정리\\n풀이 과정:\\n$\\sqrt{(a+2b)^2} - |a| = |a+2b| - |a|$\\n$a+2b = -3+2\\sqrt{2} = -\\sqrt{9}+\\sqrt{8} < 0$\\n$a = -3 < 0$\\n식: $-(a+2b) - (-a) = -a-2b+a = -2b = -2\\sqrt{2}$\\n결론: 따라서 구하는 값은 $-2\\sqrt{2}$이다."
+    "solution": "[키포인트] 완전제곱식 인수분해 후 절대값을 이용하여 계산한다.\\n조건 정리: $a, b$ 대입 전 식 정리\\n풀이 과정:\\n$\\sqrt{(a+2b)^2} - |a| = |a+2b| - |a|$\\n$a+2b = -3+2\\sqrt{2} = -\\sqrt{9}+\\sqrt{8} < 0$\\n$a = -3 < 0$\\n식: $-(a+2b) - (-a) = -a-2b+a = -2b = -2\\sqrt{2}$\\n결론: 따라서 구하는 값은 $-2\\sqrt{2}$이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 24,
@@ -544,12 +798,18 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "tags": ["서술형4"],
+    "tags": [
+      "서술형4"
+    ],
     "layoutTag": "grid",
     "wide": false,
     "content": "[서술형4] $\\sqrt{\\frac{1}{5}x}$가 자연수가 되는 가장 작은 자연수 $x$값을 $a$, 열 번째로 작은 자연수 $x$값을 $b$라고 할 때, $a, b$의 값을 구하는 과정을 서술하여라. [5점]",
     "choices": [],
     "answer": "$a=5, b=500$",
-    "solution": "[키포인트] 근호 안의 수가 제곱수가 되도록 하는 $x$의 조건을 찾는다.\\n조건 정리: $\\frac{x}{5} = k^2 (k$는 자연수$)$\\n풀이 과정:\\n$x = 5k^2$ 꼴이어야 한다.\\n- $a$는 $k=1$일 때이므로 $5 \\times 1^2 = 5$\\n- $b$는 $k=10$일 때이므로 $5 \\times 10^2 = 500$\\n결론: 따라서 $a=5, b=500$이다."
+    "solution": "[키포인트] 근호 안의 수가 제곱수가 되도록 하는 $x$의 조건을 찾는다.\\n조건 정리: $\\frac{x}{5} = k^2 (k$는 자연수$)$\\n풀이 과정:\\n$x = 5k^2$ 꼴이어야 한다.\\n- $a$는 $k=1$일 때이므로 $5 \\times 1^2 = 5$\\n- $b$는 $k=10$일 때이므로 $5 \\times 10^2 = 500$\\n결론: 따라서 $a=5, b=500$이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

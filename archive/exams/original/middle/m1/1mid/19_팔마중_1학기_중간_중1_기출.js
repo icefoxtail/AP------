@@ -22,7 +22,11 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -46,7 +50,11 @@ window.questionBank = [
       "-4"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -70,7 +78,11 @@ window.questionBank = [
       "오전 9시 40분"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -94,7 +106,11 @@ window.questionBank = [
       "25"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -118,7 +134,11 @@ window.questionBank = [
       "45개"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -142,7 +162,11 @@ window.questionBank = [
       "$2\\times3\\times5\\times7$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -166,7 +190,11 @@ window.questionBank = [
       "모든 자연수는 약수의 개수가 2개 이상이다."
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -192,7 +220,11 @@ window.questionBank = [
       "유리수는 양의 유리수와 음의 유리수로 이루어져 있다."
     ],
     "answer": "②,⑤",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②,⑤이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -216,7 +248,11 @@ window.questionBank = [
       "9개"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -240,7 +276,11 @@ window.questionBank = [
       "$(-2)\\times8\\div4$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -264,7 +304,11 @@ window.questionBank = [
       "13"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -288,7 +332,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -312,7 +360,11 @@ window.questionBank = [
       "-2"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -338,8 +390,12 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/19_팔마중_1학기_중간_중1_기출/q14.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/19_팔마중_1학기_중간_중1_기출/q14.png",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -363,7 +419,11 @@ window.questionBank = [
       "1개"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -387,7 +447,11 @@ window.questionBank = [
       "$(x+y)\\div(-2)\\times c=-\\dfrac{c(x+y)}{2}$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -411,7 +475,11 @@ window.questionBank = [
       "1997"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -435,7 +503,11 @@ window.questionBank = [
       "$a=8, b=4$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -459,7 +531,11 @@ window.questionBank = [
       "30"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -483,7 +559,11 @@ window.questionBank = [
       "-4"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -503,7 +583,11 @@ window.questionBank = [
     "content": "$a$의 역수를 $-\\dfrac{4}{3}$, $\\dfrac{3}{8}$의 역수를 $b$라고 할 때, $a+b$의 값을 구하여라.\\n(1) $a$의 값을 구하여라.\\n(2) $b$의 값을 구하여라.\\n(3) $a+b$의 값을 구하여라.",
     "choices": [],
     "answer": "$a=-\\dfrac{3}{4}$, $b=\\dfrac{8}{3}$, $a+b=\\dfrac{23}{12}$",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $a=-\\dfrac{3}{4}$, $b=\\dfrac{8}{3}$, $a+b=\\dfrac{23}{12}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -523,7 +607,11 @@ window.questionBank = [
     "content": "두 학생 $A$, $B$가 계단에서 가위바위보 놀이를 하는데 이기면 2칸 올라가고, 비기면 1칸 올라가고, 지면 1칸 내려가기로 했다. 처음 위치를 0으로 하고, 1칸 올라가는 것을 $+1$, 1칸 내려가는 것을 $-1$이라고 하자. 가위바위보를 10번 하여 $A$학생은 5번 이기고 3번 비겼다고 할 때, 게임이 끝난 후 두 학생 $A$, $B$의 위치를 나타내는 수의 차를 구하여라.\\n(1) $A$학생의 위치를 구하는 풀이과정을 쓰고 답을 구하여라.\\n(2) $B$학생의 위치를 구하는 풀이과정을 쓰고 답을 구하여라.\\n(3) 두 학생 $A$, $B$의 위치를 나타내는 수의 차를 구하여라.",
     "choices": [],
     "answer": "$A=11$, $B=2$, 차 $9$",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $A=11$, $B=2$, 차 $9$이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -543,6 +631,10 @@ window.questionBank = [
     "content": "$-4$보다 3만큼 큰 수를 $A$, $|x|=\\dfrac{1}{2}$인 $x$ 중에서 큰 수를 $B$라 할 때, $AB+2(-B)^2$의 값을 구하여라.\\n(1) $A$의 값을 구하여라.\\n(2) $B$의 값을 구하여라.\\n(3) $AB+2(-B)^2$의 값을 구하여라.",
     "choices": [],
     "answer": "$A=-1$, $B=\\dfrac{1}{2}$, 값 $0$",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $A=-1$, $B=\\dfrac{1}{2}$, 값 $0$이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

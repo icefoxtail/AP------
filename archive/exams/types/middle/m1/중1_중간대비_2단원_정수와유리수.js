@@ -32,7 +32,11 @@ window.questionBank = [
       "출발 3일 후: $+3$일 후"
     ],
     "answer": "④",
-    "solution": "[키포인트] 양의 방향과 음의 방향을 상황에 맞게 구분한다.\n조건 정리: 이익, 증가, 이후는 양의 부호로 나타내고 감량, 이전, 해저는 음의 방향으로 본다.\n풀이 방향: 각 보기의 상황이 기준보다 증가인지 감소인지 판단한다.\n정석 풀이: 해저 9 km는 기준인 해수면보다 아래에 있으므로 $-9$ km로 나타내야 한다. 따라서 옳지 않은 것은 ④이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 양의 방향과 음의 방향을 상황에 맞게 구분한다.\n조건 정리: 이익, 증가, 이후는 양의 부호로 나타내고 감량, 이전, 해저는 음의 방향으로 본다.\n풀이 방향: 각 보기의 상황이 기준보다 증가인지 감소인지 판단한다.\n정석 풀이: 해저 9 km는 기준인 해수면보다 아래에 있으므로 $-9$ km로 나타내야 한다. 따라서 옳지 않은 것은 ④이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 82,
@@ -63,7 +67,11 @@ window.questionBank = [
       "0"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 수에서 같은 거리에 있는 수는 두 수의 중점이다.\n조건 정리: $-8$과 $+2$의 가운데에 있는 수를 구한다.\n풀이 방향: 두 수의 평균을 계산한다.\n정석 풀이: $\\dfrac{-8+2}{2}=\\dfrac{-6}{2}=-3$이므로 같은 거리에 있는 점이 나타내는 수는 $-3$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 수에서 같은 거리에 있는 수는 두 수의 중점이다.\n조건 정리: $-8$과 $+2$의 가운데에 있는 수를 구한다.\n풀이 방향: 두 수의 평균을 계산한다.\n정석 풀이: $\\dfrac{-8+2}{2}=\\dfrac{-6}{2}=-3$이므로 같은 거리에 있는 점이 나타내는 수는 $-3$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 83,
@@ -89,7 +97,11 @@ window.questionBank = [
     "content": "$x$는 절댓값이 $\\dfrac{7}{2}$보다 작은 정수일 때, $x$의 값이 될 수 있는 정수의 개수를 구하여라.",
     "choices": [],
     "answer": "7개",
-    "solution": "[키포인트] 절댓값이 주어진 수보다 작다는 것은 원점에서의 거리가 그보다 작다는 뜻이다.\n조건 정리: $|x|<\\dfrac{7}{2}=3.5$인 정수를 찾는다.\n풀이 방향: $-3.5<x<3.5$를 만족하는 정수를 나열한다.\n정석 풀이: 가능한 정수는 $-3,-2,-1,0,1,2,3$으로 모두 7개이다.\n따라서 구하는 값은 $7$개이다."
+    "solution": "[키포인트] 절댓값이 주어진 수보다 작다는 것은 원점에서의 거리가 그보다 작다는 뜻이다.\n조건 정리: $|x|<\\dfrac{7}{2}=3.5$인 정수를 찾는다.\n풀이 방향: $-3.5<x<3.5$를 만족하는 정수를 나열한다.\n정석 풀이: 가능한 정수는 $-3,-2,-1,0,1,2,3$으로 모두 7개이다.\n따라서 구하는 값은 $7$개이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 84,
@@ -122,7 +134,11 @@ window.questionBank = [
       "-3"
     ],
     "answer": "②",
-    "solution": "[키포인트] 수직선에서는 왼쪽에 있을수록 작은 수이다.\n조건 정리: 주어진 수들을 작은 것부터 차례로 나열한다.\n풀이 방향: 음수끼리는 절댓값이 큰 수가 더 작다는 점을 이용한다.\n정석 풀이: $-3<-\\dfrac{3}{4}<-\\dfrac{2}{3}<\\dfrac{1}{2}<3.5$이므로 왼쪽에서 3번째 수는 $-\\dfrac{2}{3}$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 수직선에서는 왼쪽에 있을수록 작은 수이다.\n조건 정리: 주어진 수들을 작은 것부터 차례로 나열한다.\n풀이 방향: 음수끼리는 절댓값이 큰 수가 더 작다는 점을 이용한다.\n정석 풀이: $-3<-\\dfrac{3}{4}<-\\dfrac{2}{3}<\\dfrac{1}{2}<3.5$이므로 왼쪽에서 3번째 수는 $-\\dfrac{2}{3}$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 85,
@@ -155,7 +171,11 @@ window.questionBank = [
       "-1"
     ],
     "answer": "②",
-    "solution": "[키포인트] 분수와 가장 가까운 정수를 각각 찾은 뒤 곱한다.\n조건 정리: $-\\dfrac{7}{5}=-1.4$이고 $\\dfrac{11}{3}=3.\\overline{6}$이다.\n풀이 방향: 각 수와 가장 가까운 정수를 구한다.\n정석 풀이: $a=-1$, $b=4$이므로 $a\\times b=-1\\times4=-4$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 분수와 가장 가까운 정수를 각각 찾은 뒤 곱한다.\n조건 정리: $-\\dfrac{7}{5}=-1.4$이고 $\\dfrac{11}{3}=3.\\overline{6}$이다.\n풀이 방향: 각 수와 가장 가까운 정수를 구한다.\n정석 풀이: $a=-1$, $b=4$이므로 $a\\times b=-1\\times4=-4$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 86,
@@ -180,7 +200,11 @@ window.questionBank = [
     "content": "다음을 계산하여라.\n$\\left(-\\dfrac{1}{2}\\right)\\times\\left(-\\dfrac{2}{3}\\right)\\times\\left(-\\dfrac{3}{4}\\right)\\times\\cdots\\times\\left(-\\dfrac{99}{100}\\right)$",
     "choices": [],
     "answer": "$-\\dfrac{1}{100}$",
-    "solution": "[키포인트] 연속된 분수의 곱은 약분 구조와 음수의 개수를 함께 확인한다.\n조건 정리: 분수 부분은 분자와 다음 분모가 차례로 약분된다.\n풀이 방향: 음수 인수의 개수를 세고, 남는 분수값을 구한다.\n정석 풀이: 분수의 절댓값은 $\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times\\cdots\\times\\dfrac{99}{100}=\\dfrac{1}{100}$이다. 음수 인수는 99개이므로 곱은 음수이다.\n따라서 구하는 값은 $-\\dfrac{1}{100}$이다."
+    "solution": "[키포인트] 연속된 분수의 곱은 약분 구조와 음수의 개수를 함께 확인한다.\n조건 정리: 분수 부분은 분자와 다음 분모가 차례로 약분된다.\n풀이 방향: 음수 인수의 개수를 세고, 남는 분수값을 구한다.\n정석 풀이: 분수의 절댓값은 $\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times\\cdots\\times\\dfrac{99}{100}=\\dfrac{1}{100}$이다. 음수 인수는 99개이므로 곱은 음수이다.\n따라서 구하는 값은 $-\\dfrac{1}{100}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 87,
@@ -213,7 +237,11 @@ window.questionBank = [
       "절댓값이 가장 작은 수는 $-\\dfrac{1}{4}$이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 유리수의 대소를 비교할 때는 수직선에서의 위치를 생각한다.\n조건 정리: $-\\dfrac{12}{3}=-4$이므로 보기의 수는 $-4,-1,-\\dfrac14,\\dfrac32,5$로 볼 수 있다.\n풀이 방향: $-\\dfrac13$보다 큰 수를 직접 센다.\n정석 풀이: $-\\dfrac13$보다 큰 수는 $-\\dfrac14,\\dfrac32,5$로 3개이다. 따라서 ③은 옳지 않다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 유리수의 대소를 비교할 때는 수직선에서의 위치를 생각한다.\n조건 정리: $-\\dfrac{12}{3}=-4$이므로 보기의 수는 $-4,-1,-\\dfrac14,\\dfrac32,5$로 볼 수 있다.\n풀이 방향: $-\\dfrac13$보다 큰 수를 직접 센다.\n정석 풀이: $-\\dfrac13$보다 큰 수는 $-\\dfrac14,\\dfrac32,5$로 3개이다. 따라서 ③은 옳지 않다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 88,
@@ -239,7 +267,11 @@ window.questionBank = [
     "content": "어떤 정수와 6의 합은 양수이고, 그 정수와 4의 합은 음수이다. 이 정수를 구하여라.",
     "choices": [],
     "answer": "-5",
-    "solution": "[키포인트] 정수 조건과 부등식 조건을 함께 만족하는 값을 찾는다.\n조건 정리: 어떤 정수를 $x$라 하면 $x+6>0$, $x+4<0$이다.\n풀이 방향: 두 부등식을 동시에 만족하는 정수를 찾는다.\n정석 풀이: $x>-6$이고 $x<-4$이므로 $-6<x<-4$이다. 이 사이의 정수는 $-5$뿐이다.\n따라서 구하는 값은 $-5$이다."
+    "solution": "[키포인트] 정수 조건과 부등식 조건을 함께 만족하는 값을 찾는다.\n조건 정리: 어떤 정수를 $x$라 하면 $x+6>0$, $x+4<0$이다.\n풀이 방향: 두 부등식을 동시에 만족하는 정수를 찾는다.\n정석 풀이: $x>-6$이고 $x<-4$이므로 $-6<x<-4$이다. 이 사이의 정수는 $-5$뿐이다.\n따라서 구하는 값은 $-5$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 89,
@@ -266,7 +298,11 @@ window.questionBank = [
     "content": "$A$의 절댓값이 $B$의 절댓값보다 4만큼 크고 $A\\times B<0$, $A=-7$일 때, $B$의 값을 구하여라.",
     "choices": [],
     "answer": "3",
-    "solution": "[키포인트] 곱이 음수이면 두 수의 부호가 서로 다르다.\n조건 정리: $A=-7$이므로 $A<0$이고 $|A|=7$이다.\n풀이 방향: 곱이 음수이므로 $B$는 양수이고, $|B|$를 구한다.\n정석 풀이: $|A|$가 $|B|$보다 4만큼 크므로 $|B|=7-4=3$이다. $B$는 양수이므로 $B=3$이다.\n따라서 구하는 값은 $3$이다."
+    "solution": "[키포인트] 곱이 음수이면 두 수의 부호가 서로 다르다.\n조건 정리: $A=-7$이므로 $A<0$이고 $|A|=7$이다.\n풀이 방향: 곱이 음수이므로 $B$는 양수이고, $|B|$를 구한다.\n정석 풀이: $|A|$가 $|B|$보다 4만큼 크므로 $|B|=7-4=3$이다. $B$는 양수이므로 $B=3$이다.\n따라서 구하는 값은 $3$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 90,
@@ -296,7 +332,11 @@ window.questionBank = [
       "$-\\dfrac{13}{12}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 분수의 덧셈과 뺄셈은 부호를 정리한 뒤 통분한다.\n조건 정리: 빼기는 반대 부호를 더하는 것으로 바꾼다.\n풀이 방향: 분모를 12로 통분하여 계산한다.\n정석 풀이: $-\\dfrac13-\\dfrac34+\\dfrac23-\\dfrac12=\\dfrac{-4-9+8-6}{12}=-\\dfrac{11}{12}$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 분수의 덧셈과 뺄셈은 부호를 정리한 뒤 통분한다.\n조건 정리: 빼기는 반대 부호를 더하는 것으로 바꾼다.\n풀이 방향: 분모를 12로 통분하여 계산한다.\n정석 풀이: $-\\dfrac13-\\dfrac34+\\dfrac23-\\dfrac12=\\dfrac{-4-9+8-6}{12}=-\\dfrac{11}{12}$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 91,
@@ -329,7 +369,11 @@ window.questionBank = [
       "$(-9)\\div\\left(-\\dfrac{1}{3}\\right)^2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 거듭제곱의 부호와 계산 순서를 정확히 적용한다.\n조건 정리: 각 보기의 값을 계산하여 비교한다.\n풀이 방향: 대부분의 값이 $-1$인지 확인하고 다른 값을 찾는다.\n정석 풀이: ①, ②, ③, ④는 모두 $-1$이고, ⑤는 $(-9)\\div\\dfrac19=-81$이다. 따라서 계산 결과가 다른 하나는 ⑤이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 거듭제곱의 부호와 계산 순서를 정확히 적용한다.\n조건 정리: 각 보기의 값을 계산하여 비교한다.\n풀이 방향: 대부분의 값이 $-1$인지 확인하고 다른 값을 찾는다.\n정석 풀이: ①, ②, ③, ④는 모두 $-1$이고, ⑤는 $(-9)\\div\\dfrac19=-81$이다. 따라서 계산 결과가 다른 하나는 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 92,
@@ -361,7 +405,11 @@ window.questionBank = [
       "-2"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 먼저 빈칸 앞의 계산값을 구한 뒤 방정식처럼 푼다.\n조건 정리: $\\left(-\\dfrac53\\right)\\div\\left(-\\dfrac16\\right)$을 먼저 계산한다.\n풀이 방향: 계산 결과에 어떤 수를 곱해야 $-20$이 되는지 찾는다.\n정석 풀이: $\\left(-\\dfrac53\\right)\\div\\left(-\\dfrac16\\right)=\\left(-\\dfrac53\\right)\\times(-6)=10$이다. 따라서 $10\\times\\square=-20$이므로 $\\square=-2$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 먼저 빈칸 앞의 계산값을 구한 뒤 방정식처럼 푼다.\n조건 정리: $\\left(-\\dfrac53\\right)\\div\\left(-\\dfrac16\\right)$을 먼저 계산한다.\n풀이 방향: 계산 결과에 어떤 수를 곱해야 $-20$이 되는지 찾는다.\n정석 풀이: $\\left(-\\dfrac53\\right)\\div\\left(-\\dfrac16\\right)=\\left(-\\dfrac53\\right)\\times(-6)=10$이다. 따라서 $10\\times\\square=-20$이므로 $\\square=-2$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 93,
@@ -387,7 +435,11 @@ window.questionBank = [
     "content": "$1\\dfrac{4}{5}$의 역수를 $a$, $-0.6$의 역수를 $b$라 할 때, $\\dfrac{a}{b}$의 값을 구하여라.",
     "choices": [],
     "answer": "$-\\dfrac{1}{3}$",
-    "solution": "[키포인트] 역수는 곱해서 1이 되는 수이다.\n조건 정리: $1\\dfrac45=\\dfrac95$이고 $-0.6=-\\dfrac35$이다.\n풀이 방향: 각 수의 역수를 구한 뒤 $a\\div b$를 계산한다.\n정석 풀이: $a=\\dfrac59$, $b=-\\dfrac53$이므로 $\\dfrac{a}{b}=\\dfrac59\\div\\left(-\\dfrac53\\right)=-\\dfrac13$이다.\n따라서 구하는 값은 $-\\dfrac{1}{3}$이다."
+    "solution": "[키포인트] 역수는 곱해서 1이 되는 수이다.\n조건 정리: $1\\dfrac45=\\dfrac95$이고 $-0.6=-\\dfrac35$이다.\n풀이 방향: 각 수의 역수를 구한 뒤 $a\\div b$를 계산한다.\n정석 풀이: $a=\\dfrac59$, $b=-\\dfrac53$이므로 $\\dfrac{a}{b}=\\dfrac59\\div\\left(-\\dfrac53\\right)=-\\dfrac13$이다.\n따라서 구하는 값은 $-\\dfrac{1}{3}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 94,
@@ -412,7 +464,11 @@ window.questionBank = [
     "content": "다음을 계산하여라.\n$\\dfrac{119}{210}\\times\\dfrac{7}{5}-\\dfrac{119}{210}\\times\\dfrac{2}{5}$",
     "choices": [],
     "answer": "$\\dfrac{119}{210}$",
-    "solution": "[키포인트] 공통인수를 묶으면 계산이 간단해진다.\n조건 정리: 두 항에 공통으로 $\\dfrac{119}{210}$이 있다.\n풀이 방향: 공통인수를 묶어 괄호 안을 먼저 계산한다.\n정석 풀이: $\\dfrac{119}{210}\\left(\\dfrac75-\\dfrac25\\right)=\\dfrac{119}{210}\\times1=\\dfrac{119}{210}$이다.\n따라서 구하는 값은 $\\dfrac{119}{210}$이다."
+    "solution": "[키포인트] 공통인수를 묶으면 계산이 간단해진다.\n조건 정리: 두 항에 공통으로 $\\dfrac{119}{210}$이 있다.\n풀이 방향: 공통인수를 묶어 괄호 안을 먼저 계산한다.\n정석 풀이: $\\dfrac{119}{210}\\left(\\dfrac75-\\dfrac25\\right)=\\dfrac{119}{210}\\times1=\\dfrac{119}{210}$이다.\n따라서 구하는 값은 $\\dfrac{119}{210}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 95,
@@ -444,7 +500,11 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "[키포인트] 곱이 가장 큰 양수가 되도록 음수 두 개와 큰 양수를 선택한다.\n조건 정리: 음수 두 개를 곱하면 양수가 된다.\n풀이 방향: 양수 결과를 크게 만들려면 절댓값이 큰 양수를 함께 곱한다.\n정석 풀이: $\\left(-\\dfrac23\\right)\\times(-3)\\times4=8$이고, 이것이 가장 크다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 곱이 가장 큰 양수가 되도록 음수 두 개와 큰 양수를 선택한다.\n조건 정리: 음수 두 개를 곱하면 양수가 된다.\n풀이 방향: 양수 결과를 크게 만들려면 절댓값이 큰 양수를 함께 곱한다.\n정석 풀이: $\\left(-\\dfrac23\\right)\\times(-3)\\times4=8$이고, 이것이 가장 크다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 96,
@@ -476,7 +536,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 거듭제곱을 먼저 계산하고 나눗셈은 역수를 곱한다.\n조건 정리: $\\left(-\\dfrac32\\right)^2=\\dfrac94$이다.\n풀이 방향: 곱셈과 나눗셈을 차례로 계산한다.\n정석 풀이: $12\\times\\dfrac94\\div\\dfrac95=12\\times\\dfrac94\\times\\dfrac59=15$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 거듭제곱을 먼저 계산하고 나눗셈은 역수를 곱한다.\n조건 정리: $\\left(-\\dfrac32\\right)^2=\\dfrac94$이다.\n풀이 방향: 곱셈과 나눗셈을 차례로 계산한다.\n정석 풀이: $12\\times\\dfrac94\\div\\dfrac95=12\\times\\dfrac94\\times\\dfrac59=15$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 97,
@@ -509,7 +573,11 @@ window.questionBank = [
       "$-a-b$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 음수 $a$의 절댓값이 $b$보다 크다는 조건을 이용한다.\n조건 정리: $a<0<b$이고 $|a|>|b|$이다.\n풀이 방향: 각 식의 부호와 크기를 비교한다.\n정석 풀이: $b-a=b+(-a)$이고, $-a$와 $b$를 모두 더하므로 가장 크다. 따라서 가장 큰 수는 $b-a$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 음수 $a$의 절댓값이 $b$보다 크다는 조건을 이용한다.\n조건 정리: $a<0<b$이고 $|a|>|b|$이다.\n풀이 방향: 각 식의 부호와 크기를 비교한다.\n정석 풀이: $b-a=b+(-a)$이고, $-a$와 $b$를 모두 더하므로 가장 크다. 따라서 가장 큰 수는 $b-a$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 98,
@@ -541,7 +609,11 @@ window.questionBank = [
       "3"
     ],
     "answer": "③",
-    "solution": "[키포인트] 괄호 안쪽과 거듭제곱, 나눗셈을 먼저 계산한다.\n조건 정리: 계산 순서는 거듭제곱, 나눗셈, 중괄호, 대괄호 순서이다.\n풀이 방향: 안쪽부터 값을 구한다.\n정석 풀이: $(-3)^2=9$, $6\\div\\dfrac32=4$이므로 $\\{9-4\\}-2=3$이다. 따라서 $1-3=-2$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 괄호 안쪽과 거듭제곱, 나눗셈을 먼저 계산한다.\n조건 정리: 계산 순서는 거듭제곱, 나눗셈, 중괄호, 대괄호 순서이다.\n풀이 방향: 안쪽부터 값을 구한다.\n정석 풀이: $(-3)^2=9$, $6\\div\\dfrac32=4$이므로 $\\{9-4\\}-2=3$이다. 따라서 $1-3=-2$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 100,
@@ -568,7 +640,11 @@ window.questionBank = [
     "content": "$-\\dfrac{7}{3}$과 $\\dfrac{5}{4}$ 사이에 있는 정수 중에서 가장 작은 수를 $A$, 가장 큰 수를 $B$라 할 때, $A$와 $B$의 절댓값의 합을 구하여라.",
     "choices": [],
     "answer": "3",
-    "solution": "[키포인트] 두 수 사이에 있는 정수를 나열한 뒤 가장 작은 수와 가장 큰 수를 찾는다.\n조건 정리: $-\\dfrac73\\approx-2.33$, $\\dfrac54=1.25$이다.\n풀이 방향: 그 사이의 정수는 $-2,-1,0,1$이다.\n정석 풀이: 따라서 $A=-2$, $B=1$이고 $|A|+|B|=2+1=3$이다.\n따라서 구하는 값은 $3$이다."
+    "solution": "[키포인트] 두 수 사이에 있는 정수를 나열한 뒤 가장 작은 수와 가장 큰 수를 찾는다.\n조건 정리: $-\\dfrac73\\approx-2.33$, $\\dfrac54=1.25$이다.\n풀이 방향: 그 사이의 정수는 $-2,-1,0,1$이다.\n정석 풀이: 따라서 $A=-2$, $B=1$이고 $|A|+|B|=2+1=3$이다.\n따라서 구하는 값은 $3$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 101,
@@ -601,7 +677,11 @@ window.questionBank = [
       "모든 정수는 유리수이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 정수와 유리수의 포함 관계를 확인한다.\n조건 정리: 정수는 분모가 1인 분수로 나타낼 수 있다.\n풀이 방향: 각 보기의 정의가 맞는지 판단한다.\n정석 풀이: 모든 정수는 분모가 1인 분수로 나타낼 수 있으므로 유리수이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 정수와 유리수의 포함 관계를 확인한다.\n조건 정리: 정수는 분모가 1인 분수로 나타낼 수 있다.\n풀이 방향: 각 보기의 정의가 맞는지 판단한다.\n정석 풀이: 모든 정수는 분모가 1인 분수로 나타낼 수 있으므로 유리수이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 103,
@@ -633,7 +713,11 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 절댓값은 원점에서 떨어진 거리이다.\n조건 정리: 각 수의 절댓값을 비교한다.\n풀이 방향: 가장 큰 거리를 가진 수를 고른다.\n정석 풀이: $|-3|=3$이고 다른 보기의 절댓값보다 크다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 절댓값은 원점에서 떨어진 거리이다.\n조건 정리: 각 수의 절댓값을 비교한다.\n풀이 방향: 가장 큰 거리를 가진 수를 고른다.\n정석 풀이: $|-3|=3$이고 다른 보기의 절댓값보다 크다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 104,
@@ -665,7 +749,11 @@ window.questionBank = [
       "$-5<-1$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 음수끼리는 절댓값이 큰 수가 더 작다.\n조건 정리: 각 부등식을 하나씩 판단한다.\n풀이 방향: $-2$와 $-\\dfrac52=-2.5$를 비교한다.\n정석 풀이: $-2$는 $-2.5$보다 크므로 $-2<-\\dfrac52$는 옳지 않다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 음수끼리는 절댓값이 큰 수가 더 작다.\n조건 정리: 각 부등식을 하나씩 판단한다.\n풀이 방향: $-2$와 $-\\dfrac52=-2.5$를 비교한다.\n정석 풀이: $-2$는 $-2.5$보다 크므로 $-2<-\\dfrac52$는 옳지 않다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 105,
@@ -698,7 +786,11 @@ window.questionBank = [
       "수직선에서 4에 대응하는 점에서의 거리가 6인 점에 대응하는 수는 $-2$와 $10$이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 유리수에는 양수, 0, 음수가 모두 포함된다.\n조건 정리: 유리수의 범위에 0이 포함되는지 확인한다.\n풀이 방향: 각 설명이 정의와 맞는지 판단한다.\n정석 풀이: 유리수는 양의 유리수, 0, 음의 유리수로 되어 있으므로 ③은 옳지 않다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 유리수에는 양수, 0, 음수가 모두 포함된다.\n조건 정리: 유리수의 범위에 0이 포함되는지 확인한다.\n풀이 방향: 각 설명이 정의와 맞는지 판단한다.\n정석 풀이: 유리수는 양의 유리수, 0, 음의 유리수로 되어 있으므로 ③은 옳지 않다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 107,
@@ -729,7 +821,11 @@ window.questionBank = [
       "$(-4)-(-5)=-9$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 정수의 덧셈과 뺄셈은 부호를 정확히 처리해야 한다.\n조건 정리: 각 보기의 계산값을 확인한다.\n풀이 방향: 뺄셈은 반대 부호를 더하는 것으로 바꾸어 계산한다.\n정석 풀이: $(+5)-(+7)=5-7=-2$이므로 ④가 옳다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 정수의 덧셈과 뺄셈은 부호를 정확히 처리해야 한다.\n조건 정리: 각 보기의 계산값을 확인한다.\n풀이 방향: 뺄셈은 반대 부호를 더하는 것으로 바꾸어 계산한다.\n정석 풀이: $(+5)-(+7)=5-7=-2$이므로 ④가 옳다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 108,
@@ -759,7 +855,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "[키포인트] 양수와 음수를 한꺼번에 모아 계산한다.\n조건 정리: 음수끼리, 양수끼리 묶어서 계산한다.\n풀이 방향: $-4-3-5=-12$이고, 여기에 $+6$을 더한다.\n정석 풀이: $-12+6=-6$이므로 계산 결과는 $-6$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 양수와 음수를 한꺼번에 모아 계산한다.\n조건 정리: 음수끼리, 양수끼리 묶어서 계산한다.\n풀이 방향: $-4-3-5=-12$이고, 여기에 $+6$을 더한다.\n정석 풀이: $-12+6=-6$이므로 계산 결과는 $-6$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 109,
@@ -784,7 +884,11 @@ window.questionBank = [
     "content": "$6-\\{4-(-3)^2\\}$을 계산하여라.",
     "choices": [],
     "answer": "11",
-    "solution": "[키포인트] 거듭제곱을 먼저 계산한 뒤 괄호 안을 계산한다.\n조건 정리: $(-3)^2=9$이다.\n풀이 방향: 중괄호 안을 먼저 계산한다.\n정석 풀이: $4-9=-5$이므로 $6-\\{-5\\}=6+5=11$이다.\n따라서 구하는 값은 $11$이다."
+    "solution": "[키포인트] 거듭제곱을 먼저 계산한 뒤 괄호 안을 계산한다.\n조건 정리: $(-3)^2=9$이다.\n풀이 방향: 중괄호 안을 먼저 계산한다.\n정석 풀이: $4-9=-5$이므로 $6-\\{-5\\}=6+5=11$이다.\n따라서 구하는 값은 $11$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 110,
@@ -815,7 +919,11 @@ window.questionBank = [
       "$\\dfrac{3}{8}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 역수는 곱해서 1이 되는 수이다.\n조건 정리: 대분수를 가분수로 고친다.\n풀이 방향: $-2\\dfrac23=-\\dfrac83$이다.\n정석 풀이: 따라서 역수는 $-\\dfrac38$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 역수는 곱해서 1이 되는 수이다.\n조건 정리: 대분수를 가분수로 고친다.\n풀이 방향: $-2\\dfrac23=-\\dfrac83$이다.\n정석 풀이: 따라서 역수는 $-\\dfrac38$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 111,
@@ -847,7 +955,11 @@ window.questionBank = [
       "$\\dfrac{3}{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 곱셈과 나눗셈 식에서 미지수를 각각 구한다.\n조건 정리: $a\\times(-4)=-2$에서 $a$를 구하고, $b\\div\\dfrac12=-4$에서 $b$를 구한다.\n풀이 방향: 각 식을 역연산으로 푼다.\n정석 풀이: $a=\\dfrac12$, $b=-2$이므로 $a+b=\\dfrac12-2=-\\dfrac32$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 곱셈과 나눗셈 식에서 미지수를 각각 구한다.\n조건 정리: $a\\times(-4)=-2$에서 $a$를 구하고, $b\\div\\dfrac12=-4$에서 $b$를 구한다.\n풀이 방향: 각 식을 역연산으로 푼다.\n정석 풀이: $a=\\dfrac12$, $b=-2$이므로 $a+b=\\dfrac12-2=-\\dfrac32$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 113,
@@ -880,7 +992,11 @@ window.questionBank = [
       "$(-36)\\div(-5)\\div6$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 곱셈과 나눗셈의 부호는 음수의 개수와 계산 순서로 판단한다.\n조건 정리: 각 보기의 부호와 값을 계산한다.\n풀이 방향: 양수가 되는 보기를 찾는다.\n정석 풀이: ①은 $-5$, ②는 0, ③은 음수, ④는 음수이고, ⑤는 $(-36)\\div(-5)\\div6=\\dfrac65>0$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 곱셈과 나눗셈의 부호는 음수의 개수와 계산 순서로 판단한다.\n조건 정리: 각 보기의 부호와 값을 계산한다.\n풀이 방향: 양수가 되는 보기를 찾는다.\n정석 풀이: ①은 $-5$, ②는 0, ③은 음수, ④는 음수이고, ⑤는 $(-36)\\div(-5)\\div6=\\dfrac65>0$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 114,
@@ -907,7 +1023,11 @@ window.questionBank = [
     "content": "두 유리수 $a,b$에 대하여 $a$의 절댓값은 1, $b$의 절댓값이 $\\dfrac12$일 때, $a-b$의 값 중 가장 큰 수를 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{3}{2}$",
-    "solution": "[키포인트] $a-b$를 가장 크게 하려면 $a$는 가장 크게, $b$는 가장 작게 잡는다.\n조건 정리: $a=1$ 또는 $-1$, $b=\\dfrac12$ 또는 $-\\dfrac12$이다.\n풀이 방향: 가능한 값 중 $a-b$가 가장 큰 경우를 찾는다.\n정석 풀이: $a=1$, $b=-\\dfrac12$일 때 $a-b=1-\\left(-\\dfrac12\\right)=\\dfrac32$로 가장 크다.\n따라서 구하는 값은 $\\dfrac{3}{2}$이다."
+    "solution": "[키포인트] $a-b$를 가장 크게 하려면 $a$는 가장 크게, $b$는 가장 작게 잡는다.\n조건 정리: $a=1$ 또는 $-1$, $b=\\dfrac12$ 또는 $-\\dfrac12$이다.\n풀이 방향: 가능한 값 중 $a-b$가 가장 큰 경우를 찾는다.\n정석 풀이: $a=1$, $b=-\\dfrac12$일 때 $a-b=1-\\left(-\\dfrac12\\right)=\\dfrac32$로 가장 크다.\n따라서 구하는 값은 $\\dfrac{3}{2}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 115,
@@ -938,7 +1058,11 @@ window.questionBank = [
       "2"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 일차식을 역산하여 $a,b$를 구한다.\n조건 정리: $a-3=-2$이고 $2-b=3$이다.\n풀이 방향: 두 식에서 $a,b$를 각각 구한다.\n정석 풀이: $a=1$, $b=-1$이므로 $a-b=1-(-1)=2$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 일차식을 역산하여 $a,b$를 구한다.\n조건 정리: $a-3=-2$이고 $2-b=3$이다.\n풀이 방향: 두 식에서 $a,b$를 각각 구한다.\n정석 풀이: $a=1$, $b=-1$이므로 $a-b=1-(-1)=2$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 116,
@@ -967,7 +1091,11 @@ window.questionBank = [
       "⑤"
     ],
     "answer": "④",
-    "solution": "[키포인트] 계산 순서는 괄호 안, 거듭제곱, 곱셈·나눗셈, 덧셈·뺄셈 순서이다.\n조건 정리: 식 안의 괄호를 가장 먼저 확인한다.\n풀이 방향: 가장 안쪽 괄호가 먼저 계산되어야 한다.\n정석 풀이: 가장 먼저 계산해야 하는 부분은 $1-\\dfrac13$이 표시된 ④이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 계산 순서는 괄호 안, 거듭제곱, 곱셈·나눗셈, 덧셈·뺄셈 순서이다.\n조건 정리: 식 안의 괄호를 가장 먼저 확인한다.\n풀이 방향: 가장 안쪽 괄호가 먼저 계산되어야 한다.\n정석 풀이: 가장 먼저 계산해야 하는 부분은 $1-\\dfrac13$이 표시된 ④이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 117,
@@ -994,7 +1122,11 @@ window.questionBank = [
     "content": "$3$보다 $-1$만큼 작은 수를 $a$라 하고 $-3$보다 $-2$만큼 큰 수를 $b$라 할 때, $a+b$, $a-b$의 값을 각각 구하고, $a+b$와 $a-b$의 대소 관계를 부등호로 나타내어라.",
     "choices": [],
     "answer": "$a+b=-1$, $a-b=9$, $a+b<a-b$",
-    "solution": "[키포인트] 문장 표현을 정수의 덧셈으로 바꾸어 계산한다.\n조건 정리: $a=3-(-1)$, $b=-3+(-2)$로 해석한다.\n풀이 방향: 먼저 $a,b$를 구한 뒤 $a+b$와 $a-b$를 계산한다.\n정석 풀이: $a=4$, $b=-5$이므로 $a+b=-1$, $a-b=9$이다. 따라서 $a+b<a-b$이다.\n따라서 구하는 값은 $a+b=-1$, $a-b=9$, $a+b<a-b$이다."
+    "solution": "[키포인트] 문장 표현을 정수의 덧셈으로 바꾸어 계산한다.\n조건 정리: $a=3-(-1)$, $b=-3+(-2)$로 해석한다.\n풀이 방향: 먼저 $a,b$를 구한 뒤 $a+b$와 $a-b$를 계산한다.\n정석 풀이: $a=4$, $b=-5$이므로 $a+b=-1$, $a-b=9$이다. 따라서 $a+b<a-b$이다.\n따라서 구하는 값은 $a+b=-1$, $a-b=9$, $a+b<a-b$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 118,
@@ -1027,7 +1159,11 @@ window.questionBank = [
       "$a<0, b=0$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 곱이 음수이면 두 수의 부호가 서로 다르다.\n조건 정리: $a\\times b<0$이므로 두 수의 부호는 서로 다르다.\n풀이 방향: $a+b<0$이고 $|a|>|b|$인 조건을 함께 적용한다.\n정석 풀이: 절댓값이 더 큰 수가 음수여야 합이 음수가 되므로 $a<0$, $b>0$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 곱이 음수이면 두 수의 부호가 서로 다르다.\n조건 정리: $a\\times b<0$이므로 두 수의 부호는 서로 다르다.\n풀이 방향: $a+b<0$이고 $|a|>|b|$인 조건을 함께 적용한다.\n정석 풀이: 절댓값이 더 큰 수가 음수여야 합이 음수가 되므로 $a<0$, $b>0$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 119,
@@ -1053,7 +1189,11 @@ window.questionBank = [
     "content": "다음을 계산하여라.\n$1-\\left(-\\dfrac{3}{4}\\right)\\div\\left(-\\dfrac{1}{2}\\right)\\times(-2)^2$",
     "choices": [],
     "answer": "-5",
-    "solution": "[키포인트] 거듭제곱과 나눗셈·곱셈을 먼저 계산한다.\n조건 정리: $(-2)^2=4$이고 $\\left(-\\dfrac34\\right)\\div\\left(-\\dfrac12\\right)=\\dfrac32$이다.\n풀이 방향: 곱셈까지 계산한 뒤 1에서 뺀다.\n정석 풀이: $\\dfrac32\\times4=6$이므로 $1-6=-5$이다.\n따라서 구하는 값은 $-5$이다."
+    "solution": "[키포인트] 거듭제곱과 나눗셈·곱셈을 먼저 계산한다.\n조건 정리: $(-2)^2=4$이고 $\\left(-\\dfrac34\\right)\\div\\left(-\\dfrac12\\right)=\\dfrac32$이다.\n풀이 방향: 곱셈까지 계산한 뒤 1에서 뺀다.\n정석 풀이: $\\dfrac32\\times4=6$이므로 $1-6=-5$이다.\n따라서 구하는 값은 $-5$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 120,
@@ -1085,7 +1225,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 분배법칙을 이용하여 $a(b-c)$를 $ab-ac$로 바꾼다.\n조건 정리: $ab=-2$, $a(b-c)=-10$이다.\n풀이 방향: $a(b-c)=ab-ac$를 이용한다.\n정석 풀이: $-10=-2-ac$이므로 $ac=8$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 분배법칙을 이용하여 $a(b-c)$를 $ab-ac$로 바꾼다.\n조건 정리: $ab=-2$, $a(b-c)=-10$이다.\n풀이 방향: $a(b-c)=ab-ac$를 이용한다.\n정석 풀이: $-10=-2-ac$이므로 $ac=8$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 121,
@@ -1118,7 +1262,11 @@ window.questionBank = [
       "버스 요금이 100원 올랐다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 증가와 감소를 양수와 음수로 나타낸다.\n조건 정리: 올랐다, 더 나간다, 지각은 기준보다 늘어난 것으로 볼 수 있다.\n풀이 방향: 떨어졌다는 감소이므로 음의 부호로 나타낸다.\n정석 풀이: ③은 점수가 7점 떨어졌으므로 $-7$점이고, 나머지는 양의 방향으로 나타낸다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 증가와 감소를 양수와 음수로 나타낸다.\n조건 정리: 올랐다, 더 나간다, 지각은 기준보다 늘어난 것으로 볼 수 있다.\n풀이 방향: 떨어졌다는 감소이므로 음의 부호로 나타낸다.\n정석 풀이: ③은 점수가 7점 떨어졌으므로 $-7$점이고, 나머지는 양의 방향으로 나타낸다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 123,
@@ -1151,7 +1299,11 @@ window.questionBank = [
       "6개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 절댓값이 2보다 작다는 것은 $-2$보다 크고 2보다 작은 수이다.\n조건 정리: 경계값 $-2$와 $2$는 포함하지 않는다.\n풀이 방향: 각 수의 절댓값을 확인한다.\n정석 풀이: 조건을 만족하는 수는 $+1$, $\\dfrac13$, $0.5$, $-\\dfrac56$으로 모두 4개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 절댓값이 2보다 작다는 것은 $-2$보다 크고 2보다 작은 수이다.\n조건 정리: 경계값 $-2$와 $2$는 포함하지 않는다.\n풀이 방향: 각 수의 절댓값을 확인한다.\n정석 풀이: 조건을 만족하는 수는 $+1$, $\\dfrac13$, $0.5$, $-\\dfrac56$으로 모두 4개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 124,
@@ -1178,7 +1330,11 @@ window.questionBank = [
     "content": "다음 보기의 수를 작은 것부터 차례로 나열할 때, 세 번째로 오는 수를 구하여라.\n<보기> $-2$, $\\dfrac34$, $-\\dfrac32$, $+\\dfrac23$, $+1$",
     "choices": [],
     "answer": "$+\\dfrac{2}{3}$",
-    "solution": "[키포인트] 유리수를 작은 것부터 차례로 비교한다.\n조건 정리: 음수는 양수보다 작고, 음수끼리는 절댓값이 큰 수가 더 작다.\n풀이 방향: 주어진 수를 오름차순으로 나열한다.\n정석 풀이: $-2<-\\dfrac32<\\dfrac23<\\dfrac34<1$이므로 세 번째 수는 $+\\dfrac23$이다.\n따라서 구하는 값은 $+\\dfrac{2}{3}$이다."
+    "solution": "[키포인트] 유리수를 작은 것부터 차례로 비교한다.\n조건 정리: 음수는 양수보다 작고, 음수끼리는 절댓값이 큰 수가 더 작다.\n풀이 방향: 주어진 수를 오름차순으로 나열한다.\n정석 풀이: $-2<-\\dfrac32<\\dfrac23<\\dfrac34<1$이므로 세 번째 수는 $+\\dfrac23$이다.\n따라서 구하는 값은 $+\\dfrac{2}{3}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 125,
@@ -1211,7 +1367,11 @@ window.questionBank = [
       "유리수는 모두 4개이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 주어진 수들이 모두 유리수인지 확인한다.\n조건 정리: 유리수는 정수, 분수, 유한소수 등을 모두 포함한다.\n풀이 방향: 주어진 여섯 수의 종류를 하나씩 판단한다.\n정석 풀이: $-1,+2,\\dfrac14,0.7,-\\dfrac57,-2.1$은 모두 유리수이므로 유리수는 6개이다. 따라서 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 주어진 수들이 모두 유리수인지 확인한다.\n조건 정리: 유리수는 정수, 분수, 유한소수 등을 모두 포함한다.\n풀이 방향: 주어진 여섯 수의 종류를 하나씩 판단한다.\n정석 풀이: $-1,+2,\\dfrac14,0.7,-\\dfrac57,-2.1$은 모두 유리수이므로 유리수는 6개이다. 따라서 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 126,
@@ -1237,7 +1397,11 @@ window.questionBank = [
     "content": "$1\\dfrac23$의 역수를 $A$, $-3$의 역수를 $B$라 할 때, $A\\times B$의 값을 구하여라.",
     "choices": [],
     "answer": "$-\\dfrac{1}{5}$",
-    "solution": "[키포인트] 역수를 구한 뒤 곱한다.\n조건 정리: $1\\dfrac23=\\dfrac53$이므로 그 역수는 $\\dfrac35$이다. $-3$의 역수는 $-\\dfrac13$이다.\n풀이 방향: 두 역수를 곱한다.\n정석 풀이: $A\\times B=\\dfrac35\\times\\left(-\\dfrac13\\right)=-\\dfrac15$이다.\n따라서 구하는 값은 $-\\dfrac{1}{5}$이다."
+    "solution": "[키포인트] 역수를 구한 뒤 곱한다.\n조건 정리: $1\\dfrac23=\\dfrac53$이므로 그 역수는 $\\dfrac35$이다. $-3$의 역수는 $-\\dfrac13$이다.\n풀이 방향: 두 역수를 곱한다.\n정석 풀이: $A\\times B=\\dfrac35\\times\\left(-\\dfrac13\\right)=-\\dfrac15$이다.\n따라서 구하는 값은 $-\\dfrac{1}{5}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 127,
@@ -1269,7 +1433,11 @@ window.questionBank = [
       "-3"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 수 사이의 정수를 모두 나열한 뒤 합한다.\n조건 정리: $-4.5$보다 크고 $\\dfrac73\\approx2.33$보다 작은 정수를 찾는다.\n풀이 방향: 해당 정수를 모두 더한다.\n정석 풀이: 정수는 $-4,-3,-2,-1,0,1,2$이고, 합은 $-7$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 두 수 사이의 정수를 모두 나열한 뒤 합한다.\n조건 정리: $-4.5$보다 크고 $\\dfrac73\\approx2.33$보다 작은 정수를 찾는다.\n풀이 방향: 해당 정수를 모두 더한다.\n정석 풀이: 정수는 $-4,-3,-2,-1,0,1,2$이고, 합은 $-7$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 128,
@@ -1302,7 +1470,11 @@ window.questionBank = [
       "$(-1)-(-2)$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 계산 결과를 구한 뒤 절댓값을 비교한다.\n조건 정리: 보기의 값을 각각 계산한다.\n풀이 방향: 절댓값이 가장 작은 결과를 찾는다.\n정석 풀이: ① $-2$, ② $-3$, ③ $2$, ④ $20$, ⑤ $1$이므로 절댓값이 가장 작은 것은 ⑤이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 계산 결과를 구한 뒤 절댓값을 비교한다.\n조건 정리: 보기의 값을 각각 계산한다.\n풀이 방향: 절댓값이 가장 작은 결과를 찾는다.\n정석 풀이: ① $-2$, ② $-3$, ③ $2$, ④ $20$, ⑤ $1$이므로 절댓값이 가장 작은 것은 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 129,
@@ -1335,7 +1507,11 @@ window.questionBank = [
       "$-\\dfrac25<-\\dfrac14$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 음수의 대소는 수직선에서 오른쪽에 있는 수가 더 크다.\n조건 정리: 둘째 보기의 두 수 $-0.7$과 $-\\dfrac23$을 비교한다.\n풀이 방향: $-\\dfrac23\\approx-0.666\\cdots$이다.\n정석 풀이: $-0.7<-\\dfrac23$이므로 $-0.7>-\\dfrac23$은 옳지 않다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 음수의 대소는 수직선에서 오른쪽에 있는 수가 더 크다.\n조건 정리: 둘째 보기의 두 수 $-0.7$과 $-\\dfrac23$을 비교한다.\n풀이 방향: $-\\dfrac23\\approx-0.666\\cdots$이다.\n정석 풀이: $-0.7<-\\dfrac23$이므로 $-0.7>-\\dfrac23$은 옳지 않다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 130,
@@ -1366,7 +1542,11 @@ window.questionBank = [
       "1"
     ],
     "answer": "③",
-    "solution": "[키포인트] 어떤 수보다 음수만큼 작다는 표현은 그 음수를 빼는 것으로 계산한다.\n조건 정리: 기준 수는 $\\dfrac13$이고, 작은 양은 $-\\dfrac25$이다.\n풀이 방향: $\\dfrac13-\\left(-\\dfrac25\\right)$를 계산한다.\n정석 풀이: $\\dfrac13+\\dfrac25=\\dfrac5{15}+\\dfrac6{15}=\\dfrac{11}{15}$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 어떤 수보다 음수만큼 작다는 표현은 그 음수를 빼는 것으로 계산한다.\n조건 정리: 기준 수는 $\\dfrac13$이고, 작은 양은 $-\\dfrac25$이다.\n풀이 방향: $\\dfrac13-\\left(-\\dfrac25\\right)$를 계산한다.\n정석 풀이: $\\dfrac13+\\dfrac25=\\dfrac5{15}+\\dfrac6{15}=\\dfrac{11}{15}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 131,
@@ -1390,7 +1570,11 @@ window.questionBank = [
     "content": "$-\\dfrac12+\\dfrac13-1+\\dfrac14$을 계산하여라.",
     "choices": [],
     "answer": "$-\\dfrac{11}{12}$",
-    "solution": "[키포인트] 분수의 덧셈과 뺄셈은 통분하여 계산한다.\n조건 정리: 분모 2, 3, 1, 4의 공통분모는 12이다.\n풀이 방향: 각 항을 분모 12로 고쳐 계산한다.\n정석 풀이: $-\\dfrac6{12}+\\dfrac4{12}-\\dfrac{12}{12}+\\dfrac3{12}=\\dfrac{-11}{12}$이다.\n따라서 구하는 값은 $-\\dfrac{11}{12}$이다."
+    "solution": "[키포인트] 분수의 덧셈과 뺄셈은 통분하여 계산한다.\n조건 정리: 분모 2, 3, 1, 4의 공통분모는 12이다.\n풀이 방향: 각 항을 분모 12로 고쳐 계산한다.\n정석 풀이: $-\\dfrac6{12}+\\dfrac4{12}-\\dfrac{12}{12}+\\dfrac3{12}=\\dfrac{-11}{12}$이다.\n따라서 구하는 값은 $-\\dfrac{11}{12}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 132,
@@ -1423,7 +1607,11 @@ window.questionBank = [
       "$(-2)\\div\\left(-\\dfrac23\\right)\\times\\left(-\\dfrac94\\right)$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 보기의 계산 결과를 비교한다.\n조건 정리: 나머지 넷과 같은 값이 무엇인지 찾는다.\n풀이 방향: 곱셈과 나눗셈을 차례로 계산한다.\n정석 풀이: ①, ③, ④, ⑤는 $-3$이고, ②는 $3$이다. 따라서 다른 하나는 ②이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 각 보기의 계산 결과를 비교한다.\n조건 정리: 나머지 넷과 같은 값이 무엇인지 찾는다.\n풀이 방향: 곱셈과 나눗셈을 차례로 계산한다.\n정석 풀이: ①, ③, ④, ⑤는 $-3$이고, ②는 $3$이다. 따라서 다른 하나는 ②이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 133,
@@ -1456,7 +1644,11 @@ window.questionBank = [
       "㉤, ㉣, ㉡, ㉢, ㉠"
     ],
     "answer": "③",
-    "solution": "[키포인트] 거듭제곱의 부호를 정확히 계산한 뒤 대소를 비교한다.\n조건 정리: 각 기호의 값을 먼저 구한다.\n풀이 방향: $-2^3=-8$, $\\left(-\\dfrac12\\right)^2=\\dfrac14$, $-(-2)^2=-4$, $\\dfrac12$, $(-2)^2=4$이다.\n정석 풀이: 작은 것부터 나열하면 ㉠, ㉢, ㉡, ㉣, ㉤이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 거듭제곱의 부호를 정확히 계산한 뒤 대소를 비교한다.\n조건 정리: 각 기호의 값을 먼저 구한다.\n풀이 방향: $-2^3=-8$, $\\left(-\\dfrac12\\right)^2=\\dfrac14$, $-(-2)^2=-4$, $\\dfrac12$, $(-2)^2=4$이다.\n정석 풀이: 작은 것부터 나열하면 ㉠, ㉢, ㉡, ㉣, ㉤이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 134,
@@ -1489,7 +1681,11 @@ window.questionBank = [
       "$\\left(+\\dfrac92\\right)\\div(-6)\\times(-8)$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 보기의 값을 계산하여 가장 큰 값을 비교한다.\n조건 정리: 계산 순서를 지켜 각 보기의 값을 구한다.\n풀이 방향: 결과를 차례로 비교한다.\n정석 풀이: ①은 2, ②는 4, ③은 $\\dfrac32$, ④는 8, ⑤는 6이다. 따라서 가장 큰 수는 ④이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 각 보기의 값을 계산하여 가장 큰 값을 비교한다.\n조건 정리: 계산 순서를 지켜 각 보기의 값을 구한다.\n풀이 방향: 결과를 차례로 비교한다.\n정석 풀이: ①은 2, ②는 4, ③은 $\\dfrac32$, ④는 8, ⑤는 6이다. 따라서 가장 큰 수는 ④이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 135,
@@ -1516,7 +1712,11 @@ window.questionBank = [
     "content": "2의 역수를 $a$, 절댓값이 $\\dfrac43$인 음수를 $b$, $-2$보다 3만큼 작은 수를 $c$라 할 때, $a\\div b\\times c$의 값을 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{15}{8}$",
-    "solution": "[키포인트] 역수, 절댓값, 문장 조건을 각각 식으로 바꾼다.\n조건 정리: $a=\\dfrac12$, $b=-\\dfrac43$, $c=-5$이다.\n풀이 방향: 주어진 식 $a\\div b\\times c$에 대입한다.\n정석 풀이: $\\dfrac12\\div\\left(-\\dfrac43\\right)\\times(-5)=\\dfrac12\\times\\left(-\\dfrac34\\right)\\times(-5)=\\dfrac{15}{8}$이다.\n따라서 구하는 값은 $\\dfrac{15}{8}$이다."
+    "solution": "[키포인트] 역수, 절댓값, 문장 조건을 각각 식으로 바꾼다.\n조건 정리: $a=\\dfrac12$, $b=-\\dfrac43$, $c=-5$이다.\n풀이 방향: 주어진 식 $a\\div b\\times c$에 대입한다.\n정석 풀이: $\\dfrac12\\div\\left(-\\dfrac43\\right)\\times(-5)=\\dfrac12\\times\\left(-\\dfrac34\\right)\\times(-5)=\\dfrac{15}{8}$이다.\n따라서 구하는 값은 $\\dfrac{15}{8}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 136,
@@ -1549,7 +1749,11 @@ window.questionBank = [
       "$\\dfrac25$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 점 사이를 일정한 비로 나누는 점은 전체 거리의 해당 비율만큼 이동한 점이다.\n조건 정리: A는 $-\\dfrac12$, B는 $\\dfrac34$이다. 두 점 사이의 거리는 $\\dfrac34-\\left(-\\dfrac12\\right)=\\dfrac54$이다.\n풀이 방향: A에서 B 방향으로 $3:2$로 나누는 점은 A에서 전체의 $\\dfrac35$만큼 이동한 점이다.\n정석 풀이: $-\\dfrac12+\\dfrac35\\times\\dfrac54=-\\dfrac12+\\dfrac34=\\dfrac14$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 점 사이를 일정한 비로 나누는 점은 전체 거리의 해당 비율만큼 이동한 점이다.\n조건 정리: A는 $-\\dfrac12$, B는 $\\dfrac34$이다. 두 점 사이의 거리는 $\\dfrac34-\\left(-\\dfrac12\\right)=\\dfrac54$이다.\n풀이 방향: A에서 B 방향으로 $3:2$로 나누는 점은 A에서 전체의 $\\dfrac35$만큼 이동한 점이다.\n정석 풀이: $-\\dfrac12+\\dfrac35\\times\\dfrac54=-\\dfrac12+\\dfrac34=\\dfrac14$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 137,
@@ -1572,7 +1776,11 @@ window.questionBank = [
     "content": "지난주 일요일 관식이는 등산을 하였다. 처음 출발 지점에서 오르막길을 3.7 km 오른 후 잠시 내리막길로 $\\dfrac72$ km 간 다음 다시 2.6 km 올라간 후 올라간 높이의 절반을 내려왔다. 관식이는 처음 출발한 지점으로부터 몇 km를 위로 올라간 셈인가?",
     "choices": [],
     "answer": "$\\dfrac75$ km",
-    "solution": "[키포인트] 올라간 거리는 양수, 내려간 거리는 음수로 두고 계산한다.\n조건 정리: 먼저 마지막에 내려오기 전의 높이를 계산한다.\n풀이 방향: 그 높이의 절반을 내려왔으므로 결과적으로 절반만 남는다.\n정석 풀이: $(3.7-\\dfrac72+2.6)\\times\\dfrac12=(3.7-3.5+2.6)\\times\\dfrac12=2.8\\times\\dfrac12=1.4=\\dfrac75$이다.\n따라서 구하는 값은 $\\dfrac{7}{5}$ km이다."
+    "solution": "[키포인트] 올라간 거리는 양수, 내려간 거리는 음수로 두고 계산한다.\n조건 정리: 먼저 마지막에 내려오기 전의 높이를 계산한다.\n풀이 방향: 그 높이의 절반을 내려왔으므로 결과적으로 절반만 남는다.\n정석 풀이: $(3.7-\\dfrac72+2.6)\\times\\dfrac12=(3.7-3.5+2.6)\\times\\dfrac12=2.8\\times\\dfrac12=1.4=\\dfrac75$이다.\n따라서 구하는 값은 $\\dfrac{7}{5}$ km이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 138,
@@ -1599,7 +1807,11 @@ window.questionBank = [
     "content": "$a$의 절댓값은 2, $b$의 절댓값은 5일 때, $a-b$의 값 중 최댓값을 $M$, 최솟값을 $m$이라 한다. 이때, $M-m$의 값을 구하여라.",
     "choices": [],
     "answer": "14",
-    "solution": "[키포인트] $a-b$의 최댓값과 최솟값은 $a,b$의 부호 선택으로 결정된다.\n조건 정리: $a=\\pm2$, $b=\\pm5$이다.\n풀이 방향: 최댓값은 $a$를 크게, $b$를 작게 할 때이고, 최솟값은 반대이다.\n정석 풀이: $M=2-(-5)=7$, $m=-2-5=-7$이므로 $M-m=7-(-7)=14$이다.\n따라서 구하는 값은 $14$이다."
+    "solution": "[키포인트] $a-b$의 최댓값과 최솟값은 $a,b$의 부호 선택으로 결정된다.\n조건 정리: $a=\\pm2$, $b=\\pm5$이다.\n풀이 방향: 최댓값은 $a$를 크게, $b$를 작게 할 때이고, 최솟값은 반대이다.\n정석 풀이: $M=2-(-5)=7$, $m=-2-5=-7$이므로 $M-m=7-(-7)=14$이다.\n따라서 구하는 값은 $14$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 139,
@@ -1625,7 +1837,11 @@ window.questionBank = [
     "content": "다음을 계산하여라.\n$\\left(-\\dfrac14\\right)\\div\\left(-\\dfrac12\\right)^3-(-6)\\times\\left\\{\\dfrac43+(-2)\\right\\}$",
     "choices": [],
     "answer": "-2",
-    "solution": "[키포인트] 거듭제곱과 괄호 안 계산을 먼저 처리한다.\n조건 정리: $\\left(-\\dfrac12\\right)^3=-\\dfrac18$이고 $\\dfrac43+(-2)=-\\dfrac23$이다.\n풀이 방향: 각 부분을 계산한 뒤 빼기를 적용한다.\n정석 풀이: $\\left(-\\dfrac14\\right)\\div\\left(-\\dfrac18\\right)=2$이고 $(-6)\\times\\left(-\\dfrac23\\right)=4$이므로 $2-4=-2$이다.\n따라서 구하는 값은 $-2$이다."
+    "solution": "[키포인트] 거듭제곱과 괄호 안 계산을 먼저 처리한다.\n조건 정리: $\\left(-\\dfrac12\\right)^3=-\\dfrac18$이고 $\\dfrac43+(-2)=-\\dfrac23$이다.\n풀이 방향: 각 부분을 계산한 뒤 빼기를 적용한다.\n정석 풀이: $\\left(-\\dfrac14\\right)\\div\\left(-\\dfrac18\\right)=2$이고 $(-6)\\times\\left(-\\dfrac23\\right)=4$이므로 $2-4=-2$이다.\n따라서 구하는 값은 $-2$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 141,
@@ -1658,7 +1874,11 @@ window.questionBank = [
       "서로 다른 두 유리수 사이에는 무수히 많은 유리수가 존재한다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 유리수에는 0도 포함된다.\n조건 정리: 유리수의 분류는 양의 유리수, 0, 음의 유리수이다.\n풀이 방향: 각 설명이 정의와 맞는지 확인한다.\n정석 풀이: ③은 0을 빠뜨렸으므로 옳지 않다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 유리수에는 0도 포함된다.\n조건 정리: 유리수의 분류는 양의 유리수, 0, 음의 유리수이다.\n풀이 방향: 각 설명이 정의와 맞는지 확인한다.\n정석 풀이: ③은 0을 빠뜨렸으므로 옳지 않다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 143,
@@ -1690,7 +1910,11 @@ window.questionBank = [
       "$\\dfrac{12}{5}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원점에서의 거리는 절댓값이다.\n조건 정리: 각 수의 절댓값을 비교한다.\n풀이 방향: 절댓값이 가장 큰 수를 찾는다.\n정석 풀이: $\\left|-3\\dfrac12\\right|=3.5$로 가장 크므로 원점에서 가장 멀리 떨어진 수는 $-3\\dfrac12$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 원점에서의 거리는 절댓값이다.\n조건 정리: 각 수의 절댓값을 비교한다.\n풀이 방향: 절댓값이 가장 큰 수를 찾는다.\n정석 풀이: $\\left|-3\\dfrac12\\right|=3.5$로 가장 크므로 원점에서 가장 멀리 떨어진 수는 $-3\\dfrac12$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 144,
@@ -1716,7 +1940,11 @@ window.questionBank = [
     "content": "다음 수를 큰 수부터 차례대로 나열하여라.\n$2$, $-\\dfrac23$, $-3$, $\\dfrac74$, $0$, $-1$",
     "choices": [],
     "answer": "$2$, $\\dfrac74$, $0$, $-\\dfrac23$, $-1$, $-3$",
-    "solution": "[키포인트] 양수, 0, 음수 순서로 놓고 음수끼리는 절댓값을 비교한다.\n조건 정리: 양수는 2와 $\\dfrac74$이고, 그다음은 0, 그다음은 음수이다.\n풀이 방향: 큰 수부터 차례대로 나열한다.\n정석 풀이: $2>\\dfrac74>0>-\\dfrac23>-1>-3$이다.\n따라서 구하는 값은 $2$, $\\dfrac74$, $0$, $-\\dfrac23$, $-1$, $-3$이다."
+    "solution": "[키포인트] 양수, 0, 음수 순서로 놓고 음수끼리는 절댓값을 비교한다.\n조건 정리: 양수는 2와 $\\dfrac74$이고, 그다음은 0, 그다음은 음수이다.\n풀이 방향: 큰 수부터 차례대로 나열한다.\n정석 풀이: $2>\\dfrac74>0>-\\dfrac23>-1>-3$이다.\n따라서 구하는 값은 $2$, $\\dfrac74$, $0$, $-\\dfrac23$, $-1$, $-3$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 145,
@@ -1749,7 +1977,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "②",
-    "solution": "[키포인트] 부등식 범위 안의 정수를 모두 나열한다.\n조건 정리: $-\\dfrac73\\approx-2.33$이므로 $x$는 $-2$부터 가능하다.\n풀이 방향: 2 이하까지의 정수를 센다.\n정석 풀이: 가능한 정수는 $-2,-1,0,1,2$로 모두 5개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 부등식 범위 안의 정수를 모두 나열한다.\n조건 정리: $-\\dfrac73\\approx-2.33$이므로 $x$는 $-2$부터 가능하다.\n풀이 방향: 2 이하까지의 정수를 센다.\n정석 풀이: 가능한 정수는 $-2,-1,0,1,2$로 모두 5개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 146,
@@ -1781,7 +2013,11 @@ window.questionBank = [
       "$0-(+5)$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각 정수 계산의 결과를 비교한다.\n조건 정리: 각 보기의 값을 계산한다.\n풀이 방향: 같은 값끼리 묶고 다른 값을 찾는다.\n정석 풀이: ①은 $-9$이고, ②, ③, ④, ⑤는 모두 $-5$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 각 정수 계산의 결과를 비교한다.\n조건 정리: 각 보기의 값을 계산한다.\n풀이 방향: 같은 값끼리 묶고 다른 값을 찾는다.\n정석 풀이: ①은 $-9$이고, ②, ③, ④, ⑤는 모두 $-5$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 147,
@@ -1811,7 +2047,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "①",
-    "solution": "[키포인트] 뺄셈을 덧셈으로 바꾸어 차례로 계산한다.\n조건 정리: $(+8)-(+2)+(-5)-(-9)=8-2-5+9$이다.\n풀이 방향: 왼쪽부터 차례로 계산한다.\n정석 풀이: $8-2-5+9=10$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 뺄셈을 덧셈으로 바꾸어 차례로 계산한다.\n조건 정리: $(+8)-(+2)+(-5)-(-9)=8-2-5+9$이다.\n풀이 방향: 왼쪽부터 차례로 계산한다.\n정석 풀이: $8-2-5+9=10$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 148,
@@ -1837,7 +2077,11 @@ window.questionBank = [
     "content": "다음은 $\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)$을 계산하는 과정이다. 빈칸에 들어갈 수를 차례대로 구하여라.\n<div class=\"box\">$\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)=\\left(+\\dfrac23\\right)+(\\square)$<br>$=\\dfrac46+\\square=\\square$</div>",
     "choices": [],
     "answer": "$+\\dfrac32$, $+\\dfrac96$, $+\\dfrac{13}{6}$",
-    "solution": "[키포인트] 음수를 빼는 것은 그 수의 반대수를 더하는 것이다.\n조건 정리: $\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)=\\left(+\\dfrac23\\right)+\\left(+\\dfrac32\\right)$이다.\n풀이 방향: 분모를 6으로 통분한다.\n정석 풀이: $\\dfrac23=\\dfrac46$, $\\dfrac32=\\dfrac96$이므로 합은 $\\dfrac{13}{6}$이다.\n따라서 구하는 값은 $+\\dfrac32$, $+\\dfrac96$, $+\\dfrac{13}{6}$이다."
+    "solution": "[키포인트] 음수를 빼는 것은 그 수의 반대수를 더하는 것이다.\n조건 정리: $\\left(+\\dfrac23\\right)-\\left(-\\dfrac32\\right)=\\left(+\\dfrac23\\right)+\\left(+\\dfrac32\\right)$이다.\n풀이 방향: 분모를 6으로 통분한다.\n정석 풀이: $\\dfrac23=\\dfrac46$, $\\dfrac32=\\dfrac96$이므로 합은 $\\dfrac{13}{6}$이다.\n따라서 구하는 값은 $+\\dfrac32$, $+\\dfrac96$, $+\\dfrac{13}{6}$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 150,
@@ -1869,7 +2113,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "①",
-    "solution": "[키포인트] 거듭제곱을 먼저 계산하고 나눗셈을 한다.\n조건 정리: $\\left(-\\dfrac13\\right)^2=\\dfrac19$이다.\n풀이 방향: 나눗셈은 역수를 곱하여 계산한다.\n정석 풀이: $\\left(-\\dfrac49\\right)\\div\\dfrac19=\\left(-\\dfrac49\\right)\\times9=-4$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 거듭제곱을 먼저 계산하고 나눗셈을 한다.\n조건 정리: $\\left(-\\dfrac13\\right)^2=\\dfrac19$이다.\n풀이 방향: 나눗셈은 역수를 곱하여 계산한다.\n정석 풀이: $\\left(-\\dfrac49\\right)\\div\\dfrac19=\\left(-\\dfrac49\\right)\\times9=-4$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 151,
@@ -1901,7 +2149,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "[키포인트] 절댓값이 같고 부호가 반대이면 두 수는 서로 반대수이다.\n조건 정리: $A=t$, $B=-t$라 할 수 있다.\n풀이 방향: 조건 $A$가 $B$보다 3만큼 크다는 식을 세운다.\n정석 풀이: $A-B=3$이므로 $t-(-t)=3$, $2t=3$이다. 따라서 $A=t=\\dfrac32$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 절댓값이 같고 부호가 반대이면 두 수는 서로 반대수이다.\n조건 정리: $A=t$, $B=-t$라 할 수 있다.\n풀이 방향: 조건 $A$가 $B$보다 3만큼 크다는 식을 세운다.\n정석 풀이: $A-B=3$이므로 $t-(-t)=3$, $2t=3$이다. 따라서 $A=t=\\dfrac32$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 153,
@@ -1934,7 +2186,11 @@ window.questionBank = [
       "$\\dfrac{4}{15}\\times(-6)\\div\\dfrac45$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 보기의 결과를 계산해 같은 값과 다른 값을 구분한다.\n조건 정리: 보기의 값을 각각 계산한다.\n풀이 방향: 대부분의 결과가 $-2$인지 확인한다.\n정석 풀이: ①, ②, ③, ⑤는 $-2$이고, ④는 $16\\div8=2$이다. 따라서 다른 하나는 ④이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 각 보기의 결과를 계산해 같은 값과 다른 값을 구분한다.\n조건 정리: 보기의 값을 각각 계산한다.\n풀이 방향: 대부분의 결과가 $-2$인지 확인한다.\n정석 풀이: ①, ②, ③, ⑤는 $-2$이고, ④는 $16\\div8=2$이다. 따라서 다른 하나는 ④이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 154,
@@ -1967,7 +2223,11 @@ window.questionBank = [
       "$-\\dfrac43$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 가장 작은 값은 음수 중 절댓값이 가장 큰 곱이다.\n조건 정리: 음수는 $-\\dfrac13$ 하나뿐이므로 세 수의 곱이 음수가 되려면 이 수를 반드시 포함한다.\n풀이 방향: 나머지 두 수는 절댓값이 큰 양수 2와 3을 선택한다.\n정석 풀이: $-\\dfrac13\\times2\\times3=-2$이므로 가장 작은 값은 $-2$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 가장 작은 값은 음수 중 절댓값이 가장 큰 곱이다.\n조건 정리: 음수는 $-\\dfrac13$ 하나뿐이므로 세 수의 곱이 음수가 되려면 이 수를 반드시 포함한다.\n풀이 방향: 나머지 두 수는 절댓값이 큰 양수 2와 3을 선택한다.\n정석 풀이: $-\\dfrac13\\times2\\times3=-2$이므로 가장 작은 값은 $-2$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 155,
@@ -1999,7 +2259,11 @@ window.questionBank = [
       "3"
     ],
     "answer": "③",
-    "solution": "[키포인트] 역수는 곱해서 1이 되는 수이다.\n조건 정리: $+3$의 역수는 $\\dfrac13$이고, $-\\dfrac43$의 역수는 $-\\dfrac34$이다.\n풀이 방향: 두 역수를 곱한다.\n정석 풀이: $a\\times b=\\dfrac13\\times\\left(-\\dfrac34\\right)=-\\dfrac14$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 역수는 곱해서 1이 되는 수이다.\n조건 정리: $+3$의 역수는 $\\dfrac13$이고, $-\\dfrac43$의 역수는 $-\\dfrac34$이다.\n풀이 방향: 두 역수를 곱한다.\n정석 풀이: $a\\times b=\\dfrac13\\times\\left(-\\dfrac34\\right)=-\\dfrac14$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 156,
@@ -2030,7 +2294,11 @@ window.questionBank = [
       "309"
     ],
     "answer": "④",
-    "solution": "[키포인트] 공통인수 $2.99$를 묶으면 계산이 간단해진다.\n조건 정리: 두 항에 $2.99$가 공통으로 곱해져 있다.\n풀이 방향: 분배법칙을 거꾸로 이용한다.\n정석 풀이: $4\\times2.99+96\\times2.99=(4+96)\\times2.99=100\\times2.99=299$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 공통인수 $2.99$를 묶으면 계산이 간단해진다.\n조건 정리: 두 항에 $2.99$가 공통으로 곱해져 있다.\n풀이 방향: 분배법칙을 거꾸로 이용한다.\n정석 풀이: $4\\times2.99+96\\times2.99=(4+96)\\times2.99=100\\times2.99=299$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 157,
@@ -2062,7 +2330,11 @@ window.questionBank = [
       "$-\\dfrac{16}{3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 괄호 안에서 거듭제곱과 곱셈을 먼저 계산한다.\n조건 정리: $(-2)^2=4$이고 $4\\times3=12$이다.\n풀이 방향: 괄호 안의 값을 구한 뒤 나눗셈을 한다.\n정석 풀이: $(-3)+12=9$이므로 $16\\div9=\\dfrac{16}{9}$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 괄호 안에서 거듭제곱과 곱셈을 먼저 계산한다.\n조건 정리: $(-2)^2=4$이고 $4\\times3=12$이다.\n풀이 방향: 괄호 안의 값을 구한 뒤 나눗셈을 한다.\n정석 풀이: $(-3)+12=9$이므로 $16\\div9=\\dfrac{16}{9}$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 158,
@@ -2088,7 +2360,11 @@ window.questionBank = [
     "content": "다음 안에 알맞은 수를 차례대로 써라.\n<div class=\"box\">$3-\\left\\{12\\div(-2)^3+\\dfrac12\\right\\}$<br>$=3-\\left\\{12\\div\\square+\\dfrac12\\right\\}$<br>$=3-\\left\\{\\square+\\dfrac12\\right\\}$<br>$=3-(\\square)=\\square$</div>",
     "choices": [],
     "answer": "$-8$, $-\\dfrac32$, $-1$, $4$",
-    "solution": "[키포인트] 거듭제곱과 나눗셈을 먼저 계산하고 괄호 안을 정리한다.\n조건 정리: 식은 $3-\\{12\\div(-2)^3+\\dfrac12\\}$이다.\n풀이 방향: 계산 과정의 빈칸에 들어갈 중간값을 차례로 찾는다.\n정석 풀이: $(-2)^3=-8$, $12\\div(-8)=-\\dfrac32$, $-\\dfrac32+\\dfrac12=-1$이므로 전체값은 $3-(-1)=4$이다.\n따라서 구하는 값은 $-8$, $-\\dfrac32$, $-1$, $4$이다."
+    "solution": "[키포인트] 거듭제곱과 나눗셈을 먼저 계산하고 괄호 안을 정리한다.\n조건 정리: 식은 $3-\\{12\\div(-2)^3+\\dfrac12\\}$이다.\n풀이 방향: 계산 과정의 빈칸에 들어갈 중간값을 차례로 찾는다.\n정석 풀이: $(-2)^3=-8$, $12\\div(-8)=-\\dfrac32$, $-\\dfrac32+\\dfrac12=-1$이므로 전체값은 $3-(-1)=4$이다.\n따라서 구하는 값은 $-8$, $-\\dfrac32$, $-1$, $4$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 159,
@@ -2121,7 +2397,11 @@ window.questionBank = [
       "$b-a$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $a>0$이고 $b<0$이면 $-b>0$이다.\n조건 정리: 각 보기의 부호를 판단한다.\n풀이 방향: 항상 양수가 되는 식을 찾는다.\n정석 풀이: $a-b=a+(-b)$이고 $a>0$, $-b>0$이므로 항상 양수이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $a>0$이고 $b<0$이면 $-b>0$이다.\n조건 정리: 각 보기의 부호를 판단한다.\n풀이 방향: 항상 양수가 되는 식을 찾는다.\n정석 풀이: $a-b=a+(-b)$이고 $a>0$, $-b>0$이므로 항상 양수이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 160,
@@ -2146,6 +2426,10 @@ window.questionBank = [
     "content": "다음을 계산하여라.\n$\\dfrac34\\times\\left\\{(-2)-\\dfrac25\\right\\}\\div\\left(-\\dfrac65\\right)$",
     "choices": [],
     "answer": "$\\dfrac32$",
-    "solution": "[키포인트] 괄호 안을 먼저 계산한 뒤 곱셈과 나눗셈을 차례로 처리한다.\n조건 정리: $(-2)-\\dfrac25=-\\dfrac{12}{5}$이다.\n풀이 방향: 나눗셈은 역수를 곱하여 계산한다.\n정석 풀이: $\\dfrac34\\times\\left(-\\dfrac{12}{5}\\right)\\div\\left(-\\dfrac65\\right)=\\dfrac34\\times\\left(-\\dfrac{12}{5}\\right)\\times\\left(-\\dfrac56\\right)=\\dfrac32$이다.\n따라서 구하는 값은 $\\dfrac32$이다."
+    "solution": "[키포인트] 괄호 안을 먼저 계산한 뒤 곱셈과 나눗셈을 차례로 처리한다.\n조건 정리: $(-2)-\\dfrac25=-\\dfrac{12}{5}$이다.\n풀이 방향: 나눗셈은 역수를 곱하여 계산한다.\n정석 풀이: $\\dfrac34\\times\\left(-\\dfrac{12}{5}\\right)\\div\\left(-\\dfrac65\\right)=\\dfrac34\\times\\left(-\\dfrac{12}{5}\\right)\\times\\left(-\\dfrac56\\right)=\\dfrac32$이다.\n따라서 구하는 값은 $\\dfrac32$이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

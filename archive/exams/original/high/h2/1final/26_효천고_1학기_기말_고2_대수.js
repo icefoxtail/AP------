@@ -26,7 +26,11 @@ window.questionBank = [
       "$36\\pi$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 반지름과 호의 길이가 주어졌을 때 부채꼴의 넓이는 $\\dfrac12\\times\\text{반지름}\\times\\text{호의 길이}$로 바로 구할 수 있다.\n조건 정리: 반지름은 $r=12$, 호의 길이는 $l=3\\pi$이다.\n풀이 방향: 부채꼴의 넓이 공식 $S=\\dfrac12rl$에 두 값을 대입한다.\n정석 풀이: $S=\\dfrac12\\cdot12\\cdot3\\pi=18\\pi$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 반지름과 호의 길이가 주어졌을 때 부채꼴의 넓이는 $\\dfrac12\\times\\text{반지름}\\times\\text{호의 길이}$로 바로 구할 수 있다.\n조건 정리: 반지름은 $r=12$, 호의 길이는 $l=3\\pi$이다.\n풀이 방향: 부채꼴의 넓이 공식 $S=\\dfrac12rl$에 두 값을 대입한다.\n정석 풀이: $S=\\dfrac12\\cdot12\\cdot3\\pi=18\\pi$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -53,7 +57,11 @@ window.questionBank = [
       "$f(x)=\\tan2x$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각 함수의 최소 양의 주기를 하나씩 비교한다.\n조건 정리: 절댓값을 취하면 함수값의 부호가 바뀌는 지점도 같은 값으로 겹칠 수 있으므로 원래 주기의 절반이 최소 주기가 될 수 있다.\n풀이 방향: 다섯 함수의 최소 양의 주기를 각각 확인하여 $\\pi$인 것만 찾는다.\n정석 풀이: $|\\sin x|$는 $|\\sin(x+\\pi)|=|-\\sin x|=|\\sin x|$이므로 최소 양의 주기가 $\\pi$이다. $|\\cos2x|$의 최소 양의 주기는 $\\dfrac\\pi2$, $\\sin x$의 주기는 $2\\pi$, $\\tan\\dfrac{x}{2}$의 주기는 $2\\pi$, $\\tan2x$의 주기는 $\\dfrac\\pi2$이다.\n따라서 주기가 $\\pi$인 함수는 ①뿐이다."
+    "solution": "[키포인트] 각 함수의 최소 양의 주기를 하나씩 비교한다.\n조건 정리: 절댓값을 취하면 함수값의 부호가 바뀌는 지점도 같은 값으로 겹칠 수 있으므로 원래 주기의 절반이 최소 주기가 될 수 있다.\n풀이 방향: 다섯 함수의 최소 양의 주기를 각각 확인하여 $\\pi$인 것만 찾는다.\n정석 풀이: $|\\sin x|$는 $|\\sin(x+\\pi)|=|-\\sin x|=|\\sin x|$이므로 최소 양의 주기가 $\\pi$이다. $|\\cos2x|$의 최소 양의 주기는 $\\dfrac\\pi2$, $\\sin x$의 주기는 $2\\pi$, $\\tan\\dfrac{x}{2}$의 주기는 $2\\pi$, $\\tan2x$의 주기는 $\\dfrac\\pi2$이다.\n따라서 주기가 $\\pi$인 함수는 ①뿐이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -80,7 +88,11 @@ window.questionBank = [
       "24"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 변의 길이와 그 끼인각의 사인값이 주어졌으므로 삼각형의 넓이 공식을 사용한다.\n조건 정리: $\\overline{AB}=6$, $\\overline{BC}=4$, 두 변 사이의 각은 $B$이고 $\\sin B=\\dfrac34$이다.\n풀이 방향: $S=\\dfrac12\\cdot AB\\cdot BC\\cdot\\sin B$에 대입한다.\n정석 풀이: $S=\\dfrac12\\cdot6\\cdot4\\cdot\\dfrac34=9$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 변의 길이와 그 끼인각의 사인값이 주어졌으므로 삼각형의 넓이 공식을 사용한다.\n조건 정리: $\\overline{AB}=6$, $\\overline{BC}=4$, 두 변 사이의 각은 $B$이고 $\\sin B=\\dfrac34$이다.\n풀이 방향: $S=\\dfrac12\\cdot AB\\cdot BC\\cdot\\sin B$에 대입한다.\n정석 풀이: $S=\\dfrac12\\cdot6\\cdot4\\cdot\\dfrac34=9$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -107,7 +119,11 @@ window.questionBank = [
       "55"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 항의 차를 이용해 공차를 먼저 구한다.\n조건 정리: 등차수열에서 $a_7-a_2=(7-2)d=5d$이다.\n풀이 방향: $a_2=-5$, $a_7=10$을 이용해 $d$를 구한 뒤 $a_{17}=a_2+15d$를 계산한다.\n정석 풀이: $10-(-5)=5d$이므로 $d=3$이다. 따라서 $a_{17}=-5+15\\cdot3=40$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 항의 차를 이용해 공차를 먼저 구한다.\n조건 정리: 등차수열에서 $a_7-a_2=(7-2)d=5d$이다.\n풀이 방향: $a_2=-5$, $a_7=10$을 이용해 $d$를 구한 뒤 $a_{17}=a_2+15d$를 계산한다.\n정석 풀이: $10-(-5)=5d$이므로 $d=3$이다. 따라서 $a_{17}=-5+15\\cdot3=40$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -134,7 +150,11 @@ window.questionBank = [
       "250"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 합을 세 부분으로 나누어 각각 계산한다.\n조건 정리: $\\displaystyle\\sum_{k=1}^{5}(k^3+k+2)=\\sum_{k=1}^{5}k^3+\\sum_{k=1}^{5}k+\\sum_{k=1}^{5}2$이다.\n풀이 방향: $1^3+2^3+\\cdots+5^3=(1+2+\\cdots+5)^2$을 이용한다.\n정석 풀이: $\\sum_{k=1}^{5}k^3=15^2=225$, $\\sum_{k=1}^{5}k=15$, $\\sum_{k=1}^{5}2=10$이다. 그러므로 전체 합은 $225+15+10=250$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 합을 세 부분으로 나누어 각각 계산한다.\n조건 정리: $\\displaystyle\\sum_{k=1}^{5}(k^3+k+2)=\\sum_{k=1}^{5}k^3+\\sum_{k=1}^{5}k+\\sum_{k=1}^{5}2$이다.\n풀이 방향: $1^3+2^3+\\cdots+5^3=(1+2+\\cdots+5)^2$을 이용한다.\n정석 풀이: $\\sum_{k=1}^{5}k^3=15^2=225$, $\\sum_{k=1}^{5}k=15$, $\\sum_{k=1}^{5}2=10$이다. 그러므로 전체 합은 $225+15+10=250$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -161,7 +181,11 @@ window.questionBank = [
       "$\\dfrac16\\pi\\le x&lt;\\pi$ 또는 $\\dfrac76\\pi\\le x&lt;2\\pi$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 탄젠트함수가 정의되지 않는 점을 제외한 뒤, 각 구간에서 증가함수를 이용해 부등식을 푼다.\n조건 정리: $3\\tan\\left(x-\\dfrac\\pi2\\right)\\le\\sqrt3$은 $\\tan\\left(x-\\dfrac\\pi2\\right)\\le\\dfrac1{\\sqrt3}=\\tan\\dfrac\\pi6$과 같다. 또한 $x=0,\\pi,2\\pi$에서는 탄젠트가 정의되지 않는다.\n풀이 방향: $0<x<\\pi$와 $\\pi<x<2\\pi$로 나누어 각각 푼다.\n정석 풀이: $0<x<\\pi$에서는 $-\\dfrac\\pi2<x-\\dfrac\\pi2<\\dfrac\\pi2$이고 탄젠트함수는 증가하므로 $x-\\dfrac\\pi2\\le\\dfrac\\pi6$, 즉 $0<x\\le\\dfrac{2\\pi}{3}$이다. $\\pi<x<2\\pi$에서는 $\\dfrac\\pi2<x-\\dfrac\\pi2<\\dfrac{3\\pi}{2}$이므로 $x-\\dfrac\\pi2\\le\\pi+\\dfrac\\pi6$, 즉 $\\pi<x\\le\\dfrac{5\\pi}{3}$이다.\n따라서 해는 $0<x\\le\\dfrac{2\\pi}{3}$ 또는 $\\pi<x\\le\\dfrac{5\\pi}{3}$이므로 정답은 ①이다."
+    "solution": "[키포인트] 탄젠트함수가 정의되지 않는 점을 제외한 뒤, 각 구간에서 증가함수를 이용해 부등식을 푼다.\n조건 정리: $3\\tan\\left(x-\\dfrac\\pi2\\right)\\le\\sqrt3$은 $\\tan\\left(x-\\dfrac\\pi2\\right)\\le\\dfrac1{\\sqrt3}=\\tan\\dfrac\\pi6$과 같다. 또한 $x=0,\\pi,2\\pi$에서는 탄젠트가 정의되지 않는다.\n풀이 방향: $0<x<\\pi$와 $\\pi<x<2\\pi$로 나누어 각각 푼다.\n정석 풀이: $0<x<\\pi$에서는 $-\\dfrac\\pi2<x-\\dfrac\\pi2<\\dfrac\\pi2$이고 탄젠트함수는 증가하므로 $x-\\dfrac\\pi2\\le\\dfrac\\pi6$, 즉 $0<x\\le\\dfrac{2\\pi}{3}$이다. $\\pi<x<2\\pi$에서는 $\\dfrac\\pi2<x-\\dfrac\\pi2<\\dfrac{3\\pi}{2}$이므로 $x-\\dfrac\\pi2\\le\\pi+\\dfrac\\pi6$, 즉 $\\pi<x\\le\\dfrac{5\\pi}{3}$이다.\n따라서 해는 $0<x\\le\\dfrac{2\\pi}{3}$ 또는 $\\pi<x\\le\\dfrac{5\\pi}{3}$이므로 정답은 ①이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -188,7 +212,11 @@ window.questionBank = [
       "23"
     ],
     "answer": "④",
-    "solution": "[키포인트] 부분합이 주어졌을 때 일반항은 $a_n=S_n-S_{n-1}$로 구한다.\n조건 정리: $S_n=n^2+7n$이고 $n$은 자연수이다.\n풀이 방향: 일반항을 구한 뒤 $a_n<51$을 만족하는 자연수 $n$의 범위를 센다.\n정석 풀이: $a_n=(n^2+7n)-\\{(n-1)^2+7(n-1)\\}=2n+6$이다. $2n+6<51$에서 $n<\\dfrac{45}{2}=22.5$이므로 가능한 자연수는 $1,2,\\ldots,22$이다.\n따라서 자연수 $n$의 개수는 $22$개이므로 정답은 ④이다."
+    "solution": "[키포인트] 부분합이 주어졌을 때 일반항은 $a_n=S_n-S_{n-1}$로 구한다.\n조건 정리: $S_n=n^2+7n$이고 $n$은 자연수이다.\n풀이 방향: 일반항을 구한 뒤 $a_n<51$을 만족하는 자연수 $n$의 범위를 센다.\n정석 풀이: $a_n=(n^2+7n)-\\{(n-1)^2+7(n-1)\\}=2n+6$이다. $2n+6<51$에서 $n<\\dfrac{45}{2}=22.5$이므로 가능한 자연수는 $1,2,\\ldots,22$이다.\n따라서 자연수 $n$의 개수는 $22$개이므로 정답은 ④이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -215,7 +243,11 @@ window.questionBank = [
       "182"
     ],
     "answer": "①",
-    "solution": "[키포인트] 새 수열을 원래 등비수열의 항으로 묶어 공비를 비교한다.\n조건 정리: 원래 수열의 공비를 $r$이라 하면 $a_{n+1}=ra_n$이다.\n풀이 방향: $3a_n-2a_{n+1}$을 $a_n$의 상수배로 나타내어 새 수열의 공비와 첫째항을 이용한다.\n정석 풀이: $3a_n-2a_{n+1}=(3-2r)a_n$이다. 첫째항이 $-6$이므로 $3-2r\\ne0$이고, 이 수열의 공비는 원래 수열과 같은 $r$이다. 따라서 $r=3$이다. 첫째항 조건에서 $-6=(3-6)a_1=-3a_1$이므로 $a_1=2$이다. 그러므로 $a_5=a_1r^4=2\\cdot3^4=162$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 새 수열을 원래 등비수열의 항으로 묶어 공비를 비교한다.\n조건 정리: 원래 수열의 공비를 $r$이라 하면 $a_{n+1}=ra_n$이다.\n풀이 방향: $3a_n-2a_{n+1}$을 $a_n$의 상수배로 나타내어 새 수열의 공비와 첫째항을 이용한다.\n정석 풀이: $3a_n-2a_{n+1}=(3-2r)a_n$이다. 첫째항이 $-6$이므로 $3-2r\\ne0$이고, 이 수열의 공비는 원래 수열과 같은 $r$이다. 따라서 $r=3$이다. 첫째항 조건에서 $-6=(3-6)a_1=-3a_1$이므로 $a_1=2$이다. 그러므로 $a_5=a_1r^4=2\\cdot3^4=162$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -242,7 +274,11 @@ window.questionBank = [
       "$\\dfrac12$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 수직인 두 직선의 기울기 곱은 $-1$이고, 원 위의 점의 좌표로 사인과 코사인을 구할 수 있다.\n조건 정리: 주어진 직선의 기울기는 $\\dfrac13$이므로 수직인 직선의 기울기는 $-3$이다.\n풀이 방향: 직선 $y=-3x$와 원 $x^2+y^2=10$의 교점을 구한 뒤 제4사분면의 점을 선택한다.\n정석 풀이: $y=-3x$를 원의 방정식에 대입하면 $x^2+9x^2=10$, 즉 $x^2=1$이다. 제4사분면에서는 $x>0$, $y<0$이므로 $P=(1,-3)$이다. $OP=\\sqrt{10}$이므로 $\\cos\\theta=\\dfrac1{\\sqrt{10}}$, $\\sin\\theta=-\\dfrac3{\\sqrt{10}}$이다. 따라서 $\\sin\\theta\\cos\\theta=-\\dfrac3{10}$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 수직인 두 직선의 기울기 곱은 $-1$이고, 원 위의 점의 좌표로 사인과 코사인을 구할 수 있다.\n조건 정리: 주어진 직선의 기울기는 $\\dfrac13$이므로 수직인 직선의 기울기는 $-3$이다.\n풀이 방향: 직선 $y=-3x$와 원 $x^2+y^2=10$의 교점을 구한 뒤 제4사분면의 점을 선택한다.\n정석 풀이: $y=-3x$를 원의 방정식에 대입하면 $x^2+9x^2=10$, 즉 $x^2=1$이다. 제4사분면에서는 $x>0$, $y<0$이므로 $P=(1,-3)$이다. $OP=\\sqrt{10}$이므로 $\\cos\\theta=\\dfrac1{\\sqrt{10}}$, $\\sin\\theta=-\\dfrac3{\\sqrt{10}}$이다. 따라서 $\\sin\\theta\\cos\\theta=-\\dfrac3{10}$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -271,7 +307,11 @@ window.questionBank = [
       "$\\dfrac72+\\pi$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 탄젠트 그래프의 점근선 간격으로 주기를, 영점으로 평행이동량을, 한 점의 함수값으로 세로 확대비를 구한다.\n조건 정리: $f(x)=a\\tan b(x+c)$에서 주기는 $\\dfrac\\pi b$이고, 영점은 $b(x+c)=k\\pi$를 만족한다.\n풀이 방향: 그래프에서 주기와 영점을 읽어 $b,c$를 정한 뒤 $f\\left(\\dfrac\\pi2\\right)=-3$을 이용해 $a$를 구한다.\n정석 풀이: 그래프의 같은 모양이 $2\\pi$마다 반복되므로 $\\dfrac\\pi b=2\\pi$에서 $b=\\dfrac12$이다. 그래프가 $x=\\pi$에서 $x$축을 지나므로 $\\dfrac12(\\pi+c)=0$이 되는 대표값은 $c=-\\pi$이다. 이 값은 $-\\dfrac{3\\pi}{2}<c<-\\dfrac\\pi2$도 만족한다. 이제 $f\\left(\\dfrac\\pi2\\right)=a\\tan\\left\\{\\dfrac12\\left(\\dfrac\\pi2-\\pi\\right)\\right\\}=a\\tan\\left(-\\dfrac\\pi4\\right)=-a=-3$이므로 $a=3$이다. 따라서 $a+b+c=3+\\dfrac12-\\pi=\\dfrac72-\\pi$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 탄젠트 그래프의 점근선 간격으로 주기를, 영점으로 평행이동량을, 한 점의 함수값으로 세로 확대비를 구한다.\n조건 정리: $f(x)=a\\tan b(x+c)$에서 주기는 $\\dfrac\\pi b$이고, 영점은 $b(x+c)=k\\pi$를 만족한다.\n풀이 방향: 그래프에서 주기와 영점을 읽어 $b,c$를 정한 뒤 $f\\left(\\dfrac\\pi2\\right)=-3$을 이용해 $a$를 구한다.\n정석 풀이: 그래프의 같은 모양이 $2\\pi$마다 반복되므로 $\\dfrac\\pi b=2\\pi$에서 $b=\\dfrac12$이다. 그래프가 $x=\\pi$에서 $x$축을 지나므로 $\\dfrac12(\\pi+c)=0$이 되는 대표값은 $c=-\\pi$이다. 이 값은 $-\\dfrac{3\\pi}{2}<c<-\\dfrac\\pi2$도 만족한다. 이제 $f\\left(\\dfrac\\pi2\\right)=a\\tan\\left\\{\\dfrac12\\left(\\dfrac\\pi2-\\pi\\right)\\right\\}=a\\tan\\left(-\\dfrac\\pi4\\right)=-a=-3$이므로 $a=3$이다. 따라서 $a+b+c=3+\\dfrac12-\\pi=\\dfrac72-\\pi$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -298,7 +338,11 @@ window.questionBank = [
       "256"
     ],
     "answer": "②",
-    "solution": "[키포인트] 매 시행마다 남는 항의 원래 번호 간격이 두 배가 된다.\n조건 정리: 한 번 시행한 뒤에는 원래 수열의 홀수 번째 항만 남는다.\n풀이 방향: 시행 횟수에 따라 남은 수열의 제$k$항이 원래 수열의 몇 번째 항인지 규칙을 찾는다.\n정석 풀이: 1회 후 제$k$항은 원래의 $2k-1=1+(k-1)2$번째 항이다. 같은 과정을 반복하면 $m$회 후 제$k$항은 원래의 $1+(k-1)2^m$번째 항이다. 따라서 8회 후 제5항은 원래의 $1+4\\cdot2^8=1025$번째 항이다. 원래 등차수열은 $a_n=2+(n-1)\\dfrac12$이므로 $a_{1025}=2+1024\\cdot\\dfrac12=514$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 매 시행마다 남는 항의 원래 번호 간격이 두 배가 된다.\n조건 정리: 한 번 시행한 뒤에는 원래 수열의 홀수 번째 항만 남는다.\n풀이 방향: 시행 횟수에 따라 남은 수열의 제$k$항이 원래 수열의 몇 번째 항인지 규칙을 찾는다.\n정석 풀이: 1회 후 제$k$항은 원래의 $2k-1=1+(k-1)2$번째 항이다. 같은 과정을 반복하면 $m$회 후 제$k$항은 원래의 $1+(k-1)2^m$번째 항이다. 따라서 8회 후 제5항은 원래의 $1+4\\cdot2^8=1025$번째 항이다. 원래 등차수열은 $a_n=2+(n-1)\\dfrac12$이므로 $a_{1025}=2+1024\\cdot\\dfrac12=514$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -325,7 +369,11 @@ window.questionBank = [
       "10"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 절댓값이 붙은 코사인함수의 주기와 한 주기 안의 해의 개수를 이용한다.\n조건 정리: 방정식은 $\\left|\\cos\\dfrac{\\pi x}{2}\\right|=\\dfrac13$과 같다.\n풀이 방향: 함수 $\\left|\\cos\\dfrac{\\pi x}{2}\\right|$의 주기를 구하고, 각 주기마다 생기는 해의 수를 센다.\n정석 풀이: $\\cos\\dfrac{\\pi x}{2}$의 주기는 $4$이지만 절댓값을 취하면 부호가 반대인 부분도 겹치므로 최소 양의 주기는 $2$이다. 한 주기 안에서 $|\\cos t|=\\dfrac13$은 서로 다른 두 해를 갖는다. 구간 $0\\le x\\le10$에는 길이 $2$인 주기가 정확히 5번 들어가고 양 끝점은 해가 아니므로 전체 해의 개수는 $2\\cdot5=10$개이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 절댓값이 붙은 코사인함수의 주기와 한 주기 안의 해의 개수를 이용한다.\n조건 정리: 방정식은 $\\left|\\cos\\dfrac{\\pi x}{2}\\right|=\\dfrac13$과 같다.\n풀이 방향: 함수 $\\left|\\cos\\dfrac{\\pi x}{2}\\right|$의 주기를 구하고, 각 주기마다 생기는 해의 수를 센다.\n정석 풀이: $\\cos\\dfrac{\\pi x}{2}$의 주기는 $4$이지만 절댓값을 취하면 부호가 반대인 부분도 겹치므로 최소 양의 주기는 $2$이다. 한 주기 안에서 $|\\cos t|=\\dfrac13$은 서로 다른 두 해를 갖는다. 구간 $0\\le x\\le10$에는 길이 $2$인 주기가 정확히 5번 들어가고 양 끝점은 해가 아니므로 전체 해의 개수는 $2\\cdot5=10$개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -352,7 +400,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 합을 시그마로 나타낸 뒤 $\\sum k$와 $\\sum k^2$ 공식을 사용한다.\n조건 정리: $f(n)=\\sum_{k=1}^{n}k(n+1-k)$이고 $g(n)=\\sum_{k=1}^{n}k(k+1)$이다.\n풀이 방향: 두 식을 각각 전개하여 공통인수 $n(n+1)$로 묶는다.\n정석 풀이: $f(n)=(n+1)\\sum_{k=1}^{n}k-\\sum_{k=1}^{n}k^2=\\dfrac{n(n+1)(n+2)}6$이다. 또한 $g(n)=\\sum_{k=1}^{n}k^2+\\sum_{k=1}^{n}k=\\dfrac{n(n+1)(n+2)}3$이다. 따라서 $g(n)-f(n)=\\dfrac16n(n+1)(n+2)$이다. 주어진 식과 비교하면 $a=\\dfrac16$, $b=2$이므로 $\\dfrac ba=2\\div\\dfrac16=12$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 각 합을 시그마로 나타낸 뒤 $\\sum k$와 $\\sum k^2$ 공식을 사용한다.\n조건 정리: $f(n)=\\sum_{k=1}^{n}k(n+1-k)$이고 $g(n)=\\sum_{k=1}^{n}k(k+1)$이다.\n풀이 방향: 두 식을 각각 전개하여 공통인수 $n(n+1)$로 묶는다.\n정석 풀이: $f(n)=(n+1)\\sum_{k=1}^{n}k-\\sum_{k=1}^{n}k^2=\\dfrac{n(n+1)(n+2)}6$이다. 또한 $g(n)=\\sum_{k=1}^{n}k^2+\\sum_{k=1}^{n}k=\\dfrac{n(n+1)(n+2)}3$이다. 따라서 $g(n)-f(n)=\\dfrac16n(n+1)(n+2)$이다. 주어진 식과 비교하면 $a=\\dfrac16$, $b=2$이므로 $\\dfrac ba=2\\div\\dfrac16=12$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -381,7 +433,11 @@ window.questionBank = [
       "$\\dfrac{16\\sqrt7}{7}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 원주각에 대응하는 현의 길이가 같다는 성질과 코사인법칙을 함께 사용한다.\n조건 정리: $\\angle BAC=\\angle CAD$이므로 두 각이 바라보는 현 $BC$와 $CD$의 길이는 같다. 이를 $x$라 하고 공통각을 $\\theta$라 하자.\n풀이 방향: 삼각형 $ABC$와 $ACD$에 코사인법칙을 적용하여 $\\cos\\theta$와 $x$를 구한 뒤 사인법칙으로 반지름을 구한다.\n정석 풀이: 삼각형 $ABC$에서 $x^2=4^2+6^2-2\\cdot4\\cdot6\\cos\\theta=52-48\\cos\\theta$이다. 삼각형 $ACD$에서 $x^2=5^2+6^2-2\\cdot5\\cdot6\\cos\\theta=61-60\\cos\\theta$이다. 두 식을 같게 놓으면 $12\\cos\\theta=9$이므로 $\\cos\\theta=\\dfrac34$이다. 따라서 $x^2=52-48\\cdot\\dfrac34=16$이므로 $x=4$이다. 또 $\\sin\\theta=\\sqrt{1-\\left(\\dfrac34\\right)^2}=\\dfrac{\\sqrt7}{4}$이다. 현 $BC$에 사인법칙을 적용하면 $4=2R\\sin\\theta$이므로 $R=\\dfrac4{2\\cdot\\frac{\\sqrt7}{4}}=\\dfrac{8\\sqrt7}{7}$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 같은 원주각에 대응하는 현의 길이가 같다는 성질과 코사인법칙을 함께 사용한다.\n조건 정리: $\\angle BAC=\\angle CAD$이므로 두 각이 바라보는 현 $BC$와 $CD$의 길이는 같다. 이를 $x$라 하고 공통각을 $\\theta$라 하자.\n풀이 방향: 삼각형 $ABC$와 $ACD$에 코사인법칙을 적용하여 $\\cos\\theta$와 $x$를 구한 뒤 사인법칙으로 반지름을 구한다.\n정석 풀이: 삼각형 $ABC$에서 $x^2=4^2+6^2-2\\cdot4\\cdot6\\cos\\theta=52-48\\cos\\theta$이다. 삼각형 $ACD$에서 $x^2=5^2+6^2-2\\cdot5\\cdot6\\cos\\theta=61-60\\cos\\theta$이다. 두 식을 같게 놓으면 $12\\cos\\theta=9$이므로 $\\cos\\theta=\\dfrac34$이다. 따라서 $x^2=52-48\\cdot\\dfrac34=16$이므로 $x=4$이다. 또 $\\sin\\theta=\\sqrt{1-\\left(\\dfrac34\\right)^2}=\\dfrac{\\sqrt7}{4}$이다. 현 $BC$에 사인법칙을 적용하면 $4=2R\\sin\\theta$이므로 $R=\\dfrac4{2\\cdot\\frac{\\sqrt7}{4}}=\\dfrac{8\\sqrt7}{7}$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -408,7 +464,11 @@ window.questionBank = [
       "$\\dfrac{20}{3}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 이등변삼각형의 각 관계를 이용해 각의 삼각함수 값을 구한 뒤, 사인법칙과 중선 공식을 차례로 적용한다.\n조건 정리: $AB=AC$이므로 $B=C$이고, 외접원의 넓이가 $9\\pi$이므로 외접원의 반지름은 $R=3$이다.\n풀이 방향: $A=\\pi-2B$를 이용해 $\\cos B$를 구하고, 사인법칙으로 세 변의 길이를 구한 뒤 중선 $AD$를 계산한다.\n정석 풀이: $3\\sin A=2\\sin B$이고 $\\sin A=\\sin2B=2\\sin B\\cos B$이므로 $6\\sin B\\cos B=2\\sin B$이다. 삼각형의 각이므로 $\\sin B\\ne0$이어서 $\\cos B=\\dfrac13$이다. 따라서 $\\sin B=\\dfrac{2\\sqrt2}{3}$이고 $\\sin A=2\\sin B\\cos B=\\dfrac{4\\sqrt2}{9}$이다. 사인법칙에서 $AC=AB=2R\\sin B=6\\cdot\\dfrac{2\\sqrt2}{3}=4\\sqrt2$, $BC=2R\\sin A=6\\cdot\\dfrac{4\\sqrt2}{9}=\\dfrac{8\\sqrt2}{3}$이다. $D$는 $BC$의 중점이므로 중선 공식에 따라 $AD=\\dfrac12\\sqrt{2AB^2+2AC^2-BC^2}=\\dfrac12\\sqrt{64+64-\\dfrac{128}{9}}=\\dfrac{16}{3}$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 이등변삼각형의 각 관계를 이용해 각의 삼각함수 값을 구한 뒤, 사인법칙과 중선 공식을 차례로 적용한다.\n조건 정리: $AB=AC$이므로 $B=C$이고, 외접원의 넓이가 $9\\pi$이므로 외접원의 반지름은 $R=3$이다.\n풀이 방향: $A=\\pi-2B$를 이용해 $\\cos B$를 구하고, 사인법칙으로 세 변의 길이를 구한 뒤 중선 $AD$를 계산한다.\n정석 풀이: $3\\sin A=2\\sin B$이고 $\\sin A=\\sin2B=2\\sin B\\cos B$이므로 $6\\sin B\\cos B=2\\sin B$이다. 삼각형의 각이므로 $\\sin B\\ne0$이어서 $\\cos B=\\dfrac13$이다. 따라서 $\\sin B=\\dfrac{2\\sqrt2}{3}$이고 $\\sin A=2\\sin B\\cos B=\\dfrac{4\\sqrt2}{9}$이다. 사인법칙에서 $AC=AB=2R\\sin B=6\\cdot\\dfrac{2\\sqrt2}{3}=4\\sqrt2$, $BC=2R\\sin A=6\\cdot\\dfrac{4\\sqrt2}{9}=\\dfrac{8\\sqrt2}{3}$이다. $D$는 $BC$의 중점이므로 중선 공식에 따라 $AD=\\dfrac12\\sqrt{2AB^2+2AC^2-BC^2}=\\dfrac12\\sqrt{64+64-\\dfrac{128}{9}}=\\dfrac{16}{3}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -435,7 +495,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 집합 $A_k$를 이루는 연속한 항들의 시작 번호와 끝 번호를 식으로 나타낸다.\n조건 정리: $A_k$는 $(2k+3)$개의 연속한 항으로 이루어지고, $A_k$에서 $A_{k+1}$로 넘어갈 때 앞쪽에서 정확히 3개가 빠진다.\n풀이 방향: 시작 번호를 $s_k$라 두어 $s_{k+1}=s_k+3$을 얻고, 각 집합이 차지하는 항 번호의 범위를 비교한다.\n정석 풀이: $A_1$은 제1항부터 제5항까지이므로 $s_1=1$이다. $n(A_k-A_{k+1})=3$이고 $A_{k+1}$의 시작항이 더 크므로 $s_{k+1}=s_k+3$이다. 따라서 $s_k=1+3(k-1)=3k-2$이다. 원소의 개수가 $2k+3$개이므로 마지막 항 번호는 $(3k-2)+(2k+3)-1=5k$이다. 그러므로 $A_3$은 제7항부터 제15항까지이고, $A_p$는 제$(3p-2)$항부터 제$5p$항까지이다. 두 집합이 만나려면 $3p-2\\le15$이고 $5p\\ge7$이어야 하므로 $p=2,3,4,5$이다. 그 합은 $14$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 집합 $A_k$를 이루는 연속한 항들의 시작 번호와 끝 번호를 식으로 나타낸다.\n조건 정리: $A_k$는 $(2k+3)$개의 연속한 항으로 이루어지고, $A_k$에서 $A_{k+1}$로 넘어갈 때 앞쪽에서 정확히 3개가 빠진다.\n풀이 방향: 시작 번호를 $s_k$라 두어 $s_{k+1}=s_k+3$을 얻고, 각 집합이 차지하는 항 번호의 범위를 비교한다.\n정석 풀이: $A_1$은 제1항부터 제5항까지이므로 $s_1=1$이다. $n(A_k-A_{k+1})=3$이고 $A_{k+1}$의 시작항이 더 크므로 $s_{k+1}=s_k+3$이다. 따라서 $s_k=1+3(k-1)=3k-2$이다. 원소의 개수가 $2k+3$개이므로 마지막 항 번호는 $(3k-2)+(2k+3)-1=5k$이다. 그러므로 $A_3$은 제7항부터 제15항까지이고, $A_p$는 제$(3p-2)$항부터 제$5p$항까지이다. 두 집합이 만나려면 $3p-2\\le15$이고 $5p\\ge7$이어야 하므로 $p=2,3,4,5$이다. 그 합은 $14$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -464,7 +528,11 @@ window.questionBank = [
       "$2\\sqrt{47}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 넓이비로 $CE$를 구하고, 접기의 대칭성과 등비수열 조건을 차례로 이용한다.\n조건 정리: $AB=DC=20$이고 $E$는 $DC$ 위의 점이다. 접기 때문에 $AB$는 $A'B$로 옮겨지고, $B,D$는 접는 선 $BD$ 위의 점이므로 움직이지 않는다.\n풀이 방향: 먼저 삼각형 $EBC$와 평행사변형의 넓이비로 $CE$를 구한다. 이어서 접기와 평행선에서 생기는 각을 이용해 $EB$를 구하고, $CE,EB,BD$의 등비 조건으로 $BD$를 구한다.\n정석 풀이: 평행사변형의 높이를 $h$라 하면 넓이는 $20h$이고, 삼각형 $EBC$의 넓이는 $\\dfrac12\\cdot CE\\cdot h$이다. 넓이비가 $\\dfrac15$이므로 $\\dfrac{CE}{40}=\\dfrac15$, 따라서 $CE=8$이고 $DE=12$이다. 접기에 의해 $\\angle DBE=\\angle ABD$이고, $DC\\parallel AB$이므로 $\\angle BDE=\\angle ABD$이다. 따라서 $\\angle DBE=\\angle BDE$이므로 $EB=DE=12$이다. $CE,EB,BD$가 이 순서대로 등비수열이므로 $EB^2=CE\\cdot BD$, 즉 $12^2=8\\cdot BD$에서 $BD=18$이다. 삼각형 $DBE$에서 코사인법칙을 적용하면 $12^2=18^2+12^2-2\\cdot18\\cdot12\\cos\\angle BDE$이므로 $\\cos\\angle BDE=\\dfrac34$이다. $\\angle ABD=\\angle BDE$이므로 삼각형 $ABD$에서 $AD^2=20^2+18^2-2\\cdot20\\cdot18\\cdot\\dfrac34=184$이다. 따라서 $AD=2\\sqrt{46}$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 넓이비로 $CE$를 구하고, 접기의 대칭성과 등비수열 조건을 차례로 이용한다.\n조건 정리: $AB=DC=20$이고 $E$는 $DC$ 위의 점이다. 접기 때문에 $AB$는 $A'B$로 옮겨지고, $B,D$는 접는 선 $BD$ 위의 점이므로 움직이지 않는다.\n풀이 방향: 먼저 삼각형 $EBC$와 평행사변형의 넓이비로 $CE$를 구한다. 이어서 접기와 평행선에서 생기는 각을 이용해 $EB$를 구하고, $CE,EB,BD$의 등비 조건으로 $BD$를 구한다.\n정석 풀이: 평행사변형의 높이를 $h$라 하면 넓이는 $20h$이고, 삼각형 $EBC$의 넓이는 $\\dfrac12\\cdot CE\\cdot h$이다. 넓이비가 $\\dfrac15$이므로 $\\dfrac{CE}{40}=\\dfrac15$, 따라서 $CE=8$이고 $DE=12$이다. 접기에 의해 $\\angle DBE=\\angle ABD$이고, $DC\\parallel AB$이므로 $\\angle BDE=\\angle ABD$이다. 따라서 $\\angle DBE=\\angle BDE$이므로 $EB=DE=12$이다. $CE,EB,BD$가 이 순서대로 등비수열이므로 $EB^2=CE\\cdot BD$, 즉 $12^2=8\\cdot BD$에서 $BD=18$이다. 삼각형 $DBE$에서 코사인법칙을 적용하면 $12^2=18^2+12^2-2\\cdot18\\cdot12\\cos\\angle BDE$이므로 $\\cos\\angle BDE=\\dfrac34$이다. $\\angle ABD=\\angle BDE$이므로 삼각형 $ABD$에서 $AD^2=20^2+18^2-2\\cdot20\\cdot18\\cdot\\dfrac34=184$이다. 따라서 $AD=2\\sqrt{46}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -485,7 +553,11 @@ window.questionBank = [
     "content": "[단답형1]<br>제2항이 2이고 제5항이 16인 등비수열의 일반항을 구하시오. [3점]",
     "choices": [],
     "answer": "$a_n=2^{n-1}$",
-    "solution": "[키포인트] 등비수열에서는 두 항의 비로 공비를 먼저 구한다.\n조건 정리: $a_2=2$, $a_5=16$이고 $a_n=a_1r^{n-1}$이다.\n풀이 방향: $\\dfrac{a_5}{a_2}=r^3$을 이용해 공비를 구한 뒤 첫째항을 구한다.\n정석 풀이: $r^3=\\dfrac{16}{2}=8$이므로 $r=2$이다. $a_2=a_1r=2$이므로 $a_1=1$이다. 따라서 일반항은 $a_n=a_1r^{n-1}=2^{n-1}$이다.\n따라서 답은 $a_n=2^{n-1}$이다."
+    "solution": "[키포인트] 등비수열에서는 두 항의 비로 공비를 먼저 구한다.\n조건 정리: $a_2=2$, $a_5=16$이고 $a_n=a_1r^{n-1}$이다.\n풀이 방향: $\\dfrac{a_5}{a_2}=r^3$을 이용해 공비를 구한 뒤 첫째항을 구한다.\n정석 풀이: $r^3=\\dfrac{16}{2}=8$이므로 $r=2$이다. $a_2=a_1r=2$이므로 $a_1=1$이다. 따라서 일반항은 $a_n=a_1r^{n-1}=2^{n-1}$이다.\n따라서 답은 $a_n=2^{n-1}$이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -506,7 +578,11 @@ window.questionBank = [
     "content": "[단답형2]<br>수열 $\\{a_n\\}$의 귀납적 정의가 $a_1=3$, $a_{n+1}=a_n+n(n=1,2,3,\\cdots)$일 때, 제5항을 구하시오. [3점]",
     "choices": [],
     "answer": "$13$",
-    "solution": "[키포인트] 귀납적으로 주어진 식에 $n=1,2,3,4$를 차례로 대입한다.\n조건 정리: $a_1=3$이고 $a_{n+1}=a_n+n$이다.\n풀이 방향: 바로 앞 항에 현재의 $n$을 더하여 제5항까지 계산한다.\n정석 풀이: $a_2=a_1+1=4$, $a_3=a_2+2=6$, $a_4=a_3+3=9$, $a_5=a_4+4=13$이다.\n따라서 답은 $13$이다."
+    "solution": "[키포인트] 귀납적으로 주어진 식에 $n=1,2,3,4$를 차례로 대입한다.\n조건 정리: $a_1=3$이고 $a_{n+1}=a_n+n$이다.\n풀이 방향: 바로 앞 항에 현재의 $n$을 더하여 제5항까지 계산한다.\n정석 풀이: $a_2=a_1+1=4$, $a_3=a_2+2=6$, $a_4=a_3+3=9$, $a_5=a_4+4=13$이다.\n따라서 답은 $13$이다.",
+    "subUnitKey": "H22-A-08-CORE",
+    "subUnit": "수학적 귀납법 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -527,7 +603,11 @@ window.questionBank = [
     "content": "[서술형1]<br>각 $\\theta$가 제2사분면의 각이고 $\\sin\\theta+\\cos\\theta=\\dfrac12$일 때, $\\sin\\theta-\\cos\\theta$의 값을 풀이과정과 함께 서술하시오. [5점]",
     "choices": [],
     "answer": "$\\dfrac{\\sqrt7}{2}$",
-    "solution": "[키포인트] 합과 차의 제곱 관계를 이용하고, 제2사분면에서의 부호를 확인한다.\n조건 정리: $\\sin\\theta+\\cos\\theta=\\dfrac12$이고 제2사분면에서는 $\\sin\\theta>0$, $\\cos\\theta<0$이다.\n풀이 방향: $(\\sin\\theta-\\cos\\theta)^2=2-(\\sin\\theta+\\cos\\theta)^2$을 이용해 절댓값을 구한 뒤 부호를 결정한다.\n정석 풀이: $(\\sin\\theta-\\cos\\theta)^2=2-\\left(\\dfrac12\\right)^2=\\dfrac74$이다. 따라서 $|\\sin\\theta-\\cos\\theta|=\\dfrac{\\sqrt7}{2}$이다. 제2사분면에서는 $\\sin\\theta-\\cos\\theta>0$이므로 $\\sin\\theta-\\cos\\theta=\\dfrac{\\sqrt7}{2}$이다.\n따라서 답은 $\\dfrac{\\sqrt7}{2}$이다."
+    "solution": "[키포인트] 합과 차의 제곱 관계를 이용하고, 제2사분면에서의 부호를 확인한다.\n조건 정리: $\\sin\\theta+\\cos\\theta=\\dfrac12$이고 제2사분면에서는 $\\sin\\theta>0$, $\\cos\\theta<0$이다.\n풀이 방향: $(\\sin\\theta-\\cos\\theta)^2=2-(\\sin\\theta+\\cos\\theta)^2$을 이용해 절댓값을 구한 뒤 부호를 결정한다.\n정석 풀이: $(\\sin\\theta-\\cos\\theta)^2=2-\\left(\\dfrac12\\right)^2=\\dfrac74$이다. 따라서 $|\\sin\\theta-\\cos\\theta|=\\dfrac{\\sqrt7}{2}$이다. 제2사분면에서는 $\\sin\\theta-\\cos\\theta>0$이므로 $\\sin\\theta-\\cos\\theta=\\dfrac{\\sqrt7}{2}$이다.\n따라서 답은 $\\dfrac{\\sqrt7}{2}$이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -548,7 +628,11 @@ window.questionBank = [
     "content": "[서술형2]<br>반지름의 길이가 3인 부채꼴의 둘레의 길이를 $k$, 넓이를 $S$라 할 때, $k+S=36$이다. 이 부채꼴의 중심각의 크기를 $\\theta$라 할 때, $\\theta$의 값을 풀이과정과 함께 서술하시오. [6점]",
     "choices": [],
     "answer": "$4$",
-    "solution": "[키포인트] 중심각을 라디안으로 두면 호의 길이와 부채꼴의 넓이를 모두 $\\theta$로 나타낼 수 있다.\n조건 정리: 반지름은 $3$이고, 부채꼴의 둘레는 두 반지름과 호의 길이의 합이다.\n풀이 방향: $k=2r+r\\theta$, $S=\\dfrac12r^2\\theta$를 이용해 $k+S=36$을 푼다.\n정석 풀이: $k=6+3\\theta$, $S=\\dfrac92\\theta$이다. 따라서 $6+3\\theta+\\dfrac92\\theta=36$이므로 $\\dfrac{15}{2}\\theta=30$이다. 이에 따라 $\\theta=4$이다.\n따라서 답은 $4$이다."
+    "solution": "[키포인트] 중심각을 라디안으로 두면 호의 길이와 부채꼴의 넓이를 모두 $\\theta$로 나타낼 수 있다.\n조건 정리: 반지름은 $3$이고, 부채꼴의 둘레는 두 반지름과 호의 길이의 합이다.\n풀이 방향: $k=2r+r\\theta$, $S=\\dfrac12r^2\\theta$를 이용해 $k+S=36$을 푼다.\n정석 풀이: $k=6+3\\theta$, $S=\\dfrac92\\theta$이다. 따라서 $6+3\\theta+\\dfrac92\\theta=36$이므로 $\\dfrac{15}{2}\\theta=30$이다. 이에 따라 $\\theta=4$이다.\n따라서 답은 $4$이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -571,7 +655,11 @@ window.questionBank = [
     "image": "assets/images/26_효천고_1학기_기말_고2_대수/q22.png",
     "choices": [],
     "answer": "$\\dfrac{9\\sqrt7}{14}$",
-    "solution": "[키포인트] 평행사변형의 대각선 관계로 삼각형 $OCD$의 세 변을 구한 뒤 외접반지름 공식을 사용한다.\n조건 정리: $AB=CD=3$, $BC=AD=5$, $BD=6$이고 대각선은 서로를 이등분하므로 $OD=3$, $OC=\\dfrac{AC}{2}$이다.\n풀이 방향: 평행사변형 법칙으로 $AC$를 구하고, 삼각형 $OCD$의 넓이를 구한 뒤 $R=\\dfrac{abc}{4\\Delta}$를 적용한다.\n정석 풀이: $AC^2+BD^2=2(AB^2+BC^2)=2(3^2+5^2)=68$이므로 $AC^2=32$, $AC=4\\sqrt2$이다. 따라서 $OC=2\\sqrt2$, $OD=3$, $CD=3$이다. 삼각형 $OCD$는 두 변이 3인 이등변삼각형이고 밑변이 $2\\sqrt2$이므로 높이는 $\\sqrt{3^2-(\\sqrt2)^2}=\\sqrt7$이다. 따라서 넓이는 $\\Delta=\\dfrac12\\cdot2\\sqrt2\\cdot\\sqrt7=\\sqrt{14}$이다. 외접원의 반지름은 $R=\\dfrac{(2\\sqrt2)\\cdot3\\cdot3}{4\\sqrt{14}}=\\dfrac{9\\sqrt7}{14}$이다.\n따라서 답은 $\\dfrac{9\\sqrt7}{14}$이다."
+    "solution": "[키포인트] 평행사변형의 대각선 관계로 삼각형 $OCD$의 세 변을 구한 뒤 외접반지름 공식을 사용한다.\n조건 정리: $AB=CD=3$, $BC=AD=5$, $BD=6$이고 대각선은 서로를 이등분하므로 $OD=3$, $OC=\\dfrac{AC}{2}$이다.\n풀이 방향: 평행사변형 법칙으로 $AC$를 구하고, 삼각형 $OCD$의 넓이를 구한 뒤 $R=\\dfrac{abc}{4\\Delta}$를 적용한다.\n정석 풀이: $AC^2+BD^2=2(AB^2+BC^2)=2(3^2+5^2)=68$이므로 $AC^2=32$, $AC=4\\sqrt2$이다. 따라서 $OC=2\\sqrt2$, $OD=3$, $CD=3$이다. 삼각형 $OCD$는 두 변이 3인 이등변삼각형이고 밑변이 $2\\sqrt2$이므로 높이는 $\\sqrt{3^2-(\\sqrt2)^2}=\\sqrt7$이다. 따라서 넓이는 $\\Delta=\\dfrac12\\cdot2\\sqrt2\\cdot\\sqrt7=\\sqrt{14}$이다. 외접원의 반지름은 $R=\\dfrac{(2\\sqrt2)\\cdot3\\cdot3}{4\\sqrt{14}}=\\dfrac{9\\sqrt7}{14}$이다.\n따라서 답은 $\\dfrac{9\\sqrt7}{14}$이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -592,6 +680,10 @@ window.questionBank = [
     "content": "[서술형4]<br>첫째항이 자연수인 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여<br>$a_{n+1}=\\begin{cases}\\dfrac13a_n&(a_n\\text{이 3의 배수인 경우})\\\\a_n+2&(a_n\\text{이 3의 배수가 아닌 경우})\\end{cases}$<br>를 만족시킬 때, $a_2+a_3=20$이 되도록 하는 모든 $a_1$의 값의 합을 풀이과정과 함께 서술하시오. [7점]",
     "choices": [],
     "answer": "$58$",
-    "solution": "[키포인트] $a_2$가 3의 배수인지 아닌지에 따라 $a_3$의 식이 달라지므로 두 경우를 나눈다.\n조건 정리: $a_2+a_3=20$이고, $a_3$은 $a_2$가 3의 배수이면 $\\dfrac13a_2$, 그렇지 않으면 $a_2+2$이다.\n풀이 방향: 먼저 가능한 $a_2$를 구한 뒤, 각 $a_2$를 만드는 $a_1$을 역으로 찾는다.\n정석 풀이: $a_2$가 3의 배수이면 $a_3=\\dfrac13a_2$이므로 $a_2+\\dfrac13a_2=20$에서 $a_2=15$이다. $a_2$가 3의 배수가 아니면 $a_3=a_2+2$이므로 $2a_2+2=20$에서 $a_2=9$가 되지만, 9는 3의 배수이므로 이 경우와 모순이다. 따라서 $a_2=15$만 가능하다. 이제 $a_1$이 3의 배수이면 $\\dfrac13a_1=15$이므로 $a_1=45$이다. $a_1$이 3의 배수가 아니면 $a_1+2=15$이므로 $a_1=13$이고 실제로 3의 배수가 아니다. 가능한 첫째항의 합은 $45+13=58$이다.\n따라서 답은 $58$이다."
+    "solution": "[키포인트] $a_2$가 3의 배수인지 아닌지에 따라 $a_3$의 식이 달라지므로 두 경우를 나눈다.\n조건 정리: $a_2+a_3=20$이고, $a_3$은 $a_2$가 3의 배수이면 $\\dfrac13a_2$, 그렇지 않으면 $a_2+2$이다.\n풀이 방향: 먼저 가능한 $a_2$를 구한 뒤, 각 $a_2$를 만드는 $a_1$을 역으로 찾는다.\n정석 풀이: $a_2$가 3의 배수이면 $a_3=\\dfrac13a_2$이므로 $a_2+\\dfrac13a_2=20$에서 $a_2=15$이다. $a_2$가 3의 배수가 아니면 $a_3=a_2+2$이므로 $2a_2+2=20$에서 $a_2=9$가 되지만, 9는 3의 배수이므로 이 경우와 모순이다. 따라서 $a_2=15$만 가능하다. 이제 $a_1$이 3의 배수이면 $\\dfrac13a_1=15$이므로 $a_1=45$이다. $a_1$이 3의 배수가 아니면 $a_1+2=15$이므로 $a_1=13$이고 실제로 3의 배수가 아니다. 가능한 첫째항의 합은 $45+13=58$이다.\n따라서 답은 $58$이다.",
+    "subUnitKey": "H22-A-08-CORE",
+    "subUnit": "수학적 귀납법 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

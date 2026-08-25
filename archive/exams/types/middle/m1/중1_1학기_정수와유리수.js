@@ -10,8 +10,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -34,7 +34,9 @@ window.questionBank = [
       "$+ \\frac{9}{4}$"
     ],
     "answer": "①, ④",
-    "solution": "[솔포인트] 음수는 부호 $-$가 붙은 수이므로 $- \\frac{3}{2}$, $-3.6$의 2개입니다."
+    "solution": "[솔포인트] 음수는 부호 $-$가 붙은 수이므로 $- \\frac{3}{2}$, $-3.6$의 2개입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -45,8 +47,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -63,7 +65,9 @@ window.questionBank = [
     "content": "다음 수에 대하여 물음에 답하여라. $-3, \\; +4, \\; -5, \\; 0, \\; 9, \\; -7$ ⑴ 양의 정수를 모두 골라라. ⑵ 음의 정수를 모두 골라라. ⑶ 정수를 모두 골라라.",
     "choices": [],
     "answer": "* ⑴ $+4, 9$ ⑵ $-3, -5, -7$ ⑶ $-3, +4, -5, 0, 9, -7$",
-    "solution": "[솔포인트] ⑴ 양의 정수는 자연수이므로 $+4, 9$입니다. ⑵ 음의 정수는 음의 부호가 있는 정수이므로 $-3, -5, -7$입니다. ⑶ 정수는 양의 정수와 $0$, 음의 정수를 모두 포함하므로 $-3, +4, -5, 0, 9, -7$입니다."
+    "solution": "[솔포인트] ⑴ 양의 정수는 자연수이므로 $+4, 9$입니다. ⑵ 음의 정수는 음의 부호가 있는 정수이므로 $-3, -5, -7$입니다. ⑶ 정수는 양의 정수와 $0$, 음의 정수를 모두 포함하므로 $-3, +4, -5, 0, 9, -7$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -74,8 +78,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -97,7 +101,9 @@ window.questionBank = [
       "$-3.4$"
     ],
     "answer": "③",
-    "solution": "[솔포인트] $-3$은 음의 정수이고 , $2.7$과 $-3.4$는 정수가 아닌 유리수입니다. 따라서 양의 정수는 $+3$입니다."
+    "solution": "[솔포인트] $-3$은 음의 정수이고 , $2.7$과 $-3.4$는 정수가 아닌 유리수입니다. 따라서 양의 정수는 $+3$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -108,8 +114,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -132,7 +138,9 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "[솔포인트] ㄴ, ㅁ, ㅅ은 정수입니다. ㄱ, ㄷ, ㄹ, ㅂ은 정수가 아닌 유리수이므로 개수는 4개입니다."
+    "solution": "[솔포인트] ㄴ, ㅁ, ㅅ은 정수입니다. ㄱ, ㄷ, ㄹ, ㅂ은 정수가 아닌 유리수이므로 개수는 4개입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -143,8 +151,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -162,7 +170,9 @@ window.questionBank = [
     "content": "다음을 부호 $+$, $-$를 사용하여 나타내어라. 입금 $3000$원, 출금 $1000$원",
     "choices": [],
     "answer": "입금 $3000$원： $+3000$, 출금 $1000$원： $-1000$",
-    "solution": "[솔포인트] 돈이 들어오는 입금은 양의 방향이므로 $+3000$원, 돈이 나가는 출금은 음의 방향이므로 $-1000$원으로 나타냅니다."
+    "solution": "[솔포인트] 돈이 들어오는 입금은 양의 방향이므로 $+3000$원, 돈이 나가는 출금은 음의 방향이므로 $-1000$원으로 나타냅니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -173,8 +183,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -192,7 +202,9 @@ window.questionBank = [
     "content": "다음 빈칸에 알맞은 수량을 부호 $+$, $-$를 사용하여 나타내어라. ⑴ $30$명 증가： $+30$명, $10명$ 감소： $\\underline{\\qquad\\quad}$ 명 ⑵ $100$원 이익： $\\underline{\\qquad\\quad}$ 원, $500$원 손해： $-500$원 ⑶ 영상 $15^\\circ\\text{C}$： $+15^\\circ\\text{C}$, 영하 $3^\\circ\\text{C}$： $\\underline{\\qquad\\quad} ^\\circ\\text{C}$",
     "choices": [],
     "answer": "⑴ $-10$ ⑵ $+100$ ⑶ $-3$",
-    "solution": "[솔포인트] 일반적으로 증가, 이익 등의 수량은 ‘$+$’, 감소, 손해 등의 수량은 ‘$-$’를 사용합니다. ⑴ 증가： $+$, 감소： $-$ ⑵ 이익： $+$, 손해： $-$ ⑶ 영상： $+$, 영하： $-$"
+    "solution": "[솔포인트] 일반적으로 증가, 이익 등의 수량은 ‘$+$’, 감소, 손해 등의 수량은 ‘$-$’를 사용합니다. ⑴ 증가： $+$, 감소： $-$ ⑵ 이익： $+$, 손해： $-$ ⑶ 영상： $+$, 영하： $-$",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -203,8 +215,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -228,7 +240,9 @@ window.questionBank = [
       "$-1$보다 큰 수는 2개이다."
     ],
     "answer": "②",
-    "solution": "[솔포인트] ① 주어진 수들은 모두 유리수이므로 유리수는 5개입니다."
+    "solution": "[솔포인트] ① 주어진 수들은 모두 유리수이므로 유리수는 5개입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -239,8 +253,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -262,7 +276,9 @@ window.questionBank = [
       "$+1.5$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] ①, ④는 음수이고, ⑤는 양수이다. ③ 0은 음수도 양수도 아니다."
+    "solution": "[솔포인트] ①, ④는 음수이고, ⑤는 양수이다. ③ 0은 음수도 양수도 아니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -273,8 +289,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -298,7 +314,9 @@ window.questionBank = [
       "$\\frac{3}{5}$은 정수가 아닌 유리수 이다."
     ],
     "answer": "④",
-    "solution": "[솔포인트] ④ $\\frac{8}{4}=2$이므로 정수입니다. 따라서 정수가 아닌 유리수라는 설명은 옳지 않습니다."
+    "solution": "[솔포인트] ④ $\\frac{8}{4}=2$이므로 정수입니다. 따라서 정수가 아닌 유리수라는 설명은 옳지 않습니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -333,7 +351,9 @@ window.questionBank = [
       "$\\frac{1}{4}$은 정수가 아닌 유리수 이다."
     ],
     "answer": "④",
-    "solution": "[솔포인트] ④ $\\frac{3}{9}=\\frac{1}{3}$이므로 정수로 바꿀 수 없습니다. 따라서 옳지 않은 설명은 ④입니다."
+    "solution": "[솔포인트] ④ $\\frac{3}{9}=\\frac{1}{3}$이므로 정수로 바꿀 수 없습니다. 따라서 옳지 않은 설명은 ④입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -368,7 +388,9 @@ window.questionBank = [
       "모든 유리수는 수직선 위에 나타낼 수 있다."
     ],
     "answer": "②",
-    "solution": "[솔포인트] ② 0은 정수이다."
+    "solution": "[솔포인트] ② 0은 정수이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -379,8 +401,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -404,7 +426,9 @@ window.questionBank = [
       "$4$명 전입 $\\rightarrow$ $-4$명"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ⑤ 4명 전입 → +4명"
+    "solution": "[솔포인트] ⑤ 4명 전입 → +4명",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -415,8 +439,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -438,7 +462,9 @@ window.questionBank = [
       "7"
     ],
     "answer": "②",
-    "solution": "[솔포인트] 주어진 수 중 정수가 아닌 유리수는 $-1.5, 2.5, \\frac{4}{5}$의 3개입니다. (참고: $-\\frac{8}{4} = -2$이므로 정수입니다.)"
+    "solution": "[솔포인트] 주어진 수 중 정수가 아닌 유리수는 $-1.5, 2.5, \\frac{4}{5}$의 3개입니다. (참고: $-\\frac{8}{4} = -2$이므로 정수입니다.)",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -449,8 +475,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -474,7 +500,9 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①, ④",
-    "solution": "[솔포인트] $-5 < x \\le 2$ 인 정수는 $-4, -3, -2, -1, 0, 1, 2$입니다. 따라서 이 범위에 해당하지 않는 정수는 $-8$과 정수가 아닌 $\\frac{1}{2}$입니다."
+    "solution": "[솔포인트] $-5 < x \\le 2$ 인 정수는 $-4, -3, -2, -1, 0, 1, 2$입니다. 따라서 이 범위에 해당하지 않는 정수는 $-8$과 정수가 아닌 $\\frac{1}{2}$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -485,8 +513,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -508,7 +536,9 @@ window.questionBank = [
       "5개"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] -1,0,4,-5는 정수이다.정수가 아닌 유리수는 0.3, 35,-117,-12,2.05로 5개이다."
+    "solution": "[솔포인트] -1,0,4,-5는 정수이다.정수가 아닌 유리수는 0.3, 35,-117,-12,2.05로 5개이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -519,8 +549,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -543,7 +573,9 @@ window.questionBank = [
       "$0$은 양수도 음수도 아니다."
     ],
     "answer": "②",
-    "solution": "[솔포인트] ② 정수는 모두 유리수 이다."
+    "solution": "[솔포인트] ② 정수는 모두 유리수 이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -554,8 +586,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -572,7 +604,9 @@ window.questionBank = [
     "content": "다음 수 중에서 음수를 모두 찾아라. $+7, \\; 2.6, \\; -2, \\; +10, \\; \\frac{2}{5}, \\; +21, \\; 0, \\; -1, \\; -\\frac{3}{2}$",
     "choices": [],
     "answer": "$-2, -1, -\\frac{3}{2}$",
-    "solution": "[솔포인트] 음의 부호 $-$가 붙은 수를 모두 찾으면 됩니다."
+    "solution": "[솔포인트] 음의 부호 $-$가 붙은 수를 모두 찾으면 됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -583,8 +617,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -608,7 +642,9 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "[솔포인트] $-3 \\le x < 3$을 만족하는 정수는 $-3,-2,-1,0,1,2$로 모두 6개입니다."
+    "solution": "[솔포인트] $-3 \\le x < 3$을 만족하는 정수는 $-3,-2,-1,0,1,2$로 모두 6개입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -619,8 +655,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -642,7 +678,9 @@ window.questionBank = [
       "5개"
     ],
     "answer": "③",
-    "solution": "[솔포인트] 중에서 정수인 것은 0,5,-42=-2로 3개이다."
+    "solution": "[솔포인트] 중에서 정수인 것은 0,5,-42=-2로 3개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -653,8 +691,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -677,7 +715,9 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] 정수는 양의 정수, 0, 음의 정수로 나눌 수 있습니다. 양수와 음수를 제외하고 남는 정수는 $0$입니다."
+    "solution": "[솔포인트] 정수는 양의 정수, 0, 음의 정수로 나눌 수 있습니다. 양수와 음수를 제외하고 남는 정수는 $0$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -688,8 +728,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -713,7 +753,9 @@ window.questionBank = [
       "$a \\div (-b)$"
     ],
     "answer": "④",
-    "solution": "[솔포인트] ① a+b：∣a∣＞∣b∣이면 양수, ∣a∣＜∣b∣이면 음수이다.② a-b＞0③ (-a)×b＞0④ b-a＜0⑤ a÷(-b)＞0"
+    "solution": "[솔포인트] ① a+b：∣a∣＞∣b∣이면 양수, ∣a∣＜∣b∣이면 음수이다.② a-b＞0③ (-a)×b＞0④ b-a＜0⑤ a÷(-b)＞0",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -724,8 +766,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -741,7 +783,9 @@ window.questionBank = [
     "content": "다음 수 중에서 양수도 음수도 아닌 것을 골라라. $+4, \\; -8, \\; \\frac{2}{2}, \\; 0, \\; +2, \\; -10, \\; -1$",
     "choices": [],
     "answer": "0",
-    "solution": "[솔포인트] 양수는 $0$보다 큰 수, 음수는 $0$보다 작은 수입니다. $0$은 양수도 음수도 아니므로 고를 수는 $0$입니다."
+    "solution": "[솔포인트] 양수는 $0$보다 큰 수, 음수는 $0$보다 작은 수입니다. $0$은 양수도 음수도 아니므로 고를 수는 $0$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -752,8 +796,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -777,7 +821,9 @@ window.questionBank = [
       "$0$은 정수에 속하지만 유리수에 속하지 않는다."
     ],
     "answer": "①",
-    "solution": "[솔포인트] ② 0은 양수도 음수도 아니다. ③ 자연수중 가장 큰 수를 구할 수 없다.④ 정수 중 제일 작은 수는 알 수 없다. ⑤ 0은 유리수에도 속한다. 따라서, 옳은 것은 ①이다."
+    "solution": "[솔포인트] ② 0은 양수도 음수도 아니다. ③ 자연수중 가장 큰 수를 구할 수 없다.④ 정수 중 제일 작은 수는 알 수 없다. ⑤ 0은 유리수에도 속한다. 따라서, 옳은 것은 ①이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -788,8 +834,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -813,7 +859,9 @@ window.questionBank = [
       "$\\frac{7}{4}$"
     ],
     "answer": "①, ③",
-    "solution": "[솔포인트] 자연수가 아닌 정수는 $0$과 음의 정수입니다. $-\\frac{6}{3} = -2$이므로 음의 정수입니다."
+    "solution": "[솔포인트] 자연수가 아닌 정수는 $0$과 음의 정수입니다. $-\\frac{6}{3} = -2$이므로 음의 정수입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -847,7 +895,9 @@ window.questionBank = [
       "음의 유리수"
     ],
     "answer": "②",
-    "solution": "[솔포인트] $\\square$ 안에 '양의 정수'가 들어가면 $1$부터 $99$까지의 자연수가 되므로 그 개수가 한정되어 무수히 많다고 할 수 없습니다."
+    "solution": "[솔포인트] $\\square$ 안에 '양의 정수'가 들어가면 $1$부터 $99$까지의 자연수가 되므로 그 개수가 한정되어 무수히 많다고 할 수 없습니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 26,
@@ -858,8 +908,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -883,7 +933,9 @@ window.questionBank = [
       "-3"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] $x$가 될 수 있는 정수는 $-3, -2, -1, 0, 1, 2$이므로 이들의 합은 $(-3)+(-2)+(-1)+0+1+2 = -3$입니다."
+    "solution": "[솔포인트] $x$가 될 수 있는 정수는 $-3, -2, -1, 0, 1, 2$이므로 이들의 합은 $(-3)+(-2)+(-1)+0+1+2 = -3$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -894,8 +946,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -919,7 +971,9 @@ window.questionBank = [
       "㉡, ㉣, ㉤, ㉥"
     ],
     "answer": "④",
-    "solution": "[솔포인트] ㉠ $0$은 양의 정수도 음의 정수도 아닌 정수입니다. ㉢ 음수는 원점에서 멀리 떨어져 있을수록 작은 수입니다. ㉥ 절댓값이 $0$인 정수는 $0$ 하나뿐입니다. 따라서 옳은 보기는 ㉡, ㉣, ㉤입니다."
+    "solution": "[솔포인트] ㉠ $0$은 양의 정수도 음의 정수도 아닌 정수입니다. ㉢ 음수는 원점에서 멀리 떨어져 있을수록 작은 수입니다. ㉥ 절댓값이 $0$인 정수는 $0$ 하나뿐입니다. 따라서 옳은 보기는 ㉡, ㉣, ㉤입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -930,8 +984,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -954,7 +1008,9 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "[솔포인트] 기준이 되는 오후 $4$시는 $+4$이고, 오전 $9$시는 $-3$이므로 , 오후 $4$시를 기준으로 하면 오전 $9$시는 $-7$이 됩니다."
+    "solution": "[솔포인트] 기준이 되는 오후 $4$시는 $+4$이고, 오전 $9$시는 $-3$이므로 , 오후 $4$시를 기준으로 하면 오전 $9$시는 $-7$이 됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -965,8 +1021,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -989,7 +1045,9 @@ window.questionBank = [
       "$(\\text{양수}) + (\\text{음수}) = (\\text{양수})$"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ⑤ $(+ \\frac{1}{2}) + (- \\frac{1}{2}) = 0$, $(+ \\frac{1}{2}) + (- \\frac{1}{4}) = \\frac{1}{4}$, $(+ \\frac{1}{4}) + (- \\frac{1}{2}) = -\\frac{1}{4}$과 같이 $(\\text{양수}) + (\\text{음수})$는 두 수의 절댓값 크기에 따라 결과의 부호가 다르게 결정됩니다."
+    "solution": "[솔포인트] ⑤ $(+ \\frac{1}{2}) + (- \\frac{1}{2}) = 0$, $(+ \\frac{1}{2}) + (- \\frac{1}{4}) = \\frac{1}{4}$, $(+ \\frac{1}{4}) + (- \\frac{1}{2}) = -\\frac{1}{4}$과 같이 $(\\text{양수}) + (\\text{음수})$는 두 수의 절댓값 크기에 따라 결과의 부호가 다르게 결정됩니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -1000,8 +1058,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1025,7 +1083,9 @@ window.questionBank = [
       "자연수는 1개이다."
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ① 정수는 $6, 0, -19$로 3개입니다. ② 유리수는 주어진 수 $-2.3, 6, + \\frac{2}{7}, -\\frac{8}{3}, 0, -19$ 모두에 해당하므로 6개입니다. ⑤ 자연수는 양의 정수인 $6$의 1개뿐이므로 옳습니다."
+    "solution": "[솔포인트] ① 정수는 $6, 0, -19$로 3개입니다. ② 유리수는 주어진 수 $-2.3, 6, + \\frac{2}{7}, -\\frac{8}{3}, 0, -19$ 모두에 해당하므로 6개입니다. ⑤ 자연수는 양의 정수인 $6$의 1개뿐이므로 옳습니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 31,
@@ -1036,8 +1096,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1061,7 +1121,9 @@ window.questionBank = [
       "정수는 유리수이다."
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ① (-2)+3=1②|(-4)+(-6)|=|-10|=10③ 양수, 0, 음수를 통틀어서 유리수라고 한다. ④|-1|+1=1+1=2"
+    "solution": "[솔포인트] ① (-2)+3=1②|(-4)+(-6)|=|-10|=10③ 양수, 0, 음수를 통틀어서 유리수라고 한다. ④|-1|+1=1+1=2",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 32,
@@ -1072,8 +1134,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1097,7 +1159,9 @@ window.questionBank = [
       "음의 정수 중 가장 큰 수는 $-1$이다."
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] ① 정수에는 양의 정수, 음의 정수, 0이 있다.② 3은 유리수이다. ③ 정수는 유리수의 부분집합이므로 0도 유리수이다. ④ -1,-2 사이에는 다른 정수가 없다."
+    "solution": "[솔포인트] ① 정수에는 양의 정수, 음의 정수, 0이 있다.② 3은 유리수이다. ③ 정수는 유리수의 부분집합이므로 0도 유리수이다. ④ -1,-2 사이에는 다른 정수가 없다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 33,
@@ -1108,8 +1172,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1126,7 +1190,9 @@ window.questionBank = [
     "content": "다음 수 중에서 양수를 모두 찾아라. $+7, \\; 2.6, \\; -2, \\; +10, \\; \\frac{2}{5}, \\; +21, \\; 0, \\; -1, \\; -\\frac{3}{2}$",
     "choices": [],
     "answer": "$+7,\\;2.6,\\;+10,\\;\\frac{2}{5},\\;+21$",
-    "solution": "[솔포인트] 양수는 $0$보다 큰 수입니다. 주어진 수 중 $+7, 2.6, +10, \\frac{2}{5}, +21$이 $0$보다 크므로 모두 양수입니다."
+    "solution": "[솔포인트] 양수는 $0$보다 큰 수입니다. 주어진 수 중 $+7, 2.6, +10, \\frac{2}{5}, +21$이 $0$보다 크므로 모두 양수입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -1137,8 +1203,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1162,7 +1228,9 @@ window.questionBank = [
       "절댓값이 가장 작은 수는 $0$이다."
     ],
     "answer": "②",
-    "solution": "[솔포인트] ② 정수는 양의 정수, 0, 음의 정수로 이루어져 있다."
+    "solution": "[솔포인트] ② 정수는 양의 정수, 0, 음의 정수로 이루어져 있다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1173,8 +1241,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1198,7 +1266,9 @@ window.questionBank = [
       "40"
     ],
     "answer": "④",
-    "solution": "[솔포인트] x=14,x=15일 때 각각 최댓값과 최솟값을 가지므로, A=14-10=4,B=15-20=(-5)"
+    "solution": "[솔포인트] x=14,x=15일 때 각각 최댓값과 최솟값을 가지므로, A=14-10=4,B=15-20=(-5)",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1209,8 +1279,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1234,7 +1304,9 @@ window.questionBank = [
       "유리수는 두 정수 $a, b$에 대하여 $\\frac{b}{a};(a \\ne 0)$로 나타낼 수 있는 수이다."
     ],
     "answer": "②, ④",
-    "solution": "[솔포인트] ② 유리수는 양의 유리수, $0$, 음의 유리수로 나누어집니다. ④ 서로 다른 두 정수 사이에는 유한한(한정된) 개수의 정수만이 존재합니다."
+    "solution": "[솔포인트] ② 유리수는 양의 유리수, $0$, 음의 유리수로 나누어집니다. ④ 서로 다른 두 정수 사이에는 유한한(한정된) 개수의 정수만이 존재합니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 37,
@@ -1245,8 +1317,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1267,7 +1339,9 @@ window.questionBank = [
       "$-6, \\; -\\frac{11}{4}, \\; -0.2$"
     ],
     "answer": "⑤",
-    "solution": "[솔포인트] 주어진 수들 중 음의 유리수는 $-6, -\\frac{11}{4}, -0.2$입니다."
+    "solution": "[솔포인트] 주어진 수들 중 음의 유리수는 $-6, -\\frac{11}{4}, -0.2$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 38,
@@ -1278,8 +1352,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1296,7 +1370,9 @@ window.questionBank = [
     "content": "다음 수 중에서 양수도 음수도 아닌 수를 모두 찾아라. $+7, \\; 2.6, \\; -2, \\; +10, \\; \\frac{2}{5}, \\; +21, \\; 0, \\; -1, \\; -\\frac{3}{2}$",
     "choices": [],
     "answer": "$0$",
-    "solution": "[솔포인트] 양수는 $0$보다 큰 수이고 음수는 $0$보다 작은 수입니다. 주어진 수 중 $0$만 양수도 음수도 아니므로 정답은 $0$입니다."
+    "solution": "[솔포인트] 양수는 $0$보다 큰 수이고 음수는 $0$보다 작은 수입니다. 주어진 수 중 $0$만 양수도 음수도 아니므로 정답은 $0$입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1307,8 +1383,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1332,7 +1408,9 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[솔포인트] $(\\text{음수}) \\times (\\text{음수}) = (\\text{양수})$ (거짓) $(\\text{양수}) + (\\text{음수})$는 양수, $0$, 음수 모두 될 수 있습니다 (거짓) $(\\text{양수}) - (\\text{음수}) = (\\text{양수})$ (거짓) $(\\text{음수}) \\div (\\text{양수}) = (\\text{음수})$ (거짓) 따라서 거짓인 것은 총 4개입니다."
+    "solution": "[솔포인트] $(\\text{음수}) \\times (\\text{음수}) = (\\text{양수})$ (거짓) $(\\text{양수}) + (\\text{음수})$는 양수, $0$, 음수 모두 될 수 있습니다 (거짓) $(\\text{양수}) - (\\text{음수}) = (\\text{양수})$ (거짓) $(\\text{음수}) \\div (\\text{양수}) = (\\text{음수})$ (거짓) 따라서 거짓인 것은 총 4개입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1343,8 +1421,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1368,7 +1446,9 @@ window.questionBank = [
       "$2a$"
     ],
     "answer": "②",
-    "solution": "[솔포인트] $a = -2$를 대입하여 계산해 보면 쉽게 비교할 수 있습니다. ($a=-2, a^2=4, -a=2, -a^2=-4, 2a=-4$)"
+    "solution": "[솔포인트] $a = -2$를 대입하여 계산해 보면 쉽게 비교할 수 있습니다. ($a=-2, a^2=4, -a=2, -a^2=-4, 2a=-4$)",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1379,8 +1459,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1402,7 +1482,9 @@ window.questionBank = [
       "5개"
     ],
     "answer": "④",
-    "solution": "[솔포인트] 보기의 수 중에서 정수는 $8, +1, -\\frac{6}{3}\\;(=-2), 0$으로 총 4개입니다."
+    "solution": "[솔포인트] 보기의 수 중에서 정수는 $8, +1, -\\frac{6}{3}\\;(=-2), 0$으로 총 4개입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1413,8 +1495,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1432,7 +1514,9 @@ window.questionBank = [
     "content": "다음 중 옳은 것을 모두 골라라. ㉠ $0$은 양수도 음수도 아닌 유리수이다. ㉡ 두 정수 사이에는 또 다른 정수가 반드시 존재한다. ㉢ 두 유리수 사이에는 또 다른 유리수가 반드시 존재한다. ㉣ 유리수는 분자, 분모가 정수인 분수로 나타낼 수 있는 수이다. ㉤ 가장 큰 음의 정수는 $-1$이다.",
     "choices": [],
     "answer": "㉠, ㉢, ㉤",
-    "solution": "[솔포인트] ㉡ (반례) $2$와 $3$ 사이에는 정수가 존재하지 않습니다. ㉣ 유리수는 분자, 분모가 정수인 분수 형태로 나타낼 수 있는 수입니다 (단, 분모 $\\ne 0$)."
+    "solution": "[솔포인트] ㉡ (반례) $2$와 $3$ 사이에는 정수가 존재하지 않습니다. ㉣ 유리수는 분자, 분모가 정수인 분수 형태로 나타낼 수 있는 수입니다 (단, 분모 $\\ne 0$).",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 43,
@@ -1443,8 +1527,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1461,7 +1545,9 @@ window.questionBank = [
     "content": "다음을 보고 물음에 답하여라. $0.4, \\; \\frac{3}{2}, \\; 6, \\; -2.5, \\; \\frac{5}{4}, \\; -1, \\; 0$ (1) 정수가 아닌 수들의 개수를 구하여라. (2) 양수가 아닌 수들의 개수를 구하여라.",
     "choices": [],
     "answer": "⑴ 4개 ⑵ 3개",
-    "solution": "[솔포인트] ⑴ 정수가 아닌 유리수는 $0.4, \\frac{3}{2}, -2.5, \\frac{5}{4}$ 이므로 4개입니다. ⑵ 양수가 아닌 수는 음수와 $0$을 포함하므로 $-2.5, -1, 0$의 3개입니다."
+    "solution": "[솔포인트] ⑴ 정수가 아닌 유리수는 $0.4, \\frac{3}{2}, -2.5, \\frac{5}{4}$ 이므로 4개입니다. ⑵ 양수가 아닌 수는 음수와 $0$을 포함하므로 $-2.5, -1, 0$의 3개입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1472,8 +1558,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1497,7 +1583,9 @@ window.questionBank = [
       "절댓값이 $2$인 수는 $+2$와 $-2$이다."
     ],
     "answer": "④",
-    "solution": "[솔포인트] ④ $-2 < x \\le 2$ 인 '유리수' 혹은 '수'는 무수히 많습니다. 정수라는 조건이 없으므로 4개가 아닙니다."
+    "solution": "[솔포인트] ④ $-2 < x \\le 2$ 인 '유리수' 혹은 '수'는 무수히 많습니다. 정수라는 조건이 없으므로 4개가 아닙니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 45,
@@ -1508,8 +1596,8 @@ window.questionBank = [
     "standardUnitKey": "M1-02",
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 2,
-    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-    "subUnit": "정수와 유리수의 뜻",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
     "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1532,6 +1620,8 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "[솔포인트] 양의 유리수의 개수 $a = 4$ ($\\frac{1}{3}, 5, 0.5, +2.5$) , 음의 정수의 개수 $b = 2$ ($-2, -7$) 이므로, $a+b = 4+2 = 6$입니다."
+    "solution": "[솔포인트] 양의 유리수의 개수 $a = 4$ ($\\frac{1}{3}, 5, 0.5, +2.5$) , 음의 정수의 개수 $b = 2$ ($-2, -7$) 이므로, $a+b = 4+2 = 6$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

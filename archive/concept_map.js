@@ -74,6 +74,73 @@ window.CONCEPT_MAP = {
   "H22-PS-01": "PROB-COMBI",      // 순열과 조합
   "H22-PS-03": "PROB-BASIC",      // 확률의 뜻과 활용
 
+  // 2026-08 compatibility completion: every currently used official key is
+  // assigned a broad review cluster. This map does not rewrite source labels
+  // or promote subunit metadata; it only prevents an official key from being
+  // treated as unmapped by consumers.
+  "H15-CALC-01": "SEQUENCE",
+  "H15-CALC-02": "SEQUENCE",
+  "H15-CALC-03": "CALCULUS_DIFFERENTIATION",
+  "H15-CALC-04": "CALCULUS_DIFFERENTIATION",
+  "H15-CALC-05": "CALCULUS_DIFFERENTIATION",
+  "H15-M1-05": "TRIG-FUNC",
+  "H15-M1-06": "TRIG-FUNC",
+  "H15-M1-07": "TRIG-FUNC",
+  "H15-M1-08": "SEQUENCE",
+  "H15-M1-09": "SEQUENCE",
+  "H15-M1-10": "SEQUENCE",
+  "H15-M1-11": "SEQUENCE",
+  "H15-M2-01": "CALCULUS",
+  "H15-M2-02": "CALCULUS",
+  "H15-M2-03": "CALCULUS",
+  "H15-M2-04": "CALCULUS",
+  "H15-M2-05": "CALCULUS",
+  "H15-M2-06": "CALCULUS",
+  "H15-M2-07": "CALCULUS",
+  "H15-M2-08": "CALCULUS",
+  "H15-M2-09": "CALCULUS",
+  "H15-PS-04": "PROB-BASIC",
+  "H15-PS-05": "PROB-BASIC",
+  "H15-PS-06": "STAT-BASIC",
+  "H15-SA-04": "ALG-COMPLEX",
+  "H15-SA-09": "GEO-COORD",
+  "H15-SA-10": "GEOMETRY_LINE",
+  "H15-SA-11": "GEOMETRY_CIRCLE",
+  "H15-SA-12": "GEOMETRY_TRANSFORM",
+  "H15-SB-01": "SET-LOGIC",
+  "H15-SB-03": "FUNCTION_BASIC",
+  "H15-SB-04": "FUNCTION_RATIONAL",
+  "H15-SB-05": "FUNCTION_IRRATIONAL",
+  "H15-SB-06": "PROB-COMBI",
+  "H15-SB-07": "PROB-COMBI",
+  "H15-SB-08": "PROB-COMBI",
+  "H22-A-06": "SEQUENCE",
+  "H22-A-07": "SEQUENCE",
+  "H22-A-08": "SEQUENCE",
+  "H22-C2-02": "GEOMETRY_LINE",
+  "H22-C2-03": "GEOMETRY_CIRCLE",
+  "H22-C2-04": "GEOMETRY_TRANSFORM",
+  "H22-C2-06": "SET-LOGIC",
+  "H22-C2-07": "FUNCTION_BASIC",
+  "H22-C2-08": "FUNCTION_RATIONAL",
+  "H22-C2-09": "FUNCTION_IRRATIONAL",
+  "H22-GE-01": "GEOMETRY_CONIC",
+  "H22-GE-02": "GEOMETRY_CONIC",
+  "H22-GE-05": "GEOMETRY_VECTOR",
+  "H22-GE-06": "GEOMETRY_VECTOR",
+  "H22-GE-07": "GEOMETRY_VECTOR",
+  "H22-PS-02": "PROB-COMBI",
+  "M1-05": "GEOMETRY_BASIC",
+  "M1-06": "GEOMETRY_BASIC",
+  "M1-07": "GEOMETRY_SOLID",
+  "M1-08": "STAT-BASIC",
+  "M2-04": "FUNCTION_LINEAR",
+  "M2-05": "GEOMETRY_POLYGON",
+  "M2-07": "GEOMETRY_PYTHAGOREAN",
+  "M2-08": "PROB-BASIC",
+  "M3-05": "TRIG-FUNC",
+  "M3-06": "GEOMETRY_CIRCLE",
+  "M3-07": "STAT-BASIC",
 };
 
 window.CONCEPT_CLUSTER_LABEL = {
@@ -102,6 +169,36 @@ window.CONCEPT_CLUSTER_LABEL = {
   "PROB-COMBI":        "경우의 수·순열·조합",
   "PROB-BASIC":        "확률",
   "STAT-BASIC":        "통계",
+  "SEQUENCE":          "수열",
+  "CALCULUS":          "미적분",
+  "CALCULUS_DIFFERENTIATION": "미분",
+  "GEOMETRY_LINE":     "직선과 좌표",
+  "GEOMETRY_CIRCLE":   "원과 원의 방정식",
+  "GEOMETRY_TRANSFORM": "도형의 이동",
+  "FUNCTION_BASIC":    "함수",
+  "FUNCTION_RATIONAL": "유리함수",
+  "FUNCTION_IRRATIONAL": "무리함수",
+  "GEOMETRY_CONIC":    "이차곡선",
+  "GEOMETRY_VECTOR":   "벡터",
+  "GEOMETRY_BASIC":    "기본도형과 평면도형",
+  "GEOMETRY_SOLID":    "입체도형",
+  "FUNCTION_LINEAR":   "일차함수",
+  "GEOMETRY_POLYGON":  "다각형과 사각형",
+  "GEOMETRY_PYTHAGOREAN": "피타고라스 정리",
+};
+
+// 검색·필터 전용 라벨 alias. source standardUnit/subUnitKey를 변경하지 않는다.
+// 근거가 확인된 축약·동의 라벨만 등록하며, 오분류 후보는 여기에 넣지 않는다.
+window.STANDARD_UNIT_LABEL_ALIASES = {
+  "H15-M2-09": { "정적분의 활용": "적분의 활용" },
+  "H22-A-05": { "삼각함수의 활용": "사인법칙과 코사인법칙" },
+  "M1-04": { "좌표와 그래프": "좌표평면과 그래프" },
+  "M2-03": { "연립방정식": "연립일차방정식" },
+};
+
+window.normalizeStandardUnitLabelForSearch = function(unitKey, label) {
+  const aliases = window.STANDARD_UNIT_LABEL_ALIASES[unitKey] || {};
+  return aliases[label] || label;
 };
 
 window.getConceptClusterKey = function(unitKey) {

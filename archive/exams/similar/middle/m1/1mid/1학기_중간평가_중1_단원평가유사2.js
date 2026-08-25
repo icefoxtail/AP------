@@ -23,7 +23,11 @@ window.questionBank = [
       "\\(27\\)"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소수는 1보다 큰 자연수 중 1과 자기 자신만을 약수로 가지는 수이다.\n소수는 17이다.\n∴ 정답: ③"
+    "solution": "[키포인트] 소수는 1보다 큰 자연수 중 1과 자기 자신만을 약수로 가지는 수이다.\n소수는 17이다.\n∴ 정답: ③",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "11의 배수 중에서 소수는 1개 뿐이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소수와 합성수의 정의 및 성질을 이해한다.\n① 1은 소수도 합성수도 아니다.\n② 2는 짝수이지만 소수이다.\n③ 합성수의 약수는 3개 이상이다.\n④ 소수의 약수는 1과 자기 자신으로 2개이다.\n⑤ 11의 배수 중 소수는 11 자기 자신 1개뿐이다.\n∴ 정답: ⑤"
+    "solution": "[키포인트] 소수와 합성수의 정의 및 성질을 이해한다.\n① 1은 소수도 합성수도 아니다.\n② 2는 짝수이지만 소수이다.\n③ 합성수의 약수는 3개 이상이다.\n④ 소수의 약수는 1과 자기 자신으로 2개이다.\n⑤ 11의 배수 중 소수는 11 자기 자신 1개뿐이다.\n∴ 정답: ⑤",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "\\(39\\)"
     ],
     "answer": "④",
-    "solution": "[키포인트] 거듭제곱의 밑과 지수의 정의를 이해한다.\n\\(3^3\\)은 3을 3번 곱한 것이므로 \\(a=3,\\ b=3\\)이다.\n\\(3^3=27\\)이므로 \\(c=27\\)이다.\n\\(a+b+c=3+3+27=33\\)\n∴ 정답: ④"
+    "solution": "[키포인트] 거듭제곱의 밑과 지수의 정의를 이해한다.\n\\(3^3\\)은 3을 3번 곱한 것이므로 \\(a=3,\\ b=3\\)이다.\n\\(3^3=27\\)이므로 \\(c=27\\)이다.\n\\(a+b+c=3+3+27=33\\)\n∴ 정답: ④",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "\\(2 \\times 3 \\times 7\\)"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 자연수를 소수들의 곱으로 나타낸다.\n42를 소인수분해하면 \\(42=2 \\times 21=2 \\times 3 \\times 7\\)이다.\n∴ 정답: ⑤"
+    "solution": "[키포인트] 자연수를 소수들의 곱으로 나타낸다.\n42를 소인수분해하면 \\(42=2 \\times 21=2 \\times 3 \\times 7\\)이다.\n∴ 정답: ⑤",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "\\(40\\)"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 수를 소인수분해하여 소인수를 비교한다.\n\\(200=2^3 \\times 5^2\\)이므로 소인수는 2, 5이다.\n① \\(24=2^3 \\times 3\\) (소인수: 2, 3)\n② \\(45=3^2 \\times 5\\) (소인수: 3, 5)\n③ \\(54=2 \\times 3^3\\) (소인수: 2, 3)\n④ \\(70=2 \\times 5 \\times 7\\) (소인수: 2, 5, 7)\n⑤ \\(40=2^3 \\times 5\\) (소인수: 2, 5)\n∴ 정답: ⑤"
+    "solution": "[키포인트] 각 수를 소인수분해하여 소인수를 비교한다.\n\\(200=2^3 \\times 5^2\\)이므로 소인수는 2, 5이다.\n① \\(24=2^3 \\times 3\\) (소인수: 2, 3)\n② \\(45=3^2 \\times 5\\) (소인수: 3, 5)\n③ \\(54=2 \\times 3^3\\) (소인수: 2, 3)\n④ \\(70=2 \\times 5 \\times 7\\) (소인수: 2, 5, 7)\n⑤ \\(40=2^3 \\times 5\\) (소인수: 2, 5)\n∴ 정답: ⑤",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "약수: ㄴ, ㄷ, 배수: ㅂ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소인수분해된 수의 약수와 배수의 성질을 이용한다.\n주어진 수 \\(N=2 \\times 3^2 \\times 5\\)일 때,\n1단계: 약수는 소인수 2, 3, 5의 지수가 각각 1, 2, 1보다 작거나 같아야 한다. (ㄱ, ㄷ)\n2단계: 배수는 소인수 2, 3, 5의 지수가 각각 1, 2, 1보다 크거나 같아야 한다. (ㅁ)\n∴ 정답: ③"
+    "solution": "[키포인트] 소인수분해된 수의 약수와 배수의 성질을 이용한다.\n주어진 수 \\(N=2 \\times 3^2 \\times 5\\)일 때,\n1단계: 약수는 소인수 2, 3, 5의 지수가 각각 1, 2, 1보다 작거나 같아야 한다. (ㄱ, ㄷ)\n2단계: 배수는 소인수 2, 3, 5의 지수가 각각 1, 2, 1보다 크거나 같아야 한다. (ㅁ)\n∴ 정답: ③",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "\\(78\\)"
     ],
     "answer": "②",
-    "solution": "[키포인트] 서로 다른 소인수 3개를 갖는 수를 크기 순으로 나열한다.\n작은 소수부터 조합하면 2, 3, 5 / 2, 3, 7 / 2, 3, 11 등이 있다.\n1. \\(2 \\times 3 \\times 5 = 30\\)\n2. \\(2 \\times 3 \\times 7 = 42\\)\n3. \\(2^2 \\times 3 \\times 5 = 60\\)\n4. \\(2 \\times 3 \\times 11 = 66\\)\n따라서 세 번째로 작은 자연수는 60이다.\n∴ 정답: ②"
+    "solution": "[키포인트] 서로 다른 소인수 3개를 갖는 수를 크기 순으로 나열한다.\n작은 소수부터 조합하면 2, 3, 5 / 2, 3, 7 / 2, 3, 11 등이 있다.\n1. \\(2 \\times 3 \\times 5 = 30\\)\n2. \\(2 \\times 3 \\times 7 = 42\\)\n3. \\(2^2 \\times 3 \\times 5 = 60\\)\n4. \\(2 \\times 3 \\times 11 = 66\\)\n따라서 세 번째로 작은 자연수는 60이다.\n∴ 정답: ②",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "\\(58\\)"
     ],
     "answer": "③",
-    "solution": "[키포인트] 27의 소인수인 3의 배수를 제외한다.\n\\(27=3^3\\)이므로 서로소인 수는 3의 배수가 아니어야 한다.\n1단계: 두 자리 자연수는 10~99로 총 90개이다.\n2단계: 3의 배수는 12, 15, ..., 99로 총 30개이다.\n3단계: \\(90 - 30 = 60\\)(개)이다.\n∴ 정답: ③"
+    "solution": "[키포인트] 27의 소인수인 3의 배수를 제외한다.\n\\(27=3^3\\)이므로 서로소인 수는 3의 배수가 아니어야 한다.\n1단계: 두 자리 자연수는 10~99로 총 90개이다.\n2단계: 3의 배수는 12, 15, ..., 99로 총 30개이다.\n3단계: \\(90 - 30 = 60\\)(개)이다.\n∴ 정답: ③",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "6개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 소인수분해를 통해 지수의 범위를 결정한다.\n\\(18=2 \\times 3^2\\), \\(30=2 \\times 3 \\times 5\\), 최대공약수 \\(6=2 \\times 3\\), 최소공배수 \\(90=2 \\times 3^2 \\times 5\\)이다.\n\\(\\square = 2^a \\times 3^b \\times 5^c\\)일 때, 지수 조건을 만족하는 \\(\\square\\)는 6, 18, 30, 90이다.\n이 중 서로 다른 세 자연수여야 하므로 18과 30을 제외한 6, 90이 가능하다.\n∴ 정답: ②"
+    "solution": "[키포인트] 소인수분해를 통해 지수의 범위를 결정한다.\n\\(18=2 \\times 3^2\\), \\(30=2 \\times 3 \\times 5\\), 최대공약수 \\(6=2 \\times 3\\), 최소공배수 \\(90=2 \\times 3^2 \\times 5\\)이다.\n\\(\\square = 2^a \\times 3^b \\times 5^c\\)일 때, 지수 조건을 만족하는 \\(\\square\\)는 6, 18, 30, 90이다.\n이 중 서로 다른 세 자연수여야 하므로 18과 30을 제외한 6, 90이 가능하다.\n∴ 정답: ②",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -239,7 +275,11 @@ window.questionBank = [
       "7000원"
     ],
     "answer": "②",
-    "solution": "[키포인트] 서로 반대되는 성질을 가진 양을 부호로 나타낸다.\n수입을 '+'로 나타냈으므로 지출은 '-'로 나타낸다.\n∴ 정답: ②"
+    "solution": "[키포인트] 서로 반대되는 성질을 가진 양을 부호로 나타낸다.\n수입을 '+'로 나타냈으므로 지출은 '-'로 나타낸다.\n∴ 정답: ②",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -263,7 +303,11 @@ window.questionBank = [
       "-4과 +3 사이에 있는 정수는 3개다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 수의 체계를 정확히 이해한다.\n④ \\(\\frac{8}{12} = \\frac{2}{3}\\)는 기약분수로 나타냈을 때 분모가 1이 아니므로 정수가 아닌 유리수이다.\n⑤ 정수는 -3, -2, -1, 0, 1, 2로 6개이다.\n∴ 정답: ④"
+    "solution": "[키포인트] 수의 체계를 정확히 이해한다.\n④ \\(\\frac{8}{12} = \\frac{2}{3}\\)는 기약분수로 나타냈을 때 분모가 1이 아니므로 정수가 아닌 유리수이다.\n⑤ 정수는 -3, -2, -1, 0, 1, 2로 6개이다.\n∴ 정답: ④",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -287,7 +331,11 @@ window.questionBank = [
       "-4"
     ],
     "answer": "②",
-    "solution": "[키포인트] 유리수의 곱셈과 나눗셈은 나눗셈을 역수의 곱셈으로 바꾸어 계산한다.\n1단계: \\(8 \\times (-\\frac{3}{4}) \\div \\frac{3}{7} = 8 \\times (-\\frac{3}{4}) \\times \\frac{7}{3}\\)\n2단계: \\(-6 \\times \\frac{7}{3} = -14\\)\n∴ 정답: ②"
+    "solution": "[키포인트] 유리수의 곱셈과 나눗셈은 나눗셈을 역수의 곱셈으로 바꾸어 계산한다.\n1단계: \\(8 \\times (-\\frac{3}{4}) \\div \\frac{3}{7} = 8 \\times (-\\frac{3}{4}) \\times \\frac{7}{3}\\)\n2단계: \\(-6 \\times \\frac{7}{3} = -14\\)\n∴ 정답: ②",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -311,7 +359,11 @@ window.questionBank = [
       "\\(-9, 9\\)"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 수 사이의 거리는 절댓값의 2배임을 이용한다.\n거리가 14이므로 원점으로부터의 거리는 각각 7이다.\n따라서 두 수는 -7, 7이다.\n∴ 정답: ③"
+    "solution": "[키포인트] 두 수 사이의 거리는 절댓값의 2배임을 이용한다.\n거리가 14이므로 원점으로부터의 거리는 각각 7이다.\n따라서 두 수는 -7, 7이다.\n∴ 정답: ③",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -335,7 +387,11 @@ window.questionBank = [
       "\\(-3 < -8\\)"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 음수끼리는 절댓값이 큰 수가 더 작다.\n⑤ \\(|-3|=3, |-8|=8\\)이므로 \\(-3 > -8\\)이다.\n∴ 정답: ⑤"
+    "solution": "[키포인트] 음수끼리는 절댓값이 큰 수가 더 작다.\n⑤ \\(|-3|=3, |-8|=8\\)이므로 \\(-3 > -8\\)이다.\n∴ 정답: ⑤",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -359,7 +415,11 @@ window.questionBank = [
       "\\((+2)-(+9)=-7\\)"
     ],
     "answer": "④",
-    "solution": "[키포인트] 유리수의 뺄셈은 빼는 수의 부호를 바꾸어 더한다.\n④ \\((-5)-(+4) = -5-4 = -9\\)이다.\n∴ 정답: ④"
+    "solution": "[키포인트] 유리수의 뺄셈은 빼는 수의 부호를 바꾸어 더한다.\n④ \\((-5)-(+4) = -5-4 = -9\\)이다.\n∴ 정답: ④",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -383,7 +443,11 @@ window.questionBank = [
       "\\(32\\)"
     ],
     "answer": "③",
-    "solution": "[키포인트] 절댓값이 큰 쪽의 부호를 붙이고 절댓값의 차를 구한다.\n\\(7-25 = -18\\)\n∴ 정답: ③"
+    "solution": "[키포인트] 절댓값이 큰 쪽의 부호를 붙이고 절댓값의 차를 구한다.\n\\(7-25 = -18\\)\n∴ 정답: ③",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -407,7 +471,11 @@ window.questionBank = [
       "\\(20\\)"
     ],
     "answer": "④",
-    "solution": "[키포인트] '큰 수'는 덧셈, '작은 수'는 뺄셈으로 식을 세운다.\n\\(a = 15 + (-4) = 11\\)\n\\(b = 3 - (+8) = -5\\)\n\\(a-b = 11 - (-5) = 16\\)\n∴ 정답: ④"
+    "solution": "[키포인트] '큰 수'는 덧셈, '작은 수'는 뺄셈으로 식을 세운다.\n\\(a = 15 + (-4) = 11\\)\n\\(b = 3 - (+8) = -5\\)\n\\(a-b = 11 - (-5) = 16\\)\n∴ 정답: ④",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -420,7 +488,9 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "content": "도비 이야기의 일부를 통해 알 수 있는 것으로 옳은 것을 고르시오. [4점]<div class=\"question-table-wrap\"><table><tr><td>[도비 이야기] 도비에게 돌멩이 4개를 달아주면 도비는 땅으로 4칸 내려가고, 도비에게 달린 풍선 4개를 끊으면 땅으로 4칸 내려가므로 돌멩이를 4개 달아주는 것과 풍선 4개를 끊는 것은 같은 효과가 나타납니다. 반대로 도비에게 달린 돌멩이 4개를 끊으면 하늘로 4칸 올라가고, 도비에게 풍선 4개를 달면 하늘로 4칸 올라가므로 돌멩이를 4개 끊는 것과 풍선 4개를 달아주는 것은 같은 효과가 나타납니다.</td></tr></table></div>",
     "choices": [
@@ -431,7 +501,11 @@ window.questionBank = [
       "두 수의 나눗셈은 나누는 수의 역수를 곱한다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 어떤 수를 빼는 것은 그 수의 부호를 바꾸어 더하는 것과 같음을 이해한다.\n음수를 더하는 것과 양수를 빼는 것이 같음을 설명하고 있다.\n∴ 정답: ③"
+    "solution": "[키포인트] 어떤 수를 빼는 것은 그 수의 부호를 바꾸어 더하는 것과 같음을 이해한다.\n음수를 더하는 것과 양수를 빼는 것이 같음을 설명하고 있다.\n∴ 정답: ③",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -455,7 +529,11 @@ window.questionBank = [
       "\\((-8) \\div \\frac{4}{5}=-8\\)"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 나눗셈을 역수의 곱셈으로 바꾸어 계산한다.\n⑤ \\((-8) \\div \\frac{4}{5} = -8 \\times \\frac{5}{4} = -10\\)이다.\n∴ 정답: ⑤"
+    "solution": "[키포인트] 나눗셈을 역수의 곱셈으로 바꾸어 계산한다.\n⑤ \\((-8) \\div \\frac{4}{5} = -8 \\times \\frac{5}{4} = -10\\)이다.\n∴ 정답: ⑤",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -479,7 +557,11 @@ window.questionBank = [
       "\\(-12\\)"
     ],
     "answer": "④",
-    "solution": "[키포인트] 곱이 음수가 되면서 절댓값이 가장 큰 조합을 찾는다.\n양수 중 가장 큰 수 6과 음수 중 절댓값이 가장 큰 -4를 곱한다.\n\\(6 \\times (-4) = -24\\)\n∴ 정답: ④"
+    "solution": "[키포인트] 곱이 음수가 되면서 절댓값이 가장 큰 조합을 찾는다.\n양수 중 가장 큰 수 6과 음수 중 절댓값이 가장 큰 -4를 곱한다.\n\\(6 \\times (-4) = -24\\)\n∴ 정답: ④",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -503,7 +585,11 @@ window.questionBank = [
       "\\(\\frac{15}{2}\\)"
     ],
     "answer": "②",
-    "solution": "[키포인트] 거듭제곱 → 괄호 안 → 곱셈/나눗셈 → 덧셈/뺄셈 순으로 계산한다.\n1단계: \\((-2)^3 = -8\\)\n2단계: 중괄호 안 \\((-\\frac{1}{2}) - (-8) = \\frac{15}{2}\\)\n3단계: \\(-1 + \\frac{15}{2} \\times \\frac{1}{5} = -1 + \\frac{3}{2} = \\frac{1}{2}\\)\n∴ 정답: ②"
+    "solution": "[키포인트] 거듭제곱 → 괄호 안 → 곱셈/나눗셈 → 덧셈/뺄셈 순으로 계산한다.\n1단계: \\((-2)^3 = -8\\)\n2단계: 중괄호 안 \\((-\\frac{1}{2}) - (-8) = \\frac{15}{2}\\)\n3단계: \\(-1 + \\frac{15}{2} \\times \\frac{1}{5} = -1 + \\frac{3}{2} = \\frac{1}{2}\\)\n∴ 정답: ②",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -516,12 +602,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "\\(28 \\times a\\)는 어떤 자연수 \\(b\\)의 제곱이라고 한다. 자연수 \\(a, b\\)의 값 중 두 번째로 작은 값을 각각 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "a=28, b=28",
-    "solution": "[키포인트] 소인수분해 시 모든 소인수의 지수가 짝수가 되어야 함을 이용한다.\n1단계: \\(28 = 2^2 \\times 7\\)이므로 \\(a = 7 \\times k^2\\) (\\(k\\)는 자연수)이다.\n2단계: 가장 작은 값은 \\(k=1\\)일 때 \\(a=7, b=14\\)이다.\n3단계: 두 번째로 작은 값은 \\(k=2\\)일 때 \\(a=28, b=28\\)이다.\n∴ 정답: a=28, b=28"
+    "solution": "[키포인트] 소인수분해 시 모든 소인수의 지수가 짝수가 되어야 함을 이용한다.\n1단계: \\(28 = 2^2 \\times 7\\)이므로 \\(a = 7 \\times k^2\\) (\\(k\\)는 자연수)이다.\n2단계: 가장 작은 값은 \\(k=1\\)일 때 \\(a=7, b=14\\)이다.\n3단계: 두 번째로 작은 값은 \\(k=2\\)일 때 \\(a=28, b=28\\)이다.\n∴ 정답: a=28, b=28",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -534,12 +626,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "어떤 수에 \\(-\\frac{3}{4}\\)를 더해야 할 것을 잘못하여 뺐더니 \\(\\frac{5}{12}\\)이 되었다. 어떤 수와 바르게 계산한 값을 구하는 과정을 각각 서술하시오. [7점]",
     "choices": [],
     "answer": "어떤 수: \\(-\\frac{1}{3}\\), 바르게 계산한 값: \\(-\\frac{13}{12}\\)",
-    "solution": "[키포인트] 어떤 수를 구한 뒤 원래 식에 대입한다.\n1단계: 어떤 수를 \\(x\\)라 하면 \\(x - (-\\frac{3}{4}) = \\frac{5}{12} \\implies x = -\\frac{4}{12} = -\\frac{1}{3}\\)\n2단계: 바른 계산은 \\((-\\frac{1}{3}) + (-\\frac{3}{4}) = -\\frac{13}{12}\\)이다.\n∴ 정답: 어떤 수: \\(-\\frac{1}{3}\\), 바르게 계산한 값: \\(-\\frac{13}{12}\\)"
+    "solution": "[키포인트] 어떤 수를 구한 뒤 원래 식에 대입한다.\n1단계: 어떤 수를 \\(x\\)라 하면 \\(x - (-\\frac{3}{4}) = \\frac{5}{12} \\implies x = -\\frac{4}{12} = -\\frac{1}{3}\\)\n2단계: 바른 계산은 \\((-\\frac{1}{3}) + (-\\frac{3}{4}) = -\\frac{13}{12}\\)이다.\n∴ 정답: 어떤 수: \\(-\\frac{1}{3}\\), 바르게 계산한 값: \\(-\\frac{13}{12}\\)",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -552,11 +650,17 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "세 수 \\(a, b, c\\)에 대하여 \\(a-b<0, a \\times c<0, b \\times c>0\\)일 때 \\(a, b, c\\)의 부호를 각각 판단하고 그 이유를 서술하시오. [7점]",
     "choices": [],
     "answer": "\\(a<0,\\ b>0,\\ c>0\\)",
-    "solution": "[키포인트] 곱의 부호를 통해 두 수의 부호가 같은지 다른지 판단한다.\n1단계: \\(a-b < 0 \\implies a < b\\)\n2단계: \\(b \\times c > 0\\)이므로 \\(b, c\\) 부호 동일 / \\(a \\times c < 0\\)이므로 \\(a, c\\) 부호 반대\n3단계: \\(c < 0\\)이면 \\(b < 0, a > 0\\)이 되어 \\(a < b\\)에 모순. 따라서 \\(c > 0, b > 0, a < 0\\)이다.\n∴ 정답: \\(a<0,\\ b>0,\\ c>0\\)"
+    "solution": "[키포인트] 곱의 부호를 통해 두 수의 부호가 같은지 다른지 판단한다.\n1단계: \\(a-b < 0 \\implies a < b\\)\n2단계: \\(b \\times c > 0\\)이므로 \\(b, c\\) 부호 동일 / \\(a \\times c < 0\\)이므로 \\(a, c\\) 부호 반대\n3단계: \\(c < 0\\)이면 \\(b < 0, a > 0\\)이 되어 \\(a < b\\)에 모순. 따라서 \\(c > 0, b > 0, a < 0\\)이다.\n∴ 정답: \\(a<0,\\ b>0,\\ c>0\\)",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

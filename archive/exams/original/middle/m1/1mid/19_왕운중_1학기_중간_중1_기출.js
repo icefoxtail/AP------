@@ -22,7 +22,11 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -46,7 +50,11 @@ window.questionBank = [
       "$45$, $81$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -70,7 +78,11 @@ window.questionBank = [
       "$2\\times2\\times2\\times7=2^3\\times7$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -94,7 +106,11 @@ window.questionBank = [
       "$104=2\\times3\\times17$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -118,7 +134,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -142,7 +162,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -166,7 +190,11 @@ window.questionBank = [
       "$2^3\\times3\\times7$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -190,7 +218,11 @@ window.questionBank = [
       "절댓값이 가장 작은 수는 $-1$, $+1$이다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -214,7 +246,11 @@ window.questionBank = [
       "$\\dfrac{1}{2}$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -238,7 +274,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -262,7 +302,11 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -286,7 +330,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -310,7 +358,11 @@ window.questionBank = [
       "$28$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -334,7 +386,11 @@ window.questionBank = [
       "$30$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -358,7 +414,11 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -382,7 +442,11 @@ window.questionBank = [
       "$\\dfrac{7}{2}$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -406,7 +470,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -430,7 +498,11 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -454,7 +526,11 @@ window.questionBank = [
       "75일"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -478,7 +554,11 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -498,7 +578,11 @@ window.questionBank = [
     "content": "[서술형 1] $4$보다 $+\\dfrac{1}{3}$만큼 작은 수와 $3$보다 $\\dfrac{3}{2}$만큼 큰 수를 구하고, 두 수 사이에 있는 정수의 개수를 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{11}{3}$, $\\dfrac{9}{2}$, 1개",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $\\dfrac{11}{3}$, $\\dfrac{9}{2}$, 1개이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -518,7 +602,11 @@ window.questionBank = [
     "content": "[서술형 2] 세 수 $a$, $b$, $c$에 대하여 $|a|=2$, $|b|=\\dfrac{2}{3}$, $|c|=6$일 때, $a+b-c$의 값 중에서 가장 큰 값과 가장 작은 값의 합을 구하시오.",
     "choices": [],
     "answer": "$0$",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $0$이다.",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -538,7 +626,11 @@ window.questionBank = [
     "content": "[서술형 3] 다음 세 조건을 모두 만족하는 자연수를 구하시오.\\n(가) $200$이하이다.\\n(나) $49$와 서로소가 아니다.\\n(다) $3$개의 소인수를 가지며, 세 소인수의 합은 $20$이다.",
     "choices": [],
     "answer": "$154$",
-    "solution": ""
+    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 $154$이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -558,6 +650,10 @@ window.questionBank = [
     "content": "[서술형 4] $5$로 나누면 $3$이 남고, $7$으로 나누면 $5$가 남고, $10$으로 나누면 $8$이 남는 자연수 중에서 가장 작은 수를 구하시오.",
     "choices": [],
     "answer": "$68$",
-    "solution": ""
+    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 $68$이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

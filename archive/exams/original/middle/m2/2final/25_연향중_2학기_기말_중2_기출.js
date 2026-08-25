@@ -26,7 +26,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 닮은 도형에서 대응하는 변의 길이의 비는 닮음비와 같다.\n조건 정리: $\\triangle ABC\\sim\\triangle DEF$이고 닮음비가 $3:1$이므로 $AB:DE=BC:EF=CA:FD=3:1$이다.\n풀이 방향: 큰 삼각형의 두 변을 이용해 작은 삼각형의 나머지 두 변을 구한다.\n정석 풀이: $BC=24\\rm\\,cm$이므로 $EF=24\\div3=8\\rm\\,cm$이고, $CA=18\\rm\\,cm$이므로 $FD=18\\div3=6\\rm\\,cm$이다. 또 $DE=10\\rm\\,cm$이다. 따라서 $\\triangle DEF$의 둘레는 $10+8+6=24\\rm\\,cm$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q1.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q1.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -47,7 +51,12 @@ window.questionBank = [
     "choices": [],
     "answer": "②",
     "solution": "[키포인트] 두 직선이 평행하려면 교점을 기준으로 대응하는 두 선분의 길이의 비가 같아야 한다.\n풀이 방향: 각 보기에서 두 직선이 평행일 때 성립해야 하는 선분의 비를 확인한다.\n정석 풀이: ②에서 $AD:AB=2:6=1:3$이고 $AE:AC=3:9=1:3$이다. 두 비가 같으므로 삼각형의 두 변을 같은 비로 나누는 점을 이은 선분의 성질에 따라 $DE\\parallel BC$이다. 다른 보기들은 대응하는 선분의 비가 같지 않다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q2.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q2.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -74,7 +83,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 삼각형들은 서로 닮음이다.\n풀이 방향: $\\triangle ABD\\sim\\triangle ABC$에서 대응변의 비를 이용한다.\n정석 풀이: $\\angle ADB=\\angle ABC=90^\\circ$이고 $\\angle A$가 공통이므로 $\\triangle ABD\\sim\\triangle ABC$이다. 따라서 $AB:AC=AD:AB$이므로 $6:AC=3:6$이다. 그러므로 $AC=12$이고 $DC=AC-AD=12-3=9$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q3.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q3.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -100,7 +113,11 @@ window.questionBank = [
       "꼭지각의 크기가 같은 두 이등변삼각형"
     ],
     "answer": "①, ②",
-    "solution": "[키포인트] 항상 닮으려면 크기가 달라도 모양을 결정하는 모든 비와 각이 같아야 한다.\n정석 풀이: ① 원기둥은 밑면의 반지름과 높이의 비가 달라질 수 있으므로 높이가 다르다는 조건만으로는 항상 닮지 않는다. ② 부채꼴은 호의 길이가 같아도 반지름이 다르면 중심각이 달라질 수 있으므로 항상 닮지 않는다. ③ 모든 구, ④ 모든 정육면체는 각각 항상 닮는다. ⑤ 꼭지각이 같은 두 이등변삼각형은 나머지 두 각도 각각 같으므로 AA 닮음으로 항상 닮는다.\n따라서 정답은 ①, ②이다."
+    "solution": "[키포인트] 항상 닮으려면 크기가 달라도 모양을 결정하는 모든 비와 각이 같아야 한다.\n정석 풀이: ① 원기둥은 밑면의 반지름과 높이의 비가 달라질 수 있으므로 높이가 다르다는 조건만으로는 항상 닮지 않는다. ② 부채꼴은 호의 길이가 같아도 반지름이 다르면 중심각이 달라질 수 있으므로 항상 닮지 않는다. ③ 모든 구, ④ 모든 정육면체는 각각 항상 닮는다. ⑤ 꼭지각이 같은 두 이등변삼각형은 나머지 두 각도 각각 같으므로 AA 닮음으로 항상 닮는다.\n따라서 정답은 ①, ②이다.",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -127,7 +144,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 사다리꼴의 두 대각선의 교점은 두 대각선을 평행한 두 밑변의 길이의 비로 나눈다.\n풀이 방향: 대각선에서 $AP:PC$를 구한 뒤 $\\triangle CPQ\\sim\\triangle CAD$를 이용한다.\n정석 풀이: 사다리꼴에서 두 대각선의 교점은 각 대각선을 두 밑변의 길이의 비로 나누므로 $AP:PC=AD:BC=4:8=1:2$이다. 따라서 $CP:CA=2:3$이다. $P$는 $AC$ 위, $Q$는 $DC$ 위에 있고 $PQ\\parallel AD$이므로 $\\triangle CPQ\\sim\\triangle CAD$이다. 그러므로 $PQ:AD=CP:CA=2:3$이고, $PQ=4\\times\\dfrac23=\\dfrac83\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q5.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q5.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -154,7 +175,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n조건 정리: 높이를 $1:1:1$로 나누었으므로 꼭짓점에서 첫 번째 절단면까지의 작은 정사면체와 전체 정사면체의 닮음비는 $1:3$, 두 번째 절단면까지의 정사면체와 전체의 닮음비는 $2:3$이다.\n정석 풀이: 전체 부피를 $V$라 하면 (가)의 부피는 $\\dfrac1{27}V$이고, (가)+(나)의 부피는 $\\dfrac8{27}V$이다. 따라서 (나)의 부피는 $\\dfrac7{27}V=42$이므로 $V=162$이다. (다)의 부피는 $V-\\dfrac8{27}V=\\dfrac{19}{27}V$이므로 $\\dfrac{19}{27}\\times162=114\\rm\\,cm^3$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q6.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q6.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -181,7 +206,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n정석 풀이: $D$는 $BC$의 중점이다. $G'$는 $\\triangle GBC$의 무게중심이므로 중선 $GD$에서 $GG':G'D=2:1$이다. $GG'=2\\rm\\,cm$이므로 $GD=3\\rm\\,cm$이다. 또한 $G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다. 따라서 $AG=2\\times3=6\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q7.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q7.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -208,7 +237,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 평행선으로 생기는 닮음에서 대각선 $BD$가 $P,Q$에 의해 삼등분되는 것을 먼저 찾는다.\n풀이 방향: $P,Q$의 위치를 구한 뒤 $\\triangle BCD$에서 양 끝의 작은 삼각형 넓이를 뺀다.\n정석 풀이: $M$은 $BC$의 중점이므로 $BM=\\dfrac12BC$이고 $AD=BC$이다. $AD\\parallel BM$이므로 $\\triangle APD\\sim\\triangle MPB$이고 $AD:BM=2:1$이다. 따라서 $DP:PB=2:1$, 즉 $BP=\\dfrac13BD$이다. 같은 방법으로 $N$은 $CD$의 중점이고 $DN\\parallel AB$이므로 $\\triangle DQN\\sim\\triangle BQA$에서 $DQ:BQ=1:2$, 따라서 $DQ=\\dfrac13DB$이다. $\\triangle BCD$의 넓이는 $72\\div2=36$이다. $\\triangle BPM$은 $\\triangle BCD$에서 $BP:BD=1:3$, $BM:BC=1:2$이므로 넓이가 $36\\times\\dfrac13\\times\\dfrac12=6$이다. $\\triangle DQN$도 같은 이유로 넓이가 $6$이다. 그러므로 오각형 $PMCNQ$의 넓이는 $36-6-6=24$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q8.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q8.png",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -235,7 +268,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 직사각형의 대각선과 피타고라스 정리를 이용하면 네 반원의 넓이의 합이 외접원의 넓이와 같아진다.\n정석 풀이: 직사각형의 두 변의 길이가 $8\\rm\\,cm$, $15\\rm\\,cm$이므로 대각선은 $\\sqrt{8^2+15^2}=17\\rm\\,cm$이다. 직사각형이 원에 내접하므로 이 대각선은 원의 지름이다. 네 반원의 넓이의 합은 지름 $8$인 반원 두 개와 지름 $15$인 반원 두 개의 합이므로 $\\dfrac\\pi4(8^2+15^2)=\\dfrac{289\\pi}{4}$이다. 이는 지름 $17$인 원의 넓이 $\\dfrac{289\\pi}{4}$와 같다. 따라서 원 안에서 직사각형 바깥의 네 부분과 반원 안의 겹치는 부분이 서로 상쇄되어, 어두운 네 부분의 넓이의 합은 직사각형의 넓이와 같다. 따라서 $8\\times15=120\\rm\\,cm^2$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q9.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q9.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -262,7 +299,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 먼저 피타고라스 정리로 $AC$를 구하고, 빗변에 내린 높이로 생기는 닮음을 이용해 $C$ 쪽의 투영 길이를 구한다.\n정석 풀이: $\\angle A=90^\\circ$, $AB=8\\rm\\,cm$, $BC=10\\rm\\,cm$이므로 $AC=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다. $A$에서 $BC$에 내린 수선의 발을 $M$이라 하면 $\\triangle ACM\\sim\\triangle CBA$이므로 $CM:AC=AC:BC$이다. 따라서 $CM=\\dfrac{AC^2}{BC}=\\dfrac{36}{10}=\\dfrac{18}{5}\\rm\\,cm$이다. 정사각형 $BCGF$에서 $CG\\perp BC$이므로 $\\triangle ACG$에서 밑변을 $CG=10\\rm\\,cm$로 잡을 때 높이는 $CM=\\dfrac{18}{5}\\rm\\,cm$와 같다. 따라서 넓이는 $\\dfrac12\\times10\\times\\dfrac{18}{5}=18\\rm\\,cm^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q10.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q10.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -286,7 +327,11 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 다른 두 주사위이므로 순서쌍으로 센다.\n정석 풀이: 눈의 차가 $2$인 경우는 $(1,3),(2,4),(3,1),(3,5),(4,2),(4,6),(5,3),(6,4)$의 $8$가지이다. 눈의 차가 $4$인 경우는 $(1,5),(2,6),(5,1),(6,2)$의 $4$가지이다. 두 경우는 겹치지 않으므로 전체는 $8+4=12$가지이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로 다른 두 주사위이므로 순서쌍으로 센다.\n정석 풀이: 눈의 차가 $2$인 경우는 $(1,3),(2,4),(3,1),(3,5),(4,2),(4,6),(5,3),(6,4)$의 $8$가지이다. 눈의 차가 $4$인 경우는 $(1,5),(2,6),(5,1),(6,2)$의 $4$가지이다. 두 경우는 겹치지 않으므로 전체는 $8+4=12$가지이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -310,7 +355,11 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 자리 정수이므로 십의 자리에는 $0$이 올 수 없고, 짝수이므로 일의 자리는 $0,2,4$ 중 하나이다.\n정석 풀이: 십의 자리는 $1,2,3,4$ 중에서 $4$가지, 일의 자리는 $0,2,4$ 중에서 $3$가지이다. 같은 수를 반복해도 되므로 곱의 법칙에 따라 $4\\times3=12$가지이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 자리 정수이므로 십의 자리에는 $0$이 올 수 없고, 짝수이므로 일의 자리는 $0,2,4$ 중 하나이다.\n정석 풀이: 십의 자리는 $1,2,3,4$ 중에서 $4$가지, 일의 자리는 $0,2,4$ 중에서 $3$가지이다. 같은 수를 반복해도 되므로 곱의 법칙에 따라 $4\\times3=12$가지이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -335,7 +384,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 서로 맞닿은 $B,C$의 색을 먼저 정하면 $A,D$의 선택 수가 바로 정해진다.\n정석 풀이: $B$의 색은 $4$가지이다. $C$는 $B$와 이웃하므로 다른 색 $3$가지 중에서 고른다. $A$는 $B,C$와 모두 이웃하므로 두 색을 제외한 $2$가지 중에서 고른다. $D$도 $B,C$와 모두 이웃하지만 $A$와는 이웃하지 않으므로 역시 $2$가지 중에서 고를 수 있다. 따라서 $4\\times3\\times2\\times2=48$가지이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q13.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q13.png",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -362,7 +415,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 선분 하나는 서로 다른 두 점을 고르면 하나씩 정해진다.\n정석 풀이: $5$개의 점에서 두 점을 고르는 방법은 $\\dfrac{5\\times4}{2}=10$가지이다. 따라서 만들 수 있는 선분은 $10$개이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q14.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q14.png",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -386,7 +443,11 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 양 끝의 $A,B$ 배치와 가운데 세 학생의 배치를 따로 센다.\n정석 풀이: 양 끝에 $A,B$를 세우는 방법은 $2$가지이다. 가운데 세 자리에 $C,D,E$를 세우는 방법은 $3\\times2\\times1=6$가지이다. 따라서 전체 경우의 수는 $2\\times6=12$가지이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 양 끝의 $A,B$ 배치와 가운데 세 학생의 배치를 따로 센다.\n정석 풀이: 양 끝에 $A,B$를 세우는 방법은 $2$가지이다. 가운데 세 자리에 $C,D,E$를 세우는 방법은 $3\\times2\\times1=6$가지이다. 따라서 전체 경우의 수는 $2\\times6=12$가지이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -410,7 +471,11 @@ window.questionBank = [
       "나오는 두 눈의 수가 모두 양수일 확률"
     ],
     "answer": "①",
-    "solution": "[키포인트] 반드시 일어나는 사건은 확률이 $1$, 절대로 일어날 수 없는 사건은 확률이 $0$이다.\n정석 풀이: 두 주사위의 합은 최대 $12$이므로 ②는 확률 $0$이다. 합의 최솟값은 $2$이므로 ③도 $0$이다. 주사위 눈은 음수가 아니므로 ④는 $0$이고, 모든 눈은 양수이므로 ⑤는 $1$이다. 두 눈의 차가 $3$인 경우는 실제로 존재하지만 항상 일어나는 것은 아니므로 확률이 $0$도 $1$도 아니다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 반드시 일어나는 사건은 확률이 $1$, 절대로 일어날 수 없는 사건은 확률이 $0$이다.\n정석 풀이: 두 주사위의 합은 최대 $12$이므로 ②는 확률 $0$이다. 합의 최솟값은 $2$이므로 ③도 $0$이다. 주사위 눈은 음수가 아니므로 ④는 $0$이고, 모든 눈은 양수이므로 ⑤는 $1$이다. 두 눈의 차가 $3$인 경우는 실제로 존재하지만 항상 일어나는 것은 아니므로 확률이 $0$도 $1$도 아니다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -434,7 +499,11 @@ window.questionBank = [
       "$\\dfrac9{10}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 사람이 만나려면 두 사람 모두 약속을 지켜야 하므로 여사건을 이용한다.\n정석 풀이: 두 사람이 모두 약속을 지킬 확률은 $\\dfrac34\\times\\dfrac35=\\dfrac9{20}$이다. 따라서 만나지 못할 확률은 $1-\\dfrac9{20}=\\dfrac{11}{20}$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 사람이 만나려면 두 사람 모두 약속을 지켜야 하므로 여사건을 이용한다.\n정석 풀이: 두 사람이 모두 약속을 지킬 확률은 $\\dfrac34\\times\\dfrac35=\\dfrac9{20}$이다. 따라서 만나지 못할 확률은 $1-\\dfrac9{20}=\\dfrac{11}{20}$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -459,7 +528,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $1$부터 $8$까지에서 조건을 만족하는 수를 직접 찾는다.\n정석 풀이: $2$의 배수는 $2,4,6,8$이고 $5$의 배수는 $5$이다. 중복되는 수가 없으므로 조건을 만족하는 부분은 모두 $5$개이다. 원판은 같은 크기로 $8$등분되어 있으므로 확률은 $\\dfrac58$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q18.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q18.png",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -483,7 +556,11 @@ window.questionBank = [
       "$\\dfrac14$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 서로 다른 두 주머니에서 꺼내는 사건이므로 각각 노란 구슬이 나올 확률을 곱한다.\n정석 풀이: A 주머니에서 노란 구슬이 나올 확률은 $\\dfrac58$이고, B 주머니에서 노란 구슬이 나올 확률은 $\\dfrac4{10}=\\dfrac25$이다. 따라서 모두 노란 구슬일 확률은 $\\dfrac58\\times\\dfrac25=\\dfrac14$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 서로 다른 두 주머니에서 꺼내는 사건이므로 각각 노란 구슬이 나올 확률을 곱한다.\n정석 풀이: A 주머니에서 노란 구슬이 나올 확률은 $\\dfrac58$이고, B 주머니에서 노란 구슬이 나올 확률은 $\\dfrac4{10}=\\dfrac25$이다. 따라서 모두 노란 구슬일 확률은 $\\dfrac58\\times\\dfrac25=\\dfrac14$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -507,7 +584,11 @@ window.questionBank = [
       "$\\dfrac1{25}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 카드를 다시 넣으므로 두 번의 시행에서 전체 카드 수는 각각 $20$장이다.\n정석 풀이: $1$부터 $20$까지의 $6$의 배수는 $6,12,18$의 $3$개이므로 첫 번째 확률은 $\\dfrac3{20}$이다. $15$의 약수는 $1,3,5,15$의 $4$개이므로 두 번째 확률은 $\\dfrac4{20}=\\dfrac15$이다. 따라서 구하는 확률은 $\\dfrac3{20}\\times\\dfrac15=\\dfrac3{100}$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 카드를 다시 넣으므로 두 번의 시행에서 전체 카드 수는 각각 $20$장이다.\n정석 풀이: $1$부터 $20$까지의 $6$의 배수는 $6,12,18$의 $3$개이므로 첫 번째 확률은 $\\dfrac3{20}$이다. $15$의 약수는 $1,3,5,15$의 $4$개이므로 두 번째 확률은 $\\dfrac4{20}=\\dfrac15$이다. 따라서 구하는 확률은 $\\dfrac3{20}\\times\\dfrac15=\\dfrac3{100}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -529,7 +610,11 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $\\triangle ABC$ (2) $6\\rm\\,cm$",
     "solution": "[키포인트] 평행선으로 생기는 AA 닮음과 중점 조건을 두 번 연결한다.\n(1) $DG\\parallel BF$이고 $B,C,F$가 한 직선 위에 있으므로 $DG\\parallel BC$이다. 따라서 $\\angle ADG=\\angle ABC$, $\\angle AGD=\\angle ACB$이다. 두 쌍의 대응각의 크기가 각각 같으므로 AA 닮음에 의해 $\\triangle ADG\\sim\\triangle ABC$이다.\n(2) $D,E,F$가 한 직선 위에 있고 $A,G,E,C$가 한 직선 위에 있으며 $DG\\parallel CF$이므로 $\\triangle DGE\\sim\\triangle FCE$이다. $DE=EF$이므로 닮음비가 $1:1$이어서 $DG=CF$이다. 또한 $AD=DB$이므로 $D$는 $AB$의 중점이고, $DG\\parallel BC$이므로 $G$는 $AC$의 중점이며 $DG=\\dfrac12BC$이다. 따라서 $BC=2DG$이고 $CF=DG$이므로 $BF=BC+CF=3DG$이다. $BF=18\\rm\\,cm$이므로 $DG=6\\rm\\,cm$이다.\n따라서 (1) $\\triangle ABC$, (2) $6\\rm\\,cm$이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q21.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q21.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -551,7 +636,11 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $10\\rm\\,cm$ (2) $16\\rm\\,cm$",
     "solution": "[키포인트] 무게중심의 $2:1$ 성질과 직각삼각형의 빗변의 중점 성질을 차례로 이용한다.\n(1) $G$는 무게중심이므로 중선 $AD$를 $AG:GD=2:1$로 나눈다. 따라서 $AD=3\\times GD=3\\times\\dfrac{10}{3}=10\\rm\\,cm$이다.\n(2) $D$는 $BC$의 중점이고 $\\angle A=90^\\circ$이므로 직각삼각형의 빗변의 중점 성질에 따라 $AD=BD=CD=10\\rm\\,cm$이다. 따라서 $BC=20\\rm\\,cm$이다. 피타고라스 정리를 적용하면 $AB^2+AC^2=BC^2$이므로 $AB^2+12^2=20^2$, $AB^2=256$이다. 길이는 양수이므로 $AB=16\\rm\\,cm$이다.\n따라서 (1) $10\\rm\\,cm$, (2) $16\\rm\\,cm$이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q22.png"
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q22.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -571,6 +660,10 @@ window.questionBank = [
     "content": "[서술형 3] 어떤 자격 시험에서 서웅이가 합격할 확률은 $\\dfrac67$, 지호가 합격할 확률은 $\\dfrac13$일 때, 다음을 구하시오. [6점]\n(1) 두 사람 모두 합격할 확률을 구하고, 구하는 과정을 서술하시오. [2점]\n(2) 두 사람 모두 불합격할 확률을 구하고, 구하는 과정을 서술하시오. [2점]\n(3) 적어도 한 사람은 합격할 확률을 구하고, 구하는 과정을 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $\\dfrac27$ (2) $\\dfrac2{21}$ (3) $\\dfrac{19}{21}$",
-    "solution": "[키포인트] 두 사람의 합격 여부를 독립인 사건으로 보고 곱셈법칙과 여사건을 이용한다.\n(1) 두 사람 모두 합격할 확률은 $\\dfrac67\\times\\dfrac13=\\dfrac27$이다.\n(2) 서웅이가 불합격할 확률은 $1-\\dfrac67=\\dfrac17$, 지호가 불합격할 확률은 $1-\\dfrac13=\\dfrac23$이다. 따라서 두 사람 모두 불합격할 확률은 $\\dfrac17\\times\\dfrac23=\\dfrac2{21}$이다.\n(3) 적어도 한 사람이 합격하는 사건은 두 사람 모두 불합격하는 사건의 여사건이다. 따라서 $1-\\dfrac2{21}=\\dfrac{19}{21}$이다.\n따라서 (1) $\\dfrac27$, (2) $\\dfrac2{21}$, (3) $\\dfrac{19}{21}$이다."
+    "solution": "[키포인트] 두 사람의 합격 여부를 독립인 사건으로 보고 곱셈법칙과 여사건을 이용한다.\n(1) 두 사람 모두 합격할 확률은 $\\dfrac67\\times\\dfrac13=\\dfrac27$이다.\n(2) 서웅이가 불합격할 확률은 $1-\\dfrac67=\\dfrac17$, 지호가 불합격할 확률은 $1-\\dfrac13=\\dfrac23$이다. 따라서 두 사람 모두 불합격할 확률은 $\\dfrac17\\times\\dfrac23=\\dfrac2{21}$이다.\n(3) 적어도 한 사람이 합격하는 사건은 두 사람 모두 불합격하는 사건의 여사건이다. 따라서 $1-\\dfrac2{21}=\\dfrac{19}{21}$이다.\n따라서 (1) $\\dfrac27$, (2) $\\dfrac2{21}$, (3) $\\dfrac{19}{21}$이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

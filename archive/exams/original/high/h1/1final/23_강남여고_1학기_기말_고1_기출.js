@@ -22,7 +22,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 연립부등식은 각각의 부등식을 푼 뒤 공통으로 만족하는 정수를 센다.\n첫 번째 부등식에서 $2x-4>0$이므로 $2x>4$, 따라서 $x>2$이다.\n두 번째 부등식에서 $-3+x\\le1$이므로 $x\\le4$이다.\n두 조건을 동시에 만족하려면 $2<x\\le4$이어야 한다.\n이 범위에 있는 정수는 $3,4$로 $2$개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 연립부등식은 각각의 부등식을 푼 뒤 공통으로 만족하는 정수를 센다.\n첫 번째 부등식에서 $2x-4>0$이므로 $2x>4$, 따라서 $x>2$이다.\n두 번째 부등식에서 $-3+x\\le1$이므로 $x\\le4$이다.\n두 조건을 동시에 만족하려면 $2<x\\le4$이어야 한다.\n이 범위에 있는 정수는 $3,4$로 $2$개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+    "subUnit": "연립부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -46,7 +50,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 점 사이의 거리는 가로 차이와 세로 차이를 이용하여 피타고라스 정리로 구한다.\n두 점 $A(2,3)$, $B(a,-1)$ 사이의 거리가 $5$이므로\n$(a-2)^2+(-1-3)^2=5^2$이다.\n즉 $(a-2)^2+16=25$이므로 $(a-2)^2=9$이다.\n따라서 $a-2=3$ 또는 $a-2=-3$이고, $a=5$ 또는 $a=-1$이다.\n문제에서 $a$는 양수라 했으므로 $a=5$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 두 점 사이의 거리는 가로 차이와 세로 차이를 이용하여 피타고라스 정리로 구한다.\n두 점 $A(2,3)$, $B(a,-1)$ 사이의 거리가 $5$이므로\n$(a-2)^2+(-1-3)^2=5^2$이다.\n즉 $(a-2)^2+16=25$이므로 $(a-2)^2=9$이다.\n따라서 $a-2=3$ 또는 $a-2=-3$이고, $a=5$ 또는 $a=-1$이다.\n문제에서 $a$는 양수라 했으므로 $a=5$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+    "subUnit": "좌표와 거리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -70,7 +78,11 @@ window.questionBank = [
       "$5\\sqrt5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 내분점과 외분점의 좌표를 먼저 구한 뒤 두 점 사이의 거리를 구한다.\n선분 $AB$를 $2:1$로 내분하는 점 $P$의 좌표는\n$P\\left(\\dfrac{2\\cdot1+1\\cdot(-5)}{3},\\dfrac{2\\cdot5+1\\cdot2}{3}\\right)=(-1,4)$이다.\n같은 비로 외분하는 점 $Q$는\n$Q\\left(\\dfrac{2\\cdot1-1\\cdot(-5)}{2-1},\\dfrac{2\\cdot5-1\\cdot2}{2-1}\\right)=(7,8)$이다.\n따라서\n$PQ=\\sqrt{(7-(-1))^2+(8-4)^2}=\\sqrt{8^2+4^2}=\\sqrt{80}=4\\sqrt5$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 내분점과 외분점의 좌표를 먼저 구한 뒤 두 점 사이의 거리를 구한다.\n선분 $AB$를 $2:1$로 내분하는 점 $P$의 좌표는\n$P\\left(\\dfrac{2\\cdot1+1\\cdot(-5)}{3},\\dfrac{2\\cdot5+1\\cdot2}{3}\\right)=(-1,4)$이다.\n같은 비로 외분하는 점 $Q$는\n$Q\\left(\\dfrac{2\\cdot1-1\\cdot(-5)}{2-1},\\dfrac{2\\cdot5-1\\cdot2}{2-1}\\right)=(7,8)$이다.\n따라서\n$PQ=\\sqrt{(7-(-1))^2+(8-4)^2}=\\sqrt{8^2+4^2}=\\sqrt{80}=4\\sqrt5$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+    "subUnit": "좌표와 거리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -94,7 +106,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 삼각형의 무게중심은 세 꼭짓점의 $x$좌표 평균과 $y$좌표 평균으로 구한다.\n무게중심 $G$의 좌표는\n$G\\left(\\dfrac{5+2+(-1)}{3},\\dfrac{2+4+(-3)}{3}\\right)=(2,1)$이다.\n따라서 $a=2$, $b=1$이므로 $a+b=3$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 삼각형의 무게중심은 세 꼭짓점의 $x$좌표 평균과 $y$좌표 평균으로 구한다.\n무게중심 $G$의 좌표는\n$G\\left(\\dfrac{5+2+(-1)}{3},\\dfrac{2+4+(-3)}{3}\\right)=(2,1)$이다.\n따라서 $a=2$, $b=1$이므로 $a+b=3$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+    "subUnit": "삼각형의 좌표와 무게중심",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -118,7 +134,11 @@ window.questionBank = [
       "$y=3x+5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 평행한 두 직선은 기울기가 같다.\n직선 $2x+y-3=0$을 $y$에 대하여 정리하면 $y=-2x+3$이므로 기울기는 $-2$이다.\n구하는 직선도 기울기가 $-2$이고 점 $(5,1)$을 지나므로\n$y-1=-2(x-5)$이다.\n정리하면 $y-1=-2x+10$, 따라서 $y=-2x+11$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 평행한 두 직선은 기울기가 같다.\n직선 $2x+y-3=0$을 $y$에 대하여 정리하면 $y=-2x+3$이므로 기울기는 $-2$이다.\n구하는 직선도 기울기가 $-2$이고 점 $(5,1)$을 지나므로\n$y-1=-2(x-5)$이다.\n정리하면 $y-1=-2x+10$, 따라서 $y=-2x+11$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-10-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -142,7 +162,11 @@ window.questionBank = [
       "$\\sqrt{13}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 원이 직선에 접하면 원의 중심에서 직선까지의 거리가 반지름이다.\n원의 중심은 원점 $O(0,0)$이다.\n직선 $3x-y-10=0$까지의 거리는\n$\\dfrac{|3\\cdot0-0-10|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{10}{\\sqrt{10}}=\\sqrt{10}$이다.\n따라서 반지름 $r=\\sqrt{10}$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 원이 직선에 접하면 원의 중심에서 직선까지의 거리가 반지름이다.\n원의 중심은 원점 $O(0,0)$이다.\n직선 $3x-y-10=0$까지의 거리는\n$\\dfrac{|3\\cdot0-0-10|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{10}{\\sqrt{10}}=\\sqrt{10}$이다.\n따라서 반지름 $r=\\sqrt{10}$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -166,7 +190,11 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 도형을 오른쪽으로 $2$, 위쪽으로 $a$만큼 옮겼다면 식에서는 $x$ 대신 $x-2$, $y$ 대신 $y-a$를 대입한다.\n원래 직선 $5x-2y+3=0$을 평행이동한 직선은\n$5(x-2)-2(y-a)+3=0$이다.\n정리하면 $5x-2y+2a-7=0$이다.\n이 직선이 점 $(3,2)$를 지나므로\n$5\\cdot3-2\\cdot2+2a-7=0$이다.\n$15-4+2a-7=0$에서 $2a+4=0$, 따라서 $a=-2$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 도형을 오른쪽으로 $2$, 위쪽으로 $a$만큼 옮겼다면 식에서는 $x$ 대신 $x-2$, $y$ 대신 $y-a$를 대입한다.\n원래 직선 $5x-2y+3=0$을 평행이동한 직선은\n$5(x-2)-2(y-a)+3=0$이다.\n정리하면 $5x-2y+2a-7=0$이다.\n이 직선이 점 $(3,2)$를 지나므로\n$5\\cdot3-2\\cdot2+2a-7=0$이다.\n$15-4+2a-7=0$에서 $2a+4=0$, 따라서 $a=-2$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -190,7 +218,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼차식을 인수분해하여 세 근을 모두 구한 뒤 가장 큰 근을 찾는다.\n$x=1$을 대입하면 $1-2-5+6=0$이므로 $x-1$이 인수이다.\n따라서\n$x^3-2x^2-5x+6=(x-1)(x^2-x-6)=(x-1)(x-3)(x+2)$이다.\n세 근은 $-2,1,3$이고, 크기순으로 쓰면 $-2<1<3$이다.\n따라서 $\\gamma=3$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 삼차식을 인수분해하여 세 근을 모두 구한 뒤 가장 큰 근을 찾는다.\n$x=1$을 대입하면 $1-2-5+6=0$이므로 $x-1$이 인수이다.\n따라서\n$x^3-2x^2-5x+6=(x-1)(x^2-x-6)=(x-1)(x-3)(x+2)$이다.\n세 근은 $-2,1,3$이고, 크기순으로 쓰면 $-2<1<3$이다.\n따라서 $\\gamma=3$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -214,7 +246,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 한 식에서 한 문자를 다른 문자로 나타낸 뒤 나머지 식에 대입한다.\n$x-y=3$에서 $x=y+3$이다.\n이를 $xy+x+1=0$에 대입하면\n$(y+3)y+(y+3)+1=0$이다.\n정리하면 $y^2+4y+4=0$, 즉 $(y+2)^2=0$이다.\n따라서 $y=-2$이고, $x=y+3=1$이다.\n그러므로 $a=1$, $b=-2$이고 $a+b=-1$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 한 식에서 한 문자를 다른 문자로 나타낸 뒤 나머지 식에 대입한다.\n$x-y=3$에서 $x=y+3$이다.\n이를 $xy+x+1=0$에 대입하면\n$(y+3)y+(y+3)+1=0$이다.\n정리하면 $y^2+4y+4=0$, 즉 $(y+2)^2=0$이다.\n따라서 $y=-2$이고, $x=y+3=1$이다.\n그러므로 $a=1$, $b=-2$이고 $a+b=-1$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -238,7 +274,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 절댓값 기호 안이 $0$이 되는 $x=-1$, $x=2$를 기준으로 범위를 나눈다.\n$x<-1$일 때 $|x+1|+|x-2|=-(x+1)-(x-2)=-2x+1$이므로 $-2x+1<5$, 따라서 $x>-2$이다. 이 경우 $-2<x<-1$이다.\n$-1\\le x<2$일 때 $|x+1|+|x-2|=(x+1)-(x-2)=3$이므로 항상 $5$보다 작다.\n$x\\ge2$일 때 $|x+1|+|x-2|=(x+1)+(x-2)=2x-1$이므로 $2x-1<5$, 따라서 $x<3$이다. 이 경우 $2\\le x<3$이다.\n전체 해는 $-2<x<3$이고, 이 범위의 정수는 $-1,0,1,2$로 $4$개이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 절댓값 기호 안이 $0$이 되는 $x=-1$, $x=2$를 기준으로 범위를 나눈다.\n$x<-1$일 때 $|x+1|+|x-2|=-(x+1)-(x-2)=-2x+1$이므로 $-2x+1<5$, 따라서 $x>-2$이다. 이 경우 $-2<x<-1$이다.\n$-1\\le x<2$일 때 $|x+1|+|x-2|=(x+1)-(x-2)=3$이므로 항상 $5$보다 작다.\n$x\\ge2$일 때 $|x+1|+|x-2|=(x+1)+(x-2)=2x-1$이므로 $2x-1<5$, 따라서 $x<3$이다. 이 경우 $2\\le x<3$이다.\n전체 해는 $-2<x<3$이고, 이 범위의 정수는 $-1,0,1,2$로 $4$개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -262,7 +302,11 @@ window.questionBank = [
       "$-2\\le m\\le3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $g(x)<f(x)$를 $f(x)-g(x)>0$으로 바꾸어 모든 실수에서 양수가 되는 조건을 찾는다.\n$f(x)-g(x)=(m+2)x^2+(-4-2m)x+3$이다.\n이 식이 모든 실수 $x$에 대하여 양수이어야 한다.\n먼저 $m=-2$이면 $f(x)-g(x)=3$이므로 조건을 만족한다.\n$m\\ne-2$일 때는 이차식이 항상 양수이어야 하므로 최고차항의 계수는 양수이고 판별식은 음수이어야 한다.\n즉 $m+2>0$이고,\n$\\dfrac{D}{4}=(-2-m)^2-3(m+2)<0$이어야 한다.\n정리하면 $m^2+m-2<0$, 즉 $(m+2)(m-1)<0$이므로 $-2<m<1$이다.\n앞에서 확인한 $m=-2$도 가능하므로 전체 범위는 $-2\\le m<1$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $g(x)<f(x)$를 $f(x)-g(x)>0$으로 바꾸어 모든 실수에서 양수가 되는 조건을 찾는다.\n$f(x)-g(x)=(m+2)x^2+(-4-2m)x+3$이다.\n이 식이 모든 실수 $x$에 대하여 양수이어야 한다.\n먼저 $m=-2$이면 $f(x)-g(x)=3$이므로 조건을 만족한다.\n$m\\ne-2$일 때는 이차식이 항상 양수이어야 하므로 최고차항의 계수는 양수이고 판별식은 음수이어야 한다.\n즉 $m+2>0$이고,\n$\\dfrac{D}{4}=(-2-m)^2-3(m+2)<0$이어야 한다.\n정리하면 $m^2+m-2<0$, 즉 $(m+2)(m-1)<0$이므로 $-2<m<1$이다.\n앞에서 확인한 $m=-2$도 가능하므로 전체 범위는 $-2\\le m<1$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+    "subUnit": "이차부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -286,7 +330,11 @@ window.questionBank = [
       "$\\dfrac34$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 세 직선으로 생기는 삼각형이 직각삼각형이 되려면 세 직선 중 두 직선이 서로 수직이어야 한다.\n직선 $x+2y=3$의 기울기는 $-\\dfrac12$이다.\n직선 $4x-3y=6$의 기울기는 $\\dfrac43$이다.\n직선 $ax+y=3$의 기울기는 $-a$이다.\n첫 번째 직선과 세 번째 직선이 서로 수직이면\n$\\left(-\\dfrac12\\right)(-a)=-1$이므로 $a=-2$이다.\n두 번째 직선과 세 번째 직선이 서로 수직이면\n$\\dfrac43(-a)=-1$이므로 $a=\\dfrac34$이다.\n첫 번째 직선과 두 번째 직선은 기울기의 곱이 $-\\dfrac23$이므로 서로 수직이 아니다.\n따라서 가능한 $a$값은 $-2$, $\\dfrac34$이고, 그 곱은 $-2\\times\\dfrac34=-\\dfrac32$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 세 직선으로 생기는 삼각형이 직각삼각형이 되려면 세 직선 중 두 직선이 서로 수직이어야 한다.\n직선 $x+2y=3$의 기울기는 $-\\dfrac12$이다.\n직선 $4x-3y=6$의 기울기는 $\\dfrac43$이다.\n직선 $ax+y=3$의 기울기는 $-a$이다.\n첫 번째 직선과 세 번째 직선이 서로 수직이면\n$\\left(-\\dfrac12\\right)(-a)=-1$이므로 $a=-2$이다.\n두 번째 직선과 세 번째 직선이 서로 수직이면\n$\\dfrac43(-a)=-1$이므로 $a=\\dfrac34$이다.\n첫 번째 직선과 두 번째 직선은 기울기의 곱이 $-\\dfrac23$이므로 서로 수직이 아니다.\n따라서 가능한 $a$값은 $-2$, $\\dfrac34$이고, 그 곱은 $-2\\times\\dfrac34=-\\dfrac32$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-10-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -310,7 +358,11 @@ window.questionBank = [
       "$\\sqrt7$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $k$의 값에 관계없이 항상 지나는 점은 $k$가 붙지 않은 부분과 붙은 부분을 동시에 $0$으로 만드는 점이다.\n직선 $2x+y+3+k(x+2y)=0$이 모든 $k$에 대하여 한 점 $P$를 지나려면\n$2x+y+3=0$, $x+2y=0$을 동시에 만족해야 한다.\n$x+2y=0$에서 $x=-2y$이다.\n이를 $2x+y+3=0$에 대입하면 $2(-2y)+y+3=0$, 즉 $-3y+3=0$이므로 $y=1$이다.\n따라서 $x=-2$이고 $P=(-2,1)$이다.\n점 $P$와 직선 $2x-y+10=0$ 사이의 거리는\n$\\dfrac{|2(-2)-1+10|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{5}{\\sqrt5}=\\sqrt5$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $k$의 값에 관계없이 항상 지나는 점은 $k$가 붙지 않은 부분과 붙은 부분을 동시에 $0$으로 만드는 점이다.\n직선 $2x+y+3+k(x+2y)=0$이 모든 $k$에 대하여 한 점 $P$를 지나려면\n$2x+y+3=0$, $x+2y=0$을 동시에 만족해야 한다.\n$x+2y=0$에서 $x=-2y$이다.\n이를 $2x+y+3=0$에 대입하면 $2(-2y)+y+3=0$, 즉 $-3y+3=0$이므로 $y=1$이다.\n따라서 $x=-2$이고 $P=(-2,1)$이다.\n점 $P$와 직선 $2x-y+10=0$ 사이의 거리는\n$\\dfrac{|2(-2)-1+10|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{5}{\\sqrt5}=\\sqrt5$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -334,7 +386,11 @@ window.questionBank = [
       "$k<-2$ 또는 $k>2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원과 직선이 만나지 않으려면 원의 중심에서 직선까지의 거리가 반지름보다 커야 한다.\n원 $x^2+y^2=2$의 중심은 $(0,0)$이고 반지름은 $\\sqrt2$이다.\n직선 $y=-x+k$를 정리하면 $x+y-k=0$이다.\n원점에서 이 직선까지의 거리는 $\\dfrac{|k|}{\\sqrt{1^2+1^2}}=\\dfrac{|k|}{\\sqrt2}$이다.\n만나지 않으려면\n$\\dfrac{|k|}{\\sqrt2}>\\sqrt2$이어야 하므로 $|k|>2$이다.\n따라서 $k<-2$ 또는 $k>2$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 원과 직선이 만나지 않으려면 원의 중심에서 직선까지의 거리가 반지름보다 커야 한다.\n원 $x^2+y^2=2$의 중심은 $(0,0)$이고 반지름은 $\\sqrt2$이다.\n직선 $y=-x+k$를 정리하면 $x+y-k=0$이다.\n원점에서 이 직선까지의 거리는 $\\dfrac{|k|}{\\sqrt{1^2+1^2}}=\\dfrac{|k|}{\\sqrt2}$이다.\n만나지 않으려면\n$\\dfrac{|k|}{\\sqrt2}>\\sqrt2$이어야 하므로 $|k|>2$이다.\n따라서 $k<-2$ 또는 $k>2$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -358,7 +414,11 @@ window.questionBank = [
       "$\\sqrt7$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 외부의 한 점에서 원에 그은 접선의 길이는 중심까지의 거리와 반지름으로 이루어진 직각삼각형에서 구한다.\n원의 방정식을 정리하면\n$x^2-2x+y^2+4y=0$,\n$(x-1)^2+(y+2)^2=5$이다.\n따라서 중심은 $C(1,-2)$, 반지름은 $\\sqrt5$이다.\n점 $A(-2,2)$와 중심 $C(1,-2)$ 사이의 거리는\n$AC=\\sqrt{(1+2)^2+(-2-2)^2}=\\sqrt{3^2+(-4)^2}=5$이다.\n접점을 $T$라 하면 $CT$는 접선 $AT$에 수직이므로\n$AT^2=AC^2-CT^2=5^2-(\\sqrt5)^2=25-5=20$이다.\n따라서 $AT=2\\sqrt5$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 외부의 한 점에서 원에 그은 접선의 길이는 중심까지의 거리와 반지름으로 이루어진 직각삼각형에서 구한다.\n원의 방정식을 정리하면\n$x^2-2x+y^2+4y=0$,\n$(x-1)^2+(y+2)^2=5$이다.\n따라서 중심은 $C(1,-2)$, 반지름은 $\\sqrt5$이다.\n점 $A(-2,2)$와 중심 $C(1,-2)$ 사이의 거리는\n$AC=\\sqrt{(1+2)^2+(-2-2)^2}=\\sqrt{3^2+(-4)^2}=5$이다.\n접점을 $T$라 하면 $CT$는 접선 $AT$에 수직이므로\n$AT^2=AC^2-CT^2=5^2-(\\sqrt5)^2=25-5=20$이다.\n따라서 $AT=2\\sqrt5$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -382,7 +442,11 @@ window.questionBank = [
       "$(-2,3)$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 새 도형의 식 $f(-y,x+2)=0$은 원래 도형의 점 $(X,Y)$가 새 좌표 $(x,y)$에서 $X=-y$, $Y=x+2$로 대응함을 뜻한다.\n원래 점 $P(1,2)$가 새 점 $(a,b)$로 옮겨졌다고 하자.\n그러면 $-b=1$, $a+2=2$이어야 한다.\n따라서 $b=-1$, $a=0$이다.\n즉 옮겨진 점은 $(0,-1)$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 새 도형의 식 $f(-y,x+2)=0$은 원래 도형의 점 $(X,Y)$가 새 좌표 $(x,y)$에서 $X=-y$, $Y=x+2$로 대응함을 뜻한다.\n원래 점 $P(1,2)$가 새 점 $(a,b)$로 옮겨졌다고 하자.\n그러면 $-b=1$, $a+2=2$이어야 한다.\n따라서 $b=-1$, $a=0$이다.\n즉 옮겨진 점은 $(0,-1)$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -407,7 +471,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 직사각형의 변을 거쳐 가는 최단거리는 지나가는 면을 펼쳐서 직선거리로 구한다.\n경로가 변 $AB$, $BC$를 차례로 지나므로 직사각형을 접힌 방향과 반대로 펼쳐 생각한다.\n그러면 출발점과 도착점 사이의 최단경로는 펼친 그림에서의 직선거리가 된다.\n그림에서 가로 방향의 차이는 $9$, 세로 방향의 차이는 $12$가 되므로\n최단거리는\n$\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q17.png"
+    "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q17.png",
+    "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+    "subUnit": "좌표와 거리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -431,7 +499,11 @@ window.questionBank = [
       "$2<a\\le3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 첫 번째 부등식의 해 안에서 두 번째 부등식이 참이 되는 정수의 개수를 조사한다.\n첫 번째 부등식은\n$x^2-2x-15\\le0$, 즉 $(x-5)(x+3)\\le0$이므로 $-3\\le x\\le5$이다.\n두 번째 부등식은\n$x^2-(a+2)x+2a=(x-a)(x-2)>0$이다.\n따라서 해는 두 수 $a$, $2$의 바깥쪽이다.\n정수 $x$는 첫 번째 조건 때문에 $-3,-2,-1,0,1,2,3,4,5$ 중에서만 가능하다.\n정답 범위가 음수 쪽이므로 $a<2$인 경우를 보면, 두 번째 부등식의 해는 $x<a$ 또는 $x>2$이다.\n항상 가능한 정수 $x>2$는 $3,4,5$로 $3$개이다.\n총 $4$개가 되려면 $x<a$에 해당하는 정수가 하나만 더 있어야 한다.\n첫 번째 범위 안에서 가장 작은 정수는 $-3$이므로 $-3$만 포함되고 $-2$는 포함되지 않아야 한다.\n따라서 $-3<a\\le-2$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 첫 번째 부등식의 해 안에서 두 번째 부등식이 참이 되는 정수의 개수를 조사한다.\n첫 번째 부등식은\n$x^2-2x-15\\le0$, 즉 $(x-5)(x+3)\\le0$이므로 $-3\\le x\\le5$이다.\n두 번째 부등식은\n$x^2-(a+2)x+2a=(x-a)(x-2)>0$이다.\n따라서 해는 두 수 $a$, $2$의 바깥쪽이다.\n정수 $x$는 첫 번째 조건 때문에 $-3,-2,-1,0,1,2,3,4,5$ 중에서만 가능하다.\n정답 범위가 음수 쪽이므로 $a<2$인 경우를 보면, 두 번째 부등식의 해는 $x<a$ 또는 $x>2$이다.\n항상 가능한 정수 $x>2$는 $3,4,5$로 $3$개이다.\n총 $4$개가 되려면 $x<a$에 해당하는 정수가 하나만 더 있어야 한다.\n첫 번째 범위 안에서 가장 작은 정수는 $-3$이므로 $-3$만 포함되고 $-2$는 포함되지 않아야 한다.\n따라서 $-3<a\\le-2$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -455,7 +527,11 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\omega^3=1$, $1+\\omega+\\omega^2=0$이므로 $n$을 $3$으로 나눈 나머지에 따라 값이 반복된다.\n$n=1$일 때\n$f(1)=\\dfrac{\\omega}{1+\\omega^2}=\\dfrac{\\omega}{-\\omega}=-1$이다.\n$n=2$일 때\n$f(2)=\\dfrac{\\omega^2}{1+\\omega^4}=\\dfrac{\\omega^2}{1+\\omega}=\\dfrac{\\omega^2}{-\\omega^2}=-1$이다.\n$n=3$일 때\n$f(3)=\\dfrac{1}{1+1}=\\dfrac12$이다.\n따라서 $f(1),f(2),f(3)$의 합은 $-1-1+\\dfrac12=-\\dfrac32$이고, 이 값이 $3$개마다 반복된다.\n$13=3\\cdot4+1$이므로\n$f(1)+\\cdots+f(13)=4\\left(-\\dfrac32\\right)+f(13)$이다.\n$f(13)=f(1)=-1$이므로 전체 합은 $-6-1=-7$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $\\omega^3=1$, $1+\\omega+\\omega^2=0$이므로 $n$을 $3$으로 나눈 나머지에 따라 값이 반복된다.\n$n=1$일 때\n$f(1)=\\dfrac{\\omega}{1+\\omega^2}=\\dfrac{\\omega}{-\\omega}=-1$이다.\n$n=2$일 때\n$f(2)=\\dfrac{\\omega^2}{1+\\omega^4}=\\dfrac{\\omega^2}{1+\\omega}=\\dfrac{\\omega^2}{-\\omega^2}=-1$이다.\n$n=3$일 때\n$f(3)=\\dfrac{1}{1+1}=\\dfrac12$이다.\n따라서 $f(1),f(2),f(3)$의 합은 $-1-1+\\dfrac12=-\\dfrac32$이고, 이 값이 $3$개마다 반복된다.\n$13=3\\cdot4+1$이므로\n$f(1)+\\cdots+f(13)=4\\left(-\\dfrac32\\right)+f(13)$이다.\n$f(13)=f(1)=-1$이므로 전체 합은 $-6-1=-7$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-04-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -480,7 +556,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 정사각형의 한 변을 문자로 두고, 내분점의 좌표를 직접 구한 뒤 삼각형의 넓이를 구한다.\n\n정사각형의 한 변의 길이를 $a$라 하고, 좌표를\n$B(0,0)$, $C(a,0)$, $D(a,a)$, $A(0,a)$로 두자.\n그러면 정사각형의 넓이는 $T=a^2$이다.\n\n$M$은 $\\overline{AD}$의 중점이므로\n$M\\left(\\dfrac a2,a\\right)$이다.\n\n$\\overline{MB}$를 $3:2$로 내분한 점을 $P$라 하자.\n즉 $MP:PB=3:2$이므로 내분점 공식에 의해\n$P=\\left(\\dfrac{2\\cdot \\frac a2+3\\cdot0}{5},\\dfrac{2\\cdot a+3\\cdot0}{5}\\right)=\\left(\\dfrac a5,\\dfrac{2a}5\\right)$이다.\n\n또 $\\overline{BC}$를 $2:1$로 내분한 점을 $Q$라 하면\n$Q\\left(\\dfrac{2a}{3},0\\right)$이다.\n구하는 삼각형은 세 점 $P,Q,D$를 꼭짓점으로 하는 삼각형이다.\n\n좌표를 이용하여 삼각형 $PQD$의 넓이를 구하면\n$S=\\dfrac12\\left|\\left(\\dfrac{2a}{3}-\\dfrac a5\\right)\\left(a-\\dfrac{2a}5\\right)-\\left(0-\\dfrac{2a}5\\right)\\left(a-\\dfrac a5\\right)\\right|$이다.\n\n$\\dfrac{2a}{3}-\\dfrac a5=\\dfrac{7a}{15}$, $a-\\dfrac{2a}{5}=\\dfrac{3a}{5}$, $a-\\dfrac a5=\\dfrac{4a}{5}$이므로\n$S=\\dfrac12\\left|\\dfrac{7a}{15}\\cdot\\dfrac{3a}{5}+\\dfrac{2a}{5}\\cdot\\dfrac{4a}{5}\\right|$\n$=\\dfrac12\\left(\\dfrac{7a^2}{25}+\\dfrac{8a^2}{25}\\right)=\\dfrac{3}{10}a^2$이다.\n\n따라서 $S=\\dfrac3{10}T$이므로 $k=\\dfrac3{10}$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q20.png"
+    "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q20.png",
+    "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+    "subUnit": "좌표와 거리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -504,7 +584,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 현 $AB$를 보는 원주각이 $45^\\circ$이면, 중심각은 $90^\\circ$이므로 원의 반지름을 구할 수 있다.\n두 점 $A(-1,-9)$, $B(5,3)$ 사이의 거리는\n$AB=\\sqrt{(5+1)^2+(3+9)^2}=\\sqrt{6^2+12^2}=6\\sqrt5$이다.\n원주각 $\\angle APB=45^\\circ$에 대응하는 중심각 $\\angle ACB$는 $90^\\circ$이다.\n따라서 직각이등변삼각형 $ACB$에서 $AB=\\sqrt2\\,R$이므로\n$R=\\dfrac{6\\sqrt5}{\\sqrt2}=3\\sqrt{10}$이다.\n중심 $C$는 선분 $AB$의 수직이등분선 위에 있다.\n선분 $AB$의 중점은 $M(2,-3)$이고, $CM^2=R^2-\\left(\\dfrac{AB}{2}\\right)^2=90-45=45$이다.\n따라서 가능한 중심은 $(-4,0)$ 또는 $(8,-6)$이다.\n원점과의 거리는 각각 $4$, $10$이므로 최댓값은 $10$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 같은 현 $AB$를 보는 원주각이 $45^\\circ$이면, 중심각은 $90^\\circ$이므로 원의 반지름을 구할 수 있다.\n두 점 $A(-1,-9)$, $B(5,3)$ 사이의 거리는\n$AB=\\sqrt{(5+1)^2+(3+9)^2}=\\sqrt{6^2+12^2}=6\\sqrt5$이다.\n원주각 $\\angle APB=45^\\circ$에 대응하는 중심각 $\\angle ACB$는 $90^\\circ$이다.\n따라서 직각이등변삼각형 $ACB$에서 $AB=\\sqrt2\\,R$이므로\n$R=\\dfrac{6\\sqrt5}{\\sqrt2}=3\\sqrt{10}$이다.\n중심 $C$는 선분 $AB$의 수직이등분선 위에 있다.\n선분 $AB$의 중점은 $M(2,-3)$이고, $CM^2=R^2-\\left(\\dfrac{AB}{2}\\right)^2=90-45=45$이다.\n따라서 가능한 중심은 $(-4,0)$ 또는 $(8,-6)$이다.\n원점과의 거리는 각각 $4$, $10$이므로 최댓값은 $10$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -522,7 +606,11 @@ window.questionBank = [
     "content": "점 $(-4,3)$을 지나고 직선 $3x-9y+4=0$에 수직인 직선의 방정식을 구하는 풀이 과정을 쓰시오.",
     "choices": [],
     "answer": "$y=-3x-9$",
-    "solution": "[키포인트] 서로 수직인 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선 $3x-9y+4=0$을 $y$에 대하여 정리한다.\n$-9y=-3x-4$이므로 $y=\\dfrac13x+\\dfrac49$이다.\n따라서 이 직선의 기울기는 $\\dfrac13$이다.\n구하는 직선은 이 직선에 수직이므로 기울기는 $-3$이다.\n점 $(-4,3)$을 지나고 기울기가 $-3$인 직선의 방정식은\n$y-3=-3(x+4)$이다.\n정리하면 $y-3=-3x-12$, 따라서\n$y=-3x-9$이다."
+    "solution": "[키포인트] 서로 수직인 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선 $3x-9y+4=0$을 $y$에 대하여 정리한다.\n$-9y=-3x-4$이므로 $y=\\dfrac13x+\\dfrac49$이다.\n따라서 이 직선의 기울기는 $\\dfrac13$이다.\n구하는 직선은 이 직선에 수직이므로 기울기는 $-3$이다.\n점 $(-4,3)$을 지나고 기울기가 $-3$인 직선의 방정식은\n$y-3=-3(x+4)$이다.\n정리하면 $y-3=-3x-12$, 따라서\n$y=-3x-9$이다.",
+    "subUnitKey": "H15-SA-10-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -540,7 +628,11 @@ window.questionBank = [
     "content": "연립방정식 $\\begin{cases}4x-y=a\\\\x+y=2\\end{cases}$의 해가 연립방정식 $\\begin{cases}x-by=5\\\\x^2+y^2=2\\end{cases}$를 만족할 때, 상수 $a$, $b$를 구하는 풀이 과정을 쓰시오.",
     "choices": [],
     "answer": "$a=3,\\ b=-4$",
-    "solution": "[키포인트] 두 연립방정식이 같은 해를 공유하므로, 먼저 $x+y=2$와 $x^2+y^2=2$를 동시에 만족하는 점을 찾는다.\n$x+y=2$에서 $y=2-x$이다.\n이를 $x^2+y^2=2$에 대입하면\n$x^2+(2-x)^2=2$이다.\n정리하면 $2x^2-4x+4=2$, 즉 $x^2-2x+1=0$이다.\n따라서 $(x-1)^2=0$이므로 $x=1$이고, $y=1$이다.\n이 해가 $4x-y=a$를 만족하므로\n$a=4\\cdot1-1=3$이다.\n또 $x-by=5$를 만족하므로\n$1-b\\cdot1=5$에서 $b=-4$이다.\n따라서 $a=3$, $b=-4$이다."
+    "solution": "[키포인트] 두 연립방정식이 같은 해를 공유하므로, 먼저 $x+y=2$와 $x^2+y^2=2$를 동시에 만족하는 점을 찾는다.\n$x+y=2$에서 $y=2-x$이다.\n이를 $x^2+y^2=2$에 대입하면\n$x^2+(2-x)^2=2$이다.\n정리하면 $2x^2-4x+4=2$, 즉 $x^2-2x+1=0$이다.\n따라서 $(x-1)^2=0$이므로 $x=1$이고, $y=1$이다.\n이 해가 $4x-y=a$를 만족하므로\n$a=4\\cdot1-1=3$이다.\n또 $x-by=5$를 만족하므로\n$1-b\\cdot1=5$에서 $b=-4$이다.\n따라서 $a=3$, $b=-4$이다.",
+    "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 24,
@@ -558,7 +650,11 @@ window.questionBank = [
     "content": "세 직선 $l:x-ay+2=0$, $m:4x+by+2=0$, $n:x-(b-3)y-2=0$에 대하여 두 직선 $l$, $m$은 수직이고 두 직선 $l$, $n$은 평행할 때, $a^2+b^2$의 값을 구하는 풀이 과정을 쓰시오. (단, $a$, $b$는 상수이다.)",
     "choices": [],
     "answer": "$17$",
-    "solution": "[키포인트] 두 직선이 수직이면 기울기의 곱이 $-1$이고, 두 직선이 평행이면 기울기가 같다.\n직선 $l:x-ay+2=0$을 정리하면 $y=\\dfrac1a x+\\dfrac2a$이므로 기울기는 $\\dfrac1a$이다.\n직선 $m:4x+by+2=0$의 기울기는 $-\\dfrac4b$이다.\n$l$과 $m$이 수직이므로\n$\\dfrac1a\\cdot\\left(-\\dfrac4b\\right)=-1$이다.\n따라서 $ab=4$이다.\n직선 $n:x-(b-3)y-2=0$의 기울기는 $\\dfrac1{b-3}$이다.\n$l$과 $n$이 평행하므로\n$\\dfrac1a=\\dfrac1{b-3}$, 따라서 $a=b-3$이다.\n즉 $b=a+3$이다.\n이를 $ab=4$에 대입하면\n$a(a+3)=4$이므로 $a^2+3a-4=0$이다.\n$(a-1)(a+4)=0$이므로 $a=1$ 또는 $a=-4$이다.\n이때 $b=4$ 또는 $b=-1$이고, 두 경우 모두\n$a^2+b^2=1^2+4^2=17$ 또는 $(-4)^2+(-1)^2=17$이다.\n따라서 $a^2+b^2=17$이다."
+    "solution": "[키포인트] 두 직선이 수직이면 기울기의 곱이 $-1$이고, 두 직선이 평행이면 기울기가 같다.\n직선 $l:x-ay+2=0$을 정리하면 $y=\\dfrac1a x+\\dfrac2a$이므로 기울기는 $\\dfrac1a$이다.\n직선 $m:4x+by+2=0$의 기울기는 $-\\dfrac4b$이다.\n$l$과 $m$이 수직이므로\n$\\dfrac1a\\cdot\\left(-\\dfrac4b\\right)=-1$이다.\n따라서 $ab=4$이다.\n직선 $n:x-(b-3)y-2=0$의 기울기는 $\\dfrac1{b-3}$이다.\n$l$과 $n$이 평행하므로\n$\\dfrac1a=\\dfrac1{b-3}$, 따라서 $a=b-3$이다.\n즉 $b=a+3$이다.\n이를 $ab=4$에 대입하면\n$a(a+3)=4$이므로 $a^2+3a-4=0$이다.\n$(a-1)(a+4)=0$이므로 $a=1$ 또는 $a=-4$이다.\n이때 $b=4$ 또는 $b=-1$이고, 두 경우 모두\n$a^2+b^2=1^2+4^2=17$ 또는 $(-4)^2+(-1)^2=17$이다.\n따라서 $a^2+b^2=17$이다.",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 25,
@@ -577,6 +673,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{1}{2}$",
     "solution": "[키포인트] 먼저 무게중심의 좌표로 $A$와 $k$를 구하고, 접는 선이 $\\overline{AG}$의 수직이등분선이라는 점을 이용한다.\n\n점 $B(0,0)$, $C(9,3)$이므로 선분 $BC$의 중점은 $\\left(\\dfrac92,\\dfrac32\\right)$이다.\n직선 $BC$의 기울기는 $\\dfrac{3-0}{9-0}=\\dfrac13$이므로, 선분 $BC$의 수직이등분선의 기울기는 $-3$이다.\n따라서 선분 $BC$의 수직이등분선의 방정식은\n$y-\\dfrac32=-3\\left(x-\\dfrac92\\right)$,\n즉 $y=-3x+15$이다.\n\n$AB=AC$이므로 점 $A$는 선분 $BC$의 수직이등분선 위에 있다.\n따라서 $A(a,-3a+15)$로 둘 수 있다.\n삼각형의 무게중심은 세 꼭짓점의 좌표 평균이므로\n$G\\left(\\dfrac{a+0+9}{3},\\dfrac{-3a+15+0+3}{3}\\right)=\\left(\\dfrac{a+9}{3},-a+6\\right)$이다.\n문제에서 $G=(k+1,k)$이므로\n$\\dfrac{a+9}{3}=k+1$, $-a+6=k$이다.\n두 식을 연립하면 $a=3$, $k=3$이고, 따라서 $A(3,6)$, $G(4,3)$이다.\n\n점 $A$가 점 $G$에 포개지도록 접었으므로 접는 선은 선분 $AG$의 수직이등분선이다.\n선분 $AG$의 중점은 $\\left(\\dfrac72,\\dfrac92\\right)$이고, 직선 $AG$의 기울기는 $\\dfrac{3-6}{4-3}=-3$이다.\n따라서 접는 선의 기울기는 $\\dfrac13$이고, 접는 선의 방정식은\n$y-\\dfrac92=\\dfrac13\\left(x-\\dfrac72\\right)$,\n즉 $y=\\dfrac13x+\\dfrac{10}{3}$이다.\n\n이 접는 선이 $AB$와 만나는 점을 $D$, $AC$와 만나는 점을 $E$라 하자.\n직선 $AB$는 $B(0,0)$, $A(3,6)$을 지나므로 $y=2x$이다.\n$2x=\\dfrac13x+\\dfrac{10}{3}$에서 $x=2$, $y=4$이므로 $D(2,4)$이다.\n\n직선 $AC$는 $A(3,6)$, $C(9,3)$을 지나므로 기울기가 $-\\dfrac12$이고, 방정식은 $y=-\\dfrac12x+\\dfrac{15}{2}$이다.\n$-\\dfrac12x+\\dfrac{15}{2}=\\dfrac13x+\\dfrac{10}{3}$에서 $x=5$, $y=5$이므로 $E(5,5)$이다.\n\n따라서 삼각형 $EDG$의 세 꼭짓점은 $E(5,5)$, $D(2,4)$, $G(4,3)$이다.\n좌표를 이용하여 넓이를 구하면\n$S=\\dfrac12\\left|5(4-3)+2(3-5)+4(5-4)\\right|$\n$=\\dfrac12|5-4+4|=\\dfrac52$이다.\n그러므로 $k-S=3-\\dfrac52=\\dfrac12$이다.",
-    "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q25.png"
+    "image": "assets/images/23_강남여고_1학기_기말_고1_기출/q25.png",
+    "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+    "subUnit": "삼각형의 좌표와 무게중심",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   }
 ];

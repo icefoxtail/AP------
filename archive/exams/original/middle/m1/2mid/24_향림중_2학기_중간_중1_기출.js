@@ -23,7 +23,11 @@ window.questionBank = [
       "선분의 길이를 잴 때 눈금 없는 자를 사용한다."
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -49,8 +53,12 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "④",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q2.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q2.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -76,8 +84,12 @@ window.questionBank = [
       "$60^\\circ$"
     ],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q3.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q3.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -101,7 +113,11 @@ window.questionBank = [
       "ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -127,8 +143,12 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "①",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q5.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q5.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -154,8 +174,12 @@ window.questionBank = [
       "$78^\\circ$"
     ],
     "answer": "①",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q6.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q6.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -181,8 +205,12 @@ window.questionBank = [
       "$36\\,\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q7.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q7.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -208,8 +236,12 @@ window.questionBank = [
       "$140^\\circ$"
     ],
     "answer": "①",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q8.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q8.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -235,8 +267,12 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q9.png"
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -262,8 +298,12 @@ window.questionBank = [
       "$5\\,\\mathrm{cm}$"
     ],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q10.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q10.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -289,8 +329,12 @@ window.questionBank = [
       "$\\triangle MAB\\equiv\\triangle MDA$"
     ],
     "answer": "⑤",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q11.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q11.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -314,7 +358,11 @@ window.questionBank = [
       "$27$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -340,8 +388,13 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "④",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q13.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q13.png",
+    "imageSize": "large",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -367,8 +420,12 @@ window.questionBank = [
       "$110^\\circ$"
     ],
     "answer": "③",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q14.png"
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q14.png",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -394,8 +451,12 @@ window.questionBank = [
       "$64^\\circ$"
     ],
     "answer": "①",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q15.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q15.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -421,8 +482,12 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q16.png"
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q16.png",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -448,8 +513,12 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "③",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q17.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q17.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -457,9 +526,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "경우의 수",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "RAW-경우의 수",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
@@ -473,8 +542,12 @@ window.questionBank = [
       "$28$"
     ],
     "answer": "④",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q18.png"
+    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q18.png",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -500,8 +573,12 @@ window.questionBank = [
       "$50^\\circ$"
     ],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q19.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q19.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -527,8 +604,13 @@ window.questionBank = [
       "$900^\\circ$"
     ],
     "answer": "③",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q20.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q20.png",
+    "imageSize": "tall",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -549,8 +631,12 @@ window.questionBank = [
     "content": "[서·논술형 1] 아래 그림과 같이 $5$개의 점 $A$, $B$, $C$, $D$, $E$가 있다. 이 중 두 점을 이어 만들 수 있는 서로 다른 선분의 개수를 $x$개, 직선의 개수를 $y$개, 반직선의 개수를 $z$개라 할 때, $x+y+z$의 값을 구하고 그 과정을 서술하시오. (단, 세 점 $A$, $B$, $C$는 한 직선 위에 있다.) [5점]",
     "choices": [],
     "answer": "$36$",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q21.png"
+    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $36$이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q21.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -570,7 +656,11 @@ window.questionBank = [
     "content": "[서·논술형 2] 길이가 각각 $3\\,\\mathrm{cm}$, $5\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$, $10\\,\\mathrm{cm}$인 $5$개의 선분 중에서 서로 다른 $3$개의 선분으로 만들 수 있는 삼각형은 모두 몇 개인지 구하고 그 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "$7$개",
-    "solution": ""
+    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 $7$개이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -591,7 +681,11 @@ window.questionBank = [
     "content": "[서·논술형 3] 오른쪽 그림과 같이 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AD}=4$, $\\overline{BC}=4$일 때, 다음 물음에 답하시오.<br>(1) $\\triangle ABD$와 합동인 삼각형을 찾아 합동기호 $\\equiv$를 사용하여 두 삼각형이 합동임을 쓰시오. (단, 꼭짓점을 대응하는 차례대로 쓴다.) [1점]<br>(2) 위 문제(1)에서 찾은 합동인 두 삼각형의 합동 조건을 쓰고 그 이유 3가지를 서술하시오. [4점]",
     "choices": [],
     "answer": "(1) $\\triangle ABD\\equiv\\triangle CDB$<br>(2) SAS 합동: $\\overline{AD}=\\overline{CB}=4$, $\\overline{BD}$는 공통인 변, $\\angle ADB=\\angle CBD$",
-    "solution": "",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q23.png"
+    "solution": "풀이: 주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) $\\triangle ABD\\equiv\\triangle CDB$<br>(2) SAS 합동: $\\overline{AD}=\\overline{CB}=4$, $\\overline{BD}$는 공통인 변, $\\angle ADB=\\angle CBD$이다.",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q23.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
