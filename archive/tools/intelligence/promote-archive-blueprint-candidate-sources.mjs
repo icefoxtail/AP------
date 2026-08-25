@@ -16,6 +16,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../.
 const DEFAULT_DB_SQL = path.join(ROOT, 'archive/_generated/intelligence/phase2/exam-blueprints-after-mixed-identity-20260824.sql');
 const DEFAULT_OUT = path.join(ROOT, 'archive/_generated/intelligence/phase2/archive-blueprint-candidate-promotion-v1.json');
 const DEFAULT_SQL_OUT = path.join(ROOT, 'archive/_generated/intelligence/phase2/archive-blueprint-candidate-promotion-v1.sql');
+const IDENTITY_PATH = path.join(ROOT, 'archive/data/question_identity_map.json');
 const REVISION = 'archive-metadata-v1';
 const PROMOTIONS = [
   { archiveFile: 'exams/26_효천고_1학기_중간_고1_기출.js', sourceArchiveFile: 'original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js' },
@@ -34,12 +35,18 @@ function metadata(q) { return { standardUnitKey: first(q, ['standardUnitKey', 's
 function hash(meta) { return crypto.createHash('sha256').update(JSON.stringify({ standardUnitKey: meta.standardUnitKey || null, standardUnit: meta.standardUnit || null, standardCourse: meta.standardCourse || null, subUnitKey: meta.subUnitKey || null, conceptClusterKey: meta.conceptClusterKey || null, typeKey: meta.typeKey || null, templateKey: meta.templateKey || null, difficulty: meta.difficulty || null, tags: meta.tags || [], metadataRevision: meta.metadataRevision || REVISION })).digest('hex'); }
 function qno(q) { return Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0); }
 function lit(v) { if (v === null || v === undefined || v === '') return 'NULL'; if (typeof v === 'number') return String(v); return `'${String(v).replace(/'/g, "''")}'`; }
-function uid(source, ordinal) { return `qid_v1_${crypto.createHash('sha256').update(`${source}#${ordinal}`).digest('hex')}`; }
+function uid(source, ordinal, identityLookup) {
+  const normalized = String(source || '').replace(/\\/g, '/').replace(/^exams\//, '');
+  return identityLookup?.bySourceFileAndOrdinal?.[normalized]?.[String(ordinal)]
+    || `qid_v1_${crypto.createHash('sha256').update(`${normalized}#${ordinal}`).digest('hex')}`;
+}
 
 const args = argsOf(process.argv.slice(2));
 if (args.help) { console.log('Usage: node archive/tools/intelligence/promote-archive-blueprint-candidate-sources.mjs [--db-sql <path>] [--out <path>] [--sql-out <path>]'); process.exit(0); }
 const dbSql = resolve(args['db-sql'], DEFAULT_DB_SQL); const out = resolve(args.out, DEFAULT_OUT); const sqlOut = resolve(args['sql-out'], DEFAULT_SQL_OUT);
 if (!fs.existsSync(dbSql)) throw new Error(`D1 SQL export not found: ${dbSql}`);
+if (!fs.existsSync(IDENTITY_PATH)) throw new Error(`question identity map not found: ${IDENTITY_PATH}`);
+const identityLookup = JSON.parse(fs.readFileSync(IDENTITY_PATH, 'utf8')).lookup || {};
 const dbRows = rowsFromSql(fs.readFileSync(dbSql, 'utf8')); const statements = []; const audits = []; const errors = [];
 for (const promotion of PROMOTIONS) {
   const matching = dbRows.filter(row => row.archive_file === promotion.archiveFile);
@@ -50,7 +57,7 @@ for (const promotion of PROMOTIONS) {
   for (const row of matching) {
     const item = byNo.get(Number(row.question_no));
     if (!item) { errors.push(`${promotion.archiveFile}#${row.question_no}: source question missing`); continue; }
-    const meta = metadata(item.q); const expectedHash = hash(meta); const expectedUid = uid(promotion.sourceArchiveFile, item.ordinal);
+    const meta = metadata(item.q); const expectedHash = hash(meta); const expectedUid = uid(promotion.sourceArchiveFile, item.ordinal, identityLookup);
     const assignments = [['source_archive_file', promotion.sourceArchiveFile], ['source_question_no', qno(item.q)], ['source_question_uid', expectedUid], ['source_question_ordinal', item.ordinal], ['standard_unit_key', meta.standardUnitKey], ['standard_unit', meta.standardUnit], ['standard_course', meta.standardCourse], ['concept_cluster_key', meta.conceptClusterKey], ['sub_unit_key', meta.subUnitKey], ['type_key', meta.typeKey], ['template_key', meta.templateKey], ['difficulty', meta.difficulty], ['metadata_revision', meta.metadataRevision], ['metadata_hash', expectedHash]];
     statements.push(`UPDATE exam_blueprints SET ${assignments.map(([c, v]) => `${c}=${lit(v)}`).join(', ')}, updated_at=CURRENT_TIMESTAMP\nWHERE archive_file=${lit(promotion.archiveFile)} AND question_no=${lit(row.question_no)};`);
     rowAudits.push({ questionNo: Number(row.question_no), sourceQuestionNo: qno(item.q), sourceOrdinal: item.ordinal, sourceQuestionUid: expectedUid, metadataHash: expectedHash });
