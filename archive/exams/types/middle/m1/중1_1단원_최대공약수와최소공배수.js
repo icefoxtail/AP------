@@ -36,7 +36,9 @@ window.questionBank = [
       "6, 180"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 최대공약수는 공통인 소인수 중 지수가 가장 작은 것을 택하므로 $2 \\times 3 = 6$이고, 최소공배수는 모든 소인수 중 지수가 가장 큰 것을 택하므로 $2^2 \\times 3^2 \\times 5 = 180$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 최대공약수는 공통인 소인수 중 지수가 가장 작은 것을 택하므로 $2 \\times 3 = 6$이고, 최소공배수는 모든 소인수 중 지수가 가장 큰 것을 택하므로 $2^2 \\times 3^2 \\times 5 = 180$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -70,7 +72,9 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 공통으로 들어있는 소인수와 최저 지수를 선택하면 최대공약수는 $2^2 \\times 5$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 공통으로 들어있는 소인수와 최저 지수를 선택하면 최대공약수는 $2^2 \\times 5$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -107,7 +111,9 @@ window.questionBank = [
       "18, 216"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소인수분해하면 $36 = 2^2 \\times 3^2$, $54 = 2 \\times 3^3$, $72 = 2^3 \\times 3^2$ 이다. 최대공약수는 $2 \\times 3^2 = 18$, 최소공배수는 $2^3 \\times 3^3 = 216$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 소인수분해하면 $36 = 2^2 \\times 3^2$, $54 = 2 \\times 3^3$, $72 = 2^3 \\times 3^2$ 이다. 최대공약수는 $2 \\times 3^2 = 18$, 최소공배수는 $2^3 \\times 3^3 = 216$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -141,7 +147,9 @@ window.questionBank = [
       "$2^2 \\times 3^2 \\times 5^2 \\times 7 \\times 11$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 공통인 소인수를 모두 곱해 최저 지수를 적용하므로 최대공약수는 $2^2 \\times 3 \\times 5$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 공통인 소인수를 모두 곱해 최저 지수를 적용하므로 최대공약수는 $2^2 \\times 3 \\times 5$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -178,7 +186,9 @@ window.questionBank = [
       "210"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $30 = 2 \\times 3 \\times 5$이다. 세 수의 최대공약수는 $2 \\times 3 \\times 5 = 30$, 최소공배수는 $2^2 \\times 3^2 \\times 5 = 180$이므로 둘의 합은 $30 + 180 = 210$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $30 = 2 \\times 3 \\times 5$이다. 세 수의 최대공약수는 $2 \\times 3 \\times 5 = 30$, 최소공배수는 $2^2 \\times 3^2 \\times 5 = 180$이므로 둘의 합은 $30 + 180 = 210$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -214,7 +224,9 @@ window.questionBank = [
       "$2 \\times 3^3 \\times 7^2, 2^2 \\times 3 \\times 5$의 최대공약수 : 6"
     ],
     "answer": "③",
-    "solution": "[키포인트] 공약수 연산을 해보면 $24, 42, 72$를 동시에 나눌 수 있는 가장 큰 수는 6이다. 따라서 최대공약수가 24라는 설명은 옳지 않다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 공약수 연산을 해보면 $24, 42, 72$를 동시에 나눌 수 있는 가장 큰 수는 6이다. 따라서 최대공약수가 24라는 설명은 옳지 않다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -248,7 +260,9 @@ window.questionBank = [
       "40"
     ],
     "answer": "①",
-    "solution": "[키포인트] $36 = 2^2 \\times 3^2$, $54 = 2 \\times 3^3$, $72 = 2^3 \\times 3^2$ 이므로 공통 소인수 최저 지수 조합인 $2 \\times 3^2 = 18$이 최대공약수이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $36 = 2^2 \\times 3^2$, $54 = 2 \\times 3^3$, $72 = 2^3 \\times 3^2$ 이므로 공통 소인수 최저 지수 조합인 $2 \\times 3^2 = 18$이 최대공약수이다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -285,7 +299,9 @@ window.questionBank = [
       "124"
     ],
     "answer": "②",
-    "solution": "[키포인트] 소인수분해하면 $12 = 2^2 \\times 3$, $18 = 2 \\times 3^2$, $24 = 2^3 \\times 3$이다. 최대공약수는 $2 \\times 3 = 6$, 최소공배수는 $2^3 \\times 3^2 = 72$이므로 둘의 합은 $6 + 72 = 78$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 소인수분해하면 $12 = 2^2 \\times 3$, $18 = 2 \\times 3^2$, $24 = 2^3 \\times 3$이다. 최대공약수는 $2 \\times 3 = 6$, 최소공배수는 $2^3 \\times 3^2 = 72$이므로 둘의 합은 $6 + 72 = 78$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -314,7 +330,9 @@ window.questionBank = [
     "content": "다음 수들의 최대공약수를 구하여라. ⑴ 30, 42, 108 ⑵ $2 \\times 3^2 \\times 5, 2^2 \\times 5^3 \\times 7$",
     "choices": [],
     "answer": "⑴ 6 ⑵ 10",
-    "solution": "[키포인트] ⑴ 공약수 나눗셈에 의해 $2 \\times 3 = 6$이 도출된다. ⑵ 두 수의 공통 소인수 중 지수가 작거나 같은 것을 택하면 $2^1 \\times 5^1 = 10$이 최대공약수이다.\\n따라서 구하는 값은 ⑴ 6 ⑵ 10이다."
+    "solution": "[키포인트] ⑴ 공약수 나눗셈에 의해 $2 \\times 3 = 6$이 도출된다. ⑵ 두 수의 공통 소인수 중 지수가 작거나 같은 것을 택하면 $2^1 \\times 5^1 = 10$이 최대공약수이다.\\n따라서 구하는 값은 ⑴ 6 ⑵ 10이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -346,7 +364,9 @@ window.questionBank = [
       "35와 56"
     ],
     "answer": "④",
-    "solution": "[키포인트] ④ $12 = 2^2 \\times 3, 25 = 5^2$ 이므로 1 이외의 공약수를 가지지 않는다. 따라서 서로소이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] ④ $12 = 2^2 \\times 3, 25 = 5^2$ 이므로 1 이외의 공약수를 가지지 않는다. 따라서 서로소이다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -357,8 +377,8 @@ window.questionBank = [
     "standardUnitKey": "M1-01",
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
-    "subUnitKey": "M1-01-GCD_LCM",
-    "subUnit": "최대공약수와 최소공배수",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
     "conceptClusterKey": "GCD_LCM",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -380,7 +400,9 @@ window.questionBank = [
       "$2^2 \\times 3 \\times 5^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 수의 최대공약수는 $2^3 \\times 3 \\times 5^2$입니다. 공약수는 이 최대공약수의 약수여야 합니다. ④번 $2 \\times 3 \\times 5^2 \\times 7$은 $A$와 $B$가 공통으로 갖지 않는 소인수 $7$을 포함하므로 공약수가 될 수 없습니다. 따라서 정답은 ④입니다."
+    "solution": "[키포인트] 두 수의 최대공약수는 $2^3 \\times 3 \\times 5^2$입니다. 공약수는 이 최대공약수의 약수여야 합니다. ④번 $2 \\times 3 \\times 5^2 \\times 7$은 $A$와 $B$가 공통으로 갖지 않는 소인수 $7$을 포함하므로 공약수가 될 수 없습니다. 따라서 정답은 ④입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -417,7 +439,9 @@ window.questionBank = [
       "$2^2 \\times 3^2 \\times 5^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 최소공배수 $L = 2^3 \\times 3^2 \\times 5^2$, 최대공약수 $G = 2 \\times 5$이므로 분수식 $\\frac{L}{G}$를 약분하여 계산하면 $2^2 \\times 3^2 \\times 5$가 남는다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 최소공배수 $L = 2^3 \\times 3^2 \\times 5^2$, 최대공약수 $G = 2 \\times 5$이므로 분수식 $\\frac{L}{G}$를 약분하여 계산하면 $2^2 \\times 3^2 \\times 5$가 남는다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -446,7 +470,9 @@ window.questionBank = [
     "content": "소인수분해를 이용하여 $2^2 \\times 3^3, 2 \\times 3^2$의 최소공배수를 구하여라.",
     "choices": [],
     "answer": "$2^2 \\times 3^3$",
-    "solution": "[키포인트] 밑이 같은 지수들의 크기를 비교하여 최고 지수들을 선택하여 곱하면 최소공배수 $2^2 \\times 3^3$을 얻는다.\\n따라서 구하는 값은 $2^2 \\times 3^3$이다."
+    "solution": "[키포인트] 밑이 같은 지수들의 크기를 비교하여 최고 지수들을 선택하여 곱하면 최소공배수 $2^2 \\times 3^3$을 얻는다.\\n따라서 구하는 값은 $2^2 \\times 3^3$이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -483,7 +509,9 @@ window.questionBank = [
       "두 수의 공약수이면서 공배수인 수가 존재한다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 공배수와 공약수의 정의에 의해 두 수의 최소공배수의 배수는 언제나 두 수의 공배수가 된다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 공배수와 공약수의 정의에 의해 두 수의 최소공배수의 배수는 언제나 두 수의 공배수가 된다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -513,7 +541,9 @@ window.questionBank = [
     "content": "다음 수들의 최대공약수를 공약수로 나누어 구하여라. ⑴ 72, 90 ⑵ 36, 48, 72",
     "choices": [],
     "answer": "⑴ 18 ⑵ 12",
-    "solution": "[키포인트] 최대공약수는 공통으로 나누어지는 인수를 모두 곱해 구한다.\\n조건 정리: ⑴은 72와 90의 최대공약수, ⑵는 36, 48, 72의 최대공약수를 구해야 한다.\\n풀이 방향: 각 수를 소인수분해한 뒤 공통 소인수의 가장 작은 지수를 택한다.\\n정석 풀이: ⑴ $72=2^3\\times3^2$, $90=2\\times3^2\\times5$이므로 공통 부분은 $2\\times3^2=18$이다. ⑵ $36=2^2\\times3^2$, $48=2^4\\times3$, $72=2^3\\times3^2$이므로 공통 부분은 $2^2\\times3=12$이다.\\n따라서 구하는 값은 ⑴ 18 ⑵ 12이다."
+    "solution": "[키포인트] 최대공약수는 공통으로 나누어지는 인수를 모두 곱해 구한다.\\n조건 정리: ⑴은 72와 90의 최대공약수, ⑵는 36, 48, 72의 최대공약수를 구해야 한다.\\n풀이 방향: 각 수를 소인수분해한 뒤 공통 소인수의 가장 작은 지수를 택한다.\\n정석 풀이: ⑴ $72=2^3\\times3^2$, $90=2\\times3^2\\times5$이므로 공통 부분은 $2\\times3^2=18$이다. ⑵ $36=2^2\\times3^2$, $48=2^4\\times3$, $72=2^3\\times3^2$이므로 공통 부분은 $2^2\\times3=12$이다.\\n따라서 구하는 값은 ⑴ 18 ⑵ 12이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -550,7 +580,9 @@ window.questionBank = [
       "142"
     ],
     "answer": "③",
-    "solution": "[키포인트] 24와 30의 최대공약수($\\bigstar$)는 6이므로 괄호는 6이 된다. 이어서 $6 \\blacktriangle 32$는 6과 32의 최소공배수를 구하는 것이므로 계산하면 96이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 24와 30의 최대공약수($\\bigstar$)는 6이므로 괄호는 6이 된다. 이어서 $6 \\blacktriangle 32$는 6과 32의 최소공배수를 구하는 것이므로 계산하면 96이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -585,7 +617,9 @@ window.questionBank = [
       "6개"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 세 수의 최대공약수를 구하면 $2 \\times 3^2 = 18$이다. 공약수의 개수는 최대공약수의 약수의 개수와 같으므로 $(1+1) \\times (2+1) = 6$(개)이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 세 수의 최대공약수를 구하면 $2 \\times 3^2 = 18$이다. 공약수의 개수는 최대공약수의 약수의 개수와 같으므로 $(1+1) \\times (2+1) = 6$(개)이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -620,7 +654,9 @@ window.questionBank = [
       "12개"
     ],
     "answer": "③",
-    "solution": "[키포인트] $A$와 $B$의 최대공약수는 $2^3 \\times 3^1$이다. 공약수의 개수는 이 최대공약수의 약수 개수와 같으므로 $(3+1) \\times (1+1) = 8$(개)이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $A$와 $B$의 최대공약수는 $2^3 \\times 3^1$이다. 공약수의 개수는 이 최대공약수의 약수 개수와 같으므로 $(3+1) \\times (1+1) = 8$(개)이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -657,7 +693,9 @@ window.questionBank = [
       "250"
     ],
     "answer": "②",
-    "solution": "[키포인트] 소인수분해하면 $15 = 3 \\times 5, 25 = 5^2, 75 = 3 \\times 5^2$ 이므로 최대공약수 $A = 5$, 최소공배수 $B = 3 \\times 5^2 = 75$이다. 따라서 $A+B = 5 + 75 = 80$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 소인수분해하면 $15 = 3 \\times 5, 25 = 5^2, 75 = 3 \\times 5^2$ 이므로 최대공약수 $A = 5$, 최소공배수 $B = 3 \\times 5^2 = 75$이다. 따라서 $A+B = 5 + 75 = 80$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -687,7 +725,9 @@ window.questionBank = [
     "content": "$2 \\times 2 \\times 3 \\times 5 \\times 5, 2 \\times 2 \\times 6 \\times 5$의 최소공배수를 구하여라.",
     "choices": [],
     "answer": "$2^3 \\times 3 \\times 5^2$",
-    "solution": "[키포인트] 거듭제곱으로 나타내면 각각 $2^2 \\times 3 \\times 5^2$ 과 $2^3 \\times 3 \\times 5$이므로, 지수가 큰 쪽을 선택하여 곱한 최소공배수는 $2^3 \\times 3 \\times 5^2$ 이다.\\n따라서 구하는 값은 $2^3 \\times 3 \\times 5^2$이다."
+    "solution": "[키포인트] 거듭제곱으로 나타내면 각각 $2^2 \\times 3 \\times 5^2$ 과 $2^3 \\times 3 \\times 5$이므로, 지수가 큰 쪽을 선택하여 곱한 최소공배수는 $2^3 \\times 3 \\times 5^2$ 이다.\\n따라서 구하는 값은 $2^3 \\times 3 \\times 5^2$이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -724,7 +764,9 @@ window.questionBank = [
       "50개"
     ],
     "answer": "④",
-    "solution": "[키포인트] 400 이하의 8의 배수 개수에서 8과 12의 최소공배수인 24의 배수 개수를 뺀다. $400 \\div 8 = 50$개, $400 \\div 24 = 16.66\\dots \\rightarrow 16$개이므로 $50 - 16 = 34$(개)이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 400 이하의 8의 배수 개수에서 8과 12의 최소공배수인 24의 배수 개수를 뺀다. $400 \\div 8 = 50$개, $400 \\div 24 = 16.66\\dots \\rightarrow 16$개이므로 $50 - 16 = 34$(개)이다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -755,7 +797,9 @@ window.questionBank = [
     "content": "세 자연수 12, 15, 18의 최대공약수와 최소공배수의 합을 구하여라.",
     "choices": [],
     "answer": "183",
-    "solution": "[키포인트] 세 수의 최대공약수는 3이며, 최소공배수는 $2^2 \\times 3^2 \\times 5 = 180$이다. 둘의 합을 구하면 $3 + 180 = 183$이다.\\n따라서 구하는 값은 183이다."
+    "solution": "[키포인트] 세 수의 최대공약수는 3이며, 최소공배수는 $2^2 \\times 3^2 \\times 5 = 180$이다. 둘의 합을 구하면 $3 + 180 = 183$이다.\\n따라서 구하는 값은 183이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
@@ -786,7 +830,9 @@ window.questionBank = [
     "content": "다음 수들의 최소공배수를 공약수로 나누어 구하여라. ⑴ 30, 45 ⑵ 18, 28, 42",
     "choices": [],
     "answer": "⑴ 90 ⑵ 252",
-    "solution": "[키포인트] 최소공배수는 모든 소인수가 빠짐없이 들어가도록 가장 큰 지수를 택해 곱한다.\\n조건 정리: ⑴은 30과 45의 최소공배수, ⑵는 18, 28, 42의 최소공배수를 구해야 한다.\\n풀이 방향: 각 수를 소인수분해한 뒤 필요한 소인수의 최대 지수를 모은다.\\n정석 풀이: ⑴ $30=2\\times3\\times5$, $45=3^2\\times5$이므로 최소공배수는 $2\\times3^2\\times5=90$이다. ⑵ $18=2\\times3^2$, $28=2^2\\times7$, $42=2\\times3\\times7$이므로 최소공배수는 $2^2\\times3^2\\times7=252$이다.\\n따라서 구하는 값은 ⑴ 90 ⑵ 252이다."
+    "solution": "[키포인트] 최소공배수는 모든 소인수가 빠짐없이 들어가도록 가장 큰 지수를 택해 곱한다.\\n조건 정리: ⑴은 30과 45의 최소공배수, ⑵는 18, 28, 42의 최소공배수를 구해야 한다.\\n풀이 방향: 각 수를 소인수분해한 뒤 필요한 소인수의 최대 지수를 모은다.\\n정석 풀이: ⑴ $30=2\\times3\\times5$, $45=3^2\\times5$이므로 최소공배수는 $2\\times3^2\\times5=90$이다. ⑵ $18=2\\times3^2$, $28=2^2\\times7$, $42=2\\times3\\times7$이므로 최소공배수는 $2^2\\times3^2\\times7=252$이다.\\n따라서 구하는 값은 ⑴ 90 ⑵ 252이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -815,7 +861,9 @@ window.questionBank = [
     "content": "$3 \\times 5 \\times 5 \\times 5 \\times 7 \\times 7, 5 \\times 5 \\times 5 \\times 9 \\times 7$의 최대공약수를 구하여라.",
     "choices": [],
     "answer": "$3 \\times 5^3 \\times 7$",
-    "solution": "[키포인트] 각각 거듭제곱으로 정리하면 $3 \\times 5^3 \\times 7^2$ 과 $3^2 \\times 5^3 \\times 7$이 되므로 공통인 인수 중 낮은 지수를 택한 최대공약수는 $3 \\times 5^3 \\times 7$이다.\\n따라서 구하는 값은 $3 \\times 5^3 \\times 7$이다."
+    "solution": "[키포인트] 각각 거듭제곱으로 정리하면 $3 \\times 5^3 \\times 7^2$ 과 $3^2 \\times 5^3 \\times 7$이 되므로 공통인 인수 중 낮은 지수를 택한 최대공약수는 $3 \\times 5^3 \\times 7$이다.\\n따라서 구하는 값은 $3 \\times 5^3 \\times 7$이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 25,
@@ -852,7 +900,9 @@ window.questionBank = [
       "252"
     ],
     "answer": "①",
-    "solution": "[키포인트] 세 수를 동시에 나눌 수 있는 유일한 공약수 단계의 제일 첫 소인수는 2뿐이다. (3단계부터는 세 수 모두가 아닌 두 수만 나누어짐) 따라서 최대공약수는 2이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 세 수를 동시에 나눌 수 있는 유일한 공약수 단계의 제일 첫 소인수는 2뿐이다. (3단계부터는 세 수 모두가 아닌 두 수만 나누어짐) 따라서 최대공약수는 2이다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 26,
@@ -863,8 +913,8 @@ window.questionBank = [
     "standardUnitKey": "M1-01",
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
-    "subUnitKey": "M1-01-GCD_LCM",
-    "subUnit": "최대공약수와 최소공배수",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
     "conceptClusterKey": "GCD_LCM",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -883,7 +933,9 @@ window.questionBank = [
     "content": "다음 중 옳은 것을 모두 골라라.\nㄱ. $\\frac{3}{2}$ 은 $\\frac{1}{2}$ 의 배수이다.\nㄴ. 1과 1은 서로소이다.\nㄷ. 10보다 작은 자연수 중 6과 서로소인 수는 5, 7 두 개이다.\nㄹ. 1의 약수는 무수히 많다.\nㅁ. 약수의 개수가 3개인 수는 소수를 제곱한 수이다.\nㅂ. 소수의 개수는 무한히 많다.\nㅅ. 두 자연수 $a , b$가 서로소이면 공약수는 없다.\nㅇ. 두 자연수 $a , b$의 공약수이면서 공배수가 되는 자연수는 없다.\nㅈ. 두 수의 최소공배수의 약수는 두 수의 공약수이다.\nㅊ. 최대공약수가 12인 두 자연수의 공약수는 모두 6개이다.",
     "choices": [],
     "answer": "ㄴ, ㅁ, ㅂ, ㅊ",
-    "solution": "[키포인트] ㄱ. 약수와 배수는 정수(자연수) 범위에서 정의하므로 분수 형태는 배수라 하지 않는다. ㄴ. 1 이외의 공약수가 없으므로 참이다. ㄷ. 10보다 작은 자연수 중 6과 서로소인 수는 $1, 5, 7$의 세 개이므로 틀렸다. ㅁ. 약수의 개수가 3개인 수는 소수의 제곱수이므로 참이다. ㅂ. 귀류법 증명에 의해 소수는 무한히 많으므로 참이다. ㅊ. 12의 약수의 개수는 6개이며 두 수의 공약수 개수와 일치하므로 참이다.\\n따라서 구하는 값은 ㄴ, ㅁ, ㅂ, ㅊ이다."
+    "solution": "[키포인트] ㄱ. 약수와 배수는 정수(자연수) 범위에서 정의하므로 분수 형태는 배수라 하지 않는다. ㄴ. 1 이외의 공약수가 없으므로 참이다. ㄷ. 10보다 작은 자연수 중 6과 서로소인 수는 $1, 5, 7$의 세 개이므로 틀렸다. ㅁ. 약수의 개수가 3개인 수는 소수의 제곱수이므로 참이다. ㅂ. 귀류법 증명에 의해 소수는 무한히 많으므로 참이다. ㅊ. 12의 약수의 개수는 6개이며 두 수의 공약수 개수와 일치하므로 참이다.\\n따라서 구하는 값은 ㄴ, ㅁ, ㅂ, ㅊ이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -920,7 +972,9 @@ window.questionBank = [
       "$12\\text{ cm}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 가능한 한 가장 큰 정육면체를 만드려면 세 모서리 길이의 최대공약수를 구해야 한다. $60, 48, 24$의 최대공약수는 12이므로 한 변의 길이는 $12\\text{ cm}$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 가능한 한 가장 큰 정육면체를 만드려면 세 모서리 길이의 최대공약수를 구해야 한다. $60, 48, 24$의 최대공약수는 12이므로 한 변의 길이는 $12\\text{ cm}$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -956,7 +1010,9 @@ window.questionBank = [
       "26"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 분수의 역수인 분모 8과 12를 동시에 자연수로 만들 수 있는 최소공배수를 구하면 24가 된다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 분수의 역수인 분모 8과 12를 동시에 자연수로 만들 수 있는 최소공배수를 구하면 24가 된다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -993,7 +1049,9 @@ window.questionBank = [
       "270"
     ],
     "answer": "①",
-    "solution": "[키포인트] $36 = 2^2 \\times 3^2, 90 = 2 \\times 3^2 \\times 5$이다. 최대공약수가 $18 (= 2 \\times 3^2)$, 최소공배수가 $540 (= 2^2 \\times 3^3 \\times 5)$이므로 만족하는 $N$은 반드시 $3^3$인수를 결정지어 주어야 하므로 $2 \\times 3^3 = 54$가 된다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $36 = 2^2 \\times 3^2, 90 = 2 \\times 3^2 \\times 5$이다. 최대공약수가 $18 (= 2 \\times 3^2)$, 최소공배수가 $540 (= 2^2 \\times 3^3 \\times 5)$이므로 만족하는 $N$은 반드시 $3^3$인수를 결정지어 주어야 하므로 $2 \\times 3^3 = 54$가 된다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 30,
@@ -1023,7 +1081,9 @@ window.questionBank = [
     "content": "가로의 길이가 $12\\text{cm}$, 세로의 길이가 $20\\text{cm}$인 직사각형 모양의 도화지 위에 빈틈없이 정사각형 모양의 색종이를 붙이려고 한다. 색종이를 가능한 한 큰 것을 사용하려고 할 때, 이 색종이의 한 변의 길이를 구하여라.",
     "choices": [],
     "answer": "4cm",
-    "solution": "[키포인트] 빈틈없이 가장 큰 정사각형 색종이를 붙이려면 가로와 세로의 최대공약수를 구해야 한다. 12와 20의 최대공약수는 4이므로 한 변의 길이는 $4\\text{cm}$이다.\\n따라서 구하는 값은 4cm이다."
+    "solution": "[키포인트] 빈틈없이 가장 큰 정사각형 색종이를 붙이려면 가로와 세로의 최대공약수를 구해야 한다. 12와 20의 최대공약수는 4이므로 한 변의 길이는 $4\\text{cm}$이다.\\n따라서 구하는 값은 4cm이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -1059,7 +1119,9 @@ window.questionBank = [
       "55명"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 조의 짜임 조건은 항상 1명이 부족한 상태($+1$을 하면 딱 떨어지는 상태)를 의미한다. 따라서 학생 수 $x+1$은 $2, 3, 4$의 최소공배수인 12의 배수여야 한다. 40에 가장 가까운 12의 배수는 36이므로 $x+1 = 36 \\rightarrow x = 35$(명)이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 각 조의 짜임 조건은 항상 1명이 부족한 상태($+1$을 하면 딱 떨어지는 상태)를 의미한다. 따라서 학생 수 $x+1$은 $2, 3, 4$의 최소공배수인 12의 배수여야 한다. 40에 가장 가까운 12의 배수는 36이므로 $x+1 = 36 \\rightarrow x = 35$(명)이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -1095,7 +1157,9 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "[키포인트] $24 = 2^3 \\times 3$ 이고 최대공약수가 $12 = 2^2 \\times 3$ 이므로, 다른 한 수의 소인수 분해 구조에 3 인수가 최소 1개는 포함되어야 공약수 조건이 충족된다. 따라서 가장 작은 자연수는 3이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $24 = 2^3 \\times 3$ 이고 최대공약수가 $12 = 2^2 \\times 3$ 이므로, 다른 한 수의 소인수 분해 구조에 3 인수가 최소 1개는 포함되어야 공약수 조건이 충족된다. 따라서 가장 작은 자연수는 3이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 33,
@@ -1132,7 +1196,9 @@ window.questionBank = [
       "26"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 수의 곱은 최대공약수와 최소공배수의 곱과 같으므로 $a \\times 15 = 3 \\times 90 \\rightarrow a = 18$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 수의 곱은 최대공약수와 최소공배수의 곱과 같으므로 $a \\times 15 = 3 \\times 90 \\rightarrow a = 18$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 34,
@@ -1169,7 +1235,9 @@ window.questionBank = [
       "72"
     ],
     "answer": "②",
-    "solution": "[키포인트] $72 \\times A = 24 \\times 144$ 이므로 양변을 약분하여 정리하면 $A = 48$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $72 \\times A = 24 \\times 144$ 이므로 양변을 약분하여 정리하면 $A = 48$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1206,7 +1274,9 @@ window.questionBank = [
       "336"
     ],
     "answer": "②",
-    "solution": "[키포인트] $N \\times 48 = 8 \\times 336 \\rightarrow N = 56$.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $N \\times 48 = 8 \\times 336 \\rightarrow N = 56$.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1237,7 +1307,9 @@ window.questionBank = [
     "content": "자연수 $N$과 42의 최대공약수는 14이고, 최소공배수는 168이다. 이때, 자연수 $N$을 구하여라.",
     "choices": [],
     "answer": "56",
-    "solution": "[키포인트] 최대공약수가 14이므로 $N = 14 \\times a$ 구조이며, $42 = 14 \\times 3$이다. 최소공배수가 $168 = 14 \\times 12 = 14 \\times (3 \\times 4)$이므로 3과 서로소이면서 부족한 인수를 채우는 $a = 4$가 된다. 따라서 $N = 14 \\times 4 = 56$이다.\\n따라서 구하는 값은 56이다."
+    "solution": "[키포인트] 최대공약수가 14이므로 $N = 14 \\times a$ 구조이며, $42 = 14 \\times 3$이다. 최소공배수가 $168 = 14 \\times 12 = 14 \\times (3 \\times 4)$이므로 3과 서로소이면서 부족한 인수를 채우는 $a = 4$가 된다. 따라서 $N = 14 \\times 4 = 56$이다.\\n따라서 구하는 값은 56이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 37,
@@ -1273,7 +1345,9 @@ window.questionBank = [
       "110"
     ],
     "answer": "②",
-    "solution": "[키포인트] 구하는 수는 $116 - 4 = 112$와 $174 - 6 = 168$을 각각 나누어 떨어뜨리는 공약수 중 가장 큰 수(최대공약수)이다. 두 수의 최대공약수를 구하면 $2^3 \\times 7 = 56$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 구하는 수는 $116 - 4 = 112$와 $174 - 6 = 168$을 각각 나누어 떨어뜨리는 공약수 중 가장 큰 수(최대공약수)이다. 두 수의 최대공약수를 구하면 $2^3 \\times 7 = 56$이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1304,7 +1378,9 @@ window.questionBank = [
     "content": "두 자연수 $A, B$에 대하여 $A$와 $B$의 최대공약수를 $A \\bigstar B$로 나타내고, $A$와 $B$의 최소공배수를 $A \\diamondsuit B$로 나타내기로 하자. 다음 두 식을 만족하는 $x, y$에 대하여 $(x \\bigstar y) \\diamondsuit (x \\diamondsuit y)$를 구하여라. ㈎ $(40 \\bigstar 56) \\times x = 640$ ㈏ $2 \\times y - (16 \\diamondsuit 40) = 0$",
     "choices": [],
     "answer": "80",
-    "solution": "[키포인트] ㈎ $40$과 $56$의 최대공약수는 8이므로 $8 \\times x = 640 \\rightarrow x = 80$이다. ㈏ $16$과 $40$의 최소공배수는 80이므로 $2 \\times y - 80 = 0 \\rightarrow y = 40$이다. 구하고자 하는 식에 대입하면 $(80 \\bigstar 40) \\diamondsuit (80 \\diamondsuit 40)$ 이 되며, 최대공약수는 40, 최소공배수는 80이므로 최종 결과인 $40 \\diamondsuit 80 = 80$을 얻는다.\\n따라서 구하는 값은 80이다."
+    "solution": "[키포인트] ㈎ $40$과 $56$의 최대공약수는 8이므로 $8 \\times x = 640 \\rightarrow x = 80$이다. ㈏ $16$과 $40$의 최소공배수는 80이므로 $2 \\times y - 80 = 0 \\rightarrow y = 40$이다. 구하고자 하는 식에 대입하면 $(80 \\bigstar 40) \\diamondsuit (80 \\diamondsuit 40)$ 이 되며, 최대공약수는 40, 최소공배수는 80이므로 최종 결과인 $40 \\diamondsuit 80 = 80$을 얻는다.\\n따라서 구하는 값은 80이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 39,
@@ -1335,7 +1411,9 @@ window.questionBank = [
     "content": "15로 나누면 12가 남고, 6으로 나누면 3이 남고, 8로 나누면 5가 남는 세 자리 자연수 중에서 가장 큰 수를 구하여라.",
     "choices": [],
     "answer": "957",
-    "solution": "[키포인트] 조건은 모두 나누는 수보다 3이 부족한 수($+3$을 하면 나누어 떨어지는 수)를 의미한다. 즉, $(15, 6, 8\\text{의 공배수}) - 3$ 구조이다. 세 수의 최소공배수는 120이므로 가장 큰 세 자리 자연수를 구하기 위해 120의 배수 중 가장 큰 960을 택해 3을 빼면 $960 - 3 = 957$이 된다.\\n따라서 구하는 값은 957이다."
+    "solution": "[키포인트] 조건은 모두 나누는 수보다 3이 부족한 수($+3$을 하면 나누어 떨어지는 수)를 의미한다. 즉, $(15, 6, 8\\text{의 공배수}) - 3$ 구조이다. 세 수의 최소공배수는 120이므로 가장 큰 세 자리 자연수를 구하기 위해 120의 배수 중 가장 큰 960을 택해 3을 빼면 $960 - 3 = 957$이 된다.\\n따라서 구하는 값은 957이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1370,7 +1448,9 @@ window.questionBank = [
       "96"
     ],
     "answer": "③",
-    "solution": "[키포인트] 구하는 수는 $200 - 4 = 196$과 $100 - 2 = 98$의 최대공약수이다. 두 수의 최대공약수를 구하면 98이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 구하는 수는 $200 - 4 = 196$과 $100 - 2 = 98$의 최대공약수이다. 두 수의 최대공약수를 구하면 98이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1407,7 +1487,9 @@ window.questionBank = [
       "36"
     ],
     "answer": "③",
-    "solution": "[키포인트] 타일의 한 변의 길이는 224와 128의 최대공약수인 $32\\text{cm}$이다. 필요한 타일의 개수는 가로에 $224 \\div 32 = 7$개, 세로에 $128 \\div 32 = 4$개이므로 총 $7 \\times 4 = 28$(개)이 필요하다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 타일의 한 변의 길이는 224와 128의 최대공약수인 $32\\text{cm}$이다. 필요한 타일의 개수는 가로에 $224 \\div 32 = 7$개, 세로에 $128 \\div 32 = 4$개이므로 총 $7 \\times 4 = 28$(개)이 필요하다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1442,7 +1524,9 @@ window.questionBank = [
       "72"
     ],
     "answer": "④",
-    "solution": "[키포인트] 어떤 수는 $38 - 2 = 36$과 108의 최대공약수이므로 36이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 어떤 수는 $38 - 2 = 36$과 108의 최대공약수이므로 36이다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1479,7 +1563,9 @@ window.questionBank = [
       "22"
     ],
     "answer": "③",
-    "solution": "[키포인트] $a, b$가 서로소이므로 최소공배수는 $5 \\times a \\times b = 105 \\rightarrow a \\times b = 21$이다. 1이 아닌 두 서로소의 조합은 3과 7이므로 $a+b = 3 + 7 = 10$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $a, b$가 서로소이므로 최소공배수는 $5 \\times a \\times b = 105 \\rightarrow a \\times b = 21$이다. 1이 아닌 두 서로소의 조합은 3과 7이므로 $a+b = 3 + 7 = 10$이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 44,
@@ -1510,7 +1596,9 @@ window.questionBank = [
     "content": "다음 두 조건을 모두 만족하는 두 자연수 $a , b$의 값을 각각 구하여라. ㉠ $a : b = 2 : 3$ ㉡ $a$와 $b$의 최대공약수와 최소공배수의 합은 140이다.",
     "choices": [],
     "answer": "$a = 40, b = 60$",
-    "solution": "[키포인트] 비례식에 의해 $a = 2G, b = 3G$($G$는 최대공약수)로 둘 수 있으며, 최소공배수 $L = 6G$가 된다. 조건에서 $G + L = 140 \\rightarrow G + 6G = 7G = 140 \\rightarrow G = 20$이다. 따라서 $a = 2 \\times 20 = 40, b = 3 \\times 20 = 60$이다.\\n따라서 구하는 값은 $a = 40, b = 60$이다."
+    "solution": "[키포인트] 비례식에 의해 $a = 2G, b = 3G$($G$는 최대공약수)로 둘 수 있으며, 최소공배수 $L = 6G$가 된다. 조건에서 $G + L = 140 \\rightarrow G + 6G = 7G = 140 \\rightarrow G = 20$이다. 따라서 $a = 2 \\times 20 = 40, b = 3 \\times 20 = 60$이다.\\n따라서 구하는 값은 $a = 40, b = 60$이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 45,
@@ -1546,7 +1634,9 @@ window.questionBank = [
       "60개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 식의 값이 자연수가 되려면 $n$은 60의 약수여야 한다. $60 = 2^2 \\times 3 \\times 5$이므로 약수의 개수는 $(2+1) \\times (1+1) \\times (1+1) = 3 \\times 2 \\times 2 = 12$(개)이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 식의 값이 자연수가 되려면 $n$은 60의 약수여야 한다. $60 = 2^2 \\times 3 \\times 5$이므로 약수의 개수는 $(2+1) \\times (1+1) \\times (1+1) = 3 \\times 2 \\times 2 = 12$(개)이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1575,7 +1665,9 @@ window.questionBank = [
     "content": "어떤 버스 종점에서 일반버스는 8분마다, 좌석버스는 16분마다, 직행버스는 20분마다 출발한다. 오전 6시에 세 버스가 동시에 출발하였다. 다음에 세 버스가 동시에 출발하는 시각을 구하여라.",
     "choices": [],
     "answer": "오전 7시 20분",
-    "solution": "[키포인트] 세 버스의 배차 간격인 $8, 16, 20$의 최소공배수를 구하면 80분이다. 80분은 1시간 20분이므로 오전 6시에서 1시간 20분 후인 오전 7시 20분에 동시에 출발한다.\\n따라서 구하는 값은 오전 7시 20분이다."
+    "solution": "[키포인트] 세 버스의 배차 간격인 $8, 16, 20$의 최소공배수를 구하면 80분이다. 80분은 1시간 20분이므로 오전 6시에서 1시간 20분 후인 오전 7시 20분에 동시에 출발한다.\\n따라서 구하는 값은 오전 7시 20분이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1606,7 +1698,9 @@ window.questionBank = [
     "content": "자연수 $A$를 2, 3, 5로 나누면 모두 1이 남는 자연수 중 가장 작은 수를 구하여라.",
     "choices": [],
     "answer": "31",
-    "solution": "[키포인트] $A-1$은 $2, 3, 5$의 공배수여야 하므로 최소공배수인 30의 배수이다. 가장 작은 자연수이므로 $A-1 = 30 \\rightarrow A = 31$이다.\\n따라서 구하는 값은 31이다."
+    "solution": "[키포인트] $A-1$은 $2, 3, 5$의 공배수여야 하므로 최소공배수인 30의 배수이다. 가장 작은 자연수이므로 $A-1 = 30 \\rightarrow A = 31$이다.\\n따라서 구하는 값은 31이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1643,7 +1737,9 @@ window.questionBank = [
       "120장"
     ],
     "answer": "①",
-    "solution": "[키포인트] 정육면체의 한 모서리의 길이는 벽돌의 모서리 규격인 $10, 8, 6$의 최소공배수인 $120\\text{ cm}$이다. 필요한 벽돌의 총 장수는 가로 12장, 세로 15장, 높이 20장이므로 $12 \\times 15 \\times 20 = 3600$(장)이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 정육면체의 한 모서리의 길이는 벽돌의 모서리 규격인 $10, 8, 6$의 최소공배수인 $120\\text{ cm}$이다. 필요한 벽돌의 총 장수는 가로 12장, 세로 15장, 높이 20장이므로 $12 \\times 15 \\times 20 = 3600$(장)이다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1674,7 +1770,9 @@ window.questionBank = [
     "content": "100 이하의 자연수 중에서 $\\frac{1}{6} , \\frac{1}{8}$ 의 어느 것에 곱해도 그 값이 항상 자연수가 되는 것은 모두 몇 개인지 구하여라.",
     "choices": [],
     "answer": "4개",
-    "solution": "[키포인트] 분모인 6과 8을 동시에 약분하여 없애야 하므로 두 수의 최소공배수인 24의 배수들을 곱해야 한다. 100 이하의 24의 배수는 $24, 48, 72, 96$으로 총 4개이다.\\n따라서 구하는 값은 4개이다."
+    "solution": "[키포인트] 분모인 6과 8을 동시에 약분하여 없애야 하므로 두 수의 최소공배수인 24의 배수들을 곱해야 한다. 100 이하의 24의 배수는 $24, 48, 72, 96$으로 총 4개이다.\\n따라서 구하는 값은 4개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1711,7 +1809,9 @@ window.questionBank = [
       "210장"
     ],
     "answer": "③",
-    "solution": "[키포인트] 가장 작은 정육면체의 한 변의 길이는 $12, 20, 6$의 최소공배수인 $60\\text{cm}$이다. 필요한 벽돌 장수는 가로 $60 \\div 12 = 5$장, 세로 $60 \\div 20 = 3$장, 높이 $60 \\div 6 = 10$장이므로 모두 쌓으면 $5 \\times 3 \\times 10 = 150$(장)이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 가장 작은 정육면체의 한 변의 길이는 $12, 20, 6$의 최소공배수인 $60\\text{cm}$이다. 필요한 벽돌 장수는 가로 $60 \\div 12 = 5$장, 세로 $60 \\div 20 = 3$장, 높이 $60 \\div 6 = 10$장이므로 모두 쌓으면 $5 \\times 3 \\times 10 = 150$(장)이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1748,7 +1848,9 @@ window.questionBank = [
       "160"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 세 자연수를 $2k, 3k, 5k$라 하면 최소공배수는 $k \\times 2 \\times 3 \\times 5 = 30k = 480 \\rightarrow k = 16$이 된다. 따라서 세 수는 각각 $32, 48, 80$이 되며 이들의 합은 $32+48+80 = 160$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 세 자연수를 $2k, 3k, 5k$라 하면 최소공배수는 $k \\times 2 \\times 3 \\times 5 = 30k = 480 \\rightarrow k = 16$이 된다. 따라서 세 수는 각각 $32, 48, 80$이 되며 이들의 합은 $32+48+80 = 160$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 52,
@@ -1784,7 +1886,9 @@ window.questionBank = [
       "60장"
     ],
     "answer": "④",
-    "solution": "[키포인트] 12와 15의 최소공배수는 60이므로 가장 작은 정사각형의 한 변의 길이는 $60\\text{cm}$이다. 필요한 타일의 장수는 가로 4장, 세로 5장이 필요하므로 $4 \\times 5 = 20$(장)이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 12와 15의 최소공배수는 60이므로 가장 작은 정사각형의 한 변의 길이는 $60\\text{cm}$이다. 필요한 타일의 장수는 가로 4장, 세로 5장이 필요하므로 $4 \\times 5 = 20$(장)이다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1820,7 +1924,9 @@ window.questionBank = [
       "2바퀴"
     ],
     "answer": "③",
-    "solution": "[키포인트] 처음 출발 지점에서 다시 만나기까지 걸리는 시간은 두 속도 주기인 60과 75의 최소공배수인 300초이다. 300초 동안 동생은 $300 \\div 75 = 4$(바퀴)를 돌게 된다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 처음 출발 지점에서 다시 만나기까지 걸리는 시간은 두 속도 주기인 60과 75의 최소공배수인 300초이다. 300초 동안 동생은 $300 \\div 75 = 4$(바퀴)를 돌게 된다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1855,7 +1961,9 @@ window.questionBank = [
       "48일"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 품목이 동시에 납품되는 주기는 8과 12의 최소공배수인 24일마다이다. 철수가 한 달(30일) 전에 싸게 샀으므로 기준일로부터 배수일인 24일, 48일 후 등에 다시 세일이 열린다. 30일이 지난 시점에서 다음 세일까지 남은 기간은 $48 - 30 = 18$(일)이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 두 품목이 동시에 납품되는 주기는 8과 12의 최소공배수인 24일마다이다. 철수가 한 달(30일) 전에 싸게 샀으므로 기준일로부터 배수일인 24일, 48일 후 등에 다시 세일이 열린다. 30일이 지난 시점에서 다음 세일까지 남은 기간은 $48 - 30 = 18$(일)이다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1886,7 +1994,9 @@ window.questionBank = [
     "content": "두 자연수 $A, B$는 $\\frac{A}{3} = \\frac{B}{5}$ 를 만족하고, 두 수의 최대공약수와 최소공배수의 곱은 60일 때, $A+B$의 값을 구하여라.",
     "choices": [],
     "answer": "16",
-    "solution": "[키포인트] 비례식에 의해 $A = 3x, B = 5x$로 둘 수 있고 최대공약수는 $x$, 최소공배수는 $15x$이다. 두 수의 최대공약수와 최소공배수의 곱은 $x \\times 15x = 15x^2 = 60 \\rightarrow x^2 = 4 \\rightarrow x = 2$이다. 따라서 $A = 6, B = 10$이 되므로 $A+B = 16$이다.\\n따라서 구하는 값은 16이다."
+    "solution": "[키포인트] 비례식에 의해 $A = 3x, B = 5x$로 둘 수 있고 최대공약수는 $x$, 최소공배수는 $15x$이다. 두 수의 최대공약수와 최소공배수의 곱은 $x \\times 15x = 15x^2 = 60 \\rightarrow x^2 = 4 \\rightarrow x = 2$이다. 따라서 $A = 6, B = 10$이 되므로 $A+B = 16$이다.\\n따라서 구하는 값은 16이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 56,
@@ -1917,6 +2027,8 @@ window.questionBank = [
     "content": "가로, 세로의 길이와 높이가 각각 $12\\text{cm}, 20\\text{cm}, 6\\text{cm}$인 나무토막이 있다. 이것을 빈틈없이 쌓아서 가장 작은 정육면체를 만들려고 한다. 정육면체의 한 모서리의 길이와 필요한 나무토막의 개수를 각각 구하여라.",
     "choices": [],
     "answer": "60cm, 150개",
-    "solution": "[키포인트] $12, 20, 6$의 최소공배수는 60이므로 정육면체의 한 모서리의 길이는 $60\\text{cm}$이다. 가로 5개, 세로 3개, 높이 10개가 쌓이므로 필요한 총 나무토막 개수는 $5 \\times 3 \\times 10 = 150$(개)이다.\\n따라서 구하는 값은 60cm, 150개이다."
+    "solution": "[키포인트] $12, 20, 6$의 최소공배수는 60이므로 정육면체의 한 모서리의 길이는 $60\\text{cm}$이다. 가로 5개, 세로 3개, 높이 10개가 쌓이므로 필요한 총 나무토막 개수는 $5 \\times 3 \\times 10 = 150$(개)이다.\\n따라서 구하는 값은 60cm, 150개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

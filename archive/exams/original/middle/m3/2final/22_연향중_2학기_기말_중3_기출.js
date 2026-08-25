@@ -26,7 +26,11 @@ window.questionBank = [
       "$140^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 원주각은 자신이 바라보는 호의 크기의 절반이다.\n조건 정리: 중심각 $\\angle AOB=100^\\circ$이고 점 $C$는 작은 호 $AB$ 위에 있다.\n풀이 방향: $\\angle ACB$가 바라보는 큰 호 $AB$의 크기를 먼저 구한다.\n정석 풀이: 작은 호 $AB$의 크기는 $100^\\circ$이므로 큰 호 $AB$의 크기는 $360^\\circ-100^\\circ=260^\\circ$이다. 따라서 $\\angle ACB=\\dfrac12\\times260^\\circ=130^\\circ$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 원주각은 자신이 바라보는 호의 크기의 절반이다.\n조건 정리: 중심각 $\\angle AOB=100^\\circ$이고 점 $C$는 작은 호 $AB$ 위에 있다.\n풀이 방향: $\\angle ACB$가 바라보는 큰 호 $AB$의 크기를 먼저 구한다.\n정석 풀이: 작은 호 $AB$의 크기는 $100^\\circ$이므로 큰 호 $AB$의 크기는 $360^\\circ-100^\\circ=260^\\circ$이다. 따라서 $\\angle ACB=\\dfrac12\\times260^\\circ=130^\\circ$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -53,7 +57,11 @@ window.questionBank = [
       "$65^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 지름이 만드는 원주각, 접선과 지름의 수직 관계, 각의 이등분선을 차례로 연결한다.\n조건 정리: $\\angle ACB=90^\\circ$, $AB\\perp BP$, $PD$는 $\\angle APB$의 이등분선이다.\n풀이 방향: $\\angle CAB=x$라 두고 $\\angle APD$와 $\\angle CED$를 $x$로 나타낸다.\n정석 풀이: $\\triangle ABP$에서 $\\angle ABP=90^\\circ$이므로 $\\angle APB=90^\\circ-x$이다. 따라서 $\\angle APD=\\dfrac{90^\\circ-x}{2}=45^\\circ-\\dfrac{x}{2}$이다. $A,C,P$가 일직선이고 $\\angle ACB=90^\\circ$이므로 $CB\\perp AP$이다. 따라서 직선 $CB$와 $PD$가 이루는 둔각은 $90^\\circ+\\angle APD=135^\\circ-\\dfrac{x}{2}$이다. 이것이 $\\angle CED=110^\\circ$이므로 $135^\\circ-\\dfrac{x}{2}=110^\\circ$, 따라서 $x=50^\\circ$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 지름이 만드는 원주각, 접선과 지름의 수직 관계, 각의 이등분선을 차례로 연결한다.\n조건 정리: $\\angle ACB=90^\\circ$, $AB\\perp BP$, $PD$는 $\\angle APB$의 이등분선이다.\n풀이 방향: $\\angle CAB=x$라 두고 $\\angle APD$와 $\\angle CED$를 $x$로 나타낸다.\n정석 풀이: $\\triangle ABP$에서 $\\angle ABP=90^\\circ$이므로 $\\angle APB=90^\\circ-x$이다. 따라서 $\\angle APD=\\dfrac{90^\\circ-x}{2}=45^\\circ-\\dfrac{x}{2}$이다. $A,C,P$가 일직선이고 $\\angle ACB=90^\\circ$이므로 $CB\\perp AP$이다. 따라서 직선 $CB$와 $PD$가 이루는 둔각은 $90^\\circ+\\angle APD=135^\\circ-\\dfrac{x}{2}$이다. 이것이 $\\angle CED=110^\\circ$이므로 $135^\\circ-\\dfrac{x}{2}=110^\\circ$, 따라서 $x=50^\\circ$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -80,7 +88,11 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 접선이 이루는 각과 두 접점 사이의 작은 호의 크기는 서로 보각 관계이다.\n조건 정리: 점 $P$에서 그은 두 접선 $PA$, $PB$가 이루는 각은 $40^\\circ$이다.\n풀이 방향: 작은 호 $AB$의 크기를 구한 뒤 원주각의 성질을 적용한다.\n정석 풀이: 작은 호 $AB$의 크기는 $180^\\circ-40^\\circ=140^\\circ$이다. 점 $C$에서 이 작은 호 $AB$를 바라보는 원주각은 그 절반이므로 $\\angle ACB=70^\\circ$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 두 접선이 이루는 각과 두 접점 사이의 작은 호의 크기는 서로 보각 관계이다.\n조건 정리: 점 $P$에서 그은 두 접선 $PA$, $PB$가 이루는 각은 $40^\\circ$이다.\n풀이 방향: 작은 호 $AB$의 크기를 구한 뒤 원주각의 성질을 적용한다.\n정석 풀이: 작은 호 $AB$의 크기는 $180^\\circ-40^\\circ=140^\\circ$이다. 점 $C$에서 이 작은 호 $AB$를 바라보는 원주각은 그 절반이므로 $\\angle ACB=70^\\circ$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -107,7 +119,11 @@ window.questionBank = [
       "$35^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이다.\n조건 정리: $A,D,P$가 일직선이고 $B,C,P$가 일직선이다.\n풀이 방향: 먼저 $\\angle BAD$를 구한 뒤 $\\triangle ABP$의 내각의 합을 이용한다.\n정석 풀이: 내접사각형에서 $\\angle BAD+\\angle BCD=180^\\circ$이므로 $\\angle BAD=75^\\circ$이다. 따라서 $\\triangle ABP$에서 $\\angle BAP=75^\\circ$, $\\angle ABP=80^\\circ$이다. 그러므로 $\\angle APB=180^\\circ-75^\\circ-80^\\circ=25^\\circ$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이다.\n조건 정리: $A,D,P$가 일직선이고 $B,C,P$가 일직선이다.\n풀이 방향: 먼저 $\\angle BAD$를 구한 뒤 $\\triangle ABP$의 내각의 합을 이용한다.\n정석 풀이: 내접사각형에서 $\\angle BAD+\\angle BCD=180^\\circ$이므로 $\\angle BAD=75^\\circ$이다. 따라서 $\\triangle ABP$에서 $\\angle BAP=75^\\circ$, $\\angle ABP=80^\\circ$이다. 그러므로 $\\angle APB=180^\\circ-75^\\circ-80^\\circ=25^\\circ$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -134,7 +150,11 @@ window.questionBank = [
       "$38^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 원 밖의 한 점에서 그은 접선과 할선이 이루는 각은 두 호의 크기 차의 절반이다.\n조건 정리: $P,C,A$는 일직선이고 $PT$는 점 $T$에서의 접선이다.\n풀이 방향: $\\angle ABT$와 $\\angle CAT$로부터 필요한 두 호 $AT$, $CT$의 크기를 구한다.\n정석 풀이: $\\angle ABT=112^\\circ$가 바라보는 큰 호 $AT$의 크기는 $224^\\circ$이므로 작은 호 $AT$의 크기는 $360^\\circ-224^\\circ=136^\\circ$이다. 또 $\\angle CAT=36^\\circ$이므로 호 $CT$의 크기는 $72^\\circ$이다. 따라서 접선과 할선이 이루는 외각은 $\\angle APT=\\dfrac12(136^\\circ-72^\\circ)=32^\\circ$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 원 밖의 한 점에서 그은 접선과 할선이 이루는 각은 두 호의 크기 차의 절반이다.\n조건 정리: $P,C,A$는 일직선이고 $PT$는 점 $T$에서의 접선이다.\n풀이 방향: $\\angle ABT$와 $\\angle CAT$로부터 필요한 두 호 $AT$, $CT$의 크기를 구한다.\n정석 풀이: $\\angle ABT=112^\\circ$가 바라보는 큰 호 $AT$의 크기는 $224^\\circ$이므로 작은 호 $AT$의 크기는 $360^\\circ-224^\\circ=136^\\circ$이다. 또 $\\angle CAT=36^\\circ$이므로 호 $CT$의 크기는 $72^\\circ$이다. 따라서 접선과 할선이 이루는 외각은 $\\angle APT=\\dfrac12(136^\\circ-72^\\circ)=32^\\circ$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -161,7 +181,11 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 지름이 만드는 직각과 접선-현의 성질을 이용하면 $\\triangle BCP$의 두 각이 같아진다.\n조건 정리: $AB$는 지름이므로 $\\angle ACB=90^\\circ$이다.\n풀이 방향: 먼저 $\\triangle ABC$에서 $BC$를 구하고, $\\triangle BCP$가 이등변삼각형임을 보인다.\n정석 풀이: $\\triangle ABC$는 빗변이 $10$이고 $\\angle BAC=30^\\circ$인 직각삼각형이므로 $BC=5$이다. 접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각 $\\angle BAC$와 같으므로 $\\angle BCP=30^\\circ$이다. 또 $\\angle ABC=60^\\circ$이므로 $\\angle CBP=120^\\circ$, 따라서 $\\angle BPC=30^\\circ$이다. 그러므로 $\\angle BCP=\\angle BPC$이어서 $BP=BC=5$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 지름이 만드는 직각과 접선-현의 성질을 이용하면 $\\triangle BCP$의 두 각이 같아진다.\n조건 정리: $AB$는 지름이므로 $\\angle ACB=90^\\circ$이다.\n풀이 방향: 먼저 $\\triangle ABC$에서 $BC$를 구하고, $\\triangle BCP$가 이등변삼각형임을 보인다.\n정석 풀이: $\\triangle ABC$는 빗변이 $10$이고 $\\angle BAC=30^\\circ$인 직각삼각형이므로 $BC=5$이다. 접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각 $\\angle BAC$와 같으므로 $\\angle BCP=30^\\circ$이다. 또 $\\angle ABC=60^\\circ$이므로 $\\angle CBP=120^\\circ$, 따라서 $\\angle BPC=30^\\circ$이다. 그러므로 $\\angle BCP=\\angle BPC$이어서 $BP=BC=5$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -185,7 +209,11 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 자료를 작은 값부터 나열한 뒤 가운데 두 값의 평균을 구한다.\n정석 풀이: 자료를 정리하면 $7,13,17,19,21,22$이다. 자료가 $6$개이므로 중앙값은 세 번째 값과 네 번째 값의 평균인 $\\dfrac{17+19}{2}=18$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 자료를 작은 값부터 나열한 뒤 가운데 두 값의 평균을 구한다.\n정석 풀이: 자료를 정리하면 $7,13,17,19,21,22$이다. 자료가 $6$개이므로 중앙값은 세 번째 값과 네 번째 값의 평균인 $\\dfrac{17+19}{2}=18$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -209,7 +237,11 @@ window.questionBank = [
       "자료의 변량 중에서 매우 크거나 작은 값이 포함되어 있는 경우에는 중앙값이 평균보다 그 자료의 대푯값으로 적절하다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 자료의 개수가 짝수일 때 중앙값의 정의를 확인한다.\n정석 풀이: 변량이 $10$개이면 작은 값부터 나열했을 때 중앙의 두 값은 5번째와 6번째 값이다. 따라서 중앙값은 이 두 값의 평균이다. 5번째 값 하나만을 중앙값이라고 한 ③이 옳지 않다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 자료의 개수가 짝수일 때 중앙값의 정의를 확인한다.\n정석 풀이: 변량이 $10$개이면 작은 값부터 나열했을 때 중앙의 두 값은 5번째와 6번째 값이다. 따라서 중앙값은 이 두 값의 평균이다. 5번째 값 하나만을 중앙값이라고 한 ③이 옳지 않다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -233,7 +265,11 @@ window.questionBank = [
       "최빈값이 없다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 가장 많이 나타나는 값을 모두 찾는다.\n정석 풀이: $7$은 두 번, $11$도 두 번 나타나고 나머지 값은 한 번씩 나타난다. 따라서 최빈값은 $7,11$ 두 개이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 가장 많이 나타나는 값을 모두 찾는다.\n정석 풀이: $7$은 두 번, $11$도 두 번 나타나고 나머지 값은 한 번씩 나타난다. 따라서 최빈값은 $7,11$ 두 개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -257,7 +293,11 @@ window.questionBank = [
       "산포도가 작을수록 자료의 값이 평균을 중심으로 모여 있다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 산포도는 자료가 평균을 중심으로 흩어진 정도를 나타낸다.\n정석 풀이: 산포도가 클수록 자료가 평균에서 더 넓게 흩어져 있으므로 자료가 고르다고 할 수 없다. 따라서 ②가 옳지 않다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 산포도는 자료가 평균을 중심으로 흩어진 정도를 나타낸다.\n정석 풀이: 산포도가 클수록 자료가 평균에서 더 넓게 흩어져 있으므로 자료가 고르다고 할 수 없다. 따라서 ②가 옳지 않다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -283,7 +323,11 @@ window.questionBank = [
       "$30$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 편차의 합은 항상 $0$이다.\n조건 정리: 편차는 $a,-4,3,2,-1$이다.\n풀이 방향: 먼저 $a$를 구한 뒤 편차 제곱의 평균을 계산한다.\n정석 풀이: $a-4+3+2-1=0$이므로 $a=0$이다. 따라서 분산은 $\\dfrac{0^2+(-4)^2+3^2+2^2+(-1)^2}{5}=\\dfrac{30}{5}=6$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 편차의 합은 항상 $0$이다.\n조건 정리: 편차는 $a,-4,3,2,-1$이다.\n풀이 방향: 먼저 $a$를 구한 뒤 편차 제곱의 평균을 계산한다.\n정석 풀이: $a-4+3+2-1=0$이므로 $a=0$이다. 따라서 분산은 $\\dfrac{0^2+(-4)^2+3^2+2^2+(-1)^2}{5}=\\dfrac{30}{5}=6$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -307,7 +351,11 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 모든 변량에 같은 일차변환을 하면 평균과 표준편차가 일정한 규칙으로 변한다.\n정석 풀이: 모든 변량을 $2$배하고 $1$을 더했으므로 평균은 $x=2\\times3+1=7$이다. 표준편차는 상수의 덧셈에는 변하지 않고 $2$배에 따라 $2$배가 되므로 $y=2\\times2=4$이다. 따라서 $x+y=11$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 모든 변량에 같은 일차변환을 하면 평균과 표준편차가 일정한 규칙으로 변한다.\n정석 풀이: 모든 변량을 $2$배하고 $1$을 더했으므로 평균은 $x=2\\times3+1=7$이다. 표준편차는 상수의 덧셈에는 변하지 않고 $2$배에 따라 $2$배가 되므로 $y=2\\times2=4$이다. 따라서 $x+y=11$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -335,7 +383,11 @@ window.questionBank = [
       "10명"
     ],
     "answer": "③",
-    "solution": "[키포인트] 2차 점수가 1차 점수보다 높다는 것은 산점도에서 $y\\gt x$인 점이다.\n정석 풀이: 산점도에서 1차 점수와 2차 점수가 같은 기준선보다 위쪽에 있는 점, 즉 2차 점수가 더 높은 점을 세면 모두 $7$개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 2차 점수가 1차 점수보다 높다는 것은 산점도에서 $y\\gt x$인 점이다.\n정석 풀이: 산점도에서 1차 점수와 2차 점수가 같은 기준선보다 위쪽에 있는 점, 즉 2차 점수가 더 높은 점을 세면 모두 $7$개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -362,7 +414,11 @@ window.questionBank = [
       "$45\\%$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 점수의 평균이 $18$ 이상이라는 조건은 두 점수의 합이 $36$ 이상이라는 뜻이다.\n정석 풀이: 산점도에서 $1$차 점수와 $2$차 점수의 합이 $36$ 이상인 점은 $6$개이다. 전체가 $20$명이므로 비율은 $\\dfrac{6}{20}\\times100=30\\%$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 점수의 평균이 $18$ 이상이라는 조건은 두 점수의 합이 $36$ 이상이라는 뜻이다.\n정석 풀이: 산점도에서 $1$차 점수와 $2$차 점수의 합이 $36$ 이상인 점은 $6$개이다. 전체가 $20$명이므로 비율은 $\\dfrac{6}{20}\\times100=30\\%$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -389,7 +445,11 @@ window.questionBank = [
       "$3.5$점"
     ],
     "answer": "④",
-    "solution": "[키포인트] 가로축 청결도가 $2$ 이하인 점만 골라 세로축 안전성 점수를 평균낸다.\n정석 풀이: 청결도 $1$점인 두 승객의 안전성 점수는 $2,4$점이고, 청결도 $2$점인 다섯 승객의 안전성 점수는 $1,2,3,4,5$점이다. 따라서 평균은 $\\dfrac{2+4+1+2+3+4+5}{7}=\\dfrac{21}{7}=3$점이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 가로축 청결도가 $2$ 이하인 점만 골라 세로축 안전성 점수를 평균낸다.\n정석 풀이: 청결도 $1$점인 두 승객의 안전성 점수는 $2,4$점이고, 청결도 $2$점인 다섯 승객의 안전성 점수는 $1,2,3,4,5$점이다. 따라서 평균은 $\\dfrac{2+4+1+2+3+4+5}{7}=\\dfrac{21}{7}=3$점이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -416,7 +476,11 @@ window.questionBank = [
       "자동차가 움직인 거리와 사용한 연료의 양"
     ],
     "answer": "①",
-    "solution": "[키포인트] 그림은 한 변량이 커질수록 다른 변량이 작아지는 음의 상관관계를 나타낸다.\n정석 풀이: 겨울철 기온이 높아질수록 난방 사용량과 난방비는 대체로 줄어든다. 따라서 두 변량 사이에 음의 상관관계가 나타나는 것은 ①이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 그림은 한 변량이 커질수록 다른 변량이 작아지는 음의 상관관계를 나타낸다.\n정석 풀이: 겨울철 기온이 높아질수록 난방 사용량과 난방비는 대체로 줄어든다. 따라서 두 변량 사이에 음의 상관관계가 나타나는 것은 ①이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -443,7 +507,11 @@ window.questionBank = [
       "$E$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 가로축 값에 비해 세로축 값이 가장 작은 점을 찾는다.\n정석 풀이: $A$~$E$의 위치를 비교하면 $E$는 컴퓨터 사용 시간이 큰 편이면서 수면 시간은 가장 낮은 쪽에 놓여 있다. 따라서 컴퓨터 사용 시간에 비하여 수면 시간이 가장 짧은 학생은 $E$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 가로축 값에 비해 세로축 값이 가장 작은 점을 찾는다.\n정석 풀이: $A$~$E$의 위치를 비교하면 $E$는 컴퓨터 사용 시간이 큰 편이면서 수면 시간은 가장 낮은 쪽에 놓여 있다. 따라서 컴퓨터 사용 시간에 비하여 수면 시간이 가장 짧은 학생은 $E$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -467,7 +535,11 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 변량이 함께 증가하거나 감소하는 뚜렷한 경향이 있는지 판단한다.\n정석 풀이: 통학 거리와 통학 시간은 대체로 양의 상관관계가 있고, 놀이동산 입장객 수와 입장료 총액도 양의 상관관계가 있다. 반면 봉사활동 시간과 영어 성적, 몸무게와 시력은 일반적으로 일정한 상관관계가 있다고 보기 어렵다. 따라서 상관관계가 없는 것은 ㄴ, ㄷ이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 변량이 함께 증가하거나 감소하는 뚜렷한 경향이 있는지 판단한다.\n정석 풀이: 통학 거리와 통학 시간은 대체로 양의 상관관계가 있고, 놀이동산 입장객 수와 입장료 총액도 양의 상관관계가 있다. 반면 봉사활동 시간과 영어 성적, 몸무게와 시력은 일반적으로 일정한 상관관계가 있다고 보기 어렵다. 따라서 상관관계가 없는 것은 ㄴ, ㄷ이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -489,7 +561,11 @@ window.questionBank = [
     "content": "다음 그림에서 직선 $TT'$은 점 $A$에서 두 원과 접하고 현 $BC$는 점 $D$에서 작은 원에 접한다. $\\angle CBA=30^\\circ$, $\\angle BAT'=70^\\circ$일 때, $\\angle y-\\angle x$의 크기를 구하여라.[7점]",
     "choices": [],
     "answer": "$30^\\circ$",
-    "solution": "[키포인트] 큰 원의 접선-현 정리로 $y$와 $\\angle EAC$을 구하고, 작은 원에 그은 두 접선 $EA$, $ED$가 만드는 이등변삼각형을 이용하여 $x$를 구한다.\n조건 정리: 직선 $TT'$은 점 $A$에서 두 원의 공통접선이고, 직선 $BC$는 점 $D$에서 작은 원의 접선이다. 직선 $BC$와 $TT'$의 교점을 $E$라 하자.\n풀이 방향: 큰 원에서 접선과 현이 이루는 각을 이용하여 $\\angle BCA$와 $\\angle EAC$을 구한 뒤, $EA=ED$를 이용하여 $\\angle EAD$를 구한다.\n정석 풀이: 큰 원에서 접선 $AT'$과 현 $AB$가 이루는 각과 호 $AB$에 대한 원주각은 같으므로 $\\angle BCA=\\angle BAT'=70^\\circ$이다. 따라서 $y=70^\\circ$이다. 또한 접선 $AE$와 현 $AC$가 이루는 각은 호 $AC$에 대한 원주각 $\\angle ABC$와 같으므로 $\\angle EAC=30^\\circ$이다. $E,C,D,B$는 한 직선 위에 있으므로 $\\angle ACE=180^\\circ-\\angle ACB=110^\\circ$이다. 따라서 $\\triangle AEC$에서 $\\angle AEC=180^\\circ-30^\\circ-110^\\circ=40^\\circ$이고, $D$가 직선 $EC$ 위에 있으므로 $\\angle AED=40^\\circ$이다. 한편 $EA$와 $ED$는 작은 원에 점 $E$에서 그은 두 접선이므로 $EA=ED$이다. 따라서 이등변삼각형 $AED$에서 $\\angle EAD=\\angle ADE=\\dfrac{180^\\circ-40^\\circ}{2}=70^\\circ$이다. 그러므로 $x=\\angle CAD=\\angle EAD-\\angle EAC=70^\\circ-30^\\circ=40^\\circ$이다. 따라서 $y-x=70^\\circ-40^\\circ=30^\\circ$이다.\n따라서 구하는 값은 $30^\\circ$이다."
+    "solution": "[키포인트] 큰 원의 접선-현 정리로 $y$와 $\\angle EAC$을 구하고, 작은 원에 그은 두 접선 $EA$, $ED$가 만드는 이등변삼각형을 이용하여 $x$를 구한다.\n조건 정리: 직선 $TT'$은 점 $A$에서 두 원의 공통접선이고, 직선 $BC$는 점 $D$에서 작은 원의 접선이다. 직선 $BC$와 $TT'$의 교점을 $E$라 하자.\n풀이 방향: 큰 원에서 접선과 현이 이루는 각을 이용하여 $\\angle BCA$와 $\\angle EAC$을 구한 뒤, $EA=ED$를 이용하여 $\\angle EAD$를 구한다.\n정석 풀이: 큰 원에서 접선 $AT'$과 현 $AB$가 이루는 각과 호 $AB$에 대한 원주각은 같으므로 $\\angle BCA=\\angle BAT'=70^\\circ$이다. 따라서 $y=70^\\circ$이다. 또한 접선 $AE$와 현 $AC$가 이루는 각은 호 $AC$에 대한 원주각 $\\angle ABC$와 같으므로 $\\angle EAC=30^\\circ$이다. $E,C,D,B$는 한 직선 위에 있으므로 $\\angle ACE=180^\\circ-\\angle ACB=110^\\circ$이다. 따라서 $\\triangle AEC$에서 $\\angle AEC=180^\\circ-30^\\circ-110^\\circ=40^\\circ$이고, $D$가 직선 $EC$ 위에 있으므로 $\\angle AED=40^\\circ$이다. 한편 $EA$와 $ED$는 작은 원에 점 $E$에서 그은 두 접선이므로 $EA=ED$이다. 따라서 이등변삼각형 $AED$에서 $\\angle EAD=\\angle ADE=\\dfrac{180^\\circ-40^\\circ}{2}=70^\\circ$이다. 그러므로 $x=\\angle CAD=\\angle EAD-\\angle EAC=70^\\circ-30^\\circ=40^\\circ$이다. 따라서 $y-x=70^\\circ-40^\\circ=30^\\circ$이다.\n따라서 구하는 값은 $30^\\circ$이다.",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -510,7 +586,11 @@ window.questionBank = [
     "content": "다음 자료의 분산이 $26$일 때, 양수 $a$의 값을 구하시오.[7점]<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>$a$</td><td>$3$</td><td>$3a+4$</td><td>$2$</td><td>$a+1$</td></tr></tbody></table></div>",
     "choices": [],
     "answer": "4",
-    "solution": "[키포인트] 평균을 $a$로 나타낸 뒤 각 편차를 구하여 분산 식을 세운다.\n조건 정리: 자료는 $a,3,3a+4,2,a+1$이고 분산은 $26$이다.\n풀이 방향: 평균과 편차 제곱의 합을 순서대로 계산한다.\n정석 풀이: 평균은 $\\dfrac{a+3+(3a+4)+2+(a+1)}5=a+2$이다. 각 편차는 $-2,1-a,2a+2,-a,-1$이므로 분산은 $\\dfrac{4+(1-a)^2+(2a+2)^2+a^2+1}{5}=26$이다. 정리하면 $6a^2+6a+10=130$, 즉 $a^2+a-20=0$이므로 $(a-4)(a+5)=0$이다. $a$는 양수이므로 $a=4$이다.\n따라서 구하는 값은 $4$이다."
+    "solution": "[키포인트] 평균을 $a$로 나타낸 뒤 각 편차를 구하여 분산 식을 세운다.\n조건 정리: 자료는 $a,3,3a+4,2,a+1$이고 분산은 $26$이다.\n풀이 방향: 평균과 편차 제곱의 합을 순서대로 계산한다.\n정석 풀이: 평균은 $\\dfrac{a+3+(3a+4)+2+(a+1)}5=a+2$이다. 각 편차는 $-2,1-a,2a+2,-a,-1$이므로 분산은 $\\dfrac{4+(1-a)^2+(2a+2)^2+a^2+1}{5}=26$이다. 정리하면 $6a^2+6a+10=130$, 즉 $a^2+a-20=0$이므로 $(a-4)(a+5)=0$이다. $a$는 양수이므로 $a=4$이다.\n따라서 구하는 값은 $4$이다.",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -529,9 +609,14 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/22_연향중_2학기_기말_중3_기출/q21.png",
+    "imageSize": "tall",
     "content": "아래의 산점도는 학생 $20$명의 수학 점수와 영어 점수를 조사하여 나타낸 것이다.",
     "choices": [],
     "answer": "$a=3$, $b=30$, $c=25$",
-    "solution": "[키포인트] 세 조건을 산점도에서 각각 독립적으로 세어 확인한다.\n풀이 방향: 90점 이상 영역의 점 수, 두 점수 차가 가장 큰 점, $y\\lt x$인 점 수를 차례로 확인한다.\n정석 풀이: 수학과 영어 점수가 모두 $90$점 이상인 점은 $(90,90)$, $(90,100)$, $(100,100)$의 $3$개이므로 $a=3$이다. 두 과목 점수 차가 가장 큰 점은 $(30,70)$이고 점수 차는 $40$점이므로 그 학생의 수학 점수는 $b=30$이다. 수학 점수가 영어 점수보다 높은 점은 $(50,30)$, $(60,40)$, $(70,40)$, $(70,50)$, $(90,70)$의 $5$개이므로 전체 $20$명의 $\\dfrac5{20}\\times100=25\\%$이다. 따라서 $c=25$이다.\n따라서 구하는 값은 $a=3$, $b=30$, $c=25$이다."
+    "solution": "[키포인트] 세 조건을 산점도에서 각각 독립적으로 세어 확인한다.\n풀이 방향: 90점 이상 영역의 점 수, 두 점수 차가 가장 큰 점, $y\\lt x$인 점 수를 차례로 확인한다.\n정석 풀이: 수학과 영어 점수가 모두 $90$점 이상인 점은 $(90,90)$, $(90,100)$, $(100,100)$의 $3$개이므로 $a=3$이다. 두 과목 점수 차가 가장 큰 점은 $(30,70)$이고 점수 차는 $40$점이므로 그 학생의 수학 점수는 $b=30$이다. 수학 점수가 영어 점수보다 높은 점은 $(50,30)$, $(60,40)$, $(70,40)$, $(70,50)$, $(90,70)$의 $5$개이므로 전체 $20$명의 $\\dfrac5{20}\\times100=25\\%$이다. 따라서 $c=25$이다.\n따라서 구하는 값은 $a=3$, $b=30$, $c=25$이다.",
+    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+    "subUnit": "통계 자료 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

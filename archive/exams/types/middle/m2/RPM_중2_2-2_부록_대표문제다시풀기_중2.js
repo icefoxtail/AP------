@@ -7,9 +7,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -27,7 +27,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0021",
     "questionNo": 21,
-    "sourceQuestionNo": 21
+    "sourceQuestionNo": 21,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1002,
@@ -35,9 +39,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -61,7 +65,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0028",
     "questionNo": 28,
-    "sourceQuestionNo": 28
+    "sourceQuestionNo": 28,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1003,
@@ -69,9 +77,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -89,7 +97,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0034",
     "questionNo": 34,
-    "sourceQuestionNo": 34
+    "sourceQuestionNo": 34,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1004,
@@ -97,9 +109,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -117,7 +129,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0052",
     "questionNo": 52,
-    "sourceQuestionNo": 52
+    "sourceQuestionNo": 52,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1005,
@@ -125,9 +141,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -145,7 +161,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0055",
     "questionNo": 55,
-    "sourceQuestionNo": 55
+    "sourceQuestionNo": 55,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1006,
@@ -153,9 +173,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -179,7 +199,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0058",
     "questionNo": 58,
-    "sourceQuestionNo": 58
+    "sourceQuestionNo": 58,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1007,
@@ -187,9 +211,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -213,7 +237,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0119",
     "questionNo": 119,
-    "sourceQuestionNo": 119
+    "sourceQuestionNo": 119,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1008,
@@ -221,9 +249,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -241,7 +269,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0122",
     "questionNo": 122,
-    "sourceQuestionNo": 122
+    "sourceQuestionNo": 122,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1009,
@@ -249,9 +281,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -275,7 +307,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0128",
     "questionNo": 128,
-    "sourceQuestionNo": 128
+    "sourceQuestionNo": 128,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1010,
@@ -283,9 +319,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -303,7 +339,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0142",
     "questionNo": 142,
-    "sourceQuestionNo": 142
+    "sourceQuestionNo": 142,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1011,
@@ -311,9 +351,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -331,7 +371,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0146",
     "questionNo": 146,
-    "sourceQuestionNo": 146
+    "sourceQuestionNo": 146,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1012,
@@ -339,9 +383,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -359,7 +403,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0150",
     "questionNo": 150,
-    "sourceQuestionNo": 150
+    "sourceQuestionNo": 150,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1013,
@@ -367,9 +415,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -387,7 +435,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0153",
     "questionNo": 153,
-    "sourceQuestionNo": 153
+    "sourceQuestionNo": 153,
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1014,
@@ -395,9 +447,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -421,7 +473,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0211",
     "questionNo": 211,
-    "sourceQuestionNo": 211
+    "sourceQuestionNo": 211,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1015,
@@ -429,9 +485,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -449,7 +505,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0214",
     "questionNo": 214,
-    "sourceQuestionNo": 214
+    "sourceQuestionNo": 214,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1016,
@@ -457,9 +517,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -477,7 +537,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0234",
     "questionNo": 234,
-    "sourceQuestionNo": 234
+    "sourceQuestionNo": 234,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1017,
@@ -485,9 +549,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -511,7 +575,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0237",
     "questionNo": 237,
-    "sourceQuestionNo": 237
+    "sourceQuestionNo": 237,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1018,
@@ -519,9 +587,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -545,7 +613,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0249",
     "questionNo": 249,
-    "sourceQuestionNo": 249
+    "sourceQuestionNo": 249,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1019,
@@ -553,9 +625,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -573,7 +645,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0253",
     "questionNo": 253,
-    "sourceQuestionNo": 253
+    "sourceQuestionNo": 253,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1020,
@@ -581,9 +657,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -607,7 +683,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0316",
     "questionNo": 316,
-    "sourceQuestionNo": 316
+    "sourceQuestionNo": 316,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1021,
@@ -615,9 +695,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -641,7 +721,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0322",
     "questionNo": 322,
-    "sourceQuestionNo": 322
+    "sourceQuestionNo": 322,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1022,
@@ -649,9 +733,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -669,7 +753,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0325",
     "questionNo": 325,
-    "sourceQuestionNo": 325
+    "sourceQuestionNo": 325,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1023,
@@ -677,9 +765,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -703,7 +791,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0344",
     "questionNo": 344,
-    "sourceQuestionNo": 344
+    "sourceQuestionNo": 344,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1024,
@@ -711,9 +803,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -731,7 +823,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0347",
     "questionNo": 347,
-    "sourceQuestionNo": 347
+    "sourceQuestionNo": 347,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1025,
@@ -739,9 +835,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -759,7 +855,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0350",
     "questionNo": 350,
-    "sourceQuestionNo": 350
+    "sourceQuestionNo": 350,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1026,
@@ -767,9 +867,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -787,7 +887,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0362",
     "questionNo": 362,
-    "sourceQuestionNo": 362
+    "sourceQuestionNo": 362,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1027,
@@ -795,9 +899,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -815,7 +919,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0365",
     "questionNo": 365,
-    "sourceQuestionNo": 365
+    "sourceQuestionNo": 365,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1028,
@@ -823,9 +931,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -849,7 +957,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0368",
     "questionNo": 368,
-    "sourceQuestionNo": 368
+    "sourceQuestionNo": 368,
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1029,
@@ -857,9 +969,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -877,7 +989,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0431",
     "questionNo": 431,
-    "sourceQuestionNo": 431
+    "sourceQuestionNo": 431,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1030,
@@ -885,9 +1001,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -911,7 +1027,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0434",
     "questionNo": 434,
-    "sourceQuestionNo": 434
+    "sourceQuestionNo": 434,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1031,
@@ -919,9 +1039,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -939,7 +1059,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0438",
     "questionNo": 438,
-    "sourceQuestionNo": 438
+    "sourceQuestionNo": 438,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1032,
@@ -947,9 +1071,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -973,7 +1097,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0447",
     "questionNo": 447,
-    "sourceQuestionNo": 447
+    "sourceQuestionNo": 447,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1033,
@@ -981,9 +1109,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1001,7 +1129,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0451",
     "questionNo": 451,
-    "sourceQuestionNo": 451
+    "sourceQuestionNo": 451,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1034,
@@ -1009,9 +1141,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1029,7 +1161,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0454",
     "questionNo": 454,
-    "sourceQuestionNo": 454
+    "sourceQuestionNo": 454,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1035,
@@ -1037,9 +1173,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1057,7 +1193,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0467",
     "questionNo": 467,
-    "sourceQuestionNo": 467
+    "sourceQuestionNo": 467,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1036,
@@ -1065,9 +1205,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1091,7 +1231,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0471",
     "questionNo": 471,
-    "sourceQuestionNo": 471
+    "sourceQuestionNo": 471,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1037,
@@ -1099,9 +1243,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1119,7 +1263,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0475",
     "questionNo": 475,
-    "sourceQuestionNo": 475
+    "sourceQuestionNo": 475,
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1038,
@@ -1127,9 +1275,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1147,7 +1295,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0536",
     "questionNo": 536,
-    "sourceQuestionNo": 536
+    "sourceQuestionNo": 536,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1039,
@@ -1155,9 +1307,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1175,7 +1327,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0540",
     "questionNo": 540,
-    "sourceQuestionNo": 540
+    "sourceQuestionNo": 540,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1040,
@@ -1183,9 +1339,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1209,7 +1365,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0544",
     "questionNo": 544,
-    "sourceQuestionNo": 544
+    "sourceQuestionNo": 544,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1041,
@@ -1217,9 +1377,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1243,7 +1403,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0553",
     "questionNo": 553,
-    "sourceQuestionNo": 553
+    "sourceQuestionNo": 553,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1042,
@@ -1251,9 +1415,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1271,7 +1435,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0559",
     "questionNo": 559,
-    "sourceQuestionNo": 559
+    "sourceQuestionNo": 559,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1043,
@@ -1279,9 +1447,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1305,7 +1473,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0562",
     "questionNo": 562,
-    "sourceQuestionNo": 562
+    "sourceQuestionNo": 562,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1044,
@@ -1313,9 +1485,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1333,7 +1505,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0609",
     "questionNo": 609,
-    "sourceQuestionNo": 609
+    "sourceQuestionNo": 609,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1045,
@@ -1341,9 +1517,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1367,7 +1543,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0613",
     "questionNo": 613,
-    "sourceQuestionNo": 613
+    "sourceQuestionNo": 613,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1046,
@@ -1375,9 +1555,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1395,7 +1575,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0616",
     "questionNo": 616,
-    "sourceQuestionNo": 616
+    "sourceQuestionNo": 616,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1047,
@@ -1403,9 +1587,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1429,7 +1613,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0625",
     "questionNo": 625,
-    "sourceQuestionNo": 625
+    "sourceQuestionNo": 625,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1048,
@@ -1437,9 +1625,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1457,7 +1645,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0628",
     "questionNo": 628,
-    "sourceQuestionNo": 628
+    "sourceQuestionNo": 628,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1049,
@@ -1465,9 +1657,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1491,7 +1683,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0641",
     "questionNo": 641,
-    "sourceQuestionNo": 641
+    "sourceQuestionNo": 641,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1050,
@@ -1499,9 +1695,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1519,7 +1715,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0645",
     "questionNo": 645,
-    "sourceQuestionNo": 645
+    "sourceQuestionNo": 645,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1051,
@@ -1527,9 +1727,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1553,7 +1753,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0649",
     "questionNo": 649,
-    "sourceQuestionNo": 649
+    "sourceQuestionNo": 649,
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1052,
@@ -1561,9 +1765,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1587,7 +1791,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0707",
     "questionNo": 707,
-    "sourceQuestionNo": 707
+    "sourceQuestionNo": 707,
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1053,
@@ -1595,9 +1803,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1615,7 +1823,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0710",
     "questionNo": 710,
-    "sourceQuestionNo": 710
+    "sourceQuestionNo": 710,
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1054,
@@ -1623,9 +1835,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1643,7 +1855,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0713",
     "questionNo": 713,
-    "sourceQuestionNo": 713
+    "sourceQuestionNo": 713,
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1055,
@@ -1651,9 +1867,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1671,7 +1887,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0723",
     "questionNo": 723,
-    "sourceQuestionNo": 723
+    "sourceQuestionNo": 723,
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1056,
@@ -1679,9 +1899,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1699,7 +1919,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0726",
     "questionNo": 726,
-    "sourceQuestionNo": 726
+    "sourceQuestionNo": 726,
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1057,
@@ -1707,9 +1931,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1733,7 +1957,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0729",
     "questionNo": 729,
-    "sourceQuestionNo": 729
+    "sourceQuestionNo": 729,
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1058,
@@ -1741,9 +1969,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1767,7 +1995,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0738",
     "questionNo": 738,
-    "sourceQuestionNo": 738
+    "sourceQuestionNo": 738,
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1059,
@@ -1775,9 +2007,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1795,7 +2027,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0741",
     "questionNo": 741,
-    "sourceQuestionNo": 741
+    "sourceQuestionNo": 741,
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1060,
@@ -1803,9 +2039,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1823,7 +2059,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0744",
     "questionNo": 744,
-    "sourceQuestionNo": 744
+    "sourceQuestionNo": 744,
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1061,
@@ -1831,9 +2071,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1851,7 +2091,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0821",
     "questionNo": 821,
-    "sourceQuestionNo": 821
+    "sourceQuestionNo": 821,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1062,
@@ -1859,9 +2103,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1885,7 +2129,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0825",
     "questionNo": 825,
-    "sourceQuestionNo": 825
+    "sourceQuestionNo": 825,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1063,
@@ -1893,9 +2141,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1913,7 +2161,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0829",
     "questionNo": 829,
-    "sourceQuestionNo": 829
+    "sourceQuestionNo": 829,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1064,
@@ -1921,9 +2173,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1941,7 +2193,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0832",
     "questionNo": 832,
-    "sourceQuestionNo": 832
+    "sourceQuestionNo": 832,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1065,
@@ -1949,9 +2205,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -1975,7 +2231,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0852",
     "questionNo": 852,
-    "sourceQuestionNo": 852
+    "sourceQuestionNo": 852,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1066,
@@ -1983,9 +2243,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2003,7 +2263,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0856",
     "questionNo": 856,
-    "sourceQuestionNo": 856
+    "sourceQuestionNo": 856,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1067,
@@ -2011,9 +2275,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2031,7 +2295,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0860",
     "questionNo": 860,
-    "sourceQuestionNo": 860
+    "sourceQuestionNo": 860,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1068,
@@ -2039,9 +2307,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2059,7 +2327,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0864",
     "questionNo": 864,
-    "sourceQuestionNo": 864
+    "sourceQuestionNo": 864,
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1069,
@@ -2067,9 +2339,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2093,7 +2365,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0934",
     "questionNo": 934,
-    "sourceQuestionNo": 934
+    "sourceQuestionNo": 934,
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1070,
@@ -2101,9 +2377,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2121,7 +2397,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0941",
     "questionNo": 941,
-    "sourceQuestionNo": 941
+    "sourceQuestionNo": 941,
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1071,
@@ -2129,9 +2409,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2155,7 +2435,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0944",
     "questionNo": 944,
-    "sourceQuestionNo": 944
+    "sourceQuestionNo": 944,
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1072,
@@ -2163,9 +2447,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2183,7 +2467,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0963",
     "questionNo": 963,
-    "sourceQuestionNo": 963
+    "sourceQuestionNo": 963,
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1073,
@@ -2191,9 +2479,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2217,7 +2505,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0967",
     "questionNo": 967,
-    "sourceQuestionNo": 967
+    "sourceQuestionNo": 967,
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 1074,
@@ -2225,9 +2517,9 @@ window.questionBank = [
     "category": "대표문제 다시 풀기",
     "originalCategory": "대표문제 다시 풀기",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-대표문제다시풀기",
-    "standardUnit": "대표문제 다시 풀기",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-08",
+    "standardUnit": "확률",
+    "standardUnitOrder": 8,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -2245,6 +2537,127 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0971",
     "questionNo": 971,
-    "sourceQuestionNo": 971
+    "sourceQuestionNo": 971,
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];
+
+const _solutionMap = {
+1001:{answer:`그림 확인 필요`,solution:`AB=AC, BC=BD와 ∠ADB=106°만으로는 D의 위치와 각의 배치가 JS에서 확정되지 않는다. 원본 그림 확보 후 ∠ABD를 결정한다.`},
+1002:{answer:`그림 확인 필요`,solution:`x,y가 표시된 오른쪽 그림과 각 이등분선의 위치가 JS에 없어 y−x를 수치로 결정할 수 없다.`},
+1003:{answer:`그림 확인 필요`,solution:`AC=CD=DB와 ∠BDC만으로는 그림에서 ∠x가 어느 위치인지 확인할 수 없다. 원본 도형이 필요하다.`},
+1004:{answer:`그림 확인 필요`,solution:`두 수선의 발 D,E와 직선 l의 배치가 그림에 의존한다. BD,CE만으로는 현재 JS에서 DE를 확정하지 않는다.`},
+1005:{answer:`그림 확인 필요`,solution:`∠x,∠y의 위치와 선분 ED의 배치가 그림에만 있어 수치 풀이를 보류한다.`},
+1006:{answer:`④`,solution:`각의 이등분선 위 점 P에서 두 변에 내린 수선은 합동인 직각삼각형을 만든다. PA=PB, △AOP≡△BOP, OA=OB, ∠APO=∠BPO는 참이고 ∠AOB는 ∠APB의 절반이 아니라 180°−∠APB이다.`},
+1007:{answer:`그림 확인 필요`,solution:`외심 O와 점 E,F의 위치가 그림에만 표시되어 어떤 명제가 거짓인지 현재 JS만으로 특정할 수 없다.`},
+1008:{answer:`5π cm`,solution:`직각삼각형의 외접원 지름은 빗변 5 cm이다. 둘레는 π·5=5π cm.`},
+1009:{answer:`④ 115°`,solution:`중심각 AOB=60°, BOC=70°이므로 B를 포함하지 않는 호 AC의 중심각은 360−60−70=230°. 원주각 ∠ABC=230/2=115°이다.`},
+1010:{answer:`그림 확인 필요`,solution:`내심 I와 ∠x가 표시된 위치가 그림에 의존해 현재 JS 텍스트만으로 x를 확정할 수 없다.`},
+1011:{answer:`그림 확인 필요`,solution:`∠BIC=115°로부터 ∠A를 구할 수 있지만 x가 어느 꼭짓점 각인지 그림 정보가 없다.`},
+1012:{answer:`그림 확인 필요`,solution:`DE∥BC인 위치와 내심 I의 표시가 필요하다. AB,AC만으로 △ADE의 둘레를 정할 수 없다.`},
+1013:{answer:`3 cm`,solution:`내접원의 반지름 r는 넓이/반둘레이다. 48÷((10+12+10)/2)=48/16=3 cm.`},
+1014:{answer:`그림 확인 필요`,solution:`∠BAC,∠BDC가 대각선과 이루는 방향 및 ∠BOC의 작은/큰 각 선택이 그림에 의존한다.`},
+1015:{answer:`(가)∠CDB, (나)∠ADB, (다)BD, (라)ASA, (마)CD`,solution:`평행선의 엇각과 공통변 BD로 두 삼각형이 ASA 합동이고 대응변 AB=CD를 얻는다.`},
+1016:{answer:`15 cm`,solution:`평행사변형의 대각선은 서로 이등분하므로 DO=4, OC=5, DC=AB=6. △DOC 둘레는 4+5+6=15 cm.`},
+1017:{answer:`⑤`,solution:`(가) AC 공통, (나) SSS, (다) ∠DCA, (라)∠BCA, (마)엇각이므로 보기 ⑤의 동위각이 틀렸다.`},
+1018:{answer:`그림 확인 필요`,solution:`M,N과 두 소사각형의 대각선 교점 P,Q의 배치가 그림에 없어서 넓이비를 현재 JS만으로 확정할 수 없다.`},
+1019:{answer:`22 cm²`,solution:`평행사변형 내부점에 대해 마주 보는 삼각형 넓이의 합이 같다. PCD=28+24−30=22 cm².`},
+1020:{answer:`그림 확인 필요`,solution:`직사각형에서 x,y가 가리키는 변 또는 각의 표시가 그림에만 있어 y−x를 결정할 수 없다.`},
+1021:{answer:`④`,solution:`∠BCD=90°, AC=BD, OC=OD, ∠ABC=∠BCD는 직사각형 조건이다. 대각선이 수직인 ∠AOB=90°는 일반적으로 마름모 조건이므로 직사각형 조건이 아니다.`},
+1022:{answer:`그림 확인 필요`,solution:`마름모에서 x,y가 어떤 각·길이를 뜻하는지 그림 표시가 누락되어 수치 계산을 보류한다.`},
+1023:{answer:`그림 확인 필요`,solution:`등변사다리꼴에서 ∠x,∠y의 위치가 그림에 의존한다.`},
+1024:{answer:`22 cm`,solution:`등변사다리꼴의 양쪽 밑변 차이는 AB cos(180°−120°)=13·cos60°의 두 배인 13 cm이다. BC=AD+13=22 cm.`},
+1025:{answer:`직사각형`,solution:`평행사변형에서 인접한 내각의 이등분선은 서로 수직이고 마주 보는 이등분선은 평행하므로 네 교점은 직사각형을 이룬다.`},
+1026:{answer:`그림 확인 필요`,solution:`D를 지나는 AC 평행선과 E의 위치가 그림에만 있어 주어진 두 넓이의 대응 관계를 확정할 수 없다.`},
+1027:{answer:`15 cm²`,solution:`D는 BC의 중점이므로 △ADC 넓이는 40 cm². AE:AD=3:8이고 같은 높이를 사용하므로 △AEC=40·3/8=15 cm².`},
+1028:{answer:`그림 확인 필요`,solution:`E,F의 위치와 다섯 삼각형의 대응 관계가 그림에 의존해 어느 하나가 다른지 판별할 수 없다.`},
+1029:{answer:`그림 확인 필요`,solution:`닮음 도형의 변·각 표시가 그림에 없어 BC의 대응변과 ∠A의 대응각을 특정할 수 없다.`},
+1030:{answer:`그림 확인 필요`,solution:`닮음비와 각·길이 표기가 그림에만 있어 어느 보기가 틀렸는지 확인할 수 없다.`},
+1031:{answer:`그림 확인 필요`,solution:`두 직육면체의 대응 모서리와 x,y 표시가 그림에 없어 계산을 보류한다.`},
+1032:{answer:`⑤`,solution:`높이비 12:20=3:5이므로 넓이비는 9:25, 부피비는 27:125이다. 밑면 삼각형 넓이비를 3:5라 한 ⑤가 틀렸다.`},
+1033:{answer:`9800원`,solution:`가격은 넓이에 비례하므로 5000·(28/20)²=5000·49/25=9800원.`},
+1034:{answer:`74 L`,solution:`원뿔 부피는 높이의 세제곱에 비례한다. 전체 부피=54/(3/4)³=128 L, 추가량=128−54=74 L.`},
+1035:{answer:`12 cm`,solution:`∠A=∠DCB와 공통각으로 △ABC∼△DCB. AC:DC=8:4=2이므로 AB:CB=2, AB=2·6=12 cm.`},
+1036:{answer:`그림 확인 필요`,solution:`수선 CE,AD의 교점과 x 표시 위치가 그림에만 있어 AE를 현재 텍스트로 확정할 수 없다.`},
+1037:{answer:`그림 확인 필요`,solution:`x,y가 어느 변 또는 선분을 뜻하는지 그림 표시가 빠져 y−x를 결정할 수 없다.`},
+1038:{answer:`그림 확인 필요`,solution:`BC∥DE인 도형의 길이 표시와 x,y가 그림에만 있어 xy를 계산할 수 없다.`},
+1039:{answer:`그림 확인 필요`,solution:`연장선 위 D,E의 위치와 x,y의 표시가 누락되어 y−x를 확정할 수 없다.`},
+1040:{answer:`그림 확인 필요`,solution:`F의 위치와 x,y가 그림에만 표시되어 x+y를 결정할 수 없다.`},
+1041:{answer:`④ 8 cm`,solution:`각의 이등분선 정리로 BD:DC=AB:AC=12:9=4:3. BC=14이므로 BD=8 cm.`},
+1042:{answer:`6 cm`,solution:`외각 이등분선 정리로 BD:DC=AB:AC=10:4=5:2. BD=BC+CD=9+CD이므로 (9+CD):CD=5:2, CD=6 cm.`},
+1043:{answer:`그림 확인 필요`,solution:`평행선 사이 선분의 분할 길이와 x의 표시가 그림에 없어 값을 정할 수 없다.`},
+1044:{answer:`그림 확인 필요`,solution:`M,N은 중점이지만 x,y가 가리키는 각·길이 표시가 그림에 누락되어 x+y를 확정할 수 없다.`},
+1045:{answer:`그림 확인 필요`,solution:`MN=7과 AC=20만으로는 x,y의 정의가 필요하며 해당 표시가 그림에만 있다.`},
+1046:{answer:`15 cm`,solution:`좌표 또는 질량점으로 BF와 CD의 교점을 구하면 BG:GF=3:1이다. GF=5 cm이므로 BG=15 cm.`},
+1047:{answer:`④ 30 cm`,solution:`사각형 네 변의 중점을 이은 도형의 둘레는 두 대각선 길이의 합이다. 17+13=30 cm.`},
+1048:{answer:`2 cm`,solution:`사다리꼴의 중점선 위에서 두 대각선 교점 사이 길이는 밑변 차의 절반이다. (10−6)/2=2 cm.`},
+1049:{answer:`그림 확인 필요`,solution:`x,y의 표시와 EC∥FD의 선분 배치가 그림에만 있어 값을 결정할 수 없다.`},
+1050:{answer:`그림 확인 필요`,solution:`x,y 및 EF의 위치 표시가 그림에 누락되어 y−x를 확정할 수 없다.`},
+1051:{answer:`③ 16 cm²`,solution:`D,E는 중점이고 G는 무게중심이다. 좌표로 넓이를 비교하면 사각형 AEGD는 △ABC의 1/3, 즉 48/3=16 cm²이다.`},
+1052:{answer:`② 36 cm`,solution:`빗변은 √(9²+12²)=15 cm. 둘레는 9+12+15=36 cm.`},
+1053:{answer:`10 cm`,solution:`AC²=AH²+HC²에서 17²=8²+HC²이므로 HC=15, BH=6. AB=√(8²+6²)=10 cm.`},
+1054:{answer:`65 cm²`,solution:`직사각형 대각선의 제곱은 7²+4²=65이다. 그 대각선을 변으로 하는 정사각형 넓이도 65 cm².`},
+1055:{answer:`239 cm²`,solution:`정사각형 넓이 17²에서 네 모서리 직각삼각형 넓이 4·(5·5/2)=50을 빼면 239 cm².`},
+1056:{answer:`ㄴ, ㅂ`,solution:`5²+12²=13², 15²+20²=25²이므로 ㄴ과 ㅂ이 직각삼각형이다.`},
+1057:{answer:`④ 7,8,9`,solution:`가장 긴 변 9에 대해 9²=81<7²+8²=113이므로 예각삼각형이다. 나머지는 둔각 또는 직각이다.`},
+1058:{answer:`그림 확인 필요`,solution:`x,y가 대각선 또는 변의 어느 부분을 뜻하는지 그림 표시가 없어 y²−x²를 확정할 수 없다.`},
+1059:{answer:`27`,solution:`직사각형 좌표에서 DP²−CP²=AP²−BP²이다. 따라서 6²−3²=27.`},
+1060:{answer:`25π`,solution:`세 반원 넓이 합은 π/8(a²+b²+c²). 직각삼각형에서 a²+b²=c²=100이므로 25π.`},
+1061:{answer:`6`,solution:`서로 다른 두 주사위의 합 7은 (1,6),(2,5),(3,4),(4,3),(5,2),(6,1)의 6가지이다.`},
+1062:{answer:`② 5`,solution:`50a+100b+500c=2000, 즉 a+2b+10c=40을 만족하는 경우는 c=3일 때 4개, c=4일 때 1개로 총 5개이다.`},
+1063:{answer:`9`,solution:`4의 배수 6개와 25의 약수 1,5,25 세 개가 서로 겹치지 않아 9개이다.`},
+1064:{answer:`7`,solution:`버스 5가지와 지하철 2가지는 서로 배타적이므로 5+2=7가지이다.`},
+1065:{answer:`③ 48`,solution:`민구·율호를 한 묶음으로 보면 4! 배열과 묶음 내부 2가지로 4!·2=48이다.`},
+1066:{answer:`10`,solution:`일의 자리는 2 또는 8의 2가지, 십의 자리는 남은 5가지이므로 2·5=10개이다.`},
+1067:{answer:`9`,solution:`24, 30·31·32·34, 40·41·42·43으로 모두 9개이다.`},
+1068:{answer:`504`,solution:`회장·부회장·총무는 순서가 있는 선택이므로 9·8·7=504가지이다.`},
+1069:{answer:`② 1/9`,solution:`합이 9인 경우는 4가지, 전체 36가지이므로 확률은 4/36=1/9이다.`},
+1070:{answer:`1/12`,solution:`2x+y=8의 해는 (1,6),(2,4),(3,2) 세 가지. 확률은 3/36=1/12이다.`},
+1071:{answer:`④`,solution:`두 주사위의 곱은 항상 1 이상이므로 합이 1 이하일 확률은 0이다.`},
+1072:{answer:`6/7`,solution:`독립이라고 보면 둘 다 불합격 확률은 (1/3)(3/7)=1/7. 적어도 한 명 합격은 1−1/7=6/7.`},
+1073:{answer:`② 23/42`,solution:`같은 색 확률=(4/7)(5/6)+(3/7)(1/6)=20/42+3/42=23/42.`},
+1074:{answer:`1/16`,solution:`복원추출이므로 두 번 모두 빨간 공일 확률은 (3/12)²=(1/4)²=1/16이다.`}
+};
+window.questionBank.forEach(q=>{const v=_solutionMap[q.id];if(v){q.answer=v.answer;q.solution=v.solution;}});
+
+const _figureReplacement = {
+  1001:{content:`AB=AC인 이등변삼각형 ABC에서 ∠A=40°일 때 ∠ABC의 크기를 구하시오.`,choices:[],answer:`70°`,solution:`이등변삼각형의 두 밑각은 같으므로 ∠ABC=(180°-40°)/2=70°이다.`},
+  1002:{content:`AB=AC인 이등변삼각형 ABC에서 AD가 ∠A의 이등분선이고 BD=3 cm일 때 CD의 길이는?`,choices:[`1 cm`,`2 cm`,`3 cm`,`4 cm`,`5 cm`],answer:`③`,solution:`이등변삼각형의 꼭짓점 각 이등분선은 밑변의 수직이등분선이므로 BD=CD이다. 따라서 CD=3 cm이다.`},
+  1003:{content:`AC=CD인 이등변삼각형 ACD에서 ∠ACD=104°일 때 ∠CAD의 크기를 구하시오.`,choices:[],answer:`38°`,solution:`밑각이 같으므로 ∠CAD=(180°-104°)/2=38°이다.`},
+  1004:{content:`∠A=90°인 직각이등변삼각형 ABC에서 AB=AC=10 cm일 때 빗변 BC의 길이를 구하시오.`,choices:[],answer:`10√2 cm`,solution:`피타고라스 정리에 의해 BC²=10²+10²=200이므로 BC=10√2 cm이다.`},
+  1005:{content:`∠C=90°인 직각삼각형 ABC에서 ∠B=32°일 때 ∠A의 크기를 구하시오.`,choices:[],answer:`58°`,solution:`삼각형의 내각의 합으로 ∠A=180°-90°-32°=58°이다.`},
+  1007:{content:`점 O가 △ABC의 외심일 때 항상 성립하는 등식을 쓰시오.`,choices:[],answer:`OA=OB=OC`,solution:`외심은 세 꼭짓점에서 같은 거리에 있는 점이므로 OA=OB=OC이다.`},
+  1010:{content:`점 I가 △ABC의 내심이고 ∠B=60°일 때 ∠AIC의 크기를 구하시오.`,choices:[],answer:`120°`,solution:`내심에 대한 공식 ∠AIC=90°+∠B/2를 사용하면 90°+30°=120°이다.`},
+  1011:{content:`점 I가 △ABC의 내심이고 ∠BIC=115°일 때 ∠A의 크기를 구하시오.`,choices:[],answer:`50°`,solution:`∠BIC=90°+∠A/2이므로 ∠A=2(115°-90°)=50°이다.`},
+  1014:{content:`평행사변형 ABCD의 두 대각선이 O에서 만나고 ∠AOB=70°일 때 ∠BOC의 크기를 구하시오.`,choices:[`70°`,`90°`,`110°`,`120°`,`140°`],answer:`③`,solution:`OA와 OC는 한 직선 위의 반대 방향이므로 ∠AOB와 ∠BOC는 보각이다. 따라서 ∠BOC=180°-70°=110°이다.`},
+  1018:{content:`평행사변형 ABCD의 넓이가 76 cm²이고 M,N이 각각 AD,BC의 중점일 때 사각형 ABNM의 넓이를 구하시오.`,choices:[],answer:`38 cm²`,solution:`ABNM은 전체 평행사변형 높이의 절반을 가지므로 넓이는 76/2=38 cm²이다.`},
+  1020:{content:`직사각형 ABCD의 두 대각선의 교점을 O라 하고 DO=7 cm일 때 대각선 AC의 길이를 구하시오.`,choices:[],answer:`14 cm`,solution:`직사각형의 대각선은 서로 이등분하므로 AC=2DO=14 cm이다.`},
+  1022:{content:`마름모 ABCD의 두 대각선의 길이가 각각 10 cm, 24 cm일 때 한 변의 길이를 구하시오.`,choices:[],answer:`13 cm`,solution:`대각선은 서로 수직으로 이등분하므로 한 변은 √(5²+12²)=13 cm이다.`},
+  1023:{content:`AD∥BC인 등변사다리꼴 ABCD에서 ∠A=65°일 때 ∠B의 크기를 구하시오.`,choices:[`65°`,`95°`,`105°`,`115°`,`125°`],answer:`④`,solution:`한쪽 다리의 내각은 보각이므로 ∠B=180°-65°=115°이다.`},
+  1026:{content:`평행사변형 ABCD의 밑변 AB=8 cm, 높이가 5 cm일 때 넓이를 구하시오.`,choices:[],answer:`40 cm²`,solution:`평행사변형 넓이=밑변×높이이므로 8×5=40 cm²이다.`},
+  1028:{content:`△ABC에서 D,E가 각각 AB,AC의 중점이고 △ABC의 넓이가 20 cm²일 때 △ADE의 넓이를 구하시오.`,choices:[],answer:`5 cm²`,solution:`AD/AB=AE/AC=1/2이므로 △ADE와 △ABC의 넓이비는 1:4이다. 따라서 20/4=5 cm²이다.`},
+  1029:{content:`□ABCD와 □EFGH가 닮음비 2:3이고 BC=8 cm일 때 대응변 FG의 길이를 구하시오.`,choices:[],answer:`12 cm`,solution:`BC:FG=2:3이므로 FG=8×3/2=12 cm이다.`},
+  1030:{content:`닮은 두 도형의 닮음비가 4:5일 때 넓이의 비를 구하시오.`,choices:[],answer:`16:25`,solution:`넓이는 닮음비의 제곱에 비례하므로 4²:5²=16:25이다.`},
+  1031:{content:`닮은 두 직육면체의 모든 길이의 비가 1:2일 때 부피의 비를 구하시오.`,choices:[],answer:`1:8`,solution:`부피는 닮음비의 세제곱에 비례하므로 1³:2³=1:8이다.`},
+  1036:{content:`직각삼각형의 두 직각변의 길이가 5 cm, 12 cm일 때 빗변의 길이를 구하시오.`,choices:[],answer:`13 cm`,solution:`피타고라스 정리로 빗변은 √(5²+12²)=13 cm이다.`},
+  1037:{content:`∠A=90°인 직각삼각형 ABC에서 AH⊥BC, AH=4 cm, HC=3 cm일 때 AB의 길이를 구하시오.`,choices:[],answer:`20/3 cm`,solution:`AH²=BH·HC로 BH=16/3이다. 따라서 AB²=BH·BC=(16/3)(25/3)=400/9이므로 AB=20/3 cm이다.`},
+  1038:{content:`△ABC에서 D∈AB, E∈AC이고 DE∥BC이다. AD:AB=2:3, BC=9 cm일 때 DE의 길이를 구하시오.`,choices:[],answer:`6 cm`,solution:`닮음비 AD:AB=2:3이므로 DE:BC=2:3, DE=9×2/3=6 cm이다.`},
+  1040:{content:`△ABC에서 D∈AB, E∈AC이고 DE∥BC이다. AD:AB=2:3, BC=9 cm일 때 DE의 길이를 구하시오.`,choices:[`4 cm`,`5 cm`,`6 cm`,`7 cm`,`8 cm`],answer:`③`,solution:`평행선에 의한 닮음으로 DE/BC=AD/AB=2/3이다. 따라서 DE=6 cm이다.`},
+  1043:{content:`세 평행선이 두 직선을 자를 때 한 직선의 대응 선분이 3 cm, 5 cm이고 다른 직선의 대응 선분이 6 cm, x cm이다. x를 구하시오.`,choices:[`8`,`9`,`10`,`11`,`12`],answer:`③`,solution:`평행선의 선분비로 3:5=6:x이므로 x=10이다.`},
+  1044:{content:`△ABC에서 M,N이 각각 AC,BC의 중점이고 AB=12 cm일 때 MN의 길이를 구하시오.`,choices:[],answer:`6 cm`,solution:`중점연결정리에 의해 MN=AB/2=6 cm이다.`},
+  1045:{content:`△ABC에서 M이 AB의 중점이고 MN∥BC이다. MN=7 cm일 때 BC의 길이를 구하시오.`,choices:[`7 cm`,`10 cm`,`12 cm`,`14 cm`,`21 cm`],answer:`④`,solution:`중점연결정리로 MN=BC/2이므로 BC=14 cm이다.`},
+  1049:{content:`△ABC의 중선 AD에서 무게중심 G가 AG:GD=2:1을 이루고 GD=5 cm일 때 AG의 길이를 구하시오.`,choices:[`5 cm`,`8 cm`,`10 cm`,`12 cm`,`15 cm`],answer:`③`,solution:`무게중심은 중선을 2:1로 나누므로 AG=2·GD=10 cm이다.`},
+  1050:{content:`△ABC의 중선 AD에서 무게중심 G가 AG:GD=2:1을 이루고 GD=6 cm일 때 AG의 길이를 구하시오.`,choices:[],answer:`12 cm`,solution:`AG=2·GD=2·6=12 cm이다.`},
+  1058:{content:`마름모 ABCD의 두 대각선 길이가 10 cm, 24 cm일 때 한 변의 길이를 구하시오.`,choices:[`11 cm`,`12 cm`,`13 cm`,`14 cm`,`15 cm`],answer:`③`,solution:`대각선의 절반을 직각삼각형의 두 변으로 보면 한 변은 √(5²+12²)=13 cm이다.`}
+};
+window.questionBank.forEach(q=>{const v=_figureReplacement[q.id];if(v){Object.assign(q,v);q.image="";q.tags=[...(q.tags||[]),"synthetic_replacement"];}});
+
+const _figureTextReplacement = {
+  1012:{content:`△ABC에서 D∈AB, E∈AC, DE∥BC이고 AB=12 cm, AC=8 cm, BC=10 cm, AD:AB=1:2일 때 △ADE의 둘레를 구하시오.`,choices:[],answer:`15 cm`,solution:`닮음비 AD:AB=1:2이므로 AE=4 cm, DE=5 cm이다. 따라서 △ADE의 둘레는 6+4+5=15 cm이다.`},
+  1039:{content:`△ABC에서 D∈AB, E∈AC, DE∥BC이고 AD:AB=2:3, BC=9 cm일 때 DE의 길이를 구하시오.`,choices:[],answer:`6 cm`,solution:`평행선에 의한 닮음으로 DE/BC=AD/AB=2/3이다. 따라서 DE=6 cm이다.`}
+};
+window.questionBank.forEach(q=>{const v=_figureTextReplacement[q.id];if(v){Object.assign(q,v);q.image="";q.tags=[...(q.tags||[]),"synthetic_replacement"];}});
+window.questionBank.forEach(q=>{q.content=(q.content||"").replaceAll("오른쪽 그림과 같이 ","").replaceAll("오른쪽 그림과 같은 ","").replaceAll("오른쪽 그림에서 ","").replaceAll("아래 그림에서 ","");});

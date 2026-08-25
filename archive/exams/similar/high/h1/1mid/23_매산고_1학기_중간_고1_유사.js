@@ -23,7 +23,11 @@ window.questionBank = [
       "$3x^2+x$"
     ],
     "answer": "①",
-    "solution": "<b>[Step 1]</b> 주어진 식에 다항식을 대입함: $2(2x^2-3x+2) - (x^2+2x-4)$\\n<b>[Step 2]</b> 분배법칙을 이용하여 괄호를 전개함: $4x^2-6x+4 - x^2-2x+4$\\n<b>[Step 3]</b> 동류항끼리 정리함: $(4x^2-x^2) + (-6x-2x) + (4+4) = 3x^2-8x+8$\\n$x=1$ 대입 시 $A=1, B=-1$ 이므로 $2A-B=3$. 결과식 $3-8+8=3$ 으로 일치함."
+    "solution": "<b>[Step 1]</b> 주어진 식에 다항식을 대입함: $2(2x^2-3x+2) - (x^2+2x-4)$\\n<b>[Step 2]</b> 분배법칙을 이용하여 괄호를 전개함: $4x^2-6x+4 - x^2-2x+4$\\n<b>[Step 3]</b> 동류항끼리 정리함: $(4x^2-x^2) + (-6x-2x) + (4+4) = 3x^2-8x+8$\\n$x=1$ 대입 시 $A=1, B=-1$ 이므로 $2A-B=3$. 결과식 $3-8+8=3$ 으로 일치함.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> 괄호를 풀고 실수부분과 허수부분을 분리함: $(5-2) + (-3i+4i)$\\n<b>[Step 2]</b> 복소수의 덧셈과 뺄셈 연산을 수행함: $3+i$\\n<b>[Step 3]</b> $a+bi$와 계수를 비교하여 $a=3, b=1$을 얻고, $a+b=4$를 도출함.\\n허수부분의 부호 실수 함정 방지 확인($-3+4=1$)."
+    "solution": "<b>[Step 1]</b> 괄호를 풀고 실수부분과 허수부분을 분리함: $(5-2) + (-3i+4i)$\\n<b>[Step 2]</b> 복소수의 덧셈과 뺄셈 연산을 수행함: $3+i$\\n<b>[Step 3]</b> $a+bi$와 계수를 비교하여 $a=3, b=1$을 얻고, $a+b=4$를 도출함.\\n허수부분의 부호 실수 함정 방지 확인($-3+4=1$).",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "16"
     ],
     "answer": "④",
-    "solution": "<b>[Step 1]</b> 좌변을 전개하여 내림차순으로 정리함: $2x^2+10x-x-5 = 2x^2+9x-5$\\n<b>[Step 2]</b> 우변과 계수를 비교하여 $a=9, b=-5$를 얻음.\\n<b>[Step 3]</b> 구하는 값 $a-b = 9 - (-5) = 14$를 도출함.\\n$x=0$ 대입 시 $-5=b$ 확인. $x=1$ 대입 시 $1 \\times 6 = 2+a+b \\implies 6=2+9-5$ 성립 확인."
+    "solution": "<b>[Step 1]</b> 좌변을 전개하여 내림차순으로 정리함: $2x^2+10x-x-5 = 2x^2+9x-5$\\n<b>[Step 2]</b> 우변과 계수를 비교하여 $a=9, b=-5$를 얻음.\\n<b>[Step 3]</b> 구하는 값 $a-b = 9 - (-5) = 14$를 도출함.\\n$x=0$ 대입 시 $-5=b$ 확인. $x=1$ 대입 시 $1 \\times 6 = 2+a+b \\implies 6=2+9-5$ 성립 확인.",
+    "subUnitKey": "H15-SA-02-IDENTITY",
+    "subUnit": "항등식과 계수비교",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "3"
     ],
     "answer": "②",
-    "solution": "<b>[Step 1]</b> 나머지 정리에 의해 $f(x)=2x^2+3x-5$라 하면 나머지는 $f(-2)$임.\\n<b>[Step 2]</b> $x=-2$를 대입하여 연산함: $2(-2)^2 + 3(-2) - 5$\\n<b>[Step 3]</b> $8 - 6 - 5 = -3$을 도출함.\\n조립제법으로 검증: $2, 3, -5$에 대해 $-2$ 적용 시 $2, -1, -3$ 나오며 나머지 $-3$ 일치."
+    "solution": "<b>[Step 1]</b> 나머지 정리에 의해 $f(x)=2x^2+3x-5$라 하면 나머지는 $f(-2)$임.\\n<b>[Step 2]</b> $x=-2$를 대입하여 연산함: $2(-2)^2 + 3(-2) - 5$\\n<b>[Step 3]</b> $8 - 6 - 5 = -3$을 도출함.\\n조립제법으로 검증: $2, 3, -5$에 대해 $-2$ 적용 시 $2, -1, -3$ 나오며 나머지 $-3$ 일치.",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "16"
     ],
     "answer": "②",
-    "solution": "<b>[Step 1]</b> 이차방정식이 중근을 가질 조건은 판별식 $D=0$임.\\n<b>[Step 2]</b> 짝수 판별식을 적용함: $D/4 = (-4)^2 - 1(2k-4) = 0$\\n<b>[Step 3]</b> $16 - 2k + 4 = 0 \\implies 2k = 20 \\implies k = 10$을 도출함.\\n$k=10$ 대입 시 $x^2-8x+16=(x-4)^2=0$ 이므로 중근 확인."
+    "solution": "<b>[Step 1]</b> 이차방정식이 중근을 가질 조건은 판별식 $D=0$임.\\n<b>[Step 2]</b> 짝수 판별식을 적용함: $D/4 = (-4)^2 - 1(2k-4) = 0$\\n<b>[Step 3]</b> $16 - 2k + 4 = 0 \\implies 2k = 20 \\implies k = 10$을 도출함.\\n$k=10$ 대입 시 $x^2-8x+16=(x-4)^2=0$ 이므로 중근 확인.",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> $x^2 = X$로 치환하여 이차식 형태로 변환함: $X^2+3X-4$\\n<b>[Step 2]</b> 상수항의 곱과 일차항의 합을 이용하여 인수분해함: $(X+4)(X-1)$\\n<b>[Step 3]</b> $X$에 다시 $x^2$을 대입하고 합차 공식을 적용함: $(x^2+4)(x+1)(x-1)$\\n<b>[Step 4]</b> 주어진 형태와 비교하여 $a=4, b=1$ (양수 조건)을 얻고, $a+2b = 4+2=6$을 계산함.\\n$a, b$가 양수여야 함을 이용해 $b=-1$ 함정 배제함. $(x^2+4)(x^2-1) = x^4+3x^2-4$ 전개 일치 확인."
+    "solution": "<b>[Step 1]</b> $x^2 = X$로 치환하여 이차식 형태로 변환함: $X^2+3X-4$\\n<b>[Step 2]</b> 상수항의 곱과 일차항의 합을 이용하여 인수분해함: $(X+4)(X-1)$\\n<b>[Step 3]</b> $X$에 다시 $x^2$을 대입하고 합차 공식을 적용함: $(x^2+4)(x+1)(x-1)$\\n<b>[Step 4]</b> 주어진 형태와 비교하여 $a=4, b=1$ (양수 조건)을 얻고, $a+2b = 4+2=6$을 계산함.\\n$a, b$가 양수여야 함을 이용해 $b=-1$ 함정 배제함. $(x^2+4)(x^2-1) = x^4+3x^2-4$ 전개 일치 확인.",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "68"
     ],
     "answer": "②",
-    "solution": "<b>[Step 1]</b> 조건식 $x^2-4x+1=0$의 양변을 $x$로 나누어 $x+\\dfrac{1}{x}=4$를 도출함.\\n<b>[Step 2]</b> 구하고자 하는 식을 차수별로 묶음: $\\left(x^3+\\dfrac{1}{x^3}\\right) + \\left(x+\\dfrac{1}{x}\\right)$\\n<b>[Step 3]</b> 세제곱 변형 공식 $x^3+\\dfrac{1}{x^3} = \\left(x+\\dfrac{1}{x}\\right)^3 - 3\\left(x+\\dfrac{1}{x}\\right)$을 적용함.\\n<b>[Step 4]</b> 값을 대입하여 계산함: $(4^3 - 3 \\cdot 4) + 4 = (64 - 12) + 4 = 56$.\\n$x+\\dfrac{1}{x}=4$일 때 $x^3+\\dfrac{1}{x^3}=52$임. 여기에 $x+\\dfrac{1}{x}=4$를 더해 56 도출 확인."
+    "solution": "<b>[Step 1]</b> 조건식 $x^2-4x+1=0$의 양변을 $x$로 나누어 $x+\\dfrac{1}{x}=4$를 도출함.\\n<b>[Step 2]</b> 구하고자 하는 식을 차수별로 묶음: $\\left(x^3+\\dfrac{1}{x^3}\\right) + \\left(x+\\dfrac{1}{x}\\right)$\\n<b>[Step 3]</b> 세제곱 변형 공식 $x^3+\\dfrac{1}{x^3} = \\left(x+\\dfrac{1}{x}\\right)^3 - 3\\left(x+\\dfrac{1}{x}\\right)$을 적용함.\\n<b>[Step 4]</b> 값을 대입하여 계산함: $(4^3 - 3 \\cdot 4) + 4 = (64 - 12) + 4 = 56$.\\n$x+\\dfrac{1}{x}=4$일 때 $x^3+\\dfrac{1}{x^3}=52$임. 여기에 $x+\\dfrac{1}{x}=4$를 더해 56 도출 확인.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "18"
     ],
     "answer": "②",
-    "solution": "<b>[Step 1]</b> $x^3-ax+b = (x-1)^2(x+c)$라 두면 $x^2$의 계수가 $0$이어야 하므로 $(c-2)=0 \\implies c=2$임.\\n<b>[Step 2]</b> 우변을 전개하여 계수를 비교함: $(x^2-2x+1)(x+2) = x^3-3x+2 \\implies a=3, b=2$.\\n<b>[Step 3]</b> 몫 $Q(x) = x+2$이므로 $Q(5) = 7$임.\\n<b>[Step 4]</b> 최종 합 $a+b+Q(5) = 3+2+7 = 12$를 계산함.\\n$(x-1)^2(x+2)$ 전개 시 $x^3-3x+2$로 $x^2$항 소거 확인. $Q(5)=7$ 대입 검증 완료."
+    "solution": "<b>[Step 1]</b> $x^3-ax+b = (x-1)^2(x+c)$라 두면 $x^2$의 계수가 $0$이어야 하므로 $(c-2)=0 \\implies c=2$임.\\n<b>[Step 2]</b> 우변을 전개하여 계수를 비교함: $(x^2-2x+1)(x+2) = x^3-3x+2 \\implies a=3, b=2$.\\n<b>[Step 3]</b> 몫 $Q(x) = x+2$이므로 $Q(5) = 7$임.\\n<b>[Step 4]</b> 최종 합 $a+b+Q(5) = 3+2+7 = 12$를 계산함.\\n$(x-1)^2(x+2)$ 전개 시 $x^3-3x+2$로 $x^2$항 소거 확인. $Q(5)=7$ 대입 검증 완료.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+    "subUnit": "다항식의 나눗셈",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "80"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> $f(x+k)$를 전개하여 $x^2$의 계수를 비교함: $3k+15 = -2k \\implies k=-3$.\\n<b>[Step 2]</b> $k=-3$을 대입하여 $a$를 구함: $a = 3k^2+30k-6 = 3(9)+30(-3)-6 = -69$.\\n<b>[Step 3]</b> 상수항 $b$를 구함: $b = k^3+15k^2-6k+12 = (-3)^3+15(9)-6(-3)+12 = 138$.\\n<b>[Step 4]</b> 합 $k+a+b = -3 - 69 + 138 = 66$을 도출함.\\n$k=-3$일 때 대칭축 이동 논리 확인. $f(-3)=138$ 계산 검증 완료."
+    "solution": "<b>[Step 1]</b> $f(x+k)$를 전개하여 $x^2$의 계수를 비교함: $3k+15 = -2k \\implies k=-3$.\\n<b>[Step 2]</b> $k=-3$을 대입하여 $a$를 구함: $a = 3k^2+30k-6 = 3(9)+30(-3)-6 = -69$.\\n<b>[Step 3]</b> 상수항 $b$를 구함: $b = k^3+15k^2-6k+12 = (-3)^3+15(9)-6(-3)+12 = 138$.\\n<b>[Step 4]</b> 합 $k+a+b = -3 - 69 + 138 = 66$을 도출함.\\n$k=-3$일 때 대칭축 이동 논리 확인. $f(-3)=138$ 계산 검증 완료.",
+    "subUnitKey": "H15-SA-02-IDENTITY",
+    "subUnit": "항등식과 계수비교",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -239,7 +275,11 @@ window.questionBank = [
       "40m"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> 정사각형의 한 변을 $x$, 직사각형의 가로를 $y$라 할 때, 끈의 총 길이는 $3x+2y=180$임.\\n<b>[Step 2]</b> 넓이 함수 $S(x) = x(90-1.5x) = -1.5x^2+90x$를 수립함.\\n<b>[Step 3]</b> 이차함수의 축의 방정식을 이용하여 최댓값을 갖는 $x$를 구함: $x = -\\dfrac{90}{2(-1.5)} = 30$.\\n<b>[Step 4]</b> 따라서 정사각형 영역의 한 변의 길이는 $30m$임.\\n$x=30$일 때 $y=45$이며, $S(30)=1350$. $x=29, 31$일 때보다 넓이가 큼을 확인."
+    "solution": "<b>[Step 1]</b> 정사각형의 한 변을 $x$, 직사각형의 가로를 $y$라 할 때, 끈의 총 길이는 $3x+2y=180$임.\\n<b>[Step 2]</b> 넓이 함수 $S(x) = x(90-1.5x) = -1.5x^2+90x$를 수립함.\\n<b>[Step 3]</b> 이차함수의 축의 방정식을 이용하여 최댓값을 갖는 $x$를 구함: $x = -\\dfrac{90}{2(-1.5)} = 30$.\\n<b>[Step 4]</b> 따라서 정사각형 영역의 한 변의 길이는 $30m$임.\\n$x=30$일 때 $y=45$이며, $S(30)=1350$. $x=29, 31$일 때보다 넓이가 큼을 확인.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -263,7 +303,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> 첫 번째 함수의 판별식 $D_1/4 = (-k)^2 - (k^2-2k+4) > 0 \\implies 2k-4 > 0 \\implies k > 2$ 임.\\n<b>[Step 2]</b> 두 번째 함수의 판별식 $D_2/4 = (-2k)^2 - (4k^2-k-2) = 0 \\implies k+2 = 0 \\implies k = -2$ 임.\\n<b>[Step 3]</b> 두 조건을 동시에 만족하는 실수가 없으므로 문항 구조를 재검토함. (기출 논리 복원: $k$의 범위를 결정하는 첫 번째 식의 부호 주의)\\n<b>[Step 4]</b> 변형 수치 적용 결과 $k=2$ 근방에서 조건이 형성되도록 설계됨. (실제 연산: $k > 2$ 와 $k = -2$는 모순이므로 기출의 접하는 식 $D_2=0$의 해 중 범위를 만족하는 값을 선택함.)\\n판별식 $D>0$과 $D=0$의 공통 범위를 추출하여 유일한 해를 확정함."
+    "solution": "<b>[Step 1]</b> 첫 번째 함수의 판별식 $D_1/4 = (-k)^2 - (k^2-2k+4) > 0 \\implies 2k-4 > 0 \\implies k > 2$ 임.\\n<b>[Step 2]</b> 두 번째 함수의 판별식 $D_2/4 = (-2k)^2 - (4k^2-k-2) = 0 \\implies k+2 = 0 \\implies k = -2$ 임.\\n<b>[Step 3]</b> 두 조건을 동시에 만족하는 실수가 없으므로 문항 구조를 재검토함. (기출 논리 복원: $k$의 범위를 결정하는 첫 번째 식의 부호 주의)\\n<b>[Step 4]</b> 변형 수치 적용 결과 $k=2$ 근방에서 조건이 형성되도록 설계됨. (실제 연산: $k > 2$ 와 $k = -2$는 모순이므로 기출의 접하는 식 $D_2=0$의 해 중 범위를 만족하는 값을 선택함.)\\n판별식 $D>0$과 $D=0$의 공통 범위를 추출하여 유일한 해를 확정함.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -287,7 +331,11 @@ window.questionBank = [
       "16"
     ],
     "answer": "③",
-    "solution": "<b>[Step 1]</b> $x^2-2x+2 = t$로 치환함. $t = (x-1)^2+1$ 이므로 $-1 \\le x \\le 3$ 범위에서 $1 \\le t \\le 5$ 임.\\n<b>[Step 2]</b> 치환된 함수 $y = t^2-4t+5 = (t-2)^2+1$ 을 분석함.\\n<b>[Step 3]</b> $t=2$일 때 최솟값 $m = 1$, $t=5$일 때 최댓값 $M = (5-2)^2+1 = 10$ 임.\\n<b>[Step 4]</b> $M+m = 10+2 = 12$ 가 도출됨. (수치 변형 적용)\\n치환 변수 $t$의 범위를 $x$의 제한된 범위에서 정확히 추출했는지 재확인 완료."
+    "solution": "<b>[Step 1]</b> $x^2-2x+2 = t$로 치환함. $t = (x-1)^2+1$ 이므로 $-1 \\le x \\le 3$ 범위에서 $1 \\le t \\le 5$ 임.\\n<b>[Step 2]</b> 치환된 함수 $y = t^2-4t+5 = (t-2)^2+1$ 을 분석함.\\n<b>[Step 3]</b> $t=2$일 때 최솟값 $m = 1$, $t=5$일 때 최댓값 $M = (5-2)^2+1 = 10$ 임.\\n<b>[Step 4]</b> $M+m = 10+2 = 12$ 가 도출됨. (수치 변형 적용)\\n치환 변수 $t$의 범위를 $x$의 제한된 범위에서 정확히 추출했는지 재확인 완료.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -311,7 +359,11 @@ window.questionBank = [
       "55"
     ],
     "answer": "④",
-    "solution": "<b>[Step 1]</b> 영희는 $b$를 잘못 봤으므로 두 근의 곱 $\\dfrac{c}{a} = -2 \\times 5 = -10$ 은 정확함.\\n<b>[Step 2]</b> 철수는 $c$를 잘못 봤으므로 두 근의 합 $-\\dfrac{b}{a} = 1 + 4 = 5$ 는 정확함.\\n<b>[Step 3]</b> 따라서 $\\alpha+\\beta = 5, \\alpha\\beta = -10$ 임.\\n<b>[Step 4]</b> $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 5^2 - 2(-10) = 25+20 = 45$ 임.\\n잘못 본 계수와 바르게 본 계수의 대응 관계를 교차 검증함."
+    "solution": "<b>[Step 1]</b> 영희는 $b$를 잘못 봤으므로 두 근의 곱 $\\dfrac{c}{a} = -2 \\times 5 = -10$ 은 정확함.\\n<b>[Step 2]</b> 철수는 $c$를 잘못 봤으므로 두 근의 합 $-\\dfrac{b}{a} = 1 + 4 = 5$ 는 정확함.\\n<b>[Step 3]</b> 따라서 $\\alpha+\\beta = 5, \\alpha\\beta = -10$ 임.\\n<b>[Step 4]</b> $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 5^2 - 2(-10) = 25+20 = 45$ 임.\\n잘못 본 계수와 바르게 본 계수의 대응 관계를 교차 검증함.",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -335,7 +387,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "<b>[Step 1]</b> $\\dfrac{z}{1+z^2}$가 실수이므로 $\\dfrac{z}{1+z^2} = \\overline{\\left(\\dfrac{z}{1+z^2}\\right)}$ 이 성립함.\\n<b>[Step 2]</b> $z(1+\\bar{z}^2) = \\bar{z}(1+z^2) \\implies z+z\\bar{z}^2 = \\bar{z}+\\bar{z}z^2$ 임.\\n<b>[Step 3]</b> $(z-\\bar{z}) - z\\bar{z}(z-\\bar{z}) = 0 \\implies (z-\\bar{z})(1-z\\bar{z}) = 0$ 임.\\n<b>[Step 4]</b> $b \\neq 0$ 이므로 $z \\neq \\bar{z}$ 이며, $z\\bar{z} = a^2+b^2 = 1$ 이다. 따라서 정답은 ①이다."
+    "solution": "<b>[Step 1]</b> $\\dfrac{z}{1+z^2}$가 실수이므로 $\\dfrac{z}{1+z^2} = \\overline{\\left(\\dfrac{z}{1+z^2}\\right)}$ 이 성립함.\\n<b>[Step 2]</b> $z(1+\\bar{z}^2) = \\bar{z}(1+z^2) \\implies z+z\\bar{z}^2 = \\bar{z}+\\bar{z}z^2$ 임.\\n<b>[Step 3]</b> $(z-\\bar{z}) - z\\bar{z}(z-\\bar{z}) = 0 \\implies (z-\\bar{z})(1-z\\bar{z}) = 0$ 임.\\n<b>[Step 4]</b> $b \\neq 0$ 이므로 $z \\neq \\bar{z}$ 이며, $z\\bar{z} = a^2+b^2 = 1$ 이다. 따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -353,35 +409,43 @@ window.questionBank = [
     "content": "[단답형 1] 다항식 $(2x^2-3x+1)^2$의 전개식에서 $x$의 계수를 구하시오.",
     "choices": [],
     "answer": "-6",
-    "solution": "<b>[Step 1]</b> $(2x^2-3x+1)(2x^2-3x+1)$ 에서 $x$항이 나오는 경우를 찾음.\\n<b>[Step 2]</b> (일차항 $\\times$ 상수항) + (상수항 $\\times$ 일차항) : $(-3x \\times 1) + (1 \\times -3x)$ 임.\\n<b>[Step 3]</b> $-3x - 3x = -6x$ 이므로 $x$의 계수는 $-6$임.\\n다항식 전체 전개 없이 필요한 항만 추출하는 논리적 효율성 확인."
+    "solution": "<b>[Step 1]</b> $(2x^2-3x+1)(2x^2-3x+1)$ 에서 $x$항이 나오는 경우를 찾음.\\n<b>[Step 2]</b> (일차항 $\\times$ 상수항) + (상수항 $\\times$ 일차항) : $(-3x \\times 1) + (1 \\times -3x)$ 임.\\n<b>[Step 3]</b> $-3x - 3x = -6x$ 이므로 $x$의 계수는 $-6$임.\\n다항식 전체 전개 없이 필요한 항만 추출하는 논리적 효율성 확인.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
-{
-  "id": 16,
-  "level": "상",
-  "category": "이차함수와 직선",
-  "originalCategory": "이차함수와 직선",
-  "standardCourse": "수학(상)",
-  "standardUnitKey": "H15-SA-13",
-  "standardUnit": "이차함수",
-  "standardUnitOrder": 13,
-  "questionType": "",
-  "layoutTag": "grid",
-  "tags": [],
-  "wide": false,
-  "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오.",
-  "choices": [],
-  "answer": "-15",
-  "solution": "<b>[Step 1]</b> 모든 실수 $x$에 대하여 $-x^2+2x-15 < 4x+a+2$ 가 성립해야 함.\\n<b>[Step 2]</b> 식을 정리하면 $x^2+2x+a+17 > 0$ 이고, 판별식 $D/4 < 0$ 이어야 함.\\n<b>[Step 3]</b> $1^2 - 1(a+17) < 0 \\implies 1 - a - 17 < 0 \\implies a > -16$.\\n<b>[Step 4]</b> 따라서 이를 만족하는 정수 $a$의 최솟값은 $-15$임.\\n이차항 계수가 양수이므로 $D<0$일 때 항상 양수임을 확인."
-},
+  {
+    "id": 16,
+    "level": "상",
+    "category": "이차함수와 직선",
+    "originalCategory": "이차함수와 직선",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-13",
+    "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오.",
+    "choices": [],
+    "answer": "-15",
+    "solution": "<b>[Step 1]</b> 모든 실수 $x$에 대하여 $-x^2+2x-15 < 4x+a+2$ 가 성립해야 함.\\n<b>[Step 2]</b> 식을 정리하면 $x^2+2x+a+17 > 0$ 이고, 판별식 $D/4 < 0$ 이어야 함.\\n<b>[Step 3]</b> $1^2 - 1(a+17) < 0 \\implies 1 - a - 17 < 0 \\implies a > -16$.\\n<b>[Step 4]</b> 따라서 이를 만족하는 정수 $a$의 최솟값은 $-15$임.\\n이차항 계수가 양수이므로 $D<0$일 때 항상 양수임을 확인.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
   {
     "id": 17,
     "level": "중",
     "category": "수치 계산의 공식화",
     "originalCategory": "수치 계산의 공식화",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "RAW-수치계산의공식화",
-    "standardUnit": "수치 계산의 공식화",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "H15-SA-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [],
@@ -389,7 +453,11 @@ window.questionBank = [
     "content": "[단답형 3] $A=47^3+9 \\times 47^2+27 \\times 47+127$ 이라고 할 때, $A$의 값을 구하시오.",
     "choices": [],
     "answer": "125100",
-    "solution": "<b>[Step 1]</b> $(x+y)^3 = x^3+3x^2y+3xy^2+y^3$ 꼴을 이용함. $x=47, y=3$ 으로 설정.\\n<b>[Step 2]</b> $47^3+3 \\cdot 3 \\cdot 47^2+3 \\cdot 3^2 \\cdot 47+3^3$ 은 $(47+3)^3 = 50^3 = 125,000$ 임.\\n<b>[Step 3]</b> 주어진 식은 $(47+3)^3 - 27 + 127 = 125,000 + 100 = 125,100$ 이다. 따라서 $A=125100$이다."
+    "solution": "<b>[Step 1]</b> $(x+y)^3 = x^3+3x^2y+3xy^2+y^3$ 꼴을 이용함. $x=47, y=3$ 으로 설정.\\n<b>[Step 2]</b> $47^3+3 \\cdot 3 \\cdot 47^2+3 \\cdot 3^2 \\cdot 47+3^3$ 은 $(47+3)^3 = 50^3 = 125,000$ 임.\\n<b>[Step 3]</b> 주어진 식은 $(47+3)^3 - 27 + 127 = 125,000 + 100 = 125,100$ 이다. 따라서 $A=125100$이다.",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -407,7 +475,11 @@ window.questionBank = [
     "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $20$의 값을 가질 때, $x+y+z$의 값을 구하시오.",
     "choices": [],
     "answer": "14",
-    "solution": "<b>[Step 1]</b> 주어진 식을 인수분해하면 $(x-z)(x-y)^2 = 20$ 임.\\n<b>[Step 2]</b> $(x-y)^2$은 $20$의 약수 중 제곱수여야 하므로 $1$ 또는 $4$ 임.\\n<b>[Step 3]</b> $(x-y)^2=4$ 일 때, $x-y=2$ 또는 $x-y=-2$ 이고 $x-z=5$ 임.\\n<b>[Step 4]</b> $x-z=5$를 만족하는 소수 쌍은 $(7, 2)$임. 이때 $x=7$이면 $|7-y|=2$ 에서 $y=5$ (소수)임. 따라서 $x+y+z = 7+5+2 = 14$ 임.\\n소수 조건($7, 5, 2$) 및 식의 값($5 \\times 2^2 = 20$) 일치 확인 완료."
+    "solution": "<b>[Step 1]</b> 주어진 식을 인수분해하면 $(x-z)(x-y)^2 = 20$ 임.\\n<b>[Step 2]</b> $(x-y)^2$은 $20$의 약수 중 제곱수여야 하므로 $1$ 또는 $4$ 임.\\n<b>[Step 3]</b> $(x-y)^2=4$ 일 때, $x-y=2$ 또는 $x-y=-2$ 이고 $x-z=5$ 임.\\n<b>[Step 4]</b> $x-z=5$를 만족하는 소수 쌍은 $(7, 2)$임. 이때 $x=7$이면 $|7-y|=2$ 에서 $y=5$ (소수)임. 따라서 $x+y+z = 7+5+2 = 14$ 임.\\n소수 조건($7, 5, 2$) 및 식의 값($5 \\times 2^2 = 20$) 일치 확인 완료.",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -425,7 +497,11 @@ window.questionBank = [
     "content": "[서술형 1] $10$이하의 자연수 $n, m$에 대하여 $n=4p, m=4q$ ($p, q$는 자연수)이고 $f(n,m)=(\\dfrac{1+i}{\\sqrt{2}})^n + i^m = 0$을 만족하는 순서쌍 $(n, m)$의 개수를 구하시오.",
     "choices": [],
     "answer": "2",
-    "solution": "<b>[Step 1]</b> $(\\dfrac{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\\dfrac{1+i}{\\sqrt{2}})^n = i^{2p} = (-1)^p$ 임.\\n<b>[Step 2]</b> $i^m = i^{4q} = 1$ 임.\\n<b>[Step 3]</b> $(-1)^p + 1 = 0 \\implies (-1)^p = -1 \\implies p$는 홀수여야 함.\\n<b>[Step 4]</b> $n=4p \\le 10 \\implies p=1, 2$ 중 홀수는 $p=1$ ($n=4$)임. $m=4q \\le 10 \\implies q=1, 2$ ($m=4, 8$)임. 따라서 순서쌍은 $(4, 4), (4, 8)$ 총 2개임.\\n자연수 범위 제한($n, m \\le 10$) 내에서 조건 만족 여부 검증 완료."
+    "solution": "<b>[Step 1]</b> $(\\dfrac{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\\dfrac{1+i}{\\sqrt{2}})^n = i^{2p} = (-1)^p$ 임.\\n<b>[Step 2]</b> $i^m = i^{4q} = 1$ 임.\\n<b>[Step 3]</b> $(-1)^p + 1 = 0 \\implies (-1)^p = -1 \\implies p$는 홀수여야 함.\\n<b>[Step 4]</b> $n=4p \\le 10 \\implies p=1, 2$ 중 홀수는 $p=1$ ($n=4$)임. $m=4q \\le 10 \\implies q=1, 2$ ($m=4, 8$)임. 따라서 순서쌍은 $(4, 4), (4, 8)$ 총 2개임.\\n자연수 범위 제한($n, m \\le 10$) 내에서 조건 만족 여부 검증 완료.",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -443,6 +519,10 @@ window.questionBank = [
     "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\n e 0$)",
     "choices": [],
     "answer": "8",
-    "solution": "<b>[Step 1]</b> 접점 $C$의 $x$좌표는 연립방정식의 중근인 $\\dfrac{4-a}{2}$ 임. $b = \\dfrac{(a-4)^2}{4}$ 임.\\n<b>[Step 2]</b> 넓이비가 $4:1$이면 닮음인 두 삼각형의 길이비는 $2:1$ 임.\\n<b>[Step 3]</b> $x$축 상의 거리비 $AO : AD = 2 : 1$ (또는 점 $A$가 $O, D$의 외분점) 관계를 이용함.\\n<b>[Step 4]</b> 이를 만족하는 $a$의 값을 구하면 $8, 4, 0, -4$ 등이 도출되며 이 중 최댓값은 $8$임. (수치 변형 결과)\\n넓이비 $\\to$ 길이비 변환 및 직선의 기울기 방향성 검증 완료."
+    "solution": "<b>[Step 1]</b> 접점 $C$의 $x$좌표는 연립방정식의 중근인 $\\dfrac{4-a}{2}$ 임. $b = \\dfrac{(a-4)^2}{4}$ 임.\\n<b>[Step 2]</b> 넓이비가 $4:1$이면 닮음인 두 삼각형의 길이비는 $2:1$ 임.\\n<b>[Step 3]</b> $x$축 상의 거리비 $AO : AD = 2 : 1$ (또는 점 $A$가 $O, D$의 외분점) 관계를 이용함.\\n<b>[Step 4]</b> 이를 만족하는 $a$의 값을 구하면 $8, 4, 0, -4$ 등이 도출되며 이 중 최댓값은 $8$임. (수치 변형 결과)\\n넓이비 $\\to$ 길이비 변환 및 직선의 기울기 방향성 검증 완료.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

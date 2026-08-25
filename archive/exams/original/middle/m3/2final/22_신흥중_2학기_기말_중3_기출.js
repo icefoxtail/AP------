@@ -26,7 +26,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원의 중심에서 현의 중점까지 이은 선분은 현과 수직이므로 직각삼각형을 만든다.\\n나무 막대기의 절반 길이는 $4\\rm\\,cm$이고, 원의 반지름은 $6\\rm\\,cm$이다.\\n접시의 중심과 막대기의 중점 사이의 거리를 $d$라 하면 피타고라스 정리에 의해 $d^2+4^2=6^2$이다.\\n따라서 $d^2=20$이므로 $d=2\\sqrt{5}\\rm\\,cm$이다.\\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q1.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q1.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -50,6 +54,10 @@ window.questionBank = [
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.\\n① $\\overline{AM}=\\dfrac12\\overline{AB}$, ② $\\overline{CN}=\\dfrac12\\overline{CD}$는 모두 옳다.\\n$\\overline{AB}=\\overline{CD}$에서 바로 얻는 것은 $\\overline{AM}=\\overline{CN}$이므로 ③의 $\\overline{OM}=\\overline{ON}$은 이 단계에서 사용할 수 없어 옳지 않다.\\n또 $\\overline{OA}$와 같은 것은 반지름 $\\overline{OC}$이므로 ④의 $\\overline{OA}=\\overline{CN}$도 옳지 않다.\\n올바른 조건 $\\overline{AM}=\\overline{CN}$, $\\overline{OA}=\\overline{OC}$와 두 직각을 이용하면 두 직각삼각형은 RHS 합동이므로 ⑤는 옳다.\\n따라서 정답은 ③, ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q2.png",
     "imageSize": "tall",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -76,7 +84,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 원의 중심에서 같은 거리에 있는 두 현의 길이는 같다.\\n두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같으므로 $\\overline{AB}=\\overline{AC}$이다.\\n따라서 $\\triangle ABC$는 이등변삼각형이고 $\\angle B=\\angle C$이다.\\n$\\angle B=\\angle C=\\dfrac{180^\\circ-52^\\circ}{2}=64^\\circ$이므로 $x=64^\\circ$이다.\\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q3.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q3.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -103,7 +115,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.\\n$\\overline{OA}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$이므로 직각삼각형 $OAM$에서 $AM=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다.\\n따라서 $AB=12\\rm\\,cm$이고 $CD=12\\rm\\,cm$이다. 같은 길이의 현이므로 중심 $O$에서 현 $CD$까지의 거리도 $8\\rm\\,cm$이다.\\n그러므로 $\\triangle OCD$의 넓이는 $\\dfrac12\\times12\\times8=48\\rm\\,cm^2$이다.\\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q4.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q4.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -130,7 +146,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\\n그림에서 $AP=AR=9\\rm\\,cm$, $BQ=BP=7\\rm\\,cm$, $CR=CQ=12\\rm\\,cm$이다.\\n따라서 $AB=9+7=16$, $BC=7+12=19$, $CA=12+9=21$이다.\\n둘레는 $16+19+21=56\\rm\\,cm$이다.\\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q5.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q5.png",
+    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
+    "subUnit": "원의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -157,7 +177,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 접점에서 반지름은 접선에 수직이고, 두 접선의 길이는 같다.\\n$OA\\perp PA$, $OB\\perp PB$이고 $PA=PB=6\\rm\\,cm$이다. 또한 $\\angle APB=60^\\circ$이므로 대칭에 의해 $\\angle APO=30^\\circ$이다.\\n직각삼각형 $AOP$에서 $OA=PA\\tan30^\\circ=6\\times\\dfrac1{\\sqrt3}=2\\sqrt3\\rm\\,cm$이다.\\n사각형 $OAPB$의 각의 합에서 $\\angle AOB=360^\\circ-90^\\circ-90^\\circ-60^\\circ=120^\\circ$이다.\\n따라서 부채꼴의 넓이는 $\\dfrac{120}{360}\\pi(2\\sqrt3)^2=4\\pi\\rm\\,cm^2$이다.\\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q6.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q6.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -184,7 +208,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 큰 원 네 개의 중심을 이으면 한 변이 $2\\rm\\,cm$인 정사각형이 되고, 작은 원의 중심은 그 정사각형의 중심이다.\\n서로 이웃한 큰 원의 중심 사이의 거리는 $2\\rm\\,cm$이다. 큰 원의 중심과 가운데 점 사이의 거리는 한 변 $2$인 정사각형의 대각선의 절반이므로 $\\sqrt2\\rm\\,cm$이다.\\n작은 원의 반지름을 $r$라 하면 큰 원과 작은 원이 접하므로 중심 사이의 거리는 $1+r$이다.\\n따라서 $1+r=\\sqrt2$이므로 $r=\\sqrt2-1$이다.\\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q7.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q7.png",
+    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
+    "subUnit": "원의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -211,7 +239,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 지름에 대한 원주각은 $90^\\circ$이고, 원주각의 크기는 대응하는 호의 절반이다.\\n$\\angle ACD=50^\\circ$이므로 호 $AD$의 크기는 $100^\\circ$이다.\\n$AC$가 지름이므로 호 $ADC$의 크기는 $180^\\circ$이고, 따라서 호 $DC$의 크기는 $180^\\circ-100^\\circ=80^\\circ$이다.\\n$\\angle x=\\angle DBC$는 호 $DC$에 대한 원주각이므로 $x=40^\\circ$이다.\\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q8.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q8.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -239,7 +271,11 @@ window.questionBank = [
     ],
     "answer": "①, ④",
     "solution": "[키포인트] 보검이와 서준이를 지나는, 의자를 중심으로 하는 원을 기준으로 각 학생이 원 안·위·밖 어디에 있는지 판단한다.\\n의자를 $O$, 보검이를 $B$, 서준이를 $S$라 하자. $OB=OS$이고 그림에서 $\\angle BOS=80^\\circ$이다. 이 원에서 현 $BS$에 대한 원주각은 $40^\\circ$이다.\\n지수의 각이 $40^\\circ$이므로 지수는 보검이, 서준이와 같은 원 위에 있다. 따라서 원 위의 사람은 보검이, 서준이, 지수의 3명으로 ①은 옳다.\\n지민이의 각은 $42^\\circ$로 $40^\\circ$보다 크므로 지민이는 이 원의 안쪽에 있어 의자에 더 가깝다. 따라서 ④는 옳고 ③은 옳지 않다.\\n하영이의 각은 $38^\\circ$로 $40^\\circ$보다 작으므로 원의 바깥쪽에 있어 서준이보다 의자에서 멀다. 따라서 ⑤는 옳지 않다. 보검이와 지수는 같은 원 위이므로 ②도 옳지 않다.\\n따라서 정답은 ①, ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q9.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q9.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -266,7 +302,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원 밖의 두 할선이 이루는 각과 원 안에서 두 현이 이루는 각을 호의 크기로 나타낸다.\\n호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.\\n두 현 $AD$, $BC$가 원 안의 점 $Q$에서 만나고 $\\angle BQD=80^\\circ$이므로 $u+v=160^\\circ$이다.\\n두 식을 풀면 $u=120^\\circ$, $v=40^\\circ$이다.\\n$\\angle x=\\angle CDA$는 호 $CA$에 대한 원주각이므로 $x=\\dfrac{40^\\circ}{2}=20^\\circ$이다.\\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q10.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q10.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -293,7 +333,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 원주각은 대응하는 호의 절반이므로 주어진 두 각에서 호의 크기를 차례로 구한다.\\n그림에서 $\\angle ADB=30^\\circ$이므로 호 $AB$의 크기는 $60^\\circ$이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 호 $BC$도 $60^\\circ$이다.\\n또 $\\angle DAC=67^\\circ$이므로 호 $DC$의 크기는 $134^\\circ$이다.\\n따라서 나머지 호 $AD$의 크기는 $360^\\circ-(60^\\circ+60^\\circ+134^\\circ)=106^\\circ$이다.\\n$\\angle ABD$는 호 $AD$에 대한 원주각이므로 $53^\\circ$이다.\\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q11.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q11.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -320,7 +364,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 한 사각형의 두 맞은각의 합이 $180^\\circ$이면 그 사각형은 한 원에 내접한다. 높이의 발에서 생기는 직각을 이용한다.\\n$AFHE$에서는 $\\angle AFH=\\angle AEH=90^\\circ$이므로 내접한다.\\n$FBCE$에서는 $\\angle BFC=\\angle BEC=90^\\circ$이므로 내접한다.\\n$EHDC$에서는 $\\angle HEC=\\angle HDC=90^\\circ$이므로 내접한다.\\n$EABD$에서는 $\\angle AEB=\\angle ADB=90^\\circ$이므로 내접한다.\\n반면 $FDCE$에서는 이러한 직각의 맞은각 조건이 성립하지 않는다.\\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q12.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q12.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -347,7 +395,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원에 내접하는 사각형의 맞은각의 합과 접선과 현이 이루는 각의 성질을 이용한다.\\n사각형 $ABCD$가 원에 내접하므로 $\\angle DCB=180^\\circ-105^\\circ=75^\\circ$이다.\\n$\\triangle DBC$에서 $\\angle DBC=40^\\circ$이므로 $\\angle BDC=180^\\circ-75^\\circ-40^\\circ=65^\\circ$이다.\\n접선과 현 $BC$가 이루는 각 $\\angle CBE$는 현 $BC$에 대한 원주각 $\\angle BDC$와 같으므로 $65^\\circ$이다.\\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q13.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q13.png",
+    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
+    "subUnit": "원의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -374,7 +426,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 원주각이 보는 호를 각각 나타낸 뒤 합하면 원 전체의 호에 호 $BC$가 한 번 더해진다.\\n$\\angle BOC=60^\\circ$이므로 호 $BC$의 크기는 $60^\\circ$이다.\\n$2x$는 점 $A$를 포함하지 않는 호 $BE$, 즉 호 $BC+CD+DE$의 크기이고, $2y$는 점 $D$를 포함하지 않는 호 $CE$, 즉 호 $CB+BA+AE$의 크기이다.\\n따라서 $2(x+y)=360^\\circ+60^\\circ=420^\\circ$이다.\\n그러므로 $x+y=210^\\circ$이다.\\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q14.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q14.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -401,7 +457,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 중심 $O$를 지나는 할선과 접선으로 이루어진 삼각형에서 지름에 대한 원주각과 각의 합을 이용한다.\\n직선 $AB$가 중심 $O$를 지나므로 원과 만나는 가까운 점을 $C$라 하면 $CB$는 지름이다. 따라서 $\\angle CTB=90^\\circ$이다.\\n그림에서 접선의 오른쪽 방향과 $TB$가 이루는 각이 $70^\\circ$이므로 삼각형 $ATB$의 내각 $\\angle ATB=110^\\circ$이다.\\n따라서 $\\angle ATC=110^\\circ-90^\\circ=20^\\circ$이다. 접선과 현의 성질에 의해 $\\angle CBT=20^\\circ$이고, $A,C,B$는 한 직선 위이므로 $\\angle ABT=20^\\circ$이다.\\n$\\triangle ABT$에서 $x=180^\\circ-110^\\circ-20^\\circ=50^\\circ$이다.\\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q15.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q15.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -423,7 +483,12 @@ window.questionBank = [
     "choices": [],
     "answer": "작도, $\\overline{OB}$, $\\overline{OM}$, $\\overline{BM}$",
     "solution": "[키포인트] 반지름의 길이가 같고 공통변이 있으며 두 삼각형이 모두 직각삼각형이라는 점을 이용한다.\\n(1) 지시대로 현 $AB$, 수선 $OM$, 두 반지름 $OA$, $OB$를 그린다.\\n(2) $\\triangle OAM$과 $\\triangle OBM$에서 $\\angle OMA=\\angle OMB=90^\\circ$이다. 또한 $OA=OB$는 같은 원의 반지름이고, $OM$은 공통이다.\\n따라서 두 직각삼각형은 RHS 합동이므로 대응변의 길이가 같아 $AM=BM$이다.\\n따라서 빈칸은 차례대로 $\\overline{OB}$, $\\overline{OM}$, $\\overline{BM}$이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q16.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q16.png",
+    "imageSize": "tall",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -445,7 +510,11 @@ window.questionBank = [
     "choices": [],
     "answer": "두 현의 수직이등분선을 그어 그 교점을 원의 중심으로 정한다.",
     "solution": "[키포인트] 원의 중심은 모든 현의 수직이등분선 위에 있다.\\n원 위의 서로 다른 두 현을 그린다.\\n각 현의 수직이등분선을 각각 그린다.\\n두 수직이등분선의 교점은 두 현의 양 끝점에서 같은 거리에 있으므로 원의 중심과 일치한다.\\n따라서 두 현의 수직이등분선의 교점이 원의 중심이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q17.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q17.png",
+    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
+    "subUnit": "원의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -467,7 +536,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$5\\rm\\,cm$",
     "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.\\n반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다.\\n현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다.\\n정리하면 $x^2=x^2-4x+4+16$이므로 $4x=20$, 따라서 $x=5$이다.\\n따라서 구하는 값은 $5\\rm\\,cm$이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q18.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q18.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -489,7 +562,11 @@ window.questionBank = [
     "choices": [],
     "answer": "원에 내접하지 않는다. 한 내각은 $110^\\circ$이고 그 맞은각은 $60^\\circ$이므로 합이 $170^\\circ$이다.",
     "solution": "[키포인트] 사각형이 원에 내접하려면 한 쌍의 맞은각의 합이 $180^\\circ$이어야 한다.\\n그림의 오른쪽 아래 $120^\\circ$는 외각이므로 그 꼭짓점의 내각은 $180^\\circ-120^\\circ=60^\\circ$이다.\\n이 내각과 맞은편의 $110^\\circ$를 더하면 $170^\\circ$로 $180^\\circ$가 아니다.\\n따라서 이 사각형은 원에 내접하지 않는다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q19.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q19.png",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -511,7 +588,12 @@ window.questionBank = [
     "choices": [],
     "answer": "작도, $90$, $90$, $90$, $BCD$",
     "solution": "[키포인트] 지름에 대한 원주각과 접선-반지름의 수직 관계를 이용해 두 각을 같은 형태로 나타낸다.\\n(1) $A$를 지나는 지름 $AD$를 그리고 $C$와 $D$를 잇는다.\\n(2) $AD$가 지름이므로 $\\angle DCA=90^\\circ$이고, 접선 $AT$는 반지름 $OA$와 수직이므로 $\\angle DAT=90^\\circ$이다.\\n따라서 $\\angle BAT=90^\\circ+\\angle BAD$, $\\angle BCA=90^\\circ+\\angle BCD$이다.\\n또 $\\angle BAD$와 $\\angle BCD$는 같은 호 $BD$에 대한 원주각이므로 서로 같다.\\n따라서 빈칸은 차례대로 $90$, $90$, $90$, $BCD$이고 $\\angle BAT=\\angle BCA$이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q20.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q20.png",
+    "imageSize": "tall",
+    "subUnitKey": "M3-06-CIRCLE_ANGLE",
+    "subUnit": "원과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -533,7 +615,12 @@ window.questionBank = [
     "choices": [],
     "answer": "평균 $15$, 중앙값 $8$, 최빈값 $5, 7, 8, 11$; 대표값: 중앙값",
     "solution": "[키포인트] 극단적으로 큰 값이 하나 있으므로 평균, 중앙값, 최빈값을 모두 구한 뒤 대표값으로서의 적절성을 비교한다.\\n자료의 합은 $10+8+11+5+11+7+5+8+7+78=150$이므로 평균은 $150\\div10=15$이다.\\n자료를 작은 순서로 배열하면 $5,5,7,7,8,8,10,11,11,78$이므로 중앙값은 다섯째와 여섯째 값의 평균인 $8$이다.\\n가장 많이 나타나는 횟수는 모두 2회이므로 최빈값은 $5,7,8,11$이다.\\n$78$이라는 매우 큰 값 때문에 평균 $15$는 대부분의 자료보다 지나치게 크다. 최빈값은 네 개라 하나의 대표값으로 정하기 어렵다. 반면 중앙값 $8$은 극단값의 영향을 거의 받지 않으므로 가장 적절하다.\\n따라서 평균은 $15$, 중앙값은 $8$, 최빈값은 $5,7,8,11$이고 대표값으로 가장 적절한 것은 중앙값이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q21.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q21.png",
+    "imageSize": "tall",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -555,6 +642,10 @@ window.questionBank = [
     "choices": [],
     "answer": "분산 $4$, 표준편차 $2$분",
     "solution": "[키포인트] 평균을 먼저 구한 뒤 각 자료와 평균의 차를 제곱하여 평균을 내면 분산을 구할 수 있다.\\n평균은 $(6+8+7+10+4)\\div5=35\\div5=7$분이다.\\n평균과의 편차는 $-1,1,0,3,-3$이고, 그 제곱은 $1,1,0,9,9$이다.\\n따라서 분산은 $(1+1+0+9+9)\\div5=4$이다.\\n표준편차는 분산의 양의 제곱근이므로 $\\sqrt4=2$분이다.\\n따라서 구하는 분산은 $4$, 표준편차는 $2$분이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q22.png"
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q22.png",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

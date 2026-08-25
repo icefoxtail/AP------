@@ -28,7 +28,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1104",
     "questionNo": 1104,
-    "sourceQuestionNo": 1104
+    "sourceQuestionNo": 1104,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1098,
@@ -57,7 +61,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1093",
     "questionNo": 1093,
-    "sourceQuestionNo": 1093
+    "sourceQuestionNo": 1093,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1099,
@@ -86,7 +94,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1095",
     "questionNo": 1095,
-    "sourceQuestionNo": 1095
+    "sourceQuestionNo": 1095,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1100,
@@ -115,7 +127,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1106",
     "questionNo": 1106,
-    "sourceQuestionNo": 1106
+    "sourceQuestionNo": 1106,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1101,
@@ -144,7 +160,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1097",
     "questionNo": 1097,
-    "sourceQuestionNo": 1097
+    "sourceQuestionNo": 1097,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1102,
@@ -173,7 +193,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1108",
     "questionNo": 1108,
-    "sourceQuestionNo": 1108
+    "sourceQuestionNo": 1108,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1103,
@@ -202,7 +226,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1109",
     "questionNo": 1109,
-    "sourceQuestionNo": 1109
+    "sourceQuestionNo": 1109,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1104,
@@ -231,7 +259,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1098",
     "questionNo": 1098,
-    "sourceQuestionNo": 1098
+    "sourceQuestionNo": 1098,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1105,
@@ -260,7 +292,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1110",
     "questionNo": 1110,
-    "sourceQuestionNo": 1110
+    "sourceQuestionNo": 1110,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1106,
@@ -289,7 +325,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1099",
     "questionNo": 1099,
-    "sourceQuestionNo": 1099
+    "sourceQuestionNo": 1099,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1107,
@@ -318,7 +358,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1111",
     "questionNo": 1111,
-    "sourceQuestionNo": 1111
+    "sourceQuestionNo": 1111,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1108,
@@ -347,7 +391,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1100",
     "questionNo": 1100,
-    "sourceQuestionNo": 1100
+    "sourceQuestionNo": 1100,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1109,
@@ -376,7 +424,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1112",
     "questionNo": 1112,
-    "sourceQuestionNo": 1112
+    "sourceQuestionNo": 1112,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1110,
@@ -405,7 +457,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1101",
     "questionNo": 1101,
-    "sourceQuestionNo": 1101
+    "sourceQuestionNo": 1101,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1111,
@@ -434,7 +490,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1102",
     "questionNo": 1102,
-    "sourceQuestionNo": 1102
+    "sourceQuestionNo": 1102,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1112,
@@ -463,7 +523,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1113",
     "questionNo": 1113,
-    "sourceQuestionNo": 1113
+    "sourceQuestionNo": 1113,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1113,
@@ -492,7 +556,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1103",
     "questionNo": 1103,
-    "sourceQuestionNo": 1103
+    "sourceQuestionNo": 1103,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1114,
@@ -527,7 +595,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1118",
     "questionNo": 1118,
-    "sourceQuestionNo": 1118
+    "sourceQuestionNo": 1118,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1115,
@@ -556,7 +628,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1114",
     "questionNo": 1114,
-    "sourceQuestionNo": 1114
+    "sourceQuestionNo": 1114,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1116,
@@ -585,7 +661,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1115",
     "questionNo": 1115,
-    "sourceQuestionNo": 1115
+    "sourceQuestionNo": 1115,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1117,
@@ -614,7 +694,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1119",
     "questionNo": 1119,
-    "sourceQuestionNo": 1119
+    "sourceQuestionNo": 1119,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1118,
@@ -649,7 +733,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1120",
     "questionNo": 1120,
-    "sourceQuestionNo": 1120
+    "sourceQuestionNo": 1120,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1119,
@@ -678,7 +766,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1116",
     "questionNo": 1116,
-    "sourceQuestionNo": 1116
+    "sourceQuestionNo": 1116,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1120,
@@ -707,7 +799,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1117",
     "questionNo": 1117,
-    "sourceQuestionNo": 1117
+    "sourceQuestionNo": 1117,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1121,
@@ -736,7 +832,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1121",
     "questionNo": 1121,
-    "sourceQuestionNo": 1121
+    "sourceQuestionNo": 1121,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1122,
@@ -765,7 +865,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1126",
     "questionNo": 1126,
-    "sourceQuestionNo": 1126
+    "sourceQuestionNo": 1126,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1123,
@@ -794,7 +898,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1122",
     "questionNo": 1122,
-    "sourceQuestionNo": 1122
+    "sourceQuestionNo": 1122,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1124,
@@ -823,7 +931,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1127",
     "questionNo": 1127,
-    "sourceQuestionNo": 1127
+    "sourceQuestionNo": 1127,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1125,
@@ -858,7 +970,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1123",
     "questionNo": 1123,
-    "sourceQuestionNo": 1123
+    "sourceQuestionNo": 1123,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1126,
@@ -887,7 +1003,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1124",
     "questionNo": 1124,
-    "sourceQuestionNo": 1124
+    "sourceQuestionNo": 1124,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1127,
@@ -916,7 +1036,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1128",
     "questionNo": 1128,
-    "sourceQuestionNo": 1128
+    "sourceQuestionNo": 1128,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1128,
@@ -945,7 +1069,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1125",
     "questionNo": 1125,
-    "sourceQuestionNo": 1125
+    "sourceQuestionNo": 1125,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1129,
@@ -974,7 +1102,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1129",
     "questionNo": 1129,
-    "sourceQuestionNo": 1129
+    "sourceQuestionNo": 1129,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1130,
@@ -1003,7 +1135,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1133",
     "questionNo": 1133,
-    "sourceQuestionNo": 1133
+    "sourceQuestionNo": 1133,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1131,
@@ -1038,7 +1174,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1130",
     "questionNo": 1130,
-    "sourceQuestionNo": 1130
+    "sourceQuestionNo": 1130,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1132,
@@ -1073,7 +1213,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1134",
     "questionNo": 1134,
-    "sourceQuestionNo": 1134
+    "sourceQuestionNo": 1134,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1133,
@@ -1108,7 +1252,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1131",
     "questionNo": 1131,
-    "sourceQuestionNo": 1131
+    "sourceQuestionNo": 1131,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1134,
@@ -1143,7 +1291,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1135",
     "questionNo": 1135,
-    "sourceQuestionNo": 1135
+    "sourceQuestionNo": 1135,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1135,
@@ -1172,7 +1324,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1132",
     "questionNo": 1132,
-    "sourceQuestionNo": 1132
+    "sourceQuestionNo": 1132,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1136,
@@ -1201,7 +1357,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1140",
     "questionNo": 1140,
-    "sourceQuestionNo": 1140
+    "sourceQuestionNo": 1140,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1137,
@@ -1236,7 +1396,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1136",
     "questionNo": 1136,
-    "sourceQuestionNo": 1136
+    "sourceQuestionNo": 1136,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1138,
@@ -1265,7 +1429,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1141",
     "questionNo": 1141,
-    "sourceQuestionNo": 1141
+    "sourceQuestionNo": 1141,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1139,
@@ -1294,7 +1462,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1137",
     "questionNo": 1137,
-    "sourceQuestionNo": 1137
+    "sourceQuestionNo": 1137,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1140,
@@ -1329,7 +1501,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1142",
     "questionNo": 1142,
-    "sourceQuestionNo": 1142
+    "sourceQuestionNo": 1142,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1141,
@@ -1358,7 +1534,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1138",
     "questionNo": 1138,
-    "sourceQuestionNo": 1138
+    "sourceQuestionNo": 1138,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1142,
@@ -1393,7 +1573,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1143",
     "questionNo": 1143,
-    "sourceQuestionNo": 1143
+    "sourceQuestionNo": 1143,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1143,
@@ -1422,7 +1606,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1139",
     "questionNo": 1139,
-    "sourceQuestionNo": 1139
+    "sourceQuestionNo": 1139,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1144,
@@ -1451,7 +1639,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1144",
     "questionNo": 1144,
-    "sourceQuestionNo": 1144
+    "sourceQuestionNo": 1144,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1145,
@@ -1486,7 +1678,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1148",
     "questionNo": 1148,
-    "sourceQuestionNo": 1148
+    "sourceQuestionNo": 1148,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1146,
@@ -1515,7 +1711,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1145",
     "questionNo": 1145,
-    "sourceQuestionNo": 1145
+    "sourceQuestionNo": 1145,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1147,
@@ -1544,7 +1744,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1149",
     "questionNo": 1149,
-    "sourceQuestionNo": 1149
+    "sourceQuestionNo": 1149,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1148,
@@ -1579,7 +1783,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1150",
     "questionNo": 1150,
-    "sourceQuestionNo": 1150
+    "sourceQuestionNo": 1150,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1149,
@@ -1608,7 +1816,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1146",
     "questionNo": 1146,
-    "sourceQuestionNo": 1146
+    "sourceQuestionNo": 1146,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1150,
@@ -1637,7 +1849,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1147",
     "questionNo": 1147,
-    "sourceQuestionNo": 1147
+    "sourceQuestionNo": 1147,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1151,
@@ -1666,7 +1882,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1151",
     "questionNo": 1151,
-    "sourceQuestionNo": 1151
+    "sourceQuestionNo": 1151,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1152,
@@ -1701,7 +1921,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1152",
     "questionNo": 1152,
-    "sourceQuestionNo": 1152
+    "sourceQuestionNo": 1152,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1153,
@@ -1736,7 +1960,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1156",
     "questionNo": 1156,
-    "sourceQuestionNo": 1156
+    "sourceQuestionNo": 1156,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1154,
@@ -1765,7 +1993,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1153",
     "questionNo": 1153,
-    "sourceQuestionNo": 1153
+    "sourceQuestionNo": 1153,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1155,
@@ -1794,7 +2026,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1157",
     "questionNo": 1157,
-    "sourceQuestionNo": 1157
+    "sourceQuestionNo": 1157,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1156,
@@ -1823,7 +2059,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1154",
     "questionNo": 1154,
-    "sourceQuestionNo": 1154
+    "sourceQuestionNo": 1154,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1157,
@@ -1858,7 +2098,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1158",
     "questionNo": 1158,
-    "sourceQuestionNo": 1158
+    "sourceQuestionNo": 1158,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1158,
@@ -1887,7 +2131,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1155",
     "questionNo": 1155,
-    "sourceQuestionNo": 1155
+    "sourceQuestionNo": 1155,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1159,
@@ -1922,7 +2170,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1159",
     "questionNo": 1159,
-    "sourceQuestionNo": 1159
+    "sourceQuestionNo": 1159,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1160,
@@ -1951,7 +2203,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1162",
     "questionNo": 1162,
-    "sourceQuestionNo": 1162
+    "sourceQuestionNo": 1162,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1161,
@@ -1986,7 +2242,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1163",
     "questionNo": 1163,
-    "sourceQuestionNo": 1163
+    "sourceQuestionNo": 1163,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1162,
@@ -2021,7 +2281,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1160",
     "questionNo": 1160,
-    "sourceQuestionNo": 1160
+    "sourceQuestionNo": 1160,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1163,
@@ -2056,7 +2320,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1164",
     "questionNo": 1164,
-    "sourceQuestionNo": 1164
+    "sourceQuestionNo": 1164,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1164,
@@ -2085,7 +2353,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1161",
     "questionNo": 1161,
-    "sourceQuestionNo": 1161
+    "sourceQuestionNo": 1161,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1165,
@@ -2114,7 +2386,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1165",
     "questionNo": 1165,
-    "sourceQuestionNo": 1165
+    "sourceQuestionNo": 1165,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1166,
@@ -2139,12 +2415,15 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 \\(A=\\begin{pmatrix}3&x\\\\6&-2\\end{pmatrix},\\ B=\\begin{pmatrix}-2&y\\\\-6&3\\end{pmatrix}\\)에 대하여 \\((A-B)^2=A^2-2AB+B^2\\)을 만족시키는 두 실수 \\(x, y\\)의 관계식을 나타내는 그래프의 개형은?",
     "choices": [],
-    
     "answer": "",
     "solution": "",
     "displayNo": "1169",
     "questionNo": 1169,
-    "sourceQuestionNo": 1169
+    "sourceQuestionNo": 1169,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1167,
@@ -2173,7 +2452,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1166",
     "questionNo": 1166,
-    "sourceQuestionNo": 1166
+    "sourceQuestionNo": 1166,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1168,
@@ -2202,7 +2485,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1167",
     "questionNo": 1167,
-    "sourceQuestionNo": 1167
+    "sourceQuestionNo": 1167,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1169,
@@ -2231,7 +2518,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1170",
     "questionNo": 1170,
-    "sourceQuestionNo": 1170
+    "sourceQuestionNo": 1170,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1170,
@@ -2266,7 +2557,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1168",
     "questionNo": 1168,
-    "sourceQuestionNo": 1168
+    "sourceQuestionNo": 1168,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1171,
@@ -2301,7 +2596,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1171",
     "questionNo": 1171,
-    "sourceQuestionNo": 1171
+    "sourceQuestionNo": 1171,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1172,
@@ -2336,7 +2635,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1172",
     "questionNo": 1172,
-    "sourceQuestionNo": 1172
+    "sourceQuestionNo": 1172,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1173,
@@ -2371,7 +2674,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1175",
     "questionNo": 1175,
-    "sourceQuestionNo": 1175
+    "sourceQuestionNo": 1175,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1174,
@@ -2406,7 +2713,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1176",
     "questionNo": 1176,
-    "sourceQuestionNo": 1176
+    "sourceQuestionNo": 1176,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1175,
@@ -2441,7 +2752,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1173",
     "questionNo": 1173,
-    "sourceQuestionNo": 1173
+    "sourceQuestionNo": 1173,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1176,
@@ -2476,7 +2791,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1177",
     "questionNo": 1177,
-    "sourceQuestionNo": 1177
+    "sourceQuestionNo": 1177,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1177,
@@ -2511,7 +2830,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1174",
     "questionNo": 1174,
-    "sourceQuestionNo": 1174
+    "sourceQuestionNo": 1174,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1178,
@@ -2540,7 +2863,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1178",
     "questionNo": 1178,
-    "sourceQuestionNo": 1178
+    "sourceQuestionNo": 1178,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1179,
@@ -2575,7 +2902,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1182",
     "questionNo": 1182,
-    "sourceQuestionNo": 1182
+    "sourceQuestionNo": 1182,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1180,
@@ -2604,7 +2935,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1179",
     "questionNo": 1179,
-    "sourceQuestionNo": 1179
+    "sourceQuestionNo": 1179,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1181,
@@ -2633,7 +2968,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1180",
     "questionNo": 1180,
-    "sourceQuestionNo": 1180
+    "sourceQuestionNo": 1180,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1182,
@@ -2662,7 +3001,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1183",
     "questionNo": 1183,
-    "sourceQuestionNo": 1183
+    "sourceQuestionNo": 1183,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1183,
@@ -2691,7 +3034,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1181",
     "questionNo": 1181,
-    "sourceQuestionNo": 1181
+    "sourceQuestionNo": 1181,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 1184,
@@ -2726,6 +3073,110 @@ window.questionBank = [
     "solution": "",
     "displayNo": "1184",
     "questionNo": 1184,
-    "sourceQuestionNo": 1184
+    "sourceQuestionNo": 1184,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
+
+// 원본 그림이 없는 유형 문항은 현재 JS에 남아 있는 조건만으로 독립 검산한 결과를 기록한다.
+const _solutionMap = {
+  1097:{answer:"5A-3B",solution:`행렬의 같은 위치 성분끼리 각각 5배, 3배한 뒤 뺀다. 따라서 결과는 5A-3B이다.`},
+  1098:{answer:`[2; 3]`,solution:`주어진 열벡터를 그대로 읽으면 첫째 성분 2, 둘째 성분 3이다.`},
+  1099:{answer:`E`,solution:`주어진 행렬은 대각성분이 1이고 나머지가 0인 2차 단위행렬이므로 E이다.`},
+  1100:{answer:`B-A`,solution:`A+X=B의 양변에서 A를 빼면 X=B-A이다.`},
+  1101:{answer:`(1, -3, 4)`,solution:`(3,2) 성분은 1, 제2행의 합은 -3+0=-3, 제1열의 합은 2-3+5=4이다.`},
+  1102:{answer:`(-5, 7)`,solution:`[1,2]와 곱하면 첫 성분은 3-8=-5, 둘째 성분은 -3+10=7이다.`},
+  1103:{answer:`[14; 11]`,solution:`행렬곱의 각 성분은 1·2+4·3=14, (-2)·2+5·3=11이다.`},
+  1104:{answer:`(a,b,c)=(-3,4,4)`,solution:`같은 위치 성분을 비교하면 a-1=-4, b-2=2, c-5=-1이므로 a=-3, b=4, c=4이다.`},
+  1105:{answer:`[[−24,12],[5,3]]`,solution:`곱셈으로 (1,1)=−24, (1,2)=12, (2,1)=5, (2,2)=3을 얻는다.`},
+  1106:{answer:`(a,b,c)=(2,-1,-2)`,solution:`a+b=1, a-b=3에서 a=2,b=-1이고 3c=-6에서 c=-2이다.`},
+  1107:{answer:`[[5,10],[-7,-6]]`,solution:`각 행과 열의 내적을 계산하면 첫째 행은 (5,10), 둘째 행은 (-7,-6)이다.`},
+  1108:{answer:`[-1,5]`,solution:`같은 위치 성분을 더해 (0-1, 2+3)=(-1,5)를 얻는다.`},
+  1109:{answer:`A²=[[1,2],[0,1]], A³=[[1,3],[0,1]], A¹⁰=[[1,10],[0,1]]`,solution:`A=E+N이고 N²=O이므로 A^n=E+nN=[[1,n],[0,1]]이다. n=2,3,10을 대입한다.`},
+  1110:{answer:`[[-1,3],[1,4]]`,solution:`같은 위치 성분을 더하면 (2-3,-1+4;1+0,3+1)=(-1,3;1,4)이다.`},
+  1111:{answer:`[[6,-5],[-1,1]]`,solution:`두 행렬을 성분별로 빼면 (5-(-1),-3-2;2-3,-4-(-5))=(6,-5;-1,1)이다.`},
+  1112:{answer:`(-E, E, -E)`,solution:`E의 거듭제곱은 E이고 (-E)^m=(-1)^mE이므로 각각 -E, E, -E이다.`},
+  1113:{answer:`[[4,2,-1],[-2,0,1]]`,solution:`성분별 차는 (3-(-1),3-1,0-1;0-2,-1-(-1),1-0)=(4,2,-1;-2,0,1)이다.`},
+  1114:{answer:`④ 20`,solution:`A=B에서 a=x²,b=y², x-y=4, xy=2이다. 따라서 a+b=x²+y²=(x-y)²+2xy=16+4=20이다.`},
+  1115:{answer:`[[1,2],[4,5]]`,solution:`a11=1, a12=2, a21=4, a22=5를 공식 i²+j-1에 대입해 행렬을 만든다.`},
+  1116:{answer:`그림 확인 필요`,solution:`도로의 방향과 개수를 읽는 오른쪽 그림이 JS에 포함되어 있지 않아 행렬의 수치 성분을 결정할 수 없다. 원본 그림 확보 후 보완한다.`},
+  1117:{answer:`-1`,solution:`성분 비교로 3x-5=-2에서 x=1, 3+y=1에서 y=-2이므로 x+y=-1이다.`},
+  1118:{answer:`⑤ 24`,solution:`a+2b=1,a-b=-5에서 (a,b)=(-3,2), 2c-d=6,c+d=0에서 (c,d)=(2,-2)이다. abcd=24.`},
+  1119:{answer:`8`,solution:`(1,1),(2,2)는 i=j이므로 0, (1,2)는 3i=3, (2,1)는 2i+j=5이다. 합은 8.`},
+  1120:{answer:`10`,solution:`a11=1+k=2에서 k=1. 따라서 x=a12=1,y=a21=4,z=a32=5이고 x+y+z=10이다.`},
+  1121:{answer:`21`,solution:`2x=8에서 x=4, y+2=0에서 y=-2. 4z=2z²-6으로 z=3 또는 -1이고, 첫 성분 식 5=z²-4z가 z=-1을 선택한다. 합은 16+4+1=21.`},
+  1122:{answer:`12`,solution:`두 식을 풀면 A-B=(2M+N)/5=[[5,2],[-1,6]]이다. 네 성분의 합은 12.`},
+  1123:{answer:`2`,solution:`3X=A+2B이므로 X=(A+2B)/3=[[4/3,1/3],[-5/3,2]]. 성분 합은 2이다.`},
+  1124:{answer:`6`,solution:`A=( (A+B)+(A-B) )/2=[[2,1],[1,3]]이므로 네 성분의 곱은 2·1·1·3=6이다.`},
+  1125:{answer:`② -9`,solution:`2(A+B)-3(A-B)=-A+5B=[[-2,2],[1,-10]]이고 성분 합은 -9이다.`},
+  1126:{answer:`-1`,solution:`식에서 X=2B-A=[[3,-1],[-5,-6]]이므로 (1,2) 성분은 -1이다.`},
+  1127:{answer:`-1`,solution:`성분 비교 2x+3y=-1, x+4y=2를 풀면 x=-2,y=1이므로 x+y=-1이다.`},
+  1128:{answer:`그림 확인 필요`,solution:`X=2A-B까지는 식에서 정해지지만 A와 B를 만들 좌표가 오른쪽 그림에만 있고 그림 자산이 없다. 좌표 확보 후 수치 합을 보완한다.`},
+  1129:{answer:`5`,solution:`-p+4q=2, 2p+4q=0에서 p=-2/3,q=1/3. 첫째 행 둘째 성분 p+aq=1이므로 a=5이다.`},
+  1130:{answer:`3`,solution:`XY와 YX를 성분별로 비교하면 a-3=0 및 2a-6=0이므로 a=3이다.`},
+  1131:{answer:`③ 33`,solution:`곱의 성분 합은 α²+β²-2αβ=(α-β)²이다. 근의 합 5, 곱 -2이므로 (α-β)²=25-4(-2)=33.`},
+  1132:{answer:`④ [[6,-4],[4,-6]]`,solution:`S=X+Y,D=X-Y라 두면 XY-YX=(DS-SD)/2이다. 계산 결과 [[6,-4],[4,-6]]으로 ④이다.`},
+  1133:{answer:`④ 4`,solution:`곱의 정의 여부는 AB, BA, CA, CB 네 개이고 BC만 정의되지 않는다. 따라서 4개이다.`},
+  1134:{answer:`④`,solution:`AC는 두 학생의 2차 점수 열벡터 [b1,b2]^T이고 B가 두 성분의 평균을 취하므로 BAC는 두 사람의 2차 시험 평균이다.`},
+  1135:{answer:`-10`,solution:`곱을 비교해 b=-6,c=-2,ab=12를 얻고 a=-2이다. 따라서 a+b+c=-10.`},
+  1136:{answer:`-7`,solution:`A²=E의 비대각 성분에서 a+b=0, 대각 성분에서 a²-6=1이다. b=-a이므로 ab=-a²=-7.`},
+  1137:{answer:`② [11;5]`,solution:`선형성으로 A(3v+2w)=3Av+2Aw=3[1;3]+2[4;-2]=[11;5]이다.`},
+  1138:{answer:`1`,solution:`(1,2) 성분에서 a+1=0이므로 a=-1. (1,1) 또는 (2,2) 성분에서 b=2를 얻어 a+b=1.`},
+  1139:{answer:`[-10;-7]`,solution:`주어진 두 식은 A의 두 열이다. 따라서 A[-3;4]=-3[2;5]+4[-1;2]=[-10;-7].`},
+  1140:{answer:`③`,solution:`X의 거듭제곱은 E,X,-E,-X가 4주기로 반복된다. diag(-1,1)은 이 네 행렬 중 없으므로 ③이다.`},
+  1141:{answer:`4`,solution:`[6;4]=2[2;3]+2[1;-1]이므로 결과는 2[4;3]+2[2;1]=[12;8]. 따라서 p-q=4.`},
+  1142:{answer:`② 3`,solution:`M=A+2B,N=A-2B라 두면 A²-4B²=(MN+NM)/2. (2,2) 성분은 (−2+8)/2=3이다.`},
+  1143:{answer:`4`,solution:`[a;b]=(1/2)[-2a;3b]+(1/2)[4a;-b]이다. 따라서 A[a;b]=1/2([1;-4]+[3;8])=[2;2], 합은 4.`},
+  1144:{answer:`6`,solution:`전개식 비교로 AB=BA. 곱을 계산하면 x=2,y=3이고 xy=6이다.`},
+  1145:{answer:`③ 12`,solution:`두 인수는 A와 다항식이므로 곱은 A³+E이다. A³=[[-1,3],[0,8]]이어서 A³+E의 성분 합은 12.`},
+  1146:{answer:`4`,solution:`AB-AC+C(B-C)=(A+C)(B-C). 주어진 두 행렬의 곱은 [[-6,6],[7,-3]]이고 합은 4.`},
+  1147:{answer:`4`,solution:`A²=E이므로 (E+3A)²=E+6A+9E=10E+6A. 따라서 x=10,y=6, x-y=4.`},
+  1148:{answer:`⑤ A+E`,solution:`B=-A, AB=E에서 A²=-E. 따라서 A^2025=A, B^2024=E이고 합은 A+E이다.`},
+  1149:{answer:`-9`,solution:`D=A-B라 하면 AB+BA=A²+B²-D². D²=[[3,3],[1,4]]이므로 결과 [[-1,-4],[0,-4]], 합은 -9.`},
+  1150:{answer:`-1`,solution:`주어진 등식은 BA=AB를 뜻한다. 곱을 비교하면 x=1,y=-1이므로 점의 y절편은 -1이다.`},
+  1151:{answer:`23`,solution:`A+B=5E이고 AB=E이므로 A²+B²=(A+B)²-2AB=25E-2E=23E이다.`},
+  1152:{answer:`③ A`,solution:`A²+A+E=O이므로 A³=E. 10항을 3항씩 묶으면 세 묶음이 0이고 남는 첫 항이 A이다.`},
+  1153:{answer:`③ ㄱ, ㄷ`,solution:`ㄱ은 AB=BA로 성립한다. ㄴ은 영이 아닌 nilpotent 행렬 반례가 있어 거짓이다. A⁵=A²=E이면 A³=E와 gcd(2,3)=1에서 A=E이므로 ㄷ은 참이다.`},
+  1154:{answer:`100`,solution:`X²=-E, X⁴=E이므로 X^n=E는 4의 배수일 때이다. 가장 작은 세 자리 4의 배수는 100이다.`},
+  1155:{answer:`ㄱ, ㄷ`,solution:`A=2B²이면 A는 B의 다항식이라 AB=BA. AB=O만으로 BA=O는 보장되지 않는다. A-B=E이면 A=B+E라서 교환한다.`},
+  1156:{answer:`1012`,solution:`A=E+N,N²=O이므로 A^k=E+kN. 각 쌍 A^(2r-1)-A^(2r)=-N이고 1012쌍이므로 결과 성분 합은 1012.`},
+  1157:{answer:`① ㄱ`,solution:`AE=O이면 A=O이다. A²=E는 일반적인 대칭·회전 행렬도 가능하고, (A-B)²=O도 A=B를 강제하지 않으므로 ㄴ·ㄷ은 거짓이다.`},
+  1158:{answer:`9`,solution:`A[1;1]=2[1;1]이므로 A^n[1;1]=2^n[1;1]. 부등식은 2^n<1000이고 최대 자연수는 9이다.`},
+  1159:{answer:`그림 확인 필요`,solution:`통신 선로 방향과 개수가 표시된 오른쪽 그림이 JS에 없어 다섯 보기 중 하나를 결정할 수 없다. 원본 그림 확보 후 보완한다.`},
+  1160:{answer:`7`,solution:`성분 비교로 α+β=4, α²+β²=10이므로 αβ=3. 따라서 a+b=(α+β)+αβ=7.`},
+  1161:{answer:`②`,solution:`A-5X=3B-3X에서 X=(A-3B)/2=[[-5,-3],[-8,6]]이므로 ②이다.`},
+  1162:{answer:`⑤ 5`,solution:`네 성분의 합은 (4-8-8+16)+k(1+2+1+2)=4+6k이다. 34와 같으므로 k=5.`},
+  1163:{answer:`③ 8`,solution:`연립하면 X=(A+2B)/5,Y=(B-2A)/5. 따라서 X+Y=(3B-A)/5=[[4,0],[4,0]]이고 합은 8.`},
+  1164:{answer:`36`,solution:`α+β=6, αβ=4. α³+β³=6³-3·4·6=144이므로 (α²/β+β²/α)=144/4=36.`},
+  1165:{answer:`12`,solution:`(2,1) 성분에서 x=8, (1,1) 성분에서 -8+y=-4이므로 y=4. x+y=12.`},
+  1166:{answer:`y=-x`,solution:`전개 비교로 AB=BA가 필요하다. 네 성분을 비교하면 x+y=0이므로 그래프는 원점을 지나는 직선 y=-x이다.`},
+  1167:{answer:`8`,solution:`곱의 (1,2),(2,2) 성분에서 x=2,y=4를 얻는다. 따라서 xy=8.`},
+  1168:{answer:`1`,solution:`A²=A의 (1,2) 성분에서 a=-1, (2,2) 성분에서 b=2이다. 따라서 a+b=1.`},
+  1169:{answer:`-4`,solution:`[X+Y,X-Y]=-[X,Y]+[Y,X]=-2[X,Y]. 주어진 행렬의 두 배 음수는 [[-6,-4],[16,-10]]이고 합은 -4.`},
+  1170:{answer:`③`,solution:`A[x-p;y-q]=A[x;y]-A[p;q]=[p;q]-A²[x;y]. A²[x;y]=[2x;-y]이므로 결과는 [p-2x;q+y], 즉 ③이다.`},
+  1171:{answer:`⑤`,solution:`곱은 A⁴+A²+E이다. C=A²=[[1,-3],[0,1]]을 대입하면 C²+C+E=[[3,-9],[0,3]]으로 ⑤이다.`},
+  1172:{answer:`④ 5^9A`,solution:`직접 곱하면 A²=5A이므로 귀납적으로 A^n=5^(n-1)A. 따라서 A^10=5^9A.`},
+  1173:{answer:`④ 8`,solution:`A²-A+E=O이므로 A³=-E, A⁶=E이다. 20항 합은 세 주기의 합 0에 A+A²=2A-E를 더한 것. a-b+c+d=8.`},
+  1174:{answer:`① ㄱ`,solution:`A+B=E이면 B=E-A라서 AB=BA. A²=E는 A=E를 뜻하지 않고, AB=O도 BA=O를 보장하지 않는다.`},
+  1175:{answer:`④`,solution:`A³=-E, A⁶=E이므로 1000≡4 (mod 6). 따라서 A^1000=A⁴=-A=[[0,1],[-1,-1]]로 ④이다.`},
+  1176:{answer:`⑤ ㄴ, ㄷ`,solution:`A²=O이면 A=O라는 명제는 거짓이다. A⁴=A⁵=E이면 A=E이므로 ㄴ은 참. 마지막 식은 (A-B)²=O이므로 자동으로 (A-B)³=O, ㄷ도 참이다.`},
+  1177:{answer:`③ O`,solution:`A²-A+E=O이므로 A³=-E, A⁶=E이다. 지수 22,14,6은 각각 4,2,0 (mod 6)이고 A⁴+A²+E=O이다.`},
+  1178:{answer:`58`,solution:`a+b=4, ab=-1. x=a²+b²=18, y=a³+b³=76이므로 y-x=58.`},
+  1179:{answer:`④`,solution:`AB의 (1,1)은 윤주의 P마트 금액 ax+bz, (2,2)는 세희의 Q마트 금액 cy+dw이다. 두 금액의 합은 두 대각 성분의 합인 ④이다.`},
+  1180:{answer:`4`,solution:`A²-4A+3E=O의 비대각 식은 b(a-2)=0. b=0이면 a=1,3의 2개, a=2이면 b=±1의 2개로 모두 4개이다.`},
+  1181:{answer:`2`,solution:`A²+A+E=O이므로 A³=E, 100≡1 (mod 3). A[2;1]=[-3;-5]이므로 x-y=2.`},
+  1182:{answer:`-6`,solution:`A+B=E이므로 A³+B³=E-3AB. 따라서 AB=(E-C)/3=[[-1,-2],[-3,0]]이고 성분 합은 -6.`},
+  1183:{answer:`4`,solution:`B^n-A^n=diag(0,3^n-2^n)이므로 3^n-2^n=65. n=4에서 81-16=65이다.`},
+  1184:{answer:`② A`,solution:`ω³=1, 1+ω+ω²=0을 이용하면 A²=ωA이다. 따라서 A^n=ω^(n-1)A이고 100항의 계수 합은 1이므로 전체 합은 A, 즉 ②이다.`}
+};
+window.questionBank.forEach(q=>{const v=_solutionMap[q.id]; if(v){q.answer=v.answer;q.solution=v.solution;}});
+
+const _figureReplacement = {
+  1116:{content:`세 도시 1, 2, 3 사이의 방향 있는 도로 수를 행렬 A의 (i,j) 성분으로 나타낸다. 1→2는 2개, 1→3은 1개, 2→1은 0개, 2→3은 3개, 3→1은 1개, 3→2는 2개이고 자기 도시로 가는 도로는 없다. 행렬 A를 구하시오.`,choices:[],answer:`[[0,2,1],[0,0,3],[1,2,0]]`,solution:`각 행을 출발 도시, 각 열을 도착 도시로 두고 주어진 도로 수를 그대로 배치하면 A=[[0,2,1],[0,0,3],[1,2,0]]이다.`},
+  1128:{content:`좌표평면 위의 P(1,1), Q(3,1), R(1,4)에 대하여 A=[[1,1],[3,1]], B=[[3,1],[1,4]]라 하자. 3X-2A=2(A-B)+X를 만족시키는 행렬 X의 모든 성분의 합을 구하시오.`,choices:[],answer:`3`,solution:`식을 정리하면 2X=4A-2B, 즉 X=2A-B이다. A의 성분 합은 6, B의 성분 합은 9이므로 X의 합은 12-9=3이다.`},
+  1159:{content:`두 회사 P1, P2 사이의 방향 있는 통신 선로 수가 P1→P2는 2개, P2→P1은 1개이고 자기 회사로 가는 선로는 없다. 행렬 A의 (i,j) 성분을 Pi에서 Pj로 가는 선로 수로 정할 때 A를 구하시오.`,choices:[],answer:`[[0,2],[1,0]]`,solution:`행을 출발 회사, 열을 도착 회사로 두면 A=[[0,2],[1,0]]이다.`}
+};
+window.questionBank.forEach(q=>{const v=_figureReplacement[q.id];if(v){Object.assign(q,v);q.image="";q.tags=[...(q.tags||[]),"synthetic_replacement"];}});

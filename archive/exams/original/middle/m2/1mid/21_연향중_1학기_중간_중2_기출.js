@@ -15,14 +15,25 @@ window.questionBank = [
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "solution": "$3.21321321\\cdots$의 순환마디는 $213$이다. $\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -38,15 +49,26 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","일차방정식","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "일차방정식",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "solution": "④는 상수 부등식이며, ⑤는 등호가 있는 일차방정식이다. $\\therefore$ ④, ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -62,15 +84,25 @@ window.questionBank = [
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","원","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "도형",
+      "원",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "solution": "② $5a^2b^{-1}$이 되어야 하며, ④ $2a^6b^6$이 되어야 하므로 이미지 원문의 $2a^4$는 오류다. $\\therefore$ ②, ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -87,14 +119,24 @@ window.questionBank = [
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","유한소수","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "유한소수",
+      "계산"
+    ],
     "wide": false,
     "solution": "분모를 $10^4$으로 만들기 위해 $5^3$을 분모, 분자에 곱한다. $\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -111,14 +153,27 @@ window.questionBank = [
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","인수분해","순환소수","유한소수","정수조건","참거짓","오류판별"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "인수분해",
+      "순환소수",
+      "유한소수",
+      "정수조건",
+      "참거짓",
+      "오류판별"
+    ],
     "wide": false,
     "solution": "분모에 2나 5 이외의 소인수(11 등)가 있으면 순환소수가 된다. $\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -134,15 +189,25 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "solution": "$-x-2 \\le 3x+15 \\implies -4x \\le 17 \\implies x \\ge -4.25$. $\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -158,15 +223,26 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","수직선","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "수직선",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "solution": "$2x-3x > 2-5 \\implies -x > -3 \\implies x < 3$. $\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -182,15 +258,25 @@ window.questionBank = [
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계산","조건해석","중난도","기출"],
+    "tags": [
+      "객관식",
+      "계산",
+      "조건해석",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "solution": "$=(-3y^2+3y-8)-[-6y^2+3y-\\{y-2y^2+3y+8\\}] = y^2+4y-16$. $\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -207,14 +293,24 @@ window.questionBank = [
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "solution": "연이: $368/900 = 92/225$ (분자 92), 황이: $48/99 = 16/33$ (분모 33). 처음 분수 $92/33 = 10.\\dot{0}\\dot{4}$. $\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -231,14 +327,24 @@ window.questionBank = [
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","나머지정리","순환소수","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "나머지정리",
+      "순환소수",
+      "계산"
+    ],
     "wide": false,
     "solution": "순환마디 3,4,2,8,1(길이 5). $95-1=94$번째 순환 숫자. $94 \\div 5$의 나머지는 4. 마디의 4번째 숫자는 8이다. $\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -254,15 +360,25 @@ window.questionBank = [
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계산","조건해석","중난도","기출"],
+    "tags": [
+      "객관식",
+      "계산",
+      "조건해석",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "solution": "$3^{2x+11-15} = 3^{-2} \\implies 2x-4 = -2 \\implies 2x=2 \\implies x=1$. $\\therefore$ ①",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -278,15 +394,25 @@ window.questionBank = [
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계산","조건해석","중난도","기출"],
+    "tags": [
+      "객관식",
+      "계산",
+      "조건해석",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "solution": "$6a^3 \\times \\frac{4a}{\\square} = -12a^2 \\implies \\frac{24a^4}{\\square} = -12a^2 \\implies \\square = -2a^2$. $\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -302,15 +428,26 @@ window.questionBank = [
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","복소수","도형","원","부피","계산"],
+    "tags": [
+      "객관식",
+      "복소수",
+      "도형",
+      "원",
+      "부피",
+      "계산"
+    ],
     "wide": false,
     "solution": "$V_A = \\pi a^2 b, V_B = \\pi b^2 a$. $V_A/V_B = a/b$. $\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -326,15 +463,25 @@ window.questionBank = [
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계산","조건해석","중난도","기출"],
+    "tags": [
+      "객관식",
+      "계산",
+      "조건해석",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "solution": "$1/9^{30} = 1/3^{60} = 1/(3^{10})^6 = 1/A^6$. $\\therefore$ ④",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -350,15 +497,25 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "solution": "1) $x < -4$, 2) $0.5x < 2a \\implies x < 4a$. $4a=-4 \\implies a=-1$. $\\therefore$ ②",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -374,15 +531,25 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "solution": "1) 양수 6 곱함(ㄴ), 2) 이항(ㄱ), 3) 음수 -3으로 나눔(ㄷ). $\\therefore$ ③",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -398,15 +565,28 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","부등식","일차부등식","도형","원","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "부등식",
+      "일차부등식",
+      "도형",
+      "원",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$150x + 60(8-x) \\ge 900 \\implies 90x \\ge 420 \\implies x \\ge 4.66\\cdots$. $\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -422,15 +602,27 @@ window.questionBank = [
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","일차부등식","자연수조건","범위","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "일차부등식",
+      "자연수조건",
+      "범위",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "$2x-10 > 3x-a \\implies x < a-10$. 자연수 3개(1,2,3)이려면 $3 < a-10 \\le 4$. $\\therefore$ ⑤",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -441,14 +633,26 @@ window.questionBank = [
     "originalCategory": "서술형",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","유리수","순환소수","유한소수","자연수조건","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "유리수",
+      "순환소수",
+      "유한소수",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "solution": "(1) $1000x-10x = 124.24.. - 1.24.. \\implies 990x = 123 \\implies x = 41/330$. (2) $330=2 \\cdot 3 \\cdot 5 \\cdot 11$. 분자 41과 약분 안되는 11이 필요. $\\therefore$ 11",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -458,15 +662,25 @@ window.questionBank = [
     "category": "서술형",
     "originalCategory": "서술형",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-서술형",
-    "standardUnit": "서술형",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","계산","조건해석","중난도","기출"],
+    "tags": [
+      "서술형",
+      "계산",
+      "조건해석",
+      "중난도",
+      "기출"
+    ],
     "wide": false,
     "solution": "$= 12(2-3x) - 3(x^2-5x) + 4(x^2-3x^3) = -12x^3 + x^2 - 21x + 24$.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -476,14 +690,24 @@ window.questionBank = [
     "category": "서술형",
     "originalCategory": "서술형",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-서술형",
-    "standardUnit": "서술형",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","최대최소","조건해석","계산","중난도"],
+    "tags": [
+      "서술형",
+      "최대최소",
+      "조건해석",
+      "계산",
+      "중난도"
+    ],
     "wide": false,
     "solution": "$x/3 + (x+2)/5 \\le 1.5 \\implies 5x+3x+6 \\le 22.5 \\implies 8x \\le 16.5 \\implies x \\le 2.0625$.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

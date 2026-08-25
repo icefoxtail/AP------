@@ -12,7 +12,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","전개","대입","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "전개",
+      "대입",
+      "계산"
+    ],
     "wide": false,
     "content": "두 다항식 $A=x^2-2x+1$, $B=2x^2+x-2$에 대하여 $A-B$를 간단히 하면? [4점]",
     "choices": [
@@ -23,7 +29,11 @@ window.questionBank = [
       "$-x^2-x+5$"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 다항식의 대입 시 괄호를 사용하여 부호 실수를 방지함.\\n$A - B = (x^2 - 2x + 1) - (2x^2 + x - 2)$\\n괄호를 전개하여 모든 항의 부호를 결정함.\\n$\\implies x^2 - 2x + 1 - 2x^2 - x + 2$\\n차수가 같은 동류항끼리 재배열하여 정리함.\\n$\\implies (x^2 - 2x^2) + (-2x - x) + (1 + 2)$\\n계산을 수행하여 최종 식을 도출함.\\n$\\therefore -x^2 - 3x + 3$"
+    "solution": "<b>[Logical Anchor]</b> 다항식의 대입 시 괄호를 사용하여 부호 실수를 방지함.\\n$A - B = (x^2 - 2x + 1) - (2x^2 + x - 2)$\\n괄호를 전개하여 모든 항의 부호를 결정함.\\n$\\implies x^2 - 2x + 1 - 2x^2 - x + 2$\\n차수가 같은 동류항끼리 재배열하여 정리함.\\n$\\implies (x^2 - 2x^2) + (-2x - x) + (1 + 2)$\\n계산을 수행하여 최종 식을 도출함.\\n$\\therefore -x^2 - 3x + 3$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -36,7 +46,16 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계수비교","복소수","표해석","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계수비교",
+      "복소수",
+      "표해석",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "식 $(7+4i)+(-3+5i)=a+bi$ ($a, b$는 실수)에서 $a+b$의 값은? (단, $i=\\sqrt{-1}$) [4.1점]",
     "choices": [
@@ -47,7 +66,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 복소수의 상등을 위해 실수부분과 허수부분을 분리하여 정리함.\\n주어진 좌변의 식을 결합법칙을 이용하여 재배열함.\\n$\\implies (7 - 3) + (4i + 5i)$\\n$\\implies (7 - 3) + (4 + 5)i$\\n각 부분을 연산하여 표준 형태의 복소수를 구함.\\n$\\implies 4 + 9i$\\n우변 $a + bi$와 계수를 비교함.\\n$\\because a, b$는 실수이므로 $a = 4, \\ b = 9$\\n구하고자 하는 최종 값을 계산함.\\n$a + b = 4 + 9 = 13$\\n$\\therefore 13$"
+    "solution": "<b>[Logical Anchor]</b> 복소수의 상등을 위해 실수부분과 허수부분을 분리하여 정리함.\\n주어진 좌변의 식을 결합법칙을 이용하여 재배열함.\\n$\\implies (7 - 3) + (4i + 5i)$\\n$\\implies (7 - 3) + (4 + 5)i$\\n각 부분을 연산하여 표준 형태의 복소수를 구함.\\n$\\implies 4 + 9i$\\n우변 $a + bi$와 계수를 비교함.\\n$\\because a, b$는 실수이므로 $a = 4, \\ b = 9$\\n구하고자 하는 최종 값을 계산함.\\n$a + b = 4 + 9 = 13$\\n$\\therefore 13$",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -60,7 +83,15 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","항등식","나머지정리","전개","계수비교","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "항등식",
+      "나머지정리",
+      "전개",
+      "계수비교",
+      "계산"
+    ],
     "wide": false,
     "content": "모든 실수 $x$에 대하여 다음 식 $(x-3)(2x+4)=2x^2+ax+b$이 항상 성립할 때 두 실수 $a, b$에 대하여 $a+b$의 값은? [4.2점]",
     "choices": [
@@ -71,7 +102,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 임의의 $x$에 대해 성립하는 항등식이므로 계수비교법을 적용함.\\n좌변의 다항식을 분배법칙을 사용하여 전개함.\\n$\\implies x(2x + 4) - 3(2x + 4)$\\n$\\implies 2x^2 + 4x - 6x - 12$\\n동류항을 정리하여 내림차순으로 정렬함.\\n$\\implies 2x^2 - 2x - 12$\\n우변 $2x^2 + ax + b$와 각 항의 계수를 대조함.\\n$\\implies a = -2, \\ b = -12$\\n두 계수의 합을 구함.\\n$a + b = (-2) + (-12) = -14$\\n$\\therefore -14$"
+    "solution": "<b>[Logical Anchor]</b> 임의의 $x$에 대해 성립하는 항등식이므로 계수비교법을 적용함.\\n좌변의 다항식을 분배법칙을 사용하여 전개함.\\n$\\implies x(2x + 4) - 3(2x + 4)$\\n$\\implies 2x^2 + 4x - 6x - 12$\\n동류항을 정리하여 내림차순으로 정렬함.\\n$\\implies 2x^2 - 2x - 12$\\n우변 $2x^2 + ax + b$와 각 항의 계수를 대조함.\\n$\\implies a = -2, \\ b = -12$\\n두 계수의 합을 구함.\\n$a + b = (-2) + (-12) = -14$\\n$\\therefore -14$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -84,7 +119,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","항등식","나머지정리","전개","대입","계산","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "항등식",
+      "나머지정리",
+      "전개",
+      "대입",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "다항식 $x^2-5x-3$을 $x-3$으로 나누었을 때의 나머지를 $R$이라고 할 때, 나머지 $R$의 값은? [4.3점]",
     "choices": [
@@ -95,7 +139,11 @@ window.questionBank = [
       "-3"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 다항식 $P(x)$를 일차식 $(x - \\alpha)$로 나눈 나머지는 $P(\\alpha)$와 같음.\\n주어진 다항식을 $f(x) = x^2 - 5x - 3$이라 정의함.\\n일차식 $x - 3$으로 나눈 나머지는 나머지 정리에 의해 $f(3)$임.\\n$x = 3$을 다항식에 대입하여 계산 과정을 전개함.\\n$R = 3^2 - 5(3) - 3$\\n$\\implies 9 - 15 - 3$\\n$\\implies -6 - 3$\\n$\\therefore -9$"
+    "solution": "<b>[Logical Anchor]</b> 다항식 $P(x)$를 일차식 $(x - \\alpha)$로 나눈 나머지는 $P(\\alpha)$와 같음.\\n주어진 다항식을 $f(x) = x^2 - 5x - 3$이라 정의함.\\n일차식 $x - 3$으로 나눈 나머지는 나머지 정리에 의해 $f(3)$임.\\n$x = 3$을 다항식에 대입하여 계산 과정을 전개함.\\n$R = 3^2 - 5(3) - 3$\\n$\\implies 9 - 15 - 3$\\n$\\implies -6 - 3$\\n$\\therefore -9$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -108,7 +156,14 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계수비교","이차방정식","판별식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "계수비교",
+      "이차방정식",
+      "판별식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "이차방정식 $4x^2-12x+k-3=0$이 중근을 가질 때, 실수 $k$의 값은? [4.4점]",
     "choices": [
@@ -119,7 +174,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 이차방정식이 중근을 가질 조건은 판별식 $D=0$임.\\n주어진 방정식의 계수는 $a=4, \\ b=-12, \\ c=k-3$임.\\n일차항의 계수가 짝수이므로 짝수 판별식 $D/4$를 사용함.\\n$\\ tf{D}{4} = (-6)^2 - 4(k - 3)$\\n중근 조건에 의해 판별식 값을 $0$으로 설정함.\\n$36 - 4k + 12 = 0$\\n$48 - 4k = 0$\\n$4k = 48$\\n$\\therefore k = 12$"
+    "solution": "<b>[Logical Anchor]</b> 이차방정식이 중근을 가질 조건은 판별식 $D=0$임.\\n주어진 방정식의 계수는 $a=4, \\ b=-12, \\ c=k-3$임.\\n일차항의 계수가 짝수이므로 짝수 판별식 $D/4$를 사용함.\\n$\\ tf{D}{4} = (-6)^2 - 4(k - 3)$\\n중근 조건에 의해 판별식 값을 $0$으로 설정함.\\n$36 - 4k + 12 = 0$\\n$48 - 4k = 0$\\n$4k = 48$\\n$\\therefore k = 12$",
+    "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+    "subUnit": "이차방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -132,7 +191,14 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","참거짓","대입","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "참거짓",
+      "대입",
+      "계산"
+    ],
     "wide": false,
     "content": "다항식 $x^4+2x^2-3$이 $(x^2+a)(x+b)(x-b)$로 인수분해 될 때, 두 양수 $a, b$에 대하여 $a-b$의 값은? [4.5점]",
     "choices": [
@@ -143,7 +209,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> $x^2$을 치환하여 이차식의 인수분해 공식을 적용함.\\n$x^2 = X$로 치환하면 식은 다음과 같이 변형됨.\\n$\\implies X^2 + 2X - 3$\\n대각선 곱을 이용한 인수분해를 시행함.\\n$\\implies (X + 3)(X - 1)$\\n치환했던 $X$에 다시 $x^2$을 대입함.\\n$\\implies (x^2 + 3)(x^2 - 1)$\\n$(x^2 - 1)$ 부분에 합차 공식 $A^2 - B^2 = (A+B)(A-B)$를 적용함.\\n$\\implies (x^2 + 3)(x + 1)(x - 1)$\\n주어진 형태 $(x^2+a)(x+b)(x-b)$와 대조함.\\n$\\because a, b$는 양수이므로 $a = 3, \\ b = 1$\\n최종 값을 계산함.\\n$a - b = 3 - 1 = 2$\\n$\\therefore 2$"
+    "solution": "<b>[Logical Anchor]</b> $x^2$을 치환하여 이차식의 인수분해 공식을 적용함.\\n$x^2 = X$로 치환하면 식은 다음과 같이 변형됨.\\n$\\implies X^2 + 2X - 3$\\n대각선 곱을 이용한 인수분해를 시행함.\\n$\\implies (X + 3)(X - 1)$\\n치환했던 $X$에 다시 $x^2$을 대입함.\\n$\\implies (x^2 + 3)(x^2 - 1)$\\n$(x^2 - 1)$ 부분에 합차 공식 $A^2 - B^2 = (A+B)(A-B)$를 적용함.\\n$\\implies (x^2 + 3)(x + 1)(x - 1)$\\n주어진 형태 $(x^2+a)(x+b)(x-b)$와 대조함.\\n$\\because a, b$는 양수이므로 $a = 3, \\ b = 1$\\n최종 값을 계산함.\\n$a - b = 3 - 1 = 2$\\n$\\therefore 2$",
+    "subUnitKey": "H15-SA-03-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -156,7 +226,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","대입","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$x^2-6x+1=0$일 때, $x^3-x-\\frac{1}{x}+\\frac{1}{x^3}$의 값은? [4.6점]",
     "choices": [
@@ -167,7 +243,11 @@ window.questionBank = [
       "196"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 역수 합의 꼴을 도출하기 위해 조건식의 양변을 $x$로 나눔.\\n$x^2 - 6x + 1 = 0$ 에서 $x \\n e 0$ 이므로 양변을 $x$로 나누면\\n$x - 6 + \\ tf{1}{x} = 0 \\implies x + \\ tf{1}{x} = 6$\\n구하고자 하는 식을 동일한 차수와 구조끼리 그룹화함.\\n$\\implies (x^3 + \\ tf{1}{x^3}) - (x + \\ tf{1}{x})$\\n세제곱 합의 공식 $A^3 + B^3 = (A+B)^3 - 3AB(A+B)$를 적용함.\\n$\\because x^3 + \\ tf{1}{x^3} = (x + \\ tf{1}{x})^3 - 3(x + \\ tf{1}{x})$\\n구해둔 합의 값 $6$을 대입하여 계산함.\\n$\\implies 6^3 - 3(6) = 216 - 18 = 198$\\n전체 식의 최종 결과를 도출함.\\n$\\implies 198 - 6 = 192$\\n$\\therefore 192$"
+    "solution": "<b>[Logical Anchor]</b> 역수 합의 꼴을 도출하기 위해 조건식의 양변을 $x$로 나눔.\\n$x^2 - 6x + 1 = 0$ 에서 $x \\n e 0$ 이므로 양변을 $x$로 나누면\\n$x - 6 + \\ tf{1}{x} = 0 \\implies x + \\ tf{1}{x} = 6$\\n구하고자 하는 식을 동일한 차수와 구조끼리 그룹화함.\\n$\\implies (x^3 + \\ tf{1}{x^3}) - (x + \\ tf{1}{x})$\\n세제곱 합의 공식 $A^3 + B^3 = (A+B)^3 - 3AB(A+B)$를 적용함.\\n$\\because x^3 + \\ tf{1}{x^3} = (x + \\ tf{1}{x})^3 - 3(x + \\ tf{1}{x})$\\n구해둔 합의 값 $6$을 대입하여 계산함.\\n$\\implies 6^3 - 3(6) = 216 - 18 = 198$\\n전체 식의 최종 결과를 도출함.\\n$\\implies 198 - 6 = 192$\\n$\\therefore 192$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -180,7 +260,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","나머지정리","완전제곱식","전개","계수비교","계산","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "나머지정리",
+      "완전제곱식",
+      "전개",
+      "계수비교",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "다항식 $x^3-ax-b$가 $(x+2)^2$으로 나누어떨어진다. 이때, 몫을 $Q(x)$라 할 때, $a+b+Q(10)$의 값은? [4.7점]",
     "choices": [
@@ -191,7 +280,11 @@ window.questionBank = [
       "46"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 나누어떨어지면 나머지가 $0$이며, 최고차항 계수를 고려하여 몫을 설정함.\\n$x^3$의 계수가 $1$이므로 $Q(x)$를 일차식 $(x - c)$라고 정의함.\\n$x^3 - ax - b = (x + 2)^2(x - c)$\\n우변의 완전제곱식을 전개함.\\n$\\implies (x^2 + 4x + 4)(x - c)$\\n$\\implies x^3 + (4 - c)x^2 + (4 - 4c)x - 4c$\\n좌변 $x^3 + 0x^2 - ax - b$와 각 항의 계수를 비교함.\\n$i)  x^2 항:  4 - c = 0 \\implies c = 4$\\n$ii)  x 항:  -a = 4 - 4(4) = -12 \\implies a = 12$\\n$iii) 상수항:  -b = -4(4) = -16 \\implies b = 16$\\n몫 $Q(x) = x - 4$ 이므로 $Q(10)$을 계산함.\\n$Q(10) = 10 - 4 = 6$\\n모든 항의 합을 구함.\\n$a + b + Q(10) = 12 + 16 + 6 = 34$\\n$\\therefore 34$"
+    "solution": "<b>[Logical Anchor]</b> 나누어떨어지면 나머지가 $0$이며, 최고차항 계수를 고려하여 몫을 설정함.\\n$x^3$의 계수가 $1$이므로 $Q(x)$를 일차식 $(x - c)$라고 정의함.\\n$x^3 - ax - b = (x + 2)^2(x - c)$\\n우변의 완전제곱식을 전개함.\\n$\\implies (x^2 + 4x + 4)(x - c)$\\n$\\implies x^3 + (4 - c)x^2 + (4 - 4c)x - 4c$\\n좌변 $x^3 + 0x^2 - ax - b$와 각 항의 계수를 비교함.\\n$i)  x^2 항:  4 - c = 0 \\implies c = 4$\\n$ii)  x 항:  -a = 4 - 4(4) = -12 \\implies a = 12$\\n$iii) 상수항:  -b = -4(4) = -16 \\implies b = 16$\\n몫 $Q(x) = x - 4$ 이므로 $Q(10)$을 계산함.\\n$Q(10) = 10 - 4 = 6$\\n모든 항의 합을 구함.\\n$a + b + Q(10) = 12 + 16 + 6 = 34$\\n$\\therefore 34$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+    "subUnit": "다항식의 나눗셈",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -204,7 +297,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","항등식","나머지정리","전개","계수비교","함수","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "항등식",
+      "나머지정리",
+      "전개",
+      "계수비교",
+      "함수",
+      "계산"
+    ],
     "wide": false,
     "content": "다항식 $f(x)=x^3+10x^2-5x+17$에 대하여 등식 $f(x+k)=x^3-2kx^2+ax+b$가 $x$의 값에 관계없이 항상 성립할 때, $k+a+b$의 값은? (단, $k, a, b$는 상수이다.) [4.8점]",
     "choices": [
@@ -215,7 +317,11 @@ window.questionBank = [
       "28"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 합성함수의 전개식을 통해 미정계수를 결정함.\\n$f(x+k) = (x+k)^3 + 10(x+k)^2 - 5(x+k) + 17$\\n각 항을 곱셈 공식에 맞추어 상세히 전개함.\\n$\\implies (x^3 + 3kx^2 + 3k^2x + k^3) + 10(x^2 + 2kx + k^2) - 5x - 5k + 17$\\n$x$에 대하여 내림차순으로 정리함.\\n$\\implies x^3 + (3k + 10)x^2 + (3k^2 + 20k - 5)x + (k^3 + 10k^2 - 5k + 17)$\\n주어진 우변 $x^3 - 2kx^2 + ax + b$와 계수를 비교함.\\n$i)  x^2 항:  3k + 10 = -2k \\implies 5k = -10 \\implies k = -2$\\n$ii)  x 항:  a = 3(-2)^2 + 20(-2) - 5 = 12 - 40 - 5 = -33$\\n$iii) 상수항:  b = (-2)^3 + 10(-2)^2 - 5(-2) + 17 = -8 + 40 + 10 + 17 = 59$\\n최종 합을 계산함.\\n$k + a + b = (-2) + (-33) + 59 = 24$\\n$\\therefore 24$"
+    "solution": "<b>[Logical Anchor]</b> 합성함수의 전개식을 통해 미정계수를 결정함.\\n$f(x+k) = (x+k)^3 + 10(x+k)^2 - 5(x+k) + 17$\\n각 항을 곱셈 공식에 맞추어 상세히 전개함.\\n$\\implies (x^3 + 3kx^2 + 3k^2x + k^3) + 10(x^2 + 2kx + k^2) - 5x - 5k + 17$\\n$x$에 대하여 내림차순으로 정리함.\\n$\\implies x^3 + (3k + 10)x^2 + (3k^2 + 20k - 5)x + (k^3 + 10k^2 - 5k + 17)$\\n주어진 우변 $x^3 - 2kx^2 + ax + b$와 계수를 비교함.\\n$i)  x^2 항:  3k + 10 = -2k \\implies 5k = -10 \\implies k = -2$\\n$ii)  x 항:  a = 3(-2)^2 + 20(-2) - 5 = 12 - 40 - 5 = -33$\\n$iii) 상수항:  b = (-2)^3 + 10(-2)^2 - 5(-2) + 17 = -8 + 40 + 10 + 17 = 59$\\n최종 합을 계산함.\\n$k + a + b = (-2) + (-33) + 59 = 24$\\n$\\therefore 24$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -228,7 +334,16 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","완전제곱식","계수비교","이차함수","최대최소","함수","도형","사각형"],
+    "tags": [
+      "객관식",
+      "완전제곱식",
+      "계수비교",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "도형",
+      "사각형"
+    ],
     "wide": false,
     "content": "길이가 $240m$인 끈을 모두 사용하여 직사각형 모양의 $2$개의 영역(하나는 정사각형)으로 나눌 때, 넓이의 합이 최대가 되는 정사각형 영역의 한 변의 길이는? (단, 끈의 두께는 생각하지 않는다.) [4.9점]",
     "choices": [
@@ -239,7 +354,11 @@ window.questionBank = [
       "70m"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 도형의 길이를 변수로 설정하여 이차함수 모델을 수립함.\\n정사각형의 한 변을 $x$, 직사각형의 가로(정사각형 포함 전체)를 $y$라 함.\\n영역이 나뉘는 끈은 가로 $2$개, 세로 $3$개가 소요됨.\\n$\\implies 3x + 2y = 240 \\implies y = 120 - \\ tf{3}{2}x$\\n전체 넓이를 $S(x)$라 하면 $S(x) = x \\cdot y$ 임.\\n$S(x) = x(120 - \\ tf{3}{2}x) = -\\ tf{3}{2}x^2 + 120x$\\n최댓값을 찾기 위해 완전제곱식으로 변형함.\\n$S(x) = -\\ tf{3}{2}(x^2 - 80x) = -\\ tf{3}{2}(x - 40)^2 + 2400$\\n$\\because$ 이차항 계수가 음수이므로 $x=40$일 때 최댓값 $2400$을 가짐.\\n$\\therefore 40m$"
+    "solution": "<b>[Logical Anchor]</b> 도형의 길이를 변수로 설정하여 이차함수 모델을 수립함.\\n정사각형의 한 변을 $x$, 직사각형의 가로(정사각형 포함 전체)를 $y$라 함.\\n영역이 나뉘는 끈은 가로 $2$개, 세로 $3$개가 소요됨.\\n$\\implies 3x + 2y = 240 \\implies y = 120 - \\ tf{3}{2}x$\\n전체 넓이를 $S(x)$라 하면 $S(x) = x \\cdot y$ 임.\\n$S(x) = x(120 - \\ tf{3}{2}x) = -\\ tf{3}{2}x^2 + 120x$\\n최댓값을 찾기 위해 완전제곱식으로 변형함.\\n$S(x) = -\\ tf{3}{2}(x^2 - 80x) = -\\ tf{3}{2}(x - 40)^2 + 2400$\\n$\\because$ 이차항 계수가 음수이므로 $x=40$일 때 최댓값 $2400$을 가짐.\\n$\\therefore 40m$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -252,7 +371,16 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","인수분해","이차방정식","판별식","이차함수","함수","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "인수분해",
+      "이차방정식",
+      "판별식",
+      "이차함수",
+      "함수",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "이차함수 $y=x^2-4kx+4k^2-3k+6$은 $x$축과 서로 다른 두 점에서 만나고, $y=2x^2-3kx+k^2+k+6$은 $x$축과 접할 때, $5k$의 값은? [4.9점]",
     "choices": [
@@ -263,7 +391,11 @@ window.questionBank = [
       "80"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 위치 관계에 따른 판별식 $D$의 부호를 결정함.\\n(1) 서로 다른 두 점 조건: $D_1 > 0$\\n$y = x^2 - 4kx + 4k^2 - 3k + 6$\\n$\\frac{D_1}{4} = (-2k)^2 - (4k^2 - 3k + 6) = 4k^2 - 4k^2 + 3k - 6 > 0$\\n$3k > 6 \\implies k > 2 \\quad \\cdots (\\alpha)$\\n(2) 접하는 조건: $D_2 = 0$\\n$y = 2x^2 - 3kx + k^2 + k + 6$\\n$D_2 = (-3k)^2 - 4(2)(k^2 + k + 6) = 0$\\n$9k^2 - 8k^2 - 8k - 48 = 0 \\implies k^2 - 8k - 48 = 0$\\n이차방정식을 인수분해함.\\n$(k - 12)(k + 4) = 0 \\implies k = 12  또는  k = -4$\\n$(\\alpha)$의 조건 $k > 2$에 의해 $k = 12$ 가 확정됨.\\n최종 구하는 값: $5k = 5 \\times 12 = 60$\\n$\\therefore 60$"
+    "solution": "<b>[Logical Anchor]</b> 위치 관계에 따른 판별식 $D$의 부호를 결정함.\\n(1) 서로 다른 두 점 조건: $D_1 > 0$\\n$y = x^2 - 4kx + 4k^2 - 3k + 6$\\n$\\frac{D_1}{4} = (-2k)^2 - (4k^2 - 3k + 6) = 4k^2 - 4k^2 + 3k - 6 > 0$\\n$3k > 6 \\implies k > 2 \\quad \\cdots (\\alpha)$\\n(2) 접하는 조건: $D_2 = 0$\\n$y = 2x^2 - 3kx + k^2 + k + 6$\\n$D_2 = (-3k)^2 - 4(2)(k^2 + k + 6) = 0$\\n$9k^2 - 8k^2 - 8k - 48 = 0 \\implies k^2 - 8k - 48 = 0$\\n이차방정식을 인수분해함.\\n$(k - 12)(k + 4) = 0 \\implies k = 12  또는  k = -4$\\n$(\\alpha)$의 조건 $k > 2$에 의해 $k = 12$ 가 확정됨.\\n최종 구하는 값: $5k = 5 \\times 12 = 60$\\n$\\therefore 60$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -276,7 +408,16 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","이차함수","최대최소","함수","표해석","범위","참거짓","조건해석"],
+    "tags": [
+      "객관식",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "표해석",
+      "범위",
+      "참거짓",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$-2 \\le x \\le 2$에 대하여 함수 $y=(x^2-2x+1)(x^2-2x-4)-5x^2+10x+19$의 최댓값과 최솟값을 각각 $M, m$이라 할 때, $M-m$의 값은? [5.1점]",
     "choices": [
@@ -287,7 +428,11 @@ window.questionBank = [
       "45"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 공통부분을 치환하여 차수를 낮추되, 치환된 변수의 범위를 재설정함.\\n$i) 치환 변수 설정 및 범위 추출$\\n$x^2 - 2x = X$라 치환함.\\n$X = (x - 1)^2 - 1$이며 범위 $-2 \\le x \\le 2$에서 함숫값을 조사함.\\n$x = 1$일 때 최솟값: $-1$\\n$x = -2$일 때 최댓값: $(-2 - 1)^2 - 1 = 8$\\n$\\implies -1 \\le X \\le 8$\\n$ii) 새로운 이차함수의 분석$\\n주어진 식을 $X$로 표현함.\\n$y = (X + 1)(X - 4) - 5X + 19$\\n$\\implies X^2 - 3X - 4 - 5X + 19 = X^2 - 8X + 15$\\n함수를 표준형으로 고침: $f(X) = (X - 4)^2 - 1$\\n$iii) 최댓값과 최솟값 결정$\\n대칭축 $X = 4$가 범위 $[-1, 8]$에 포함됨.\\n최솟값 $m = f(4) = -1$\\n최댓값 $M$은 축에서 가장 먼 $X = -1$에서 발생함.\\n$M = f(-1) = (-1 - 4)^2 - 1 = 25 - 1 = 24$\\n$iv) 결과 도출$\\n$M - m = 24 - (-1) = 25$\\n$\\therefore 25$"
+    "solution": "<b>[Logical Anchor]</b> 공통부분을 치환하여 차수를 낮추되, 치환된 변수의 범위를 재설정함.\\n$i) 치환 변수 설정 및 범위 추출$\\n$x^2 - 2x = X$라 치환함.\\n$X = (x - 1)^2 - 1$이며 범위 $-2 \\le x \\le 2$에서 함숫값을 조사함.\\n$x = 1$일 때 최솟값: $-1$\\n$x = -2$일 때 최댓값: $(-2 - 1)^2 - 1 = 8$\\n$\\implies -1 \\le X \\le 8$\\n$ii) 새로운 이차함수의 분석$\\n주어진 식을 $X$로 표현함.\\n$y = (X + 1)(X - 4) - 5X + 19$\\n$\\implies X^2 - 3X - 4 - 5X + 19 = X^2 - 8X + 15$\\n함수를 표준형으로 고침: $f(X) = (X - 4)^2 - 1$\\n$iii) 최댓값과 최솟값 결정$\\n대칭축 $X = 4$가 범위 $[-1, 8]$에 포함됨.\\n최솟값 $m = f(4) = -1$\\n최댓값 $M$은 축에서 가장 먼 $X = -1$에서 발생함.\\n$M = f(-1) = (-1 - 4)^2 - 1 = 25 - 1 = 24$\\n$iv) 결과 도출$\\n$M - m = 24 - (-1) = 25$\\n$\\therefore 25$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -300,7 +445,16 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계수비교","이차방정식","근과계수","도형","원"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계수비교",
+      "이차방정식",
+      "근과계수",
+      "도형",
+      "원"
+    ],
     "wide": false,
     "content": "이차방정식 $ax^2+bx+c=0 (a \\n e 0)$에 대하여, 하니는 일차항 계수 $b$를 잘못 봐서 $1 \\pm i$를 얻고, 두리는 상수항 $c$를 잘못 봐서 $\\frac{1 \\pm \\sqrt{13}}{3}$을 얻었을 때, 원래 방정식의 두 근 $\\alpha, \\beta$에 대한 $27\\alpha^2+27\\beta^2$의 값은? [5.2점]",
     "choices": [
@@ -311,7 +465,11 @@ window.questionBank = [
       "-84"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 잘못 본 계수를 제외하고 바르게 본 계수로부터 근의 관계를 추출함.\\n$i) 하니의 데이터 해석$\\n$b$를 잘못 보았으므로 $a, c$는 올바르게 사용함.\\n$\\because$ 근과 계수의 관계에 의해 두 근의 곱 $\\ tf{c}{a}$는 정확함.\\n$\\frac{c}{a} = (1 + i)(1 - i) = 1 - (-1) = 2$\\n$ii) 두리의 데이터 해석$\\n$c$를 잘못 보았으므로 $a, b$는 올바르게 사용함.\\n$\\because$ 두 근의 합 $-\\ tf{b}{a}$는 정확함.\\n$-\\ tf{b}{a} = \\ tf{1 + \\sqrt{13}}{3} + \\ tf{1 - \\sqrt{13}}{3} = \\ tf{2}{3}$\\n$iii) 원래 방정식의 근의 관계$\\n$\\alpha + \\beta = \\ tf{2}{3}, \\ \\alpha\\beta = 2$\\n$iv) 식의 값 계산$\\n$27(\\alpha^2 + \\beta^2) = 27\\{(\\alpha + \\beta)^2 - 2\\alpha\\beta\\}$\\n$\\implies 27\\{(\\ tf{2}{3})^2 - 2(2)\\} = 27(\\ tf{4}{9} - 4)$\\n$\\implies 27 \\times \\ tf{4}{9} - 27 \\times 4 = 12 - 108 = -96$\\n$\\therefore -96$"
+    "solution": "<b>[Logical Anchor]</b> 잘못 본 계수를 제외하고 바르게 본 계수로부터 근의 관계를 추출함.\\n$i) 하니의 데이터 해석$\\n$b$를 잘못 보았으므로 $a, c$는 올바르게 사용함.\\n$\\because$ 근과 계수의 관계에 의해 두 근의 곱 $\\ tf{c}{a}$는 정확함.\\n$\\frac{c}{a} = (1 + i)(1 - i) = 1 - (-1) = 2$\\n$ii) 두리의 데이터 해석$\\n$c$를 잘못 보았으므로 $a, b$는 올바르게 사용함.\\n$\\because$ 두 근의 합 $-\\ tf{b}{a}$는 정확함.\\n$-\\ tf{b}{a} = \\ tf{1 + \\sqrt{13}}{3} + \\ tf{1 - \\sqrt{13}}{3} = \\ tf{2}{3}$\\n$iii) 원래 방정식의 근의 관계$\\n$\\alpha + \\beta = \\ tf{2}{3}, \\ \\alpha\\beta = 2$\\n$iv) 식의 값 계산$\\n$27(\\alpha^2 + \\beta^2) = 27\\{(\\alpha + \\beta)^2 - 2\\alpha\\beta\\}$\\n$\\implies 27\\{(\\ tf{2}{3})^2 - 2(2)\\} = 27(\\ tf{4}{9} - 4)$\\n$\\implies 27 \\times \\ tf{4}{9} - 27 \\times 4 = 12 - 108 = -96$\\n$\\therefore -96$",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -324,7 +482,16 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","복소수","이차함수","최대최소","함수","표해석","범위"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "복소수",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "표해석",
+      "범위"
+    ],
     "wide": false,
     "content": "복소수 $z=a+2bi (b \\n e 0)$에 대하여 $\\frac{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
     "choices": [
@@ -335,7 +502,11 @@ window.questionBank = [
       "-10"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 복소수가 실수일 조건($W = \\bar{W}$)을 활용하여 변수 간의 관계식을 도출함.\\n$i) 관계식 도출$\\n$W = \\ tf{z}{2+z^2}$ 라 하면 $W = \\bar{W}$ 가 성립해야 함.\\n$\\frac{z}{2+z^2} = \\ tf{\\bar{z}}{2+\\bar{z}^2} \\implies z(2 + \\bar{z}^2) = \\bar{z}(2 + z^2)$\\n$2z + z\\bar{z}^2 = 2\\bar{z} + \\bar{z}z^2$\\n$2(z - \\bar{z}) - z\\bar{z}(z - \\bar{z}) = 0$\\n$(z - \\bar{z})(2 - z\\bar{z}) = 0$\\n$b \\n e 0 \\implies z \\n e \\bar{z}$ 이므로 $z - \\bar{z} \\n e 0$ 임.\\n$\\therefore z\\bar{z} = 2$\\n$ii) 변수 치환$\\n$z\\bar{z} = (a + 2bi)(a - 2bi) = a^2 + 4b^2 = 2$\\n$\\implies 4b^2 = 2 - a^2 \\quad \\cdots (1)$\\n$iii) 최솟값 산출$\\n목표 식에 $(1)$을 대입하여 $a$에 관한 일변수 함수로 만듦.\\n$g(a) = 2a^2 - (2 - a^2) + 12a - 5 = 3a^2 + 12a - 7$\\n표준형 변형: $g(a) = 3(a + 2)^2 - 19$\\n$a^2 + 4b^2 = 2$ 이고 $b^2 > 0$ 이므로 $a^2 < 2$ 임.\\n축 $a = -2$ 가 범위에 직접 닿지는 않으나 연속성에 의해 혹은 논리적 최소 경계를 조사함.\\n(단, 이차함수의 개형상 꼭짓점에서 최솟값이 결정됨)\\n$\\therefore -19$"
+    "solution": "<b>[Logical Anchor]</b> 복소수가 실수일 조건($W = \\bar{W}$)을 활용하여 변수 간의 관계식을 도출함.\\n$i) 관계식 도출$\\n$W = \\ tf{z}{2+z^2}$ 라 하면 $W = \\bar{W}$ 가 성립해야 함.\\n$\\frac{z}{2+z^2} = \\ tf{\\bar{z}}{2+\\bar{z}^2} \\implies z(2 + \\bar{z}^2) = \\bar{z}(2 + z^2)$\\n$2z + z\\bar{z}^2 = 2\\bar{z} + \\bar{z}z^2$\\n$2(z - \\bar{z}) - z\\bar{z}(z - \\bar{z}) = 0$\\n$(z - \\bar{z})(2 - z\\bar{z}) = 0$\\n$b \\n e 0 \\implies z \\n e \\bar{z}$ 이므로 $z - \\bar{z} \\n e 0$ 임.\\n$\\therefore z\\bar{z} = 2$\\n$ii) 변수 치환$\\n$z\\bar{z} = (a + 2bi)(a - 2bi) = a^2 + 4b^2 = 2$\\n$\\implies 4b^2 = 2 - a^2 \\quad \\cdots (1)$\\n$iii) 최솟값 산출$\\n목표 식에 $(1)$을 대입하여 $a$에 관한 일변수 함수로 만듦.\\n$g(a) = 2a^2 - (2 - a^2) + 12a - 5 = 3a^2 + 12a - 7$\\n표준형 변형: $g(a) = 3(a + 2)^2 - 19$\\n$a^2 + 4b^2 = 2$ 이고 $b^2 > 0$ 이므로 $a^2 < 2$ 임.\\n축 $a = -2$ 가 범위에 직접 닿지는 않으나 연속성에 의해 혹은 논리적 최소 경계를 조사함.\\n(단, 이차함수의 개형상 꼭짓점에서 최솟값이 결정됨)\\n$\\therefore -19$",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -348,7 +519,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","전개","계수비교","최대최소","조합","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "전개",
+      "계수비교",
+      "최대최소",
+      "조합",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "[단답형 1] $x$에 대한 다항식 $(x^2+2x+3)^2$의 전개식에서 $x$의 계수를 구하시오. [2점]",
     "choices": [
@@ -359,7 +539,11 @@ window.questionBank = [
       " "
     ],
     "answer": "12",
-    "solution": "<b>[Logical Anchor]</b> 필요한 항만 선택적으로 곱하여 연산량을 최소화함.\\n$(x^2 + 2x + 3)(x^2 + 2x + 3)$ 의 구조를 분석함.\\n$x$항이 나오기 위해서는 (일차항 $\\times$ 상수항) 또는 (상수항 $\\times$ 일차항)의 조합이 필요함.\\n$i)  2x \\times 3 = 6x$\\n$ii)  3 \\times 2x = 6x$\\n두 경우를 합산함.\\n$\\implies 6x + 6x = 12x$\\n$\\therefore 12$"
+    "solution": "<b>[Logical Anchor]</b> 필요한 항만 선택적으로 곱하여 연산량을 최소화함.\\n$(x^2 + 2x + 3)(x^2 + 2x + 3)$ 의 구조를 분석함.\\n$x$항이 나오기 위해서는 (일차항 $\\times$ 상수항) 또는 (상수항 $\\times$ 일차항)의 조합이 필요함.\\n$i)  2x \\times 3 = 6x$\\n$ii)  3 \\times 2x = 6x$\\n두 경우를 합산함.\\n$\\implies 6x + 6x = 12x$\\n$\\therefore 12$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -372,7 +556,16 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","판별식","이차함수","최대최소","부등식","함수","그래프","정수조건"],
+    "tags": [
+      "객관식",
+      "판별식",
+      "이차함수",
+      "최대최소",
+      "부등식",
+      "함수",
+      "그래프",
+      "정수조건"
+    ],
     "wide": false,
     "content": "[단답형 2] 이차함수 $y=-x^2+x-20$의 그래프가 직선 $y=4x+a-1$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오. [3점]",
     "choices": [
@@ -383,7 +576,11 @@ window.questionBank = [
       " "
     ],
     "answer": "-16",
-    "solution": "<b>[Logical Anchor]</b> 부등식의 성질을 이용하여 판별식의 범위를 설정함.\\n모든 $x$에 대하여 $(-x^2 + x - 20) < (4x + a - 1)$ 이 성립해야 함.\\n식의 모든 항을 좌변으로 이항하여 정리함.\\n$\\implies x^2 + 3x + a + 19 > 0$\\n위 부등식이 항상 성립하려면 아래로 볼록한 이차함수가 $x$축과 만나지 않아야 함.\\n$\\implies D < 0$ 조건을 적용함.\\n$D = 3^2 - 4(1)(a + 19) = 9 - 4a - 76 < 0$\\n$-4a - 67 < 0 \\implies 4a > -67$\\n$a > -16.75$\\n$\\because a$는 정수이므로 만족하는 최솟값은 $-16$임.\\n$\\therefore -16$"
+    "solution": "<b>[Logical Anchor]</b> 부등식의 성질을 이용하여 판별식의 범위를 설정함.\\n모든 $x$에 대하여 $(-x^2 + x - 20) < (4x + a - 1)$ 이 성립해야 함.\\n식의 모든 항을 좌변으로 이항하여 정리함.\\n$\\implies x^2 + 3x + a + 19 > 0$\\n위 부등식이 항상 성립하려면 아래로 볼록한 이차함수가 $x$축과 만나지 않아야 함.\\n$\\implies D < 0$ 조건을 적용함.\\n$D = 3^2 - 4(1)(a + 19) = 9 - 4a - 76 < 0$\\n$-4a - 67 < 0 \\implies 4a > -67$\\n$a > -16.75$\\n$\\because a$는 정수이므로 만족하는 최솟값은 $-16$임.\\n$\\therefore -16$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -391,12 +588,18 @@ window.questionBank = [
     "category": "수치 계산의 공식화",
     "originalCategory": "수치 계산의 공식화",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "RAW-수치계산의공식화",
-    "standardUnit": "수치 계산의 공식화",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "H15-SA-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","전개","계수비교","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "전개",
+      "계수비교",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "[단답형 3] $A=53^3+21 \\times 53^2+147 \\times 53+443$이라고 할 때, $A$의 값을 구하시오. [4.5점]",
     "choices": [
@@ -407,7 +610,11 @@ window.questionBank = [
       " "
     ],
     "answer": "216100",
-    "solution": "<b>[Logical Anchor]</b> 세제곱 전개 공식 $(x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3$의 형태를 파악함.\\n계수를 분석하면 $3y = 21, \\ 3y^2 = 147$ 임.\\n$\\implies y = 7$ 일 때 $3(7) = 21, \\ 3(49) = 147$ 이 정확히 성립함.\\n주어진 식을 공식에 맞추어 변형함.\\n$A = (53^3 + 3 \\cdot 7 \\cdot 53^2 + 3 \\cdot 7^2 \\cdot 53 + 7^3) - 7^3 + 443$\\n$\\implies (53 + 7)^3 - 343 + 443$\\n$\\implies 60^3 + 100$\\n$\\implies 216000 + 100$\\n$\\therefore 216100$"
+    "solution": "<b>[Logical Anchor]</b> 세제곱 전개 공식 $(x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3$의 형태를 파악함.\\n계수를 분석하면 $3y = 21, \\ 3y^2 = 147$ 임.\\n$\\implies y = 7$ 일 때 $3(7) = 21, \\ 3(49) = 147$ 이 정확히 성립함.\\n주어진 식을 공식에 맞추어 변형함.\\n$A = (53^3 + 3 \\cdot 7 \\cdot 53^2 + 3 \\cdot 7^2 \\cdot 53 + 7^3) - 7^3 + 443$\\n$\\implies (53 + 7)^3 - 343 + 443$\\n$\\implies 60^3 + 100$\\n$\\implies 216000 + 100$\\n$\\therefore 216100$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -420,7 +627,16 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","절댓값","다항식","인수분해","최대최소","자연수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "절댓값",
+      "다항식",
+      "인수분해",
+      "최대최소",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $48$의 값을 가질 때, $x+y+z$의 최솟값을 구하시오. [5.5점]",
     "choices": [
@@ -431,7 +647,11 @@ window.questionBank = [
       " "
     ],
     "answer": "41",
-    "solution": "<b>[Logical Anchor]</b> 항이 많은 다항식은 한 문자에 대해 정리하여 인수분해함.\\n$x^2(x - 2y - z) + xy(y + 2z) - yz^2$ 등의 복잡한 형태를 다음으로 정리함.\\n$\\implies (x - z)(x^2 - 2xy + y^2) = (x - z)(x - y)^2 = 48$\\n$(x-y)^2$은 $48$의 약수 중 제곱수여야 함.\\n$case 1)  (x-y)^2 = 1 \\implies |x-y|=1, \\ x-z=48$\\n$case 2)  (x-y)^2 = 4 \\implies |x-y|=2, \\ x-z=12$\\n$case 3)  (x-y)^2 = 16 \\implies |x-y|=4, \\ x-z=3$\\n$case 2 조사:  x, z$는 소수이고 차이가 $12$인 수 중 $x=17, z=5$ 가능.\\n이때 $|17-y|=2 \\implies y=19$ (소수)\\n$x+y+z = 17 + 19 + 5 = 41$\\n타 케이스 대비 최솟값이 도출됨.\\n$\\therefore 41$"
+    "solution": "<b>[Logical Anchor]</b> 항이 많은 다항식은 한 문자에 대해 정리하여 인수분해함.\\n$x^2(x - 2y - z) + xy(y + 2z) - yz^2$ 등의 복잡한 형태를 다음으로 정리함.\\n$\\implies (x - z)(x^2 - 2xy + y^2) = (x - z)(x - y)^2 = 48$\\n$(x-y)^2$은 $48$의 약수 중 제곱수여야 함.\\n$case 1)  (x-y)^2 = 1 \\implies |x-y|=1, \\ x-z=48$\\n$case 2)  (x-y)^2 = 4 \\implies |x-y|=2, \\ x-z=12$\\n$case 3)  (x-y)^2 = 16 \\implies |x-y|=4, \\ x-z=3$\\n$case 2 조사:  x, z$는 소수이고 차이가 $12$인 수 중 $x=17, z=5$ 가능.\\n이때 $|17-y|=2 \\implies y=19$ (소수)\\n$x+y+z = 17 + 19 + 5 = 41$\\n타 케이스 대비 최솟값이 도출됨.\\n$\\therefore 41$",
+    "subUnitKey": "H15-SA-03-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -444,7 +664,16 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","복소수","지수","자연수조건","범위","개수세기"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "복소수",
+      "지수",
+      "자연수조건",
+      "범위",
+      "개수세기"
+    ],
     "wide": false,
     "content": "[서술형 1] $15$이하의 자연수 $n, m$에 대하여 $n=2p, m=3q$이고 $f(n,m)=(\\frac{1+i}{\\sqrt{2}})^n + (\\frac{\\sqrt{3}+i}{2})^m = 1+i$를 만족할 때, 순서쌍 $(n,m)$의 개수를 구하시오. [10점]",
     "choices": [
@@ -455,7 +684,11 @@ window.questionBank = [
       " "
     ],
     "answer": "4",
-    "solution": "<b>[Logical Anchor]</b> 기본 복소수 단위를 거듭제곱하여 규칙성을 찾음.\\n$(\\ tf{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\\ tf{1+i}{\\sqrt{2}})^n = i^p$\\n$(\\ tf{\\sqrt{3}+i}{2})^3 = i$ 이므로 $(\\ tf{\\sqrt{3}+i}{2})^m = i^q$\\n조건식 $\\implies i^p + i^q = 1 + i$\\n$i$의 거듭제곱 성질에 의해 $\\{i^p, i^q\\}$ 가 $\\{1, i\\}$ 세트가 되어야 함.\\n(1) $i^p = 1, \\ i^q = i \\implies p=4k, \\ q=4j+1$\\n$n=2p \\in \\{8\\}, \\ m=3q \\in \\{3, 15\\} \\implies (8, 3), (8, 15)$\\n(2) $i^p = i, \\ i^q = 1 \\implies p=4k+1, \\ q=4j$\\n$n=2p \\in \\{2, 10\\}, \\ m=3q \\in \\{12\\} \\implies (2, 12), (10, 12)$\\n$\\therefore 4$개"
+    "solution": "<b>[Logical Anchor]</b> 기본 복소수 단위를 거듭제곱하여 규칙성을 찾음.\\n$(\\ tf{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\\ tf{1+i}{\\sqrt{2}})^n = i^p$\\n$(\\ tf{\\sqrt{3}+i}{2})^3 = i$ 이므로 $(\\ tf{\\sqrt{3}+i}{2})^m = i^q$\\n조건식 $\\implies i^p + i^q = 1 + i$\\n$i$의 거듭제곱 성질에 의해 $\\{i^p, i^q\\}$ 가 $\\{1, i\\}$ 세트가 되어야 함.\\n(1) $i^p = 1, \\ i^q = i \\implies p=4k, \\ q=4j+1$\\n$n=2p \\in \\{8\\}, \\ m=3q \\in \\{3, 15\\} \\implies (8, 3), (8, 15)$\\n(2) $i^p = i, \\ i^q = 1 \\implies p=4k+1, \\ q=4j$\\n$n=2p \\in \\{2, 10\\}, \\ m=3q \\in \\{12\\} \\implies (2, 12), (10, 12)$\\n$\\therefore 4$개",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -468,7 +701,16 @@ window.questionBank = [
     "standardUnitOrder": 13,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","절댓값","판별식","이차함수","최대최소","함수","도형","삼각형"],
+    "tags": [
+      "객관식",
+      "절댓값",
+      "판별식",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "도형",
+      "삼각형"
+    ],
     "wide": false,
     "content": "[서술형 2] 이차함수 $y=-x^2+6x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $9$배가 될 때 $a$의 최댓값의 절댓값을 구하시오. [10점]",
     "choices": [
@@ -479,6 +721,10 @@ window.questionBank = [
       " "
     ],
     "answer": "12",
-    "solution": "<b>[Logical Anchor]</b> 접점의 위치와 삼각형의 닮음을 기하학적으로 해석함.\\n$i) 연립 및 접점 설정$\\n$x^2 + (a-6)x + b = 0$ 의 판별식 $D=0$ 에서 $b = \\ tf{(a-6)^2}{4}$\\n접점 $C$의 $x$좌표는 중근인 $x = \\ tf{6-a}{2}$\\n$ii) 기하학적 비율 추출$\\n$\\triangle ABO$와 $\\triangle ACD$는 직선의 성질상 닮음 구조를 가짐.\\n넓이비가 $9:1$ 이면 길이비는 $3:1$ 임.\\n직선의 $x$절편 $A(-\\ tf{b}{a}, 0)$와 원점 $O(0, 0)$, 점 $D(\\ tf{6-a}{2}, 0)$ 사이의 거리비가\\n$\\frac{AO}{AD} = 3$ 또는 $\\ tf{AO}{AD} = \\ tf{3}{4}$ 등의 관계를 보임.\\n$iii) 대수적 해결$\\n위 비율 관계를 $a, b$에 대해 풀면 $a$는 $12, 3, -3, -12$를 가짐.\\n그 중 최댓값은 $12$이며 절댓값 또한 $12$임.\\n$\\therefore 12$"
+    "solution": "<b>[Logical Anchor]</b> 접점의 위치와 삼각형의 닮음을 기하학적으로 해석함.\\n$i) 연립 및 접점 설정$\\n$x^2 + (a-6)x + b = 0$ 의 판별식 $D=0$ 에서 $b = \\ tf{(a-6)^2}{4}$\\n접점 $C$의 $x$좌표는 중근인 $x = \\ tf{6-a}{2}$\\n$ii) 기하학적 비율 추출$\\n$\\triangle ABO$와 $\\triangle ACD$는 직선의 성질상 닮음 구조를 가짐.\\n넓이비가 $9:1$ 이면 길이비는 $3:1$ 임.\\n직선의 $x$절편 $A(-\\ tf{b}{a}, 0)$와 원점 $O(0, 0)$, 점 $D(\\ tf{6-a}{2}, 0)$ 사이의 거리비가\\n$\\frac{AO}{AD} = 3$ 또는 $\\ tf{AO}{AD} = \\ tf{3}{4}$ 등의 관계를 보임.\\n$iii) 대수적 해결$\\n위 비율 관계를 $a, b$에 대해 풀면 $a$는 $12, 3, -3, -12$를 가짐.\\n그 중 최댓값은 $12$이며 절댓값 또한 $12$임.\\n$\\therefore 12$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

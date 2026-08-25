@@ -28,7 +28,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0001",
     "questionNo": 1,
-    "sourceQuestionNo": 1
+    "sourceQuestionNo": 1,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -57,7 +61,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0002",
     "questionNo": 2,
-    "sourceQuestionNo": 2
+    "sourceQuestionNo": 2,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -86,7 +94,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0003",
     "questionNo": 3,
-    "sourceQuestionNo": 3
+    "sourceQuestionNo": 3,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -115,7 +127,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0004",
     "questionNo": 4,
-    "sourceQuestionNo": 4
+    "sourceQuestionNo": 4,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -144,7 +160,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0005",
     "questionNo": 5,
-    "sourceQuestionNo": 5
+    "sourceQuestionNo": 5,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -173,7 +193,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0006",
     "questionNo": 6,
-    "sourceQuestionNo": 6
+    "sourceQuestionNo": 6,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -202,7 +226,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0007",
     "questionNo": 7,
-    "sourceQuestionNo": 7
+    "sourceQuestionNo": 7,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -231,7 +259,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0008",
     "questionNo": 8,
-    "sourceQuestionNo": 8
+    "sourceQuestionNo": 8,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -260,7 +292,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0009",
     "questionNo": 9,
-    "sourceQuestionNo": 9
+    "sourceQuestionNo": 9,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -289,7 +325,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0010",
     "questionNo": 10,
-    "sourceQuestionNo": 10
+    "sourceQuestionNo": 10,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -318,7 +358,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0011",
     "questionNo": 11,
-    "sourceQuestionNo": 11
+    "sourceQuestionNo": 11,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -347,7 +391,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0012",
     "questionNo": 12,
-    "sourceQuestionNo": 12
+    "sourceQuestionNo": 12,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -376,7 +424,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0013",
     "questionNo": 13,
-    "sourceQuestionNo": 13
+    "sourceQuestionNo": 13,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -405,7 +457,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0014",
     "questionNo": 14,
-    "sourceQuestionNo": 14
+    "sourceQuestionNo": 14,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -434,7 +490,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0015",
     "questionNo": 15,
-    "sourceQuestionNo": 15
+    "sourceQuestionNo": 15,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -463,7 +523,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0016",
     "questionNo": 16,
-    "sourceQuestionNo": 16
+    "sourceQuestionNo": 16,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -492,7 +556,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0017",
     "questionNo": 17,
-    "sourceQuestionNo": 17
+    "sourceQuestionNo": 17,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -521,7 +589,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0018",
     "questionNo": 18,
-    "sourceQuestionNo": 18
+    "sourceQuestionNo": 18,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -550,7 +622,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0019",
     "questionNo": 19,
-    "sourceQuestionNo": 19
+    "sourceQuestionNo": 19,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -579,7 +655,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0020",
     "questionNo": 20,
-    "sourceQuestionNo": 20
+    "sourceQuestionNo": 20,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -608,7 +688,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0021",
     "questionNo": 21,
-    "sourceQuestionNo": 21
+    "sourceQuestionNo": 21,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -637,7 +721,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0022",
     "questionNo": 22,
-    "sourceQuestionNo": 22
+    "sourceQuestionNo": 22,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -666,7 +754,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0023",
     "questionNo": 23,
-    "sourceQuestionNo": 23
+    "sourceQuestionNo": 23,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -695,7 +787,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0024",
     "questionNo": 24,
-    "sourceQuestionNo": 24
+    "sourceQuestionNo": 24,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -724,7 +820,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0025",
     "questionNo": 25,
-    "sourceQuestionNo": 25
+    "sourceQuestionNo": 25,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 26,
@@ -753,7 +853,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0026",
     "questionNo": 26,
-    "sourceQuestionNo": 26
+    "sourceQuestionNo": 26,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -782,7 +886,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0027",
     "questionNo": 27,
-    "sourceQuestionNo": 27
+    "sourceQuestionNo": 27,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -811,7 +919,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0028",
     "questionNo": 28,
-    "sourceQuestionNo": 28
+    "sourceQuestionNo": 28,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -840,7 +952,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0029",
     "questionNo": 29,
-    "sourceQuestionNo": 29
+    "sourceQuestionNo": 29,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -869,7 +985,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0030",
     "questionNo": 30,
-    "sourceQuestionNo": 30
+    "sourceQuestionNo": 30,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -898,7 +1018,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0031",
     "questionNo": 31,
-    "sourceQuestionNo": 31
+    "sourceQuestionNo": 31,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -927,7 +1051,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0032",
     "questionNo": 32,
-    "sourceQuestionNo": 32
+    "sourceQuestionNo": 32,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -956,7 +1084,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0033",
     "questionNo": 33,
-    "sourceQuestionNo": 33
+    "sourceQuestionNo": 33,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -985,7 +1117,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0034",
     "questionNo": 34,
-    "sourceQuestionNo": 34
+    "sourceQuestionNo": 34,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1014,7 +1150,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0035",
     "questionNo": 35,
-    "sourceQuestionNo": 35
+    "sourceQuestionNo": 35,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1043,7 +1183,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0036",
     "questionNo": 36,
-    "sourceQuestionNo": 36
+    "sourceQuestionNo": 36,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1072,7 +1216,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0037",
     "questionNo": 37,
-    "sourceQuestionNo": 37
+    "sourceQuestionNo": 37,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1101,7 +1249,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0038",
     "questionNo": 38,
-    "sourceQuestionNo": 38
+    "sourceQuestionNo": 38,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1130,7 +1282,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0039",
     "questionNo": 39,
-    "sourceQuestionNo": 39
+    "sourceQuestionNo": 39,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1159,7 +1315,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0040",
     "questionNo": 40,
-    "sourceQuestionNo": 40
+    "sourceQuestionNo": 40,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1188,7 +1348,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0041",
     "questionNo": 41,
-    "sourceQuestionNo": 41
+    "sourceQuestionNo": 41,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1217,7 +1381,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0042",
     "questionNo": 42,
-    "sourceQuestionNo": 42
+    "sourceQuestionNo": 42,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1246,7 +1414,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0043",
     "questionNo": 43,
-    "sourceQuestionNo": 43
+    "sourceQuestionNo": 43,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1275,7 +1447,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0044",
     "questionNo": 44,
-    "sourceQuestionNo": 44
+    "sourceQuestionNo": 44,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1304,7 +1480,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0045",
     "questionNo": 45,
-    "sourceQuestionNo": 45
+    "sourceQuestionNo": 45,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1333,7 +1513,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0046",
     "questionNo": 46,
-    "sourceQuestionNo": 46
+    "sourceQuestionNo": 46,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1362,7 +1546,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0047",
     "questionNo": 47,
-    "sourceQuestionNo": 47
+    "sourceQuestionNo": 47,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1391,7 +1579,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0048",
     "questionNo": 48,
-    "sourceQuestionNo": 48
+    "sourceQuestionNo": 48,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1420,7 +1612,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0049",
     "questionNo": 49,
-    "sourceQuestionNo": 49
+    "sourceQuestionNo": 49,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1449,7 +1645,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0050",
     "questionNo": 50,
-    "sourceQuestionNo": 50
+    "sourceQuestionNo": 50,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1484,7 +1684,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0051",
     "questionNo": 51,
-    "sourceQuestionNo": 51
+    "sourceQuestionNo": 51,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 52,
@@ -1519,7 +1723,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0052",
     "questionNo": 52,
-    "sourceQuestionNo": 52
+    "sourceQuestionNo": 52,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1554,7 +1762,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0053",
     "questionNo": 53,
-    "sourceQuestionNo": 53
+    "sourceQuestionNo": 53,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1589,7 +1801,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0054",
     "questionNo": 54,
-    "sourceQuestionNo": 54
+    "sourceQuestionNo": 54,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1624,7 +1840,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0055",
     "questionNo": 55,
-    "sourceQuestionNo": 55
+    "sourceQuestionNo": 55,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 56,
@@ -1659,7 +1879,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0056",
     "questionNo": 56,
-    "sourceQuestionNo": 56
+    "sourceQuestionNo": 56,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 57,
@@ -1694,7 +1918,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0057",
     "questionNo": 57,
-    "sourceQuestionNo": 57
+    "sourceQuestionNo": 57,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 58,
@@ -1729,7 +1957,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0058",
     "questionNo": 58,
-    "sourceQuestionNo": 58
+    "sourceQuestionNo": 58,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 59,
@@ -1758,7 +1990,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0059",
     "questionNo": 59,
-    "sourceQuestionNo": 59
+    "sourceQuestionNo": 59,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 60,
@@ -1793,7 +2029,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0060",
     "questionNo": 60,
-    "sourceQuestionNo": 60
+    "sourceQuestionNo": 60,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 61,
@@ -1822,7 +2062,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0061",
     "questionNo": 61,
-    "sourceQuestionNo": 61
+    "sourceQuestionNo": 61,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 62,
@@ -1851,7 +2095,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0062",
     "questionNo": 62,
-    "sourceQuestionNo": 62
+    "sourceQuestionNo": 62,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 63,
@@ -1880,7 +2128,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0063",
     "questionNo": 63,
-    "sourceQuestionNo": 63
+    "sourceQuestionNo": 63,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 64,
@@ -1909,7 +2161,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0064",
     "questionNo": 64,
-    "sourceQuestionNo": 64
+    "sourceQuestionNo": 64,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 65,
@@ -1944,7 +2200,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0065",
     "questionNo": 65,
-    "sourceQuestionNo": 65
+    "sourceQuestionNo": 65,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 66,
@@ -1979,7 +2239,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0066",
     "questionNo": 66,
-    "sourceQuestionNo": 66
+    "sourceQuestionNo": 66,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 67,
@@ -2014,7 +2278,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0067",
     "questionNo": 67,
-    "sourceQuestionNo": 67
+    "sourceQuestionNo": 67,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 68,
@@ -2049,7 +2317,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0068",
     "questionNo": 68,
-    "sourceQuestionNo": 68
+    "sourceQuestionNo": 68,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 69,
@@ -2078,7 +2350,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0069",
     "questionNo": 69,
-    "sourceQuestionNo": 69
+    "sourceQuestionNo": 69,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 70,
@@ -2113,7 +2389,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0070",
     "questionNo": 70,
-    "sourceQuestionNo": 70
+    "sourceQuestionNo": 70,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 71,
@@ -2142,7 +2422,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0071",
     "questionNo": 71,
-    "sourceQuestionNo": 71
+    "sourceQuestionNo": 71,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 72,
@@ -2171,7 +2455,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0072",
     "questionNo": 72,
-    "sourceQuestionNo": 72
+    "sourceQuestionNo": 72,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 73,
@@ -2200,7 +2488,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0073",
     "questionNo": 73,
-    "sourceQuestionNo": 73
+    "sourceQuestionNo": 73,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 74,
@@ -2235,7 +2527,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0074",
     "questionNo": 74,
-    "sourceQuestionNo": 74
+    "sourceQuestionNo": 74,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 75,
@@ -2264,7 +2560,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0075",
     "questionNo": 75,
-    "sourceQuestionNo": 75
+    "sourceQuestionNo": 75,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 76,
@@ -2299,7 +2599,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0076",
     "questionNo": 76,
-    "sourceQuestionNo": 76
+    "sourceQuestionNo": 76,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 77,
@@ -2334,7 +2638,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0077",
     "questionNo": 77,
-    "sourceQuestionNo": 77
+    "sourceQuestionNo": 77,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 78,
@@ -2363,7 +2671,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0078",
     "questionNo": 78,
-    "sourceQuestionNo": 78
+    "sourceQuestionNo": 78,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 79,
@@ -2398,7 +2710,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0079",
     "questionNo": 79,
-    "sourceQuestionNo": 79
+    "sourceQuestionNo": 79,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 80,
@@ -2427,7 +2743,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0080",
     "questionNo": 80,
-    "sourceQuestionNo": 80
+    "sourceQuestionNo": 80,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 81,
@@ -2456,7 +2776,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0081",
     "questionNo": 81,
-    "sourceQuestionNo": 81
+    "sourceQuestionNo": 81,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 82,
@@ -2491,7 +2815,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0082",
     "questionNo": 82,
-    "sourceQuestionNo": 82
+    "sourceQuestionNo": 82,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 83,
@@ -2520,7 +2848,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0083",
     "questionNo": 83,
-    "sourceQuestionNo": 83
+    "sourceQuestionNo": 83,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 84,
@@ -2555,7 +2887,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0084",
     "questionNo": 84,
-    "sourceQuestionNo": 84
+    "sourceQuestionNo": 84,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 85,
@@ -2590,7 +2926,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0085",
     "questionNo": 85,
-    "sourceQuestionNo": 85
+    "sourceQuestionNo": 85,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 86,
@@ -2619,7 +2959,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0086",
     "questionNo": 86,
-    "sourceQuestionNo": 86
+    "sourceQuestionNo": 86,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 87,
@@ -2654,7 +2998,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0087",
     "questionNo": 87,
-    "sourceQuestionNo": 87
+    "sourceQuestionNo": 87,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 88,
@@ -2689,7 +3037,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0088",
     "questionNo": 88,
-    "sourceQuestionNo": 88
+    "sourceQuestionNo": 88,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 89,
@@ -2724,7 +3076,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0089",
     "questionNo": 89,
-    "sourceQuestionNo": 89
+    "sourceQuestionNo": 89,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 90,
@@ -2753,7 +3109,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0090",
     "questionNo": 90,
-    "sourceQuestionNo": 90
+    "sourceQuestionNo": 90,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 91,
@@ -2788,7 +3148,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0091",
     "questionNo": 91,
-    "sourceQuestionNo": 91
+    "sourceQuestionNo": 91,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 92,
@@ -2817,7 +3181,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0092",
     "questionNo": 92,
-    "sourceQuestionNo": 92
+    "sourceQuestionNo": 92,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 93,
@@ -2846,7 +3214,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0093",
     "questionNo": 93,
-    "sourceQuestionNo": 93
+    "sourceQuestionNo": 93,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 94,
@@ -2881,7 +3253,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0094",
     "questionNo": 94,
-    "sourceQuestionNo": 94
+    "sourceQuestionNo": 94,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 95,
@@ -2910,7 +3286,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0095",
     "questionNo": 95,
-    "sourceQuestionNo": 95
+    "sourceQuestionNo": 95,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 96,
@@ -2939,7 +3319,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0096",
     "questionNo": 96,
-    "sourceQuestionNo": 96
+    "sourceQuestionNo": 96,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 97,
@@ -2968,7 +3352,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0097",
     "questionNo": 97,
-    "sourceQuestionNo": 97
+    "sourceQuestionNo": 97,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 98,
@@ -3003,7 +3391,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0098",
     "questionNo": 98,
-    "sourceQuestionNo": 98
+    "sourceQuestionNo": 98,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 99,
@@ -3038,7 +3430,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0099",
     "questionNo": 99,
-    "sourceQuestionNo": 99
+    "sourceQuestionNo": 99,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 100,
@@ -3067,7 +3463,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0100",
     "questionNo": 100,
-    "sourceQuestionNo": 100
+    "sourceQuestionNo": 100,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 101,
@@ -3102,7 +3502,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0101",
     "questionNo": 101,
-    "sourceQuestionNo": 101
+    "sourceQuestionNo": 101,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 102,
@@ -3137,7 +3541,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0102",
     "questionNo": 102,
-    "sourceQuestionNo": 102
+    "sourceQuestionNo": 102,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 103,
@@ -3166,7 +3574,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0103",
     "questionNo": 103,
-    "sourceQuestionNo": 103
+    "sourceQuestionNo": 103,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 104,
@@ -3201,7 +3613,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0104",
     "questionNo": 104,
-    "sourceQuestionNo": 104
+    "sourceQuestionNo": 104,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 105,
@@ -3236,7 +3652,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0105",
     "questionNo": 105,
-    "sourceQuestionNo": 105
+    "sourceQuestionNo": 105,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 106,
@@ -3271,7 +3691,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0106",
     "questionNo": 106,
-    "sourceQuestionNo": 106
+    "sourceQuestionNo": 106,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 107,
@@ -3306,7 +3730,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0107",
     "questionNo": 107,
-    "sourceQuestionNo": 107
+    "sourceQuestionNo": 107,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 108,
@@ -3335,7 +3763,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0108",
     "questionNo": 108,
-    "sourceQuestionNo": 108
+    "sourceQuestionNo": 108,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 109,
@@ -3364,7 +3796,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0109",
     "questionNo": 109,
-    "sourceQuestionNo": 109
+    "sourceQuestionNo": 109,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 110,
@@ -3399,7 +3835,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0110",
     "questionNo": 110,
-    "sourceQuestionNo": 110
+    "sourceQuestionNo": 110,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 111,
@@ -3428,7 +3868,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0111",
     "questionNo": 111,
-    "sourceQuestionNo": 111
+    "sourceQuestionNo": 111,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 112,
@@ -3457,7 +3901,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0112",
     "questionNo": 112,
-    "sourceQuestionNo": 112
+    "sourceQuestionNo": 112,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 113,
@@ -3492,7 +3940,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0113",
     "questionNo": 113,
-    "sourceQuestionNo": 113
+    "sourceQuestionNo": 113,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 114,
@@ -3527,7 +3979,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0114",
     "questionNo": 114,
-    "sourceQuestionNo": 114
+    "sourceQuestionNo": 114,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 115,
@@ -3556,7 +4012,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0115",
     "questionNo": 115,
-    "sourceQuestionNo": 115
+    "sourceQuestionNo": 115,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 116,
@@ -3585,7 +4045,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0116",
     "questionNo": 116,
-    "sourceQuestionNo": 116
+    "sourceQuestionNo": 116,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 117,
@@ -3620,7 +4084,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0117",
     "questionNo": 117,
-    "sourceQuestionNo": 117
+    "sourceQuestionNo": 117,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 118,
@@ -3649,7 +4117,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0118",
     "questionNo": 118,
-    "sourceQuestionNo": 118
+    "sourceQuestionNo": 118,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 119,
@@ -3684,7 +4156,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0119",
     "questionNo": 119,
-    "sourceQuestionNo": 119
+    "sourceQuestionNo": 119,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 120,
@@ -3719,7 +4195,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0120",
     "questionNo": 120,
-    "sourceQuestionNo": 120
+    "sourceQuestionNo": 120,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 121,
@@ -3748,7 +4228,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0121",
     "questionNo": 121,
-    "sourceQuestionNo": 121
+    "sourceQuestionNo": 121,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 122,
@@ -3783,7 +4267,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0122",
     "questionNo": 122,
-    "sourceQuestionNo": 122
+    "sourceQuestionNo": 122,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 123,
@@ -3818,7 +4306,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0123",
     "questionNo": 123,
-    "sourceQuestionNo": 123
+    "sourceQuestionNo": 123,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 124,
@@ -3847,7 +4339,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0124",
     "questionNo": 124,
-    "sourceQuestionNo": 124
+    "sourceQuestionNo": 124,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 125,
@@ -3882,7 +4378,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0125",
     "questionNo": 125,
-    "sourceQuestionNo": 125
+    "sourceQuestionNo": 125,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 126,
@@ -3917,7 +4417,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0126",
     "questionNo": 126,
-    "sourceQuestionNo": 126
+    "sourceQuestionNo": 126,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 127,
@@ -3946,7 +4450,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0127",
     "questionNo": 127,
-    "sourceQuestionNo": 127
+    "sourceQuestionNo": 127,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 128,
@@ -3975,7 +4483,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0128",
     "questionNo": 128,
-    "sourceQuestionNo": 128
+    "sourceQuestionNo": 128,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 129,
@@ -4004,7 +4516,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0129",
     "questionNo": 129,
-    "sourceQuestionNo": 129
+    "sourceQuestionNo": 129,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 130,
@@ -4039,7 +4555,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0130",
     "questionNo": 130,
-    "sourceQuestionNo": 130
+    "sourceQuestionNo": 130,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 131,
@@ -4068,7 +4588,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0131",
     "questionNo": 131,
-    "sourceQuestionNo": 131
+    "sourceQuestionNo": 131,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 132,
@@ -4097,7 +4621,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0132",
     "questionNo": 132,
-    "sourceQuestionNo": 132
+    "sourceQuestionNo": 132,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 133,
@@ -4126,7 +4654,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0133",
     "questionNo": 133,
-    "sourceQuestionNo": 133
+    "sourceQuestionNo": 133,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 134,
@@ -4155,7 +4687,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0134",
     "questionNo": 134,
-    "sourceQuestionNo": 134
+    "sourceQuestionNo": 134,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 135,
@@ -4184,7 +4720,11 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0135",
     "questionNo": 135,
-    "sourceQuestionNo": 135
+    "sourceQuestionNo": 135,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 136,
@@ -4213,6 +4753,150 @@ window.questionBank = [
     "solution": "",
     "displayNo": "0136",
     "questionNo": 136,
-    "sourceQuestionNo": 136
+    "sourceQuestionNo": 136,
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
+
+const _solutionMap = {
+1:{answer:`0.\dot3, 무한소수`,solution:`1÷3=0.333…이므로 순환마디 3의 무한소수이다.`},
+2:{answer:`1.4, 유한소수`,solution:`7÷5=1.4로 끝나는 소수이다.`},
+3:{answer:`-0.375, 유한소수`,solution:`3÷8=0.375이므로 −3/8=−0.375이다.`},
+4:{answer:`0.41\dot6, 무한소수`,solution:`5÷12=0.41666…이므로 6이 반복된다.`},
+5:{answer:`0.52, 유한소수`,solution:`13/25=52/100=0.52이다.`},
+6:{answer:`0.\dot2\dot4, 무한소수`,solution:`8/33=24/99=0.242424…로 순환마디는 24이다.`},
+7:{answer:`순환마디 6, 0.\dot6`,solution:`6이 계속 반복되므로 순환마디는 6이다.`},
+8:{answer:`순환마디 2, 1.43\dot2`,solution:`소수점 아래 43 뒤의 2가 반복된다.`},
+9:{answer:`순환마디 05, 0.\dot0\dot5`,solution:`05가 반복되므로 0.050505…=0.\dot0\dot5이다.`},
+10:{answer:`순환마디 12, 3.0\dot1\dot2`,solution:`첫 소수자리 0 뒤에서 12가 반복된다.`},
+11:{answer:`순환마디 584, 2.\dot5\dot8\dot4`,solution:`584가 그대로 반복된다.`},
+12:{answer:`순환마디 361, 0.2\dot3 6\dot1`,solution:`첫 자리 2 뒤의 361이 반복된다.`},
+13:{answer:`0.\dot4`,solution:`4/9=0.444…이다.`},
+14:{answer:`0.8\dot3`,solution:`5/6=0.8333…이다.`},
+15:{answer:`0.\dot1\dot8`,solution:`2/11=18/99=0.1818…이다.`},
+16:{answer:`1.\dot4\dot8\dot1`,solution:`40/27=1.481481…이고 순환마디는 481이다.`},
+17:{answer:`(가)25, (나)100, (다)0.25`,solution:`분모 4에 25를 곱해 100으로 만들면 25/100=0.25이다.`},
+18:{answer:`(가)25, (나)225, (다)0.225`,solution:`40에 25를 곱해 1000으로 만들면 9/40=225/1000=0.225이다.`},
+19:{answer:`(가)2, (나)34, (다)0.34`,solution:`50에 2를 곱해 100으로 만들면 17/50=34/100=0.34이다.`},
+20:{answer:`(가)4, (나)1000, (다)0.172`,solution:`250에 4를 곱하면 1000이고 43×4=172이다.`},
+21:{answer:`○`,solution:`33/(2²·11)=3/4로 약분되어 유한소수이다.`},
+22:{answer:`×`,solution:`4/(2·3·5²)=2/75의 분모에 3이 남는다.`},
+23:{answer:`×`,solution:`21/(2·3·7²)=1/14의 분모에 7이 남는다.`},
+24:{answer:`○`,solution:`42/(2²·5·7)=3/10으로 약분된다.`},
+25:{answer:`○`,solution:`5/16의 분모는 2의 거듭제곱뿐이다.`},
+26:{answer:`×`,solution:`7/24의 기약분모 24에 3이 포함된다.`},
+27:{answer:`×`,solution:`10/56=5/28의 분모에 7이 남는다.`},
+28:{answer:`○`,solution:`36/90=2/5이다.`},
+29:{answer:`○`,solution:`91/130=7/10이다.`},
+30:{answer:`○`,solution:`18/300=3/50이다.`},
+31:{answer:`(가)10, (나)9, (다)5/9`,solution:`10x−x=5이므로 9x=5, 따라서 x=5/9이다.`},
+32:{answer:`(가)100, (나)247, (다)247/99`,solution:`100x−x=247이므로 99x=247, x=247/99이다.`},
+33:{answer:`(가)10, (나)125, (다)25/18`,solution:`100x−10x=125이므로 x=125/90=25/18이다.`},
+34:{answer:`(가)100, (나)123, (다)41/30`,solution:`100x−10x=123이므로 x=123/90=41/30이다.`},
+35:{answer:`(가)100, (나)3143, (다)3143/900`,solution:`1000x−100x=3143이므로 x=3143/900이다.`},
+36:{answer:`9`,solution:`0.\dot2=2/9이다.`},
+37:{answer:`26`,solution:`0.\dot2\dot6=26/99이다.`},
+38:{answer:`999`,solution:`0.\dot6 1\dot7=617/999이므로 빈칸은 999이다.`},
+39:{answer:`151`,solution:`1.5\dot1=(151−15)/90이다.`},
+40:{answer:`990`,solution:`순환마디 두 자리, 비순환 한 자리이므로 분모는 10³−10=990이다.`},
+41:{answer:`34/9`,solution:`3.\dot7=3+7/9=34/9이다.`},
+42:{answer:`4/11`,solution:`0.\dot3\dot6=36/99=4/11이다.`},
+43:{answer:`134/333`,solution:`0.\dot4 0\dot2=402/999=134/333이다.`},
+44:{answer:`47/18`,solution:`2.6\dot1=(261−26)/90=47/18이다.`},
+45:{answer:`29/198`,solution:`0.1\dot4\dot5=(145−1)/990=144/990=29/198이다.`},
+46:{answer:`161/150`,solution:`1.07\dot3=(1073−107)/900=966/900=161/150이다.`},
+47:{answer:`○`,solution:`유한소수는 분모를 10의 거듭제곱으로 하여 분수로 쓸 수 있다.`},
+48:{answer:`○`,solution:`유한소수는 정수의 비이므로 유리수이다.`},
+49:{answer:`×`,solution:`무한소수에는 순환소수와 무리수가 모두 있다.`},
+50:{answer:`○`,solution:`무한소수 중 순환하지 않는 무리수도 존재한다.`},
+51:{answer:`②, ④`,solution:`8/9와 7/30은 기약분모에 3이 남아 무한소수이고 나머지는 유한소수이다.`},
+52:{answer:`⑤`,solution:`19/40의 분모는 2³·5뿐이다.`},
+53:{answer:`④`,solution:`13/8=1.625는 유한소수이므로 ④의 설명이 틀렸다.`},
+54:{answer:`③`,solution:`2.828282…의 순환마디는 82이지 한 자리 8이 아니다.`},
+55:{answer:`③, ⑤`,solution:`1.212121…의 마디는 12이고 5.069169169…의 마디는 691이다. 두 보기가 모두 맞아 JS 보기 자체가 단일정답 조건과 충돌한다.`},
+56:{answer:`③ ㄱ, ㄹ`,solution:`ㄱ은 3 반복, ㄹ은 6320 반복으로 옳고 ㄴ·ㄷ은 반복 구간 표기가 다르다.`},
+57:{answer:`①, ⑤`,solution:`13/9=1.\dot3, 10/37=0.\dot2 7\dot0이다. 두 보기가 모두 맞아 단일정답 조건과 충돌한다.`},
+58:{answer:`④`,solution:`14/27의 순환마디 481 길이가 3으로 가장 길다.`},
+59:{answer:`8`,solution:`2/7의 마디 길이 6, 49/33=1.\dot4\dot8의 길이 2이므로 합은 8이다.`},
+60:{answer:`① 3`,solution:`7/13=0.\dot5 3\dot8 4\dot6 1. 80 mod 6=2이므로 둘째 숫자 3이다.`},
+61:{answer:`6`,solution:`0.11 뒤에 36이 반복되고 50번째는 반복부의 짝수 번째이므로 6이다.`},
+62:{answer:`2`,solution:`25/37=0.\dot6\dot7\dot5. 20번째는 7, 45번째는 5이므로 x−y=2이다.`},
+63:{answer:`107.12`,solution:`9/75=3/25이므로 a=3. 25에 4를 곱해 100, 3×4=12, d=0.12이므로 합은 3+4+100+0.12=107.12이다.`},
+64:{answer:`(가,나,다,라)=(9,5,45,0.45)`,solution:`63/140=9/20=45/100=0.45이다.`},
+65:{answer:`③ 178`,solution:`7/40=175/1000이므로 m=3,n=175, m+n=178이다.`},
+66:{answer:`②, ⑤`,solution:`9/24=3/8, 14/(2²·5²·7)=1/50만 유한소수이다.`},
+67:{answer:`⑤`,solution:`11/32의 분모는 2의 거듭제곱이다.`},
+68:{answer:`④`,solution:`21/(2·3²·7)=1/6만 기약분모에 3이 남는다.`},
+69:{answer:`84`,solution:`11/(2²·3·5·7)에 곱할 수는 3과 7의 배수여야 하며 두 자리 최대는 84이다.`},
+70:{answer:`④ 14`,solution:`분모의 7을 약분할 수 있는 보기 14만 유한소수가 된다.`},
+71:{answer:`5`,solution:`a는 9의 배수여야 하므로 9,18,27,36,45의 5개이다.`},
+72:{answer:`132`,solution:`21/495=7/165이므로 A는 33의 배수. 가장 작은 세 자리 배수는 132이다.`},
+73:{answer:`91`,solution:`11/154=1/14에서 7, 3/130에서 13을 없애야 하므로 최소 n=lcm(7,13)=91이다.`},
+74:{answer:`⑤ 21`,solution:`60의 3과 28의 7을 함께 없애는 최소 자연수는 21이다.`},
+75:{answer:`126`,solution:`15/140=3/28에서 7, 21/270=7/90에서 9가 필요하다. 최소 세 자리 63의 배수는 126이다.`},
+76:{answer:`④ 18`,solution:`18/(15x)=6/(5x). x=18이면 1/15로 순환소수가 되고 나머지는 유한소수이다.`},
+77:{answer:`⑤ 8`,solution:`x=1,2,3,4,5,6,8,9는 유한소수이고 x=7만 9/28로 순환소수이므로 8개이다.`},
+78:{answer:`80`,solution:`28/(35x)=4/(5x). x는 2와 5만을 인수로 가져야 하며 두 자리 최댓값은 80이다.`},
+79:{answer:`② 22`,solution:`10<a<20에서 18/72=1/4만 유한소수이므로 b=4, a+b=22이다.`},
+80:{answer:`(x,y)=(63,40)`,solution:`60<x<70에서 x=63이고 63/280=9/40이므로 y=40이다.`},
+81:{answer:`17`,solution:`a/150=11/b, 30<a<40에서 a=33,b=50. 따라서 b−a=17이다.`},
+82:{answer:`①, ④`,solution:`9/270=1/30, 27/270=1/10은 유한소수라 순환소수가 될 수 없다. 두 보기가 모두 해당한다.`},
+83:{answer:`9`,solution:`21/(8x)는 x=1부터 8까지 유한소수이고 x=9에서 7/24가 되어 처음 순환소수가 된다.`},
+84:{answer:`③, ⑤`,solution:`30/450=1/15, 42/450=7/75만 기약분모에 3이 남는다.`},
+85:{answer:`④ 1000x−10x`,solution:`비순환 한 자리와 순환 두 자리이므로 10³x−10x를 사용한다.`},
+86:{answer:`(가,나,다,라,마)=(1000,100,900,635,127/180)`,solution:`1000x−100x=635이므로 x=635/900=127/180이다.`},
+87:{answer:`② ㄱ, ㄴ`,solution:`ㄱ은 1자리 반복, ㄴ은 비순환 1자리 뒤 1자리 반복이다. ㄷ은 반복마디가 003이므로 1000x−x가 맞다.`},
+88:{answer:`③`,solution:`1.\dot8\dot9=188/99만 보기와 일치한다.`},
+89:{answer:`③`,solution:`x=0.3\dot2\dot5는 (325−3)/990이어야 하므로 (325−3)/999라고 한 ③이 틀렸다.`},
+90:{answer:`23/36`,solution:`0.6+0.03=0.63이고 나머지는 0.008(1+0.1+…)=2/225. 합은 23/36이다.`},
+91:{answer:`②, ⑤`,solution:`0.12\dot6=19/150이므로 곱이 유한소수가 되려면 x가 3의 배수여야 한다. 5,20은 불가능하다.`},
+92:{answer:`11`,solution:`1.9\dot4=35/18이므로 x는 9의 배수. 최소 a=9, 최대 두 자리 b=99, b/a=11이다.`},
+93:{answer:`99`,solution:`0.2\dot3\dot6=13/55이므로 x는 11의 배수이고 두 자리 최대는 99이다.`},
+94:{answer:`17/15 (보기 확인 필요)`,solution:`두 오독을 각각 반영하면 올바른 분자 17, 분모 15가 되어 17/15이다. 제시된 선택지에는 이 값이 없어 JS 보기와 조건이 충돌한다.`},
+95:{answer:`2.3\dot4`,solution:`2.\dot1\dot3=211/99에서 실제 분자는 211, 0.5\dot4=49/90에서 실제 분모는 90이다. 211/90=2.3\dot4.`},
+96:{answer:`0.4\dot1\dot8`,solution:`0.3\dot8\dot1=21/55에서 실제 분모 55, 0.38\dot3=23/60에서 실제 분자 23. 23/55=0.4\dot1\dot8.`},
+97:{answer:`110`,solution:`7.\dot8+3.\dot4=70/9+31/9=101/9이므로 a+b=9+101=110이다.`},
+98:{answer:`1/999 (보기 ⑤ 표기)`,solution:`0.\dot5 2\dot3=523/999이므로 빈칸은 1/999이다.`},
+99:{answer:`④ 0.1\dot8`,solution:`7/30−0.0\dot4=7/30−2/45=17/90=0.1\dot8이다.`},
+100:{answer:`3.\dot1`,solution:`a=(0.\dot5)/5=1/9, b=(0.\dot2\dot8)/(0.\dot0\dot1)=28. ab=28/9=3.\dot1이다.`},
+101:{answer:`②, ④, ⑤`,solution:`②와 ④는 참이고 ⑤도 0.37444…>0.37437…로 참이다. 세 보기가 참이어서 정답 2개 조건과 충돌한다.`},
+102:{answer:`⑤`,solution:`각 수를 소수로 비교하면 0.152333…인 ⑤가 가장 크다.`},
+103:{answer:`5`,solution:`x/9가 1/4와 5/6 사이이므로 2.25<x<7.5, x=3,4,5,6,7의 5개이다.`},
+104:{answer:`④`,solution:`무한소수에도 순환소수가 있어 모두 무리수라는 ④가 틀렸다.`},
+105:{answer:`⑤`,solution:`정수의 나눗셈 결과는 유리수이므로 순환하지 않는 무한소수는 될 수 없다.`},
+106:{answer:`⑤`,solution:`순환소수는 유리수이고, 유리수의 소수표현은 유한 또는 순환이며, 유리수 무한소수는 모두 순환한다.`},
+107:{answer:`② 4`,solution:`k/30에서 12<k<25이고 유한소수가 되려면 k=15,18,21,24. 모두 4개이다.`},
+108:{answer:`1`,solution:`5<k<12 중 유한소수 조건은 k=6,9. 합 (6+9)/15=1이다.`},
+109:{answer:`5`,solution:`8<k<49 중 56의 7을 약분할 수 있는 k=14,21,28,35,42의 5개이다.`},
+110:{answer:`③ 3`,solution:`(a+b)/9=7/9에서 a+b=7. 소수 a>b는 (5,2)뿐이므로 a−b=3이다.`},
+111:{answer:`3`,solution:`(a/90)²=(4/9)(b/900)에서 a²=4b. a>b인 한 자리 해는 (2,1)뿐이어서 합 3이다.`},
+112:{answer:`14`,solution:`두 순환소수의 차의 절댓값은 (b−a)/11=45/99=5/11. 소수쌍 (a,b)=(2,7)이므로 ab=14이다.`},
+113:{answer:`①, ④, ⑤`,solution:`①의 4, ④의 380, ⑤의 062가 각각 올바른 반복구간이다. 세 보기가 맞아 정답 2개 조건과 충돌한다.`},
+114:{answer:`④`,solution:`앞 네 분수의 순환마디는 6, 6, 6, 3? 2/15=0.1\dot3만 길이 1의 3이고 나머지는 6이다.`},
+115:{answer:`표기 확인 필요`,solution:`JS에서 순환 표시가 빠져 1.2345의 반복구간을 특정할 수 없다. 원본 표기 확인 후 99번째 자리를 확정한다.`},
+116:{answer:`15`,solution:`3/250=12/1000이므로 a=12,n=3, 최소 합은 15이다.`},
+117:{answer:`④ ㄴ, ㄷ, ㄹ`,solution:`6/75,49/140,15/(3·5²)만 약분 후 분모가 2와 5뿐이다.`},
+118:{answer:`13`,solution:`104=2³·13이므로 x가 13의 배수여야 하며 최소 자연수는 13이다.`},
+119:{answer:`③ 6`,solution:`9/(18a)=1/(2a). a=6이면 1/12로 순환소수이고 나머지는 유한소수이다.`},
+120:{answer:`② 23`,solution:`100 이하에서 7/b 꼴과 유한소수를 함께 만족하는 a=63,b=40. 따라서 a−b=23이다.`},
+121:{answer:`25`,solution:`7/(50x)가 순환소수가 되려면 x에 3 또는 7의 인수가 있어야 한다. 한 자리 값 3,6,7,9의 합은 25.`},
+122:{answer:`④`,solution:`0.6\dot1\dot2는 비순환 한 자리·순환 두 자리이므로 100x−10x가 맞고 1000x−x는 틀리다.`},
+123:{answer:`①, ③, ⑤`,solution:`x=1.12\dot3, (1000−10)x=1123−112, 순환마디 3이다. 세 보기가 참이어서 2개 조건과 충돌한다.`},
+124:{answer:`27`,solution:`(1/10+1/100+…)=1/9이고 여기에 1/3을 곱하면 1/27이다.`},
+125:{answer:`④ 9`,solution:`0.\dot2\dot7=3/11이므로 x는 11의 배수. 두 자리 배수는 9개이다.`},
+126:{answer:`1/9999`,solution:`0.\dot1 00\dot2=1002/9999이므로 1002로 나누면 A=1/9999이다.`},
+127:{answer:`95`,solution:`2.0\dot6=31/15, 0.0\dot4=2/45이므로 n/m=2/93. 서로소 m=93,n=2, 합 95.`},
+128:{answer:`6`,solution:`네 수를 비교하면 두 번째는 1.\dot6\dot3 8. 순환마디 63의 35번째 자리(홀수)는 6이다.`},
+129:{answer:`6`,solution:`x/9가 2/5와 3/4 사이이므로 x=4,5,6이고 최댓값은 6이다.`},
+130:{answer:`②, ④`,solution:`순환소수는 항상 유리수이므로 ②가 거짓이고, 정수가 아닌 유리수가 모두 유한소수라는 ④도 거짓이다.`},
+131:{answer:`4`,solution:`17/60에는 3, 11/140에는 7을 없애야 하므로 a는 21의 배수. 두 자리 값은 21,42,63,84 네 개이다.`},
+132:{answer:`11.6\dot2`,solution:`0.58\dot1=(581−58)/900=523/900에서 실제 분자 523, 0.8\dot2=74/90=37/45에서 실제 분모 45. 523/45=11.6\dot2.`},
+133:{answer:`6`,solution:`3.1\dot9=3.2이므로 잘못된 곱과의 차는 0.1n=0.6. 따라서 n=6이다.`},
+134:{answer:`452`,solution:`6/7의 반복마디 857142의 합은 27. 99자리=16주기와 3자리이므로 16·27+(8+5+7)=452.`},
+135:{answer:`38`,solution:`2부터 50까지 총 49개 중 유한소수인 분모 2,4,5,8,10,16,20,25,32,40,50의 11개를 제외하면 38개이다.`},
+136:{answer:`0.\dot1\dot8`,solution:`(a+b)/9=4/9에서 a+b=4, a>b인 (3,1)을 얻는다. 차는 (31−13)/99=2/11=0.\dot1\dot8이다.`}
+};
+window.questionBank.forEach(q=>{const v=_solutionMap[q.id];if(v){q.answer=v.answer;q.solution=v.solution;}});

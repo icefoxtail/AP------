@@ -23,7 +23,11 @@ window.questionBank = [
       "$y=(2x-3)-2x$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 일차함수는 $y=ax+b$의 꼴이고 $a\\ne0$이어야 한다.\n①은 $x^2$항이 있고, ③은 $x$가 분모에 있으며, ④는 전개하면 $x^2-x$이므로 일차함수가 아니다. ⑤는 정리하면 $y=-3$인 상수함수이다.\n② $y=x+1$만 $y=ax+b$의 꼴에서 $a=1\\ne0$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 일차함수는 $y=ax+b$의 꼴이고 $a\\ne0$이어야 한다.\n①은 $x^2$항이 있고, ③은 $x$가 분모에 있으며, ④는 전개하면 $x^2-x$이므로 일차함수가 아니다. ⑤는 정리하면 $y=-3$인 상수함수이다.\n② $y=x+1$만 $y=ax+b$의 꼴에서 $a=1\\ne0$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "$-4$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $x$절편에서는 $y=0$이다.\n$x=-2$, $y=0$을 $y=-3(x-1)+a$에 대입하면 $0=-3(-3)+a=9+a$이므로 $a=-9$이다.\n따라서 $y=-3x+3-9=-3x-6$이고, $x=0$일 때 $y=-6$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $x$절편에서는 $y=0$이다.\n$x=-2$, $y=0$을 $y=-3(x-1)+a$에 대입하면 $0=-3(-3)+a=9+a$이므로 $a=-9$이다.\n따라서 $y=-3x+3-9=-3x-6$이고, $x=0$일 때 $y=-6$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "$-4$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 평행이동해도 기울기는 변하지 않는다.\n이동한 직선은 $y=ax-1+b$이다. 두 점을 이용하면 기울기 $a=\\dfrac{-5-1}{3-1}=-3$이다.\n점 $(1,1)$을 대입하면 $1=-3-1+b$이므로 $b=5$이다. 따라서 $a-b=-3-5=-8$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 평행이동해도 기울기는 변하지 않는다.\n이동한 직선은 $y=ax-1+b$이다. 두 점을 이용하면 기울기 $a=\\dfrac{-5-1}{3-1}=-3$이다.\n점 $(1,1)$을 대입하면 $1=-3-1+b$이므로 $b=5$이다. 따라서 $a-b=-3-5=-8$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -98,7 +110,11 @@ window.questionBank = [
       "$\\dfrac13$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 그래프 위의 두 점으로 기울기와 절편을 구한다.\n점 $(-1,-3)$, $(2,3)$을 지나므로 $a=\\dfrac{3-(-3)}{2-(-1)}=2$이다.\n$3=2\\cdot2+b$에서 $b=-1$이므로 $\\dfrac ba=-\\dfrac12$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 그래프 위의 두 점으로 기울기와 절편을 구한다.\n점 $(-1,-3)$, $(2,3)$을 지나므로 $a=\\dfrac{3-(-3)}{2-(-1)}=2$이다.\n$3=2\\cdot2+b$에서 $b=-1$이므로 $\\dfrac ba=-\\dfrac12$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -125,7 +141,11 @@ window.questionBank = [
       "$a\\lt0,\\ b\\lt0$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 기울기와 $y$절편의 부호를 그래프에서 읽는다.\n그래프가 오른쪽으로 갈수록 내려가므로 기울기 $a\\lt0$이다. 또 $y$절편은 $-b$인데 그래프가 $y$축의 양의 부분과 만나므로 $-b\\gt0$, 즉 $b\\lt0$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 기울기와 $y$절편의 부호를 그래프에서 읽는다.\n그래프가 오른쪽으로 갈수록 내려가므로 기울기 $a\\lt0$이다. 또 $y$절편은 $-b$인데 그래프가 $y$축의 양의 부분과 만나므로 $-b\\gt0$, 즉 $b\\lt0$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -153,7 +173,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 사각형 안의 점 $(x,y)$에서 직선의 기울기는 $a=\\dfrac{y+1}{x}$이다.\n사각형에서는 $1\\le x\\le3$, $1\\le y\\le3$이다. $a=\\dfrac{y+1}{x}$의 최솟값은 $y=1$, $x=3$일 때 $p=\\dfrac23$이고, 최댓값은 $y=3$, $x=1$일 때 $q=4$이다.\n따라서 $p+q=\\dfrac23+4=\\dfrac{14}3$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 사각형 안의 점 $(x,y)$에서 직선의 기울기는 $a=\\dfrac{y+1}{x}$이다.\n사각형에서는 $1\\le x\\le3$, $1\\le y\\le3$이다. $a=\\dfrac{y+1}{x}$의 최솟값은 $y=1$, $x=3$일 때 $p=\\dfrac23$이고, 최댓값은 $y=3$, $x=1$일 때 $q=4$이다.\n따라서 $p+q=\\dfrac23+4=\\dfrac{14}3$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -180,7 +204,11 @@ window.questionBank = [
       "$y=2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 주어진 직선은 $x$축과 평행한 수평선이다.\n그림의 직선은 $y=-2$이므로 이와 평행한 직선도 $y=k$의 꼴이다. 점 $(4,2)$를 지나므로 $k=2$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 주어진 직선은 $x$축과 평행한 수평선이다.\n그림의 직선은 $y=-2$이므로 이와 평행한 직선도 $y=k$의 꼴이다. 점 $(4,2)$를 지나므로 $k=2$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -208,7 +236,11 @@ window.questionBank = [
       "$\\dfrac52$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 직사각형의 넓이를 이등분하는 직선이 중심을 지나면 된다.\n직사각형의 왼쪽과 오른쪽의 $x$좌표는 $2,5$, 아래와 위의 $y$좌표는 $3,5$이므로 중심은 $\\left(\\dfrac72,4\\right)$이다.\n원점과 이 중심을 지나는 직선의 기울기는 $\\dfrac4{7/2}=\\dfrac87$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 직사각형의 넓이를 이등분하는 직선이 중심을 지나면 된다.\n직사각형의 왼쪽과 오른쪽의 $x$좌표는 $2,5$, 아래와 위의 $y$좌표는 $3,5$이므로 중심은 $\\left(\\dfrac72,4\\right)$이다.\n원점과 이 중심을 지나는 직선의 기울기는 $\\dfrac4{7/2}=\\dfrac87$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -235,7 +267,11 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 그림에서 두 직선의 교점은 $(1,-2)$이다.\n$x-ay=3$에 대입하면 $1+2a=3$이므로 $a=1$이다. $bx+y=2$에 대입하면 $b-2=2$이므로 $b=4$이다.\n따라서 $a-b=1-4=-3$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 그림에서 두 직선의 교점은 $(1,-2)$이다.\n$x-ay=3$에 대입하면 $1+2a=3$이므로 $a=1$이다. $bx+y=2$에 대입하면 $b-2=2$이므로 $b=4$이다.\n따라서 $a-b=1-4=-3$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -259,7 +295,11 @@ window.questionBank = [
       "$y=-2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $y$축에 평행한 직선은 $x=$상수의 꼴이므로 교점의 $x$좌표만 구하면 된다.\n두 번째 식에서 $y=-4x-5$이다. 이를 첫 번째 식에 대입하면 $x-2(-4x-5)+8=0$, 즉 $9x+18=0$이므로 $x=-2$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $y$축에 평행한 직선은 $x=$상수의 꼴이므로 교점의 $x$좌표만 구하면 된다.\n두 번째 식에서 $y=-4x-5$이다. 이를 첫 번째 식에 대입하면 $x-2(-4x-5)+8=0$, 즉 $9x+18=0$이므로 $x=-2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -283,7 +323,11 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 세 직선이 삼각형을 이루지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\n첫째 직선의 기울기는 $-\\dfrac14$, 둘째는 $\\dfrac34$, 셋째는 $-a$이다. 따라서 셋째가 각각과 평행할 때 $a=\\dfrac14$, $a=-\\dfrac34$이다.\n첫째와 둘째의 교점은 $(2,1)$이고, 이 점이 셋째 위에 있으면 $2a+1-2=0$에서 $a=\\dfrac12$이다.\n합은 $\\dfrac14-\\dfrac34+\\dfrac12=0$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 세 직선이 삼각형을 이루지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\n첫째 직선의 기울기는 $-\\dfrac14$, 둘째는 $\\dfrac34$, 셋째는 $-a$이다. 따라서 셋째가 각각과 평행할 때 $a=\\dfrac14$, $a=-\\dfrac34$이다.\n첫째와 둘째의 교점은 $(2,1)$이고, 이 점이 셋째 위에 있으면 $2a+1-2=0$에서 $a=\\dfrac12$이다.\n합은 $\\dfrac14-\\dfrac34+\\dfrac12=0$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -308,7 +352,11 @@ window.questionBank = [
       "10가지"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 독립적으로 하나씩 고르는 경우에는 곱의 법칙을 쓴다.\n먹을 것은 $3$가지, 마실 것은 $3$가지이므로 모든 경우의 수는 $3\\times3=9$가지이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로 독립적으로 하나씩 고르는 경우에는 곱의 법칙을 쓴다.\n먹을 것은 $3$가지, 마실 것은 $3$가지이므로 모든 경우의 수는 $3\\times3=9$가지이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -332,7 +380,11 @@ window.questionBank = [
       "9가지"
     ],
     "answer": "①",
-    "solution": "[키포인트] 비기려면 두 사람이 같은 것을 내야 한다.\n가능한 경우는 (가위, 가위), (바위, 바위), (보, 보)의 $3$가지이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 비기려면 두 사람이 같은 것을 내야 한다.\n가능한 경우는 (가위, 가위), (바위, 바위), (보, 보)의 $3$가지이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -357,7 +409,11 @@ window.questionBank = [
       "12가지"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 조건의 합집합에서는 겹치는 경우를 한 번 빼야 한다.\n$2$의 배수는 $2,4,6,8,10,12,14$의 $7$개이고, $5$의 배수는 $5,10,15$의 $3$개이다. 공통인 $10$을 한 번 빼면 $7+3-1=9$가지이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 조건의 합집합에서는 겹치는 경우를 한 번 빼야 한다.\n$2$의 배수는 $2,4,6,8,10,12,14$의 $7$개이고, $5$의 배수는 $5,10,15$의 $3$개이다. 공통인 $10$을 한 번 빼면 $7+3-1=9$가지이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -381,7 +437,11 @@ window.questionBank = [
       "48가지"
     ],
     "answer": "②",
-    "solution": "[키포인트] $B$, $C$가 이웃하도록 두 사람을 한 묶음으로 생각하여 경우를 센다.\n$B$, $C$가 들어갈 연속된 두 자리는 $(1,2)$, $(2,3)$, $(3,4)$의 $3$가지이다. 각 자리에서 $B,C$의 순서는 $BC$, $CB$의 $2$가지이고, 남은 두 자리에 $A,D$를 놓는 방법도 $2$가지이다.\n따라서 전체 경우의 수는 $3\\times2\\times2=12$가지이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $B$, $C$가 이웃하도록 두 사람을 한 묶음으로 생각하여 경우를 센다.\n$B$, $C$가 들어갈 연속된 두 자리는 $(1,2)$, $(2,3)$, $(3,4)$의 $3$가지이다. 각 자리에서 $B,C$의 순서는 $BC$, $CB$의 $2$가지이고, 남은 두 자리에 $A,D$를 놓는 방법도 $2$가지이다.\n따라서 전체 경우의 수는 $3\\times2\\times2=12$가지이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -406,7 +466,11 @@ window.questionBank = [
       "48가지"
     ],
     "answer": "③",
-    "solution": "[키포인트] $A\\to P$와 $P\\to B$의 최단 경로 수를 각각 직접 센 뒤 곱한다.\n$A$에서 $P$까지는 오른쪽으로 $2$번, 위쪽으로 $2$번 움직인다. 네 번의 이동 중 위쪽으로 움직일 두 차례를 고르면 $(1,2)$, $(1,3)$, $(1,4)$, $(2,3)$, $(2,4)$, $(3,4)$의 $6$가지이다.\n$P$에서 $B$까지는 오른쪽으로 $2$번, 위쪽으로 $1$번 움직이므로 위쪽 이동이 첫째, 둘째, 셋째에 오는 $3$가지이다.\n따라서 전체는 $6\\times3=18$가지이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $A\\to P$와 $P\\to B$의 최단 경로 수를 각각 직접 센 뒤 곱한다.\n$A$에서 $P$까지는 오른쪽으로 $2$번, 위쪽으로 $2$번 움직인다. 네 번의 이동 중 위쪽으로 움직일 두 차례를 고르면 $(1,2)$, $(1,3)$, $(1,4)$, $(2,3)$, $(2,4)$, $(3,4)$의 $6$가지이다.\n$P$에서 $B$까지는 오른쪽으로 $2$번, 위쪽으로 $1$번 움직이므로 위쪽 이동이 첫째, 둘째, 셋째에 오는 $3$가지이다.\n따라서 전체는 $6\\times3=18$가지이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -432,7 +496,11 @@ window.questionBank = [
       "$C$, $D$가 뽑힐 확률은 $\\dfrac1{12}$이다."
     ],
     "answer": "①, ④",
-    "solution": "[키포인트] 두 명을 뽑는 모든 경우를 직접 나열하여 각 보기를 판단한다.\n가능한 두 사람은 $AB$, $AC$, $AD$, $BC$, $BD$, $CD$의 $6$가지이므로 ①은 옳다. $A$가 뽑히는 경우는 $AB$, $AC$, $AD$의 $3$가지이므로 ②는 틀리다. $A,B$가 함께 뽑히는 경우는 $AB$ 한 가지뿐이므로 ③도 틀리다.\n$B$가 뽑히는 경우는 $AB$, $BC$, $BD$의 $3$가지이므로 확률은 $\\dfrac36=\\dfrac12$라서 ④는 옳다. $C,D$가 함께 뽑히는 경우는 $CD$ 한 가지이므로 확률은 $\\dfrac16$이며 ⑤는 틀리다.\n따라서 정답은 ①, ④이다."
+    "solution": "[키포인트] 두 명을 뽑는 모든 경우를 직접 나열하여 각 보기를 판단한다.\n가능한 두 사람은 $AB$, $AC$, $AD$, $BC$, $BD$, $CD$의 $6$가지이므로 ①은 옳다. $A$가 뽑히는 경우는 $AB$, $AC$, $AD$의 $3$가지이므로 ②는 틀리다. $A,B$가 함께 뽑히는 경우는 $AB$ 한 가지뿐이므로 ③도 틀리다.\n$B$가 뽑히는 경우는 $AB$, $BC$, $BD$의 $3$가지이므로 확률은 $\\dfrac36=\\dfrac12$라서 ④는 옳다. $C,D$가 함께 뽑히는 경우는 $CD$ 한 가지이므로 확률은 $\\dfrac16$이며 ⑤는 틀리다.\n따라서 정답은 ①, ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -456,7 +524,11 @@ window.questionBank = [
       "$\\dfrac7{36}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 눈의 합은 $2$부터 $12$이므로 가능한 $5$의 배수는 $5$, $10$이다.\n합이 $5$인 경우는 $(1,4),(2,3),(3,2),(4,1)$의 $4$가지이고, 합이 $10$인 경우는 $(4,6),(5,5),(6,4)$의 $3$가지이다.\n전체 $36$가지 중 유리한 경우가 $7$가지이므로 확률은 $\\dfrac7{36}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 두 눈의 합은 $2$부터 $12$이므로 가능한 $5$의 배수는 $5$, $10$이다.\n합이 $5$인 경우는 $(1,4),(2,3),(3,2),(4,1)$의 $4$가지이고, 합이 $10$인 경우는 $(4,6),(5,5),(6,4)$의 $3$가지이다.\n전체 $36$가지 중 유리한 경우가 $7$가지이므로 확률은 $\\dfrac7{36}$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -480,7 +552,11 @@ window.questionBank = [
       "$\\dfrac12$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 호빈이는 사탕, 현서는 초콜릿을 뽑아야 한다.\n호빈이가 사탕을 뽑을 확률은 $\\dfrac39$이다. 그 뒤 남은 $8$개 중 초콜릿은 $6$개이므로 현서가 초콜릿을 뽑을 확률은 $\\dfrac68$이다.\n따라서 $\\dfrac39\\times\\dfrac68=\\dfrac14$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 호빈이는 사탕, 현서는 초콜릿을 뽑아야 한다.\n호빈이가 사탕을 뽑을 확률은 $\\dfrac39$이다. 그 뒤 남은 $8$개 중 초콜릿은 $6$개이므로 현서가 초콜릿을 뽑을 확률은 $\\dfrac68$이다.\n따라서 $\\dfrac39\\times\\dfrac68=\\dfrac14$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -504,7 +580,11 @@ window.questionBank = [
       "$\\dfrac16$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 합이 홀수가 되려면 한 수는 짝수이고 다른 수는 홀수여야 한다.\n$a$가 짝수, $b$가 홀수일 확률은 $\\dfrac12\\times\\dfrac13=\\dfrac16$이다. $a$가 홀수, $b$가 짝수일 확률은 $\\dfrac12\\times\\dfrac23=\\dfrac13$이다.\n따라서 구하는 확률은 $\\dfrac16+\\dfrac13=\\dfrac12$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 합이 홀수가 되려면 한 수는 짝수이고 다른 수는 홀수여야 한다.\n$a$가 짝수, $b$가 홀수일 확률은 $\\dfrac12\\times\\dfrac13=\\dfrac16$이다. $a$가 홀수, $b$가 짝수일 확률은 $\\dfrac12\\times\\dfrac23=\\dfrac13$이다.\n따라서 구하는 확률은 $\\dfrac16+\\dfrac13=\\dfrac12$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -528,7 +608,11 @@ window.questionBank = [
       "$\\dfrac{19}{27}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 적어도 한 문제를 맞힐 확률은 한 문제도 맞히지 못할 확률의 여사건이다.\n한 문제를 틀릴 확률은 $\\dfrac23$이므로 세 문제를 모두 틀릴 확률은 $\\left(\\dfrac23\\right)^3=\\dfrac8{27}$이다.\n따라서 적어도 한 문제를 맞힐 확률은 $1-\\dfrac8{27}=\\dfrac{19}{27}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 적어도 한 문제를 맞힐 확률은 한 문제도 맞히지 못할 확률의 여사건이다.\n한 문제를 틀릴 확률은 $\\dfrac23$이므로 세 문제를 모두 틀릴 확률은 $\\left(\\dfrac23\\right)^3=\\dfrac8{27}$이다.\n따라서 적어도 한 문제를 맞힐 확률은 $1-\\dfrac8{27}=\\dfrac{19}{27}$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -548,7 +632,11 @@ window.questionBank = [
     "content": "[서술형1] 기온이 $0^\\circ\\rm C$일 때, 공기 중에서 소리의 속력은 초속 $331\\rm\\,m$이고, 기온이 $5^\\circ\\rm C$ 오를 때마다 소리의 속력은 초속 $3\\rm\\,m$씩 일정하게 증가한다고 한다.\n(1) 기온이 $x^\\circ\\rm C$일 때, 공기 중에서 소리의 속력을 초속 $y\\rm\\,m$라고 하자. 이때 $x$와 $y$ 사이의 관계식을 구하시오. [3점]\n(2) 소리의 속력이 초속 $346\\rm\\,m$일 때의 기온을 구하시오. [2점]",
     "choices": [],
     "answer": "(1) $y=\\dfrac35x+331$, (2) $25^\\circ\\rm C$",
-    "solution": "[키포인트] 기온이 $5^\\circ\\rm C$ 오를 때 속력이 $3\\rm\\,m/s$ 증가하므로 기울기는 $\\dfrac35$이다.\n(1) $x=0$일 때 $y=331$이므로 $y=\\dfrac35x+331$이다.\n(2) $346=\\dfrac35x+331$에서 $15=\\dfrac35x$이므로 $x=25$이다.\n따라서 구하는 답은 (1) $y=\\dfrac35x+331$, (2) $25^\\circ\\rm C$이다."
+    "solution": "[키포인트] 기온이 $5^\\circ\\rm C$ 오를 때 속력이 $3\\rm\\,m/s$ 증가하므로 기울기는 $\\dfrac35$이다.\n(1) $x=0$일 때 $y=331$이므로 $y=\\dfrac35x+331$이다.\n(2) $346=\\dfrac35x+331$에서 $15=\\dfrac35x$이므로 $x=25$이다.\n따라서 구하는 답은 (1) $y=\\dfrac35x+331$, (2) $25^\\circ\\rm C$이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -569,7 +657,11 @@ window.questionBank = [
     "content": "[서술형2] 아래의 그림은 수직선 위를 일정한 속력으로 움직이는 두 물체 $A$와 $B$의 시간에 따른 위치를 나타낸 것이다. 두 물체가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 할 때, 다음 물음에 답하시오.\n<img src=\"assets/images/23_금당중_2학기_기말_중2_기출/q23.png\">\n(1) 물체 $A$에 대하여 $x$와 $y$ 사이의 관계식을 구하여라. [1점]\n(2) 물체 $B$에 대하여 $x$와 $y$ 사이의 관계식을 구하여라. [1점]\n(3) 두 물체 $A$와 $B$는 움직이기 시작한 지 몇 분 후에 만나는지 구하시오. [3점]",
     "choices": [],
     "answer": "(1) $y=\\dfrac13x+3$, (2) $y=\\dfrac12x+1$, (3) $12$분",
-    "solution": "[키포인트] 그래프의 두 점을 이용해 각 직선의 식을 구한 뒤 두 식을 연립한다.\n(1) $A$는 $(0,3)$, $(3,4)$를 지나므로 기울기는 $\\dfrac13$이고 $y=\\dfrac13x+3$이다.\n(2) $B$는 $(0,1)$, $(2,2)$를 지나므로 기울기는 $\\dfrac12$이고 $y=\\dfrac12x+1$이다.\n(3) 두 물체가 만날 때 위치가 같으므로 $\\dfrac13x+3=\\dfrac12x+1$이다. 양변에 $6$을 곱하면 $2x+18=3x+6$이므로 $x=12$이다.\n따라서 구하는 답은 (1) $y=\\dfrac13x+3$, (2) $y=\\dfrac12x+1$, (3) $12$분이다."
+    "solution": "[키포인트] 그래프의 두 점을 이용해 각 직선의 식을 구한 뒤 두 식을 연립한다.\n(1) $A$는 $(0,3)$, $(3,4)$를 지나므로 기울기는 $\\dfrac13$이고 $y=\\dfrac13x+3$이다.\n(2) $B$는 $(0,1)$, $(2,2)$를 지나므로 기울기는 $\\dfrac12$이고 $y=\\dfrac12x+1$이다.\n(3) 두 물체가 만날 때 위치가 같으므로 $\\dfrac13x+3=\\dfrac12x+1$이다. 양변에 $6$을 곱하면 $2x+18=3x+6$이므로 $x=12$이다.\n따라서 구하는 답은 (1) $y=\\dfrac13x+3$, (2) $y=\\dfrac12x+1$, (3) $12$분이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
@@ -589,7 +681,11 @@ window.questionBank = [
     "content": "[서술형3] $0$, $1$, $2$, $3$, $4$, $5$가 각각 하나씩 적힌 $6$장의 카드가 있다. 이 중에서 두 장을 뽑아 두 자리 자연수를 만들려고 한다. 만들 수 있는 두 자리 자연수 중 짝수의 개수를 구하시오. [5점]",
     "choices": [],
     "answer": "13개",
-    "solution": "[키포인트] 일의 자리가 $0$, $2$, $4$인 경우로 나눈다. 단, 십의 자리에는 $0$을 쓸 수 없고 같은 카드를 두 번 쓸 수 없다.\n일의 자리가 $0$이면 십의 자리는 $1,2,3,4,5$의 $5$가지이다. 일의 자리가 $2$이면 십의 자리는 $1,3,4,5$의 $4$가지이고, 일의 자리가 $4$이면 십의 자리는 $1,2,3,5$의 $4$가지이다.\n따라서 $5+4+4=13$개이다.\n따라서 구하는 개수는 $13$개이다."
+    "solution": "[키포인트] 일의 자리가 $0$, $2$, $4$인 경우로 나눈다. 단, 십의 자리에는 $0$을 쓸 수 없고 같은 카드를 두 번 쓸 수 없다.\n일의 자리가 $0$이면 십의 자리는 $1,2,3,4,5$의 $5$가지이다. 일의 자리가 $2$이면 십의 자리는 $1,3,4,5$의 $4$가지이고, 일의 자리가 $4$이면 십의 자리는 $1,2,3,5$의 $4$가지이다.\n따라서 $5+4+4=13$개이다.\n따라서 구하는 개수는 $13$개이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -609,6 +705,10 @@ window.questionBank = [
     "content": "[서술형4] 주사위 한 개를 두 번 던져서 처음에 나오는 눈의 수를 $a$, 나중에 나오는 눈의 수를 $b$라 할 때, $x$에 대한 방정식 $ax-b=3$의 해가 자연수일 확률을 구하시오. [5점]",
     "choices": [],
     "answer": "$\\dfrac5{12}$",
-    "solution": "[키포인트] 방정식의 해 $x=\\dfrac{b+3}{a}$가 자연수가 되도록 하는 순서쌍 $(a,b)$를 센다.\n$b=1,2,3,4,5,6$일 때 $b+3$은 각각 $4,5,6,7,8,9$이다. $1\\le a\\le6$에서 이를 나누어떨어지게 하는 $a$의 개수는 차례로 $3,2,4,1,3,2$개이다.\n따라서 유리한 경우는 $3+2+4+1+3+2=15$가지이고 전체 경우는 $36$가지이다.\n확률은 $\\dfrac{15}{36}=\\dfrac5{12}$이다.\n따라서 구하는 확률은 $\\dfrac5{12}$이다."
+    "solution": "[키포인트] 방정식의 해 $x=\\dfrac{b+3}{a}$가 자연수가 되도록 하는 순서쌍 $(a,b)$를 센다.\n$b=1,2,3,4,5,6$일 때 $b+3$은 각각 $4,5,6,7,8,9$이다. $1\\le a\\le6$에서 이를 나누어떨어지게 하는 $a$의 개수는 차례로 $3,2,4,1,3,2$개이다.\n따라서 유리한 경우는 $3+2+4+1+3+2=15$가지이고 전체 경우는 $36$가지이다.\n확률은 $\\dfrac{15}{36}=\\dfrac5{12}$이다.\n따라서 구하는 확률은 $\\dfrac5{12}$이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

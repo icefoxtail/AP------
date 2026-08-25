@@ -23,7 +23,11 @@ window.questionBank = [
       "선분 $AB$ 위의 점 $M$에 대하여 $\\overline{AM}=\\overline{MB}$일 때, 점 $M$을 선분 $AB$의 중점이라고 한다."
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -49,8 +53,12 @@ window.questionBank = [
       "$12$개"
     ],
     "answer": "⑤",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q2.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q2.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -76,8 +84,12 @@ window.questionBank = [
       "$100^\\circ$"
     ],
     "answer": "④",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q3.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q3.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -103,8 +115,12 @@ window.questionBank = [
       "$6\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q4.png"
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q4.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -128,7 +144,11 @@ window.questionBank = [
       "한 직선에 수직인 서로 다른 두 직선은 수직이다."
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -154,8 +174,12 @@ window.questionBank = [
       "$270^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q6.png"
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q6.png",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -181,8 +205,12 @@ window.questionBank = [
       "$\\overline{DE}$"
     ],
     "answer": "⑤",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q7.png"
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q7.png",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -208,8 +236,12 @@ window.questionBank = [
       "$155^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q8.png"
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q8.png",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -233,7 +265,11 @@ window.questionBank = [
       "세 선분의 길이가 주어진 삼각형의 모양은 한 가지로 정해진다."
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -253,8 +289,13 @@ window.questionBank = [
     "content": "그림에서 ㉠~㉥은 점 $P$를 지나고 직선 $l$에 평행한 직선을 작도하는 과정을 나타낸 것이다. 작도 순서를 바르게 나타낸 것은? [4점]",
     "choices": [],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png"
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png",
+    "imageSize": "tall",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -278,7 +319,11 @@ window.questionBank = [
       "$AB=3\\,\\mathrm{cm},\\ BC=9\\,\\mathrm{cm},\\ CA=7\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -304,8 +349,12 @@ window.questionBank = [
       "$\\angle E$"
     ],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q12.png"
+    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q12.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -329,7 +378,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -355,8 +408,12 @@ window.questionBank = [
       "알 수 없다."
     ],
     "answer": "②",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q14.png"
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q14.png",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -382,8 +439,13 @@ window.questionBank = [
       "$34$"
     ],
     "answer": "④",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q15.png"
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q15.png",
+    "imageSize": "tall",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -409,7 +471,11 @@ window.questionBank = [
       "$35\\%$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -435,7 +501,11 @@ window.questionBank = [
       "$85$세"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -461,8 +531,12 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q18.png"
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q18.png",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -488,7 +562,11 @@ window.questionBank = [
       "$17$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -509,8 +587,12 @@ window.questionBank = [
     "content": "서논술형 1. 다음 그림에서 $\\overline{BD}=3\\overline{AB}$이고 $C$는 $\\overline{AD}$의 중점이고 $\\overline{BC}=6\\,\\mathrm{cm}$일 때, $\\overline{AD}$의 길이를 구하고 구하는 방법을 서술하시오. [6점]",
     "choices": [],
     "answer": "$24\\,\\mathrm{cm}$",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q20.png"
+    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $24\\,\\mathrm{cm}$이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q20.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -531,8 +613,12 @@ window.questionBank = [
     "content": "서논술형 2. 다음 그림에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AB}\\parallel\\overline{CD}$일 때, 합동인 두 삼각형을 찾아 합동 기호를 사용하여 나타내고, 합동인 이유를 평행선의 성질을 이용하여 구체적으로 서술하시오. (단, 평행사변형의 대변의 길이가 같음은 이용하지 마시오.) [7점]",
     "choices": [],
     "answer": "$\\triangle ABC\\equiv\\triangle CDA$ (ASA 합동)",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q21.png"
+    "solution": "풀이: 주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $\\triangle ABC\\equiv\\triangle CDA$ (ASA 합동)이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q21.png",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -553,7 +639,11 @@ window.questionBank = [
     "content": "서논술형 3. 다음 그림과 같이 직사각형 모양의 종이를 $\\angle EGF=120^\\circ$가 되도록 접었을 때, $\\angle GFE$의 크기를 구하고 구하는 과정을 서술하시오. (풀이를 그림을 그려 나타내시오.) [7점]",
     "choices": [],
     "answer": "$30^\\circ$",
-    "solution": "",
-    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q22.png"
+    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $30^\\circ$이다.",
+    "image": "assets/images/24_연향중_2학기_중간_중1_기출/q22.png",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

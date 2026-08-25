@@ -38,7 +38,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "1"
+    "sourceDisplayNoLabel": "1",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -78,7 +82,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "2"
+    "sourceDisplayNoLabel": "2",
+    "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+    "subUnit": "이항정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -118,7 +126,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "3"
+    "sourceDisplayNoLabel": "3",
+    "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -158,7 +170,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "4"
+    "sourceDisplayNoLabel": "4",
+    "subUnitKey": "H15-PS-03-CONDITIONAL_PROBABILITY",
+    "subUnit": "conditional probability",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -198,7 +214,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "5"
+    "sourceDisplayNoLabel": "5",
+    "subUnitKey": "H15-PS-01-PERMUTATION",
+    "subUnit": "순열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -238,7 +258,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "6"
+    "sourceDisplayNoLabel": "6",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -278,7 +302,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "term_default",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "7"
+    "sourceDisplayNoLabel": "7",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -318,7 +346,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "8"
+    "sourceDisplayNoLabel": "8",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -359,7 +391,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "9"
+    "sourceDisplayNoLabel": "9",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -399,7 +435,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "10"
+    "sourceDisplayNoLabel": "10",
+    "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -439,7 +479,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "11"
+    "sourceDisplayNoLabel": "11",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -479,7 +523,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round8_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "12"
+    "sourceDisplayNoLabel": "12",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -519,7 +567,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "term_default",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "13"
+    "sourceDisplayNoLabel": "13",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -560,7 +612,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "14"
+    "sourceDisplayNoLabel": "14",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -601,7 +657,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "15"
+    "sourceDisplayNoLabel": "15",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -641,7 +701,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "16"
+    "sourceDisplayNoLabel": "16",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -681,7 +745,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "17"
+    "sourceDisplayNoLabel": "17",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -722,7 +790,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "18"
+    "sourceDisplayNoLabel": "18",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -762,7 +834,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "19"
+    "sourceDisplayNoLabel": "19",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -802,7 +878,11 @@ window.questionBank = [
     "wide": false,
     "unitInferStatus": "content_keyword",
     "contentStatus": "round9_reconstructed_from_page_image",
-    "sourceDisplayNoLabel": "20"
+    "sourceDisplayNoLabel": "20",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -838,7 +918,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "서술형",
     "unitInferStatus": "manual_from_content",
-    "sourceDisplayNoLabel": "서술형 1"
+    "sourceDisplayNoLabel": "서술형 1",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -873,7 +957,11 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "unitInferStatus": "manual_from_content",
-    "sourceDisplayNoLabel": "서술형 2"
+    "sourceDisplayNoLabel": "서술형 2",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -908,6 +996,10 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "서술형",
     "unitInferStatus": "manual_from_content",
-    "sourceDisplayNoLabel": "서술형 3"
+    "sourceDisplayNoLabel": "서술형 3",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

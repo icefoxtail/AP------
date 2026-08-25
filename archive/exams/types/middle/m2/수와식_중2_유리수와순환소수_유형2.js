@@ -23,7 +23,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "④",
-    "solution": "단계 1: $x$가 $3$의 배수이면 분모의 $3$이 약분되어 유한소수가 됩니다.\n단계 2: $10$보다 작은 자연수 $1$부터 $9$까지 중 $3$의 배수는 $3, 6, 9$로 $3$개입니다.\n단계 3: 무한소수가 되는 개수는 전체 $9$개에서 $3$개를 뺀 $6$개입니다."
+    "solution": "단계 1: $x$가 $3$의 배수이면 분모의 $3$이 약분되어 유한소수가 됩니다.\n단계 2: $10$보다 작은 자연수 $1$부터 $9$까지 중 $3$의 배수는 $3, 6, 9$로 $3$개입니다.\n단계 3: 무한소수가 되는 개수는 전체 $9$개에서 $3$개를 뺀 $6$개입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
-    "solution": "단계 1: 분자 $21 = 3 \\times 7$이므로 $a$에 $3$이나 $7$이 포함되어도 약분 가능합니다.\n단계 2: $a=9=3^2$이면 $3$ 하나만 약분되고 분모에 $3$이 남아 무한소수가 됩니다."
+    "solution": "단계 1: 분자 $21 = 3 \\times 7$이므로 $a$에 $3$이나 $7$이 포함되어도 약분 가능합니다.\n단계 2: $a=9=3^2$이면 $3$ 하나만 약분되고 분모에 $3$이 남아 무한소수가 됩니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "24"
     ],
     "answer": "①",
-    "solution": "단계 1: $\\frac{11}{2^2 \\times 3 \\times 5}$를 유한소수로 만들려면 $n$은 $3$의 배수여야 합니다.\n단계 2: $3$의 배수 중 가장 작은 두 자리 자연수는 $12$입니다."
+    "solution": "단계 1: $\\frac{11}{2^2 \\times 3 \\times 5}$를 유한소수로 만들려면 $n$은 $3$의 배수여야 합니다.\n단계 2: $3$의 배수 중 가장 작은 두 자리 자연수는 $12$입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "단계 1: $x$는 $3^2=9$의 배수여야 합니다.\n단계 2: $20$ 이하의 $9$의 배수는 $9, 18$이므로 $M=18, m=9$입니다.\n단계 3: $M-m = 9$입니다."
+    "solution": "단계 1: $x$는 $3^2=9$의 배수여야 합니다.\n단계 2: $20$ 이하의 $9$의 배수는 $9, 18$이므로 $M=18, m=9$입니다.\n단계 3: $M-m = 9$입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "$\\frac{11}{2^4 \\times 5^2}$"
     ],
     "answer": "③, ④",
-    "solution": "단계 1: ③은 약분 후 분모에 $7$이 남고, ④는 약분 후 분모에 $3$이 남습니다."
+    "solution": "단계 1: ③은 약분 후 분모에 $7$이 남고, ④는 약분 후 분모에 $3$이 남습니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "$0.987987\\cdots = 0.9\\dot{8}\\dot{7}$"
     ],
     "answer": "①, ②",
-    "solution": ""
+    "solution": "[키포인트]\n순환마디는 반복되는 숫자 묶음의 첫째와 마지막 숫자에 점을 찍어 나타낸다.\n풀이 과정\n① $0.121212\\cdots$는 $12$가 반복되므로 $0.\\dot{1}\\dot{2}$로 옳다.\n② $2.345345\\cdots$는 $345$가 반복되므로 $2.\\dot{3}4\\dot{5}$로 옳다.\n③ $5.010101\\cdots$의 반복마디는 $01$이므로 $5.\\dot{0}\\dot{1}$이어야 한다.\n④ $1.234234\\cdots$는 $1.\\dot{2}3\\dot{4}$이어야 한다.\n⑤ $0.987987\\cdots$는 $0.\\dot{9}8\\dot{7}$이어야 한다.\n따라서 옳은 것은 ①, ②이다.\n결론\n정답은 ①, ②이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "$3.125\\dot{1}2\\dot{5}$, $125$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "[키포인트]\n순환마디가 시작되는 자리와 반복되는 숫자 묶음을 확인한다.\n풀이 과정\n$3.125125125\\cdots$에서는 소수점 아래의 $125$가 처음부터 반복된다. 따라서 순환마디는 $125$이고, 점을 첫 숫자와 마지막 숫자에 찍어 $3.\\dot{1}2\\dot{5}$로 나타낸다.\n결론\n바른 표현과 순환마디는 $3.\\dot{1}2\\dot{5}$, $125$이므로 정답은 ②이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -185,13 +213,17 @@ window.questionBank = [
     "content": "다음 중 순환소수의 표현 방법이 옳은 것을 모두 고르면? (정답 2개)",
     "choices": [
       "$0.777\\cdots = 0.\\dot{7}$",
-      "$1.2030303\\cdots = 1.2\\dot{0}\\dot{3}$",
+      "$1.2030303\\cdots = 1.\\dot{2}0\\dot{3}$",
       "$4.123123\\cdots = 4.1\\dot{2}\\dot{3}$",
       "$0.512512\\cdots = 0.5\\dot{1}\\dot{2}$",
       "$2.343434\\cdots = 2.\\dot{3}\\dot{4}$"
     ],
     "answer": "①, ⑤",
-    "solution": ""
+    "solution": "[키포인트]\n소수점 아래에서 반복되는 구간의 첫째와 마지막 숫자에 점을 찍는다.\n풀이 과정\n① $0.777\\cdots$는 $7$이 반복되므로 $0.\\dot{7}$로 옳다.\n② $1.2030303\\cdots$는 $2$ 뒤에 $03$이 반복되므로 $1.2\\dot{0}\\dot{3}$이어야 한다. 보기의 $1.\\dot{2}0\\dot{3}$은 $203$이 반복되는 표기이므로 옳지 않다.\n③ $4.123123\\cdots$는 $123$이 반복되므로 $4.\\dot{1}2\\dot{3}$이어야 하며 보기의 표기는 옳지 않다.\n④ $0.512512\\cdots$는 $512$가 반복되므로 $0.\\dot{5}1\\dot{2}$이어야 하며 보기의 표기는 옳지 않다.\n⑤ $2.343434\\cdots$는 $34$가 반복되므로 $2.\\dot{3}\\dot{4}$로 옳다.\n따라서 옳은 것은 ①, ⑤이다.\n결론\n정답은 ①, ⑤이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "$0.31818\\cdots$, $1$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "[키포인트]\n분수를 순환소수로 바꾼 뒤 순환마디의 위치를 이용해 특정 자리의 숫자를 구한다.\n풀이 과정\n$\\dfrac{7}{22}=0.3181818\\cdots=0.3\\dot{1}\\dot{8}$이다. 소수점 아래 첫째 자리는 $3$이고, 둘째 자리부터 $1,8$이 번갈아 반복된다. $50$번째 자리는 반복 구간의 $(50-2)=48$번째 위치이므로 짝수 번째 숫자인 $1$이다.\n결론\n옳은 표현은 $0.3\\dot{1}\\dot{8}$이고 $50$번째 자리의 숫자는 $1$이므로 정답은 ①이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -239,7 +275,11 @@ window.questionBank = [
       "17"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "[키포인트]\n순환마디의 길이와 특정 자리의 순환 위치를 구한다.\n풀이 과정\n$\\dfrac{5}{13}=0.\\dot{3}8\\dot{4}6\\dot{1}5$로 순환마디는 $384615$이고 그 길이는 $x=6$이다. 소수점 아래 $100$번째 자리는 $100\\div6$의 나머지가 $4$이므로 순환마디의 네 번째 숫자 $6$이다. 따라서 $y=6$이다.\n결론\n$x+y=6+6=12$이므로 정답은 ③이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -263,7 +303,11 @@ window.questionBank = [
       "0"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "[키포인트]\n순환마디의 길이를 구하고 나머지로 특정 자리의 숫자를 찾는다.\n풀이 과정\n$\\dfrac{8}{41}=0.195121951219512\\cdots=0.\\dot{1}9512$이므로 순환마디는 $19512$이고 길이는 $5$이다. $2026\\div5$의 나머지는 $1$이므로 소수점 아래 $2026$번째 숫자는 순환마디의 첫 번째 숫자인 $1$이다.\n결론\n정답은 ①이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -287,7 +331,11 @@ window.questionBank = [
       "5개"
     ],
     "answer": "③",
-    "solution": "단계 1: 분모 $150$을 소인수분해하면 $2 \\times 3 \\times 5^2$입니다.\n단계 2: 분수가 유한소수가 되려면 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 하므로, 분자 $a$는 분모의 $3$을 약분시킬 수 있는 $3$의 배수여야 합니다.\n단계 3: 한 자리 자연수 $1, 2, \\dots, 9$ 중에서 $3$의 배수는 $3, 6, 9$로 총 $3$개입니다."
+    "solution": "단계 1: 분모 $150$을 소인수분해하면 $2 \\times 3 \\times 5^2$입니다.\n단계 2: 분수가 유한소수가 되려면 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 하므로, 분자 $a$는 분모의 $3$을 약분시킬 수 있는 $3$의 배수여야 합니다.\n단계 3: 한 자리 자연수 $1, 2, \\dots, 9$ 중에서 $3$의 배수는 $3, 6, 9$로 총 $3$개입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -311,7 +359,11 @@ window.questionBank = [
       "9개"
     ],
     "answer": "②",
-    "solution": "단계 1: 분자 $21$을 소인수분해하면 $3 \\times 7$입니다. 따라서 분모의 소인수 중 $3$과 $7$은 각각 하나씩 분자와 약분되어 사라질 수 있습니다.\n단계 2: 유한소수가 되려면 분모 $2^2 \\times 5 \\times x$에서 약분 후 남는 소인수가 $2$ 또는 $5$뿐이어야 합니다. 즉, $x$의 소인수는 $2, 5$ 이외에 $3$ 또는 $7$을 최대 하나씩만 가질 수 있습니다.\n단계 3: $10$부터 $20$까지의 자연수를 검사합니다.\\n- $10=2 \\times 5$ (O)\\n- $12=2^2 \\times 3$ (3 약분됨, O)\\n- $14=2 \\times 7$ (7 약분됨, O)\\n- $15=3 \\times 5$ (3 약분됨, O)\\n- $16=2^4$ (O)\\n- $20=2^2 \\times 5$ (O)\\n나머지 $11, 13, 17, 18, 19$는 조건을 만족하지 않습니다. 따라서 개수는 $6$개입니다."
+    "solution": "단계 1: 분자 $21$을 소인수분해하면 $3 \\times 7$입니다. 따라서 분모의 소인수 중 $3$과 $7$은 각각 하나씩 분자와 약분되어 사라질 수 있습니다.\n단계 2: 유한소수가 되려면 분모 $2^2 \\times 5 \\times x$에서 약분 후 남는 소인수가 $2$ 또는 $5$뿐이어야 합니다. 즉, $x$의 소인수는 $2, 5$ 이외에 $3$ 또는 $7$을 최대 하나씩만 가질 수 있습니다.\n단계 3: $10$부터 $20$까지의 자연수를 검사합니다.\\n- $10=2 \\times 5$ (O)\\n- $12=2^2 \\times 3$ (3 약분됨, O)\\n- $14=2 \\times 7$ (7 약분됨, O)\\n- $15=3 \\times 5$ (3 약분됨, O)\\n- $16=2^4$ (O)\\n- $20=2^2 \\times 5$ (O)\\n나머지 $11, 13, 17, 18, 19$는 조건을 만족하지 않습니다. 따라서 개수는 $6$개입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -335,7 +387,11 @@ window.questionBank = [
       "98"
     ],
     "answer": "②",
-    "solution": "단계 1: 분모 $420$을 소인수분해하면 $2^2 \\times 3 \\times 5 \\times 7$입니다.\n단계 2: 유한소수가 되려면 분모에서 $2, 5$ 이외의 소인수인 $3$과 $7$이 $A$와 약분되어 사라져야 합니다. 따라서 $A$는 $3 \\times 7 = 21$의 배수여야 합니다.\n단계 3: 두 자리 자연수 중 $21$의 배수는 $21, 42, 63, 84$입니다. 이 중 가장 큰 값은 $84$입니다."
+    "solution": "단계 1: 분모 $420$을 소인수분해하면 $2^2 \\times 3 \\times 5 \\times 7$입니다.\n단계 2: 유한소수가 되려면 분모에서 $2, 5$ 이외의 소인수인 $3$과 $7$이 $A$와 약분되어 사라져야 합니다. 따라서 $A$는 $3 \\times 7 = 21$의 배수여야 합니다.\n단계 3: 두 자리 자연수 중 $21$의 배수는 $21, 42, 63, 84$입니다. 이 중 가장 큰 값은 $84$입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -359,7 +415,11 @@ window.questionBank = [
       "73"
     ],
     "answer": "②",
-    "solution": "단계 1: 유한소수가 되려면 분자 $x$는 분모의 소인수 중 $2, 5$ 이외의 인수인 $3$과 $7$의 곱, 즉 $21$의 배수여야 합니다. ($x = 21k$)\n단계 2: 기약분수의 분자가 $3$이 되려면 $\\frac{21k}{2^2 \\times 3 \\times 7} = \\frac{21k}{84} = \\frac{k}{4}$에서 $k$가 $3$이어야 합니다. 따라서 $x = 21 \\times 3 = 63$입니다.\n단계 3: $x=63$을 대입하면 $\\frac{63}{84} = \\frac{3}{4}$이므로 $y=4$입니다. 따라서 $x+y = 63 + 4 = 67$입니다."
+    "solution": "단계 1: 유한소수가 되려면 분자 $x$는 분모의 소인수 중 $2, 5$ 이외의 인수인 $3$과 $7$의 곱, 즉 $21$의 배수여야 합니다. ($x = 21k$)\n단계 2: 기약분수의 분자가 $3$이 되려면 $\\frac{21k}{2^2 \\times 3 \\times 7} = \\frac{21k}{84} = \\frac{k}{4}$에서 $k$가 $3$이어야 합니다. 따라서 $x = 21 \\times 3 = 63$입니다.\n단계 3: $x=63$을 대입하면 $\\frac{63}{84} = \\frac{3}{4}$이므로 $y=4$입니다. 따라서 $x+y = 63 + 4 = 67$입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -383,7 +443,11 @@ window.questionBank = [
       "198"
     ],
     "answer": "③",
-    "solution": "단계 1: 두 분수의 분모를 소인수분해합니다. $180 = 2^2 \\times 3^2 \\times 5$, $110 = 2 \\times 5 \\times 11$입니다.\n단계 2: 첫 번째 분수가 유한소수가 되려면 $n$은 $3^2=9$의 배수여야 하고, 두 번째 분수가 유한소수가 되려면 $n$은 $11$의 배수여야 합니다.\n단계 3: 따라서 $n$은 $9$와 $11$의 공배수여야 하므로 가장 작은 자연수 $n$은 $99$입니다."
+    "solution": "단계 1: 두 분수의 분모를 소인수분해합니다. $180 = 2^2 \\times 3^2 \\times 5$, $110 = 2 \\times 5 \\times 11$입니다.\n단계 2: 첫 번째 분수가 유한소수가 되려면 $n$은 $3^2=9$의 배수여야 하고, 두 번째 분수가 유한소수가 되려면 $n$은 $11$의 배수여야 합니다.\n단계 3: 따라서 $n$은 $9$와 $11$의 공배수여야 하므로 가장 작은 자연수 $n$은 $99$입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -407,7 +471,11 @@ window.questionBank = [
       "90"
     ],
     "answer": "②",
-    "solution": "단계 1: 첫 번째 분수에서 분모의 $3, 7$을 제거해야 하므로 $n$은 $21$의 배수여야 합니다.\n단계 2: 두 번째 분수에서 분모의 $3^2=9$를 제거해야 하므로 $n$은 $9$의 배수여야 합니다.\n단계 3: $n$은 $LCM(21, 9) = 63$의 배수여야 하므로, 주어진 범위 $50 < n < 100$에 해당하는 값은 $63$입니다."
+    "solution": "단계 1: 첫 번째 분수에서 분모의 $3, 7$을 제거해야 하므로 $n$은 $21$의 배수여야 합니다.\n단계 2: 두 번째 분수에서 분모의 $3^2=9$를 제거해야 하므로 $n$은 $9$의 배수여야 합니다.\n단계 3: $n$은 $LCM(21, 9) = 63$의 배수여야 하므로, 주어진 범위 $50 < n < 100$에 해당하는 값은 $63$입니다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -425,7 +493,11 @@ window.questionBank = [
     "content": "두 분수 $\\frac{11}{120}$, $\\frac{33}{2 \\times 3 \\times 5^2 \\times x}$에 대하여, $\\frac{11}{120}$에 자연수 $a$를 곱하여 유한소수가 되게 하는 가장 작은 $a$의 값을 $m$, $\\frac{33}{2 \\times 3 \\times 5^2 \\times x}$가 유한소수가 되게 하는 $10$ 미만의 자연수 $x$의 개수를 $n$이라 할 때, $m+n$의 값은?",
     "choices": [],
     "answer": "8",
-    "solution": "1단계: $120 = 2^3 \\times 3 \\times 5$이므로 $\\frac{11}{120} \\times a$가 유한소수가 되려면 $a$는 분모의 소인수 $3$을 약분해야 함. 따라서 가장 작은 자연수 $m=3$.\n2단계: $\\frac{33}{2 \\times 3 \\times 5^2 \\times x} = \\frac{11}{2 \\times 5^2 \\times x}$로 약분됨. 이 분수가 유한소수가 되려면 $x$의 소인수가 $2, 5$뿐이거나 분자 $11$의 약수여야 함.\n3단계: $10$ 미만의 자연수 $x$ 중 후보는 $1, 2, 4, 5, 8$ (소인수가 2, 5뿐인 수)과 $x=11$의 약수이나 $11$은 범위 밖임. 따라서 $x \\in \\{1, 2, 4, 5, 8\\}$로 $n=5$. $m+n = 3+5=8$."
+    "solution": "1단계: $120 = 2^3 \\times 3 \\times 5$이므로 $\\frac{11}{120} \\times a$가 유한소수가 되려면 $a$는 분모의 소인수 $3$을 약분해야 함. 따라서 가장 작은 자연수 $m=3$.\n2단계: $\\frac{33}{2 \\times 3 \\times 5^2 \\times x} = \\frac{11}{2 \\times 5^2 \\times x}$로 약분됨. 이 분수가 유한소수가 되려면 $x$의 소인수가 $2, 5$뿐이거나 분자 $11$의 약수여야 함.\n3단계: $10$ 미만의 자연수 $x$ 중 후보는 $1, 2, 4, 5, 8$ (소인수가 2, 5뿐인 수)과 $x=11$의 약수이나 $11$은 범위 밖임. 따라서 $x \\in \\{1, 2, 4, 5, 8\\}$로 $n=5$. $m+n = 3+5=8$.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -443,7 +515,11 @@ window.questionBank = [
     "content": "분수 $\\frac{21}{2^2 \\times 3 \\times 5 \\times x}$를 소수로 나타내면 유한소수가 된다고 한다. $10 < x < 20$인 자연수 $x$의 값 중 가장 큰 값을 $M$, 가장 작은 값을 $m$이라 할 때, $M-m$의 값은?",
     "choices": [],
     "answer": "2",
-    "solution": "1단계: 분수를 약분하면 $\\frac{21}{2^2 \\times 3 \\times 5 \\times x} = \\frac{7}{20x}$임.\n2단계: $\\frac{7}{20x}$가 유한소수가 되려면 $x$의 소인수가 $2, 5$뿐이거나 $x$가 분자 $7$의 약수를 포함하여 $2, 5$ 이외의 소인수를 제거해야 함.\n3단계: $10 < x < 20$ 범위에서 확인. $x=14(2 \\times 7, O)$, $x=16(2^4, O)$. $x=12, 13, 15, 17, 18, 19$는 모두 불가능. 따라서 $M=16, m=14$이므로 $M-m=2$."
+    "solution": "1단계: 분수를 약분하면 $\\frac{21}{2^2 \\times 3 \\times 5 \\times x} = \\frac{7}{20x}$임.\n2단계: $\\frac{7}{20x}$가 유한소수가 되려면 $x$의 소인수가 $2, 5$뿐이거나 $x$가 분자 $7$의 약수를 포함하여 $2, 5$ 이외의 소인수를 제거해야 함.\n3단계: $10 < x < 20$ 범위에서 확인. $x=14(2 \\times 7, O)$, $x=16(2^4, O)$. $x=12, 13, 15, 17, 18, 19$는 모두 불가능. 따라서 $M=16, m=14$이므로 $M-m=2$.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -461,9 +537,13 @@ window.questionBank = [
     "content": "분수 $\\frac{7}{2^2 \\times 3 \\times 5 \\times x}$를 소수로 나타낼 때, 유한소수가 되도록 하는 $20$ 이하의 자연수 $x$의 개수는?",
     "choices": [],
     "answer": "4",
-    "solution": "1단계: 유한소수가 되려면 분모의 소인수가 $2, 5$뿐이어야 함. 단, 이 문제에서는 분모에 이미 $3$이 있으므로 $x$가 반드시 $3$을 인수로 가져서 약분시켜야 함.\n2단계: 즉, $x = 3 \\times (2^a \\times 5^b)$ 꼴이거나 $x=3 \\times (7의 약수)$여야 함. 또한 $x$가 $3$을 포함하지 않더라도 분자 $7$이 분모의 $3$을 없앨 수는 없으므로, $x$는 무조건 $3$의 배수여야 함.\n3단계: $20$ 이하의 $3$의 배수 중 분모의 $3$을 제거하고 남은 인수가 $2, 5$ 또는 분자 $7$과 약분되는 수 찾기: $x=3(O), x=6(2 \\times 3, O), x=12(2^2 \\times 3, O), x=15(3 \\times 5, O), x=21(범위 밖)$. 추가로 $x=3 \\times 7 = 21$은 범위 밖. 따라서 가능한 $x$는 $3, 6, 12, 15$의 $4$개."
+    "solution": "1단계: 유한소수가 되려면 분모의 소인수가 $2, 5$뿐이어야 함. 단, 이 문제에서는 분모에 이미 $3$이 있으므로 $x$가 반드시 $3$을 인수로 가져서 약분시켜야 함.\n2단계: 즉, $x = 3 \\times (2^a \\times 5^b)$ 꼴이거나 $x=3 \\times (7의 약수)$여야 함. 또한 $x$가 $3$을 포함하지 않더라도 분자 $7$이 분모의 $3$을 없앨 수는 없으므로, $x$는 무조건 $3$의 배수여야 함.\n3단계: $20$ 이하의 $3$의 배수 중 분모의 $3$을 제거하고 남은 인수가 $2, 5$ 또는 분자 $7$과 약분되는 수 찾기: $x=3(O), x=6(2 \\times 3, O), x=12(2^2 \\times 3, O), x=15(3 \\times 5, O), x=21(범위 밖)$. 추가로 $x=3 \\times 7 = 21$은 범위 밖. 따라서 가능한 $x$는 $3, 6, 12, 15$의 $4$개.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
-    {
+  {
     "id": 21,
     "level": "상",
     "category": "유리수와 순환소수",
@@ -479,7 +559,11 @@ window.questionBank = [
     "content": "분수 $\\frac{a}{150}$를 소수로 나타내면 유한소수가 되고, 기약분수로 나타내면 $\\frac{7}{b}$가 된다. $40 < a < 60$일 때, $a-b$의 값은?",
     "choices": [],
     "answer": "17",
-    "solution": "1단계: $150 = 2 \\times 3 \\times 5^2$이므로 유한소수가 되려면 $a$는 $3$의 배수여야 함.\n2단계: 기약분수의 분자가 $7$이므로 $a = 7 \\times k$ 꼴임. 따라서 $a$는 $3$과 $7$의 공배수인 $21$의 배수임.\n3단계: $40 < a < 60$인 $21$의 배수는 $a=42$뿐임.\n4단계: $a=42$를 대입하면 $\\frac{42}{150} = \\frac{14}{50} = \\frac{7}{25}$이므로 $b=25$. $a-b = 42-25 = 17$."
+    "solution": "1단계: $150 = 2 \\times 3 \\times 5^2$이므로 유한소수가 되려면 $a$는 $3$의 배수여야 함.\n2단계: 기약분수의 분자가 $7$이므로 $a = 7 \\times k$ 꼴임. 따라서 $a$는 $3$과 $7$의 공배수인 $21$의 배수임.\n3단계: $40 < a < 60$인 $21$의 배수는 $a=42$뿐임.\n4단계: $a=42$를 대입하면 $\\frac{42}{150} = \\frac{14}{50} = \\frac{7}{25}$이므로 $b=25$. $a-b = 42-25 = 17$.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -497,7 +581,11 @@ window.questionBank = [
     "content": "분수 $\\frac{21}{2^2 \\times 5 \\times a}$가 유한소수가 되도록 하는 $10$보다 크고 $20$보다 작은 모든 홀수 $a$의 값의 합은?",
     "choices": [],
     "answer": "15",
-    "solution": "1단계: 분자 $21 = 3 \\times 7$임. 분모에 $2, 5$ 이외의 소인수가 있어도 분자와 약분되면 유한소수가 됨.\n2단계: $10 < a < 20$인 홀수 후보: $11, 13, 15, 17, 19$.\n3단계: $a=15=3 \\times 5$이면 분자의 $3$과 약분되어 분모에 $5$만 남으므로 유한소수 가능. 나머지 $11, 13, 17, 19$는 분자와 약분되지 않아 불가능. 따라서 $a=15$뿐임."
+    "solution": "1단계: 분자 $21 = 3 \\times 7$임. 분모에 $2, 5$ 이외의 소인수가 있어도 분자와 약분되면 유한소수가 됨.\n2단계: $10 < a < 20$인 홀수 후보: $11, 13, 15, 17, 19$.\n3단계: $a=15=3 \\times 5$이면 분자의 $3$과 약분되어 분모에 $5$만 남으므로 유한소수 가능. 나머지 $11, 13, 17, 19$는 분자와 약분되지 않아 불가능. 따라서 $a=15$뿐임.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -515,7 +603,11 @@ window.questionBank = [
     "content": "분수 $\\frac{n}{280}$을 소수로 나타내면 유한소수가 되고, 기약분수로 나타내면 $\\frac{3}{k}$가 된다. $n$이 두 자리 자연수일 때, $n+k$의 값은?",
     "choices": [],
     "answer": "61",
-    "solution": "1단계: $280 = 2^3 \\times 5 \\times 7$이므로 유한소수가 되려면 $n$은 $7$의 배수여야 함.\n2단계: 기약분수의 분자가 $3$이므로 $n = 3 \\times (280과의 공약수)$ 꼴이어야 함. 즉, $n$은 $7$과 $3$의 공배수인 $21$의 배수여야 함.\n3단계: 두 자리 자연수 $n$ 중 $21$의 배수는 $21, 42, 63, 84$임.\n4단계: $n=21$일 때, $\\frac{21}{280} = \\frac{3}{40}$. (분자 3 만족, $k=40$). $n=42$일 때, $\\frac{42}{280} = \\frac{6}{40} = \\frac{3}{20}$. (분자 3 만족, $k=20$). $n+k$의 값을 구하면 $21+40=61$ 또는 $42+20=62$. 선택지에 61이 있으므로 $n=21, k=40$임."
+    "solution": "1단계: $280 = 2^3 \\times 5 \\times 7$이므로 유한소수가 되려면 $n$은 $7$의 배수여야 함.\n2단계: 기약분수의 분자가 $3$이므로 $n = 3 \\times (280과의 공약수)$ 꼴이어야 함. 즉, $n$은 $7$과 $3$의 공배수인 $21$의 배수여야 함.\n3단계: 두 자리 자연수 $n$ 중 $21$의 배수는 $21, 42, 63, 84$임.\n4단계: $n=21$일 때, $\\frac{21}{280} = \\frac{3}{40}$. (분자 3 만족, $k=40$). $n=42$일 때, $\\frac{42}{280} = \\frac{6}{40} = \\frac{3}{20}$. (분자 3 만족, $k=20$). $n+k$의 값을 구하면 $21+40=61$ 또는 $42+20=62$. 선택지에 61이 있으므로 $n=21, k=40$임.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -539,7 +631,11 @@ window.questionBank = [
       "21개"
     ],
     "answer": "③",
-    "solution": "1단계: 분모의 소인수 중 2와 5를 제외한 $3^2=9$가 약분되어 사라져야 유한소수가 된다.\n2단계: 순환소수가 되려면 $x$가 9의 배수가 아니어야 한다.\n3단계: $10 \\le x \\le 30$인 자연수는 21개이고, 이 중 9의 배수는 18, 27의 2개이다. 따라서 $21 - 2 = 19$개이다."
+    "solution": "1단계: 분모의 소인수 중 2와 5를 제외한 $3^2=9$가 약분되어 사라져야 유한소수가 된다.\n2단계: 순환소수가 되려면 $x$가 9의 배수가 아니어야 한다.\n3단계: $10 \\le x \\le 30$인 자연수는 21개이고, 이 중 9의 배수는 18, 27의 2개이다. 따라서 $21 - 2 = 19$개이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 25,
@@ -563,7 +659,11 @@ window.questionBank = [
       "105"
     ],
     "answer": "②",
-    "solution": "1단계: $\\frac{3}{2^2 \\times 7} \\times x$가 유한소수가 되려면 $x$는 7의 배수여야 한다.\n2단계: $\\frac{x}{2 \\times 3 \\times 5^2}$가 순환소수가 되려면 분모의 3이 약분되지 않아야 하므로 $x$는 3의 배수가 아니어야 한다.\n3단계: 7의 배수 중 3의 배수가 아닌 두 자리 자연수 중 최대 $M=98$, 최소 $m=14$이다. $M-m=84$이다."
+    "solution": "1단계: $\\frac{3}{2^2 \\times 7} \\times x$가 유한소수가 되려면 $x$는 7의 배수여야 한다.\n2단계: $\\frac{x}{2 \\times 3 \\times 5^2}$가 순환소수가 되려면 분모의 3이 약분되지 않아야 하므로 $x$는 3의 배수가 아니어야 한다.\n3단계: 7의 배수 중 3의 배수가 아닌 두 자리 자연수 중 최대 $M=98$, 최소 $m=14$이다. $M-m=84$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 26,
@@ -576,12 +676,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "분수 $\\frac{14}{x \\times 45}$를 소수로 나타내면 순환소수가 된다. $x$가 $2, 3, 5$만을 소인수로 가질 수 있는 한 자리 자연수일 때, 가능한 모든 $x$의 값의 합을 구하시오. (단, $x$는 3을 적어도 하나 소인수로 갖는다. 풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "18",
-    "solution": "1단계: 분모는 $x \\times 3^2 \\times 5$이고 분자는 $2 \\times 7$이다. 분자에 소인수 3이 없으므로 분모의 3은 $x$와 관계없이 절대 약분되지 않는다.\n2단계: 따라서 한 자리 자연수 중 3을 소인수로 가지는 $x$를 찾으면 3, 6, 9이다.\n3단계: 가능한 모든 $x$의 합은 $3+6+9=18$이다."
+    "solution": "1단계: 분모는 $x \\times 3^2 \\times 5$이고 분자는 $2 \\times 7$이다. 분자에 소인수 3이 없으므로 분모의 3은 $x$와 관계없이 절대 약분되지 않는다.\n2단계: 따라서 한 자리 자연수 중 3을 소인수로 가지는 $x$를 찾으면 3, 6, 9이다.\n3단계: 가능한 모든 $x$의 합은 $3+6+9=18$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -605,7 +711,11 @@ window.questionBank = [
       "$100x - 10x$"
     ],
     "answer": "③",
-    "solution": "1단계: 순환마디 끝까지 소수점을 옮기면 $1000x = 2471.7171...$이다.\n2단계: 순환마디 시작 직전까지 소수점을 옮기면 $10x = 24.7171...$이다.\n3단계: 두 식을 빼면 소수 부분이 사라지므로 $1000x - 10x$가 가장 적절하다."
+    "solution": "1단계: 순환마디 끝까지 소수점을 옮기면 $1000x = 2471.7171...$이다.\n2단계: 순환마디 시작 직전까지 소수점을 옮기면 $10x = 24.7171...$이다.\n3단계: 두 식을 빼면 소수 부분이 사라지므로 $1000x - 10x$가 가장 적절하다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -629,7 +739,11 @@ window.questionBank = [
       "$\\frac{13}{25}$"
     ],
     "answer": "①",
-    "solution": "1단계: $990x = 507$에서 $x = \\frac{507}{990}$이다.\n2단계: 분자, 분모를 최대공약수인 3으로 약분한다.\n3단계: $\\frac{507 \\div 3}{990 \\div 3} = \\frac{169}{330}$이다."
+    "solution": "1단계: $990x = 507$에서 $x = \\frac{507}{990}$이다.\n2단계: 분자, 분모를 최대공약수인 3으로 약분한다.\n3단계: $\\frac{507 \\div 3}{990 \\div 3} = \\frac{169}{330}$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -642,12 +756,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "어떤 순환소수 $x$에 $1000$을 곱한 값에서 $100$을 곱한 값을 뺐더니 소수 부분이 사라지고 정수 $1234$가 되었다. 이 순환소수 $x$를 순환마디에 점을 찍어 바르게 나타내시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "1.37\\dot{1}",
-    "solution": "1단계: $1000x - 100x = 900x = 1234$이므로 $x = \\frac{1234}{900}$이다.\n2단계: 직접 나눗셈 또는 공식을 역산하면 $1.37111...$ 임을 알 수 있다.\n3단계: 따라서 순환소수로 표현하면 $1.37\\dot{1}$이다."
+    "solution": "1단계: $1000x - 100x = 900x = 1234$이므로 $x = \\frac{1234}{900}$이다.\n2단계: 직접 나눗셈 또는 공식을 역산하면 $1.37111...$ 임을 알 수 있다.\n3단계: 따라서 순환소수로 표현하면 $1.37\\dot{1}$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 30,
@@ -671,7 +791,11 @@ window.questionBank = [
       "57"
     ],
     "answer": "③",
-    "solution": "1단계: 주어진 합을 소수로 나타내면 $0.47\\dot{2}$이다.\n2단계: 분수로 고치면 $\\frac{472-47}{900} = \\frac{425}{900}$이다.\n3단계: 25로 약분하면 $\\frac{17}{36}$이므로 합은 $17+36=53$이다."
+    "solution": "1단계: 주어진 합을 소수로 나타내면 $0.47\\dot{2}$이다.\n2단계: 분수로 고치면 $\\frac{472-47}{900} = \\frac{425}{900}$이다.\n3단계: 25로 약분하면 $\\frac{17}{36}$이므로 합은 $17+36=53$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -695,7 +819,11 @@ window.questionBank = [
       "$\\frac{4}{9}$"
     ],
     "answer": "①",
-    "solution": "1단계: $A = 0.\\dot{5} = \\frac{5}{9}$, $B = 0.\\dot{2} = \\frac{2}{9}$이다.\n2단계: $A-B = \\frac{5}{9} - \\frac{2}{9} = \\frac{3}{9}$이다.\n3단계: 기약분수로 나타내면 $\\frac{1}{3}$이다."
+    "solution": "1단계: $A = 0.\\dot{5} = \\frac{5}{9}$, $B = 0.\\dot{2} = \\frac{2}{9}$이다.\n2단계: $A-B = \\frac{5}{9} - \\frac{2}{9} = \\frac{3}{9}$이다.\n3단계: 기약분수로 나타내면 $\\frac{1}{3}$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -708,12 +836,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "다음 식을 계산하여 기약분수로 나타내었을 때, 분모와 분자의 합을 구하시오. (풀이 과정을 쓰시오.)\\n$$0.4 + 0.07 + 0.002 + 0.0002 + 0.00002 + \\dots$$",
     "choices": [],
     "answer": "53",
-    "solution": "1단계: 식의 합을 소수로 나타내면 $0.47222\\dots = 0.47\\dot{2}$이다.\n2단계: 분수로 변환하면 $\\frac{472-47}{900} = \\frac{425}{900}$이다.\n3단계: 기약분수로 약분하면 $\\frac{17}{36}$이므로 분모와 분자의 합은 $17+36=53$이다."
+    "solution": "1단계: 식의 합을 소수로 나타내면 $0.47222\\dots = 0.47\\dot{2}$이다.\n2단계: 분수로 변환하면 $\\frac{472-47}{900} = \\frac{425}{900}$이다.\n3단계: 기약분수로 약분하면 $\\frac{17}{36}$이므로 분모와 분자의 합은 $17+36=53$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -737,7 +871,11 @@ window.questionBank = [
       "45"
     ],
     "answer": "②",
-    "solution": "1단계: $0.0\\dot{4}\\dot{5} = \\frac{45}{990} = \\frac{1}{22}$이다.\n2단계: 유한소수가 되려면 분모의 소인수인 11을 약분해야 한다.\n3단계: 11의 배수 중 가장 작은 두 자리 수는 11이다."
+    "solution": "1단계: $0.0\\dot{4}\\dot{5} = \\frac{45}{990} = \\frac{1}{22}$이다.\n2단계: 유한소수가 되려면 분모의 소인수인 11을 약분해야 한다.\n3단계: 11의 배수 중 가장 작은 두 자리 수는 11이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -761,7 +899,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "③",
-    "solution": "1단계: $0.1\\dot{3}\\dot{6} = \\frac{135}{990} = \\frac{3}{22}$이다.\n2단계: 유한소수가 되려면 11의 배수여야 한다.\n3단계: $50 < x < 100$인 11의 배수는 55, 66, 77, 88, 99로 총 5개이다."
+    "solution": "1단계: $0.1\\dot{3}\\dot{6} = \\frac{135}{990} = \\frac{3}{22}$이다.\n2단계: 유한소수가 되려면 11의 배수여야 한다.\n3단계: $50 < x < 100$인 11의 배수는 55, 66, 77, 88, 99로 총 5개이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -774,12 +916,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "순환소수 $0.0\\dot{4}\\dot{5}$에 자연수 $x$를 곱하여 유한소수가 되게 하려고 한다. $x$의 값이 될 수 있는 가장 작은 두 자리 자연수를 구하시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "11",
-    "solution": "1단계: $0.0\\dot{4}\\dot{5} = \\frac{45}{990} = \\frac{1}{22}$이다.\n2단계: 유한소수가 되려면 분모의 소인수 11을 제거해야 하므로 $x$는 11의 배수여야 한다.\n3단계: 11의 배수 중 가장 작은 두 자리 자연수는 11이다."
+    "solution": "1단계: $0.0\\dot{4}\\dot{5} = \\frac{45}{990} = \\frac{1}{22}$이다.\n2단계: 유한소수가 되려면 분모의 소인수 11을 제거해야 하므로 $x$는 11의 배수여야 한다.\n3단계: 11의 배수 중 가장 작은 두 자리 자연수는 11이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -803,7 +951,11 @@ window.questionBank = [
       "142"
     ],
     "answer": "④",
-    "solution": "1단계: $1.1\\dot{6} = \\frac{105}{90} = \\frac{7}{6} = \\frac{7}{2 \\times 3}$이다.\n2단계: 유한소수가 되려면 $x$는 3의 배수여야 한다.\n3단계: $40 < x < 50$인 3의 배수는 42, 45, 48이다. 이들의 합은 $42+45+48=135$이다."
+    "solution": "1단계: $1.1\\dot{6} = \\frac{105}{90} = \\frac{7}{6} = \\frac{7}{2 \\times 3}$이다.\n2단계: 유한소수가 되려면 $x$는 3의 배수여야 한다.\n3단계: $40 < x < 50$인 3의 배수는 42, 45, 48이다. 이들의 합은 $42+45+48=135$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -827,7 +979,11 @@ window.questionBank = [
       "13"
     ],
     "answer": "④",
-    "solution": "1단계: 수진이가 본 $1.\\dot{2} = \\frac{12-1}{9} = \\frac{11}{9}$이다. 분모를 잘못 보았으므로 분자 11을 제대로 본 것이다.\n2단계: 민호가 본 $0.0\\dot{7} = \\frac{7}{90}$이다. 분자를 잘못 보았으므로 분모 90을 제대로 본 것이다. 따라서 처음 기약분수는 $\\frac{11}{90}$이다.\n3단계: 처음 기약분수의 역수는 $\\frac{90}{11}$이다. 여기에 $n$을 곱하여 유한소수가 되려면 분모의 소인수 11을 약분해야 하므로 가장 작은 자연수 $n=11$이다."
+    "solution": "1단계: 수진이가 본 $1.\\dot{2} = \\frac{12-1}{9} = \\frac{11}{9}$이다. 분모를 잘못 보았으므로 분자 11을 제대로 본 것이다.\n2단계: 민호가 본 $0.0\\dot{7} = \\frac{7}{90}$이다. 분자를 잘못 보았으므로 분모 90을 제대로 본 것이다. 따라서 처음 기약분수는 $\\frac{11}{90}$이다.\n3단계: 처음 기약분수의 역수는 $\\frac{90}{11}$이다. 여기에 $n$을 곱하여 유한소수가 되려면 분모의 소인수 11을 약분해야 하므로 가장 작은 자연수 $n=11$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -851,7 +1007,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "1단계: 준수가 본 $0.\\dot{2}\\dot{4} = \\frac{24}{99} = \\frac{8}{33}$에서 분자 8을 제대로 보았다.\n2단계: 지영이가 본 $0.1\\dot{3} = \\frac{13-1}{90} = \\frac{12}{90} = \\frac{2}{15}$에서 분모 15를 제대로 보았다. 따라서 처음 기약분수는 $\\frac{8}{15}$이다.\n3단계: $\\frac{8}{15} = 0.5333\\dots = 0.5\\dot{3}$이다. 소수점 아래 둘째 자리부터 숫자 3이 무한히 반복되므로 50번째 자리의 숫자는 3이다."
+    "solution": "1단계: 준수가 본 $0.\\dot{2}\\dot{4} = \\frac{24}{99} = \\frac{8}{33}$에서 분자 8을 제대로 보았다.\n2단계: 지영이가 본 $0.1\\dot{3} = \\frac{13-1}{90} = \\frac{12}{90} = \\frac{2}{15}$에서 분모 15를 제대로 보았다. 따라서 처음 기약분수는 $\\frac{8}{15}$이다.\n3단계: $\\frac{8}{15} = 0.5333\\dots = 0.5\\dot{3}$이다. 소수점 아래 둘째 자리부터 숫자 3이 무한히 반복되므로 50번째 자리의 숫자는 3이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -864,12 +1024,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "기약분수를 순환소수로 나타내는데 A는 분모를 잘못 보아 $0.1\\dot{6}$으로 나타냈고, B는 분자를 잘못 보아 $0.\\dot{4}\\dot{5}$로 나타냈다. 처음 기약분수를 소수로 나타낼 때, 소수점 아래 $100$번째 자리의 숫자를 구하시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "9",
-    "solution": "1단계: A가 본 $0.1\\dot{6} = \\frac{16-1}{90} = \\frac{15}{90} = \\frac{1}{6}$에서 분자 1을 제대로 보았다.\n2단계: B가 본 $0.\\dot{4}\\dot{5} = \\frac{45}{99} = \\frac{5}{11}$에서 분모 11을 제대로 보았다. 따라서 처음 기약분수는 $\\frac{1}{11}$이다.\n3단계: $\\frac{1}{11} = 0.090909\\dots = 0.\\dot{0}\\dot{9}$이다. 순환마디는 (0, 9)로 2개이며, 짝수 번째 자리 숫자는 항상 9이다. 따라서 100번째 자리 숫자는 9이다."
+    "solution": "1단계: A가 본 $0.1\\dot{6} = \\frac{16-1}{90} = \\frac{15}{90} = \\frac{1}{6}$에서 분자 1을 제대로 보았다.\n2단계: B가 본 $0.\\dot{4}\\dot{5} = \\frac{45}{99} = \\frac{5}{11}$에서 분모 11을 제대로 보았다. 따라서 처음 기약분수는 $\\frac{1}{11}$이다.\n3단계: $\\frac{1}{11} = 0.090909\\dots = 0.\\dot{0}\\dot{9}$이다. 순환마디는 (0, 9)로 2개이며, 짝수 번째 자리 숫자는 항상 9이다. 따라서 100번째 자리 숫자는 9이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -893,9 +1059,13 @@ window.questionBank = [
       "8"
     ],
     "answer": "②",
-    "solution": "1단계: $A = \\frac{14}{9}$, $B = \\frac{x}{9}$이므로 $A+B = \\frac{14+x}{9}$이다.\n2단계: 이 결과가 자연수가 되려면 $14+x$가 9의 배수여야 한다.\n3단계: $x$는 한 자리 자연수이므로 $14+x=18$을 만족하는 $x=4$가 유일하다."
+    "solution": "1단계: $A = \\frac{14}{9}$, $B = \\frac{x}{9}$이므로 $A+B = \\frac{14+x}{9}$이다.\n2단계: 이 결과가 자연수가 되려면 $14+x$가 9의 배수여야 한다.\n3단계: $x$는 한 자리 자연수이므로 $14+x=18$을 만족하는 $x=4$가 유일하다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
-    {
+  {
     "id": 41,
     "level": "상",
     "category": "유리수와 순환소수",
@@ -917,7 +1087,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "1단계: $\\frac{36}{99} + \\frac{10a+b}{99} = \\frac{88}{99}$이므로 $10a+b = 52$이다.\n2단계: $a, b$가 한 자리 자연수이므로 $a=5, b=2$이다.\n3단계: 따라서 $a+b = 5+2=7$이다."
+    "solution": "1단계: $\\frac{36}{99} + \\frac{10a+b}{99} = \\frac{88}{99}$이므로 $10a+b = 52$이다.\n2단계: $a, b$가 한 자리 자연수이므로 $a=5, b=2$이다.\n3단계: 따라서 $a+b = 5+2=7$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -930,12 +1104,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "두 순환소수 $1.\\dot{7}$과 $0.\\dot{x}$의 차($1.\\dot{7} - 0.\\dot{x}$)가 유한소수가 되도록 하는 가장 큰 한 자리 자연수 $x$의 값을 구하시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "7",
-    "solution": "1단계: 차를 구하면 $\\frac{16-x}{9}$이다.\n2단계: 분모가 9이므로 이 결과가 유한소수가 되려면 분자 $16-x$가 9의 배수가 되어야 한다.\n3단계: $16-x=9$에서 $x=7$이다. (다른 한 자리 자연수 중 9의 배수를 만드는 $x$는 없음)"
+    "solution": "1단계: 차를 구하면 $\\frac{16-x}{9}$이다.\n2단계: 분모가 9이므로 이 결과가 유한소수가 되려면 분자 $16-x$가 9의 배수가 되어야 한다.\n3단계: $16-x=9$에서 $x=7$이다. (다른 한 자리 자연수 중 9의 배수를 만드는 $x$는 없음)",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -959,7 +1139,11 @@ window.questionBank = [
       "$2.\\dot{1}\\dot{5} > 2.151$"
     ],
     "answer": "②, ⑤",
-    "solution": "1단계: ① $0.\\dot{5} = \\frac{5}{9}$이므로 대소 관계가 틀리다.\n2단계: ② $1.2\\dot{3} = 1.2333\\dots$이고 $1.233 = 1.2330$이므로 $1.2\\dot{3}$이 더 크다. (옳음)\n3단계: ③ $0.58\\dot{3} = \\frac{583-58}{900} = \\frac{525}{900} = \\frac{7}{12}$이므로 두 수는 같다. (틀림)\n4단계: ④ $0.4\\dot{2}\\dot{1} = 0.42121\\dots$이고 $0.42\\dot{1} = 0.42111\\dots$이므로 $0.4\\dot{2}\\dot{1}$이 더 크다. (틀림)\n5단계: ⑤ $2.\\dot{1}\\dot{5} = 2.1515\\dots$이고 $2.151 = 2.1510$이므로 $2.\\dot{1}\\dot{5}$가 더 크다. (옳음)"
+    "solution": "1단계: ① $0.\\dot{5} = \\frac{5}{9}$이므로 대소 관계가 틀리다.\n2단계: ② $1.2\\dot{3} = 1.2333\\dots$이고 $1.233 = 1.2330$이므로 $1.2\\dot{3}$이 더 크다. (옳음)\n3단계: ③ $0.58\\dot{3} = \\frac{583-58}{900} = \\frac{525}{900} = \\frac{7}{12}$이므로 두 수는 같다. (틀림)\n4단계: ④ $0.4\\dot{2}\\dot{1} = 0.42121\\dots$이고 $0.42\\dot{1} = 0.42111\\dots$이므로 $0.4\\dot{2}\\dot{1}$이 더 크다. (틀림)\n5단계: ⑤ $2.\\dot{1}\\dot{5} = 2.1515\\dots$이고 $2.151 = 2.1510$이므로 $2.\\dot{1}\\dot{5}$가 더 크다. (옳음)",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -983,7 +1167,11 @@ window.questionBank = [
       "$A < B < C$"
     ],
     "answer": "②",
-    "solution": "1단계: $A = 0.3\\dot{2} = 0.3222\\dots$이다.\n2단계: $B = \\frac{29}{90}$를 소수로 나타내면 $29 \\div 90 = 0.3222\\dots$이므로 $A=B$이다.\n3단계: $C = 0.322 = 0.3220$이다. 소수 넷째 자리 숫자를 비교하면 $A, B$는 2이고 $C$는 0이므로 $C$가 가장 작다. 따라서 $C < A = B$이다."
+    "solution": "1단계: $A = 0.3\\dot{2} = 0.3222\\dots$이다.\n2단계: $B = \\frac{29}{90}$를 소수로 나타내면 $29 \\div 90 = 0.3222\\dots$이므로 $A=B$이다.\n3단계: $C = 0.322 = 0.3220$이다. 소수 넷째 자리 숫자를 비교하면 $A, B$는 2이고 $C$는 0이므로 $C$가 가장 작다. 따라서 $C < A = B$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -996,12 +1184,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "$0.5\\dot{4}$와 $\\frac{x}{45}$의 대소 관계가 $0.5\\dot{4} < \\frac{x}{45}$를 만족하도록 하는 가장 작은 자연수 $x$의 값을 구하시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "25",
-    "solution": "1단계: $0.5\\dot{4} = \\frac{54-5}{90} = \\frac{49}{90}$이다.\n2단계: 부등식 $\\frac{49}{90} < \\frac{x}{45}$를 세우고 분모를 90으로 통일하면 $\\frac{49}{90} < \\frac{2x}{90}$가 된다.\n3단계: 분자끼리 비교하면 $49 < 2x$, 즉 $x > 24.5$이므로 자연수 $x$의 최솟값은 25이다."
+    "solution": "1단계: $0.5\\dot{4} = \\frac{54-5}{90} = \\frac{49}{90}$이다.\n2단계: 부등식 $\\frac{49}{90} < \\frac{x}{45}$를 세우고 분모를 90으로 통일하면 $\\frac{49}{90} < \\frac{2x}{90}$가 된다.\n3단계: 분자끼리 비교하면 $49 < 2x$, 즉 $x > 24.5$이므로 자연수 $x$의 최솟값은 25이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1025,7 +1219,11 @@ window.questionBank = [
       "기약분수의 분모에 2 또는 5 이외의 소인수가 있으면 유한소수이다."
     ],
     "answer": "②, ④",
-    "solution": "1단계: ① 순환하지 않는 무한소수(무리수)가 존재하므로 거짓이다.\n2단계: ② 기약분수(유리수) 중 유한소수가 아닌 것은 반드시 순환소수가 된다. (참)\n3단계: ③ 분모에 2나 5 이외의 소인수가 있는 유리수는 무한소수(순환소수)가 된다. (거짓)\n4단계: ④ 순환하지 않는 무한소수는 유리수가 아닌 무리수이다. (참)\n5단계: ⑤ 분모에 2나 5 이외의 소인수가 있으면 무한소수(순환소수)이다. (거짓)"
+    "solution": "1단계: ① 순환하지 않는 무한소수(무리수)가 존재하므로 거짓이다.\n2단계: ② 기약분수(유리수) 중 유한소수가 아닌 것은 반드시 순환소수가 된다. (참)\n3단계: ③ 분모에 2나 5 이외의 소인수가 있는 유리수는 무한소수(순환소수)가 된다. (거짓)\n4단계: ④ 순환하지 않는 무한소수는 유리수가 아닌 무리수이다. (참)\n5단계: ⑤ 분모에 2나 5 이외의 소인수가 있으면 무한소수(순환소수)이다. (거짓)",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 47,
@@ -1049,7 +1247,11 @@ window.questionBank = [
       "순환하지 않는 무한소수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\n eq 0$) 꼴로 나타낼 수 없다."
     ],
     "answer": "④",
-    "solution": "1단계: ① 정수가 아닌 유리수는 유한소수 아니면 순환소수이다. (옳음)\n2단계: ② 유한소수의 정의와 판정법에 부합한다. (옳음)\n3단계: ③ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. (옳음)\n4단계: ④ 유리수 중에는 $\\frac{1}{3}$과 같이 무한소수(순환소수)가 되는 것이 존재한다. (옳지 않음)\n5단계: ⑤ 순환하지 않는 무한소수는 무리수이며 분수 꼴로 나타낼 수 없다. (옳음)"
+    "solution": "1단계: ① 정수가 아닌 유리수는 유한소수 아니면 순환소수이다. (옳음)\n2단계: ② 유한소수의 정의와 판정법에 부합한다. (옳음)\n3단계: ③ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. (옳음)\n4단계: ④ 유리수 중에는 $\\frac{1}{3}$과 같이 무한소수(순환소수)가 되는 것이 존재한다. (옳지 않음)\n5단계: ⑤ 순환하지 않는 무한소수는 무리수이며 분수 꼴로 나타낼 수 없다. (옳음)",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 48,
@@ -1062,12 +1264,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "다음 문장 중 옳은 것을 모두 골라 기호를 쓰시오. (풀이 과정을 쓰시오.)\\n(가) 모든 순환소수는 무한소수이다.\\n(나) 무한소수는 모두 유리수가 아니다.\\n(다) 기약분수의 분모에 3이 있으면 항상 유한소수가 될 수 없다.\\n(라) 모든 소수는 유한소수 또는 순환소수로 분류된다.",
     "choices": [],
     "answer": "(가), (다)",
-    "solution": "1단계: (가) 순환소수는 소수점 아래 숫자가 무한히 반복되므로 무한소수에 포함된다. (참)\n2단계: (나) 무한소수 중 순환소수는 분수 꼴로 나타낼 수 있는 유리수이다. (거짓)\n3단계: (다) 기약분수 분모에 소인수 3이 있으면 분모의 소인수가 2 또는 5뿐이어야 한다는 유한소수 조건을 만족할 수 없다. (참)\n4단계: (라) 소수는 유한소수와 무한소수로 분류되며, 무한소수 안에는 순환소수와 순환하지 않는 무한소수가 있다. (거짓)"
+    "solution": "1단계: (가) 순환소수는 소수점 아래 숫자가 무한히 반복되므로 무한소수에 포함된다. (참)\n2단계: (나) 무한소수 중 순환소수는 분수 꼴로 나타낼 수 있는 유리수이다. (거짓)\n3단계: (다) 기약분수 분모에 소인수 3이 있으면 분모의 소인수가 2 또는 5뿐이어야 한다는 유한소수 조건을 만족할 수 없다. (참)\n4단계: (라) 소수는 유한소수와 무한소수로 분류되며, 무한소수 안에는 순환소수와 순환하지 않는 무한소수가 있다. (거짓)",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 49,
@@ -1091,7 +1299,11 @@ window.questionBank = [
       "14개"
     ],
     "answer": "①",
-    "solution": "1단계: 두 분수를 분모 60으로 통분하면 $\\frac{15}{60}$와 $\\frac{48}{60}$이다.\n2단계: 분모 $60 = 2^2 \\times 3 \\times 5$이므로, 유한소수가 되려면 분자가 3의 배수여야 한다.\n3단계: $15 < 3k < 48$을 만족하는 자연수 $k$를 구하면 $5 < k < 16$이므로 $k \\in \\{6, 7, \\dots, 15\\}$이다.\n4단계: 따라서 개수는 $15 - 6 + 1 = 10$개이다."
+    "solution": "1단계: 두 분수를 분모 60으로 통분하면 $\\frac{15}{60}$와 $\\frac{48}{60}$이다.\n2단계: 분모 $60 = 2^2 \\times 3 \\times 5$이므로, 유한소수가 되려면 분자가 3의 배수여야 한다.\n3단계: $15 < 3k < 48$을 만족하는 자연수 $k$를 구하면 $5 < k < 16$이므로 $k \\in \\{6, 7, \\dots, 15\\}$이다.\n4단계: 따라서 개수는 $15 - 6 + 1 = 10$개이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1115,7 +1327,11 @@ window.questionBank = [
       "20"
     ],
     "answer": "③",
-    "solution": "1단계: 각 보기 중 $x=15$일 때를 검증한다. $\\frac{1}{3} < \\frac{a}{15} < \\frac{5}{6}$에서 분모를 30으로 통분하면 $\\frac{10}{30} < \\frac{2a}{30} < \\frac{25}{30}$이므로 $10 < 2a < 25$, 즉 $5 < a < 12.5$이다.\n2단계: $a \\in \\{6, 7, 8, 9, 10, 11, 12\\}$이다. 분모 $15 = 3 \\times 5$이므로 유한소수가 되려면 $a$는 3의 배수여야 한다.\n3단계: $a$ 중 3의 배수는 $6, 9, 12$로 정확히 3개이다. 따라서 $x=15$가 조건을 만족한다."
+    "solution": "1단계: 각 보기 중 $x=15$일 때를 검증한다. $\\frac{1}{3} < \\frac{a}{15} < \\frac{5}{6}$에서 분모를 30으로 통분하면 $\\frac{10}{30} < \\frac{2a}{30} < \\frac{25}{30}$이므로 $10 < 2a < 25$, 즉 $5 < a < 12.5$이다.\n2단계: $a \\in \\{6, 7, 8, 9, 10, 11, 12\\}$이다. 분모 $15 = 3 \\times 5$이므로 유한소수가 되려면 $a$는 3의 배수여야 한다.\n3단계: $a$ 중 3의 배수는 $6, 9, 12$로 정확히 3개이다. 따라서 $x=15$가 조건을 만족한다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1128,12 +1344,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "두 분수 $\\frac{3}{7}$과 $\\frac{6}{7}$ 사이에 있는 분모가 $35$인 분수 중에서 유한소수로 나타낼 수 없는 분수의 개수를 구하시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "12",
-    "solution": "1단계: 두 분수를 분모 35로 통분하면 $\\frac{15}{35}$와 $\\frac{30}{35}$이다.\n2단계: 사이에 있는 분수는 $\\frac{16}{35}, \\dots, \\frac{29}{35}$로 총 14개이다.\n3단계: 분모 $35 = 5 \\times 7$이므로 유한소수가 되려면 분자가 7의 배수여야 한다. 범위 내 7의 배수는 21, 28의 2개이다.\n4단계: 따라서 순환소수(유한소수가 아닌 것)의 개수는 $14 - 2 = 12$개이다."
+    "solution": "1단계: 두 분수를 분모 35로 통분하면 $\\frac{15}{35}$와 $\\frac{30}{35}$이다.\n2단계: 사이에 있는 분수는 $\\frac{16}{35}, \\dots, \\frac{29}{35}$로 총 14개이다.\n3단계: 분모 $35 = 5 \\times 7$이므로 유한소수가 되려면 분자가 7의 배수여야 한다. 범위 내 7의 배수는 21, 28의 2개이다.\n4단계: 따라서 순환소수(유한소수가 아닌 것)의 개수는 $14 - 2 = 12$개이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 52,
@@ -1157,7 +1379,11 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "1단계: 식을 변환하면 $\\frac{11a+11b}{99} = \\frac{8}{9}$이다.\n2단계: 약분하면 $\\frac{a+b}{9} = \\frac{8}{9}$이다.\n3단계: 따라서 $a+b=8$이다."
+    "solution": "1단계: 식을 변환하면 $\\frac{11a+11b}{99} = \\frac{8}{9}$이다.\n2단계: 약분하면 $\\frac{a+b}{9} = \\frac{8}{9}$이다.\n3단계: 따라서 $a+b=8$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1181,7 +1407,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "1단계: $\\frac{9a+b}{90} + \\frac{9b+a}{90} = \\frac{7}{9}$를 정리하면 $\\frac{10a+10b}{90} = \\frac{a+b}{9} = \\frac{7}{9}$이다.\n2단계: 따라서 $a+b=7$이다. 한 자리 자연수 중 소수인 $a, b$의 쌍은 $(5, 2)$뿐이다. ($a>b$ 조건 충족)\n3단계: 따라서 $a-b = 5-2 = 3$이다."
+    "solution": "1단계: $\\frac{9a+b}{90} + \\frac{9b+a}{90} = \\frac{7}{9}$를 정리하면 $\\frac{10a+10b}{90} = \\frac{a+b}{9} = \\frac{7}{9}$이다.\n2단계: 따라서 $a+b=7$이다. 한 자리 자연수 중 소수인 $a, b$의 쌍은 $(5, 2)$뿐이다. ($a>b$ 조건 충족)\n3단계: 따라서 $a-b = 5-2 = 3$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1194,12 +1424,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "두 한 자리 자연수 $a, b$에 대하여 $a < b$이고 $0.\\dot{a}\\dot{b} + 0.\\dot{b}\\dot{a} = 1.\\dot{2}$를 만족할 때, 이를 만족하는 모든 순서쌍 $(a, b)$를 구하시오. (풀이 과정을 쓰시오.)",
     "choices": [],
     "answer": "(2, 9), (3, 8), (4, 7), (5, 6)",
-    "solution": "1단계: $\\frac{11(a+b)}{99} = \\frac{11}{9}$에서 $\\frac{a+b}{9} = \\frac{11}{9}$이므로 $a+b=11$이다.\n2단계: $a < b$인 한 자리 자연수 순서쌍을 찾는다.\n3단계: $(2, 9), (3, 8), (4, 7), (5, 6)$이다."
+    "solution": "1단계: $\\frac{11(a+b)}{99} = \\frac{11}{9}$에서 $\\frac{a+b}{9} = \\frac{11}{9}$이므로 $a+b=11$이다.\n2단계: $a < b$인 한 자리 자연수 순서쌍을 찾는다.\n3단계: $(2, 9), (3, 8), (4, 7), (5, 6)$이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1223,7 +1459,11 @@ window.questionBank = [
       "$\\frac{4}{15}$"
     ],
     "answer": "⑤",
-    "solution": "각 분수를 소수로 나타내어 순환마디를 확인하면 다음과 같다.\\n① $\\frac{7}{3} = 2.333\\dots = 2.\\dot{3}$ (순환마디: $3$)\\n② $\\frac{11}{6} = 1.8333\\dots = 1.8\\dot{3}$ (순환마디: $3$)\\n③ $\\frac{13}{12} = 1.08333\\dots = 1.08\\dot{3}$ (순환마디: $3$)\\n④ $\\frac{19}{30} = 0.6333\\dots = 0.6\\dot{3}$ (순환마디: $3$)\\n⑤ $\\frac{4}{15} = 0.2666\\dots = 0.2\\dot{6}$ (순환마디: $6$)\\n따라서 순환마디가 나머지 넷과 다른 하나는 ⑤이다.\\n$\\therefore$ ⑤"
+    "solution": "각 분수를 소수로 나타내어 순환마디를 확인하면 다음과 같다.\\n① $\\frac{7}{3} = 2.333\\dots = 2.\\dot{3}$ (순환마디: $3$)\\n② $\\frac{11}{6} = 1.8333\\dots = 1.8\\dot{3}$ (순환마디: $3$)\\n③ $\\frac{13}{12} = 1.08333\\dots = 1.08\\dot{3}$ (순환마디: $3$)\\n④ $\\frac{19}{30} = 0.6333\\dots = 0.6\\dot{3}$ (순환마디: $3$)\\n⑤ $\\frac{4}{15} = 0.2666\\dots = 0.2\\dot{6}$ (순환마디: $6$)\\n따라서 순환마디가 나머지 넷과 다른 하나는 ⑤이다.\\n$\\therefore$ ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 56,
@@ -1241,7 +1481,11 @@ window.questionBank = [
     "content": "순환소수 $2.1\\dot{4}5\\dot{6}$의 소수점 아래 $100$번째 자리의 숫자를 구하시오.",
     "choices": [],
     "answer": "6",
-    "solution": "순환소수 $2.1\\dot{4}5\\dot{6}$에서 순환마디는 $4, 5, 6$이고 그 길이는 $3$이다.\\n소수점 아래 첫째 자리 숫자는 $1$로 순환하지 않는다.\\n따라서 소수점 아래 $100$번째 자리의 숫자는 순환마디의 $(100-1)=99$번째 숫자와 같다.\\n$99 = 3 \\times 33 + 0$이므로 순환마디의 $3$번째 숫자인 $6$이다.\\n$\\therefore 6$"
+    "solution": "순환소수 $2.1\\dot{4}5\\dot{6}$에서 순환마디는 $4, 5, 6$이고 그 길이는 $3$이다.\\n소수점 아래 첫째 자리 숫자는 $1$로 순환하지 않는다.\\n따라서 소수점 아래 $100$번째 자리의 숫자는 순환마디의 $(100-1)=99$번째 숫자와 같다.\\n$99 = 3 \\times 33 + 0$이므로 순환마디의 $3$번째 숫자인 $6$이다.\\n$\\therefore 6$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 57,
@@ -1259,7 +1503,11 @@ window.questionBank = [
     "content": "분수 $\\frac{9}{200}$를 $\\frac{a}{10^n}$의 꼴로 고쳐서 유한소수로 나타낼 때, 자연수 $a, n$에 대하여 $a+n$의 값 중 가장 작은 것을 구하시오.",
     "choices": [],
     "answer": "48",
-    "solution": "$\\frac{9}{200}$를 소인수분해하면 $\\frac{9}{2^3 \\times 5^2}$이다.\\n분모를 $10$의 거듭제곱 꼴로 만들기 위해 분모와 분자에 $5$를 곱하면\\n$\\frac{9 \\times 5}{2^3 \\times 5^2 \\times 5} = \\frac{45}{2^3 \\times 5^3} = \\frac{45}{10^3}$\\n따라서 이를 만족하는 가장 작은 자연수 $a, n$은 $a=45, n=3$이다.\\n$\\therefore a+n = 45+3 = 48$"
+    "solution": "$\\frac{9}{200}$를 소인수분해하면 $\\frac{9}{2^3 \\times 5^2}$이다.\\n분모를 $10$의 거듭제곱 꼴로 만들기 위해 분모와 분자에 $5$를 곱하면\\n$\\frac{9 \\times 5}{2^3 \\times 5^2 \\times 5} = \\frac{45}{2^3 \\times 5^3} = \\frac{45}{10^3}$\\n따라서 이를 만족하는 가장 작은 자연수 $a, n$은 $a=45, n=3$이다.\\n$\\therefore a+n = 45+3 = 48$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 58,
@@ -1283,7 +1531,11 @@ window.questionBank = [
       "ㄷ, ㄹ, ㅁ"
     ],
     "answer": "③",
-    "solution": "ㄱ. $\\frac{21}{14} = \\frac{3}{2}$ (분모의 소인수가 $2$뿐이므로 유한소수)\\nㄴ. $\\frac{8}{60} = \\frac{2}{15} = \\frac{2}{3 \\times 5}$ (분모에 $3$이 있으므로 무한소수)\\nㄷ. $\\frac{33}{150} = \\frac{11}{50} = \\frac{11}{2 \\times 5^2}$ (분모의 소인수가 $2, 5$뿐이므로 유한소수)\\nㄹ. $\\frac{7}{2^2 \\times 7^2} = \\frac{1}{2^2 \\times 7}$ (분모에 $7$이 있으므로 무한소수)\\nㅁ. $\\frac{26}{2 \\times 5^2 \\times 13} = \\frac{26}{26 \\times 5^2} = \\frac{1}{5^2}$ (분모의 소인수가 $5$뿐이므로 유한소수)\\n따라서 유한소수로 나타낼 수 있는 것은 ㄱ, ㄷ, ㅁ이다.\\n$\\therefore$ ③"
+    "solution": "ㄱ. $\\frac{21}{14} = \\frac{3}{2}$ (분모의 소인수가 $2$뿐이므로 유한소수)\\nㄴ. $\\frac{8}{60} = \\frac{2}{15} = \\frac{2}{3 \\times 5}$ (분모에 $3$이 있으므로 무한소수)\\nㄷ. $\\frac{33}{150} = \\frac{11}{50} = \\frac{11}{2 \\times 5^2}$ (분모의 소인수가 $2, 5$뿐이므로 유한소수)\\nㄹ. $\\frac{7}{2^2 \\times 7^2} = \\frac{1}{2^2 \\times 7}$ (분모에 $7$이 있으므로 무한소수)\\nㅁ. $\\frac{26}{2 \\times 5^2 \\times 13} = \\frac{26}{26 \\times 5^2} = \\frac{1}{5^2}$ (분모의 소인수가 $5$뿐이므로 유한소수)\\n따라서 유한소수로 나타낼 수 있는 것은 ㄱ, ㄷ, ㅁ이다.\\n$\\therefore$ ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 59,
@@ -1301,7 +1553,11 @@ window.questionBank = [
     "content": "분수 $\\frac{x}{112}$를 소수로 나타내면 유한소수가 될 때, $x$의 값이 될 수 있는 가장 작은 자연수를 구하시오.",
     "choices": [],
     "answer": "7",
-    "solution": "분수 $\\frac{x}{112}$를 소인수분해하면 $\\frac{x}{2^4 \\times 7}$이다.\\n이 분수가 유한소수가 되려면 기약분수로 나타냈을 때 분모의 소인수가 $2$나 $5$뿐이어야 한다.\\n따라서 $x$는 분모의 $7$을 약분하여 없앨 수 있는 $7$의 배수여야 한다.\\n이를 만족하는 가장 작은 자연수 $x$는 $7$이다.\\n$\\therefore 7$"
+    "solution": "분수 $\\frac{x}{112}$를 소인수분해하면 $\\frac{x}{2^4 \\times 7}$이다.\\n이 분수가 유한소수가 되려면 기약분수로 나타냈을 때 분모의 소인수가 $2$나 $5$뿐이어야 한다.\\n따라서 $x$는 분모의 $7$을 약분하여 없앨 수 있는 $7$의 배수여야 한다.\\n이를 만족하는 가장 작은 자연수 $x$는 $7$이다.\\n$\\therefore 7$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 60,
@@ -1325,9 +1581,13 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "두 분수 $\\frac{2}{9}$와 $\\frac{5}{8}$를 분모가 $72$인 분수로 통분하면\\n$\\frac{2}{9} = \\frac{16}{72}$, $\\frac{5}{8} = \\frac{45}{72}$\\n분모가 $72$인 분수를 $\\frac{a}{72}$ ($a$는 자연수)라 하면\\n$\\frac{16}{72} \\lt \\frac{a}{72} \\lt \\frac{45}{72}$에서 $16 \\lt a \\lt 45$\\n$\\frac{a}{72} = \\frac{a}{2^3 \\times 3^2}$가 유한소수가 되려면 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 하므로 $a$는 $3^2=9$의 배수여야 한다.\\n따라서 $16 \\lt a \\lt 45$인 $9$의 배수 $a$는 $18, 27, 36$의 $3$개이다.\\n$\\therefore$ ③"
+    "solution": "두 분수 $\\frac{2}{9}$와 $\\frac{5}{8}$를 분모가 $72$인 분수로 통분하면\\n$\\frac{2}{9} = \\frac{16}{72}$, $\\frac{5}{8} = \\frac{45}{72}$\\n분모가 $72$인 분수를 $\\frac{a}{72}$ ($a$는 자연수)라 하면\\n$\\frac{16}{72} \\lt \\frac{a}{72} \\lt \\frac{45}{72}$에서 $16 \\lt a \\lt 45$\\n$\\frac{a}{72} = \\frac{a}{2^3 \\times 3^2}$가 유한소수가 되려면 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 하므로 $a$는 $3^2=9$의 배수여야 한다.\\n따라서 $16 \\lt a \\lt 45$인 $9$의 배수 $a$는 $18, 27, 36$의 $3$개이다.\\n$\\therefore$ ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
-    {
+  {
     "id": 61,
     "level": "상",
     "category": "유리수와 순환소수",
@@ -1338,12 +1598,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "두 분수 $\\frac{1}{5}$과 $\\frac{3}{4}$ 사이에 있는 분모가 $20$인 분수 중에서 유한소수로 나타낼 수 있는 모든 분수의 합을 구하시오.\\n(단, 분자는 자연수이다.)",
     "choices": [],
     "answer": "19/4",
-    "solution": "두 분수 $\\frac{1}{5}$과 $\\frac{3}{4}$를 분모가 $20$인 분수로 통분하면\\n$\\frac{1}{5} = \\frac{4}{20}$, $\\frac{3}{4} = \\frac{15}{20}$\\n분모가 $20$인 분수를 $\\frac{a}{20}$ ($a$는 자연수)라 하면\\n$\\frac{4}{20} \\lt \\frac{a}{20} \\lt \\frac{15}{20}$에서 $4 \\lt a \\lt 15$\\n$\\frac{a}{20} = \\frac{a}{2^2 \\times 5}$이므로 분자 $a$의 값에 관계없이 항상 유한소수가 된다.\\n따라서 구하는 모든 분수의 합은\\n$\\frac{5}{20} + \\frac{6}{20} + \\dots + \\frac{14}{20} = \\frac{5+6+7+8+9+10+11+12+13+14}{20}$\\n$= \\frac{95}{20} = \\frac{19}{4}$\\n$\\therefore \\frac{19}{4}$"
+    "solution": "두 분수 $\\frac{1}{5}$과 $\\frac{3}{4}$를 분모가 $20$인 분수로 통분하면\\n$\\frac{1}{5} = \\frac{4}{20}$, $\\frac{3}{4} = \\frac{15}{20}$\\n분모가 $20$인 분수를 $\\frac{a}{20}$ ($a$는 자연수)라 하면\\n$\\frac{4}{20} \\lt \\frac{a}{20} \\lt \\frac{15}{20}$에서 $4 \\lt a \\lt 15$\\n$\\frac{a}{20} = \\frac{a}{2^2 \\times 5}$이므로 분자 $a$의 값에 관계없이 항상 유한소수가 된다.\\n따라서 구하는 모든 분수의 합은\\n$\\frac{5}{20} + \\frac{6}{20} + \\dots + \\frac{14}{20} = \\frac{5+6+7+8+9+10+11+12+13+14}{20}$\\n$= \\frac{95}{20} = \\frac{19}{4}$\\n$\\therefore \\frac{19}{4}$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 62,
@@ -1356,12 +1622,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "두 분수 $\\frac{1}{9}$과 $\\frac{5}{6}$ 사이에 있는 분수 중에서 다음 조건을 만족시키는 분수의 개수를 구하시오.\\n(가) 분모는 $18$이고 분자는 자연수이다.\\n(나) 유한소수로 나타낼 수 있다.",
     "choices": [],
     "answer": "1",
-    "solution": "두 분수 $\\frac{1}{9}$과 $\\frac{5}{6}$를 분모가 $18$인 분수로 통분하면\\n$\\frac{1}{9} = \\frac{2}{18}$, $\\frac{5}{6} = \\frac{15}{18}$\\n분모가 $18$인 분수를 $\\frac{a}{18}$ ($a$는 자연수)라 하면\\n$\\frac{2}{18} \\lt \\frac{a}{18} \\lt \\frac{15}{18}$에서 $2 \\lt a \\lt 15$\\n$\\frac{a}{18} = \\frac{a}{2 \\times 3^2}$가 유한소수가 되려면 $a$는 $3^2=9$의 배수여야 한다.\\n$2 \\lt a \\lt 15$인 $9$의 배수 $a$는 $9$의 $1$개이다.\\n$\\therefore 1$"
+    "solution": "두 분수 $\\frac{1}{9}$과 $\\frac{5}{6}$를 분모가 $18$인 분수로 통분하면\\n$\\frac{1}{9} = \\frac{2}{18}$, $\\frac{5}{6} = \\frac{15}{18}$\\n분모가 $18$인 분수를 $\\frac{a}{18}$ ($a$는 자연수)라 하면\\n$\\frac{2}{18} \\lt \\frac{a}{18} \\lt \\frac{15}{18}$에서 $2 \\lt a \\lt 15$\\n$\\frac{a}{18} = \\frac{a}{2 \\times 3^2}$가 유한소수가 되려면 $a$는 $3^2=9$의 배수여야 한다.\\n$2 \\lt a \\lt 15$인 $9$의 배수 $a$는 $9$의 $1$개이다.\\n$\\therefore 1$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 63,
@@ -1385,7 +1657,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "$0.\\dot{a} + 0.\\dot{b} = 1.\\dot{1}$에서\\n$\\frac{a}{9} + \\frac{b}{9} = \\frac{10}{9}$\\n$\\frac{a+b}{9} = \\frac{10}{9}$이므로 $a+b=10$\\n이때 $a, b$는 한 자리 자연수이고 $a \\gt b$이므로 가능한 $(a, b)$는\\n$(9, 1), (8, 2), (7, 3), (6, 4)$이다.\\n선택지 중에서 가능한 $a-b$의 값은 $8, 6, 4, 2$ 중 하나인 $4$이다.\\n$\\therefore$ ③"
+    "solution": "$0.\\dot{a} + 0.\\dot{b} = 1.\\dot{1}$에서\\n$\\frac{a}{9} + \\frac{b}{9} = \\frac{10}{9}$\\n$\\frac{a+b}{9} = \\frac{10}{9}$이므로 $a+b=10$\\n이때 $a, b$는 한 자리 자연수이고 $a \\gt b$이므로 가능한 $(a, b)$는\\n$(9, 1), (8, 2), (7, 3), (6, 4)$이다.\\n선택지 중에서 가능한 $a-b$의 값은 $8, 6, 4, 2$ 중 하나인 $4$이다.\\n$\\therefore$ ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 64,
@@ -1403,7 +1679,11 @@ window.questionBank = [
     "content": "한 자리 자연수 $a, b$에 대하여 $a \\gt b$이고 $(0.0\\dot{a})^2 = 2.\\dot{7} \\times 0.00\\dot{b}$일 때, $a+b$의 값을 구하시오.",
     "choices": [],
     "answer": "6",
-    "solution": "$(0.0\\dot{a})^2 = 2.\\dot{7} \\times 0.00\\dot{b}$에서 각 순환소수를 분수로 나타내면\\n$(\\frac{a}{90})^2 = \\frac{27-2}{9} \\times \\frac{b}{900}$\\n$\\frac{a^2}{8100} = \\frac{25}{9} \\times \\frac{b}{900} = \\frac{25b}{8100}$\\n따라서 $a^2 = 25b$이다.\\n$a, b$는 한 자리 자연수이므로 $b=1$일 때 $a^2=25$에서 $a=5$이다.\\n$b=2, 3, \\dots$일 때 $a$는 한 자리 자연수가 될 수 없다.\\n따라서 $a=5, b=1$이고 이는 $a \\gt b$를 만족한다.\\n$\\therefore a+b = 5+1 = 6$"
+    "solution": "$(0.0\\dot{a})^2 = 2.\\dot{7} \\times 0.00\\dot{b}$에서 각 순환소수를 분수로 나타내면\\n$(\\frac{a}{90})^2 = \\frac{27-2}{9} \\times \\frac{b}{900}$\\n$\\frac{a^2}{8100} = \\frac{25}{9} \\times \\frac{b}{900} = \\frac{25b}{8100}$\\n따라서 $a^2 = 25b$이다.\\n$a, b$는 한 자리 자연수이므로 $b=1$일 때 $a^2=25$에서 $a=5$이다.\\n$b=2, 3, \\dots$일 때 $a$는 한 자리 자연수가 될 수 없다.\\n따라서 $a=5, b=1$이고 이는 $a \\gt b$를 만족한다.\\n$\\therefore a+b = 5+1 = 6$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 65,
@@ -1427,7 +1707,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "$\\frac{15}{2^2 \\times 3 \\times a}$를 약분하면 $\\frac{5}{2^2 \\times a}$이다.\\n이 분수가 유한소수가 되려면 기약분수의 분모의 소인수가 $2$ 또는 $5$뿐이어야 한다.\\n① $a=5$일 때, $\\frac{5}{2^2 \\times 5} = \\frac{1}{2^2}$ (유한소수)\\n② $a=4$일 때, $\\frac{5}{2^2 \\times 2^2} = \\frac{5}{2^4}$ (유한소수)\\n③ $a=3$일 때, $\\frac{5}{2^2 \\times 3}$ (분모에 $2, 5$ 이외의 소인수 $3$이 있으므로 순환소수)\\n④ $a=2$일 때, $\\frac{5}{2^2 \\times 2} = \\frac{5}{2^3}$ (유한소수)\\n⑤ $a=8$일 때, $\\frac{5}{2^2 \\times 2^3} = \\frac{5}{2^5}$ (유한소수)\\n따라서 $a$의 값이 될 수 없는 것은 ③이다.\\n$\\therefore$ ③"
+    "solution": "$\\frac{15}{2^2 \\times 3 \\times a}$를 약분하면 $\\frac{5}{2^2 \\times a}$이다.\\n이 분수가 유한소수가 되려면 기약분수의 분모의 소인수가 $2$ 또는 $5$뿐이어야 한다.\\n① $a=5$일 때, $\\frac{5}{2^2 \\times 5} = \\frac{1}{2^2}$ (유한소수)\\n② $a=4$일 때, $\\frac{5}{2^2 \\times 2^2} = \\frac{5}{2^4}$ (유한소수)\\n③ $a=3$일 때, $\\frac{5}{2^2 \\times 3}$ (분모에 $2, 5$ 이외의 소인수 $3$이 있으므로 순환소수)\\n④ $a=2$일 때, $\\frac{5}{2^2 \\times 2} = \\frac{5}{2^3}$ (유한소수)\\n⑤ $a=8$일 때, $\\frac{5}{2^2 \\times 2^3} = \\frac{5}{2^5}$ (유한소수)\\n따라서 $a$의 값이 될 수 없는 것은 ③이다.\\n$\\therefore$ ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 66,
@@ -1451,7 +1735,11 @@ window.questionBank = [
       "69"
     ],
     "answer": "③",
-    "solution": "$180 = 2^2 \\times 3^2 \\times 5$이므로 $\\frac{a}{180} = \\frac{a}{2^2 \\times 3^2 \\times 5}$\\n이 분수가 유한소수가 되려면 $a$는 $3^2=9$의 배수여야 한다.\\n또한 기약분수로 나타냈을 때 분자가 $11$이므로 $a$는 $11$의 배수여야 한다.\\n따라서 $a$는 $9$와 $11$의 공배수인 $99$의 배수여야 한다.\\n$a \\le 100$인 자연수이므로 $a=99$이다.\\n이때 $\\frac{99}{180} = \\frac{11}{20}$이므로 $b=20$이다.\\n$\\therefore a-b = 99-20 = 79$\\n$\\therefore$ ③"
+    "solution": "$180 = 2^2 \\times 3^2 \\times 5$이므로 $\\frac{a}{180} = \\frac{a}{2^2 \\times 3^2 \\times 5}$\\n이 분수가 유한소수가 되려면 $a$는 $3^2=9$의 배수여야 한다.\\n또한 기약분수로 나타냈을 때 분자가 $11$이므로 $a$는 $11$의 배수여야 한다.\\n따라서 $a$는 $9$와 $11$의 공배수인 $99$의 배수여야 한다.\\n$a \\le 100$인 자연수이므로 $a=99$이다.\\n이때 $\\frac{99}{180} = \\frac{11}{20}$이므로 $b=20$이다.\\n$\\therefore a-b = 99-20 = 79$\\n$\\therefore$ ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 67,
@@ -1469,7 +1757,11 @@ window.questionBank = [
     "content": "분수 $\\frac{3}{40 \\times x}$을 소수로 나타내면 순환소수가 된다. $x$가 한 자리 자연수일 때, 모든 $x$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "16",
-    "solution": "$\\frac{3}{40 \\times x} = \\frac{3}{2^3 \\times 5 \\times x}$\\n이 분수가 유한소수가 되려면 $x$의 소인수가 $2$ 또는 $5$뿐이거나, 분자의 $3$과 약분되어 사라져야 한다.\\n유한소수가 되는 한 자리 자연수 $x$는 $1, 2, 3, 4, 5, 6, 8$이다.\\n($6 = 2 \\times 3$이므로 분자의 $3$과 약분됨)\\n따라서 순환소수가 되는 $x$는 한 자리 자연수 중 유한소수가 아닌 것이므로 $7, 9$이다.\\n구하는 $x$의 값의 합은 $7+9=16$이다.\\n$\\therefore 16$"
+    "solution": "$\\frac{3}{40 \\times x} = \\frac{3}{2^3 \\times 5 \\times x}$\\n이 분수가 유한소수가 되려면 $x$의 소인수가 $2$ 또는 $5$뿐이거나, 분자의 $3$과 약분되어 사라져야 한다.\\n유한소수가 되는 한 자리 자연수 $x$는 $1, 2, 3, 4, 5, 6, 8$이다.\\n($6 = 2 \\times 3$이므로 분자의 $3$과 약분됨)\\n따라서 순환소수가 되는 $x$는 한 자리 자연수 중 유한소수가 아닌 것이므로 $7, 9$이다.\\n구하는 $x$의 값의 합은 $7+9=16$이다.\\n$\\therefore 16$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 68,
@@ -1493,7 +1785,11 @@ window.questionBank = [
       "$x = 2.\\dot{1}0\\dot{3} \\implies 1000x - x$"
     ],
     "answer": "③",
-    "solution": "순환소수를 분수로 나타낼 때 가장 편리한 식은 $(10^n x - 10^m x)$ 꼴에서 $n$은 소수점 아래 순환마디 끝까지의 자리수, $m$은 순환마디 시작 전까지의 자리수이다.\\n③ $x = 0.5\\dot{6}$에서 순환마디 끝은 소수점 아래 $2$째 자리, 시작 전은 소수점 아래 $1$째 자리이므로 $100x - 10x$가 가장 편리하다.\\n따라서 옳지 않은 것은 ③이다.\\n$\\therefore$ ③"
+    "solution": "순환소수를 분수로 나타낼 때 가장 편리한 식은 $(10^n x - 10^m x)$ 꼴에서 $n$은 소수점 아래 순환마디 끝까지의 자리수, $m$은 순환마디 시작 전까지의 자리수이다.\\n③ $x = 0.5\\dot{6}$에서 순환마디 끝은 소수점 아래 $2$째 자리, 시작 전은 소수점 아래 $1$째 자리이므로 $100x - 10x$가 가장 편리하다.\\n따라서 옳지 않은 것은 ③이다.\\n$\\therefore$ ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 69,
@@ -1511,7 +1807,11 @@ window.questionBank = [
     "content": "$\\frac{9}{10} \\times \\left( \\frac{1}{10} + \\frac{1}{100} + \\frac{1}{1000} + \\cdots \\right) = \\frac{1}{a}$일 때, $a$의 값을 구하시오.",
     "choices": [],
     "answer": "10",
-    "solution": "$\\frac{1}{10} + \\frac{1}{100} + \\frac{1}{1000} + \\cdots = 0.1 + 0.01 + 0.001 + \\cdots = 0.111\\dots = 0.\\dot{1}$\\n$0.\\dot{1}$을 분수로 나타내면 $\\frac{1}{9}$이다.\\n따라서 $\\frac{9}{10} \\times \\frac{1}{9} = \\frac{1}{10}$이므로 $\\frac{1}{10} = \\frac{1}{a}$\\n$\\therefore a = 10$\\n$\\therefore 10$"
+    "solution": "$\\frac{1}{10} + \\frac{1}{100} + \\frac{1}{1000} + \\cdots = 0.1 + 0.01 + 0.001 + \\cdots = 0.111\\dots = 0.\\dot{1}$\\n$0.\\dot{1}$을 분수로 나타내면 $\\frac{1}{9}$이다.\\n따라서 $\\frac{9}{10} \\times \\frac{1}{9} = \\frac{1}{10}$이므로 $\\frac{1}{10} = \\frac{1}{a}$\\n$\\therefore a = 10$\\n$\\therefore 10$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 70,
@@ -1535,7 +1835,11 @@ window.questionBank = [
       "7"
     ],
     "answer": "③",
-    "solution": "$0.1\\dot{3} = \\frac{13-1}{90} = \\frac{12}{90} = \\frac{2}{15}$\\n$\\frac{2}{15} \\times x$가 자연수가 되려면 $x$는 분모 $15$의 배수여야 한다.\\n두 자리 자연수 중 $15$의 배수는 $15, 30, 45, 60, 75, 90$의 $6$개이다.\\n$\\therefore 6$\\n따라서 정답은 ③이다."
+    "solution": "$0.1\\dot{3} = \\frac{13-1}{90} = \\frac{12}{90} = \\frac{2}{15}$\\n$\\frac{2}{15} \\times x$가 자연수가 되려면 $x$는 분모 $15$의 배수여야 한다.\\n두 자리 자연수 중 $15$의 배수는 $15, 30, 45, 60, 75, 90$의 $6$개이다.\\n$\\therefore 6$\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 71,
@@ -1559,7 +1863,11 @@ window.questionBank = [
       "$0.\\dot{0}001$"
     ],
     "answer": "④",
-    "solution": "$0.\\dot{3}00\\dot{5} = \\frac{3005}{9999} = 3005 \\times \\frac{1}{9999}$\\n이때 $\\frac{1}{9999} = 0.00010001\\dots = 0.\\dot{0}00\\dot{1}$이므로\\n$A = 0.\\dot{0}00\\dot{1}$\\n$\\therefore 0.\\dot{0}00\\dot{1}$"
+    "solution": "$0.\\dot{3}00\\dot{5} = \\frac{3005}{9999} = 3005 \\times \\frac{1}{9999}$\\n이때 $\\frac{1}{9999} = 0.00010001\\dots = 0.\\dot{0}00\\dot{1}$이므로\\n$A = 0.\\dot{0}00\\dot{1}$\\n$\\therefore 0.\\dot{0}00\\dot{1}$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 72,
@@ -1577,7 +1885,11 @@ window.questionBank = [
     "content": "서로소인 두 자연수 $m, n$에 대하여 $1.0\\dot{6} \\times \\frac{n}{m} = 0.0\\dot{8}$일 때, $m+n$의 값을 구하시오.",
     "choices": [],
     "answer": "13",
-    "solution": "$1.0\\dot{6} = \\frac{106-10}{90} = \\frac{96}{90} = \\frac{16}{15}$\\n$0.0\\dot{8} = \\frac{8}{90} = \\frac{4}{45}$\\n주어진 식에 대입하면 $\\frac{16}{15} \\times \\frac{n}{m} = \\frac{4}{45}$\\n$\\frac{n}{m} = \\frac{4}{45} \\times \\frac{15}{16} = \\frac{1}{3} \\times \\frac{1}{4} = \\frac{1}{12}$\\n$m, n$은 서로소인 자연수이므로 $n=1, m=12$이다.\\n$\\therefore m+n = 12+1 = 13$"
+    "solution": "$1.0\\dot{6} = \\frac{106-10}{90} = \\frac{96}{90} = \\frac{16}{15}$\\n$0.0\\dot{8} = \\frac{8}{90} = \\frac{4}{45}$\\n주어진 식에 대입하면 $\\frac{16}{15} \\times \\frac{n}{m} = \\frac{4}{45}$\\n$\\frac{n}{m} = \\frac{4}{45} \\times \\frac{15}{16} = \\frac{1}{3} \\times \\frac{1}{4} = \\frac{1}{12}$\\n$m, n$은 서로소인 자연수이므로 $n=1, m=12$이다.\\n$\\therefore m+n = 12+1 = 13$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 73,
@@ -1595,7 +1907,11 @@ window.questionBank = [
     "content": "다음 수를 크기가 작은 것부터 차례대로 나열할 때, 두 번째에 오는 수의 소수점 아래 $40$번째 자리의 숫자를 구하시오.\\n$2.4\\dot{5}, \\quad 2.45\\dot{7}, \\quad 2.\\dot{4}5\\dot{7}, \\quad 2.4\\dot{5}\\dot{7}$",
     "choices": [],
     "answer": "4",
-    "solution": "각 순환소수를 나열하여 크기를 비교하면 다음과 같다.\\n$2.4\\dot{5} = 2.45555\\dots$\\n$2.45\\dot{7} = 2.45777\\dots$\\n$2.\\dot{4}5\\dot{7} = 2.457457\\dots$\\n$2.4\\dot{5}\\dot{7} = 2.457575\\dots$\\n소수점 아래 넷째 자리 숫자를 비교하면 $4 \\lt 5 \\lt 7$이므로\\n$2.4\\dot{5} \\lt 2.\\dot{4}5\\dot{7} \\lt 2.4\\dot{5}\\dot{7} \\lt 2.45\\dot{7}$\\n따라서 두 번째에 오는 수는 $2.\\dot{4}5\\dot{7}$이다.\\n$2.\\dot{4}5\\dot{7}$의 순환마디는 $4, 5, 7$로 길이는 $3$이다.\\n$40 = 3 \\times 13 + 1$이므로 소수점 아래 $40$번째 자리 숫자는 순환마디의 첫 번째 숫자인 $4$이다.\\n$\\therefore 4$"
+    "solution": "각 순환소수를 나열하여 크기를 비교하면 다음과 같다.\\n$2.4\\dot{5} = 2.45555\\dots$\\n$2.45\\dot{7} = 2.45777\\dots$\\n$2.\\dot{4}5\\dot{7} = 2.457457\\dots$\\n$2.4\\dot{5}\\dot{7} = 2.457575\\dots$\\n소수점 아래 넷째 자리 숫자를 비교하면 $4 \\lt 5 \\lt 7$이므로\\n$2.4\\dot{5} \\lt 2.\\dot{4}5\\dot{7} \\lt 2.4\\dot{5}\\dot{7} \\lt 2.45\\dot{7}$\\n따라서 두 번째에 오는 수는 $2.\\dot{4}5\\dot{7}$이다.\\n$2.\\dot{4}5\\dot{7}$의 순환마디는 $4, 5, 7$로 길이는 $3$이다.\\n$40 = 3 \\times 13 + 1$이므로 소수점 아래 $40$번째 자리 숫자는 순환마디의 첫 번째 숫자인 $4$이다.\\n$\\therefore 4$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 74,
@@ -1619,7 +1935,11 @@ window.questionBank = [
       "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
     ],
     "answer": "④, ⑤",
-    "solution": "① 무한소수 중 순환하지 않는 무한소수는 무리수(유리수가 아닌 수)이다. (옳음)\\n② 기약분수의 분모의 소인수가 $2, 5$ 이외의 것이 있으면 무한소수(순환소수)가 된다. (옳음)\\n③ $0 = \\frac{0}{1}$과 같이 분수로 나타낼 수 있으므로 유리수이다. (옳음)\\n④ 모든 순환소수는 분수로 나타낼 수 있으므로 항상 유리수이다. (옳지 않음)\\n⑤ 정수가 아닌 유리수는 유한소수 또는 순환소수로 나타내어진다. (옳지 않음)\\n따라서 옳지 않은 것은 ④, ⑤이다.\\n$\\therefore$ ④, ⑤"
+    "solution": "① 무한소수 중 순환하지 않는 무한소수는 무리수(유리수가 아닌 수)이다. (옳음)\\n② 기약분수의 분모의 소인수가 $2, 5$ 이외의 것이 있으면 무한소수(순환소수)가 된다. (옳음)\\n③ $0 = \\frac{0}{1}$과 같이 분수로 나타낼 수 있으므로 유리수이다. (옳음)\\n④ 모든 순환소수는 분수로 나타낼 수 있으므로 항상 유리수이다. (옳지 않음)\\n⑤ 정수가 아닌 유리수는 유한소수 또는 순환소수로 나타내어진다. (옳지 않음)\\n따라서 옳지 않은 것은 ④, ⑤이다.\\n$\\therefore$ ④, ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 75,
@@ -1637,7 +1957,11 @@ window.questionBank = [
     "content": "두 분수 $\\frac{7}{75}, \\frac{11}{70}$에 각각 자연수 $a$를 곱하면 두 분수 모두 유한소수가 될 때, $a$의 값이 될 수 있는 두 자리 자연수의 개수를 구하시오.",
     "choices": [],
     "answer": "4",
-    "solution": "각 분수를 소인수분해하면 다음과 같다.\\n$\\frac{7}{75} = \\frac{7}{3 \\times 5^2}$, $\\frac{11}{70} = \\frac{11}{2 \\times 5 \\times 7}$\\n두 분수에 $a$를 곱하여 모두 유한소수가 되려면 $a$는 분모의 $2$와 $5$ 이외의 소인수인 $3$과 $7$을 모두 약분할 수 있어야 한다.\\n따라서 $a$는 $3$과 $7$의 공배수, 즉 $21$의 배수여야 한다.\\n두 자리 자연수 중 $21$의 배수는 $21, 42, 63, 84$의 $4$개이다.\\n$\\therefore 4$"
+    "solution": "각 분수를 소인수분해하면 다음과 같다.\\n$\\frac{7}{75} = \\frac{7}{3 \\times 5^2}$, $\\frac{11}{70} = \\frac{11}{2 \\times 5 \\times 7}$\\n두 분수에 $a$를 곱하여 모두 유한소수가 되려면 $a$는 분모의 $2$와 $5$ 이외의 소인수인 $3$과 $7$을 모두 약분할 수 있어야 한다.\\n따라서 $a$는 $3$과 $7$의 공배수, 즉 $21$의 배수여야 한다.\\n두 자리 자연수 중 $21$의 배수는 $21, 42, 63, 84$의 $4$개이다.\\n$\\therefore 4$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 76,
@@ -1655,7 +1979,11 @@ window.questionBank = [
     "content": "어떤 기약분수를 순환소수로 나타내는데 우준이는 분모를 잘못 보아서 $0.7\\dot{6}$이라 하였고, 수민이는 분자를 잘못 보아서 $0.5\\dot{3}$라 하였다. 이때 처음 기약분수를 순환소수로 나타내시오.",
     "choices": [],
     "answer": "1.5\\dot{3}",
-    "solution": "우준이는 분모를 잘못 보았으므로 분자는 정확하게 보았다.\\n$0.7\\dot{6} = \\frac{76-7}{90} = \\frac{69}{90} = \\frac{23}{30}$\\n따라서 처음 기약분수의 분자는 $23$이다.\\n수민이는 분자를 잘못 보았으므로 분모는 정확하게 보았다.\\n$0.5\\dot{3} = \\frac{53-5}{90} = \\frac{48}{90} = \\frac{8}{15}$\\n따라서 처음 기약분수의 분모는 $15$이다.\\n처음 기약분수는 $\\frac{23}{15}$이므로\\n$\\frac{23}{15} = 1.5333\\dots = 1.5\\dot{3}$\\n$\\therefore 1.5\\dot{3}$"
+    "solution": "우준이는 분모를 잘못 보았으므로 분자는 정확하게 보았다.\\n$0.7\\dot{6} = \\frac{76-7}{90} = \\frac{69}{90} = \\frac{23}{30}$\\n따라서 처음 기약분수의 분자는 $23$이다.\\n수민이는 분자를 잘못 보았으므로 분모는 정확하게 보았다.\\n$0.5\\dot{3} = \\frac{53-5}{90} = \\frac{48}{90} = \\frac{8}{15}$\\n따라서 처음 기약분수의 분모는 $15$이다.\\n처음 기약분수는 $\\frac{23}{15}$이므로\\n$\\frac{23}{15} = 1.5333\\dots = 1.5\\dot{3}$\\n$\\therefore 1.5\\dot{3}$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 77,
@@ -1673,7 +2001,11 @@ window.questionBank = [
     "content": "어떤 자연수에 $2.\\dot{6}$을 곱해야 할 것을 잘못하여 $2.6$을 곱했더니 그 결과가 정답보다 $0.4$만큼 작아졌다. 이때 어떤 자연수를 구하시오.",
     "choices": [],
     "answer": "6",
-    "solution": "어떤 자연수를 $x$라 하면\\n$2.\\dot{6}x - 2.6x = 0.4$\\n$\\frac{24}{9}x - \\frac{26}{10}x = \\frac{4}{10}$\\n$\\frac{8}{3}x - \\frac{13}{5}x = \\frac{2}{5}$\\n양변에 분모의 최소공배수인 $15$를 곱하면\\n$40x - 39x = 6$\\n$x = 6$\\n$\\therefore 6$"
+    "solution": "어떤 자연수를 $x$라 하면\\n$2.\\dot{6}x - 2.6x = 0.4$\\n$\\frac{24}{9}x - \\frac{26}{10}x = \\frac{4}{10}$\\n$\\frac{8}{3}x - \\frac{13}{5}x = \\frac{2}{5}$\\n양변에 분모의 최소공배수인 $15$를 곱하면\\n$40x - 39x = 6$\\n$x = 6$\\n$\\therefore 6$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 78,
@@ -1691,7 +2023,11 @@ window.questionBank = [
     "content": "$\\frac{4}{13} = \\frac{x_1}{10} + \\frac{x_2}{10^2} + \\frac{x_3}{10^3} + \\dots + \\frac{x_n}{10^n} + \\dots$이라 할 때, $x_1 + x_2 + x_3 + \\dots + x_{99}$의 값을 구하시오.\\n(단, $x_1, x_2, x_3, \\dots, x_n, \\dots$은 한 자리 자연수이다.)",
     "choices": [],
     "answer": "442",
-    "solution": "$\\frac{4}{13}$를 소수로 나타내면 다음과 같다.\\n$\\frac{4}{13} = 0.307692307692\\dots = 0.\\dot{3}0769\\dot{2}$\\n순환마디는 $3, 0, 7, 6, 9, 2$이고 길이는 $6$이다.\\n순환마디의 숫자들의 합은 $3+0+7+6+9+2 = 27$이다.\\n$99 = 6 \\times 16 + 3$이므로 소수점 아래 $99$번째 자리까지의 합은 순환마디가 $16$번 반복되고 $3$개의 숫자가 더해진 값이다.\\n$(27 \\times 16) + (3+0+7) = 432 + 10 = 442$\\n$\\therefore 442$"
+    "solution": "$\\frac{4}{13}$를 소수로 나타내면 다음과 같다.\\n$\\frac{4}{13} = 0.307692307692\\dots = 0.\\dot{3}0769\\dot{2}$\\n순환마디는 $3, 0, 7, 6, 9, 2$이고 길이는 $6$이다.\\n순환마디의 숫자들의 합은 $3+0+7+6+9+2 = 27$이다.\\n$99 = 6 \\times 16 + 3$이므로 소수점 아래 $99$번째 자리까지의 합은 순환마디가 $16$번 반복되고 $3$개의 숫자가 더해진 값이다.\\n$(27 \\times 16) + (3+0+7) = 432 + 10 = 442$\\n$\\therefore 442$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 79,
@@ -1709,6 +2045,10 @@ window.questionBank = [
     "content": "한 자리 자연수 $a, b$에 대하여 $a=3b$이고 $0.\\dot{a}b + 0.\\dot{b}a = 0.\\dot{8}$일 때, $0.\\dot{a}b - 0.\\dot{b}a$의 값을 순환소수로 나타내시오.",
     "choices": [],
     "answer": "0.\\dot{3}\\dot{6}",
-    "solution": "$0.\\dot{a}b + 0.\\dot{b}a = 0.\\dot{8}$에서\\n$\\frac{10a+b}{99} + \\frac{10b+a}{99} = \\frac{8}{9}$\\n$\\frac{11(a+b)}{99} = \\frac{8}{9}$\\n$\\frac{a+b}{9} = \\frac{8}{9}$ 이므로 $a+b=8$\\n주어진 조건 $a=3b$를 대입하면 $3b+b=8, 4b=8$\\n$\\therefore b=2, a=6$\\n따라서 구하는 값은\\n$0.\\dot{6}2 - 0.\\dot{2}6 = \\frac{62-26}{99} = \\frac{36}{99} = 0.\\dot{3}\\dot{6}$\\n$\\therefore 0.\\dot{3}\\dot{6}$"
+    "solution": "$0.\\dot{a}b + 0.\\dot{b}a = 0.\\dot{8}$에서\\n$\\frac{10a+b}{99} + \\frac{10b+a}{99} = \\frac{8}{9}$\\n$\\frac{11(a+b)}{99} = \\frac{8}{9}$\\n$\\frac{a+b}{9} = \\frac{8}{9}$ 이므로 $a+b=8$\\n주어진 조건 $a=3b$를 대입하면 $3b+b=8, 4b=8$\\n$\\therefore b=2, a=6$\\n따라서 구하는 값은\\n$0.\\dot{6}2 - 0.\\dot{2}6 = \\frac{62-26}{99} = \\frac{36}{99} = 0.\\dot{3}\\dot{6}$\\n$\\therefore 0.\\dot{3}\\dot{6}$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

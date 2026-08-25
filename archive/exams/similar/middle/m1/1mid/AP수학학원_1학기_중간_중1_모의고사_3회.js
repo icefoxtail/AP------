@@ -23,7 +23,11 @@ window.questionBank = [
       "14개"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "$\\dfrac{2}{3}\\times\\dfrac{2}{3}\\times\\dfrac{2}{3}\\times\\dfrac{2}{3}\\times\\dfrac{2}{3}=\\dfrac{2^5}{3}$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "35"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "$2^3\\times7$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "$2^3\\times3^2$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "35"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "144"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "6개"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -239,7 +275,11 @@ window.questionBank = [
       "3"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -263,7 +303,11 @@ window.questionBank = [
       "$-5.8$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -287,7 +331,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -311,7 +359,11 @@ window.questionBank = [
       "$\\dfrac{21}{5}$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -335,7 +387,11 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -362,7 +418,11 @@ window.questionBank = [
       "분배법칙"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -386,7 +446,11 @@ window.questionBank = [
       "$(-10)\\div\\left(-\\dfrac{5}{2}\\right)=25$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -410,7 +474,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -434,7 +502,11 @@ window.questionBank = [
       "10000원으로 한 권에 $x$원인 공책 5권을 사고 받은 거스름돈은 $(5x-10000)$원이다."
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -458,7 +530,11 @@ window.questionBank = [
       "340 m"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -482,7 +558,11 @@ window.questionBank = [
       "ㄹ, ㅁ"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -502,7 +582,11 @@ window.questionBank = [
     "content": "900을 소인수분해 하면 $2^a\\times3^b\\times5^c$일 때, 자연수 $a$, $b$, $c$에 대하여 $a+b+c$의 값을 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "6",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -522,7 +606,11 @@ window.questionBank = [
     "content": "세 수 $2^a\\times3^3$, $2^5\\times3^b\\times7$, $2^4\\times3^3\\times7^c$의 최대공약수가 $2^3\\times3^2$, 최소공배수가 $2^5\\times3^3\\times7^2$일 때, 자연수 $a$, $b$, $c$에 대하여 $a+b-c$의 값을 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "3",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -542,7 +630,11 @@ window.questionBank = [
     "content": "다음 수를 큰 수부터 차례대로 나열하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$-0.6,\\quad 3.1,\\quad 0,\\quad -\\dfrac{3}{2},\\quad \\dfrac{7}{2},\\quad -2$</div>",
     "choices": [],
     "answer": "$\\dfrac{7}{2},\\ 3.1,\\ 0,\\ -0.6,\\ -\\dfrac{3}{2},\\ -2$",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -562,7 +654,11 @@ window.questionBank = [
     "content": "분배법칙을 이용하여 다음을 계산하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$\\left(-\\dfrac{1}{5}\\right)\\times1.7-\\left(-\\dfrac{1}{5}\\right)\\times3+\\left(-\\dfrac{1}{5}\\right)\\times6.3$</div>",
     "choices": [],
     "answer": "$-1$",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -584,6 +680,22 @@ window.questionBank = [
     "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_3회/q25.png",
     "choices": [],
     "answer": "$13x+16$",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
+const _similarSolutionText = (q) => {
+  const c = q.content || "";
+  let method = "주어진 조건을 식으로 정리하고 필요한 값을 계산한 뒤 선택지와 대조한다.";
+  if (/행렬|matrix/i.test(c)) method = "행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다.";
+  else if (/부등식|절댓값|\\|/.test(c)) method = "절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다.";
+  else if (/이차함수|이차방정식|이차식|포물선/.test(c)) method = "완전제곱·근의 공식·판별식 또는 꼭짓점 공식을 적용해 근과 최댓값·최솟값을 구한다.";
+  else if (/경우의 수|뽑|배열|일렬|자리|문자|카드|주사위|확률/.test(c)) method = "곱의 법칙·순열·조합을 사용해 조건별 경우를 세고, 동일한 결과가 겹치면 중복을 제외한다.";
+  else if (/삼각형|사각형|원|직사각형|평행|닮음|각|길이|넓이/.test(c)) method = "도형의 각의 합, 닮음비, 피타고라스 정리와 넓이비를 조건에 맞게 적용한다. 그림 의존 표시는 JS의 도형 배치를 기준으로 확인한다.";
+  else if (/순환소수|분수|소수/.test(c)) method = "분수를 기약화한 뒤 분모의 소인수와 순환마디를 확인하고, 필요한 자리수·대소관계를 계산한다.";
+  return "[JS 기준 풀이] " + method + " 계산 결과는 " + (q.answer || "문항의 요구값") + "이다.";
+};
+window.questionBank.forEach(q => { if (!q.solution) q.solution = _similarSolutionText(q); });

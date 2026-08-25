@@ -33,7 +33,11 @@ window.questionBank = [
       "짝수는 모두 합성수이다."
     ],
     "answer": "③, ⑤",
-    "solution": "[키포인트] 소수와 합성수의 정의를 정확히 구분한다.\n조건 정리: 소수는 약수가 1과 자기 자신뿐인 자연수이고, 합성수는 약수가 3개 이상인 자연수이다.\n풀이 방향: 각 보기의 문장을 정의에 맞추어 하나씩 판단한다.\n정석 풀이: 9의 배수 중 소수는 없다. 또한 짝수 중 2는 소수이므로 모든 짝수가 합성수는 아니다. 따라서 옳지 않은 것은 ③, ⑤이다.\n따라서 정답은 ③, ⑤이다."
+    "solution": "[키포인트] 소수와 합성수의 정의를 정확히 구분한다.\n조건 정리: 소수는 약수가 1과 자기 자신뿐인 자연수이고, 합성수는 약수가 3개 이상인 자연수이다.\n풀이 방향: 각 보기의 문장을 정의에 맞추어 하나씩 판단한다.\n정석 풀이: 9의 배수 중 소수는 없다. 또한 짝수 중 2는 소수이므로 모든 짝수가 합성수는 아니다. 따라서 옳지 않은 것은 ③, ⑤이다.\n따라서 정답은 ③, ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -67,7 +71,11 @@ window.questionBank = [
       "9개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소수는 1과 자기 자신만 약수로 갖는 자연수이다.\n조건 정리: 30에서 50까지의 자연수 중 합성수를 제외하고 소수를 찾는다.\n풀이 방향: 2, 3, 5, 7의 배수 여부를 확인하여 소수를 골라낸다.\n정석 풀이: 구하는 소수는 31, 37, 41, 43, 47로 모두 5개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 소수는 1과 자기 자신만 약수로 갖는 자연수이다.\n조건 정리: 30에서 50까지의 자연수 중 합성수를 제외하고 소수를 찾는다.\n풀이 방향: 2, 3, 5, 7의 배수 여부를 확인하여 소수를 골라낸다.\n정석 풀이: 구하는 소수는 31, 37, 41, 43, 47로 모두 5개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -99,7 +107,11 @@ window.questionBank = [
       "$2\\times2\\times5\\times5\\times5=2^2\\times3^5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 수나 문자를 여러 번 곱한 것을 거듭제곱으로 나타낸다.\n조건 정리: 거듭제곱은 덧셈이 아니라 같은 인수의 반복 곱셈을 간단히 나타낸 것이다.\n풀이 방향: 각 보기에서 실제로 곱해진 인수의 개수를 확인한다.\n정석 풀이: ④는 $x$가 2번, $y$가 3번 곱해졌으므로 $x^2\\times y^3$이 맞다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 같은 수나 문자를 여러 번 곱한 것을 거듭제곱으로 나타낸다.\n조건 정리: 거듭제곱은 덧셈이 아니라 같은 인수의 반복 곱셈을 간단히 나타낸 것이다.\n풀이 방향: 각 보기에서 실제로 곱해진 인수의 개수를 확인한다.\n정석 풀이: ④는 $x$가 2번, $y$가 3번 곱해졌으므로 $x^2\\times y^3$이 맞다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -131,7 +143,11 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "[키포인트] 같은 문자 인수의 개수를 세어 지수로 나타낸다.\n조건 정리: $a, b, c$가 각각 몇 번 곱해졌는지 세어야 한다.\n풀이 방향: 각 문자의 반복 횟수를 지수로 두고 합을 구한다.\n정석 풀이: $a$는 3번, $b$는 2번, $c$는 2번 곱해졌으므로 $x=3, y=2, z=2$이다. 따라서 $x+y+z=7$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 같은 문자 인수의 개수를 세어 지수로 나타낸다.\n조건 정리: $a, b, c$가 각각 몇 번 곱해졌는지 세어야 한다.\n풀이 방향: 각 문자의 반복 횟수를 지수로 두고 합을 구한다.\n정석 풀이: $a$는 3번, $b$는 2번, $c$는 2번 곱해졌으므로 $x=3, y=2, z=2$이다. 따라서 $x+y+z=7$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -161,7 +177,11 @@ window.questionBank = [
       "105"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 수를 소인수분해하여 가장 큰 소인수를 비교한다.\n조건 정리: 각 선택지의 소인수 중 가장 큰 값을 비교한다.\n풀이 방향: 수들을 소인수분해한 뒤 가장 큰 소인수가 가장 큰 보기를 고른다.\n정석 풀이: $33=3\\times11$, $56=2^3\\times7$, $72=2^3\\times3^2$, $91=7\\times13$, $105=3\\times5\\times7$이다. 가장 큰 소인수는 13이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 각 수를 소인수분해하여 가장 큰 소인수를 비교한다.\n조건 정리: 각 선택지의 소인수 중 가장 큰 값을 비교한다.\n풀이 방향: 수들을 소인수분해한 뒤 가장 큰 소인수가 가장 큰 보기를 고른다.\n정석 풀이: $33=3\\times11$, $56=2^3\\times7$, $72=2^3\\times3^2$, $91=7\\times13$, $105=3\\times5\\times7$이다. 가장 큰 소인수는 13이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -193,7 +213,11 @@ window.questionBank = [
       "$90=3^2\\times10$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소인수분해는 소수의 곱으로만 나타내야 한다.\n조건 정리: 소인수분해 결과에는 합성수가 남아 있으면 안 된다.\n풀이 방향: 각 보기의 오른쪽이 모두 소수의 곱인지 확인한다.\n정석 풀이: ⑤의 $10$은 합성수이므로 소인수분해가 아니다. $90=2\\times3^2\\times5$가 옳다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 소인수분해는 소수의 곱으로만 나타내야 한다.\n조건 정리: 소인수분해 결과에는 합성수가 남아 있으면 안 된다.\n풀이 방향: 각 보기의 오른쪽이 모두 소수의 곱인지 확인한다.\n정석 풀이: ⑤의 $10$은 합성수이므로 소인수분해가 아니다. $90=2\\times3^2\\times5$가 옳다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -217,7 +241,11 @@ window.questionBank = [
     "content": "$135=3^a\\times b$일 때, $a+b$의 값을 구하여라.",
     "choices": [],
     "answer": "8",
-    "solution": "[키포인트] 135를 소인수분해하여 지수와 남은 소인수를 찾는다.\n조건 정리: $135$를 $3$의 거듭제곱과 다른 소인수의 곱으로 나타낸다.\n풀이 방향: $135$를 소인수분해한 뒤 $a, b$를 읽는다.\n정석 풀이: $135=27\\times5=3^3\\times5$이므로 $a=3, b=5$이다. 따라서 $a+b=3+5=8$이다.\n따라서 구하는 값은 $8$이다."
+    "solution": "[키포인트] 135를 소인수분해하여 지수와 남은 소인수를 찾는다.\n조건 정리: $135$를 $3$의 거듭제곱과 다른 소인수의 곱으로 나타낸다.\n풀이 방향: $135$를 소인수분해한 뒤 $a, b$를 읽는다.\n정석 풀이: $135=27\\times5=3^3\\times5$이므로 $a=3, b=5$이다. 따라서 $a+b=3+5=8$이다.\n따라서 구하는 값은 $8$이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -249,7 +277,11 @@ window.questionBank = [
       "96"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소인수분해 후 지수에 1을 더해 곱하면 약수의 개수이다.\n조건 정리: 각 수를 소인수분해하여 약수의 개수를 비교한다.\n풀이 방향: $(지수+1)$들을 곱해 약수의 개수를 구한다.\n정석 풀이: $36=2^2\\times3^2$는 9개, $54=2\\times3^3$은 8개, $68=2^2\\times17$은 6개, $70=2\\times5\\times7$은 8개, $96=2^5\\times3$은 12개이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 소인수분해 후 지수에 1을 더해 곱하면 약수의 개수이다.\n조건 정리: 각 수를 소인수분해하여 약수의 개수를 비교한다.\n풀이 방향: $(지수+1)$들을 곱해 약수의 개수를 구한다.\n정석 풀이: $36=2^2\\times3^2$는 9개, $54=2\\times3^3$은 8개, $68=2^2\\times17$은 6개, $70=2\\times5\\times7$은 8개, $96=2^5\\times3$은 12개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -281,7 +313,11 @@ window.questionBank = [
       "30개"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 약수의 개수는 각 소인수의 지수에 1을 더해 곱한다.\n조건 정리: 주어진 수는 이미 소인수분해되어 있다.\n풀이 방향: 각 지수에 1을 더해 곱한다.\n정석 풀이: 약수의 개수는 $(2+1)(4+1)(1+1)=3\\times5\\times2=30$개이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 약수의 개수는 각 소인수의 지수에 1을 더해 곱한다.\n조건 정리: 주어진 수는 이미 소인수분해되어 있다.\n풀이 방향: 각 지수에 1을 더해 곱한다.\n정석 풀이: 약수의 개수는 $(2+1)(4+1)(1+1)=3\\times5\\times2=30$개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -315,7 +351,11 @@ window.questionBank = [
       "33와 55"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로소는 최대공약수가 1인 두 자연수이다.\n조건 정리: 각 두 수의 공약수를 확인한다.\n풀이 방향: 공통 소인수가 없는 쌍을 찾는다.\n정석 풀이: $17$은 소수이고 $27=3^3$이므로 두 수의 공약수는 1뿐이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로소는 최대공약수가 1인 두 자연수이다.\n조건 정리: 각 두 수의 공약수를 확인한다.\n풀이 방향: 공통 소인수가 없는 쌍을 찾는다.\n정석 풀이: $17$은 소수이고 $27=3^3$이므로 두 수의 공약수는 1뿐이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -346,7 +386,11 @@ window.questionBank = [
       "20"
     ],
     "answer": "④",
-    "solution": "[키포인트] 제곱수의 소인수 지수는 모두 짝수이다.\n조건 정리: $160$을 소인수분해하여 홀수인 지수를 찾는다.\n풀이 방향: 홀수 지수가 짝수가 되도록 가장 작은 수를 곱한다.\n정석 풀이: $160=2^5\\times5$이므로 지수 5와 1이 모두 홀수이다. $2\\times5=10$을 곱하면 $2^6\\times5^2$가 되어 제곱수가 된다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 제곱수의 소인수 지수는 모두 짝수이다.\n조건 정리: $160$을 소인수분해하여 홀수인 지수를 찾는다.\n풀이 방향: 홀수 지수가 짝수가 되도록 가장 작은 수를 곱한다.\n정석 풀이: $160=2^5\\times5$이므로 지수 5와 1이 모두 홀수이다. $2\\times5=10$을 곱하면 $2^6\\times5^2$가 되어 제곱수가 된다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -380,7 +424,11 @@ window.questionBank = [
       "12개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 수의 공약수는 최대공약수의 약수이다.\n조건 정리: 공약수의 개수는 최대공약수 180의 약수의 개수와 같다.\n풀이 방향: $180$을 소인수분해하여 약수의 개수를 구한다.\n정석 풀이: $180=2^2\\times3^2\\times5$이므로 약수의 개수는 $(2+1)(2+1)(1+1)=18$개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 수의 공약수는 최대공약수의 약수이다.\n조건 정리: 공약수의 개수는 최대공약수 180의 약수의 개수와 같다.\n풀이 방향: $180$을 소인수분해하여 약수의 개수를 구한다.\n정석 풀이: $180=2^2\\times3^2\\times5$이므로 약수의 개수는 $(2+1)(2+1)(1+1)=18$개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -414,7 +462,11 @@ window.questionBank = [
       "$a=4, b=1, c=5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 최대공약수는 작은 지수, 최소공배수는 큰 지수를 선택한다.\n조건 정리: $2$의 지수는 최대공약수에서 2, 최소공배수에서 4가 되어야 한다.\n풀이 방향: 각 소인수별로 작은 지수와 큰 지수를 비교한다.\n정석 풀이: $2$에 대해 $\\min(a,4)=2$이므로 $a=2$이고, $3$에 대해 $\\min(3,b)=1$이므로 $b=1$이다. 첫 번째 수에 있는 7이 최소공배수에 들어가므로 $c=7$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 최대공약수는 작은 지수, 최소공배수는 큰 지수를 선택한다.\n조건 정리: $2$의 지수는 최대공약수에서 2, 최소공배수에서 4가 되어야 한다.\n풀이 방향: 각 소인수별로 작은 지수와 큰 지수를 비교한다.\n정석 풀이: $2$에 대해 $\\min(a,4)=2$이므로 $a=2$이고, $3$에 대해 $\\min(3,b)=1$이므로 $b=1$이다. 첫 번째 수에 있는 7이 최소공배수에 들어가므로 $c=7$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -448,7 +500,11 @@ window.questionBank = [
       "30"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 수의 곱은 최대공약수와 최소공배수의 곱과 같다.\n조건 정리: 두 수가 36과 $A$이고, 최대공약수와 최소공배수가 주어졌다.\n풀이 방향: $36\\times A=6\\times72$를 이용한다.\n정석 풀이: $36A=432$이므로 $A=12$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 두 수의 곱은 최대공약수와 최소공배수의 곱과 같다.\n조건 정리: 두 수가 36과 $A$이고, 최대공약수와 최소공배수가 주어졌다.\n풀이 방향: $36\\times A=6\\times72$를 이용한다.\n정석 풀이: $36A=432$이므로 $A=12$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -478,7 +534,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 끝자리 0은 인수 $2\\times5=10$의 개수로 결정된다.\n조건 정리: $2$와 $5$가 몇 쌍 만들어지는지 확인한다.\n풀이 방향: $2$의 지수와 $5$의 지수 중 작은 값을 찾는다.\n정석 풀이: $2$는 7개, $5$는 4개 있으므로 $10$은 4쌍 만들어진다. 따라서 끝자리 0의 개수는 4개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 끝자리 0은 인수 $2\\times5=10$의 개수로 결정된다.\n조건 정리: $2$와 $5$가 몇 쌍 만들어지는지 확인한다.\n풀이 방향: $2$의 지수와 $5$의 지수 중 작은 값을 찾는다.\n정석 풀이: $2$는 7개, $5$는 4개 있으므로 $10$은 4쌍 만들어진다. 따라서 끝자리 0의 개수는 4개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -509,7 +569,11 @@ window.questionBank = [
       "8명"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 똑같이 나누어 줄 수 있는 학생 수는 실제로 필요한 개수의 공약수이다.\n조건 정리: 사과는 4개가 남으므로 실제로 나누어 준 사과는 108개이고, 배는 2개가 부족하므로 필요한 배는 72개이다.\n풀이 방향: 학생 수는 108과 72의 공약수여야 한다.\n정석 풀이: 108과 72의 공약수 중 보기에서 8은 공약수가 아니다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 똑같이 나누어 줄 수 있는 학생 수는 실제로 필요한 개수의 공약수이다.\n조건 정리: 사과는 4개가 남으므로 실제로 나누어 준 사과는 108개이고, 배는 2개가 부족하므로 필요한 배는 72개이다.\n풀이 방향: 학생 수는 108과 72의 공약수여야 한다.\n정석 풀이: 108과 72의 공약수 중 보기에서 8은 공약수가 아니다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -535,7 +599,11 @@ window.questionBank = [
     "content": "세 수 $\\dfrac{16}{n}$, $\\dfrac{80}{n}$, $\\dfrac{104}{n}$을 자연수로 만드는 가장 큰 자연수 $n$의 값을 구하여라.",
     "choices": [],
     "answer": "8",
-    "solution": "[키포인트] 세 분수가 자연수가 되려면 $n$이 세 분자의 공약수이어야 한다.\n조건 정리: $n$은 16, 80, 104를 모두 나누어야 한다.\n풀이 방향: 가장 큰 $n$은 세 수의 최대공약수이다.\n정석 풀이: $16, 80, 104$의 최대공약수는 8이다.\n따라서 구하는 값은 $8$이다."
+    "solution": "[키포인트] 세 분수가 자연수가 되려면 $n$이 세 분자의 공약수이어야 한다.\n조건 정리: $n$은 16, 80, 104를 모두 나누어야 한다.\n풀이 방향: 가장 큰 $n$은 세 수의 최대공약수이다.\n정석 풀이: $16, 80, 104$의 최대공약수는 8이다.\n따라서 구하는 값은 $8$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -563,7 +631,11 @@ window.questionBank = [
     "content": "여학생 45명과 남학생 54명이 봉사활동을 하기 위해 모였다. 남녀를 각각 같은 인원으로 배정하여 가능한 많은 조를 짜기 위해서는 몇 개의 조로 나누어야 하는지 구하여라.",
     "choices": [],
     "answer": "9개",
-    "solution": "[키포인트] 가능한 많은 조의 수는 두 인원수의 최대공약수이다.\n조건 정리: 여학생 45명과 남학생 54명을 각각 같은 수씩 나누어야 한다.\n풀이 방향: 조의 수는 45와 54의 공약수 중 가장 커야 한다.\n정석 풀이: $45$와 $54$의 최대공약수는 9이므로 9개 조로 나눈다.\n따라서 구하는 값은 $9$개이다."
+    "solution": "[키포인트] 가능한 많은 조의 수는 두 인원수의 최대공약수이다.\n조건 정리: 여학생 45명과 남학생 54명을 각각 같은 수씩 나누어야 한다.\n풀이 방향: 조의 수는 45와 54의 공약수 중 가장 커야 한다.\n정석 풀이: $45$와 $54$의 최대공약수는 9이므로 9개 조로 나눈다.\n따라서 구하는 값은 $9$개이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -597,7 +669,11 @@ window.questionBank = [
       "30개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 타일 개수를 가장 적게 하려면 한 변의 길이가 가장 큰 정사각형 타일을 사용한다.\n조건 정리: 정사각형 타일의 한 변은 180과 240을 모두 나누어야 한다.\n풀이 방향: 가장 큰 타일의 한 변은 두 수의 최대공약수이다.\n정석 풀이: $\\gcd(180,240)=60$이므로 가로로 3개, 세로로 4개가 필요하다. 따라서 타일은 $3\\times4=12$개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 타일 개수를 가장 적게 하려면 한 변의 길이가 가장 큰 정사각형 타일을 사용한다.\n조건 정리: 정사각형 타일의 한 변은 180과 240을 모두 나누어야 한다.\n풀이 방향: 가장 큰 타일의 한 변은 두 수의 최대공약수이다.\n정석 풀이: $\\gcd(180,240)=60$이므로 가로로 3개, 세로로 4개가 필요하다. 따라서 타일은 $3\\times4=12$개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -625,7 +701,11 @@ window.questionBank = [
     "content": "두 수의 최대공약수는 6이고, 최소공배수는 36일 때, 두 수의 곱을 구하여라.",
     "choices": [],
     "answer": "216",
-    "solution": "[키포인트] 두 자연수의 곱은 최대공약수와 최소공배수의 곱과 같다.\n조건 정리: 최대공약수는 6, 최소공배수는 36이다.\n풀이 방향: 두 수의 곱을 $\\gcd\\times\\mathrm{lcm}$으로 계산한다.\n정석 풀이: $6\\times36=216$이다.\n따라서 구하는 값은 $216$이다."
+    "solution": "[키포인트] 두 자연수의 곱은 최대공약수와 최소공배수의 곱과 같다.\n조건 정리: 최대공약수는 6, 최소공배수는 36이다.\n풀이 방향: 두 수의 곱을 $\\gcd\\times\\mathrm{lcm}$으로 계산한다.\n정석 풀이: $6\\times36=216$이다.\n따라서 구하는 값은 $216$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -656,7 +736,11 @@ window.questionBank = [
       "11, 33, 47"
     ],
     "answer": "①",
-    "solution": "[키포인트] 소수는 약수가 1과 자기 자신뿐인 자연수이다.\n조건 정리: 각 선택지 안의 수가 모두 소수인지 확인한다.\n풀이 방향: 합성수가 하나라도 있으면 제외한다.\n정석 풀이: ①의 5, 17, 41은 모두 소수이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 소수는 약수가 1과 자기 자신뿐인 자연수이다.\n조건 정리: 각 선택지 안의 수가 모두 소수인지 확인한다.\n풀이 방향: 합성수가 하나라도 있으면 제외한다.\n정석 풀이: ①의 5, 17, 41은 모두 소수이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -690,7 +774,11 @@ window.questionBank = [
       "3의 배수 중 소수는 1개뿐이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 소수 중에는 짝수인 2가 있다.\n조건 정리: 각 설명이 소수와 약수의 정의에 맞는지 확인한다.\n풀이 방향: 소수 2는 짝수이므로 모든 소수가 홀수라는 말은 틀리다.\n정석 풀이: ③은 2라는 반례가 있으므로 옳지 않다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 소수 중에는 짝수인 2가 있다.\n조건 정리: 각 설명이 소수와 약수의 정의에 맞는지 확인한다.\n풀이 방향: 소수 2는 짝수이므로 모든 소수가 홀수라는 말은 틀리다.\n정석 풀이: ③은 2라는 반례가 있으므로 옳지 않다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -723,7 +811,11 @@ window.questionBank = [
       "$5^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 합성수는 1과 자기 자신 이외의 약수를 갖는 자연수이다.\n조건 정리: 각 보기의 계산 결과가 소수인지 합성수인지 판단한다.\n풀이 방향: 합성수가 아닌 결과를 찾는다.\n정석 풀이: ③의 $1\\times7=7$은 소수이므로 합성수가 아니다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 합성수는 1과 자기 자신 이외의 약수를 갖는 자연수이다.\n조건 정리: 각 보기의 계산 결과가 소수인지 합성수인지 판단한다.\n풀이 방향: 합성수가 아닌 결과를 찾는다.\n정석 풀이: ③의 $1\\times7=7$은 소수이므로 합성수가 아니다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -754,7 +846,11 @@ window.questionBank = [
       "$x\\times x\\times x\\times x\\times y=x^4\\times y$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 거듭제곱은 같은 인수가 반복해서 곱해질 때 사용한다.\n조건 정리: 각 곱셈식을 거듭제곱으로 바르게 표현했는지 확인한다.\n풀이 방향: $x\\times y\\times y$는 $xy^2$이지 $2xy$가 아니다.\n정석 풀이: 따라서 옳지 않은 것은 ②이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 거듭제곱은 같은 인수가 반복해서 곱해질 때 사용한다.\n조건 정리: 각 곱셈식을 거듭제곱으로 바르게 표현했는지 확인한다.\n풀이 방향: $x\\times y\\times y$는 $xy^2$이지 $2xy$가 아니다.\n정석 풀이: 따라서 옳지 않은 것은 ②이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -786,7 +882,11 @@ window.questionBank = [
       "$2^2\\times3^2\\times10$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 소인수분해는 소수의 곱으로만 나타낸다.\n조건 정리: $360$을 소수인 $2,3,5$의 곱으로 나눈다.\n풀이 방향: 합성수가 남지 않도록 모두 소인수로 분해한다.\n정석 풀이: $360=36\\times10=2^2\\times3^2\\times2\\times5=2^3\\times3^2\\times5$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 소인수분해는 소수의 곱으로만 나타낸다.\n조건 정리: $360$을 소수인 $2,3,5$의 곱으로 나눈다.\n풀이 방향: 합성수가 남지 않도록 모두 소인수로 분해한다.\n정석 풀이: $360=36\\times10=2^2\\times3^2\\times2\\times5=2^3\\times3^2\\times5$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 26,
@@ -818,7 +918,11 @@ window.questionBank = [
       "12개"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 약수의 개수는 지수에 1을 더해 곱한다.\n조건 정리: 주어진 수는 $3^2\\times5^3$이다.\n풀이 방향: 각 소인수의 지수에 1을 더한다.\n정석 풀이: 약수의 개수는 $(2+1)(3+1)=3\\times4=12$개이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 약수의 개수는 지수에 1을 더해 곱한다.\n조건 정리: 주어진 수는 $3^2\\times5^3$이다.\n풀이 방향: 각 소인수의 지수에 1을 더한다.\n정석 풀이: 약수의 개수는 $(2+1)(3+1)=3\\times4=12$개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -850,7 +954,11 @@ window.questionBank = [
       "25와 50"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로소는 공약수가 1뿐인 두 수이다.\n조건 정리: 각 쌍의 공통 소인수를 확인한다.\n풀이 방향: 공통 소인수가 없는 쌍을 고른다.\n정석 풀이: 17은 소수이고 35는 $5\\times7$이므로 공약수가 1뿐이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로소는 공약수가 1뿐인 두 수이다.\n조건 정리: 각 쌍의 공통 소인수를 확인한다.\n풀이 방향: 공통 소인수가 없는 쌍을 고른다.\n정석 풀이: 17은 소수이고 35는 $5\\times7$이므로 공약수가 1뿐이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -880,7 +988,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 소인수분해 후 지수를 모두 더한다.\n조건 정리: $132$를 소인수분해한다.\n풀이 방향: 각 소인수의 지수를 확인하여 합한다.\n정석 풀이: $132=2^2\\times3\\times11$이므로 지수의 합은 $2+1+1=4$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 소인수분해 후 지수를 모두 더한다.\n조건 정리: $132$를 소인수분해한다.\n풀이 방향: 각 소인수의 지수를 확인하여 합한다.\n정석 풀이: $132=2^2\\times3\\times11$이므로 지수의 합은 $2+1+1=4$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 29,
@@ -914,7 +1026,11 @@ window.questionBank = [
       "모든 자연수는 자기 자신의 배수이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 자연수는 자기 자신으로 나누어떨어지므로 자기 자신의 배수이다.\n조건 정리: 각 설명이 약수, 배수, 최대공약수, 최소공배수의 정의에 맞는지 확인한다.\n풀이 방향: 모든 자연수 $n$은 $n=1\\times n$으로 나타낼 수 있다.\n정석 풀이: 따라서 모든 자연수는 자기 자신의 배수라는 설명이 옳다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 자연수는 자기 자신으로 나누어떨어지므로 자기 자신의 배수이다.\n조건 정리: 각 설명이 약수, 배수, 최대공약수, 최소공배수의 정의에 맞는지 확인한다.\n풀이 방향: 모든 자연수 $n$은 $n=1\\times n$으로 나타낼 수 있다.\n정석 풀이: 따라서 모든 자연수는 자기 자신의 배수라는 설명이 옳다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 30,
@@ -947,7 +1063,11 @@ window.questionBank = [
       "$4\\times4=16$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소인수분해 후 지수에 1을 더해 곱한다.\n조건 정리: $216$을 소인수분해하면 $2^3\\times3^3$이다.\n풀이 방향: 각 지수 3에 1을 더해 곱한다.\n정석 풀이: 약수의 개수를 구하는 곱셈식은 $(3+1)(3+1)=4\\times4=16$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 소인수분해 후 지수에 1을 더해 곱한다.\n조건 정리: $216$을 소인수분해하면 $2^3\\times3^3$이다.\n풀이 방향: 각 지수 3에 1을 더해 곱한다.\n정석 풀이: 약수의 개수를 구하는 곱셈식은 $(3+1)(3+1)=4\\times4=16$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 31,
@@ -980,7 +1100,11 @@ window.questionBank = [
       "$2^3\\times3^2\\times5\\times7$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 여러 수의 최대공약수는 공통 소인수의 가장 작은 지수로 만든다.\n조건 정리: 세 수에 모두 들어 있는 소인수만 골라야 한다.\n풀이 방향: $2$와 $3$은 모두 들어 있고, $5$와 $7$은 모두에게 공통이 아니다.\n정석 풀이: $2$의 최소 지수는 2, $3$의 최소 지수는 1이므로 최대공약수는 $2^2\\times3$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 여러 수의 최대공약수는 공통 소인수의 가장 작은 지수로 만든다.\n조건 정리: 세 수에 모두 들어 있는 소인수만 골라야 한다.\n풀이 방향: $2$와 $3$은 모두 들어 있고, $5$와 $7$은 모두에게 공통이 아니다.\n정석 풀이: $2$의 최소 지수는 2, $3$의 최소 지수는 1이므로 최대공약수는 $2^2\\times3$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 32,
@@ -1010,7 +1134,11 @@ window.questionBank = [
       "$2\\times3^3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 어떤 수의 약수는 소인수의 지수가 원래 수의 지수보다 크면 안 된다.\n조건 정리: $72=2^3\\times3^2$이다.\n풀이 방향: 각 보기의 $2$와 $3$의 지수가 $2^3\\times3^2$ 안에 들어갈 수 있는지 확인한다.\n정석 풀이: ⑤는 $3^3$을 포함하므로 $72$의 $3$의 지수 2보다 크다. 따라서 72의 약수가 될 수 없다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 어떤 수의 약수는 소인수의 지수가 원래 수의 지수보다 크면 안 된다.\n조건 정리: $72=2^3\\times3^2$이다.\n풀이 방향: 각 보기의 $2$와 $3$의 지수가 $2^3\\times3^2$ 안에 들어갈 수 있는지 확인한다.\n정석 풀이: ⑤는 $3^3$을 포함하므로 $72$의 $3$의 지수 2보다 크다. 따라서 72의 약수가 될 수 없다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -1044,7 +1172,11 @@ window.questionBank = [
       "12개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 수의 공약수는 최대공약수의 약수이다.\n조건 정리: 공약수의 개수는 24의 약수의 개수와 같다.\n풀이 방향: $24$를 소인수분해한다.\n정석 풀이: $24=2^3\\times3$이므로 약수의 개수는 $(3+1)(1+1)=8$개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 수의 공약수는 최대공약수의 약수이다.\n조건 정리: 공약수의 개수는 24의 약수의 개수와 같다.\n풀이 방향: $24$를 소인수분해한다.\n정석 풀이: $24=2^3\\times3$이므로 약수의 개수는 $(3+1)(1+1)=8$개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 34,
@@ -1077,7 +1209,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "[키포인트] $2a, 3a, 4a$의 공통 인수 $a$를 분리하여 최소공배수를 구한다.\n조건 정리: $2,3,4$의 최소공배수는 12이다.\n풀이 방향: $2a,3a,4a$의 최소공배수는 $12a$가 된다.\n정석 풀이: $12a=72$이므로 $a=6$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $2a, 3a, 4a$의 공통 인수 $a$를 분리하여 최소공배수를 구한다.\n조건 정리: $2,3,4$의 최소공배수는 12이다.\n풀이 방향: $2a,3a,4a$의 최소공배수는 $12a$가 된다.\n정석 풀이: $12a=72$이므로 $a=6$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 35,
@@ -1103,7 +1239,11 @@ window.questionBank = [
     "content": "$48\\times x=y^2$을 만족하는 가장 작은 자연수 $x, y$에 대하여 $x+y$의 값을 구하여라.",
     "choices": [],
     "answer": "15",
-    "solution": "[키포인트] 제곱수의 소인수 지수는 모두 짝수이다.\n조건 정리: $48$을 소인수분해하여 홀수 지수를 찾는다.\n풀이 방향: 가장 작은 $x$는 홀수 지수를 짝수로 만드는 데 필요한 소인수이다.\n정석 풀이: $48=2^4\\times3$이므로 $x=3$이면 $48\\times3=2^4\\times3^2=(2^2\\times3)^2=12^2$이다. 따라서 $x=3, y=12$이고 $x+y=15$이다.\n따라서 구하는 값은 $15$이다."
+    "solution": "[키포인트] 제곱수의 소인수 지수는 모두 짝수이다.\n조건 정리: $48$을 소인수분해하여 홀수 지수를 찾는다.\n풀이 방향: 가장 작은 $x$는 홀수 지수를 짝수로 만드는 데 필요한 소인수이다.\n정석 풀이: $48=2^4\\times3$이므로 $x=3$이면 $48\\times3=2^4\\times3^2=(2^2\\times3)^2=12^2$이다. 따라서 $x=3, y=12$이고 $x+y=15$이다.\n따라서 구하는 값은 $15$이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1136,7 +1276,11 @@ window.questionBank = [
       "7바퀴"
     ],
     "answer": "②",
-    "solution": "[키포인트] 출발점에서 다시 만나려면 두 사람이 모두 한 바퀴 시간의 공배수만큼 지나야 한다.\n조건 정리: 처음 다시 출발점에서 만나는 시간은 45와 60의 최소공배수이다.\n풀이 방향: 그 시간 동안 형이 몇 바퀴 도는지 계산한다.\n정석 풀이: $\\mathrm{lcm}(45,60)=180$초이고, 형은 한 바퀴에 45초가 걸리므로 $180\\div45=4$바퀴를 돈다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 출발점에서 다시 만나려면 두 사람이 모두 한 바퀴 시간의 공배수만큼 지나야 한다.\n조건 정리: 처음 다시 출발점에서 만나는 시간은 45와 60의 최소공배수이다.\n풀이 방향: 그 시간 동안 형이 몇 바퀴 도는지 계산한다.\n정석 풀이: $\\mathrm{lcm}(45,60)=180$초이고, 형은 한 바퀴에 45초가 걸리므로 $180\\div45=4$바퀴를 돈다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1170,7 +1314,11 @@ window.questionBank = [
       "$\\dfrac{18}{210}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 여러 분수에 같은 수를 곱해 자연수를 만들려면 분모를 없애고 분자와 약분되는 형태를 찾는다.\n조건 정리: 곱할 수를 $m$이라 하면 $m\\cdot\\dfrac{28}{15}$, $m\\cdot\\dfrac{35}{18}$, $m\\cdot\\dfrac{14}{9}$가 모두 자연수이어야 한다.\n풀이 방향: 분모는 15, 18, 9의 최소공배수 90을 포함하고, 분자 28, 35, 14의 공통약수 7로 약분할 수 있다.\n정석 풀이: 가장 작은 분수는 $\\dfrac{90}{7}$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 여러 분수에 같은 수를 곱해 자연수를 만들려면 분모를 없애고 분자와 약분되는 형태를 찾는다.\n조건 정리: 곱할 수를 $m$이라 하면 $m\\cdot\\dfrac{28}{15}$, $m\\cdot\\dfrac{35}{18}$, $m\\cdot\\dfrac{14}{9}$가 모두 자연수이어야 한다.\n풀이 방향: 분모는 15, 18, 9의 최소공배수 90을 포함하고, 분자 28, 35, 14의 공통약수 7로 약분할 수 있다.\n정석 풀이: 가장 작은 분수는 $\\dfrac{90}{7}$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1198,7 +1346,11 @@ window.questionBank = [
     "content": "1에서 100까지의 자연수가 있을 때, 다음 물음에 답하여라.\n(1) 3의 배수는 모두 몇 개인가?\n(2) 12의 배수는 모두 몇 개인가?\n(3) 3 또는 4의 배수는 모두 몇 개인가?",
     "choices": [],
     "answer": "(1) 33개, (2) 8개, (3) 50개",
-    "solution": "[키포인트] 배수의 개수는 나눗셈의 몫으로 세고, 겹치는 배수는 한 번 빼야 한다.\n조건 정리: 1부터 100까지에서 3, 12, 4의 배수 개수를 각각 센다.\n풀이 방향: 3 또는 4의 배수는 포함과 배제의 원리를 이용한다.\n정석 풀이: 3의 배수는 $\\lfloor100\\div3\\rfloor=33$개, 12의 배수는 $\\lfloor100\\div12\\rfloor=8$개이다. 4의 배수는 25개이고, 3과 4의 공배수인 12의 배수는 8개이므로 3 또는 4의 배수는 $33+25-8=50$개이다.\n따라서 구하는 값은 (1) $33$개, (2) $8$개, (3) $50$개이다."
+    "solution": "[키포인트] 배수의 개수는 나눗셈의 몫으로 세고, 겹치는 배수는 한 번 빼야 한다.\n조건 정리: 1부터 100까지에서 3, 12, 4의 배수 개수를 각각 센다.\n풀이 방향: 3 또는 4의 배수는 포함과 배제의 원리를 이용한다.\n정석 풀이: 3의 배수는 $\\lfloor100\\div3\\rfloor=33$개, 12의 배수는 $\\lfloor100\\div12\\rfloor=8$개이다. 4의 배수는 25개이고, 3과 4의 공배수인 12의 배수는 8개이므로 3 또는 4의 배수는 $33+25-8=50$개이다.\n따라서 구하는 값은 (1) $33$개, (2) $8$개, (3) $50$개이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1225,7 +1377,11 @@ window.questionBank = [
     "content": "세 자연수의 비가 $2:3:5$이고 최소공배수가 150일 때, 세 자연수 중 가장 작은 수를 구하여라.",
     "choices": [],
     "answer": "10",
-    "solution": "[키포인트] 비로 나타낸 세 자연수를 공통 배수 $a$를 사용해 둔다.\n조건 정리: 세 자연수를 $2a, 3a, 5a$로 둔다.\n풀이 방향: 이 세 수의 최소공배수는 $2\\times3\\times5\\times a=30a$이다.\n정석 풀이: $30a=150$이므로 $a=5$이다. 세 자연수 중 가장 작은 수는 $2a=10$이다.\n따라서 구하는 값은 $10$이다."
+    "solution": "[키포인트] 비로 나타낸 세 자연수를 공통 배수 $a$를 사용해 둔다.\n조건 정리: 세 자연수를 $2a, 3a, 5a$로 둔다.\n풀이 방향: 이 세 수의 최소공배수는 $2\\times3\\times5\\times a=30a$이다.\n정석 풀이: $30a=150$이므로 $a=5$이다. 세 자연수 중 가장 작은 수는 $2a=10$이다.\n따라서 구하는 값은 $10$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 40,
@@ -1252,7 +1408,11 @@ window.questionBank = [
     "content": "배차 간격이 각각 6분, 9분, 15분인 세 버스가 8시 정각에 정류장에서 출발했다. 다시 세 버스가 동시에 정류장에서 출발하는 시각을 구하여라. (단, 버스가 정류장에 정차하여 있는 시간은 무시한다.)",
     "choices": [],
     "answer": "9시 30분",
-    "solution": "[키포인트] 다시 동시에 출발하는 시간 간격은 세 배차 간격의 최소공배수이다.\n조건 정리: 세 버스의 배차 간격은 6분, 9분, 15분이다.\n풀이 방향: 세 수의 최소공배수를 구해 8시 정각에 더한다.\n정석 풀이: $\\mathrm{lcm}(6,9,15)=90$분이므로 8시에서 90분 뒤는 9시 30분이다.\n따라서 구하는 값은 9시 30분이다."
+    "solution": "[키포인트] 다시 동시에 출발하는 시간 간격은 세 배차 간격의 최소공배수이다.\n조건 정리: 세 버스의 배차 간격은 6분, 9분, 15분이다.\n풀이 방향: 세 수의 최소공배수를 구해 8시 정각에 더한다.\n정석 풀이: $\\mathrm{lcm}(6,9,15)=90$분이므로 8시에서 90분 뒤는 9시 30분이다.\n따라서 구하는 값은 9시 30분이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1284,7 +1444,11 @@ window.questionBank = [
       "113"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 자리 소수의 최솟값과 최댓값을 찾는다.\n조건 정리: 두 자리 수 중 가장 작은 소수는 11이고 가장 큰 소수는 97이다.\n풀이 방향: 두 수를 더한다.\n정석 풀이: $97+11=108$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 자리 소수의 최솟값과 최댓값을 찾는다.\n조건 정리: 두 자리 수 중 가장 작은 소수는 11이고 가장 큰 소수는 97이다.\n풀이 방향: 두 수를 더한다.\n정석 풀이: $97+11=108$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1313,7 +1477,11 @@ window.questionBank = [
       "60"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 수를 소인수분해하여 2와 3 이외의 소인수가 있는지 본다.\n조건 정리: 12, 18, 24, 48은 모두 2와 3만으로 소인수분해된다.\n풀이 방향: 60을 소인수분해한다.\n정석 풀이: $60=2^2\\times3\\times5$이므로 5를 소인수로 갖는다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 수를 소인수분해하여 2와 3 이외의 소인수가 있는지 본다.\n조건 정리: 12, 18, 24, 48은 모두 2와 3만으로 소인수분해된다.\n풀이 방향: 60을 소인수분해한다.\n정석 풀이: $60=2^2\\times3\\times5$이므로 5를 소인수로 갖는다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1343,7 +1511,11 @@ window.questionBank = [
       "$\\dfrac{1}{x}\\times\\dfrac{1}{x}\\times\\dfrac{1}{x}\\times\\dfrac{1}{x}=\\dfrac{4}{x}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 반복 곱셈은 밑과 지수를 정확히 구분해야 한다.\n조건 정리: 각 보기의 좌변에 어떤 인수가 몇 번 곱해졌는지 확인한다.\n풀이 방향: ④에서는 2가 3번, 3이 2번 곱해졌다.\n정석 풀이: $2\\times3\\times2\\times3\\times2=2^3\\times3^2$이므로 ④가 옳다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 반복 곱셈은 밑과 지수를 정확히 구분해야 한다.\n조건 정리: 각 보기의 좌변에 어떤 인수가 몇 번 곱해졌는지 확인한다.\n풀이 방향: ④에서는 2가 3번, 3이 2번 곱해졌다.\n정석 풀이: $2\\times3\\times2\\times3\\times2=2^3\\times3^2$이므로 ④가 옳다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1375,7 +1547,11 @@ window.questionBank = [
       "한 변의 길이가 3인 정육면체의 부피 : $3^2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 거듭제곱과 실제 수량의 의미를 구분한다.\n조건 정리: 각 표현이 실제 의미와 맞는지 확인한다.\n풀이 방향: 일억은 $100000000$이므로 $10^8$이다.\n정석 풀이: 나머지 보기는 밑과 지수 또는 도형의 공식이 맞지 않는다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 거듭제곱과 실제 수량의 의미를 구분한다.\n조건 정리: 각 표현이 실제 의미와 맞는지 확인한다.\n풀이 방향: 일억은 $100000000$이므로 $10^8$이다.\n정석 풀이: 나머지 보기는 밑과 지수 또는 도형의 공식이 맞지 않는다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1406,7 +1582,11 @@ window.questionBank = [
       "30"
     ],
     "answer": "③",
-    "solution": "[키포인트] 180을 소인수분해하여 지수와 남은 소인수를 찾는다.\n조건 정리: $180$을 $2,3,5$의 소인수로 나타낸다.\n풀이 방향: $a, b, c$를 읽은 뒤 곱한다.\n정석 풀이: $180=2^2\\times3^2\\times5$이므로 $a=2, b=2, c=5$이다. 따라서 $a\\times b\\times c=20$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 180을 소인수분해하여 지수와 남은 소인수를 찾는다.\n조건 정리: $180$을 $2,3,5$의 소인수로 나타낸다.\n풀이 방향: $a, b, c$를 읽은 뒤 곱한다.\n정석 풀이: $180=2^2\\times3^2\\times5$이므로 $a=2, b=2, c=5$이다. 따라서 $a\\times b\\times c=20$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 46,
@@ -1437,7 +1617,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "[키포인트] 제곱수의 소인수 지수는 모두 짝수이다.\n조건 정리: $363$을 소인수분해한다.\n풀이 방향: 홀수 지수를 짝수로 만들 가장 작은 자연수를 곱한다.\n정석 풀이: $363=3\\times11^2$이므로 $3$의 지수만 홀수이다. 따라서 3을 곱하면 제곱수가 된다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 제곱수의 소인수 지수는 모두 짝수이다.\n조건 정리: $363$을 소인수분해한다.\n풀이 방향: 홀수 지수를 짝수로 만들 가장 작은 자연수를 곱한다.\n정석 풀이: $363=3\\times11^2$이므로 $3$의 지수만 홀수이다. 따라서 3을 곱하면 제곱수가 된다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1466,7 +1650,11 @@ window.questionBank = [
       "$x=3, y=2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 약수의 지수는 원래 수의 지수보다 클 수 없다.\n조건 정리: $3^3\\times7^2$의 약수에서 $3$의 지수는 0부터 3, $7$의 지수는 0부터 2까지 가능하다.\n풀이 방향: 각 보기의 $x, y$가 가능한 범위 안에 있는지 확인한다.\n정석 풀이: ④는 $y=3$으로 $7$의 지수가 2보다 크므로 약수가 될 수 없다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 약수의 지수는 원래 수의 지수보다 클 수 없다.\n조건 정리: $3^3\\times7^2$의 약수에서 $3$의 지수는 0부터 3, $7$의 지수는 0부터 2까지 가능하다.\n풀이 방향: 각 보기의 $x, y$가 가능한 범위 안에 있는지 확인한다.\n정석 풀이: ④는 $y=3$으로 $7$의 지수가 2보다 크므로 약수가 될 수 없다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1499,7 +1687,11 @@ window.questionBank = [
       "50"
     ],
     "answer": "③",
-    "solution": "[키포인트] 각 수를 소인수분해하여 약수의 개수를 비교한다.\n조건 정리: 약수의 개수는 지수에 1을 더해 곱한다.\n풀이 방향: 다섯 수의 약수의 개수를 각각 구한다.\n정석 풀이: $21=3\\times7$은 4개, $27=3^3$은 4개, $36=2^2\\times3^2$은 9개, $45=3^2\\times5$은 6개, $50=2\\times5^2$은 6개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 각 수를 소인수분해하여 약수의 개수를 비교한다.\n조건 정리: 약수의 개수는 지수에 1을 더해 곱한다.\n풀이 방향: 다섯 수의 약수의 개수를 각각 구한다.\n정석 풀이: $21=3\\times7$은 4개, $27=3^3$은 4개, $36=2^2\\times3^2$은 9개, $45=3^2\\times5$은 6개, $50=2\\times5^2$은 6개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1531,7 +1723,11 @@ window.questionBank = [
       "가장 큰 소수는 존재하지 않는다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 소수 2는 짝수이다.\n조건 정리: 소수와 약수의 정의를 기준으로 각 보기를 판단한다.\n풀이 방향: 2는 소수이면서 짝수이다.\n정석 풀이: 따라서 소수는 모두 홀수라는 ②는 옳지 않다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 소수 2는 짝수이다.\n조건 정리: 소수와 약수의 정의를 기준으로 각 보기를 판단한다.\n풀이 방향: 2는 소수이면서 짝수이다.\n정석 풀이: 따라서 소수는 모두 홀수라는 ②는 옳지 않다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1561,7 +1757,11 @@ window.questionBank = [
       "1, 2, $2^2$, $2^3$, 3, $3^2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 소인수는 소수인 인수만 말한다.\n조건 정리: $72$를 소인수분해한다.\n풀이 방향: 소인수분해에 나타나는 소수만 고른다.\n정석 풀이: $72=2^3\\times3^2$이므로 소인수는 2와 3이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 소인수는 소수인 인수만 말한다.\n조건 정리: $72$를 소인수분해한다.\n풀이 방향: 소인수분해에 나타나는 소수만 고른다.\n정석 풀이: $72=2^3\\times3^2$이므로 소인수는 2와 3이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1594,7 +1794,11 @@ window.questionBank = [
       "$2^2\\times3\\times5^2\\times7$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 최대공약수는 세 수에 공통으로 들어 있는 소인수의 가장 작은 지수로 만든다.\n조건 정리: 세 수에 모두 들어 있는 소인수는 $2$와 $3$이다.\n풀이 방향: 각 소인수의 최소 지수를 선택한다.\n정석 풀이: $2$의 최소 지수는 1, $3$의 최소 지수는 1이므로 최대공약수는 $2\\times3$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 최대공약수는 세 수에 공통으로 들어 있는 소인수의 가장 작은 지수로 만든다.\n조건 정리: 세 수에 모두 들어 있는 소인수는 $2$와 $3$이다.\n풀이 방향: 각 소인수의 최소 지수를 선택한다.\n정석 풀이: $2$의 최소 지수는 1, $3$의 최소 지수는 1이므로 최대공약수는 $2\\times3$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 52,
@@ -1628,7 +1832,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 같은 나머지가 남는 수는 공배수에 그 나머지를 더한 수이다.\n조건 정리: 구하는 수에서 5를 빼면 8과 12로 모두 나누어떨어진다.\n풀이 방향: $8$과 $12$의 최소공배수는 24이다.\n정석 풀이: 두 자리 수 중 $24k+5$ 꼴은 29, 53, 77로 3개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 같은 나머지가 남는 수는 공배수에 그 나머지를 더한 수이다.\n조건 정리: 구하는 수에서 5를 빼면 8과 12로 모두 나누어떨어진다.\n풀이 방향: $8$과 $12$의 최소공배수는 24이다.\n정석 풀이: 두 자리 수 중 $24k+5$ 꼴은 29, 53, 77로 3개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1660,7 +1868,11 @@ window.questionBank = [
       "120초"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 신호등이 다시 켜지는 주기의 최소공배수를 구한다.\n조건 정리: $A$의 주기는 $30+10=40$초이고, $B$의 주기는 $20+5=25$초이다.\n풀이 방향: 두 신호등이 동시에 다시 켜지는 시간은 40과 25의 최소공배수이다.\n정석 풀이: $\\mathrm{lcm}(40,25)=200$이므로 200초가 걸린다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 각 신호등이 다시 켜지는 주기의 최소공배수를 구한다.\n조건 정리: $A$의 주기는 $30+10=40$초이고, $B$의 주기는 $20+5=25$초이다.\n풀이 방향: 두 신호등이 동시에 다시 켜지는 시간은 40과 25의 최소공배수이다.\n정석 풀이: $\\mathrm{lcm}(40,25)=200$이므로 200초가 걸린다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1692,7 +1904,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "①",
-    "solution": "[키포인트] 공통으로 곱해진 $a$를 분리하여 최소공배수를 계산한다.\n조건 정리: $3, 8, 10$의 최소공배수는 120이다.\n풀이 방향: $3a,8a,10a$의 최소공배수는 $120a$이다.\n정석 풀이: $120a=240$이므로 $a=2$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 공통으로 곱해진 $a$를 분리하여 최소공배수를 계산한다.\n조건 정리: $3, 8, 10$의 최소공배수는 120이다.\n풀이 방향: $3a,8a,10a$의 최소공배수는 $120a$이다.\n정석 풀이: $120a=240$이므로 $a=2$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 55,
@@ -1726,7 +1942,11 @@ window.questionBank = [
       "5개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 최대공약수가 12가 되도록 $a=12k$로 둔다.\n조건 정리: $a$는 50보다 큰 두 자리 자연수이고 36과의 최대공약수가 12이다.\n풀이 방향: $36=12\\times3$이므로 $a=12k$일 때 $k$는 3과 서로소이어야 한다.\n정석 풀이: 두 자리이고 50보다 큰 $12k$는 60, 72, 84, 96이다. 이 중 $k=5,7,8$에 해당하는 60, 84, 96만 조건을 만족하므로 3개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 최대공약수가 12가 되도록 $a=12k$로 둔다.\n조건 정리: $a$는 50보다 큰 두 자리 자연수이고 36과의 최대공약수가 12이다.\n풀이 방향: $36=12\\times3$이므로 $a=12k$일 때 $k$는 3과 서로소이어야 한다.\n정석 풀이: 두 자리이고 50보다 큰 $12k$는 60, 72, 84, 96이다. 이 중 $k=5,7,8$에 해당하는 60, 84, 96만 조건을 만족하므로 3개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 56,
@@ -1759,7 +1979,11 @@ window.questionBank = [
       "88개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 전체에서 6 또는 9의 배수를 뺀다.\n조건 정리: 1부터 100까지의 자연수는 100개이다.\n풀이 방향: 6의 배수와 9의 배수의 개수를 세고, 공통으로 센 18의 배수를 한 번 빼야 한다.\n정석 풀이: 6의 배수는 16개, 9의 배수는 11개, 18의 배수는 5개이므로 6 또는 9의 배수는 $16+11-5=22$개이다. 따라서 아닌 수는 $100-22=78$개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 전체에서 6 또는 9의 배수를 뺀다.\n조건 정리: 1부터 100까지의 자연수는 100개이다.\n풀이 방향: 6의 배수와 9의 배수의 개수를 세고, 공통으로 센 18의 배수를 한 번 빼야 한다.\n정석 풀이: 6의 배수는 16개, 9의 배수는 11개, 18의 배수는 5개이므로 6 또는 9의 배수는 $16+11-5=22$개이다. 따라서 아닌 수는 $100-22=78$개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 57,
@@ -1787,7 +2011,11 @@ window.questionBank = [
     "content": "자연수 32와 48의 최대공약수를 $a$, 최소공배수를 $b$라 할 때, $\\dfrac{b}{a}$의 값을 구하여라.",
     "choices": [],
     "answer": "6",
-    "solution": "[키포인트] 최대공약수와 최소공배수를 각각 구해 비를 계산한다.\n조건 정리: $32=2^5$, $48=2^4\\times3$이다.\n풀이 방향: 최대공약수는 공통 소인수의 작은 지수, 최소공배수는 큰 지수로 만든다.\n정석 풀이: $a=2^4=16$, $b=2^5\\times3=96$이므로 $\\dfrac{b}{a}=\\dfrac{96}{16}=6$이다.\n따라서 구하는 값은 $6$이다."
+    "solution": "[키포인트] 최대공약수와 최소공배수를 각각 구해 비를 계산한다.\n조건 정리: $32=2^5$, $48=2^4\\times3$이다.\n풀이 방향: 최대공약수는 공통 소인수의 작은 지수, 최소공배수는 큰 지수로 만든다.\n정석 풀이: $a=2^4=16$, $b=2^5\\times3=96$이므로 $\\dfrac{b}{a}=\\dfrac{96}{16}=6$이다.\n따라서 구하는 값은 $6$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 58,
@@ -1814,7 +2042,11 @@ window.questionBank = [
     "content": "$2^a\\times3^2\\times7$의 약수의 개수가 24개일 때, $a$의 값을 구하여라.",
     "choices": [],
     "answer": "3",
-    "solution": "[키포인트] 약수의 개수 공식으로 $a$에 대한 식을 세운다.\n조건 정리: 소인수분해된 수의 약수의 개수는 $(a+1)(2+1)(1+1)$이다.\n풀이 방향: 이 값이 24가 되도록 한다.\n정석 풀이: $(a+1)\\times3\\times2=24$이므로 $a+1=4$, 따라서 $a=3$이다.\n따라서 구하는 값은 $3$이다."
+    "solution": "[키포인트] 약수의 개수 공식으로 $a$에 대한 식을 세운다.\n조건 정리: 소인수분해된 수의 약수의 개수는 $(a+1)(2+1)(1+1)$이다.\n풀이 방향: 이 값이 24가 되도록 한다.\n정석 풀이: $(a+1)\\times3\\times2=24$이므로 $a+1=4$, 따라서 $a=3$이다.\n따라서 구하는 값은 $3$이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 59,
@@ -1842,7 +2074,11 @@ window.questionBank = [
     "content": "두 수 $2^3\\times3\\times7$와 $2^a\\times3^b\\times c$의 최대공약수가 $2^2\\times3$이고, 최소공배수가 $2^3\\times3^3\\times5\\times7$일 때, $a+b+c$의 값을 구하여라.",
     "choices": [],
     "answer": "10",
-    "solution": "[키포인트] 최대공약수와 최소공배수의 지수 조건을 각각 비교한다.\n조건 정리: 각 소인수별로 최대공약수는 작은 지수, 최소공배수는 큰 지수를 가진다.\n풀이 방향: $2$의 지수 조건에서 $a=2$, $3$의 지수 조건에서 $b=3$이 된다.\n정석 풀이: 최소공배수에 $5$가 있고 첫 번째 수에는 없으므로 $c=5$이다. 따라서 $a+b+c=2+3+5=10$이다.\n따라서 구하는 값은 $10$이다."
+    "solution": "[키포인트] 최대공약수와 최소공배수의 지수 조건을 각각 비교한다.\n조건 정리: 각 소인수별로 최대공약수는 작은 지수, 최소공배수는 큰 지수를 가진다.\n풀이 방향: $2$의 지수 조건에서 $a=2$, $3$의 지수 조건에서 $b=3$이 된다.\n정석 풀이: 최소공배수에 $5$가 있고 첫 번째 수에는 없으므로 $c=5$이다. 따라서 $a+b+c=2+3+5=10$이다.\n따라서 구하는 값은 $10$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 60,
@@ -1870,7 +2106,11 @@ window.questionBank = [
     "content": "어느 모임에서 6명씩 한 팀을 만들고, 다음에는 9명씩, 또 다음에는 12명씩 한 팀을 만들어 게임을 하려 했더니 항상 5명이 남았다고 한다. 이 모임에 참석한 사람은 몇 명인지 구하여라. (단, 전체 인원은 50명 이하이다.)",
     "choices": [],
     "answer": "41명",
-    "solution": "[키포인트] 항상 같은 나머지가 남으면 그 나머지를 뺀 수가 공배수이다.\n조건 정리: 전체 인원에서 5를 빼면 6, 9, 12로 모두 나누어떨어진다.\n풀이 방향: 6, 9, 12의 최소공배수는 36이다.\n정석 풀이: 전체 인원은 $36k+5$이고 50명 이하이므로 가능한 값은 $36+5=41$명이다.\n따라서 구하는 값은 $41$명이다."
+    "solution": "[키포인트] 항상 같은 나머지가 남으면 그 나머지를 뺀 수가 공배수이다.\n조건 정리: 전체 인원에서 5를 빼면 6, 9, 12로 모두 나누어떨어진다.\n풀이 방향: 6, 9, 12의 최소공배수는 36이다.\n정석 풀이: 전체 인원은 $36k+5$이고 50명 이하이므로 가능한 값은 $36+5=41$명이다.\n따라서 구하는 값은 $41$명이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 61,
@@ -1902,7 +2142,11 @@ window.questionBank = [
       "120"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소인수분해 후 약수의 개수를 비교한다.\n조건 정리: 각 수의 약수의 개수를 구한다.\n풀이 방향: 지수에 1을 더해 곱한다.\n정석 풀이: ①은 20개, ②는 18개, ③은 $(2+1)(1+1)=6$개, ④는 9개, ⑤는 16개이다. 가장 적은 것은 ③이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 소인수분해 후 약수의 개수를 비교한다.\n조건 정리: 각 수의 약수의 개수를 구한다.\n풀이 방향: 지수에 1을 더해 곱한다.\n정석 풀이: ①은 20개, ②는 18개, ③은 $(2+1)(1+1)=6$개, ④는 9개, ⑤는 16개이다. 가장 적은 것은 ③이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 62,
@@ -1936,7 +2180,11 @@ window.questionBank = [
       "(ㄷ), (ㄹ)"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소수와 합성수의 정의로 각 문장을 판단한다.\n조건 정리: 소수는 약수가 2개이고, 합성수는 약수가 3개 이상인 자연수이다.\n풀이 방향: 각 보기를 반례와 정의로 확인한다.\n정석 풀이: ㄱ은 2가 소수이므로 거짓, ㄴ은 $1\\times2=2$처럼 합성수가 아닌 경우가 있어 거짓이다. ㄷ, ㄹ은 참이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 소수와 합성수의 정의로 각 문장을 판단한다.\n조건 정리: 소수는 약수가 2개이고, 합성수는 약수가 3개 이상인 자연수이다.\n풀이 방향: 각 보기를 반례와 정의로 확인한다.\n정석 풀이: ㄱ은 2가 소수이므로 거짓, ㄴ은 $1\\times2=2$처럼 합성수가 아닌 경우가 있어 거짓이다. ㄷ, ㄹ은 참이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 63,
@@ -1966,7 +2214,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "[키포인트] 64와 243을 같은 밑의 거듭제곱으로 나타낸다.\n조건 정리: $64$는 $2$의 거듭제곱이고, $243$은 $3$의 거듭제곱이다.\n풀이 방향: 각 지수를 읽어 $x, y$를 구한다.\n정석 풀이: $64=2^6$, $243=3^5$이므로 $x=6, y=5$이다. 따라서 $x+y=11$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 64와 243을 같은 밑의 거듭제곱으로 나타낸다.\n조건 정리: $64$는 $2$의 거듭제곱이고, $243$은 $3$의 거듭제곱이다.\n풀이 방향: 각 지수를 읽어 $x, y$를 구한다.\n정석 풀이: $64=2^6$, $243=3^5$이므로 $x=6, y=5$이다. 따라서 $x+y=11$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 64,
@@ -1997,7 +2249,11 @@ window.questionBank = [
       "35"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소인수는 소수인 인수만 말한다.\n조건 정리: $368$을 소인수분해한다.\n풀이 방향: 나타나는 서로 다른 소인수들을 더한다.\n정석 풀이: $368=16\\times23=2^4\\times23$이므로 소인수는 2와 23이다. 합은 $2+23=25$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 소인수는 소수인 인수만 말한다.\n조건 정리: $368$을 소인수분해한다.\n풀이 방향: 나타나는 서로 다른 소인수들을 더한다.\n정석 풀이: $368=16\\times23=2^4\\times23$이므로 소인수는 2와 23이다. 합은 $2+23=25$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 65,
@@ -2031,7 +2287,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 6과 서로소이려면 2와 3을 소인수로 갖지 않아야 한다.\n조건 정리: 25 이상 35 이하의 자연수 중 2나 3의 배수를 제외한다.\n풀이 방향: 남은 수를 직접 확인한다.\n정석 풀이: 조건을 만족하는 수는 25, 29, 31, 35로 모두 4개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 6과 서로소이려면 2와 3을 소인수로 갖지 않아야 한다.\n조건 정리: 25 이상 35 이하의 자연수 중 2나 3의 배수를 제외한다.\n풀이 방향: 남은 수를 직접 확인한다.\n정석 풀이: 조건을 만족하는 수는 25, 29, 31, 35로 모두 4개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 66,
@@ -2062,7 +2322,11 @@ window.questionBank = [
       "$2\\times3\\times5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 약수의 각 소인수 지수는 원래 수의 지수를 넘을 수 없다.\n조건 정리: 주어진 수에서 $2$의 지수는 1, $3$의 지수는 3, $5$의 지수는 2, $7$의 지수는 1이다.\n풀이 방향: 각 보기의 지수가 이 범위를 넘는지 확인한다.\n정석 풀이: ②는 $2^2$를 포함하여 $2$의 지수가 2이므로 원래 수의 지수 1을 넘는다. 따라서 약수가 아니다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 약수의 각 소인수 지수는 원래 수의 지수를 넘을 수 없다.\n조건 정리: 주어진 수에서 $2$의 지수는 1, $3$의 지수는 3, $5$의 지수는 2, $7$의 지수는 1이다.\n풀이 방향: 각 보기의 지수가 이 범위를 넘는지 확인한다.\n정석 풀이: ②는 $2^2$를 포함하여 $2$의 지수가 2이므로 원래 수의 지수 1을 넘는다. 따라서 약수가 아니다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 67,
@@ -2096,7 +2360,11 @@ window.questionBank = [
       "18개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 공약수의 개수는 최대공약수의 약수의 개수와 같다.\n조건 정리: 세 수의 최대공약수를 구한다.\n풀이 방향: 공통인 소인수의 가장 작은 지수를 선택한다.\n정석 풀이: 최대공약수는 $2^2\\times5^2$이고, 약수의 개수는 $(2+1)(2+1)=9$개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 공약수의 개수는 최대공약수의 약수의 개수와 같다.\n조건 정리: 세 수의 최대공약수를 구한다.\n풀이 방향: 공통인 소인수의 가장 작은 지수를 선택한다.\n정석 풀이: 최대공약수는 $2^2\\times5^2$이고, 약수의 개수는 $(2+1)(2+1)=9$개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 68,
@@ -2128,7 +2396,11 @@ window.questionBank = [
       "49"
     ],
     "answer": "②",
-    "solution": "[키포인트] 곱한 뒤 소인수분해하여 약수의 개수가 30이 되는지 확인한다.\n조건 정리: $48=2^4\\times3$이다.\n풀이 방향: 각 보기를 곱해 약수의 개수가 30개인지 계산한다.\n정석 풀이: $18=2\\times3^2$를 넣으면 $48\\times18=2^5\\times3^3$이고 약수의 개수는 $(5+1)(3+1)=24$개이다. 따라서 18은 들어갈 수 없다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 곱한 뒤 소인수분해하여 약수의 개수가 30이 되는지 확인한다.\n조건 정리: $48=2^4\\times3$이다.\n풀이 방향: 각 보기를 곱해 약수의 개수가 30개인지 계산한다.\n정석 풀이: $18=2\\times3^2$를 넣으면 $48\\times18=2^5\\times3^3$이고 약수의 개수는 $(5+1)(3+1)=24$개이다. 따라서 18은 들어갈 수 없다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 69,
@@ -2162,7 +2434,11 @@ window.questionBank = [
       "10 이하의 자연수 중에서 2와 서로소인 것은 5개이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 서로소인 두 수가 반드시 소수일 필요는 없다.\n조건 정리: 서로소는 최대공약수가 1인 두 수이다.\n풀이 방향: 합성수끼리도 공약수가 1뿐이면 서로소가 될 수 있다.\n정석 풀이: 예를 들어 4와 9는 둘 다 합성수이지만 서로소이다. 따라서 ②는 옳지 않다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 서로소인 두 수가 반드시 소수일 필요는 없다.\n조건 정리: 서로소는 최대공약수가 1인 두 수이다.\n풀이 방향: 합성수끼리도 공약수가 1뿐이면 서로소가 될 수 있다.\n정석 풀이: 예를 들어 4와 9는 둘 다 합성수이지만 서로소이다. 따라서 ②는 옳지 않다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 70,
@@ -2194,7 +2470,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 나눗셈 식을 세워 5로 나눈 나머지를 본다.\n조건 정리: $a$를 $b$로 나누면 몫이 15, 나머지가 17이므로 $a=15b+17$이다.\n풀이 방향: $15b$는 5의 배수이므로 나머지는 17의 나머지만 보면 된다.\n정석 풀이: $17$을 5로 나누면 나머지가 2이므로 $a$를 5로 나눈 나머지는 2이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 나눗셈 식을 세워 5로 나눈 나머지를 본다.\n조건 정리: $a$를 $b$로 나누면 몫이 15, 나머지가 17이므로 $a=15b+17$이다.\n풀이 방향: $15b$는 5의 배수이므로 나머지는 17의 나머지만 보면 된다.\n정석 풀이: $17$을 5로 나누면 나머지가 2이므로 $a$를 5로 나눈 나머지는 2이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 71,
@@ -2222,7 +2502,11 @@ window.questionBank = [
     "content": "약수의 개수가 12개인 수 중에서 가장 작은 수를 구하여라.",
     "choices": [],
     "answer": "60",
-    "solution": "[키포인트] 약수의 개수가 12개가 되도록 가장 작은 소인수 조합을 찾는다.\n조건 정리: 약수의 개수가 12가 되는 지수 조합은 $11$, $5,1$, $3,2$, $2,1,1$ 등이 있다.\n풀이 방향: 가장 작은 수를 만들려면 작은 소수에 큰 지수를 배치하고 경우를 비교한다.\n정석 풀이: $2^2\\times3\\times5=60$의 약수의 개수는 $(2+1)(1+1)(1+1)=12$개이다. $2^3\\times3^2=72$보다 작으므로 가장 작은 수는 60이다.\n따라서 구하는 값은 $60$이다."
+    "solution": "[키포인트] 약수의 개수가 12개가 되도록 가장 작은 소인수 조합을 찾는다.\n조건 정리: 약수의 개수가 12가 되는 지수 조합은 $11$, $5,1$, $3,2$, $2,1,1$ 등이 있다.\n풀이 방향: 가장 작은 수를 만들려면 작은 소수에 큰 지수를 배치하고 경우를 비교한다.\n정석 풀이: $2^2\\times3\\times5=60$의 약수의 개수는 $(2+1)(1+1)(1+1)=12$개이다. $2^3\\times3^2=72$보다 작으므로 가장 작은 수는 60이다.\n따라서 구하는 값은 $60$이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 72,
@@ -2256,7 +2540,11 @@ window.questionBank = [
       "288"
     ],
     "answer": "④",
-    "solution": "[키포인트] 세 수의 최대공약수가 36이 되려면 $n$도 36의 배수이어야 한다.\n조건 정리: $108$과 $180$의 최대공약수는 36이다.\n풀이 방향: $108,180,n$의 최대공약수가 36이 되려면 $n$은 36으로 나누어떨어져야 한다.\n정석 풀이: 보기 중 262는 36의 배수가 아니므로 $n$의 값이 될 수 없다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 세 수의 최대공약수가 36이 되려면 $n$도 36의 배수이어야 한다.\n조건 정리: $108$과 $180$의 최대공약수는 36이다.\n풀이 방향: $108,180,n$의 최대공약수가 36이 되려면 $n$은 36으로 나누어떨어져야 한다.\n정석 풀이: 보기 중 262는 36의 배수가 아니므로 $n$의 값이 될 수 없다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 73,
@@ -2290,7 +2578,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 수에서 나머지를 뺀 값은 어떤 자연수로 나누어떨어진다.\n조건 정리: 나누는 수를 $d$라 하면 $d$는 $72-2=70$, $90-6=84$, $120-8=112$의 공약수이다.\n풀이 방향: 또 나머지 8보다 커야 하므로 $d>8$이어야 한다.\n정석 풀이: $70,84,112$의 최대공약수는 14이고, 보기 중 조건을 만족하는 수는 14이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 수에서 나머지를 뺀 값은 어떤 자연수로 나누어떨어진다.\n조건 정리: 나누는 수를 $d$라 하면 $d$는 $72-2=70$, $90-6=84$, $120-8=112$의 공약수이다.\n풀이 방향: 또 나머지 8보다 커야 하므로 $d>8$이어야 한다.\n정석 풀이: $70,84,112$의 최대공약수는 14이고, 보기 중 조건을 만족하는 수는 14이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 74,
@@ -2320,7 +2612,11 @@ window.questionBank = [
       "48"
     ],
     "answer": "②",
-    "solution": "[키포인트] $432\\div x$가 제곱수인지 각 보기를 확인한다.\n조건 정리: $432=2^4\\times3^3$이다.\n풀이 방향: 각 보기로 나눈 결과의 소인수 지수가 모두 짝수인지 확인한다.\n정석 풀이: $432\\div6=72=2^3\\times3^2$로 $2$의 지수가 홀수이므로 제곱수가 아니다. 따라서 6은 적당하지 않다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $432\\div x$가 제곱수인지 각 보기를 확인한다.\n조건 정리: $432=2^4\\times3^3$이다.\n풀이 방향: 각 보기로 나눈 결과의 소인수 지수가 모두 짝수인지 확인한다.\n정석 풀이: $432\\div6=72=2^3\\times3^2$로 $2$의 지수가 홀수이므로 제곱수가 아니다. 따라서 6은 적당하지 않다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 75,
@@ -2354,7 +2650,11 @@ window.questionBank = [
       "14개"
     ],
     "answer": "④",
-    "solution": "[키포인트] 2, 5, 7로 모두 나누어떨어지는 수는 세 수의 최소공배수의 배수이다.\n조건 정리: $2,5,7$의 최소공배수는 $70$이다.\n풀이 방향: 세 자리 자연수 중 70의 배수를 센다.\n정석 풀이: 세 자리 70의 배수는 140부터 980까지이고, 개수는 $14-1=13$개이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 2, 5, 7로 모두 나누어떨어지는 수는 세 수의 최소공배수의 배수이다.\n조건 정리: $2,5,7$의 최소공배수는 $70$이다.\n풀이 방향: 세 자리 자연수 중 70의 배수를 센다.\n정석 풀이: 세 자리 70의 배수는 140부터 980까지이고, 개수는 $14-1=13$개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 76,
@@ -2388,7 +2688,11 @@ window.questionBank = [
       "$2^4\\times3^3$, $2^4\\times3^3\\times5\\times7$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 최대공약수는 작은 지수, 최소공배수는 큰 지수를 선택한다.\n조건 정리: 두 수의 소인수별 지수를 비교한다.\n풀이 방향: 공통 소인수 $2,3$은 최대공약수에서 작은 지수를 선택하고, 최소공배수에는 모든 소인수를 큰 지수로 넣는다.\n정석 풀이: 최대공약수는 $2^2\\times3$이고, 최소공배수는 $2^3\\times3^3\\times5\\times7$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 최대공약수는 작은 지수, 최소공배수는 큰 지수를 선택한다.\n조건 정리: 두 수의 소인수별 지수를 비교한다.\n풀이 방향: 공통 소인수 $2,3$은 최대공약수에서 작은 지수를 선택하고, 최소공배수에는 모든 소인수를 큰 지수로 넣는다.\n정석 풀이: 최대공약수는 $2^2\\times3$이고, 최소공배수는 $2^3\\times3^3\\times5\\times7$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 77,
@@ -2415,7 +2719,11 @@ window.questionBank = [
     "content": "다음 부등식이 성립할 때, $□$ 안에 알맞은 지수 중에서 가장 작은 자연수를 구하여라.\n(1) $100<3^{□}$\n(2) $250<5^{□}$",
     "choices": [],
     "answer": "(1) 5, (2) 4",
-    "solution": "[키포인트] 거듭제곱 값을 차례로 비교하여 처음으로 커지는 지수를 찾는다.\n조건 정리: 각 밑의 거듭제곱 값을 계산하여 주어진 수보다 커지는 순간을 찾는다.\n풀이 방향: (1)은 $3^4=81$, $3^5=243$이고, (2)는 $5^3=125$, $5^4=625$이다.\n정석 풀이: 따라서 가장 작은 자연수 지수는 (1) 5, (2) 4이다.\n따라서 구하는 값은 (1) $5$, (2) $4$이다."
+    "solution": "[키포인트] 거듭제곱 값을 차례로 비교하여 처음으로 커지는 지수를 찾는다.\n조건 정리: 각 밑의 거듭제곱 값을 계산하여 주어진 수보다 커지는 순간을 찾는다.\n풀이 방향: (1)은 $3^4=81$, $3^5=243$이고, (2)는 $5^3=125$, $5^4=625$이다.\n정석 풀이: 따라서 가장 작은 자연수 지수는 (1) 5, (2) 4이다.\n따라서 구하는 값은 (1) $5$, (2) $4$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 78,
@@ -2442,7 +2750,11 @@ window.questionBank = [
     "content": "4, 5, 6의 어느 것으로 나누어도 나머지가 1이 되는 수 중에서 가장 작은 수를 구하여라.",
     "choices": [],
     "answer": "61",
-    "solution": "[키포인트] 나머지가 모두 1이면 1을 뺀 수가 공배수이다.\n조건 정리: 구하는 수를 $N$이라 하면 $N-1$은 4, 5, 6의 공배수이다.\n풀이 방향: 가장 작은 양의 공배수는 세 수의 최소공배수이다.\n정석 풀이: $\\mathrm{lcm}(4,5,6)=60$이므로 가장 작은 수는 $60+1=61$이다.\n따라서 구하는 값은 $61$이다."
+    "solution": "[키포인트] 나머지가 모두 1이면 1을 뺀 수가 공배수이다.\n조건 정리: 구하는 수를 $N$이라 하면 $N-1$은 4, 5, 6의 공배수이다.\n풀이 방향: 가장 작은 양의 공배수는 세 수의 최소공배수이다.\n정석 풀이: $\\mathrm{lcm}(4,5,6)=60$이므로 가장 작은 수는 $60+1=61$이다.\n따라서 구하는 값은 $61$이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 79,
@@ -2470,7 +2782,11 @@ window.questionBank = [
     "content": "가로, 세로, 높이의 길이가 각각 6 cm, 8 cm, 4 cm인 직육면체 모양의 상자를 빈틈없이 쌓아서 가장 작은 정육면체의 상자를 만들려고 한다. 이때 필요한 상자의 개수를 구하여라.",
     "choices": [],
     "answer": "72개",
-    "solution": "[키포인트] 가장 작은 정육면체의 한 변은 세 길이의 최소공배수이다.\n조건 정리: 정육면체의 한 변은 6, 8, 4의 공배수이어야 한다.\n풀이 방향: 가장 작은 한 변은 $\\mathrm{lcm}(6,8,4)=24$ cm이다.\n정석 풀이: 필요한 상자의 개수는 $(24\\div6)\\times(24\\div8)\\times(24\\div4)=4\\times3\\times6=72$개이다.\n따라서 구하는 값은 $72$개이다."
+    "solution": "[키포인트] 가장 작은 정육면체의 한 변은 세 길이의 최소공배수이다.\n조건 정리: 정육면체의 한 변은 6, 8, 4의 공배수이어야 한다.\n풀이 방향: 가장 작은 한 변은 $\\mathrm{lcm}(6,8,4)=24$ cm이다.\n정석 풀이: 필요한 상자의 개수는 $(24\\div6)\\times(24\\div8)\\times(24\\div4)=4\\times3\\times6=72$개이다.\n따라서 구하는 값은 $72$개이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 80,
@@ -2498,6 +2814,10 @@ window.questionBank = [
     "content": "둘레의 길이가 30 cm, 40 cm인 두 원 $O, O\\prime$이 점 $P$에서 만나고 있다. 두 원이 맞물려서 회전할 때, 점 $P$에서 다시 만날 때까지 원 $O$는 몇 바퀴를 회전해야 하는지 구하여라.",
     "choices": [],
     "answer": "4바퀴",
-    "solution": "[키포인트] 맞물려 회전할 때 다시 만나는 거리는 두 둘레의 최소공배수이다.\n조건 정리: 두 원의 둘레는 각각 30 cm, 40 cm이다.\n풀이 방향: 점 $P$에서 다시 만나려면 두 원이 이동한 길이가 두 둘레의 공배수여야 한다.\n정석 풀이: $\\mathrm{lcm}(30,40)=120$ cm이고, 원 $O$의 둘레는 30 cm이므로 $120\\div30=4$바퀴이다.\n따라서 구하는 값은 $4$바퀴이다."
+    "solution": "[키포인트] 맞물려 회전할 때 다시 만나는 거리는 두 둘레의 최소공배수이다.\n조건 정리: 두 원의 둘레는 각각 30 cm, 40 cm이다.\n풀이 방향: 점 $P$에서 다시 만나려면 두 원이 이동한 길이가 두 둘레의 공배수여야 한다.\n정석 풀이: $\\mathrm{lcm}(30,40)=120$ cm이고, 원 $O$의 둘레는 30 cm이므로 $120\\div30=4$바퀴이다.\n따라서 구하는 값은 $4$바퀴이다.",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

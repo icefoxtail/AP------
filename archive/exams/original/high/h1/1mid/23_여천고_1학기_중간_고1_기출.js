@@ -17,12 +17,22 @@ window.questionBank = [
     "originalCategory": "다항식의 연산",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnit": "다항식의 연산",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","조건해석","계산","중난도"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "조건해석",
+      "계산",
+      "중난도"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -40,13 +50,23 @@ window.questionBank = [
     "solution": "$z$를 실수부분과 허수부분으로 정리하면,\n$z = (a^2-5a+6) + (a^2-4a+3)i$\n$z^2$이 음의 실수가 되려면 $z$는 순허수이어야 하므로,\n실수부분 $a^2-5a+6 = 0$ 이고 허수부분 $a^2-4a+3 \\ne 0$ 이어야 한다.\n$a^2-5a+6 = 0 \\rightarrow (a-2)(a-3) = 0 \\rightarrow a=2$ 또는 $a=3$\n$a^2-4a+3 \\ne 0 \\rightarrow (a-1)(a-3) \\ne 0 \\rightarrow a \\ne 1$ 이고 $a \\ne 3$\n따라서 조건을 만족하는 실수 $a$의 값은 $2$뿐이며 그 합도 $2$이다.",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","복소수","부등식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "복소수",
+      "부등식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+    "subUnit": "복소수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -65,12 +85,22 @@ window.questionBank = [
     "originalCategory": "나머지정리",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnit": "다항식의 연산",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","나머지정리","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "나머지정리",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+    "subUnit": "다항식의 나눗셈",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -89,12 +119,23 @@ window.questionBank = [
     "originalCategory": "곱셈공식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnit": "다항식의 연산",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","곱셈공식","대입","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "곱셈공식",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -112,13 +153,23 @@ window.questionBank = [
     "solution": "$f(x)$가 $x-1$을 인수로 가지므로 $f(1)=0$ 이다.\n$f(1) = 2 - 3 - 2 + a = 0 \\rightarrow a=3$\n$f(x) = 2x^3 - 3x^2 - 2x + 3$을 조립제법으로 $(x-1)$로 나누면,\n$f(x) = (x-1)(2x^2-x-3)$ 이 되므로 $g(x) = 2x^2-x-3$ 이다.\n$g(x)$의 모든 계수들과 상수항의 합은 $g(1)$의 값과 같으므로,\n$g(1) = 2(1)^2 - 1 - 3 = -2$ 이다.",
     "originalCategory": "인수분해",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H15-SA-03",
+    "standardUnit": "인수분해",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","계수비교","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "계수비교",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -136,13 +187,25 @@ window.questionBank = [
     "solution": "$i$의 거듭제곱의 성질($i^2=-1, i^3=-i, i^4=1, i^5=i$)을 이용하여 식을 간단히 하면,\n$\\frac{1}{i} = -i$\n$\\frac{2}{i^2} = \\frac{2}{-1} = -2$\n$\\frac{3}{i^3} = \\frac{3}{-i} = 3i$\n$\\frac{4}{i^4} = \\frac{4}{1} = 4$\n$\\frac{5}{i^5} = \\frac{5}{i} = -5i$\n주어진 식의 합은 $-i - 2 + 3i + 4 - 5i = 2 - 3i$ 이다.\n따라서 $a=2, b=-3$이므로 $ab = -6$ 이다.",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","복소수","지수","부등식","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "복소수",
+      "지수",
+      "부등식",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+    "subUnit": "복소수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -160,13 +223,26 @@ window.questionBank = [
     "solution": "음수의 제곱근 성질을 이용하여 $z$를 정리한다.\n$\\sqrt{-1}\\sqrt{-16} = -\\sqrt{(-1)(-16)} = -\\sqrt{16} = -4$\n$\\frac{\\sqrt{18}}{\\sqrt{-2}} = -\\sqrt{\\frac{18}{-2}} = -\\sqrt{-9} = -3i$\n따라서 $z = -4 - 3i$ 이다.\n$z\\bar{z} = (-4 - 3i)(-4 + 3i) = (-4)^2 - (3i)^2 = 16 + 9 = 25$",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","복소수","부등식","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "복소수",
+      "부등식",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+    "subUnit": "복소수의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -184,13 +260,25 @@ window.questionBank = [
     "solution": "좌변을 인수분해하기 위해 조립제법 등을 활용하여 정리한다.\n$2a^3+3a^2b-b^3 = (a+b)(2a^2+ab-b^2) = (a+b)^2(2a-b) = 121$\n$121 = 11^2 \\times 1$ 이고, $a, b$는 자연수이므로 $a+b \\ge 2$이다.\n따라서 $(a+b)^2 = 11^2$ 이고 $2a-b = 1$ 이어야 한다.\n$a+b = 11$\n$2a-b = 1$\n두 식을 연립하면 $3a = 12 \\rightarrow a=4$, 대입하면 $b=7$이다.\n따라서 $ab = 4 \\times 7 = 28$이다.",
     "originalCategory": "다항식의 연산",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H15-SA-03",
+    "standardUnit": "인수분해",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","자연수조건","대입","계산","응용"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "자연수조건",
+      "대입",
+      "계산",
+      "응용"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -208,13 +296,23 @@ window.questionBank = [
     "solution": "$7^6-1$을 합차공식을 이용하여 인수분해한다.\n$7^6-1 = (7^3-1)(7^3+1) = (343-1)(343+1) = 342 \\times 344$\n$342$와 $344$를 소인수분해하면,\n$342 = 2 \\times 171 = 2 \\times 3^2 \\times 19$\n$344 = 8 \\times 43 = 2^3 \\times 43$\n따라서 $7^6-1 = 2^4 \\times 3^2 \\times 19 \\times 43$ 이다.\n① $6 = 2 \\times 3$ (나누어떨어짐)\n② $10 = 2 \\times 5$ (소인수 5가 없으므로 나누어떨어지지 않음)\n③ $43$ (나누어떨어짐)\n④ $48 = 2^4 \\times 3$ (나누어떨어짐)\n⑤ $57 = 3 \\times 19$ (나누어떨어짐)\n정답은 $10$이다.",
     "originalCategory": "인수분해",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H15-SA-03",
+    "standardUnit": "인수분해",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","자연수조건","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "자연수조건",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -232,13 +330,24 @@ window.questionBank = [
     "solution": "각 이차방정식의 판별식 $D$를 구하여 부호를 판별한다.\nㄱ. $D = (-1)^2 - 4(4)(-1) = 17 > 0$ (서로 다른 두 실근)\nㄴ. $D/4 = 3^2 - (9)(1) = 0$ (중근)\nㄷ. $D = (-3)^2 - 4(1)(6) = 9 - 24 = -15 < 0$ (서로 다른 두 허근)\nㄹ. $D/4 = (-3)^2 - (3)(1) = 9 - 3 = 6 > 0$ (서로 다른 두 실근)\n따라서 서로 다른 두 실근을 갖는 것은 ㄱ, ㄹ이다.",
     "originalCategory": "이차방정식",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H15-SA-05",
+    "standardUnit": "이차방정식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","이차방정식","판별식","부등식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "이차방정식",
+      "판별식",
+      "부등식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-DISCRIMINANT",
+    "subUnit": "판별식과 근의 조건",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -256,13 +365,25 @@ window.questionBank = [
     "solution": "근과 계수의 관계에 의해 $\\alpha+\\beta=-5$, $\\alpha\\beta=-1$이다.\n주어진 식을 통분하여 정리하면,\n$\\frac{\\beta+1}{\\alpha} + \\frac{\\alpha+1}{\\beta} = \\frac{\\beta(\\beta+1) + \\alpha(\\alpha+1)}{\\alpha\\beta} = \\frac{\\alpha^2+\\beta^2+\\alpha+\\beta}{\\alpha\\beta}$\n$\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = (-5)^2 - 2(-1) = 25 + 2 = 27$\n분자는 $27 + (-5) = 22$가 되고, 분모는 $-1$이 된다.\n따라서 식의 값은 $\\frac{22}{-1} = -22$이다.",
     "originalCategory": "이차방정식",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H15-SA-05",
+    "standardUnit": "이차방정식",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계수비교","이차방정식","근과계수","부등식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "계수비교",
+      "이차방정식",
+      "근과계수",
+      "부등식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -280,13 +401,26 @@ window.questionBank = [
     "solution": "실수 계수 방정식 $x^2+ax+b=0$의 한 근이 $2-i$이므로 다른 한 근은 $2+i$이다.\n근과 계수의 관계에 의해\n두 근의 합: $(2-i)+(2+i) = 4 = -a \\rightarrow a=-4$\n두 근의 곱: $(2-i)(2+i) = 4 - i^2 = 5 = b \\rightarrow b=5$\n방정식 $mx^2+nx-1=0$의 두 근이 $\\frac{1}{-4}, \\frac{1}{5}$이므로,\n두 근의 곱: $-\\frac{1}{4} \\times \\frac{1}{5} = -\\frac{1}{20} = -\\frac{1}{m} \\rightarrow m=20$\n두 근의 합: $-\\frac{1}{4} + \\frac{1}{5} = -\\frac{1}{20} = -\\frac{n}{m} = -\\frac{n}{20} \\rightarrow n=1$\n따라서 $mn = 20 \\times 1 = 20$이다.",
     "originalCategory": "이차방정식",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계수비교","복소수","이차방정식","근과계수","부등식"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계수비교",
+      "복소수",
+      "이차방정식",
+      "근과계수",
+      "부등식"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+    "subUnit": "복소수와 이차방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -304,13 +438,26 @@ window.questionBank = [
     "solution": "두 그래프의 교점의 $x$좌표는 방정식 $x^2+ax+3=2x+b$의 근이다.\n$x^2 + (a-2)x + 3-b = 0$\n이 방정식의 두 근이 $-2, 1$이므로 근과 계수의 관계에 의해,\n두 근의 합: $-2+1 = -1 = -(a-2) \\rightarrow a-2 = 1 \\rightarrow a=3$\n두 근의 곱: $(-2)\\times 1 = -2 = 3-b \\rightarrow b=5$\n따라서 $a+b = 3 + 5 = 8$이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계수비교","근과계수","이차함수","함수","그래프","표해석","좌표"],
+    "tags": [
+      "객관식",
+      "계수비교",
+      "근과계수",
+      "이차함수",
+      "함수",
+      "그래프",
+      "표해석",
+      "좌표"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -328,13 +475,26 @@ window.questionBank = [
     "solution": "점 $(0,2)$를 지나는 직선의 방정식을 $y=mx+2$ 라 하자. (단, 기울기 $m<0$)\n이차함수와 직선이 접하므로 방정식 $-\\frac{1}{3}x^2+x = mx+2$ 가 중근을 가져야 한다.\n식의 양변에 3을 곱하여 정리하면,\n$-x^2 + 3x = 3mx + 6 \\rightarrow x^2 + 3(m-1)x + 6 = 0$\n판별식 $D = 9(m-1)^2 - 24 = 0$\n$9(m^2 - 2m + 1) - 24 = 0 \\rightarrow 9m^2 - 18m - 15 = 0 \\rightarrow 3m^2 - 6m - 5 = 0$\n근의 공식을 이용하면 $m = \\frac{3 \\pm \\sqrt{9 - 3(-5)}}{3} = \\frac{3 \\pm \\sqrt{24}}{3} = \\frac{3 \\pm 2\\sqrt{6}}{3}$\n조건에서 기울기 $m<0$ 이므로 $m = \\frac{3-2\\sqrt{6}}{3}$ 이다.\n따라서 직선의 방정식은 $y = \\frac{3-2\\sqrt{6}}{3}x + 2$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","판별식","이차함수","함수","그래프","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "판별식",
+      "이차함수",
+      "함수",
+      "그래프",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -352,13 +512,26 @@ window.questionBank = [
     "solution": "이차함수를 표준형으로 변형하면 $y = (x-2)^2 + k-4$ 이다.\n축의 방정식이 $x=2$ 이며, 제한된 범위 $[-1, 3]$ 내에 포함된다.\n아래로 볼록한 그래프이므로 최솟값은 꼭짓점인 $x=2$ 일 때 가진다.\n$f(2) = k-4 = 5 \\rightarrow k=9$\n최댓값은 꼭짓점 $x=2$에서 가장 멀리 떨어진 $x=-1$ 일 때 가진다.\n따라서 최댓값은 $f(-1) = (-1-2)^2 + 9 - 4 = 9 + 5 = 14$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","이차함수","최대최소","함수","그래프","표해석","범위","조건해석"],
+    "tags": [
+      "객관식",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "그래프",
+      "표해석",
+      "범위",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -376,13 +549,26 @@ window.questionBank = [
     "solution": "이차함수의 그래프가 $x$축과 만나지 않으려면 방정식 $x^2+2(1+a)x+a^2+1=0$의 판별식 $D < 0$ 이어야 한다.\n$D/4 = (1+a)^2 - (a^2+1) < 0$\n$a^2 + 2a + 1 - a^2 - 1 < 0$\n$2a < 0 \\rightarrow a < 0$\n조건을 만족하는 자연수 $a$는 존재하지 않는다.\n따라서 그 개수는 $0$이고, 정답은 ①이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","판별식","이차함수","함수","그래프","자연수조건","개수세기","조건해석"],
+    "tags": [
+      "객관식",
+      "판별식",
+      "이차함수",
+      "함수",
+      "그래프",
+      "자연수조건",
+      "개수세기",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -400,13 +586,25 @@ window.questionBank = [
     "solution": "이차함수 $f(x)$의 두 근이 $\\alpha, \\beta$이고 $\\alpha+\\beta=2$이므로 대칭축은 $x = \\frac{\\alpha+\\beta}{2} = 1$이다.\n최고차항의 계수가 1이므로 $f(x) = (x-1)^2 + k$ 로 둘 수 있다.\n꼭짓점 $(1, k)$가 직선 $y = 3x - 6$ 위에 있으므로 대입하면,\n$k = 3(1) - 6 = -3$\n따라서 $f(x) = (x-1)^2 - 3$ 이다.\n$f(2) = (2-1)^2 - 3 = 1 - 3 = -2$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","계수비교","이차함수","함수","그래프","대입","계산"],
+    "tags": [
+      "객관식",
+      "계수비교",
+      "이차함수",
+      "함수",
+      "그래프",
+      "대입",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -424,13 +622,26 @@ window.questionBank = [
     "solution": "[도형 검토 후 보완 필요]\nㄱ. $f(x)$의 그래프가 $x$축에 접하므로 판별식 $D = a^2-4b = 0$ 이다. (참)\nㄴ. 주어진 그래프에서 $f(x)$의 꼭짓점의 $x$좌표 $a/2 > 0$ 이므로 $a>0$이다. $g(x)$의 $y$절편 $-d$가 양수이므로 $d<0$이다. 따라서 $-4d>0$ 이 되어 $a^2-4d>0$ 이다. (거짓)\nㄷ. 두 함수의 교점은 $x^2-ax+b = -x^2+cx-d$, 즉 $2x^2-(a+c)x+(b+d)=0$ 의 근이다. 서로 다른 두 점에서 만나므로 판별식 $D = (a+c)^2-4(2)(b+d) = (a+c)^2-8(b+d)>0$ 이다. (참)\n따라서 옳은 것은 ㄱ, ㄷ이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","판별식","이차함수","함수","도형","그래프","표해석","좌표"],
+    "tags": [
+      "객관식",
+      "판별식",
+      "이차함수",
+      "함수",
+      "도형",
+      "그래프",
+      "표해석",
+      "좌표"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -442,13 +653,24 @@ window.questionBank = [
     "solution": "$P(x)$를 $(x-1)^2(x-3)$으로 나누었을 때의 나머지는 2차 이하의 다항식이다.\n$P(x)$가 $(x-1)^2$으로 나눈 나머지가 $x-4$이므로, 구하는 나머지를 $R(x) = a(x-1)^2 + x - 4$ 로 둘 수 있다.\n$P(x)$를 $x-3$으로 나눈 나머지가 $3$이므로 $P(3)=3$ 이고, 나머지 정리에서 $R(3)=3$ 이어야 한다.\n$R(3) = a(3-1)^2 + 3 - 4 = 4a - 1 = 3 \\rightarrow 4a = 4 \\rightarrow a=1$\n따라서 나머지는 $R(x) = 1(x-1)^2 + x - 4 = x^2 - 2x + 1 + x - 4 = x^2 - x - 3$ 이다.",
     "originalCategory": "나머지정리",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","다항식","나머지정리","범위","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "다항식",
+      "나머지정리",
+      "범위",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -460,13 +682,26 @@ window.questionBank = [
     "solution": "조건 (가)에서 $f(-1)=f(5)$이므로 대칭축은 $x = \\frac{-1+5}{2} = 2$ 이다.\n조건 (나)에서 꼭짓점의 $y$좌표가 $-3$이므로 $f(x) = a(x-2)^2 - 3$ 으로 둘 수 있다.\n조건 (다)에서 $\\overline{PQ}=2$ 이고 대칭축이 $x=2$이므로 두 교점은 $x = 2-1 = 1$, $x = 2+1 = 3$ 이다.\n즉, $f(1)=0$ 이므로 식에 대입하면,\n$a(1-2)^2 - 3 = 0 \\rightarrow a = 3$\n따라서 $f(x) = 3(x-2)^2 - 3$ 이다.\n$f(0) = 3(-2)^2 - 3 = 12 - 3 = 9$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","이차함수","함수","그래프","표해석","좌표","대입","조건해석"],
+    "tags": [
+      "서술형",
+      "이차함수",
+      "함수",
+      "그래프",
+      "표해석",
+      "좌표",
+      "대입",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -478,13 +713,26 @@ window.questionBank = [
     "solution": "주어진 식을 적절히 짝지어 전개한다.\n$[x(x+3)][(x+1)(x+2)] + 1 = (x^2+3x)(x^2+3x+2) + 1$\n$x^2+3x = t$로 치환하면,\n$t(t+2) + 1 = t^2 + 2t + 1 = (t+1)^2$\n치환을 원래대로 되돌리면 $(x^2+3x+1)^2$ 으로 인수분해 된다.\n이를 이용하여 $x=10$을 대입하면,\n$10 \\times 11 \\times 12 \\times 13 + 1 = (10^2 + 3(10) + 1)^2 = (100 + 30 + 1)^2 = 131^2$\n따라서 이 수는 $131^2$이 되어 자연수의 제곱수임이 증명된다.",
     "originalCategory": "인수분해",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H15-SA-03",
+    "standardUnit": "인수분해",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","다항식","인수분해","전개","도형","원","자연수조건","대입"],
+    "tags": [
+      "서술형",
+      "다항식",
+      "인수분해",
+      "전개",
+      "도형",
+      "원",
+      "자연수조건",
+      "대입"
+    ],
     "wide": false,
-    "standardUnitOrder": 1
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -496,13 +744,26 @@ window.questionBank = [
     "solution": "조건 (가)에 의해 $f(x) - (4ax-10) = a(x-1)(x-5)$ 로 식을 세울 수 있다.\n$f(x) = a(x^2-6x+5) + 4ax - 10 = ax^2 - 2ax + 5a - 10$\n완전제곱꼴로 변형하면,\n$f(x) = a(x-1)^2 - a + 5a - 10 = a(x-1)^2 + 4a - 10$\n최고차항의 계수 $a>0$ 이므로 아래로 볼록하고 $x=1$이 대칭축이다.\n구간 $1 \\le x \\le 5$에서 최솟값은 $x=1$일 때 $f(1) = 4a-10$ 이다.\n조건 (나)에서 최솟값이 $8$이므로,\n$4a - 10 = 8 \\rightarrow 4a = 18 \\rightarrow a = 4.5$\n따라서 $100a = 100 \\times 4.5 = 450$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","완전제곱식","계수비교","이차함수","최대최소","함수","그래프","표해석"],
+    "tags": [
+      "서술형",
+      "완전제곱식",
+      "계수비교",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "그래프",
+      "표해석"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
@@ -514,12 +775,25 @@ window.questionBank = [
     "solution": "직사각형의 가로와 세로에 사용되는 막대의 개수를 각각 $a, b$ 라 하자. (단, $a, b$는 자연수)\n둘레에 사용되는 막대는 총 18개이므로 $2(a+b) = 18 \\rightarrow a+b=9$ 이다.\n가로 길이는 $2a$, 세로 길이는 $2b$ 이다.\n넓이 $S = (2a)(2b) = 4ab = 4a(9-a) = -4a^2 + 36a = -4(a-4.5)^2 + 81$\n$a$는 자연수이므로 $a=4$ 또는 $a=5$ 일 때 넓이가 최대가 된다.\n$a=4$ 일 때 $b=5$가 되며, 넓이는 $4 \\times 4 \\times 5 = 80$ 이다.\n따라서 만들 수 있는 직사각형의 최대 넓이는 $80$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-02",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","이차함수","최대최소","함수","도형","사각형","넓이","자연수조건"],
+    "tags": [
+      "서술형",
+      "이차함수",
+      "최대최소",
+      "함수",
+      "도형",
+      "사각형",
+      "넓이",
+      "자연수조건"
+    ],
     "wide": false,
-    "standardUnitOrder": 2
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

@@ -23,7 +23,11 @@ window.questionBank = [
       "$\\sqrt{5}\\sqrt{7}=\\sqrt{35}$"
     ],
     "answer": "①",
-    "solution": "1단계: $\\sqrt{40} = \\sqrt{2^2 \\times 10} = 2\\sqrt{10}$이다. 따라서 $4\\sqrt{10}$은 옳지 않은 계산이다.\\n2단계: ②~⑤는 제곱근의 성질과 곱셈 규칙에 따른 올바른 연산이다.\\n따라서 정답은 ①이다."
+    "solution": "1단계: $\\sqrt{40} = \\sqrt{2^2 \\times 10} = 2\\sqrt{10}$이다. 따라서 $4\\sqrt{10}$은 옳지 않은 계산이다.\\n2단계: ②~⑤는 제곱근의 성질과 곱셈 규칙에 따른 올바른 연산이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "$-13$"
     ],
     "answer": "③",
-    "solution": "1단계: $(x-2)(4x+3) = 4x^2 + 3x - 8x - 6 = 4x^2 - 5x - 6$이다.\\n2단계: $x$의 계수 $M = -5$, 상수항 $N = -6$이다.\\n3단계: $M+N = -5 + (-6) = -11$이다.\\n따라서 정답은 ③이다."
+    "solution": "1단계: $(x-2)(4x+3) = 4x^2 + 3x - 8x - 6 = 4x^2 - 5x - 6$이다.\\n2단계: $x$의 계수 $M = -5$, 상수항 $N = -6$이다.\\n3단계: $M+N = -5 + (-6) = -11$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "②",
-    "solution": "1단계: 주어진 수를 정리하면 $\\sqrt{25}=5$, $\\sqrt{9/16}=3/4$, $2-\\sqrt{(-3)^2} = 2-3 = -1$, $0.\\dot{4}=4/9$로 이들은 모두 유리수이다.\\n2단계: $\\sqrt{15}$와 $\\sqrt{2.5} = \\sqrt{25/10} = 5/\\sqrt{10}$는 근호 밖으로 완전히 나오지 못하므로 무리수이다.\\n3단계: 따라서 무리수는 총 2개이다.\\n따라서 정답은 ②이다."
+    "solution": "1단계: 주어진 수를 정리하면 $\\sqrt{25}=5$, $\\sqrt{9/16}=3/4$, $2-\\sqrt{(-3)^2} = 2-3 = -1$, $0.\\dot{4}=4/9$로 이들은 모두 유리수이다.\\n2단계: $\\sqrt{15}$와 $\\sqrt{2.5} = \\sqrt{25/10} = 5/\\sqrt{10}$는 근호 밖으로 완전히 나오지 못하므로 무리수이다.\\n3단계: 따라서 무리수는 총 2개이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "25"
     ],
     "answer": "②",
-    "solution": "1단계: 이차식 $x^2+px+q$가 완전제곱식이 되려면 상수항 $q$는 일차항 계수 $p$의 절반의 제곱, 즉 $q = (p/2)^2$이어야 한다.\\n2단계: $k = (-5/2)^2 = \\frac{25}{4}$이다.\\n따라서 정답은 ②이다."
+    "solution": "1단계: 이차식 $x^2+px+q$가 완전제곱식이 되려면 상수항 $q$는 일차항 계수 $p$의 절반의 제곱, 즉 $q = (p/2)^2$이어야 한다.\\n2단계: $k = (-5/2)^2 = \\frac{25}{4}$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 5,
@@ -121,7 +137,11 @@ window.questionBank = [
       "$5.762$"
     ],
     "answer": "③",
-    "solution": "1단계: 제곱근표에서 $\\sqrt{3.32}$를 찾기 위해 세로열의 3.3과 가로열의 2가 만나는 위치의 숫자를 읽는다.\\n2단계: 해당 위치의 숫자는 1.822이다.\\n따라서 정답은 ③이다."
+    "solution": "1단계: 제곱근표에서 $\\sqrt{3.32}$를 찾기 위해 세로열의 3.3과 가로열의 2가 만나는 위치의 숫자를 읽는다.\\n2단계: 해당 위치의 숫자는 1.822이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -147,7 +167,11 @@ window.questionBank = [
       "$0.5788$"
     ],
     "answer": "③",
-    "solution": "1단계: $\\sqrt{0.332}$를 소수점 위치를 조절하여 표의 수치로 변환하면 $\\sqrt{0.332} = \\sqrt{\\frac{33.2}{100}} = \\frac{\\sqrt{33.2}}{10}$이다.\\n2단계: 표에서 세로 33과 가로 2가 만나는 $\\sqrt{33.2}$의 값은 5.762이다.\\n3단계: $\\frac{5.762}{10} = 0.5762$이다.\\n따라서 정답은 ③이다."
+    "solution": "1단계: $\\sqrt{0.332}$를 소수점 위치를 조절하여 표의 수치로 변환하면 $\\sqrt{0.332} = \\sqrt{\\frac{33.2}{100}} = \\frac{\\sqrt{33.2}}{10}$이다.\\n2단계: 표에서 세로 33과 가로 2가 만나는 $\\sqrt{33.2}$의 값은 5.762이다.\\n3단계: $\\frac{5.762}{10} = 0.5762$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -171,7 +195,11 @@ window.questionBank = [
       "$\\sqrt{15} < 4$"
     ],
     "answer": "④",
-    "solution": "1단계: ④의 양변을 제곱하여 비교한다. $(\\sqrt{1/3})^2 = 1/3$이고 $(1/3)^2 = 1/9$이다.\\n2단계: $1/3 > 1/9$이므로 $\\sqrt{1/3} > 1/3$이 성립해야 한다. 따라서 부등호 방향이 옳지 않다.\\n따라서 정답은 ④이다."
+    "solution": "1단계: ④의 양변을 제곱하여 비교한다. $(\\sqrt{1/3})^2 = 1/3$이고 $(1/3)^2 = 1/9$이다.\\n2단계: $1/3 > 1/9$이므로 $\\sqrt{1/3} > 1/3$이 성립해야 한다. 따라서 부등호 방향이 옳지 않다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -195,7 +223,11 @@ window.questionBank = [
       "$125$"
     ],
     "answer": "④",
-    "solution": "1단계: 공통인수 12.4로 묶어 인수분해 공식을 활용한다. $12.4(4.3 + 5.7)$이다.\\n2단계: 괄호 안을 계산하면 $12.4 \\times 10 = 124$이다.\\n따라서 정답은 ④이다."
+    "solution": "1단계: 공통인수 12.4로 묶어 인수분해 공식을 활용한다. $12.4(4.3 + 5.7)$이다.\\n2단계: 괄호 안을 계산하면 $12.4 \\times 10 = 124$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 9,
@@ -220,6 +252,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "1단계: ㄱ. 무한소수 중 순환소수는 유리수이므로 거짓이다.\\n2단계: ㄴ. 유리수와 무리수는 겹치지 않는 집합이므로 참이다.\\n3단계: ㄷ. $\\sqrt{0.09} = 0.3$이므로 유리수이다. 참이다.\\n4단계: ㄹ. 순환소수가 아닌 무한소수는 무리수이며, 모든 무리수는 실수이다. 참이다.\\n5단계: ㅁ. 정수가 아닌 유리수(분수 꼴)가 존재하므로 거짓이다.\\n옳은 것은 ㄴ, ㄷ, ㄹ이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -243,7 +279,11 @@ window.questionBank = [
       "$3x+5$"
     ],
     "answer": "①",
-    "solution": "1단계: $10x^2-11x-6$을 대각선 곱셈법으로 인수분해하면 $(2x-3)(5x+2)$이다.\\n2단계: 두 일차식 인수는 $2x-3$과 $5x+2$이다.\\n3단계: 두 인수의 합은 $(2x-3) + (5x+2) = 7x-1$이다.\\n따라서 정답은 ①이다."
+    "solution": "1단계: $10x^2-11x-6$을 대각선 곱셈법으로 인수분해하면 $(2x-3)(5x+2)$이다.\\n2단계: 두 일차식 인수는 $2x-3$과 $5x+2$이다.\\n3단계: 두 인수의 합은 $(2x-3) + (5x+2) = 7x-1$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 11,
@@ -267,7 +307,11 @@ window.questionBank = [
       "$25a^2-10ab+b^2$"
     ],
     "answer": "④",
-    "solution": "1단계: 완전제곱식 판별을 위해 각 항을 정리하면 ① $(x+7)^2$, ② $(2x-5)^2$, ③ $(4x+3y)^2$, ⑤ $(5a-b)^2$이다.\\n2단계: ④ $x^2-8x+12 = (x-2)(x-6)$으로 완전제곱식이 아니다.\\n따라서 정답은 ④이다."
+    "solution": "1단계: 완전제곱식 판별을 위해 각 항을 정리하면 ① $(x+7)^2$, ② $(2x-5)^2$, ③ $(4x+3y)^2$, ⑤ $(5a-b)^2$이다.\\n2단계: ④ $x^2-8x+12 = (x-2)(x-6)$으로 완전제곱식이 아니다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 12,
@@ -291,7 +335,11 @@ window.questionBank = [
       "$\\frac{4\\sqrt{21}}{3}$"
     ],
     "answer": "①",
-    "solution": "1단계: 식을 수식으로 정리하면 $\\frac{2\\sqrt{14} \\times \\sqrt{10}}{3\\sqrt{15}} = \\frac{2\\sqrt{140}}{3\\sqrt{15}}$이다.\\n2단계: 근호 안의 수를 5로 약분하면 $\\frac{2\\sqrt{28}}{3\\sqrt{3}} = \\frac{4\\sqrt{7}}{3\\sqrt{3}}$이다.\\n3단계: 분모의 유리화를 위해 분모, 분자에 $\\sqrt{3}$을 곱하면 $\\frac{4\\sqrt{21}}{9}$이다.\\n따라서 정답은 ①이다."
+    "solution": "1단계: 식을 수식으로 정리하면 $\\frac{2\\sqrt{14} \\times \\sqrt{10}}{3\\sqrt{15}} = \\frac{2\\sqrt{140}}{3\\sqrt{15}}$이다.\\n2단계: 근호 안의 수를 5로 약분하면 $\\frac{2\\sqrt{28}}{3\\sqrt{3}} = \\frac{4\\sqrt{7}}{3\\sqrt{3}}$이다.\\n3단계: 분모의 유리화를 위해 분모, 분자에 $\\sqrt{3}$을 곱하면 $\\frac{4\\sqrt{21}}{9}$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -315,7 +363,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "1단계: ㄱ. '제곱근 16'은 $\\sqrt{16}=4$를 뜻하므로 참이다.\\n2단계: ㄴ. $\\sqrt{16}=4$이므로 4의 제곱근은 $\\pm 2$로 2개이다. 참이다.\\n3단계: ㄷ. 무한소수 중 순환소수는 유리수이므로 거짓이다.\\n따라서 정답은 ③이다."
+    "solution": "1단계: ㄱ. '제곱근 16'은 $\\sqrt{16}=4$를 뜻하므로 참이다.\\n2단계: ㄴ. $\\sqrt{16}=4$이므로 4의 제곱근은 $\\pm 2$로 2개이다. 참이다.\\n3단계: ㄷ. 무한소수 중 순환소수는 유리수이므로 거짓이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -339,7 +391,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "②",
-    "solution": "1단계: $x = \\frac{3+2\\sqrt{2}}{(3-2\\sqrt{2})(3+2\\sqrt{2})} = \\frac{3+2\\sqrt{2}}{9-8} = 3+2\\sqrt{2}$이다.\\n2단계: $y = \\frac{(\\sqrt{2}-1)^2}{(\\sqrt{2}+1)(\\sqrt{2}-1)} = \\frac{2+1-2\\sqrt{2}}{2-1} = 3-2\\sqrt{2}$이다.\\n3단계: $x+y = (3+2\\sqrt{2}) + (3-2\\sqrt{2}) = 6$이다.\\n따라서 정답은 ②이다."
+    "solution": "1단계: $x = \\frac{3+2\\sqrt{2}}{(3-2\\sqrt{2})(3+2\\sqrt{2})} = \\frac{3+2\\sqrt{2}}{9-8} = 3+2\\sqrt{2}$이다.\\n2단계: $y = \\frac{(\\sqrt{2}-1)^2}{(\\sqrt{2}+1)(\\sqrt{2}-1)} = \\frac{2+1-2\\sqrt{2}}{2-1} = 3-2\\sqrt{2}$이다.\\n3단계: $x+y = (3+2\\sqrt{2}) + (3-2\\sqrt{2}) = 6$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -363,7 +419,11 @@ window.questionBank = [
       "$8$시간"
     ],
     "answer": "③",
-    "solution": "1단계: $R=8$을 대입하면 폭풍우 지속 시간은 $\\frac{\\sqrt{8^3}}{\\sqrt{32}} = \\sqrt{\\frac{512}{32}}$이다.\\n2단계: 근호 내부를 계산하면 $\\sqrt{16} = 4$이다.\\n3단계: 따라서 지속 시간은 4시간이다.\\n따라서 정답은 ③이다."
+    "solution": "1단계: $R=8$을 대입하면 폭풍우 지속 시간은 $\\frac{\\sqrt{8^3}}{\\sqrt{32}} = \\sqrt{\\frac{512}{32}}$이다.\\n2단계: 근호 내부를 계산하면 $\\sqrt{16} = 4$이다.\\n3단계: 따라서 지속 시간은 4시간이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -387,7 +447,11 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "②",
-    "solution": "1단계: 식을 하나의 근호 안으로 묶으면 $\\sqrt{\\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{3}{4} \\times \\cdots \\times \\frac{24}{25}}$이다.\\n2단계: 이웃하는 분모와 분자가 연쇄적으로 소거되고 처음의 분자 1과 마지막의 분모 25가 남는다.\\n3단계: $\\sqrt{\\frac{1}{25}} = \\frac{1}{5}$이다.\\n따라서 정답은 ②이다."
+    "solution": "1단계: 식을 하나의 근호 안으로 묶으면 $\\sqrt{\\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{3}{4} \\times \\cdots \\times \\frac{24}{25}}$이다.\\n2단계: 이웃하는 분모와 분자가 연쇄적으로 소거되고 처음의 분자 1과 마지막의 분모 25가 남는다.\\n3단계: $\\sqrt{\\frac{1}{25}} = \\frac{1}{5}$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -411,7 +475,11 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "④",
-    "solution": "1단계: $2\\sqrt{a+5}=8$에서 $\\sqrt{a+5}=4$, $a+5=16$이므로 $a=11$이다.\\n2단계: $\\frac{\\sqrt{15+b}}{\\sqrt{2}} = \\sqrt{27}$에서 $\\frac{15+b}{2} = 27$, $15+b = 54$이므로 $b=39$이다.\\n3단계: 따라서 $a+b = 11+39 = 50$이다.\\n따라서 정답은 ④이다."
+    "solution": "1단계: $2\\sqrt{a+5}=8$에서 $\\sqrt{a+5}=4$, $a+5=16$이므로 $a=11$이다.\\n2단계: $\\frac{\\sqrt{15+b}}{\\sqrt{2}} = \\sqrt{27}$에서 $\\frac{15+b}{2} = 27$, $15+b = 54$이므로 $b=39$이다.\\n3단계: 따라서 $a+b = 11+39 = 50$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -435,7 +503,11 @@ window.questionBank = [
       "$256$"
     ],
     "answer": "④",
-    "solution": "1단계: $ab=-8$을 만족하는 정수쌍 $(a, b)$는 $(1, -8), (-1, 8), (2, -4), (-2, 4)$이다.\\n2단계: $k = a+b$이므로 각 쌍의 합을 구하면 $-7, 7, -2, 2$이다.\\n3단계: 모든 $k$의 곱은 $(-7) \\times 7 \\times (-2) \\times 2 = (-49) \\times (-4) = 196$이다.\\n따라서 정답은 ④이다."
+    "solution": "1단계: $ab=-8$을 만족하는 정수쌍 $(a, b)$는 $(1, -8), (-1, 8), (2, -4), (-2, 4)$이다.\\n2단계: $k = a+b$이므로 각 쌍의 합을 구하면 $-7, 7, -2, 2$이다.\\n3단계: 모든 $k$의 곱은 $(-7) \\times 7 \\times (-2) \\times 2 = (-49) \\times (-4) = 196$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 19,
@@ -461,7 +533,11 @@ window.questionBank = [
       "$(a + 2)(a + 3) = a^2 + 5a + 6$"
     ],
     "answer": "①",
-    "solution": "1단계: 직사각형의 넓이 변화를 통해 합차 공식 $(a+b)(a-b) = a^2 - b^2$을 기하학적으로 이해한다.\\n2단계: <그림1>에서 색칠된 부분의 넓이는 가로가 $a+2$, 세로가 $a-2$인 직사각형의 넓이 $(a+2)(a-2)$와 같다.\\n3단계: Ⓐ 부분을 이동시켜 만든 <그림2>의 전체 넓이는 한 변의 길이가 $a$인 정사각형($a^2$)에서 한 변의 길이가 2인 작은 정사각형($2^2=4$)이 빠진 형태와 일치한다.\\n4단계: 따라서 도형의 넓이 관계를 식으로 표현하면 $(a+2)(a-2) = a^2 - 4$가 성립한다.\\n따라서 정답은 ①이다."
+    "solution": "1단계: 직사각형의 넓이 변화를 통해 합차 공식 $(a+b)(a-b) = a^2 - b^2$을 기하학적으로 이해한다.\\n2단계: <그림1>에서 색칠된 부분의 넓이는 가로가 $a+2$, 세로가 $a-2$인 직사각형의 넓이 $(a+2)(a-2)$와 같다.\\n3단계: Ⓐ 부분을 이동시켜 만든 <그림2>의 전체 넓이는 한 변의 길이가 $a$인 정사각형($a^2$)에서 한 변의 길이가 2인 작은 정사각형($2^2=4$)이 빠진 형태와 일치한다.\\n4단계: 따라서 도형의 넓이 관계를 식으로 표현하면 $(a+2)(a-2) = a^2 - 4$가 성립한다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -485,7 +561,11 @@ window.questionBank = [
       "$59$"
     ],
     "answer": "②",
-    "solution": "1단계: 다항식이 일차식으로 인수분해 되려면 $(px+1)(x+q)$ 꼴이어야 하므로 일차항 계수는 $pq+1$이다. 즉 $2n+1 = pq+1$에서 $2n=pq$이다.\\n2단계: $2n$이 짝수이므로 소수 $p, q$ 중 하나는 반드시 2여야 한다. $p < q$이므로 $p=2$이다.\\n3단계: $q < 30$인 소수 중 최댓값은 29이므로 $2n = 2 \\times 29$에서 $n$의 최댓값은 29이다.\\n따라서 정답은 ②이다."
+    "solution": "1단계: 다항식이 일차식으로 인수분해 되려면 $(px+1)(x+q)$ 꼴이어야 하므로 일차항 계수는 $pq+1$이다. 즉 $2n+1 = pq+1$에서 $2n=pq$이다.\\n2단계: $2n$이 짝수이므로 소수 $p, q$ 중 하나는 반드시 2여야 한다. $p < q$이므로 $p=2$이다.\\n3단계: $q < 30$인 소수 중 최댓값은 29이므로 $2n = 2 \\times 29$에서 $n$의 최댓값은 29이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -505,7 +585,11 @@ window.questionBank = [
     "content": "[서술형 1] $\\sqrt{15}$의 정수부분을 $a$, 소수부분을 $b$라 할 때, $a, b$를 각각 구하고, $\\frac{a}{b}$의 값을 구하는 과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "$a=3, b=\\sqrt{15}-3, \\frac{\\sqrt{15}+3}{2}$",
-    "solution": "1단계: $3 < \\sqrt{15} < 4$이므로 정수부분 $a=3$이다.\\n2단계: 소수부분 $b = \\sqrt{15}-3$이다.\\n3단계: $\\frac{a}{b} = \\frac{3}{\\sqrt{15}-3} = \\frac{3(\\sqrt{15}+3)}{(\\sqrt{15}-3)(\\sqrt{15}+3)} = \\frac{3(\\sqrt{15}+3)}{6} = \\frac{\\sqrt{15}+3}{2}$이다.\\n따라서 정답은 $a=3, b=\\sqrt{15}-3, \\frac{\\sqrt{15}+3}{2}$이다."
+    "solution": "1단계: $3 < \\sqrt{15} < 4$이므로 정수부분 $a=3$이다.\\n2단계: 소수부분 $b = \\sqrt{15}-3$이다.\\n3단계: $\\frac{a}{b} = \\frac{3}{\\sqrt{15}-3} = \\frac{3(\\sqrt{15}+3)}{(\\sqrt{15}-3)(\\sqrt{15}+3)} = \\frac{3(\\sqrt{15}+3)}{6} = \\frac{\\sqrt{15}+3}{2}$이다.\\n따라서 정답은 $a=3, b=\\sqrt{15}-3, \\frac{\\sqrt{15}+3}{2}$이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -525,7 +609,11 @@ window.questionBank = [
     "content": "[서술형 2] (지민이는 상수항을 잘못 보아 $(x+2)(x-7)$로, 우진이는 $x$의 계수를 잘못 보아 $(x-3)(x+8)$로 인수분해 하였다.) 이차식 $A$를 구하고 바르게 인수분해한 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$A = x^2-5x-24 = (x-8)(x+3)$",
-    "solution": "1단계: 지민이의 인수분해 $(x+2)(x-7)=x^2-5x-14$에서 일차항 계수 -5는 바르게 본 것이다.\\n2단계: 우진이의 인수분해 $(x-3)(x+8)=x^2+5x-24$에서 상수항 -24는 바르게 본 것이다.\\n3단계: 따라서 원래의 이차식 $A = x^2-5x-24$이며, 이를 인수분해하면 $(x-8)(x+3)$이다.\\n따라서 정답은 $A = x^2-5x-24 = (x-8)(x+3)$이다."
+    "solution": "1단계: 지민이의 인수분해 $(x+2)(x-7)=x^2-5x-14$에서 일차항 계수 -5는 바르게 본 것이다.\\n2단계: 우진이의 인수분해 $(x-3)(x+8)=x^2+5x-24$에서 상수항 -24는 바르게 본 것이다.\\n3단계: 따라서 원래의 이차식 $A = x^2-5x-24$이며, 이를 인수분해하면 $(x-8)(x+3)$이다.\\n따라서 정답은 $A = x^2-5x-24 = (x-8)(x+3)$이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 23,
@@ -546,7 +634,11 @@ window.questionBank = [
     "content": "[서술형 3] 직사각형 모양의 땅이 $A, B, C, D$ 4개의 땅으로 나누어져 있다. $A, B, C$는 모두 정사각형 모양이다. $A$의 넓이는 $36$ m$^2$, $C$의 넓이는 $3$ m$^2$일 때, 직사각형 $D$의 넓이를 구하시오. [5점]\\n<svg width='180' height='110' viewBox='0 0 180 110'>\\n  <rect x='10' y='10' width='90' height='90' fill='none' stroke='black'/>\\n  <rect x='100' y='10' width='64' height='64' fill='none' stroke='black'/>\\n  <rect x='100' y='74' width='26' height='26' fill='none' stroke='black'/>\\n  <rect x='126' y='74' width='38' height='26' fill='none' stroke='black'/>\\n  <text x='50' y='60' font-size='10' font-family='serif'>A</text>\\n  <text x='128' y='47' font-size='10' font-family='serif'>B</text>\\n  <text x='108' y='92' font-size='10' font-family='serif'>C</text>\\n  <text x='140' y='92' font-size='10' font-family='serif'>D</text>\\n</svg>",
     "choices": [],
     "answer": "$6\\sqrt{3}-6$",
-    "solution": "1단계: 정사각형 $A$의 한 변 길이는 $\\sqrt{36}=6$이고, 정사각형 $C$의 한 변 길이는 $\\sqrt{3}$이다.\\n2단계: 직사각형 $D$의 가로 길이는 $A$의 한 변에서 $C$의 한 변 두 개를 뺀 $6-2\\sqrt{3}$이고, 세로 길이는 $C$의 한 변인 $\\sqrt{3}$이다.\\n3단계: 따라서 $D$의 넓이는 $(6-2\\sqrt{3})\\sqrt{3} = 6\\sqrt{3}-6$이다.\\n따라서 정답은 $6\\sqrt{3}-6$이다."
+    "solution": "1단계: 정사각형 $A$의 한 변 길이는 $\\sqrt{36}=6$이고, 정사각형 $C$의 한 변 길이는 $\\sqrt{3}$이다.\\n2단계: 직사각형 $D$의 가로 길이는 $A$의 한 변에서 $C$의 한 변 두 개를 뺀 $6-2\\sqrt{3}$이고, 세로 길이는 $C$의 한 변인 $\\sqrt{3}$이다.\\n3단계: 따라서 $D$의 넓이는 $(6-2\\sqrt{3})\\sqrt{3} = 6\\sqrt{3}-6$이다.\\n따라서 정답은 $6\\sqrt{3}-6$이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -566,6 +658,10 @@ window.questionBank = [
     "content": "[서술형 4] $f(n) = \\sqrt{n+1} + \\sqrt{n}$일 때, $4 < \\frac{1}{f(1)} + \\frac{1}{f(2)} + \\cdots + \\frac{1}{f(n)} < 8$을 만족하는 자연수 $n$의 개수를 구하고 그 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "55개",
-    "solution": "1단계: $\\frac{1}{f(k)} = \\frac{1}{\\sqrt{k+1}+\\sqrt{k}} = \\sqrt{k+1}-\\sqrt{k}$이므로, 주어진 합은 $(\\sqrt{2}-\\sqrt{1}) + (\\sqrt{3}-\\sqrt{2}) + \\cdots + (\\sqrt{n+1}-\\sqrt{n}) = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1}-1 < 8$에서 $5 < \\sqrt{n+1} < 9$이다.\\n3단계: 양변을 제곱하면 $25 < n+1 < 81$이므로 $24 < n < 80$이다.\\n4단계: 이를 만족하는 자연수 $n$의 개수는 $79 - 25 + 1 = 55$개이다.\\n따라서 정답은 55개이다."
+    "solution": "1단계: $\\frac{1}{f(k)} = \\frac{1}{\\sqrt{k+1}+\\sqrt{k}} = \\sqrt{k+1}-\\sqrt{k}$이므로, 주어진 합은 $(\\sqrt{2}-\\sqrt{1}) + (\\sqrt{3}-\\sqrt{2}) + \\cdots + (\\sqrt{n+1}-\\sqrt{n}) = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1}-1 < 8$에서 $5 < \\sqrt{n+1} < 9$이다.\\n3단계: 양변을 제곱하면 $25 < n+1 < 81$이므로 $24 < n < 80$이다.\\n4단계: 이를 만족하는 자연수 $n$의 개수는 $79 - 25 + 1 = 55$개이다.\\n따라서 정답은 55개이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

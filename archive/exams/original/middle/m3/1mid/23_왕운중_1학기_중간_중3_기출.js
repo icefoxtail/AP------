@@ -12,7 +12,15 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","오류판별","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "오류판별",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 계산이 옳지 않은 것은? [3점]",
     "choices": [
@@ -23,7 +31,11 @@ window.questionBank = [
       "⑤ $\\sqrt{3}\\sqrt{10}=\\sqrt{30}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{a^2b} = a\\sqrt{b}$임을 이용한다.\\n1단계: $\\sqrt{24} = \\sqrt{2^2 \\times 6} = 2\\sqrt{6}$이다.\\n2단계: $2\\sqrt{6} \\neq 4\\sqrt{6}$이므로 ①번은 옳지 않다.\\n∴ 정답: ①"
+    "solution": "[키포인트] $\\sqrt{a^2b} = a\\sqrt{b}$임을 이용한다.\\n1단계: $\\sqrt{24} = \\sqrt{2^2 \\times 6} = 2\\sqrt{6}$이다.\\n2단계: $2\\sqrt{6} \\neq 4\\sqrt{6}$이므로 ①번은 옳지 않다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -36,12 +48,29 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","계수비교","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "계수비교",
+      "계산"
+    ],
     "wide": false,
     "content": "$(a+1)(3a-4)$를 전개했을 때 $a$의 계수를 $M$, 상수항을 $N$이라고 하자. $M+N$의 값은? [3점]",
-    "choices": ["① -5", "② -4", "③ -3", "④ -2", "⑤ -1"],
+    "choices": [
+      "① -5",
+      "② -4",
+      "③ -3",
+      "④ -2",
+      "⑤ -1"
+    ],
     "answer": "①",
-    "solution": "[키포인트] 분배법칙을 이용하여 다항식을 전개한다.\\n1단계: $(a+1)(3a-4) = 3a^2 - 4a + 3a - 4 = 3a^2 - a - 4$이다.\\n2단계: $a$의 계수 $M = -1$, 상수항 $N = -4$이다.\\n3단계: $M+N = -1 + (-4) = -5$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 분배법칙을 이용하여 다항식을 전개한다.\\n1단계: $(a+1)(3a-4) = 3a^2 - 4a + 3a - 4 = 3a^2 - a - 4$이다.\\n2단계: $a$의 계수 $M = -1$, 상수항 $N = -4$이다.\\n3단계: $M+N = -1 + (-4) = -5$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 3,
@@ -54,12 +83,31 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","표해석","개수세기","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "표해석",
+      "개수세기",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 표의 수 중 무리수의 개수를 구하면? [3점]\\n\\n$\\sqrt{16}, \\quad \\sqrt{\\frac{4}{9}}, \\quad \\sqrt{10}, \\quad 1-\\sqrt{(-2)^2}, \\quad 0.0\\dot{2}, \\quad \\sqrt{6.4}$",
-    "choices": ["① 1개", "② 2개", "③ 3개", "④ 4개", "⑤ 5개"],
+    "choices": [
+      "① 1개",
+      "② 2개",
+      "③ 3개",
+      "④ 4개",
+      "⑤ 5개"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 근호가 있다고 해서 모두 무리수인 것은 아니다.\\n1단계: $\\sqrt{16}=4$, $\\sqrt{\\frac{4}{9}}=\\frac{2}{3}$, $1-2=-1$, $0.0\\dot{2}=\\frac{2}{90}$은 모두 유리수이다.\\n2단계: $\\sqrt{10}$과 $\\sqrt{6.4}$는 근호를 벗길 수 없으므로 무리수이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 근호가 있다고 해서 모두 무리수인 것은 아니다.\\n1단계: $\\sqrt{16}=4$, $\\sqrt{\\frac{4}{9}}=\\frac{2}{3}$, $1-2=-1$, $0.0\\dot{2}=\\frac{2}{90}$은 모두 유리수이다.\\n2단계: $\\sqrt{10}$과 $\\sqrt{6.4}$는 근호를 벗길 수 없으므로 무리수이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -72,12 +120,29 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "완전제곱식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "이차식 $x^2+3x+k$가 완전제곱식이 되도록 하는 상수 $k$의 값을 구하면? [3점]",
-    "choices": ["① $\\frac{1}{4}$", "② $\\frac{3}{2}$", "③ $\\frac{9}{4}$", "④ 6", "⑤ 9"],
+    "choices": [
+      "① $\\frac{1}{4}$",
+      "② $\\frac{3}{2}$",
+      "③ $\\frac{9}{4}$",
+      "④ 6",
+      "⑤ 9"
+    ],
     "answer": "③",
-    "solution": "[키포인트] $x^2+px+q$가 완전제곱식이 되려면 $q = (\\frac{p}{2})^2$이어야 한다.\\n1단계: $k = (\\frac{3}{2})^2 = \\frac{9}{4}$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] $x^2+px+q$가 완전제곱식이 되려면 $q = (\\frac{p}{2})^2$이어야 한다.\\n1단계: $k = (\\frac{3}{2})^2 = \\frac{9}{4}$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 5,
@@ -90,12 +155,25 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표", "공통자료"],
+    "tags": [
+      "표",
+      "공통자료"
+    ],
     "wide": false,
     "content": "[5-6] 아래의 제곱근표를 이용하여 물음에 답하시오.\\n\\n<table class='question-table'><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>3.2</td><td>1.789</td><td>1.792</td><td>1.794</td><td>1.797</td><td>1.800</td><td>1.803</td></tr><tr><td>3.3</td><td>1.817</td><td>1.819</td><td>1.822</td><td>1.825</td><td>1.828</td><td>1.830</td></tr><tr><td>33</td><td>5.745</td><td>5.753</td><td>5.762</td><td>5.771</td><td>5.779</td><td>5.788</td></tr></table>\\n\\n5. $\\sqrt{3.25}$의 어림한 값은? (제곱근표 이용) [3점]",
-    "choices": ["① 1.800", "② 1.803", "③ 1.806", "④ 1.828", "⑤ 1.830"],
+    "choices": [
+      "① 1.800",
+      "② 1.803",
+      "③ 1.806",
+      "④ 1.828",
+      "⑤ 1.830"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 제곱근표 읽는 법을 숙지한다.\\n1단계: 세로 줄 3.2와 가로 줄 5가 만나는 값을 찾으면 1.803이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 제곱근표 읽는 법을 숙지한다.\\n1단계: 세로 줄 3.2와 가로 줄 5가 만나는 값을 찾으면 1.803이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -108,12 +186,24 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["공통자료"],
+    "tags": [
+      "공통자료"
+    ],
     "wide": false,
     "content": "$\\sqrt{0.334}$의 어림한 값은? (제곱근표 이용) [4점]",
-    "choices": ["① 0.1800", "② 0.1828", "③ 0.5692", "④ 0.5779", "⑤ 0.5788"],
+    "choices": [
+      "① 0.1800",
+      "② 0.1828",
+      "③ 0.5692",
+      "④ 0.5779",
+      "⑤ 0.5788"
+    ],
     "answer": "④",
-    "solution": "[키포인트] $\\sqrt{0.01a} = 0.1\\sqrt{a}$임을 이용한다.\\n1단계: $\\sqrt{0.334} = \\sqrt{\\frac{33.4}{100}} = \\frac{\\sqrt{33.4}}{10}$이다.\\n2단계: 표에서 $\\sqrt{33.4} = 5.779$이므로 $0.5779$이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] $\\sqrt{0.01a} = 0.1\\sqrt{a}$임을 이용한다.\\n1단계: $\\sqrt{0.334} = \\sqrt{\\frac{33.4}{100}} = \\frac{\\sqrt{33.4}}{10}$이다.\\n2단계: 표에서 $\\sqrt{33.4} = 5.779$이므로 $0.5779$이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -126,7 +216,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "두 실수의 대소관계가 옳지 않은 것은? [4점]",
     "choices": [
@@ -137,7 +234,11 @@ window.questionBank = [
       "⑤ $\\sqrt{11} < 2\\sqrt{3}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 양변을 제곱하여 비교하거나 근호 안으로 숫자를 넣어 비교한다.\\n1단계: ④의 양변을 제곱하면 $\\frac{1}{2}$과 $\\frac{1}{4}$이다.\\n2단계: $\\frac{1}{2} > \\frac{1}{4}$이므로 부등호 방향이 반대이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 양변을 제곱하여 비교하거나 근호 안으로 숫자를 넣어 비교한다.\\n1단계: ④의 양변을 제곱하면 $\\frac{1}{2}$과 $\\frac{1}{4}$이다.\\n2단계: $\\frac{1}{2} > \\frac{1}{4}$이므로 부등호 방향이 반대이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -150,12 +251,29 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","공통인수","계산","응용"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "공통인수",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "$11.2 \\times 2.9 + 11.2 \\times 2.1$을 계산하면? [4점]",
-    "choices": ["① 55", "② 56", "③ 57", "④ 58", "⑤ 59"],
+    "choices": [
+      "① 55",
+      "② 56",
+      "③ 57",
+      "④ 58",
+      "⑤ 59"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 공통인수로 묶어 계산한다.\\n1단계: $11.2(2.9 + 2.1) = 11.2 \\times 5 = 56$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 공통인수로 묶어 계산한다.\\n1단계: $11.2(2.9 + 2.1) = 11.2 \\times 5 = 56$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 9,
@@ -168,7 +286,9 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "content": "아래 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 두 정사각형 $ABCD$, $EFGH$와 수직선을 그린 것이다. 점 $A$와 $E$를 중심으로 반지름을 각각 $\\overline{AB}$, $\\overline{EF}$로 하는 원을 그려 수직선과 만나는 점을 $P$, $Q$라고 할 때, $P, Q$에 대응하는 수를 바르게 구한 것은?\\n<div style=\"text-align:center; margin:15px 0;\">\\n<svg width=\"280\" height=\"150\" viewBox=\"0 0 280 150\" xmlns=\"http://www.w3.org/2000/svg\">\\n  \\n  <g stroke=\"#D0D0D0\" stroke-width=\"1\" stroke-dasharray=\"2,2\">\\n    \\n    <line x1=\"10\" y1=\"20\" x2=\"270\" y2=\"20\" />\\n    <line x1=\"10\" y1=\"40\" x2=\"270\" y2=\"40\" />\\n    <line x1=\"10\" y1=\"60\" x2=\"270\" y2=\"60\" />\\n    <line x1=\"10\" y1=\"80\" x2=\"270\" y2=\"80\" />\\n    <line x1=\"10\" y1=\"100\" x2=\"270\" y2=\"100\" />\\n    \\n    <line x1=\"20\" y1=\"20\" x2=\"20\" y2=\"120\" />\\n    <line x1=\"40\" y1=\"20\" x2=\"40\" y2=\"120\" />\\n    <line x1=\"60\" y1=\"20\" x2=\"60\" y2=\"120\" />\\n    <line x1=\"80\" y1=\"20\" x2=\"80\" y2=\"120\" />\\n    <line x1=\"100\" y1=\"20\" x2=\"100\" y2=\"120\" />\\n    <line x1=\"120\" y1=\"20\" x2=\"120\" y2=\"120\" />\\n    <line x1=\"140\" y1=\"20\" x2=\"140\" y2=\"120\" />\\n    <line x1=\"160\" y1=\"20\" x2=\"160\" y2=\"120\" />\\n    <line x1=\"180\" y1=\"20\" x2=\"180\" y2=\"120\" />\\n    <line x1=\"200\" y1=\"20\" x2=\"200\" y2=\"120\" />\\n    <line x1=\"220\" y1=\"20\" x2=\"220\" y2=\"120\" />\\n    <line x1=\"240\" y1=\"20\" x2=\"240\" y2=\"120\" />\\n    <line x1=\"260\" y1=\"20\" x2=\"260\" y2=\"120\" />\\n  </g>\\n  \\n  \\n  <line x1=\"10\" y1=\"120\" x2=\"270\" y2=\"120\" stroke=\"#333\" stroke-width=\"1.2\" />\\n  <path d=\"M270 120 l-5 -3.5 v7 z\" fill=\"#333\" />\\n  <path d=\"M10 120 l5 -3.5 v7 z\" fill=\"#333\" />\\n  \\n  \\n  <path d=\"M 100 60 A 63.25 63.25 0 0 1 143.25 120\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.2\" stroke-dasharray=\"4,3\" />\\n  <path d=\"M 220 80 A 56.57 56.57 0 0 1 236.57 120\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.2\" stroke-dasharray=\"4,3\" />\\n  \\n  \\n  <path d=\"M 80 120 L 100 60 L 40 40 L 20 100 Z\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\" stroke-linejoin=\"round\" />\\n  <path d=\"M 180 120 L 220 80 L 180 40 L 140 80 Z\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\" stroke-linejoin=\"round\" />\\n  \\n  \\n  <text x=\"75\" y=\"116\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">A</text>\\n  <text x=\"104\" y=\"58\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">B</text>\\n  <text x=\"38\" y=\"36\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">C</text>\\n  <text x=\"10\" y=\"102\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">D</text>\\n  <text x=\"175\" y=\"116\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">E</text>\\n  <text x=\"224\" y=\"82\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">F</text>\\n  <text x=\"175\" y=\"36\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">G</text>\\n  <text x=\"128\" y=\"82\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">H</text>\\n  <text x=\"146\" y=\"116\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">P</text>\\n  <text x=\"240\" y=\"116\" font-family=\"serif\" font-size=\"10\" font-style=\"italic\">Q</text>\\n  \\n  \\n  <text x=\"35\" y=\"136\" font-family=\"serif\" font-size=\"9\">-5</text>\\n  <text x=\"55\" y=\"136\" font-family=\"serif\" font-size=\"9\">-4</text>\\n  <text x=\"75\" y=\"136\" font-family=\"serif\" font-size=\"9\">-3</text>\\n  <text x=\"95\" y=\"136\" font-family=\"serif\" font-size=\"9\">-2</text>\\n  <text x=\"115\" y=\"136\" font-family=\"serif\" font-size=\"9\">-1</text>\\n  <text x=\"137\" y=\"136\" font-family=\"serif\" font-size=\"9\">0</text>\\n  <text x=\"157\" y=\"136\" font-family=\"serif\" font-size=\"9\">1</text>\\n  <text x=\"177\" y=\"136\" font-family=\"serif\" font-size=\"9\">2</text>\\n  <text x=\"197\" y=\"136\" font-family=\"serif\" font-size=\"9\">3</text>\\n  <text x=\"217\" y=\"136\" font-family=\"serif\" font-size=\"9\">4</text>\\n  <text x=\"237\" y=\"136\" font-family=\"serif\" font-size=\"9\">5</text>\\n</svg>\\n</div>",
     "choices": [
@@ -179,7 +299,11 @@ window.questionBank = [
       "⑤ $P: \\sqrt{10} \\quad Q: 2\\sqrt{2}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 직각삼각형의 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 원의 반지름으로 삼아 수직선 위의 점의 좌표를 구한다.\\n1단계: 점 $A(-3)$를 꼭짓점으로 하는 밑변 $1$, 높이 $3$인 직각삼각형에서 $\\overline{AB} = \\sqrt{1^2 + 3^2} = \\sqrt{10}$이다.\\n2단계: 점 $P$는 기준점 $A(-3)$에서 오른쪽으로 반지름 $\\overline{AB}$만큼 떨어져 있으므로 $P$의 좌표는 $-3 + \\sqrt{10}$이다.\\n3단계: 점 $E(2)$를 꼭짓점으로 하는 밑변 $2$, 높이 $2$인 직각삼각형에서 $\\overline{EF} = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$이다.\\n4단계: 점 $Q$는 기준점 $E(2)$에서 오른쪽으로 반지름 $\\overline{EF}$만큼 떨어져 있으므로 $Q$의 좌표는 $2 + 2\\sqrt{2}$이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 직각삼각형의 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 원의 반지름으로 삼아 수직선 위의 점의 좌표를 구한다.\\n1단계: 점 $A(-3)$를 꼭짓점으로 하는 밑변 $1$, 높이 $3$인 직각삼각형에서 $\\overline{AB} = \\sqrt{1^2 + 3^2} = \\sqrt{10}$이다.\\n2단계: 점 $P$는 기준점 $A(-3)$에서 오른쪽으로 반지름 $\\overline{AB}$만큼 떨어져 있으므로 $P$의 좌표는 $-3 + \\sqrt{10}$이다.\\n3단계: 점 $E(2)$를 꼭짓점으로 하는 밑변 $2$, 높이 $2$인 직각삼각형에서 $\\overline{EF} = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$이다.\\n4단계: 점 $Q$는 기준점 $E(2)$에서 오른쪽으로 반지름 $\\overline{EF}$만큼 떨어져 있으므로 $Q$의 좌표는 $2 + 2\\sqrt{2}$이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -192,12 +316,28 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다항식 $6x^2-x-2$를 인수분해하였을 때, 일차식인 두 인수의 합을 구하면? [4점]",
-    "choices": ["① $5x-1$", "② $5x$", "③ $5x+1$", "④ $7x-1$", "⑤ $7x+1$"],
+    "choices": [
+      "① $5x-1$",
+      "② $5x$",
+      "③ $5x+1$",
+      "④ $7x-1$",
+      "⑤ $7x+1$"
+    ],
     "answer": "①",
-    "solution": "[키포인트] 대각선 인수분해법을 이용한다.\\n1단계: $6x^2-x-2 = (2x+1)(3x-2)$이다.\\n2단계: $(2x+1) + (3x-2) = 5x-1$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 대각선 인수분해법을 이용한다.\\n1단계: $6x^2-x-2 = (2x+1)(3x-2)$이다.\\n2단계: $(2x+1) + (3x-2) = 5x-1$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 11,
@@ -210,7 +350,15 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","완전제곱식","계수비교","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "완전제곱식",
+      "계수비교",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중 완전제곱식이 아닌 것은? [4점]",
     "choices": [
@@ -221,7 +369,11 @@ window.questionBank = [
       "⑤ $a^2+10a+20$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 상수항이 (일차항계수/2)²인지 확인한다.\\n1단계: ⑤는 $(\\frac{10}{2})^2 = 25$여야 완전제곱식이 된다.\\n∴ 정답: ⑤"
+    "solution": "[키포인트] 상수항이 (일차항계수/2)²인지 확인한다.\\n1단계: ⑤는 $(\\frac{10}{2})^2 = 25$여야 완전제곱식이 된다.\\n∴ 정답: ⑤",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 12,
@@ -234,7 +386,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 식을 간단히 하면? [4점]\\n\\n$$3\\sqrt{10} \\div 2\\sqrt{21} \\times \\sqrt{6}$$",
     "choices": [
@@ -245,7 +403,11 @@ window.questionBank = [
       "⑤ $\\frac{3\\sqrt{35}}{7}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 나눗셈을 곱셈으로 고쳐 계산한다.\\n1단계: $\\frac{3\\sqrt{10} \\times \\sqrt{6}}{2\\sqrt{21}} = \\frac{3\\sqrt{60}}{2\\sqrt{21}} = \\frac{6\\sqrt{15}}{2\\sqrt{21}}$이다.\\n2단계: $\\frac{3\\sqrt{5}}{\\sqrt{7}} = \\frac{3\\sqrt{35}}{7}$이다.\\n∴ 정답: ⑤"
+    "solution": "[키포인트] 나눗셈을 곱셈으로 고쳐 계산한다.\\n1단계: $\\frac{3\\sqrt{10} \\times \\sqrt{6}}{2\\sqrt{21}} = \\frac{3\\sqrt{60}}{2\\sqrt{21}} = \\frac{6\\sqrt{15}}{2\\sqrt{21}}$이다.\\n2단계: $\\frac{3\\sqrt{5}}{\\sqrt{7}} = \\frac{3\\sqrt{35}}{7}$이다.\\n∴ 정답: ⑤",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -258,12 +420,24 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "content": "다음 보기 중에서 옳은 것을 모두 고른 것은? [4점]\\n\\n<table class='question-table'><tr><td>ㄱ. 제곱근 5는 $\\pm\\sqrt{5}$이다.<br>ㄴ. $\\sqrt{9}$의 제곱근은 무리수이다.<br>ㄷ. 실수에서 무리수가 아닌 수는 모두 유리수이다.</td></tr></table>",
-    "choices": ["① ㄱ", "② ㄴ", "③ ㄷ", "④ ㄱ, ㄷ", "⑤ ㄴ, ㄷ"],
+    "choices": [
+      "① ㄱ",
+      "② ㄴ",
+      "③ ㄷ",
+      "④ ㄱ, ㄷ",
+      "⑤ ㄴ, ㄷ"
+    ],
     "answer": "⑤",
-    "solution": "[키포인트] 실수의 체계를 정확히 이해한다.\\n1단계: ㄱ은 $\\sqrt{5}$이므로 틀리다.\\n2단계: ㄴ은 3의 제곱근 $\\pm\\sqrt{3}$이므로 맞다.\\n3단계: ㄷ은 실수의 정의상 맞다.\\n∴ 정답: ⑤"
+    "solution": "[키포인트] 실수의 체계를 정확히 이해한다.\\n1단계: ㄱ은 $\\sqrt{5}$이므로 틀리다.\\n2단계: ㄴ은 3의 제곱근 $\\pm\\sqrt{3}$이므로 맞다.\\n3단계: ㄷ은 실수의 정의상 맞다.\\n∴ 정답: ⑤",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -276,12 +450,30 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","분모유리화","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "분모유리화",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "$x = \\frac{1}{5-2\\sqrt{6}}, y = \\frac{\\sqrt{6}-2}{\\sqrt{6}+2}$ 일 때, $x+y$의 값은? [4점]",
-    "choices": ["① $10-2\\sqrt{6}$", "② $4\\sqrt{6}$", "③ 10", "④ $5+4\\sqrt{6}$", "⑤ 15"],
+    "choices": [
+      "① $10-2\\sqrt{6}$",
+      "② $4\\sqrt{6}$",
+      "③ 10",
+      "④ $5+4\\sqrt{6}$",
+      "⑤ 15"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 분모를 유리화한 후 합을 구한다.\\n1단계: $x = 5+2\\sqrt{6}$, $y = \\frac{(\\sqrt{6}-2)^2}{2} = 5-2\\sqrt{6}$이다.\\n2단계: $x+y = 10$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 분모를 유리화한 후 합을 구한다.\\n1단계: $x = 5+2\\sqrt{6}$, $y = \\frac{(\\sqrt{6}-2)^2}{2} = 5-2\\sqrt{6}$이다.\\n2단계: $x+y = 10$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -294,12 +486,31 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","실생활","대입","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "실생활",
+      "대입",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "태풍의 반지름의 길이를 $R$ km라고 할 때, 폭풍우의 지속 시간을 $\\frac{\\sqrt{R^3}}{\\sqrt{54}}$시간이라고 한다. 반지름이 24 km일 때, 폭풍우의 지속 시간은? [4점]",
-    "choices": ["① 8시간", "② $8\\sqrt{2}$시간", "③ 16시간", "④ $16\\sqrt{2}$시간", "⑤ 32시간"],
+    "choices": [
+      "① 8시간",
+      "② $8\\sqrt{2}$시간",
+      "③ 16시간",
+      "④ $16\\sqrt{2}$시간",
+      "⑤ 32시간"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 주어진 식에 값을 대입하여 간단히 한다.\\n1단계: $\\frac{\\sqrt{24^3}}{\\sqrt{54}} = \\sqrt{\\frac{24 \\times 24 \\times 24}{54}} = \\sqrt{256}$이다.\\n2단계: 16시간이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 주어진 식에 값을 대입하여 간단히 한다.\\n1단계: $\\frac{\\sqrt{24^3}}{\\sqrt{54}} = \\sqrt{\\frac{24 \\times 24 \\times 24}{54}} = \\sqrt{256}$이다.\\n2단계: 16시간이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -312,7 +523,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 식을 간단히 하면? [5점]\\n\\n$$\\frac{1}{\\sqrt{2}} \\times \\frac{2}{\\sqrt{6}} \\times \\frac{3}{2\\sqrt{3}} \\times \\frac{4}{2\\sqrt{5}} \\times \\cdots \\times \\frac{10}{\\sqrt{110}}$$",
     "choices": [
@@ -323,7 +540,11 @@ window.questionBank = [
       "⑤ $\\frac{\\sqrt{110}}{11}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 규칙을 찾아 약분한다.\\n1단계: 모든 항을 루트 안으로 넣으면 $\\sqrt{\\frac{1}{2} \\times \\frac{4}{6} \\times \\frac{9}{12} \\cdots}$ 형태가 된다.\\n2단계: $\\sqrt{\\frac{1}{11}} = \\frac{\\sqrt{11}}{11}$이 남는다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 규칙을 찾아 약분한다.\\n1단계: 모든 항을 루트 안으로 넣으면 $\\sqrt{\\frac{1}{2} \\times \\frac{4}{6} \\times \\frac{9}{12} \\cdots}$ 형태가 된다.\\n2단계: $\\sqrt{\\frac{1}{11}} = \\frac{\\sqrt{11}}{11}$이 남는다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -336,12 +557,29 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "$3\\sqrt{a+10} = \\sqrt{81}$ 이고 $\\frac{\\sqrt{20+b}}{\\sqrt{3}} = 2\\sqrt{2}$ 일 때, $a+b$의 값은? [5점]",
-    "choices": ["① 3", "② 6", "③ 9", "④ 12", "⑤ 15"],
+    "choices": [
+      "① 3",
+      "② 6",
+      "③ 9",
+      "④ 12",
+      "⑤ 15"
+    ],
     "answer": "①",
-    "solution": "[키포인트] 방정식의 양변을 제곱하여 근호를 제거한다.\\n1단계: $3\\sqrt{a+10}=9$에서 $\\sqrt{a+10}=3$이므로 $a+10=9$, $a=-1$이다.\\n2단계: $\\frac{20+b}{3}=8$에서 $b=4$이다.\\n3단계: $a+b=3$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 방정식의 양변을 제곱하여 근호를 제거한다.\\n1단계: $3\\sqrt{a+10}=9$에서 $\\sqrt{a+10}=3$이므로 $a+10=9$, $a=-1$이다.\\n2단계: $\\frac{20+b}{3}=8$에서 $b=4$이다.\\n3단계: $a+b=3$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -354,12 +592,29 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","정수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "정수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$x^2+kx-6 = (x+a)(x+b)$일 때, $k$가 될 수 있는 수를 모두 곱하면? (단, $a, b$는 정수) [5점]",
-    "choices": ["① -25", "② -5", "③ 5", "④ 25", "⑤ 100"],
+    "choices": [
+      "① -25",
+      "② -5",
+      "③ 5",
+      "④ 25",
+      "⑤ 100"
+    ],
     "answer": "④",
-    "solution": "[키포인트] 곱이 -6인 두 정수쌍을 모두 찾는다.\\n1단계: $(1,-6), (-1,6), (2,-3), (-2,3)$이 있다.\\n2단계: $k$는 $-5, 5, -1, 1$이 가능하며 곱은 25이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 곱이 -6인 두 정수쌍을 모두 찾는다.\\n1단계: $(1,-6), (-1,6), (2,-3), (-2,3)$이 있다.\\n2단계: $k$는 $-5, 5, -1, 1$이 가능하며 곱은 25이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 19,
@@ -372,12 +627,30 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","자연수조건","대입","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "자연수조건",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "자연수 $n$에 대하여 $2n^2+11n-6$이 소수일 때, 이 소수를 구하면? [5점]",
-    "choices": ["① 3", "② 5", "③ 7", "④ 11", "⑤ 13"],
+    "choices": [
+      "① 3",
+      "② 5",
+      "③ 7",
+      "④ 11",
+      "⑤ 13"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 소수는 1과 자기 자신만을 인수로 갖는다.\\n1단계: $(2n-1)(n+6)$으로 인수분해된다.\\n2단계: $2n-1=1$이어야 하므로 $n=1$이고, 대입하면 7이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 소수는 1과 자기 자신만을 인수로 갖는다.\\n1단계: $(2n-1)(n+6)$으로 인수분해된다.\\n2단계: $2n-1=1$이어야 하므로 $n=1$이고, 대입하면 7이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -390,12 +663,31 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","계수비교","최대최소","자연수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "계수비교",
+      "최대최소",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다항식 $px^2+(2n+1)x+q$가 인수분해 되도록 하는 자연수 $n$의 최댓값은? (단, $p, q$는 소수이고 $p < q < 20$) [5점]",
-    "choices": ["① 10", "② 19", "③ 20", "④ 38", "⑤ 39"],
+    "choices": [
+      "① 10",
+      "② 19",
+      "③ 20",
+      "④ 38",
+      "⑤ 39"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 인수분해 공식을 이용해 항의 계수 관계를 파악한다.\\n1단계: $px^2+(2n+1)x+q$가 정수 계수의 두 일차식의 곱으로 인수분해된다고 보면 $(px+q)(x+1)$ 또는 $(px+1)(x+q)$ 꼴을 생각할 수 있다.\\n2단계: 이때 $p<q$이고 $p, q$가 소수일 때 최댓값을 만들려면 $pq+1=2n+1$이 되도록 잡는 경우가 유리하므로 $pq=2n$이다.\\n3단계: $pq$가 짝수여야 하므로 $p$는 반드시 2여야 하고 최대 소수 $q=19$일 때 $n=19$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 인수분해 공식을 이용해 항의 계수 관계를 파악한다.\\n1단계: $px^2+(2n+1)x+q$가 정수 계수의 두 일차식의 곱으로 인수분해된다고 보면 $(px+q)(x+1)$ 또는 $(px+1)(x+q)$ 꼴을 생각할 수 있다.\\n2단계: 이때 $p<q$이고 $p, q$가 소수일 때 최댓값을 만들려면 $pq+1=2n+1$이 되도록 잡는 경우가 유리하므로 $pq=2n$이다.\\n3단계: $pq$가 짝수여야 하므로 $p$는 반드시 2여야 하고 최대 소수 $q=19$일 때 $n=19$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -408,12 +700,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "[서술형 1] $\\sqrt{6}$의 정수부분을 $a$, 소수부분을 $b$라 할 때, $a, b$를 각각 구하고, $\\frac{a}{b}$의 값을 구하는 과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "$a=2, b=\\sqrt{6}-2, \\quad \\sqrt{6}+2$",
-    "solution": "[키포인트] 정수부분을 먼저 구한 뒤 원래 수에서 뺀다.\\n1단계: $2 < \\sqrt{6} < 3$이므로 $a=2, b=\\sqrt{6}-2$이다.\\n2단계: $\\frac{2}{\\sqrt{6}-2} = \\sqrt{6}+2$이다."
+    "solution": "[키포인트] 정수부분을 먼저 구한 뒤 원래 수에서 뺀다.\\n1단계: $2 < \\sqrt{6} < 3$이므로 $a=2, b=\\sqrt{6}-2$이다.\\n2단계: $\\frac{2}{\\sqrt{6}-2} = \\sqrt{6}+2$이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -426,12 +724,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "[서술형 2] 하은이는 상수항을 잘못 보아 $(x+1)(x-5)$로, 정민이는 $x$의 계수를 잘못 보아 $(x-3)(x+4)$로 인수분해 하였다. 원래의 이차식을 구하고 바르게 인수분해 하시오. [5점]",
     "choices": [],
     "answer": "$x^2-4x-12 = (x-6)(x+2)$",
-    "solution": "[키포인트] 각각 바르게 본 항을 찾아 조합한다.\\n1단계: 하은이는 $x$계수 -4를, 정민이는 상수항 -12를 바르게 보았다.\\n2단계: 원래 식은 $x^2-4x-12$이고 인수분해하면 $(x-6)(x+2)$이다."
+    "solution": "[키포인트] 각각 바르게 본 항을 찾아 조합한다.\\n1단계: 하은이는 $x$계수 -4를, 정민이는 상수항 -12를 바르게 보았다.\\n2단계: 원래 식은 $x^2-4x-12$이고 인수분해하면 $(x-6)(x+2)$이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 23,
@@ -444,12 +748,19 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "subjective-2up",
-    "tags": ["서술형", "도형"],
+    "tags": [
+      "서술형",
+      "도형"
+    ],
     "wide": false,
     "content": "[서술형 3] 아래 그림과 같이 직사각형 모양의 땅이 $A, B, C, D$ $4$개의 땅으로 나누어져 있다. $A, B, C$는 모두 정사각형 모양이다. $A$의 넓이는 $25\\text{m}^2$, $C$의 넓이는 $2\\text{m}^2$일 때, $D$의 넓이를 구하고 넓이를 구하기 위한 과정을 서술하시오.\\n<div style=\"text-align:center; margin:15px 0;\">\\n<svg width=\"190\" height=\"120\" viewBox=\"0 0 190 120\" xmlns=\"http://www.w3.org/2000/svg\">\\n  \\n  \\n  <g stroke=\"#000\" stroke-width=\"1.5\" fill=\"none\">\\n    \\n    <rect x=\"10\" y=\"10\" width=\"171.72\" height=\"100\" />\\n    \\n    <line x1=\"110\" y1=\"10\" x2=\"110\" y2=\"110\" /> \\n    <line x1=\"110\" y1=\"81.72\" x2=\"181.72\" y2=\"81.72\" /> \\n    <line x1=\"153.44\" y1=\"81.72\" x2=\"153.44\" y2=\"110\" /> \\n  </g>\\n  \\n  \\n  <text x=\"60\" y=\"65\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">A</text>\\n  <text x=\"145.86\" y=\"50.86\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">B</text>\\n  <text x=\"131.72\" y=\"100\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">D</text>\\n  <text x=\"167.58\" y=\"100\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">C</text>\\n</svg>\\n</div>",
     "choices": [],
     "answer": "$5\\sqrt{2} - 4\\text{ m}^2$",
-    "solution": "[키포인트] 정사각형의 넓이를 통해 한 변의 길이를 무리수로 구하고, 전체 도형의 구조를 이용하여 나머지 변의 길이를 연산한다.\\n1단계: 정사각형 $A$의 넓이가 $25\\text{m}^2$이므로, $A$의 한 변의 길이는 $\\sqrt{25} = 5\\text{m}$이다.\\n2단계: 정사각형 $C$의 넓이가 $2\\text{m}^2$이므로, $C$의 한 변의 길이는 $\\sqrt{2}\\text{m}$이다.\\n3단계: 그림에서 직사각형의 전체 높이는 $A$의 높이인 $5\\text{m}$와 같다. 오른쪽 영역은 정사각형 $B$와 직사각형 $D, C$로 구성되어 있으므로, $B$의 세로 길이는 전체 높이에서 $C$의 세로 길이를 뺀 값이다. 따라서 정사각형 $B$의 한 변의 길이는 $5 - \\sqrt{2} (\\text{m})$이다.\\n4단계: 오른쪽 영역의 전체 가로 길이는 $B$의 가로 길이인 $5 - \\sqrt{2}$와 같으며, 이는 $D$와 $C$의 가로 길이의 합이다.\\n5단계: 직사각형 $D$의 가로 길이는 $(5 - \\sqrt{2}) - \\sqrt{2} = 5 - 2\\sqrt{2} (\\text{m})$이다. 또한 $D$의 세로 길이는 $C$의 세로 길이와 같은 $\\sqrt{2}\\text{m}$이다.\\n6단계: 직사각형 $D$의 넓이는 (가로) $\\times$ (세로) 이므로\\n$(5 - 2\\sqrt{2}) \\times \\sqrt{2} = 5\\sqrt{2} - 4 (\\text{m}^2)$이다.\\n∴ 정답: $5\\sqrt{2} - 4\\text{ m}^2$"
+    "solution": "[키포인트] 정사각형의 넓이를 통해 한 변의 길이를 무리수로 구하고, 전체 도형의 구조를 이용하여 나머지 변의 길이를 연산한다.\\n1단계: 정사각형 $A$의 넓이가 $25\\text{m}^2$이므로, $A$의 한 변의 길이는 $\\sqrt{25} = 5\\text{m}$이다.\\n2단계: 정사각형 $C$의 넓이가 $2\\text{m}^2$이므로, $C$의 한 변의 길이는 $\\sqrt{2}\\text{m}$이다.\\n3단계: 그림에서 직사각형의 전체 높이는 $A$의 높이인 $5\\text{m}$와 같다. 오른쪽 영역은 정사각형 $B$와 직사각형 $D, C$로 구성되어 있으므로, $B$의 세로 길이는 전체 높이에서 $C$의 세로 길이를 뺀 값이다. 따라서 정사각형 $B$의 한 변의 길이는 $5 - \\sqrt{2} (\\text{m})$이다.\\n4단계: 오른쪽 영역의 전체 가로 길이는 $B$의 가로 길이인 $5 - \\sqrt{2}$와 같으며, 이는 $D$와 $C$의 가로 길이의 합이다.\\n5단계: 직사각형 $D$의 가로 길이는 $(5 - \\sqrt{2}) - \\sqrt{2} = 5 - 2\\sqrt{2} (\\text{m})$이다. 또한 $D$의 세로 길이는 $C$의 세로 길이와 같은 $\\sqrt{2}\\text{m}$이다.\\n6단계: 직사각형 $D$의 넓이는 (가로) $\\times$ (세로) 이므로\\n$(5 - 2\\sqrt{2}) \\times \\sqrt{2} = 5\\sqrt{2} - 4 (\\text{m}^2)$이다.\\n∴ 정답: $5\\sqrt{2} - 4\\text{ m}^2$",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -462,11 +773,17 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "[서술형 4] $f(n) = \\sqrt{n+1} + \\sqrt{n}$일 때, $3 < \\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} < 10$을 만족하는 자연수 $n$의 개수를 구하시오. [6점]",
     "choices": [],
     "answer": "104개",
-    "solution": "[키포인트] 유리화를 통해 연쇄 소거를 이용한다.\\n1단계: $\\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1} < 11$에서 $15 < n < 120$이므로 104개이다."
+    "solution": "[키포인트] 유리화를 통해 연쇄 소거를 이용한다.\\n1단계: $\\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1} < 11$에서 $15 < n < 120$이므로 104개이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
