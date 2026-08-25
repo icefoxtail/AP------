@@ -27,7 +27,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "$15$의 양의 약수는 $1,3,5,15$의 네 개이다.\n결론: 정답은 ③이다."
+    "solution": "$15$의 양의 약수는 $1,3,5,15$의 네 개이다.\n결론: 정답은 ③이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -56,7 +60,11 @@ window.questionBank = [
       "$\\{a,b,c\\}$"
     ],
     "answer": "②",
-    "solution": "$\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $\\{a,b,c\\}$는 모두 $\\{a,b,c\\}$의 부분집합이다. 그러나 $\\varnothing$은 주어진 집합의 원소가 아니므로 $\\{\\varnothing\\}$은 부분집합이 아니다.\n결론: 정답은 ②이다."
+    "solution": "$\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $\\{a,b,c\\}$는 모두 $\\{a,b,c\\}$의 부분집합이다. 그러나 $\\varnothing$은 주어진 집합의 원소가 아니므로 $\\{\\varnothing\\}$은 부분집합이 아니다.\n결론: 정답은 ②이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -85,7 +93,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "평행사변형에서 $A+C=B+D$이므로\n$C=B+D-A=(-1,-1)+(3,0)-(1,2)=(1,-3)$이다. 따라서 $ab=1\\cdot(-3)=-3$이다.\n결론: 정답은 ①이다."
+    "solution": "평행사변형에서 $A+C=B+D$이므로\n$C=B+D-A=(-1,-1)+(3,0)-(1,2)=(1,-3)$이다. 따라서 $ab=1\\cdot(-3)=-3$이다.\n결론: 정답은 ①이다.",
+    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+    "subUnit": "평면좌표와 거리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -114,7 +126,11 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solution": "$4$가 $A$의 원소가 되려면 $a-3=4$이므로 $a=7$이다. 이때 $A=\\{2,4,6\\}$, $B=\\{1,4,8\\}$이고 실제로 $A\\cap B=\\{4\\}$이다.\n따라서 $B-A=\\{1,8\\}$이고 모든 원소의 합은 $9$이다.\n결론: 정답은 ⑤이다."
+    "solution": "$4$가 $A$의 원소가 되려면 $a-3=4$이므로 $a=7$이다. 이때 $A=\\{2,4,6\\}$, $B=\\{1,4,8\\}$이고 실제로 $A\\cap B=\\{4\\}$이다.\n따라서 $B-A=\\{1,8\\}$이고 모든 원소의 합은 $9$이다.\n결론: 정답은 ⑤이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -144,7 +160,11 @@ window.questionBank = [
       "$31$"
     ],
     "answer": "④",
-    "solution": "$A=\\{1,2,4,8\\}$이므로 원소의 개수는 $4$이다. 부분집합은 $2^4=16$개이고, 이 중 자기 자신을 제외한 진부분집합은 $15$개이다.\n결론: 정답은 ④이다."
+    "solution": "$A=\\{1,2,4,8\\}$이므로 원소의 개수는 $4$이다. 부분집합은 $2^4=16$개이고, 이 중 자기 자신을 제외한 진부분집합은 $15$개이다.\n결론: 정답은 ④이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -173,7 +193,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "①",
-    "solution": "두 평행선 사이의 거리는 $\\dfrac{|k-3|}{\\sqrt{1^2+1^2}}$이므로\n$\\dfrac{|k-3|}{\\sqrt2}=4\\sqrt2$이다. 따라서 $|k-3|=8$이고 $k=11$ 또는 $k=-5$이다.\n두 값의 합은 $6$이다.\n결론: 정답은 ①이다."
+    "solution": "두 평행선 사이의 거리는 $\\dfrac{|k-3|}{\\sqrt{1^2+1^2}}$이므로\n$\\dfrac{|k-3|}{\\sqrt2}=4\\sqrt2$이다. 따라서 $|k-3|=8$이고 $k=11$ 또는 $k=-5$이다.\n두 값의 합은 $6$이다.\n결론: 정답은 ①이다.",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -202,7 +226,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "원의 중심 $(1,-2)$에서 직선까지의 거리는\n$\\dfrac{|5+24+1|}{\\sqrt{5^2+(-12)^2}}=\\dfrac{30}{13}$이다. 서로 다른 두 점에서 만나려면 $r>\\dfrac{30}{13}$이어야 하므로 자연수 $r$의 최솟값은 $3$이다.\n결론: 정답은 ③이다."
+    "solution": "원의 중심 $(1,-2)$에서 직선까지의 거리는\n$\\dfrac{|5+24+1|}{\\sqrt{5^2+(-12)^2}}=\\dfrac{30}{13}$이다. 서로 다른 두 점에서 만나려면 $r>\\dfrac{30}{13}$이어야 하므로 자연수 $r$의 최솟값은 $3$이다.\n결론: 정답은 ③이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -232,7 +260,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "주어진 직선 $x-2y-2=0$의 기울기는 $\\dfrac12$이므로 수직인 직선의 기울기는 $a=-2$이다. 두 직선은 $x$축 위에서 만나므로 교점은 $(2,0)$이다.\n$y=ax+b$를 $(1,-2)$만큼 평행이동한 직선은 $y=a(x-1)+b-2=ax+b-a-2$이다. $a=-2$를 대입하면 $y=-2x+b$이고, 이 직선이 $(2,0)$을 지나므로 $b=4$이다.\n따라서 $a+b=2$이다.\n결론: 정답은 ②이다."
+    "solution": "주어진 직선 $x-2y-2=0$의 기울기는 $\\dfrac12$이므로 수직인 직선의 기울기는 $a=-2$이다. 두 직선은 $x$축 위에서 만나므로 교점은 $(2,0)$이다.\n$y=ax+b$를 $(1,-2)$만큼 평행이동한 직선은 $y=a(x-1)+b-2=ax+b-a-2$이다. $a=-2$를 대입하면 $y=-2x+b$이고, 이 직선이 $(2,0)$을 지나므로 $b=4$이다.\n따라서 $a+b=2$이다.\n결론: 정답은 ②이다.",
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -261,7 +293,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "③",
-    "solution": "두 좌표축에 동시에 접하고 점 $(2,-1)$을 지나는 원의 중심은 가능한 사분면을 조사하면 $(r,-r)$이다. 따라서\n$(2-r)^2+(-1+r)^2=r^2$이고, 정리하면 $r^2-6r+5=0$이다.\n그러므로 두 원의 반지름은 $1$, $5$이고 그 합은 $6$이다.\n결론: 정답은 ③이다."
+    "solution": "두 좌표축에 동시에 접하고 점 $(2,-1)$을 지나는 원의 중심은 가능한 사분면을 조사하면 $(r,-r)$이다. 따라서\n$(2-r)^2+(-1+r)^2=r^2$이고, 정리하면 $r^2-6r+5=0$이다.\n그러므로 두 원의 반지름은 $1$, $5$이고 그 합은 $6$이다.\n결론: 정답은 ③이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -290,7 +326,11 @@ window.questionBank = [
       "$\\sqrt5$"
     ],
     "answer": "④",
-    "solution": "원의 중심은 $(1,0)$, 반지름은 $\\sqrt3$이다. 중심에서 직선 $x-y+1=0$까지의 거리는 $\\dfrac{|1+1|}{\\sqrt2}=\\sqrt2$이다.\n따라서 현의 길이는 $2\\sqrt{(\\sqrt3)^2-(\\sqrt2)^2}=2$이다.\n결론: 정답은 ④이다."
+    "solution": "원의 중심은 $(1,0)$, 반지름은 $\\sqrt3$이다. 중심에서 직선 $x-y+1=0$까지의 거리는 $\\dfrac{|1+1|}{\\sqrt2}=\\sqrt2$이다.\n따라서 현의 길이는 $2\\sqrt{(\\sqrt3)^2-(\\sqrt2)^2}=2$이다.\n결론: 정답은 ④이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -312,6 +352,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 벤다이어그램의 색칠한 부분을 나타내는 집합과 항상 같은 집합은? [3.9점]",
     "image": "assets/images/25_순천고_2학기_중간_고1_기출/q11.png",
+    "imageSize": "large",
     "choices": [
       "$A\\cap(B\\cup C)$",
       "$A\\cup(B\\cap C)$",
@@ -320,7 +361,11 @@ window.questionBank = [
       "$(A-B)\\cup(A-C)$"
     ],
     "answer": "⑤",
-    "solution": "색칠한 부분은 $A$에 속하면서 $B$와 $C$에 동시에 속하는 부분만 제외한 영역, 즉 $A-(B\\cap C)$이다.\n한편 $(A-B)\\cup(A-C)=(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A-(B\\cap C)$이다.\n결론: 정답은 ⑤이다."
+    "solution": "색칠한 부분은 $A$에 속하면서 $B$와 $C$에 동시에 속하는 부분만 제외한 영역, 즉 $A-(B\\cap C)$이다.\n한편 $(A-B)\\cup(A-C)=(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A-(B\\cap C)$이다.\n결론: 정답은 ⑤이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -350,7 +395,11 @@ window.questionBank = [
       "$\\dfrac{14}{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 거리의 제곱을 식으로 나타낸 뒤 완전제곱식을 이용하여 최댓값과 등호 성립 조건을 구한다.\n\n원점 $O$와 직선\n$(k+1)x+(k-1)y-k-3=0$\n사이의 거리의 제곱을 $D^2$이라 하면\n$D^2=\\dfrac{(k+3)^2}{(k+1)^2+(k-1)^2}\n=\\dfrac{(k+3)^2}{2(k^2+1)}$이다.\n\n이때\n$10(k^2+1)-(k+3)^2\n=9k^2-6k+1\n=(3k-1)^2\\ge0$이므로\n$(k+3)^2\\le10(k^2+1)$이다.\n\n따라서\n$D^2=\\dfrac{(k+3)^2}{2(k^2+1)}\\le5$이고,\n등호는 $3k-1=0$, 즉 $k=\\dfrac13$일 때 성립한다.\n\n$k=\\dfrac13$을 원래 직선에 대입하면\n$\\dfrac43x-\\dfrac23y-\\dfrac{10}{3}=0$,\n즉 $2x-y-5=0$이다.\n\n이 직선의 $x$절편은 $\\dfrac52$, $y$절편은 $-5$이므로\n삼각형 $AOB$의 넓이는\n$\\dfrac12\\cdot\\dfrac52\\cdot5\n=\\dfrac{25}{4}$이다.\n\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 거리의 제곱을 식으로 나타낸 뒤 완전제곱식을 이용하여 최댓값과 등호 성립 조건을 구한다.\n\n원점 $O$와 직선\n$(k+1)x+(k-1)y-k-3=0$\n사이의 거리의 제곱을 $D^2$이라 하면\n$D^2=\\dfrac{(k+3)^2}{(k+1)^2+(k-1)^2}\n=\\dfrac{(k+3)^2}{2(k^2+1)}$이다.\n\n이때\n$10(k^2+1)-(k+3)^2\n=9k^2-6k+1\n=(3k-1)^2\\ge0$이므로\n$(k+3)^2\\le10(k^2+1)$이다.\n\n따라서\n$D^2=\\dfrac{(k+3)^2}{2(k^2+1)}\\le5$이고,\n등호는 $3k-1=0$, 즉 $k=\\dfrac13$일 때 성립한다.\n\n$k=\\dfrac13$을 원래 직선에 대입하면\n$\\dfrac43x-\\dfrac23y-\\dfrac{10}{3}=0$,\n즉 $2x-y-5=0$이다.\n\n이 직선의 $x$절편은 $\\dfrac52$, $y$절편은 $-5$이므로\n삼각형 $AOB$의 넓이는\n$\\dfrac12\\cdot\\dfrac52\\cdot5\n=\\dfrac{25}{4}$이다.\n\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -379,7 +428,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "ㄱ은 차집합의 정의이므로 참이다.\nㄴ의 좌변은 $A\\cap B^c\\cap C^c=A-(B\\cup C)$이므로 거짓이다.\nㄷ의 좌변은 $A\\cap B\\cap(A\\cap C)^c=A\\cap B\\cap C^c$이므로 참이다.\n따라서 항상 옳은 것은 ㄱ, ㄷ이다.\n결론: 정답은 ③이다."
+    "solution": "ㄱ은 차집합의 정의이므로 참이다.\nㄴ의 좌변은 $A\\cap B^c\\cap C^c=A-(B\\cup C)$이므로 거짓이다.\nㄷ의 좌변은 $A\\cap B\\cap(A\\cap C)^c=A\\cap B\\cap C^c$이므로 참이다.\n따라서 항상 옳은 것은 ㄱ, ㄷ이다.\n결론: 정답은 ③이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -409,7 +462,11 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "②",
-    "solution": "$A_2\\cap A_5=A_{10}$이므로 $A_n\\subset A_{10}$에서 $n$은 $10$의 배수이다. 또 $A_{20}\\cup A_{40}=A_{20}$이므로 $A_{20}\\subset A_n$에서 $n$은 $20$의 약수이다.\n두 조건을 모두 만족하는 $n$은 $10$, $20$이고 그 합은 $30$이다.\n결론: 정답은 ②이다."
+    "solution": "$A_2\\cap A_5=A_{10}$이므로 $A_n\\subset A_{10}$에서 $n$은 $10$의 배수이다. 또 $A_{20}\\cup A_{40}=A_{20}$이므로 $A_{20}\\subset A_n$에서 $n$은 $20$의 약수이다.\n두 조건을 모두 만족하는 $n$은 $10$, $20$이고 그 합은 $30$이다.\n결론: 정답은 ②이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -439,7 +496,11 @@ window.questionBank = [
       "$3+\\sqrt2$"
     ],
     "answer": "①",
-    "solution": "주어진 원의 중심은 $(3,-2)$이고 반지름은 $1$이다. 평행이동한 중심은 $(3+a,-2+b)$이다.\n$x$축에 접하므로 $|-2+b|=1$에서 $b=1$ 또는 $3$이다. 직선 $y=x$에 접하므로 $\\dfrac{|(3+a)-(-2+b)|}{\\sqrt2}=1$, 즉 $a=b-5\\pm\\sqrt2$이다.\n따라서 $a+b=2b-5\\pm\\sqrt2$의 최솟값은 $b=1$이고 음의 부호일 때의 $-3-\\sqrt2$이다.\n결론: 정답은 ①이다."
+    "solution": "주어진 원의 중심은 $(3,-2)$이고 반지름은 $1$이다. 평행이동한 중심은 $(3+a,-2+b)$이다.\n$x$축에 접하므로 $|-2+b|=1$에서 $b=1$ 또는 $3$이다. 직선 $y=x$에 접하므로 $\\dfrac{|(3+a)-(-2+b)|}{\\sqrt2}=1$, 즉 $a=b-5\\pm\\sqrt2$이다.\n따라서 $a+b=2b-5\\pm\\sqrt2$의 최솟값은 $b=1$이고 음의 부호일 때의 $-3-\\sqrt2$이다.\n결론: 정답은 ①이다.",
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -469,7 +530,11 @@ window.questionBank = [
       "$2\\sqrt5$"
     ],
     "answer": "⑤",
-    "solution": "원 $C_1$은 중심 $(3,4)$, 반지름 $3$인 원이다. $\\angle APO=90^\\circ$이므로 삼각형 $APO$의 외접원 $C_2$는 지름이 $AO$인 원이다. 따라서 $C_2$의 중심은 $(3,0)$, 반지름은 $3$이다.\n두 원 $C_1$, $C_2$의 중심 사이의 거리는 $4$이다. 반지름이 같은 두 원의 공통현 $PQ$의 길이는\n$2\\sqrt{3^2-\\left(\\dfrac{4}{2}\\right)^2}=2\\sqrt5$이다.\n따라서 정답은 ⑤이다."
+    "solution": "원 $C_1$은 중심 $(3,4)$, 반지름 $3$인 원이다. $\\angle APO=90^\\circ$이므로 삼각형 $APO$의 외접원 $C_2$는 지름이 $AO$인 원이다. 따라서 $C_2$의 중심은 $(3,0)$, 반지름은 $3$이다.\n두 원 $C_1$, $C_2$의 중심 사이의 거리는 $4$이다. 반지름이 같은 두 원의 공통현 $PQ$의 길이는\n$2\\sqrt{3^2-\\left(\\dfrac{4}{2}\\right)^2}=2\\sqrt5$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -499,7 +564,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 접점에서 반지름과 접선이 수직이라는 조건을 좌표와 기울기로 나타낸다.\n\n원의 중심을 $C(3,2)$라 하고 접점을 $P(u,v)$라 하자.\n점 $P$가 원 위에 있으므로\n$(u-3)^2+(v-2)^2=9$이다.\n\n또 $AP$는 접선이고 $CP$는 반지름이므로\n$AP\\perp CP$이다.\n따라서 두 직선의 기울기의 곱이 $-1$이므로\n$\\dfrac{v-2}{u-18}\\cdot\\dfrac{v-2}{u-3}=-1$이다.\n\n이를 정리하면\n$(v-2)^2=-(u-18)(u-3)$이다.\n이 식을 원의 방정식에 대입하면\n$(u-3)^2-(u-18)(u-3)=9$이다.\n\n따라서\n$(u-3)\\{(u-3)-(u-18)\\}=9$,\n$15(u-3)=9$이므로\n$u=\\dfrac{18}{5}$이다.\n\n두 접점 $P$, $Q$는 직선 $CA$에 대하여 대칭이므로\n두 점의 $x$좌표는 모두 $\\dfrac{18}{5}$이다.\n따라서 $x$좌표의 합은\n$\\dfrac{18}{5}+\\dfrac{18}{5}\n=\\dfrac{36}{5}$이다.\n\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 접점에서 반지름과 접선이 수직이라는 조건을 좌표와 기울기로 나타낸다.\n\n원의 중심을 $C(3,2)$라 하고 접점을 $P(u,v)$라 하자.\n점 $P$가 원 위에 있으므로\n$(u-3)^2+(v-2)^2=9$이다.\n\n또 $AP$는 접선이고 $CP$는 반지름이므로\n$AP\\perp CP$이다.\n따라서 두 직선의 기울기의 곱이 $-1$이므로\n$\\dfrac{v-2}{u-18}\\cdot\\dfrac{v-2}{u-3}=-1$이다.\n\n이를 정리하면\n$(v-2)^2=-(u-18)(u-3)$이다.\n이 식을 원의 방정식에 대입하면\n$(u-3)^2-(u-18)(u-3)=9$이다.\n\n따라서\n$(u-3)\\{(u-3)-(u-18)\\}=9$,\n$15(u-3)=9$이므로\n$u=\\dfrac{18}{5}$이다.\n\n두 접점 $P$, $Q$는 직선 $CA$에 대하여 대칭이므로\n두 점의 $x$좌표는 모두 $\\dfrac{18}{5}$이다.\n따라서 $x$좌표의 합은\n$\\dfrac{18}{5}+\\dfrac{18}{5}\n=\\dfrac{36}{5}$이다.\n\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -522,9 +591,14 @@ window.questionBank = [
     "wide": false,
     "content": "서답형 1. (단답형)<br>삼각형 $ABC$의 무게중심 $G$의 좌표는 $(3,1)$이고, 직선 $BC$의 방정식은 $y=3x-1$이다. 점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 할 때, 선분 $AH$의 길이는 $\\dfrac{n}{\\sqrt{10}}$이다. 자연수 $n$의 값을 구하시오. [부분 점수 없음, 5점]",
     "image": "assets/images/25_순천고_2학기_중간_고1_기출/q18.png",
+    "imageSize": "large",
     "choices": [],
     "answer": "$21$",
-    "solution": "변 $BC$의 중점을 $M$이라 하면 무게중심의 성질에 의해 점 $A$, $G$, $M$은 한 직선 위에 있고 $AG:GM=2:1$이다.\n무게중심의 좌표 공식에서\n$G=\\left(\\dfrac{x_A+x_B+x_C}{3},\\dfrac{y_A+y_B+y_C}{3}\\right)$이므로\n$A=3G-2M$이다.\n직선 $BC$를 $3x-y-1=0$으로 쓰자. 점 $M$은 직선 $BC$ 위에 있으므로 $3x_M-y_M-1=0$이다. 또 $G=(3,1)$이므로 $3\\cdot3-1-1=7$이다.\n$A=3G-2M$이므로 점 $A$의 좌표를 이 식에 대입하면 $3x_A-y_A-1=21$을 얻는다.\n따라서 점 $A$에서 직선 $BC$까지의 거리는\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다.\n그러므로 $n=21$이다."
+    "solution": "변 $BC$의 중점을 $M$이라 하면 무게중심의 성질에 의해 점 $A$, $G$, $M$은 한 직선 위에 있고 $AG:GM=2:1$이다.\n무게중심의 좌표 공식에서\n$G=\\left(\\dfrac{x_A+x_B+x_C}{3},\\dfrac{y_A+y_B+y_C}{3}\\right)$이므로\n$A=3G-2M$이다.\n직선 $BC$를 $3x-y-1=0$으로 쓰자. 점 $M$은 직선 $BC$ 위에 있으므로 $3x_M-y_M-1=0$이다. 또 $G=(3,1)$이므로 $3\\cdot3-1-1=7$이다.\n$A=3G-2M$이므로 점 $A$의 좌표를 이 식에 대입하면 $3x_A-y_A-1=21$을 얻는다.\n따라서 점 $A$에서 직선 $BC$까지의 거리는\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다.\n그러므로 $n=21$이다.",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -548,7 +622,11 @@ window.questionBank = [
     "content": "서답형 2. (단답형)<br>원 $x^2+y^2+3px+3qy-16=0$이 직선 $y=mx$와 만나는 두 점을 $P$, $Q$라 할 때, $\\overline{OP}$와 $\\overline{OQ}$의 곱을 구하시오. (단, $p$, $q$, $m$은 실수이고 $O$는 원점이다.) [부분 점수 없음, 5점]",
     "choices": [],
     "answer": "$16$",
-    "solution": "직선 위의 점을 $(t,mt)$로 놓으면 교점의 매개변수 $t$는\n$(1+m^2)t^2+3(p+qm)t-16=0$의 두 근이다. 두 근을 $t_1$, $t_2$라 하면 $t_1t_2=-\\dfrac{16}{1+m^2}$이다.\n$OP=|t_1|\\sqrt{1+m^2}$, $OQ=|t_2|\\sqrt{1+m^2}$이므로\n$OP\\cdot OQ=|t_1t_2|(1+m^2)=16$이다."
+    "solution": "직선 위의 점을 $(t,mt)$로 놓으면 교점의 매개변수 $t$는\n$(1+m^2)t^2+3(p+qm)t-16=0$의 두 근이다. 두 근을 $t_1$, $t_2$라 하면 $t_1t_2=-\\dfrac{16}{1+m^2}$이다.\n$OP=|t_1|\\sqrt{1+m^2}$, $OQ=|t_2|\\sqrt{1+m^2}$이므로\n$OP\\cdot OQ=|t_1t_2|(1+m^2)=16$이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -572,7 +650,11 @@ window.questionBank = [
     "content": "서답형 3. (단답형)<br>두 집합 $A$를 $24$의 약수 전체의 집합, $B$를 $18$의 약수 전체의 집합이라 하자. 다음 조건을 만족하는 집합 $X$의 개수를 구하시오. [부분 점수 없음, 5점]<br><br>(가) $A\\cap X=X$<br>(나) $(A\\cap B)\\cup X=X$<br>(다) $X\\ne A$, $X\\ne B$",
     "choices": [],
     "answer": "$15$",
-    "solution": "(가)에서 $X\\subset A$이고, (나)에서 $A\\cap B\\subset X$이다.\n$A=\\{1,2,3,4,6,8,12,24\\}$, $A\\cap B=\\{1,2,3,6\\}$이므로 $X$는 네 개의 고정 원소를 포함하고 나머지 네 원소를 자유롭게 선택한다. 가능한 집합은 $2^4=16$개이다.\n이 중 $X=A$인 경우 하나를 제외한다. $B$는 $9$, $18$을 포함하므로 $X\\subset A$인 집합과 같을 수 없다. 따라서 구하는 개수는 $15$이다."
+    "solution": "(가)에서 $X\\subset A$이고, (나)에서 $A\\cap B\\subset X$이다.\n$A=\\{1,2,3,4,6,8,12,24\\}$, $A\\cap B=\\{1,2,3,6\\}$이므로 $X$는 네 개의 고정 원소를 포함하고 나머지 네 원소를 자유롭게 선택한다. 가능한 집합은 $2^4=16$개이다.\n이 중 $X=A$인 경우 하나를 제외한다. $B$는 $9$, $18$을 포함하므로 $X\\subset A$인 집합과 같을 수 없다. 따라서 구하는 개수는 $15$이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -595,7 +677,11 @@ window.questionBank = [
     "content": "서답형 4. (서술형)<br>점 $A(2,-3)$에서 직선 $l:x-y+2=0$에 내린 수선의 발을 $H(a,b)$, 점 $A$와 직선 $l$ 사이의 거리를 $c$라 할 때, $a+b+c$의 값을 구하는 풀이과정과 답을 서술하시오. (단, $a$, $b$, $c$는 상수이다.) [부분 점수 있음, 6점]",
     "choices": [],
     "answer": "$-1+\\dfrac{7\\sqrt2}{2}$",
-    "solution": "[키포인트] 주어진 직선에 수직이고 점 $A$를 지나는 직선의 방정식을 구한 뒤 두 직선의 교점을 찾는다.\n\n직선 $l:x-y+2=0$을 정리하면\n$y=x+2$이므로 기울기는 $1$이다.\n\n따라서 직선 $l$에 수직이고 점 $A(2,-3)$을 지나는 직선의 기울기는 $-1$이다.\n그 방정식은\n$y+3=-(x-2)$,\n즉 $y=-x-1$이다.\n\n수선의 발 $H(a,b)$는\n$y=x+2$와 $y=-x-1$의 교점이므로\n$x+2=-x-1$이다.\n따라서\n$a=-\\dfrac32$이고\n$b=\\dfrac12$이다.\n\n그러므로\n$a+b=-1$이다.\n\n또 점 $A(2,-3)$과 직선 $x-y+2=0$ 사이의 거리는\n$c=\\dfrac{|2-(-3)+2|}{\\sqrt{1^2+(-1)^2}}\n=\\dfrac7{\\sqrt2}\n=\\dfrac{7\\sqrt2}{2}$이다.\n\n따라서\n$a+b+c=-1+\\dfrac{7\\sqrt2}{2}$이다."
+    "solution": "[키포인트] 주어진 직선에 수직이고 점 $A$를 지나는 직선의 방정식을 구한 뒤 두 직선의 교점을 찾는다.\n\n직선 $l:x-y+2=0$을 정리하면\n$y=x+2$이므로 기울기는 $1$이다.\n\n따라서 직선 $l$에 수직이고 점 $A(2,-3)$을 지나는 직선의 기울기는 $-1$이다.\n그 방정식은\n$y+3=-(x-2)$,\n즉 $y=-x-1$이다.\n\n수선의 발 $H(a,b)$는\n$y=x+2$와 $y=-x-1$의 교점이므로\n$x+2=-x-1$이다.\n따라서\n$a=-\\dfrac32$이고\n$b=\\dfrac12$이다.\n\n그러므로\n$a+b=-1$이다.\n\n또 점 $A(2,-3)$과 직선 $x-y+2=0$ 사이의 거리는\n$c=\\dfrac{|2-(-3)+2|}{\\sqrt{1^2+(-1)^2}}\n=\\dfrac7{\\sqrt2}\n=\\dfrac{7\\sqrt2}{2}$이다.\n\n따라서\n$a+b+c=-1+\\dfrac{7\\sqrt2}{2}$이다.",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -619,7 +705,11 @@ window.questionBank = [
     "content": "서답형 5. (서술형)<br>점 $(0,6)$에서 원 $(x-2)^2+(y-1)^2=4$에 그은 두 접선을 구하는 과정 중 다음 물음에 답하여라. [부분 점수 있음, 7점]<br><br>(1) ㉠과 ㉡을 옳게 적으시오. [각 1점]<br>주어진 원은 중심의 (㉠)좌표의 절댓값이 반지름과 일치하므로 (㉡)축에 접한다. 따라서 두 접선 중 하나는 (㉡)축이다.<br><br>(2) 기울기가 $m$이고 점 $(0,6)$을 지나는 직선의 방정식을 일반형으로 쓰시오. [2점]<br><br>(3) 원의 중심과 접선 사이의 거리가 원의 반지름의 길이와 같음을 이용하여 $m$을 구하는 과정을 쓰시오. [3점, 부분점수 있음]",
     "choices": [],
     "answer": "㉠ $x$, ㉡ $y$; $mx-y+6=0$; $m=-\\dfrac{21}{20}$",
-    "solution": "(1) 원의 중심은 $(2,1)$이고 반지름은 $2$이다. 중심의 $x$좌표의 절댓값이 반지름과 같으므로 $y$축에 접한다. 따라서 ㉠은 $x$, ㉡은 $y$이다.\n(2) 기울기가 $m$이고 $(0,6)$을 지나는 직선은 $y=mx+6$, 즉 $mx-y+6=0$이다.\n(3) 중심 $(2,1)$과 직선 사이의 거리가 $2$이므로\n$\\dfrac{|2m-1+6|}{\\sqrt{m^2+1}}=2$이다. 양변을 제곱하면 $(2m+5)^2=4(m^2+1)$이고, $20m+21=0$이므로 $m=-\\dfrac{21}{20}$이다."
+    "solution": "(1) 원의 중심은 $(2,1)$이고 반지름은 $2$이다. 중심의 $x$좌표의 절댓값이 반지름과 같으므로 $y$축에 접한다. 따라서 ㉠은 $x$, ㉡은 $y$이다.\n(2) 기울기가 $m$이고 $(0,6)$을 지나는 직선은 $y=mx+6$, 즉 $mx-y+6=0$이다.\n(3) 중심 $(2,1)$과 직선 사이의 거리가 $2$이므로\n$\\dfrac{|2m-1+6|}{\\sqrt{m^2+1}}=2$이다. 양변을 제곱하면 $(2m+5)^2=4(m^2+1)$이고, $20m+21=0$이므로 $m=-\\dfrac{21}{20}$이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -644,6 +734,10 @@ window.questionBank = [
     "content": "서답형 6. (서술형)<br>어느 고등학교에서 두 선택 과목 $A$, $B$를 선택한 학생 수를 조사하였다. 조사 결과가 다음과 같을 때, $A$ 또는 $B$를 선택한 학생 수의 최댓값과 최솟값의 합을 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점]<br><br>(가) $A$를 선택한 학생 수는 $25$명이다.<br>(나) $B$를 선택한 학생 수는 $18$명이다.<br>(다) $A$만 선택하거나 $B$만 선택한 학생 수는 $31$명 이하이다.",
     "choices": [],
     "answer": "$62$",
-    "solution": "두 과목을 모두 선택한 학생 수를 $x$명이라 하자. 한 과목만 선택한 학생 수는\n$(25-x)+(18-x)=43-2x$이므로 $43-2x\\le31$에서 $x\\ge6$이다. 또한 $0\\le x\\le18$이다.\n$A$ 또는 $B$를 선택한 학생 수는 $25+18-x=43-x$이다. 이 값은 $x=6$일 때 최대 $37$, $x=18$일 때 최소 $25$이다.\n따라서 최댓값과 최솟값의 합은 $37+25=62$이다."
+    "solution": "두 과목을 모두 선택한 학생 수를 $x$명이라 하자. 한 과목만 선택한 학생 수는\n$(25-x)+(18-x)=43-2x$이므로 $43-2x\\le31$에서 $x\\ge6$이다. 또한 $0\\le x\\le18$이다.\n$A$ 또는 $B$를 선택한 학생 수는 $25+18-x=43-x$이다. 이 값은 $x=6$일 때 최대 $37$, $x=18$일 때 최소 $25$이다.\n따라서 최댓값과 최솟값의 합은 $37+25=62$이다.",
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

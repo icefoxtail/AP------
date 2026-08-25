@@ -26,7 +26,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 피타고라스 정리로 모르는 직각변의 길이를 구한다.\n빗변이 $17\\rm\\,cm$, 한 직각변이 $15\\rm\\,cm$이므로 $x^2+15^2=17^2$이다.\n$x^2=289-225=64$이고 길이는 양수이므로 $x=8$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q1.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q1.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -53,7 +57,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 직각변이 주어졌으므로 피타고라스 정리로 빗변을 구한다.\n$x^2=6^2+8^2=36+64=100$이다.\n따라서 $x=10$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q2.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q2.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -80,7 +88,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 직각삼각형의 세 변 위에 만든 정사각형의 넓이는 피타고라스 정리와 직접 연결된다.\n그림에서 $AB$가 빗변이고 $AC$, $BC$가 직각변이므로 $AB^2=AC^2+BC^2$이다.\n$AB^2=169$, $AC^2=25$이므로 $BC^2=169-25=144$이다.\n$\\square BDCE$의 넓이는 $BC^2=144\\rm\\,cm^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q3.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q3.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -107,7 +119,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 접어서 겹치는 점은 접는 선 위의 점까지의 거리가 같다.\n$A$는 접는 선 $AP$ 위에 있으므로 $AD=AD'=10$이다. 또 직사각형이므로 $AB=8$이고 $\\angle ABD'=90^\\circ$이다.\n$BD'^2+8^2=10^2$에서 $BD'^2=36$, 따라서 $BD'=6$이다.\n$BC=AD=10$이므로 $D'C=10-6=4$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q4.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q4.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -131,7 +147,11 @@ window.questionBank = [
       "$7,24,25$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합과 같은지 확인한다.\n⑤에서 $7^2+24^2=49+576=625=25^2$이다.\n따라서 세 변의 길이가 $7,24,25$인 삼각형은 직각삼각형이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합과 같은지 확인한다.\n⑤에서 $7^2+24^2=49+576=625=25^2$이다.\n따라서 세 변의 길이가 $7,24,25$인 삼각형은 직각삼각형이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 6,
@@ -158,7 +178,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 피타고라스 정리에 의해 두 직각변을 지름으로 하는 반원의 넓이의 합은 빗변을 지름으로 하는 반원의 넓이와 같다.\n따라서 그림의 두 색칠한 초승달 모양의 넓이의 합은 직각삼각형 $ABC$의 넓이와 같다.\n$AB=24$, $AC=10$이므로 $\\triangle ABC$의 넓이는 $\\dfrac12\\times24\\times10=120\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q6.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q6.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -185,7 +209,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 대각선의 교점 $O$에서 생기는 네 직각삼각형에 피타고라스 정리를 적용한다.\n$\\triangle AOB$에서 $AB^2=a^2+b^2$이므로 (가)는 $a^2+b^2$이다.\n$\\triangle COD$에서 $CD^2=c^2+d^2$이므로 (나)는 $c^2+d^2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q7.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q7.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -212,7 +240,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 지름이 $d$인 반원의 넓이는 $\\dfrac{\\pi d^2}{8}$이므로 넓이는 지름의 제곱에 비례한다.\n$\\angle A=90^\\circ$이므로 $AB^2+AC^2=BC^2$이다. 따라서 $AB$, $AC$를 지름으로 하는 두 반원의 넓이의 합은 $BC$를 지름으로 하는 반원의 넓이와 같다.\n그림에서 $BC=16\\rm\\,cm$이므로 색칠한 부분의 넓이는 $\\dfrac{\\pi\\times16^2}{8}=32\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q8.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q8.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -236,7 +268,11 @@ window.questionBank = [
       "14가지"
     ],
     "answer": "①",
-    "solution": "[키포인트] $20$의 양의 약수를 빠짐없이 나열한다.\n$20$의 약수는 $1,2,4,5,10,20$으로 모두 $6$개이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $20$의 양의 약수를 빠짐없이 나열한다.\n$20$의 약수는 $1,2,4,5,10,20$으로 모두 $6$개이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -260,7 +296,11 @@ window.questionBank = [
       "19가지"
     ],
     "answer": "③",
-    "solution": "[키포인트] 연필을 고르는 경우와 볼펜을 고르는 경우는 서로 겹치지 않으므로 더한다.\n경우의 수는 $3+4=7$가지이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 연필을 고르는 경우와 볼펜을 고르는 경우는 서로 겹치지 않으므로 더한다.\n경우의 수는 $3+4=7$가지이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -284,7 +324,11 @@ window.questionBank = [
       "20가지"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $A\\to B$의 선택과 $B\\to C$의 선택을 차례로 해야 하므로 곱의 법칙을 이용한다.\n$5\\times4=20$가지이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $A\\to B$의 선택과 $B\\to C$의 선택을 차례로 해야 하므로 곱의 법칙을 이용한다.\n$5\\times4=20$가지이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -308,7 +352,11 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 세 자리에 서로 다른 사람을 차례로 배치한다.\n첫째 자리는 $5$가지, 둘째 자리는 $4$가지, 셋째 자리는 $3$가지이다.\n따라서 경우의 수는 $5\\times4\\times3=60$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 세 자리에 서로 다른 사람을 차례로 배치한다.\n첫째 자리는 $5$가지, 둘째 자리는 $4$가지, 셋째 자리는 $3$가지이다.\n따라서 경우의 수는 $5\\times4\\times3=60$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -332,7 +380,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 다른 두 숫자를 골라 십의 자리와 일의 자리에 배치한다.\n십의 자리는 $3$가지이고, 그 숫자를 사용한 뒤 일의 자리는 $2$가지이다.\n따라서 만들 수 있는 두 자리 정수는 $3\\times2=6$개이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로 다른 두 숫자를 골라 십의 자리와 일의 자리에 배치한다.\n십의 자리는 $3$가지이고, 그 숫자를 사용한 뒤 일의 자리는 $2$가지이다.\n따라서 만들 수 있는 두 자리 정수는 $3\\times2=6$개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -359,7 +411,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] $7$개 점에서 $3$개를 고른 뒤, 한 직선 위의 세 점을 고른 경우를 제외한다.\n$7$개 중 $3$개를 고르는 경우는 $\\dfrac{7\\times6\\times5}{3\\times2\\times1}=35$가지이다.\n지름 위의 $D,E,F,G$ 중 $3$개를 고르면 삼각형이 되지 않으며, 그런 경우는 $\\dfrac{4\\times3\\times2}{3\\times2\\times1}=4$가지이다.\n따라서 삼각형의 수는 $35-4=31$개이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q14.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q14.png",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -383,7 +439,11 @@ window.questionBank = [
       "$\\dfrac12$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 다른 세 동전의 모든 결과를 같은 가능성으로 센다.\n전체 경우는 $2^3=8$가지이다. 뒷면이 한 개 나오는 경우는 어느 한 동전만 뒷면인지 고르는 $3$가지이다.\n따라서 확률은 $\\dfrac38$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로 다른 세 동전의 모든 결과를 같은 가능성으로 센다.\n전체 경우는 $2^3=8$가지이다. 뒷면이 한 개 나오는 경우는 어느 한 동전만 뒷면인지 고르는 $3$가지이다.\n따라서 확률은 $\\dfrac38$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -407,7 +467,11 @@ window.questionBank = [
       "$\\dfrac35$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 전체 인원 중 남자의 비율을 구한다.\n전체는 $3+2=5$명이고 남자는 $3$명이므로 확률은 $\\dfrac35$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 전체 인원 중 남자의 비율을 구한다.\n전체는 $3+2=5$명이고 남자는 $3$명이므로 확률은 $\\dfrac35$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -431,7 +495,11 @@ window.questionBank = [
       "$\\dfrac57$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 어떤 사건이 일어날 확률과 일어나지 않을 확률의 합은 $1$이다.\n$1-\\dfrac37=\\dfrac47$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 어떤 사건이 일어날 확률과 일어나지 않을 확률의 합은 $1$이다.\n$1-\\dfrac37=\\dfrac47$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -455,7 +523,11 @@ window.questionBank = [
       "$\\dfrac19$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 첫 번째와 두 번째 시행에서 조건을 만족하는 눈의 수를 각각 센다.\n첫 번째에 $3$의 배수인 눈은 $3,6$으로 $2$개이므로 확률은 $\\dfrac26=\\dfrac13$이다.\n두 번째에 $4$의 약수인 눈은 $1,2,4$로 $3$개이므로 확률은 $\\dfrac36=\\dfrac12$이다.\n두 조건이 모두 만족될 확률은 $\\dfrac13\\times\\dfrac12=\\dfrac16$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 첫 번째와 두 번째 시행에서 조건을 만족하는 눈의 수를 각각 센다.\n첫 번째에 $3$의 배수인 눈은 $3,6$으로 $2$개이므로 확률은 $\\dfrac26=\\dfrac13$이다.\n두 번째에 $4$의 약수인 눈은 $1,2,4$로 $3$개이므로 확률은 $\\dfrac36=\\dfrac12$이다.\n두 조건이 모두 만족될 확률은 $\\dfrac13\\times\\dfrac12=\\dfrac16$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -482,7 +554,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 표에서 전체 책의 수와 세계사·고전문학 책의 수를 각각 합한다.\n전체 책은 $25+15+30+10=80$권이다.\n세계사 또는 고전문학은 $15+30=45$권이므로 확률은 $\\dfrac{45}{80}=\\dfrac9{16}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q19.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q19.png",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -506,7 +582,11 @@ window.questionBank = [
       "$\\dfrac9{10}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 적어도 한 명이 명중하는 확률은 두 사람 모두 실패하는 경우를 전체에서 빼면 빠르게 구할 수 있다.\n$A$가 실패할 확률은 $\\dfrac12$, $B$가 실패할 확률은 $1-\\dfrac25=\\dfrac35$이다.\n두 사람 모두 실패할 확률은 $\\dfrac12\\times\\dfrac35=\\dfrac3{10}$이다.\n따라서 적어도 한 사람이 명중할 확률은 $1-\\dfrac3{10}=\\dfrac7{10}$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 적어도 한 명이 명중하는 확률은 두 사람 모두 실패하는 경우를 전체에서 빼면 빠르게 구할 수 있다.\n$A$가 실패할 확률은 $\\dfrac12$, $B$가 실패할 확률은 $1-\\dfrac25=\\dfrac35$이다.\n두 사람 모두 실패할 확률은 $\\dfrac12\\times\\dfrac35=\\dfrac3{10}$이다.\n따라서 적어도 한 사람이 명중할 확률은 $1-\\dfrac3{10}=\\dfrac7{10}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -528,7 +608,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$320\\pi\\rm\\,cm^3$",
     "solution": "[키포인트] 먼저 피타고라스 정리로 원뿔의 높이를 구한 뒤 원뿔의 부피 공식을 사용한다.\n원뿔의 높이를 $h\\rm\\,cm$라 하면 직각삼각형에서 $h^2+8^2=17^2$이다.\n$h^2=289-64=225$이므로 $h=15$이다.\n회전하여 생기는 원뿔의 밑면 반지름은 $8\\rm\\,cm$이므로 부피는 $\\dfrac13\\pi\\times8^2\\times15=320\\pi\\rm\\,cm^3$이다.\n따라서 구하는 값은 $320\\pi\\rm\\,cm^3$이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q21.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q21.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -550,7 +634,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac3{16}$",
     "solution": "[키포인트] 한 번의 시행에서 $A$, $B$가 색칠될 확률을 구하고, 세 번째 시행에서 처음으로 두 부분이 모두 색칠되는 순서를 센다.\n두 눈이 모두 홀수일 확률은 $P(B)=\\dfrac36\\times\\dfrac36=\\dfrac14$, 따라서 $P(A)=\\dfrac34$이다.\n세 번째 만에 모두 색칠되는 경우는 $AAB$, $BBA$ 두 가지이다.\n$P=\\left(\\dfrac34\\right)^2\\dfrac14+\\left(\\dfrac14\\right)^2\\dfrac34=\\dfrac9{64}+\\dfrac3{64}=\\dfrac3{16}$이다.\n따라서 구하는 값은 $\\dfrac3{16}$이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q22.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q22.png",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -570,7 +658,11 @@ window.questionBank = [
     "content": "[서술형 3] 남학생 $3$명과 여학생 $2$명 중에서 $2$명의 대표를 뽑을 때, 적어도 한 명은 여학생이 뽑힐 확률을 구하여라. [6점]\n조건1) 풀이과정은 한글로 길게 설명하지 마세요. 간단히 문자와 기호와 식만 적으세요. 선생님이 이해할 수만 있도록 풀이과정을 적어주세요. 경우의 수를 적는 것도 간단히 적어주세요.",
     "choices": [],
     "answer": "$\\dfrac7{10}$",
-    "solution": "[키포인트] 전체 두 명을 뽑는 경우에서 남학생만 두 명 뽑는 경우를 제외한다.\n전체 경우의 수는 $\\dfrac{5\\times4}{2}=10$이다.\n남학생만 두 명 뽑는 경우의 수는 $\\dfrac{3\\times2}{2}=3$이므로 적어도 한 명이 여학생인 경우는 $10-3=7$가지이다.\n따라서 확률은 $\\dfrac7{10}$이다.\n따라서 구하는 값은 $\\dfrac7{10}$이다."
+    "solution": "[키포인트] 전체 두 명을 뽑는 경우에서 남학생만 두 명 뽑는 경우를 제외한다.\n전체 경우의 수는 $\\dfrac{5\\times4}{2}=10$이다.\n남학생만 두 명 뽑는 경우의 수는 $\\dfrac{3\\times2}{2}=3$이므로 적어도 한 명이 여학생인 경우는 $10-3=7$가지이다.\n따라서 확률은 $\\dfrac7{10}$이다.\n따라서 구하는 값은 $\\dfrac7{10}$이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 24,
@@ -592,6 +684,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac5{32}$",
     "solution": "[키포인트] 앞면과 뒷면의 횟수에 대한 연립방정식으로 필요한 횟수를 먼저 구한다.\n앞면을 $x$회, 뒷면을 $y$회라 하면 $x+y=5$, $x-y=3$이다.\n두 식을 더하면 $2x=8$이므로 $x=4$, 따라서 $y=1$이다.\n다섯 번 중 뒷면이 나오는 한 번의 위치를 정하는 경우가 $5$가지이고 전체 결과는 $2^5=32$가지이다.\n따라서 확률은 $\\dfrac5{32}$이다.\n따라서 구하는 값은 $\\dfrac5{32}$이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q24.png"
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q24.png",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

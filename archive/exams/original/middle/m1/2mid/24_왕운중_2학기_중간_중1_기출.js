@@ -26,7 +26,11 @@ window.questionBank = [
       "$198^\\circ$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -53,7 +57,11 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -80,7 +88,11 @@ window.questionBank = [
       "$6\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -107,7 +119,11 @@ window.questionBank = [
       "$\\overline{AB}=16\\,\\mathrm{cm}$일 때, $\\overline{EC}=2\\,\\mathrm{cm}$이다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -134,7 +150,11 @@ window.questionBank = [
       "모서리 $BE$, 모서리 $DE$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -158,7 +178,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -185,7 +209,11 @@ window.questionBank = [
       "$\\angle a=52^\\circ$, $\\angle b=54^\\circ$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -207,7 +235,11 @@ window.questionBank = [
     "content": "다음 중 두 직선 $l$, $m$에 대해 $l\\parallel m$인 것은? (4점)",
     "choices": [],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -231,7 +263,11 @@ window.questionBank = [
       "$\\angle B$의 대변의 길이: $5\\,\\mathrm{cm}$, $\\angle A=30^\\circ$, $\\angle C=45^\\circ$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -249,6 +285,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/24_왕운중_2학기_중간_중1_기출/q10.png",
+    "imageSize": "tall",
     "content": "다음 그림은 직선 $m$에 평행하면서 점 $P$를 지나는 직선을 작도하는 과정을 나타낸 것이다. 다음 중 옳지 않은 것은? (4점)",
     "choices": [
       "$\\overline{CD}=\\overline{PG}$",
@@ -258,7 +295,11 @@ window.questionBank = [
       "‘엇각의 크기가 서로 같으면 두 직선은 평행하다.’는 원리가 사용되었다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -284,7 +325,11 @@ window.questionBank = [
       "원을 그린다."
     ],
     "answer": "②, ⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②, ⑤이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -308,7 +353,11 @@ window.questionBank = [
       "$6$개"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -326,6 +375,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/24_왕운중_2학기_중간_중1_기출/q13.png",
+    "imageSize": "tall",
     "content": "다음 보기에서 서로 합동인 것을 짝지어 삼각형의 합동 조건과 함께 올바르게 제시한 것은? (4점)",
     "choices": [
       "ㄴ과 ㅂ, ASA합동",
@@ -335,7 +385,11 @@ window.questionBank = [
       "ㄷ과 ㄹ, ASA합동"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -362,7 +416,11 @@ window.questionBank = [
       "$\\triangle OBC\\equiv\\triangle OAD$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -389,7 +447,11 @@ window.questionBank = [
       "$4$회 이상 $6$회 미만"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -417,7 +479,11 @@ window.questionBank = [
       "$240\\,\\mathrm{mm}$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -444,7 +510,11 @@ window.questionBank = [
       "$56\\%$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -471,7 +541,11 @@ window.questionBank = [
       "성적이 $9$번째로 좋은 사람이 속하는 계급의 도수는 $7$명이다."
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -498,7 +572,11 @@ window.questionBank = [
       "$90$점"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -525,7 +603,11 @@ window.questionBank = [
       "$3$만 원 미만인 학생 수는 $3$만 원 이상인 학생 수의 $9$배이다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -547,7 +629,11 @@ window.questionBank = [
     "content": "[서술형1] 다음 그림에서 $\\angle AOB$가 평각이고 $\\angle COD=\\dfrac13\\angle AOD$, $\\angle DOE=\\dfrac12\\angle EOB$일 때, $\\angle COE$의 크기를 구하시오. (6점) ($\\angle COE$를 구하는 과정: 4점, $\\angle COE$의 크기: 2점)",
     "choices": [],
     "answer": "$60^\\circ$",
-    "solution": ""
+    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $60^\\circ$이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -569,7 +655,11 @@ window.questionBank = [
     "content": "[서술형2] 다음은 보검이네 반 학생 $25$명이 $1$년 동안 관람한 영화 편수를 조사하여 나타낸 도수분포표이다. $6$편 이상의 영화를 관람한 학생이 전체의 $32\\%$일 때, $A$, $B$의 값과 $4$편 미만의 영화를 관람한 학생은 전체의 몇 $\\%$인지 구하시오. (7점) ($A$를 구하는 과정: 2점, $B$를 구하는 과정: 2점, $4$편 미만의 영화를 관람한 학생이 전체의 몇 $\\%$인지 구하는 과정: 3점)",
     "choices": [],
     "answer": "$A=10,\\ B=6,\\ 56\\%$",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $A=10,\\ B=6,\\ 56\\%$이다.",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -591,6 +681,10 @@ window.questionBank = [
     "content": "[서술형3] 다음 그림에서 직각삼각형 $ABC$와 $BDE$에 대해, $\\overline{AC}=\\overline{BE}$, $\\overline{AB}=5\\,\\mathrm{cm}$, $\\overline{ED}=3\\,\\mathrm{cm}$, $\\angle BED=59^\\circ$, $\\angle BAC=31^\\circ$일 때, 삼각형의 합동을 이용하여 $\\overline{CD}$의 길이를 구하시오. (7점) (삼각형의 합동 이유: 3점, 삼각형의 합동 기호 표현: 1점, 삼각형의 합동 조건: 1점, $\\overline{CD}$의 길이: 2점)",
     "choices": [],
     "answer": "$2\\,\\mathrm{cm}$",
-    "solution": ""
+    "solution": "풀이: 주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $2\\,\\mathrm{cm}$이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

@@ -111,7 +111,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 벤다이어그램 중 $(A\\cup B)-(A-C)$를 바르게 색칠한 부분을 나타낸 것을 고르면? [3.7점]",
-    "image": "assets/images/23_매산여고_2학기_중간_고1_기출/q04.png",
+    "image": "assets/images/23_매산여고_2학기_중간_고1_기출/q04.svg",
     "imageSize": "tall",
     "choices": [],
     "answer": "⑤",

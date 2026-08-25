@@ -7,11 +7,19 @@ window.questionBank = [
     "originalCategory": "1. 유리수와 순환소수의 분류",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "개수세기",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 중에서 유리수의 개수를 $a$, 순환소수의 개수를 $b$라 할 때, $a+b$의 값을 구하면? (3점)",
     "choices": [
@@ -22,7 +30,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "* 유리수($a$): $2.3, 3.222\\dots, 3.1415\\dots, 0.44444, 15$ (5개)\\n* 순환소수($b$): $3.222\\dots, 3.1415415\\dots$ (2개)\\n* $a+b = 5+2 = 7$\\n* 정답: ③"
+    "solution": "* 유리수($a$): $2.3, 3.222\\dots, 3.1415\\dots, 0.44444, 15$ (5개)\\n* 순환소수($b$): $3.222\\dots, 3.1415415\\dots$ (2개)\\n* $a+b = 5+2 = 7$\\n* 정답: ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -31,11 +43,19 @@ window.questionBank = [
     "originalCategory": "2. 순환소수의 표기법",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","표해석","참거짓","오류판별","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "표해석",
+      "참거짓",
+      "오류판별",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중에서 순환소수를 간단히 나타낸 것으로 옳지 않은 것을 고르면? (3점)",
     "choices": [
@@ -46,7 +66,11 @@ window.questionBank = [
       "$3.141414\\dots = 3.1\\dot{4}$"
     ],
     "answer": "⑤",
-    "solution": "* ⑤ $3.141414\\dots$의 순환마디는 '14'이므로 $3.\\dot{1}\\dot{4}$로 표기해야 옳습니다.\\n* 정답: ⑤"
+    "solution": "* ⑤ $3.141414\\dots$의 순환마디는 '14'이므로 $3.\\dot{1}\\dot{4}$로 표기해야 옳습니다.\\n* 정답: ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -55,11 +79,18 @@ window.questionBank = [
     "originalCategory": "3. 유리수의 성질 판단",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","개수세기","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "개수세기",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 중에서 옳은 것은 모두 몇 개인가?",
     "choices": [
@@ -70,7 +101,11 @@ window.questionBank = [
       "4개"
     ],
     "answer": "②",
-    "solution": "* ㄴ만 옳은 설명입니다.\\n* ㄱ: $\\frac{1}{3}$은 순환소수이므로 거짓입니다.\\n* ㄷ: 비순환 무한소수는 분수로 나타낼 수 없습니다.\\n* ㄹ: 순환소수는 무한소수이지만 유리수입니다.\\n* 정답: ②"
+    "solution": "* ㄴ만 옳은 설명입니다.\\n* ㄱ: $\\frac{1}{3}$은 순환소수이므로 거짓입니다.\\n* ㄷ: 비순환 무한소수는 분수로 나타낼 수 없습니다.\\n* ㄹ: 순환소수는 무한소수이지만 유리수입니다.\\n* 정답: ②",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -79,11 +114,17 @@ window.questionBank = [
     "originalCategory": "4. 분수와 유한소수 변환",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","유한소수","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "유한소수",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중 분수를 유한소수로 잘못 나타낸 것을 고르면?",
     "choices": [
@@ -94,7 +135,11 @@ window.questionBank = [
       "$\\frac{427}{200}=2.125$"
     ],
     "answer": "⑤",
-    "solution": "* ⑤ $\\frac{427}{200} = \\frac{213.5}{100} = 2.135$ 입니다. 제시된 2.125는 오답입니다.\\n* 정답: ⑤"
+    "solution": "* ⑤ $\\frac{427}{200} = \\frac{213.5}{100} = 2.135$ 입니다. 제시된 2.125는 오답입니다.\\n* 정답: ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -103,11 +148,20 @@ window.questionBank = [
     "originalCategory": "5. 유한소수 조건 응용",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","유한소수","자연수조건","오류판별","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "유한소수",
+      "자연수조건",
+      "오류판별",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "정수가 아닌 유리수 $\\frac{n}{28}, \\frac{n}{45}$을 모두 유한소수로 나타낼 수 있을 때, $n$의 값이 될 수 있는 자연수 중에서 300에 가장 가까운 수를 구하면?",
     "choices": [
@@ -118,7 +172,11 @@ window.questionBank = [
       "441"
     ],
     "answer": "④",
-    "solution": "[키포인트] 유한소수 조건으로 $n$의 배수 조건을 구한 뒤, '정수가 아닌 유리수'라는 단서를 반드시 적용한다.\\n\\n조건 정리\\n$\\frac{n}{28}=\\frac{n}{2^2 \\times 7}$ 이 유한소수 $\\rightarrow n$은 7의 배수\\n$\\frac{n}{45}=\\frac{n}{3^2 \\times 5}$ 이 유한소수 $\\rightarrow n$은 9의 배수\\n따라서 $n$은 $7$과 $9$의 최소공배수인 $63$의 배수이다.\\n\\n풀이 과정\\n문제에서 $\\frac{n}{28}, \\frac{n}{45}$는 '정수가 아닌 유리수'라고 했으므로\\n$n$은 $28$의 배수도 아니고 $45$의 배수도 아니어야 한다.\\n$63$의 배수를 차례로 확인하면\\n$252 = 28 \\times 9$ 이므로 $\\frac{252}{28}=9$ (정수) $\\rightarrow$ 조건에 맞지 않는다.\\n$315 = 45 \\times 7$ 이므로 $\\frac{315}{45}=7$ (정수) $\\rightarrow$ 조건에 맞지 않는다.\\n$378$은 $\\frac{378}{28}=13.5$, $\\frac{378}{45}=8.4$ 로 둘 다 정수가 아니므로 조건을 만족한다.\\n$189$도 조건을 만족하지만 $|300-189|=111$ 이고 $|300-378|=78$ 이므로 $378$이 더 가깝다.\\n\\n결론\\n$300$에 가장 가까운 값은 $378$이므로 정답은 ④이다."
+    "solution": "[키포인트] 유한소수 조건으로 $n$의 배수 조건을 구한 뒤, '정수가 아닌 유리수'라는 단서를 반드시 적용한다.\\n\\n조건 정리\\n$\\frac{n}{28}=\\frac{n}{2^2 \\times 7}$ 이 유한소수 $\\rightarrow n$은 7의 배수\\n$\\frac{n}{45}=\\frac{n}{3^2 \\times 5}$ 이 유한소수 $\\rightarrow n$은 9의 배수\\n따라서 $n$은 $7$과 $9$의 최소공배수인 $63$의 배수이다.\\n\\n풀이 과정\\n문제에서 $\\frac{n}{28}, \\frac{n}{45}$는 '정수가 아닌 유리수'라고 했으므로\\n$n$은 $28$의 배수도 아니고 $45$의 배수도 아니어야 한다.\\n$63$의 배수를 차례로 확인하면\\n$252 = 28 \\times 9$ 이므로 $\\frac{252}{28}=9$ (정수) $\\rightarrow$ 조건에 맞지 않는다.\\n$315 = 45 \\times 7$ 이므로 $\\frac{315}{45}=7$ (정수) $\\rightarrow$ 조건에 맞지 않는다.\\n$378$은 $\\frac{378}{28}=13.5$, $\\frac{378}{45}=8.4$ 로 둘 다 정수가 아니므로 조건을 만족한다.\\n$189$도 조건을 만족하지만 $|300-189|=111$ 이고 $|300-378|=78$ 이므로 $378$이 더 가깝다.\\n\\n결론\\n$300$에 가장 가까운 값은 $378$이므로 정답은 ④이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -127,11 +185,18 @@ window.questionBank = [
     "originalCategory": "6. 순환소수 분수 변환",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","오류판별","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "오류판별",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음은 순환소수 $0.1\\dot{2}\\dot{7}$을 분수로 나타내는 과정이다. 위의 (가), (나)에 알맞은 수를 각각 $a, b$라 할 때, $\\frac{b}{a}+p+q$의 값을 구하면? ($x$는 기약분수 $\\frac{q}{p}$)",
     "choices": [
@@ -142,7 +207,11 @@ window.questionBank = [
       "166"
     ],
     "answer": "①",
-    "solution": "* (가) $a = 1000$, (나) $b = 10$\\n* $990x = 126 \\rightarrow x = \\frac{126}{990} = \\frac{7}{55}$ ($p=55, q=7$)\\n* $\\frac{b}{a} + p + q = \\frac{10}{1000} + 55 + 7$ (질의상 문항 오류 가능성: $\\frac{a}{b}$로 계산 시 $100+62=162$)\\n* 정답: ①"
+    "solution": "* (가) $a = 1000$, (나) $b = 10$\\n* $990x = 126 \\rightarrow x = \\frac{126}{990} = \\frac{7}{55}$ ($p=55, q=7$)\\n* $\\frac{b}{a} + p + q = \\frac{10}{1000} + 55 + 7$ (질의상 문항 오류 가능성: $\\frac{a}{b}$로 계산 시 $100+62=162$)\\n* 정답: ①",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -151,11 +220,17 @@ window.questionBank = [
     "originalCategory": "7. 분수 변환 검증",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 순환소수를 분수로 옳게 나타낸 것을 고르면?",
     "choices": [
@@ -166,7 +241,11 @@ window.questionBank = [
       "$1.11\\dot{2}=\\frac{1123}{990}$"
     ],
     "answer": "②",
-    "solution": "* ② $0.\\dot{2}\\dot{7} = \\frac{27}{99} = \\frac{3}{11}$ (참)\\n* 정답: ②"
+    "solution": "* ② $0.\\dot{2}\\dot{7} = \\frac{27}{99} = \\frac{3}{11}$ (참)\\n* 정답: ②",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -175,11 +254,18 @@ window.questionBank = [
     "originalCategory": "8. 순환마디 주기성과 합",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","유리수","순환소수","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "유리수",
+      "순환소수",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\frac{3}{41}$을 소수로 나타내었을 때, 소수점 아래 $n$번째 자리의 수를 $f(n)$이라고 하자. 이때 $f(1)+f(3)+f(5)+\\dots+f(2025)$의 값을 구하면? (5점)",
     "choices": [
@@ -190,7 +276,11 @@ window.questionBank = [
       "3649"
     ],
     "answer": "④",
-    "solution": "* $\\frac{3}{41} = 0.\\dot{0}731\\dot{7}$ (주기 5). 홀수 번째 항 $0, 3, 7, 7, 1$ 반복.\\n* 홀수 번째 항은 $1$부터 $2025$까지 $1013$개이고, 다섯 항씩 $0,3,7,7,1$이 반복된다($1013 = 5 \\times 202 + 3$).\\n* $202 \\times (0+3+7+7+1) + (0+3+7) = 202 \\times 18 + 10 = 3636 + 10 = 3646$ 이다."
+    "solution": "* $\\frac{3}{41} = 0.\\dot{0}731\\dot{7}$ (주기 5). 홀수 번째 항 $0, 3, 7, 7, 1$ 반복.\\n* 홀수 번째 항은 $1$부터 $2025$까지 $1013$개이고, 다섯 항씩 $0,3,7,7,1$이 반복된다($1013 = 5 \\times 202 + 3$).\\n* $202 \\times (0+3+7+7+1) + (0+3+7) = 202 \\times 18 + 10 = 3636 + 10 = 3646$ 이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -198,12 +288,18 @@ window.questionBank = [
     "category": "9. 지수법칙 기초 판단",
     "originalCategory": "9. 지수법칙 기초 판단",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-9.지수법칙기초판단",
-    "standardUnit": "9. 지수법칙 기초 판단",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","참거짓","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "지수",
+      "참거짓",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음은 세 학생이 주어진 식을 지수법칙을 이용하여 간단히 나타낸 것이다. 바르게 푼 학생을 모두 고른 것을 고르면? (3점)",
     "choices": [
@@ -214,7 +310,11 @@ window.questionBank = [
       "유찬, 성준"
     ],
     "answer": "③",
-    "solution": "* 성준의 계산 $(a^{20})^3 = a^{20 \\times 3} = a^{60}$이 옳습니다.\\n* 유찬: $x^5$ 이어야 하며, 소미: $2^{103}$ 이어야 합니다.\\n* 정답: ③"
+    "solution": "* 성준의 계산 $(a^{20})^3 = a^{20 \\times 3} = a^{60}$이 옳습니다.\\n* 유찬: $x^5$ 이어야 하며, 소미: $2^{103}$ 이어야 합니다.\\n* 정답: ③",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -222,12 +322,18 @@ window.questionBank = [
     "category": "10. 지수법칙과 단위 변환",
     "originalCategory": "10. 지수법칙과 단위 변환",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-10.지수법칙과단위변환",
-    "standardUnit": "10. 지수법칙과 단위 변환",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","조건해석","계산","기출"],
+    "tags": [
+      "객관식",
+      "지수",
+      "조건해석",
+      "계산",
+      "기출"
+    ],
     "wide": false,
     "content": "용량이 $512\\text{KiB}$인 동영상 160편의 전체 용량은 몇 $\\text{GiB}$인지 구하면?",
     "choices": [
@@ -238,7 +344,11 @@ window.questionBank = [
       "$\\frac{5}{64}GiB$"
     ],
     "answer": "⑤",
-    "solution": "* $160 \\times 512 = (5 \\times 2^5) \\times 2^9 = 5 \\times 2^{14} KiB$\\n* $\\frac{5 \\times 2^{14}}{2^{20}} = \\frac{5}{2^6} = \\frac{5}{64} GiB$\\n* 정답: ⑤"
+    "solution": "* $160 \\times 512 = (5 \\times 2^5) \\times 2^9 = 5 \\times 2^{14} KiB$\\n* $\\frac{5 \\times 2^{14}}{2^{20}} = \\frac{5}{2^6} = \\frac{5}{64} GiB$\\n* 정답: ⑤",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -246,12 +356,19 @@ window.questionBank = [
     "category": "11. 지수법칙의 응용",
     "originalCategory": "11. 지수법칙의 응용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-11.지수법칙의응용",
-    "standardUnit": "11. 지수법칙의 응용",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","지수","자연수조건","참거짓","응용","개념"],
+    "tags": [
+      "객관식",
+      "지수",
+      "자연수조건",
+      "참거짓",
+      "응용",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 중에서 옳은 것을 모두 고른 것을 고르면? (단, $a \\neq 0, b \\neq 0$이고, $m, n$은 자연수)",
     "choices": [
@@ -262,7 +379,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㅁ"
     ],
     "answer": "②",
-    "solution": "* ㄴ: $2 \\times 2^{50} = 2^{51}$ (참)\\n* ㄹ: $-(9a^4b^2) = -9a^4b^2$ (참)\\n* ㅁ: $a^{12}$ 이어야 하므로 거짓입니다.\\n* 정답: ②"
+    "solution": "* ㄴ: $2 \\times 2^{50} = 2^{51}$ (참)\\n* ㄹ: $-(9a^4b^2) = -9a^4b^2$ (참)\\n* ㅁ: $a^{12}$ 이어야 하므로 거짓입니다.\\n* 정답: ②",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -270,12 +391,18 @@ window.questionBank = [
     "category": "12. 복잡한 식의 계산",
     "originalCategory": "12. 복잡한 식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","참거짓","오류판별","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "참거짓",
+      "오류판별",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 중에서 옳지 않은 것을 고르면? (5점)",
     "choices": [
@@ -286,7 +413,11 @@ window.questionBank = [
       "$-\\frac{x^2y-5x^2y^2}{y} = -x^2+5x^2y$"
     ],
     "answer": "①",
-    "solution": "* ① 계산 결과의 부호가 $-\\frac{b^3}{6a}$가 되어야 하므로 옳지 않습니다.\\n* 정답: ①"
+    "solution": "* ① 계산 결과의 부호가 $-\\frac{b^3}{6a}$가 되어야 하므로 옳지 않습니다.\\n* 정답: ①",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -294,12 +425,18 @@ window.questionBank = [
     "category": "13. 자릿수 계산",
     "originalCategory": "13. 자릿수 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-13.자릿수계산",
-    "standardUnit": "13. 자릿수 계산",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","자연수조건","조건해석","계산","기출"],
+    "tags": [
+      "객관식",
+      "자연수조건",
+      "조건해석",
+      "계산",
+      "기출"
+    ],
     "wide": false,
     "content": "$2^{100} \\times 5^{96}$은 $n$자리 자연수이고 각 자리 숫자의 합은 $a$이다. 이때 $a+n$의 값을 구하면?",
     "choices": [
@@ -310,7 +447,11 @@ window.questionBank = [
       "200"
     ],
     "answer": "③",
-    "solution": "* $2^4 \\times (2 \\times 5)^{96} = 16 \\times 10^{96} \\rightarrow n=98, a=7$\\n* $a+n = 105$\\n* 정답: ③"
+    "solution": "* $2^4 \\times (2 \\times 5)^{96} = 16 \\times 10^{96} \\rightarrow n=98, a=7$\\n* $a+n = 105$\\n* 정답: ③",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -318,12 +459,21 @@ window.questionBank = [
     "category": "14. 도형의 부피 역산",
     "originalCategory": "14. 도형의 부피 역산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-14.도형의부피역산",
-    "standardUnit": "14. 도형의 부피 역산",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M1-07",
+    "standardUnit": "입체도형의 성질",
+    "standardUnitOrder": 7,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","복소수","도형","원","넓이","부피","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "복소수",
+      "도형",
+      "원",
+      "넓이",
+      "부피",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 그림과 같이 높이가 $5x$ 이고 부피가 $15\\pi x^2y^2$ 인 원뿔의 밑넓이를 구하면?",
     "choices": [
@@ -334,7 +484,11 @@ window.questionBank = [
       "$9xy$"
     ],
     "answer": "④",
-    "solution": "* $V = \\frac{1}{3} S \\times 5x = 15\\pi x^2y^2 \\rightarrow S = 9\\pi xy^2$ (단위 제외 수치 ④ 선택)\\n* 정답: ④"
+    "solution": "* $V = \\frac{1}{3} S \\times 5x = 15\\pi x^2y^2 \\rightarrow S = 9\\pi xy^2$ (단위 제외 수치 ④ 선택)\\n* 정답: ④",
+    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+    "subUnit": "입체도형의 측정",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -342,12 +496,19 @@ window.questionBank = [
     "category": "15. 부등식의 해석",
     "originalCategory": "15. 부등식의 해석",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-15.부등식의해석",
-    "standardUnit": "15. 부등식의 해석",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","표해석","범위","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "표해석",
+      "범위",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "다음은 차 중량 제한을 나타내는 표지판이다. 이를 부등식으로 옳게 나타낸 것을 고르면? (3점)",
     "choices": [
@@ -358,7 +519,11 @@ window.questionBank = [
       "$x = 5.5$"
     ],
     "answer": "②",
-    "solution": "* '이하'는 $\\le$ 기호를 사용하여 $x \\le 5.5$\\n* 정답: ②"
+    "solution": "* '이하'는 $\\le$ 기호를 사용하여 $x \\le 5.5$\\n* 정답: ②",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -366,12 +531,18 @@ window.questionBank = [
     "category": "16. 부등식의 해",
     "originalCategory": "16. 부등식의 해",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-16.부등식의해",
-    "standardUnit": "16. 부등식의 해",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","정수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "정수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$x$의 값이 $-2, -1, 0, 1$일 때, 부등식 $-3x+1 \\ge 4(x+1)$의 해를 모두 더한 값을 구하면?",
     "choices": [
@@ -382,7 +553,11 @@ window.questionBank = [
       "1"
     ],
     "answer": "①",
-    "solution": "* $-3x+1 \\ge 4x+4 \\rightarrow -7x \\ge 3 \\rightarrow x \\le -\\frac{3}{7}$\\n* 만족하는 정수 $x$는 $-2, -1$이며 합은 $-3$입니다.\\n* 정답: ①"
+    "solution": "* $-3x+1 \\ge 4x+4 \\rightarrow -7x \\ge 3 \\rightarrow x \\le -\\frac{3}{7}$\\n* 만족하는 정수 $x$는 $-2, -1$이며 합은 $-3$입니다.\\n* 정답: ①",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -390,12 +565,19 @@ window.questionBank = [
     "category": "17. 부등식 성질 판단",
     "originalCategory": "17. 부등식 성질 판단",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-17.부등식성질판단",
-    "standardUnit": "17. 부등식 성질 판단",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","참거짓","오류판별","조건해석","개념"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "참거짓",
+      "오류판별",
+      "조건해석",
+      "개념"
+    ],
     "wide": false,
     "content": "$a \\ge b$일 때, 다음 중 옳지 않은 것을 고르면?",
     "choices": [
@@ -406,7 +588,11 @@ window.questionBank = [
       "$2a-4 \\ge 2b-4$"
     ],
     "answer": "④",
-    "solution": "* ④ 음수($-\\frac{1}{4}$)를 곱하면 부등호 방향이 바뀌어야 합니다.\\n* 정답: ④"
+    "solution": "* ④ 음수($-\\frac{1}{4}$)를 곱하면 부등호 방향이 바뀌어야 합니다.\\n* 정답: ④",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -414,12 +600,21 @@ window.questionBank = [
     "category": "18. 생활 부등식 활용",
     "originalCategory": "18. 생활 부등식 활용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "RAW-18.생활부등식활용",
-    "standardUnit": "18. 생활 부등식 활용",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","부등식","도형","원","범위","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "부등식",
+      "도형",
+      "원",
+      "범위",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "A마트에서 한 개에 1000원인 쭈쭈바가 B마트에서는 한 개에 500원이라고 한다. 그런데 B마트에 다녀오려면 왕복 교통비가 3000원이 들 때, 쭈쭈바를 몇 개 이상 살 경우 B마트에서 사는 것이 더 유리한지 구하면?",
     "choices": [
@@ -430,7 +625,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "⑤",
-    "solution": "* $1000x > 500x + 3000 \\rightarrow 500x > 3000 \\rightarrow x > 6$\\n* 7개부터 B마트가 유리합니다.\\n* 정답: ⑤"
+    "solution": "* $1000x > 500x + 3000 \\rightarrow 500x > 3000 \\rightarrow x > 6$\\n* 7개부터 B마트가 유리합니다.\\n* 정답: ⑤",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -439,16 +638,28 @@ window.questionBank = [
     "originalCategory": "단답형 1. 순환소수 조건",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","유리수","순환소수","자연수조건","개수세기","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "유리수",
+      "순환소수",
+      "자연수조건",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 조건을 만족시키는 $x$의 개수를 구하여라.(5점)\\n(가) $x$는 2의 배수이고 두 자리 자연수이다.\\n(나) 분수 $\\frac{x}{600}$는 순환소수로 나타낼 수 있다.",
     "choices": [],
     "answer": "30",
-    "solution": "* $600 = 2^3 \\times 3 \\times 5^2 \\rightarrow x$가 3의 배수가 아니어야 함.\\n* 두 자리 2의 배수 45개 중 6의 배수 15개 제외 $\\rightarrow$ 30개.\\n* 정답: 30"
+    "solution": "* $600 = 2^3 \\times 3 \\times 5^2 \\rightarrow x$가 3의 배수가 아니어야 함.\\n* 두 자리 2의 배수 45개 중 6의 배수 15개 제외 $\\rightarrow$ 30개.\\n* 정답: 30",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -456,17 +667,28 @@ window.questionBank = [
     "category": "단답형 2. 해의 조건",
     "originalCategory": "단답형 2. 해의 조건",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "UNCLASSIFIED-MIDDLE2",
-    "standardUnit": "미분류",
-    "standardUnitOrder": 999,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","범위","참거짓","조건해석","계산","개념"],
+    "tags": [
+      "서술형",
+      "범위",
+      "참거짓",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "content": "$x$의 값이 $-2, -1, 0, 1, 2$일 때, $x-1-n < -1$을 참이 되게 하는 $x$의 값이 3개다. 상수 $n$의 값의 범위를 구하여라.(5점)",
     "choices": [],
     "answer": "$0 < n \\le 1$",
-    "solution": "* $x < n$ 이고 해가 $\\{-2, -1, 0\\}$일 때 $0 < n \\le 1$ 입니다.\\n* 정답: $0 < n \\le 1$"
+    "solution": "* $x < n$ 이고 해가 $\\{-2, -1, 0\\}$일 때 $0 < n \\le 1$ 입니다.\\n* 정답: $0 < n \\le 1$",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -475,16 +697,29 @@ window.questionBank = [
     "originalCategory": "서술형 1. 순환소수 활용",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
-    "standardUnit": "유리수와 순환소수",
+    "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","유리수","순환소수","자연수조건","조건해석","식세우기","계산","응용"],
+    "tags": [
+      "서술형",
+      "유리수",
+      "순환소수",
+      "자연수조건",
+      "조건해석",
+      "식세우기",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "content": "어떤 자연수 $x$에 $0.\\dot{6}$을 곱해야 할 것을 잘못하여 $0.6$을 곱하였더니 정답과 오답의 차가 3이 되었다. 어떤 자연수 $x$를 구하여라.(7점)\\n(방정식 세우기 3점, 방정식 풀이 과정 3점, 답쓰기 1점)",
     "choices": [],
     "answer": "45",
-    "solution": "* $\\frac{2}{3}x - \\frac{3}{5}x = 3 \\rightarrow \\frac{1}{15}x = 3 \\rightarrow x = 45$\\n* 정답: 45"
+    "solution": "* $\\frac{2}{3}x - \\frac{3}{5}x = 3 \\rightarrow \\frac{1}{15}x = 3 \\rightarrow x = 45$\\n* 정답: 45",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -492,17 +727,28 @@ window.questionBank = [
     "category": "서술형 2. 다항식의 계산",
     "originalCategory": "서술형 2. 다항식의 계산",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-02",
-    "standardUnit": "식의 계산",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","다항식","참거짓","조건해석","식세우기","계산"],
+    "tags": [
+      "서술형",
+      "다항식",
+      "참거짓",
+      "조건해석",
+      "식세우기",
+      "계산"
+    ],
     "wide": false,
     "content": "어떤 식 $A$에 $3x^2-2x-1$을 빼야 할 것을 잘못하여 더했더니 $-x^2+5$가 되었다. 옳게 계산한 식을 구하여라.(7점)\\n(주어진 조건에 맞는 식 세우기 2점, 어떤 식 $A$ 구하는 과정 3점, 옳게 계산한 식 구하는 과정 2점)",
     "choices": [],
     "answer": "$-7x^2+4x+7$",
-    "solution": "* $A + (3x^2-2x-1) = -x^2+5 \\rightarrow A = -4x^2+2x+6$\\n* 바른 계산: $(-4x^2+2x+6) - (3x^2-2x-1) = -7x^2+4x+7$\\n* 정답: $-7x^2+4x+7$"
+    "solution": "* $A + (3x^2-2x-1) = -x^2+5 \\rightarrow A = -4x^2+2x+6$\\n* 바른 계산: $(-4x^2+2x+6) - (3x^2-2x-1) = -7x^2+4x+7$\\n* 정답: $-7x^2+4x+7$",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
@@ -510,16 +756,29 @@ window.questionBank = [
     "category": "서술형 3. 부등식 풀이",
     "originalCategory": "서술형 3. 부등식 풀이",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","부등식","일차부등식","표해석","수직선","참거짓","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "부등식",
+      "일차부등식",
+      "표해석",
+      "수직선",
+      "참거짓",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "일차부등식 $x+1 \\ge -2x-5$를 풀고, 그 해를 수직선 위에 나타내어라.(6점)\\n(부등식 해 구하는 과정 3점, 해를 수직선 위에 바르게 나타내기 3점)",
     "choices": [],
     "answer": "$x \\ge -2$",
-    "solution": "* $x+1 \\ge -2x-5 \\rightarrow 3x \\ge -6 \\rightarrow x \\ge -2$\\n* 수직선 표현: -2에 칠해진 점을 찍고 오른쪽으로 화살표를 그림.\\n* 정답: $x \\ge -2$"
+    "solution": "* $x+1 \\ge -2x-5 \\rightarrow 3x \\ge -6 \\rightarrow x \\ge -2$\\n* 수직선 표현: -2에 칠해진 점을 찍고 오른쪽으로 화살표를 그림.\\n* 정답: $x \\ge -2$",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

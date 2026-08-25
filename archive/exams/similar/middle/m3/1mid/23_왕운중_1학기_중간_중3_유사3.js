@@ -15,9 +15,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "자연수 $a, b$에 대하여 $\\sqrt{108}=a\\sqrt{b}$가 성립할 때, $a+b$의 값이 될 수 없는 것은? (단, $b$는 자연수)",
-    "choices": ["9", "15", "18", "29", "109"],
+    "choices": [
+      "9",
+      "15",
+      "18",
+      "29",
+      "109"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 근호 안의 수를 소인수분해하여 가능한 모든 제곱수를 근호 밖으로 꺼내는 경우를 찾는다.\\n1단계: $108$을 소인수분해하면 $2^{2} \\times 3^{3} = 36 \\times 3$이다. $108$의 약수 중 제곱수는 $1, 4, 9, 36$이다.\\n2단계: 가능한 경우를 나열한다.\\n- $a^{2}=1$일 때: $a=1, b=108 \\Rightarrow a+b = 109$\\n- $a^{2}=4$일 때: $a=2, b=27 \\Rightarrow a+b = 29$\\n- $a^{2}=9$일 때: $a=3, b=12 \\Rightarrow a+b = 15$\\n- $a^{2}=36$일 때: $a=6, b=3 \\Rightarrow a+b = 9$\\n3단계: 가능한 값은 $9, 15, 29, 109$이므로 $18$은 될 수 없다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 근호 안의 수를 소인수분해하여 가능한 모든 제곱수를 근호 밖으로 꺼내는 경우를 찾는다.\\n1단계: $108$을 소인수분해하면 $2^{2} \\times 3^{3} = 36 \\times 3$이다. $108$의 약수 중 제곱수는 $1, 4, 9, 36$이다.\\n2단계: 가능한 경우를 나열한다.\\n- $a^{2}=1$일 때: $a=1, b=108 \\Rightarrow a+b = 109$\\n- $a^{2}=4$일 때: $a=2, b=27 \\Rightarrow a+b = 29$\\n- $a^{2}=9$일 때: $a=3, b=12 \\Rightarrow a+b = 15$\\n- $a^{2}=36$일 때: $a=6, b=3 \\Rightarrow a+b = 9$\\n3단계: 가능한 값은 $9, 15, 29, 109$이므로 $18$은 될 수 없다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -33,9 +43,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "다항식 $(3x-A)(2x+B)$의 전개식에서 $x^2$의 계수가 $x$의 계수와 서로 같고, 상수항이 $-12$일 때, 양수 $A, B$에 대하여 $A+B$의 값은?",
-    "choices": ["6", "7", "8", "9", "10"],
+    "choices": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 다항식을 전개하여 각 항의 계수를 구하고, 주어진 계수 조건을 이용해 연립방정식을 세운다.\\n1단계: $(3x-A)(2x+B) = 6x^{2} + (3B-2A)x - AB$이다.\\n2단계: $x^{2}$의 계수는 $6$이므로 $3B-2A = 6$이고, 상수항은 $-AB = -12$에서 $AB = 12$이다.\\n3단계: $A, B$가 양수이므로 곱이 $12$인 수 중 조건을 만족하는 쌍은 $(A, B) = (3, 4)$이다.\\n4단계: $A+B = 3+4 = 7$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 다항식을 전개하여 각 항의 계수를 구하고, 주어진 계수 조건을 이용해 연립방정식을 세운다.\\n1단계: $(3x-A)(2x+B) = 6x^{2} + (3B-2A)x - AB$이다.\\n2단계: $x^{2}$의 계수는 $6$이므로 $3B-2A = 6$이고, 상수항은 $-AB = -12$에서 $AB = 12$이다.\\n3단계: $A, B$가 양수이므로 곱이 $12$인 수 중 조건을 만족하는 쌍은 $(A, B) = (3, 4)$이다.\\n4단계: $A+B = 3+4 = 7$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 3,
@@ -51,9 +71,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "서로 다른 두 개의 주사위를 동시에 던져서 나오는 눈의 수를 각각 $a, b$라 할 때, $\\sqrt{12ab}$가 무리수가 되도록 하는 순서쌍 $(a, b)$의 개수는?",
-    "choices": ["24", "26", "28", "30", "32"],
+    "choices": [
+      "24",
+      "26",
+      "28",
+      "30",
+      "32"
+    ],
     "answer": "④",
-    "solution": "[키포인트] 전체 경우의 수에서 근호 안의 수가 완전제곱수가 되어 유리수가 되는 경우를 빼서 구한다.\\n1단계: 전체 순서쌍 개수는 $36$이다. $\\sqrt{12ab} = 2\\sqrt{3ab}$가 유리수가 되려면 $ab = 3 \\times k^{2}$ 꼴이어야 한다.\\n2단계: 유리수가 되는 경우를 찾는다.\\n- $ab = 3$: $(1, 3), (3, 1)$ (2개)\\n- $ab = 12$: $(2, 6), (3, 4), (4, 3), (6, 2)$ (4개)\\n- $ab = 27, 48 \\dots$: 주사위 눈으로는 불가능함.\\n3단계: 유리수가 되는 $6$개를 제외하면 무리수가 되는 경우는 $36 - 6 = 30$개이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 전체 경우의 수에서 근호 안의 수가 완전제곱수가 되어 유리수가 되는 경우를 빼서 구한다.\\n1단계: 전체 순서쌍 개수는 $36$이다. $\\sqrt{12ab} = 2\\sqrt{3ab}$가 유리수가 되려면 $ab = 3 \\times k^{2}$ 꼴이어야 한다.\\n2단계: 유리수가 되는 경우를 찾는다.\\n- $ab = 3$: $(1, 3), (3, 1)$ (2개)\\n- $ab = 12$: $(2, 6), (3, 4), (4, 3), (6, 2)$ (4개)\\n- $ab = 27, 48 \\dots$: 주사위 눈으로는 불가능함.\\n3단계: 유리수가 되는 $6$개를 제외하면 무리수가 되는 경우는 $36 - 6 = 30$개이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -69,9 +99,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "$x$에 대한 이차식 $x^2+(k-3)x+k+5$가 완전제곱식이 되도록 하는 모든 상수 $k$의 값의 합은?",
-    "choices": ["6", "8", "10", "12", "14"],
+    "choices": [
+      "6",
+      "8",
+      "10",
+      "12",
+      "14"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 이차항의 계수가 $1$일 때, 식이 완전제곱식이 되려면 (일차항 계수의 $1/2$)$^{2} = $ 상수항이어야 한다.\\n1단계: 조건을 세우면 $(\\frac{k-3}{2})^{2} = k+5$이다.\\n2단계: 정리하면 $k^{2}-6k+9 = 4k+20$이므로 $k^{2}-10k-11=0$이다.\\n3단계: 이차방정식의 근과 계수의 관계에 의해 모든 상수 $k$의 합은 $10$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 이차항의 계수가 $1$일 때, 식이 완전제곱식이 되려면 (일차항 계수의 $1/2$)$^{2} = $ 상수항이어야 한다.\\n1단계: 조건을 세우면 $(\\frac{k-3}{2})^{2} = k+5$이다.\\n2단계: 정리하면 $k^{2}-6k+9 = 4k+20$이므로 $k^{2}-10k-11=0$이다.\\n3단계: 이차방정식의 근과 계수의 관계에 의해 모든 상수 $k$의 합은 $10$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 5,
@@ -84,12 +124,24 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "content": "주어진 제곱근표를 이용하여 $\\sqrt{x}=18.17$을 만족시키는 $x$의 값을 구하면?<table class='question-table'><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>...</th><th>7</th></tr><tr><td>3.3</td><td>1.817</td><td>1.819</td><td>1.822</td><td>1.825</td><td>...</td><td>1.836</td></tr><tr><td>33</td><td>5.745</td><td>5.753</td><td>5.762</td><td>5.771</td><td>...</td><td>5.805</td></tr></table>",
-    "choices": ["3.3", "33", "330", "3300", "33000"],
+    "choices": [
+      "3.3",
+      "33",
+      "330",
+      "3300",
+      "33000"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 제곱근표에 없는 큰 값은 구하고자 하는 값을 $10$의 거듭제곱으로 나누어 표에 있는 값과 맞춘 후 역산한다.\\n1단계: 표에서 $\\sqrt{3.30} = 1.817$임을 확인한다.\\n2단계: $\\sqrt{x} = 18.17 = 1.817 \\times 10 = \\sqrt{3.3} \\times \\sqrt{100} = \\sqrt{330}$이다.\\n3단계: 따라서 $x = 330$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 제곱근표에 없는 큰 값은 구하고자 하는 값을 $10$의 거듭제곱으로 나누어 표에 있는 값과 맞춘 후 역산한다.\\n1단계: 표에서 $\\sqrt{3.30} = 1.817$임을 확인한다.\\n2단계: $\\sqrt{x} = 18.17 = 1.817 \\times 10 = \\sqrt{3.3} \\times \\sqrt{100} = \\sqrt{330}$이다.\\n3단계: 따라서 $x = 330$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -102,12 +154,24 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "content": "주어진 제곱근표를 이용하여 $\\sqrt{a}=17.97$, $\\sqrt{b}=0.5788$을 만족시키는 두 실수 $a, b$에 대하여 $a+b$의 값을 구하면?<table class='question-table'><tr><th>수</th><th>3</th><th>4</th><th>5</th></tr><tr><td>3.2</td><td>1.797</td><td>1.800</td><td>1.803</td></tr><tr><td>33</td><td>5.771</td><td>5.779</td><td>5.788</td></tr></table>",
-    "choices": ["323.0335", "323.335", "323.5788", "356.335", "356.5788"],
+    "choices": [
+      "323.0335",
+      "323.335",
+      "323.5788",
+      "356.335",
+      "356.5788"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 소수점의 위치 이동을 통해 표에 있는 수와 일치시킨 후, 근호 안의 값의 변화를 계산한다.\\n1단계: $\\sqrt{3.23}=1.797$이므로 $\\sqrt{a} = 1.797 \\times 10 = \\sqrt{323}$이다. 즉 $a=323$이다.\\n2단계: $\\sqrt{33.5}=5.788$이므로 $\\sqrt{b} = 5.788 \\times 0.1 = \\sqrt{0.335}$이다. 즉 $b=0.335$이다.\\n3단계: $a+b = 323 + 0.335 = 323.335$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 소수점의 위치 이동을 통해 표에 있는 수와 일치시킨 후, 근호 안의 값의 변화를 계산한다.\\n1단계: $\\sqrt{3.23}=1.797$이므로 $\\sqrt{a} = 1.797 \\times 10 = \\sqrt{323}$이다. 즉 $a=323$이다.\\n2단계: $\\sqrt{33.5}=5.788$이므로 $\\sqrt{b} = 5.788 \\times 0.1 = \\sqrt{0.335}$이다. 즉 $b=0.335$이다.\\n3단계: $a+b = 323 + 0.335 = 323.335$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -123,9 +187,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "부등식 $2\\sqrt{3}\\le x \\lt 5\\sqrt{2}$를 만족시키는 자연수 $x$의 개수는?",
-    "choices": ["3개", "4개", "5개", "6개", "7개"],
+    "choices": [
+      "3개",
+      "4개",
+      "5개",
+      "6개",
+      "7개"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 부등식에 무리수와 자연수가 섞여 있을 때는 모든 항을 제곱하여 비교하는 것이 정확하다.\\n1단계: $\\sqrt{12} \\le x \\lt \\sqrt{50}$이므로 $12 \\le x^{2} \\lt 50$이다.\\n2단계: 이를 만족하는 자연수 $x$는 $4, 5, 6, 7$이다.\\n3단계: 따라서 개수는 4개이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 부등식에 무리수와 자연수가 섞여 있을 때는 모든 항을 제곱하여 비교하는 것이 정확하다.\\n1단계: $\\sqrt{12} \\le x \\lt \\sqrt{50}$이므로 $12 \\le x^{2} \\lt 50$이다.\\n2단계: 이를 만족하는 자연수 $x$는 $4, 5, 6, 7$이다.\\n3단계: 따라서 개수는 4개이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -141,9 +215,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "$x=3.5, y=1.5$일 때, 식 $(2x-y)^2-(x-2y)^2$의 값은?",
-    "choices": ["15", "20", "25", "30", "35"],
+    "choices": [
+      "15",
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
     "answer": "④",
-    "solution": "[키포인트] 대입하기 전에 합차 공식을 이용하여 식을 인수분해한다.\\n1단계: $(2x-y+x-2y)(2x-y-x+2y) = (3x-3y)(x+y) = 3(x-y)(x+y)$이다.\\n2단계: $x-y=2, x+y=5$를 대입하면 $3 \\times 2 \\times 5 = 30$이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 대입하기 전에 합차 공식을 이용하여 식을 인수분해한다.\\n1단계: $(2x-y+x-2y)(2x-y-x+2y) = (3x-3y)(x+y) = 3(x-y)(x+y)$이다.\\n2단계: $x-y=2, x+y=5$를 대입하면 $3 \\times 2 \\times 5 = 30$이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 9,
@@ -159,9 +243,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "수직선 위의 두 점 $A(1-\\sqrt{3})$과 $B(5+\\sqrt{3})$ 사이에 있는 정수의 개수는?",
-    "choices": ["5개", "6개", "7개", "8개", "9개"],
+    "choices": [
+      "5개",
+      "6개",
+      "7개",
+      "8개",
+      "9개"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 무리수의 근사값을 이용하여 점의 좌표가 수직선에서 어느 범위에 속하는지 파악한다.\\n1단계: $1.7 < \\sqrt{3} < 1.8$이므로 $1-\\sqrt{3} \\approx -0.7$이고 $5+\\sqrt{3} \\approx 6.7$이다.\\n2단계: $-0.7 < x < 6.7$ 사이의 정수는 $0, 1, 2, 3, 4, 5, 6$이다.\\n3단계: 따라서 개수는 7개이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 무리수의 근사값을 이용하여 점의 좌표가 수직선에서 어느 범위에 속하는지 파악한다.\\n1단계: $1.7 < \\sqrt{3} < 1.8$이므로 $1-\\sqrt{3} \\approx -0.7$이고 $5+\\sqrt{3} \\approx 6.7$이다.\\n2단계: $-0.7 < x < 6.7$ 사이의 정수는 $0, 1, 2, 3, 4, 5, 6$이다.\\n3단계: 따라서 개수는 7개이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -177,9 +271,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "두 다항식 $2x^2+5x-3$과 $ax^2+bx-6$의 일차 이상의 공통인수가 $x+3$일 때, 양의 정수 $a$와 정수 $b$에 대하여 $a+b$의 최솟값은?",
-    "choices": ["1", "2", "3", "4", "5"],
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 공통인수가 주어졌을 때, 식을 $(x+3)$과 또 다른 일차식의 곱으로 표현하여 계수를 비교한다.\\n1단계: $ax^{2}+bx-6 = (x+3)(ax-2)$이므로 전개하면 $ax^{2}+(3a-2)x-6$이다.\\n2단계: $b = 3a-2$이며 구하는 값은 $a+b = 4a-2$이다.\\n3단계: 양의 정수 $a$의 최솟값은 $1$이므로 $4(1)-2 = 2$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 공통인수가 주어졌을 때, 식을 $(x+3)$과 또 다른 일차식의 곱으로 표현하여 계수를 비교한다.\\n1단계: $ax^{2}+bx-6 = (x+3)(ax-2)$이므로 전개하면 $ax^{2}+(3a-2)x-6$이다.\\n2단계: $b = 3a-2$이며 구하는 값은 $a+b = 4a-2$이다.\\n3단계: 양의 정수 $a$의 최솟값은 $1$이므로 $4(1)-2 = 2$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 11,
@@ -195,9 +299,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "다항식 $9x^2-2(k-1)xy+16y^2$이 완전제곱식이 되도록 하는 모든 상수 $k$의 값의 곱은?",
-    "choices": ["-143", "-132", "-24", "24", "143"],
+    "choices": [
+      "-143",
+      "-132",
+      "-24",
+      "24",
+      "143"
+    ],
     "answer": "①",
-    "solution": "[키포인트] 완전제곱식 $(ax \\pm by)^{2}$의 전개식 구조를 활용한다.\\n1단계: $9x^{2} \\pm 24xy + 16y^{2}$ 꼴이어야 하므로 $-2(k-1) = \\pm 24$이다.\\n2단계: $k-1 = -12 \\Rightarrow k = -11$, $k-1 = 12 \\Rightarrow k = 13$이다.\\n3단계: 곱은 $(-11) \\times 13 = -143$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 완전제곱식 $(ax \\pm by)^{2}$의 전개식 구조를 활용한다.\\n1단계: $9x^{2} \\pm 24xy + 16y^{2}$ 꼴이어야 하므로 $-2(k-1) = \\pm 24$이다.\\n2단계: $k-1 = -12 \\Rightarrow k = -11$, $k-1 = 12 \\Rightarrow k = 13$이다.\\n3단계: 곱은 $(-11) \\times 13 = -143$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 12,
@@ -213,9 +327,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "등식 $4\\sqrt{6}\\times \\sqrt{15}\\div \\sqrt{a}=6\\sqrt{5}$가 성립할 때, 양수 $a$의 값은?",
-    "choices": ["6", "8", "10", "12", "14"],
+    "choices": [
+      "6",
+      "8",
+      "10",
+      "12",
+      "14"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 무리수의 곱셈과 나눗셈은 근호 밖의 수와 안의 수를 분리하여 계산한다.\\n1단계: $\\sqrt{a} = \\frac{4\\sqrt{90}}{6\\sqrt{5}} = \\frac{12\\sqrt{10}}{6\\sqrt{5}} = 2\\sqrt{2}$이다.\\n2단계: $\\sqrt{a} = \\sqrt{8}$이므로 $a = 8$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 무리수의 곱셈과 나눗셈은 근호 밖의 수와 안의 수를 분리하여 계산한다.\\n1단계: $\\sqrt{a} = \\frac{4\\sqrt{90}}{6\\sqrt{5}} = \\frac{12\\sqrt{10}}{6\\sqrt{5}} = 2\\sqrt{2}$이다.\\n2단계: $\\sqrt{a} = \\sqrt{8}$이므로 $a = 8$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -228,12 +352,24 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "content": "다음 보기의 설명 중 옳은 것을 모두 고른 것은?<table class='question-table'><tr><td>ㄱ. 순환소수가 아닌 무한소수는 무리수이다.<br>ㄴ. 두 무리수의 합은 항상 무리수이다.<br>ㄷ. 0이 아닌 유리수와 무리수의 곱은 항상 무리수이다.<br>ㄹ. 서로 다른 두 무리수 사이에는 항상 무리수만 존재한다.</td></tr></table>",
-    "choices": ["ㄱ, ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄴ, ㄹ", "ㄷ, ㄹ"],
+    "choices": [
+      "ㄱ, ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄴ, ㄹ",
+      "ㄷ, ㄹ"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 실수의 성질과 연산 결과에 대한 반례를 정확히 판단한다.\\n1단계: ㄱ. 무리수의 정의이므로 옳다. ㄴ. $\\sqrt{2}+(-\\sqrt{2})=0$(유리수)이므로 틀리다.\\n2단계: ㄷ. 귀류법에 의해 항상 무리수임이 증명되므로 옳다. ㄹ. 두 무리수 사이에는 유리수도 무수히 많으므로 틀리다.\\n3단계: 따라서 옳은 것은 ㄱ, ㄷ이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 실수의 성질과 연산 결과에 대한 반례를 정확히 판단한다.\\n1단계: ㄱ. 무리수의 정의이므로 옳다. ㄴ. $\\sqrt{2}+(-\\sqrt{2})=0$(유리수)이므로 틀리다.\\n2단계: ㄷ. 귀류법에 의해 항상 무리수임이 증명되므로 옳다. ㄹ. 두 무리수 사이에는 유리수도 무수히 많으므로 틀리다.\\n3단계: 따라서 옳은 것은 ㄱ, ㄷ이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -249,9 +385,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "$x=\\frac{\\sqrt{5}+\\sqrt{3}}{\\sqrt{5}-\\sqrt{3}},\\ y=\\frac{\\sqrt{5}-\\sqrt{3}}{\\sqrt{5}+\\sqrt{3}}$ 일 때, $x^2-xy+y^2$의 값은?",
-    "choices": ["59", "61", "63", "65", "67"],
+    "choices": [
+      "59",
+      "61",
+      "63",
+      "65",
+      "67"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 유리화를 통해 간단히 한 뒤 곱셈 공식의 변형을 이용한다.\\n1단계: $x = 4+\\sqrt{15}, y = 4-\\sqrt{15}$로 유리화된다.\\n2단계: $x+y=8, xy=1$이므로 $(x+y)^{2}-3xy = 64-3 = 61$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 유리화를 통해 간단히 한 뒤 곱셈 공식의 변형을 이용한다.\\n1단계: $x = 4+\\sqrt{15}, y = 4-\\sqrt{15}$로 유리화된다.\\n2단계: $x+y=8, xy=1$이므로 $(x+y)^{2}-3xy = 64-3 = 61$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -267,9 +413,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "진자의 길이를 $L\\text{cm}$라 할 때, 1회 왕복하는 데 걸리는 주기 $T$초는 $T=2\\pi\\sqrt{\\frac{L}{980}}$이라고 한다. 주기가 $k\\pi$초일 때의 진자의 길이가 주기가 $2k\\pi$초일 때의 진자의 길이의 $\\frac{1}{a}$배라 할 때, 상수 $a$의 값은? (단, $k>0$)",
-    "choices": ["2", "3", "4", "8", "16"],
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "8",
+      "16"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 주기와 길이 사이의 제곱 비례 관계를 해석한다.\\n1단계: $T^{2} \\propto L$ 관계가 있으므로 주기가 $2$배가 되면 길이는 $4$배가 된다.\\n2단계: 주기가 $k\\pi$에서 $2k\\pi$로 $2$배 늘었으므로 길이는 $\\frac{1}{4}$배가 되어야 한다. 따라서 $a=4$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 주기와 길이 사이의 제곱 비례 관계를 해석한다.\\n1단계: $T^{2} \\propto L$ 관계가 있으므로 주기가 $2$배가 되면 길이는 $4$배가 된다.\\n2단계: 주기가 $k\\pi$에서 $2k\\pi$로 $2$배 늘었으므로 길이는 $\\frac{1}{4}$배가 되어야 한다. 따라서 $a=4$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -285,9 +441,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "등식 $\\sqrt{\\frac{1}{2}}\\times \\sqrt{\\frac{2}{3}}\\times \\sqrt{\\frac{3}{4}}\\times \\cdots \\times \\sqrt{\\frac{k}{k+1}}=\\frac{\\sqrt{2}}{10}$을 만족시키는 자연수 $k$의 값은?",
-    "choices": ["47", "48", "49", "50", "51"],
+    "choices": [
+      "47",
+      "48",
+      "49",
+      "50",
+      "51"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 연쇄 약분 규칙을 이용하여 식을 간단히 한다.\\n1단계: 좌변은 $\\sqrt{\\frac{1}{k+1}}$이다.\\n2단계: 우변은 $\\sqrt{\\frac{2}{100}} = \\sqrt{\\frac{1}{50}}$이다.\\n3단계: $k+1=50$이므로 $k=49$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 연쇄 약분 규칙을 이용하여 식을 간단히 한다.\\n1단계: 좌변은 $\\sqrt{\\frac{1}{k+1}}$이다.\\n2단계: 우변은 $\\sqrt{\\frac{2}{100}} = \\sqrt{\\frac{1}{50}}$이다.\\n3단계: $k+1=50$이므로 $k=49$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -303,9 +469,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "부등식 $2\\sqrt{3}<\\sqrt{3x-1}\\le 5$를 만족시키는 모든 자연수 $x$의 값의 합은?",
-    "choices": ["11", "15", "18", "22", "26"],
+    "choices": [
+      "11",
+      "15",
+      "18",
+      "22",
+      "26"
+    ],
     "answer": "⑤",
-    "solution": "[키포인트] 모든 항을 제곱하여 일차부등식을 세운다.\\n1단계: $12 < 3x-1 \\le 25$이므로 $13 < 3x \\le 26$이다.\\n2단계: $\\frac{13}{3} < x \\le \\frac{26}{3}$를 만족하는 자연수는 $5, 6, 7, 8$이다.\\n3단계: 합은 $5+6+7+8 = 26$이다.\\n∴ 정답: ⑤"
+    "solution": "[키포인트] 모든 항을 제곱하여 일차부등식을 세운다.\\n1단계: $12 < 3x-1 \\le 25$이므로 $13 < 3x \\le 26$이다.\\n2단계: $\\frac{13}{3} < x \\le \\frac{26}{3}$를 만족하는 자연수는 $5, 6, 7, 8$이다.\\n3단계: 합은 $5+6+7+8 = 26$이다.\\n∴ 정답: ⑤",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -321,9 +497,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "이차식 $2x^2+kx-5$가 $(ax+b)(cx+d)$ 꼴로 인수분해될 때, 가능한 모든 정수 $k$의 값의 합은? (단, $a, b, c, d$는 정수이다.)",
-    "choices": ["-6", "-3", "0", "3", "6"],
+    "choices": [
+      "-6",
+      "-3",
+      "0",
+      "3",
+      "6"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 정수 약수들의 조합을 찾아 크로스 곱의 합으로 $k$를 구한다.\\n1단계: $(2, 1)$ 고정 시 $(b, d)$는 $(1, -5), (-1, 5), (5, -1), (-5, 1)$이다.\\n2단계: $k$는 $-9, 9, 3, -3$이 가능하다.\\n3단계: 모든 합은 $0$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 정수 약수들의 조합을 찾아 크로스 곱의 합으로 $k$를 구한다.\\n1단계: $(2, 1)$ 고정 시 $(b, d)$는 $(1, -5), (-1, 5), (5, -1), (-5, 1)$이다.\\n2단계: $k$는 $-9, 9, 3, -3$이 가능하다.\\n3단계: 모든 합은 $0$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 19,
@@ -339,9 +525,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "정수 $n$에 대하여 $|n^2-6n-16|$의 값이 소수가 되도록 하는 모든 정수 $n$의 값의 합은?",
-    "choices": ["4", "6", "8", "10", "12"],
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
     "answer": "②",
-    "solution": "[키포인트] 인수 중 하나의 절댓값이 반드시 $1$이어야 함을 이용한다.\\n1단계: $|(n-8)(n+2)|$가 소수이려면 $n-8 = \\pm 1$ 또는 $n+2 = \\pm 1$이어야 한다.\\n2단계: 확인 결과 $n=9, -3$일 때 소수 $11$이 된다.\\n3단계: 합은 $9+(-3)=6$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 인수 중 하나의 절댓값이 반드시 $1$이어야 함을 이용한다.\\n1단계: $|(n-8)(n+2)|$가 소수이려면 $n-8 = \\pm 1$ 또는 $n+2 = \\pm 1$이어야 한다.\\n2단계: 확인 결과 $n=9, -3$일 때 소수 $11$이 된다.\\n3단계: 합은 $9+(-3)=6$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -357,9 +553,19 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "content": "다항식 $2x^2+kx+30$이 $(ax+b)(cx+d)$로 인수분해된다고 한다. $a, b, c, d$가 모두 정수일 때, 상수 $k$가 가질 수 있는 최댓값과 최솟값의 차는?",
-    "choices": ["62", "84", "100", "122", "124"],
+    "choices": [
+      "62",
+      "84",
+      "100",
+      "122",
+      "124"
+    ],
     "answer": "④",
-    "solution": "[키포인트] 일차항 계수는 상수항 약수 차이가 가장 클 때 절댓값이 최대가 된다.\\n1단계: $(2, 1)$ 고정 시 $(b, d)$가 $(1, 30)$이면 $k=61$이 최대이다.\\n2단계: $(-1, -30)$이면 $k=-61$이 최소이다.\\n3단계: 차이는 $61 - (-61) = 122$이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 일차항 계수는 상수항 약수 차이가 가장 클 때 절댓값이 최대가 된다.\\n1단계: $(2, 1)$ 고정 시 $(b, d)$가 $(1, 30)$이면 $k=61$이 최대이다.\\n2단계: $(-1, -30)$이면 $k=-61$이 최소이다.\\n3단계: 차이는 $61 - (-61) = 122$이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -372,12 +578,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "$5-\\sqrt{3}$의 정수부분을 $a$, 소수부분을 $b$라 할 때, $a^2-b^2+4b$의 값을 구하시오.",
     "choices": [],
     "answer": "10",
-    "solution": "[키포인트] 무리수의 범위를 통해 정수/소수 부분을 확정한다.\\n1단계: $3 < 5-\\sqrt{3} < 4$이므로 $a=3, b=2-\\sqrt{3}$이다.\\n2단계: $9 - (7-4\\sqrt{3}) + (8-4\\sqrt{3}) = 10$이다.\\n∴ 정답: 10"
+    "solution": "[키포인트] 무리수의 범위를 통해 정수/소수 부분을 확정한다.\\n1단계: $3 < 5-\\sqrt{3} < 4$이므로 $a=3, b=2-\\sqrt{3}$이다.\\n2단계: $9 - (7-4\\sqrt{3}) + (8-4\\sqrt{3}) = 10$이다.\\n∴ 정답: 10",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -390,12 +602,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "두 학생 A, B가 $x^2$의 계수가 1인 어떤 이차식을 인수분해하였다. A는 $x$의 계수를 잘못 보아 $(x+2)(x-8)$로 인수분해하였고, B는 상수항을 잘못 보아 이차식을 인수분해한 후 그 해를 $x=-1$ 또는 $x=5$라고 하였다. 처음 이차식을 $(x+a)^2+b$ 꼴로 나타낼 때, 상수 $a, b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
     "answer": "40",
-    "solution": "[키포인트] 바르게 본 항을 찾아 원래 식을 복원한다.\\n1단계: A로부터 상수항 $-16$, B로부터 일차항 $-4$를 얻어 $x^{2}-4x-16$이 된다.\\n2단계: $(x-2)^{2}-20$이므로 $a=-2, b=-20$이다.\\n3단계: $ab=40$이다.\\n∴ 정답: 40"
+    "solution": "[키포인트] 바르게 본 항을 찾아 원래 식을 복원한다.\\n1단계: A로부터 상수항 $-16$, B로부터 일차항 $-4$를 얻어 $x^{2}-4x-16$이 된다.\\n2단계: $(x-2)^{2}-20$이므로 $a=-2, b=-20$이다.\\n3단계: $ab=40$이다.\\n∴ 정답: 40",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 23,
@@ -408,12 +626,19 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["서술형", "도형"],
+    "tags": [
+      "서술형",
+      "도형"
+    ],
     "wide": false,
     "content": "세 개의 정사각형의 넓이가 각각 $12, 27, 48$일 때, 이를 밑변이 일직선 위에 놓이도록 겹치지 않게 이어 붙여 만든 도형의 전체 둘레의 길이를 구하시오.",
     "choices": [],
     "answer": "26√3",
-    "solution": "[키포인트] 바깥쪽 테두리의 길이를 부위별로 나누어 구한다.\\n1단계: 변의 길이는 $2\\sqrt{3}, 3\\sqrt{3}, 4\\sqrt{3}$이다.\\n2단계: 밑변 $9\\sqrt{3}$, 윗변 $9\\sqrt{3}$, 좌우 $2\\sqrt{3}+4\\sqrt{3}$, 단차 $\\sqrt{3}+\\sqrt{3}$이다.\\n3단계: 총합은 $26\\sqrt{3}$이다.\\n∴ 정답: 26√3"
+    "solution": "[키포인트] 바깥쪽 테두리의 길이를 부위별로 나누어 구한다.\\n1단계: 변의 길이는 $2\\sqrt{3}, 3\\sqrt{3}, 4\\sqrt{3}$이다.\\n2단계: 밑변 $9\\sqrt{3}$, 윗변 $9\\sqrt{3}$, 좌우 $2\\sqrt{3}+4\\sqrt{3}$, 단차 $\\sqrt{3}+\\sqrt{3}$이다.\\n3단계: 총합은 $26\\sqrt{3}$이다.\\n∴ 정답: 26√3",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -426,11 +651,17 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "content": "함수 $f(x)=\\frac{1}{\\sqrt{x+1}+\\sqrt{x}}$에 대하여 $S(n)=f(1)+f(2)+f(3)+\\dots+f(n)$이라 하자. $S(n)$의 값이 정수가 되도록 하는 $100$ 이하의 자연수 $n$의 개수를 구하시오.",
     "choices": [],
     "answer": "9",
-    "solution": "[키포인트] 유리화를 통해 연쇄 소거 규칙을 이용한다.\\n1단계: $S(n) = \\sqrt{n+1}-1$이다.\\n2단계: $n+1$이 완전제곱수여야 하므로 $2 \\le n+1 \\le 101$ 사이의 완전제곱수는 $9$개이다.\\n∴ 정답: 9"
+    "solution": "[키포인트] 유리화를 통해 연쇄 소거 규칙을 이용한다.\\n1단계: $S(n) = \\sqrt{n+1}-1$이다.\\n2단계: $n+1$이 완전제곱수여야 하므로 $2 \\le n+1 \\le 101$ 사이의 완전제곱수는 $9$개이다.\\n∴ 정답: 9",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

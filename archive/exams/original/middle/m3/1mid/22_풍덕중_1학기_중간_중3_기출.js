@@ -11,7 +11,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","절댓값","참거짓","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "참거짓",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 보기 중에서 옳은 것은?",
     "choices": [
@@ -23,7 +30,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "1. 25는 5의 제곱임 (5의 양의 제곱근은 $\\sqrt{5}$) \\\\ 2. 양수 $a$의 제곱근은 $\\pm \\sqrt{a}$ \\\\ 3. $\\sqrt{(-3)^2} = |-3| = 3$ (참) \\\\ 4. $\\sqrt{36}=6 \\implies 6$의 제곱근은 $\\pm \\sqrt{6}$ \\\\ 5. 제곱근 7 = $\\sqrt{7}$ \\\\ $\\therefore$ 3",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -35,7 +46,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "다음 보기의 두 수를 대소 비교하여 $\\Box$ 안에 부등호를 넣을 때, 부등호 방향이 다른 하나는?",
     "choices": [
@@ -47,7 +64,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "1. $7 < 8 \\implies \\sqrt{7}<\\sqrt{8}$ \\\\ 2. $\\sqrt{3}<\\sqrt{16}=4$ \\\\ 3. $\\frac{1}{2} > \\frac{1}{3} \\implies \\sqrt{\\frac{1}{2}}>\\sqrt{\\frac{1}{3}}$ \\\\ 4. $\\sqrt{40}>\\sqrt{36}$이므로 $-\\sqrt{40}<-6$ \\\\ 5. $5-\\sqrt{2}\\approx 3.586<4$ \\\\ 따라서 부등호 방향이 다른 것은 3이다.",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -59,7 +80,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "식 $(\\sqrt{3})^2 + \\sqrt{5^2}$을 계산한 값은?",
     "choices": [
@@ -71,7 +98,11 @@ window.questionBank = [
     ],
     "answer": "5",
     "solution": "$(\\sqrt{3})^2 = 3 \\\\ \\sqrt{5^2} = 5 \\\\ \\implies 3+5=8 \\\\ \\therefore 5",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -83,7 +114,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","정수조건","참거짓","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "정수조건",
+      "참거짓",
+      "계산"
+    ],
     "wide": false,
     "content": "$\\sqrt{20}$을 $a\\sqrt{b}$의 꼴로 나타낼 때 정수 $a, b$에 해당하는 수가 순서대로 옳은 것은?",
     "choices": [
@@ -95,7 +133,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "\\sqrt{20} = \\sqrt{4 \\times 5} = 2\\sqrt{5} \\\\ \\implies a=2, b=5 \\\\ \\therefore 3",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -107,7 +149,14 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","참거짓","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "참거짓",
+      "개념"
+    ],
     "wide": false,
     "content": "다항식 $(x-1)(x+3)$을 바르게 전개한 것은?",
     "choices": [
@@ -119,7 +168,11 @@ window.questionBank = [
     ],
     "answer": "4",
     "solution": "(x-1)(x+3) = x^2 + 3x - x - 3 = x^2+2x-3 \\\\ \\therefore 4",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 6,
@@ -131,7 +184,13 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$2xy-8y$에서 두 항 $2xy, -8y$의 공통인 인수는 $2y$이므로 $2xy-8y=2y(\\Box)$이다. $\\Box$에 알맞은 식은?",
     "choices": [
@@ -143,7 +202,11 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "2xy-8y = 2y \\times x - 2y \\times 4 = 2y(x-4) \\\\ \\therefore 1",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 7,
@@ -155,7 +218,9 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["수식박스"],
+    "tags": [
+      "수식박스"
+    ],
     "wide": false,
     "content": "다음 식의 빈칸에 들어갈 값을 순서대로 바르게 적은 것은?<div class='box'>$(x-6)^2 = x^2 - \\Box x + \\triangle$ <br> $x^2-36 = (x+\\bigcirc)(x-\\bigcirc)$</div>",
     "choices": [
@@ -167,7 +232,11 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "(x-6)^2 = x^2-12x+36 \\implies \\Box=12, \\triangle=36 \\\\ x^2-36 = (x+6)(x-6) \\implies \\bigcirc=6 \\\\ \\therefore 1",
-    "level": "하"
+    "level": "하",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 8,
@@ -179,7 +248,14 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "content": "$0 < a < 3$일 때, $\\sqrt{(3-a)^2} + \\sqrt{a^2}$을 간단히 하면?",
     "choices": [
@@ -191,7 +267,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "0 < a < 3 \\implies 3-a > 0, a > 0 \\\\ \\implies |3-a| + |a| = (3-a) + a = 3 \\\\ \\therefore 3",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -203,7 +283,9 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["수식박스"],
+    "tags": [
+      "수식박스"
+    ],
     "wide": false,
     "content": "다음 수의 대소를 비교하여 크기가 작은 수부터 차례로 나열할 때, 3번째로 오는 수는?<div class='box'>$\\sqrt{2}, 1, \\frac{1}{2}, 1-\\sqrt{2}, 5-\\sqrt{2}$</div>",
     "choices": [
@@ -215,7 +297,11 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "값 근사: \\sqrt{2} \\approx 1.414, 1, 0.5, 1-1.414 = -0.414, 5-1.414 = 3.586 \\\\ 나열: 1-\\sqrt{2} < \\frac{1}{2} < 1 < \\sqrt{2} < 5-\\sqrt{2} \\\\ \\therefore 3번째는 1",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -227,7 +313,9 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "content": "다음 보기의 값 중 아래 제곱근표를 보고 구할 수 있는 값이 아닌 것은?<div class='question-table-wrap'><table class='question-table'><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>4.5</td><td>2.121</td><td>2.124</td><td>2.126</td><td>2.128</td><td>2.131</td><td>2.133</td></tr><tr><td>4.6</td><td>2.145</td><td>2.147</td><td>2.149</td><td>2.152</td><td>2.154</td><td>2.156</td></tr><tr><td>4.7</td><td>2.168</td><td>2.170</td><td>2.173</td><td>2.175</td><td>2.177</td><td>2.179</td></tr><tr><td>4.8</td><td>2.191</td><td>2.193</td><td>2.195</td><td>2.198</td><td>2.200</td><td>2.202</td></tr><tr><td>4.9</td><td>2.214</td><td>2.216</td><td>2.218</td><td>2.221</td><td>2.223</td><td>2.225</td></tr></table></div><div class='box'>ㄱ. $\\sqrt{4.52}$ ㄴ. $\\sqrt{484}$ ㄷ. $\\sqrt{0.475}$ ㄹ. $\\sqrt{46200}$ ㅁ. $\\sqrt{0.0493}$</div>",
     "choices": [
@@ -239,7 +327,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "표 범위: 4.50~4.95 \\\\ ㄱ. \\sqrt{4.52} (직접 확인 가능) \\\\ ㄴ. \\sqrt{4.84 \\times 100} = 10\\sqrt{4.84} (가능) \\\\ ㄷ. \\sqrt{0.475} = \\sqrt{\\frac{47.5}{100}} (표에 47.5 없음, 불가능) \\\\ ㄹ. \\sqrt{4.62 \\times 10000} = 100\\sqrt{4.62} (가능) \\\\ ㅁ. \\sqrt{4.93 \\div 100} = \\frac{\\sqrt{4.93}}{10} (가능) \\\\ \\therefore 3",
-    "level": "중"
+    "level": "중",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -262,8 +354,18 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","조건해석","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -286,8 +388,21 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","도형","넓이","겉넓이","조건해석","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "도형",
+      "넓이",
+      "겉넓이",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -310,8 +425,19 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","참거짓","오류판별","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "참거짓",
+      "오류판별",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -334,8 +460,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","전개","참거짓","개념"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "참거짓",
+      "개념"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 15,
@@ -358,8 +495,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","대입","조건해석","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 16,
@@ -382,8 +530,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "완전제곱식",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 17,
@@ -406,8 +565,20 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","제곱근","근호","다항식","인수분해","조건해석","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "다항식",
+      "인수분해",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 18,
@@ -430,8 +601,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","자연수조건","조건해석","계산"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 19,
@@ -454,8 +636,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","인수분해","계수비교","참거짓","개념"],
-    "wide": false
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "계수비교",
+      "참거짓",
+      "개념"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -478,7 +671,13 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형"],
-    "wide": false
+    "tags": [
+      "도형"
+    ],
+    "wide": false,
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

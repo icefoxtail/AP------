@@ -26,7 +26,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 직각삼각형에서는 빗변의 제곱이 두 직각변의 제곱의 합이다.\n직각변의 길이가 $5\\rm\\,cm$, $3\\rm\\,cm$이므로 $x^2=5^2+3^2=25+9=34$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q1.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q1.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -53,7 +57,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 닮은 삼각형의 대응변의 길이의 비와 대응각의 크기는 각각 같다.\n$\\triangle ABC\\sim\\triangle DEF$이므로 $BC:EF=16:8=2:1$이다.\n따라서 $AB:DE=2:1$이므로 $x=AB=12$이고, 대응각에서 $y=\\angle E=\\angle B=55$이다.\n$x+y=12+55=67$이므로 정답은 ③이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q2.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q2.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -80,7 +88,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 주어진 각과 공통각을 이용해 두 삼각형의 닮음을 만든다.\n$\\angle ABD=\\angle C$이고 $\\angle BAD=\\angle CAB$이므로 $\\triangle ABD\\sim\\triangle ACB$이다.\n따라서 $AB:AC=AD:AB$이므로 $6:AC=3:6$, 즉 $AC=12$이다.\n$CD=AC-AD=12-3=9\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q3.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q3.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -107,7 +119,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 세 평행선이 두 직선을 자르면 대응하는 선분의 길이의 비가 같다.\n왼쪽 직선에서 $l$과 $n$ 사이가 $12\\rm\\,cm$, $l$과 $m$ 사이가 $4\\rm\\,cm$이므로 $m$과 $n$ 사이는 $8\\rm\\,cm$이다.\n따라서 $4:8=6:x$이고 $4x=48$이므로 $x=12$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q4.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q4.png",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -134,7 +150,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 세 중선은 삼각형을 넓이가 같은 여섯 개의 작은 삼각형으로 나눈다.\n$G$가 무게중심이고 $D$가 $BC$의 중점이므로 $\\triangle GBD$의 넓이는 $\\triangle ABC$ 넓이의 $\\dfrac16$이다.\n따라서 $[ABC]=6\\times3=18\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q5.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q5.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -161,7 +181,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 피타고라스 정리는 세 변을 한 변으로 하는 정사각형의 넓이 관계로 볼 수 있다.\n$AC$가 빗변이므로 $AC^2=AB^2+BC^2$이다.\n정사각형의 넓이로 쓰면 $50=10+BC^2$이므로 $BC^2=40$이다.\n이 정사각형을 똑같이 $4$조각으로 나누면 한 조각의 넓이는 $40\\div4=10\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q6.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q6.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -188,7 +212,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 직각삼각형에서 높이와 윗변의 길이를 차례로 구한 뒤 사다리꼴 넓이를 이용한다.\n$\\triangle ABC$에서 $AB=13$, $BC=5$이고 $\\angle C=90^\\circ$이므로 $AC=\\sqrt{13^2-5^2}=12$이다.\n$\\triangle ACD$에서 $CD=15$, $AC=12$이고 $\\angle A=90^\\circ$이므로 $AD=\\sqrt{15^2-12^2}=9$이다.\n$AD\\parallel BC$이므로 사각형 $ABCD$의 넓이는 $\\dfrac{(9+5)\\times12}{2}=84\\rm\\,cm^2$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q7.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q7.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -215,7 +243,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 접기는 대칭이므로 대응하는 길이가 같고, 그 길이로 닮음을 판정한다.\n접기에 의해 $BC'=BC=10$, $EC'=EC=5$이다. 또한 $AB=8$이므로 직각삼각형 $ABC'$에서 $AC'=6$, 따라서 $C'D=10-6=4$이다. 그러므로 ㄱ은 참이다.\n$\\triangle C'AB$의 세 변은 $6,8,10$, $\\triangle EDC'$의 세 변은 $3,4,5$이므로 대응변의 비가 모두 $2:1$이다. 따라서 두 삼각형은 SSS닮음이므로 ㄴ은 참이다.\n닮음에서 $\\angle DEC'=\\angle AC'B$이고, $AC'\\parallel BC$이므로 $\\angle AC'B=\\angle C'BC$이다. 한편 접기에서 직선 $BE$는 $BC$와 $BC'$가 이루는 각을 이등분하므로 $\\angle C'BC=2\\angle C'BE$이다. 따라서 $\\angle C'BE\\ne\\angle DEC'$이므로 ㄷ은 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ이고 정답은 ③이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q8.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q8.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -242,7 +274,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이는 빗변을 두 직각변의 제곱비로 나눈다.\n$AB=6$, $AD=8$이므로 $BE:ED=AB^2:AD^2=36:64=9:16$이다.\n$\\triangle ABE$와 $\\triangle AED$는 $BD$ 위의 밑변 $BE$, $ED$에 대한 높이가 같으므로 넓이의 비도 $9:16$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q9.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q9.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -269,7 +305,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 중점과 평행 관계를 이용한 닮음으로 대각선 $BD$의 분할비를 구한다.\n$BM\\parallel AD$이고 $P$는 $BD$, $AM$의 교점이므로 $\\triangle BMP\\sim\\triangle DAP$이다. $BM:AD=1:2$이므로 $BP:PD=1:2$, 따라서 $BP=\\dfrac13BD$이다.\n또 $DN\\parallel AB$이고 $Q$는 $BD$, $AN$의 교점이므로 $\\triangle DQN\\sim\\triangle BQA$이다. $DN:AB=1:2$이므로 $DQ:BQ=1:2$, 따라서 $BQ=\\dfrac23BD$이다.\n그러므로 $BP=PQ=QD=\\dfrac13BD$이고, 같은 높이를 가지는 $\\triangle ABP$, $\\triangle APQ$, $\\triangle AQD$의 넓이는 모두 같다. 따라서 ㄴ은 참이다.\n일반적인 평행사변형에서 대각선 $BD$가 두 변과 이루는 각이 같다는 조건은 없으므로 ㄱ은 거짓이다.\n평행사변형의 넓이를 $S$라 하면 $[BCD]=\\dfrac S2$, $[BMP]=[DQN]=\\dfrac S{12}$, $[CMN]=\\dfrac S8$이므로 $[PMNQ]=\\dfrac S2-\\dfrac S{12}-\\dfrac S{12}-\\dfrac S8=\\dfrac{5S}{24}$이다.\n$S=54$이면 $[PMNQ]=\\dfrac{45}{4}\\rm\\,cm^2$이므로 ㄷ은 참이다.\n따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ④이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q10.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q10.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -296,7 +336,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 공통각을 끼고 있는 두 변의 비를 먼저 비교한다.\n$AB:AC=8:16=1:2$, $AD:AB=4:8=1:2$이고 $\\angle BAD=\\angle CAB$이므로 두 삼각형은 SAS닮음이다. 따라서 'AA닮음'이라고 한 ㄱ은 거짓이다.\n대응은 $A\\leftrightarrow A$, $B\\leftrightarrow C$, $D\\leftrightarrow B$이므로 $\\angle ADB=\\angle ABC$이고, ㄴ은 거짓이다.\n$BD:BC=1:2$이므로 $BC=2\\times10=20\\rm\\,cm$이고 ㄷ은 참이다.\n따라서 옳은 것은 ㄷ뿐이므로 정답은 ②이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q11.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q11.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -323,7 +367,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 중점연결정리로 길이와 넓이를 절반·사분의 일 관계로 바꾼다.\n중점삼각형 $DEF$의 각 변은 원래 삼각형의 대응변의 절반이므로 둘레는 $\\dfrac{8+12+10}{2}=15\\rm\\,cm$이다. ㄱ은 참이다.\n두 삼각형의 무게중심은 세 꼭짓점 좌표의 평균으로 같으므로 ㄴ은 참이다.\n$\\triangle DEF\\sim\\triangle ABC$이고 닮음비가 $1:2$이므로 넓이비는 $1:4$이다. 따라서 $40\\rm\\,cm^2$의 $\\dfrac14$인 $10\\rm\\,cm^2$이므로 ㄷ도 참이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q12.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q12.png",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -347,7 +395,11 @@ window.questionBank = [
       "파란 공 6개가 들어있는 주머니에서 한 개의 공을 꺼낼 때, 파란 공이 나올 확률"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 선택지의 확률을 직접 계산하여 비교한다.\n① 두 사람이 가위바위보를 할 때 비길 확률은 $\\dfrac13$이다.\n② 주사위에서 $4$이하의 눈은 $1,2,3,4$의 $4$개이므로 확률은 $\\dfrac46=\\dfrac23$이다.\n③ 세 명 중 A가 대표로 뽑힐 확률은 $\\dfrac13$이다.\n④ 서로 다른 두 동전에서 뒷면이 두 개 나올 확률은 $\\dfrac14$이다.\n⑤ 주머니에는 파란 공 $6$개만 들어 있으므로 파란 공이 나올 확률은 $1$이다.\n가장 큰 확률은 $1$이므로 정답은 ⑤이다."
+    "solution": "[키포인트] 각 선택지의 확률을 직접 계산하여 비교한다.\n① 두 사람이 가위바위보를 할 때 비길 확률은 $\\dfrac13$이다.\n② 주사위에서 $4$이하의 눈은 $1,2,3,4$의 $4$개이므로 확률은 $\\dfrac46=\\dfrac23$이다.\n③ 세 명 중 A가 대표로 뽑힐 확률은 $\\dfrac13$이다.\n④ 서로 다른 두 동전에서 뒷면이 두 개 나올 확률은 $\\dfrac14$이다.\n⑤ 주머니에는 파란 공 $6$개만 들어 있으므로 파란 공이 나올 확률은 $1$이다.\n가장 큰 확률은 $1$이므로 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -371,7 +423,11 @@ window.questionBank = [
       "9개"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 추가한 파란 공의 수를 미지수로 놓고 확률식을 세운다.\n파란 공을 $n$개 더 넣으면 전체 공은 $12+n$개이고 빨간 공은 $7$개이다.\n$\\dfrac7{12+n}=\\dfrac13$이므로 $21=12+n$, 따라서 $n=9$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 추가한 파란 공의 수를 미지수로 놓고 확률식을 세운다.\n파란 공을 $n$개 더 넣으면 전체 공은 $12+n$개이고 빨간 공은 $7$개이다.\n$\\dfrac7{12+n}=\\dfrac13$이므로 $21=12+n$, 따라서 $n=9$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -395,7 +451,11 @@ window.questionBank = [
       "$\\dfrac34$"
     ],
     "answer": "④",
-    "solution": "[키포인트] '운동화 또는 슬리퍼'는 두 경우의 수를 더한다.\n운동화와 슬리퍼는 $8+5=13$켤레이고 전체는 $20$켤레이다.\n따라서 확률은 $\\dfrac{13}{20}$이므로 정답은 ④이다."
+    "solution": "[키포인트] '운동화 또는 슬리퍼'는 두 경우의 수를 더한다.\n운동화와 슬리퍼는 $8+5=13$켤레이고 전체는 $20$켤레이다.\n따라서 확률은 $\\dfrac{13}{20}$이므로 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -419,7 +479,11 @@ window.questionBank = [
       "$\\dfrac34$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 번의 시행이 독립이므로 각 조건의 확률을 곱한다.\n$1$부터 $12$까지의 소수는 $2,3,5,7,11$의 $5$개이므로 첫 번째 확률은 $\\dfrac5{12}$이다.\n$3$의 배수는 $3,6,9,12$의 $4$개이므로 두 번째 확률은 $\\dfrac4{12}=\\dfrac13$이다.\n따라서 구하는 확률은 $\\dfrac5{12}\\times\\dfrac13=\\dfrac5{36}$이므로 정답은 ②이다."
+    "solution": "[키포인트] 두 번의 시행이 독립이므로 각 조건의 확률을 곱한다.\n$1$부터 $12$까지의 소수는 $2,3,5,7,11$의 $5$개이므로 첫 번째 확률은 $\\dfrac5{12}$이다.\n$3$의 배수는 $3,6,9,12$의 $4$개이므로 두 번째 확률은 $\\dfrac4{12}=\\dfrac13$이다.\n따라서 구하는 확률은 $\\dfrac5{12}\\times\\dfrac13=\\dfrac5{36}$이므로 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -443,7 +507,11 @@ window.questionBank = [
       "$\\dfrac{16}{81}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 승부가 결정되지 않는 경우는 두 사람이 같은 수를 낼 때뿐이다.\n전체 경우의 수는 $9\\times9=81$이고 같은 수를 내는 경우는 $(1,1),\\ldots,(9,9)$의 $9$가지이다.\n따라서 승부가 결정될 확률은 $1-\\dfrac9{81}=\\dfrac89$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 승부가 결정되지 않는 경우는 두 사람이 같은 수를 낼 때뿐이다.\n전체 경우의 수는 $9\\times9=81$이고 같은 수를 내는 경우는 $(1,1),\\ldots,(9,9)$의 $9$가지이다.\n따라서 승부가 결정될 확률은 $1-\\dfrac9{81}=\\dfrac89$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -467,7 +535,11 @@ window.questionBank = [
       "$\\dfrac7{12}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 한 사람만 합격하는 두 경우를 서로 더한다.\n소희만 합격할 확률은 $\\dfrac34\\times\\dfrac23=\\dfrac12$이고, 정훈만 합격할 확률은 $\\dfrac14\\times\\dfrac13=\\dfrac1{12}$이다.\n따라서 $\\dfrac12+\\dfrac1{12}=\\dfrac7{12}$이므로 정답은 ⑤이다."
+    "solution": "[키포인트] 한 사람만 합격하는 두 경우를 서로 더한다.\n소희만 합격할 확률은 $\\dfrac34\\times\\dfrac23=\\dfrac12$이고, 정훈만 합격할 확률은 $\\dfrac14\\times\\dfrac13=\\dfrac1{12}$이다.\n따라서 $\\dfrac12+\\dfrac1{12}=\\dfrac7{12}$이므로 정답은 ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -494,7 +566,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 무게중심의 $2:1$ 비와 중점연결정리를 길이비와 넓이비에 함께 적용한다.\n$L$은 $BC$의 중점이고 $G$는 무게중심이므로 $AG:AL=2:3$이다. $DG\\parallel BL$이므로 $\\triangle ADG\\sim\\triangle ABL$이고 $DG:BL=AG:AL=2:3$이다. $BL=\\dfrac12BC$이므로 $DG=\\dfrac13BC$이다.\n같은 방법으로 $GE=\\dfrac13BC$이므로 $DG=GE$이다. 따라서 $G$는 $DE$의 중점이다.\n$M,N$은 각각 $AB,AC$의 중점이므로 $MN=\\dfrac12BC$이다. 또 $AL$은 $\\triangle ABC$의 중선이므로, 닮음 관계에서 그 상인 $P$는 $MN$의 중점이다. 따라서 $MP=\\dfrac14BC$이다.\n그러므로 $MP:DG:BL=\\dfrac14:\\dfrac13:\\dfrac12=3:4:6$이어서 $x=4$, $y=6$이다.\n$MN\\parallel DE$이므로 $\\triangle MPG$와 $\\triangle MDG$는 같은 높이를 갖는다. 따라서 $[MDG]:[MPG]=DG:MP=\\dfrac13:\\dfrac14=4:3$이다. $1:z=4:3$이므로 $z=\\dfrac34$이다.\n$xyz=4\\times6\\times\\dfrac34=18$이므로 정답은 ③이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q19.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q19.png",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -522,7 +598,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 사각형 $DBEA$의 넓이를 두 가지 방법으로 나타낸 뒤 두 식을 같게 둔다.\n$\\triangle DBC$, $\\triangle ACE$가 직각이등변삼각형이므로 $DC=BC=a$, $CE=AC=b$이다.\n방법 1에서 $[DBEA]=[DBC]+[ACE]=\\dfrac{a^2}{2}+\\dfrac{b^2}{2}=\\dfrac{a^2+b^2}{2}$이다.\n$AC=CE=b$, $BC=CD=a$, $\\angle ACB=\\angle ECD=90^\\circ$이므로 $\\triangle ABC\\cong\\triangle EDC$이고 합동 조건은 SAS이다. 따라서 $DE=AB=c$이다.\n합동에서 $\\angle ABC=\\angle EDC$이다. 그런데 $BC\\perp DC$이므로 같은 크기의 두 각을 각각 서로 수직인 $BC$, $DC$에서 재면 $AB\\perp DE$가 된다.\n그림에서 $H$는 $AB$의 연장선과 $DE$의 교점이므로 $BH=BA+AH=c+AH$이다.\n방법 2에서 $DE$를 공통 밑변으로 보면 $[DBEA]=[DBE]-[AED]=\\dfrac12DE\\cdot BH-\\dfrac12DE\\cdot AH=\\dfrac12DE(BH-AH)=\\dfrac12c\\cdot c=\\dfrac{c^2}{2}$이다.\n따라서 $(A),(B),(C)$는 각각 $\\dfrac{a^2+b^2}{2}$, SAS, $\\dfrac{c^2}{2}$이므로 정답은 ②이다.",
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q20.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q20.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -542,7 +623,11 @@ window.questionBank = [
     "content": "&lt;서술형 1&gt; 서로 다른 두 개의 주사위를 동시에 던져서 나오는 두 눈의 수를 각각 $x$, $y$라고 하자. $3x+y<11$일 확률을 구하는 과정과 함께 서술하여라. [4점]",
     "answer": "$\\dfrac{11}{36}$",
     "solution": "[키포인트] $x$의 값별로 가능한 $y$의 개수를 빠짐없이 센다.\n$x,y$는 각각 $1$부터 $6$까지이고 $3x+y<11$이다.\n$x=1$이면 $y=1,2,3,4,5,6$의 $6$가지, $x=2$이면 $y=1,2,3,4$의 $4$가지, $x=3$이면 $y=1$의 $1$가지이다. $x\\ge4$이면 가능한 $y$가 없다.\n유리한 경우는 $6+4+1=11$가지이고 전체 경우는 $36$가지이다.\n따라서 구하는 확률은 $\\dfrac{11}{36}$이다.",
-    "choices": []
+    "choices": [],
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -564,7 +649,11 @@ window.questionBank = [
     "answer": "(1) $S_1=18\\pi$, $S_2=\\dfrac{25\\pi}{8}$, $S_3=\\dfrac{169\\pi}{8}$, $S_1+S_2=S_3$; (2) $30\\rm\\,cm^2$",
     "solution": "[키포인트] 지름이 $d$인 반원의 넓이는 $\\dfrac{\\pi d^2}{8}$이고, 피타고라스 정리 때문에 세 반원의 넓이도 같은 합 관계를 갖는다.\n그림에서 $AB=12\\rm\\,cm$, $BC=13\\rm\\,cm$, $\\angle A=90^\\circ$이므로 $AC=5\\rm\\,cm$이다.\n(1) $S_1=\\dfrac{\\pi\\cdot12^2}{8}=18\\pi$, $S_2=\\dfrac{\\pi\\cdot5^2}{8}=\\dfrac{25\\pi}{8}$, $S_3=\\dfrac{\\pi\\cdot13^2}{8}=\\dfrac{169\\pi}{8}$이다. 따라서 $S_1+S_2=S_3$이다.\n(2) 큰 반원의 넓이는 두 작은 반원의 넓이의 합과 같으므로, 공통으로 겹치는 부분을 제거하면 두 어두운 초승달 부분의 넓이의 합은 $\\triangle ABC$의 넓이와 같다.\n$[ABC]=\\dfrac12\\times12\\times5=30\\rm\\,cm^2$이다.\n따라서 어두운 부분의 넓이는 $30\\rm\\,cm^2$이다.",
     "choices": [],
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q22.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q22.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -586,7 +675,11 @@ window.questionBank = [
     "answer": "$6\\rm\\,cm$",
     "solution": "[키포인트] 평행사변형의 대각선이 서로를 이등분한다는 성질로 각 삼각형의 두 중선을 찾는다.\n(1) 두 대각선의 교점을 $O$라 하면 평행사변형의 성질에 의해 $O$는 $AC$와 $BD$의 중점이다. $M$은 $BC$의 중점이므로 $AM$과 $BO$는 $\\triangle ABC$의 두 중선이고 그 교점 $E$는 무게중심이다. 같은 이유로 $N$은 $CD$의 중점이고 $AN$, $DO$는 $\\triangle ACD$의 두 중선이므로 그 교점 $F$는 무게중심이다.\n(2) $BD=18\\rm\\,cm$이므로 $BO=DO=9\\rm\\,cm$이다. 무게중심은 중선을 꼭짓점에서 $2:1$로 나누므로 $BE=DF=6\\rm\\,cm$, 따라서 $EO=OF=3\\rm\\,cm$이다.\n$B-E-O-F-D$ 순서이므로 $EF=EO+OF=3+3=6\\rm\\,cm$이다.\n따라서 구하는 길이는 $6\\rm\\,cm$이다.",
     "choices": [],
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q23.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q23.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -608,6 +701,10 @@ window.questionBank = [
     "answer": "(1) 마름모, (2) $\\overline{OF}=\\dfrac{15}{4}\\rm\\,cm$, 넓이 $\\dfrac{75}{2}\\rm\\,cm^2$",
     "solution": "[키포인트] 좌표를 두어 수직 조건을 식으로 나타내면 $OF$와 마름모의 넓이를 동시에 구할 수 있다.\n$B=(0,0)$, $C=(8,0)$, $D=(8,6)$, $A=(0,6)$으로 두면 대각선 $BD$의 중점은 $O=(4,3)$이다.\n$BD$의 기울기는 $\\dfrac34$이므로 $O$를 지나며 $BD$에 수직인 직선의 기울기는 $-\\dfrac43$이다. $y=0$과 만나는 점은 $F=(\\dfrac{25}{4},0)$이다.\n따라서 $OF=\\sqrt{(\\dfrac94)^2+3^2}=\\dfrac{15}{4}\\rm\\,cm$이다.\n대칭적으로 $E=(\\dfrac74,6)$이고 $EB=BF=FD=DE=\\dfrac{25}{4}$이므로 $EBFD$는 마름모이다.\n또 $BD=\\sqrt{8^2+6^2}=10$, $EF=2OF=\\dfrac{15}{2}$이므로 마름모의 넓이는 $\\dfrac12\\times10\\times\\dfrac{15}{2}=\\dfrac{75}{2}\\rm\\,cm^2$이다.\n따라서 (1) 마름모, (2) $OF=\\dfrac{15}{4}\\rm\\,cm$, 넓이는 $\\dfrac{75}{2}\\rm\\,cm^2$이다.",
     "choices": [],
-    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q24.png"
+    "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q24.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

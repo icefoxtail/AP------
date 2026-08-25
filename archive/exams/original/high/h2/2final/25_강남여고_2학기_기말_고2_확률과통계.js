@@ -42,7 +42,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "1"
+    "sourceDisplayNoLabel": "1",
+    "subUnitKey": "H15-PS-06-PROBABILITY_DISTRIBUTION",
+    "subUnit": "probability distribution",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "2"
+    "sourceDisplayNoLabel": "2",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -97,6 +105,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
     "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
+    "imageSize": "full",
     "imageKind": "crop",
     "content": "3. 확률변수 Z가 표준정규분포를 따를 때, 오른쪽 표준정규분포표를 이용하여 P(-1≤Z≤1)의 값은? (3.5점)",
     "choices": [
@@ -129,7 +138,11 @@ window.questionBank = [
     "wide": false,
     "levelStatus": "default_mid_pending_review",
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "3"
+    "sourceDisplayNoLabel": "3",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -172,7 +185,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "4"
+    "sourceDisplayNoLabel": "4",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -184,6 +201,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 1,
     "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
+    "imageSize": "full",
     "imageKind": "crop",
     "content": "5. 확률변수 X가 정규분포 N(64, 2^2)를 따를 때, 오른쪽 표준정규분포표를 이용하여 P(62≤X≤68)의 값은? (3.8점)",
     "choices": [
@@ -215,7 +233,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "5"
+    "sourceDisplayNoLabel": "5",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -259,7 +281,11 @@ window.questionBank = [
     "wide": false,
     "levelStatus": "default_mid_pending_review",
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "6"
+    "sourceDisplayNoLabel": "6",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -303,7 +329,11 @@ window.questionBank = [
     "wide": false,
     "levelStatus": "default_mid_pending_review",
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "7"
+    "sourceDisplayNoLabel": "7",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -346,7 +376,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "8"
+    "sourceDisplayNoLabel": "8",
+    "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+    "subUnit": "확률변수와 기댓값",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -358,6 +392,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
     "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q09_graph_and_statements.png",
+    "imageSize": "full",
     "imageKind": "crop",
     "content": "9. 학생 수가 서로 같은 세 고등학교 A, B, C의 수학점수를 확률변수 X_A, X_B, X_C라고 할 때, X_A, X_B, X_C는 각각 정규분포 N(m_A, σ_A^2), N(m_B, σ_B^2), N(m_C, σ_C^2)을 따른다. 각각의 확률밀도함수의 그래프가 그림과 같다고 할 때, 옳은 것의 개수는? (4점)",
     "choices": [
@@ -389,7 +424,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "9"
+    "sourceDisplayNoLabel": "9",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -432,7 +471,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "10"
+    "sourceDisplayNoLabel": "10",
+    "subUnitKey": "H15-PS-04-PROBABILITY_DISTRIBUTION",
+    "subUnit": "probability distribution",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -475,7 +518,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "11"
+    "sourceDisplayNoLabel": "11",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -518,7 +565,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "term_default",
-    "sourceDisplayNoLabel": "12"
+    "sourceDisplayNoLabel": "12",
+    "subUnitKey": "H15-PS-06-RANDOM_VARIABLE",
+    "subUnit": "random variable",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -562,7 +613,11 @@ window.questionBank = [
     "wide": false,
     "levelStatus": "default_mid_pending_review",
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "13"
+    "sourceDisplayNoLabel": "13",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -605,7 +660,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "14"
+    "sourceDisplayNoLabel": "14",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -648,7 +707,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "15"
+    "sourceDisplayNoLabel": "15",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -691,7 +754,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "16"
+    "sourceDisplayNoLabel": "16",
+    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+    "subUnit": "statistical estimation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -734,7 +801,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "17"
+    "sourceDisplayNoLabel": "17",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -777,7 +848,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "18"
+    "sourceDisplayNoLabel": "18",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -820,7 +895,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "19"
+    "sourceDisplayNoLabel": "19",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -863,7 +942,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "20"
+    "sourceDisplayNoLabel": "20",
+    "subUnitKey": "H15-PS-06-ESTIMATION_APPLICATION",
+    "subUnit": "추정의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -899,7 +982,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "21"
+    "sourceDisplayNoLabel": "21",
+    "subUnitKey": "H15-PS-06-PROBABILITY_DISTRIBUTION",
+    "subUnit": "probability distribution",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -937,7 +1024,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "22"
+    "sourceDisplayNoLabel": "22",
+    "subUnitKey": "H15-PS-06-RANDOM_VARIABLE",
+    "subUnit": "random variable",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -975,7 +1066,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "23"
+    "sourceDisplayNoLabel": "23",
+    "subUnitKey": "H15-PS-06-ESTIMATION_APPLICATION",
+    "subUnit": "추정의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 24,
@@ -987,6 +1082,7 @@ window.questionBank = [
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 5,
     "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
+    "imageSize": "full",
     "imageKind": "crop",
     "content": "[서술형 4] 정규분포 $N(80,5^2)$를 따르는 확률변수 $X$와 정규분포를 따르는 확률변수 $Y$가 $Y=-3X+a$를 만족시킨다. $P(b\\le X\\le75)=0.1359$, $P(a-240\\le Y\\le b)=0.3413$일 때, 오른쪽 표준정규분포표를 이용하여 상수 $a,b$의 값을 구하시오. (5점)",
     "choices": [],
@@ -1013,6 +1109,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
-    "sourceDisplayNoLabel": "24"
+    "sourceDisplayNoLabel": "24",
+    "subUnitKey": "H15-PS-06-RANDOM_VARIABLE",
+    "subUnit": "random variable",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   }
 ];

@@ -9,8 +9,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p001.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "한 개의 주사위를 90번 던져 6의 약수의 눈이 나오는 횟수를 확률변수 X라고 할 때, 확률변수 X^2의 평균 E(X^2)은? [3.4점]",
     "choices": [
       "1640",
@@ -41,7 +41,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "1"
+    "sourceDisplayNoLabel": "1",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -52,8 +56,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 6,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p001.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "서로 다른 두 개의 동전을 동시에 던지는 시행을 반복할 때, 200번 던져 모두 앞면이 나오는 횟수를 확률변수 X라고 하자. 확률변수 Y=2X+3의 평균을 구하면? [3.4점]",
     "choices": [
       "53",
@@ -84,7 +88,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "2"
+    "sourceDisplayNoLabel": "2",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -95,8 +103,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p001.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "정규분포 N(60, 3^2)을 따르는 모집단에서 크기가 36인 표본을 임의추출할 때, 표본평균 X̄는 정규분포 N(a, b^2)을 따른다. 이때 ab의 값은? (단, b>0) [3.4점]",
     "choices": [
       "30",
@@ -127,7 +135,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "3"
+    "sourceDisplayNoLabel": "3",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -138,9 +150,9 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p001.png",
-    "imageKind": "full_page",
-    "content": "모집단의 확률변수 X의 확률분포를 표로 나타내면 다음과 같다. 이 모집단에서 크기가 4인 표본을 임의추출할 때, 표본평균 X̄의 분산을 구하면? [3.4점]\n\n| X | 1 | 2 | 3 | 합계 |\n| P(X=x) | 1/8 | a | 1/8 | 1 |",
+    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q4.png",
+    "imageKind": "crop",
+    "content": "모집단의 확률변수 X의 확률분포를 표로 나타내면 다음과 같다. 이 모집단에서 크기가 4인 표본을 임의추출할 때, 표본평균 X̄의 분산을 구하면? [3.4점]",
     "choices": [
       "1",
       "1/2",
@@ -170,7 +182,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "4"
+    "sourceDisplayNoLabel": "4",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -181,8 +197,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 1,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p002.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "어느 공장에서 생산된 통조림의 무게는 표준편차가 5g인 정규분포를 따른다고 한다. 이 회사에서 생산된 통조림 100개를 임의추출하여 무게를 재었더니 평균이 170g이었다. 이 공장에서 생산되는 전체 통조림의 평균 무게 m g의 신뢰도 95%의 신뢰구간은? (단, P(|Z|≤1.96)=0.95) [3.4점]",
     "choices": [
       "166.39≤m≤173.61",
@@ -213,7 +229,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "5"
+    "sourceDisplayNoLabel": "5",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -224,8 +244,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p002.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "평균이 m이고 표준편차가 3인 정규분포를 따르는 모집단에서 크기가 81인 표본을 임의추출하여 얻은 표본평균을 이용하여 구한 모평균 m에 대한 신뢰도 99%의 신뢰구간이 2.14≤m≤a이다. a의 값은? (단, Z가 표준정규분포를 따르는 확률변수일 때, P(|Z|≤2.58)=0.99로 계산한다.) [3.6점]",
     "choices": [
       "3.82",
@@ -256,7 +276,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "6"
+    "sourceDisplayNoLabel": "6",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -268,8 +292,9 @@ window.questionBank = [
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
     "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q7.png",
-    "imageKind": "full_page",
-    "content": "어느 학교 학생들의 하루 공부 평균 시간은 평균이 m분, 표준편차가 5분인 정규분포를 따른다고 한다. 이 학교 학생들 중 100명을 임의추출할 때, 공부 시간의 표본평균을 X̄분이라 하자. P(X̄≥160)=0.0228을 만족시키는 m의 값을 오른쪽 표준정규분포표를 이용하여 구하면? [3.6점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.1915 |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |",
+    "imageSize": "full",
+    "imageKind": "crop",
+    "content": "어느 학교 학생들의 하루 공부 평균 시간은 평균이 m분, 표준편차가 5분인 정규분포를 따른다고 한다. 이 학교 학생들 중 100명을 임의추출할 때, 공부 시간의 표본평균을 X̄분이라 하자. P(X̄≥160)=0.0228을 만족시키는 m의 값을 오른쪽 표준정규분포표를 이용하여 구하면? [3.6점]",
     "choices": [
       "150",
       "154",
@@ -299,7 +324,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "7"
+    "sourceDisplayNoLabel": "7",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -311,8 +340,9 @@ window.questionBank = [
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
     "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q8.png",
-    "imageKind": "full_page",
-    "content": "정규분포 N(65, 5^2)을 따르는 모집단에서 크기가 25인 표본을 임의추출할 때, 오른쪽 표준정규분포표를 이용하여 표본평균 X̄가 63 이상 66.5 이하일 확률을 구하면? [3.6점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.19 |\n| 1.0 | 0.34 |\n| 1.5 | 0.43 |\n| 2.0 | 0.48 |",
+    "imageSize": "full",
+    "imageKind": "crop",
+    "content": "정규분포 N(65, 5^2)을 따르는 모집단에서 크기가 25인 표본을 임의추출할 때, 오른쪽 표준정규분포표를 이용하여 표본평균 X̄가 63 이상 66.5 이하일 확률을 구하면? [3.6점]",
     "choices": [
       "0.53",
       "0.68",
@@ -342,7 +372,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "8"
+    "sourceDisplayNoLabel": "8",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -353,8 +387,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "4개의 동전을 동시에 던질 때, 앞면의 개수를 확률변수 X라 하자. 확률변수 Y=aX+b의 평균이 4, 표준편차가 1일 때, 상수 a, b의 값은? (단, a>0) [3.8점]",
     "choices": [
       "a=1, b=-2",
@@ -385,7 +419,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "9"
+    "sourceDisplayNoLabel": "9",
+    "subUnitKey": "H15-PS-STATISTICS_DISTRIBUTION",
+    "subUnit": "확률분포와 자료 분석",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -396,9 +434,9 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
-    "content": "어느 공장에서 생산되는 제품의 무게는 평균 30g, 표준편차 5g인 정규분포를 따른다고 한다. 이 공장에서는 무게가 40g 이상인 제품을 불량품으로 판정한다. 생산되는 제품 중에서 임의로 2500개를 택할 때, 불량품이 64개 이상일 확률은? [3.8점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.19 |\n| 1.0 | 0.34 |\n| 1.5 | 0.43 |\n| 2.0 | 0.48 |",
+    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q10.png",
+    "imageKind": "crop",
+    "content": "어느 공장에서 생산되는 제품의 무게는 평균 30g, 표준편차 5g인 정규분포를 따른다고 한다. 이 공장에서는 무게가 40g 이상인 제품을 불량품으로 판정한다. 생산되는 제품 중에서 임의로 2500개를 택할 때, 불량품이 64개 이상일 확률은? [3.8점]",
     "choices": [
       "0.34",
       "0.16",
@@ -428,7 +466,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "10"
+    "sourceDisplayNoLabel": "10",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -439,8 +481,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "이산확률변수 X가 가지는 값이 0부터 4까지의 정수이고\n\nP(X=x) = |4x-3|/20 (x=0,1,2,3), a (x=4)\n\n일 때, V((1/a)X)의 값은? (단, a는 0이 아닌 상수이다.) [3.8점]",
     "choices": [
       "101",
@@ -471,7 +513,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "11"
+    "sourceDisplayNoLabel": "11",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -482,8 +528,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p003.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "어느 공장에서 생산되는 건전지의 수명은 평균이 300시간, 표준편차가 5시간인 정규분포를 따른다고 한다. 이 공장에서 생산된 건전지 중에서 크기가 100인 표본을 임의추출하여 구한 표본평균을 X̄라고 할 때, P(X̄≥a)=0.98을 만족시키는 상수 a의 값은? [3.8점]\n\n(단, P(0≤Z≤2)=0.48)",
     "choices": [
       "295",
@@ -514,7 +560,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "12"
+    "sourceDisplayNoLabel": "12",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -525,8 +575,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p004.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "이산확률변수 X의 확률질량함수가 P(X=x)=a/((x+1)(x+2)) (x=1, 2, ..., 10)일 때, P(X>3a)의 값을 구하면? (단, a는 상수이다.) [3.9점]",
     "choices": [
       "1/36",
@@ -557,7 +607,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "13"
+    "sourceDisplayNoLabel": "13",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -568,8 +622,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p004.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "평균이 m, 표준편차가 σ인 정규분포를 따르는 모집단에서 임의추출한 크기가 n인 표본의 표본평균을 X̄라 하자. 이 모집단의 확률변수를 X라 할 때, 두 확률변수 X, X̄가 다음 조건을 만족시킨다. m+2n의 값은? [4.0점]\n\n(가) P(X≥12)+P(X̄≥12)=1\n(나) P(X≥16)+P(X̄≥10)=1",
     "choices": [
       "16",
@@ -600,7 +654,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "14"
+    "sourceDisplayNoLabel": "14",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -611,8 +669,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p004.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "0≤X≤6에서 정의된 연속확률변수 X의 확률밀도함수 f(x)가 다음과 같다.\n\nf(x)=a(3-x) (0≤x≤3), f(x)=b/3(x-3) (3≤x≤6)\n\nP(0≤X≤3)=3b일 때, a+b의 값을 구하면? [4.0점]",
     "choices": [
       "4/27",
@@ -643,7 +701,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "15"
+    "sourceDisplayNoLabel": "15",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -654,8 +716,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 3,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p004.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "표준편차가 σ인 모집단에서 n개의 표본을 임의추출하여 모평균을 추정할 때, 다음 중 모평균의 신뢰구간은 a≤m≤b이다. 다음 중 b-a의 값이 가장 큰 것은? (단, 신뢰도는 모두 일정하다.) [4.0점]",
     "choices": [
       "n=36, σ=2",
@@ -686,7 +748,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "16"
+    "sourceDisplayNoLabel": "16",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -697,8 +763,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 4,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p005.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "어느 회사에서 생산하는 연필 1개의 무게는 표준편차 8인 정규분포를 따른다고 한다. 이 회사에서 판매하는 연필 중 n개를 임의로 추출하여 얻은 표본평균을 이용하여, 이 회사에서 판매하는 연필 1개의 무게의 평균 m에 대한 신뢰도 95%의 신뢰구간을 구하면 a≤m≤b이다. b-a≤4를 만족시키는 자연수 n의 최솟값은? (단, 무게의 단위는 g이고, Z가 표준정규분포를 따르는 변수일 때, P(|Z|≤1.96)=0.95로 계산한다.) [4.1점]",
     "choices": [
       "62",
@@ -729,7 +795,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "17"
+    "sourceDisplayNoLabel": "17",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -741,8 +811,9 @@ window.questionBank = [
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 4,
     "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q18.png",
-    "imageKind": "full_page",
-    "content": "어느 빵집에서 만든 소금빵 한 개의 무게는 평균이 200g, 표준편차가 20g인 정규분포를 따른다고 한다. 이 빵집에서 만드는 소금빵 16개씩 임의추출하여 한 상자에 포장하여 판매한다고 한다. 이 빵집에서 포장된 상자 중에서 임의로 두 개의 상자 A, B를 택했을 때, 두 개의 상자 중 한 개만 그 내용량이 3.12kg 이상 3.36kg 이하일 확률을 오른쪽 표준정규분포표를 이용하여 구하면? [4.1점]\n\n| z | P(0≤Z≤z) |\n| 0.5 | 0.19 |\n| 1.0 | 0.34 |\n| 1.5 | 0.43 |\n| 2.0 | 0.48 |",
+    "imageSize": "full",
+    "imageKind": "crop",
+    "content": "어느 빵집에서 만든 소금빵 한 개의 무게는 평균이 200g, 표준편차가 20g인 정규분포를 따른다고 한다. 이 빵집에서 만드는 소금빵 16개씩 임의추출하여 한 상자에 포장하여 판매한다고 한다. 이 빵집에서 포장된 상자 중에서 임의로 두 개의 상자 A, B를 택했을 때, 두 개의 상자 중 한 개만 그 내용량이 3.12kg 이상 3.36kg 이하일 확률을 오른쪽 표준정규분포표를 이용하여 구하면? [4.1점]",
     "choices": [
       "0.1946",
       "0.2952",
@@ -772,7 +843,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "18"
+    "sourceDisplayNoLabel": "18",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -784,8 +859,8 @@ window.questionBank = [
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 4,
     "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q19.png",
-    "imageKind": "full_page",
-    "content": "정규분포 N(20, 4^2)을 따르는 모집단에서 크기가 4인 표본을 임의추출하여 구한 표본평균을 X̄, 정규분포 N(100, σ^2)을 따르는 모집단에서의 크기가 16인 표본을 임의추출하여 구한 표본평균을 Ȳ라고 하자. P(X̄≤23)+P(Ȳ≤94)=1일 때, P(Ȳ≤110)을 오른쪽 표준정규분포표를 이용하여 구한 것은? [4.2점]\n\n| z | P(0≤Z≤z) |\n| 1.0 | 0.3413 |\n| 1.5 | 0.4332 |\n| 2.0 | 0.4772 |\n| 2.5 | 0.4938 |",
+    "imageKind": "crop",
+    "content": "정규분포 N(20, 4^2)을 따르는 모집단에서 크기가 4인 표본을 임의추출하여 구한 표본평균을 X̄, 정규분포 N(100, σ^2)을 따르는 모집단에서의 크기가 16인 표본을 임의추출하여 구한 표본평균을 Ȳ라고 하자. P(X̄≤23)+P(Ȳ≤94)=1일 때, P(Ȳ≤110)을 오른쪽 표준정규분포표를 이용하여 구한 것은? [4.2점]",
     "choices": [
       "0.9938",
       "0.9772",
@@ -815,7 +890,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "19"
+    "sourceDisplayNoLabel": "19",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -826,8 +905,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 4,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/page_p005.png",
-    "imageKind": "full_page",
+    "image": "",
+    "imageKind": "none",
     "content": "평균이 m, 표준편차가 σ인 정규분포를 따르는 어느 모집단에서 크기가 10인 표본을 임의추출하였더니 다음과 같았다.\n\n5, -3, 6, -1, 7, 6, -1, 8, 5, -2\n\n위 표본과 모집단의 표준편차 σ를 이용하여 모평균 m에 대한 신뢰도 99%의 신뢰구간을 구하면 0.42≤m≤5.58이다. 이 모집단의 확률변수 X에 대하여 V(X)의 값을 구하면? (단, Z가 표준정규분포를 따르는 확률변수일 때, P(|Z|≤2.58)=0.99로 계산한다.) [4.3점]",
     "choices": [
       "10/9",
@@ -858,7 +937,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "20"
+    "sourceDisplayNoLabel": "20",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -869,8 +952,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 5,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q21_page5.png",
-    "imageKind": "crop",
+    "image": "",
+    "imageKind": "none",
     "content": "두 연속확률변수 X와 Y가 갖는 값의 범위는 -4≤X≤4, -3≤Y≤9이고, X와 Y의 확률밀도함수는 각각 f(x), g(x)이다. 두 함수 f(x), g(x)가 다음 조건을 만족시킬 때, 16P(-3≤X≤3)의 값을 구하면? (단, a, b는 양의 상수이다.) [4.4점]\n\n(가) 0≤x≤4일 때 f(x)=ax+b이고, -4≤x≤4인 모든 실수 x에 대하여 f(-x)=f(x)를 만족시킨다.\n(나) -3≤x≤3일 때 g(x)=ax+b이고, 0≤x≤6인 모든 실수 x에 대하여 g(3+x)=g(3-x)를 만족시킨다.",
     "choices": [
       "11",
@@ -901,7 +984,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "21"
+    "sourceDisplayNoLabel": "21",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -913,7 +1000,8 @@ window.questionBank = [
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 6,
     "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q22.png",
-    "imageKind": "full_page",
+    "imageSize": "full",
+    "imageKind": "crop",
     "content": "<서술형 1>\n지역 A에 살고 있는 성인들의 1인 하루 물 사용량을 확률변수 X, 지역 B에 살고 있는 성인들의 1인 하루 물 사용량을 확률변수 Y라 하자. 두 확률변수 X, Y는 정규분포를 따르고 다음 조건을 만족시킨다.\n\n(가) 두 확률변수 X, Y의 평균은 각각 220과 240이다.\n(나) 확률변수 Y의 표준편차는 확률변수 X의 표준편차의 1.5배이다.\n\n지역 A에 살고 있는 성인 중 임의추출한 n명의 1인 하루 물 사용량의 표본평균을 X̄, 지역 B에 살고 있는 성인 중 임의추출한 9n명의 1인 하루 물 사용량의 표본평균을 Ȳ라 하자. P(X̄≤215)=0.1587일 때, P(Ȳ≥237.5)의 값을 아래 표준정규분포표를 이용하여 풀이와 함께 자세히 서술하시오. (단, 물 사용량의 단위는 L이다.) [부분점수 있음, 6점]",
     "choices": [],
     "answer": "0.8413",
@@ -940,7 +1028,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "22"
+    "sourceDisplayNoLabel": "22",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -952,7 +1044,8 @@ window.questionBank = [
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 6,
     "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23.png",
-    "imageKind": "full_page",
+    "imageSize": "full",
+    "imageKind": "crop",
     "content": "<서술형 2>\n두 집합 A={a,b,c}, B={a,b}에 대하여 다음 시행을 한다.\n\n집합 A의 모든 부분집합 8개 중에서 임의로 한 개를 선택하고, 집합 B의 모든 부분집합 4개 중에서 임의로 한 개를 선택한다. 선택한 두 집합의 교집합의 원소의 개수를 기록한다.\n\n이 시행을 8640번 반복하여 기록한 수가 1인 횟수가 3330 이상일 확률을 아래 표준정규분포표를 이용하여 구한 값이 k일 때, 1000×k의 값을 풀이와 함께 자세히 서술하시오. [부분점수 있음, 7점]",
     "choices": [],
     "answer": "23",
@@ -979,7 +1072,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "23"
+    "sourceDisplayNoLabel": "23",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 24,
@@ -990,8 +1087,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_순천고2_확통_2기말.pdf",
     "sourcePage": 6,
-    "image": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q24_page6.png",
-    "imageKind": "crop",
+    "image": "",
+    "imageKind": "none",
     "content": "<서술형 3>\n여섯 개의 수 3, 3, 3, 4, 4, 6이 각 면에 하나씩 적혀 있는 정육면체 모양의 상자를 던져 바닥에 닿은 면에 적혀 있는 수를 확인한다. 이와 같은 시행을 3회 반복할 때, 바닥에 닿은 면에 적혀 있는 수 중에서 최댓값과 최솟값의 차를 확률변수 X라 하자. 확률변수 X의 분산 V(X)를 풀이와 함께 자세히 서술하시오. (단, 바닥에 닿은 면에 적혀 있는 수가 모두 같으면 X=0이다.) [부분점수 있음, 7점]",
     "choices": [],
     "answer": "179/144",
@@ -1018,6 +1115,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "levelStatus": "default_mid_pending_review",
-    "sourceDisplayNoLabel": "24"
+    "sourceDisplayNoLabel": "24",
+    "subUnitKey": "H15-PS-STATISTICS_BASIC",
+    "subUnit": "통계 자료의 정리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   }
 ];

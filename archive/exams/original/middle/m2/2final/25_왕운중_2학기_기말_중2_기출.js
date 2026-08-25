@@ -26,7 +26,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 닮은 삼각형의 대응변의 길이의 비는 모두 같다.\n$BC:EF=15:9=5:3$이므로 $AB:DE=5:3$이다.\n$DE=6\\mathrm{cm}$이므로 $AB=6\\times\\dfrac53=10\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q1.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q1.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -53,7 +57,12 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 닮은 도형에서 넓이의 비는 닮음비의 제곱이다.\nA0에서 A4까지 네 번 반으로 자르므로 넓이는 $\\left(\\dfrac12\\right)^4=\\dfrac1{16}$배가 된다.\n따라서 닮음비는 $\\sqrt{1:16}=1:4$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q2.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q2.svg",
+    "imageSize": "tall",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -80,7 +89,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 각이 각각 같음을 이용하여 두 삼각형의 닮음을 찾는다.\n점 $B,D,A$가 한 직선 위에 있으므로 $\\angle ABC=\\angle CBD$이고, 조건에서 $\\angle A=\\angle BCD$이다. 따라서 $\\triangle ABC\\sim\\triangle CBD$이다.\n대응변 $AC:CD=12:6=2:1$이므로 $AB:CB=2:1$이다. $CB=8\\mathrm{cm}$이므로 $AB=16\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q3.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q3.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -107,7 +120,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 태양광선이 평행하므로 높이와 그림자가 만드는 직각삼각형들은 서로 닮는다.\n피라미드의 꼭짓점은 정사각형 밑면의 중심 위에 있으므로 중심에서 그림자 방향의 밑면 끝까지는 $220\\div2=110\\mathrm{m}$이다. 밑면 밖 그림자 $70\\mathrm{m}$를 더하면 대응하는 수평 길이는 $180\\mathrm{m}$이다.\n따라서 $49:60=h:180$이고, $h=180\\times\\dfrac{49}{60}=147$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q4.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q4.png",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -134,7 +151,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 세 평행선이 두 직선과 만나서 생기는 대응 선분의 길이의 비는 같다.\n왼쪽 직선에서 $l$과 $m$ 사이, $m$과 $n$ 사이의 길이의 비는 $4:12=1:3$이다.\n따라서 오른쪽 직선에서도 $6:x=1:3$이므로 $x=18$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q5.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q5.png",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -161,7 +182,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n$D$는 $AB$의 중점이므로 $BD=\\dfrac{AB}{2}=5\\mathrm{cm}$이다. 따라서 $y=5$이다.\n또 $CG:GD=2:1$이고 $CG=10\\mathrm{cm}$이므로 $GD=5\\mathrm{cm}$, 따라서 $CD=15\\mathrm{cm}$이다. 그림에서 $x=CD$이므로 $x=15$이다.\n따라서 $x+y=15+5=20$이고 정답은 ⑤이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q6.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q6.png",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -188,7 +213,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 직각삼각형에서 빗변의 제곱은 두 직각변의 제곱의 합과 같다.\n$BC=17\\mathrm{cm}$가 빗변이고 $AB=15\\mathrm{cm}$이므로 $AC^2=17^2-15^2=289-225=64$이다.\n따라서 $AC=8\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q7.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q7.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -215,7 +244,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 합동에서 대응변의 길이를 구한 뒤, 직각좌표 관계로 $CD$의 제곱을 구한다.\n$\\triangle AED\\equiv\\triangle BCE$이므로 $AE=BC=15$, $BE=AD=8$이다. 따라서 $AB=AE+EB=23$이다.\n$D$와 $C$의 가로 방향 거리는 $23$, 세로 방향 높이의 차는 $15-8=7$이므로 $CD^2=23^2+7^2=578$이다.\n$CD$를 지름으로 하는 반원의 넓이는 $\\dfrac12\\pi\\left(\\dfrac{CD}{2}\\right)^2=\\dfrac{CD^2}{8}\\pi=\\dfrac{578}{8}\\pi=\\dfrac{289}{4}\\pi$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q8.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q8.png",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -242,7 +275,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 세 변의 중점을 이은 선분의 평행 관계와 길이를 이용한다.\n$E,F$는 각각 $BC,CA$의 중점이므로 $EF\\parallel AB$이어서 ㉠은 옳다.\n중점연결정리에 의해 $AD=EF=\\dfrac12AB$, $AF=DE=\\dfrac12AC$, $DF=\\dfrac12BC$이므로 $\\triangle ADF$와 $\\triangle EFD$는 SSS 합동이다.\n또 $DB=FE=\\dfrac12AB$, $BE=EC=\\dfrac12BC$, $DE=FC=\\dfrac12AC$이므로 $\\triangle DBE\\equiv\\triangle FEC$이다.\n따라서 ㉠, ㉡, ㉢이 모두 옳으므로 정답은 ⑤이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q9.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q9.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -264,7 +302,12 @@ window.questionBank = [
     "choices": [],
     "answer": "⑤",
     "solution": "[키포인트] 평행선에서 얻는 선분비의 성질의 역은 항상 성립하지 않으며, 직사각형은 가로와 세로의 비를 비교하여 닮음을 판단한다.\n선분의 길이의 비가 같다는 사실만으로 세 직선이 반드시 평행하다고 할 수 없으므로 A는 “평행한 것은 아닙니다.”이다.\n바깥 직사각형은 $15:12=5:4$이고, 테두리 폭이 사방에서 $2\\mathrm{cm}$이므로 안쪽 직사각형은 $11\\mathrm{cm}\\times8\\mathrm{cm}$이다. $11:8\\ne5:4$이므로 두 직사각형은 닮지 않는다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q10.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q10.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -291,7 +334,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 중점연결선과 무게중심이 중선을 나누는 위치를 넓이비와 함께 이용한다.\n$H$는 중점연결선 $FE$와 중선 $AD$의 교점이므로 $AH=\\dfrac12AD$이다. 무게중심은 $AG=\\dfrac23AD$이므로 $HG=\\left(\\dfrac23-\\dfrac12\\right)AD=\\dfrac16AD$이다. 따라서 $AH:HG=3:1$이어서 ㄱ은 옳다.\n$AIJ\\sim ABC$의 닮음비는 $AG:AD=2:3$이므로 $[AIJ]:[ABC]=4:9$이다. 따라서 $[IBCJ]=\\dfrac59[ABC]$이고, $[AFE]=\\dfrac14[ABC]$이므로 $[IBCJ]:[AFE]=\\dfrac59:\\dfrac14=\\dfrac{20}{9}$이다. ㉡도 옳다.\n$FE=\\dfrac12BC$이고 $G$와 $FE$ 사이의 높이는 전체 높이의 $\\dfrac16$이므로 $[FGE]=\\dfrac1{12}[ABC]$. 전체 넓이가 $35$이면 $[FGE]=\\dfrac{35}{12}$이므로 ㉢은 옳지 않다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q11.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q11.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -318,7 +366,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 막대의 길이로부터 두 닮은 삼각형의 대응변의 비를 구한다.\n그림의 막대에서 $OA=20$, $AB=50$이므로 $OB=70$이다. 또 $BC=20$, $CE=50$이므로 $BE=70$이다. 연결 구조에서 $AD=20$이고 $AD\\parallel BE$이다.\n따라서 $\\triangle OAD\\sim\\triangle OBE$이고 닮음비는 $OA:OB=20:70=2:7$이다. 이에 따라 점 $D$와 점 $E$가 그리는 도형의 닮음비도 $2:7$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q12.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q12.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -342,7 +395,11 @@ window.questionBank = [
       "1"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주사위의 눈 중 조건을 만족하는 값을 직접 센다.\n5보다 작은 눈은 $1,2,3,4$의 네 가지이다.\n따라서 경우의 수는 $4$이고 정답은 ②이다."
+    "solution": "[키포인트] 주사위의 눈 중 조건을 만족하는 값을 직접 센다.\n5보다 작은 눈은 $1,2,3,4$의 네 가지이다.\n따라서 경우의 수는 $4$이고 정답은 ②이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -367,7 +424,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 상의 한 벌을 고르는 방법과 하의 한 벌을 고르는 방법을 곱한다.\n상의는 $3$가지, 하의는 $2$가지이므로 곱의 법칙에 따라 $3\\times2=6$가지이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q14.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q14.png",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -391,7 +452,11 @@ window.questionBank = [
       "30개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 십의 자리와 일의 자리에 서로 다른 두 숫자를 순서 있게 배치한다.\n십의 자리는 $5$가지 중 하나를 고르고, 일의 자리는 남은 $4$가지 중 하나를 고른다.\n따라서 만들 수 있는 두 자리 자연수는 $5\\times4=20$개이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 십의 자리와 일의 자리에 서로 다른 두 숫자를 순서 있게 배치한다.\n십의 자리는 $5$가지 중 하나를 고르고, 일의 자리는 남은 $4$가지 중 하나를 고른다.\n따라서 만들 수 있는 두 자리 자연수는 $5\\times4=20$개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -417,7 +482,11 @@ window.questionBank = [
       "$0\\lt p\\lt1$"
     ],
     "answer": "②, ⑤",
-    "solution": "[키포인트] 확률의 범위와 여사건의 확률을 확인한다.\n사건 $A$가 일어나지 않을 확률은 $1-p$이므로 ②의 $p-1$은 옳지 않다. 절대로 일어나지 않는 사건의 확률은 $0$, 반드시 일어나는 사건의 확률은 $1$이므로 ③, ④는 옳다.\n확률은 $0\\le p\\le1$이므로 항상 $0\\lt p\\lt1$인 것은 아니다. 따라서 ⑤도 옳지 않다.\n따라서 정답은 ②, ⑤이다."
+    "solution": "[키포인트] 확률의 범위와 여사건의 확률을 확인한다.\n사건 $A$가 일어나지 않을 확률은 $1-p$이므로 ②의 $p-1$은 옳지 않다. 절대로 일어나지 않는 사건의 확률은 $0$, 반드시 일어나는 사건의 확률은 $1$이므로 ③, ④는 옳다.\n확률은 $0\\le p\\le1$이므로 항상 $0\\lt p\\lt1$인 것은 아니다. 따라서 ⑤도 옳지 않다.\n따라서 정답은 ②, ⑤이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -445,7 +514,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 네 카드 각각을 추가했을 때 닮음조건이 완성되는지 확인한다.\n기본 조건은 $EF:BC=6:12=1:2$이고 $\\angle E=\\angle B$이다.\n$\\angle A=\\angle D$ 카드를 뽑으면 두 각이 각각 같으므로 AA 닮음이 성립한다. $AB=14\\mathrm{cm}$ 카드를 뽑으면 $DE:AB=7:14=1:2$, $EF:BC=1:2$이고 그 사이의 각 $E,B$가 같으므로 SAS 닮음이 성립한다.\n반면 $AC=14\\mathrm{cm}$ 또는 $DF=7\\mathrm{cm}$만 추가해서는 닮음조건이 완성되지 않는다. 따라서 유리한 카드는 $2$장이다.\n확률은 $\\dfrac24=\\dfrac12$이므로 정답은 ③이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q17.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q17.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -469,7 +543,11 @@ window.questionBank = [
       "$\\dfrac25$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 4의 배수와 7의 배수를 더하고, 두 집합에 중복되는 28의 배수를 한 번 뺀다.\n1부터 100까지 4의 배수는 $25$개, 7의 배수는 $14$개이다. 두 조건을 모두 만족하는 28의 배수는 $3$개이다.\n따라서 유리한 경우는 $25+14-3=36$개이고 확률은 $\\dfrac{36}{100}=\\dfrac9{25}$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 4의 배수와 7의 배수를 더하고, 두 집합에 중복되는 28의 배수를 한 번 뺀다.\n1부터 100까지 4의 배수는 $25$개, 7의 배수는 $14$개이다. 두 조건을 모두 만족하는 28의 배수는 $3$개이다.\n따라서 유리한 경우는 $25+14-3=36$개이고 확률은 $\\dfrac{36}{100}=\\dfrac9{25}$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -493,7 +571,11 @@ window.questionBank = [
       "$\\dfrac13$"
     ],
     "answer": "①",
-    "solution": "[키포인트] “적어도 한 명 성공”의 여사건은 “두 명 모두 실패”이다.\n현성이가 실패할 확률은 $\\dfrac35$, 진표가 실패할 확률은 $1-x$이다.\n$1-\\dfrac35(1-x)=\\dfrac45$이므로 $\\dfrac35(1-x)=\\dfrac15$이다. 따라서 $1-x=\\dfrac13$, $x=\\dfrac23$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] “적어도 한 명 성공”의 여사건은 “두 명 모두 실패”이다.\n현성이가 실패할 확률은 $\\dfrac35$, 진표가 실패할 확률은 $1-x$이다.\n$1-\\dfrac35(1-x)=\\dfrac45$이므로 $\\dfrac35(1-x)=\\dfrac15$이다. 따라서 $1-x=\\dfrac13$, $x=\\dfrac23$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -518,7 +600,12 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 윤태의 말이 시작으로 가려면 성준의 말이 윤태의 말이 있는 칸에 도착하여 잡아야 한다.\n그림에서 성준의 말에서 윤태의 말까지는 왼쪽으로 $1$칸, 위로 $1$칸 이동해야 한다. 한 번의 주사위에서 왼쪽 1칸은 눈 $3$, 위쪽 1칸은 눈 $1$일 때이다.\n두 번 던지는 순서를 고려하면 가능한 경우는 $(1,3)$, $(3,1)$의 두 가지이고 전체 경우는 $6\\times6=36$가지이다.\n따라서 확률은 $\\dfrac2{36}=\\dfrac1{18}$이므로 정답은 ④이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q20.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q20.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -541,7 +628,12 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{60}{13}$",
     "solution": "[키포인트] 좌표축과의 절편으로 직각삼각형의 두 변을 구하고, 넓이를 두 방법으로 나타내어 높이 $OC$를 구한다.\n$x$축 위에서는 $y=0$이므로 $12x-60=0$에서 $x=5$이다. 따라서 $OA=5$이다. $y$축 위에서는 $x=0$이므로 $5y-60=0$에서 $y=12$이다. 따라서 $OB=12$이다.\n피타고라스 정리에 의해 $AB=\\sqrt{5^2+12^2}=13$이다.\n$OC\\perp AB$이므로 $\\triangle OAB$의 넓이를 두 방법으로 나타내면 $\\dfrac12\\cdot5\\cdot12=\\dfrac12\\cdot13\\cdot OC$이다. 따라서 $OC=\\dfrac{60}{13}$이다.\n따라서 구하는 길이는 $\\dfrac{60}{13}$이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q21.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q21.png",
+    "imageSize": "tall",
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -563,7 +655,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac16$",
     "solution": "[키포인트] 정육각형에서는 $6$칸 이동하면 같은 꼭짓점으로 돌아오므로, $A$에서 $E$에 도착하는 이동 칸 수를 주사위 눈의 합으로 찾는다.\n$A$에서 시계 반대 방향으로 $E$까지는 $4$칸이므로 두 눈의 합이 $4$이면 된다. 또한 $6$칸을 한 바퀴 더 이동한 합 $10$도 같은 꼭짓점 $E$에 도착한다.\n합이 $4$인 순서쌍은 $(1,3),(2,2),(3,1)$이고, 합이 $10$인 순서쌍은 $(4,6),(5,5),(6,4)$이다. 따라서 유리한 경우는 $6$가지이다.\n전체 경우는 $36$가지이므로 확률은 $\\dfrac6{36}=\\dfrac16$이다.\n따라서 구하는 확률은 $\\dfrac16$이다.",
-    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q22.png"
+    "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q22.png",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -583,6 +679,10 @@ window.questionBank = [
     "content": "[서술형3] 주머니 A에는 파란 공 2개, 빨간 공 3개가 들어 있고, 주머니 B에는 파란 공 3개, 빨간 공 2개가 들어 있다. 주머니 A와 주머니 B에서 공을 각각 한 개씩 임의로 꺼낼 때, 두 공이 모두 빨강 공일 확률을 구하시오.(6점)\n(주머니 A에서 빨강 공을 뽑을 확률 2점, 주머니 B에서 빨강 공을 뽑을 확률 2점, 두 공이 모두 빨강 공일 확률 2점)",
     "choices": [],
     "answer": "$\\dfrac6{25}$",
-    "solution": "[키포인트] 두 주머니에서 각각 공을 한 개씩 뽑을 때 전체 경우의 수와 두 공이 모두 빨간 공인 경우의 수를 센다.\n주머니 A의 공은 모두 $5$개이고 주머니 B의 공도 모두 $5$개이므로, 두 주머니에서 공을 하나씩 뽑는 전체 경우의 수는 $5\\times5=25$가지이다.\n주머니 A의 빨간 공은 $3$개, 주머니 B의 빨간 공은 $2$개이므로 두 공이 모두 빨간 공인 경우는 $3\\times2=6$가지이다.\n따라서 구하는 확률은 $\\dfrac6{25}$이다."
+    "solution": "[키포인트] 두 주머니에서 각각 공을 한 개씩 뽑을 때 전체 경우의 수와 두 공이 모두 빨간 공인 경우의 수를 센다.\n주머니 A의 공은 모두 $5$개이고 주머니 B의 공도 모두 $5$개이므로, 두 주머니에서 공을 하나씩 뽑는 전체 경우의 수는 $5\\times5=25$가지이다.\n주머니 A의 빨간 공은 $3$개, 주머니 B의 빨간 공은 $2$개이므로 두 공이 모두 빨간 공인 경우는 $3\\times2=6$가지이다.\n따라서 구하는 확률은 $\\dfrac6{25}$이다.",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

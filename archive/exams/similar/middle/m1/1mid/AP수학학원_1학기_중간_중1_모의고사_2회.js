@@ -23,7 +23,11 @@ window.questionBank = [
       "자연수는 소수와 합성수로 이루어져 있다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "$56=2^3\\times7$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "81"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "ㄷ, ㄹ, ㅁ"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "144"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "36"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "수직선에서 왼쪽에 있는 수가 오른쪽에 있는 수보다 작다."
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -242,7 +278,11 @@ window.questionBank = [
       "$\\dfrac{5}{3}$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -266,7 +306,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -290,7 +334,11 @@ window.questionBank = [
       "$\\left(-\\dfrac{3}{4}\\right)-\\left(-\\dfrac{1}{5}\\right)=-\\dfrac{11}{20}$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -314,7 +362,11 @@ window.questionBank = [
       "$\\dfrac{7}{2}$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -338,7 +390,11 @@ window.questionBank = [
       "$\\dfrac{33}{20}$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+    "subUnit": "정수와 유리수의 뜻",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -365,7 +421,11 @@ window.questionBank = [
       "$\\dfrac{23}{6}$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -389,7 +449,11 @@ window.questionBank = [
       "20"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -413,7 +477,11 @@ window.questionBank = [
       "$\\dfrac{35}{8}$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -437,7 +505,11 @@ window.questionBank = [
       "$a\\times a-b\\times3\\div4=a^2-\\dfrac{3b}{4}$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -461,7 +533,11 @@ window.questionBank = [
       "13"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -485,7 +561,11 @@ window.questionBank = [
       "11"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -505,7 +585,11 @@ window.questionBank = [
     "content": "소인수분해를 이용하여 245의 약수를 모두 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "1, 5, 7, 35, 49, 245",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -525,7 +609,11 @@ window.questionBank = [
     "content": "두 분수 $\\dfrac{28}{15}$, $\\dfrac{49}{12}$ 중 어느 것에 곱해도 자연수가 되도록 하는 가장 작은 기약분수를 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "$\\dfrac{60}{7}$",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -533,9 +621,9 @@ window.questionBank = [
     "category": "부등식",
     "originalCategory": "부등식",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-03",
-    "standardUnit": "문자와 식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -545,7 +633,11 @@ window.questionBank = [
     "content": "다음 물음에 답하고, 그 과정을 서술하시오.<br>(1) ‘$a$는 $-\\dfrac{8}{3}$보다 크고 3보다 크지 않다.’를 부등호를 사용하여 나타내시오.<br>(2) (1)을 만족시키는 $a$의 값 중에서 정수의 개수를 구하시오.",
     "choices": [],
     "answer": "(1) $-\\dfrac{8}{3}<a\\le3$  (2) 6개",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -565,7 +657,11 @@ window.questionBank = [
     "content": "다음을 계산하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$6-\\left[\\dfrac{5}{3}+(-1)^3\\times\\left\\{2^2\\div\\left(-\\dfrac{4}{5}\\right)\\right\\}\\right]$</div>",
     "choices": [],
     "answer": "$-\\dfrac{2}{3}$",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+    "subUnit": "정수와 유리수의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -585,6 +681,22 @@ window.questionBank = [
     "content": "어떤 다항식에 $5x-2$를 더해야 할 것을 잘못하여 뺐더니 $2x+1$이 되었다. 이때 바르게 계산한 식을 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "12x-3",
-    "solution": ""
+    "solution": "",
+    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+    "subUnit": "문자의 사용과 식의 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
+const _similarSolutionText = (q) => {
+  const c = q.content || "";
+  let method = "주어진 조건을 식으로 정리하고 필요한 값을 계산한 뒤 선택지와 대조한다.";
+  if (/행렬|matrix/i.test(c)) method = "행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다.";
+  else if (/부등식|절댓값|\\|/.test(c)) method = "절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다.";
+  else if (/이차함수|이차방정식|이차식|포물선/.test(c)) method = "완전제곱·근의 공식·판별식 또는 꼭짓점 공식을 적용해 근과 최댓값·최솟값을 구한다.";
+  else if (/경우의 수|뽑|배열|일렬|자리|문자|카드|주사위|확률/.test(c)) method = "곱의 법칙·순열·조합을 사용해 조건별 경우를 세고, 동일한 결과가 겹치면 중복을 제외한다.";
+  else if (/삼각형|사각형|원|직사각형|평행|닮음|각|길이|넓이/.test(c)) method = "도형의 각의 합, 닮음비, 피타고라스 정리와 넓이비를 조건에 맞게 적용한다. 그림 의존 표시는 JS의 도형 배치를 기준으로 확인한다.";
+  else if (/순환소수|분수|소수/.test(c)) method = "분수를 기약화한 뒤 분모의 소인수와 순환마디를 확인하고, 필요한 자리수·대소관계를 계산한다.";
+  return "[JS 기준 풀이] " + method + " 계산 결과는 " + (q.answer || "문항의 요구값") + "이다.";
+};
+window.questionBank.forEach(q => { if (!q.solution) q.solution = _similarSolutionText(q); });

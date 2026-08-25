@@ -23,7 +23,11 @@ window.questionBank = [
       "60"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 음식 종류에서 하나씩 고르는 선택은 서로 독립이므로 곱의 법칙을 사용한다.\n조건 정리: 파스타는 5가지, 샐러드는 4가지, 아이스크림은 3가지 중 하나를 고른다.\n풀이 방향: 파스타 하나를 고른 뒤 가능한 샐러드와 아이스크림 선택 수를 차례로 곱한다.\n정석 풀이: 파스타를 고르는 방법은 5가지이고, 각각에 대하여 샐러드는 4가지, 아이스크림은 3가지이다. 따라서 전체 경우의 수는 $5\\times4\\times3=60$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 각 음식 종류에서 하나씩 고르는 선택은 서로 독립이므로 곱의 법칙을 사용한다.\n조건 정리: 파스타는 5가지, 샐러드는 4가지, 아이스크림은 3가지 중 하나를 고른다.\n풀이 방향: 파스타 하나를 고른 뒤 가능한 샐러드와 아이스크림 선택 수를 차례로 곱한다.\n정석 풀이: 파스타를 고르는 방법은 5가지이고, 각각에 대하여 샐러드는 4가지, 아이스크림은 3가지이다. 따라서 전체 경우의 수는 $5\\times4\\times3=60$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C-07-CORE",
+    "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "140"
     ],
     "answer": "①",
-    "solution": "[키포인트] 조합의 계산식을 이용하여 약분한다.\n조건 정리: 서로 다른 7개 중 3개를 순서와 관계없이 고르는 수를 구한다.\n풀이 방향: ${}_{7}C_{3}=\\dfrac{7!}{4!3!}$에서 공통으로 포함된 $4!$을 약분한다.\n정석 풀이: ${}_{7}C_{3}=\\dfrac{7\\times6\\times5\\times4!}{4!\\times3\\times2\\times1}=\\dfrac{7\\times6\\times5}{3\\times2\\times1}=35$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 조합의 계산식을 이용하여 약분한다.\n조건 정리: 서로 다른 7개 중 3개를 순서와 관계없이 고르는 수를 구한다.\n풀이 방향: ${}_{7}C_{3}=\\dfrac{7!}{4!3!}$에서 공통으로 포함된 $4!$을 약분한다.\n정석 풀이: ${}_{7}C_{3}=\\dfrac{7\\times6\\times5\\times4!}{4!\\times3\\times2\\times1}=\\dfrac{7\\times6\\times5}{3\\times2\\times1}=35$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C-08-COMBINATION",
+    "subUnit": "combination",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "[키포인트] 자연수는 $1$부터 시작하므로 한 변수의 값을 정해 가능한 다른 변수의 값을 센다.\n조건 정리: $x\\ge1$, $y\\ge1$, $x+y\\le3$이다.\n풀이 방향: $x$의 가능한 값을 작은 수부터 대입한다.\n정석 풀이: $x=1$이면 $y=1,2$이고, $x=2$이면 $y=1$이다. $x\\ge3$이면 자연수 $y$에 대하여 $x+y\\le3$을 만족할 수 없다. 따라서 순서쌍은 $(1,1),(1,2),(2,1)$의 3개이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 자연수는 $1$부터 시작하므로 한 변수의 값을 정해 가능한 다른 변수의 값을 센다.\n조건 정리: $x\\ge1$, $y\\ge1$, $x+y\\le3$이다.\n풀이 방향: $x$의 가능한 값을 작은 수부터 대입한다.\n정석 풀이: $x=1$이면 $y=1,2$이고, $x=2$이면 $y=1$이다. $x\\ge3$이면 자연수 $y$에 대하여 $x+y\\le3$을 만족할 수 없다. 따라서 순서쌍은 $(1,1),(1,2),(2,1)$의 3개이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C-07-CORE",
+    "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -86,7 +98,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 네 행렬 $A=\\begin{pmatrix}2&-5\\end{pmatrix}$, $B=\\begin{pmatrix}-1&1&2\\\\3&0&1\\end{pmatrix}$, $C=\\begin{pmatrix}2&1\\\\0&-2\\\\3&0\\end{pmatrix}$, $D=\\begin{pmatrix}5\\\\2\\\\3\\end{pmatrix}$에 대하여 다음 중 그 곱이 정의되는 것의 개수는? [3.6점]<br><div class='note-box'>$AB\\qquad BD\\qquad CB\\qquad CD\\qquad DA\\qquad DC$</div>",
+    "content": "다음 네 행렬 $A=\\begin{pmatrix}2&-5\\end{pmatrix}$, $B=\\begin{pmatrix}-1&1&2\\\\3&0&1\\end{pmatrix}$, $C=\\begin{pmatrix}2&1\\\\0&-2\\\\3&0\\end{pmatrix}$, $D=\\begin{pmatrix}5\\\\-2\\\\3\\end{pmatrix}$에 대하여 다음 중 그 곱이 정의되는 것의 개수는? [3.6점]<br><div class='note-box'>$AB\\qquad BD\\qquad CB\\qquad CD\\qquad DA\\qquad DC$</div>",
     "choices": [
       "1",
       "2",
@@ -95,7 +107,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 앞 행렬의 열의 수와 뒤 행렬의 행의 수가 같을 때만 행렬의 곱이 정의된다.\n조건 정리: $A$는 $1\\times2$, $B$는 $2\\times3$, $C$는 $3\\times2$, $D$는 $3\\times1$ 행렬이다.\n풀이 방향: 제시된 여섯 곱을 하나씩 확인한다.\n정석 풀이: $AB$는 $2=2$이므로 정의되고, $BD$는 $3=3$이므로 정의된다. $CB$는 $2=2$이므로 정의되지만, $CD$는 $2\\ne3$이므로 정의되지 않는다. $DA$는 $1=1$이므로 정의되고, $DC$는 $1\\ne3$이므로 정의되지 않는다. 따라서 정의되는 곱은 $AB,BD,CB,DA$의 4개이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 앞 행렬의 열의 수와 뒤 행렬의 행의 수가 같을 때만 행렬의 곱이 정의된다.\n조건 정리: $A$는 $1\\times2$, $B$는 $2\\times3$, $C$는 $3\\times2$, $D$는 $3\\times1$ 행렬이다.\n풀이 방향: 제시된 여섯 곱을 하나씩 확인한다.\n정석 풀이: $AB$는 $2=2$이므로 정의되고, $BD$는 $3=3$이므로 정의된다. $CB$는 $2=2$이므로 정의되지만, $CD$는 $2\\ne3$이므로 정의되지 않는다. $DA$는 $1=1$이므로 정의되고, $DC$는 $1\\ne3$이므로 정의되지 않는다. 따라서 정의되는 곱은 $AB,BD,CB,DA$의 4개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "[키포인트] 절댓값 부등식 $|A|\\lt k$를 $-k\\lt A\\lt k$로 바꾼다.\n조건 정리: $|x-2|\\lt7$이다.\n풀이 방향: 절댓값을 없앤 뒤 범위 안의 정수를 센다.\n정석 풀이: $-7\\lt x-2\\lt7$이므로 양변에 2를 더하면 $-5\\lt x\\lt9$이다. 이 범위의 정수는 $-4,-3,\\ldots,8$이고, 개수는 $8-(-4)+1=13$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 절댓값 부등식 $|A|\\lt k$를 $-k\\lt A\\lt k$로 바꾼다.\n조건 정리: $|x-2|\\lt7$이다.\n풀이 방향: 절댓값을 없앤 뒤 범위 안의 정수를 센다.\n정석 풀이: $-7\\lt x-2\\lt7$이므로 양변에 2를 더하면 $-5\\lt x\\lt9$이다. 이 범위의 정수는 $-4,-3,\\ldots,8$이고, 개수는 $8-(-4)+1=13$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $x$축과 만나는 두 점의 $x$좌표는 이차방정식의 두 근이다.\n조건 정리: 방정식 $x^2+ax-15=0$의 두 근은 $3,b$이다.\n풀이 방향: 두 근의 곱으로 $b$를 구한 뒤 두 근의 합으로 $a$를 구한다.\n정석 풀이: 두 근의 곱은 $3b=-15$이므로 $b=-5$이다. 두 근의 합은 $3+b=-a$이므로 $-2=-a$, 따라서 $a=2$이다. 그러므로 $a+b=2+(-5)=-3$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $x$축과 만나는 두 점의 $x$좌표는 이차방정식의 두 근이다.\n조건 정리: 방정식 $x^2+ax-15=0$의 두 근은 $3,b$이다.\n풀이 방향: 두 근의 곱으로 $b$를 구한 뒤 두 근의 합으로 $a$를 구한다.\n정석 풀이: 두 근의 곱은 $3b=-15$이므로 $b=-5$이다. 두 근의 합은 $3+b=-a$이므로 $-2=-a$, 따라서 $a=2$이다. 그러므로 $a+b=2+(-5)=-3$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "quadratic function graph",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "28"
     ],
     "answer": "①",
-    "solution": "[키포인트] 주어진 열행렬을 곱한 결과를 이용하면 행렬의 각 열을 바로 알 수 있다.\n조건 정리: $A$의 첫째 열은 $\\begin{pmatrix}1\\\\-1\\end{pmatrix}$, 둘째 열은 $\\begin{pmatrix}2\\\\-1\\end{pmatrix}$이다.\n풀이 방향: 먼저 행렬 $A$를 구한 뒤 주어진 열행렬을 곱한다.\n정석 풀이: $A=\\begin{pmatrix}1&2\\\\-1&-1\\end{pmatrix}$이다. 따라서 $A\\begin{pmatrix}1\\\\3\\end{pmatrix}=\\begin{pmatrix}1+6\\\\-1-3\\end{pmatrix}=\\begin{pmatrix}7\\\\-4\\end{pmatrix}$이다. 모든 성분의 곱은 $7\\times(-4)=-28$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 주어진 열행렬을 곱한 결과를 이용하면 행렬의 각 열을 바로 알 수 있다.\n조건 정리: $A$의 첫째 열은 $\\begin{pmatrix}1\\\\-1\\end{pmatrix}$, 둘째 열은 $\\begin{pmatrix}2\\\\-1\\end{pmatrix}$이다.\n풀이 방향: 먼저 행렬 $A$를 구한 뒤 주어진 열행렬을 곱한다.\n정석 풀이: $A=\\begin{pmatrix}1&2\\\\-1&-1\\end{pmatrix}$이다. 따라서 $A\\begin{pmatrix}1\\\\3\\end{pmatrix}=\\begin{pmatrix}1+6\\\\-1-3\\end{pmatrix}=\\begin{pmatrix}7\\\\-4\\end{pmatrix}$이다. 모든 성분의 곱은 $7\\times(-4)=-28$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 부등식의 해를 각각 구한 뒤 공통 범위에 있는 정수만 더한다.\n조건 정리: 절댓값의 기준점은 $-1,2$이고, 이차부등식은 인수분해할 수 있다.\n풀이 방향: 첫째 부등식과 둘째 부등식을 따로 풀어 교집합을 구한다.\n정석 풀이: $|x+1|+|x-2|\\le5$를 구간별로 풀면 $-2\\le x\\le3$이다. 또 $-2x^2+7x-6\\le0$은 $(2x-3)(x-2)\\ge0$과 같으므로 $x\\le\\dfrac{3}{2}$ 또는 $x\\ge2$이다. 두 해의 공통 범위에 있는 정수는 $-2,-1,0,1,2,3$이고, 그 합은 $3$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 부등식의 해를 각각 구한 뒤 공통 범위에 있는 정수만 더한다.\n조건 정리: 절댓값의 기준점은 $-1,2$이고, 이차부등식은 인수분해할 수 있다.\n풀이 방향: 첫째 부등식과 둘째 부등식을 따로 풀어 교집합을 구한다.\n정석 풀이: $|x+1|+|x-2|\\le5$를 구간별로 풀면 $-2\\le x\\le3$이다. 또 $-2x^2+7x-6\\le0$은 $(2x-3)(x-2)\\ge0$과 같으므로 $x\\le\\dfrac{3}{2}$ 또는 $x\\ge2$이다. 두 해의 공통 범위에 있는 정수는 $-2,-1,0,1,2,3$이고, 그 합은 $3$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+    "subUnit": "higher inequality",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "④",
-    "solution": "[키포인트] $A+B$의 거듭제곱에서 왼쪽 아래 성분이 일정하게 4씩 증가하는 규칙을 찾는다.\n조건 정리: $A+B=\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$이다.\n풀이 방향: 몇 번 곱해 거듭제곱의 형태를 확인하고 일반식을 사용한다.\n정석 풀이: $\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}^2=\\begin{pmatrix}1&0\\\\8&1\\end{pmatrix}$이고, 같은 행렬을 한 번 더 곱할 때마다 왼쪽 아래 성분에 4가 더해진다. 따라서 $(A+B)^n=\\begin{pmatrix}1&0\\\\4n&1\\end{pmatrix}$이다. 모든 성분의 합은 $4n+2$이므로 $4n+2=34$에서 $n=8$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $A+B$의 거듭제곱에서 왼쪽 아래 성분이 일정하게 4씩 증가하는 규칙을 찾는다.\n조건 정리: $A+B=\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$이다.\n풀이 방향: 몇 번 곱해 거듭제곱의 형태를 확인하고 일반식을 사용한다.\n정석 풀이: $\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}^2=\\begin{pmatrix}1&0\\\\8&1\\end{pmatrix}$이고, 같은 행렬을 한 번 더 곱할 때마다 왼쪽 아래 성분에 4가 더해진다. 따라서 $(A+B)^n=\\begin{pmatrix}1&0\\\\4n&1\\end{pmatrix}$이다. 모든 성분의 합은 $4n+2$이므로 $4n+2=34$에서 $n=8$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -239,7 +275,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 반복되는 식 $x^2-2x$를 하나의 문자로 두어 이차함수의 최댓값과 최솟값을 구한다.\n조건 정리: $t=x^2-2x=(x-1)^2-1$로 두면 $0\\le x\\le3$에서 $-1\\le t\\le3$이다.\n풀이 방향: 원래 함수를 $t$에 대한 완전제곱식으로 바꾼다.\n정석 풀이: $y=t^2-2(t+1)-6=t^2-2t-8=(t-1)^2-9$이다. $-1\\le t\\le3$에서 최솟값은 $t=1$일 때 $m=-9$이다. 최댓값은 양 끝 $t=-1,3$에서 모두 $M=-5$이다. 따라서 $M-m=-5-(-9)=4$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 반복되는 식 $x^2-2x$를 하나의 문자로 두어 이차함수의 최댓값과 최솟값을 구한다.\n조건 정리: $t=x^2-2x=(x-1)^2-1$로 두면 $0\\le x\\le3$에서 $-1\\le t\\le3$이다.\n풀이 방향: 원래 함수를 $t$에 대한 완전제곱식으로 바꾼다.\n정석 풀이: $y=t^2-2(t+1)-6=t^2-2t-8=(t-1)^2-9$이다. $-1\\le t\\le3$에서 최솟값은 $t=1$일 때 $m=-9$이다. 최댓값은 양 끝 $t=-1,3$에서 모두 $M=-5$이다. 따라서 $M-m=-5-(-9)=4$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -254,7 +294,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "이차부등식 $x^2-2ax+2a+3\\ge0$이 $-1\\le x\\le1$에서 항상 성립하도록 하는 $a$의 최솟값을 구하면? [4.1점]",
+    "content": "이차부등식 $x^2-2ax+2a+3\\ge0$ $(-1\\le x\\le1)$이 항상 성립하도록 하는 $a$의 최솟값을 구하면? [4.1점]",
     "choices": [
       "$-1$",
       "1",
@@ -263,7 +303,11 @@ window.questionBank = [
       "7"
     ],
     "answer": "①",
-    "solution": "[키포인트] 모든 $x$에서 성립해야 하므로 특정한 $x$를 대입하여 필요한 조건을 찾고, 그 경계값이 실제로 가능한지 확인한다.\n조건 정리: $x=-1$도 주어진 구간에 포함된다.\n풀이 방향: 먼저 $x=-1$을 대입해 $a$의 하한을 구한 뒤, 그 하한에서 부등식이 항상 성립하는지 확인한다.\n정석 풀이: $x=-1$을 대입하면 $1+2a+2a+3=4(a+1)\\ge0$이므로 반드시 $a\\ge-1$이어야 한다. 이제 $a=-1$을 대입하면 주어진 식은 $x^2+2x+1=(x+1)^2$이 되어 모든 실수 $x$에서 0 이상이다. 따라서 가능한 $a$의 최솟값은 $-1$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 모든 $x$에서 성립해야 하므로 특정한 $x$를 대입하여 필요한 조건을 찾고, 그 경계값이 실제로 가능한지 확인한다.\n조건 정리: $x=-1$도 주어진 구간에 포함된다.\n풀이 방향: 먼저 $x=-1$을 대입해 $a$의 하한을 구한 뒤, 그 하한에서 부등식이 항상 성립하는지 확인한다.\n정석 풀이: $x=-1$을 대입하면 $1+2a+2a+3=4(a+1)\\ge0$이므로 반드시 $a\\ge-1$이어야 한다. 이제 $a=-1$을 대입하면 주어진 식은 $x^2+2x+1=(x+1)^2$이 되어 모든 실수 $x$에서 0 이상이다. 따라서 가능한 $a$의 최솟값은 $-1$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -287,7 +331,11 @@ window.questionBank = [
       "18"
     ],
     "answer": "②",
-    "solution": "[키포인트] $|x|$를 새로운 문자로 두면 절댓값이 포함된 식을 한 개의 이차함수로 볼 수 있다.\n조건 정리: $-4\\le x\\le3$이므로 $t=|x|$의 범위는 $0\\le t\\le4$이다.\n풀이 방향: $y$를 $t$에 대한 완전제곱식으로 바꾼다.\n정석 풀이: $y=2t^2-4t-3=2(t-1)^2-5$이다. 최솟값은 $t=1$일 때 $m=-5$이다. 위로 열린 포물선이므로 최댓값은 구간의 양 끝을 비교해 구한다. $t=0$일 때 $y=-3$, $t=4$일 때 $y=13$이므로 $M=13$이다. 따라서 $M+m=13+(-5)=8$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $|x|$를 새로운 문자로 두면 절댓값이 포함된 식을 한 개의 이차함수로 볼 수 있다.\n조건 정리: $-4\\le x\\le3$이므로 $t=|x|$의 범위는 $0\\le t\\le4$이다.\n풀이 방향: $y$를 $t$에 대한 완전제곱식으로 바꾼다.\n정석 풀이: $y=2t^2-4t-3=2(t-1)^2-5$이다. 최솟값은 $t=1$일 때 $m=-5$이다. 위로 열린 포물선이므로 최댓값은 구간의 양 끝을 비교해 구한다. $t=0$일 때 $y=-3$, $t=4$일 때 $y=13$이므로 $M=13$이다. 따라서 $M+m=13+(-5)=8$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "quadratic function graph",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -311,7 +359,11 @@ window.questionBank = [
       "30"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 자음의 상대적인 순서는 고정하고, 자음이 들어갈 자리와 모음의 순서를 따로 센다.\n조건 정리: 자음은 $b,c,d,f$의 4개이고 반드시 이 순서로 놓인다. 모음은 $a,e$의 2개이다.\n풀이 방향: 여섯 자리 중 자음의 네 자리를 고른 뒤 모음의 순서를 정한다.\n정석 풀이: 자음이 들어갈 네 자리를 고르는 방법은 ${}_{6}C_{4}=15$가지이다. 선택된 자리에는 $b,c,d,f$가 알파벳 순서로 하나의 방법으로 놓인다. 남은 두 자리에 모음 $a,e$를 놓는 방법은 $2!=2$가지이다. 따라서 전체 경우의 수는 $15\\times2=30$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 자음의 상대적인 순서는 고정하고, 자음이 들어갈 자리와 모음의 순서를 따로 센다.\n조건 정리: 자음은 $b,c,d,f$의 4개이고 반드시 이 순서로 놓인다. 모음은 $a,e$의 2개이다.\n풀이 방향: 여섯 자리 중 자음의 네 자리를 고른 뒤 모음의 순서를 정한다.\n정석 풀이: 자음이 들어갈 네 자리를 고르는 방법은 ${}_{6}C_{4}=15$가지이다. 선택된 자리에는 $b,c,d,f$가 알파벳 순서로 하나의 방법으로 놓인다. 남은 두 자리에 모음 $a,e$를 놓는 방법은 $2!=2$가지이다. 따라서 전체 경우의 수는 $15\\times2=30$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C-08-COMBINATION",
+    "subUnit": "combination",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -335,7 +387,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 행렬을 직접 제곱한 뒤 두 근의 합과 곱을 이용하여 $\\alpha,\\beta$를 없앤다.\n조건 정리: $\\alpha+\\beta=3$, $\\alpha\\beta=k$이다.\n풀이 방향: $A^2$의 네 성분을 구해 모두 더하고 $k$에 대한 방정식을 만든다.\n정석 풀이: $A^2=\\begin{pmatrix}\\alpha^2+k^2&k(\\alpha+\\beta)\\\\k(\\alpha+\\beta)&\\beta^2+k^2\\end{pmatrix}$이다. 성분의 합은 $\\alpha^2+\\beta^2+2k^2+2k(\\alpha+\\beta)$이다. 여기서 $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=9-2k$이므로 합은 $9-2k+2k^2+6k=2k^2+4k+9$이다. $2k^2+4k+9=25$에서 $k^2+2k-8=0$, 즉 $(k-2)(k+4)=0$이다. 자연수이므로 $k=2$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 행렬을 직접 제곱한 뒤 두 근의 합과 곱을 이용하여 $\\alpha,\\beta$를 없앤다.\n조건 정리: $\\alpha+\\beta=3$, $\\alpha\\beta=k$이다.\n풀이 방향: $A^2$의 네 성분을 구해 모두 더하고 $k$에 대한 방정식을 만든다.\n정석 풀이: $A^2=\\begin{pmatrix}\\alpha^2+k^2&k(\\alpha+\\beta)\\\\k(\\alpha+\\beta)&\\beta^2+k^2\\end{pmatrix}$이다. 성분의 합은 $\\alpha^2+\\beta^2+2k^2+2k(\\alpha+\\beta)$이다. 여기서 $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=9-2k$이므로 합은 $9-2k+2k^2+6k=2k^2+4k+9$이다. $2k^2+4k+9=25$에서 $k^2+2k-8=0$, 즉 $(k-2)(k+4)=0$이다. 자연수이므로 $k=2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "경우의 수 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -359,7 +415,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $w^2+w+1=0$과 $\\overline{w}=w^2$을 이용하여 각 명제를 판단한다.\n조건 정리: $w^3=1$, $w\\ne1$이므로 $w^2+w+1=0$이고, $\\overline{w}=w^2$, $w+\\overline{w}=-1$이다.\n풀이 방향: ㄱ, ㄴ, ㄷ을 각각 식으로 확인한다.\n정석 풀이: ㄱ에서 $\\overline{w}^{\\,3}=(w^2)^3=w^6=1$이므로 참이다. ㄴ에서 $\\dfrac{1}{w}=w^2$이고 $\\dfrac1{\\overline{w}}=w$이므로 양변은 모두 $w+w^2=-1$이 되어 참이다. ㄷ에서 $-w-1=w^2$이고 $\\dfrac{\\overline{w}}{w+\\overline{w}}=\\dfrac{w^2}{-1}=-w^2$이다. 따라서 $(w^2)^n=(-w^2)^n$은 $n$이 짝수일 때 성립한다. 50 이하의 짝수는 25개이므로 ㄷ도 참이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $w^2+w+1=0$과 $\\overline{w}=w^2$을 이용하여 각 명제를 판단한다.\n조건 정리: $w^3=1$, $w\\ne1$이므로 $w^2+w+1=0$이고, $\\overline{w}=w^2$, $w+\\overline{w}=-1$이다.\n풀이 방향: ㄱ, ㄴ, ㄷ을 각각 식으로 확인한다.\n정석 풀이: ㄱ에서 $\\overline{w}^{\\,3}=(w^2)^3=w^6=1$이므로 참이다. ㄴ에서 $\\dfrac{1}{w}=w^2$이고 $\\dfrac1{\\overline{w}}=w$이므로 양변은 모두 $w+w^2=-1$이 되어 참이다. ㄷ에서 $-w-1=w^2$이고 $\\dfrac{\\overline{w}}{w+\\overline{w}}=\\dfrac{w^2}{-1}=-w^2$이다. 따라서 $(w^2)^n=(-w^2)^n$은 $n$이 짝수일 때 성립한다. 50 이하의 짝수는 25개이므로 ㄷ도 참이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+    "subUnit": "복소수와 이차방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -383,7 +443,11 @@ window.questionBank = [
       "41320"
     ],
     "answer": "④",
-    "solution": "[키포인트] 첫째 자리와 둘째 자리를 차례로 고정하여 83번째 수가 속한 묶음을 찾는다.\n조건 정리: 첫째 자리에는 0이 올 수 없고, 나머지 네 자리는 각각 $4!=24$가지로 배열된다.\n풀이 방향: 첫째 자리별 24개씩 건너뛴 뒤, 남은 순서를 다시 작은 묶음으로 나눈다.\n정석 풀이: 첫째 자리가 1, 2, 3인 수는 각각 24개이므로 처음 72개를 차지한다. 따라서 83번째 수는 첫째 자리가 4인 수 중 11번째이다. 남은 숫자는 $0,1,2,3$이다. 둘째 자리가 0인 수가 $3!=6$개이므로 이를 지나면, 둘째 자리가 1인 수 중 5번째를 찾으면 된다. 남은 $0,2,3$의 배열을 작은 순서로 쓰면 $023,032,203,230,302,320$이므로 5번째는 $302$이다. 따라서 83번째 수는 $41302$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 첫째 자리와 둘째 자리를 차례로 고정하여 83번째 수가 속한 묶음을 찾는다.\n조건 정리: 첫째 자리에는 0이 올 수 없고, 나머지 네 자리는 각각 $4!=24$가지로 배열된다.\n풀이 방향: 첫째 자리별 24개씩 건너뛴 뒤, 남은 순서를 다시 작은 묶음으로 나눈다.\n정석 풀이: 첫째 자리가 1, 2, 3인 수는 각각 24개이므로 처음 72개를 차지한다. 따라서 83번째 수는 첫째 자리가 4인 수 중 11번째이다. 남은 숫자는 $0,1,2,3$이다. 둘째 자리가 0인 수가 $3!=6$개이므로 이를 지나면, 둘째 자리가 1인 수 중 5번째를 찾으면 된다. 남은 $0,2,3$의 배열을 작은 순서로 쓰면 $023,032,203,230,302,320$이므로 5번째는 $302$이다. 따라서 83번째 수는 $41302$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C-08-PERMUTATION",
+    "subUnit": "permutation",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -407,7 +471,11 @@ window.questionBank = [
       "42"
     ],
     "answer": "③",
-    "solution": "[키포인트] 그래프가 $x$축과 만나지 않는 조건은 대응하는 이차방정식의 판별식이 0보다 작은 것이다.\n조건 정리: $a,b$는 각각 1부터 6까지의 정수이다.\n풀이 방향: 판별식 조건을 $|a-b|$에 대한 조건으로 바꾼 뒤 전체 경우에서 제외되는 경우를 뺀다.\n정석 풀이: 판별식은 $(a+b)^2-4(ab+4)=(a-b)^2-16$이다. 실근이 없으려면 $(a-b)^2-16\\lt0$, 즉 $|a-b|\\lt4$이어야 한다. 전체 순서쌍은 $6\\times6=36$가지이다. 조건을 만족하지 않는 것은 $|a-b|=4$인 4가지와 $|a-b|=5$인 2가지로 모두 6가지이다. 따라서 구하는 경우의 수는 $36-6=30$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 그래프가 $x$축과 만나지 않는 조건은 대응하는 이차방정식의 판별식이 0보다 작은 것이다.\n조건 정리: $a,b$는 각각 1부터 6까지의 정수이다.\n풀이 방향: 판별식 조건을 $|a-b|$에 대한 조건으로 바꾼 뒤 전체 경우에서 제외되는 경우를 뺀다.\n정석 풀이: 판별식은 $(a+b)^2-4(ab+4)=(a-b)^2-16$이다. 실근이 없으려면 $(a-b)^2-16\\lt0$, 즉 $|a-b|\\lt4$이어야 한다. 전체 순서쌍은 $6\\times6=36$가지이다. 조건을 만족하지 않는 것은 $|a-b|=4$인 4가지와 $|a-b|=5$인 2가지로 모두 6가지이다. 따라서 구하는 경우의 수는 $36-6=30$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "quadratic function graph",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -431,7 +499,11 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $f(x+a)$를 전개한 뒤 같은 차수의 계수를 비교한다.\n조건 정리: 두 다항식이 모든 $x$에서 같으므로 각 차수의 계수가 각각 같다.\n풀이 방향: 먼저 $x^2$의 계수로 $a$를 구하고, 그 값을 $x$의 계수에 대입해 $b$를 구한다.\n정석 풀이: $f(x+a)=x^3+(3a+3)x^2+(3a^2+6a-2)x+(a^3+3a^2-2a-5)$이다. $x^2$의 계수를 비교하면 $3a+3=-3$이므로 $a=-2$이다. 따라서 $x$의 계수는 $3(-2)^2+6(-2)-2=-2$이므로 $b=-2$이다. 상수항도 $3$으로 일치한다. 그러므로 $a+b=-4$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $f(x+a)$를 전개한 뒤 같은 차수의 계수를 비교한다.\n조건 정리: 두 다항식이 모든 $x$에서 같으므로 각 차수의 계수가 각각 같다.\n풀이 방향: 먼저 $x^2$의 계수로 $a$를 구하고, 그 값을 $x$의 계수에 대입해 $b$를 구한다.\n정석 풀이: $f(x+a)=x^3+(3a+3)x^2+(3a^2+6a-2)x+(a^3+3a^2-2a-5)$이다. $x^2$의 계수를 비교하면 $3a+3=-3$이므로 $a=-2$이다. 따라서 $x$의 계수는 $3(-2)^2+6(-2)-2=-2$이므로 $b=-2$이다. 상수항도 $3$으로 일치한다. 그러므로 $a+b=-4$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C-02-CORE",
+    "subUnit": "항등식과 나머지 정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -455,7 +527,11 @@ window.questionBank = [
       "$\\dfrac{1}{2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 실근이 존재한다는 판별식 조건을 먼저 구한 뒤, 근과 계수의 관계로 만든 식의 최솟값을 그 범위에서 구한다.\n조건 정리: 판별식이 0 이상이어야 하며, $\\alpha+\\beta=m+1$, $\\alpha\\beta=\\dfrac{1}{4}m^2-m+\\dfrac{1}{4}$이다.\n풀이 방향: $m$의 허용 범위와 $\\alpha^2+\\beta^2$의 식을 각각 구한다.\n정석 풀이: 판별식은 $(m+1)^2-4\\left(\\dfrac{1}{4}m^2-m+\\dfrac{1}{4}\\right)=6m$이므로 $m\\ge0$이다. 또 $\\alpha^2+\\beta^2$을 정리하면\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n$=(m+1)^2-2\\left(\\dfrac{1}{4}m^2-m+\\dfrac{1}{4}\\right)$\n$=\\dfrac{1}{2}m^2+4m+\\dfrac{1}{2}$\n이다. $m\\ge0$에서 이 식은 $m$이 커질수록 증가하므로 $m=0$일 때 최소이고, 최솟값은 $\\dfrac{1}{2}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 두 실근이 존재한다는 판별식 조건을 먼저 구한 뒤, 근과 계수의 관계로 만든 식의 최솟값을 그 범위에서 구한다.\n조건 정리: 판별식이 0 이상이어야 하며, $\\alpha+\\beta=m+1$, $\\alpha\\beta=\\dfrac{1}{4}m^2-m+\\dfrac{1}{4}$이다.\n풀이 방향: $m$의 허용 범위와 $\\alpha^2+\\beta^2$의 식을 각각 구한다.\n정석 풀이: 판별식은 $(m+1)^2-4\\left(\\dfrac{1}{4}m^2-m+\\dfrac{1}{4}\\right)=6m$이므로 $m\\ge0$이다. 또 $\\alpha^2+\\beta^2$을 정리하면\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n$=(m+1)^2-2\\left(\\dfrac{1}{4}m^2-m+\\dfrac{1}{4}\\right)$\n$=\\dfrac{1}{2}m^2+4m+\\dfrac{1}{2}$\n이다. $m\\ge0$에서 이 식은 $m$이 커질수록 증가하므로 $m=0$일 때 최소이고, 최솟값은 $\\dfrac{1}{2}$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+    "subUnit": "복소수와 이차방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -479,7 +555,11 @@ window.questionBank = [
       "4개"
     ],
     "answer": "①",
-    "solution": "[키포인트] 삼차식을 인수분해하여 음의 근과 나머지 두 근을 분리한다.\n조건 정리: $x^3-(2k-1)x^2+(3-2k)x+3=(x+1)(x^2-2kx+3)$이다.\n풀이 방향: $x=-1$은 항상 음의 근이므로, 이차식의 두 근이 모두 1과 3 사이에 있는 정수 $k$를 찾는다.\n정석 풀이: 이차식의 두 근을 $r,s$라 하면 $r+s=2k$이다. $1\\lt r\\lt3$, $1\\lt s\\lt3$이면 $2\\lt r+s\\lt6$이므로 $1\\lt k\\lt3$이다. 가능한 정수는 $k=2$뿐이다. 그러나 $k=2$이면 $x^2-4x+3=(x-1)(x-3)$이므로 두 근은 1과 3이며 구간의 안쪽에 있지 않다. 따라서 조건을 만족하는 정수 $k$는 없다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 삼차식을 인수분해하여 음의 근과 나머지 두 근을 분리한다.\n조건 정리: $x^3-(2k-1)x^2+(3-2k)x+3=(x+1)(x^2-2kx+3)$이다.\n풀이 방향: $x=-1$은 항상 음의 근이므로, 이차식의 두 근이 모두 1과 3 사이에 있는 정수 $k$를 찾는다.\n정석 풀이: 이차식의 두 근을 $r,s$라 하면 $r+s=2k$이다. $1\\lt r\\lt3$, $1\\lt s\\lt3$이면 $2\\lt r+s\\lt6$이므로 $1\\lt k\\lt3$이다. 가능한 정수는 $k=2$뿐이다. 그러나 $k=2$이면 $x^2-4x+3=(x-1)(x-3)$이므로 두 근은 1과 3이며 구간의 안쪽에 있지 않다. 따라서 조건을 만족하는 정수 $k$는 없다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C-06-EQUATION",
+    "subUnit": "여러 가지 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -499,7 +579,11 @@ window.questionBank = [
     "content": "서술형1.<br>$x$에 대한 방정식 $x^3+(8-a)x^2+(a^2-8a)x-a^3=0$이 서로 다른 세 실근을 갖기 위한 실수 $a$의 값의 범위를 구하고, 그 과정을 서술하시오. [5.0점, 부분점수 있음]",
     "choices": [],
     "answer": "$-4\\lt a\\lt0$ 또는 $0\\lt a\\lt4$",
-    "solution": "[키포인트] 삼차식을 일차식과 이차식의 곱으로 인수분해한 뒤, 이차식의 두 근과 일차식의 근이 모두 서로 다를 조건을 구한다.\n조건 정리: 좌변은 $(x-a)(x^2+8x+a^2)$로 인수분해된다.\n풀이 방향: 먼저 이차식이 서로 다른 두 실근을 가질 조건을 구하고, 그 두 근 중 하나가 $x=a$와 겹치는 경우를 제외한다.\n정석 풀이: 이차방정식 $x^2+8x+a^2=0$이 서로 다른 두 실근을 가지려면 판별식이 양수여야 한다. 따라서 $64-4a^2\\gt0$에서 $-4\\lt a\\lt4$이다. 또한 일차식의 근 $x=a$가 이차식의 근이면 세 근이 서로 다르지 않다. $x=a$를 이차식에 대입하면 $a^2+8a+a^2=2a(a+4)$이므로 $a=0$ 또는 $a=-4$일 때 근이 겹친다. 그런데 $a=-4$는 이미 $-4\\lt a\\lt4$에 포함되지 않으므로 $a=0$만 제외하면 된다.\n따라서 구하는 범위는 $-4\\lt a\\lt0$ 또는 $0\\lt a\\lt4$이다."
+    "solution": "[키포인트] 삼차식을 일차식과 이차식의 곱으로 인수분해한 뒤, 이차식의 두 근과 일차식의 근이 모두 서로 다를 조건을 구한다.\n조건 정리: 좌변은 $(x-a)(x^2+8x+a^2)$로 인수분해된다.\n풀이 방향: 먼저 이차식이 서로 다른 두 실근을 가질 조건을 구하고, 그 두 근 중 하나가 $x=a$와 겹치는 경우를 제외한다.\n정석 풀이: 이차방정식 $x^2+8x+a^2=0$이 서로 다른 두 실근을 가지려면 판별식이 양수여야 한다. 따라서 $64-4a^2\\gt0$에서 $-4\\lt a\\lt4$이다. 또한 일차식의 근 $x=a$가 이차식의 근이면 세 근이 서로 다르지 않다. $x=a$를 이차식에 대입하면 $a^2+8a+a^2=2a(a+4)$이므로 $a=0$ 또는 $a=-4$일 때 근이 겹친다. 그런데 $a=-4$는 이미 $-4\\lt a\\lt4$에 포함되지 않으므로 $a=0$만 제외하면 된다.\n따라서 구하는 범위는 $-4\\lt a\\lt0$ 또는 $0\\lt a\\lt4$이다.",
+    "subUnitKey": "H22-C-06-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -519,7 +603,11 @@ window.questionBank = [
     "content": "서술형2.<br>$x$에 대한 연립 이차부등식 $\\begin{cases}x^2-9x+18\\le0\\\\x^2-2(n-1)x+n^2-2n\\ge0\\end{cases}$을 만족시키는 정수 $x$의 개수가 3이 되도록 하는 모든 자연수 $n$의 값을 구하고, 그 과정을 서술하시오. [6.0점, 부분점수 있음]",
     "choices": [],
     "answer": "$n=4,5,6,7$",
-    "solution": "[키포인트] 첫째 부등식이 허용하는 네 정수 중 둘째 부등식이 정확히 하나만 제외하도록 하는 $n$을 찾는다.\n조건 정리: 첫째 부등식은 $(x-3)(x-6)\\le0$이고, 둘째 식은 $(x-n)(x-n+2)\\ge0$으로 인수분해된다.\n풀이 방향: 첫째 부등식의 정수해를 먼저 구한 뒤, 둘째 부등식이 제외하는 정수를 확인한다.\n정석 풀이: 첫째 부등식의 해는 $3\\le x\\le6$이므로 가능한 정수는 $3,4,5,6$의 4개이다. 둘째 부등식의 해는 $x\\le n-2$ 또는 $x\\ge n$이므로 정수 중에서는 $x=n-1$만 만족하지 않는다. 따라서 네 정수 중 정확히 하나가 제외되어 정수해가 3개가 되려면 $n-1$이 $3,4,5,6$ 중 하나여야 한다. 그러므로 $n=4,5,6,7$이다.\n따라서 구하는 모든 자연수는 $n=4,5,6,7$이다."
+    "solution": "[키포인트] 첫째 부등식이 허용하는 네 정수 중 둘째 부등식이 정확히 하나만 제외하도록 하는 $n$을 찾는다.\n조건 정리: 첫째 부등식은 $(x-3)(x-6)\\le0$이고, 둘째 식은 $(x-n)(x-n+2)\\ge0$으로 인수분해된다.\n풀이 방향: 첫째 부등식의 정수해를 먼저 구한 뒤, 둘째 부등식이 제외하는 정수를 확인한다.\n정석 풀이: 첫째 부등식의 해는 $3\\le x\\le6$이므로 가능한 정수는 $3,4,5,6$의 4개이다. 둘째 부등식의 해는 $x\\le n-2$ 또는 $x\\ge n$이므로 정수 중에서는 $x=n-1$만 만족하지 않는다. 따라서 네 정수 중 정확히 하나가 제외되어 정수해가 3개가 되려면 $n-1$이 $3,4,5,6$ 중 하나여야 한다. 그러므로 $n=4,5,6,7$이다.\n따라서 구하는 모든 자연수는 $n=4,5,6,7$이다.",
+    "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+    "subUnit": "higher inequality",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -542,7 +630,13 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{27}{16}\\,\\mathrm{m}^2$",
     "solution": "[키포인트] 좌표를 정하여 포물선과 조명의 불빛을 나타내는 직선의 식을 세우고, 접할 때 교점에 대한 이차방정식이 중근을 갖는다는 사실을 이용한다.\n조건 정리: $A=(0,0)$, $B=(6,0)$으로 두면 포물선의 꼭짓점은 $(3,6)$이고, $C=\\left(0,\\dfrac{27}{2}\\right)$이다.\n풀이 방향: 포물선의 식을 구한 뒤 $C$를 지나는 직선을 두고, 그 직선이 포물선에 접하도록 판별식을 0으로 둔다.\n정석 풀이: 포물선의 식을 $y=p(x-3)^2+6$이라 두자. 점 $A=(0,0)$을 지나므로 $9p+6=0$에서 $p=-\\dfrac{2}{3}$이다. 따라서 포물선은 $y=-\\dfrac{2}{3}x^2+4x$이다. $C$를 지나는 직선을 $y=tx+\\dfrac{27}{2}$라 두면 포물선과의 교점의 $x$좌표는 $4x^2-(24-6t)x+81=0$을 만족한다. 접하려면 이 방정식이 중근을 가져야 하므로 $(24-6t)^2-4\\times4\\times81=0$이다. 직선은 오른쪽 아래로 내려가므로 $t=-2$이고, 접선은 $y=-2x+\\dfrac{27}{2}$이다. 이 직선의 $x$절편은 $\\dfrac{27}{4}$이므로 $D=\\left(\\dfrac{27}{4},0\\right)$이고 $BD=\\dfrac{3}{4}$이다. 또한 교점 방정식은 $(2x-9)^2=0$이므로 $E$의 $x$좌표는 $\\dfrac{9}{2}$이며, 높이는 $y=-2\\times\\dfrac{9}{2}+\\dfrac{27}{2}=\\dfrac{9}{2}$이다. 따라서 삼각형 $BDE$의 넓이는 $\\dfrac{1}{2}\\times\\dfrac{3}{4}\\times\\dfrac{9}{2}=\\dfrac{27}{16}$이다.\n따라서 구하는 넓이는 $\\dfrac{27}{16}\\,\\mathrm{m}^2$이다.",
-    "image": "assets/images/26_순천여고_1학기_기말_고1_기출/q23.png"
+    "image": "assets/images/26_순천여고_1학기_기말_고1_기출/q23.png",
+    "imageSize": "tall",
+    "visualAssetStatus": "cropped_for_manual_cleanup",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "quadratic function graph",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
 

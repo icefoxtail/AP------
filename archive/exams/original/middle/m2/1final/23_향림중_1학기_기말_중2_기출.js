@@ -23,7 +23,11 @@ window.questionBank = [
       "ㄴ, ㄹ, ㅁ"
     ],
     "answer": "②",
-    "solution": "ㄱ 일차부등식<br>ㄴ $5+2x\\leq2x-4\\Rightarrow5\\leq-4$ (x항 소거) → 아님<br>ㄷ 등식<br>ㄹ $x^2+5\\leq x^2+5x\\Rightarrow5\\leq5x$ → 일차부등식<br>ㅁ $x^2+4x-1\\lt x^2+x-1\\Rightarrow3x\\lt0$ → 일차부등식<br>ㅂ $x+1\\gt x-4\\Rightarrow1\\gt-4$ (x항 소거) → 아님"
+    "solution": "ㄱ 일차부등식<br>ㄴ $5+2x\\leq2x-4\\Rightarrow5\\leq-4$ (x항 소거) → 아님<br>ㄷ 등식<br>ㄹ $x^2+5\\leq x^2+5x\\Rightarrow5\\leq5x$ → 일차부등식<br>ㅁ $x^2+4x-1\\lt x^2+x-1\\Rightarrow3x\\lt0$ → 일차부등식<br>ㅂ $x+1\\gt x-4\\Rightarrow1\\gt-4$ (x항 소거) → 아님",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "4개"
     ],
     "answer": "③",
-    "solution": "$x-2\\gt3x-8$<br>$6\\gt2x$<br>$x\\lt3$<br>자연수 $x=1,2$ → 2개"
+    "solution": "$x-2\\gt3x-8$<br>$6\\gt2x$<br>$x\\lt3$<br>자연수 $x=1,2$ → 2개",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -69,7 +77,11 @@ window.questionBank = [
     "imageSize": "tall",
     "choices": [],
     "answer": "③",
-    "solution": "$6\\times\\left(\\dfrac16x-\\dfrac{x-8}{2}\\leq\\dfrac{x+2}{3}\\right)$<br>$x-3(x-8)\\leq2(x+2)$<br>$-2x+24\\leq2x+4$<br>$20\\leq4x$<br>$x\\geq5$"
+    "solution": "$6\\times\\left(\\dfrac16x-\\dfrac{x-8}{2}\\leq\\dfrac{x+2}{3}\\right)$<br>$x-3(x-8)\\leq2(x+2)$<br>$-2x+24\\leq2x+4$<br>$20\\leq4x$<br>$x\\geq5$",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -93,7 +105,11 @@ window.questionBank = [
       "$a=2$"
     ],
     "answer": "⑤",
-    "solution": "$1+0.9x\\lt x+0.6\\Rightarrow0.4\\lt0.1x\\Rightarrow x\\gt4$<br>$2(x-a)\\gt8-x\\Rightarrow3x\\gt8+2a\\Rightarrow x\\gt\\dfrac{8+2a}{3}$<br>$\\dfrac{8+2a}{3}=4\\Rightarrow a=2$"
+    "solution": "$1+0.9x\\lt x+0.6\\Rightarrow0.4\\lt0.1x\\Rightarrow x\\gt4$<br>$2(x-a)\\gt8-x\\Rightarrow3x\\gt8+2a\\Rightarrow x\\gt\\dfrac{8+2a}{3}$<br>$\\dfrac{8+2a}{3}=4\\Rightarrow a=2$",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -117,7 +133,11 @@ window.questionBank = [
       "$\\dfrac{x}{3}+\\dfrac{1}{6}+\\dfrac{x}{3}\\leq1$"
     ],
     "answer": "⑤",
-    "solution": "왕복 걷는 시간 $\\dfrac{x}{3}+\\dfrac{x}{3}$시간<br>물건 사는 시간 $10$분 $=\\dfrac16$시간<br>$\\dfrac{x}{3}+\\dfrac16+\\dfrac{x}{3}\\leq1$"
+    "solution": "왕복 걷는 시간 $\\dfrac{x}{3}+\\dfrac{x}{3}$시간<br>물건 사는 시간 $10$분 $=\\dfrac16$시간<br>$\\dfrac{x}{3}+\\dfrac16+\\dfrac{x}{3}\\leq1$",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -141,7 +161,11 @@ window.questionBank = [
       "$x\\gt\\dfrac4a$"
     ],
     "answer": "④",
-    "solution": "$ax+2\\gt14-2ax$<br>$3ax\\gt12$<br>$a\\lt0$ 이므로 부등호 방향 바뀜<br>$x\\lt\\dfrac{12}{3a}=\\dfrac4a$"
+    "solution": "$ax+2\\gt14-2ax$<br>$3ax\\gt12$<br>$a\\lt0$ 이므로 부등호 방향 바뀜<br>$x\\lt\\dfrac{12}{3a}=\\dfrac4a$",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -165,7 +189,11 @@ window.questionBank = [
       "㉠×2 - ㉡×3"
     ],
     "answer": "⑤",
-    "solution": "$x$의 계수 $3,2$의 최소공배수는 $6$<br>$2\\times㉠:6x+4y=6$<br>$3\\times㉡:6x+15y=12$<br>소거식: $㉠\\times2-㉡\\times3$"
+    "solution": "$x$의 계수 $3,2$의 최소공배수는 $6$<br>$2\\times㉠:6x+4y=6$<br>$3\\times㉡:6x+15y=12$<br>소거식: $㉠\\times2-㉡\\times3$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -189,7 +217,11 @@ window.questionBank = [
       "$x=5,\\ y=2$"
     ],
     "answer": "④",
-    "solution": "$x=2y+3$<br>$(2y+3)+y=6$<br>$3y=3\\Rightarrow y=1$<br>$x=5$"
+    "solution": "$x=2y+3$<br>$(2y+3)+y=6$<br>$3y=3\\Rightarrow y=1$<br>$x=5$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -213,7 +245,11 @@ window.questionBank = [
       "$-5$"
     ],
     "answer": "①",
-    "solution": "$x=1$ 대입<br>$3+2b=7\\Rightarrow b=2$<br>$2-2a=8\\Rightarrow -2a=6\\Rightarrow a=-3$<br>$b-a=2-(-3)=5$"
+    "solution": "$x=1$ 대입<br>$3+2b=7\\Rightarrow b=2$<br>$2-2a=8\\Rightarrow -2a=6\\Rightarrow a=-3$<br>$b-a=2-(-3)=5$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -237,7 +273,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "$\\dfrac{x}{2}+\\dfrac{y}{5}=1\\Rightarrow5x+2y=10$<br>$0.1x-0.2y=1.4\\Rightarrow x-2y=14$<br>더하면 $6x=24\\Rightarrow x=4$<br>$4-2y=14\\Rightarrow y=-5$<br>$a+b=4+(-5)=-1$"
+    "solution": "$\\dfrac{x}{2}+\\dfrac{y}{5}=1\\Rightarrow5x+2y=10$<br>$0.1x-0.2y=1.4\\Rightarrow x-2y=14$<br>더하면 $6x=24\\Rightarrow x=4$<br>$4-2y=14\\Rightarrow y=-5$<br>$a+b=4+(-5)=-1$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -261,7 +301,11 @@ window.questionBank = [
       "52명"
     ],
     "answer": "③",
-    "solution": "작년 남학생 $x$, 여학생 $y$<br>$x+y=110$<br>$0.9x+1.1y=109$<br>두 식 → $x=60,\\ y=50$<br>올해 남학생 $0.9\\times60=54$"
+    "solution": "작년 남학생 $x$, 여학생 $y$<br>$x+y=110$<br>$0.9x+1.1y=109$<br>두 식 → $x=60,\\ y=50$<br>올해 남학생 $0.9\\times60=54$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "subUnit": "연립일차방정식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -285,7 +329,11 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "⑤",
-    "solution": "$3x-3y+5=-1\\Rightarrow x-y=-2$<br>$x+2y-8=-1\\Rightarrow x+2y=7$<br>$3y=9\\Rightarrow y=3,\\ x=1$<br>$a=2x-y=2-3=-1$"
+    "solution": "$3x-3y+5=-1\\Rightarrow x-y=-2$<br>$x+2y-8=-1\\Rightarrow x+2y=7$<br>$3y=9\\Rightarrow y=3,\\ x=1$<br>$a=2x-y=2-3=-1$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -309,7 +357,11 @@ window.questionBank = [
       "3"
     ],
     "answer": "①",
-    "solution": "$y=-4$를 ㉠에 대입<br>$3x+4=1\\Rightarrow x=-1$<br>잘못 본 계수를 $k$라 하면<br>$kx+3y=-9$<br>$k(-1)+3(-4)=-9\\Rightarrow -k-12=-9\\Rightarrow k=-3$"
+    "solution": "$y=-4$를 ㉠에 대입<br>$3x+4=1\\Rightarrow x=-1$<br>잘못 본 계수를 $k$라 하면<br>$kx+3y=-9$<br>$k(-1)+3(-4)=-9\\Rightarrow -k-12=-9\\Rightarrow k=-3$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -333,7 +385,11 @@ window.questionBank = [
       "한 변의 길이가 x cm인 정사각형의 둘레의 길이 y cm"
     ],
     "answer": "④",
-    "solution": "함수: $x$ 하나에 $y$가 하나<br>④ 자연수 $x$보다 큰 짝수는 여러 개<br>예: $x=3$이면 $y=4,6,8,\\cdots$"
+    "solution": "함수: $x$ 하나에 $y$가 하나<br>④ 자연수 $x$보다 큰 짝수는 여러 개<br>예: $x=3$이면 $y=4,6,8,\\cdots$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -357,7 +413,11 @@ window.questionBank = [
       "$-4$"
     ],
     "answer": "①",
-    "solution": "$f(2)=2\\times2-3=1$<br>$f(-1)=2\\times(-1)-3=-5$<br>$f(2)-f(-1)=1-(-5)=6$"
+    "solution": "$f(2)=2\\times2-3=1$<br>$f(-1)=2\\times(-1)-3=-5$<br>$f(2)-f(-1)=1-(-5)=6$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -381,7 +441,11 @@ window.questionBank = [
       "$y=-4x$의 그래프를 $y$축 방향으로 2만큼 평행이동한 것이다."
     ],
     "answer": "③",
-    "solution": "$x$절편: $0=-4x+2\\Rightarrow x=\\dfrac12$<br>$y$절편: 2<br>기울기 음수, $y$절편 양수 → 제1,2,4사분면<br>제3사분면은 지나지 않음"
+    "solution": "$x$절편: $0=-4x+2\\Rightarrow x=\\dfrac12$<br>$y$절편: 2<br>기울기 음수, $y$절편 양수 → 제1,2,4사분면<br>제3사분면은 지나지 않음",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -408,7 +472,11 @@ window.questionBank = [
       "$-\\dfrac43$"
     ],
     "answer": "④",
-    "solution": "그래프에서 두 점 $(0,-4)$, $(3,0)$<br>기울기 $=\\dfrac{0-(-4)}{3-0}=\\dfrac43$"
+    "solution": "그래프에서 두 점 $(0,-4)$, $(3,0)$<br>기울기 $=\\dfrac{0-(-4)}{3-0}=\\dfrac43$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -432,7 +500,11 @@ window.questionBank = [
       "$\\dfrac14$"
     ],
     "answer": "①",
-    "solution": "$a=-\\dfrac14$<br>$x$절편: $0=-\\dfrac14x+2\\Rightarrow x=8$ → $b=8$<br>$y$절편 $c=2$<br>$abc=-\\dfrac14\\times8\\times2=-4$"
+    "solution": "$a=-\\dfrac14$<br>$x$절편: $0=-\\dfrac14x+2\\Rightarrow x=8$ → $b=8$<br>$y$절편 $c=2$<br>$abc=-\\dfrac14\\times8\\times2=-4$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -456,7 +528,11 @@ window.questionBank = [
       "96"
     ],
     "answer": "②",
-    "solution": "교점: $x-6=-2x+12\\Rightarrow3x=18\\Rightarrow x=6,\\ y=0$<br>$y$절편: $-6,\\ 12$<br>밑변 $=18$, 높이 $=6$<br>넓이 $=\\dfrac12\\times18\\times6=54$"
+    "solution": "교점: $x-6=-2x+12\\Rightarrow3x=18\\Rightarrow x=6,\\ y=0$<br>$y$절편: $-6,\\ 12$<br>밑변 $=18$, 높이 $=6$<br>넓이 $=\\dfrac12\\times18\\times6=54$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -480,7 +556,11 @@ window.questionBank = [
       "$-15$"
     ],
     "answer": "②",
-    "solution": "기울기 $=\\dfrac{\\Delta y}{\\Delta x}=\\dfrac{-4}{3}$<br>$\\dfrac{a}{3}=-\\dfrac43\\Rightarrow a=-4$<br>$b=\\dfrac{-4}{3}\\times6+7=-8+7=-1$<br>$ab=(-4)(-1)=4$"
+    "solution": "기울기 $=\\dfrac{\\Delta y}{\\Delta x}=\\dfrac{-4}{3}$<br>$\\dfrac{a}{3}=-\\dfrac43\\Rightarrow a=-4$<br>$b=\\dfrac{-4}{3}\\times6+7=-8+7=-1$<br>$ab=(-4)(-1)=4$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -500,7 +580,11 @@ window.questionBank = [
     "content": "연립방정식 $\\begin{cases}\\dfrac{x}{4}-\\dfrac{y}{2}=\\dfrac54\\\\3x-2y=a\\end{cases}$를 만족하는 $x$, $y$의 값의 비가 $1:3$이라고 할 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
     "answer": "3",
-    "solution": "$x:y=1:3\\Rightarrow y=3x$<br>$\\dfrac{x}{4}-\\dfrac{3x}{2}=\\dfrac54$<br>$x-6x=5\\Rightarrow -5x=5\\Rightarrow x=-1$<br>$y=-3$<br>$a=3x-2y=3(-1)-2(-3)=3$"
+    "solution": "$x:y=1:3\\Rightarrow y=3x$<br>$\\dfrac{x}{4}-\\dfrac{3x}{2}=\\dfrac54$<br>$x-6x=5\\Rightarrow -5x=5\\Rightarrow x=-1$<br>$y=-3$<br>$a=3x-2y=3(-1)-2(-3)=3$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -520,7 +604,11 @@ window.questionBank = [
     "content": "연립방정식 $\\begin{cases}ax+by=-3\\\\bx-ay=4\\end{cases}$의 해가 $(-1,2)$일 때, 두 수 $a$, $b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
     "answer": "2",
-    "solution": "$x=-1,\\ y=2$ 대입<br>$-a+2b=-3\\Rightarrow a-2b=3$<br>$-b-2a=4\\Rightarrow2a+b=-4$<br>$a=-1,\\ b=-2$<br>$ab=2$"
+    "solution": "$x=-1,\\ y=2$ 대입<br>$-a+2b=-3\\Rightarrow a-2b=3$<br>$-b-2a=4\\Rightarrow2a+b=-4$<br>$a=-1,\\ b=-2$<br>$ab=2$",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -540,7 +628,11 @@ window.questionBank = [
     "content": "예솔이네 집은 공기청정기를 새로 장만하려고 한다. 공기청정기를 구입하는 경우에는 공기청정기 가격 50만원과 매달 14000원의 필터 교체비가 들고, 공기청정기를 대여할 경우에는 매달 26000원의 대여비가 든다. 공기청정기를 x개월 동안 사용한다고 할 때, 다음에 답하시오.<br>(1) 공기청정기를 구입하는 경우와 대여하는 경우에 드는 비용을 각각 식으로 나타내시오.<br>(2) 공기청정기를 구입하는 것이 유리하려면 공기청정기를 최소 몇 개월 이상 사용해야 하는지 일차부등식을 세우고 답을 구하시오.",
     "choices": [],
     "answer": "(1) 구입: $500000+14000x$, 대여: $26000x$  (2) 42개월",
-    "solution": "(1) 구입 $500000+14000x$, 대여 $26000x$<br>(2) $500000+14000x\\leq26000x$<br>$500000\\leq12000x$<br>$x\\geq\\dfrac{500000}{12000}=41.66\\cdots$<br>최소 42개월"
+    "solution": "(1) 구입 $500000+14000x$, 대여 $26000x$<br>(2) $500000+14000x\\leq26000x$<br>$500000\\leq12000x$<br>$x\\geq\\dfrac{500000}{12000}=41.66\\cdots$<br>최소 42개월",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -560,6 +652,10 @@ window.questionBank = [
     "content": "일차함수 $y=-x+a$의 그래프를 $y$축 방향으로 3만큼 평행이동한 그래프가 두 점 $(1,4)$, $(2,b)$를 지날 때, $a+b$의 값을 구하시오.",
     "choices": [],
     "answer": "5",
-    "solution": "평행이동 후 식: $y=-x+a+3$<br>$(1,4)$ 대입: $4=-1+a+3\\Rightarrow a=2$<br>$(2,b)$ 대입: $b=-2+2+3=3$<br>$a+b=5$"
+    "solution": "평행이동 후 식: $y=-x+a+3$<br>$(1,4)$ 대입: $4=-1+a+3\\Rightarrow a=2$<br>$(2,b)$ 대입: $b=-2+2+3=3$<br>$a+b=5$",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
