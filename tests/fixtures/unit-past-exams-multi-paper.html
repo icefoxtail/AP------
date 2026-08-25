@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><base href="../../archive/"><title>Unit Past Exams multi-paper fixture</title></head>
+<body class="unit-page">
+  <div id="unit-kicker"></div>
+  <h1 id="unit-title"></h1>
+  <div id="unit-summary"></div>
+  <div id="unit-status" role="status" aria-live="polite"></div>
+  <div id="multi-ready" hidden></div>
+  <select id="unit-qpp"><option value="4">4문항</option></select>
+  <main id="unit-content"></main>
+  <script src="unit-past-exams-core.js?v=20260825d"></script>
+  <script src="question-index.js?v=20260812"></script>
+  <script src="unit-past-exams.js?v=20260825d"></script>
+  <script>
+    const fixtureSourceFile = 'original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js';
+    window.questionIndex = Array.from({ length: 12 }, (_, index) => ({
+      qKey: `${fixtureSourceFile}_${index + 1}`,
+      sourceFile: fixtureSourceFile,
+      sourceOrdinal: index + 1,
+      id: index + 1,
+      grade: '고1',
+      subject: '수학(상)',
+      course: '공통수학1',
+      standardUnitKey: 'H15-SA-01',
+      standardUnit: '다항식의 연산',
+      subUnitKey: 'H22-C-01-CORE',
+      sub_unit_parent_key: 'H22-C-01',
+      subUnit: '핵심',
+      level: ['중', '중', '중', '중', '중', '중', '중', '하', '하', '하', '상', '상'][index],
+      question_uid: `multi-fixture-${index + 1}`
+    }));
+    window.UnitPastExams.init().then(() => {
+      const originalSplit = window.UnitPastExamsCore.splitIntoPapers;
+      window.UnitPastExamsCore.splitIntoPapers = records => {
+        const midpoint = Math.max(1, Math.ceil(records.length / 2));
+        return [records.slice(0, midpoint), records.slice(midpoint)].filter(paper => paper.length);
+      };
+      window.__UNIT_PAST_MULTI_READY__ = true;
+      window.__UNIT_PAST_MULTI_SPLIT__ = originalSplit;
+      document.getElementById('multi-ready').setAttribute('data-ready', 'true');
+    });
+  </script>
+</body>
+</html>

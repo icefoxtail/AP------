@@ -353,11 +353,242 @@
     return fileDiff || getQuestionNo(a) - getQuestionNo(b);
   }
 
+  // The archive contains a few legacy values such as "[중]" and values from
+  // other level systems ("중1", "고2").  Unit-past-exams deliberately exposes
+  // only the three shared difficulty buckets plus an explicit fallback.
+  function normalizeDifficulty(value) {
+    const normalized = String(value ?? '')
+      .trim()
+      .replace(/^\[|\]$/g, '')
+      .trim();
+    return ['하', '중', '상'].includes(normalized) ? normalized : '미분류';
+  }
+
+  function getDifficultyBucket(record) {
+    const value = record && (record.difficultyBucket || record.normalizedLevel || record.level);
+    return normalizeDifficulty(value);
+  }
+
+  function getQuestionUid(record) {
+    return String(record && (record.questionUid || record.question_uid) || '').trim();
+  }
+
+  function getSubUnitParentKey(record) {
+    return String(record && (record.subUnitParentKey || record.sub_unit_parent_key || record.standardUnitKey || record.standard_unit_key) || '').trim();
+  }
+
+  function getSubUnitKey(record) {
+    return String(record && (record.subUnitKey || record.sub_unit_key) || '').trim();
+  }
+
+  function getSubUnitLabel(record) {
+    return String(record && (record.subUnit || record.sub_unit) || '').trim();
+  }
+
+  function getRecordIdentity(record) {
+    const uid = getQuestionUid(record);
+    if (uid) return uid;
+    return `${normalizePath(record && record.sourceFile)}#${record && (record.sourceQuestionNo || getQuestionNo(record))}`;
+  }
+
+  function isSubUnitInParentScope(subUnitKey, parentUnitKey) {
+    const subUnit = String(subUnitKey || '').trim();
+    const parentUnit = String(parentUnitKey || '').trim();
+    if (!subUnit) return true;
+    if (!parentUnit) return false;
+    return subUnit === parentUnit || subUnit.startsWith(`${parentUnit}-`);
+  }
+
+  function getDifficultySummary(records) {
+    const summary = { 하: 0, 중: 0, 상: 0, 미분류: 0 };
+    for (const record of Array.isArray(records) ? records : []) summary[getDifficultyBucket(record)] += 1;
+    return summary;
+  }
+
+  function getSubUnitOptions(records) {
+    const groups = new Map();
+    for (const record of Array.isArray(records) ? records : []) {
+      const key = getSubUnitKey(record) || '__unclassified__';
+      const label = getSubUnitLabel(record) || '미분류 소단원';
+      const group = groups.get(key) || { key, label, count: 0, difficulty: { 하: 0, 중: 0, 상: 0, 미분류: 0 } };
+      group.count += 1;
+      group.difficulty[getDifficultyBucket(record)] += 1;
+      groups.set(key, group);
+    }
+    return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
+  }
+
+  function filterUnitRecords(records, filters = {}) {
+    const source = Array.isArray(records) ? records : [];
+    const subUnitKeys = new Set((filters.subUnitKeys || []).map(value => String(value || '').trim()).filter(Boolean));
+    const difficultyBuckets = new Set((filters.difficultyBuckets || []).map(normalizeDifficulty));
+    return source.filter(record => {
+      const subUnitKey = getSubUnitKey(record) || '__unclassified__';
+      const difficulty = getDifficultyBucket(record);
+      if (subUnitKeys.size && !subUnitKeys.has(subUnitKey)) return false;
+      if (difficultyBuckets.size && !difficultyBuckets.has(difficulty)) return false;
+      if (filters.includeUnclassified !== true && (subUnitKey === '__unclassified__' || difficulty === '미분류')) return false;
+      return true;
+    });
+  }
+
+  function stableSelectionScore(record, seed) {
+    return fnv1a(`${String(seed || 'unitpast-default')}|${getRecordIdentity(record)}`);
+  }
+
+  function sortForSelection(records, seed) {
+    return [...records].sort((a, b) => {
+      const scoreDiff = compareText(stableSelectionScore(a, seed), stableSelectionScore(b, seed));
+      return scoreDiff || compareRecords(a, b);
+    });
+  }
+
+  function dedupeRecords(records) {
+    const seen = new Set();
+    return (Array.isArray(records) ? records : []).filter(record => {
+      const identity = getRecordIdentity(record);
+      if (seen.has(identity)) return false;
+      seen.add(identity);
+      return true;
+    });
+  }
+
+  function getAdjacentDifficultyBuckets(bucket) {
+    const order = ['하', '중', '상'];
+    const index = order.indexOf(normalizeDifficulty(bucket));
+    if (index < 0) return [];
+    return order
+      .map((value, valueIndex) => ({ value, distance: Math.abs(valueIndex - index) }))
+      .filter(item => item.distance > 0)
+      .sort((a, b) => a.distance - b.distance)
+      .map(item => item.value);
+  }
+
+  function selectionLimit(options = {}) {
+    return Math.max(1, Number(options.maxCount || COMMON_SCOPE.hardMaxQuestionsPerPaper));
+  }
+
+  function selectRecords(records, options = {}) {
+    const candidates = dedupeRecords(filterUnitRecords(records, {
+      ...options,
+      includeUnclassified: options.includeUnclassified === true
+    }));
+    const requestedCount = Math.max(0, Number(options.count || 0));
+    const limit = selectionLimit(options);
+    if (requestedCount > limit) {
+      return {
+        selected: [], candidates, requestedCount, selectedCount: 0,
+        shortage: requestedCount, limit, limitExceeded: true, ok: false
+      };
+    }
+    const selected = sortForSelection(candidates, options.seed).slice(0, requestedCount);
+    return {
+      selected,
+      candidates,
+      requestedCount,
+      selectedCount: selected.length,
+      shortage: Math.max(0, requestedCount - selected.length),
+      ok: selected.length === requestedCount
+    };
+  }
+
+  function selectByBlueprint(records, rows = [], options = {}) {
+    const normalizedRows = (Array.isArray(rows) ? rows : []).filter(row => Number(row && row.count) > 0);
+    const requestedCount = normalizedRows.reduce((sum, row) => sum + Math.max(0, Number(row.count || 0)), 0);
+    const limit = selectionLimit(options);
+    const pool = dedupeRecords(filterUnitRecords(records, {
+      subUnitKeys: options.subUnitKeys || [],
+      difficultyBuckets: options.allowAdjacentDifficulty ? [] : (options.difficultyBuckets || []),
+      includeUnclassified: options.includeUnclassified === true
+    }));
+    if (requestedCount > limit) {
+      return {
+        selected: [], candidates: pool,
+        rows: normalizedRows.map((row, index) => ({
+          index,
+          subUnitKey: String(row.subUnitKey || '').trim(),
+          difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
+          requestedCount: Math.max(0, Number(row.count || 0)), availableCount: 0,
+          selectedCount: 0, shortage: Math.max(0, Number(row.count || 0)),
+          fallbackDifficultyBuckets: [], relaxedCount: 0, ok: false
+        })),
+        requestedCount, selectedCount: 0, shortage: requestedCount,
+        limit, limitExceeded: true, ok: false
+      };
+    }
+    const used = new Set();
+    const selected = [];
+    const reports = [];
+    normalizedRows.forEach((row, index) => {
+      const requestedCount = Math.max(0, Number(row.count || 0));
+      const rowSubUnitKeys = row.subUnitKeys || (row.subUnitKey ? [row.subUnitKey] : []);
+      const rowDifficultyBuckets = row.difficultyBuckets || (row.difficultyBucket ? [row.difficultyBucket] : []);
+      const hasRowDifficulty = rowDifficultyBuckets.length > 0;
+      const strictBuckets = hasRowDifficulty ? rowDifficultyBuckets : (options.difficultyBuckets || []);
+      const rowCandidates = dedupeRecords(filterUnitRecords(pool, {
+        subUnitKeys: rowSubUnitKeys,
+        difficultyBuckets: strictBuckets,
+        includeUnclassified: options.includeUnclassified === true
+      })).filter(record => !used.has(getRecordIdentity(record)));
+      let availableCandidates = rowCandidates;
+      const fallbackDifficultyBuckets = [];
+      if (options.allowAdjacentDifficulty && hasRowDifficulty && rowCandidates.length < requestedCount) {
+        const fallbackBuckets = rowDifficultyBuckets.length === 1 ? getAdjacentDifficultyBuckets(rowDifficultyBuckets[0]) : [];
+        for (const bucket of fallbackBuckets) {
+          if (availableCandidates.length >= requestedCount) break;
+          const fallback = dedupeRecords(filterUnitRecords(pool, {
+            subUnitKeys: rowSubUnitKeys,
+            difficultyBuckets: [bucket],
+            includeUnclassified: options.includeUnclassified === true
+          })).filter(record => !used.has(getRecordIdentity(record)) && !availableCandidates.some(item => getRecordIdentity(item) === getRecordIdentity(record)));
+          if (fallback.length) {
+            fallbackDifficultyBuckets.push(bucket);
+            availableCandidates = availableCandidates.concat(fallback);
+          }
+        }
+      }
+      const picked = sortForSelection(availableCandidates, `${options.seed || 'unitpast-default'}|row-${index}`).slice(0, requestedCount);
+      picked.forEach(record => { used.add(getRecordIdentity(record)); selected.push(record); });
+      const relaxedCount = picked.filter(record => hasRowDifficulty && !rowDifficultyBuckets.includes(getDifficultyBucket(record))).length;
+      reports.push({
+        index,
+        subUnitKey: String(row.subUnitKey || '').trim(),
+        difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
+        requestedCount,
+        availableCount: availableCandidates.length,
+        selectedCount: picked.length,
+        shortage: Math.max(0, requestedCount - picked.length),
+        fallbackDifficultyBuckets,
+        relaxedCount,
+        ok: picked.length === requestedCount
+      });
+    });
+    return {
+      selected,
+      candidates: pool,
+      rows: reports,
+      requestedCount,
+      selectedCount: selected.length,
+      shortage: reports.reduce((sum, row) => sum + row.shortage, 0),
+      limit,
+      limitExceeded: false,
+      ok: reports.every(row => row.ok)
+    };
+  }
+
   function normalizeClassifiedRecord(record, unit, profile) {
+    const subUnitKey = getSubUnitKey(record);
+    const subUnitParentKey = getSubUnitParentKey(record);
+    const safeSubUnitKey = isSubUnitInParentScope(subUnitKey, subUnitParentKey) ? subUnitKey : '';
     return {
       ...record,
       sourceFile: normalizePath(record.sourceFile || record._sourceFile),
       sourceQuestionNo: getQuestionNo(record),
+      questionUid: getQuestionUid(record),
+      subUnitParentKey,
+      subUnitKey: safeSubUnitKey,
+       subUnit: safeSubUnitKey ? getSubUnitLabel(record) : '',
+      difficultyBucket: getDifficultyBucket(record),
       mappedUnitKey: unit.key,
       mappedUnit: unit.name,
       mappedCourse: unit.course,
@@ -408,9 +639,16 @@
     return (hash >>> 0).toString(16).padStart(8, '0');
   }
 
-  function buildSnapshotKey(unitKey, records, scope) {
-    const identity = records.map(record => `${normalizePath(record.sourceFile)}#${record.sourceQuestionNo || getQuestionNo(record)}`).join('|');
-    return `unitpast_${scope.id}_${unitKey}_${fnv1a(`${scope.id}|${unitKey}|${identity}`)}`;
+  function buildSnapshotKey(unitKey, records, scope, selection = {}) {
+    const identity = records.map(getRecordIdentity).join('|');
+    const selectionKey = JSON.stringify({
+      mode: selection.mode || '',
+      subUnitKeys: selection.subUnitKeys || [],
+      difficultyBuckets: selection.difficultyBuckets || [],
+      difficultyPlan: selection.difficultyPlan || [],
+      seed: selection.seed || ''
+    });
+    return `unitpast_${scope.id}_${unitKey}_${fnv1a(`${scope.id}|${unitKey}|${selectionKey}|${identity}`)}`;
   }
 
   function buildCatalog(records, options = {}) {
@@ -466,10 +704,24 @@
     getProfile,
     normalizePath,
     getQuestionNo,
+    getQuestionUid,
     getPeriod,
     isInScope,
     classifyRecord,
     compareRecords,
+    normalizeDifficulty,
+    getDifficultyBucket,
+    getSubUnitKey,
+    getSubUnitParentKey,
+    getSubUnitLabel,
+    isSubUnitInParentScope,
+    getRecordIdentity,
+    dedupeRecords,
+    getDifficultySummary,
+    getSubUnitOptions,
+    filterUnitRecords,
+    selectRecords,
+    selectByBlueprint,
     splitIntoPapers,
     buildSnapshotKey,
     buildCatalog
