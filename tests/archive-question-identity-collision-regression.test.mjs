@@ -9,7 +9,10 @@ import { createQuestionIdentityResolver } from '../archive/tools/intelligence/qu
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const archiveDir = path.join(root, 'archive');
 const map = JSON.parse(fs.readFileSync(path.join(archiveDir, 'data', 'question_identity_map.json'), 'utf8'));
-const review = JSON.parse(fs.readFileSync(path.join(archiveDir, '_generated', 'intelligence', 'phase0', 'qkey-collision-review.json'), 'utf8'));
+const reviewPath = path.join(archiveDir, '_generated', 'intelligence', 'phase0', 'qkey-collision-review.json');
+const review = fs.existsSync(reviewPath)
+    ? JSON.parse(fs.readFileSync(reviewPath, 'utf8'))
+    : { groups: [], groupCount: 0, recordCount: 0 };
 const resolver = createQuestionIdentityResolver(map);
 
 function sourceFingerprint(question) {

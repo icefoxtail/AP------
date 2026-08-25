@@ -6,7 +6,10 @@ import { createQuestionIdentityResolver } from '../archive/tools/intelligence/qu
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const map = JSON.parse(fs.readFileSync(path.join(root, 'archive', 'data', 'question_identity_map.json'), 'utf8'));
-const collisionReview = JSON.parse(fs.readFileSync(path.join(root, 'archive', '_generated', 'intelligence', 'phase0', 'qkey-collision-review.json'), 'utf8'));
+const collisionReviewPath = path.join(root, 'archive', '_generated', 'intelligence', 'phase0', 'qkey-collision-review.json');
+const collisionReview = fs.existsSync(collisionReviewPath)
+    ? JSON.parse(fs.readFileSync(collisionReviewPath, 'utf8'))
+    : { groupCount: 0 };
 const resolver = createQuestionIdentityResolver(map);
 
 let canonicalResolved = 0;
