@@ -55,6 +55,10 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 읽는 문서다.
 | agent SOP | `docs/agent-skills/` |
 | 디자인/reference/운영 가이드 | `docs/guides/` |
 | 분석 보고서 | `docs/reports/` |
+| JS 아카이브 master·룰북·검수 프로토콜 | `docs/rules/` (`MANIFEST.md` 포함) |
+| 검수용 결과팩 | `docs/review-packs/` |
+| 실행 전 제안/초안 | `docs/proposals/` |
+| 외부 디자인 참고 자료 | `docs/awesome-design-md/` |
 | 완료/과거/검수 요청 문서 | `docs/archive/` |
 | 문서 구조와 이동 이력 | `docs/_index/` |
 

@@ -2,10 +2,12 @@
 
 > **운영자**: 박준성 (마스터)  
 > **저장소**: icefoxtail.github.io/AP------  
-> **최종 갱신**: 2026년 (v2.5 — 기존 JS 기본 스키마 보존, 기출 PDF 변환 파이프라인 원칙 추가, 유사문제용 확장 태그·마스터테이블 정책 추가, generated 후보/검수 후 편입 원칙 추가, 복수정답 인정·검수 기준 추가)  
+> **최종 갱신**: 2026-08-24 (v2.5 base + `JS아카이브_세부단원_운영규칙_v1` 적용 — 신규 JS 세부단원 필수 계약, candidate/production parity, source-dependent DB 메타데이터 보류 규칙, sidecar 근거 보존)
 > **역할**: GPT(계획·총괄) / Claude(검수) / Gemini(구현·데이터 변환) / 마스터(최종결정)
 
 ---
+
+> **현재 운영 부록:** 이 룰북의 기존 기본 스키마·기출·렌더링 원칙은 유지하되, 신규 아카이브 JS의 세부단원 계약은 [`JS아카이브_세부단원_운영규칙_v1.md`](JS아카이브_세부단원_운영규칙_v1.md)를 함께 적용한다. 기존 JS의 누락 필드는 legacy 예외로만 허용하며 신규 파일의 기본값으로 복사하지 않는다. `types`·`similar` DB 카드의 source-dependent 필드 보류 기준은 아래 4-4를 따른다.
 
 ## 0. 한 줄 원칙
 
@@ -87,12 +89,14 @@
 
 ### 확장 메타데이터 필드
 
-아래 필드는 기본 스키마를 대체하지 않는 선택 확장 필드다.
+아래 필드는 기존 legacy JS에서는 선택 확장 필드였지만, **신규 candidate·production JS에서는 세부단원 4개 필드를 필수로 승격**한다. 나머지 유사문제 확장 필드는 승인된 경우에만 추가한다.
 
 ```js
 {
   subUnitKey: "",
   subUnit: "",
+  subUnitConfidence: "",
+  subUnitClassificationDepth: "",
   conceptClusterKey: "",
   problemTypeKey: "",
   templateKey: "",
@@ -107,9 +111,12 @@
 }
 ```
 
+신규 파일의 `subUnitKey`는 `docs/rules/JS아카이브_표준단원키_마스터테이블.md`와 compiled JSON master에 존재해야 하며, `subUnit`·parent `standardUnitKey`와 일치해야 한다. `standardUnitKey`는 canonical standard-unit table 키 또는 taxonomy 확장표·compiled master에 부모로 문서화된 extension 키만 허용한다. `RAW-*`, `RRAW-*`, `UNMAPPED-*`는 정식 키가 아니라 예외 report에서만 유지한다.
+
 ### 기본 필드와 확장 필드의 관계
 
 - `standardUnitKey`는 기존 단원 필터와 교육과정 매핑의 기준이다.
+- canonical `standardUnitKey`는 master의 `standardUnit`·`standardUnitOrder`를 그대로 사용한다. extension parent 키는 compiled subunit parent가 일치할 때만 사용하며, 세부단원 라벨과 parent 관계를 검증 대상으로 삼는다.
 - `subUnitKey`는 중등 대단원 또는 고등 중단원 내부를 더 잘게 나누기 위한 세부 단원 키다.
 - `conceptClusterKey`는 같은 개념 묶음이다.
 - `problemTypeKey`는 같은 문제 유형을 뜻한다.
@@ -182,7 +189,7 @@ tagStatus:
 
 ### 확장 태그 마스터테이블 우선 원칙
 
-`subUnitKey`, `conceptClusterKey`, `problemTypeKey`, `templateKey`는 `# JS아카이브 표준단원키 마스터 테이블.md`의 확장 태그 정책을 기준으로 한다.
+`subUnitKey`, `subUnit`, `subUnitConfidence`, `subUnitClassificationDepth`, `conceptClusterKey`, `problemTypeKey`, `templateKey`는 `docs/rules/JS아카이브_표준단원키_마스터테이블.md`와 `JS아카이브_세부단원_운영규칙_v1.md`를 기준으로 한다.
 
 - 룰북은 운영 원칙을 정의한다.
 - 실제 키 명명, 세부 단원, 유형, 템플릿 기준은 마스터 테이블을 따른다.
@@ -337,7 +344,11 @@ window.examTitle = "YY_학교_N학기_시험종류_학년_과목";
   image: "assets/images/시험지전체명/q1.png", // 선택 필드, PNG 자산 없으면 생략
   choices: ["보기1", "보기2", "보기3", "보기4", "보기5"],
   answer: "③",
-  solution: "문제 조건을 식으로 정리한다.\n필요한 계산을 전개한다.\n따라서 정답은 ③이다."
+  solution: "문제 조건을 식으로 정리한다.\n필요한 계산을 전개한다.\n따라서 정답은 ③이다.",
+  subUnitKey: "H22-A-01-EXPONENT_LOG",
+  subUnit: "지수와 로그",
+  subUnitConfidence: "category_or_cue_inferred",
+  subUnitClassificationDepth: "complete_category"
 }
 ```
 
@@ -660,13 +671,87 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
 * 파일명만 바꾸고 `examTitle`을 구형으로 방치하는 것을 금지한다.
 * `db.js`는 표시용 보조 정보가 아니라 인덱스/필터/검색 기준이므로, 파일명과 불일치가 누적되면 안 된다.
 
+### 4-4. `types`·`similar` source-dependent DB 메타데이터 운영 규칙 (2026-08-24)
+
+이 절은 `archive/db.js`의 카드 필드 중 파일의 출처에 의존하는 `school`, `year`, `semester`, `examType`의 backfill 기준이다. 문항의 단원·수식·정답·해설로 판단할 수 있는 분류 메타데이터와 출처 메타데이터를 섞지 않는다.
+
+#### 4-4-1. 게이트와 예외의 정의
+
+- `original`은 학교 시험지이므로 `file`, `school`, `grade`, `year`, `semester`, `examType`, `subject`, `contentType`, `qCount`가 모두 직접 확인되어야 한다. 이 범위의 필수 메타 gap은 0건이어야 한다.
+- `types`·`similar`는 교재·유형·학원 제작 자료·학교 유사자료가 섞일 수 있다. 자체 파일·`window.examTitle`·명시된 source metadata에서 직접 확인되지 않는 출처 필드는 빈값으로 보류할 수 있다.
+- 이 보류는 운영 실패가 아니라 `sourceDependentOnly` report 예외다. 보류 중에도 JS load, 문항 수, question-index, identity UID, exam/sol/ans 렌더 게이트는 통과해야 한다. `fullDbRequiredFieldsGate`와 `fullDbSchoolGate`는 이 예외가 해소되기 전까지 `false`로 남을 수 있다.
+- 문항의 `standardCourse`, `standardUnitKey`, `subUnitKey`, concept map, 주변 파일, 같은 폴더의 다른 학교, 파일 수정일, 현재 연도, 교재의 교육과정 연도는 출처 메타데이터의 근거가 아니다.
+
+#### 4-4-2. 필드별 승격·보류 기준
+
+| 필드 | 승격할 수 있는 직접 근거 | 반드시 보류하는 경우 |
+|---|---|---|
+| `school` | `original` 또는 학교 시험형 `similar`의 자체 파일명에 학교 토큰이 정식 위치로 있고, 또는 JS 내부 메타데이터가 학교·기관·제작처를 명시한 경우. `types`의 source label은 이미 승인된 provider mapping 또는 명시적 provider 선언이 있을 때만 사용한다. | 단원명·교재명·출판사처럼 보이는 토큰만으로 실제 학교/제작처를 확정하는 경우, `similar1/2`가 기본 파일과 같은 출처일 것이라 추정하는 경우, 빈값을 `교재`, `유형`, `미상`, `AP수학` 등으로 채우는 경우 |
+| `year` | 자체 파일명 또는 `examTitle`의 `YY_` 접두사/4자리 연도, 혹은 별도 source metadata의 명시 연도. `YY_`는 기존 아카이브의 20YY 파일명 규칙으로만 해석한다. | 학원 모의고사·교재·유형 자료처럼 자체 연도가 없는 경우, 교육과정 개정 연도·출판 연도 추정·파일 생성일·인접 파일의 연도 상속 |
+| `semester` | 자체 파일명/`examTitle`의 `1학기`·`2학기`, 명시된 JS source metadata, 또는 `original`·`similar`의 canonical period path(`1mid`, `1final`, `2mid`, `2final`)가 이름과 충돌 없이 일치하는 경우. `중1_2_기말대비`처럼 시험 대비 표기와 학기 표기가 함께 직접 확인되는 경우도 허용한다. | `중간`·`기말`만 있고 학기가 없는 경우, `RPM_중2_2-1` 같은 교재 권/파트 표기, `대단원`·`중단원`·`익힘책`·단원 순서를 학기로 해석하는 경우 |
+| `examType` | 자체 파일명/`examTitle`의 `중간`·`기말` 또는 그에 준하는 명시적 시험 대비 표기를 기존 enum `mid`·`final`로 일대일 변환할 수 있는 경우. canonical period path와 파일명이 함께 일치하는 `similar`도 허용한다. | `모의고사`, `대표문제`, `유형확인`, `유형심화`, `익힘책`을 `mid`·`final`로 임의 변환하는 경우, `mock` 등 새 enum을 승인 없이 추가하는 경우 |
+
+`grade`, `subject`, `contentType`, `qCount`는 별도의 기본 필드 규칙을 따른다. 특히 `qCount`는 JS의 실제 `questionBank.length`와 일치해야 하며 출처 메타데이터 보류를 이유로 변경하지 않는다. `types`는 기본적으로 `contentType: "유형"`, `similar`는 자체 표기가 `단원평가`일 때만 `contentType: "단원평가"`, 그 밖에는 기존 `유사` 규칙을 유지한다.
+
+#### 4-4-3. 근거 등급과 상속 금지
+
+1. `direct`: 해당 파일의 경로 규약, 파일명, `window.examTitle`, JS 내부 source metadata에 값이 그대로 있다. 승격 검토 대상이다.
+2. `contextual`: 같은 폴더, 접미사 형제 파일, 기본 파일, 학교별 유사 파일, question-index, 표준단원 정보에서 가져온 값이다. 출처 필드 승격에 사용하지 않는다.
+3. `inferred`: 문항 내용·분류 모델·언어 추론으로 만든 값이다. `subUnit` inference와 달리 `school/year/semester/examType`에는 사용하지 않는다.
+
+직접 근거가 서로 충돌하면 다수결이나 파일명 보정으로 결정하지 않고 보류한다. 하나의 파일에서 확인된 값을 이름이 비슷한 다른 파일로 전파하지 않는다. 기존 DB의 non-empty source label은 유지하되, 이를 residual 파일에 자동 복사하지 않는다.
+
+#### 4-4-4. 현재 보류 스냅샷과 재검토 절차
+
+현재 기준은 `archive/_generated/intelligence/phase3/archive-db-backfill-v2.json`과 DB consistency report다.
+
+| 범위 | DB 레코드 | `emptySchool` | 필수 메타 gap | 현재 결정 |
+|---|---:|---:|---:|---|
+| `original` | 348 | 0 | 0 | 필수 메타 완결 |
+| `types` | 49 | 26 | 47 | 직접 source evidence 전까지 보류 |
+| `similar` | 41 | 2 | 13 | 직접 source evidence 전까지 보류 |
+| 합계 | 438 | 28 | 60 | `sourceDependentOnly` 예외 유지 |
+
+필드 공란 발생 수는 `school` 28, `year` 60, `semester` 37, `examType` 43이다. 이 수치는 레코드 수가 아니라 필드 occurrence이며 한 레코드가 여러 필드에 포함될 수 있다.
+
+새 원본·표지·출처 문서가 들어오면 다음 순서로 해당 행만 재검토한다.
+
+1. 자체 파일·`examTitle`·원본 source를 다시 열고 필드별 직접 토큰을 기록한다.
+2. 기존 enum과 파일명 규약에 맞는지 확인하고, 충돌 필드는 보류한다.
+3. 근거가 있는 필드만 최소 변경한다. 근거 없는 다른 필드는 그대로 둔다.
+4. DB consistency, qCount/index join, identity runtime, 운영 exam/sol/ans QA를 다시 확인한다.
+5. 근거가 사라지거나 원본과 충돌하면 값을 삭제·대체하지 말고 보류 사유를 갱신한다.
+
+이번 규칙 확정 단계에서는 `archive/db.js`, production JS, question-index, identity runtime을 추가 변경하지 않는다. 원본이 현재 workspace에 없으면 필드는 빈 상태로 넘기고 다음 작업을 진행하며, 새 source artifact가 들어올 때만 해당 행을 다시 연다.
+
+#### 4-4-5. 2026-08-24 evidence intake 결과
+
+`emptySchool` 28건·필수 메타 gap 60건을 대상으로 현재 archive와 `D:\` 전체를 읽기 전용 재검색했다. 5,731개 파일과 텍스트 324개에서 대상 basename/examTitle과 1:1로 일치하는 source artifact는 0건이었다. 이름·단원·출판사만 겹치는 58개 contextual 후보는 다른 학교·학기·연도·교재 자료와의 관계만 보여 직접 근거로 승격하지 않는다.
+
+- 직접 승격 필드: 0건
+- `school` 28·`year` 60·`semester` 37·`examType` 43 occurrence: 모두 `no_direct_source_evidence` deferred
+- 상세 ledger: `archive/_generated/intelligence/phase3/archive-db-source-evidence-intake-v1.json`
+- ledger digest: `52657952003347eeaaaf53a7fb2ad67c908fbfcc1a471cfb3b45eae19262fca9`
+- DB/production JS write, commit, push: 모두 false
+
+이후 DB consistency, question-index, identity map/runtime, 운영 QA를 재실행했으며 qCount/index mismatch·UID collision은 0건이고 운영 세부단원 게이트는 통과했다. 새 원본·표지·출처 문서가 들어오기 전까지 이 범위는 `sourceDependentOnly` 예외로 유지한다.
+
+#### 4-4-6. source-unavailable closure (2026-08-24)
+
+현재 workspace와 `D:\` evidence intake에서 대상 파일·`examTitle`과 직접 1:1로 일치하는 원본이 0건이므로, `emptySchool` 28건·필수 메타 gap 60건을 `PERMANENT_SOURCE_UNAVAILABLE`로 영구 종결한다.
+
+- 종결은 메타데이터 확인·승인이 아니다. `archive/db.js`의 빈 `school/year/semester/examType` 필드는 그대로 유지한다.
+- 파일명·단원명·교육과정 연도·인접 파일·contextual 후보로 값을 만들거나 대체 학교를 넣지 않는다.
+- 새 원본이 추가되어도 해당 행은 재개하지 않는다. 이 범위는 활성 queue에서 영구 제거한다.
+- 기존 closure ledger는 감사 기록으로 보존하고, 영구 종결 ledger는 `archive/_generated/intelligence/phase3/archive-db-source-permanent-closure-v1.json`이다. DB·production JS·question-index·identity runtime과 물리 파일은 삭제·변경하지 않는다.
+
 ---
 
 ## 5. 표준 교육과정 및 표준단원키 운영 규칙
 
 ### 5-1. 기준 원본
 
-* 표준 교육과정, `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder`의 최종 기준 원본은 `# JS아카이브 표준단원키 마스터 테이블.md` 로 본다.
+* 표준 교육과정과 세부단원 메타데이터의 최종 기준 원본은 `docs/rules/JS아카이브_표준단원키_마스터테이블.md`로 본다.
 * 룰북은 운영 원칙과 사용 규칙을 설명하는 문서이고, 실제 단원명/키/순서의 기준 데이터는 반드시 마스터 테이블을 따른다.
 * 마스터 테이블을 먼저 갱신한 뒤 룰북, db 생성기, mixer, 추출/검수 프로토콜을 순차 동기화한다.
 * 룰북과 마스터 테이블이 충돌할 경우 단원명/키/순서에 한해서는 마스터 테이블을 우선한다.
@@ -746,6 +831,25 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
 * 과목명만 보고 자동 치환하지 않고, 문항 출처와 실제 교육과정 맥락을 함께 확인한다.
 * `exams/*.js`는 룰북 기준으로 작성된다는 전제를 두되, 실제 수정/검수 시에도 마스터 테이블과의 정합성을 최종 확인한다.
 * db 생성기와 mixer는 문항 내부 `standardUnitKey`를 우선 신뢰하고, 메타 보조값은 마스터 테이블 정합 보조용으로만 사용한다.
+* `archive/concept_map.js`의 compatibility map은 공식 단원키의 검색용 개념군 연결만 담당한다. 이 값으로 `standardUnit`, `subUnitKey`, 원문 라벨을 자동 치환하거나 source-dependent 메타데이터를 승격하지 않는다.
+* 마스터 라벨과 실제 문항의 `standardUnit`이 다르면 먼저 alias인지 오분류인지 판정한다. 근거가 없는 경우 source label을 보존하고 `label_variant` review 목록에 남긴다.
+
+#### 표준단원 라벨 변형 판정 결과(2026-08-24)
+
+현재 운영 JS를 다시 읽은 결과 라벨 변형 inventory는 0개 행·0문항이다. `archive/concept_map.js`의 `STANDARD_UNIT_LABEL_ALIASES`에는 문항 내용으로 확인된 검색용 alias 4종만 둔다. alias는 검색·필터 결과를 표준 라벨로 연결할 뿐, 원본 JS의 `standardUnit`, `subUnitKey`, `subUnit`을 바꾸지 않는다. 별도의 문항 근거 adjudication으로 승인된 교차 단원 465건과 수동 inference 34건은 source 메타데이터에 반영돼 있다.
+
+- 동일 키의 공식 세부단원명이 `standardUnit`에 들어온 사례는 canonical master label/order 정규화로 0건이 됐다.
+- 다른 키의 단원명이 들어온 경우: 최초 465문항을 모두 문항 근거 기반 candidate 메타데이터로 승격해 잔여 교차 오분류를 0건으로 만들었다.
+- 문항·출처만으로 판정할 수 없는 경우: `manual_review_required`로 보류한다. 현재 해당 보류는 0건이며, source-dependent 학교·연도 값은 별도 보류한다.
+- 문항별 샘플과 digest: `archive/_generated/intelligence/phase1/master-audit/label-variants/master-label-variant-inventory-v1.md`.
+
+#### fallback 차단 문항의 수동 adjudication 절차와 결과(2026-08-24)
+
+- 자동 fallback safety가 차단한 문항은 표준단원으로 되돌려 쓰지 않고, 문항 본문·보기·정답·해설에서 핵심 풀이 단서를 먼저 확인한다.
+- 이미 master에 있는 키만 선택하며, 실제 문항과 풀이 방식이 구분 근거를 제공할 때 `category_or_cue_inferred` / `complete_category`로 sidecar에 결정 근거를 남긴다. 새 키·출처 학교·연도·시험시기는 만들지 않는다.
+- 28건 adjudication에서 y축과 평행한 직선 문항 1건은 `M2-04-LINEAR_FUNCTION_BASIC`으로, 경기 종료 순서·주사위 순서쌍 확률 문항 3건은 `M2-08-PROBABILITY_COUNTING`으로 교정했다. 나머지는 기존 키를 확인했다.
+- 운영 반영은 `subUnitKey`, `subUnit`, `subUnitConfidence`, `subUnitClassificationDepth`로 제한하고 content·choices·answer·solution·image를 보호한다. 상세 ledger는 `archive/_generated/intelligence/phase3/fallback-adjudication/archive-subunit-fallback-manual-adjudication-v1.json`에 둔다.
+- baseline 28건 전부 adjudicated되어 현재 effective safety의 잔여 blocked는 0건이다. baseline audit은 historical safety 기록으로 보존하며 운영 판정은 `archive-subunit-fallback-safety-effective-v1.json`을 사용한다.
 
 ### 5-6. RAW 사용 원칙
 
@@ -757,7 +861,7 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
 
 ### 5-7. 신규 단원 추가 원칙
 
-* 신규 단원, 세부 단원, 예외 과목이 생기면 먼저 `# JS아카이브 표준단원키 마스터 테이블.md`를 갱신한 뒤 사용한다.
+* 신규 단원, 세부 단원, 예외 과목이 생기면 먼저 `docs/rules/JS아카이브_표준단원키_마스터테이블.md`를 갱신하고 compiled JSON master를 재생성한 뒤 사용한다.
 * 룰북만 먼저 수정하고 마스터 테이블을 비워 두는 방식은 금지한다.
 * 마스터 테이블 갱신 후 룰북, db 생성기, mixer, 검수 기준을 같은 키 체계로 동기화한다.
 

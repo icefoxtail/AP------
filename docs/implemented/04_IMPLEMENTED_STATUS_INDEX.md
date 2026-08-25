@@ -1,6 +1,6 @@
 # 04_IMPLEMENTED_STATUS_INDEX
 
-현재 구현 상태 문서는 실제 확인한 파일을 기준으로 작성한다. 라인 단위 완전 검수는 다음 라운드에서 보강한다.
+현재 구현 상태 문서는 실제 확인한 파일을 기준으로 작성한다. 2026-08-24 정적 대조에서 구현 문서의 주요 경로·route import/dispatch·schema table 참조를 교차 확인했고, 동작/브라우저 검수는 별도 범위로 남긴다.
 
 | 문서 | 목적 |
 |---|---|
@@ -23,4 +23,11 @@
 - 읽음: `apmath/js/core.js`, 주요 frontend API 호출 검색
 - 읽음: `apmath/student/index.html`, `apmath/planner/index.html`, `check/check.js`
 - 읽음: `apmath/worker-backup/worker/wrangler.jsonc`, `report-ai-proxy/package.json`
+
+## 2026-08-24 정적 대조 결과
+
+- frontend `report.js` 참조를 실제 분할 모듈(`report-text.js`, `report-center.js`, `report-print.js`) 기준으로 보정했다.
+- `index.js`에 실제 import·위임되는 route 누락 4개(`timetable-months`, `wrong-clinics`, `eie`, `backdoor`)를 route map에 추가했다.
+- `schema.sql` 67개 선언 중 기존 map에 별도 행이 없던 7개 table과 route-managed 저장소를 DB map에 기록했다.
+- 변경 범위는 `docs/implemented/*.md` 문서만이며, runtime/API/schema/archive 산출물은 수정하지 않았다.
 

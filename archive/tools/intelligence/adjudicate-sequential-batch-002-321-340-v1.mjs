@@ -1,0 +1,25 @@
+import crypto from 'node:crypto'; import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath } from 'node:url';
+const scriptDir=path.dirname(fileURLToPath(import.meta.url)); const archiveDir=path.resolve(scriptDir,'../..'); const batchPath=path.join(archiveDir,'_generated','intelligence','phase3','sequential-review','archive-sequential-subunit-review-batch-002-v1.json'); const candidatePath=path.join(archiveDir,'_generated','intelligence','phase3','sequential-review','archive-sequential-subunit-candidate-classification-batch-002-v1.json'); const outputDir=path.join(archiveDir,'_generated','intelligence','phase3','sequential-review'); const sha256=value=>crypto.createHash('sha256').update(value).digest('hex');
+const manualDecisions={
+321:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-10-DISTANCE_ANGLE','두 직선의 각 이등분선 두 개를 구해 양의 기울기 2인 직선을 확인했다.'],
+322:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-09-COORDINATE_METRIC','정삼각형을 좌표화해 AP²+CP²를 완전제곱하고 최솟값 7/2를 확인했다.'],
+323:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-11-CIRCLE_EQUATION','중심 (h,k), 반지름 3과 축 접선 조건을 직선 위 조건과 결합해 M-m=192를 확인했다.'],
+324:['DRAFT_TAXONOMY_HOLD','H15-SA-09-TRIANGLE_AREA_RATIO','AB 길이와 C의 선분 끝점 거리로 넓이 경계를 세워 a의 범위와 p+q=9를 확인했으나 넓이 경계 하위키는 보류한다.'],
+325:['DRAFT_TAXONOMY_HOLD','H15-SA-08-SYSTEM_INEQUALITY','두 곱 부등식의 공통해가 3<x<4가 되도록 -3≤a≤0, 합 -3을 확인했으나 매개변수 연립 하위키는 보류한다.'],
+326:['DRAFT_TAXONOMY_HOLD','H15-SA-09-COORDINATE_METRIC','좌표화한 삼각형에서 계수 비교로 b=9,a=4 및 합 13을 확인했으나 항등식 증명 하위키는 보류한다.'],
+327:['DRAFT_TAXONOMY_HOLD','H15-SA-11-CIRCLE_EQUATION','포물선과 원의 지름·중심 조건 및 수직선 절편으로 81r²=26을 확인했으나 곡선-원 결합 하위키는 보류한다.'],
+328:['DRAFT_TAXONOMY_HOLD','H15-SA-08-SYSTEM_INEQUALITY','두 일차부등식의 교집합 정수 3,4를 세어 2개임을 확인했으나 연립 하위키는 보류한다.'],
+329:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-08-QUADRATIC_INEQUALITY','해 구간의 끝점이 근 -2,3이므로 계수 a=-1,b=-6, 합 -7을 확인했다.'],
+330:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-09-COORDINATE_METRIC','좌표 차 3,-2로 거리 √13을 확인했다.'],
+331:['DRAFT_TAXONOMY_HOLD','H15-SA-09-SECTION_RATIO','내분점 4와 외분점 16을 수직선에서 계산해 합 20을 확인했으나 내·외분 결합 하위키는 보류한다.'],
+332:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-10-LINE_EQUATION','두 점을 잇는 기울기 -2/3 직선의 절편 7/3을 확인했다.'],
+333:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-10-PARALLEL_PERPENDICULAR','수직 조건에서 a=4/3, 평행 조건에서 b=5를 구해 ab=20/3을 확인했다.'],
+334:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-11-CIRCLE_EQUATION','지름 끝점 중점 (1,4), 반지름 5를 구해 x축 교점 -2,4와 거리 6을 확인했다.'],
+335:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-09-COORDINATE_METRIC','P(t,0)으로 두 거리 제곱 합을 완전제곱해 최솟값 76을 확인했다.'],
+336:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-11-TANGENT','점 (2,1)을 지나는 접선 기울기 이차식 7m²-8m+1=0에서 곱 1/7을 확인했다.'],
+337:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-12-REFLECTION','x축 대칭 포물선과 y=x의 교점 판별식 조건으로 양의 a 최솟값 3을 확인했다.'],
+338:['DRAFT_TAXONOMY_HOLD','H15-SA-10-LINE_EQUATION','교점 두 근의 내분점 x좌표 0 조건으로 k=5를 확인했으나 그래프 교점·내분 결합 하위키는 보류한다.'],
+339:['DRAFT_TAXONOMY_HOLD','H15-SA-09-TRIANGLE_CENTROID_AREA','좌표 넓이 공식으로 D의 x좌표 1,5와 거리 4를 확인했으나 넓이 동일 조건 하위키는 보류한다.'],
+340:['CONFIRMED_DRAFT_CANDIDATE','H15-SA-08-ABSOLUTE_INEQUALITY','두 절댓값 거리 부등식을 제곱해 각각 x>3,x<4, 교집합과 곱 12를 확인했다.']};
+export function adjudicateSequentialBatch002321340V1(){const batch=JSON.parse(fs.readFileSync(batchPath,'utf8')); const candidates=JSON.parse(fs.readFileSync(candidatePath,'utf8')); const candidateBySequence=new Map(candidates.records.map(record=>[record.sequenceOrder,record])); const records=batch.records.filter(record=>record.sequenceOrder>=321&&record.sequenceOrder<=340).map(record=>{const decision=manualDecisions[record.sequenceOrder]; const candidate=candidateBySequence.get(record.sequenceOrder); return {sequenceOrder:record.sequenceOrder,questionUid:record.questionUid,sourceArchiveFile:record.sourceArchiveFile,sourceOrdinal:record.sourceOrdinal,adjudicationStatus:decision[0],answerVerification:'INDEPENDENT_RECHECK_CONFIRMED',candidateStatus:candidate?.candidateStatus??'MANUAL_CANDIDATE',candidateSubUnitKey:decision[1],independentRationale:decision[2]};}); const counts={}; for(const record of records) counts[record.adjudicationStatus]=(counts[record.adjudicationStatus]??0)+1; const stablePayload={schemaVersion:'archive-sequential-batch-002-321-340-adjudication-v1',batchDigest:batch.digest,candidateDigest:candidates.digest,productionWriteAllowed:false,totals:{records:records.length,answerRecheckConfirmed:records.length,status:Object.fromEntries(Object.entries(counts).sort(([a],[b])=>a.localeCompare(b,'en')))},records}; return {generatedAt:new Date().toISOString(),digest:sha256(JSON.stringify(stablePayload)),...stablePayload};}
+function main(){const report=adjudicateSequentialBatch002321340V1();fs.mkdirSync(outputDir,{recursive:true});fs.writeFileSync(path.join(outputDir,'archive-sequential-batch-002-321-340-adjudication-v1.json'),`${JSON.stringify(report,null,2)}\n`,'utf8');console.log(JSON.stringify({output:'archive/_generated/intelligence/phase3/sequential-review/archive-sequential-batch-002-321-340-adjudication-v1.json',digest:report.digest,totals:report.totals},null,2));} if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])) main();

@@ -2775,6 +2775,48 @@ function reportCenterEnsureExamAnalysisTableEvents() {
     }, true); // 캡처 단계: 모달 컨테이너의 onclick stopPropagation이 버블을 끊어도 동작해야 함
 }
 
+function reportCenterBlueprintLoadStore() {
+    if (typeof window === 'undefined') return {};
+    if (!window.AP_REPORT_BLUEPRINT_LOADS || typeof window.AP_REPORT_BLUEPRINT_LOADS !== 'object') {
+        window.AP_REPORT_BLUEPRINT_LOADS = {};
+    }
+    return window.AP_REPORT_BLUEPRINT_LOADS;
+}
+
+function reportCenterEnsureExamBlueprintsLoaded(archiveFile, sessions = []) {
+    const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
+    if (!archiveKey || typeof ensureBlueprintsForSessions !== 'function') return;
+
+    const scopedSessions = (Array.isArray(sessions) ? sessions : []).filter(session =>
+        reportCenterNormalizeExamAnalysisArchiveKey(session?.archive_file || session?.archiveFile || '') === archiveKey
+    );
+    const hasBlueprint = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+        .some(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp?.archive_file || bp?.archiveFile || '') === archiveKey);
+    if (hasBlueprint || !scopedSessions.length) return;
+
+    const loadStore = reportCenterBlueprintLoadStore();
+    if (['loading', 'loaded', 'empty'].includes(loadStore[archiveKey])) return;
+    loadStore[archiveKey] = 'loading';
+
+    void ensureBlueprintsForSessions(scopedSessions).then(() => {
+        const loadedCount = (Array.isArray(state?.db?.exam_blueprints) ? state.db.exam_blueprints : [])
+            .filter(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp?.archive_file || bp?.archiveFile || '') === archiveKey)
+            .length;
+        loadStore[archiveKey] = loadedCount ? 'loaded' : 'empty';
+        const nav = reportCenterNavState();
+        if (
+            loadedCount &&
+            nav.level === 'exam' &&
+            reportCenterNormalizeExamAnalysisArchiveKey(nav.archiveFile || '') === archiveKey
+        ) {
+            openReportCenterRefresh();
+        }
+    }).catch(error => {
+        loadStore[archiveKey] = 'failed';
+        console.warn('[reportCenterEnsureExamBlueprintsLoaded] failed:', archiveKey, error);
+    });
+}
+
 function reportCenterBuildExamDashboard(studentId, archiveFile) {
     const archiveKey = reportCenterNormalizeExamAnalysisArchiveKey(archiveFile);
     reportCenterLoadStudentReportsFromServer(archiveKey);
@@ -2786,6 +2828,7 @@ function reportCenterBuildExamDashboard(studentId, archiveFile) {
         .filter(bp => reportCenterNormalizeExamAnalysisArchiveKey(bp.archive_file || bp.archiveFile || '') === archiveKey);
     const sessions = group?.sessions || (Array.isArray(state?.db?.exam_sessions) ? state.db.exam_sessions : [])
         .filter(session => reportCenterNormalizeExamAnalysisArchiveKey(session.archive_file || session.archiveFile || '') === archiveKey);
+    reportCenterEnsureExamBlueprintsLoaded(archiveKey, sessions);
     const wrongRows = Array.isArray(state?.db?.wrong_answers) ? state.db.wrong_answers : [];
     const rates = reportCenterBuildCohortRates(archiveKey);
     const rateScopeLabel = rates.source === 'cohort' ? '학원 전체' : '담당 반 기준';
