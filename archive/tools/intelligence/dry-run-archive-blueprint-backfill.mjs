@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const DEFAULT_DB_SQL = path.join(ROOT, 'reports/backups/ap-math-os_before_schedule_series_20260622_220845.sql');
 const DEFAULT_OUT = path.join(ROOT, 'archive/_generated/intelligence/phase2/archive-blueprint-backfill-dry-run-v1.json');
+const IDENTITY_PATH = path.join(ROOT, 'archive/data/question_identity_map.json');
 const ARCHIVE_METADATA_REVISION = 'archive-metadata-v1';
 
 function parseArgs(argv) {
@@ -244,12 +245,14 @@ function sqlLiteral(value) {
   return `'${String(value).replace(/'/g, "''")}'`;
 }
 
-function canonicalQuestionUid(archiveFile, ordinal) {
+function canonicalQuestionUid(archiveFile, ordinal, identityLookup) {
   const sourceFile = normalizeArchiveFile(archiveFile).replace(/^exams\//, '');
+  const migratedUid = identityLookup?.bySourceFileAndOrdinal?.[sourceFile]?.[String(ordinal)];
+  if (migratedUid) return migratedUid;
   return `qid_v1_${crypto.createHash('sha256').update(`${sourceFile}#${ordinal}`).digest('hex')}`;
 }
 
-function buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, sourceArchiveFile = archiveFile, sourceQuestionNo = questionNumber(question)) {
+function buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, sourceArchiveFile = archiveFile, sourceQuestionNo = questionNumber(question), sourceQuestionUid = '') {
   const questionNo = questionNumber(question);
   if (!questionNo) return '';
   const columns = [
@@ -260,7 +263,7 @@ function buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, exp
   ];
   const values = [
     archiveFile, questionNo, sourceArchiveFile, sourceQuestionNo,
-    canonicalQuestionUid(sourceArchiveFile, ordinal), ordinal,
+    sourceQuestionUid || canonicalQuestionUid(sourceArchiveFile, ordinal), ordinal,
     metadata.standardUnitKey, metadata.standardUnit, metadata.standardCourse,
     metadata.conceptClusterKey, metadata.subUnitKey, metadata.typeKey,
     metadata.templateKey, metadata.difficulty, metadata.metadataRevision, expectedHash
@@ -330,9 +333,10 @@ function compareFile(rows, archiveFile, options) {
   }
   result.sourceQuestions = extracted.length;
 
-  // A legacy row without source_question_ordinal must be matched by the
-  // archive question number, not by treating question_no as an ordinal.
-  // Several archives use sparse IDs (for example 1-4, 9-24).
+  // Prefer the archive question number because it remains stable when a
+  // previously sparse source later receives inserted questions (for example
+  // this file changed from IDs 1-4, 9-24 to IDs 1-24). Use source ordinal as
+  // a fallback for legacy rows whose question number is unavailable.
   const byOrdinal = new Map(rows
     .map(row => [Number(row?.source_question_ordinal), row])
     .filter(([ordinal]) => Number.isInteger(ordinal) && ordinal > 0));
@@ -345,14 +349,22 @@ function compareFile(rows, archiveFile, options) {
   for (let index = 0; index < extracted.length; index += 1) {
     const question = extracted[index];
     const ordinal = index + 1;
-    const existing = byOrdinal.get(ordinal) || byQuestionNo.get(questionNumber(question));
+    const existing = byQuestionNo.get(questionNumber(question)) || byOrdinal.get(ordinal);
     if (existing) matchedRows.add(existing);
     const metadata = buildMetadata(question);
     const expectedHash = metadataHash(metadata);
+    const expectedSourceQuestionNo = questionNumber(question);
+    const expectedSourceQuestionUid = canonicalQuestionUid(source.sourceField || archiveFile, ordinal, options.identityLookup);
+    const identityMatches = existing
+      && Number(existing.source_question_no) === expectedSourceQuestionNo
+      && Number(existing.source_question_ordinal) === ordinal
+      && String(existing.source_question_uid || '') === expectedSourceQuestionUid;
     const base = {
       archiveFile,
       questionNo: questionNumber(question),
       sourceOrdinal: ordinal,
+      expectedSourceQuestionNo,
+      expectedSourceQuestionUid,
       metadataRevision: metadata.metadataRevision,
       expectedHash,
       existingHash: existing?.metadata_hash || null,
@@ -362,7 +374,7 @@ function compareFile(rows, archiveFile, options) {
     if (!existing) {
       result.insertRequired += 1;
       diffs.push({ ...base, status: 'INSERT_REQUIRED' });
-      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, source.sourceField || archiveFile, questionNumber(question)));
+      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, source.sourceField || archiveFile, questionNumber(question), expectedSourceQuestionUid));
       continue;
     }
     if (!options.schemaReady) {
@@ -370,13 +382,14 @@ function compareFile(rows, archiveFile, options) {
       diffs.push({ ...base, status: 'SCHEMA_MISSING' });
     } else if (
       String(existing.metadata_revision || '') === metadata.metadataRevision &&
-      String(existing.metadata_hash || '') === expectedHash
+      String(existing.metadata_hash || '') === expectedHash &&
+      identityMatches
     ) {
       result.unchanged += 1;
     } else {
       result.updateRequired += 1;
       diffs.push({ ...base, status: existing.metadata_hash ? 'UPDATE_REQUIRED' : 'METADATA_MISSING' });
-      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, source.sourceField || archiveFile, questionNumber(question)));
+      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, source.sourceField || archiveFile, questionNumber(question), expectedSourceQuestionUid));
     }
   }
 
@@ -420,6 +433,11 @@ if (!fs.existsSync(dbSqlPath)) {
 }
 
 const sql = fs.readFileSync(dbSqlPath, 'utf8');
+if (!fs.existsSync(IDENTITY_PATH)) {
+  console.error(`question identity map not found: ${IDENTITY_PATH}`);
+  process.exit(4);
+}
+const identityMap = JSON.parse(fs.readFileSync(IDENTITY_PATH, 'utf8'));
 const blueprintRows = extractInsertRows(sql);
 const dbColumns = new Set(blueprintRows.flatMap(row => Object.keys(row)));
 const schemaReady = dbColumns.has('metadata_revision') && dbColumns.has('metadata_hash');
@@ -441,7 +459,7 @@ const questionDiffs = [];
 const sqlStatements = [];
 const resolveSource = buildArchiveSourceResolver();
 for (const [archiveFile, rows] of byArchive) {
-  const compared = compareFile(rows, archiveFile, { schemaReady, resolveSource, emitSql: Boolean(sqlOutPath) });
+  const compared = compareFile(rows, archiveFile, { schemaReady, resolveSource, emitSql: Boolean(sqlOutPath), identityLookup: identityMap.lookup });
   fileSummaries.push(compared.result);
   for (const diff of compared.diffs) {
     if (questionDiffs.length < diffLimit) questionDiffs.push(diff);

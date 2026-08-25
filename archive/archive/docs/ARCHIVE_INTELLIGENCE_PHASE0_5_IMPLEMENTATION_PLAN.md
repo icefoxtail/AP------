@@ -1,5 +1,10 @@
 # AP Math JS Archive Intelligence — Phase 0~5 구현 세부계획서
 
+> **Historical snapshot notice (2026-08-22):** This implementation plan preserves the
+> pre-production design and baseline. The current applied scope and gates are recorded in
+> `archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-operational-qa-v1.json`
+> and the active contract in `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`.
+
 - 작성일: 2026-08-19
 - 기준 브랜치: `main`
 - 문서 위치: `archive/archive/docs/ARCHIVE_INTELLIGENCE_PHASE0_5_IMPLEMENTATION_PLAN.md`
@@ -481,6 +486,14 @@ UID 생성 규칙을 source content hash 단독으로 만들지 않는다.
 
 문구/해설 교정만으로 UID가 바뀌면 APMS 과거 오답 연결이 끊긴다.
 
+단, source 배열에 문항을 삽입·삭제·재정렬한 뒤 기존 ordinal UID 생성기를
+그대로 재실행하면 순번 뒤 문항에 잘못된 UID가 재할당된다. 운영 source가
+dirty인 상태에서는 기존 생성기를 중지하고
+`archive/tools/intelligence/migrate-question-identity-map-v1.mjs`를 사용한다.
+이 도구는 HEAD source와 `contentFingerprint(content, choices, image)`를
+대조해 기존 UID를 보존하고, 실제 신규 문항만 새 UID로 등록한다. answer와
+solution 수정은 identity migration 대상에서 제외한다.
+
 ---
 
 ## 4.5 Phase 0D — Identity Map 생성
@@ -736,6 +749,12 @@ archive/question-meta.js
 ```
 
 Mixer와 Worker는 `questionUid` 기준으로 join한다.
+
+sidecar 병합 시 production JS의 비어 있지 않은 값은 source of truth로
+보존한다. classification/review 값은 빈 필드를 채울 때만 사용하며,
+비어 있지 않은 production 값과 다르면 sidecar 생성 단계에서 충돌로
+차단한다. runtime에서도 source 값을 덮어쓰지 않고
+`SOURCE_CONFLICT_HOLD`로 표시한다.
 
 ### 장점
 

@@ -15,6 +15,8 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const DEFAULT_DB_SQL = path.join(ROOT, 'archive/_generated/intelligence/phase2/exam-blueprints-after-backfill-20260824.sql');
 const DEFAULT_OUT = path.join(ROOT, 'archive/_generated/intelligence/phase2/archive-blueprint-mixed-identity-audit-v1.json');
+const IDENTITY_PATH = path.join(ROOT, 'archive/data/question_identity_map.json');
+const METADATA_PATH = path.join(ROOT, 'archive/data/question_metadata.json');
 const ARCHIVE_METADATA_REVISION = 'archive-metadata-v1';
 
 function parseArgs(argv) {
@@ -199,6 +201,14 @@ function resolveSource(sourceArchiveFile) {
 
 const args = parseArgs(process.argv.slice(2));
 if (args.help) { printHelp(); process.exit(0); }
+if (!fs.existsSync(IDENTITY_PATH) || !fs.existsSync(METADATA_PATH)) {
+  console.error(`identity/metadata sidecar missing: ${IDENTITY_PATH}, ${METADATA_PATH}`);
+  process.exit(2);
+}
+const identityMap = JSON.parse(fs.readFileSync(IDENTITY_PATH, 'utf8'));
+const metadataSidecar = JSON.parse(fs.readFileSync(METADATA_PATH, 'utf8'));
+const identityBySourceOrdinal = identityMap.lookup?.bySourceFileAndOrdinal || {};
+const metadataBySourceOrdinal = new Map((metadataSidecar.records || []).map(record => [`${normalizeSourceFile(record.sourceArchiveFile)}#${Number(record.sourceOrdinal)}`, record]));
 const dbSqlPath = resolvePath(args['db-sql'], DEFAULT_DB_SQL);
 const outPath = resolvePath(args.out, DEFAULT_OUT);
 const sqlOutPath = args['sql-out'] ? resolvePath(args['sql-out'], '') : '';
@@ -232,8 +242,22 @@ for (const [mixedFile, mixedRows] of byFile) {
     const questionIndex = source.bank.findIndex(question => questionNumber(question) === sourceQuestionNo);
     const question = questionIndex >= 0 ? source.bank[questionIndex] : null;
     const sourceRelative = source.path ? path.relative(path.join(ROOT, 'archive'), source.path).replace(/\\/g, '/').replace(/^exams\//, '') : source.normalized;
-    const expectedUid = question ? `qid_v1_${crypto.createHash('sha256').update(`${sourceRelative}#${questionIndex + 1}`).digest('hex')}` : null;
-    const metadata = question ? buildMetadata(question) : null;
+    const expectedUid = question
+      ? (identityBySourceOrdinal[sourceRelative]?.[String(questionIndex + 1)] || `qid_v1_${crypto.createHash('sha256').update(`${sourceRelative}#${questionIndex + 1}`).digest('hex')}`)
+      : null;
+    const metadataRecord = question ? metadataBySourceOrdinal.get(`${sourceRelative}#${questionIndex + 1}`) : null;
+    const metadata = question ? (metadataRecord ? {
+      standardUnitKey: metadataRecord.standardUnitKey,
+      standardUnit: metadataRecord.standardUnit,
+      standardCourse: metadataRecord.standardCourse,
+      subUnitKey: metadataRecord.subUnitKey,
+      conceptClusterKey: metadataRecord.conceptClusterKey,
+      typeKey: metadataRecord.problemTypeKey,
+      templateKey: metadataRecord.templateKey,
+      difficulty: metadataRecord.difficultyBucket,
+      tags: Array.isArray(question.tags) ? question.tags.map(item => String(item || '').trim()).filter(Boolean) : [],
+      metadataRevision: metadataRecord.metadataRevision
+    } : buildMetadata(question)) : null;
     const expectedHash = metadata ? metadataHash(metadata) : null;
     const status = !source.path ? 'SOURCE_FILE_MISSING'
       : source.parseError ? 'SOURCE_PARSE_ERROR'

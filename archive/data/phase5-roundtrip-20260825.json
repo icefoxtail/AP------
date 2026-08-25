@@ -1,0 +1,456 @@
+{
+  "schemaVersion": "phase5-roundtrip-real-source.v1",
+  "generatedAt": "2026-08-25T11:05:17.170Z",
+  "status": "PHASE5_ROUNDTRIP_PASS_LOCAL_REAL_SOURCE",
+  "operationalExposure": "HOLD",
+  "executionMode": "local_real_source_fixture",
+  "note": "인증된 운영 학생 레코드는 제공되지 않아 운영 학생을 가장하지 않고, 실제 아카이브 원본 문항·UID·승인 sidecar 메타데이터로 wrong_ids_only 계약을 실행했다.",
+  "source": {
+    "archiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+    "sourceQuestionCount": 3,
+    "sourceQuestions": [
+      {
+        "questionUid": "qid_v1_a60d66b544efaed6ad2d466e8390276eec571966bedd0b462672983b3595b21a",
+        "sourceFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": 1,
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "conceptClusterKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하"
+      },
+      {
+        "questionUid": "qid_v1_6a5ef4a27c6f7973e8537f17b559683a99e2cc5fa6d1c44f1d6608ec948c4fe9",
+        "sourceFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": 2,
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "conceptClusterKey": "M1-07-SOLID_FIGURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중"
+      },
+      {
+        "questionUid": "qid_v1_574e2958ab1ecfd98ac4cdccf06ea97d2aefb1cd9b10144e7a99903b9ac9c278",
+        "sourceFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": 3,
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "conceptClusterKey": "M1-07-SOLID_FIGURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하"
+      }
+    ],
+    "originalIndexQuestionCount": 7981,
+    "metadataRevision": "archive-metadata-v1-phase1b-20260825"
+  },
+  "studentInput": {
+    "mode": "wrong_ids_only",
+    "studentId": "fixture:phase5-real-source-20260825",
+    "sessionId": "phase5-real-source-input-20260825",
+    "submittedPayload": {
+      "wrong_ids": [
+        1,
+        3
+      ]
+    },
+    "submittedAnswerFields": false,
+    "wrongQuestionUids": [
+      "qid_v1_a60d66b544efaed6ad2d466e8390276eec571966bedd0b462672983b3595b21a",
+      "qid_v1_574e2958ab1ecfd98ac4cdccf06ea97d2aefb1cd9b10144e7a99903b9ac9c278"
+    ],
+    "derivedResult": {
+      "itemCount": 3,
+      "wrongCount": 2,
+      "correctCount": 1
+    }
+  },
+  "priorWeakness": {
+    "itemCount": 3,
+    "wrongItemCount": 2,
+    "groups": {
+      "concept": [
+        {
+          "key": "M1-06-POLYGON_CIRCLE",
+          "keySource": "conceptClusterKey",
+          "attemptCount": 1,
+          "wrongCount": 1,
+          "correctCount": 0,
+          "weaknessScore": 1.3,
+          "recoveryStatus": "available"
+        },
+        {
+          "key": "M1-07-SOLID_FIGURE",
+          "keySource": "conceptClusterKey",
+          "attemptCount": 2,
+          "wrongCount": 1,
+          "correctCount": 1,
+          "weaknessScore": 0.65,
+          "recoveryStatus": "available"
+        }
+      ],
+      "problemType": [
+        {
+          "key": "UNSPECIFIED",
+          "keySource": "unspecified",
+          "attemptCount": 3,
+          "wrongCount": 2,
+          "correctCount": 1,
+          "weaknessScore": 1.0833333333333333,
+          "recoveryStatus": "available"
+        }
+      ],
+      "template": [
+        {
+          "key": "UNSPECIFIED",
+          "keySource": "unspecified",
+          "attemptCount": 3,
+          "wrongCount": 2,
+          "correctCount": 1,
+          "weaknessScore": 1.0833333333333333,
+          "recoveryStatus": "available"
+        }
+      ],
+      "standardUnit": [
+        {
+          "key": "M1-06",
+          "keySource": "standardUnitKey",
+          "attemptCount": 1,
+          "wrongCount": 1,
+          "correctCount": 0,
+          "weaknessScore": 1.3,
+          "recoveryStatus": "available"
+        },
+        {
+          "key": "M1-07",
+          "keySource": "standardUnitKey",
+          "attemptCount": 2,
+          "wrongCount": 1,
+          "correctCount": 1,
+          "weaknessScore": 0.65,
+          "recoveryStatus": "available"
+        }
+      ]
+    }
+  },
+  "supplement": {
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "requestCount": 6
+    },
+    "status": "candidate_non_operational",
+    "count": 6,
+    "selectionSeed": "weakness-supplement-v1:e14c5e88",
+    "targets": [
+      {
+        "dimension": "concept",
+        "key": "M1-06-POLYGON_CIRCLE",
+        "keySource": "conceptClusterKey",
+        "label": "M1-06-POLYGON_CIRCLE",
+        "weaknessScore": 1.3,
+        "priorityScore": 1.3,
+        "attemptCount": 1,
+        "wrongCount": 1,
+        "recoveryStatus": "available",
+        "latestResultAt": "2026-08-24T00:00:00.000Z"
+      },
+      {
+        "dimension": "standardUnit",
+        "key": "M1-06",
+        "keySource": "standardUnitKey",
+        "label": "M1-06",
+        "weaknessScore": 1.3,
+        "priorityScore": 0.845,
+        "attemptCount": 1,
+        "wrongCount": 1,
+        "recoveryStatus": "available",
+        "latestResultAt": "2026-08-24T00:00:00.000Z"
+      },
+      {
+        "dimension": "concept",
+        "key": "M1-07-SOLID_FIGURE",
+        "keySource": "conceptClusterKey",
+        "label": "M1-07-SOLID_FIGURE",
+        "weaknessScore": 0.65,
+        "priorityScore": 0.65,
+        "attemptCount": 2,
+        "wrongCount": 1,
+        "recoveryStatus": "available",
+        "latestResultAt": "2026-08-24T00:00:00.000Z"
+      },
+      {
+        "dimension": "standardUnit",
+        "key": "M1-07",
+        "keySource": "standardUnitKey",
+        "label": "M1-07",
+        "weaknessScore": 0.65,
+        "priorityScore": 0.4225,
+        "attemptCount": 2,
+        "wrongCount": 1,
+        "recoveryStatus": "available",
+        "latestResultAt": "2026-08-24T00:00:00.000Z"
+      }
+    ],
+    "selectorRequests": [
+      {
+        "dimension": "concept",
+        "targetKey": "M1-06-POLYGON_CIRCLE",
+        "targetLabel": "M1-06-POLYGON_CIRCLE",
+        "requestedCount": 2,
+        "targetWeaknessScore": 1.3,
+        "selectorRequest": {
+          "count": 2,
+          "selectionSeed": "weakness-supplement-v1:e14c5e88:concept:M1-06-POLYGON_CIRCLE",
+          "unitKeys": [],
+          "subUnitKeys": [],
+          "conceptKeys": [
+            "M1-06-POLYGON_CIRCLE"
+          ],
+          "problemTypeKeys": [],
+          "difficulties": [],
+          "recentQuestionUids": [
+            "qid_v1_a60d66b544efaed6ad2d466e8390276eec571966bedd0b462672983b3595b21a",
+            "qid_v1_6a5ef4a27c6f7973e8537f17b559683a99e2cc5fa6d1c44f1d6608ec948c4fe9",
+            "qid_v1_574e2958ab1ecfd98ac4cdccf06ea97d2aefb1cd9b10144e7a99903b9ac9c278"
+          ],
+          "maxTemplateCount": 1
+        }
+      },
+      {
+        "dimension": "standardUnit",
+        "targetKey": "M1-06",
+        "targetLabel": "M1-06",
+        "requestedCount": 2,
+        "targetWeaknessScore": 1.3,
+        "selectorRequest": {
+          "count": 2,
+          "selectionSeed": "weakness-supplement-v1:e14c5e88:standardUnit:M1-06",
+          "unitKeys": [
+            "M1-06"
+          ],
+          "subUnitKeys": [],
+          "conceptKeys": [],
+          "problemTypeKeys": [],
+          "difficulties": [],
+          "recentQuestionUids": [
+            "qid_v1_a60d66b544efaed6ad2d466e8390276eec571966bedd0b462672983b3595b21a",
+            "qid_v1_6a5ef4a27c6f7973e8537f17b559683a99e2cc5fa6d1c44f1d6608ec948c4fe9",
+            "qid_v1_574e2958ab1ecfd98ac4cdccf06ea97d2aefb1cd9b10144e7a99903b9ac9c278"
+          ],
+          "maxTemplateCount": 1
+        }
+      },
+      {
+        "dimension": "concept",
+        "targetKey": "M1-07-SOLID_FIGURE",
+        "targetLabel": "M1-07-SOLID_FIGURE",
+        "requestedCount": 1,
+        "targetWeaknessScore": 0.65,
+        "selectorRequest": {
+          "count": 1,
+          "selectionSeed": "weakness-supplement-v1:e14c5e88:concept:M1-07-SOLID_FIGURE",
+          "unitKeys": [],
+          "subUnitKeys": [],
+          "conceptKeys": [
+            "M1-07-SOLID_FIGURE"
+          ],
+          "problemTypeKeys": [],
+          "difficulties": [],
+          "recentQuestionUids": [
+            "qid_v1_a60d66b544efaed6ad2d466e8390276eec571966bedd0b462672983b3595b21a",
+            "qid_v1_6a5ef4a27c6f7973e8537f17b559683a99e2cc5fa6d1c44f1d6608ec948c4fe9",
+            "qid_v1_574e2958ab1ecfd98ac4cdccf06ea97d2aefb1cd9b10144e7a99903b9ac9c278"
+          ],
+          "maxTemplateCount": 1
+        }
+      },
+      {
+        "dimension": "standardUnit",
+        "targetKey": "M1-07",
+        "targetLabel": "M1-07",
+        "requestedCount": 1,
+        "targetWeaknessScore": 0.65,
+        "selectorRequest": {
+          "count": 1,
+          "selectionSeed": "weakness-supplement-v1:e14c5e88:standardUnit:M1-07",
+          "unitKeys": [
+            "M1-07"
+          ],
+          "subUnitKeys": [],
+          "conceptKeys": [],
+          "problemTypeKeys": [],
+          "difficulties": [],
+          "recentQuestionUids": [
+            "qid_v1_a60d66b544efaed6ad2d466e8390276eec571966bedd0b462672983b3595b21a",
+            "qid_v1_6a5ef4a27c6f7973e8537f17b559683a99e2cc5fa6d1c44f1d6608ec948c4fe9",
+            "qid_v1_574e2958ab1ecfd98ac4cdccf06ea97d2aefb1cd9b10144e7a99903b9ac9c278"
+          ],
+          "maxTemplateCount": 1
+        }
+      }
+    ]
+  },
+  "mixer": {
+    "selectedCount": 6,
+    "selected": [
+      "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
+      "qid_v1_b8fe17673aa77ffa68f8d38ccaafc41c4c0fa3514e2c088999e936fe920588d1",
+      "qid_v1_198bfdb227e82b5d23b5b11fd13c1eb6f8f39baf02d956717da3f8517f5935e8",
+      "qid_v1_c7d9dcca46bf40617f7183575e21d13766fd88f038afa33cd36e55ad97935ad0",
+      "qid_v1_24fd1763ea4b4a3947702fc0c6cd3edd7d34302fbc328da37a96d3b02ded17aa",
+      "qid_v1_3fd69cfc2c3ccb74b00dcf9a3d8f100ea3c92eed09c007523934726f071afcc1"
+    ],
+    "selectedQuestions": [
+      {
+        "questionUid": "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
+        "sourceFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": 2,
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "conceptClusterKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하"
+      },
+      {
+        "questionUid": "qid_v1_b8fe17673aa77ffa68f8d38ccaafc41c4c0fa3514e2c088999e936fe920588d1",
+        "sourceFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": 15,
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "conceptClusterKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상"
+      },
+      {
+        "questionUid": "qid_v1_198bfdb227e82b5d23b5b11fd13c1eb6f8f39baf02d956717da3f8517f5935e8",
+        "sourceFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": 23,
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "conceptClusterKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중"
+      },
+      {
+        "questionUid": "qid_v1_c7d9dcca46bf40617f7183575e21d13766fd88f038afa33cd36e55ad97935ad0",
+        "sourceFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": 19,
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "conceptClusterKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상"
+      },
+      {
+        "questionUid": "qid_v1_24fd1763ea4b4a3947702fc0c6cd3edd7d34302fbc328da37a96d3b02ded17aa",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": 9,
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "conceptClusterKey": "M1-07-SOLID_FIGURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중"
+      },
+      {
+        "questionUid": "qid_v1_3fd69cfc2c3ccb74b00dcf9a3d8f100ea3c92eed09c007523934726f071afcc1",
+        "sourceFile": "original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": 8,
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "conceptClusterKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상"
+      }
+    ],
+    "errors": []
+  },
+  "mixed": {
+    "archiveFile": "MIXED:phase5-phase5-supplement-20260825",
+    "questionCount": 6,
+    "blueprintCount": 6
+  },
+  "omr": {
+    "sessionId": "phase5-supplement-20260825",
+    "inputMode": "wrong_ids_only",
+    "wrongIds": [
+      2,
+      5
+    ],
+    "resultItemCount": 6,
+    "wrongCount": 2,
+    "writeMode": "fixture_only"
+  },
+  "resultRecalculate": {
+    "joinedCount": 9,
+    "resolvedCount": 9,
+    "reaggregatedItemCount": 9,
+    "reaggregatedWrongItemCount": 4,
+    "conceptGroups": [
+      {
+        "key": "M1-07-SOLID_FIGURE",
+        "keySource": "conceptClusterKey",
+        "attemptCount": 3,
+        "wrongCount": 2,
+        "correctCount": 1,
+        "weaknessScore": 1.0208333333333333,
+        "recoveryStatus": "available"
+      },
+      {
+        "key": "M1-06-POLYGON_CIRCLE",
+        "keySource": "conceptClusterKey",
+        "attemptCount": 5,
+        "wrongCount": 2,
+        "correctCount": 3,
+        "weaknessScore": 0.43124999999999997,
+        "recoveryStatus": "available"
+      },
+      {
+        "key": "M1-07-SOLID_FIGURE_MEASURE",
+        "keySource": "conceptClusterKey",
+        "attemptCount": 1,
+        "wrongCount": 0,
+        "correctCount": 1,
+        "weaknessScore": 0,
+        "recoveryStatus": "available"
+      }
+    ]
+  },
+  "checks": {
+    "realSourceFilePresent": true,
+    "realSourceUidsCanonical": true,
+    "inputModeWrongIdsOnly": true,
+    "inputAnswerFieldsAbsent": true,
+    "priorCanonicalJoin": true,
+    "priorWeaknessRecorded": true,
+    "presetValid": true,
+    "mixerDeterministicReplay": true,
+    "mixedPayloadReady": true,
+    "omrComplementRowsReady": true,
+    "resultCanonicalJoin": true,
+    "reaggregated": true,
+    "canonicalUidTraceUnique": true,
+    "noProductionWrites": true,
+    "noNetworkCalls": true
+  },
+  "errors": [],
+  "writes": 0,
+  "networkCalls": 0
+}
