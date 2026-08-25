@@ -33,9 +33,11 @@
 2. `index.js`가 `verifyAuth`
 3. admin은 students/classes/map/attendance/homework/exams/consultations/foundation 전체성 데이터 조회
 4. teacher는 `teacher_classes` 기준으로 class/student scope 제한
-5. report 통계용 `report_exam_cohort_stats`는 같은 연도의 같은 `archive_file`과 같은 학년 기준 summary만 추가 조회
+5. report 통계용 `report_exam_cohort_stats`는 schema 테이블이 아니라 Worker가 같은 연도·같은 `archive_file`·같은 학년 기준으로 계산해 응답에 추가하는 summary key다
 6. response가 `state.db`로 합쳐짐
 7. dashboard/classroom/student/timetable/report가 동일 state를 사용
+
+리포트 시험 dashboard에서 blueprint가 initial-data에 포함되지 않은 경우에는 현재 archive 시험지에 한정해 인증 `exam-blueprints?file=...` GET을 lazy-load하고, 응답 후 현재 시험지 화면만 refresh한다. 빈 응답은 같은 세션에서 반복 요청하지 않는다.
 
 ## 3. classroom 출결/숙제
 
@@ -83,3 +85,14 @@
 4. 한 날짜 수정/삭제는 기존 단건 route를 사용하고, 전체 공통 필드 수정은 `PATCH /api/academy-schedules/series/:seriesId`, 전체 삭제는 `DELETE /api/academy-schedules/series/:seriesId`를 사용한다.
 5. 날짜 구성 변경은 frontend가 기존 시리즈를 소프트 삭제한 뒤 occurrence를 재생성한다.
 6. `exam_schedules` 저장·수정·삭제 경로는 변경하지 않는다.
+
+## 9. 리포트 frontend 모듈 분할
+
+`apmath/index.html`은 `report-text.js`, `archive-render.js`, `report-center.js`, `report-print.js` 순서로 로드한다. 현재 legacy `report.js` 모듈은 없으며, 텍스트/상담 저장은 `report-text.js`, 리포트 센터·cohort·archive/AI 분석은 `report-center.js`, 출력은 `report-print.js`에 있다.
+
+## 10. 아카이브 출제 대상 통합 패널
+
+1. `archive/index.html`이 로그인 세션으로 `class-exam-assignments/roster`를 호출해 재원 학생과 출결/기응시 상태를 조회한다.
+2. 선택 반마다 `class-exam-assignments`를 순차 등록하며, 반 내 부분 선택일 때만 `class-exam-assignments/exclude-students`를 호출한다.
+3. `student-portal.js`의 `student-portal/exams` 조회는 `class_exam_assignment_exclusions`에 대한 `AND NOT EXISTS` 필터를 적용하므로 제외 학생에게 해당 시험이 노출되지 않는다.
+4. 다중 반 등록은 공유 `assignment_batch_id`를 사용하며, `class-exam-assignments/board`에서 반 목록을 확인할 수 있다.

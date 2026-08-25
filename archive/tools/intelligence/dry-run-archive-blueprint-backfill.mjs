@@ -249,7 +249,7 @@ function canonicalQuestionUid(archiveFile, ordinal) {
   return `qid_v1_${crypto.createHash('sha256').update(`${sourceFile}#${ordinal}`).digest('hex')}`;
 }
 
-function buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash) {
+function buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, sourceArchiveFile = archiveFile, sourceQuestionNo = questionNumber(question)) {
   const questionNo = questionNumber(question);
   if (!questionNo) return '';
   const columns = [
@@ -259,8 +259,8 @@ function buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, exp
     'type_key', 'template_key', 'difficulty', 'metadata_revision', 'metadata_hash'
   ];
   const values = [
-    archiveFile, questionNo, archiveFile, questionNo,
-    canonicalQuestionUid(archiveFile, ordinal), ordinal,
+    archiveFile, questionNo, sourceArchiveFile, sourceQuestionNo,
+    canonicalQuestionUid(sourceArchiveFile, ordinal), ordinal,
     metadata.standardUnitKey, metadata.standardUnit, metadata.standardCourse,
     metadata.conceptClusterKey, metadata.subUnitKey, metadata.typeKey,
     metadata.templateKey, metadata.difficulty, metadata.metadataRevision, expectedHash
@@ -280,7 +280,20 @@ function sourceOrdinal(row) {
 }
 
 function compareFile(rows, archiveFile, options) {
-  const source = options.resolveSource(archiveFile);
+  let source = options.resolveSource(archiveFile);
+  // Some legacy blueprint keys are logical exam identifiers rather than the
+  // physical archive path. When every row carries the same source file, use
+  // that explicit source field as a deterministic fallback instead of
+  // treating the whole file as missing.
+  if (!source.path && !String(archiveFile).startsWith('MIXED:')) {
+    const sourceFields = [...new Set(rows
+      .map(row => normalizeArchiveFile(row?.source_archive_file))
+      .filter(Boolean))];
+    if (sourceFields.length === 1 && sourceFields[0] !== archiveFile) {
+      const sourceFromField = options.resolveSource(sourceFields[0]);
+      if (sourceFromField.path) source = { ...sourceFromField, resolution: 'source_field_fallback', sourceField: sourceFields[0] };
+    }
+  }
   const sourcePath = source.path;
   const result = {
     archiveFile,
@@ -349,7 +362,7 @@ function compareFile(rows, archiveFile, options) {
     if (!existing) {
       result.insertRequired += 1;
       diffs.push({ ...base, status: 'INSERT_REQUIRED' });
-      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash));
+      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, source.sourceField || archiveFile, questionNumber(question)));
       continue;
     }
     if (!options.schemaReady) {
@@ -363,7 +376,7 @@ function compareFile(rows, archiveFile, options) {
     } else {
       result.updateRequired += 1;
       diffs.push({ ...base, status: existing.metadata_hash ? 'UPDATE_REQUIRED' : 'METADATA_MISSING' });
-      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash));
+      if (options.emitSql) sqlStatements.push(buildBackfillSqlStatement(archiveFile, question, ordinal, metadata, expectedHash, source.sourceField || archiveFile, questionNumber(question)));
     }
   }
 

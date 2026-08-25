@@ -166,3 +166,28 @@
 - MIXED 7개 파일/343행은 `source_question_uid`, `source_question_ordinal`, metadata가 모두 비어 있어 별도 identity audit 대상이다. source JS가 없는 3개 파일/72행도 별도 보류한다.
 - dry-run은 legacy 행의 `source_question_ordinal`이 없을 때 `question_no`를 ordinal로 간주하지 않고 실제 source question number로 보조 매칭하도록 보강했다. 그 결과 source와 맞지 않는 orphan blueprint 4행을 탐지했고, post-audit blocker로 유지한다.
 - 따라서 현재 D1 schema·runtime·backfill은 적용됐지만 Phase 3 승격 조건은 아직 충족하지 않았다.
+
+## 20. 2026-08-24 MIXED blueprint identity 승격 후 잔여 범위
+
+- MIXED 7개 파일·343행은 원본 JS 대조 결과를 바탕으로 `source_question_uid`, `source_question_ordinal`, metadata revision/hash를 원격 D1에 반영했다. post-export에서 343/343행이 재감사에 통과했다.
+- 최신 post-audit의 metadata diff와 MIXED identity 검토는 0건이다. 남은 것은 sparse source orphan 4행과 source JS 부재 3파일·72행뿐이며, 이들은 별도 disposition 없이는 Phase 3 question-index/runtime 승격 대상에 포함하지 않는다.
+
+## 21. 2026-08-24 잔여 blueprint blocker disposition
+
+- `archive/tools/intelligence/build-archive-blueprint-blocker-disposition.mjs`가 최신 export audit를 읽어 source-unavailable 72행과 sparse orphan 4행을 별도 보류 목록으로 만든다.
+- 이 76행에는 추정 metadata나 삭제가 적용되지 않았으며, `phase3Gate.allowed=false`인 동안 question-index/runtime 승격을 수행하지 않는다.
+
+## 22. 2026-08-24 운영 index·identity 재생성
+
+- 운영 JS 기준 Phase 0/classification snapshot과 question-index·identity map/runtime을 재생성했다. 438개 파일·10,686문항, qCount/index mismatch 0, UID collision 0이다.
+- 운영 세부단원 QA의 production/index 필드 일치와 master gap 게이트가 true다. source-dependent DB 28/60건 및 blueprint 보류 76행은 별도 상태로 유지한다.
+
+## 23. 2026-08-24 Phase 2 최종 게이트
+
+- 원격 blueprint metadata/identity post-audit, MIXED audit, QR/OMR 7/7, identity map 10,686 UID, DB/index consistency, 운영 subunit QA를 최종 통과했다.
+- 근거 없는 source-dependent DB 28/60건과 blueprint 보류 76행 때문에 Phase 3 승격은 명시적 disposition 전까지 잠근다.
+
+## 24. 2026-08-24 후보 기출 source 승격
+
+- 효천고·매산여고·순천고 후보 3개 파일(총 72문항)을 기존 `original/...기출c.js` source로 승인하고 blueprint source/identity/metadata를 원격 D1에 반영했다.
+- 최신 post-audit에서 source missing 0, metadata diff 0, MIXED identity 343/343, QR/OMR 7/7이다. 남은 blueprint blocker는 삼산중 orphan 4행이다.

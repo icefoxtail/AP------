@@ -39,12 +39,13 @@ function resolvePath(value, fallback) {
 
 const args = parseArgs(process.argv.slice(2));
 if (args.help) {
-  console.log('Usage: node archive/tools/intelligence/audit-archive-blueprint-backfill.mjs [--db-sql <path>] [--dry-run-report <path>] [--out <path>]');
+  console.log('Usage: node archive/tools/intelligence/audit-archive-blueprint-backfill.mjs [--db-sql <path>] [--dry-run-report <path>] [--mixed-identity-audit <path>] [--out <path>]');
   process.exit(0);
 }
 
 const dbSqlPath = resolvePath(args['db-sql'], DEFAULT_DB_SQL);
 const outPath = resolvePath(args.out, DEFAULT_OUT);
+const mixedIdentityAuditPath = args['mixed-identity-audit'] ? resolvePath(args['mixed-identity-audit'], '') : '';
 if (!fs.existsSync(dbSqlPath)) {
   console.error(`D1 SQL export not found: ${dbSqlPath}`);
   process.exit(2);
@@ -67,7 +68,25 @@ try {
   const mixedFiles = fileSummaries.filter(file => file.status === 'MIXED_NO_ARCHIVE_SOURCE');
   const sourceMissingFiles = fileSummaries.filter(file => file.status === 'SOURCE_FILE_MISSING');
   const parseErrorFiles = fileSummaries.filter(file => file.status === 'SOURCE_PARSE_ERROR');
-  const diffCount = Number(summary.updateRequired || 0) + Number(summary.insertRequired || 0) + Number(summary.sourceQuestionMissing || 0) + Number(summary.unmatchedDbRows || 0);
+  let mixedIdentityAudit = null;
+  if (mixedIdentityAuditPath) {
+    if (!fs.existsSync(mixedIdentityAuditPath)) {
+      console.error(`MIXED identity audit not found: ${mixedIdentityAuditPath}`);
+      process.exit(3);
+    }
+    mixedIdentityAudit = JSON.parse(fs.readFileSync(mixedIdentityAuditPath, 'utf8'));
+  }
+  const mixedIdentityRows = Number(mixedIdentityAudit?.summary?.mixedRows || 0);
+  const mixedIdentityReady = mixedIdentityAudit?.status === 'MIXED_IDENTITY_CANDIDATES_READY' &&
+    Number(mixedIdentityAudit?.summary?.identityCandidateReady || 0) === mixedIdentityRows &&
+    Number(mixedIdentityAudit?.summary?.sourceFileMissing || 0) === 0 &&
+    Number(mixedIdentityAudit?.summary?.sourceQuestionMissing || 0) === 0 &&
+    Number(mixedIdentityAudit?.summary?.identityMismatch || 0) === 0 &&
+    Number(mixedIdentityAudit?.summary?.parseError || 0) === 0 &&
+    Number(mixedIdentityAudit?.summary?.existingUidRows || 0) === mixedIdentityRows &&
+    Number(mixedIdentityAudit?.summary?.existingOrdinalRows || 0) === mixedIdentityRows &&
+    Number(mixedIdentityAudit?.summary?.existingMetadataHashRows || 0) === mixedIdentityRows;
+  const metadataDiffCount = Number(summary.updateRequired || 0) + Number(summary.insertRequired || 0) + Number(summary.sourceQuestionMissing || 0);
   const report = {
     schemaVersion: 'archive-blueprint-post-audit-v1',
     generatedAt: new Date().toISOString(),
@@ -81,11 +100,11 @@ try {
     },
     checks: {
       schemaReady: dryRun.source?.schemaReady === true,
-      metadataDiffZero: diffCount === 0,
+      metadataDiffZero: metadataDiffCount === 0,
       unmatchedDbRowsZero: Number(summary.unmatchedDbRows || 0) === 0,
       sourceMissingZero: sourceMissingFiles.length === 0,
       sourceParseErrorZero: parseErrorFiles.length === 0,
-      mixedIdentityReviewRequired: mixedFiles.length > 0
+      mixedIdentityReviewRequired: mixedFiles.length > 0 && !mixedIdentityReady
     },
     summary: {
       blueprintRows: summary.dbRows || 0,
@@ -97,7 +116,10 @@ try {
       unmatchedDbRows: summary.unmatchedDbRows || 0,
       sourceMissingFiles: sourceMissingFiles.length,
       parseErrorFiles: parseErrorFiles.length,
-      mixedFiles: mixedFiles.length
+      mixedFiles: mixedFiles.length,
+      mixedIdentityAudit: mixedIdentityAuditPath ? path.relative(ROOT, mixedIdentityAuditPath).replace(/\\/g, '/') : null,
+      mixedIdentityRows,
+      mixedIdentityReady
     },
     blockers: []
   };

@@ -7,28 +7,49 @@ const archiveIndex = fs.readFileSync(path.join(root, 'archive', 'index.html'), '
 const assessmentMvp = fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-mvp.html'), 'utf8');
 const examsRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'exams.js'), 'utf8');
 
+// archive/index.html uses the unified grade → class → student panel from
+// ARCHIVE_EXAM_TARGET_SELECTION_NEXT_PLAN.md; assessment-mvp.html retains its
+// legacy assessment-only grade/class modal. Keep the contracts separate so a
+// deliberate UI consolidation is not reported as a regression.
+for (const requiredText of [
+  '출제 대상 선택',
+  'assignTargetModalOverlay',
+  'assignTargetToggleAll',
+  'assignTargetGoReview',
+  'assignTargetSubmit',
+  '학생 이름 검색',
+  'exclude-students',
+  'assignment_batch_id',
+  'target_scope',
+  'grade_label',
+  'class-exam-assignments',
+  '문항 수 확인이 필요합니다.',
+]) {
+  assert(archiveIndex.includes(requiredText), `archive/index.html should include unified target assignment marker: ${requiredText}`);
+}
+
+for (const requiredText of [
+  '출제 대상',
+  '시험지를 출제할 대상을 선택하세요.',
+  '반별',
+  '학년별',
+  '출제 학년 선택',
+  '선택한 학년의 모든 반에 시험지가 출제됩니다.',
+  '해당 학년에 출제할 반이 없습니다.',
+  'assignment_batch_id',
+  'target_scope',
+  "target_scope: 'grade'",
+  'grade_label',
+  'class-exam-assignments',
+  '문항 수 확인이 필요합니다.',
+]) {
+  assert(assessmentMvp.includes(requiredText), `assessment-mvp.html should include grade target assignment marker: ${requiredText}`);
+}
+
 for (const [label, html] of [
   ['archive/index.html', archiveIndex],
-  ['archive/assessment/assessment-mvp.html', assessmentMvp],
+  ['assessment-mvp.html', assessmentMvp],
 ]) {
-  for (const requiredText of [
-    '출제 대상',
-    '시험지를 출제할 대상을 선택하세요.',
-    '반별',
-    '학년별',
-    '출제 학년 선택',
-    '선택한 학년의 모든 반에 시험지가 출제됩니다.',
-    '해당 학년에 출제할 반이 없습니다.',
-    'assignment_batch_id',
-    'target_scope',
-    "target_scope: 'grade'",
-    'grade_label',
-    'class-exam-assignments',
-    '문항 수 확인이 필요합니다.',
-  ]) {
-    assert(html.includes(requiredText), `${label} should include grade target assignment marker: ${requiredText}`);
-  }
-
   assert(!html.includes('ASSESSMENT:'), `${label} should not write ASSESSMENT:<packId> to archive_file`);
   assert(!html.includes('created_by'), `${label} should not send created_by`);
   assert(!html.includes('assessment-analysis.html'), `${label} should not add analysis screen links`);

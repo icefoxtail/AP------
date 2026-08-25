@@ -1,48 +1,48 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-08-18T05:26:03.349Z
+- 생성 시각: 2026-08-24T11:39:00.903Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 422
-- 시험지 파일 수: 432
-- 원본 문항 수(중복 제거 전): 10552
-- 최종 인덱스 문항 수(중복 제거 후): 10528
-- 중복 qKey로 제외된 레코드: 24 (그룹 24)
+- 시험지 수(db.js): 438
+- 시험지 파일 수: 438
+- 원본 문항 수(중복 제거 전): 10686
+- 최종 인덱스 문항 수(중복 제거 후): 10686
+- 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 428869 bytes
-- 시험지 JS 총 크기: 13411017 bytes
-- 인덱스 크기: 7003087 bytes
+- db.js 크기: 445691 bytes
+- 시험지 JS 총 크기: 16874939 bytes
+- 인덱스 크기: 9099143 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(10528)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(10686)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 142개 기준)
 
-- 공식(official): 10049
-- RAW-(임시 규약, 허용): 217 (distinct 87)
-- 비공식(invalid): 249 (distinct 39)
-- 빈 키(empty): 13
+- 공식(official): 10450
+- RAW-(임시 규약, 허용): 0 (distinct 0)
+- 비공식(invalid): 236 (distinct 28)
+- 빈 키(empty): 0
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
 ## 필드 누락 (최종 인덱스 기준)
 
 - 누락 id: 0
-- 누락 content: 1
-- 누락 choices: 132
+- 누락 content: 0
+- 누락 choices: 0
 - 누락 level: 344
-- 누락 standardUnit: 14
-- 누락 standardUnitKey: 13
+- 누락 standardUnit: 0
+- 누락 standardUnitKey: 0
 - 누락 standardCourse: 12
-- 누락 tags: 15
+- 누락 tags: 0
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 1893
-- content 내부 <img>: 13
-- content 내부 <svg>: 78
-- content 내부 <table>: 133
-- 시각요소 보유(hasImage=true, OR 합산): 2113
+- q.image 보유: 2059
+- content 내부 <img>: 19
+- content 내부 <svg>: 79
+- content 내부 <table>: 150
+- 시각요소 보유(hasImage=true, OR 합산): 2302
 
 ## 누락 예시
 
@@ -50,17 +50,10 @@
   - 없음
 
 ### content
-  - original/high/h2/1mid/25_수피아여고_1학기_중간_고2_확률과통계.js#10
+  - 없음
 
 ### choices
-  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#26
-  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#27
-  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#28
-  - original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#29
-  - original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#21
-  - original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#22
-  - original/high/h1/2final/21_복성고_2학기_기말_고1_기출.js#22
-  - original/high/h1/2final/21_복성고_2학기_기말_고1_기출.js#23
+  - 없음
 
 ### level
   - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#1
@@ -73,24 +66,10 @@
   - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#8
 
 ### standardUnit
-  - original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#12
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#13
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#14
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#15
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#16
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#17
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#18
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#19
+  - 없음
 
 ### standardUnitKey
-  - original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#12
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#13
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#14
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#15
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#16
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#17
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#18
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#19
+  - 없음
 
 ### standardCourse
   - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#13
@@ -103,14 +82,7 @@
   - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#20
 
 ### tags
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#1
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#2
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#3
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#5
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#8
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#12
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#13
-  - types/high/h1/항등식과나머지정리_고1_유형1.js#14
+  - 없음
 
 ### undefined/비객체 문항
   - 없음

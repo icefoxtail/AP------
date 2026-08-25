@@ -102,3 +102,18 @@ AssignTarget = {
 - **배포**: Loop 1(백엔드)과 이번 Loop 2(프론트)를 실제로 반영하려면 (a) `apmath/worker-backup/worker`에서 `wrangler deploy`, (b) 프론트는 GitHub Pages 커밋/푸시가 필요하다(둘 다 사용자 승인 필요 — 임의로 진행하지 않음).
 - **Phase 3(계획서)**: 배포 후 실제 로그인 세션으로 학년 전체 / 다중 반 / 반 내 학생 선택 3가지 경로가 `class_exam_assignments`/`class_exam_assignment_exclusions`에 정확히 반영되는지, student-portal에서 제외된 학생에게 시험이 안 보이는지 확인 필요.
 - **Phase 4(계획서)**: 실사용 데이터(학생 많은 반)에서 성능/스크롤 확인.
+
+## 7. 2026-08-24 Phase 3 사전 검증 갱신
+
+- `exams.js`·`check-omr.js` `node --check`와 Worker Wrangler `--dry-run` 번들 검증을 통과했다.
+- 현재 unified panel 계약에 맞게 stale grade-target 정적 assertion을 분리·갱신했고 관련 5개 테스트가 PASS다.
+- 실제 로그인 세션 기반의 학년 전체·다중 반·부분 학생 선택·student-portal exclusion E2E는 배포 이후에만 수행한다. 이 사전 검증만으로 Phase 3 완료를 선언하지 않는다.
+- production Worker version 217의 roster 무인증 요청은 `401 Unauthorized`로 차단됐고, 브라우저에서는 통합 패널의 로그인 유도 상태까지 확인했다. 실제 계정 없이 학생 roster·배정·제외 데이터를 읽거나 쓰지 않았다.
+- 로그인된 Chrome 세션에서 삼산중 중3 2개 반 roster 11명을 읽고, 전체 선택과 부분 선택(총 10명·제외 1명)의 review 화면까지 확인했다. 실제 배정/제외 API 호출은 운영 데이터 쓰기이므로 승인 대기 상태다.
+
+## 8. 2026-08-24 Phase 3 승인 실행
+
+- 사용자 승인에 따라 실제 운영 출제를 제출했다. 대상은 삼산중 중3 기출 24문항이며, 중3A는 3명 대상·1명 제외, 중3B는 7명 전체(총 10명)다.
+- 순차 진행 화면에서 두 반 모두 성공(`✔`)으로 종료됐고, 부분 선택 반의 제외 POST도 함께 완료됐다.
+- 출제 후 중3 출제보드의 read-only 결과에서 시험지가 `중3A, 중3B`로 표시됐다. 학생 포털은 기존 `student-portal.js`의 `class_exam_assignment_exclusions` 기반 `AND NOT EXISTS` 필터가 단일 기준으로 유지되며, 이번 변경에서 수정되지 않았음을 정적 회귀 테스트로 확인했다.
+- 이번 단계는 운영 API 반영 및 보드 검증까지만 진행했으며, 커밋·푸시는 수행하지 않았다.
