@@ -21,7 +21,7 @@ Student add closes/refreshes the visible state before onboarding bootstrap. Boot
 | `apmath/js/student-export.js` | 학생 출력/엑셀 내보내기 | admin 전용 학생 명단 XLSX, 출력정보 시트, 전체/반별/연락처/주소차량 시트 | frontend state only | 개인정보, teacher 노출 금지 |
 | `apmath/js/management.js` | 반/주소록/수납 foundation | 반 관리, 주소록 반 필터, PIN, billing accounting modal | classes, billing-accounting-foundation | 숨김 foundation 노출 |
 | `apmath/js/timetable.js` | 시간표 | 운영 시간표, draft/version, slot, conflict, 반 선택/확인 표시명, A4 가로 인쇄 전용 HTML 출력 | timetable-versions, class-time-slots, conflicts, enrollments | 운영/staging 혼선 |
-| `apmath/js/report.js` | 리포트/AI | 학부모/학생/상담 리포트, AI 분석, print | ai/report-analysis, consultations, archive fetch | 학부모 문장 |
+| `apmath/js/report-text.js`, `apmath/js/report-center.js`, `apmath/js/report-print.js` | 리포트/AI | 텍스트·상담 저장, 리포트 센터/AI·archive 분석, print | ai/report-analysis, consultations, student-report-archives, student-reports, exam-analysis, archive fetch | 모듈 로드 순서·학부모 문장 |
 | `apmath/js/qr-omr.js` | QR/OMR | OMR 세션 생성/제출, archive fetch | exam-sessions | 제출 완료 |
 | `apmath/js/cumulative.js` | 월간 출결/성적 | 출결 월간, school exam records, 반 필터, 월간/누적 출석부 A4 가로 인쇄 전용 HTML 출력 | attendance-month, school-exam-records | 성적/출결 |
 | `apmath/js/schedule.js` | 일정관리 | 시험/휴무/기타 통합 모달, academy 일정 반복·기간 시리즈 CRUD, 월/주/아젠다 보기, 날짜 필터 | exam-schedules, academy-schedules, academy-schedules/batch, academy-schedules/series/:id | 시험 경로 회귀, 시리즈 단건/전체 범위 |
@@ -45,7 +45,7 @@ Student add closes/refreshes the visible state before onboarding bootstrap. Boot
 
 ## 4. 리포트 통계 기준
 
-`report.js`의 평가 리포트 통계는 `report_exam_cohort_stats`가 있으면 같은 연도에 같은 아카이브 시험지를 본 같은 학년 전체 summary를 우선 사용한다. summary가 없으면 frontend 보유 `exam_sessions`에서 `archive_file`, `exam_title + exam_date + question_count`, `exam_title + exam_date` 순서로 같은 시험을 식별하고 같은 학년 기준으로 fallback한다. `classAverage`는 별도 반 기준 값으로 유지한다.
+`report-center.js`의 평가 리포트 통계는 `report_exam_cohort_stats`가 있으면 Worker가 계산한 같은 연도·같은 archive file·같은 학년 summary를 우선 사용한다. summary가 없으면 frontend 보유 `exam_sessions`에서 `archive_file`, `exam_title + exam_date + question_count`, `exam_title + exam_date` 순서로 같은 시험을 식별하고 같은 학년 기준으로 fallback한다. `classAverage`는 별도 반 기준 값으로 유지한다. 시험 dashboard가 blueprint를 보유하지 않은 경우에는 현재 archive file의 blueprint만 인증 API로 lazy-load한 뒤 같은 시험지를 보고 있을 때 refresh한다. `report.js`는 현재 로드되는 파일명이 아니다.
 
 ## 5. 학생 출력 Round 1
 

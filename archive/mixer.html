@@ -26,6 +26,12 @@
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
+<script src="question-meta.js?v=archive-metadata-v1-phase1b-20260825.2" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
+<script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
+<script src="mixer-selector.js?v=20260825.1" onerror="console.warn('[mixer] selector contract 로드 실패 — legacy selector로 제한')"></script>
+<!-- Phase 4 fingerprint bridge: loaded for contract use only; no preset UI exposure before Gate 4. -->
+<script src="mixer-school-fingerprint.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint bridge 로드 실패 — fingerprint preset 비활성화')"></script>
+<script src="mixer-school-fingerprint-runtime.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint runtime 로드 실패 — fingerprint preset 비활성화')"></script>
     <style>
         :root {
             --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
@@ -135,7 +141,7 @@
         .btn-add-cart.in { background: var(--blue); color: white; border-color: var(--blue); }
 
         /* 카트 패널 */
-        .panel-cart { width: 340px; flex-shrink: 0; border-right: none; }
+        .panel-cart { width: 340px; flex-shrink: 0; border-right: none; min-height: 0; overflow-y: auto; }
         .cart-item { padding: 12px; border: 1px solid var(--gray-100); border-radius: 10px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; background: white; }
         .cart-analysis { padding: 14px 16px; border-bottom: 1px solid var(--gray-100); background: var(--gray-50); }
         .cart-analysis-title { font-size: 12px; font-weight: 900; margin-bottom: 10px; color: var(--text-main); }
@@ -146,7 +152,7 @@
         .cart-unit-list { display: flex; flex-direction: column; gap: 5px; }
         .cart-unit-row { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; font-weight: 800; color: var(--gray-500); }
         .cart-unit-row span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-main); }
-        .cart-footer { padding: 20px; border-top: 1px solid var(--gray-100); background: white; position: sticky; bottom: 0; }
+        .cart-footer { padding: 20px; border-top: 1px solid var(--gray-100); background: white; position: static; flex-shrink: 0; }
         .btn-main { width: 100%; height: 52px; border: none; border-radius: var(--radius-md); background: var(--blue); color: white; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; }
         .btn-main:hover { opacity: 0.9; }
 
@@ -160,10 +166,16 @@
         .autogen-head .ag-title i { color: var(--blue); }
         .autogen-body { padding: 0 20px 16px; max-height: 340px; overflow-y: auto; }
         .autogen-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
-        .autogen-row { display: grid; grid-template-columns: 1fr 84px 88px 32px; gap: 6px; align-items: center; }
-        .autogen-row.has-adv { grid-template-columns: 1fr 84px 80px 96px 1fr 32px; }
+        .autogen-row { display: grid; grid-template-columns: minmax(150px, 1.35fr) minmax(150px, 1.2fr) minmax(130px, 1fr) 74px 68px minmax(120px, 1fr) 32px; gap: 6px; align-items: center; }
+        .autogen-row.has-adv { grid-template-columns: minmax(150px, 1.35fr) minmax(150px, 1.2fr) minmax(130px, 1fr) 74px 68px minmax(120px, 1fr) 32px; }
         .autogen-row .form-select, .autogen-row input { height: 34px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 12px; font-weight: 700; outline: none; background: white; padding: 0 8px; min-width: 0; width: 100%; }
         .autogen-row .ag-count { text-align: center; }
+        .autogen-advanced-options { display: none; grid-template-columns: repeat(4, minmax(140px, 1fr)); gap: 6px; padding: 8px; margin: 0 0 10px; border: 1px solid var(--gray-200); border-radius: 8px; background: var(--gray-50); }
+        .autogen-advanced-options.open { display: grid; }
+        .autogen-advanced-options label { display: flex; flex-direction: column; gap: 4px; font-size: 10.5px; font-weight: 800; color: var(--gray-500); }
+        .autogen-advanced-options input { height: 32px; border: 1px solid var(--gray-200); border-radius: 7px; padding: 0 8px; font-size: 11px; background: white; min-width: 0; }
+        .autogen-advanced-options .ag-option-check { flex-direction: row; align-items: center; justify-content: flex-start; padding-top: 18px; }
+        .autogen-advanced-options .ag-option-note { grid-column: 1 / -1; font-size: 10px; color: var(--gray-500); }
         .btn-ag-remove { height: 34px; width: 32px; border: 1px solid #fca5a5; color: #ef4444; background: white; border-radius: 8px; cursor: pointer; font-size: 13px; }
         .autogen-toolbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
         .btn-ag { height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--gray-200); background: white; font-size: 11.5px; font-weight: 800; cursor: pointer; }
@@ -238,6 +250,9 @@
             .question-filter-bar .search-box,
             .question-filter-bar .btn-action { flex: 1 1 150px; width: auto !important; }
             .source-flow-grid, .difficulty-plan, .detail-filter-panel, .availability-grid { grid-template-columns: 1fr; }
+            .autogen-row, .autogen-row.has-adv, .autogen-advanced-options { grid-template-columns: 1fr 1fr; }
+            .autogen-row .btn-ag-remove { grid-column: 2; }
+            .autogen-advanced-options .ag-option-note { grid-column: 1 / -1; }
         }
     </style>
 </head>
@@ -353,6 +368,16 @@
                     <button class="btn-ag" type="button" onclick="addBlueprintRowFromFilter()" title="현재 course/단원/난이도 조건으로 행 추가">현재 필터로 행 추가</button>
                     <label class="ag-adv-toggle"><input type="checkbox" id="autogen-adv-toggle" onchange="toggleAutoGenAdvanced()"> 고급 조건 사용</label>
                 </div>
+                <div class="autogen-advanced-options" id="autogen-advanced-options">
+                    <label>학교 포함<input id="ag-school-include" type="text" placeholder="학교명(쉼표 구분)"></label>
+                    <label>학교 제외<input id="ag-school-exclude" type="text" placeholder="학교명(쉼표 구분)"></label>
+                    <label>연도 범위<input id="ag-year-range" type="text" placeholder="예: 2023-2025"></label>
+                    <label>최근 사용 UID 제외<input id="ag-recent-uids" type="text" placeholder="qid_v1_...(쉼표 구분)"></label>
+                    <label class="ag-option-check"><input id="ag-source-diversity" type="checkbox" checked> source 다양성 우선</label>
+                    <label>동일 template 최대<input id="ag-template-max" type="number" min="0" max="50" placeholder="제한 없음"></label>
+                    <label>서술형 목표 수<input id="ag-essay-count" type="number" min="0" max="50" placeholder="제한 없음"></label>
+                    <span class="ag-option-note">행별 세부개념·문제유형 조건과 함께 적용됩니다. 최종 분포·출력 차단 검증은 Phase 3E에서 수행합니다.</span>
+                </div>
                 <div class="autogen-rows" id="autogen-rows" style="display:none;"></div>
                 <div class="autogen-run">
                     <button class="btn-ag primary" type="button" onclick="runAutoGenerate('add')"><i class="fa-solid fa-cart-plus"></i> 카트에 추가</button>
@@ -452,6 +477,9 @@ function toggleFilterPanel() {
  */
 function openMixedOutputModeModal() {
     if (cart.length === 0) return alert('카트가 비어있습니다.');
+    if (lastAutoGenValidation && !lastAutoGenValidation.ok) {
+        return alert('자동출제 조건 검증에 실패했습니다.\n부족 문항·중복 UID·분포·template/서술형 제한을 확인한 뒤 다시 생성하세요.');
+    }
     document.getElementById('mixed-output-mode-modal').style.display = 'flex';
 }
 
@@ -668,9 +696,22 @@ const questionFileCache = new Map();
 /* [자동출제] 고정 문항 + 블루프린트 상태 (cart 구조는 변경하지 않음) */
 const pinnedKeys = new Set();
 const AUTOGEN_MAX_CART = 50;
+const ARCHIVE_MIXER_SELECTION_SEED = 'archive-mixer-v1';
 let autoGenRows = [];
 let autoGenUnitList = [];
+let autoGenSubUnitList = [];
+let autoGenProblemTypeList = [];
 let autoGenAdvanced = false;
+let autoGenOptions = {
+    includeSchools: '',
+    excludeSchools: '',
+    yearRange: '',
+    recentUids: '',
+    sourceDiversity: true,
+    templateMax: '',
+    essayCount: ''
+};
+let lastAutoGenValidation = null;
 
 function inferGradeFromFile(file) {
     const text = String(file || '');
@@ -716,12 +757,40 @@ function normalizeTags(tags) {
     return String(tags).split(/[,\s]+/).map(t => t.trim()).filter(Boolean);
 }
 
+function getMixerSourceOrdinal(raw) {
+    const value = raw?._sourceQuestionOrdinal ?? raw?.source_question_ordinal ?? raw?.sourceQuestionOrdinal ?? raw?.sourceOrdinal;
+    const ordinal = Number(value);
+    return Number.isInteger(ordinal) && ordinal > 0 ? ordinal : null;
+}
+
+function resolveMixerQuestionIdentity(raw, sourceFile) {
+    const resolver = window.resolveQuestionIdentityReference;
+    if (typeof resolver !== 'function') return null;
+    const result = resolver({
+        questionUid: raw?._sourceQuestionUid || raw?.source_question_uid || raw?.sourceQuestionUid || raw?.questionUid,
+        sourceArchiveFile: sourceFile,
+        sourceOrdinal: getMixerSourceOrdinal(raw),
+        sourceQuestionNo: raw?._sourceQuestionNo || raw?.source_question_no || raw?.sourceQuestionNo || raw?.id
+    });
+    return String(result?.status || '').startsWith('RESOLVED_') ? result : null;
+}
+
 function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
-    const raw = q || {};
-    const sourceFile = String(raw._sourceFile || raw.sourceFile || sourceMeta.file || '').trim();
+    const sourceFileHint = String(q?._sourceFile || q?.sourceFile || sourceMeta.file || '').trim();
+    const raw = window.mergeArchiveQuestionMetadata
+        ? window.mergeArchiveQuestionMetadata(q || {}, {
+            questionUid: q?._sourceQuestionUid || q?.source_question_uid || q?.questionUid,
+            sourceArchiveFile: sourceFileHint,
+            sourceOrdinal: getMixerSourceOrdinal(q || {})
+        })
+        : (q || {});
+    const sourceFile = String(raw._sourceFile || raw.sourceFile || sourceMeta.file || sourceFileHint || '').trim();
     const meta = sourceFile ? { ...getSourceMetaForFile(sourceFile), ...sourceMeta } : sourceMeta;
     const std = getStandardizedUnit(raw);
-    const key = String(sourceMode === 'archive' ? (raw.qKey || raw._qKey || `${sourceFile}_${raw.id || ''}`) : (raw._qKey || raw.qKey || `${sourceFile}_${raw.id || ''}`));
+    const identity = resolveMixerQuestionIdentity(raw, sourceFile);
+    const sourceOrdinal = identity?.sourceOrdinal || getMixerSourceOrdinal(raw);
+    const sourceQuestionNo = identity?.sourceQuestionNo || String(raw._sourceQuestionNo || raw.source_question_no || raw.sourceQuestionNo || raw.id || '');
+    const key = String(identity?.questionUid || (sourceMode === 'archive' ? (raw.qKey || raw._qKey || `${sourceFile}_${raw.id || ''}`) : (raw._qKey || raw.qKey || `${sourceFile}_${raw.id || ''}`)));
     const rawSubject = String(raw.subject || meta.subject || '').trim();
     const stdCourse = normalizeCourseName(std.course && std.course !== '기타' ? std.course : '');
     const course = normalizeCourseName(stdCourse || raw.course || raw.standardCourse || meta.primaryStandardCourse || '');
@@ -748,8 +817,18 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
         course,
         standardCourse: String(raw.standardCourse || course || '').trim(),
         standardUnitKey,
+        subUnitKey: String(raw.subUnitKey || raw.sub_unit_key || '').trim(),
+        subUnit: String(raw.subUnit || raw.sub_unit || '').trim(),
+        conceptClusterKey: String(raw.conceptClusterKey || raw.concept_cluster_key || '').trim(),
+        problemTypeKey: String(raw.problemTypeKey || raw.problem_type_key || raw.typeKey || raw.questionType || '').trim(),
+        templateKey: String(raw.templateKey || raw.template_key || '').trim(),
+        difficultyBucket: String(raw.difficultyBucket || raw.difficulty_bucket || normalizeCartLevel(raw.level) || '').trim(),
         standardUnit,
         unitOrder,
+        questionUid: identity?.questionUid || '',
+        sourceOrdinal,
+        sourceQuestionNo,
+        identityStatus: identity?.status || '',
         level: raw.level || '',
         normalizedLevel: normalizeCartLevel(raw.level),
         hasImage,
@@ -845,6 +924,12 @@ function makeCartItemFromRecord(record) {
         _qKey: record.key,
         _sourceTitle: record.sourceTitle,
         _sourceFile: record.sourceFile,
+        _sourceQuestionUid: record.questionUid || '',
+        _sourceQuestionOrdinal: record.sourceOrdinal || null,
+        _sourceQuestionNo: record.sourceQuestionNo || record.raw.id || '',
+        source_question_uid: record.questionUid || '',
+        source_question_ordinal: record.sourceOrdinal || null,
+        source_question_no: record.sourceQuestionNo || record.raw.id || '',
         standardUnit: record.raw.standardUnit || record.standardUnit,
         standardUnitKey: record.raw.standardUnitKey || record.standardUnitKey,
         standardCourse: record.raw.standardCourse || record.standardCourse || record.course
@@ -1033,7 +1118,7 @@ function resetMixerState() {
     document.getElementById('question-list').innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-file-circle-plus"></i><p>왼쪽에서 시험지를 클릭하거나 여러 개 선택 후 불러오기를 누르세요.</p></div>';
 }
 
-function clearCartOnly() { cart = []; pinnedKeys.clear(); updateCartUI(); refreshFilterResults(); }
+function clearCartOnly() { lastAutoGenValidation = null; cart = []; pinnedKeys.clear(); updateCartUI(); refreshFilterResults(); }
 
 function normalizeExamMeta(ex) {
     const n = { ...(ex || {}) };
@@ -1359,13 +1444,19 @@ async function restoreIndexRecordToCart(record) {
     if (!normalized || cart.some(c => c._qKey === normalized.key)) return true;
     try {
         const questions = await getCachedQuestionFile(normalized.sourceFile);
-        const original = questions.find(q => String(q?.id) === String(normalized.raw.id));
+        const original = normalized.sourceOrdinal ? questions[normalized.sourceOrdinal - 1] : null;
         if (!original) return false;
         cart.push({
             ...original,
             _sourceTitle: normalized.sourceTitle || getSourceTitleForIndexRecord(normalized.raw),
             _sourceFile: normalized.sourceFile,
             _qKey: normalized.key,
+            _sourceQuestionUid: normalized.questionUid || '',
+            _sourceQuestionOrdinal: normalized.sourceOrdinal || null,
+            _sourceQuestionNo: normalized.sourceQuestionNo || original.id || '',
+            source_question_uid: normalized.questionUid || '',
+            source_question_ordinal: normalized.sourceOrdinal || null,
+            source_question_no: normalized.sourceQuestionNo || original.id || '',
             standardUnit: original.standardUnit || normalized.standardUnit,
             standardUnitKey: original.standardUnitKey || normalized.standardUnitKey,
             standardCourse: original.standardCourse || normalized.standardCourse || normalized.course
@@ -1408,14 +1499,18 @@ function toggleAutoGenAdvanced() {
     const toggle = document.getElementById('autogen-adv-toggle');
     autoGenAdvanced = !!(toggle && toggle.checked);
     const rows = document.getElementById('autogen-rows');
+    const options = document.getElementById('autogen-advanced-options');
     if (rows) rows.style.display = autoGenAdvanced ? 'flex' : 'none';
+    if (options) options.classList.toggle('open', autoGenAdvanced);
     renderBlueprintRows();
 }
 
 function addBlueprintRow(prefill) {
-    const row = { unitKey: '', level: '', count: 4, tags: '' };
+    const row = { unitKey: '', subUnitKey: '', problemTypeKey: '', level: '', count: 4, tags: '' };
     if (prefill && typeof prefill === 'object') {
         if (prefill.unitKey) row.unitKey = prefill.unitKey;
+        if (prefill.subUnitKey) row.subUnitKey = prefill.subUnitKey;
+        if (prefill.problemTypeKey) row.problemTypeKey = prefill.problemTypeKey;
         if (prefill.level) row.level = prefill.level;
     }
     autoGenRows.push(row);
@@ -1441,6 +1536,17 @@ function removeBlueprintRow(idx) {
 
 function resetAutoGen() {
     autoGenRows = [];
+    lastAutoGenValidation = null;
+    autoGenOptions = { includeSchools: '', excludeSchools: '', yearRange: '', recentUids: '', sourceDiversity: true, templateMax: '', essayCount: '' };
+    const optionValues = {
+        'ag-school-include': '', 'ag-school-exclude': '', 'ag-year-range': '', 'ag-recent-uids': '',
+        'ag-source-diversity': true, 'ag-template-max': '', 'ag-essay-count': ''
+    };
+    Object.entries(optionValues).forEach(([id, value]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.type === 'checkbox') el.checked = value; else el.value = value;
+    });
     addBlueprintRow();
     const high = document.getElementById('autogen-high-count'); if (high) high.value = 3;
     const mid = document.getElementById('autogen-mid-count'); if (mid) mid.value = 7;
@@ -1460,6 +1566,45 @@ function updateBlueprintField(idx, field, value) {
     }
 }
 
+function buildAutoGenDetailOptions() {
+    const state = readFilterState();
+    const records = getCanonicalPool(state.sourceScope);
+    const collect = (keyField, labelField) => {
+        const map = new Map();
+        records.forEach(record => {
+            const value = String(record[keyField] || '').trim();
+            if (!value) return;
+            const label = String(record[labelField] || value).trim();
+            const entry = map.get(value) || { value, label, count: 0 };
+            entry.count += 1;
+            map.set(value, entry);
+        });
+        return Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label, 'ko') || a.value.localeCompare(b.value, 'en'));
+    };
+    autoGenSubUnitList = collect('subUnitKey', 'subUnit');
+    autoGenProblemTypeList = collect('problemTypeKey', 'problemTypeKey');
+}
+
+function readAutoGenAdvancedOptions() {
+    const parseYearRange = value => {
+        const parts = String(value || '').match(/\d{4}/g) || [];
+        return { yearFrom: parts.length ? Number(parts[0]) : null, yearTo: parts.length > 1 ? Number(parts[1]) : (parts.length ? Number(parts[0]) : null) };
+    };
+    const yearRange = parseYearRange(document.getElementById('ag-year-range')?.value);
+    autoGenOptions = {
+        includeSchools: document.getElementById('ag-school-include')?.value || '',
+        excludeSchools: document.getElementById('ag-school-exclude')?.value || '',
+        yearRange: document.getElementById('ag-year-range')?.value || '',
+        recentUids: document.getElementById('ag-recent-uids')?.value || '',
+        sourceDiversity: document.getElementById('ag-source-diversity')?.checked !== false,
+        templateMax: document.getElementById('ag-template-max')?.value || '',
+        essayCount: document.getElementById('ag-essay-count')?.value || '',
+        yearFrom: yearRange.yearFrom,
+        yearTo: yearRange.yearTo
+    };
+    return autoGenOptions;
+}
+
 function buildBlueprintRowHtml(row, idx) {
     const units = autoGenUnitList.slice();
     const unitOptions = ['<option value="">전체 단원</option>']
@@ -1467,8 +1612,15 @@ function buildBlueprintRowHtml(row, idx) {
         .join('');
     const levelOptions = [['', '전체'], ['상', '상'], ['중', '중'], ['하', '하']]
         .map(([v, t]) => `<option value="${v}"${v === row.level ? ' selected' : ''}>${t}</option>`).join('');
-    return `<div class="autogen-row">
+    buildAutoGenDetailOptions();
+    const subUnitOptions = ['<option value="">전체 세부개념</option>']
+        .concat(autoGenSubUnitList.map(item => `<option value="${escapeMixerHtml(item.value)}"${item.value === row.subUnitKey ? ' selected' : ''}>${escapeMixerHtml(item.label)} (${item.count})</option>`)).join('');
+    const problemTypeOptions = ['<option value="">전체 문제유형</option>']
+        .concat(autoGenProblemTypeList.map(item => `<option value="${escapeMixerHtml(item.value)}"${item.value === row.problemTypeKey ? ' selected' : ''}>${escapeMixerHtml(item.label)} (${item.count})</option>`)).join('');
+    return `<div class="autogen-row has-adv">
             <select class="form-select" onchange="updateBlueprintField(${idx},'unitKey',this.value)">${unitOptions}</select>
+            <select class="form-select" onchange="updateBlueprintField(${idx},'subUnitKey',this.value)">${subUnitOptions}</select>
+            <select class="form-select" onchange="updateBlueprintField(${idx},'problemTypeKey',this.value)">${problemTypeOptions}</select>
             <select class="form-select" onchange="updateBlueprintField(${idx},'level',this.value)">${levelOptions}</select>
             <input class="ag-count" type="number" min="1" max="${AUTOGEN_MAX_CART}" value="${row.count}" oninput="updateBlueprintField(${idx},'count',this.value)">
             <input type="text" placeholder="태그(쉼표 구분)" value="${escapeMixerHtml(row.tags || '')}" oninput="updateBlueprintField(${idx},'tags',this.value)">
@@ -1484,6 +1636,7 @@ function renderBlueprintRows() {
         wrap.innerHTML = '<div class="ag-report-empty" style="font-size:11.5px;">행을 추가해 고급 자동출제 조건을 만드세요.</div>';
         return;
     }
+    buildAutoGenDetailOptions();
     wrap.innerHTML = autoGenRows.map((row, idx) => buildBlueprintRowHtml(row, idx)).join('');
 }
 
@@ -1497,6 +1650,8 @@ function blueprintTagsOk(tags, rowTags) {
 // 인덱스 레코드(축약 데이터) 기준 1차 매칭
 function matchesBlueprintRow(record, row) {
     if (row.unitKey && record.standardUnitKey !== row.unitKey) return false;
+    if (row.subUnitKey && record.subUnitKey !== row.subUnitKey) return false;
+    if (row.problemTypeKey && record.problemTypeKey !== row.problemTypeKey) return false;
     if (row.level && record.normalizedLevel !== row.level) return false;
     return blueprintTagsOk(record.tags, row.tags);
 }
@@ -1508,6 +1663,30 @@ function matchesRestoredItem(item, row) {
     return matchesBlueprintRow(normalizeForFilter(item, 'paper', getSourceMetaForFile(item._sourceFile)), row);
 }
 
+function adjustDifficultyPlanForPinned(plan, pinnedItems) {
+    const adjusted = { ...plan, high: Number(plan.high) || 0, mid: Number(plan.mid) || 0, low: Number(plan.low) || 0 };
+    const buckets = ['high', 'mid', 'low'];
+    (Array.isArray(pinnedItems) ? pinnedItems : []).forEach(item => {
+        const level = normalizeCartLevel(item?.level);
+        const preferred = level === '상' ? 'high' : level === '중' ? 'mid' : level === '하' ? 'low' : '';
+        const target = preferred && adjusted[preferred] > 0
+            ? preferred
+            : buckets.slice().sort((a, b) => adjusted[b] - adjusted[a])[0];
+        if (target && adjusted[target] > 0) adjusted[target] -= 1;
+    });
+    return adjusted;
+}
+
+function adjustBlueprintRowsForPinned(rows, pinnedItems) {
+    const adjusted = (Array.isArray(rows) ? rows : []).map(row => ({ ...row, count: Math.max(0, Number(row.count) || 0) }));
+    (Array.isArray(pinnedItems) ? pinnedItems : []).forEach(item => {
+        const matching = adjusted.find(row => row.count > 0 && matchesBlueprintRow(item, row));
+        const target = matching || adjusted.slice().sort((a, b) => b.count - a.count).find(row => row.count > 0);
+        if (target) target.count -= 1;
+    });
+    return adjusted;
+}
+
 function pickQuestionsByDifficulty(filteredPool, plan) {
     const cartKeys = new Set(cart.map(c => c._qKey));
     const picked = [];
@@ -1517,8 +1696,15 @@ function pickQuestionsByDifficulty(filteredPool, plan) {
         low: { label: '하', want: plan.low, list: filteredPool.filter(r => r.normalizedLevel === '하' && r.standardUnitKey && !cartKeys.has(r.key)) }
     };
     const reportRows = [];
-    Object.values(buckets).forEach(bucket => {
-        const take = bucket.list.slice(0, bucket.want);
+    const selector = window.ArchiveMixerSelector;
+    Object.values(buckets).forEach((bucket, bucketIndex) => {
+        const selected = selector && bucket.want > 0
+            ? selector.selectCandidates(bucket.list, { count: bucket.want, difficulties: [bucket.label] }, {
+                selectionSeed: `${window.__ARCHIVE_MIXER_SELECTION_SEED__ || ARCHIVE_MIXER_SELECTION_SEED}:difficulty:${bucket.label}`,
+                targetDifficulty: bucket.label
+            })
+            : { selected: [], ok: bucket.want === 0 };
+        const take = selected.selected.map(record => ({ ...record, _blueprintRowIndex: bucketIndex }));
         take.forEach(record => {
             if (!cartKeys.has(record.key) && picked.length + cart.length < AUTOGEN_MAX_CART) {
                 picked.push(record);
@@ -1527,28 +1713,82 @@ function pickQuestionsByDifficulty(filteredPool, plan) {
         });
         reportRows.push({ unit: 'filteredPool', level: bucket.label, requested: bucket.want, added: take.length, available: bucket.list.length });
     });
-    return { picked, reportRows };
+    const validation = selector?.validateBlueprintSet
+        ? selector.validateBlueprintSet(picked, Object.values(buckets).map(bucket => ({ count: bucket.want })))
+        : null;
+    return { picked, reportRows, validation };
 }
 
-function pickQuestionsByBlueprint(filteredPool) {
+function pickQuestionsByBlueprint(filteredPool, blueprintRows = null) {
     const cartKeys = new Set(cart.map(c => c._qKey));
     const picked = [];
     const reportRows = [];
-    const rows = autoGenRows.filter(r => Number(r.count) > 0);
-    rows.forEach(row => {
+    const rows = (blueprintRows || autoGenRows).filter(r => Number(r.count) > 0);
+    const advancedOptions = readAutoGenAdvancedOptions();
+    rows.forEach((row, rowIndex) => {
         const want = Math.max(1, Math.min(AUTOGEN_MAX_CART, parseInt(row.count, 10) || 0));
-        const available = filteredPool.filter(record => !cartKeys.has(record.key) && record.standardUnitKey && matchesBlueprintRow(record, row));
-        const take = available.slice(0, want);
+        const pool = filteredPool.filter(record => !cartKeys.has(record.key) && record.standardUnitKey);
+        const contract = window.ArchiveMixerSelector;
+        const canUseContract = contract && pool.length > 0 && pool.every(record => record.sourceMode === 'archive');
+        const evaluated = canUseContract
+            ? contract.evaluateHardConstraints(pool, {
+                count: want,
+                unitKeys: row.unitKey ? [row.unitKey] : [],
+                subUnitKeys: row.subUnitKey ? [row.subUnitKey] : [],
+                problemTypeKeys: row.problemTypeKey ? [row.problemTypeKey] : [],
+                difficultyBucket: row.level || '',
+                tagsAll: row.tags || '',
+                includeSchools: advancedOptions.includeSchools,
+                excludeSchools: advancedOptions.excludeSchools,
+                yearFrom: advancedOptions.yearFrom,
+                yearTo: advancedOptions.yearTo,
+                recentQuestionUids: advancedOptions.recentUids,
+                maxTemplateCount: advancedOptions.templateMax,
+                essayCount: advancedOptions.essayCount
+            })
+            : null;
+        const available = (evaluated ? evaluated.eligible : pool.filter(record => matchesBlueprintRow(record, row)))
+            .filter(record => matchesBlueprintRow(record, row));
+        const selected = canUseContract
+            ? contract.selectCandidates(pool, {
+                count: want,
+                unitKeys: row.unitKey ? [row.unitKey] : [],
+                subUnitKeys: row.subUnitKey ? [row.subUnitKey] : [],
+                problemTypeKeys: row.problemTypeKey ? [row.problemTypeKey] : [],
+                difficultyBucket: row.level || '',
+                tagsAll: row.tags || '',
+                includeSchools: advancedOptions.includeSchools,
+                excludeSchools: advancedOptions.excludeSchools,
+                yearFrom: advancedOptions.yearFrom,
+                yearTo: advancedOptions.yearTo,
+                recentQuestionUids: advancedOptions.recentUids,
+                maxTemplateCount: advancedOptions.templateMax,
+                essayCount: advancedOptions.essayCount
+            }, {
+                selectionSeed: window.__ARCHIVE_MIXER_SELECTION_SEED__ || ARCHIVE_MIXER_SELECTION_SEED,
+                targetDifficulty: row.level || '',
+                weights: { sourceDiversity: advancedOptions.sourceDiversity ? 10 : 0 }
+            })
+            : null;
+        const take = selected
+            ? selected.selected.filter(record => matchesBlueprintRow(record, row))
+            : [];
         take.forEach(record => {
             if (!cartKeys.has(record.key) && picked.length + cart.length < AUTOGEN_MAX_CART) {
-                picked.push(record);
+                picked.push({ ...record, _blueprintRowIndex: rowIndex });
                 cartKeys.add(record.key);
             }
         });
         const unitLabel = row.unitKey ? (MASTER_TABLE[row.unitKey]?.unit || row.unitKey) : '전체 단원';
         reportRows.push({ unit: unitLabel, level: row.level || '전체', requested: want, added: take.length, available: available.length });
     });
-    return { picked, reportRows };
+    const validation = window.ArchiveMixerSelector?.validateBlueprintSet
+        ? window.ArchiveMixerSelector.validateBlueprintSet(picked, rows, {
+            maxTemplateCount: advancedOptions.templateMax,
+            essayCount: advancedOptions.essayCount
+        })
+        : null;
+    return { picked, reportRows, validation };
 }
 
 async function applyPickedToCart(picked) {
@@ -1573,29 +1813,46 @@ async function runAutoGenerate(mode) {
         const ok = await ensureQuestionIndexLoaded({ silent: true });
         if (!ok) { alert('전문항 인덱스를 불러오지 못했습니다.\nquestion-index.js 생성 여부를 확인하세요.'); return; }
     }
-    if (mode === 'rebuild') cart = cart.filter(c => pinnedKeys.has(c._qKey));
+    const pinnedItems = mode === 'rebuild' ? cart.filter(c => pinnedKeys.has(c._qKey)) : [];
+    if (mode === 'rebuild') cart = pinnedItems.slice();
     const pool = getCanonicalPool(state.sourceScope);
     const filteredPool = applyMixerFilters(pool, state);
-    const result = autoGenAdvanced ? pickQuestionsByBlueprint(filteredPool) : pickQuestionsByDifficulty(filteredPool, readDifficultyPlan());
+    const requestedPlan = readDifficultyPlan();
+    const effectivePlan = mode === 'rebuild' ? adjustDifficultyPlanForPinned(requestedPlan, pinnedItems) : requestedPlan;
+    const requestedRows = autoGenRows.filter(r => Number(r.count) > 0);
+    const effectiveRows = mode === 'rebuild' ? adjustBlueprintRowsForPinned(requestedRows, pinnedItems) : requestedRows;
+    const result = autoGenAdvanced
+        ? pickQuestionsByBlueprint(filteredPool, effectiveRows)
+        : pickQuestionsByDifficulty(filteredPool, effectivePlan);
+    const requestedTotal = autoGenAdvanced
+        ? requestedRows.reduce((sum, row) => sum + Math.max(0, Number(row.count) || 0), 0)
+        : requestedPlan.high + requestedPlan.mid + requestedPlan.low;
     const before = cart.length;
     await applyPickedToCart(result.picked);
     const capped = cart.length >= AUTOGEN_MAX_CART && result.picked.length > (cart.length - before);
+    const finalValidation = result.validation
+        ? { ...result.validation, expectedCount: requestedTotal, actualCount: cart.length, ok: result.validation.ok && cart.length === requestedTotal }
+        : null;
+    lastAutoGenValidation = finalValidation;
     updateCartUI();
     refreshFilterResults();
-    renderAutoGenReport({ mode, rows: result.reportRows, capped, poolSize: filteredPool.length });
+    renderAutoGenReport({ mode, rows: result.reportRows, capped, poolSize: filteredPool.length, validation: finalValidation, pinnedCount: pinnedItems.length, targetCount: requestedTotal });
     setAutoGenOpen(true);
 }
 
 function renderAutoGenReport(report) {
     const el = document.getElementById('autogen-report');
     if (!el) return;
-    const totalReq = report.rows.reduce((s, r) => s + r.requested, 0);
-    const totalAdd = report.rows.reduce((s, r) => s + r.added, 0);
-    const lack = totalReq - totalAdd;
+    const totalReq = report.targetCount ?? report.rows.reduce((s, r) => s + r.requested, 0);
+    const newAdd = report.rows.reduce((s, r) => s + r.added, 0);
+    const pinnedCount = Number(report.pinnedCount) || 0;
+    const totalAdd = newAdd + pinnedCount;
+    const lack = Math.max(0, totalReq - totalAdd);
     const head = `<div class="ag-report-head">
             <span>filteredPool <b>${report.poolSize ?? 0}</b>문항</span>
             <span>요청 <b>${totalReq}</b>문항</span>
             <span class="ok">담김 <b>${totalAdd}</b>문항</span>
+            ${pinnedCount ? `<span style="color:var(--blue);">신규 추가 <b>${newAdd}</b> · 고정 유지 <b>${pinnedCount}</b></span>` : ''}
             ${lack > 0 ? `<span class="miss">부족 <b>${lack}</b>문항</span>` : ''}
             ${report.mode === 'rebuild' ? '<span style="color:var(--gray-500);">(고정 유지 재구성)</span>' : ''}
         </div>`;
@@ -1605,7 +1862,9 @@ function renderAutoGenReport(report) {
         return `<div class="ag-report-row"><span>${escapeMixerHtml(r.unit)} / ${escapeMixerHtml(r.level)} / 가능 ${r.available ?? r.added}</span>${status}</div>`;
     }).join('');
     const cap = report.capped ? `<div class="ag-report-row" style="color:#9a3412;">카트 ${AUTOGEN_MAX_CART}문항 한도에 도달했습니다.</div>` : '';
-    el.innerHTML = `<div class="ag-report-card">${head}${rowsHtml}${cap}</div>`;
+    const validation = report.validation;
+    const validationHtml = validation ? `<div class="ag-report-row" style="color:${validation.ok ? 'var(--green)' : '#ef4444'};">검증 ${validation.ok ? '통과' : '차단'} · ${validation.actualCount}/${validation.expectedCount}문항 · UID 중복 ${validation.duplicateUids.length} · source 중복 ${validation.sourceDuplicateCount}</div>` : '';
+    el.innerHTML = `<div class="ag-report-card">${head}${rowsHtml}${cap}${validationHtml}</div>`;
 }
 
 function togglePin(qKey) {
@@ -1640,6 +1899,7 @@ function renderPrintReview() {
 }
 
 async function addCurrentFilterAll() {
+    lastAutoGenValidation = null;
     const targets = getFilteredCanonicalRecords();
     if (targets.length > 50) {
         alert('현재 결과가 50문항을 초과합니다.\n검색어/학년/course/단원/난이도 필터를 더 좁힌 뒤 다시 시도하세요.');
@@ -1654,6 +1914,7 @@ async function addCurrentFilterAll() {
 }
 
 function removeCurrentFilterAll() {
+    lastAutoGenValidation = null;
     const targetKeys = new Set(getFilteredCanonicalRecords().map(record => record.key));
     cart = cart.filter(q => !targetKeys.has(q._qKey));
     targetKeys.forEach(key => pinnedKeys.delete(key));
@@ -1670,7 +1931,7 @@ async function loadSingleExam(ex) {
     container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>문항 로드 중...</p></div>';
     try {
         const questions = await fetchQuestionData(ex.file);
-        currentDisplayQuestions = questions.map(q => ({ ...q, _sourceTitle: ex.school || ex.topic || ex.file, _sourceFile: ex.file, _qKey: `${ex.file}_${q.id}` }));
+        currentDisplayQuestions = questions.map((q, index) => ({ ...q, _sourceTitle: ex.school || ex.topic || ex.file, _sourceFile: ex.file, _sourceQuestionOrdinal: index + 1, _sourceQuestionNo: q.id, source_question_ordinal: index + 1, source_question_no: q.id, _qKey: `${ex.file}_${q.id}` }));
         document.getElementById('cur-source-name').innerText = ex.school || ex.topic || ex.file;
         document.getElementById('cur-q-count').innerText = currentDisplayQuestions.length;
         updateUnitFilter(currentDisplayQuestions); refreshFilterResults();
@@ -1690,7 +1951,7 @@ async function loadMultipleExams() {
     for(const file of files) {
         try {
             const qs = await fetchQuestionData(file), ex = engineDB.exams.find(e => e.file === file) || {};
-            allQs.push(...qs.map(q => ({ ...q, _sourceTitle: ex.school || ex.topic || '기출', _sourceFile: file, _qKey: `${file}_${q.id}` })));
+            allQs.push(...qs.map((q, index) => ({ ...q, _sourceTitle: ex.school || ex.topic || '기출', _sourceFile: file, _sourceQuestionOrdinal: index + 1, _sourceQuestionNo: q.id, source_question_ordinal: index + 1, source_question_no: q.id, _qKey: `${file}_${q.id}` })));
         } catch(e) { console.warn('[mixer] 시험지 로드 실패:', file, e); }
     }
     currentDisplayQuestions = allQs;
@@ -1700,12 +1961,24 @@ async function loadMultipleExams() {
 }
 
 function fetchQuestionData(file) {
-    return new Promise((res, rej) => {
-        delete window.questions; delete window.questionBank;
-        const s = document.createElement('script'); s.src = withArchiveAssetVersion(`exams/${file}`);
-        s.onload = () => { const data = window.questions || window.questionBank; if (Array.isArray(data)) res(data); else rej(); s.remove(); };
-        s.onerror = () => { rej(); s.remove(); }; document.body.appendChild(s);
-    });
+    return fetch(withArchiveAssetVersion(`exams/${file}`))
+        .then(response => {
+            if (!response.ok) throw new Error(`문항 파일 로드 실패 (${response.status})`);
+            return response.text();
+        })
+        .then(source => {
+            // 파일마다 별도 Function scope에서 실행해 서로 다른 archive JS의
+            // 동일한 top-level const/let 선언이 전역에서 충돌하지 않게 한다.
+            delete window.questions;
+            delete window.questionBank;
+            const executeArchiveSource = new Function('window', 'document', source);
+            executeArchiveSource(window, document);
+            const data = window.questions || window.questionBank;
+            delete window.questions;
+            delete window.questionBank;
+            if (!Array.isArray(data)) throw new Error('문항 배열이 없습니다.');
+            return data;
+        });
 }
 
 function renderQuestionList() {
@@ -1805,6 +2078,7 @@ function createQuestionItem(record) {
 }
 
 function toggleCart(qKey) {
+    lastAutoGenValidation = null;
     const idx = cart.findIndex(c => c._qKey === qKey);
     if(idx > -1) { cart.splice(idx, 1); pinnedKeys.delete(qKey); }
     else {
@@ -2075,7 +2349,11 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
         if (options.teacherName) url += '&teacher=' + encodeURIComponent(options.teacherName);
         if (options.className) url += '&className=' + encodeURIComponent(options.className);
     }
-    window.open(appendCurrentArchiveSessionToHash(url), '_blank');
+    const outputUrl = appendCurrentArchiveSessionToHash(url);
+    const popup = window.open(outputUrl, '_blank');
+    // Popup 차단 환경(일부 in-app/모바일 브라우저)에서는 같은 탭으로
+    // 명시적 fallback을 사용해 출력 경로가 조용히 끊기지 않게 한다.
+    if (!popup) window.location.assign(outputUrl);
 }
 
 /**
@@ -2085,6 +2363,7 @@ window.onload = async () => {
     restoreApmathSessionFromHash();
     await window.__AP_MATHJAX_READY__;
     if (window.MathJax?.startup?.promise) await window.MathJax.startup.promise;
+    if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
     mixerDbLoadFailed = false;
     const s = document.createElement('script');
     s.src = withArchiveAssetVersion('db.js');

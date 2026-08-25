@@ -20,4 +20,7 @@
 | 새학기 시간표 staging | `timetable_version_*` | 운영 classes와 분리 필요 |
 | 씨매쓰/EIE 확장 | branch foundation | 학원별 UX/정책 미확정 |
 | 홈페이지 관리 | 확인 필요 | 운영 시스템과 외부 홈페이지 분리 필요 |
+| 월별 시간표 snapshot | `timetable-months`, `ap_timetable_month_*` | 운영 시간표와 월말 시점 보존을 분리하고 기본 화면 노출은 별도 확인 |
+| EIE owner route | `eie/*`, EIE import/student tables | EIE owner only; AP Math 기본 UI에 자동 노출하지 않음 |
+| admin backdoor read route | `backdoor/*` | admin 전용 내부 조회 endpoint; 기본 UI 노출 금지 |
 

@@ -33,6 +33,10 @@
 | `agent-skills/` | AP 루트 agent SOP |
 | `guides/` | 사용법, 설계 가이드, reference, 보조 구조 문서 |
 | `reports/` | 현재 참고 가치가 있는 분석 보고서 |
+| `rules/` | JS 아카이브 master·룰북·검수 프로토콜 |
+| `review-packs/` | 검수용 결과팩과 `CODEX_RESULT.md` |
+| `proposals/` | 실제 적용 전 보류하는 제안/초안 |
+| `awesome-design-md/` | 외부 디자인 참고 자료 모음 |
 | `archive/` | 완료/과거/검수 요청/legacy 문서 |
 | `_index/` | 문서 구조와 이동 이력 |
 

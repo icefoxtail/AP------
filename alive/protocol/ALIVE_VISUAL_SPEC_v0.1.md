@@ -8,7 +8,7 @@ ESSENTIAL 시각문항을 텍스트 문제로 변형하지 않고 별도 자산 
 - OPTIONAL
 - ESSENTIAL
 
-ESSENTIAL인데 asset이 없으면 `BLOCKED: VISUAL_ASSET_REQUIRED`.
+ESSENTIAL인데 asset이 없으면 `finalStatus=BLOCKED`, code=`VISUAL_ASSET_REQUIRED`.
 
 ## 2. 금지
 
@@ -79,20 +79,21 @@ Archive asset
 
 ## 8. Asset provenance
 
-Sidecar에 가능하면:
+`visualDependency != NONE`인 경우 Sidecar의 `visual` 객체에 다음을 기록한다.
 
 ```json
 {
-  "visualDependency": "ESSENTIAL",
-  "visualSpecVersion": "0.1",
-  "assetType": "svg",
-  "assetRef": "",
-  "renderer": "",
-  "visualValidator": "PASS"
+  "visual": {
+    "visualSpecVersion": "0.1",
+    "assetType": "svg",
+    "assetRef": "",
+    "renderer": "",
+    "visualValidator": "UNVERIFIED"
+  }
 }
 ```
 
-을 기록한다.
+`visualValidator`는 요약 상태이며, method/evidence/coverage를 포함한 상세 결과는 Sidecar의 `validators.V5_VISUAL`에 기록한다. `visualDependency` 자체는 Sidecar 최상위 필드로 유지한다.
 
 ## 9. Resume
 

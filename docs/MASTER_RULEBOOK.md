@@ -50,6 +50,10 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 확인하는 고정 룰�
 | `docs/agent-skills/` | agent skill / SOP |
 | `docs/guides/` | 사용법, 디자인, reference, 운영 가이드 |
 | `docs/reports/` | 현재 참고할 분석 보고서 |
+| `docs/rules/` | JS 아카이브 master·룰북·검수 프로토콜; `MANIFEST.md` 해시 기준 적용 |
+| `docs/review-packs/` | 검수용 결과팩과 `CODEX_RESULT.md` |
+| `docs/proposals/` | 실행 경로 밖의 제안/초안 |
+| `docs/awesome-design-md/` | 외부 디자인 참고 자료 모음 |
 | `docs/archive/completed/` | 완료된 phase와 closeout |
 | `docs/archive/old-plans/` | 현재 계획이 아닌 과거 plan |
 | `docs/archive/codex-results/` | 과거 Codex 결과 |
@@ -65,6 +69,19 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 확인하는 고정 룰�
 - 현재 기준은 3대 기준 문서, `03_DOMAIN_INDEX.md`, 관련 `domains/`, `implemented/`, `plans/` 문서다.
 - archive 문서를 현재 기준처럼 인용해야 할 때는 현재 기준 문서와 충돌하지 않는지 확인한다.
 - archive 내부 과거 경로는 무리하게 모두 고치지 않는다. 현재 진입 문서와 index의 경로를 우선 보정한다.
+
+### AP Math JS archive canonical contract
+
+- 현재 JS 아카이브 기준 문서는 `docs/rules/JS아카이브룰북_v2.5.md`,
+  `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`,
+  `docs/rules/JS아카이브_표준단원키_마스터테이블.md` 순서로 읽는다.
+- compiled master는 `archive/data/master_tables/js_archive_tag_master.json`,
+  schema는 `archive/data/master_tables/js_archive_tag_master.schema.json`이다.
+- 신규 candidate·production은 `subUnitKey`, `subUnit`, `subUnitConfidence`,
+  `subUnitClassificationDepth`를 필수로 하며, legacy 누락·RAW/RRAW/UNMAPPED는 report 예외로 격리한다.
+- 세부단원 메타데이터 보강은 content·choices·answer·solution·image·layoutTag·wide를 바꾸지 않는다.
+- `types`·`similar`의 DB `school/year/semester/examType`는 자체 파일·`examTitle`·명시 source metadata에 직접 근거가 있을 때만 승격하며, 나머지는 `sourceDependentOnly` report 예외로 관리한다. 2026-08-24 현재 직접 원본이 없는 28개 `emptySchool`·60개 필수 메타 gap은 `CLOSED_SOURCE_UNAVAILABLE` closure ledger로 현재 범위에서 종결했으며, 새 직접 출처가 있을 때만 재개한다. 세부 기준은 `docs/rules/JS아카이브룰북_v2.5.md` 4-4를 따른다.
+- rules source pack의 활성 파일 목록과 바이트/hash는 `docs/rules/MANIFEST.md`와 일치해야 한다. 룰북 파일과 `# ` legacy snapshot은 manifest 범위에서 제외되며, 제외 사실을 manifest에 명시한다.
 
 ## 6. UI 문구와 운영 용어 보존
 

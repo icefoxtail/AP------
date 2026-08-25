@@ -22,9 +22,10 @@
 10. 출력은 반드시 실행 가능한 JS 코드여야 한다.
 11. standardCourse는 절대 고정값으로 넣지 않는다.
 12. 문항별 실제 단원에 맞게 standardCourse / standardUnitKey / standardUnit / standardUnitOrder를 매핑한다.
-13. 단원 매핑이 불확실하면 임의 추측하지 말고 빈 문자열 또는 0으로 둔다.
-14. content, choices, answer는 입력 원문 기준 100% 동일성을 우선한다.
-15. 수학적으로 다시 고치거나 정답을 바꾸지 않는다.
+13. 신규 아카이브 편입용 파일은 master 검증 후 subUnitKey / subUnit / subUnitConfidence / subUnitClassificationDepth를 함께 기록한다.
+14. 단원 매핑이 불확실하면 임의 추측하지 말고 candidate review 상태와 sidecar report로 보류한다.
+15. content, choices, answer는 입력 원문 기준 100% 동일성을 우선한다.
+16. 수학적으로 다시 고치거나 정답을 바꾸지 않는다.
 
 ==================================================
 1. 출력 스키마
@@ -51,7 +52,11 @@ image는 PNG 자산 경로가 입력된 경우에만 선택적으로 추가한�
   content: "",
   choices: [],
   answer: "",
-  solution: ""
+  solution: "",
+  subUnitKey: "",
+  subUnit: "",
+  subUnitConfidence: "",
+  subUnitClassificationDepth: ""
 }
 
 ==================================================
@@ -83,6 +88,13 @@ image는 PNG 자산 경로가 입력된 경우에만 선택적으로 추가한�
 - 대응 단원이 명확하면 반드시 채운다.
 - 판단 불가 시 "", "", 0 으로 둔다.
 - RAW 단원은 사용자가 명시하지 않으면 사용하지 않는다.
+
+[subUnitKey / subUnit / subUnitConfidence / subUnitClassificationDepth]
+- `docs/rules/JS아카이브_표준단원키_마스터테이블.md`에 등록된 키만 사용한다.
+- `subUnit`은 master 표시명과 동일하게 둔다.
+- 판단 근거가 충분하지 않으면 값을 임의로 채우지 않고 candidate review report에 남긴다.
+- 허용 confidence: `existing_preserved`, `candidate_evidence`, `category_or_cue_inferred`, `rule_inferred`.
+- 허용 depth: `complete_candidate`, `complete_category`, `complete_documented`, `complete_rule`.
 
 [questionType]
 - 보기가 있으면 "객관식"
@@ -200,7 +212,11 @@ window.questionBank = [
     content: "",
     choices: [],
     answer: "",
-    solution: ""
+  solution: "",
+  subUnitKey: "",
+  subUnit: "",
+  subUnitConfidence: "",
+  subUnitClassificationDepth: ""
   }
 ];
 
@@ -229,7 +245,7 @@ window.questionBank = [
 - 보기 생략
 - 수식 텍스트화
 - 없는 내용 생성
-- 스키마 필드 임의 추가/삭제
+- 스키마 필드 임의 추가/삭제 (운영규칙에 정의된 세부단원 4개 필드는 신규 archive JS에 포함)
 - solution 임의 생성
 - level 임의 입력
 - standardCourse 고정 입력

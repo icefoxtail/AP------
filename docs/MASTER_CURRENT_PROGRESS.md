@@ -300,6 +300,19 @@
 - 출제 후 중3 출제보드 read-only 조회에서 `26_삼산중_1학기_기말_중3_기출`이 `중3A, 중3B`로 표시되는 것을 확인했다(기준일 2026-08-24, 최근 30일 범위).
 - 학생 포털은 기존 `student-portal.js`의 `class_exam_assignment_exclusions`/`AND NOT EXISTS` 필터가 배정 조회의 단일 기준으로 유지되고 있으며, 이번 변경에서 해당 로직을 수정하지 않았다. 따라서 별도 학생 계정 E2E를 추가 보류하지 않고 기존 계약 충족으로 정리한다. 이번 실행은 커밋·푸시 없이 운영 API 반영과 보드 검증까지만 수행했다.
 
+### AP Math JS 아카이브 Phase 3F/Gate 3 및 Phase 4 fingerprint 기초 (2026-08-25)
+
+- Mixer Phase 3A~3F 회귀를 완료했다. 기본 자동출제 15/15, 고급 blueprint 8/8, pin 유지 rebuild 최종 15문항, canonical UID/source 중복 0, 기존 engine exam/sol/ans 21문항, QR 진입, similar 41개 loader isolation, QR/OMR 정적 회귀 7/7을 확인했다.
+- `tests/fixtures/mixed-print-layout-launcher.html`을 통해 MIXED engine의 시험지 6문항, 해설지 6개 해설 box, 정답표 6개 정답을 브라우저에서 확인했다. console error/warning은 0건이다. popup 탭이 목록에 보이는지 여부와 무관하게 실제 engine URL의 세 모드 렌더를 검증했으므로 Gate 3를 PASS로 판정한다.
+- 계획서 Phase 4에 따라 `archive/data/master_tables/school_alias_master.json`, `archive/tools/build-school-fingerprints.mjs`, `archive/data/school-fingerprints.json`, `tests/archive-school-fingerprint.test.mjs`를 추가했다. 입력은 `archive/exams/original/**`로 제한되며 348개 파일·7,981문항·37개 학교를 결정론적으로 집계한다.
+- sample threshold는 시험 3개 또는 60문항의 `candidate_v1_not_operational` 정책으로 기록했고, 23개 학교가 후보 조건을 충족한다. `mixer-school-fingerprint.js` bridge가 fingerprint→Selector 요청 변환, canonical UID/source identity, 전체 재생·15문항 sample의 target distribution(소표본 2문항 보정 포함)을 검증한다. `school-fingerprints.json`에는 학교 전체와 학년·시험축별 preset을 함께 보존한다. `archive/tools/audit-question-type-coverage.mjs`와 `question-type-coverage-audit.json`으로 원본 7,981문항과 인덱스 원본 범위가 1:1이며 `questionType` 값 불일치 0건을 확인했다(명시값 6,705건, 원본 공란 1,276건, 속성 누락 0건). 공란은 추정하지 않고 보존한다. 이어 `audit-school-fingerprint-policy.mjs`와 `school-fingerprint-policy-audit.json`으로 alias 37→37·충돌 0, 후보 23·threshold 미달 숨김 14를 검증했다. `mixer-school-fingerprint-runtime.js`를 Mixer에 비노출 계약으로 연결했으며 정책은 `candidate_v1_not_operational` 및 UI 비노출 상태로 유지한다.
+- Mixer 실제 페이지에서 fingerprint bridge/runtime script 2개 로드, fingerprint 전용 visible control 0개, console error/warning 0건을 확인했다. 운영 화면에는 아직 학교 preset 선택 UI를 노출하지 않는다.
+- `run-school-fingerprint-gate.mjs`와 `school-fingerprint-gate-report.json`으로 Phase 4 기술 게이트 7/7 PASS를 고정했다. 가장 큰 후보 학교 15문항 runtime preset 주입도 hard constraint·분포 허용오차를 통과한다. 단 `operationalExposure=HOLD`이며 Gate 4 운영 노출 승인은 별도다.
+- 계획서 Phase 5 5A·5B·5C·5D·5E를 비운영 계약으로 구현했다. `weakness-metadata-join.js`는 `assessment_result_items` 우선·`wrong_answers + exam_sessions + exam_blueprints` fallback으로 canonical UID와 세부 메타데이터를 연결하고, `weakness-aggregator.js`는 concept/type/template/unit별 weakness score와 recovery/fallback 상태를 계산한다. `weakness-student-view.js`는 기존 Wrong Clinic packet을 보존하는 읽기 전용 조회 모델을 만들고, `weakness-supplement-preset.js`는 상위 취약도 대상을 selector 요청으로 결정론적으로 분해한다. `weakness-closed-loop.js`는 MIXED payload→blueprint→fixture OMR result→canonical UID join→weakness 재집계를 통과시킨다. `weakness-phase5-contract-audit.json`은 canonical coverage 7,981/7,981·sample join 3/3·집계 차원 4개·student view/보존·supplement allocation·closed-loop를 PASS로 기록했다. 학생 UI·DB write·실제 보충시험·원격 QR/OMR은 실행하지 않는다.
+- 학생·교사 OMR 입력은 기존 `wrong_ids_only` 방식을 유지한다. 답안 문자열 입력이나 자동채점으로 확장하지 않고, 선택된 오답 번호를 기준으로 Worker가 문항별 정오답 결과를 생성한다. `archive/data/weakness-input-policy-audit.json`의 정적 감사가 이 경로를 PASS했다.
+- Gate 5 readiness를 읽기 전용으로 점검해 Phase 5 기술 계약·입력 정책·Phase 4 기술 게이트·Wrong Clinic 보존을 모두 확인했다. 결과는 `GATE5_TECHNICAL_PASS_OPERATIONAL_HOLD`이며 학생 UI·DB write·원격 QR/OMR은 실행하지 않았다. 운영 승인 전 필요한 항목은 테스트 학생 범위, rollback checkpoint, post-audit 기준이다(`archive/data/phase5-gate5-readiness.json`).
+- 이번 단계는 archive 파생 산출물과 문서·테스트만 변경했으며 원본 문항 JS, question-index/identity runtime, DB/D1, commit/push/deploy는 변경하지 않았다.
+
 ## 3. 문서 구조 정리 결과
 
 - `docs/` 루트는 진입/3대 기준/정책/구조/도메인 인덱스/문서 업데이트 규칙 중심으로 정리했다. 2026-08-22 감사에서 루트 잔여 문서도 의미별 하위 폴더로 이동했다.

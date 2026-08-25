@@ -13,7 +13,6 @@
 | 플래너 | 예 | `apmath/planner/index.html`, classroom | planner | 아니오 | SSO 보존 |
 | OMR/check | 예 | `check/check.js`, student portal, qr-omr | check-omr, exam-sessions | 아니오 | 제출 완료 수정 금지 |
 | archive/mixed engine | 예 | `archive/*.html` | class-exam-assignments, exam-blueprints | 아니오 | MIXED 처리 보존 |
-| report AI | 예 | `report.js` | ai/report-analysis | 아니오 | 학부모 문구 주의 |
+| report AI | 예 | `report-text.js`, `report-center.js`, `report-print.js` | ai/report-analysis, student-report-archives, student-reports, archive fetch | 아니오 | 학부모 문구 주의 |
 | 직원 권한/감사 로그 | 숨김/일부 | 확인 필요 | foundation-logs, teachers | 예 | 승인 필요 |
 | 홈페이지 관리 | 확인 필요 | `index.html` 등 | 확인 필요 | 확인 필요 | 승인 필요 |
-

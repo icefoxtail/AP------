@@ -20,6 +20,10 @@ docs/
 ├─ agent-skills/
 ├─ guides/
 ├─ reports/
+├─ rules/
+├─ review-packs/
+├─ proposals/
+├─ awesome-design-md/
 ├─ archive/
 │  ├─ completed/
 │  ├─ old-plans/
@@ -30,6 +34,8 @@ docs/
    ├─ DOCS_STRUCTURE.md
    └─ ARCHIVE_INDEX.md
 ```
+
+`rules/`는 AP Math JS 아카이브의 운영 규칙·마스터·검수 프로토콜, `review-packs/`는 검수 전달물, `proposals/`는 실행 경로 밖의 제안 스키마, `awesome-design-md/`는 외부 디자인 참고 자료다. 이 네 디렉터리는 문서 진입 구조에서 제외하지 않는다.
 
 ## 2. docs 루트에 남기는 문서와 이유
 
@@ -56,6 +62,10 @@ docs/
 | `agent-skills/` | AP 루트 agent SOP |
 | `guides/` | 디자인, reference, 사용/운영 가이드 |
 | `reports/` | 현재 참고 가치가 있는 분석 보고서 |
+| `rules/` | JS 아카이브 master·룰북·검수 프로토콜 |
+| `review-packs/` | 검수용 결과팩과 `CODEX_RESULT.md` |
+| `proposals/` | 실제 적용 전 보류하는 제안/초안 |
+| `awesome-design-md/` | 외부 디자인 참고 자료 모음 |
 | `archive/completed/` | 완료된 phase, 완료 작업, closeout |
 | `archive/old-plans/` | 현재 계획이 아닌 과거 계획 |
 | `archive/codex-results/` | 과거 Codex 결과 보고 |
@@ -80,6 +90,8 @@ docs/
 - 완료된 작업 결과, 과거 검수 요청, 과거 Codex 결과, 현재 계획과 맞지 않는 plan은 archive로 이동한다.
 - 확실하지 않은 문서는 삭제하지 않고 `archive/legacy/` 또는 `확인 필요`로 둔다.
 - 이동한 문서는 `docs/_index/ARCHIVE_INDEX.md`에 원래 경로와 새 경로를 기록한다.
+
+2026-08-22 감사에서 루트에 남아 있던 archive audit·해설 작업 기록·학생관리 설계 문서를 각각 `reports/`·`plans/`로 이동했다. 루트에는 아래 9개 canonical entry 문서만 둔다. 비어 있는 호환 디렉터리는 경로 안정성을 위해 즉시 삭제하지 않고 별도 확인 대상으로 둔다.
 
 ## 6. 작업 후 문서 업데이트 기준
 

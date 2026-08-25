@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "phase5-gate5-readiness.v1",
+  "status": "GATE5_TECHNICAL_PASS_OPERATIONAL_HOLD",
+  "gate": {
+    "technical": true,
+    "operationalExposure": "HOLD",
+    "studentUi": "not_exposed",
+    "dbWrite": "not_run",
+    "remoteOmr": "not_run"
+  },
+  "evidence": {
+    "canonicalCoverage": "7981/7981",
+    "closedLoop": "CLOSED_LOOP_PASS_NON_OPERATIONAL",
+    "inputMode": "wrong_ids_only",
+    "fingerprintGate": "PASS",
+    "wrongClinicPreserved": true
+  },
+  "checks": {
+    "phase5ContractPass": true,
+    "phase5OperationalHold": true,
+    "inputPolicyPass": true,
+    "fingerprintTechnicalPass": true,
+    "fingerprintOperationalHold": true,
+    "wrongClinicRoutePresent": true,
+    "weaknessStudentUiNotExposed": true,
+    "weaknessMixerUiNotExposed": true
+  },
+  "approvalRequired": [
+    "Gate 5 운영 노출 승인",
+    "인증된 테스트 학생/교사 범위 확정",
+    "실환경 DB write·QR/OMR roundtrip 실행 승인",
+    "실행 전 rollback checkpoint와 post-audit 기준 확정"
+  ],
+  "writes": 0,
+  "networkCalls": 0
+}
