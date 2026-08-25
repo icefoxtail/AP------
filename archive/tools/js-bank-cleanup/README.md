@@ -16,8 +16,9 @@ This toolset creates a read-only inventory for the current JS archive bank.
 - `archive/db.js`
 - `archive/assets/images/**`
 - `assets/images/**`
-- `rules/JS아카이브룰북.txt`
-- `rules/# JS아카이브 표준단원키 마스터 테이블.md`
+- `docs/rules/JS아카이브룰북_v2.5.md`
+- `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`
+- `docs/rules/JS아카이브_표준단원키_마스터테이블.md`
 
 ## Outputs
 
@@ -76,4 +77,6 @@ No review-pack zip is created by this tool.
 - Schema validation reports identify missing or invalid current fields.
 - Cleanup candidates are proposals only. `autoFixSafe: true` means a future structural correction may be safe after review; it is not applied in this round.
 - Anything involving content, choices, answer, solution, image path, `layoutTag`, `wide`, or uncertain standard-unit mapping is marked for master review.
+- New-file schema checks also require `subUnitKey`, `subUnit`, `subUnitConfidence`, and
+  `subUnitClassificationDepth`; legacy omissions remain explicit exceptions.
 - Limited runs explicitly set `presenceScope: skipped-limited-run` and/or `orphanScope: skipped-filtered-run` where whole-bank checks cannot be interpreted as complete archive status.

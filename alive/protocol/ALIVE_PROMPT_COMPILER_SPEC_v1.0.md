@@ -22,6 +22,13 @@ Master Rulebook 전체를 매 호출에 그대로 넣지 않고 현재 요청에
   "standardUnitKey": "H22-PS-03",
   "questionFormat": "객관식",
   "visualDependency": "NONE",
+  "followupKind": "CONFIRMATION",
+  "assetPolicy": "NONE",
+  "tokenBudget": {
+    "maxInputTokens": 0,
+    "reservedOutputTokens": 0,
+    "overflowPolicy": "BLOCKED"
+  },
   "inputLevel": "L2"
 }
 ```
@@ -40,6 +47,34 @@ CORE INTEGRITY
 + OUTPUT CONTRACT
 ```
 
+## 3-1. Token budget and truncation boundary
+
+Compiler는 target model tokenizer 기준으로 조립 결과의 예상 입력 토큰 수를 계산한다. 문자 수나 임의의 대략값만으로 예산 충족을 판정하지 않는다.
+
+`tokenBudget`:
+
+- `maxInputTokens`: Runtime Prompt에 허용되는 최대 입력 토큰 수. 구현에서 양의 값으로 설정한다.
+- `reservedOutputTokens`: 응답과 구조화된 출력에 남겨둘 토큰 예산.
+- `overflowPolicy`: v1.0에서는 `BLOCKED`만 허용한다.
+
+모델 context window를 직접 아는 구현에서는 `maxInputTokens <= contextWindow - reservedOutputTokens`가 되도록 계산한다. 예시의 `0`은 구현 설정 전 placeholder이며, 실제 컴파일 시 양의 예산으로 대체해야 한다.
+
+다음 섹션은 예산 초과 시에도 생략·축약하지 않는 필수 섹션이다.
+
+- CORE INTEGRITY
+- RUNTIME ORDER
+- SELECTED MODE
+- CURRICULUM BOUNDARY
+- RELEVANT HARD CHECK
+- 현재 작업에 적용되는 Validator 규칙
+- OUTPUT CONTRACT
+
+`visualDependency != NONE`이면 V5와 Visual provenance를, `assetPolicy=MANDATORY_NEW`이면 NEW ASSET gate를 필수 섹션으로 취급한다. `followupKind=ADVANCED`이면 심화 조건과 G09 gate도 필수다.
+
+필수가 아닌 섹션은 완전한 섹션 단위로만 제외할 수 있다. 문장 중간 자르기, 규칙의 임의 요약·완화·재작성, 버전이 없는 축약본 생성은 허용하지 않는다.
+
+필수 섹션을 모두 유지한 상태에서 `maxInputTokens`를 초과하면 Runtime Prompt를 생성하지 않고 `finalStatus=BLOCKED`, code=`PROMPT_BUDGET_EXCEEDED`로 종료한다.
+
 ## 4. 조건부 포함
 
 ### TYPE_BANK
@@ -48,9 +83,22 @@ CORE INTEGRITY
 
 ### EXAM_FOLLOWUP
 - Source Fingerprint
-- 확인/심화 규칙
-- A~F / QUALITY
+- `followupKind=CONFIRMATION`이면 확인 규칙과 Master Rulebook §11의 난도 동치 기준
+- `followupKind=ADVANCED`이면 심화 규칙과 Master Rulebook §13의 A~F / QUALITY
 - 원문 fidelity
+
+`followupKind`는 MODE가 아니며 `EXAM_FOLLOWUP`에서만 사용한다. 값이 없거나 `CONFIRMATION | ADVANCED`가 아니면 `INPUT_REQUIRED`로 차단한다.
+
+### Similar / Advanced + visual regeneration
+- `visualDependency != NONE`이면 Visual Spec §1~§9와 V5 규칙을 포함한다.
+- `assetPolicy=MANDATORY_NEW`이면 Similar/Advanced Spec §6~§10, §19~§20의 NEW ASSET, topology, semantic ownership, 동시 FREEZE 규칙을 포함한다.
+- `assetPolicy=MANDATORY_NEW`는 기존 asset 경로를 그대로 재사용하는 것을 허용하지 않는다.
+- `followupKind=ADVANCED`이면 심화의 새 판단 +1과 Master Rulebook §13의 G09 gate를 함께 포함한다.
+
+`assetPolicy` 권장 값:
+- `NONE`: visualDependency가 NONE인 경우
+- `REUSE_IF_SEMANTICALLY_IDENTICAL`: 수치·좌표·라벨과 독립적인 설명용 asset
+- `MANDATORY_NEW`: 유사·심화 또는 수치·좌표·관계가 바뀐 시각문항
 
 ### STRICT_VARIANT
 - LOCK/CHANGE
@@ -68,6 +116,10 @@ CORE INTEGRITY
 ### visual NONE
 - V5 상세 제외
 
+### visual OPTIONAL/ESSENTIAL
+- V5 Visual Validator
+- visual provenance
+
 ### JS_ARCHIVE
 - Structured Schema + Serializer/V7 계약 포함
 
@@ -76,12 +128,14 @@ CORE INTEGRITY
 Compiler는 다음 충돌을 막아야 한다.
 
 - TYPE_BANK 숫자갈이 금지 + STRICT_VARIANT 숫자변형 허용 동시 삽입
+- EXAM_FOLLOWUP인데 `followupKind`가 없거나 허용되지 않은 값인 경우
+- `assetPolicy=MANDATORY_NEW`인데 `visualDependency=NONE`인 경우
 - PROBLEM_ANSWER_ONLY 때문에 Validator 삭제
 - 객관식이 아닌데 Distractor 5개 강제
 - visual NONE인데 ESSENTIAL asset 생성 강제
 - 2015/2022 단원 규칙 혼용
 
-충돌 해결 불가 → `BLOCKED: MODE_CONFLICT`.
+충돌 해결 불가 → `finalStatus=BLOCKED`, code=`MODE_CONFLICT`.
 
 ## 6. provenance
 
@@ -94,7 +148,15 @@ Compiler는 다음 충돌을 막아야 한다.
   "includedSections": [],
   "excludedSections": [],
   "mode": "",
-  "profile": ""
+  "profile": "",
+  "followupKind": "",
+  "assetPolicy": "",
+  "tokenBudget": {
+    "maxInputTokens": 0,
+    "estimatedInputTokens": 0,
+    "reservedOutputTokens": 0,
+    "overflowAction": "NONE"
+  }
 }
 ```
 

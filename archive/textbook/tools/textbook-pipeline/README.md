@@ -447,6 +447,10 @@ Required normalization targets:
 - `standardUnitKey`
 - `standardUnit`
 - `standardUnitOrder`
+- `subUnitKey`
+- `subUnit`
+- `subUnitConfidence`
+- `subUnitClassificationDepth`
 - `questionType`
 - `layoutTag`
 - `tags`
@@ -463,6 +467,8 @@ Validation rules:
 - `tags` must include publisher, textbook, grade, unit, and section where known.
 - `standardUnitKey` must map to the master table. Unresolved items go to
   `unresolved_standard_unit_report.json`; do not silently leave broad UNMAPPED values.
+- Textbook normalization may emit a pre-classification candidate, but production-compatible
+  output must pass the separate subunit classification gate and contain the four subunit fields.
 - `archiveCompatible` JS must not include internal metadata fields.
 - `choices` must remain an array; no choices means `[]`.
 - `image` must point only to visual asset crops, not page images or question full crops.

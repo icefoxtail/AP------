@@ -1,5 +1,9 @@
 # JS아카이브 표준단원키 마스터 테이블
 
+> **LEGACY snapshot (2026-08-22):** 신규 작업은
+> `docs/rules/JS아카이브_표준단원키_마스터테이블.md`와 compiled master를 사용한다.
+> 이 파일은 과거 호환용으로 보존하며 신규 standard/subUnit 키 등록 원본으로 사용하지 않는다.
+
 > 기준: 중학교 2022 개정 / 고등학교 2015·2022 개정 교육과정  
 > 용도: JS 파일 내 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 필드 작성 기준  
 > 관리: 새 단원 추가 시 이 파일에 먼저 등록 후 사용  

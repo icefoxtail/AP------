@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "weakness-input-policy-audit.v1",
+  "status": "INPUT_POLICY_PASS",
+  "policy": {
+    "mode": "wrong_ids_only",
+    "studentInput": "틀린 번호만 선택",
+    "inferredRule": "선택된 번호=wrong, 미선택 번호=correct",
+    "answerTextCapture": false,
+    "answerAutoScoring": false,
+    "unattemptedState": "not_separately_captured",
+    "sourceClassification": "self_reported_result"
+  },
+  "checks": {
+    "studentWrongIdsOnly": true,
+    "teacherWrongIdsOnly": true,
+    "studentRouteNormalizesWrongIds": true,
+    "workerBuildsComplementRows": true,
+    "answerFieldsRemainUnset": true,
+    "closedLoopIsFixtureOnly": true
+  },
+  "operationalExposure": "unchanged",
+  "writes": 0
+}

@@ -4,6 +4,10 @@ Full Page First · Question Crop Optional · CONTENT_CHOICES_ONLY
 
 룰북/마스터테이블 비수정 · JS 직접 반영 · Manual Review 최소화
 
+> **세부단원 운영 동기화(2026-08-22):** 이 content/choices 전용 프로토콜은 기존 메타데이터를
+> 보존하되 신규 archive JS를 production으로 승격할 때
+> `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`의 네 필드와 master 검증을 별도 게이트로 수행한다.
+
 이번 프로토콜의 목적
 
 이 프로토콜은 AP Math JS아카이브 교재 DB 변환에서 full page 이미지를 1차 원본으로 사용하여, fresh pack 안의 실제 JS 파일 questionBank 배열에 발문(content)과 보기(choices)를 직접 채우는 작업 기준이다.

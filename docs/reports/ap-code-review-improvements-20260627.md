@@ -36,7 +36,7 @@
 - **남은 권장**: 정규식 후처리는 원칙적으로 문장을 깨뜨릴 수 있으므로, 신규 문구는 **확정 문구 bank(`REPORT_COPY_BANK`) + 슬롯 채움**을 우선하고 정규식 치환을 늘리지 말 것.
 
 ### 🟡 N3. 문구 톤 방향 전환 잔재 — 네이밍/문서 불일치
-- **위치**: `reportCenterBuildEasy*`(함수명), `tests/apmath-report-easy-language.test.js`(파일명), `docs/report-copy-final.md`
+- **위치**: `reportCenterBuildEasy*`(함수명), `tests/apmath-report-easy-language.test.js`(파일명), `docs/reports/report-copy-final.md`
 - **문제**: '쉬운말' 전면 적용을 폐기하고 전문체로 전환(2026-06-27)했으나, 함수·파일·문서 이름에 'Easy/쉬운말'이 남아 오해 소지. (코드엔 명확화 주석, 문서엔 전환 배너 추가해 1차 방어함)
 - **개선**: 안정화 후 `reportCenterBuildReportText*` 등으로 리네임(호출처+surface fixture 동반 갱신). `report-copy-final.md`는 전문체 기준으로 재작성.
 

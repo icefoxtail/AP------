@@ -70,6 +70,8 @@ Action 예:
 - HUMAN_REVIEW
 - REGENERATE
 
+Prompt Compiler가 필수 섹션을 토큰 예산 안에 조립할 수 없으면 `finalStatus=BLOCKED`, code=`PROMPT_BUDGET_EXCEEDED`로 처리한다.
+
 ## 5. Checkpoint
 
 각 run은 최소 다음을 관리한다.
@@ -151,6 +153,8 @@ TRUNCATED 조건:
 
 잘린 JS/JSON을 추측해서 이어붙여 PASS하지 않는다.
 
+Prompt Compiler의 입력 토큰 예산 초과는 출력 truncation과 별개다. 부분적으로 잘린 Runtime Prompt를 실행하지 않고, 예산을 늘리거나 선택적 섹션을 완전 단위로 제외한 뒤 다시 컴파일한다.
+
 ## 9. Batch
 
 해설 포함은 6문항 권장, 8문항 안팎을 상한 기준으로 삼되 고정 법칙은 아니다.
@@ -158,19 +162,10 @@ TRUNCATED 조건:
 
 ## 10. G09 자동 Gate
 
-원문 대비 delta:
+G09의 delta 축과 판정식은 Master Rulebook §13이 정본이다. Runtime은 해당 판정을 실행하고, 결과는 Sidecar Schema §9의 `FAKE_ADVANCEMENT_G09` code로 기록한다.
 
-```text
-cognitiveGain = max(
-  ΔdecisionCount,
-  ΔbranchingLoad,
-  ΔinterpretationLoad,
-  ΔabstractionLoad
-)
-```
-
-- `cognitiveGain <= 0 AND ΔalgebraLoad > 0` → G09
-- `ΔalgebraLoad >= 2 AND cognitiveGain <= 0` → HARD FAIL G09
+- 인지 축 상승이 없고 `algebraLoad`만 증가하면 `FAIL / FAKE_ADVANCEMENT_G09`
+- `algebraLoad`가 2 이상 증가하면서 인지 축 상승이 없으면 hard fail로 처리한다.
 
 실제 인지 축이 상승하면 자동 G09 대신 V3가 최종 판단한다.
 

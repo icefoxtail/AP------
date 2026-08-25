@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { verifySubunitFallbackOverlayV1 } from '../archive/tools/intelligence/verify-subunit-fallback-overlay-v1.mjs';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const outputPath = path.join(root, 'archive', '_generated', 'intelligence', 'phase3', 'fallback-safety-audit', 'archive-subunit-fallback-overlay-verification-v1.json');
+const report = verifySubunitFallbackOverlayV1();
+const saved = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+
+assert.equal(report.digest, saved.digest);
+assert.equal(report.schemaVersion, 'archive-subunit-fallback-overlay-verification-v1');
+assert.equal(report.productionWriteAllowed, false);
+assert.equal(report.status, 'OVERLAY_VERIFIED_IN_MEMORY');
+assert.equal(report.totals.overlayEntries, 28);
+assert.equal(report.totals.matchedAssignments, 28);
+assert.equal(report.totals.blockedAfterOverlay, 0);
+
+console.log(JSON.stringify({ ok: true, digest: report.digest, totals: report.totals }, null, 2));

@@ -1,5 +1,11 @@
 # JS Archive Tag Enrichment Rulebook
 
+> **Historical snapshot notice (2026-08-22):** This archived rulebook records the earlier
+> review-only contract. The current active contract is
+> `docs/rules/JS아카이브_세부단원_운영규칙_v1.md` plus the canonical Markdown/compiled masters.
+> New candidate·production files require the four subunit fields; this historical text is not
+> a substitute for the current rulebook.
+
 ## 1. Purpose
 
 This rulebook governs enrichment of existing `archive/exams/**/*.js` question metadata so the archive can support:

@@ -114,11 +114,30 @@ interval_equivalence
 ## 7. canonicalization 원칙
 
 - `answer` 문자열 비교만으로 수학적 동등성을 판정하지 않는다.
-- symbolic_equivalence는 가능한 경우 계산 엔진으로 확인한다.
+- `symbolic_equivalence`는 가능한 경우 exact 계산 엔진으로 확인한다.
+- 계산 엔진이 파싱 실패하거나 사용할 수 없으면, 먼저 문법적으로 안전하고 의미 보존이 보장된 deterministic normalization만 재시도한다.
+- `normalized_string` 일치만으로 `symbolic_equivalence`를 자동 PASS하지 않는다. `normalized_string`은 문항이 해당 정책을 명시적으로 선택한 경우에만 독립적인 판정 정책으로 사용한다.
 - equation_equivalence는 양변을 같은 표준식으로 정규화한 뒤 판정한다.
 - set/interval은 원소·구간 의미 기준으로 정규화한다.
 - 근삿값 허용 오차는 문항별 별도 정책 없이는 임의 설정하지 않는다.
 - `acceptableAnswers`는 대표 허용 표기이며 모든 수학적 동치표현을 수동 나열해야 한다는 뜻이 아니다.
+
+### 동등성 검증 Fallback
+
+`symbolic_equivalence` 또는 `equation_equivalence`가 아래 순서로도 확정되지 않으면 정답 동등성 검증을 완료한 것으로 보지 않는다.
+
+```text
+1. exact symbolic/equation verification
+2. 의미 보존이 보장된 deterministic normalization
+3. 다른 exact 방법 또는 사람 검토
+4. unresolved
+```
+
+`unresolved` 결과는 Validator status=`UNVERIFIED`, code=`SYMBOLIC_EVALUATION_UNRESOLVED`로 기록한다.
+
+- 해당 동등성 검증이 필수 acceptance criterion이면 `finalStatus=BLOCKED`로 두고 `HUMAN_REVIEW`로 라우팅한다.
+- 명시적으로 비필수인 보조 표기 검증이면 blocking code를 남기지 않고 Master Rulebook §5에 따라 `HOLD`를 사용할 수 있다.
+- 어떤 경우에도 파싱 실패만으로 수학적 FAIL을 확정하거나, 문자열 일치만으로 symbolic PASS를 확정하지 않는다.
 
 ## 8. JS_ARCHIVE 출력 경계
 

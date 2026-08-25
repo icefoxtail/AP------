@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "weakness-phase5-contract-audit.v3",
+  "status": "CONTRACT_PASS_NON_OPERATIONAL",
+  "operationalExposure": "HOLD",
+  "source": {
+    "identityRecords": 10690,
+    "indexRecords": 10690,
+    "originalIndexRecords": 7981,
+    "originalCanonicalUidCoverage": 7981
+  },
+  "join": {
+    "preferredSource": "assessment_result_items",
+    "fallbackSource": "wrong_answers + exam_sessions + exam_blueprints",
+    "sampleRows": 3,
+    "sampleResolved": 3,
+    "sampleUnresolved": 0,
+    "metadataFields": [
+      "questionUid",
+      "standardUnitKey",
+      "subUnitKey",
+      "conceptClusterKey",
+      "problemTypeKey",
+      "templateKey",
+      "difficultyBucket"
+    ]
+  },
+  "aggregation": {
+    "dimensions": [
+      "concept",
+      "problemType",
+      "template",
+      "standardUnit"
+    ],
+    "recoveryAvailable": true,
+    "fallbackRecoveryStatus": "limited_fallback",
+    "scoreFormula": "wrongRate × recencyWeight × repeatedFailureWeight × difficultyAdjustment × recoveryFactor"
+  },
+  "studentView": {
+    "exposure": "non_operational",
+    "readOnly": true,
+    "dimensions": [
+      "concept",
+      "problemType",
+      "template",
+      "standardUnit"
+    ],
+    "wrongClinicPreserved": true,
+    "noticeCodes": []
+  },
+  "supplementPreset": {
+    "exposure": "non_operational",
+    "status": "candidate_non_operational",
+    "requestCount": 3,
+    "targetCount": 7,
+    "validation": true,
+    "roundtrip": {
+      "mixer": "not_run",
+      "mixedEngine": "not_run",
+      "omr": "not_run",
+      "resultRecalculate": "not_run"
+    }
+  },
+  "closedLoop": {
+    "status": "CLOSED_LOOP_PASS_NON_OPERATIONAL",
+    "operationalExposure": "HOLD",
+    "mixedQuestionCount": 3,
+    "blueprintCount": 3,
+    "resultCount": 3,
+    "joinResolvedCount": 3,
+    "recalculatedItemCount": 3,
+    "writes": 0,
+    "networkCalls": 0,
+    "errorCount": 0
+  },
+  "checks": {
+    "canonicalIndexCoverage": true,
+    "joinSampleResolved": true,
+    "aggregationDimensionsPresent": true,
+    "studentViewReady": true,
+    "wrongClinicPreserved": true,
+    "supplementPresetReady": true,
+    "closedLoopReady": true
+  }
+}

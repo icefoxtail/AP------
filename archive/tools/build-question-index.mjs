@@ -15,7 +15,8 @@ const auditPath = path.join(archiveDir, 'question-index-audit.md');
 
 /*
  * 공식 표준단원키 마스터 테이블 (142개)
- * 출처(단일 원본): archive/textbook/# JS아카이브 표준단원키 마스터 테이블.md
+ * 출처(사람이 읽는 원본): docs/rules/JS아카이브_표준단원키_마스터테이블.md
+ * 세부단원 master: archive/data/master_tables/js_archive_tag_master.json
  *   - 중등 23 + H22 56 + H15 63 = 142
  * mixer.html 의 MASTER_TABLE 과 동일 내용을 유지한다(mixer.html 은 이 단계에서 수정 금지).
  * 생성기는 이 테이블을 "공식 키 검증" 기준으로만 사용하며, 인덱스 레코드의 원문 값은 보존한다.
@@ -368,6 +369,7 @@ for (const file of examFiles) {
             const rawStandardCourse = String(q.standardCourse || '').trim();
             const course = String(q.standardCourse || meta.primaryStandardCourse || '').trim();
             const level = String(q.level || '').trim();
+            const questionType = String(q.questionType || '').trim();
             const tags = normalizeTags(q.tags);
             const vis = visualFlags(q);
             const hasSolutionImage = Boolean(q.solutionImage);
@@ -377,13 +379,21 @@ for (const file of examFiles) {
                 _seq: seqCounter++,
                 qKey: `${sourceFile}_${id}`,
                 sourceFile,
+                // Canonical Identity v1 uses original 1-based array position.
+                // Keep legacy qKey unchanged for compatibility.
+                sourceOrdinal: slot + 1,
                 grade: String(meta.grade || '').trim(),
                 subject: String(meta.subject || '').trim(),
                 id,
                 standardUnit,
                 standardUnitKey,
+                subUnitKey: String(q.subUnitKey || '').trim(),
+                subUnit: String(q.subUnit || '').trim(),
+                subUnitConfidence: String(q.subUnitConfidence || '').trim(),
+                subUnitClassificationDepth: String(q.subUnitClassificationDepth || '').trim(),
                 course,
                 level,
+                questionType,
                 tags,
                 hasImage: vis.hasVisual,
                 hasSolutionImage,
@@ -470,13 +480,19 @@ const finalRecords = rawRecords.filter(r => keepSeq.has(r._seq));
 const index = finalRecords.map(r => ({
     qKey: r.qKey,
     sourceFile: r.sourceFile,
+    sourceOrdinal: r.sourceOrdinal,
     grade: r.grade,
     subject: r.subject,
     id: r.id,
     standardUnit: r.standardUnit,
     standardUnitKey: r.standardUnitKey,
+    subUnitKey: r.subUnitKey,
+    subUnit: r.subUnit,
+    subUnitConfidence: r.subUnitConfidence,
+    subUnitClassificationDepth: r.subUnitClassificationDepth,
     course: r.course,
     level: r.level,
+    questionType: r.questionType,
     tags: r.tags,
     hasImage: r.hasImage,
     hasSolutionImage: r.hasSolutionImage,
