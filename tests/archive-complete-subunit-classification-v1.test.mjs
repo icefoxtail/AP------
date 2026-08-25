@@ -22,7 +22,10 @@ const classification = classificationAvailable
         classificationDepth: { complete_default: 0 },
         confidence: { standard_unit_default: 0 }
       },
-      records: metadata.records.map(record => ({
+      records: metadata.records.slice().sort((a, b) => {
+        const fileOrder = a.sourceArchiveFile.localeCompare(b.sourceArchiveFile);
+        return fileOrder || a.sourceOrdinal - b.sourceOrdinal;
+      }).map(record => ({
         questionUid: record.questionUid,
         sourceArchiveFile: record.sourceArchiveFile,
         sourceOrdinal: record.sourceOrdinal,
