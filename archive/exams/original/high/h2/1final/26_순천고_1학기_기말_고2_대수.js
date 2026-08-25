@@ -25,7 +25,11 @@ window.questionBank = [
       "$\\dfrac{\\sqrt3}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\dfrac{4\\pi}{3}$을 기준각 $\\dfrac\\pi3$으로 바꾸고, 제3사분면에서 사인의 부호를 판단한다.\\n조건 정리: $\\dfrac{4\\pi}{3}=\\pi+\\dfrac\\pi3$이고, 제3사분면에서는 사인값이 음수이다.\\n풀이 방향: $\\sin(\\pi+\\theta)=-\\sin\\theta$를 이용한다.\\n정석 풀이: $\\sin\\dfrac{4\\pi}{3}=\\sin\\left(\\pi+\\dfrac\\pi3\\right)=-\\sin\\dfrac\\pi3=-\\dfrac{\\sqrt3}{2}$이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $\\dfrac{4\\pi}{3}$을 기준각 $\\dfrac\\pi3$으로 바꾸고, 제3사분면에서 사인의 부호를 판단한다.\\n조건 정리: $\\dfrac{4\\pi}{3}=\\pi+\\dfrac\\pi3$이고, 제3사분면에서는 사인값이 음수이다.\\n풀이 방향: $\\sin(\\pi+\\theta)=-\\sin\\theta$를 이용한다.\\n정석 풀이: $\\sin\\dfrac{4\\pi}{3}=\\sin\\left(\\pi+\\dfrac\\pi3\\right)=-\\sin\\dfrac\\pi3=-\\dfrac{\\sqrt3}{2}$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -52,7 +56,11 @@ window.questionBank = [
       "81"
     ],
     "answer": "③",
-    "solution": "[키포인트] 등비수열의 제$n$항은 첫째항에 공비를 $n-1$번 곱한 값이다.\\n조건 정리: 첫째항은 $a_1=3$, 공비는 $r=\\sqrt3$이다.\\n풀이 방향: 일반항 $a_n=a_1r^{n-1}$에 $n=5$를 대입한다.\\n정석 풀이: $a_5=3(\\sqrt3)^4=3\\times9=27$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 등비수열의 제$n$항은 첫째항에 공비를 $n-1$번 곱한 값이다.\\n조건 정리: 첫째항은 $a_1=3$, 공비는 $r=\\sqrt3$이다.\\n풀이 방향: 일반항 $a_n=a_1r^{n-1}$에 $n=5$를 대입한다.\\n정석 풀이: $a_5=3(\\sqrt3)^4=3\\times9=27$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -79,7 +87,11 @@ window.questionBank = [
       "24"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 항의 차를 이용해 공차를 먼저 구한다.\\n조건 정리: 등차수열에서 $a_4-a_2=2d$이다.\\n풀이 방향: 공차 $d$를 구한 뒤 $a_8=a_2+6d$를 계산한다.\\n정석 풀이: $13-7=2d$이므로 $d=3$이다. 따라서 $a_8=a_2+6d=7+18=25$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 항의 차를 이용해 공차를 먼저 구한다.\\n조건 정리: 등차수열에서 $a_4-a_2=2d$이다.\\n풀이 방향: 공차 $d$를 구한 뒤 $a_8=a_2+6d$를 계산한다.\\n정석 풀이: $13-7=2d$이므로 $d=3$이다. 따라서 $a_8=a_2+6d=7+18=25$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -106,7 +118,11 @@ window.questionBank = [
       "6"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원의 둘레에서 외접반지름을 구한 뒤 확장된 사인법칙을 사용한다.\\n조건 정리: 원의 둘레가 $8\\pi$이므로 $2\\pi R=8\\pi$에서 $R=4$이다. 또 $BC$는 각 $A$의 대변이다.\\n풀이 방향: 확장된 사인법칙 $BC=2R\\sin A$를 적용한다.\\n정석 풀이: $BC=2\\times4\\times\\dfrac34=6$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 원의 둘레에서 외접반지름을 구한 뒤 확장된 사인법칙을 사용한다.\\n조건 정리: 원의 둘레가 $8\\pi$이므로 $2\\pi R=8\\pi$에서 $R=4$이다. 또 $BC$는 각 $A$의 대변이다.\\n풀이 방향: 확장된 사인법칙 $BC=2R\\sin A$를 적용한다.\\n정석 풀이: $BC=2\\times4\\times\\dfrac34=6$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -133,7 +149,11 @@ window.questionBank = [
       "$-8\\pi$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 코사인함수의 진폭, 평행이동, 주기를 각각 확인한다.\\n조건 정리: $-1\\le\\cos(3x-\\dfrac\\pi6)\\le1$이고, $\\cos(3x)$의 주기는 $\\dfrac{2\\pi}{3}$이다.\\n풀이 방향: 최댓값과 최솟값을 구한 뒤 주기와 곱한다.\\n정석 풀이: 최댓값은 $a=4\\times1+2=6$, 최솟값은 $b=4\\times(-1)+2=-2$이다. 주기는 $c=\\dfrac{2\\pi}{3}$이다. 따라서 $abc=6\\times(-2)\\times\\dfrac{2\\pi}{3}=-8\\pi$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 코사인함수의 진폭, 평행이동, 주기를 각각 확인한다.\\n조건 정리: $-1\\le\\cos(3x-\\dfrac\\pi6)\\le1$이고, $\\cos(3x)$의 주기는 $\\dfrac{2\\pi}{3}$이다.\\n풀이 방향: 최댓값과 최솟값을 구한 뒤 주기와 곱한다.\\n정석 풀이: 최댓값은 $a=4\\times1+2=6$, 최솟값은 $b=4\\times(-1)+2=-2$이다. 주기는 $c=\\dfrac{2\\pi}{3}$이다. 따라서 $abc=6\\times(-2)\\times\\dfrac{2\\pi}{3}=-8\\pi$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -160,7 +180,11 @@ window.questionBank = [
       "$6\\sqrt2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 변과 그 끼인각이 주어졌으므로 삼각형의 넓이 공식 $\\dfrac12ab\\sin C$를 이용한다.\\n조건 정리: $\\cos B=\\dfrac{\\sqrt{17}}5$이고 $0<B<\\pi$이므로 $\\sin B>0$이다.\\n풀이 방향: $\\sin^2B+\\cos^2B=1$로 $\\sin B$를 구한 뒤 넓이를 계산한다.\\n정석 풀이: $\\sin B=\\sqrt{1-\\dfrac{17}{25}}=\\dfrac{2\\sqrt2}{5}$이다. 따라서 넓이는 $\\dfrac12\\times3\\times5\\times\\dfrac{2\\sqrt2}{5}=3\\sqrt2$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 변과 그 끼인각이 주어졌으므로 삼각형의 넓이 공식 $\\dfrac12ab\\sin C$를 이용한다.\\n조건 정리: $\\cos B=\\dfrac{\\sqrt{17}}5$이고 $0<B<\\pi$이므로 $\\sin B>0$이다.\\n풀이 방향: $\\sin^2B+\\cos^2B=1$로 $\\sin B$를 구한 뒤 넓이를 계산한다.\\n정석 풀이: $\\sin B=\\sqrt{1-\\dfrac{17}{25}}=\\dfrac{2\\sqrt2}{5}$이다. 따라서 넓이는 $\\dfrac12\\times3\\times5\\times\\dfrac{2\\sqrt2}{5}=3\\sqrt2$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -187,7 +211,11 @@ window.questionBank = [
       "104"
     ],
     "answer": "③",
-    "solution": "[키포인트] 제5항으로 공차를 구하고, 등차수열의 합 공식을 적용한다.\\n조건 정리: $a_1=4$, $a_5=12$이므로 $a_5=a_1+4d$이다.\\n풀이 방향: 공차와 제8항을 차례로 구한다.\\n정석 풀이: $12=4+4d$에서 $d=2$이다. 따라서 $a_8=4+7\\times2=18$이고, $S_8=\\dfrac{8(4+18)}2=88$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 제5항으로 공차를 구하고, 등차수열의 합 공식을 적용한다.\\n조건 정리: $a_1=4$, $a_5=12$이므로 $a_5=a_1+4d$이다.\\n풀이 방향: 공차와 제8항을 차례로 구한다.\\n정석 풀이: $12=4+4d$에서 $d=2$이다. 따라서 $a_8=4+7\\times2=18$이고, $S_8=\\dfrac{8(4+18)}2=88$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -214,7 +242,11 @@ window.questionBank = [
       "7"
     ],
     "answer": "②",
-    "solution": "[키포인트] 분모의 켤레를 곱해 각 항을 두 근호의 차로 바꾸면 중간항이 소거된다.\\n조건 정리: $a_k=k+3$, $a_{k+1}=k+4$이다.\\n풀이 방향: 각 항을 유리화한 뒤 망원합으로 계산한다.\\n정석 풀이: $\\dfrac1{\\sqrt{k+3}+\\sqrt{k+4}}=\\dfrac{\\sqrt{k+4}-\\sqrt{k+3}}{(k+4)-(k+3)}=\\sqrt{k+4}-\\sqrt{k+3}$이다. 따라서 합은 $(\\sqrt5-\\sqrt4)+(\\sqrt6-\\sqrt5)+\\cdots+(\\sqrt{36}-\\sqrt{35})=\\sqrt{36}-\\sqrt4=6-2=4$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 분모의 켤레를 곱해 각 항을 두 근호의 차로 바꾸면 중간항이 소거된다.\\n조건 정리: $a_k=k+3$, $a_{k+1}=k+4$이다.\\n풀이 방향: 각 항을 유리화한 뒤 망원합으로 계산한다.\\n정석 풀이: $\\dfrac1{\\sqrt{k+3}+\\sqrt{k+4}}=\\dfrac{\\sqrt{k+4}-\\sqrt{k+3}}{(k+4)-(k+3)}=\\sqrt{k+4}-\\sqrt{k+3}$이다. 따라서 합은 $(\\sqrt5-\\sqrt4)+(\\sqrt6-\\sqrt5)+\\cdots+(\\sqrt{36}-\\sqrt{35})=\\sqrt{36}-\\sqrt4=6-2=4$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -241,7 +273,11 @@ window.questionBank = [
       "$C=\\pi/2$인 직각삼각형"
     ],
     "answer": "①",
-    "solution": "[키포인트] 같은 삼각형의 넓이를 두 식으로 나타내어 변과 각의 관계를 만든다.\\n조건 정리: 일반적인 넓이 공식은 $S=\\dfrac12bc\\sin A$이고, $A\\ne\\dfrac\\pi2$이므로 $\\cos A\\ne0$이다.\\n풀이 방향: 주어진 넓이 식과 비교한 뒤 코사인법칙에 대입한다.\\n정석 풀이: $\\dfrac12bc\\sin A=\\dfrac14c^2\\tan A=\\dfrac14c^2\\dfrac{\\sin A}{\\cos A}$이다. $\\sin A>0$이므로 약분하면 $2b\\cos A=c$이다. 코사인법칙에서 $a^2=b^2+c^2-2bc\\cos A=b^2+c^2-c^2=b^2$이므로 $a=b$이다. 따라서 삼각형 ABC는 $a=b$인 이등변삼각형이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 같은 삼각형의 넓이를 두 식으로 나타내어 변과 각의 관계를 만든다.\\n조건 정리: 일반적인 넓이 공식은 $S=\\dfrac12bc\\sin A$이고, $A\\ne\\dfrac\\pi2$이므로 $\\cos A\\ne0$이다.\\n풀이 방향: 주어진 넓이 식과 비교한 뒤 코사인법칙에 대입한다.\\n정석 풀이: $\\dfrac12bc\\sin A=\\dfrac14c^2\\tan A=\\dfrac14c^2\\dfrac{\\sin A}{\\cos A}$이다. $\\sin A>0$이므로 약분하면 $2b\\cos A=c$이다. 코사인법칙에서 $a^2=b^2+c^2-2bc\\cos A=b^2+c^2-c^2=b^2$이므로 $a=b$이다. 따라서 삼각형 ABC는 $a=b$인 이등변삼각형이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -268,7 +304,11 @@ window.questionBank = [
       "20"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각각의 합을 하나의 문자로 두면 연립일차방정식으로 바뀐다.\\n조건 정리: $A=\\sum_{k=1}^{10}a_k$, $B=\\sum_{k=1}^{10}b_k$라 두면 $3A-B=14$, $A+B=10$이다.\\n풀이 방향: $A,B$를 구한 뒤 $2A-B$를 계산한다.\\n정석 풀이: 두 식을 더하면 $4A=24$이므로 $A=6$이고, $B=4$이다. 따라서 $\\sum_{k=1}^{10}(2a_k-b_k)=2A-B=12-4=8$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 각각의 합을 하나의 문자로 두면 연립일차방정식으로 바뀐다.\\n조건 정리: $A=\\sum_{k=1}^{10}a_k$, $B=\\sum_{k=1}^{10}b_k$라 두면 $3A-B=14$, $A+B=10$이다.\\n풀이 방향: $A,B$를 구한 뒤 $2A-B$를 계산한다.\\n정석 풀이: 두 식을 더하면 $4A=24$이므로 $A=6$이고, $B=4$이다. 따라서 $\\sum_{k=1}^{10}(2a_k-b_k)=2A-B=12-4=8$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -295,7 +335,11 @@ window.questionBank = [
       "$10\\sqrt3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 외접원의 넓이로 반지름을 구하고, 사인법칙과 변의 비를 코사인법칙에 연결한다.\\n조건 정리: $\\cos A=\\dfrac12$이므로 $A=60^\\circ$이고, $\\pi R^2=\\dfrac{49\\pi}{3}$에서 $R=\\dfrac7{\\sqrt3}$이다. 또 $AB:AC=5:8$이다.\\n풀이 방향: 먼저 $BC=2R\\sin A$를 구하고, $AB=5t$, $AC=8t$로 두어 $t$를 결정한다.\\n정석 풀이: $BC=2\\times\\dfrac7{\\sqrt3}\\times\\dfrac{\\sqrt3}{2}=7$이다. $AB=5t$, $AC=8t$라 두면 코사인법칙에 의해 $7^2=(5t)^2+(8t)^2-2(5t)(8t)\\times\\dfrac12=49t^2$이다. 길이는 양수이므로 $t=1$이다. 따라서 $AB=5$, $AC=8$이고, 넓이는 $\\dfrac12\\times5\\times8\\times\\sin60^\\circ=10\\sqrt3$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 외접원의 넓이로 반지름을 구하고, 사인법칙과 변의 비를 코사인법칙에 연결한다.\\n조건 정리: $\\cos A=\\dfrac12$이므로 $A=60^\\circ$이고, $\\pi R^2=\\dfrac{49\\pi}{3}$에서 $R=\\dfrac7{\\sqrt3}$이다. 또 $AB:AC=5:8$이다.\\n풀이 방향: 먼저 $BC=2R\\sin A$를 구하고, $AB=5t$, $AC=8t$로 두어 $t$를 결정한다.\\n정석 풀이: $BC=2\\times\\dfrac7{\\sqrt3}\\times\\dfrac{\\sqrt3}{2}=7$이다. $AB=5t$, $AC=8t$라 두면 코사인법칙에 의해 $7^2=(5t)^2+(8t)^2-2(5t)(8t)\\times\\dfrac12=49t^2$이다. 길이는 양수이므로 $t=1$이다. 따라서 $AB=5$, $AC=8$이고, 넓이는 $\\dfrac12\\times5\\times8\\times\\sin60^\\circ=10\\sqrt3$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -322,7 +366,11 @@ window.questionBank = [
       "점 $(\\dfrac\\pi6,5)$를 지난다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 탄젠트함수의 정의역, 주기, 점근선과 특정 점의 좌표를 각각 확인한다.\\n조건 정리: $y=\\tan(3x-\\dfrac\\pi2)+5$에서 탄젠트의 주기는 $\\pi$이다.\\n풀이 방향: 각 선택지를 함수의 기본 성질과 직접 비교한다.\\n정석 풀이: 치역은 실수 전체이고 최댓값은 존재하지 않는다. 주기는 $\\dfrac\\pi3$이다. 점근선은 $3x-\\dfrac\\pi2=\\dfrac\\pi2+n\\pi$에서 $x=\\dfrac{(n+1)\\pi}{3}$이며, 정수 $m=n+1$로 바꾸면 $x=\\dfrac{m\\pi}{3}$이다. 따라서 ③의 $x=\\dfrac{n\\pi}{3}+\\dfrac\\pi6$은 옳지 않다. 또한 $x=\\dfrac\\pi6$이면 탄젠트의 입력값이 0이므로 점 $(\\dfrac\\pi6,5)$를 지난다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 탄젠트함수의 정의역, 주기, 점근선과 특정 점의 좌표를 각각 확인한다.\\n조건 정리: $y=\\tan(3x-\\dfrac\\pi2)+5$에서 탄젠트의 주기는 $\\pi$이다.\\n풀이 방향: 각 선택지를 함수의 기본 성질과 직접 비교한다.\\n정석 풀이: 치역은 실수 전체이고 최댓값은 존재하지 않는다. 주기는 $\\dfrac\\pi3$이다. 점근선은 $3x-\\dfrac\\pi2=\\dfrac\\pi2+n\\pi$에서 $x=\\dfrac{(n+1)\\pi}{3}$이며, 정수 $m=n+1$로 바꾸면 $x=\\dfrac{m\\pi}{3}$이다. 따라서 ③의 $x=\\dfrac{n\\pi}{3}+\\dfrac\\pi6$은 옳지 않다. 또한 $x=\\dfrac\\pi6$이면 탄젠트의 입력값이 0이므로 점 $(\\dfrac\\pi6,5)$를 지난다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -349,7 +397,11 @@ window.questionBank = [
       "205"
     ],
     "answer": "④",
-    "solution": "[키포인트] $S_{2n}$을 앞의 $n$항과 뒤의 $n$항으로 나누어 $r^n$을 구한다.\\n조건 정리: 첫째항이 1이고 공비를 $r$라 하면 $S_n=15$, $S_{2n}=255$이다.\\n풀이 방향: $S_{2n}=S_n+r^nS_n$으로 $r^n$을 구한 뒤, 짝수 번째 항의 합을 계산한다.\\n정석 풀이: $255=15(1+r^n)$이므로 $r^n=16$이다. 또한 $S_n=\\dfrac{r^n-1}{r-1}=15$이므로 $\\dfrac{15}{r-1}=15$에서 $r=2$이다. 짝수 번째 항의 합은\\n$a_2+a_4+\\cdots+a_{2n}=2+2^3+\\cdots+2^{2n-1}$\\n$=2(1+4+\\cdots+4^{n-1})=\\dfrac{2(4^n-1)}3$\\n이다. $4^n=(2^n)^2=16^2=256$이므로 그 값은 $\\dfrac{2(256-1)}3=170$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $S_{2n}$을 앞의 $n$항과 뒤의 $n$항으로 나누어 $r^n$을 구한다.\\n조건 정리: 첫째항이 1이고 공비를 $r$라 하면 $S_n=15$, $S_{2n}=255$이다.\\n풀이 방향: $S_{2n}=S_n+r^nS_n$으로 $r^n$을 구한 뒤, 짝수 번째 항의 합을 계산한다.\\n정석 풀이: $255=15(1+r^n)$이므로 $r^n=16$이다. 또한 $S_n=\\dfrac{r^n-1}{r-1}=15$이므로 $\\dfrac{15}{r-1}=15$에서 $r=2$이다. 짝수 번째 항의 합은\\n$a_2+a_4+\\cdots+a_{2n}=2+2^3+\\cdots+2^{2n-1}$\\n$=2(1+4+\\cdots+4^{n-1})=\\dfrac{2(4^n-1)}3$\\n이다. $4^n=(2^n)^2=16^2=256$이므로 그 값은 $\\dfrac{2(256-1)}3=170$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -376,7 +428,11 @@ window.questionBank = [
       "32"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 부분합에서 일반항을 구할 때 첫째항은 $S_1$, 둘째항부터는 $S_n-S_{n-1}$을 사용한다.\\n조건 정리: $S_n=-n^2+5n+6$이다.\\n풀이 방향: $a_1$과 $a_2$부터 $a_7$까지를 구한 뒤 절댓값을 더한다.\\n정석 풀이: $a_1=S_1=10$이다. $n\\ge2$일 때 $a_n=S_n-S_{n-1}=(-n^2+5n+6)-(-n^2+7n)=-2n+6$이다. 따라서 $a_2,a_3,\\ldots,a_7$은 $2,0,-2,-4,-6,-8$이다. 그러므로 $\\sum_{k=1}^{7}|a_k|=10+2+0+2+4+6+8=32$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 부분합에서 일반항을 구할 때 첫째항은 $S_1$, 둘째항부터는 $S_n-S_{n-1}$을 사용한다.\\n조건 정리: $S_n=-n^2+5n+6$이다.\\n풀이 방향: $a_1$과 $a_2$부터 $a_7$까지를 구한 뒤 절댓값을 더한다.\\n정석 풀이: $a_1=S_1=10$이다. $n\\ge2$일 때 $a_n=S_n-S_{n-1}=(-n^2+5n+6)-(-n^2+7n)=-2n+6$이다. 따라서 $a_2,a_3,\\ldots,a_7$은 $2,0,-2,-4,-6,-8$이다. 그러므로 $\\sum_{k=1}^{7}|a_k|=10+2+0+2+4+6+8=32$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -408,7 +464,11 @@ window.questionBank = [
     "hasVisualAsset": true,
     "visualAssetType": "source_page_graph",
     "visualAssetStatus": "cropped_for_manual_cleanup",
-    "image": "assets/images/26_순천고_1학기_기말_고2_대수/q15.png"
+    "image": "assets/images/26_순천고_1학기_기말_고2_대수/q15.png",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -435,7 +495,11 @@ window.questionBank = [
       "440"
     ],
     "answer": "①",
-    "solution": "[키포인트] 부분합의 차로 일반항을 구한 뒤 로그의 합으로 바꾼다.\\n조건 정리: $S_n=3^{n+1}-3$이고 $S_0=0$이다.\\n풀이 방향: $a_k=S_k-S_{k-1}$을 계산하여 $\\log_3(\\dfrac{a_k}{2})$를 단순화한다.\\n정석 풀이: $a_k=(3^{k+1}-3)-(3^k-3)=2\\cdot3^k$이다. 따라서 $\\log_3\\left(\\dfrac{a_k}{2}\\right)=\\log_3(3^k)=k$이다. 그러므로 $\\sum_{k=1}^{10}\\log_3\\left(\\dfrac{a_k}{2}\\right)=1+2+\\cdots+10=55$이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 부분합의 차로 일반항을 구한 뒤 로그의 합으로 바꾼다.\\n조건 정리: $S_n=3^{n+1}-3$이고 $S_0=0$이다.\\n풀이 방향: $a_k=S_k-S_{k-1}$을 계산하여 $\\log_3(\\dfrac{a_k}{2})$를 단순화한다.\\n정석 풀이: $a_k=(3^{k+1}-3)-(3^k-3)=2\\cdot3^k$이다. 따라서 $\\log_3\\left(\\dfrac{a_k}{2}\\right)=\\log_3(3^k)=k$이다. 그러므로 $\\sum_{k=1}^{10}\\log_3\\left(\\dfrac{a_k}{2}\\right)=1+2+\\cdots+10=55$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -462,7 +526,11 @@ window.questionBank = [
       "28"
     ],
     "answer": "①",
-    "solution": "[키포인트] 직선의 기울기와 $|\\sin2x|$의 각 봉우리에서 교점이 생기는 방식을 구간별로 센다.\\n조건 정리: $y=2|\\sin2x|$는 음이 아닌 값만 가지며 주기는 $\\dfrac\\pi2$이다. 직선은 $x=0$에서 시작하여 $x=n\\pi$에서 $y=2$가 된다.\\n풀이 방향: $0\\le x\\le n\\pi$를 길이 $\\dfrac\\pi2$인 $2n$개 구간으로 나누어 교점 수를 센다.\\n정석 풀이: 첫 구간에서는 $x=0$이 한 교점이고, 봉우리 이후 내려오는 부분에서 교점이 하나 더 생긴다. 나머지 $2n-1$개 구간에서는 양 끝에서 곡선의 값이 직선보다 작고, 가운데 봉우리에서는 곡선의 값이 직선보다 크므로 각 구간마다 교점이 2개씩 생긴다. 따라서 $f(n)=2+2(2n-1)=4n$이다. 그러므로 $f(1)+f(2)+f(3)=4+8+12=24$이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 직선의 기울기와 $|\\sin2x|$의 각 봉우리에서 교점이 생기는 방식을 구간별로 센다.\\n조건 정리: $y=2|\\sin2x|$는 음이 아닌 값만 가지며 주기는 $\\dfrac\\pi2$이다. 직선은 $x=0$에서 시작하여 $x=n\\pi$에서 $y=2$가 된다.\\n풀이 방향: $0\\le x\\le n\\pi$를 길이 $\\dfrac\\pi2$인 $2n$개 구간으로 나누어 교점 수를 센다.\\n정석 풀이: 첫 구간에서는 $x=0$이 한 교점이고, 봉우리 이후 내려오는 부분에서 교점이 하나 더 생긴다. 나머지 $2n-1$개 구간에서는 양 끝에서 곡선의 값이 직선보다 작고, 가운데 봉우리에서는 곡선의 값이 직선보다 크므로 각 구간마다 교점이 2개씩 생긴다. 따라서 $f(n)=2+2(2n-1)=4n$이다. 그러므로 $f(1)+f(2)+f(3)=4+8+12=24$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+    "subUnit": "trigonometric function",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -494,7 +562,11 @@ window.questionBank = [
     "hasVisualAsset": true,
     "visualAssetType": "source_page_diagram",
     "visualAssetStatus": "cropped_for_manual_cleanup",
-    "image": "assets/images/26_순천고_1학기_기말_고2_대수/q18.png"
+    "image": "assets/images/26_순천고_1학기_기말_고2_대수/q18.png",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -521,7 +593,11 @@ window.questionBank = [
       "-10"
     ],
     "answer": "④",
-    "solution": "[키포인트] 모든 항을 양수로 두었을 때의 합에서, 음수로 바뀐 항들이 합을 얼마나 줄이는지 비교한다.\\n조건 정리: 각 항의 절댓값은 $1,2,4,8,16,32$이고 이들을 모두 양수로 더하면 63이다.\\n풀이 방향: 실제 합이 39가 되려면 음수로 정한 항들의 절댓값 합을 구한다.\\n정석 풀이: 어떤 양수 항 $x$를 음수 $-x$로 바꾸면 전체 합은 $2x$만큼 줄어든다. 따라서 음수로 정한 항들의 절댓값 합을 $T$라 하면 $63-2T=39$이므로 $T=12$이다. $1,2,4,8,16,32$ 중 합이 12인 것은 $4+8$뿐이므로 $a_3=-4$, $a_4=-8$이고 나머지 항은 양수이다. 따라서 $a_2+a_4=2-8=-6$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 모든 항을 양수로 두었을 때의 합에서, 음수로 바뀐 항들이 합을 얼마나 줄이는지 비교한다.\\n조건 정리: 각 항의 절댓값은 $1,2,4,8,16,32$이고 이들을 모두 양수로 더하면 63이다.\\n풀이 방향: 실제 합이 39가 되려면 음수로 정한 항들의 절댓값 합을 구한다.\\n정석 풀이: 어떤 양수 항 $x$를 음수 $-x$로 바꾸면 전체 합은 $2x$만큼 줄어든다. 따라서 음수로 정한 항들의 절댓값 합을 $T$라 하면 $63-2T=39$이므로 $T=12$이다. $1,2,4,8,16,32$ 중 합이 12인 것은 $4+8$뿐이므로 $a_3=-4$, $a_4=-8$이고 나머지 항은 양수이다. 따라서 $a_2+a_4=2-8=-6$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+    "subUnit": "수열의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -548,7 +624,11 @@ window.questionBank = [
       "36"
     ],
     "answer": "③",
-    "solution": "[키포인트] 귀납 가정으로 $m^2a_m$을 계산하고, $a_{m+1}$의 계수를 묶어 두 빈칸을 찾는다.\\n조건 정리: 귀납 가정은 $a_m=\\dfrac2{m(m+1)}$이고, 주어진 조건으로 $\\sum_{k=1}^{m}a_k=m^2a_m$이다.\\n풀이 방향: 먼저 (가)를 계산한 뒤, $a_{m+1}$을 한쪽으로 묶어 (나)를 구한다.\\n정석 풀이: $m^2a_m=m^2\\times\\dfrac2{m(m+1)}=\\dfrac{2m}{m+1}$이므로 $f(m)=\\dfrac{2m}{m+1}$이다. 또한 $f(m)+a_{m+1}=(m+1)^2a_{m+1}$이므로 $f(m)=\\{(m+1)^2-1\\}a_{m+1}=m(m+2)a_{m+1}$이다. 따라서 $g(m)=m(m+2)$이다. 그러므로 $f(4)g(3)=\\dfrac85\\times15=24$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 귀납 가정으로 $m^2a_m$을 계산하고, $a_{m+1}$의 계수를 묶어 두 빈칸을 찾는다.\\n조건 정리: 귀납 가정은 $a_m=\\dfrac2{m(m+1)}$이고, 주어진 조건으로 $\\sum_{k=1}^{m}a_k=m^2a_m$이다.\\n풀이 방향: 먼저 (가)를 계산한 뒤, $a_{m+1}$을 한쪽으로 묶어 (나)를 구한다.\\n정석 풀이: $m^2a_m=m^2\\times\\dfrac2{m(m+1)}=\\dfrac{2m}{m+1}$이므로 $f(m)=\\dfrac{2m}{m+1}$이다. 또한 $f(m)+a_{m+1}=(m+1)^2a_{m+1}$이므로 $f(m)=\\{(m+1)^2-1\\}a_{m+1}=m(m+2)a_{m+1}$이다. 따라서 $g(m)=m(m+2)$이다. 그러므로 $f(4)g(3)=\\dfrac85\\times15=24$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-A-08-CORE",
+    "subUnit": "수학적 귀납법 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -569,7 +649,11 @@ window.questionBank = [
     "content": "등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라고 하자. $S_4=24$, $S_9=9$일 때, $S_n$의 값이 최대가 되는 $n$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 4점]",
     "choices": [],
     "answer": "$5$",
-    "solution": "[키포인트] 두 부분합 조건으로 첫째항과 공차를 구한 뒤 $S_n$을 완전제곱식으로 나타낸다.\\n조건 정리: 등차수열의 첫째항을 $a$, 공차를 $d$라 두면 $S_n=\\dfrac n2\\{2a+(n-1)d\\}$이다.\\n풀이 방향: $S_4=24$, $S_9=9$를 연립하여 $a,d$를 구한다.\\n정석 풀이: $S_4=2(2a+3d)=24$이므로 $2a+3d=12$이다. 또 $S_9=\\dfrac92(2a+8d)=9$이므로 $2a+8d=2$이다. 두 식을 빼면 $5d=-10$이므로 $d=-2$, $a=9$이다. 따라서 $S_n=\\dfrac n2\\{18-2(n-1)\\}=n(10-n)=25-(n-5)^2$이다. 자연수 $n$에서 이 값은 $n=5$일 때 최대이다.\\n따라서 구하는 값은 $5$이다."
+    "solution": "[키포인트] 두 부분합 조건으로 첫째항과 공차를 구한 뒤 $S_n$을 완전제곱식으로 나타낸다.\\n조건 정리: 등차수열의 첫째항을 $a$, 공차를 $d$라 두면 $S_n=\\dfrac n2\\{2a+(n-1)d\\}$이다.\\n풀이 방향: $S_4=24$, $S_9=9$를 연립하여 $a,d$를 구한다.\\n정석 풀이: $S_4=2(2a+3d)=24$이므로 $2a+3d=12$이다. 또 $S_9=\\dfrac92(2a+8d)=9$이므로 $2a+8d=2$이다. 두 식을 빼면 $5d=-10$이므로 $d=-2$, $a=9$이다. 따라서 $S_n=\\dfrac n2\\{18-2(n-1)\\}=n(10-n)=25-(n-5)^2$이다. 자연수 $n$에서 이 값은 $n=5$일 때 최대이다.\\n따라서 구하는 값은 $5$이다.",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -590,7 +674,11 @@ window.questionBank = [
     "content": "$0\\le x\\le3\\pi$일 때, 부등식 $-2\\sin^2(\\pi+x)+\\sin\\left(\\dfrac\\pi2+x\\right)+1\\ge0$의 해를 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 6점]",
     "choices": [],
     "answer": "$\\left[0,\\dfrac\\pi3\\right]\\cup\\{\\pi\\}\\cup\\left[\\dfrac{5\\pi}{3},\\dfrac{7\\pi}{3}\\right]\\cup\\{3\\pi\\}$",
-    "solution": "[키포인트] 덧셈정리로 식을 $\\cos x$에 대한 이차부등식으로 바꾼다.\\n조건 정리: $\\sin(\\pi+x)=-\\sin x$, $\\sin(\\dfrac\\pi2+x)=\\cos x$이다.\\n풀이 방향: 삼각함수식을 인수분해한 뒤 $0\\le x\\le3\\pi$에서 각 조건의 해를 찾는다.\\n정석 풀이: 주어진 부등식은 $-2\\sin^2x+\\cos x+1\\ge0$이다. $\\sin^2x=1-\\cos^2x$를 대입하면 $2\\cos^2x+\\cos x-1\\ge0$, 즉 $(2\\cos x-1)(\\cos x+1)\\ge0$이다. $-1\\le\\cos x\\le1$이므로 $\\cos x\\ge\\dfrac12$ 또는 $\\cos x=-1$이다. $0\\le x\\le3\\pi$에서 $\\cos x\\ge\\dfrac12$의 해는 $0\\le x\\le\\dfrac\\pi3$ 또는 $\\dfrac{5\\pi}{3}\\le x\\le\\dfrac{7\\pi}{3}$이고, $\\cos x=-1$의 해는 $x=\\pi,3\\pi$이다.\\n따라서 해는 $\\left[0,\\dfrac\\pi3\\right]\\cup\\{\\pi\\}\\cup\\left[\\dfrac{5\\pi}{3},\\dfrac{7\\pi}{3}\\right]\\cup\\{3\\pi\\}$이다."
+    "solution": "[키포인트] 덧셈정리로 식을 $\\cos x$에 대한 이차부등식으로 바꾼다.\\n조건 정리: $\\sin(\\pi+x)=-\\sin x$, $\\sin(\\dfrac\\pi2+x)=\\cos x$이다.\\n풀이 방향: 삼각함수식을 인수분해한 뒤 $0\\le x\\le3\\pi$에서 각 조건의 해를 찾는다.\\n정석 풀이: 주어진 부등식은 $-2\\sin^2x+\\cos x+1\\ge0$이다. $\\sin^2x=1-\\cos^2x$를 대입하면 $2\\cos^2x+\\cos x-1\\ge0$, 즉 $(2\\cos x-1)(\\cos x+1)\\ge0$이다. $-1\\le\\cos x\\le1$이므로 $\\cos x\\ge\\dfrac12$ 또는 $\\cos x=-1$이다. $0\\le x\\le3\\pi$에서 $\\cos x\\ge\\dfrac12$의 해는 $0\\le x\\le\\dfrac\\pi3$ 또는 $\\dfrac{5\\pi}{3}\\le x\\le\\dfrac{7\\pi}{3}$이고, $\\cos x=-1$의 해는 $x=\\pi,3\\pi$이다.\\n따라서 해는 $\\left[0,\\dfrac\\pi3\\right]\\cup\\{\\pi\\}\\cup\\left[\\dfrac{5\\pi}{3},\\dfrac{7\\pi}{3}\\right]\\cup\\{3\\pi\\}$이다.",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -611,7 +699,11 @@ window.questionBank = [
     "content": "삼각형 ABC에서 $\\sin^2A+2\\sin^2B=3\\sin^2C$일 때, $\\cos C$의 최솟값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 4점]",
     "choices": [],
     "answer": "$\\dfrac{\\sqrt2}{3}$",
-    "solution": "[키포인트] 사인법칙으로 각의 사인을 변의 길이로 바꾼 뒤 코사인법칙과 산술·기하평균을 이용한다.\\n조건 정리: 변 $a,b,c$는 각각 각 $A,B,C$의 대변이다.\\n풀이 방향: 주어진 식을 변의 관계로 바꾸고, $\\cos C$를 $a/b$의 식으로 나타낸다.\\n정석 풀이: 사인법칙에 의해 $\\sin A:\\sin B:\\sin C=a:b:c$이므로 $a^2+2b^2=3c^2$이다. 코사인법칙에서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}=\\dfrac{2a^2+b^2}{6ab}$이다. $t=\\dfrac ab>0$이라 두면 $\\cos C=\\dfrac{2t^2+1}{6t}=\\dfrac{2t+1/t}{6}$이다. 산술·기하평균에 의해 $2t+\\dfrac1t\\ge2\\sqrt2$이므로 $\\cos C\\ge\\dfrac{\\sqrt2}{3}$이다. 등호는 $2t=\\dfrac1t$, 즉 $t=\\dfrac1{\\sqrt2}$일 때 성립하며 이 비를 만족하는 삼각형이 존재한다.\\n따라서 $\\cos C$의 최솟값은 $\\dfrac{\\sqrt2}{3}$이다."
+    "solution": "[키포인트] 사인법칙으로 각의 사인을 변의 길이로 바꾼 뒤 코사인법칙과 산술·기하평균을 이용한다.\\n조건 정리: 변 $a,b,c$는 각각 각 $A,B,C$의 대변이다.\\n풀이 방향: 주어진 식을 변의 관계로 바꾸고, $\\cos C$를 $a/b$의 식으로 나타낸다.\\n정석 풀이: 사인법칙에 의해 $\\sin A:\\sin B:\\sin C=a:b:c$이므로 $a^2+2b^2=3c^2$이다. 코사인법칙에서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}=\\dfrac{2a^2+b^2}{6ab}$이다. $t=\\dfrac ab>0$이라 두면 $\\cos C=\\dfrac{2t^2+1}{6t}=\\dfrac{2t+1/t}{6}$이다. 산술·기하평균에 의해 $2t+\\dfrac1t\\ge2\\sqrt2$이므로 $\\cos C\\ge\\dfrac{\\sqrt2}{3}$이다. 등호는 $2t=\\dfrac1t$, 즉 $t=\\dfrac1{\\sqrt2}$일 때 성립하며 이 비를 만족하는 삼각형이 존재한다.\\n따라서 $\\cos C$의 최솟값은 $\\dfrac{\\sqrt2}{3}$이다.",
+    "subUnitKey": "H22-A-05-CORE",
+    "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -632,6 +724,10 @@ window.questionBank = [
     "content": "수열 $\\{a_n\\}$이 다음과 같이 귀납적으로 정의되어 있다.<br>$a_1=1$, $a_{n+1}=a_n+\\dfrac1{n(n+1)}$ (단, $n$은 자연수)<br>모든 자연수 $n$에 대하여 수열의 일반항이 $a_n=2-\\dfrac1n$이 성립함을 수학적 귀납법으로 증명하시오. [부분 점수 있음, 6점]",
     "choices": [],
     "answer": "증명",
-    "solution": "[키포인트] 초기 단계와 귀납 단계를 분리하여 귀납 가정으로 다음 항의 식을 만든다.\\n조건 정리: $a_1=1$, $a_{n+1}=a_n+\\dfrac1{n(n+1)}$이다.\\n풀이 방향: $n=1$에서 확인하고, $n=k$에서 성립한다고 가정하여 $n=k+1$에서도 성립함을 보인다.\\n정석 풀이: 먼저 $n=1$일 때 $a_1=1=2-1$이므로 명제가 성립한다. 이제 어떤 자연수 $k$에 대하여 $a_k=2-\\dfrac1k$라고 가정하자. 점화식에 대입하면 $a_{k+1}=2-\\dfrac1k+\\dfrac1{k(k+1)}=2-\\dfrac{k+1}{k(k+1)}+\\dfrac1{k(k+1)}=2-\\dfrac1{k+1}$이다. 따라서 $n=k+1$일 때도 명제가 성립한다.\\n그러므로 수학적 귀납법에 의하여 모든 자연수 $n$에 대하여 $a_n=2-\\dfrac1n$이다."
+    "solution": "[키포인트] 초기 단계와 귀납 단계를 분리하여 귀납 가정으로 다음 항의 식을 만든다.\\n조건 정리: $a_1=1$, $a_{n+1}=a_n+\\dfrac1{n(n+1)}$이다.\\n풀이 방향: $n=1$에서 확인하고, $n=k$에서 성립한다고 가정하여 $n=k+1$에서도 성립함을 보인다.\\n정석 풀이: 먼저 $n=1$일 때 $a_1=1=2-1$이므로 명제가 성립한다. 이제 어떤 자연수 $k$에 대하여 $a_k=2-\\dfrac1k$라고 가정하자. 점화식에 대입하면 $a_{k+1}=2-\\dfrac1k+\\dfrac1{k(k+1)}=2-\\dfrac{k+1}{k(k+1)}+\\dfrac1{k(k+1)}=2-\\dfrac1{k+1}$이다. 따라서 $n=k+1$일 때도 명제가 성립한다.\\n그러므로 수학적 귀납법에 의하여 모든 자연수 $n$에 대하여 $a_n=2-\\dfrac1n$이다.",
+    "subUnitKey": "H22-A-08-CORE",
+    "subUnit": "수학적 귀납법 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

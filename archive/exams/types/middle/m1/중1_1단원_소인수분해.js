@@ -32,7 +32,9 @@ window.questionBank = [
       "$5^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 75를 소인수분해하면 $75 = 3 \\times 5^2$ 이므로 $2^3 \\times 3$은 75의 약수가 아니다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 75를 소인수분해하면 $75 = 3 \\times 5^2$ 이므로 $2^3 \\times 3$은 75의 약수가 아니다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -57,7 +59,9 @@ window.questionBank = [
     "content": "36 을 소인수분해하여 거듭제곱으로 나타내어라.",
     "choices": [],
     "answer": "$2^2 \\times 3^2$",
-    "solution": "[키포인트] 나눗셈을 이용해 소인수분해하면 $36 \\div 2 = 18$, $18 \\div 2 = 9$, $9 \\div 3 = 3$ 이므로 $36 = 2^2 \\times 3^2$ 이다.\\n따라서 구하는 값은 $2^2 \\times 3^2$이다."
+    "solution": "[키포인트] 나눗셈을 이용해 소인수분해하면 $36 \\div 2 = 18$, $18 \\div 2 = 9$, $9 \\div 3 = 3$ 이므로 $36 = 2^2 \\times 3^2$ 이다.\\n따라서 구하는 값은 $2^2 \\times 3^2$이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -88,7 +92,9 @@ window.questionBank = [
       "$2^6$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $64 = 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 2^6$.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $64 = 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 2^6$.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -117,7 +123,9 @@ window.questionBank = [
     "content": "다음 설명 중 옳은 것은 ○표, 틀린 것은 ×표 하여라.\n⑴ 1은 소수이다. ( )\n⑵ 가장 작은 소수는 2이다. ( )",
     "choices": [],
     "answer": "⑴ × ⑵ ○",
-    "solution": "[키포인트] ⑴ 1은 소수도 합성수도 아니다. ⑵ 가장 작은 소수는 2이다.\\n따라서 구하는 값은 ⑴ × ⑵ ○이다."
+    "solution": "[키포인트] ⑴ 1은 소수도 합성수도 아니다. ⑵ 가장 작은 소수는 2이다.\\n따라서 구하는 값은 ⑴ × ⑵ ○이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -143,7 +151,9 @@ window.questionBank = [
     "content": "$2 \\times 2 \\times 2 \\times 3 \\times 3 \\times 5$를 거듭제곱을 사용하여 나타내어라.",
     "choices": [],
     "answer": "$2^3 \\times 3^2 \\times 5$",
-    "solution": "[키포인트] 같은 수를 거듭하여 곱한 수를 올바르게 거듭제곱표현을 사용하여 나타낸다. $2 \\times 2 \\times 2 \\times 3 \\times 3 \\times 5 = 2^3 \\times 3^2 \\times 5$.\\n따라서 구하는 값은 $2^3 \\times 3^2 \\times 5$이다."
+    "solution": "[키포인트] 같은 수를 거듭하여 곱한 수를 올바르게 거듭제곱표현을 사용하여 나타낸다. $2 \\times 2 \\times 2 \\times 3 \\times 3 \\times 5 = 2^3 \\times 3^2 \\times 5$.\\n따라서 구하는 값은 $2^3 \\times 3^2 \\times 5$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -175,7 +185,9 @@ window.questionBank = [
       "$2^3 = 6$이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ⑤ $2^3 = 8$.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ⑤ $2^3 = 8$.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -208,7 +220,9 @@ window.questionBank = [
       "16 개"
     ],
     "answer": "④",
-    "solution": "[키포인트] $3^2 \\times 5^3$ 의 약수의 개수는 $(2+1) \\times (3+1) = 3 \\times 4 = 12$(개)이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $3^2 \\times 5^3$ 의 약수의 개수는 $(2+1) \\times (3+1) = 3 \\times 4 = 12$(개)이다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -240,7 +254,9 @@ window.questionBank = [
       "1 은 소수도 아니고 합성수도 아니다."
     ],
     "answer": "②",
-    "solution": "[키포인트] ② 2 는 소수이지만 유일한 짝수이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] ② 2 는 소수이지만 유일한 짝수이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -268,7 +284,9 @@ window.questionBank = [
     "content": "36을 소인수분해하면 $2^a \\times b^2$ 이다. ⑴ $a+b$의 값은? ⑵ 36의 약수의 개수는?",
     "choices": [],
     "answer": "⑴ $a+b = 5$ ⑵ 9개",
-    "solution": "[키포인트] $36 = 2^2 \\times 3^2$ 이므로 $a=2, b=3 \\rightarrow a+b=5$이다. 약수의 개수는 (소인수의 지수＋1)의 곱이므로, $3 \\times 3 = 9$개다.\\n따라서 구하는 값은 ⑴ $a+b = 5$ ⑵ 9개이다."
+    "solution": "[키포인트] $36 = 2^2 \\times 3^2$ 이므로 $a=2, b=3 \\rightarrow a+b=5$이다. 약수의 개수는 (소인수의 지수＋1)의 곱이므로, $3 \\times 3 = 9$개다.\\n따라서 구하는 값은 ⑴ $a+b = 5$ ⑵ 9개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -295,7 +313,9 @@ window.questionBank = [
     "content": "$2^3 \\times 3^3$의 약수의 개수를 구하여라.",
     "choices": [],
     "answer": "16개",
-    "solution": "[키포인트] 약수의 개수는 각 지수에 1을 더해 곱하므로 $(3+1) \\times (3+1) = 16$(개)이다.\\n따라서 구하는 값은 16개이다."
+    "solution": "[키포인트] 약수의 개수는 각 지수에 1을 더해 곱하므로 $(3+1) \\times (3+1) = 16$(개)이다.\\n따라서 구하는 값은 16개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -327,7 +347,9 @@ window.questionBank = [
       "$2 \\times 13^3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] ④ $2^3 \\times 13$은 원래 수인 $2^2 \\times 13^3$보다 2의 거듭제곱 지수가 더 크므로 약수가 될 수 없다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] ④ $2^3 \\times 13$은 원래 수인 $2^2 \\times 13^3$보다 2의 거듭제곱 지수가 더 크므로 약수가 될 수 없다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -362,7 +384,9 @@ window.questionBank = [
       "12개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 50 이하의 4의 배수는 12개이고, 4와 6의 공배수(12의 배수)인 것은 4개이므로 4의 배수이지만 6의 배수가 아닌 자연수는 $12 - 4 = 8$(개)이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 50 이하의 4의 배수는 12개이고, 4와 6의 공배수(12의 배수)인 것은 4개이므로 4의 배수이지만 6의 배수가 아닌 자연수는 $12 - 4 = 8$(개)이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -395,7 +419,9 @@ window.questionBank = [
       "12개"
     ],
     "answer": "②",
-    "solution": "[키포인트] $68 = 2^2 \\times 17$이므로 약수의 개수는 $(2+1) \\times (1+1) = 3 \\times 2 = 6$(개)이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $68 = 2^2 \\times 17$이므로 약수의 개수는 $(2+1) \\times (1+1) = 3 \\times 2 = 6$(개)이다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -427,7 +453,9 @@ window.questionBank = [
       "$2 \\times 3^4$"
     ],
     "answer": "①, ④",
-    "solution": "[키포인트] $432 = 2^4 \\times 3^3$ 이므로 지수가 원본 범위 이내인 ①과 ④만 약수이다.\\n따라서 정답은 ①, ④이다."
+    "solution": "[키포인트] $432 = 2^4 \\times 3^3$ 이므로 지수가 원본 범위 이내인 ①과 ④만 약수이다.\\n따라서 정답은 ①, ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -459,7 +487,9 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 자리 숫자의 합이 3의 배수이어야 하므로, $2+5+\\Box+8 = 15+\\Box$ 에서 $\\Box$ 안에 들어갈 수 있는 수는 0, 3, 6, 9이다. 따라서 2는 불가능하다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 각 자리 숫자의 합이 3의 배수이어야 하므로, $2+5+\\Box+8 = 15+\\Box$ 에서 $\\Box$ 안에 들어갈 수 있는 수는 0, 3, 6, 9이다. 따라서 2는 불가능하다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -487,7 +517,9 @@ window.questionBank = [
     "content": "$2^3 \\times 5^2$ 의 약수를 모두 구하여라.",
     "choices": [],
     "answer": "1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 200",
-    "solution": "[키포인트] 소인수의 분배 표를 이용한다. $\\times 1, 5, 5^2$ 구조에서 $2^0, 2^1, 2^2, 2^3$을 각각 곱해주면 $2^3 \\times 5^2$ 의 약수는 총 12개로 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 200이다.\\n따라서 구하는 값은 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 200이다."
+    "solution": "[키포인트] 소인수의 분배 표를 이용한다. $\\times 1, 5, 5^2$ 구조에서 $2^0, 2^1, 2^2, 2^3$을 각각 곱해주면 $2^3 \\times 5^2$ 의 약수는 총 12개로 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 200이다.\\n따라서 구하는 값은 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 200이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -518,7 +550,9 @@ window.questionBank = [
       "$2^3 \\times 3^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] ③ $3^3$ 은 $2^3 \\times 3^2$ 의 인수가 아니므로(3의 지수가 더 큼) 약수가 될 수 없다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] ③ $3^3$ 은 $2^3 \\times 3^2$ 의 인수가 아니므로(3의 지수가 더 큼) 약수가 될 수 없다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -549,7 +583,9 @@ window.questionBank = [
       "$128 = 2^8$"
     ],
     "answer": "①",
-    "solution": "[키포인트] ② $36 = 2^2 \\times 3^2$, ③ $42 = 2 \\times 3 \\times 7$, ④ $54 = 2 \\times 3^3$, ⑤ $128 = 2^7$ 이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] ② $36 = 2^2 \\times 3^2$, ③ $42 = 2 \\times 3 \\times 7$, ④ $54 = 2 \\times 3^3$, ⑤ $128 = 2^7$ 이다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -582,7 +618,9 @@ window.questionBank = [
       "21"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $84 = 2^2 \\times 3 \\times 7$ 이므로 지수가 홀수인 소인수는 3과 7이다. 어떤 수의 제곱이 되려면 지수를 짝수로 만들어야 하므로 가장 작은 수인 $3 \\times 7 = 21$을 곱해주면 된다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $84 = 2^2 \\times 3 \\times 7$ 이므로 지수가 홀수인 소인수는 3과 7이다. 어떤 수의 제곱이 되려면 지수를 짝수로 만들어야 하므로 가장 작은 수인 $3 \\times 7 = 21$을 곱해주면 된다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -608,7 +646,9 @@ window.questionBank = [
     "content": "$3 \\times 4 \\times 5 \\times \\dots \\times 10 = 2^a \\times 3^b \\times 5^c \\times 7^d$ 일 때, $a+b+c+d$의 값을 구하여라.",
     "choices": [],
     "answer": "14",
-    "solution": "[키포인트] $3 \\times 4 \\times 5 \\times \\dots \\times 10 = 3 \\times 2^2 \\times 5 \\times (2 \\times 3) \\times 7 \\times 2^3 \\times 3^2 \\times (2 \\times 5) = 2^7 \\times 3^4 \\times 5^2 \\times 7^1$ 이다. 따라서 $a+b+c+d = 7+4+2+1 = 14$이다.\\n따라서 구하는 값은 14이다."
+    "solution": "[키포인트] $3 \\times 4 \\times 5 \\times \\dots \\times 10 = 3 \\times 2^2 \\times 5 \\times (2 \\times 3) \\times 7 \\times 2^3 \\times 3^2 \\times (2 \\times 5) = 2^7 \\times 3^4 \\times 5^2 \\times 7^1$ 이다. 따라서 $a+b+c+d = 7+4+2+1 = 14$이다.\\n따라서 구하는 값은 14이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -642,7 +682,9 @@ window.questionBank = [
       "121"
     ],
     "answer": "①",
-    "solution": "[키포인트] 약수의 개수 공식에 따라 $2^3 \\times a^b$의 약수 개수는 $(3+1) \\times (b+1) = 12 \\rightarrow 4 \\times (b+1) = 12 \\rightarrow b=2$가 된다. 즉, 지수가 2인 제곱수들이 와야 하므로 $9(3^2), 25(5^2), 49(7^2), 121(11^2)$은 가능하나, $4(2^2)$는 밑이 원본 소인수인 2와 중복되어 개수 법칙이 달라지므로 불가능하다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 약수의 개수 공식에 따라 $2^3 \\times a^b$의 약수 개수는 $(3+1) \\times (b+1) = 12 \\rightarrow 4 \\times (b+1) = 12 \\rightarrow b=2$가 된다. 즉, 지수가 2인 제곱수들이 와야 하므로 $9(3^2), 25(5^2), 49(7^2), 121(11^2)$은 가능하나, $4(2^2)$는 밑이 원본 소인수인 2와 중복되어 개수 법칙이 달라지므로 불가능하다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -675,7 +717,9 @@ window.questionBank = [
       "12개"
     ],
     "answer": "①",
-    "solution": "[키포인트] $6300 = 2^2 \\times 3^2 \\times 5^2 \\times 7$이므로 약수 중 어떤 자연수의 제곱이 되는 수는 지수가 짝수(또는 0)인 소인수들의 조합이다. 즉 $1, 2^2, 3^2, 5^2, 2^2 \\times 3^2, 2^2 \\times 5^2, 3^2 \\times 5^2, 2^2 \\times 3^2 \\times 5^2$ 총 8개가 존재한다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $6300 = 2^2 \\times 3^2 \\times 5^2 \\times 7$이므로 약수 중 어떤 자연수의 제곱이 되는 수는 지수가 짝수(또는 0)인 소인수들의 조합이다. 즉 $1, 2^2, 3^2, 5^2, 2^2 \\times 3^2, 2^2 \\times 5^2, 3^2 \\times 5^2, 2^2 \\times 3^2 \\times 5^2$ 총 8개가 존재한다.\\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -710,7 +754,9 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "[키포인트] 9의 배수가 되려면 각 자리의 합 $3+5+\\Box+4 = 12+\\Box$ 가 9의 배수여야 하므로 $\\Box = 6$이다. 3564는 마지막 두 자리가 4의 배수(64)이므로 4의 배수 조건도 동시에 만족한다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 9의 배수가 되려면 각 자리의 합 $3+5+\\Box+4 = 12+\\Box$ 가 9의 배수여야 하므로 $\\Box = 6$이다. 3564는 마지막 두 자리가 4의 배수(64)이므로 4의 배수 조건도 동시에 만족한다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -739,7 +785,9 @@ window.questionBank = [
     "content": "어떤 자연수 $a$는 $a$를 제외한 모든 약수들의 합을 구하면 그 값이 $a$가 된다고 한다. 이를 만족하는 가장 작은 자연수 $a$를 구하여라.",
     "choices": [],
     "answer": "6",
-    "solution": "[키포인트] 자신을 제외한 약수의 합이 자신이 되는 수를 완전수라고 한다. 6의 약수는 1, 2, 3, 6이고 자신인 6을 제외한 1, 2, 3의 합이 6이 되므로 조건에 부합하는 가장 작은 자연수이다.\\n따라서 구하는 값은 6이다."
+    "solution": "[키포인트] 자신을 제외한 약수의 합이 자신이 되는 수를 완전수라고 한다. 6의 약수는 1, 2, 3, 6이고 자신인 6을 제외한 1, 2, 3의 합이 6이 되므로 조건에 부합하는 가장 작은 자연수이다.\\n따라서 구하는 값은 6이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -767,7 +815,9 @@ window.questionBank = [
     "content": "다음 수를 소인수분해하고, 소인수를 모두 구하여라.\n⑴ 72\n⑵ 120",
     "choices": [],
     "answer": "⑴ $2^3 \\times 3^2$, 소인수: 2, 3 ⑵ $2^3 \\times 3 \\times 5$, 소인수: 2, 3, 5",
-    "solution": "[키포인트] 각 수를 소수의 곱으로 나누어 지수 형태로 정리하고, 사용된 소수만 따로 모은다.\\n조건 정리: 72와 120을 각각 소인수분해하고, 소인수의 종류를 구해야 한다.\\n풀이 방향: 작은 소수 2, 3, 5로 차례로 나누어 거듭제곱 꼴로 나타낸다.\\n정석 풀이: $72=8\\times9=2^3\\times3^2$이므로 72의 소인수는 2, 3이다. 또 $120=12\\times10=(2^2\\times3)\\times(2\\times5)=2^3\\times3\\times5$이므로 120의 소인수는 2, 3, 5이다.\\n따라서 구하는 값은 ⑴ $2^3 \\times 3^2$, 소인수: 2, 3 ⑵ $2^3 \\times 3 \\times 5$, 소인수: 2, 3, 5이다."
+    "solution": "[키포인트] 각 수를 소수의 곱으로 나누어 지수 형태로 정리하고, 사용된 소수만 따로 모은다.\\n조건 정리: 72와 120을 각각 소인수분해하고, 소인수의 종류를 구해야 한다.\\n풀이 방향: 작은 소수 2, 3, 5로 차례로 나누어 거듭제곱 꼴로 나타낸다.\\n정석 풀이: $72=8\\times9=2^3\\times3^2$이므로 72의 소인수는 2, 3이다. 또 $120=12\\times10=(2^2\\times3)\\times(2\\times5)=2^3\\times3\\times5$이므로 120의 소인수는 2, 3, 5이다.\\n따라서 구하는 값은 ⑴ $2^3 \\times 3^2$, 소인수: 2, 3 ⑵ $2^3 \\times 3 \\times 5$, 소인수: 2, 3, 5이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 26,
@@ -800,7 +850,9 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "[키포인트] 어떤 자연수의 제곱이 되려면 소인수의 지수가 모두 짝수여야 한다. $20 = 2^2 \\times 5$이므로 지수를 짝수로 만들기 위해 곱해야 할 가장 작은 자연수는 5이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 어떤 자연수의 제곱이 되려면 소인수의 지수가 모두 짝수여야 한다. $20 = 2^2 \\times 5$이므로 지수를 짝수로 만들기 위해 곱해야 할 가장 작은 자연수는 5이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -833,7 +885,9 @@ window.questionBank = [
       "30"
     ],
     "answer": "③",
-    "solution": "[키포인트] $160 = 2^5 \\times 5$이므로 지수가 홀수인 소인수는 2와 5이다. 지수를 짝수로 만들기 위해 곱해야 하는 가장 작은 자연수는 $2 \\times 5 = 10$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $160 = 2^5 \\times 5$이므로 지수가 홀수인 소인수는 2와 5이다. 지수를 짝수로 만들기 위해 곱해야 하는 가장 작은 자연수는 $2 \\times 5 = 10$이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -868,7 +922,9 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "[키포인트] $5^2 \\times \\Box$의 약수의 개수가 $9(=3 \\times 3)$개이므로 $\\Box$ 자리에는 소수 혹은 소수의 제곱 형태를 고려해야 한다. $3 \\times 3$ 구조를 만족하려면 다른 소수의 제곱수인 $2^2 = 4$가 들어갈 때 가장 작아진다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $5^2 \\times \\Box$의 약수의 개수가 $9(=3 \\times 3)$개이므로 $\\Box$ 자리에는 소수 혹은 소수의 제곱 형태를 고려해야 한다. $3 \\times 3$ 구조를 만족하려면 다른 소수의 제곱수인 $2^2 = 4$가 들어갈 때 가장 작아진다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -901,7 +957,9 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "[키포인트] $28 = 2^2 \\times 7$이므로 홀수 지수를 가진 소인수 7을 곱해주어야 제곱수가 된다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $28 = 2^2 \\times 7$이므로 홀수 지수를 가진 소인수 7을 곱해주어야 제곱수가 된다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -928,7 +986,9 @@ window.questionBank = [
     "content": "320의 약수의 개수를 구하여라.",
     "choices": [],
     "answer": "14개",
-    "solution": "[키포인트] $320 = 2^6 \\times 5^1$이므로, 약수의 개수는 $(6+1) \\times (1+1) = 14$(개)이다.\\n따라서 구하는 값은 14개이다."
+    "solution": "[키포인트] $320 = 2^6 \\times 5^1$이므로, 약수의 개수는 $(6+1) \\times (1+1) = 14$(개)이다.\\n따라서 구하는 값은 14개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -961,7 +1021,9 @@ window.questionBank = [
       "18"
     ],
     "answer": "②",
-    "solution": "[키포인트] $72 = 2^3 \\times 3^2$ 에서 지수가 홀수인 소인수는 2이다. 따라서 최소한 2를 곱해 지수를 짝수($2^4 \\times 3^2 = 12^2$)로 만들어 주어야 한다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $72 = 2^3 \\times 3^2$ 에서 지수가 홀수인 소인수는 2이다. 따라서 최소한 2를 곱해 지수를 짝수($2^4 \\times 3^2 = 12^2$)로 만들어 주어야 한다.\\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -994,7 +1056,9 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $720 = 2^4 \\times 3^2 \\times 5^1$이므로 나누어서 지수를 모두 짝수로 만드려면 홀수 지수를 가진 소인수인 5로 나누어 제거해야 한다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $720 = 2^4 \\times 3^2 \\times 5^1$이므로 나누어서 지수를 모두 짝수로 만드려면 홀수 지수를 가진 소인수인 5로 나누어 제거해야 한다.\\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -1022,7 +1086,9 @@ window.questionBank = [
     "content": "다음을 구하여라. ⑴ $3^2$ 의 약수 ⑵ $5^3$ 의 약수 ⑶ $3^2 \\times 5^3$ 의 약수의 개수",
     "choices": [],
     "answer": "⑴ 1, 3, 9 ⑵ 1, 5, 25, 125 ⑶ 12개",
-    "solution": "[키포인트] ⑶ 약수의 개수는 각각의 개수를 곱하므로 $(2+1) \\times (3+1) = 12$(개)이다.\\n따라서 구하는 값은 ⑴ 1, 3, 9 ⑵ 1, 5, 25, 125 ⑶ 12개이다."
+    "solution": "[키포인트] ⑶ 약수의 개수는 각각의 개수를 곱하므로 $(2+1) \\times (3+1) = 12$(개)이다.\\n따라서 구하는 값은 ⑴ 1, 3, 9 ⑵ 1, 5, 25, 125 ⑶ 12개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -1051,7 +1117,9 @@ window.questionBank = [
     "content": "다음 수에 자연수를 곱하여 어떤 자연수의 제곱이 되게 하려고 한다. 곱할 수 있는 가장 작은 자연수를 구하여라. ⑴ $2^4 \\times 3$ ⑵ 40",
     "choices": [],
     "answer": "⑴ 3 ⑵ 10",
-    "solution": "[키포인트] ⑵ $40 = 2^3 \\times 5$이므로 홀수 지수들을 짝수로 바꿀 수 있는 가장 작은 수인 $2 \\times 5 = 10$을 곱한다.\\n따라서 구하는 값은 ⑴ 3 ⑵ 10이다."
+    "solution": "[키포인트] ⑵ $40 = 2^3 \\times 5$이므로 홀수 지수들을 짝수로 바꿀 수 있는 가장 작은 수인 $2 \\times 5 = 10$을 곱한다.\\n따라서 구하는 값은 ⑴ 3 ⑵ 10이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1079,7 +1147,9 @@ window.questionBank = [
     "content": "다음 수를 소인수분해하고, 소인수를 모두 구하여라. ⑴ 60 ⑵ 46",
     "choices": [],
     "answer": "⑴ $2^2 \\times 3 \\times 5$, 소인수: 2, 3, 5 ⑵ $2 \\times 23$, 소인수: 2, 23",
-    "solution": "[키포인트] 합성수를 소수의 곱으로 끝까지 나누어 소인수분해한다.\\n조건 정리: 60과 46을 각각 소인수분해하고, 소인수의 종류를 구해야 한다.\\n풀이 방향: 2로 나누어지는 수부터 나누고, 남은 수가 소수인지 확인한다.\\n정석 풀이: $60=2\\times30=2\\times2\\times15=2^2\\times3\\times5$이므로 60의 소인수는 2, 3, 5이다. 또 $46=2\\times23$이고 23은 소수이므로 46의 소인수는 2, 23이다.\\n따라서 구하는 값은 ⑴ $2^2 \\times 3 \\times 5$, 소인수: 2, 3, 5 ⑵ $2 \\times 23$, 소인수: 2, 23이다."
+    "solution": "[키포인트] 합성수를 소수의 곱으로 끝까지 나누어 소인수분해한다.\\n조건 정리: 60과 46을 각각 소인수분해하고, 소인수의 종류를 구해야 한다.\\n풀이 방향: 2로 나누어지는 수부터 나누고, 남은 수가 소수인지 확인한다.\\n정석 풀이: $60=2\\times30=2\\times2\\times15=2^2\\times3\\times5$이므로 60의 소인수는 2, 3, 5이다. 또 $46=2\\times23$이고 23은 소수이므로 46의 소인수는 2, 23이다.\\n따라서 구하는 값은 ⑴ $2^2 \\times 3 \\times 5$, 소인수: 2, 3, 5 ⑵ $2 \\times 23$, 소인수: 2, 23이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 36,
@@ -1111,7 +1181,9 @@ window.questionBank = [
       "14"
     ],
     "answer": "④",
-    "solution": "[키포인트] 3의 거듭제곱 일의 자리는 $3 \\rightarrow 9 \\rightarrow 7 \\rightarrow 1$이 반복된다. $33 = 4 \\times 8 + 1$이므로 $3^{33}$의 일의 자리는 3이다. 4의 거듭제곱 일의 자리는 $4 \\rightarrow 6$이 반복된다. 지수 44는 짝수이므로 $4^{44}$의 일의 자리는 6이다. 따라서 두 일의 자리 숫자의 합은 $3 + 6 = 9$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 3의 거듭제곱 일의 자리는 $3 \\rightarrow 9 \\rightarrow 7 \\rightarrow 1$이 반복된다. $33 = 4 \\times 8 + 1$이므로 $3^{33}$의 일의 자리는 3이다. 4의 거듭제곱 일의 자리는 $4 \\rightarrow 6$이 반복된다. 지수 44는 짝수이므로 $4^{44}$의 일의 자리는 6이다. 따라서 두 일의 자리 숫자의 합은 $3 + 6 = 9$이다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1140,7 +1212,9 @@ window.questionBank = [
     "content": "세 자리의 자연수 $3a1$과 $4b5$를 더하면 $786$이 된다. 또한, $8c3$은 9로 나누어 떨어질 때, $a+b-c$의 값을 구하여라.",
     "choices": [],
     "answer": "1",
-    "solution": "[키포인트] 덧셈 세로식 $3a1 + 4b5 = 786$ 에서 일의 자리와 백의 자리는 들어맞으므로 십의 자리에서 $a+b = 8$임을 알 수 있다. $8c3$이 9의 배수가 되려면 각 자리의 합 $8+c+3 = 11+c$ 가 9의 배수여야 하므로 $c = 7$이다. 따라서 $a+b-c = 8-7 = 1$이다.\\n따라서 구하는 값은 1이다."
+    "solution": "[키포인트] 덧셈 세로식 $3a1 + 4b5 = 786$ 에서 일의 자리와 백의 자리는 들어맞으므로 십의 자리에서 $a+b = 8$임을 알 수 있다. $8c3$이 9의 배수가 되려면 각 자리의 합 $8+c+3 = 11+c$ 가 9의 배수여야 하므로 $c = 7$이다. 따라서 $a+b-c = 8-7 = 1$이다.\\n따라서 구하는 값은 1이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1169,7 +1243,9 @@ window.questionBank = [
     "content": "200과 280 사이의 자연수 중 2로도, 3으로도 나누어 떨어지는 자연수는 몇 개인지 구하여라.",
     "choices": [],
     "answer": "13개",
-    "solution": "[키포인트] 2와 3으로 모두 나누어 떨어지는 수는 6의 배수이다. 1부터 280까지의 6의 배수는 46개이고, 1부터 200까지의 6의 배수는 33개이므로 두 범위 사이의 개수는 $46 - 33 = 13$(개)이다.\\n따라서 구하는 값은 13개이다."
+    "solution": "[키포인트] 2와 3으로 모두 나누어 떨어지는 수는 6의 배수이다. 1부터 280까지의 6의 배수는 46개이고, 1부터 200까지의 6의 배수는 33개이므로 두 범위 사이의 개수는 $46 - 33 = 13$(개)이다.\\n따라서 구하는 값은 13개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1199,7 +1275,9 @@ window.questionBank = [
     "content": "자연수 $a$의 약수의 개수를 $P(a)$로 나타낼 때, $P(60) \\times P(a) = 36$을 만족하는 가장 작은 수 $a$의 값을 구하여라.",
     "choices": [],
     "answer": "4",
-    "solution": "[키포인트] $60 = 2^2 \\times 3 \\times 5$이므로 $P(60) = 3 \\times 2 \\times 2 = 12$이다. 식에 대입하면 $12 \\times P(a) = 36 \\rightarrow P(a) = 3$이다. 약수의 개수가 3개인 가장 작은 자연수는 소수의 제곱 형태이므로 $2^2 = 4$이다.\\n따라서 구하는 값은 4이다."
+    "solution": "[키포인트] $60 = 2^2 \\times 3 \\times 5$이므로 $P(60) = 3 \\times 2 \\times 2 = 12$이다. 식에 대입하면 $12 \\times P(a) = 36 \\rightarrow P(a) = 3$이다. 약수의 개수가 3개인 가장 작은 자연수는 소수의 제곱 형태이므로 $2^2 = 4$이다.\\n따라서 구하는 값은 4이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1230,7 +1308,9 @@ window.questionBank = [
     "content": "$\\frac{x}{100}$ 가 기약분수가 되도록 하는 100 이하의 자연수 $x$의 개수를 구하여라.",
     "choices": [],
     "answer": "40",
-    "solution": "[키포인트] $100 = 2^2 \\times 5^2$ 이므로 $\\frac{x}{100}$가 기약분수가 되려면 $x$는 100과 서로소여야 한다. 즉, 2의 배수도 아니고 5의 배수도 아니어야 한다. 100 이하에서 2의 배수는 50개, 5의 배수는 20개, 둘의 공배수(10의 배수)는 10개이므로 2 또는 5의 배수는 $50+20-10 = 60$(개)이다. 따라서 전체에서 제외하면 $100 - 60 = 40$(개)이다.\\n따라서 구하는 값은 40이다."
+    "solution": "[키포인트] $100 = 2^2 \\times 5^2$ 이므로 $\\frac{x}{100}$가 기약분수가 되려면 $x$는 100과 서로소여야 한다. 즉, 2의 배수도 아니고 5의 배수도 아니어야 한다. 100 이하에서 2의 배수는 50개, 5의 배수는 20개, 둘의 공배수(10의 배수)는 10개이므로 2 또는 5의 배수는 $50+20-10 = 60$(개)이다. 따라서 전체에서 제외하면 $100 - 60 = 40$(개)이다.\\n따라서 구하는 값은 40이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1258,7 +1338,9 @@ window.questionBank = [
     "content": "$180 \\times a = 120 \\times b = c^2$을 만족하는 가장 작은 자연수 $a , b, c$의 값을 구하여라.",
     "choices": [],
     "answer": "$a = 20, b = 30, c = 60$",
-    "solution": "[키포인트] $180=2^2\\times3^2\\times5$, $120=2^3\\times3\\times5$이다. 두 식이 같은 제곱수 $c^2$가 되려면 180과 120의 공배수 중 가장 작은 제곱수를 찾는다. 최소공배수 $360=2^3\\times3^2\\times5$에 $2\\times5$를 더 곱하면 $2^4\\times3^2\\times5^2=60^2$가 된다. 따라서 $c=60$, $a=60^2\\div180=20$, $b=60^2\\div120=30$이다.\\n따라서 구하는 값은 $a = 20, b = 30, c = 60$이다."
+    "solution": "[키포인트] $180=2^2\\times3^2\\times5$, $120=2^3\\times3\\times5$이다. 두 식이 같은 제곱수 $c^2$가 되려면 180과 120의 공배수 중 가장 작은 제곱수를 찾는다. 최소공배수 $360=2^3\\times3^2\\times5$에 $2\\times5$를 더 곱하면 $2^4\\times3^2\\times5^2=60^2$가 된다. 따라서 $c=60$, $a=60^2\\div180=20$, $b=60^2\\div120=30$이다.\\n따라서 구하는 값은 $a = 20, b = 30, c = 60$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1290,7 +1372,9 @@ window.questionBank = [
       "54"
     ],
     "answer": "③",
-    "solution": "[키포인트] 수 $2^2 \\times 3^3 = 108$의 약수들을 큰 수부터 나열하면 $108, 54, 36, 27, 18, 12 \\dots$ 순서이다. 따라서 다섯 번째로 큰 수는 18이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 수 $2^2 \\times 3^3 = 108$의 약수들을 큰 수부터 나열하면 $108, 54, 36, 27, 18, 12 \\dots$ 순서이다. 따라서 다섯 번째로 큰 수는 18이다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1320,7 +1404,9 @@ window.questionBank = [
     "content": "459의 뒤에 세 자리의 수를 붙여서 여섯 자리의 수를 만들려고 한다. 이 수가 4, 5, 9로 나누어 떨어지는 최대의 자연수가 되도록 할 때, 이 여섯 자리의 수를 구하여라.",
     "choices": [],
     "answer": "459900",
-    "solution": "[키포인트] 4와 5의 배수여야 하므로 마지막 자리는 0이 되고 끝의 두 자리는 4의 배수여야 한다. 즉 $459xy0$의 꼴이다. 이 수가 9의 배수가 되려면 각 자리 숫자의 합 $4+5+9+x+y+0 = 18+x+y$가 9의 배수여야 한다. 최대의 자연수를 만들어야 하므로 백의 자리 $x=9$를 대입하면 $y=0$일 때 조건을 만족하는 최대 배수 형태인 459900이 도출된다.\\n따라서 구하는 값은 459900이다."
+    "solution": "[키포인트] 4와 5의 배수여야 하므로 마지막 자리는 0이 되고 끝의 두 자리는 4의 배수여야 한다. 즉 $459xy0$의 꼴이다. 이 수가 9의 배수가 되려면 각 자리 숫자의 합 $4+5+9+x+y+0 = 18+x+y$가 9의 배수여야 한다. 최대의 자연수를 만들어야 하므로 백의 자리 $x=9$를 대입하면 $y=0$일 때 조건을 만족하는 최대 배수 형태인 459900이 도출된다.\\n따라서 구하는 값은 459900이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1352,7 +1438,9 @@ window.questionBank = [
       "72"
     ],
     "answer": "③",
-    "solution": "[키포인트] $\\frac{72}{x} = \\frac{2^3 \\times 3^2}{x}$ 가 제곱수가 되기 위해서는 지수가 홀수인 2를 나누어 없애거나 추가적인 완전제곱 인수를 나누어야 하므로 가능한 $x$의 형태는 $2, 2 \\times 3^2(18), 2^3(8), 2^3 \\times 3^2(72)$ 등이다. 따라서 ③ 12는 적당하지 않다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $\\frac{72}{x} = \\frac{2^3 \\times 3^2}{x}$ 가 제곱수가 되기 위해서는 지수가 홀수인 2를 나누어 없애거나 추가적인 완전제곱 인수를 나누어야 하므로 가능한 $x$의 형태는 $2, 2 \\times 3^2(18), 2^3(8), 2^3 \\times 3^2(72)$ 등이다. 따라서 ③ 12는 적당하지 않다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1381,7 +1469,9 @@ window.questionBank = [
     "content": "아래 $\\Box$ 안에 알맞은 수들의 곱을 구하여라. 12를 소인수분해하면 $2^{\\Box} \\times 3^{\\Box}$이므로 12의 약수의 개수는 $\\Box$이다.",
     "choices": [],
     "answer": "12",
-    "solution": "[키포인트] 12를 소인수분해하면 $2^2 \\times 3^1$이므로 첫 번째, 두 번째 $\\Box$에 들어갈 수는 각각 2와 1이다. 12의 약수의 개수는 $(2+1) \\times (1+1) = 6$이므로 세 번째 $\\Box$는 6이다. 따라서 알맞은 수들의 곱은 $2 \\times 1 \\times 6 = 12$이다.\\n따라서 구하는 값은 12이다."
+    "solution": "[키포인트] 12를 소인수분해하면 $2^2 \\times 3^1$이므로 첫 번째, 두 번째 $\\Box$에 들어갈 수는 각각 2와 1이다. 12의 약수의 개수는 $(2+1) \\times (1+1) = 6$이므로 세 번째 $\\Box$는 6이다. 따라서 알맞은 수들의 곱은 $2 \\times 1 \\times 6 = 12$이다.\\n따라서 구하는 값은 12이다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 46,
@@ -1409,7 +1499,9 @@ window.questionBank = [
     "content": "정육각형 ABCDEF의 각 꼭짓점 A, B, C, D, E, F에 1, 2, 3, 4, 5, 6, 7, …과 같이 숫자를 차례로 대응시킬 때, 꼭짓점 C에 10번째로 오는 숫자를 구하여라.",
     "choices": [],
     "answer": "57",
-    "solution": "[키포인트] 육각형의 꼭짓점 순서대로 숫자가 누적되므로 같은 꼭짓점 C에 돌아오는 수는 한 바퀴 돌 때마다 6씩 커진다. 첫 번째로 C에 오는 수는 3이고, 이후 $9, 15, 21 \\dots$ 과 같이 등차수열을 이룬다. 10번째로 오는 숫자는 $3 + 6 \\times (10 - 1) = 57$이다.\\n따라서 구하는 값은 57이다."
+    "solution": "[키포인트] 육각형의 꼭짓점 순서대로 숫자가 누적되므로 같은 꼭짓점 C에 돌아오는 수는 한 바퀴 돌 때마다 6씩 커진다. 첫 번째로 C에 오는 수는 3이고, 이후 $9, 15, 21 \\dots$ 과 같이 등차수열을 이룬다. 10번째로 오는 숫자는 $3 + 6 \\times (10 - 1) = 57$이다.\\n따라서 구하는 값은 57이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1442,7 +1534,9 @@ window.questionBank = [
       "$2 \\times 3 \\times 5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 보기의 약수 개수를 구하면 ① 8개, ② 6개, ③ 9개, ④ $2^3 \\times 9 = 2^3 \\times 3^2 \\rightarrow 4 \\times 3 = 12$개, ⑤ 8개이다. 따라서 ④번이 가장 많다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 각 보기의 약수 개수를 구하면 ① 8개, ② 6개, ③ 9개, ④ $2^3 \\times 9 = 2^3 \\times 3^2 \\rightarrow 4 \\times 3 = 12$개, ⑤ 8개이다. 따라서 ④번이 가장 많다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1474,7 +1568,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 각 그림의 규칙을 보면 아래쪽 두 숫자의 합이 위쪽 숫자의 제곱근 관계(또는 두 수의 합이 특정 제곱수)를 이룬다. <그림 1> $57 + 43 = 100 = 10^2$ <그림 2> $51 + 13 = 64 = 8^2$ <그림 3> $105 + \\Box = 12^2 = 144 \\rightarrow \\Box = 39$ 이다.\\n따라서 정답은 ④이다.",
-    "image": "assets/images/중1_1단원_소인수분해/q48.jpg"
+    "image": "assets/images/중1_1단원_소인수분해/q48.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1510,7 +1606,9 @@ window.questionBank = [
       "180"
     ],
     "answer": "④",
-    "solution": "[키포인트] 창문의 제어 횟수는 해당 번호의 약수의 개수(1을 제외한)에 의해 결정된다. 약수의 개수가 홀수인 수(즉, 제곱수)는 1번 학생이 행동하지 않았기 때문에 1을 제외하면 약수가 짝수 개가 남게 되어 '열고 닫는 복합 연산'이 최종적으로 '닫힘' 상태로 끝나게 된다. 보기 중 유일한 제곱수는 ④ $121 (= 11^2)$ 뿐이므로 닫혀 있게 된다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 창문의 제어 횟수는 해당 번호의 약수의 개수(1을 제외한)에 의해 결정된다. 약수의 개수가 홀수인 수(즉, 제곱수)는 1번 학생이 행동하지 않았기 때문에 1을 제외하면 약수가 짝수 개가 남게 되어 '열고 닫는 복합 연산'이 최종적으로 '닫힘' 상태로 끝나게 된다. 보기 중 유일한 제곱수는 ④ $121 (= 11^2)$ 뿐이므로 닫혀 있게 된다.\\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1540,7 +1638,9 @@ window.questionBank = [
     "content": "1에서 50까지의 번호가 차례로 붙여져 있는 창문 50개와 학생 50명이 있다. 이제 각 학생이 번호 순서에 따라 다음과 같은 행동을 한다. 1번 학생은 50개의 창문을 모두 닫는다. 2번 학생은 2의 배수의 창문을 모두 연다. 3번 학생은 3의 배수의 창문이 열려 있으면 닫고, 닫혀 있으면 연다. $\\vdots$ 50번 학생은 50의 배수의 창문에 열려 있으면 닫고, 닫혀 있으면 연다. 전체 창문 중 닫혀 있는 창문의 개수는 몇 개인지 구하여라.",
     "choices": [],
     "answer": "7개",
-    "solution": "[키포인트] 1번 학생이 모든 창문을 닫는 행동부터 시작하므로, 약수의 개수가 전체적으로 홀수 개 인 번호(제곱수 번호)만 최종적으로 닫힌 상태로 남는다. 50 이하의 제곱수는 $1, 4, 9, 16, 25, 36, 49$이므로 총 7개의 창문이 닫혀 있다.\\n따라서 구하는 값은 7개이다."
+    "solution": "[키포인트] 1번 학생이 모든 창문을 닫는 행동부터 시작하므로, 약수의 개수가 전체적으로 홀수 개 인 번호(제곱수 번호)만 최종적으로 닫힌 상태로 남는다. 50 이하의 제곱수는 $1, 4, 9, 16, 25, 36, 49$이므로 총 7개의 창문이 닫혀 있다.\\n따라서 구하는 값은 7개이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1574,6 +1674,8 @@ window.questionBank = [
       "$2^3 \\times 5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] ③번에 주어진 수를 대입하면 $2^2 \\times (2 \\times 7) = 2^3 \\times 7^1$이 되며, 이 수의 약수의 개수는 $(3+1) \\times (1+1) = 8$개가 되므로 12개를 만족할 수 없다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] ③번에 주어진 수를 대입하면 $2^2 \\times (2 \\times 7) = 2^3 \\times 7^1$이 되며, 이 수의 약수의 개수는 $(3+1) \\times (1+1) = 8$개가 되므로 12개를 만족할 수 없다.\\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

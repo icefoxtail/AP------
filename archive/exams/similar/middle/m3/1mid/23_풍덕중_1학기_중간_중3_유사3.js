@@ -23,7 +23,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": "[키포인트] 실수의 제곱근의 개수는 그 실수가 양수인지, 0인지, 음수인지에 따라 결정됨을 이용한다.\\n1단계: $b^2+4$의 부호를 판단한다. 실수의 성질에 의해 $b^2 \\ge 0$이므로 $b^2+4 \\ge 4 > 0$이다. 따라서 $f(b^2+4) = 2$이다.\\n2단계: $-|c|-1$의 부호를 판단한다. $|c| \\ge 0$이므로 $-|c| \\le 0$이며, $-|c|-1 \\le -1 < 0$이다. 따라서 $f(-|c|-1) = 0$이다.\\n3단계: 주어진 식에 대입하면 $f(a-2) + 2 + 0 = 3$이므로 $f(a-2) = 1$이다.\\n4단계: 제곱근의 개수가 1개인 경우는 그 실수가 0일 때뿐이므로 $a-2 = 0$에서 $a = 2$임을 알 수 있다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 실수의 제곱근의 개수는 그 실수가 양수인지, 0인지, 음수인지에 따라 결정됨을 이용한다.\\n1단계: $b^2+4$의 부호를 판단한다. 실수의 성질에 의해 $b^2 \\ge 0$이므로 $b^2+4 \\ge 4 > 0$이다. 따라서 $f(b^2+4) = 2$이다.\\n2단계: $-|c|-1$의 부호를 판단한다. $|c| \\ge 0$이므로 $-|c| \\le 0$이며, $-|c|-1 \\le -1 < 0$이다. 따라서 $f(-|c|-1) = 0$이다.\\n3단계: 주어진 식에 대입하면 $f(a-2) + 2 + 0 = 3$이므로 $f(a-2) = 1$이다.\\n4단계: 제곱근의 개수가 1개인 경우는 그 실수가 0일 때뿐이므로 $a-2 = 0$에서 $a = 2$임을 알 수 있다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -50,7 +54,11 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 무리수는 순환하지 않는 무한소수이며, 유리수와 무리수의 연산 결과를 정확히 판단한다.\\n1단계: 보기의 수를 각각 분석한다.\\nㄱ. $\\pi$(무리수) - $3.14$(유리수) = 무리수\\nㄴ. $\\sqrt{0.\\dot{4}} = \\sqrt{4/9} = 2/3$ (유리수)\\nㄷ. $(2-\\sqrt{3}) + (2+\\sqrt{3}) = 4$ (유리수)\\nㄹ. $\\sqrt{2} \\times \\sqrt{8} = \\sqrt{16} = 4$ (유리수)\\nㅁ. $\\sqrt{(-4)^2} \\div \\sqrt{3} = 4 / \\sqrt{3}$ (무리수)\\nㅂ. $3.141592$는 유한소수 (유리수)\\n2단계: 집합 $A$에 속하는 무리수는 ㄱ, ㅁ으로 총 2개이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 무리수는 순환하지 않는 무한소수이며, 유리수와 무리수의 연산 결과를 정확히 판단한다.\\n1단계: 보기의 수를 각각 분석한다.\\nㄱ. $\\pi$(무리수) - $3.14$(유리수) = 무리수\\nㄴ. $\\sqrt{0.\\dot{4}} = \\sqrt{4/9} = 2/3$ (유리수)\\nㄷ. $(2-\\sqrt{3}) + (2+\\sqrt{3}) = 4$ (유리수)\\nㄹ. $\\sqrt{2} \\times \\sqrt{8} = \\sqrt{16} = 4$ (유리수)\\nㅁ. $\\sqrt{(-4)^2} \\div \\sqrt{3} = 4 / \\sqrt{3}$ (무리수)\\nㅂ. $3.141592$는 유한소수 (유리수)\\n2단계: 집합 $A$에 속하는 무리수는 ㄱ, ㅁ으로 총 2개이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -74,7 +82,11 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈 성질을 이용하여 식을 정리하고 미지수를 구한다.\\n1단계: $A = \\sqrt{8a} = 2\\sqrt{2a}$이다. $2\\sqrt{2a} = 4\\sqrt{2}$에서 $\\sqrt{2a} = \\sqrt{8}$이므로 $a = 4$이다.\\n2단계: $B = 2\\sqrt{3b/2}$이다. $2\\sqrt{3b/2} = 3\\sqrt{6} = \\sqrt{54}$에서 $4 \\times 3b/2 = 54$, 즉 $6b = 54$이므로 $b = 9$이다.\\n3단계: $a+b = 4+9 = 13$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈 성질을 이용하여 식을 정리하고 미지수를 구한다.\\n1단계: $A = \\sqrt{8a} = 2\\sqrt{2a}$이다. $2\\sqrt{2a} = 4\\sqrt{2}$에서 $\\sqrt{2a} = \\sqrt{8}$이므로 $a = 4$이다.\\n2단계: $B = 2\\sqrt{3b/2}$이다. $2\\sqrt{3b/2} = 3\\sqrt{6} = \\sqrt{54}$에서 $4 \\times 3b/2 = 54$, 즉 $6b = 54$이므로 $b = 9$이다.\\n3단계: $a+b = 4+9 = 13$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -98,7 +110,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "[키포인트] 분모의 유리화와 분배법칙을 통해 값을 단순화한 후 대입한다.\\n1단계: $x = 3-\\sqrt{2}$로 유리화하고, $y = 2+\\sqrt{2}$로 전개한다.\\n2단계: $x-3 = -\\sqrt{2}$이고 $y-2 = \\sqrt{2}$이다.\\n3단계: $(x-3)(y-2) = (-\\sqrt{2})(\\sqrt{2}) = -2$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 분모의 유리화와 분배법칙을 통해 값을 단순화한 후 대입한다.\\n1단계: $x = 3-\\sqrt{2}$로 유리화하고, $y = 2+\\sqrt{2}$로 전개한다.\\n2단계: $x-3 = -\\sqrt{2}$이고 $y-2 = \\sqrt{2}$이다.\\n3단계: $(x-3)(y-2) = (-\\sqrt{2})(\\sqrt{2}) = -2$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -122,7 +138,11 @@ window.questionBank = [
       "13"
     ],
     "answer": "①",
-    "solution": "[키포인트] 다항식의 전개 원리를 이용하여 각 항의 계수와 미지수의 관계를 찾는다.\\n1단계: $(x+a)(bx-3) = bx^2 + (ab-3)x - 3a$이다.\\n2단계: $b=2, -3a=12$에서 $a=-4$이다.\\n3단계: $x$의 계수는 $ab-3 = (-4)(2)-3 = -11$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 다항식의 전개 원리를 이용하여 각 항의 계수와 미지수의 관계를 찾는다.\\n1단계: $(x+a)(bx-3) = bx^2 + (ab-3)x - 3a$이다.\\n2단계: $b=2, -3a=12$에서 $a=-4$이다.\\n3단계: $x$의 계수는 $ab-3 = (-4)(2)-3 = -11$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 6,
@@ -146,7 +166,11 @@ window.questionBank = [
       "$x+5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 인수를 갖는다는 것은 그 인수로 나누어떨어짐을 의미하며, 이를 통해 미지수를 구한다.\\n1단계: $x^2 - kx - 15 = (x-3)(x+5)$이므로 상수항을 비교하면 다른 한 인수는 $x+5$이다.\\n2단계: $(x-3)(x+5) = x^2+2x-15$이므로 $-k=2$에서 $k=-2$이다.\\n3단계: $k + (x+5) = -2 + x+5 = x+3$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 인수를 갖는다는 것은 그 인수로 나누어떨어짐을 의미하며, 이를 통해 미지수를 구한다.\\n1단계: $x^2 - kx - 15 = (x-3)(x+5)$이므로 상수항을 비교하면 다른 한 인수는 $x+5$이다.\\n2단계: $(x-3)(x+5) = x^2+2x-15$이므로 $-k=2$에서 $k=-2$이다.\\n3단계: $k + (x+5) = -2 + x+5 = x+3$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 7,
@@ -170,7 +194,11 @@ window.questionBank = [
       "7개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 제곱근이 자연수가 되기 위해서는 근호 안의 수가 어떤 자연수의 제곱(제곱수)이어야 한다.\\n1단계: $\\sqrt{18n} = \\sqrt{2 \\cdot 3^2 \\cdot n} = 3\\sqrt{2n}$이므로 $n = 2k^2$ 꼴이다.\\n2단계: 두 자리 자연수 $10 \\le 2k^2 < 100$을 만족하는 $k$를 찾는다.\\n3단계: $k=3, 4, 5, 6, 7$일 때 $n=18, 32, 50, 72, 98$로 총 5개이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 제곱근이 자연수가 되기 위해서는 근호 안의 수가 어떤 자연수의 제곱(제곱수)이어야 한다.\\n1단계: $\\sqrt{18n} = \\sqrt{2 \\cdot 3^2 \\cdot n} = 3\\sqrt{2n}$이므로 $n = 2k^2$ 꼴이다.\\n2단계: 두 자리 자연수 $10 \\le 2k^2 < 100$을 만족하는 $k$를 찾는다.\\n3단계: $k=3, 4, 5, 6, 7$일 때 $n=18, 32, 50, 72, 98$로 총 5개이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -194,7 +222,11 @@ window.questionBank = [
       "4개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 무리수의 정수 부분과 소수 부분의 성질을 이용하여 실수의 근삿값을 구한다.\\n1단계: $2 < \\sqrt{5} < 3$이므로 $0 < 3-\\sqrt{5} < 1$이다. ($x \\approx 0.76$)\\n2단계: $2 < \\sqrt{7} < 3$이므로 $1 < \\sqrt{7}-1 < 2$이다. ($y \\approx 1.65$)\\n3단계: $0.76 < n \\le 1.65$를 만족하는 정수 $n$은 1로 총 1개이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 무리수의 정수 부분과 소수 부분의 성질을 이용하여 실수의 근삿값을 구한다.\\n1단계: $2 < \\sqrt{5} < 3$이므로 $0 < 3-\\sqrt{5} < 1$이다. ($x \\approx 0.76$)\\n2단계: $2 < \\sqrt{7} < 3$이므로 $1 < \\sqrt{7}-1 < 2$이다. ($y \\approx 1.65$)\\n3단계: $0.76 < n \\le 1.65$를 만족하는 정수 $n$은 1로 총 1개이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -218,7 +250,11 @@ window.questionBank = [
       "128"
     ],
     "answer": "①",
-    "solution": "[키포인트] 도형의 넓이 공식을 이용하여 식을 세운 뒤 제곱근의 계산 성질을 활용한다.\\n1단계: 삼각형 넓이는 $1/2 \\cdot \\sqrt{24} \\cdot \\sqrt{a} = \\sqrt{6a}$이다.\\n2단계: 직사각형 넓이는 $\\sqrt{8} \\cdot \\sqrt{12} = \\sqrt{96} = 4\\sqrt{6}$이다.\\n3단계: $\\sqrt{6a} = 4\\sqrt{6}$에서 $6a = 96$이므로 $a=16$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 도형의 넓이 공식을 이용하여 식을 세운 뒤 제곱근의 계산 성질을 활용한다.\\n1단계: 삼각형 넓이는 $1/2 \\cdot \\sqrt{24} \\cdot \\sqrt{a} = \\sqrt{6a}$이다.\\n2단계: 직사각형 넓이는 $\\sqrt{8} \\cdot \\sqrt{12} = \\sqrt{96} = 4\\sqrt{6}$이다.\\n3단계: $\\sqrt{6a} = 4\\sqrt{6}$에서 $6a = 96$이므로 $a=16$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -242,7 +278,11 @@ window.questionBank = [
       "16"
     ],
     "answer": "④",
-    "solution": "[키포인트] 분모를 유리화하여 각 변수의 값을 단순화한 뒤, 대칭식의 변형 공식을 이용한다.\\n1단계: $x = 2+\\sqrt{3}, y = 2-\\sqrt{3}$으로 유리화한다.\\n2단계: $x+y=4, xy=1$이다.\\n3단계: $x^2+xy+y^2 = (x+y)^2 - xy = 16-1 = 15$이다.\\n∴ 정답: ④"
+    "solution": "[키포인트] 분모를 유리화하여 각 변수의 값을 단순화한 뒤, 대칭식의 변형 공식을 이용한다.\\n1단계: $x = 2+\\sqrt{3}, y = 2-\\sqrt{3}$으로 유리화한다.\\n2단계: $x+y=4, xy=1$이다.\\n3단계: $x^2+xy+y^2 = (x+y)^2 - xy = 16-1 = 15$이다.\\n∴ 정답: ④",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -266,7 +306,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 공통인수를 $(x-k)$라 하면, 각 식에 $x=k$를 대입했을 때의 값이 $0$이 됨을 이용한다.\\n1단계: 두 식을 빼면 $x^2-4=0$이므로 공통인수의 후보는 $x-2, x+2$이다.\\n2단계: $x=2$ 대입 시 $4+2a-6=0$에서 $a=1$, $x=-2$ 대입 시 $4-2a-6=0$에서 $a=-1$이다.\\n3단계: 양수 $a$이므로 $a=1$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 공통인수를 $(x-k)$라 하면, 각 식에 $x=k$를 대입했을 때의 값이 $0$이 됨을 이용한다.\\n1단계: 두 식을 빼면 $x^2-4=0$이므로 공통인수의 후보는 $x-2, x+2$이다.\\n2단계: $x=2$ 대입 시 $4+2a-6=0$에서 $a=1$, $x=-2$ 대입 시 $4-2a-6=0$에서 $a=-1$이다.\\n3단계: 양수 $a$이므로 $a=1$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 12,
@@ -290,7 +334,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 지수법칙 $x^n y^n = (xy)^n$을 이용하여 계산 과정을 단순화한다.\\n1단계: $\\{(\\sqrt{3}-\\sqrt{2})(\\sqrt{3}+\\sqrt{2})\\}^5 \\cdot (\\sqrt{3}+\\sqrt{2})^2$으로 변형한다.\\n2단계: $1^5 \\cdot (5+2\\sqrt{6}) = 5+2\\sqrt{6}$이다.\\n3단계: $a=5, b=2$이므로 $a-b=3$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 지수법칙 $x^n y^n = (xy)^n$을 이용하여 계산 과정을 단순화한다.\\n1단계: $\\{(\\sqrt{3}-\\sqrt{2})(\\sqrt{3}+\\sqrt{2})\\}^5 \\cdot (\\sqrt{3}+\\sqrt{2})^2$으로 변형한다.\\n2단계: $1^5 \\cdot (5+2\\sqrt{6}) = 5+2\\sqrt{6}$이다.\\n3단계: $a=5, b=2$이므로 $a-b=3$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -314,7 +362,11 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 전개된 이차식을 역으로 인수분해하여 미지수 $A, B, C, D$의 값을 각각 구한다.\\n1단계: $x^2-2x-15 = (x-5)(x+3)$에서 $A=3, B=5$이다.\\n2단계: $2x^2+x-3 = (2x+3)(x-1)$에서 $C=3, D=1$이다.\\n3단계: $A+B+C+D = 3+5+3+1 = 12$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 전개된 이차식을 역으로 인수분해하여 미지수 $A, B, C, D$의 값을 각각 구한다.\\n1단계: $x^2-2x-15 = (x-5)(x+3)$에서 $A=3, B=5$이다.\\n2단계: $2x^2+x-3 = (2x+3)(x-1)$에서 $C=3, D=1$이다.\\n3단계: $A+B+C+D = 3+5+3+1 = 12$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 14,
@@ -338,7 +390,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 이차식 $ax^2+bx+c$가 완전제곱식이 되려면 $b = \\pm 2\\sqrt{a}\\sqrt{c}$ 관계가 성립해야 한다.\\n1단계: $k-2 = \\pm 2 \\cdot 3 \\cdot 4 = \\pm 24$이다.\\n2단계: $k=26$ 또는 $k=-22$이다.\\n3단계: 합은 $26 + (-22) = 4$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 이차식 $ax^2+bx+c$가 완전제곱식이 되려면 $b = \\pm 2\\sqrt{a}\\sqrt{c}$ 관계가 성립해야 한다.\\n1단계: $k-2 = \\pm 2 \\cdot 3 \\cdot 4 = \\pm 24$이다.\\n2단계: $k=26$ 또는 $k=-22$이다.\\n3단계: 합은 $26 + (-22) = 4$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 15,
@@ -346,9 +402,9 @@ window.questionBank = [
     "category": "곱셈 공식의 활용",
     "originalCategory": "곱셈 공식의 활용",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-01",
-    "standardUnit": "실수와 그 계산",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
@@ -362,7 +418,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 구하려는 분수식을 통분하여 곱셈 공식의 변형 $a^2+b^2 = (a-b)^2+2ab$를 적용할 수 있는 형태로 만든다.\\n1단계: $\\frac{b}{a} + \\frac{a}{b} = \\frac{a^2+b^2}{ab}$이다.\\n2단계: $a^2+b^2 = (2\\sqrt{3})^2 + 2(2) = 16$이다.\\n3단계: $16/2 = 8$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 구하려는 분수식을 통분하여 곱셈 공식의 변형 $a^2+b^2 = (a-b)^2+2ab$를 적용할 수 있는 형태로 만든다.\\n1단계: $\\frac{b}{a} + \\frac{a}{b} = \\frac{a^2+b^2}{ab}$이다.\\n2단계: $a^2+b^2 = (2\\sqrt{3})^2 + 2(2) = 16$이다.\\n3단계: $16/2 = 8$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -370,9 +430,9 @@ window.questionBank = [
     "category": "곱셈 공식의 활용",
     "originalCategory": "곱셈 공식의 활용",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-01",
-    "standardUnit": "실수와 그 계산",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
@@ -386,7 +446,11 @@ window.questionBank = [
       "$24\\sqrt{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 주어진 이차식을 $x$로 나누어 $x+\\frac{1}{x}$의 값을 찾고, 이를 곱셈 공식의 변형에 활용한다.\\n1단계: $x+1/x = 6$이고 $(x-1/x)^2 = 36-4=32$이다.\\n2단계: $0 < x < 1$에서 $x-1/x < 0$이므로 $x-1/x = -4\\sqrt{2}$이다.\\n3단계: $x^2-1/x^2 = (x-1/x)(x+1/x) = -24\\sqrt{2}$이다.\\n∴ 정답: ①"
+    "solution": "[키포인트] 주어진 이차식을 $x$로 나누어 $x+\\frac{1}{x}$의 값을 찾고, 이를 곱셈 공식의 변형에 활용한다.\\n1단계: $x+1/x = 6$이고 $(x-1/x)^2 = 36-4=32$이다.\\n2단계: $0 < x < 1$에서 $x-1/x < 0$이므로 $x-1/x = -4\\sqrt{2}$이다.\\n3단계: $x^2-1/x^2 = (x-1/x)(x+1/x) = -24\\sqrt{2}$이다.\\n∴ 정답: ①",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -394,9 +458,9 @@ window.questionBank = [
     "category": "곱셈 공식의 활용",
     "originalCategory": "곱셈 공식의 활용",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-01",
-    "standardUnit": "실수와 그 계산",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
@@ -410,7 +474,11 @@ window.questionBank = [
       "$5^{12}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 합차 공식 $(a-b)(a+b) = a^2-b^2$을 적용하기 위해 수 $24$를 $5^2-1$로 변형한다.\\n1단계: $A = (5^2-1)(5^2+1)(5^4+1) = (5^4-1)(5^4+1) = 5^8-1$이다.\\n2단계: $A+1 = 5^8$이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] 합차 공식 $(a-b)(a+b) = a^2-b^2$을 적용하기 위해 수 $24$를 $5^2-1$로 변형한다.\\n1단계: $A = (5^2-1)(5^2+1)(5^4+1) = (5^4-1)(5^4+1) = 5^8-1$이다.\\n2단계: $A+1 = 5^8$이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -434,7 +502,11 @@ window.questionBank = [
       "9개"
     ],
     "answer": "③",
-    "solution": "[키포인트] $\\sqrt{A^2} = |A|$ 성질을 이용하여 절댓값 기호가 포함된 방정식으로 변환하여 푼다.\\n1단계: $|x-4| + |x+2| = 6$의 해는 $-2 \\le x \\le 4$이다.\\n2단계: 만족하는 정수는 $-2, -1, 0, 1, 2, 3, 4$로 총 7개이다.\\n∴ 정답: ③"
+    "solution": "[키포인트] $\\sqrt{A^2} = |A|$ 성질을 이용하여 절댓값 기호가 포함된 방정식으로 변환하여 푼다.\\n1단계: $|x-4| + |x+2| = 6$의 해는 $-2 \\le x \\le 4$이다.\\n2단계: 만족하는 정수는 $-2, -1, 0, 1, 2, 3, 4$로 총 7개이다.\\n∴ 정답: ③",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -458,7 +530,11 @@ window.questionBank = [
       "$2\\sqrt{5}+1$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주어진 $x$의 식을 변형하여 이차방정식을 만든 뒤, 이를 이용해 다항식의 차수를 낮춘다.\\n1단계: $2x-1=\\sqrt{5}$에서 $x^2-x-1=0$임을 도출한다.\\n2단계: 다항식을 $x^2-x-1$로 나누면 $x^3-2x^2+3x+1 = (x^2-x-1)(x-1) + 3x$이다.\\n3단계: $x^2-x-1=0$이므로 결과값은 $3x = 3(\\sqrt{5}+1)/2 = (3\\sqrt{5}+3)/2$이다.\\n∴ 정답: ②"
+    "solution": "[키포인트] 주어진 $x$의 식을 변형하여 이차방정식을 만든 뒤, 이를 이용해 다항식의 차수를 낮춘다.\\n1단계: $2x-1=\\sqrt{5}$에서 $x^2-x-1=0$임을 도출한다.\\n2단계: 다항식을 $x^2-x-1$로 나누면 $x^3-2x^2+3x+1 = (x^2-x-1)(x-1) + 3x$이다.\\n3단계: $x^2-x-1=0$이므로 결과값은 $3x = 3(\\sqrt{5}+1)/2 = (3\\sqrt{5}+3)/2$이다.\\n∴ 정답: ②",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -482,7 +558,11 @@ window.questionBank = [
       "131"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 연속하는 네 자연수의 곱에 1을 더한 식은 완전제곱식으로 인수분해됨을 이용한다.\\n1단계: $x(x+1)(x+2)(x+3)+1 = (x^2+3x+1)^2$이다.\\n2단계: $x=10$일 때 $(100+30+1)^2 = 131^2$이다.\\n3단계: 131은 소수이므로 가장 큰 소인수는 131이다.\\n∴ 정답: ⑤"
+    "solution": "[키포인트] 연속하는 네 자연수의 곱에 1을 더한 식은 완전제곱식으로 인수분해됨을 이용한다.\\n1단계: $x(x+1)(x+2)(x+3)+1 = (x^2+3x+1)^2$이다.\\n2단계: $x=10$일 때 $(100+30+1)^2 = 131^2$이다.\\n3단계: 131은 소수이므로 가장 큰 소인수는 131이다.\\n∴ 정답: ⑤",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -502,7 +582,11 @@ window.questionBank = [
     "content": "실수 $5-\\sqrt{3}$의 정수 부분을 $a$, 소수 부분을 $b$라 할 때, $\\frac{1}{b}$의 소수 부분을 구하시오.",
     "choices": [],
     "answer": "$\\sqrt{3}-1$",
-    "solution": "[키포인트] 무리수의 정수 부분은 범위를 통해 구하고, 소수 부분은 (전체 수 - 정수 부분)임을 이용한다.\\n1단계: $1 < \\sqrt{3} < 2$이므로 $a=3, b=2-\\sqrt{3}$이다.\\n2단계: $1/b = 1/(2-\\sqrt{3}) = 2+\\sqrt{3}$이다.\\n3단계: $2+\\sqrt{3}$의 정수 부분은 3이므로 소수 부분은 $(2+\\sqrt{3})-3 = \\sqrt{3}-1$이다.\\n∴ 정답: $\\sqrt{3}-1$"
+    "solution": "[키포인트] 무리수의 정수 부분은 범위를 통해 구하고, 소수 부분은 (전체 수 - 정수 부분)임을 이용한다.\\n1단계: $1 < \\sqrt{3} < 2$이므로 $a=3, b=2-\\sqrt{3}$이다.\\n2단계: $1/b = 1/(2-\\sqrt{3}) = 2+\\sqrt{3}$이다.\\n3단계: $2+\\sqrt{3}$의 정수 부분은 3이므로 소수 부분은 $(2+\\sqrt{3})-3 = \\sqrt{3}-1$이다.\\n∴ 정답: $\\sqrt{3}-1$",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -522,7 +606,11 @@ window.questionBank = [
     "content": "$x, y$에 대한 이차식 $x^2 + 3xy + 2y^2 + kx - 5y - 3$이 두 일차식의 곱으로 인수분해될 때, 상수 $k$의 값을 구하시오.",
     "choices": [],
     "answer": "$-2$",
-    "solution": "[키포인트] 다항식을 한 문자에 대하여 내림차순으로 정리한 후, 상수항 부분의 인수의 합이 일차항의 계수가 되어야 함을 이용한다.\\n1단계: $x^2+(3y+k)x+(2y+1)(y-3)$으로 정리한다.\\n2단계: $3y+k = (2y+1)+(y-3) = 3y-2$이다.\\n3단계: 따라서 $k=-2$이다.\\n∴ 정답: -2"
+    "solution": "[키포인트] 다항식을 한 문자에 대하여 내림차순으로 정리한 후, 상수항 부분의 인수의 합이 일차항의 계수가 되어야 함을 이용한다.\\n1단계: $x^2+(3y+k)x+(2y+1)(y-3)$으로 정리한다.\\n2단계: $3y+k = (2y+1)+(y-3) = 3y-2$이다.\\n3단계: 따라서 $k=-2$이다.\\n∴ 정답: -2",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 23,
@@ -542,7 +630,11 @@ window.questionBank = [
     "content": "$x < -3$일 때, 식 $\\sqrt{x^2+6x+9} + \\sqrt{x^2-2x+1}$을 간단히 한 결과가 $ax+b$이다. 두 상수 $a, b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
     "answer": "4",
-    "solution": "[키포인트] 완전제곱식 인수분해와 $\\sqrt{A^2} = |A|$ 성질을 이용하고, 주어진 범위에 따른 부호를 정확히 판단한다.\\n1단계: $|x+3| + |x-1|$로 변환한다.\\n2단계: $x < -3$일 때 $x+3 < 0, x-1 < 0$이다.\\n3단계: $-(x+3)-(x-1) = -2x-2$이다. $a=-2, b=-2$이므로 $ab=4$이다.\\n∴ 정답: 4"
+    "solution": "[키포인트] 완전제곱식 인수분해와 $\\sqrt{A^2} = |A|$ 성질을 이용하고, 주어진 범위에 따른 부호를 정확히 판단한다.\\n1단계: $|x+3| + |x-1|$로 변환한다.\\n2단계: $x < -3$일 때 $x+3 < 0, x-1 < 0$이다.\\n3단계: $-(x+3)-(x-1) = -2x-2$이다. $a=-2, b=-2$이므로 $ab=4$이다.\\n∴ 정답: 4",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -562,6 +654,10 @@ window.questionBank = [
     "content": "$\\sqrt{28 - 2x}$가 정수가 되도록 하는 모든 자연수 $x$의 값들의 합을 구하시오.",
     "choices": [],
     "answer": "32",
-    "solution": "[키포인트] 제곱근이 정수가 되기 위해서는 근호 안의 수가 0 또는 어떤 정수의 제곱(제곱수)이어야 한다.\\n1단계: $28-2x = k^2$ ($k$는 짝수) 꼴을 만족해야 한다.\\n2단계: $28-2x$는 $0, 4, 16$이 가능하다.\\n3단계: $x = 14, 12, 6$이므로 합은 32이다.\\n∴ 정답: 32"
+    "solution": "[키포인트] 제곱근이 정수가 되기 위해서는 근호 안의 수가 0 또는 어떤 정수의 제곱(제곱수)이어야 한다.\\n1단계: $28-2x = k^2$ ($k$는 짝수) 꼴을 만족해야 한다.\\n2단계: $28-2x$는 $0, 4, 16$이 가능하다.\\n3단계: $x = 14, 12, 6$이므로 합은 32이다.\\n∴ 정답: 32",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

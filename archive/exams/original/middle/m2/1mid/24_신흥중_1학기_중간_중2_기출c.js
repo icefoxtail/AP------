@@ -1,3 +1,4 @@
+window.examTitle = "24_신흥중_1학기_중간_중2_기출c";
 window.questionBank = [
   {
     "id": 1,
@@ -29,7 +30,11 @@ window.questionBank = [
       "정식 : 내 키나 몸무게 같은 것은 소수로 표현해요."
     ],
     "answer": "②",
-    "solution": "[키포인트] 수의 역사와 실생활 활용 사례를 구분한다.\n(1) 분수는 고대 이집트 시대부터 사용되었으나, 소수는 16세기 네덜란드의 스테빈에 의해 체계화되어 분수보다 늦게 발명되었다.\n(2) 음식 레시피에서는 주로 $\\dfrac{1}{2}$컵, $\\dfrac{2}{3}$스푼 등 분수 표현이 소수보다 더 직관적이고 빈번하게 사용된다.\n∴ 정답: ②"
+    "solution": "[키포인트] 수의 역사와 실생활 활용 사례를 구분한다.\n(1) 분수는 고대 이집트 시대부터 사용되었으나, 소수는 16세기 네덜란드의 스테빈에 의해 체계화되어 분수보다 늦게 발명되었다.\n(2) 음식 레시피에서는 주로 $\\dfrac{1}{2}$컵, $\\dfrac{2}{3}$스푼 등 분수 표현이 소수보다 더 직관적이고 빈번하게 사용된다.\n∴ 정답: ②",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -59,7 +64,11 @@ window.questionBank = [
       "$\\dfrac{45}{2^2 \\times 3^2 \\times 5^2}$"
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 기약분수로 나타냈을 때, 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.\n① $\\dfrac{14}{2^2 \\times 7} = \\dfrac{2}{2^2} = \\dfrac{1}{2}$ (유한소수)\n⑤ $\\dfrac{45}{2^2 \\times 3^2 \\times 5^2} = \\dfrac{5}{2^2 \\times 5^2} = \\dfrac{1}{2^2 \\times 5}$ (유한소수)\n∴ 정답: ①, ⑤"
+    "solution": "[키포인트] 기약분수로 나타냈을 때, 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.\n① $\\dfrac{14}{2^2 \\times 7} = \\dfrac{2}{2^2} = \\dfrac{1}{2}$ (유한소수)\n⑤ $\\dfrac{45}{2^2 \\times 3^2 \\times 5^2} = \\dfrac{5}{2^2 \\times 5^2} = \\dfrac{1}{2^2 \\times 5}$ (유한소수)\n∴ 정답: ①, ⑤",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -90,7 +99,11 @@ window.questionBank = [
       "$2.345234523452\\dots$, 마디: $2345$, 표현: $2.\\dot{3}45\\dot{2}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 순환마디는 소수점 아래에서 일정하게 반복되는 최소 부분이며, 양 끝 숫자 위에 점을 찍어 표현한다.\n(1) $30.374374\\dots$에서 소수점 아래 반복되는 마디는 $374$이다.\n(2) 표현 시 마디의 시작과 끝에만 점을 찍으므로 $30.\\dot{3}7\\dot{4}$가 옳다.\n∴ 정답: ③"
+    "solution": "[키포인트] 순환마디는 소수점 아래에서 일정하게 반복되는 최소 부분이며, 양 끝 숫자 위에 점을 찍어 표현한다.\n(1) $30.374374\\dots$에서 소수점 아래 반복되는 마디는 $374$이다.\n(2) 표현 시 마디의 시작과 끝에만 점을 찍으므로 $30.\\dot{3}7\\dot{4}$가 옳다.\n∴ 정답: ③",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -120,7 +133,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "[키포인트] 순환소수의 마디 개수를 이용하여 $n$번째 자리 숫자를 찾는다.\n(1) $\\dfrac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$ 이므로 순환마디는 $1, 8, 5$의 3개이다.\n(2) $49 \\div 3 = 16 \\dots 1$ 이므로 49번째 숫자는 마디의 첫 번째 숫자인 $1$이다.\n∴ 정답: ①"
+    "solution": "[키포인트] 순환소수의 마디 개수를 이용하여 $n$번째 자리 숫자를 찾는다.\n(1) $\\dfrac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$ 이므로 순환마디는 $1, 8, 5$의 3개이다.\n(2) $49 \\div 3 = 16 \\dots 1$ 이므로 49번째 숫자는 마디의 첫 번째 숫자인 $1$이다.\n∴ 정답: ①",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -153,7 +170,11 @@ window.questionBank = [
       "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
     ],
     "answer": "①, ④",
-    "solution": "[키포인트] 유리수는 분수 $\\dfrac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수이다.\n(1) 모든 유한소수와 순환소수는 분수로 나타낼 수 있으므로 유리수이다.\n(2) 기약분수의 분모에 $2$나 $5$ 이외의 소인수가 있으면 순환소수가 되므로 $7$이 있으면 순환소수이다.\n∴ 정답: ①, ④"
+    "solution": "[키포인트] 유리수는 분수 $\\dfrac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수이다.\n(1) 모든 유한소수와 순환소수는 분수로 나타낼 수 있으므로 유리수이다.\n(2) 기약분수의 분모에 $2$나 $5$ 이외의 소인수가 있으면 순환소수가 되므로 $7$이 있으면 순환소수이다.\n∴ 정답: ①, ④",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -185,7 +206,11 @@ window.questionBank = [
       "㉣ - ㉥"
     ],
     "answer": "④",
-    "solution": "[키포인트] 소수점 아래 부분이 같은 두 순환소수를 빼야 정수가 된다.\n(1) $x = 0.132132\\dots$ (㉠) 일 때, 소수점 아래가 $.132132\\dots$인 또 다른 식은 $1000x = 132.132132\\dots$ (㉥) 이다.\n(2) $1000x - x = 132.\\dot{1}3\\dot{2} - 0.\\dot{1}3\\dot{2} = 132$ (정수) 이므로 ㉥ - ㉠이 적절하다.\n∴ 정답: ④"
+    "solution": "[키포인트] 소수점 아래 부분이 같은 두 순환소수를 빼야 정수가 된다.\n(1) $x = 0.132132\\dots$ (㉠) 일 때, 소수점 아래가 $.132132\\dots$인 또 다른 식은 $1000x = 132.132132\\dots$ (㉥) 이다.\n(2) $1000x - x = 132.\\dot{1}3\\dot{2} - 0.\\dot{1}3\\dot{2} = 132$ (정수) 이므로 ㉥ - ㉠이 적절하다.\n∴ 정답: ④",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -215,7 +240,11 @@ window.questionBank = [
       "$a^2 \\div a^2 = 0$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 지수법칙 $a^m \\times a^n = a^{m+n}, (a^m)^n = a^{mn}, (ab)^n = a^n b^n$을 적용한다.\n(1) $(-ab^2)^3 = (-1)^3 a^3 (b^2)^3 = -a^3 b^6$ 이므로 ④는 옳다.\n(2) 타항목 오류: ① $1/a^3$, ② $a^5$, ③ $b^6/8a^9$, ⑤ $1$\n∴ 정답: ④"
+    "solution": "[키포인트] 지수법칙 $a^m \\times a^n = a^{m+n}, (a^m)^n = a^{mn}, (ab)^n = a^n b^n$을 적용한다.\n(1) $(-ab^2)^3 = (-1)^3 a^3 (b^2)^3 = -a^3 b^6$ 이므로 ④는 옳다.\n(2) 타항목 오류: ① $1/a^3$, ② $a^5$, ③ $b^6/8a^9$, ⑤ $1$\n∴ 정답: ④",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -246,7 +275,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "①",
-    "solution": "[키포인트] 지수법칙 $(\\dfrac{A}{B})^n = \\dfrac{A^n}{B^n}$을 이용한다.\n(1) $(\\dfrac{x^a}{3y^{2b}})^4 = \\dfrac{x^{4a}}{3^4 y^{8b}} = \\dfrac{x^{4a}}{81 y^{8b}}$\n(2) 좌변과 우변의 지수를 비교하면 $4a = 8 \\implies a=2$, $8b = 24 \\implies b=3$ 이다. 따라서 $a+b = 2+3 = 5$이다.\n∴ 정답: ①"
+    "solution": "[키포인트] 지수법칙 $(\\dfrac{A}{B})^n = \\dfrac{A^n}{B^n}$을 이용한다.\n(1) $(\\dfrac{x^a}{3y^{2b}})^4 = \\dfrac{x^{4a}}{3^4 y^{8b}} = \\dfrac{x^{4a}}{81 y^{8b}}$\n(2) 좌변과 우변의 지수를 비교하면 $4a = 8 \\implies a=2$, $8b = 24 \\implies b=3$ 이다. 따라서 $a+b = 2+3 = 5$이다.\n∴ 정답: ①",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -254,8 +287,8 @@ window.questionBank = [
     "category": "소인수분해와 지수",
     "originalCategory": "소인수분해와 지수",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-01",
-    "standardUnit": "수와 식",
+    "standardUnitKey": "M1-01",
+    "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -278,7 +311,11 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "[키포인트] $1$부터 $12$까지의 곱에 포함된 소인수 $2$의 총 개수를 구한다.\n(1) 짝수들의 소인수 $2$ 추출: $2(1개), 4(2^2, 2개), 6(1개), 8(2^3, 3개), 10(1개), 12(2^2\\times 3, 2개)$\n(2) 지수의 합: $1 + 2 + 1 + 3 + 1 + 2 = 10$. 따라서 $a=10$이다.\n∴ 정답: ③"
+    "solution": "[키포인트] $1$부터 $12$까지의 곱에 포함된 소인수 $2$의 총 개수를 구한다.\n(1) 짝수들의 소인수 $2$ 추출: $2(1개), 4(2^2, 2개), 6(1개), 8(2^3, 3개), 10(1개), 12(2^2\\times 3, 2개)$\n(2) 지수의 합: $1 + 2 + 1 + 3 + 1 + 2 = 10$. 따라서 $a=10$이다.\n∴ 정답: ③",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -308,7 +345,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $2^k \\times 5^k = 10^k$를 이용하여 $10^n$ 꼴을 만든다.\n(1) $5^4 \\times 20^6 = 5^4 \\times (2^2 \\times 5)^6 = 5^4 \\times 2^{12} \\times 5^6 = 2^{12} \\times 5^{10}$\n(2) $2^2 \\times (2^{10} \\times 5^{10}) = 4 \\times 10^{10}$. 따라서 $a=4, n=10 \\implies a+n=14$이다.\n∴ 정답: ⑤"
+    "solution": "[키포인트] $2^k \\times 5^k = 10^k$를 이용하여 $10^n$ 꼴을 만든다.\n(1) $5^4 \\times 20^6 = 5^4 \\times (2^2 \\times 5)^6 = 5^4 \\times 2^{12} \\times 5^6 = 2^{12} \\times 5^{10}$\n(2) $2^2 \\times (2^{10} \\times 5^{10}) = 4 \\times 10^{10}$. 따라서 $a=4, n=10 \\implies a+n=14$이다.\n∴ 정답: ⑤",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -338,7 +379,11 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "[키포인트] 밑을 소인수분해하여 지수법칙을 적용한다.\n(1) $\\dfrac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\dfrac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a=12$\n(2) $\\dfrac{3 \\cdot 9^6}{3 \\cdot 3^4} = \\dfrac{3^{12}}{3^4} = 3^8 \\implies b=8$. 따라서 $a-b = 12-8 = 4$이다.\n∴ 정답: ②"
+    "solution": "[키포인트] 밑을 소인수분해하여 지수법칙을 적용한다.\n(1) $\\dfrac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\dfrac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a=12$\n(2) $\\dfrac{3 \\cdot 9^6}{3 \\cdot 3^4} = \\dfrac{3^{12}}{3^4} = 3^8 \\implies b=8$. 따라서 $a-b = 12-8 = 4$이다.\n∴ 정답: ②",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -368,7 +413,11 @@ window.questionBank = [
       "$-6x^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 계수는 계수끼리, 문자는 문자끼리 지수법칙을 적용하여 계산한다.\n(1) $(-8x^6) \\times (-9x) \\div 12x^4 = (72x^7) \\div 12x^4$\n(2) $(72 \\div 12) \\times (x^7 \\div x^4) = 6x^3$\n∴ 정답: ③"
+    "solution": "[키포인트] 계수는 계수끼리, 문자는 문자끼리 지수법칙을 적용하여 계산한다.\n(1) $(-8x^6) \\times (-9x) \\div 12x^4 = (72x^7) \\div 12x^4$\n(2) $(72 \\div 12) \\times (x^7 \\div x^4) = 6x^3$\n∴ 정답: ③",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -398,7 +447,11 @@ window.questionBank = [
       "$-6x^3y$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $A$를 남기고 나머지 항을 등호 반대편으로 넘겨 계산한다.\n(1) $A = 4xy \\times (-3x^2y^3) \\div 2xy^2$\n(2) $A = (-12x^3y^4) \\div 2xy^2 = -6x^2y^2$\n∴ 정답: ③"
+    "solution": "[키포인트] $A$를 남기고 나머지 항을 등호 반대편으로 넘겨 계산한다.\n(1) $A = 4xy \\times (-3x^2y^3) \\div 2xy^2$\n(2) $A = (-12x^3y^4) \\div 2xy^2 = -6x^2y^2$\n∴ 정답: ③",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -429,7 +482,11 @@ window.questionBank = [
       "이 다항식은 일차식이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 다항식을 동류항끼리 정리한 후 각 용어의 정의를 확인한다.\n(1) 정리: $(3x^2 - 2x^2) + \\dfrac{1}{3}x + (-2 - 1) = x^2 + \\dfrac{1}{3}x - 3$\n(2) $x^2$항이 존재하므로 이차식이며, $x$의 계수는 $\\dfrac{1}{3}$이 맞다.\n∴ 정답: ③"
+    "solution": "[키포인트] 다항식을 동류항끼리 정리한 후 각 용어의 정의를 확인한다.\n(1) 정리: $(3x^2 - 2x^2) + \\dfrac{1}{3}x + (-2 - 1) = x^2 + \\dfrac{1}{3}x - 3$\n(2) $x^2$항이 존재하므로 이차식이며, $x$의 계수는 $\\dfrac{1}{3}$이 맞다.\n∴ 정답: ③",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -459,7 +516,11 @@ window.questionBank = [
       "$2x^2-3x+11$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 잘못된 식을 통해 어떤 식을 구한 후, 바른 식을 계산한다.\n(1) 어떤 식 $A = (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\n(2) 바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\n∴ 정답: ④"
+    "solution": "[키포인트] 잘못된 식을 통해 어떤 식을 구한 후, 바른 식을 계산한다.\n(1) 어떤 식 $A = (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\n(2) 바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\n∴ 정답: ④",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -489,7 +550,11 @@ window.questionBank = [
       "$-2x+5y+3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소괄호, 중괄호 순으로 괄호를 풀고 동류항끼리 계산한다.\n(1) 중괄호 안: $2x-y+x-4y-3 = 3x-5y-3$\n(2) 전체 식: $x - (3x-5y-3) = x-3x+5y+3 = -2x+5y+3$\n∴ 정답: ⑤"
+    "solution": "[키포인트] 소괄호, 중괄호 순으로 괄호를 풀고 동류항끼리 계산한다.\n(1) 중괄호 안: $2x-y+x-4y-3 = 3x-5y-3$\n(2) 전체 식: $x - (3x-5y-3) = x-3x+5y+3 = -2x+5y+3$\n∴ 정답: ⑤",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -497,9 +562,9 @@ window.questionBank = [
     "category": "부등식의 해",
     "originalCategory": "부등식의 해",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -520,7 +585,11 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "③",
-    "solution": "[키포인트] $x=2$를 각 부등식에 대입하여 부등호가 성립하는지 확인한다.\n(1) ㄱ: $2>5$(거짓), ㄴ: $3 \\ge 3$(참), ㄷ: $1>1$(거짓), ㄹ: $4 \\ge 3$(참)\n(2) 따라서 참인 것은 ㄴ, ㄹ이다.\n∴ 정답: ③"
+    "solution": "[키포인트] $x=2$를 각 부등식에 대입하여 부등호가 성립하는지 확인한다.\n(1) ㄱ: $2>5$(거짓), ㄴ: $3 \\ge 3$(참), ㄷ: $1>1$(거짓), ㄹ: $4 \\ge 3$(참)\n(2) 따라서 참인 것은 ㄴ, ㄹ이다.\n∴ 정답: ③",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -528,9 +597,9 @@ window.questionBank = [
     "category": "부등식의 활용",
     "originalCategory": "부등식의 활용",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-03",
+    "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -553,7 +622,11 @@ window.questionBank = [
       "키 $120\\mathrm{cm}$ 이하는 이 놀이기구를 이용할 수 없습니다. ($x$: 놀이기구 이용 가능 키) $\\implies x \\ge 120$"
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 실생활 용어(최소, 최고, 미만, 이하)를 부등호로 올바르게 변환한다.\n(1) ① 최소 거리가 50이면 $x \\ge 50$이어야 한다.\n(2) ⑤ 120 이하가 이용 금지면 이용 가능 키는 120 초과($x > 120$)여야 한다.\n∴ 정답: ①, ⑤"
+    "solution": "[키포인트] 실생활 용어(최소, 최고, 미만, 이하)를 부등호로 올바르게 변환한다.\n(1) ① 최소 거리가 50이면 $x \\ge 50$이어야 한다.\n(2) ⑤ 120 이하가 이용 금지면 이용 가능 키는 120 초과($x > 120$)여야 한다.\n∴ 정답: ①, ⑤",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -573,7 +646,11 @@ window.questionBank = [
     "content": "$\\dfrac{7}{30}$ 에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하시오.",
     "choices": [],
     "answer": "$3, 6, 9$",
-    "solution": "[키포인트] 분모를 소인수분해하여 $2$와 $5$ 이외의 인수를 제거하는 $a$를 찾는다.\n(1) $\\dfrac{7}{30} = \\dfrac{7}{2 \\cdot 3 \\cdot 5}$ 이므로 유한소수가 되려면 $a$는 $3$의 배수여야 한다.\n(2) $a$가 한 자리의 자연수이므로 $3, 6, 9$이다.\n∴ 정답: $3, 6, 9$"
+    "solution": "[키포인트] 분모를 소인수분해하여 $2$와 $5$ 이외의 인수를 제거하는 $a$를 찾는다.\n(1) $\\dfrac{7}{30} = \\dfrac{7}{2 \\cdot 3 \\cdot 5}$ 이므로 유한소수가 되려면 $a$는 $3$의 배수여야 한다.\n(2) $a$가 한 자리의 자연수이므로 $3, 6, 9$이다.\n∴ 정답: $3, 6, 9$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -593,7 +670,11 @@ window.questionBank = [
     "content": "순환소수 $0.1\\dot{4}\\dot{7}$ 을 기약분수로 나타내시오.",
     "choices": [],
     "answer": "$\\dfrac{73}{495}$",
-    "solution": "[키포인트] 순환마디의 개수만큼 $9$를 쓰고, 순환하지 않는 소수점 아래 자리수만큼 $0$을 분모에 쓴다.\n(1) $0.1\\dot{4}\\dot{7} = \\dfrac{147-1}{990} = \\dfrac{146}{990}$\n(2) 기약분수로 약분하면 $\\dfrac{73}{495}$이다.\n∴ 정답: $\\dfrac{73}{495}$"
+    "solution": "[키포인트] 순환마디의 개수만큼 $9$를 쓰고, 순환하지 않는 소수점 아래 자리수만큼 $0$을 분모에 쓴다.\n(1) $0.1\\dot{4}\\dot{7} = \\dfrac{147-1}{990} = \\dfrac{146}{990}$\n(2) 기약분수로 약분하면 $\\dfrac{73}{495}$이다.\n∴ 정답: $\\dfrac{73}{495}$",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -613,7 +694,11 @@ window.questionBank = [
     "content": "$x+2y - \\dfrac{x-3y}{2}$ 를 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\dfrac{7}{4}$",
-    "solution": "[키포인트] 분수 형태의 다항식을 통분하여 계수를 분리한다.\n(1) $\\dfrac{2x+4y-x+3y}{2} = \\dfrac{x+7y}{2} = \\dfrac{1}{2}x + \\dfrac{7}{2}y$\n(2) $a = \\dfrac{1}{2}, b = \\dfrac{7}{2} \\implies ab = \\dfrac{7}{4}$\n∴ 정답: $\\dfrac{7}{4}$"
+    "solution": "[키포인트] 분수 형태의 다항식을 통분하여 계수를 분리한다.\n(1) $\\dfrac{2x+4y-x+3y}{2} = \\dfrac{x+7y}{2} = \\dfrac{1}{2}x + \\dfrac{7}{2}y$\n(2) $a = \\dfrac{1}{2}, b = \\dfrac{7}{2} \\implies ab = \\dfrac{7}{4}$\n∴ 정답: $\\dfrac{7}{4}$",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -633,7 +718,11 @@ window.questionBank = [
     "content": "$(6xy^2 - 8x^2y) \\div \\dfrac{2}{5}xy - \\dfrac{3xy - 9xy^2}{3xy}$ 을 계산하시오.",
     "choices": [],
     "answer": "$-20x+18y-1$",
-    "solution": "[키포인트] 나누기를 곱하기로 바꾸고 분배법칙을 이용한다.\n(1) $(6xy^2 - 8x^2y) \\cdot \\dfrac{5}{2xy} = 15y - 20x$\n(2) $15y - 20x - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\n∴ 정답: $-20x+18y-1$"
+    "solution": "[키포인트] 나누기를 곱하기로 바꾸고 분배법칙을 이용한다.\n(1) $(6xy^2 - 8x^2y) \\cdot \\dfrac{5}{2xy} = 15y - 20x$\n(2) $15y - 20x - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\n∴ 정답: $-20x+18y-1$",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -653,6 +742,10 @@ window.questionBank = [
     "content": "$a \\ge b$ 일 때, 다음 부등식이 성립함을 부등식의 성질을 이용하여 설명하시오.\\n$-5a+3 \\le -5b+3$",
     "choices": [],
     "answer": "성립함",
-    "solution": "[키포인트] 부등식의 양변에 음수를 곱하면 부등호 방향이 바뀜을 이용한다.\n(1) $a \\ge b$의 양변에 $-5$를 곱하면 $-5a \\le -5b$이다.\n(2) 양변에 $3$을 더하면 $-5a+3 \\le -5b+3$이 되어 성립한다.\n∴ 정답: 성립함"
+    "solution": "[키포인트] 부등식의 양변에 음수를 곱하면 부등호 방향이 바뀜을 이용한다.\n(1) $a \\ge b$의 양변에 $-5$를 곱하면 $-5a \\le -5b$이다.\n(2) 양변에 $3$을 더하면 $-5a+3 \\le -5b+3$이 되어 성립한다.\n∴ 정답: 성립함",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

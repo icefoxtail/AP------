@@ -24,7 +24,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 대응 그림에서 함수값과 역함수값을 각각 읽는다.\\n조건 정리: 그림에서 $f(2)=3$이고, $f(1)=5$이므로 $f^{-1}(5)=1$이다.\\n정석 풀이: $f(2)+f^{-1}(5)=3+1=4$이다.\\n따라서 정답은 ②이다.",
-    "image": "assets/images/21_복성고_2학기_기말_고1_기출/q1.png"
+    "image": "assets/images/21_복성고_2학기_기말_고1_기출/q1.png",
+    "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+    "subUnit": "역함수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -48,7 +52,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 합성함수는 안쪽 함수부터 계산한다.\\n조건 정리: 먼저 $f(-2)$를 구한 뒤 그 값을 $g$에 대입한다.\\n정석 풀이: $f(-2)=\\dfrac12\\cdot4-1=1$이고, $g(1)=3\\cdot1+1=4$이다. 따라서 $(g\\circ f)(-2)=4$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 합성함수는 안쪽 함수부터 계산한다.\\n조건 정리: 먼저 $f(-2)$를 구한 뒤 그 값을 $g$에 대입한다.\\n정석 풀이: $f(-2)=\\dfrac12\\cdot4-1=1$이고, $g(1)=3\\cdot1+1=4$이다. 따라서 $(g\\circ f)(-2)=4$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+    "subUnit": "합성함수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -72,7 +80,11 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분모가 $0$이 되는 값이 수직점근선이고, 분자와 분모의 최고차항 계수의 비가 수평점근선이다.\\n정석 풀이: $2x-3=0$에서 $x=\\dfrac32$이므로 $a=\\dfrac32$이다. 또한 최고차항 계수의 비는 $\\dfrac{-4}{2}=-2$이므로 $b=-2$이다. 따라서 $ab=\\dfrac32\\cdot(-2)=-3$이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 분모가 $0$이 되는 값이 수직점근선이고, 분자와 분모의 최고차항 계수의 비가 수평점근선이다.\\n정석 풀이: $2x-3=0$에서 $x=\\dfrac32$이므로 $a=\\dfrac32$이다. 또한 최고차항 계수의 비는 $\\dfrac{-4}{2}=-2$이므로 $b=-2$이다. 따라서 $ab=\\dfrac32\\cdot(-2)=-3$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+    "subUnit": "유리함수의 뜻과 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -96,7 +108,11 @@ window.questionBank = [
       "정의역: $\\{x\\mid x\\ge4\\}$, 치역: $\\{y\\mid y\\ge4\\}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 근호 안은 $0$ 이상이어야 하고, $\\sqrt{4-2x}\\ge0$이다.\\n정석 풀이: $4-2x\\ge0$에서 $x\\le2$이므로 정의역은 $\\{x\\mid x\\le2\\}$이다. 또한 $-\\sqrt{4-2x}\\le0$이므로 $y=-\\sqrt{4-2x}+4\\le4$이고, $x$가 작아질수록 $y$는 아래로 제한 없이 작아진다. 따라서 치역은 $\\{y\\mid y\\le4\\}$이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 근호 안은 $0$ 이상이어야 하고, $\\sqrt{4-2x}\\ge0$이다.\\n정석 풀이: $4-2x\\ge0$에서 $x\\le2$이므로 정의역은 $\\{x\\mid x\\le2\\}$이다. 또한 $-\\sqrt{4-2x}\\le0$이므로 $y=-\\sqrt{4-2x}+4\\le4$이고, $x$가 작아질수록 $y$는 아래로 제한 없이 작아진다. 따라서 치역은 $\\{y\\mid y\\le4\\}$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+    "subUnit": "무리함수의 뜻과 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 5,
@@ -120,7 +136,11 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 주사위의 눈을 $3$으로 나눈 나머지에 따라 센다.\\n정석 풀이: 각 주사위에서 나머지가 $0,1,2$인 눈은 각각 $2$개씩이다. 합이 $3$의 배수가 되려면 나머지의 순서쌍이 $(0,0),(1,2),(2,1)$이어야 한다. 따라서 경우의 수는 $2\\cdot2+2\\cdot2+2\\cdot2=12$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 각 주사위의 눈을 $3$으로 나눈 나머지에 따라 센다.\\n정석 풀이: 각 주사위에서 나머지가 $0,1,2$인 눈은 각각 $2$개씩이다. 합이 $3$의 배수가 되려면 나머지의 순서쌍이 $(0,0),(1,2),(2,1)$이어야 한다. 따라서 경우의 수는 $2\\cdot2+2\\cdot2+2\\cdot2=12$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -144,7 +164,11 @@ window.questionBank = [
       "$120$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 여학생 두 명을 하나의 묶음으로 본다.\\n정석 풀이: 여학생 두 명을 한 묶음으로 보면 남학생 $3$명과 묶음 $1$개, 총 $4$개를 배열하는 방법은 $4!$가지이다. 묶음 안에서 여학생 두 명의 순서는 $2!$가지이므로 전체 경우의 수는 $4!\\cdot2!=48$이다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 여학생 두 명을 하나의 묶음으로 본다.\\n정석 풀이: 여학생 두 명을 한 묶음으로 보면 남학생 $3$명과 묶음 $1$개, 총 $4$개를 배열하는 방법은 $4!$가지이다. 묶음 안에서 여학생 두 명의 순서는 $2!$가지이므로 전체 경우의 수는 $4!\\cdot2!=48$이다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+    "subUnit": "순열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -171,7 +195,12 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 합성함수의 역함수는 순서를 바꾸어 역함수를 합성한다.\\n풀이 방향: $(f\\circ g^{-1})^{-1}=g\\circ f^{-1}$로 바꾸고 그래프에서 필요한 대응을 읽는다.\\n정석 풀이: 그림의 점선에서 $f(b)=c$이므로 $f^{-1}(c)=b$이다. 또 $g(b)=a$이다. 따라서 $(g\\circ f^{-1})(c)=g(b)=a$이다.\\n따라서 정답은 ①이다.",
-    "image": "assets/images/21_복성고_2학기_기말_고1_기출/q7.png"
+    "image": "assets/images/21_복성고_2학기_기말_고1_기출/q7.png",
+    "imageSize": "large",
+    "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+    "subUnit": "합성함수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -195,7 +224,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 먼저 $(g\\circ h)(x)$에서 $h(x)$를 구한다.\\n정석 풀이: $-2h(x)+3=4x-1$이므로 $h(x)=-2x+2$이다. 따라서 $(h\\circ f)(x)=-2(x+a)+2=-2x-2a+2$이다. 이것이 $bx+4$와 같으므로 $b=-2$, $-2a+2=4$에서 $a=-1$이다. 따라서 $ab=(-1)(-2)=2$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 먼저 $(g\\circ h)(x)$에서 $h(x)$를 구한다.\\n정석 풀이: $-2h(x)+3=4x-1$이므로 $h(x)=-2x+2$이다. 따라서 $(h\\circ f)(x)=-2(x+a)+2=-2x-2a+2$이다. 이것이 $bx+4$와 같으므로 $b=-2$, $-2a+2=4$에서 $a=-1$이다. 따라서 $ab=(-1)(-2)=2$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -219,7 +252,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 항등함수와 상수함수의 값을 먼저 확정한다.\\n정석 풀이: $g(4)=4$이므로 (가)에서 $f(3)=h(1)=4$이다. $h$는 상수함수이므로 $h(2)=4$, 또 $g(1)=1$이다. (나)에서 $4f(1)=12$이므로 $f(1)=3$이다. (다)에서 $3+f(4)=4$이므로 $f(4)=1$이다. $f$는 일대일대응이므로 남은 값은 $f(2)=2$이다. 따라서 $f(2)+g(2)+h(2)=2+2+4=8$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 항등함수와 상수함수의 값을 먼저 확정한다.\\n정석 풀이: $g(4)=4$이므로 (가)에서 $f(3)=h(1)=4$이다. $h$는 상수함수이므로 $h(2)=4$, 또 $g(1)=1$이다. (나)에서 $4f(1)=12$이므로 $f(1)=3$이다. (다)에서 $3+f(4)=4$이므로 $f(4)=1$이다. $f$는 일대일대응이므로 남은 값은 $f(2)=2$이다. 따라서 $f(2)+g(2)+h(2)=2+2+4=8$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -246,7 +283,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 그래프에서 수직점근선, 수평점근선, $x$절편을 읽는다.\\n정석 풀이: 수직점근선이 $x=2$이므로 $-c=2$, 즉 $c=-2$이다. 수평점근선이 $y=-3$이므로 $a=-3$이다. 그래프가 $(1,0)$을 지나므로 $-3+b=0$에서 $b=3$이다. 따라서 $f(4)=\\dfrac{-12+3}{4-2}=-\\dfrac92$이고, $cf(4)=(-2)\\left(-\\dfrac92\\right)=9$이다.\\n따라서 정답은 ③이다.",
-    "image": "assets/images/21_복성고_2학기_기말_고1_기출/q10.png"
+    "image": "assets/images/21_복성고_2학기_기말_고1_기출/q10.png",
+    "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+    "subUnit": "유리함수의 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -270,7 +311,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 근호를 새로운 변수로 치환하면 교점 조건을 이차방정식의 서로 다른 두 해 조건으로 바꿀 수 있다.\\n조건 정리: $t=\\sqrt{4-2x}$라 두면 $t\\ge0$이고 $x=2-\\dfrac{t^2}{2}$이다. 직선 $y=-x+k$와의 교점에서는 $t=-x+k$이므로 $t=-\\left(2-\\dfrac{t^2}{2}\\right)+k$이다.\\n정석 풀이: 식을 정리하면 $t^2-2t+2k-4=0$, 즉 $(t-1)^2=5-2k$이다. 서로 다른 두 교점이 되려면 서로 다른 두 개의 $t\\ge0$이 필요하다. 두 해는 $t=1\\pm\\sqrt{5-2k}$이므로, 서로 달라야 하여 $5-2k\\gt0$, 즉 $k\\lt\\dfrac52$이다. 또 작은 해도 $0$ 이상이어야 하므로 $1-\\sqrt{5-2k}\\ge0$에서 $k\\ge2$이다. 따라서 $2\\le k\\lt\\dfrac52$이므로 $\\alpha=2$, $\\beta=\\dfrac52$이다. 그러므로 $\\alpha\\beta=5$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 근호를 새로운 변수로 치환하면 교점 조건을 이차방정식의 서로 다른 두 해 조건으로 바꿀 수 있다.\\n조건 정리: $t=\\sqrt{4-2x}$라 두면 $t\\ge0$이고 $x=2-\\dfrac{t^2}{2}$이다. 직선 $y=-x+k$와의 교점에서는 $t=-x+k$이므로 $t=-\\left(2-\\dfrac{t^2}{2}\\right)+k$이다.\\n정석 풀이: 식을 정리하면 $t^2-2t+2k-4=0$, 즉 $(t-1)^2=5-2k$이다. 서로 다른 두 교점이 되려면 서로 다른 두 개의 $t\\ge0$이 필요하다. 두 해는 $t=1\\pm\\sqrt{5-2k}$이므로, 서로 달라야 하여 $5-2k\\gt0$, 즉 $k\\lt\\dfrac52$이다. 또 작은 해도 $0$ 이상이어야 하므로 $1-\\sqrt{5-2k}\\ge0$에서 $k\\ge2$이다. 따라서 $2\\le k\\lt\\dfrac52$이므로 $\\alpha=2$, $\\beta=\\dfrac52$이다. 그러므로 $\\alpha\\beta=5$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+    "subUnit": "무리함수의 뜻과 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -294,7 +339,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $f$는 증가함수이므로, $f$의 그래프와 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있어야 한다.\\n조건 정리: 평행이동한 함수는 $f(x)=2\\sqrt{x-a}+3$이다. 두 그래프의 공통점을 $(p,q)$라 하면 $q=f(p)$이고 $p=f(q)$이다. $f$는 증가함수이므로 $p\\lt q$이면 $f(p)\\lt f(q)$, 즉 $q\\lt p$가 되어 모순이고, $p\\gt q$인 경우도 같은 방법으로 모순이다. 따라서 $p=q$이다.\\n정석 풀이: 접점은 $y=x$ 위에 있으므로 $f(x)=x$를 만족한다. $2\\sqrt{x-a}+3=x$에서 $x\\ge3$이고 $2\\sqrt{x-a}=x-3$이다. 양변을 제곱하면 $4(x-a)=(x-3)^2$이므로 $x^2-10x+(9+4a)=0$이다. 두 그래프가 서로 접할 때에는 두 교점이 하나로 합쳐지므로 이 이차방정식이 중근을 가져야 한다. 따라서 판별식이 $0$이어서 $(-10)^2-4(9+4a)=0$이다. 즉 $100-36-16a=0$에서 $a=4$이다. 이때 중근은 $x=5$이고 원래 식도 만족한다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $f$는 증가함수이므로, $f$의 그래프와 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있어야 한다.\\n조건 정리: 평행이동한 함수는 $f(x)=2\\sqrt{x-a}+3$이다. 두 그래프의 공통점을 $(p,q)$라 하면 $q=f(p)$이고 $p=f(q)$이다. $f$는 증가함수이므로 $p\\lt q$이면 $f(p)\\lt f(q)$, 즉 $q\\lt p$가 되어 모순이고, $p\\gt q$인 경우도 같은 방법으로 모순이다. 따라서 $p=q$이다.\\n정석 풀이: 접점은 $y=x$ 위에 있으므로 $f(x)=x$를 만족한다. $2\\sqrt{x-a}+3=x$에서 $x\\ge3$이고 $2\\sqrt{x-a}=x-3$이다. 양변을 제곱하면 $4(x-a)=(x-3)^2$이므로 $x^2-10x+(9+4a)=0$이다. 두 그래프가 서로 접할 때에는 두 교점이 하나로 합쳐지므로 이 이차방정식이 중근을 가져야 한다. 따라서 판별식이 $0$이어서 $(-10)^2-4(9+4a)=0$이다. 즉 $100-36-16a=0$에서 $a=4$이다. 이때 중근은 $x=5$이고 원래 식도 만족한다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+    "subUnit": "무리함수와 역함수",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -318,7 +367,11 @@ window.questionBank = [
       "$-11$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 반복합성 값의 주기를 찾는다.\\n정석 풀이: $f(2)=\\dfrac13$, $f^2(2)=f\\left(\\dfrac13\\right)=-\\dfrac12$, $f^3(2)=f\\left(-\\dfrac12\\right)=-3$, $f^4(2)=f(-3)=2$이다. 따라서 $4$개씩 주기가 반복되고 한 주기의 합은 $\\dfrac13-\\dfrac12-3+2=-\\dfrac76$이다. $24=4\\cdot6$이므로 전체 합은 $6\\left(-\\dfrac76\\right)=-7$이다.\\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 반복합성 값의 주기를 찾는다.\\n정석 풀이: $f(2)=\\dfrac13$, $f^2(2)=f\\left(\\dfrac13\\right)=-\\dfrac12$, $f^3(2)=f\\left(-\\dfrac12\\right)=-3$, $f^4(2)=f(-3)=2$이다. 따라서 $4$개씩 주기가 반복되고 한 주기의 합은 $\\dfrac13-\\dfrac12-3+2=-\\dfrac76$이다. $24=4\\cdot6$이므로 전체 합은 $6\\left(-\\dfrac76\\right)=-7$이다.\\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+    "subUnit": "유리함수의 뜻과 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -342,7 +395,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $a\\ge b\\ge c$와 삼각형 조건 $b+c\\gt a$를 동시에 만족하는 자연수 순서쌍을 센다.\\n정석 풀이: $a+b+c=15$이므로 가능한 $(a,b,c)$를 조건에 맞게 나열하면 $(5,5,5)$, $(6,5,4)$, $(6,6,3)$, $(7,4,4)$, $(7,5,3)$, $(7,6,2)$, $(7,7,1)$이다. 모두 $b+c\\gt a$를 만족하고, 이 밖의 경우는 삼각형 조건 또는 대소관계를 만족하지 않는다. 따라서 총 $7$개이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $a\\ge b\\ge c$와 삼각형 조건 $b+c\\gt a$를 동시에 만족하는 자연수 순서쌍을 센다.\\n정석 풀이: $a+b+c=15$이므로 가능한 $(a,b,c)$를 조건에 맞게 나열하면 $(5,5,5)$, $(6,5,4)$, $(6,6,3)$, $(7,4,4)$, $(7,5,3)$, $(7,6,2)$, $(7,7,1)$이다. 모두 $b+c\\gt a$를 만족하고, 이 밖의 경우는 삼각형 조건 또는 대소관계를 만족하지 않는다. 따라서 총 $7$개이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -366,7 +423,11 @@ window.questionBank = [
       "$92$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 계단을 오르는 횟수를 정하면 한 계단을 오르는 횟수와 전체 걸음 수가 함께 정해진다.\\n풀이 방향: 두 계단을 오르는 횟수를 $k$라 하면 한 계단을 오르는 횟수는 $10-2k$이고, 전체 걸음 수는 $10-k$이다. 이 가운데 두 계단짜리 걸음 $k$개의 위치를 정한다.\\n정석 풀이: $k=0,1,2,3,4,5$로 나누어 세면 경우의 수는 각각 $1$, ${}_9C_1=9$, ${}_8C_2=28$, ${}_7C_3=35$, ${}_6C_4=15$, ${}_5C_5=1$이다. 따라서 전체 경우의 수는 $1+9+28+35+15+1=89$이다.\\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 계단을 오르는 횟수를 정하면 한 계단을 오르는 횟수와 전체 걸음 수가 함께 정해진다.\\n풀이 방향: 두 계단을 오르는 횟수를 $k$라 하면 한 계단을 오르는 횟수는 $10-2k$이고, 전체 걸음 수는 $10-k$이다. 이 가운데 두 계단짜리 걸음 $k$개의 위치를 정한다.\\n정석 풀이: $k=0,1,2,3,4,5$로 나누어 세면 경우의 수는 각각 $1$, ${}_9C_1=9$, ${}_8C_2=28$, ${}_7C_3=35$, ${}_6C_4=15$, ${}_5C_5=1$이다. 따라서 전체 경우의 수는 $1+9+28+35+15+1=89$이다.\\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -390,7 +451,11 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $t=2x-1$로 치환하여 $g(t)$를 직접 구한다.\\n정석 풀이: $t=2x-1$이면 $x=\\dfrac{t+1}{2}$이고 $-x+\\dfrac12=-\\dfrac t2$이다. 따라서 $f\\left(-\\dfrac t2\\right)=\\dfrac{t^2}{4}-2t+2$이고, $g(t)=-2\\left(\\dfrac{t^2}{4}-2t+2\\right)+1=-\\dfrac12t^2+4t-3=-\\dfrac12(t-4)^2+5$이다. 그러므로 $a=4$, $b=5$이고 $a+b=9$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $t=2x-1$로 치환하여 $g(t)$를 직접 구한다.\\n정석 풀이: $t=2x-1$이면 $x=\\dfrac{t+1}{2}$이고 $-x+\\dfrac12=-\\dfrac t2$이다. 따라서 $f\\left(-\\dfrac t2\\right)=\\dfrac{t^2}{4}-2t+2$이고, $g(t)=-2\\left(\\dfrac{t^2}{4}-2t+2\\right)+1=-\\dfrac12t^2+4t-3=-\\dfrac12(t-4)^2+5$이다. 그러므로 $a=4$, $b=5$이고 $a+b=9$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -414,7 +479,11 @@ window.questionBank = [
       "$\\dfrac52$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 조각이 각각 일대일이고 두 조각의 치역이 서로 겹치지 않아야 전체 함수가 일대일이 된다.\\n조건 정리: $x\\le3$에서는 $f(x)=-\\sqrt{3-x}-2$이므로 치역은 $(-\\infty,-2]$이다. $x\\gt3$에서는 $f(x)=\\dfrac{a-x}{x-1}=-1+\\dfrac{a-1}{x-1}$이고 $a\\lt1$이다.\\n정석 풀이: $x\\gt3$이면 $x-1\\gt2$이고 $a-1\\lt0$이므로 $\\dfrac{a-1}{2}\\lt\\dfrac{a-1}{x-1}\\lt0$이다. 따라서 $\\dfrac{a-3}{2}\\lt f(x)\\lt-1$이므로 오른쪽 조각의 치역은 $\\left(\\dfrac{a-3}{2},-1\\right)$이다. 이 치역이 왼쪽 조각의 치역 $(-\\infty,-2]$와 겹치지 않으려면 $\\dfrac{a-3}{2}\\ge-2$, 즉 $a\\ge-1$이어야 한다. 원래 조건 $a\\lt1$과 합치면 $-1\\le a\\lt1$이므로 가능한 $a$의 최솟값은 $-1$이다. 이때 $f(5)=\\dfrac{-1-5}{5-1}=-\\dfrac32$이므로 $af(5)=(-1)\\left(-\\dfrac32\\right)=\\dfrac32$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 조각이 각각 일대일이고 두 조각의 치역이 서로 겹치지 않아야 전체 함수가 일대일이 된다.\\n조건 정리: $x\\le3$에서는 $f(x)=-\\sqrt{3-x}-2$이므로 치역은 $(-\\infty,-2]$이다. $x\\gt3$에서는 $f(x)=\\dfrac{a-x}{x-1}=-1+\\dfrac{a-1}{x-1}$이고 $a\\lt1$이다.\\n정석 풀이: $x\\gt3$이면 $x-1\\gt2$이고 $a-1\\lt0$이므로 $\\dfrac{a-1}{2}\\lt\\dfrac{a-1}{x-1}\\lt0$이다. 따라서 $\\dfrac{a-3}{2}\\lt f(x)\\lt-1$이므로 오른쪽 조각의 치역은 $\\left(\\dfrac{a-3}{2},-1\\right)$이다. 이 치역이 왼쪽 조각의 치역 $(-\\infty,-2]$와 겹치지 않으려면 $\\dfrac{a-3}{2}\\ge-2$, 즉 $a\\ge-1$이어야 한다. 원래 조건 $a\\lt1$과 합치면 $-1\\le a\\lt1$이므로 가능한 $a$의 최솟값은 $-1$이다. 이때 $f(5)=\\dfrac{-1-5}{5-1}=-\\dfrac32$이므로 $af(5)=(-1)\\left(-\\dfrac32\\right)=\\dfrac32$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -438,7 +507,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $y=f(k)$라 두면 $f(y)=y$, 즉 먼저 $f$의 고정점을 찾으면 된다.\\n정석 풀이: $y\\lt1$에서는 $2y+3=y$이므로 $y=-3$이다. $y\\ge1$에서는 $y^2-5y+9=y$, 즉 $(y-3)^2=0$이므로 $y=3$이다. 따라서 $f(k)=-3$ 또는 $f(k)=3$이다. $f(k)=-3$에서 $k=-3$, $f(k)=3$에서 $k=0,2,3$을 얻는다. 가장 큰 값은 $3$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $y=f(k)$라 두면 $f(y)=y$, 즉 먼저 $f$의 고정점을 찾으면 된다.\\n정석 풀이: $y\\lt1$에서는 $2y+3=y$이므로 $y=-3$이다. $y\\ge1$에서는 $y^2-5y+9=y$, 즉 $(y-3)^2=0$이므로 $y=3$이다. 따라서 $f(k)=-3$ 또는 $f(k)=3$이다. $f(k)=-3$에서 $k=-3$, $f(k)=3$에서 $k=0,2,3$을 얻는다. 가장 큰 값은 $3$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -462,7 +535,11 @@ window.questionBank = [
       "$12960$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 짝수 $2,4,6,8,10,12$는 서로 어느 두 수도 서로소가 아니므로 최소 $6$개의 부분집합이 필요하다.\\n조건 정리: 최소 $6$개의 부분집합을 만들면 각 부분집합에는 짝수 하나씩이 반드시 들어간다. 따라서 여섯 짝수를 각각 기준으로 한 $6$개의 집합에 홀수 $1,3,5,7,9,11$을 배치하면 된다.\\n정석 풀이: $1,7,11$은 모든 짝수와 서로소이므로 각각 $6$곳 중 아무 곳에나 들어갈 수 있어 $6^3$가지이다. $3,9$는 $6,12$와 서로소가 아니므로 각각 $2,4,8,10$이 있는 $4$곳만 가능하고, $3$과 $9$끼리도 서로소가 아니므로 서로 다른 곳에 배치해야 하여 $4\\cdot3$가지이다. $5$는 $10$과만 서로소가 아니므로 나머지 $5$곳 중 하나에 들어가며 $5$가지이다. 따라서 전체 구성의 수는 $6^3\\cdot4\\cdot3\\cdot5=12960$이다.\\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 짝수 $2,4,6,8,10,12$는 서로 어느 두 수도 서로소가 아니므로 최소 $6$개의 부분집합이 필요하다.\\n조건 정리: 최소 $6$개의 부분집합을 만들면 각 부분집합에는 짝수 하나씩이 반드시 들어간다. 따라서 여섯 짝수를 각각 기준으로 한 $6$개의 집합에 홀수 $1,3,5,7,9,11$을 배치하면 된다.\\n정석 풀이: $1,7,11$은 모든 짝수와 서로소이므로 각각 $6$곳 중 아무 곳에나 들어갈 수 있어 $6^3$가지이다. $3,9$는 $6,12$와 서로소가 아니므로 각각 $2,4,8,10$이 있는 $4$곳만 가능하고, $3$과 $9$끼리도 서로소가 아니므로 서로 다른 곳에 배치해야 하여 $4\\cdot3$가지이다. $5$는 $10$과만 서로소가 아니므로 나머지 $5$곳 중 하나에 들어가며 $5$가지이다. 따라서 전체 구성의 수는 $6^3\\cdot4\\cdot3\\cdot5=12960$이다.\\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -486,7 +563,11 @@ window.questionBank = [
       "$84$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $9$의 배수 판정법으로 세 숫자의 합이 $9$의 배수가 되는 경우를 센다.\\n정석 풀이: 서로 다른 세 숫자의 합은 $9$ 또는 $18$이어야 한다. 합이 $9$인 세 숫자 집합은 $\\{0,1,8\\},\\{0,2,7\\},\\{0,3,6\\},\\{0,4,5\\},\\{1,2,6\\},\\{1,3,5\\},\\{2,3,4\\}$의 $7$개이고, 합이 $18$인 세 숫자 집합은 $\\{3,7,8\\},\\{4,6,8\\},\\{5,6,7\\}$의 $3$개이다. $0$을 포함한 앞의 $4$개 집합은 각각 백의 자리에 $0$이 올 수 없으므로 $4$개의 세 자리 자연수를 만들고, $0$을 포함하지 않은 나머지 $6$개 집합은 각각 $3!=6$개를 만든다. 따라서 $4\\cdot4+6\\cdot6=52$이다.\\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $9$의 배수 판정법으로 세 숫자의 합이 $9$의 배수가 되는 경우를 센다.\\n정석 풀이: 서로 다른 세 숫자의 합은 $9$ 또는 $18$이어야 한다. 합이 $9$인 세 숫자 집합은 $\\{0,1,8\\},\\{0,2,7\\},\\{0,3,6\\},\\{0,4,5\\},\\{1,2,6\\},\\{1,3,5\\},\\{2,3,4\\}$의 $7$개이고, 합이 $18$인 세 숫자 집합은 $\\{3,7,8\\},\\{4,6,8\\},\\{5,6,7\\}$의 $3$개이다. $0$을 포함한 앞의 $4$개 집합은 각각 백의 자리에 $0$이 올 수 없으므로 $4$개의 세 자리 자연수를 만들고, $0$을 포함하지 않은 나머지 $6$개 집합은 각각 $3!=6$개를 만든다. 따라서 $4\\cdot4+6\\cdot6=52$이다.\\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -510,7 +591,11 @@ window.questionBank = [
       "$630$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 다른 초콜릿 $4$개의 배분을 먼저 정하면 남는 자리는 같은 사탕으로 자동 결정된다.\\n정석 풀이: 초콜릿 $4$개를 $4$명에게 주는 모든 방법은 $4^4=256$가지이다. 한 사람이 초콜릿 $4$개를 모두 받는 경우는 $4$가지, 한 사람이 $3$개를 받고 다른 한 사람이 $1$개를 받는 경우는 $4\\cdot3\\cdot\\binom43=48$가지이다. 이 경우들은 한 사람이 간식 $2$개를 초과하므로 제외해야 한다. 따라서 가능한 방법의 수는 $256-4-48=204$이다. 남는 자리는 동일한 사과맛 사탕으로 채워지므로 추가 선택은 없다.\\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 서로 다른 초콜릿 $4$개의 배분을 먼저 정하면 남는 자리는 같은 사탕으로 자동 결정된다.\\n정석 풀이: 초콜릿 $4$개를 $4$명에게 주는 모든 방법은 $4^4=256$가지이다. 한 사람이 초콜릿 $4$개를 모두 받는 경우는 $4$가지, 한 사람이 $3$개를 받고 다른 한 사람이 $1$개를 받는 경우는 $4\\cdot3\\cdot\\binom43=48$가지이다. 이 경우들은 한 사람이 간식 $2$개를 초과하므로 제외해야 한다. 따라서 가능한 방법의 수는 $256-4-48=204$이다. 남는 자리는 동일한 사과맛 사탕으로 채워지므로 추가 선택은 없다.\\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -530,7 +615,11 @@ window.questionBank = [
     "content": "서술형 1번.<br>함수 $y=3\\sqrt{x}$의 그래프 위의 점 $A$를 지나고 $x$축, $y$축에 각각 수직인 직선이 함수 $y=\\sqrt{x}$의 그래프와 만나는 점을 각각 $B,C$라 하자. [총 10점]<br>1) 점 $A$의 좌표를 $(t,3\\sqrt{t})$라 할 때 점 $B,C$를 $t$에 대해 좌표로 나타내시오. [3점]<br>2) $\\overline{AB}:\\overline{AC}=1:4$가 되는 직각삼각형 $ABC$의 넓이를 구하시오. [7점]",
     "choices": [],
     "answer": "(1) $B=(t,\\sqrt{t})$, $C=(9t,3\\sqrt{t})$ / (2) $8$",
-    "solution": "[키포인트] $A$를 지나는 수직선과 수평선의 좌표를 각각 고정하여 $B,C$를 구한다.\\n조건 정리: $A=(t,3\\sqrt t)$이고 $B,C$는 모두 $y=\\sqrt x$ 위의 점이다.\\n정석 풀이: (1) $x$축에 수직인 직선은 $x=t$이므로 $B=(t,\\sqrt t)$이다. $y$축에 수직인 직선은 $y=3\\sqrt t$이므로 $3\\sqrt t=\\sqrt x$에서 $x=9t$, 따라서 $C=(9t,3\\sqrt t)$이다. (2) $\\overline{AB}=2\\sqrt t$, $\\overline{AC}=8t$이다. $\\overline{AB}:\\overline{AC}=1:4$이므로 $\\dfrac{2\\sqrt t}{8t}=\\dfrac14$에서 $\\sqrt t=1$, 즉 $t=1$이다. 따라서 넓이는 $\\dfrac12\\cdot2\\cdot8=8$이다.\\n따라서 구하는 값은 (1) $B=(t,\\sqrt t)$, $C=(9t,3\\sqrt t)$, (2) $8$이다."
+    "solution": "[키포인트] $A$를 지나는 수직선과 수평선의 좌표를 각각 고정하여 $B,C$를 구한다.\\n조건 정리: $A=(t,3\\sqrt t)$이고 $B,C$는 모두 $y=\\sqrt x$ 위의 점이다.\\n정석 풀이: (1) $x$축에 수직인 직선은 $x=t$이므로 $B=(t,\\sqrt t)$이다. $y$축에 수직인 직선은 $y=3\\sqrt t$이므로 $3\\sqrt t=\\sqrt x$에서 $x=9t$, 따라서 $C=(9t,3\\sqrt t)$이다. (2) $\\overline{AB}=2\\sqrt t$, $\\overline{AC}=8t$이다. $\\overline{AB}:\\overline{AC}=1:4$이므로 $\\dfrac{2\\sqrt t}{8t}=\\dfrac14$에서 $\\sqrt t=1$, 즉 $t=1$이다. 따라서 넓이는 $\\dfrac12\\cdot2\\cdot8=8$이다.\\n따라서 구하는 값은 (1) $B=(t,\\sqrt t)$, $C=(9t,3\\sqrt t)$, (2) $8$이다.",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+    "subUnit": "무리함수의 뜻과 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -550,6 +639,10 @@ window.questionBank = [
     "content": "서술형 2번.<br>두 집합 $X=\\{1,2,3,4\\}$, $Y=\\{1,2,3,4,5,6,7\\}$에 대하여 $X$에서 $Y$로의 함수 $f$가 다음 조건을 만족하는 개수를 구하여라. [총 10점]<br>(단, 문제(1),(2),(3),(4)는 개별문제로 서로 영향을 주지 않는다.)<br>(1) 일대일 함수의 개수 [2점]<br>(2) 임의의 $a,b\\in X$에 대하여 $a\\lt b$이면 $f(a)\\lt f(b)$를 만족하는 함수의 개수 [2점]<br>(3) $f(1)\\times f(2)\\times f(3)\\times f(4)$의 값이 홀수인 함수의 개수 [3점]<br>(4) $f(1)+f(2)+f(3)+f(4)$의 값이 홀수인 함수의 개수 [3점]",
     "choices": [],
     "answer": "(1) $840$ / (2) $35$ / (3) $256$ / (4) $1200$",
-    "solution": "[키포인트] 네 소문항은 서로 독립이므로 각각 함수값 선택 방식으로 센다.\\n정석 풀이: (1) 서로 다른 $4$개의 함수값을 $7$개에서 순서 있게 정하므로 ${}_7P_4=7\\cdot6\\cdot5\\cdot4=840$이다. (2) $f(1)\\lt f(2)\\lt f(3)\\lt f(4)$이므로 $Y$에서 서로 다른 $4$개를 고르면 순서는 자동 결정되어 $\\binom74=35$이다. (3) 곱이 홀수이려면 네 함수값이 모두 홀수여야 한다. 홀수는 $1,3,5,7$의 $4$개이므로 $4^4=256$이다. (4) 합이 홀수이려면 홀수 함수값의 개수가 $1$개 또는 $3$개여야 한다. 홀수값은 $4$개, 짝수값은 $3$개이므로 $\\binom41 4\\cdot3^3+\\binom43 4^3\\cdot3=432+768=1200$이다.\\n따라서 구하는 값은 (1) $840$, (2) $35$, (3) $256$, (4) $1200$이다."
+    "solution": "[키포인트] 네 소문항은 서로 독립이므로 각각 함수값 선택 방식으로 센다.\\n정석 풀이: (1) 서로 다른 $4$개의 함수값을 $7$개에서 순서 있게 정하므로 ${}_7P_4=7\\cdot6\\cdot5\\cdot4=840$이다. (2) $f(1)\\lt f(2)\\lt f(3)\\lt f(4)$이므로 $Y$에서 서로 다른 $4$개를 고르면 순서는 자동 결정되어 $\\binom74=35$이다. (3) 곱이 홀수이려면 네 함수값이 모두 홀수여야 한다. 홀수는 $1,3,5,7$의 $4$개이므로 $4^4=256$이다. (4) 합이 홀수이려면 홀수 함수값의 개수가 $1$개 또는 $3$개여야 한다. 홀수값은 $4$개, 짝수값은 $3$개이므로 $\\binom41 4\\cdot3^3+\\binom43 4^3\\cdot3=432+768=1200$이다.\\n따라서 구하는 값은 (1) $840$, (2) $35$, (3) $256$, (4) $1200$이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

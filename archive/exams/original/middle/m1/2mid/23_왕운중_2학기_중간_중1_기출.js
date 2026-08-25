@@ -23,7 +23,11 @@ window.questionBank = [
       "시작점이 같은 두 반직선은 같다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "제2사분면과 제4사분면을 지난다."
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -74,7 +82,11 @@ window.questionBank = [
       "교선 5개, 교점 7개"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -98,7 +110,11 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -120,7 +136,11 @@ window.questionBank = [
     "content": "$y$가 $x$에 정비례하는 것과 반비례하는 것을 바르게 짝지은 것은? [3.5점]<div class=\"note-box\">ㄱ. 한 변의 길이가 $x\\,\\mathrm{cm}$인 정오각형의 둘레의 길이 $y\\,\\mathrm{cm}$이다.<br>ㄴ. 우유 $15\\,\\mathrm{L}$를 $x$명이 똑같이 나누어 마셨을 때, 한 사람이 마신 우유의 양 $y\\,\\mathrm{L}$이다.<br>ㄷ. 정가 $x$원에서 $10\\%$를 할인한 가격은 $y$원이다.<br>ㄹ. $x$시간 동안 $15\\,\\mathrm{km}$ 거리를 달린 속력은 시속 $y\\,\\mathrm{km}$이다.<br>ㅁ. 남학생 수가 $x$이고, 여학생 수가 $y$인 반의 전체 학생 수는 $30$명이다.</div>",
     "choices": [],
     "answer": "①",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -142,7 +162,11 @@ window.questionBank = [
     "content": "아래 그림은 $\\angle AOB$와 크기가 같은 각을 반직선 $O'X$를 한 변으로 하여 작도한 것이다. 다음 중 작도 과정을 순서대로 나열한 것은? [4점]",
     "choices": [],
     "answer": "⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -169,7 +193,11 @@ window.questionBank = [
       "$20^\\circ$"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -195,7 +223,11 @@ window.questionBank = [
       "$\\angle A=30^\\circ,\\ \\angle B=60^\\circ,\\ \\angle C=90^\\circ$"
     ],
     "answer": "②, ③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②, ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -222,7 +254,11 @@ window.questionBank = [
       "$\\overrightarrow{AD}$와 $\\overrightarrow{CD}$의 공통인 부분은 $\\overrightarrow{CD}$이다."
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -249,7 +285,11 @@ window.questionBank = [
       "$130^\\circ$"
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -276,7 +316,11 @@ window.questionBank = [
       "$92^\\circ$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -303,7 +347,11 @@ window.questionBank = [
       "$280^\\circ$"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -327,7 +375,11 @@ window.questionBank = [
       "$\\overline{AB}=\\overline{DE},\\ \\overline{AC}=\\overline{DF},\\ \\angle B=\\angle E$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -351,7 +403,11 @@ window.questionBank = [
       "ㄴ, ㄹ, ㅁ"
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -375,7 +431,11 @@ window.questionBank = [
       "$(ab,\\dfrac b{a^2})$"
     ],
     "answer": "⑤",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "subUnitKey": "M1-04-COORDINATE_PLANE",
+    "subUnit": "좌표평면",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -402,7 +462,11 @@ window.questionBank = [
       "면 $AGC$와 만나는 면은 $3$개다."
     ],
     "answer": "④",
-    "solution": ""
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -429,7 +493,11 @@ window.questionBank = [
       "아기의 몸무게가 $10\\,\\mathrm{kg}$이 된 때는 12개월에서 5주 후이다."
     ],
     "answer": "③",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "subUnitKey": "M1-04-COORDINATE_PLANE",
+    "subUnit": "좌표평면",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -456,7 +524,11 @@ window.questionBank = [
       "$10\\,\\mathrm{cm}$"
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -483,7 +555,11 @@ window.questionBank = [
       "면 $IJH$와 만나지 않는 면은 $1$개이다."
     ],
     "answer": "②",
-    "solution": ""
+    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -507,7 +583,11 @@ window.questionBank = [
       "ㄱ, ㄹ, ㅁ"
     ],
     "answer": "①",
-    "solution": ""
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "subUnitKey": "M1-04-COORDINATE_PLANE",
+    "subUnit": "좌표평면",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -529,7 +609,11 @@ window.questionBank = [
     "content": "좌표평면 위의 네 점 $A(-4,5)$, $B(-4,-2)$, $C(6,-2)$, $D(6,1)$을 꼭짓점으로 하는 사각형 $ABCD$의 넓이를 구하고 그 풀이과정을 쓰시오. [5점]",
     "choices": [],
     "answer": "$50$",
-    "solution": ""
+    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $50$이다.",
+    "subUnitKey": "M1-04-COORDINATE_PLANE",
+    "subUnit": "좌표평면",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -548,10 +632,15 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q22.png",
+    "imageSize": "tall",
     "content": "다음 그림에서 $\\triangle ABC$는 정삼각형이고, $\\overline{BD}=\\overline{CE}$이다.",
     "choices": [],
     "answer": "$\\triangle ABD\\equiv\\triangle BCE$; $\\overline{AB}=\\overline{BC}$, $\\overline{BD}=\\overline{CE}$, $\\angle ABD=\\angle BCE$; 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 SAS 합동",
-    "solution": ""
+    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $\\triangle ABD\\equiv\\triangle BCE$; $\\overline{AB}=\\overline{BC}$, $\\overline{BD}=\\overline{CE}$, $\\angle ABD=\\angle BCE$; 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 SAS 합동이다.",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -570,10 +659,15 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q23.png",
+    "imageSize": "tall",
     "content": "아래 그림은 직선 $l$위에 있지 않은 한 점 $P$를 지나고 직선 $l$에 평행한 직선을 작도한 것이다.",
     "choices": [],
     "answer": "(1) 점 $P$와 직선 $l$ 위의 한 점 $A$를 지나는 직선 $m$을 긋고, 점 $A$를 중심으로 호를 그어 $m$, $l$과 만나는 점을 각각 $B$, $C$라 한다. 점 $P$를 중심으로 같은 반지름의 호를 그어 $m$과 만나는 점을 $Q$라 하고, $\\overline{BC}$의 길이를 반지름으로 하여 점 $Q$를 중심으로 호를 그어 앞의 호와 만나는 점을 $R$이라 한 뒤 직선 $PR$을 긋는다. (2) 두 직선이 한 직선과 만날 때 엇각의 크기가 같으면 두 직선은 평행하다.",
-    "solution": ""
+    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) 점 $P$와 직선 $l$ 위의 한 점 $A$를 지나는 직선 $m$을 긋고, 점 $A$를 중심으로 호를 그어 $m$, $l$과 만나는 점을 각각 $B$, $C$라 한다. 점 $P$를 중심으로 같은 반지름의 호를 그어 $m$과 만나는 점을 $Q$라 하고, $\\overline{BC}$의 길이를 반지름으로 하여 점 $Q$를 중심으로 호를 그어 앞의 호와 만나는 점을 $R$이라 한 뒤 직선 $PR$을 긋는다. (2) 두 직선이 한 직선과 만날 때 엇각의 크기가 같으면 두 직선은 평행하다.이다.",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -595,6 +689,10 @@ window.questionBank = [
     "content": "$y=\\dfrac ax$의 그래프가 아래와 같을 때, 그래프 위의 점 중에서 $x$좌표와 $y$좌표가 모두 음의 정수인 점을 모두 나열하고, 그 풀이과정을 쓰시오. [5점]",
     "choices": [],
     "answer": "$(-1,-10),\\ (-2,-5),\\ (-5,-2),\\ (-10,-1)$",
-    "solution": ""
+    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $(-1,-10),\\ (-2,-5),\\ (-5,-2),\\ (-10,-1)$이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

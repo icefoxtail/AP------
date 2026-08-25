@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -31,7 +31,9 @@ window.questionBank = [
       "$x$의 계수는 2이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] ① 항의 개수는 $-x^2$, $\\dfrac{x}{2}$, $-\\dfrac{1}{3}$의 3개 / ③ 상수항은 $-\\dfrac{1}{3}$ / ④ 이차식 / ⑤ $x$의 계수는 $\\dfrac{1}{2}$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] ① 항의 개수는 $-x^2$, $\\dfrac{x}{2}$, $-\\dfrac{1}{3}$의 3개 / ③ 상수항은 $-\\dfrac{1}{3}$ / ④ 이차식 / ⑤ $x$의 계수는 $\\dfrac{1}{2}$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -43,7 +45,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -64,7 +66,9 @@ window.questionBank = [
       "이 다항식은 일차식이다."
     ],
     "answer": "②, ③",
-    "solution": "[키포인트] ① 항은 $4a^2$, $-6a$, $3$ / ④ $a^2$의 계수는 4 / ⑤ 이차식\n따라서 정답은 ②, ③이다."
+    "solution": "[키포인트] ① 항은 $4a^2$, $-6a$, $3$ / ④ $a^2$의 계수는 4 / ⑤ 이차식\n따라서 정답은 ②, ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -76,7 +80,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -94,7 +98,9 @@ window.questionBank = [
     "content": "다음 표의 빈칸에 알맞은 수를 써넣어라.\n\n| 일차식 | $x+2$ | $x-1$ | $-3x+1$ | $x$ |\n|---|---:|---:|---:|---:|\n| $x$의 계수 | 1 | □ | □ | 1 |\n| 상수항 | □ | □ | □ | 0 |\n| $x=-1$일 때 식의 값 | □ | □ | □ | □ |",
     "choices": [],
     "answer": "계수: $1, 1, -3, 1$ / 상수항: $2, -1, 1, 0$ / $x=-1$일 때 식의 값: $1, -2, 4, -1$",
-    "solution": "[키포인트] $x+2$의 계수와 상수항은 각각 $1, 2$이고, $x=-1$을 대입하면 $1$입니다. $x-1$은 계수 $1$, 상수항 $-1$, 식의 값 $-2$입니다. $-3x+1$은 계수 $-3$, 상수항 $1$, 식의 값 $4$입니다. $x$는 계수 $1$, 상수항 $0$, 식의 값 $-1$입니다."
+    "solution": "[키포인트] $x+2$의 계수와 상수항은 각각 $1, 2$이고, $x=-1$을 대입하면 $1$입니다. $x-1$은 계수 $1$, 상수항 $-1$, 식의 값 $-2$입니다. $-3x+1$은 계수 $-3$, 상수항 $1$, 식의 값 $4$입니다. $x$는 계수 $1$, 상수항 $0$, 식의 값 $-1$입니다.",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -106,7 +112,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -126,7 +132,9 @@ window.questionBank = [
       "-4"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\dfrac{1 \\times 2^2}{1-2} = \\dfrac{4}{-1} = -4$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $\\dfrac{1 \\times 2^2}{1-2} = \\dfrac{4}{-1} = -4$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -138,7 +146,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -158,7 +166,9 @@ window.questionBank = [
       "$x^2+x+1$에서 $x$의 계수는 1이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① 상수항은 2 / ② $a$의 계수는 0.4 / ③ 문자가 서로 달라 동류항 아님 / ④ 두 항으로 이루어진 다항식\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ① 상수항은 2 / ② $a$의 계수는 0.4 / ③ 문자가 서로 달라 동류항 아님 / ④ 두 항으로 이루어진 다항식\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -170,7 +180,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -190,7 +200,9 @@ window.questionBank = [
       "$x$에 관한 삼차식이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] ① 다항식 / ③ 상수항은 $-2$ / ④ 항은 $-5x^2$, $3x$, $-2$ / ⑤ 이차식\n따라서 정답은 ②이다."
+    "solution": "[키포인트] ① 다항식 / ③ 상수항은 $-2$ / ④ 항은 $-5x^2$, $3x$, $-2$ / ⑤ 이차식\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -202,7 +214,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -222,7 +234,9 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $\\dfrac{1}{2} + \\dfrac{1}{b} = \\dfrac{1}{4}$\n$\\dfrac{1}{b} = \\dfrac{1}{4} - \\dfrac{1}{2} = -\\dfrac{1}{4}$\n$\\therefore b = -4$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $\\dfrac{1}{2} + \\dfrac{1}{b} = \\dfrac{1}{4}$\n$\\dfrac{1}{b} = \\dfrac{1}{4} - \\dfrac{1}{2} = -\\dfrac{1}{4}$\n$\\therefore b = -4$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -234,7 +248,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -248,7 +262,9 @@ window.questionBank = [
     "content": "$a = -\\dfrac{1}{3}$, $b = 2$일 때, $9a^2 + b^2$의 값을 구하여라.",
     "choices": [],
     "answer": "5",
-    "solution": "[키포인트] $9 \\times \\left(-\\dfrac{1}{3}\\right)^2 + 2^2 = 9 \\times \\dfrac{1}{9} + 4 = 1 + 4 = 5$\n따라서 구하는 값은 5이다."
+    "solution": "[키포인트] $9 \\times \\left(-\\dfrac{1}{3}\\right)^2 + 2^2 = 9 \\times \\dfrac{1}{9} + 4 = 1 + 4 = 5$\n따라서 구하는 값은 5이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -260,7 +276,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -280,7 +296,9 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $7 \\times (-3) - 5 \\times 4 = -21 - 20 = -41$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $7 \\times (-3) - 5 \\times 4 = -21 - 20 = -41$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -292,7 +310,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -312,7 +330,9 @@ window.questionBank = [
       "$35$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $2 \\times (-5) + (-5)^2 = -10 + 25 = 15$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $2 \\times (-5) + (-5)^2 = -10 + 25 = 15$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -324,7 +344,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -344,7 +364,9 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $ab + ac = 4 + ac = 2$ → $ac = -2$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $ab + ac = 4 + ac = 2$ → $ac = -2$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -356,7 +378,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -376,7 +398,9 @@ window.questionBank = [
       "$0 \\times x - 4$"
     ],
     "answer": "③",
-    "solution": "[키포인트] ① 이차식 / ② 분모에 문자가 있어 일차식 아님 / ④ 이차식 / ⑤ $-4$이므로 상수\n따라서 정답은 ③이다."
+    "solution": "[키포인트] ① 이차식 / ② 분모에 문자가 있어 일차식 아님 / ④ 이차식 / ⑤ $-4$이므로 상수\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -388,7 +412,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -408,7 +432,9 @@ window.questionBank = [
       "$x^2$과 $x$의 계수를 합하면 $-3$이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 항은 $x^2$, $-4x$, $6$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 항은 $x^2$, $-4x$, $6$이다.\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -420,7 +446,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -434,7 +460,9 @@ window.questionBank = [
     "content": "**(1)** $\\dfrac{1}{2}x^2 + 1$\n**(2)** $\\dfrac{x-3}{2}$\n**(3)** $x^3 - x$\n**(4)** $2$",
     "choices": [],
     "answer": "(1) 2차 / (2) 1차 / (3) 3차 / (4) 0차",
-    "solution": "[키포인트] 구하는 값은 (1) 2차 / (2) 1차 / (3) 3차 / (4) 0차이다."
+    "solution": "[키포인트] 구하는 값은 (1) 2차 / (2) 1차 / (3) 3차 / (4) 0차이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -446,7 +474,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -467,7 +495,9 @@ window.questionBank = [
       "차수, 계수, 일차식"
     ],
     "answer": "③",
-    "solution": "[키포인트] 항이 덧셈 기호로 연결된 식은 다항식, 항이 하나뿐인 식은 단항식입니다. 또 차수가 1인 다항식을 일차식이라고 하므로 빈칸은 차례대로 다항식, 단항식, 일차식입니다."
+    "solution": "[키포인트] 항이 덧셈 기호로 연결된 식은 다항식, 항이 하나뿐인 식은 단항식입니다. 또 차수가 1인 다항식을 일차식이라고 하므로 빈칸은 차례대로 다항식, 단항식, 일차식입니다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -479,7 +509,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -502,7 +532,9 @@ window.questionBank = [
       "㉢ ㉡ ㉠"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ㉠ = $\\dfrac{3}{\\frac{1}{2}} + (-1) = 5$ / ㉡ = $\\dfrac{1}{2} + 2 \\times 1 = \\dfrac{5}{2}$ / ㉢ = $2 \\times \\dfrac{1}{2} - (-1)^3 = 2$\n→ 작은 순서: ㉢ < ㉡ < ㉠\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ㉠ = $\\dfrac{3}{\\frac{1}{2}} + (-1) = 5$ / ㉡ = $\\dfrac{1}{2} + 2 \\times 1 = \\dfrac{5}{2}$ / ㉢ = $2 \\times \\dfrac{1}{2} - (-1)^3 = 2$\n→ 작은 순서: ㉢ < ㉡ < ㉠\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -514,7 +546,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -534,7 +566,9 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $3 - (-2)^2 = 3 - 4 = -1$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $3 - (-2)^2 = 3 - 4 = -1$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -546,7 +580,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -561,7 +595,9 @@ window.questionBank = [
     "content": "다음 식 $a^2 + \\dfrac{b}{a}$에 대하여 물음에 답하여라.\\n**(1)** 위의 식을 간단히 나타내어라.\\n**(2)** $a = -2$, $b = 4$일 때, 식의 값을 구하여라.",
     "choices": [],
     "answer": "(1) $a^2 + \\dfrac{b}{a}$\n(2) $(-2)^2 + \\dfrac{4}{-2} = 4 + (-2) = 2$",
-    "solution": "[키포인트] 구하는 값은 (1) $a^2 + \\dfrac{b}{a}$\n(2) $(-2)^2 + \\dfrac{4}{-2} = 4 + (-2) = 2$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $a^2 + \\dfrac{b}{a}$\n(2) $(-2)^2 + \\dfrac{4}{-2} = 4 + (-2) = 2$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -573,7 +609,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -593,7 +629,9 @@ window.questionBank = [
       "$-a + 3b - 1$"
     ],
     "answer": "②, ⑤",
-    "solution": "[키포인트] 차수가 1인 다항식이어야 하므로 ②, ⑤이다.\n따라서 정답은 ②, ⑤이다."
+    "solution": "[키포인트] 차수가 1인 다항식이어야 하므로 ②, ⑤이다.\n따라서 정답은 ②, ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -604,8 +642,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -620,7 +658,9 @@ window.questionBank = [
     "content": "공기 중에서 소리가 전달되는 속력은 기온 $t°C$일 때, 매초 약 $0.6t + 331$ m이다. 기온 15°C에서 번개불이 보인 후 10초 후에 천둥 소리를 들었을 때, 번개가 발생한 지점까지의 거리는 몇 m인가?",
     "choices": [],
     "answer": "3400 m",
-    "solution": "[키포인트] 기온 15°C에서 소리의 속력 = $0.6 \\times 15 + 331 = 340$ (m/초)\n거리 = $10 \\times 340 = 3400$ (m)\n따라서 구하는 값은 3400 m이다."
+    "solution": "[키포인트] 기온 15°C에서 소리의 속력 = $0.6 \\times 15 + 331 = 340$ (m/초)\n거리 = $10 \\times 340 = 3400$ (m)\n따라서 구하는 값은 3400 m이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -632,7 +672,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -646,7 +686,9 @@ window.questionBank = [
     "content": "$a = -2$, $b = -3$, $c = -\\dfrac{1}{2}$일 때, $4a^2 - 2b + \\dfrac{2}{c}$의 값을 구하여라.",
     "choices": [],
     "answer": "18",
-    "solution": "[키포인트] $4 \\times (-2)^2 - 2 \\times (-3) + 2 \\times (-2)$\n$= 4 \\times 4 + 6 - 4 = 18$\n따라서 구하는 값은 18이다."
+    "solution": "[키포인트] $4 \\times (-2)^2 - 2 \\times (-3) + 2 \\times (-2)$\n$= 4 \\times 4 + 6 - 4 = 18$\n따라서 구하는 값은 18이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -658,7 +700,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -671,7 +713,9 @@ window.questionBank = [
     "content": "$a < b < c < d < e$이고, $M(x,y)$는 두 수 중 큰 수, $m(x,y)$는 두 수 중 작은 수를 뜻한다고 하자. $M(M(e, m(c,d)), m(a, M(b,c)))$를 구하여라.",
     "choices": [],
     "answer": "$e$",
-    "solution": "[키포인트] $m(c,d) = c$ → $M(e, m(c,d)) = M(e,c) = e$\n$M(b,c) = c$ → $m(a, M(b,c)) = m(a,c) = a$\n$\\therefore M(e, a) = e$\n따라서 구하는 값은 $e$이다."
+    "solution": "[키포인트] $m(c,d) = c$ → $M(e, m(c,d)) = M(e,c) = e$\n$M(b,c) = c$ → $m(a, M(b,c)) = m(a,c) = a$\n$\\therefore M(e, a) = e$\n따라서 구하는 값은 $e$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -683,7 +727,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -699,7 +743,9 @@ window.questionBank = [
     "choices": [],
     "answer": "140개",
     "solution": "[키포인트] $1^2 + 2^2 + 3^2 + \\cdots + 7^2 = 1 + 4 + 9 + 16 + 25 + 36 + 49 = 140$ (개)\n따라서 구하는 값은 140개이다.",
-    "image": "assets/images/중1_1학기_식의값/q23.jpg"
+    "image": "assets/images/중1_1학기_식의값/q23.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -711,7 +757,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -725,7 +771,9 @@ window.questionBank = [
     "content": "$x = \\dfrac{1}{2}$, $y = -3$일 때 $8x^2 - xy^2$의 값을 구하시오.",
     "choices": [],
     "answer": "$-\\dfrac{5}{2}$",
-    "solution": "[키포인트] $8 \\times \\left(\\dfrac{1}{2}\\right)^2 - \\dfrac{1}{2} \\times (-3)^2 = 8 \\times \\dfrac{1}{4} - \\dfrac{1}{2} \\times 9 = 2 - \\dfrac{9}{2} = -\\dfrac{5}{2}$\n따라서 구하는 값은 $-\\dfrac{5}{2}$이다."
+    "solution": "[키포인트] $8 \\times \\left(\\dfrac{1}{2}\\right)^2 - \\dfrac{1}{2} \\times (-3)^2 = 8 \\times \\dfrac{1}{4} - \\dfrac{1}{2} \\times 9 = 2 - \\dfrac{9}{2} = -\\dfrac{5}{2}$\n따라서 구하는 값은 $-\\dfrac{5}{2}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -737,7 +785,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -755,7 +803,9 @@ window.questionBank = [
     "content": "아래 표는 어떤 규칙에 따라 자연수를 나열한 것이다.\n\n| 1 | 4 | 7 | 10 | … |\n|---|---|---|----|---|\n| 2 | 5 | 8 | 11 | … |\n| 3 | 6 | 9 | 12 | … |\n\n**(1)** 위에서 세 번째이고 왼쪽에서부터 12번째의 수를 구하여라.\n\n**(2)** 위에서 두 번째이고 왼쪽에서부터 $n$번째의 수를 $n$을 써서 나타내어라.",
     "choices": [],
     "answer": "(1) 36\n(2) $3n - 1$",
-    "solution": "[키포인트] (1) 세 번째 행: 3, 6, 9, 12, ... → 12번째 수는 $3 \\times 12 = 36$\n(2) 두 번째 행: 2, 5, 8, 11, ... → $n$번째 수는 $3n - 1$\n따라서 구하는 값은 (1) 36\n(2) $3n - 1$이다."
+    "solution": "[키포인트] (1) 세 번째 행: 3, 6, 9, 12, ... → 12번째 수는 $3 \\times 12 = 36$\n(2) 두 번째 행: 2, 5, 8, 11, ... → $n$번째 수는 $3n - 1$\n따라서 구하는 값은 (1) 36\n(2) $3n - 1$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 26,
@@ -767,7 +817,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -787,7 +837,9 @@ window.questionBank = [
       "$-\\dfrac{1}{a}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] ① $-\\dfrac{1}{2}$ / ② $\\dfrac{1}{4}$ / ③ $4$ / ④ $-\\dfrac{1}{4}$ / ⑤ $2$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] ① $-\\dfrac{1}{2}$ / ② $\\dfrac{1}{4}$ / ③ $4$ / ④ $-\\dfrac{1}{4}$ / ⑤ $2$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -799,7 +851,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -814,7 +866,9 @@ window.questionBank = [
     "choices": [],
     "answer": "49개",
     "solution": "[키포인트] $7 \\times 7 = 49$ (개)\n따라서 구하는 값은 49개이다.",
-    "image": "assets/images/중1_1학기_식의값/q27.jpg"
+    "image": "assets/images/중1_1학기_식의값/q27.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -826,7 +880,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -848,7 +902,9 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 정리하면 $(p+3)x^2 + 2x - 7$ → $p+3 = 0$ → $p = -3$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 정리하면 $(p+3)x^2 + 2x - 7$ → $p+3 = 0$ → $p = -3$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -860,7 +916,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -880,7 +936,9 @@ window.questionBank = [
       "$x \\times x \\times y$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 곱셈 기호만으로 연결된 식이 단항식이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 곱셈 기호만으로 연결된 식이 단항식이다.\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -891,8 +949,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -912,7 +970,9 @@ window.questionBank = [
       "1535 m"
     ],
     "answer": "②",
-    "solution": "[키포인트] $(0.6 \\times 20 + 336) \\times 4 = 348 \\times 4 = 1392$ (m)\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $(0.6 \\times 20 + 336) \\times 4 = 348 \\times 4 = 1392$ (m)\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -923,8 +983,8 @@ window.questionBank = [
     "standardUnitKey": "M1-03",
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+    "subUnit": "일차방정식의 활용",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -944,7 +1004,9 @@ window.questionBank = [
       "343 m/초"
     ],
     "answer": "①",
-    "solution": "[키포인트] $331 + 0.6 \\times (-20) = 331 - 12 = 319$ (m/초)\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $331 + 0.6 \\times (-20) = 331 - 12 = 319$ (m/초)\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -956,7 +1018,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -970,7 +1032,9 @@ window.questionBank = [
     "content": "$x = \\dfrac{1}{6}$, $y = -\\dfrac{1}{5}$일 때, $\\dfrac{xy - x + y}{x + y}$의 값을 구하여라.",
     "choices": [],
     "answer": "12",
-    "solution": "[키포인트] $x + y = -\\dfrac{1}{30}$, $xy = -\\dfrac{1}{30}$ 대입하면\n$\\dfrac{-\\frac{1}{30} - \\frac{1}{6} - \\frac{1}{5}}{-\\frac{1}{30}} = \\dfrac{\\frac{-1-5-6}{30}}{-\\frac{1}{30}} = \\dfrac{-\\frac{12}{30}}{-\\frac{1}{30}} = 12$\n따라서 구하는 값은 12이다."
+    "solution": "[키포인트] $x + y = -\\dfrac{1}{30}$, $xy = -\\dfrac{1}{30}$ 대입하면\n$\\dfrac{-\\frac{1}{30} - \\frac{1}{6} - \\frac{1}{5}}{-\\frac{1}{30}} = \\dfrac{\\frac{-1-5-6}{30}}{-\\frac{1}{30}} = \\dfrac{-\\frac{12}{30}}{-\\frac{1}{30}} = 12$\n따라서 구하는 값은 12이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -982,7 +1046,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1001,7 +1065,9 @@ window.questionBank = [
       "$5x$는 단항식이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① 동류항 아님 / ② 항은 3개 / ③ $x$의 계수는 $-\\dfrac{5}{3}$ / ④ $3x^2$의 차수는 2\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] ① 동류항 아님 / ② 항은 3개 / ③ $x$의 계수는 $-\\dfrac{5}{3}$ / ④ $3x^2$의 차수는 2\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1013,7 +1079,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1033,7 +1099,9 @@ window.questionBank = [
       "$-16$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $-\\left(-\\dfrac{1}{2}\\right)^3 + \\left(-\\left(-\\dfrac{1}{2}\\right)\\right)^3 = -\\left(-\\dfrac{1}{8}\\right) + \\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8} + \\dfrac{1}{8} = \\dfrac{1}{4}$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $-\\left(-\\dfrac{1}{2}\\right)^3 + \\left(-\\left(-\\dfrac{1}{2}\\right)\\right)^3 = -\\left(-\\dfrac{1}{8}\\right) + \\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8} + \\dfrac{1}{8} = \\dfrac{1}{4}$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1045,7 +1113,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1065,7 +1133,9 @@ window.questionBank = [
       "$19$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $-(-2)^2 + 5 \\times 3 = -4 + 15 = 11$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $-(-2)^2 + 5 \\times 3 = -4 + 15 = 11$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1077,7 +1147,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1099,7 +1169,9 @@ window.questionBank = [
       "$-10$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $(6+a)x^2 - 7x + 11$이 일차식이 되려면 $6+a = 0$ → $a = -6$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $(6+a)x^2 - 7x + 11$이 일차식이 되려면 $6+a = 0$ → $a = -6$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1111,7 +1183,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1125,7 +1197,9 @@ window.questionBank = [
     "content": "$a = -2$일 때, $-a^2 - (-a)^3$의 값은?",
     "choices": [],
     "answer": "$-12$",
-    "solution": "[키포인트] $-(-2)^2 - \\{-(-2)\\}^3 = -4 - 8 = -12$\n따라서 구하는 값은 $-12$이다."
+    "solution": "[키포인트] $-(-2)^2 - \\{-(-2)\\}^3 = -4 - 8 = -12$\n따라서 구하는 값은 $-12$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1137,7 +1211,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1157,7 +1231,9 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $\\dfrac{2}{(-\\frac{1}{2})^2} + \\dfrac{4(-\\frac{2}{3})}{^3}{\\frac{3}{4}} - (-\\dfrac{1}{2}) = 8 + (-6) - 4 + \\dfrac{1}{2} = -\\dfrac{3}{2}$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $\\dfrac{2}{(-\\frac{1}{2})^2} + \\dfrac{4(-\\frac{2}{3})}{^3}{\\frac{3}{4}} - (-\\dfrac{1}{2}) = 8 + (-6) - 4 + \\dfrac{1}{2} = -\\dfrac{3}{2}$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1169,7 +1245,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1189,7 +1265,9 @@ window.questionBank = [
       "$x + y$"
     ],
     "answer": "②, ④",
-    "solution": "[키포인트] 정답은 ②, ④이다."
+    "solution": "[키포인트] 정답은 ②, ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1201,7 +1279,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1220,7 +1298,9 @@ window.questionBank = [
       "$x^2 + x - x^2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $x \\times x + 1 = x^2 + 1$이므로 이차식이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $x \\times x + 1 = x^2 + 1$이므로 이차식이다.\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1232,7 +1312,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1252,7 +1332,9 @@ window.questionBank = [
       "25°C"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $346 = 331 + 0.6t$ → $0.6t = 15$ → $t = 25$(°C)\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $346 = 331 + 0.6t$ → $0.6t = 15$ → $t = 25$(°C)\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1264,7 +1346,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1284,7 +1366,9 @@ window.questionBank = [
       "$-a$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $a = \\dfrac{1}{2}$ 예시: ① 2 / ② $-\\dfrac{1}{4}$ / ③ $-\\dfrac{1}{8}$ / ④ $\\dfrac{1}{2}$ / ⑤ $-\\dfrac{1}{2}$\n→ 음수는 절댓값이 클수록 작으므로 가장 작은 수는 $-a$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $a = \\dfrac{1}{2}$ 예시: ① 2 / ② $-\\dfrac{1}{4}$ / ③ $-\\dfrac{1}{8}$ / ④ $\\dfrac{1}{2}$ / ⑤ $-\\dfrac{1}{2}$\n→ 음수는 절댓값이 클수록 작으므로 가장 작은 수는 $-a$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1296,7 +1380,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1309,7 +1393,9 @@ window.questionBank = [
     "content": "$$5 + \\dfrac{1}{n + \\dfrac{1}{m + \\dfrac{1}{2}}} = \\dfrac{227}{44}$$",
     "choices": [],
     "answer": "9",
-    "solution": "[키포인트] $\\dfrac{227}{44} = 5 + \\dfrac{7}{44} = 5 + \\dfrac{1}{6+\\frac{2}{7}} = 5 + \\dfrac{1}{6+\\frac{1}{3+\\frac{1}{2}}}$\n→ $m = 3$, $n = 6$ → $m + n = 9$\n따라서 구하는 값은 9이다."
+    "solution": "[키포인트] $\\dfrac{227}{44} = 5 + \\dfrac{7}{44} = 5 + \\dfrac{1}{6+\\frac{2}{7}} = 5 + \\dfrac{1}{6+\\frac{1}{3+\\frac{1}{2}}}$\n→ $m = 3$, $n = 6$ → $m + n = 9$\n따라서 구하는 값은 9이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1321,7 +1407,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1341,7 +1427,9 @@ window.questionBank = [
       "$x^2$의 계수는 $\\dfrac{1}{2}$이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] $(x^2 - 4x + 8) \\div (-2) = -\\dfrac{1}{2}x^2 + 2x - 4$이다. 따라서 $x$의 계수는 2이므로 옳은 설명은 ④이다."
+    "solution": "[키포인트] $(x^2 - 4x + 8) \\div (-2) = -\\dfrac{1}{2}x^2 + 2x - 4$이다. 따라서 $x$의 계수는 2이므로 옳은 설명은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1353,7 +1441,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1367,7 +1455,9 @@ window.questionBank = [
     "content": "$x=-2$, $y=-3$일 때, $A = |2y - x^2|$, $B = \\dfrac{4y^2}{x^3}$의 곱 $A \\times B$의 값을 구하여라.",
     "choices": [],
     "answer": "$-45$",
-    "solution": "[키포인트] $A = |2(-3) - (-2)^2| = |-6 - 4| = 10$\n$B = \\dfrac{4 \\times 9}{(-8)} = -\\dfrac{9}{2}$\n$A \\times B = 10 \\times (-\\dfrac{9}{2}) = -45$\n따라서 구하는 값은 $-45$이다."
+    "solution": "[키포인트] $A = |2(-3) - (-2)^2| = |-6 - 4| = 10$\n$B = \\dfrac{4 \\times 9}{(-8)} = -\\dfrac{9}{2}$\n$A \\times B = 10 \\times (-\\dfrac{9}{2}) = -45$\n따라서 구하는 값은 $-45$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1379,7 +1469,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1393,7 +1483,9 @@ window.questionBank = [
     "content": "$a = \\dfrac{2}{3}$, $b = -\\dfrac{1}{3}$일 때, $-81(3a^2b + a^2b^2 + 3ab^2)$의 값을 구하여라.",
     "choices": [],
     "answer": "14",
-    "solution": "[키포인트] $= -81ab(3a + ab + 3b) = -81 \\times \\dfrac{2}{3} \\times \\left(-\\dfrac{1}{3}\\right) \\times \\left(2 - \\dfrac{2}{9} - 1\\right) = 18 \\times \\dfrac{7}{9} = 14$\n따라서 구하는 값은 14이다."
+    "solution": "[키포인트] $= -81ab(3a + ab + 3b) = -81 \\times \\dfrac{2}{3} \\times \\left(-\\dfrac{1}{3}\\right) \\times \\left(2 - \\dfrac{2}{9} - 1\\right) = 18 \\times \\dfrac{7}{9} = 14$\n따라서 구하는 값은 14이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1405,7 +1497,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1419,7 +1511,9 @@ window.questionBank = [
     "content": "$y - x = \\dfrac{1}{4}xy$일 때, $\\dfrac{8xy}{-x + xy + y}$의 값을 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{32}{5}$",
-    "solution": "[키포인트] $(y-x) = \\dfrac{1}{4}xy$ 대입:\n$\\dfrac{8xy}{\\dfrac{1}{4}xy + xy} = \\dfrac{8xy}{\\dfrac{5}{4}xy} = \\dfrac{32}{5}$\n따라서 구하는 값은 $\\dfrac{32}{5}$이다."
+    "solution": "[키포인트] $(y-x) = \\dfrac{1}{4}xy$ 대입:\n$\\dfrac{8xy}{\\dfrac{1}{4}xy + xy} = \\dfrac{8xy}{\\dfrac{5}{4}xy} = \\dfrac{32}{5}$\n따라서 구하는 값은 $\\dfrac{32}{5}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1431,7 +1525,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1447,7 +1541,9 @@ window.questionBank = [
     "content": "다음 식을 간단히 했을 때의 차수를 말하여라. $$-6x^2 + 3x + 6x^2 + 4$$",
     "choices": [],
     "answer": "1차",
-    "solution": "[키포인트] 정리하면 가장 큰 항의 차수는 $3x$이므로 1차이다.\n따라서 구하는 값은 1차이다."
+    "solution": "[키포인트] 정리하면 가장 큰 항의 차수는 $3x$이므로 1차이다.\n따라서 구하는 값은 1차이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1459,7 +1555,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1474,7 +1570,9 @@ window.questionBank = [
     "content": "**(1)** $a = \\dfrac{1}{2}$, $b = -\\dfrac{1}{3}$, $c = \\dfrac{1}{6}$일 때, $\\dfrac{ab}{a+b} + \\dfrac{bc}{b+c} + \\dfrac{ca}{c+a}$\n\n**(2)** $\\langle\\langle a, b, c \\rangle\\rangle = \\dfrac{a-c}{b-c}$라고 할 때, $\\langle\\langle 4, \\dfrac{3}{2}, \\langle\\langle 1, 2, 3 \\rangle\\rangle \\rangle\\rangle$\n\n**(3)** $x+y = a$, $y+z = b$, $z+x = c$일 때, $x + y + z$",
     "choices": [],
     "answer": "(1) $-\\dfrac{13}{24}$\n(2) $-4$\n(3) $\\dfrac{1}{2}(a+b+c)$",
-    "solution": "[키포인트] 구하는 값은 (1) $-\\dfrac{13}{24}$\n(2) $-4$\n(3) $\\dfrac{1}{2}(a+b+c)$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $-\\dfrac{13}{24}$\n(2) $-4$\n(3) $\\dfrac{1}{2}(a+b+c)$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1486,7 +1584,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1505,7 +1603,9 @@ window.questionBank = [
       "$\\dfrac{1}{2} \\times x - y + 3$에서 항은 4개이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\dfrac{1}{2}x - y + 3$에서 항은 $\\dfrac{1}{2}x$, $-y$, $3$의 3개이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $\\dfrac{1}{2}x - y + 3$에서 항은 $\\dfrac{1}{2}x$, $-y$, $3$의 3개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 52,
@@ -1517,7 +1617,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1538,7 +1638,9 @@ window.questionBank = [
       "$x^2 + 3x + 1 - x - x^2$"
     ],
     "answer": "④, ⑤",
-    "solution": "[키포인트] ① 이차식 / ② $-5$ (상수) / ③ $-3$ (상수)\n따라서 정답은 ④, ⑤이다."
+    "solution": "[키포인트] ① 이차식 / ② $-5$ (상수) / ③ $-3$ (상수)\n따라서 정답은 ④, ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1550,7 +1652,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1569,7 +1671,9 @@ window.questionBank = [
       "$x \\times x + 3$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정답은 ②이다."
+    "solution": "[키포인트] 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1581,7 +1685,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1600,7 +1704,9 @@ window.questionBank = [
       "$a + bxy$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $3x^2y \\div 2 = \\dfrac{3x^2y}{2}$ : 단항식\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $3x^2y \\div 2 = \\dfrac{3x^2y}{2}$ : 단항식\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 56,
@@ -1612,7 +1718,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1626,7 +1732,9 @@ window.questionBank = [
     "content": "$a + b = \\dfrac{2}{3}$, $ab = -2$일 때, $\\dfrac{1}{a} + \\dfrac{1}{b}$의 값을 구하여라.",
     "choices": [],
     "answer": "$-\\dfrac{1}{3}$",
-    "solution": "[키포인트] $\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{a+b}{ab} = \\dfrac{\\frac{2}{3}}{-2} = \\dfrac{2}{3} \\times \\left(-\\dfrac{1}{2}\\right) = -\\dfrac{1}{3}$\n따라서 구하는 값은 $-\\dfrac{1}{3}$이다."
+    "solution": "[키포인트] $\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{a+b}{ab} = \\dfrac{\\frac{2}{3}}{-2} = \\dfrac{2}{3} \\times \\left(-\\dfrac{1}{2}\\right) = -\\dfrac{1}{3}$\n따라서 구하는 값은 $-\\dfrac{1}{3}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 57,
@@ -1638,7 +1746,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1659,7 +1767,9 @@ window.questionBank = [
       "$x + \\dfrac{3x^2}{x}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $x + \\dfrac{3x^2}{x} = x + 3x = 4x$ (분모의 $x$로 약분하면 일차식)\n단, ③은 $1$ (상수), ④는 $1.8y^2 - y$ (이차식)\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $x + \\dfrac{3x^2}{x} = x + 3x = 4x$ (분모의 $x$로 약분하면 일차식)\n단, ③은 $1$ (상수), ④는 $1.8y^2 - y$ (이차식)\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 58,
@@ -1671,7 +1781,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1687,7 +1797,9 @@ window.questionBank = [
     "content": "어떤 일차식을 간단히 하면 $4x+1$이고, 이때 $x$의 계수를 $a$라 하자. 또, $3y - \\dfrac{1}{6} - \\dfrac{2(2y-5)}{3}$을 간단히 했을 때 $y$의 계수를 $b$라 할 때, $\\dfrac{3}{8}a - \\dfrac{3}{5}b$의 값을 구하여라.",
     "choices": [],
     "answer": "2",
-    "solution": "[키포인트] $9x - 5x + 1 = 4x + 1$ → $a = 4$\n$\\dfrac{3y-1-8y+20}{6} = \\dfrac{-5y+19}{6}$ → $b = -\\dfrac{5}{6}$\n$\\dfrac{3}{8} \\times 4 - \\dfrac{3}{5} \\times (-\\dfrac{5}{6}) = \\dfrac{3}{2} + \\dfrac{1}{2} = 2$\n따라서 구하는 값은 2이다."
+    "solution": "[키포인트] $9x - 5x + 1 = 4x + 1$ → $a = 4$\n$\\dfrac{3y-1-8y+20}{6} = \\dfrac{-5y+19}{6}$ → $b = -\\dfrac{5}{6}$\n$\\dfrac{3}{8} \\times 4 - \\dfrac{3}{5} \\times (-\\dfrac{5}{6}) = \\dfrac{3}{2} + \\dfrac{1}{2} = 2$\n따라서 구하는 값은 2이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 59,
@@ -1699,7 +1811,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1713,7 +1825,9 @@ window.questionBank = [
     "content": "섭씨 온도 $C$와 화씨 온도 $F$ 사이에는 관계식 $C = \\dfrac{5}{9}(F+40) - 40$이 성립한다. 절대영도($0$ K)는 화씨로 몇 도인지 구하여라.",
     "choices": [],
     "answer": "$-459.4°F$",
-    "solution": "[키포인트] 절대영도는 $-273°C$ → $C = -273$을 대입\n$-273 = \\dfrac{5}{9}(F+40) - 40$\n$-233 = \\dfrac{5}{9}(F+40)$\n$F + 40 = -233 \\times \\dfrac{9}{5} = -419.4$\n$F = -459.4$(°F)\n따라서 구하는 값은 $-459.4°F$이다."
+    "solution": "[키포인트] 절대영도는 $-273°C$ → $C = -273$을 대입\n$-273 = \\dfrac{5}{9}(F+40) - 40$\n$-233 = \\dfrac{5}{9}(F+40)$\n$F + 40 = -233 \\times \\dfrac{9}{5} = -419.4$\n$F = -459.4$(°F)\n따라서 구하는 값은 $-459.4°F$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 60,
@@ -1725,7 +1839,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "식의 값",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1744,6 +1858,8 @@ window.questionBank = [
       "$x^4 + y^3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] ① 3차 / ② 2차 / ③ 4차 / ④ 5차 / ⑤ 4차\n따라서 정답은 ④이다."
+    "solution": "[키포인트] ① 3차 / ② 2차 / ③ 4차 / ④ 5차 / ⑤ 4차\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

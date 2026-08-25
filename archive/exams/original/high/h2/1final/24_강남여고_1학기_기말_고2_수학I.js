@@ -22,7 +22,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "②",
-    "solution": "[키포인트] 일반항에 원하는 항 번호를 대입한다.\n조건 정리: $a_n=2n-3$이고 구할 값은 $a_7$이다.\n풀이 방향: $n=7$을 일반항에 대입한다.\n정석 풀이: $a_7=2\\times 7-3=14-3=11$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 일반항에 원하는 항 번호를 대입한다.\n조건 정리: $a_n=2n-3$이고 구할 값은 $a_7$이다.\n풀이 방향: $n=7$을 일반항에 대입한다.\n정석 풀이: $a_7=2\\times 7-3=14-3=11$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+    "subUnit": "수열의 일반항",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 2,
@@ -46,7 +50,11 @@ window.questionBank = [
       "19"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 시그마의 선형성을 이용한다.\n조건 정리: $\\sum_{k=1}^{10}a_k=9$, $\\sum_{k=1}^{10}b_k=5$이다.\n풀이 방향: $\\sum(a_k+2b_k)=\\sum a_k+2\\sum b_k$로 나눈다.\n정석 풀이: $\\sum_{k=1}^{10}(a_k+2b_k)=\\sum_{k=1}^{10}a_k+2\\sum_{k=1}^{10}b_k=9+2\\times5=19$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 시그마의 선형성을 이용한다.\n조건 정리: $\\sum_{k=1}^{10}a_k=9$, $\\sum_{k=1}^{10}b_k=5$이다.\n풀이 방향: $\\sum(a_k+2b_k)=\\sum a_k+2\\sum b_k$로 나눈다.\n정석 풀이: $\\sum_{k=1}^{10}(a_k+2b_k)=\\sum_{k=1}^{10}a_k+2\\sum_{k=1}^{10}b_k=9+2\\times5=19$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -70,7 +78,11 @@ window.questionBank = [
       "14"
     ],
     "answer": "①",
-    "solution": "[키포인트] 등차수열의 두 항의 차로 공차를 구한다.\n조건 정리: 첫째항은 $4$이고 $a_{10}-a_7=6$이다.\n풀이 방향: $a_{10}-a_7=(10-7)d=3d$를 이용한다.\n정석 풀이: $3d=6$이므로 공차는 $d=2$이다. 따라서 $a_4=4+3d=4+6=10$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 등차수열의 두 항의 차로 공차를 구한다.\n조건 정리: 첫째항은 $4$이고 $a_{10}-a_7=6$이다.\n풀이 방향: $a_{10}-a_7=(10-7)d=3d$를 이용한다.\n정석 풀이: $3d=6$이므로 공차는 $d=2$이다. 따라서 $a_4=4+3d=4+6=10$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "subUnit": "등차수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -94,7 +106,11 @@ window.questionBank = [
       "85"
     ],
     "answer": "④",
-    "solution": "[키포인트] 시그마를 항별로 나누어 계산한다.\n조건 정리: $\\sum_{k=1}^{10}(2k-3)$을 구한다.\n풀이 방향: $2\\sum k-3\\sum 1$로 나누어 계산한다.\n정석 풀이: $\\sum_{k=1}^{10}(2k-3)=2\\sum_{k=1}^{10}k-3\\times10=2\\times\\dfrac{10\\times11}{2}-30=110-30=80$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 시그마를 항별로 나누어 계산한다.\n조건 정리: $\\sum_{k=1}^{10}(2k-3)$을 구한다.\n풀이 방향: $2\\sum k-3\\sum 1$로 나누어 계산한다.\n정석 풀이: $\\sum_{k=1}^{10}(2k-3)=2\\sum_{k=1}^{10}k-3\\times10=2\\times\\dfrac{10\\times11}{2}-30=110-30=80$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -118,7 +134,11 @@ window.questionBank = [
       "24"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 변과 그 끼인각이 주어지면 넓이 공식 $S=\\dfrac12bc\\sin A$를 쓴다.\n조건 정리: $\\overline{AB}=8$, $\\overline{AC}=6$, $A=30^\\circ$이다.\n풀이 방향: 두 변과 끼인각으로 삼각형의 넓이를 계산한다.\n정석 풀이: $S=\\dfrac12\\times8\\times6\\times\\sin30^\\circ=24\\times\\dfrac12=12$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 두 변과 그 끼인각이 주어지면 넓이 공식 $S=\\dfrac12bc\\sin A$를 쓴다.\n조건 정리: $\\overline{AB}=8$, $\\overline{AC}=6$, $A=30^\\circ$이다.\n풀이 방향: 두 변과 끼인각으로 삼각형의 넓이를 계산한다.\n정석 풀이: $S=\\dfrac12\\times8\\times6\\times\\sin30^\\circ=24\\times\\dfrac12=12$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -145,7 +165,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 사인법칙에서 $\\dfrac{a}{\\sin A}=2R$를 이용한다.\n조건 정리: 변 $\\overline{AB}=8$은 각 $C=\\dfrac{\\pi}{6}$의 대변이다.\n풀이 방향: $\\dfrac{\\overline{AB}}{\\sin C}=2R$에 대입한다.\n정석 풀이: $\\dfrac{8}{\\sin(\\pi/6)}=\\dfrac{8}{1/2}=16$이므로 $2R=16$이다. 따라서 $R=8$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q6.png"
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q6.png",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -172,7 +196,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 코사인법칙으로 미지의 변의 길이를 구한다.\n조건 정리: $\\overline{AB}=4$, $\\overline{BC}=\\sqrt{21}$, $\\angle A=60^\\circ$이다.\n풀이 방향: $x=\\overline{AC}$라 두고 코사인법칙을 적용한다.\n정석 풀이: $(\\sqrt{21})^2=x^2+4^2-2\\cdot x\\cdot4\\cdot\\cos60^\\circ$이므로 $21=x^2+16-4x$이다. 따라서 $x^2-4x-5=0$, 즉 $(x-5)(x+1)=0$이다. 길이는 양수이므로 $x=5$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q7.png"
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q7.png",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -196,7 +224,11 @@ window.questionBank = [
       "$\\dfrac{7}{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 등비수열의 두 항의 비로 공비의 거듭제곱을 구한다.\n조건 정리: $a_4=8$, $a_8=128$, $r>0$이다.\n풀이 방향: $\\dfrac{a_8}{a_4}=r^{8-4}=r^4$를 이용한다.\n정석 풀이: $r^4=\\dfrac{128}{8}=16=2^4$이다. $r>0$이므로 $r=2$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 등비수열의 두 항의 비로 공비의 거듭제곱을 구한다.\n조건 정리: $a_4=8$, $a_8=128$, $r>0$이다.\n풀이 방향: $\\dfrac{a_8}{a_4}=r^{8-4}=r^4$를 이용한다.\n정석 풀이: $r^4=\\dfrac{128}{8}=16=2^4$이다. $r>0$이므로 $r=2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "subUnit": "등비수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 9,
@@ -220,7 +252,11 @@ window.questionBank = [
       "$25\\pi$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 사인법칙 $\\dfrac{a}{\\sin A}=2R$로 외접원의 반지름을 구한다.\n조건 정리: $a=8\\sin A$이다.\n풀이 방향: 양변을 $\\sin A$로 나누어 $2R$를 찾는다.\n정석 풀이: $\\dfrac{a}{\\sin A}=8$이고, 사인법칙에 의해 $\\dfrac{a}{\\sin A}=2R$이다. 따라서 $2R=8$, $R=4$이다. 외접원의 넓이는 $\\pi R^2=16\\pi$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 사인법칙 $\\dfrac{a}{\\sin A}=2R$로 외접원의 반지름을 구한다.\n조건 정리: $a=8\\sin A$이다.\n풀이 방향: 양변을 $\\sin A$로 나누어 $2R$를 찾는다.\n정석 풀이: $\\dfrac{a}{\\sin A}=8$이고, 사인법칙에 의해 $\\dfrac{a}{\\sin A}=2R$이다. 따라서 $2R=8$, $R=4$이다. 외접원의 넓이는 $\\pi R^2=16\\pi$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -244,7 +280,11 @@ window.questionBank = [
       "13"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 항으로 첫째항과 공차를 구한 뒤 등차수열의 합 공식을 쓴다.\n조건 정리: $a_3=7$, $a_8=-23$, $S_n=-80$이다.\n풀이 방향: 먼저 공차와 첫째항을 구하고 $S_n=\\dfrac{n}{2}\\{2a+(n-1)d\\}$에 대입한다.\n정석 풀이: $a_8-a_3=5d=-23-7=-30$이므로 $d=-6$이다. $a_3=a+2d=7$이므로 $a=19$이다. 따라서 $S_n=\\dfrac{n}{2}\\{38-6(n-1)\\}=n(22-3n)$이다. $n(22-3n)=-80$에서 $3n^2-22n-80=0$, 즉 $(3n+8)(n-10)=0$이므로 자연수 $n=10$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 두 항으로 첫째항과 공차를 구한 뒤 등차수열의 합 공식을 쓴다.\n조건 정리: $a_3=7$, $a_8=-23$, $S_n=-80$이다.\n풀이 방향: 먼저 공차와 첫째항을 구하고 $S_n=\\dfrac{n}{2}\\{2a+(n-1)d\\}$에 대입한다.\n정석 풀이: $a_8-a_3=5d=-23-7=-30$이므로 $d=-6$이다. $a_3=a+2d=7$이므로 $a=19$이다. 따라서 $S_n=\\dfrac{n}{2}\\{38-6(n-1)\\}=n(22-3n)$이다. $n(22-3n)=-80$에서 $3n^2-22n-80=0$, 즉 $(3n+8)(n-10)=0$이므로 자연수 $n=10$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -268,7 +308,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 부분합의 비를 공비의 식으로 바꾸되, 공비가 $1$인 경우를 먼저 배제한다.\n조건 정리: 등비수열의 첫째항을 $A$, 공비를 $r$라 하고, $\\dfrac{S_6}{S_3}=9$이다.\n풀이 방향: $S_6$을 처음 세 항의 합 $S_3$에 이어지는 세 항까지 포함한 합으로 나타낸다.\n정석 풀이: 만약 $r=1$이면 $S_6=6A$, $S_3=3A$이므로 $\\dfrac{S_6}{S_3}=2$가 되어 주어진 값 $9$와 맞지 않는다. 따라서 $r\\ne1$로 보고 등비수열의 합을 사용한다. $S_3=A(1+r+r^2)$이고, $S_6=A(1+r+r^2+r^3+r^4+r^5)=A(1+r+r^2)(1+r^3)$이다. 그러므로 $\\dfrac{S_6}{S_3}=1+r^3=9$이고, $r^3=8$에서 $r=2$이다. 등비수열에서 $\\dfrac{a_4}{a_2}=\\dfrac{Ar^3}{Ar}=r^2=4$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 부분합의 비를 공비의 식으로 바꾸되, 공비가 $1$인 경우를 먼저 배제한다.\n조건 정리: 등비수열의 첫째항을 $A$, 공비를 $r$라 하고, $\\dfrac{S_6}{S_3}=9$이다.\n풀이 방향: $S_6$을 처음 세 항의 합 $S_3$에 이어지는 세 항까지 포함한 합으로 나타낸다.\n정석 풀이: 만약 $r=1$이면 $S_6=6A$, $S_3=3A$이므로 $\\dfrac{S_6}{S_3}=2$가 되어 주어진 값 $9$와 맞지 않는다. 따라서 $r\\ne1$로 보고 등비수열의 합을 사용한다. $S_3=A(1+r+r^2)$이고, $S_6=A(1+r+r^2+r^3+r^4+r^5)=A(1+r+r^2)(1+r^3)$이다. 그러므로 $\\dfrac{S_6}{S_3}=1+r^3=9$이고, $r^3=8$에서 $r=2$이다. 등비수열에서 $\\dfrac{a_4}{a_2}=\\dfrac{Ar^3}{Ar}=r^2=4$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "subUnit": "등비수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -292,7 +336,11 @@ window.questionBank = [
       "$-\\dfrac{\\sqrt{2}}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 코사인법칙에서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}$이다.\n조건 정리: $(a+b)^2=c^2+3ab$이다.\n풀이 방향: 주어진 식을 $a^2+b^2-c^2$의 형태로 바꾼다.\n정석 풀이: $a^2+2ab+b^2=c^2+3ab$이므로 $a^2+b^2-c^2=ab$이다. 따라서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}=\\dfrac{ab}{2ab}=\\dfrac12$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 코사인법칙에서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}$이다.\n조건 정리: $(a+b)^2=c^2+3ab$이다.\n풀이 방향: 주어진 식을 $a^2+b^2-c^2$의 형태로 바꾼다.\n정석 풀이: $a^2+2ab+b^2=c^2+3ab$이므로 $a^2+b^2-c^2=ab$이다. 따라서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}=\\dfrac{ab}{2ab}=\\dfrac12$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -316,7 +364,11 @@ window.questionBank = [
       "17"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분모의 켤레를 곱해 망원급수 형태로 만든다.\n조건 정리: $\\sum_{k=1}^{19}\\dfrac{5}{\\sqrt{5k-1}+\\sqrt{5k+4}}$를 계산한다.\n풀이 방향: 각 항에 켤레식 $\\sqrt{5k+4}-\\sqrt{5k-1}$를 곱한다.\n정석 풀이: $\\dfrac{5}{\\sqrt{5k-1}+\\sqrt{5k+4}}=\\sqrt{5k+4}-\\sqrt{5k-1}$이다. 따라서 합은 $(\\sqrt9-\\sqrt4)+(\\sqrt{14}-\\sqrt9)+\\cdots+(\\sqrt{99}-\\sqrt{94})=\\sqrt{99}-\\sqrt4=3\\sqrt{11}-2$이다. 그러므로 $a=11$, $b=2$이고 $a+b=13$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 분모의 켤레를 곱해 망원급수 형태로 만든다.\n조건 정리: $\\sum_{k=1}^{19}\\dfrac{5}{\\sqrt{5k-1}+\\sqrt{5k+4}}$를 계산한다.\n풀이 방향: 각 항에 켤레식 $\\sqrt{5k+4}-\\sqrt{5k-1}$를 곱한다.\n정석 풀이: $\\dfrac{5}{\\sqrt{5k-1}+\\sqrt{5k+4}}=\\sqrt{5k+4}-\\sqrt{5k-1}$이다. 따라서 합은 $(\\sqrt9-\\sqrt4)+(\\sqrt{14}-\\sqrt9)+\\cdots+(\\sqrt{99}-\\sqrt{94})=\\sqrt{99}-\\sqrt4=3\\sqrt{11}-2$이다. 그러므로 $a=11$, $b=2$이고 $a+b=13$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -340,7 +392,11 @@ window.questionBank = [
       "20"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 매년 초 적립은 기말 적립보다 1년 더 이자가 붙는 등비수열의 합이다.\n조건 정리: 매년 초 $a$만 원씩 10회 적립하고, 10년 후 연말의 금액이 260만 원이다.\n풀이 방향: 적립금의 미래가치를 등비수열의 합으로 세운다.\n정석 풀이: 10년 후 연말의 금액은 $a\\cdot1.04(1+1.04+\\cdots+1.04^9)$이다. 따라서 $260=a\\cdot1.04\\cdot\\dfrac{1.04^{10}-1}{1.04-1}=a\\cdot1.04\\cdot\\dfrac{1.5-1}{0.04}=13a$이다. 그러므로 $a=20$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 매년 초 적립은 기말 적립보다 1년 더 이자가 붙는 등비수열의 합이다.\n조건 정리: 매년 초 $a$만 원씩 10회 적립하고, 10년 후 연말의 금액이 260만 원이다.\n풀이 방향: 적립금의 미래가치를 등비수열의 합으로 세운다.\n정석 풀이: 10년 후 연말의 금액은 $a\\cdot1.04(1+1.04+\\cdots+1.04^9)$이다. 따라서 $260=a\\cdot1.04\\cdot\\dfrac{1.04^{10}-1}{1.04-1}=a\\cdot1.04\\cdot\\dfrac{1.5-1}{0.04}=13a$이다. 그러므로 $a=20$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "subUnit": "등비수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -364,7 +420,11 @@ window.questionBank = [
       "39"
     ],
     "answer": "②",
-    "solution": "[키포인트] 등비수열의 일반항과 합 공식을 이용한다.\n조건 정리: $a_1=7$, 공비는 $2$이고, $\\sum_{k=3}^{10}a_k=a(2^b-1)$이다.\n풀이 방향: $a_k=7\\cdot2^{k-1}$를 합한다.\n정석 풀이: $\\sum_{k=3}^{10}a_k=7(2^2+2^3+\\cdots+2^9)=7\\cdot2^2(1+2+\\cdots+2^7)$이다. 또 $1+2+\\cdots+2^7=2^8-1$이므로 합은 $28(2^8-1)$이다. 따라서 $a=28$, $b=8$이고 $a+b=36$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 등비수열의 일반항과 합 공식을 이용한다.\n조건 정리: $a_1=7$, 공비는 $2$이고, $\\sum_{k=3}^{10}a_k=a(2^b-1)$이다.\n풀이 방향: $a_k=7\\cdot2^{k-1}$를 합한다.\n정석 풀이: $\\sum_{k=3}^{10}a_k=7(2^2+2^3+\\cdots+2^9)=7\\cdot2^2(1+2+\\cdots+2^7)$이다. 또 $1+2+\\cdots+2^7=2^8-1$이므로 합은 $28(2^8-1)$이다. 따라서 $a=28$, $b=8$이고 $a+b=36$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-09-SEQUENCE_TERM",
+    "subUnit": "수열의 일반항",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -388,7 +448,11 @@ window.questionBank = [
       "51"
     ],
     "answer": "④",
-    "solution": "[키포인트] 부분분수로 분해해 망원급수로 계산한다.\n조건 정리: $\\sum_{k=1}^{n}\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac{50}{101}$이다.\n풀이 방향: $\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac12\\left(\\dfrac{1}{2k-1}-\\dfrac{1}{2k+1}\\right)$로 분해한다.\n정석 풀이: 합은 $\\dfrac12\\left(1-\\dfrac{1}{2n+1}\\right)=\\dfrac{n}{2n+1}$이다. 따라서 $\\dfrac{n}{2n+1}=\\dfrac{50}{101}$이므로 $101n=100n+50$, $n=50$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 부분분수로 분해해 망원급수로 계산한다.\n조건 정리: $\\sum_{k=1}^{n}\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac{50}{101}$이다.\n풀이 방향: $\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac12\\left(\\dfrac{1}{2k-1}-\\dfrac{1}{2k+1}\\right)$로 분해한다.\n정석 풀이: 합은 $\\dfrac12\\left(1-\\dfrac{1}{2n+1}\\right)=\\dfrac{n}{2n+1}$이다. 따라서 $\\dfrac{n}{2n+1}=\\dfrac{50}{101}$이므로 $101n=100n+50$, $n=50$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -415,7 +479,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 내분점의 위치를 잡고 좌표 또는 스튜어트 정리로 $AD$를 구한다.\n조건 정리: $BC=3$이고 D가 $BC$를 $1:2$로 내분하므로 $BD=1$, $DC=2$이다.\n풀이 방향: $B=(0,0)$, $C=(3,0)$, $D=(1,0)$으로 두고 $A$의 좌표를 구한다.\n정석 풀이: $A=(x,y)$라 하면 $AB=2$에서 $x^2+y^2=4$, $AC=4$에서 $(x-3)^2+y^2=16$이다. 두 식을 빼면 $-6x+9=12$이므로 $x=-\\dfrac12$이다. 따라서 $y^2=4-\\dfrac14=\\dfrac{15}{4}$이다. 그러므로 $AD^2=(1+\\dfrac12)^2+\\dfrac{15}{4}=\\dfrac94+\\dfrac{15}{4}=6$이고 $AD=\\sqrt6$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q17.png"
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q17.png",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -439,7 +507,11 @@ window.questionBank = [
       "$\\dfrac{7}{4}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 점화식이 부호에 따라 달라지므로 각 항의 부호를 확인하면서 전개한다.\n조건 정리: $1<a_1<2$이고 $a_7=-1$이다.\n풀이 방향: $a_1$을 문자로 두고 $a_2$부터 $a_6$까지 식과 부호 범위를 함께 구한 뒤, $a_6$의 부호만 경우를 나눈다.\n정석 풀이: $a_1>0$이므로 $a_2=a_1-2$이고, $1<a_1<2$에서 $-1<a_2<0$이다. 따라서 $a_3=-2a_2=-2(a_1-2)=4-2a_1$이고 $0<a_3<2$이다. 다시 $a_4=a_3-2=2-2a_1$이므로 $-2<a_4<0$이다. 그러므로 $a_5=-2a_4=4a_1-4$이고, $a_6=a_5-2=4a_1-6$이다. 이때 $a_6$의 부호는 바로 확정되지 않으므로 경우를 나눈다. 만약 $a_6<0$이면 $a_7=-2a_6=-2(4a_1-6)=-8a_1+12$이다. $a_7=-1$을 대입하면 $a_1=\\dfrac{13}{8}$인데, 이때 $a_6=4\\cdot\\dfrac{13}{8}-6=\\dfrac12>0$이므로 $a_6<0$과 모순이다. 따라서 $a_6\\ge0$이어야 하며, 이 경우 $a_7=a_6-2=4a_1-8$이다. $4a_1-8=-1$에서 $a_1=\\dfrac74$이고, 실제로 $a_6=1\\ge0$이므로 조건에 맞다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 점화식이 부호에 따라 달라지므로 각 항의 부호를 확인하면서 전개한다.\n조건 정리: $1<a_1<2$이고 $a_7=-1$이다.\n풀이 방향: $a_1$을 문자로 두고 $a_2$부터 $a_6$까지 식과 부호 범위를 함께 구한 뒤, $a_6$의 부호만 경우를 나눈다.\n정석 풀이: $a_1>0$이므로 $a_2=a_1-2$이고, $1<a_1<2$에서 $-1<a_2<0$이다. 따라서 $a_3=-2a_2=-2(a_1-2)=4-2a_1$이고 $0<a_3<2$이다. 다시 $a_4=a_3-2=2-2a_1$이므로 $-2<a_4<0$이다. 그러므로 $a_5=-2a_4=4a_1-4$이고, $a_6=a_5-2=4a_1-6$이다. 이때 $a_6$의 부호는 바로 확정되지 않으므로 경우를 나눈다. 만약 $a_6<0$이면 $a_7=-2a_6=-2(4a_1-6)=-8a_1+12$이다. $a_7=-1$을 대입하면 $a_1=\\dfrac{13}{8}$인데, 이때 $a_6=4\\cdot\\dfrac{13}{8}-6=\\dfrac12>0$이므로 $a_6<0$과 모순이다. 따라서 $a_6\\ge0$이어야 하며, 이 경우 $a_7=a_6-2=4a_1-8$이다. $4a_1-8=-1$에서 $a_1=\\dfrac74$이고, 실제로 $a_6=1\\ge0$이므로 조건에 맞다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "subUnit": "등차수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -466,7 +538,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 색칠된 넓이를 직접 더하기보다 색칠되지 않은 넓이의 변화를 추적한다.\n조건 정리: 처음 정사각형의 넓이는 $1$이고, 매 단계마다 아직 색칠되지 않은 각 정사각형을 $4$등분한 뒤 그중 $1$개를 새로 색칠한다.\n풀이 방향: $R_n$에서 색칠되지 않은 전체 넓이를 $U_n$이라 두고 등비수열로 나타낸다.\n정석 풀이: 처음 전체 넓이는 $1$이다. $R_1$을 만들 때 전체의 $\\dfrac14$이 색칠되므로 색칠되지 않은 넓이는 $U_1=\\dfrac34$이다. 다음 단계에서도 색칠되지 않은 부분마다 넓이의 $\\dfrac14$만 새로 색칠되고 $\\dfrac34$가 남는다. 따라서 매 단계마다 색칠되지 않은 넓이는 이전 단계의 $\\dfrac34$배가 되어 $U_n=\\left(\\dfrac34\\right)^n$이다. 전체 넓이가 $1$이므로 색칠된 부분의 넓이는 $S_n=1-U_n=1-\\left(\\dfrac34\\right)^n$이다. 따라서 $S_9=1-\\left(\\dfrac34\\right)^9$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q19.png"
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q19.png",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -490,7 +566,11 @@ window.questionBank = [
       "(가), (나), (다)"
     ],
     "answer": "③",
-    "solution": "[키포인트] 가장 작은 집합이라는 조건 때문에 $0$에서 규칙으로 만들어지는 수만 차례로 모으면 된다.\n조건 정리: $0\\in P$이고, $k\\in P$이면 $2k+1$, $3k+1$도 $P$에 속한다.\n풀이 방향: $30$ 이하의 원소를 작은 수부터 생성해 (나)를 판단하고, 필요한 수가 만들어지는지도 확인한다.\n정석 풀이: $0\\in P$이므로 $2\\cdot0+1=1$, $3\\cdot0+1=1$에서 $1\\in P$이다. $1\\in P$이면 $2\\cdot1+1=3$, $3\\cdot1+1=4$이므로 $3,4\\in P$이고, 따라서 (가)는 참이다. 이제 $30$ 이하의 원소를 계속 만들면 $3$에서 $7,10$, $4$에서 $9,13$이 나온다. 다시 $7,9,10,13$에서 $15,22,19,28,21,31,27,40$이 나오므로 $30$ 이하에서는 $15,19,21,22,27,28$만 추가된다. 그 이후 $15,19,21,22,27,28$에 규칙을 적용하면 새로 나오는 수는 모두 $31$ 이상이다. 따라서 $30$ 이하의 원소는 $0,1,3,4,7,9,10,13,15,19,21,22,27,28$로 총 $14$개이므로 (나)는 거짓이다. 또 $28\\in P$이고 $3\\cdot28+1=85$이므로 $85\\in P$이다. 따라서 (다)는 참이다. 옳은 것은 (가), (다)이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 가장 작은 집합이라는 조건 때문에 $0$에서 규칙으로 만들어지는 수만 차례로 모으면 된다.\n조건 정리: $0\\in P$이고, $k\\in P$이면 $2k+1$, $3k+1$도 $P$에 속한다.\n풀이 방향: $30$ 이하의 원소를 작은 수부터 생성해 (나)를 판단하고, 필요한 수가 만들어지는지도 확인한다.\n정석 풀이: $0\\in P$이므로 $2\\cdot0+1=1$, $3\\cdot0+1=1$에서 $1\\in P$이다. $1\\in P$이면 $2\\cdot1+1=3$, $3\\cdot1+1=4$이므로 $3,4\\in P$이고, 따라서 (가)는 참이다. 이제 $30$ 이하의 원소를 계속 만들면 $3$에서 $7,10$, $4$에서 $9,13$이 나온다. 다시 $7,9,10,13$에서 $15,22,19,28,21,31,27,40$이 나오므로 $30$ 이하에서는 $15,19,21,22,27,28$만 추가된다. 그 이후 $15,19,21,22,27,28$에 규칙을 적용하면 새로 나오는 수는 모두 $31$ 이상이다. 따라서 $30$ 이하의 원소는 $0,1,3,4,7,9,10,13,15,19,21,22,27,28$로 총 $14$개이므로 (나)는 거짓이다. 또 $28\\in P$이고 $3\\cdot28+1=85$이므로 $85\\in P$이다. 따라서 (다)는 참이다. 옳은 것은 (가), (다)이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+    "subUnit": "수학적 귀납법",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -517,7 +597,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 원의 중심이 $A$이므로 $AP=AQ=AR=r$이고, 이를 세 변의 길이로 바꾼다.\n조건 정리: $PB=3$, $QD=1$, $RC=2$이므로 $AB=r+3$, $AD=r+1$, $AC=r+2$이다. 또한 $BD=6$, $DC=3$이다.\n풀이 방향: $D$를 원점으로 두고 $B,C,A$의 좌표를 잡아 세 거리식을 서로 빼서 $r$와 $x$의 관계식을 만든다.\n정석 풀이: $D=(0,0)$, $B=(-6,0)$, $C=(3,0)$, $A=(x,y)$라 두면 $AD^2=x^2+y^2=(r+1)^2$이다. 또 $AB^2=(x+6)^2+y^2=(r+3)^2$이다. 두 식을 빼면 $(x+6)^2-x^2=(r+3)^2-(r+1)^2$이므로 $12x+36=4r+8$, 따라서 $r=3x+7$이다. 같은 방식으로 $AC^2=(x-3)^2+y^2=(r+2)^2$와 $AD^2=x^2+y^2=(r+1)^2$를 빼면 $(x-3)^2-x^2=(r+2)^2-(r+1)^2$이므로 $-6x+9=2r+3$, 따라서 $r=-3x+3$이다. 이제 $3x+7=-3x+3$에서 $6x=-4$, $x=-\\dfrac23$이다. 이를 $r=-3x+3$에 대입하면 $r=-3\\left(-\\dfrac23\\right)+3=5$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q21.png"
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q21.png",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -539,7 +623,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=3,\\ b=7,\\ c=9,\\ d=1$",
     "solution": "[키포인트] 각 가로줄과 세로줄이 모두 등차수열이라는 조건을 식으로 세운다.\n조건 정리: 가로 방향과 세로 방향 각각에서 가운데 수는 양끝 수의 평균이다.\n풀이 방향: 이미 주어진 숫자들이 있는 줄부터 차례로 미지수를 구한다.\n정석 풀이: 두 번째 열 $5,c,13$이 등차수열이므로 $c-5=13-c$에서 $c=9$이다. 두 번째 행 $2,c,16$도 등차수열이므로 실제로 $2,9,16$이 되어 조건이 맞는다. 첫 번째 행 $a,5,b$에서 $a+b=10$이고, 세 번째 행 $d,13,25$에서 $d=1$이다. 첫 번째 열 $a,2,d$가 등차수열이므로 $2-a=d-2$이고 $d=1$을 대입하면 $2-a=-1$, 즉 $a=3$이다. 따라서 $a+b=10$에서 $b=7$이다.\n따라서 구하는 값은 $a=3,\\ b=7,\\ c=9,\\ d=1$이다.",
-    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q22.png"
+    "image": "assets/images/24_강남여고_1학기_기말_고2_수학I/q22.png",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "subUnit": "등차수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -559,7 +647,11 @@ window.questionBank = [
     "content": "[서술형2] 삼각형 ABC에서 $b=8$, $c=4$, $A=60^\\circ$일 때, $a$, $B$, $C$를 각각 구하시오.",
     "choices": [],
     "answer": "$a=4\\sqrt3,\\ B=90^\\circ,\\ C=30^\\circ$",
-    "solution": "[키포인트] 먼저 코사인법칙으로 $a$를 구한 뒤 다시 코사인법칙으로 각을 판정한다.\n조건 정리: $b=8$, $c=4$, $A=60^\\circ$이다.\n풀이 방향: $a^2=b^2+c^2-2bc\\cos A$를 이용한다.\n정석 풀이: $a^2=8^2+4^2-2\\cdot8\\cdot4\\cdot\\cos60^\\circ=64+16-32=48$이므로 $a=4\\sqrt3$이다. 또 $\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}=\\dfrac{48+16-64}{2\\cdot4\\sqrt3\\cdot4}=0$이므로 $B=90^\\circ$이다. 따라서 $C=180^\\circ-60^\\circ-90^\\circ=30^\\circ$이다.\n따라서 구하는 값은 $a=4\\sqrt3,\\ B=90^\\circ,\\ C=30^\\circ$이다."
+    "solution": "[키포인트] 먼저 코사인법칙으로 $a$를 구한 뒤 다시 코사인법칙으로 각을 판정한다.\n조건 정리: $b=8$, $c=4$, $A=60^\\circ$이다.\n풀이 방향: $a^2=b^2+c^2-2bc\\cos A$를 이용한다.\n정석 풀이: $a^2=8^2+4^2-2\\cdot8\\cdot4\\cdot\\cos60^\\circ=64+16-32=48$이므로 $a=4\\sqrt3$이다. 또 $\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}=\\dfrac{48+16-64}{2\\cdot4\\sqrt3\\cdot4}=0$이므로 $B=90^\\circ$이다. 따라서 $C=180^\\circ-60^\\circ-90^\\circ=30^\\circ$이다.\n따라서 구하는 값은 $a=4\\sqrt3,\\ B=90^\\circ,\\ C=30^\\circ$이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -579,7 +671,11 @@ window.questionBank = [
     "content": "[서술형3] 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $\\sum_{k=1}^{n}\\dfrac{1}{(2k-1)a_k}=n^2+2n$을 만족시킬 때, 일반항 $a_n$을 구하시오.",
     "choices": [],
     "answer": "$a_n=\\dfrac{1}{(2n-1)(2n+1)}$",
-    "solution": "[키포인트] 누적합 식은 $n$번째 식과 $(n-1)$번째 식을 빼서 일반항을 구한다.\n조건 정리: $S_n=\\sum_{k=1}^{n}\\dfrac{1}{(2k-1)a_k}=n^2+2n$이다.\n풀이 방향: $n=1$을 먼저 확인하고, $n\\ge2$에서는 $S_n-S_{n-1}$을 이용한다.\n정석 풀이: $n=1$일 때 $\\dfrac{1}{a_1}=3$이므로 $a_1=\\dfrac13$이다. $n\\ge2$일 때 $S_n-S_{n-1}=\\dfrac{1}{(2n-1)a_n}$이고, 오른쪽은 $(n^2+2n)-\\{(n-1)^2+2(n-1)\\}=2n+1$이다. 따라서 $\\dfrac{1}{(2n-1)a_n}=2n+1$이므로 $a_n=\\dfrac{1}{(2n-1)(2n+1)}$이다. 이 식은 $n=1$에서도 $\\dfrac{1}{1\\cdot3}=\\dfrac13$으로 성립한다.\n따라서 구하는 일반항은 $a_n=\\dfrac{1}{(2n-1)(2n+1)}$이다."
+    "solution": "[키포인트] 누적합 식은 $n$번째 식과 $(n-1)$번째 식을 빼서 일반항을 구한다.\n조건 정리: $S_n=\\sum_{k=1}^{n}\\dfrac{1}{(2k-1)a_k}=n^2+2n$이다.\n풀이 방향: $n=1$을 먼저 확인하고, $n\\ge2$에서는 $S_n-S_{n-1}$을 이용한다.\n정석 풀이: $n=1$일 때 $\\dfrac{1}{a_1}=3$이므로 $a_1=\\dfrac13$이다. $n\\ge2$일 때 $S_n-S_{n-1}=\\dfrac{1}{(2n-1)a_n}$이고, 오른쪽은 $(n^2+2n)-\\{(n-1)^2+2(n-1)\\}=2n+1$이다. 따라서 $\\dfrac{1}{(2n-1)a_n}=2n+1$이므로 $a_n=\\dfrac{1}{(2n-1)(2n+1)}$이다. 이 식은 $n=1$에서도 $\\dfrac{1}{1\\cdot3}=\\dfrac13$으로 성립한다.\n따라서 구하는 일반항은 $a_n=\\dfrac{1}{(2n-1)(2n+1)}$이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -599,6 +695,10 @@ window.questionBank = [
     "content": "[서술형4] 자연수 $n$에 대하여 $x$에 대한 이차부등식 $x^2-nx<0$을 만족시키는 모든 자연수 $x$의 값의 합을 $S_n$이라 할 때, $\\sum_{k=1}^{10}S_k$의 값을 구하시오.",
     "choices": [],
     "answer": "165",
-    "solution": "[키포인트] 부등식 $x(x-n)<0$의 자연수 해를 먼저 구하고 그 합을 일반식으로 만든다.\n조건 정리: $x$는 자연수이고 $x^2-nx<0$이다.\n풀이 방향: 부등식을 만족하는 $x$의 범위를 구해 $S_n$을 계산한다.\n정석 풀이: $x(x-n)<0$이므로 $0<x<n$이다. 따라서 자연수 $x$는 $1,2,\\ldots,n-1$이고, $S_n=1+2+\\cdots+(n-1)=\\dfrac{n(n-1)}{2}$이다. 그러므로 $\\sum_{k=1}^{10}S_k=\\sum_{k=1}^{10}\\dfrac{k(k-1)}{2}=\\dfrac12\\left(\\sum_{k=1}^{10}k^2-\\sum_{k=1}^{10}k\\right)$이다. $\\sum_{k=1}^{10}k^2=385$, $\\sum_{k=1}^{10}k=55$이므로 값은 $\\dfrac12(385-55)=165$이다.\n따라서 구하는 값은 $165$이다."
+    "solution": "[키포인트] 부등식 $x(x-n)<0$의 자연수 해를 먼저 구하고 그 합을 일반식으로 만든다.\n조건 정리: $x$는 자연수이고 $x^2-nx<0$이다.\n풀이 방향: 부등식을 만족하는 $x$의 범위를 구해 $S_n$을 계산한다.\n정석 풀이: $x(x-n)<0$이므로 $0<x<n$이다. 따라서 자연수 $x$는 $1,2,\\ldots,n-1$이고, $S_n=1+2+\\cdots+(n-1)=\\dfrac{n(n-1)}{2}$이다. 그러므로 $\\sum_{k=1}^{10}S_k=\\sum_{k=1}^{10}\\dfrac{k(k-1)}{2}=\\dfrac12\\left(\\sum_{k=1}^{10}k^2-\\sum_{k=1}^{10}k\\right)$이다. $\\sum_{k=1}^{10}k^2=385$, $\\sum_{k=1}^{10}k=55$이므로 값은 $\\dfrac12(385-55)=165$이다.\n따라서 구하는 값은 $165$이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

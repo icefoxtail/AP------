@@ -20,9 +20,20 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","순열","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "순열",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -44,9 +55,19 @@ window.questionBank = [
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "확률",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_02_01-PROBABILITY_APPLICATION",
+    "subUnit": "확률의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -68,9 +89,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","나머지정리","확률","경우의수","순열","도형","원","조건해석"],
+    "tags": [
+      "객관식",
+      "나머지정리",
+      "확률",
+      "경우의수",
+      "순열",
+      "도형",
+      "원",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -92,9 +126,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","전개","확률","조합","중복조합","이항정리","개수세기","조건해석"],
+    "tags": [
+      "객관식",
+      "전개",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "개수세기",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -116,9 +163,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","전개","계수비교","확률","조합","중복조합","이항정리","조건해석"],
+    "tags": [
+      "객관식",
+      "전개",
+      "계수비교",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -140,9 +200,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","순열","도형","원","자연수조건","조건해석"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "순열",
+      "도형",
+      "원",
+      "자연수조건",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -164,9 +237,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","조합","중복조합","이항정리","자연수조건","개수세기","오류판별"],
+    "tags": [
+      "객관식",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "자연수조건",
+      "개수세기",
+      "오류판별"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -188,9 +274,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","시그마","확률","조합","중복조합","이항정리","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "시그마",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -212,9 +311,20 @@ window.questionBank = [
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_02_01-PROBABILITY_APPLICATION",
+    "subUnit": "확률의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -236,9 +346,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","나머지정리","확률","경우의수","순열","도형","사각형","원"],
+    "tags": [
+      "객관식",
+      "나머지정리",
+      "확률",
+      "경우의수",
+      "순열",
+      "도형",
+      "사각형",
+      "원"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -260,9 +383,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","순열","중복순열","자연수조건","범위","개수세기","조건해석"],
+    "tags": [
+      "객관식",
+      "확률",
+      "순열",
+      "중복순열",
+      "자연수조건",
+      "범위",
+      "개수세기",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -284,9 +420,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","다항식","전개","계수비교","확률","조합","중복조합","이항정리"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "전개",
+      "계수비교",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -308,9 +457,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","조합","중복조합","이항정리","정수조건","개수세기","대입"],
+    "tags": [
+      "객관식",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "정수조건",
+      "개수세기",
+      "대입"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -332,9 +494,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","순열","도형","원","표해석","좌표"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "순열",
+      "도형",
+      "원",
+      "표해석",
+      "좌표"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -356,9 +531,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","순열","도형","원","자연수조건","조건해석"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "순열",
+      "도형",
+      "원",
+      "자연수조건",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -380,9 +568,21 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","순열","자연수조건","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "순열",
+      "자연수조건",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -404,9 +604,22 @@ window.questionBank = [
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","도형","원","개수세기","참거짓","오류판별"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "도형",
+      "원",
+      "개수세기",
+      "참거짓",
+      "오류판별"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_02_01-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 계산",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -428,9 +641,21 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","분모유리화","확률","경우의수","순열","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "분모유리화",
+      "확률",
+      "경우의수",
+      "순열",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -452,9 +677,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","확률","경우의수","조합","중복조합","이항정리","개수세기","조건해석"],
+    "tags": [
+      "객관식",
+      "확률",
+      "경우의수",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "개수세기",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -476,9 +714,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","확률","경우의수","순열","조합","자연수조건","조건해석"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "확률",
+      "경우의수",
+      "순열",
+      "조합",
+      "자연수조건",
+      "조건해석"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -494,9 +745,22 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","전개","계수비교","수열","등비수열","확률","조합","중복조합"],
+    "tags": [
+      "서술형",
+      "전개",
+      "계수비교",
+      "수열",
+      "등비수열",
+      "확률",
+      "조합",
+      "중복조합"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -512,9 +776,22 @@ window.questionBank = [
     "standardUnit": "여러 가지 순열",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","확률","경우의수","순열","범위","개수세기","조건해석","계산"],
+    "tags": [
+      "서술형",
+      "확률",
+      "경우의수",
+      "순열",
+      "범위",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
-    "standardUnitOrder": "1"
+    "standardUnitOrder": "1",
+    "subUnitKey": "H_ST_01_01-CORE",
+    "subUnit": "여러 가지 순열 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -530,8 +807,21 @@ window.questionBank = [
     "standardUnit": "중복조합과 이항정리",
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","나머지정리","확률","조합","중복조합","이항정리","함수","개수세기"],
+    "tags": [
+      "서술형",
+      "나머지정리",
+      "확률",
+      "조합",
+      "중복조합",
+      "이항정리",
+      "함수",
+      "개수세기"
+    ],
     "wide": false,
-    "standardUnitOrder": "2"
+    "standardUnitOrder": "2",
+    "subUnitKey": "H_ST_01_02-CORE",
+    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

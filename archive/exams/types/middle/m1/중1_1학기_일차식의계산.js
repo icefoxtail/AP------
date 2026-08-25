@@ -11,7 +11,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -25,7 +25,9 @@ window.questionBank = [
     "content": "**(1)** $a + (2a-1)$\n**(2)** $(2b-3) - (7b-3)$\n**(3)** $2(3x-1) - (x-7)$\n**(4)** $2(y-4) - 5(y-3)$",
     "choices": [],
     "answer": "(1) $3a - 1$\n(2) $-5b$\n(3) $5x + 5$\n(4) $-3y + 7$",
-    "solution": "[키포인트] 구하는 값은 (1) $3a - 1$\n(2) $-5b$\n(3) $5x + 5$\n(4) $-3y + 7$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $3a - 1$\n(2) $-5b$\n(3) $5x + 5$\n(4) $-3y + 7$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -37,7 +39,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -51,7 +53,9 @@ window.questionBank = [
     "content": "분배법칙을 이용하여 $-(2a+4)$를 간단히 하여라.",
     "choices": [],
     "answer": "$-2a - 4$",
-    "solution": "[키포인트] $(-1) \\times 2a + (-1) \\times 4 = -2a - 4$\n따라서 구하는 값은 $-2a - 4$이다."
+    "solution": "[키포인트] $(-1) \\times 2a + (-1) \\times 4 = -2a - 4$\n따라서 구하는 값은 $-2a - 4$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -63,7 +67,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -83,7 +87,9 @@ window.questionBank = [
       "$-8x+2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $(6x-2x) + (-1+3) = 4x + 2$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $(6x-2x) + (-1+3) = 4x + 2$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -95,7 +101,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -117,7 +123,9 @@ window.questionBank = [
       "$a + a + a = a^3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] ② 더 이상 간단히 할 수 없음 / ③ $5x^2$ / ④ 더 이상 간단히 할 수 없음 / ⑤ $3a$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] ② 더 이상 간단히 할 수 없음 / ③ $5x^2$ / ④ 더 이상 간단히 할 수 없음 / ⑤ $3a$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -129,7 +137,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -149,7 +157,9 @@ window.questionBank = [
       "$-\\dfrac{17x+5}{6}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $\\dfrac{4x-10-15x+3}{6} = \\dfrac{-11x-7}{6} = -\\dfrac{11x+7}{6}$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $\\dfrac{4x-10-15x+3}{6} = \\dfrac{-11x-7}{6} = -\\dfrac{11x+7}{6}$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -161,7 +171,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -175,7 +185,9 @@ window.questionBank = [
     "content": "**(1)** $2x \\times 4$\n**(2)** $-2x \\times 3$",
     "choices": [],
     "answer": "(1) $8x$\n(2) $-6x$",
-    "solution": "[키포인트] 구하는 값은 (1) $8x$\n(2) $-6x$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $8x$\n(2) $-6x$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -187,7 +199,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -205,7 +217,9 @@ window.questionBank = [
       "$4a-25$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $= 2a-1 - (-2a+9) = 4a - 10$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $= 2a-1 - (-2a+9) = 4a - 10$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -217,7 +231,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -238,7 +252,9 @@ window.questionBank = [
       "$-3(x-y)+2(x-y) = -x-5y$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $2x - 1 - 4 + 3x = 5x - 5$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $2x - 1 - 4 + 3x = 5x - 5$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -250,7 +266,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -270,7 +286,9 @@ window.questionBank = [
       "$3x - 2y$에서 $y$의 계수는 $-2$이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] $0 \\cdot x + 3 = 3$은 상수항만 있으므로 일차식이 아니다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $0 \\cdot x + 3 = 3$은 상수항만 있으므로 일차식이 아니다.\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -282,7 +300,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -302,7 +320,9 @@ window.questionBank = [
       "$-x-7$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $2x + 8 - 6x + 15 = -4x + 23$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $2x + 8 - 6x + 15 = -4x + 23$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -314,7 +334,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -336,7 +356,9 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $2x - 5$ → 일차항의 계수 $2$, 상수항 $-5$ → $2 + (-5) = -3$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $2x - 5$ → 일차항의 계수 $2$, 상수항 $-5$ → $2 + (-5) = -3$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -348,7 +370,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -368,7 +390,9 @@ window.questionBank = [
       "$\\dfrac{5}{3}x - \\dfrac{1}{2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\dfrac{3(4x-5) - 2(x-6)}{6} = \\dfrac{12x-15-2x+12}{6} = \\dfrac{10x-3}{6} = \\dfrac{5}{3}x - \\dfrac{1}{2}$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $\\dfrac{3(4x-5) - 2(x-6)}{6} = \\dfrac{12x-15-2x+12}{6} = \\dfrac{10x-3}{6} = \\dfrac{5}{3}x - \\dfrac{1}{2}$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -380,7 +404,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -400,7 +424,9 @@ window.questionBank = [
       "$3x-1$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $(-2x+1) + (5x-2) = 3x - 1$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $(-2x+1) + (5x-2) = 3x - 1$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -412,7 +438,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -433,7 +459,9 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "[키포인트] $3x + 5y - 4x + 6y = -x + 11y$ → $(-1) + 11 = 10$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $3x + 5y - 4x + 6y = -x + 11y$ → $(-1) + 11 = 10$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -445,7 +473,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -467,7 +495,9 @@ window.questionBank = [
       "$-x-5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 어떤 식 = $(3x-5) - (2x-4) = x-1$\n올바른 계산 = $(x-1) - (2x-4) = -x + 3$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 어떤 식 = $(3x-5) - (2x-4) = x-1$\n올바른 계산 = $(x-1) - (2x-4) = -x + 3$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -479,7 +509,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -493,7 +523,9 @@ window.questionBank = [
     "content": "$\\dfrac{-9x+12y}{3}$를 계산하여라.",
     "choices": [],
     "answer": "$-3x + 4y$",
-    "solution": "[키포인트] 구하는 값은 $-3x + 4y$이다."
+    "solution": "[키포인트] 구하는 값은 $-3x + 4y$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -505,7 +537,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -526,7 +558,9 @@ window.questionBank = [
       "$x-4$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $A - 2A - 3B = -A - 3B = -(x-3) - 3(-2x+1) = -x+3+6x-3 = 5x$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $A - 2A - 3B = -A - 3B = -(x-3) - 3(-2x+1) = -x+3+6x-3 = 5x$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -538,7 +572,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -560,7 +594,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $2(x \\times 1) + 2(1 \\times 3) + 2(3 \\times x) = 2x + 6 + 6x = 8x + 6$\n따라서 정답은 ④이다.",
-    "image": "assets/images/중1_1학기_일차식의계산/q18.jpg"
+    "image": "assets/images/중1_1학기_일차식의계산/q18.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -572,7 +608,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -592,7 +628,9 @@ window.questionBank = [
       "$\\dfrac{15}{2}x - \\dfrac{5}{4}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $6x + \\dfrac{3}{4} - \\dfrac{3}{2} + \\dfrac{1}{2}x = \\dfrac{13}{2}x - \\dfrac{3}{4}$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $6x + \\dfrac{3}{4} - \\dfrac{3}{2} + \\dfrac{1}{2}x = \\dfrac{13}{2}x - \\dfrac{3}{4}$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -604,7 +642,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -624,7 +662,9 @@ window.questionBank = [
       "$\\dfrac{5}{3}x + \\dfrac{7}{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $A = 3 + \\dfrac{1}{3}x + \\dfrac{1}{2}x + 1 = \\dfrac{5}{6}x + 4$\n$B = \\dfrac{2}{3}x + 2$\n$A + B = \\dfrac{5}{6}x + 4 + \\dfrac{2}{3}x + 2 = \\dfrac{9}{6}x + 6 = \\dfrac{3}{2}x + 6$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $A = 3 + \\dfrac{1}{3}x + \\dfrac{1}{2}x + 1 = \\dfrac{5}{6}x + 4$\n$B = \\dfrac{2}{3}x + 2$\n$A + B = \\dfrac{5}{6}x + 4 + \\dfrac{2}{3}x + 2 = \\dfrac{9}{6}x + 6 = \\dfrac{3}{2}x + 6$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -636,7 +676,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -658,7 +698,9 @@ window.questionBank = [
       "$5x-7$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 어떤 식 = $(5x-7) - (3x-1) = 2x-6$\n올바른 계산 = $(2x-6) - (3x-1) = -x - 5$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 어떤 식 = $(5x-7) - (3x-1) = 2x-6$\n올바른 계산 = $(2x-6) - (3x-1) = -x - 5$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -670,7 +712,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -691,7 +733,9 @@ window.questionBank = [
       "$-4x-7y$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $A - 2B - B + A = 2A - 3B = 2(x-y) - 3(2x-3y) = 2x-2y-6x+9y = -4x+7y$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $A - 2B - B + A = 2A - 3B = 2(x-y) - 3(2x-3y) = 2x-2y-6x+9y = -4x+7y$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -703,7 +747,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -717,7 +761,9 @@ window.questionBank = [
     "content": "$(5y+15) \\div \\left(-\\dfrac{5}{2}\\right)$를 계산하여라.",
     "choices": [],
     "answer": "$-2y - 6$",
-    "solution": "[키포인트] $(5y+15) \\times \\left(-\\dfrac{2}{5}\\right) = -2y - 6$\n따라서 구하는 값은 $-2y - 6$이다."
+    "solution": "[키포인트] $(5y+15) \\times \\left(-\\dfrac{2}{5}\\right) = -2y - 6$\n따라서 구하는 값은 $-2y - 6$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -729,7 +775,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -744,7 +790,9 @@ window.questionBank = [
     "content": "어떤 식에 $3x-5$를 더했더니 $x+4$가 되었다. 처음 식을 구하여라.",
     "choices": [],
     "answer": "$-2x + 9$",
-    "solution": "[키포인트] $\\square + (3x-5) = x+4$ → $\\square = x+4-3x+5 = -2x+9$\n따라서 구하는 값은 $-2x + 9$이다."
+    "solution": "[키포인트] $\\square + (3x-5) = x+4$ → $\\square = x+4-3x+5 = -2x+9$\n따라서 구하는 값은 $-2x + 9$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -756,7 +804,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -777,7 +825,9 @@ window.questionBank = [
       "$-\\dfrac{7}{6}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $-\\dfrac{1}{3}x + \\dfrac{1}{6}y + x - 2y = \\dfrac{2}{3}x - \\dfrac{11}{6}y$\n계수의 합: $\\dfrac{2}{3} + \\left(-\\dfrac{11}{6}\\right) = -\\dfrac{7}{6}$\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] $-\\dfrac{1}{3}x + \\dfrac{1}{6}y + x - 2y = \\dfrac{2}{3}x - \\dfrac{11}{6}y$\n계수의 합: $\\dfrac{2}{3} + \\left(-\\dfrac{11}{6}\\right) = -\\dfrac{7}{6}$\n따라서 정답은 ⑤이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 26,
@@ -789,7 +839,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -809,7 +859,9 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $= -2x + 6 - \\{8x - 6\\} = -2x + 6 - 8x + 6 = -10x + 12$\n$A = -10$, $B = 12$ → $A + B = 2$\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $= -2x + 6 - \\{8x - 6\\} = -2x + 6 - 8x + 6 = -10x + 12$\n$A = -10$, $B = 12$ → $A + B = 2$\n따라서 정답은 ③이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 27,
@@ -821,7 +873,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -841,7 +893,9 @@ window.questionBank = [
       "$3a-5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $= 6a-3 - \\{a-3+2\\} = 6a-3 - (a-1) = 5a - 2$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $= 6a-3 - \\{a-3+2\\} = 6a-3 - (a-1) = 5a - 2$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 28,
@@ -853,7 +907,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -875,7 +929,9 @@ window.questionBank = [
       "$2x-6$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 어떤 식 = $(2x-6) + (3x-4) = 5x - 10$\n올바른 계산 = $(5x-10) + (3x-4) = 8x - 14$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 어떤 식 = $(2x-6) + (3x-4) = 5x - 10$\n올바른 계산 = $(5x-10) + (3x-4) = 8x - 14$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 29,
@@ -887,7 +943,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -906,7 +962,9 @@ window.questionBank = [
       "$-a+5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $(\\square) = (2a+3) - (4-3a) - (a-5) = 2a+3-4+3a-a+5 = 4a+4$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $(\\square) = (2a+3) - (4-3a) - (a-5) = 2a+3-4+3a-a+5 = 4a+4$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 30,
@@ -918,7 +976,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -932,7 +990,9 @@ window.questionBank = [
     "content": "**(1)** $-5 - (6x-8)$\n**(2)** $3x - (x-2)$",
     "choices": [],
     "answer": "(1) $-6x + 3$\n(2) $2x + 2$",
-    "solution": "[키포인트] 구하는 값은 (1) $-6x + 3$\n(2) $2x + 2$이다."
+    "solution": "[키포인트] 구하는 값은 (1) $-6x + 3$\n(2) $2x + 2$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 31,
@@ -944,7 +1004,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -958,7 +1018,9 @@ window.questionBank = [
     "content": "$-7x + 3 + \\square = -2x + 4$일 때, $\\square$ 안에 알맞은 식이 $ax+b$이다. 이때, $a+b$의 값을 구하여라.",
     "choices": [],
     "answer": "6",
-    "solution": "[키포인트] $\\square = (-2x+4) - (-7x+3) = 5x+1$ → $a=5$, $b=1$ → $a+b=6$\n따라서 구하는 값은 6이다."
+    "solution": "[키포인트] $\\square = (-2x+4) - (-7x+3) = 5x+1$ → $a=5$, $b=1$ → $a+b=6$\n따라서 구하는 값은 6이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 32,
@@ -970,7 +1032,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -985,7 +1047,9 @@ window.questionBank = [
     "content": "$a \\star b = 2a-3b$, $a \\circledcirc b = 3a+5b$라고 할 때, $-2(a \\star b) + 3(a \\circledcirc b)$를 간단히 하여라.",
     "choices": [],
     "answer": "$5a + 21b$",
-    "solution": "[키포인트] $-2(2a-3b) + 3(3a+5b) = -4a+6b+9a+15b = 5a+21b$\n따라서 구하는 값은 $5a + 21b$이다."
+    "solution": "[키포인트] $-2(2a-3b) + 3(3a+5b) = -4a+6b+9a+15b = 5a+21b$\n따라서 구하는 값은 $5a + 21b$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 33,
@@ -997,7 +1061,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1012,7 +1076,9 @@ window.questionBank = [
     "content": "$3(x+1) - 2(3x-4)$를 간단히 하여 $ax+b$의 꼴로 나타내었을 때, $ab$의 값을 구하여라.",
     "choices": [],
     "answer": "$-33$",
-    "solution": "[키포인트] $3x+3-6x+8 = -3x+11$ → $a=-3$, $b=11$ → $ab = -33$\n따라서 구하는 값은 $-33$이다."
+    "solution": "[키포인트] $3x+3-6x+8 = -3x+11$ → $a=-3$, $b=11$ → $ab = -33$\n따라서 구하는 값은 $-33$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 34,
@@ -1024,7 +1090,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1039,7 +1105,9 @@ window.questionBank = [
     "content": "$A = x-3$, $B = -2x+1$, $C = 3x+2$일 때, $A+B+C$를 계산하여라.",
     "choices": [],
     "answer": "$2x$",
-    "solution": "[키포인트] $(x-3) + (-2x+1) + (3x+2) = 2x$\n따라서 구하는 값은 $2x$이다."
+    "solution": "[키포인트] $(x-3) + (-2x+1) + (3x+2) = 2x$\n따라서 구하는 값은 $2x$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 35,
@@ -1051,7 +1119,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1072,7 +1140,9 @@ window.questionBank = [
       "$-3y-1$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 어떤 식 = $(5y-1) - (3y+1) = 2y-2$\n올바른 계산 = $(2y-2) - (3y+1) = -y - 3$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 어떤 식 = $(5y-1) - (3y+1) = 2y-2$\n올바른 계산 = $(2y-2) - (3y+1) = -y - 3$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 36,
@@ -1084,7 +1154,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1105,7 +1175,9 @@ window.questionBank = [
       "$3x+1$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\dfrac{3}{2}x - 1 - x - 2 = \\dfrac{1}{2}x - 3$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $\\dfrac{3}{2}x - 1 - x - 2 = \\dfrac{1}{2}x - 3$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 37,
@@ -1117,7 +1189,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1131,7 +1203,9 @@ window.questionBank = [
     "content": "$\\dfrac{2}{3}(6x-15) - \\dfrac{2}{5}(10x-15)$를 간단히 하여라.",
     "choices": [],
     "answer": "$-4$",
-    "solution": "[키포인트] $4x - 10 - 4x + 6 = -4$\n따라서 구하는 값은 $-4$이다."
+    "solution": "[키포인트] $4x - 10 - 4x + 6 = -4$\n따라서 구하는 값은 $-4$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 38,
@@ -1143,7 +1217,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1163,7 +1237,9 @@ window.questionBank = [
       "$15x+2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $2(3x-4) + (12x-8) \\times \\left(-\\dfrac{3}{4}\\right) = 6x-8-9x+6 = -3x-2$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $2(3x-4) + (12x-8) \\times \\left(-\\dfrac{3}{4}\\right) = 6x-8-9x+6 = -3x-2$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 39,
@@ -1175,7 +1251,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1197,7 +1273,9 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $6x - 8$ → 계수 $6$, 상수항 $-8$ → $6 + (-8) = -2$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $6x - 8$ → 계수 $6$, 상수항 $-8$ → $6 + (-8) = -2$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 40,
@@ -1209,7 +1287,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1230,7 +1308,9 @@ window.questionBank = [
       "$\\dfrac{x+7}{6}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $\\dfrac{2(2x-1) - 3(x+3)}{6} = \\dfrac{4x-2-3x-9}{6} = \\dfrac{x-11}{6}$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $\\dfrac{2(2x-1) - 3(x+3)}{6} = \\dfrac{4x-2-3x-9}{6} = \\dfrac{x-11}{6}$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 41,
@@ -1242,7 +1322,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1264,7 +1344,9 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "[키포인트] $-2(-3x+2)-(-7x+1)-14 = 6x-4+7x-1-14 = 13x-19$\n$a=13$, $b=-19$ → $2a+b = 26-19 = 7$\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $-2(-3x+2)-(-7x+1)-14 = 6x-4+7x-1-14 = 13x-19$\n$a=13$, $b=-19$ → $2a+b = 26-19 = 7$\n따라서 정답은 ④이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 42,
@@ -1276,7 +1358,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1291,7 +1373,9 @@ window.questionBank = [
     "content": "$3x - 2y + \\dfrac{2}{3}x - \\dfrac{5}{3}y$를 간단히 하였을 때, $x$의 계수와 $y$의 계수의 합을 구하여라.",
     "choices": [],
     "answer": "0",
-    "solution": "[키포인트] $\\dfrac{11}{3}x - \\dfrac{11}{3}y$ → $\\dfrac{11}{3} + \\left(-\\dfrac{11}{3}\\right) = 0$\n따라서 구하는 값은 0이다."
+    "solution": "[키포인트] $\\dfrac{11}{3}x - \\dfrac{11}{3}y$ → $\\dfrac{11}{3} + \\left(-\\dfrac{11}{3}\\right) = 0$\n따라서 구하는 값은 0이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 43,
@@ -1303,7 +1387,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1319,7 +1403,9 @@ window.questionBank = [
     "content": "**(1)** $a = -3$, $b = -2$일 때, $a^2 - b$의 값을 구하여라.\n\n상연이의 풀이: $a^2 - b = -3^2 - 2 = -9 - 2 = 11$\n\n**(2)** $\\dfrac{6x-1}{2} - \\dfrac{3x-2}{3}$을 간단히 하여라.\n\n상연이의 풀이: $= 18x - 3 - 6x + 4 = 12x + 1$",
     "choices": [],
     "answer": "(1) 오류: $-3^2 = -9$가 아니라 $(-3)^2 = 9$\n올바른 답: $9 - (-2) = 11$ ← 결론은 같으나 과정이 틀림, $9 + 2 = 11$\n\n(2) 오류: 분모 2로 나누지 않고 6을 곱한 결과만 사용\n올바른 답: $\\dfrac{18x-3-6x+4}{6} = \\dfrac{12x+1}{6}$",
-    "solution": "[키포인트] 구하는 값은 (1) 오류: $-3^2 = -9$가 아니라 $(-3)^2 = 9$\n올바른 답: $9 - (-2) = 11$ ← 결론은 같으나 과정이 틀림, $9 + 2 = 11$\n\n(2) 오류: 분모 2로 나누지 않고 6을 곱한 결과만 사용\n올바른 답: $\\dfrac{18x-3-6x+4}{6} = \\dfrac{12x+1}{6}$이다."
+    "solution": "[키포인트] 구하는 값은 (1) 오류: $-3^2 = -9$가 아니라 $(-3)^2 = 9$\n올바른 답: $9 - (-2) = 11$ ← 결론은 같으나 과정이 틀림, $9 + 2 = 11$\n\n(2) 오류: 분모 2로 나누지 않고 6을 곱한 결과만 사용\n올바른 답: $\\dfrac{18x-3-6x+4}{6} = \\dfrac{12x+1}{6}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 44,
@@ -1331,7 +1417,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1346,7 +1432,9 @@ window.questionBank = [
     "content": "어떤 식에 $3x-y$를 더한 다음에 2로 나누었더니 $x+3y$가 되었다. 어떤 식을 구하여라.",
     "choices": [],
     "answer": "$-x + 7y$",
-    "solution": "[키포인트] 어떤 식을 $\\square$라 하면:\n$(\\square + 3x - y) \\div 2 = x + 3y$\n$\\square + 3x - y = 2x + 6y$\n$\\square = 2x + 6y - 3x + y = -x + 7y$\n따라서 구하는 값은 $-x + 7y$이다."
+    "solution": "[키포인트] 어떤 식을 $\\square$라 하면:\n$(\\square + 3x - y) \\div 2 = x + 3y$\n$\\square + 3x - y = 2x + 6y$\n$\\square = 2x + 6y - 3x + y = -x + 7y$\n따라서 구하는 값은 $-x + 7y$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 45,
@@ -1358,7 +1446,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1372,7 +1460,9 @@ window.questionBank = [
     "content": "$(-1)^{4n-1} \\times \\dfrac{a-3b}{4} - (-1)^{2n} \\times \\dfrac{5a+2b}{3}$을 계산하여라.",
     "choices": [],
     "answer": "$\\dfrac{-23a+b}{12}$",
-    "solution": "[키포인트] $(-1)^{4n-1} = -1$, $(-1)^{2n} = 1$이므로:\n$-\\dfrac{a-3b}{4} - \\dfrac{5a+2b}{3} = \\dfrac{-3a+9b-20a-8b}{12} = \\dfrac{-23a+b}{12}$\n따라서 구하는 값은 $\\dfrac{-23a+b}{12}$이다."
+    "solution": "[키포인트] $(-1)^{4n-1} = -1$, $(-1)^{2n} = 1$이므로:\n$-\\dfrac{a-3b}{4} - \\dfrac{5a+2b}{3} = \\dfrac{-3a+9b-20a-8b}{12} = \\dfrac{-23a+b}{12}$\n따라서 구하는 값은 $\\dfrac{-23a+b}{12}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 46,
@@ -1384,7 +1474,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1404,7 +1494,9 @@ window.questionBank = [
       "$x+6y$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\square - (2x-3y) = 3x-3y$ → $\\square = 3x-3y+2x-3y = 5x-6y$\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $\\square - (2x-3y) = 3x-3y$ → $\\square = 3x-3y+2x-3y = 5x-6y$\n따라서 정답은 ①이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 47,
@@ -1416,7 +1508,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1429,7 +1521,9 @@ window.questionBank = [
     "content": "$0.4a - 0.7b + 1.1a + 1.3b$",
     "choices": [],
     "answer": "$1.5a + 0.6b$",
-    "solution": "[키포인트] 구하는 값은 $1.5a + 0.6b$이다."
+    "solution": "[키포인트] 구하는 값은 $1.5a + 0.6b$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 48,
@@ -1441,7 +1535,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1462,7 +1556,9 @@ window.questionBank = [
       "$-6x+3$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $\\square = 3-4x-(1+2x) = 2-6x = -6x+2$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $\\square = 3-4x-(1+2x) = 2-6x = -6x+2$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 49,
@@ -1474,7 +1570,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1488,7 +1584,9 @@ window.questionBank = [
     "content": "$\\dfrac{3x+1}{2} - \\dfrac{4x-2}{3} + \\dfrac{x+5}{4}$를 간단히 하여라.",
     "choices": [],
     "answer": "$\\dfrac{5x+29}{12}$",
-    "solution": "[키포인트] $\\dfrac{6(3x+1) - 4(4x-2) + 3(x+5)}{12} = \\dfrac{18x+6-16x+8+3x+15}{12} = \\dfrac{5x+29}{12}$\n따라서 구하는 값은 $\\dfrac{5x+29}{12}$이다."
+    "solution": "[키포인트] $\\dfrac{6(3x+1) - 4(4x-2) + 3(x+5)}{12} = \\dfrac{18x+6-16x+8+3x+15}{12} = \\dfrac{5x+29}{12}$\n따라서 구하는 값은 $\\dfrac{5x+29}{12}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 50,
@@ -1500,7 +1598,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1520,7 +1618,9 @@ window.questionBank = [
       "$\\dfrac{x-1}{6}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $\\dfrac{x-1}{2} + \\dfrac{x-1}{3} = \\dfrac{3(x-1)+2(x-1)}{6} = \\dfrac{5(x-1)}{6} = \\dfrac{5x-5}{6}$\n따라서 정답은 ②이다."
+    "solution": "[키포인트] $\\dfrac{x-1}{2} + \\dfrac{x-1}{3} = \\dfrac{3(x-1)+2(x-1)}{6} = \\dfrac{5(x-1)}{6} = \\dfrac{5x-5}{6}$\n따라서 정답은 ②이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 51,
@@ -1532,7 +1632,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1545,7 +1645,9 @@ window.questionBank = [
     "content": "$2(0.1a + 0.6) - 3(-0.5a - 0.7)$",
     "choices": [],
     "answer": "$1.7a + 3.3$",
-    "solution": "[키포인트] $0.2a + 1.2 + 1.5a + 2.1 = 1.7a + 3.3$\n따라서 구하는 값은 $1.7a + 3.3$이다."
+    "solution": "[키포인트] $0.2a + 1.2 + 1.5a + 2.1 = 1.7a + 3.3$\n따라서 구하는 값은 $1.7a + 3.3$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 52,
@@ -1557,7 +1659,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1572,7 +1674,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$(2x + 2y + 6)$ cm",
     "solution": "[키포인트] $(y+3) + (x-6) + 3 + 6 + y + x = 2x + 2y + 6$ (cm)\n따라서 구하는 값은 $(2x + 2y + 6)$ cm이다.",
-    "image": "assets/images/중1_1학기_일차식의계산/q52.jpg"
+    "image": "assets/images/중1_1학기_일차식의계산/q52.jpg",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 53,
@@ -1584,7 +1688,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1600,7 +1704,9 @@ window.questionBank = [
     "content": "어떤 식에서 $-3x+2$를 빼어야 할 것을 잘못하여 더하였더니 4가 되었다. 바르게 계산한 식을 구하여라.",
     "choices": [],
     "answer": "$6x$",
-    "solution": "[키포인트] 어떤 식 = $4 - (-3x+2) = 3x + 2$\n올바른 계산 = $(3x+2) - (-3x+2) = 6x$\n따라서 구하는 값은 $6x$이다."
+    "solution": "[키포인트] 어떤 식 = $4 - (-3x+2) = 3x + 2$\n올바른 계산 = $(3x+2) - (-3x+2) = 6x$\n따라서 구하는 값은 $6x$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 54,
@@ -1612,7 +1718,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1627,7 +1733,9 @@ window.questionBank = [
     "content": "**(1)** $\\dfrac{6x-3}{3} - x$\n\n**(2)** $\\dfrac{2x-1}{3} - \\dfrac{x-2}{2}$\n\n**(3)** $8x - 4y - \\{5x - (x-6y)\\}$",
     "choices": [],
     "answer": "(1) $x - 1$\n(2) $\\dfrac{1}{6}x + \\dfrac{2}{3}$\n(3) $4x - 10y$",
-    "solution": "[키포인트] (1) $2x - 1 - x = x - 1$\n(2) $\\dfrac{4x-2-3x+6}{6} = \\dfrac{x+4}{6}$ → 실제 계산: $\\dfrac{2(2x-1)-3(x-2)}{6} = \\dfrac{4x-2-3x+6}{6} = \\dfrac{x+4}{6}$\n(3) $8x-4y-(5x-x+6y) = 8x-4y-4x-6y = 4x-10y$\n따라서 구하는 값은 (1) $x - 1$\n(2) $\\dfrac{1}{6}x + \\dfrac{2}{3}$\n(3) $4x - 10y$이다."
+    "solution": "[키포인트] (1) $2x - 1 - x = x - 1$\n(2) $\\dfrac{4x-2-3x+6}{6} = \\dfrac{x+4}{6}$ → 실제 계산: $\\dfrac{2(2x-1)-3(x-2)}{6} = \\dfrac{4x-2-3x+6}{6} = \\dfrac{x+4}{6}$\n(3) $8x-4y-(5x-x+6y) = 8x-4y-4x-6y = 4x-10y$\n따라서 구하는 값은 (1) $x - 1$\n(2) $\\dfrac{1}{6}x + \\dfrac{2}{3}$\n(3) $4x - 10y$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 55,
@@ -1639,7 +1747,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1653,7 +1761,9 @@ window.questionBank = [
     "content": "**(1)** $9 \\times 999 - 8 \\times 1001 + 7 \\times 1007 - 6 \\times 1004$\n\n**(2)** $7 \\times 2777 - 6 \\times 1666 - 5 \\times 3555 + 4 \\times 4444 - 2 \\times 4222$\n\n**(3)** $2 \\times 56789 + 2 \\times 56788 + 2 \\times 56779 + 2 \\times 56689 + 2 \\times 55789$",
     "choices": [],
     "answer": "(1) 2008\n(2) 1000\n(3) 565668",
-    "solution": "[키포인트] 구하는 값은 (1) 2008\n(2) 1000\n(3) 565668이다."
+    "solution": "[키포인트] 구하는 값은 (1) 2008\n(2) 1000\n(3) 565668이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 56,
@@ -1665,7 +1775,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1681,7 +1791,9 @@ window.questionBank = [
     "content": "$a(x+3) - (bx-2)$를 간단히 하면 $x$의 계수가 $-2$이고, 상수항이 5일 때, $ab - 3b$의 값을 구하여라.",
     "choices": [],
     "answer": "$-6$",
-    "solution": "[키포인트] $(a-b)x + 3a + 2$ → $a-b = -2$, $3a+2 = 5$ → $a=1$, $b=3$\n$ab - 3b = 1 \\times 3 - 3 \\times 3 = -6$\n따라서 구하는 값은 $-6$이다."
+    "solution": "[키포인트] $(a-b)x + 3a + 2$ → $a-b = -2$, $3a+2 = 5$ → $a=1$, $b=3$\n$ab - 3b = 1 \\times 3 - 3 \\times 3 = -6$\n따라서 구하는 값은 $-6$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 57,
@@ -1693,7 +1805,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1709,7 +1821,9 @@ window.questionBank = [
     "content": "$2\\left[x + 5\\left\\{x - \\dfrac{1}{15}(4x-1)\\right\\}\\right] - 2(4x-3)$을 간단히 하였을 때, 일차항의 계수와 상수항의 합을 구하여라.",
     "choices": [],
     "answer": "8",
-    "solution": "[키포인트] $= \\dfrac{4}{3}x + \\dfrac{20}{3}$ → 계수 $\\dfrac{4}{3}$, 상수항 $\\dfrac{20}{3}$\n계수+상수항 = $\\dfrac{4}{3} + \\dfrac{20}{3} = \\dfrac{24}{3} = 8$\n따라서 구하는 값은 8이다."
+    "solution": "[키포인트] $= \\dfrac{4}{3}x + \\dfrac{20}{3}$ → 계수 $\\dfrac{4}{3}$, 상수항 $\\dfrac{20}{3}$\n계수+상수항 = $\\dfrac{4}{3} + \\dfrac{20}{3} = \\dfrac{24}{3} = 8$\n따라서 구하는 값은 8이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 60,
@@ -1721,7 +1835,7 @@ window.questionBank = [
     "standardUnit": "문자와 식",
     "standardUnitOrder": 3,
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-    "subUnit": "일차식의 계산",
+    "subUnit": "문자의 사용과 식의 값",
     "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -1735,6 +1849,8 @@ window.questionBank = [
     "content": "$\\dfrac{x-1}{4} + \\dfrac{2x-2}{3} - \\dfrac{2x+5}{2}$를 간단히 하여라.",
     "choices": [],
     "answer": "$-\\dfrac{x+41}{12}$",
-    "solution": "[키포인트] $\\dfrac{3(x-1) + 4(2x-2) - 6(2x+5)}{12} = \\dfrac{3x-3+8x-8-12x-30}{12} = \\dfrac{-x-41}{12} = -\\dfrac{x+41}{12}$\n따라서 구하는 값은 $-\\dfrac{x+41}{12}$이다."
+    "solution": "[키포인트] $\\dfrac{3(x-1) + 4(2x-2) - 6(2x+5)}{12} = \\dfrac{3x-3+8x-8-12x-30}{12} = \\dfrac{-x-41}{12} = -\\dfrac{x+41}{12}$\n따라서 구하는 값은 $-\\dfrac{x+41}{12}$이다.",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

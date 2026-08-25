@@ -23,7 +23,11 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "③",
-    "solution": "$P(x) = (x-1)^2(x+1)Q(x) + R(x)$라 하면, $R(x)$는 이차 이하의 다항식이다.\n$P(x)$를 $(x-1)^2$으로 나눈 나머지가 $x+2$이므로 $R(x) = a(x-1)^2 + x+2$로 놓을 수 있다.\n나머지 정리에 의해 $P(-1) = 5$이므로\n$R(-1) = a(-2)^2 + (-1)+2 = 4a+1 = 5 \\implies a=1$\n따라서 $R(x) = (x-1)^2 + x+2 = x^2-x+3$이다.\n$\\therefore R(2) = 4-2+3 = 5$"
+    "solution": "$P(x) = (x-1)^2(x+1)Q(x) + R(x)$라 하면, $R(x)$는 이차 이하의 다항식이다.\n$P(x)$를 $(x-1)^2$으로 나눈 나머지가 $x+2$이므로 $R(x) = a(x-1)^2 + x+2$로 놓을 수 있다.\n나머지 정리에 의해 $P(-1) = 5$이므로\n$R(-1) = a(-2)^2 + (-1)+2 = 4a+1 = 5 \\implies a=1$\n따라서 $R(x) = (x-1)^2 + x+2 = x^2-x+3$이다.\n$\\therefore R(2) = 4-2+3 = 5$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": "$a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca) = 0$\n$a, b, c$가 양수이므로 $a+b+c > 0$이다.\n따라서 $a^2+b^2+c^2-ab-bc-ca = \\frac{1}{2}\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\n$\\implies a=b=c$\n이를 주어진 식에 대입하면\n$\\frac{2a}{a} + \\frac{2a}{a} + \\frac{2a}{a} = 2+2+2 = 6$"
+    "solution": "$a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca) = 0$\n$a, b, c$가 양수이므로 $a+b+c > 0$이다.\n따라서 $a^2+b^2+c^2-ab-bc-ca = \\frac{1}{2}\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\n$\\implies a=b=c$\n이를 주어진 식에 대입하면\n$\\frac{2a}{a} + \\frac{2a}{a} + \\frac{2a}{a} = 2+2+2 = 6$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "$10$개"
     ],
     "answer": "④",
-    "solution": "이차방정식이 허근을 가지려면 판별식 $D/4 < 0$이어야 한다.\n$D/4 = a^2 - (2a^2+ka+5) = -a^2-ka-5 < 0$\n즉, 모든 실수 $a$에 대하여 $a^2+ka+5 > 0$이 성립해야 한다.\n$f(a) = a^2+ka+5$라 할 때, 이 이차함수의 그래프가 $a$축과 만나지 않아야 하므로\n$f(a)=0$의 판별식 $D_k < 0$이어야 한다.\n$D_k = k^2 - 4(1)(5) = k^2-20 < 0$\n$k^2 < 20$을 만족하는 정수 $k$는 $-4, -3, -2, -1, 0, 1, 2, 3, 4$로 총 $9$개이다."
+    "solution": "이차방정식이 허근을 가지려면 판별식 $D/4 < 0$이어야 한다.\n$D/4 = a^2 - (2a^2+ka+5) = -a^2-ka-5 < 0$\n즉, 모든 실수 $a$에 대하여 $a^2+ka+5 > 0$이 성립해야 한다.\n$f(a) = a^2+ka+5$라 할 때, 이 이차함수의 그래프가 $a$축과 만나지 않아야 하므로\n$f(a)=0$의 판별식 $D_k < 0$이어야 한다.\n$D_k = k^2 - 4(1)(5) = k^2-20 < 0$\n$k^2 < 20$을 만족하는 정수 $k$는 $-4, -3, -2, -1, 0, 1, 2, 3, 4$로 총 $9$개이다.",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "$19$"
     ],
     "answer": "③",
-    "solution": "주어진 조건에 의해\n$f(x) = (x^2+x+1)Q(x) + x-1$\n$Q(x) = (x-1)Q'(x) + 2$\n두 식을 결합하면\n$f(x) = (x^2+x+1)\\{(x-1)Q'(x) + 2\\} + x-1$\n$f(x) = (x^2+x+1)(x-1)Q'(x) + 2(x^2+x+1) + x-1$\n$f(x) = (x^3-1)Q'(x) + 2x^2+3x+1$\n따라서 $R(x) = 2x^2+3x+1$이다.\n$\\therefore R(2) = 2(2^2) + 3(2) + 1 = 8+6+1 = 15$"
+    "solution": "주어진 조건에 의해\n$f(x) = (x^2+x+1)Q(x) + x-1$\n$Q(x) = (x-1)Q'(x) + 2$\n두 식을 결합하면\n$f(x) = (x^2+x+1)\\{(x-1)Q'(x) + 2\\} + x-1$\n$f(x) = (x^2+x+1)(x-1)Q'(x) + 2(x^2+x+1) + x-1$\n$f(x) = (x^3-1)Q'(x) + 2x^2+3x+1$\n따라서 $R(x) = 2x^2+3x+1$이다.\n$\\therefore R(2) = 2(2^2) + 3(2) + 1 = 8+6+1 = 15$",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+    "subUnit": "다항식의 나눗셈",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "$50$개"
     ],
     "answer": "②",
-    "solution": "$z = \\frac{1+i}{\\sqrt{2}}$에서 $z^2 = i, z^4 = -1, z^8 = 1$이므로 $z$는 주기가 $8$인 복소수이다.\n이때 $\\bar{z} = \\frac{1-i}{\\sqrt{2}}$이고, $z \\cdot \\bar{z} = |z|^2 = 1$이므로 $\\bar{z} = \\frac{1}{z} = z^{-1}$이다.\n주어진 조건 $z^n = \\bar{z}$는 $z^n = z^{-1}$, 즉 $z^{n+1} = 1$과 같다.\n$z$의 주기가 $8$이므로 $n+1$은 $8$의 배수여야 한다.\n$n+1 = 8k \\implies n = 8k-1$ (단, $k$는 자연수)\n$1 \\le 8k-1 \\le 100 \\implies 2 \\le 8k \\le 101$\n따라서 $k = 1, 2, \\dots, 12$가 가능하므로 개수는 $12$개이다."
+    "solution": "$z = \\frac{1+i}{\\sqrt{2}}$에서 $z^2 = i, z^4 = -1, z^8 = 1$이므로 $z$는 주기가 $8$인 복소수이다.\n이때 $\\bar{z} = \\frac{1-i}{\\sqrt{2}}$이고, $z \\cdot \\bar{z} = |z|^2 = 1$이므로 $\\bar{z} = \\frac{1}{z} = z^{-1}$이다.\n주어진 조건 $z^n = \\bar{z}$는 $z^n = z^{-1}$, 즉 $z^{n+1} = 1$과 같다.\n$z$의 주기가 $8$이므로 $n+1$은 $8$의 배수여야 한다.\n$n+1 = 8k \\implies n = 8k-1$ (단, $k$는 자연수)\n$1 \\le 8k-1 \\le 100 \\implies 2 \\le 8k \\le 101$\n따라서 $k = 1, 2, \\dots, 12$가 가능하므로 개수는 $12$개이다.",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "③",
-    "solution": "근과 계수의 관계에 의해 $\\alpha+\\beta=4, \\alpha\\beta=-5$이다.\n주어진 식을 변형하면\n$\\alpha^{2}+\\beta^{2}+\\alpha^{2}\\beta+\\alpha\\beta^{2} = (\\alpha+\\beta)^{2}-2\\alpha\\beta+\\alpha\\beta(\\alpha+\\beta)$\n$= 4^{2} - 2(-5) + (-5) \\cdot 4$\n$= 16 + 10 - 20 = 6$\n따라서 정답은 ③이다."
+    "solution": "근과 계수의 관계에 의해 $\\alpha+\\beta=4, \\alpha\\beta=-5$이다.\n주어진 식을 변형하면\n$\\alpha^{2}+\\beta^{2}+\\alpha^{2}\\beta+\\alpha\\beta^{2} = (\\alpha+\\beta)^{2}-2\\alpha\\beta+\\alpha\\beta(\\alpha+\\beta)$\n$= 4^{2} - 2(-5) + (-5) \\cdot 4$\n$= 16 + 10 - 20 = 6$\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "$(x-1)^{2}(x^{2}-2x+3)$"
     ],
     "answer": "①",
-    "solution": "$x^{2}-2x=t$로 치환하면\n주어진 식은 $(t+1)(t+3)-24$\n$= t^{2}+4t+3-24 = t^{2}+4t-21$\n$= (t-3)(t+7)$\n원래 식 $t=x^{2}-2x$를 다시 대입하면\n$= (x^{2}-2x-3)(x^{2}-2x+7)$\n$= (x-3)(x+1)(x^{2}-2x+7)$\n따라서 정답은 ①이다."
+    "solution": "$x^{2}-2x=t$로 치환하면\n주어진 식은 $(t+1)(t+3)-24$\n$= t^{2}+4t+3-24 = t^{2}+4t-21$\n$= (t-3)(t+7)$\n원래 식 $t=x^{2}-2x$를 다시 대입하면\n$= (x^{2}-2x-3)(x^{2}-2x+7)$\n$= (x-3)(x+1)(x^{2}-2x+7)$\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "③",
-    "solution": "두 식을 연립하면\n$2x^{2}-5x-3=7x+1$\n$2x^{2}-12x-4=0$\n$x^{2}-6x-2=0$\n이 방정식의 두 근이 교점의 $x$좌표인 $a, b$이므로 근과 계수의 관계에 의해\n$a+b=6$\n즉 $a+b=\\frac{6}{1}$이므로 $\\alpha=1, \\beta=6$이다.\n따라서 $\\alpha+\\beta=1+6=7$이다.\n정답은 ③이다."
+    "solution": "두 식을 연립하면\n$2x^{2}-5x-3=7x+1$\n$2x^{2}-12x-4=0$\n$x^{2}-6x-2=0$\n이 방정식의 두 근이 교점의 $x$좌표인 $a, b$이므로 근과 계수의 관계에 의해\n$a+b=6$\n즉 $a+b=\\frac{6}{1}$이므로 $\\alpha=1, \\beta=6$이다.\n따라서 $\\alpha+\\beta=1+6=7$이다.\n정답은 ③이다.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "①",
-    "solution": "$y=2x+k$를 식에 대입하면\n$ax^{2}+x(2x+k)+2(2x+k)+8=0$\n$ax^{2}+2x^{2}+kx+4x+2k+8=0$\n$(a+2)x^{2}+(k+4)x+(2k+8)=0$\n이 식이 모든 실수 $x$에 대하여 항상 성립해야 하므로 각 계수는 모두 0이어야 한다.\n$a+2=0 \\implies a=-2$\n$k+4=0 \\implies k=-4$\n$2k+8=0$ 역시 $k=-4$에서 성립한다.\n따라서 $a+k = -2 + (-4) = -6$이다.\n정답은 ①이다."
+    "solution": "$y=2x+k$를 식에 대입하면\n$ax^{2}+x(2x+k)+2(2x+k)+8=0$\n$ax^{2}+2x^{2}+kx+4x+2k+8=0$\n$(a+2)x^{2}+(k+4)x+(2k+8)=0$\n이 식이 모든 실수 $x$에 대하여 항상 성립해야 하므로 각 계수는 모두 0이어야 한다.\n$a+2=0 \\implies a=-2$\n$k+4=0 \\implies k=-4$\n$2k+8=0$ 역시 $k=-4$에서 성립한다.\n따라서 $a+k = -2 + (-4) = -6$이다.\n정답은 ①이다.",
+    "subUnitKey": "H15-SA-02-IDENTITY",
+    "subUnit": "항등식과 계수비교",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -239,7 +275,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "②",
-    "solution": "식을 $x$에 대한 내림차순으로 정리하면\n$(k+1)x^{2}+2kx+(2k+4)=0$\n이 방정식이 이차방정식이므로 최고차항의 계수 $k+1 \\n eq 0$, 즉 $k \\n eq -1$이다.\n중근을 가지려면 판별식 $D/4=0$이어야 하므로\n$D/4 = k^{2}-(k+1)(2k+4) = 0$\n$k^{2}-(2k^{2}+6k+4) = 0$\n$-k^{2}-6k-4 = 0 \\implies k^{2}+6k+4 = 0$\n이 이차방정식의 두 근의 합은 근과 계수의 관계에 의해 $-6$이다. (두 근 모두 $k \\n eq -1$ 조건을 만족하고 실수임)\n따라서 정답은 ②이다."
+    "solution": "식을 $x$에 대한 내림차순으로 정리하면\n$(k+1)x^{2}+2kx+(2k+4)=0$\n이 방정식이 이차방정식이므로 최고차항의 계수 $k+1 \\n eq 0$, 즉 $k \\n eq -1$이다.\n중근을 가지려면 판별식 $D/4=0$이어야 하므로\n$D/4 = k^{2}-(k+1)(2k+4) = 0$\n$k^{2}-(2k^{2}+6k+4) = 0$\n$-k^{2}-6k-4 = 0 \\implies k^{2}+6k+4 = 0$\n이 이차방정식의 두 근의 합은 근과 계수의 관계에 의해 $-6$이다. (두 근 모두 $k \\n eq -1$ 조건을 만족하고 실수임)\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -263,7 +303,11 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "①",
-    "solution": "$\\omega^2+\\omega+1=0$이므로 $\\omega^3=1$이고, $1+\\omega^2=-\\omega$, $1+\\omega=-\\omega^2$이다.\n또한 $\\omega^{2n}$은 $1,\\omega,\\omega^2$ 중 하나이므로 $1+\\omega^{2n}=0$이 되는 경우는 없다.\n\n이제 $n$을 $3$으로 나눈 나머지에 따라 $f(n)$을 구하면,\n\n(1) $n\\equiv 1 \\pmod 3$일 때\n$f(n)=\\frac{\\omega}{1+\\omega^2}=\\frac{\\omega}{-\\omega}=-1$\n\n(2) $n\\equiv 2 \\pmod 3$일 때\n$f(n)=\\frac{\\omega^2}{1+\\omega}=\\frac{\\omega^2}{-\\omega^2}=-1$\n\n(3) $n\\equiv 0 \\pmod 3$일 때\n$f(n)=\\frac{1}{1+1}=\\frac{1}{2}$\n\n따라서 수열 $\\{f(n)\\}$은 주기 $3$을 가지며,\n$f(1)+f(2)+f(3)=-1-1+\\frac{1}{2}=-\\frac{3}{2}$\n\n$1$부터 $30$까지는 $10$주기이므로\n$f(1)+f(2)+\\cdots+f(30)=10\\cdot\\left(-\\frac{3}{2}\\right)=-15$\n\n따라서 정답은 ①이다."
+    "solution": "$\\omega^2+\\omega+1=0$이므로 $\\omega^3=1$이고, $1+\\omega^2=-\\omega$, $1+\\omega=-\\omega^2$이다.\n또한 $\\omega^{2n}$은 $1,\\omega,\\omega^2$ 중 하나이므로 $1+\\omega^{2n}=0$이 되는 경우는 없다.\n\n이제 $n$을 $3$으로 나눈 나머지에 따라 $f(n)$을 구하면,\n\n(1) $n\\equiv 1 \\pmod 3$일 때\n$f(n)=\\frac{\\omega}{1+\\omega^2}=\\frac{\\omega}{-\\omega}=-1$\n\n(2) $n\\equiv 2 \\pmod 3$일 때\n$f(n)=\\frac{\\omega^2}{1+\\omega}=\\frac{\\omega^2}{-\\omega^2}=-1$\n\n(3) $n\\equiv 0 \\pmod 3$일 때\n$f(n)=\\frac{1}{1+1}=\\frac{1}{2}$\n\n따라서 수열 $\\{f(n)\\}$은 주기 $3$을 가지며,\n$f(1)+f(2)+f(3)=-1-1+\\frac{1}{2}=-\\frac{3}{2}$\n\n$1$부터 $30$까지는 $10$주기이므로\n$f(1)+f(2)+\\cdots+f(30)=10\\cdot\\left(-\\frac{3}{2}\\right)=-15$\n\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -287,7 +331,11 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "②",
-    "solution": "$x+y=u, xy=v$로 치환하면\n(1) $u+v=5 \\implies v=5-u$\n(2) $u^2-v=7 \\implies v=u^2-7$\n$u^2-7 = 5-u \\implies u^2+u-12=0 \\implies (u+4)(u-3)=0$\n Case 1) $u=3, v=2$: $t^2-3t+2=0 \\implies t=1, 2$ (실수해 존재)\n이때 $x^2+y^2 = u^2-2v = 9-4=5$\n Case 2) $u=-4, v=9$: $t^2+4t+9=0 \\implies D/4 = 4-9 < 0$ (실수해 없음)\n조건을 만족하는 $(x, y)$는 $(1, 2), (2, 1)$뿐이므로\n$M=5, m=5 \\implies M+m=10$"
+    "solution": "$x+y=u, xy=v$로 치환하면\n(1) $u+v=5 \\implies v=5-u$\n(2) $u^2-v=7 \\implies v=u^2-7$\n$u^2-7 = 5-u \\implies u^2+u-12=0 \\implies (u+4)(u-3)=0$\n Case 1) $u=3, v=2$: $t^2-3t+2=0 \\implies t=1, 2$ (실수해 존재)\n이때 $x^2+y^2 = u^2-2v = 9-4=5$\n Case 2) $u=-4, v=9$: $t^2+4t+9=0 \\implies D/4 = 4-9 < 0$ (실수해 없음)\n조건을 만족하는 $(x, y)$는 $(1, 2), (2, 1)$뿐이므로\n$M=5, m=5 \\implies M+m=10$",
+    "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -311,7 +359,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "$P(x)$가 3차이고 최고차항 계수가 $1$이므로 $(x-1)^2$으로 나눈 몫은 일차식 $x+a$ 형태이다.\n조건에 의해 나머지도 $x+a$이다.\n$P(x) = (x-1)^2(x+a) + (x+a)$\n$P(3) = 4(3+a) + (3+a) = 5(3+a) = 10 \\implies a = -1$\n따라서 $P(x) = (x-1)^2(x-1) + (x-1) = (x-1)^3 + (x-1)$\n$P(x)$를 $(x-1)^3$으로 나눈 나머지는 $R(x) = x-1$이다.\n$\\therefore R(0) = 0-1 = -1$"
+    "solution": "$P(x)$가 3차이고 최고차항 계수가 $1$이므로 $(x-1)^2$으로 나눈 몫은 일차식 $x+a$ 형태이다.\n조건에 의해 나머지도 $x+a$이다.\n$P(x) = (x-1)^2(x+a) + (x+a)$\n$P(3) = 4(3+a) + (3+a) = 5(3+a) = 10 \\implies a = -1$\n따라서 $P(x) = (x-1)^2(x-1) + (x-1) = (x-1)^3 + (x-1)$\n$P(x)$를 $(x-1)^3$으로 나눈 나머지는 $R(x) = x-1$이다.\n$\\therefore R(0) = 0-1 = -1$",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -335,7 +387,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "$z = \\frac{1+\\sqrt{3}i}{2}$이므로 $2z-1 = \\sqrt{3}i$, 양변을 제곱하면 $4z^2-4z+1 = -3 \\implies z^2-z+1=0$이다.\n양변에 $(z+1)$을 곱하면 $z^3+1=0 \\implies z^3 = -1$이다.\n$z^n$이 실수가 되는 최소의 자연수 $n$은 $3$이므로 $m=3$이다.\n$S = z + z^2 + z^3 + z^4 + z^5 + z^6$ (총 $2m=6$항의 합)\n$z^3=-1, z^6=1$이며, 주어진 식을 묶어 정리하면\n$S = (z+z^2+z^3) + z^3(z+z^2+z^3) = 0$이다.\n(또는 $z^6-1 = (z-1)(z^5+z^4+z^3+z^2+z+1)=0$에서 $z \\n eq 1$이므로 $z^5+\\dots+1=0$, $S = 0+1-1=0$)\n$\\therefore S^2 = 0^2 = 0$"
+    "solution": "$z = \\frac{1+\\sqrt{3}i}{2}$이므로 $2z-1 = \\sqrt{3}i$, 양변을 제곱하면 $4z^2-4z+1 = -3 \\implies z^2-z+1=0$이다.\n양변에 $(z+1)$을 곱하면 $z^3+1=0 \\implies z^3 = -1$이다.\n$z^n$이 실수가 되는 최소의 자연수 $n$은 $3$이므로 $m=3$이다.\n$S = z + z^2 + z^3 + z^4 + z^5 + z^6$ (총 $2m=6$항의 합)\n$z^3=-1, z^6=1$이며, 주어진 식을 묶어 정리하면\n$S = (z+z^2+z^3) + z^3(z+z^2+z^3) = 0$이다.\n(또는 $z^6-1 = (z-1)(z^5+z^4+z^3+z^2+z+1)=0$에서 $z \\n eq 1$이므로 $z^5+\\dots+1=0$, $S = 0+1-1=0$)\n$\\therefore S^2 = 0^2 = 0$",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -359,7 +415,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "⑤",
-    "solution": "실계수 방정식의 한 근이 $2-i$이므로 다른 한 근은 켤레복소수 $2+i$이다.\n근과 계수의 관계에 의해:\n$-a = (2-i)+(2+i) = 4 \\implies a=-4$\n$b = (2-i)(2+i) = 4+1 = 5$ (본 문제 함수식에는 $b$가 사용되지 않음)\n주어진 이차함수는 $y=x^2-4x+k-2$이다.\n$x$축과 오직 한 점에서 만나므로 중근을 가져야 하며, 판별식 $D=0$이어야 한다.\n$D/4 = (-2)^2 - 1(k-2) = 4 - k + 2 = 6 - k = 0$\n$\\therefore k = 6$"
+    "solution": "실계수 방정식의 한 근이 $2-i$이므로 다른 한 근은 켤레복소수 $2+i$이다.\n근과 계수의 관계에 의해:\n$-a = (2-i)+(2+i) = 4 \\implies a=-4$\n$b = (2-i)(2+i) = 4+1 = 5$ (본 문제 함수식에는 $b$가 사용되지 않음)\n주어진 이차함수는 $y=x^2-4x+k-2$이다.\n$x$축과 오직 한 점에서 만나므로 중근을 가져야 하며, 판별식 $D=0$이어야 한다.\n$D/4 = (-2)^2 - 1(k-2) = 4 - k + 2 = 6 - k = 0$\n$\\therefore k = 6$",
+    "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -383,7 +443,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "첫 번째 방정식이 중근을 가지므로 $m^{2}-4n=0 \\implies n=\\frac{m^{2}}{4}$이다. 따라서 $m=2k$로 두면 $n=k^{2}$이다.\n두 번째 방정식은 $x^{2}+k^{2}x+2k=0$이고 서로 다른 두 실근을 가지므로 판별식 $D>0$이다.\n$D = k^{4}-8k>0 \\implies k(k^{3}-8)>0$이다.\n범위 $-10\\le m, n \\le10$에서 $m=2k$이므로 $-5 \\le k \\le 5$이고, $n=k^{2}\\le10$이므로 조건을 만족하는 정수 $k$는 $-3, -2, -1, 0, 1, 2, 3$이다.\n이 중에서 $k(k^{3}-8)>0$을 만족하는 것은 $k=-3, -2, -1, 3$이다.\n($k=0$이면 $D=0$, $k=1$이면 $D=-7<0$, $k=2$이면 $D=0$이므로 제외)\n따라서 가능한 $k$의 값은 4개이며, 순서쌍 $(m,n)$도 4개이다.\n정답은 ①이다."
+    "solution": "첫 번째 방정식이 중근을 가지므로 $m^{2}-4n=0 \\implies n=\\frac{m^{2}}{4}$이다. 따라서 $m=2k$로 두면 $n=k^{2}$이다.\n두 번째 방정식은 $x^{2}+k^{2}x+2k=0$이고 서로 다른 두 실근을 가지므로 판별식 $D>0$이다.\n$D = k^{4}-8k>0 \\implies k(k^{3}-8)>0$이다.\n범위 $-10\\le m, n \\le10$에서 $m=2k$이므로 $-5 \\le k \\le 5$이고, $n=k^{2}\\le10$이므로 조건을 만족하는 정수 $k$는 $-3, -2, -1, 0, 1, 2, 3$이다.\n이 중에서 $k(k^{3}-8)>0$을 만족하는 것은 $k=-3, -2, -1, 3$이다.\n($k=0$이면 $D=0$, $k=1$이면 $D=-7<0$, $k=2$이면 $D=0$이므로 제외)\n따라서 가능한 $k$의 값은 4개이며, 순서쌍 $(m,n)$도 4개이다.\n정답은 ①이다.",
+    "subUnitKey": "H15-SA-05-DISCRIMINANT",
+    "subUnit": "판별식과 근의 조건",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -407,7 +471,11 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "②",
-    "solution": "삼각형의 높이를 $h=4$, 밑변을 $6$이라 하자. 직사각형의 높이를 $x$라 하면 닮음에 의해 가로 길이는 $\\frac{6}{4}(4-x)=\\frac{3}{2}(4-x)$이다.\n넓이 $S=\\frac{3}{2}(4-x)x$\n$S=-\\frac{3}{2}x^{2}+6x = -\\frac{3}{2}(x-2)^2 + 6$\n꼭짓점에서 최대값을 가지므로 $x=2$일 때 최댓값 $6$을 갖는다.\n따라서 정답은 ②이다."
+    "solution": "삼각형의 높이를 $h=4$, 밑변을 $6$이라 하자. 직사각형의 높이를 $x$라 하면 닮음에 의해 가로 길이는 $\\frac{6}{4}(4-x)=\\frac{3}{2}(4-x)$이다.\n넓이 $S=\\frac{3}{2}(4-x)x$\n$S=-\\frac{3}{2}x^{2}+6x = -\\frac{3}{2}(x-2)^2 + 6$\n꼭짓점에서 최대값을 가지므로 $x=2$일 때 최댓값 $6$을 갖는다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -431,7 +499,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "$x=0$ 대입하면 $Q(0)^{2}+Q(1)^{2}=0$이므로 실수 조건(다항식의 계수가 실수이므로)에 의해 $Q(0)=0, Q(1)=0$이다.\n따라서 최고차항이 1인 이차식은 $Q(x)=x(x-1)$이다.\n원식에 대입하면\n$xP(x)=x^{2}(x-1)^{2}+x^{2}(x+1)^{2}$\n$=x^{2}[(x-1)^{2}+(x+1)^{2}]=x^{2}(2x^{2}+2)$\n따라서 $P(x)=2x^{3}+2x$이다.\n$Q(x+1)=x(x+1)$이므로 나눗셈 검산식을 세우면\n$P(x) = x(x+1)M(x) + R(x)$ (이때 나머지는 일차 이하 $R(x)=ax+b$)\n$x=0$ 대입: $P(0)=0 \\implies b=0$\n$x=-1$ 대입: $P(-1)=-4 \\implies -a=-4 \\implies a=4$\n따라서 $R(x)=4x$이고, $R(0)=0$이다.\n정답은 ①이다."
+    "solution": "$x=0$ 대입하면 $Q(0)^{2}+Q(1)^{2}=0$이므로 실수 조건(다항식의 계수가 실수이므로)에 의해 $Q(0)=0, Q(1)=0$이다.\n따라서 최고차항이 1인 이차식은 $Q(x)=x(x-1)$이다.\n원식에 대입하면\n$xP(x)=x^{2}(x-1)^{2}+x^{2}(x+1)^{2}$\n$=x^{2}[(x-1)^{2}+(x+1)^{2}]=x^{2}(2x^{2}+2)$\n따라서 $P(x)=2x^{3}+2x$이다.\n$Q(x+1)=x(x+1)$이므로 나눗셈 검산식을 세우면\n$P(x) = x(x+1)M(x) + R(x)$ (이때 나머지는 일차 이하 $R(x)=ax+b$)\n$x=0$ 대입: $P(0)=0 \\implies b=0$\n$x=-1$ 대입: $P(-1)=-4 \\implies -a=-4 \\implies a=4$\n따라서 $R(x)=4x$이고, $R(0)=0$이다.\n정답은 ①이다.",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -455,7 +527,11 @@ window.questionBank = [
       "$34$"
     ],
     "answer": "③",
-    "solution": "$z=\\frac{1}{2}\\cdot\\frac{1+i}{\\sqrt{2}}$이므로\n$|z|=\\frac{1}{2}$이고, $w=\\frac{1+i}{\\sqrt{2}}$라 두면 $z=\\frac{1}{2}w$이다.\n여기서\n$w^2=i,\\; w^4=-1,\\; w^8=1$\n이므로 $w^n$은 주기 $8$을 가진다.\n\n(1) $z^n$이 순허수가 되는 $n$의 개수 $a$\n$z^n=\\left(\\frac{1}{2}\\right)^n w^n$이므로, $z^n$이 순허수인지 여부는 $w^n$이 순허수인지와 같다.\n$w^n$이 순허수가 되는 것은 $n\\equiv 2,6 \\pmod 8$일 때이다.\n\n$1\\le n\\le100$에서\n$n\\equiv 2,6 \\pmod 8$인 수는\n$2,6,10,14,\\dots,98$\n이고, 이는 공차가 $4$인 등차수열이다.\n항의 개수는\n$\\frac{98-2}{4}+1=25$\n따라서 $a=25$이다.\n\n(2) $\\frac{1}{2^{10}} \\le |z^n| \\le \\frac{1}{2^4}$를 만족시키는 $n$의 개수 $b$\n$|z^n|=\\left(\\frac{1}{2}\\right)^n=\\frac{1}{2^n}$이므로\n$\\frac{1}{2^{10}} \\le \\frac{1}{2^n} \\le \\frac{1}{2^4}$\n에서\n$4\\le n\\le10$\n이다.\n따라서 가능한 자연수 $n$은 $4,5,6,7,8,9,10$의 $7$개이므로 $b=7$이다.\n\n따라서\n$a+b=25+7=32$\n이므로 정답은 ③이다."
+    "solution": "$z=\\frac{1}{2}\\cdot\\frac{1+i}{\\sqrt{2}}$이므로\n$|z|=\\frac{1}{2}$이고, $w=\\frac{1+i}{\\sqrt{2}}$라 두면 $z=\\frac{1}{2}w$이다.\n여기서\n$w^2=i,\\; w^4=-1,\\; w^8=1$\n이므로 $w^n$은 주기 $8$을 가진다.\n\n(1) $z^n$이 순허수가 되는 $n$의 개수 $a$\n$z^n=\\left(\\frac{1}{2}\\right)^n w^n$이므로, $z^n$이 순허수인지 여부는 $w^n$이 순허수인지와 같다.\n$w^n$이 순허수가 되는 것은 $n\\equiv 2,6 \\pmod 8$일 때이다.\n\n$1\\le n\\le100$에서\n$n\\equiv 2,6 \\pmod 8$인 수는\n$2,6,10,14,\\dots,98$\n이고, 이는 공차가 $4$인 등차수열이다.\n항의 개수는\n$\\frac{98-2}{4}+1=25$\n따라서 $a=25$이다.\n\n(2) $\\frac{1}{2^{10}} \\le |z^n| \\le \\frac{1}{2^4}$를 만족시키는 $n$의 개수 $b$\n$|z^n|=\\left(\\frac{1}{2}\\right)^n=\\frac{1}{2^n}$이므로\n$\\frac{1}{2^{10}} \\le \\frac{1}{2^n} \\le \\frac{1}{2^4}$\n에서\n$4\\le n\\le10$\n이다.\n따라서 가능한 자연수 $n$은 $4,5,6,7,8,9,10$의 $7$개이므로 $b=7$이다.\n\n따라서\n$a+b=25+7=32$\n이므로 정답은 ③이다.",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 20,
@@ -473,7 +549,11 @@ window.questionBank = [
     "content": "[서논술형 1] 다항식 $f(x)$를 $(x-2)^{2}$으로 나눈 나머지가 $2x-1$이고, $x+1$로 나눈 나머지가 $6$이다. $f(x)$를 $(x-2)^{2}(x+1)$로 나눈 나머지 $R(x)$를 구하는 과정을 서술하고 $R(1)$의 값을 구하시오. [4점]",
     "choices": [],
     "answer": "x^2-2x+3, 2",
-    "solution": "$f(x) = (x-2)^2(x+1)Q(x) + R(x)$라 하면,\n$R(x)는 2차 이하이므로 R(x) = a(x-2)^2 + 2x-1$로 설정 가능하다.\n나머지 정리에 의해 $f(-1) = 6$이므로\n$R(-1) = a(-1-2)^2 + 2(-1)-1 = 9a-3 = 6 \\implies 9a = 9, a=1$.\n따라서 $R(x) = 1(x-2)^2 + 2x-1 = x^2-4x+4+2x-1 = x^2-2x+3$.\n$R(1) = 1-2+3 = 2$."
+    "solution": "$f(x) = (x-2)^2(x+1)Q(x) + R(x)$라 하면,\n$R(x)는 2차 이하이므로 R(x) = a(x-2)^2 + 2x-1$로 설정 가능하다.\n나머지 정리에 의해 $f(-1) = 6$이므로\n$R(-1) = a(-1-2)^2 + 2(-1)-1 = 9a-3 = 6 \\implies 9a = 9, a=1$.\n따라서 $R(x) = 1(x-2)^2 + 2x-1 = x^2-4x+4+2x-1 = x^2-2x+3$.\n$R(1) = 1-2+3 = 2$.",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -491,7 +571,11 @@ window.questionBank = [
     "content": "[서논술형 2] 지면에서 $20m/s$의 속도로 수직으로 쏘아 올린 물체의 $t$초 후의 높이가 $h(t) = -5t^{2} + 20t + 10$이다. (1) 물체가 최고 높이에 도달할 때의 시간과 그때의 높이를 구하고, (2) 물체의 높이가 $25m$ 이상인 시간은 몇 초 동안인지 서술하시오. [5점]",
     "choices": [],
     "answer": "2초, 30m, 2초",
-    "solution": "(1) $h(t) = -5(t-2)^2 + 30$이므로 $t=2$일 때 최고 높이 $30m$에 도달한다.\n(2) $-5t^2 + 20t + 10 \\ge 25$\n$-5t^2 + 20t - 15 \\ge 0 \\implies t^2 - 4t + 3 \\le 0$\n$(t-1)(t-3) \\le 0 \\implies 1 \\le t \\le 3$\n따라서 $3-1 = 2$초 동안이다."
+    "solution": "(1) $h(t) = -5(t-2)^2 + 30$이므로 $t=2$일 때 최고 높이 $30m$에 도달한다.\n(2) $-5t^2 + 20t + 10 \\ge 25$\n$-5t^2 + 20t - 15 \\ge 0 \\implies t^2 - 4t + 3 \\le 0$\n$(t-1)(t-3) \\le 0 \\implies 1 \\le t \\le 3$\n따라서 $3-1 = 2$초 동안이다.",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -509,7 +593,11 @@ window.questionBank = [
     "content": "[서논술형 3] 다항식 $f(x) = x^{4}-x^{2}-12$에 대하여 다음을 구하시오. (1) $f(x)$를 실수 범위에서 인수분해 하시오. (2) $f(x)=0$의 모든 복소수 해를 구하시오. (3) $f(x)$를 복소수 범위에서 인수분해 하시오. [5점]",
     "choices": [],
     "answer": "(x-2)(x+2)(x^2+3), x=\\pm2, \\pm\\sqrt{3}i, (x-2)(x+2)(x-\\sqrt{3}i)(x+\\sqrt{3}i)",
-    "solution": "(1) $x^2 = X$로 치환하면 $X^2-X-12 = (X-4)(X+3)$이다.\n따라서 $(x^2-4)(x^2+3) = (x-2)(x+2)(x^2+3)$이다.\n(2) $x^2-4=0 \\implies x=\\pm2$, $x^2+3=0 \\implies x=\\pm\\sqrt{3}i$.\n(3) (2)의 해를 이용하여 $(x-2)(x+2)(x-\\sqrt{3}i)(x+\\sqrt{3}i)$로 인수분해된다."
+    "solution": "(1) $x^2 = X$로 치환하면 $X^2-X-12 = (X-4)(X+3)$이다.\n따라서 $(x^2-4)(x^2+3) = (x-2)(x+2)(x^2+3)$이다.\n(2) $x^2-4=0 \\implies x=\\pm2$, $x^2+3=0 \\implies x=\\pm\\sqrt{3}i$.\n(3) (2)의 해를 이용하여 $(x-2)(x+2)(x-\\sqrt{3}i)(x+\\sqrt{3}i)$로 인수분해된다.",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 23,
@@ -527,6 +615,10 @@ window.questionBank = [
     "content": "[서논술형 4] 두 연립방정식 (가) $x-y=k$, (나) $x^{2}+2y^{2}=6$이 오직 한 쌍의 해를 가질 때, 양의 실수 $k$의 값을 구하고 그 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "③",
-    "solution": "(가)에서 $x = y+k$를 (나)에 대입하면\n$(y+k)^2 + 2y^2 = 6$\n$3y^2 + 2ky + k^2 - 6 = 0$\n오직 한 쌍의 해를 가지려면 $y$에 대한 이차방정식이 중근을 가져야 하므로 판별식 $D=0$이다.\n$D/4 = k^2 - 3(k^2-6) = 0$\n$k^2 - 3k^2 + 18 = 0 \\implies 2k^2 = 18 \\implies k^2 = 9$\n$k > 0$이므로 $k=3$이다."
+    "solution": "(가)에서 $x = y+k$를 (나)에 대입하면\n$(y+k)^2 + 2y^2 = 6$\n$3y^2 + 2ky + k^2 - 6 = 0$\n오직 한 쌍의 해를 가지려면 $y$에 대한 이차방정식이 중근을 가져야 하므로 판별식 $D=0$이다.\n$D/4 = k^2 - 3(k^2-6) = 0$\n$k^2 - 3k^2 + 18 = 0 \\implies 2k^2 = 18 \\implies k^2 = 9$\n$k > 0$이므로 $k=3$이다.",
+    "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   }
 ];

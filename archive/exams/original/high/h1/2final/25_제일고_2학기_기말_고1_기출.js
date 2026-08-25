@@ -23,7 +23,11 @@ window.questionBank = [
       "실수 $x$에 대하여 $2x+3=5$이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 참과 거짓을 분명히 판정할 수 있는 문장만 명제이다.\n조건 정리: ①~④는 각각 참 또는 거짓이 확정되는 문장이다.\n풀이 방향: 문장 속 변수의 값이 정해지지 않아 진릿값이 달라지는 항목을 찾는다.\n정석 풀이: ⑤는 실수 $x$의 값에 따라 $2x+3=5$의 참과 거짓이 달라진다. 따라서 진릿값이 하나로 정해지지 않으므로 명제가 아니다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 참과 거짓을 분명히 판정할 수 있는 문장만 명제이다.\n조건 정리: ①~④는 각각 참 또는 거짓이 확정되는 문장이다.\n풀이 방향: 문장 속 변수의 값이 정해지지 않아 진릿값이 달라지는 항목을 찾는다.\n정석 풀이: ⑤는 실수 $x$의 값에 따라 $2x+3=5$의 참과 거짓이 달라진다. 따라서 진릿값이 하나로 정해지지 않으므로 명제가 아니다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@ window.questionBank = [
       "$(7,3)$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 평행이동에서는 모든 점에 같은 이동벡터를 더한다.\n조건 정리: $(4,1)$에서 $(-1,3)$으로의 이동벡터는 $(-5,2)$이다.\n풀이 방향: 점 $(2,5)$에 이동벡터 $(-5,2)$를 더한다.\n정석 풀이: $(2,5)+(-5,2)=(-3,7)$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 평행이동에서는 모든 점에 같은 이동벡터를 더한다.\n조건 정리: $(4,1)$에서 $(-1,3)$으로의 이동벡터는 $(-5,2)$이다.\n풀이 방향: 점 $(2,5)$에 이동벡터 $(-5,2)$를 더한다.\n정석 풀이: $(2,5)+(-5,2)=(-3,7)$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -71,7 +79,11 @@ window.questionBank = [
       "$4x+3y=25$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.\n조건 정리: 접점은 $(3,4)$이고 $r^2=25$이다.\n풀이 방향: 접선 공식에 접점의 좌표를 대입한다.\n정석 풀이: $3x+4y=25$를 얻는다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.\n조건 정리: 접점은 $(3,4)$이고 $r^2=25$이다.\n풀이 방향: 접선 공식에 접점의 좌표를 대입한다.\n정석 풀이: $3x+4y=25$를 얻는다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -95,7 +107,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 조건명제는 대우를 이용하면 필요한 경계값을 쉽게 찾을 수 있다.\n조건 정리: 주어진 명제의 대우는 “$x\\ge4$이고 $y\\ge k+3$이면 $x+y\\ge6$이다.”이다.\n풀이 방향: 대우의 두 조건에서 가능한 $x+y$의 최솟값을 구한다.\n정석 풀이: $x\\ge4$, $y\\ge k+3$이면 $x+y\\ge4+(k+3)=k+7$이다. 항상 $x+y\\ge6$이려면 $k+7\\ge6$, 즉 $k\\ge-1$이어야 한다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 조건명제는 대우를 이용하면 필요한 경계값을 쉽게 찾을 수 있다.\n조건 정리: 주어진 명제의 대우는 “$x\\ge4$이고 $y\\ge k+3$이면 $x+y\\ge6$이다.”이다.\n풀이 방향: 대우의 두 조건에서 가능한 $x+y$의 최솟값을 구한다.\n정석 풀이: $x\\ge4$, $y\\ge k+3$이면 $x+y\\ge4+(k+3)=k+7$이다. 항상 $x+y\\ge6$이려면 $k+7\\ge6$, 즉 $k\\ge-1$이어야 한다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -119,7 +135,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 필요조건은 $p\\Rightarrow q$, 충분조건은 $r\\Rightarrow p$로 해석한다.\n조건 정리: $p$의 해집합은 $[-2,3]\\cup(5,\\infty)$이다.\n풀이 방향: 이 해집합 전체가 $x\\gt a$에 포함되게 하고, $x\\ge b$의 해집합이 $p$의 해집합에 포함되게 한다.\n정석 풀이: $p\\Rightarrow q$이려면 $p$를 만족하는 최소값 $-2$도 $-2\\gt a$를 만족해야 하므로 정수 $a$의 최댓값은 $-3$이다. 또 $r\\Rightarrow p$이려면 $[b,\\infty)\\subset(5,\\infty)$여야 하므로 정수 $b$의 최솟값은 $6$이다. 따라서 $a+b=-3+6=3$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 필요조건은 $p\\Rightarrow q$, 충분조건은 $r\\Rightarrow p$로 해석한다.\n조건 정리: $p$의 해집합은 $[-2,3]\\cup(5,\\infty)$이다.\n풀이 방향: 이 해집합 전체가 $x\\gt a$에 포함되게 하고, $x\\ge b$의 해집합이 $p$의 해집합에 포함되게 한다.\n정석 풀이: $p\\Rightarrow q$이려면 $p$를 만족하는 최소값 $-2$도 $-2\\gt a$를 만족해야 하므로 정수 $a$의 최댓값은 $-3$이다. 또 $r\\Rightarrow p$이려면 $[b,\\infty)\\subset(5,\\infty)$여야 하므로 정수 $b$의 최솟값은 $6$이다. 따라서 $a+b=-3+6=3$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -143,7 +163,11 @@ window.questionBank = [
       "$5\\sqrt{5}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 한 점을 직선에 대하여 대칭이동하면 꺾인 거리의 최솟값을 직선거리로 바꿀 수 있다.\n조건 정리: 점 $A(2,1)$을 직선 $y=x$에 대하여 대칭이동한 점을 $A'(1,2)$라 하면 $AP=A'P$이다.\n풀이 방향: $A'P+PB$의 최솟값은 $A'$와 $B$를 잇는 선분의 길이이다.\n정석 풀이: $A'B=\\sqrt{(5-1)^2+(4-2)^2}=\\sqrt{20}=2\\sqrt5$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 한 점을 직선에 대하여 대칭이동하면 꺾인 거리의 최솟값을 직선거리로 바꿀 수 있다.\n조건 정리: 점 $A(2,1)$을 직선 $y=x$에 대하여 대칭이동한 점을 $A'(1,2)$라 하면 $AP=A'P$이다.\n풀이 방향: $A'P+PB$의 최솟값은 $A'$와 $B$를 잇는 선분의 길이이다.\n정석 풀이: $A'B=\\sqrt{(5-1)^2+(4-2)^2}=\\sqrt{20}=2\\sqrt5$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -167,7 +191,11 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 접선의 방정식을 기울기 $m$으로 두고 원의 중심에서 직선까지의 거리를 반지름과 같게 둔다.\n조건 정리: 점 $(-1,2)$를 지나는 직선은 $y-2=m(x+1)$이고, 원의 중심은 $(3,-2)$, 반지름은 $2$이다.\n풀이 방향: 중심과 직선 사이의 거리 조건으로 $m$에 대한 이차방정식을 만든다.\n정석 풀이: 직선을 $mx-y+m+2=0$으로 나타내면 $\\dfrac{|4m+4|}{\\sqrt{m^2+1}}=2$이다. 제곱하여 정리하면 $3m^2+8m+3=0$이다. 두 접선의 기울기를 $m_1,m_2$라 하면 근과 계수의 관계에 의해 $m_1m_2=\\dfrac{3}{3}=1$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 접선의 방정식을 기울기 $m$으로 두고 원의 중심에서 직선까지의 거리를 반지름과 같게 둔다.\n조건 정리: 점 $(-1,2)$를 지나는 직선은 $y-2=m(x+1)$이고, 원의 중심은 $(3,-2)$, 반지름은 $2$이다.\n풀이 방향: 중심과 직선 사이의 거리 조건으로 $m$에 대한 이차방정식을 만든다.\n정석 풀이: 직선을 $mx-y+m+2=0$으로 나타내면 $\\dfrac{|4m+4|}{\\sqrt{m^2+1}}=2$이다. 제곱하여 정리하면 $3m^2+8m+3=0$이다. 두 접선의 기울기를 $m_1,m_2$라 하면 근과 계수의 관계에 의해 $m_1m_2=\\dfrac{3}{3}=1$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 8,
@@ -191,7 +219,11 @@ window.questionBank = [
       "$D,\\ A$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $A$의 말과 $D$의 말은 서로 반대이므로 둘 중 정확히 한 사람만 거짓말을 한다.\n조건 정리: 전체에서 거짓말은 한 사람뿐이므로 $B$와 $C$의 말은 참이어야 한다.\n풀이 방향: 참인 말로 당첨자를 확정한 뒤 $A$와 $D$ 중 거짓말한 사람을 정한다.\n정석 풀이: $B$의 말이 참이므로 $C$는 당첨자가 아니다. $C$의 말이 참이므로 $D$가 당첨자이다. 당첨자는 한 사람뿐이므로 $B$는 당첨자가 아니어서 $A$의 말은 거짓이다. 따라서 $D$의 말은 참이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $A$의 말과 $D$의 말은 서로 반대이므로 둘 중 정확히 한 사람만 거짓말을 한다.\n조건 정리: 전체에서 거짓말은 한 사람뿐이므로 $B$와 $C$의 말은 참이어야 한다.\n풀이 방향: 참인 말로 당첨자를 확정한 뒤 $A$와 $D$ 중 거짓말한 사람을 정한다.\n정석 풀이: $B$의 말이 참이므로 $C$는 당첨자가 아니다. $C$의 말이 참이므로 $D$가 당첨자이다. 당첨자는 한 사람뿐이므로 $B$는 당첨자가 아니어서 $A$의 말은 거짓이다. 따라서 $D$의 말은 참이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -215,7 +247,11 @@ window.questionBank = [
       "$30$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 절편의 합을 한 양수 변수로 나타낸 뒤 완전제곱 형태로 최솟값을 구한다.\n조건 정리: $\\dfrac3a+\\dfrac{12}{b}=1$이고 $a\\gt 3$이다. 따라서 $b=\\dfrac{12a}{a-3}$이다.\n풀이 방향: $t=a-3\\gt 0$으로 치환하여 $a+b$를 정리한다.\n정석 풀이: $a=t+3$이므로 $b=\\dfrac{12(t+3)}t=12+\\dfrac{36}t$이다. 따라서 $a+b=t+15+\\dfrac{36}t=27+\\dfrac{(t-6)^2}{t}\\ge27$이다. 등호는 $t=6$, 즉 $a=9$, $b=18$일 때 성립한다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 절편의 합을 한 양수 변수로 나타낸 뒤 완전제곱 형태로 최솟값을 구한다.\n조건 정리: $\\dfrac3a+\\dfrac{12}{b}=1$이고 $a\\gt 3$이다. 따라서 $b=\\dfrac{12a}{a-3}$이다.\n풀이 방향: $t=a-3\\gt 0$으로 치환하여 $a+b$를 정리한다.\n정석 풀이: $a=t+3$이므로 $b=\\dfrac{12(t+3)}t=12+\\dfrac{36}t$이다. 따라서 $a+b=t+15+\\dfrac{36}t=27+\\dfrac{(t-6)^2}{t}\\ge27$이다. 등호는 $t=6$, 즉 $a=9$, $b=18$일 때 성립한다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -242,7 +278,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 합성함수는 안쪽 함수부터 차례로 적용한다.\n조건 정리: 대응 그림에서 $f(2)=4$이고 $f(4)=5$이다.\n풀이 방향: $(f\\circ f)(2)=f(f(2))$를 계산한다.\n정석 풀이: $f(f(2))=f(4)=5$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/25_제일고_2학기_기말_고1_기출/q10.png"
+    "image": "assets/images/25_제일고_2학기_기말_고1_기출/q10.png",
+    "imageSize": "large",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 11,
@@ -266,7 +307,11 @@ window.questionBank = [
       "제2,3,4사분면"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정의역과 $y$의 부호가 바뀌는 지점을 함께 확인한다.\n조건 정리: $-x-1\\ge0$이므로 $x\\le-1$이고, $y\\ge-1$이다.\n풀이 방향: $y=0$이 되는 $x$를 기준으로 부호를 나눈다.\n정석 풀이: $\\sqrt{-x-1}-1=0$이면 $x=-2$이다. $x\\lt -2$에서는 $x\\lt 0$, $y\\gt 0$이므로 제2사분면을 지나고, $-2\\lt x\\le-1$에서는 $x\\lt 0$, $y\\lt 0$이므로 제3사분면을 지난다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 정의역과 $y$의 부호가 바뀌는 지점을 함께 확인한다.\n조건 정리: $-x-1\\ge0$이므로 $x\\le-1$이고, $y\\ge-1$이다.\n풀이 방향: $y=0$이 되는 $x$를 기준으로 부호를 나눈다.\n정석 풀이: $\\sqrt{-x-1}-1=0$이면 $x=-2$이다. $x\\lt -2$에서는 $x\\lt 0$, $y\\gt 0$이므로 제2사분면을 지나고, $-2\\lt x\\le-1$에서는 $x\\lt 0$, $y\\lt 0$이므로 제3사분면을 지난다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 12,
@@ -293,7 +338,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 그래프에서 함수값과 역함수값을 각각 읽는다.\n조건 정리: 그래프의 점선에서 $f(5)=3$이고 $f(8)=7$임을 읽을 수 있다.\n풀이 방향: $f(8)=7$을 역함수 관계로 바꾼다.\n정석 풀이: $f^{-1}(7)=8$이므로 $f(5)+f^{-1}(7)=3+8=11$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_제일고_2학기_기말_고1_기출/q12.png"
+    "image": "assets/images/25_제일고_2학기_기말_고1_기출/q12.png",
+    "imageSize": "large",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -317,7 +367,11 @@ window.questionBank = [
       "제3사분면을 지나지 않는다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 유리함수를 평행이동형으로 바꾸면 점근선과 그래프의 위치를 확인할 수 있다.\n조건 정리: $y=\\dfrac{-x}{x-1}=-1-\\dfrac1{x-1}$이다.\n풀이 방향: 점근선, 대칭의 중심, 실제 사분면 통과 여부를 차례로 확인한다.\n정석 풀이: 점근선은 $x=1$, $y=-1$이고 중심은 $(1,-1)$이다. 또한 $y=-\\dfrac1x$를 오른쪽으로 $1$, 아래로 $1$만큼 평행이동한 그래프이다. $x\\lt 0$이면 분자 $-x\\gt 0$, 분모 $x-1\\lt 0$이므로 $y\\lt 0$이다. 따라서 그래프는 제3사분면을 지난다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 유리함수를 평행이동형으로 바꾸면 점근선과 그래프의 위치를 확인할 수 있다.\n조건 정리: $y=\\dfrac{-x}{x-1}=-1-\\dfrac1{x-1}$이다.\n풀이 방향: 점근선, 대칭의 중심, 실제 사분면 통과 여부를 차례로 확인한다.\n정석 풀이: 점근선은 $x=1$, $y=-1$이고 중심은 $(1,-1)$이다. 또한 $y=-\\dfrac1x$를 오른쪽으로 $1$, 아래로 $1$만큼 평행이동한 그래프이다. $x\\lt 0$이면 분자 $-x\\gt 0$, 분모 $x-1\\lt 0$이므로 $y\\lt 0$이다. 따라서 그래프는 제3사분면을 지난다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 14,
@@ -341,7 +395,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 그래프의 수직·수평 점근선 네 개가 만드는 직사각형의 넓이를 이용한다.\n조건 정리: 첫 그래프의 점근선은 $x=k$, $y=0$이다. 두 번째 함수는 $y=k+\\dfrac{k-1}{x-1}$이므로 점근선은 $x=1$, $y=k$이다.\n풀이 방향: 네 점근선으로 만들어지는 직사각형의 가로와 세로 길이를 구한다.\n정석 풀이: 넓이는 $|k-1|\\cdot k=12$이다. $0\\lt k\\lt 1$이면 $k(1-k)\\le\\dfrac14$이므로 불가능하다. 따라서 $k\\gt 1$이고 $k(k-1)=12$이다. $k^2-k-12=0$에서 $(k-4)(k+3)=0$이므로 양수 $k=4$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 두 그래프의 수직·수평 점근선 네 개가 만드는 직사각형의 넓이를 이용한다.\n조건 정리: 첫 그래프의 점근선은 $x=k$, $y=0$이다. 두 번째 함수는 $y=k+\\dfrac{k-1}{x-1}$이므로 점근선은 $x=1$, $y=k$이다.\n풀이 방향: 네 점근선으로 만들어지는 직사각형의 가로와 세로 길이를 구한다.\n정석 풀이: 넓이는 $|k-1|\\cdot k=12$이다. $0\\lt k\\lt 1$이면 $k(1-k)\\le\\dfrac14$이므로 불가능하다. 따라서 $k\\gt 1$이고 $k(k-1)=12$이다. $k^2-k-12=0$에서 $(k-4)(k+3)=0$이므로 양수 $k=4$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 15,
@@ -365,7 +423,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $f^{-1}(5)=-1$은 $f(-1)=5$와 같은 뜻이다.\n조건 정리: $5a+b=2$, $-a+b=5$이다.\n풀이 방향: 두 일차방정식을 연립한다.\n정석 풀이: 두 식을 빼면 $6a=-3$이므로 $a=-\\dfrac12$이다. 이를 $-a+b=5$에 대입하면 $b=\\dfrac92$이다. 따라서 $a+b=4$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $f^{-1}(5)=-1$은 $f(-1)=5$와 같은 뜻이다.\n조건 정리: $5a+b=2$, $-a+b=5$이다.\n풀이 방향: 두 일차방정식을 연립한다.\n정석 풀이: 두 식을 빼면 $6a=-3$이므로 $a=-\\dfrac12$이다. 이를 $-a+b=5$에 대입하면 $b=\\dfrac92$이다. 따라서 $a+b=4$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 16,
@@ -389,7 +451,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 가장 안쪽 분수부터 차례로 정리한다.\n조건 정리: $1-\\dfrac1{x+1}=\\dfrac{x}{x+1}$이다.\n풀이 방향: 중첩된 분수를 단계별로 간단히 한다.\n정석 풀이: $\\dfrac1{1-\\dfrac1{x+1}}=\\dfrac{x+1}{x}$이므로 $2-\\dfrac{x+1}{x}=\\dfrac{x-1}{x}$이다. 따라서 전체 식은 $\\dfrac{x}{x-1}$이다. 즉 $a=1$, $b=0$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 가장 안쪽 분수부터 차례로 정리한다.\n조건 정리: $1-\\dfrac1{x+1}=\\dfrac{x}{x+1}$이다.\n풀이 방향: 중첩된 분수를 단계별로 간단히 한다.\n정석 풀이: $\\dfrac1{1-\\dfrac1{x+1}}=\\dfrac{x+1}{x}$이므로 $2-\\dfrac{x+1}{x}=\\dfrac{x-1}{x}$이다. 따라서 전체 식은 $\\dfrac{x}{x-1}$이다. 즉 $a=1$, $b=0$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 17,
@@ -416,7 +482,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 같은 높이에 있는 두 점의 $x$좌표 관계와 정사각형의 가로·세로 길이를 이용한다.\n조건 정리: $A=(a,\\sqrt{2a})$라 하면 $D$는 $y=\\sqrt{x}$ 위에 있고 높이가 같으므로 $D=(2a,\\sqrt{2a})$이다.\n풀이 방향: 정사각형의 가로 길이와 세로 길이를 같게 둔다.\n정석 풀이: 가로 길이 $AD=2a-a=a$이고 세로 길이 $AB=\\sqrt{2a}$이다. 따라서 $a=\\sqrt{2a}$이다. 양변을 제곱하면 $a^2=2a$이고 $a\\gt 0$이므로 $a=2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_제일고_2학기_기말_고1_기출/q17.png"
+    "image": "assets/images/25_제일고_2학기_기말_고1_기출/q17.png",
+    "imageSize": "large",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -440,7 +511,11 @@ window.questionBank = [
       "$\\dfrac{13}{4}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 먼저 합성함수를 구간별로 정리한 뒤 각 구간의 넓이를 사다리꼴과 삼각형으로 계산한다.\n조건 정리: $0\\le x\\lt 1$에서는 $f(x)=1-x$, $1\\le x\\le2$에서는 $f(x)=2x-2$이다.\n풀이 방향: $f(x)$가 $1$보다 작은지 큰지에 따라 $g$의 식을 선택한다.\n정석 풀이: $0\\le x\\lt 1$에서는 $(g\\circ f)(x)=2-x$이다. $1\\le x\\lt \\dfrac32$에서는 $f(x)\\lt 1$이므로 $(g\\circ f)(x)=2x-1$이다. $\\dfrac32\\le x\\le2$에서는 $(g\\circ f)(x)=-4x+8$이다. 첫 구간의 넓이는 $\\dfrac{2+1}{2}\\cdot1=\\dfrac32$, 두 번째 구간은 $\\dfrac{1+2}{2}\\cdot\\dfrac12=\\dfrac34$, 세 번째 구간은 $\\dfrac12\\cdot\\dfrac12\\cdot2=\\dfrac12$이다. 합은 $\\dfrac32+\\dfrac34+\\dfrac12=\\dfrac{11}{4}$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 먼저 합성함수를 구간별로 정리한 뒤 각 구간의 넓이를 사다리꼴과 삼각형으로 계산한다.\n조건 정리: $0\\le x\\lt 1$에서는 $f(x)=1-x$, $1\\le x\\le2$에서는 $f(x)=2x-2$이다.\n풀이 방향: $f(x)$가 $1$보다 작은지 큰지에 따라 $g$의 식을 선택한다.\n정석 풀이: $0\\le x\\lt 1$에서는 $(g\\circ f)(x)=2-x$이다. $1\\le x\\lt \\dfrac32$에서는 $f(x)\\lt 1$이므로 $(g\\circ f)(x)=2x-1$이다. $\\dfrac32\\le x\\le2$에서는 $(g\\circ f)(x)=-4x+8$이다. 첫 구간의 넓이는 $\\dfrac{2+1}{2}\\cdot1=\\dfrac32$, 두 번째 구간은 $\\dfrac{1+2}{2}\\cdot\\dfrac12=\\dfrac34$, 세 번째 구간은 $\\dfrac12\\cdot\\dfrac12\\cdot2=\\dfrac12$이다. 합은 $\\dfrac32+\\dfrac34+\\dfrac12=\\dfrac{11}{4}$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 19,
@@ -460,7 +535,11 @@ window.questionBank = [
     "content": "실수 전체의 집합에 대하여 명제 “어떤 실수 $x$에 대하여 $x^2-4x+k\\lt 0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 상수 $k$의 최솟값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$4$",
-    "solution": "[키포인트] 존재명제의 부정은 모든 원소에 대한 명제로 바꾸고 부등호도 함께 부정한다.\n조건 정리: 주어진 명제의 부정은 “모든 실수 $x$에 대하여 $x^2-4x+k\\ge0$이다.”이다.\n풀이 방향: 이차식의 최솟값이 $0$ 이상이 되도록 한다.\n정석 풀이: $x^2-4x+k=(x-2)^2+k-4$이다. 모든 실수 $x$에서 이 값이 $0$ 이상이려면 최솟값 $k-4$가 $0$ 이상이어야 한다. 따라서 $k\\ge4$이다.\n따라서 구하는 최솟값은 $4$이다."
+    "solution": "[키포인트] 존재명제의 부정은 모든 원소에 대한 명제로 바꾸고 부등호도 함께 부정한다.\n조건 정리: 주어진 명제의 부정은 “모든 실수 $x$에 대하여 $x^2-4x+k\\ge0$이다.”이다.\n풀이 방향: 이차식의 최솟값이 $0$ 이상이 되도록 한다.\n정석 풀이: $x^2-4x+k=(x-2)^2+k-4$이다. 모든 실수 $x$에서 이 값이 $0$ 이상이려면 최솟값 $k-4$가 $0$ 이상이어야 한다. 따라서 $k\\ge4$이다.\n따라서 구하는 최솟값은 $4$이다.",
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -480,7 +559,11 @@ window.questionBank = [
     "content": "함수 $f(x)=\\sqrt{x+2}$의 역함수를 $g(x)$라 할 때, 두 함수 $y=f(x)$, $y=g(x)$의 그래프의 교점의 좌표를 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$(2,2)$",
-    "solution": "[키포인트] 서로 역함수인 증가함수의 그래프는 직선 $y=x$에 대하여 대칭이고 교점은 직선 $y=x$ 위에 있다.\n조건 정리: 교점에서는 $y=x$이므로 $x=f(x)=\\sqrt{x+2}$를 만족한다.\n풀이 방향: 정의역 조건 $x\\ge0$을 확인하며 방정식을 푼다.\n정석 풀이: $x=\\sqrt{x+2}$에서 $x\\ge0$이고, 양변을 제곱하면 $x^2=x+2$이다. $(x-2)(x+1)=0$이므로 $x=2$ 또는 $x=-1$인데 $x\\ge0$이므로 $x=2$이다. 따라서 $y=2$이다.\n따라서 교점의 좌표는 $(2,2)$이다."
+    "solution": "[키포인트] 서로 역함수인 증가함수의 그래프는 직선 $y=x$에 대하여 대칭이고 교점은 직선 $y=x$ 위에 있다.\n조건 정리: 교점에서는 $y=x$이므로 $x=f(x)=\\sqrt{x+2}$를 만족한다.\n풀이 방향: 정의역 조건 $x\\ge0$을 확인하며 방정식을 푼다.\n정석 풀이: $x=\\sqrt{x+2}$에서 $x\\ge0$이고, 양변을 제곱하면 $x^2=x+2$이다. $(x-2)(x+1)=0$이므로 $x=2$ 또는 $x=-1$인데 $x\\ge0$이므로 $x=2$이다. 따라서 $y=2$이다.\n따라서 교점의 좌표는 $(2,2)$이다.",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 21,
@@ -500,7 +583,11 @@ window.questionBank = [
     "content": "$f(x)=\\dfrac{1}{x(x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(99)$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$\\dfrac{99}{100}$",
-    "solution": "[키포인트] 각 항을 두 단순분수의 차로 분해하면 중간 항들이 연속해서 소거된다.\n조건 정리: $\\dfrac1{x(x+1)}=\\dfrac1x-\\dfrac1{x+1}$이다.\n풀이 방향: $x=1$부터 $99$까지 대입한 식을 모두 더한다.\n정석 풀이: 합은 $(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{99}-\\dfrac1{100})$이다. 중간 항이 모두 소거되어 $1-\\dfrac1{100}=\\dfrac{99}{100}$만 남는다.\n따라서 구하는 값은 $\\dfrac{99}{100}$이다."
+    "solution": "[키포인트] 각 항을 두 단순분수의 차로 분해하면 중간 항들이 연속해서 소거된다.\n조건 정리: $\\dfrac1{x(x+1)}=\\dfrac1x-\\dfrac1{x+1}$이다.\n풀이 방향: $x=1$부터 $99$까지 대입한 식을 모두 더한다.\n정석 풀이: 합은 $(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{99}-\\dfrac1{100})$이다. 중간 항이 모두 소거되어 $1-\\dfrac1{100}=\\dfrac{99}{100}$만 남는다.\n따라서 구하는 값은 $\\dfrac{99}{100}$이다.",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 22,
@@ -520,6 +607,10 @@ window.questionBank = [
     "content": "$a,b,c$가 자연수일 때, 명제 “$a^2+b^2=c^2$이면 $a,b,c$ 중 적어도 하나는 짝수이다.”가 참임을 귀류법을 사용하여 증명하시오.",
     "choices": [],
     "answer": "$a,b,c$ 중 적어도 하나는 짝수이다.",
-    "solution": "[키포인트] 결론의 부정을 가정하고 홀수의 제곱을 $4$로 나눈 나머지를 이용한다.\n조건 정리: 결론이 거짓이라고 가정하면 $a,b,c$는 모두 홀수이다.\n풀이 방향: 홀수의 제곱은 $4$로 나눈 나머지가 항상 $1$임을 이용하여 등식의 양변을 비교한다.\n정석 풀이: $a,b,c$가 모두 홀수라면 $a^2\\equiv1\\pmod4$, $b^2\\equiv1\\pmod4$, $c^2\\equiv1\\pmod4$이다. 따라서 $a^2+b^2\\equiv2\\pmod4$이지만 $c^2\\equiv1\\pmod4$이므로 $a^2+b^2=c^2$와 모순이다. 그러므로 $a,b,c$가 모두 홀수라는 가정은 거짓이다.\n따라서 $a,b,c$ 중 적어도 하나는 짝수이다."
+    "solution": "[키포인트] 결론의 부정을 가정하고 홀수의 제곱을 $4$로 나눈 나머지를 이용한다.\n조건 정리: 결론이 거짓이라고 가정하면 $a,b,c$는 모두 홀수이다.\n풀이 방향: 홀수의 제곱은 $4$로 나눈 나머지가 항상 $1$임을 이용하여 등식의 양변을 비교한다.\n정석 풀이: $a,b,c$가 모두 홀수라면 $a^2\\equiv1\\pmod4$, $b^2\\equiv1\\pmod4$, $c^2\\equiv1\\pmod4$이다. 따라서 $a^2+b^2\\equiv2\\pmod4$이지만 $c^2\\equiv1\\pmod4$이므로 $a^2+b^2=c^2$와 모순이다. 그러므로 $a,b,c$가 모두 홀수라는 가정은 거짓이다.\n따라서 $a,b,c$ 중 적어도 하나는 짝수이다.",
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

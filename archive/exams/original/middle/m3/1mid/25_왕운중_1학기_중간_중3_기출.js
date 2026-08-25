@@ -19,10 +19,23 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 제곱근의 정의와 성질을 이해한다.\n* ① $a$의 제곱근은 $\\pm\\sqrt{a}$ 입니다.\n* ② $x$가 $3$의 제곱근이므로 $x=\\pm\\sqrt{3}$ 이고, $x$의 제곱근은 $\\pm\\sqrt{\\pm\\sqrt{3}}$ 형태가 되어 옳지 않습니다.\n* ③ $0$의 제곱근은 1개, 음수의 제곱근은 0개입니다.\n* ⑤ 제곱근 81은 $\\sqrt{81}=9$ 입니다.\n* 따라서 정답은 ④이다.",
     "level": "하",
-    "tags": ["객관식","제곱근","근호","개수세기","참거짓","오류판별","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "개수세기",
+      "참거짓",
+      "오류판별",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -43,10 +56,20 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 근호를 포함한 수의 성질을 이용하여 $a, b$를 구한다.\n* $\\sqrt{(-16)^2} = 16$. 16의 음의 제곱근 $a = -4$\n* 제곱근 81은 $\\sqrt{81}=9$. 9의 음의 제곱근 $b = -3$\n* $ab = (-4) \\times (-3) = 12$\n* 따라서 정답은 ③이다.",
     "level": "하",
-    "tags": ["객관식","제곱근","근호","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -67,10 +90,20 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 근호 안의 수를 소인수분해하여 곱셈과 나눗셈을 수행한다.\n* $\\frac{\\sqrt{15}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{\\sqrt{12}}{7}$\n* $= \\frac{\\sqrt{3} \\times \\sqrt{5}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{2\\sqrt{3}}{7}$\n* $= \\frac{\\sqrt{3} \\times 2\\sqrt{3}}{3} = \\frac{6}{3} = 2$\n* 따라서 정답은 ①이다.",
     "level": "하",
-    "tags": ["객관식","제곱근","근호","인수분해","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "인수분해",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -91,10 +124,23 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 무리수는 순환소수가 아닌 무한소수로 나타내어짐을 이용한다.\n* 순환소수가 아닌 무한소수는 무리수이다.\n* $\\sqrt{25}=5$ 이므로 유리수이다.\n* $\\pi^{2}$는 무리수이다.\n* $2\\sqrt{81}-3=2\\times 9-3=15$ 이므로 유리수이다.\n* $\\sqrt{3.7}$은 무리수이다.\n* $-6+\\sqrt{36}=-6+6=0$ 이므로 유리수이다.\n* $\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$ 이므로 유리수이다.\n* $\\sqrt{8.1}$은 무리수이다.\n* 따라서 무리수는 $\\pi^{2},\\ \\sqrt{3.7},\\ \\sqrt{8.1}$의 3개이다.\n* 따라서 정답은 ③이다.",
     "level": "중",
-    "tags": ["객관식","제곱근","근호","무리수","유리수","복소수","순환소수","개수세기"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "유리수",
+      "복소수",
+      "순환소수",
+      "개수세기"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -115,10 +161,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 제곱근표는 세로(행)에서 소수 첫째 자리까지, 가로(열)에서 소수 둘째 자리를 읽는다.\n$\\sqrt{3.25}$이므로 $3.2$행과 $5$열이 만나는 칸의 값을 읽는다.\n$3.2$행은 왼쪽부터 $4$열 $1.800$, $5$열 $1.803$, $6$열 $1.806$ 이므로 $5$열의 값은 $1.803$이다.\n따라서 $\\sqrt{3.25}$의 어림한 값은 $1.803$이다.\n* 따라서 정답은 ②이다.",
     "level": "하",
-    "tags": ["표"],
+    "tags": [
+      "표"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -139,10 +191,22 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 제곱근의 성질 $\\sqrt{a \\times 10^{2n}} = 10^n\\sqrt{a}$를 이용한다.\n$\\sqrt{0.334}=\\sqrt{\\dfrac{33.4}{100}}=\\dfrac{\\sqrt{33.4}}{10}$이다. 제곱근표에서 $\\sqrt{33.4}=5.779$이므로 $\\sqrt{0.334}=0.5779$이다.\n* 따라서 정답은 ④이다.",
     "level": "중",
-    "tags": ["객관식","제곱근","근호","표해석","계산","개념","응용"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "표해석",
+      "계산",
+      "개념",
+      "응용"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -163,10 +227,23 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 합차 공식을 이용하여 $ab$의 값을 먼저 구한다.\n* $ab = (\\sqrt{3}-2)(\\sqrt{3}+2) = 3-4 = -1$\n* $a^8b^6 = (ab)^6 \\times a^2 = (-1)^6 \\times (\\sqrt{3}-2)^2 = 1 \\times (3-4\\sqrt{3}+4) = 7-4\\sqrt{3}$\n* $a^8b^6+4a+1 = (7-4\\sqrt{3}) + 4(\\sqrt{3}-2) + 1 = 7-4\\sqrt{3}+4\\sqrt{3}-8+1 = 0$\n* 따라서 정답은 ④이다.",
     "level": "상",
-    "tags": ["객관식","제곱근","근호","다항식","인수분해","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "다항식",
+      "인수분해",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 8,
@@ -187,10 +264,23 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 무리수의 어림한 값을 구하여 범위를 파악한다.\n* $3+2.828\\dots = 5.828\\dots < x < 5+4.123\\dots = 9.123\\dots$\n* 자연수 $x$: $6, 7, 8, 9$ (4개)\n* 정수 부분 최대는 9입니다.\n* $4+2\\sqrt{2} = 4+\\sqrt{8} = 4+2.828\\dots = 6.828\\dots$ 이므로 범위에 포함됩니다.\n* 따라서 정답은 ⑤이다.",
     "level": "중",
-    "tags": ["객관식","제곱근","근호","무리수","최대최소","자연수조건","범위","개수세기"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "무리수",
+      "최대최소",
+      "자연수조건",
+      "범위",
+      "개수세기"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -211,10 +301,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고 기준점으로부터의 거리를 계산한다.\n1. 정사각형 $ABCD$에서 선분 $AB$의 길이를 구한다.\n점 $A$는 $(-3, 0)$, 점 $B$는 $(-2, 3)$에 위치하므로 피타고라스 정리에 의해\n$\\overline{AB} = \\sqrt{(-2 - (-3))^2 + (3 - 0)^2} = \\sqrt{1^2 + 3^2} = \\sqrt{10}$\n점 $P$는 점 $A$를 중심으로 하고 반지름이 $\\sqrt{10}$인 원이 수직선의 오른쪽과 만나는 점이므로\n$P = -3 + \\sqrt{10}$\n\n2. 정사각형 $EFGH$에서 선분 $EF$의 길이를 구한다.\n점 $E$는 $(2, 0)$, 점 $F$는 $(4, 2)$에 위치하므로 피타고라스 정리에 의해\n$\\overline{EF} = \\sqrt{(4 - 2)^2 + (2 - 0)^2} = \\sqrt{8} = 2\\sqrt{2}$\n점 $Q$는 점 $E$를 중심으로 하고 반지름이 $2\\sqrt{2}$인 원이 수직선의 오른쪽과 만나는 점이므로\n$Q = 2 + 2\\sqrt{2}$\n\n따라서 정답은 ④이다.",
     "level": "중",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -235,10 +331,23 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] $\\sqrt{x}$의 범위를 나누어 해당 구간의 짝수 개수를 구한다.\n* $x=20\\sim 35$: $\\sqrt{x}$는 $4.\\dots \\sim 5.\\dots$. 짝수는 $2, 4$로 2개 ($16 \\times 2 = 32$)\n* $x=36\\sim 40$: $\\sqrt{x}$는 $6 \\sim 6.\\dots$. 짝수는 $2, 4, 6$으로 3개 ($5 \\times 3 = 15$)\n* 합: $32 + 15 = 47$\n* 따라서 정답은 ④이다.",
     "level": "상",
-    "tags": ["객관식","제곱근","근호","자연수조건","범위","개수세기","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "자연수조건",
+      "범위",
+      "개수세기",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -259,10 +368,22 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] $\\sqrt{x^2} = |x|$ 성질을 이용하여 부호를 결정한다.\n* $ab < 0$ 이므로 $\\sqrt{(ab)^2} = |ab| = -ab$\n* $-ab > 0$ 이므로 $4\\sqrt{(-ab)^2} = 4|-ab| = -4ab$\n* 합: $-ab - 4ab = -5ab$\n* 따라서 정답은 ③이다.",
     "level": "중",
-    "tags": ["객관식","제곱근","근호","절댓값","조건해석","계산","개념"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -283,10 +404,22 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 인수분해 공식 $(x-a)^2 = x^2-2ax+a^2$ 및 전개 공식을 확인한다.\n* ③ $(x-5)^2 = x^2-10x+25$ 이므로 $x^2-25x+10$과 일치하지 않습니다.\n* ⑤ $(x-2)(x-3) = x^2-5x+6$ 으로 옳은 식입니다.\n* 따라서 정답은 ③이다.",
     "level": "중",
-    "tags": ["객관식","다항식","인수분해","전개","참거짓","오류판별","개념"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "참거짓",
+      "오류판별",
+      "개념"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 13,
@@ -307,10 +440,22 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 다항식의 전개식에서 상수항은 각 항의 상수의 곱임을 이용한다.\n* 상수항: $-5A = 15 \\implies A = -3$\n* $x$의 계수: $5-A = 5-(-3) = 8$\n* 따라서 $A=-3$, 계수는 $8$입니다.\n* 따라서 정답은 ⑤이다.",
     "level": "하",
-    "tags": ["객관식","다항식","인수분해","전개","계수비교","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "계수비교",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 14,
@@ -331,10 +476,20 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 합차 공식 $a^2-b^2 = (a-b)(a+b)$를 이용하여 항을 분리하고 소거한다.\n* $(\\frac{1}{2}-1)(\\frac{1}{2}+1) \\times (\\frac{1}{3}-1)(\\frac{1}{3}+1) \\dots$\n* $= (-\\frac{1}{2})(\\frac{3}{2}) \\times (-\\frac{2}{3})(\\frac{4}{3}) \\times \\dots \\times (-\\frac{9}{10})(\\frac{11}{10})$\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\frac{1}{2} \\times \\frac{11}{10} = -\\frac{11}{20}$\n* 따라서 정답은 ②이다.",
     "level": "상",
-    "tags": ["객관식","다항식","인수분해","계산","조건해석"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "계산",
+      "조건해석"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 15,
@@ -355,10 +510,21 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 이차식 $x^2+ax+b$가 완전제곱식이 될 조건은 $b = (a/2)^2$임을 이용한다.\n* $(x+5)(x-3)-k = x^2+2x-15-k$\n* 완전제곱식이 되려면 상수항이 $(\\frac{2}{2})^2 = 1$ 이어야 함.\n* $-15-k = 1 \\implies k = -16$\n* 따라서 정답은 ②이다.",
     "level": "하",
-    "tags": ["객관식","다항식","인수분해","완전제곱식","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "완전제곱식",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 16,
@@ -366,7 +532,7 @@ window.questionBank = [
     "content": "다음 식에서 $\\square$ 안에 들어갈 수 중 가장 큰 것을 고르면? [4점]",
     "choices": [
       "$a^{2}+8a+\\square=(a+4)^{2}$",
-       "$(a+1)^{2}=a^{2}+\\square a+1$",
+      "$(a+1)^{2}=a^{2}+\\square a+1$",
       "$(3x+\\frac{1}{3})^{2}=9x^{2}+\\square x+\\frac{1}{9}$",
       "$x^{2}-5x+6=(x-2)(x-\\square)$",
       "$6x^{2}-\\square xy-3y^{2}=(3x+y)(2x-3y)$"
@@ -379,10 +545,20 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 곱셈 공식 $(a+b)^2 = a^2+2ab+b^2$ 및 전개 공식을 각 항에 적용한다.\n* ① 16, ② 2, ③ 2, ④ 3, ⑤ 7\n* 가장 큰 수는 16입니다.\n* 따라서 정답은 ①이다.",
     "level": "하",
-    "tags": ["객관식","다항식","인수분해","전개","계산"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 17,
@@ -403,10 +579,22 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] $(x+p)(x+q) = x^2+(p+q)x+pq$ 임을 이용하여 계수를 비교한다.\n* 상수항: $-3b = 21 \\implies b = -7$\n* $x$의 계수: $-a = -3+b = -3-7 = -10 \\implies a = 10$\n* 따라서 정답은 ③이다.",
     "level": "하",
-    "tags": ["객관식","다항식","인수분해","계수비교","조건해석","계산","응용"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "계수비교",
+      "조건해석",
+      "계산",
+      "응용"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 18,
@@ -427,10 +615,23 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 근호 안을 완전제곱식으로 고친 후 절댓값 기호를 사용하여 범위를 따진다.\n* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 따라서 정답은 ③이다.",
     "level": "상",
-    "tags": ["객관식","제곱근","근호","절댓값","완전제곱식","범위","조건해석","계산"],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "완전제곱식",
+      "범위",
+      "조건해석",
+      "계산"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -451,10 +652,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 나누어진 각 직사각형의 넓이를 이용하여 가로와 세로의 길이를 다항식으로 나타낸다.\n큰 직사각형의 가로의 길이를 두 부분으로 나누어 $a, b$라 하고, 세로의 길이를 두 부분으로 나누어 $c, d$라고 하면 나누어진 사각형들의 넓이는 다음과 같다.\n$ac = 2x^{2}, bc = 7x, ad = 8x, bd = 28$\n이때 $c(a+b) = 2x^{2} + 7x = x(2x+7)$ 이므로 $c = x, a+b = 2x+7$로 볼 수 있다.\n또한 $d(a+b) = 8x + 28 = 4(2x+7)$ 이므로 $d = 4, a+b = 2x+7$이 성립한다.\n따라서 큰 직사각형의 가로의 길이는 $2x+7$, 세로의 길이는 $c+d = x+4$이다.\n큰 직사각형의 둘레의 길이는 $2\\{(2x+7) + (x+4)\\} = 2(3x+11) = 6x + 22$\n* 따라서 정답은 ①이다.",
     "level": "중",
-    "tags": ["도형"],
+    "tags": [
+      "도형"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 20,
@@ -475,10 +682,23 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] $ab$가 제곱수이고 $a, b$가 자연수인 경우를 나열하여 소수 판별을 한다.\n* 가능한 $(a, b)$ 쌍 중 $a+b$가 소수인 경우:\n* (1, 1) $\\implies$ 2, (1, 4) $\\implies$ 5, (4, 9) $\\implies$ 13\n* 소수는 2, 5, 13으로 3개입니다.\n* 따라서 정답은 ⑤이다.",
     "level": "상",
-    "tags": ["객관식","다항식","인수분해","전개","계수비교","자연수조건","범위","개수세기"],
+    "tags": [
+      "객관식",
+      "다항식",
+      "인수분해",
+      "전개",
+      "계수비교",
+      "자연수조건",
+      "범위",
+      "개수세기"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "객관식"
+    "questionType": "객관식",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 21,
@@ -493,10 +713,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 제곱근의 정의와 분모의 유리화 방법을 서술한다.\n* (1) $(-3)^2=9$ 이므로 양의 제곱근 $A=3, B=-\\sqrt{7}$이다.\n* (2) $\\frac{1}{3-\\sqrt{7}} = \\frac{3+\\sqrt{7}}{9-7} = \\frac{3+\\sqrt{7}}{2}$이다.\n* 정답: (1) $A=3, B=-\\sqrt{7}$  (2) $\\frac{3+\\sqrt{7}}{2}$",
     "level": "중",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "서술형"
+    "questionType": "서술형",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -511,10 +737,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 식을 인수분해한 후 값을 대입하여 계산 효율을 높인다.\n* $a^2-9a+14 = (a-2)(a-7)$\n* $a=7+\\sqrt{3}$ 대입: $(7+\\sqrt{3}-2)(7+\\sqrt{3}-7) = (5+\\sqrt{3})(\\sqrt{3}) = 3+5\\sqrt{3}$\n* 정답: $3+5\\sqrt{3}$",
     "level": "중",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "서술형"
+    "questionType": "서술형",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 23,
@@ -529,10 +761,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "solution": "[키포인트] 식을 정리한 후 완전제곱식이 될 조건을 이용하여 $m, n$의 관계식을 구한다.\n* $(x^2-10mx+n)-(2mx-5n) = x^2-12mx+6n$\n* 완전제곱식 조건: $(12m/2)^2 = 6n \\implies 36m^2 = 6n \\implies n=6m^2$\n* $m=1 \\implies n=6, m=2 \\implies n=24, m=3 \\implies n=54, m=4 \\implies n=96$ (100이하 최대)\n* $n-m = 96-4 = 92$\n* 정답: 92",
     "level": "상",
-    "tags": ["서술형"],
+    "tags": [
+      "서술형"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "서술형"
+    "questionType": "서술형",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 24,
@@ -547,9 +785,16 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "solution": "[키포인트] 피타고라스 정리를 이용해 직각삼각형의 빗변 길이를 구하고 수직선 위의 좌표를 결정한다.\n1단계: 왼쪽 직각삼각형의 밑변은 $2$칸, 높이는 $1$칸이므로 빗변의 길이는 $\\sqrt{2^2+1^2}=\\sqrt{5}$이다. 중심점이 $-4$이므로\n$A = -4-\\sqrt{5}, B = -4+\\sqrt{5}$이다.\n\n2단계: 오른쪽 직각삼각형의 밑변은 $1$칸, 높이는 $3$칸이므로 빗변의 길이는 $\\sqrt{1^2+3^2}=\\sqrt{10}$이다. 중심점이 $2$이므로\n$C = 2-\\sqrt{10}, D = 2+\\sqrt{10}$이다.\n\n3단계: 각 선분의 길이를 구하면\n$\\overline{BC} = (2-\\sqrt{10}) - (-4+\\sqrt{5}) = 6-\\sqrt{10}-\\sqrt{5}$\n$\\overline{AD} = (2+\\sqrt{10}) - (-4-\\sqrt{5}) = 6+\\sqrt{10}+\\sqrt{5}$\n\n4단계: 두 길이의 차를 구하면\n$\\overline{AD} - \\overline{BC} = (6+\\sqrt{10}+\\sqrt{5}) - (6-\\sqrt{10}-\\sqrt{5}) = 2\\sqrt{10}+2\\sqrt{5}$\n\n∴ 정답: $A: -4-\\sqrt{5}, B: -4+\\sqrt{5}, C: 2-\\sqrt{10}, D: 2+\\sqrt{10}$, 길이의 차: $2\\sqrt{5}+2\\sqrt{10}$",
     "level": "중",
-    "tags": ["서술형", "도형"],
+    "tags": [
+      "서술형",
+      "도형"
+    ],
     "wide": false,
     "layoutTag": "grid",
-    "questionType": "서술형"
+    "questionType": "서술형",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

@@ -22,7 +22,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[키포인트] 코사인 함수의 최솟값은 $-1$이다.\n조건 정리: $-1\\le \\cos(2x+1)\\le 1$이다.\n풀이 방향: 코사인 값의 범위에 3을 곱하고 4를 더해 함수값의 범위를 구한다.\n정석 풀이: $-3\\le 3\\cos(2x+1)\\le 3$이므로 $1\\le 3\\cos(2x+1)+4\\le 7$이다.\n따라서 최솟값은 $1$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 코사인 함수의 최솟값은 $-1$이다.\n조건 정리: $-1\\le \\cos(2x+1)\\le 1$이다.\n풀이 방향: 코사인 값의 범위에 3을 곱하고 4를 더해 함수값의 범위를 구한다.\n정석 풀이: $-3\\le 3\\cos(2x+1)\\le 3$이므로 $1\\le 3\\cos(2x+1)+4\\le 7$이다.\n따라서 최솟값은 $1$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -46,7 +50,11 @@ window.questionBank = [
       "24"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 점화식으로 앞 항부터 차례로 구한다.\n조건 정리: $a_{n+1}=a_n+2n$이고 $a_1=4$이다.\n풀이 방향: $n=1,2,3,4$를 차례로 대입하여 $a_5$까지 계산한다.\n정석 풀이: $a_2=4+2=6$, $a_3=6+4=10$, $a_4=10+6=16$, $a_5=16+8=24$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 점화식으로 앞 항부터 차례로 구한다.\n조건 정리: $a_{n+1}=a_n+2n$이고 $a_1=4$이다.\n풀이 방향: $n=1,2,3,4$를 차례로 대입하여 $a_5$까지 계산한다.\n정석 풀이: $a_2=4+2=6$, $a_3=6+4=10$, $a_4=10+6=16$, $a_5=16+8=24$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "subUnit": "등차수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 3,
@@ -70,7 +78,11 @@ window.questionBank = [
       "제16항"
     ],
     "answer": "④",
-    "solution": "[키포인트] 등차수열의 일반항을 세워 처음으로 음수가 되는 $n$을 찾는다.\n조건 정리: $a_1=40$, $d=-3$이다.\n풀이 방향: $a_n=40+(n-1)(-3)$을 $0$보다 작게 만든다.\n정석 풀이: $a_n=40-3(n-1)=43-3n$이다. $43-3n<0$이므로 $n>\\dfrac{43}{3}$이다.\n가장 작은 자연수 $n$은 $15$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 등차수열의 일반항을 세워 처음으로 음수가 되는 $n$을 찾는다.\n조건 정리: $a_1=40$, $d=-3$이다.\n풀이 방향: $a_n=40+(n-1)(-3)$을 $0$보다 작게 만든다.\n정석 풀이: $a_n=40-3(n-1)=43-3n$이다. $43-3n<0$이므로 $n>\\dfrac{43}{3}$이다.\n가장 작은 자연수 $n$은 $15$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+    "subUnit": "수열의 일반항",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 4,
@@ -94,7 +106,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[키포인트] 시그마의 선형성을 이용하여 $\\sum a_k$와 $\\sum b_k$를 분리한다.\n조건 정리: $\\sum(a_k+3b_k)=20$, $\\sum(b_k-\\dfrac12)=\\dfrac43$이다.\n풀이 방향: 먼저 $\\sum b_k$를 구한 뒤 첫 번째 식에 대입한다.\n정석 풀이: $\\sum_{k=1}^{10}(b_k-\\dfrac12)=\\sum_{k=1}^{10}b_k-5=\\dfrac43$이므로 $\\sum_{k=1}^{10}b_k=\\dfrac{19}{3}$이다.\n따라서 $\\sum_{k=1}^{10}a_k+3\\sum_{k=1}^{10}b_k=20$에서 $\\sum_{k=1}^{10}a_k+19=20$이다.\n그러므로 $\\sum_{k=1}^{10}a_k=1$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 시그마의 선형성을 이용하여 $\\sum a_k$와 $\\sum b_k$를 분리한다.\n조건 정리: $\\sum(a_k+3b_k)=20$, $\\sum(b_k-\\dfrac12)=\\dfrac43$이다.\n풀이 방향: 먼저 $\\sum b_k$를 구한 뒤 첫 번째 식에 대입한다.\n정석 풀이: $\\sum_{k=1}^{10}(b_k-\\dfrac12)=\\sum_{k=1}^{10}b_k-5=\\dfrac43$이므로 $\\sum_{k=1}^{10}b_k=\\dfrac{19}{3}$이다.\n따라서 $\\sum_{k=1}^{10}a_k+3\\sum_{k=1}^{10}b_k=20$에서 $\\sum_{k=1}^{10}a_k+19=20$이다.\n그러므로 $\\sum_{k=1}^{10}a_k=1$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -118,7 +134,11 @@ window.questionBank = [
       "$3\\sqrt{3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 삼각형의 넓이 공식 $S=\\dfrac12ac\\sin B$를 사용한다.\n조건 정리: $a=8$, $B=150^\\circ$, $S=18$이다.\n풀이 방향: 두 변 $a,c$와 끼인각 $B$의 넓이 공식에 대입한다.\n정석 풀이: $18=\\dfrac12\\cdot 8\\cdot c\\cdot \\sin150^\\circ$이다. $\\sin150^\\circ=\\dfrac12$이므로 $18=2c$이다.\n따라서 $c=9$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 삼각형의 넓이 공식 $S=\\dfrac12ac\\sin B$를 사용한다.\n조건 정리: $a=8$, $B=150^\\circ$, $S=18$이다.\n풀이 방향: 두 변 $a,c$와 끼인각 $B$의 넓이 공식에 대입한다.\n정석 풀이: $18=\\dfrac12\\cdot 8\\cdot c\\cdot \\sin150^\\circ$이다. $\\sin150^\\circ=\\dfrac12$이므로 $18=2c$이다.\n따라서 $c=9$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -145,7 +165,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 최댓값과 최솟값으로 진폭과 평행이동을 구하고, 주기로 $b$를 구한다.\n조건 정리: 그래프의 최댓값은 $1$, 최솟값은 $-5$이다.\n풀이 방향: 진폭 $a$, 중심선 $c$, 주기 $\\dfrac{2\\pi}{b}$를 차례로 찾는다.\n정석 풀이: 진폭은 $a=\\dfrac{1-(-5)}{2}=3$이고, 중심선은 $c=\\dfrac{1+(-5)}{2}=-2$이다.\n그래프에서 최댓값에서 다음 최댓값까지의 거리가 $\\pi$이므로 주기는 $\\pi$이다. 따라서 $\\dfrac{2\\pi}{b}=\\pi$에서 $b=2$이다.\n그러므로 $a\\times b\\times c=3\\times2\\times(-2)=-12$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q6.png"
+    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q6.png",
+    "imageSize": "large",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -169,7 +194,11 @@ window.questionBank = [
       "12"
     ],
     "answer": "①",
-    "solution": "[키포인트] $a_n=S_n-S_{n-1}$을 이용한다.\n조건 정리: $S_n=2n^2+kn$, $a_5=24$이다.\n풀이 방향: 먼저 $a_5=S_5-S_4$로 $k$를 구한 뒤 $a_1=S_1$을 구한다.\n정석 풀이: $a_5=S_5-S_4=(50+5k)-(32+4k)=18+k$이다.\n$a_5=24$이므로 $18+k=24$, 따라서 $k=6$이다.\n$a_1=S_1=2+6=8$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] $a_n=S_n-S_{n-1}$을 이용한다.\n조건 정리: $S_n=2n^2+kn$, $a_5=24$이다.\n풀이 방향: 먼저 $a_5=S_5-S_4$로 $k$를 구한 뒤 $a_1=S_1$을 구한다.\n정석 풀이: $a_5=S_5-S_4=(50+5k)-(32+4k)=18+k$이다.\n$a_5=24$이므로 $18+k=24$, 따라서 $k=6$이다.\n$a_1=S_1=2+6=8$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -193,7 +222,11 @@ window.questionBank = [
       "$\\cos\\dfrac{5\\pi}{6}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $\\cos\\dfrac{\\pi}{3}=\\dfrac12$와 같은 값을 찾는다.\n조건 정리: 기준값은 $\\cos\\dfrac{\\pi}{3}=\\dfrac12$이다.\n풀이 방향: 각 보기의 삼각함수 값을 계산한다.\n정석 풀이: $\\sin\\dfrac{\\pi}{3}=\\dfrac{\\sqrt3}{2}$, $\\sin\\dfrac{2\\pi}{3}=\\dfrac{\\sqrt3}{2}$, $\\cos\\dfrac{2\\pi}{3}=-\\dfrac12$이다.\n또 $\\sin\\dfrac{5\\pi}{6}=\\dfrac12$, $\\cos\\dfrac{5\\pi}{6}=-\\dfrac{\\sqrt3}{2}$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] $\\cos\\dfrac{\\pi}{3}=\\dfrac12$와 같은 값을 찾는다.\n조건 정리: 기준값은 $\\cos\\dfrac{\\pi}{3}=\\dfrac12$이다.\n풀이 방향: 각 보기의 삼각함수 값을 계산한다.\n정석 풀이: $\\sin\\dfrac{\\pi}{3}=\\dfrac{\\sqrt3}{2}$, $\\sin\\dfrac{2\\pi}{3}=\\dfrac{\\sqrt3}{2}$, $\\cos\\dfrac{2\\pi}{3}=-\\dfrac12$이다.\n또 $\\sin\\dfrac{5\\pi}{6}=\\dfrac12$, $\\cos\\dfrac{5\\pi}{6}=-\\dfrac{\\sqrt3}{2}$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -217,7 +250,11 @@ window.questionBank = [
       "12"
     ],
     "answer": "②",
-    "solution": "[키포인트] 등차중항과 등비중항 조건을 각각 식으로 바꾼다.\n조건 정리: $a,a+b,ab$는 등차수열이고 $a^2,ab,2b$는 등비수열이다.\n풀이 방향: 등차중항 조건과 등비중항 조건을 세워 $a,b$를 구한다.\n정석 풀이: 등차수열 조건에서 $2(a+b)=a+ab$이므로 $a+2b=ab$이다.\n등비수열 조건에서 $(ab)^2=a^2\\cdot2b$이다. $a\\ne0$, $b\\ne0$이므로 $b=2$이다.\n이를 $a+2b=ab$에 대입하면 $a+4=2a$이므로 $a=4$이다.\n따라서 $a+b=4+2=6$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 등차중항과 등비중항 조건을 각각 식으로 바꾼다.\n조건 정리: $a,a+b,ab$는 등차수열이고 $a^2,ab,2b$는 등비수열이다.\n풀이 방향: 등차중항 조건과 등비중항 조건을 세워 $a,b$를 구한다.\n정석 풀이: 등차수열 조건에서 $2(a+b)=a+ab$이므로 $a+2b=ab$이다.\n등비수열 조건에서 $(ab)^2=a^2\\cdot2b$이다. $a\\ne0$, $b\\ne0$이므로 $b=2$이다.\n이를 $a+2b=ab$에 대입하면 $a+4=2a$이므로 $a=4$이다.\n따라서 $a+b=4+2=6$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "subUnit": "등차수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 10,
@@ -241,7 +278,11 @@ window.questionBank = [
       "$C=90^\\circ$인 직각삼각형"
     ],
     "answer": "③",
-    "solution": "[키포인트] 사인법칙과 코사인법칙을 함께 사용한다.\n조건 정리: $2\\cos B\\sin A=\\sin C$이다.\n풀이 방향: $\\sin A$, $\\sin C$를 변의 길이로 바꾸고, $\\cos B$를 코사인법칙으로 나타낸다.\n정석 풀이: 사인법칙에 의해 $\\sin A=\\dfrac{a}{2R}$, $\\sin C=\\dfrac{c}{2R}$이다.\n따라서 $2\\cos B\\cdot\\dfrac{a}{2R}=\\dfrac{c}{2R}$이므로 $2a\\cos B=c$이다.\n코사인법칙에서 $\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}$이므로 $2a\\cdot\\dfrac{a^2+c^2-b^2}{2ac}=c$이다.\n정리하면 $a^2-b^2=0$, 즉 $a=b$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 사인법칙과 코사인법칙을 함께 사용한다.\n조건 정리: $2\\cos B\\sin A=\\sin C$이다.\n풀이 방향: $\\sin A$, $\\sin C$를 변의 길이로 바꾸고, $\\cos B$를 코사인법칙으로 나타낸다.\n정석 풀이: 사인법칙에 의해 $\\sin A=\\dfrac{a}{2R}$, $\\sin C=\\dfrac{c}{2R}$이다.\n따라서 $2\\cos B\\cdot\\dfrac{a}{2R}=\\dfrac{c}{2R}$이므로 $2a\\cos B=c$이다.\n코사인법칙에서 $\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}$이므로 $2a\\cdot\\dfrac{a^2+c^2-b^2}{2ac}=c$이다.\n정리하면 $a^2-b^2=0$, 즉 $a=b$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -265,7 +306,11 @@ window.questionBank = [
       "$\\dfrac{8\\sqrt7}{7}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 코사인법칙으로 한 각의 크기를 구한 뒤 사인법칙으로 외접원의 반지름을 구한다.\n조건 정리: 세 변의 길이는 $a=4, b=5, c=6$이다.\n정석 풀이: 코사인법칙에 의해 $\\cos A = \\dfrac{b^2+c^2-a^2}{2bc} = \\dfrac{25+36-16}{60} = \\dfrac{3}{4}$이다.\n$0 < A < \\pi$에서 $\\sin A > 0$이므로 $\\sin A = \\sqrt{1-\\left(\\dfrac{3}{4}\\right)^2} = \\dfrac{\\sqrt{7}}{4}$이다.\n사인법칙 $\\dfrac{a}{\\sin A} = 2R$에서 $R = \\dfrac{a}{2\\sin A} = \\dfrac{4}{2\\cdot\\frac{\\sqrt{7}}{4}} = \\dfrac{8}{\\sqrt{7}} = \\dfrac{8\\sqrt{7}}{7}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 코사인법칙으로 한 각의 크기를 구한 뒤 사인법칙으로 외접원의 반지름을 구한다.\n조건 정리: 세 변의 길이는 $a=4, b=5, c=6$이다.\n정석 풀이: 코사인법칙에 의해 $\\cos A = \\dfrac{b^2+c^2-a^2}{2bc} = \\dfrac{25+36-16}{60} = \\dfrac{3}{4}$이다.\n$0 < A < \\pi$에서 $\\sin A > 0$이므로 $\\sin A = \\sqrt{1-\\left(\\dfrac{3}{4}\\right)^2} = \\dfrac{\\sqrt{7}}{4}$이다.\n사인법칙 $\\dfrac{a}{\\sin A} = 2R$에서 $R = \\dfrac{a}{2\\sin A} = \\dfrac{4}{2\\cdot\\frac{\\sqrt{7}}{4}} = \\dfrac{8}{\\sqrt{7}} = \\dfrac{8\\sqrt{7}}{7}$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -289,7 +334,11 @@ window.questionBank = [
       "521"
     ],
     "answer": "③",
-    "solution": "[키포인트] 등비수열의 구간합은 같은 길이마다 공비의 거듭제곱으로 묶인다.\n조건 정리: $S_3=7$, $S_6=63$이다.\n풀이 방향: $S_6=S_3(1+r^3)$을 이용해 $r^3$을 구하고 $S_9$를 구한다.\n정석 풀이: $S_6=S_3(1+r^3)$이므로 $63=7(1+r^3)$이다.\n따라서 $1+r^3=9$, 즉 $r^3=8$이다.\n$S_9=S_3(1+r^3+r^6)=7(1+8+64)=511$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] 등비수열의 구간합은 같은 길이마다 공비의 거듭제곱으로 묶인다.\n조건 정리: $S_3=7$, $S_6=63$이다.\n풀이 방향: $S_6=S_3(1+r^3)$을 이용해 $r^3$을 구하고 $S_9$를 구한다.\n정석 풀이: $S_6=S_3(1+r^3)$이므로 $63=7(1+r^3)$이다.\n따라서 $1+r^3=9$, 즉 $r^3=8$이다.\n$S_9=S_3(1+r^3+r^6)=7(1+8+64)=511$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "subUnit": "등비수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
@@ -313,7 +362,11 @@ window.questionBank = [
       "840"
     ],
     "answer": "②",
-    "solution": "[키포인트] 일반항을 $k(2k+1)$로 나타내어 합을 계산한다.\n조건 정리: $k$번째 항은 $k(2k+1)$이다.\n풀이 방향: $\\sum k(2k+1)=2\\sum k^2+\\sum k$로 분리한다.\n정석 풀이: $\\sum_{k=1}^{10}k(2k+1)=2\\sum_{k=1}^{10}k^2+\\sum_{k=1}^{10}k$이다.\n$\\sum_{k=1}^{10}k^2=385$, $\\sum_{k=1}^{10}k=55$이므로 전체 합은 $2\\cdot385+55=825$이다.\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 일반항을 $k(2k+1)$로 나타내어 합을 계산한다.\n조건 정리: $k$번째 항은 $k(2k+1)$이다.\n풀이 방향: $\\sum k(2k+1)=2\\sum k^2+\\sum k$로 분리한다.\n정석 풀이: $\\sum_{k=1}^{10}k(2k+1)=2\\sum_{k=1}^{10}k^2+\\sum_{k=1}^{10}k$이다.\n$\\sum_{k=1}^{10}k^2=385$, $\\sum_{k=1}^{10}k=55$이므로 전체 합은 $2\\cdot385+55=825$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -337,7 +390,11 @@ window.questionBank = [
       "$12\\sqrt6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원에 내접한 사각형은 마주 보는 각의 합이 $180^\\circ$이므로 두 삼각형으로 나누어 같은 사인을 이용한다.\n조건 정리: $AB=2$, $BC=3$, $CD=5$, $DA=6$이고 사각형 $ABCD$는 원에 내접한다.\n풀이 방향: 대각선 $AC$를 그어 $\\angle ABC=\\theta$라 두고, $\\angle ADC=\\pi-\\theta$를 이용해 대각선의 길이를 두 방법으로 표현한다.\n정석 풀이: 삼각형 $ABC$에서 코사인법칙을 쓰면 $AC^2=2^2+3^2-2\\cdot2\\cdot3\\cos\\theta=13-12\\cos\\theta$이다. 원에 내접하므로 $\\angle ADC=\\pi-\\theta$이고, 삼각형 $ADC$에서 $AC^2=5^2+6^2-2\\cdot5\\cdot6\\cos(\\pi-\\theta)=61+60\\cos\\theta$이다. 두 식이 같은 대각선 $AC^2$를 나타내므로 $13-12\\cos\\theta=61+60\\cos\\theta$이고, $\\cos\\theta=-\\dfrac23$이다. 따라서 $\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\dfrac{\\sqrt5}{3}$이다. 사각형의 넓이는 두 삼각형의 넓이의 합이므로 $S=\\dfrac12\\cdot2\\cdot3\\sin\\theta+\\dfrac12\\cdot5\\cdot6\\sin(\\pi-\\theta)=3\\sin\\theta+15\\sin\\theta=18\\sin\\theta=6\\sqrt5$이다.\n따라서 정답은 ①이다."
+    "solution": "[키포인트] 원에 내접한 사각형은 마주 보는 각의 합이 $180^\\circ$이므로 두 삼각형으로 나누어 같은 사인을 이용한다.\n조건 정리: $AB=2$, $BC=3$, $CD=5$, $DA=6$이고 사각형 $ABCD$는 원에 내접한다.\n풀이 방향: 대각선 $AC$를 그어 $\\angle ABC=\\theta$라 두고, $\\angle ADC=\\pi-\\theta$를 이용해 대각선의 길이를 두 방법으로 표현한다.\n정석 풀이: 삼각형 $ABC$에서 코사인법칙을 쓰면 $AC^2=2^2+3^2-2\\cdot2\\cdot3\\cos\\theta=13-12\\cos\\theta$이다. 원에 내접하므로 $\\angle ADC=\\pi-\\theta$이고, 삼각형 $ADC$에서 $AC^2=5^2+6^2-2\\cdot5\\cdot6\\cos(\\pi-\\theta)=61+60\\cos\\theta$이다. 두 식이 같은 대각선 $AC^2$를 나타내므로 $13-12\\cos\\theta=61+60\\cos\\theta$이고, $\\cos\\theta=-\\dfrac23$이다. 따라서 $\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\dfrac{\\sqrt5}{3}$이다. 사각형의 넓이는 두 삼각형의 넓이의 합이므로 $S=\\dfrac12\\cdot2\\cdot3\\sin\\theta+\\dfrac12\\cdot5\\cdot6\\sin(\\pi-\\theta)=3\\sin\\theta+15\\sin\\theta=18\\sin\\theta=6\\sqrt5$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -364,7 +421,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 접선과 반지름의 수직 관계로 중심각을 구한 뒤, 중심각과 원주각의 관계를 이용한다.\n조건 정리: $PC$는 점 $C$에서의 접선이므로 $OC\\perp PC$이고, $\\angle BPC=\\theta$, $\\sin\\theta=\\dfrac13$이다.\n풀이 방향: 직각삼각형 $OPC$에서 $\\theta$와 $\\angle POC$의 관계를 구하고, $B,O,P$의 일직선 조건으로 $\\angle BOC$를 정한다.\n정석 풀이: 직각삼각형 $OPC$에서 $\\sin\\theta=\\dfrac{OC}{OP}=\\dfrac13$이므로 $\\cos\\theta=\\sqrt{1-\\dfrac19}=\\dfrac{2\\sqrt2}{3}$이다. 또 $\\angle OPC=\\theta$, $\\angle OCP=90^\\circ$이므로 $\\angle POC=\\dfrac\\pi2-\\theta$이다. 조건에서 $\\dfrac\\pi2<\\angle BOC<\\pi$이므로 $OB$는 $OP$의 반대쪽 반직선이고, $\\angle BOC=\\pi-\\angle POC=\\dfrac\\pi2+\\theta$이다. 따라서 $\\cos\\angle BOC=\\cos(\\dfrac\\pi2+\\theta)=-\\sin\\theta=-\\dfrac13$이다. 원주각 $A$는 중심각 $\\angle BOC$의 절반에 해당하므로 $A=\\dfrac12\\angle BOC$이다. 그러므로 $\\sin A=\\sqrt{\\dfrac{1-\\cos\\angle BOC}{2}}=\\sqrt{\\dfrac{1+\\dfrac13}{2}}=\\sqrt{\\dfrac23}=\\dfrac{\\sqrt6}{3}$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q15.png"
+    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q15.png",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -388,7 +449,11 @@ window.questionBank = [
       "$-10\\pi$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $\\sin^2x=1-\\cos^2x$로 바꾸어 $\\cos x$에 대한 이차식으로 본다.\n조건 정리: $0\\le x\\le \\pi$이므로 $-1\\le \\cos x\\le 1$이다.\n풀이 방향: $t=\\cos x$로 놓고 구간 $[-1,1]$에서 최솟값을 찾는다.\n정석 풀이: $y=4(1-\\cos^2x)+4\\cos x-5=-4\\cos^2x+4\\cos x-1$이다.\n$t=\\cos x$라 하면 $y=-4t^2+4t-1=-4(t-\\dfrac12)^2$이다. 이 식은 아래로 볼록이 아니라 아래로 열린 이차식이므로 구간 끝에서 최솟값을 갖는다.\n$t=-1$일 때 $y=-4-4-1=-9$로 최솟값이고, $\\cos x=-1$이므로 $x=\\pi$이다.\n따라서 $a=\\pi$, $b=-9$이므로 $ab=-9\\pi$이다.\n따라서 정답은 ③이다."
+    "solution": "[키포인트] $\\sin^2x=1-\\cos^2x$로 바꾸어 $\\cos x$에 대한 이차식으로 본다.\n조건 정리: $0\\le x\\le \\pi$이므로 $-1\\le \\cos x\\le 1$이다.\n풀이 방향: $t=\\cos x$로 놓고 구간 $[-1,1]$에서 최솟값을 찾는다.\n정석 풀이: $y=4(1-\\cos^2x)+4\\cos x-5=-4\\cos^2x+4\\cos x-1$이다.\n$t=\\cos x$라 하면 $y=-4t^2+4t-1=-4(t-\\dfrac12)^2$이다. 이 식은 아래로 볼록이 아니라 아래로 열린 이차식이므로 구간 끝에서 최솟값을 갖는다.\n$t=-1$일 때 $y=-4-4-1=-9$로 최솟값이고, $\\cos x=-1$이므로 $x=\\pi$이다.\n따라서 $a=\\pi$, $b=-9$이므로 $ab=-9\\pi$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+    "subUnit": "삼각부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -412,7 +477,11 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 약수를 $2^i5^j$로 나타내면 등비수열 조건이 지수쌍의 등차수열 조건으로 바뀐다.\n조건 정리: $1000=2^3\\cdot5^3$이므로 $A_{1000}=\\{2^i5^j\\mid 0\\le i\\le3,\\ 0\\le j\\le3\\}$이다.\n풀이 방향: 네 원소가 자연수 공비를 갖는 등비수열이 되려면 공비를 $2^u5^v$로 두고, 지수쌍 네 개가 범위 안에 들어가는 경우를 센다.\n정석 풀이: 공비가 자연수이므로 $r=2^u5^v$이고 $u,v$는 $0$ 이상의 정수이며 $(u,v)\\ne(0,0)$이다. 시작 원소를 $2^i5^j$라 하면 네 항의 지수쌍은 $(i,j)$, $(i+u,j+v)$, $(i+2u,j+2v)$, $(i+3u,j+3v)$이다. 모든 지수가 $0$ 이상 $3$ 이하이어야 하므로 $3u\\le3$, $3v\\le3$이고, 가능한 $(u,v)$는 $(1,0)$, $(0,1)$, $(1,1)$뿐이다. $(1,0)$이면 $i=0$이고 $j=0,1,2,3$이므로 4개, $(0,1)$이면 $j=0$이고 $i=0,1,2,3$이므로 4개, $(1,1)$이면 시작점은 $(0,0)$만 가능하므로 1개이다. 따라서 가능한 집합의 개수는 $4+4+1=9$이다.\n따라서 정답은 ⑤이다."
+    "solution": "[키포인트] 약수를 $2^i5^j$로 나타내면 등비수열 조건이 지수쌍의 등차수열 조건으로 바뀐다.\n조건 정리: $1000=2^3\\cdot5^3$이므로 $A_{1000}=\\{2^i5^j\\mid 0\\le i\\le3,\\ 0\\le j\\le3\\}$이다.\n풀이 방향: 네 원소가 자연수 공비를 갖는 등비수열이 되려면 공비를 $2^u5^v$로 두고, 지수쌍 네 개가 범위 안에 들어가는 경우를 센다.\n정석 풀이: 공비가 자연수이므로 $r=2^u5^v$이고 $u,v$는 $0$ 이상의 정수이며 $(u,v)\\ne(0,0)$이다. 시작 원소를 $2^i5^j$라 하면 네 항의 지수쌍은 $(i,j)$, $(i+u,j+v)$, $(i+2u,j+2v)$, $(i+3u,j+3v)$이다. 모든 지수가 $0$ 이상 $3$ 이하이어야 하므로 $3u\\le3$, $3v\\le3$이고, 가능한 $(u,v)$는 $(1,0)$, $(0,1)$, $(1,1)$뿐이다. $(1,0)$이면 $i=0$이고 $j=0,1,2,3$이므로 4개, $(0,1)$이면 $j=0$이고 $i=0,1,2,3$이므로 4개, $(1,1)$이면 시작점은 $(0,0)$만 가능하므로 1개이다. 따라서 가능한 집합의 개수는 $4+4+1=9$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "subUnit": "등비수열",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 18,
@@ -436,7 +505,11 @@ window.questionBank = [
       "16"
     ],
     "answer": "④",
-    "solution": "[키포인트] 주기 조건으로 $a$가 짝수임을 먼저 정하고, 한 주기마다 생기는 두 교점의 합을 정확히 누적한다.\n조건 정리: $f(x)=\\sin ax$이고 $f(x+\\pi)=f(x)$, $0\\le x<\\pi$에서 $\\sin ax=\\dfrac13$의 해들의 합이 $\\dfrac{13}{2}\\pi$이다.\n풀이 방향: $a=2k$로 두고 $t=ax$로 바꾸면 $0\\le t<2k\\pi$가 되므로, $k$개의 주기에서 해의 합을 계산한다.\n정석 풀이: $f(x+\\pi)=f(x)$가 모든 $x$에서 성립하려면 $\\sin(a x+a\\pi)=\\sin ax$이므로 $a\\pi$가 $2\\pi$의 정수배여야 한다. 따라서 $a=2k$이다. $\\sin t=\\dfrac13$의 첫 번째 주기 $0\\le t<2\\pi$에서 두 해를 $\\alpha$, $\\pi-\\alpha$라 하면 두 해의 합은 $\\pi$이다. $j$번째 주기에서는 두 해가 $\\alpha+2j\\pi$, $\\pi-\\alpha+2j\\pi$이므로 $t$값의 합은 $(4j+1)\\pi$이다. 이를 $x=\\dfrac{t}{a}$로 바꾸면 해당 주기의 $x$좌표 합은 $\\dfrac{(4j+1)\\pi}{a}$이다. $j=0,1,\\cdots,k-1$까지 더하면 전체 합은 $\\dfrac{\\pi}{a}\\{1+5+9+\\cdots+(4k-3)\\}=\\dfrac{\\pi}{2k}\\cdot k(2k-1)=\\dfrac{2k-1}{2}\\pi=\\dfrac{a-1}{2}\\pi$이다. 이 값이 $\\dfrac{13}{2}\\pi$이므로 $a-1=13$, 따라서 $a=14$이다.\n따라서 정답은 ④이다."
+    "solution": "[키포인트] 주기 조건으로 $a$가 짝수임을 먼저 정하고, 한 주기마다 생기는 두 교점의 합을 정확히 누적한다.\n조건 정리: $f(x)=\\sin ax$이고 $f(x+\\pi)=f(x)$, $0\\le x<\\pi$에서 $\\sin ax=\\dfrac13$의 해들의 합이 $\\dfrac{13}{2}\\pi$이다.\n풀이 방향: $a=2k$로 두고 $t=ax$로 바꾸면 $0\\le t<2k\\pi$가 되므로, $k$개의 주기에서 해의 합을 계산한다.\n정석 풀이: $f(x+\\pi)=f(x)$가 모든 $x$에서 성립하려면 $\\sin(a x+a\\pi)=\\sin ax$이므로 $a\\pi$가 $2\\pi$의 정수배여야 한다. 따라서 $a=2k$이다. $\\sin t=\\dfrac13$의 첫 번째 주기 $0\\le t<2\\pi$에서 두 해를 $\\alpha$, $\\pi-\\alpha$라 하면 두 해의 합은 $\\pi$이다. $j$번째 주기에서는 두 해가 $\\alpha+2j\\pi$, $\\pi-\\alpha+2j\\pi$이므로 $t$값의 합은 $(4j+1)\\pi$이다. 이를 $x=\\dfrac{t}{a}$로 바꾸면 해당 주기의 $x$좌표 합은 $\\dfrac{(4j+1)\\pi}{a}$이다. $j=0,1,\\cdots,k-1$까지 더하면 전체 합은 $\\dfrac{\\pi}{a}\\{1+5+9+\\cdots+(4k-3)\\}=\\dfrac{\\pi}{2k}\\cdot k(2k-1)=\\dfrac{2k-1}{2}\\pi=\\dfrac{a-1}{2}\\pi$이다. 이 값이 $\\dfrac{13}{2}\\pi$이므로 $a-1=13$, 따라서 $a=14$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -463,7 +536,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 그래프의 교점 좌표를 $a$, $b$로 나타내고 거리 조건을 적용한다.\n조건 정리: $f(x)=a\\cos\\dfrac{\\pi}{b}x$이다.\n풀이 방향: $A$, $B$, $C$의 좌표를 구하고 $AB=BC$에서 $a/b$를 구한다.\n정석 풀이: $y=-a$가 되는 점은 $x=b$이므로 $A=(b,-a)$이다.\n$y=\\dfrac{a}{2}$일 때 $\\cos\\dfrac{\\pi x}{b}=\\dfrac12$이므로 $B=(\\dfrac{b}{3},\\dfrac{a}{2})$, $C=(\\dfrac{5b}{3},\\dfrac{a}{2})$이다.\n$BC=\\dfrac{4b}{3}$이고, $AB^2=(b-\\dfrac{b}{3})^2+(-a-\\dfrac{a}{2})^2=\\dfrac{4b^2}{9}+\\dfrac{9a^2}{4}$이다.\n$AB=BC$이므로 $\\dfrac{4b^2}{9}+\\dfrac{9a^2}{4}=\\dfrac{16b^2}{9}$, 따라서 $\\dfrac{a}{b}=\\dfrac{4\\sqrt3}{9}$이다.\n직선 $OA$의 기울기는 $-\\dfrac{a}{b}$이고, 직선 $OB$의 기울기는 $\\dfrac{a/2}{b/3}=\\dfrac{3a}{2b}$이다.\n두 기울기의 합은 $-\\dfrac{a}{b}+\\dfrac{3a}{2b}=\\dfrac{a}{2b}=\\dfrac{2\\sqrt3}{9}$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q19.png"
+    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q19.png",
+    "imageSize": "large",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -483,7 +561,11 @@ window.questionBank = [
     "content": "[서술형1] 삼각형 $ABC$에서 $b=\\sqrt3+1$, $c=2$, $A=30^\\circ$일 때, $\\sin C$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\dfrac{\\sqrt2}{2}$",
-    "solution": "[키포인트] 코사인법칙으로 $a$를 구한 뒤 사인법칙을 사용한다.\n조건 정리: $b=\\sqrt3+1$, $c=2$, $A=30^\\circ$이다.\n풀이 방향: 먼저 $a^2=b^2+c^2-2bc\\cos A$를 계산한다.\n정석 풀이: $a^2=(\\sqrt3+1)^2+2^2-2(\\sqrt3+1)\\cdot2\\cdot\\cos30^\\circ$이다.\n$(\\sqrt3+1)^2=4+2\\sqrt3$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$이므로 $a^2=4+2\\sqrt3+4-2\\sqrt3(\\sqrt3+1)=2$이다.\n따라서 $a=\\sqrt2$이다. 사인법칙에서 $\\dfrac{a}{\\sin A}=\\dfrac{c}{\\sin C}$이므로 $\\sin C=\\dfrac{c\\sin A}{a}=\\dfrac{2\\cdot\\dfrac{1}{2}}{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.\n따라서 구하는 값은 $\\dfrac{\\sqrt2}{2}$이다."
+    "solution": "[키포인트] 코사인법칙으로 $a$를 구한 뒤 사인법칙을 사용한다.\n조건 정리: $b=\\sqrt3+1$, $c=2$, $A=30^\\circ$이다.\n풀이 방향: 먼저 $a^2=b^2+c^2-2bc\\cos A$를 계산한다.\n정석 풀이: $a^2=(\\sqrt3+1)^2+2^2-2(\\sqrt3+1)\\cdot2\\cdot\\cos30^\\circ$이다.\n$(\\sqrt3+1)^2=4+2\\sqrt3$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$이므로 $a^2=4+2\\sqrt3+4-2\\sqrt3(\\sqrt3+1)=2$이다.\n따라서 $a=\\sqrt2$이다. 사인법칙에서 $\\dfrac{a}{\\sin A}=\\dfrac{c}{\\sin C}$이므로 $\\sin C=\\dfrac{c\\sin A}{a}=\\dfrac{2\\cdot\\dfrac{1}{2}}{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.\n따라서 구하는 값은 $\\dfrac{\\sqrt2}{2}$이다.",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -503,7 +585,11 @@ window.questionBank = [
     "content": "[서술형2] $0\\le x<2\\pi$일 때, 부등식 $2\\cos^2x+3\\sin(\\dfrac{\\pi}{2}+x)-2\\ge 0$의 해를 구하시오.",
     "choices": [],
     "answer": "$0\\le x\\le \\dfrac{\\pi}{3}$ 또는 $\\dfrac{5\\pi}{3}\\le x<2\\pi$",
-    "solution": "[키포인트] $\\sin(\\dfrac{\\pi}{2}+x)=\\cos x$를 이용하여 $\\cos x$에 대한 이차부등식으로 바꾼다.\n조건 정리: $0\\le x<2\\pi$이다.\n풀이 방향: $t=\\cos x$로 치환하여 부등식을 풀고, 다시 $x$의 범위로 바꾼다.\n정석 풀이: $\\sin(\\dfrac{\\pi}{2}+x)=\\cos x$이므로 부등식은 $2\\cos^2x+3\\cos x-2\\ge0$이다.\n$t=\\cos x$라 하면 $2t^2+3t-2=(2t-1)(t+2)\\ge0$이다.\n$-1\\le t\\le1$에서 $t+2>0$이므로 $2t-1\\ge0$, 즉 $t\\ge\\dfrac12$이다.\n따라서 $\\cos x\\ge\\dfrac12$이고, $0\\le x<2\\pi$에서 해는 $0\\le x\\le\\dfrac{\\pi}{3}$ 또는 $\\dfrac{5\\pi}{3}\\le x<2\\pi$이다.\n따라서 구하는 해는 $0\\le x\\le\\dfrac{\\pi}{3}$ 또는 $\\dfrac{5\\pi}{3}\\le x<2\\pi$이다."
+    "solution": "[키포인트] $\\sin(\\dfrac{\\pi}{2}+x)=\\cos x$를 이용하여 $\\cos x$에 대한 이차부등식으로 바꾼다.\n조건 정리: $0\\le x<2\\pi$이다.\n풀이 방향: $t=\\cos x$로 치환하여 부등식을 풀고, 다시 $x$의 범위로 바꾼다.\n정석 풀이: $\\sin(\\dfrac{\\pi}{2}+x)=\\cos x$이므로 부등식은 $2\\cos^2x+3\\cos x-2\\ge0$이다.\n$t=\\cos x$라 하면 $2t^2+3t-2=(2t-1)(t+2)\\ge0$이다.\n$-1\\le t\\le1$에서 $t+2>0$이므로 $2t-1\\ge0$, 즉 $t\\ge\\dfrac12$이다.\n따라서 $\\cos x\\ge\\dfrac12$이고, $0\\le x<2\\pi$에서 해는 $0\\le x\\le\\dfrac{\\pi}{3}$ 또는 $\\dfrac{5\\pi}{3}\\le x<2\\pi$이다.\n따라서 구하는 해는 $0\\le x\\le\\dfrac{\\pi}{3}$ 또는 $\\dfrac{5\\pi}{3}\\le x<2\\pi$이다.",
+    "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+    "subUnit": "삼각부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -525,6 +611,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{\\sqrt3}{3}$",
     "solution": "[키포인트] 세 삼각형의 넓이를 $AD$, $DB$, $CD$로 표현하고, 직각삼각형의 닮음 관계로 $AC$와 $AB$의 비를 구한다.\n조건 정리: $CD\\perp AB$이고, $[ADC]$, $[CDB]$, $[CAB]$가 이 순서로 등차수열을 이룬다.\n풀이 방향: $AD=a$, $DB=b$, $CD=h$로 두어 넓이 조건에서 $b=2a$를 얻고, 빗변에 내린 수선에서 생기는 닮음 성질을 적용한다.\n정석 풀이: 세 삼각형의 넓이는 각각 $\\dfrac12ah$, $\\dfrac12bh$, $\\dfrac12(a+b)h$이다. 세 수가 등차수열이므로 가운데 넓이의 2배는 양 끝 넓이의 합과 같아 $2\\cdot\\dfrac12bh=\\dfrac12ah+\\dfrac12(a+b)h$이다. 양변을 $\\dfrac12h$로 나누면 $2b=a+(a+b)$이므로 $b=2a$이다. 따라서 $AB=a+b=3a$이다. 이제 직각삼각형 $ABC$에서 $C$에서 빗변 $AB$에 내린 수선의 발이 $D$이므로, 닮음 관계에서 $AC^2=AD\\cdot AB$가 성립한다. 따라서 $AC^2=a\\cdot3a=3a^2$이고 $AC=\\sqrt3a$이다. 각 $A$에서 빗변은 $AB$, 인접한 변은 $AC$이므로 $\\cos A=\\dfrac{AC}{AB}=\\dfrac{\\sqrt3a}{3a}=\\dfrac{\\sqrt3}{3}$이다.\n따라서 구하는 값은 $\\dfrac{\\sqrt3}{3}$이다.",
-    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q22.png"
+    "image": "assets/images/23_복성고_1학기_기말_고2_수학I/q22.png",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

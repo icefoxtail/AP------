@@ -7,11 +7,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","정의","양의제곱근","음의제곱근","개념","오답선별","객관식"],
+    "tags": [
+      "제곱근",
+      "정의",
+      "양의제곱근",
+      "음의제곱근",
+      "개념",
+      "오답선별",
+      "객관식"
+    ],
     "wide": false,
     "content": "다음 중 그 값이 다른 하나는?",
     "choices": [
@@ -22,7 +30,11 @@ window.questionBank = [
       "⑤ $x^2=4$를 만족시키는 $x$의 값"
     ],
     "answer": "②",
-    "solution": "[풀이] \n1. $\\sqrt{16}=4 \\implies 4$의 제곱근은 $\\pm 2$ \n2. 제곱근 4 = $\\sqrt{4} = 2$ \n3. $(-2)^2=4 \\implies 4$의 제곱근은 $\\pm 2$ \n4. 제곱하여 4가 되는 수는 $\\pm 2$ \n5. $x^2=4 \\implies x = \\pm 2$ \n따라서 2번은 2만을 의미하므로 나머지 넷과 다르다. \n--- \n[결론] 정답: ②이다."
+    "solution": "[풀이] \n1. $\\sqrt{16}=4 \\implies 4$의 제곱근은 $\\pm 2$ \n2. 제곱근 4 = $\\sqrt{4} = 2$ \n3. $(-2)^2=4 \\implies 4$의 제곱근은 $\\pm 2$ \n4. 제곱하여 4가 되는 수는 $\\pm 2$ \n5. $x^2=4 \\implies x = \\pm 2$ \n따라서 2번은 2만을 의미하므로 나머지 넷과 다르다. \n--- \n[결론] 정답: ②이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
@@ -31,11 +43,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","양의제곱근","음의제곱근","분수","부호판정","계산","객관식"],
+    "tags": [
+      "제곱근",
+      "양의제곱근",
+      "음의제곱근",
+      "분수",
+      "부호판정",
+      "계산",
+      "객관식"
+    ],
     "wide": false,
     "content": "$\\sqrt{(-9)^2}$의 양의 제곱근을 $a$, $\\sqrt{\\frac{256}{81}}$의 음의 제곱근을 $b$라고 할 때, $a+b$의 값은?",
     "choices": [
@@ -46,7 +66,11 @@ window.questionBank = [
       "⑤ $-\\frac{5}{3}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$\\sqrt{(-9)^2}=9 \\implies 9$의 양의 제곱근 $a=3$ \n$\\sqrt{\\frac{256}{81}}=\\frac{16}{9} \\implies \\frac{16}{9}$의 음의 제곱근 $b=-\\sqrt{\\frac{16}{9}}=-\\frac{4}{3}$ \n$\\therefore a+b = 3 + (-\\frac{4}{3}) = \\frac{9-4}{3} = \\frac{5}{3}$ \n--- \n[결론] 정답: ②이다."
+    "solution": "[풀이] \n$\\sqrt{(-9)^2}=9 \\implies 9$의 양의 제곱근 $a=3$ \n$\\sqrt{\\frac{256}{81}}=\\frac{16}{9} \\implies \\frac{16}{9}$의 음의 제곱근 $b=-\\sqrt{\\frac{16}{9}}=-\\frac{4}{3}$ \n$\\therefore a+b = 3 + (-\\frac{4}{3}) = \\frac{9-4}{3} = \\frac{5}{3}$ \n--- \n[결론] 정답: ②이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -55,11 +79,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","제곱","소수","분수","근호계산","값비교","계산"],
+    "tags": [
+      "제곱근",
+      "제곱",
+      "소수",
+      "분수",
+      "근호계산",
+      "값비교",
+      "계산"
+    ],
     "wide": false,
     "content": "다음 중에서 계산한 결과가 가장 큰 것은?",
     "choices": [
@@ -70,7 +102,11 @@ window.questionBank = [
       "⑤ $\\sqrt{2.25} \\times (-\\sqrt{10})^2$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n1. $11-2=9$ \n2. $\\frac{9}{8} \\times \\frac{16}{9} = 2$ \n3. $9+3=12$ \n4. $0.6 \\div 0.1 = 6$ \n5. $1.5 \\times 10 = 15$ \n따라서 5번의 결과값이 가장 크다. \n--- \n[결론] 정답: ⑤이다."
+    "solution": "[풀이] \n1. $11-2=9$ \n2. $\\frac{9}{8} \\times \\frac{16}{9} = 2$ \n3. $9+3=12$ \n4. $0.6 \\div 0.1 = 6$ \n5. $1.5 \\times 10 = 15$ \n따라서 5번의 결과값이 가장 크다. \n--- \n[결론] 정답: ⑤이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -79,11 +115,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","절댓값","문자범위","부호판정","복수정답","조건해석","객관식"],
+    "tags": [
+      "제곱근",
+      "절댓값",
+      "문자범위",
+      "부호판정",
+      "복수정답",
+      "조건해석",
+      "객관식"
+    ],
     "wide": false,
     "content": "$ab<0, a<b$일 때 다음 중 옳은 것을 모두 고르면?(2개)",
     "choices": [
@@ -94,7 +138,11 @@ window.questionBank = [
       "⑤ $-\\sqrt{(b-a)^2}=a-b$"
     ],
     "answer": "1, 5",
-    "solution": "[풀이] \n$ab<0, a<b \\implies a<0, b>0$ \n① $-\\sqrt{(2a)^2} = -|2a| = -(-2a) = 2a$ (참) \n② $-\\sqrt{(2a)^2} = -|2a| = 2a$ (거짓) \n③ $\\sqrt{(-b)^2} = |-b| = b$ (거짓) \n④ $\\sqrt{(3b)^2} = |3b| = 3b$ (거짓) \n⑤ $b-a > 0 \\implies -\\sqrt{(b-a)^2} = -|b-a| = -(b-a) = a-b$ (참) \n--- \n[결론] 정답: ①, ⑤이다."
+    "solution": "[풀이] \n$ab<0, a<b \\implies a<0, b>0$ \n① $-\\sqrt{(2a)^2} = -|2a| = -(-2a) = 2a$ (참) \n② $-\\sqrt{(2a)^2} = -|2a| = 2a$ (거짓) \n③ $\\sqrt{(-b)^2} = |-b| = b$ (거짓) \n④ $\\sqrt{(3b)^2} = |3b| = 3b$ (거짓) \n⑤ $b-a > 0 \\implies -\\sqrt{(b-a)^2} = -|b-a| = -(b-a) = a-b$ (참) \n--- \n[결론] 정답: ①, ⑤이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 5,
@@ -103,11 +151,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","수직선","정사각형","대각선","거리","도형","근호활용"],
+    "tags": [
+      "제곱근",
+      "수직선",
+      "정사각형",
+      "대각선",
+      "거리",
+      "도형",
+      "근호활용"
+    ],
     "wide": false,
     "content": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$에서 $\\overline{AC}=\\overline{AP}$, $\\overline{BD}=\\overline{BQ}$일 때, 두 점 $P, Q$에 대하여 $PQ$의 길이는?",
     "choices": [
@@ -118,7 +174,11 @@ window.questionBank = [
       "⑤ $-1-2\\sqrt{2}$"
     ],
     "answer": "③",
-    "solution": "[풀이] \n정사각형의 대각선 길이 $l = \\sqrt{1^2+1^2} = \\sqrt{2}$ \n그림에서 $A(-1), B(0)$이므로 \n$P = A + \\overline{AC} = -1+\\sqrt{2}$ \n$Q = B - \\overline{BD} = 0-\\sqrt{2} = -\\sqrt{2}$ \n$\\overline{PQ} = P-Q = (-1+\\sqrt{2}) - (-\\sqrt{2}) = -1+2\\sqrt{2}$ \n--- \n[결론] 정답: ③이다."
+    "solution": "[풀이] \n정사각형의 대각선 길이 $l = \\sqrt{1^2+1^2} = \\sqrt{2}$ \n그림에서 $A(-1), B(0)$이므로 \n$P = A + \\overline{AC} = -1+\\sqrt{2}$ \n$Q = B - \\overline{BD} = 0-\\sqrt{2} = -\\sqrt{2}$ \n$\\overline{PQ} = P-Q = (-1+\\sqrt{2}) - (-\\sqrt{2}) = -1+2\\sqrt{2}$ \n--- \n[결론] 정답: ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 6,
@@ -127,11 +187,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["무리수","유리수","제곱근","원주율","근호분류","개수세기","개념"],
+    "tags": [
+      "무리수",
+      "유리수",
+      "제곱근",
+      "원주율",
+      "근호분류",
+      "개수세기",
+      "개념"
+    ],
     "wide": false,
     "content": "다음 보기 중에서 무리수의 개수는?<div class='box'>ㄱ. $\\sqrt{9}$  ㄴ. $-\\sqrt{21}$  ㄷ. $\\pi$  ㄹ. $\\sqrt{12.1}$  ㅁ. $\\sqrt{0.4}$  ㅂ. $\\sqrt{\\frac{1}{4}}$  ㅅ. $\\sqrt{18}-3\\sqrt{2}$</div>",
     "choices": [
@@ -142,7 +210,11 @@ window.questionBank = [
       "⑤ 6개"
     ],
     "answer": "③",
-    "solution": "[풀이] \nㄱ. 3 (유리수) \nㄴ. $-\\sqrt{21}$ (무리수) \nㄷ. $\\pi$ (무리수) \nㄹ. $\\sqrt{12.1}$ (무리수, $121$은 제곱수이나 $12.1$은 아님) \nㅁ. $\\sqrt{0.4}$ (무리수, $4$는 제곱수이나 $0.4$는 아님) \nㅂ. $\\frac{1}{2}$ (유리수) \nㅅ. $3\\sqrt{2}-3\\sqrt{2}=0$ (유리수) \n따라서 무리수는 ㄴ, ㄷ, ㄹ, ㅁ으로 총 4개이다. \n--- \n[결론] 정답: ③이다."
+    "solution": "[풀이] \nㄱ. 3 (유리수) \nㄴ. $-\\sqrt{21}$ (무리수) \nㄷ. $\\pi$ (무리수) \nㄹ. $\\sqrt{12.1}$ (무리수, $121$은 제곱수이나 $12.1$은 아님) \nㅁ. $\\sqrt{0.4}$ (무리수, $4$는 제곱수이나 $0.4$는 아님) \nㅂ. $\\frac{1}{2}$ (유리수) \nㅅ. $3\\sqrt{2}-3\\sqrt{2}=0$ (유리수) \n따라서 무리수는 ㄴ, ㄷ, ㄹ, ㅁ으로 총 4개이다. \n--- \n[결론] 정답: ③이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -151,11 +223,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["실수","무리수","제곱근","대소관계","부등식","참거짓","객관식"],
+    "tags": [
+      "실수",
+      "무리수",
+      "제곱근",
+      "대소관계",
+      "부등식",
+      "참거짓",
+      "객관식"
+    ],
     "wide": false,
     "content": "다음 중에서 두 실수의 대소 관계가 옳지 않은 것은?",
     "choices": [
@@ -166,7 +246,11 @@ window.questionBank = [
       "⑤ $\\sqrt{8}-2>-2+\\sqrt{7}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n1. $\\sqrt{5}>1 \\implies \\sqrt{5}+1>2$ (참) \n2. $3-(\\sqrt{5}+1) = 2-\\sqrt{5} < 0$ ($\\because 2=\\sqrt{4}<\\sqrt{5}$) $\\implies 3<\\sqrt{5}+1$ (거짓) \n3. $2-(\\sqrt{7}-1) = 3-\\sqrt{7} > 0$ ($\\because 3=\\sqrt{9}>\\sqrt{7}$) $\\implies 2>\\sqrt{7}-1$ (참) \n4. 양변에 $\\sqrt{3}$을 더하면 $2<\\sqrt{6}$ (참) \n5. 양변에 $2$를 더하면 $\\sqrt{8}>\\sqrt{7}$ (참) \n--- \n[결론] 정답: ②이다."
+    "solution": "[풀이] \n1. $\\sqrt{5}>1 \\implies \\sqrt{5}+1>2$ (참) \n2. $3-(\\sqrt{5}+1) = 2-\\sqrt{5} < 0$ ($\\because 2=\\sqrt{4}<\\sqrt{5}$) $\\implies 3<\\sqrt{5}+1$ (거짓) \n3. $2-(\\sqrt{7}-1) = 3-\\sqrt{7} > 0$ ($\\because 3=\\sqrt{9}>\\sqrt{7}$) $\\implies 2>\\sqrt{7}-1$ (참) \n4. 양변에 $\\sqrt{3}$을 더하면 $2<\\sqrt{6}$ (참) \n5. 양변에 $2$를 더하면 $\\sqrt{8}>\\sqrt{7}$ (참) \n--- \n[결론] 정답: ②이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -175,11 +259,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","근호","곱셈","나눗셈","분수근호","오류판별","객관식"],
+    "tags": [
+      "제곱근",
+      "근호",
+      "곱셈",
+      "나눗셈",
+      "분수근호",
+      "오류판별",
+      "객관식"
+    ],
     "wide": false,
     "content": "다음 중 바르지 않은 것은?",
     "choices": [
@@ -190,7 +282,11 @@ window.questionBank = [
       "⑤ $2\\sqrt{\\frac{3}{4}} = \\sqrt{\\frac{3}{2}}$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n⑤ $2\\sqrt{\\frac{3}{4}} = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$ \n$\\sqrt{3} \\n eq \\sqrt{\\frac{3}{2}}$이므로 옳지 않다. \n--- \n[결론] 정답: ⑤이다."
+    "solution": "[풀이] \n⑤ $2\\sqrt{\\frac{3}{4}} = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$ \n$\\sqrt{3} \\n eq \\sqrt{\\frac{3}{2}}$이므로 옳지 않다. \n--- \n[결론] 정답: ⑤이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -199,11 +295,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["분모유리화","제곱근","근호","분수","켤레식","오류판별","객관식"],
+    "tags": [
+      "분모유리화",
+      "제곱근",
+      "근호",
+      "분수",
+      "켤레식",
+      "오류판별",
+      "객관식"
+    ],
     "wide": false,
     "content": "분모를 유리화 한 것 중 바르지 않은 것은?",
     "choices": [
@@ -214,7 +318,11 @@ window.questionBank = [
       "⑤ $\\sqrt{\\frac{3}{8}} = \\frac{\\sqrt{6}}{4}$"
     ],
     "answer": "④",
-    "solution": "[풀이] \n④ $\\frac{\\sqrt{15}}{5\\sqrt{6}} = \\frac{\\sqrt{5}}{5\\sqrt{2}} = \\frac{\\sqrt{5} \\times \\sqrt{2}}{5\\sqrt{2} \\times \\sqrt{2}} = \\frac{\\sqrt{10}}{10}$ \n따라서 $\\frac{1}{2}$과 같지 않다. \n--- \n[결론] 정답: ④이다."
+    "solution": "[풀이] \n④ $\\frac{\\sqrt{15}}{5\\sqrt{6}} = \\frac{\\sqrt{5}}{5\\sqrt{2}} = \\frac{\\sqrt{5} \\times \\sqrt{2}}{5\\sqrt{2} \\times \\sqrt{2}} = \\frac{\\sqrt{10}}{10}$ \n따라서 $\\frac{1}{2}$과 같지 않다. \n--- \n[결론] 정답: ④이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -223,11 +331,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["근호계산","제곱근","동류근호","사칙연산","혼합계산","오류판별","객관식"],
+    "tags": [
+      "근호계산",
+      "제곱근",
+      "동류근호",
+      "사칙연산",
+      "혼합계산",
+      "오류판별",
+      "객관식"
+    ],
     "wide": false,
     "content": "다음 중 계산이 바른 것은?",
     "choices": [
@@ -238,7 +354,11 @@ window.questionBank = [
       "⑤ $(\\sqrt{54}-\\sqrt{18}) \\div \\sqrt{3} = 2\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "[풀이] \n1. $3\\sqrt{5}-10\\sqrt{5} = -7\\sqrt{5}$ (바름) \n2. $4\\sqrt{2}+2\\sqrt{2}=6\\sqrt{2}$ \n3. $8\\sqrt{6} \\div 2\\sqrt{3} = 4\\sqrt{2}$ \n4. $\\frac{3}{2} = 1.5$ \n5. $(3\\sqrt{6}-3\\sqrt{2}) \\div \\sqrt{3} = 3\\sqrt{2}-\\sqrt{6}$ \n--- \n[결론] 정답: ①이다."
+    "solution": "[풀이] \n1. $3\\sqrt{5}-10\\sqrt{5} = -7\\sqrt{5}$ (바름) \n2. $4\\sqrt{2}+2\\sqrt{2}=6\\sqrt{2}$ \n3. $8\\sqrt{6} \\div 2\\sqrt{3} = 4\\sqrt{2}$ \n4. $\\frac{3}{2} = 1.5$ \n5. $(3\\sqrt{6}-3\\sqrt{2}) \\div \\sqrt{3} = 3\\sqrt{2}-\\sqrt{6}$ \n--- \n[결론] 정답: ①이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -247,11 +367,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","정수부분","소수부분","무리수","대소관계","근호계산","조건해석"],
+    "tags": [
+      "제곱근",
+      "정수부분",
+      "소수부분",
+      "무리수",
+      "대소관계",
+      "근호계산",
+      "조건해석"
+    ],
     "wide": false,
     "content": "$\\sqrt{8}$의 소수부분을 $a$, $1+\\sqrt{2}$의 정수부분을 $b$라고 할 때, $a+b$의 값은?",
     "choices": [
@@ -262,7 +390,11 @@ window.questionBank = [
       "⑤ $3\\sqrt{2}+1$"
     ],
     "answer": "①",
-    "solution": "[풀이] \n$2 < \\sqrt{8} < 3$이므로 $\\sqrt{8}$의 정수부분은 2. \n$\\therefore a = \\sqrt{8}-2 = 2\\sqrt{2}-2$ \n$1 < \\sqrt{2} < 2 \\implies 2 < 1+\\sqrt{2} < 3$이므로 \n정수부분 $b=2$ \n$a+b = (2\\sqrt{2}-2)+2 = 2\\sqrt{2}$ \n--- \n[결론] 정답: ①이다."
+    "solution": "[풀이] \n$2 < \\sqrt{8} < 3$이므로 $\\sqrt{8}$의 정수부분은 2. \n$\\therefore a = \\sqrt{8}-2 = 2\\sqrt{2}-2$ \n$1 < \\sqrt{2} < 2 \\implies 2 < 1+\\sqrt{2} < 3$이므로 \n정수부분 $b=2$ \n$a+b = (2\\sqrt{2}-2)+2 = 2\\sqrt{2}$ \n--- \n[결론] 정답: ①이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -271,11 +403,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["무리수","유리수","근호계산","동류근호","문자계수","조건해석","상수화"],
+    "tags": [
+      "무리수",
+      "유리수",
+      "근호계산",
+      "동류근호",
+      "문자계수",
+      "조건해석",
+      "상수화"
+    ],
     "wide": false,
     "content": "$\\frac{a}{\\sqrt{2}}(\\sqrt{32}-2)+\\sqrt{24}(\\frac{\\sqrt{3}}{6}+\\sqrt{6})$가 유리수 일 때, 유리수 $a$의 값은?",
     "choices": [
@@ -286,7 +426,11 @@ window.questionBank = [
       "⑤ 2"
     ],
     "answer": "④",
-    "solution": "[풀이] \n$\\frac{a}{\\sqrt{2}}(4\\sqrt{2}-2)+2\\sqrt{6}(\\frac{\\sqrt{3}}{6}+\\sqrt{6}) = 4a-\\sqrt{2}a+\\frac{2\\sqrt{18}}{6}+12$ \n$= 4a-a\\sqrt{2}+\\frac{6\\sqrt{2}}{6}+12 = (4a+12)+(1-a)\\sqrt{2}$ \n식이 유리수가 되려면 $\\sqrt{2}$의 계수가 0이어야 함. \n$1-a=0 \\implies a=1$ \n--- \n[결론] 정답: ④이다."
+    "solution": "[풀이] \n$\\frac{a}{\\sqrt{2}}(4\\sqrt{2}-2)+2\\sqrt{6}(\\frac{\\sqrt{3}}{6}+\\sqrt{6}) = 4a-\\sqrt{2}a+\\frac{2\\sqrt{18}}{6}+12$ \n$= 4a-a\\sqrt{2}+\\frac{6\\sqrt{2}}{6}+12 = (4a+12)+(1-a)\\sqrt{2}$ \n식이 유리수가 되려면 $\\sqrt{2}$의 계수가 0이어야 함. \n$1-a=0 \\implies a=1$ \n--- \n[결론] 정답: ④이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -295,11 +439,19 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["제곱근","정사각형","넓이","변의길이","도형","동류근호","응용"],
+    "tags": [
+      "제곱근",
+      "정사각형",
+      "넓이",
+      "변의길이",
+      "도형",
+      "동류근호",
+      "응용"
+    ],
     "wide": false,
     "content": "다음 그림과 같이 넓이가 각각 $5~cm^2, 45~cm^2, 125~cm^2$인 세 정사각형을 이어 붙여서 새로운 도형을 만들었다. $\\overline{AD}$의 길이는?",
     "choices": [
@@ -310,7 +462,11 @@ window.questionBank = [
       "⑤ $10\\sqrt{5}cm$"
     ],
     "answer": "④",
-    "solution": "[풀이] \n각 정사각형의 한 변의 길이는 $\\sqrt{5}, \\sqrt{45}, \\sqrt{125}$이다. \n$\\sqrt{5} = \\sqrt{5}$ \n$\\sqrt{45} = 3\\sqrt{5}$ \n$\\sqrt{125} = 5\\sqrt{5}$ \n$\\overline{AD} = \\sqrt{5}+3\\sqrt{5}+5\\sqrt{5} = 9\\sqrt{5}$ \n--- \n[결론] 정답: ④이다."
+    "solution": "[풀이] \n각 정사각형의 한 변의 길이는 $\\sqrt{5}, \\sqrt{45}, \\sqrt{125}$이다. \n$\\sqrt{5} = \\sqrt{5}$ \n$\\sqrt{45} = 3\\sqrt{5}$ \n$\\sqrt{125} = 5\\sqrt{5}$ \n$\\overline{AD} = \\sqrt{5}+3\\sqrt{5}+5\\sqrt{5} = 9\\sqrt{5}$ \n--- \n[결론] 정답: ④이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -319,11 +475,19 @@ window.questionBank = [
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈",
+    "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["다항식곱셈","전개","계수","일차항","상수항","값비교","객관식"],
+    "tags": [
+      "다항식곱셈",
+      "전개",
+      "계수",
+      "일차항",
+      "상수항",
+      "값비교",
+      "객관식"
+    ],
     "wide": false,
     "content": "다음 식을 전개할 때, $x$의 계수의 절댓값이 가장 큰 것은?",
     "choices": [
@@ -334,7 +498,11 @@ window.questionBank = [
       "⑤ $(2x-3)^2$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n① $x$의 계수: 10, 절댓값: 10 \n② $x$의 계수: $-1$, 절댓값: 1 \n③ $x$의 계수: 0, 절댓값: 0 \n④ $4+1=5$, 절댓값: 5 \n⑤ $2 \\times 2 \\times (-3) = -12$, 절댓값: 12 \n따라서 5번의 절댓값이 가장 크다. \n--- \n[결론] 정답: ⑤이다."
+    "solution": "[풀이] \n① $x$의 계수: 10, 절댓값: 10 \n② $x$의 계수: $-1$, 절댓값: 1 \n③ $x$의 계수: 0, 절댓값: 0 \n④ $4+1=5$, 절댓값: 5 \n⑤ $2 \\times 2 \\times (-3) = -12$, 절댓값: 12 \n따라서 5번의 절댓값이 가장 크다. \n--- \n[결론] 정답: ⑤이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 15,
@@ -343,11 +511,19 @@ window.questionBank = [
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈",
+    "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["분모유리화","켤레식","제곱근","곱셈공식","분수식","근호계산","객관식"],
+    "tags": [
+      "분모유리화",
+      "켤레식",
+      "제곱근",
+      "곱셈공식",
+      "분수식",
+      "근호계산",
+      "객관식"
+    ],
     "wide": false,
     "content": "$\\frac{\\sqrt{7}-2}{\\sqrt{7}+2}$의 분모를 유리화한 것은?",
     "choices": [
@@ -358,7 +534,11 @@ window.questionBank = [
       "⑤ $\\frac{11+4\\sqrt{7}}{3}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$\\frac{(\\sqrt{7}-2)^2}{(\\sqrt{7}+2)(\\sqrt{7}-2)} = \\frac{7-4\\sqrt{7}+4}{7-4} = \\frac{11-4\\sqrt{7}}{3}$ \n--- \n[결론] 정답: ②이다."
+    "solution": "[풀이] \n$\\frac{(\\sqrt{7}-2)^2}{(\\sqrt{7}+2)(\\sqrt{7}-2)} = \\frac{7-4\\sqrt{7}+4}{7-4} = \\frac{11-4\\sqrt{7}}{3}$ \n--- \n[결론] 정답: ②이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 16,
@@ -367,11 +547,19 @@ window.questionBank = [
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈",
+    "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["곱셈공식","수계산","치환","합차공식","빠른계산","응용","객관식"],
+    "tags": [
+      "곱셈공식",
+      "수계산",
+      "치환",
+      "합차공식",
+      "빠른계산",
+      "응용",
+      "객관식"
+    ],
     "wide": false,
     "content": "곱셈 공식을 이용하여 $\\frac{1+2020 \\times 2022}{2021}$을 계산하면?",
     "choices": [
@@ -382,7 +570,11 @@ window.questionBank = [
       "⑤ $\\frac{2022}{2021}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$2021=x$로 치환하면 \n$\\frac{1+(x-1)(x+1)}{x} = \\frac{1+x^2-1}{x} = \\frac{x^2}{x} = x$ \n$x = 2021$ \n--- \n[결론] 정답: ②이다."
+    "solution": "[풀이] \n$2021=x$로 치환하면 \n$\\frac{1+(x-1)(x+1)}{x} = \\frac{1+x^2-1}{x} = \\frac{x^2}{x} = x$ \n$x = 2021$ \n--- \n[결론] 정답: ②이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 17,
@@ -390,12 +582,20 @@ window.questionBank = [
     "category": "완전제곱식",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["완전제곱식","인수분해","곱셈공식","계수비교","오류판별","개념","객관식"],
+    "tags": [
+      "완전제곱식",
+      "인수분해",
+      "곱셈공식",
+      "계수비교",
+      "오류판별",
+      "개념",
+      "객관식"
+    ],
     "wide": false,
     "content": "다음 중 완전제곱식이 아닌 것은?",
     "choices": [
@@ -406,7 +606,11 @@ window.questionBank = [
       "⑤ $9x^2-18x+9$"
     ],
     "answer": "③",
-    "solution": "[풀이] \n1. $(x+2)^2$ \n2. $\\frac{1}{6}(x^2-4x+4) = \\frac{1}{6}(x-2)^2$ \n3. $a^2+\\frac{1}{6}a+\\frac{1}{36}$이 완전제곱식이 되려면 일차항이 $2 \\times a \\times \\frac{1}{6} = \\frac{1}{3}a$여야 함. \n4. $(b-2)^2$ \n5. $(3x-3)^2$ \n--- \n[결론] 정답: ③이다."
+    "solution": "[풀이] \n1. $(x+2)^2$ \n2. $\\frac{1}{6}(x^2-4x+4) = \\frac{1}{6}(x-2)^2$ \n3. $a^2+\\frac{1}{6}a+\\frac{1}{36}$이 완전제곱식이 되려면 일차항이 $2 \\times a \\times \\frac{1}{6} = \\frac{1}{3}a$여야 함. \n4. $(b-2)^2$ \n5. $(3x-3)^2$ \n--- \n[결론] 정답: ③이다.",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -414,12 +618,20 @@ window.questionBank = [
     "category": "인수분해 공식",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["완전제곱식","제곱근","절댓값","범위조건","식의간단화","조건해석","객관식"],
+    "tags": [
+      "완전제곱식",
+      "제곱근",
+      "절댓값",
+      "범위조건",
+      "식의간단화",
+      "조건해석",
+      "객관식"
+    ],
     "wide": false,
     "content": "$\\frac{1}{3}<x<2$일 때, $\\sqrt{9x^2-6x+1}-\\sqrt{x^2-4x+4}$를 간단히 한 것은?",
     "choices": [
@@ -430,7 +642,11 @@ window.questionBank = [
       "⑤ $-4x+1$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$\\sqrt{(3x-1)^2}-\\sqrt{(x-2)^2} = |3x-1|-|x-2|$ \n$\\frac{1}{3}<x<2$일 때, $3x-1>0$이고 $x-2<0$이다. \n$\\implies (3x-1)-(-(x-2)) = 3x-1+x-2 = 4x-3$ \n--- \n[결론] 정답: ②이다."
+    "solution": "[풀이] \n$\\sqrt{(3x-1)^2}-\\sqrt{(x-2)^2} = |3x-1|-|x-2|$ \n$\\frac{1}{3}<x<2$일 때, $3x-1>0$이고 $x-2<0$이다. \n$\\implies (3x-1)-(-(x-2)) = 3x-1+x-2 = 4x-3$ \n--- \n[결론] 정답: ②이다.",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -438,12 +654,20 @@ window.questionBank = [
     "category": "인수분해의 활용",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["인수분해","이차식","정수조건","곱과합","최댓값","조건해석","객관식"],
+    "tags": [
+      "인수분해",
+      "이차식",
+      "정수조건",
+      "곱과합",
+      "최댓값",
+      "조건해석",
+      "객관식"
+    ],
     "wide": false,
     "content": "$a$와 $b$가 정수일 때, 다음 등식을 만족시키는 $p$의 최댓값은?<div class='box'>$x^2+px-12=(x+a)(x+b)$</div>",
     "choices": [
@@ -454,7 +678,11 @@ window.questionBank = [
       "⑤ 11"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n$ab=-12, a+b=p$ \n곱이 $-12$인 정수쌍 $(a, b)$ 중 합 $p$가 최대인 경우: \n$(12, -1) \\implies p = 11$ \n$(6, -2) \\implies p = 4$ \n$(4, -3) \\implies p = 1$ \n따라서 최댓값은 11이다. \n--- \n[결론] 정답: ⑤이다."
+    "solution": "[풀이] \n$ab=-12, a+b=p$ \n곱이 $-12$인 정수쌍 $(a, b)$ 중 합 $p$가 최대인 경우: \n$(12, -1) \\implies p = 11$ \n$(6, -2) \\implies p = 4$ \n$(4, -3) \\implies p = 1$ \n따라서 최댓값은 11이다. \n--- \n[결론] 정답: ⑤이다.",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -462,12 +690,20 @@ window.questionBank = [
     "category": "복잡한 식의 인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["인수분해","치환","이차식","일차식곱","복합식","상급","계산"],
+    "tags": [
+      "인수분해",
+      "치환",
+      "이차식",
+      "일차식곱",
+      "복합식",
+      "상급",
+      "계산"
+    ],
     "wide": false,
     "content": "$(x-3)^2-7(x-3)(x+2)+12(x+2)^2$를 인수분해하면 $(2x+a)(bx+c)$일 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값은?",
     "choices": [
@@ -478,7 +714,11 @@ window.questionBank = [
       "⑤ 23"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n$x-3=A, x+2=B$로 치환 \n$A^2-7AB+12B^2 = (A-3B)(A-4B)$ \n원래 식 대입: \n$\\{(x-3)-3(x+2)\\}\\{(x-3)-4(x+2)\\}$ \n$= (x-3-3x-6)(x-3-4x-8)$ \n$= (-2x-9)(-3x-11) = (2x+9)(3x+11)$ \n$a=9, b=3, c=11 \\implies a+b+c = 9+3+11 = 23$ \n--- \n[결론] 정답: ⑤이다."
+    "solution": "[풀이] \n$x-3=A, x+2=B$로 치환 \n$A^2-7AB+12B^2 = (A-3B)(A-4B)$ \n원래 식 대입: \n$\\{(x-3)-3(x+2)\\}\\{(x-3)-4(x+2)\\}$ \n$= (x-3-3x-6)(x-3-4x-8)$ \n$= (-2x-9)(-3x-11) = (2x+9)(3x+11)$ \n$a=9, b=3, c=11 \\implies a+b+c = 9+3+11 = 23$ \n--- \n[결론] 정답: ⑤이다.",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -486,12 +726,20 @@ window.questionBank = [
     "category": "인수분해의 활용",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["인수분해","이차식","일차식합","전개","계수비교","계산","객관식"],
+    "tags": [
+      "인수분해",
+      "이차식",
+      "일차식합",
+      "전개",
+      "계수비교",
+      "계산",
+      "객관식"
+    ],
     "wide": false,
     "content": "일차항의 계수가 1인 두 일차식의 곱이 $(x-2)(x+5)+6x$와 같을 때, 두 일차식의 합은?",
     "choices": [
@@ -502,7 +750,11 @@ window.questionBank = [
       "⑤ $2x-1$"
     ],
     "answer": "①",
-    "solution": "[풀이] \n$(x-2)(x+5)+6x = x^2+3x-10+6x = x^2+9x-10$ \n인수분해: $(x+10)(x-1)$ \n두 일차식의 합: $(x+10)+(x-1) = 2x+9$ \n--- \n[결론] 정답: ①이다."
+    "solution": "[풀이] \n$(x-2)(x+5)+6x = x^2+3x-10+6x = x^2+9x-10$ \n인수분해: $(x+10)(x-1)$ \n두 일차식의 합: $(x+10)+(x-1) = 2x+9$ \n--- \n[결론] 정답: ①이다.",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -511,16 +763,28 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","제곱근","소인수분해","완전제곱수","자연수조건","개수세기","조건해석"],
+    "tags": [
+      "서술형",
+      "제곱근",
+      "소인수분해",
+      "완전제곱수",
+      "자연수조건",
+      "개수세기",
+      "조건해석"
+    ],
     "wide": false,
     "content": "[서술형1] $\\sqrt{\\frac{240}{x}}$이 자연수가 되도록 하는 자연수 $x$의 값을 구하려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 240을 소인수분해 하시오.<br>(2) $\\sqrt{\\frac{240}{x}}$이 자연수가 되도록 하는 자연수 $x$의 값을 모두 구하시오.<br>(3) 위 (2)에서 구한 값 중 가장 작은 값을 구하시오.",
     "choices": [],
     "answer": "(1) $2^4 \\times 3 \\times 5$ (2) 15, 60, 240 (3) 15",
-    "solution": "[풀이] \n(1) $240 = 2^4 \\times 3 \\times 5$ \n(2) $\\sqrt{\\frac{240}{x}}$가 자연수이려면 $\\frac{240}{x}$가 제곱수여야 함. \n$240 = (2^2)^2 \\times 15$ 이므로 $x$는 $15 \\times (\\text{제곱수})$ 형태의 240의 약수여야 함. \n가능한 $x$: $15 \\times 1^2 = 15, 15 \\times 2^2 = 60, 15 \\times 4^2 = 240$ \n(3) 가장 작은 값은 15이다. \n--- \n[결론] 정답: (1) $2^4 \\times 3 \\times 5$ (2) 15, 60, 240 (3) 15이다."
+    "solution": "[풀이] \n(1) $240 = 2^4 \\times 3 \\times 5$ \n(2) $\\sqrt{\\frac{240}{x}}$가 자연수이려면 $\\frac{240}{x}$가 제곱수여야 함. \n$240 = (2^2)^2 \\times 15$ 이므로 $x$는 $15 \\times (\\text{제곱수})$ 형태의 240의 약수여야 함. \n가능한 $x$: $15 \\times 1^2 = 15, 15 \\times 2^2 = 60, 15 \\times 4^2 = 240$ \n(3) 가장 작은 값은 15이다. \n--- \n[결론] 정답: (1) $2^4 \\times 3 \\times 5$ (2) 15, 60, 240 (3) 15이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -529,16 +793,28 @@ window.questionBank = [
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
+    "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","제곱근","근호정리","소수근호","나눗셈","근호계산","계산과정"],
+    "tags": [
+      "서술형",
+      "제곱근",
+      "근호정리",
+      "소수근호",
+      "나눗셈",
+      "근호계산",
+      "계산과정"
+    ],
     "wide": false,
     "content": "[서술형2] $\\sqrt{392}=A\\sqrt{2}, \\frac{\\sqrt{0.5}}{\\sqrt{50}}=B$일 때, $A \\div B$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.<br>(1) $A$의 값을 구하시오.<br>(2) $B$의 값을 구하시오.<br>(3) $A \\div B$의 값을 구하시오.",
     "choices": [],
     "answer": "(1) 14 (2) 0.1 (3) 140",
-    "solution": "[풀이] \n(1) $\\sqrt{392} = \\sqrt{196 \\times 2} = 14\\sqrt{2} \\implies A=14$ \n(2) $\\frac{\\sqrt{0.5}}{\\sqrt{50}} = \\sqrt{\\frac{0.5}{50}} = \\sqrt{0.01} = 0.1 \\implies B=0.1$ \n(3) $A \\div B = 14 \\div 0.1 = 140$ \n--- \n[결론] 정답: (1) 14 (2) 0.1 (3) 140이다."
+    "solution": "[풀이] \n(1) $\\sqrt{392} = \\sqrt{196 \\times 2} = 14\\sqrt{2} \\implies A=14$ \n(2) $\\frac{\\sqrt{0.5}}{\\sqrt{50}} = \\sqrt{\\frac{0.5}{50}} = \\sqrt{0.01} = 0.1 \\implies B=0.1$ \n(3) $A \\div B = 14 \\div 0.1 = 140$ \n--- \n[결론] 정답: (1) 14 (2) 0.1 (3) 140이다.",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -547,16 +823,28 @@ window.questionBank = [
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈",
+    "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","곱셈공식","정사각형","둘레","넓이","대칭식","식세우기"],
+    "tags": [
+      "서술형",
+      "곱셈공식",
+      "정사각형",
+      "둘레",
+      "넓이",
+      "대칭식",
+      "식세우기"
+    ],
     "wide": false,
     "content": "[서술형3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 60이고, 넓이의 합은 117이다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 두 정사각형의 둘레의 길이의 합이 60임을 등식으로 나타내시오.<br>(2) 두 정사각형의 넓이의 합이 117임을 등식으로 나타내시오.<br>(3) 위 (1), (2)에서 구한 값을 이용하여 $xy$의 값을 구하시오.",
     "choices": [],
     "answer": "(1) $4x+4y=60$ (2) $x^2+y^2=117$ (3) 54",
-    "solution": "[풀이] \n(1) $4x+4y=60 \\implies x+y=15$ \n(2) $x^2+y^2=117$ \n(3) $(x+y)^2 = x^2+y^2+2xy$ 대입: \n$15^2 = 117+2xy \\implies 225 = 117+2xy$ \n$2xy = 108 \\implies xy=54$ \n--- \n[결론] 정답: (1) $4x+4y=60$ (2) $x^2+y^2=117$ (3) 54이다."
+    "solution": "[풀이] \n(1) $4x+4y=60 \\implies x+y=15$ \n(2) $x^2+y^2=117$ \n(3) $(x+y)^2 = x^2+y^2+2xy$ 대입: \n$15^2 = 117+2xy \\implies 225 = 117+2xy$ \n$2xy = 108 \\implies xy=54$ \n--- \n[결론] 정답: (1) $4x+4y=60$ (2) $x^2+y^2=117$ (3) 54이다.",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 25,
@@ -564,16 +852,29 @@ window.questionBank = [
     "category": "다항식의 활용",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-02",
+    "standardUnit": "다항식의 곱셈과 인수분해",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
-    "tags": ["서술형","다항식곱셈","인수분해","직사각형","넓이","도형","식세우기","응용"],
+    "tags": [
+      "서술형",
+      "다항식곱셈",
+      "인수분해",
+      "직사각형",
+      "넓이",
+      "도형",
+      "식세우기",
+      "응용"
+    ],
     "wide": false,
     "content": "[서술형4] 가로의 길이가 $(3a-7)m$, 세로의 길이가 $(4a+1)m$인 직사각형 모양의 화단이 있다. 이 화단 내부에 폭이 각각 $1m, 2m$인 길을 내려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 화단 전체의 넓이를 $a$에 관한 식으로 전개하시오.<br>(2) 폭이 $1m$인 길과 폭이 $2m$인 길의 넓이의 합을 구하시오.<br>(3) 길의 넓이를 제외한 화단의 넓이를 구한 후 인수분해 하시오.",
     "choices": [],
     "answer": "(1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$",
-    "solution": "[풀이] \n(1) $(3a-7)(4a+1) = 12a^2+3a-28a-7 = 12a^2-25a-7$ \n(2) 가로 길 $1 \\times (4a+1)$, 세로 길 $2 \\times (3a-7)$, 겹치는 부분 $1 \\times 2$ \n길의 넓이 $= (4a+1) + (6a-14) - 2 = 10a-15$ \n(3) 전체 - 길 $=$ $(12a^2-25a-7) - (10a-15) = 12a^2-35a+8$ \n인수분해: $(3a-8)(4a-1)$ \n(또는 가로 세로에서 폭을 빼서 계산: $(3a-7-1)(4a+1-2) = (3a-8)(4a-1)$) \n--- \n[결론] 정답: (1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$이다."
+    "solution": "[풀이] \n(1) $(3a-7)(4a+1) = 12a^2+3a-28a-7 = 12a^2-25a-7$ \n(2) 가로 길 $1 \\times (4a+1)$, 세로 길 $2 \\times (3a-7)$, 겹치는 부분 $1 \\times 2$ \n길의 넓이 $= (4a+1) + (6a-14) - 2 = 10a-15$ \n(3) 전체 - 길 $=$ $(12a^2-25a-7) - (10a-15) = 12a^2-35a+8$ \n인수분해: $(3a-8)(4a-1)$ \n(또는 가로 세로에서 폭을 빼서 계산: $(3a-7-1)(4a+1-2) = (3a-8)(4a-1)$) \n--- \n[결론] 정답: (1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$이다.",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];
