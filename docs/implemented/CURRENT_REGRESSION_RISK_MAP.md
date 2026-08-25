@@ -23,6 +23,7 @@
 | archive MIXED | mixed engine 문항 매핑 실패 | `MIXED:{key}` 보존 |
 | report AI | 내부 표현이 학부모 문장에 노출 | fallback/provider 결과 정규화 |
 | report cohort | 같은 아카이브 시험지를 여러 반이 본 경우 통계가 담당반 기준으로 좁혀지거나 다중 반 연결 학생의 세션이 중복 집계됨 | 시험연도 + `archive_file` + 같은 학년 전체 평균/등수/문항 정답률, `exam_sessions.id` 기준 dedupe, `classAverage` 별도 유지 |
+| report blueprint lazy-load | initial-data에 blueprint가 없을 때 시험 dashboard가 `0/-`·분석 대기로 고정되거나, 이전 시험지의 비동기 응답이 현재 화면에 섞임 | 현재 archive file만 `exam-blueprints?file=...`로 조회, empty 응답 재요청 방지, refresh 전 navigation archive scope 확인 |
 | billing | 금액 합계/거래/장부 불일치 | payments vs transactions vs cashbook 구분 |
 | dashboard UI | 원장님 대시보드 quick action이 탭처럼 보이거나 오늘 운영에 숫자 metric이 직접 노출됨 | 빠른 이동은 중립 버튼, 실제 필터만 segmented, 오늘 운영은 숫자 없는 진입 카드, 기능/데이터/API 변경 없음 |
 | timetable | 운영 데이터와 draft/staging 혼선 | `classes` 직접 훼손 금지, version tables 분리 |
@@ -31,3 +32,4 @@
 | UI 문구 | 현장 용어 변경 | 기존 버튼/화면명/문구 diff 확인 |
 | hidden foundation | 승인 없는 UI 노출 | `CURRENT_HIDDEN_FOUNDATION_MAP.md` 대조 |
 | academy schedule series | 날짜별 row가 중복 목록으로 보이거나 단건 수정이 전체 series metadata를 훼손하고, 전체 삭제가 일부 occurrence만 남김 | `series_id || id` 집계, one/series scope, batch·series API, legacy row 테스트, 시험 경로 보존 |
+| archive target partial assignment | 일부 학생 선택이 반 전체 출제로 바뀌거나 제외 목록이 누락되어 학생 포털에 잘못 노출됨 | 통합 패널 최종 확인 목록, 순차 assignment/exclusion 성공 표시, `student-portal.js` exclusion filter, assignment board 반 목록 |

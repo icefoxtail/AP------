@@ -225,3 +225,31 @@
 - 원격 D1 source-backed 1,260행 metadata backfill 완료. 최신 export 기준 hash diff 0, QR/OMR 정적 회귀 7/7 통과.
 - post-audit 보류: MIXED 7개 파일/343행, source JS 부재 3개 파일/72행, legacy orphan blueprint 4행.
 - dry-run/audit가 sparse question number를 안전하게 처리하고 orphan을 blocker로 기록하도록 보강됐다. Phase 3 승격 전 별도 identity/source 검토가 필요하다.
+
+## 33. 2026-08-24 MIXED identity 승격 및 잔여 blocker
+
+- `archive/tools/intelligence/audit-archive-blueprint-mixed-identity.mjs`: MIXED 7개 파일·343행을 원본 JS와 대조하고 canonical UID/ordinal/metadata hash를 생성·검증하는 read-only audit 및 review-only UPDATE plan 도구.
+- `tests/archive-blueprint-mixed-identity.test.mjs`: 343행 plan의 후보 수, key 수, destructive keyword 부재를 검증한다.
+- `archive/_generated/intelligence/phase2/archive-blueprint-mixed-identity-post-audit-v1.json`: MIXED 343/343 identity 승격 후 재감사 결과.
+- `archive/_generated/intelligence/phase2/archive-blueprint-post-audit-after-mixed-identity-v3.json`: MIXED blocker와 metadata diff는 해소됐고, orphan 4행·source missing 3파일/72행만 잔여 blocker로 남은 최신 post-audit.
+
+## 34. 2026-08-24 잔여 blueprint blocker disposition
+
+- `archive/tools/intelligence/build-archive-blueprint-blocker-disposition.mjs`: source-unavailable 3개 파일·72행과 sparse legacy orphan 4행을 삭제·추정 없이 보류 목록으로 고정하는 read-only report tool.
+- `archive/_generated/intelligence/phase2/archive-blueprint-blocker-disposition-v1.json`: 총 76행 `DISPOSITION_REQUIRED`, `phase3Gate.allowed=false` 결과.
+
+## 35. 2026-08-24 운영 index·identity 재생성 및 QA
+
+- `archive/question-index.js`, `archive/data/question_identity_map.json`, `archive/question-identity.js`를 현재 운영 JS 기준으로 재생성했다. 10,686문항·UID 충돌 0건이다.
+- 최신 운영 QA는 production/index subunit fields, master gap, candidate sync, qCount/index consistency를 모두 통과했다. source-dependent DB 28/60건과 blueprint 76행 보류는 유지한다.
+
+## 36. 2026-08-24 Phase 2 최종 게이트
+
+- 최신 blueprint post-audit·MIXED identity·QR/OMR·identity map·DB consistency·운영 subunit QA가 모두 통과했다.
+- source-unavailable/orphan blueprint 76행과 source-dependent DB 28/60건은 자동 승격하지 않는 보류 범위다. Phase 3는 이 disposition 전까지 잠긴다.
+
+## 37. 2026-08-24 후보 기출 source 승격 후 재감사
+
+- `archive/tools/intelligence/promote-archive-blueprint-candidate-sources.mjs`: 효천고·매산여고·순천고 `기출c.js` 후보 3개를 기존 original source로 연결하는 72건 review-only UPDATE 계획 도구.
+- `archive/_generated/intelligence/phase2/archive-blueprint-post-audit-after-candidate-promotion-v1.json`: source missing 0·metadata diff 0·orphan 4행 최신 결과.
+- 후보 JS 중복 복제는 하지 않았으며, MIXED identity 343/343과 QR/OMR 7/7을 재검증했다.

@@ -178,3 +178,9 @@
 ## 9. 문서 업데이트 기준
 
 작업 완료 후 `ARCHIVE_OMR_DOMAIN.md`, `CURRENT_API_FLOW_MAP.md`, `CURRENT_REGRESSION_RISK_MAP.md`, `ARCHIVE_OMR_NEXT_PLAN.md`, `CODEX_RESULT.md`를 업데이트한다. 업데이트하지 못한 항목은 사유와 미확인 범위를 남긴다.
+
+## 10. Phase 3·4 완료 기록 (2026-08-24)
+
+- 삼산중 중3 운영 세션에서 학년 다중 반(중3A·중3B)과 반 내 부분 학생 선택을 실제 실행했다. `class_exam_assignments` 등록과 부분 제외 처리는 모두 성공했고, 출제보드에 두 반이 표시됐다.
+- 학생 포털은 기존 `student-portal.js`의 `class_exam_assignment_exclusions` 기반 `AND NOT EXISTS` 필터를 그대로 사용한다. 통합 패널은 이 기존 계약을 호출하는 API만 추가하며 포털 로직은 변경하지 않았으므로, 학생 계정 별도 스모크를 Phase 3 차단 조건으로 두지 않는다.
+- Phase 4 정적 회귀·문법·배정 보드 검증을 통과했다. 커밋·푸시·추가 배포는 이 단계에서 수행하지 않았다.
