@@ -7,11 +7,20 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const tool = path.join(root, 'archive/tools/intelligence/audit-archive-blueprint-backfill.mjs');
-const dryRun = path.join(root, 'archive/_generated/intelligence/phase2/archive-blueprint-backfill-dry-run-v1.json');
 const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-blueprint-post-audit-'));
+const trackedDryRun = path.join(root, 'archive/_generated/intelligence/phase2/archive-blueprint-backfill-dry-run-v1.json');
+const dryRun = fs.existsSync(trackedDryRun) ? trackedDryRun : path.join(tempRoot, 'tracked-fallback-dry-run.json');
 const out = path.join(tempRoot, 'audit.json');
 
 try {
+  if (!fs.existsSync(trackedDryRun)) {
+    fs.writeFileSync(dryRun, `${JSON.stringify({
+      status: 'BLOCKED_SCHEMA_MISSING',
+      source: { schemaReady: false },
+      summary: { dbRows: 1, files: 1, sourceQuestions: 1, updateRequired: 1, insertRequired: 0, sourceQuestionMissing: 0, unmatchedDbRows: 0 },
+      fileSummaries: [{ status: 'MIXED_NO_ARCHIVE_SOURCE' }]
+    })}\n`, 'utf8');
+  }
   const stdout = execFileSync(process.execPath, [tool, '--dry-run-report', dryRun, '--out', out], { cwd: root, encoding: 'utf8' });
   const result = JSON.parse(stdout);
   const report = JSON.parse(fs.readFileSync(out, 'utf8'));
