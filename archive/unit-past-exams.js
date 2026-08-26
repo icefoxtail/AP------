@@ -93,7 +93,7 @@
     const promise = (async () => {
       delete window.questions;
       delete window.questionBank;
-      await loadScript(`exams/${sourceFile}?v=20260825a`);
+      await loadScript(`exams/${sourceFile}?v=20260826a`);
       const data = window.questions || window.questionBank;
       if (!Array.isArray(data)) throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.`);
       return data.map(question => ({ ...question }));

@@ -1,20 +1,4 @@
 window.examTitle = "25_순천고_2학기_기말_고2_수학II";
-window.archiveStatus = "metadata_and_prompt_transcription_only";
-
-const UNIT = {
-  "함수의 극한": ["H15-M2-01", 1], "함수의 연속": ["H15-M2-02", 2],
-  "미분계수": ["H15-M2-03", 3], "도함수": ["H15-M2-04", 4],
-  "접선의 방정식": ["H15-M2-05", 5], "도함수의 활용": ["H15-M2-06", 6],
-  "부정적분": ["H15-M2-07", 7], "정적분": ["H15-M2-08", 8],
-  "정적분의 활용": ["H15-M2-09", 9]
-};
-function makeQuestion(id, level, category, unit, questionType, content, choices = [], extra = {}) {
-  const [standardUnitKey, standardUnitOrder] = UNIT[unit];
-  return { id, level, category, originalCategory: unit, standardCourse: "수학II", standardUnitKey,
-    standardUnit: unit, standardUnitOrder, questionType, layoutTag: "grid",
-    tags: [questionType, category], wide: questionType === "서술형", content,
-    ...(choices.length ? { choices } : {}), ...extra, answer: "", solution: "" };
-}
 
 window.questionBank = [
   {
@@ -29,7 +13,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "속도와 가속도"
     ],
     "wide": false,
@@ -42,11 +25,12 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 운동 방향이 바뀌는 시각은 속도의 부호가 바뀌는 시각이므로 위치함수를 미분하여 속도를 먼저 조사한다.\n조건 정리: 점 $P$의 위치는 $x(t)=t^3-3t^2-9t$이고 $t\\ge0$이다.\n풀이 방향: 속도 $v(t)=x'(t)$의 영점과 부호를 확인하여 방향이 바뀌는 시각을 정한 뒤, 가속도 $a(t)=v'(t)$를 그 시각에 대입한다.\n정석 풀이: $v(t)=x'(t)=3t^2-6t-9=3(t-3)(t+1)$이다. $t\\ge0$에서 속도가 $0$이 되는 시각은 $t=3$뿐이고, $0\\le t\\lt3$에서는 $v(t)\\lt0$, $t\\gt3$에서는 $v(t)\\gt0$이므로 $t=3$에서 운동 방향이 바뀐다. 가속도는 $a(t)=v'(t)=6t-6$이므로 $a(3)=18-6=12$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 2,
@@ -60,7 +44,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "속도와 위치"
     ],
     "wide": false,
@@ -73,11 +56,12 @@ window.questionBank = [
       "$240\\mathrm{m}$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 처음 이동 방향이 바뀌는 시각까지의 변위를 적분하고, 출발 높이 $10\\mathrm{m}$를 더해 실제 높이를 구한다.\n조건 정리: 속도는 $v(t)=30-3t$이고 출발할 때 지면으로부터의 높이는 $10\\mathrm{m}$이다.\n풀이 방향: $v(t)$의 부호가 처음 바뀌는 시각을 찾은 뒤, $0$초부터 그 시각까지의 변위를 정적분으로 계산한다.\n정석 풀이: $v(t)=30-3t=0$에서 $t=10$이다. $0\\le t\\lt10$에서는 $v(t)\\gt0$, $10\\lt t\\le20$에서는 $v(t)\\lt0$이므로 처음 방향을 바꾸는 시각은 $t=10$이다. 이때까지의 변위는 $\\displaystyle\\int_0^{10}(30-3t)dt=\\left[30t-\\dfrac32t^2\\right]_0^{10}=300-150=150$이다. 따라서 지면으로부터의 높이는 $10+150=160\\mathrm{m}$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 3,
@@ -91,11 +75,10 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "부정적분"
     ],
     "wide": false,
-    "content": "함수 $f(x)$에 대하여<br>$\\displaystyle\\int\\left\\{\\dfrac{d}{dx}f(x)\\right\\}dx=6x^3-7x+C$<br>가 성립하고 $f(1)=-3$일 때, $f(2)$의 값은? (단, $C$는 적분상수이다.) [3.3점]",
+    "content": "함수 $f(x)$에 대하여<br>$\\displaystyle\\int\\left\\{\\dfrac{d}{dx}f(x)\\right\\}dx=6x^3-7x+C$<br>가 성립하고 $f(1)=3$일 때, $f(2)$의 값은? (단, $C$는 적분상수이다.) [3.3점]",
     "choices": [
       "$30$",
       "$34$",
@@ -103,12 +86,13 @@ window.questionBank = [
       "$42$",
       "$46$"
     ],
-    "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-07-INTEGRAL",
-    "subUnit": "integral",
+    "answer": "③",
+    "solution": "[키포인트] 주어진 부정적분 식에서 $f'(x)$를 확인한 뒤 조건 $f(1)=3$으로 적분상수를 정한다.\n조건 정리: $\\displaystyle\\int f'(x)dx=6x^3-7x+C$이므로 양변을 미분하면 $f'(x)=18x^2-7$이다.\n풀이 방향: $f'(x)$를 적분하여 $f(x)$를 구하고, $f(1)=3$을 대입하여 상수를 결정한 뒤 $f(2)$를 계산한다.\n정석 풀이: $f'(x)=18x^2-7$이므로 $f(x)=6x^3-7x+k$로 둘 수 있다. $f(1)=3$에서 $6-7+k=3$이므로 $k=4$이다. 따라서 $f(2)=6\\times2^3-7\\times2+4=48-14+4=38$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+    "subUnit": "부정적분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 4,
@@ -122,7 +106,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "함수의 감소"
     ],
     "wide": false,
@@ -135,11 +118,12 @@ window.questionBank = [
       "$a\\ge 28$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 닫힌구간 전체에서 감소하려면 그 구간에서 도함수가 항상 $0$ 이하가 되어야 한다.\n조건 정리: $f'(x)=3x^2+8x-a$이고 $0\\le x\\le2$이다.\n풀이 방향: $f'(x)$가 $[0,2]$에서 어디서 가장 큰지 확인한 뒤 그 최댓값이 $0$ 이하가 되도록 $a$의 범위를 정한다.\n정석 풀이: $f''(x)=6x+8$이고 $0\\le x\\le2$에서 $f''(x)\\gt0$이므로 $f'(x)$는 $[0,2]$에서 증가한다. 따라서 $f'(x)$의 최댓값은 $x=2$에서의 $f'(2)=12+16-a=28-a$이다. 함수 $f$가 $[0,2]$에서 감소하려면 $f'(x)\\le0$이어야 하므로 $28-a\\le0$, 즉 $a\\ge28$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 5,
@@ -153,7 +137,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "두 곡선 사이의 넓이"
     ],
     "wide": false,
@@ -166,11 +149,12 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 두 그래프로 둘러싸인 넓이는 교점을 구한 뒤 위 함수에서 아래 함수를 뺀 값을 적분한다.\n조건 정리: 두 곡선은 $y=-x^2+4x$와 $y=2x$이다.\n풀이 방향: 먼저 두 그래프의 교점의 $x$좌표를 구하고, 그 사이에서 어느 그래프가 위에 있는지 확인한다.\n정석 풀이: $-x^2+4x=2x$에서 $-x^2+2x=x(2-x)=0$이므로 교점의 $x$좌표는 $0,2$이다. $0\\le x\\le2$에서 $x(2-x)\\ge0$이므로 곡선 $y=-x^2+4x$가 직선 $y=2x$보다 위에 있다. 따라서 넓이는 $\\displaystyle\\int_0^2\\{(-x^2+4x)-2x\\}dx=\\int_0^2(-x^2+2x)dx=\\left[-\\dfrac{x^3}{3}+x^2\\right]_0^2=\\dfrac43$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 6,
@@ -184,7 +168,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "속도와 높이"
     ],
     "wide": false,
@@ -197,11 +180,12 @@ window.questionBank = [
       "$53$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 높이함수의 최댓값은 상승에서 하강으로 바뀌는 시각, 즉 속도가 양수에서 음수로 바뀌는 시각에서 얻어진다.\n조건 정리: 물체의 높이는 $x(t)=30t-5t^2$이고 $0\\le t\\le6$이다.\n풀이 방향: 속도 $x'(t)$가 $0$이 되는 시각과 그 전후의 부호를 확인하여 최고점 도달 시각을 정한 뒤 높이함수에 대입한다.\n정석 풀이: $x'(t)=30-10t=10(3-t)$이므로 $x'(t)=0$인 시각은 $t=3$이다. $0\\le t\\lt3$에서는 $x'(t)\\gt0$이고 $3\\lt t\\le6$에서는 $x'(t)\\lt0$이므로 $t=3$에서 높이가 최대가 된다. 따라서 최고 높이는 $x(3)=30\\times3-5\\times3^2=90-45=45$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 7,
@@ -215,11 +199,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "도함수의 그래프"
+      "도함수의 그래프",
+      "그래프"
     ],
     "wide": false,
-    "content": "아래 그래프는 사차함수 $y=f(x)$의 도함수 $y=f'(x)$의 그래프이다. 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $f'(1)=f'(2)=f'(3)=0$이다.) [3.7점]<br><보기><br>ㄱ. 함수 $f(x)$는 $x=2$에서 극솟값을 가진다.<br>ㄴ. 함수 $f(x)$는 구간 $(-\\infty,1]$에서 증가한다.<br>ㄷ. 열린구간 $(2,3)$에 속하는 임의의 두 실수 $x_1$, $x_2$에 대하여 $x_1\\lt x_2$일 때 $f(x_1)\\gt f(x_2)$이다.",
+    "content": "아래 그래프는 사차함수 $y=f(x)$의 도함수 $y=f'(x)$의 그래프이다. 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $f'(1)=f'(2)=f'(3)=0$이다.) [3.7점]",
     "choices": [
       "ㄱ",
       "ㄷ",
@@ -227,14 +211,17 @@ window.questionBank = [
       "ㄱ, ㄷ",
       "ㄴ, ㄷ"
     ],
-    "visualAssetStatus": "asset_deferred",
+    "visualAssetStatus": "asset_verified",
     "sourcePage": "../pages/page-2.png",
-    "answer": "③",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "②",
+    "solution": "[키포인트] 도함수 그래프의 부호와 부호 변화로 함수의 증가·감소와 극값을 판정한다.\n조건 정리: $f'(x)$의 부호는 $x\\lt 1$에서 음수, $1\\lt x\\lt 2$에서 양수, $2\\lt x\\lt 3$에서 음수, $x\\gt 3$에서 양수이다.\n풀이 방향: 각 영점에서 $f'(x)$의 부호가 어떻게 바뀌는지 확인하고, 그 결과를 세 보기와 대조한다.\n정석 풀이: $x=2$에서는 $f'(x)$의 부호가 양수에서 음수로 바뀌므로 $f$는 극댓값을 갖는다. 따라서 ㄱ은 거짓이다. $x\\lt 1$에서 $f'(x)\\lt 0$이므로 $f$는 감소하고, ㄴ도 거짓이다. $2\\lt x_1\\lt x_2\\lt 3$이면 이 구간에서 $f'(x)\\lt 0$이므로 $f(x_1)\\gt f(x_2)$이고 ㄷ은 참이다.\n따라서 옳은 것은 ㄷ뿐이며 정답은 ②이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_순천고_2학기_기말_고2_수학II/q07.png",
+    "imageKind": "diagram",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 8,
@@ -248,7 +235,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "정적분과 절댓값"
     ],
     "wide": false,
@@ -261,11 +247,12 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 절댓값 적분은 함수의 부호가 바뀌는 점을 기준으로 구간을 나눈다.\n조건 정리: $f(x)=-2x^2+6x=-2x(x-3)$이다. 주어진 구간에서 유일한 영점은 $x=0$이다.\n풀이 방향: $[-1,0]$에서 $f(x)\\le0$, $[0,1]$에서 $f(x)\\ge0$임을 확인한 뒤 절댓값을 풀어 적분한다.\n정석 풀이: $F(x)=-\\dfrac23x^3+3x^2$라 두면\n$$\\begin{aligned}\\int_{-1}^{1}|f(x)|dx&=-\\int_{-1}^{0}f(x)dx+\\int_{0}^{1}f(x)dx\\\\\n&=-\\left[F(0)-F(-1)\\right]+\\left[F(1)-F(0)\\right]\\\\\n&=-\\left(0-\\dfrac{11}{3}\\right)+\\left(\\dfrac{7}{3}-0\\right)=6.\n\\end{aligned}$$\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 9,
@@ -279,7 +266,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "적분방정식"
     ],
     "wide": false,
@@ -292,11 +278,12 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 정적분 부분은 $x$와 무관한 하나의 상수로 두고 적분방정식을 푼다.\n조건 정리: $I=\\displaystyle\\int_0^1 2f(t)dt$라 두면 $f(x)=3x^2-4x+I$이다.\n풀이 방향: 이 식을 다시 $I$의 정의에 대입하여 $I$를 먼저 구한 뒤 $f(1)$을 계산한다.\n정석 풀이: $I=2\\displaystyle\\int_0^1(3t^2-4t+I)dt=2\\left([t^3-2t^2]_0^1+I\\right)=2(-1+I)=2I-2$이다. 따라서 $I=2$이다. 그러므로 $f(1)=3-4+2=1$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 10,
@@ -310,7 +297,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "접선의 기울기"
     ],
     "wide": false,
@@ -322,12 +308,13 @@ window.questionBank = [
       "$22$",
       "$24$"
     ],
-    "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "answer": "④",
+    "solution": "[키포인트] 곡선 위 점에서의 접선 기울기가 곧 $f'(x)$이므로, 주어진 기울기식을 적분하여 $f(x)$를 복원한다.\n조건 정리: 모든 점 $(x,f(x))$에서 접선의 기울기가 $6x^2-2x+3$이고 곡선은 점 $(-1,-2)$를 지난다.\n풀이 방향: $f'(x)=6x^2-2x+3$을 적분한 뒤 $f(-1)=-2$로 적분상수를 정하고 $f(2)$를 계산한다.\n정석 풀이: $f'(x)=6x^2-2x+3$이므로 $f(x)=2x^3-x^2+3x+C$이다. $f(-1)=-2$를 대입하면 $-2-1-3+C=-2$이므로 $C=4$이다. 따라서 $f(2)=2\\times2^3-2^2+3\\times2+4=16-4+6+4=22$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 11,
@@ -341,7 +328,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "함수의 최댓값과 최솟값"
     ],
     "wide": false,
@@ -354,11 +340,12 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 닫힌구간의 최댓값과 최솟값은 양 끝점과 구간 안의 임계점에서 함수값을 비교하여 구한다.\n조건 정리: $f(x)=2x^3-3x^2-12x+a$이고 정의역은 $[-2,2]$이다.\n풀이 방향: $f'(x)=0$인 점을 찾은 뒤 $x=-2,-1,2$에서의 함수값을 비교하여 $M$과 $m$을 정한다.\n정석 풀이: $f'(x)=6x^2-6x-12=6(x+1)(x-2)$이므로 구간 안에서 확인할 점은 $x=-2,-1,2$이다. 각각 $f(-2)=a-4$, $f(-1)=a+7$, $f(2)=a-20$이다. 따라서 최댓값은 $M=a+7$, 최솟값은 $m=a-20$이다. $M+m=-23$이므로 $(a+7)+(a-20)=2a-13=-23$에서 $a=-5$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 12,
@@ -372,7 +359,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "곡선과 x축 사이의 넓이"
     ],
     "wide": false,
@@ -385,11 +371,12 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 완전제곱식으로 정리하면 두 근이 꼭짓점 $x=1$을 중심으로 대칭이므로 넓이 적분을 간단히 계산할 수 있다.\n조건 정리: $y=x^2-2x+a=(x-1)^2-(1-a)$이고 $a\\lt1$이므로 $d=\\sqrt{1-a}\\gt0$이라 두면 두 근은 $1-d$, $1+d$이다.\n풀이 방향: 두 근 사이에서 곡선은 $x$축 아래에 있으므로 $x$축과 곡선 사이의 넓이를 대칭 적분으로 계산한다.\n정석 풀이: 넓이 $S$는 $\\displaystyle S=\\int_{1-d}^{1+d}\\{d^2-(x-1)^2\\}dx$이다. $u=x-1$로 두면 $S=\\displaystyle\\int_{-d}^{d}(d^2-u^2)du=2\\left[d^2u-\\dfrac{u^3}{3}\\right]_0^d=\\dfrac43d^3$이다. $S=36$이므로 $\\dfrac43d^3=36$, 따라서 $d^3=27$이고 $d=3$이다. 그러므로 $1-a=d^2=9$에서 $a=-8$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 13,
@@ -403,7 +390,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "구간함수와 넓이"
     ],
     "wide": false,
@@ -416,11 +402,12 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 구간함수의 식과 부호를 모두 확인하여 넓이를 네 구간의 적분으로 나눈다.\n조건 정리: $[-2,-1)$에서는 $f(x)=-x+1\\gt 0$, $[-1,0]$에서는 $f(x)=x^2-x\\ge0$, $(0,1)$에서는 $f(x)\\lt 0$, $[1,2]$에서는 $f(x)\\ge0$이다.\n풀이 방향: $x=-1,0,1$을 기준으로 부호를 나누고, 음수 구간의 적분에는 마이너스를 붙인다.\n정석 풀이: $$\\begin{aligned}k&=\\int_{-2}^{-1}(-x+1)dx+\\int_{-1}^{0}(x^2-x)dx-\\int_{0}^{1}(x^2-x)dx+\\int_{1}^{2}(x^2-x)dx\\\\\n&=\\dfrac52+\\dfrac56+\\dfrac16+\\dfrac56=\\dfrac{13}{3}.\n\\end{aligned}$$\n따라서 $3k=13$이고 정답은 ④이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 14,
@@ -434,7 +421,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "평행이동과 넓이"
     ],
     "wide": false,
@@ -447,11 +433,12 @@ window.questionBank = [
       "$\\dfrac{10}{3}$"
     ],
     "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 이동한 곡선의 식과 두 교점을 구한 뒤 위·아래 함수의 차를 적분한다.\n조건 정리: $y=x^2$를 $x$축 대칭하면 $y=-x^2$이고, 오른쪽으로 2, 위로 4만큼 이동하면 $f(x)=-(x-2)^2+4=-x^2+4x$이다.\n풀이 방향: 두 곡선의 교점을 구하고, 교점 사이에서 위에 있는 곡선에서 아래에 있는 곡선을 뺀다.\n정석 풀이: $x^2=-x^2+4x$에서 $2x(x-2)=0$이므로 교점의 $x$좌표는 $0,2$이다. $0\\lt x\\lt 2$에서는 $f(x)\\gt x^2$이므로\n$$\\begin{aligned}S&=\\int_0^2\\{(-x^2+4x)-x^2\\}dx\\\\\n&=\\int_0^2(-2x^2+4x)dx=\\left[-\\dfrac23x^3+2x^2\\right]_0^2=\\dfrac83.\n\\end{aligned}$$\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 15,
@@ -465,7 +452,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "주기함수의 정적분"
     ],
     "wide": false,
@@ -478,11 +464,12 @@ window.questionBank = [
       "$\\dfrac{34}{3}$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 주기 4를 이용하여 완전한 주기와 남은 구간을 나누어 적분한다.\n조건 정리: $f(x+4)=f(x)$이고 $1\\le x\\le5$에서 $f(x)=x^2-6x+8$이다.\n풀이 방향: 한 주기의 적분을 구한 뒤 $27=4\\times6+3$을 이용하여 $0\\le x\\le3$에 해당하는 나머지 적분을 계산한다.\n정석 풀이: $\\displaystyle\\int_1^5(x^2-6x+8)dx=\\left[\\dfrac{x^3}{3}-3x^2+8x\\right]_1^5=\\dfrac43$이다. 또 주기성에 의해 $\\displaystyle\\int_0^3f(x)dx=\\int_4^5f(x)dx+\\int_1^3f(x)dx=\\dfrac43+\\dfrac23=2$이다. 따라서 $\\displaystyle\\int_0^{27}f(x)dx=6\\times\\dfrac43+2=10$이다.\n나머지 구간의 길이는 3이므로 $[4,5]$와 $[1,3]$으로 나누어야 한다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 16,
@@ -496,8 +483,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "도형의 넓이의 최댓값"
+      "도형의 넓이의 최댓값",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 곡선 $f(x)=x(x-a)^2$이 $x$축과 만나는 두 점 중 원점 $O$가 아닌 점을 $A$라 하자. 이 곡선 위를 움직이는 점 $P(t,f(t))$에서 $x$축에 내린 수선의 발을 $H$라 할 때, 삼각형 $POH$의 넓이는 $t=p$에서 최댓값 $M$을 가진다. 이때, $\\dfrac{M}{p}$의 값은? (단, $a\\gt 0$이고, $0\\lt t\\lt a$이다.) [4.4점]",
@@ -508,14 +495,17 @@ window.questionBank = [
       "$\\dfrac{a^3}{16}$",
       "$\\dfrac{a^4}{32}$"
     ],
-    "visualAssetStatus": "asset_deferred",
+    "visualAssetStatus": "asset_verified",
     "sourcePage": "../pages/page-3.png",
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 수선의 길이와 밑변으로 넓이 함수를 만든 뒤 미분하여 최댓값을 찾는다.\n조건 정리: $0\\lt t\\lt a$에서 $P(t,f(t))$, $H=(t,0)$이고 $f(t)=t(a-t)^2$이다.\n풀이 방향: $OH=t$, $PH=f(t)$이므로 삼각형의 넓이를 $t$의 함수로 나타내고, 구간 $0\\lt t\\lt a$에서 증가·감소를 조사한다.\n정석 풀이: 삼각형 $POH$의 넓이를 $S(t)$라 하면 $S(t)=\\dfrac12t\\cdot f(t)=\\dfrac12t^2(a-t)^2$이다.\n$S'(t)=t(a-t)(a-2t)$이고 $0\\lt t\\lt a$에서 $t(a-t)\\gt 0$이므로 $S'(t)$의 부호는 $a-2t$의 부호와 같다. 따라서 $0\\lt t\\lt \\dfrac a2$에서 증가하고 $\\dfrac a2\\lt t\\lt a$에서 감소하므로 $p=\\dfrac a2$이다.\n$M=S\\left(\\dfrac a2\\right)=\\dfrac12\\left(\\dfrac a2\\right)^2\\left(\\dfrac a2\\right)^2=\\dfrac{a^4}{32}$이므로 $\\dfrac Mp=\\dfrac{a^3}{16}$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_순천고_2학기_기말_고2_수학II/q16.png",
+    "imageKind": "diagram",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 17,
@@ -529,11 +519,10 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "함수와 도함수"
     ],
     "wide": false,
-    "content": "사차함수 $g(x)$와 최고차항의 계수가 $1$인 삼차함수 $f(x)$가 $g(x)=(x+3)f'(x)$를 만족하고 $g(x)$는 $x=0$에서만 극값을 가질 때 $f'(1)$의 값은? [4.5점]",
+    "content": "사차함수 $g(x)$와 최고차항의 계수가 $1$인 삼차함수 $f(x)$가 $g'(x)=(x+3)f'(x)$를 만족하고 $g(x)$는 $x=0$에서만 극값을 가질 때 $f'(1)$의 값은? [4.5점]",
     "choices": [
       "$-12$",
       "$-4$",
@@ -541,12 +530,13 @@ window.questionBank = [
       "$12$",
       "$20$"
     ],
-    "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "answer": "④",
+    "solution": "[키포인트] $g'(x)$의 부호가 바뀌는 점과 바뀌지 않는 점을 구분하여 $f'(x)$의 근을 정한다.\n조건 정리: $g'(x)=(x+3)f'(x)$이고 $g$는 $x=0$에서만 극값을 가진다. 또한 $f$의 최고차항 계수가 1이므로 $f'$의 최고차항 계수는 3이다.\n풀이 방향: $x=0$에서는 $g'$의 부호가 바뀌어야 하고, 인수 $x+3$ 때문에 생기는 $x=-3$에서는 부호가 바뀌지 않아야 한다.\n정석 풀이: $x=0$에서 $x+3\\ne0$이므로 $f'(0)=0$이어야 한다. $x=-3$에서 $x+3$이 한 번 나타나므로 $g'$가 그 점에서 부호를 바꾸지 않으려면 $f'(-3)=0$이어야 한다. 따라서 이차식 $f'(x)$의 두 근은 $0,-3$이고, 최고차항 계수가 3이므로 $f'(x)=3x(x+3)$이다. 그러면 $g'(x)=3x(x+3)^2$이어서 실제로 $x=0$에서만 부호가 바뀐다.\n$f'(1)=3\\times1\\times4=12$이므로\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 18,
@@ -560,11 +550,10 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "극한과 정적분"
     ],
     "wide": false,
-    "content": "두 다항함수 $f(x)$, $g(x)$가 다음 조건을 모두 만족시킬 때 $\\displaystyle\\int_0^2 t^2f(t)dt$의 값은? [4.7점]<br><조건><br>(가) $\\displaystyle\\lim_{x\\to2}\\dfrac{\\int_0^x(x-t)f(t)dt}{x-2}=5$<br>(나) $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{g(x)}{x^2+3x-6}=2$, $g(2)=g'(2)=0$<br>(다) $\\displaystyle\\int_0^2f(t)g(t)dt=10$",
+    "content": "두 다항함수 $f(x)$, $g(x)$가 다음 조건을 모두 만족시킬 때 $\\displaystyle\\int_0^2 t^2f(t)dt$의 값은? [4.7점]<br><b>&lt;조건&gt;</b><br><div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>(가) $\\displaystyle\\lim_{x\\to2}\\dfrac{\\int_0^x(x-t)f(t)dt}{x-2}=5$</td></tr><tr><td>(나) $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{g(x)}{x^2+3x-6}=2$, $g(2)=g'(2)=0$</td></tr><tr><td>(다) $\\displaystyle\\int_0^2f(t)g(t)dt=10$</td></tr></tbody></table></div>",
     "choices": [
       "$5$",
       "$15$",
@@ -572,12 +561,13 @@ window.questionBank = [
       "$35$",
       "$45$"
     ],
-    "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
+    "answer": "③",
+    "solution": "[키포인트] 적분으로 정의된 함수의 극한을 미분값으로 바꾸고, 조건을 이용해 필요한 적분값을 차례로 구한다.\n조건 정리: $H(x)=\\displaystyle\\int_0^x(x-t)f(t)dt$라 하고 $I=\\displaystyle\\int_0^2t^2f(t)dt$라 하자.\n풀이 방향: (가)에서 $H(2)$와 $H'(2)$를 구한 뒤 $\\displaystyle\\int_0^2f(t)dt$, $\\displaystyle\\int_0^2tf(t)dt$를 얻고, (나)의 $g$를 결정하여 (다)에 대입한다.\n정석 풀이: (가)의 극한이 유한하므로 $H(2)=0$이고 $H'(2)=5$이다. 한편 $H'(x)=\\displaystyle\\int_0^xf(t)dt$이므로 $\\displaystyle\\int_0^2f(t)dt=5$이다. 또 $H(2)=\\displaystyle\\int_0^2(2-t)f(t)dt=0$이므로 $2\\times5-\\displaystyle\\int_0^2tf(t)dt=0$에서 $\\displaystyle\\int_0^2tf(t)dt=10$이다.\n(나)의 극한은 $g$가 이차식이고 최고차항 계수가 2임을 뜻한다. $g(2)=g'(2)=0$이므로 $g(x)=2(x-2)^2$이다. 따라서 (다)에서 $10=\\displaystyle\\int_0^2f(t)g(t)dt=2\\left(I-4\\times10+4\\times5\\right)$이므로 $I=25$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 19,
@@ -591,7 +581,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "함수와 역함수 사이의 넓이"
     ],
     "wide": false,
@@ -603,12 +592,13 @@ window.questionBank = [
       "$\\dfrac{3}{2}$",
       "$2$"
     ],
-    "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "answer": "③",
+    "solution": "[키포인트] 역함수의 그래프는 원래 함수의 그래프를 직선 $y=x$에 대하여 대칭이동한 것이므로, 전체 도형의 대칭성을 이용하면 역함수 자체를 적분하지 않고 넓이를 구할 수 있다.\n조건 정리: $f'(x)=3x^2+6x+4=3(x+1)^2+1\\gt0$이므로 $f$는 일대일함수이고 역함수 $g$가 존재한다. 또한 직선 $y=-x+1$, 즉 $x+y=1$은 $y=x$에 대하여 대칭이동해도 그대로이다.\n풀이 방향: $y=f(x)$와 $y=g(x)$가 $y=x$에 대하여 서로 대칭이고 직선 $y=-x+1$도 이 대칭에서 변하지 않으므로, 둘러싸인 도형도 $y=x$에 대하여 대칭이다. 따라서 $y=x$ 위쪽 절반의 넓이를 구한 뒤 $2$배한다.\n정석 풀이: 먼저 $f(x)=x$에서 $x^3+3x^2+3x+1=(x+1)^3=0$이므로 두 곡선 $y=f(x)$, $y=g(x)$의 교점은 $(-1,-1)$이다. 또 $f(x)=-x+1$에서 $x^3+3x^2+5x=x(x^2+3x+5)=0$이고 $x^2+3x+5$의 판별식은 $9-20=-11\\lt0$이므로 교점은 $(0,1)$뿐이다. 이를 $y=x$에 대하여 대칭이동하면 $y=g(x)$와 직선의 교점은 $(1,0)$이다. 직선 $y=-x+1$과 $y=x$의 교점은 $\\left(\\dfrac12,\\dfrac12\\right)$이다.\n$y=x$ 위쪽 절반의 넓이를 $A$라 하면 $-1\\le x\\le0$에서는 $y=f(x)$와 $y=x$ 사이, $0\\le x\\le\\dfrac12$에서는 $y=-x+1$과 $y=x$ 사이의 넓이를 더하면 된다. 따라서\n$\\displaystyle A=\\int_{-1}^{0}\\{f(x)-x\\}dx+\\int_0^{1/2}\\{(-x+1)-x\\}dx$\n$\\displaystyle =\\int_{-1}^{0}(x+1)^3dx+\\int_0^{1/2}(1-2x)dx=\\dfrac14+\\dfrac14=\\dfrac12$이다.\n핵심 확인: 전체 도형은 $y=x$에 대하여 대칭이므로 전체 넓이는 $2A=1$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 20,
@@ -622,11 +612,10 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "도함수와 실근의 개수"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $f(x)$는 다음 <조건>을 만족한다.<br><조건><br>(가) 함수 $y=f'(x)$는 $x=-1$에서 최솟값을 갖는다.<br>(나) $f'(2)=0$<br>함수 $g(x)=|f(x)-f(-1)|$이라고 할 때, $g(x)=f(-3)$의 서로 다른 실근의 개수가 $4$개라고 하자. 이때, $f(1)$의 값은? [4.8점]",
+    "content": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $f(x)$는 다음 &lt;조건&gt;을 만족한다.<br><b>&lt;조건&gt;</b><br><div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>(가) 함수 $y=f'(x)$는 $x=-1$에서 최솟값을 갖는다.</td></tr><tr><td>(나) $f'(2)=0$</td></tr></tbody></table></div><br>함수 $g(x)=|f(x)-f(-1)|$이라고 할 때, $g(x)=f(-3)$의 서로 다른 실근의 개수가 $4$개라고 하자. 이때, $f(1)$의 값은? [4.8점]",
     "choices": [
       "$34$",
       "$19$",
@@ -634,12 +623,13 @@ window.questionBank = [
       "$-21$",
       "$-38$"
     ],
-    "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "⑤",
+    "solution": "[키포인트] 도함수의 극값과 방정식의 실근 개수를 연결하여 상수항을 결정한다.\n조건 정리: $f$의 최고차항 계수는 1이고 $f'(x)$는 $x=-1$에서 최솟값을 가지며 $f'(2)=0$이다.\n풀이 방향: 먼저 $f'(x)$와 $f(x)-f(-1)$을 구한 뒤, 절댓값 방정식의 네 근 조건을 $f'(x)$의 극값과 비교한다.\n정석 풀이: $f'(x)$는 최고차항 계수가 3인 이차식이고 꼭짓점의 $x$좌표가 $-1$이므로 $f'(x)=3(x+1)^2+c$이다. $f'(2)=0$에서 $27+c=0$이므로 $f'(x)=3(x-2)(x+4)$이다. 적분하면 $f(x)=x^3+3x^2-24x+C$이고, $h(x)=f(x)-f(-1)=x^3+3x^2-24x-26=(x+1)(x^2+2x-26)$이다.\n$h'(x)=f'(x)$이므로 $h$는 $x=-4$에서 최댓값 $h(-4)=54$, $x=2$에서 최솟값 $h(2)=-54$를 갖는다. 식 $|h(x)|=f(-3)$의 서로 다른 실근이 네 개이려면 두 수평선 $h(x)=f(-3)$, $h(x)=-f(-3)$가 각각 한 극값에서 접하고 바깥쪽에서 한 번씩 더 만나야 한다. 따라서 $f(-3)=54$이다.\n$f(-3)=72+C=54$이므로 $C=-18$이고 $f(1)=1+3-24-18=-38$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 21,
@@ -657,14 +647,15 @@ window.questionBank = [
       "서술형",
       "속도와 거리"
     ],
-    "wide": true,
+    "wide": false,
     "content": "서답형 1. (서술형) 원점을 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$에서의 속도 $v(t)$가 $v(t)=t^3-3t^2+2t$일 때 점 $P$가 출발한 후 처음으로 $16$에 위치할 때까지 움직인 거리를 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 4점]",
-    "answer": "②",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "answer": "$\\dfrac{33}{2}$",
+    "solution": "[키포인트] 속도의 부호로 방향을 나누고, 위치함수로 처음 도달하는 시각을 확인한다.\n조건 정리: $s(0)=0$, $v(t)=t(t-1)(t-2)$이고 목표 위치는 $16$이다.\n풀이 방향: $v(t)$를 적분하여 위치함수를 구한 뒤, 부호가 바뀌는 시각에서 구간을 나누어 이동거리를 계산한다.\n정석 풀이: $s(t)=\\displaystyle\\int_0^tv(u)du=\\dfrac{t^4}{4}-t^3+t^2$이다. $0\\lt t\\lt 1$과 $2\\lt t$에서 $v(t)\\gt 0$, $1\\lt t\\lt 2$에서 $v(t)\\lt 0$이다. $s(1)=\\dfrac14$, $s(2)=0$이고 $s(4)=16$이며, $0\\le t\\le2$에서는 $s(t)\\le\\dfrac14$이므로 $16$에 처음 도달하는 시각은 $t=4$이다.\n따라서 이동거리는 $\\displaystyle\\int_0^1v(t)dt-\\int_1^2v(t)dt+\\int_2^4v(t)dt=(s(1)-s(0))+(s(1)-s(2))+(s(4)-s(2))=\\dfrac14+\\dfrac14+16=\\dfrac{33}{2}$이다.\n따라서 구하는 값은 $\\dfrac{33}{2}$이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 22,
@@ -682,14 +673,15 @@ window.questionBank = [
       "서술형",
       "함수와 도함수"
     ],
-    "wide": true,
-    "content": "서답형 2. (서술형) 다항함수 $f(x)$와 삼차함수 $g(x)$가 다음 조건을 모두 만족시킬 때 $g'(-2)$의 최댓값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 6점]<br><조건><br>(가) 모든 실수 $t$에 대해 $-74\\le\\displaystyle\\int_{2t-4}^{2t}f'(x)dx\\le74$<br>(나) 모든 실수 $x_1$, $x_2$에 대해 $x_1\\ne x_2$면 $g(x_1)\\ne g(x_2)$<br>(다) $g'(-3)=0$, $f'(1)+\\displaystyle\\int_0^1 3g(x)dx=0$",
-    "answer": "④",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "wide": false,
+    "content": "서답형 2. (서술형) 다항함수 $f(x)$와 삼차함수 $g(x)$가 다음 조건을 모두 만족시킬 때 $g'(-2)$의 최댓값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 6점]<br><b>&lt;조건&gt;</b><br><div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>(가) 모든 실수 $t$에 대해 $-74\\le\\displaystyle\\int_{2t-4}^{2t}f'(x)dx\\le74$</td></tr><tr><td>(나) 모든 실수 $x_1$, $x_2$에 대해 $x_1\\ne x_2$면 $g(x_1)\\ne g(x_2)$</td></tr><tr><td>(다) $g'(-3)=0$, $f'(1)+\\displaystyle\\int_0^1 3g'(x)dx=0$</td></tr></tbody></table></div>",
+    "answer": "$\\dfrac12$",
+    "solution": "[키포인트] (가)의 적분을 함수값의 차로 바꾸어 $f$의 차수를 제한하고, 일대일 삼차함수의 도함수 형태를 이용한다.\n조건 정리: 모든 실수 $t$에 대해 $-74\\le\\displaystyle\\int_{2t-4}^{2t}f'(x)dx\\le74$이고, $g$는 일대일인 삼차함수이며 $g'(-3)=0$이다.\n풀이 방향: 먼저 (가)에서 $f$가 일차 이하임을 보이고 $f'(1)$의 범위를 구한다. 다음으로 $g'$가 $x=-3$을 중근으로 갖는 이차식임을 이용하여 $g'(-2)$의 범위를 정한다.\n정석 풀이: 미적분의 기본정리에 의해 $\\displaystyle\\int_{2t-4}^{2t}f'(x)dx=f(2t)-f(2t-4)$이다. $f$가 이차 이상인 다항함수라면 이 차는 $t$에 대한 비상수 다항식이 되어 모든 실수 $t$에서 유계일 수 없다. 따라서 $f(x)=Ax+B$이고, (가)는 $-74\\le4A\\le74$이므로 $|A|\\le\\dfrac{37}{2}$이다. 따라서 $f'(1)=A$이다.\n$g$가 일대일인 삼차함수이므로 $g'$는 실수 전체에서 부호가 바뀌지 않는다. $g'(-3)=0$이고 $g'$는 이차식이므로 $-3$은 중근이고 $g'(x)=C(x+3)^2$ $(C\\ne0)$로 둘 수 있다. 이때 $g'(-2)=C$이다.\n(다)에서 $A+\\displaystyle\\int_0^1 3C(x+3)^2dx=A+37C=0$이므로 $C=-\\dfrac{A}{37}$이다. 따라서 $|C|\\le\\dfrac12$이고, $A=-\\dfrac{37}{2}$일 때 $C=\\dfrac12$가 가능하다.\n따라서 구하는 최댓값은 $\\dfrac12$이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 23,
@@ -705,21 +697,25 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "도함수의 그래프"
+      "도함수의 그래프",
+      "그래프"
     ],
-    "wide": true,
+    "wide": false,
     "content": "서답형 3. (서술형) 함수 $f(x)$는 최고차항의 계수가 $1$인 삼차함수이다. 함수 $y=f'(x)$의 그래프가 아래 그림과 같을 때, 함수 $f(x)$의 극댓값이 $4$이다. 함수 $f(x)$를 구하는 과정을 풀이 과정과 함께 서술하시오. (단, $f'(0)=f'(2)=0$이다.) [부분 점수 있음, 4점]",
-    "visualAssetStatus": "asset_deferred",
+    "visualAssetStatus": "asset_verified",
     "visualFacts": [
       "$y=f'(x)$는 $x=0$, $x=2$에서 $x$축과 만나는 위로 열린 포물선이다."
     ],
     "sourcePage": "../pages/page-5.png",
-    "answer": "①",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "$f(x)=x^3-3x^2+4$",
+    "solution": "[키포인트] 도함수의 영점과 극댓값 조건으로 삼차함수의 상수항을 결정한다.\n조건 정리: $f$의 최고차항 계수는 1이고 $f'(0)=f'(2)=0$이며, 도함수 그래프는 위로 열린 포물선이다.\n풀이 방향: 도함수의 최고차항 계수와 두 근으로 $f'(x)$를 정한 뒤 적분하고, $x=0$에서의 극댓값으로 적분상수를 구한다.\n정석 풀이: $f'(x)$의 최고차항 계수는 3이고 근은 0, 2이므로 $f'(x)=3x(x-2)$이다. $f'(x)$의 부호는 $x\\lt 0$에서 양수, $0\\lt x\\lt 2$에서 음수, $x\\gt 2$에서 양수이므로 $x=0$에서 극댓값을 갖는다.\n$f(x)=x^3-3x^2+C$이고 $f(0)=4$이므로 $C=4$이다.\n따라서 구하는 함수는 $f(x)=x^3-3x^2+4$이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_순천고_2학기_기말_고2_수학II/q23.png",
+    "imageKind": "diagram",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf"
   },
   {
     "id": 24,
@@ -735,15 +731,22 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "삼차함수의 그래프"
+      "삼차함수의 그래프",
+      "그래프"
     ],
-    "wide": true,
-    "content": "서답형 4. (서술형) 함수 $f(x)=x^3-3x-2$의 그래프 개형을 그리는 과정을 다음 <조건>에 맞게 구체적으로 서술하여 구하시오. 또한, $x\\gt 0$인 모든 실수 $x$에 대하여 $f(x)\\ge k$인 실수 $k$의 최댓값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 6점]<br><조건><br>① 도함수 $f'(x)$를 구하고 $f'(x)=0$인 $x$의 값을 구한다.<br>② $f'(x)$의 부호를 조사하여 함수 $f(x)$의 증가와 감소를 표로 나타내고, 함수 $f(x)$의 극대와 극소를 조사한다.<br>③ 함수 $y=f(x)$의 그래프와 $y$축의 교점의 좌표를 구한다.<br>④ 함수 $y=f(x)$의 그래프의 개형을 그린다.",
-    "answer": "④",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "wide": false,
+    "content": "서답형 4. (서술형) 함수 $f(x)=x^3-3x-2$의 그래프 개형을 그리는 과정을 다음 &lt;조건&gt;에 맞게 구체적으로 서술하여 구하시오. 또한, $x\\gt 0$인 모든 실수 $x$에 대하여 $f(x)\\ge k$인 실수 $k$의 최댓값을 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 6점]<br><b>&lt;조건&gt;</b><br><div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>① 도함수 $f'(x)$를 구하고 $f'(x)=0$인 $x$의 값을 구한다.</td></tr><tr><td>② $f'(x)$의 부호를 조사하여 함수 $f(x)$의 증가와 감소를 표로 나타내고, 함수 $f(x)$의 극대와 극소를 조사한다.</td></tr><tr><td>③ 함수 $y=f(x)$의 그래프와 $y$축의 교점의 좌표를 구한다.</td></tr><tr><td>④ 함수 $y=f(x)$의 그래프의 개형을 그린다.</td></tr></tbody></table></div>",
+    "answer": "$-4$",
+    "solution": "[키포인트] 도함수의 부호표와 주요 교점을 이용해 그래프 개형을 완성한 뒤, $x\\gt 0$에서의 최솟값을 찾는다.\n조건 정리: $f(x)=x^3-3x-2=(x+1)^2(x-2)$이다.\n풀이 방향: $f'(x)=0$인 점, 부호표, 극값, $y$축·$x$축 교점을 순서대로 구하고 그 정보를 그래프에 표시한다.\n정석 풀이: $f'(x)=3x^2-3=3(x-1)(x+1)$이므로 임계점은 $x=-1,1$이다. 부호는 $x\\lt -1$에서 양수, $-1\\lt x\\lt 1$에서 음수, $x\\gt 1$에서 양수이므로 $f$는 $(-\\infty,-1)$에서 증가, $(-1,1)$에서 감소, $(1,\\infty)$에서 증가한다. 따라서 $x=-1$에서 극댓값 $f(-1)=0$, $x=1$에서 극솟값 $f(1)=-4$를 갖는다.\n또한 $y$축과의 교점은 $(0,-2)$이고, $f(x)=(x+1)^2(x-2)$이므로 $x$축과의 교점은 $(-1,0)$과 $(2,0)$이다. 이 네 점과 증가·감소 구간을 좌표평면에 표시하면 해설 그래프와 같은 개형이 된다.\n마지막으로 $x\\gt 0$에서 $f$는 $0\\lt x\\lt 1$에서 감소하고 $x\\gt 1$에서 증가하므로 최솟값은 $f(1)=-4$이다. 따라서 $f(x)\\ge k$가 항상 성립하려면 $k\\le-4$이고, 최댓값은 $k=-4$이다.\n따라서 $k$의 최댓값은 $-4$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_순천고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II/q24-solution.svg",
+    "solutionImageAlt": "삼차함수 y=x^3-3x-2의 극값과 축의 교점을 표시한 해설 그래프",
+    "solutionImageCaption": "증가·감소 구간, 극값, 축과의 교점을 표시한 그래프 개형",
+    "solutionImageSize": "medium",
+    "solutionImageStatus": "asset_verified"
   }
 ];
