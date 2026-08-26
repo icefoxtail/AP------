@@ -34,6 +34,8 @@ test('Phase 1B sidecar preserves every non-empty production subunit', () => {
   assert.equal(identity.records.length, 10690);
   assert.equal(metadata.records.length, identity.records.length);
   assert.equal(classificationRecords.length, identity.records.length);
+  assert.equal(metadata.canonicalSubUnitLabels['H15-M2-03-DERIVATIVE'], '미분');
+  assert.equal(metadata.canonicalSubUnitLabels['H15-M2-03-DERIVATIVE_DEFINITION'], '미분계수');
 
   const metadataByUid = new Map(metadata.records.map(record => [record.questionUid, record]));
   const classificationByUid = new Map(classificationRecords.map(record => [record.questionUid, record]));
@@ -75,6 +77,7 @@ test('runtime merge keeps production fields and records conflicts instead of ove
   };
   vm.runInNewContext(runtime, context, { filename: 'archive/question-meta.js' });
   await context.window.__ARCHIVE_METADATA_READY__;
+  assert.equal(context.window.getArchiveSubUnitLabel('H15-M2-03-DERIVATIVE', 'fallback'), '미분');
   const merged = context.window.mergeArchiveQuestionMetadata(
     { subUnitKey: 'H15-SB-03-COMPOSITE_FUNCTION', subUnit: '합성함수' },
     { questionUid: target.questionUid }

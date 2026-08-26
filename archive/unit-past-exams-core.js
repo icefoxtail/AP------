@@ -382,7 +382,15 @@
   }
 
   function getSubUnitLabel(record) {
-    return String(record && (record.subUnit || record.sub_unit) || '').trim();
+    const key = getSubUnitKey(record);
+    const rawLabel = String(record && (record.subUnit || record.sub_unit) || '').trim();
+    const labels = typeof globalThis !== 'undefined' && globalThis.ARCHIVE_SUBUNIT_LABELS && typeof globalThis.ARCHIVE_SUBUNIT_LABELS === 'object'
+      ? globalThis.ARCHIVE_SUBUNIT_LABELS
+      : null;
+    const canonicalLabel = key && labels ? String(labels[key] || '').trim() : '';
+    const label = canonicalLabel || rawLabel;
+    if (!label) return '';
+    return /[A-Za-z]/.test(label) ? '소단원 검토 필요' : label;
   }
 
   function getRecordIdentity(record) {

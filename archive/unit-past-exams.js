@@ -74,6 +74,9 @@
       const metadataSubUnitKey = String(meta.subUnitKey || meta.sub_unit_key || '').trim();
       const metadataParentKey = String(meta.standardUnitKey || meta.standard_unit_key || '').trim();
       const validSubUnit = Boolean(metadataSubUnitKey && metadataParentKey && core.isSubUnitInParentScope(metadataSubUnitKey, metadataParentKey));
+      const mergedSubUnit = validSubUnit
+        ? core.getSubUnitLabel({ subUnitKey: metadataSubUnitKey, subUnit: meta.subUnit || meta.sub_unit || '' })
+        : core.getSubUnitLabel(record);
       // The existing core remains the authority for the legacy standard-unit
       // mapping. The approved sidecar only enriches the new selection fields.
       return {
@@ -81,7 +84,7 @@
         questionUid: core.getQuestionUid(meta) || core.getQuestionUid(record),
         subUnitParentKey: validSubUnit ? metadataParentKey : core.getSubUnitParentKey(record),
         subUnitKey: validSubUnit ? metadataSubUnitKey : core.getSubUnitKey(record),
-        subUnit: validSubUnit ? (meta.subUnit || meta.sub_unit || '') : core.getSubUnitLabel(record),
+        subUnit: mergedSubUnit,
         difficultyBucket: meta.difficultyBucket || record.difficultyBucket || '',
         metadataRevision: meta.metadataRevision || record.metadataRevision || '',
         metadataStatus: meta.metadataStatus || record.metadataStatus || ''
@@ -116,7 +119,7 @@
         restoredByIdentity.set(`${sourceFile}#${record.sourceQuestionNo}`, {
           ...original, _sourceFile: sourceFile, _sourceQuestionNo: record.sourceQuestionNo,
           _qKey: `${sourceFile}_${record.sourceQuestionNo}`, questionUid: core.getQuestionUid(record),
-          sourceOrdinal: record.sourceOrdinal, subUnitKey: record.subUnitKey || '', subUnit: record.subUnit || '',
+          sourceOrdinal: record.sourceOrdinal, subUnitKey: record.subUnitKey || '', subUnit: core.getSubUnitLabel(record),
           subUnitParentKey: core.getSubUnitParentKey(record),
           difficultyBucket: core.getDifficultyBucket(record), level: record.level || '',
           metadataRevision: record.metadataRevision || '', standardUnitKey: record.mappedUnitKey,
@@ -165,7 +168,7 @@
   function storeMixedPayload(unit, paper, questions) {
     const profile = getProfile();
     const selection = paper.selection || {};
-    const selectedSubUnits = [...new Map(paper.records.map(record => [record.subUnitKey || '__unclassified__', record.subUnit || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
+    const selectedSubUnits = [...new Map(paper.records.map(record => [record.subUnitKey || '__unclassified__', core.getSubUnitLabel(record) || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
     const meta = {
       title: paper.title, customTitle: paper.title, identityTitle: paper.title, count: questions.length,
       generatedAt: new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
