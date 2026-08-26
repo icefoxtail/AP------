@@ -115,6 +115,26 @@ test('소단원·난이도 필터는 레거시 난이도를 공통 버킷으로 
   assert.equal(core.getSubUnitOptions(records).find(item => item.key === '__unclassified__').label, '미분류 소단원');
 });
 
+test('마스터 소단원 표기를 우선 사용하고 영문 표시를 차단한다', () => {
+  const previous = globalThis.ARCHIVE_SUBUNIT_LABELS;
+  globalThis.ARCHIVE_SUBUNIT_LABELS = {
+    'H15-M2-03-DERIVATIVE': '미분',
+    'H15-M2-03-DERIVATIVE_DEFINITION': '미분계수'
+  };
+  try {
+    assert.equal(core.getSubUnitLabel({ subUnitKey: 'H15-M2-03-DERIVATIVE', subUnit: 'derivative' }), '미분');
+    assert.equal(core.getSubUnitLabel({ subUnitKey: 'H15-M2-03-DERIVATIVE_DEFINITION', subUnit: '미분계수' }), '미분계수');
+    assert.equal(core.getSubUnitLabel({ subUnitKey: 'UNKNOWN', subUnit: 'legacy-english' }), '소단원 검토 필요');
+    assert.deepEqual(core.getSubUnitOptions([
+      { subUnitKey: 'H15-M2-03-DERIVATIVE', subUnit: 'derivative', level: '중' },
+      { subUnitKey: 'H15-M2-03-DERIVATIVE_DEFINITION', subUnit: '미분계수', level: '중' }
+    ]).map(item => item.label), ['미분', '미분계수']);
+  } finally {
+    if (previous === undefined) delete globalThis.ARCHIVE_SUBUNIT_LABELS;
+    else globalThis.ARCHIVE_SUBUNIT_LABELS = previous;
+  }
+});
+
 test('필터는 미분류 문항을 명시적으로 허용할 때만 포함한다', () => {
   const records = [
     { id: 'classified', subUnitKey: 'A', subUnit: 'A', level: '중' },
