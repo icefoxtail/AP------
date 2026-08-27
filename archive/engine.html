@@ -945,7 +945,8 @@ async function registerClassExamAssignmentToOS() {
                 question_count: questionCount,
                 archive_file: archiveFile,
                 source_type: 'archive',
-                subject
+                subject,
+                pdf_qpp: AppState.qpp
             })
         });
         if (!res.ok) {

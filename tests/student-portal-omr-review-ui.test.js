@@ -93,7 +93,7 @@ assert(
     studentPortal.includes('<div class="omr-actions ${showReview ?') &&
     studentPortal.includes("${showPdf ? renderOmrPdfAction(exam) : ''}") &&
     studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
-    studentPortal.includes("(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''") &&
+    studentPortal.includes("(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''") &&
     studentPortal.includes('OMR 작성') &&
     studentPortal.includes('완료'),
   'OMR cards should render review actions and input status before and after submission'

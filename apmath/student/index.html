@@ -403,7 +403,7 @@
     .omr-actions.review-hidden {
       grid-template-columns:1fr;
     }
-    .omr-actions.is-review-only { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .omr-actions.is-review-only { grid-template-columns:repeat(4,minmax(0,1fr)); }
     .omr-review-unavailable { margin:12px 0 0; padding:10px 12px; border-radius:12px; background:#F9FAFB; color:#6B7280; font-size:12px; line-height:1.55; }
     .back-btn {
       width:auto;
@@ -702,6 +702,9 @@
       body.student-portal-theme .omr-card .omr-actions {
         grid-template-columns:repeat(3,minmax(0,1fr)) !important;
         gap:7px !important;
+      }
+      body.student-portal-theme .omr-card .omr-actions.is-review-only {
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
       }
       body.student-portal-theme .omr-card .omr-actions .btn {
         min-width:0 !important;
@@ -1623,6 +1626,7 @@
               <span class="omr-status ${submitted ? 'done' : 'pending'}">${submitted ? '제출 완료' : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
             </div>
             <div class="row-actions">
+              ${renderOmrPdfAction(row)}
               ${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>'}
               ${isTeacherPreview || submitted ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
             </div>
@@ -2029,7 +2033,7 @@
           </div>
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
           ${showActionArea ? `
-            <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''}">
+            <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
               ${showPdf ? renderOmrPdfAction(exam) : ''}
               ${showReview ? renderOmrReviewActions(exam) : ''}
               ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}

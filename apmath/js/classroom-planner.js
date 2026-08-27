@@ -338,7 +338,7 @@ async function openExamGradeView(classId) {
     `);
 }
 
-async function downloadClassExamPdf(assignmentId) {
+async function downloadClassExamPdf(assignmentId, examTitle = '', examDate = '') {
     if (!assignmentId) return toast('출제 정보를 찾을 수 없습니다.', 'warn');
     try {
         const response = await fetch(`${CONFIG.API_BASE}/class-exam-assignments/${encodeURIComponent(assignmentId)}/pdf`, {
@@ -352,7 +352,9 @@ async function downloadClassExamPdf(assignmentId) {
         const href = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = href;
-        link.download = '시험지.pdf';
+        const title = String(examTitle || '시험지').replace(/[\\/:*?"<>|\u0000-\u001f]/g, '_').trim() || '시험지';
+        const date = String(examDate || '').slice(0, 10);
+        link.download = `${date ? `${date}_` : ''}${title}.pdf`;
         document.body.appendChild(link);
         link.click();
         link.remove();
@@ -470,7 +472,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     const pdfCreateLabel = pdfStatus === 'failed' ? 'PDF 다시 생성' : 'PDF 생성';
     const pdfActionHtml = matchedAssignment?.id
         ? (pdfStatus === 'ready'
-            ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="downloadClassExamPdf(${assignmentIdArg})">출제본 PDF</button>`
+            ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="downloadClassExamPdf(${assignmentIdArg}, ${apJsArg(examTitle)}, '${examDate}')">출제본 PDF</button>`
             : pdfStatus === 'generating'
                 ? '<button class="btn apms-button apms-button--quiet" style="padding:7px 12px; font-size:12px; border-radius:10px;" disabled>PDF 생성 중</button>'
                 : `<button class="btn apms-button apms-button--quiet" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="regenerateClassExamPdf(${assignmentIdArg}, '${classId}', ${apJsArg(examTitle)}, '${examDate}', ${examArchiveFile})">${pdfCreateLabel}</button>`)
