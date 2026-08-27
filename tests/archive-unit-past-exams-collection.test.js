@@ -121,3 +121,34 @@ test('범위 모아뽑기는 같은 과목 안에서 시작·끝 단원을 포�
   assert.equal(result.candidateCount, 3);
   assert.deepEqual(result.scopeUnits.map(unit => unit.key), ['H22-MI1-03', 'H22-MI1-04', 'H22-MI1-05']);
 });
+
+test('시험 학기와 중간·기말 필터는 학교·연도 후보에 함께 적용된다', () => {
+  const records = [
+    record({ school: '순천고', year: 2025, id: 1, period: '1mid' }),
+    record({ school: '순천고', year: 2025, id: 2, period: '2final' }),
+    record({ school: '매산고', year: 2025, id: 1, period: '2mid' })
+  ];
+  const result = core.buildCollectionPapers(records, 'h2', {
+    unitKey: 'H22-MI1-04', yearMode: 'exact', year: 2025, semester: '2', examType: 'mid', outputMode: 'school'
+  });
+
+  assert.equal(result.candidateCount, 1);
+  assert.deepEqual(result.papers.map(paper => paper.school), ['매산고']);
+  assert.equal(result.options.semester, '2');
+  assert.equal(result.options.examType, 'mid');
+});
+
+test('학교별 자료가 부족해도 가능한 문제지는 부분 성공으로 유지한다', () => {
+  const records = [
+    record({ school: '매산고', year: 2025, id: 1 }),
+    ...[1, 2, 3].map(id => record({ school: '순천고', year: 2025, id }))
+  ];
+  const result = core.buildCollectionPapers(records, 'h2', {
+    unitKey: 'H22-MI1-04', yearMode: 'exact', year: 2025, outputMode: 'school', countMode: 'fixed', count: 2
+  });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.complete, false);
+  assert.equal(result.shortage, 1);
+  assert.deepEqual(result.papers.map(paper => [paper.school, paper.records.length]), [['매산고', 1], ['순천고', 2]]);
+});

@@ -30,6 +30,21 @@ function fixtureRecord(overrides = {}) {
   };
 }
 
+test('구형 기말·중간 경로는 파일명의 학기로 현재 아카이브 경로를 복구한다', () => {
+  const finalPath = 'original/high/h2/final/25_제일고_2학기_기말_고2_수학II.js';
+  assert.deepEqual(core.getSourceFileCandidates(finalPath), [
+    'original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js',
+    finalPath
+  ]);
+  assert.deepEqual(core.getSourceFileCandidates('original/middle/m3/mid/24_학교_1학기_중간_중3_기출.js'), [
+    'original/middle/m3/1mid/24_학교_1학기_중간_중3_기출.js',
+    'original/middle/m3/mid/24_학교_1학기_중간_중3_기출.js'
+  ]);
+  assert.deepEqual(core.getSourceFileCandidates('original/high/h2/2final/fixture.js'), [
+    'original/high/h2/2final/fixture.js'
+  ]);
+});
+
 test('고2 catalog은 요청한 세 과목만 분류하고 제외 단원을 무시한다', () => {
   const catalog = core.buildCatalog([
     fixtureRecord({ course: '대수', question_uid: 'a' }),
